@@ -1,0 +1,51 @@
+# 의존성
+node_modules/
+
+# 빌드 산출물
+dist/
+build/
+.vite/
+.turbo/
+*.tsbuildinfo
+
+# 환경 변수 / 비밀값
+# ★ 저장소가 Public이므로 이 구역이 가장 중요하다.
+#   DATABASE_URL / GEMINI_API_KEY / SESSION_SECRET이 한 번이라도 커밋되면
+#   히스토리에 영구히 남고 공개 저장소는 봇이 자동으로 스캔한다.
+#   실제 비밀값은 로컬 .env 와 GitHub Actions Secrets / Render 환경 변수로만 관리한다.
+.env
+.env.*
+*.pem
+*.key
+secrets.json
+# 단 .env.example 은 "변수 이름만" 담은 템플릿이므로 추적한다 (guide 55-1절)
+!.env.example
+
+# 로그
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 테스트 / 커버리지
+coverage/
+playwright-report/
+test-results/
+
+# 로컬 DB 파일
+*.sqlite
+*.sqlite3
+
+# 조사·실험용 임시 폴더
+# R002의 OpenTDB 조사 스크립트와 수집 데이터(all.jsonl 등)가 들어 있다.
+# 저장소에 넣지 않는다.
+tmp/
+
+# OS / 편집기
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+*.swp
+*~

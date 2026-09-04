@@ -1,0 +1,30 @@
+# 개행 정책: 저장소 안의 텍스트 파일은 항상 LF로 저장한다.
+# core.autocrlf=false 와 함께 쓰여, Windows / macOS / Linux 어디서 clone해도
+# 같은 바이트가 나오도록 보장한다. (guide 55, 61, 72절 - 다른 PC/다른 AI 인수인계)
+* text=auto eol=lf
+
+# 명시적으로 텍스트로 취급할 확장자
+*.md      text eol=lf
+*.txt     text eol=lf
+*.json    text eol=lf
+*.jsonl   text eol=lf
+*.js      text eol=lf
+*.ts      text eol=lf
+*.tsx     text eol=lf
+*.css     text eol=lf
+*.html    text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.sql     text eol=lf
+*.sh      text eol=lf eof=lf
+
+# 바이너리로 취급 (개행 변환 금지)
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.webp    binary
+*.ico     binary
+*.woff    binary
+*.woff2   binary
+*.pdf     binary
