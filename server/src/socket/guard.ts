@@ -44,6 +44,7 @@ export type ErrorCode =
   | 'ROOM_NOT_FOUND'
   | 'ROOM_CLOSED'
   | 'ALREADY_HAS_ROOM'
+  | 'NOT_ENOUGH_QUESTIONS'
   | 'INTERNAL';
 
 const ERROR_MESSAGES: Record<ErrorCode, string> = {
@@ -56,6 +57,10 @@ const ERROR_MESSAGES: Record<ErrorCode, string> = {
   ROOM_NOT_FOUND: '존재하지 않는 방입니다.',
   ROOM_CLOSED: '이미 종료된 방입니다.',
   ALREADY_HAS_ROOM: '이미 만든 방이 있습니다. 기존 방을 닫은 뒤 다시 시도해 주세요.',
+  // ★ Q-21. 출제 가능 수 부족은 "지금은 할 수 없다"(INVALID_STATE)와 구분해야 한다.
+  //   원인이 설정값이고, 사용자가 문제 수를 줄이면 해결되기 때문이다.
+  //   detail 에 실제 가능 개수를 담아 화면이 구체적으로 안내한다.
+  NOT_ENOUGH_QUESTIONS: '출제할 수 있는 문제가 부족합니다.',
   INTERNAL: '서버에서 문제가 발생했습니다.',
 };
 

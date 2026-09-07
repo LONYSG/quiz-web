@@ -44,6 +44,33 @@ export interface RoomSettings {
   countdownSec: number;
 }
 
+/**
+ * 진행 중인 게임 (Phase 2에서 도입).
+ *
+ * ★ Phase 2 범위는 "게임이 시작되기 직전 상태까지" 다.
+ *   레코드를 만들고 상태를 QUESTION_ACTIVE 로 올리는 것까지 하고, 문제는 내지 않는다.
+ *   questionIndex 와 epoch 는 Phase 3에서 [문제 시작 공통 절차]가 올린다.
+ */
+export interface ActiveGame {
+  /**
+   * games.id. ★ null 인 구간이 존재한다.
+   *   상태 전이는 동기로 즉시 끝내고 DB INSERT 는 그 뒤에 await 하기 때문이다.
+   *   순서를 뒤집으면 INSERT 를 기다리는 사이에 tick 이 한 번 더 돌아
+   *   같은 게임이 두 번 시작될 수 있다.
+   *   ★ Phase 3에서 game_questions INSERT 는 이 값이 채워진 뒤에만 해야 한다.
+   */
+  gameId: string | null;
+  /** 진행할 문제 수. 설정값과 같다 (출제 가능 수는 이미 검증되었다) */
+  totalQuestions: number;
+  /** 시작 시점 출제 가능 수 (Q-21 검증 결과). games.planned_question_count 와 같다 */
+  availableAtStart: number;
+  startedAt: number;
+  /** 1-based. 0 이면 아직 첫 문제 전이다. ★ Phase 3에서 올린다 */
+  questionIndex: number;
+  /** 문제 세대 번호 (R003 2-3 장치 B). ★ Phase 3에서 올린다 */
+  epoch: number;
+}
+
 export interface Room {
   id: string;
   title: string;
@@ -60,6 +87,31 @@ export interface Room {
 
   settings: RoomSettings;
   settingsLocked: boolean;
+
+  /**
+   * 카운트다운 종료 시각. COUNTDOWN 상태에서만 값이 있다 (Q-11).
+   * ★ 서버 시각 기준 절대 시각이다. 클라이언트는 시계 오프셋으로 남은 시간을 그린다.
+   *   "남은 초" 를 보내면 네트워크 지연만큼 어긋나고, 재접속하면 복구할 수 없다.
+   */
+  countdownEndsAt: number | null;
+
+  /**
+   * ★ 게임 시작 처리 중 플래그.
+   *   game.start 와 카운트다운 만료는 둘 다 DB 조회(await)를 포함한다.
+   *   그 사이에 tick 이 다시 돌거나 방장이 버튼을 두 번 누르면 게임이 두 번 시작된다.
+   *   await 앞에서 이 플래그를 동기적으로 세우는 것이 유일한 방어다.
+   */
+  startingGame: boolean;
+
+  /**
+   * 출제 가능 문제 수 (Q-21). 참가자 변동 시점에만 갱신한다.
+   * ★ 주기적으로 다시 계산하지 않는다. DB를 계속 깨워 두지 않기 위함이다.
+   * ★ 게임 시작 직전에는 이 캐시를 믿지 않고 반드시 다시 조회한다.
+   */
+  availableQuestionCount: number | null;
+
+  /** 참가자별 경험률 (Q-12). 참가자 변동 시점에만 갱신한다 */
+  experienceRates: ExperienceRate[] | null;
 
   /** 직전 게임 설정. "다시 하기"에서 복원한다 (Q-31) */
   lastGameSettings: RoomSettings | null;
@@ -84,10 +136,20 @@ export interface Room {
    */
   emptySince: number | null;
 
-  // ── Phase 3에서 채운다. 지금은 항상 null 이다.
-  game: null;
+  /** 진행 중인 게임. LOBBY 에서는 null 이다 */
+  game: ActiveGame | null;
+
+  // ── Phase 3~5에서 채운다. 지금은 항상 null 이다.
   currentQuestion: null;
   paused: null;
+}
+
+/** 참가자 한 명의 경험률 (guide 6절 표기: "1,234문제 중 153문제 (12.4%)") */
+export interface ExperienceRate {
+  accountId: string;
+  experienced: number;
+  /** 분모. 전체 활성 문제 수 */
+  total: number;
 }
 
 export interface ChatEntry {

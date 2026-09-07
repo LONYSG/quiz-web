@@ -20,7 +20,7 @@
 import { RULES } from '@quiz/shared';
 import type { RoomState } from '@quiz/shared';
 import { activeCount } from './registry.js';
-import type { Player, Room } from './types.js';
+import type { ExperienceRate, Player, Room } from './types.js';
 
 export type SnapshotReason = 'join' | 'reconnect' | 'resync';
 
@@ -55,18 +55,26 @@ export interface RoomSnapshot {
     settings: Room['settings'];
     settingsLocked: boolean;
     activeCount: number;
-    /** Phase 2에서 실값을 채운다. 지금은 null */
+    /** 출제 가능 문제 수 (Q-21). 아직 계산되지 않았으면 null */
     availableQuestionCount: number | null;
   };
   players: PlayerView[];
   chat: ChatView[];
+  /** 카운트다운 종료 시각 (Q-11). COUNTDOWN 상태에서만 값이 있다 */
+  countdown: { endsAt: number } | null;
+  /**
+   * 진행 중인 게임.
+   * ★ Phase 2에서는 question 이 항상 null 이면서 game 이 채워진 구간이 존재한다.
+   *   클라이언트는 그 조합을 "문제 출제는 Phase 3" 로 표시한다 (TEMP-P3-02).
+   */
+  game: { gameId: string | null; totalQuestions: number; questionIndex: number } | null;
+  /** 참가자별 경험률 (Q-12) */
+  experienceRates: ExperienceRate[] | null;
   // ── Phase 3~5에서 채운다
-  countdown: null;
   question: null;
   paused: null;
   skip: null;
   result: null;
-  experienceRates: null;
 }
 
 export interface ChatView {
@@ -170,17 +178,29 @@ export function buildSnapshot(
       settings: { ...room.settings },
       settingsLocked: room.settingsLocked,
       activeCount: activeCount(room),
-      availableQuestionCount: null,
+      availableQuestionCount: room.availableQuestionCount,
     },
     players: [...room.players.values()]
       .sort((a, b) => a.joinOrder - b.joinOrder)
       .map((p) => toPlayerView(room, p, now)),
     chat: toChatView(room, viewerAccountId, now),
-    countdown: null,
+    // ★ COUNTDOWN 이 아니면 값을 담지 않는다. 낡은 종료 시각이 남으면
+    //   재접속한 사람 화면에 이미 지나간 카운트다운이 그려진다.
+    countdown:
+      room.state === 'COUNTDOWN' && room.countdownEndsAt !== null
+        ? { endsAt: room.countdownEndsAt }
+        : null,
+    game: room.game
+      ? {
+          gameId: room.game.gameId,
+          totalQuestions: room.game.totalQuestions,
+          questionIndex: room.game.questionIndex,
+        }
+      : null,
+    experienceRates: room.experienceRates ? [...room.experienceRates] : null,
     question: null,
     paused: null,
     skip: null,
     result: null,
-    experienceRates: null,
   };
 }

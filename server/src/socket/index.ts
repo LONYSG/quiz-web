@@ -2,7 +2,8 @@
 // Socket.IO 핸들러
 //
 // Phase 1 범위: 방 생성 / 입장 / 퇴장 / 채팅 / 방장 강제 퇴장 / 시각 동기화
-// Phase 3 이후에 게임 이벤트가 여기에 추가된다.
+// Phase 2 범위: 게임 설정 / 경험률 / 게임 시작 / 카운트다운
+// Phase 3 이후에 문제 출제와 정답 판정이 여기에 추가된다.
 //
 // ★ 모든 인바운드 이벤트는 socket/guard.ts 의 on / onRoom 을 통해 등록한다.
 //   그러면 seq 부여와 세션·방·권한·상태·스키마 검사를 빼먹을 수 없다.
@@ -10,8 +11,11 @@
 
 import { randomUUID } from 'node:crypto';
 import type { Server, Socket } from 'socket.io';
-import { RULES } from '@quiz/shared';
+import { RULES, validateRoomSettings } from '@quiz/shared';
 import { closeRoom, findRoom, insertRoom } from '../db/rooms.js';
+import { cancelCountdown, notEnoughMessage, requestStart } from '../game/start.js';
+import { refreshLobbyInfo } from '../lobby/info.js';
+import { closeOpenGame } from '../rooms/lifecycle.js';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import {
   bindIo,
@@ -80,7 +84,7 @@ export function registerSocketHandlers(io: Server): void {
     socket.emit('server.hello', {
       serverTime: Date.now(),
       bootedAt: BOOTED_AT,
-      phase: 'phase1',
+      phase: 'phase2',
     });
 
     if (!data.session) {
@@ -286,6 +290,91 @@ function registerRoomHandlers(socket: Socket): void {
     },
   );
 
+  // ───────────────────────────────────────────────────────────────────────────
+  // Phase 2 — 로비 설정 / 게임 시작
+  // ───────────────────────────────────────────────────────────────────────────
+
+  // ── 게임 설정 변경 (guide 7절)
+  //   ★ 방장만 바꿀 수 있고, LOBBY 에서만 바꿀 수 있다.
+  //     클라이언트가 읽기 전용으로 그려도 서버가 다시 검사한다 (guide 44절).
+  onRoom<Record<string, unknown>>(
+    socket,
+    'lobby.updateSettings',
+    {
+      requireHost: true,
+      // ★ 상태 검사를 guard 에 맡긴다. COUNTDOWN 이후에는 여기서 걸린다.
+      allowedStates: ['LOBBY'],
+      parse: (raw) => parseObject(raw),
+    },
+    ({ socket: s, room, payload }) => {
+      // ★ settingsLocked 는 상태와 별개 축이다. 둘 다 본다.
+      //   (COUNTDOWN 에서 취소 없이 LOBBY 로 돌아가는 경로가 Phase 4에 생긴다)
+      if (room.settingsLocked) {
+        sendError(s, 'INVALID_STATE', '게임이 시작되어 설정을 바꿀 수 없습니다.');
+        return;
+      }
+
+      // ★ 검증은 shared 의 순수 함수 하나로만 한다. 클라이언트와 같은 함수다.
+      const valid = validateRoomSettings(payload);
+      if (!valid.ok) {
+        sendError(s, 'BAD_REQUEST', valid.message);
+        return;
+      }
+
+      room.settings = { ...valid.settings };
+
+      // ★ 출제 가능 수는 설정값과 무관하다(참가자 집합에만 의존한다).
+      //   그래서 여기서 DB를 다시 조회하지 않고 캐시된 값을 함께 보낸다.
+      //   숫자를 한 글자 고칠 때마다 쿼리가 나가지 않게 하기 위함이다.
+      emitRoom(room, 'lobby.settingsUpdated', {
+        settings: { ...room.settings },
+        settingsLocked: room.settingsLocked,
+        availableQuestionCount: room.availableQuestionCount,
+      });
+    },
+  );
+
+  // ── 게임 시작 (T01 / T02)
+  onRoom(
+    socket,
+    'game.start',
+    { requireHost: true, allowedStates: ['LOBBY'] },
+    async ({ socket: s, room }) => {
+      const result = await requestStart(room);
+      if (result.ok) return;
+      switch (result.reason) {
+        case 'not_enough':
+          sendError(
+            s,
+            'NOT_ENOUGH_QUESTIONS',
+            notEnoughMessage(result.available, result.wanted),
+          );
+          return;
+        case 'settings':
+          sendError(s, 'BAD_REQUEST', result.message);
+          return;
+        case 'no_active':
+          sendError(s, 'INVALID_STATE', '접속 중인 참가자가 없습니다.');
+          return;
+        case 'busy':
+          sendError(s, 'INVALID_STATE', '이미 시작 처리 중입니다.');
+          return;
+        default:
+          sendError(s, 'INVALID_STATE', `현재 상태: ${room.state}`);
+      }
+    },
+  );
+
+  // ── 카운트다운 취소 (T03, Q-11)
+  onRoom(
+    socket,
+    'game.cancelCountdown',
+    { requireHost: true, allowedStates: ['COUNTDOWN'] },
+    ({ socket: s, room }) => {
+      if (!cancelCountdown(room)) sendError(s, 'INVALID_STATE', `현재 상태: ${room.state}`);
+    },
+  );
+
   // ── 방장이 접속 종료자를 강제 퇴장 (Q-15)
   onRoom<{ accountId: string }>(
     socket,
@@ -318,6 +407,7 @@ function registerRoomHandlers(socket: Socket): void {
         players: playerViews(room),
         activeCount: activeCount(room),
       });
+      void refreshLobbyInfo(room);
     },
   );
 }
@@ -402,6 +492,12 @@ function attachToRoom(
       activeCount: activeCount(room),
     });
   }
+
+  // ★ 참가자 집합이 바뀌면 경험률과 출제 가능 수를 다시 계산한다 (Q-12 / Q-21).
+  //   ★ 재접속(rejoined)에서도 부른다. 그 사람 화면에는 값이 없기 때문이다.
+  //     스냅샷에 캐시된 값이 실려 가지만, 그 방의 첫 입장이면 캐시 자체가 없다.
+  //   ★ 주기 갱신이 아니라 이벤트 갱신이다. 타이머로 DB를 깨우지 않는다.
+  void refreshLobbyInfo(room);
 }
 
 function leaveRoom(socket: Socket, roomId: string, accountId: string): void {
@@ -417,6 +513,8 @@ function leaveRoom(socket: Socket, roomId: string, accountId: string): void {
 
   if (room.players.size === 0) {
     // 아무도 남지 않았으면 즉시 정리한다. tick 의 10분 대기를 기다릴 이유가 없다.
+    // ★ 열린 게임 레코드를 먼저 닫는다. 방을 지운 뒤에는 gameId 를 알 수 없다.
+    closeOpenGame(roomId, 'abandoned');
     unregisterRoom(roomId);
     void closeRoom(roomId).catch((err) =>
       console.error(`[room] ${roomId} closed_at 기록 실패:`, (err as Error).message),
@@ -431,4 +529,6 @@ function leaveRoom(socket: Socket, roomId: string, accountId: string): void {
     players: playerViews(room),
     activeCount: activeCount(room),
   });
+  // 참가자가 줄면 출제 가능 수가 줄어들 수 있다 (전원 경험 문제가 늘어난다)
+  void refreshLobbyInfo(room);
 }

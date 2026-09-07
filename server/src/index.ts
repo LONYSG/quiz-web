@@ -2,7 +2,8 @@
 // 게임 서버 진입점
 //
 // Phase 1 범위: 계정 / 세션 / 방 / 방장 / 메모리 방 관리 구조 / 전역 tick
-// 게임 로직(정답 판정, 상태 머신, 마스킹)은 Phase 3 이후다.
+// Phase 2 범위: 로비 설정 / 경험률 / 카운트다운 / 게임 시작
+// 문제 출제와 정답 판정은 Phase 3 이후다.
 // 현재 구현 상태는 docs/05-STATUS.md 를 본다.
 // =============================================================================
 
@@ -47,7 +48,7 @@ async function main(): Promise<void> {
   app.get('/healthz', (_req, res) => {
     res.json({
       ok: true,
-      phase: 'phase1',
+      phase: 'phase2',
       serverTime: Date.now(),
       bootedAt: BOOTED_AT,
       uptimeMs: Date.now() - BOOTED_AT,
@@ -97,7 +98,7 @@ async function main(): Promise<void> {
     console.log('  ┌──────────────────────────────────────────────┐');
     console.log(`  │  퀴즈 서버 기동  http://localhost:${String(config.port).padEnd(5)}      │`);
     console.log('  └──────────────────────────────────────────────┘');
-    console.log('  Phase 1 (계정 / 세션 / 방).  게임 로직은 Phase 3 이후.');
+    console.log('  Phase 2 (로비 설정 / 경험률 / 카운트다운).  문제 출제는 Phase 3 이후.');
     console.log('  Socket.IO  pingInterval=15000ms pingTimeout=10000ms');
     console.log('  외부 공개는  npm run dev:tunnel  로 터널을 띄우세요.');
     console.log('');

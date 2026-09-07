@@ -21,8 +21,10 @@
 
 import { RULES } from '@quiz/shared';
 import { closeRoom } from './db/rooms.js';
+import { startFromCountdown } from './game/start.js';
 import { emitRoom } from './rooms/emit.js';
 import { activeCount, allRooms, nextHostCandidate, unregisterRoom } from './rooms/registry.js';
+import { closeOpenGame } from './rooms/lifecycle.js';
 import { toPlayerView } from './rooms/snapshot.js';
 import type { Room } from './rooms/types.js';
 
@@ -50,8 +52,9 @@ function tick(): void {
 
   for (const room of allRooms()) {
     try {
-      // Phase 3~5에서 여기 앞쪽에 게임 타이머 검사가 들어온다.
       // 순서가 중요하다: 게임 상태 전이 → 방장 이전 → 표시 갱신 → 방 삭제
+      checkCountdown(room, now);
+      // Phase 3~5에서 여기에 더 들어온다 (문제 종료 / 힌트 / 다음 문제 / PAUSED 30분).
       checkHostTransfer(room, now);
       checkDisconnectDisplay(room, now);
       if (shouldDeleteRoom(room, now)) toDelete.push(room.id);
@@ -62,6 +65,9 @@ function tick(): void {
   }
 
   for (const roomId of toDelete) {
+    // ★ 열린 게임 레코드를 먼저 닫는다. 방을 지운 뒤에는 gameId 를 알 수 없다.
+    //   닫지 않으면 다음 기동에서 부팅 정리 절차가 server_restart 로 잘못 기록한다.
+    closeOpenGame(roomId, 'abandoned');
     unregisterRoom(roomId);
     lastDisplayState.delete(roomId);
     // ★ DB 쓰기는 기다리지 않는다. 실패해도 부팅 정리 절차가 다음 기동에서 닫는다.
@@ -70,6 +76,38 @@ function tick(): void {
     );
     console.log(`[tick] 방 삭제: ${roomId} (활성 0명 ${RULES.ROOM_IDLE_DELETE_MS / 60000}분 경과)`);
   }
+}
+
+/**
+ * 카운트다운 만료 (T04, Q-11).
+ *
+ * ★ 방마다 setTimeout 을 두지 않는 이유가 여기서 드러난다.
+ *   카운트다운은 취소될 수 있고(T03), 활성 0명이면 멈춰야 하고, 방이 사라질 수도 있다.
+ *   타이머 핸들로 관리하면 취소·정지·해제를 매 경로에서 빼먹지 않아야 하지만,
+ *   전역 tick 은 "지금 상태" 만 보면 되므로 빼먹을 것이 없다.
+ *
+ * ★ await 하지 않는다. startFromCountdown 이 동기적으로 상태를 전이시키고
+ *   DB 기록만 뒤에서 처리한다. 여기서 기다리면 tick 이 밀린다.
+ */
+function checkCountdown(room: Room, now: number): void {
+  if (room.state !== 'COUNTDOWN' || room.countdownEndsAt === null) return;
+
+  // ★★ Phase 5 자리 — T20 (COUNTDOWN → PAUSED)
+  //   확정 규칙은 "활성 0명이 되면 즉시 PAUSED, remainingMs = countdownEndsAt − now" 다
+  //   (docs/04-PROTOCOL.md T20, Q-30 개정).
+  //   ★ Phase 2에서는 PAUSED 를 구현하지 않는다. 이유는 07-DECISIONS.md D-023 에 있다.
+  //     요약: PAUSED 는 30분 초과 시 GAME_RESULT 로 가야 하는데 그 상태가 아직 없고,
+  //     PAUSED 중에는 방 삭제 타이머가 멈추므로 어중간하게 넣으면 방이 영구히 남는다.
+  //   ★ 그래서 지금은 T04 의 확정 조건("활성 ≥ 1")만 지켜 만료를 보류한다.
+  //     사람이 돌아오면 그때 시작된다. remainingMs 재계산이 없다는 점만 최종 규칙과 다르다.
+  //   ★ Phase 5 에서 이 자리를 PAUSED 전이로 교체한다.
+  if (activeCount(room) === 0) return;
+
+  if (now < room.countdownEndsAt) return;
+
+  void startFromCountdown(room).catch((err) =>
+    console.error(`[tick] 방 ${room.id} 카운트다운 시작 처리 실패:`, (err as Error).message),
+  );
 }
 
 /**
