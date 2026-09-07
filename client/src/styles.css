@@ -1,0 +1,171 @@
+/* =============================================================================
+   기본 스타일 — 다크 테마 단일 (Q-34 확정)
+   색상값은 전부 CSS 변수로 분리한다. 나중에 라이트 테마를 추가하려면 변수만 덮으면 된다.
+   플레이어 색상 10종도 여기에 둔다. 서로 충분히 구분되어야 하고(guide 35절),
+   색약을 고려해 명도 차이도 함께 확보한다.
+   ============================================================================= */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0f1115;
+  --bg-card: #171a21;
+  --bg-elev: #1f232c;
+  --border: #2a2f3a;
+  --text: #e7eaf0;
+  --text-dim: #98a0b0;
+  --accent: #5aa9ff;
+  --ok: #4ade80;
+  --bad: #f87171;
+
+  /* 플레이어 색상 10종 (guide 35절). 닉네임 텍스트에 직접 적용한다. */
+  --p0: #ff8a80;
+  --p1: #ffd180;
+  --p2: #ffff8d;
+  --p3: #ccff90;
+  --p4: #a7ffeb;
+  --p5: #80d8ff;
+  --p6: #b388ff;
+  --p7: #ff80ab;
+  --p8: #f5b7a0;
+  --p9: #c5e1a5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+h1 {
+  font-size: 1.35rem;
+  margin: 0 0 4px;
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 0 0 12px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.sub {
+  color: var(--text-dim);
+  margin: 0 0 24px;
+  font-size: 0.9rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: minmax(120px, auto) 1fr;
+  gap: 6px 16px;
+  margin: 0;
+}
+
+dt {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+dd {
+  margin: 0;
+}
+
+.mono {
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.big {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.ok {
+  color: var(--ok);
+}
+
+.bad {
+  color: var(--bad);
+}
+
+.note {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  margin: 12px 0 0;
+}
+
+button {
+  margin-top: 14px;
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+tr.chosen td {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* 모바일 세로 우선 (guide 41절) */
+@media (max-width: 480px) {
+  dl {
+    grid-template-columns: 1fr;
+    gap: 2px 0;
+  }
+  dt {
+    margin-top: 8px;
+  }
+}
