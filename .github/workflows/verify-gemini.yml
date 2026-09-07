@@ -1,0 +1,51 @@
+# =============================================================================
+# Gemini API 키 검증 (수동 실행 전용)
+#
+# 목적: GitHub Secrets 에 등록된 GEMINI_API_KEY 가 유효한지 확인한다.
+#       로컬 .env 와 Secrets 에 서로 다른 값이 들어갔을 수 있어 양쪽을 각각 확인해야 한다.
+#
+# ★ 정기 실행하지 않는다. schedule 트리거를 두지 않는다.
+#   무료 할당량을 확인 목적으로 소모할 이유가 없다.
+#
+# ★ 비밀값 취급
+#   · 키를 로그에 출력하지 않는다. GitHub의 자동 마스킹에 의존하지 않고
+#     스크립트가 값 자체를 절대 찍지 않도록 만들어져 있다 (scripts/verify-gemini.mjs)
+#   · 키는 env 로만 주입한다. 커맨드라인 인자로 넘기지 않는다
+#     (인자는 프로세스 목록에 노출될 수 있다)
+# =============================================================================
+
+name: verify-gemini
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Secrets 등록 여부 확인
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::GEMINI_API_KEY Secret 이 등록되어 있지 않습니다."
+            exit 1
+          fi
+          # ★ 길이만 출력한다. 값은 출력하지 않는다.
+          echo "Secret 확인: 설정됨 (길이 ${#GEMINI_API_KEY})"
+
+      - name: Gemini API 최소 호출
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/verify-gemini.mjs --minimal
