@@ -169,3 +169,173 @@ tr.chosen td {
     margin-top: 8px;
   }
 }
+
+/* =============================================================================
+   Phase 1 — 인증 / 로비
+   ============================================================================= */
+
+.wrap.narrow { max-width: 480px; }
+
+.notice {
+  background: #1d2836;
+  border: 1px solid #2f4a6b;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 0 0 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.form-error {
+  color: var(--bad);
+  font-size: 0.88rem;
+  margin: 10px 0 0;
+}
+
+.tabs { display: flex; gap: 6px; margin-bottom: 16px; }
+
+.tab {
+  flex: 1;
+  margin: 0;
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-dim);
+}
+
+.tab.active {
+  background: var(--bg-elev);
+  border-color: var(--border);
+  color: var(--text);
+  font-weight: 600;
+}
+
+form label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+form input,
+.invite-row input,
+.chat-input input {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font: inherit;
+  padding: 8px 10px;
+}
+
+form input:focus,
+.invite-row input:focus,
+.chat-input input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+form button[type='submit'] { width: 100%; }
+
+.ghost { background: transparent; }
+
+.tiny { padding: 3px 8px; font-size: 0.78rem; margin-top: 0; }
+
+/* 로비 */
+.lobby-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.lobby-head h1 { margin: 0; }
+.lobby-head .sub { margin: 2px 0 0; }
+.lobby-head button { margin-top: 0; }
+
+.dim { color: var(--text-dim); }
+
+.invite-row { display: flex; gap: 8px; align-items: stretch; }
+.invite-row input { margin-top: 0; }
+.invite-row button { margin-top: 0; white-space: nowrap; }
+
+/* 참가자 목록 */
+.players { list-style: none; margin: 0; padding: 0; }
+
+.players li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.players li:last-child { border-bottom: none; }
+.players li.offline { opacity: 0.5; }
+
+/* 색약을 고려해 색상만으로 구분하지 않고 순번을 함께 표시한다 (Q-34) */
+.seat {
+  width: 20px;
+  text-align: right;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ★ 닉네임 자체를 플레이어 색상으로 표시한다 (guide 35절) */
+.nick { font-weight: 600; }
+
+.badge {
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+.badge.me { border-color: var(--accent); color: var(--accent); }
+.badge.off { border-color: #4a3030; color: var(--bad); }
+
+/* 채팅 */
+.chat-card { display: flex; flex-direction: column; }
+
+.chat-log {
+  height: 240px;
+  overflow-y: auto;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+}
+
+.chat-line, .chat-system { margin: 0 0 4px; font-size: 0.9rem; }
+.chat-line .nick { margin-right: 6px; }
+.chat-text { word-break: break-word; }
+.chat-system { color: var(--text-dim); font-size: 0.82rem; }
+
+.chat-input { display: flex; gap: 8px; }
+.chat-input input { margin-top: 0; }
+.chat-input button { margin-top: 0; }
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+}
+
+.foot button { margin-top: 0; }
+
+@media (max-width: 480px) {
+  .chat-log { height: 200px; }
+  .foot { flex-direction: column; align-items: flex-start; }
+}

@@ -1,142 +1,252 @@
 // =============================================================================
-// Phase 0 진단 화면
+// 앱 루트
 //
-// 목적은 예쁜 UI가 아니라 R003 2-4 타이머 설계의 실증이다.
-// 여기서 오프셋과 RTT가 이상하면 30초 타이머가 전부 어긋난다.
+// 화면 흐름
+//   미로그인 → AuthScreen
+//   로그인 + 방 없음 → 방 만들기 / 초대 링크 안내
+//   로그인 + 방 있음 → Lobby
 //
-// 표시하는 것
-//   · 소켓 연결 상태
-//   · 서버 추정 시각 / 로컬 시각 / 오프셋 / RTT / 최근 측정 이력
-//   · ★ window.location.origin  — 초대 링크 생성 방식의 실증 (R004 0장)
-//     초대 링크는 서버 환경 변수가 아니라 방장 브라우저의 origin으로 만든다.
-//     터널 URL이 바뀌어도 방장 브라우저는 이미 새 URL에 있으므로 항상 올바른 값을 얻는다.
+// ★ 초대 링크(/r/<roomId>)로 들어온 경우
+//   guide 4절: 미로그인이면 로그인 후 해당 방으로 진입하고, 로그인 상태면 즉시 진입한다.
+//   → 경로에서 roomId를 뽑아 두고 인증이 되면 자동으로 join 한다.
 // =============================================================================
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { io, type Socket } from 'socket.io-client';
+import AuthScreen from './AuthScreen.js';
+import Lobby from './Lobby.js';
+import { errorMessage, fetchMe, logout, type Account } from './api.js';
+import { useRoom } from './useRoom.js';
 import { useServerClock } from './useServerClock.js';
 
-function useSocket(): { socket: Socket | null; connected: boolean } {
-  const [socket, setSocket] = useState<Socket | null>(null);
-  const [connected, setConnected] = useState(false);
-
-  useEffect(() => {
-    // ★ 접속 주소를 하드코딩하지 않는다. 같은 오리진에 붙는다.
-    //   개발 중에는 Vite 프록시가, 배포 시에는 같은 Node 서버가 받는다.
-    const s = io({ transports: ['websocket', 'polling'] });
-    setSocket(s);
-    const on = () => setConnected(true);
-    const off = () => setConnected(false);
-    s.on('connect', on);
-    s.on('disconnect', off);
-    return () => {
-      s.off('connect', on);
-      s.off('disconnect', off);
-      s.close();
-    };
-  }, []);
-
-  return { socket, connected };
+/** 경로에서 초대받은 방 ID를 뽑는다. /r/<roomId> */
+function roomIdFromPath(): string | null {
+  const match = window.location.pathname.match(/^\/r\/([A-Za-z0-9_-]+)\/?$/);
+  return match ? match[1]! : null;
 }
 
 export default function App() {
-  const { socket, connected } = useSocket();
-  const clock = useServerClock(socket);
-  const [, forceTick] = useState(0);
+  const [account, setAccount] = useState<Account | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [socket, setSocket] = useState<Socket | null>(null);
+  const [pendingRoomId, setPendingRoomId] = useState<string | null>(roomIdFromPath());
+  const [title, setTitle] = useState('');
+  const [joinId, setJoinId] = useState('');
+  const [notice, setNotice] = useState<string | null>(null);
 
-  // 화면의 시각 표시를 100ms마다 갱신한다. 서버 tick 주기와 같은 값을 쓴다.
+  const room = useRoom(socket);
+  const clock = useServerClock(socket);
+
+  // ── 세션 확인
   useEffect(() => {
-    const id = setInterval(() => forceTick((n) => n + 1), 100);
-    return () => clearInterval(id);
+    let alive = true;
+    void (async () => {
+      const me = await fetchMe();
+      if (!alive) return;
+      if (me) {
+        setAccount(me.account);
+        // 서버가 이미 방에 소속되어 있다고 알려주면 그 방을 우선한다
+        if (me.currentRoomId) setPendingRoomId(me.currentRoomId);
+      }
+      setLoading(false);
+    })();
+    return () => {
+      alive = false;
+    };
   }, []);
 
-  const origin = useMemo(() => window.location.origin, []);
-  const localNow = Date.now();
-  const serverNow = clock.serverNow();
+  // ── 인증되면 소켓을 연다
+  useEffect(() => {
+    if (!account) {
+      setSocket(null);
+      return undefined;
+    }
+    // ★ 접속 주소를 하드코딩하지 않는다. 같은 오리진에 붙는다.
+    const s = io({ transports: ['websocket', 'polling'] });
+    setSocket(s);
+    return () => {
+      s.close();
+    };
+  }, [account]);
 
-  const fmt = (ms: number) =>
-    new Date(ms).toLocaleTimeString('ko-KR', { hour12: false }) +
-    '.' +
-    String(ms % 1000).padStart(3, '0');
+  // ── 소켓이 열리면 대기 중인 방으로 들어간다
+  useEffect(() => {
+    if (!socket || !pendingRoomId) return undefined;
+    const join = () => socket.emit('room.join', { roomId: pendingRoomId });
+    if (socket.connected) join();
+    socket.on('connect', join);
+
+    const onCreated = () => setPendingRoomId(null);
+    socket.on('room.created', onCreated);
+    return () => {
+      socket.off('connect', join);
+      socket.off('room.created', onCreated);
+    };
+  }, [socket, pendingRoomId]);
+
+  // ── 입장에 성공하면 URL을 방 주소로 맞춘다 (새로고침해도 같은 방으로 돌아온다)
+  useEffect(() => {
+    if (!room.snapshot) return;
+    const want = `/r/${room.snapshot.room.id}`;
+    if (window.location.pathname !== want) {
+      window.history.replaceState(null, '', want);
+    }
+    setPendingRoomId(null);
+  }, [room.snapshot]);
+
+  // ── 방 관련 에러 처리
+  useEffect(() => {
+    if (!room.error) return;
+    setNotice(room.error.message);
+    // 들어갈 수 없는 방이면 대기 상태를 풀고 URL도 되돌린다
+    if (['ROOM_NOT_FOUND', 'ROOM_CLOSED', 'ROOM_FULL'].includes(room.error.code)) {
+      setPendingRoomId(null);
+      if (window.location.pathname !== '/') window.history.replaceState(null, '', '/');
+    }
+  }, [room.error]);
+
+  const createRoom = useCallback(() => {
+    if (!socket) return;
+    const trimmed = title.trim();
+    if (!trimmed) {
+      setNotice('방 제목을 입력해 주세요.');
+      return;
+    }
+    socket.emit('room.create', { title: trimmed });
+  }, [socket, title]);
+
+  const joinRoom = useCallback(() => {
+    if (!socket) return;
+    const trimmed = joinId.trim();
+    if (!trimmed) return;
+    socket.emit('room.join', { roomId: trimmed });
+  }, [socket, joinId]);
+
+  const leaveRoom = useCallback(() => {
+    socket?.emit('room.leave', {});
+    window.history.replaceState(null, '', '/');
+  }, [socket]);
+
+  const doLogout = useCallback(async () => {
+    try {
+      await logout();
+    } catch (err) {
+      setNotice(errorMessage(err));
+    }
+    setAccount(null);
+    window.history.replaceState(null, '', '/');
+  }, []);
+
+  const clockLine = useMemo(() => {
+    if (clock.offset === null) return '시각 동기화 측정 중…';
+    return `서버 시각 오프셋 ${clock.offset >= 0 ? '+' : ''}${clock.offset}ms / RTT ${clock.rtt}ms`;
+  }, [clock.offset, clock.rtt]);
+
+  if (loading) {
+    return (
+      <main className="wrap narrow">
+        <p className="note">불러오는 중…</p>
+      </main>
+    );
+  }
+
+  if (room.terminated) {
+    return (
+      <main className="wrap narrow">
+        <h1>연결이 종료되었습니다</h1>
+        <p className="notice">
+          다른 곳에서 접속하여 이 연결이 종료되었습니다. 한 계정은 한 곳에서만 접속할 수
+          있습니다.
+        </p>
+        <button type="button" onClick={() => window.location.reload()}>
+          다시 접속
+        </button>
+      </main>
+    );
+  }
+
+  if (!account) {
+    return <AuthScreen onAuthed={setAccount} pendingRoomId={pendingRoomId} />;
+  }
+
+  if (room.snapshot && socket) {
+    return (
+      <main className="wrap">
+        <Lobby socket={socket} snapshot={room.snapshot} chat={room.chat} onLeave={leaveRoom} />
+        <footer className="foot">
+          <span className="dim mono">{clockLine}</span>
+          <button type="button" className="ghost tiny" onClick={doLogout}>
+            로그아웃
+          </button>
+        </footer>
+      </main>
+    );
+  }
 
   return (
-    <main className="wrap">
-      <h1>퀴즈 서버 — Phase 0 진단</h1>
-      <p className="sub">
-        게임 로직은 아직 없습니다. 이 화면은 R003 2-4의 시계 동기화 설계가 실제로 동작하는지
-        확인하기 위한 것입니다.
-      </p>
-
-      <section className="card">
-        <h2>연결</h2>
-        <dl>
-          <dt>소켓</dt>
-          <dd className={connected ? 'ok' : 'bad'}>{connected ? '연결됨' : '끊김'}</dd>
-          <dt>접속 주소 (origin)</dt>
-          <dd className="mono">{origin}</dd>
-        </dl>
-        <p className="note">
-          초대 링크는 서버 설정이 아니라 이 origin 값으로 만듭니다. 터널 URL이 바뀌어도
-          방장 브라우저는 항상 올바른 주소를 갖습니다.
-        </p>
-      </section>
-
-      <section className="card">
-        <h2>서버 시계 동기화</h2>
-        <dl>
-          <dt>서버 추정 시각</dt>
-          <dd className="mono big">{fmt(serverNow)}</dd>
-          <dt>내 브라우저 시각</dt>
-          <dd className="mono">{fmt(localNow)}</dd>
-          <dt>오프셋 (서버 − 로컬)</dt>
-          <dd className="mono big">
-            {clock.offset === null ? '측정 중…' : `${clock.offset >= 0 ? '+' : ''}${clock.offset} ms`}
-          </dd>
-          <dt>채택된 RTT</dt>
-          <dd className="mono">{clock.rtt === null ? '측정 중…' : `${clock.rtt} ms`}</dd>
-        </dl>
-        <button type="button" onClick={clock.measure} disabled={!connected}>
-          지금 다시 측정
+    <main className="wrap narrow">
+      <header className="lobby-head">
+        <div>
+          <h1>상식 퀴즈</h1>
+          <p className="sub">
+            <span className="nick">{account.nickname}</span> 님으로 접속 중
+          </p>
+        </div>
+        <button type="button" className="ghost" onClick={doLogout}>
+          로그아웃
         </button>
+      </header>
+
+      {notice && (
+        <p className="notice" onClick={() => setNotice(null)}>
+          {notice}
+        </p>
+      )}
+
+      <section className="card">
+        <h2>방 만들기</h2>
+        <div className="invite-row">
+          <input
+            value={title}
+            maxLength={30}
+            placeholder="방 제목 (1~30자)"
+            onChange={(e) => setTitle(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.nativeEvent.isComposing) createRoom();
+            }}
+          />
+          <button type="button" onClick={createRoom} disabled={!socket}>
+            만들기
+          </button>
+        </div>
+        <p className="note">한 사람이 동시에 가질 수 있는 방은 하나입니다.</p>
       </section>
 
       <section className="card">
-        <h2>최근 측정 이력</h2>
+        <h2>초대 링크로 입장</h2>
+        <div className="invite-row">
+          <input
+            value={joinId}
+            placeholder="방 ID"
+            className="mono"
+            onChange={(e) => setJoinId(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.nativeEvent.isComposing) joinRoom();
+            }}
+          />
+          <button type="button" onClick={joinRoom} disabled={!socket}>
+            입장
+          </button>
+        </div>
         <p className="note">
-          최근 {5}회 중 RTT가 가장 작은 측정의 오프셋을 채택합니다(굵게 표시). 평균이 아닙니다.
+          보통은 받은 링크를 그대로 열면 됩니다. 이 입력창은 링크가 깨졌을 때를 위한 것입니다.
         </p>
-        <table>
-          <thead>
-            <tr>
-              <th>시각</th>
-              <th>RTT</th>
-              <th>오프셋</th>
-            </tr>
-          </thead>
-          <tbody>
-            {clock.samples.length === 0 && (
-              <tr>
-                <td colSpan={3} className="note">
-                  아직 측정값이 없습니다.
-                </td>
-              </tr>
-            )}
-            {clock.samples.map((s) => {
-              const chosen = clock.rtt !== null && s.rtt === clock.rtt;
-              return (
-                <tr key={s.at} className={chosen ? 'chosen' : undefined}>
-                  <td className="mono">{fmt(s.at)}</td>
-                  <td className="mono">{s.rtt} ms</td>
-                  <td className="mono">
-                    {s.offset >= 0 ? '+' : ''}
-                    {s.offset} ms
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
       </section>
+
+      <footer className="foot">
+        <span className="dim mono">{clockLine}</span>
+        <span className="dim mono">{window.location.origin}</span>
+      </footer>
     </main>
   );
 }
