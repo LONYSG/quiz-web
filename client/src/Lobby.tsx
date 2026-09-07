@@ -2,11 +2,18 @@
 // 로비 화면 (guide 6절)
 //
 // Phase 1 범위: 방 제목 / 참가자 목록 / 인원 / 방장 표시 / 초대 링크 복사 / 채팅
-// ★ 게임 설정 UI와 경험률 표시는 Phase 2다. 지금은 만들지 않는다.
+// Phase 2 범위: 게임 설정 / 경험률 / 게임 시작 / 카운트다운
+// ★ 문제 표시와 정답 판정은 Phase 3다.
+//
+// ★ 새로 만드는 버튼과 배지는 styles.css 의 라벨 규칙을 그대로 받는다 (A-2 / D-022).
+//   개별 요소에 white-space 를 다시 쓰지 않는다.
 // =============================================================================
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
+import { formatExperienceRate } from '@quiz/shared';
+import Countdown from './Countdown.js';
+import GameSettings from './GameSettings.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
 
 interface Props {
@@ -14,9 +21,11 @@ interface Props {
   snapshot: RoomSnapshot;
   chat: ChatView[];
   onLeave: () => void;
+  /** 서버 시각 추정치. 카운트다운 표시에 쓴다 */
+  serverNow: () => number;
 }
 
-export default function Lobby({ socket, snapshot, chat, onLeave }: Props) {
+export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Props) {
   const [draft, setDraft] = useState('');
   const [copied, setCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -64,6 +73,17 @@ export default function Lobby({ socket, snapshot, chat, onLeave }: Props) {
 
   const me = snapshot.players.find((p) => p.accountId === snapshot.me.accountId);
 
+  /**
+   * 경험률 문구.
+   * ★ 아직 값이 오지 않았으면 "—" 를 보여 준다. 0% 로 단정하지 않는다.
+   *   "경험 기록이 없다" 와 "아직 모른다" 는 다르다.
+   */
+  const rateText = (accountId: string): string => {
+    const rate = snapshot.experienceRates?.find((r) => r.accountId === accountId);
+    if (!rate) return '경험률 —';
+    return formatExperienceRate(rate.experienced, rate.total);
+  };
+
   return (
     <div className="lobby">
       <header className="lobby-head">
@@ -82,7 +102,7 @@ export default function Lobby({ socket, snapshot, chat, onLeave }: Props) {
 
       <section className="card">
         <h2>초대 링크</h2>
-        <div className="invite-row">
+        <div className="field-row">
           <input id="invite-url" className="mono" readOnly value={inviteUrl} />
           <button type="button" onClick={copyInvite}>
             {copied ? '복사됨' : '복사'}
@@ -120,25 +140,84 @@ export default function Lobby({ socket, snapshot, chat, onLeave }: Props) {
                   내보내기
                 </button>
               )}
+              {/* ★ 경험률 (Q-12). 백분율과 절대 개수를 함께 보여 준다.
+                  ★ 표기 형식은 shared 의 함수 하나로만 만든다. 분모가 0이어도 NaN 이 되지 않는다. */}
+              <span className="rate dim mono">{rateText(p.accountId)}</span>
             </li>
           ))}
         </ol>
         <p className="note">
           접속이 끊긴 사람은 5초 뒤에 &quot;접속 종료&quot;로 표시됩니다. 새로고침으로 표시가
           깜빡이지 않게 하기 위한 것입니다.
+          <br />
+          숫자는 문제 경험률입니다. 이미 풀어 본 문제는 그 사람의 정답 판정 대상에서
+          빠집니다(Phase 6). ★ 경험률이 높다는 이유로 게임 시작을 막지는 않습니다.
         </p>
       </section>
 
-      <section className="card">
-        <h2>게임 설정</h2>
-        <p className="note">
-          문제 수와 시작 방식 설정, 참가자 경험률 표시는 Phase 2에서 만듭니다.
-          현재 저장된 값: 문제 {snapshot.room.settings.questionCount}개 ·{' '}
-          {snapshot.room.settings.startMode === 'instant'
-            ? '즉시 시작'
-            : `${snapshot.room.settings.countdownSec}초 카운트다운`}
-        </p>
-      </section>
+      <GameSettings
+        socket={socket}
+        settings={snapshot.room.settings}
+        settingsLocked={snapshot.room.settingsLocked}
+        availableQuestionCount={snapshot.room.availableQuestionCount}
+        isHost={snapshot.me.isHost}
+      />
+
+      {/* ── 카운트다운 (COUNTDOWN 상태) */}
+      {snapshot.countdown && (
+        <Countdown
+          socket={socket}
+          endsAt={snapshot.countdown.endsAt}
+          serverNow={serverNow}
+          isHost={snapshot.me.isHost}
+        />
+      )}
+
+      {/* ── 게임 시작 버튼 (LOBBY + 방장) */}
+      {snapshot.room.state === 'LOBBY' && (
+        <section className="card">
+          <h2>게임 시작</h2>
+          {snapshot.me.isHost ? (
+            <>
+              <button type="button" onClick={() => socket.emit('game.start', {})}>
+                게임 시작
+              </button>
+              <p className="note">
+                {snapshot.room.settings.startMode === 'instant'
+                  ? '누르면 곧바로 시작합니다.'
+                  : `누르면 ${snapshot.room.settings.countdownSec}초 카운트다운이 시작됩니다. 카운트다운은 취소할 수 있습니다.`}
+              </p>
+            </>
+          ) : (
+            <p className="note">방장이 게임을 시작할 때까지 기다려 주세요.</p>
+          )}
+        </section>
+      )}
+
+      {/* ★★ TEMP-P3-02 — Phase 3에서 제거할 임시 화면.
+          Phase 2는 "게임이 시작되기 직전" 까지만 구현한다.
+          QUESTION_ACTIVE 인데 문제가 없는 상태를 그대로 보여 주는 것이 정직하다.
+          ★ Phase 3에서 이 블록을 문제 화면으로 교체한다. */}
+      {snapshot.game && (
+        <section className="card temp-panel">
+          <h2>게임 진행</h2>
+          <p className="big">게임이 시작되었습니다 — 문제 {snapshot.game.totalQuestions}개</p>
+          <p className="note">
+            ★ 여기에 문제가 표시되는 것은 <strong>Phase 3</strong> 입니다. 아직 구현되지
+            않았습니다. 지금은 게임 레코드가 만들어지고 상태가 QUESTION_ACTIVE 로 바뀌는
+            것까지만 동작합니다.
+            {snapshot.game.gameId && (
+              <>
+                <br />
+                games.id = <span className="mono">{snapshot.game.gameId}</span>
+              </>
+            )}
+            <br />
+            ★ Phase 2에서는 로비로 돌아가는 경로가 없습니다(결과 화면이 Phase 4). 방을 나간 뒤
+            다시 만들어 주세요.
+          </p>
+        </section>
+      )}
 
       <section className="card chat-card">
         <h2>채팅</h2>
@@ -166,7 +245,7 @@ export default function Lobby({ socket, snapshot, chat, onLeave }: Props) {
             ),
           )}
         </div>
-        <div className="chat-input">
+        <div className="field-row">
           <input
             ref={inputRef}
             value={draft}

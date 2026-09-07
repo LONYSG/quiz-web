@@ -34,6 +34,18 @@ export interface ChatView {
   system: boolean;
 }
 
+export interface ExperienceRate {
+  accountId: string;
+  experienced: number;
+  total: number;
+}
+
+export interface RoomSettings {
+  questionCount: number;
+  startMode: 'instant' | 'countdown';
+  countdownSec: number;
+}
+
 export interface RoomSnapshot {
   reason: 'join' | 'reconnect' | 'resync';
   serverTime: number;
@@ -45,13 +57,18 @@ export interface RoomSnapshot {
     hostAccountId: string;
     state: string;
     maxPlayers: number;
-    settings: { questionCount: number; startMode: string; countdownSec: number };
+    settings: RoomSettings;
     settingsLocked: boolean;
     activeCount: number;
     availableQuestionCount: number | null;
   };
   players: PlayerView[];
   chat: ChatView[];
+  /** 카운트다운 종료 시각 (서버 시각 기준 절대 시각). COUNTDOWN 에서만 값이 있다 */
+  countdown: { endsAt: number } | null;
+  /** 진행 중인 게임. ★ Phase 2에서는 문제가 없는 상태로 채워진다 (TEMP-P3-02) */
+  game: { gameId: string | null; totalQuestions: number; questionIndex: number } | null;
+  experienceRates: ExperienceRate[] | null;
 }
 
 export interface SocketErrorPayload {
@@ -148,6 +165,98 @@ export function useRoom(socket: Socket | null): RoomHook {
       setChat([]);
     };
 
+    // ── Phase 2 이벤트
+    //   ★ 클라이언트는 서버가 보낸 값을 그대로 반영한다.
+    //     설정값을 스스로 계산하거나 상태를 스스로 전이시키지 않는다 (guide 44·45절).
+
+    const onSettingsUpdated = (payload: {
+      settings: RoomSettings;
+      settingsLocked?: boolean;
+      availableQuestionCount: number | null;
+    }) => {
+      setSnapshot((prev) =>
+        prev
+          ? {
+              ...prev,
+              room: {
+                ...prev.room,
+                settings: payload.settings,
+                settingsLocked: payload.settingsLocked ?? prev.room.settingsLocked,
+                availableQuestionCount: payload.availableQuestionCount,
+              },
+            }
+          : prev,
+      );
+    };
+
+    const onExperienceRates = (payload: { rates: ExperienceRate[] }) => {
+      setSnapshot((prev) => (prev ? { ...prev, experienceRates: payload.rates } : prev));
+    };
+
+    const onCountdownStarted = (payload: {
+      endsAt: number;
+      state: string;
+      settingsLocked: boolean;
+      settings: RoomSettings;
+    }) => {
+      setSnapshot((prev) =>
+        prev
+          ? {
+              ...prev,
+              room: {
+                ...prev.room,
+                state: payload.state,
+                settings: payload.settings,
+                settingsLocked: payload.settingsLocked,
+              },
+              countdown: { endsAt: payload.endsAt },
+            }
+          : prev,
+      );
+    };
+
+    const onCountdownCancelled = (payload: {
+      state: string;
+      settingsLocked: boolean;
+      settings: RoomSettings;
+    }) => {
+      setSnapshot((prev) =>
+        prev
+          ? {
+              ...prev,
+              room: {
+                ...prev.room,
+                state: payload.state,
+                settings: payload.settings,
+                settingsLocked: payload.settingsLocked,
+              },
+              countdown: null,
+            }
+          : prev,
+      );
+    };
+
+    const onGameStarted = (payload: {
+      gameId: string | null;
+      totalQuestions: number;
+      state: string;
+    }) => {
+      setSnapshot((prev) =>
+        prev
+          ? {
+              ...prev,
+              room: { ...prev.room, state: payload.state, settingsLocked: true },
+              countdown: null,
+              game: {
+                gameId: payload.gameId,
+                totalQuestions: payload.totalQuestions,
+                questionIndex: 0,
+              },
+            }
+          : prev,
+      );
+    };
+
     socket.on('room.state', onState);
     socket.on('room.playerJoined', patchPlayers);
     socket.on('room.playerLeft', patchPlayers);
@@ -156,6 +265,11 @@ export function useRoom(socket: Socket | null): RoomHook {
     socket.on('room.hostChanged', onHostChanged);
     socket.on('chat.message', onChat);
     socket.on('room.left', onLeft);
+    socket.on('lobby.settingsUpdated', onSettingsUpdated);
+    socket.on('lobby.experienceRates', onExperienceRates);
+    socket.on('game.countdownStarted', onCountdownStarted);
+    socket.on('game.countdownCancelled', onCountdownCancelled);
+    socket.on('game.started', onGameStarted);
     socket.on('error', setError);
     socket.on('session.terminated', () => setTerminated(true));
 
@@ -168,6 +282,11 @@ export function useRoom(socket: Socket | null): RoomHook {
       socket.off('room.hostChanged', onHostChanged);
       socket.off('chat.message', onChat);
       socket.off('room.left', onLeft);
+      socket.off('lobby.settingsUpdated', onSettingsUpdated);
+      socket.off('lobby.experienceRates', onExperienceRates);
+      socket.off('game.countdownStarted', onCountdownStarted);
+      socket.off('game.countdownCancelled', onCountdownCancelled);
+      socket.off('game.started', onGameStarted);
       socket.off('error', setError);
     };
   }, [socket]);

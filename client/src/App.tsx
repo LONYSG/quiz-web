@@ -172,7 +172,13 @@ export default function App() {
   if (room.snapshot && socket) {
     return (
       <main className="wrap">
-        <Lobby socket={socket} snapshot={room.snapshot} chat={room.chat} onLeave={leaveRoom} />
+        <Lobby
+          socket={socket}
+          snapshot={room.snapshot}
+          chat={room.chat}
+          onLeave={leaveRoom}
+          serverNow={clock.serverNow}
+        />
         <footer className="foot">
           <span className="dim mono">{clockLine}</span>
           <button type="button" className="ghost tiny" onClick={doLogout}>
@@ -205,7 +211,7 @@ export default function App() {
 
       <section className="card">
         <h2>방 만들기</h2>
-        <div className="invite-row">
+        <div className="field-row">
           <input
             value={title}
             maxLength={30}
@@ -224,7 +230,7 @@ export default function App() {
 
       <section className="card">
         <h2>초대 링크로 입장</h2>
-        <div className="invite-row">
+        <div className="field-row">
           <input
             value={joinId}
             placeholder="방 ID"
