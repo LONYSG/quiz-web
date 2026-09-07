@@ -8,6 +8,120 @@
 
 ---
 
+## 2026-09-07 — Phase 1 완료 (계정 / 세션 / 방) + Gemini·터널 검증
+
+### 무엇을 했는가
+
+Phase 1 전체(계정·세션·방·방장·메모리 방 관리 구조·클라이언트·봇 클라이언트)와
+그에 앞선 두 가지 검증 — Gemini API 키·모델·프롬프트, 그리고 Q-53(터널 URL 유지 여부).
+
+### 왜 했는가
+
+Phase 1은 그 자체 기능보다 **Phase 3의 게임 상태가 얹힐 뼈대를 세우는 것**이 목적이다.
+전역 tick, 방 레지스트리, 인바운드 공통 검사, 개인별 브로드캐스트, 스냅샷 생성이 그것이다.
+이것을 나중에 만들면 Phase 3에서 전부 뜯어야 한다.
+
+Q-53은 운영 절차가 두 갈래로 남아 있어 닫아야 했다.
+Gemini는 Track D 착수 전에 "쓸 수 있는가"를 확인해야 했다.
+
+### 발견한 문제와 해결
+
+**1. ★ R002가 전제한 Gemini 모델을 쓸 수 없다**
+
+`gemini-2.5-flash` / `gemini-2.5-flash-lite` 는 `GET /models` 목록에는 나오지만
+`generateContent` 호출 시 404 를 반환한다.
+
+> "no longer available to new users. Please update your code to use models/gemini-3.6-flash"
+
+→ **목록 존재 여부만으로 판단하면 안 된다.** 실제 호출로 확인해야 한다.
+검증 스크립트가 후보를 순서대로 호출해 첫 성공 모델을 쓰도록 만들었다.
+1차 가공 `gemini-3.6-flash`, 역검증 `gemini-3.5-flash-lite` 로 잠정 채택(Q-59).
+
+**2. ★ 사고(thinking) 토큰이 크다**
+
+프롬프트 1,481 / 출력 1,291 인 요청의 `totalTokenCount` 가 5,403이었다.
+차이 약 2,631이 사고 토큰이다.
+→ **TPM 한도를 계산할 때 보이는 토큰의 3~4배로 잡아야 한다.** Q-54에 기록했다.
+
+**3. 로컬 `.env` 키와 GitHub Secrets 키가 서로 다른 값이다**
+
+양쪽을 각각 검증했더니 둘 다 유효하지만 값이 다르다(길이 39자 / 53자).
+의도한 것이면 문제없으나, 한쪽을 폐기했을 때 혼동이 생긴다. Q-60으로 올렸다.
+
+**4. PowerShell 5.1이 BOM 없는 `.ps1` 을 ANSI로 읽어 한글이 깨졌다**
+
+`verify-tunnel-resilience.ps1` 이 파서 에러로 실행되지 않았다.
+→ `.ps1` 은 UTF-8 BOM + CRLF 로 저장한다. `.gitattributes` 정책과 별개로
+PowerShell 5.1의 제약이다.
+
+**5. 봇 클라이언트가 부분 갱신 이벤트를 반영하지 않아 검증이 무의미했다**
+
+처음 작성한 봇은 `room.state` 스냅샷만 받고 `room.playerJoined` /
+`room.connectionChanged` 를 무시했다. 그래서 "참가자 1명", "활성 인원 2명" 처럼
+서버가 옳게 동작하는데도 틀린 값을 보고했다.
+→ 부분 갱신 핸들러를 넣고, **표시 유예 5초와 활성 인원 즉시 반영을 실제로 단정하도록** 고쳤다.
+로그만 찍고 검증하지 않는 테스트는 없는 것보다 나쁘다.
+
+**6. `RULES.HEARTBEAT_INTERVAL_MS` 가 30초로 잘못 들어가 있었다** (지시받은 수정)
+
+Q-02 확정값은 4분인데 상수는 30,000이었다. 240,000으로 고쳤다.
+클라이언트가 아직 heartbeat 를 보내지 않아 동작에는 영향이 없었으나,
+RULES 상수의 존재 이유가 "규칙 수치를 한 곳에 모아 놓치지 않게 하는 것"이므로
+그 안에 틀린 값이 있으면 목적 자체가 무너진다.
+→ 전체 대조 결과 다른 불일치는 없었고, 누락된 상수 6개를 보강했다(R005 3장).
+
+### 영향 범위
+
+새로 만든 것
+
+- `server/src/` — config / seq / tick / auth(password, session) / db(accounts, rooms) /
+  http(authRoutes) / rooms(types, registry, emit, snapshot) / socket(guard, index)
+- `client/src/` — api / useRoom / AuthScreen / Lobby, App 전면 교체
+- `scripts/` — bot.mjs / reset-password.mjs / verify-gemini.mjs / verify-tunnel-resilience.ps1
+- `.github/workflows/verify-gemini.yml`
+
+고친 것
+
+- `shared/src/protocol.ts` — HEARTBEAT_INTERVAL_MS 수정, 상수 6개 추가
+- `docs/` — 02 / 05 / 07 / 08 / 10 / 11
+
+### 검증
+
+| 항목 | 결과 |
+|------|------|
+| Vitest | 97건 통과 / 13건 skip |
+| typecheck / build | 통과 |
+| 비밀값 차단 6항목 | 전부 정상. **히스토리 유출 0건** |
+| Gemini 키 (로컬 / Secrets) | 양쪽 유효. 로그에 키 노출 0건 |
+| Gemini 판정 정확도 | 샘플 6문제 **6/6 기대와 일치** |
+| Gemini 복수 정답 배열 | 변형 많은 6문제 accept 6/6, **평균 4.0개.** "잉글랜드" 함정 회피 |
+| Gemini 역검증 | 5/5 일치. **비유일 정답 2건을 ambiguous=true 로 정확히 탐지** |
+| **Q-53 터널 URL 유지** | **유지됨.** 100초 차단 후 같은 URL 200, WebSocket 재연결, bootedAt 동일 |
+| 방화벽 규칙 제거 | 확인됨 (QUIZWEB* 0건) |
+| 봇 join 11명 | 10명 입장 / 11번째 ROOM_FULL |
+| 봇 duplicate | session.terminated 수신 + 첫 연결 끊김 + 방 승계 |
+| 봇 reconnect | 활성 인원 즉시 1, 표시 유예 2.7초 true → 7.2초 false, 색상 유지 |
+| 봇 host | 10초 미이전 → 30초 이전 → 복귀해도 미반환 |
+| 봇 chat | 10명 × 20개 = 200건 전송 / 200건 수신, 누락 0 |
+| 방 오류 구분 | ROOM_NOT_FOUND / ROOM_CLOSED / ALREADY_HAS_ROOM |
+| 계정 규칙 | 아이디 대소문자 무시, `Player` ≠ `player`, 비번 3자 거부 |
+| 로그인 실패 메시지 | 아이디 없음과 비번 오류가 동일 문구 |
+| **부팅 정리 회귀** | 방 8개 잔존 → 재시작 → 0개 → **같은 사람이 방 재생성 성공** |
+
+### 남은 문제
+
+- 게임 로직 전체 미구현 (Phase 2 이후)
+- `maskAnswers()` 미구현 (Phase 6). 테스트 13건 skip 대기
+- Track D 미착수. R006에서 시작한다
+- Q-54(Gemini 한도) / Q-59(모델 확정) / Q-60(키 불일치) 미결
+
+### 다음 작업
+
+**R006 = Track D** (문제 데이터 파이프라인). 게임 Phase와 라운드 단위로 번갈아 진행한다.
+그 다음 R007 = Phase 2 (로비 설정·경험률·게임 시작).
+
+---
+
 ## 2026-09-07 — Phase 0 완료
 
 ### 무엇을 했는가

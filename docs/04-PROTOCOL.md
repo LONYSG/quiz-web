@@ -371,8 +371,11 @@ Cloudflare 터널 경유 RTT 133~257ms / 오프셋 −21 ~ +49.5ms.
 
 ## 7. Socket 이벤트 목록
 
-> **Phase 0에서 실제로 구현된 것은 `server.hello` / `time.ping` / `time.pong` / `heartbeat` 뿐이다.**
+> **Phase 1까지 구현된 것은 아래 표의 ✅ 항목이다.**
 > 나머지는 타입만 `shared/src/protocol.ts` 에 확정해 두었다. 구현 상태는 [05-STATUS.md](05-STATUS.md).
+>
+> 인증·세션 이벤트(`server.hello` `session.established` `session.terminated`)와
+> 시각 동기화(`time.ping` `time.pong`), `heartbeat` 도 전부 구현되어 있다.
 
 ### 공통 규약
 
@@ -393,19 +396,51 @@ Cloudflare 터널 경유 RTT 133~257ms / 오프셋 −21 ~ +49.5ms.
 
 ### 방 / 로비
 
-| 이벤트 | 방향 | 페이로드 |
-|--------|------|---------|
-| `room.join` | C→S | `{ roomId }` |
-| `room.leave` | C→S | `{}` |
-| `room.state` | S→C | **전체 스냅샷** (8장) |
-| `room.playerJoined` | S→C | `{ player }` |
-| `room.playerLeft` | S→C | `{ accountId }` |
-| `room.connectionChanged` | S→C | `{ accountId, connected }` |
-| `room.hostChanged` | S→C | `{ hostAccountId }` |
-| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec }` (방장) |
-| `lobby.settingsUpdated` | S→C | `{ settings, availableQuestionCount }` |
-| `lobby.experienceRates` | S→C | `{ rates: [{ accountId, experienced, total }] }` |
-| `error` | S→C | `{ code, message, detail? }` |
+| 이벤트 | 방향 | 페이로드 | Phase 1 |
+|--------|------|---------|:-------:|
+| `room.create` | C→S | `{ title }` | ✅ |
+| `room.created` | S→C | `{ roomId }` | ✅ |
+| `room.join` | C→S | `{ roomId }` | ✅ |
+| `room.leave` | C→S | `{}` | ✅ |
+| `room.left` | S→C | `{ roomId }` | ✅ |
+| `room.state` | S→C | **전체 스냅샷** (9장) | ✅ |
+| `room.playerJoined` | S→C | `{ player, players[], activeCount }` | ✅ |
+| `room.playerLeft` | S→C | `{ accountId, players[], activeCount }` | ✅ |
+| `room.playersUpdated` | S→C | `{ players[], activeCount }` | ✅ |
+| `room.connectionChanged` | S→C | `{ accountId, connected, activeCount }` | ✅ |
+| `room.hostChanged` | S→C | `{ hostAccountId, nickname }` | ✅ |
+| `host.kickDisconnected` | C→S | `{ accountId }` (방장) | ✅ |
+| `state.resync` | C→S | `{}` → 서버가 `room.state` 응답 | ✅ |
+| `error` | S→C | `{ code, message, detail }` | ✅ |
+| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec }` (방장) | Phase 2 |
+| `lobby.settingsUpdated` | S→C | `{ settings, availableQuestionCount }` | Phase 2 |
+| `lobby.experienceRates` | S→C | `{ rates: [{ accountId, experienced, total }] }` | Phase 2 |
+
+**`error.code`** — `UNAUTHENTICATED` `NOT_IN_ROOM` `NOT_HOST` `INVALID_STATE`
+`BAD_REQUEST` `ROOM_FULL` `ROOM_NOT_FOUND` `ROOM_CLOSED` `ALREADY_HAS_ROOM` `INTERNAL`
+
+> ★ `ROOM_NOT_FOUND` 와 `ROOM_CLOSED` 를 구분하는 것이 guide 49절 요구다.
+> 메모리에 방이 없으면 DB를 보고 `closed_at` 으로 판별한다.
+
+#### 구현이 명세보다 넓어진 부분 (Phase 1에서 확정)
+
+R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형태였다.
+구현에서는 **참가자 목록 전체와 `activeCount` 를 함께 보낸다.**
+
+이유는 두 가지다.
+
+1. 클라이언트가 목록을 부분 갱신하려면 순서(joinOrder)와 방장 표시를 스스로 재계산해야 한다.
+   서버가 이미 정렬해 갖고 있으므로 그대로 보내는 편이 단순하고 어긋날 여지가 없다.
+   10명 × 필드 7개는 전송량이 무의미하다.
+2. `activeCount` 는 스킵 투표 분모의 근거다(guide 22절).
+   ★ 클라이언트가 `players` 배열에서 세면 안 된다. 표시용 `connected` 는 5초 유예가 걸려 있어
+   실제 활성 인원과 다르다(Q-15 보완 / Q-29). **서버가 계산한 값만 신뢰해야 한다.**
+
+`room.playersUpdated` 는 명세에 없던 이벤트다.
+**접속 종료 표시가 5초 유예 뒤에 바뀌는 순간**을 알리기 위해 추가했다.
+끊김 자체는 `room.connectionChanged` 로 즉시 알리지만, 표시 전환은 그보다 5초 늦다.
+그 시점에 아무 이벤트도 없으면 화면이 갱신되지 않는다.
+★ tick 이 매번 브로드캐스트하지 않고 **표시 상태가 실제로 바뀔 때만** 보낸다.
 
 ### 게임 진행
 
@@ -433,7 +468,7 @@ Cloudflare 터널 경유 RTT 133~257ms / 오프셋 −21 ~ +49.5ms.
 
 | 이벤트 | 방향 | 페이로드 |
 |--------|------|---------|
-| `chat.send` | C→S | `{ text, epoch }` ★ epoch 필수 |
+| `chat.send` | C→S | `{ text, epoch }` ★ epoch 필수. **Phase 1에서는 `{ text }` 만** (판정이 없어 epoch가 무의미하다. Phase 3에서 필수가 된다) |
 | `chat.message` | S→C | `{ id, seq, accountId, nickname, colorIndex, text, masked, ts }` ★ text/masked는 수신자별로 다를 수 있다 |
 | `chat.throttled` | S→C | `{ retryAfterMs }` — **본인에게만** |
 | `skip.vote` | C→S | `{ vote: boolean, epoch }` |
