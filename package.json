@@ -1,0 +1,38 @@
+{
+  "name": "quiz-web",
+  "private": true,
+  "version": "0.1.0",
+  "description": "실시간 상식 퀴즈 웹게임. 채팅 = 답안 구조의 선착순 멀티플레이.",
+  "license": "MIT",
+  "workspaces": [
+    "shared",
+    "server",
+    "client",
+    "pipeline"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "npm run build -w shared && npm run build -w server && npm run build -w client",
+    "dev": "npm run dev -w server",
+    "dev:client": "npm run dev -w client",
+    "dev:tunnel": "node scripts/dev-tunnel.mjs",
+    "start": "node server/dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -b shared server client pipeline",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:migrate": "node scripts/migrate.mjs",
+    "db:seed": "node scripts/seed.mjs",
+    "db:backup": "node scripts/backup.mjs",
+    "db:restore": "node scripts/restore.mjs",
+    "db:reset": "node scripts/migrate.mjs --reset"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,27 @@
+# 로컬 개발용 PostgreSQL.
+# ★ 포트 5434를 쓰는 이유: 이 PC에 다른 프로젝트의 PostgreSQL이 5432/5433을 쓰고 있어
+#   충돌을 피한다. 변경하려면 .env 의 DATABASE_URL도 함께 고쳐야 한다.
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: quiz-web-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: quiz
+      POSTGRES_PASSWORD: quizlocal
+      POSTGRES_DB: quizweb
+      # 한국어 정렬·비교를 위한 로케일 설정
+      LANG: ko_KR.utf8
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+    ports:
+      - "5434:5432"
+    volumes:
+      - quiz-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quiz -d quizweb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  quiz-db-data:
