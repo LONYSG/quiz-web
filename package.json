@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "npm run build -w shared && npm run build -w server && npm run build -w client",
-    "dev": "npm run dev -w server",
+    "dev": "node scripts/dev.mjs",
     "dev:client": "npm run dev -w client",
     "dev:tunnel": "node scripts/dev-tunnel.mjs",
     "start": "node server/dist/index.js",
@@ -31,7 +31,10 @@
     "db:reset": "node scripts/migrate.mjs --reset",
     "bot": "node scripts/bot.mjs",
     "reset-password": "node scripts/reset-password.mjs",
-    "verify:gemini": "node scripts/verify-gemini.mjs"
+    "verify:gemini": "node scripts/verify-gemini.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "verify": "npm run typecheck && npm test && npm run smoke",
+    "build:force": "tsc -b shared server client --force && npm run build -w client"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

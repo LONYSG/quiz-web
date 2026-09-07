@@ -24,8 +24,20 @@
 //
 //   --url http://localhost:3000   대상 서버 (기본값)
 //   --prefix bot                   계정 아이디 접두어
+//   --no-boot                      서버가 안 떠 있어도 직접 띄우지 않는다
+//
+// ★ 서버 자동 기동 (R006에서 추가)
+//   대상 서버가 응답하지 않으면 봇이 직접 띄운다.
+//   ★ 사람이 쓰는 것과 완전히 같은 경로로 띄운다 — server/dist/index.js.
+//     npm run dev / npm start / smoke / bot 이 전부 이 파일을 실행한다.
+//   R005에서 봇 테스트는 통과했는데 npm run dev 는 실행되지 않는 사고가 있었다.
+//   테스트가 실제 실행 경로와 다른 경로를 쓰면 그 사고가 반복된다.
 // =============================================================================
 
+import { spawn } from 'node:child_process';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { io } from 'socket.io-client';
 
 const args = process.argv.slice(2);
@@ -41,6 +53,75 @@ const MESSAGES = Number(opt('--messages', '5'));
 const GRACE = Number(opt('--grace', '35'));
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// -----------------------------------------------------------------------------
+// 서버 자동 기동
+// ★ 사람이 쓰는 것과 같은 경로(server/dist/index.js)로 띄운다.
+// -----------------------------------------------------------------------------
+const NO_BOOT = args.includes('--no-boot');
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SERVER_ENTRY = path.join(ROOT, 'server', 'dist', 'index.js');
+let bootedServer = null;
+
+async function serverAlive() {
+  try {
+    const r = await fetch(`${BASE}/healthz`, { signal: AbortSignal.timeout(2000) });
+    return r.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function ensureServer() {
+  if (await serverAlive()) {
+    console.log('[bot] 이미 떠 있는 서버를 사용합니다:', BASE);
+    return;
+  }
+  if (NO_BOOT) {
+    throw new Error(`서버가 응답하지 않습니다: ${BASE} (--no-boot 이므로 띄우지 않습니다)`);
+  }
+  if (!existsSync(SERVER_ENTRY)) {
+    throw new Error(
+      `서버 산출물이 없습니다: ${SERVER_ENTRY}\n먼저 npm run build 를 실행하세요.`,
+    );
+  }
+  if (!BASE.includes('localhost')) {
+    throw new Error(`원격 서버는 직접 띄울 수 없습니다: ${BASE}`);
+  }
+
+  console.log('[bot] 서버가 없으므로 직접 띄웁니다 (server/dist/index.js)');
+  bootedServer = spawn(process.execPath, [SERVER_ENTRY], {
+    cwd: ROOT,
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  let out = '';
+  bootedServer.stdout.on('data', (c) => {
+    out += c.toString();
+  });
+  bootedServer.stderr.on('data', (c) => {
+    out += c.toString();
+  });
+
+  for (let i = 0; i < 40; i += 1) {
+    if (bootedServer.exitCode !== null) {
+      throw new Error('서버가 기동 중 종료되었습니다.\n' + out.slice(-800));
+    }
+    if (await serverAlive()) {
+      console.log('[bot] 서버 기동 확인');
+      return;
+    }
+    await sleep(250);
+  }
+  throw new Error('서버가 10초 안에 응답하지 않았습니다.\n' + out.slice(-800));
+}
+
+function stopBootedServer() {
+  if (!bootedServer) return;
+  console.log('[bot] 직접 띄운 서버를 종료합니다');
+  bootedServer.kill('SIGTERM');
+  bootedServer = null;
+}
+
 const stamp = () => new Date().toISOString().slice(11, 23);
 const log = (...a) => console.log(`[${stamp()}]`, ...a);
 
@@ -404,10 +485,14 @@ if (!run) {
 }
 
 try {
+  await ensureServer();
   const ok = await run();
   await sleep(300);
+  stopBootedServer();
+  await sleep(200);
   process.exit(ok ? 0 : 1);
 } catch (err) {
   console.error('[bot] 오류:', err.message);
+  stopBootedServer();
   process.exit(1);
 }
