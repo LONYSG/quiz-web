@@ -154,7 +154,16 @@ q.resolved = true;        // 여기서 즉시 세운다
 | T01 | LOBBY → COUNTDOWN | 방장 `game.start` | startMode=countdown, 문제 수 1~200, 카운트다운 3~60, **출제 가능 수 ≥ 설정 수**, 활성 ≥ 1 | settingsLocked=true, countdownEndsAt 설정 |
 | T02 | LOBBY → QUESTION_ACTIVE | 방장 `game.start` | startMode=instant, 그 외 T01과 동일 | games INSERT, 점수 0 초기화, **[문제 시작 공통 절차]** |
 | T03 | COUNTDOWN → LOBBY | 방장 `game.cancelCountdown` | — | settingsLocked=false |
-| T04 | COUNTDOWN → QUESTION_ACTIVE | `now ≥ countdownEndsAt` | 활성 ≥ 1 | T02와 동일 |
+| T04 | COUNTDOWN → QUESTION_ACTIVE | `now ≥ countdownEndsAt` | 활성 ≥ 1, **출제 가능 수 ≥ 설정 수 (재확인)** | T02와 동일 |
+
+> **T04 에서 출제 가능 수를 다시 확인한다** (Phase 2 구현에서 추가, D-025).
+> 카운트다운 중 신규 입장이 허용되므로(Q-11) 참가자 집합이 바뀔 수 있고,
+> 출제 가능 수는 참가자 집합의 함수다. 사람이 나가면 줄어들 수 있다.
+> 부족하면 게임을 시작하지 않고 **LOBBY 로 되돌리고 이유를 알린다.**
+>
+> ★ **Phase 2 시점의 한계**: 활성 0명이면 T20(PAUSED)로 가야 하지만
+> PAUSED 가 Phase 5이므로, 지금은 T04 의 "활성 ≥ 1" 조건만 지켜 **만료를 보류**한다.
+> 사람이 돌아오면 그때 시작된다. 근거와 차이점은 [07-DECISIONS.md](07-DECISIONS.md) D-023.
 
 ### 문제 종료 — 정답 공개 경로 (경험 기록 O)
 
@@ -412,9 +421,30 @@ Cloudflare 터널 경유 RTT 133~257ms / 오프셋 −21 ~ +49.5ms.
 | `host.kickDisconnected` | C→S | `{ accountId }` (방장) | ✅ |
 | `state.resync` | C→S | `{}` → 서버가 `room.state` 응답 | ✅ |
 | `error` | S→C | `{ code, message, detail }` | ✅ |
-| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec }` (방장) | Phase 2 |
-| `lobby.settingsUpdated` | S→C | `{ settings, availableQuestionCount }` | Phase 2 |
-| `lobby.experienceRates` | S→C | `{ rates: [{ accountId, experienced, total }] }` | Phase 2 |
+| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec }` (방장) | ✅ |
+| `lobby.settingsUpdated` | S→C | `{ settings, settingsLocked, availableQuestionCount }` | ✅ |
+| `lobby.experienceRates` | S→C | `{ rates: [{ accountId, experienced, total }] }` | ✅ |
+
+#### Phase 2 구현에서 명세보다 넓어진 부분
+
+R003 명세는 `lobby.settingsUpdated { settings, availableQuestionCount }` 였다.
+구현에서는 **`settingsLocked` 를 함께 보낸다.**
+
+이유: 설정 잠금은 `settings` 와 함께 변하는 값인데(카운트다운 시작·취소 시)
+클라이언트가 상태(`room.state`)에서 유추해야 한다면 그 유추 규칙이 서버와
+어긋나는 순간 "입력창이 열려 있는데 서버가 거부하는" 상태가 된다.
+★ 서버가 계산한 값만 신뢰하게 만드는 것이 이 프로젝트의 일관된 방침이다
+(Phase 1의 `activeCount` 와 같은 이유).
+
+**`availableQuestionCount` 는 참가자 집합이 바뀔 때만 다시 계산한다.**
+설정값과 무관하고(참가자 집합의 함수다) 방장이 숫자를 한 글자 고칠 때마다
+DB를 조회하면 안 되기 때문이다(docs/02-ARCHITECTURE.md "DB 접근 규칙").
+★ 단 **게임 시작 직전에는 캐시를 믿지 않고 반드시 다시 조회한다** (Q-21).
+그 값이 `games.planned_question_count` 에 기록된다.
+
+`lobby.experienceRates` 는 로비 진입 / 참가자 변동 시점에만 보낸다.
+★ 주기적으로 보내지 않는다. 경험 기록은 게임이 끝나야 늘어나므로
+로비에 있는 동안 값이 바뀔 일이 없다.
 
 **`error.code`** — `UNAUTHENTICATED` `NOT_IN_ROOM` `NOT_HOST` `INVALID_STATE`
 `BAD_REQUEST` `ROOM_FULL` `ROOM_NOT_FOUND` `ROOM_CLOSED` `ALREADY_HAS_ROOM` `INTERNAL`
@@ -446,11 +476,23 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 
 | 이벤트 | 방향 | 페이로드 |
 |--------|------|---------|
-| `game.start` | C→S | `{}` (방장) |
-| `game.cancelCountdown` | C→S | `{}` (방장) |
-| `game.countdownStarted` | S→C | `{ endsAt }` |
-| `game.countdownCancelled` | S→C | `{}` |
-| `game.started` | S→C | `{ gameId, totalQuestions }` |
+| `game.start` | C→S | `{}` (방장) — ✅ Phase 2 |
+| `game.cancelCountdown` | C→S | `{}` (방장) — ✅ Phase 2 |
+| `game.countdownStarted` | S→C | `{ endsAt, state, settingsLocked, settings }` — ✅ Phase 2 |
+| `game.countdownCancelled` | S→C | `{ state, settingsLocked, settings, reason? }` — ✅ Phase 2 |
+| `game.started` | S→C | `{ gameId, totalQuestions, state }` — ✅ Phase 2 |
+
+> **Phase 2 구현에서 세 이벤트에 `state` 를 추가했다.**
+> 명세대로 `{ endsAt }` 만 보내면 클라이언트가 "카운트다운이 시작되었으니 상태는
+> COUNTDOWN 일 것" 이라고 유추해야 한다. 상태 전이 규칙이 서버와 클라이언트
+> 두 곳에 생기는 것이므로, 서버가 확정한 값을 그대로 보낸다. 비용은 필드 하나다.
+>
+> `game.countdownCancelled.reason` 은 방장 취소(값 없음)와
+> 출제 가능 수 부족으로 인한 자동 취소(`'not_enough_questions'`)를 구분한다 (D-025).
+>
+> ★ `game.started.gameId` 는 **null 일 수 있다.** 상태 전이를 동기로 끝낸 뒤
+> `games` INSERT 를 하기 때문이다. INSERT 가 실패하면 null 로 남는다.
+> Phase 3에서는 그 경우 게임을 시작하지 않도록 바꿔야 한다 (TEMP-P3-03).
 | `question.started` | S→C | `{ epoch, index, total, text, categoryName, startedAt, endsAt, experiencedNicknames[], selfExperienced }` ★ 정답·힌트·해설 미포함 |
 | `question.experiencedUpdated` | S→C | `{ epoch, experiencedNicknames, selfExperienced }` |
 | `question.hint` | S→C | `{ epoch, hint \| null }` — 남은 10초 시점에 서버가 push |
@@ -537,6 +579,7 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
           settings, settingsLocked, availableQuestionCount },
   players: [{ accountId, nickname, colorIndex, connected, isHost, joinOrder, score }],
   countdown: { endsAt } | null,
+  game: { gameId, totalQuestions, questionIndex } | null,   ★ Phase 2에서 추가
   question: {
     epoch, index, total, text, categoryName, startedAt, endsAt,
     hint: string | null,          ★ 남은 시간 10초 이하일 때만 값이 온다. 그 전에는 반드시 null

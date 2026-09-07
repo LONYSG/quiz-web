@@ -99,6 +99,10 @@ Free 플랜에서는 월 한도를 초과해 DB가 멈추고, 종량제에서는
    - 만료 세션 정리 크론을 두지 않는다 (로그인 시 기회주의적으로 정리한다)
    - 세션 슬라이딩 갱신은 남은 기간이 절반(15일) 미만일 때만 한다
    - 로비 경험률은 진입·인원 변동 시에만 조회하고 주기 갱신하지 않는다
+     (Phase 2 구현: `server/src/lobby/info.ts` 의 `refreshLobbyInfo()` 가 유일한 호출 지점이다.
+     ★ 출제 가능 수도 같이 캐시한다 — 설정값과 무관하고 참가자 집합에만 의존하므로,
+     방장이 문제 수를 한 글자 고칠 때마다 쿼리가 나가지 않게 한다.
+     ★ 단 게임 시작 직전에는 캐시를 믿지 않고 반드시 다시 조회한다(Q-21))
    - 게임 진행 중 점수를 `game_players` 에 UPDATE하지 않는다 (`answer_events` 로 계산한다)
 
 **검증 결과 (R004)**: 서버를 켜 두고 관찰했을 때 `dbActiveMs` 가 약 60초에서 멈췄다.
@@ -156,13 +160,23 @@ quiz-web/
 │       ├─ hint.ts         힌트 생성
 │       ├─ ranking.ts      순위 계산 / 스킵 임계값
 │       ├─ mask.ts         정답 마스킹 (Phase 6에서 구현)
+│       ├─ settings.ts     게임 설정 검증 / 경험률 표기  ★ 서버·클라이언트 공용 (D-026)
 │       └─ protocol.ts     Socket 이벤트 타입과 게임 규칙 상수
 ├─ server/                 게임 서버
 │   └─ src/
 │       ├─ index.ts        진입점
+│       ├─ tick.ts         ★ 전역 100ms tick. 방마다 타이머를 두지 않는다
+│       ├─ socket/         인바운드 이벤트 (guard.ts 가 검사 순서를 강제한다)
+│       ├─ rooms/          메모리 방 모델 / 레지스트리 / 스냅샷 / 브로드캐스트 / 생명주기
+│       ├─ lobby/          로비 정보 갱신 (경험률·출제 가능 수). ★ DB 조회 지점이 여기 하나다
+│       ├─ game/           게임 시작·카운트다운 (T01~T04). Phase 3의 문제 진행이 여기 붙는다
+│       ├─ auth/           비밀번호 / 세션
+│       ├─ http/           인증 REST 라우트
 │       └─ db/
 │           ├─ pool.ts        커넥션 풀 (3장 규칙)
-│           └─ bootCleanup.ts 부팅 시 정리 (2장)
+│           ├─ bootCleanup.ts 부팅 시 정리 (2장)
+│           ├─ questions.ts   ★ 출제 대상 조건을 이 파일 한 곳에만 둔다
+│           └─ games.ts       games / game_players
 ├─ client/                 React 클라이언트
 ├─ pipeline/               문제 수집·가공 파이프라인 (Track D, 게임 서버와 분리)
 ├─ migrations/             순수 SQL 마이그레이션
