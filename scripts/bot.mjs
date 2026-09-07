@@ -14,6 +14,8 @@
 //   reconnect  끊고 다시 붙어 점수·색상이 유지되는지 확인
 //   host       방장을 끊어 30초 뒤 이전되는지 확인 (Q-29)
 //   chat       동시 채팅 부하
+//   lobby      ★ Phase 2 — 설정 검증 / 권한 / 경험률 / 출제 가능 수 (Q-10·11·12·21)
+//   countdown  ★ Phase 2 — 카운트다운 시작·취소·만료·중간 입장 / 게임 레코드 (Q-11)
 //
 // 사용법
 //   node scripts/bot.mjs join --count 11
@@ -21,6 +23,11 @@
 //   node scripts/bot.mjs reconnect
 //   node scripts/bot.mjs host --grace 35
 //   node scripts/bot.mjs chat --count 10 --messages 20
+//   node scripts/bot.mjs lobby
+//   node scripts/bot.mjs countdown
+//
+// ★ 로그만 찍지 않는다 (R005 5-1의 교훈).
+//   lobby / countdown 은 expect() 로 단정하고, 하나라도 틀리면 0이 아닌 코드로 끝난다.
 //
 //   --url http://localhost:3000   대상 서버 (기본값)
 //   --prefix bot                   계정 아이디 접두어
@@ -38,6 +45,7 @@ import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import pg from 'pg';
 import { io } from 'socket.io-client';
 
 const args = process.argv.slice(2);
@@ -204,7 +212,9 @@ class Bot {
         if (!this.snapshot) return;
         if (typeof p.activeCount === 'number') this.snapshot.room.activeCount = p.activeCount;
       });
-      s.on('error', (p) => this.events.push({ type: 'error', code: p.code }));
+      s.on('error', (p) =>
+        this.events.push({ type: 'error', code: p.code, message: p.message, detail: p.detail }),
+      );
       s.on('session.terminated', (p) =>
         this.events.push({ type: 'session.terminated', reason: p.reason }),
       );
@@ -212,6 +222,45 @@ class Bot {
         this.events.push({ type: 'room.hostChanged', hostAccountId: p.hostAccountId }),
       );
       s.on('chat.message', (m) => this.events.push({ type: 'chat', text: m.text }));
+
+      // ── Phase 2 이벤트
+      s.on('lobby.settingsUpdated', (p) => {
+        this.events.push({ type: 'lobby.settingsUpdated', ...p });
+        if (this.snapshot) {
+          this.snapshot.room.settings = p.settings;
+          this.snapshot.room.availableQuestionCount = p.availableQuestionCount;
+          if (typeof p.settingsLocked === 'boolean') {
+            this.snapshot.room.settingsLocked = p.settingsLocked;
+          }
+        }
+      });
+      s.on('lobby.experienceRates', (p) => {
+        this.events.push({ type: 'lobby.experienceRates', rates: p.rates });
+        if (this.snapshot) this.snapshot.experienceRates = p.rates;
+      });
+      s.on('game.countdownStarted', (p) => {
+        this.events.push({ type: 'game.countdownStarted', endsAt: p.endsAt, at: Date.now() });
+        if (this.snapshot) {
+          this.snapshot.room.state = p.state;
+          this.snapshot.room.settingsLocked = p.settingsLocked;
+          this.snapshot.countdown = { endsAt: p.endsAt };
+        }
+      });
+      s.on('game.countdownCancelled', (p) => {
+        this.events.push({ type: 'game.countdownCancelled', reason: p.reason ?? null });
+        if (this.snapshot) {
+          this.snapshot.room.state = p.state;
+          this.snapshot.room.settingsLocked = p.settingsLocked;
+          this.snapshot.countdown = null;
+        }
+      });
+      s.on('game.started', (p) => {
+        this.events.push({ type: 'game.started', gameId: p.gameId, at: Date.now() });
+        if (this.snapshot) {
+          this.snapshot.room.state = p.state;
+          this.snapshot.game = { gameId: p.gameId, totalQuestions: p.totalQuestions };
+        }
+      });
       s.on('connect', () => resolve());
       s.on('connect_error', (e) => reject(new Error(`${this.name} 연결 실패: ${e.message}`)));
       setTimeout(() => reject(new Error(`${this.name} 연결 타임아웃`)), 15000);
@@ -237,6 +286,104 @@ class Bot {
   lastError() {
     return [...this.events].reverse().find((e) => e.type === 'error') ?? null;
   }
+
+  /** 이 시점 이후의 이벤트만 보기 위한 표식 */
+  mark() {
+    return this.events.length;
+  }
+
+  since(from, type) {
+    return this.events.slice(from).filter((e) => e.type === type);
+  }
+
+  /** 조건을 만족할 때까지 기다린다. 고정 sleep 보다 흔들림이 적다 */
+  async waitFor(predicate, timeoutMs = 6000, label = '조건') {
+    const until = Date.now() + timeoutMs;
+    while (Date.now() < until) {
+      if (predicate()) return true;
+      await sleep(50);
+    }
+    throw new Error(`대기 시간 초과: ${label}`);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 단정 수집기
+//
+// ★ assert 를 그대로 쓰면 첫 실패에서 멈춰 나머지 항목의 상태를 알 수 없다.
+//   그래서 전부 실행해 결과를 모으고, 하나라도 실패하면 마지막에 실패로 끝낸다.
+//   ★ "로그만 찍고 통과라고 보고" 하는 것과는 다르다. 실패가 있으면 종료 코드가 1이다.
+// -----------------------------------------------------------------------------
+const checks = [];
+
+function expect(name, actual, expected) {
+  const a = JSON.stringify(actual);
+  const b = JSON.stringify(expected);
+  const ok = a === b;
+  checks.push({ name, ok, actual: a, expected: b });
+  console.log(`  ${ok ? 'OK  ' : 'FAIL'}  ${name}${ok ? '' : `  기대=${b} 실제=${a}`}`);
+  return ok;
+}
+
+function expectTrue(name, condition, detail = '') {
+  const ok = Boolean(condition);
+  checks.push({ name, ok, actual: String(condition), expected: 'true' });
+  console.log(`  ${ok ? 'OK  ' : 'FAIL'}  ${name}${detail ? `  (${detail})` : ''}`);
+  return ok;
+}
+
+function checkSummary() {
+  const failed = checks.filter((c) => !c.ok);
+  console.log(`\n[결과] ${checks.length - failed.length}/${checks.length} 통과`);
+  for (const f of failed) console.log(`  ★ 실패: ${f.name} — 기대 ${f.expected} / 실제 ${f.actual}`);
+  return failed.length === 0;
+}
+
+// -----------------------------------------------------------------------------
+// DB 직접 조회 (게임 레코드 검증용)
+// ★ 서버가 정말로 games / game_players 를 만들었는지는 DB를 봐야 알 수 있다.
+//   소켓 이벤트만 보면 "서버가 만들었다고 말한 것" 까지만 확인된다.
+// -----------------------------------------------------------------------------
+const DATABASE_URL =
+  process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
+
+async function withDb(fn) {
+  const client = new pg.Client({ connectionString: DATABASE_URL });
+  await client.connect();
+  try {
+    return await fn(client);
+  } finally {
+    await client.end();
+  }
+}
+
+async function gamesOfRoom(roomId) {
+  return withDb(async (c) => {
+    const games = await c.query(
+      `SELECT id::text AS id, setting_question_count, setting_start_mode,
+              setting_countdown_sec, planned_question_count, ended_at, end_reason
+         FROM games WHERE room_id = $1 ORDER BY id`,
+      [roomId],
+    );
+    if (games.rows.length === 0) return { games: [], players: [] };
+    const players = await c.query(
+      `SELECT game_id::text AS game_id, account_id::text AS account_id,
+              color_index, is_midgame_join, final_score
+         FROM game_players WHERE game_id = ANY($1::bigint[]) ORDER BY account_id`,
+      [games.rows.map((g) => g.id)],
+    );
+    return { games: games.rows, players: players.rows };
+  });
+}
+
+async function activeQuestionCount() {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `SELECT count(*)::int AS n FROM questions
+        WHERE status = 'approved' AND is_active AND question_type = 'short_answer'`,
+    );
+    return r.rows[0].n;
+  });
 }
 
 async function makeBots(n) {
@@ -468,6 +615,380 @@ async function scenarioChat() {
   return received >= expected;
 }
 
+
+// -----------------------------------------------------------------------------
+// Phase 2 — 로비 설정 / 권한 / 경험률 / 출제 가능 수
+// -----------------------------------------------------------------------------
+async function scenarioLobby() {
+  log('시나리오 lobby — Phase 2 설정 검증 / 권한 / 경험률 (Q-10·11·12·21)');
+
+  const seedTotal = await activeQuestionCount();
+  log(`DB 활성 문제 수: ${seedTotal}개`);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('Phase 2 설정 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  await host.waitFor(() => host.snapshot.players.length === 2, 6000, '참가자 2명');
+
+  // ── 1. 경험률 (Q-12)
+  log('\n[1] 경험률');
+  await host.waitFor(() => host.snapshot.experienceRates !== null, 6000, '경험률 수신');
+  const rates = host.snapshot.experienceRates;
+  expect('경험률이 참가자 수만큼 온다', rates.length, 2);
+  // ★ 분모가 0이면 백분율 계산에서 0으로 나누기가 발생한다. 반드시 확인한다.
+  expect('경험률 분모가 활성 문제 수와 같다', rates[0].total, seedTotal);
+  expectTrue('★ 경험률 분모가 0이 아니다', rates.every((r) => r.total > 0));
+  expectTrue('경험 기록이 없어 전원 0문제', rates.every((r) => r.experienced === 0));
+
+  // ── 2. 출제 가능 수 (Q-21)
+  log('\n[2] 출제 가능 문제 수');
+  expect(
+    '출제 가능 수가 활성 문제 수와 같다 (경험 기록 없음)',
+    host.snapshot.room.availableQuestionCount,
+    seedTotal,
+  );
+
+  // ── 3. 설정 범위 검증 (Q-10 / Q-11)
+  log('\n[3] 설정 범위 — 서버가 거부해야 한다');
+  const cases = [
+    ['문제 수 0', { questionCount: 0, startMode: 'instant', countdownSec: 5 }],
+    ['문제 수 201', { questionCount: 201, startMode: 'instant', countdownSec: 5 }],
+    ['문제 수 소수점', { questionCount: 10.5, startMode: 'instant', countdownSec: 5 }],
+    ['카운트다운 2초', { questionCount: 10, startMode: 'countdown', countdownSec: 2 }],
+    ['카운트다운 61초', { questionCount: 10, startMode: 'countdown', countdownSec: 61 }],
+    ['시작 방식 오타', { questionCount: 10, startMode: 'INSTANT', countdownSec: 5 }],
+  ];
+  for (const [label, payload] of cases) {
+    const from = host.mark();
+    host.socket.emit('lobby.updateSettings', payload);
+    await sleep(300);
+    const err = host.since(from, 'error')[0];
+    expect(`${label} → BAD_REQUEST`, err?.code ?? '(에러 없음)', 'BAD_REQUEST');
+    expectTrue(`${label} → 이유를 알려준다`, Boolean(err?.detail), err?.detail ?? '');
+    expect(`${label} → 설정이 바뀌지 않았다`, host.snapshot.room.settings.questionCount, 20);
+  }
+
+  // ── 4. 정상 범위는 통과 (경계값)
+  log('\n[4] 경계값은 통과한다');
+  for (const [label, payload, expectCount] of [
+    ['문제 수 1', { questionCount: 1, startMode: 'instant', countdownSec: 5 }, 1],
+    ['문제 수 200', { questionCount: 200, startMode: 'instant', countdownSec: 5 }, 200],
+    ['카운트다운 3초', { questionCount: 5, startMode: 'countdown', countdownSec: 3 }, 5],
+    ['카운트다운 60초', { questionCount: 5, startMode: 'countdown', countdownSec: 60 }, 5],
+  ]) {
+    const from = host.mark();
+    host.socket.emit('lobby.updateSettings', payload);
+    await host.waitFor(
+      () => host.since(from, 'lobby.settingsUpdated').length > 0,
+      4000,
+      label,
+    );
+    expect(`${label} → 반영됨`, host.snapshot.room.settings.questionCount, expectCount);
+  }
+  // 게스트에게도 전파되어야 한다 (읽기 전용으로 같은 값을 본다)
+  expect('게스트도 같은 설정을 본다', guest.snapshot.room.settings.countdownSec, 60);
+
+  // ── 5. 권한 (guide 44절)
+  log('\n[5] 비방장 권한 차단');
+  let from = guest.mark();
+  guest.socket.emit('lobby.updateSettings', {
+    questionCount: 7,
+    startMode: 'instant',
+    countdownSec: 5,
+  });
+  await sleep(300);
+  expect('비방장 설정 변경 → NOT_HOST', guest.since(from, 'error')[0]?.code, 'NOT_HOST');
+  expect('설정이 바뀌지 않았다', host.snapshot.room.settings.questionCount, 5);
+
+  from = guest.mark();
+  guest.socket.emit('game.start', {});
+  await sleep(300);
+  expect('비방장 게임 시작 → NOT_HOST', guest.since(from, 'error')[0]?.code, 'NOT_HOST');
+  expect('상태가 그대로 LOBBY', host.snapshot.room.state, 'LOBBY');
+
+  // ── 6. ★ 출제 가능 수 부족 (Q-21)
+  log('\n[6] ★ 문제 수 200 + 출제 가능 53 → 시작 거부');
+  host.socket.emit('lobby.updateSettings', {
+    questionCount: 200,
+    startMode: 'instant',
+    countdownSec: 5,
+  });
+  await sleep(300);
+  from = host.mark();
+  host.socket.emit('game.start', {});
+  await sleep(600);
+  const shortage = host.since(from, 'error')[0];
+  expect('시작 거부 코드', shortage?.code ?? '(에러 없음)', 'NOT_ENOUGH_QUESTIONS');
+  expectTrue(
+    '★ 안내에 실제 가능 개수가 들어 있다',
+    typeof shortage?.detail === 'string' && shortage.detail.includes(String(seedTotal)),
+    shortage?.detail ?? '',
+  );
+  expect('게임이 시작되지 않았다 (상태 유지)', host.snapshot.room.state, 'LOBBY');
+  expect('게임 레코드도 없다', (await gamesOfRoom(roomId)).games.length, 0);
+
+  host.disconnect();
+  guest.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
+// Phase 2 — 카운트다운과 게임 레코드
+// -----------------------------------------------------------------------------
+async function scenarioCountdown() {
+  log('시나리오 countdown — 카운트다운 시작·취소·만료 / 중간 입장 / 게임 레코드 (Q-11)');
+
+  const [host, guest, late] = await makeBots(3);
+  await host.connect();
+  host.createRoom('Phase 2 카운트다운 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+
+  const setSettings = async (payload) => {
+    const from = host.mark();
+    host.socket.emit('lobby.updateSettings', payload);
+    await host.waitFor(
+      () => host.since(from, 'lobby.settingsUpdated').length > 0,
+      4000,
+      '설정 반영',
+    );
+  };
+
+  // ── 1. 카운트다운 시작 → 취소 (T01 → T03)
+  log('\n[1] 카운트다운 시작 → 방장 취소');
+  await setSettings({ questionCount: 3, startMode: 'countdown', countdownSec: 30 });
+  let from = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(
+    () => host.since(from, 'game.countdownStarted').length > 0,
+    5000,
+    '카운트다운 시작',
+  );
+  expect('상태가 COUNTDOWN', host.snapshot.room.state, 'COUNTDOWN');
+  expect('설정이 잠긴다', host.snapshot.room.settingsLocked, true);
+  expect('게스트도 COUNTDOWN 을 본다', guest.snapshot.room.state, 'COUNTDOWN');
+
+  // ★ 카운트다운 중 설정 변경은 거부된다
+  from = host.mark();
+  host.socket.emit('lobby.updateSettings', {
+    questionCount: 9,
+    startMode: 'countdown',
+    countdownSec: 10,
+  });
+  await sleep(300);
+  expect(
+    '★ 카운트다운 중 설정 변경 → INVALID_STATE',
+    host.since(from, 'error')[0]?.code,
+    'INVALID_STATE',
+  );
+  expect('설정이 그대로다', host.snapshot.room.settings.questionCount, 3);
+
+  // ★ 카운트다운 중 신규 입장 허용 (Q-11)
+  await late.connect();
+  late.join(roomId);
+  await late.waitFor(() => late.snapshot !== null, 6000, '카운트다운 중 입장');
+  expect('★ 카운트다운 중 입장이 허용된다', late.snapshot.room.state, 'COUNTDOWN');
+  await host.waitFor(() => host.snapshot.players.length === 3, 5000, '3명');
+  expect('입장자가 목록에 들어간다', host.snapshot.players.length, 3);
+
+  // ★ endsAt 이 서버 기준 절대 시각인지 (남은 시간이 설정값 이하이고 줄어드는가)
+  const endsAt = host.snapshot.countdown.endsAt;
+  const startedEvent = host.events.find((e) => e.type === 'game.countdownStarted');
+  const remainAtStart = endsAt - startedEvent.at;
+  expectTrue(
+    '★ endsAt 이 서버 기준 절대 시각이다 (설정 30초와 오차 2초 이내)',
+    Math.abs(remainAtStart - 30000) < 2000,
+    `수신 시점 남은 시간 ${remainAtStart}ms`,
+  );
+  await sleep(1200);
+  const remainLater = endsAt - Date.now();
+  expectTrue(
+    '★ 남은 시간이 실제 경과만큼 줄어든다',
+    remainLater < remainAtStart - 1000,
+    `${remainAtStart}ms → ${remainLater}ms`,
+  );
+
+  // 취소 (T03)
+  from = host.mark();
+  host.socket.emit('game.cancelCountdown', {});
+  await host.waitFor(
+    () => host.since(from, 'game.countdownCancelled').length > 0,
+    5000,
+    '카운트다운 취소',
+  );
+  expect('★ 취소하면 LOBBY 로 돌아간다', host.snapshot.room.state, 'LOBBY');
+  expect('★ 설정 잠금이 풀린다', host.snapshot.room.settingsLocked, false);
+  expect('게스트도 LOBBY 를 본다', guest.snapshot.room.state, 'LOBBY');
+  expect('취소했으므로 게임 레코드가 없다', (await gamesOfRoom(roomId)).games.length, 0);
+
+  // 잠금이 풀렸으므로 설정을 다시 바꿀 수 있다
+  await setSettings({ questionCount: 4, startMode: 'countdown', countdownSec: 3 });
+  expect('취소 후 설정 변경이 다시 된다', host.snapshot.room.settings.questionCount, 4);
+
+  // ── 2. 카운트다운 만료 → 게임 시작 (T04)
+  log('\n[2] 카운트다운 만료 → 게임 시작');
+  from = host.mark();
+  const startRequestedAt = Date.now();
+  host.socket.emit('game.start', {});
+  await host.waitFor(
+    () => host.since(from, 'game.started').length > 0,
+    12000,
+    '게임 시작',
+  );
+  const startedAt = host.since(from, 'game.started')[0].at;
+  const elapsed = startedAt - startRequestedAt;
+  expectTrue(
+    '★ 3초 카운트다운이 지난 뒤에 시작된다 (2.5~5초)',
+    elapsed > 2500 && elapsed < 5000,
+    `${elapsed}ms 경과`,
+  );
+  expect('상태가 QUESTION_ACTIVE', host.snapshot.room.state, 'QUESTION_ACTIVE');
+  expect('전원이 game.started 를 받는다', guest.since(0, 'game.started').length, 1);
+  expect('중간 입장자도 받는다', late.since(0, 'game.started').length, 1);
+
+  // ── 3. 게임 레코드 (B-5)
+  log('\n[3] 게임 레코드');
+  await sleep(400); // DB 기록은 상태 전이 뒤에 이어진다
+  const { games, players } = await gamesOfRoom(roomId);
+  expect('games 1행', games.length, 1);
+  expect('setting_question_count', games[0]?.setting_question_count, 4);
+  expect('setting_start_mode', games[0]?.setting_start_mode, 'countdown');
+  expect('setting_countdown_sec', games[0]?.setting_countdown_sec, 3);
+  expectTrue(
+    'planned_question_count 가 출제 가능 수로 기록된다 (Q-21)',
+    games[0]?.planned_question_count >= 4,
+    `${games[0]?.planned_question_count}`,
+  );
+  expect('아직 종료되지 않았다', games[0]?.ended_at, null);
+  expect('game_players 3행 (카운트다운 중 입장자 포함)', players.length, 3);
+  expectTrue(
+    '★ 진행 중에는 final_score 를 쓰지 않는다',
+    players.every((p) => p.final_score === null),
+  );
+  expectTrue(
+    '시작 시점 참가자는 중간 참가가 아니다',
+    players.every((p) => p.is_midgame_join === false),
+  );
+  expect(
+    'game.started 의 gameId 가 DB 와 일치한다',
+    host.snapshot.game.gameId,
+    games[0]?.id,
+  );
+
+  // ── 4. 시작 뒤에는 설정을 바꿀 수 없다
+  log('\n[4] 시작 후 잠금');
+  from = host.mark();
+  host.socket.emit('lobby.updateSettings', {
+    questionCount: 9,
+    startMode: 'instant',
+    countdownSec: 5,
+  });
+  await sleep(300);
+  expect(
+    '게임 시작 후 설정 변경 → INVALID_STATE',
+    host.since(from, 'error')[0]?.code,
+    'INVALID_STATE',
+  );
+  from = host.mark();
+  host.socket.emit('game.start', {});
+  await sleep(300);
+  expect(
+    '이미 시작된 게임을 다시 시작 → INVALID_STATE',
+    host.since(from, 'error')[0]?.code,
+    'INVALID_STATE',
+  );
+  expect('games 는 여전히 1행', (await gamesOfRoom(roomId)).games.length, 1);
+
+  // ── 5. ★ 방이 사라질 때 열린 게임을 닫는다
+  log('\n[5] 전원 퇴장 시 게임 레코드 종료 기록');
+  host.socket.emit('room.leave', {});
+  guest.socket.emit('room.leave', {});
+  late.socket.emit('room.leave', {});
+  await sleep(900);
+  const after = await gamesOfRoom(roomId);
+  expectTrue(
+    '★ ended_at 이 기록된다 (열린 게임을 남기지 않는다)',
+    after.games[0]?.ended_at !== null,
+    String(after.games[0]?.end_reason),
+  );
+  expect('종료 사유', after.games[0]?.end_reason, 'abandoned');
+
+  host.disconnect();
+  guest.disconnect();
+  late.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
+// Phase 2 — 활성 0명 동안 카운트다운 보류 (B-4 판단)
+//
+// ★ 확정 규칙은 "활성 0명이면 즉시 PAUSED" 다 (T20).
+//   PAUSED 는 Phase 5이므로 Phase 2에서는 T04 의 조건("활성 ≥ 1")만 지켜 만료를 보류한다.
+//   ★ 이 테스트는 그 판단이 실제로 그렇게 동작하는지를 단정한다.
+//     "아무도 없는데 게임이 시작되어 빈 게임 레코드가 남는" 사고를 막는 것이 핵심이다.
+// -----------------------------------------------------------------------------
+async function scenarioEmptyCountdown() {
+  log('시나리오 empty — 활성 0명 동안 카운트다운 보류 (B-4)');
+
+  const [host] = await makeBots(1);
+  await host.connect();
+  host.createRoom('활성 0명 카운트다운 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+
+  let from = host.mark();
+  host.socket.emit('lobby.updateSettings', {
+    questionCount: 2,
+    startMode: 'countdown',
+    countdownSec: 3,
+  });
+  await host.waitFor(() => host.since(from, 'lobby.settingsUpdated').length > 0, 4000, '설정');
+
+  from = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(
+    () => host.since(from, 'game.countdownStarted').length > 0,
+    5000,
+    '카운트다운 시작',
+  );
+
+  // 카운트다운 도중 전원 접속 종료
+  host.disconnect();
+  log('  전원 접속 종료. 카운트다운(3초)이 지나도 시작되지 않아야 한다.');
+  await sleep(6000);
+
+  expect(
+    '★ 활성 0명 동안에는 게임이 시작되지 않는다',
+    (await gamesOfRoom(roomId)).games.length,
+    0,
+  );
+
+  // 돌아오면 시작된다
+  const back = new Bot(host.name);
+  back.cookie = host.cookie;
+  await back.connect();
+  await back.waitFor(() => back.snapshot !== null, 6000, '재접속');
+  log('  재접속했다. 만료 시각이 이미 지났으므로 곧 시작되어야 한다.');
+  await back.waitFor(() => back.since(0, 'game.started').length > 0, 6000, '게임 시작');
+  expect('★ 사람이 돌아오면 시작된다', back.snapshot.room.state, 'QUESTION_ACTIVE');
+  await sleep(400);
+  expect('게임 레코드 1행', (await gamesOfRoom(roomId)).games.length, 1);
+
+  back.socket.emit('room.leave', {});
+  await sleep(700);
+  back.disconnect();
+  return checkSummary();
+}
+
 // -----------------------------------------------------------------------------
 const SCENARIOS = {
   join: scenarioJoin,
@@ -475,6 +996,9 @@ const SCENARIOS = {
   reconnect: scenarioReconnect,
   host: scenarioHost,
   chat: scenarioChat,
+  lobby: scenarioLobby,
+  countdown: scenarioCountdown,
+  empty: scenarioEmptyCountdown,
 };
 
 const run = SCENARIOS[scenario];
