@@ -194,9 +194,22 @@ npm run db:seed           # 개발용 시드 문제 53개
 # 터미널 A — 서버 (3000)
 npm run dev
 
-# 터미널 B — 클라이언트 개발 서버 (5173, /socket.io 를 3000으로 프록시)
+# 터미널 B — 클라이언트 개발 서버 (5173, /api 와 /socket.io 를 3000으로 프록시)
 npm run dev:client
 ```
+
+> ★ `npm run dev` 는 **컴파일 산출물(`server/dist/index.js`)을 실행한다.**
+> `npm start` / `npm run smoke` / `npm run bot` 과 완전히 같은 파일이다.
+>
+> 소스(`.ts`)를 직접 실행하지 않는 이유가 있다.
+> `moduleResolution: NodeNext` 는 상대 import 에 `.js` 확장자를 요구하는데
+> Node 의 타입 스트리핑은 그 문자열을 재작성하지 않아 조합이 불가능하다.
+> 그리고 더 중요하게는, **dev 만 다른 코드 경로를 쓰면 아무도 그 경로를 검증하지 않는다.**
+> 실제로 그 때문에 서버가 뜨지 않는 사고가 있었다.
+> 경위와 판단은 [07-DECISIONS.md](07-DECISIONS.md) D-020 / D-021.
+>
+> ★ 실행 진입점은 루트 `npm run dev` **하나**다.
+> `npm run dev -w server` 는 존재하지 않는다(같은 함정을 막기 위해 제거했다).
 
 Vite 개발 서버가 `/socket.io` 와 `/healthz` 를 서버로 프록시하므로,
 **개발 중에도 "오리진이 하나"인 상태가 유지된다.** 개발 환경과 배포 환경의 동작이 달라지지 않는다.
@@ -214,12 +227,19 @@ npm run dev:tunnel        # 터미널 B: 터널. 출력된 https 주소를 공�
 ### 그 밖의 명령
 
 ```bash
+npm run verify            # ★ 라운드 종료 게이트: typecheck + test + smoke
+npm run smoke             # 실행 확인 (빌드 → 기동 → 응답 → 종료 → 포트 해제)
 npm test                  # Vitest
 npm run typecheck         # 전체 타입 검사
+npm run bot -- <시나리오>  # 봇 테스트 (서버가 없으면 직접 띄운다)
+npm run build:force       # tsbuildinfo 무시하고 강제 재빌드
 npm run db:backup         # DB 백업 (★ 로컬 DB이므로 유일한 안전장치)
 npm run db:restore -- <파일>
 npm run db:reset          # ★ 모든 데이터 삭제 후 재적용. 개발용
 ```
+
+> ★ **typecheck 와 build 통과는 실행 가능성을 보장하지 않는다.**
+> 반드시 `npm run verify` 로 실제 기동까지 확인한다.
 
 ---
 

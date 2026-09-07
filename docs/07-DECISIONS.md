@@ -10,6 +10,107 @@
 
 ---
 
+## D-021. 실행 확인(smoke)을 게이트에 넣는다 — typecheck·build 는 실행을 보장하지 않는다
+
+**시점**: R006 (npm run dev 실행 불가 사고를 고치며)
+
+**무엇이 드러났는가**
+
+R005에서 다음을 모두 통과라고 보고했다.
+
+- `npm run typecheck` 통과
+- `npm run build` 통과 (shared / server / client)
+- 봇 테스트 21항목 통과
+
+**그런데 `npm run dev` 가 아예 실행되지 않았다.**
+
+세 검증이 이 문제를 못 잡은 이유는 각각 다르다.
+
+| 검증 | 왜 못 잡았는가 |
+|------|--------------|
+| typecheck | `tsc` 는 `./config.js` 를 **컴파일 후 파일**로 해석한다. 소스 시점에 그 파일이 없어도 정상이다. TS 관점에서 이 코드는 완전히 옳다 |
+| build | 같은 이유. 컴파일이 성공하고 `dist/config.js` 가 실제로 만들어진다 |
+| 봇 테스트 | ★ 서버를 `node server/dist/index.js` 로 띄웠다. **컴파일 산출물이라 정상 동작했다.** `npm run dev` 는 한 번도 실행하지 않았다 |
+
+**★ 핵심은 세 번째다.** 테스트가 사람이 쓰는 실행 경로와 다른 경로를 썼다.
+그래서 "테스트 전부 통과"와 "실행 불가"가 동시에 성립할 수 있었다.
+
+**결정**
+
+1. `npm run smoke` 를 만든다 — 빌드 → 기동 → `/healthz` 200 → 클라이언트 서빙 →
+   Socket.IO 핸드셰이크 → 프로세스 종료 → 포트 해제까지 검증한다
+2. `npm run verify` = `typecheck` + `test` + `smoke` 를 라운드 종료 게이트로 삼는다
+3. `npm run bot` 이 서버가 없으면 **사람과 같은 경로**로 직접 띄운다.
+   테스트가 다른 경로를 쓰면 이 사고가 반복된다
+
+**smoke 를 처음 돌렸을 때 이 스크립트 자체의 오탐도 하나 잡혔다.**
+종료 판정을 `exit` 콜백의 `code` 만으로 하고 있었는데,
+Windows 에서 `child.kill()` 은 즉시 종료(TerminateProcess)라 `code=null, signal='SIGTERM'` 이 온다.
+`code` 만 보면 "신호로 종료됨"과 "아직 안 죽음"이 둘 다 `null` 이라 구분되지 않았다.
+→ `signal` 을 함께 추적하고, 판정 기준을 "프로세스가 사라지고 포트가 해제되는가" 로 바꿨다.
+
+★ 부수 확인: Windows 에서 `child.kill()` 로는 자식의 SIGTERM 핸들러가 실행되지 않는다(실측).
+사람이 터미널에서 Ctrl+C 를 누르는 경로는 이 스크립트로 재현할 수 없어 확인하지 못했다(확인 필요).
+포트 해제와 프로세스 소멸은 어느 경로든 동일하므로 그것만 검증한다.
+
+---
+
+## D-020. 개발 서버도 컴파일 산출물을 실행한다 — 실행 경로를 하나로 유지
+
+**시점**: R006. `npm run dev` 가 `ERR_MODULE_NOT_FOUND` 로 실행되지 않는 사고를 고치며.
+
+**증상**
+
+```
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'server\src\config.js'
+imported from server\src\index.ts
+```
+
+**원인** — 두 규칙이 각각 옳고 조합이 불가능했다
+
+| | 내용 |
+|---|---|
+| tsconfig | `module`/`moduleResolution` = **NodeNext**. 상대 import 에 **컴파일 결과물의 확장자(`.js`)** 를 쓰도록 요구한다. 그래서 소스는 `'./config.js'` 다 (저장소 전체 57건이 이렇게 일관되어 있었다) |
+| 실행기 | 이전 dev 스크립트는 `node --experimental-strip-types --watch src/index.ts` 였다. **Node 의 타입 스트리핑은 import 문자열을 재작성하지 않는다.** `'./config.js'` 를 문자 그대로 찾고, 거기에는 `config.ts` 만 있으므로 실패한다 |
+
+실측으로 확인했다. `--experimental-strip-types` 로 `'./dep.js'` import 는 실패하고
+`'./dep.ts'` 는 성공한다. Node 22.18 에는 `.js` → `.ts` 재매핑이 없다.
+
+**검토한 선택지**
+
+| 안 | 내용 | 판단 |
+|----|------|------|
+| A | dev 도 컴파일 산출물(`server/dist/index.js`)을 실행한다 | **채택** |
+| B | `tsx` 같은 실행기로 바꾼다 | 의존성이 늘고, **dev 만 소스를 실행하는 divergence 가 그대로 남는다** |
+| C | 모든 상대 import 를 `.ts` 로 바꾸고 TS 5.7 의 `rewriteRelativeImportExtensions` 로 emit 시 재작성 | 의존성은 안 늘지만 57건을 고쳐야 하고, `.ts` 확장자 import 는 읽는 사람에게 낯설다. 역시 dev 만 소스를 실행한다 |
+
+**A를 택한 이유**
+
+1. ★ **근본 원인이 "dev 만 다른 코드 경로를 쓴 것"이다.**
+   `npm start` 와 테스트는 컴파일 산출물을 실행했고 dev 만 소스를 직접 실행했다.
+   그래서 아무도 그 경로를 검증하지 않았다.
+   B와 C는 그 경로를 **고칠** 뿐이고, A는 그 경로를 **없앤다.**
+   이제 `npm run dev` / `npm start` / `smoke` / `bot` 이 전부 같은 파일을 실행한다.
+2. **소스를 한 줄도 고치지 않았다.** 57건의 `.js` 확장자는 NodeNext 기준으로 이미 옳다.
+3. **의존성을 늘리지 않았다.**
+4. 서버는 어차피 `@quiz/shared` 를 `shared/dist` 에서 가져오므로 **dev 에도 빌드 단계가
+   이미 필요했다.** server 까지 함께 빌드하는 비용은 사실상 없다.
+
+**구현**: `scripts/dev.mjs` — 한 번 빌드 → `tsc -b --watch` + `node --watch server/dist/index.js`.
+
+**함께 고친 것**
+
+- ★ `server/package.json` 의 깨진 `dev` 스크립트를 **제거했다.**
+  남겨 두면 같은 함정을 다시 밟는다. 실행 진입점은 루트 `npm run dev` 하나다
+- `dist` 가 없는데 `tsconfig.tsbuildinfo` 가 남아 있으면 `tsc` 가 "최신"이라 판단해
+  아무것도 만들지 않는다. dev 와 smoke 가 산출물 부재를 감지해 `--force` 로 빌드한다.
+  `npm run build:force` 도 추가했다
+
+**클라이언트는 문제가 없었다.** Vite 는 `'./api.js'` 를 `/src/api.ts` 로 정상 해석한다(실측).
+그래서 `vite build` 가 성공했고 문제가 서버 dev 경로에만 있었다.
+
+---
+
 ## D-019. 로그인 실패 메시지는 구분하지 않되, 회원가입은 구분한다
 
 **시점**: Phase 1 (R005)

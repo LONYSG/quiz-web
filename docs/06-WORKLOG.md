@@ -8,6 +8,102 @@
 
 ---
 
+## 2026-09-07 — `npm run dev` 실행 불가 사고 수정 (R006)
+
+### 무엇이 일어났는가
+
+`npm run dev` 가 서버를 띄우지 못했다.
+
+```
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'server\src\config.js'
+imported from server\src\index.ts
+```
+
+Phase 1 코드는 정상이었다. **깨진 것은 dev 실행 경로 하나였다.**
+
+### 원인
+
+tsconfig 의 `moduleResolution: NodeNext` 는 상대 import 에 컴파일 결과물의 확장자(`.js`)를
+쓰도록 요구한다. 반면 `node --experimental-strip-types` 는 import 문자열을 재작성하지 않고
+문자 그대로 파일을 찾는다. 두 규칙이 각각 옳고 조합이 불가능하다.
+
+실측 확인: `--experimental-strip-types` 로 `'./dep.js'` 는 실패, `'./dep.ts'` 는 성공.
+Node 22.18 에는 `.js` → `.ts` 재매핑이 없다.
+
+★ 저장소 전체 상대 import 57건을 감사했다. 전부 `.js` 확장자로 **일관**되어 있었다.
+즉 소스가 틀린 것이 아니라 **실행기 선택이 틀렸다.**
+
+### ★ 왜 R005에서 발견되지 않았는가
+
+정직하게 적는다. 세 검증이 각각 다른 이유로 못 잡았다.
+
+| 검증 | 왜 못 잡았는가 |
+|------|--------------|
+| typecheck | `tsc` 는 `./config.js` 를 컴파일 후 파일로 해석한다. TS 관점에서 이 코드는 옳다 |
+| build | 같은 이유. 컴파일이 성공하고 `dist/config.js` 가 실제로 만들어진다 |
+| 봇 테스트 21항목 | ★ **서버를 `node server/dist/index.js` 로 띄웠다.** 컴파일 산출물이라 정상 동작했다. `npm run dev` 는 한 번도 실행하지 않았다 |
+
+**★ 세 번째가 이번 사건의 본질이다.** 테스트가 사람이 쓰는 실행 경로와 다른 경로를 썼다.
+그래서 "테스트 전부 통과"와 "실행 불가"가 동시에 성립했다.
+
+typecheck·build 통과는 컴파일 가능성만 보장한다. **실행 가능성은 보장하지 않는다.**
+
+### 어떻게 고쳤는가
+
+세 선택지를 비교하고 **"dev 도 컴파일 산출물을 실행한다"** 를 택했다.
+근거는 [07-DECISIONS.md](07-DECISIONS.md) D-020.
+
+핵심 이유: 다른 선택지는 깨진 경로를 *고치지만*, 이것은 그 경로를 *없앤다*.
+이제 `npm run dev` / `npm start` / `smoke` / `bot` 이 전부 같은 파일을 실행한다.
+소스를 한 줄도 고치지 않았고 의존성도 늘리지 않았다.
+
+### 재발 방지
+
+1. `npm run smoke` — 빌드 → 기동 → `/healthz` → 클라이언트 서빙 → 소켓 핸드셰이크 →
+   종료 → 포트 해제. 9항목
+2. `npm run verify` = typecheck + test + smoke. **라운드 종료 게이트**
+3. `npm run bot` 이 서버가 없으면 사람과 같은 경로로 직접 띄운다
+4. `server/package.json` 의 깨진 `dev` 스크립트를 **제거**했다. 남겨 두면 다시 밟는다
+5. dist 부재 시 `--force` 빌드 (tsbuildinfo 만 남아 빌드가 no-op 되는 함정)
+6. [10-TESTING.md](10-TESTING.md) 0장에 "매 라운드 마지막에 `npm run verify`" 를 절차로 넣었다
+7. 같은 문서 7장에 **브라우저 수동 확인 절차**를 넣었다.
+   한글 IME 조합 중 Enter 와 모바일 화면은 봇으로 검증할 수 없다
+
+### 작업 중 발견한 것
+
+**smoke 스크립트 자체의 오탐 1건.**
+종료 판정을 `exit` 콜백의 `code` 만으로 했는데, Windows 에서 `child.kill()` 은 즉시 종료라
+`code=null, signal='SIGTERM'` 이 온다. `code` 만 보면 "신호로 종료됨"과 "아직 안 죽음"이
+둘 다 `null` 이라 구분되지 않았다. 첫 실행에서 실제로 이 오탐이 났다.
+→ `signal` 을 함께 추적하고 판정 기준을 "프로세스 소멸 + 포트 해제" 로 바꿨다.
+
+**클라이언트는 문제가 없었다.** Vite 는 `'./api.js'` 를 `/src/api.ts` 로 정상 해석한다.
+실측으로 확인했다(`/src/App.tsx` 응답에 `from "/src/api.ts"` 가 보인다).
+
+### 검증
+
+| 항목 | 결과 |
+|------|------|
+| `npm run dev` | ★ 정상 기동. `/healthz` 200 |
+| `npm run smoke` | 9/9 통과 |
+| `npm run bot` (서버 없는 상태) | 자동 기동 → duplicate 시나리오 통과 → 자동 종료 |
+| `npm run dev:client` | Vite 5173 정상. `/api` 401(미로그인), `/healthz` 프록시 200 |
+| Vite 모듈 해석 | `from "/src/api.ts"` — `.js` 지정자를 `.ts` 로 해석 확인 |
+| Vitest | 97건 통과 / 13건 skip |
+| typecheck / build | 통과 |
+
+### 남은 문제
+
+- 브라우저 수동 확인 4항목은 건우가 직접 해야 한다 (10-TESTING.md 7장)
+- 터미널 Ctrl+C 로 graceful shutdown 핸들러가 실행되는지는 확인하지 못했다 (확인 필요)
+- Track D 는 다음 라운드로 미뤘다
+
+### 다음 작업
+
+**R007 = Track D** (문제 데이터 파이프라인). R005 9-4의 순서 그대로.
+
+---
+
 ## 2026-09-07 — Phase 1 완료 (계정 / 세션 / 방) + Gemini·터널 검증
 
 ### 무엇을 했는가
