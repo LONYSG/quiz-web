@@ -79,13 +79,32 @@ export const RULES = {
   ROOM_IDLE_DELETE_MS: 10 * 60_000,
   /** 서버 tick 주기. R003 2-4 */
   TICK_INTERVAL_MS: 100,
-  /** 세션 유지 기간. Q-07 */
+  /** 세션 유지 기간. Q-07 (30일 슬라이딩) */
   SESSION_TTL_MS: 30 * 24 * 60 * 60_000,
+  /**
+   * 세션 슬라이딩 갱신 임계. 남은 기간이 이 값 미만일 때만 UPDATE 한다 (R003 4-1).
+   * 매 요청마다 갱신하면 DB 쓰기가 폭증하고 DB를 계속 깨워 둔다.
+   */
+  SESSION_SLIDING_THRESHOLD_MS: 15 * 24 * 60 * 60_000,
   /** 비밀번호 길이. Q-04 개정(8자 → 4자, R004 0장). 상한은 해시 알고리즘 제약 */
   PASSWORD_MIN_LENGTH: 4,
   PASSWORD_MAX_BYTES: 72,
-  /** 클라이언트 heartbeat 주기. R004 0장에서 목적이 재검토되었다 */
-  HEARTBEAT_INTERVAL_MS: 30_000,
+  /** 아이디 길이. 자체 판단 (R005 4-1) */
+  LOGIN_ID_MIN_LENGTH: 3,
+  LOGIN_ID_MAX_LENGTH: 20,
+  /** 닉네임 길이. 자체 판단 (R005 4-1) */
+  NICKNAME_MIN_LENGTH: 1,
+  NICKNAME_MAX_LENGTH: 12,
+  /** 방 제목 길이. R001 8-11 자체 판단(승인됨) */
+  ROOM_TITLE_MIN_LENGTH: 1,
+  ROOM_TITLE_MAX_LENGTH: 30,
+  /**
+   * 클라이언트 heartbeat 주기. Q-02 확정값은 4분이다.
+   * ★ 원래 목적(무료 호스팅의 15분 슬립 방지)은 로컬 PC 서버로 바뀌며 사라졌으나,
+   *   클라우드 전환 시 다시 필요해지므로 확정값을 그대로 유지한다.
+   *   연결 생존 감지는 Socket.IO ping(15s/10s, Q-51)이 담당한다.
+   */
+  HEARTBEAT_INTERVAL_MS: 4 * 60_000,
   /** 시계 오프셋 재측정 주기. R003 2-4 */
   TIME_SYNC_INTERVAL_MS: 30_000,
   /** 오프셋 채택에 사용하는 최근 측정 개수. R003 2-4 */
