@@ -11,4 +11,6 @@ export { generateHint, HINT_VERSION } from './hint.js';
 export { computeRanking, skipThreshold } from './ranking.js';
 export { maskAnswers, MASK_SENTINEL, MASK_SHORT_ANSWER_MAX } from './mask.js';
 export type { MaskResult } from './mask.js';
+export { validateRoomSettings, formatExperienceRate } from './settings.js';
+export type { RoomSettingsInput, SettingsValidation, StartMode } from './settings.js';
 export * from './protocol.js';
