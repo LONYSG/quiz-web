@@ -447,7 +447,20 @@ DB를 조회하면 안 되기 때문이다(docs/02-ARCHITECTURE.md "DB 접근 �
 로비에 있는 동안 값이 바뀔 일이 없다.
 
 **`error.code`** — `UNAUTHENTICATED` `NOT_IN_ROOM` `NOT_HOST` `INVALID_STATE`
-`BAD_REQUEST` `ROOM_FULL` `ROOM_NOT_FOUND` `ROOM_CLOSED` `ALREADY_HAS_ROOM` `INTERNAL`
+`BAD_REQUEST` `ROOM_FULL` `ROOM_NOT_FOUND` `ROOM_CLOSED` `ALREADY_HAS_ROOM`
+`NOT_ENOUGH_QUESTIONS` `INTERNAL`
+
+> ★ **`error` 는 사람 화면에 반드시 도달해야 한다** (R008 / D-027).
+> 클라이언트는 화면 종류와 무관하게 `Notice` 배너 한 곳에서만 표시한다.
+> `detail` 에 실제 숫자와 해야 할 일이 들어 있으므로 `message` 만 보여주면 안 된다.
+>
+> ★ `INTERNAL` 은 핸들러가 예외를 던졌을 때 전송한다.
+> R008 이전에는 로그만 남기고 전송하지 않았고, 그래서 사용자에게는
+> "버튼을 눌렀는데 아무 일도 없다" 와 구분되지 않았다.
+> ★ 예외 메시지 자체는 담지 않는다. 이벤트 이름과 seq 만 담는다.
+>
+> ★ `NOT_ENOUGH_QUESTIONS` 를 `INVALID_STATE` 와 구분하는 이유는
+> 원인이 설정값이고 사용자가 문제 수를 줄이면 해결되기 때문이다.
 
 > ★ `ROOM_NOT_FOUND` 와 `ROOM_CLOSED` 를 구분하는 것이 guide 49절 요구다.
 > 메모리에 방이 없으면 DB를 보고 `closed_at` 으로 판별한다.

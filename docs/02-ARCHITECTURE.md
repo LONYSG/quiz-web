@@ -241,8 +241,9 @@ npm run dev:tunnel        # 터미널 B: 터널. 출력된 https 주소를 공�
 ### 그 밖의 명령
 
 ```bash
-npm run verify            # ★ 라운드 종료 게이트: typecheck + test + smoke
+npm run verify            # ★ 라운드 종료 게이트: typecheck + test + smoke + ui-check
 npm run smoke             # 실행 확인 (빌드 → 기동 → 응답 → 종료 → 포트 해제)
+npm run ui-check          # ★ 브라우저 확인 (실제 Chrome 조작. 없으면 건너뛴다)
 npm test                  # Vitest
 npm run typecheck         # 전체 타입 검사
 npm run bot -- <시나리오>  # 봇 테스트 (서버가 없으면 직접 띄운다)
