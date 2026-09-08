@@ -33,12 +33,14 @@
     "reset-password": "node scripts/reset-password.mjs",
     "verify:gemini": "node scripts/verify-gemini.mjs",
     "smoke": "node scripts/smoke.mjs",
-    "verify": "npm run typecheck && npm test && npm run smoke",
-    "build:force": "tsc -b shared server client --force && npm run build -w client"
+    "verify": "npm run typecheck && npm test && npm run smoke && npm run ui-check",
+    "build:force": "tsc -b shared server client --force && npm run build -w client",
+    "ui-check": "node scripts/ui-check.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "ws": "^8.18.0"
   }
 }
