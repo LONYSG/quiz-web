@@ -1,0 +1,256 @@
+{
+  "_meta": {
+    "sourceId": "opentdb",
+    "batch": "2026-09-08-batch01",
+    "processModel": "gemini-3.8-flash",
+    "backcheckModel": "gemini-3.7-flash",
+    "promptVersion": "p1",
+    "generatedAt": "2026-09-08T06:44:33.387Z",
+    "counts": {
+      "input": 100,
+      "filtered": 10,
+      "aiRejected": 7,
+      "backcheckRejected": 0,
+      "rulesRejected": 0,
+      "accepted": 3
+    },
+    "tokens": {
+      "total": 7740,
+      "prompt": 3003,
+      "output": 2049,
+      "thoughts": 2688,
+      "calls": 2
+    },
+    "modelUsage": {
+      "gemini-3.6-flash": 1,
+      "gemini-3.5-flash": 1
+    },
+    "filterReasons": {
+      "references_options_negated": 9,
+      "answer_too_long": 1
+    },
+    "aiReasons": {
+      "krAccessible": 4,
+      "convertible": 3,
+      "uniqueAnswer": 2
+    },
+    "stoppedByRateLimit": true,
+    "rejudgedAt": "2026-09-08T06:53:53.216Z",
+    "rejudgePromptVersion": "p2",
+    "collectedAt": "2026-09-08T06:55:44.835Z"
+  },
+  "items": [
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-a900b615937f4aa9",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "In the 2014 film \"Birdman\", what is the primary instrument in the score?",
+        "correct": "Drums",
+        "incorrect": [
+          "Saxophone",
+          "Violin",
+          "Actual Live Birds Singing"
+        ],
+        "category": "Entertainment: Film",
+        "difficulty": "medium"
+      },
+      "generated": {
+        "questionKo": "2014년 영화 '버드맨'의 영화 음악(스코어)에서 중심적으로 사용된 악기는?",
+        "displayAnswer": "드럼",
+        "answers": [
+          "드럼",
+          "Drums",
+          "drum",
+          "드럼 세트",
+          "드럼킷"
+        ],
+        "hintAnswer": "드럼",
+        "category": "영화",
+        "difficulty": "medium",
+        "explanation": "2014년 영화 '버드맨'의 오리지널 스코어는 안토니오 산체스의 드럼 연주를 중심으로 구성되어 있다.",
+        "answerLang": "ko"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 0.95,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "드럼",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [
+          "드럼 세트",
+          "드럼킷"
+        ],
+        "note": "역검증이 정답을 맞혔으나 집합 밖 대안을 제시했다: 드럼 세트, 드럼킷"
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "approved",
+        "note": "검수: 역검증이 제시한 표기 변형 \"드럼 세트\", \"드럼킷\" 을 추가했다",
+        "reviewedAt": "2026-09-08T06:55:44.271Z"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:44:17.888Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-cb0442e16e8a2880",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "What is the code name of Morgana the cat in Persona 5?",
+        "correct": "Mona",
+        "incorrect": [
+          "Panther",
+          "Nightstalker",
+          "Zorro"
+        ],
+        "category": "Entertainment: Video Games",
+        "difficulty": "easy"
+      },
+      "generated": {
+        "questionKo": "게임 '페르소나 5'에서 고양이 모습을 한 캐릭터 모르가나의 괴도단 코드네임은?",
+        "displayAnswer": "모나",
+        "answers": [
+          "모나",
+          "Mona"
+        ],
+        "hintAnswer": "모나",
+        "category": "기타",
+        "difficulty": "medium",
+        "explanation": "게임 '페르소나 5'에서 모르가나의 괴도단 코드네임은 모나(Mona)이다.",
+        "answerLang": "ko"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 0.9,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "모나",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "approved",
+        "note": null,
+        "reviewedAt": "2026-09-08T06:55:44.272Z"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:44:17.889Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-268ef3593977b62f",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "Alzheimer's disease primarily affects which part of the human body?",
+        "correct": "Brain",
+        "incorrect": [
+          "Lungs",
+          "Skin",
+          "Heart"
+        ],
+        "category": "Science &amp; Nature",
+        "difficulty": "easy"
+      },
+      "generated": {
+        "questionKo": "알츠하이머병은 인체의 어느 부위에 주로 영향을 미치는가?",
+        "displayAnswer": "뇌",
+        "answers": [
+          "뇌",
+          "Brain"
+        ],
+        "hintAnswer": "뇌",
+        "category": "과학",
+        "difficulty": "easy",
+        "explanation": "알츠하이머병은 뇌의 퇴행성 질환으로 기억력과 인지 기능의 저하를 유발한다.",
+        "answerLang": "ko"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 0.98,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "뇌",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [
+          "대뇌"
+        ],
+        "note": "역검증이 정답을 맞혔으나 집합 밖 대안을 제시했다: 대뇌"
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": false,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "approved",
+        "note": "역검증이 정답을 맞혔으나 집합 밖 대안을 제시했다: 대뇌",
+        "reviewedAt": "2026-09-08T06:55:44.272Z"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:44:17.890Z",
+        "totalTokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,766 @@
+{
+  "_meta": {
+    "sourceId": "opentdb",
+    "batch": "2026-09-08-batch02",
+    "processModel": "gemini-3.8-flash",
+    "backcheckModel": "gemini-3.7-flash",
+    "promptVersion": "p1",
+    "generatedAt": "2026-09-08T06:49:03.193Z",
+    "counts": {
+      "input": 100,
+      "filtered": 3,
+      "aiRejected": 3,
+      "backcheckRejected": 0,
+      "rulesRejected": 0,
+      "accepted": 7
+    },
+    "tokens": {
+      "total": 10496,
+      "prompt": 3209,
+      "output": 2753,
+      "thoughts": 4534,
+      "calls": 2
+    },
+    "modelUsage": {
+      "gemini-3.6-flash": 1,
+      "gemini-3.5-flash": 1
+    },
+    "filterReasons": {
+      "references_options_negated": 3
+    },
+    "aiReasons": {
+      "convertible": 1,
+      "krAccessible": 2
+    },
+    "stoppedByRateLimit": true,
+    "rejudgedAt": "2026-09-08T06:53:53.223Z",
+    "rejudgePromptVersion": "p2"
+  },
+  "items": [
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-82355b2def85495e",
+      "verdict": "reject",
+      "rejectedAt": "filter",
+      "rejectReasons": [
+        "references_options_negated"
+      ],
+      "source": {
+        "question": "In CSS, which of these values CANNOT be used with the \"position\" property?",
+        "correct": "center",
+        "incorrect": [
+          "static",
+          "absolute",
+          "relative"
+        ],
+        "category": "Science: Computers",
+        "difficulty": "medium"
+      },
+      "generated": null,
+      "ai": null,
+      "backcheck": null,
+      "rules": null,
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.8-flash",
+        "backcheckModel": null,
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:48:04.572Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-108647a1621e4d39",
+      "verdict": "reject",
+      "rejectedAt": "filter",
+      "rejectReasons": [
+        "references_options_negated"
+      ],
+      "source": {
+        "question": "Which of these is NOT a name of a city in the main island of PLAYERUNKNOWN'S BATTLEGROUNDS?",
+        "correct": "Belushya Guba",
+        "incorrect": [
+          "Yasnaya Polyana",
+          "Pochinki",
+          "Georgopol"
+        ],
+        "category": "Entertainment: Video Games",
+        "difficulty": "medium"
+      },
+      "generated": null,
+      "ai": null,
+      "backcheck": null,
+      "rules": null,
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.8-flash",
+        "backcheckModel": null,
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:48:04.572Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-a6dd3989ed0cecc0",
+      "verdict": "reject",
+      "rejectedAt": "filter",
+      "rejectReasons": [
+        "references_options_negated"
+      ],
+      "source": {
+        "question": "Which of the following games was NOT included in Valve's \"The Orange Box\"?",
+        "correct": "Left 4 Dead",
+        "incorrect": [
+          "Half-Life 2: Episode Two",
+          "Portal",
+          "Team Fortress 2"
+        ],
+        "category": "Entertainment: Video Games",
+        "difficulty": "easy"
+      },
+      "generated": null,
+      "ai": null,
+      "backcheck": null,
+      "rules": null,
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.8-flash",
+        "backcheckModel": null,
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:48:04.572Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-0972f7815e67d8e4",
+      "verdict": "reject",
+      "rejectedAt": "ai",
+      "rejectReasons": [
+        "convertible"
+      ],
+      "source": {
+        "question": "Which ones of these Mario Kart games was made for the Gameboy Advance?",
+        "correct": "Mario Kart: Super Circuit",
+        "incorrect": [
+          "Mario Kart: Double Dash",
+          "Mario Kart 64",
+          "Super Mario Kart"
+        ],
+        "category": "Entertainment: Video Games",
+        "difficulty": "medium"
+      },
+      "generated": null,
+      "ai": {
+        "convertible": false,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 0.95,
+        "rejectReason": "convertible: 질문이 보기 선택지를 전제하고 있다."
+      },
+      "backcheck": null,
+      "rules": null,
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": null,
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:48:54.126Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-ea6617a198580e7a",
+      "verdict": "reject",
+      "rejectedAt": "ai",
+      "rejectReasons": [
+        "krAccessible"
+      ],
+      "source": {
+        "question": "The Red Hot Chili Pepper song \"Give It Away\" is from what album?",
+        "correct": "Blood Sugar Sex Magik",
+        "incorrect": [
+          "One Hot Minute",
+          "By the Way",
+          "Stadium Arcadium"
+        ],
+        "category": "Entertainment: Music",
+        "difficulty": "easy"
+      },
+      "generated": null,
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 2,
+        "koreanTerm": true,
+        "confidence": 0.95,
+        "rejectReason": "krAccessible: 한국 일반 성인에게 지나치게 지엽적인 해외 대중음악 정보이다."
+      },
+      "backcheck": null,
+      "rules": null,
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": null,
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:48:54.126Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-f084b241f4ccd41a",
+      "verdict": "reject",
+      "rejectedAt": "ai",
+      "rejectReasons": [
+        "krAccessible"
+      ],
+      "source": {
+        "question": "Which English king was married to Eleanor of Aquitaine?",
+        "correct": "Henry II",
+        "incorrect": [
+          "Richard I",
+          "Henry I",
+          "Henry V"
+        ],
+        "category": "History",
+        "difficulty": "hard"
+      },
+      "generated": null,
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 2,
+        "koreanTerm": true,
+        "confidence": 0.95,
+        "rejectReason": "krAccessible: 한국 일반 성인에게 지나치게 지엽적인 서양 중세 역사 문제이다."
+      },
+      "backcheck": null,
+      "rules": null,
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": null,
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:48:54.127Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-1eab73a417ce4d03",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "Which Animal Crossing game was for the Nintendo Wii?",
+        "correct": "Animal Crossing: City Folk",
+        "incorrect": [
+          "Animal Crossing: New Leaf",
+          "Animal Crossing: Wild World",
+          "Animal Crossing: Population Growing!"
+        ],
+        "category": "Entertainment: Video Games",
+        "difficulty": "easy"
+      },
+      "generated": {
+        "questionKo": "닌텐도 Wii용으로 출시된 '동물의 숲' 시리즈 게임은 무엇인가?",
+        "displayAnswer": "타운으로 놀러가요 동물의 숲",
+        "answers": [
+          "타운으로 놀러가요 동물의 숲",
+          "Animal Crossing: City Folk",
+          "타동숲"
+        ],
+        "hintAnswer": "타운으로 놀러가요 동물의 숲",
+        "category": "기타",
+        "difficulty": "medium",
+        "explanation": "닌텐도 Wii용으로 발매된 동물의 숲 시리즈 작품은 '타운으로 놀러가요 동물의 숲'이다.",
+        "answerLang": "ko"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 0.9,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "타운으로 놀러가요 동물의 숲",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [
+          "동물의 숲 타운으로 놀러가요"
+        ],
+        "note": "역검증이 정답을 맞혔으나 집합 밖 대안을 제시했다: 동물의 숲 타운으로 놀러가요"
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "approved",
+        "note": "역검증이 정답을 맞혔으나 집합 밖 대안을 제시했다: 동물의 숲 타운으로 놀러가요",
+        "reviewedAt": "2026-09-08T06:55:44.273Z"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:49:02.787Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-e4b867d1e86393da",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "Who portrayed Han Solo in the Star Wars main film series?",
+        "correct": "Harrison Ford",
+        "incorrect": [
+          "Peter Cushing",
+          "Mark Hamill",
+          "Alec Guinness"
+        ],
+        "category": "Entertainment: Film",
+        "difficulty": "easy"
+      },
+      "generated": {
+        "questionKo": "영화 '스타워즈' 메인 시리즈에서 한 솔로를 연기한 배우는 누구인가?",
+        "displayAnswer": "해리슨 포드",
+        "answers": [
+          "해리슨 포드",
+          "Harrison Ford",
+          "포드"
+        ],
+        "hintAnswer": "해리슨 포드",
+        "category": "영화",
+        "difficulty": "easy",
+        "explanation": "영화 스타워즈 시리즈에서 한 솔로 역은 배우 해리슨 포드가 연기했다.",
+        "answerLang": "ko"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 0.98,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "해리슨 포드",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "approved",
+        "note": null,
+        "reviewedAt": "2026-09-08T06:55:44.273Z"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:49:02.788Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-2da75329c0ba7aa1",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "Butters Stotch, Pip Pirrup, and Wendy Testaburger are all characters in which long running animated TV series?",
+        "correct": "South Park",
+        "incorrect": [
+          "The Simpsons",
+          "Family Guy",
+          "Bob's Burgers"
+        ],
+        "category": "Entertainment: Cartoon &amp; Animations",
+        "difficulty": "easy"
+      },
+      "generated": {
+        "questionKo": "버터스 스토치, 핍 파이럽, 웬디 테스타버거 등의 캐릭터가 등장하는 영미권의 장수 애니메이션 시리즈는 무엇인가?",
+        "displayAnswer": "사우스 파크",
+        "answers": [
+          "사우스 파크",
+          "사우스파크",
+          "South Park"
+        ],
+        "hintAnswer": "사우스 파크",
+        "category": "기타",
+        "difficulty": "medium",
+        "explanation": "버터스 스토치, 핍 파이럽, 웬디 테스타버거는 미국 애니메이션 '사우스 파크'의 캐릭터이다.",
+        "answerLang": "ko"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 0.9,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "사우스 파크",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": true,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [
+          "normalized_collision"
+        ],
+        "pass": true
+      },
+      "review": {
+        "status": "approved",
+        "note": null,
+        "reviewedAt": "2026-09-08T06:55:44.273Z"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:49:02.789Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-d6409bef02fb4bb7",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "In most traditions, who was the wife of Zeus?",
+        "correct": "Hera",
+        "incorrect": [
+          "Aphrodite",
+          "Athena",
+          "Hestia"
+        ],
+        "category": "Mythology",
+        "difficulty": "easy"
+      },
+      "generated": {
+        "questionKo": "그리스 신화에서 주신 제우스의 아내는 누구인가?",
+        "displayAnswer": "헤라",
+        "answers": [
+          "헤라",
+          "Hera"
+        ],
+        "hintAnswer": "헤라",
+        "category": "신화",
+        "difficulty": "easy",
+        "explanation": "그리스 신화에서 주신 제우스의 아내는 헤라이다.",
+        "answerLang": "ko"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 0.98,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "헤라",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "approved",
+        "note": null,
+        "reviewedAt": "2026-09-08T06:55:44.273Z"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:49:02.789Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-7979b383163f259d",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "What machine element is located in the center of fidget spinners?",
+        "correct": "Bearings",
+        "incorrect": [
+          "Axles",
+          "Gears",
+          "Belts"
+        ],
+        "category": "General Knowledge",
+        "difficulty": "easy"
+      },
+      "generated": {
+        "questionKo": "피젯 스피너의 중심에 위치하는 기계 부품은 무엇인가?",
+        "displayAnswer": "베어링",
+        "answers": [
+          "베어링",
+          "볼 베어링",
+          "볼베어링",
+          "Bearings",
+          "Bearing"
+        ],
+        "hintAnswer": "베어링",
+        "category": "일반상식",
+        "difficulty": "easy",
+        "explanation": "피젯 스피너의 중심에는 회전을 원활하게 돕는 기계 부품인 베어링이 위치한다.",
+        "answerLang": "ko"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 0.95,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "베어링",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": true,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [
+          "normalized_collision"
+        ],
+        "pass": true
+      },
+      "review": {
+        "status": "approved",
+        "note": null,
+        "reviewedAt": "2026-09-08T06:55:44.273Z"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:49:02.789Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-43f71c75071cf530",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "How many degrees make a full circle?",
+        "correct": "360",
+        "incorrect": [
+          "180",
+          "90",
+          "720"
+        ],
+        "category": "Science: Mathematics",
+        "difficulty": "easy"
+      },
+      "generated": {
+        "questionKo": "원 한 바퀴를 이루는 각도는 몇 도인가?",
+        "displayAnswer": "360",
+        "answers": [
+          "360",
+          "360도",
+          "삼백육십",
+          "삼백육십도"
+        ],
+        "hintAnswer": "360",
+        "category": "수학",
+        "difficulty": "easy",
+        "explanation": "원 한 바퀴를 이루는 회전각의 크기는 360도이다.",
+        "answerLang": "ko"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 0.98,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "360도",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "approved",
+        "note": null,
+        "reviewedAt": "2026-09-08T06:55:44.273Z"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:49:02.789Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "opentdb",
+      "sourceRef": "otdb-583ba1f76eb4cdf6",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "What country has had prime ministers named Eden, Major, Peel, Law, Brown and Heath?",
+        "correct": "United Kingdom",
+        "incorrect": [
+          "Australia",
+          "New Zealand",
+          "Canada"
+        ],
+        "category": "General Knowledge",
+        "difficulty": "easy"
+      },
+      "generated": {
+        "questionKo": "이든, 메이저, 필, 브라운, 히스 등을 총리로 두었던 국가는 어디인가?",
+        "displayAnswer": "영국",
+        "answers": [
+          "영국",
+          "연합왕국",
+          "United Kingdom",
+          "UK"
+        ],
+        "hintAnswer": "영국",
+        "category": "역사",
+        "difficulty": "medium",
+        "explanation": "이든, 메이저, 필, 브라운, 히스는 모두 영국의 총리들이었다.",
+        "answerLang": "ko"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 0.92,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "영국",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [
+          "그레이트브리튼 북아일랜드 연합왕국"
+        ],
+        "note": "역검증이 정답을 맞혔으나 집합 밖 대안을 제시했다: 그레이트브리튼 북아일랜드 연합왕국"
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "approved",
+        "note": "역검증이 정답을 맞혔으나 집합 밖 대안을 제시했다: 그레이트브리튼 북아일랜드 연합왕국",
+        "reviewedAt": "2026-09-08T06:55:44.273Z"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p1",
+        "processedAt": "2026-09-08T06:49:02.789Z",
+        "totalTokens": 0
+      }
+    }
+  ]
+}
