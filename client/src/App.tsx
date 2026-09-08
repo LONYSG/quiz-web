@@ -9,12 +9,19 @@
 // ★ 초대 링크(/r/<roomId>)로 들어온 경우
 //   guide 4절: 미로그인이면 로그인 후 해당 방으로 진입하고, 로그인 상태면 즉시 진입한다.
 //   → 경로에서 roomId를 뽑아 두고 인증이 되면 자동으로 join 한다.
+//
+// ★★ 렌더 구조 규칙 (R008 / docs/07-DECISIONS.md D-027)
+//   화면이 무엇이든 **하나의 셸(shell)로만 렌더한다.**
+//   그 셸이 안내 배너를 항상 같은 자리에 그린다.
+//   ★ 화면마다 return 을 따로 두고 각자 배너를 그리면, 그중 하나에서 빼먹는다.
+//     실제로 그렇게 해서 서버의 거부 사유가 로비 화면에서만 보이지 않았다.
 // =============================================================================
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { io, type Socket } from 'socket.io-client';
 import AuthScreen from './AuthScreen.js';
 import Lobby from './Lobby.js';
+import Notice, { type NoticeContent } from './Notice.js';
 import { errorMessage, fetchMe, logout, type Account } from './api.js';
 import { useRoom } from './useRoom.js';
 import { useServerClock } from './useServerClock.js';
@@ -32,7 +39,7 @@ export default function App() {
   const [pendingRoomId, setPendingRoomId] = useState<string | null>(roomIdFromPath());
   const [title, setTitle] = useState('');
   const [joinId, setJoinId] = useState('');
-  const [notice, setNotice] = useState<string | null>(null);
+  const [notice, setNotice] = useState<NoticeContent | null>(null);
 
   const room = useRoom(socket);
   const clock = useServerClock(socket);
@@ -94,10 +101,16 @@ export default function App() {
     setPendingRoomId(null);
   }, [room.snapshot]);
 
-  // ── 방 관련 에러 처리
+  // ── ★ 서버 에러를 화면에 띄우는 유일한 경로
+  //   ★ useRoom 이 소켓의 error 이벤트를 그대로 넘겨준다. 여기서 배너로 바꾼다.
+  //     화면 종류와 무관하게 이 한 곳만 지나간다.
   useEffect(() => {
     if (!room.error) return;
-    setNotice(room.error.message);
+    setNotice({
+      message: room.error.message,
+      detail: room.error.detail,
+      code: room.error.code,
+    });
     // 들어갈 수 없는 방이면 대기 상태를 풀고 URL도 되돌린다
     if (['ROOM_NOT_FOUND', 'ROOM_CLOSED', 'ROOM_FULL'].includes(room.error.code)) {
       setPendingRoomId(null);
@@ -109,7 +122,7 @@ export default function App() {
     if (!socket) return;
     const trimmed = title.trim();
     if (!trimmed) {
-      setNotice('방 제목을 입력해 주세요.');
+      setNotice({ message: '방 제목을 입력해 주세요.' });
       return;
     }
     socket.emit('room.create', { title: trimmed });
@@ -118,7 +131,12 @@ export default function App() {
   const joinRoom = useCallback(() => {
     if (!socket) return;
     const trimmed = joinId.trim();
-    if (!trimmed) return;
+    // ★ 조용히 반환하지 않는다. 아무 반응이 없으면 사용자는 고장으로 받아들인다.
+    //   이번 라운드 결함의 원인이 정확히 그것이었다.
+    if (!trimmed) {
+      setNotice({ message: '방 ID를 입력해 주세요.' });
+      return;
+    }
     socket.emit('room.join', { roomId: trimmed });
   }, [socket, joinId]);
 
@@ -131,7 +149,7 @@ export default function App() {
     try {
       await logout();
     } catch (err) {
-      setNotice(errorMessage(err));
+      setNotice({ message: errorMessage(err) });
     }
     setAccount(null);
     window.history.replaceState(null, '', '/');
@@ -142,117 +160,135 @@ export default function App() {
     return `서버 시각 오프셋 ${clock.offset >= 0 ? '+' : ''}${clock.offset}ms / RTT ${clock.rtt}ms`;
   }, [clock.offset, clock.rtt]);
 
-  if (loading) {
-    return (
-      <main className="wrap narrow">
-        <p className="note">불러오는 중…</p>
-      </main>
-    );
-  }
+  // ── 화면 선택. ★ return 은 이 함수 하나에서만 한다.
+  const view = (() => {
+    if (loading) {
+      return { narrow: true, body: <p className="note">불러오는 중…</p>, foot: null };
+    }
 
-  if (room.terminated) {
-    return (
-      <main className="wrap narrow">
-        <h1>연결이 종료되었습니다</h1>
-        <p className="notice">
-          다른 곳에서 접속하여 이 연결이 종료되었습니다. 한 계정은 한 곳에서만 접속할 수
-          있습니다.
-        </p>
-        <button type="button" onClick={() => window.location.reload()}>
-          다시 접속
-        </button>
-      </main>
-    );
-  }
+    if (room.terminated) {
+      return {
+        narrow: true,
+        body: (
+          <>
+            <h1>연결이 종료되었습니다</h1>
+            <p className="note">
+              다른 곳에서 접속하여 이 연결이 종료되었습니다. 한 계정은 한 곳에서만 접속할
+              수 있습니다.
+            </p>
+            <button type="button" onClick={() => window.location.reload()}>
+              다시 접속
+            </button>
+          </>
+        ),
+        foot: null,
+      };
+    }
 
-  if (!account) {
-    return <AuthScreen onAuthed={setAccount} pendingRoomId={pendingRoomId} />;
-  }
+    if (!account) {
+      return {
+        narrow: true,
+        body: <AuthScreen onAuthed={setAccount} pendingRoomId={pendingRoomId} />,
+        foot: null,
+      };
+    }
 
-  if (room.snapshot && socket) {
-    return (
-      <main className="wrap">
-        <Lobby
-          socket={socket}
-          snapshot={room.snapshot}
-          chat={room.chat}
-          onLeave={leaveRoom}
-          serverNow={clock.serverNow}
-        />
-        <footer className="foot">
+    if (room.snapshot && socket) {
+      return {
+        narrow: false,
+        body: (
+          <Lobby
+            socket={socket}
+            snapshot={room.snapshot}
+            chat={room.chat}
+            onLeave={leaveRoom}
+            serverNow={clock.serverNow}
+          />
+        ),
+        foot: (
+          <>
+            <span className="dim mono">{clockLine}</span>
+            <button type="button" className="ghost tiny" onClick={doLogout}>
+              로그아웃
+            </button>
+          </>
+        ),
+      };
+    }
+
+    return {
+      narrow: true,
+      body: (
+        <>
+          <header className="lobby-head">
+            <div>
+              <h1>상식 퀴즈</h1>
+              <p className="sub">
+                <span className="nick">{account.nickname}</span> 님으로 접속 중
+              </p>
+            </div>
+            <button type="button" className="ghost" onClick={doLogout}>
+              로그아웃
+            </button>
+          </header>
+
+          <section className="card">
+            <h2>방 만들기</h2>
+            <div className="field-row">
+              <input
+                value={title}
+                maxLength={30}
+                placeholder="방 제목 (1~30자)"
+                onChange={(e) => setTitle(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.nativeEvent.isComposing) createRoom();
+                }}
+              />
+              <button type="button" onClick={createRoom} disabled={!socket}>
+                만들기
+              </button>
+            </div>
+            <p className="note">한 사람이 동시에 가질 수 있는 방은 하나입니다.</p>
+          </section>
+
+          <section className="card">
+            <h2>초대 링크로 입장</h2>
+            <div className="field-row">
+              <input
+                value={joinId}
+                placeholder="방 ID"
+                className="mono"
+                onChange={(e) => setJoinId(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.nativeEvent.isComposing) joinRoom();
+                }}
+              />
+              <button type="button" onClick={joinRoom} disabled={!socket}>
+                입장
+              </button>
+            </div>
+            <p className="note">
+              보통은 받은 링크를 그대로 열면 됩니다. 이 입력창은 링크가 깨졌을 때를 위한
+              것입니다.
+            </p>
+          </section>
+        </>
+      ),
+      foot: (
+        <>
           <span className="dim mono">{clockLine}</span>
-          <button type="button" className="ghost tiny" onClick={doLogout}>
-            로그아웃
-          </button>
-        </footer>
-      </main>
-    );
-  }
+          <span className="dim mono">{window.location.origin}</span>
+        </>
+      ),
+    };
+  })();
 
   return (
-    <main className="wrap narrow">
-      <header className="lobby-head">
-        <div>
-          <h1>상식 퀴즈</h1>
-          <p className="sub">
-            <span className="nick">{account.nickname}</span> 님으로 접속 중
-          </p>
-        </div>
-        <button type="button" className="ghost" onClick={doLogout}>
-          로그아웃
-        </button>
-      </header>
-
-      {notice && (
-        <p className="notice" onClick={() => setNotice(null)}>
-          {notice}
-        </p>
-      )}
-
-      <section className="card">
-        <h2>방 만들기</h2>
-        <div className="field-row">
-          <input
-            value={title}
-            maxLength={30}
-            placeholder="방 제목 (1~30자)"
-            onChange={(e) => setTitle(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.nativeEvent.isComposing) createRoom();
-            }}
-          />
-          <button type="button" onClick={createRoom} disabled={!socket}>
-            만들기
-          </button>
-        </div>
-        <p className="note">한 사람이 동시에 가질 수 있는 방은 하나입니다.</p>
-      </section>
-
-      <section className="card">
-        <h2>초대 링크로 입장</h2>
-        <div className="field-row">
-          <input
-            value={joinId}
-            placeholder="방 ID"
-            className="mono"
-            onChange={(e) => setJoinId(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.nativeEvent.isComposing) joinRoom();
-            }}
-          />
-          <button type="button" onClick={joinRoom} disabled={!socket}>
-            입장
-          </button>
-        </div>
-        <p className="note">
-          보통은 받은 링크를 그대로 열면 됩니다. 이 입력창은 링크가 깨졌을 때를 위한 것입니다.
-        </p>
-      </section>
-
-      <footer className="foot">
-        <span className="dim mono">{clockLine}</span>
-        <span className="dim mono">{window.location.origin}</span>
-      </footer>
+    <main className={view.narrow ? 'wrap narrow' : 'wrap'}>
+      {/* ★ 안내 배너는 화면 종류와 무관하게 항상 여기 있다 (D-027) */}
+      <Notice content={notice} onDismiss={() => setNotice(null)} />
+      {view.body}
+      {view.foot && <footer className="foot">{view.foot}</footer>}
     </main>
   );
 }

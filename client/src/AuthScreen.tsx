@@ -3,6 +3,9 @@
 //
 // ★ 비밀번호 복구 기능이 없다 (Q-04 확정). 그 사실을 화면에 알려 준다.
 //   알려주지 않으면 잊어버린 사람이 무한히 시도한다.
+//
+// ★ <main> 을 여기서 만들지 않는다. App 의 셸 안에 들어간다 (D-027).
+//   셸이 안내 배너를 항상 같은 자리에 그리기 때문이다.
 // =============================================================================
 
 import { useState } from 'react';
@@ -40,12 +43,14 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
   };
 
   return (
-    <main className="wrap narrow">
+    <>
       <h1>상식 퀴즈</h1>
       <p className="sub">친구들과 함께하는 실시간 주관식 퀴즈</p>
 
+      {/* ★ 이것은 에러가 아니라 안내다. 배너(.notice)와 다른 모양을 쓴다.
+          같은 모양이면 사용자가 "무슨 문제가 생겼나" 로 읽는다. */}
       {pendingRoomId && (
-        <p className="notice">로그인하면 초대받은 방으로 바로 들어갑니다.</p>
+        <p className="info">로그인하면 초대받은 방으로 바로 들어갑니다.</p>
       )}
 
       <section className="card">
@@ -123,6 +128,6 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
           만들지 않았습니다. 잊었다면 서버를 켜 준 사람에게 재설정을 요청해 주세요.
         </p>
       </section>
-    </main>
+    </>
   );
 }
