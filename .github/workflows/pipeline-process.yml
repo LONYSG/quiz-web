@@ -1,0 +1,99 @@
+# =============================================================================
+# 문제 가공 (Track D / 작업 G) — ★ 배치의 본체
+#
+# ★ 이 잡만 정기 실행한다. 수확은 수동이다 (pipeline-harvest.yml 주석 참조).
+#   가공은 무료 한도에 걸려 한 번에 다 못 하므로 매일 조금씩 진행하는 것이 맞다.
+#
+# ★★ 비밀값
+#   GEMINI_API_KEY 는 **GitHub Secrets 에만** 둔다. 저장소가 Public 이다.
+#   · 로그에 값이 찍히지 않는다 — pipeline/src/gemini.ts 가 scrub() 으로 지운다
+#   · 키를 쿼리스트링이 아니라 x-goog-api-key 헤더로 보낸다
+#   · ★ 키가 없으면 이 잡은 시작하지 않고 실패한다. 조용히 넘어가지 않는다
+#
+# ★★ 429 처리와 예산 가드가 Actions 에서도 동작해야 한다 (작업 A / Q-54)
+#   상태 파일 data/pipeline/state/daily.json 을 **저장소에 커밋한다.**
+#   Actions 는 실행마다 새 컨테이너이므로 파일로 남기지 않으면
+#   "어제 429 를 맞았다" 를 다음 실행이 알 수 없다.
+#   ★ 그 파일이 커밋되어야 게이트가 실제로 작동한다.
+#
+# ★ 게이트에 걸려 아무것도 하지 않는 것은 **성공**이다 (종료 코드 0).
+#   실패로 만들면 매일 실패 알림이 오고, 진짜 실패를 놓친다.
+# =============================================================================
+
+name: pipeline-process
+
+on:
+  schedule:
+    # ★ UTC 01:00 = KST 10:00. 일일 한도 기준이 UTC 자정이라고 가정했으므로(D-034)
+    #   자정 직후를 피해 1시간 뒤에 돈다. 리셋 경계에서 걸치는 것을 막는다.
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: '가공할 최대 건수 (예산 상한이 더 낮으면 그쪽을 따른다)'
+        required: false
+        default: '50'
+
+permissions:
+  contents: write
+
+# ★ 같은 워크플로가 겹쳐 돌면 한도를 두 배로 쓴다. 하나만 돌게 한다.
+concurrency:
+  group: pipeline-process
+  cancel-in-progress: false
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: 의존성 설치
+        run: npm ci
+
+      - name: 빌드
+        run: npm run build -w shared && npm run build -w pipeline
+
+      # ★ 키가 없으면 여기서 멈춘다. 없는 채로 진행해 조용히 실패하지 않게 한다.
+      - name: 비밀값 확인
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::GEMINI_API_KEY 시크릿이 없다. Settings > Secrets 에 추가한다."
+            exit 1
+          fi
+          echo "키 확인: 설정됨 (길이 ${#GEMINI_API_KEY})"   # ★ 길이만 출력한다
+
+      - name: 가공
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: npm run pipeline:process -- --limit "${{ inputs.limit || '50' }}"
+
+      - name: 결과와 예산 상태 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # ★ 상태 파일을 반드시 함께 커밋한다. 이것이 429 게이트의 기억이다.
+          git add data/pipeline/processed data/pipeline/state
+          if git diff --cached --quiet; then
+            echo "변경이 없다 (게이트에 걸려 아무것도 하지 않았을 수 있다)."
+            exit 0
+          fi
+          git commit -m "data(pipeline): Gemini 가공 배치 (자동)"
+          git push
+
+      - name: 요약
+        run: |
+          echo "### 파이프라인 가공 결과" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f data/pipeline/state/daily.json ]; then
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat data/pipeline/state/daily.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "★ 검수는 사람이 한다: npm run pipeline:review" >> "$GITHUB_STEP_SUMMARY"

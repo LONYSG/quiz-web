@@ -1,0 +1,62 @@
+# =============================================================================
+# 문제 원본 수확 (Track D / 작업 G)
+#
+# ★ 수동 실행만 한다 (workflow_dispatch). 정기 실행을 두지 않는다.
+#   근거: OpenTDB 는 **유한 코퍼스**다. R002 실측으로 multiple 타입 4,500건 전량을 확인했다.
+#   ★ 매일 랜덤 수집하면 이미 가진 문제를 다시 받는다. 순수한 낭비다.
+#   새 소스를 붙였을 때, 또는 소스가 문제를 추가했을 때만 돌린다.
+#
+# ★ API 키가 필요 없다. OpenTDB 는 인증이 없다.
+#   그래서 이 워크플로는 비밀값을 전혀 쓰지 않는다.
+# =============================================================================
+
+name: pipeline-harvest
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: '수확할 최대 건수'
+        required: false
+        default: '200'
+      source:
+        description: '소스 (지금은 opentdb 만)'
+        required: false
+        default: 'opentdb'
+
+# ★ 결과 JSONL 을 저장소에 커밋해야 하므로 쓰기 권한이 필요하다
+permissions:
+  contents: write
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: 의존성 설치
+        run: npm ci
+
+      # ★ 컴파일 산출물을 실행한다 (docs/07-DECISIONS.md D-020)
+      - name: 빌드
+        run: npm run build -w shared && npm run build -w pipeline
+
+      - name: 수확
+        run: npm run pipeline:harvest -- --limit "${{ inputs.limit }}" --source "${{ inputs.source }}"
+
+      - name: 결과 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/pipeline/raw
+          if git diff --cached --quiet; then
+            echo "새로 받은 문제가 없다. 커밋하지 않는다."
+            exit 0
+          fi
+          git commit -m "data(pipeline): OpenTDB 원본 수확 (${{ inputs.limit }}건 목표)"
+          git push
