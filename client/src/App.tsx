@@ -312,7 +312,16 @@ export default function App() {
       foot: (
         <>
           <span className="dim mono">{clockLine}</span>
-          <span className="dim mono">{window.location.origin}</span>
+          {/* ★ 라이선스 의무 (Q-41 / DATA_LICENSE.md).
+              OpenTDB 는 CC BY-SA 4.0 이고 저작자 표시가 의무다.
+              ★ 미관 문제가 아니라 지켜야 하는 조건이므로 Phase 7로 미루지 않는다 (D-031 기준 4). */}
+          <span className="dim attribution">
+            문제 출처:{' '}
+            <a href="https://opentdb.com/" target="_blank" rel="noreferrer noopener">
+              Open Trivia Database
+            </a>{' '}
+            (CC BY-SA 4.0)
+          </span>
         </>
       ),
     };

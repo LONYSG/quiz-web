@@ -284,6 +284,20 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
           Phase 3부터는 여기 입력하는 모든 메시지가 동시에 답안 제출이 됩니다.
         </p>
       </section>
+
+      {/* ★ 라이선스 의무 (Q-41 / DATA_LICENSE.md).
+          방 안 화면에도 출처가 보여야 한다. 게임 중에 보게 되는 화면이 여기다. */}
+      <section className="card">
+        <h2>문제 출처</h2>
+        <p className="note">
+          문제 데이터의 일부는{' '}
+          <a href="https://opentdb.com/" target="_blank" rel="noreferrer noopener">
+            Open Trivia Database
+          </a>{' '}
+          (CC BY-SA 4.0) 를 한국어 주관식으로 번역·가공한 것입니다. 가공된 데이터도 같은
+          라이선스로 공개됩니다.
+        </p>
+      </section>
     </div>
   );
 }
