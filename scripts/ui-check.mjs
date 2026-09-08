@@ -17,6 +17,12 @@
 //   레이아웃  320~720px 에서 라벨 줄바꿈과 가로 넘침 (D-022 회귀 방지)
 //   동작      버튼을 눌렀을 때 서버 사유가 화면에 뜨는가, 조건부 UI가 실제로 나타나는가
 //
+// ★ "보인다" 를 DOM 존재로 판정하지 않는다 (R009)
+//   R008에서 만든 배너는 DOM 에 있었지만 문서 흐름 맨 위여서,
+//   스크롤을 내린 상태에서는 **화면 밖**이었다. DOM 검사만으로는 통과했을 것이다.
+//   ★ 그래서 요소의 화면 좌표가 뷰포트 안에 있는지 잰다(isOnScreen).
+//   ★ 조작 대상(입력창·버튼)과 겹치는지도 좌표로 잰다(overlaps).
+//
 // ★ 줄바꿈 판정 방법
 //   Range.getClientRects() 의 **top 값 종류**를 센다. 같은 줄이면 top 이 같다.
 //   사각형 개수를 세면 안 된다 — 브라우저는 글자 종류가 바뀌는 경계에서 텍스트 상자를
@@ -212,6 +218,55 @@ class Page extends Cdp {
     })()`);
   }
 
+  /**
+   * ★ 요소가 실제로 화면(뷰포트) 안에 보이는가.
+   *   DOM 에 있는 것과 화면에 보이는 것은 다르다. 이번 라운드 지적의 핵심이다.
+   */
+  onScreen(selector) {
+    return this.evaluate(`(() => {
+      const el = document.querySelector(${JSON.stringify(selector)});
+      if (!el) return { exists: false };
+      const r = el.getBoundingClientRect();
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const style = getComputedStyle(el);
+      return {
+        exists: true,
+        rect: { top: Math.round(r.top), bottom: Math.round(r.bottom),
+                left: Math.round(r.left), right: Math.round(r.right) },
+        viewport: { w: vw, h: vh },
+        // 요소 전체가 뷰포트 안에 들어와 있는가
+        fullyVisible: r.top >= 0 && r.left >= 0 && r.bottom <= vh && r.right <= vw,
+        // 일부라도 걸쳐 있는가
+        partlyVisible: r.bottom > 0 && r.top < vh && r.right > 0 && r.left < vw,
+        opacity: style.opacity,
+        display: style.display,
+      };
+    })()`);
+  }
+
+  /** 두 요소가 화면에서 겹치는가. 토스트가 조작 대상을 덮는지 잰다 */
+  overlaps(a, b) {
+    return this.evaluate(`(() => {
+      const ea = document.querySelector(${JSON.stringify(a)});
+      const eb = document.querySelector(${JSON.stringify(b)});
+      if (!ea || !eb) return { both: false };
+      const ra = ea.getBoundingClientRect();
+      const rb = eb.getBoundingClientRect();
+      const overlap =
+        ra.left < rb.right && ra.right > rb.left && ra.top < rb.bottom && ra.bottom > rb.top;
+      return { both: true, overlap, a: Math.round(ra.top), b: Math.round(rb.top) };
+    })()`);
+  }
+
+  scrollToBottom() {
+    return this.evaluate(`(() => {
+      window.scrollTo(0, document.documentElement.scrollHeight);
+      return { y: Math.round(window.scrollY),
+               max: Math.round(document.documentElement.scrollHeight - window.innerHeight) };
+    })()`);
+  }
+
   /** 버튼 존재 여부와 disabled 상태 */
   buttonState(label) {
     return this.evaluate(`(() => {
@@ -387,7 +442,7 @@ function stopServer() {
 // 테스트 계정 정리
 // ★ 실행마다 계정이 쌓이면 DB가 지저분해진다. 자기가 만든 것만 지운다.
 // -----------------------------------------------------------------------------
-async function cleanupAccounts() {
+async function cleanupAccounts(pattern = `${ACCOUNT_PREFIX}%`, label = '테스트 계정') {
   const url =
     process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
   const client = new pg.Client({ connectionString: url });
@@ -395,7 +450,7 @@ async function cleanupAccounts() {
     await client.connect();
     const ids = await client.query(
       `SELECT id FROM accounts WHERE login_id LIKE $1`,
-      [`${ACCOUNT_PREFIX}%`],
+      [pattern],
     );
     if (ids.rowCount === 0) return;
     const list = ids.rows.map((r) => r.id);
@@ -417,9 +472,9 @@ async function cleanupAccounts() {
     await client.query(`DELETE FROM rooms WHERE created_by = ANY($1::bigint[])`, [list]);
     await client.query(`DELETE FROM sessions WHERE account_id = ANY($1::bigint[])`, [list]);
     await client.query(`DELETE FROM accounts WHERE id = ANY($1::bigint[])`, [list]);
-    console.log(`[ui-check] 테스트 계정 ${list.length}개 정리`);
+    console.log(`[ui-check] ${label} ${list.length}개 정리`);
   } catch (err) {
-    console.log(`[ui-check] 계정 정리 실패(무시): ${err.message}`);
+    console.log(`[ui-check] ${label} 정리 실패(무시): ${err.message}`);
   } finally {
     await client.end().catch(() => {});
   }
@@ -548,6 +603,12 @@ let browserProc = null;
 let browser = null;
 
 try {
+  // ★ 시작 시 낡은 잔여물을 먼저 쓸어낸다 (R009).
+  //   정리는 finally 에서 하지만, 프로세스가 강제 종료(Ctrl+C, 타임아웃)되면
+  //   finally 가 돌지 않아 계정이 남는다. 그러면 다음 실행에서 그것을 알 수 없다.
+  //   ★ 자기 접두어(uic)로 시작하는 것만 지운다. 사람이 만든 계정은 건드리지 않는다.
+  await cleanupAccounts('uic%', '앞선 실행의 잔여 계정');
+
   await ensureServer();
   await closePreviousBrowser();
   const launched = await launchBrowser();
@@ -604,7 +665,7 @@ try {
     record('게임 시작 클릭이 전달된다', clicked);
 
     // ★ 핵심: 서버가 보낸 NOT_ENOUGH_QUESTIONS 사유가 화면에 뜨는가
-    const shown = await host.waitForText('출제할 수 있는 문제가', 5000);
+    const shown = await host.waitFor("document.querySelector('.toast') !== null", 5000);
     const bodyNow = await host.text();
     record(
       '★ 서버 거부 사유가 화면에 표시된다',
@@ -616,10 +677,84 @@ try {
       /출제할 수 있는 문제가 \d+개/.test(bodyNow),
     );
     record(
+      'message / detail / code 세 줄이 모두 있다',
+      await host.evaluate(
+        "['.toast-message', '.toast-detail', '.toast-code'].every(s => document.querySelector(s) !== null)",
+      ),
+    );
+    record(
       '거부되었으므로 게임이 시작되지 않았다',
       !bodyNow.includes('게임이 시작되었습니다'),
     );
-    await host.shot('error-banner');
+    await host.shot('toast-top');
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // ★ R009 지적 1 — 스크롤을 내린 상태에서도 보이는가
+    //   R008의 배너는 문서 흐름 맨 위에 있어서 여기서 실패한다.
+    // ─────────────────────────────────────────────────────────────────────────
+    console.log('\n[4-2] ★ 스크롤을 내린 상태에서도 알림이 보이는가 (R009 지적 1)');
+    const scrolled = await host.scrollToBottom();
+    record(
+      '페이지가 스크롤된다 (검사 전제)',
+      scrolled.y > 100,
+      `y=${scrolled.y} / max=${scrolled.max}`,
+    );
+
+    // 스크롤을 내린 상태에서 다시 거부를 만든다
+    await host.click('게임 시작');
+    await host.waitFor("document.querySelector('.toast') !== null", 5000);
+    const pos = await host.onScreen('.toast');
+    record(
+      '★ 스크롤을 내린 상태에서 알림이 화면 안에 보인다',
+      pos.exists && pos.fullyVisible,
+      pos.exists
+        ? `rect.top=${pos.rect?.top} bottom=${pos.rect?.bottom} / 뷰포트 높이=${pos.viewport?.h}`
+        : 'DOM 에 없다',
+    );
+    await host.shot('toast-scrolled');
+
+    // ★ 조작 대상을 가리지 않는가 (좌표로 잰다)
+    for (const [name, sel] of [
+      ['채팅 입력창', '.chat-card .field-row input'],
+      ['채팅 전송 버튼', '.chat-card .field-row button'],
+      // ★ 푸터의 로그아웃 버튼도 조작 대상이다. 320px 에서 실제로 겹쳤던 적이 있다
+      ['하단 푸터(로그아웃)', '.foot'],
+    ]) {
+      const ov = await host.overlaps('.toast', sel);
+      record(
+        `알림이 ${name}을 가리지 않는다`,
+        ov.both && !ov.overlap,
+        ov.both ? `toast.top=${ov.a} / 대상.top=${ov.b}` : '요소를 찾지 못했다',
+      );
+    }
+
+    // ★ 같은 에러를 연달아 눌러도 쌓이지 않는가
+    await host.click('게임 시작');
+    await sleep(250);
+    await host.click('게임 시작');
+    await sleep(400);
+    record(
+      '★ 같은 에러를 연타해도 알림이 쌓이지 않는다',
+      (await host.evaluate("document.querySelectorAll('.toast').length")) === 1,
+      `개수=${await host.evaluate("document.querySelectorAll('.toast').length")}`,
+    );
+
+    // ★ 닫기 버튼
+    await host.evaluate("document.querySelector('.toast button')?.click()");
+    await sleep(300);
+    record(
+      '닫기 버튼으로 즉시 사라진다',
+      (await host.evaluate("document.querySelector('.toast')")) === null,
+    );
+
+    // ★ 자동 만료
+    await host.click('게임 시작');
+    await host.waitFor("document.querySelector('.toast') !== null", 5000);
+    const goneByItself = await host.waitFor(
+      "document.querySelector('.toast') === null",
+      12000,
+    );
+    record('★ 알림이 자동으로 사라진다', goneByItself);
 
     console.log('\n[5] 정상값으로 되돌리면 시작된다');
     await setQuestionCount(host, 3);
@@ -716,7 +851,7 @@ try {
     // ROOM_NOT_FOUND — 없는 초대 링크
     await host.goto(`${BASE}/r/zzzzNoSuchRoom0`);
     const notFound = await host.waitFor(
-      "document.querySelector('.notice-code')?.textContent === 'ROOM_NOT_FOUND'",
+      "document.querySelector('.toast-code')?.textContent === 'ROOM_NOT_FOUND'",
       8000,
     );
     record(
@@ -726,14 +861,14 @@ try {
     );
 
     // BAD_REQUEST — 방 ID 입력창에 64자를 넘는 값 (서버 스키마 검사가 잡는다)
-    await host.evaluate("document.querySelector('.notice button')?.click()");
+    await host.evaluate("document.querySelector('.toast button')?.click()");
     await sleep(200);
     const longId = 'x'.repeat(70);
     await host.setInput('.card input.mono', longId);
     await sleep(150);
     await host.click('입장');
     const badReq = await host.waitFor(
-      "document.querySelector('.notice-code')?.textContent === 'BAD_REQUEST'",
+      "document.querySelector('.toast-code')?.textContent === 'BAD_REQUEST'",
       8000,
     );
     record('BAD_REQUEST 가 화면에 표시된다', badReq);
@@ -743,7 +878,7 @@ try {
     );
 
     // 빈 입력으로 입장 — ★ 조용히 아무 일도 일어나지 않으면 안 된다
-    await host.evaluate("document.querySelector('.notice button')?.click()");
+    await host.evaluate("document.querySelector('.toast button')?.click()");
     await sleep(200);
     await host.setInput('.card input.mono', '');
     await sleep(150);
@@ -753,6 +888,26 @@ try {
       4000,
     );
     record('★ 빈 방 ID 로 입장 시 조용히 무시하지 않는다', emptyId);
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // ★ R009 지적 2 — 성공한 뒤에도 이전 에러가 남아 있던 결함
+    //   빈 방 ID 로 실패 → 올바른 ID 로 입장 성공 → 알림이 사라져야 한다.
+    // ─────────────────────────────────────────────────────────────────────────
+    console.log('\n[8] ★ 화면이 바뀌면 이전 알림이 사라지는가 (R009 지적 2)');
+    record(
+      '실패 알림이 떠 있다 (검사 전제)',
+      (await host.evaluate("document.querySelector('.toast') !== null")),
+    );
+    const roomId3 = await createRoom(host, '알림 정리 확인용 방');
+    record('방 생성으로 화면이 바뀐다', Boolean(roomId3));
+    record(
+      '★ 화면이 바뀌면 이전 알림이 사라진다',
+      (await host.evaluate("document.querySelector('.toast')")) === null,
+      await host.evaluate("document.querySelector('.toast-message')?.textContent ?? ''"),
+    );
+
+    await host.click('방 나가기');
+    await host.waitFor("document.querySelector('.players') === null", 8000);
   }
 } catch (err) {
   record('실행', false, err.message);
