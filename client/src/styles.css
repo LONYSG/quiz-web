@@ -47,7 +47,12 @@ body {
 .wrap {
   max-width: 720px;
   margin: 0 auto;
-  padding: 24px 16px 64px;
+  /* ★ 아래 여백이 토스트 높이보다 커야 한다.
+     토스트는 화면 고정이므로, 끝까지 스크롤했을 때 이 여백이 완충 역할을 한다.
+     ★ 320px 에서 토스트 높이가 133px 이었다(세 줄 + 여백). 여유를 두고 180px.
+     ★ 실제로 겹치지 않는지는 ui-check 가 좌표로 검사한다 (D-032).
+       검사 대상: 채팅 입력창 / 전송 버튼 / 하단 푸터(로그아웃) */
+  padding: 24px 16px 180px;
 }
 
 h1 {
@@ -215,40 +220,86 @@ tr.chosen td {
 }
 
 /* =============================================================================
-   ★ 안내 배너 — 서버 에러가 사람 눈에 도달하는 유일한 자리 (R008 / D-027)
+   ★ 토스트 알림 — 서버 에러가 사람 눈에 도달하는 유일한 자리
+      (R008 D-027 로 경로를 만들고, R009 D-032 로 표시 방식을 바꿨다)
 
-   화면 종류와 무관하게 App 의 셸이 항상 이 자리에 그린다.
-   ★ 화면마다 각자 그리면 그중 하나에서 빼먹는다. 실제로 그렇게 해서
-     서버의 거부 사유가 로비 화면에서만 보이지 않았다.
+   ★ 왜 배너에서 토스트로 바꿨는가
+     배너를 문서 흐름 맨 위에 두었더니, 로비는 스크롤이 길어서
+     아래쪽을 보고 있으면 화면 밖이었다. **스크롤을 최상단까지 올려야 보였다.**
+     경로는 있었지만 사람 눈에 도달하지 않았다.
+
+   ★ 왜 아래쪽(bottom)인가 — Toast.tsx 주석과 D-032 에 근거가 있다
+     · Phase 3의 문제 지문과 남은 시간은 위쪽에 온다. 아래는 그것을 가리지 않는다
+     · 페이지가 이미 아래 여백을 갖고 있어 조작 대상을 가리지 않는다
+     · 사용자의 시선과 손이 이미 아래(입력창)에 있다
+
+   ★ pointer-events
+     레이어는 none, 토스트만 auto 다. 시각적으로 겹쳐도 그 아래 버튼을 누를 수 있다.
    ============================================================================= */
-.notice {
+
+.toast-layer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  display: flex;
+  justify-content: center;
+  padding: 0 12px;
+  /* ★ 뒤쪽 조작을 막지 않는다 */
+  pointer-events: none;
+  z-index: 50;
+}
+
+.toast {
+  pointer-events: auto;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
+  width: 100%;
+  max-width: 560px;
   background: #2a2118;
   border: 1px solid #6b532f;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 10px 12px;
-  margin: 0 0 16px;
   font-size: 0.9rem;
+  /* 떠 있는 요소임이 보여야 한다 */
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  animation: toast-in 140ms ease-out;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ★ min-width:0 이 없으면 긴 문구가 "닫기" 버튼을 밀어낸다 (D-022와 같은 원리) */
-.notice-body { min-width: 0; }
+.toast-body { min-width: 0; }
 
-.notice-message { margin: 0; font-weight: 600; }
+.toast-message { margin: 0; font-weight: 600; }
 
 /* ★ 실제 숫자가 여기 들어간다. message 만으로는 무엇을 해야 할지 알 수 없다 */
-.notice-detail { margin: 4px 0 0; color: var(--text); }
+.toast-detail { margin: 4px 0 0; color: var(--text); }
 
-.notice-code {
+.toast-code {
   margin: 4px 0 0;
   color: var(--text-dim);
   font-size: 0.72rem;
 }
 
-.notice button { flex: 0 0 auto; }
+.toast button { flex: 0 0 auto; }
+
+/* ★ 좁은 화면에서는 글자를 조금 줄여 세 줄이 다 들어가게 한다.
+   ★ detail 을 숨기지 않는다. 숨기면 "왜 안 되는지 모른다" 로 되돌아간다. */
+@media (max-width: 480px) {
+  .toast { font-size: 0.85rem; padding: 9px 10px; }
+}
 
 .form-error {
   color: var(--bad);

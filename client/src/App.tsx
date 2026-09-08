@@ -10,18 +10,28 @@
 //   guide 4절: 미로그인이면 로그인 후 해당 방으로 진입하고, 로그인 상태면 즉시 진입한다.
 //   → 경로에서 roomId를 뽑아 두고 인증이 되면 자동으로 join 한다.
 //
-// ★★ 렌더 구조 규칙 (R008 / docs/07-DECISIONS.md D-027)
+// ★★ 렌더 구조 규칙 (R008 D-027 / R009 D-032)
 //   화면이 무엇이든 **하나의 셸(shell)로만 렌더한다.**
-//   그 셸이 안내 배너를 항상 같은 자리에 그린다.
-//   ★ 화면마다 return 을 따로 두고 각자 배너를 그리면, 그중 하나에서 빼먹는다.
+//   그 셸이 알림을 항상 같은 자리에 그린다.
+//   ★ 화면마다 return 을 따로 두고 각자 알림을 그리면, 그중 하나에서 빼먹는다.
 //     실제로 그렇게 해서 서버의 거부 사유가 로비 화면에서만 보이지 않았다.
+//
+// ★ R009에서 표시 방식만 바꿨다. 문서 흐름 배너 → 화면 고정 토스트.
+//   경로는 그대로 한 곳이다. 개별 화면은 여전히 에러 표시를 하지 않는다.
+//
+// ★★ 알림이 사라지는 조건은 세 가지뿐이다 (D-032)
+//   (1) 자동 만료 (Toast 가 처리한다)
+//   (2) 사용자가 닫기를 누른다
+//   (3) ★ 화면이 바뀐다 — 이 파일의 viewKey effect 가 처리한다
+//   ★ (3)이 없으면 "빈 방 ID 로 실패 → 올바른 ID 로 입장 성공" 뒤에도
+//     "방 ID를 입력해 주세요." 가 남는다. 이미 해결된 문제를 화면이 계속 문제라고 말한다.
 // =============================================================================
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { io, type Socket } from 'socket.io-client';
 import AuthScreen from './AuthScreen.js';
 import Lobby from './Lobby.js';
-import Notice, { type NoticeContent } from './Notice.js';
+import Toast, { type ToastContent } from './Toast.js';
 import { errorMessage, fetchMe, logout, type Account } from './api.js';
 import { useRoom } from './useRoom.js';
 import { useServerClock } from './useServerClock.js';
@@ -39,7 +49,7 @@ export default function App() {
   const [pendingRoomId, setPendingRoomId] = useState<string | null>(roomIdFromPath());
   const [title, setTitle] = useState('');
   const [joinId, setJoinId] = useState('');
-  const [notice, setNotice] = useState<NoticeContent | null>(null);
+  const [notice, setNotice] = useState<ToastContent | null>(null);
 
   const room = useRoom(socket);
   const clock = useServerClock(socket);
@@ -101,8 +111,33 @@ export default function App() {
     setPendingRoomId(null);
   }, [room.snapshot]);
 
+  /**
+   * ★ 지금 어떤 화면인가. 알림을 걷어내는 기준이다 (D-032).
+   *
+   *   로딩 / 연결 종료 / 미로그인 / 방 안(방 ID 포함) / 방 없음
+   *
+   * ★ 방 ID 를 키에 넣는다. 방을 옮기는 것도 화면 전환이다.
+   */
+  const viewKey = (() => {
+    if (loading) return 'loading';
+    if (room.terminated) return 'terminated';
+    if (!account) return 'auth';
+    if (room.snapshot) return `room:${room.snapshot.room.id}`;
+    return 'home';
+  })();
+
+  // ── ★ 화면이 바뀌면 알림을 지운다.
+  //   ★ 이 effect 는 아래의 에러 effect 보다 **먼저** 선언되어야 한다.
+  //     한 커밋에서 둘이 함께 실행되면(예: 에러 때문에 화면이 바뀌는 경우)
+  //     나중에 선언된 쪽이 이긴다. 에러가 남는 편이 안전하다.
+  useEffect(() => {
+    setNotice(null);
+  }, [viewKey]);
+
   // ── ★ 서버 에러를 화면에 띄우는 유일한 경로
-  //   ★ useRoom 이 소켓의 error 이벤트를 그대로 넘겨준다. 여기서 배너로 바꾼다.
+  //   ★ useRoom 이 소켓의 error 이벤트를 그대로 넘겨준다. 여기서 토스트로 바꾼다.
+  //   ★ 에러마다 **새 객체**를 넣는다. 같은 에러가 다시 와도 identity 가 달라지므로
+  //     Toast 의 타이머가 다시 시작된다(= 연타해도 쌓이지 않고 시간만 갱신된다).
   //     화면 종류와 무관하게 이 한 곳만 지나간다.
   useEffect(() => {
     if (!room.error) return;
@@ -285,8 +320,10 @@ export default function App() {
 
   return (
     <main className={view.narrow ? 'wrap narrow' : 'wrap'}>
-      {/* ★ 안내 배너는 화면 종류와 무관하게 항상 여기 있다 (D-027) */}
-      <Notice content={notice} onDismiss={() => setNotice(null)} />
+      {/* ★ 알림은 화면 종류와 무관하게 항상 여기 하나뿐이다 (D-027 / D-032).
+          ★ 화면 고정(fixed)이므로 문서 흐름에서의 위치는 의미가 없다.
+            그래도 여기 두는 이유는 "표시 경로가 한 곳" 임을 코드로 드러내기 위함이다. */}
+      <Toast content={notice} onDismiss={() => setNotice(null)} />
       {view.body}
       {view.foot && <footer className="foot">{view.foot}</footer>}
     </main>
