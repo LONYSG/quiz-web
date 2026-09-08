@@ -78,6 +78,9 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
    * ★ 아직 값이 오지 않았으면 "—" 를 보여 준다. 0% 로 단정하지 않는다.
    *   "경험 기록이 없다" 와 "아직 모른다" 는 다르다.
    */
+  /** 접속 종료 표시 상태인 참가자가 있는가. 조건부 안내를 띄울 기준이다 */
+  const hasDisconnected = snapshot.players.some((p) => !p.connected);
+
   const rateText = (accountId: string): string => {
     const rate = snapshot.experienceRates?.find((r) => r.accountId === accountId);
     if (!rate) return '경험률 —';
@@ -146,6 +149,16 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
             </li>
           ))}
         </ol>
+        {/* ★ "내보내기" 버튼은 방장에게만, 접속 종료자에게만 나타난다 (Q-15).
+            ★ 조건부로 나타나는 UI 는 왜 안 보이는지도 알려 줘야 한다.
+              R008에서 건우가 이 버튼을 찾지 못해 결함으로 의심했다. */}
+        {hasDisconnected && (
+          <p className="info">
+            {snapshot.me.isHost
+              ? '접속이 끊긴 참가자 옆의 "내보내기" 로 자리를 비울 수 있습니다. (방장만 가능)'
+              : '접속이 끊긴 참가자를 내보내는 것은 방장만 할 수 있습니다.'}
+          </p>
+        )}
         <p className="note">
           접속이 끊긴 사람은 5초 뒤에 &quot;접속 종료&quot;로 표시됩니다. 새로고침으로 표시가
           깜빡이지 않게 하기 위한 것입니다.
@@ -203,9 +216,10 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
           <h2>게임 진행</h2>
           <p className="big">게임이 시작되었습니다 — 문제 {snapshot.game.totalQuestions}개</p>
           <p className="note">
-            ★ 여기에 문제가 표시되는 것은 <strong>Phase 3</strong> 입니다. 아직 구현되지
-            않았습니다. 지금은 게임 레코드가 만들어지고 상태가 QUESTION_ACTIVE 로 바뀌는
-            것까지만 동작합니다.
+            ★ <strong>문제와 30초 타이머는 Phase 3에서 나옵니다.</strong> 지금 화면에
+            문제도, 남은 시간도, 점수도 보이지 않는 것이 <strong>정상</strong>입니다.
+            결함이 아닙니다. Phase 2는 "게임이 시작되기 직전 상태" 까지만 구현합니다 —
+            게임 레코드가 만들어지고 상태가 QUESTION_ACTIVE 로 바뀌는 것까지입니다.
             {snapshot.game.gameId && (
               <>
                 <br />
