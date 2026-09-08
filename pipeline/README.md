@@ -239,18 +239,29 @@ OpenTDB는 CC BY-SA 4.0이다. 파생물인 한국어 문제 데이터도 같은
 
 ## 8. 현재 상태
 
-**설계 완료, 구현 미착수.** Gemini API 키가 없어 실행하지 않았다.
+**전 구간 구현·실측 완료 (R010).** 대량 확보만 무료 한도에 막혀 있다.
 
-만들어야 할 것
-
-| 파일 | 역할 |
+| 파일 | 상태 |
 |------|------|
-| `pipeline/src/adapters/opentdb.ts` | OpenTDB → RawQuestion 변환 + 수확 |
-| `pipeline/src/filter.ts` | 규칙 기반 사전 필터 |
-| `pipeline/src/process.ts` | Gemini 가공 |
-| `pipeline/src/backcheck.ts` | 역검증 + 규칙 검사 |
-| `scripts/pipeline-load.mjs` | `approved/` → DB 적재 |
-| `.github/workflows/harvest.yml` | 수집 잡 |
-| `.github/workflows/process.yml` | 가공 잡 |
+| `pipeline/src/config.ts` | ★ 모델명·한도를 한 곳에 모았다 (D-033) |
+| `pipeline/src/budget.ts` | 예산 게이트와 "그날 중단" 상태 (D-034) |
+| `pipeline/src/gemini.ts` | 429/503 처리, 모델 체인, 토큰 누적, ★ 키 스크럽 |
+| `pipeline/src/adapters/opentdb.ts` | 수확 + 엔티티 해제 + 안정적 sourceRef |
+| `pipeline/src/filter.ts` | 규칙 필터. ★ 차단율 10.8% / 오차단 0건 |
+| `pipeline/src/prompts.ts` | 프롬프트 + responseSchema (버전 p2) |
+| `pipeline/src/process.ts` | 가공·역검증 오케스트레이션 |
+| `pipeline/src/rules.ts` | ★ shared 함수 재사용 |
+| `pipeline/src/rejudge.ts` | ★ API 없이 재판정 (D-035) |
+| `scripts/pipeline-*.mjs` | 8개 명령 (harvest/process/rejudge/report/review/load/models/compare/reset-limit) |
+| `.github/workflows/pipeline-harvest.yml` | 수동 실행 |
+| `.github/workflows/pipeline-process.yml` | 매일 1회 + 수동. ★ 실제 실행은 미검증 |
 
-착수 전에 필요한 것은 [08-OPEN-QUESTIONS.md](../docs/08-OPEN-QUESTIONS.md) 의 Q-54, Q-55.
+★ 실측 수치와 남은 판단은 [docs/05-STATUS.md](../docs/05-STATUS.md) Track D 절과
+[docs/07-DECISIONS.md](../docs/07-DECISIONS.md) D-033~D-036,
+그리고 미결 항목 **Q-62 / Q-63** 을 본다.
+
+### ★ 프롬프트 버전
+
+`p1` → `p2` (R010): 역검증 프롬프트에 "alternatives 에는 서로 다른 대상만 넣어라" 를 추가했다.
+p1 에서 모델이 표기 변형을 alternatives 에 넣어, 그것을 비유일성 증거로 읽은 판정 로직이
+정상 문제 6건을 전부 오탈락시켰다.

@@ -288,3 +288,108 @@ curl http://localhost:3000/healthz
    (`/healthz` 의 `dbActiveMs` 로 확인)
 3. WebSocket이 통과하는지
 4. 단일 인스턴스인지 (인스턴스를 늘리면 정답 판정의 원자성이 깨진다)
+
+---
+
+## ★ 문제 데이터 검수와 적재 (Track D)
+
+> 파이프라인의 설계와 근거는 [pipeline/README.md](../pipeline/README.md),
+> 실측 결과는 [07-DECISIONS.md](07-DECISIONS.md) D-033 ~ D-036 에 있다.
+
+### 왜 사람이 승인해야 하는가
+
+★ **자동으로 서비스 DB 에 넣지 않는다.**
+이상한 문제 하나가 실전에 나오면 그 판이 망가진다.
+이 게임은 정확 문자열 일치로만 판정하므로(guide 16절), 정답을 아는 사람이
+계속 오답 처리되는 문제가 섞이면 게임 자체가 재미없어진다.
+
+### 흐름
+
+```
+  Actions (클라우드)                        건우 PC (로컬)
+  ──────────────────                       ──────────────
+  1. 수확  OpenTDB → raw/*.jsonl
+  2. 가공  필터 → Gemini → 역검증 → processed/*.json
+  3. 커밋  결과 JSON 을 저장소에 push
+                    │
+                    │  git pull
+                    ▼
+                                      4. 검수  npm run pipeline:review
+                                      5. 적재  npm run pipeline:load
+```
+
+### 4. 검수 (사람)
+
+```bash
+git pull
+
+# 검수 시트를 읽는다
+npm run pipeline:review
+```
+
+★ **확인할 것 네 가지**
+
+| # | 항목 | 왜 |
+|---|------|-----|
+| 1 | 한국인이 답할 수 있는 문제인가 | 모델의 krAccessible 판정이 틀릴 수 있다 |
+| 2 | ★ 표기 변형이 충분한가 | **가장 중요하다.** 내가 칠 것 같은 표기가 빠져 있으면 억울하게 진다 |
+| 3 | 질문에 정답이 드러나 있지 않은가 | 규칙 검사가 잡지만 번역 뉘앙스는 사람만 안다 |
+| 4 | 정답이 유일한가 | 역검증이 잡지만 완벽하지 않다 |
+
+★ **메모가 붙은 항목은 반드시 본다.**
+`역검증이 정답을 맞혔으나 집합 밖 대안을 제시했다: …` 가 붙어 있으면,
+그 대안이 **추가할 표기 변형**인지 **다른 대상**인지 사람이 판단해야 한다.
+- 추가할 표기의 예: `드럼` → `드럼 세트`, `드럼킷` (같은 대상)
+- 추가하지 않는 예: `뇌` → `대뇌` (뇌의 일부다), `영국` → `잉글랜드` (영국의 일부다)
+
+```bash
+# 전부 승인
+npm run pipeline:review -- --approve all
+
+# 일부만 승인
+npm run pipeline:review -- --approve otdb-xxxx,otdb-yyyy
+
+# 반려 (사유를 남긴다)
+npm run pipeline:review -- --reject otdb-zzzz --note "니치 게임 세부 설정"
+
+# 내용을 고치고 싶으면 processed/ 의 JSON 을 직접 편집한다
+#   questionKo / displayAnswer / answers 를 손으로 고쳐도 된다
+#   ★ git diff 에 남으므로 무엇을 고쳤는지 볼 수 있다
+
+# approved/ rejected/ 로 나눠 저장
+npm run pipeline:review -- --collect
+```
+
+★ `rejected/` 는 버리지 않는다. 필터 품질 평가와 프롬프트 개선의 근거다.
+
+### 5. 적재
+
+```bash
+# 무엇이 들어갈지 먼저 본다
+npm run pipeline:load -- --dry-run
+
+# 적재
+npm run pipeline:load
+```
+
+★ 두 번 돌려도 안전하다. `(source_id, source_ref)` 로 중복을 세 겹으로 막는다.
+★ 적재하면 곧바로 출제 대상이 된다(`status='approved'`, `is_active=true`).
+승인 대기 상태로 넣고 싶으면 `--pending` 을 준다.
+
+### 문제를 빼야 할 때
+
+```sql
+-- ★ status 를 rejected 로 되돌리지 않는다. 검수 이력이 오염된다.
+--   is_active 만 내린다. 두 값은 다른 축이다 (migrations/0001_init.sql 주석).
+UPDATE questions SET is_active = false WHERE id = <문제 id>;
+```
+
+### 예산 상태 확인
+
+```bash
+cat data/pipeline/state/daily.json
+```
+
+★ `rateLimited: true` 면 그날은 가공이 시작되지 않는다 (Q-54).
+짧은 창의 한도였다고 판단되면 `npm run pipeline:reset-limit` 로 사람이 해제한다.
+★ 자동으로 해제되지 않는다. 판단이 필요한 일이다.
