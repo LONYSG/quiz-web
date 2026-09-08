@@ -35,7 +35,16 @@
     "smoke": "node scripts/smoke.mjs",
     "verify": "npm run typecheck && npm test && npm run smoke && npm run ui-check",
     "build:force": "tsc -b shared server client --force && npm run build -w client",
-    "ui-check": "node scripts/ui-check.mjs"
+    "ui-check": "node scripts/ui-check.mjs",
+    "pipeline:harvest": "node scripts/pipeline-harvest.mjs",
+    "pipeline:process": "node scripts/pipeline-process.mjs",
+    "pipeline:load": "node scripts/pipeline-load.mjs",
+    "pipeline:models": "node scripts/pipeline-models.mjs",
+    "pipeline:report": "node scripts/pipeline-report.mjs",
+    "pipeline:compare": "node scripts/pipeline-compare.mjs",
+    "pipeline:reset-limit": "node scripts/pipeline-reset-limit.mjs",
+    "pipeline:rejudge": "node scripts/pipeline-rejudge.mjs",
+    "pipeline:review": "node scripts/pipeline-review.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
