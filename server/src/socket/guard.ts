@@ -113,10 +113,10 @@ export function on<P = unknown>(
       sendError(socket, 'UNAUTHENTICATED');
       return;
     }
-    const payload = parsePayload(socket, options, raw);
+    const payload = parsePayload(socket, event, options, raw);
     if (payload === undefined) return;
 
-    void runHandler(event, seq, () => handler({ seq, socket, session, payload }));
+    void runHandler(socket, event, seq, () => handler({ seq, socket, session, payload }));
   });
 }
 
@@ -165,22 +165,26 @@ export function onRoom<P = unknown>(
     }
 
     // 5. 페이로드 스키마
-    const payload = parsePayload(socket, options, raw);
+    const payload = parsePayload(socket, event, options, raw);
     if (payload === undefined) return;
 
-    void runHandler(event, seq, () => handler({ seq, socket, session, payload, room, player }));
+    void runHandler(socket, event, seq, () => handler({ seq, socket, session, payload, room, player }));
   });
 }
 
 function parsePayload<P>(
   socket: Socket,
+  event: string,
   options: GuardOptions<P>,
   raw: unknown,
 ): P | undefined {
   if (!options.parse) return raw as P;
   const parsed = options.parse(raw);
   if (parsed === null) {
-    sendError(socket, 'BAD_REQUEST');
+    // ★ 어느 이벤트에서 걸렸는지는 알려 준다 (R008 / D-027).
+    //   "요청 형식이 올바르지 않습니다" 만 뜨면 사용자도 개발자도 원인을 찾을 수 없다.
+    //   ★ 받은 값 자체는 담지 않는다. 채팅 본문 등이 그대로 되돌아오면 안 된다.
+    sendError(socket, 'BAD_REQUEST', `${event} 요청의 형식이 올바르지 않습니다.`);
     return undefined;
   }
   return parsed;
@@ -192,6 +196,7 @@ function parsePayload<P>(
  *   게임 중 한 사람의 요청 처리 실패가 방 전체를 날리면 안 된다.
  */
 async function runHandler(
+  socket: Socket,
   event: string,
   seq: number,
   run: () => void | Promise<void>,
@@ -200,6 +205,12 @@ async function runHandler(
     await run();
   } catch (err) {
     console.error(`[socket] seq=${seq} ${event} 처리 실패:`, (err as Error).message);
+    // ★ 사람에게도 알린다 (R008 / D-027).
+    //   예전에는 로그만 남기고 끝냈다. 그러면 사용자 화면에서는 버튼을 눌렀는데
+    //   아무 일도 일어나지 않는 것과 구분되지 않는다.
+    //   ★ INTERNAL 은 그때까지 "정의만 되어 있고 한 번도 전송되지 않는" 코드였다.
+    //   ★ 예외 메시지 자체는 보내지 않는다. 내부 구조나 값이 새어 나갈 수 있다.
+    sendError(socket, 'INTERNAL', `${event} 처리 중 오류 (seq=${seq})`);
   }
 }
 
