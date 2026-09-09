@@ -127,6 +127,14 @@ export interface ProcessedItem {
     accessibility: number;
     /** 그 분야를 아는 사람에게 이 문항이 어려운가 (1~5) */
     difficultyScore: number;
+    /**
+     * ★ 답을 듣고 "알아서 좋았다" 고 느끼는가 (1~5). g3 부터 (R012).
+     *
+     * ★ 건우 검수 결과 걸러야 할 기준이 "어려운가" 가 아니라 "알 가치가 있는가" 로 확정됐다.
+     *   난이도로는 걸러내지 않는다. 이 값과 접근성으로 거른다 (Q-69).
+     *   ★ g2 이전에 만든 문제에는 없다. 0 이면 미평가다.
+     */
+    worthKnowing: number;
     /** 모델이 "이 카테고리로는 만들 수 없다" 고 한 경우 */
     offCategory: boolean;
     offCategoryReason: string | null;

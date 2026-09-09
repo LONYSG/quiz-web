@@ -16,6 +16,26 @@
 import { generateHint, normalizeAnswer } from '@quiz/shared';
 import type { AiGenerated, RuleCheckResult } from './types.js';
 
+/**
+ * ★★ 마침표로 구분된 약어인가 (R012에서 추가).
+ *
+ * ★ 왜 필요한가 — R012 비교 실험에서 **양쪽 모델이 같은 곳에 걸렸다.**
+ *     "H.O.T."  → 마침표로 끝난다 → 서술형으로 판정 → 탈락
+ *     "S.E.S."  → 같은 이유로 탈락
+ *   ★ 이것은 서술형이 아니다. **약어의 마침표**다.
+ *     정답이 멀쩡한데 규칙 검사가 버렸다. 오탈락이다.
+ *
+ * ★ 조건을 좁게 잡았다 — 짧고, 마침표로 나뉜 각 토막이 1~2자인 경우만.
+ *   "Apple Inc." 는 여기 걸리지 않는다(Apple 이 5자다). 그것은 계속 걸러야 한다.
+ */
+function isDottedAbbreviation(t: string): boolean {
+  if (t.length > 12) return false;
+  if (!t.includes('.')) return false;
+  const parts = t.split('.').filter((s) => s.length > 0);
+  if (parts.length < 2) return false;
+  return parts.every((s) => s.trim().length > 0 && s.trim().length <= 2);
+}
+
 /** 정답 문자열로 게임에 쓸 수 있는 형태인가 */
 function answerShapeOk(answer: string): boolean {
   const t = answer.trim();
@@ -23,7 +43,8 @@ function answerShapeOk(answer: string): boolean {
   // ★ 너무 길면 아무도 정확히 입력하지 못한다
   if (t.length > 30) return false;
   // 문장 부호로 끝나면 서술형이다
-  if (/[.!?]$/.test(t)) return false;
+  // ★ 단 마침표로 구분된 약어는 예외다 (H.O.T. / S.E.S. — R012 실측)
+  if (/[.!?]$/.test(t) && !isDottedAbbreviation(t)) return false;
   // 단어 5개 이상은 서술형으로 본다
   if (t.split(/\s+/).length >= 5) return false;
   return true;
