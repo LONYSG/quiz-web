@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "round": "R012",
+    "purpose": "Gemini vs Claude Code 생성 품질 비교 (작업 A). 양쪽이 정확히 같은 슬롯을 받는다",
+    "perSlot": 5,
+    "note": "소분류 21개 × 5건 = 양쪽 각각 105건. 20개가 아니라 21개인 근거는 R012.txt 1-1 에 있다"
+  },
+  "slots": [
+    { "midKey": "kr-history", "sub": "조선 후기", "why": "한국 고유 지식 + R011에서 접근성 5가 잘 나온 곳" },
+    { "midKey": "kr-lit", "sub": "현대 소설", "why": "한국 고유 지식 (한국 문학)" },
+    { "midKey": "kr-language", "sub": "사자성어", "why": "★ 한국어 지식. 두 모델의 한국어 능력 차이가 가장 잘 드러날 지점" },
+    { "midKey": "kr-tradition", "sub": "국악·전통 예술", "why": "한국 고유 지식 + 접근성이 낮게 나올 수 있는 어려운 조건" },
+    { "midKey": "kr-music", "sub": "아이돌·K팝", "why": "★ 최근 문화. 학습 시점 차이가 드러날 수 있다" },
+
+    { "midKey": "world-history-west", "sub": "중세 유럽", "why": "인문·사회 대표. 서구 역사 지식" },
+    { "midKey": "philosophy", "sub": "동양 사상", "why": "R011에서 예상보다 접근성이 좋았던 곳. 재현되는지 본다" },
+
+    { "midKey": "chemistry", "sub": "원소 기호", "why": "R011에서 접근성 5가 잘 나온 곳. 정답이 짧고 명확하다" },
+    { "midKey": "human-body", "sub": "신경·뇌", "why": "R011에서 접근성 5가 잘 나온 곳" },
+    { "midKey": "math", "sub": "단위·측정", "why": "★ 정답이 숫자로 나오기 쉬운 곳. 단위·정밀도 표기 처리를 본다" },
+
+    { "midKey": "aerospace", "sub": "유인 우주 탐사", "why": "★ R011에서 접근성 3이 몰렸던 곳 (콩코드·IATA)" },
+    { "midKey": "medicine", "sub": "영양·비타민", "why": "기술·의학 대표. 생활 밀착 지식" },
+
+    { "midKey": "world-cinema", "sub": "감독", "why": "★ R011에서 접근성 3이 몰렸던 곳 (시민 케인)" },
+    { "midKey": "popular-music", "sub": "1980~90년대", "why": "★ R011에서 접근성 3이 몰렸던 곳 (Nevermind)" },
+    { "midKey": "design-photo", "sub": "타이포그래피·색채", "why": "★ R011에서 가장 약했던 중분류. 아직 표본이 없던 소분류" },
+
+    { "midKey": "baseball", "sub": "KBO", "why": "★★ R011에서 알 가치 1이 나온 곳 (백인천 타율 0.412). g3 금지 규칙이 실제로 먹는지 본다" },
+    { "midKey": "olympic", "sub": "동계 올림픽", "why": "★★ R011에서 알 가치 1이 나온 곳 (샤모니). g3 금지 규칙 검증" },
+    { "midKey": "board-game", "sub": "체스", "why": "★ R011에서 접근성 3이 나온 곳 (캐슬링)" },
+    { "midKey": "esports", "sub": "PC·온라인 게임", "why": "★ 최근 문화. 한국 게임 문화 지식 차이를 본다" },
+
+    { "midKey": "world-language", "sub": "문자 체계", "why": "생활·상식 대표. 언어학 상식" },
+    { "midKey": "symbols", "sub": "별자리·십이지", "why": "생활·상식 대표. 동서양이 섞인 기호 지식" }
+  ]
+}

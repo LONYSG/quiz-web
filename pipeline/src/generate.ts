@@ -65,6 +65,15 @@ export interface GenerateOptions {
   midsPerCall: number;
   /** ★ 소분류 시작 위치. 같은 중분류를 두 번째로 돌 때 쓴다 */
   subOffset?: number;
+  /**
+   * ★ 슬롯을 직접 지정한다. 주면 mids/perMid/subOffset 을 무시한다.
+   *
+   * ★ 왜 필요한가 (R012 작업 A)
+   *   Gemini 와 Claude Code 의 생성 품질을 비교하려면 **양쪽이 정확히 같은 슬롯**을
+   *   받아야 한다. 카테고리 트리에서 자동으로 뽑으면 소분류 선택이 달라질 수 있다.
+   *   ★ 조건이 다르면 비교가 성립하지 않는다.
+   */
+  explicitSlots?: readonly GenSlot[];
   log?: (msg: string) => void;
   /** 상태 파일. 구간별 건수를 누적한다 (작업 B) */
   state?: { items: number; segments?: unknown } | null;
@@ -142,6 +151,7 @@ function baseGenItem(slot: GenSlot): ProcessedItem {
       sub: slot.sub,
       accessibility: 0,
       difficultyScore: 0,
+      worthKnowing: 0,
       offCategory: false,
       offCategoryReason: null,
       promptVersion: GEN_PROMPT_VERSION,
@@ -225,13 +235,27 @@ export async function generateBatch(
   //   ★ 한 호출에 여러 중분류를 넣는 이유는 무료 한도가 **호출 수**에 걸리기 때문이다.
   //     R010 실측: 4회 호출 / 18,236토큰에서 429 를 맞았다.
   //     건당 1회 호출로는 63개 중분류를 하루에 돌 수 없다.
-  const groups: MidCategory[][] = [];
-  for (let i = 0; i < options.mids.length; i += options.midsPerCall) {
-    groups.push(options.mids.slice(i, i + options.midsPerCall) as MidCategory[]);
+  // ★ 슬롯을 직접 받은 경우: 호출당 슬롯 수로 잘라 나눈다.
+  //   ★ 중분류 단위가 아니라 슬롯 단위로 자른다. 같은 중분류가 여러 호출에 걸쳐도 된다 —
+  //     비교 실험에서는 소분류가 고정이므로 중분류 경계가 의미를 갖지 않는다.
+  const slotGroups: GenSlot[][] = [];
+  if (options.explicitSlots && options.explicitSlots.length > 0) {
+    const perCall = Math.max(1, options.midsPerCall * options.perMid);
+    for (let i = 0; i < options.explicitSlots.length; i += perCall) {
+      slotGroups.push(options.explicitSlots.slice(i, i + perCall) as GenSlot[]);
+    }
+  } else {
+    const groups: MidCategory[][] = [];
+    for (let i = 0; i < options.mids.length; i += options.midsPerCall) {
+      groups.push(options.mids.slice(i, i + options.midsPerCall) as MidCategory[]);
+    }
+    for (const group of groups) {
+      slotGroups.push(buildSlots(group, options.perMid, options.subOffset ?? 0));
+    }
   }
 
-  for (const [gi, group] of groups.entries()) {
-    const slots = buildSlots(group, options.perMid, options.subOffset ?? 0);
+  for (const [gi, group] of slotGroups.entries()) {
+    const slots = group;
     stats.requestedSlots += slots.length;
 
     // ── 1. 생성
@@ -263,7 +287,7 @@ export async function generateBatch(
         at: new Date().toISOString(),
       });
       log(
-        `[gen] ${gi + 1}/${groups.length}번째 호출: 슬롯 ${slots.length}개 → ${genItems.length}건` +
+        `[gen] ${gi + 1}/${slotGroups.length}번째 호출: 슬롯 ${slots.length}개 → ${genItems.length}건` +
           ` [${r.model}] (토큰 ${r.usage.total}, 사고 ${r.usage.thoughts})`,
       );
     } catch (err) {
@@ -296,6 +320,7 @@ export async function generateBatch(
 
       out.gen!.accessibility = Number(g.accessibility) || 0;
       out.gen!.difficultyScore = Number(g.difficulty) || 0;
+      out.gen!.worthKnowing = Number(g.worthKnowing) || 0;
       out.gen!.offCategory = Boolean(g.offCategory);
       out.gen!.offCategoryReason = g.offCategoryReason?.trim() || null;
 
