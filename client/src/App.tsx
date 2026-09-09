@@ -314,9 +314,15 @@ export default function App() {
           <span className="dim mono">{clockLine}</span>
           {/* ★ 라이선스 의무 (Q-41 / DATA_LICENSE.md).
               OpenTDB 는 CC BY-SA 4.0 이고 저작자 표시가 의무다.
-              ★ 미관 문제가 아니라 지켜야 하는 조건이므로 Phase 7로 미루지 않는다 (D-031 기준 4). */}
+              ★ 미관 문제가 아니라 지켜야 하는 조건이므로 Phase 7로 미루지 않는다 (D-031 기준 4).
+
+              ★ R011: "문제 출처" → "일부 문제 출처" 로 고쳤다.
+                이제 문제 대부분이 직접 생성한 것이고 OpenTDB 문제는 10건만 남는다.
+                무조건 "문제 출처: OpenTDB" 라고 쓰면 **사실과 다른 표기**가 된다.
+                ★ 반대로 표기를 지우면 안 된다. OpenTDB 문제 10건이 아직 출제되므로
+                  저작자 표시 의무가 살아 있다 (DATA_LICENSE.md 참조). */}
           <span className="dim attribution">
-            문제 출처:{' '}
+            일부 문제 출처:{' '}
             <a href="https://opentdb.com/" target="_blank" rel="noreferrer noopener">
               Open Trivia Database
             </a>{' '}

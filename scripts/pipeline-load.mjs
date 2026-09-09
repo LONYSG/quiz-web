@@ -92,6 +92,26 @@ if (items.length === 0) {
 
 // ── 2. 카테고리 매핑
 //   ★ DB의 categories.key 는 영문 키다. 가공 결과는 한국어 이름으로 온다.
+//
+// ★★ R011: 생성 문제는 **새 카테고리 트리의 대분류 이름**으로 온다 (7개).
+//   기존 16개 플랫 카테고리와 이름이 겹치지 않으므로 따로 적는다.
+//   ★ 임시 매핑이다. 근거 —
+//     계층 스키마(categories.parent_id / level)는 건우가 카테고리 목록을 확정한 뒤
+//     0003 마이그레이션으로 넣는다. 지금 넣으면 다음 라운드에 되돌려야 한다.
+//     그때까지는 기존 행에 얹어 적재만 가능하게 해 둔다.
+//   ★ 이 매핑은 정보를 잃는다 — 중분류·소분류가 categories 테이블에 남지 않는다.
+//     그러나 processed/ JSON 의 gen.midKey / gen.sub 에는 남아 있으므로
+//     0003 이후 다시 채울 수 있다.
+const MAJOR_MAP = {
+  한국: 'history',
+  '인문·사회': 'history',
+  자연과학: 'science',
+  '기술·의학': 'tech',
+  '문화·예술': 'art',
+  '스포츠·게임': 'sports',
+  '생활·상식': 'general',
+};
+
 const CATEGORY_MAP = {
   일반상식: 'general',
   역사: 'history',
@@ -115,6 +135,13 @@ const client = new pg.Client({ connectionString: DATABASE_URL });
 await client.connect();
 
 try {
+  // ★★ R011: 라이선스를 소스별로 읽는다. 하드코딩을 없앴다.
+  //   근거: 생성 문제(gemini-gen)에는 CC BY-SA 의무가 없다.
+  //   지금은 두 소스 모두 CC-BY-SA-4.0 이지만(판단 근거는 0002 마이그레이션 주석),
+  //   ★ 값을 코드에 박아두면 소스별로 달라지는 순간 조용히 틀린 라이선스가 기록된다.
+  const srcRows = await client.query('SELECT id, license FROM sources');
+  const licenseBySource = new Map(srcRows.rows.map((r) => [r.id, r.license]));
+
   // 카테고리 id 조회
   const catRows = await client.query('SELECT id, key FROM categories');
   const catByKey = new Map(catRows.rows.map((r) => [r.key, r.id]));
@@ -122,13 +149,30 @@ try {
   if (!fallbackId) throw new Error('categories 테이블이 비어 있다. 먼저 마이그레이션을 적용한다.');
 
   // ── 3. 이미 있는 source_ref 조회
-  const refs = items.map((i) => i.sourceRef);
+  //   ★★ R011 수정: 전에는 items[0].sourceId 하나로만 조회했다.
+  //     소스가 하나일 때는 맞았지만, 이제 OpenTDB 문제와 생성 문제가 함께 있다.
+  //     ★ 그러면 두 번째 소스의 중복을 못 걸러 UNIQUE 위반으로 트랜잭션이 죽는다.
+  //     (세 겹 방어의 첫 겹이 새는 것이므로 조용히 틀리지는 않는다. 그래도 고친다.)
+  //     → (source_id, source_ref) 쌍으로 조회한다.
   const existing = await client.query(
-    `SELECT source_ref FROM questions WHERE source_id = $1 AND source_ref = ANY($2::text[])`,
-    [items[0].sourceId, refs],
+    `SELECT source_id, source_ref FROM questions
+      WHERE (source_id, source_ref) IN (
+        SELECT * FROM unnest($1::text[], $2::text[])
+      )`,
+    [items.map((i) => i.sourceId), items.map((i) => i.sourceRef)],
   );
-  const known = new Set(existing.rows.map((r) => r.source_ref));
-  const todo = items.filter((i) => !known.has(i.sourceRef));
+  // ★ 소스가 등록되어 있지 않으면 FK 오류로 죽는다. 먼저 알아듣게 알린다.
+  const unknownSources = [...new Set(items.map((i) => i.sourceId))].filter(
+    (s) => !licenseBySource.has(s),
+  );
+  if (unknownSources.length > 0) {
+    console.error(`[load] ★ sources 테이블에 없는 소스: ${unknownSources.join(', ')}`);
+    console.error('[load]   npm run migrate 를 먼저 실행한다 (migrations/0002_gemini_gen_source.sql).');
+    process.exit(1);
+  }
+
+  const known = new Set(existing.rows.map((r) => `${r.source_id}|${r.source_ref}`));
+  const todo = items.filter((i) => !known.has(`${i.sourceId}|${i.sourceRef}`));
   console.log(`[load] 이미 적재됨 ${known.size}건 / 새로 적재할 것 ${todo.length}건`);
 
   if (DRY) {
@@ -155,7 +199,8 @@ try {
 
   for (const item of todo) {
     const g = item.generated;
-    const categoryId = catByKey.get(CATEGORY_MAP[g.category] ?? '') ?? fallbackId;
+    const categoryId =
+      catByKey.get(MAJOR_MAP[g.category] ?? CATEGORY_MAP[g.category] ?? '') ?? fallbackId;
     // ★ 정규화해서 같아지는 표기를 합친다. DB의 answer_norm UNIQUE 를 만족시켜야 한다.
     const answers = dedupeAnswers([g.displayAnswer, ...g.answers]);
     if (answers.length === 0) {
@@ -184,7 +229,9 @@ try {
           g.explanation || null,
           item.sourceId,
           item.sourceRef,
-          'CC-BY-SA-4.0',
+          // ★ sources 테이블의 값을 쓴다. 없으면 넣지 않는다 —
+          //   틀린 라이선스를 기록하는 것보다 비어 있는 것이 낫다.
+          licenseBySource.get(item.sourceId) ?? null,
           status,
           isActive,
         ],

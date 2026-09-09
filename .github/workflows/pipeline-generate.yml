@@ -1,0 +1,125 @@
+# =============================================================================
+# 문제 생성 (Track D / R011)
+#
+# ★★ R011부터 이것이 주 확보 경로다.
+#   OpenTDB 수확·가공(pipeline-harvest / pipeline-process)은 비활성화되었다.
+#
+# ★★ 비밀값 취급 (절대 원칙)
+#   · GEMINI_API_KEY 는 GitHub Secrets 에서만 온다. 파일에 두지 않는다
+#   · 로그에 키를 찍지 않는다. 길이만 확인한다
+#   · GeminiClient 가 모든 출력 텍스트를 스크럽한다 (pipeline/src/gemini.ts)
+#
+# ★★ 15분 대기가 워크플로 시간 제한에 걸리는가 (작업 A 확인 사항)
+#   걸리지 않는다. 근거 —
+#     · GitHub 호스팅 러너의 **작업(job) 최대 실행 시간은 6시간**이다.
+#       429 를 한 번 맞고 15분 대기해 1회 재개하는 최악의 경우도 1시간 미만이다
+#     · 그래서 "다음 실행으로 미루는" 방식을 쓰지 않았다. 판단 근거는 이렇다 —
+#       다음 실행으로 미루면 재개까지 최소 24시간(일 1회 스케줄)이 걸린다.
+#       그러면 "15분 뒤에는 창이 열릴 수 있다" 는 실측 관측을 활용할 수 없다.
+#   ★ timeout-minutes 를 명시해 무한 대기를 막는다.
+#   ★ 확인 필요: 공개 저장소의 표준 러너 사용량 과금 정책. GitHub 정책은 바뀔 수 있다.
+#     대기 15분은 러너를 점유하는 시간이므로, 유료 과금 대상이 되면 방식을 재검토해야 한다.
+# =============================================================================
+
+name: pipeline-generate
+
+on:
+  schedule:
+    # ★ UTC 01:00. 예산 카운터의 날짜 기준이 UTC 자정이므로(DAY_BOUNDARY)
+    #   막 초기화된 직후에 돌린다. KST 로는 오전 10시다.
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+    inputs:
+      per:
+        description: '중분류당 생성 건수'
+        required: false
+        default: '2'
+      group:
+        description: '한 호출에 넣을 중분류 수'
+        required: false
+        default: '13'
+      skip:
+        description: '앞의 N개 중분류를 건너뛴다'
+        required: false
+        default: '0'
+
+permissions:
+  contents: write
+
+# ★ 같은 워크플로가 겹쳐 돌면 예산 상태 파일이 서로를 덮어쓴다.
+#   ★ 그러면 "오늘 얼마 썼는가" 가 틀려지고 한도 관리가 무너진다.
+concurrency:
+  group: pipeline-generate
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    # ★ 429 → 15분 대기 → 1회 재개 를 포함한 최악의 경우를 넉넉히 덮는다.
+    #   무한 대기를 막는 것이 목적이다.
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: 의존성 설치
+        run: npm ci
+
+      # ★ 컴파일 산출물을 실행한다 (docs/07-DECISIONS.md D-020)
+      - name: 빌드
+        run: npm run build -w shared && npm run build -w pipeline
+
+      # ★ 키가 없으면 아무것도 하지 않고 끝낸다. 길이만 찍는다.
+      #   ★ 값의 앞 4자리도 찍지 않는다 (절대 원칙 5).
+      - name: 키 확인
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "${GEMINI_API_KEY}" ]; then
+            echo "GEMINI_API_KEY 가 없다. 생성을 건너뛴다."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "키 길이: ${#GEMINI_API_KEY}"
+          fi
+        id: key
+
+      - name: 생성
+        if: steps.key.outputs.skip != 'true'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          node scripts/pipeline-generate.mjs \
+            --per "${{ inputs.per || '2' }}" \
+            --group "${{ inputs.group || '13' }}" \
+            --skip "${{ inputs.skip || '0' }}"
+
+      - name: 샘플 시트 갱신
+        if: steps.key.outputs.skip != 'true'
+        run: node scripts/pipeline-samples.mjs
+
+      # ★ 결과와 예산 상태를 커밋한다.
+      #   ★ 상태 파일을 커밋해야 다음 실행이 "어제 429 를 맞았다" 를 안다.
+      #     Actions 는 실행마다 새 컨테이너다.
+      - name: 결과 커밋
+        if: steps.key.outputs.skip != 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/pipeline/processed data/pipeline/state data/pipeline/samples
+          if git diff --cached --quiet; then
+            echo "커밋할 변경이 없다."
+          else
+            git commit -m "data(pipeline): 문제 생성 결과 ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      # ★ 자동 적재하지 않는다. 사람의 검수가 반드시 앞에 온다 (11-DEPLOY).
+      - name: 안내
+        if: always()
+        run: |
+          echo "★ 생성 결과는 검수 대기 상태다. 자동으로 게임에 들어가지 않는다."
+          echo "   git pull 후 npm run pipeline:review 로 검수한다."
