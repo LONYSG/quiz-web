@@ -180,19 +180,54 @@ export type GateResult =
   | { ok: false; reason: 'rate_limited_today' | 'item_limit' | 'token_limit'; detail: string };
 
 /**
+ * ★ 429 를 맞은 뒤 **재개 대기 시간이 지났는가.**
+ *
+ * ★ R012에서 Q-62 확정 규칙과 게이트가 어긋나 있는 것을 발견했다.
+ *   Q-62: "429 → 15분 대기 → 1회 재개"
+ *   그런데 checkGate 는 rateLimited 이면 무조건 막았다(Q-54 시절 구현).
+ *   ★ 그래서 실행이 429 로 끊기면, 15분이 지나도 **다시 시작할 수 없었다.**
+ *     실행 중에는 재개가 되고 재시작은 막히는 것은 일관되지 않다.
+ *
+ * → 게이트도 같은 규칙을 따르게 했다.
+ *   ★ 재개 횟수 상한(하루 1회)은 그대로다. 두 번은 열리지 않는다.
+ */
+export function canResumeNow(state: DayState): boolean {
+  if (!state.rateLimited) return true;
+  if (!canResume(state)) return false;
+  if (!state.rateLimitedAt) return false;
+  const elapsed = Date.now() - new Date(state.rateLimitedAt).getTime();
+  return elapsed >= LIMITS.rateLimitWaitMs;
+}
+
+/**
  * 지금 작업을 시작해도 되는가.
  *
  * ★ 세 가지를 본다. 하나라도 걸리면 시작하지 않는다.
  *   (1) 오늘 이미 429 를 맞았는가        ← Q-54 "429 가 나오면 그날 중단"
+ *       ★ 단 Q-62 확정 규칙에 따라 **15분이 지났고 재개를 아직 쓰지 않았으면** 허용한다
  *   (2) 오늘 처리 건수 상한에 도달했는가  ← 429 를 맞기 전에 스스로 멈춘다
  *   (3) 오늘 토큰 상한에 도달했는가
  */
 export function checkGate(state: DayState): GateResult {
   if (state.rateLimited) {
+    if (canResumeNow(state)) {
+      // ★ 게이트는 통과시키되 재개를 기록한다.
+      //   ★ 기록하지 않으면 15분마다 무한히 재시도할 수 있게 된다.
+      recordResume(state);
+      return { ok: true };
+    }
+    const waitMin = Math.round(LIMITS.rateLimitWaitMs / 60000);
+    const used = (state.resumes ?? []).length;
+    const why =
+      used >= LIMITS.maxResumesPerDay
+        ? `재개 한도(${LIMITS.maxResumesPerDay}회)를 이미 썼다`
+        : `${waitMin}분이 지나지 않았다`;
     return {
       ok: false,
       reason: 'rate_limited_today',
-      detail: `오늘(${state.day}) 이미 429 를 받았다 (${state.rateLimitedAt}). 다음 UTC 자정 이후에 다시 시도한다.`,
+      detail:
+        `오늘(${state.day}) 429 를 받았다 (${state.rateLimitedAt}). ${why}. ` +
+        `★ Q-62: 15분 대기 후 1회만 재개한다. 그 뒤에는 다음 UTC 자정 이후에 다시 시도한다.`,
     };
   }
   if (state.items >= LIMITS.dailyItems) {
