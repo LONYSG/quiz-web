@@ -239,29 +239,46 @@ OpenTDB는 CC BY-SA 4.0이다. 파생물인 한국어 문제 데이터도 같은
 
 ## 8. 현재 상태
 
-**전 구간 구현·실측 완료 (R010).** 대량 확보만 무료 한도에 막혀 있다.
+★★ **R011에서 문제 확보 방식을 바꿨다.** OpenTDB 수확을 폐기하고 **Gemini 직접 생성**으로 간다.
+
+```
+  [R010까지]  수확 → 규칙 필터 → 1차 가공 → 역검증 → 규칙 검사 → 검수 → 적재
+  [R011부터]  ★ 생성 ────────────────────→ 역검증 → 규칙 검사 → 중복 판정 → 검수 → 적재
+```
+
+★ 앞의 두 단계만 바뀌었다. 뒤는 그대로 재사용한다.
+★ **역검증은 어느 경우에도 유지한다** (건우 지시). 생성은 원본이 없으므로
+모델이 사실을 틀리게 만들거나 애매한 문제를 **지어낼** 수 있다.
+실제로 R011에서 애매한 문제 1건을 역검증이 잡았다.
 
 | 파일 | 상태 |
 |------|------|
-| `pipeline/src/config.ts` | ★ 모델명·한도를 한 곳에 모았다 (D-033) |
-| `pipeline/src/budget.ts` | 예산 게이트와 "그날 중단" 상태 (D-034) |
-| `pipeline/src/gemini.ts` | 429/503 처리, 모델 체인, 토큰 누적, ★ 키 스크럽 |
-| `pipeline/src/adapters/opentdb.ts` | 수확 + 엔티티 해제 + 안정적 sourceRef |
-| `pipeline/src/filter.ts` | 규칙 필터. ★ 차단율 10.8% / 오차단 0건 |
-| `pipeline/src/prompts.ts` | 프롬프트 + responseSchema (버전 p2) |
-| `pipeline/src/process.ts` | 가공·역검증 오케스트레이션 |
-| `pipeline/src/rules.ts` | ★ shared 함수 재사용 |
-| `pipeline/src/rejudge.ts` | ★ API 없이 재판정 (D-035) |
-| `scripts/pipeline-*.mjs` | 8개 명령 (harvest/process/rejudge/report/review/load/models/compare/reset-limit) |
-| `.github/workflows/pipeline-harvest.yml` | 수동 실행 |
-| `.github/workflows/pipeline-process.yml` | 매일 1회 + 수동. ★ 실제 실행은 미검증 |
+| `pipeline/src/categories.ts` | ★ **카테고리 트리** 대 7 / 중 63 / 소 294. 한 곳에서 켜고 끈다 |
+| `pipeline/src/gen-prompt.ts` | ★ **생성 프롬프트** (`g2`). 접근성·난이도 분리 |
+| `pipeline/src/generate.ts` | ★ **생성 오케스트레이션** + 단계별 게이트 |
+| `pipeline/src/dedupe.ts` | ★ **중복 판정.** 정답으로 후보 추리기 → 카테고리로 의심 강도 |
+| `pipeline/src/config.ts` | 모델명·한도를 한 곳에 (D-033). + 429 대기 시간·재개 상한 |
+| `pipeline/src/budget.ts` | 예산 게이트 + ★ **구간(segment)별 기록** + 재개 이력 |
+| `pipeline/src/gemini.ts` | 429/503, 모델 체인, 토큰 누적, ★ 키 스크럽, ★ 낭비 요청 집계 |
+| `pipeline/src/rules.ts` | 규칙 검사 3종 + ★ `sanitizeVariants`(형식 틀린 변형만 제외) |
+| `pipeline/src/process.ts` | OpenTDB 가공. ★ `judgeBackcheck` 를 생성 경로가 재사용한다 |
+| `pipeline/src/filter.ts` | ★ 영어 원본 전용. 생성 경로에서는 쓰지 않는다 |
+| `pipeline/src/adapters/opentdb.ts` | ★ **비활성.** 지우지 않았다 (참조 구현 + 인터페이스 증거) |
+| `pipeline/src/rejudge.ts` | API 없이 재판정 (D-035) |
+| `scripts/pipeline-generate.mjs` | ★ 주 실행 명령 |
+| `scripts/pipeline-samples.mjs` | ★ 건우 판단용 출제 시트 |
+| `.github/workflows/pipeline-generate.yml` | ★ 매일 1회 + 수동. **실제 실행은 미검증** |
+| `.github/workflows/pipeline-harvest.yml` | ★ 비활성 (`confirm` 가드) |
+| `.github/workflows/pipeline-process.yml` | ★ 정기 실행 해제. 수동만 |
 
-★ 실측 수치와 남은 판단은 [docs/05-STATUS.md](../docs/05-STATUS.md) Track D 절과
-[docs/07-DECISIONS.md](../docs/07-DECISIONS.md) D-033~D-036,
-그리고 미결 항목 **Q-62 / Q-63** 을 본다.
+★ 실측 수치는 [docs/05-STATUS.md](../docs/05-STATUS.md) Track D 절,
+판단 근거는 [docs/07-DECISIONS.md](../docs/07-DECISIONS.md) D-033~D-042,
+남은 판단은 미결 항목 **Q-63 / Q-65 ~ Q-68** 을 본다.
 
 ### ★ 프롬프트 버전
 
-`p1` → `p2` (R010): 역검증 프롬프트에 "alternatives 에는 서로 다른 대상만 넣어라" 를 추가했다.
-p1 에서 모델이 표기 변형을 alternatives 에 넣어, 그것을 비유일성 증거로 읽은 판정 로직이
-정상 문제 6건을 전부 오탈락시켰다.
+| 버전 | 무엇이 바뀌었는가 |
+|------|-----------------|
+| `p1` → `p2` (R010) | 역검증 프롬프트에 "alternatives 에는 서로 다른 대상만" 을 추가. p1에서 모델이 표기 변형을 alternatives 에 넣어 정상 문제 6건이 전부 오탈락했다 |
+| `g1` (R011) | ★ 생성 프롬프트 신설. 접근성·난이도 분리 / 시간 의존 금지 / 카테고리 입력 |
+| `g1` → `g2` (R011) | ★ 실측에서 탈락 10건 중 5건이 한 원인이었다 — 모델이 **표기 변형을 질문에 써 버렸다**("대헌장의 라틴어 명칭은?" → 마그나 카르타, answers 에 "대헌장"). 채팅으로 답을 받는 게임이므로 질문의 낱말을 옮겨 치면 모르는 사람이 이긴다. 실패 예시 4개와 자기 점검 목록을 넣었다. → 재실측에서 0건 |

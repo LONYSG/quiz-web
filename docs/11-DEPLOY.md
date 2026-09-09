@@ -294,7 +294,73 @@ curl http://localhost:3000/healthz
 ## ★ 문제 데이터 검수와 적재 (Track D)
 
 > 파이프라인의 설계와 근거는 [pipeline/README.md](../pipeline/README.md),
-> 실측 결과는 [07-DECISIONS.md](07-DECISIONS.md) D-033 ~ D-036 에 있다.
+> 실측 결과는 [07-DECISIONS.md](07-DECISIONS.md) D-033 ~ D-042 에 있다.
+
+★★ **R011부터 주 경로가 바뀌었다.** OpenTDB 수확·가공이 아니라 **Gemini 직접 생성**이다.
+아래 "생성 문제" 절차를 먼저 보고, OpenTDB 절차는 참고로 남겨 둔다.
+
+---
+
+### ★ 생성 문제 절차 (R011부터. 이것이 주 경로다)
+
+```
+  Actions (매일 UTC 01:00)                 건우 PC (로컬)
+  ────────────────────────                ──────────────
+  1. 생성  카테고리 트리 → Gemini
+  2. 역검증 (싼 모델 게이트 → 승급)
+  3. 규칙 검사 + 중복 판정
+  4. 커밋  processed/ + state/ + samples/
+                    │
+                    │  git pull
+                    ▼
+                                      5. 출제 시트 읽기
+                                      6. 검수  npm run pipeline:review
+                                      7. 적재  npm run pipeline:load
+```
+
+**수동으로 생성하기**
+
+```bash
+# 무엇을 요청할지 먼저 본다 (API 를 부르지 않는다)
+npm run pipeline:generate -- --plan
+
+# 전체 중분류를 중분류당 2건씩
+npm run pipeline:generate
+
+# 특정 카테고리만 (덜 채워진 곳을 메울 때)
+npm run pipeline:generate -- --only symbols,drinks --per 2
+
+# 같은 중분류를 두 번째로 돌 때
+#   ★ --offset 을 반드시 준다. 없으면 같은 소분류를 다시 요청해 중복이 난다
+npm run pipeline:generate -- --offset 2
+```
+
+★ 자체 건수 상한은 `PIPELINE_DAILY_ITEMS`(기본 200)로 조정한다.
+★ 429 를 받으면 **15분 기다렸다가 1회만** 재개한다(Q-62 확정). 또 429 면 그날 중단이다.
+그 사이 진행 상황은 `data/pipeline/state/daily.json` 의 `segments` 에 구간별로 남는다.
+
+**5. 출제 시트 읽기**
+
+```bash
+node scripts/pipeline-samples.mjs
+# → data/pipeline/samples/R011-samples.txt
+```
+
+★ 카테고리 순서대로 묶여 있다. 카테고리 단위로 판단하기 위한 것이다.
+시트에는 통과분, **탈락분(사유 포함)**, 중복 판정 결과, 통계가 모두 들어 있다.
+
+★ **탈락분을 버리지 않는 이유**: 판정 품질을 평가하는 근거다.
+R010에서 역검증 판정이 정상 문제 6건을 전부 오탈락시킨 것을 이 방법으로 찾았다.
+
+**★ 생성 문제에서 특별히 볼 것 두 가지**
+
+| # | 항목 | 왜 |
+|---|------|-----|
+| 1 | ★ **사실이 맞는가** | 가공과 달리 생성은 **원본이 없다.** 모델이 사실을 틀리게 만들 수 있다. 역검증이 1차로 걸러내지만 완벽하지 않다 |
+| 2 | ★ **접근성과 난이도의 조합** | 접근성 3 + 난이도 2 는 "그 분야 사람은 쉽게 답하지만 방에서는 아무도 못 맞히는" 문제다 (D-038) |
+
+---
+
 
 ### 왜 사람이 승인해야 하는가
 
@@ -364,6 +430,16 @@ npm run pipeline:review -- --collect
 
 ### 5. 적재
 
+★ **생성 문제를 처음 적재하기 전에 마이그레이션을 적용해야 한다.**
+`sources` 테이블에 `gemini-gen` 행이 없으면 FK 오류로 죽는다.
+
+```bash
+npm run migrate      # migrations/0002_gemini_gen_source.sql
+```
+
+★ 적재 스크립트가 먼저 확인하고 알려 준다 —
+`★ sources 테이블에 없는 소스: gemini-gen`.
+
 ```bash
 # 무엇이 들어갈지 먼저 본다
 npm run pipeline:load -- --dry-run
@@ -393,3 +469,17 @@ cat data/pipeline/state/daily.json
 ★ `rateLimited: true` 면 그날은 가공이 시작되지 않는다 (Q-54).
 짧은 창의 한도였다고 판단되면 `npm run pipeline:reset-limit` 로 사람이 해제한다.
 ★ 자동으로 해제되지 않는다. 판단이 필요한 일이다.
+
+★ **읽는 방법** (R011에서 항목이 늘었다)
+
+| 필드 | 의미 |
+|------|------|
+| `items` / `tokens` / `calls` | 오늘 누적. ★ LLM 에 실제로 도달한 건수만 센다 |
+| `rateLimitHits` | 429 를 받은 횟수 (재개 후 다시 받은 것도 센다) |
+| `resumes` | ★ 15분 대기 후 재개한 이력. 하루 1회까지다 (Q-62) |
+| `segments` | ★ 429 사이 구간별 건수·토큰·호출. **한도 측정의 원천 데이터다** |
+| `wastedRequests` | ★ 상위 모델 503 으로 낭비된 요청. 모델별 |
+
+★ R011 실측에서 `wastedRequests` 의 3.8-flash 가 10회였다 —
+생성 호출 11번 중 10번이 503 이었다. 실질적으로 못 쓰는 모델이라는 뜻이다.
+그래도 체인 첫 자리에 두는 이유는 D-033 에 있다(쓸 수 있게 되면 자동으로 쓴다).
