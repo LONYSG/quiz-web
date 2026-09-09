@@ -26,6 +26,7 @@ export {
   currentSegment,
   closeSegment,
   canResume,
+  canResumeNow,
   recordResume,
 } from './budget.js';
 export type { DayState, DaySegment, GateResult } from './budget.js';
@@ -71,7 +72,15 @@ export {
 export type { GenSlot, GenItem } from './gen-prompt.js';
 export { generateBatch, makeGenRef, difficultyBucket, GEN_SOURCE_ID } from './generate.js';
 export type { GenerateOptions, GenerateStats } from './generate.js';
-export { findDuplicates, similarity, questionKey, DUPE_THRESHOLDS } from './dedupe.js';
+export { findDuplicates, similarity, questionKey, DUPE_SIMILARITY_IS_ADVISORY } from './dedupe.js';
+export { selectQuestions, explainReason, SELECT } from './select.js';
+export {
+  DUPE_JUDGE_SCHEMA,
+  buildDupeJudgePrompt,
+  toDupeQuestionPairs,
+} from './dedupe-llm.js';
+export type { DupeQuestionPair, DupeJudgeItem } from './dedupe-llm.js';
+export type { SelectInput, SelectResult, SelectReport, SelectReason } from './select.js';
 export type { DupeInput, DupePair, DupeReport, DupeLevel, DupeVerdict } from './dedupe.js';
 export { judgeBackcheck } from './process.js';
 export * from './types.js';
