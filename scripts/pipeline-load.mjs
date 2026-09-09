@@ -33,6 +33,20 @@ import pg from 'pg';
 import { normalizeAnswer, NORMALIZE_VERSION } from '../shared/dist/index.js';
 import { dedupeAnswers } from '../pipeline/dist/rules.js';
 import { DATA_DIRS } from '../pipeline/dist/config.js';
+import { findMid } from '../pipeline/dist/categories.js';
+
+/**
+ * ★ 소분류 이름 → categories 테이블의 리프 key.
+ *   0003 마이그레이션이 만든 key 형식과 **정확히 같아야 한다** —
+ *   `L3:{midKey}#{순번}`. 형식이 어긋나면 카테고리를 찾지 못한다.
+ */
+function leafKeyFor(midKey, sub) {
+  const mid = findMid(midKey);
+  if (!mid) return null;
+  const idx = mid.subs.indexOf(sub);
+  if (idx < 0) return null;
+  return `L3:${midKey}#${idx + 1}`;
+}
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 try {
@@ -93,25 +107,16 @@ if (items.length === 0) {
 // ── 2. 카테고리 매핑
 //   ★ DB의 categories.key 는 영문 키다. 가공 결과는 한국어 이름으로 온다.
 //
-// ★★ R011: 생성 문제는 **새 카테고리 트리의 대분류 이름**으로 온다 (7개).
-//   기존 16개 플랫 카테고리와 이름이 겹치지 않으므로 따로 적는다.
-//   ★ 임시 매핑이다. 근거 —
-//     계층 스키마(categories.parent_id / level)는 건우가 카테고리 목록을 확정한 뒤
-//     0003 마이그레이션으로 넣는다. 지금 넣으면 다음 라운드에 되돌려야 한다.
-//     그때까지는 기존 행에 얹어 적재만 가능하게 해 둔다.
-//   ★ 이 매핑은 정보를 잃는다 — 중분류·소분류가 categories 테이블에 남지 않는다.
-//     그러나 processed/ JSON 의 gen.midKey / gen.sub 에는 남아 있으므로
-//     0003 이후 다시 채울 수 있다.
-const MAJOR_MAP = {
-  한국: 'history',
-  '인문·사회': 'history',
-  자연과학: 'science',
-  '기술·의학': 'tech',
-  '문화·예술': 'art',
-  '스포츠·게임': 'sports',
-  '생활·상식': 'general',
-};
-
+// ★★ R012: R011의 "대분류 → 기존 key 임시 매핑" 을 **제거했다.**
+//   0003 마이그레이션으로 categories 에 계층이 들어갔으므로
+//   ★ 생성 문제는 **소분류(리프)** 를 직접 가리킨다. 정보를 잃지 않는다.
+//
+//   소분류 리프의 key 는 `L3:{midKey}#{소분류 순번}` 이다.
+//   ★ 순번으로 만든 이유: 소분류 이름이 바뀌어도 과거 통계가 깨지지 않는다.
+//     (R002 categories 주석의 "문자열로 박아두면 이름을 바꿀 때 통계가 깨진다" 와 같은 이유)
+//
+// ★ 아래 CATEGORY_MAP 은 OpenTDB 가공 문제(R010)용으로 남긴다.
+//   그 문제들은 16개 플랫 카테고리(level 0)를 참조한다.
 const CATEGORY_MAP = {
   일반상식: 'general',
   역사: 'history',
@@ -180,7 +185,13 @@ try {
     for (const i of todo) {
       console.log(`  ${i.sourceRef}  ${i.generated.questionKo}`);
       console.log(`     정답: ${i.generated.displayAnswer}  변형 ${i.generated.answers.length}개`);
-      console.log(`     카테고리: ${i.generated.category} / 난이도: ${i.generated.difficulty}`);
+      const path = i.gen?.midKey ? `${i.gen.midKey} > ${i.gen.sub}` : i.generated.category;
+      console.log(`     카테고리: ${path} / 난이도: ${i.generated.difficulty}`);
+      if (i.gen) {
+        console.log(
+          `     접근성 ${i.gen.accessibility} / 난이도 ${i.gen.difficultyScore} / 알가치 ${i.gen.worthKnowing}`,
+        );
+      }
     }
     process.exit(0);
   }
@@ -199,8 +210,24 @@ try {
 
   for (const item of todo) {
     const g = item.generated;
-    const categoryId =
-      catByKey.get(MAJOR_MAP[g.category] ?? CATEGORY_MAP[g.category] ?? '') ?? fallbackId;
+    // ★★ 생성 문제는 소분류 리프를 가리킨다 (R012).
+    //   gen.midKey 와 gen.sub 로 리프 key 를 만든다.
+    let categoryId = null;
+    if (item.gen?.midKey && item.gen?.sub) {
+      const leafKey = leafKeyFor(item.gen.midKey, item.gen.sub);
+      if (leafKey) categoryId = catByKey.get(leafKey) ?? null;
+      if (!categoryId) {
+        // ★ 조용히 fallback 으로 넘기지 않는다. 카테고리가 틀리면 통계가 틀린다.
+        skipped.push({
+          ref: item.sourceRef,
+          reason: `카테고리 리프를 찾지 못했다: ${item.gen.midKey} > ${item.gen.sub}`,
+        });
+        continue;
+      }
+    } else {
+      // OpenTDB 가공 문제: 기존 플랫 카테고리를 쓴다
+      categoryId = catByKey.get(CATEGORY_MAP[g.category] ?? '') ?? fallbackId;
+    }
     // ★ 정규화해서 같아지는 표기를 합친다. DB의 answer_norm UNIQUE 를 만족시켜야 한다.
     const answers = dedupeAnswers([g.displayAnswer, ...g.answers]);
     if (answers.length === 0) {
