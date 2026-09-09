@@ -24,7 +24,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildProcessPrompt, PROCESS_SCHEMA } from '../pipeline/dist/prompts.js';
 import { GeminiClient } from '../pipeline/dist/gemini.js';
-import { loadState } from '../pipeline/dist/budget.js';
+import { loadState, saveState } from '../pipeline/dist/budget.js';
 import { DATA_DIRS } from '../pipeline/dist/config.js';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -243,4 +243,11 @@ await mkdir(outDir, { recursive: true });
 const outFile = path.join(outDir, 'model-compare.json');
 await writeFile(outFile, JSON.stringify(report, null, 2), 'utf8');
 console.log(`[compare] 상세 결과: ${path.relative(ROOT, outFile)}`);
+// ★★ R011 수정: 상태를 저장한다.
+//   전에는 저장하지 않았다. GeminiClient 가 state 를 메모리에서 갱신해도
+//   파일에 쓰지 않으면 **다음 실행이 이 소비를 모른다.**
+//   ★ R010에서 이 때문에 "호출 4회에 429" 라는 잘못된 관측이 나왔다.
+//     실제로는 이 스크립트와 pipeline:models 가 그 전에 여러 번 호출했다.
+await saveState(ROOT, state);
 console.log(`[compare] 누적 토큰(오늘): ${state.tokens} / 호출 ${state.calls}회`);
+console.log('[compare] ★ 이 소비를 상태 파일에 기록했다.');

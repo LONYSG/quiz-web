@@ -61,7 +61,16 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
  */
 const RETRY_STATUS = new Set([429, 500, 503]);
 
+// ★★ R011: 이 스크립트의 호출도 예산에 센다.
+//   전에는 생 fetch 라서 상태 파일에 **전혀 기록되지 않았다.**
+//   ★ 모델 실측은 후보 5개 × 2종 프로브 × 재시도 3회까지 = 최대 30회다.
+//     그것이 세어지지 않으면 "오늘 얼마 썼는가" 가 완전히 틀린다.
+//   ★ 토큰은 프로브 응답에서 알 수 있을 때만 더한다. 모르면 호출 수만 센다.
+let probeCalls = 0;
+let probeTokens = 0;
+
 async function callOnce(pathname, body) {
+  probeCalls += 1;
   const res = await fetch(`${BASE}${pathname}`, {
     method: body ? 'POST' : 'GET',
     headers: {
@@ -74,6 +83,13 @@ async function callOnce(pathname, body) {
   const rl = {};
   for (const [k, v] of res.headers.entries()) {
     if (/ratelimit|retry-after|quota/i.test(k)) rl[k] = v;
+  }
+  // 토큰 정보가 있으면 모아 둔다
+  try {
+    const total = JSON.parse(text)?.usageMetadata?.totalTokenCount;
+    if (typeof total === 'number') probeTokens += total;
+  } catch {
+    /* 오류 응답에는 usageMetadata 가 없다 */
   }
   return { status: res.status, text: scrub(text), rateLimit: rl };
 }
@@ -239,5 +255,28 @@ for (const r of results) {
     `  ${r.model.padEnd(24)} 호출=${r.plainStatus === 200 ? '가능' : '불가(' + r.plainStatus + ')'}` +
       `  responseSchema=${r.schemaStatus === 200 && r.schemaOk ? '지원' : r.plainStatus === 200 ? '확인 필요' : '-'}` +
       `  schema총토큰=${total}`,
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ 예산 상태에 기록한다 (R011 수정)
+//   ★ 이 스크립트가 소비한 것을 다음 실행이 알아야 한다.
+//     기록하지 않으면 생성 배치가 남은 한도를 실제보다 많다고 착각한다.
+// ─────────────────────────────────────────────────────────────────────────────
+{
+  const { loadState, saveState, currentSegment } = await import('../pipeline/dist/budget.js');
+  const path = await import('node:path');
+  const { fileURLToPath } = await import('node:url');
+  const root = path.default.join(path.default.dirname(fileURLToPath(import.meta.url)), '..');
+  const state = await loadState(root);
+  state.calls += probeCalls;
+  state.tokens += probeTokens;
+  const seg = currentSegment(state);
+  seg.calls += probeCalls;
+  seg.tokens += probeTokens;
+  await saveState(root, state);
+  console.log(
+    `\n[models] ★ 예산 기록: 이 실행의 호출 ${probeCalls}회 / 토큰 ${probeTokens}` +
+      ` → 오늘 누적 호출 ${state.calls}회 / 토큰 ${state.tokens}`,
   );
 }

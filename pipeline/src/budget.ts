@@ -21,6 +21,27 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { DATA_DIRS, LIMITS } from './config.js';
 
+/**
+ * ★ 429 사이의 한 구간.
+ *
+ * ★ 왜 구간을 나눠 기록하는가 (R011 작업 B)
+ *   "하루에 몇 건 처리했는가" 만으로는 한도의 모양을 알 수 없다.
+ *   ★ 429 사이 각 구간에서 몇 건·몇 토큰을 썼는지 보면
+ *     "한 창(window)에 얼마가 허용되는가" 를 추정할 수 있다.
+ *   이것이 무료 한도 측정의 원천 데이터다.
+ */
+export interface DaySegment {
+  index: number;
+  startedAt: string;
+  /** 429 로 닫혔거나 작업이 끝난 시각. 진행 중이면 null */
+  endedAt: string | null;
+  items: number;
+  tokens: number;
+  calls: number;
+  /** 이 구간이 429 로 끝났는가 */
+  closedBy429: boolean;
+}
+
 export interface DayState {
   /** UTC 기준 날짜 (YYYY-MM-DD) */
   day: string;
@@ -34,6 +55,17 @@ export interface DayState {
   rateLimited: boolean;
   /** 429 를 맞은 시각 */
   rateLimitedAt: string | null;
+  /** ★ 429 를 받은 횟수 (재개 후 다시 받은 것도 센다) */
+  rateLimitHits: number;
+  /** ★ 15분 대기 후 재개한 이력 */
+  resumes: { at: string; afterItems: number; afterTokens: number }[];
+  /** ★ 429 사이의 구간별 기록. 작업 B 측정의 원천 데이터 */
+  segments: DaySegment[];
+  /**
+   * ★ 상위 모델 503 으로 낭비된 요청 수 (모델별).
+   *   R010에서 이것이 429 를 자초한 직접 원인이었다. 실제로 몇 건인지 센다.
+   */
+  wastedRequests: Record<string, number>;
   updatedAt: string;
 }
 
@@ -47,6 +79,7 @@ function statePath(root: string): string {
 }
 
 function emptyState(day: string): DayState {
+  const now = new Date().toISOString();
   return {
     day,
     items: 0,
@@ -54,8 +87,68 @@ function emptyState(day: string): DayState {
     calls: 0,
     rateLimited: false,
     rateLimitedAt: null,
-    updatedAt: new Date().toISOString(),
+    rateLimitHits: 0,
+    resumes: [],
+    segments: [
+      { index: 1, startedAt: now, endedAt: null, items: 0, tokens: 0, calls: 0, closedBy429: false },
+    ],
+    wastedRequests: {},
+    updatedAt: now,
   };
+}
+
+/**
+ * 지금 진행 중인 구간. 없으면 새로 만든다.
+ *
+ * ★ 오래된 상태 파일(R010 형식)에는 segments 가 없다. 그 경우에도 동작해야 한다.
+ *   상태 파일 형식 때문에 파이프라인이 멈추면 안 된다.
+ */
+export function currentSegment(state: DayState): DaySegment {
+  if (!Array.isArray(state.segments)) state.segments = [];
+  const open = state.segments.find((s) => s.endedAt === null);
+  if (open) return open;
+  const seg: DaySegment = {
+    index: state.segments.length + 1,
+    startedAt: new Date().toISOString(),
+    endedAt: null,
+    items: 0,
+    tokens: 0,
+    calls: 0,
+    closedBy429: false,
+  };
+  state.segments.push(seg);
+  return seg;
+}
+
+/** 진행 중인 구간을 닫는다 */
+export function closeSegment(state: DayState, by429: boolean): void {
+  const seg = currentSegment(state);
+  seg.endedAt = new Date().toISOString();
+  seg.closedBy429 = by429;
+}
+
+/**
+ * ★ 15분 대기 후 재개해도 되는가 (Q-62 (B) 확정).
+ *
+ * ★ 하루 1회만 허용한다. 재개 후 또 429 면 그날 중단이다.
+ *   ★ 이것은 R010에서 만든 "사람이 판단해 해제하는" 경로와 다르다.
+ *     그쪽은 사람이 실행하는 명령이고, 이쪽은 확정된 규칙에 따른 자동 재개다.
+ */
+export function canResume(state: DayState): boolean {
+  const used = Array.isArray(state.resumes) ? state.resumes.length : 0;
+  return used < LIMITS.maxResumesPerDay;
+}
+
+/** 재개를 기록한다 */
+export function recordResume(state: DayState): void {
+  if (!Array.isArray(state.resumes)) state.resumes = [];
+  state.resumes.push({
+    at: new Date().toISOString(),
+    afterItems: state.items,
+    afterTokens: state.tokens,
+  });
+  state.rateLimited = false;
+  state.rateLimitedAt = null;
 }
 
 /**

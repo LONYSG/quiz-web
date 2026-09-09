@@ -21,7 +21,7 @@
 // =============================================================================
 
 import { LIMITS } from './config.js';
-import { saveState, type DayState } from './budget.js';
+import { closeSegment, currentSegment, saveState, type DayState } from './budget.js';
 
 const BASE = 'https://generativelanguage.googleapis.com/v1beta';
 
@@ -144,18 +144,26 @@ export class GeminiClient {
       });
       const text = this.scrub(await res.text());
 
-      // ── 429: ★ 그날 중단. 재시도하지 않는다
+      // ── 429: ★ 재시도하지 않는다. 호출자가 대기·재개를 판단한다 (Q-62 (B))
       if (res.status === 429) {
         const detail = this.extractError(text);
         this.opts.state.rateLimited = true;
         this.opts.state.rateLimitedAt = new Date().toISOString();
+        this.opts.state.rateLimitHits = (this.opts.state.rateLimitHits ?? 0) + 1;
+        // ★ 이 구간을 429 로 닫는다. 구간별 소비량이 한도 측정의 원천 데이터다
+        closeSegment(this.opts.state, true);
         await saveState(this.opts.root, this.opts.state);
-        this.log(`[gemini] ★ 429 — 오늘 작업을 중단한다. ${detail}`);
+        this.log(`[gemini] ★ 429 (${this.opts.state.rateLimitHits}번째) — ${detail}`);
         throw new RateLimitError(detail);
       }
 
       // ── 일시적 오류: 재시도
       if (RETRY_STATUS.has(res.status)) {
+        // ★ 상위 모델의 503 은 "낭비된 요청" 이다. R010에서 이것이 429 를 자초했다.
+        //   실제로 몇 건인지 세어 보고한다 (R011 작업 A·B).
+        if (!this.opts.state.wastedRequests) this.opts.state.wastedRequests = {};
+        this.opts.state.wastedRequests[model] =
+          (this.opts.state.wastedRequests[model] ?? 0) + 1;
         const maxAttempts = opts.maxAttempts ?? LIMITS.maxRetries;
         if (attempt >= maxAttempts) {
           throw new Error(
@@ -193,6 +201,10 @@ export class GeminiClient {
       // ★ 토큰과 호출 수를 즉시 누적한다. 실패해도 소비된 것은 기록한다.
       this.opts.state.tokens += usage.total;
       this.opts.state.calls += 1;
+      // ★ 구간에도 누적한다. 429 사이 구간별 소비량이 한도 측정의 원천 데이터다
+      const seg = currentSegment(this.opts.state);
+      seg.tokens += usage.total;
+      seg.calls += 1;
 
       const raw = json.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
       const finish = json.candidates?.[0]?.finishReason;

@@ -9,7 +9,7 @@
 import { describe, expect, it } from 'vitest';
 import { ruleFilter, hasOptionWrapper } from './filter.js';
 import { decodeEntities, makeSourceRef, toRawQuestion } from './adapters/opentdb.js';
-import { checkGate, today } from './budget.js';
+import { checkGate, today, type DayState } from './budget.js';
 import type { RawQuestion } from './types.js';
 
 function q(question: string, correct: string, extra: Partial<RawQuestion> = {}): RawQuestion {
@@ -163,13 +163,17 @@ describe('OpenTDB 어댑터', () => {
 });
 
 describe('예산 게이트 (Q-54)', () => {
-  const base = {
+  const base: DayState = {
     day: today(),
     items: 0,
     tokens: 0,
     calls: 0,
     rateLimited: false,
     rateLimitedAt: null,
+    rateLimitHits: 0,
+    resumes: [],
+    segments: [],
+    wastedRequests: {},
     updatedAt: '',
   };
 
