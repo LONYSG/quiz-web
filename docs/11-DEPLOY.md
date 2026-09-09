@@ -296,43 +296,61 @@ curl http://localhost:3000/healthz
 > 파이프라인의 설계와 근거는 [pipeline/README.md](../pipeline/README.md),
 > 실측 결과는 [07-DECISIONS.md](07-DECISIONS.md) D-033 ~ D-042 에 있다.
 
-★★ **R011부터 주 경로가 바뀌었다.** OpenTDB 수확·가공이 아니라 **Gemini 직접 생성**이다.
+★★ **R011부터 주 경로가 바뀌었다.** OpenTDB 수확·가공이 아니라 **직접 생성**이다.
 아래 "생성 문제" 절차를 먼저 보고, OpenTDB 절차는 참고로 남겨 둔다.
+
+★★ **R012부터 Actions 정기 실행을 쓰지 않는다** (Q-71).
+로컬에서 `npm run pipeline:bulk` 로 만든다. ★ 중단하고 재개할 수 있다.
 
 ---
 
-### ★ 생성 문제 절차 (R011부터. 이것이 주 경로다)
+### ★★ 생성 문제 절차 (R012 기준. 전부 로컬이다)
 
 ```
-  Actions (매일 UTC 01:00)                 건우 PC (로컬)
-  ────────────────────────                ──────────────
-  1. 생성  카테고리 트리 → Gemini
-  2. 역검증 (싼 모델 게이트 → 승급)
-  3. 규칙 검사 + 중복 판정
-  4. 커밋  processed/ + state/ + samples/
-                    │
-                    │  git pull
-                    ▼
-                                      5. 출제 시트 읽기
-                                      6. 검수  npm run pipeline:review
-                                      7. 적재  npm run pipeline:load
+  건우 PC (로컬) — 틈날 때 돌린다
+  ──────────────────────────────
+  0. 현황 확인   npm run pipeline:bulk -- --status
+  1. 생성        npm run pipeline:bulk -- --target 500
+                 ★ 중단되면 다시 실행하면 이어서 채운다
+  2. 역검증·규칙 검사·중복 판정이 1에 포함되어 있다
+  3. 중복 판정   node scripts/pipeline-dedupe.mjs
+  4. 출제 시트   node scripts/pipeline-samples.mjs
+  5. 검수        npm run pipeline:review
+  6. 적재        npm run pipeline:load
+  7. 사후 정리   node scripts/pipeline-dedupe-db.mjs --judge
 ```
 
-**수동으로 생성하기**
+**★ 대량 생성 (주 경로)**
 
 ```bash
-# 무엇을 요청할지 먼저 본다 (API 를 부르지 않는다)
-npm run pipeline:generate -- --plan
+# ★ 먼저 현황을 본다. 소분류별로 얼마나 찼는지 보여준다
+npm run pipeline:bulk -- --status
 
-# 전체 중분류를 중분류당 2건씩
-npm run pipeline:generate
+# 무엇을 요청할지만 본다 (API 를 부르지 않는다)
+npm run pipeline:bulk -- --target 500 --plan
 
-# 특정 카테고리만 (덜 채워진 곳을 메울 때)
+# 500건 목표로 생성한다
+npm run pipeline:bulk -- --target 500
+
+# 소분류당 목표 건수로 지정할 수도 있다
+npm run pipeline:bulk -- --per-sub 3
+```
+
+★ **중단·재개가 어떻게 되는가**
+진행 상태를 별도 카운터로 두지 않는다. `processed/` 의 모든 배치를 훑어
+소분류별 누적 건수를 센다. ★ 그래서 다시 실행하면 **덜 채워진 소분류부터** 이어서 채운다.
+★ Claude Code 가 만든 것도 같은 디렉터리에 있으므로 함께 세어진다.
+
+★ 429 를 받으면 **15분 기다렸다가 1회만** 재개한다(Q-62). 또 429 면 그날 중단이다.
+★ R012 실측: 그 규칙이 실제로 그대로 동작했다.
+
+**카테고리 트리를 순회하는 방식 (참고)**
+
+```bash
+npm run pipeline:generate -- --plan        # 요청 계획만
+npm run pipeline:generate                  # 전체 중분류 × 2건
 npm run pipeline:generate -- --only symbols,drinks --per 2
-
-# 같은 중분류를 두 번째로 돌 때
-#   ★ --offset 을 반드시 준다. 없으면 같은 소분류를 다시 요청해 중복이 난다
-npm run pipeline:generate -- --offset 2
+npm run pipeline:generate -- --offset 2    # ★ 두 번째 순회는 반드시 --offset
 ```
 
 ★ 자체 건수 상한은 `PIPELINE_DAILY_ITEMS`(기본 200)로 조정한다.
@@ -352,12 +370,23 @@ node scripts/pipeline-samples.mjs
 ★ **탈락분을 버리지 않는 이유**: 판정 품질을 평가하는 근거다.
 R010에서 역검증 판정이 정상 문제 6건을 전부 오탈락시킨 것을 이 방법으로 찾았다.
 
-**★ 생성 문제에서 특별히 볼 것 두 가지**
+**★★ 생성 문제에서 특별히 볼 것 (R012 갱신)**
 
 | # | 항목 | 왜 |
 |---|------|-----|
-| 1 | ★ **사실이 맞는가** | 가공과 달리 생성은 **원본이 없다.** 모델이 사실을 틀리게 만들 수 있다. 역검증이 1차로 걸러내지만 완벽하지 않다 |
-| 2 | ★ **접근성과 난이도의 조합** | 접근성 3 + 난이도 2 는 "그 분야 사람은 쉽게 답하지만 방에서는 아무도 못 맞히는" 문제다 (D-038) |
+| 1 | ★★ **질문 문장의 사실이 맞는가** | ★ **역검증이 이것을 잡지 못한다.** 정답만 확인하기 때문이다. R012 실측: "라틴어 '수소(Hydrargyrum)'" — Hydrargyrum 은 '물 같은 은' 이다. 역검증은 Hg 를 맞히고 통과시켰다 (Q-73) |
+| 2 | ★★ **정답이 유일한가** | ★ 역검증도 놓친다. R012 실측: "가로와 세로 직선으로 무제한 이동하는 기물은?" → 룩. **퀸도 그렇다** ("~만" 이 빠졌다) |
+| 3 | ★ **알 가치가 있는가** | 답을 듣고 "알아서 좋았다" 고 느낄 문제인가. ★ 난이도가 높은 것은 문제가 아니다 — 해설이 나오므로 배우는 시간이 된다 (D-044) |
+| 4 | ★ **표기 변형이 충분한가** | ★ 이 게임은 정확 문자열 일치로만 판정한다. R012 실측: "설형문자" 에 "쐐기문자" 가 없어 오탈락했다 |
+| 5 | 접근성이 2 이하인가 | 2는 전체의 5% 이내로만 통과시킨다 (Q-69) |
+
+★ 선별 기준(Q-69)은 `pipeline/src/select.ts` 에 있고 환경변수로 조정한다.
+```bash
+PIPELINE_MIN_ACCESS=3        # 접근성 하한
+PIPELINE_TOLERATE_RATIO=0.05 # 접근성 2 등급의 총량 상한
+PIPELINE_MIN_WORTH=3         # ★ 알 가치 하한 (건우가 정할 값)
+PIPELINE_MIN_DIFFICULTY=0    # ★ 0 이면 난이도로 걸러내지 않는다. 바꾸지 않기를 권한다
+```
 
 ---
 
@@ -431,11 +460,18 @@ npm run pipeline:review -- --collect
 ### 5. 적재
 
 ★ **생성 문제를 처음 적재하기 전에 마이그레이션을 적용해야 한다.**
-`sources` 테이블에 `gemini-gen` 행이 없으면 FK 오류로 죽는다.
 
 ```bash
-npm run migrate      # migrations/0002_gemini_gen_source.sql
+npm run db:migrate
+#   0002_gemini_gen_source.sql   ★ source_id 'gemini-gen' 등록 (없으면 FK 오류)
+#   0003_categories_tree.sql     ★ 카테고리 계층 (없으면 소분류를 찾지 못한다)
 ```
+
+★ **카테고리 트리를 고쳤다면 마이그레이션을 다시 만들어야 한다.**
+```bash
+node scripts/gen-migration-0003.mjs > migrations/0004_categories_tree.sql
+```
+★ SQL 을 손으로 고치지 않는다. 정본은 `pipeline/src/categories.ts` 다.
 
 ★ 적재 스크립트가 먼저 확인하고 알려 준다 —
 `★ sources 테이블에 없는 소스: gemini-gen`.
@@ -459,6 +495,30 @@ npm run pipeline:load
 --   is_active 만 내린다. 두 값은 다른 축이다 (migrations/0001_init.sql 주석).
 UPDATE questions SET is_active = false WHERE id = <문제 id>;
 ```
+
+### ★ 적재된 문제들 사이의 중복 정리 (R012 신설)
+
+```bash
+# 후보만 본다 (API 를 부르지 않는다)
+node scripts/pipeline-dedupe-db.mjs
+
+# LLM 판정까지 한다 (DB 는 바꾸지 않는다)
+node scripts/pipeline-dedupe-db.mjs --judge
+
+# ★ is_active 를 내린다
+node scripts/pipeline-dedupe-db.mjs --judge --apply
+```
+
+★ **왜 필요한가** — 적재 전 파일 단계 검사로는 다음을 잡을 수 없다.
+- 다른 날 만든 배치 사이의 중복
+- ★ 시드 문제(53건)와 생성 문제 사이의 중복
+
+★ R012 첫 실행에서 실제로 하나 찾았다 —
+`#7 (manual)` "그리스 신화에서 제우스의 아내는?" 과
+`#60 (opentdb)` "그리스 신화에서 주신 제우스의 아내는 누구인가?" 가 둘 다 헤라다.
+
+★ 지우지 않는다. `is_active` 만 내리고 `review_queue.reviewer_note` 에 이유를 남긴다.
+★ `--apply` 를 주지 않으면 DB 를 전혀 바꾸지 않는다.
 
 ### 예산 상태 확인
 

@@ -239,46 +239,55 @@ OpenTDB는 CC BY-SA 4.0이다. 파생물인 한국어 문제 데이터도 같은
 
 ## 8. 현재 상태
 
-★★ **R011에서 문제 확보 방식을 바꿨다.** OpenTDB 수확을 폐기하고 **Gemini 직접 생성**으로 간다.
+★★ **R012: 생성 방식과 분류 체계를 확정하는 단계.** 대량 생성은 다음 라운드다.
 
 ```
   [R010까지]  수확 → 규칙 필터 → 1차 가공 → 역검증 → 규칙 검사 → 검수 → 적재
   [R011부터]  ★ 생성 ────────────────────→ 역검증 → 규칙 검사 → 중복 판정 → 검수 → 적재
+  [R012부터]  ★ 생성(Gemini 또는 Claude Code) → ★ **상대 모델이 역검증** →
+              규칙 검사 → ★ LLM 중복 판정 → 선별(Q-69) → 검수 → 적재 → ★ DB 사후 정리
 ```
 
-★ 앞의 두 단계만 바뀌었다. 뒤는 그대로 재사용한다.
-★ **역검증은 어느 경우에도 유지한다** (건우 지시). 생성은 원본이 없으므로
-모델이 사실을 틀리게 만들거나 애매한 문제를 **지어낼** 수 있다.
-실제로 R011에서 애매한 문제 1건을 역검증이 잡았다.
+★ **자기 생성분을 자기가 검증하지 않는다** (D-043). 그것은 검증이 아니다.
 
 | 파일 | 상태 |
 |------|------|
-| `pipeline/src/categories.ts` | ★ **카테고리 트리** 대 7 / 중 63 / 소 294. 한 곳에서 켜고 끈다 |
-| `pipeline/src/gen-prompt.ts` | ★ **생성 프롬프트** (`g2`). 접근성·난이도 분리 |
-| `pipeline/src/generate.ts` | ★ **생성 오케스트레이션** + 단계별 게이트 |
-| `pipeline/src/dedupe.ts` | ★ **중복 판정.** 정답으로 후보 추리기 → 카테고리로 의심 강도 |
-| `pipeline/src/config.ts` | 모델명·한도를 한 곳에 (D-033). + 429 대기 시간·재개 상한 |
-| `pipeline/src/budget.ts` | 예산 게이트 + ★ **구간(segment)별 기록** + 재개 이력 |
-| `pipeline/src/gemini.ts` | 429/503, 모델 체인, 토큰 누적, ★ 키 스크럽, ★ 낭비 요청 집계 |
-| `pipeline/src/rules.ts` | 규칙 검사 3종 + ★ `sanitizeVariants`(형식 틀린 변형만 제외) |
-| `pipeline/src/process.ts` | OpenTDB 가공. ★ `judgeBackcheck` 를 생성 경로가 재사용한다 |
-| `pipeline/src/filter.ts` | ★ 영어 원본 전용. 생성 경로에서는 쓰지 않는다 |
-| `pipeline/src/adapters/opentdb.ts` | ★ **비활성.** 지우지 않았다 (참조 구현 + 인터페이스 증거) |
-| `pipeline/src/rejudge.ts` | API 없이 재판정 (D-035) |
-| `scripts/pipeline-generate.mjs` | ★ 주 실행 명령 |
-| `scripts/pipeline-samples.mjs` | ★ 건우 판단용 출제 시트 |
-| `.github/workflows/pipeline-generate.yml` | ★ 매일 1회 + 수동. **실제 실행은 미검증** |
+| `pipeline/src/categories.ts` | ★ 대 7 / 중 63 / 소 **297**. ★ 소분류 설계 원칙 5가지 (D-045) |
+| `pipeline/src/gen-prompt.ts` | ★ 프롬프트 **`g3`**. 접근성·난이도·**알 가치** 세 축 (D-044) |
+| `pipeline/src/select.ts` | ★ **출제 선별 기준** (Q-69). 난이도로 걸러내지 않는다 |
+| `pipeline/src/generate.ts` | 생성 오케스트레이션 + 단계별 게이트 + ★ `explicitSlots` |
+| `pipeline/src/dedupe.ts` | 후보 추리기. ★ **유사도를 판정에서 제거했다** (D-047) |
+| `pipeline/src/dedupe-llm.ts` | ★ **LLM 중복 판정.** 건우 판정과 12/12 일치 |
+| `pipeline/src/rules.ts` | 규칙 검사 3종 + `sanitizeVariants` + ★ 약어 예외 (`H.O.T.`) |
+| `pipeline/src/budget.ts` | 예산 게이트 + 구간 기록 + ★ `canResumeNow` (Q-62 를 게이트에도 적용) |
+| `pipeline/src/config.ts` | 모델·한도. ★ `dailyItems` 를 환경변수로 조정 가능 |
+| `pipeline/src/gemini.ts` | 429/503, 모델 체인, 키 스크럽, 낭비 요청 집계 |
+| `migrations/0003_categories_tree.sql` | ★ **생성된 파일.** 손으로 고치지 않는다 (D-046) |
+| `scripts/pipeline-bulk.mjs` | ★ **주 실행 명령.** 중단·재개 가능 (D-049) |
+| `scripts/pipeline-compare-gen.mjs` | ★ 비교 실험용. 슬롯을 파일로 고정한다 |
+| `scripts/pipeline-claude-verify.mjs` | ★ Claude Code 생성분 → Gemini 역검증 |
+| `scripts/pipeline-gemini-verify.mjs` | ★ Gemini 생성분 → Claude Code 역검증 적용 |
+| `scripts/pipeline-compare-report.mjs` | ★ 비교 보고서 (소분류별 나란히) |
+| `scripts/pipeline-dedupe.mjs` | ★ LLM 중복 판정 (`--verify-r011` 로 정확도 측정) |
+| `scripts/pipeline-dedupe-db.mjs` | ★ 적재된 문제의 사후 중복 정리 (D-048) |
+| `scripts/pipeline-recheck-rules.mjs` | ★ 규칙 검사 재적용 (API 0회) |
+| `scripts/pipeline-remap-subs.mjs` | 소분류 개정 후 재배정 |
+| `scripts/gen-migration-0003.mjs` | ★ 트리에서 마이그레이션 SQL 생성 |
+| `scripts/pipeline-score-worth.mjs` | 기존 문제에 알 가치 부여 (Gemini). ★ 429 재개 포함 |
+| `scripts/pipeline-apply-worth.mjs` | ★ Claude Code 가 매긴 알 가치 반영 |
+| `.github/workflows/pipeline-generate.yml` | ★ **정기 실행 폐기** (Q-71). 수동만 |
 | `.github/workflows/pipeline-harvest.yml` | ★ 비활성 (`confirm` 가드) |
 | `.github/workflows/pipeline-process.yml` | ★ 정기 실행 해제. 수동만 |
 
 ★ 실측 수치는 [docs/05-STATUS.md](../docs/05-STATUS.md) Track D 절,
-판단 근거는 [docs/07-DECISIONS.md](../docs/07-DECISIONS.md) D-033~D-042,
-남은 판단은 미결 항목 **Q-63 / Q-65 ~ Q-68** 을 본다.
+판단 근거는 [docs/07-DECISIONS.md](../docs/07-DECISIONS.md) D-033~D-049,
+남은 판단은 미결 항목 **Q-63 / Q-66 / Q-67 / Q-72 / Q-73 / Q-74** 를 본다.
 
 ### ★ 프롬프트 버전
 
 | 버전 | 무엇이 바뀌었는가 |
 |------|-----------------|
-| `p1` → `p2` (R010) | 역검증 프롬프트에 "alternatives 에는 서로 다른 대상만" 을 추가. p1에서 모델이 표기 변형을 alternatives 에 넣어 정상 문제 6건이 전부 오탈락했다 |
+| `p1` → `p2` (R010) | 역검증 프롬프트에 "alternatives 에는 서로 다른 대상만" 을 추가. p1에서 정상 문제 6건이 전부 오탈락했다 |
 | `g1` (R011) | ★ 생성 프롬프트 신설. 접근성·난이도 분리 / 시간 의존 금지 / 카테고리 입력 |
-| `g1` → `g2` (R011) | ★ 실측에서 탈락 10건 중 5건이 한 원인이었다 — 모델이 **표기 변형을 질문에 써 버렸다**("대헌장의 라틴어 명칭은?" → 마그나 카르타, answers 에 "대헌장"). 채팅으로 답을 받는 게임이므로 질문의 낱말을 옮겨 치면 모르는 사람이 이긴다. 실패 예시 4개와 자기 점검 목록을 넣었다. → 재실측에서 0건 |
+| `g1` → `g2` (R011) | ★ 탈락 10건 중 5건이 한 원인이었다 — 모델이 **표기 변형을 질문에 써 버렸다**. 실패 예시 4개와 자기 점검 목록을 넣었다 → 재실측 0건 |
+| `g2` → `g3` (R012) | ★★ **알 가치(worthKnowing) 축 추가.** 건우가 걸러야 할 것을 "어려운 문제" 가 아니라 "알 가치 없는 문제" 로 정의했다. ★ "이것은 어려운 문제를 만들지 말라는 뜻이 아니다" 를 명시했다 — 잘못 읽으면 더 쉬워진다. ★ 결과: 난이도 평균 1.46 → 2.05/2.38, 알 가치 1~2 가 0건 |
