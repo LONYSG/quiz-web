@@ -117,6 +117,7 @@ function baseItem(item: RawQuestion): ProcessedItem {
     rejectReasons: [],
     source: sourceOf(item),
     generated: null,
+    gen: null,
     ai: null,
     backcheck: null,
     rules: null,
@@ -169,7 +170,7 @@ function baseItem(item: RawQuestion): ProcessedItem {
  *
  * ★ 부수 이득: 집합 밖 대안은 **추가할 표기 변형 후보**다. 검수 때 사람이 판단한다.
  */
-function judgeBackcheck(
+export function judgeBackcheck(
   raw: BackcheckItemRaw,
   answers: readonly string[],
 ): { result: BackcheckResult; reject: boolean; needsReview: boolean } {

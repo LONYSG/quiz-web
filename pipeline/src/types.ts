@@ -113,6 +113,25 @@ export interface ProcessedItem {
 
   /** 가공 결과. reject 면 부분적으로만 있거나 null */
   generated: AiGenerated | null;
+  /**
+   * ★ 생성 문제(source_id='gemini-gen')에만 있다. 가공 문제는 null 이다 (R011).
+   *
+   * ★ 카테고리는 **우리가 요청한 값**을 기록한다. 모델이 반환한 값이 아니다 (C-2).
+   * ★ accessibility(분야)와 difficulty(문항)를 분리한 이유는 gen-prompt.ts 주석에 있다.
+   */
+  gen: {
+    midKey: string;
+    majorKey: string;
+    sub: string;
+    /** 이 분야를 일반적인 한국 성인이 아는가 (1~5) */
+    accessibility: number;
+    /** 그 분야를 아는 사람에게 이 문항이 어려운가 (1~5) */
+    difficultyScore: number;
+    /** 모델이 "이 카테고리로는 만들 수 없다" 고 한 경우 */
+    offCategory: boolean;
+    offCategoryReason: string | null;
+    promptVersion: string;
+  } | null;
   ai: AiVerdict | null;
   backcheck: BackcheckResult | null;
   rules: RuleCheckResult | null;

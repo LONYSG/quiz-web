@@ -23,10 +23,14 @@ export {
   remainingItems,
   today,
   clearRateLimit,
+  currentSegment,
+  closeSegment,
+  canResume,
+  recordResume,
 } from './budget.js';
-export type { DayState, GateResult } from './budget.js';
+export type { DayState, DaySegment, GateResult } from './budget.js';
 export { ruleFilter, isHardCategory, hasOptionWrapper } from './filter.js';
-export { checkRules, dedupeAnswers } from './rules.js';
+export { checkRules, dedupeAnswers, sanitizeVariants } from './rules.js';
 export { processBatch } from './process.js';
 export { rejudge } from './rejudge.js';
 export type { RejudgeStats } from './rejudge.js';
@@ -47,4 +51,27 @@ export {
   CATEGORY_KEYS,
 } from './prompts.js';
 export type { ProcessInput, BackcheckInput } from './prompts.js';
+export {
+  MAJORS,
+  MIDS,
+  enabledMids,
+  findMid,
+  findMajor,
+  categoryPath,
+  generationOrder,
+  treeStats,
+} from './categories.js';
+export type { MajorCategory, MidCategory } from './categories.js';
+export {
+  GENERATE_SCHEMA,
+  GEN_PROMPT_VERSION,
+  buildGeneratePrompt,
+  buildSlots,
+} from './gen-prompt.js';
+export type { GenSlot, GenItem } from './gen-prompt.js';
+export { generateBatch, makeGenRef, difficultyBucket, GEN_SOURCE_ID } from './generate.js';
+export type { GenerateOptions, GenerateStats } from './generate.js';
+export { findDuplicates, similarity, questionKey, DUPE_THRESHOLDS } from './dedupe.js';
+export type { DupeInput, DupePair, DupeReport, DupeLevel, DupeVerdict } from './dedupe.js';
+export { judgeBackcheck } from './process.js';
 export * from './types.js';

@@ -35,6 +35,33 @@ function answerShapeOk(answer: string): boolean {
  * @param questionKo 가공된 한국어 질문
  * @param generated  가공 결과
  */
+/**
+ * ★★ 형식이 틀린 표기 변형만 걸러낸다 (R011 실측으로 추가).
+ *
+ * ★ 왜 필요한가 — R011 첫 실측에서 정상 문제 2건이 이것 때문에 탈락했다.
+ *     "애플"           변형에 "Apple Inc." → 마침표로 끝나 서술형으로 판정
+ *     "오페라의 유령"   변형에 "The Phantom of the Opera" → 단어 5개로 서술형 판정
+ *   ★ 질문도 정답도 멀쩡하다. **변형 하나가 형식에 안 맞을 뿐이다.**
+ *     그 하나 때문에 문제 전체를 버리는 것은 과잉이다.
+ *   → 그 변형만 떼어내고 문제는 살린다.
+ *
+ * ★ 단 displayAnswer 가 형식에 안 맞으면 걸러내지 않는다.
+ *   그것은 대표 표기 자체의 문제이므로 checkRules 가 탈락시켜야 한다.
+ *   ★ 여기서 조용히 고쳐 통과시키면 규칙 검사를 우회하는 셈이 된다.
+ */
+export function sanitizeVariants(display: string, answers: readonly string[]): {
+  kept: string[];
+  dropped: string[];
+} {
+  const kept: string[] = [];
+  const dropped: string[] = [];
+  for (const a of answers) {
+    if (a === display || answerShapeOk(a)) kept.push(a);
+    else dropped.push(a);
+  }
+  return { kept, dropped };
+}
+
 export function checkRules(generated: AiGenerated): RuleCheckResult {
   const reasons: string[] = [];
   const question = generated.questionKo ?? '';
