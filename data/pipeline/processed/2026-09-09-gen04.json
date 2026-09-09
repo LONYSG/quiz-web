@@ -1,0 +1,1405 @@
+{
+  "_meta": {
+    "sourceId": "gemini-gen",
+    "batch": "2026-09-09-gen04",
+    "kind": "generate",
+    "processModel": "gemini-3.8-flash",
+    "backcheckModel": "gemini-3.5-flash-lite",
+    "promptVersion": "p2+g2",
+    "generatedAt": "2026-09-09T01:30:25.642Z",
+    "finishedAt": "2026-09-09T01:32:30.634Z",
+    "elapsedSec": 125,
+    "perMid": 2,
+    "midsPerCall": 9,
+    "counts": {
+      "requestedSlots": 18,
+      "llmSlots": 18,
+      "returned": 18,
+      "missing": 0,
+      "offCategory": 0,
+      "emptyGeneration": 0,
+      "backcheckRejected": 0,
+      "rulesRejected": 0,
+      "accepted": 18,
+      "escalated": 2
+    },
+    "rejectReasons": {
+      "variant_dropped": 1
+    },
+    "modelUsage": {
+      "gemini-3.6-flash": 1,
+      "gemini-3.5-flash-lite": 1,
+      "gemini-3.7-flash": 1
+    },
+    "tokens": {
+      "total": 13804,
+      "prompt": 5345,
+      "output": 4514,
+      "thoughts": 3945,
+      "calls": 3
+    },
+    "callLog": [
+      {
+        "kind": "generate",
+        "model": "gemini-3.6-flash",
+        "slots": 18,
+        "tokens": 10417,
+        "thoughts": 3753,
+        "at": "2026-09-09T01:31:57.798Z"
+      },
+      {
+        "kind": "backcheck-gate",
+        "model": "gemini-3.5-flash-lite",
+        "slots": 18,
+        "tokens": 2594,
+        "thoughts": 0,
+        "at": "2026-09-09T01:32:07.254Z"
+      },
+      {
+        "kind": "backcheck-escalate",
+        "model": "gemini-3.7-flash",
+        "slots": 2,
+        "tokens": 793,
+        "thoughts": 192,
+        "at": "2026-09-09T01:32:30.617Z"
+      }
+    ],
+    "stoppedByRateLimit": false,
+    "dupe": {
+      "counts": {
+        "duplicate": 0,
+        "suspect": 0,
+        "ok": 0
+      },
+      "candidatePairs": 0,
+      "totalPairsIfBruteForce": 153,
+      "pairs": []
+    }
+  },
+  "items": [
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "01f1e2dbcc73aec4",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 인문·사회 > 서양사 > 20세기 서양",
+        "correct": "베를린 장벽",
+        "incorrect": [],
+        "category": "서양사",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "1989년 철거되어 동독과 서독 분단의 상징이 끝났음을 알린 베를린 시내의 대표적 구조물은?",
+        "displayAnswer": "베를린 장벽",
+        "answers": [
+          "베를린 장벽",
+          "Berlin Wall"
+        ],
+        "hintAnswer": "베를린 장벽",
+        "category": "인문·사회",
+        "difficulty": "easy",
+        "explanation": "1961년 동독이 건설했던 베를린 장벽은 1989년 11월 9일 실질적으로 무너지며 냉전 해체의 상징이 되었습니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "world-history-west",
+        "majorKey": "humanities",
+        "sub": "20세기 서양",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "베를린 장벽",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.798Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "9d9ef815fb00daf9",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 인문·사회 > 서양사 > 고대 그리스·로마",
+        "correct": "루비콘 강",
+        "incorrect": [],
+        "category": "서양사",
+        "difficulty": "접근성 4 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "로마 제국 정치가 율리우스 카이사르가 본토로 진격하며 '주사위는 던져졌다'라는 말을 남기고 건넌 강은?",
+        "displayAnswer": "루비콘 강",
+        "answers": [
+          "루비콘 강",
+          "루비콘",
+          "Rubicon"
+        ],
+        "hintAnswer": "루비콘 강",
+        "category": "인문·사회",
+        "difficulty": "easy",
+        "explanation": "카이사르가 로마 법을 위반하고 군대를 이끌고 건넘으로써 내전이 시작되었던 역사적 경계의 강입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "world-history-west",
+        "majorKey": "humanities",
+        "sub": "고대 그리스·로마",
+        "accessibility": 4,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "루비콘강",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.799Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "e27dd6326a98f859",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 문화·예술 > 클래식 음악 > 작곡가",
+        "correct": "베토벤",
+        "incorrect": [],
+        "category": "클래식 음악",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "교향곡 9번 '합창', 피아노 소나타 '비창' 등을 작곡한 독일의 청각 장애 작곡가는?",
+        "displayAnswer": "베토벤",
+        "answers": [
+          "베토벤",
+          "루트비히 판 베토벤",
+          "Beethoven"
+        ],
+        "hintAnswer": "베토벤",
+        "category": "문화·예술",
+        "difficulty": "easy",
+        "explanation": "루트비히 판 베토벤은 청력을 잃어가면서도 고전주의와 로망주의를 잇는 불후의 명작들을 남겼습니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "classical",
+        "majorKey": "arts",
+        "sub": "작곡가",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "베토벤",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.799Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "811a42832b368dc8",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 문화·예술 > 클래식 음악 > 작품·악곡",
+        "correct": "사계",
+        "incorrect": [],
+        "category": "클래식 음악",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "비발디의 현악 협주곡집으로 봄, 여름, 가을, 겨울의 4개 계절을 표현한 대표작은?",
+        "displayAnswer": "사계",
+        "answers": [
+          "사계",
+          "The Four Seasons"
+        ],
+        "hintAnswer": "사계",
+        "category": "문화·예술",
+        "difficulty": "easy",
+        "explanation": "안토니오 비발디의 '사계'는 계절별 특성을 묘사한 대표적인 바르코 양식 협주곡입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "classical",
+        "majorKey": "arts",
+        "sub": "작품·악곡",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "사계",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.799Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "bb2f082c822f81a5",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 생활·상식 > 술·음료 > 커피·차",
+        "correct": "아메리카노",
+        "incorrect": [],
+        "category": "술·음료",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "에스프레소에 뜨거운 물을 넣어 옅게 마시는 커피 음료는?",
+        "displayAnswer": "아메리카노",
+        "answers": [
+          "아메리카노",
+          "Americano"
+        ],
+        "hintAnswer": "아메리카노",
+        "category": "생활·상식",
+        "difficulty": "easy",
+        "explanation": "에스프레소에 물을 섞어 농도를 희석해 마시는 표준적인 커피 메뉴입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "drinks",
+        "majorKey": "life",
+        "sub": "커피·차",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "아메리카노",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.799Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "3158bd48dc954b5d",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 생활·상식 > 술·음료 > 와인",
+        "correct": "메를로",
+        "incorrect": [],
+        "category": "술·음료",
+        "difficulty": "접근성 3 / 난이도 3"
+      },
+      "generated": {
+        "questionKo": "프랑스 보르도 지방에서 주로 재배되는 포도 품종으로, 카베르네 소비뇽과 함께 대표적인 레드 와인용 적포도는?",
+        "displayAnswer": "메를로",
+        "answers": [
+          "메를로",
+          "멜롯",
+          "Merlot"
+        ],
+        "hintAnswer": "메를로",
+        "category": "생활·상식",
+        "difficulty": "medium",
+        "explanation": "메를로(Merlot)는 부드러운 탄닌과 풍부한 과일향을 가진 대표적인 적포도 품종입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "drinks",
+        "majorKey": "life",
+        "sub": "와인",
+        "accessibility": 3,
+        "difficultyScore": 3,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "메를로",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.799Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "c8a8b873adc5f489",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 생활·상식 > 브랜드·기업 > 기업 창업·역사",
+        "correct": "애플",
+        "incorrect": [],
+        "category": "브랜드·기업",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "1976년 스티브 잡스와 스티브 워즈니악 등이 공동 설립한 미국의 세계적 IT 기업은?",
+        "displayAnswer": "애플",
+        "answers": [
+          "애플",
+          "Apple",
+          "애플 컴퓨터"
+        ],
+        "hintAnswer": "애플",
+        "category": "생활·상식",
+        "difficulty": "easy",
+        "explanation": "애플은 매킨토시, 아이폰 등을 창안해 세계 정보기술 산업을 선도해 온 기업입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "brands",
+        "majorKey": "life",
+        "sub": "기업 창업·역사",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "애플",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.799Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "60d4eb478fd95b8f",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 생활·상식 > 브랜드·기업 > 로고·상징",
+        "correct": "스우시",
+        "incorrect": [],
+        "category": "브랜드·기업",
+        "difficulty": "접근성 3 / 난이도 3"
+      },
+      "generated": {
+        "questionKo": "스포츠 브랜드 나이키가 승리의 여신 니케의 날개를 형상화하여 만든 유선형 로고의 명칭은?",
+        "displayAnswer": "스우시",
+        "answers": [
+          "스우시",
+          "Swoosh"
+        ],
+        "hintAnswer": "스우시",
+        "category": "생활·상식",
+        "difficulty": "medium",
+        "explanation": "스우시(Swoosh)는 바람을 가르는 소리를 뜻하며 나이키의 상징적인 날개 모양 로고입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "brands",
+        "majorKey": "life",
+        "sub": "로고·상징",
+        "accessibility": 3,
+        "difficultyScore": 3,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "스우시",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.799Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "55850b8ca12647ed",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 한국 > 한국 전통문화·풍습 > 명절·세시풍속",
+        "correct": "정월대보름",
+        "incorrect": [],
+        "category": "한국 전통문화·풍습",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "음력 1월 15일로, 오곡밥을 먹고 부럼을 깨물며 귀밝이술을 마시는 한국의 전통 세시풍속 명절은?",
+        "displayAnswer": "정월대보름",
+        "answers": [
+          "정월대보름",
+          "대보름"
+        ],
+        "hintAnswer": "정월대보름",
+        "category": "한국",
+        "difficulty": "easy",
+        "explanation": "정월대보름은 한 해의 첫 보름달이 뜨는 날로 건강과 평안을 기원하는 다양한 풍습이 전해집니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "kr-tradition",
+        "majorKey": "korea",
+        "sub": "명절·세시풍속",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "정월대보름",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.799Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "635bd0eb323d171d",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 생활·상식 > 기호·상징·표지 > 별자리·십이지",
+        "correct": "쥐",
+        "incorrect": [],
+        "category": "기호·상징·표지",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "십이지(12지) 순서 중 맨 처음에 해당하는 동물은?",
+        "displayAnswer": "쥐",
+        "answers": [
+          "쥐",
+          "자",
+          "쥐띠"
+        ],
+        "hintAnswer": "쥐",
+        "category": "생활·상식",
+        "difficulty": "easy",
+        "explanation": "십이지는 자(쥐), 축(소), 인(호랑이) 등의 순서로 시작하며 첫 번째는 쥐입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "symbols",
+        "majorKey": "life",
+        "sub": "별자리·십이지",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "자",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": false,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.800Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "9cc4473bb88af7f1",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 생활·상식 > 의복·패션 > 의류 명칭",
+        "correct": "터틀넥",
+        "incorrect": [],
+        "category": "의복·패션",
+        "difficulty": "접근성 5 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "목 부분을 돌려 접거나 감싸는 형태의 긴 목깃을 가진 의류 양식은?",
+        "displayAnswer": "터틀넥",
+        "answers": [
+          "터틀넥",
+          "목폴라",
+          "폴라티"
+        ],
+        "hintAnswer": "터틀넥",
+        "category": "생활·상식",
+        "difficulty": "easy",
+        "explanation": "거북이의 목처럼 생겼다고 하여 붙여진 명칭으로 목을 감싸는 스타일의 상의입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "fashion",
+        "majorKey": "life",
+        "sub": "의류 명칭",
+        "accessibility": 5,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "터틀넥",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.800Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "f17ce3cedfd020cc",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 생활·상식 > 의복·패션 > 패션 브랜드·디자이너",
+        "correct": "버버리",
+        "incorrect": [],
+        "category": "의복·패션",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "고유의 체크무늬와 트렌치코트로 대표되는 영국의 명품 패션 브랜드는?",
+        "displayAnswer": "버버리",
+        "answers": [
+          "버버리",
+          "Burberry"
+        ],
+        "hintAnswer": "버버리",
+        "category": "생활·상식",
+        "difficulty": "easy",
+        "explanation": "버버리는 토머스 버버리가 창립한 영국의 명품 브랜드로 트렌치코트와 타탄 체크 패턴이 유명합니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "fashion",
+        "majorKey": "life",
+        "sub": "패션 브랜드·디자이너",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "버버리",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.800Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "4611f96fc12aec1e",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 문화·예술 > 공연·연극·뮤지컬 > 연극 고전",
+        "correct": "햄릿",
+        "incorrect": [],
+        "category": "공연·연극·뮤지컬",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "덴마크 왕자를 주인공으로 하며 '죽느냐 사느냐 이것이 문제로다'라는 대사로 잘 알려진 셰익스피어의 비극 연극은?",
+        "displayAnswer": "햄릿",
+        "answers": [
+          "햄릿",
+          "Hamlet"
+        ],
+        "hintAnswer": "햄릿",
+        "category": "문화·예술",
+        "difficulty": "easy",
+        "explanation": "셰익스피어의 4대 비극 중 하나로 주인공 햄릿 왕자의 복수와 갈등을 다룬 연극입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "theatre",
+        "majorKey": "arts",
+        "sub": "연극 고전",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "햄릿",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.800Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "6bc507667ddb6064",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 문화·예술 > 공연·연극·뮤지컬 > 뮤지컬 작품",
+        "correct": "오페라의 유령",
+        "incorrect": [],
+        "category": "공연·연극·뮤지컬",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "파리 오페라 극장을 배경으로 얼굴을 가린 음악 천재와 크리스틴의 이야기를 다룬 앤드루 로이드 웨버의 뮤지컬은?",
+        "displayAnswer": "오페라의 유령",
+        "answers": [
+          "오페라의 유령"
+        ],
+        "hintAnswer": "오페라의 유령",
+        "category": "문화·예술",
+        "difficulty": "easy",
+        "explanation": "가스통 루루의 소설을 바탕으로 제작된 세계적인 대형 뮤지컬입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "theatre",
+        "majorKey": "arts",
+        "sub": "뮤지컬 작품",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "오페라의 유령",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [
+          "few_variants"
+        ],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": "형식에 맞지 않는 표기 변형을 제외했다: The Phantom of the Opera"
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.800Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "3909813ee8a39104",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 한국 > 한국어·한글 > 높임말·어법",
+        "correct": "진지",
+        "incorrect": [],
+        "category": "한국어·한글",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "웃어른에게 '밥'을 높여 부르는 한국어 존댓말 명사는?",
+        "displayAnswer": "진지",
+        "answers": [
+          "진지"
+        ],
+        "hintAnswer": "진지",
+        "category": "한국",
+        "difficulty": "easy",
+        "explanation": "'진지'는 밥의 높임말 특수 어휘입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "kr-language",
+        "majorKey": "korea",
+        "sub": "높임말·어법",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "진지",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [
+          "few_variants"
+        ],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.800Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "f50c7e2ef980c96c",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 한국 > 한국어·한글 > 한글 자모·맞춤법",
+        "correct": "기역",
+        "incorrect": [],
+        "category": "한국어·한글",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "현대 한글 맞춤법 자음자 14개 순서 중 가장 첫 번째에 해당하는 자음의 이름은?",
+        "displayAnswer": "기역",
+        "answers": [
+          "기역",
+          "ㄱ"
+        ],
+        "hintAnswer": "기역",
+        "category": "한국",
+        "difficulty": "easy",
+        "explanation": "한글 자음 사전 순서의 첫 번째 글자는 'ㄱ(기역)'입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "kr-language",
+        "majorKey": "korea",
+        "sub": "한글 자모·맞춤법",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "기역",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.800Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "3b7b260001d8d69b",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 한국 > 한국 전통문화·풍습 > 관혼상제",
+        "correct": "전안례",
+        "incorrect": [],
+        "category": "한국 전통문화·풍습",
+        "difficulty": "접근성 3 / 난이도 4"
+      },
+      "generated": {
+        "questionKo": "한국 전통 혼례에서 신랑이 신부 집에 기러기를 바치는 의식을 무엇이라 하는가?",
+        "displayAnswer": "전안례",
+        "answers": [
+          "전안례"
+        ],
+        "hintAnswer": "전안례",
+        "category": "한국",
+        "difficulty": "hard",
+        "explanation": "전안례는 신랑이 신부 집에 가서 백년해로의 의리를 상징하는 기러기를 올려놓는 혼례 절차입니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "kr-tradition",
+        "majorKey": "korea",
+        "sub": "관혼상제",
+        "accessibility": 3,
+        "difficultyScore": 4,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "전안례",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [
+          "few_variants"
+        ],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.7-flash",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.799Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "84c35814567d85c3",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 생활·상식 > 기호·상징·표지 > 국기·국장",
+        "correct": "단풍잎",
+        "incorrect": [],
+        "category": "기호·상징·표지",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "캐나다 국기 중앙에 위치하여 국가적 상징으로 쓰이는 나뭇잎의 종류는?",
+        "displayAnswer": "단풍잎",
+        "answers": [
+          "단풍잎",
+          "단풍",
+          "메이플"
+        ],
+        "hintAnswer": "단풍잎",
+        "category": "생활·상식",
+        "difficulty": "easy",
+        "explanation": "캐나다 국기 가운데에는 붉은색 단풍잎(Maple leaf)이 그려져 있습니다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "symbols",
+        "majorKey": "life",
+        "sub": "국기·국장",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g2"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "단풍잎",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.6-flash",
+        "backcheckModel": "gemini-3.7-flash",
+        "promptVersion": "p2+g2",
+        "processedAt": "2026-09-09T01:31:57.800Z",
+        "totalTokens": 0
+      }
+    }
+  ]
+}

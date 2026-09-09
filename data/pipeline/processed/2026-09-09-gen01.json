@@ -1,0 +1,1738 @@
+{
+  "_meta": {
+    "sourceId": "gemini-gen",
+    "batch": "2026-09-09-gen01",
+    "kind": "generate",
+    "processModel": "gemini-3.8-flash",
+    "backcheckModel": "gemini-3.5-flash-lite",
+    "promptVersion": "p2+g1",
+    "generatedAt": "2026-09-09T01:08:43.077Z",
+    "finishedAt": "2026-09-09T01:10:51.450Z",
+    "elapsedSec": 128,
+    "perMid": 2,
+    "midsPerCall": 11,
+    "counts": {
+      "requestedSlots": 22,
+      "llmSlots": 22,
+      "returned": 22,
+      "missing": 0,
+      "offCategory": 0,
+      "emptyGeneration": 0,
+      "backcheckRejected": 0,
+      "rulesRejected": 1,
+      "accepted": 21,
+      "escalated": 1
+    },
+    "rejectReasons": {
+      "answer_in_question": 1
+    },
+    "modelUsage": {
+      "gemini-3.7-flash": 1,
+      "gemini-3.5-flash-lite": 1,
+      "gemini-3.5-flash": 1
+    },
+    "tokens": {
+      "total": 13882,
+      "prompt": 5403,
+      "output": 6253,
+      "thoughts": 2226,
+      "calls": 3
+    },
+    "callLog": [
+      {
+        "kind": "generate",
+        "model": "gemini-3.7-flash",
+        "slots": 22,
+        "tokens": 9849,
+        "thoughts": 1998,
+        "at": "2026-09-09T01:09:29.508Z"
+      },
+      {
+        "kind": "backcheck-gate",
+        "model": "gemini-3.5-flash-lite",
+        "slots": 22,
+        "tokens": 3343,
+        "thoughts": 0,
+        "at": "2026-09-09T01:09:47.158Z"
+      },
+      {
+        "kind": "backcheck-escalate",
+        "model": "gemini-3.5-flash",
+        "slots": 1,
+        "tokens": 690,
+        "thoughts": 228,
+        "at": "2026-09-09T01:10:51.436Z"
+      }
+    ],
+    "stoppedByRateLimit": false,
+    "dupe": {
+      "counts": {
+        "duplicate": 0,
+        "suspect": 0,
+        "ok": 0
+      },
+      "candidatePairs": 0,
+      "totalPairsIfBruteForce": 210,
+      "pairs": []
+    }
+  },
+  "items": [
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "bc4e5b58d27a852d",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 인문·사회 > 종교·경전 상식 > 기독교·성경",
+        "correct": "창세기",
+        "incorrect": [],
+        "category": "종교·경전 상식",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "구약성경의 맨 처음에 나오는 첫 번째 책의 명칭은 무엇인가?",
+        "displayAnswer": "창세기",
+        "answers": [
+          "창세기",
+          "Genesis",
+          "創世記"
+        ],
+        "hintAnswer": "창세기",
+        "category": "인문·사회",
+        "difficulty": "easy",
+        "explanation": "창세기는 구약성경과 타나크의 첫 번째 책이다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "religion",
+        "majorKey": "humanities",
+        "sub": "기독교·성경",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "창세기",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.508Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "c6bff7206aa3f087",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 인문·사회 > 종교·경전 상식 > 불교",
+        "correct": "열반",
+        "incorrect": [],
+        "category": "종교·경전 상식",
+        "difficulty": "접근성 4 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "불교에서 모든 번뇌와 고통에서 벗어나 깨달음을 얻은 궁극적인 해탈의 경지를 이르는 산스크리트어 용어는?",
+        "displayAnswer": "열반",
+        "answers": [
+          "열반",
+          "니르바나",
+          "Nirvana",
+          "涅槃"
+        ],
+        "hintAnswer": "열반",
+        "category": "인문·사회",
+        "difficulty": "easy",
+        "explanation": "불교에서 번뇌의 불이 꺼진 상태를 뜻하는 궁극적 목표를 열반 또는 니르바나라고 부른다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "religion",
+        "majorKey": "humanities",
+        "sub": "불교",
+        "accessibility": 4,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "열반",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "e7efd06bfa9423e4",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 인문·사회 > 철학·사상 > 고대 철학",
+        "correct": "이데아",
+        "incorrect": [],
+        "category": "철학·사상",
+        "difficulty": "접근성 4 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "고대 그리스 철학자 플라톤이 감각적 경험 너머에 존재하는 영원불변하고 이상적인 본질의 세계를 가리켜 부른 개념은?",
+        "displayAnswer": "이데아",
+        "answers": [
+          "이데아",
+          "Idea",
+          "이데아론"
+        ],
+        "hintAnswer": "이데아",
+        "category": "인문·사회",
+        "difficulty": "easy",
+        "explanation": "플라톤 철학에서 현실 사물의 원형이자 완전한 본질을 이데아라고 한다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "philosophy",
+        "majorKey": "humanities",
+        "sub": "고대 철학",
+        "accessibility": 4,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "이데아",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "19d0e15a4034e24c",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 인문·사회 > 철학·사상 > 근대 철학",
+        "correct": "르네 데카르트",
+        "incorrect": [],
+        "category": "철학·사상",
+        "difficulty": "접근성 4 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "\"나는 생각한다, 고로 존재한다\"라는 명제로 근대 합리론 철학의 기초를 놓은 프랑스의 철학자는?",
+        "displayAnswer": "르네 데카르트",
+        "answers": [
+          "르네 데카르트",
+          "데카르트",
+          "René Descartes",
+          "Descartes"
+        ],
+        "hintAnswer": "르네 데카르트",
+        "category": "인문·사회",
+        "difficulty": "easy",
+        "explanation": "르네 데카르트는 방법적 회의를 통해 생각하는 자아의 존재를 제1원리로 정립했다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "philosophy",
+        "majorKey": "humanities",
+        "sub": "근대 철학",
+        "accessibility": 4,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "데카르트",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "a2e36577f8f49cb6",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 인문·사회 > 심리학 상식 > 심리 현상·효과",
+        "correct": "단순 노출 효과",
+        "incorrect": [],
+        "category": "심리학 상식",
+        "difficulty": "접근성 3 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "어떤 대상에 단순히 자주 노출되는 것만으로도 그 대상에 대한 호감도가 증가하는 심리 현상은?",
+        "displayAnswer": "단순 노출 효과",
+        "answers": [
+          "단순 노출 효과",
+          "에펠탑 효과",
+          "자이언스 효과",
+          "Mere-exposure effect"
+        ],
+        "hintAnswer": "단순 노출 효과",
+        "category": "인문·사회",
+        "difficulty": "easy",
+        "explanation": "로버트 자이언스가 정립한 이론으로, 반복된 접촉이 긍정적 태도를 유발하는 현상이다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "psychology",
+        "majorKey": "humanities",
+        "sub": "심리 현상·효과",
+        "accessibility": 3,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "단순 노출 효과",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "64e3d4c80386267c",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 인문·사회 > 심리학 상식 > 발달·성격 이론",
+        "correct": "에이브러햄 매슬로",
+        "incorrect": [],
+        "category": "심리학 상식",
+        "difficulty": "접근성 4 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "인간의 욕구를 생리적 욕구부터 자아실현 욕구까지 피라미드 형태의 5단계 계층으로 설명한 미국의 심리학자는?",
+        "displayAnswer": "에이브러햄 매슬로",
+        "answers": [
+          "에이브러햄 매슬로",
+          "매슬로",
+          "매슬로우",
+          "에이브러햄 매슬로우",
+          "Abraham Maslow",
+          "Maslow"
+        ],
+        "hintAnswer": "에이브러햄 매슬로",
+        "category": "인문·사회",
+        "difficulty": "easy",
+        "explanation": "매슬로는 인간의 동기와 욕구를 5단계 욕구위계설로 제안한 인본주의 심리학자다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "psychology",
+        "majorKey": "humanities",
+        "sub": "발달·성격 이론",
+        "accessibility": 4,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "매슬로",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "72a3f029dc4637f9",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 문화·예술 > 애니메이션 > 일본 애니메이션",
+        "correct": "센과 치히로의 행방불명",
+        "incorrect": [],
+        "category": "애니메이션",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "돼지로 변해버린 부모를 구하기 위해 신들의 온천장에서 일하게 된 소녀의 모험을 그린 미야자키 하야오 감독의 장편 애니메이션은?",
+        "displayAnswer": "센과 치히로의 행방불명",
+        "answers": [
+          "센과 치히로의 행방불명",
+          "센과 치히로",
+          "千と千尋の神隠し",
+          "Spirited Away"
+        ],
+        "hintAnswer": "센과 치히로의 행방불명",
+        "category": "문화·예술",
+        "difficulty": "easy",
+        "explanation": "2001년 개봉한 스튜디오 지브리의 대표작으로 주인공 치히로의 성장을 그렸다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "animation",
+        "majorKey": "arts",
+        "sub": "일본 애니메이션",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "센과 치히로의 행방불명",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "a7f1828fb232ca70",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 문화·예술 > 애니메이션 > 디즈니·픽사",
+        "correct": "토이 스토리",
+        "incorrect": [],
+        "category": "애니메이션",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "카우보이 인형 '우디'와 우주 비행사 장난감 '버즈 라이트이어'가 주인공으로 등장하는 픽사의 장편 3D 애니메이션 영화는?",
+        "displayAnswer": "토이 스토리",
+        "answers": [
+          "토이 스토리",
+          "Toy Story"
+        ],
+        "hintAnswer": "토이 스토리",
+        "category": "문화·예술",
+        "difficulty": "easy",
+        "explanation": "1995년 픽사가 제작한 세계 최초의 극장용 풀 3D 컴퓨터 그래픽 장편 애니메이션이다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "animation",
+        "majorKey": "arts",
+        "sub": "디즈니·픽사",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "토이 스토리",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "19c4990e26abb46f",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 문화·예술 > 사진·디자인 > 사진 기술·용어",
+        "correct": "조리개",
+        "incorrect": [],
+        "category": "사진·디자인",
+        "difficulty": "접근성 4 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "카메라 렌즈를 통과해 센서나 필름에 도달하는 빛의 양을 조절하기 위해 열리고 닫히는 구멍 크기를 조절하는 장치는?",
+        "displayAnswer": "조리개",
+        "answers": [
+          "조리개",
+          "Aperture",
+          "아파처"
+        ],
+        "hintAnswer": "조리개",
+        "category": "문화·예술",
+        "difficulty": "easy",
+        "explanation": "조리개는 구경의 크기를 조절하여 노출과 심도를 제어하는 카메라의 광학 장치다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "design-photo",
+        "majorKey": "arts",
+        "sub": "사진 기술·용어",
+        "accessibility": 4,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "조리개",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "333f09d9ee16b057",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 문화·예술 > 사진·디자인 > 사진가·유명 사진",
+        "correct": "앙리 카르티에 브레송",
+        "incorrect": [],
+        "category": "사진·디자인",
+        "difficulty": "접근성 3 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "찰나의 순간을 포착하는 '결정적 순간'이라는 사진 미학 개념을 제시한 프랑스의 보도 사진가는?",
+        "displayAnswer": "앙리 카르티에 브레송",
+        "answers": [
+          "앙리 카르티에 브레송",
+          "카르티에 브레송",
+          "앙리 카르티에-브레송",
+          "카르티에-브레송",
+          "브레송",
+          "Henri Cartier-Bresson",
+          "Cartier-Bresson"
+        ],
+        "hintAnswer": "앙리 카르티에 브레송",
+        "category": "문화·예술",
+        "difficulty": "easy",
+        "explanation": "앙리 카르티에 브레송은 매그넘 포토스의 창립자 중 한 명이자 현대 사진의 거장이다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "design-photo",
+        "majorKey": "arts",
+        "sub": "사진가·유명 사진",
+        "accessibility": 3,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 3,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "앙리 카르티에 브레송",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "a8e9d94c24270993",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 스포츠·게임 > e스포츠·비디오게임 > 고전 게임(1980~90년대)",
+        "correct": "팩맨",
+        "incorrect": [],
+        "category": "e스포츠·비디오게임",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "1980년 남코에서 발표한 아케이드 게임으로, 노란색 원형 캐릭터가 유령들을 피해 미로 속의 쿠키를 모두 먹는 고전 게임은?",
+        "displayAnswer": "팩맨",
+        "answers": [
+          "팩맨",
+          "Pac-Man",
+          "Pacman",
+          "パックマン"
+        ],
+        "hintAnswer": "팩맨",
+        "category": "스포츠·게임",
+        "difficulty": "easy",
+        "explanation": "팩맨은 이와타니 토루가 기획하여 1980년 출시한 역사적인 아케이드 게임이다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "esports",
+        "majorKey": "sports",
+        "sub": "고전 게임(1980~90년대)",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "팩맨",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "547f8f8d3c86d46b",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 스포츠·게임 > e스포츠·비디오게임 > 콘솔 게임",
+        "correct": "젤다의 전설",
+        "incorrect": [],
+        "category": "e스포츠·비디오게임",
+        "difficulty": "접근성 4 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "주인공 '링크'가 하이랄 왕국의 공주를 구하고 세상을 지키기 위해 모험을 떠나는 닌텐도의 대표 액션 어드벤처 게임 시리즈는?",
+        "displayAnswer": "젤다의 전설",
+        "answers": [
+          "젤다의 전설",
+          "젤다",
+          "The Legend of Zelda",
+          "Zelda",
+          "ゼルダの伝説"
+        ],
+        "hintAnswer": "젤다의 전설",
+        "category": "스포츠·게임",
+        "difficulty": "easy",
+        "explanation": "1986년 패미컴 디스크 시스템으로 시작된 닌텐도의 프랜차이즈 게임 시리즈다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "esports",
+        "majorKey": "sports",
+        "sub": "콘솔 게임",
+        "accessibility": 4,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "젤다의 전설",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "9c000811c691c589",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 한국 > 한국사 > 삼국·통일신라",
+        "correct": "근초고왕",
+        "incorrect": [],
+        "category": "한국사",
+        "difficulty": "접근성 5 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "4세기 백제의 전성기를 이끌며 마한을 정복하고 고구려의 평양성을 공격하여 고국원왕을 전사시킨 백제의 제13대 국왕은?",
+        "displayAnswer": "근초고왕",
+        "answers": [
+          "근초고왕",
+          "近肖古王"
+        ],
+        "hintAnswer": "근초고왕",
+        "category": "한국",
+        "difficulty": "easy",
+        "explanation": "근초고왕은 백제의 영토를 최대로 넓히고 대외 교류를 활발히 펼친 전성기 군주다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "kr-history",
+        "majorKey": "korea",
+        "sub": "삼국·통일신라",
+        "accessibility": 5,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "근초고왕",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "464781f084a9373f",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 한국 > 한국사 > 고려",
+        "correct": "서희",
+        "incorrect": [],
+        "category": "한국사",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "993년 거란의 제1차 침입 때 소손녕과의 외교 담판을 통해 피를 흘리지 않고 강동 6주를 확보한 고려의 문신은?",
+        "displayAnswer": "서희",
+        "answers": [
+          "서희",
+          "徐熙"
+        ],
+        "hintAnswer": "서희",
+        "category": "한국",
+        "difficulty": "easy",
+        "explanation": "서희는 뛰어난 외교적 설득력으로 거란군을 철수시키고 강동 6주를 획득했다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "kr-history",
+        "majorKey": "korea",
+        "sub": "고려",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "서희",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "4402edd63c627d2f",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 인문·사회 > 서양사 > 고대 그리스·로마",
+        "correct": "삼두정치",
+        "incorrect": [],
+        "category": "서양사",
+        "difficulty": "접근성 4 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "고대 로마 공화정 말기에 카이사르, 폼페이우스, 크라수스가 맺은 비공식적인 권력 분점 정치 동맹 형태를 가리키는 말은?",
+        "displayAnswer": "삼두정치",
+        "answers": [
+          "삼두정치",
+          "삼두정",
+          "제1차 삼두정치",
+          "제1차 삼두정",
+          "1차 삼두정치",
+          "1차 삼두정",
+          "Triumvirate",
+          "First Triumvirate"
+        ],
+        "hintAnswer": "삼두정치",
+        "category": "인문·사회",
+        "difficulty": "easy",
+        "explanation": "세 사람의 실력자가 정권을 장악한 형태로 기원전 60년에 제1차 삼두정치가 결성되었다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "world-history-west",
+        "majorKey": "humanities",
+        "sub": "고대 그리스·로마",
+        "accessibility": 4,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "삼두정치",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "62b2a00c08b38601",
+      "verdict": "reject",
+      "rejectedAt": "rules",
+      "rejectReasons": [
+        "answer_in_question"
+      ],
+      "source": {
+        "question": "[생성 요청] 인문·사회 > 서양사 > 중세 유럽",
+        "correct": "마그나 카르타",
+        "incorrect": [],
+        "category": "서양사",
+        "difficulty": "접근성 4 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "1215년 영국의 존 왕이 귀족들의 요구를 수용하여 서명한 문서로, 국왕의 권력을 법으로 제한한 대헌장의 라틴어 명칭은?",
+        "displayAnswer": "마그나 카르타",
+        "answers": [
+          "마그나 카르타",
+          "대헌장",
+          "Magna Carta",
+          "Magna Charta"
+        ],
+        "hintAnswer": "마그나 카르타",
+        "category": "인문·사회",
+        "difficulty": "easy",
+        "explanation": "마그나 카르타(대헌장)는 영국의 입헌주의와 법치주의 발전에 지대한 영향을 미친 문서다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "world-history-west",
+        "majorKey": "humanities",
+        "sub": "중세 유럽",
+        "accessibility": 4,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "마그나 카르타",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": true,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [
+          "answer_in_question"
+        ],
+        "pass": false
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "01609be16ca5d65e",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 자연과학 > 물리 > 역학·운동",
+        "correct": "관성",
+        "incorrect": [],
+        "category": "물리",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "외부에서 힘이 작용하지 않는 한 정지한 물체는 계속 정지해 있고 운동하는 물체는 등속 직선 운동을 계속하려는 성질은?",
+        "displayAnswer": "관성",
+        "answers": [
+          "관성",
+          "관성의 법칙",
+          "Inertia",
+          "慣性"
+        ],
+        "hintAnswer": "관성",
+        "category": "자연과학",
+        "difficulty": "easy",
+        "explanation": "물체가 자신의 운동 상태를 그대로 유지하려는 고유한 역학적 성질을 관성이라고 한다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "physics",
+        "majorKey": "science",
+        "sub": "역학·운동",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "관성",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "6a48a970720e3c8b",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 자연과학 > 물리 > 전기·자기",
+        "correct": "옴의 법칙",
+        "incorrect": [],
+        "category": "물리",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "도선에 흐르는 전류의 세기는 가해진 전압에 비례하고 도선의 전기저항에 반비례한다는 전자기학의 기본 법칙은?",
+        "displayAnswer": "옴의 법칙",
+        "answers": [
+          "옴의 법칙",
+          "Ohm's law",
+          "Ohms law"
+        ],
+        "hintAnswer": "옴의 법칙",
+        "category": "자연과학",
+        "difficulty": "easy",
+        "explanation": "전압(V), 전류(I), 저항(R) 사이의 관계식 V=IR로 표현되는 물리 법칙이다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "physics",
+        "majorKey": "science",
+        "sub": "전기·자기",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "옴의 법칙",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "4a618d6a1b489f15",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 기술·의학 > 의학·건강 상식 > 질병",
+        "correct": "당뇨병",
+        "incorrect": [],
+        "category": "의학·건강 상식",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "췌장의 인슐린 분비 장애나 기능 저하로 인해 혈중 포도당 농도가 비정상적으로 높아지는 만성 대사 질환은?",
+        "displayAnswer": "당뇨병",
+        "answers": [
+          "당뇨병",
+          "당뇨",
+          "Diabetes",
+          "Diabetes mellitus",
+          "糖尿病"
+        ],
+        "hintAnswer": "당뇨병",
+        "category": "기술·의학",
+        "difficulty": "easy",
+        "explanation": "인슐린 작용 결함으로 혈당 조절이 되지 않는 질환을 당뇨병이라 한다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "medicine",
+        "majorKey": "tech",
+        "sub": "질병",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "당뇨병",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "683fe6f013af638d",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 기술·의학 > 의학·건강 상식 > 증상·진단",
+        "correct": "뇌파 검사",
+        "incorrect": [],
+        "category": "의학·건강 상식",
+        "difficulty": "접근성 4 / 난이도 2"
+      },
+      "generated": {
+        "questionKo": "두피에 전극을 부착하여 대뇌 피질 신경세포들의 자발적인 미세 전기 활동을 기록하는 신경과 진단 검사는?",
+        "displayAnswer": "뇌파 검사",
+        "answers": [
+          "뇌파 검사",
+          "뇌전도",
+          "뇌파",
+          "EEG",
+          "Electroencephalography",
+          "Electroencephalogram"
+        ],
+        "hintAnswer": "뇌파 검사",
+        "category": "기술·의학",
+        "difficulty": "easy",
+        "explanation": "뇌전도(EEG) 검사는 뇌파를 측정하여 뇌전증, 수면장애 등을 진단하는 검사다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "medicine",
+        "majorKey": "tech",
+        "sub": "증상·진단",
+        "accessibility": 4,
+        "difficultyScore": 2,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 4,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "뇌파검사",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "48a037b2938d97b8",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 문화·예술 > 미술·화가 > 서양 회화",
+        "correct": "절규",
+        "incorrect": [],
+        "category": "미술·화가",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "노르웨이의 화가 에드바르 뭉크가 붉은 노을 아래 다리 위에서 귀를 막고 비명을 지르는 인물을 묘사한 대표적인 회화 작품은?",
+        "displayAnswer": "절규",
+        "answers": [
+          "절규",
+          "The Scream",
+          "Skrik",
+          "Der Schrei der Natur"
+        ],
+        "hintAnswer": "절규",
+        "category": "문화·예술",
+        "difficulty": "easy",
+        "explanation": "뭉크가 1893년에 발표한 표현주의 대표작이다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "art",
+        "majorKey": "arts",
+        "sub": "서양 회화",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "절규",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash-lite",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.509Z",
+        "totalTokens": 0
+      }
+    },
+    {
+      "sourceId": "gemini-gen",
+      "sourceRef": "09d6f6d8144d6ee1",
+      "verdict": "accept",
+      "rejectedAt": null,
+      "rejectReasons": [],
+      "source": {
+        "question": "[생성 요청] 문화·예술 > 미술·화가 > 조각",
+        "correct": "밀로의 비너스",
+        "incorrect": [],
+        "category": "미술·화가",
+        "difficulty": "접근성 5 / 난이도 1"
+      },
+      "generated": {
+        "questionKo": "1820년 그리스 밀로스섬에서 발견된 두 팔이 없는 상태로 유명한 고대 그리스의 대표적인 대리석 여성 나체 조각상은?",
+        "displayAnswer": "밀로의 비너스",
+        "answers": [
+          "밀로의 비너스",
+          "밀로의 아프로디테",
+          "Venus de Milo",
+          "Aphrodite of Milos"
+        ],
+        "hintAnswer": "밀로의 비너스",
+        "category": "문화·예술",
+        "difficulty": "easy",
+        "explanation": "헬레니즘 미술의 걸작으로 현재 프랑스 루브르 박물관에 소장되어 있다.",
+        "answerLang": "ko"
+      },
+      "gen": {
+        "midKey": "art",
+        "majorKey": "arts",
+        "sub": "조각",
+        "accessibility": 5,
+        "difficultyScore": 1,
+        "offCategory": false,
+        "offCategoryReason": null,
+        "promptVersion": "g1"
+      },
+      "ai": {
+        "convertible": true,
+        "uniqueAnswer": true,
+        "krAccessible": 5,
+        "koreanTerm": true,
+        "confidence": 1,
+        "rejectReason": null
+      },
+      "backcheck": {
+        "answer": "밀로의 비너스",
+        "result": "pass",
+        "confidence": 1,
+        "alternatives": [],
+        "note": null
+      },
+      "rules": {
+        "answerInQuestion": false,
+        "normalizedCollision": false,
+        "displayAnswerListed": true,
+        "hintAvailable": true,
+        "hintEqualsAnswer": false,
+        "answerShapeOk": true,
+        "reasons": [],
+        "pass": true
+      },
+      "review": {
+        "status": "pending",
+        "note": null
+      },
+      "meta": {
+        "processModel": "gemini-3.7-flash",
+        "backcheckModel": "gemini-3.5-flash",
+        "promptVersion": "p2+g1",
+        "processedAt": "2026-09-09T01:09:29.510Z",
+        "totalTokens": 0
+      }
+    }
+  ]
+}
