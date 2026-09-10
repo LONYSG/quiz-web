@@ -188,7 +188,8 @@
         "da8e8792ac63ef06"
       ]
     },
-    "rulesRecheckedAt": "2026-09-09T07:21:54.898Z"
+    "rulesRecheckedAt": "2026-09-09T07:21:54.898Z",
+    "quarantineMigratedAt": "2026-09-10T01:13:57.862Z"
   },
   "items": [
     {
@@ -7968,7 +7969,7 @@
     {
       "sourceId": "gemini-gen",
       "sourceRef": "b6bbf1b4206f7da6",
-      "verdict": "reject",
+      "verdict": "quarantine",
       "rejectedAt": "backcheck",
       "rejectReasons": [
         "backcheck_mismatch"
@@ -8032,7 +8033,7 @@
       },
       "review": {
         "status": "pending",
-        "note": null
+        "note": "★ 격리 (backcheck): 역검증이 다른 답을 확신했다. 번역이 뜻을 바꿨을 가능성이 있다"
       },
       "meta": {
         "processModel": "gemini-3.6-flash",
@@ -8047,7 +8048,20 @@
         "confidence": 1,
         "alternatives": [],
         "note": null
-      }
+      },
+      "quarantine": {
+        "stage": "backcheck",
+        "reasons": [
+          "backcheck_mismatch"
+        ],
+        "detail": "역검증이 다른 답을 확신했다. 번역이 뜻을 바꿨을 가능성이 있다",
+        "judgedBy": "claude-code",
+        "judgedAt": "2026-09-09T07:03:54.713Z",
+        "confidence": 0.95,
+        "alternatives": [],
+        "migratedFrom": "reject (R013 재분류)"
+      },
+      "finalDecision": null
     },
     {
       "sourceId": "gemini-gen",
@@ -8622,7 +8636,7 @@
     {
       "sourceId": "gemini-gen",
       "sourceRef": "12bcc9e5e3d8b172",
-      "verdict": "reject",
+      "verdict": "quarantine",
       "rejectedAt": "backcheck",
       "rejectReasons": [
         "backcheck_mismatch"
@@ -8688,7 +8702,7 @@
       },
       "review": {
         "status": "pending",
-        "note": null
+        "note": "★ 격리 (backcheck): 역검증이 다른 답을 확신했다. 번역이 뜻을 바꿨을 가능성이 있다"
       },
       "meta": {
         "processModel": "gemini-3.6-flash",
@@ -8703,7 +8717,20 @@
         "confidence": 1,
         "alternatives": [],
         "note": null
-      }
+      },
+      "quarantine": {
+        "stage": "backcheck",
+        "reasons": [
+          "backcheck_mismatch"
+        ],
+        "detail": "역검증이 다른 답을 확신했다. 번역이 뜻을 바꿨을 가능성이 있다",
+        "judgedBy": "claude-code",
+        "judgedAt": "2026-09-09T06:53:27.278Z",
+        "confidence": 0.95,
+        "alternatives": [],
+        "migratedFrom": "reject (R013 재분류)"
+      },
+      "finalDecision": null
     },
     {
       "sourceId": "gemini-gen",

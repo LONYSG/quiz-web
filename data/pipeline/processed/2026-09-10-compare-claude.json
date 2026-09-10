@@ -34,7 +34,8 @@
       "thoughts": 9624,
       "calls": 7
     },
-    "rulesRecheckedAt": "2026-09-09T07:21:54.909Z"
+    "rulesRecheckedAt": "2026-09-09T07:21:54.909Z",
+    "quarantineMigratedAt": "2026-09-10T01:13:57.858Z"
   },
   "items": [
     {
@@ -7309,7 +7310,7 @@
     {
       "sourceId": "gemini-gen",
       "sourceRef": "3c498fea4106a183",
-      "verdict": "reject",
+      "verdict": "quarantine",
       "rejectedAt": "backcheck",
       "rejectReasons": [
         "backcheck_mismatch"
@@ -7364,7 +7365,7 @@
       "rules": null,
       "review": {
         "status": "pending",
-        "note": null
+        "note": "★ 격리 (backcheck): 역검증이 다른 답을 확신했다. 번역이 뜻을 바꿨을 가능성이 있다"
       },
       "meta": {
         "processModel": "claude-code",
@@ -7372,7 +7373,20 @@
         "promptVersion": "p2+g3",
         "processedAt": "2026-09-09T07:05:58.266Z",
         "totalTokens": 0
-      }
+      },
+      "quarantine": {
+        "stage": "backcheck",
+        "reasons": [
+          "backcheck_mismatch"
+        ],
+        "detail": "역검증이 다른 답을 확신했다. 번역이 뜻을 바꿨을 가능성이 있다",
+        "judgedBy": "gemini-3.6-flash",
+        "judgedAt": "2026-09-09T07:05:58.266Z",
+        "confidence": 1,
+        "alternatives": [],
+        "migratedFrom": "reject (R013 재분류)"
+      },
+      "finalDecision": null
     },
     {
       "sourceId": "gemini-gen",

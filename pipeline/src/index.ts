@@ -74,6 +74,8 @@ export { generateBatch, makeGenRef, difficultyBucket, GEN_SOURCE_ID } from './ge
 export type { GenerateOptions, GenerateStats } from './generate.js';
 export { findDuplicates, similarity, questionKey, DUPE_SIMILARITY_IS_ADVISORY } from './dedupe.js';
 export { selectQuestions, explainReason, SELECT } from './select.js';
+export { detectOverFiltering, formatAlerts, FILTER_ALERT } from './quarantine.js';
+export type { FilterAlert, FilterReport } from './quarantine.js';
 export {
   DUPE_JUDGE_SCHEMA,
   buildDupeJudgePrompt,

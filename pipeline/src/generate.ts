@@ -41,7 +41,7 @@ import {
 import { BudgetError, GeminiClient, RateLimitError } from './gemini.js';
 import { judgeBackcheck } from './process.js';
 import { checkRules, dedupeAnswers, sanitizeVariants } from './rules.js';
-import type { AiGenerated, ProcessedItem } from './types.js';
+import type { AiGenerated, ProcessedItem, QuarantineRecord } from './types.js';
 
 /** ★ 생성 문제의 소스 식별자. OpenTDB 것과 구분된다 (작업 E) */
 export const GEN_SOURCE_ID = 'gemini-gen';
@@ -92,6 +92,10 @@ export interface GenerateStats {
   accepted: number;
   /** 단계별 게이트에서 상위 모델로 올린 건수 */
   escalated: number;
+  /** ★ p3: 질문 문장 문제(사실 오류·유일성·표기)로 격리된 건수 */
+  questionIssues: number;
+  /** ★ 규칙 충돌로 Opus 판단이 필요한 건수 */
+  ruleDecisions: number;
   modelUsage: Record<string, number>;
   rejectReasons: Record<string, number>;
   tokens: { total: number; prompt: number; output: number; thoughts: number; calls: number };
@@ -109,6 +113,23 @@ export interface GenerateStats {
 
 function bump(map: Record<string, number>, key: string): void {
   map[key] = (map[key] ?? 0) + 1;
+}
+
+/**
+ * ★★ 격리한다. 폐기하지 않는다 (R013 / Q-75).
+ *
+ * ★ verdict='quarantine' 은 "Gemini 가 문제를 표시했다" 는 뜻이고
+ *   "버렸다" 는 뜻이 **아니다.** 최종 확정은 Sonnet 이 한다.
+ * ★ 원본과 판정 근거를 그대로 남긴다 — 건우가 "이거 왜 버렸어?" 를 확인할 수 있어야 한다.
+ */
+function quarantine(out: ProcessedItem, record: QuarantineRecord): void {
+  out.verdict = 'quarantine';
+  out.rejectedAt = record.stage === 'dupe' || record.stage === 'select' ? null : record.stage;
+  out.rejectReasons = record.reasons;
+  out.quarantine = record;
+  out.finalDecision = null;
+  const note = `★ 격리 (${record.stage}): ${record.detail}`;
+  out.review.note = out.review.note ? `${out.review.note} / ${note}` : note;
 }
 
 /**
@@ -214,6 +235,8 @@ export async function generateBatch(
     rulesRejected: 0,
     accepted: 0,
     escalated: 0,
+    questionIssues: 0,
+    ruleDecisions: 0,
     modelUsage: {},
     rejectReasons: {},
     tokens: { total: 0, prompt: 0, output: 0, thoughts: 0, calls: 0 },
@@ -310,8 +333,13 @@ export async function generateBatch(
 
       if (!g) {
         // ★ 모델이 슬롯을 빠뜨렸다. 조용히 넘기지 않고 기록한다 (R010과 같은 원칙).
-        out.rejectedAt = 'ai';
-        out.rejectReasons = ['gen_missing_slot'];
+        quarantine(out, {
+          stage: 'ai',
+          reasons: ['gen_missing_slot'],
+          detail: '★ 모델이 이 슬롯의 문제를 만들지 않았다',
+          judgedBy: 'pipeline',
+          judgedAt: new Date().toISOString(),
+        });
         bump(stats.rejectReasons, 'gen_missing_slot');
         stats.missing += 1;
         results.push(out);
@@ -326,8 +354,13 @@ export async function generateBatch(
 
       // ★ 모델이 "이 카테고리로는 못 만든다" 고 한 경우 (C-2)
       if (g.offCategory) {
-        out.rejectedAt = 'ai';
-        out.rejectReasons = ['off_category'];
+        quarantine(out, {
+          stage: 'ai',
+          reasons: ['off_category'],
+          detail: `★ 모델이 이 카테고리로는 만들 수 없다고 했다: ${out.gen!.offCategoryReason ?? '(사유 없음)'}`,
+          judgedBy: 'generator',
+          judgedAt: new Date().toISOString(),
+        });
         bump(stats.rejectReasons, 'off_category');
         stats.offCategory += 1;
         results.push(out);
@@ -372,8 +405,13 @@ export async function generateBatch(
       };
 
       if (!generated.questionKo || !generated.displayAnswer || answers.length === 0) {
-        out.rejectedAt = 'ai';
-        out.rejectReasons = ['gen_empty'];
+        quarantine(out, {
+          stage: 'ai',
+          reasons: ['gen_empty'],
+          detail: '★ 생성 결과의 질문이나 정답이 비어 있다',
+          judgedBy: 'pipeline',
+          judgedAt: new Date().toISOString(),
+        });
         bump(stats.rejectReasons, 'gen_empty');
         stats.emptyGeneration += 1;
         results.push(out);
@@ -427,8 +465,13 @@ export async function generateBatch(
         log(`[gen] ★ 역검증 중단: ${err.message}`);
         // ★ 역검증을 못 한 것을 accept 로 올리지 않는다 (R010과 같은 원칙).
         for (const a of accepted) {
-          a.out.rejectedAt = 'backcheck';
-          a.out.rejectReasons = ['backcheck_not_run'];
+          quarantine(a.out, {
+            stage: 'backcheck',
+            reasons: ['backcheck_not_run'],
+            detail: '★ 429 등으로 역검증을 실행하지 못했다. 검증 없이 통과시키지 않는다',
+            judgedBy: 'pipeline',
+            judgedAt: new Date().toISOString(),
+          });
           bump(stats.rejectReasons, 'backcheck_not_run');
           results.push(a.out);
         }
@@ -526,8 +569,13 @@ export async function generateBatch(
         const raw = upByRef.get(a.out.sourceRef);
         a.out.meta.backcheckModel = r.model;
         if (!raw) {
-          a.out.rejectedAt = 'backcheck';
-          a.out.rejectReasons = ['backcheck_missing_item'];
+          quarantine(a.out, {
+            stage: 'backcheck',
+            reasons: ['backcheck_missing_item'],
+            detail: '★ 모델이 이 항목의 역검증 결과를 돌려주지 않았다',
+            judgedBy: 'pipeline',
+            judgedAt: new Date().toISOString(),
+          });
           bump(stats.rejectReasons, 'backcheck_missing_item');
           stats.backcheckRejected += 1;
           results.push(a.out);
@@ -545,8 +593,13 @@ export async function generateBatch(
         log(`[gen] ★ 승급 역검증 중단: ${err.message}`);
         // ★ 승급 대상은 애매한 것들이다. 검증을 못 했으면 accept 로 올리지 않는다.
         for (const a of pendingEscalation) {
-          a.out.rejectedAt = 'backcheck';
-          a.out.rejectReasons = ['backcheck_escalation_not_run'];
+          quarantine(a.out, {
+            stage: 'backcheck',
+            reasons: ['backcheck_escalation_not_run'],
+            detail: '★ 승급 역검증을 실행하지 못했다. 승급 대상은 애매한 것들이므로 통과시키지 않는다',
+            judgedBy: 'pipeline',
+            judgedAt: new Date().toISOString(),
+          });
           bump(stats.rejectReasons, 'backcheck_escalation_not_run');
           results.push(a.out);
         }
@@ -557,8 +610,13 @@ export async function generateBatch(
   } else if (pendingEscalation.length > 0) {
     // 429 로 멈춘 상태에서는 승급 호출을 하지 않는다
     for (const a of pendingEscalation) {
-      a.out.rejectedAt = 'backcheck';
-      a.out.rejectReasons = ['backcheck_escalation_not_run'];
+      quarantine(a.out, {
+        stage: 'backcheck',
+        reasons: ['backcheck_escalation_not_run'],
+        detail: '★ 429 로 중단되어 승급 역검증을 하지 못했다',
+        judgedBy: 'pipeline',
+        judgedAt: new Date().toISOString(),
+      });
       bump(stats.rejectReasons, 'backcheck_escalation_not_run');
       results.push(a.out);
     }
@@ -569,11 +627,28 @@ export async function generateBatch(
   // ─────────────────────────────────────────────────────────────────────────
   for (const s of settled) {
     s.out.backcheck = s.judged.result;
+
+    // ★★ R013: Gemini 는 **버리지 않는다. 격리한다** (Q-75).
+    //   ★ 근거: R010에서 이 판정이 정상 문제 6건을 전부 오탈락시켰고,
+    //     R012에서도 탈락 3건 중 2건이 오탈락이었다.
+    //     Gemini 에게 폐기 권한을 주면 안 된다. 최종 확정은 Sonnet 이 한다.
     if (s.judged.reject) {
-      s.out.rejectedAt = 'backcheck';
-      s.out.rejectReasons = [`backcheck_${s.judged.result.result}`];
-      bump(stats.rejectReasons, `backcheck_${s.judged.result.result}`);
+      const reasons = [`backcheck_${s.judged.result.result}`];
+      if (s.judged.hasQuestionIssue) reasons.push('question_issue');
+      quarantine(s.out, {
+        stage: 'backcheck',
+        reasons,
+        detail: s.judged.result.note ?? '역검증 판정',
+        judgedBy: s.out.meta.backcheckModel ?? 'gemini',
+        judgedAt: new Date().toISOString(),
+        confidence: s.judged.result.confidence,
+        alternatives: s.judged.result.alternatives,
+      });
+      if (s.judged.needsRuleDecision) s.out.needsRuleDecision = true;
+      for (const r of reasons) bump(stats.rejectReasons, r);
       stats.backcheckRejected += 1;
+      if (s.judged.hasQuestionIssue) stats.questionIssues += 1;
+      if (s.judged.needsRuleDecision) stats.ruleDecisions += 1;
       results.push(s.out);
       continue;
     }
@@ -581,8 +656,13 @@ export async function generateBatch(
     const rules = checkRules(s.generated);
     s.out.rules = rules;
     if (!rules.pass) {
-      s.out.rejectedAt = 'rules';
-      s.out.rejectReasons = rules.reasons;
+      quarantine(s.out, {
+        stage: 'rules',
+        reasons: rules.reasons,
+        detail: `규칙 검사 실패: ${rules.reasons.join(', ')}`,
+        judgedBy: 'rules(코드)',
+        judgedAt: new Date().toISOString(),
+      });
       for (const r of rules.reasons) bump(stats.rejectReasons, r);
       stats.rulesRejected += 1;
       results.push(s.out);
@@ -591,6 +671,8 @@ export async function generateBatch(
 
     s.out.verdict = 'accept';
     s.out.rejectedAt = null;
+    // ★ 질문 문장 문제가 있으면 위에서 이미 격리되었으므로 여기 오지 않는다.
+    //   그래도 통계는 센다 — 통과분에 question_issue 가 남아 있으면 버그다
     if (s.judged.needsReview) {
       // ★ 이미 메모가 있으면(형식 변형 제외 등) 덮어쓰지 않고 덧붙인다
       s.out.review.note = s.out.review.note
