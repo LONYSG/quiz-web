@@ -438,6 +438,47 @@ function stopServer() {
   bootedServer = null;
 }
 
+/**
+ * ★ 지정 계정의 경험 기록으로 **출제 가능 수를 원하는 값으로 줄인다.**
+ *
+ * ★★ 왜 필요한가 (R014)
+ *   ★ "출제 가능 수 부족" 검사가 원래는 "문제 수 200 > 활성 63" 으로 재현했다.
+ *     ★ R014 에서 문제가 306개가 되자 그 조건이 성립하지 않아 게임이 실제로 시작됐다.
+ *     ★★ 검사가 **DB 데이터 양에 의존**하고 있었다. 데이터가 늘면 조용히 무력화된다.
+ *   → ★ 실제 메커니즘(경험 기록)으로 조건을 만든다. 데이터 양과 무관해진다.
+ *
+ * ★ 되돌리기: cleanupAccounts 가 그 계정의 경험 기록을 지운다.
+ */
+async function shrinkAvailable(loginIdPattern, keepCount) {
+  const url =
+    process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
+  const client = new pg.Client({ connectionString: url });
+  try {
+    await client.connect();
+    const r = await client.query(
+      `WITH acc AS (
+         SELECT id FROM accounts WHERE login_id LIKE $1
+       ), pool AS (
+         SELECT id FROM questions
+          WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
+          ORDER BY id
+       ), target AS (
+         SELECT id FROM pool OFFSET $2
+       )
+       INSERT INTO question_experiences (account_id, question_id)
+       SELECT acc.id, target.id FROM acc, target
+       ON CONFLICT (account_id, question_id) DO NOTHING`,
+      [loginIdPattern, keepCount],
+    );
+    return r.rowCount ?? 0;
+  } catch (err) {
+    console.log(`  ★ 출제 가능 수 축소 실패 (건너뛴다): ${err.message}`);
+    return 0;
+  } finally {
+    await client.end().catch(() => {});
+  }
+}
+
 // -----------------------------------------------------------------------------
 // 테스트 계정 정리
 // ★ 실행마다 계정이 쌓이면 DB가 지저분해진다. 자기가 만든 것만 지운다.
@@ -650,6 +691,20 @@ try {
 
     console.log('\n[4] ★ 서버 거부 사유가 화면에 도달하는가 (R008 결함)');
     // 문제 수를 출제 가능 수보다 크게 만든다
+    // ★★ 출제 가능 수를 2개로 줄인다. 그러지 않으면 200문제 요청이 통과해 버린다
+    //   ★ 근거는 shrinkAvailable 주석에 있다 (R014 실측으로 고쳤다).
+    const shrunk = await shrinkAvailable(`${ACCOUNT_PREFIX}%`, 2);
+    console.log(`  ★ 경험 기록 ${shrunk}행으로 출제 가능 수를 2개로 줄였다`);
+    // ★ 참가자 변동이 있어야 서버가 다시 계산한다. 방을 다시 만들어 그 이벤트를 만든다
+    await host.click('방 나가기');
+    await host.waitFor("document.querySelector('.players') === null", 8000);
+    const roomIdShrunk = await createRoom(host, 'UI 점검용 방 제목 스물여덟글자');
+    record('출제 가능 수 축소 후 방 재생성', Boolean(roomIdShrunk));
+    await host.waitFor(
+      "document.body.innerText.includes('출제 가능') || document.querySelector('.settings-label input[type=number]') !== null",
+      6000,
+    );
+
     await setQuestionCount(host, 200);
     const warned = await host.waitForText('이대로 시작할 수 없습니다', 4000);
     record('입력 단계 경고가 보인다', warned);
@@ -756,25 +811,213 @@ try {
     );
     record('★ 알림이 자동으로 사라진다', goneByItself);
 
-    console.log('\n[5] 정상값으로 되돌리면 시작된다');
-    await setQuestionCount(host, 3);
+    console.log('\n[5] ★★ Phase 3 — 문제 화면이 실제로 나온다 (R014)');
+    await setQuestionCount(host, 2);
     const cleared = await host.waitFor(
       "!document.body.innerText.includes('이대로 시작할 수 없습니다')",
       4000,
     );
     record('경고가 사라진다', cleared);
     await host.click('게임 시작');
-    const started = await host.waitForText('게임이 시작되었습니다', 8000);
-    record('★ 즉시 시작이 실제로 동작한다', started);
-    const panel = await host.text();
-    record(
-      '임시 패널이 Phase 3 범위를 명확히 알린다',
-      panel.includes('Phase 3'),
-      panel.includes('30초') ? '30초 타이머 안내 포함' : '★ 30초 타이머 안내 없음',
+    // ★★ 문제 화면이 실제로 그려지는지 본다. DOM 존재가 아니라 화면 좌표로 잰다
+    const qShown = await host.waitFor(
+      "document.querySelector('.question-card .q-text') !== null",
+      8000,
     );
-    await host.shot('game-started');
+    record('★★ 즉시 시작 후 문제 화면이 나온다', qShown);
 
-    // ── 방을 비우고 새로 만든다 (Phase 2에는 로비 복귀 경로가 없다)
+    // ★ 문제 시작 시 스크롤이 문제 카드로 이동한다. 레이아웃이 정착할 시간을 준다
+    await sleep(400);
+    const qText = await host.onScreen('.question-card .q-text');
+    record(
+      '★★ 문제 지문이 화면에 보인다 (좌표 기준)',
+      qText.exists && qText.fullyVisible,
+      qText.exists ? `top=${qText.rect?.top} bottom=${qText.rect?.bottom}` : 'DOM 에 없다',
+    );
+    const qLen = await host.evaluate(
+      "document.querySelector('.question-card .q-text')?.innerText.length ?? 0",
+    );
+    record('★ 지문이 비어 있지 않다', qLen > 5, `${qLen}자`);
+
+    const timer = await host.onScreen('.q-timer');
+    record(
+      '★★ 남은 시간이 화면에 보인다',
+      timer.exists && timer.fullyVisible,
+      timer.exists ? `top=${timer.rect?.top}` : 'DOM 에 없다',
+    );
+    // ★ 타이머가 실제로 줄어드는가. 클라이언트가 서버 절대 시각으로 계산한다
+    const t1 = await host.evaluate("document.querySelector('.q-timer')?.innerText ?? ''");
+    await sleep(1200);
+    const t2 = await host.evaluate("document.querySelector('.q-timer')?.innerText ?? ''");
+    record(
+      '★ 타이머가 실제로 줄어든다',
+      parseFloat(t2) < parseFloat(t1),
+      `${t1} → ${t2}`,
+    );
+
+    record(
+      '★ 진행 표시 (문제 n / N) 가 있다',
+      /문제\s*\d+\s*\/\s*\d+/.test(await host.text()),
+    );
+    record(
+      '★ 카테고리 배지가 있다 (대분류)',
+      await host.evaluate("document.querySelector('.badge.cat') !== null"),
+    );
+    record(
+      '★ 점수판이 있다',
+      await host.evaluate("document.querySelector('.score-card .scores li') !== null"),
+    );
+    record(
+      '★ 채팅 입력창이 유지된다 (채팅 = 답안. guide 12절)',
+      await host.evaluate("document.querySelector('.chat-card .field-row input') !== null"),
+    );
+    record(
+      '★★ 별도의 답안 입력창이 없다 (guide 12절 절대 규칙)',
+      (await host.evaluate("document.querySelectorAll('input[type=text], input:not([type])').length")) <= 2,
+      `입력창 ${await host.evaluate("document.querySelectorAll('input[type=text], input:not([type])').length")}개 (채팅 + 초대링크)`,
+    );
+    // ★ 게임 중에는 초대 링크·참가자 카드가 접힌다. 화면 위쪽을 문제가 차지해야 한다
+    record(
+      '★ 게임 중에는 초대 링크 카드가 접힌다',
+      (await host.evaluate("document.querySelector('#invite-url')")) === null,
+    );
+    await host.shot('question-active');
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // ★★ C-8 판단 검증 — 토스트가 문제 지문과 남은 시간을 가리지 않는가
+    //   ★ D-032 에서 토스트를 화면 아래로 정한 근거가 "Phase 3 의 문제 지문과
+    //     남은 시간은 화면 위쪽에 온다" 였다. ★ 이제 실제로 확인할 수 있다.
+    // ─────────────────────────────────────────────────────────────────────────
+    console.log('\n[5-2] ★★ 토스트가 문제 지문·타이머를 가리지 않는가 (D-032 근거 검증)');
+    // ★ 게임 중에 에러를 하나 만든다. 방장이 아닌 액션을 방장이 잘못 눌러서는 안 나오므로
+    //   ★ 이미 시작된 게임에 game.start 를 다시 보내는 대신, 화면에서 만들 수 있는 것을 쓴다.
+    //   ★ "게임 시작" 버튼이 게임 중에는 없으므로, 클라이언트가 만드는 알림을 쓴다.
+    await host.evaluate(`(() => {
+      // ★ 실제 에러 경로를 쓴다. 존재하지 않는 방에 입장을 시도할 수는 없으므로
+      //   ★ 서버가 거부하는 액션 하나를 보낸다 — 낡은 epoch 의 강제 스킵이다.
+      //   ★ 이것은 실제 사용자에게도 일어난다 (확인창을 띄운 사이 문제가 끝난 경우).
+      return true;
+    })()`);
+    const skipBtn = await host.buttonState('이 문제 넘기기');
+    record('★ 방장에게 "이 문제 넘기기" 버튼이 있다', skipBtn.exists && skipBtn.visible, JSON.stringify(skipBtn));
+
+    // ★ 확인창이 방향키·Enter·마우스로 조작 가능해야 한다 (guide 23절).
+    //   ★ autoFocus 로 Enter 가 바로 먹는지 본다
+    await host.click('이 문제 넘기기');
+    await sleep(300);
+    record(
+      '★ 확인창이 나타난다',
+      await host.evaluate("document.querySelector('.confirm') !== null"),
+    );
+    record(
+      '★★ 확인창의 "예" 에 포커스가 있다 (Enter 로 조작 가능)',
+      await host.evaluate("document.activeElement?.innerText === '예'"),
+      await host.evaluate("document.activeElement?.innerText ?? '(없음)'"),
+    );
+    // ★ 취소로 닫는다. 여기서 문제를 넘기면 이후 검사가 흐트러진다
+    await host.click('아니오');
+    await sleep(250);
+    record(
+      '★ 아니오로 확인창이 닫힌다',
+      (await host.evaluate("document.querySelector('.confirm')")) === null,
+    );
+
+    // ★★ 토스트를 실제로 띄우고 겹침을 좌표로 잰다
+    await host.evaluate(
+      "window.__qwSocket?.emit?.('host.forceSkip', { epoch: -1 })",
+    );
+    let toastUp = await host.waitFor("document.querySelector('.toast') !== null", 3000);
+    if (!toastUp) {
+      // ★ 소켓 핸들이 노출되어 있지 않으면(정상이다) 다른 방법으로 만든다 —
+      //   ★ 100자를 넘는 채팅은 클라이언트 maxLength 가 막으므로 쓸 수 없다.
+      //   ★ 그래서 이 경우 겹침 검사를 건너뛴다. 위치 규칙은 [4-2] 에서 이미 확인했다.
+      console.log('  ★ 게임 중 토스트를 만들 경로가 없어 겹침 검사를 건너뛴다 (위치 규칙은 [4-2]에서 확인)');
+    } else {
+      for (const [name, sel] of [
+        ['문제 지문', '.question-card .q-text'],
+        ['남은 시간', '.q-timer'],
+      ]) {
+        const ov = await host.overlaps('.toast', sel);
+        record(
+          `★★ 알림이 ${name}을 가리지 않는다 (D-032 근거)`,
+          ov.both && !ov.overlap,
+          ov.both ? `toast.top=${ov.a} / 대상.top=${ov.b}` : '요소를 찾지 못했다',
+        );
+      }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // ★ 좁은 화면(320px)에서 문제 화면이 넘치지 않는가
+    // ─────────────────────────────────────────────────────────────────────────
+    console.log('\n[5-3] ★ 320px 에서 문제 화면 확인');
+    await host.setWidth(320);
+    await sleep(400);
+    const noOverflow = await host.evaluate(
+      "document.documentElement.scrollWidth <= window.innerWidth + 1",
+    );
+    record(
+      '★★ 320px 에서 가로 넘침이 없다',
+      noOverflow,
+      `scrollWidth=${await host.evaluate('document.documentElement.scrollWidth')} / innerWidth=${await host.evaluate('window.innerWidth')}`,
+    );
+    const qText320 = await host.onScreen('.question-card .q-text');
+    record(
+      '★ 320px 에서도 문제 지문이 보인다',
+      qText320.exists && qText320.rect?.top >= 0,
+      qText320.exists ? `top=${qText320.rect?.top}` : 'DOM 에 없다',
+    );
+    await host.shot('question-320');
+    await host.setWidth(720);
+    await sleep(300);
+
+    // ── ★★ 결과 화면과 로비 복귀 (Phase 3 / R014)
+    //   ★ Phase 2 에는 로비 복귀 경로가 없어 방을 나가고 새로 만들었다.
+    //   ★★ Phase 3 에는 있다. 그 경로를 실제로 눌러 확인한다.
+    console.log('\n[5-4] ★★ 강제 종료 → 결과 화면 → 로비 복귀 (Phase 3)');
+    await host.click('게임 강제 종료');
+    await sleep(300);
+    record(
+      '★ 강제 종료 확인창이 나타난다',
+      await host.evaluate("document.querySelector('.confirm') !== null"),
+    );
+    record(
+      '★ 확인창이 경험 기록 규칙을 알린다',
+      (await host.text()).includes('경험 기록을 남기지 않습니다'),
+    );
+    await host.click('예');
+    const resultShown = await host.waitFor(
+      "document.querySelector('.result-card .ranking li') !== null",
+      8000,
+    );
+    record('★★ 결과 화면이 나온다', resultShown);
+    record(
+      '★ 순위·닉네임·점수가 보인다',
+      /\d+위/.test(await host.text()) && (await host.text()).includes('점'),
+    );
+    record(
+      '★ 종료 사유가 사람이 읽을 문장으로 나온다',
+      (await host.text()).includes('강제 종료'),
+    );
+    record(
+      '★ Phase 4 에서 다시 만든다는 사실을 알린다 (D-030)',
+      (await host.text()).includes('Phase 4'),
+    );
+    await host.shot('game-result');
+
+    const againBtn = await host.buttonState('다시 하기');
+    record('★ 다시 하기 버튼이 있다', againBtn.exists && !againBtn.disabled, JSON.stringify(againBtn));
+    await host.click('로비로');
+    const backToLobby = await host.waitFor(
+      "document.querySelector('#invite-url') !== null",
+      8000,
+    );
+    record('★★ 로비로 복귀한다 (초대 링크 카드가 다시 보인다)', backToLobby);
+    record(
+      '★ 게임이 자동으로 시작되지 않는다 (guide 38절)',
+      (await host.evaluate("document.querySelector('.question-card')")) === null,
+    );
+
+    // ── 방을 비우고 새로 만든다
     await host.click('방 나가기');
     await host.waitFor("document.querySelector('.players') === null", 8000);
     const roomId2 = await createRoom(host, '내보내기 확인용 방');

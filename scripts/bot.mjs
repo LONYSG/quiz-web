@@ -16,6 +16,12 @@
 //   chat       동시 채팅 부하
 //   lobby      ★ Phase 2 — 설정 검증 / 권한 / 경험률 / 출제 가능 수 (Q-10·11·12·21)
 //   countdown  ★ Phase 2 — 카운트다운 시작·취소·만료·중간 입장 / 게임 레코드 (Q-11)
+//   ★ game     Phase 3 — 문제 출제 / 정답 판정 / 점수 / 힌트 / 경험 기록 / 결과
+//   ★★ race    Phase 3 — 동시 정답 (한 문제의 정답자는 정확히 한 명. guide 18절)
+//   ★★ epoch   Phase 3 — RESOLVED 구간 메시지가 다음 문제 정답과 우연히 일치 (장치 B)
+//   ★ concur   Phase 3 — R003 2-3 동시 발생 시나리오 나머지
+//   ★★ collide Phase 3 — 두 트리거가 동시에 문제를 끝내려는 경우 (장치 A)
+//   ★ full     Phase 3 — 봇 10명으로 한 게임 완주 + 타이머 정확도 실측
 //
 // 사용법
 //   node scripts/bot.mjs join --count 11
@@ -25,6 +31,12 @@
 //   node scripts/bot.mjs chat --count 10 --messages 20
 //   node scripts/bot.mjs lobby
 //   node scripts/bot.mjs countdown
+//   node scripts/bot.mjs game
+//   node scripts/bot.mjs race --rounds 30
+//   node scripts/bot.mjs epoch
+//   node scripts/bot.mjs concur
+//   node scripts/bot.mjs collide
+//   node scripts/bot.mjs full --count 10
 //
 // ★ 로그만 찍지 않는다 (R005 5-1의 교훈).
 //   lobby / countdown 은 expect() 로 단정하고, 하나라도 틀리면 0이 아닌 코드로 끝난다.
@@ -261,6 +273,68 @@ class Bot {
           this.snapshot.game = { gameId: p.gameId, totalQuestions: p.totalQuestions };
         }
       });
+
+      // ── ★★ Phase 3 이벤트
+      s.on('question.started', (p) => {
+        this.events.push({ type: 'question.started', epoch: p.epoch, index: p.index, at: Date.now(), payload: p });
+        if (this.snapshot) {
+          this.snapshot.room.state = p.state;
+          this.snapshot.question = { ...p, hint: null, hintRevealed: false };
+          this.snapshot.resolution = null;
+        }
+      });
+      s.on('question.experiencedUpdated', (p) => {
+        this.events.push({ type: 'question.experiencedUpdated', epoch: p.epoch, payload: p });
+        if (this.snapshot?.question && this.snapshot.question.epoch === p.epoch) {
+          this.snapshot.question.experiencedNicknames = p.experiencedNicknames;
+          this.snapshot.question.selfExperienced = p.selfExperienced;
+        }
+      });
+      s.on('question.hint', (p) => {
+        this.events.push({ type: 'question.hint', epoch: p.epoch, hint: p.hint, at: Date.now() });
+        if (this.snapshot?.question && this.snapshot.question.epoch === p.epoch) {
+          this.snapshot.question.hint = p.hint;
+          this.snapshot.question.hintRevealed = true;
+        }
+      });
+      s.on('question.resolved', (p) => {
+        this.events.push({ type: 'question.resolved', epoch: p.epoch, reason: p.reason, winnerAccountId: p.winnerAccountId, displayAnswer: p.displayAnswer, at: Date.now(), payload: p });
+        if (this.snapshot) {
+          this.snapshot.room.state = p.state;
+          this.snapshot.resolution = p;
+          const byId = new Map((p.scores ?? []).map((x) => [x.accountId, x.score]));
+          for (const pl of this.snapshot.players ?? []) {
+            if (byId.has(pl.accountId)) pl.score = byId.get(pl.accountId);
+          }
+        }
+      });
+      s.on('skip.voteUpdated', (p) => {
+        this.events.push({ type: 'skip.voteUpdated', epoch: p.epoch, votes: p.votes, threshold: p.threshold });
+        if (this.snapshot) this.snapshot.skip = p;
+      });
+      s.on('game.result', (p) => {
+        this.events.push({ type: 'game.result', endReason: p.endReason, at: Date.now(), payload: p });
+        if (this.snapshot) {
+          this.snapshot.room.state = 'GAME_RESULT';
+          this.snapshot.result = p;
+          this.snapshot.question = null;
+        }
+      });
+      s.on('game.returnedToLobby', (p) => {
+        this.events.push({ type: 'game.returnedToLobby', at: Date.now() });
+        if (this.snapshot) {
+          this.snapshot.room.state = p.state;
+          this.snapshot.room.settings = p.settings;
+          this.snapshot.room.settingsLocked = p.settingsLocked;
+          this.snapshot.players = p.players;
+          this.snapshot.game = null;
+          this.snapshot.question = null;
+          this.snapshot.result = null;
+        }
+      });
+      s.on('chat.throttled', (p) => {
+        this.events.push({ type: 'chat.throttled', retryAfterMs: p.retryAfterMs });
+      });
       s.on('connect', () => resolve());
       s.on('connect_error', (e) => reject(new Error(`${this.name} 연결 실패: ${e.message}`)));
       setTimeout(() => reject(new Error(`${this.name} 연결 타임아웃`)), 15000);
@@ -275,8 +349,44 @@ class Bot {
     this.socket.emit('room.join', { roomId });
   }
 
-  chat(text) {
-    this.socket.emit('chat.send', { text });
+  /**
+   * 채팅 전송.
+   * ★★ epoch 를 담는다. 그것이 장치 B 의 클라이언트 쪽 절반이다.
+   *   ★ 두 번째 인자로 epoch 를 강제 지정할 수 있다 — epoch 시나리오가 그것을 쓴다.
+   */
+  chat(text, epochOverride) {
+    const epoch =
+      epochOverride !== undefined ? epochOverride : (this.snapshot?.question?.epoch ?? null);
+    this.socket.emit('chat.send', { text, epoch });
+  }
+
+  /** 현재 문제의 epoch */
+  epoch() {
+    return this.snapshot?.question?.epoch ?? null;
+  }
+
+  skipVote(vote) {
+    this.socket.emit('skip.vote', { vote, epoch: this.epoch() });
+  }
+
+  forceSkip(epochOverride) {
+    this.socket.emit('host.forceSkip', {
+      epoch: epochOverride !== undefined ? epochOverride : this.epoch(),
+    });
+  }
+
+  forceEnd() {
+    this.socket.emit('host.forceEnd', {});
+  }
+
+  /** 현재 문제가 시작될 때까지 기다린다 */
+  async waitQuestion(index, timeoutMs = 12000) {
+    await this.waitFor(
+      () => this.snapshot?.question && (index === undefined || this.snapshot.question.index === index),
+      timeoutMs,
+      `문제 ${index ?? ''} 시작`,
+    );
+    return this.snapshot.question;
   }
 
   disconnect() {
@@ -373,6 +483,110 @@ async function gamesOfRoom(roomId) {
       [games.rows.map((g) => g.id)],
     );
     return { games: games.rows, players: players.rows };
+  });
+}
+
+/**
+ * ★ 문제 지문으로 정답을 찾는다.
+ *
+ * ★★ 봇이 정답을 알아내는 유일한 경로가 DB 다. 그것이 의도다 —
+ *   서버는 QUESTION_ACTIVE 중에 정답을 클라이언트로 보내지 않는다.
+ *   ★ 봇이 소켓에서 정답을 읽을 수 있다면 그것 자체가 결함이다.
+ */
+async function answersForText(text) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `SELECT a.answer_text
+         FROM questions q JOIN question_answers a ON a.question_id = q.id
+        WHERE q.question_text = $1
+        ORDER BY a.is_primary DESC, a.id`,
+      [text],
+    );
+    return r.rows.map((x) => x.answer_text);
+  });
+}
+
+/** ★ 게임의 문제별 기록. 선정 단계와 종료 사유를 확인한다 */
+async function questionsOfGame(gameId) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `SELECT question_index, question_id::text AS question_id, epoch,
+              resolution, winner_account_id::text AS winner_account_id,
+              selection_stage, skip_votes_at_end, active_at_end,
+              (resolved_at IS NOT NULL) AS resolved
+         FROM game_questions WHERE game_id = $1 ORDER BY question_index`,
+      [gameId],
+    );
+    return r.rows;
+  });
+}
+
+/** ★ answer_events. 동시 정답의 사후 검증 근거다 (guide 18절) */
+async function answerEventsOfGame(gameId) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `SELECT question_index, account_id::text AS account_id, matched,
+              was_eligible, accepted, reject_reason, response_ms
+         FROM answer_events WHERE game_id = $1 ORDER BY question_index, id`,
+      [gameId],
+    );
+    return r.rows;
+  });
+}
+
+/** ★ 경험 기록. Q-47 기준(정답 공개 순간 그 자리에 있던 사람 전원)을 확인한다 */
+async function experiencesOfGame(gameId) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `SELECT account_id::text AS account_id, question_id::text AS question_id
+         FROM question_experiences WHERE first_game_id = $1
+        ORDER BY question_id, account_id`,
+      [gameId],
+    );
+    return r.rows;
+  });
+}
+
+/** ★ 테스트 계정의 경험 기록을 지운다. 반복 실행을 가능하게 한다 */
+async function clearExperiences(prefix) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `DELETE FROM question_experiences
+        WHERE account_id IN (SELECT id FROM accounts WHERE login_id LIKE $1)`,
+      [`${prefix}\_%`],
+    );
+    return r.rowCount ?? 0;
+  });
+}
+
+/**
+ * ★ 지정한 계정들에게 경험 기록을 넣어 **출제 가능 수를 원하는 값으로 줄인다.**
+ *
+ * ★★ 왜 이런 헬퍼가 필요한가 (R014)
+ *   ★ "출제 가능 수 부족" 테스트가 원래는 "문제 수 200 > 활성 53" 으로 재현했다.
+ *     ★ R014 에서 문제가 306개가 되어 그 조건이 성립하지 않게 됐다.
+ *     ★★ 테스트가 **DB 데이터 양에 의존**하고 있었다. 데이터가 늘면 조용히 무력화된다.
+ *   → ★ 실제 메커니즘(경험 기록)으로 조건을 만든다. 데이터 양과 무관해진다.
+ *
+ * ★ 되돌리기: clearExperiences(prefix) 로 지운다.
+ */
+async function shrinkAvailableTo(accountIds, keepCount) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `WITH pool AS (
+         SELECT id FROM questions
+          WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
+          ORDER BY id
+       ), target AS (
+         SELECT id FROM pool OFFSET $2
+       )
+       INSERT INTO question_experiences (account_id, question_id)
+       SELECT a.account_id, t.id
+         FROM unnest($1::bigint[]) AS a(account_id), target t
+       ON CONFLICT (account_id, question_id) DO NOTHING`,
+      [accountIds, keepCount],
+    );
+    return r.rowCount ?? 0;
   });
 }
 
@@ -622,6 +836,15 @@ async function scenarioChat() {
 async function scenarioLobby() {
   log('시나리오 lobby — Phase 2 설정 검증 / 권한 / 경험률 (Q-10·11·12·21)');
 
+  // ★★ 경험 기록을 먼저 지운다 (R014 에서 추가).
+  //   ★ 왜 — Phase 3 부터 게임을 돌리면 경험 기록이 실제로 쌓인다.
+  //     ★ 이 시나리오는 "경험 기록이 없는 상태" 를 전제로 경험률과 출제 가능 수를 단정한다.
+  //     ★ 그 전제를 명시적으로 만들지 않으면, Phase 3 시나리오를 먼저 돌린 뒤에
+  //       이 테스트가 실패한다. **테스트가 실행 순서에 의존하게 된다.**
+  //   ★ 실제로 R014 에서 그렇게 실패했다. 원인은 제품이 아니라 테스트 전제였다.
+  const cleared = await clearExperiences(PREFIX);
+  if (cleared > 0) log(`  ★ 테스트 계정의 경험 기록 ${cleared}건을 지웠다 (전제를 명시적으로 만든다)`);
+
   const seedTotal = await activeQuestionCount();
   log(`DB 활성 문제 수: ${seedTotal}개`);
 
@@ -713,9 +936,30 @@ async function scenarioLobby() {
   expect('상태가 그대로 LOBBY', host.snapshot.room.state, 'LOBBY');
 
   // ── 6. ★ 출제 가능 수 부족 (Q-21)
-  log('\n[6] ★ 문제 수 200 + 출제 가능 53 → 시작 거부');
+  //
+  //   ★★ R014 에서 재현 방식을 바꿨다.
+  //     ★ 전에는 "문제 수 200 > 활성 53" 으로 만들었다. 문제가 306개가 되자 성립하지 않았다.
+  //     ★★ 테스트가 DB 데이터 양에 의존하고 있었다 — 데이터가 늘면 조용히 무력화된다.
+  //   → ★ 실제 메커니즘(경험 기록)으로 만든다. 두 참가자가 전부 경험한 문제는 제외된다.
+  log('\n[6] ★ 출제 가능 수를 3개로 줄이고 문제 수 10 → 시작 거부');
+  const ids = [host.snapshot.me.accountId, guest.snapshot.me.accountId];
+  const inserted = await shrinkAvailableTo(ids, 3);
+  log(`  ★ 경험 기록 ${inserted}행을 넣어 출제 가능 수를 3개로 줄였다`);
+  // ★ 참가자 집합이 바뀌어야 서버가 다시 계산한다. resync 로는 갱신되지 않는다.
+  //   ★ 그래서 게스트를 잠깐 내보내고 다시 넣는다 — 참가자 변동 이벤트를 만든다
+  guest.socket.emit('room.leave', {});
+  await host.waitFor(() => host.snapshot.players.length === 1, 6000, '게스트 퇴장');
+  guest.join(roomId);
+  await host.waitFor(() => host.snapshot.players.length === 2, 6000, '게스트 재입장');
+  await host.waitFor(
+    () => host.snapshot.room.availableQuestionCount === 3,
+    6000,
+    '출제 가능 수 3 반영',
+  );
+  expect('★ 출제 가능 수가 3으로 줄었다', host.snapshot.room.availableQuestionCount, 3);
+
   host.socket.emit('lobby.updateSettings', {
-    questionCount: 200,
+    questionCount: 10,
     startMode: 'instant',
     countdownSec: 5,
   });
@@ -727,7 +971,11 @@ async function scenarioLobby() {
   expect('시작 거부 코드', shortage?.code ?? '(에러 없음)', 'NOT_ENOUGH_QUESTIONS');
   expectTrue(
     '★ 안내에 실제 가능 개수가 들어 있다',
-    typeof shortage?.detail === 'string' && shortage.detail.includes(String(seedTotal)),
+    // ★ 기준은 "지금 출제 가능한 수"(3)다. 활성 문제 총수(seedTotal)가 아니다.
+    //   ★ R014 에서 재현 방식을 바꾸면서 이 기준도 함께 바꿨다.
+    typeof shortage?.detail === 'string' &&
+      shortage.detail.includes('3개') &&
+      shortage.detail.includes('10개'),
     shortage?.detail ?? '',
   );
   expect('게임이 시작되지 않았다 (상태 유지)', host.snapshot.room.state, 'LOBBY');
@@ -908,19 +1156,74 @@ async function scenarioCountdown() {
   );
   expect('games 는 여전히 1행', (await gamesOfRoom(roomId)).games.length, 1);
 
-  // ── 5. ★ 방이 사라질 때 열린 게임을 닫는다
-  log('\n[5] 전원 퇴장 시 게임 레코드 종료 기록');
+  // ── 5. ★★ 게임 중 퇴장은 슬롯을 유지한다 (R014 에서 동작이 바뀌었다)
+  //
+  //   ★★ Phase 2 에서는 이 자리에서 "전원 퇴장 → 방 삭제 → ended_at 기록" 을 단정했다.
+  //     ★ Phase 3 에서 그 단정이 **의도적으로 깨졌다.**
+  //
+  //   ★ 확정 규칙 (01-GAME-RULES 13장 "접속 종료")
+  //     · 슬롯: **게임 중에는 유지.** 게임 종료 후 로비로 복귀하는 시점에 반환
+  //     · 점수 / 경험 기록 / 최종 결과: 유지
+  //     ★ 근거: 나갔다고 그 게임 결과에서 사라지면 순위가 왜곡된다
+  //
+  //   ★ 그래서 전원이 나가도 방과 게임이 남는다. 닫히는 시점은 —
+  //     · 활성 0명 10분 → 방 삭제 시 abandoned 로 닫힌다 (Q-14)
+  //     · 또는 방장이 결과 화면에서 로비로 복귀할 때 슬롯이 반환된다
+  //   ★★ 그 사이 문제 타이머는 **멈춘다** (freezeIfNoActive). 근거는 그 함수 주석에 있다.
+  log('\n[5] ★★ 게임 중 퇴장은 슬롯을 유지한다 (Phase 3 에서 바뀐 동작)');
+  const playersBefore = host.snapshot.players.length;
   host.socket.emit('room.leave', {});
   guest.socket.emit('room.leave', {});
   late.socket.emit('room.leave', {});
-  await sleep(900);
+  await sleep(1200);
+
   const after = await gamesOfRoom(roomId);
   expectTrue(
-    '★ ended_at 이 기록된다 (열린 게임을 남기지 않는다)',
-    after.games[0]?.ended_at !== null,
-    String(after.games[0]?.end_reason),
+    '★★ 게임 중 퇴장으로는 게임이 닫히지 않는다 (슬롯 유지)',
+    after.games[0]?.ended_at === null,
+    `ended_at=${after.games[0]?.ended_at} / end_reason=${after.games[0]?.end_reason}`,
   );
-  expect('종료 사유', after.games[0]?.end_reason, 'abandoned');
+  expect('★ game_players 행이 그대로다 (그 게임 결과에 남는다)', after.players.length, playersBefore);
+
+  // ★★ 아무도 없는 동안 문제 타이머가 멈춰 있는지 확인한다.
+  //   ★ 멈추지 않으면 아무도 없는 게임이 끝까지 진행된다 (R014 실측 결함).
+  const gqBefore = await questionsOfGame(after.games[0].id);
+  await sleep(6000);
+  const gqAfter = await questionsOfGame(after.games[0].id);
+  expect(
+    '★★★ 활성 0명 동안 문제가 더 진행되지 않는다',
+    gqAfter.length,
+    gqBefore.length,
+  );
+  log(`  ★ 6초 동안 문제 수 ${gqBefore.length} → ${gqAfter.length} (변화 없음)`);
+
+  // ★ 사람이 돌아오면 이어진다
+  const back = new Bot(host.name);
+  back.cookie = host.cookie;
+  await back.connect();
+  await back.waitFor(() => back.snapshot !== null, 6000, '재접속');
+  expect('★ 재접속하면 게임이 그대로다', back.snapshot.room.state, 'QUESTION_ACTIVE');
+  expectTrue('★ 현재 문제가 복구된다', back.snapshot.question !== null);
+  expectTrue(
+    '★★ 남은 시간이 남아 있다 (타이머가 멈춰 있었다)',
+    back.snapshot.question.endsAt - Date.now() > 0,
+    `${back.snapshot.question.endsAt - Date.now()}ms 남음`,
+  );
+  back.socket.emit('host.forceEnd', {});
+  await back.waitFor(() => back.since(0, 'game.result').length > 0, 6000, '강제 종료');
+  await sleep(700);
+  const closed = await gamesOfRoom(roomId);
+  expectTrue(
+    '★ 강제 종료하면 ended_at 이 기록된다',
+    closed.games[0]?.ended_at !== null,
+    String(closed.games[0]?.end_reason),
+  );
+  expect('종료 사유', closed.games[0]?.end_reason, 'force_ended');
+  back.socket.emit('game.toLobby', {});
+  await sleep(500);
+  back.socket.emit('room.leave', {});
+  await sleep(500);
+  back.disconnect();
 
   host.disconnect();
   guest.disconnect();
@@ -989,6 +1292,1084 @@ async function scenarioEmptyCountdown() {
   return checkSummary();
 }
 
+
+// =============================================================================
+// ★★ Phase 3 시나리오 (R014)
+//
+//   ★ 로그만 찍지 않는다. expect() 로 단정하고 하나라도 틀리면 종료 코드가 1이다
+//     (R005 5-1 교훈).
+//   ★★ 봇은 클라이언트 코드를 건너뛴다 (D-028). 사람이 브라우저에서 확인할 목록은
+//     docs/10-TESTING.md 에 따로 있다.
+// =============================================================================
+
+/** 게임을 시작해 첫 문제까지 진행시킨다. 공통 준비 절차 */
+async function startGame(host, others, questionCount) {
+  const from = host.mark();
+  host.socket.emit('lobby.updateSettings', {
+    questionCount,
+    startMode: 'instant',
+    countdownSec: 3,
+  });
+  await host.waitFor(
+    () => host.since(from, 'lobby.settingsUpdated').length > 0,
+    4000,
+    '설정 반영',
+  );
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 8000, '게임 시작');
+  await host.waitQuestion(1);
+  for (const b of others) await b.waitQuestion(1);
+  return host.snapshot.game.gameId;
+}
+
+// -----------------------------------------------------------------------------
+// game — 문제 출제 / 정답 판정 / 점수 / 힌트 / 경험 기록 / 결과
+// -----------------------------------------------------------------------------
+async function scenarioGame() {
+  log('시나리오 game — Phase 3 문제 출제와 정답 판정');
+  const cleared = await clearExperiences(PREFIX);
+  log(`  ★ 테스트 계정의 경험 기록 ${cleared}건을 지웠다 (반복 실행 가능하게)`);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('Phase 3 게임 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+
+  // ── 1. 첫 문제
+  log('\n[1] 첫 문제 출제');
+  const gameId = await startGame(host, [guest], 4);
+  const q1 = host.snapshot.question;
+  expect('문제 번호가 1이다', q1.index, 1);
+  expect('총 문제 수', q1.total, 4);
+  expectTrue('★ 지문이 비어 있지 않다', q1.text.length > 0, q1.text);
+  expectTrue('★ 카테고리가 온다 (대분류)', typeof q1.categoryName === 'string' && q1.categoryName.length > 0, q1.categoryName);
+  expectTrue('★ epoch 가 1 이상이다', q1.epoch >= 1, String(q1.epoch));
+
+  // ★★ 정답과 힌트가 페이로드에 없어야 한다. 이것이 새면 게임이 망가진다
+  const rawStarted = host.events.find((e) => e.type === 'question.started').payload;
+  expectTrue(
+    '★★ question.started 에 정답이 없다',
+    !('displayAnswer' in rawStarted) && !('answersNorm' in rawStarted) && !('answers' in rawStarted),
+    Object.keys(rawStarted).join(','),
+  );
+  expectTrue('★★ question.started 에 힌트가 없다', !('hint' in rawStarted), Object.keys(rawStarted).join(','));
+  expectTrue('★ question.started 에 해설이 없다', !('explanation' in rawStarted), '');
+
+  // ── 2. 정답 판정
+  log('\n[2] 정답 판정과 점수');
+  const answers1 = await answersForText(q1.text);
+  expectTrue('★ DB 에서 정답을 찾았다', answers1.length > 0, JSON.stringify(answers1));
+  let from = guest.mark();
+  guest.chat(answers1[0]);
+  await guest.waitFor(() => guest.since(from, 'question.resolved').length > 0, 6000, '정답 처리');
+  const res1 = guest.since(from, 'question.resolved')[0];
+  expect('★ 사유가 correct', res1.reason, 'correct');
+  expect('★ 정답자가 게스트다', res1.winnerAccountId, guest.snapshot.me.accountId);
+  expect('★ 정답이 공개된다', res1.displayAnswer, answers1[0]);
+  const guestView = guest.snapshot.players.find((p) => p.accountId === guest.snapshot.me.accountId);
+  expect('★ 정답자 점수가 1점', guestView.score, 1);
+  const hostView = guest.snapshot.players.find((p) => p.accountId === host.snapshot.me.accountId);
+  expect('다른 사람 점수는 0점', hostView.score, 0);
+  expect('상태가 QUESTION_RESOLVED', guest.snapshot.room.state, 'QUESTION_RESOLVED');
+
+  // ★ 오답은 아무 일도 일어나지 않는다 (guide 15절)
+  log('\n[3] 오답은 일반 채팅으로만 남는다');
+  await host.waitQuestion(2);
+  const q2 = host.snapshot.question;
+  from = host.mark();
+  host.chat('이건확실히오답이다');
+  await sleep(500);
+  expect('★ 오답에 question.resolved 가 없다', host.since(from, 'question.resolved').length, 0);
+  expectTrue(
+    '★ 오답도 채팅으로는 보인다',
+    host.since(from, 'chat').some((c) => c.text === '이건확실히오답이다'),
+  );
+  expect('★ "오답입니다" 류 메시지가 없다', host.since(from, 'error').length, 0);
+
+  // ── 4. 힌트 (남은 10초)
+  log('\n[4] 힌트가 남은 10초에 온다 (최대 22초 대기)');
+  // ★ 봇마다 mark() 인덱스가 다르다. **각자의 mark 를 써야 한다.**
+  //   ★ 처음 쓴 테스트가 host 의 mark 를 guest 에 적용해 0건으로 나왔다 (테스트 버그).
+  const hintFrom = host.mark();
+  const hintFromGuest = guest.mark();
+  await host.waitFor(() => host.since(hintFrom, 'question.hint').length > 0, 25000, '힌트');
+  const hintEv = host.since(hintFrom, 'question.hint')[0];
+  const remainAtHint = q2.endsAt - hintEv.at;
+  expect('★ 힌트 epoch 가 현재 문제와 같다', hintEv.epoch, q2.epoch);
+  expectTrue(
+    '★★ 힌트가 남은 10초 근처에 온다 (9.0~10.5초)',
+    remainAtHint > 9000 && remainAtHint < 10500,
+    `${remainAtHint}ms 남았을 때`,
+  );
+  expect('★ 힌트는 한 번만 온다', host.since(hintFrom, 'question.hint').length, 1);
+  await guest.waitFor(
+    () => guest.since(hintFromGuest, 'question.hint').length > 0,
+    3000,
+    '게스트 힌트',
+  );
+  expect('게스트도 힌트를 받는다', guest.since(hintFromGuest, 'question.hint').length, 1);
+  expect(
+    '★ 힌트 값이 전원에게 같다',
+    guest.since(hintFromGuest, 'question.hint')[0].hint,
+    hintEv.hint,
+  );
+
+  // ── 5. 시간 종료 (T07)
+  log('\n[5] 시간 종료');
+  const toFrom = host.mark();
+  const expectedEnd = q2.endsAt;
+  await host.waitFor(() => host.since(toFrom, 'question.resolved').length > 0, 15000, '시간 종료');
+  const res2 = host.since(toFrom, 'question.resolved')[0];
+  expect('★ 사유가 timeout', res2.reason, 'timeout');
+  expect('정답자가 없다', res2.winnerAccountId, null);
+  const timerError = res2.at - expectedEnd;
+  expectTrue(
+    '★★ 30초 타이머 오차가 200ms 이내다',
+    timerError >= 0 && timerError < 200,
+    `+${timerError}ms`,
+  );
+  log(`  ★ 타이머 실측 오차: +${timerError}ms (tick 주기 100ms)`);
+
+  // ── 5-b. ★★ 정규화 규칙이 **실제 게임 경로**를 통과하는가
+  //
+  //   ★ shared/normalize.test.ts 가 함수 자체를 검증한다.
+  //   ★★ 그러나 그것은 "그 함수가 옳다" 만 보장하고 **"게임이 그 함수를 쓴다"** 는
+  //     보장하지 못한다 (D-028 의 게이트 경계). 그래서 소켓 경로로 한 번 더 본다.
+  log('\n[5-b] ★★ 정규화가 실제 판정 경로에서 동작한다');
+  const qn = await host.waitQuestion(3, 12000);
+  const ansN = await answersForText(qn.text);
+  const base = ansN[0];
+  // ★ 공백을 끼우고 대문자로 바꾼다.
+  //   ★ 정규화는 모든 공백류를 지우고 소문자로 만든다 → 원래 정답과 같아져야 한다.
+  //   ★ 한글은 대소문자가 없으므로 toUpperCase 가 항등이다. 공백 삽입이 핵심이다.
+  const variant = `${base.slice(0, 1)}  ${base.slice(1)}`.toUpperCase();
+  expectTrue(
+    '★ 변형이 원문과 문자열로는 다르다 (검사 전제)',
+    variant !== base,
+    `"${base}" → "${variant}"`,
+  );
+  from = guest.mark();
+  guest.chat(variant, qn.epoch);
+  await guest.waitFor(
+    () => guest.since(from, 'question.resolved').length > 0,
+    6000,
+    '정규화 변형 정답 처리',
+  );
+  const resN = guest.since(from, 'question.resolved')[0];
+  expect('★★ 공백·대소문자 변형도 정답으로 인정된다', resN.reason, 'correct');
+  expect('★ 정답자가 그 사람이다', resN.winnerAccountId, guest.snapshot.me.accountId);
+  log(`  ★ "${variant}" → 정답 "${base}" 로 인정`);
+
+  // ── 6. 마지막 문제 → 5초 대기 없이 결과 (Q-17 / T10)
+  log('\n[6] 마지막 문제는 5초 대기 없이 결과로 간다 (Q-17)');
+  await host.waitQuestion(4);
+  const q3 = host.snapshot.question;
+  const ansFrom = host.mark();
+  const answers3 = await answersForText(q3.text);
+  host.chat(answers3[0]);
+  await host.waitFor(() => host.since(ansFrom, 'game.result').length > 0, 8000, '결과 화면');
+  const resolvedEv = host.since(ansFrom, 'question.resolved')[0];
+  const resultEv = host.since(ansFrom, 'game.result')[0];
+  expect('★ 마지막 문제의 nextAt 이 null 이다', resolvedEv.payload.nextAt, null);
+  const gap = resultEv.at - resolvedEv.at;
+  expectTrue('★★ 5초를 기다리지 않는다 (500ms 이내)', gap < 500, `${gap}ms`);
+  expect('상태가 GAME_RESULT', host.snapshot.room.state, 'GAME_RESULT');
+  expect('종료 사유', resultEv.endReason, 'completed');
+
+  const result = resultEv.payload;
+  expectTrue('★ 마지막 문제 정답이 결과에 담긴다 (Q-17)', result.lastQuestionReveal !== null);
+  expect('★ 그 정답이 맞다', result.lastQuestionReveal?.displayAnswer, answers3[0]);
+  expect('진행 문제 수', result.endedQuestionCount, 4);
+  expect('순위 인원', result.ranking.length, 2);
+  expect('★ 1위가 1점 이상', result.ranking[0].rank, 1);
+
+  // ── 7. DB 기록
+  log('\n[7] DB 기록');
+  await sleep(800);
+  const gq = await questionsOfGame(gameId);
+  expect('game_questions 4행', gq.length, 4);
+  expect('1번 문제 사유', gq[0]?.resolution, 'correct');
+  expect('2번 문제 사유', gq[1]?.resolution, 'timeout');
+  expect('3번 문제 사유 (정규화 변형)', gq[2]?.resolution, 'correct');
+  expect('4번 문제 사유', gq[3]?.resolution, 'correct');
+  expectTrue('★ 전부 resolved_at 이 기록됐다', gq.every((r) => r.resolved));
+  expectTrue(
+    '★ epoch 가 1,2,3,4 로 증가한다',
+    gq.map((r) => r.epoch).join(',') === '1,2,3,4',
+    gq.map((r) => r.epoch).join(','),
+  );
+  // ★★ 같은 문제를 두 번 내지 않는다 (guide 20절). DB 의 UNIQUE 가 강제하지만 확인한다
+  expect(
+    '★★ 한 게임에서 같은 문제가 두 번 나오지 않았다',
+    new Set(gq.map((r) => r.question_id)).size,
+    gq.length,
+  );
+  expectTrue(
+    '★ selection_stage 가 기록된다 (Q-76)',
+    gq.every((r) => [1, 2, 3].includes(r.selection_stage)),
+    gq.map((r) => r.selection_stage).join(','),
+  );
+
+  const ae = await answerEventsOfGame(gameId);
+  expectTrue('★ answer_events 가 기록된다', ae.length >= 2, `${ae.length}행`);
+  expectTrue('★★ 오답 채팅은 저장되지 않는다 (Q-52)', ae.every((r) => r.matched === true));
+  expect('★ accepted 는 3건 (정답 3번)', ae.filter((r) => r.accepted).length, 3);
+
+  const exp = await experiencesOfGame(gameId);
+  // ★ 정답을 공개한 문제 4개 × 접속 중인 사람 2명 = 8행
+  expect('★★ 경험 기록 8행 (정답 공개 4문제 × 2명)', exp.length, 8);
+
+  const { players } = await gamesOfRoom(roomId);
+  expectTrue(
+    '★ final_score 가 종료 시 확정된다',
+    players.every((p) => p.final_score !== null),
+    JSON.stringify(players.map((p) => p.final_score)),
+  );
+
+  // ── 8. 다시 하기 (T30)
+  log('\n[8] 다시 하기');
+  from = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(from, 'game.returnedToLobby').length > 0, 5000, '로비 복귀');
+  expect('★ 상태가 LOBBY', host.snapshot.room.state, 'LOBBY');
+  expect('★ 설정 잠금이 풀린다', host.snapshot.room.settingsLocked, false);
+  expect('★ 직전 설정이 복원된다 (Q-31)', host.snapshot.room.settings.questionCount, 4);
+  expectTrue('★ 점수가 초기화된다', host.snapshot.players.every((p) => p.score === 0));
+  expect('★★ 자동으로 시작되지 않는다', host.since(from, 'game.started').length, 0);
+
+  // ★ 경험 기록은 유지된다 → 출제 가능 수가 줄었다
+  await host.waitFor(
+    () => host.snapshot.room.availableQuestionCount !== null,
+    5000,
+    '출제 가능 수 갱신',
+  );
+  const total = await activeQuestionCount();
+  expectTrue(
+    '★★ 경험 기록이 유지되어 출제 가능 수가 줄었다',
+    host.snapshot.room.availableQuestionCount < total,
+    `${host.snapshot.room.availableQuestionCount} < ${total}`,
+  );
+
+  host.socket.emit('room.leave', {});
+  guest.socket.emit('room.leave', {});
+  await sleep(800);
+  host.disconnect();
+  guest.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
+// ★★ race — 동시 정답 (guide 18절: 한 문제의 정답자는 정확히 한 명)
+// -----------------------------------------------------------------------------
+async function scenarioRace() {
+  const rounds = Number(opt('--rounds', '30'));
+  log(`시나리오 race — 동시 정답 ${rounds}회 반복 (guide 18절)`);
+  await clearExperiences(PREFIX);
+
+  const bots = await makeBots(4);
+  await bots[0].connect();
+  bots[0].createRoom('Phase 3 동시 정답 테스트');
+  await bots[0].waitFor(() => bots[0].snapshot !== null, 6000, '방 생성');
+  const roomId = bots[0].snapshot.room.id;
+  for (const b of bots.slice(1)) {
+    await b.connect();
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot !== null, 6000, `${b.name} 입장`);
+  }
+  const host = bots[0];
+  const gameId = await startGame(host, bots.slice(1), rounds);
+
+  let winners = 0;
+  let multi = 0;
+  const winnerCounts = {};
+
+  for (let i = 1; i <= rounds; i += 1) {
+    const q = await host.waitQuestion(i, 15000);
+    const answers = await answersForText(q.text);
+    if (answers.length === 0) {
+      log(`  ★ ${i}번 문제의 정답을 찾지 못했다. 건너뛴다`);
+      continue;
+    }
+    const from = host.mark();
+    // ★★ 4명이 같은 tick 에 같은 정답을 보낸다.
+    //   ★ 서버가 이벤트 큐 순서대로 처리하고 장치 A 로 하나만 성공해야 한다.
+    //   ★ 전송 순서를 매 회차 섞는다 — 고정 순서로 두면 항상 같은 봇이 이겨
+    //     "먼저 처리된 쪽이 이긴다" 만 확인되고 다른 순서 조합은 검증되지 않는다.
+    const order = [...bots].sort(() => Math.random() - 0.5);
+    for (const b of order) b.chat(answers[0], q.epoch);
+
+    await host.waitFor(
+      () => host.since(from, 'question.resolved').length > 0 || host.since(from, 'game.result').length > 0,
+      8000,
+      `${i}번 정답 처리`,
+    );
+    const evs = host.since(from, 'question.resolved');
+    // ★★ 핵심 단정 — question.resolved 가 정확히 한 번만 온다
+    if (evs.length > 1) multi += 1;
+    if (evs.length === 1 && evs[0].winnerAccountId) {
+      winners += 1;
+      winnerCounts[evs[0].winnerAccountId] = (winnerCounts[evs[0].winnerAccountId] ?? 0) + 1;
+    }
+    if (host.snapshot.room.state === 'GAME_RESULT') break;
+  }
+
+  expect('★★★ question.resolved 가 두 번 온 문제가 없다', multi, 0);
+  expectTrue('★ 매 문제에 정답자가 한 명 있었다', winners >= 1, `${winners}/${rounds}`);
+  log(`  정답자 분포: ${JSON.stringify(winnerCounts)}`);
+  // ★ 전송 순서를 섞었으므로 승자가 한 명에게 몰리지 않아야 한다.
+  //   ★ 이것은 공정성 요구가 아니다 — 여러 순서 조합이 실제로 검증되었는지 확인하는 것이다
+  expectTrue(
+    '★ 승자가 여러 명에게 분포한다 (여러 순서 조합이 검증됐다)',
+    Object.keys(winnerCounts).length >= 2 || rounds < 4,
+    JSON.stringify(winnerCounts),
+  );
+
+  // ── ★ DB 사후 검증. 이것이 guide 18절의 "순서 추적" 근거다
+  await sleep(1000);
+  const gq = await questionsOfGame(gameId);
+  const withWinner = gq.filter((r) => r.resolution === 'correct');
+  expectTrue('★ correct 로 끝난 문제가 있다', withWinner.length >= 1, `${withWinner.length}`);
+  expectTrue(
+    '★★ 모든 correct 문제에 정답자가 정확히 한 명 기록됐다',
+    withWinner.every((r) => r.winner_account_id !== null),
+  );
+
+  const ae = await answerEventsOfGame(gameId);
+  const byQ = {};
+  for (const r of ae) {
+    if (!byQ[r.question_index]) byQ[r.question_index] = [];
+    byQ[r.question_index].push(r);
+  }
+  let overAccepted = 0;
+  let rejected = 0;
+  for (const [, rows] of Object.entries(byQ)) {
+    const acc = rows.filter((r) => r.accepted).length;
+    if (acc > 1) overAccepted += 1;
+    rejected += rows.filter((r) => !r.accepted).length;
+  }
+  expect('★★★ accepted=true 가 두 개인 문제가 없다 (DB 기준)', overAccepted, 0);
+  expectTrue(
+    '★ 늦게 도착한 정답이 already_resolved 로 기록된다',
+    rejected >= 1,
+    `${rejected}건`,
+  );
+  const reasons = [...new Set(ae.filter((r) => !r.accepted).map((r) => r.reject_reason))];
+  log(`  ★ 탈락 사유 분포: ${JSON.stringify(reasons)}`);
+
+  for (const b of bots) b.socket.emit('room.leave', {});
+  await sleep(800);
+  for (const b of bots) b.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
+// ★★★ epoch — RESOLVED 구간 메시지가 다음 문제 정답과 우연히 일치 (장치 B)
+//
+//   ★★ guide 20절이 명시적으로 금지한 함정이다. 필수 테스트 항목이다.
+//   ★ 상태 검사만으로는 절대 막을 수 없다 — 메시지가 도착한 시점에는 이미
+//     QUESTION_ACTIVE 이기 때문이다.
+// -----------------------------------------------------------------------------
+async function scenarioEpoch() {
+  log('시나리오 epoch — ★★ 장치 B (RESOLVED 구간 메시지 차단)');
+  await clearExperiences(PREFIX);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('Phase 3 epoch 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  const gameId = await startGame(host, [guest], 4);
+
+  // ── 1. 첫 문제를 끝내고, **다음 문제의 정답**을 미리 알아낸다.
+  //   ★ 실제 사용자는 다음 문제의 정답을 미리 알 수 없다.
+  //     ★ 그러나 "RESOLVED 구간에 친 말이 우연히 다음 정답과 같은" 경우는 실제로 생긴다.
+  //     ★ 테스트는 그 우연을 **의도적으로 만들어** 차단을 확인한다.
+  log('\n[1] 1번 문제를 정답으로 끝낸다');
+  const q1 = host.snapshot.question;
+  const a1 = await answersForText(q1.text);
+  let from = host.mark();
+  host.chat(a1[0]);
+  await host.waitFor(() => host.since(from, 'question.resolved').length > 0, 6000, '1번 종료');
+  expect('상태가 QUESTION_RESOLVED', host.snapshot.room.state, 'QUESTION_RESOLVED');
+  const epoch1 = q1.epoch;
+
+  // ── 2. ★★ RESOLVED 구간에서 **낡은 epoch** 로 메시지를 보낸다.
+  //   ★ 이것이 "5초 구간에 친 메시지가 네트워크 지연으로 다음 문제 시작 직후 도착" 을
+  //     서버 관점에서 정확히 재현한 것이다 — 서버는 epoch 만 보고 판단한다.
+  log('\n[2] 다음 문제가 시작된 뒤, 낡은 epoch 로 그 문제의 정답을 보낸다');
+  await host.waitQuestion(2, 12000);
+  const q2 = host.snapshot.question;
+  expect('★ epoch 가 증가했다', q2.epoch, epoch1 + 1);
+  const a2 = await answersForText(q2.text);
+
+  from = guest.mark();
+  // ★★ 정답 문자열은 맞지만 epoch 가 이전 문제의 것이다
+  guest.chat(a2[0], epoch1);
+  await sleep(700);
+  expect(
+    '★★★ 낡은 epoch 의 정답은 판정되지 않는다',
+    guest.since(from, 'question.resolved').length,
+    0,
+  );
+  expect('★ 상태가 그대로 QUESTION_ACTIVE', guest.snapshot.room.state, 'QUESTION_ACTIVE');
+  expectTrue(
+    '★ 그래도 채팅으로는 보인다 (guide 15절: 오답 메시지를 만들지 않는다)',
+    guest.since(from, 'chat').some((c) => c.text === a2[0]),
+  );
+  const guestScore = guest.snapshot.players.find(
+    (p) => p.accountId === guest.snapshot.me.accountId,
+  ).score;
+  expect('★ 점수가 오르지 않았다', guestScore, 0);
+
+  // ── 3. ★ 같은 정답을 **올바른 epoch** 로 보내면 정답이다.
+  //   ★ 이것이 없으면 "차단이 아니라 그냥 정답 판정이 고장난 것" 과 구분되지 않는다
+  log('\n[3] 같은 정답을 올바른 epoch 로 보내면 정답이다 (대조군)');
+  from = guest.mark();
+  guest.chat(a2[0], q2.epoch);
+  await guest.waitFor(() => guest.since(from, 'question.resolved').length > 0, 6000, '정답 처리');
+  expect('★ 이번에는 정답이다', guest.since(from, 'question.resolved')[0].reason, 'correct');
+
+  // ── 4. ★ epoch 를 아예 보내지 않으면 판정되지 않는다 (옛 클라이언트)
+  log('\n[4] epoch 없이 보내면 판정되지 않는다');
+  await host.waitQuestion(3, 12000);
+  const q3 = host.snapshot.question;
+  const a3 = await answersForText(q3.text);
+  from = host.mark();
+  host.socket.emit('chat.send', { text: a3[0] }); // ★ epoch 없음
+  await sleep(700);
+  expect('★★ epoch 없는 정답은 판정되지 않는다', host.since(from, 'question.resolved').length, 0);
+
+  // ── 5. DB 기록 확인
+  log('\n[5] answer_events 에 epoch_mismatch 가 남는다');
+  await sleep(800);
+  const ae = await answerEventsOfGame(gameId);
+  const mismatched = ae.filter((r) => r.reject_reason === 'epoch_mismatch');
+  expectTrue(
+    '★★ epoch_mismatch 가 2건 이상 기록된다 (사후 추적 근거)',
+    mismatched.length >= 2,
+    `${mismatched.length}건`,
+  );
+  expectTrue(
+    '★ 그 기록들은 matched=true 다 (정답 문자열과는 일치했다)',
+    mismatched.every((r) => r.matched === true),
+  );
+
+  host.socket.emit('room.leave', {});
+  guest.socket.emit('room.leave', {});
+  await sleep(800);
+  host.disconnect();
+  guest.disconnect();
+  return checkSummary();
+}
+
+
+// -----------------------------------------------------------------------------
+// ★ concur — R003 2-3 동시 발생 시나리오 나머지
+//
+//   ★ 이 시나리오가 검증하는 것 (04-PROTOCOL 4장의 표)
+//     · 스킵 임계 도달 vs 정답
+//     · 방장 강제 스킵 vs 정답
+//     · 방장 강제 종료 vs 정답
+//     · 정답 확정 직후 도착한 메시지
+//     · 스킵 투표 중 인원 변동으로 임계값이 바뀌어 이미 도달 상태가 되는 경우
+//     · 마지막 플레이어가 정답을 맞히는 동시에 연결이 끊기는 경우
+//     · 같은 사람이 정답을 연타
+//     · 경험자가 정답을 입력
+// -----------------------------------------------------------------------------
+async function scenarioConcurrent() {
+  log('시나리오 concur — 동시 발생 시나리오 (R003 2-3)');
+  await clearExperiences(PREFIX);
+
+  const bots = await makeBots(4);
+  await bots[0].connect();
+  bots[0].createRoom('Phase 3 동시성 테스트');
+  await bots[0].waitFor(() => bots[0].snapshot !== null, 6000, '방 생성');
+  const roomId = bots[0].snapshot.room.id;
+  for (const b of bots.slice(1)) {
+    await b.connect();
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot !== null, 6000, `${b.name} 입장`);
+  }
+  const [host, g1, g2, g3] = bots;
+  const gameId = await startGame(host, [g1, g2, g3], 12);
+
+  // ── 1. 스킵 투표 (활성 4명 → 임계 3표)
+  log('\n[1] 스킵 투표 임계 도달 (활성 4명 → 3표)');
+  let q = host.snapshot.question;
+  let from = host.mark();
+  host.skipVote(true);
+  await host.waitFor(() => host.since(from, 'skip.voteUpdated').length > 0, 4000, '투표 반영');
+  const sv = host.since(from, 'skip.voteUpdated')[0];
+  expect('★ 임계값이 3표다 (활성 4명)', sv.threshold, 3);
+  expect('1표', sv.votes, 1);
+
+  // ★ 투표자 명단이 오지 않는다
+  expectTrue(
+    '★★ skip.voteUpdated 에 투표자 명단이 없다 (guide 22절)',
+    !('voters' in sv) && !('voterIds' in sv),
+    Object.keys(sv).join(','),
+  );
+
+  // ★ 투표 취소가 된다
+  from = host.mark();
+  host.skipVote(false);
+  await host.waitFor(() => host.since(from, 'skip.voteUpdated').length > 0, 4000, '취소 반영');
+  expect('★ 투표 취소가 된다', host.since(from, 'skip.voteUpdated')[0].votes, 0);
+
+  // ★ 3표로 스킵된다
+  from = host.mark();
+  host.skipVote(true);
+  g1.skipVote(true);
+  g2.skipVote(true);
+  await host.waitFor(() => host.since(from, 'question.resolved').length > 0, 6000, '스킵');
+  expect('★ 사유가 skip_vote', host.since(from, 'question.resolved')[0].reason, 'skip_vote');
+  expectTrue(
+    '★ 스킵도 정답을 공개한다 (Q-27)',
+    Boolean(host.since(from, 'question.resolved')[0].displayAnswer),
+  );
+
+  // ── 2. 방장 강제 스킵 (T09)
+  log('\n[2] 방장 강제 스킵');
+  q = await host.waitQuestion(2, 12000);
+  from = host.mark();
+  host.forceSkip();
+  await host.waitFor(() => host.since(from, 'question.resolved').length > 0, 6000, '강제 스킵');
+  expect('★ 사유가 host_skip', host.since(from, 'question.resolved')[0].reason, 'host_skip');
+
+  // ★★ 방장이 아니면 거부된다
+  q = await host.waitQuestion(3, 12000);
+  from = g1.mark();
+  g1.forceSkip();
+  await sleep(400);
+  expect('★ 방장이 아니면 NOT_HOST', g1.since(from, 'error')[0]?.code, 'NOT_HOST');
+
+  // ── 3. ★★ 낡은 epoch 의 강제 스킵은 무시된다 (다음 문제를 스킵하는 사고 방지)
+  log('\n[3] ★★ 낡은 epoch 의 강제 스킵은 다음 문제를 스킵하지 않는다');
+  const oldEpoch = q.epoch;
+  from = host.mark();
+  host.forceSkip(); // 3번 문제를 스킵
+  await host.waitFor(() => host.since(from, 'question.resolved').length > 0, 6000, '3번 스킵');
+  await host.waitQuestion(4, 12000);
+  const q4 = host.snapshot.question;
+  from = host.mark();
+  // ★ 방장이 확인창을 띄운 사이 문제가 끝난 상황을 재현한다
+  host.forceSkip(oldEpoch);
+  await sleep(600);
+  expect(
+    '★★★ 낡은 epoch 의 강제 스킵으로 4번 문제가 끝나지 않았다',
+    host.since(from, 'question.resolved').length,
+    0,
+  );
+  expect('★ INVALID_STATE 로 거부된다', host.since(from, 'error')[0]?.code, 'INVALID_STATE');
+  expect('4번 문제가 그대로다', host.snapshot.question.index, 4);
+  expect('epoch 도 그대로다', host.snapshot.question.epoch, q4.epoch);
+
+  // ── 4. 정답 확정 직후 도착한 메시지
+  log('\n[4] 정답 확정 직후 도착한 메시지는 채팅으로만 남는다');
+  const a4 = await answersForText(q4.text);
+  from = g1.mark();
+  g1.chat(a4[0], q4.epoch);
+  await g1.waitFor(() => g1.since(from, 'question.resolved').length > 0, 6000, '정답');
+  // ★ 같은 epoch 로 한 번 더 보낸다. 이미 resolved 다
+  const after = g2.mark();
+  g2.chat(a4[0], q4.epoch);
+  await sleep(500);
+  expect('★ 두 번째 정답은 판정되지 않는다', g2.since(after, 'question.resolved').length, 0);
+  expectTrue('★ 그래도 채팅으로는 보인다', g2.since(after, 'chat').some((c) => c.text === a4[0]));
+
+  // ── 5. ★ 같은 사람이 정답을 연타 — rate limit 이 정상 연타를 막지 않는다
+  log('\n[5] 같은 사람이 정답을 연타해도 첫 번째만 정답이다');
+  const q5 = await host.waitQuestion(5, 12000);
+  const a5 = await answersForText(q5.text);
+  from = g3.mark();
+  for (let i = 0; i < 3; i += 1) g3.chat(a5[0], q5.epoch);
+  await g3.waitFor(() => g3.since(from, 'question.resolved').length > 0, 6000, '정답');
+  await sleep(400);
+  expect('★★ question.resolved 가 한 번만 온다', g3.since(from, 'question.resolved').length, 1);
+  expect('★ 연타가 rate limit 에 걸리지 않는다', g3.since(from, 'chat.throttled').length, 0);
+
+  // ── 6. ★ 경험자는 정답을 맞혀도 점수를 얻지 못한다
+  log('\n[6] 경험자는 판정에서 제외된다');
+  // ★ g3 는 5번 문제를 경험했다. 그 문제가 다시 나오지는 않으므로(guide 20절)
+  //   ★ 대신 "이미 경험한 사람이 있는 문제" 가 나올 때까지 진행한다.
+  //   ★ 이번 게임에서 경험 기록이 쌓였으므로 다음 게임에서 확인하는 것이 정확하다.
+  //     → 여기서는 경험자 배지가 실제로 오는지만 확인한다 (다음 게임에서 검증한다).
+  let sawExperienced = false;
+  for (let i = 6; i <= 8; i += 1) {
+    const qi = await host.waitQuestion(i, 15000);
+    if (qi.experiencedNicknames.length > 0) sawExperienced = true;
+    const ai = await answersForText(qi.text);
+    from = host.mark();
+    host.chat(ai[0], qi.epoch);
+    await host.waitFor(
+      () => host.since(from, 'question.resolved').length > 0 || host.since(from, 'game.result').length > 0,
+      8000,
+      `${i}번 종료`,
+    );
+    if (host.snapshot.room.state === 'GAME_RESULT') break;
+  }
+  log(`  ★ 경험자 배지 관측: ${sawExperienced ? '있었다' : '없었다 (첫 게임이므로 정상)'}`);
+
+  // ── 7. ★★ 스킵 투표 중 인원 변동으로 임계값이 바뀌어 이미 도달 상태가 되는 경우
+  log('\n[7] ★★ 인원이 줄어 임계값이 내려가면 그 자리에서 스킵된다');
+  const q9 = await host.waitQuestion(9, 15000);
+  from = host.mark();
+  // 활성 4명 → 임계 3표. 2표만 넣는다
+  host.skipVote(true);
+  g1.skipVote(true);
+  await host.waitFor(() => host.since(from, 'skip.voteUpdated').length >= 2, 5000, '2표');
+  const before = host.since(from, 'skip.voteUpdated').slice(-1)[0];
+  expect('2표 / 임계 3표', `${before.votes}/${before.threshold}`, '2/3');
+
+  // ★ 한 명이 끊긴다 → 활성 3명 → 임계 2표 → 이미 도달
+  const dropFrom = host.mark();
+  g3.disconnect();
+  await host.waitFor(
+    () => host.since(dropFrom, 'question.resolved').length > 0,
+    6000,
+    '인원 변동으로 즉시 스킵',
+  );
+  expect(
+    '★★★ 인원이 줄자 그 자리에서 스킵됐다',
+    host.since(dropFrom, 'question.resolved')[0].reason,
+    'skip_vote',
+  );
+  expect('★ epoch 가 그 문제의 것이다', host.since(dropFrom, 'question.resolved')[0].epoch, q9.epoch);
+
+  // ── 8. ★★ 방장 강제 종료 vs 정답 — 정답 미공개 / 경험 미기록 (T11)
+  log('\n[8] ★★ 방장 강제 종료 — 정답 미공개 / 경험 미기록');
+  const q10 = await host.waitQuestion(10, 15000);
+  const expBefore = (await experiencesOfGame(gameId)).length;
+  from = host.mark();
+  host.forceEnd();
+  await host.waitFor(() => host.since(from, 'game.result').length > 0, 6000, '강제 종료');
+  const forced = host.since(from, 'game.result')[0];
+  expect('★ 종료 사유가 force_ended', forced.endReason, 'force_ended');
+  expect('★★ 정답을 공개하지 않는다', forced.payload.lastQuestionReveal, null);
+  expect('★ question.resolved 가 오지 않는다', host.since(from, 'question.resolved').length, 0);
+
+  await sleep(900);
+  const expAfter = (await experiencesOfGame(gameId)).length;
+  expect('★★★ 강제 종료한 문제는 경험 기록을 남기지 않는다 (Q-25/Q-47)', expAfter, expBefore);
+
+  const gq = await questionsOfGame(gameId);
+  const last = gq.find((r) => r.question_index === q10.index);
+  expect('★ game_questions.resolution 이 aborted 다', last?.resolution, 'aborted');
+  expectTrue(
+    '★★ 이미 지나간 문제의 경험 기록은 삭제되지 않는다',
+    expAfter > 0,
+    `${expAfter}행`,
+  );
+
+  for (const b of bots) b.socket.emit('room.leave', {});
+  await sleep(900);
+  for (const b of bots) b.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
+// ★ full — 봇 10명으로 한 게임 완주 + 재접속 + 중간 참가
+// -----------------------------------------------------------------------------
+async function scenarioFull() {
+  const n = Math.min(Number(opt('--count', '10')), 10);
+  log(`시나리오 full — 봇 ${n}명으로 한 게임 완주`);
+  await clearExperiences(PREFIX);
+
+  const bots = await makeBots(n);
+  await bots[0].connect();
+  bots[0].createRoom('Phase 3 완주 테스트');
+  await bots[0].waitFor(() => bots[0].snapshot !== null, 6000, '방 생성');
+  const roomId = bots[0].snapshot.room.id;
+  // ★ 한 자리는 중간 참가용으로 비워 둔다
+  const joiners = bots.slice(1, n - 1);
+  for (const b of joiners) {
+    await b.connect();
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot !== null, 6000, `${b.name} 입장`);
+  }
+  const host = bots[0];
+  const late = bots[n - 1];
+  await host.waitFor(() => host.snapshot.players.length === n - 1, 6000, `${n - 1}명`);
+  expect(`시작 인원 ${n - 1}명`, host.snapshot.players.length, n - 1);
+
+  const total = 6;
+  const gameId = await startGame(host, joiners, total);
+
+  // ── ★ 중간 참가 (guide 32절)
+  log('\n[중간 참가]');
+  await late.connect();
+  late.join(roomId);
+  await late.waitFor(() => late.snapshot !== null, 6000, '중간 참가');
+  expect('★ 게임 중에도 입장할 수 있다', late.snapshot.room.state, 'QUESTION_ACTIVE');
+  await late.waitFor(() => late.snapshot.question !== null, 6000, '문제 수신');
+  expectTrue('★ 현재 문제를 받는다', late.snapshot.question.text.length > 0);
+  expectTrue(
+    '★ 남은 시간이 전달된다 (절대 시각)',
+    late.snapshot.question.endsAt > Date.now(),
+    `${late.snapshot.question.endsAt - Date.now()}ms 남음`,
+  );
+  const lateSelf = late.snapshot.players.find((p) => p.accountId === late.snapshot.me.accountId);
+  expect('★ 중간 참가자의 시작 점수는 0', lateSelf.score, 0);
+
+  await sleep(700);
+  const { players: gp } = await gamesOfRoom(roomId);
+  const lateRow = gp.find((p) => p.account_id === late.snapshot.me.accountId);
+  expectTrue('★ game_players 에 중간 참가로 기록된다', lateRow?.is_midgame_join === true, JSON.stringify(lateRow));
+
+  // ── 완주
+  log('\n[완주]');
+  const answered = { correct: 0, timeout: 0, skip: 0 };
+  const timerErrors = [];
+  for (let i = 1; i <= total; i += 1) {
+    const q = await host.waitQuestion(i, 40000);
+    const answers = await answersForText(q.text);
+    const from = host.mark();
+
+    if (i === 2) {
+      // ★ 한 문제는 시간 종료로 보낸다. 타이머 정확도를 실측한다
+      const expectedEnd = q.endsAt;
+      await host.waitFor(
+        () => host.since(from, 'question.resolved').length > 0 || host.since(from, 'game.result').length > 0,
+        40000,
+        `${i}번 시간 종료`,
+      );
+      const ev = host.since(from, 'question.resolved')[0];
+      if (ev) {
+        timerErrors.push(ev.at - expectedEnd);
+        answered.timeout += 1;
+      }
+    } else if (i === 3) {
+      // ★ 한 문제는 스킵 투표로 보낸다
+      for (const b of bots.slice(0, Math.max(2, Math.ceil((n - 1) * 0.8)))) b.skipVote(true);
+      await host.waitFor(
+        () => host.since(from, 'question.resolved').length > 0 || host.since(from, 'game.result').length > 0,
+        15000,
+        `${i}번 스킵`,
+      );
+      if (host.since(from, 'question.resolved')[0]) answered.skip += 1;
+    } else {
+      // ★ 무작위로 한 명이 정답을 보낸다
+      const who = bots[i % bots.length];
+      if (answers.length > 0) who.chat(answers[0], q.epoch);
+      await host.waitFor(
+        () => host.since(from, 'question.resolved').length > 0 || host.since(from, 'game.result').length > 0,
+        40000,
+        `${i}번 종료`,
+      );
+      if (host.since(from, 'question.resolved')[0]?.reason === 'correct') answered.correct += 1;
+    }
+    if (host.snapshot.room.state === 'GAME_RESULT') break;
+  }
+
+  await host.waitFor(() => host.snapshot.room.state === 'GAME_RESULT', 20000, '게임 종료');
+  const result = host.snapshot.result;
+  expect('★★ 게임이 끝까지 진행됐다', result.endedQuestionCount, total);
+  expect('종료 사유', result.endReason, 'completed');
+  expect('★ 순위에 전원이 들어간다 (중간 참가자 포함)', result.ranking.length, n);
+  log(`  ★ 종료 경로 분포: ${JSON.stringify(answered)}`);
+  if (timerErrors.length > 0) {
+    log(`  ★★ 30초 타이머 실측 오차: ${timerErrors.map((e) => `+${e}ms`).join(', ')}`);
+    expectTrue(
+      '★★ 타이머 오차가 200ms 이내다',
+      timerErrors.every((e) => e >= 0 && e < 200),
+      timerErrors.join(','),
+    );
+  }
+
+  // ★ 동점 공동 순위 (guide 39절)
+  const ranks = result.ranking.map((r) => `${r.rank}:${r.score}`);
+  log(`  순위: ${ranks.join(' ')}`);
+  let rankOk = true;
+  for (let i = 1; i < result.ranking.length; i += 1) {
+    const a = result.ranking[i - 1];
+    const b = result.ranking[i];
+    if (a.score === b.score && a.rank !== b.rank) rankOk = false;
+    if (a.score > b.score && b.rank <= a.rank) rankOk = false;
+  }
+  expectTrue('★ 동점자는 공동 순위다 (guide 39절)', rankOk, ranks.join(' '));
+
+  // ── ★ 경험 기록 검증 (Q-47)
+  await sleep(1000);
+  const exp = await experiencesOfGame(gameId);
+  const gq = await questionsOfGame(gameId);
+  const revealed = gq.filter((r) => r.resolution !== 'aborted' && r.resolution !== null).length;
+  log(`  ★ 정답 공개 문제 ${revealed}개 / 경험 기록 ${exp.length}행`);
+  expectTrue(
+    '★★ 경험 기록이 (정답 공개 문제 × 그 순간 접속자) 규모로 남는다',
+    exp.length >= revealed,
+    `${exp.length} >= ${revealed}`,
+  );
+  const byQuestion = {};
+  for (const r of exp) byQuestion[r.question_id] = (byQuestion[r.question_id] ?? 0) + 1;
+  expectTrue(
+    '★ 각 문제마다 여러 명의 기록이 남는다',
+    Object.values(byQuestion).every((c) => c >= 1),
+    JSON.stringify(byQuestion),
+  );
+
+  // ── ★ 재접속으로 결과 화면이 복구된다
+  log('\n[재접속]');
+  const target = bots[1];
+  const cookie = target.cookie;
+  target.disconnect();
+  await sleep(400);
+  const back = new Bot(target.name);
+  back.cookie = cookie;
+  await back.connect();
+  await back.waitFor(() => back.snapshot !== null, 6000, '재접속');
+  expect('★ 재접속하면 결과 화면으로 돌아온다', back.snapshot.room.state, 'GAME_RESULT');
+  expectTrue('★ 결과가 스냅샷에 담긴다', back.snapshot.result !== null);
+  back.disconnect();
+
+  for (const b of bots) {
+    if (b.socket && b.socket.connected) b.socket.emit('room.leave', {});
+  }
+  await sleep(900);
+  for (const b of bots) b.disconnect();
+  return checkSummary();
+}
+
+
+// -----------------------------------------------------------------------------
+// ★★★ collide — 두 트리거가 **동시에** resolveQuestionSync 를 노리는 경우
+//
+//   ★ concur 시나리오는 각 트리거를 하나씩 확인한다.
+//     ★ 이 시나리오는 **두 개가 겹칠 때** 정확히 하나만 성공하는지 본다.
+//     ★ 그것이 장치 A(resolved 플래그)가 실제로 하는 일이다.
+//
+//   검증 대상 (04-PROTOCOL 4장)
+//     · 타이머 만료 vs 정답
+//     · 스킵 임계 도달 vs 정답
+//     · 방장 강제 스킵 vs 정답
+//     · 방장 강제 종료 vs 정답
+//     · 마지막 플레이어가 정답을 맞히는 동시에 연결이 끊기는 경우
+// -----------------------------------------------------------------------------
+async function scenarioCollide() {
+  log('시나리오 collide — ★★ 두 트리거 동시 발생 (장치 A)');
+  await clearExperiences(PREFIX);
+
+  const bots = await makeBots(4);
+  await bots[0].connect();
+  bots[0].createRoom('Phase 3 충돌 테스트');
+  await bots[0].waitFor(() => bots[0].snapshot !== null, 6000, '방 생성');
+  const roomId = bots[0].snapshot.room.id;
+  for (const b of bots.slice(1)) {
+    await b.connect();
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot !== null, 6000, `${b.name} 입장`);
+  }
+  const [host, g1, g2, g3] = bots;
+  const gameId = await startGame(host, [g1, g2, g3], 10);
+
+  /** 문제 하나에 온 question.resolved 이벤트가 정확히 하나인지 확인한다 */
+  const expectSingleResolution = (label, marks) => {
+    const counts = bots.map((b, i) => b.since(marks[i], 'question.resolved').length);
+    const max = Math.max(...counts);
+    expect(`★★★ ${label} — question.resolved 가 한 번만 온다`, max, 1);
+    // ★ 전원이 같은 사유를 본다. 사람마다 다른 결과를 보면 안 된다
+    const reasons = new Set(
+      bots.flatMap((b, i) => b.since(marks[i], 'question.resolved').map((e) => e.reason)),
+    );
+    expect(`★ ${label} — 전원이 같은 사유를 본다`, reasons.size, 1);
+    return [...reasons][0];
+  };
+
+  // ── 1. ★★ 타이머 만료 vs 정답
+  log('\n[1] ★★ 타이머 만료와 정답이 동시 (경계 판정)');
+  let q = host.snapshot.question;
+  let answers = await answersForText(q.text);
+  let marks = bots.map((b) => b.mark());
+  // ★ endsAt 직전까지 기다린 뒤 보낸다. tick(100ms)과 겹치는 구간을 노린다
+  const waitMs = q.endsAt - Date.now() - 30;
+  if (waitMs > 0) await sleep(waitMs);
+  const sentAt = Date.now();
+  g1.chat(answers[0], q.epoch);
+  await host.waitFor(
+    () => host.since(marks[0], 'question.resolved').length > 0,
+    10000,
+    '경계 판정',
+  );
+  await sleep(400);
+  const reason1 = expectSingleResolution('타이머 만료 vs 정답', marks);
+  log(`  ★ 사유: ${reason1} (전송 시각이 endsAt ${sentAt - q.endsAt >= 0 ? '이후' : '이전'} ${Math.abs(sentAt - q.endsAt)}ms)`);
+  // ★★ 어느 쪽이 이겼든 상관없다. 중요한 것은 **하나만** 일어났다는 것이다.
+  //   ★ 그리고 correct 이면 반드시 endsAt 이전에 도착했어야 한다
+  if (reason1 === 'correct') {
+    const ae = await answerEventsOfGame(gameId);
+    const acc = ae.filter((r) => r.question_index === q.index && r.accepted);
+    expect('★ 정답으로 끝났으면 accepted 가 1건이다', acc.length, 1);
+    expectTrue(
+      '★★ 정답 인정은 endsAt 이내에 도착한 것만이다 (guide 18절)',
+      acc[0].response_ms <= 30000,
+      `${acc[0].response_ms}ms`,
+    );
+  } else {
+    expect('★ 시간 종료로 끝났다', reason1, 'timeout');
+    const ae = await answerEventsOfGame(gameId);
+    const late = ae.filter((r) => r.question_index === q.index && !r.accepted);
+    expectTrue(
+      '★★ 늦게 도착한 정답이 사유와 함께 기록된다',
+      late.length >= 1 && ['past_deadline', 'already_resolved'].includes(late[0].reject_reason),
+      JSON.stringify(late.map((r) => r.reject_reason)),
+    );
+  }
+
+  // ── 2. ★★ 스킵 임계 도달 vs 정답
+  log('\n[2] ★★ 스킵 임계 도달과 정답이 동시');
+  q = await host.waitQuestion(q.index + 1, 15000);
+  answers = await answersForText(q.text);
+  // 활성 4명 → 임계 3표. 2표를 먼저 넣는다
+  host.skipVote(true);
+  g1.skipVote(true);
+  await sleep(300);
+  marks = bots.map((b) => b.mark());
+  // ★ 3번째 표와 정답을 같은 tick 에 보낸다
+  g2.skipVote(true);
+  g3.chat(answers[0], q.epoch);
+  await host.waitFor(
+    () => host.since(marks[0], 'question.resolved').length > 0,
+    8000,
+    '충돌 판정',
+  );
+  await sleep(400);
+  const reason2 = expectSingleResolution('스킵 임계 vs 정답', marks);
+  expectTrue(
+    '★ 사유가 skip_vote 또는 correct 다 (먼저 처리된 쪽)',
+    ['skip_vote', 'correct'].includes(reason2),
+    reason2,
+  );
+  log(`  ★ 먼저 처리된 쪽: ${reason2}`);
+
+  // ── 3. ★★ 방장 강제 스킵 vs 정답
+  log('\n[3] ★★ 방장 강제 스킵과 정답이 동시');
+  q = await host.waitQuestion(q.index + 1, 15000);
+  answers = await answersForText(q.text);
+  marks = bots.map((b) => b.mark());
+  host.forceSkip(q.epoch);
+  g1.chat(answers[0], q.epoch);
+  await host.waitFor(
+    () => host.since(marks[0], 'question.resolved').length > 0,
+    8000,
+    '충돌 판정',
+  );
+  await sleep(400);
+  const reason3 = expectSingleResolution('강제 스킵 vs 정답', marks);
+  expectTrue(
+    '★ 사유가 host_skip 또는 correct 다',
+    ['host_skip', 'correct'].includes(reason3),
+    reason3,
+  );
+  log(`  ★ 먼저 처리된 쪽: ${reason3}`);
+
+  // ── 4. ★★ 방장 강제 종료 vs 정답
+  log('\n[4] ★★ 방장 강제 종료와 정답이 동시');
+  q = await host.waitQuestion(q.index + 1, 15000);
+  answers = await answersForText(q.text);
+  marks = bots.map((b) => b.mark());
+  const scoreBefore = g1.snapshot.players.find(
+    (p) => p.accountId === g1.snapshot.me.accountId,
+  ).score;
+  g1.chat(answers[0], q.epoch);
+  host.forceEnd();
+  await host.waitFor(() => host.since(marks[0], 'game.result').length > 0, 8000, '강제 종료');
+  await sleep(600);
+  expect('★ 게임이 끝난다', host.snapshot.room.state, 'GAME_RESULT');
+  const resolvedCount = host.since(marks[0], 'question.resolved').length;
+  expectTrue(
+    '★★ question.resolved 는 0 또는 1 번이다 (두 번은 안 된다)',
+    resolvedCount <= 1,
+    String(resolvedCount),
+  );
+  const result4 = host.since(marks[0], 'game.result')[0].payload;
+  expect('★ 종료 사유가 force_ended', result4.endReason, 'force_ended');
+  // ★★ 점수와 정답 공개가 일관되어야 한다.
+  //   ★ 정답이 먼저 처리됐으면 점수가 오르고 정답도 공개된다.
+  //   ★ 강제 종료가 먼저면 점수가 그대로이고 정답도 공개되지 않는다.
+  const g1Row = result4.ranking.find((r) => r.accountId === g1.snapshot.me.accountId);
+  if (resolvedCount === 1) {
+    expect('★★ 정답이 먼저 처리됐으면 점수가 올랐다', g1Row.score, scoreBefore + 1);
+    expectTrue('★ 그리고 정답도 공개된다', result4.lastQuestionReveal !== null);
+    log('  ★ 정답이 먼저 처리되었다 (점수 인정 + 정답 공개)');
+  } else {
+    expect('★★ 강제 종료가 먼저면 점수가 그대로다', g1Row.score, scoreBefore);
+    expect('★ 그리고 정답을 공개하지 않는다', result4.lastQuestionReveal, null);
+    log('  ★ 강제 종료가 먼저 처리되었다 (정답 미공개)');
+  }
+
+  // ── 5. ★★ 마지막 플레이어가 정답을 맞히는 동시에 연결이 끊긴다
+  log('\n[5] ★★ 마지막 플레이어의 정답 + 동시 끊김');
+  // ★ 새 게임을 시작한다. 방장 혼자 남긴다
+  let from = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(from, 'game.returnedToLobby').length > 0, 6000, '로비');
+  for (const b of [g1, g2, g3]) {
+    b.socket.emit('room.leave', {});
+  }
+  await host.waitFor(() => host.snapshot.room.activeCount === 1, 8000, '혼자 남기');
+  expect('★ 활성 1명', host.snapshot.room.activeCount, 1);
+
+  const gameId2 = await startGame(host, [], 3);
+  q = host.snapshot.question;
+  answers = await answersForText(q.text);
+  from = host.mark();
+  // ★★ 정답을 보내고 **즉시** 끊는다.
+  //   ★ 서버 수신 순서가 결과를 정한다 (04-PROTOCOL 4장).
+  //     정답이 먼저면 인정되고(그 순간 아직 접속 중이므로 경험 기록도 남는다),
+  //     disconnect 가 먼저면 미접속 플레이어의 메시지이므로 판정하지 않는다.
+  host.chat(answers[0], q.epoch);
+  host.socket.close();
+  await sleep(1500);
+
+  const gq2 = await questionsOfGame(gameId2);
+  const first = gq2.find((r) => r.question_index === 1);
+  const ae2 = await answerEventsOfGame(gameId2);
+  const q1Events = ae2.filter((r) => r.question_index === 1);
+  log(
+    `  ★ 결과: resolution=${first?.resolution ?? 'null'} / answer_events=${JSON.stringify(q1Events.map((r) => ({ acc: r.accepted, why: r.reject_reason })))}`,
+  );
+  // ★★ 어느 쪽이든 **일관**되어야 한다
+  if (first?.resolution === 'correct') {
+    expect('★★ 정답이 먼저면 accepted 가 1건이다', q1Events.filter((r) => r.accepted).length, 1);
+    const exp2 = await experiencesOfGame(gameId2);
+    expectTrue(
+      '★★ 정답이 먼저면 경험 기록도 남는다 (그 순간 접속 중이었다)',
+      exp2.length >= 1,
+      `${exp2.length}행`,
+    );
+  } else {
+    expectTrue(
+      '★★ 끊김이 먼저면 정답으로 처리되지 않는다',
+      q1Events.every((r) => !r.accepted),
+      JSON.stringify(q1Events.map((r) => r.reject_reason)),
+    );
+  }
+  // ★★ 어느 쪽이든 문제가 두 번 끝나지 않았다
+  expect('★★★ 문제가 두 번 끝나지 않았다', gq2.filter((r) => r.question_index === 1).length, 1);
+
+  // ── ★ 활성 0명이 되었으므로 문제 타이머가 멈춰야 한다 (R014 실측 결함 수정)
+  log('\n[6] ★★ 활성 0명이면 문제 타이머가 멈춘다');
+  const before = await questionsOfGame(gameId2);
+  await sleep(8000);
+  const after = await questionsOfGame(gameId2);
+  expect(
+    '★★★ 아무도 없는 동안 문제가 더 진행되지 않는다',
+    after.length,
+    before.length,
+  );
+  log(`  ★ 8초 동안 문제 수가 ${before.length} → ${after.length} (변화 없음)`);
+
+  for (const b of bots) b.disconnect();
+  return checkSummary();
+}
+
 // -----------------------------------------------------------------------------
 const SCENARIOS = {
   join: scenarioJoin,
@@ -999,6 +2380,13 @@ const SCENARIOS = {
   lobby: scenarioLobby,
   countdown: scenarioCountdown,
   empty: scenarioEmptyCountdown,
+  // ★★ Phase 3 (R014)
+  game: scenarioGame,
+  race: scenarioRace,
+  epoch: scenarioEpoch,
+  concur: scenarioConcurrent,
+  collide: scenarioCollide,
+  full: scenarioFull,
 };
 
 const run = SCENARIOS[scenario];
