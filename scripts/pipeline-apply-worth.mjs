@@ -24,10 +24,14 @@ import { DATA_DIRS } from '../pipeline/dist/config.js';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DRY = process.argv.includes('--dry-run');
+// ★ 재평가. 이미 매겨진 값도 다시 쓴다 (척도가 바뀐 경우)
+const RESCORE = process.argv.includes('--rescore');
+const SPEC_FILE = RESCORE
+  ? 'data/pipeline/claude-gen/_worth-r011-g4.json'
+  : 'data/pipeline/claude-gen/_worth-r011.json';
 
-const spec = JSON.parse(
-  await readFile(path.join(ROOT, 'data/pipeline/claude-gen/_worth-r011.json'), 'utf8'),
-);
+const spec = JSON.parse(await readFile(path.join(ROOT, SPEC_FILE), 'utf8'));
+console.log(`[aw] 척도 파일: ${SPEC_FILE}${RESCORE ? ' (★ 재평가)' : ''}`);
 const explicit = new Map(spec.scores.map((s) => [s.ref, s]));
 const DEFAULT = spec._meta.defaultScore;
 
@@ -47,13 +51,14 @@ for (const f of files) {
 
   for (const item of batch.items ?? []) {
     if (!item.gen || !item.generated?.questionKo) continue;
-    if ((item.gen.worthKnowing ?? 0) > 0) continue;
+    // ★ 재평가가 아니면 이미 매겨진 것은 건너뛴다
+    if (!RESCORE && (item.gen.worthKnowing ?? 0) > 0) continue;
 
     const e = explicit.get(item.sourceRef);
     const v = e ? e.worthKnowing : DEFAULT;
     item.gen.worthKnowing = v;
     // ★ 누가 매겼는지와 근거를 남긴다. 생성 때 매긴 것과 구분해야 한다
-    item.gen.worthScoredBy = 'claude-code-R012';
+    item.gen.worthScoredBy = RESCORE ? 'claude-code-R013-g4' : 'claude-code-R012';
     item.gen.worthReason = e ? e.reason : spec._meta.defaultReason.join(' ');
     dist[v] = (dist[v] ?? 0) + 1;
     if (e) byExplicit += 1;
@@ -76,7 +81,7 @@ for (const f of files) {
 
   if (changed > 0 && !DRY) {
     batch._meta.worthScoredAt = new Date().toISOString();
-    batch._meta.worthScoredBy = 'claude-code-R012';
+    batch._meta.worthScoredBy = RESCORE ? 'claude-code-R013-g4' : 'claude-code-R012';
     await writeFile(file, JSON.stringify(batch, null, 2) + '\n', 'utf8');
   }
   if (changed > 0) console.log(`[aw] ${f}: ${changed}건`);
