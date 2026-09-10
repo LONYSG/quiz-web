@@ -62,6 +62,10 @@ interface AiItemRaw {
 }
 
 interface BackcheckItemRaw {
+  // ── ★ p3 추가 (R013). 질문 문장 검토 결과
+  factualIssues?: string[];
+  uniquenessIssue?: string[];
+  spellingIssues?: string[];
   sourceRef: string;
   answer: string;
   ambiguous: boolean;
@@ -173,7 +177,20 @@ function baseItem(item: RawQuestion): ProcessedItem {
 export function judgeBackcheck(
   raw: BackcheckItemRaw,
   answers: readonly string[],
-): { result: BackcheckResult; reject: boolean; needsReview: boolean } {
+): {
+  result: BackcheckResult;
+  /**
+   * ★★ R013: 이름을 바꾸지 않았지만 **의미가 바뀌었다.**
+   *   전에는 "버린다" 였고 이제는 "격리한다" 다 (Q-75).
+   *   ★ 호출자가 verdict='quarantine' 으로 처리한다. 폐기하지 않는다.
+   */
+  reject: boolean;
+  needsReview: boolean;
+  /** ★ p3: 질문 문장 검토에서 문제가 나왔는가 */
+  hasQuestionIssue: boolean;
+  /** ★ 규칙 충돌로 보이는가 (Opus 판단 필요) */
+  needsRuleDecision: boolean;
+} {
   const normSet = new Set(answers.map((a) => normalizeAnswer(a)));
   const matched = normSet.has(normalizeAnswer(raw.answer));
 
@@ -183,63 +200,136 @@ export function judgeBackcheck(
     return n.length > 0 && !normSet.has(n);
   });
 
-  if (matched) {
-    if (outside.length === 0) {
-      return {
-        result: {
-          answer: raw.answer,
-          result: 'pass',
-          confidence: raw.confidence,
-          alternatives: [],
-          note: null,
-        },
-        reject: false,
-        needsReview: false,
-      };
+  // ── ★★ p3: 질문 문장 검토 결과 (R013)
+  const clean = (a: readonly string[] | undefined): string[] =>
+    (a ?? []).map((s) => String(s).trim()).filter((s) => s.length > 0);
+  const factualIssues = clean(raw.factualIssues);
+  const uniquenessIssue = clean(raw.uniquenessIssue);
+  const spellingIssues = clean(raw.spellingIssues);
+  const hasQuestionIssue =
+    factualIssues.length > 0 || uniquenessIssue.length > 0 || spellingIssues.length > 0;
+
+  /** 질문 문장 문제를 사람이 읽을 한 줄로 만든다 */
+  const questionIssueNote = (): string => {
+    const parts: string[] = [];
+    if (factualIssues.length > 0) parts.push(`사실 오류: ${factualIssues.join(' / ')}`);
+    if (uniquenessIssue.length > 0) parts.push(`정답 유일성: ${uniquenessIssue.join(' / ')}`);
+    if (spellingIssues.length > 0) parts.push(`표기: ${spellingIssues.join(' / ')}`);
+    return parts.join(' | ');
+  };
+
+  /**
+   * ★★ 규칙 충돌인가 (Q-75 예외 경로).
+   *
+   * ★ 실측 사례: 정답 집합이 [히에로글리프, 신성문자, Hieroglyph] 인데
+   *   역검증이 "상형 문자" 라 답했다. 상형문자는 **상위 개념**이므로
+   *   g3 규칙("상위 개념을 넣지 마라")대로 집합에서 뺀 것이 옳다.
+   *   ★ 그런데 그 결과가 불일치 탈락이 되었다. 규칙과 판정이 충돌한다.
+   *
+   * ★ 감지 방법: 역검증 답이 우리 정답 중 하나를 **포함**하거나
+   *   우리 정답 중 하나에 **포함**되면, 상·하위 개념 관계일 가능성이 높다.
+   *   ★ 완전한 판별은 불가능하다. 그래서 "확정" 이 아니라 "Opus 가 봐야 한다" 는 표시다.
+   */
+  const looksLikeRuleConflict = (): boolean => {
+    if (matched) return false;
+    const na = normalizeAnswer(raw.answer);
+    if (na.length < 2) return false;
+    for (const a of normSet) {
+      if (a.length < 2) continue;
+      if (a.includes(na) || na.includes(a)) return true;
     }
-    // ★ 집합 밖 대안이 있으면 버리지 않고 사람에게 넘긴다.
-    //   진짜 다른 대상일 수도 있고, 추가할 표기 변형일 수도 있다.
+    return false;
+  };
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 정답을 맞힌 경우
+  // ─────────────────────────────────────────────────────────────────────────
+  if (matched) {
+    const notes: string[] = [];
+    if (outside.length > 0) {
+      notes.push(
+        `역검증이 정답을 맞혔으나 집합 밖 대안을 제시했다: ${outside.join(', ')}. 다른 대상인지, 추가할 표기인지 확인 필요`,
+      );
+    }
+    if (hasQuestionIssue) notes.push(`★ 질문 문장 문제 — ${questionIssueNote()}`);
+
     return {
       result: {
         answer: raw.answer,
         result: 'pass',
         confidence: raw.confidence,
         alternatives: outside,
-        note: `역검증이 정답을 맞혔으나 집합 밖 대안을 제시했다: ${outside.join(', ')}. 다른 대상인지, 추가할 표기인지 확인 필요`,
+        note: notes.length > 0 ? notes.join(' / ') : null,
+        factualIssues,
+        uniquenessIssue,
+        spellingIssues,
       },
-      reject: false,
-      needsReview: true,
+      // ★★ 질문 문장에 문제가 있으면 정답을 맞혔어도 격리한다.
+      //   ★ 이것이 p3 의 핵심이다 — R012에서 이런 4건이 그냥 통과했다.
+      reject: hasQuestionIssue,
+      needsReview: outside.length > 0,
+      hasQuestionIssue,
+      // 정답을 맞혔으므로 상·하위 개념 충돌은 아니다
+      needsRuleDecision: false,
     };
   }
 
-  // ── 불일치
+  // ─────────────────────────────────────────────────────────────────────────
+  // 정답을 맞히지 못한 경우
+  // ─────────────────────────────────────────────────────────────────────────
+  const ruleConflict = looksLikeRuleConflict();
+
   if (raw.ambiguous && outside.length >= 2) {
+    const notes = ['역검증에서 서로 다른 정답이 여럿으로 판정되었다'];
+    if (hasQuestionIssue) notes.push(`★ 질문 문장 문제 — ${questionIssueNote()}`);
     return {
       result: {
         answer: raw.answer,
         result: 'ambiguous',
         confidence: raw.confidence,
         alternatives: outside,
-        note: '역검증에서 서로 다른 정답이 여럿으로 판정되었다',
+        note: notes.join(' / '),
+        factualIssues,
+        uniquenessIssue,
+        spellingIssues,
       },
       reject: true,
       needsReview: false,
+      hasQuestionIssue,
+      needsRuleDecision: ruleConflict,
     };
   }
 
   const highConfidence = raw.confidence >= 0.7;
+  const notes = [
+    highConfidence
+      ? '역검증이 다른 답을 확신했다. 질문이 뜻을 다르게 전하거나 정답 집합이 좁을 가능성이 있다'
+      : '역검증이 답을 맞히지 못했으나 확신이 낮다. 사람이 확인해야 한다',
+  ];
+  if (ruleConflict) {
+    notes.push(
+      `★ 규칙 충돌 가능성 — 역검증 답 "${raw.answer}" 이 우리 정답과 상·하위 개념 관계로 보인다. ` +
+        'g3 의 "상위·하위 개념을 넣지 마라" 규칙과 이 판정이 충돌한다. Opus 판단 필요',
+    );
+  }
+  if (hasQuestionIssue) notes.push(`★ 질문 문장 문제 — ${questionIssueNote()}`);
+
   return {
     result: {
       answer: raw.answer,
       result: 'mismatch',
       confidence: raw.confidence,
       alternatives: outside,
-      note: highConfidence
-        ? '역검증이 다른 답을 확신했다. 번역이 뜻을 바꿨을 가능성이 있다'
-        : '역검증이 답을 맞히지 못했으나 확신이 낮다. 사람이 확인해야 한다',
+      note: notes.join(' / '),
+      factualIssues,
+      uniquenessIssue,
+      spellingIssues,
     },
+    // ★ 확신이 높으면 격리한다. 낮으면 통과시키되 검수 대기로 둔다 (R010 판정 유지)
     reject: highConfidence,
     needsReview: !highConfidence,
+    hasQuestionIssue,
+    needsRuleDecision: ruleConflict,
   };
 }
 

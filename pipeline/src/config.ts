@@ -72,7 +72,15 @@ export function pickBackcheckChain(processModelUsed: string): string[] {
  *   ★ p1 에서 모델이 표기 변형을 alternatives 에 넣어, 그것을 비유일성 증거로 읽은
  *     판정 로직이 정상 문제 6건을 전부 오탈락시켰다.
  */
-export const PROMPT_VERSION = 'p2';
+/**
+ * 역검증·가공 프롬프트 버전.
+ *
+ * p1 → p2 (R010) alternatives 에 표기 변형을 넣지 말라는 지시 추가
+ * p2 → p3 (R013) ★ 역검증에 질문 문장 검토를 추가했다 —
+ *                factualIssues / uniquenessIssue / spellingIssues.
+ *                근거: R012에서 "정답은 맞았는데 질문이 틀린" 4건이 통과했다.
+ */
+export const PROMPT_VERSION = 'p3';
 
 /**
  * 한도와 예산.

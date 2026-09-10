@@ -1,0 +1,123 @@
+{
+  "_meta": {
+    "purpose": "★★ 역검증 강화(p3)의 성능을 재는 회귀 자료 (R013 작업 A-2)",
+    "why": [
+      "★ R012에서 나온 4건은 **이미 정답을 아는 오류**다.",
+      "  검증 성능을 정확히 잴 수 있는 유일한 자료다.",
+      "★ 그리고 정상 문제 12건을 섞었다 — 오탐을 재야 한다.",
+      "  ★ 잡아야 할 것을 잡는 것과 잡지 말아야 할 것을 안 잡는 것은 다른 문제다."
+    ],
+    "howToRun": "node scripts/pipeline-backcheck-regression.mjs",
+    "note": "★ 질문과 정답은 R012 원문 그대로다. 고치지 않았다 — 고치면 회귀 자료가 아니다."
+  },
+
+  "shouldCatch": [
+    {
+      "id": "R012-F1",
+      "expect": "factualIssues",
+      "whatIsWrong": "Hydrargyrum 은 그리스어 hydro(물)+argyros(은) = '물 같은 은' 이다. 수소가 아니다 (수소는 Hydrogenium)",
+      "question": "라틴어 '수소(Hydrargyrum)'에서 유래한 상온에서 액체 상태인 금속 '수은'의 원소 기호는?",
+      "answers": ["Hg"],
+      "source": "R012 Gemini 생성분 dd293309e26cfbcb"
+    },
+    {
+      "id": "R012-S1",
+      "expect": "spellingIssues",
+      "whatIsWrong": "'그리구리우스 7세' 는 '그레고리우스 7세' 의 오기다",
+      "question": "1077년 신성 로마 제국 황제 하인리히 4세가 교황 그리구리우스 7세에게 파문 철회를 요구하며 무릎을 꿇은 사건은?",
+      "answers": ["카노사의 굴욕"],
+      "source": "R012 Gemini 생성분 a89ce574da7171c5"
+    },
+    {
+      "id": "R012-S2",
+      "expect": "spellingIssues",
+      "whatIsWrong": "곡명은 '전사들의 후예' 가 아니라 '전사의 후예' 다",
+      "question": "1996년 데뷔하여 '전사들의 후예', '캔디' 등을 히트시키며 1세대 아이돌 돌풍을 일으킨 SM엔터테인먼트 소속의 5인조 남자 그룹은?",
+      "answers": ["H.O.T.", "에이치오티", "HOT"],
+      "source": "R012 Gemini 생성분 9f203fea9adc5b13"
+    },
+    {
+      "id": "R012-U1",
+      "expect": "uniquenessIssue",
+      "whatIsWrong": "퀸도 가로·세로 직선으로 거리 제한 없이 이동한다. '~만' 같은 한정이 빠졌다",
+      "question": "체스판에서 가로와 세로 방향의 직선으로 거리 제한 없이 이동할 수 있는 기물은?",
+      "answers": ["룩", "Rook"],
+      "source": "R012 Gemini 생성분 3c43df8bf852ec4f"
+    }
+  ],
+
+  "shouldNotCatch": [
+    {
+      "id": "OK-1",
+      "question": "조선 후기에 청나라의 발달한 문물을 받아들여 부국강병을 이루자고 주장한 실학의 한 흐름은?",
+      "answers": ["북학파", "北學派", "북학"],
+      "source": "R012 Claude Code 생성분"
+    },
+    {
+      "id": "OK-2",
+      "question": "원소 기호 'K'로 표기되며 바나나에 많이 들어 있다고 알려진 금속 원소는?",
+      "answers": ["칼륨", "포타슘", "Potassium", "Kalium"],
+      "source": "R012 Claude Code 생성분"
+    },
+    {
+      "id": "OK-3",
+      "question": "1077년 신성로마제국 황제 하인리히 4세가 파문을 풀어달라며 교황에게 눈밭에서 사흘간 용서를 빈 사건은?",
+      "answers": ["카노사의 굴욕", "카노사 굴욕", "카노사의 치욕"],
+      "source": "R012 Claude Code 생성분 — ★ R012-S1 과 같은 사건이나 교황 이름을 쓰지 않았다"
+    },
+    {
+      "id": "OK-4",
+      "question": "체스에서 킹이 공격을 받고 있는데 어떤 수로도 벗어날 수 없어 경기가 끝나는 상태를 이르는 말은?",
+      "answers": ["체크메이트", "Checkmate", "메이트", "외통수"],
+      "source": "R012 Claude Code 생성분"
+    },
+    {
+      "id": "OK-5",
+      "question": "체스에서 대각선 방향으로만 칸 수 제한 없이 이동할 수 있는 기물은?",
+      "answers": ["비숍", "Bishop"],
+      "source": "R012 Gemini 생성분 — ★ R012-U1 과 대조. '~만' 이 있어 유일성이 지켜졌다"
+    },
+    {
+      "id": "OK-6",
+      "question": "뇌에서 체온·혈당·수분 균형 같은 항상성 유지를 총괄하며 뇌하수체를 조절하는 부위는?",
+      "answers": ["시상하부", "視床下部", "Hypothalamus"],
+      "source": "R012 Claude Code 생성분"
+    },
+    {
+      "id": "OK-7",
+      "question": "1961년 보스토크 1호를 타고 인류 최초로 지구 궤도를 비행한 소련의 우주비행사는?",
+      "answers": ["유리 가가린", "가가린", "Yuri Gagarin", "Gagarin"],
+      "source": "R012 양쪽 공통 생성분"
+    },
+    {
+      "id": "OK-8",
+      "question": "부족하면 어두운 곳에서 잘 보이지 않는 야맹증이 생기며, 당근과 간에 많이 들어 있는 비타민은?",
+      "answers": ["비타민 A", "비타민에이", "레티놀", "Vitamin A"],
+      "source": "R012 Claude Code 생성분"
+    },
+    {
+      "id": "OK-9",
+      "question": "얼음판에 둥근 돌을 미끄러뜨려 표적 안에 넣고, 솔로 얼음을 닦아 진로를 조절하는 동계 올림픽 종목은?",
+      "answers": ["컬링", "Curling"],
+      "source": "R012 Claude Code 생성분"
+    },
+    {
+      "id": "OK-10",
+      "question": "1998년 발매되어 한국에서 PC방 문화를 널리 퍼뜨린 블리자드의 실시간 전략 게임은?",
+      "answers": ["스타크래프트", "스타", "스타크", "StarCraft"],
+      "source": "R012 Claude Code 생성분"
+    },
+    {
+      "id": "OK-11",
+      "question": "등불을 가까이할 만하다는 뜻으로, 서늘한 가을밤이 책 읽기에 좋음을 이르는 사자성어는?",
+      "answers": ["등화가친", "燈火可親"],
+      "source": "R012 Claude Code 생성분 — ★ 한자 표기가 들어 있다. 표기 검토의 오탐 위험이 있는 유형"
+    },
+    {
+      "id": "OK-12",
+      "question": "〈시민 케인〉을 스물다섯 살에 연출하고 주연까지 맡은 미국의 영화감독은?",
+      "answers": ["오슨 웰스", "오손 웰스", "웰스", "Orson Welles", "Welles"],
+      "source": "R012 Claude Code 생성분 — ★ '오슨/오손' 두 표기가 통용된다. 표기 검토가 이것을 오류로 잡으면 오탐이다"
+    }
+  ]
+}

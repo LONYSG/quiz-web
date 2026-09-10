@@ -67,6 +67,63 @@ export interface BackcheckResult {
   /** ambiguous 일 때 모델이 제시한 다른 가능한 정답들 */
   alternatives: string[];
   note: string | null;
+
+  // ── ★★ p3 추가 (R013). 질문 문장 자체의 검토 결과
+  /**
+   * ★ 질문 문장에 사실과 다른 서술이 있는가. 무엇이 어떻게 틀렸는지가 들어 있다.
+   *   ★ 정답이 맞아도 이것이 비어 있지 않을 수 있다 — R012에서 그런 4건이 통과했다.
+   */
+  factualIssues?: string[];
+  /**
+   * ★ 질문의 조건을 만족하는 다른 답이 현실에 또 있는가.
+   *   ★ ambiguous 와 독립이다. ambiguous 는 검증자의 상태, 이것은 질문 설계의 결함이다.
+   */
+  uniquenessIssue?: string[];
+  /** ★ 고유명사 표기가 통용 표기와 다른가 */
+  spellingIssues?: string[];
+}
+
+/**
+ * ★★ 격리 기록 (R013 / Q-75).
+ *
+ * ★ 건우 확정: **Gemini 는 버리지 않는다. 표시만 한다.**
+ *   최종 확정은 Sonnet 이 한다. 그래서 Gemini 가 "탈락" 이라고 본 것은
+ *   폐기가 아니라 **격리**다.
+ *
+ * ★ 근거 (Gemini 오판의 실측)
+ *   R010: 역검증 판정이 정상 문제 6건을 **전부** 오탈락시켰다
+ *   R012: 탈락 3건 중 2건이 오탈락이었다 (쐐기문자 / 카롤루스 대제)
+ *   → Gemini 에게 폐기 권한을 주면 안 된다.
+ */
+export interface QuarantineRecord {
+  /** 어느 단계에서 격리되었는가 */
+  stage: 'ai' | 'backcheck' | 'rules' | 'dupe' | 'select';
+  /** 격리 사유 코드들 */
+  reasons: string[];
+  /** ★ 사람이 읽을 상세 사유. "왜 버렸어?" 에 답할 수 있어야 한다 */
+  detail: string;
+  /** ★ 판정한 모델. 누가 판정했는지 알아야 신뢰도를 판단할 수 있다 */
+  judgedBy: string;
+  judgedAt: string;
+  /** 판정 확신도 (있으면) */
+  confidence?: number;
+  /** 모델이 낸 대안 (있으면) */
+  alternatives?: string[];
+}
+
+/**
+ * ★★ 최종 확정 기록 (R013 / Q-75).
+ *   ★ Sonnet 세션이 채운다. Gemini 도, 생성자인 Opus 도 채우지 않는다.
+ */
+export interface FinalDecision {
+  verdict: 'pass' | 'drop' | 'needsRuleDecision';
+  /** 왜 그렇게 판단했는가 */
+  reason: string;
+  /** 누가 판정했는가 */
+  decidedBy: string;
+  decidedAt: string;
+  /** ★ 살리는 경우 추가할 표기 변형 (역검증이 낸 대안이 옳았던 경우) */
+  addAnswers?: string[];
 }
 
 /** 규칙 검사 3종 결과 */
@@ -97,7 +154,16 @@ export interface ReviewState {
 export interface ProcessedItem {
   sourceId: string;
   sourceRef: string;
-  verdict: 'accept' | 'reject';
+  /**
+   * ★★ R013: 'quarantine' 을 추가했다 (Q-75).
+   *   accept     통과. 적재 대상이다
+   *   quarantine ★ Gemini 가 문제를 표시했다. **폐기가 아니다.** Sonnet 확정 대기
+   *   reject     ★ 최종 폐기. Sonnet 이 확정한 것만 여기 온다
+   *
+   * ★ 기존 스크립트들은 verdict === 'accept' 로 필터링한다.
+   *   quarantine 은 자동으로 제외되므로 **적재되지 않는다.** 의도한 동작이다.
+   */
+  verdict: 'accept' | 'quarantine' | 'reject';
   /** 어느 단계에서 탈락했는가. accept 면 null */
   rejectedAt: 'filter' | 'ai' | 'backcheck' | 'rules' | null;
   rejectReasons: string[];
@@ -143,6 +209,26 @@ export interface ProcessedItem {
   ai: AiVerdict | null;
   backcheck: BackcheckResult | null;
   rules: RuleCheckResult | null;
+
+  /** ★ 격리 기록 (R013). verdict='quarantine' 이면 반드시 있다 */
+  quarantine?: QuarantineRecord | null;
+  /** ★ Sonnet 이 채우는 최종 확정. 없으면 아직 확정되지 않았다 */
+  finalDecision?: FinalDecision | null;
+  /**
+   * ★★ 규칙 충돌 표시 (R013 / Q-75 예외 경로).
+   *
+   * ★ 판정이 갈리는데 그 원인이 **개별 문제가 아니라 규칙에 있는** 경우다.
+   *   실측 사례 (R012 1-4) —
+   *     정답: 히에로글리프 / 신성문자 / Hieroglyph
+   *     역검증 답: "상형 문자" → 집합에 없어 탈락
+   *     ★ 그런데 상형문자는 **상위 개념**이다 (한자 초기 문자도 상형문자다).
+   *       g3 의 "상위 개념을 넣지 마라" 규칙을 지킨 결과가 탈락이 되었다.
+   *   ★★ 규칙과 판정이 충돌한다. 개별 문제를 살리고 죽이는 일이 아니라
+   *     **규칙을 고쳐야 하는 신호**다. → Opus 가 봐야 한다.
+   *
+   * ★ 자동으로 살리거나 버리지 않는다. 규칙이 정해질 때까지 보류다.
+   */
+  needsRuleDecision?: boolean;
   review: ReviewState;
 
   /** 재현에 필요한 메타 */

@@ -1,0 +1,223 @@
+{
+  "runs": [
+    {
+      "label": "p3 1회차",
+      "at": "2026-09-10T01:10:02.139Z",
+      "promptVersion": "p3",
+      "model": "gemini-3.6-flash",
+      "tokens": 4991,
+      "recall": {
+        "caught": 4,
+        "missed": 0,
+        "total": 4
+      },
+      "falsePositive": {
+        "count": 0,
+        "clean": 12,
+        "total": 12
+      },
+      "rows": [
+        {
+          "id": "OK-10",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "스타크래프트"
+        },
+        {
+          "id": "OK-11",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "등화가친"
+        },
+        {
+          "id": "OK-12",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "오슨 웰스"
+        },
+        {
+          "id": "R012-F1",
+          "kind": "catch",
+          "status": "caught",
+          "expect": "factualIssues",
+          "flagged": {
+            "factualIssues": [
+              "Hydrargyrum은 '수소'가 아니라 라틴어/그리스어 기반의 '물 같은 은'(hydro+argyros)을 뜻하며, 수소는 Hydrogenium이다."
+            ],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "Hg"
+        },
+        {
+          "id": "R012-S1",
+          "kind": "catch",
+          "status": "caught",
+          "expect": "spellingIssues",
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": [
+              "'그리구리우스 7세'는 '그레고리우스 7세'의 오기이다."
+            ]
+          },
+          "answer": "카노사의 굴욕"
+        },
+        {
+          "id": "R012-S2",
+          "kind": "catch",
+          "status": "caught",
+          "expect": "spellingIssues",
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": [
+              "'전사들의 후예'는 '전사의 후예'의 오기이다."
+            ]
+          },
+          "answer": "H.O.T."
+        },
+        {
+          "id": "R012-U1",
+          "kind": "catch",
+          "status": "caught",
+          "expect": "uniquenessIssue",
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [
+              "퀸 역시 가로와 세로 방향 직선으로 거리 제한 없이 이동할 수 있으므로, '가로와 세로 방향으로만' 등의 한정어가 빠져 있어 조건에 맞는 답이 둘 이상이다."
+            ],
+            "spellingIssues": []
+          },
+          "answer": "룩"
+        },
+        {
+          "id": "OK-1",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "북학파"
+        },
+        {
+          "id": "OK-2",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "칼륨"
+        },
+        {
+          "id": "OK-3",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "카노사의 굴욕"
+        },
+        {
+          "id": "OK-4",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "체크메이트"
+        },
+        {
+          "id": "OK-5",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "비숍"
+        },
+        {
+          "id": "OK-6",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "시상하부"
+        },
+        {
+          "id": "OK-7",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "유리 가가린"
+        },
+        {
+          "id": "OK-8",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "비타민 A"
+        },
+        {
+          "id": "OK-9",
+          "kind": "nocatch",
+          "status": "clean",
+          "expect": null,
+          "flagged": {
+            "factualIssues": [],
+            "uniquenessIssue": [],
+            "spellingIssues": []
+          },
+          "answer": "컬링"
+        }
+      ]
+    }
+  ]
+}
