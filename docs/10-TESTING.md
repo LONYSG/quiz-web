@@ -713,6 +713,78 @@ R008과 같은 사고가 반복된다 (D-028 규칙 1).
 
 ---
 
+## 12. ★★ 파이프라인 테스트 — API 를 부르는 것과 부르지 않는 것
+
+**★ 이 구분이 중요하다.** 테스트가 Gemini 를 부르면 `npm run verify` 를 돌릴 때마다
+일 한도를 태우고, 며칠 뒤에는 verify 자체가 429 로 실패한다.
+
+| 검증 | API | 어디서 도는가 |
+|------|-----|---------------|
+| `pipeline/src/filter.test.ts` | 없음 | ★ `npm run verify` |
+| `pipeline/src/dedupe.test.ts` | 없음 | ★ `npm run verify` |
+| `pipeline/src/select.test.ts` | 없음 | ★ `npm run verify` |
+| ★ `pipeline/src/quarantine.test.ts` | 없음 | ★ `npm run verify` |
+| ★ `pipeline/src/regression-fixture.test.ts` | 없음 | ★ `npm run verify` |
+| ★★ `scripts/pipeline-backcheck-regression.mjs` | ★ **있다** | ★ 사람이 실행할 때만 |
+
+### ★ 역검증 회귀 측정 — 왜 자동 테스트로 만들지 않았는가
+
+건우 지시는 "★ 자동 테스트로 고정하라" 였다. ★ 그런데 그대로 하면 안 되는 이유가 있다.
+
+★ 측정은 Gemini 를 부른다. verify 에 넣으면 **커밋마다 한도를 태운다.**
+★ R013 실측 — 하루에 성공한 호출이 **1회**였다. verify 를 두 번 돌리면 그날 작업이 끝난다.
+
+**→ 둘로 나눴다.**
+
+| 무엇을 | 어떻게 |
+|--------|--------|
+| ★ **자료가 썩는 것** (더 자주 나는 사고) | ★ 자동 테스트로 고정했다 (`regression-fixture.test.ts`) |
+| ★ 모델 성능 측정 | 사람이 스크립트를 실행한다 |
+
+★ 자동 테스트가 고정하는 것
+- `shouldCatch` 항목에 **무엇이 어떻게 틀렸는가**가 적혀 있는가
+  (★ 없으면 "못 잡았다" 를 봐도 원인을 판단할 수 없다)
+- 어느 필드로 잡혀야 하는지가 적혀 있는가
+  (★ p3 는 세 필드를 나눠 받는다. 엉뚱한 필드로 잡은 것을 정답으로 세면 측정이 무의미하다)
+- ★★ R012 에서 실제로 통과해 버린 4건(`R012-F1/S1/S2/U1`)이 **자료에 남아 있는가**
+- ★★ 정상 항목이 **규칙 검사를 통과하는가**
+  (★ 정상 항목에 실제 결함이 섞이면 오탐률이 거짓으로 높아지고, 프롬프트를 엉뚱하게 고치게 된다)
+- 정상 항목이 잡아야 할 항목보다 많은가 (★ 오탐률이 뜻을 가지려면)
+
+### ★ 회귀 측정 실행법
+
+```bash
+node scripts/pipeline-backcheck-regression.mjs --label "p3-2회차"
+node scripts/pipeline-backcheck-regression.mjs --model gemini-3.5-flash-lite --label "lite 측정"
+```
+
+★ 회차별 결과가 `data/pipeline/regression/backcheck-p3-results.json` 에 누적된다.
+★ **재현율과 오탐을 함께 본다.** 재현율만 보면 "다 잡는다" 로 수렴하고,
+그것은 R010 의 오탈락 사태와 같은 상태다.
+
+★ 항목 순서는 id 해시로 **결정적으로 섞는다.** 근거 — 순서가 매번 바뀌면
+회차 간 차이가 프롬프트 때문인지 위치 때문인지 구분할 수 없다.
+
+### ★ 격리·과다 필터링 (API 0회)
+
+```bash
+node scripts/pipeline-quarantine.mjs              현황 + 전체·배치별 감지
+node scripts/pipeline-quarantine.mjs --list       격리 내용 전부 읽기
+node scripts/pipeline-apply-decisions.mjs --dry-run   ★ 판정 반영 전 확인
+```
+
+★ `pipeline-apply-decisions.mjs` 는 **거부해야 할 것을 거부하는지**가 중요하다.
+R013 에서 세 경우를 실측으로 확인했다.
+
+| 입력 | 결과 |
+|------|------|
+| `verdict` 가 `pass`/`drop`/`needsRuleDecision` 이 아니다 | ★ 멈춘다 |
+| `reason` 이 비어 있다 | ★ 멈춘다 (근거 없는 판정을 받지 않는다) |
+| `ref` 가 배치에 없다 | ★ 멈춘다 (조용히 넘기지 않는다) |
+| `needsRuleDecision` 인데 `ruleQuestion` 이 없다 | ★ 멈춘다 |
+
+---
+
 ## 11. 개발 중 로그 읽는 법
 
 ### ★ `[proxy] ECONNREFUSED` / `ECONNRESET` — 무해한 소음이 아니다
