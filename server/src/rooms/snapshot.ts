@@ -6,9 +6,8 @@
 //   두 경우의 차이(점수가 0인가, 색상이 새로 배정되는가)는 서버가 스냅샷을 만들 때
 //   이미 값으로 정해진다. reason 필드로만 구분한다.
 //
-// ★ Phase 1에서는 LOBBY 관련 필드만 채우고 게임 관련 필드는 null 로 둔다.
-//   구조를 지금 확정해 두면 Phase 3에서 필드만 채우면 되고,
-//   클라이언트 코드도 구조 변경 없이 확장된다.
+// ★ Phase 3 (R014) 에서 question / resolution / skip / result 가 채워졌다.
+//   ★ 구조를 Phase 1 에 미리 확정해 둔 덕분에 필드만 채우면 되었다.
 //
 // ★ 스냅샷 생성 시 절대 지켜야 할 것 (Phase 3~6에서)
 //   · 힌트는 남은 시간이 10초 이하일 때만 넣는다.
@@ -17,10 +16,10 @@
 //   · 과거 채팅의 마스킹을 재계산하지 않는다. chat 버퍼에 저장된 값을 그대로 쓴다
 // =============================================================================
 
-import { RULES } from '@quiz/shared';
-import type { RoomState } from '@quiz/shared';
+import { RULES, skipThreshold } from '@quiz/shared';
+import type { QuestionResolution, RoomState } from '@quiz/shared';
 import { activeCount } from './registry.js';
-import type { ExperienceRate, Player, Room } from './types.js';
+import type { ExperienceRate, GameResultData, Player, Room } from './types.js';
 
 export type SnapshotReason = 'join' | 'reconnect' | 'resync';
 
@@ -62,19 +61,62 @@ export interface RoomSnapshot {
   chat: ChatView[];
   /** 카운트다운 종료 시각 (Q-11). COUNTDOWN 상태에서만 값이 있다 */
   countdown: { endsAt: number } | null;
-  /**
-   * 진행 중인 게임.
-   * ★ Phase 2에서는 question 이 항상 null 이면서 game 이 채워진 구간이 존재한다.
-   *   클라이언트는 그 조합을 "문제 출제는 Phase 3" 로 표시한다 (TEMP-P3-02).
-   */
+  /** 진행 중인 게임 */
   game: { gameId: string | null; totalQuestions: number; questionIndex: number } | null;
   /** 참가자별 경험률 (Q-12) */
   experienceRates: ExperienceRate[] | null;
-  // ── Phase 3~5에서 채운다
-  question: null;
+
+  /**
+   * 진행 중인 문제 (Phase 3).
+   *
+   * ★★ 여기에 절대 넣지 말 것 —
+   *   · QUESTION_ACTIVE 중의 정답 문자열 (displayAnswer / answersNorm / answersRaw)
+   *   · 남은 시간이 10초를 넘었을 때의 힌트
+   *   ★ 근거: 재접속만으로 정답이나 힌트를 미리 보는 우회로가 생긴다.
+   *     ★ 이 파일 헤더의 경고가 그것이다.
+   */
+  question: QuestionView | null;
+  /** 정답 공개 구간 (QUESTION_RESOLVED). ★ 여기서는 정답을 담는다 */
+  resolution: ResolutionView | null;
+  /** 스킵 투표 현황. ★ 투표자 명단은 담지 않는다 */
+  skip: { votes: number; threshold: number | null; selfVoted: boolean } | null;
+  /** 게임 결과 (GAME_RESULT) */
+  result: GameResultData | null;
+  // ── Phase 5에서 채운다
   paused: null;
-  skip: null;
-  result: null;
+}
+
+export interface QuestionView {
+  epoch: number;
+  index: number;
+  total: number;
+  text: string;
+  /** ★ 대분류다. 소분류 이름은 힌트가 되므로 보내지 않는다 (R012 3-3) */
+  categoryName: string;
+  startedAt: number;
+  endsAt: number;
+  /** ★ 경험자 닉네임. 전원 공개다 (D-011: guide 28절 폐기) */
+  experiencedNicknames: string[];
+  /** ★ 이 스냅샷을 받는 사람이 경험자인가 */
+  selfExperienced: boolean;
+  /**
+   * ★ 힌트. **남은 시간이 10초 이하일 때만** 값이 있다.
+   *   ★ 빼먹으면 재접속만으로 힌트를 미리 보는 우회로가 생긴다.
+   */
+  hint: string | null;
+  /** 힌트가 이미 공개된 시점인가. null 힌트("힌트 없음")와 구분하기 위해 함께 보낸다 */
+  hintRevealed: boolean;
+}
+
+export interface ResolutionView {
+  epoch: number;
+  reason: QuestionResolution;
+  winnerAccountId: string | null;
+  displayAnswer: string;
+  explanation: string | null;
+  nextAt: number | null;
+  index: number;
+  text: string;
 }
 
 export interface ChatView {
@@ -198,9 +240,89 @@ export function buildSnapshot(
         }
       : null,
     experienceRates: room.experienceRates ? [...room.experienceRates] : null,
-    question: null,
+    question: buildQuestionView(room, viewerAccountId, now),
+    resolution: buildResolutionView(room),
+    skip: buildSkipView(room, viewerAccountId),
+    result: room.state === 'GAME_RESULT' ? room.result : null,
     paused: null,
-    skip: null,
-    result: null,
+  };
+}
+
+/**
+ * 진행 중인 문제 뷰.
+ *
+ * ★★ 정답을 담지 않는다. QUESTION_ACTIVE 중에는 정답 문자열이 클라이언트로 가지 않는다.
+ * ★★ 힌트는 남은 시간이 10초 이하일 때만 담는다 (guide 11절).
+ *   ★ 그러지 않으면 재접속으로 힌트를 미리 볼 수 있다.
+ */
+function buildQuestionView(
+  room: Room,
+  viewerAccountId: string,
+  now: number,
+): QuestionView | null {
+  const q = room.currentQuestion;
+  if (!q) return null;
+  if (room.state !== 'QUESTION_ACTIVE' && room.state !== 'QUESTION_RESOLVED') return null;
+
+  // ★ 힌트 공개 조건. hintPushed 만 믿지 않고 시각으로도 확인한다.
+  //   ★ 두 조건을 함께 보는 이유: hintPushed 는 tick 이 세우고, 재접속은 그와 무관하게
+  //     아무 때나 일어난다. 시각 조건이 최종 방어선이다.
+  const revealed =
+    q.hintPushed || q.endsAt - now <= RULES.HINT_REVEAL_AT_MS || room.state === 'QUESTION_RESOLVED';
+
+  const nicknames: string[] = [];
+  for (const id of q.experiencedAccountIds) {
+    const p = room.players.get(id);
+    if (p) nicknames.push(p.nickname);
+  }
+
+  return {
+    epoch: q.epoch,
+    index: q.index,
+    total: room.game?.totalQuestions ?? 0,
+    text: q.text,
+    categoryName: q.categoryName,
+    startedAt: q.startedAt,
+    endsAt: q.endsAt,
+    experiencedNicknames: nicknames,
+    selfExperienced: q.experiencedAccountIds.has(viewerAccountId),
+    hint: revealed ? q.hint : null,
+    hintRevealed: revealed,
+  };
+}
+
+/** 정답 공개 구간. ★ 여기서는 정답을 담는다 — 이미 공개된 정보다 */
+function buildResolutionView(room: Room): ResolutionView | null {
+  const r = room.game?.resolution;
+  const q = room.currentQuestion;
+  if (!r || !q || room.state !== 'QUESTION_RESOLVED') return null;
+  return {
+    epoch: r.epoch,
+    reason: r.reason,
+    winnerAccountId: r.winnerAccountId,
+    displayAnswer: r.displayAnswer,
+    explanation: r.explanation,
+    nextAt: r.nextAt,
+    index: q.index,
+    text: q.text,
+  };
+}
+
+/**
+ * 스킵 투표 현황.
+ *
+ * ★★ 투표자 명단을 담지 않는다 (guide 22절).
+ *   ★ 본인이 투표했는지만 알려준다. 버튼 상태를 그리기 위해 필요하다.
+ */
+function buildSkipView(
+  room: Room,
+  viewerAccountId: string,
+): { votes: number; threshold: number | null; selfVoted: boolean } | null {
+  const q = room.currentQuestion;
+  if (!q || room.state !== 'QUESTION_ACTIVE') return null;
+  return {
+    votes: q.skipVotes.size,
+    threshold: skipThreshold(activeCount(room)),
+    selfVoted: q.skipVotes.has(viewerAccountId),
   };
 }

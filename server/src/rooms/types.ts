@@ -15,7 +15,9 @@
 //   스냅샷 생성 함수(snapshot.ts)도 구조를 바꿀 필요가 없다.
 // =============================================================================
 
-import type { RoomState } from '@quiz/shared';
+import type { QuestionResolution, RoomState } from '@quiz/shared';
+import type { PoolQuestion } from '../db/questionPool.js';
+import type { SelectionStage } from '../game/select.js';
 
 export interface Player {
   accountId: string;
@@ -65,10 +67,115 @@ export interface ActiveGame {
   /** 시작 시점 출제 가능 수 (Q-21 검증 결과). games.planned_question_count 와 같다 */
   availableAtStart: number;
   startedAt: number;
-  /** 1-based. 0 이면 아직 첫 문제 전이다. ★ Phase 3에서 올린다 */
+  /** 1-based. 0 이면 아직 첫 문제 전이다 */
   questionIndex: number;
-  /** 문제 세대 번호 (R003 2-3 장치 B). ★ Phase 3에서 올린다 */
+  /**
+   * 문제 세대 번호 (R003 2-3 장치 B).
+   *
+   * ★★ 이것이 이 게임에서 가장 중요한 안전 장치다.
+   *   QUESTION_RESOLVED 구간(5초)에 친 메시지가 네트워크 지연으로 다음 문제 시작
+   *   직후 도착하면, 상태 검사는 통과한다(이미 QUESTION_ACTIVE 다).
+   *   ★ 그 메시지가 우연히 새 문제의 정답과 같으면 정답 처리된다.
+   *   ★ guide 20절이 명시적으로 금지한 상황이다.
+   *   → 클라이언트가 보고 있던 epoch 를 함께 보내고, 다르면 판정하지 않는다.
+   *
+   * ★ 증가 시점은 **새 문제를 시작할 때뿐**이다.
+   *   ★ 재개(PAUSED → 원래 상태)에서는 증가시키지 않는다. 같은 문제를 이어서 한다.
+   */
   epoch: number;
+
+  // ── ★ Phase 3에서 추가한 것들
+  /**
+   * ★ 출제 대상 전체. 게임 시작 때 한 번 읽어 둔다 (D-054 성능 항목).
+   *   ★ 매 문제마다 DB 를 다시 읽으면 문제 시작 절차가 느려지고,
+   *     그 절차는 30초 타이머 시작 전에 끝나야 한다.
+   */
+  pool: PoolQuestion[];
+  /** ★ 계정 → 경험한 문제 id. 선정과 경험자 배지에 쓴다 */
+  experienced: Map<string, Set<string>>;
+  /** 이 게임에서 이미 출제한 문제 id. ★ guide 20절 */
+  usedQuestionIds: Set<string>;
+  /**
+   * ★★ 이 게임에서 이미 쓴 정규화 정답 (Q-76 / D-054).
+   *   ★ 대표 정답이 아니라 **복수 정답 배열 전체**를 넣는다.
+   *     근거: 판정이 answer_norm 전체로 이루어지므로 중복 기준도 같아야 한다.
+   */
+  usedAnswerNorms: Set<string>;
+  /** 정답 공개 뒤 5초 대기 구간의 정보. QUESTION_RESOLVED 에서만 값이 있다 */
+  resolution: Resolution | null;
+  /**
+   * ★ 실제로 끝난 문제 수. games.ended_question_count 에 기록한다.
+   *   ★ questionIndex 와 다를 수 있다 — 진행 중인 문제는 아직 끝나지 않았다.
+   */
+  endedQuestionCount: number;
+  /** ★ 3단계 선정이 발동한 횟수. 운영자용 관측값이다 (D-054) */
+  stage3Count: number;
+}
+
+/**
+ * 진행 중인 문제 (Phase 3).
+ *
+ * ★★ 판정에 필요한 모든 것이 여기 메모리에 있다. 그것이 설계의 핵심이다.
+ *   ★ 정답 판정 블록에 await 가 필요 없어지려면 정답 집합·경험자·힌트가
+ *     문제 시작 시점에 이미 로드되어 있어야 한다 (04-PROTOCOL 1장).
+ */
+export interface CurrentQuestion {
+  /** 이 문제의 세대 번호. game.epoch 와 같다 */
+  epoch: number;
+  /** 1-based */
+  index: number;
+  questionId: string;
+  text: string;
+  /** ★ 화면에 보여줄 카테고리. **대분류**다 (소분류 이름은 힌트가 된다) */
+  categoryName: string;
+
+  /** ★★ 판정에 쓰는 정규화 정답 집합. 이것만으로 판정한다 */
+  answersNorm: Set<string>;
+  /** 정답 공개 화면용 대표 표기. ★ 판정에 쓰지 않는다 */
+  displayAnswer: string;
+  /** 마스킹용 원문 표기 (Phase 6) */
+  answersRaw: string[];
+
+  /**
+   * 미리 계산한 힌트. null 이면 힌트를 만들 수 없는 정답이다.
+   * ★ 문제와 함께 보내지 않는다. 남은 10초에 서버가 push 한다.
+   *   ★ 미리 보내면 개발자 도구로 30초 시점에 볼 수 있다.
+   */
+  hint: string | null;
+  /** 힌트를 이미 보냈는가. ★ 중복 push 를 막는다 */
+  hintPushed: boolean;
+  explanation: string | null;
+
+  /** ★ 이 문제를 이미 경험한 참가자. 판정 제외 + 배지 + 마스킹 대상 */
+  experiencedAccountIds: Set<string>;
+
+  startedAt: number;
+  /** ★★ 정답 인정 경계다. tick 오차가 아니라 이 시각이 기준이다 */
+  endsAt: number;
+
+  /**
+   * ★★ 장치 A — 이미 끝난 문제인가.
+   *   ★ 상태 전환 함수의 첫 줄에서 동기적으로 확인·설정한다.
+   *     그 두 줄 사이에 await 가 없으므로 두 번째 요청이 끼어들 수 없다.
+   */
+  resolved: boolean;
+
+  /** 스킵에 찬성한 계정. ★ 누가 투표했는지는 클라이언트에 보내지 않는다 */
+  skipVotes: Set<string>;
+
+  /** ★ 선정이 몇 단계에서 성공했는가 (Q-76). 화면에는 표시하지 않는다 */
+  selectionStage: SelectionStage;
+}
+
+/** 정답 공개 뒤 5초 대기 구간 */
+export interface Resolution {
+  epoch: number;
+  reason: QuestionResolution;
+  winnerAccountId: string | null;
+  displayAnswer: string;
+  explanation: string | null;
+  /** 다음 문제 시작 시각. ★ 마지막 문제면 null 이고 그 즉시 결과로 간다 */
+  nextAt: number | null;
 }
 
 export interface Room {
@@ -139,9 +246,55 @@ export interface Room {
   /** 진행 중인 게임. LOBBY 에서는 null 이다 */
   game: ActiveGame | null;
 
-  // ── Phase 3~5에서 채운다. 지금은 항상 null 이다.
-  currentQuestion: null;
+  /** 진행 중인 문제. ★ QUESTION_ACTIVE / QUESTION_RESOLVED 에서 값이 있다 */
+  currentQuestion: CurrentQuestion | null;
+
+  /**
+   * ★ 게임 결과. GAME_RESULT 에서만 값이 있다.
+   *   ★ Phase 4 가 결과 화면을 만든다. Phase 3 는 데이터만 만들어 둔다 (TEMP-P4-01).
+   */
+  result: GameResultData | null;
+
+  /**
+   * ★ 활성 0명이 되어 문제 타이머를 멈춘 시각. null 이면 멈추지 않았다.
+   *
+   * ★★ Phase 5 의 PAUSED 를 대신하는 최소 장치다 (R014 실측으로 추가).
+   *   ★ 근거와 최종 규칙과의 차이는 game/question.ts 의 freezeIfNoActive 주석에 있다.
+   *   ★ Phase 5 에서 PAUSED 를 구현할 때 이 필드를 pausedAt/remainingMs 로 교체한다.
+   */
+  frozenAt: number | null;
+
+  // ── Phase 5에서 채운다. 지금은 항상 null 이다.
   paused: null;
+
+  /** 계정별 채팅 rate limit 타임스탬프 (Q-18: 3초 이동 윈도 10개) */
+  chatTimestamps: Map<string, number[]>;
+}
+
+/** 게임 결과 (guide 38·39절). ★ Phase 4 가 화면을 만든다 */
+export interface GameResultData {
+  gameId: string | null;
+  endReason: import('@quiz/shared').GameEndReason;
+  ranking: {
+    rank: number;
+    accountId: string;
+    nickname: string;
+    colorIndex: number;
+    score: number;
+    connected: boolean;
+  }[];
+  /** ★ 마지막 문제의 정답. 5초 대기를 생략했으므로 여기서 보여준다 (Q-17) */
+  lastQuestionReveal: {
+    index: number;
+    text: string;
+    displayAnswer: string;
+    explanation: string | null;
+    winnerAccountId: string | null;
+  } | null;
+  /** 조기 종료·강제 종료 사유 안내 */
+  abortedNote: string | null;
+  endedQuestionCount: number;
+  totalQuestions: number;
 }
 
 /** 참가자 한 명의 경험률 (guide 6절 표기: "1,234문제 중 153문제 (12.4%)") */

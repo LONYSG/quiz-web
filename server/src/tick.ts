@@ -6,13 +6,19 @@
 //   전역 tick 하나면 상태 검사가 한 곳에 모이고,
 //   "tick 안에서는 다른 이벤트가 끼어들지 않는다" 는 성질을 그대로 활용할 수 있다.
 //
-// ★ Phase 1에서 검사하는 것은 세 가지뿐이다.
-//   그러나 Phase 3~5에서 다음이 전부 여기 들어온다. 지금 뼈대를 세우는 이유다.
+// ★ Phase 3 에서 검사 항목이 늘었다 (R014). 순서가 중요하다.
 //     · COUNTDOWN 만료 → 첫 문제 시작
-//     · 남은 10초 → 힌트 push
-//     · 문제 종료 시각 도달 → 시간 종료 처리
-//     · QUESTION_RESOLVED 5초 경과 → 다음 문제
-//     · PAUSED 30분 초과 → 게임 포기
+//     · ★ 남은 10초 → 힌트 push (hintPushed 로 1회만)
+//     · ★ 문제 종료 시각 도달 → 시간 종료 처리 (T07)
+//     · ★ QUESTION_RESOLVED 5초 경과 → 다음 문제 (T15) 또는 조기 종료 (T16)
+//     · PAUSED 30분 초과 → 게임 포기 (Phase 5)
+//
+// ★★ "정확히 30초" 에 대하여 (04-PROTOCOL 6장)
+//   setTimeout(30000) 단독은 이벤트 루프가 바쁘면 지연되고 보정되지 않는다.
+//   ★ 그래서 절대 시각(endsAt)을 저장하고 100ms tick 에서 비교한다.
+//   ★★ 중요한 것은 **정답 인정 경계가 tick 이 아니라 endsAt 이라는 점**이다.
+//     tick 이 최대 100ms 늦어도 그 사이 도착한 답은 answer.ts 가 시각으로 잘라낸다.
+//     ★ 즉 tick 오차가 게임 판정에 영향을 주지 않는다.
 //
 // ★ tick 콜백 안에서 await 를 쓰지 않는다.
 //   DB 쓰기가 필요하면 void 로 띄우고 결과를 기다리지 않는다.
@@ -22,6 +28,12 @@
 import { RULES } from '@quiz/shared';
 import { closeRoom } from './db/rooms.js';
 import { startFromCountdown } from './game/start.js';
+import {
+  advanceAfterResolved,
+  checkQuestionTimeout,
+  freezeIfNoActive,
+  pushHintIfDue,
+} from './game/question.js';
 import { emitRoom } from './rooms/emit.js';
 import { activeCount, allRooms, nextHostCandidate, unregisterRoom } from './rooms/registry.js';
 import { closeOpenGame } from './rooms/lifecycle.js';
@@ -54,7 +66,18 @@ function tick(): void {
     try {
       // 순서가 중요하다: 게임 상태 전이 → 방장 이전 → 표시 갱신 → 방 삭제
       checkCountdown(room, now);
-      // Phase 3~5에서 여기에 더 들어온다 (문제 종료 / 힌트 / 다음 문제 / PAUSED 30분).
+      // ★★ Phase 3 — 문제 진행 (R014)
+      //   ★ 순서: 힌트 → 시간 종료 → 다음 문제.
+      //     ★ 힌트를 먼저 보는 이유: 같은 tick 에서 종료되더라도 남은 10초 시점의
+      //       힌트는 이미 지나갔으므로 순서가 결과를 바꾸지 않는다. 반대로 두면
+      //       종료 처리 뒤에 힌트가 나가는 순간이 생길 수 있다.
+      // ★★ 활성 0명이면 문제 타이머를 멈춘다. 근거는 freezeIfNoActive 주석에 있다.
+      //   ★ 멈췄으면 이후 문제 진행 검사를 건너뛴다 — 그것이 "멈춘다" 의 구현이다.
+      if (!freezeIfNoActive(room, now)) {
+        pushHintIfDue(room, now);
+        checkQuestionTimeout(room, now);
+        advanceAfterResolved(room, now);
+      }
       checkHostTransfer(room, now);
       checkDisconnectDisplay(room, now);
       if (shouldDeleteRoom(room, now)) toDelete.push(room.id);

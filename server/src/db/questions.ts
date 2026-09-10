@@ -14,8 +14,14 @@
 
 import { query } from './pool.js';
 
-/** 출제 대상 조건. ★ 이 문자열을 다른 곳에 복사하지 않는다 */
-const POOL_WHERE = `q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'`;
+/**
+ * 출제 대상 조건. ★ 이 문자열을 다른 곳에 복사하지 않는다.
+ *
+ * ★ Phase 3 에서 db/questionPool.ts 가 이것을 가져다 쓴다 (export 로 바꿨다).
+ *   ★ 근거 — "출제 가능 수" 검증과 "실제 선정 풀" 이 다른 집합을 세면
+ *     시작 검증을 통과했는데 선정에서 문제를 못 찾는 일이 생긴다.
+ */
+export const POOL_WHERE = `q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'`;
 
 /** 경험률의 분모. 전체 활성 문제 수 (guide 6절: "분모는 전체 활성 문제 수") */
 export async function countActiveQuestions(): Promise<number> {

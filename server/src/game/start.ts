@@ -19,19 +19,23 @@
 //       다른 경로로 이미 게임이 시작되었을 수 있다.
 //       "검증했으니 지금도 유효하다"는 가정이 이 프로젝트에서 가장 위험한 가정이다.
 //
-// ★★ 임시 코드 표시
-//   Phase 2에는 문제 출제(Phase 3)가 없다. 게임 레코드를 만들고 상태를
-//   QUESTION_ACTIVE 로 올리는 데서 멈춘다.
-//   Phase 3에서 반드시 제거·교체해야 할 자리에 TEMP-P3-nn 를 달아 두었다.
-//   목록은 docs/05-STATUS.md "Phase 3에서 제거해야 할 임시 코드" 에 있다.
+// ★★ Phase 3 에서 바뀐 것 (R014)
+//   · 임시 코드 01 제거 — beginGame 끝에 [문제 시작 공통 절차]가 붙었다
+//   · 임시 코드 03 제거 — ★ 게임 레코드 생성이 실패하면 게임을 시작하지 않는다.
+//     ★ 근거: game_questions / answer_events / question_experiences 가 붙을 곳이 없다.
+//       Phase 2 에서는 진행할 문제가 없어 무해했지만, Phase 3 에서는 치명적이다 —
+//       ★ 경험 기록이 남지 않으면 그 게임이 장기 자산(guide 26절)에 반영되지 않는다.
+//   · ★ 출제 풀과 경험 기록을 게임 시작 때 메모리로 올린다 (D-054 성능 항목)
 // =============================================================================
 
 import { validateRoomSettings } from '@quiz/shared';
 import { countAvailableQuestions } from '../db/questions.js';
+import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
 import { insertGame, insertGamePlayers } from '../db/games.js';
 import { emitRoom } from '../rooms/emit.js';
 import { activeCount } from '../rooms/registry.js';
 import { participantIds } from '../lobby/info.js';
+import { beginQuestion, finishGame } from './question.js';
 import type { Room } from '../rooms/types.js';
 
 export type StartFailure =
@@ -39,7 +43,9 @@ export type StartFailure =
   | { reason: 'invalid_state' }
   | { reason: 'settings'; message: string }
   | { reason: 'no_active' }
-  | { reason: 'not_enough'; available: number; wanted: number };
+  | { reason: 'not_enough'; available: number; wanted: number }
+  /** ★ Phase 3 신설 — 게임 레코드를 만들지 못했다 (옛 임시 코드 03 을 교체한 것) */
+  | { reason: 'record_failed' };
 
 export type StartResult = { ok: true } | ({ ok: false } & StartFailure);
 
@@ -106,8 +112,8 @@ export async function requestStart(room: Room): Promise<StartResult> {
     }
 
     // T02. 즉시 시작.
-    await beginGame(room, available);
-    return { ok: true };
+    const ok = await beginGame(room, available);
+    return ok ? { ok: true } : { ok: false, reason: 'record_failed' };
   } finally {
     room.startingGame = false;
   }
@@ -180,8 +186,8 @@ export async function startFromCountdown(room: Room): Promise<StartResult> {
       return { ok: false, reason: 'not_enough', available, wanted };
     }
 
-    await beginGame(room, available);
-    return { ok: true };
+    const ok = await beginGame(room, available);
+    return ok ? { ok: true } : { ok: false, reason: 'record_failed' };
   } finally {
     room.startingGame = false;
   }
@@ -190,66 +196,113 @@ export async function startFromCountdown(room: Room): Promise<StartResult> {
 /**
  * 실제 게임 시작. T02 / T04 가 공통으로 쓴다.
  *
- * ★ 앞부분(상태 전이)은 동기다. 뒷부분(DB)만 await 한다.
+ * ★★ 순서가 중요하다 (Phase 3 에서 바뀌었다)
+ *   1. ★ DB 준비를 **먼저** 한다 — games INSERT + 출제 풀 + 경험 기록
+ *      ★ 근거: 레코드 생성이 실패하면 게임을 시작하지 않아야 한다.
+ *        시작한 뒤에 실패를 알면 되돌릴 수 없다.
+ *   2. ★ await 뒤 상태 재확인. 조회 중에 방이 바뀔 수 있다
+ *   3. 동기 전이 구간 — 여기에 await 를 넣지 않는다
+ *   4. ★ [문제 시작 공통 절차] — 동기다 (beginQuestion)
  */
-async function beginGame(room: Room, availableAtStart: number): Promise<void> {
-  const now = Date.now();
+async function beginGame(room: Room, availableAtStart: number): Promise<boolean> {
   const settings = { ...room.settings };
-
-  // ── 동기 전이 구간. 여기에 await 를 넣지 않는다.
-  room.state = 'QUESTION_ACTIVE';
-  room.settingsLocked = true;
-  room.countdownEndsAt = null;
-  room.lastGameSettings = settings; // "다시 하기" 에서 복원한다 (Q-31)
-  for (const player of room.players.values()) player.score = 0;
-  room.game = {
-    gameId: null,
-    totalQuestions: settings.questionCount,
-    availableAtStart,
-    startedAt: now,
-    questionIndex: 0,
-    epoch: 0,
-  };
   const roster = [...room.players.values()].map((p) => ({
     accountId: p.accountId,
     colorIndex: p.colorIndex,
     // 시작 시점 참가자는 전원 중간 참가가 아니다 (guide 32절)
     isMidgameJoin: false,
   }));
-  console.log(
-    `[game] ${room.id} 게임 시작 — 문제 ${settings.questionCount}개 / 참가자 ${roster.length}명 / 가능 ${availableAtStart}개`,
-  );
-  // ── 동기 구간 끝.
 
-  // ── DB 기록. 실패해도 상태는 이미 전이되어 있다.
+  // ── 1. ★ DB 준비. 실패하면 게임을 시작하지 않는다
+  let gameId: string;
   try {
-    const gameId = await insertGame({
+    gameId = await insertGame({
       roomId: room.id,
       settingQuestionCount: settings.questionCount,
       settingStartMode: settings.startMode,
       settingCountdownSec: settings.startMode === 'countdown' ? settings.countdownSec : null,
       plannedQuestionCount: availableAtStart,
     });
-    // ★ 그 사이 방이 사라졌거나 게임이 교체되었으면 덮어쓰지 않는다.
-    if (room.game && room.game.gameId === null) room.game.gameId = gameId;
     await insertGamePlayers(gameId, roster);
-    console.log(`[game] ${room.id} 레코드 생성 games.id=${gameId} / 참가자 ${roster.length}행`);
   } catch (err) {
-    // ★ Phase 3에서는 이것이 치명적이다. game_questions / answer_events 가 붙을 곳이 없어진다.
-    //   Phase 2에서는 진행할 문제가 없으므로 게임을 되돌리지 않고 기록만 남긴다.
-    //   ★ TEMP-P3-03: Phase 3에서 "레코드 생성 실패 시 게임을 시작하지 않는다" 로 바꿔야 한다.
-    console.error(`[game] ★ ${room.id} 게임 레코드 생성 실패:`, (err as Error).message);
+    // ★★ Phase 2 에서는 기록만 남기고 게임을 시작했다 (옛 임시 코드 표식 03).
+    //   ★ Phase 3 에서는 시작하지 않는다. 근거는 이 파일 헤더에 있다.
+    console.error(`[game] ★★ ${room.id} 게임 레코드 생성 실패 — 게임을 시작하지 않는다:`, (err as Error).message);
+    return false;
   }
 
+  // ── ★ 출제 풀과 경험 기록을 메모리로 올린다 (D-054 성능 항목).
+  //   ★ 이것이 정답 판정 블록에서 await 가 필요 없어지는 근거다.
+  let pool;
+  let experienced;
+  try {
+    [pool, experienced] = await Promise.all([
+      loadQuestionPool(),
+      loadExperienced(participantIds(room)),
+    ]);
+  } catch (err) {
+    console.error(`[game] ★★ ${room.id} 출제 풀 로드 실패 — 게임을 시작하지 않는다:`, (err as Error).message);
+    return false;
+  }
+
+  // ── 2. ★ await 뒤 재확인. 조회 중에 방장이 취소했거나 사람이 다 나갔을 수 있다
+  if (room.game !== null) {
+    console.error(`[game] ★ ${room.id} 준비 중 다른 경로로 게임이 시작되었다. 중단한다.`);
+    return false;
+  }
+  if (room.state !== 'QUESTION_ACTIVE' && room.state !== 'LOBBY' && room.state !== 'COUNTDOWN') {
+    return false;
+  }
+  if (activeCount(room) < 1) return false;
+
+  // ── 3. 동기 전이 구간. ★ 여기에 await 를 넣지 않는다.
+  const now = Date.now();
+  room.state = 'QUESTION_ACTIVE';
+  room.settingsLocked = true;
+  room.countdownEndsAt = null;
+  room.result = null;
+  room.currentQuestion = null;
+  room.lastGameSettings = settings; // "다시 하기" 에서 복원한다 (Q-31)
+  for (const player of room.players.values()) player.score = 0;
+  room.chatTimestamps.clear();
+  room.game = {
+    gameId,
+    totalQuestions: settings.questionCount,
+    availableAtStart,
+    startedAt: now,
+    questionIndex: 0,
+    epoch: 0,
+    pool,
+    experienced,
+    usedQuestionIds: new Set(),
+    usedAnswerNorms: new Set(),
+    resolution: null,
+    endedQuestionCount: 0,
+    stage3Count: 0,
+  };
+  console.log(
+    `[game] ${room.id} 게임 시작 — 문제 ${settings.questionCount}개 / 참가자 ${roster.length}명 / ` +
+      `가능 ${availableAtStart}개 / 풀 ${pool.length}건 / games.id=${gameId}`,
+  );
+
   emitRoom(room, 'game.started', {
-    gameId: room.game?.gameId ?? null,
+    gameId,
     totalQuestions: settings.questionCount,
     state: room.state,
   });
 
-  // ★★ TEMP-P3-01 — 여기에 Phase 3의 [문제 시작 공통 절차]가 붙는다.
-  //   (docs/04-PROTOCOL.md 3장 "[문제 시작 공통 절차]" 1~9단계)
-  //   지금은 문제를 내지 않으므로 QUESTION_ACTIVE 이면서 currentQuestion 이 null 이다.
-  //   ★ 클라이언트는 그 조합을 보고 "Phase 3 예정" 안내를 띄운다 (Lobby.tsx 의 같은 표시).
-  //   ★ Phase 3 착수 시 이 주석과 클라이언트의 임시 안내를 함께 제거해야 한다.
+  // ── 4. ★★ [문제 시작 공통 절차] (04-PROTOCOL 3장). 동기다
+  if (!beginQuestion(room)) {
+    // ★ 시작 검증(Q-21)을 통과했는데 선정에 실패했다.
+    //   ★ 조회와 선정 사이에 문제가 비활성화되었거나, 정답 없는 문제가 걸러진 경우다.
+    //   ★ 조용히 빈 게임으로 두지 않는다. 조기 종료로 끝낸다 (T16).
+    console.error(`[game] ★★ ${room.id} 첫 문제 선정 실패 — 조기 종료한다`);
+    finishGame(
+      room,
+      'no_questions',
+      '출제할 수 있는 문제를 찾지 못해 게임을 시작하지 못했습니다.',
+    );
+    return false;
+  }
+  return true;
 }

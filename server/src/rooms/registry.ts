@@ -98,7 +98,10 @@ export function createRoomObject(
     emptySince: null,
     game: null,
     currentQuestion: null,
+    result: null,
+    frozenAt: null,
     paused: null,
+    chatTimestamps: new Map(),
   };
 }
 
