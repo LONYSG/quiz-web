@@ -46,6 +46,65 @@ export interface RoomSettings {
   countdownSec: number;
 }
 
+/** 진행 중인 문제. ★ 정답은 들어 있지 않다 (QUESTION_ACTIVE 중) */
+export interface QuestionView {
+  epoch: number;
+  index: number;
+  total: number;
+  text: string;
+  /** ★ 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 */
+  categoryName: string;
+  startedAt: number;
+  endsAt: number;
+  experiencedNicknames: string[];
+  selfExperienced: boolean;
+  /** ★ 남은 10초부터만 값이 있다 */
+  hint: string | null;
+  hintRevealed: boolean;
+}
+
+/** 정답 공개 구간 */
+export interface ResolutionView {
+  epoch: number;
+  reason: 'correct' | 'timeout' | 'skip_vote' | 'host_skip' | 'aborted';
+  winnerAccountId: string | null;
+  displayAnswer: string;
+  explanation: string | null;
+  nextAt: number | null;
+  index: number;
+  text: string;
+}
+
+/** 스킵 투표 현황. ★ 투표자 명단은 오지 않는다 */
+export interface SkipView {
+  votes: number;
+  threshold: number | null;
+  selfVoted: boolean;
+}
+
+export interface GameResultView {
+  gameId: string | null;
+  endReason: string;
+  ranking: {
+    rank: number;
+    accountId: string;
+    nickname: string;
+    colorIndex: number;
+    score: number;
+    connected: boolean;
+  }[];
+  lastQuestionReveal: {
+    index: number;
+    text: string;
+    displayAnswer: string;
+    explanation: string | null;
+    winnerAccountId: string | null;
+  } | null;
+  abortedNote: string | null;
+  endedQuestionCount: number;
+  totalQuestions: number;
+}
+
 export interface RoomSnapshot {
   reason: 'join' | 'reconnect' | 'resync';
   serverTime: number;
@@ -66,9 +125,14 @@ export interface RoomSnapshot {
   chat: ChatView[];
   /** 카운트다운 종료 시각 (서버 시각 기준 절대 시각). COUNTDOWN 에서만 값이 있다 */
   countdown: { endsAt: number } | null;
-  /** 진행 중인 게임. ★ Phase 2에서는 문제가 없는 상태로 채워진다 (TEMP-P3-02) */
+  /** 진행 중인 게임 */
   game: { gameId: string | null; totalQuestions: number; questionIndex: number } | null;
   experienceRates: ExperienceRate[] | null;
+  // ── ★ Phase 3
+  question: QuestionView | null;
+  resolution: ResolutionView | null;
+  skip: SkipView | null;
+  result: GameResultView | null;
 }
 
 export interface SocketErrorPayload {
@@ -84,6 +148,12 @@ export interface RoomHook {
   clearError: () => void;
   /** 서버가 다른 곳에서의 접속 때문에 이 연결을 끊었는가 (Q-06) */
   terminated: boolean;
+  /**
+   * ★ 도배 억제 안내 (Q-18). 본인에게만 온다.
+   *   ★ 토스트로 띄우지 않는다 — 입력 중에 뜨는 알림이므로 iOS 키보드에 가려질 수 있다.
+   *     ★ 그래서 입력창 바로 위에 인라인으로 표시한다 (C-8 판단).
+   */
+  throttledUntil: number | null;
 }
 
 export function useRoom(socket: Socket | null): RoomHook {
@@ -91,6 +161,7 @@ export function useRoom(socket: Socket | null): RoomHook {
   const [chat, setChat] = useState<ChatView[]>([]);
   const [error, setError] = useState<SocketErrorPayload | null>(null);
   const [terminated, setTerminated] = useState(false);
+  const [throttledUntil, setThrottledUntil] = useState<number | null>(null);
 
   useEffect(() => {
     if (!socket) return undefined;
@@ -252,12 +323,189 @@ export function useRoom(socket: Socket | null): RoomHook {
                 totalQuestions: payload.totalQuestions,
                 questionIndex: 0,
               },
+              // ★ 새 게임이 시작되면 직전 게임의 흔적을 지운다
+              question: null,
+              resolution: null,
+              skip: null,
+              result: null,
             }
           : prev,
       );
     };
 
+    // ── ★★ Phase 3 이벤트
+    //   ★ 클라이언트는 서버가 보낸 값을 그대로 반영한다.
+    //     ★ 상태를 스스로 전이시키지 않는다 (guide 44·45절).
+
+    const onQuestionStarted = (p: QuestionView & { state: string }) => {
+      setSnapshot((prev) =>
+        prev
+          ? {
+              ...prev,
+              room: { ...prev.room, state: p.state },
+              question: {
+                epoch: p.epoch,
+                index: p.index,
+                total: p.total,
+                text: p.text,
+                categoryName: p.categoryName,
+                startedAt: p.startedAt,
+                endsAt: p.endsAt,
+                experiencedNicknames: p.experiencedNicknames,
+                selfExperienced: p.selfExperienced,
+                // ★ 문제 시작 시점에는 힌트가 없다. 서버가 남은 10초에 push 한다
+                hint: null,
+                hintRevealed: false,
+              },
+              resolution: null,
+              skip: { votes: 0, threshold: prev.skip?.threshold ?? null, selfVoted: false },
+              result: null,
+              game: prev.game
+                ? { ...prev.game, questionIndex: p.index }
+                : { gameId: null, totalQuestions: p.total, questionIndex: p.index },
+            }
+          : prev,
+      );
+    };
+
+    const onExperiencedUpdated = (p: {
+      epoch: number;
+      experiencedNicknames: string[];
+      selfExperienced: boolean;
+    }) => {
+      setSnapshot((prev) => {
+        if (!prev?.question || prev.question.epoch !== p.epoch) return prev;
+        return {
+          ...prev,
+          question: {
+            ...prev.question,
+            experiencedNicknames: p.experiencedNicknames,
+            selfExperienced: p.selfExperienced,
+          },
+        };
+      });
+    };
+
+    const onHint = (p: { epoch: number; hint: string | null }) => {
+      setSnapshot((prev) => {
+        // ★ 낡은 힌트를 새 문제에 붙이지 않는다. epoch 로 확인한다
+        if (!prev?.question || prev.question.epoch !== p.epoch) return prev;
+        return { ...prev, question: { ...prev.question, hint: p.hint, hintRevealed: true } };
+      });
+    };
+
+    const onResolved = (p: ResolutionView & { state: string; scores: { accountId: string; score: number }[] }) => {
+      setSnapshot((prev) => {
+        if (!prev) return prev;
+        const scoreById = new Map(p.scores.map((s) => [s.accountId, s.score]));
+        return {
+          ...prev,
+          room: { ...prev.room, state: p.state },
+          players: prev.players.map((pl) => ({
+            ...pl,
+            score: scoreById.get(pl.accountId) ?? pl.score,
+          })),
+          resolution: {
+            epoch: p.epoch,
+            reason: p.reason,
+            winnerAccountId: p.winnerAccountId,
+            displayAnswer: p.displayAnswer,
+            explanation: p.explanation,
+            nextAt: p.nextAt,
+            index: prev.question?.index ?? 0,
+            text: prev.question?.text ?? '',
+          },
+          // ★ 정답이 공개되면 스킵 투표는 끝난다
+          skip: null,
+        };
+      });
+    };
+
+    const onSkipUpdated = (p: {
+      epoch: number;
+      votes: number;
+      threshold: number | null;
+      activeCount: number;
+    }) => {
+      setSnapshot((prev) => {
+        if (!prev) return prev;
+        // ★ 낡은 epoch 의 투표 현황을 새 문제에 붙이지 않는다
+        if (prev.question && prev.question.epoch !== p.epoch) return prev;
+        return {
+          ...prev,
+          room: { ...prev.room, activeCount: p.activeCount },
+          skip: {
+            votes: p.votes,
+            threshold: p.threshold,
+            // ★ selfVoted 는 서버가 보내지 않는다 (명단 비공개). 내 클릭으로만 바뀐다
+            selfVoted: prev.skip?.selfVoted ?? false,
+          },
+        };
+      });
+    };
+
+    const onGameResult = (p: GameResultView) => {
+      setSnapshot((prev) =>
+        prev
+          ? {
+              ...prev,
+              room: { ...prev.room, state: 'GAME_RESULT' },
+              question: null,
+              resolution: null,
+              skip: null,
+              result: p,
+              players: prev.players.map((pl) => {
+                const r = p.ranking.find((x) => x.accountId === pl.accountId);
+                return r ? { ...pl, score: r.score } : pl;
+              }),
+            }
+          : prev,
+      );
+    };
+
+    const onReturnedToLobby = (p: {
+      state: string;
+      settings: RoomSettings;
+      settingsLocked: boolean;
+      players: PlayerView[];
+      activeCount: number;
+    }) => {
+      setSnapshot((prev) =>
+        prev
+          ? {
+              ...prev,
+              room: {
+                ...prev.room,
+                state: p.state,
+                settings: p.settings,
+                settingsLocked: p.settingsLocked,
+                activeCount: p.activeCount,
+              },
+              players: p.players,
+              game: null,
+              question: null,
+              resolution: null,
+              skip: null,
+              result: null,
+              countdown: null,
+            }
+          : prev,
+      );
+    };
+
+    const onThrottled = (p: { retryAfterMs: number }) => {
+      setThrottledUntil(Date.now() + p.retryAfterMs);
+    };
+
     socket.on('room.state', onState);
+    socket.on('question.started', onQuestionStarted);
+    socket.on('question.experiencedUpdated', onExperiencedUpdated);
+    socket.on('question.hint', onHint);
+    socket.on('question.resolved', onResolved);
+    socket.on('skip.voteUpdated', onSkipUpdated);
+    socket.on('game.result', onGameResult);
+    socket.on('game.returnedToLobby', onReturnedToLobby);
+    socket.on('chat.throttled', onThrottled);
     socket.on('room.playerJoined', patchPlayers);
     socket.on('room.playerLeft', patchPlayers);
     socket.on('room.playersUpdated', patchPlayers);
@@ -275,6 +523,14 @@ export function useRoom(socket: Socket | null): RoomHook {
 
     return () => {
       socket.off('room.state', onState);
+      socket.off('question.started', onQuestionStarted);
+      socket.off('question.experiencedUpdated', onExperiencedUpdated);
+      socket.off('question.hint', onHint);
+      socket.off('question.resolved', onResolved);
+      socket.off('skip.voteUpdated', onSkipUpdated);
+      socket.off('game.result', onGameResult);
+      socket.off('game.returnedToLobby', onReturnedToLobby);
+      socket.off('chat.throttled', onThrottled);
       socket.off('room.playerJoined', patchPlayers);
       socket.off('room.playerLeft', patchPlayers);
       socket.off('room.playersUpdated', patchPlayers);
@@ -291,5 +547,12 @@ export function useRoom(socket: Socket | null): RoomHook {
     };
   }, [socket]);
 
-  return { snapshot, chat, error, clearError: () => setError(null), terminated };
+  return {
+    snapshot,
+    chat,
+    error,
+    clearError: () => setError(null),
+    terminated,
+    throttledUntil,
+  };
 }

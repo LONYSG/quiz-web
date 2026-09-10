@@ -3,7 +3,11 @@
 //
 // Phase 1 범위: 방 제목 / 참가자 목록 / 인원 / 방장 표시 / 초대 링크 복사 / 채팅
 // Phase 2 범위: 게임 설정 / 경험률 / 게임 시작 / 카운트다운
-// ★ 문제 표시와 정답 판정은 Phase 3다.
+// ★ Phase 3 범위 (R014): 문제 화면 / 타이머 / 힌트 / 스킵 / 점수판 / 결과 화면
+//
+// ★★ 채팅 입력창이 곧 답안 제출이다 (guide 12절 절대 규칙).
+//   ★ 별도의 답안 입력창을 만들지 않는다. 이 파일에 그것이 없는 것이 그 구현이다.
+//   ★ chat.send 에 **epoch 를 담는다** — 그것이 장치 B 의 클라이언트 쪽 절반이다.
 //
 // ★ 새로 만드는 버튼과 배지는 styles.css 의 라벨 규칙을 그대로 받는다 (A-2 / D-022).
 //   개별 요소에 white-space 를 다시 쓰지 않는다.
@@ -14,6 +18,8 @@ import type { Socket } from 'socket.io-client';
 import { formatExperienceRate } from '@quiz/shared';
 import Countdown from './Countdown.js';
 import GameSettings from './GameSettings.js';
+import Question from './Question.js';
+import GameResult from './GameResult.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
 
 interface Props {
@@ -21,13 +27,24 @@ interface Props {
   snapshot: RoomSnapshot;
   chat: ChatView[];
   onLeave: () => void;
-  /** 서버 시각 추정치. 카운트다운 표시에 쓴다 */
+  /** 서버 시각 추정치. 카운트다운·문제 타이머 표시에 쓴다 */
   serverNow: () => number;
+  /** ★ 도배 억제 안내 (Q-18). 입력창 바로 위에 인라인으로 표시한다 */
+  throttledUntil: number | null;
 }
 
-export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Props) {
+export default function Lobby({
+  socket,
+  snapshot,
+  chat,
+  onLeave,
+  serverNow,
+  throttledUntil,
+}: Props) {
   const [draft, setDraft] = useState('');
   const [copied, setCopied] = useState(false);
+  /** ★ 도배 억제 안내가 지금 유효한가. 시각이 지나면 스스로 사라진다 */
+  const [throttled, setThrottled] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
   /** 사용자가 과거 메시지를 보고 있으면 강제로 아래로 끌어내리지 않는다 (guide 36절) */
@@ -49,10 +66,26 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
     }
   }, [chat]);
 
+  // ★ 억제 안내는 서버가 준 시각까지만 보여주고 스스로 사라진다.
+  //   ★ 사용자가 닫아야 사라지는 알림으로 만들지 않는다 — 입력 중에 뜨는 것이므로
+  //     닫기 버튼을 누르게 하면 입력을 방해한다.
+  useEffect(() => {
+    if (throttledUntil === null) return undefined;
+    const remain = throttledUntil - Date.now();
+    if (remain <= 0) return undefined;
+    setThrottled(true);
+    const id = setTimeout(() => setThrottled(false), remain);
+    return () => clearTimeout(id);
+  }, [throttledUntil]);
+
   const send = () => {
     const text = draft.trim();
     if (!text) return;
-    socket.emit('chat.send', { text });
+    // ★★ 장치 B — 지금 보고 있는 문제의 epoch 를 함께 보낸다 (guide 20절 / R003 2-3).
+    //   ★ 이것이 "정답 공개 5초 구간에 친 메시지가 다음 문제의 정답과 우연히 일치해
+    //     정답 처리되는" 사고를 막는다.
+    //   ★ 문제가 없으면 null 이다. 서버가 판정하지 않는다.
+    socket.emit('chat.send', { text, epoch: snapshot.question?.epoch ?? null });
     setDraft('');
     // ★ PC에서 입력창을 계속 쓸 수 있어야 한다 (guide 14·42절).
     //   전송 후 포커스를 잃지 않게 한다.
@@ -72,6 +105,15 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
   };
 
   const me = snapshot.players.find((p) => p.accountId === snapshot.me.accountId);
+
+  /** 게임 계열 상태인가. 로비 전용 섹션을 접는 기준이다 */
+  const inGame =
+    snapshot.room.state === 'QUESTION_ACTIVE' ||
+    snapshot.room.state === 'QUESTION_RESOLVED' ||
+    snapshot.room.state === 'GAME_RESULT';
+
+  /** ★ 지금 답안이 판정되는 상태인가. 입력창 안내 문구를 바꾼다 */
+  const judging = snapshot.room.state === 'QUESTION_ACTIVE' && !snapshot.question?.selfExperienced;
 
   /**
    * 경험률 문구.
@@ -103,6 +145,11 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
         </button>
       </header>
 
+      {/* ★ 초대 링크·참가자·설정은 로비 계열 상태에서만 보여준다.
+          ★ 근거: 게임 중 화면 위쪽은 문제 지문과 남은 시간이 차지해야 한다 (D-032).
+            ★ 30초 승부의 핵심 정보다. 초대 링크가 그 위에 있으면 안 된다. */}
+      {inGame ? null : (
+        <>
       <section className="card">
         <h2>초대 링크</h2>
         <div className="field-row">
@@ -175,6 +222,8 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
         availableQuestionCount={snapshot.room.availableQuestionCount}
         isHost={snapshot.me.isHost}
       />
+        </>
+      )}
 
       {/* ── 카운트다운 (COUNTDOWN 상태) */}
       {snapshot.countdown && (
@@ -207,29 +256,37 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
         </section>
       )}
 
-      {/* ★★ TEMP-P3-02 — Phase 3에서 제거할 임시 화면.
-          Phase 2는 "게임이 시작되기 직전" 까지만 구현한다.
-          QUESTION_ACTIVE 인데 문제가 없는 상태를 그대로 보여 주는 것이 정직하다.
-          ★ Phase 3에서 이 블록을 문제 화면으로 교체한다. */}
-      {snapshot.game && (
-        <section className="card temp-panel">
+      {/* ── ★★ 문제 화면 (Phase 3). Phase 2 의 임시 안내 화면(옛 표식 02)을 교체한 자리다 */}
+      {snapshot.question && (
+        <Question
+          socket={socket}
+          question={snapshot.question}
+          resolution={snapshot.resolution}
+          skip={snapshot.skip}
+          serverNow={serverNow}
+          isHost={snapshot.me.isHost}
+          state={snapshot.room.state}
+          players={snapshot.players}
+          myAccountId={snapshot.me.accountId}
+        />
+      )}
+
+      {/* ── ★ 결과 화면 (TEMP-P4-01: Phase 4 에서 다시 만든다) */}
+      {snapshot.result && (
+        <GameResult
+          socket={socket}
+          result={snapshot.result}
+          isHost={snapshot.me.isHost}
+          myAccountId={snapshot.me.accountId}
+        />
+      )}
+
+      {/* ★ 게임이 시작됐는데 문제가 아직 없는 순간이 있을 수 있다 (첫 문제 선정 직전).
+          ★ 그 짧은 구간에 빈 화면을 보여주지 않는다. */}
+      {snapshot.game && !snapshot.question && !snapshot.result && (
+        <section className="card">
           <h2>게임 진행</h2>
-          <p className="big">게임이 시작되었습니다 — 문제 {snapshot.game.totalQuestions}개</p>
-          <p className="note">
-            ★ <strong>문제와 30초 타이머는 Phase 3에서 나옵니다.</strong> 지금 화면에
-            문제도, 남은 시간도, 점수도 보이지 않는 것이 <strong>정상</strong>입니다.
-            결함이 아닙니다. Phase 2는 "게임이 시작되기 직전 상태" 까지만 구현합니다 —
-            게임 레코드가 만들어지고 상태가 QUESTION_ACTIVE 로 바뀌는 것까지입니다.
-            {snapshot.game.gameId && (
-              <>
-                <br />
-                games.id = <span className="mono">{snapshot.game.gameId}</span>
-              </>
-            )}
-            <br />
-            ★ Phase 2에서는 로비로 돌아가는 경로가 없습니다(결과 화면이 Phase 4). 방을 나간 뒤
-            다시 만들어 주세요.
-          </p>
+          <p className="big dim">문제를 준비하고 있습니다…</p>
         </section>
       )}
 
@@ -259,6 +316,15 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
             ),
           )}
         </div>
+        {/* ★★ 도배 억제 안내 (Q-18). **본인에게만** 온다.
+            ★ 토스트로 띄우지 않는다 — 이 알림이 필요한 순간은 정확히 키보드가 올라와 있는
+              순간이고, iOS 에서 화면 하단 고정 토스트는 키보드에 가려질 수 있다 (D-032 한계).
+            ★ 그래서 입력창 바로 위 문서 흐름에 둔다. 키보드가 올라오면 함께 밀려 올라온다. */}
+        {throttled && (
+          <p className="warn throttle-note">
+            너무 빨리 보내고 있습니다. 잠시 후 다시 보내 주세요.
+          </p>
+        )}
         <div className="field-row">
           <input
             ref={inputRef}
@@ -281,7 +347,21 @@ export default function Lobby({ socket, snapshot, chat, onLeave, serverNow }: Pr
           </button>
         </div>
         <p className="note">
-          Phase 3부터는 여기 입력하는 모든 메시지가 동시에 답안 제출이 됩니다.
+          {judging ? (
+            <>
+              ★ <strong>여기 입력하는 모든 메시지가 곧 답안입니다.</strong> 정답과 일치하면
+              가장 먼저 보낸 사람이 1점을 얻습니다. 틀려도 그냥 채팅으로 남습니다.
+            </>
+          ) : snapshot.question?.selfExperienced ? (
+            <>
+              ★ 이미 풀어본 문제여서 <strong>이번 문제에서는 점수를 얻을 수 없습니다.</strong>{' '}
+              채팅은 자유롭게 할 수 있습니다.
+            </>
+          ) : snapshot.room.state === 'QUESTION_RESOLVED' ? (
+            <>★ 정답이 공개된 구간입니다. 지금 입력한 메시지는 정답으로 판정되지 않습니다.</>
+          ) : (
+            <>게임이 시작되면 여기 입력하는 모든 메시지가 동시에 답안 제출이 됩니다.</>
+          )}
         </p>
       </section>
 

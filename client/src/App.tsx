@@ -238,6 +238,7 @@ export default function App() {
             chat={room.chat}
             onLeave={leaveRoom}
             serverNow={clock.serverNow}
+            throttledUntil={room.throttledUntil}
           />
         ),
         foot: (

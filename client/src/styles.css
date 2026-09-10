@@ -545,9 +545,167 @@ form button[type='submit'] { width: 100%; }
   letter-spacing: -0.02em;
 }
 
-/* ★ 임시 화면임을 한눈에 알 수 있게 한다 (TEMP-P3-02).
-   Phase 3에서 이 클래스와 함께 화면도 사라진다. */
+/* ★ 임시 화면임을 한눈에 알 수 있게 한다.
+   ★ Phase 3(R014)에서 임시 안내 화면은 사라졌다. 클래스는 남긴다 —
+     앞으로도 "이 화면은 아직 임시다" 를 표시할 자리가 생긴다. */
 .temp-panel { border-style: dashed; border-color: #4a4436; }
+
+/* =============================================================================
+   ★★ Phase 3 — 문제 화면 (R014)
+
+   ★ 새로 만드는 버튼·배지는 위의 라벨 보호 규칙(D-022)을 자동으로 받는다.
+     ★ 개별 요소에 white-space 를 다시 쓰지 않는다. 그것이 그 규칙의 목적이다.
+
+   ★ 좁은 화면(320px)에서 확인할 것 —
+     · 문제 지문이 넘치지 않는다 (word-break)
+     · 타이머 숫자가 잘리지 않는다
+     · 점수판의 닉네임·배지·점수가 한 줄에 안 들어가면 줄바꿈된다
+   ============================================================================= */
+
+.question-card {
+  /* ★ 게임 중 가장 중요한 카드다. 테두리를 강조한다 */
+  border-color: #3a4a5a;
+}
+.question-card.urgent {
+  /* ★ 남은 10초 구간. 색으로 긴박함을 알린다 */
+  border-color: #5a4030;
+}
+
+.q-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.q-progress {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.badge.cat {
+  border-color: #3a4a5a;
+  color: #9fc0e0;
+}
+.badge.exp {
+  border-color: #4a4436;
+  color: #d8c48a;
+}
+
+.q-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+  /* ★ 긴 단어가 있어도 화면을 넘치지 않게 한다. 지문은 제목이 아니라 본문이다 */
+  overflow-wrap: anywhere;
+}
+.q-text.small {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.q-timer {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin: 12px 0 0;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+.q-timer.urgent {
+  color: var(--bad);
+}
+
+.q-hint {
+  margin: 12px 0 0;
+  font-size: 0.95rem;
+}
+.hint-value {
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.q-experienced {
+  margin-top: 12px;
+}
+
+/* ── 정답 공개 */
+.reveal-card {
+  border-color: #3a5a40;
+}
+.reveal-answer {
+  font-size: 1.15rem;
+  margin: 8px 0 0;
+  overflow-wrap: anywhere;
+}
+.reveal-answer strong {
+  color: var(--ok);
+  font-size: 1.3rem;
+}
+.last-reveal {
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border: 1px solid #3a5a40;
+  border-radius: 6px;
+}
+
+/* ── 스킵 */
+.skip-count {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 4px 0 0;
+}
+
+/* ── 방장 확인창 */
+.confirm {
+  padding: 10px 12px;
+  margin-top: 10px;
+  border: 1px solid #5a4030;
+  border-radius: 6px;
+}
+
+/* ── 점수판 / 순위 */
+.scores,
+.ranking {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.scores li,
+.ranking li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.scores li.offline,
+.ranking li.offline {
+  opacity: 0.55;
+}
+.score {
+  margin-left: auto;
+  font-weight: 600;
+}
+.rank {
+  min-width: 3.2em;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* ── ★ 도배 억제 안내. 입력창 바로 위 문서 흐름에 둔다 (iOS 키보드 대응) */
+.warn {
+  color: var(--bad);
+  font-size: 0.82rem;
+  margin: 12px 0 0;
+}
+.throttle-note {
+  margin-bottom: 0;
+}
 
 @media (max-width: 480px) {
   .chat-log { height: 200px; }
@@ -555,4 +713,9 @@ form button[type='submit'] { width: 100%; }
   /* 좁은 화면에서는 경험률을 닉네임 아래 줄로 내린다 */
   .rate { margin-left: 28px; flex-basis: 100%; }
   .countdown-big { font-size: 2.2rem; }
+  /* ★ Phase 3 — 좁은 화면에서 지문과 타이머를 줄인다 */
+  .q-text { font-size: 1.1rem; }
+  .q-timer { font-size: 2.2rem; }
+  /* ★ 점수판에서 점수가 닉네임 줄에 안 들어가면 아래로 내린다 */
+  .score { margin-left: auto; }
 }
