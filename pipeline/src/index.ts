@@ -28,14 +28,17 @@ export {
   canResume,
   canResumeNow,
   recordResume,
+  consumedResumes,
+  noteCallSucceeded,
+  noteRateLimited,
 } from './budget.js';
-export type { DayState, DaySegment, GateResult } from './budget.js';
+export type { DayState, DaySegment, GateResult, ResumeRecord } from './budget.js';
 export { ruleFilter, isHardCategory, hasOptionWrapper } from './filter.js';
 export { checkRules, dedupeAnswers, sanitizeVariants } from './rules.js';
 export { processBatch } from './process.js';
 export { rejudge } from './rejudge.js';
 export type { RejudgeStats } from './rejudge.js';
-export type { ProcessStats, ProcessOptions } from './process.js';
+export type { ProcessStats, ProcessOptions, BackcheckItemRaw } from './process.js';
 export {
   harvest,
   toRawQuestion,

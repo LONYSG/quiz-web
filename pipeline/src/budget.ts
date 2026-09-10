@@ -42,6 +42,21 @@ export interface DaySegment {
   closedBy429: boolean;
 }
 
+/** ★ 재개 한 건의 기록. outcome 은 Q-78 확정으로 추가했다 */
+export interface ResumeRecord {
+  at: string;
+  afterItems: number;
+  afterTokens: number;
+  /**
+   * ★ 재개 결과. 없으면(옛 형식) 'pending' 으로 본다.
+   *   ★ pending 을 소모로 세는 쪽이 안전하다 — 결과를 모르는 재개를 공짜로 주면
+   *     한 번의 게이트 통과로 재개가 여러 번 열릴 수 있다.
+   */
+  outcome?: 'pending' | 'success' | 'rate_limited';
+  /** ★ 결과가 확정된 시각. 실제 한도 패턴을 파악할 근거다 */
+  resolvedAt?: string;
+}
+
 export interface DayState {
   /** UTC 기준 날짜 (YYYY-MM-DD) */
   day: string;
@@ -57,8 +72,29 @@ export interface DayState {
   rateLimitedAt: string | null;
   /** ★ 429 를 받은 횟수 (재개 후 다시 받은 것도 센다) */
   rateLimitHits: number;
-  /** ★ 15분 대기 후 재개한 이력 */
-  resumes: { at: string; afterItems: number; afterTokens: number }[];
+  /**
+   * ★ 15분 대기 후 재개한 이력.
+   *
+   * ★★ outcome 이 Q-78 확정의 핵심이다.
+   *   'pending'      재개했으나 아직 호출 결과를 모른다
+   *   'success'      ★ 재개 뒤 호출이 성공했다 → **이 재개는 한도를 소모하지 않는다**
+   *   'rate_limited' 재개 뒤 또 429 를 받았다 → 그날 중단
+   *
+   * ★ 왜 'success' 를 소모로 세지 않는가 (Q-78 (B) 확정)
+   *   Q-62 규칙의 목적은 "429 를 반복해 맞으며 한도를 태우지 않는 것" 이다.
+   *   ★ 재개가 **성공했다면** 그 목적은 이미 달성됐다.
+   *   ★ 원래 문구도 "또 429 면 그날 중단" 이었다. 성공한 재개를 소모로 세는 것은
+   *     문구와도 다르다.
+   *
+   * ★★ R013 에서 이것이 실제로 일을 막았다 —
+   *   성공 여부와 무관하게 재개 1회를 소모해서 **하루에 스크립트를 하나만** 돌릴 수 있었고,
+   *   실측 3건 중 하나만 골라야 했다.
+   *
+   * ★ 무한 재개가 되지 않는 근거 — 재개 직후 429 면 outcome 이 'rate_limited' 가 되어
+   *   그날이 끝난다. ★ 즉 **성공한 호출을 사이에 끼우지 않고는 두 번 재개할 수 없다.**
+   *   그것이 이 규칙의 자체 제동 장치다.
+   */
+  resumes: ResumeRecord[];
   /** ★ 429 사이의 구간별 기록. 작업 B 측정의 원천 데이터 */
   segments: DaySegment[];
   /**
@@ -135,20 +171,69 @@ export function closeSegment(state: DayState, by429: boolean): void {
  *     그쪽은 사람이 실행하는 명령이고, 이쪽은 확정된 규칙에 따른 자동 재개다.
  */
 export function canResume(state: DayState): boolean {
-  const used = Array.isArray(state.resumes) ? state.resumes.length : 0;
-  return used < LIMITS.maxResumesPerDay;
+  return consumedResumes(state) < LIMITS.maxResumesPerDay;
 }
 
-/** 재개를 기록한다 */
+/**
+ * ★★ 한도를 소모한 재개의 수 (Q-78 (B) 확정).
+ *
+ * ★ 성공한 재개(outcome='success')는 세지 않는다. 근거는 ResumeRecord 주석에 있다.
+ * ★ pending 과 rate_limited 는 센다.
+ */
+export function consumedResumes(state: DayState): number {
+  if (!Array.isArray(state.resumes)) return 0;
+  return state.resumes.filter((r) => (r.outcome ?? 'pending') !== 'success').length;
+}
+
+/** 재개를 기록한다. ★ 결과는 아직 모르므로 pending 이다 */
 export function recordResume(state: DayState): void {
   if (!Array.isArray(state.resumes)) state.resumes = [];
   state.resumes.push({
     at: new Date().toISOString(),
     afterItems: state.items,
     afterTokens: state.tokens,
+    outcome: 'pending',
   });
   state.rateLimited = false;
   state.rateLimitedAt = null;
+}
+
+/** 결과를 기다리는 재개. 없으면 null */
+function pendingResume(state: DayState): ResumeRecord | null {
+  if (!Array.isArray(state.resumes)) return null;
+  for (let i = state.resumes.length - 1; i >= 0; i -= 1) {
+    const r = state.resumes[i]!;
+    if ((r.outcome ?? 'pending') === 'pending') return r;
+  }
+  return null;
+}
+
+/**
+ * ★★ 호출이 성공했다. 대기 중인 재개를 'success' 로 확정한다 (Q-78 (B)).
+ *
+ * ★ GeminiClient 가 200 을 받을 때마다 부른다. 대기 중인 재개가 없으면 아무 일도 하지 않는다.
+ * ★ 이것이 "재개가 성공하면 429 상태를 해제한다" 의 구현이다 —
+ *   rateLimited 는 recordResume 에서 이미 false 가 되었고,
+ *   ★ 여기서 **재개 한도까지** 돌려준다. 그래야 다음 스크립트도 돌 수 있다.
+ */
+export function noteCallSucceeded(state: DayState): void {
+  const r = pendingResume(state);
+  if (!r) return;
+  r.outcome = 'success';
+  r.resolvedAt = new Date().toISOString();
+}
+
+/**
+ * ★ 429 를 받았다. 대기 중인 재개를 'rate_limited' 로 확정한다.
+ *
+ * ★ 그러면 canResume 이 false 가 되어 **그날은 더 재개하지 않는다.**
+ *   Q-62 의 "재개 후 또 429 면 그날 중단" 이 이 한 줄로 지켜진다.
+ */
+export function noteRateLimited(state: DayState): void {
+  const r = pendingResume(state);
+  if (!r) return;
+  r.outcome = 'rate_limited';
+  r.resolvedAt = new Date().toISOString();
 }
 
 /**
@@ -217,17 +302,18 @@ export function checkGate(state: DayState): GateResult {
       return { ok: true };
     }
     const waitMin = Math.round(LIMITS.rateLimitWaitMs / 60000);
-    const used = (state.resumes ?? []).length;
+    const used = consumedResumes(state);
     const why =
       used >= LIMITS.maxResumesPerDay
-        ? `재개 한도(${LIMITS.maxResumesPerDay}회)를 이미 썼다`
+        ? `재개 뒤에도 429 를 받았다 (재개 한도 ${LIMITS.maxResumesPerDay}회 소진)`
         : `${waitMin}분이 지나지 않았다`;
     return {
       ok: false,
       reason: 'rate_limited_today',
       detail:
         `오늘(${state.day}) 429 를 받았다 (${state.rateLimitedAt}). ${why}. ` +
-        `★ Q-62: 15분 대기 후 1회만 재개한다. 그 뒤에는 다음 UTC 자정 이후에 다시 시도한다.`,
+        `★ Q-78: 15분 대기 후 1회 재개하고, 그 재개가 성공하면 한도를 돌려준다. ` +
+        `재개 직후 또 429 면 그날 중단한다.`,
     };
   }
   if (state.items >= LIMITS.dailyItems) {

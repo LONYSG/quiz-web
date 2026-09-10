@@ -21,7 +21,14 @@
 // =============================================================================
 
 import { LIMITS } from './config.js';
-import { closeSegment, currentSegment, saveState, type DayState } from './budget.js';
+import {
+  closeSegment,
+  currentSegment,
+  noteCallSucceeded,
+  noteRateLimited,
+  saveState,
+  type DayState,
+} from './budget.js';
 
 const BASE = 'https://generativelanguage.googleapis.com/v1beta';
 
@@ -150,6 +157,9 @@ export class GeminiClient {
         this.opts.state.rateLimited = true;
         this.opts.state.rateLimitedAt = new Date().toISOString();
         this.opts.state.rateLimitHits = (this.opts.state.rateLimitHits ?? 0) + 1;
+        // ★★ 재개 직후의 429 인가. 그렇다면 그 재개를 실패로 확정한다 (Q-78).
+        //   ★ 그러면 canResume 이 false 가 되어 그날은 더 재개하지 않는다.
+        noteRateLimited(this.opts.state);
         // ★ 이 구간을 429 로 닫는다. 구간별 소비량이 한도 측정의 원천 데이터다
         closeSegment(this.opts.state, true);
         await saveState(this.opts.root, this.opts.state);
@@ -197,6 +207,10 @@ export class GeminiClient {
         thoughts: json.usageMetadata?.thoughtsTokenCount ?? 0,
         total: json.usageMetadata?.totalTokenCount ?? 0,
       };
+
+      // ★★ 호출이 성공했다. 대기 중인 재개가 있으면 성공으로 확정한다 (Q-78 (B)).
+      //   ★ 그러면 재개 한도가 돌아오고, 같은 날 다른 스크립트도 돌 수 있다.
+      noteCallSucceeded(this.opts.state);
 
       // ★ 토큰과 호출 수를 즉시 누적한다. 실패해도 소비된 것은 기록한다.
       this.opts.state.tokens += usage.total;
