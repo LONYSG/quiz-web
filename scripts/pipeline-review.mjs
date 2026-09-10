@@ -13,6 +13,8 @@
 //   2. npm run pipeline:review -- --approve <ref,ref>   승인
 //      npm run pipeline:review -- --reject <ref> --note "이유"
 //      npm run pipeline:review -- --approve all           전부 승인
+//      ★ npm run pipeline:review -- --batch 2026-09-09-gen --approve all
+//        ★ 배치를 좁혀 승인한다. 건우가 승인한 것만 적재 대상이 되게 한다
 //   3. npm run pipeline:review -- --collect     approved/ rejected/ 로 나눠 저장
 //   4. npm run pipeline:load                    DB 적재
 //
@@ -31,6 +33,16 @@ const opt = (n, d) => {
   const i = args.indexOf(n);
   return i >= 0 && args[i + 1] !== undefined ? args[i + 1] : d;
 };
+/**
+ * ★ 대상 배치를 좁힌다 (R014 추가).
+ *
+ * ★ 왜 필요한가 — `--approve all` 은 processed/ 전체를 승인한다.
+ *   ★ 그런데 건우가 승인한 것은 **특정 배치**다 (예: R011 253건).
+ *   ★ 배치를 구분하지 않으면 승인받지 않은 배치까지 적재 대상이 된다.
+ *
+ * 예: --batch 2026-09-09-gen  (파일 이름 접두어)
+ */
+const BATCH_PREFIX = opt('--batch', null);
 const APPROVE = opt('--approve', null);
 const REJECT = opt('--reject', null);
 const NOTE = opt('--note', null);
@@ -60,7 +72,15 @@ if (files.length === 0) {
 
 const batches = [];
 for (const f of files.sort()) {
+  if (BATCH_PREFIX && !path.basename(f).startsWith(BATCH_PREFIX)) continue;
   batches.push({ file: f, data: JSON.parse(await readFile(f, 'utf8')) });
+}
+if (BATCH_PREFIX) {
+  console.log(`[review] ★ 대상 배치를 "${BATCH_PREFIX}*" 로 좁혔다 (${batches.length}개 파일)`);
+  if (batches.length === 0) {
+    console.error('[review] ★ 해당하는 배치가 없다. 접두어를 확인한다.');
+    process.exit(1);
+  }
 }
 
 // ── 승인/반려 적용
@@ -69,12 +89,35 @@ if (APPROVE || REJECT) {
   const rejectSet = new Set((REJECT ?? '').split(',').filter(Boolean));
   let changed = 0;
 
+  let worthBlocked = 0;
   for (const b of batches) {
     for (const item of b.data.items ?? []) {
       if (item.verdict !== 'accept') continue;
       const isApprove = approveSet === 'all' || approveSet.has?.(item.sourceRef);
       const isReject = rejectSet.has(item.sourceRef);
       if (!isApprove && !isReject) continue;
+
+      // ★★ 알 가치 하한을 여기서 강제한다 (Q-69 / Q-77 확정: 하한 3).
+      //   ★ 왜 여기인가 — 점수는 나중에 재평가될 수 있고(R013 g4), 배치 파일의
+      //     verdict 는 그 시점의 기준으로 정해진 값이다.
+      //   ★★ 승인은 "지금 기준으로 적재해도 되는가" 이므로 지금 기준을 다시 본다.
+      //   ★ 폐기하지 않는다. 격리한다 (Q-75).
+      if (isApprove && item.gen && (item.gen.worthKnowing ?? 0) < 3) {
+        item.verdict = 'quarantine';
+        item.rejectedAt = null;
+        item.rejectReasons = ['worth_too_low'];
+        item.quarantine = {
+          stage: 'select',
+          reasons: ['worth_too_low'],
+          detail: `★ 알 가치 ${item.gen.worthKnowing} < 3 (Q-77 확정 하한). ★ 버린 것이 아니다`,
+          judgedBy: 'rules(코드) / Q-77',
+          judgedAt: new Date().toISOString(),
+        };
+        item.finalDecision = null;
+        worthBlocked += 1;
+        continue;
+      }
+
       item.review.status = isReject ? 'rejected' : 'approved';
       if (NOTE) item.review.note = NOTE;
       item.review.reviewedAt = new Date().toISOString();
@@ -83,6 +126,10 @@ if (APPROVE || REJECT) {
     await writeFile(b.file, JSON.stringify(b.data, null, 2) + '\n', 'utf8');
   }
   console.log(`[review] ${changed}건의 검수 상태를 갱신했다.`);
+  if (worthBlocked > 0) {
+    console.log(`[review] ★★ 알 가치 3 미만 ${worthBlocked}건을 격리했다 (Q-77 하한).`);
+    console.log('[review]   ★ 버린 것이 아니다. verdict=quarantine 이고 근거가 남아 있다.');
+  }
   console.log('[review] 다음: npm run pipeline:review -- --collect');
   process.exit(0);
 }

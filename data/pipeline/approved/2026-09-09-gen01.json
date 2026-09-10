@@ -78,7 +78,8 @@
     "subsRemappedAt": "2026-09-09T07:23:23.607Z",
     "worthScoredAt": "2026-09-10T01:16:54.705Z",
     "worthScoredBy": "claude-code-R013-g4",
-    "quarantineMigratedAt": "2026-09-10T01:13:57.839Z"
+    "quarantineMigratedAt": "2026-09-10T01:13:57.839Z",
+    "collectedAt": "2026-09-10T06:03:49.918Z"
   },
   "items": [
     {
@@ -1268,101 +1269,6 @@
         "processedAt": "2026-09-09T01:09:29.509Z",
         "totalTokens": 0
       }
-    },
-    {
-      "sourceId": "gemini-gen",
-      "sourceRef": "62b2a00c08b38601",
-      "verdict": "quarantine",
-      "rejectedAt": "rules",
-      "rejectReasons": [
-        "answer_in_question"
-      ],
-      "source": {
-        "question": "[생성 요청] 인문·사회 > 서양사 > 중세 유럽",
-        "correct": "마그나 카르타",
-        "incorrect": [],
-        "category": "서양사",
-        "difficulty": "접근성 4 / 난이도 2"
-      },
-      "generated": {
-        "questionKo": "1215년 영국의 존 왕이 귀족들의 요구를 수용하여 서명한 문서로, 국왕의 권력을 법으로 제한한 대헌장의 라틴어 명칭은?",
-        "displayAnswer": "마그나 카르타",
-        "answers": [
-          "마그나 카르타",
-          "대헌장",
-          "Magna Carta",
-          "Magna Charta"
-        ],
-        "hintAnswer": "마그나 카르타",
-        "category": "인문·사회",
-        "difficulty": "easy",
-        "explanation": "마그나 카르타(대헌장)는 영국의 입헌주의와 법치주의 발전에 지대한 영향을 미친 문서다.",
-        "answerLang": "ko"
-      },
-      "gen": {
-        "midKey": "world-history-west",
-        "majorKey": "humanities",
-        "sub": "중세 유럽",
-        "accessibility": 4,
-        "difficultyScore": 2,
-        "offCategory": false,
-        "offCategoryReason": null,
-        "promptVersion": "g1",
-        "worthKnowing": 4,
-        "worthScoredBy": "claude-code-R013-g4",
-        "worthReason": "★ 명시하지 않은 것은 4다. 근거 —   그 문제들은 접근성 4~5 이고 교과 과정·대중 상식에 속한다.   ★ 새 척도의 4('그 분야의 체계나 어휘의 일부') 이상이 확실하다. ★ 그리고 선별 기준(Q-69)에서 4와 5는 결과가 같다 — 둘 다 통과한다.   ★ 4/5 를 가리는 정밀도는 판단에 영향을 주지 않는다."
-      },
-      "ai": {
-        "convertible": true,
-        "uniqueAnswer": true,
-        "krAccessible": 4,
-        "koreanTerm": true,
-        "confidence": 1,
-        "rejectReason": null
-      },
-      "backcheck": {
-        "answer": "마그나 카르타",
-        "result": "pass",
-        "confidence": 1,
-        "alternatives": [],
-        "note": null
-      },
-      "rules": {
-        "answerInQuestion": true,
-        "normalizedCollision": false,
-        "displayAnswerListed": true,
-        "hintAvailable": true,
-        "hintEqualsAnswer": false,
-        "answerShapeOk": true,
-        "reasons": [
-          "answer_in_question"
-        ],
-        "pass": false
-      },
-      "review": {
-        "status": "pending",
-        "note": "★ 격리 (rules): 규칙 검사 실패: answer_in_question"
-      },
-      "meta": {
-        "processModel": "gemini-3.7-flash",
-        "backcheckModel": "gemini-3.5-flash-lite",
-        "promptVersion": "p2+g1",
-        "processedAt": "2026-09-09T01:09:29.509Z",
-        "totalTokens": 0
-      },
-      "quarantine": {
-        "stage": "rules",
-        "reasons": [
-          "answer_in_question"
-        ],
-        "detail": "규칙 검사 실패: answer_in_question",
-        "judgedBy": "rules(코드)",
-        "judgedAt": "2026-09-09T01:09:29.509Z",
-        "confidence": 1,
-        "alternatives": [],
-        "migratedFrom": "reject (R013 재분류)"
-      },
-      "finalDecision": null
     },
     {
       "sourceId": "gemini-gen",
