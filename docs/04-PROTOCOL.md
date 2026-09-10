@@ -240,7 +240,12 @@ T02 / T04 / T15가 공통으로 수행한다. **순서가 중요하다.**
 > **핵심은 6~9가 끝난 뒤에는 판정에 필요한 모든 데이터가 메모리에 있다는 것이다.**
 > 그래서 정답 판정 블록에서 `await` 가 필요 없어진다.
 
-### ★★ 문제 선정 3단계 알고리즘 (R013 / Q-76. 미구현)
+### ★★ 문제 선정 3단계 알고리즘 (Q-76. ★ R014 구현 완료)
+
+> ★ 구현: `server/src/game/select.ts` 의 `selectNextQuestion()`.
+> ★★ **순수 함수다.** Room 을 받지 않고 입력만 받는다 — Q-20 의 "교체 가능한 모듈" 요구다.
+> ★ 그래서 DB 도 소켓도 없이 단위 테스트로 전 경로를 검증할 수 있다 (20건).
+> ★★ **그 안에 await 가 없다.** tick 이 부르고, 30초 타이머 시작 전에 끝나야 한다.
 
 > ★ 게임 상태에 `usedQuestionIds: Set<number>` 와
 > ★ `usedAnswerNorms: Set<string>` 을 둔다. 둘 다 게임 시작 때 비운다.
@@ -284,6 +289,39 @@ selectNextQuestion(room):
   ★ 근거: 출제 가능 문제가 수천 건이 되어도 문자열 Set 교집합은 메모리에서 즉시 끝난다.
     매 문제마다 DB 를 다시 읽으면 문제 시작 절차가 느려지고,
     그 절차는 30초 타이머 시작 전에 끝나야 한다.
+
+### ★★ Phase 3 구현과 명세의 대조 (R014)
+
+★ 명세대로 구현했다. ★ **명세와 다르게 한 것과 명세에 없던 것을 여기 적는다.**
+
+#### ★ 명세에 없던 것 — 추가한 것
+
+| 무엇 | 왜 | 근거 |
+|------|-----|------|
+| ★★ **활성 0명이면 문제 타이머를 멈춘다** | ★ 게임 중 퇴장은 슬롯을 유지하므로 전원이 나가도 게임이 남는다. ★★ tick 이 계속 돌면 **아무도 없는 게임이 끝까지 진행된다.** 실측으로 발견했다 | D-061. Phase 5 의 T21(PAUSED)을 상태 없이 근사한 것이다 |
+| ★ `record_failed` 시작 실패 사유 | ★ 게임 레코드를 못 만들면 경험 기록이 남을 곳이 없다. 게임을 시작하지 않는다 | D-059 (임시 코드 03 교체) |
+| ★ `game.returnedToLobby` 이벤트 | ★ 결과 → 로비 복귀에서 상태·설정·참가자가 함께 바뀐다. 클라이언트가 유추하면 서버와 어긋난다 | Phase 2 의 `state` 추가와 같은 이유 |
+| ★ `game_questions.selection_stage` | ★ 정답 중복 금지가 실제로 얼마나 발동하는지 운영자가 알아야 한다 | 마이그레이션 0004 / D-054 |
+| ★ 새 문제 시작 시 스크롤 | ★ 채팅을 보다가 새 문제가 시작되면 지문이 화면 밖이었다 (실측 top=-371px) | D-062 |
+
+#### ★ 명세보다 좁힌 것
+
+| 무엇 | 명세 | 구현 | 근거 |
+|------|------|------|------|
+| `chat.send` 의 `epoch` | "★ epoch 필수" | ★ 타입은 `number \| null` 을 받되, **없으면 판정하지 않는다**(`epoch_mismatch`) | ★ 필수로 만들어 `BAD_REQUEST` 를 내면 옛 클라이언트가 **채팅조차 못 한다.** ★ 채팅은 되고 판정만 안 되는 것이 규칙의 의도에 맞다 (guide 12절: 모든 메시지가 채팅으로 남는다) |
+| `skip.vote` | epoch 포함 | ★ epoch 가 다르면 `INVALID_STATE` 로 **거부하고 알린다** | ★ 사용자가 누른 버튼이 무시되면 고장으로 받아들인다 (R008 교훈) |
+
+#### ★ 확인한 것 — 명세대로 동작한다 (봇 실측)
+
+| 항목 | 실측 |
+|------|------|
+| ★★ 동시 정답 30회 | ★ `question.resolved` 두 번 온 문제 **0건** / 늦은 정답 87건 전부 `already_resolved` |
+| ★★ 장치 B (epoch) | ★ 낡은 epoch 의 정답 **판정 안 됨** / 같은 정답을 올바른 epoch 로 보내면 정답 (대조군) |
+| ★ 30초 타이머 오차 | ★ **+22ms / +48ms** (tick 주기 100ms) |
+| ★ 힌트 시점 | ★ 남은 **9,934ms** 에 push / 한 번만 |
+| ★ 마지막 문제 즉시 결과 | ★ `question.resolved` → `game.result` 간격 **0ms** |
+| ★ 경험 기록 | ★ 정답 공개 문제 × 그 순간 접속자 (봇 10명 6문제 → **60행**) |
+| ★ 동점 공동 순위 | ★ `1위 1위 1위 1위 5위 5위 …` |
 
 ---
 
@@ -553,10 +591,11 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 > ★ `game.started.gameId` 는 **null 일 수 있다.** 상태 전이를 동기로 끝낸 뒤
 > `games` INSERT 를 하기 때문이다. INSERT 가 실패하면 null 로 남는다.
 > Phase 3에서는 그 경우 게임을 시작하지 않도록 바꿔야 한다 (TEMP-P3-03).
-| `question.started` | S→C | `{ epoch, index, total, text, categoryName, startedAt, endsAt, experiencedNicknames[], selfExperienced }` ★ 정답·힌트·해설 미포함 |
-| `question.experiencedUpdated` | S→C | `{ epoch, experiencedNicknames, selfExperienced }` |
-| `question.hint` | S→C | `{ epoch, hint \| null }` — 남은 10초 시점에 서버가 push |
-| `question.resolved` | S→C | `{ epoch, reason, winnerAccountId, displayAnswer, explanation, scores[], nextAt \| null }` — 마지막 문제면 nextAt=null |
+| `question.started` | S→C | `{ epoch, index, total, text, categoryName, startedAt, endsAt, experiencedNicknames[], selfExperienced, state }` — ✅ Phase 3. ★★ 정답·힌트·해설 미포함 (봇이 페이로드 키를 검사한다) |
+| `question.experiencedUpdated` | S→C | `{ epoch, experiencedNicknames, selfExperienced }` — ✅ Phase 3 |
+| `question.hint` | S→C | `{ epoch, hint \| null }` — ✅ Phase 3. 남은 10초 시점에 서버가 push |
+| `question.resolved` | S→C | `{ epoch, reason, winnerAccountId, displayAnswer, explanation, scores[], nextAt \| null, state }` — ✅ Phase 3. 마지막 문제면 nextAt=null |
+| ★ `game.returnedToLobby` | S→C | `{ state, settings, settingsLocked, players[], activeCount }` — ✅ Phase 3 **명세 추가** (T30/T31) |
 
 ### 일시정지 ★
 
@@ -570,16 +609,16 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 
 | 이벤트 | 방향 | 페이로드 |
 |--------|------|---------|
-| `chat.send` | C→S | `{ text, epoch }` ★ epoch 필수. **Phase 1에서는 `{ text }` 만** (판정이 없어 epoch가 무의미하다. Phase 3에서 필수가 된다) |
+| `chat.send` | C→S | `{ text, epoch }` — ✅ Phase 3. ★ `epoch` 가 없거나 다르면 **판정만 하지 않는다.** 채팅은 그대로 나간다 (3장 대조 표 참조) |
 | `chat.message` | S→C | `{ id, seq, accountId, nickname, colorIndex, text, masked, ts }` ★ text/masked는 수신자별로 다를 수 있다 |
-| `chat.throttled` | S→C | `{ retryAfterMs }` — **본인에게만** |
-| `skip.vote` | C→S | `{ vote: boolean, epoch }` |
-| `skip.voteUpdated` | S→C | `{ epoch, votes, threshold, activeCount }` ★ **투표자 명단을 보내지 않는다** |
-| `host.forceSkip` | C→S | `{ epoch }` (방장, 확인창 후) |
-| `host.forceEnd` | C→S | `{}` (방장, 확인창 후) |
+| `chat.throttled` | S→C | `{ retryAfterMs }` — ✅ Phase 3. **본인에게만** |
+| `skip.vote` | C→S | `{ vote: boolean, epoch }` — ✅ Phase 3 |
+| `skip.voteUpdated` | S→C | `{ epoch, votes, threshold, activeCount }` — ✅ Phase 3. ★★ **투표자 명단을 보내지 않는다** (봇이 키를 검사한다) |
+| `host.forceSkip` | C→S | `{ epoch }` (방장, 확인창 후) — ✅ Phase 3. ★ 낡은 epoch 는 거부한다 |
+| `host.forceEnd` | C→S | `{}` (방장, 확인창 후) — ✅ Phase 3. ★★ epoch 를 담지 않는다 (게임 전체 액션) |
 | `host.kickDisconnected` | C→S | `{ accountId }` (방장) |
-| `game.again` / `game.toLobby` | C→S | `{}` (방장) |
-| `game.result` | S→C | `{ gameId, endReason, ranking[], lastQuestionReveal, abortedNote }` |
+| `game.again` / `game.toLobby` | C→S | `{}` (방장) — ✅ Phase 3. ★★ 서버 동작이 동일하다 |
+| `game.result` | S→C | `{ gameId, endReason, ranking[], lastQuestionReveal, abortedNote, endedQuestionCount, totalQuestions }` — ✅ Phase 3 |
 
 ### 시각 / 연결 유지
 
