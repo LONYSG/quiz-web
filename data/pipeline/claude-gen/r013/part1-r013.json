@@ -1,0 +1,944 @@
+{
+  "_meta": {
+    "purpose": "★ R013 작업 D-1 — Opus 가 직접 생성한 50건 샘플",
+    "generator": "claude-code (Opus)",
+    "promptVersion": "g4",
+    "round": "R013",
+    "slotDesign": [
+      "★ R012 에서 실제로 오류가 나온 분야를 일부러 넣었다 (지시).",
+      "  화학·원소 8건  — R012-F1 Hydrargyrum 사실 오류가 나온 분야",
+      "  서양사 7건     — R012-S1 '그리구리우스' 표기 오류가 나온 분야",
+      "  보드게임·체스 6건 — R012-U1 '룩' 유일성 결함이 나온 분야",
+      "  한국 대중음악 5건 — R012-S2 작품명 오류가 나온 분야",
+      "★ 나머지 24건은 12개 중분류에 2건씩 — 분야 폭이 좁아지지 않았는지 보기 위함이다.",
+      "★★ R012 오류의 '정확한 형태' 를 일부러 같은 소재로 다시 만들었다 —",
+      "  Hg/hydrargyrum(#1), 카노사(그레고리우스 7세, #11), 룩의 한정어(#16).",
+      "  ★ 근거: 오류가 났던 소재를 피하면 프롬프트가 고쳐졌는지 알 수 없다."
+    ],
+    "generatedAt": "2026-09-10T00:00:00.000Z",
+    "reviewedAt": "2026-09-10T01:40:00.000Z",
+    "reviewNote": [
+      "★★ 이 파일은 생성(Opus) → 검토 → 생성 단계 수정 을 거친 것이다.",
+      "★ 검토에서 찾은 5건을 고쳤다. 상세는 _review-opus-as-sonnet.json 에 있다.",
+      "★★ 이 검토는 **자기 검토다. 신뢰도가 낮다.**",
+      "  근거 — R012 에서 같은 방식으로 \"사실 오류 0건\" 이라 보고했고 뒤에 4건이 나왔다."
+    ]
+  },
+  "items": [
+    {
+      "slotId": "chemistry@원소 기호#1",
+      "question": "'물 같은 은' 을 뜻하는 라틴어 이름 hydrargyrum 에서 원소 기호 Hg 가 유래한, 상온에서 액체인 금속 원소는?",
+      "displayAnswer": "수은",
+      "answers": [
+        "수은",
+        "水銀"
+      ],
+      "hintAnswer": "수은",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "hydrargyrum 은 그리스어 hydor(물)와 argyros(은)에서 온 라틴어명이며, 여기서 원소 기호 Hg 가 나왔다. 상온에서 액체인 유일한 금속이다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.97
+    },
+    {
+      "slotId": "chemistry@원소 기호#2",
+      "question": "모든 금속 가운데 녹는점이 가장 높아 예전에 전구 필라멘트로 쓰였고, 원소 기호가 W 인 금속 원소는?",
+      "displayAnswer": "텅스텐",
+      "answers": [
+        "텅스텐",
+        "tungsten",
+        "볼프람"
+      ],
+      "hintAnswer": "텅스텐",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "녹는점이 약 3422도로 금속 중 가장 높다. 원소 기호 W 는 독일어 이름 Wolfram 에서 왔다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "chemistry@원소 기호#3",
+      "question": "구리와 함께 섞어 청동을 만드는 데 쓰이며, 원소 기호가 Sn 인 금속 원소는?",
+      "displayAnswer": "주석",
+      "answers": [
+        "주석",
+        "朱錫"
+      ],
+      "hintAnswer": "주석",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "청동은 구리와 주석의 합금이다. 원소 기호 Sn 은 라틴어 stannum 에서 왔다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "chemistry@주기율표#1",
+      "question": "주기율표 18족에 속하며 다른 원소와 거의 반응하지 않는 기체 원소들을 묶어 부르는 이름은?",
+      "displayAnswer": "비활성 기체",
+      "answers": [
+        "비활성 기체",
+        "불활성기체",
+        "희가스"
+      ],
+      "hintAnswer": "비활성 기체",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 5,
+      "explanation": "헬륨·네온·아르곤 등이 여기 속한다. 가장 바깥 전자껍질이 채워져 있어 반응성이 매우 낮다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "chemistry@주기율표#2",
+      "question": "원소를 성질이 비슷한 것끼리 묶어 배열하고, 빈 자리를 남겨 아직 발견되지 않은 원소를 예측한 러시아 화학자는?",
+      "displayAnswer": "멘델레예프",
+      "answers": [
+        "멘델레예프",
+        "드미트리 멘델레예프",
+        "Mendeleev"
+      ],
+      "hintAnswer": "멘델레예프",
+      "accessibility": 5,
+      "difficulty": 2,
+      "worthKnowing": 5,
+      "explanation": "1869년 원소를 원자량 순으로 배열한 표를 발표했고, 빈 자리를 남겨 갈륨·게르마늄 등의 성질을 미리 예측했다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "chemistry@화합물·분자#1",
+      "question": "화학식 NaHCO3 로 나타내며, 열을 받으면 이산화탄소를 내어 반죽을 부풀리는 데 쓰이는 물질은?",
+      "displayAnswer": "탄산수소나트륨",
+      "answers": [
+        "탄산수소나트륨",
+        "베이킹소다",
+        "중조",
+        "중탄산나트륨"
+      ],
+      "hintAnswer": "탄산수소나트륨",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "가열하면 분해되어 이산화탄소가 나오므로 제빵에 쓴다. 베이킹소다·중조라는 이름으로도 불린다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "chemistry@화합물·분자#2",
+      "question": "다이아몬드와 흑연처럼 같은 원소로만 이루어졌는데 원자 배열이 달라 성질이 다른 물질들을 서로 무엇이라 부르는가?",
+      "displayAnswer": "동소체",
+      "answers": [
+        "동소체",
+        "同素體",
+        "allotrope"
+      ],
+      "hintAnswer": "동소체",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 5,
+      "explanation": "둘 다 탄소만으로 이루어졌으나 결합 구조가 달라 굳기와 전기 전도성이 크게 다르다. 산소와 오존도 동소체 관계다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "chemistry@실생활 화학#1",
+      "question": "김치나 요구르트가 익으면서 신맛이 나는 것은 어떤 산이 만들어지기 때문인가?",
+      "displayAnswer": "젖산",
+      "answers": [
+        "젖산",
+        "락트산",
+        "lactic acid"
+      ],
+      "hintAnswer": "젖산",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "유산균이 당을 분해해 젖산을 만드는 젖산 발효가 일어난다. 이 산이 신맛을 내고 보존성도 높인다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "world-history-west@고대 그리스·로마#1",
+      "question": "기원전 480년 스파르타의 레오니다스 왕이 소수의 병력으로 페르시아 대군을 좁은 길목에서 막아낸 전투는?",
+      "displayAnswer": "테르모필레 전투",
+      "answers": [
+        "테르모필레 전투",
+        "테르모필레",
+        "Thermopylae"
+      ],
+      "hintAnswer": "테르모필레 전투",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "제2차 페르시아 전쟁 때의 전투로, 그리스 연합군은 결국 패했으나 시간을 벌어 살라미스 해전으로 이어졌다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "world-history-west@고대 그리스·로마#2",
+      "question": "카이사르·폼페이우스·크라수스 세 사람이 로마 공화정 말기에 맺은 비공식 정치 동맹을 무엇이라 부르는가?",
+      "displayAnswer": "제1차 삼두정치",
+      "answers": [
+        "제1차 삼두정치",
+        "삼두정치",
+        "1차 삼두정치"
+      ],
+      "hintAnswer": "제1차 삼두정치",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "기원전 60년경 세 사람이 원로원을 견제하려고 맺은 사적 협약이다. 뒤에 옥타비아누스·안토니우스·레피두스의 제2차 삼두정치가 있었다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.92
+    },
+    {
+      "slotId": "world-history-west@중세 유럽#1",
+      "question": "1077년 신성 로마 제국 황제 하인리히 4세가 파문을 풀어 달라고 이탈리아 북부의 성 앞에서 사흘을 빌었다는 사건을 무엇이라 부르는가?",
+      "displayAnswer": "카노사의 굴욕",
+      "answers": [
+        "카노사의 굴욕",
+        "카노사 굴욕"
+      ],
+      "hintAnswer": "카노사의 굴욕",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 5,
+      "explanation": "교황 그레고리우스 7세와 하인리히 4세가 성직자 임명권을 두고 다툰 서임권 투쟁의 한 장면이다. 교황권이 황제권보다 우위에 있음을 보여준 사건으로 꼽힌다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "world-history-west@중세 유럽#2",
+      "question": "1215년 잉글랜드 존 왕이 귀족들의 압박에 밀려 왕의 권한을 문서로 제한하기로 승인한 문서는?",
+      "displayAnswer": "마그나 카르타",
+      "answers": [
+        "마그나 카르타",
+        "대헌장",
+        "Magna Carta"
+      ],
+      "hintAnswer": "마그나 카르타",
+      "accessibility": 5,
+      "difficulty": 2,
+      "worthKnowing": 5,
+      "explanation": "왕도 법 아래에 있다는 원칙을 처음 문서로 남긴 것으로 평가되어, 뒤의 입헌주의 전통의 출발점으로 꼽힌다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "world-history-west@르네상스·대항해#1",
+      "question": "1519년 다섯 척으로 출항해 세계 일주 항로를 개척했으나, 본인은 1521년 필리핀에서 전사한 항해자는?",
+      "displayAnswer": "마젤란",
+      "answers": [
+        "마젤란",
+        "페르디난드 마젤란",
+        "Magellan"
+      ],
+      "hintAnswer": "마젤란",
+      "accessibility": 5,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "마젤란은 항해 도중 사망했고, 남은 배 한 척이 엘카노의 지휘로 1522년 스페인에 돌아와 최초의 세계 일주를 완성했다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "world-history-west@근대 유럽·혁명#1",
+      "question": "1789년 7월 14일 파리 시민들이 습격한, 프랑스 혁명의 시작으로 꼽히는 감옥의 이름은?",
+      "displayAnswer": "바스티유",
+      "answers": [
+        "바스티유",
+        "바스티유 감옥",
+        "Bastille"
+      ],
+      "hintAnswer": "바스티유",
+      "accessibility": 5,
+      "difficulty": 2,
+      "worthKnowing": 5,
+      "explanation": "당시 수감자는 몇 명뿐이었으나 왕권의 상징이었기에 습격의 의미가 컸다. 7월 14일은 프랑스 국경일이 되었다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "world-history-west@근대 유럽·혁명#2",
+      "question": "1815년 나폴레옹이 마지막으로 패배해 몰락이 확정된, 오늘날 벨기에 땅에서 벌어진 전투는?",
+      "displayAnswer": "워털루 전투",
+      "answers": [
+        "워털루 전투",
+        "워털루",
+        "Waterloo"
+      ],
+      "hintAnswer": "워털루 전투",
+      "accessibility": 5,
+      "difficulty": 2,
+      "worthKnowing": 5,
+      "explanation": "엘바섬을 탈출해 돌아온 나폴레옹의 백일 천하가 이 전투로 끝났고, 그는 세인트헬레나섬으로 유배되었다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "board-game@체스#1",
+      "question": "체스에서 가로와 세로 직선으로만 움직이면서 한 번에 나아갈 칸 수에 제한이 없는 기물은?",
+      "displayAnswer": "룩",
+      "answers": [
+        "룩",
+        "rook"
+      ],
+      "hintAnswer": "룩",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "퀸은 대각선도 움직이고, 폰과 킹은 나아갈 칸 수가 제한되므로 두 조건을 함께 만족하는 기물은 룩뿐이다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "board-game@체스#2",
+      "question": "체스에서 킹과 룩을 한 수에 함께 움직여 킹을 옆으로 피신시키는 특별한 수를 무엇이라 하는가?",
+      "displayAnswer": "캐슬링",
+      "answers": [
+        "캐슬링",
+        "castling"
+      ],
+      "hintAnswer": "캐슬링",
+      "accessibility": 3,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "킹과 룩이 아직 움직이지 않았고 사이에 기물이 없어야 하며, 그 밖에 킹이 체크 상태가 아니어야 하는 등의 조건이 더 있다. 한 수에 두 기물을 움직이는 유일한 수다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "board-game@체스#3",
+      "question": "체스에서 킹이 공격받고 있지는 않은데 둘 수 있는 합법적인 수가 하나도 없어 무승부가 되는 상황을 무엇이라 하는가?",
+      "displayAnswer": "스테일메이트",
+      "answers": [
+        "스테일메이트",
+        "stalemate"
+      ],
+      "hintAnswer": "스테일메이트",
+      "accessibility": 3,
+      "difficulty": 4,
+      "worthKnowing": 4,
+      "explanation": "킹이 공격받으면서 피할 수 없는 체크메이트와 다르다. 스테일메이트는 패배가 아니라 무승부다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "board-game@바둑·장기#1",
+      "question": "바둑에서 흑이 먼저 두는 이점을 보완하려고 계가할 때 백에게 미리 얹어 주는 점수를 무엇이라 하는가?",
+      "displayAnswer": "덤",
+      "answers": [
+        "덤"
+      ],
+      "hintAnswer": "덤",
+      "accessibility": 3,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "흑의 선착 이득을 상쇄하기 위한 규칙으로, 대회 규정에 따라 6.5점이나 7.5점 등을 준다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "board-game@바둑·장기#2",
+      "question": "장기에서 궁이 공격을 피할 방법이 없어 그대로 지는 것을 무엇이라 하는가?",
+      "displayAnswer": "외통",
+      "answers": [
+        "외통",
+        "외통수"
+      ],
+      "hintAnswer": "외통",
+      "accessibility": 3,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "체스의 체크메이트에 해당한다. 장기에서는 궁이 잡히면 그 판이 끝난다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.9
+    },
+    {
+      "slotId": "board-game@화투·카드#1",
+      "question": "포커에서 같은 무늬의 연속된 숫자 다섯 장으로 이루어진 패를 무엇이라 부르는가?",
+      "displayAnswer": "스트레이트 플러시",
+      "answers": [
+        "스트레이트 플러시",
+        "straight flush"
+      ],
+      "hintAnswer": "스트레이트 플러시",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "같은 무늬만 모으면 플러시, 무늬 상관없이 연속된 숫자만 모으면 스트레이트다. 둘을 동시에 만족한 것이 스트레이트 플러시다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "kr-music@1990년대 가요#1",
+      "question": "1992년 데뷔곡 〈난 알아요〉로 한국 대중음악에 랩과 댄스를 본격적으로 들여온 3인조 그룹은?",
+      "displayAnswer": "서태지와 아이들",
+      "answers": [
+        "서태지와 아이들"
+      ],
+      "hintAnswer": "서태지와 아이들",
+      "accessibility": 5,
+      "difficulty": 2,
+      "worthKnowing": 5,
+      "explanation": "서태지·이주노·양현석의 3인조로, 1992년 데뷔해 1996년 은퇴했다. 이후 한국 대중음악의 흐름을 바꾼 것으로 평가된다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "kr-music@1990년대 가요#2",
+      "question": "1995년 서태지와 아이들 4집에 실렸으나 가사 사전심의 문제로 논란이 되어, 음반 사전심의 제도 폐지 논의에 불을 붙인 곡은?",
+      "displayAnswer": "시대유감",
+      "answers": [
+        "시대유감"
+      ],
+      "hintAnswer": "시대유감",
+      "accessibility": 3,
+      "difficulty": 4,
+      "worthKnowing": 4,
+      "explanation": "심의로 가사를 고치라는 요구를 받자 가사를 뺀 연주곡으로 수록했다. 이 논란이 이어져 1996년 음반 사전심의 제도가 폐지되었다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.9
+    },
+    {
+      "slotId": "kr-music@2000년대 이후 가요#1",
+      "question": "2012년 발표되어 유튜브에서 처음으로 조회수 10억 회를 넘긴 한국 가수의 노래는?",
+      "displayAnswer": "강남스타일",
+      "answers": [
+        "강남스타일",
+        "Gangnam Style"
+      ],
+      "hintAnswer": "강남스타일",
+      "accessibility": 5,
+      "difficulty": 1,
+      "worthKnowing": 4,
+      "explanation": "싸이의 곡으로, 2012년 12월 유튜브 영상 가운데 최초로 10억 조회를 기록했다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "kr-music@트로트·포크#1",
+      "question": "1970년대 한국 포크 음악을 대표하는 인물로, 〈아침이슬〉을 만든 가수 겸 작곡가는?",
+      "displayAnswer": "김민기",
+      "answers": [
+        "김민기"
+      ],
+      "hintAnswer": "김민기",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 5,
+      "explanation": "1971년 발표한 〈아침이슬〉은 뒤에 금지곡이 되었다가 해금되었고, 한국 포크의 상징적인 곡으로 남았다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "kr-music@1980년대 이전 가요#1",
+      "question": "1964년 발표되어 이미자를 대표하는 노래로 자리 잡은, 한국 트로트의 고전으로 꼽히는 곡은?",
+      "displayAnswer": "동백아가씨",
+      "answers": [
+        "동백아가씨"
+      ],
+      "hintAnswer": "동백아가씨",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "같은 이름의 영화 주제가로 발표되어 크게 인기를 얻었고, 한동안 방송 금지곡이 되었다가 해금되었다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.9
+    },
+    {
+      "slotId": "kr-language@순우리말#1",
+      "question": "비를 굵기에 따라 부르는 우리말 가운데, 이슬비보다 가늘게 안개처럼 흩뿌리듯 내리는 비를 뜻하는 말은?",
+      "displayAnswer": "는개",
+      "answers": [
+        "는개"
+      ],
+      "hintAnswer": "는개",
+      "accessibility": 3,
+      "difficulty": 4,
+      "worthKnowing": 4,
+      "explanation": "비를 굵기 순으로 부르는 우리말 어휘 가운데 이슬비보다 가는 단계에 해당한다. 이런 낱말이 여러 단계로 나뉘어 있다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.9
+    },
+    {
+      "slotId": "kr-language@사자성어#1",
+      "question": "겉으로는 따르는 척하면서 속으로는 등을 돌린다는 뜻의 사자성어는?",
+      "displayAnswer": "면종복배",
+      "answers": [
+        "면종복배",
+        "面從腹背"
+      ],
+      "hintAnswer": "면종복배",
+      "accessibility": 3,
+      "difficulty": 4,
+      "worthKnowing": 4,
+      "explanation": "얼굴로는 따르고 배로는 등진다는 뜻이다. 겉과 속이 다름을 뜻하는 표리부동과 뜻이 가깝다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.9
+    },
+    {
+      "slotId": "kr-food@향토 음식#1",
+      "question": "전라도 지역에서 삭힌 홍어와 돼지고기, 묵은지를 함께 싸서 먹는 음식을 무엇이라 하는가?",
+      "displayAnswer": "홍어삼합",
+      "answers": [
+        "홍어삼합",
+        "삼합"
+      ],
+      "hintAnswer": "홍어삼합",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "세 가지를 함께 먹어 삼합이라 부른다. 홍어의 강한 맛을 고기와 김치가 눌러 준다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "kr-food@밥·국·찌개#1",
+      "question": "정월 대보름에 여러 가지 곡식을 섞어 지어 먹는 밥을 무엇이라 하는가?",
+      "displayAnswer": "오곡밥",
+      "answers": [
+        "오곡밥",
+        "五穀飯"
+      ],
+      "hintAnswer": "오곡밥",
+      "accessibility": 5,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "쌀·보리·조·콩·기장 등 다섯 가지 이상의 곡식을 섞어 짓는다. 대보름에 묵은 나물과 함께 먹는 풍습이 있다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "world-language@외래어 어원#1",
+      "question": "한국어 '고무' 는 어느 나라 말에서 들어온 외래어인가?",
+      "displayAnswer": "프랑스어",
+      "answers": [
+        "프랑스어",
+        "불어"
+      ],
+      "hintAnswer": "프랑스어",
+      "accessibility": 3,
+      "difficulty": 4,
+      "worthKnowing": 4,
+      "explanation": "프랑스어 gomme 에서 온 말이다. 영어 rubber 가 아니라 프랑스어 계통이 들어온 사례다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.9
+    },
+    {
+      "slotId": "world-language@라틴어·그리스어 어근#1",
+      "question": "'많은' 을 뜻하는 그리스어 poly- 와 '신' 을 뜻하는 theos 가 합쳐진 말로, 여러 신을 함께 믿는 신앙을 무엇이라 하는가?",
+      "displayAnswer": "다신교",
+      "answers": [
+        "다신교",
+        "다신론",
+        "polytheism"
+      ],
+      "hintAnswer": "다신교",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "반대말은 하나의 신만 믿는 일신교(monotheism)로, mono-(하나)와 theos 가 합쳐진 말이다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "myth@그리스·로마 신화#1",
+      "question": "그리스 신화에서 인간에게 불을 가져다준 벌로 바위에 묶여 독수리에게 간을 쪼이는 형벌을 받은 신은?",
+      "displayAnswer": "프로메테우스",
+      "answers": [
+        "프로메테우스",
+        "Prometheus"
+      ],
+      "hintAnswer": "프로메테우스",
+      "accessibility": 5,
+      "difficulty": 2,
+      "worthKnowing": 5,
+      "explanation": "이름은 '먼저 아는 자' 를 뜻한다. 뒤에 헤라클레스가 독수리를 쏘아 그를 풀어 주었다고 전한다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "myth@북유럽 신화#1",
+      "question": "북유럽 신화에서 신들과 거인들이 맞붙어 세계가 멸망하고 다시 태어난다는 최후의 싸움을 무엇이라 하는가?",
+      "displayAnswer": "라그나로크",
+      "answers": [
+        "라그나로크",
+        "라그나뢰크",
+        "Ragnarok"
+      ],
+      "hintAnswer": "라그나로크",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "'신들의 운명' 을 뜻하는 말로, 오딘과 토르 등 주요 신들이 이 싸움에서 죽는다고 전한다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "astronomy@태양계#1",
+      "question": "태양계의 여덟 행성 가운데 자전축이 약 98도로 거의 누운 채 자전하는 행성은?",
+      "displayAnswer": "천왕성",
+      "answers": [
+        "천왕성",
+        "Uranus"
+      ],
+      "hintAnswer": "천왕성",
+      "accessibility": 3,
+      "difficulty": 4,
+      "worthKnowing": 4,
+      "explanation": "자전축이 공전면과 거의 나란하다. 그래서 계절 변화가 다른 행성과 크게 다르고, 과거 큰 충돌 때문이라는 설명이 유력하다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "astronomy@별·별자리#1",
+      "question": "오리온자리에서 사냥꾼의 어깨에 해당하는 자리에 붉게 보이는 1등성의 이름은?",
+      "displayAnswer": "베텔게우스",
+      "answers": [
+        "베텔게우스",
+        "베텔기우스",
+        "Betelgeuse"
+      ],
+      "hintAnswer": "베텔게우스",
+      "accessibility": 3,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "적색 초거성으로, 지름이 태양의 수백 배에 이른다. 오리온자리의 반대쪽 발에 있는 청백색 별은 리겔이다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "biology@세포·유전#1",
+      "question": "1953년 왓슨과 함께 DNA 이중 나선 모형을 발표한 영국의 분자생물학자는?",
+      "displayAnswer": "크릭",
+      "answers": [
+        "크릭",
+        "프랜시스 크릭",
+        "Francis Crick"
+      ],
+      "hintAnswer": "크릭",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 5,
+      "explanation": "두 사람은 1962년 윌킨스와 함께 노벨 생리학·의학상을 받았다. 모형의 근거가 된 X선 회절 사진은 로절린드 프랭클린의 것이었다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "biology@미생물·바이러스#1",
+      "question": "세균과 달리 스스로는 증식하지 못하고, 살아 있는 세포 안에 들어가야만 번식할 수 있는 감염체는?",
+      "displayAnswer": "바이러스",
+      "answers": [
+        "바이러스",
+        "virus"
+      ],
+      "hintAnswer": "바이러스",
+      "accessibility": 5,
+      "difficulty": 2,
+      "worthKnowing": 5,
+      "explanation": "스스로 대사하지 않으므로 생물과 무생물의 경계에 있다고 본다. 그래서 세균을 죽이는 항생제가 바이러스에는 듣지 않는다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "world-geo@국가·수도#1",
+      "question": "오스트레일리아에서 인구가 가장 많은 도시는 시드니지만, 수도는 다른 도시다. 이 나라의 수도는?",
+      "displayAnswer": "캔버라",
+      "answers": [
+        "캔버라",
+        "Canberra"
+      ],
+      "hintAnswer": "캔버라",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "시드니와 멜버른이 수도를 다투자 두 도시 사이에 새 수도를 계획해 세운 것이 캔버라다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "world-geo@랜드마크·지형#1",
+      "question": "아프리카 대륙에서 가장 높은 산으로, 탄자니아에 있는 이 화산의 이름은?",
+      "displayAnswer": "킬리만자로",
+      "answers": [
+        "킬리만자로",
+        "킬리만자로산",
+        "Kilimanjaro"
+      ],
+      "hintAnswer": "킬리만자로",
+      "accessibility": 5,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "높이 약 5,895미터의 성층 화산으로, 적도 근처인데도 정상에 빙하가 남아 있다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "economy@경제 개념·지표#1",
+      "question": "경기는 침체되어 있는데 물가는 오르는 상태를 뜻하는, 침체와 인플레이션을 합쳐 만든 말은?",
+      "displayAnswer": "스태그플레이션",
+      "answers": [
+        "스태그플레이션",
+        "stagflation"
+      ],
+      "hintAnswer": "스태그플레이션",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 5,
+      "explanation": "stagnation 과 inflation 을 합친 말이다. 1970년대 석유 위기 때 여러 나라가 겪었고, 물가와 경기를 함께 다루기 어렵게 만든다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "economy@기업·경영 용어#1",
+      "question": "비상장 기업이 주식을 처음으로 일반 투자자에게 공개하고 증권시장에 상장하는 것을 뜻하는 영어 약어는?",
+      "displayAnswer": "IPO",
+      "answers": [
+        "IPO",
+        "기업공개"
+      ],
+      "hintAnswer": "IPO",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "Initial Public Offering 의 약자다. 우리말로는 기업공개라고 한다.",
+      "answerLang": "mixed",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "classical@작곡가#1",
+      "question": "청력을 거의 잃은 뒤에도 작곡을 이어가 교향곡 제9번 〈합창〉을 완성한 작곡가는?",
+      "displayAnswer": "베토벤",
+      "answers": [
+        "베토벤",
+        "루트비히 판 베토벤",
+        "Beethoven"
+      ],
+      "hintAnswer": "베토벤",
+      "accessibility": 5,
+      "difficulty": 1,
+      "worthKnowing": 5,
+      "explanation": "제9번 4악장의 〈환희의 송가〉는 실러의 시에 붙인 것으로, 교향곡에 성악을 넣은 초기 사례다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "classical@오페라#1",
+      "question": "19세기 파리를 배경으로 가난한 예술가들의 사랑과 이별을 그린 푸치니의 오페라는?",
+      "displayAnswer": "라 보엠",
+      "answers": [
+        "라 보엠",
+        "La Boheme"
+      ],
+      "hintAnswer": "라 보엠",
+      "accessibility": 3,
+      "difficulty": 3,
+      "worthKnowing": 4,
+      "explanation": "제목은 '보헤미안들' 을 뜻한다. 뒤에 뮤지컬 〈렌트〉가 이 이야기를 현대 뉴욕으로 옮겨 만들어졌다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "world-lit@19세기 소설#1",
+      "question": "흰 고래를 쫓는 에이해브 선장의 집착을 그린 허먼 멜빌의 장편 소설은?",
+      "displayAnswer": "모비딕",
+      "answers": [
+        "모비딕",
+        "백경",
+        "Moby Dick"
+      ],
+      "hintAnswer": "모비딕",
+      "accessibility": 4,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "1851년 작품으로, 우리말로는 흰 고래를 뜻하는 백경으로도 번역된다. 발표 당시에는 크게 주목받지 못했다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.95
+    },
+    {
+      "slotId": "world-lit@20세기 문학#1",
+      "question": "1967년 발표되어 마술적 사실주의를 대표하는 작품으로 꼽히는 가브리엘 가르시아 마르케스의 소설은?",
+      "displayAnswer": "백년의 고독",
+      "answers": [
+        "백년의 고독",
+        "백년 동안의 고독"
+      ],
+      "hintAnswer": "백년의 고독",
+      "accessibility": 3,
+      "difficulty": 4,
+      "worthKnowing": 4,
+      "explanation": "가상의 마을 마콘도에서 부엔디아 가문 백 년의 이야기를 그렸다. 작가는 1982년 노벨 문학상을 받았다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "football@규칙#1",
+      "question": "축구에서 한 선수가 한 경기에서 세 골을 넣는 것을 무엇이라 하는가?",
+      "displayAnswer": "해트트릭",
+      "answers": [
+        "해트트릭",
+        "hat-trick"
+      ],
+      "hintAnswer": "해트트릭",
+      "accessibility": 5,
+      "difficulty": 1,
+      "worthKnowing": 4,
+      "explanation": "본래 크리켓에서 나온 말로, 공을 세 번 연속 잡아낸 선수에게 모자를 준 데서 유래했다고 전한다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "football@월드컵#1",
+      "question": "FIFA 월드컵에서 통산 우승 횟수가 가장 많은 나라는?",
+      "displayAnswer": "브라질",
+      "answers": [
+        "브라질",
+        "Brazil"
+      ],
+      "hintAnswer": "브라질",
+      "accessibility": 5,
+      "difficulty": 2,
+      "worthKnowing": 4,
+      "explanation": "다섯 번 우승했고, 모든 대회에 빠지지 않고 참가한 유일한 나라이기도 하다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.93
+    },
+    {
+      "slotId": "symbols@국기·국장#1",
+      "question": "적십자와 같은 활동을 하는 이슬람권 단체가 십자 대신 표장으로 쓰는 것은?",
+      "displayAnswer": "적신월",
+      "answers": [
+        "적신월",
+        "붉은 초승달",
+        "적신월사"
+      ],
+      "hintAnswer": "적신월",
+      "accessibility": 3,
+      "difficulty": 4,
+      "worthKnowing": 4,
+      "explanation": "십자가 기독교를 떠올리게 한다는 이유로 초승달 표장을 쓴다. 국제적으로 적십자와 같은 보호 표장으로 인정된다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.9
+    },
+    {
+      "slotId": "symbols@교통 표지#1",
+      "question": "한국 도로 표지판에서 아래를 향한 역삼각형 모양은 운전자에게 무엇을 하라는 뜻인가?",
+      "displayAnswer": "양보",
+      "answers": [
+        "양보",
+        "양보 표지"
+      ],
+      "hintAnswer": "양보",
+      "accessibility": 4,
+      "difficulty": 3,
+      "worthKnowing": 5,
+      "explanation": "역삼각형은 양보를 뜻하는 규제 표지다. 팔각형은 정지를 뜻하므로 모양만 보고도 구분할 수 있다.",
+      "answerLang": "ko",
+      "offCategory": false,
+      "offCategoryReason": "",
+      "confidence": 0.9
+    }
+  ]
+}
