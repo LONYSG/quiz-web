@@ -19,6 +19,8 @@
 // 사용법
 //   node scripts/pipeline-claude-verify.mjs
 //   node scripts/pipeline-claude-verify.mjs --no-llm    역검증 없이 규칙 검사만
+//   ★ node scripts/pipeline-claude-verify.mjs --backcheck=gemini   (옛 동작. Q-81 이전)
+//   ★ 기본값은 --backcheck=none 이다. 역검증은 Sonnet 이 한다 (Q-81)
 //   node scripts/pipeline-claude-verify.mjs --dir=data/pipeline/claude-gen/r013 \
 //        --out=2026-09-10-r013-sample.json --batch=R013-sample
 // =============================================================================
@@ -45,7 +47,25 @@ try {
 }
 
 const args = process.argv.slice(2);
-const NO_LLM = args.includes('--no-llm');
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ Q-81 확정 — Gemini 역검증은 **선택 단계**다 (R014 작업 A-3)
+//
+//   ★ 배경: R013 에서 Gemini 호출이 하루에 1회만 성공했고, 그 결과 50건이
+//     전량 격리 상태로 남았다. 500건을 만들면 500건이 격리된다.
+//   ★ 원인은 Gemini 가 **필수 경로**에 있었다는 것이다.
+//
+//   → ★ 기본값을 'none' 으로 바꿨다. 역검증은 Sonnet 이 전량 담당한다
+//     (scripts/pipeline-sonnet.mjs).
+//   ★ --backcheck=gemini 로 옛 동작을 그대로 쓸 수 있다. 지우지 않았다.
+//   ★ --no-llm 은 하위 호환으로 남긴다 (= --backcheck=none 과 같다).
+// ─────────────────────────────────────────────────────────────────────────────
+const optOf0 = (n, d) => args.find((a) => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
+const BACKCHECK = optOf0('backcheck', 'none');
+if (!['none', 'gemini'].includes(BACKCHECK)) {
+  console.error(`[cv] ★ --backcheck 는 none / gemini 중 하나여야 한다 (받은 값: ${BACKCHECK})`);
+  process.exit(1);
+}
+const NO_LLM = args.includes('--no-llm') || BACKCHECK === 'none';
 const BATCH = 15;
 const optOf = (n, d) => args.find((a) => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 // ★ 기본값은 R012 그대로다. 옵션을 주지 않으면 동작이 변하지 않는다
@@ -324,8 +344,30 @@ if (!NO_LLM && pending.length > 0) {
     stats.backcheckRejected += notRun;
   }
 } else {
-  // ★ --no-llm 은 규칙 검사만 보는 모드다. 그 산출물을 검증된 것으로 오인하면 안 된다
-  console.log('[cv] ★★ --no-llm — 역검증을 하지 않았다. 이 배치를 적재 대상으로 쓰지 말 것.');
+  // ★★ Q-81 — Gemini 역검증을 하지 않는 것이 이제 **정상 경로**다.
+  //   ★ 그러나 "검증되지 않았다" 는 사실은 그대로다. accept 로 올리지 않는다.
+  //   ★ 역검증은 Sonnet 이 한다 (scripts/pipeline-sonnet.mjs export → backcheck).
+  console.log('[cv] ★★ Gemini 역검증을 하지 않았다 (Q-81: 선택 단계).');
+  console.log('[cv]   ★ 역검증은 Sonnet 이 담당한다 — node scripts/pipeline-sonnet.mjs export');
+  console.log('[cv]   ★ 그때까지 이 배치는 적재 대상이 아니다.');
+  let pending = 0;
+  for (const a of items) {
+    if (a.rejectedAt !== null) continue;
+    if (a.backcheck !== null) continue;
+    quarantine(a, {
+      stage: 'backcheck',
+      reasons: ['awaiting_sonnet_backcheck'],
+      detail:
+        '★ Gemini 역검증을 건너뛰었다 (Q-81: 선택 단계). ' +
+        '★ 결함이 아니다 — Sonnet 역검증을 기다리는 정상 상태다',
+      judgedBy: 'pipeline',
+      judgedAt: new Date().toISOString(),
+    });
+    bump('awaiting_sonnet_backcheck');
+    pending += 1;
+  }
+  if (pending > 0) console.log(`[cv] ★ ${pending}건을 Sonnet 역검증 대기로 두었다.`);
+  stats.backcheckRejected += pending;
 }
 
 // ── 4. 판정 + 규칙 검사
@@ -402,7 +444,9 @@ await writeFile(
         kind: 'compare',
         // ★ 생성자와 검증자를 명시한다. 교차 검증의 증거다
         generator: 'claude-code',
-        verifier: NO_LLM ? '없음 (--no-llm)' : 'gemini',
+        // ★ 누가 역검증했는가. Q-81 이후 기본은 Sonnet 이고, 이 시점에는 아직 미실행이다
+        verifier: NO_LLM ? '미실행 (Sonnet 대기 / Q-81)' : 'gemini',
+        backcheckMode: BACKCHECK,
         // ★ 이 배치가 실제로 역검증을 거쳤는가. 적재 판단의 전제다
         backcheckRan: !NO_LLM && gateBlocked === null,
         gateBlocked,

@@ -61,7 +61,7 @@ interface AiItemRaw {
   confidence: number;
 }
 
-interface BackcheckItemRaw {
+export interface BackcheckItemRaw {
   // ── ★ p3 추가 (R013). 질문 문장 검토 결과
   factualIssues?: string[];
   uniquenessIssue?: string[];

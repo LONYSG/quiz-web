@@ -16,22 +16,96 @@ R012 에서 Claude Code 가 자기 생성분 100건을 자기가 검토했고 "�
 
 그래서 역할을 셋으로 나눈다 (Q-75 확정).
 
+### ★★ R014 개정 (Q-81) — 역할이 바뀌었다
+
 | 모델 | 역할 | 권한 |
 |------|------|------|
 | **Opus** | 문제 생성 / 규격·프롬프트 설계 | ★ **개별 항목 최종 판정에 참여하지 않는다** |
-| **Gemini** | 역검증 + 규칙 검사 + 중복 검사 (자동 1차) | ★★ **버리지 않는다. 표시만 한다** |
-| **Sonnet** | 격리 항목 재판정 + 사실 오류 검토 | ★ **최종 확정** |
+| **Sonnet** | ★★ **역검증 + 사실 검토 + 최종 확정. 전량 담당** | ★ **최종 확정** |
+| **Gemini** | ★ **표본 감사.** 하루에 쓸 수 있는 만큼만 | ★ 신호만 낸다. **어떤 항목도 뒤집지 않는다** |
 
-★ Sonnet 이 최종 확정을 맡는 근거
-- Gemini 는 오판이 잦다. 실측 — R010 역검증이 정상 6건을 6건 모두 오탈락시켰고,
-  R012 탈락 3건 중 2건이 오탈락이었다(쐐기문자 / 카롤루스 대제)
-- ★ 그래서 건우가 "Opus 가 최종 판정하면 어떤가" 를 제안했으나,
-  Opus 는 생성자다. ★ 생성자가 자기 항목을 되살릴 권한을 가지면 안 된다
-- Sonnet 은 Gemini 보다 성능이 높고 생성자가 아니다. ★ 둘 다 만족한다
+★★ 왜 옮겼는가 (R013 실측)
+
+```
+R013: Gemini 호출이 하루에 1회만 성공했다
+  01:09  1회 성공
+  01:10  2번째 호출 → 429
+  01:32  15분 대기 후 재개 → 또 429 → 그날 중단
+★★ 그 결과 50건 샘플이 **전량 격리 상태**로 남았다.
+★  500건을 만들면 500건이 격리된다.
+```
+
+★ 문제의 본질은 **Gemini 가 필수 경로에 있었다는 것**이다.
+생성(Opus)은 한도가 사실상 무제한인데 검증(Gemini)이 하루 1~2회로 막히면
+파이프라인 전체가 멈춘다.
+
+★ Sonnet 이 전량을 맡아도 독립성은 유지된다 — Opus 와 다른 모델이므로
+자기가 만든 것을 자기가 검증하는 구조가 아니다.
+
+★ 그리고 품질에도 낫다. Gemini 오판의 실측 근거 —
+- R010: 역검증 판정이 정상 문제 **6건을 6건 모두** 오탈락시켰다
+- R012: 탈락 3건 중 **2건이 오탈락**이었다 (쐐기문자 / 카롤루스 대제)
+
+★ 건우가 "Opus 가 최종 판정하면 어떤가" 를 제안했으나,
+Opus 는 생성자다. ★ 생성자가 자기 항목을 되살릴 권한을 가지면 안 된다.
+Sonnet 은 Gemini 보다 성능이 높고 생성자가 아니다. ★ 둘 다 만족한다.
 
 ---
 
 ## 1. Sonnet 이 하는 일
+
+### ★★ 1-0. 역검증 — 전량 담당 (R014 신설 / Q-81)
+
+**역검증이란**: 질문만 보고 정답을 맞혀 본다. 우리 정답과 일치하는지로 문제 품질을 본다.
+
+★★★ **정답을 보지 않고 답해야 한다. 이것이 절대 조건이다.**
+
+★ 근거 — 우리 정답을 보면서 답하면 역검증이 아니다. **그냥 동의하는 것이다.**
+★ 그리고 일치 여부를 스스로 판정하면 "비슷하니 맞았다" 로 흐른다.
+
+→ ★ 그래서 **코드가 정답 노출과 판정을 통제한다.** 절차가 이렇게 나뉜다.
+
+```
+1) Opus:   node scripts/pipeline-sonnet.mjs export
+           → sonnet-backcheck-questions.json  ★ 질문만. 정답이 없다
+2) Sonnet: 질문을 읽고 자기 답을 쓴다
+           → sonnet-backcheck-answers.json
+3) Opus:   node scripts/pipeline-sonnet.mjs backcheck
+           ★ 코드가 judgeBackcheck 로 비교한다. **Gemini 경로와 같은 함수다**
+4) Sonnet: 격리된 것만 재판정 + accept 후보의 사실 검토 (1-1 / 1-2)
+5) Opus:   node scripts/pipeline-apply-decisions.mjs
+```
+
+★ 질문 파일에는 정답도 카테고리도 없다.
+★ 근거: Gemini 역검증 프롬프트와 **조건을 같게** 유지해야 두 판정을 비교할 수 있다.
+
+**★ 답 파일에 채울 것** (`sonnet-backcheck-answers.json`)
+
+| 필드 | 내용 |
+|------|------|
+| `ref` | 질문 파일의 `ref` 를 그대로 |
+| `answer` | ★ 질문만 보고 맞힌 답. **하나만** 쓴다 |
+| `ambiguous` | ★ 확신이 없는가. 답이 여럿일 수 있다고 느끼면 true |
+| `alternatives` | `ambiguous` 일 때 가능한 다른 답들 |
+| `confidence` | 0.0~1.0 |
+| `factualIssues` | ★ 질문에 사실과 다른 서술이 있는가 |
+| `uniquenessIssue` | ★ 조건을 만족하는 답이 둘 이상인가 (한정어 누락) |
+| `spellingIssues` | ★ 인명·작품명·표기가 틀렸는가 |
+
+★★ **일치 여부를 쓰지 않는다.** 그 칸이 없다. 코드가 판정한다.
+
+★ 세 배열은 R013 에서 p3 로 추가한 것과 같은 항목이다. 실패 예시 —
+
+```
+[사실 오류]  "라틴어 '수소(Hydrargyrum)'에서 유래한 …수은의 원소 기호는?"
+             → Hydrargyrum 은 '물 같은 은' 이다. 수소가 아니다
+             ★ 정답(Hg)은 맞으므로 답만 보면 통과한다. 그래서 이 배열이 필요하다
+[유일성]     "체스판에서 가로와 세로 직선으로 거리 제한 없이 이동하는 기물은?" → 룩
+             → 퀸도 그렇게 움직인다. "~만" 이 빠졌다
+[표기]       "교황 그리구리우스 7세" → 그레고리우스 7세
+```
+
+★★ **정답이 맞아도 이 배열이 비어 있지 않을 수 있다.** 그것이 p3 의 핵심이다.
 
 ### 1-1. 격리 항목 재판정
 
@@ -120,14 +194,22 @@ Gemini 답: "상형 문자"  → 불일치로 격리
 
 ```
 Opus 가 쓴다 / Sonnet 은 읽기만 한다
-  data/pipeline/quarantine/quarantine-review.txt      ← ★ 사람이 읽는 격리 목록
-  data/pipeline/quarantine/quarantine-decisions.json  ← ★ 판정 서식 (빈 칸)
-  data/pipeline/processed/*.json                       ← 원본 배치 (직접 수정 금지)
+  data/pipeline/sonnet/sonnet-backcheck-questions.json ← ★★ 역검증 입력. 정답이 없다
+  data/pipeline/quarantine/quarantine-review.txt       ← ★ 사람이 읽는 격리 목록
+  data/pipeline/quarantine/quarantine-decisions.json   ← ★ 판정 서식 (빈 칸)
+  data/pipeline/processed/*.json                        ← 원본 배치 (직접 수정 금지)
 
 ★★ Sonnet 이 쓴다 / Opus 는 읽기만 한다
-  data/pipeline/quarantine/sonnet-decisions.json      ← ★★ 유일한 산출물
-  data/pipeline/quarantine/sonnet-notes.md            ← (선택) 판정 근거 메모
+  data/pipeline/sonnet/sonnet-backcheck-answers.json   ← ★★ 1단계 산출물 (역검증 답)
+  data/pipeline/quarantine/sonnet-decisions.json       ← ★★ 2단계 산출물 (최종 판정)
+  data/pipeline/quarantine/sonnet-notes.md             ← (선택) 판정 근거 메모
 ```
+
+★★ **Sonnet 이 쓰는 파일은 이 두(세) 개뿐이다.** 다른 파일을 건드리지 않는다.
+
+★ 디렉터리를 나눈 근거 — `sonnet/` 은 역검증(1단계), `quarantine/` 은 최종 판정(2단계)이다.
+  ★ 두 단계 사이에 Opus 가 `pipeline-sonnet.mjs backcheck` 를 돌린다.
+    ★ 그 사이에 같은 디렉터리를 양쪽이 쓰면 어느 파일이 최신인지 헷갈린다.
 
 ★ `quarantine-decisions.json` 을 **직접 수정하지 않는다.** 그것은 Opus 가 만든 서식이다.
 ★ 내용을 복사해서 `sonnet-decisions.json` 으로 새로 쓴다.
@@ -138,6 +220,32 @@ Opus 가 쓴다 / Sonnet 은 읽기만 한다
 
 ## 4. Sonnet 세션 시작 절차
 
+★ 지금 어느 단계인지부터 확인한다.
+
+```
+node scripts/pipeline-sonnet.mjs status
+```
+
+### ★ 1단계 — 역검증 (R014 신설)
+
+```
+1. 질문 파일을 읽는다  ★ 정답이 없다. 그것이 의도다
+     cat data/pipeline/sonnet/sonnet-backcheck-questions.json
+
+2. ★★ 질문만 보고 답을 맞힌다. 한 건씩.
+   ★ 우리 정답을 찾아보지 않는다. processed/*.json 을 열지 않는다
+   ★ 그리고 질문 문장 자체를 검토해 세 배열을 채운다
+
+3. ★★ sonnet-backcheck-answers.json 을 쓴다 (1-0 의 표)
+
+4. ★ 요약을 출력한다 — 답한 건수 / ambiguous 건수 /
+     세 배열에 무언가를 적은 건수. ★ Opus 세션에 그대로 전달할 수 있게
+```
+
+### ★ 2단계 — 재판정과 사실 검토
+
+> ★ Opus 가 `pipeline-sonnet.mjs backcheck` 를 돌린 **뒤에** 시작한다.
+
 ```
 1. 격리 목록을 읽는다
      cat data/pipeline/quarantine/quarantine-review.txt
@@ -145,8 +253,8 @@ Opus 가 쓴다 / Sonnet 은 읽기만 한다
 2. 판정 서식을 읽는다
      cat data/pipeline/quarantine/quarantine-decisions.json
 
-3. ★ 사실 오류 검토 대상(accept 항목)을 읽는다
-     node scripts/pipeline-quarantine.mjs --list --stage=accept
+3. ★ 사실 검토 대상을 읽는다 (역검증은 통과했으나 확정 전인 것)
+     node scripts/pipeline-quarantine.mjs --list --reason=awaiting_final_review
      (★ Gemini 를 호출하지 않는 읽기 전용 스크립트다)
 
 4. 항목마다 판정한다
@@ -214,9 +322,17 @@ Opus 가 쓴다 / Sonnet 은 읽기만 한다
 ## 6. Opus 세션이 결과를 반영하는 방법
 
 ```
-node scripts/pipeline-apply-decisions.mjs --dry-run
+node scripts/pipeline-sonnet.mjs backcheck --dry-run   ★ 1단계 답을 판정한다
+node scripts/pipeline-sonnet.mjs backcheck
+node scripts/pipeline-apply-decisions.mjs --dry-run    ★ 2단계 판정을 반영한다
 node scripts/pipeline-apply-decisions.mjs
 ```
+
+★ `pipeline-sonnet.mjs backcheck` 가 하는 일
+- `sonnet-backcheck-answers.json` 을 읽어 **코드가** 일치 여부를 판정한다
+- ★ Gemini 경로와 **같은 함수**(`judgeBackcheck`)를 쓴다. 조건을 같게 유지한다
+- 불일치·질문 문장 문제 → 격리 / 통과 → ★ `awaiting_final_review` (아직 accept 가 아니다)
+- ★ `answer` 가 빈 항목이 있으면 **멈춘다.** 조용히 넘기지 않는다
 
 ★ 이 스크립트가 하는 일
 - `sonnet-decisions.json` 을 읽어 각 항목의 `finalDecision` 을 채운다
@@ -267,15 +383,56 @@ node scripts/pipeline-apply-decisions.mjs
 
 ---
 
-## 8. 지금 라운드(R013)의 예외
+## ★★ 7-2. Gemini 표본 감사 (R014 신설 / Q-81)
+
+★ Gemini 는 이제 **필수 경로에 없다.** 안 돌아도 파이프라인이 진행된다.
+
+```
+node scripts/pipeline-audit.mjs --plan          무엇을 감사할지만 본다
+node scripts/pipeline-audit.mjs --sample 20     ★ 호출 2회로 20건
+```
+
+★ 무엇을 하는가 — Sonnet 이 역검증한 항목 중 표본을 뽑아 **Gemini 로 다시 역검증**하고
+두 판정이 같은지 본다.
+
+★★ **불일치가 나오면 무엇을 하는가 — 개별 문제를 뒤집지 않는다.**
+
+★ 근거 — Gemini 가 Sonnet 과 다르다는 것이 "Sonnet 이 틀렸다" 를 뜻하지 않는다.
+  실측이 반대 방향을 가리킨다 (R010 정상 6건 전부 오탈락 / R012 탈락 3건 중 2건 오탈락).
+  ★ 성능이 더 낮은 쪽의 판정으로 더 높은 쪽을 덮으면 품질이 내려간다.
+
+★ 그래서 **Sonnet 판정 품질의 신호**로만 쓴다.
+- 불일치율이 기준(20%) 안이면 → Sonnet 이 한쪽으로 치우치지 않았다는 근거가 된다
+- 기준을 넘으면 → ★ 멈추고 **사람이 표본을 읽는다.** 셋 중 하나다 —
+  (a) 문제 품질이 실제로 낮다 (b) Sonnet 판정이 느슨해졌다 (c) ★ Gemini 오판
+
+★ 기준 20% 의 근거: R012 정상 탈락률 1~2% / R010 오탈락 사태 35%. 그 사이다.
+  ★ 5% 같은 낮은 값으로 잡으면 Gemini 자체 오판만으로 매번 멈춘다.
+
+★★ 이 스크립트는 **배치 파일을 수정하지 않는다.** 읽기 전용이다.
+  ★ 회차별 불일치율이 `data/pipeline/audit/gemini-audit-results.json` 에 쌓인다.
+
+★★ **Sonnet 세션은 이 스크립트를 돌리지 않는다.** Gemini 호출은 Opus 세션만 한다 (2장).
+
+---
+
+## 8. 현재 상태 (R014 기준)
 
 ★ R013 에서는 별도 Sonnet 세션을 열지 않았다.
-
 근거 — 건우 확정 방침이 "샘플만 조금씩 뽑아서 작업 규격을 먼저 정한다" 였다.
-★ 50건 샘플은 별도 세션을 여는 비용이 판정 독립성 이득보다 크다.
+★ 대신 같은 세션에서 생성 단계와 검토 단계를 분리하고, 자기 검토의 신뢰도가 낮다는 것을 밝혔다.
 
-★ 대신 같은 세션에서 **생성 단계와 검토 단계를 명확히 분리하고 그 사실을 밝혔다.**
-★★ 그리고 그 자기 검토의 신뢰도가 낮다는 것을 보고서에 명시했다.
-  ★ R012 에서 "사실 오류 0건" 이라고 보고했으나 이후 4건이 발견된 전례가 있다.
+★★ **R014 에서 이 문서가 지시하는 흐름이 완성되었다.**
 
-★ 다음 라운드의 대량 생성부터는 이 문서대로 별도 세션을 연다.
+| 무엇 | 상태 |
+|------|------|
+| `pipeline-sonnet.mjs export / backcheck / status` | ★ 완료 |
+| `pipeline-apply-decisions.mjs` | ★ 완료 (R013) |
+| `pipeline-audit.mjs` (Gemini 표본 감사) | ★ 완료 |
+| Gemini 역검증을 선택 단계로 | ★ 완료 (`--backcheck=none` 이 기본값) |
+
+★★ **아직 실행하지 않았다.** R014 는 게임 트랙(Phase 3)이 본체였고,
+건우 확정 방침이 "구조 변경만 하고 대량 실행은 하지 않는다" 였다.
+
+★ R013 의 50건이 `pipeline-sonnet.mjs status` 에서 **역검증 대기 50건**으로 잡힌다.
+  ★ 새 구조로 처리할 수 있음이 확인되었다. 실제 처리는 다음 라운드다.
