@@ -178,6 +178,45 @@ export interface Resolution {
   nextAt: number | null;
 }
 
+/**
+ * 일시정지 상태 (Phase 5 / Q-30 개정 / Q-82).
+ *
+ * ★★★ 왜 remainingMs 인가 — R014 의 근사 구현과 **다른 방식을 골랐다**
+ *
+ *   R014(D-061)는 매 tick 마다 **종료 시각을 흐른 만큼 밀어 주는** 방식이었다.
+ *   ★ 결과는 같지만, 정식 구현에서는 remainingMs 가 낫다고 판단했다. 근거 —
+ *
+ *   (1) ★★ **클라이언트가 멈춘 시간을 표시해야 한다.**
+ *       ★ 밀어 주는 방식은 endsAt 이 계속 움직인다. 클라이언트가
+ *         `endsAt − now` 로 그리면 숫자가 미세하게 떨린다.
+ *       ★ remainingMs 는 **고정된 값**이라 그대로 그리면 된다.
+ *   (2) ★ 계산이 두 순간(멈출 때 / 재개할 때)에만 일어난다.
+ *       ★ 매 tick 마다 더하면 tick 이 밀릴 때마다 오차가 쌓인다.
+ *   (3) ★ 재접속 스냅샷에 담을 값이 바로 remainingMs 다. 변환이 필요 없다.
+ *   (4) ★ 밀어 주는 방식은 currentQuestion.startedAt 도 함께 밀어야 했다.
+ *       ★ 그러면 메모리의 startedAt 과 DB 의 game_questions.started_at 이 어긋난다.
+ *
+ * ★ 결과가 같아야 한다는 조건은 지켜진다 — 재개 시 endsAt = now + remainingMs 다.
+ */
+export interface PausedState {
+  /** 어느 상태에서 멈췄는가. 재개하면 이 상태로 돌아간다 */
+  pausedFrom: 'COUNTDOWN' | 'QUESTION_ACTIVE' | 'QUESTION_RESOLVED';
+  pausedAt: number;
+  /**
+   * ★ 멈춘 시점의 남은 시간.
+   *   · COUNTDOWN          → countdownEndsAt − now
+   *   · QUESTION_ACTIVE    → currentQuestion.endsAt − now
+   *   · QUESTION_RESOLVED  → resolution.nextAt − now
+   * ★ 0 아래로 내려가지 않게 한다. 이미 지난 것을 음수로 두면 재개가 즉시 만료된다.
+   */
+  remainingMs: number;
+  /**
+   * ★★ 이 시각이 지나면 방을 폭파한다 (Q-82).
+   *   ★ pausedAt + config.tuning.pauseAbandonMs (기본 5분).
+   */
+  abandonAt: number;
+}
+
 export interface Room {
   id: string;
   title: string;
@@ -256,16 +295,13 @@ export interface Room {
   result: GameResultData | null;
 
   /**
-   * ★ 활성 0명이 되어 문제 타이머를 멈춘 시각. null 이면 멈추지 않았다.
+   * ★★ 일시정지 (Phase 5 / R015). null 이면 멈추지 않았다.
    *
-   * ★★ Phase 5 의 PAUSED 를 대신하는 최소 장치다 (R014 실측으로 추가).
-   *   ★ 근거와 최종 규칙과의 차이는 game/question.ts 의 freezeIfNoActive 주석에 있다.
-   *   ★ Phase 5 에서 PAUSED 를 구현할 때 이 필드를 pausedAt/remainingMs 로 교체한다.
+   * ★ R014 의 근사 구현(frozenAt)을 **정식 구현으로 교체했다.**
+   *   ★ 달라진 점은 game/pause.ts 헤더에 적었다. 가장 큰 것은
+   *     ★★ **자동 재개가 없어졌다는 것**이다 (Q-30 확정: 방장이 눌러야 한다).
    */
-  frozenAt: number | null;
-
-  // ── Phase 5에서 채운다. 지금은 항상 null 이다.
-  paused: null;
+  paused: PausedState | null;
 
   /** 계정별 채팅 rate limit 타임스탬프 (Q-18: 3초 이동 윈도 10개) */
   chatTimestamps: Map<string, number[]>;

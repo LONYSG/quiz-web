@@ -11,7 +11,8 @@
 //     · ★ 남은 10초 → 힌트 push (hintPushed 로 1회만)
 //     · ★ 문제 종료 시각 도달 → 시간 종료 처리 (T07)
 //     · ★ QUESTION_RESOLVED 5초 경과 → 다음 문제 (T15) 또는 조기 종료 (T16)
-//     · PAUSED 30분 초과 → 게임 포기 (Phase 5)
+//     · ★★ 활성 0명 → **즉시 PAUSED** (Phase 5 / R015)
+//     · ★ PAUSED 5분 초과 → 방 폭파 (Q-82 개정. 30분 → 5분, 결과 화면 → 폭파)
 //
 // ★★ "정확히 30초" 에 대하여 (04-PROTOCOL 6장)
 //   setTimeout(30000) 단독은 이벤트 루프가 바쁘면 지연되고 보정되지 않는다.
@@ -26,17 +27,13 @@
 // =============================================================================
 
 import { RULES } from '@quiz/shared';
-import { closeRoom } from './db/rooms.js';
+import { config } from './config.js';
 import { startFromCountdown } from './game/start.js';
-import {
-  advanceAfterResolved,
-  checkQuestionTimeout,
-  freezeIfNoActive,
-  pushHintIfDue,
-} from './game/question.js';
+import { advanceAfterResolved, checkQuestionTimeout, pushHintIfDue } from './game/question.js';
+import { checkAbandon, idleDeleteApplies, pauseIfNoActive } from './game/pause.js';
 import { emitRoom } from './rooms/emit.js';
-import { activeCount, allRooms, nextHostCandidate, unregisterRoom } from './rooms/registry.js';
-import { closeOpenGame } from './rooms/lifecycle.js';
+import { activeCount, allRooms, nextHostCandidate } from './rooms/registry.js';
+import { destroyRoom } from './rooms/lifecycle.js';
 import { toPlayerView } from './rooms/snapshot.js';
 import type { Room } from './rooms/types.js';
 
@@ -60,10 +57,31 @@ export function stopTick(): void {
 
 function tick(): void {
   const now = Date.now();
-  const toDelete: string[] = [];
+  const toDelete: { roomId: string; why: string }[] = [];
 
   for (const room of allRooms()) {
     try {
+      // ★★ Phase 5 — 일시정지 (R015)
+      //   ★ 활성 0명이면 **즉시** PAUSED 로 간다. 유예가 없다 (Q-30 확정).
+      //   ★★ 재개는 여기서 하지 않는다. **방장이 눌러야 한다.**
+      //     ★ tick 이 resumeGame 을 부르는 코드가 어디에도 없는 것이 그 구현이다.
+      //     ★ R014 의 근사 구현은 자동 재개였다. 그것이 이번에 바뀐 핵심이다.
+      if (pauseIfNoActive(room, now)) {
+        // ★ PAUSED 방에서 도는 것은 두 가지뿐이다 — 만료 검사와 방장 이전.
+        //   ★★ 방장 이전이 필요한 이유: 방장이 끊긴 채 다른 사람만 돌아오면
+        //     이전하지 않는 한 **아무도 재개할 수 없다.** 5분 뒤 방이 폭파된다.
+        if (checkAbandon(room, now)) {
+          toDelete.push({
+            roomId: room.id,
+            why: `★ 일시정지 ${Math.round(config.tuning.pauseAbandonMs / 60000)}분 초과 (Q-82)`,
+          });
+          continue;
+        }
+        checkHostTransfer(room, now);
+        checkDisconnectDisplay(room, now);
+        continue;
+      }
+
       // 순서가 중요하다: 게임 상태 전이 → 방장 이전 → 표시 갱신 → 방 삭제
       checkCountdown(room, now);
       // ★★ Phase 3 — 문제 진행 (R014)
@@ -71,33 +89,29 @@ function tick(): void {
       //     ★ 힌트를 먼저 보는 이유: 같은 tick 에서 종료되더라도 남은 10초 시점의
       //       힌트는 이미 지나갔으므로 순서가 결과를 바꾸지 않는다. 반대로 두면
       //       종료 처리 뒤에 힌트가 나가는 순간이 생길 수 있다.
-      // ★★ 활성 0명이면 문제 타이머를 멈춘다. 근거는 freezeIfNoActive 주석에 있다.
-      //   ★ 멈췄으면 이후 문제 진행 검사를 건너뛴다 — 그것이 "멈춘다" 의 구현이다.
-      if (!freezeIfNoActive(room, now)) {
-        pushHintIfDue(room, now);
-        checkQuestionTimeout(room, now);
-        advanceAfterResolved(room, now);
-      }
+      pushHintIfDue(room, now);
+      checkQuestionTimeout(room, now);
+      advanceAfterResolved(room, now);
       checkHostTransfer(room, now);
       checkDisconnectDisplay(room, now);
-      if (shouldDeleteRoom(room, now)) toDelete.push(room.id);
+      if (shouldDeleteRoom(room, now)) {
+        toDelete.push({
+          roomId: room.id,
+          why: `활성 0명 ${RULES.ROOM_IDLE_DELETE_MS / 60000}분 경과 (Q-14)`,
+        });
+      }
     } catch (err) {
       // ★ 한 방의 오류가 다른 방의 tick 을 멈추게 하지 않는다.
       console.error(`[tick] 방 ${room.id} 처리 중 오류:`, (err as Error).message);
     }
   }
 
-  for (const roomId of toDelete) {
-    // ★ 열린 게임 레코드를 먼저 닫는다. 방을 지운 뒤에는 gameId 를 알 수 없다.
-    //   닫지 않으면 다음 기동에서 부팅 정리 절차가 server_restart 로 잘못 기록한다.
-    closeOpenGame(roomId, 'abandoned');
-    unregisterRoom(roomId);
+  for (const { roomId, why } of toDelete) {
+    // ★★ 방 폭파는 destroyRoom 하나만 쓴다 (R015).
+    //   ★ 근거: R007 에서 삭제 경로가 games 를 닫지 않아 부팅 정리가 잘못 기록한 적이 있다.
+    //     ★ 경로가 셋이 되었으므로 한 곳으로 모으는 것이 더 중요해졌다.
+    destroyRoom(roomId, 'abandoned', why);
     lastDisplayState.delete(roomId);
-    // ★ DB 쓰기는 기다리지 않는다. 실패해도 부팅 정리 절차가 다음 기동에서 닫는다.
-    void closeRoom(roomId).catch((err) =>
-      console.error(`[tick] 방 ${roomId} closed_at 기록 실패:`, (err as Error).message),
-    );
-    console.log(`[tick] 방 삭제: ${roomId} (활성 0명 ${RULES.ROOM_IDLE_DELETE_MS / 60000}분 경과)`);
   }
 }
 
@@ -140,6 +154,12 @@ function checkCountdown(room: Room, now: number): void {
  *   R004 2-2 (4)에서 발견한 문제다. 정지하지 않으면 타이머만 만료되고 아무 일도 일어나지 않거나
  *   구현에 따라 오류가 난다.
  * ★ 30초 유예를 두는 이유: 새로고침(1~3초)으로 방장이 넘어가는 것을 막는다.
+ */
+/**
+ * ★★ R015 — PAUSED 중에도 이 검사가 돌아야 한다.
+ *   ★ 근거: 방장이 끊긴 채로 다른 사람만 돌아오면, 방장을 이전하지 않으면
+ *     ★★ **아무도 재개 버튼을 누를 수 없다.** 게임이 5분 뒤 폭파된다.
+ *   ★ 활성 0명인 동안에는 이전하지 않는다 (이전할 대상이 없다). 그 조건은 그대로다.
  */
 function checkHostTransfer(room: Room, now: number): void {
   const host = room.players.get(room.hostAccountId);
@@ -216,7 +236,10 @@ function checkDisconnectDisplay(room: Room, now: number): void {
  *   Phase 1에는 PAUSED 상태가 없지만 조건을 미리 넣어 둔다.
  */
 function shouldDeleteRoom(room: Room, now: number): boolean {
-  if (room.state === 'PAUSED') return false;
+  // ★★ PAUSED 는 pauseAbandonMs(기본 5분)가 담당한다. 여기서 세지 않는다 (D-066).
+  //   ★ 두 타이머가 같은 상황에 동시에 돌면 "어느 것이 이기는가" 를 매번 따져야 하고,
+  //     ★ 값을 바꿀 때 한쪽만 고치는 사고가 난다. 상태로 배타적으로 나눴다.
+  if (!idleDeleteApplies(room)) return false;
   if (activeCount(room) > 0) return false;
   if (room.emptySince === null) {
     room.emptySince = now;

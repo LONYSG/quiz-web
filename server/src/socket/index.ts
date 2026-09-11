@@ -32,8 +32,10 @@ import {
   recordAnswerEvent,
   resolveQuestionSync,
 } from '../game/question.js';
+import { broadcastPauseStatus, pauseIfNoActive, resumeGame } from '../game/pause.js';
+import { config } from '../config.js';
 import { refreshLobbyInfo } from '../lobby/info.js';
-import { closeOpenGame } from '../rooms/lifecycle.js';
+import { destroyRoom } from '../rooms/lifecycle.js';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import {
   bindIo,
@@ -163,6 +165,15 @@ export function registerSocketHandlers(io: Server): void {
       //   불명확해진다. 이미 도달했으면 그 자리에서 스킵된다.
       evaluateSkip(room);
       broadcastSkipVotes(room);
+
+      // ★★ Phase 5 — 활성 0명이 되면 **즉시** 일시정지한다 (T21 / Q-30 확정).
+      //   ★ tick 을 기다리지 않는다. tick 은 100ms 뒤이고, 그 사이에 타이머가 흐른다.
+      //   ★★ 이것이 "즉시. 유예 없음" 의 구현이다.
+      //   ★ 이 경로는 **끊김**이다. 나가기 버튼은 leaveRoom 이 따로 처리한다 (Q-82).
+      if (!pauseIfNoActive(room, Date.now())) {
+        // ★ 아직 사람이 남아 있다. PAUSED 중이었다면 복귀 현황만 갱신한다
+        broadcastPauseStatus(room);
+      }
     });
   });
 }
@@ -306,9 +317,11 @@ function registerRoomHandlers(socket: Socket): void {
       // ── 단계 1. 검증
       //   ★ rate limit 초과는 **본인에게만** 조용히 알린다 (Q-18).
       //     ★ 방 전체에 알리면 도배 자체가 알림이 된다.
+      // ★ Q-84 — 설정값으로 덮을 수 있다. 기본은 1초 20개다.
+      //   ★★ 기준이 "예절" 이 아니라 "서버 보호" 로 바뀌었다. 근거는 RULES 주석에 있다.
       const retryAfterMs = checkChatRate(room, player.accountId, now, {
-        windowMs: RULES.CHAT_RATE_WINDOW_MS,
-        max: RULES.CHAT_RATE_MAX,
+        windowMs: config.tuning.chatRateWindowMs,
+        max: config.tuning.chatRateMax,
       });
       if (retryAfterMs !== null) {
         s.emit('chat.throttled', { retryAfterMs });
@@ -451,11 +464,29 @@ function registerRoomHandlers(socket: Socket): void {
   );
 
   // ── 카운트다운 취소 (T03, Q-11)
+  //
+  //   ★★ R015 — PAUSED(pausedFrom=COUNTDOWN)에서도 취소할 수 있게 했다.
+  //     ★ 왜 — Phase 5 에서 COUNTDOWN 도 PAUSED 로 간다 (T20).
+  //       ★★ 그런데 PAUSED 의 방장 액션은 재개/강제종료/강퇴뿐이다.
+  //         ★ 그러면 카운트다운을 취소하고 싶은 방장이 **막다른 길에 갇힌다** —
+  //           "재개해서 게임을 시작시킨 뒤 강제 종료" 밖에 길이 없다.
+  //       ★ 게임이 아직 시작도 안 했는데 games 레코드가 하나 생기고 끝난다. 이상하다.
+  //     → ★ 취소를 허용한다. 상태를 LOBBY 로 되돌리는 것뿐이라 위험하지 않다.
   onRoom(
     socket,
     'game.cancelCountdown',
-    { requireHost: true, allowedStates: ['COUNTDOWN'] },
+    { requireHost: true, allowedStates: ['COUNTDOWN', 'PAUSED'] },
     ({ socket: s, room }) => {
+      if (room.state === 'PAUSED') {
+        if (room.paused?.pausedFrom !== 'COUNTDOWN') {
+          sendError(s, 'INVALID_STATE', '카운트다운 중에 멈춘 것이 아닙니다.');
+          return;
+        }
+        // ★ 일시정지를 풀고 카운트다운 상태로 되돌린 뒤 취소한다.
+        //   ★ cancelCountdown 이 COUNTDOWN 을 전제하므로 순서를 맞춘다
+        room.paused = null;
+        room.state = 'COUNTDOWN';
+      }
       if (!cancelCountdown(room)) sendError(s, 'INVALID_STATE', `현재 상태: ${room.state}`);
     },
   );
@@ -543,17 +574,46 @@ function registerRoomHandlers(socket: Socket): void {
   onRoom(
     socket,
     'host.forceEnd',
-    { requireHost: true, allowedStates: ['QUESTION_ACTIVE', 'QUESTION_RESOLVED'] },
+    {
+      requireHost: true,
+      // ★ PAUSED 에서도 강제 종료할 수 있다 (T13 / 04-PROTOCOL 3장)
+      allowedStates: ['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'PAUSED'],
+    },
     ({ socket: s, room }) => {
       if (!room.game) {
         sendError(s, 'INVALID_STATE', '진행 중인 게임이 없습니다.');
         return;
       }
-      // ★★ QUESTION_ACTIVE 에서는 정답을 공개하지 않고 중단한다 (T11).
+      // ★★ 정답을 공개하지 않은 상태에서 끝내면 중단 기록을 남긴다 (T11 / T13).
       //   ★ 경험 기록을 남기지 않는다. 정답을 보지 않았기 때문이다 (Q-25 / Q-47).
       //   ★ QUESTION_RESOLVED 에서는 이미 공개되고 기록도 남았다. 그대로 유지한다 (T12).
-      if (room.state === 'QUESTION_ACTIVE') abortQuestionSync(room);
+      const pausedFrom = room.paused?.pausedFrom;
+      if (room.state === 'QUESTION_ACTIVE' || pausedFrom === 'QUESTION_ACTIVE') {
+        abortQuestionSync(room);
+      }
+      room.paused = null;
       finishGame(room, 'force_ended', '방장이 게임을 강제 종료했습니다.');
+    },
+  );
+
+  // ── ★★ 재개 (T23). **방장만.** 자동 재개는 없다 (Q-30 확정)
+  onRoom(
+    socket,
+    'game.resume',
+    { requireHost: true, allowedStates: ['PAUSED'] },
+    ({ socket: s, room }) => {
+      const r = resumeGame(room);
+      if (r.ok) return;
+      switch (r.reason) {
+        case 'no_active':
+          sendError(s, 'INVALID_STATE', '접속 중인 참가자가 없습니다.');
+          return;
+        case 'not_paused':
+          sendError(s, 'INVALID_STATE', '일시정지 상태가 아닙니다.');
+          return;
+        default:
+          sendError(s, 'INTERNAL', '재개할 게임 상태를 찾지 못했습니다.');
+      }
     },
   );
 
@@ -796,10 +856,16 @@ function attachToRoom(
 
   // ★ 스킵 임계값은 인원에 따라 바뀐다. 입장 즉시 재평가한다 (04-PROTOCOL 4장).
   //   ★ 입장으로 임계값이 올라가는 경우가 대부분이지만, 이미 도달한 상태가 될 수도 있다
-  if (room.currentQuestion) {
+  if (room.currentQuestion && room.state === 'QUESTION_ACTIVE') {
     evaluateSkip(room);
     broadcastSkipVotes(room);
   }
+
+  // ★★ PAUSED 중이면 복귀 현황을 갱신한다.
+  //   ★★★ **여기서 자동으로 재개하지 않는다.** 방장이 눌러야 한다 (Q-30 확정).
+  //     ★ 근거: 자동 재개면 먼저 들어온 한 명 때문에, 나머지가 새 URL 을 입력하는
+  //       동안 문제가 소모된다. ★ 터널이 끊겨 새 링크를 뿌리면 정확히 그 상황이다.
+  if (room.paused) broadcastPauseStatus(room);
 
   // ★ 참가자 집합이 바뀌면 경험률과 출제 가능 수를 다시 계산한다 (Q-12 / Q-21).
   //   ★ 재접속(rejoined)에서도 부른다. 그 사람 화면에는 값이 없기 때문이다.
@@ -811,11 +877,25 @@ function attachToRoom(
 /**
  * 방 나가기.
  *
- * ★★ Phase 3 에서 규칙이 갈린다 (01-GAME-RILES 13장 "접속 종료").
- *   · LOBBY / GAME_RESULT 에서는 슬롯을 즉시 반환한다
- *   · ★ **게임 중에는 슬롯을 유지한다.** 점수·경험 기록·최종 결과에 남는다.
- *     ★ 반환 시점은 결과 화면에서 로비로 복귀할 때다 (returnToLobby).
- *   ★ 근거: 나갔다고 그 게임 결과에서 사라지면 순위가 왜곡된다.
+ * ★★★ Q-82 (R015) — **나가기 버튼과 끊김을 다르게 처리한다.**
+ *
+ *   ★ Q-15 는 "명시적 나가기와 예기치 못한 끊김을 구분하지 않는다" 였다.
+ *     ★★ 그 규칙을 **이 부분만 뒤집었다.** 근거 —
+ *       · ★ 의도적으로 나간 것은 **돌아올 생각이 없다**는 뜻이다
+ *       · ★ 끊긴 것은 **돌아올 생각이 있다**는 뜻이다
+ *       · ★★ 건우 지적: "모두가 나가기를 했는데 왜 게임이 살아있는 거냐?"
+ *     ★ Q-15 의 나머지(점수·경험·슬롯 유지)는 그대로다. 뒤집은 것은 **방 종료 판단**뿐이다.
+ *
+ *   ┌────────────────────────────────┬──────────────────────────────────────┐
+ *   │ 마지막 활성자가 나가기 버튼     │ ★★ **즉시 방 폭파.** PAUSED 로 가지   │
+ *   │                                │ 않는다                               │
+ *   │ 그 외 전원 이탈 (끊김·터널 등) │ ★ PAUSED → 5분 뒤 폭파               │
+ *   └────────────────────────────────┴──────────────────────────────────────┘
+ *
+ *   ★ 마지막 활성자가 아니면 게임 중 나가기는 **끊김과 똑같이** 처리한다 (슬롯 유지).
+ *     ★ 근거: 남은 사람들의 게임을 방해하지 않아야 한다.
+ *
+ * ★ 게임 중 슬롯 규칙은 그대로다 (01-GAME-RULES 13장 / D-060).
  */
 function leaveRoom(socket: Socket, roomId: string, accountId: string): void {
   const room = getRoom(roomId);
@@ -824,16 +904,30 @@ function leaveRoom(socket: Socket, roomId: string, accountId: string): void {
   const inGame =
     room.state === 'QUESTION_ACTIVE' ||
     room.state === 'QUESTION_RESOLVED' ||
-    room.state === 'COUNTDOWN';
+    room.state === 'COUNTDOWN' ||
+    room.state === 'PAUSED';
 
   if (inGame) {
-    // ★ 슬롯을 유지하고 접속 종료로만 처리한다.
-    //   ★ 명시적 나가기와 예기치 못한 끊김을 구분하지 않는다 (Q-15).
+    const me = room.players.get(accountId);
+    // ★★ 내가 나가면 활성이 0이 되는가. **나가기 전에** 판단한다
+    const iAmLastActive = Boolean(me?.connected) && activeCount(room) === 1;
+
     markDisconnected(room, accountId);
     const data0 = socket.data as SocketData;
     data0.roomId = undefined;
     void socket.leave(ioRoomName(roomId));
     socket.emit('room.left', { roomId });
+
+    if (iAmLastActive) {
+      // ★★★ Q-82 — 즉시 폭파한다. 5초도 기다리지 않는다.
+      //   ★ 정답을 공개하지 않는다 → 경험 기록도 남지 않는다 (Q-47 기준으로 자동 충족).
+      //   ★ 이미 기록된 것은 지우지 않는다 (guide 25절).
+      if (room.state === 'QUESTION_ACTIVE') abortQuestionSync(room);
+      // ★ 남은 슬롯(접속 종료자)도 함께 사라진다. 방 자체가 없어지기 때문이다.
+      destroyRoom(roomId, 'abandoned', '★ 마지막 활성자가 나가기 버튼을 눌렀다 (Q-82)');
+      return;
+    }
+
     emitRoom(room, 'room.connectionChanged', {
       accountId,
       connected: false,
@@ -842,6 +936,8 @@ function leaveRoom(socket: Socket, roomId: string, accountId: string): void {
     // ★ 인원이 줄면 스킵 임계값이 내려간다. 동기적으로 재평가한다
     evaluateSkip(room);
     broadcastSkipVotes(room);
+    // ★ 아직 사람이 남아 있으므로 PAUSED 로 가지 않는다. 방어적으로 확인만 한다
+    if (!pauseIfNoActive(room, Date.now())) broadcastPauseStatus(room);
     console.log(`[room] ${roomId} 게임 중 퇴장 — ★ 슬롯을 유지한다 (${accountId})`);
     return;
   }
@@ -856,13 +952,7 @@ function leaveRoom(socket: Socket, roomId: string, accountId: string): void {
 
   if (room.players.size === 0) {
     // 아무도 남지 않았으면 즉시 정리한다. tick 의 10분 대기를 기다릴 이유가 없다.
-    // ★ 열린 게임 레코드를 먼저 닫는다. 방을 지운 뒤에는 gameId 를 알 수 없다.
-    closeOpenGame(roomId, 'abandoned');
-    unregisterRoom(roomId);
-    void closeRoom(roomId).catch((err) =>
-      console.error(`[room] ${roomId} closed_at 기록 실패:`, (err as Error).message),
-    );
-    console.log(`[room] 삭제 ${roomId} (마지막 참가자 퇴장)`);
+    destroyRoom(roomId, 'abandoned', '마지막 참가자 퇴장');
     return;
   }
 

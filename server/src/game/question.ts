@@ -208,62 +208,6 @@ export function broadcastExperiencedUpdated(room: Room): void {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * ★★ 활성 0명 동안 문제 타이머를 멈춘다 (R014 실측으로 추가).
- *
- * ★★ 왜 필요한가 — 실행해 보고 찾은 결함이다
- *   ★ 게임 중에는 퇴장해도 슬롯을 유지한다(01-GAME-RULES 13장).
- *     ★ 그래서 전원이 나가도 방과 게임이 남는다.
- *   ★★ 그 상태에서 tick 이 계속 돌면 **아무도 없는 게임이 끝까지 진행된다.**
- *     문제가 하나씩 소진되고, 경험 기록은 아무에게도 남지 않는다.
- *     ★ 사람이 돌아왔을 때 게임은 이미 끝나 있다.
- *
- * ★ 확정 규칙은 "활성 0명이면 즉시 PAUSED" 다 (T21 / Q-30 개정).
- *   ★ PAUSED 는 Phase 5 다. 이유는 D-023 에 있다.
- *   → ★ Phase 2 가 COUNTDOWN 에서 한 것과 **같은 방식**으로 근사한다 —
- *     상태를 바꾸지 않고 **타이머만 보류**한다.
- *
- * ★ 최종 규칙과 다른 점 (명시한다)
- *   · PAUSED 상태를 브로드캐스트하지 않는다. 화면에 "일시정지" 가 뜨지 않는다
- *   · 30분 초과 시 abandoned 로 끝나는 경로가 없다.
- *     ★ 대신 활성 0명 10분이면 방이 삭제되고 그때 게임이 abandoned 로 닫힌다 (Q-14)
- *   · 방장 재개 버튼이 없다. 사람이 돌아오면 자동으로 이어진다
- *
- * ★ 멈추는 방식: **종료 시각을 흐른 만큼 밀어 준다.**
- *   ★ 근거: 그냥 tick 을 건너뛰면 endsAt 이 과거가 되어, 사람이 돌아온 순간
- *     문제가 즉시 시간 종료된다. ★ 그 문제는 30초를 받지 못한다.
- *   ★ 밀어 주면 문제의 **실제 진행 시간**이 30초로 유지된다. guide 10절의 의도에 맞다.
- *
- * @returns 멈췄으면 true (호출자는 이후 검사를 건너뛴다)
- */
-export function freezeIfNoActive(room: Room, now: number): boolean {
-  if (room.state !== 'QUESTION_ACTIVE' && room.state !== 'QUESTION_RESOLVED') return false;
-  if (activeCount(room) > 0) {
-    room.frozenAt = null;
-    return false;
-  }
-
-  // ★ 처음 비었으면 시각만 기록하고 이번 tick 은 넘긴다
-  if (room.frozenAt === null) {
-    room.frozenAt = now;
-    console.log(`[game] ${room.id} ★ 활성 0명 — 문제 타이머를 멈춘다 (Phase 5 의 PAUSED 근사)`);
-    return true;
-  }
-
-  // ★ 흐른 만큼 종료 시각을 밀어 준다
-  const delta = now - room.frozenAt;
-  room.frozenAt = now;
-  if (delta <= 0) return true;
-  const q = room.currentQuestion;
-  if (q) {
-    q.startedAt += delta;
-    q.endsAt += delta;
-  }
-  const r = room.game?.resolution;
-  if (r && r.nextAt !== null) r.nextAt += delta;
-  return true;
-}
-
-/**
  * 남은 10초에 힌트를 보낸다 (guide 11절).
  *
  * ★ 문제와 함께 미리 보내지 않는다. 개발자 도구로 30초 시점에 볼 수 있기 때문이다.

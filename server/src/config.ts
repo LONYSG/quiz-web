@@ -12,6 +12,7 @@
 
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { RULES } from '@quiz/shared';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(HERE, '..', '..');
@@ -33,6 +34,25 @@ function required(name: string): string {
   return value;
 }
 
+/**
+ * ★ 양의 정수 환경 변수. 없거나 이상하면 기본값을 쓴다.
+ *
+ * ★★ 조용히 0 이나 NaN 이 되게 두지 않는다.
+ *   ★ 근거: rate limit 이 0 이 되면 아무도 채팅을 못 하고,
+ *     pauseAbandonMs 가 0 이 되면 일시정지가 즉시 방을 폭파한다.
+ *   ★ 설정 실수가 게임을 망가뜨리면 안 된다. 알리고 기본값으로 간다.
+ */
+function positiveInt(name: string, fallback: number): number {
+  const raw = process.env[name];
+  if (raw === undefined || raw === '') return fallback;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n <= 0) {
+    console.warn(`[config] ★ ${name} 값이 올바르지 않다. 기본값 ${fallback} 을 쓴다.`);
+    return fallback;
+  }
+  return Math.floor(n);
+}
+
 export const config = {
   port: Number(process.env.PORT ?? 3000),
   nodeEnv: process.env.NODE_ENV ?? 'development',
@@ -49,6 +69,25 @@ export const config = {
    *   그러면 메모리의 게임이 날아가 일시정지 기능이 무의미해진다. (R004 0장)
    */
   publicBaseUrl: process.env.PUBLIC_BASE_URL ?? null,
+
+  /**
+   * ★★ 실측 후 조정할 게임 운영 값들 (R015).
+   *
+   * ★ 왜 환경 변수로 뺐는가 — 건우 확정 사항에 "★ 설정값으로 둔다" 가 두 번 나온다.
+   *   ★ 둘 다 **실제로 겪어 보고 조정할 값**이기 때문이다 (Q-82 의 5분 / Q-84 의 도배 한도).
+   *   ★ 코드를 고쳐 재배포하면 메모리의 게임이 날아간다. 그러면 조정 자체가 부담이 된다.
+   *
+   * ★ 기본값은 shared/RULES 의 값이다. 규칙의 정본은 그쪽이고 여기는 덮어쓰기다.
+   * ★★ 값을 바꾸면 docs/01-GAME-RULES.md 도 함께 고쳐야 한다. 문서가 정본이다.
+   */
+  tuning: {
+    /** ★ PAUSED 포기까지 (Q-82). 기본 5분 */
+    pauseAbandonMs: positiveInt('PAUSE_ABANDON_MS', RULES.PAUSE_ABANDON_MS),
+    /** ★ 채팅 rate limit 윈도 (Q-84). 기본 1초 */
+    chatRateWindowMs: positiveInt('CHAT_RATE_WINDOW_MS', RULES.CHAT_RATE_WINDOW_MS),
+    /** ★ 그 윈도 안의 최대 개수 (Q-84). 기본 20개 */
+    chatRateMax: positiveInt('CHAT_RATE_MAX', RULES.CHAT_RATE_MAX),
+  },
   get isProduction(): boolean {
     return this.nodeEnv === 'production';
   },

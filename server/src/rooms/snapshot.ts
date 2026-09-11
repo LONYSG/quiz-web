@@ -82,8 +82,28 @@ export interface RoomSnapshot {
   skip: { votes: number; threshold: number | null; selfVoted: boolean } | null;
   /** 게임 결과 (GAME_RESULT) */
   result: GameResultData | null;
-  // ── Phase 5에서 채운다
-  paused: null;
+  /**
+   * ★★ 일시정지 (Phase 5 / R015). PAUSED 에서만 값이 있다.
+   *
+   * ★ 재접속한 사람이 "왜 멈춰 있는가" 와 "언제까지 기다리는가" 를 알아야 한다.
+   *   ★★ D-030 교훈 — 화면에 아무 표시가 없으면 "멈췄다" 와 "고장났다" 가 구분되지 않는다.
+   */
+  paused: PausedView | null;
+}
+
+export interface PausedView {
+  pausedFrom: string;
+  /** ★ 멈춘 시점의 남은 시간. **고정값이다.** 클라이언트가 그대로 그린다 */
+  remainingMs: number;
+  pausedAt: number;
+  /** ★ 이 시각이 지나면 방이 폭파된다 (Q-82) */
+  abandonAt: number;
+  /** 돌아온 사람 수 */
+  returned: number;
+  /** 슬롯을 가진 사람 수 */
+  total: number;
+  /** ★ 이 스냅샷을 받는 사람이 재개 버튼을 누를 수 있는가 */
+  canResume: boolean;
 }
 
 export interface QuestionView {
@@ -244,7 +264,30 @@ export function buildSnapshot(
     resolution: buildResolutionView(room),
     skip: buildSkipView(room, viewerAccountId),
     result: room.state === 'GAME_RESULT' ? room.result : null,
-    paused: null,
+    paused: buildPausedView(room, viewerAccountId),
+  };
+}
+
+/**
+ * 일시정지 뷰.
+ *
+ * ★★ `canResume` 을 서버가 계산해서 보낸다. 클라이언트가 유추하지 않는다.
+ *   ★ 근거: 재개 조건이 "방장이고 활성이 1명 이상" 두 가지다.
+ *     ★ 클라이언트가 유추하면 그 규칙이 두 곳에 생기고, 어긋나는 순간
+ *       "버튼이 보이는데 서버가 거부하는" 상태가 된다 (Phase 2 의 settingsLocked 와 같은 이유).
+ */
+function buildPausedView(room: Room, viewerAccountId: string): PausedView | null {
+  const p = room.paused;
+  if (!p || room.state !== 'PAUSED') return null;
+  const active = activeCount(room);
+  return {
+    pausedFrom: p.pausedFrom,
+    remainingMs: p.remainingMs,
+    pausedAt: p.pausedAt,
+    abandonAt: p.abandonAt,
+    returned: active,
+    total: room.players.size,
+    canResume: room.hostAccountId === viewerAccountId && active >= 1,
   };
 }
 
@@ -262,13 +305,27 @@ function buildQuestionView(
 ): QuestionView | null {
   const q = room.currentQuestion;
   if (!q) return null;
-  if (room.state !== 'QUESTION_ACTIVE' && room.state !== 'QUESTION_RESOLVED') return null;
+  // ★★ PAUSED 에서도 문제를 담는다 (R015).
+  //   ★ 근거: 재개하면 같은 문제를 이어서 한다. 멈춘 화면에 문제가 보여야
+  //     사람들이 "무엇을 하다 멈췄는지" 를 안다.
+  //   ★ 남은 시간은 paused.remainingMs 가 따로 전달한다. endsAt 은 재개 전까지 의미가 없다.
+  if (
+    room.state !== 'QUESTION_ACTIVE' &&
+    room.state !== 'QUESTION_RESOLVED' &&
+    room.state !== 'PAUSED'
+  ) {
+    return null;
+  }
 
   // ★ 힌트 공개 조건. hintPushed 만 믿지 않고 시각으로도 확인한다.
   //   ★ 두 조건을 함께 보는 이유: hintPushed 는 tick 이 세우고, 재접속은 그와 무관하게
   //     아무 때나 일어난다. 시각 조건이 최종 방어선이다.
+  //   ★★ PAUSED 중에는 endsAt 이 낡은 값이다. remainingMs 로 판단해야 한다.
+  //     ★ 그러지 않으면 "멈춘 시점에 15초 남았는데" 재접속하니 힌트가 보이는 사고가 난다.
+  const remain =
+    room.state === 'PAUSED' ? (room.paused?.remainingMs ?? 0) : q.endsAt - now;
   const revealed =
-    q.hintPushed || q.endsAt - now <= RULES.HINT_REVEAL_AT_MS || room.state === 'QUESTION_RESOLVED';
+    q.hintPushed || remain <= RULES.HINT_REVEAL_AT_MS || room.state === 'QUESTION_RESOLVED';
 
   const nicknames: string[] = [];
   for (const id of q.experiencedAccountIds) {

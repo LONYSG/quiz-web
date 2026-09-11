@@ -17,7 +17,7 @@ import { closePool, getDbActiveMs } from './db/pool.js';
 import { authRouter } from './http/authRoutes.js';
 import { registerSocketHandlers } from './socket/index.js';
 import { startTick, stopTick } from './tick.js';
-import { roomCount } from './rooms/registry.js';
+import { activeCount, getRoom, roomCount } from './rooms/registry.js';
 
 const BOOTED_AT = Date.now();
 
@@ -48,7 +48,7 @@ async function main(): Promise<void> {
   app.get('/healthz', (_req, res) => {
     res.json({
       ok: true,
-      phase: 'phase2',
+      phase: 'phase5',
       serverTime: Date.now(),
       bootedAt: BOOTED_AT,
       uptimeMs: Date.now() - BOOTED_AT,
@@ -56,6 +56,50 @@ async function main(): Promise<void> {
       rooms: roomCount(),
     });
   });
+
+  /**
+   * ★★ 방 상태 진단 (읽기 전용. **개발 환경에서만**).
+   *
+   * ★ 왜 필요한가 (R015) — Phase 5 테스트의 핵심이
+   *   **"전원이 나간 뒤 서버가 어떤 상태인가"** 다.
+   *   ★★ 소켓으로 보려면 누군가 붙어 있어야 하는데, 붙는 순간 활성 인원이 바뀌어
+   *     PAUSED 조건 자체가 무너진다. ★ 관측이 대상을 바꾼다.
+   *   → ★ 붙지 않고 읽을 수 있는 경로를 둔다.
+   *
+   * ★★ 프로덕션에서는 열지 않는다.
+   *   ★ 근거: 방 상태에는 진행 중인 문제의 index·epoch 가 들어 있다.
+   *     ★ 정답은 담지 않지만, 운영 환경에서 내부 상태를 공개할 이유가 없다.
+   */
+  if (!config.isProduction) {
+    app.get('/debug/room/:id', (req, res) => {
+      const room = getRoom(req.params.id);
+      if (!room) {
+        res.status(404).json({ exists: false });
+        return;
+      }
+      res.json({
+        exists: true,
+        state: room.state,
+        activeCount: activeCount(room),
+        players: room.players.size,
+        hostAccountId: room.hostAccountId,
+        // ★ 정답을 담지 않는다. index 와 epoch 만이다
+        question: room.currentQuestion
+          ? {
+              index: room.currentQuestion.index,
+              epoch: room.currentQuestion.epoch,
+              endsAt: room.currentQuestion.endsAt,
+              resolved: room.currentQuestion.resolved,
+              hintPushed: room.currentQuestion.hintPushed,
+            }
+          : null,
+        paused: room.paused,
+        gameId: room.game?.gameId ?? null,
+        questionIndex: room.game?.questionIndex ?? 0,
+      });
+    });
+    console.log('[boot] ★ 개발 진단 경로 열림: GET /debug/room/:id (프로덕션에서는 닫힌다)');
+  }
 
   app.use('/api/auth', authRouter);
 
