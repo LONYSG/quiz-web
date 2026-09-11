@@ -105,6 +105,20 @@ export interface GameResultView {
   totalQuestions: number;
 }
 
+/** ★ 일시정지 (Phase 5). PAUSED 에서만 값이 있다 */
+export interface PausedView {
+  pausedFrom: string;
+  /** ★ 멈춘 시점의 남은 시간. **고정값이다.** 흐르지 않는다 */
+  remainingMs: number;
+  pausedAt: number;
+  /** ★ 이 시각이 지나면 방이 사라진다 (Q-82) */
+  abandonAt: number;
+  returned: number;
+  total: number;
+  /** ★ 서버가 계산해 보낸다. 클라이언트가 유추하지 않는다 */
+  canResume: boolean;
+}
+
 export interface RoomSnapshot {
   reason: 'join' | 'reconnect' | 'resync';
   serverTime: number;
@@ -133,6 +147,8 @@ export interface RoomSnapshot {
   resolution: ResolutionView | null;
   skip: SkipView | null;
   result: GameResultView | null;
+  /** ★ Phase 5 */
+  paused: PausedView | null;
 }
 
 export interface SocketErrorPayload {
@@ -328,6 +344,7 @@ export function useRoom(socket: Socket | null): RoomHook {
               resolution: null,
               skip: null,
               result: null,
+              paused: null,
             }
           : prev,
       );
@@ -487,6 +504,7 @@ export function useRoom(socket: Socket | null): RoomHook {
               resolution: null,
               skip: null,
               result: null,
+              paused: null,
               countdown: null,
             }
           : prev,
@@ -495,6 +513,76 @@ export function useRoom(socket: Socket | null): RoomHook {
 
     const onThrottled = (p: { retryAfterMs: number }) => {
       setThrottledUntil(Date.now() + p.retryAfterMs);
+    };
+
+    // ── ★★ Phase 5 — 일시정지 (R015)
+    const onPaused = (p: {
+      state: string;
+      pausedFrom: string;
+      remainingMs: number;
+      pausedAt: number;
+      abandonAt: number;
+    }) => {
+      setSnapshot((prev) =>
+        prev
+          ? {
+              ...prev,
+              room: { ...prev.room, state: p.state },
+              paused: {
+                pausedFrom: p.pausedFrom,
+                remainingMs: p.remainingMs,
+                pausedAt: p.pausedAt,
+                abandonAt: p.abandonAt,
+                returned: prev.room.activeCount,
+                total: prev.players.length,
+                // ★ 서버가 계산해 보내는 값이지만 이 이벤트에는 없다.
+                //   ★ 방장이면 재개할 수 있다. 정확한 값은 다음 스냅샷·상태 갱신이 채운다
+                canResume: prev.me.isHost,
+              },
+              skip: null,
+            }
+          : prev,
+      );
+    };
+
+    const onPauseStatus = (p: { returned: number; total: number; abandonAt: number }) => {
+      setSnapshot((prev) =>
+        prev?.paused
+          ? {
+              ...prev,
+              room: { ...prev.room, activeCount: p.returned },
+              paused: {
+                ...prev.paused,
+                returned: p.returned,
+                total: p.total,
+                abandonAt: p.abandonAt,
+                canResume: prev.me.isHost && p.returned >= 1,
+              },
+            }
+          : prev,
+      );
+    };
+
+    const onResumed = (p: {
+      state: string;
+      epoch: number | null;
+      endsAt: number | null;
+      nextAt: number | null;
+      countdownEndsAt: number | null;
+    }) => {
+      setSnapshot((prev) => {
+        if (!prev) return prev;
+        // ★★ 서버가 보낸 새 종료 시각을 그대로 쓴다. 스스로 계산하지 않는다
+        const question =
+          prev.question && p.endsAt !== null ? { ...prev.question, endsAt: p.endsAt } : prev.question;
+        return {
+          ...prev,
+          room: { ...prev.room, state: p.state },
+          paused: null,
+          question,
+          countdown: p.countdownEndsAt !== null ? { endsAt: p.countdownEndsAt } : prev.countdown,
+        };
+      });
     };
 
     socket.on('room.state', onState);
@@ -506,6 +594,9 @@ export function useRoom(socket: Socket | null): RoomHook {
     socket.on('game.result', onGameResult);
     socket.on('game.returnedToLobby', onReturnedToLobby);
     socket.on('chat.throttled', onThrottled);
+    socket.on('game.paused', onPaused);
+    socket.on('game.pauseStatus', onPauseStatus);
+    socket.on('game.resumed', onResumed);
     socket.on('room.playerJoined', patchPlayers);
     socket.on('room.playerLeft', patchPlayers);
     socket.on('room.playersUpdated', patchPlayers);
@@ -531,6 +622,9 @@ export function useRoom(socket: Socket | null): RoomHook {
       socket.off('game.result', onGameResult);
       socket.off('game.returnedToLobby', onReturnedToLobby);
       socket.off('chat.throttled', onThrottled);
+      socket.off('game.paused', onPaused);
+      socket.off('game.pauseStatus', onPauseStatus);
+      socket.off('game.resumed', onResumed);
       socket.off('room.playerJoined', patchPlayers);
       socket.off('room.playerLeft', patchPlayers);
       socket.off('room.playersUpdated', patchPlayers);

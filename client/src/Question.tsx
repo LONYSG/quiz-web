@@ -87,6 +87,26 @@ export default function Question({
     el.scrollIntoView({ block: 'start', behavior: 'auto' });
   }, [question.epoch]);
 
+  /**
+   * ★★ Q-56 — 단축키가 방장 확인창을 연다 (R015).
+   *
+   * ★ 왜 CustomEvent 로 받는가 — 단축키 정의는 Lobby 에 있고 확인창 상태는 여기 있다.
+   *   ★ 상태를 Lobby 로 끌어올리면 문제 화면의 관심사가 밖으로 샌다.
+   *   ★★ 그리고 단축키가 **확인창을 건너뛰고 바로 실행하면 안 된다** —
+   *     실수로 누른 Alt+K 가 문제를 즉시 넘기면 되돌릴 수 없다.
+   *     ★ 그래서 단축키도 버튼과 **같은 경로**(확인창)를 지나게 한다.
+   */
+  useEffect(() => {
+    const openSkip = () => setConfirming('skip');
+    const openEnd = () => setConfirming('end');
+    window.addEventListener('qw:host-skip', openSkip);
+    window.addEventListener('qw:host-end', openEnd);
+    return () => {
+      window.removeEventListener('qw:host-skip', openSkip);
+      window.removeEventListener('qw:host-end', openEnd);
+    };
+  }, []);
+
   // ★ 문제가 바뀌면 확인창을 닫는다.
   //   ★ 근거: 확인창이 열린 채로 문제가 바뀌면 다음 문제를 스킵할 위험이 있다.
   //     ★ 서버가 epoch 로 막지만(host.forceSkip), 화면에서도 닫는 것이 맞다.
@@ -94,7 +114,14 @@ export default function Question({
     setConfirming(null);
   }, [question.epoch]);
 
-  const sec = (remainMs / 1000).toFixed(1);
+  /**
+   * ★ Q-83 확정 — **정수 초로 표시한다.**
+   *   ★ 건우: "시간 줄어드는 게 소수점 단위는 안 보여줘도 된다. 눈만 아프다."
+   *   ★★ 내부 계산은 그대로 ms 다. 표시만 바꾼다 —
+   *     정답 인정 경계는 서버의 endsAt 이고 화면 표기와 무관하다.
+   *   ★ 올림(ceil)을 쓴다. 0.4초 남았는데 "0초" 로 보이면 이미 끝난 것처럼 읽힌다.
+   */
+  const sec = Math.ceil(remainMs / 1000);
   /** 남은 10초 구간인가. 색을 바꿔 긴박함을 보여준다 */
   const urgent = active && remainMs <= 10_000;
 
@@ -184,7 +211,7 @@ export default function Question({
                 {skip.votes} / {skip.threshold}표
               </p>
               <button type="button" onClick={() => sendSkipVote(!skip.selfVoted)}>
-                {skip.selfVoted ? '넘기기 취소' : '넘기기 투표'}
+                {skip.selfVoted ? '넘기기 취소' : '넘기기 투표'} <kbd>Alt+S</kbd>
               </button>
               {/* ★ 누가 투표했는지는 표시하지 않는다 (guide 22절).
                   ★ 서버도 명단을 보내지 않는다. */}
@@ -202,11 +229,11 @@ export default function Question({
             <div className="field-row">
               {active && (
                 <button type="button" className="ghost" onClick={() => setConfirming('skip')}>
-                  이 문제 넘기기
+                  이 문제 넘기기 <kbd>Alt+K</kbd>
                 </button>
               )}
               <button type="button" className="ghost" onClick={() => setConfirming('end')}>
-                게임 강제 종료
+                게임 강제 종료 <kbd>Alt+Q</kbd>
               </button>
             </div>
           )}
@@ -237,11 +264,21 @@ export default function Question({
                       socket.emit('host.forceEnd', {});
                     }
                     setConfirming(null);
+                    document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
                   }}
                 >
                   예
                 </button>
-                <button type="button" className="ghost" onClick={() => setConfirming(null)}>
+                <button
+                  type="button"
+                  className="ghost"
+                  onClick={() => {
+                    setConfirming(null);
+                    // ★★ 확인창이 닫히면 포커스가 원래 자리(채팅 입력)로 돌아와야 한다.
+                    //   ★ Q-56 의 접근성 요구다. 포커스가 사라지면 정답을 쳐도 안 들어간다.
+                    document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
+                  }}
+                >
                   아니오
                 </button>
               </div>

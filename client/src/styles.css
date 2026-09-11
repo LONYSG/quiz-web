@@ -697,6 +697,83 @@ form button[type='submit'] { width: 100%; }
   font-size: 0.85rem;
 }
 
+/* =============================================================================
+   ★★ Phase 5 — 일시정지 / 확인창 / 단축키 (R015)
+   ★ 새 버튼·배지는 위의 라벨 보호 규칙(D-022)을 자동으로 받는다
+   ============================================================================= */
+
+.paused-card {
+  /* ★ 멈춰 있다는 것이 한눈에 보여야 한다 (D-030) */
+  border-color: #5a4a30;
+  background: #211d15;
+}
+
+.confirm-card {
+  border-color: #5a4030;
+}
+
+/* ── ★ 단축키 안내 (Q-56) */
+.keybar {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.keybar-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 0.78rem;
+}
+.keyhint {
+  white-space: nowrap;
+}
+.keybar-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.keylist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+}
+.keylist li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+}
+.keylabel {
+  color: var(--text-dim);
+}
+
+kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--bg-elev);
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  font-size: 0.76rem;
+  /* ★ 라벨이므로 줄바꿈하지 않는다 (D-022 와 같은 이유) */
+  white-space: nowrap;
+}
+/* ★ 버튼 안의 단축키 표기는 작고 흐리게 */
+button kbd {
+  margin-left: 4px;
+  border-bottom-width: 1px;
+  opacity: 0.7;
+  font-size: 0.7rem;
+}
+
 /* ── ★ 도배 억제 안내. 입력창 바로 위 문서 흐름에 둔다 (iOS 키보드 대응) */
 .warn {
   color: var(--bad);

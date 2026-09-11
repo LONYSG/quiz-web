@@ -20,6 +20,9 @@ import Countdown from './Countdown.js';
 import GameSettings from './GameSettings.js';
 import Question from './Question.js';
 import GameResult from './GameResult.js';
+import Paused from './Paused.js';
+import ShortcutBar from './ShortcutBar.js';
+import { useFocusChatOnEscape, useShortcuts, type Shortcut } from './shortcuts.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
 
 interface Props {
@@ -45,6 +48,15 @@ export default function Lobby({
   const [copied, setCopied] = useState(false);
   /** ★ 도배 억제 안내가 지금 유효한가. 시각이 지나면 스스로 사라진다 */
   const [throttled, setThrottled] = useState(false);
+  /** ★ Q-56 — 단축키 전체 목록을 펼쳤는가 */
+  const [showKeys, setShowKeys] = useState(false);
+  /**
+   * ★★ Q-82 — 게임 중 나가기 확인창.
+   *   ★ 근거: 마지막 활성자가 나가면 **즉시 방이 폭파된다.**
+   *     실수로 눌렀는데 게임이 날아가면 안 된다.
+   *   ★ 로비에서는 확인창을 두지 않는다 — 판단 근거는 아래 leaveWithConfirm 주석에 있다.
+   */
+  const [confirmLeave, setConfirmLeave] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
   /** 사용자가 과거 메시지를 보고 있으면 강제로 아래로 끌어내리지 않는다 (guide 36절) */
@@ -110,7 +122,29 @@ export default function Lobby({
   const inGame =
     snapshot.room.state === 'QUESTION_ACTIVE' ||
     snapshot.room.state === 'QUESTION_RESOLVED' ||
+    snapshot.room.state === 'PAUSED' ||
     snapshot.room.state === 'GAME_RESULT';
+
+  /**
+   * ★★ Q-82 — 게임 중 나가기에만 확인창을 둔다.
+   *
+   * ★ 게임 중(COUNTDOWN / QUESTION_ACTIVE / QUESTION_RESOLVED / PAUSED)
+   *   → ★ 확인창. **마지막 활성자면 방이 즉시 폭파된다.**
+   * ★ 로비 / 결과 화면 → 확인창 없음.
+   *   ★ 판단 근거 — 그 상태에는 **잃을 것이 없다.** 진행 중인 게임이 없고,
+   *     방이 사라져도 다시 만들면 된다. 점수도 경험 기록도 이미 확정되어 있다.
+   *   ★★ 확인창을 남발하면 진짜 위험한 순간의 확인창도 습관적으로 넘기게 된다.
+   */
+  const needsLeaveConfirm =
+    snapshot.room.state === 'COUNTDOWN' ||
+    snapshot.room.state === 'QUESTION_ACTIVE' ||
+    snapshot.room.state === 'QUESTION_RESOLVED' ||
+    snapshot.room.state === 'PAUSED';
+
+  const leaveWithConfirm = () => {
+    if (needsLeaveConfirm) setConfirmLeave(true);
+    else onLeave();
+  };
 
   /** ★ 지금 답안이 판정되는 상태인가. 입력창 안내 문구를 바꾼다 */
   const judging = snapshot.room.state === 'QUESTION_ACTIVE' && !snapshot.question?.selfExperienced;
@@ -122,6 +156,79 @@ export default function Lobby({
    */
   /** 접속 종료 표시 상태인 참가자가 있는가. 조건부 안내를 띄울 기준이다 */
   const hasDisconnected = snapshot.players.some((p) => !p.connected);
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // ★★ Q-56 단축키 (R015)
+  //   ★ 전부 Alt 조합이다. 단독 문자키를 쓰지 않는다 — 채팅 입력을 방해하면 안 된다.
+  //   ★ 근거와 피한 키 목록은 shortcuts.ts 헤더에 있다.
+  // ───────────────────────────────────────────────────────────────────────────
+  const isActive = snapshot.room.state === 'QUESTION_ACTIVE';
+  const isResult = snapshot.room.state === 'GAME_RESULT';
+  const isPaused = snapshot.room.state === 'PAUSED';
+  const epoch = snapshot.question?.epoch ?? null;
+
+  const shortcuts: Shortcut[] = [
+    {
+      combo: 'Alt+S',
+      fkey: 'F2',
+      label: '넘기기 투표',
+      when: isActive && snapshot.skip?.threshold != null,
+      run: () => socket.emit('skip.vote', { vote: !snapshot.skip?.selfVoted, epoch }),
+    },
+    {
+      combo: 'Alt+K',
+      fkey: 'F4',
+      label: '이 문제 넘기기 (방장)',
+      when: isActive && snapshot.me.isHost,
+      // ★ 확인창을 거친다. 단축키로 문제를 즉시 넘기면 실수를 되돌릴 수 없다
+      run: () => window.dispatchEvent(new CustomEvent('qw:host-skip')),
+    },
+    {
+      combo: 'Alt+R',
+      fkey: 'F8',
+      label: '재개 (방장)',
+      when: isPaused && Boolean(snapshot.paused?.canResume),
+      run: () => socket.emit('game.resume', {}),
+    },
+    {
+      combo: 'Alt+Q',
+      fkey: null,
+      label: '게임 강제 종료 (방장)',
+      when: (isActive || snapshot.room.state === 'QUESTION_RESOLVED' || isPaused) && snapshot.me.isHost,
+      run: () => window.dispatchEvent(new CustomEvent('qw:host-end')),
+    },
+    {
+      combo: 'Alt+A',
+      fkey: null,
+      label: '다시 하기 (방장)',
+      when: isResult && snapshot.me.isHost,
+      run: () => socket.emit('game.again', {}),
+    },
+    {
+      combo: 'Alt+L',
+      fkey: null,
+      label: '로비로 (방장)',
+      when: isResult && snapshot.me.isHost,
+      run: () => socket.emit('game.toLobby', {}),
+    },
+    {
+      combo: 'Alt+X',
+      fkey: null,
+      label: '방 나가기',
+      when: true,
+      run: leaveWithConfirm,
+    },
+    {
+      combo: 'Alt+G',
+      fkey: 'F9',
+      label: '단축키 목록 열기/닫기',
+      when: true,
+      run: () => setShowKeys((v) => !v),
+    },
+  ];
+  useShortcuts(shortcuts);
+  // ★★ Esc 로 채팅 입력에 포커스를 되돌린다. 마우스 없이 돌아가려면 반드시 필요하다
+  useFocusChatOnEscape(inputRef);
 
   const rateText = (accountId: string): string => {
     const rate = snapshot.experienceRates?.find((r) => r.accountId === accountId);
@@ -140,10 +247,52 @@ export default function Lobby({
             <span className="dim"> · {snapshot.room.state}</span>
           </p>
         </div>
-        <button type="button" className="ghost" onClick={onLeave}>
+        <button type="button" className="ghost" onClick={leaveWithConfirm}>
           방 나가기
         </button>
       </header>
+
+      {/* ★★ Q-82 — 게임 중 나가기 확인창.
+          ★ 마지막 활성자가 나가면 방이 즉시 폭파된다. 실수로 누르면 게임이 날아간다.
+          ★ autoFocus 로 Enter 만으로 조작할 수 있다 (Q-56 요구). */}
+      {confirmLeave && (
+        <section className="card confirm-card">
+          <h2>방을 나갈까요?</h2>
+          <p className="note">
+            ★ <strong>내가 마지막 접속자라면 방이 즉시 사라집니다.</strong> 진행 중인 게임도
+            함께 끝납니다.
+            <br />
+            다른 사람이 남아 있으면 게임은 계속되고, 자리는 게임이 끝날 때까지 유지됩니다.
+            <br />
+            <span className="dim">
+              ★ 잠깐 끊기는 것(새로고침·네트워크)은 나가기와 다릅니다. 그때는 일시정지되고
+              기다립니다.
+            </span>
+          </p>
+          <div className="field-row">
+            <button
+              type="button"
+              autoFocus
+              onClick={() => {
+                setConfirmLeave(false);
+                onLeave();
+              }}
+            >
+              나가기
+            </button>
+            <button
+              type="button"
+              className="ghost"
+              onClick={() => {
+                setConfirmLeave(false);
+                inputRef.current?.focus();
+              }}
+            >
+              취소
+            </button>
+          </div>
+        </section>
+      )}
 
       {/* ★ 초대 링크·참가자·설정은 로비 계열 상태에서만 보여준다.
           ★ 근거: 게임 중 화면 위쪽은 문제 지문과 남은 시간이 차지해야 한다 (D-032).
@@ -271,6 +420,11 @@ export default function Lobby({
         />
       )}
 
+      {/* ── ★★ 일시정지 화면 (Phase 5) */}
+      {snapshot.paused && (
+        <Paused socket={socket} paused={snapshot.paused} serverNow={serverNow} />
+      )}
+
       {/* ── ★ 결과 화면 (TEMP-P4-01: Phase 4 에서 다시 만든다) */}
       {snapshot.result && (
         <GameResult
@@ -283,7 +437,7 @@ export default function Lobby({
 
       {/* ★ 게임이 시작됐는데 문제가 아직 없는 순간이 있을 수 있다 (첫 문제 선정 직전).
           ★ 그 짧은 구간에 빈 화면을 보여주지 않는다. */}
-      {snapshot.game && !snapshot.question && !snapshot.result && (
+      {snapshot.game && !snapshot.question && !snapshot.result && !snapshot.paused && (
         <section className="card">
           <h2>게임 진행</h2>
           <p className="big dim">문제를 준비하고 있습니다…</p>
@@ -346,6 +500,13 @@ export default function Lobby({
             전송
           </button>
         </div>
+        {/* ★★ Q-56 — 단축키 설명.
+            ★ 어디에 둘지 판단: **채팅 입력창 바로 아래**다.
+              ★ 근거 (1) 게임 중 시선과 손이 그곳에 있다
+                     (2) 상시 전체 표시는 자리를 먹는다 — 건우의 "스크롤 없이 한 화면" 목표와 충돌
+                     (3) 그래서 **지금 쓸 수 있는 것만** 한 줄로 보여주고 Alt+G 로 전체를 편다 */}
+        <ShortcutBar shortcuts={shortcuts} expanded={showKeys} onToggle={() => setShowKeys((v) => !v)} />
+
         <p className="note">
           {judging ? (
             <>

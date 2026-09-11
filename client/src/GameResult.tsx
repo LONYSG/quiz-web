@@ -103,11 +103,11 @@ export default function GameResult({ socket, result, isHost, myAccountId }: Prop
               {/* ★★ 두 버튼의 서버 동작은 동일하다 (04-PROTOCOL T30/T31).
                   ★ UI 차이만 둔다 — 다시 하기는 곧 시작할 의도, 로비로는 설정을 볼 의도.
                   ★ 어느 쪽도 게임을 자동으로 시작하지 않는다 (guide 38절). */}
-              <button type="button" onClick={() => socket.emit('game.again', {})}>
-                다시 하기
+              <button type="button" autoFocus onClick={() => socket.emit('game.again', {})}>
+                다시 하기 <kbd>Alt+A</kbd>
               </button>
               <button type="button" className="ghost" onClick={() => socket.emit('game.toLobby', {})}>
-                로비로
+                로비로 <kbd>Alt+L</kbd>
               </button>
             </div>
             <p className="note">

@@ -36,8 +36,9 @@ export default function Countdown({ socket, endsAt, serverNow, isHost }: Props) 
     return () => clearInterval(id);
   }, [endsAt, serverNow]);
 
-  // 0.1초 단위로 올림해 보여 준다. 5.0 → 4.9 → … → 0.1 → "시작 중…"
-  const sec = (remainMs / 1000).toFixed(1);
+  // ★ Q-83 확정 — 정수 초로 보여 준다. 5 → 4 → … → 1 → "시작 중…"
+  //   ★ 근거는 Question.tsx 의 같은 자리에 적었다. 소수점은 눈만 아프다.
+  const sec = Math.ceil(remainMs / 1000);
 
   return (
     <section className="card countdown-card">
