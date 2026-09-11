@@ -8,6 +8,101 @@
 
 ---
 
+## 2026-09-11 — Phase 5 일시정지 / 재접속 복구 + Q-82·Q-56·Q-83·Q-84 (R015)
+
+### 0. 이번 라운드 방침 — Phase 4 보다 Phase 5 를 먼저 한다
+
+건우 판단의 근거 둘.
+
+1. ★ 터널 URL 이 매번 바뀌고 서버 PC 네트워크가 1~2분 끊긴다.
+   ★★ **전원 동시 끊김이 예외가 아니라 일상**이라 활성 0명이 수시로 발생한다.
+2. ★★ R014 의 근사 구현(D-061)이 **자동 재개**였다. ★ Q-30 확정 규칙이 금지한 그것이다.
+   "친구 한 명이 먼저 접속한 순간 게임이 돌아가면 나머지가 새 URL 을 입력하는 동안 문제가 소모된다."
+
+### 1. Phase 3 브라우저 확인 결과 (건우 실측)
+
+★ 6건 정상 확인 — 한글 IME 조합 중 Enter(판정 경로에서도) / 힌트 남은 10초 /
+확인창 Enter 만으로 확정 / 320px 레이아웃 / 게임 중 새로고침 복구 / 도배 제한(PC).
+→ [10-TESTING.md](10-TESTING.md) 13-7 에 기록했다.
+
+★★ **모바일은 확인하지 못했다** (건우: "로컬호스트 테스트라 모바일에서 안 해봤다").
+→ 16번(iOS 소프트 키보드)을 포함한 모바일 전반을 [09-BACKLOG.md](09-BACKLOG.md) 1-2 로 올렸다.
+
+### 2. 확정 사항 반영
+
+| 항목 | 무엇을 했나 | 결정 |
+|------|-----------|------|
+| ★★ Q-82 방 종료 두 갈래 | 마지막 활성자 **나가기** → 즉시 폭파 / **끊김** → PAUSED 5분 | D-064 |
+| ★★ Q-56 단축키 | 전부 `Alt` 조합 + 안전한 F키 4개 + 화면 안내 + 포커스 복귀 | D-065 |
+| ★ Q-83 타이머 정수 표시 | 문제 / 카운트다운 / PAUSED 만료 전부 `Math.ceil` | D-070 |
+| ★ Q-84 도배 제한 완화 | 3초 10개 → **1초 20개.** 기준을 예절 → **서버 보호** | D-069 |
+| ★ 설정값 분리 | `PAUSE_ABANDON_MS` / `CHAT_RATE_WINDOW_MS` / `CHAT_RATE_MAX` | D-071 |
+
+★★ **Q-15 를 뒤집은 것이 이번 라운드의 가장 무거운 결정이다.**
+"나가기와 끊김을 구분하지 않는다" 는 규칙을 **방 종료 판단에서만** 뒤집었다.
+★ 점수·경험·슬롯·결과 포함은 여전히 구분하지 않는다. 근거는 D-064 에 전부 적었다.
+
+### 3. Phase 5 구현
+
+| 무엇 | 어디 |
+|------|------|
+| ★★ 일시정지 본체 (`pauseIfNoActive` / `resumeGame` / `checkAbandon`) | `server/src/game/pause.ts` (신규) |
+| ★ `PausedState` (pausedFrom / pausedAt / remainingMs / abandonAt) | `server/src/rooms/types.ts` |
+| ★ tick 재배선 — PAUSED 방은 게임 타이머를 건너뛴다 | `server/src/tick.ts` |
+| ★ 방 폭파 단일 경로 `destroyRoom` (진입로 4개) | `server/src/rooms/lifecycle.ts` |
+| ★ `game.resume` / PAUSED 중 허용·금지 / Q-82 나가기 판정 | `server/src/socket/index.ts` |
+| ★★ 스냅샷에 `paused` + **힌트를 `remainingMs` 로 판단** | `server/src/rooms/snapshot.ts` |
+| ★ 일시정지 화면 | `client/src/Paused.tsx` (신규) |
+| ★★ 단축키 훅 (`useShortcuts` / `useFocusChatOnEscape`) | `client/src/shortcuts.ts` (신규) |
+| ★ 단축키 안내 바 | `client/src/ShortcutBar.tsx` (신규) |
+| ★ 관측용 `/debug/room/:id` (개발 전용·읽기만) | `server/src/index.ts` |
+
+★★ **설계 판단 셋** — 근거는 07-DECISIONS 에 있다.
+- `endsAt` 을 밀지 않고 `remainingMs` 를 저장한다 (D-067)
+- 한 방에 두 개의 만료 타이머가 동시에 돌지 않게 한다 (D-066)
+- COUNTDOWN 에서 멈춘 방의 막다른 길을 연다 (D-068)
+
+### 4. ★★★ 실행해 보고 찾은 것
+
+| 무엇 | 어떻게 드러났나 | 어떻게 고쳤나 |
+|------|---------------|-------------|
+| ★★★ **힌트 정보 누출** | ★ PAUSED 중 `endsAt` 이 낡은 값이라, 오래 멈춰 두면 재접속 스냅샷이 "남은 10초 이하" 로 오판해 **힌트를 공개**한다 | ★ PAUSED 중에는 `paused.remainingMs` 로 판단한다. ★ 실측: 낡은 계산 7.1초 vs 실제 27.9초 |
+| ★★ COUNTDOWN 에서 멈춘 방의 막다른 길 | ★ 재개 아니면 강제 종료뿐인데 **강제 종료는 게임이 없어서 실패**했다 | `game.cancelCountdown` 을 PAUSED 에서도 허용 (D-068) |
+| ★★ PAUSED 중 방장 이전이 멈추면 게임이 죽는다 | ★ 재개는 방장만 할 수 있는데 방장이 안 돌아오면 아무도 누를 수 없다 | ★ PAUSED 중에도 방장 이전 타이머를 돌린다. ★ 30초 뒤 이전 → 새 방장 재개 성공을 실측 |
+| ★★ `tick.ts` 가 `socket/index.ts` 를 import 하는 역방향 의존 | 방 폭파 함수를 소켓 파일에 두려다 발견 | `rooms/lifecycle.ts` 로 옮겼다 |
+| ★★ ui-check 버튼 라벨 6건이 한꺼번에 깨졌다 | 버튼에 `<kbd>Alt+K</kbd>` 를 붙이자 `textContent` 가 `'이 문제 넘기기 Alt+K'` 가 됐다 | ★ 라벨 추출에서 `<kbd>` 를 제외한다. **사람이 읽는 버튼 이름은 배지와 무관하다** |
+| ★ 오프라인 에뮬레이션으로는 PAUSED 를 만들 수 없었다 | `Network.emulateNetworkConditions` 로 offline 을 켜도 이미 열린 WebSocket 이 끊기지 않았다 | ★ 새로고침으로 바꿨다. 사람이 실제로 하는 동작이다 |
+| ★ DOM 노드를 `returnByValue` 로 돌려받아 CDP 예외 | `Object reference chain is too long` 으로 실행이 중단됐다 | 페이지 안에서 `=== null` 까지 평가해 **boolean 만** 돌려받는다 |
+| ★ 시나리오 안에서 서버 환경 변수를 세워도 적용되지 않았다 | ★ 서버가 시나리오보다 **먼저** 뜬다 | 모듈 최상단 `SCENARIO_ENV` 로 올렸다 |
+| ★ `empty` / `countdown` 봇 시나리오가 설계대로 실패했다 | Phase 5·Q-82 로 **동작이 바뀌었다** (자동 시작 → 방장 재개 / 퇴장 → 폭파) | ★ 새 동작을 단정하도록 다시 썼다. **바뀐 규칙을 테스트가 붙잡는 자리다** |
+
+### 5. 검증
+
+| 검증 | 결과 |
+|------|------|
+| `npm run verify` | ★ 통과 (typecheck / vitest / smoke / ui-check) |
+| `server/src/game/pause.test.ts` (신규) | **22 / 22** |
+| ui-check | ★ **101 / 101** (68 → 101) |
+| 봇 `pause` / `abandon` / `pausehost` / `pausehint` / `flood` | 28 / 9 / 8 / 21 / 10 — **전부 통과** |
+| 봇 회귀 (`game` `race` `epoch` `concur` `collide` `full` `lobby` `countdown` `empty` 등 13종) | ★ 전부 통과 (`countdown` 45 / `game` 58) |
+| ★★ 남은 시간 보존 | 멈출 때 27,969ms → 재개 후 27,968ms |
+| ★★★ 자동 재개 없음 | 3초 / 6초 / 30초 관측 — 전부 `PAUSED` 유지 |
+| ★★ Q-84 부하 | 1,100개 투입 중 판정 지연 **2ms** (기준선과 동일) |
+| ★★ 만료 폭파 | 설정값 6초로 줄여 검증 — 방 사라짐 / `abandoned` / 경험 기록 0행 |
+
+★ 상세 수치는 [10-TESTING.md](10-TESTING.md) 14장.
+
+### 6. 남은 문제
+
+- ★★ **브라우저 수동 확인 대기.** 일시정지는 창 두 개가 필요하고 순서가 까다롭다 → 10-TESTING 14-6 에 순서를 적었다
+- ★★ **모바일 미확인** (PC 에서만 확인했다)
+- ★ **터널 환경에서의 재접속 미확인.** 로컬호스트 기준이다. 실제 URL 변경은 확인하지 못했다
+- ★★ **스크롤 없이 한 화면이 아니다** — 게임 화면이 뷰포트의 1.47~1.66배 (실측). Phase 7 / 09-BACKLOG 1-3
+- ★ 결과 화면은 최소 형태(TEMP-P4-01). Phase 4 에서 다시 만든다
+- ★ Q-81(Gemini → Sonnet 역할 재배치)의 실제 세션 운용은 다음 라운드
+
+---
+
 ## 2026-09-10 — Phase 3 핵심 게임 루프 + R011 253건 적재 (R014)
 
 ### 0. 이번 라운드 방침 — 게임 트랙으로 넘어간다

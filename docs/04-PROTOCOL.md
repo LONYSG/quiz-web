@@ -125,10 +125,10 @@ q.resolved = true;        // 여기서 즉시 세운다
 | 스킵 투표 | X |
 | 방장 액션 | **재개** / 강제 종료 / 접속 종료자 강제 퇴장 |
 | 입장·퇴장 | O |
-| 시간 제한 | **30분.** 초과 시 게임 종료(`abandoned`) |
+| 시간 제한 | ★★ **5분.** 초과 시 **방 폭파** (게임은 `abandoned` 로 닫힌다). Q-82 개정. 설정값 `PAUSE_ABANDON_MS` |
 | 서버 tick | **PAUSED 방은 건너뛴다.** 타이머가 흐르지 않는다 |
-| 방 삭제 타이머 | **정지한다.** `abandoned` 된 뒤에 시작한다 |
-| 방장 이전 타이머 | 활성 0명 동안 **정지한다** (이전할 대상이 없다) |
+| 방 삭제 타이머 | ★ **적용하지 않는다.** PAUSED 는 자기 만료 타이머(5분)만 갖는다 (D-066) |
+| 방장 이전 타이머 | 활성 0명 동안 **정지한다** (이전할 대상이 없다). ★★ 단 활성 ≥ 1 이면 **PAUSED 중에도 돈다** — 방장이 안 돌아오면 아무도 재개를 누를 수 없기 때문이다 |
 
 ### GAME_RESULT
 
@@ -182,7 +182,8 @@ q.resolved = true;        // 여기서 즉시 세운다
 | T11 | QUESTION_ACTIVE → GAME_RESULT | 방장 `host.forceEnd` | 언제든 | **정답 미공개, 경험 미기록.** game_questions.resolution=aborted, 현재 점수로 순위 확정, endReason=force_ended. **이미 지나간 문제의 경험 기록은 삭제하지 않는다** |
 | T12 | QUESTION_RESOLVED → GAME_RESULT | 방장 `host.forceEnd` | — | 정답은 이미 공개됐고 경험 기록도 이미 남았다. 그대로 유지. endReason=force_ended |
 | T13 | PAUSED → GAME_RESULT | 방장 `host.forceEnd` | — | T11과 동일 처리 |
-| T14 | PAUSED → GAME_RESULT | **PAUSED 30분 초과** | — | 정답 미공개, 경험 미기록. endReason=abandoned, abortedNote 표시. **이후 방 삭제 타이머 시작** |
+| T14 | PAUSED → **방 폭파** | ★ **PAUSED 5분 초과** (설정값) | — | ★★ Q-82 개정. 결과 화면으로 가지 않고 **방이 사라진다.** games 는 `abandoned` 로 닫힌다. 정답 미공개, 경험 미기록. ★ 근거: 아무도 없는 방에 결과 화면을 띄워 둘 이유가 없다 |
+| T24 | 게임 중 → **방 폭파** | ★★ **마지막 활성자의 `room.leave`** | 게임 중(COUNTDOWN/QUESTION_\*/PAUSED) | ★★★ Q-82. **즉시 폭파한다.** PAUSED 로 가지 않고 5초도 기다리지 않는다. games 는 `abandoned` 로 닫히고, 진행 중이던 문제는 `aborted`. 정답 미공개, 경험 미기록 |
 
 ### 다음 문제 / 게임 완료
 
@@ -202,6 +203,15 @@ q.resolved = true;        // 여기서 즉시 세운다
 
 > **LOBBY와 GAME_RESULT는 PAUSED로 가지 않는다.** 타이머가 없으므로 멈출 것이 없고,
 > 기존 방 삭제 경로(활성 0명 10분)를 그대로 탄다.
+
+> ★★ **T24(즉시 폭파)와 T21(PAUSED)의 갈림길은 "어떻게 이탈했는가" 하나다** (Q-82).
+> 나가기 버튼이면 T24, 그 외(끊김·새로고침·터널·창 닫기)면 T20~T22 다.
+> 판정은 `room.leave` 핸들러에서 **markDisconnected 하기 전에** 한다 —
+> 끊은 뒤에 세면 자기 자신이 이미 빠져 활성 0명이 되어 구분할 수 없다.
+
+> ★ **방 폭파 경로는 하나다** (`destroyRoom`). 진입로는 넷 —
+> (1) T24 마지막 활성자 나가기 (2) T14 PAUSED 만료
+> (3) 로비·결과 화면에서 마지막 참가자 퇴장 (4) 활성 0명 10분 (Q-14).
 
 ### 결과 화면 이후
 
@@ -323,6 +333,47 @@ selectNextQuestion(room):
 | ★ 경험 기록 | ★ 정답 공개 문제 × 그 순간 접속자 (봇 10명 6문제 → **60행**) |
 | ★ 동점 공동 순위 | ★ `1위 1위 1위 1위 5위 5위 …` |
 
+### ★★ Phase 5 구현과 명세의 대조 (R015)
+
+★ 명세(T20~T23)대로 구현했다. ★ **명세와 다르게 한 것과 명세에 없던 것을 여기 적는다.**
+
+#### ★★ R014 의 근사 구현(D-061)에서 무엇이 달라졌는가
+
+| 항목 | R014 근사 (D-061) | ★ R015 정식 |
+|------|------------------|------------|
+| 상태 | `QUESTION_ACTIVE` 유지 | ★ `PAUSED` 로 전이 |
+| 화면 | 아무 표시 없음 | ★ "일시정지" 화면 |
+| ★★ 재개 | ★★ **자동** (사람이 돌아오면 바로 진행) | ★★★ **방장이 눌러야 한다** |
+| 타이머 보존 | `endsAt` 을 밀어 준다 | ★ `remainingMs` 로 저장 |
+| 만료 | 없음 (방 삭제 10분) | ★ 5분 → **방 폭파** (Q-82) |
+| 대상 | `QUESTION_ACTIVE` 만 | ★ `COUNTDOWN` / `QUESTION_RESOLVED` 도 |
+
+★★ **자동 재개를 없앤 것이 가장 중요하다.** 근사 구현은 Q-30 확정 규칙을 위반하고 있었다.
+
+#### ★ 명세에 없던 것 — 추가한 것
+
+| 무엇 | 왜 | 근거 |
+|------|-----|------|
+| ★ `remainingMs` 저장 방식 (`endsAt` 을 밀지 않는다) | ★ 밀어 두면 **"지금 멈춰 있다"** 를 표현할 값이 없다. 재접속자가 남은 시간을 잘못 본다 | D-067 |
+| ★★ `game.pauseStatus` | ★ 복귀 현황(N/M)이 바뀌면 화면이 바뀌어야 한다. ★★ 그러나 재개되지는 않는다 | 자동 재개 금지와 화면 갱신을 분리하기 위해 |
+| ★ `paused.canResume` | ★ 클라이언트가 "내가 방장인가" 로 유추하면 방장 이전 직후에 서버와 어긋난다 | 서버 권한 원칙 |
+| ★★ `game.cancelCountdown` 을 PAUSED 에서도 허용 | ★ `COUNTDOWN` 에서 멈춘 방은 재개 아니면 강제 종료뿐이었고, **강제 종료는 게임이 없어서 실패**했다. 막다른 길이었다 | D-068 |
+| ★ `/debug/room/:id` (개발 전용, 읽기만) | ★ PAUSED 를 소켓으로 관찰하면 **관찰 행위가 activeCount 를 바꿔** 상태가 달라진다 | 테스트 관측 도구. `isProduction` 이면 열지 않는다 |
+
+#### ★ 확인한 것 — 명세대로 동작한다 (봇 실측 / R015)
+
+| 항목 | 실측 |
+|------|------|
+| ★★ 남은 시간 보존 | 멈출 때 **27,969ms** → 재개 후 **27,968ms** (6초 멈춰 둔 뒤) |
+| ★★★ 자동 재개 없음 | 사람이 돌아온 뒤 3초 / 6초 관측 — 여전히 `PAUSED` |
+| ★★ 재개 권한 | 비방장 `game.resume` → `NOT_HOST` |
+| ★★ PAUSED 중 방장 이전 | 30초 유예 뒤 이전되고, **새 방장이 재개할 수 있었다** |
+| ★★ 힌트 정보 누출 방어 | 20초 멈춘 뒤 재접속 — `hintRevealed=false`, 힌트 문장 자체가 내려오지 않았다 |
+| ★ 재개 후 힌트 | 재개로 다시 계산된 기준으로 **남은 9,983ms** 에 push. 두 번 오지 않았다 |
+| ★★ 만료 폭파 | 설정값 6초로 줄여 검증 — 방이 사라지고 games 가 `abandoned` 로 닫혔다. 경험 기록 **0행** |
+| ★★★ 마지막 활성자 나가기 | **즉시** 방이 사라졌다 (PAUSED 로 가지 않았다) |
+| ★★ 마지막 활성자 끊김 | `PAUSED` (폭파되지 않았다) |
+
 ---
 
 ## 4. 동시 발생 시나리오
@@ -423,9 +474,10 @@ AND experiencedAccountIds.has(sender.accountId)
    a. `hintPushed=false` AND `endsAt − now ≤ 10000` → 힌트 push, hintPushed=true
    b. `now ≥ endsAt` → T07 (마지막 문제면 T10)
 3. QUESTION_RESOLVED: `now ≥ nextAt` → T15 / T16
-4. **PAUSED: `now − pausedAt ≥ 30분` → T14**
-5. hostGraceUntil 만료 → T-HOST (**활성 0명이면 정지**)
-6. 방 삭제 조건 (활성 0명 10분) → T-ROOMDEL (**PAUSED 중이면 정지**)
+4. ★ **PAUSED: `now ≥ paused.abandonAt` → T14 (방 폭파).** 한 명이라도 돌아오면 `abandonAt` 을 다시 잡아 **처음부터 다시 센다**
+5. hostGraceUntil 만료 → T-HOST (**활성 0명이면 정지**. ★ PAUSED 중에도 활성 ≥ 1 이면 돈다)
+6. 방 삭제 조건 (활성 0명 10분) → T-ROOMDEL (**PAUSED 중이면 적용하지 않는다**. 대상은 LOBBY / GAME_RESULT)
+7. ★★ **활성 0명 → 즉시 PAUSED (T20~T22).** PAUSED 인 방은 1~3을 건너뛴다
 
 **"정확히 30초" 에 대하여.** `setTimeout(30000)` 단독은 이벤트 루프가 바쁘면 지연되고 보정되지 않는다.
 그래서 **절대 시각(`endsAt`)을 저장하고 100ms tick에서 비교한다.** 최대 오차 +100ms이며
@@ -601,9 +653,10 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 
 | 이벤트 | 방향 | 페이로드 |
 |--------|------|---------|
-| `game.resume` | C→S | `{}` (방장) |
-| `game.paused` | S→C | `{ pausedFrom, remainingMs, pausedAt, abandonAt }` |
-| `game.resumed` | S→C | `{ state, epoch, endsAt \| nextAt \| countdownEndsAt }` ★ 새 종료 시각을 반드시 담는다 |
+| `game.resume` | C→S | `{}` (방장) — ✅ Phase 5 |
+| `game.paused` | S→C | `{ state, pausedFrom, remainingMs, pausedAt, abandonAt }` — ✅ Phase 5 |
+| `game.pauseStatus` | S→C | `{ returned, total, abandonAt }` ★ PAUSED 중 복귀 현황이 바뀔 때. **게임은 재개되지 않는다** — ✅ Phase 5 |
+| `game.resumed` | S→C | `{ state, epoch, endsAt \| nextAt \| countdownEndsAt }` ★ 새 종료 시각을 반드시 담는다 — ✅ Phase 5 |
 
 ### 채팅 / 스킵 / 방장
 
@@ -685,7 +738,8 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
     experiencedNicknames[], selfExperienced, resolved,
     resolution: { reason, winnerAccountId, displayAnswer, explanation, nextAt } | null
   } | null,
-  paused: { pausedFrom, remainingMs, pausedAt, abandonAt } | null,   ★
+  paused: { pausedFrom, remainingMs, pausedAt, abandonAt,
+            returned, total, canResume } | null,   ★ Phase 5
   skip: { votes, threshold, activeCount, selfVoted } | null,
   chat: [{ id, seq, accountId, nickname, colorIndex, text, masked, ts }],  최근 200개
   result: { gameId, endReason, ranking, lastQuestionReveal, abortedNote } | null,
@@ -704,6 +758,11 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
   를 함께 저장해 두고 스냅샷은 저장된 값을 그대로 쓴다.
   수신자가 발신자면 `rawNfc`, 아니면 `maskedText ?? rawNfc`
 - PAUSED 상태면 `question.endsAt` 대신 `paused.remainingMs` 로 남은 시간을 표시한다
+- ★★★ **힌트 공개 판단도 PAUSED 중에는 `paused.remainingMs` 로 한다.**
+  ★ `endsAt` 은 멈춘 순간의 낡은 값이라 시간이 갈수록 "남은 시간이 줄어든 것처럼" 보인다.
+  ★ 그대로 믿으면 **멈춘 시점에 28초가 남은 문제의 힌트가 재접속자에게 공개된다.**
+    실측(R015): 20초 멈춰 두면 낡은 계산은 7.1초, 실제 남은 시간은 27.9초였다. 정보 누출의 크기가 그만큼이다.
+- ★ `paused` 에는 서버가 계산한 `canResume` 을 함께 담는다. 클라이언트가 방장 여부로 유추하지 않는다
 
 ---
 
