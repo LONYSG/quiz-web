@@ -162,6 +162,13 @@ class Cdp {
 
 /** 페이지 하나. 브라우저 컨텍스트가 다르면 쿠키가 분리된다(시크릿 창과 같다) */
 class Page extends Cdp {
+  /** 페이지 안에서 쓸 라벨 추출 함수. <kbd> 배지를 뺀 버튼 이름을 돌려준다 */
+  static LABEL_FN = `const labelOf = (el) => [...el.childNodes]
+        .filter(n => !(n.nodeType === 1 && n.tagName === 'KBD'))
+        .map(n => n.textContent)
+        .join('')
+        .trim();`;
+
   constructor(url, label) {
     super(url);
     this.label = label;
@@ -207,11 +214,18 @@ class Page extends Cdp {
     return this.evaluate('document.body.innerText');
   }
 
-  /** 라벨이 정확히 일치하는 버튼을 누른다. 없으면 false */
+  /**
+   * 라벨이 정확히 일치하는 버튼을 누른다. 없으면 false
+   *
+   * ★★ 단축키 배지(<kbd>Alt+K</kbd>)는 라벨에서 제외한다 (R015).
+   *   ★ 근거: 사람이 읽는 버튼 이름은 "이 문제 넘기기" 다. 배지는 안내일 뿐이다.
+   *     ★ 배지를 붙인 순간 textContent 비교가 전부 깨졌다. 의미대로 비교해야 한다.
+   */
   click(label) {
     return this.evaluate(`(() => {
+      ${Page.LABEL_FN}
       const b = [...document.querySelectorAll('button')]
-        .find(x => x.textContent.trim() === ${JSON.stringify(label)});
+        .find(x => labelOf(x) === ${JSON.stringify(label)});
       if (!b || b.disabled) return false;
       b.click();
       return true;
@@ -267,11 +281,12 @@ class Page extends Cdp {
     })()`);
   }
 
-  /** 버튼 존재 여부와 disabled 상태 */
+  /** 버튼 존재 여부와 disabled 상태. ★ 단축키 배지는 라벨에서 제외한다 */
   buttonState(label) {
     return this.evaluate(`(() => {
+      ${Page.LABEL_FN}
       const b = [...document.querySelectorAll('button')]
-        .find(x => x.textContent.trim() === ${JSON.stringify(label)});
+        .find(x => labelOf(x) === ${JSON.stringify(label)});
       if (!b) return { exists: false };
       return { exists: true, disabled: b.disabled, visible: b.getClientRects().length > 0 };
     })()`);
@@ -304,6 +319,70 @@ class Page extends Cdp {
       timeoutMs,
       needle,
     );
+  }
+
+  /**
+   * ★★ 실제 키보드 입력을 보낸다 (Q-56 단축키 확인용).
+   *
+   * ★ 자바스크립트로 KeyboardEvent 를 만들어 dispatch 하지 않는다.
+   *   ★★ 근거: 합성 이벤트는 브라우저의 기본 동작(문자 입력·메뉴)을 일으키지 않는다.
+   *     그러면 "Alt 조합이 정말 문자를 만들지 않는가" 를 확인할 수 없다.
+   *     ★ 이 도구의 존재 이유가 "사람이 쓰는 경로로 확인" 이다 (D-027).
+   *
+   * @param key      KeyboardEvent.key 값 ('g' / 'Escape' / 'Enter' / 'F8')
+   * @param opts.alt Alt 조합인가
+   * @param opts.text 문자로 입력되어야 하는가 (단독 문자키 확인용)
+   */
+  async key(key, opts = {}) {
+    const code =
+      key.length === 1
+        ? `Key${key.toUpperCase()}`
+        : key;
+    const vk = {
+      Escape: 27,
+      Enter: 13,
+      F2: 113,
+      F4: 115,
+      F8: 119,
+      F9: 120,
+    }[key] ?? (key.length === 1 ? key.toUpperCase().charCodeAt(0) : 0);
+    const modifiers = opts.alt ? 1 : 0;
+    // ★★ Enter 로 포커스된 버튼을 누르려면 **문자 이벤트**여야 한다.
+    //   ★ rawKeyDown 만 보내면 keydown 리스너는 받지만 버튼의 기본 동작(click)이 안 난다.
+    //     ★ 그 차이를 모르면 "Enter 만으로 확정" 을 검사할 수 없다.
+    const text = opts.text ? key : key === 'Enter' ? '\r' : null;
+    await this.send('Input.dispatchKeyEvent', {
+      type: text === null ? 'rawKeyDown' : 'keyDown',
+      key,
+      code,
+      windowsVirtualKeyCode: vk,
+      nativeVirtualKeyCode: vk,
+      modifiers,
+      ...(text === null ? {} : { text }),
+    });
+    await this.send('Input.dispatchKeyEvent', {
+      type: 'keyUp',
+      key,
+      code,
+      windowsVirtualKeyCode: vk,
+      nativeVirtualKeyCode: vk,
+      modifiers,
+    });
+    await sleep(150);
+  }
+
+  /** 지금 포커스가 어디에 있는가. 확인창을 닫은 뒤 입력창으로 돌아왔는지 잰다 */
+  activeEl() {
+    return this.evaluate(`(() => {
+      const el = document.activeElement;
+      if (!el) return null;
+      return {
+        tag: el.tagName,
+        cls: el.className || null,
+        inChatCard: Boolean(el.closest('.chat-card')),
+        placeholder: el.getAttribute ? el.getAttribute('placeholder') : null,
+      };
+    })()`);
   }
 
   async shot(name) {
@@ -952,6 +1031,13 @@ try {
     console.log('\n[5-3] ★ 320px 에서 문제 화면 확인');
     await host.setWidth(320);
     await sleep(400);
+    // ★★ 폭을 줄이면 문서가 길어지므로, 직전 스크롤 위치가 남아 있으면 문제 카드가
+    //   화면 위로 밀려 나간다. ★ 그것은 레이아웃 결함이 아니라 스크롤 위치 문제다.
+    //   ★ 그래서 맨 위로 올린 뒤 잰다. "지문이 화면 안에 들어오는가" 가 이 검사의 뜻이다.
+    //   ★★ 진짜 문제는 **화면 하나에 다 들어오지 않는다**는 것이고,
+    //     그것은 건우 지시로 09-BACKLOG(Phase 7) 에 올렸다. 여기서 고칠 것이 아니다.
+    await host.evaluate('window.scrollTo(0, 0)');
+    await sleep(200);
     const noOverflow = await host.evaluate(
       "document.documentElement.scrollWidth <= window.innerWidth + 1",
     );
@@ -967,13 +1053,249 @@ try {
       qText320.exists ? `top=${qText320.rect?.top}` : 'DOM 에 없다',
     );
     await host.shot('question-320');
+    // ★ 09-BACKLOG "스크롤 없이 한 화면" 의 근거 실측값을 남긴다 (지금 고치지 않는다)
+    const h320 = await host.evaluate(
+      "JSON.stringify({ doc: document.documentElement.scrollHeight, view: window.innerHeight })",
+    );
+    console.log(`  ★ 320px 문제 화면 높이: ${h320} (스크롤 없이 한 화면 = 09-BACKLOG Phase 7)`);
     await host.setWidth(720);
     await sleep(300);
+    const h720 = await host.evaluate(
+      "JSON.stringify({ doc: document.documentElement.scrollHeight, view: window.innerHeight })",
+    );
+    console.log(`  ★ 720px 문제 화면 높이: ${h720}`);
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // ★★ Q-83 / Q-56 — 정수 타이머와 단축키 (R015)
+    // ─────────────────────────────────────────────────────────────────────────
+    console.log('\n[5-4] ★★ Q-83 정수 타이머 / Q-56 단축키');
+
+    // ── Q-83 소수점이 보이지 않는다
+    const timerText = await host.evaluate(
+      "document.querySelector('.q-timer')?.innerText ?? ''",
+    );
+    record(
+      '★★ Q-83 — 남은 시간이 정수 초다 (소수점이 없다)',
+      /^\d+초$/.test(timerText.trim()),
+      `표시="${timerText.trim()}"`,
+    );
+
+    // ── Q-56 단축키 안내가 화면에 있다
+    await host.scrollToBottom();
+    const keybar = await host.onScreen('.keybar');
+    record(
+      '★★ Q-56 — 단축키 안내가 화면에 보인다',
+      keybar.exists && keybar.partlyVisible,
+      JSON.stringify(keybar.rect ?? keybar),
+    );
+    record(
+      '★ 안내에 조합키가 표기된다 (Q-33: 화면에는 조합키)',
+      (await host.evaluate("document.querySelector('.keybar')?.innerText ?? ''")).includes('Alt+'),
+    );
+
+    // ── ★★★ 단독 문자키는 단축키로 먹지 않는다 (채팅 입력을 방해하지 않는다)
+    //   ★ 이것이 Q-56 의 핵심 제약이다. 입력창은 항상 포커스다
+    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+    await host.key('g', { text: true });
+    const typed = await host.evaluate(
+      "document.querySelector('.chat-card input')?.value ?? ''",
+    );
+    record(
+      '★★★ 단독 문자키는 그대로 입력된다 (단축키로 가로채지 않는다)',
+      typed === 'g',
+      `입력창="${typed}"`,
+    );
+    record(
+      '★★ 단독 키로는 단축키 목록이 열리지 않는다',
+      (await host.evaluate("document.querySelector('.keylist') === null")),
+    );
+
+    // ── ★ Alt 조합은 문자를 만들지 않고 단축키로 동작한다
+    await host.key('g', { alt: true });
+    const listOpen = await host.evaluate("document.querySelector('.keylist') !== null");
+    record('★★ Alt+G 로 단축키 전체 목록이 열린다', listOpen);
+    const stillTyped = await host.evaluate(
+      "document.querySelector('.chat-card input')?.value ?? ''",
+    );
+    record(
+      '★★★ Alt 조합은 입력창에 문자를 넣지 않는다',
+      stillTyped === 'g',
+      `입력창="${stillTyped}"`,
+    );
+    record(
+      '★ 펼친 목록에 F키 안내가 함께 있다 (Q-33)',
+      (await host.evaluate("document.querySelector('.keylist')?.innerText ?? ''")).includes('F'),
+    );
+    await host.key('g', { alt: true });
+    record(
+      '★ Alt+G 를 다시 누르면 접힌다',
+      await host.evaluate("document.querySelector('.keylist') === null"),
+    );
+    // 입력창을 비워 둔다 (다음 검사에 영향을 주지 않게)
+    await host.setInput('.chat-card input', '');
+
+    // ── ★ Esc 로 입력창으로 돌아온다 (마우스 없이 돌아가야 한다)
+    await host.evaluate("document.activeElement?.blur()");
+    await host.key('Escape');
+    const focusBack = await host.activeEl();
+    record(
+      '★★ Esc 를 누르면 포커스가 채팅 입력으로 돌아온다',
+      Boolean(focusBack?.inChatCard) && focusBack?.tag === 'INPUT',
+      JSON.stringify(focusBack),
+    );
+
+    // ── ★★ 단축키가 버튼과 같은 확인창 경로를 탄다 + Enter 만으로 확정된다
+    await host.key('k', { alt: true });
+    const skipConfirm = await host.evaluate("document.querySelector('.confirm') !== null");
+    record('★★ Alt+K 가 방장 넘기기 확인창을 띄운다 (버튼과 같은 경로)', skipConfirm);
+    const confirmFocus = await host.activeEl();
+    record(
+      '★★ 확인창이 열리면 포커스가 확인창 안으로 이동한다',
+      confirmFocus?.tag === 'BUTTON',
+      JSON.stringify(confirmFocus),
+    );
+    const qTextBefore = await host.evaluate(
+      "document.querySelector('.question-card .q-text')?.innerText ?? ''",
+    );
+    await host.key('Enter');
+    record(
+      '★★★ Enter 만으로 확인창이 확정된다 (마우스 없이)',
+      await host.waitFor("document.querySelector('.confirm') === null", 4000),
+    );
+    record(
+      '★ 확정 뒤 포커스가 채팅 입력으로 돌아온다',
+      Boolean((await host.activeEl())?.inChatCard),
+      JSON.stringify(await host.activeEl()),
+    );
+    record(
+      '★★ 넘기기가 실제로 실행됐다 (정답 공개 화면으로 바뀐다)',
+      await host.waitForText('정답', 6000),
+    );
+    // 다음 문제를 기다린다
+    await host.waitFor(
+      `document.querySelector('.question-card .q-text') !== null &&
+       document.querySelector('.question-card .q-text').innerText !== ${JSON.stringify(qTextBefore)}`,
+      12000,
+    );
+
+    // ── ★ 새 문제가 시작되면 지문이 화면 안으로 들어온다 (R014 실측 결함의 회귀 방지)
+    const qAfterSkip = await host.onScreen('.question-card .q-text');
+    record(
+      '★★ 새 문제가 시작되면 지문이 화면 안에 들어온다 (R014 결함 회귀 방지)',
+      qAfterSkip.exists && qAfterSkip.rect?.top >= 0,
+      qAfterSkip.exists ? `top=${qAfterSkip.rect?.top}` : 'DOM 에 없다',
+    );
+
+    // ── ★★ Q-82 게임 중 나가기 확인창
+    await host.key('x', { alt: true });
+    const leaveConfirm = await host.evaluate(
+      "document.querySelector('.confirm-card') !== null",
+    );
+    record('★★ Q-82 — 게임 중 나가기에 확인창이 뜬다', leaveConfirm);
+    const leaveText = await host.evaluate(
+      "document.querySelector('.confirm-card')?.innerText ?? ''",
+    );
+    record(
+      '★★ 확인창이 "마지막 접속자면 방이 사라진다" 를 알린다',
+      leaveText.includes('방이 즉시 사라집니다'),
+    );
+    record(
+      '★★ 끊김과 나가기가 다르다는 사실도 알린다 (Q-82 두 갈래)',
+      leaveText.includes('일시정지'),
+    );
+    await host.click('취소');
+    record(
+      '★ 취소하면 게임이 그대로다',
+      (await host.evaluate("document.querySelector('.confirm-card') === null")) &&
+        (await host.evaluate("document.querySelector('.question-card') !== null")),
+    );
+    record(
+      '★ 취소 뒤 포커스가 채팅 입력으로 돌아온다',
+      Boolean((await host.activeEl())?.inChatCard),
+    );
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // ★★★ Phase 5 — 네트워크 끊김 → 일시정지 → 방장 재개 (R015)
+    //
+    //   ★ 이 프로젝트의 일상적인 사고를 그대로 재현한다: 접속이 끊기고 다시 들어온다.
+    //   ★★ **새로고침**으로 만든다. 소켓을 코드로 닫지 않는다.
+    //     ★ 근거: 새로고침은 사람이 실제로 하는 동작이고(건우가 Phase 3 에서 확인한 경로),
+    //       소켓이 진짜로 끊겨 활성 0명이 된다 → 서버가 PAUSED 로 간다.
+    //     ★ 오프라인 에뮬레이션(Network.emulateNetworkConditions)도 시도했는데
+    //       이미 열린 WebSocket 을 끊지 못해 PAUSED 가 만들어지지 않았다 (R015 실측).
+    // ─────────────────────────────────────────────────────────────────────────
+    console.log('\n[5-5] ★★★ Phase 5 — 끊김(새로고침) → 일시정지 → 재개');
+    await host.goto(BASE);
+    const pausedShown = await host.waitFor(
+      "document.querySelector('.paused-card') !== null",
+      20000,
+    );
+    record('★★★ 끊겼다 돌아오면 일시정지 화면이 나온다', pausedShown);
+    if (pausedShown) {
+      const pausedText = await host.evaluate(
+        "document.querySelector('.paused-card')?.innerText ?? ''",
+      );
+      record('★★ 왜 멈췄는지 알려준다', pausedText.includes('멈췄습니다'));
+      record(
+        '★★ 몇 명이 돌아왔는지 보여준다',
+        /\d+\s*\/\s*\d+/.test(pausedText),
+        pausedText.split('\n')[1] ?? '',
+      );
+      record(
+        '★★ 멈춘 시점의 남은 시간을 보여준다 (정수 초)',
+        /멈춘 시점의 남은 시간\s*\d+초/.test(pausedText.replace(/\n/g, ' ')),
+      );
+      record(
+        '★★ 방이 사라지기까지 남은 시간을 보여준다 (Q-82)',
+        pausedText.includes('방이 사라집니다'),
+      );
+      record(
+        '★★★ 자동 재개되지 않는다는 사실을 알린다 (D-030)',
+        pausedText.includes('자동으로 재개되지 않습니다'),
+      );
+      record(
+        '★ 일시정지 화면에 소수점이 없다 (Q-83)',
+        !/\d\.\d/.test(pausedText),
+        pausedText.replace(/\n/g, ' / ').slice(0, 120),
+      );
+      const pausedOnScreen = await host.onScreen('.paused-card');
+      record(
+        '★ 일시정지 카드가 화면 안에 보인다',
+        pausedOnScreen.exists && pausedOnScreen.partlyVisible,
+        JSON.stringify(pausedOnScreen.rect ?? {}),
+      );
+      const resumeBtn = await host.buttonState('재개');
+      record('★★ 방장에게 재개 버튼이 있다', resumeBtn.exists && !resumeBtn.disabled);
+      await host.shot('paused');
+
+      // ★★ 자동 재개가 없다는 것을 시간으로 확인한다
+      await sleep(3000);
+      record(
+        '★★★ 3초를 기다려도 자동으로 재개되지 않는다 (Q-30)',
+        await host.evaluate("document.querySelector('.paused-card') !== null"),
+      );
+
+      // ★ 단축키로 재개한다 (마우스 없이)
+      await host.key('r', { alt: true });
+      const resumed = await host.waitFor(
+        "document.querySelector('.question-card') !== null && document.querySelector('.paused-card') === null",
+        8000,
+      );
+      record('★★★ Alt+R 로 재개된다 (문제 화면으로 돌아온다)', resumed);
+      const timerAfter = await host.evaluate(
+        "document.querySelector('.q-timer')?.innerText ?? ''",
+      );
+      record(
+        '★★ 재개 후 남은 시간이 이어진다 (0초가 아니다)',
+        /^\d+초$/.test(timerAfter.trim()) && Number(timerAfter.replace(/[^0-9]/g, '')) > 0,
+        `표시="${timerAfter.trim()}"`,
+      );
+    }
 
     // ── ★★ 결과 화면과 로비 복귀 (Phase 3 / R014)
     //   ★ Phase 2 에는 로비 복귀 경로가 없어 방을 나가고 새로 만들었다.
     //   ★★ Phase 3 에는 있다. 그 경로를 실제로 눌러 확인한다.
-    console.log('\n[5-4] ★★ 강제 종료 → 결과 화면 → 로비 복귀 (Phase 3)');
+    console.log('\n[5-6] ★★ 강제 종료 → 결과 화면 → 로비 복귀 (Phase 3)');
     await host.click('게임 강제 종료');
     await sleep(300);
     record(
@@ -1014,7 +1336,7 @@ try {
     record('★★ 로비로 복귀한다 (초대 링크 카드가 다시 보인다)', backToLobby);
     record(
       '★ 게임이 자동으로 시작되지 않는다 (guide 38절)',
-      (await host.evaluate("document.querySelector('.question-card')")) === null,
+      await host.evaluate("document.querySelector('.question-card') === null"),
     );
 
     // ── 방을 비우고 새로 만든다

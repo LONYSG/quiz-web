@@ -22,6 +22,11 @@
 //   ★ concur   Phase 3 — R003 2-3 동시 발생 시나리오 나머지
 //   ★★ collide Phase 3 — 두 트리거가 동시에 문제를 끝내려는 경우 (장치 A)
 //   ★ full     Phase 3 — 봇 10명으로 한 게임 완주 + 타이머 정확도 실측
+//   ★★ pause   Phase 5 — 일시정지 / ★★ 자동 재개 없음 / 방장 재개 / Q-82 즉시 폭파
+//   ★★ abandon Phase 5 — PAUSED 만료로 방 폭파 (설정값을 짧게 줄여 검증)
+//   ★★ pausehost Phase 5 — PAUSED 중 방장 이전 (약 40초)
+//   ★★ pausehint Phase 5 — 일시정지와 힌트 / 정보 누출 방어선 (약 45초)
+//   ★★ flood   Q-84 — 도배 완화 후 판정 성능 실측
 //
 // 사용법
 //   node scripts/bot.mjs join --count 11
@@ -37,6 +42,8 @@
 //   node scripts/bot.mjs concur
 //   node scripts/bot.mjs collide
 //   node scripts/bot.mjs full --count 10
+//   node scripts/bot.mjs pause
+//   node scripts/bot.mjs abandon
 //
 // ★ 로그만 찍지 않는다 (R005 5-1의 교훈).
 //   lobby / countdown 은 expect() 로 단정하고, 하나라도 틀리면 0이 아닌 코드로 끝난다.
@@ -79,6 +86,22 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 // ★ 사람이 쓰는 것과 같은 경로(server/dist/index.js)로 띄운다.
 // -----------------------------------------------------------------------------
 const NO_BOOT = args.includes('--no-boot');
+
+/**
+ * ★ 시나리오별 서버 환경 변수.
+ *
+ * ★★ 왜 시나리오 함수 안이 아니라 여기인가 — 서버는 시나리오가 시작되기 **전에** 뜬다.
+ *   ★ 시나리오 안에서 값을 넣으면 이미 늦다. 실제로 그렇게 만들었다가 실패했다.
+ *   → ★ 이름으로 미리 정해 둔다.
+ *
+ * ★★ 이미 떠 있는 서버를 쓰면 적용되지 않는다. 그 경우 경고하고 멈춘다.
+ */
+const SCENARIO_ENV = {
+  // ★ 실제 기본값은 5분이다. 테스트에서는 6초로 줄여 같은 경로를 검증한다.
+  //   ★ 값만 다르고 코드 경로는 동일하다. 그것이 설정값으로 뺀 이유이기도 하다.
+  abandon: { PAUSE_ABANDON_MS: '6000' },
+};
+const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SERVER_ENTRY = path.join(ROOT, 'server', 'dist', 'index.js');
 let bootedServer = null;
@@ -92,11 +115,19 @@ async function serverAlive() {
   }
 }
 
+/** ★ 우리가 직접 띄운 서버인가. 설정 덮어쓰기가 실제로 적용됐는지 판단하는 기준이다 */
+let serverIsOurs = false;
+
 async function ensureServer() {
   if (await serverAlive()) {
     console.log('[bot] 이미 떠 있는 서버를 사용합니다:', BASE);
+    if (Object.keys(SERVER_ENV).length > 0) {
+      console.log('[bot] ★★ 이미 떠 있는 서버이므로 설정 덮어쓰기가 적용되지 않았다.');
+      console.log('[bot]   ★ 서버를 끄고 다시 실행하면 적용된다.');
+    }
     return;
   }
+  serverIsOurs = true;
   if (NO_BOOT) {
     throw new Error(`서버가 응답하지 않습니다: ${BASE} (--no-boot 이므로 띄우지 않습니다)`);
   }
@@ -110,9 +141,18 @@ async function ensureServer() {
   }
 
   console.log('[bot] 서버가 없으므로 직접 띄웁니다 (server/dist/index.js)');
+  // ★★ 시나리오가 서버 설정을 덮어쓸 수 있게 한다 (R015).
+  //   ★ 왜 필요한가 — Q-82 의 "5분 뒤 방 폭파" 를 테스트하려면 5분을 기다려야 한다.
+  //     ★ 테스트가 5분을 기다리면 아무도 돌리지 않는다.
+  //   ★★ 그래서 **설정값을 짧게 줄여** 같은 경로를 검증한다.
+  //     ★ 값만 다르고 코드 경로는 동일하다. 그것이 설정값으로 뺀 이유이기도 하다.
+  if (Object.keys(SERVER_ENV).length > 0) {
+    console.log(`[bot] ★ 서버 설정 덮어쓰기: ${JSON.stringify(SERVER_ENV)}`);
+  }
   bootedServer = spawn(process.execPath, [SERVER_ENTRY], {
     cwd: ROOT,
     stdio: ['ignore', 'pipe', 'pipe'],
+    env: { ...process.env, ...SERVER_ENV },
   });
   let out = '';
   bootedServer.stdout.on('data', (c) => {
@@ -335,6 +375,33 @@ class Bot {
       s.on('chat.throttled', (p) => {
         this.events.push({ type: 'chat.throttled', retryAfterMs: p.retryAfterMs });
       });
+
+      // ── ★★ Phase 5 이벤트 (R015)
+      s.on('game.paused', (p) => {
+        this.events.push({ type: 'game.paused', at: Date.now(), payload: p });
+        if (this.snapshot) {
+          this.snapshot.room.state = p.state;
+          this.snapshot.paused = { ...p, canResume: false };
+        }
+      });
+      s.on('game.pauseStatus', (p) => {
+        this.events.push({ type: 'game.pauseStatus', returned: p.returned, total: p.total });
+        if (this.snapshot?.paused) {
+          this.snapshot.paused.returned = p.returned;
+          this.snapshot.paused.total = p.total;
+          this.snapshot.paused.abandonAt = p.abandonAt;
+        }
+      });
+      s.on('game.resumed', (p) => {
+        this.events.push({ type: 'game.resumed', at: Date.now(), payload: p });
+        if (this.snapshot) {
+          this.snapshot.room.state = p.state;
+          this.snapshot.paused = null;
+          if (this.snapshot.question && p.endsAt !== null) {
+            this.snapshot.question.endsAt = p.endsAt;
+          }
+        }
+      });
       s.on('connect', () => resolve());
       s.on('connect_error', (e) => reject(new Error(`${this.name} 연결 실패: ${e.message}`)));
       setTimeout(() => reject(new Error(`${this.name} 연결 타임아웃`)), 15000);
@@ -377,6 +444,14 @@ class Bot {
 
   forceEnd() {
     this.socket.emit('host.forceEnd', {});
+  }
+
+  resume() {
+    this.socket.emit('game.resume', {});
+  }
+
+  leave() {
+    this.socket.emit('room.leave', {});
   }
 
   /** 현재 문제가 시작될 때까지 기다린다 */
@@ -588,6 +663,37 @@ async function shrinkAvailableTo(accountIds, keepCount) {
     );
     return r.rowCount ?? 0;
   });
+}
+
+/**
+ * ★ 방의 현재 상태를 서버에서 읽는다.
+ *
+ * ★★ 왜 소켓이 아니라 HTTP 인가 — **아무도 접속해 있지 않을 때** 상태를 봐야 한다.
+ *   ★ PAUSED 테스트의 핵심이 "전원이 나간 뒤 서버가 어떤 상태인가" 다.
+ *     ★ 소켓으로 보려면 누군가 붙어 있어야 하고, 붙는 순간 활성 인원이 바뀐다.
+ *   → ★ 관측이 대상을 바꾸지 않도록 읽기 전용 진단 엔드포인트를 쓴다.
+ */
+async function roomStateOf(roomId) {
+  try {
+    const r = await fetch(`${BASE}/debug/room/${roomId}`, { signal: AbortSignal.timeout(3000) });
+    if (r.status === 404) return { exists: false };
+    return await r.json();
+  } catch (err) {
+    return { exists: false, error: err.message };
+  }
+}
+
+/**
+ * ★ 설정 덮어쓰기가 실제로 적용됐는지 확인한다.
+ *
+ * ★★ 적용되지 않았는데 그대로 돌면 **5분을 기다리다 실패한다.**
+ *   ★ 그러면 원인을 찾기 어렵다. 먼저 멈추고 이유를 알린다.
+ */
+function ensureServerForScenario() {
+  if (serverIsOurs) return;
+  console.error('[bot] ★★ 이미 떠 있는 서버를 쓰고 있어 설정 덮어쓰기가 적용되지 않았다.');
+  console.error('[bot]   ★ 이 시나리오는 서버를 직접 띄워야 한다. 기존 서버를 끄고 다시 실행한다.');
+  process.exit(1);
 }
 
 async function activeQuestionCount() {
@@ -1170,45 +1276,58 @@ async function scenarioCountdown() {
   //     · 활성 0명 10분 → 방 삭제 시 abandoned 로 닫힌다 (Q-14)
   //     · 또는 방장이 결과 화면에서 로비로 복귀할 때 슬롯이 반환된다
   //   ★★ 그 사이 문제 타이머는 **멈춘다** (freezeIfNoActive). 근거는 그 함수 주석에 있다.
-  log('\n[5] ★★ 게임 중 퇴장은 슬롯을 유지한다 (Phase 3 에서 바뀐 동작)');
+  //   ★★ R015 에서 또 바뀌었다 (Q-82). 세 갈래를 모두 단정한다.
+  //     (1) 게임 중 퇴장이지만 **마지막 활성자가 아니면** → 슬롯 유지 (R014 동작 그대로)
+  //     (2) ★★ 끊김으로 전원 이탈 → **PAUSED** (폭파되지 않는다)
+  //     (3) ★★★ 마지막 활성자가 **나가기 버튼** → **즉시 폭파**
+  log('\n[5] ★★ 게임 중 퇴장 — 나가기와 끊김을 다르게 처리한다 (Q-82)');
   const playersBefore = host.snapshot.players.length;
-  host.socket.emit('room.leave', {});
+
+  // (1) 마지막 활성자가 아닌 두 명이 나간다 → 방은 남는다
   guest.socket.emit('room.leave', {});
   late.socket.emit('room.leave', {});
-  await sleep(1200);
-
+  await sleep(900);
   const after = await gamesOfRoom(roomId);
   expectTrue(
-    '★★ 게임 중 퇴장으로는 게임이 닫히지 않는다 (슬롯 유지)',
+    '★ 마지막 활성자가 아니면 게임이 닫히지 않는다 (슬롯 유지)',
     after.games[0]?.ended_at === null,
     `ended_at=${after.games[0]?.ended_at} / end_reason=${after.games[0]?.end_reason}`,
   );
   expect('★ game_players 행이 그대로다 (그 게임 결과에 남는다)', after.players.length, playersBefore);
 
-  // ★★ 아무도 없는 동안 문제 타이머가 멈춰 있는지 확인한다.
-  //   ★ 멈추지 않으면 아무도 없는 게임이 끝까지 진행된다 (R014 실측 결함).
+  // (2) ★★ 남은 한 명이 **끊긴다** (나가기가 아니다) → PAUSED
+  host.socket.close();
+  await sleep(900);
+  const st = await roomStateOf(roomId);
+  expect('★★ 끊김으로 전원 이탈 → PAUSED (폭파되지 않는다)', st.state, 'PAUSED');
+
+  // ★ 아무도 없는 동안 문제 타이머가 멈춰 있는지 확인한다
   const gqBefore = await questionsOfGame(after.games[0].id);
+  const remainWhenPaused = st.paused.remainingMs;
   await sleep(6000);
   const gqAfter = await questionsOfGame(after.games[0].id);
-  expect(
-    '★★★ 활성 0명 동안 문제가 더 진행되지 않는다',
-    gqAfter.length,
-    gqBefore.length,
-  );
-  log(`  ★ 6초 동안 문제 수 ${gqBefore.length} → ${gqAfter.length} (변화 없음)`);
+  const st2 = await roomStateOf(roomId);
+  expect('★★★ 활성 0명 동안 문제가 더 진행되지 않는다', gqAfter.length, gqBefore.length);
+  expect('★★ 남은 시간도 흐르지 않는다', st2.paused.remainingMs, remainWhenPaused);
+  log(`  ★ 6초 동안 문제 수 ${gqBefore.length} → ${gqAfter.length} / 남은 시간 ${remainWhenPaused}ms 고정`);
 
-  // ★ 사람이 돌아오면 이어진다
+  // ★ 방장이 돌아와 재개한다
   const back = new Bot(host.name);
   back.cookie = host.cookie;
   await back.connect();
   await back.waitFor(() => back.snapshot !== null, 6000, '재접속');
-  expect('★ 재접속하면 게임이 그대로다', back.snapshot.room.state, 'QUESTION_ACTIVE');
+  expect('★ 재접속하면 PAUSED 를 본다', back.snapshot.room.state, 'PAUSED');
   expectTrue('★ 현재 문제가 복구된다', back.snapshot.question !== null);
+  let rf = back.mark();
+  back.resume();
+  await back.waitFor(() => back.since(rf, 'game.resumed').length > 0, 5000, '재개');
+  expect('★ 재개하면 이어진다', back.snapshot.room.state, 'QUESTION_ACTIVE');
   expectTrue(
-    '★★ 남은 시간이 남아 있다 (타이머가 멈춰 있었다)',
-    back.snapshot.question.endsAt - Date.now() > 0,
-    `${back.snapshot.question.endsAt - Date.now()}ms 남음`,
+    '★★ 남은 시간이 보존되어 이어진다',
+    back.snapshot.question.endsAt - Date.now() > remainWhenPaused - 1500,
+    `${back.snapshot.question.endsAt - Date.now()}ms 남음 (멈출 때 ${remainWhenPaused}ms)`,
   );
+
   back.socket.emit('host.forceEnd', {});
   await back.waitFor(() => back.since(0, 'game.result').length > 0, 6000, '강제 종료');
   await sleep(700);
@@ -1219,10 +1338,26 @@ async function scenarioCountdown() {
     String(closed.games[0]?.end_reason),
   );
   expect('종료 사유', closed.games[0]?.end_reason, 'force_ended');
-  back.socket.emit('game.toLobby', {});
-  await sleep(500);
-  back.socket.emit('room.leave', {});
-  await sleep(500);
+
+  // (3) ★★ 결과 화면에서 나가기 — ★ 즉시 폭파가 아니다. 그 판단을 여기서 단정한다.
+  //
+  //   ★★ Q-82 의 "즉시 폭파" 는 **게임 중**(COUNTDOWN/QUESTION_*/PAUSED)에만 적용한다.
+  //     ★ 근거: 건우의 지적은 "게임이 살아있는 거냐" 였다.
+  //       결과 화면에서는 games 가 이미 닫혀 있으므로 살아있는 게임이 없다.
+  //     ★ 그리고 여기 남은 슬롯은 **게임 결과를 보기 위한 슬롯**이다 (Q-15).
+  //       끊겼다가 돌아와 결과를 확인할 사람이 있을 수 있다.
+  //   ★ 그래서 결과 화면·로비는 기존 경로인 **활성 0명 10분 idle 삭제**(Q-14/D-066)로 정리한다.
+  //     ★ 10분을 기다릴 수는 없으므로 여기서는 "그 경로에 올라탔는지"까지만 단정한다.
+  back.leave();
+  await sleep(800);
+  const rest = await roomStateOf(roomId);
+  expectTrue(
+    '★★ 결과 화면에서 나가면 즉시 폭파되지 않는다 (남은 슬롯이 결과를 본다)',
+    rest.exists === true,
+    `state=${rest.state}`,
+  );
+  expect('★★ 활성은 0명이다 → 10분 idle 삭제 경로에 오른다 (Q-14)', rest.activeCount, 0);
+  expect('★ 상태는 결과 화면이다 (PAUSED 로 가지 않는다)', rest.state, 'GAME_RESULT');
   back.disconnect();
 
   host.disconnect();
@@ -1232,12 +1367,13 @@ async function scenarioCountdown() {
 }
 
 // -----------------------------------------------------------------------------
-// Phase 2 — 활성 0명 동안 카운트다운 보류 (B-4 판단)
+// ★★ 활성 0명 동안 카운트다운 보류 → **PAUSED** (R015 에서 정식 구현으로 바뀌었다)
 //
-// ★ 확정 규칙은 "활성 0명이면 즉시 PAUSED" 다 (T20).
-//   PAUSED 는 Phase 5이므로 Phase 2에서는 T04 의 조건("활성 ≥ 1")만 지켜 만료를 보류한다.
-//   ★ 이 테스트는 그 판단이 실제로 그렇게 동작하는지를 단정한다.
-//     "아무도 없는데 게임이 시작되어 빈 게임 레코드가 남는" 사고를 막는 것이 핵심이다.
+// ★ Phase 2 에서는 T04 의 조건("활성 ≥ 1")만 지켜 만료를 보류했고,
+//   사람이 돌아오면 **자동으로** 시작됐다.
+// ★★ R015 에서 PAUSED 가 정식 구현되어 **방장이 재개해야** 시작된다 (T20/T23).
+//   ★ 이 테스트가 그 변화를 단정한다.
+//   ★ "아무도 없는데 게임이 시작되어 빈 게임 레코드가 남는" 사고를 막는 것은 그대로다.
 // -----------------------------------------------------------------------------
 async function scenarioEmptyCountdown() {
   log('시나리오 empty — 활성 0명 동안 카운트다운 보류 (B-4)');
@@ -1275,19 +1411,36 @@ async function scenarioEmptyCountdown() {
     0,
   );
 
-  // 돌아오면 시작된다
+  // ★★ R015 — 동작이 바뀌었다. 여기서 단정하는 것이 Phase 5 의 핵심이다.
+  //
+  //   ★ Phase 2 에서는 "사람이 돌아오면 **자동으로** 시작된다" 였다 (만료 보류 방식).
+  //   ★★ Phase 5 에서는 COUNTDOWN 도 **PAUSED** 로 가고, **방장이 재개해야** 한다 (T20/T23).
+  //     ★ 근거(Q-30 확정): 자동 재개면 먼저 들어온 한 명 때문에
+  //       나머지가 새 URL 을 입력하는 동안 게임이 진행된다.
+  expect('★★ 활성 0명이 되면 PAUSED 로 간다', (await roomStateOf(roomId)).state, 'PAUSED');
+
   const back = new Bot(host.name);
   back.cookie = host.cookie;
   await back.connect();
   await back.waitFor(() => back.snapshot !== null, 6000, '재접속');
-  log('  재접속했다. 만료 시각이 이미 지났으므로 곧 시작되어야 한다.');
-  await back.waitFor(() => back.since(0, 'game.started').length > 0, 6000, '게임 시작');
-  expect('★ 사람이 돌아오면 시작된다', back.snapshot.room.state, 'QUESTION_ACTIVE');
+  log('  재접속했다. ★★ 그래도 자동으로 시작되지 않아야 한다.');
+  await sleep(2500);
+  expect('★★★ 사람이 돌아와도 자동으로 시작되지 않는다', back.snapshot.room.state, 'PAUSED');
+  expect('★ 게임 레코드도 아직 없다', (await gamesOfRoom(roomId)).games.length, 0);
+  expect('★ 방장은 재개할 수 있다', back.snapshot.paused.canResume, true);
+
+  // ★★ 방장이 재개하면 그때 시작된다
+  from = back.mark();
+  back.resume();
+  await back.waitFor(() => back.since(from, 'game.started').length > 0, 8000, '게임 시작');
+  expect('★★ 방장이 재개하면 시작된다', back.snapshot.room.state, 'QUESTION_ACTIVE');
   await sleep(400);
   expect('게임 레코드 1행', (await gamesOfRoom(roomId)).games.length, 1);
 
-  back.socket.emit('room.leave', {});
-  await sleep(700);
+  // ★ 나가기로 방을 정리한다. ★ 마지막 활성자이므로 즉시 폭파된다 (Q-82)
+  back.leave();
+  await sleep(800);
+  expect('★ 마지막 활성자가 나가면 방이 사라진다 (Q-82)', (await roomStateOf(roomId)).exists, false);
   back.disconnect();
   return checkSummary();
 }
@@ -2370,6 +2523,594 @@ async function scenarioCollide() {
   return checkSummary();
 }
 
+
+// -----------------------------------------------------------------------------
+// ★★★ pause — Phase 5 일시정지 (R015)
+//
+//   ★★ 이 시나리오가 검증하는 가장 중요한 것 —
+//     **자동 재개가 되지 않는다.** 사람이 돌아와도 방장이 누르기 전에는 멈춰 있다.
+//     ★ R014 의 근사 구현(D-061)은 자동 재개였다. 그것이 이번에 바뀐 핵심이다.
+//     ★ 근거(Q-30 확정): 자동 재개면 먼저 들어온 한 명 때문에 나머지가 새 URL 을
+//       입력하는 동안 문제가 소모된다.
+// -----------------------------------------------------------------------------
+async function scenarioPause() {
+  log('시나리오 pause — ★★ Phase 5 일시정지');
+  await clearExperiences(PREFIX);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('Phase 5 일시정지 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  const gameId = await startGame(host, [guest], 5);
+
+  const q1 = host.snapshot.question;
+  const epochBefore = q1.epoch;
+  log(`  문제 1 시작 (epoch=${epochBefore})`);
+
+  // ── 1. ★★ 전원 이탈 → 즉시 PAUSED
+  log('\n[1] ★★ 전원 이탈 → 즉시 PAUSED');
+  await sleep(2000); // ★ 2초쯤 흐르게 둔다. 남은 시간이 보존되는지 볼 것이다
+  const beforeLeave = q1.endsAt - Date.now();
+  host.socket.close();
+  guest.socket.close();
+  await sleep(800);
+
+  const st1 = await roomStateOf(roomId);
+  expect('★★ 상태가 PAUSED', st1.state, 'PAUSED');
+  expect('★ pausedFrom', st1.paused?.pausedFrom, 'QUESTION_ACTIVE');
+  expectTrue(
+    '★ 멈춘 남은 시간이 보존된다 (2초쯤 흐른 뒤)',
+    Math.abs(st1.paused.remainingMs - beforeLeave) < 1500,
+    `보존 ${st1.paused.remainingMs}ms / 예상 ${Math.round(beforeLeave)}ms`,
+  );
+
+  // ── 2. ★★★ 타이머가 멈춘다
+  log('\n[2] ★★★ 타이머가 멈춘다 (6초 관측)');
+  const remain1 = st1.paused.remainingMs;
+  await sleep(6000);
+  const st2 = await roomStateOf(roomId);
+  expect('★ 여전히 PAUSED', st2.state, 'PAUSED');
+  expect('★★★ 남은 시간이 그대로다 (흐르지 않았다)', st2.paused.remainingMs, remain1);
+  expect('★ 문제가 더 진행되지 않았다', (await questionsOfGame(gameId)).length, 1);
+
+  // ── 3. ★★★ 사람이 돌아와도 자동 재개되지 않는다
+  log('\n[3] ★★★ 사람이 돌아와도 자동 재개되지 않는다 (R014 와 달라진 핵심)');
+  const back1 = new Bot(guest.name);
+  back1.cookie = guest.cookie;
+  await back1.connect();
+  await back1.waitFor(() => back1.snapshot !== null, 6000, '게스트 재접속');
+  expect('★ 재접속하면 PAUSED 를 본다', back1.snapshot.room.state, 'PAUSED');
+  expectTrue('★ 일시정지 정보가 스냅샷에 담긴다', back1.snapshot.paused !== null);
+  expect('★ 비방장은 재개할 수 없다', back1.snapshot.paused.canResume, false);
+
+  await sleep(3000);
+  const st3 = await roomStateOf(roomId);
+  expect('★★★ 3초가 지나도 여전히 PAUSED (자동 재개 없음)', st3.state, 'PAUSED');
+  expect('★★ 남은 시간도 그대로다', st3.paused.remainingMs, remain1);
+
+  // ── 4. ★★ 비방장이 재개를 시도하면 거부된다
+  log('\n[4] ★★ 재개는 방장만 할 수 있다');
+  let from = back1.mark();
+  back1.resume();
+  await sleep(500);
+  expect('★★ 비방장 재개 → NOT_HOST', back1.since(from, 'error')[0]?.code, 'NOT_HOST');
+  expect('★ 여전히 PAUSED', (await roomStateOf(roomId)).state, 'PAUSED');
+
+  // ── 5. ★ PAUSED 중 정답·스킵이 막힌다
+  log('\n[5] ★ PAUSED 중 정답 판정과 스킵이 막힌다');
+  const answers1 = await answersForText(q1.text);
+  from = back1.mark();
+  back1.chat(answers1[0], epochBefore);
+  await sleep(600);
+  expect('★★ PAUSED 중 정답은 판정되지 않는다', back1.since(from, 'question.resolved').length, 0);
+  expect('★ 상태가 그대로 PAUSED', (await roomStateOf(roomId)).state, 'PAUSED');
+  expectTrue(
+    '★ 그래도 채팅으로는 보인다 (PAUSED 중 채팅 허용)',
+    back1.since(from, 'chat').some((c) => c.text === answers1[0]),
+  );
+
+  from = back1.mark();
+  back1.socket.emit('skip.vote', { vote: true, epoch: epochBefore });
+  await sleep(500);
+  expect('★ PAUSED 중 스킵 투표 → INVALID_STATE', back1.since(from, 'error')[0]?.code, 'INVALID_STATE');
+
+  // ── 6. ★★ 방장이 돌아와 재개한다
+  log('\n[6] ★★ 방장이 재개한다');
+  const back0 = new Bot(host.name);
+  back0.cookie = host.cookie;
+  await back0.connect();
+  await back0.waitFor(() => back0.snapshot !== null, 6000, '방장 재접속');
+  expect('★ 방장은 재개할 수 있다', back0.snapshot.paused.canResume, true);
+
+  from = back0.mark();
+  back0.resume();
+  await back0.waitFor(() => back0.since(from, 'game.resumed').length > 0, 5000, '재개');
+  const resumed = back0.since(from, 'game.resumed')[0].payload;
+  expect('★ 상태가 QUESTION_ACTIVE 로 돌아온다', resumed.state, 'QUESTION_ACTIVE');
+  expect('★★ epoch 가 증가하지 않았다 (같은 문제를 이어서 한다)', resumed.epoch, epochBefore);
+  const remainAfter = resumed.endsAt - back0.since(from, 'game.resumed')[0].at;
+  expectTrue(
+    '★★ 남은 시간이 보존되어 이어진다',
+    Math.abs(remainAfter - remain1) < 1500,
+    `재개 후 ${Math.round(remainAfter)}ms / 멈출 때 ${remain1}ms`,
+  );
+  expect('★ 게스트도 재개를 받는다', back1.since(0, 'game.resumed').length, 1);
+
+  // ── 7. ★ 재개 후 게임이 정상 진행된다
+  log('\n[7] ★ 재개 후 정답이 정상 판정된다');
+  from = back0.mark();
+  back0.chat(answers1[0], epochBefore);
+  await back0.waitFor(() => back0.since(from, 'question.resolved').length > 0, 8000, '정답');
+  expect('★ 재개 후 정답이 인정된다', back0.since(from, 'question.resolved')[0].reason, 'correct');
+
+  // ── 8. ★★★ 마지막 활성자가 나가기 버튼 → 즉시 폭파 (Q-82)
+  log('\n[8] ★★★ 마지막 활성자가 나가기 버튼 → 즉시 방 폭파 (Q-82)');
+  await back0.waitQuestion(2, 12000);
+  back1.leave(); // 게스트 먼저 나간다 (아직 방장이 남아 있다)
+  await sleep(700);
+  const st4 = await roomStateOf(roomId);
+  expectTrue('★ 한 명이 나가도 방은 남는다', st4.exists, JSON.stringify(st4));
+  expect('★ 아직 PAUSED 가 아니다 (방장이 남아 있다)', st4.state, 'QUESTION_ACTIVE');
+
+  back0.leave(); // ★★ 마지막 활성자가 나가기 버튼을 눌렀다
+  await sleep(900);
+  const st5 = await roomStateOf(roomId);
+  expect('★★★ 마지막 활성자가 나가면 방이 즉시 사라진다', st5.exists, false);
+
+  await sleep(600);
+  const closed = await gamesOfRoom(roomId);
+  expectTrue(
+    '★★ games 가 닫힌다 (열린 게임을 남기지 않는다)',
+    closed.games[0]?.ended_at !== null,
+    String(closed.games[0]?.end_reason),
+  );
+  expect('★ 종료 사유', closed.games[0]?.end_reason, 'abandoned');
+
+  back0.disconnect();
+  back1.disconnect();
+  host.disconnect();
+  guest.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
+// ★★ abandon — PAUSED 만료로 방이 폭파된다 (Q-82)
+//
+//   ★ 설정값(PAUSE_ABANDON_MS)을 짧게 줄여 같은 경로를 검증한다.
+//     ★★ 값만 다르고 코드 경로는 동일하다.
+// -----------------------------------------------------------------------------
+async function scenarioAbandon() {
+  log('시나리오 abandon — ★★ PAUSED 만료로 방 폭파 (PAUSE_ABANDON_MS=6000)');
+  ensureServerForScenario();
+  await clearExperiences(PREFIX);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('Phase 5 만료 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  const gameId = await startGame(host, [guest], 5);
+
+  // ── 1. ★★ 끊김(나가기 아님)으로 전원 이탈 → PAUSED
+  log('\n[1] ★★ 끊김으로 전원 이탈 → PAUSED (폭파되지 않는다)');
+  host.socket.close();
+  guest.socket.close();
+  await sleep(800);
+  const st1 = await roomStateOf(roomId);
+  expect('★★ 끊김은 즉시 폭파되지 않는다', st1.exists, true);
+  expect('★ PAUSED 로 간다', st1.state, 'PAUSED');
+  expectTrue(
+    '★ 만료 시각이 설정값(6초)에 맞게 잡힌다',
+    st1.paused.abandonAt - st1.paused.pausedAt >= 5000 &&
+      st1.paused.abandonAt - st1.paused.pausedAt <= 7000,
+    `${st1.paused.abandonAt - st1.paused.pausedAt}ms`,
+  );
+
+  // ── 2. ★ 만료 전에 돌아오면 시계가 다시 시작된다
+  log('\n[2] ★ 돌아왔다 다시 나가면 만료 시계가 처음부터 다시 센다');
+  await sleep(3500);
+  const mid = new Bot(host.name);
+  mid.cookie = host.cookie;
+  await mid.connect();
+  await mid.waitFor(() => mid.snapshot !== null, 6000, '재접속');
+  await sleep(600);
+  const st2 = await roomStateOf(roomId);
+  expectTrue('★ 여전히 살아 있다', st2.exists, JSON.stringify(st2));
+  expectTrue(
+    '★★ 만료 시각이 뒤로 밀렸다 (돌아왔으므로 다시 센다)',
+    st2.paused.abandonAt > st1.paused.abandonAt,
+    `${st1.paused.abandonAt} → ${st2.paused.abandonAt}`,
+  );
+  mid.socket.close();
+  await sleep(500);
+
+  // ── 3. ★★★ 만료 → 방 폭파
+  log('\n[3] ★★★ 만료되면 방이 폭파된다');
+  await sleep(8000);
+  const st3 = await roomStateOf(roomId);
+  expect('★★★ 방이 사라졌다', st3.exists, false);
+
+  await sleep(600);
+  const closed = await gamesOfRoom(roomId);
+  expectTrue(
+    '★★ games 가 닫힌다',
+    closed.games[0]?.ended_at !== null,
+    String(closed.games[0]?.end_reason),
+  );
+  expect('★ 종료 사유', closed.games[0]?.end_reason, 'abandoned');
+
+  // ★ 정답을 공개하지 않았으므로 경험 기록이 없다 (Q-47)
+  const exp = await experiencesOfGame(gameId);
+  expect('★★ 정답을 공개하지 않았으므로 경험 기록이 없다 (Q-47)', exp.length, 0);
+
+  host.disconnect();
+  guest.disconnect();
+  mid.disconnect();
+  return checkSummary();
+}
+
+
+// -----------------------------------------------------------------------------
+// ★★ flood — Q-84 도배 완화 후 판정 성능 실측 (R015)
+//
+//   ★ 건우 지시: "완화해도 판정 성능에 영향이 없는지 확인하라 —
+//     ★ 정답 판정은 동기 블록이다. 메시지가 폭증하면 그 블록이 자주 돈다.
+//       봇으로 부하를 만들어 실측하라"
+//
+//   ★★ 무엇을 재는가 — **정답을 보낸 순간부터 question.resolved 를 받기까지**.
+//     ★ 그것이 사용자가 체감하는 판정 지연이고, 선착순 승패를 가르는 값이다.
+//   ★ 부하 없는 기준선을 먼저 재고, 도배 중에 같은 것을 재서 비교한다.
+// -----------------------------------------------------------------------------
+async function scenarioFlood() {
+  log('시나리오 flood — ★★ Q-84 도배 완화 후 판정 성능 실측');
+  await clearExperiences(PREFIX);
+
+  const bots = await makeBots(6);
+  await bots[0].connect();
+  bots[0].createRoom('Q-84 부하 테스트');
+  await bots[0].waitFor(() => bots[0].snapshot !== null, 6000, '방 생성');
+  const roomId = bots[0].snapshot.room.id;
+  for (const b of bots.slice(1)) {
+    await b.connect();
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot !== null, 6000, `${b.name} 입장`);
+  }
+  const host = bots[0];
+  await startGame(host, bots.slice(1), 6);
+
+  /** 정답을 보내고 resolved 를 받기까지의 왕복 시간을 잰다 */
+  async function measure(index, flood) {
+    const q = await host.waitQuestion(index, 15000);
+    const answers = await answersForText(q.text);
+    // ★ 도배는 정답을 보내기 전에 시작해 큐를 채운다
+    let stop = false;
+    let sent = 0;
+    let throttled = 0;
+    const floodFrom = bots[1].mark();
+    if (flood) {
+      const spam = () => {
+        if (stop) return;
+        // ★ 5명이 동시에 10개씩 던진다. 사람이 낼 수 없는 속도다
+        for (const b of bots.slice(1)) {
+          for (let i = 0; i < 10; i += 1) {
+            b.chat(`도배${sent}`, q.epoch);
+            sent += 1;
+          }
+        }
+        setTimeout(spam, 50);
+      };
+      spam();
+      await sleep(600); // 큐를 채운다
+    }
+
+    const from = host.mark();
+    const t0 = Date.now();
+    host.chat(answers[0], q.epoch);
+    await host.waitFor(
+      () => host.since(from, 'question.resolved').length > 0,
+      15000,
+      `${index}번 판정`,
+    );
+    const ms = host.since(from, 'question.resolved')[0].at - t0;
+    stop = true;
+    if (flood) {
+      await sleep(400);
+      throttled = bots[1].since(floodFrom, 'chat.throttled').length;
+    }
+    return { ms, sent, throttled, reason: host.since(from, 'question.resolved')[0].reason };
+  }
+
+  // ── 1. 기준선 (부하 없음)
+  log('\n[1] 기준선 — 부하 없이 판정 지연을 잰다');
+  const base = [];
+  for (let i = 1; i <= 2; i += 1) {
+    const r = await measure(i, false);
+    base.push(r.ms);
+    expect(`${i}번 정답 처리`, r.reason, 'correct');
+  }
+  const baseAvg = base.reduce((a, b) => a + b, 0) / base.length;
+  log(`  ★ 기준선 판정 지연: ${base.map((m) => `${m}ms`).join(', ')} (평균 ${Math.round(baseAvg)}ms)`);
+
+  // ── 2. ★★ 도배 중 판정
+  log('\n[2] ★★ 5명이 초당 수백 개를 쏟아붓는 중에 판정을 잰다');
+  const loaded = [];
+  let totalSent = 0;
+  let totalThrottled = 0;
+  for (let i = 3; i <= 4; i += 1) {
+    const r = await measure(i, true);
+    loaded.push(r.ms);
+    totalSent += r.sent;
+    totalThrottled += r.throttled;
+    expect(`${i}번 정답 처리 (도배 중)`, r.reason, 'correct');
+  }
+  const loadAvg = loaded.reduce((a, b) => a + b, 0) / loaded.length;
+  log(`  ★ 도배 중 판정 지연: ${loaded.map((m) => `${m}ms`).join(', ')} (평균 ${Math.round(loadAvg)}ms)`);
+  log(`  ★ 던진 메시지 ${totalSent}개 / 억제 안내 ${totalThrottled}회`);
+
+  expectTrue(
+    '★★★ 도배 중에도 판정이 200ms 안에 끝난다',
+    loadAvg < 200,
+    `평균 ${Math.round(loadAvg)}ms`,
+  );
+  expectTrue(
+    '★★ 도배가 판정 지연을 크게 늘리지 않는다 (기준선 + 150ms 이내)',
+    loadAvg < baseAvg + 150,
+    `기준선 ${Math.round(baseAvg)}ms → 부하 ${Math.round(loadAvg)}ms`,
+  );
+  expectTrue(
+    '★★ rate limit 이 실제로 발동한다 (서버 보호선이 살아 있다)',
+    totalThrottled > 0,
+    `${totalThrottled}회`,
+  );
+
+  // ── 3. ★ 사람의 정상 연타는 막히지 않는다
+  log('\n[3] ★ 사람의 정상 연타(초당 5개)는 막히지 않는다');
+  const q5 = await host.waitQuestion(5, 15000);
+  const humanFrom = bots[2].mark();
+  for (let i = 0; i < 15; i += 1) {
+    bots[2].chat(`사람연타${i}`, q5.epoch);
+    await sleep(200); // 초당 5개
+  }
+  await sleep(400);
+  expect(
+    '★★ 초당 5개는 한 번도 막히지 않는다',
+    bots[2].since(humanFrom, 'chat.throttled').length,
+    0,
+  );
+
+  // ── 4. ★ 억제는 본인에게만 간다
+  log('\n[4] ★ 억제 안내는 본인에게만 간다');
+  const others = bots.filter((b) => b !== bots[3]);
+  const marks = others.map((b) => b.mark());
+  for (let i = 0; i < 60; i += 1) bots[3].chat(`혼자도배${i}`, q5.epoch);
+  await sleep(600);
+  expectTrue(
+    '★ 도배한 본인은 억제 안내를 받는다',
+    bots[3].since(0, 'chat.throttled').length > 0,
+    `${bots[3].since(0, 'chat.throttled').length}회`,
+  );
+  expect(
+    '★★ 다른 사람은 억제 안내를 받지 않는다',
+    others.reduce((n, b, i) => n + b.since(marks[i], 'chat.throttled').length, 0),
+    0,
+  );
+
+  for (const b of bots) b.socket.emit('room.leave', {});
+  await sleep(900);
+  for (const b of bots) b.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
+// ★★ pausehost — PAUSED 중 방장이 끊긴 채 다른 사람만 돌아오는 경우 (R015)
+//
+//   ★★ 이것을 확인하지 않으면 **게임이 되살아날 수 없는 상태**가 생긴다.
+//     ★ 재개는 방장만 할 수 있는데 방장이 안 돌아오면 아무도 누를 수 없다.
+//     ★ 그래서 방장 이전 타이머가 PAUSED 중에도 돌아야 한다.
+//   ★ 30초 유예(Q-29)가 있으므로 이 시나리오는 약 40초 걸린다.
+// -----------------------------------------------------------------------------
+async function scenarioPauseHost() {
+  log('시나리오 pausehost — ★★ PAUSED 중 방장 이전 (약 40초)');
+  await clearExperiences(PREFIX);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('Phase 5 방장 이전 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  await startGame(host, [guest], 5);
+
+  const hostId = host.snapshot.me.accountId;
+  const guestId = guest.snapshot.me.accountId;
+
+  log('\n[1] 전원 이탈 → PAUSED');
+  host.socket.close();
+  guest.socket.close();
+  await sleep(800);
+  const st1 = await roomStateOf(roomId);
+  expect('★ PAUSED', st1.state, 'PAUSED');
+  expect('★ 방장은 아직 원래 방장이다', st1.hostAccountId, hostId);
+
+  log('\n[2] ★★ 방장은 안 돌아오고 게스트만 돌아온다');
+  const back = new Bot(guest.name);
+  back.cookie = guest.cookie;
+  await back.connect();
+  await back.waitFor(() => back.snapshot !== null, 6000, '게스트 재접속');
+  expect('★ 여전히 PAUSED (자동 재개 없음)', back.snapshot.room.state, 'PAUSED');
+  expect('★ 게스트는 아직 재개할 수 없다', back.snapshot.paused.canResume, false);
+
+  log('\n[3] ★★ 30초 유예 뒤 방장이 이전된다 (최대 40초 대기)');
+  const from = back.mark();
+  await back.waitFor(
+    () => back.since(from, 'room.hostChanged').length > 0,
+    40000,
+    '방장 이전',
+  );
+  const st2 = await roomStateOf(roomId);
+  expect('★★★ 방장이 게스트에게 이전됐다', st2.hostAccountId, guestId);
+  expect('★ 여전히 PAUSED (이전만 되고 재개되지는 않았다)', st2.state, 'PAUSED');
+
+  log('\n[4] ★★★ 새 방장이 재개할 수 있다');
+  // ★ 스냅샷을 다시 받아 canResume 을 확인한다
+  const resyncFrom = back.mark();
+  back.socket.emit('state.resync', {});
+  await back.waitFor(() => back.since(resyncFrom, 'room.state').length > 0, 5000, 'resync');
+  expect('★★ 새 방장은 재개할 수 있다', back.snapshot.paused.canResume, true);
+
+  const r = back.mark();
+  back.resume();
+  await back.waitFor(() => back.since(r, 'game.resumed').length > 0, 5000, '재개');
+  expect('★★★ 새 방장이 재개했다', (await roomStateOf(roomId)).state, 'QUESTION_ACTIVE');
+
+  back.socket.emit('host.forceEnd', {});
+  await sleep(600);
+  back.socket.emit('game.toLobby', {});
+  await sleep(400);
+  back.leave();
+  await sleep(700);
+  back.disconnect();
+  host.disconnect();
+  guest.disconnect();
+  return checkSummary();
+}
+
+
+// -----------------------------------------------------------------------------
+// ★★ pausehint — 일시정지와 힌트(B-5) (R015)
+//
+//   ★★ 왜 따로 재는가 — 힌트는 **남은 시간**으로 판단한다.
+//     PAUSED 중에는 endsAt 이 낡은 값이므로, 그대로 믿으면 두 가지 사고가 난다.
+//       ★ (가) 멈춰 있는 동안 힌트 시각이 지나가 버려, 재접속하면 힌트가 먼저 보인다
+//              → ★★ 아직 20초가 남은 문제의 힌트를 공짜로 얻는다. **정보 누출**이다.
+//       ★ (나) 재개한 뒤에는 힌트가 아예 오지 않는다 (이미 지났다고 판단해서)
+//     ★ 이 시나리오는 둘 다 일어나지 않음을 단정한다.
+//
+//   ★ 문제 시간 30초 / 힌트는 남은 10초. 그래서 약 45초 걸린다.
+// -----------------------------------------------------------------------------
+async function scenarioPauseHint() {
+  log('시나리오 pausehint — ★★ 일시정지와 힌트 (B-5, 약 45초)');
+  await clearExperiences(PREFIX);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('Phase 5 힌트 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  await startGame(host, [guest], 3);
+
+  const q1 = host.snapshot.question;
+  expect('★ 시작 시점에는 힌트가 없다', q1.hintRevealed, false);
+
+  // ── 1. 힌트 시각 전에 멈춘다
+  log('\n[1] 힌트 시각(남은 10초) 전에 전원 이탈한다');
+  await sleep(2000);
+  host.socket.close();
+  guest.socket.close();
+  await sleep(800);
+  const st1 = await roomStateOf(roomId);
+  expect('★ PAUSED', st1.state, 'PAUSED');
+  expect('★ 힌트는 아직 push 되지 않았다', st1.question.hintPushed, false);
+  expectTrue(
+    '★ 멈춘 시점에 남은 시간이 10초보다 많다 (힌트 전이다)',
+    st1.paused.remainingMs > 12000,
+    `${st1.paused.remainingMs}ms 남음`,
+  );
+
+  // ── 2. ★★★ 멈춰 있는 동안 힌트 시각이 "지나가지" 않는다
+  log('\n[2] ★★★ 20초를 멈춘 채로 둔다 — 원래라면 힌트 시각을 지났을 시간이다');
+  await sleep(20000);
+  const st2 = await roomStateOf(roomId);
+  expect('★ 여전히 PAUSED', st2.state, 'PAUSED');
+  expect('★★ 남은 시간이 흐르지 않았다', st2.paused.remainingMs, st1.paused.remainingMs);
+  expect('★★★ 힌트가 push 되지 않았다 (시간이 멈췄으므로)', st2.question.hintPushed, false);
+  // ★★ 여기가 이 시나리오의 핵심이다.
+  //   ★ 낡은 endsAt 으로 계산한 남은 시간은 이미 힌트 기준선(10초) 아래다.
+  //   ★★ 즉 endsAt 을 그대로 믿었다면 **힌트가 공개됐어야 하는 상태**다.
+  //     실제 남은 시간은 28초다. 그 차이가 정보 누출의 크기다.
+  const staleRemain = st2.question.endsAt - Date.now();
+  expectTrue(
+    '★★★ 낡은 endsAt 으로 보면 이미 힌트 시각을 지났다 (그래서 endsAt 을 믿으면 안 된다)',
+    staleRemain <= 10000,
+    `낡은 계산 ${Math.round(staleRemain)}ms / 실제 ${st2.paused.remainingMs}ms`,
+  );
+
+  // ── 3. ★★★ 재접속해도 힌트가 보이지 않는다 (정보 누출 방어선)
+  log('\n[3] ★★★ 재접속 스냅샷에도 힌트가 없다 — 정보 누출 방어선');
+  const back = new Bot(host.name);
+  back.cookie = host.cookie;
+  await back.connect();
+  await back.waitFor(() => back.snapshot !== null, 6000, '방장 재접속');
+  expect('★ PAUSED 중에도 문제는 복구된다', back.snapshot.room.state, 'PAUSED');
+  expectTrue('★ 문제가 스냅샷에 담긴다', back.snapshot.question !== null);
+  expect('★★★ 힌트가 공개되지 않았다', back.snapshot.question.hintRevealed, false);
+  expect('★★ 힌트 문장 자체가 내려오지 않았다', back.snapshot.question.hint, null);
+
+  // ── 4. ★★ 재개하면 힌트가 남은 10초에 온다
+  log('\n[4] ★★ 재개한다. 힌트는 다시 계산된 남은 10초에 와야 한다');
+  let from = back.mark();
+  back.resume();
+  await back.waitFor(() => back.since(from, 'game.resumed').length > 0, 5000, '재개');
+  const resumedEndsAt = back.since(from, 'game.resumed')[0].payload.endsAt;
+
+  const hintFrom = back.mark();
+  await back.waitFor(() => back.since(hintFrom, 'question.hint').length > 0, 30000, '힌트');
+  const hintEv = back.since(hintFrom, 'question.hint')[0];
+  const remainAtHint = resumedEndsAt - hintEv.at;
+  expectTrue(
+    '★★★ 힌트가 남은 10초 무렵에 온다 (재개 후 다시 계산된 기준)',
+    Math.abs(remainAtHint - 10000) < 1500,
+    `힌트 시점에 ${Math.round(remainAtHint)}ms 남음`,
+  );
+  expect('★ 힌트 epoch 가 같은 문제다', hintEv.epoch, q1.epoch);
+  expectTrue('★ 힌트 내용이 비어 있지 않다', typeof hintEv.hint === 'string' && hintEv.hint.length > 0);
+
+  // ── 5. ★ 힌트를 받은 뒤 다시 멈춰도 힌트는 유지되고, 두 번 오지 않는다
+  log('\n[5] ★ 힌트 뒤에 다시 멈춘다 — 힌트는 유지되고 두 번 오지 않는다');
+  back.socket.close();
+  await sleep(800);
+  const st3 = await roomStateOf(roomId);
+  expect('★ 다시 PAUSED', st3.state, 'PAUSED');
+  expect('★ 힌트는 push 된 상태로 남는다', st3.question.hintPushed, true);
+
+  const back2 = new Bot(host.name);
+  back2.cookie = host.cookie;
+  await back2.connect();
+  await back2.waitFor(() => back2.snapshot !== null, 6000, '재접속');
+  expect('★★ 이미 공개된 힌트는 재접속해도 그대로 보인다', back2.snapshot.question.hintRevealed, true);
+  expect('★ 힌트 문장이 함께 온다', back2.snapshot.question.hint, hintEv.hint);
+
+  from = back2.mark();
+  back2.resume();
+  await back2.waitFor(() => back2.since(from, 'game.resumed').length > 0, 5000, '재개');
+  await sleep(1500);
+  expect(
+    '★★ 재개해도 힌트가 다시 push 되지 않는다 (hintPushed 가 true 다)',
+    back2.since(from, 'question.hint').length,
+    0,
+  );
+
+  back2.leave(); // ★ 마지막 활성자 → 즉시 폭파 (Q-82)
+  await sleep(800);
+  expect('★ 방이 정리됐다', (await roomStateOf(roomId)).exists, false);
+  back2.disconnect();
+  host.disconnect();
+  guest.disconnect();
+  return checkSummary();
+}
+
 // -----------------------------------------------------------------------------
 const SCENARIOS = {
   join: scenarioJoin,
@@ -2387,6 +3128,13 @@ const SCENARIOS = {
   concur: scenarioConcurrent,
   collide: scenarioCollide,
   full: scenarioFull,
+  // ★★ Phase 5 (R015)
+  pause: scenarioPause,
+  abandon: scenarioAbandon,
+  pausehost: scenarioPauseHost,
+  pausehint: scenarioPauseHint,
+  // ★ Q-84 (R015)
+  flood: scenarioFlood,
 };
 
 const run = SCENARIOS[scenario];
