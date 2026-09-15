@@ -279,6 +279,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     resolution: null,
     endedQuestionCount: 0,
     stage3Count: 0,
+    questionLog: [],
   };
   console.log(
     `[game] ${room.id} 게임 시작 — 문제 ${settings.questionCount}개 / 참가자 ${roster.length}명 / ` +

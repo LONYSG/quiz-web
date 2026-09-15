@@ -110,6 +110,37 @@ export interface ActiveGame {
   endedQuestionCount: number;
   /** ★ 3단계 선정이 발동한 횟수. 운영자용 관측값이다 (D-054) */
   stage3Count: number;
+  /**
+   * ★★ 문제별 기록 (Phase 4 / R016). 결과 화면이 쓴다.
+   *
+   * ★ 왜 메모리에 쌓는가 — 결과 화면은 게임이 끝나는 **그 순간** 만들어진다.
+   *   ★★ DB 에서 읽으면 await 가 필요하고, 그 사이에 tick 이 한 번 더 돌 수 있다.
+   *     ★ 같은 이유로 게임 시작 절차도 메모리에서 끝낸다 (04-PROTOCOL 1장).
+   *   ★ DB 에도 같은 내용이 남는다(game_questions / answer_events). 이쪽은 화면용 사본이다.
+   */
+  questionLog: QuestionLogEntry[];
+}
+
+/**
+ * 결과 화면에 쓰는 문제 하나의 기록 (Phase 4).
+ *
+ * ★★ displayAnswer 는 **정답이 공개된 문제만** 값이 있다.
+ *   ★ 중단(aborted)된 문제는 아무도 정답을 보지 못했고 경험 기록도 남기지 않았다.
+ *     ★★ 그 문제의 정답을 결과 화면에서 보여주면 **경험 기록 없이 정답만 아는 상태**가 된다.
+ *       그 문제가 다음 게임에 다시 나오면 그 사람만 유리하다. 그래서 보여주지 않는다.
+ */
+export interface QuestionLogEntry {
+  index: number;
+  text: string;
+  categoryName: string;
+  /** ★ 공개된 문제만. 중단된 문제는 null */
+  displayAnswer: string | null;
+  reason: import('@quiz/shared').QuestionResolution;
+  winnerAccountId: string | null;
+  /** 정답까지 걸린 시간(ms). ★ 정답자가 있을 때만 */
+  responseMs: number | null;
+  /** 이 문제를 이미 경험하고 있던 참가자 수 */
+  experiencedCount: number;
 }
 
 /**
@@ -290,7 +321,7 @@ export interface Room {
 
   /**
    * ★ 게임 결과. GAME_RESULT 에서만 값이 있다.
-   *   ★ Phase 4 가 결과 화면을 만든다. Phase 3 는 데이터만 만들어 둔다 (TEMP-P4-01).
+   *   ★ Phase 4 (R016) 에서 문제별 기록과 사람별 요약까지 담는다.
    */
   result: GameResultData | null;
 
@@ -327,6 +358,25 @@ export interface GameResultData {
     explanation: string | null;
     winnerAccountId: string | null;
   } | null;
+  /** ★★ 문제별 기록 (Phase 4) */
+  questions: QuestionLogEntry[];
+  /**
+   * ★ 사람별 요약 (Phase 4).
+   *
+   * ★ guide 40절의 통계 후보 9종 중 **이 게임 안에서 의미가 닫히는 것만** 넣었다.
+   *   ★ 근거: 카테고리별 성적·참가 기록·누적 정답률은 **여러 게임에 걸친 값**이라
+   *     한 게임의 결과 화면에서 읽을 수 있는 정보가 아니다. 개인 통계 화면의 몫이다(09-BACKLOG).
+   *   ★★ 그리고 전부 넣으면 "스크롤 없이 한 화면" 목표와 정면으로 충돌한다.
+   */
+  playerStats: {
+    accountId: string;
+    /** 이 게임에서 맞힌 문제 수 */
+    correct: number;
+    /** 평균 정답 시간(ms). 맞힌 문제가 없으면 null */
+    avgResponseMs: number | null;
+    /** ★ 가장 빨리 맞힌 시간(ms) */
+    fastestMs: number | null;
+  }[];
   /** 조기 종료·강제 종료 사유 안내 */
   abortedNote: string | null;
   endedQuestionCount: number;
