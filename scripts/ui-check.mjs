@@ -200,6 +200,22 @@ class Page extends Cdp {
     await sleep(1200);
   }
 
+  /**
+   * ★ 폭과 높이를 함께 지정한다 (R016 — 한 화면 검사).
+   *
+   * ★★ 높이를 지정하지 않으면 "한 화면에 들어오는가" 를 잴 수 없다.
+   *   ★ 기준 해상도를 정하고 그 높이로 재야 수치가 의미를 갖는다.
+   */
+  async setViewport(w, h) {
+    await this.send('Emulation.setDeviceMetricsOverride', {
+      width: w,
+      height: h,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    await sleep(300);
+  }
+
   async setWidth(w) {
     await this.send('Emulation.setDeviceMetricsOverride', {
       width: w,
@@ -466,6 +482,40 @@ async function newPage(browser, label, isolated = false) {
   await page.init();
   page.targetId = targetId;
   return page;
+}
+
+/**
+ * ★★★ "스크롤 없이 한 화면" 게이트 (R016 / 건우 요구).
+ *
+ * ★ 건우: "스크롤 없이 한 화면에 모든 요소가 다 보여야 한다. 스크롤 있으면 굉장히 조잡하다."
+ *
+ * ★★ 기준 해상도 — **1280×720 뷰포트**.
+ *   ★ 근거: 노트북 1280×800 에서 브라우저 크롬(탭·주소창·북마크)을 빼면 내부 높이가
+ *     약 720px 남는다(추정. 크롬 구성에 따라 다르다). 실사용 조합 중 가장 빡빡한 쪽이다.
+ *   ★ 여기서 통과하면 더 큰 화면은 자동으로 만족한다.
+ *
+ * ★★ 콘솔에 남기기만 하면 회귀를 막지 못한다. **게이트로 만든다** (C-4 지시).
+ *   ★ 화면 요소는 Phase 마다 늘어난다. 늘어난 그 라운드에서 걸려야 한다.
+ */
+const ONE_SCREEN = { w: 1280, h: 720 };
+
+async function measureOneScreen(page, label, { gate = true } = {}) {
+  await page.setViewport(ONE_SCREEN.w, ONE_SCREEN.h);
+  await page.evaluate('window.scrollTo(0, 0)');
+  await sleep(250);
+  const m = JSON.parse(
+    await page.evaluate(
+      "JSON.stringify({ doc: document.documentElement.scrollHeight, view: window.innerHeight })",
+    ),
+  );
+  const ratio = m.doc / m.view;
+  const detail = `${m.doc}px / ${m.view}px = ${ratio.toFixed(2)}배`;
+  if (gate) {
+    record(`★★★ ${label} — 스크롤 없이 한 화면에 들어온다 (1280×720)`, ratio <= 1.0, detail);
+  } else {
+    console.log(`  ★ ${label} 높이: ${detail} (참고값. 게이트 아님)`);
+  }
+  return ratio;
 }
 
 // -----------------------------------------------------------------------------
@@ -788,6 +838,14 @@ try {
     const warned = await host.waitForText('이대로 시작할 수 없습니다', 4000);
     record('입력 단계 경고가 보인다', warned);
 
+    // ★ 로비 화면도 재어 둔다.
+    //   ★★ 지금은 **게이트가 아니다** — 건우 우선순위가 "게임 화면 우선" 이고,
+    //     로비는 30초 승부 중이 아니라 스크롤이 조잡함으로 이어지는 정도가 다르다.
+    //   ★ 수치는 남긴다. 09-BACKLOG 의 다음 목표가 된다.
+    await measureOneScreen(host, '로비 화면', { gate: false });
+    await host.setWidth(720);
+    await sleep(250);
+
     const startBtn = await host.buttonState('게임 시작');
     record(
       '게임 시작 버튼을 누를 수 있다',
@@ -1068,6 +1126,26 @@ try {
     // ─────────────────────────────────────────────────────────────────────────
     // ★★ Q-83 / Q-56 — 정수 타이머와 단축키 (R015)
     // ─────────────────────────────────────────────────────────────────────────
+    console.log('\n[5-3b] ★★★ 한 화면 검사 — 게임 화면');
+    await measureOneScreen(host, '게임 화면');
+    // ★ 핵심 정보가 실제로 화면 안에 있는지도 좌표로 확인한다.
+    //   ★★ "문서가 짧다" 와 "중요한 것이 보인다" 는 다른 말이다 (R009 교훈)
+    for (const [name, sel] of [
+      ['문제 지문', '.question-card .q-text'],
+      ['남은 시간', '.q-timer'],
+      ['채팅 입력창', '.chat-card input'],
+    ]) {
+      const on = await host.onScreen(sel);
+      record(
+        `★★ 한 화면에서 ${name}이(가) 보인다`,
+        on.exists && on.fullyVisible,
+        JSON.stringify(on.rect ?? on),
+      );
+    }
+    await host.shot('one-screen-game');
+    await host.setWidth(720);
+    await sleep(250);
+
     console.log('\n[5-4] ★★ Q-83 정수 타이머 / Q-56 단축키');
 
     // ── Q-83 소수점이 보이지 않는다
@@ -1320,11 +1398,27 @@ try {
       '★ 종료 사유가 사람이 읽을 문장으로 나온다',
       (await host.text()).includes('강제 종료'),
     );
+    // ★★ R016 — Phase 4 를 실제로 만들었다. ★ 새로 생긴 것을 검사한다
     record(
-      '★ Phase 4 에서 다시 만든다는 사실을 알린다 (D-030)',
-      (await host.text()).includes('Phase 4'),
+      '★★ 문제별 기록이 결과 화면에 있다 (Phase 4)',
+      await host.evaluate("document.querySelector('.qlog li') !== null"),
+    );
+    // ★ 이 흐름은 **강제 종료**다. 정답이 공개되지 않았으므로 응답 시간이 없는 것이 정상이다.
+    //   ★★ 대신 "중단됨 / 정답 미공개" 가 보이는지를 본다 — 그것이 이 경로의 규칙이다
+    record(
+      '★★ 중단된 문제의 정답을 결과 화면에서도 공개하지 않는다',
+      (await host.evaluate("document.querySelector('.qlog')?.innerText ?? ''")).includes(
+        '정답 미공개',
+      ),
     );
     await host.shot('game-result');
+
+    // ★★ 결과 화면도 한 화면이어야 한다 (Phase 4 에서 요소가 늘었다)
+    console.log('\n[5-6b] ★★★ 한 화면 검사 — 결과 화면');
+    await measureOneScreen(host, '결과 화면');
+    await host.shot('one-screen-result');
+    await host.setWidth(720);
+    await sleep(250);
 
     const againBtn = await host.buttonState('다시 하기');
     record('★ 다시 하기 버튼이 있다', againBtn.exists && !againBtn.disabled, JSON.stringify(againBtn));

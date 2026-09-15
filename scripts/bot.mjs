@@ -26,6 +26,8 @@
 //   ★★ abandon Phase 5 — PAUSED 만료로 방 폭파 (설정값을 짧게 줄여 검증)
 //   ★★ pausehost Phase 5 — PAUSED 중 방장 이전 (약 40초)
 //   ★★ pausehint Phase 5 — 일시정지와 힌트 / 정보 누출 방어선 (약 45초)
+//   ★★★ mask     Phase 6 — 경험 표시 / 정답 마스킹 / **판정과의 분리**
+//   ★★ result   Phase 4 — 결과 화면 데이터 / 공동 순위 / 다시 하기
 //   ★★ flood   Q-84 — 도배 완화 후 판정 성능 실측
 //
 // 사용법
@@ -273,7 +275,10 @@ class Bot {
       s.on('room.hostChanged', (p) =>
         this.events.push({ type: 'room.hostChanged', hostAccountId: p.hostAccountId }),
       );
-      s.on('chat.message', (m) => this.events.push({ type: 'chat', text: m.text }));
+      // ★ R016 — 마스킹 여부와 발신자를 함께 기록한다 (Phase 6 검증에 필요하다)
+      s.on('chat.message', (m) =>
+        this.events.push({ type: 'chat', text: m.text, masked: m.masked === true, accountId: m.accountId }),
+      );
 
       // ── Phase 2 이벤트
       s.on('lobby.settingsUpdated', (p) => {
@@ -326,7 +331,7 @@ class Bot {
       s.on('question.experiencedUpdated', (p) => {
         this.events.push({ type: 'question.experiencedUpdated', epoch: p.epoch, payload: p });
         if (this.snapshot?.question && this.snapshot.question.epoch === p.epoch) {
-          this.snapshot.question.experiencedNicknames = p.experiencedNicknames;
+          this.snapshot.question.experiencedPlayers = p.experiencedPlayers;
           this.snapshot.question.selfExperienced = p.selfExperienced;
         }
       });
@@ -660,6 +665,64 @@ async function shrinkAvailableTo(accountIds, keepCount) {
          FROM unnest($1::bigint[]) AS a(account_id), target t
        ON CONFLICT (account_id, question_id) DO NOTHING`,
       [accountIds, keepCount],
+    );
+    return r.rowCount ?? 0;
+  });
+}
+
+/**
+ * ★★ 마스킹 검증용으로 **정답이 3글자 이상인 문제만** 남긴다 (R016).
+ *
+ * ★★ 왜 필요한가 — Q-43 때문이다.
+ *   ★ 정규화 길이 2 이하인 정답은 **메시지 전체가 정답과 같을 때만** 가린다.
+ *     ("달" 때문에 "달라졌네" 가 가려지면 정상 대화가 불가능해진다)
+ *   ★★ 그래서 짧은 정답 문제가 뽑히면 "정답 XX 맞지?" 가 가려지지 않는 것이 **정상**이다.
+ *     ★ 실제로 R016 에서 이 시나리오가 한 번 통과하고 한 번 실패했다 — 뽑힌 문제가 달랐다.
+ *   → ★ 테스트가 **무작위 선택에 의존하지 않도록** 조건을 고정한다.
+ */
+async function keepOnlyLongAnswerQuestions(accountIds, keepCount) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `WITH pool AS (
+         SELECT q.id FROM questions q
+          WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
+            AND NOT EXISTS (
+              SELECT 1 FROM question_answers a
+               WHERE a.question_id = q.id AND char_length(a.answer_norm) < 3
+            )
+          ORDER BY q.id
+          LIMIT $2
+       ), target AS (
+         SELECT id FROM questions
+          WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
+            AND id NOT IN (SELECT id FROM pool)
+       )
+       INSERT INTO question_experiences (account_id, question_id)
+       SELECT a.account_id, t.id
+         FROM unnest($1::bigint[]) AS a(account_id), target t
+       ON CONFLICT (account_id, question_id) DO NOTHING`,
+      [accountIds, keepCount],
+    );
+    return r.rowCount ?? 0;
+  });
+}
+
+/**
+ * ★ 지정한 계정을 **출제 가능한 문제 전부의 경험자**로 만든다 (R016 / Phase 6).
+ *
+ * ★★ 왜 필요한가 — 마스킹은 "경험자 한 명 + 미경험자 한 명" 이 있어야 검증할 수 있다.
+ *   ★ 정상 플레이로는 그 상태를 만들 수 없다. 경험 기록은 정답 공개 순간 **그 자리에 있던 사람 전원**에게
+ *     동시에 남으므로(Q-23), 같은 방에서 게임을 하면 둘 다 경험자가 된다.
+ *   → ★ 그래서 한쪽에만 기록을 직접 넣는다. **실제 메커니즘(question_experiences 행)** 그대로다.
+ */
+async function markExperiencedAll(accountId) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `INSERT INTO question_experiences (account_id, question_id)
+       SELECT $1::bigint, id FROM questions
+        WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
+       ON CONFLICT (account_id, question_id) DO NOTHING`,
+      [accountId],
     );
     return r.rowCount ?? 0;
   });
@@ -2058,7 +2121,7 @@ async function scenarioConcurrent() {
   let sawExperienced = false;
   for (let i = 6; i <= 8; i += 1) {
     const qi = await host.waitQuestion(i, 15000);
-    if (qi.experiencedNicknames.length > 0) sawExperienced = true;
+    if (qi.experiencedPlayers.length > 0) sawExperienced = true;
     const ai = await answersForText(qi.text);
     from = host.mark();
     host.chat(ai[0], qi.epoch);
@@ -3111,6 +3174,358 @@ async function scenarioPauseHint() {
   return checkSummary();
 }
 
+
+// -----------------------------------------------------------------------------
+// ★★★ mask — Phase 6 경험 시스템 / 정답 마스킹 (R016)
+//
+//   ★★ 이 시나리오가 단정하는 것 중 **가장 중요한 것은 케이스 #14** 다 —
+//     "미경험자의 정답 판정이 마스킹 때문에 망가지지 않는다".
+//     ★ 마스킹은 출력 변환이고 판정은 입력 처리다. 둘이 섞이면
+//       마스킹 판정 실수 하나가 **승패를 바꾼다** (R003 3-3).
+//
+//   ★ 나머지 — 경험자 배지는 본인에게만 / 경험자 목록은 전원에게 /
+//     경험자 채팅의 정답은 타인에게만 가려진다 / 공개 뒤에는 가리지 않는다.
+// -----------------------------------------------------------------------------
+async function scenarioMask() {
+  log('시나리오 mask — ★★★ Phase 6 경험 / 마스킹');
+  await clearExperiences(PREFIX);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('Phase 6 마스킹 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+
+  const hostId = host.snapshot.me.accountId;
+  const guestId = guest.snapshot.me.accountId;
+
+  // ── 0. ★★ 경험자 한 명 + 미경험자 한 명인 상태를 만든다
+  log('\n[0] ★★ 방장만 경험자인 상태를 만든다');
+  // ★ 정답이 3글자 이상인 문제만 4개 남긴다. 근거는 keepOnlyLongAnswerQuestions 주석 (Q-43)
+  await keepOnlyLongAnswerQuestions([hostId, guestId], 4);
+  const marked = await markExperiencedAll(hostId); // ★ 방장은 전부 경험자로
+  log(`  ★ 방장에게 경험 기록 ${marked}행 (게스트는 4문제만 미경험)`);
+
+  // ★ 참가자 변동이 있어야 서버가 출제 가능 수를 다시 계산한다
+  guest.socket.emit('room.leave', {});
+  await host.waitFor(() => host.snapshot.players.length === 1, 6000, '게스트 퇴장');
+  guest.join(roomId);
+  await host.waitFor(() => host.snapshot.players.length === 2, 6000, '게스트 재입장');
+  await host.waitFor(
+    () => host.snapshot.room.availableQuestionCount === 4,
+    6000,
+    '출제 가능 수 4 반영',
+  );
+  expect('★ 출제 가능 수가 4다 (게스트만 미경험)', host.snapshot.room.availableQuestionCount, 4);
+
+  await startGame(host, [guest], 3);
+
+  // ── 1. ★★ 경험자 표시 (A-1)
+  log('\n[1] ★★ 배지는 본인에게만 / 목록은 전원에게');
+  const q1 = host.snapshot.question;
+  expect('★★ 방장 화면: 본인이 경험자다', q1.selfExperienced, true);
+  expect('★★ 게스트 화면: 본인은 경험자가 아니다', guest.snapshot.question.selfExperienced, false);
+  expectTrue(
+    '★★ 경험자 목록이 **게스트에게도** 보인다 (guide 28절 폐기. D-011)',
+    guest.snapshot.question.experiencedPlayers.some((p) => p.accountId === hostId),
+    JSON.stringify(guest.snapshot.question.experiencedPlayers),
+  );
+  expectTrue(
+    '★ 목록에 색(colorIndex)이 함께 온다',
+    typeof guest.snapshot.question.experiencedPlayers[0]?.colorIndex === 'number',
+  );
+  expectTrue(
+    '★ 미경험자는 목록에 없다',
+    !guest.snapshot.question.experiencedPlayers.some((p) => p.accountId === guestId),
+  );
+
+  // ── 2. ★★★ 경험자가 정답을 치면 타인에게 가려진다
+  log('\n[2] ★★★ 경험자의 정답이 타인에게 가려진다');
+  const answers1 = await answersForText(q1.text);
+  const answer1 = answers1[answers1.length - 1]; // ★ 복수 정답 중 아무거나
+  const gFrom = guest.mark();
+  const hFrom = host.mark();
+  host.chat(`정답 ${answer1} 맞지?`, q1.epoch);
+  await guest.waitFor(() => guest.since(gFrom, 'chat').length > 0, 5000, '게스트 채팅 수신');
+  const seenByGuest = guest.since(gFrom, 'chat')[0];
+  const seenBySelf = host.since(hFrom, 'chat')[0];
+
+  expectTrue(
+    '★★★ 게스트 화면에 정답 문자열이 없다',
+    !seenByGuest.text.includes(answer1),
+    `본 것: "${seenByGuest.text}"`,
+  );
+  expect('★★ 가려졌다는 표시가 함께 온다', seenByGuest.masked, true);
+  expectTrue(
+    '★ 정답 외의 말은 그대로 남는다',
+    seenByGuest.text.includes('정답') && seenByGuest.text.includes('맞지?'),
+    `본 것: "${seenByGuest.text}"`,
+  );
+  expectTrue(
+    '★★ 마스크가 정답 길이를 드러내지 않는다 (센티널 1글자)',
+    seenByGuest.text.length === `정답 ${answer1} 맞지?`.length - answer1.length + 1,
+    `길이 ${seenByGuest.text.length}`,
+  );
+  expectTrue(
+    '★★ 본인 화면에는 원문이 그대로 보인다 (#16)',
+    seenBySelf.text.includes(answer1),
+    `본 것: "${seenBySelf.text}"`,
+  );
+  expect('★ 본인에게도 "가려져서 전송됨" 이 전달된다', seenBySelf.masked, true);
+  expect(
+    '★★ 경험자의 정답은 판정되지 않는다 (점수도 없다)',
+    host.since(hFrom, 'question.resolved').length,
+    0,
+  );
+
+  // ── 3. ★★★ 케이스 #14 — 미경험자의 판정은 영향받지 않는다
+  log('\n[3] ★★★ #14 미경험자의 정답 판정이 멀쩡하다 (가장 중요)');
+  const gFrom2 = guest.mark();
+  const hFrom2 = host.mark();
+  guest.chat(answer1, q1.epoch);
+  await guest.waitFor(
+    () => guest.since(gFrom2, 'question.resolved').length > 0,
+    8000,
+    '정답 판정',
+  );
+  const resolved = guest.since(gFrom2, 'question.resolved')[0];
+  expect('★★★ 미경험자의 정답이 정답으로 판정된다', resolved.reason, 'correct');
+  expect('★★★ 정답자가 미경험자다', resolved.winnerAccountId, guestId);
+  const guestMsgAtHost = host.since(hFrom2, 'chat').find((c) => c.accountId === guestId);
+  expect('★★ 미경험자의 메시지는 가려지지 않는다', guestMsgAtHost?.masked, false);
+  expect('★★ 미경험자의 메시지 원문이 그대로 간다', guestMsgAtHost?.text, answer1);
+
+  // ── 4. ★ 케이스 #15 — 공개된 뒤에는 가리지 않는다
+  log('\n[4] ★ #15 정답이 공개된 뒤에는 가리지 않는다');
+  const gFrom3 = guest.mark();
+  host.chat(`역시 ${answer1} 였네`, q1.epoch);
+  await guest.waitFor(() => guest.since(gFrom3, 'chat').length > 0, 5000, '채팅 수신');
+  const afterReveal = guest.since(gFrom3, 'chat')[0];
+  expect('★★ 공개 뒤에는 가려지지 않는다', afterReveal.masked, false);
+  expectTrue(
+    '★ 정답 문자열이 그대로 보인다 (이미 공개됐다)',
+    afterReveal.text.includes(answer1),
+    `본 것: "${afterReveal.text}"`,
+  );
+
+  // ── 5. ★ 이모지가 섞여도 구간이 밀리지 않는다
+  log('\n[5] ★ 이모지가 섞여도 가릴 구간이 밀리지 않는다');
+  const q2 = await guest.waitQuestion(2, 15000);
+  const answers2 = await answersForText(q2.text);
+  const gFrom4 = guest.mark();
+  host.chat(`🍎 ${answers2[0]} 🍎`, q2.epoch);
+  await guest.waitFor(() => guest.since(gFrom4, 'chat').length > 0, 5000, '채팅 수신');
+  const emojiSeen = guest.since(gFrom4, 'chat')[0];
+  expectTrue(
+    '★★ 이모지는 남고 정답만 사라진다',
+    emojiSeen.text.startsWith('🍎 ') &&
+      emojiSeen.text.endsWith(' 🍎') &&
+      !emojiSeen.text.includes(answers2[0]),
+    `본 것: "${emojiSeen.text}"`,
+  );
+
+  // ── 6. ★ 경험 기록과 경험률
+  log('\n[6] ★ 경험 기록이 쌓이고 경험률에 반영된다');
+  guest.chat(answers2[0], q2.epoch);
+  await guest.waitFor(
+    () => guest.since(gFrom4, 'question.resolved').length > 0,
+    8000,
+    '2번 판정',
+  );
+  const q3 = await guest.waitQuestion(3, 15000);
+  const answers3 = await answersForText(q3.text);
+  const endFrom = host.mark();
+  guest.chat(answers3[0], q3.epoch);
+  await host.waitFor(() => host.since(endFrom, 'game.result').length > 0, 12000, '게임 종료');
+  await sleep(600);
+
+  const gameId = host.snapshot.game?.gameId;
+  // ★ first_game_id 는 **처음 경험한 게임**만 기록한다.
+  //   ★★ 방장은 [0] 에서 이미 전 문제의 경험자로 만들어 두었으므로 이 게임이 처음이 아니다.
+  //     → ★ 이 게임으로 새로 생긴 기록은 **게스트의 3건**이다. 그것이 정상이다.
+  const exps = await experiencesOfGame(gameId);
+  expect('★★ 이 게임에서 새로 생긴 경험 기록은 미경험자 몫뿐이다', exps.length, 3);
+  expectTrue(
+    '★ 전부 게스트(미경험자)의 기록이다',
+    exps.every((e) => e.account_id === guestId),
+    JSON.stringify(exps.map((e) => e.account_id)),
+  );
+
+  const rateFrom = host.mark();
+  host.socket.emit('game.toLobby', {});
+  await host.waitFor(
+    () => host.since(rateFrom, 'lobby.experienceRates').length > 0 || host.snapshot.experienceRates,
+    8000,
+    '경험률 수신',
+  );
+  const rates = host.snapshot.experienceRates ?? [];
+  const guestRate = rates.find((r) => r.accountId === guestId);
+  expectTrue(
+    '★ 게스트의 경험률이 0이 아니다 (이번 게임이 반영됐다)',
+    (guestRate?.experienced ?? 0) > 0,
+    JSON.stringify(guestRate),
+  );
+
+  host.leave();
+  await sleep(500);
+  guest.leave();
+  await sleep(700);
+  host.disconnect();
+  guest.disconnect();
+  return checkSummary();
+}
+
+
+// -----------------------------------------------------------------------------
+// ★★ result — Phase 4 결과 화면 데이터 (R016)
+//
+//   ★ 화면은 사람이 봐야 하지만, **데이터가 맞는지**는 여기서 단정할 수 있다.
+//     ★ 순위·공동 순위 / 문제별 정답자와 응답 시간 / 사람별 평균 /
+//       ★★ 중단된 문제의 정답을 담지 않는 것 / 다시 하기가 자동 시작하지 않는 것.
+// -----------------------------------------------------------------------------
+async function scenarioResult() {
+  log('시나리오 result — ★★ Phase 4 결과 화면 데이터');
+  await clearExperiences(PREFIX);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('Phase 4 결과 화면 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  const hostId = host.snapshot.me.accountId;
+  const guestId = guest.snapshot.me.accountId;
+
+  await startGame(host, [guest], 3);
+
+  // ── 1. ★ 서로 한 문제씩 맞힌다 (동점을 만든다)
+  log('\n[1] 두 사람이 한 문제씩 맞히고, 마지막 문제는 방장이 넘긴다');
+  const q1 = host.snapshot.question;
+  const a1 = await answersForText(q1.text);
+  let from = host.mark();
+  host.chat(a1[0], q1.epoch);
+  await host.waitFor(() => host.since(from, 'question.resolved').length > 0, 8000, '1번 판정');
+  const r1 = host.since(from, 'question.resolved')[0];
+  expect('★ 1번은 방장이 맞혔다', r1.winnerAccountId, hostId);
+
+  const q2 = await guest.waitQuestion(2, 15000);
+  const a2 = await answersForText(q2.text);
+  from = guest.mark();
+  guest.chat(a2[0], q2.epoch);
+  await guest.waitFor(() => guest.since(from, 'question.resolved').length > 0, 8000, '2번 판정');
+  expect('★ 2번은 게스트가 맞혔다', guest.since(from, 'question.resolved')[0].winnerAccountId, guestId);
+
+  // ★ 마지막 문제는 방장이 넘긴다 (정답은 공개된다)
+  const q3 = await host.waitQuestion(3, 15000);
+  from = host.mark();
+  host.socket.emit('host.forceSkip', { epoch: q3.epoch });
+  await host.waitFor(() => host.since(from, 'game.result').length > 0, 10000, '게임 종료');
+  await sleep(400);
+
+  // ── 2. ★★ 결과 데이터
+  log('\n[2] ★★ 결과 데이터를 단정한다');
+  const res = host.snapshot.result;
+  expect('★ 종료 사유가 정상 완주다', res.endReason, 'completed');
+  expect('★★ 문제별 기록이 3건이다', res.questions.length, 3);
+
+  const log1 = res.questions.find((q) => q.index === 1);
+  expect('★ 1번 사유', log1.reason, 'correct');
+  expect('★ 1번 정답자', log1.winnerAccountId, hostId);
+  expectTrue(
+    '★★ 1번 응답 시간이 남는다 (0 초과 / 30초 이내)',
+    log1.responseMs > 0 && log1.responseMs <= 30_000,
+    `${log1.responseMs}ms`,
+  );
+  expectTrue('★ 1번 정답이 담긴다 (공개된 문제다)', typeof log1.displayAnswer === 'string');
+
+  const log3 = res.questions.find((q) => q.index === 3);
+  expect('★ 3번 사유가 방장 넘김이다', log3.reason, 'host_skip');
+  expect('★ 3번은 정답자가 없다', log3.winnerAccountId, null);
+  expect('★ 3번 응답 시간은 없다', log3.responseMs, null);
+  expectTrue('★ 3번도 정답은 공개됐으므로 담긴다', typeof log3.displayAnswer === 'string');
+
+  // ── 3. ★ 동점 공동 순위 (guide 39절)
+  log('\n[3] ★ 동점은 공동 순위다');
+  const ranks = res.ranking.map((r) => r.rank);
+  expect('★★ 1점씩이므로 둘 다 1위다', ranks.join(','), '1,1');
+  expectTrue('★ 점수도 1점씩이다', res.ranking.every((r) => r.score === 1));
+
+  // ── 4. ★ 사람별 요약
+  log('\n[4] ★ 사람별 요약 (정답 수 / 평균 / 최속)');
+  const hs = res.playerStats.find((s) => s.accountId === hostId);
+  expect('★ 방장 정답 수', hs.correct, 1);
+  expect('★★ 정답이 1건이면 평균 = 그 값이다', hs.avgResponseMs, log1.responseMs);
+  expect('★ 최속도 같은 값이다', hs.fastestMs, log1.responseMs);
+  const gs = res.playerStats.find((s) => s.accountId === guestId);
+  expect('★ 게스트 정답 수', gs.correct, 1);
+
+  // ── 5. ★ 재접속하면 결과가 복구된다
+  log('\n[5] ★ 결과 화면에서 재접속해도 결과가 복구된다');
+  guest.socket.close();
+  await sleep(500);
+  const back = new Bot(guest.name);
+  back.cookie = guest.cookie;
+  await back.connect();
+  await back.waitFor(() => back.snapshot !== null, 6000, '재접속');
+  expect('★ 결과 화면으로 복귀한다', back.snapshot.room.state, 'GAME_RESULT');
+  expect('★★ 문제별 기록도 함께 복구된다', back.snapshot.result.questions.length, 3);
+  expectTrue(
+    '★ 사람별 요약도 복구된다',
+    back.snapshot.result.playerStats.length >= 2,
+    JSON.stringify(back.snapshot.result.playerStats),
+  );
+
+  // ── 6. ★★★ 다시 하기는 자동으로 시작하지 않는다 (Q-31/Q-32)
+  log('\n[6] ★★★ 다시 하기는 자동으로 시작하지 않는다');
+  const beforeAvailable = host.snapshot.room.availableQuestionCount;
+  from = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 6000, '로비 복귀');
+  await sleep(3000);
+  expect('★★★ 3초가 지나도 LOBBY 다 (자동 시작 없음)', host.snapshot.room.state, 'LOBBY');
+  expect('★ 설정이 복원된다 (문제 수 3)', host.snapshot.room.settings.questionCount, 3);
+  expect('★ 설정 잠금이 풀린다', host.snapshot.room.settingsLocked, false);
+  expect('★ 결과 화면 데이터는 지워진다', host.snapshot.result, null);
+  expectTrue(
+    '★★ 경험 기록이 출제 가능 수에 반영된다 (3문제를 경험했다)',
+    host.snapshot.room.availableQuestionCount <= beforeAvailable,
+    `${beforeAvailable} → ${host.snapshot.room.availableQuestionCount}`,
+  );
+
+  // ── 7. ★★ 강제 종료한 문제의 정답은 담지 않는다
+  log('\n[7] ★★ 강제 종료하면 그 문제의 정답을 담지 않는다');
+  from = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(from, 'game.started').length > 0, 8000, '두 번째 게임 시작');
+  await host.waitQuestion(1, 12000);
+  from = host.mark();
+  host.socket.emit('host.forceEnd', {});
+  await host.waitFor(() => host.since(from, 'game.result').length > 0, 8000, '강제 종료');
+  await sleep(300);
+  const res2 = host.snapshot.result;
+  expect('★ 종료 사유가 강제 종료다', res2.endReason, 'force_ended');
+  expect('★ 중단된 문제도 기록에는 남는다', res2.questions.length, 1);
+  expect('★★★ 중단된 문제의 정답은 담기지 않는다', res2.questions[0].displayAnswer, null);
+  expect('★ 사유가 중단이다', res2.questions[0].reason, 'aborted');
+  expect('★ 마지막 문제 정답 공개도 없다 (Q-17 은 공개된 경우만)', res2.lastQuestionReveal, null);
+
+  host.socket.emit('game.toLobby', {});
+  await sleep(400);
+  back.leave();
+  await sleep(400);
+  host.leave();
+  await sleep(700);
+  host.disconnect();
+  guest.disconnect();
+  back.disconnect();
+  return checkSummary();
+}
+
 // -----------------------------------------------------------------------------
 const SCENARIOS = {
   join: scenarioJoin,
@@ -3133,6 +3548,10 @@ const SCENARIOS = {
   abandon: scenarioAbandon,
   pausehost: scenarioPauseHost,
   pausehint: scenarioPauseHint,
+  // ★★ Phase 6 (R016)
+  mask: scenarioMask,
+  // ★★ Phase 4 (R016)
+  result: scenarioResult,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };
