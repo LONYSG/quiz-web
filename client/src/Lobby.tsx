@@ -16,6 +16,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import { formatExperienceRate } from '@quiz/shared';
+import ChatText from './ChatText.js';
 import Countdown from './Countdown.js';
 import GameSettings from './GameSettings.js';
 import Question from './Question.js';
@@ -237,7 +238,10 @@ export default function Lobby({
   };
 
   return (
-    <div className="lobby">
+    /* ★★ 게임 중에는 레이아웃이 달라진다 (Phase 7 일부 / R016).
+       ★ 근거: 건우 요구가 "스크롤 없이 한 화면" 이고, 게임 화면이 가장 길다.
+         ★ 넓은 화면에서 **문제 열 / 채팅 열**로 나누면 세로가 절반 가까이 줄어든다. */
+    <div className={inGame ? 'lobby in-game' : 'lobby'}>
       <header className="lobby-head">
         <div>
           <h1>{snapshot.room.title}</h1>
@@ -293,6 +297,14 @@ export default function Lobby({
           </div>
         </section>
       )}
+
+      {/* ★★ 여기서부터 2열이다 (넓은 화면에서만. 좁으면 그대로 한 열).
+          ★ 왼쪽 = 로비 카드 / 문제·정답·스킵·방장·점수
+          ★ 오른쪽 = 채팅·입력창·단축키
+          ★★ 채팅 입력창은 **답안 입력창**이므로 오른쪽 열에서도 항상 보여야 한다.
+          ★ 로비에서는 왼쪽 열이 다시 2열로 나뉜다 (CSS). 근거는 styles.css 에 있다. */}
+      <div className="game-grid">
+        <div className="col-main">
 
       {/* ★ 초대 링크·참가자·설정은 로비 계열 상태에서만 보여준다.
           ★ 근거: 게임 중 화면 위쪽은 문제 지문과 남은 시간이 차지해야 한다 (D-032).
@@ -425,7 +437,7 @@ export default function Lobby({
         <Paused socket={socket} paused={snapshot.paused} serverNow={serverNow} />
       )}
 
-      {/* ── ★ 결과 화면 (TEMP-P4-01: Phase 4 에서 다시 만든다) */}
+      {/* ── ★★ 결과 화면 (Phase 4 / R016) */}
       {snapshot.result && (
         <GameResult
           socket={socket}
@@ -443,6 +455,9 @@ export default function Lobby({
           <p className="big dim">문제를 준비하고 있습니다…</p>
         </section>
       )}
+
+        </div>
+        <div className="col-side">
 
       <section className="card chat-card">
         <h2>채팅</h2>
@@ -465,7 +480,11 @@ export default function Lobby({
                 <span className="nick" style={{ color: `var(--p${m.colorIndex})` }}>
                   {m.nickname}
                 </span>
-                <span className="chat-text">{m.text}</span>
+                <ChatText
+                  text={m.text}
+                  mine={m.accountId === snapshot.me.accountId}
+                  masked={m.masked}
+                />
               </p>
             ),
           )}
@@ -526,19 +545,35 @@ export default function Lobby({
         </p>
       </section>
 
-      {/* ★ 라이선스 의무 (Q-41 / DATA_LICENSE.md).
-          방 안 화면에도 출처가 보여야 한다. 게임 중에 보게 되는 화면이 여기다. */}
-      <section className="card">
-        <h2>문제 출처</h2>
-        <p className="note">
-          문제 데이터의 일부는{' '}
+        </div>
+      </div>
+
+      {/* ★ 라이선스 의무 (Q-41 / DATA_LICENSE.md). 방 안 화면에도 출처가 보여야 한다.
+          ★★ 게임 중에는 **한 줄로 접는다** (R016 판단).
+            ★ 근거: 고지 의무는 "방 안 화면에서 확인할 수 있을 것" 이고,
+              로비·결과 화면에서는 카드 전체가 그대로 보인다. 게임 중에도 한 줄 고지는 남는다.
+            ★ 30초 승부 중에 세 줄짜리 라이선스 문단이 화면을 차지할 이유가 없다. */}
+      {inGame ? (
+        <p className="note dim license-line">
+          문제 출처:{' '}
           <a href="https://opentdb.com/" target="_blank" rel="noreferrer noopener">
             Open Trivia Database
           </a>{' '}
-          (CC BY-SA 4.0) 를 한국어 주관식으로 번역·가공한 것입니다. 가공된 데이터도 같은
-          라이선스로 공개됩니다.
+          (CC BY-SA 4.0) 번역·가공
         </p>
-      </section>
+      ) : (
+        <section className="card">
+          <h2>문제 출처</h2>
+          <p className="note">
+            문제 데이터의 일부는{' '}
+            <a href="https://opentdb.com/" target="_blank" rel="noreferrer noopener">
+              Open Trivia Database
+            </a>{' '}
+            (CC BY-SA 4.0) 를 한국어 주관식으로 번역·가공한 것입니다. 가공된 데이터도 같은
+            라이선스로 공개됩니다.
+          </p>
+        </section>
+      )}
     </div>
   );
 }

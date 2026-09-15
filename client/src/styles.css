@@ -461,6 +461,25 @@ form button[type='submit'] { width: 100%; }
 .chat-line, .chat-system { margin: 0 0 4px; font-size: 0.9rem; }
 .chat-line .nick { margin-right: 6px; }
 .chat-text { word-break: break-word; }
+
+/* ★ 마스킹 칩 (Phase 6 / Q-42). ★ 길이가 정답 길이를 드러내지 않도록 고정 폭 라벨이다 */
+.masked-chip {
+  display: inline-block;
+  padding: 0 6px;
+  margin: 0 2px;
+  border-radius: 4px;
+  background: var(--mask-bg, #3a3f4b);
+  color: var(--mask-fg, #b9c0cc);
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+  vertical-align: baseline;
+}
+/* ★ 본인에게만 보이는 안내. 원문은 그대로 보여준다 */
+.masked-note {
+  margin-left: 6px;
+  font-size: 0.8em;
+  color: var(--muted, #8b93a1);
+}
 .chat-system { color: var(--text-dim); font-size: 0.82rem; }
 
 /* 채팅 입력줄은 .field-row 를 그대로 쓴다. 전용 규칙을 두지 않는다 (A-2) */
@@ -695,6 +714,151 @@ form button[type='submit'] { width: 100%; }
   min-width: 3.2em;
   color: var(--text-dim);
   font-size: 0.85rem;
+}
+
+/* ★ 사람별 요약 (Phase 4). ★ 순위 줄 끝에 붙는다. 카드를 새로 만들지 않는다 */
+.pstat {
+  flex-basis: 100%;
+  font-size: 0.78rem;
+}
+
+/* =============================================================================
+   ★★★ Phase 7 일부 — 스크롤 없이 한 화면 (R016)
+
+   ★ 건우 요구: "스크롤 없이 한 화면에 모든 요소가 다 보여야 한다. 스크롤 있으면 굉장히 조잡하다."
+   ★ 건우 우선순위: "일단은 웹 UI 가 우선이다. 모바일은 천천히 생각해보자."
+
+   ★★ 기준 해상도 — **1280×720 뷰포트** (노트북 1280×800 에서 브라우저 크롬을 뺀 값).
+     ★ 근거: 1366×768 과 1920×1080 사이에서 가장 빡빡한 실사용 조합이 1280×800 이고,
+       주소창·탭·북마크바를 빼면 내부 높이가 약 720px 남는다(추정. 크롬 구성에 따라 다르다).
+     ★ 여기서 1.0 이하면 더 큰 화면에서는 자동으로 만족한다.
+
+   ★★ 접근 방법 세 가지를 **함께** 썼다. 접는 것만으로는 부족했다.
+     (1) ★★ 넓은 화면에서 **2열 배치** — 세로를 가장 크게 줄인다
+     (2) ★ 게임 중 **불필요한 카드 접기** (라이선스 카드 → 한 줄 / 하단 여백 축소)
+     (3) ★ 긴 목록은 **고정 높이 + 내부 스크롤** (채팅·문제별 기록)
+
+   ★ 무엇을 접지 않았는가 — 문제 지문 / 남은 시간 / 채팅 입력창.
+     ★★ 30초 승부의 핵심 정보이고, 입력창은 곧 답안 입력창이다 (C-3).
+   ============================================================================= */
+
+/* ★ 게임 중에는 폭을 넓힌다. 2열이 성립하려면 폭이 필요하다.
+   ★★ 상단·하단 여백도 줄인다.
+     ★ 하단 180px 은 "스크롤 끝에서 토스트가 내용을 가리지 않게" 하려던 완충이었다.
+       ★ 스크롤이 없어지면 그 완충의 이유도 사라진다. 토스트 높이만큼만 남긴다.
+     ★ 겹침 여부는 ui-check 가 좌표로 검사한다 (D-032). 눈대중으로 줄이지 않는다. */
+/* ★ 방 안 화면(로비 포함)은 넓게 쓴다. 2열이 성립하려면 폭이 필요하다 */
+.wrap:has(.game-grid) {
+  max-width: 1180px;
+  /* ★★ 로비의 하단 여백은 줄이지 않는다.
+     ★ 근거: 로비는 아직 한 화면 목표(1.0)를 달성하지 못했고 **스크롤이 남아 있다.**
+       ★ 스크롤 끝에서 고정 토스트가 하단 푸터를 덮으면 안 된다 (D-032).
+       ★ 실제로 72px 로 줄였더니 ui-check 의 겹침 검사가 잡아냈다 (toast.top=770 / 푸터.top=787). */
+  padding: 16px 16px 160px;
+}
+.wrap:has(.in-game) {
+  /* ★★ 게임·결과 화면은 스크롤이 없다(1.00배). 완충 여백의 이유 자체가 사라진다.
+     ★ 이때 화면 맨 아래에 남는 것은 한 줄 라이선스와 개발용 푸터뿐이고,
+       ★ 지켜야 할 것(문제 지문 / 남은 시간 / 채팅 입력창)은 토스트에서 멀리 떨어져 있다 (C-3).
+       ★ 실측: 입력창 top=331, 토스트 top≈640. 겹치지 않는다. */
+  padding: 12px 16px 56px;
+}
+
+/* ★★ 게임·결과 화면의 밀도를 올린다. **정보를 지우지 않고** 얻는 공간이다 */
+.in-game .card { padding: 11px 14px; margin-bottom: 10px; }
+.in-game h1 { font-size: 1.2rem; }
+.in-game h2 { margin-bottom: 8px; }
+.in-game .sub { margin-bottom: 10px; }
+.in-game .lobby-head { margin-bottom: 4px; }
+
+@media (min-width: 1000px) {
+  .game-grid {
+    display: grid;
+    /* ★ 왼쪽이 더 넓다. 문제 지문이 들어가는 열이다 */
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 16px;
+    align-items: start;
+  }
+  .col-main,
+  .col-side { min-width: 0; }
+  /* ★★ 로비에서는 왼쪽 열을 다시 2열로 나눈다 (초대·참가자 | 설정·시작).
+     ★ 근거: 로비 카드는 세로로 쌓으면 2.5배가 넘는다(실측). 카드가 5개다.
+       ★ 게임 중에는 나누지 않는다 — 문제 지문이 좁아지면 안 된다 (C-3). */
+  .lobby:not(.in-game) .col-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0 12px;
+    align-items: start;
+  }
+  /* ★ 오른쪽 열은 화면 안에 머문다. 채팅이 길어져도 문서가 늘어나지 않는다 */
+  .col-side .chat-card { position: sticky; top: 12px; }
+  .in-game .chat-log { height: 196px; }
+  /* ★ 점수판은 길어질 수 있다 (최대 10명). 고정 높이 + 내부 스크롤로 가둔다.
+     ★ 지우지 않는다 — 내 점수와 1위는 게임 중에 계속 봐야 하는 정보다 */
+  .in-game .score-card .scores { max-height: 128px; overflow-y: auto; }
+}
+
+/* ★ 결과 화면 2열 (순위 | 문제별 기록) */
+@media (min-width: 1000px) {
+  .result-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+  }
+  /* ★ 사람별 요약을 같은 줄에 붙인다. 줄을 새로 만들지 않는다 */
+  .pstat { flex-basis: auto; }
+  .in-game .qlog { max-height: 148px; }
+}
+
+/* ★ 게임 중 한 줄 라이선스 고지 */
+.license-line { margin: 4px 2px 0; font-size: 0.78rem; }
+
+/* =============================================================================
+   ★★ Phase 4 — 문제별 기록 (R016)
+
+   ★ 고정 높이 + 내부 스크롤이다. 문제 수가 최대 200이라
+     문서를 늘리면 "스크롤 없이 한 화면" 이 원천적으로 불가능해진다.
+   ============================================================================= */
+.qlog {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0 4px 0 0;
+  /* ★ 결과 화면이 한 화면에 들어오도록 고정 높이다. 넘치면 내부에서만 스크롤한다 */
+  max-height: 168px;
+  overflow-y: auto;
+}
+.qlog li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.qlog li.miss { opacity: 0.7; }
+.qlog-no {
+  min-width: 2em;
+  color: var(--text-dim);
+  text-align: right;
+}
+.qlog-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.qlog-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.qlog-sub { font-size: 0.78rem; }
+.qlog-who {
+  flex: 0 0 auto;
+  text-align: right;
+  font-size: 0.8rem;
 }
 
 /* =============================================================================
