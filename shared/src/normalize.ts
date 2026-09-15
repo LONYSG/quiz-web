@@ -95,17 +95,26 @@ export function normalizeAnswer(input: unknown): string {
  *
  * @returns rawNfc  NFC 적용된 원문
  * @returns norm    정규화 결과
- * @returns map     norm[i] 가 rawNfc 의 어느 인덱스에서 왔는지. 길이는 norm.length + 1
- *                  (마지막 항목은 끝 보초로 rawNfc.length)
+ * @returns map     norm[i] 가 rawNfc 의 어느 인덱스에서 왔는지 (**시작** 인덱스).
+ *                  길이는 norm.length + 1 (마지막 항목은 끝 보초로 rawNfc.length)
+ * @returns mapEnd  norm[i] 를 만든 원문 문자의 **끝** 인덱스. 길이는 norm.length
+ *
+ * ★★ map 하나만으로는 구간을 되돌릴 수 없다 (R016 에서 마스킹을 구현하며 드러났다).
+ *   ★ `map[e]` 는 **다음 문자의 시작**이라, 그 사이에 공백이 있으면 공백까지 먹는다.
+ *     예: "고 무 줄 아님?" 에서 "고무줄" 을 찾아 map 으로 되돌리면 "고 무 줄 " 이 되어
+ *     ★ 뒤따르는 **공백 하나까지 마스킹**된다. 그러면 "[가려짐]아님?" 이 되어 문장이 붙는다.
+ *   ★ 그래서 매칭 구간의 끝은 **마지막으로 매칭된 문자의 끝**(mapEnd)으로 잡아야 한다.
  */
 export function buildNormalizedIndex(input: string): {
   rawNfc: string;
   norm: string;
   map: number[];
+  mapEnd: number[];
 } {
   const rawNfc = input.normalize('NFC');
   let norm = '';
   const map: number[] = [];
+  const mapEnd: number[] = [];
 
   // rawNfc를 코드 유닛 인덱스 기준으로 순회한다.
   // 코드 포인트 단위로 읽되 원문 인덱스는 코드 유닛으로 기록해야 slice가 정확하다.
@@ -134,11 +143,12 @@ export function buildNormalizedIndex(input: string): {
     norm += piece;
     for (let k = 0; k < piece.length; k += 1) {
       map.push(i);
+      mapEnd.push(i + width);
     }
 
     i += width;
   }
 
   map.push(rawNfc.length); // 끝 보초
-  return { rawNfc, norm, map };
+  return { rawNfc, norm, map, mapEnd };
 }

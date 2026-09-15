@@ -168,13 +168,24 @@ export default function Question({
           </p>
         )}
 
-        {/* ── 경험자 목록 (전원 공개. guide 28절은 폐기되었다 — D-011) */}
-        {question.experiencedNicknames.length > 0 && (
+        {/* ── 경험자 목록 (전원 공개. guide 28절은 폐기되었다 — D-011)
+            ★ 닉네임은 플레이어 색으로 칠한다. 이 게임의 사람 표기 규칙이다 (guide 47절) */}
+        {question.experiencedPlayers.length > 0 && (
           <p className="q-experienced note">
-            이미 풀어본 사람: {question.experiencedNicknames.join(', ')}
+            이 퀴즈를 풀어본 사람{' '}
+            {question.experiencedPlayers.map((p, i) => (
+              <span key={p.accountId}>
+                {i > 0 && ', '}
+                <span className="nick" style={{ color: `var(--p${p.colorIndex})` }}>
+                  {p.nickname}
+                </span>
+              </span>
+            ))}
             <br />
             <span className="dim">
-              이 사람들은 정답 판정에서 제외됩니다. 점수를 얻을 수 없습니다.
+              이 사람들은 정답 판정에서 제외됩니다. 점수를 얻을 수 없고,{' '}
+              {/* ★ Phase 6 — 이제 실제로 가려진다 */}
+              채팅에 정답을 쓰면 다른 사람에게는 가려집니다.
             </span>
           </p>
         )}

@@ -1,8 +1,7 @@
 // =============================================================================
-// 마스킹 테스트 — ★ Phase 6에서 구현할 예정이므로 전부 skip 상태다.
+// 마스킹 테스트 — ★★ R016 (Phase 6) 에서 skip 을 풀고 전부 통과시켰다.
 //
 // 원본: R002 6-5의 테스트 케이스 표 16건.
-// 구현을 시작할 때 describe.skip 을 describe 로 바꾸고 하나씩 통과시킨다.
 //
 // 전제: 현재 문제 진행 중(QUESTION_ACTIVE), 발신자는 이 문제를 이미 경험한 플레이어.
 //       마스크 토큰은 MASK_SENTINEL 이다 (Q-42).
@@ -18,7 +17,7 @@ import { normalizeAnswer } from './normalize.js';
 
 const M = MASK_SENTINEL;
 
-describe.skip('maskAnswers — R002 6-5 테스트 케이스 16건 (Phase 6)', () => {
+describe('maskAnswers — R002 6-5 테스트 케이스 16건 (★ R016 에서 구현)', () => {
   const norm = (arr: string[]) => arr.map(normalizeAnswer);
 
   it('#1 정답 뒤에 조사가 붙은 경우', () => {
@@ -91,6 +90,34 @@ describe.skip('maskAnswers — R002 6-5 테스트 케이스 16건 (Phase 6)', ()
     expect(maskAnswers('달', norm(['달']))).toEqual({ text: M, masked: true });
   });
 
+  // ── ★ R016 추가 — Phase 0 에서 실측으로 잡았던 인덱스 결함의 회귀 방지
+
+  it('★ 이모지(서로게이트 페어)가 앞에 있어도 구간이 밀리지 않는다', () => {
+    // ★ Phase 0 실측: "🍎 apple" 에서 apple 을 찾으면 "pple" 이 나왔다.
+    //   ★ map 을 코드 포인트가 아니라 **코드 유닛** 단위로 세어 고쳤다.
+    expect(maskAnswers('🍎 apple 맞지', norm(['apple']))).toEqual({
+      text: `🍎 ${M} 맞지`,
+      masked: true,
+    });
+  });
+
+  it('★★ 마스크 길이가 정답 길이를 드러내지 않는다 (Q-35)', () => {
+    const short = maskAnswers('고무줄', norm(['고무줄']));
+    const long = maskAnswers('아리스토텔레스철학', norm(['아리스토텔레스철학']));
+    expect(short.text).toBe(long.text);
+    expect([...short.text].length).toBe(1);
+  });
+
+  it('★ 매칭이 없으면 원문을 그대로 돌려준다 (NFC 정규화만 적용)', () => {
+    const r = maskAnswers('그냥 잡담', norm(['고무줄']));
+    expect(r).toEqual({ text: '그냥 잡담', masked: false });
+  });
+
+  it('★ 빈 메시지·빈 정답 목록에서 터지지 않는다', () => {
+    expect(maskAnswers('   ', norm(['고무줄']))).toEqual({ text: '   ', masked: false });
+    expect(maskAnswers('고무줄', [])).toEqual({ text: '고무줄', masked: false });
+  });
+
   // #14, #15, #16 은 maskAnswers 단독으로 검증할 수 없다.
   // 마스킹 여부를 결정하는 조건(경험자인가 / QUESTION_ACTIVE인가 / 발신자 본인인가)은
   // 서버의 chat.send 파이프라인에 있다. 따라서 서버 통합 테스트로 검증한다.
@@ -100,11 +127,7 @@ describe.skip('maskAnswers — R002 6-5 테스트 케이스 16건 (Phase 6)', ()
   //   #16 발신자 본인 화면에는 원문 + "가려짐" 표시
 });
 
-describe('maskAnswers — 미구현 상태 확인', () => {
-  it('Phase 6 이전에는 호출 시 명확히 실패한다', () => {
-    expect(() => maskAnswers('고무줄', ['고무줄'])).toThrow(/Phase 6/);
-  });
-
+describe('maskAnswers — 센티널 규약', () => {
   it('센티널은 사용자가 입력할 수 없는 사설 사용 영역 문자다 (Q-42)', () => {
     const cp = MASK_SENTINEL.codePointAt(0)!;
     expect(cp).toBeGreaterThanOrEqual(0xe000);

@@ -116,7 +116,8 @@ export interface QuestionView {
   startedAt: number;
   endsAt: number;
   /** ★ 경험자 닉네임. 전원 공개다 (D-011: guide 28절 폐기) */
-  experiencedNicknames: string[];
+  /** ★ 경험자 목록. 닉네임과 색을 함께 보낸다 (R016) */
+  experiencedPlayers: { accountId: string; nickname: string; colorIndex: number }[];
   /** ★ 이 스냅샷을 받는 사람이 경험자인가 */
   selfExperienced: boolean;
   /**
@@ -327,10 +328,12 @@ function buildQuestionView(
   const revealed =
     q.hintPushed || remain <= RULES.HINT_REVEAL_AT_MS || room.state === 'QUESTION_RESOLVED';
 
-  const nicknames: string[] = [];
+  const experienced: { accountId: string; nickname: string; colorIndex: number }[] = [];
   for (const id of q.experiencedAccountIds) {
     const p = room.players.get(id);
-    if (p) nicknames.push(p.nickname);
+    if (p) {
+      experienced.push({ accountId: p.accountId, nickname: p.nickname, colorIndex: p.colorIndex });
+    }
   }
 
   return {
@@ -341,7 +344,7 @@ function buildQuestionView(
     categoryName: q.categoryName,
     startedAt: q.startedAt,
     endsAt: q.endsAt,
-    experiencedNicknames: nicknames,
+    experiencedPlayers: experienced,
     selfExperienced: q.experiencedAccountIds.has(viewerAccountId),
     hint: revealed ? q.hint : null,
     hintRevealed: revealed,

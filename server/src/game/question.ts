@@ -161,12 +161,22 @@ export function beginQuestion(room: Room): boolean {
   return true;
 }
 
-/** 경험자 닉네임 목록. ★ guide 28절 폐기 후 전원 공개다 (D-011) */
-function experiencedNicknames(room: Room, current: CurrentQuestion): string[] {
-  const out: string[] = [];
+/**
+ * 경험자 목록. ★ guide 28절 폐기 후 **전원 공개**다 (D-011).
+ *
+ * ★★ R016 — 닉네임만 보내던 것을 **색까지** 보낸다 (Q-25 화면 규칙).
+ *   ★ 근거: 이 게임은 닉네임 자체를 플레이어 색으로 칠한다(guide 47절). 참가자 목록·점수판·채팅이 모두 그렇다.
+ *     ★ 경험자 목록만 검은 글씨면 "누구인가" 를 다시 찾아 읽어야 한다.
+ *   ★ 닉네임으로 색을 역추적하지 않는다 — 닉네임이 겹칠 수 있고, 그러면 엉뚱한 색이 붙는다.
+ */
+function experiencedPlayers(
+  room: Room,
+  current: CurrentQuestion,
+): { accountId: string; nickname: string; colorIndex: number }[] {
+  const out: { accountId: string; nickname: string; colorIndex: number }[] = [];
   for (const id of current.experiencedAccountIds) {
     const p = room.players.get(id);
-    if (p) out.push(p.nickname);
+    if (p) out.push({ accountId: p.accountId, nickname: p.nickname, colorIndex: p.colorIndex });
   }
   return out;
 }
@@ -180,7 +190,7 @@ function broadcastQuestionStarted(room: Room, current: CurrentQuestion): void {
     categoryName: current.categoryName,
     startedAt: current.startedAt,
     endsAt: current.endsAt,
-    experiencedNicknames: experiencedNicknames(room, current),
+    experiencedPlayers: experiencedPlayers(room, current),
     selfExperienced: false,
     state: room.state,
   };
@@ -195,7 +205,7 @@ export function broadcastExperiencedUpdated(room: Room): void {
   if (!current) return;
   const base = {
     epoch: current.epoch,
-    experiencedNicknames: experiencedNicknames(room, current),
+    experiencedPlayers: experiencedPlayers(room, current),
     selfExperienced: false,
   };
   emitRoomPerPlayer(room, 'question.experiencedUpdated', base, (player) =>
@@ -281,6 +291,20 @@ export function resolveQuestionSync(
 
   game.endedQuestionCount += 1;
 
+  // ── ★ 결과 화면용 기록 (Phase 4 / R016). 메모리 연산이다
+  game.questionLog.push({
+    index: current.index,
+    text: current.text,
+    categoryName: current.categoryName,
+    // ★ 여기서는 정답이 공개된다. 그래서 담아도 된다
+    displayAnswer: current.displayAnswer,
+    reason,
+    winnerAccountId,
+    // ★ 응답 시간은 "문제 시작 → 정답 확정" 이다. answer_events.response_ms 와 같은 기준이다
+    responseMs: reason === 'correct' ? now - current.startedAt : null,
+    experiencedCount: current.experiencedAccountIds.size,
+  });
+
   // ── 상태 전이. ★ 마지막 문제는 5초를 기다리지 않는다 (Q-17 / T10)
   const nextAt = isLast ? null : now + RULES.RESOLVED_WAIT_MS;
   game.resolution = {
@@ -356,6 +380,20 @@ export function abortQuestionSync(room: Room): void {
   current.resolved = true;
   game.endedQuestionCount += 1;
 
+  // ★★ 중단된 문제도 결과 화면에 남긴다. 단 **정답은 담지 않는다.**
+  //   ★ 근거: 아무도 정답을 보지 못했고 경험 기록도 남지 않았다.
+  //     ★ 여기서 정답을 보여주면 "경험 기록 없이 정답만 아는" 상태가 만들어진다.
+  game.questionLog.push({
+    index: current.index,
+    text: current.text,
+    categoryName: current.categoryName,
+    displayAnswer: null,
+    reason: 'aborted',
+    winnerAccountId: null,
+    responseMs: null,
+    experiencedCount: current.experiencedAccountIds.size,
+  });
+
   if (game.gameId) {
     fireAndForget(
       'game_questions 중단',
@@ -412,7 +450,7 @@ export function checkQuestionTimeout(room: Room, now: number): void {
  * 게임을 끝낸다 (T10 / T11 / T16 …).
  *
  * ★ 결과 데이터를 만들어 room.result 에 넣고 GAME_RESULT 로 전이한다.
- * ★★ Phase 4 가 결과 화면을 만든다. Phase 3 는 데이터와 이벤트까지다 (TEMP-P4-01).
+ * ★★ R016 (Phase 4) — 문제별 기록과 사람별 요약을 함께 담는다.
  */
 export function finishGame(
   room: Room,
@@ -440,6 +478,19 @@ export function finishGame(
   const revealed =
     current && current.resolved && game.resolution && game.resolution.reason !== 'aborted';
 
+  // ★ 사람별 요약 (Phase 4). ★ 문제별 기록에서 계산한다. DB 를 읽지 않는다
+  const statsById = new Map<string, { correct: number; total: number; fastest: number | null }>();
+  for (const entry of game.questionLog) {
+    if (entry.reason !== 'correct' || !entry.winnerAccountId) continue;
+    const s = statsById.get(entry.winnerAccountId) ?? { correct: 0, total: 0, fastest: null };
+    s.correct += 1;
+    if (entry.responseMs !== null) {
+      s.total += entry.responseMs;
+      s.fastest = s.fastest === null ? entry.responseMs : Math.min(s.fastest, entry.responseMs);
+    }
+    statsById.set(entry.winnerAccountId, s);
+  }
+
   const result: GameResultData = {
     gameId: game.gameId,
     endReason,
@@ -460,6 +511,16 @@ export function finishGame(
           winnerAccountId: game.resolution?.winnerAccountId ?? null,
         }
       : null,
+    questions: [...game.questionLog],
+    playerStats: [...room.players.values()].map((p) => {
+      const s = statsById.get(p.accountId);
+      return {
+        accountId: p.accountId,
+        correct: s?.correct ?? 0,
+        avgResponseMs: s && s.correct > 0 ? Math.round(s.total / s.correct) : null,
+        fastestMs: s?.fastest ?? null,
+      };
+    }),
     abortedNote,
     endedQuestionCount: game.endedQuestionCount,
     totalQuestions: game.totalQuestions,

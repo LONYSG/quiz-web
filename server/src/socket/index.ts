@@ -16,7 +16,7 @@
 
 import { randomUUID } from 'node:crypto';
 import type { Server, Socket } from 'socket.io';
-import { RULES, validateRoomSettings } from '@quiz/shared';
+import { maskAnswers, RULES, validateRoomSettings } from '@quiz/shared';
 import { closeRoom, findRoom, insertRoom } from '../db/rooms.js';
 import { insertMidgamePlayer } from '../db/gameQuestions.js';
 import { loadExperienced } from '../db/questionPool.js';
@@ -41,6 +41,7 @@ import {
   bindIo,
   disconnectSocket,
   emitRoom,
+  emitRoomPerPlayer,
   emitToSocket,
   ioRoomName,
 } from '../rooms/emit.js';
@@ -58,6 +59,7 @@ import {
   unregisterRoom,
 } from '../rooms/registry.js';
 import { buildSnapshot, toPlayerView } from '../rooms/snapshot.js';
+import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
 import {
   on,
@@ -69,6 +71,28 @@ import {
 } from './guard.js';
 
 const BOOTED_AT = Date.now();
+
+/**
+ * ★★★ 브로드캐스트용 마스킹 (Phase 6 / Q-35 / Q-42 / Q-43).
+ *
+ * ★★ **출력 변환이다. 입력 처리가 아니다.**
+ *   ★ 정답 판정(game/answer.ts)은 이 함수를 부르지 않고, 이 함수는 판정 결과를 바꾸지 않는다.
+ *     ★ 두 경로가 만나는 유일한 지점은 "같은 원문을 읽는다" 는 것뿐이다.
+ *   ★ 그래서 이 함수가 틀려도 잃는 것은 **가려짐 여부**뿐이고, 승패는 영향을 받지 않는다.
+ *
+ * @returns 가릴 것이 있으면 치환된 문자열, 없으면 null
+ */
+function maskForBroadcast(room: Room, senderAccountId: string, rawNfc: string): string | null {
+  // ★ (1) 정답이 아직 공개되지 않은 문제 진행 중일 때만
+  if (room.state !== 'QUESTION_ACTIVE') return null;
+  const q = room.currentQuestion;
+  if (!q || q.resolved) return null;
+  // ★ (2) 발신자가 이 문제의 경험자일 때만. ★★ 미경험자의 메시지는 절대 건드리지 않는다
+  if (!q.experiencedAccountIds.has(senderAccountId)) return null;
+  // ★ (3) 실제로 정답이 들어 있을 때만
+  const result = maskAnswers(rawNfc, [...q.answersNorm]);
+  return result.masked ? result.text : null;
+}
 
 /**
  * 계정별 현재 소켓. Q-06(계정당 활성 연결 1개)을 강제한다.
@@ -338,8 +362,23 @@ function registerRoomHandlers(socket: Socket): void {
         receivedAt: now,
       });
 
-      // ── 단계 3. 브로드캐스트.
-      //   ★ 마스킹은 Phase 6 이다. 지금은 전원 동일 페이로드다.
+      // ── 단계 3. ★★★ 마스킹 (Phase 6 / Q-35).
+      //
+      //   ★★★ **이 지점이 중요하다.** 마스킹은 단계 2(판정)가 **끝난 뒤**에 실행된다.
+      //     ★ 판정의 입력은 클라이언트가 보낸 원문(rawNfc)이고,
+      //       마스킹은 그 원문을 **브로드캐스트용으로 변환**할 뿐이다.
+      //     ★★ 즉 마스킹이 무엇을 하든 판정 결과(outcome)는 이미 확정되어 있다.
+      //       ★ 마스킹 판정이 틀려도 정답 판정은 절대 영향을 받지 않는다 (R003 3-3 / D-073).
+      //   ★★ 순서를 바꾸지 말 것. 마스킹을 위로 올리면 그 분리가 깨진다.
+      //
+      //   조건 세 가지를 모두 만족할 때만 가린다.
+      //     (1) 지금이 QUESTION_ACTIVE 이고 아직 정답이 공개되지 않았다
+      //         ★ 공개된 뒤에는 가릴 이유가 없다 (테스트 케이스 #15)
+      //     (2) 발신자가 **이 문제의 경험자**다 (미경험자는 절대 가리지 않는다. #14)
+      //     (3) 메시지에 정답이 실제로 들어 있다
+      //   ★ 동기 코드다. 정답 집합은 이미 메모리에 있으므로 await 가 필요 없다.
+      const masked = maskForBroadcast(room, player.accountId, rawNfc);
+
       const entry = {
         id: randomUUID(),
         seq,
@@ -347,22 +386,34 @@ function registerRoomHandlers(socket: Socket): void {
         nickname: player.nickname,
         colorIndex: player.colorIndex,
         rawNfc,
-        maskedText: null,
+        maskedText: masked,
         ts: now,
         system: false,
       };
       pushChat(room, entry);
-      emitRoom(room, 'chat.message', {
+
+      // ★★ 발신자 본인에게는 **원문**을 보낸다 (테스트 케이스 #16).
+      //   ★ 근거: 자기가 무엇을 썼는지 모르면 대화가 불가능하다.
+      //     ★ masked=true 는 그대로 실어 "남에게는 가려져서 나갔다" 를 알린다.
+      //   ★ 개인별 분기는 emitRoomPerPlayer 하나로 한다. Phase 1 에서 만든 장치다.
+      const chatBase = {
         id: entry.id,
         seq: entry.seq,
         accountId: entry.accountId,
         nickname: entry.nickname,
         colorIndex: entry.colorIndex,
-        text: entry.rawNfc,
-        masked: false,
+        text: masked ?? rawNfc,
+        masked: masked !== null,
         ts: entry.ts,
         system: false,
-      });
+      };
+      if (masked === null) {
+        emitRoom(room, 'chat.message', chatBase);
+      } else {
+        emitRoomPerPlayer(room, 'chat.message', chatBase, (p) =>
+          p.accountId === player.accountId ? { text: rawNfc } : null,
+        );
+      }
 
       // ── 단계 4. 상태 전환과 DB
       //   ★ 정답 문자열과 일치한 메시지만 answer_events 에 남긴다 (Q-52).

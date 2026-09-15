@@ -1,8 +1,8 @@
 // =============================================================================
 // 경험자 채팅의 정답 마스킹
 //
-// ★ 이 파일은 시그니처와 구현 지침만 담는다. 실제 구현은 Phase 6이다.
-//   테스트는 shared/src/mask.test.ts 에 skip 상태로 미리 들어 있다 (R002 6-5의 16케이스).
+// ★★ R016 (Phase 6) 에서 구현했다. 테스트는 shared/src/mask.test.ts 의 16케이스다 (R002 6-5).
+//   ★ 그중 #14~#16 은 서버 파이프라인 조건이라 봇 시나리오가 맡는다 (docs/10-TESTING.md).
 //
 // 명세 원본: R002 6장 + Q-35(확정) + Q-42(확정) + Q-43(확정) + R003 3-3
 // 현재 유효 규칙: docs/01-GAME-RULES.md
@@ -25,6 +25,8 @@
 //   판정은 항상 클라이언트가 보낸 원문을 입력으로 받으며, 마스킹 결과를 절대 참조하지 않는다.
 //   이 분리가 깨지면 마스킹 판정 실수 하나가 정답 판정까지 망가뜨린다.
 // =============================================================================
+
+import { buildNormalizedIndex } from './normalize.js';
 
 /**
  * 마스킹 센티널. 유니코드 사설 사용 영역(Private Use Area)이라 사용자가 키보드로
@@ -69,7 +71,63 @@ export interface MaskResult {
  * @param raw            발신자가 보낸 원문
  * @param normalizedAnswers 이 문제의 정규화된 정답 집합 (메모리에 이미 로드되어 있다)
  */
-export function maskAnswers(_raw: string, _normalizedAnswers: readonly string[]): MaskResult {
-  // Phase 6에서 구현한다. 지금 호출되면 안 된다.
-  throw new Error('maskAnswers는 Phase 6에서 구현한다. (docs/05-STATUS.md 참조)');
+export function maskAnswers(raw: string, normalizedAnswers: readonly string[]): MaskResult {
+  const { rawNfc, norm, map, mapEnd } = buildNormalizedIndex(raw);
+  if (norm.length === 0) return { text: rawNfc, masked: false };
+
+  // ★ 긴 정답을 먼저 본다. 그러지 않으면 짧은 정답이 긴 정답의 앞부분을 먼저 먹는다.
+  //   ★ 예: 정답이 "태조" 와 "태조 이성계" 둘 다일 때 "태조" 를 먼저 치환하면
+  //     "[가려짐] 이성계" 가 되어 **나머지 절반이 그대로 남는다.**
+  const candidates = [...new Set(normalizedAnswers)]
+    .filter((a) => a.length > 0)
+    .sort((a, b) => b.length - a.length);
+
+  /** 이미 잡힌 정규화 구간. 겹치는 매칭은 버린다 */
+  const takenNorm: { s: number; e: number }[] = [];
+  /** 가릴 원문 구간 */
+  const spans: { s: number; e: number }[] = [];
+
+  const overlaps = (s: number, e: number): boolean =>
+    takenNorm.some((t) => s < t.e && e > t.s);
+
+  const take = (s: number, e: number): void => {
+    if (overlaps(s, e)) return;
+    takenNorm.push({ s, e });
+    // ★★ 끝은 map[e] 가 아니라 mapEnd[e - 1] 이다. 근거는 buildNormalizedIndex 주석에 있다
+    spans.push({ s: map[s]!, e: mapEnd[e - 1]! });
+  };
+
+  for (const cand of candidates) {
+    if (cand.length <= MASK_SHORT_ANSWER_MAX) {
+      // ★ Q-43 — 짧은 정답은 **메시지 전체가 정답과 같을 때만** 가린다.
+      //   ★ 그러지 않으면 정답 "달" 때문에 "달라졌네" 가 가려져 정상 대화가 불가능해진다.
+      if (norm === cand) take(0, norm.length);
+      continue;
+    }
+    // ★ 한 메시지에 여러 번 나오면 전부 가린다
+    let from = 0;
+    for (;;) {
+      const at = norm.indexOf(cand, from);
+      if (at < 0) break;
+      take(at, at + cand.length);
+      from = at + cand.length;
+    }
+  }
+
+  if (spans.length === 0) return { text: rawNfc, masked: false };
+
+  // ★★ 찾는 중에 치환하지 않는다. 치환하면 그 뒤 인덱스가 전부 어긋난다.
+  //   ★ 전부 모은 뒤 원문 순서대로 한 번에 조립한다.
+  spans.sort((a, b) => a.s - b.s);
+  let out = '';
+  let cursor = 0;
+  for (const span of spans) {
+    if (span.s < cursor) continue; // 방어. 겹침은 위에서 걸렀다
+    out += rawNfc.slice(cursor, span.s);
+    out += MASK_SENTINEL;
+    cursor = span.e;
+  }
+  out += rawNfc.slice(cursor);
+
+  return { text: out, masked: true };
 }

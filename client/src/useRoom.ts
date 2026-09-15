@@ -56,7 +56,8 @@ export interface QuestionView {
   categoryName: string;
   startedAt: number;
   endsAt: number;
-  experiencedNicknames: string[];
+  /** ★ 경험자 목록. 닉네임과 색을 함께 받는다 (전원 공개. D-011) */
+  experiencedPlayers: { accountId: string; nickname: string; colorIndex: number }[];
   selfExperienced: boolean;
   /** ★ 남은 10초부터만 값이 있다 */
   hint: string | null;
@@ -100,6 +101,24 @@ export interface GameResultView {
     explanation: string | null;
     winnerAccountId: string | null;
   } | null;
+  /** ★★ 문제별 기록 (Phase 4). 중단된 문제는 displayAnswer 가 null 이다 */
+  questions: {
+    index: number;
+    text: string;
+    categoryName: string;
+    displayAnswer: string | null;
+    reason: 'correct' | 'timeout' | 'skip_vote' | 'host_skip' | 'aborted';
+    winnerAccountId: string | null;
+    responseMs: number | null;
+    experiencedCount: number;
+  }[];
+  /** ★ 사람별 요약 (Phase 4) */
+  playerStats: {
+    accountId: string;
+    correct: number;
+    avgResponseMs: number | null;
+    fastestMs: number | null;
+  }[];
   abortedNote: string | null;
   endedQuestionCount: number;
   totalQuestions: number;
@@ -368,7 +387,7 @@ export function useRoom(socket: Socket | null): RoomHook {
                 categoryName: p.categoryName,
                 startedAt: p.startedAt,
                 endsAt: p.endsAt,
-                experiencedNicknames: p.experiencedNicknames,
+                experiencedPlayers: p.experiencedPlayers,
                 selfExperienced: p.selfExperienced,
                 // ★ 문제 시작 시점에는 힌트가 없다. 서버가 남은 10초에 push 한다
                 hint: null,
@@ -387,7 +406,7 @@ export function useRoom(socket: Socket | null): RoomHook {
 
     const onExperiencedUpdated = (p: {
       epoch: number;
-      experiencedNicknames: string[];
+      experiencedPlayers: { accountId: string; nickname: string; colorIndex: number }[];
       selfExperienced: boolean;
     }) => {
       setSnapshot((prev) => {
@@ -396,7 +415,7 @@ export function useRoom(socket: Socket | null): RoomHook {
           ...prev,
           question: {
             ...prev.question,
-            experiencedNicknames: p.experiencedNicknames,
+            experiencedPlayers: p.experiencedPlayers,
             selfExperienced: p.selfExperienced,
           },
         };
