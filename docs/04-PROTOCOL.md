@@ -374,6 +374,34 @@ selectNextQuestion(room):
 | ★★★ 마지막 활성자 나가기 | **즉시** 방이 사라졌다 (PAUSED 로 가지 않았다) |
 | ★★ 마지막 활성자 끊김 | `PAUSED` (폭파되지 않았다) |
 
+### ★★ Phase 6 · Phase 4 구현과 명세의 대조 (R016)
+
+★ 명세(5장 마스킹 파이프라인 / 8장 개인별 페이로드)대로 구현했다.
+★ **명세와 다르게 한 것과 명세에 없던 것을 여기 적는다.**
+
+#### ★ 명세에 없던 것 — 추가한 것
+
+| 무엇 | 왜 | 근거 |
+|------|-----|------|
+| ★ `buildNormalizedIndex` 의 `mapEnd` | ★ `map[e]` 는 **다음 문자의 시작**이라 그대로 쓰면 매칭 뒤의 공백까지 먹는다. ★★ "고 무 줄 아님?" 이 "[가려짐]아님?" 이 되어 문장이 붙는다 | R016 실측 |
+| ★ `experiencedPlayers` (닉네임 → 닉네임+색) | ★ 이 게임은 사람을 **색으로** 구분한다(guide 47절). 경험자 목록만 검은 글씨면 누구인지 다시 읽어야 한다. ★ 닉네임으로 색을 역추적하면 동명이인에서 엉킨다 | D-011 확장 |
+| ★★ `game.result.questions[]` / `playerStats[]` | ★ 결과 화면이 요구한 "문제별 정답자와 응답 시간"(guide 40절 4·5번) | Phase 4 |
+| ★ 중단된 문제의 `displayAnswer = null` | ★★ 아무도 못 본 정답을 결과 화면에서 공개하면 **경험 기록 없이 정답만 아는 사람**이 생긴다 | D-074 |
+
+#### ★ 확인한 것 — 명세대로 동작한다 (봇 실측 / R016)
+
+| 항목 | 실측 |
+|------|------|
+| ★★★ 미경험자 판정 (#14) | 경험자의 정답이 가려지는 **같은 문제**에서 미경험자가 같은 정답을 쳐서 정상 정답 처리됐다 |
+| ★★ 경험자 채팅 마스킹 | 타인 화면에 정답 문자열이 없다. 나머지 말("정답 … 맞지?")은 그대로 남는다 |
+| ★★ 본인 화면 (#16) | 원문 그대로 + `masked=true` |
+| ★ 공개 뒤 (#15) | `QUESTION_RESOLVED` 에서 같은 말을 치면 가려지지 않는다 |
+| ★ 마스크 길이 | 정답 길이와 무관하게 센티널 1글자 |
+| ★ 이모지 인덱스 | `🍎 정답 🍎` 에서 이모지는 남고 정답만 사라진다 |
+| ★★ 결과 화면 | 문제별 기록 3건 / 동점 공동 순위 `1,1` / 평균·최속 계산 일치 |
+| ★★ 중단 문제 | `displayAnswer=null`, 사유 `aborted`, 마지막 문제 정답 공개도 없음 |
+| ★★ 다시 하기 | 3초 관측 — **자동으로 시작되지 않는다** |
+
 ---
 
 ## 4. 동시 발생 시나리오
@@ -643,8 +671,8 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 > ★ `game.started.gameId` 는 **null 일 수 있다.** 상태 전이를 동기로 끝낸 뒤
 > `games` INSERT 를 하기 때문이다. INSERT 가 실패하면 null 로 남는다.
 > Phase 3에서는 그 경우 게임을 시작하지 않도록 바꿔야 한다 (TEMP-P3-03).
-| `question.started` | S→C | `{ epoch, index, total, text, categoryName, startedAt, endsAt, experiencedNicknames[], selfExperienced, state }` — ✅ Phase 3. ★★ 정답·힌트·해설 미포함 (봇이 페이로드 키를 검사한다) |
-| `question.experiencedUpdated` | S→C | `{ epoch, experiencedNicknames, selfExperienced }` — ✅ Phase 3 |
+| `question.started` | S→C | `{ epoch, index, total, text, categoryName, startedAt, endsAt, experiencedPlayers[], selfExperienced, state }` — ✅ Phase 3. ★★ 정답·힌트·해설 미포함 (봇이 페이로드 키를 검사한다). ★ R016 에서 `experiencedNicknames[]` → `experiencedPlayers[{accountId,nickname,colorIndex}]` |
+| `question.experiencedUpdated` | S→C | `{ epoch, experiencedPlayers, selfExperienced }` — ✅ Phase 3 (R016 에서 필드명 변경) |
 | `question.hint` | S→C | `{ epoch, hint \| null }` — ✅ Phase 3. 남은 10초 시점에 서버가 push |
 | `question.resolved` | S→C | `{ epoch, reason, winnerAccountId, displayAnswer, explanation, scores[], nextAt \| null, state }` — ✅ Phase 3. 마지막 문제면 nextAt=null |
 | ★ `game.returnedToLobby` | S→C | `{ state, settings, settingsLocked, players[], activeCount }` — ✅ Phase 3 **명세 추가** (T30/T31) |
@@ -671,7 +699,10 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `host.forceEnd` | C→S | `{}` (방장, 확인창 후) — ✅ Phase 3. ★★ epoch 를 담지 않는다 (게임 전체 액션) |
 | `host.kickDisconnected` | C→S | `{ accountId }` (방장) |
 | `game.again` / `game.toLobby` | C→S | `{}` (방장) — ✅ Phase 3. ★★ 서버 동작이 동일하다 |
-| `game.result` | S→C | `{ gameId, endReason, ranking[], lastQuestionReveal, abortedNote, endedQuestionCount, totalQuestions }` — ✅ Phase 3 |
+| `game.result` | S→C | `{ gameId, endReason, ranking[], lastQuestionReveal, ★ questions[], ★ playerStats[], abortedNote, endedQuestionCount, totalQuestions }` — ✅ Phase 4 (R016)
+  · `questions[]` = `{ index, text, categoryName, displayAnswer\|null, reason, winnerAccountId, responseMs, experiencedCount }`
+    ★★ `displayAnswer` 는 **공개된 문제만** 값이 있다. 중단(aborted)된 문제는 null 이다
+  · `playerStats[]` = `{ accountId, correct, avgResponseMs, fastestMs }` |
 
 ### 시각 / 연결 유지
 
@@ -699,7 +730,7 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 경험자 닉네임이 전원 공개로 바뀌었으므로(규칙 개정), 실제로 수신자마다 값이 달라야 하는 것은
 **`chat.message` 의 `text` / `masked` 하나뿐이다.**
 
-`question.started` 의 `selfExperienced` 는 클라이언트가 `experiencedNicknames` 에서
+`question.started` 의 `selfExperienced` 는 클라이언트가 `experiencedPlayers` 에서
 자기 accountId를 찾아 유추할 수도 있지만, **서버가 명시적으로 보낸다.**
 클라이언트가 목록을 뒤져 판단하는 로직은 accountId 비교 실수 하나로
 "배지가 안 뜨거나 남에게 뜨는" 버그가 되기 때문이다. 비용은 필드 하나다.
@@ -735,7 +766,7 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
   question: {
     epoch, index, total, text, categoryName, startedAt, endsAt,
     hint: string | null,          ★ 남은 시간 10초 이하일 때만 값이 온다. 그 전에는 반드시 null
-    experiencedNicknames[], selfExperienced, resolved,
+    experiencedPlayers[], selfExperienced, resolved,
     resolution: { reason, winnerAccountId, displayAnswer, explanation, nextAt } | null
   } | null,
   paused: { pausedFrom, remainingMs, pausedAt, abandonAt,
