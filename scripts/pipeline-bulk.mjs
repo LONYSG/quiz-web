@@ -41,6 +41,23 @@ import { MAJORS, MIDS, enabledMids, findMajor, findMid } from '../pipeline/dist/
 import { generateBatch, GEN_SOURCE_ID } from '../pipeline/dist/generate.js';
 import { GEN_PROMPT_VERSION } from '../pipeline/dist/gen-prompt.js';
 
+// ──────────────────────────────────────────────────────────────────────────
+// ★★★ R017: 비활성화됨. 근거는 pipeline/src/gen-prompt.ts 머리말에 있다.
+//   이 스크립트는 "카테고리 → 문제 여러 개" 구조(g3)를 구동한다.
+//   R017 부터 "소분류 → 소재 → 소재당 문제 1개" 구조로 바꿨다.
+//   ★ 지우지 않는다. 되돌릴 수 있어야 하고, 기존 253건이 이 경로로 만들어졌다.
+//   ★ 실행하려면 --legacy 를 명시해야 한다. 실수로 옛 경로를 돌리는 것을 막는다.
+// ──────────────────────────────────────────────────────────────────────────
+if (!process.argv.includes('--legacy')) {
+  console.error('');
+  console.error('★ 이 스크립트는 R017 에서 비활성화되었다 (구조 전환: 카테고리→문제 ⇒ 소분류→소재→문제).');
+  console.error('  새 경로: pipeline/prompts/seed-v1.md + question-v1.md, scripts/seeds-*.mjs');
+  console.error('  근거: pipeline/src/gen-prompt.ts 머리말 / docs/07-DECISIONS.md D-077');
+  console.error('  그래도 옛 경로를 돌리려면 --legacy 를 붙여라.');
+  console.error('');
+  process.exit(2);
+}
+
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 try {
   process.loadEnvFile?.(path.join(ROOT, '.env'));

@@ -141,14 +141,39 @@ export class GeminiClient {
       attempt += 1;
       await this.pace();
 
-      const res = await fetch(`${BASE}/models/${model}:generateContent`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          'x-goog-api-key': this.apiKey, // ★ 쿼리스트링이 아니라 헤더
-        },
-        body: JSON.stringify(body),
-      });
+      // ★★ R017: 요청에 제한 시간을 건다.
+      //   ★ 근거(실측): R017 중복 판정 호출이 20분 넘게 돌아오지 않았다.
+      //     fetch 에 시간 제한이 없으면 응답이 오지 않는 요청 하나가 파이프라인 전체를 멈춘다.
+      //     ★ 재시도 사다리도 무의미해진다 — 첫 시도에서 영영 기다리기 때문이다.
+      //   ★ 제한 시간을 넘기면 AbortError 가 나고, 아래 catch 가 RETRY_STATUS 와 같은 방식으로
+      //     재시도 사다리를 태운다. 그래야 "느린 것" 과 "죽은 것" 을 코드가 구분할 수 있다.
+      let res: Response;
+      try {
+        res = await fetch(`${BASE}/models/${model}:generateContent`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'x-goog-api-key': this.apiKey, // ★ 쿼리스트링이 아니라 헤더
+          },
+          body: JSON.stringify(body),
+          signal: AbortSignal.timeout(LIMITS.requestTimeoutMs),
+        });
+      } catch (err) {
+        const maxAttempts = opts.maxAttempts ?? LIMITS.maxRetries;
+        const name = err instanceof Error ? err.name : 'UnknownError';
+        if (!this.opts.state.wastedRequests) this.opts.state.wastedRequests = {};
+        this.opts.state.wastedRequests[model] = (this.opts.state.wastedRequests[model] ?? 0) + 1;
+        if (attempt >= maxAttempts) {
+          throw new Error(
+            `${model}: 요청이 ${maxAttempts}회 모두 실패했다 (${name}). ` +
+              `제한 시간 ${LIMITS.requestTimeoutMs}ms`,
+          );
+        }
+        const wait = LIMITS.backoffBaseMs * 2 ** (attempt - 1);
+        this.log(`[gemini] ${name} — ${wait}ms 후 재시도 ${attempt + 1}/${maxAttempts}`);
+        await sleep(wait);
+        continue;
+      }
       const text = this.scrub(await res.text());
 
       // ── 429: ★ 재시도하지 않는다. 호출자가 대기·재개를 판단한다 (Q-62 (B))
