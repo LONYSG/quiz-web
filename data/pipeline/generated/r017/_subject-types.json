@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "round": "r017",
+    "purpose": "★ 소재(subject) 유형 분포 (R017 작업 B-2 측정 항목)",
+    "method": "★ 자동 분류가 아니다. 200개 subject 를 사람이 읽고 손으로 갈랐다. 기계적으로 가를 수 있는 축이 아니기 때문이다.",
+    "caveat": "★ 경계가 애매한 것이 있다 — '차투랑가'(놀이)를 사물로, '미노타우로스'(괴물)를 인물로, '태권도'(종목)를 개념으로 넣었다. 다른 사람이 가르면 몇 건 달라질 수 있다.",
+    "judgedBy": "claude-opus-5",
+    "judgedAt": "2026-09-16"
+  },
+  "types": {
+    "인물": {
+      "total": 40,
+      "bySub": { "classical/1": 10, "invention/3": 10, "myth/1": 10, "kr-history/4": 5, "world-history-west/1": 2, "kr-lit/5": 1, "art/1": 1, "olympic/1": 1 }
+    },
+    "작품": {
+      "total": 29,
+      "bySub": { "world-lit/2": 10, "art/1": 9, "kr-lit/5": 9, "kr-language/1": 1 }
+    },
+    "사물·생물": {
+      "total": 44,
+      "bySub": { "astronomy/1": 10, "animals/2": 9, "chemistry/1": 9, "medicine/4": 7, "board-game/2": 5, "computer/4": 2, "football/2": 1, "kr-history/4": 1 }
+    },
+    "개념·용어": {
+      "total": 51,
+      "bySub": { "economy/1": 10, "world-language/1": 10, "calendar/4": 10, "computer/4": 8, "kr-language/1": 6, "medicine/4": 3, "board-game/2": 1, "animals/2": 1, "olympic/1": 1, "world-history-west/1": 1 }
+    },
+    "제도·규칙": {
+      "total": 18,
+      "bySub": { "football/2": 4, "board-game/2": 4, "world-history-west/1": 3, "kr-language/1": 3, "kr-history/4": 2, "chemistry/1": 1, "olympic/1": 1 }
+    },
+    "사건": {
+      "total": 14,
+      "bySub": { "olympic/1": 7, "football/2": 5, "kr-history/4": 1, "world-history-west/1": 1 }
+    },
+    "장소·건축": {
+      "total": 4,
+      "bySub": { "world-history-west/1": 3, "kr-history/4": 1 }
+    }
+  },
+  "observations": [
+    "★ 유형 분포는 소분류의 성격이 거의 그대로 결정한다. '작곡가' 소분류는 인물 10/10 이고 '19세기 소설' 은 작품 10/10 이다. 이것은 쏠림이 아니라 소분류 정의 그대로다 — 프롬프트 A 도 '유형 비율을 맞추지 말라' 고 못박고 있다.",
+    "★ 유형이 섞인 소분류는 대상이 여러 갈래인 곳이었다 — kr-history/4 (인물 5 / 제도 2 / 장소 1 / 사물 1 / 사건 1), world-history-west/1 (제도 3 / 장소 3 / 인물 2 / 개념 1 / 사건 1), board-game/2 (사물 5 / 제도 4 / 개념 1).",
+    "★★ 인물만 나열된 소분류는 3개(classical/1, invention/3, myth/1)다. 셋 다 소분류 정의가 인물 중심이라 자연스럽지만, 규모를 키울 때 같은 인물의 다른 측면으로 확장해야 하는 곳이기도 하다."
+  ]
+}

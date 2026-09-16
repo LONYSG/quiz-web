@@ -1,0 +1,274 @@
+{
+  "midKey": "medicine",
+  "midName": "의학·건강 상식",
+  "majorKey": "tech",
+  "majorName": "기술·의학",
+  "updatedAt": "2026-09-16T06:06:40.556Z",
+  "subs": {
+    "medicine/1": {
+      "subName": "질병",
+      "usedAnswers": [
+        {
+          "answer": "당뇨병",
+          "origin": "db:81",
+          "note": "gemini-gen/approved"
+        }
+      ],
+      "seeds": []
+    },
+    "medicine/2": {
+      "subName": "증상·진단",
+      "usedAnswers": [
+        {
+          "answer": "뇌파 검사",
+          "origin": "db:82",
+          "note": "gemini-gen/approved"
+        }
+      ],
+      "seeds": []
+    },
+    "medicine/3": {
+      "subName": "의약품·백신",
+      "usedAnswers": [
+        {
+          "answer": "페니실린",
+          "origin": "db:194",
+          "note": "gemini-gen/approved"
+        }
+      ],
+      "seeds": []
+    },
+    "medicine/4": {
+      "subName": "영양·비타민",
+      "usedAnswers": [
+        {
+          "answer": "비타민 C",
+          "origin": "db:195",
+          "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "비타민 D",
+          "origin": "r017:medicine/4#001",
+          "note": null
+        },
+        {
+          "answer": "비타민 A",
+          "origin": "r017:medicine/4#002",
+          "note": null
+        },
+        {
+          "answer": "비타민 B1",
+          "origin": "r017:medicine/4#003",
+          "note": null
+        },
+        {
+          "answer": "비타민 K",
+          "origin": "r017:medicine/4#004",
+          "note": null
+        },
+        {
+          "answer": "지용성 비타민",
+          "origin": "r017:medicine/4#005",
+          "note": null
+        },
+        {
+          "answer": "지방",
+          "origin": "r017:medicine/4#006",
+          "note": null
+        },
+        {
+          "answer": "필수아미노산",
+          "origin": "r017:medicine/4#007",
+          "note": null
+        },
+        {
+          "answer": "엽산",
+          "origin": "r017:medicine/4#008",
+          "note": null
+        },
+        {
+          "answer": "요오드",
+          "origin": "r017:medicine/4#009",
+          "note": null
+        },
+        {
+          "answer": "트랜스지방",
+          "origin": "r017:medicine/4#010",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "medicine/4#001",
+          "subject": "비타민 D",
+          "aspect": "햇빛으로 몸에서 만들어지는 특성",
+          "knowledgePoint": "음식뿐 아니라 자외선을 받아 피부에서 합성되며 뼈 형성에 관여하는 영양소",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:06:40.553Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/medicine-4#001",
+            "answer": "비타민 D",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "medicine/4#002",
+          "subject": "비타민 A",
+          "aspect": "어두운 곳에서의 시각과 결핍증",
+          "knowledgePoint": "어두운 곳에서 보는 데 필요한 색소의 재료가 되는 영양소와 그 결핍 증상",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:06:40.553Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/medicine-4#002",
+            "answer": "비타민 A",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "medicine/4#003",
+          "subject": "비타민 B1",
+          "aspect": "도정한 곡물 위주 식사와 각기병",
+          "knowledgePoint": "쌀겨를 벗긴 곡물 위주로 먹을 때 부족해지는 영양소와 그 결핍증",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:06:40.553Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/medicine-4#003",
+            "answer": "비타민 B1",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "medicine/4#004",
+          "subject": "비타민 K",
+          "aspect": "혈액 응고에서의 역할과 이름의 유래",
+          "knowledgePoint": "피가 굳는 과정에 필요한 영양소와 그 이름이 응고를 뜻하는 말에서 온 사정",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:06:40.553Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/medicine-4#004",
+            "answer": "비타민 K",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "medicine/4#005",
+          "subject": "지용성 비타민",
+          "aspect": "몸에 쌓이기 때문에 생기는 과잉 위험",
+          "knowledgePoint": "기름에 녹는 비타민이 몸에 축적되어 과잉 섭취가 문제가 될 수 있다는 점",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:06:40.553Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/medicine-4#005",
+            "answer": "지용성 비타민",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "medicine/4#006",
+          "subject": "3대 영양소",
+          "aspect": "몸에 열량을 내는 세 가지",
+          "knowledgePoint": "우리 몸에 에너지를 공급하는 세 가지 영양소의 구성",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:06:40.553Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/medicine-4#006",
+            "answer": "지방",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "medicine/4#007",
+          "subject": "필수아미노산",
+          "aspect": "체내 합성이 되지 않아 음식으로 얻어야 하는 성분",
+          "knowledgePoint": "몸에서 충분히 만들지 못해 반드시 먹어서 얻어야 하는 단백질 구성 성분",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:06:40.553Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/medicine-4#007",
+            "answer": "필수아미노산",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "medicine/4#008",
+          "subject": "엽산",
+          "aspect": "임신 초기에 특히 권장되는 까닭",
+          "knowledgePoint": "태아의 신경관이 닫히는 시기에 필요해 임신 초기에 권장되는 비타민 B군 영양소",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:06:40.553Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/medicine-4#008",
+            "answer": "엽산",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "medicine/4#009",
+          "subject": "요오드",
+          "aspect": "갑상샘 호르몬의 재료",
+          "knowledgePoint": "해조류에 많고 갑상샘 호르몬을 만드는 데 쓰이는 무기질",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:06:40.553Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/medicine-4#009",
+            "answer": "요오드",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "medicine/4#010",
+          "subject": "트랜스지방",
+          "aspect": "기름을 굳히는 가공에서 생기는 지방",
+          "knowledgePoint": "액체 기름에 수소를 더해 굳히는 과정에서 생기며 혈관에 특히 해롭다고 알려진 지방",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:06:40.553Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/medicine-4#010",
+            "answer": "트랜스지방",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        }
+      ]
+    }
+  }
+}

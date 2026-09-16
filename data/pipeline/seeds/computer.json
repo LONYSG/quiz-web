@@ -1,0 +1,274 @@
+{
+  "midKey": "computer",
+  "midName": "컴퓨터·인터넷",
+  "majorKey": "tech",
+  "majorName": "기술·의학",
+  "updatedAt": "2026-09-16T06:07:31.916Z",
+  "subs": {
+    "computer/1": {
+      "subName": "하드웨어",
+      "usedAnswers": [
+        {
+          "answer": "SSD",
+          "origin": "db:95",
+          "note": "gemini-gen/approved"
+        }
+      ],
+      "seeds": []
+    },
+    "computer/2": {
+      "subName": "소프트웨어·운영체제",
+      "usedAnswers": [
+        {
+          "answer": "리눅스",
+          "origin": "db:96",
+          "note": "gemini-gen/approved"
+        }
+      ],
+      "seeds": []
+    },
+    "computer/3": {
+      "subName": "프로그래밍 용어",
+      "usedAnswers": [
+        {
+          "answer": "재귀",
+          "origin": "db:207",
+          "note": "gemini-gen/approved"
+        }
+      ],
+      "seeds": []
+    },
+    "computer/4": {
+      "subName": "네트워크·인터넷",
+      "usedAnswers": [
+        {
+          "answer": "DNS",
+          "origin": "db:208",
+          "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "아파넷",
+          "origin": "r017:computer/4#001",
+          "note": null
+        },
+        {
+          "answer": "404",
+          "origin": "r017:computer/4#002",
+          "note": null
+        },
+        {
+          "answer": "IPv6",
+          "origin": "r017:computer/4#003",
+          "note": null
+        },
+        {
+          "answer": "MAC 주소",
+          "origin": "r017:computer/4#004",
+          "note": null
+        },
+        {
+          "answer": "패킷",
+          "origin": "r017:computer/4#005",
+          "note": null
+        },
+        {
+          "answer": "최상위 도메인",
+          "origin": "r017:computer/4#006",
+          "note": null
+        },
+        {
+          "answer": "쿠키",
+          "origin": "r017:computer/4#007",
+          "note": null
+        },
+        {
+          "answer": "와이파이",
+          "origin": "r017:computer/4#008",
+          "note": null
+        },
+        {
+          "answer": "라우터",
+          "origin": "r017:computer/4#009",
+          "note": null
+        },
+        {
+          "answer": "프로토콜",
+          "origin": "r017:computer/4#010",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "computer/4#001",
+          "subject": "아파넷",
+          "aspect": "인터넷의 기원이 된 실험망",
+          "knowledgePoint": "대학과 연구소를 잇는 실험용 통신망이 오늘날 인터넷의 뿌리가 된 경위",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:07:31.914Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/computer-4#001",
+            "answer": "아파넷",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "computer/4#002",
+          "subject": "HTTP 상태 코드",
+          "aspect": "요청한 자원이 없을 때 돌려주는 번호",
+          "knowledgePoint": "서버가 요청 결과를 세 자리 숫자로 알려 주는 방식과 가장 널리 알려진 값",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:07:31.914Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/computer-4#002",
+            "answer": "404",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "computer/4#003",
+          "subject": "IP 주소 체계",
+          "aspect": "주소 고갈에 대응한 차세대 규격",
+          "knowledgePoint": "기존 주소 체계의 개수 한계와 그것을 늘리기 위해 만들어진 새 규격",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:07:31.914Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/computer-4#003",
+            "answer": "IPv6",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "computer/4#004",
+          "subject": "MAC 주소",
+          "aspect": "기기마다 고정으로 부여되는 식별자",
+          "knowledgePoint": "네트워크 장치에 제조 단계에서 부여되어 거의 바뀌지 않는 물리 주소의 성격",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:07:31.914Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/computer-4#004",
+            "answer": "MAC 주소",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "computer/4#005",
+          "subject": "패킷",
+          "aspect": "데이터를 조각내 보내는 전송 단위",
+          "knowledgePoint": "데이터를 통째로 보내지 않고 작은 단위로 나누어 보내는 방식과 그 단위의 이름",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:07:31.914Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/computer-4#005",
+            "answer": "패킷",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "computer/4#006",
+          "subject": "최상위 도메인",
+          "aspect": "주소 맨 뒤 구획이 갖는 뜻",
+          "knowledgePoint": "인터넷 주소에서 맨 뒤에 오는 구획이 조직 성격이나 국가를 나타낸다는 점",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:07:31.914Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/computer-4#006",
+            "answer": "최상위 도메인",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "computer/4#007",
+          "subject": "쿠키",
+          "aspect": "브라우저에 남기는 상태 정보",
+          "knowledgePoint": "웹이 본래 상태를 기억하지 못하기 때문에 이용자 쪽에 작은 정보를 저장해 두는 방식",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:07:31.914Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/computer-4#007",
+            "answer": "쿠키",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "computer/4#008",
+          "subject": "와이파이",
+          "aspect": "근거리 무선 접속 기술의 이름",
+          "knowledgePoint": "전파로 근거리 통신망에 접속하는 기술과 그 이름이 표준이 아니라 상표에서 온 사정",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:07:31.914Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/computer-4#008",
+            "answer": "와이파이",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "computer/4#009",
+          "subject": "라우터",
+          "aspect": "서로 다른 망을 잇고 경로를 정하는 장비",
+          "knowledgePoint": "여러 네트워크 사이에서 데이터가 나아갈 길을 정해 전달하는 장비의 역할",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:07:31.914Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/computer-4#009",
+            "answer": "라우터",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        },
+        {
+          "seedId": "computer/4#010",
+          "subject": "프로토콜",
+          "aspect": "통신에서 미리 정해 두는 약속",
+          "knowledgePoint": "서로 다른 기기가 데이터를 주고받으려면 형식과 순서를 미리 맞춰야 한다는 개념",
+          "round": "r017",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T06:07:31.914Z",
+          "question": {
+            "status": "ok",
+            "ref": "r017/computer-4#010",
+            "answer": "프로토콜",
+            "rejectReason": null,
+            "questionPrompt": "question-v1"
+          }
+        }
+      ]
+    }
+  }
+}
