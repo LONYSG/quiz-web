@@ -30,6 +30,12 @@
           "reason": "★★ 정답이 기존 문제와 같은 '우루과이' 가 될 것이 분명하지만, 묻는 지식(1950년 브라질 대회의 이변)이 완전히 다르다. 프롬프트 A 의 '같은 답이 나올 것 같다는 이유만으로 제거하지 말라' 에 정확히 해당해 일부러 살렸다 — 4차 LLM 판정이 이것을 중복으로 잡는지 보려는 목적도 있다"
         }
       ]
+    },
+    "answerRevision": {
+      "round": "r018",
+      "rule": "question-v2",
+      "note": "★ 인명 대표 정답만 개정했다. 질문·해설·평가는 question-v1 으로 만든 그대로다",
+      "count": 2
     }
   },
   "items": [
@@ -43,7 +49,7 @@
       "question": {
         "ok": true,
         "question": "2002년 한일 월드컵에서 대한민국 대표팀을 4강까지 이끈 네덜란드 출신 감독은 누구인가요?",
-        "answer": "거스 히딩크",
+        "answer": "히딩크",
         "acceptedAnswers": [],
         "accessibility": 5,
         "difficulty": 2,
@@ -53,6 +59,12 @@
           "answerInQuestion": false,
           "uniqueAnswer": true,
           "questionSelfConsistent": true
+        },
+        "answerRevision": {
+          "round": "r018",
+          "rule": "question-v2",
+          "previousAnswer": "거스 히딩크",
+          "reason": "★ 한국에서는 '히딩크 감독' 이 압도적이다. 2002년 당시 언론 표기도 그랬다"
         }
       }
     },
@@ -89,7 +101,7 @@
       "question": {
         "ok": true,
         "question": "1986년 멕시코 대회 8강 잉글랜드전에서 머리가 아니라 손으로 밀어 넣은 골이 그대로 인정되자 \"신의 손\"이라고 둘러댄 아르헨티나 선수는?",
-        "answer": "디에고 마라도나",
+        "answer": "마라도나",
         "acceptedAnswers": [],
         "accessibility": 4,
         "difficulty": 2,
@@ -99,6 +111,12 @@
           "answerInQuestion": false,
           "uniqueAnswer": true,
           "questionSelfConsistent": true
+        },
+        "answerRevision": {
+          "round": "r018",
+          "rule": "question-v2",
+          "previousAnswer": "디에고 마라도나",
+          "reason": "성만으로 통용된다"
         }
       }
     },

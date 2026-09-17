@@ -3,7 +3,7 @@
   "midName": "기호·상징·표지",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-16T05:39:53.259Z",
+  "updatedAt": "2026-09-17T00:47:20.832Z",
   "subs": {
     "symbols/1": {
       "subName": "국기·국장",
@@ -48,6 +48,250 @@
         }
       ],
       "seeds": []
+    },
+    "symbols/2": {
+      "subName": "교통 표지",
+      "usedAnswers": [
+        {
+          "answer": "보조표지",
+          "origin": "r018:symbols/2#001",
+          "note": null
+        },
+        {
+          "answer": "정지",
+          "origin": "r018:symbols/2#002",
+          "note": null
+        },
+        {
+          "answer": "파란색",
+          "origin": "r018:symbols/2#003",
+          "note": null
+        },
+        {
+          "answer": "노란색",
+          "origin": "r018:symbols/2#004",
+          "note": null
+        },
+        {
+          "answer": "서행",
+          "origin": "r018:symbols/2#005",
+          "note": null
+        },
+        {
+          "answer": "30",
+          "origin": "r018:symbols/2#006",
+          "note": "r018 격리: 기존 db:170 과 중복 (Gemini same 1.0, keep=b). 완전히 같은 문제다 — 스쿨존 제한 속도. ★★ 기존은 'daily-rule > 생활 법규' 에, 신규는 'symbols > 교통 표지' 에 있어 소분류를 넘어선 중복이다"
+        },
+        {
+          "answer": "녹색",
+          "origin": "r018:symbols/2#007",
+          "note": null
+        },
+        {
+          "answer": "안전지대",
+          "origin": "r018:symbols/2#008",
+          "note": null
+        },
+        {
+          "answer": "비보호좌회전",
+          "origin": "r018:symbols/2#009",
+          "note": null
+        },
+        {
+          "answer": "회전차량",
+          "origin": "r018:symbols/2#010",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "symbols/2#001",
+          "subject": "교통안전표지의 분류",
+          "aspect": "네 갈래 가운데 다른 표지를 돕는 것",
+          "knowledgePoint": "교통안전표지가 주의·규제·지시와 그 밖의 한 갈래로 나뉘고, 그중 하나가 다른 표지에 붙어 뜻을 보태는 구실을 한다는 점",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:14:49.045Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/symbols-2#001",
+            "answer": "보조표지",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/2#002",
+          "subject": "정지 표지",
+          "aspect": "혼자만 다른 모양을 쓰는 까닭",
+          "knowledgePoint": "눈이 가려지거나 글자가 지워져도 모양만으로 알아보게 하려고 특정 표지에만 다른 도형을 쓴 설계",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:14:49.045Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/symbols-2#002",
+            "answer": "정지",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/2#003",
+          "subject": "표지 색의 규칙",
+          "aspect": "금지와 지시를 색으로 가르는 방식",
+          "knowledgePoint": "표지의 바탕색과 테두리 색이 '하지 마라' 와 '이렇게 하라' 를 구분하는 약속",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:14:49.045Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/symbols-2#003",
+            "answer": "파란색",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/2#004",
+          "subject": "중앙선",
+          "aspect": "색으로 나타내는 반대 방향 경계",
+          "knowledgePoint": "같은 방향 차로를 가르는 선과 반대 방향을 가르는 선을 색으로 구분하는 규칙",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:14:49.045Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/symbols-2#004",
+            "answer": "노란색",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/2#005",
+          "subject": "황색 점멸 신호",
+          "aspect": "멈추라는 뜻이 아니라는 점",
+          "knowledgePoint": "점멸 신호에서 황색과 적색이 서로 다른 행동을 요구한다는 규칙",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:14:49.045Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/symbols-2#005",
+            "answer": "서행",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/2#006",
+          "subject": "어린이 보호구역",
+          "aspect": "제한 속도가 따로 정해진 구간",
+          "knowledgePoint": "학교 주변에 지정해 통행 속도를 낮추고 단속을 강화한 구역과 그 속도",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:14:49.045Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r018/symbols-2#006",
+            "answer": "30",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "기존 db:170 과 중복 (Gemini same 1.0, keep=b). 완전히 같은 문제다 — 스쿨존 제한 속도. ★★ 기존은 'daily-rule > 생활 법규' 에, 신규는 'symbols > 교통 표지' 에 있어 소분류를 넘어선 중복이다",
+              "decidedBy": "Gemini 판정",
+              "duplicateOf": "db:170",
+              "at": "2026-09-17T00:47:20.827Z"
+            }
+          }
+        },
+        {
+          "seedId": "symbols/2#007",
+          "subject": "안내 표지의 바탕색",
+          "aspect": "고속도로와 일반도로를 색으로 가른다",
+          "knowledgePoint": "도로 종류에 따라 안내 표지의 바탕색을 달리해 운전자가 한눈에 구분하게 한 규칙",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:14:49.045Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/symbols-2#007",
+            "answer": "녹색",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/2#008",
+          "subject": "안전지대",
+          "aspect": "빗금으로 표시된 밟지 말아야 할 구역",
+          "knowledgePoint": "노면에 빗금으로 그려 차가 들어가거나 멈추면 안 되는 구역을 나타내는 표시",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:14:49.045Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/symbols-2#008",
+            "answer": "안전지대",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/2#009",
+          "subject": "비보호 좌회전",
+          "aspect": "신호 없이 스스로 판단해 도는 방식",
+          "knowledgePoint": "좌회전 신호를 따로 주지 않고 마주 오는 차가 없을 때 운전자가 판단해 돌게 한 방식",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:14:49.045Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/symbols-2#009",
+            "answer": "비보호좌회전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/2#010",
+          "subject": "회전교차로",
+          "aspect": "진입차와 회전차의 우선순위",
+          "knowledgePoint": "신호등 없이 원형으로 돌며 통행하는 교차로에서 누가 먼저 가는지를 정한 규칙",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:14:49.045Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/symbols-2#010",
+            "answer": "회전차량",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     }
   }
 }

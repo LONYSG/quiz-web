@@ -1,0 +1,272 @@
+{
+  "_meta": {
+    "round": "r018",
+    "subId": "transport/4",
+    "categoryPath": "기술·의학 > 자동차·교통 > 선박",
+    "midKey": "transport",
+    "subName": "선박",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v1",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-16T07:19:20.551Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 10,
+      "actualCount": 10,
+      "shortfallReason": null,
+      "listedCandidates": 30,
+      "remainingUsable": 12,
+      "remainingUsableNote": "★ 예상보다 넓었다. 배의 구조·용어·종류·항해 규칙·운하까지 들어온다. 남은 후보 20개 중 총톤수, 배수량, 선수와 선미, 닻, 컨테이너선, LNG선, 예인선, 구명정, 국제신호기, 진수식, 수에즈 운하 규격 등이 쓸 만하다.",
+      "estimatedCeiling": "★ 실질 상한 **22건** 으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "키",
+          "aspect": "배의 방향을 바꾸는 장치",
+          "reason": "usedAnswers 의 '키' 와 knowledgePoint 가 같다"
+        }
+      ]
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-17T00:43:08.104Z"
+  },
+  "items": [
+    {
+      "seedId": "transport/4#001",
+      "seed": {
+        "subject": "노트",
+        "aspect": "배의 속도를 재는 단위의 유래",
+        "knowledgePoint": "밧줄에 매듭을 지어 흘려보내며 속도를 재던 방식이 단위 이름이 된 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "옛날 뱃사람들은 일정한 간격으로 매듭을 지은 밧줄을 바다에 흘려보내며 배의 빠르기를 쟀습니다. 여기서 이름이 온, 지금도 배와 항공기에 쓰는 속도 단위는?",
+        "answer": "노트",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "노트입니다. 1노트는 한 시간에 1해리, 곧 약 1.852km를 가는 빠르기입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/4#002",
+      "seed": {
+        "subject": "흘수",
+        "aspect": "물에 잠긴 깊이를 가리키는 말",
+        "knowledgePoint": "배의 바닥에서 물 표면까지의 깊이가 항로와 입항 가능 여부를 정한다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "배의 바닥에서 물 표면까지의 깊이를 가리키는 말로, 이 값이 항구의 수심보다 깊으면 들어갈 수 없게 되는 것은?",
+        "answer": "흘수",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "흘수입니다. 짐을 실을수록 깊어지므로, 어느 항로를 쓸 수 있는지가 이 값으로 결정됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/4#003",
+      "seed": {
+        "subject": "만재흘수선",
+        "aspect": "얼마나 실을 수 있는지를 배에 새겨 둔 표시",
+        "knowledgePoint": "과적을 막으려고 선체 옆에 새긴 표시와 그 제도를 만든 사람의 이름"
+      },
+      "question": {
+        "ok": true,
+        "question": "짐을 지나치게 실어 배가 가라앉는 일을 막으려고 선체 옆면에 새겨 둔, 여기까지만 잠기게 하라는 한계 표시를 무엇이라 하는가?",
+        "answer": "만재흘수선",
+        "acceptedAnswers": [
+          "플림솔 마크"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "만재흘수선입니다. 제도를 만든 영국 의원의 이름을 따 플림솔 마크라고도 하며, 바닷물과 민물, 계절에 따라 눈금이 여럿입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/4#004",
+      "seed": {
+        "subject": "항해등",
+        "aspect": "좌우를 색으로 구분하는 규칙",
+        "knowledgePoint": "밤바다에서 서로의 진행 방향을 알 수 있도록 배의 좌우에 다른 색 등을 다는 국제 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "밤바다에서 서로의 진행 방향을 알아보도록 배의 좌우에는 다른 색 등을 답니다. 왼쪽이 붉은색이라면 오른쪽에는 무슨 색 등을 다는가?",
+        "answer": "녹색",
+        "acceptedAnswers": [
+          "초록색"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "녹색입니다. 상대의 붉은 등이 보이면 그 배의 왼쪽을 보고 있다는 뜻이어서, 피해야 할 방향을 판단할 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/4#005",
+      "seed": {
+        "subject": "SOS",
+        "aspect": "뜻이 아니라 치기 쉬워서 정해진 신호",
+        "knowledgePoint": "구조 신호가 특정 낱말의 줄임말이 아니라 모스 부호로 보내기 쉬워 채택됐다는 사실"
+      },
+      "question": {
+        "ok": true,
+        "question": "바다에서 쓰는 조난 신호로, 어떤 낱말의 줄임말이 아니라 모스 부호로 보내고 알아듣기 쉬워 정해진 세 글자는?",
+        "answer": "SOS",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "SOS입니다. 점 셋, 줄 셋, 점 셋으로 이어져 헷갈리지 않는다는 점이 채택의 이유였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/4#006",
+      "seed": {
+        "subject": "파나막스",
+        "aspect": "운하 규격에 맞춘 배의 크기",
+        "knowledgePoint": "운하의 갑문 크기가 그대로 배의 설계 한계가 되어 이름까지 붙은 사례"
+      },
+      "question": {
+        "ok": true,
+        "question": "운하의 갑문 크기가 그대로 배의 설계 한계가 되면서, 그 운하를 지날 수 있는 최대 규격을 가리키는 말까지 생겼습니다. 중앙아메리카의 운하에서 온 이 말은?",
+        "answer": "파나막스",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "파나막스입니다. 운하를 넓힌 뒤로는 더 큰 규격을 가리키는 '네오파나막스' 라는 말도 함께 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/4#007",
+      "seed": {
+        "subject": "쇄빙선",
+        "aspect": "얼음을 깨며 나아가는 방식",
+        "knowledgePoint": "선수로 얼음 위에 올라타 무게로 눌러 깨는 구조를 가진 특수선"
+      },
+      "question": {
+        "ok": true,
+        "question": "뱃머리로 얼음 위에 올라탄 뒤 배의 무게로 눌러 깨며 나아가도록 만든, 극지 항로에 쓰이는 특수한 배는?",
+        "answer": "쇄빙선",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "쇄빙선입니다. 우리나라의 아라온호가 대표적이며, 남극과 북극 연구를 지원합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/4#008",
+      "seed": {
+        "subject": "스크루 프로펠러",
+        "aspect": "노와 돛을 대신하게 된 추진 장치",
+        "knowledgePoint": "물을 밀어내 배를 나아가게 하는 회전 추진 장치와 그 원리"
+      },
+      "question": {
+        "ok": true,
+        "question": "노와 돛을 대신해 증기기관 시대 이후 배의 주된 추진 장치가 된 것으로, 물속에서 회전하며 물을 뒤로 밀어내는 나선 모양의 날개는?",
+        "answer": "스크루",
+        "acceptedAnswers": [
+          "프로펠러"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "스크루 또는 프로펠러입니다. 나사가 나무를 파고들듯 물을 파고든다는 데서 이름이 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/4#009",
+      "seed": {
+        "subject": "도선사",
+        "aspect": "항구에 들어올 때 배에 오르는 전문가",
+        "knowledgePoint": "좁고 얕은 항만 수로를 잘 아는 사람이 선장을 대신해 배를 조종하는 제도"
+      },
+      "question": {
+        "ok": true,
+        "question": "좁고 얕은 항만 수로를 훤히 아는 전문가가 큰 배에 올라타, 항구에 드나드는 동안 선장을 대신해 배를 몰도록 한 제도가 있습니다. 이 사람을 무엇이라 하는가?",
+        "answer": "도선사",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "도선사입니다. 일정 규모 이상의 배는 반드시 태우도록 법으로 정해 두고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/4#010",
+      "seed": {
+        "subject": "해리",
+        "aspect": "바다에서 쓰는 거리 단위의 근거",
+        "knowledgePoint": "지구 위도 1분에 해당하는 거리를 단위로 삼아 항해에 쓰는 까닭"
+      },
+      "question": {
+        "ok": true,
+        "question": "바다에서 쓰는 거리 단위로, 지구 위도 1분에 해당하는 길이를 기준으로 삼아 약 1,852m로 정해진 것은?",
+        "answer": "해리",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "해리입니다. 위도와 바로 이어져 있어 해도 위에서 거리를 재기 편하다는 점이 이 단위가 살아남은 까닭입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "midName": "식물",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-16T05:39:53.232Z",
+  "updatedAt": "2026-09-17T00:47:20.763Z",
   "subs": {
     "plants/1": {
       "subName": "나무",
@@ -45,9 +45,254 @@
           "answer": "민들레",
           "origin": "db:261",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "할미꽃",
+          "origin": "r018:plants/4#001",
+          "note": null
+        },
+        {
+          "answer": "애기똥풀",
+          "origin": "r018:plants/4#002",
+          "note": null
+        },
+        {
+          "answer": "강아지풀",
+          "origin": "r018:plants/4#003",
+          "note": null
+        },
+        {
+          "answer": "은행나무",
+          "origin": "r018:plants/4#004",
+          "note": "r018 격리: 기존 db:141 과 중복 (Gemini same 0.95, keep=b). 둘 다 은행나무를 묻는다"
+        },
+        {
+          "answer": "며느리밥풀꽃",
+          "origin": "r018:plants/4#005",
+          "note": null
+        },
+        {
+          "answer": "진달래",
+          "origin": "r018:plants/4#006",
+          "note": null
+        },
+        {
+          "answer": "봉선화",
+          "origin": "r018:plants/4#007",
+          "note": null
+        },
+        {
+          "answer": "백일홍",
+          "origin": "r018:plants/4#008",
+          "note": null
+        },
+        {
+          "answer": "무궁화",
+          "origin": "r018:plants/4#009",
+          "note": "r018 격리: 기존 db:33 과 중복 (Gemini same 0.95). ★★ 다만 Gemini 는 keep=a(신규)를 골랐고, 기존 db:33 은 '무궁화의 학명에 쓰이는 우리나라의 국화 이름은?' 이라 질문에 정답이 그대로 들어 있는 결함이 있다. ★ 기존을 내리는 것은 DB 쓰기라 이번 라운드 범위 밖이므로 일단 신규를 격리한다. 건우가 기존을 내리기로 하면 이 격리를 되돌려야 한다 (Q-90)"
+        },
+        {
+          "answer": "엉겅퀴",
+          "origin": "r018:plants/4#010",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "plants/4#001",
+          "subject": "할미꽃",
+          "aspect": "굽은 꽃대와 흰 씨앗에서 온 이름",
+          "knowledgePoint": "고개를 숙인 꽃 모양과 씨앗에 달린 흰 깃털이 이름에 그대로 들어온 사례",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:19:20.544Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/plants-4#001",
+            "answer": "할미꽃",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "plants/4#002",
+          "subject": "애기똥풀",
+          "aspect": "줄기를 자르면 나오는 즙의 색",
+          "knowledgePoint": "상처를 내면 노란 즙이 나오는 특징이 이름이 된 들풀",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:19:20.544Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/plants-4#002",
+            "answer": "애기똥풀",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "plants/4#003",
+          "subject": "강아지풀",
+          "aspect": "이삭의 생김새에서 온 이름",
+          "knowledgePoint": "복슬복슬한 이삭이 동물의 꼬리를 닮아 붙은 이름",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:19:20.544Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/plants-4#003",
+            "answer": "강아지풀",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "plants/4#004",
+          "subject": "은행나무",
+          "aspect": "씨앗의 빛깔과 모양에서 온 한자 이름",
+          "knowledgePoint": "씨앗이 은빛이 도는 살구를 닮았다는 데서 온 나무 이름",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:19:20.544Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r018/plants-4#004",
+            "answer": "은행나무",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "기존 db:141 과 중복 (Gemini same 0.95, keep=b). 둘 다 은행나무를 묻는다",
+              "decidedBy": "Gemini 판정",
+              "duplicateOf": "db:141",
+              "at": "2026-09-17T00:47:20.679Z"
+            }
+          }
+        },
+        {
+          "seedId": "plants/4#005",
+          "subject": "며느리밥풀꽃",
+          "aspect": "꽃잎의 흰 무늬에 얽힌 이야기",
+          "knowledgePoint": "꽃잎 안쪽의 밥알 같은 흰 무늬가 민담과 이어져 이름이 된 사례",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:19:20.544Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/plants-4#005",
+            "answer": "며느리밥풀꽃",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "plants/4#006",
+          "subject": "진달래와 철쭉",
+          "aspect": "먹을 수 있느냐로 갈린 이름",
+          "knowledgePoint": "비슷하게 생긴 두 꽃을 먹을 수 있는지로 갈라 참꽃과 개꽃으로 불러 온 구분",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:19:20.544Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/plants-4#006",
+            "answer": "진달래",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "plants/4#007",
+          "subject": "봉선화",
+          "aspect": "봉황을 닮았다는 꽃 모양",
+          "knowledgePoint": "꽃의 생김새를 상상의 새에 빗대어 붙인 이름과 손톱 물들이기 풍습",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:19:20.544Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/plants-4#007",
+            "answer": "봉선화",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "plants/4#008",
+          "subject": "백일홍",
+          "aspect": "꽃이 오래 피어 있다는 이름 뜻",
+          "knowledgePoint": "한 번 피면 오래 간다는 특징이 그대로 이름에 들어간 꽃",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:19:20.544Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/plants-4#008",
+            "answer": "백일홍",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "plants/4#009",
+          "subject": "무궁화",
+          "aspect": "끝없이 피어난다는 이름 뜻",
+          "knowledgePoint": "한 송이는 하루 만에 지지만 새 꽃이 이어 피는 성질이 이름이 된 내력",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:19:20.544Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r018/plants-4#009",
+            "answer": "무궁화",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "기존 db:33 과 중복 (Gemini same 0.95). ★★ 다만 Gemini 는 keep=a(신규)를 골랐고, 기존 db:33 은 '무궁화의 학명에 쓰이는 우리나라의 국화 이름은?' 이라 질문에 정답이 그대로 들어 있는 결함이 있다. ★ 기존을 내리는 것은 DB 쓰기라 이번 라운드 범위 밖이므로 일단 신규를 격리한다. 건우가 기존을 내리기로 하면 이 격리를 되돌려야 한다 (Q-90)",
+              "decidedBy": "Gemini 판정 + 보수적 처리",
+              "duplicateOf": "db:33",
+              "at": "2026-09-17T00:47:20.758Z"
+            }
+          }
+        },
+        {
+          "seedId": "plants/4#010",
+          "subject": "엉겅퀴",
+          "aspect": "피를 멎게 한다는 쓰임에서 온 이름",
+          "knowledgePoint": "상처의 피를 엉기게 한다는 옛 쓰임이 이름의 유래로 전해지는 풀",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:19:20.544Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/plants-4#010",
+            "answer": "엉겅퀴",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     }
   }
 }

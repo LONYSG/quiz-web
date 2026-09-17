@@ -3,7 +3,7 @@
   "midName": "생활 규칙·안전",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-16T05:39:53.088Z",
+  "updatedAt": "2026-09-17T00:47:20.596Z",
   "subs": {
     "daily-rule/1": {
       "subName": "재난·안전 수칙",
@@ -34,9 +34,240 @@
           "answer": "EMS",
           "origin": "db:289",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "국가기초구역번호",
+          "origin": "r018:daily-rule/3#001",
+          "note": null
+        },
+        {
+          "answer": "도로명주소",
+          "origin": "r018:daily-rule/3#002",
+          "note": null
+        },
+        {
+          "answer": "내용증명",
+          "origin": "r018:daily-rule/3#003",
+          "note": null
+        },
+        {
+          "answer": "등기우편",
+          "origin": "r018:daily-rule/3#004",
+          "note": null
+        },
+        {
+          "answer": "소인",
+          "origin": "r018:daily-rule/3#005",
+          "note": null
+        },
+        {
+          "answer": "제비",
+          "origin": "r018:daily-rule/3#006",
+          "note": null
+        },
+        {
+          "answer": "82",
+          "origin": "r018:daily-rule/3#007",
+          "note": null
+        },
+        {
+          "answer": "서울",
+          "origin": "r018:daily-rule/3#008",
+          "note": null
+        },
+        {
+          "answer": "ISBN",
+          "origin": "r018:daily-rule/3#009",
+          "note": null
+        },
+        {
+          "answer": "페니 블랙",
+          "origin": "r018:daily-rule/3#010",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "daily-rule/3#001",
+          "subject": "국가기초구역번호",
+          "aspect": "우편번호가 다섯 자리로 바뀐 까닭",
+          "knowledgePoint": "행정구역이 아니라 도로와 하천으로 나눈 구역을 기준으로 우편번호 체계를 새로 짠 일",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.118Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-3#001",
+            "answer": "국가기초구역번호",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/3#002",
+          "subject": "도로명주소",
+          "aspect": "길 이름과 건물 번호로 짜는 방식",
+          "knowledgePoint": "땅 번호 대신 길 이름과 건물 번호로 위치를 나타내도록 바꾼 주소 체계",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.118Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-3#002",
+            "answer": "도로명주소",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/3#003",
+          "subject": "내용증명",
+          "aspect": "무엇을 보냈는지를 우체국이 증명하는 제도",
+          "knowledgePoint": "문서의 내용과 발송 사실을 우체국이 증명해 주어 법적 다툼에 쓰이는 우편 제도",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.118Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-3#003",
+            "answer": "내용증명",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/3#004",
+          "subject": "등기우편",
+          "aspect": "배달 과정을 기록으로 남기는 방식",
+          "knowledgePoint": "접수부터 배달까지 기록을 남겨 분실 시 배상이 가능한 우편 취급 방식",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.118Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-3#004",
+            "answer": "등기우편",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/3#005",
+          "subject": "소인",
+          "aspect": "우표를 다시 못 쓰게 하는 표시",
+          "knowledgePoint": "우표 위에 찍어 재사용을 막고 접수 날짜를 남기는 표시",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.118Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-3#005",
+            "answer": "소인",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/3#006",
+          "subject": "우체국 심벌",
+          "aspect": "빠른 소식을 나타내는 새",
+          "knowledgePoint": "우편 사업의 상징으로 쓰이는 새와 그것이 뜻하는 바",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.118Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-3#006",
+            "answer": "제비",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/3#007",
+          "subject": "국가번호",
+          "aspect": "국제전화에서 대한민국을 가리키는 번호",
+          "knowledgePoint": "국제전화를 걸 때 나라를 구분하기 위해 앞에 붙이는 번호 체계",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.118Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-3#007",
+            "answer": "82",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/3#008",
+          "subject": "지역번호",
+          "aspect": "서울만 두 자리인 까닭",
+          "knowledgePoint": "전화 지역번호가 인구와 회선 수에 따라 자릿수가 달라진 내력",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.118Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-3#008",
+            "answer": "서울",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/3#009",
+          "subject": "ISBN",
+          "aspect": "책마다 붙는 국제 표준 번호",
+          "knowledgePoint": "책을 전 세계에서 하나로 식별하기 위해 붙이는 번호 체계",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.118Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-3#009",
+            "answer": "ISBN",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/3#010",
+          "subject": "페니 블랙",
+          "aspect": "세계 최초의 우표",
+          "knowledgePoint": "받는 사람이 요금을 내던 방식을 보내는 사람이 미리 내는 방식으로 바꾼 최초의 우표",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.118Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-3#010",
+            "answer": "페니 블랙",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "daily-rule/4": {
       "subName": "신고·응급 번호",
@@ -45,9 +276,247 @@
           "answer": "119",
           "origin": "db:290",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "112",
+          "origin": "r018:daily-rule/4#001",
+          "note": null
+        },
+        {
+          "answer": "117",
+          "origin": "r018:daily-rule/4#002",
+          "note": null
+        },
+        {
+          "answer": "182",
+          "origin": "r018:daily-rule/4#003",
+          "note": null
+        },
+        {
+          "answer": "1388",
+          "origin": "r018:daily-rule/4#004",
+          "note": null
+        },
+        {
+          "answer": "129",
+          "origin": "r018:daily-rule/4#005",
+          "note": null
+        },
+        {
+          "answer": "110",
+          "origin": "r018:daily-rule/4#006",
+          "note": null
+        },
+        {
+          "answer": "119",
+          "origin": "r018:daily-rule/4#007",
+          "note": "r018 격리: 기존 db:290 과 중복 (Gemini same 0.95, keep=b). 둘 다 정답이 119 이고 묻는 대상이 같다"
+        },
+        {
+          "answer": "911",
+          "origin": "r018:daily-rule/4#008",
+          "note": null
+        },
+        {
+          "answer": "999",
+          "origin": "r018:daily-rule/4#009",
+          "note": null
+        },
+        {
+          "answer": "118",
+          "origin": "r018:daily-rule/4#010",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "daily-rule/4#001",
+          "subject": "112",
+          "aspect": "범죄 신고 전용 번호",
+          "knowledgePoint": "범죄 신고를 받는 경찰 전용 번호와 그것이 재난 신고와 갈라져 있는 까닭",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.115Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-4#001",
+            "answer": "112",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/4#002",
+          "subject": "117",
+          "aspect": "학교폭력 신고·상담",
+          "knowledgePoint": "학교폭력 피해를 24시간 신고·상담할 수 있도록 따로 둔 번호",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.115Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-4#002",
+            "answer": "117",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/4#003",
+          "subject": "182",
+          "aspect": "실종 아동 찾기",
+          "knowledgePoint": "아이나 지적장애인이 실종됐을 때 경찰이 운영하는 전담 신고 창구",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.115Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-4#003",
+            "answer": "182",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/4#004",
+          "subject": "1388",
+          "aspect": "청소년 상담 전화",
+          "knowledgePoint": "가출·학업 중단 등으로 도움이 필요한 청소년이 거는 상담 번호",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.115Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-4#004",
+            "answer": "1388",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/4#005",
+          "subject": "129",
+          "aspect": "보건복지 상담",
+          "knowledgePoint": "복지 급여와 위기 가정 지원을 안내하는 보건복지 분야 상담 번호",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.115Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-4#005",
+            "answer": "129",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/4#006",
+          "subject": "110",
+          "aspect": "정부 민원 안내 통합",
+          "knowledgePoint": "어느 기관에 물어야 할지 모를 때 걸도록 만든 정부 민원 안내 번호",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.115Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-4#006",
+            "answer": "110",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/4#007",
+          "subject": "긴급신고 통합",
+          "aspect": "119로 흡수된 해양 신고 번호",
+          "knowledgePoint": "흩어져 있던 긴급 신고 번호를 셋으로 줄이면서 바다에서의 신고가 어디로 합쳐졌는지",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.115Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r018/daily-rule-4#007",
+            "answer": "119",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "기존 db:290 과 중복 (Gemini same 0.95, keep=b). 둘 다 정답이 119 이고 묻는 대상이 같다",
+              "decidedBy": "Gemini 판정",
+              "duplicateOf": "db:290",
+              "at": "2026-09-17T00:47:20.590Z"
+            }
+          }
+        },
+        {
+          "seedId": "daily-rule/4#008",
+          "subject": "911",
+          "aspect": "미국의 긴급 신고 번호",
+          "knowledgePoint": "미국에서 경찰·소방·구급을 한 번호로 받는 체계와 그 번호",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.115Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-4#008",
+            "answer": "911",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/4#009",
+          "subject": "999",
+          "aspect": "세계 최초의 긴급 전화 번호",
+          "knowledgePoint": "1937년 영국에서 처음 만들어진 긴급 전화 번호와 그 번호가 선택된 배경",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.115Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-4#009",
+            "answer": "999",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/4#010",
+          "subject": "118",
+          "aspect": "사이버 침해 신고",
+          "knowledgePoint": "해킹·악성코드 피해를 신고하고 상담받는 정보 보안 전용 번호",
+          "round": "r018",
+          "seedPrompt": "seed-v1",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-16T07:13:29.115Z",
+          "question": {
+            "status": "ok",
+            "ref": "r018/daily-rule-4#010",
+            "answer": "118",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     }
   }
 }

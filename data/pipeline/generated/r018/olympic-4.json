@@ -1,0 +1,280 @@
+{
+  "_meta": {
+    "round": "r018",
+    "subId": "olympic/4",
+    "categoryPath": "스포츠·게임 > 올림픽·국제대회 > 올림픽 상징·의례",
+    "midKey": "olympic",
+    "subName": "올림픽 상징·의례",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v1",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-16T07:14:49.052Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 10,
+      "actualCount": 10,
+      "shortfallReason": null,
+      "listedCandidates": 23,
+      "remainingUsable": 6,
+      "remainingUsableNote": "★ 남은 후보 13개 중 마스코트의 시작, 올림픽 찬가, 개회 선언 주체, 표창대의 도입, 폐회식 기 전달, 올림픽기 게양 정도가 쓸 만하다. 나머지는 수치·기록이라 소분류 경계가 금지한다.",
+      "estimatedCeiling": "★ 실질 상한 **16건** 으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "성화 봉송",
+          "aspect": "처음 시행된 대회",
+          "reason": "★ R017 olympic/1#002 (성화 봉송 + 처음 시행된 대회) 와 knowledgePoint 가 같다. 소분류는 다르지만 같은 사실을 묻게 된다"
+        }
+      ],
+      "consideredButKept": [
+        {
+          "subject": "오륜기",
+          "aspect": "도안을 만든 사람",
+          "reason": "★★ 정답이 R017 olympic/1#001 과 같은 '쿠베르탱' 이 될 것을 알면서 살렸다. 묻는 지식이 다르다(근대 올림픽을 되살린 일 vs 오륜기 도안). ★ R017 과의 3방향 대조에서 이것이 어떻게 판정되는지 보려는 목적도 있다"
+        }
+      ]
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-17T00:33:03.993Z"
+  },
+  "items": [
+    {
+      "seedId": "olympic/4#001",
+      "seed": {
+        "subject": "오륜기",
+        "aspect": "다섯 고리가 나타내는 것",
+        "knowledgePoint": "서로 얽힌 다섯 고리가 무엇을 상징하도록 고안되었는지"
+      },
+      "question": {
+        "ok": true,
+        "question": "올림픽기에 그려진 다섯 개의 고리가 서로 얽혀 있는 것은, 세계의 무엇들이 하나로 만난다는 뜻을 담은 것인가?",
+        "answer": "대륙",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "대륙입니다. 다섯 고리의 색과 흰 바탕을 합치면 당시 거의 모든 나라의 국기를 그릴 수 있다는 점도 함께 고려됐습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/4#002",
+      "seed": {
+        "subject": "오륜기",
+        "aspect": "도안을 만든 사람",
+        "knowledgePoint": "올림픽기의 도안이 누구의 손에서 나왔고 언제 처음 걸렸는지"
+      },
+      "question": {
+        "ok": true,
+        "question": "1913년에 다섯 개의 고리를 겹친 도안을 직접 그려 올림픽의 상징으로 제안한 사람은?",
+        "answer": "쿠베르탱",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "쿠베르탱입니다. 이듬해 대회에서 처음 공개할 예정이었으나 전쟁으로 미뤄져 1920년 대회에서야 걸렸습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "R017 olympic/1#001 과 중복 (Gemini same 0.95, keep=b). ★ 소재 단계에서 'kp 가 다르니 살린다' 고 판단했으나 판정은 같은 문제로 보았다 — 둘 다 결국 '쿠베르탱을 아는가' 로 귀결된다",
+          "decidedBy": "Gemini 판정 + 생성세션 수용",
+          "duplicateOf": "olympic/1#001",
+          "at": "2026-09-17T00:47:20.516Z"
+        }
+      }
+    },
+    {
+      "seedId": "olympic/4#003",
+      "seed": {
+        "subject": "올림픽 표어",
+        "aspect": "2021년에 새로 덧붙은 말",
+        "knowledgePoint": "백 년 넘게 세 낱말이던 표어에 연대를 뜻하는 말이 더해진 일"
+      },
+      "question": {
+        "ok": true,
+        "question": "\"더 빨리, 더 높이, 더 힘차게\"라는 올림픽 표어에 2021년 한 마디가 덧붙었습니다. 연대를 뜻하는 이 말은?",
+        "answer": "다 함께",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "'다 함께'입니다. 백 년 넘게 세 낱말이던 표어에 처음으로 더해진 말로, 경쟁만이 아니라 연대를 담으려는 뜻이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/4#004",
+      "seed": {
+        "subject": "성화 채화",
+        "aspect": "불을 얻는 장소와 방법",
+        "knowledgePoint": "대회 때마다 같은 장소에서 오목거울로 햇빛을 모아 불을 붙이는 의례"
+      },
+      "question": {
+        "ok": true,
+        "question": "성화는 대회 때마다 같은 곳에서 오목거울로 햇빛을 모아 붙입니다. 고대 제전이 열렸던 이 그리스의 유적지는?",
+        "answer": "올림피아",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "올림피아입니다. 헤라 신전 앞에서 여사제 역할을 맡은 이들이 채화 의식을 치릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/4#005",
+      "seed": {
+        "subject": "개회식 입장 순서",
+        "aspect": "맨 앞과 맨 뒤가 정해져 있는 규칙",
+        "knowledgePoint": "선수단 입장에서 한 나라가 늘 맨 앞에 서도록 정해 둔 관례와 그 까닭"
+      },
+      "question": {
+        "ok": true,
+        "question": "올림픽 개회식에서 선수단이 입장할 때, 근대 올림픽의 뿌리가 된 나라라는 이유로 늘 맨 앞에 서는 나라는?",
+        "answer": "그리스",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "그리스입니다. 맨 마지막은 개최국이며, 그 사이는 개최국의 언어 순서로 들어갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/4#006",
+      "seed": {
+        "subject": "올림픽 금메달",
+        "aspect": "실제 재질",
+        "knowledgePoint": "금메달이 순금이 아니라 다른 금속에 도금해 만들어진다는 사실"
+      },
+      "question": {
+        "ok": true,
+        "question": "올림픽 금메달은 순금이 아닙니다. 규정상 겉에 금을 입히기 전, 메달의 몸체를 이루는 금속은 무엇인가?",
+        "answer": "은",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "은입니다. 순도 높은 은에 금 6g 이상을 도금하도록 정해져 있습니다. 순금 메달은 1912년 대회가 마지막이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/4#007",
+      "seed": {
+        "subject": "고대 올림피아 제전",
+        "aspect": "우승자에게 씌운 관",
+        "knowledgePoint": "고대 제전의 우승 부상이 흔히 알려진 것과 다른 나무로 만들어졌다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "고대 올림피아 제전의 우승자에게 씌운 관은 흔히 알려진 월계수가 아니라 다른 나무의 가지로 엮은 것이었습니다. 어떤 나무인가?",
+        "answer": "올리브",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "올리브입니다. 월계관은 델포이에서 열린 다른 제전의 부상이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/4#008",
+      "seed": {
+        "subject": "올림픽 휴전",
+        "aspect": "고대 관습을 되살린 결의",
+        "knowledgePoint": "대회 기간에 다툼을 멈추던 고대의 관습을 오늘날 국제기구가 결의로 잇고 있다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "고대 그리스에서는 제전이 열리는 동안 도시 국가들이 다툼을 멈췄습니다. 이 관습을 본떠 지금도 유엔 총회가 대회마다 채택하는 결의를 무엇이라 하는가?",
+        "answer": "올림픽 휴전",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "올림픽 휴전입니다. 실제로 지켜지지 않은 때가 많지만, 상징적인 선언으로 이어지고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/4#009",
+      "seed": {
+        "subject": "올림픽 메달의 도안",
+        "aspect": "앞면에 새겨진 승리의 여신",
+        "knowledgePoint": "하계 올림픽 메달 앞면에 오랫동안 같은 그리스 여신이 새겨져 온 관례"
+      },
+      "question": {
+        "ok": true,
+        "question": "하계 올림픽 메달 앞면에는 오랫동안 같은 그리스 여신이 새겨져 왔습니다. 승리를 관장하는 이 여신은?",
+        "answer": "니케",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "니케입니다. 한 손에 종려나무 가지를 들고 경기장으로 내려오는 모습으로 새겨집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/4#010",
+      "seed": {
+        "subject": "올림픽 헌장",
+        "aspect": "대회 운영의 최상위 규범",
+        "knowledgePoint": "올림픽의 원칙과 기구의 권한을 정한 문서가 모든 규정의 위에 있다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "국제올림픽위원회의 권한과 대회 운영의 원칙을 담아, 올림픽에 관한 모든 규정의 맨 위에 놓이는 문서는?",
+        "answer": "올림픽 헌장",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "올림픽 헌장입니다. 종목 채택과 개최지 선정, 상징물 사용까지 모두 이 문서를 근거로 정해집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "round": "r018",
+  "model": "gemini-3.6-flash",
+  "usage": {
+    "prompt": 2797,
+    "output": 1280,
+    "thoughts": 1669,
+    "total": 5746
+  },
+  "judgedAt": "2026-09-17T00:46:38.777Z",
+  "counts": {
+    "pairs": 11,
+    "inside": 1,
+    "vsDb": 6
+  },
+  "judged": [
+    {
+      "pairId": "in1",
+      "verdict": "different",
+      "reason": "A는 고속도로 안내 표지의 바탕색(교통 표지 상식)을 묻고, B는 선박의 우현등 색상(항해/선박 상식)을 묻고 있어 지식의 분야와 대상이 다릅니다.",
+      "keep": "none",
+      "confidence": 1,
+      "mergeAnswers": [],
+      "scope": "inside",
+      "a": {
+        "ref": "symbols/2#007",
+        "question": "일반 국도의 안내 표지는 파란 바탕에 흰 글씨입니다. 그러면 고속도로 안내 표지의 바탕은 무슨 색인가?",
+        "answer": "녹색",
+        "category": "생활·상식 > 기호·상징·표지 > 교통 표지",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "transport/4#004",
+        "question": "밤바다에서 서로의 진행 방향을 알아보도록 배의 좌우에는 다른 색 등을 답니다. 왼쪽이 붉은색이라면 오른쪽에는 무슨 색 등을 다는가?",
+        "answer": "녹색",
+        "category": "기술·의학 > 자동차·교통 > 선박",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "xr1",
+      "verdict": "different",
+      "reason": "A는 영화 <벌새>(대중문화 지식)를 묻고 있고, B는 조류 벌새(자연과학 지식)를 묻고 있는 동음이의어 다른 문제입니다.",
+      "keep": "none",
+      "confidence": 1,
+      "mergeAnswers": [],
+      "scope": "vs-r017",
+      "a": {
+        "ref": "kr-screen/4#003",
+        "question": "성수대교가 무너진 1994년을 배경으로 열네 살 소녀의 하루하루를 담아 여러 국제 영화제에서 상을 받은 김보라 감독의 2018년 작품은?",
+        "answer": "벌새",
+        "category": "한국 > 한국 영화·드라마 > 한국 독립·예술영화",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "animals/2#003",
+        "question": "1초에 수십 번씩 날개를 저어 공중에 멈춘 채 꿀을 빨 수 있고, 새 가운데 거의 유일하게 뒤로도 날 수 있는 무리는?",
+        "answer": "벌새",
+        "category": "자연과학 > 동물 > 조류",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "xr2",
+      "verdict": "different",
+      "reason": "A는 진동수/주파수의 단위인 '헤르츠(Hz)'를 묻고 있고, B는 전자기파를 발견한 독일의 물리학자 '하인리히 헤르츠'라는 인물을 묻고 있어 대상이 다릅니다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "mergeAnswers": [],
+      "scope": "vs-r017",
+      "a": {
+        "ref": "kr-tv/4#004",
+        "question": "라디오 주파수를 89.1처럼 적을 때 뒤에 붙는 단위로, 1초에 몇 번 진동하는지를 나타내며 독일 물리학자의 이름에서 온 것은?",
+        "answer": "헤르츠",
+        "category": "한국 > 한국 방송·예능 > 라디오 방송",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "invention/3#008",
+        "question": "맥스웰이 수식으로만 예측했던 전자기파를 불꽃 장치로 실제로 만들어 내고 받아 보임으로써 그 존재를 확인했고, 주파수 단위에 이름이 남은 물리학자는?",
+        "answer": "헤르츠",
+        "category": "기술·의학 > 발명·발견 > 물리·화학 분야 발견",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "xr3",
+      "verdict": "same",
+      "reason": "두 문제 모두 근대 올림픽을 제창하고 올림픽 상징(오륜기)을 제안한 피에르 드 쿠베르탱에 대해 묻고 있습니다.",
+      "keep": "b",
+      "confidence": 0.95,
+      "keepReason": "근대 올림픽 제창 및 IOC 창설이라는 쿠베르탱의 가장 대표적인 업적을 명확히 제시하고 있습니다.",
+      "mergeAnswers": [],
+      "scope": "vs-r017",
+      "a": {
+        "ref": "olympic/4#002",
+        "question": "1913년에 다섯 개의 고리를 겹친 도안을 직접 그려 올림픽의 상징으로 제안한 사람은?",
+        "answer": "쿠베르탱",
+        "category": "스포츠·게임 > 올림픽·국제대회 > 올림픽 상징·의례",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "olympic/1#001",
+        "question": "고대 그리스의 제전을 본떠 국제 경기 대회를 되살리자고 주창하고, 1894년 국제올림픽위원회를 만든 프랑스 교육자는?",
+        "answer": "쿠베르탱",
+        "category": "스포츠·게임 > 올림픽·국제대회 > 하계 올림픽",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "xr4",
+      "verdict": "different",
+      "reason": "A는 올림픽 메달의 성분 규정에 관한 상식을 묻고, B는 원소 기호 Ag 및 금속의 전기전도성에 관한 화학 지식을 묻고 있어 지식 분야가 다릅니다.",
+      "keep": "none",
+      "confidence": 1,
+      "mergeAnswers": [],
+      "scope": "vs-r017",
+      "a": {
+        "ref": "olympic/4#006",
+        "question": "올림픽 금메달은 순금이 아닙니다. 규정상 겉에 금을 입히기 전, 메달의 몸체를 이루는 금속은 무엇인가?",
+        "answer": "은",
+        "category": "스포츠·게임 > 올림픽·국제대회 > 올림픽 상징·의례",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "chemistry/1#008",
+        "question": "원소 기호를 Ag로 적으며, 모든 금속 가운데 전기와 열을 가장 잘 전달하는 것은 무엇인가요?",
+        "answer": "은",
+        "category": "자연과학 > 화학·원소 > 원소 기호",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "db1",
+      "verdict": "different",
+      "reason": "A는 한국 전화 지역번호 체계(서울 02)에 관한 상식을 묻고, B는 대한민국의 수도라는 지리 지식을 묻고 있어 요구 지식이 다릅니다.",
+      "keep": "none",
+      "confidence": 1,
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "daily-rule/3#008",
+        "question": "우리나라 전화 지역번호는 대부분 세 자리인데, 딱 한 곳만 두 자리입니다. 어디인가?",
+        "answer": "서울",
+        "category": "생활·상식 > 생활 규칙·안전 > 우편·번호 체계",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:3",
+        "question": "대한민국의 수도는?",
+        "answer": "서울",
+        "category": "(소분류 없음)",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "db2",
+      "verdict": "same",
+      "reason": "두 문제 모두 긴급 구조 및 신고 전화번호인 119를 묻고 있습니다.",
+      "keep": "b",
+      "confidence": 0.95,
+      "keepReason": "119의 가장 기본적이고 핵심적인 역할(화재 신고 및 긴급 구조·구급)을 명확하게 묻고 있어 문제로서의 가치가 더 높습니다.",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "daily-rule/4#007",
+        "question": "흩어져 있던 긴급 신고 번호를 정리하면서, 바다에서의 사고를 신고하던 122번은 2016년에 어느 번호로 합쳐졌는가?",
+        "answer": "119",
+        "category": "생활·상식 > 생활 규칙·안전 > 신고·응급 번호",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:290",
+        "question": "대한민국에서 화재 신고 및 긴급 구조·구급 요청을 위해 누르는 전화번호는?",
+        "answer": "119",
+        "category": "L2:daily-rule > 신고·응급 번호",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "db3",
+      "verdict": "same",
+      "reason": "두 문제 모두 가을에 노랗게 물드는 나무인 '은행나무'의 특징 및 어원을 묻고 있습니다.",
+      "keep": "b",
+      "confidence": 0.95,
+      "keepReason": "'살아있는 화석', '겉씨식물' 등 식물학적·학술적 정보가 잘 담겨 있어 알아두면 좋은 정보 가치가 높습니다.",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "plants/4#004",
+        "question": "씨앗의 속살이 은빛이 도는 살구를 닮았다는 데서 한자 이름이 붙었고, 가을에 노랗게 물드는 가로수로 흔히 심는 나무는?",
+        "answer": "은행나무",
+        "category": "자연과학 > 식물 > 식물 이름의 유래",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:141",
+        "question": "가을에 잎이 노랗게 물들고 암나무의 열매에서 특유의 냄새가 나며, '살아있는 화석'이라 불리는 겉씨식물 나무는?",
+        "answer": "은행나무",
+        "category": "L2:plants > 나무",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "db4",
+      "verdict": "same",
+      "reason": "두 문제 모두 대한민국의 국화인 '무궁화'를 묻는 동일한 문제 대상입니다.",
+      "keep": "a",
+      "confidence": 0.95,
+      "keepReason": "무궁화 이름의 어원과 의미('다함이 없다')를 함께 제시하여 알 가치가 높고 완성도가 좋습니다.",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "plants/4#009",
+        "question": "한 송이는 하루 만에 지지만 새 꽃이 이어 피어 여름내 끊이지 않는다는 데서 '다함이 없다' 는 뜻의 이름이 붙은, 우리나라의 나라꽃은?",
+        "answer": "무궁화",
+        "category": "자연과학 > 식물 > 식물 이름의 유래",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:33",
+        "question": "무궁화의 학명에 쓰이는 우리나라의 국화 이름은?",
+        "answer": "무궁화",
+        "category": "(소분류 없음)",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "db5",
+      "verdict": "same",
+      "reason": "두 문제 모두 어린이 보호구역(스쿨존) 내 법정 최고 제한 속도(30km/h)를 묻고 있습니다.",
+      "keep": "b",
+      "confidence": 1,
+      "keepReason": "도로교통법 및 어린이 보호구역 용어를 명확하게 제시하여 문제의 조건이 분명합니다.",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "symbols/2#006",
+        "question": "학교 주변에 지정해 통행 속도를 낮추고 단속을 강화한 구역에서, 자동차가 낼 수 있는 시속 제한은 원칙적으로 몇 킬로미터인가?",
+        "answer": "30",
+        "category": "생활·상식 > 기호·상징·표지 > 교통 표지",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:170",
+        "question": "대한민국 도로교통법상 어린이 보호구역(스쿨존)에서 지정되는 차량의 최고 제한 속도는 시속 몇 킬로미터인가?",
+        "answer": "30",
+        "category": "L2:daily-rule > 생활 법규",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "db6",
+      "verdict": "different",
+      "reason": "A는 도시 뉴욕의 별칭('빅 애플')의 유래에 관한 상식을 묻고, B는 자유의 여신상 위치 및 영어 명칭 표기를 묻고 있어 묻는 내용과 답의 언어 형식이 다릅니다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "world-geo/5#001",
+        "question": "경마 기자와 재즈 연주자들이 '가장 큰 무대' 를 가리켜 쓰던 은어가 그대로 도시의 별칭이 되었습니다. '빅 애플' 로 불리는 이 도시는?",
+        "answer": "뉴욕",
+        "category": "인문·사회 > 세계 지리·국가·수도 > 도시 별칭",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:20",
+        "question": "자유의 여신상이 있는 미국 도시의 영어 이름은?",
+        "answer": "New York",
+        "category": "(소분류 없음)",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    }
+  ]
+}

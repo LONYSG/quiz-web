@@ -1,0 +1,274 @@
+{
+  "_meta": {
+    "round": "r018",
+    "subId": "daily-rule/4",
+    "categoryPath": "생활·상식 > 생활 규칙·안전 > 신고·응급 번호",
+    "midKey": "daily-rule",
+    "subName": "신고·응급 번호",
+    "majorKey": "life",
+    "seedPrompt": "seed-v1",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-16T07:13:29.115Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 10,
+      "actualCount": 10,
+      "shortfallReason": null,
+      "listedCandidates": 22,
+      "remainingUsable": 3,
+      "remainingUsableNote": "★ 남은 후보 12개 중 111(국정원)·113(간첩)·121(수도)·125(관세)·128(환경)·1345(외국인)은 한국 성인이 알아둘 가치가 낮거나 거의 쓰이지 않는다. 쓸 만한 것은 국번 없는 세 자리 체계, 재난문자 등급, 해외 긴급번호 하나 정도다.",
+      "estimatedCeiling": "★ 실질 상한 **13건** 으로 추정한다.",
+      "note": "★★ 이 소분류는 **정답이 거의 전부 숫자**가 된다. 프롬프트 B 가 '숫자 정답 비중을 낮게' 라고 하지만, 그 근거는 '답의 범위가 좁으면 찍기가 된다' 는 것이다. 세 자리·네 자리 신고 번호는 찍을 수 없으므로 규칙의 취지에는 어긋나지 않는다고 판단했다. 다만 라운드 전체의 숫자 정답 비중이 올라간다.",
+      "droppedForOverlap": [
+        {
+          "subject": "119",
+          "aspect": "화재·구급 신고",
+          "reason": "usedAnswers 의 '119' 와 knowledgePoint 가 같다"
+        }
+      ]
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-17T00:29:31.381Z"
+  },
+  "items": [
+    {
+      "seedId": "daily-rule/4#001",
+      "seed": {
+        "subject": "112",
+        "aspect": "범죄 신고 전용 번호",
+        "knowledgePoint": "범죄 신고를 받는 경찰 전용 번호와 그것이 재난 신고와 갈라져 있는 까닭"
+      },
+      "question": {
+        "ok": true,
+        "question": "폭행이나 절도처럼 범죄가 일어났거나 일어나려 할 때 경찰에 바로 신고하는 전화번호는?",
+        "answer": "112",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 5,
+        "explanation": "112입니다. 재난과 구급은 119, 범죄는 112로 나뉘어 있고, 어느 쪽으로 걸어도 서로 연결해 줍니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/4#002",
+      "seed": {
+        "subject": "117",
+        "aspect": "학교폭력 신고·상담",
+        "knowledgePoint": "학교폭력 피해를 24시간 신고·상담할 수 있도록 따로 둔 번호"
+      },
+      "question": {
+        "ok": true,
+        "question": "학교폭력 피해를 하루 24시간 언제든 신고하고 상담받을 수 있도록 따로 마련해 둔 세 자리 전화번호는?",
+        "answer": "117",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "117입니다. 경찰청과 교육부, 여성가족부가 함께 운영하며 문자 신고도 받습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/4#003",
+      "seed": {
+        "subject": "182",
+        "aspect": "실종 아동 찾기",
+        "knowledgePoint": "아이나 지적장애인이 실종됐을 때 경찰이 운영하는 전담 신고 창구"
+      },
+      "question": {
+        "ok": true,
+        "question": "아이나 치매 노인이 길을 잃었을 때 경찰청 실종아동찾기센터로 바로 연결되는 세 자리 전화번호는?",
+        "answer": "182",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "182입니다. 미리 지문과 사진을 등록해 두는 사전등록제도 함께 운영합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/4#004",
+      "seed": {
+        "subject": "1388",
+        "aspect": "청소년 상담 전화",
+        "knowledgePoint": "가출·학업 중단 등으로 도움이 필요한 청소년이 거는 상담 번호"
+      },
+      "question": {
+        "ok": true,
+        "question": "가출이나 학업 중단, 진로 고민으로 도움이 필요한 청소년이 걸면 상담을 받을 수 있는 전화번호는?",
+        "answer": "1388",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "1388입니다. 청소년상담복지센터로 연결되며 문자와 채팅 상담도 함께 운영합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/4#005",
+      "seed": {
+        "subject": "129",
+        "aspect": "보건복지 상담",
+        "knowledgePoint": "복지 급여와 위기 가정 지원을 안내하는 보건복지 분야 상담 번호"
+      },
+      "question": {
+        "ok": true,
+        "question": "기초생활수급 같은 복지 급여 안내와 위기 가정 지원 상담을 맡는 보건복지 분야 대표 상담 전화번호는?",
+        "answer": "129",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "129입니다. 보건복지상담센터로 연결되며, 갑작스러운 위기로 생계가 어려워졌을 때 긴급복지지원도 안내합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/4#006",
+      "seed": {
+        "subject": "110",
+        "aspect": "정부 민원 안내 통합",
+        "knowledgePoint": "어느 기관에 물어야 할지 모를 때 걸도록 만든 정부 민원 안내 번호"
+      },
+      "question": {
+        "ok": true,
+        "question": "어느 기관에 물어야 할지 모르는 민원이 있을 때 걸면 담당 기관을 찾아 연결해 주는 정부 대표 민원 안내 번호는?",
+        "answer": "110",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "110입니다. 국민권익위원회가 운영하며 수어 상담과 외국어 상담도 제공합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/4#007",
+      "seed": {
+        "subject": "긴급신고 통합",
+        "aspect": "119로 흡수된 해양 신고 번호",
+        "knowledgePoint": "흩어져 있던 긴급 신고 번호를 셋으로 줄이면서 바다에서의 신고가 어디로 합쳐졌는지"
+      },
+      "question": {
+        "ok": true,
+        "question": "흩어져 있던 긴급 신고 번호를 정리하면서, 바다에서의 사고를 신고하던 122번은 2016년에 어느 번호로 합쳐졌는가?",
+        "answer": "119",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "119입니다. 범죄는 112, 재난과 구조는 119, 그 밖의 민원은 110으로 줄여 헷갈림을 없앴습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "기존 db:290 과 중복 (Gemini same 0.95, keep=b). 둘 다 정답이 119 이고 묻는 대상이 같다",
+          "decidedBy": "Gemini 판정",
+          "duplicateOf": "db:290",
+          "at": "2026-09-17T00:47:20.590Z"
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/4#008",
+      "seed": {
+        "subject": "911",
+        "aspect": "미국의 긴급 신고 번호",
+        "knowledgePoint": "미국에서 경찰·소방·구급을 한 번호로 받는 체계와 그 번호"
+      },
+      "question": {
+        "ok": true,
+        "question": "미국에서 경찰이든 소방이든 구급이든 가리지 않고 한 번호로 신고를 받는 긴급 전화번호는?",
+        "answer": "911",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "911입니다. 1968년부터 쓰이기 시작해 지금은 미국과 캐나다 전역에서 같은 번호를 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/4#009",
+      "seed": {
+        "subject": "999",
+        "aspect": "세계 최초의 긴급 전화 번호",
+        "knowledgePoint": "1937년 영국에서 처음 만들어진 긴급 전화 번호와 그 번호가 선택된 배경"
+      },
+      "question": {
+        "ok": true,
+        "question": "1937년 영국 런던에서 세계 최초로 만들어진 긴급 전화번호로, 다이얼 전화기에서 연기가 자욱해도 손끝으로 더듬어 돌릴 수 있는 자리에 있어 고른 것은?",
+        "answer": "999",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "999입니다. 다이얼 맨 끝에 있어 앞을 볼 수 없는 상황에서도 찾기 쉽다는 점이 고려됐습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/4#010",
+      "seed": {
+        "subject": "118",
+        "aspect": "사이버 침해 신고",
+        "knowledgePoint": "해킹·악성코드 피해를 신고하고 상담받는 정보 보안 전용 번호"
+      },
+      "question": {
+        "ok": true,
+        "question": "해킹을 당했거나 악성코드에 감염됐을 때 신고하고 상담받을 수 있는 정보 보안 전용 전화번호는?",
+        "answer": "118",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "118입니다. 한국인터넷진흥원이 운영하며 개인정보 유출과 스미싱 신고도 함께 받습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}
