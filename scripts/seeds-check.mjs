@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // =============================================================================
-// R017 규칙 검사 (작업 B-5) — API 를 쓰지 않는다. DB 는 읽기만 한다
+// 규칙 검사 + 중복 후보 추리기 (라운드 중립. R017 에서 r017-check.mjs 였다) — API 를 쓰지 않는다. DB 는 읽기만 한다
 //
 // ★★ shared 의 normalizeAnswer() / generateHint() 를 **그대로 재사용한다.**
 //   파이프라인용으로 다시 만들지 않는다. 두 곳이 다르면 어느 쪽이 맞는지 알 수 없다.
@@ -30,14 +30,26 @@ try {
 }
 
 const ROUND = process.argv[2] ?? 'r017';
+// ★★ R018: 다른 라운드와의 대조를 더했다.
+//   R017 은 "신규 안쪽" 과 "기존 DB" 두 방향만 쟀다. 소분류 **사이** 중복을 재지 못한 까닭이
+//   한 라운드 안에 소분류 20개밖에 없었기 때문이다.
+//   → 라운드가 쌓이면 라운드끼리 대조해야 그 구멍이 메워진다.
+const againstIdx = process.argv.indexOf('--against');
+const AGAINST = againstIdx >= 0 ? process.argv[againstIdx + 1].split(',') : [];
 const dir = generatedDir(ROUND);
-const files = (await readdir(dir)).filter((f) => f.endsWith('.json')).sort();
+const files = (await readdir(dir)).filter((f) => f.endsWith('.json') && !f.startsWith('_')).sort();
 
 const items = [];
+let discarded = 0;
 for (const f of files) {
   const doc = JSON.parse(await readFile(path.join(dir, f), 'utf8'));
   for (const it of doc.items) {
     if (!it.question.ok) continue;
+    // ★ 격리된 문항은 적재 대상이 아니므로 검사·중복 후보에서 뺀다 (seeds-discard.mjs)
+    if (it.question.discarded) {
+      discarded += 1;
+      continue;
+    }
     items.push({
       ref: it.seedId,
       subId: doc._meta.subId,
@@ -48,7 +60,8 @@ for (const f of files) {
     });
   }
 }
-console.log(`[입력] ${ROUND} 성공 문제 ${items.length}건 (파일 ${files.length}개)`);
+console.log(`[입력] ${ROUND} 성공 문제 ${items.length}건 (파일 ${files.length}개)` +
+  (discarded ? ` / ★ 격리 ${discarded}건은 제외했다` : ''));
 
 const findings = {
   normCollisionInside: [],
@@ -210,6 +223,56 @@ for (const [n, arr] of newByAnyNorm) {
   }
 }
 
+// ── 다른 라운드와의 대조
+const crossRounds = [];
+for (const other of AGAINST) {
+  const odir = generatedDir(other);
+  let ofiles = [];
+  try {
+    ofiles = (await readdir(odir)).filter((f) => f.endsWith('.json') && !f.startsWith('_')).sort();
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      console.log(`[대조] ${other} 라운드가 없다. 건너뛴다`);
+      continue;
+    }
+    throw err;
+  }
+  const oitems = [];
+  for (const f of ofiles) {
+    const doc = JSON.parse(await readFile(path.join(odir, f), 'utf8'));
+    for (const it of doc.items) {
+      if (!it.question.ok || it.question.discarded) continue;
+      oitems.push({ ref: it.seedId, cat: doc._meta.categoryPath, q: it.question });
+    }
+  }
+  // ★ 정규화한 정답(+표기 변형)이 겹치는 쌍만 후보로 올린다. 전수 비교를 하지 않는다
+  const oByNorm = new Map();
+  for (const it of oitems) {
+    for (const a of [it.q.answer, ...it.q.acceptedAnswers]) {
+      const n = normalizeAnswer(a);
+      const arr = oByNorm.get(n) ?? [];
+      if (!arr.includes(it)) arr.push(it);
+      oByNorm.set(n, arr);
+    }
+  }
+  const pairs = [];
+  const seen = new Set();
+  for (const it of items) {
+    for (const a of [it.q.answer, ...it.q.acceptedAnswers]) {
+      for (const o of oByNorm.get(normalizeAnswer(a)) ?? []) {
+        const key = `${it.ref}|${o.ref}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        pairs.push({
+          a: { ref: it.ref, cat: it.categoryPath, q: it.q.question, ans: it.q.answer },
+          b: { ref: o.ref, cat: o.cat, q: o.q.question, ans: o.q.answer },
+        });
+      }
+    }
+  }
+  crossRounds.push({ round: other, items: oitems.length, allPairs: items.length * oitems.length, pairs });
+}
+
 const totalNewPairs = (items.length * (items.length - 1)) / 2;
 const totalCrossPairs = items.length * dbRows.length;
 
@@ -223,8 +286,15 @@ const report = {
     candidatePairsInside: pairsInside.length,
     allPairsVsDb: totalCrossPairs,
     candidatePairsVsDb: pairsVsDb.length,
+    crossRounds: crossRounds.map((c) => ({
+      round: c.round,
+      items: c.items,
+      allPairs: c.allPairs,
+      candidatePairs: c.pairs.length,
+    })),
   },
   findings,
+  pairsVsRounds: crossRounds,
   pairsInside: pairsInside.map(([a, b]) => ({
     a: { ref: a.ref, cat: a.categoryPath, q: a.q.question, ans: a.q.answer },
     b: { ref: b.ref, cat: b.categoryPath, q: b.q.question, ans: b.q.answer },
@@ -252,6 +322,11 @@ console.log(
   `  신규 안쪽   전체 ${totalNewPairs}쌍 → 후보 ${pairsInside.length}쌍 (${((pairsInside.length / totalNewPairs) * 100).toFixed(3)}%)`,
 );
 console.log(
-  `  기존 대조   전체 ${totalCrossPairs}쌍 → 후보 ${pairsVsDb.length}쌍 (${((pairsVsDb.length / totalCrossPairs) * 100).toFixed(3)}%)`,
+  `  기존 DB     전체 ${totalCrossPairs}쌍 → 후보 ${pairsVsDb.length}쌍 (${((pairsVsDb.length / totalCrossPairs) * 100).toFixed(3)}%)`,
 );
+for (const c of crossRounds) {
+  console.log(
+    `  ${c.round} 대조  전체 ${c.allPairs}쌍 → 후보 ${c.pairs.length}쌍 (${((c.pairs.length / c.allPairs) * 100).toFixed(3)}%)`,
+  );
+}
 console.log(`\n  → ${path.relative(ROOT, out).split(path.sep).join('/')}`);

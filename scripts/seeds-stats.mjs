@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // =============================================================================
-// R017 파일럿 측정 집계 (작업 B-2 / B-3 / 작업 C) — API 도 DB 도 쓰지 않는다
+// 파일럿 측정 집계 (라운드 중립. R017 에서 r017-stats.mjs 였다) — API 도 DB 도 쓰지 않는다
 // =============================================================================
 
 import { readdir, readFile } from 'node:fs/promises';
@@ -13,14 +13,15 @@ import { generatedDir } from '../pipeline/lib/seedstore.mjs';
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ROUND = process.argv[2] ?? 'r017';
 const dir = generatedDir(ROUND);
-const files = (await readdir(dir)).filter((f) => f.endsWith('.json')).sort();
+const files = (await readdir(dir)).filter((f) => f.endsWith('.json') && !f.startsWith('_')).sort();
 
 const docs = [];
 for (const f of files) docs.push(JSON.parse(await readFile(path.join(dir, f), 'utf8')));
 
 const all = [];
 for (const d of docs) for (const it of d.items) all.push({ meta: d._meta, ...it });
-const ok = all.filter((x) => x.question.ok);
+const ok = all.filter((x) => x.question.ok && !x.question.discarded);
+const discarded = all.filter((x) => x.question.discarded).length;
 
 const line = (s) => console.log(s);
 const pct = (a, b) => `${((a / b) * 100).toFixed(1)}%`;
@@ -62,9 +63,25 @@ for (const d of docs) {
 }
 line(`  제외 사유: ${JSON.stringify(dropByKind)}`);
 
+// ★★ R018: 고갈 지점 측정 — 나열 후보 수 / 남은 쓸 만한 수 / 상한 추정
+line('');
+line('■ ★★ 고갈 지점 (소분류별)');
+let remainTotal = 0;
+for (const d of docs) {
+  const r = d._meta.seedResult ?? {};
+  remainTotal += r.remainingUsable ?? 0;
+  const okN = d.items.filter((i) => i.question.ok && !i.question.discarded).length;
+  line(
+    `  ${d._meta.subId.padEnd(18)} 나열 ${String(r.listedCandidates ?? 0).padStart(2)} → 선택 ${String(r.actualCount ?? 0).padStart(2)}` +
+      ` (${r.listedCandidates ? pct(r.actualCount ?? 0, r.listedCandidates) : '-'})` +
+      `  남은 쓸 만한 것 ${String(r.remainingUsable ?? 0).padStart(2)}  / 살아남은 문제 ${okN}`,
+  );
+}
+line(`  합계: 나열 ${listed} / 선택 ${act} / 남은 쓸 만한 것 ${remainTotal}`);
+
 // ── 2. 문제 생성
 line(`\n■ 문제 생성 (프롬프트 B)`);
-line(`  소재 ${all.length} → ok ${ok.length} (${pct(ok.length, all.length)}) / reject ${all.length - ok.length}`);
+line(`  소재 ${all.length} → ok ${ok.length} (${pct(ok.length, all.length)}) / reject ${all.filter((x)=>!x.question.ok).length} / ★ 격리 ${discarded}`);
 
 const sc = (k) => {
   const c = [0, 0, 0, 0, 0];

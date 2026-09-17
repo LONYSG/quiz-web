@@ -141,7 +141,16 @@ export async function seedUsedAnswersFromDb(subId, entries) {
 }
 
 /**
- * 한 소분류의 배치(소재 + 그 소재로 만든 문제)를 저장소에 반영한다.
+ * 한 소분류의 **소재 목록**을 저장소에 반영한다.
+ *
+ * ★★ R018: 소재 생성과 문제 생성을 **다른 세션이 맡을 수 있도록** 두 단계로 나눴다.
+ *   1단계 ingestBatch()      소재만 넣는다. 문제는 status='pending' 으로 둔다
+ *   2단계 attachQuestions()  그 소재에 문제를 붙인다
+ *
+ *   ★ 근거: R017 은 같은 세션이 소재와 문제를 연달아 만들어서
+ *     프롬프트 B 의 거절 경로(소재가 카테고리에 맞지 않을 때)가 한 번도 시험되지 않았다.
+ *
+ * ★ 옛 형식(items 에 seed 와 question 이 함께 있는 것)도 그대로 받는다. R017 배치를 위해서다.
  *
  * @returns { seedIds, addedAnswers }
  */
@@ -150,45 +159,90 @@ export async function ingestBatch(batch) {
   const doc = await loadMid(r.midKey);
   const bucket = ensureBucket(doc, batch.subId);
 
+  // ★ 두 형식을 하나로 맞춘다
+  const rows = batch.seeds
+    ? batch.seeds.map((seed) => ({ seed, question: null }))
+    : batch.items.map((it) => ({ seed: it.seed, question: it.question ?? null }));
+
   const startNo = bucket.seeds.length;
   const seedIds = [];
   let addedAnswers = 0;
 
-  batch.items.forEach((item, i) => {
+  rows.forEach((row, i) => {
     const no = String(startNo + i + 1).padStart(3, '0');
     const seedId = `${batch.subId}#${no}`;
     seedIds.push(seedId);
-    const q = item.question ?? {};
+    const q = row.question;
     bucket.seeds.push({
       seedId,
-      subject: item.seed.subject,
-      aspect: item.seed.aspect,
-      knowledgePoint: item.seed.knowledgePoint,
+      subject: row.seed.subject,
+      aspect: row.seed.aspect,
+      knowledgePoint: row.seed.knowledgePoint,
       round: batch.round,
       seedPrompt: batch.seedPrompt,
       generator: batch.generator,
       createdAt: batch.generatedAt,
       // ★ 그 소재로 만든 문제의 결과. 본문은 generated/ 에 있다
       question: {
-        status: q.ok === true ? 'ok' : q.ok === false ? 'rejected' : 'none',
+        status: q === null ? 'pending' : q.ok === true ? 'ok' : 'rejected',
         ref: `${batch.round}/${slugOf(batch.subId)}#${no}`,
-        answer: q.ok === true ? q.answer : null,
-        rejectReason: q.ok === false ? (q.rejectReason ?? '(사유 없음)') : null,
-        questionPrompt: batch.questionPrompt,
+        answer: q?.ok === true ? q.answer : null,
+        rejectReason: q?.ok === false ? (q.rejectReason ?? '(사유 없음)') : null,
+        questionPrompt: batch.questionPrompt ?? null,
       },
     });
-    if (q.ok === true && q.answer) {
-      bucket.usedAnswers.push({
-        answer: q.answer,
-        origin: `${batch.round}:${seedId}`,
-        note: null,
-      });
+    if (q?.ok === true && q.answer) {
+      bucket.usedAnswers.push({ answer: q.answer, origin: `${batch.round}:${seedId}`, note: null });
       addedAnswers += 1;
     }
   });
 
   await saveMid(doc);
   return { seedIds, addedAnswers };
+}
+
+/**
+ * 이미 들어 있는 소재에 **문제를 붙인다** (2단계).
+ *
+ * ★ seedId 로 짝을 맞춘다. 순서에 기대지 않는다 —
+ *   문제 세션이 일부만 돌려주거나 순서를 바꿔 돌려줄 수 있기 때문이다.
+ *
+ * @returns { attached, ok, rejected, addedAnswers }
+ */
+export async function attachQuestions(subId, entries, meta) {
+  const r = resolveSubId(subId);
+  const doc = await loadMid(r.midKey);
+  const bucket = doc.subs[subId];
+  if (!bucket) throw new Error(`소재 저장소에 ${subId} 가 없다`);
+
+  let attached = 0;
+  let ok = 0;
+  let addedAnswers = 0;
+
+  for (const e of entries) {
+    const seed = bucket.seeds.find((s) => s.seedId === e.seedId);
+    if (!seed) throw new Error(`소재 ${e.seedId} 를 찾을 수 없다`);
+    if (seed.question.status !== 'pending') {
+      throw new Error(`${e.seedId} 는 이미 ${seed.question.status} 다. 덮어쓰지 않는다`);
+    }
+    const q = e.question;
+    seed.question.status = q.ok === true ? 'ok' : 'rejected';
+    seed.question.answer = q.ok === true ? q.answer : null;
+    seed.question.rejectReason = q.ok === false ? (q.rejectReason ?? '(사유 없음)') : null;
+    seed.question.questionPrompt = meta?.questionPrompt ?? null;
+    seed.question.questionGenerator = meta?.generator ?? null;
+    attached += 1;
+    if (q.ok === true) {
+      ok += 1;
+      if (q.answer) {
+        bucket.usedAnswers.push({ answer: q.answer, origin: `${meta.round}:${e.seedId}`, note: null });
+        addedAnswers += 1;
+      }
+    }
+  }
+
+  await saveMid(doc);
+  return { attached, ok, rejected: attached - ok, addedAnswers };
 }
 
 export async function loadState() {

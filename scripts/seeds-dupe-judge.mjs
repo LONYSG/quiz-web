@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // =============================================================================
-// R017 중복 판정 (작업 B-4) — 후보 쌍만 Gemini 에게 넘겨 "같은 문제인가" 를 묻는다
+// 중복 판정 (라운드 중립. R017 에서 r017-dupe-judge.mjs 였다) — 후보 쌍만 Gemini 에게 넘겨 "같은 문제인가" 를 묻는다
 //
 // ★★ 판정 모델은 생성 모델과 달라야 한다 (D-043 / Q-81).
 //   이번 라운드의 생성은 Opus 가 했다. 그래서 판정은 Gemini 가 한다.
@@ -54,6 +54,22 @@ for (const p of cand.pairsInside) {
     b: { ref: p.b.ref, question: p.b.q, answer: p.b.ans, category: p.b.cat, accessibility: 0, worthKnowing: 0, answerCount: 1 },
   });
 }
+// ★★ R018: 라운드 간 대조를 더했다. R017 이 재지 못한 "소분류 사이 중복" 이 여기서 드러난다
+let x = 0;
+for (const c of cand.pairsVsRounds ?? []) {
+  for (const p of c.pairs) {
+    x += 1;
+    pairs.push({
+      pairId: `xr${x}`,
+      scope: `vs-${c.round}`,
+      sharedAnswer: p.a.ans,
+      level: 'same-answer',
+      a: { ref: p.a.ref, question: p.a.q, answer: p.a.ans, category: p.a.cat, accessibility: 0, worthKnowing: 0, answerCount: 1 },
+      b: { ref: p.b.ref, question: p.b.q, answer: p.b.ans, category: p.b.cat, accessibility: 0, worthKnowing: 0, answerCount: 1 },
+    });
+  }
+}
+
 let m = 0;
 for (const p of cand.pairsVsDb) {
   m += 1;
@@ -67,7 +83,7 @@ for (const p of cand.pairsVsDb) {
   });
 }
 
-console.log(`[입력] 후보 ${pairs.length}쌍 (신규 안쪽 ${n} / 기존 대조 ${m})`);
+console.log(`[입력] 후보 ${pairs.length}쌍 (신규 안쪽 ${n} / 라운드 간 ${x} / 기존 DB ${m})`);
 if (pairs.length === 0) {
   await writeFile(outFile, `${JSON.stringify({ round: ROUND, pairs: [], judged: [], note: '후보가 없어 호출하지 않았다' }, null, 2)}\n`, 'utf8');
   console.log('후보가 없다. API 를 호출하지 않는다.');

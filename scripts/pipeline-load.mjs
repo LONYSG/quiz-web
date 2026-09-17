@@ -24,6 +24,15 @@
 //   npm run pipeline:load                      approved/ 전체를 적재
 //   npm run pipeline:load -- --dry-run         무엇이 적재될지만 보여준다
 //   npm run pipeline:load -- --pending         승인 대기 상태로 넣는다 (기본은 승인)
+//
+// ★★ R018: 소재 기반 파이프라인(generated/<round>/)도 읽을 수 있게 했다.
+//   npm run pipeline:load -- --round r017 --dry-run
+//   npm run pipeline:load -- --round r017,r018 --dry-run
+//   ★ --round 를 주면 approved/ 대신 data/pipeline/generated/<round>/ 를 읽는다.
+//   ★★ 이 경로에는 review.status 가 없다. 대신 아래 조건을 코드가 강제한다 —
+//        question.ok === true / question.discarded 가 없다 / 정답이 있다
+//      사람의 승인은 **--round 를 직접 치는 행위 자체**로 본다.
+//      ★ 그래서 --round 는 기본값이 없고, 주지 않으면 옛 경로로만 동작한다.
 // =============================================================================
 
 import { readFile, readdir } from 'node:fs/promises';
@@ -33,7 +42,9 @@ import pg from 'pg';
 import { normalizeAnswer, NORMALIZE_VERSION } from '../shared/dist/index.js';
 import { dedupeAnswers } from '../pipeline/dist/rules.js';
 import { DATA_DIRS } from '../pipeline/dist/config.js';
-import { findMid } from '../pipeline/dist/categories.js';
+import { findMid, findMajor } from '../pipeline/dist/categories.js';
+import { resolveSubId } from '../pipeline/lib/subid.mjs';
+import { generatedDir } from '../pipeline/lib/seedstore.mjs';
 
 /**
  * ★ 소분류 이름 → categories 테이블의 리프 key.
@@ -58,6 +69,22 @@ try {
 const args = process.argv.slice(2);
 const DRY = args.includes('--dry-run');
 const AS_PENDING = args.includes('--pending');
+const roundIdx = args.indexOf('--round');
+const ROUNDS = roundIdx >= 0 ? args[roundIdx + 1].split(',').map((r) => r.trim()) : [];
+/** ★ 소재 기반 파이프라인의 source_id. 0005 마이그레이션이 이 행을 넣는다 */
+const SEED_SOURCE_ID = 'seed-gen';
+
+/**
+ * ★ 1~5 점수를 questions.difficulty 의 세 단계로 옮긴다.
+ *   ★ 근거: 컬럼이 enum 세 값이라 그대로 넣을 수 없다. 경계는 임의가 아니라
+ *     R017/R018 실측 분포(평균 3.0~3.2, 4 이상이 29~40%)를 보고 잡았다 —
+ *     2 이하를 easy, 3 을 medium, 4 이상을 hard 로 두면 세 구간이 고르게 나뉜다.
+ */
+function difficultyBand(score) {
+  if (score <= 2) return 'easy';
+  if (score === 3) return 'medium';
+  return 'hard';
+}
 const DATABASE_URL =
   process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
 
@@ -77,15 +104,103 @@ async function walk(dir) {
     else if (e.name.endsWith('.json')) files.push(full);
   }
 }
-await walk(approvedRoot);
+// ★★ --round 를 주면 옛 approved/ 경로는 읽지 않는다.
+//   ★ 근거: 두 경로를 섞으면 "무엇을 적재하려는지" 가 한눈에 보이지 않는다.
+//     (source_id, source_ref) UNIQUE 가 이중 적재는 막아 주지만, 의도하지 않은 것이
+//     함께 들어가는 사고는 막지 못한다. 한 번에 한 경로만 다룬다.
+if (ROUNDS.length === 0) await walk(approvedRoot);
 
-if (files.length === 0) {
+// ★ --round 로 들어온 경우에는 approved/ 가 비어 있는 것이 정상이다. 여기서 끊지 않는다.
+if (ROUNDS.length === 0 && files.length === 0) {
   console.log(`[load] ${path.relative(ROOT, approvedRoot)} 에 승인 파일이 없다.`);
   console.log('[load]   검수 절차는 docs/11-DEPLOY.md 를 본다.');
+  console.log('[load]   ★ 소재 기반 파이프라인을 적재하려면 --round r018 처럼 지정한다.');
   process.exit(0);
 }
 
 const items = [];
+
+// ── 1-b. ★★ R018: generated/<round>/ 읽기 (소재 기반 파이프라인)
+for (const round of ROUNDS) {
+  const dir = generatedDir(round);
+  let names = [];
+  try {
+    names = (await readdir(dir)).filter((n) => n.endsWith('.json') && !n.startsWith('_')).sort();
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      console.log(`[load] ★ ${round} 라운드 디렉터리가 없다: ${path.relative(ROOT, dir)}`);
+      continue;
+    }
+    throw err;
+  }
+  let ok = 0;
+  let skippedDiscarded = 0;
+  let skippedPending = 0;
+  for (const n of names) {
+    const doc = JSON.parse(await readFile(path.join(dir, n), 'utf8'));
+    const r = resolveSubId(doc._meta.subId);
+    for (const it of doc.items) {
+      const q = it.question ?? {};
+      if (q.status === 'pending') {
+        skippedPending += 1;
+        continue;
+      }
+      if (q.ok !== true) continue;
+      // ★★ 격리된 문항은 절대 적재하지 않는다. 중복으로 판정된 것이 여기로 들어온다
+      if (q.discarded) {
+        skippedDiscarded += 1;
+        continue;
+      }
+      items.push({
+        sourceId: SEED_SOURCE_ID,
+        // ★ seedId 가 그대로 source_ref 다. 소분류·순번이 들어 있어 사람이 읽을 수 있고,
+        //   (source_id, source_ref) UNIQUE 로 두 번 적재가 막힌다
+        sourceRef: it.seedId,
+        verdict: 'accept',
+        generated: {
+          questionKo: q.question,
+          displayAnswer: q.answer,
+          answers: q.acceptedAnswers ?? [],
+          // ★ 힌트는 서버가 display_answer 로 만든다. 따로 저장하지 않는다
+          hintAnswer: null,
+          answerLang: 'ko',
+          explanation: q.explanation ?? null,
+          difficulty: difficultyBand(q.difficulty),
+          category: r.path,
+        },
+        gen: {
+          midKey: r.midKey,
+          sub: r.subName,
+          accessibility: q.accessibility,
+          difficultyScore: q.difficulty,
+          worthKnowing: q.worthKnowing,
+          seedSubject: it.seed?.subject ?? null,
+          seedAspect: it.seed?.aspect ?? null,
+        },
+        meta: {
+          processModel: doc._meta.questionGenerator ?? doc._meta.generator ?? null,
+          seedPrompt: doc._meta.seedPrompt ?? null,
+          questionPrompt: doc._meta.questionPrompt ?? null,
+          round,
+        },
+        ai: { selfCheck: q.selfCheck ?? null },
+        rules: { answerRevision: q.answerRevision ?? null },
+        review: {
+          status: 'approved',
+          note:
+            `소재 기반 파이프라인 ${round} / 소재 "${it.seed?.subject ?? '?'} + ${it.seed?.aspect ?? '?'}" ` +
+            `/ 프롬프트 ${doc._meta.seedPrompt ?? '?'} + ${doc._meta.questionPrompt ?? '?'}`,
+        },
+        _file: path.relative(ROOT, path.join(dir, n)),
+      });
+      ok += 1;
+    }
+  }
+  console.log(
+    `[load] ${round}: 적재 대상 ${ok}건 (★ 격리 ${skippedDiscarded}건 / 문제 없는 소재 ${skippedPending}건 제외)`,
+  );
+}
+
 for (const f of files) {
   const batch = JSON.parse(await readFile(f, 'utf8'));
   for (const item of batch.items ?? []) {
@@ -97,7 +212,7 @@ for (const f of files) {
     items.push({ ...item, _file: path.relative(ROOT, f) });
   }
 }
-console.log(`[load] 승인 파일 ${files.length}개 / 승인된 문제 ${items.length}건`);
+console.log(`[load] 승인 파일 ${files.length}개 / 적재 후보 ${items.length}건`);
 if (items.length === 0) {
   console.log('[load] ★ review.status 가 "approved" 인 항목이 없다.');
   console.log('[load]   검수에서 상태를 바꿨는지 확인한다.');
@@ -172,7 +287,7 @@ try {
   );
   if (unknownSources.length > 0) {
     console.error(`[load] ★ sources 테이블에 없는 소스: ${unknownSources.join(', ')}`);
-    console.error('[load]   npm run migrate 를 먼저 실행한다 (migrations/0002_gemini_gen_source.sql).');
+    console.error('[load]   npm run db:migrate 를 먼저 실행한다 (gemini-gen → 0002 / seed-gen → ★ 0005_seed_gen_source.sql).');
     process.exit(1);
   }
 
