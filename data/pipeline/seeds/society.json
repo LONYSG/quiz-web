@@ -3,7 +3,7 @@
   "midName": "사회 제도",
   "majorKey": "humanities",
   "majorName": "인문·사회",
-  "updatedAt": "2026-09-16T05:39:53.254Z",
+  "updatedAt": "2026-09-18T00:48:34.583Z",
   "subs": {
     "society/1": {
       "subName": "교육 제도",
@@ -34,9 +34,286 @@
           "answer": "초고령사회",
           "origin": "db:269",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "합계출산율",
+          "origin": "r019:society/3#001",
+          "note": null
+        },
+        {
+          "answer": "인구 피라미드",
+          "origin": "r019:society/3#002",
+          "note": null
+        },
+        {
+          "answer": "부양비",
+          "origin": "r019:society/3#003",
+          "note": null
+        },
+        {
+          "answer": "생산가능인구",
+          "origin": "r019:society/3#004",
+          "note": null
+        },
+        {
+          "answer": "중위연령",
+          "origin": "r019:society/3#005",
+          "note": null
+        },
+        {
+          "answer": "센서스",
+          "origin": "r019:society/3#006",
+          "note": null
+        },
+        {
+          "answer": "기대수명",
+          "origin": "r019:society/3#007",
+          "note": null
+        },
+        {
+          "answer": "인구 보너스",
+          "origin": "r019:society/3#008",
+          "note": null
+        },
+        {
+          "answer": "표본오차",
+          "origin": "r019:society/3#009",
+          "note": null
+        },
+        {
+          "answer": "이촌향도",
+          "origin": "r019:society/3#010",
+          "note": null
+        },
+        {
+          "answer": "도시화율",
+          "origin": "r019:society/3#011",
+          "note": null
+        },
+        {
+          "answer": "인구 데드크로스",
+          "origin": "r019:society/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "society/3#001",
+          "subject": "합계출산율",
+          "aspect": "한 여성이 평생 낳는 아이 수",
+          "knowledgePoint": "인구가 유지되려면 이 값이 얼마여야 하는지와 그 기준의 근거",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#001",
+            "answer": "합계출산율",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#002",
+          "subject": "인구 피라미드",
+          "aspect": "모양으로 읽는 인구 구조",
+          "knowledgePoint": "연령별 인구를 쌓아 그린 그림의 모양이 그 사회의 단계를 보여 준다는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#002",
+            "answer": "인구 피라미드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#003",
+          "subject": "부양비",
+          "aspect": "일하는 사람이 짊어지는 부담",
+          "knowledgePoint": "생산 연령 인구 대비 유소년과 노년 인구의 비율로 부담을 나타내는 지표",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#003",
+            "answer": "부양비",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#004",
+          "subject": "생산가능인구",
+          "aspect": "나이로 구분하는 일할 수 있는 인구",
+          "knowledgePoint": "실제 취업 여부와 상관없이 나이만으로 구분하는 인구 집단과 그 범위",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#004",
+            "answer": "생산가능인구",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#005",
+          "subject": "중위연령",
+          "aspect": "인구를 반으로 가르는 나이",
+          "knowledgePoint": "전체 인구를 나이순으로 세웠을 때 한가운데 있는 사람의 나이",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#005",
+            "answer": "중위연령",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#006",
+          "subject": "센서스",
+          "aspect": "모든 가구를 조사하는 방식",
+          "knowledgePoint": "표본을 뽑지 않고 전체를 조사하는 방식과 그것을 5년마다 하는 까닭",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#006",
+            "answer": "센서스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#007",
+          "subject": "기대수명",
+          "aspect": "태어난 해를 기준으로 본 예상 수명",
+          "knowledgePoint": "그해에 태어난 아이가 앞으로 살 것으로 기대되는 햇수를 나타내는 지표",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#007",
+            "answer": "기대수명",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#008",
+          "subject": "인구 보너스",
+          "aspect": "일할 사람이 많아 성장이 쉬워지는 시기",
+          "knowledgePoint": "생산 연령 인구 비중이 높아 부양 부담이 낮은 동안 성장에 유리해지는 국면",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#008",
+            "answer": "인구 보너스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#009",
+          "subject": "표본오차",
+          "aspect": "전부 조사하지 않아 생기는 오차",
+          "knowledgePoint": "표본으로 전체를 추정할 때 따라붙는 오차와 그것을 함께 밝혀야 하는 까닭",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#009",
+            "answer": "표본오차",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#010",
+          "subject": "이촌향도",
+          "aspect": "농촌을 떠나 도시로 향하는 흐름",
+          "knowledgePoint": "산업화 시기에 인구가 한 방향으로 이동한 현상을 가리키는 말",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#010",
+            "answer": "이촌향도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#011",
+          "subject": "도시화율",
+          "aspect": "도시에 사는 사람의 비율",
+          "knowledgePoint": "전체 인구 가운데 도시 지역에 사는 비율과 그 변화가 그리는 곡선",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#011",
+            "answer": "도시화율",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/3#012",
+          "subject": "인구 데드크로스",
+          "aspect": "태어난 수보다 죽은 수가 많아지는 시점",
+          "knowledgePoint": "출생아 수가 사망자 수보다 적어져 인구가 자연 감소로 돌아서는 현상",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T01:47:01.764Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/society-3#012",
+            "answer": "인구 데드크로스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "society/4": {
       "subName": "사회학 개념",

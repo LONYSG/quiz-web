@@ -1,0 +1,312 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "physics/1",
+    "categoryPath": "자연과학 > 물리 > 역학·운동",
+    "midKey": "physics",
+    "subName": "역학·운동",
+    "majorKey": "science",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T05:23:49.134Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 28,
+      "remainingUsable": 9,
+      "remainingUsableNote": "탄성력·부력·압력·토크·각운동량·도르래·빗면·충격량·포물선 운동이 남았다.",
+      "estimatedCeiling": "실질 상한 21건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "관성",
+          "aspect": "운동 상태를 유지하려는 성질",
+          "reason": "usedAnswers 의 '관성' 과 맞히게 해주는 지식이 같다"
+        }
+      ]
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-18T00:55:37.286Z"
+  },
+  "items": [
+    {
+      "seedId": "physics/1#001",
+      "seed": {
+        "subject": "가속도의 법칙",
+        "aspect": "힘과 질량이 가속도를 정하는 관계",
+        "knowledgePoint": "같은 힘을 주어도 무거울수록 덜 빨라지는 관계를 식으로 나타낸 운동 법칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "같은 힘을 주어도 무거운 물체일수록 덜 빨라지는 관계를 식으로 나타낸 뉴턴의 제2법칙을 무엇이라 합니까?",
+        "answer": "가속도의 법칙",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "힘은 질량과 가속도의 곱이라는 관계입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#002",
+      "seed": {
+        "subject": "작용 반작용",
+        "aspect": "밀면 밀리는 쪽도 민다",
+        "knowledgePoint": "힘은 늘 짝으로 생기며 크기가 같고 방향이 반대라는 법칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "힘은 언제나 짝으로 생기며 크기가 같고 방향이 반대라는 뉴턴의 제3법칙을 무엇이라 합니까?",
+        "answer": "작용 반작용 법칙",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "로켓이 가스를 뒤로 내뿜어 앞으로 나아가는 것이 이 법칙의 사례입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#003",
+      "seed": {
+        "subject": "만유인력",
+        "aspect": "질량이 있으면 서로 끌어당긴다",
+        "knowledgePoint": "두 물체 사이의 끌림이 질량의 곱에 비례하고 거리의 제곱에 반비례한다는 법칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "질량을 가진 두 물체가 서로 끌어당기는 힘으로, 그 크기가 두 질량의 곱에 비례하고 거리의 제곱에 반비례하는 것은?",
+        "answer": "만유인력",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "떨어지는 사과와 도는 달을 같은 힘으로 설명한 것이 이 법칙의 뜻입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#004",
+      "seed": {
+        "subject": "자유낙하",
+        "aspect": "공기가 없으면 함께 떨어진다",
+        "knowledgePoint": "공기 저항을 없애면 무거운 것과 가벼운 것이 같은 빠르기로 떨어지는 운동"
+      },
+      "question": {
+        "ok": true,
+        "question": "공기 저항이 없는 곳에서는 깃털과 쇠공이 같은 빠르기로 떨어집니다. 이렇게 중력만 받아 떨어지는 운동을 무엇이라 합니까?",
+        "answer": "자유낙하",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "아폴로 15호 승무원이 달 표면에서 망치와 깃털로 실제로 보여 준 적이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#005",
+      "seed": {
+        "subject": "운동량 보존",
+        "aspect": "충돌 전후에 변하지 않는 양",
+        "knowledgePoint": "외부에서 힘이 작용하지 않으면 질량과 속도의 곱의 합이 유지된다는 법칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "외부에서 힘이 작용하지 않으면 충돌 전후에 질량과 속도의 곱의 총합이 변하지 않는다는 법칙은?",
+        "answer": "운동량 보존 법칙",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "당구공이 부딪칠 때의 움직임을 설명하는 기본 원리입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#006",
+      "seed": {
+        "subject": "마찰력",
+        "aspect": "움직이기 전이 더 힘든 까닭",
+        "knowledgePoint": "멈춘 물체를 움직이기 시작할 때의 저항이 움직이는 동안의 저항보다 큰 성질"
+      },
+      "question": {
+        "ok": true,
+        "question": "멈춰 있는 무거운 상자를 처음 밀 때가 일단 움직이기 시작한 뒤보다 더 힘든 것은, 두 상황에서 이 힘의 크기가 다르기 때문입니다. 이 힘은?",
+        "answer": "마찰력",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "움직이기 직전의 최대 정지 마찰력이 운동 마찰력보다 큽니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#007",
+      "seed": {
+        "subject": "구심력",
+        "aspect": "원운동을 유지시키는 힘의 방향",
+        "knowledgePoint": "원을 그리며 도는 물체에 중심을 향해 작용하는 힘과 원심력이라는 표현의 성격"
+      },
+      "question": {
+        "ok": true,
+        "question": "원을 그리며 도는 물체에 원의 중심을 향해 작용하는 힘을 무엇이라 합니까?",
+        "answer": "구심력",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "흔히 말하는 원심력은 실제 힘이 아니라 도는 쪽에서 느껴지는 겉보기 힘입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#008",
+      "seed": {
+        "subject": "지레",
+        "aspect": "받침점의 위치가 바꾸는 힘",
+        "knowledgePoint": "받침점과 힘점, 작용점의 거리 비가 필요한 힘을 정하는 도구의 원리"
+      },
+      "question": {
+        "ok": true,
+        "question": "받침점과 힘점, 작용점의 거리 비에 따라 작은 힘으로도 무거운 것을 들어 올릴 수 있게 해 주는 단순한 도구는?",
+        "answer": "지레",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "'긴 막대와 받침점만 있으면 지구도 들겠다'는 아르키메데스의 말이 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#009",
+      "seed": {
+        "subject": "위치에너지",
+        "aspect": "높이에 저장되는 에너지",
+        "knowledgePoint": "높은 곳에 있다는 것만으로 가지게 되는 에너지와 그것이 운동에너지로 바뀌는 과정"
+      },
+      "question": {
+        "ok": true,
+        "question": "높은 곳에 있다는 것만으로 물체가 가지게 되고, 떨어지면서 운동에너지로 바뀌는 에너지를 무엇이라 합니까?",
+        "answer": "위치에너지",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "수력발전은 물이 가진 이 에너지를 전기로 바꾸는 것입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#010",
+      "seed": {
+        "subject": "진자",
+        "aspect": "주기를 정하는 것이 무엇인가",
+        "knowledgePoint": "흔들리는 추의 주기가 추의 무게가 아니라 줄의 길이에 달려 있다는 성질"
+      },
+      "question": {
+        "ok": true,
+        "question": "실에 매달아 흔드는 추의 왕복 주기가 추의 무게가 아니라 실의 길이에 따라 정해진다는 사실이 알려진, 이 흔들리는 장치를 무엇이라 합니까?",
+        "answer": "진자",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "갈릴레이가 성당의 흔들리는 등을 보고 알아냈다고 전해지며, 뒷날 시계에 쓰였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#011",
+      "seed": {
+        "subject": "종단속도",
+        "aspect": "더 이상 빨라지지 않는 낙하",
+        "knowledgePoint": "공기 저항이 중력과 같아지는 순간부터 속도가 일정해지는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "높은 곳에서 떨어지는 물체가 공기 저항과 중력의 크기가 같아지는 순간부터 더는 빨라지지 않고 일정해지는 속도를 무엇이라 합니까?",
+        "answer": "종단속도",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "낙하산이 펼쳐지면 저항이 커져 이 속도가 크게 낮아집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/1#012",
+      "seed": {
+        "subject": "무게중심",
+        "aspect": "물체 전체의 무게가 모인 점",
+        "knowledgePoint": "물체를 한 점에서 받칠 수 있는 자리와 그것이 안정성과 이어지는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "물체 전체의 무게가 한 점에 모여 있다고 볼 수 있는 자리로, 이 점을 받치면 물체가 균형을 이루는 곳은?",
+        "answer": "무게중심",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "이 점이 낮고 바닥 안쪽에 있을수록 잘 넘어지지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

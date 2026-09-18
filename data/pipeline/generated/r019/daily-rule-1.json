@@ -1,0 +1,332 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "daily-rule/1",
+    "categoryPath": "생활·상식 > 생활 규칙·안전 > 재난·안전 수칙",
+    "midKey": "daily-rule",
+    "subName": "재난·안전 수칙",
+    "majorKey": "life",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T05:36:41.860Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 24,
+      "remainingUsable": 9,
+      "remainingUsableNote": "완강기·비상구 표시의 색·화재경보기·정전 시 행동·감전 시 조치·벌 쏘임 대처·저체온증·일산화탄소 중독·응급실 이송 요청이 남았다.",
+      "estimatedCeiling": "실질 상한 21건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "하임리히법",
+          "aspect": "목에 걸린 것을 빼내는 방법",
+          "reason": "DB 에 이미 답이 하임리히법인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "기도 폐쇄 응급처치",
+          "aspect": "배를 밀어 올린다",
+          "reason": "★ 위와 같은 지식이다 (seed-v2 기준)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-17T06:04:55.764Z"
+  },
+  "items": [
+    {
+      "seedId": "daily-rule/1#001",
+      "seed": {
+        "subject": "심폐소생술의 압박 속도",
+        "aspect": "노래 박자에 맞춘다",
+        "knowledgePoint": "가슴 압박을 1분에 100~120회로 하도록 권고하는 기준과 깊이"
+      },
+      "question": {
+        "ok": true,
+        "question": "심장이 멈춘 사람에게 가슴을 규칙적으로 세게 눌러 피를 돌게 하는 응급처치를 무엇이라 합니까? 1분에 100~120회 속도가 권고됩니다.",
+        "answer": "심폐소생술",
+        "acceptedAnswers": [
+          "CPR"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 5,
+        "explanation": "깊이는 5센티미터가량이고, 누르는 속도를 맞추려고 익숙한 노래의 박자를 쓰기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#002",
+      "seed": {
+        "subject": "자동심장충격기",
+        "aspect": "기계가 말로 알려 준다",
+        "knowledgePoint": "일반인도 쓸 수 있도록 음성 안내가 나오고 필요할 때만 전기를 흘리도록 만든 장치"
+      },
+      "question": {
+        "ok": true,
+        "question": "심장이 불규칙하게 떨리는 사람에게 전기 충격을 주는 장치로, 일반인도 쓸 수 있게 음성 안내가 나오고 필요할 때만 작동하도록 만든 것은?",
+        "answer": "자동심장충격기",
+        "acceptedAnswers": [
+          "AED"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "지하철역과 공공건물에 비치가 의무화돼 있습니다. 기계가 스스로 판단하므로 잘못 쓸 위험이 낮습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#003",
+      "seed": {
+        "subject": "화재 시 자세",
+        "aspect": "낮게 엎드려 이동한다",
+        "knowledgePoint": "연기가 위로 차오르기 때문에 몸을 낮추고 코와 입을 막고 이동해야 하는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "화재 현장에서 목숨을 잃는 원인의 대부분은 불길 자체가 아니라 이것입니다. 위로 빠르게 차오르기 때문에 몸을 낮추고 코와 입을 막아야 하는 이것은?",
+        "answer": "연기",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "유독가스를 몇 모금만 마셔도 의식을 잃을 수 있어 자세를 낮추는 것이 중요합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#004",
+      "seed": {
+        "subject": "소화기 사용 순서",
+        "aspect": "안전핀을 뽑고 바람을 등진다",
+        "knowledgePoint": "소화기를 쓰는 순서와 불길의 윗부분이 아니라 아래를 향해 뿌려야 하는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "소화기를 쓸 때 가장 먼저 뽑아야 하는 부품으로, 손잡이가 잘못 눌리지 않도록 꽂아 둔 것은?",
+        "answer": "안전핀",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "뽑은 뒤에는 바람을 등지고, 불꽃이 아니라 타고 있는 물체 쪽을 향해 뿌립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#005",
+      "seed": {
+        "subject": "지진 시 행동",
+        "aspect": "흔들릴 때는 나가지 않는다",
+        "knowledgePoint": "흔들리는 동안에는 탁자 아래로 몸을 피하고 멈춘 뒤에 밖으로 나가야 하는 순서"
+      },
+      "question": {
+        "ok": true,
+        "question": "지진으로 건물이 흔들리는 동안에는 밖으로 나가려 하지 말고, 떨어지는 물건을 막아 줄 튼튼한 것 아래로 들어가야 합니다. 가정이나 사무실에서 이때 들어가라고 흔히 권하는 가구는?",
+        "answer": "탁자",
+        "acceptedAnswers": [
+          "책상"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "흔들리는 동안 이동하다 넘어지거나 떨어지는 물체에 맞는 사고가 더 많기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#006",
+      "seed": {
+        "subject": "엘리베이터와 화재·지진",
+        "aspect": "계단으로 내려간다",
+        "knowledgePoint": "재난 때 엘리베이터를 쓰면 안 되는 이유와 갇혔을 때의 대처"
+      },
+      "question": {
+        "ok": true,
+        "question": "화재나 지진이 났을 때 절대 이용하면 안 되는 이동 수단으로, 정전이나 구조 변형으로 안에 갇힐 수 있는 것은?",
+        "answer": "엘리베이터",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 5,
+        "explanation": "통로가 연기가 타고 올라가는 굴뚝 노릇을 하기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#007",
+      "seed": {
+        "subject": "화상 응급처치",
+        "aspect": "얼음이 아니라 흐르는 물",
+        "knowledgePoint": "화상 부위를 미지근한 흐르는 물로 식혀야 하고 얼음이나 민간요법을 쓰면 안 되는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "화상을 입었을 때는 얼음이나 된장 같은 민간요법을 쓰지 말고, 미지근한 이것으로 15분 이상 식혀야 합니다. 이것은?",
+        "answer": "흐르는 물",
+        "acceptedAnswers": [
+          "물"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "얼음은 오히려 조직을 더 상하게 하고, 기름이나 된장은 열을 가두고 감염을 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#008",
+      "seed": {
+        "subject": "물에 빠진 사람 구조",
+        "aspect": "직접 뛰어들지 않는다",
+        "knowledgePoint": "구조자가 함께 위험해지는 것을 막으려 띄울 것을 던지거나 잡을 것을 내미는 원칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "물에 빠진 사람을 발견하면 직접 뛰어들기 전에 먼저 던져 주라고 권하는, 물에 뜨는 고리 모양의 구조 장비는?",
+        "answer": "구명환",
+        "acceptedAnswers": [
+          "구명튜브"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "다급한 사람이 구조자를 붙잡고 매달려 함께 가라앉는 사고가 많아, 직접 들어가는 것은 마지막 선택입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#009",
+      "seed": {
+        "subject": "119 신고",
+        "aspect": "위치부터 말한다",
+        "knowledgePoint": "신고할 때 장소와 상황을 먼저 알려야 출동이 빨라지는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "119에 신고할 때 상황 설명보다 먼저 알려야 한다고 하는 것으로, 출동 시간을 가장 크게 좌우하는 것은?",
+        "answer": "위치",
+        "acceptedAnswers": [
+          "장소"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "말할 수 없는 상황이면 전화를 끊지 않고 두는 것만으로도 추적에 도움이 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#010",
+      "seed": {
+        "subject": "안전벨트 뒷좌석",
+        "aspect": "뒤에서도 매야 한다",
+        "knowledgePoint": "뒷좌석 안전띠 착용이 의무이고 미착용 시 앞좌석 승객까지 위험해지는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "우리나라는 고속도로뿐 아니라 일반 도로에서도 자동차 모든 좌석에서 이것을 매지 않으면 과태료를 물립니다. 뒷좌석도 예외가 아닌 이것은?",
+        "answer": "안전띠",
+        "acceptedAnswers": [
+          "안전벨트"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 5,
+        "explanation": "매지 않은 뒷사람이 충돌 때 앞으로 튕겨 나가 앞좌석 사람까지 크게 다치게 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#011",
+      "seed": {
+        "subject": "지하 주차장 침수",
+        "aspect": "차를 빼러 내려가지 않는다",
+        "knowledgePoint": "물이 차오르는 지하 공간에 들어가면 안 되는 이유와 수압 때문에 문이 열리지 않는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "집중호우로 지하 주차장에 물이 차오를 때 차를 빼러 내려가면 안 된다고 하는 것은, 물이 무릎 높이만 되어도 이 힘 때문에 차 문이 열리지 않기 때문입니다. 물이 밀어내는 이 힘은?",
+        "answer": "수압",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "차 안이 물로 찰 때까지 기다렸다가 열거나 창문을 깨야 하는데, 그럴 시간이 없는 경우가 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "daily-rule/1#012",
+      "seed": {
+        "subject": "골든타임",
+        "aspect": "몇 분 안에 손을 써야 한다",
+        "knowledgePoint": "심정지 후 뇌 손상이 시작되기까지의 짧은 시간을 가리키는 말과 목격자 처치의 중요성"
+      },
+      "question": {
+        "ok": true,
+        "question": "심장이 멈춘 뒤 뇌 손상이 시작되기까지의 짧은 시간처럼, 응급 상황에서 조치가 이루어져야 하는 결정적인 시간을 무엇이라 합니까?",
+        "answer": "골든타임",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "심정지의 경우 4분 안팎으로 보며, 구급대가 오기 전 목격자의 처치가 생존율을 크게 좌우합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "midName": "의학·건강 상식",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-16T06:06:40.556Z",
+  "updatedAt": "2026-09-18T01:02:49.322Z",
   "subs": {
     "medicine/1": {
       "subName": "질병",
@@ -266,6 +266,274 @@
             "answer": "트랜스지방",
             "rejectReason": null,
             "questionPrompt": "question-v1"
+          }
+        }
+      ]
+    },
+    "medicine/5": {
+      "subName": "응급처치",
+      "usedAnswers": [
+        {
+          "answer": "직접압박법",
+          "origin": "r019:medicine/5#003",
+          "note": null
+        },
+        {
+          "answer": "화상",
+          "origin": "r019:medicine/5#004",
+          "note": null
+        },
+        {
+          "answer": "회복자세",
+          "origin": "r019:medicine/5#006",
+          "note": null
+        },
+        {
+          "answer": "저체온증",
+          "origin": "r019:medicine/5#007",
+          "note": null
+        },
+        {
+          "answer": "열사병",
+          "origin": "r019:medicine/5#008",
+          "note": null
+        },
+        {
+          "answer": "코피",
+          "origin": "r019:medicine/5#009",
+          "note": null
+        },
+        {
+          "answer": "RICE",
+          "origin": "r019:medicine/5#010",
+          "note": null
+        },
+        {
+          "answer": "아나필락시스",
+          "origin": "r019:medicine/5#011",
+          "note": null
+        },
+        {
+          "answer": "쇼크",
+          "origin": "r019:medicine/5#012",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "medicine/5#001",
+          "subject": "심폐소생술",
+          "aspect": "가슴을 누르는 속도와 깊이",
+          "knowledgePoint": "심장이 멈춘 사람에게 가슴을 눌러 혈액을 돌리는 처치와 권장되는 속도",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "rejected",
+            "ref": "r019/medicine-5#001",
+            "answer": null,
+            "rejectReason": "이 소재로 만들 문제의 답은 '심폐소생술'인데, 같은 라운드의 생활·상식 > 생활 규칙·안전 > 재난·안전 수칙에서 이미 심폐소생술을 정답으로 하는 문제를 만들었다. 두 문제를 맞히게 해 주는 지식이 같다.",
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#002",
+          "subject": "자동심장충격기",
+          "aspect": "전기 충격이 하는 일",
+          "knowledgePoint": "멎은 심장을 다시 뛰게 하는 것이 아니라 어지럽게 떨리는 리듬을 끊어 주는 장치",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "rejected",
+            "ref": "r019/medicine-5#002",
+            "answer": null,
+            "rejectReason": "이 소재로 만들 문제의 답은 '자동심장충격기'인데, 같은 라운드의 재난·안전 수칙에서 이미 자동심장충격기를 정답으로 하는 문제를 만들었다. 두 문제를 맞히게 해 주는 지식이 같다.",
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#003",
+          "subject": "직접압박법",
+          "aspect": "출혈을 멈추는 첫 번째 방법",
+          "knowledgePoint": "상처를 직접 눌러 피를 멎게 하는 방법이 지혈의 기본으로 권장되는 까닭",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/medicine-5#003",
+            "answer": "직접압박법",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#004",
+          "subject": "화상",
+          "aspect": "흐르는 물에 식히는 까닭",
+          "knowledgePoint": "열이 피부 속으로 계속 번지는 것을 막으려 즉시 식혀야 한다는 원칙",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/medicine-5#004",
+            "answer": "화상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#005",
+          "subject": "골든타임",
+          "aspect": "처치가 늦으면 회복이 어려워지는 시간",
+          "knowledgePoint": "뇌에 산소가 끊긴 뒤 손상이 급격히 진행되기까지의 짧은 시간을 이르는 말",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "rejected",
+            "ref": "r019/medicine-5#005",
+            "answer": null,
+            "rejectReason": "이 소재로 만들 문제의 답은 '골든타임'인데, 같은 라운드의 재난·안전 수칙에서 이미 골든타임을 정답으로 하는 문제를 만들었다. 두 문제를 맞히게 해 주는 지식이 같다.",
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#006",
+          "subject": "회복자세",
+          "aspect": "의식 없는 사람을 눕히는 방향",
+          "knowledgePoint": "토한 것이 기도를 막지 않도록 옆으로 눕히는 자세와 그 이유",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/medicine-5#006",
+            "answer": "회복자세",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#007",
+          "subject": "저체온증",
+          "aspect": "몸 중심 온도가 떨어졌을 때",
+          "knowledgePoint": "체온이 정상보다 크게 떨어져 판단력과 떨림이 달라지는 상태와 그 단계",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/medicine-5#007",
+            "answer": "저체온증",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#008",
+          "subject": "열사병",
+          "aspect": "땀이 멈추는 것이 위험 신호인 까닭",
+          "knowledgePoint": "체온 조절이 무너져 땀이 나지 않고 의식이 흐려지는 상태와 일사병과의 차이",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/medicine-5#008",
+            "answer": "열사병",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#009",
+          "subject": "코피",
+          "aspect": "고개를 뒤로 젖히면 안 되는 까닭",
+          "knowledgePoint": "피가 목으로 넘어가지 않도록 고개를 숙이고 코를 눌러야 한다는 처치",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/medicine-5#009",
+            "answer": "코피",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#010",
+          "subject": "RICE",
+          "aspect": "삐었을 때의 네 가지 처치",
+          "knowledgePoint": "안정·냉찜질·압박·거상의 머리글자를 딴 급성 손상의 초기 처치",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/medicine-5#010",
+            "answer": "RICE",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#011",
+          "subject": "아나필락시스",
+          "aspect": "짧은 시간에 온몸에 번지는 과민 반응",
+          "knowledgePoint": "벌에 쏘이거나 특정 음식을 먹은 뒤 급격히 나타나는 전신 알레르기 반응",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/medicine-5#011",
+            "answer": "아나필락시스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/5#012",
+          "subject": "쇼크",
+          "aspect": "피가 온몸에 제대로 돌지 않는 상태",
+          "knowledgePoint": "혈압이 떨어져 장기에 혈액이 충분히 가지 못하는 상태를 이르는 의학 용어",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.163Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/medicine-5#012",
+            "answer": "쇼크",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
           }
         }
       ]

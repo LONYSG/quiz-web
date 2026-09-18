@@ -3,7 +3,7 @@
   "midName": "수학·수 상식",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-17T00:33:03.999Z",
+  "updatedAt": "2026-09-18T01:13:50.179Z",
   "subs": {
     "math/1": {
       "subName": "수와 연산",
@@ -273,6 +273,296 @@
             "status": "ok",
             "ref": "r018/math-4#010",
             "answer": "공리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
+    },
+    "math/6": {
+      "subName": "유명한 수·정리",
+      "usedAnswers": [
+        {
+          "answer": "피타고라스 정리",
+          "origin": "r019:math/6#001",
+          "note": "r018 격리: 중복 판정 same (확신 0.99) — db:173 과 같은 피타고라스 정리 지식"
+        },
+        {
+          "answer": "황금비",
+          "origin": "r019:math/6#002",
+          "note": null
+        },
+        {
+          "answer": "페르마의 마지막 정리",
+          "origin": "r019:math/6#003",
+          "note": null
+        },
+        {
+          "answer": "골드바흐 추측",
+          "origin": "r019:math/6#004",
+          "note": null
+        },
+        {
+          "answer": "에라토스테네스의 체",
+          "origin": "r019:math/6#005",
+          "note": null
+        },
+        {
+          "answer": "피보나치 수열",
+          "origin": "r019:math/6#006",
+          "note": null
+        },
+        {
+          "answer": "오일러의 다면체 정리",
+          "origin": "r019:math/6#007",
+          "note": null
+        },
+        {
+          "answer": "무리수",
+          "origin": "r019:math/6#008",
+          "note": null
+        },
+        {
+          "answer": "완전수",
+          "origin": "r019:math/6#009",
+          "note": null
+        },
+        {
+          "answer": "4색 정리",
+          "origin": "r019:math/6#010",
+          "note": null
+        },
+        {
+          "answer": "불완전성 정리",
+          "origin": "r019:math/6#011",
+          "note": null
+        },
+        {
+          "answer": "파스칼의 삼각형",
+          "origin": "r019:math/6#012",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "math/6#001",
+          "subject": "피타고라스 정리",
+          "aspect": "직각삼각형 세 변의 관계",
+          "knowledgePoint": "직각을 낀 두 변의 제곱의 합이 빗변의 제곱과 같다는 정리",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r019/math-6#001",
+            "answer": "피타고라스 정리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 판정 same (확신 0.99) — db:173 과 같은 피타고라스 정리 지식",
+              "decidedBy": "gemini 중복 판정 (D-043)",
+              "duplicateOf": "db:173",
+              "at": "2026-09-18T01:13:50.173Z"
+            }
+          }
+        },
+        {
+          "seedId": "math/6#002",
+          "subject": "황금비",
+          "aspect": "전체와 부분의 비가 같아지는 비율",
+          "knowledgePoint": "긴 쪽과 짧은 쪽의 비가 전체와 긴 쪽의 비와 같아지는 약 1.618의 비율",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#002",
+            "answer": "황금비",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/6#003",
+          "subject": "페르마의 마지막 정리",
+          "aspect": "여백이 좁아 적지 못했다는 메모",
+          "knowledgePoint": "책의 여백에 증명을 적지 못했다고 남긴 명제가 350년 만에 증명된 일",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#003",
+            "answer": "페르마의 마지막 정리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/6#004",
+          "subject": "골드바흐 추측",
+          "aspect": "아직 증명되지 않은 짝수의 성질",
+          "knowledgePoint": "2보다 큰 짝수는 소수 두 개의 합으로 나타낼 수 있다는, 아직 미해결인 추측",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#004",
+            "answer": "골드바흐 추측",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/6#005",
+          "subject": "에라토스테네스의 체",
+          "aspect": "배수를 지워 소수를 남기는 방법",
+          "knowledgePoint": "수를 늘어놓고 배수를 차례로 지워 소수만 걸러 내는 고대의 방법",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#005",
+            "answer": "에라토스테네스의 체",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/6#006",
+          "subject": "피보나치 수열",
+          "aspect": "앞의 두 수를 더해 만드는 수열",
+          "knowledgePoint": "토끼의 번식을 설명하려 만든 수열이 자연의 나선 배열과 이어져 이야기되는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#006",
+            "answer": "피보나치 수열",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/6#007",
+          "subject": "오일러의 다면체 정리",
+          "aspect": "꼭짓점·모서리·면 사이의 관계",
+          "knowledgePoint": "볼록한 다면체에서 꼭짓점과 면의 합에서 모서리를 빼면 늘 2가 되는 관계",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#007",
+            "answer": "오일러의 다면체 정리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/6#008",
+          "subject": "무리수",
+          "aspect": "분수로 나타낼 수 없는 수",
+          "knowledgePoint": "두 정수의 비로 적을 수 없는 수와 그 존재가 고대에 충격이었던 까닭",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#008",
+            "answer": "무리수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/6#009",
+          "subject": "완전수",
+          "aspect": "자신을 뺀 약수의 합이 자기 자신",
+          "knowledgePoint": "6과 28처럼 자기 자신을 제외한 약수를 모두 더하면 자기 자신이 되는 수",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#009",
+            "answer": "완전수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/6#010",
+          "subject": "4색 정리",
+          "aspect": "지도를 칠하는 데 필요한 색의 수",
+          "knowledgePoint": "어떤 지도든 이웃한 영역이 같은 색이 되지 않게 칠하는 데 네 색이면 충분하다는 정리",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#010",
+            "answer": "4색 정리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/6#011",
+          "subject": "불완전성 정리",
+          "aspect": "증명할 수 없는 참인 명제가 있다",
+          "knowledgePoint": "충분히 복잡한 체계 안에는 참이지만 그 체계 안에서 증명할 수 없는 명제가 있다는 결과",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#011",
+            "answer": "불완전성 정리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/6#012",
+          "subject": "파스칼의 삼각형",
+          "aspect": "위 두 수를 더해 쌓는 배열",
+          "knowledgePoint": "바로 위의 두 수를 더해 채워 나가는 삼각형 배열과 그것이 조합의 수와 이어지는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.160Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/math-6#012",
+            "answer": "파스칼의 삼각형",
             "rejectReason": null,
             "questionPrompt": "question-v2",
             "questionGenerator": "claude-opus-5"

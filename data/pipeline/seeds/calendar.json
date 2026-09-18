@@ -3,7 +3,7 @@
   "midName": "절기·기념일·축제",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-17T00:29:31.379Z",
+  "updatedAt": "2026-09-18T01:13:50.022Z",
   "subs": {
     "calendar/1": {
       "subName": "세계 명절·축제",
@@ -34,9 +34,293 @@
           "answer": "태양력",
           "origin": "db:266",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "400",
+          "origin": "r019:calendar/3#001",
+          "note": null
+        },
+        {
+          "answer": "윤달",
+          "origin": "r019:calendar/3#002",
+          "note": null
+        },
+        {
+          "answer": "태음태양력",
+          "origin": "r019:calendar/3#003",
+          "note": null
+        },
+        {
+          "answer": "3월",
+          "origin": "r019:calendar/3#004",
+          "note": null
+        },
+        {
+          "answer": "율리우스력",
+          "origin": "r019:calendar/3#005",
+          "note": null
+        },
+        {
+          "answer": "24",
+          "origin": "r019:calendar/3#006",
+          "note": null
+        },
+        {
+          "answer": "동지",
+          "origin": "r019:calendar/3#007",
+          "note": "r018 격리: 중복 판정 same (확신 1) — db:112 와 같은 동지 지식"
+        },
+        {
+          "answer": "서머타임",
+          "origin": "r019:calendar/3#008",
+          "note": null
+        },
+        {
+          "answer": "날짜변경선",
+          "origin": "r019:calendar/3#009",
+          "note": null
+        },
+        {
+          "answer": "2001",
+          "origin": "r019:calendar/3#010",
+          "note": null
+        },
+        {
+          "answer": "윤초",
+          "origin": "r019:calendar/3#011",
+          "note": null
+        },
+        {
+          "answer": "구정",
+          "origin": "r019:calendar/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "calendar/3#001",
+          "subject": "윤년 규칙",
+          "aspect": "4로 나뉘어도 윤년이 아닐 때가 있다",
+          "knowledgePoint": "100으로 나뉘면 평년, 400으로 나뉘면 윤년으로 두어 오차를 줄이는 규칙",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#001",
+            "answer": "400",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/3#002",
+          "subject": "윤달",
+          "aspect": "같은 달이 두 번 온다",
+          "knowledgePoint": "달의 주기로 세는 달력이 계절과 어긋나는 것을 막으려 몇 해마다 달을 하나 더 넣는 방식",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#002",
+            "answer": "윤달",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/3#003",
+          "subject": "태음태양력",
+          "aspect": "달로 날짜를, 해로 계절을",
+          "knowledgePoint": "달의 모양으로 날짜를 세면서 윤달로 계절을 맞추는 절충형 역법",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#003",
+            "answer": "태음태양력",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/3#004",
+          "subject": "10월의 어원",
+          "aspect": "이름은 여덟 번째인데 열 번째 달",
+          "knowledgePoint": "달 이름과 실제 순서가 두 칸 어긋나 있는 이유와 앞에 달이 끼어든 내력",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#004",
+            "answer": "3월",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/3#005",
+          "subject": "율리우스력에서 그레고리력으로",
+          "aspect": "달력에서 열흘이 사라졌다",
+          "knowledgePoint": "쌓인 오차를 없애려 며칠을 건너뛰고 새 달력으로 바꾼 일과 나라마다 시기가 달랐던 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#005",
+            "answer": "율리우스력",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/3#006",
+          "subject": "24절기",
+          "aspect": "음력이 아니라 태양의 위치로 정한다",
+          "knowledgePoint": "절기가 태양의 황경을 15도씩 나눈 것이라 양력 날짜가 거의 고정된다는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#006",
+            "answer": "24",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/3#007",
+          "subject": "동지",
+          "aspect": "밤이 가장 길다",
+          "knowledgePoint": "1년 중 낮이 가장 짧은 날과 그것을 한 해의 시작처럼 여기던 관념",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r019/calendar-3#007",
+            "answer": "동지",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 판정 same (확신 1) — db:112 와 같은 동지 지식",
+              "decidedBy": "gemini 중복 판정 (D-043)",
+              "duplicateOf": "db:112",
+              "at": "2026-09-18T01:13:50.016Z"
+            }
+          }
+        },
+        {
+          "seedId": "calendar/3#008",
+          "subject": "서머타임",
+          "aspect": "시계를 한 시간 옮긴다",
+          "knowledgePoint": "여름에 시계를 앞당겨 해가 떠 있는 시간을 더 쓰려는 제도와 그 득실 논란",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#008",
+            "answer": "서머타임",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/3#009",
+          "subject": "날짜변경선",
+          "aspect": "넘으면 날짜가 하루 바뀐다",
+          "knowledgePoint": "태평양 위에 그어진 선을 넘을 때 날짜를 더하거나 빼는 규칙과 그 선이 곧지 않은 이유",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#009",
+            "answer": "날짜변경선",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/3#010",
+          "subject": "서기",
+          "aspect": "0년이 없다",
+          "knowledgePoint": "기원전 1년 다음이 기원후 1년이라 0년이 존재하지 않는 연대 표기",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#010",
+            "answer": "2001",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/3#011",
+          "subject": "윤초",
+          "aspect": "1분이 61초가 되는 날",
+          "knowledgePoint": "지구 자전이 고르지 않아 원자시계와 어긋나는 것을 맞추려 1초를 끼워 넣는 조정",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#011",
+            "answer": "윤초",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/3#012",
+          "subject": "음력 설과 양력 설",
+          "aspect": "새해가 두 번 온다",
+          "knowledgePoint": "달력을 양력으로 바꾼 뒤에도 음력 새해를 함께 쇠게 된 동아시아의 사정",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.855Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/calendar-3#012",
+            "answer": "구정",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "calendar/4": {
       "subName": "계절·절기",

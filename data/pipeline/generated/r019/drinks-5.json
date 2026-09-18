@@ -1,0 +1,320 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "drinks/5",
+    "categoryPath": "생활·상식 > 술·음료 > 커피·차",
+    "midKey": "drinks",
+    "subName": "커피·차",
+    "majorKey": "life",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T05:36:41.845Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 25,
+      "remainingUsable": 10,
+      "remainingUsableNote": "카푸치노·마키아토·플랫화이트·더치커피·모카포트·프렌치프레스·보이차·말차·티백의 발명·애프터눈 티가 남았다.",
+      "estimatedCeiling": "실질 상한 22건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "아메리카노",
+          "aspect": "에스프레소에 물을 탄다",
+          "reason": "DB 에 이미 답이 아메리카노인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "카페라테",
+          "aspect": "에스프레소에 우유를 탄다",
+          "reason": "★ 에스프레소를 뽑았다. '에스프레소에 무엇을 더하느냐로 이름이 갈린다' 는 지식 하나로 함께 풀린다 (seed-v2 기준)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-17T06:02:22.578Z"
+  },
+  "items": [
+    {
+      "seedId": "drinks/5#001",
+      "seed": {
+        "subject": "에스프레소",
+        "aspect": "압력으로 짧게 뽑는다",
+        "knowledgePoint": "곱게 간 원두에 높은 압력으로 뜨거운 물을 통과시켜 짧은 시간에 뽑아내는 추출 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "곱게 간 원두에 높은 압력으로 뜨거운 물을 통과시켜 20~30초 만에 진하게 뽑아내는 커피 추출 방식은?",
+        "answer": "에스프레소",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "여기에 물을 더하거나 우유를 더하는 데 따라 커피 메뉴 이름이 갈립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#002",
+      "seed": {
+        "subject": "아라비카와 로부스타",
+        "aspect": "두 품종이 시장을 나눈다",
+        "knowledgePoint": "향이 좋아 널리 쓰이는 품종과 카페인이 많고 병에 강한 품종의 차이"
+      },
+      "question": {
+        "ok": true,
+        "question": "커피 품종 가운데 향이 좋아 널리 쓰이는 아라비카와 달리, 카페인이 많고 병충해에 강해 값싼 커피나 인스턴트에 주로 쓰이는 품종은?",
+        "answer": "로부스타",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "낮은 고도에서도 잘 자라 수확량이 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#003",
+      "seed": {
+        "subject": "커피 벨트",
+        "aspect": "적도를 두르는 띠",
+        "knowledgePoint": "커피나무가 자라는 위도 범위가 적도를 중심으로 띠처럼 나타나는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "커피나무가 자랄 수 있는 기후 조건 때문에 재배지가 적도를 중심으로 남북 회귀선 사이에 띠처럼 몰려 있습니다. 이 구역을 무엇이라 부릅니까?",
+        "answer": "커피 벨트",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "서리가 내리지 않고 연중 기온이 일정해야 하기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#004",
+      "seed": {
+        "subject": "로스팅",
+        "aspect": "생두는 초록색이다",
+        "knowledgePoint": "볶기 전의 커피 열매 씨앗 색과 볶는 정도에 따라 신맛과 쓴맛이 달라지는 관계"
+      },
+      "question": {
+        "ok": true,
+        "question": "초록빛을 띠는 커피 열매의 씨앗을 열로 볶아 향과 맛을 끌어내는 과정을 무엇이라 합니까? 오래 할수록 신맛이 줄고 쓴맛이 늡니다.",
+        "answer": "로스팅",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "볶기 전의 씨앗을 생두, 볶은 뒤를 원두라고 구별해 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#005",
+      "seed": {
+        "subject": "디카페인",
+        "aspect": "카페인을 빼도 완전히 사라지지 않는다",
+        "knowledgePoint": "카페인을 제거한 커피의 기준이 0이 아니라는 점과 제거 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "카페인을 기준치 아래로 줄인 커피를 무엇이라 합니까? 완전히 0이 되는 것은 아닙니다.",
+        "answer": "디카페인",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "물이나 이산화탄소로 빼내는 방식이 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#006",
+      "seed": {
+        "subject": "차의 발효도",
+        "aspect": "같은 잎에서 녹차와 홍차가 나온다",
+        "knowledgePoint": "같은 차나무 잎을 산화시키는 정도에 따라 녹차·우롱차·홍차로 갈리는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "녹차와 홍차는 사실 같은 차나무의 잎으로 만듭니다. 두 차를 가르는 것은 잎을 딴 뒤 얼마나 진행시키느냐인데, 차 업계에서 이 과정을 무엇이라 부릅니까?",
+        "answer": "발효",
+        "acceptedAnswers": [
+          "산화"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "미생물이 관여하지 않으므로 엄밀히는 산화지만 관습적으로 이 이름을 씁니다. 중간 단계가 우롱차입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#007",
+      "seed": {
+        "subject": "홍차와 영국",
+        "aspect": "차를 바다에 던진 사건",
+        "knowledgePoint": "차에 매긴 세금이 불씨가 되어 미국 독립으로 이어진 사건과 영국의 차 문화"
+      },
+      "question": {
+        "ok": true,
+        "question": "1773년, 영국이 차에 매긴 세금에 반발한 식민지 주민들이 항구에 정박한 배의 차 상자를 바다에 던져 미국 독립의 불씨가 된 사건은?",
+        "answer": "보스턴 차 사건",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "원주민으로 꾸민 사람들이 342상자를 바다에 던졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#008",
+      "seed": {
+        "subject": "얼그레이",
+        "aspect": "감귤 껍질 향을 입힌 홍차",
+        "knowledgePoint": "베르가못 향을 더한 가향 홍차와 그 이름이 사람에게서 온 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "베르가못이라는 감귤류의 향을 입힌 가향 홍차로, 19세기 영국 총리의 이름이 붙은 것은?",
+        "answer": "얼그레이",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "이름의 '그레이'가 그 총리의 성입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#009",
+      "seed": {
+        "subject": "테아닌",
+        "aspect": "차를 마시면 차분해지는 이유",
+        "knowledgePoint": "차에 들어 있어 카페인의 각성과는 다른 방향으로 작용하는 성분"
+      },
+      "question": {
+        "ok": true,
+        "question": "차에 들어 있어 카페인의 각성과는 반대로 마음을 가라앉히는 쪽으로 작용한다고 알려진 아미노산 성분은?",
+        "answer": "테아닌",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "커피와 비슷한 카페인을 넣고도 차를 마시면 느낌이 다른 이유로 흔히 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#010",
+      "seed": {
+        "subject": "커피 프린스의 나라",
+        "aspect": "커피가 처음 자란 곳",
+        "knowledgePoint": "커피의 원산지로 꼽히는 나라와 염소치기 전설"
+      },
+      "question": {
+        "ok": true,
+        "question": "염소치기가 열매를 먹은 염소들이 흥분하는 것을 보고 커피를 발견했다는 전설이 전해지는, 커피의 원산지로 꼽히는 아프리카 나라는?",
+        "answer": "에티오피아",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "지금도 야생 커피나무가 자라고 고유한 커피 문화가 남아 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#011",
+      "seed": {
+        "subject": "고종과 가배",
+        "aspect": "한국에 커피가 들어온 무렵",
+        "knowledgePoint": "구한말에 커피가 들어와 한자음으로 불리던 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "구한말에 들어온 커피는 한자음을 빌려 '가배'라 적혔고, 서양에서 온 검은 국물이라는 뜻의 별칭으로도 불렸습니다. 이 커피를 즐긴 것으로 널리 알려진 당시의 임금은?",
+        "answer": "고종",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "아관파천 때 러시아 공사관에서 처음 맛보았다는 이야기가 전해집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/5#012",
+      "seed": {
+        "subject": "커피 찌꺼기",
+        "aspect": "버리지 않고 쓴다",
+        "knowledgePoint": "추출하고 남은 커피 찌꺼기를 탈취와 비료 등으로 되쓰는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "커피를 내리고 남은 찌꺼기는 냄새 분자를 잘 빨아들여 신발장이나 냉장고에 두기도 합니다. 이렇게 냄새를 없애는 것을 무엇이라 합니까?",
+        "answer": "탈취",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 2,
+        "explanation": "표면에 작은 구멍이 많아 숯과 비슷하게 작용합니다. 비료로 쓰기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

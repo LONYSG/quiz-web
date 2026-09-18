@@ -8,7 +8,10 @@
 // ★★ 후보만 넘긴다. 전체를 무식하게 비교하지 않는다.
 //   scripts/r017-check.mjs 가 정규화한 정답이 겹치는 쌍만 골라 두었다.
 //
-// ★ 한 호출에 모든 쌍을 묶어 묻는다. 호출 수를 줄이는 것이 한도 관리의 핵심이다.
+// ★ 호출 수를 줄이려고 여러 쌍을 한 호출에 묶는다. 다만 **무한정 묶지 않는다.**
+//   ★★ R019 실측: 35쌍을 한 번에 물었더니 세 모델 모두 응답이 중간에 잘렸다.
+//     maxOutputTokens 4096 을 넘겨 JSON 이 닫히지 않은 것이다 — 모델 문제가 아니라 한도 문제였다.
+//   ★ 그래서 JUDGE_CHUNK 쌍씩 나누어 부르고 결과를 합친다. 한 묶음이 실패하면 그 묶음만 버린다.
 // ★ 429 가 나면 그 사실을 파일에 남기고 판정을 다음 라운드로 미룬다. 재시도하지 않는다.
 //
 // ★ 프롬프트와 스키마는 기존 dedupe-llm 을 **그대로 재사용한다.** 새로 만들지 않는다 —
@@ -99,22 +102,45 @@ if (gate.ok === false) {
 }
 
 const client = new GeminiClient({ root: ROOT, state, log: (msg) => console.log(`  ${msg}`) });
-const prompt = buildDupeJudgePrompt(pairs);
-console.log(`[프롬프트] ${prompt.length}자`);
 
-// ★ 판정 체인은 backcheckChain 을 쓴다. 생성에 Opus 를 썼으므로 어느 것이든 다른 모델이다
+// ★ 한 묶음의 크기. 쌍당 응답이 100~150 토큰쯤이므로 12쌍이면 4096 안에 넉넉히 들어간다
+const JUDGE_CHUNK = Number(process.env.PIPELINE_JUDGE_CHUNK ?? 12);
+const chunks = [];
+for (let i = 0; i < pairs.length; i += JUDGE_CHUNK) chunks.push(pairs.slice(i, i + JUDGE_CHUNK));
+console.log(`[묶음] ${pairs.length}쌍 → ${chunks.length}묶음 (묶음당 최대 ${JUDGE_CHUNK}쌍)`);
+
+const items = [];
+const usedModels = [];
+let usage = { promptTokens: 0, outputTokens: 0 };
 let result = null;
 let lastErr = null;
-for (const model of MODELS.backcheckChain) {
-  try {
-    console.log(`[호출] ${model}`);
-    result = await client.generate(model, prompt, DUPE_JUDGE_SCHEMA, { temperature: 0, maxOutputTokens: 4096 });
-    break;
-  } catch (err) {
-    lastErr = err;
-    console.error(`  실패: ${err.name} ${err.message}`);
-    if (err.name === 'RateLimitError' || err.name === 'BudgetError') break;
+
+for (const [ci, chunk] of chunks.entries()) {
+  const prompt = buildDupeJudgePrompt(chunk);
+  console.log(`[묶음 ${ci + 1}/${chunks.length}] ${chunk.length}쌍 / 프롬프트 ${prompt.length}자`);
+  let got = null;
+  // ★ 판정 체인은 backcheckChain 을 쓴다. 생성에 Opus 를 썼으므로 어느 것이든 다른 모델이다
+  for (const model of MODELS.backcheckChain) {
+    try {
+      console.log(`  [호출] ${model}`);
+      got = await client.generate(model, prompt, DUPE_JUDGE_SCHEMA, { temperature: 0, maxOutputTokens: 4096 });
+      break;
+    } catch (err) {
+      lastErr = err;
+      console.error(`    실패: ${err.name} ${err.message}`);
+      if (err.name === 'RateLimitError' || err.name === 'BudgetError') break;
+    }
   }
+  if (!got) {
+    console.error(`  ★ 묶음 ${ci + 1} 을 판정하지 못했다. 이 묶음은 건너뛴다`);
+    if (lastErr?.name === 'RateLimitError' || lastErr?.name === 'BudgetError') break;
+    continue;
+  }
+  usedModels.push(got.model);
+  usage.promptTokens += got.usage?.promptTokens ?? 0;
+  usage.outputTokens += got.usage?.outputTokens ?? 0;
+  items.push(...(got.value.items ?? []));
+  result = { model: [...new Set(usedModels)].join(','), usage, attempts: chunks.length, value: { items } };
 }
 
 if (!result) {
@@ -133,7 +159,7 @@ closeSegment(state, false);
 await saveState(ROOT, state);
 
 const byId = new Map(pairs.map((p) => [p.pairId, p]));
-const judged = (result.value.items ?? []).map((j) => {
+const judged = items.map((j) => {
   const p = byId.get(j.pairId);
   return { ...j, scope: p?.scope ?? '?', a: p?.a, b: p?.b };
 });

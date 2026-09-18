@@ -3,7 +3,7 @@
   "midName": "세계 언어·어원",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-16T06:14:19.641Z",
+  "updatedAt": "2026-09-17T06:02:22.587Z",
   "subs": {
     "world-language/1": {
       "subName": "외래어 어원",
@@ -255,9 +255,286 @@
           "answer": "키릴 문자",
           "origin": "db:240",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "표의문자",
+          "origin": "r019:world-language/3#001",
+          "note": null
+        },
+        {
+          "answer": "음절문자",
+          "origin": "r019:world-language/3#002",
+          "note": null
+        },
+        {
+          "answer": "아브자드",
+          "origin": "r019:world-language/3#003",
+          "note": null
+        },
+        {
+          "answer": "쐐기문자",
+          "origin": "r019:world-language/3#004",
+          "note": null
+        },
+        {
+          "answer": "로제타석",
+          "origin": "r019:world-language/3#005",
+          "note": null
+        },
+        {
+          "answer": "페니키아 문자",
+          "origin": "r019:world-language/3#006",
+          "note": null
+        },
+        {
+          "answer": "육서",
+          "origin": "r019:world-language/3#007",
+          "note": null
+        },
+        {
+          "answer": "간체자",
+          "origin": "r019:world-language/3#008",
+          "note": null
+        },
+        {
+          "answer": "가타카나",
+          "origin": "r019:world-language/3#009",
+          "note": null
+        },
+        {
+          "answer": "아랍어",
+          "origin": "r019:world-language/3#010",
+          "note": null
+        },
+        {
+          "answer": "유니코드",
+          "origin": "r019:world-language/3#011",
+          "note": null
+        },
+        {
+          "answer": "구전",
+          "origin": "r019:world-language/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "world-language/3#001",
+          "subject": "표음문자와 표의문자",
+          "aspect": "소리를 적느냐 뜻을 적느냐",
+          "knowledgePoint": "문자를 소리를 적는 것과 뜻을 적는 것으로 가르는 기본 분류",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#001",
+            "answer": "표의문자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#002",
+          "subject": "음절문자",
+          "aspect": "글자 하나가 한 음절",
+          "knowledgePoint": "자음과 모음을 따로 적지 않고 음절 단위로 글자를 두는 체계와 일본의 가나",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#002",
+            "answer": "음절문자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#003",
+          "subject": "아브자드",
+          "aspect": "모음을 적지 않는다",
+          "knowledgePoint": "자음만 적고 모음은 읽는 사람이 채워 넣는 체계와 아랍 문자·히브리 문자",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#003",
+            "answer": "아브자드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#004",
+          "subject": "쐐기문자",
+          "aspect": "젖은 점토에 눌러 새긴다",
+          "knowledgePoint": "갈대 끝으로 점토판을 눌러 새긴 메소포타미아의 문자와 그 모양이 생긴 이유",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#004",
+            "answer": "쐐기문자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#005",
+          "subject": "상형문자 해독",
+          "aspect": "같은 내용을 세 문자로 적은 돌",
+          "knowledgePoint": "로제타석에 그리스 문자와 나란히 적혀 있던 덕에 이집트 문자를 읽어 낼 수 있었던 경위",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#005",
+            "answer": "로제타석",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#006",
+          "subject": "알파벳의 기원",
+          "aspect": "장사하던 사람들이 퍼뜨렸다",
+          "knowledgePoint": "페니키아 문자가 지중해 교역을 따라 퍼져 여러 문자의 조상이 된 흐름",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#006",
+            "answer": "페니키아 문자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#007",
+          "subject": "한자의 육서",
+          "aspect": "글자를 만드는 여섯 가지 방법",
+          "knowledgePoint": "모양을 본뜨거나 뜻을 합치는 등 한자를 만들고 쓰는 방식을 여섯으로 나눈 분류",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#007",
+            "answer": "육서",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#008",
+          "subject": "간체자",
+          "aspect": "같은 한자를 두 가지로 쓴다",
+          "knowledgePoint": "획을 줄여 만든 글자와 예전 글자를 쓰는 지역이 갈리는 현황",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#008",
+            "answer": "간체자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#009",
+          "subject": "가나의 두 갈래",
+          "aspect": "히라가나와 가타카나",
+          "knowledgePoint": "같은 소리를 적는 두 벌의 문자를 용도에 따라 나누어 쓰는 일본어 표기",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#009",
+            "answer": "가타카나",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#010",
+          "subject": "아랍 문자의 방향",
+          "aspect": "오른쪽에서 왼쪽으로",
+          "knowledgePoint": "쓰는 방향이 라틴 문자와 반대인 문자들과 숫자만은 방향이 다른 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#010",
+            "answer": "아랍어",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#011",
+          "subject": "유니코드",
+          "aspect": "세상의 글자에 번호를 매긴다",
+          "knowledgePoint": "서로 다른 문자 체계를 한 표에 모아 컴퓨터에서 섞어 쓸 수 있게 한 표준",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#011",
+            "answer": "유니코드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-language/3#012",
+          "subject": "문자 없는 언어",
+          "aspect": "말은 있는데 글이 없다",
+          "knowledgePoint": "고유 문자가 없어 다른 문자를 빌려 적거나 아예 표기하지 않는 언어가 많다는 사실",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.850Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/world-language-3#012",
+            "answer": "구전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "world-language/4": {
       "subName": "세계 언어 분포",

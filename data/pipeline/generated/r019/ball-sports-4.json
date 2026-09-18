@@ -1,0 +1,322 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "ball-sports/4",
+    "categoryPath": "스포츠·게임 > 농구·배구·기타 구기 > 골프",
+    "midKey": "ball-sports",
+    "subName": "골프",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T05:36:41.830Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 24,
+      "remainingUsable": 9,
+      "remainingUsableNote": "보기와 더블보기·핸디캡·드라이버와 아이언의 구분·퍼터·벙커·워터해저드·티샷 순서·캐디의 역할·그린의 빠르기가 남았다.",
+      "estimatedCeiling": "실질 상한 21건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "버디",
+          "aspect": "기준 타수보다 하나 적다",
+          "reason": "DB 에 이미 답이 버디인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "이글",
+          "aspect": "기준 타수보다 둘 적다",
+          "reason": "★ 파를 뽑았다. '새 이름으로 기준 타수와의 차이를 부른다' 는 지식 하나로 함께 풀린다 (seed-v2 기준)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-17T05:55:30.914Z"
+  },
+  "items": [
+    {
+      "seedId": "ball-sports/4#001",
+      "seed": {
+        "subject": "파",
+        "aspect": "홀마다 정해진 기준 타수",
+        "knowledgePoint": "홀의 길이에 따라 3·4·5로 정해지는 기준 타수와 18홀 합계가 보통 72가 되는 구성"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프에서 각 홀을 몇 타에 마치는 것이 표준인지 미리 정해 둔 기준 타수를 무엇이라 합니까? 18홀 합계가 보통 72가 되도록 짜여 있습니다.",
+        "answer": "파",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "홀의 길이에 따라 3, 4, 5로 정해집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#002",
+      "seed": {
+        "subject": "홀인원",
+        "aspect": "한 번에 들어간다",
+        "knowledgePoint": "티샷이 그대로 홀에 들어가는 것과 그것이 주로 파3 홀에서 나오는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프에서 티샷한 공이 단 한 번에 그대로 컵에 들어가는 것을 무엇이라 합니까?",
+        "answer": "홀인원",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "거리가 짧은 파3 홀에서 주로 나옵니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#003",
+      "seed": {
+        "subject": "알바트로스",
+        "aspect": "홀인원보다 드물다는 기록",
+        "knowledgePoint": "기준 타수보다 세 타 적게 홀을 마치는 것과 그 희소성"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프에서 기준 타수보다 세 타나 적게 마치는 매우 드문 기록으로, 큰 바닷새의 이름을 붙인 것은?",
+        "answer": "알바트로스",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "미국에서는 '더블이글'이라고도 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#004",
+      "seed": {
+        "subject": "골프공의 딤플",
+        "aspect": "표면이 우묵우묵하다",
+        "knowledgePoint": "매끈한 공보다 옴폭 파인 공이 더 멀리 나가는 공기역학적 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프공 표면에 옴폭옴폭 파여 있는 홈으로, 매끈한 공보다 오히려 더 멀리 날아가게 해 주는 것은?",
+        "answer": "딤플",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "공기가 표면을 따라 더 오래 붙어 흐르게 해 뒤쪽의 저항을 줄여 줍니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#005",
+      "seed": {
+        "subject": "18홀",
+        "aspect": "한 라운드의 홀 수",
+        "knowledgePoint": "골프 한 라운드가 18홀로 굳어진 내력과 전반·후반을 나누어 부르는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프에서 한 라운드를 도는 홀의 수는 몇 개입니까?",
+        "answer": "18",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "앞의 9홀과 뒤의 9홀을 나누어 부르기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#006",
+      "seed": {
+        "subject": "마스터스의 그린 재킷",
+        "aspect": "우승자가 옷을 받는다",
+        "knowledgePoint": "4대 메이저 가운데 한 곳에서만 열리며 우승자에게 초록 재킷을 입히는 전통"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프 4대 메이저 가운데 해마다 같은 코스인 오거스타 내셔널에서 열리며, 우승자에게 초록색 재킷을 입혀 주는 대회는?",
+        "answer": "마스터스",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "네 메이저 가운데 유일하게 개최 코스가 고정돼 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#007",
+      "seed": {
+        "subject": "골프 4대 메이저",
+        "aspect": "한 해에 네 번",
+        "knowledgePoint": "마스터스·US 오픈·디 오픈·PGA 챔피언십으로 이루어진 남자 골프의 큰 대회 묶음"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프 남자 4대 메이저 가운데 마스터스, US 오픈, PGA 챔피언십과 함께 꼽히며, 영국에서 열리고 가장 오랜 역사를 가진 대회는?",
+        "answer": "디 오픈",
+        "acceptedAnswers": [
+          "브리티시 오픈"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "1860년에 시작해 골프 대회 가운데 가장 오래되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#008",
+      "seed": {
+        "subject": "링크스 코스",
+        "aspect": "나무가 없고 바람이 세다",
+        "knowledgePoint": "바닷가 모래 언덕에 만들어진 골프의 원형 코스와 스코틀랜드에서 시작된 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프의 원형으로 꼽히는 코스 유형으로, 바닷가 모래 언덕 위에 만들어져 나무가 거의 없고 바람이 승부를 가르는 것은?",
+        "answer": "링크스",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "스코틀랜드의 해안 지형에서 자연스럽게 생겨난 형태입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#009",
+      "seed": {
+        "subject": "포어",
+        "aspect": "공이 날아갈 때 외치는 말",
+        "knowledgePoint": "잘못 친 공이 사람 쪽으로 갈 때 위험을 알리려 외치는 관습"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프에서 잘못 친 공이 다른 사람 쪽으로 날아갈 때 위험을 알리려고 큰 소리로 외치는 말은?",
+        "answer": "포어",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "골프공은 맞으면 크게 다칠 수 있어 규칙이 아니라 안전 관습으로 굳었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#010",
+      "seed": {
+        "subject": "OB",
+        "aspect": "흰 말뚝 밖으로 나갔다",
+        "knowledgePoint": "경기 구역 밖으로 나간 공에 벌타를 매기고 다시 치게 하는 규칙과 그 경계 표시"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프에서 공이 흰 말뚝으로 표시된 경기 구역 밖으로 나가 벌타를 받고 다시 쳐야 하는 상황을 무엇이라 합니까?",
+        "answer": "OB",
+        "acceptedAnswers": [
+          "오비"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "'경계 밖'이라는 뜻의 영어 약자입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#011",
+      "seed": {
+        "subject": "캐디백의 14개",
+        "aspect": "클럽 수에 상한이 있다",
+        "knowledgePoint": "한 라운드에 지닐 수 있는 클럽 개수를 제한한 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "골프 규칙상 한 라운드에서 가방에 넣어 다닐 수 있는 클럽은 최대 몇 개입니까?",
+        "answer": "14",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "넘기면 홀마다 벌타가 붙습니다. 장비로 실력 차이를 메우지 못하게 하려는 규정입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/4#012",
+      "seed": {
+        "subject": "컷 탈락",
+        "aspect": "이틀 치고 집에 간다",
+        "knowledgePoint": "나흘 대회에서 이틀 성적으로 남은 선수를 추리는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "나흘간 치르는 골프 대회에서 이틀치 성적이 기준에 못 미친 선수를 남은 이틀에 나오지 못하게 걸러 내는 것을 무엇이라 합니까?",
+        "answer": "컷 탈락",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "여기에 걸리면 상금도 받지 못하는 것이 보통입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

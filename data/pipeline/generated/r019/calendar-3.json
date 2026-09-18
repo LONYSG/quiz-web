@@ -1,0 +1,327 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "calendar/3",
+    "categoryPath": "생활·상식 > 절기·기념일·축제 > 달력·역법",
+    "midKey": "calendar",
+    "subName": "달력·역법",
+    "majorKey": "life",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T05:36:41.855Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 24,
+      "remainingUsable": 9,
+      "remainingUsableNote": "이슬람력·히브리력·간지 연호·연호 제도·세기의 시작 해·주 7일의 유래·요일 이름의 행성·율리우스일·세계표준시가 남았다.",
+      "estimatedCeiling": "실질 상한 21건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "태양력",
+          "aspect": "해의 움직임을 기준으로 삼는다",
+          "reason": "DB 에 이미 답이 태양력인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "그레고리력",
+          "aspect": "지금 쓰는 달력",
+          "reason": "★ 윤년 규칙을 뽑았다. '400년에 97번' 이라는 지식이 곧 그레고리력을 아는 지식이라 겹칠 위험이 크다 (seed-v2 기준)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 한국 명절은 넣지 않았다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-17T06:04:55.759Z"
+  },
+  "items": [
+    {
+      "seedId": "calendar/3#001",
+      "seed": {
+        "subject": "윤년 규칙",
+        "aspect": "4로 나뉘어도 윤년이 아닐 때가 있다",
+        "knowledgePoint": "100으로 나뉘면 평년, 400으로 나뉘면 윤년으로 두어 오차를 줄이는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "서기 2000년은 윤년이었지만 1900년과 2100년은 윤년이 아닙니다. 100으로 나누어떨어지는 해는 건너뛰되, 몇으로 나누어떨어지면 다시 윤년으로 두기 때문입니까?",
+        "answer": "400",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "400년에 윤년을 97번만 두어 실제 공전 주기와의 오차를 크게 줄입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#002",
+      "seed": {
+        "subject": "윤달",
+        "aspect": "같은 달이 두 번 온다",
+        "knowledgePoint": "달의 주기로 세는 달력이 계절과 어긋나는 것을 막으려 몇 해마다 달을 하나 더 넣는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "달의 모양을 기준으로 삼는 달력이 계절과 어긋나는 것을 막으려고 몇 해마다 한 달을 통째로 더 끼워 넣습니다. 이렇게 더 넣는 달을 무엇이라 합니까?",
+        "answer": "윤달",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "19년에 일곱 번 넣는 방식이 오래 쓰였습니다. 이 달에는 좋은 일도 궂은 일도 없다고 여겨 이사나 이장을 하기도 했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#003",
+      "seed": {
+        "subject": "태음태양력",
+        "aspect": "달로 날짜를, 해로 계절을",
+        "knowledgePoint": "달의 모양으로 날짜를 세면서 윤달로 계절을 맞추는 절충형 역법"
+      },
+      "question": {
+        "ok": true,
+        "question": "날짜는 달의 모양으로 세면서 윤달을 넣어 계절과도 맞추는 절충형 역법을 무엇이라 합니까? 우리가 '음력'이라 부르는 것이 사실 이것입니다.",
+        "answer": "태음태양력",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "달만 따르는 순수한 태음력은 이슬람력처럼 계절이 해마다 밀립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#004",
+      "seed": {
+        "subject": "10월의 어원",
+        "aspect": "이름은 여덟 번째인데 열 번째 달",
+        "knowledgePoint": "달 이름과 실제 순서가 두 칸 어긋나 있는 이유와 앞에 달이 끼어든 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "영어로 10월을 뜻하는 October는 라틴어로 여덟을, 12월 December는 열을 뜻하는 말에서 왔습니다. 이렇게 이름과 순서가 두 칸 어긋난 것은 옛 로마 달력이 몇 월부터 한 해를 시작했기 때문입니까?",
+        "answer": "3월",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "뒤에 1월과 2월이 앞쪽에 끼어들면서 이름과 순서가 어긋났습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#005",
+      "seed": {
+        "subject": "율리우스력에서 그레고리력으로",
+        "aspect": "달력에서 열흘이 사라졌다",
+        "knowledgePoint": "쌓인 오차를 없애려 며칠을 건너뛰고 새 달력으로 바꾼 일과 나라마다 시기가 달랐던 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "1582년에 그레고리력으로 바뀌기 전까지 유럽이 1500년 넘게 써 온 달력으로, 4년마다 예외 없이 윤년을 두어 오차가 쌓인 것은?",
+        "answer": "율리우스력",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "128년에 하루씩 어긋나 1582년에는 열흘이나 벌어져 있었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#006",
+      "seed": {
+        "subject": "24절기",
+        "aspect": "음력이 아니라 태양의 위치로 정한다",
+        "knowledgePoint": "절기가 태양의 황경을 15도씩 나눈 것이라 양력 날짜가 거의 고정된다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "입춘, 하지, 동지 같은 절기는 음력이 아니라 태양의 위치로 정해지기 때문에 양력 날짜가 해마다 거의 같습니다. 이 절기는 모두 몇 개입니까?",
+        "answer": "24",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "태양이 지나는 길을 15도씩 나눈 것이라 절기 사이가 약 15일입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#007",
+      "seed": {
+        "subject": "동지",
+        "aspect": "밤이 가장 길다",
+        "knowledgePoint": "1년 중 낮이 가장 짧은 날과 그것을 한 해의 시작처럼 여기던 관념"
+      },
+      "question": {
+        "ok": true,
+        "question": "1년 가운데 낮이 가장 짧고 밤이 가장 긴 날로, 우리나라에서는 팥죽을 쑤어 먹는 절기는?",
+        "answer": "동지",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "이날을 지나면 낮이 다시 길어져 한 해의 시작처럼 여기기도 했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "중복 판정 same (확신 1) — db:112 와 같은 동지 지식",
+          "decidedBy": "gemini 중복 판정 (D-043)",
+          "duplicateOf": "db:112",
+          "at": "2026-09-18T01:13:50.016Z"
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#008",
+      "seed": {
+        "subject": "서머타임",
+        "aspect": "시계를 한 시간 옮긴다",
+        "knowledgePoint": "여름에 시계를 앞당겨 해가 떠 있는 시간을 더 쓰려는 제도와 그 득실 논란"
+      },
+      "question": {
+        "ok": true,
+        "question": "여름철에 시계를 한 시간 앞당겨 해가 떠 있는 시간을 더 쓰려는 제도를 무엇이라 합니까? 우리나라는 1988년 이후 시행하지 않고 있습니다.",
+        "answer": "서머타임",
+        "acceptedAnswers": [
+          "일광절약시간제"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "에너지 절약 효과를 두고 논란이 이어져 폐지하는 나라가 늘고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#009",
+      "seed": {
+        "subject": "날짜변경선",
+        "aspect": "넘으면 날짜가 하루 바뀐다",
+        "knowledgePoint": "태평양 위에 그어진 선을 넘을 때 날짜를 더하거나 빼는 규칙과 그 선이 곧지 않은 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "태평양 위를 대체로 남북으로 지나며, 이 선을 넘을 때 날짜를 하루 더하거나 빼도록 정해 둔 기준선은?",
+        "answer": "날짜변경선",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "한 나라가 둘로 갈리지 않도록 곧게 긋지 않고 구부려 놓았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#010",
+      "seed": {
+        "subject": "서기",
+        "aspect": "0년이 없다",
+        "knowledgePoint": "기원전 1년 다음이 기원후 1년이라 0년이 존재하지 않는 연대 표기"
+      },
+      "question": {
+        "ok": true,
+        "question": "서기 연대 표기에는 0년이 없어 기원전 1년 다음이 곧바로 기원후 1년입니다. 이 때문에 세기가 00년에 시작하는지 01년에 시작하는지 논쟁이 있었는데, 엄밀히 따지면 21세기의 첫 해는 몇 년입니까?",
+        "answer": "2001",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "0년이 없으므로 1세기는 1년부터 100년까지입니다. 그래서 21세기는 2001년에 시작합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#011",
+      "seed": {
+        "subject": "윤초",
+        "aspect": "1분이 61초가 되는 날",
+        "knowledgePoint": "지구 자전이 고르지 않아 원자시계와 어긋나는 것을 맞추려 1초를 끼워 넣는 조정"
+      },
+      "question": {
+        "ok": true,
+        "question": "지구의 자전이 고르지 않아 원자시계와 어긋나는 것을 맞추려고, 1분을 61초로 만들어 1초를 끼워 넣는 조정을 무엇이라 합니까?",
+        "answer": "윤초",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "전산 시스템에 오류를 일으켜 2035년까지 폐지하기로 결정됐습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/3#012",
+      "seed": {
+        "subject": "음력 설과 양력 설",
+        "aspect": "새해가 두 번 온다",
+        "knowledgePoint": "달력을 양력으로 바꾼 뒤에도 음력 새해를 함께 쇠게 된 동아시아의 사정"
+      },
+      "question": {
+        "ok": true,
+        "question": "양력 1월 1일을 신정이라 부르던 데 맞추어 음력설을 낮추어 부르던 말로, 지금은 '설날'로 바꾸어 쓰자는 지적을 받는 말은?",
+        "answer": "구정",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "일제강점기에 음력설을 억누르며 굳은 말이라는 점에서 쓰지 말자는 의견이 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

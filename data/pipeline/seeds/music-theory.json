@@ -3,7 +3,7 @@
   "midName": "음악 이론·악기",
   "majorKey": "arts",
   "majorName": "문화·예술",
-  "updatedAt": "2026-09-17T00:33:03.997Z",
+  "updatedAt": "2026-09-18T01:13:50.261Z",
   "subs": {
     "music-theory/1": {
       "subName": "악보·기호",
@@ -265,9 +265,293 @@
           "answer": "오보에",
           "origin": "db:236",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "콘트라베이스",
+          "origin": "r019:music-theory/3#001",
+          "note": null
+        },
+        {
+          "answer": "팀파니",
+          "origin": "r019:music-theory/3#002",
+          "note": "r018 격리: 중복 판정 same (확신 0.95) — db:237 과 같은 팀파니 지식"
+        },
+        {
+          "answer": "하프",
+          "origin": "r019:music-theory/3#003",
+          "note": null
+        },
+        {
+          "answer": "트롬본",
+          "origin": "r019:music-theory/3#004",
+          "note": null
+        },
+        {
+          "answer": "바순",
+          "origin": "r019:music-theory/3#005",
+          "note": null
+        },
+        {
+          "answer": "호른",
+          "origin": "r019:music-theory/3#006",
+          "note": null
+        },
+        {
+          "answer": "피콜로",
+          "origin": "r019:music-theory/3#007",
+          "note": null
+        },
+        {
+          "answer": "클라리넷",
+          "origin": "r019:music-theory/3#008",
+          "note": null
+        },
+        {
+          "answer": "색소폰",
+          "origin": "r019:music-theory/3#009",
+          "note": null
+        },
+        {
+          "answer": "튜바",
+          "origin": "r019:music-theory/3#010",
+          "note": null
+        },
+        {
+          "answer": "총보",
+          "origin": "r019:music-theory/3#011",
+          "note": null
+        },
+        {
+          "answer": "피치카토",
+          "origin": "r019:music-theory/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "music-theory/3#001",
+          "subject": "콘트라베이스",
+          "aspect": "서서 연주하는 가장 큰 현악기",
+          "knowledgePoint": "오케스트라 현악기 가운데 가장 낮은 소리를 내는 악기와 그 크기 때문에 생긴 연주 자세",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#001",
+            "answer": "콘트라베이스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/3#002",
+          "subject": "팀파니",
+          "aspect": "발로 페달을 밟아 음높이를 바꾼다",
+          "knowledgePoint": "타악기이면서도 정해진 음높이를 내고 연주 중에 그 높이를 바꿀 수 있는 큰 북",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r019/music-theory-3#002",
+            "answer": "팀파니",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 판정 same (확신 0.95) — db:237 과 같은 팀파니 지식",
+              "decidedBy": "gemini 중복 판정 (D-043)",
+              "duplicateOf": "db:237",
+              "at": "2026-09-18T01:13:50.256Z"
+            }
+          }
+        },
+        {
+          "seedId": "music-theory/3#003",
+          "subject": "하프",
+          "aspect": "일곱 개의 페달",
+          "knowledgePoint": "줄마다 음이 정해져 있어 반음을 내려면 발로 페달을 밟아야 하는 현악기",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#003",
+            "answer": "하프",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/3#004",
+          "subject": "트롬본",
+          "aspect": "관을 밀고 당겨 음을 바꾼다",
+          "knowledgePoint": "밸브 대신 U자 관을 미끄러뜨려 음높이를 바꾸는 금관악기와 그 덕에 가능한 미끄러지는 소리",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#004",
+            "answer": "트롬본",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/3#005",
+          "subject": "바순",
+          "aspect": "목관의 가장 낮은 자리",
+          "knowledgePoint": "긴 관을 접어 만든 저음 목관악기와 그 익살스러운 음색으로 맡는 역할",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#005",
+            "answer": "바순",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/3#006",
+          "subject": "호른",
+          "aspect": "오른손을 나팔 안에 넣는다",
+          "knowledgePoint": "관을 둥글게 말아 만든 금관악기와 벨 안에 손을 넣어 음색과 음높이를 다듬는 주법",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#006",
+            "answer": "호른",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/3#007",
+          "subject": "피콜로",
+          "aspect": "오케스트라에서 가장 높은 소리",
+          "knowledgePoint": "플루트보다 한 옥타브 높은 소리를 내는 작은 목관악기",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#007",
+            "answer": "피콜로",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/3#008",
+          "subject": "클라리넷",
+          "aspect": "하나짜리 리드",
+          "knowledgePoint": "얇은 떨림판 한 장을 마우스피스에 물려 소리를 내는 목관악기와 두 장을 겹쳐 쓰는 악기와의 차이",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#008",
+            "answer": "클라리넷",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/3#009",
+          "subject": "색소폰",
+          "aspect": "놋쇠로 만들었지만 목관",
+          "knowledgePoint": "금속으로 만들어도 리드로 소리를 내기 때문에 목관으로 분류되는 악기와 그것을 만든 사람의 이름이 악기 이름이 된 내력",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#009",
+            "answer": "색소폰",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/3#010",
+          "subject": "튜바",
+          "aspect": "금관의 바닥을 받친다",
+          "knowledgePoint": "금관악기 가운데 가장 낮은 소리를 내며 관현악의 저음 토대를 맡는 악기",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#010",
+            "answer": "튜바",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/3#011",
+          "subject": "지휘자의 악보",
+          "aspect": "모든 악기가 한 장에 세로로 쌓여 있다",
+          "knowledgePoint": "각 악기의 성부를 세로로 모두 적어 지휘자가 보는 악보를 이르는 말",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#011",
+            "answer": "총보",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/3#012",
+          "subject": "피치카토",
+          "aspect": "활을 내려놓고 손가락으로 뜯는다",
+          "knowledgePoint": "현악기에서 활을 쓰지 않고 손가락으로 줄을 뜯으라는 연주 지시",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:30:16.759Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/music-theory-3#012",
+            "answer": "피치카토",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "music-theory/4": {
       "subName": "건반·타악기",

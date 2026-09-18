@@ -36,8 +36,17 @@ const state = await loadState();
 state.subs ??= {};
 state.log ??= [];
 
+// ★★ R019: 한 파일에 **여러 소분류**를 배열로 담을 수 있게 했다.
+//   ★ 근거: 60개 소분류를 한 라운드에 돌리면 파일이 60개가 된다.
+//     쉘 히어독으로 여러 파일을 한 번에 쓰다 깨지는 일이 반복돼, 파일 하나에 묶는 길을 열었다.
+//   ★ 배열이 아니면 지금까지처럼 배치 하나로 다룬다. 옛 파일이 그대로 동작한다.
+const batches = [];
 for (const file of files) {
-  const batch = JSON.parse(await readFile(file, 'utf8'));
+  const parsed = JSON.parse(await readFile(file, 'utf8'));
+  for (const b of Array.isArray(parsed) ? parsed : [parsed]) batches.push({ file, batch: b });
+}
+
+for (const { file, batch } of batches) {
 
   // ── 형식 검사. 조용히 통과시키지 않는다
   for (const k of ['round', 'subId', 'seedPrompt', 'generator']) {

@@ -1,0 +1,312 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "biology/1",
+    "categoryPath": "자연과학 > 생물학 > 세포·유전",
+    "midKey": "biology",
+    "subName": "세포·유전",
+    "majorKey": "science",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T05:23:49.142Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 30,
+      "remainingUsable": 11,
+      "remainingUsableNote": "핵·소포체·골지체·액포·세포벽·ATP·전사와 번역·성염색체·연관과 교차·유전병·클론이 남았다.",
+      "estimatedCeiling": "실질 상한 23건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "미토콘드리아",
+          "aspect": "에너지를 만드는 세포 소기관",
+          "reason": "usedAnswers 의 '미토콘드리아' 와 맞히게 해주는 지식이 같다"
+        }
+      ]
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-18T00:55:37.291Z"
+  },
+  "items": [
+    {
+      "seedId": "biology/1#001",
+      "seed": {
+        "subject": "이중나선",
+        "aspect": "두 가닥이 꼬여 있는 구조",
+        "knowledgePoint": "염기가 서로 짝을 지어 마주 보며 두 가닥이 꼬여 있는 유전물질의 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "염기가 서로 짝을 지어 마주 본 채 두 가닥이 꼬여 있는 DNA의 구조를 무엇이라 합니까?",
+        "answer": "이중나선",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "1953년 왓슨과 크릭이 밝혔고, 로절린드 프랭클린의 X선 사진이 결정적 단서였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#002",
+      "seed": {
+        "subject": "염색체",
+        "aspect": "사람의 체세포에 들어 있는 수",
+        "knowledgePoint": "사람의 체세포 하나에 든 염색체의 개수와 그것이 쌍으로 이루어져 있다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "사람의 체세포 하나에는 모두 몇 개의 염색체가 들어 있습니까?",
+        "answer": "46",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "23쌍으로 이루어져 있고, 그중 한 쌍이 성별을 정하는 성염색체입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#003",
+      "seed": {
+        "subject": "감수분열",
+        "aspect": "염색체 수가 절반이 되는 분열",
+        "knowledgePoint": "생식세포를 만들 때 염색체 수를 반으로 줄여 수정 뒤 원래대로 돌아오게 하는 분열"
+      },
+      "question": {
+        "ok": true,
+        "question": "생식세포를 만들 때 염색체 수를 절반으로 줄여, 수정한 뒤 원래 수로 돌아오게 하는 세포 분열은?",
+        "answer": "감수분열",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "줄이지 않으면 세대마다 염색체 수가 두 배로 늘어나게 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#004",
+      "seed": {
+        "subject": "우열의 법칙",
+        "aspect": "한쪽 형질만 겉으로 드러나는 현상",
+        "knowledgePoint": "두 형질을 함께 물려받아도 한쪽만 나타나는 현상과 그것을 밝힌 완두 실험"
+      },
+      "question": {
+        "ok": true,
+        "question": "두 가지 형질을 함께 물려받아도 한쪽만 겉으로 드러나는 현상으로, 멘델이 완두 실험에서 밝힌 법칙은?",
+        "answer": "우열의 법칙",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "드러나지 않은 형질도 사라진 것이 아니라 다음 세대에 다시 나타납니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#005",
+      "seed": {
+        "subject": "염기",
+        "aspect": "네 글자로 쓰인 유전 정보",
+        "knowledgePoint": "유전 정보가 네 가지 기호의 배열로 적혀 있고 서로 정해진 짝을 이룬다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "DNA에서 유전 정보를 이루는 네 가지 기본 단위로, 서로 정해진 짝끼리만 마주 보며 결합하는 것을 무엇이라 합니까?",
+        "answer": "염기",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "아데닌은 티민과, 구아닌은 사이토신과만 짝을 이룹니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#006",
+      "seed": {
+        "subject": "리보솜",
+        "aspect": "단백질을 만들어 내는 자리",
+        "knowledgePoint": "유전 정보를 읽어 아미노산을 이어 붙이는 세포 소기관"
+      },
+      "question": {
+        "ok": true,
+        "question": "세포 안에서 유전 정보를 읽어 아미노산을 차례로 이어 붙여 단백질을 만들어 내는 소기관은?",
+        "answer": "리보솜",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "여러 항생제가 세균의 이 소기관만 골라 방해하는 방식으로 작용합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#007",
+      "seed": {
+        "subject": "세포막",
+        "aspect": "들여보낼 것을 가려내는 경계",
+        "knowledgePoint": "모든 것을 통과시키지 않고 필요한 것만 골라 드나들게 하는 세포의 경계"
+      },
+      "question": {
+        "ok": true,
+        "question": "모든 물질을 그대로 통과시키지 않고 필요한 것만 골라 드나들게 하는 세포의 경계를 무엇이라 합니까?",
+        "answer": "세포막",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "이 성질을 선택적 투과성이라고 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#008",
+      "seed": {
+        "subject": "엽록체",
+        "aspect": "빛에서 양분을 만드는 소기관",
+        "knowledgePoint": "빛 에너지로 이산화탄소와 물에서 양분을 만드는 식물 세포의 소기관"
+      },
+      "question": {
+        "ok": true,
+        "question": "빛 에너지를 써서 이산화탄소와 물로 양분을 만드는, 식물 세포 안의 초록색 소기관은?",
+        "answer": "엽록체",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "본래 독립된 세균이 다른 세포 안으로 들어가 함께 살게 된 것으로 봅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#009",
+      "seed": {
+        "subject": "줄기세포",
+        "aspect": "여러 세포로 바뀔 수 있는 세포",
+        "knowledgePoint": "아직 역할이 정해지지 않아 여러 종류의 세포로 분화할 수 있는 세포"
+      },
+      "question": {
+        "ok": true,
+        "question": "아직 역할이 정해지지 않아 여러 종류의 세포로 분화할 수 있는 세포를 무엇이라 합니까?",
+        "answer": "줄기세포",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "다 자란 세포를 되돌려 만드는 유도만능줄기세포 연구가 노벨상을 받았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#010",
+      "seed": {
+        "subject": "돌연변이",
+        "aspect": "유전 정보가 바뀌는 일",
+        "knowledgePoint": "복제 과정의 실수나 외부 요인으로 유전 정보가 바뀌는 일과 그 양면성"
+      },
+      "question": {
+        "ok": true,
+        "question": "복제 과정의 실수나 방사선 같은 외부 요인으로 유전 정보가 바뀌는 일로, 병의 원인이 되기도 하고 진화의 재료가 되기도 하는 것은?",
+        "answer": "돌연변이",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "대부분은 해롭거나 아무 영향이 없지만, 드물게 유리한 변화가 다음 세대로 이어집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#011",
+      "seed": {
+        "subject": "체세포분열",
+        "aspect": "같은 유전 정보를 가진 둘로 나뉘는 분열",
+        "knowledgePoint": "몸이 자라고 상처가 아물 때 일어나며 염색체 수가 그대로 유지되는 분열"
+      },
+      "question": {
+        "ok": true,
+        "question": "몸이 자라거나 상처가 아물 때 일어나며, 염색체 수가 그대로 유지된 채 같은 유전 정보를 가진 두 세포로 나뉘는 분열은?",
+        "answer": "체세포분열",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "생식세포를 만드는 분열과 달리 유전적으로 똑같은 세포가 만들어집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/1#012",
+      "seed": {
+        "subject": "크리스퍼",
+        "aspect": "원하는 자리를 잘라 내는 기술",
+        "knowledgePoint": "세균의 면역 체계에서 착안해 유전자의 특정 자리를 잘라 고치는 기술"
+      },
+      "question": {
+        "ok": true,
+        "question": "세균이 바이러스에 맞서는 방어 체계에서 착안해, 유전자의 원하는 자리를 찾아 잘라 고칠 수 있게 한 기술은?",
+        "answer": "크리스퍼",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "2020년 노벨화학상을 받았고, 사람 배아에 쓰는 문제를 두고 윤리 논쟁이 이어집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "midName": "동물",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-16T06:02:37.978Z",
+  "updatedAt": "2026-09-18T01:13:49.802Z",
   "subs": {
     "animals/1": {
       "subName": "포유류",
@@ -12,9 +12,293 @@
           "answer": "오리너구리",
           "origin": "db:129",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "고래",
+          "origin": "r019:animals/1#001",
+          "note": null
+        },
+        {
+          "answer": "박쥐",
+          "origin": "r019:animals/1#002",
+          "note": null
+        },
+        {
+          "answer": "코알라",
+          "origin": "r019:animals/1#003",
+          "note": null
+        },
+        {
+          "answer": "캥거루",
+          "origin": "r019:animals/1#004",
+          "note": null
+        },
+        {
+          "answer": "기린",
+          "origin": "r019:animals/1#005",
+          "note": "r018 격리: 중복 판정 same (확신 0.95) — db:36 과 같은 기린 지식"
+        },
+        {
+          "answer": "코끼리",
+          "origin": "r019:animals/1#006",
+          "note": null
+        },
+        {
+          "answer": "판다",
+          "origin": "r019:animals/1#007",
+          "note": null
+        },
+        {
+          "answer": "나무늘보",
+          "origin": "r019:animals/1#008",
+          "note": null
+        },
+        {
+          "answer": "두더지",
+          "origin": "r019:animals/1#009",
+          "note": null
+        },
+        {
+          "answer": "하마",
+          "origin": "r019:animals/1#010",
+          "note": null
+        },
+        {
+          "answer": "반향정위",
+          "origin": "r019:animals/1#011",
+          "note": null
+        },
+        {
+          "answer": "낙타",
+          "origin": "r019:animals/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "animals/1#001",
+          "subject": "고래",
+          "aspect": "물속에 살지만 포유류인 증거",
+          "knowledgePoint": "허파로 숨 쉬고 새끼를 낳아 젖을 먹이는 점이 물고기와 갈라지는 기준이라는 사실",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#001",
+            "answer": "고래",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "animals/1#002",
+          "subject": "박쥐",
+          "aspect": "스스로 날 수 있는 유일한 포유류",
+          "knowledgePoint": "앞다리의 뼈 사이에 막이 펼쳐진 구조로 날개를 이룬 동물",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#002",
+            "answer": "박쥐",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "animals/1#003",
+          "subject": "코알라",
+          "aspect": "한 가지 잎만 먹는 식성",
+          "knowledgePoint": "독성이 있고 영양이 적은 잎을 주식으로 삼아 하루 대부분을 자며 보내는 동물",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#003",
+            "answer": "코알라",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "animals/1#004",
+          "subject": "캥거루",
+          "aspect": "덜 자란 새끼를 주머니에서 기른다",
+          "knowledgePoint": "아주 작은 새끼를 낳아 배의 주머니 안에서 키우는 유대류의 번식 방식",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#004",
+            "answer": "캥거루",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "animals/1#005",
+          "subject": "기린",
+          "aspect": "목이 긴데도 목뼈 수는 같다",
+          "knowledgePoint": "사람과 마찬가지로 목뼈가 일곱 개인데 뼈 하나하나가 길어져 목이 길어진 구조",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r019/animals-1#005",
+            "answer": "기린",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 판정 same (확신 0.95) — db:36 과 같은 기린 지식",
+              "decidedBy": "gemini 중복 판정 (D-043)",
+              "duplicateOf": "db:36",
+              "at": "2026-09-18T01:13:49.796Z"
+            }
+          }
+        },
+        {
+          "seedId": "animals/1#006",
+          "subject": "코끼리",
+          "aspect": "큰 귀가 하는 구실",
+          "knowledgePoint": "몸집에 견주어 열을 내보내기 어려워 귀의 혈관으로 체온을 낮추는 방식",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#006",
+            "answer": "코끼리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "animals/1#007",
+          "subject": "판다",
+          "aspect": "대나무를 쥐게 해 주는 여섯 번째 손가락",
+          "knowledgePoint": "손목뼈가 커져 엄지처럼 쓰이면서 줄기를 쥘 수 있게 된 구조",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#007",
+            "answer": "판다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "animals/1#008",
+          "subject": "나무늘보",
+          "aspect": "움직임이 느린 까닭",
+          "knowledgePoint": "영양이 적은 잎을 먹고 대사율을 낮춰 에너지를 아끼는 생활 방식",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#008",
+            "answer": "나무늘보",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "animals/1#009",
+          "subject": "두더지",
+          "aspect": "땅속 생활에 맞춰진 몸",
+          "knowledgePoint": "눈이 퇴화하고 앞발이 삽처럼 넓어진 땅속 생활에 맞춘 몸의 구조",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#009",
+            "answer": "두더지",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "animals/1#010",
+          "subject": "하마",
+          "aspect": "붉은 땀처럼 보이는 분비물",
+          "knowledgePoint": "피부에서 나오는 붉은 점액이 자외선을 막고 살균 작용을 한다는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#010",
+            "answer": "하마",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "animals/1#011",
+          "subject": "반향정위",
+          "aspect": "소리로 주변을 파악하는 능력",
+          "knowledgePoint": "스스로 낸 소리가 되돌아오는 것을 들어 거리와 모양을 알아내는 감각",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#011",
+            "answer": "반향정위",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "animals/1#012",
+          "subject": "낙타",
+          "aspect": "혹에 들어 있는 것",
+          "knowledgePoint": "혹에 물이 아니라 지방이 들어 있어 먹지 못할 때 에너지로 쓰인다는 사실",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.147Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/animals-1#012",
+            "answer": "낙타",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "animals/2": {
       "subName": "조류",

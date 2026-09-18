@@ -1,0 +1,334 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "invention/4",
+    "categoryPath": "기술·의학 > 발명·발견 > 의학·생명 분야 발견",
+    "midKey": "invention",
+    "subName": "의학·생명 분야 발견",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T05:23:49.168Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 27,
+      "remainingUsable": 8,
+      "remainingUsableNote": "코흐의 세균설·리스터의 소독·피르호의 세포설·엑스선 진단 도입·MRI·페니실린 대량생산·항체의 구조·mRNA 백신 원리가 남았다.",
+      "estimatedCeiling": "실질 상한 20건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "왓슨과 크릭",
+          "aspect": "DNA 이중나선 구조를 밝힌 일",
+          "reason": "★ 같은 라운드의 biology/1 에서 '이중나선' 을 뽑았다. 구조를 아는 사람이면 누가 밝혔는지도 함께 아는 경우가 많아 지식이 겹칠 위험이 크다"
+        },
+        {
+          "subject": "멘델",
+          "aspect": "완두 실험과 유전 법칙",
+          "reason": "★ 같은 라운드의 biology/1 에서 '우열의 법칙' 을 뽑았다. 맞히게 해주는 지식이 같다"
+        },
+        {
+          "subject": "뢴트겐",
+          "aspect": "X선의 발견",
+          "reason": "R017 invention/3 의 usedAnswers 와 맞히게 해주는 지식이 같다"
+        }
+      ],
+      "note": "D-084 대로 인명은 한국에서 실제로 부르는 형태를 쓴다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-18T01:02:49.326Z"
+  },
+  "items": [
+    {
+      "seedId": "invention/4#001",
+      "seed": {
+        "subject": "플레밍",
+        "aspect": "곰팡이가 자란 접시에서 찾아낸 것",
+        "knowledgePoint": "배양 접시에 우연히 자란 곰팡이 둘레에서 세균이 자라지 않는 것을 보고 얻은 발견"
+      },
+      "question": {
+        "ok": true,
+        "question": "플레밍이 배양 접시에 우연히 자란 곰팡이 둘레에서 세균이 자라지 않는 것을 보고 찾아낸, 최초의 항생제는?",
+        "answer": "페니실린",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "실제로 약으로 쓸 수 있게 정제한 것은 10여 년 뒤 다른 연구진이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "중복 판정 same (확신 1) — db:194 와 같은 페니실린 지식",
+          "decidedBy": "gemini 중복 판정 (D-043)",
+          "duplicateOf": "db:194",
+          "at": "2026-09-18T01:13:50.102Z"
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#002",
+      "seed": {
+        "subject": "제너",
+        "aspect": "소의 병을 앓은 사람은 천연두에 걸리지 않았다",
+        "knowledgePoint": "소젖 짜는 여인들이 천연두에 잘 걸리지 않는다는 관찰에서 시작된 예방법"
+      },
+      "question": {
+        "ok": true,
+        "question": "소젖 짜는 여인들이 천연두에 잘 걸리지 않는다는 관찰에서 출발해 제너가 만든 예방법을 무엇이라 합니까?",
+        "answer": "종두법",
+        "acceptedAnswers": [
+          "우두법"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "백신이라는 말 자체가 라틴어로 소를 뜻하는 낱말에서 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#003",
+      "seed": {
+        "subject": "파스퇴르",
+        "aspect": "끓이지 않고도 상하지 않게 하는 방법",
+        "knowledgePoint": "맛을 지키면서 미생물만 줄이도록 낮은 온도로 데우는 방법과 그 이름"
+      },
+      "question": {
+        "ok": true,
+        "question": "맛과 성질을 지키면서 상하지 않게 하려고, 끓이지 않고 낮은 온도로 일정 시간 데우는 방법을 무엇이라 합니까?",
+        "answer": "저온살균법",
+        "acceptedAnswers": [
+          "파스퇴르법"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "포도주가 상하는 것을 막으려다 나왔고, 지금은 우유에 널리 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#004",
+      "seed": {
+        "subject": "하비",
+        "aspect": "피가 한 방향으로 돈다는 것을 밝힌 일",
+        "knowledgePoint": "피가 만들어져 소모된다는 통념을 뒤집고 온몸을 순환한다고 밝힌 연구"
+      },
+      "question": {
+        "ok": true,
+        "question": "피가 간에서 만들어져 몸에서 소모된다는 오랜 통념을 뒤집고, 피가 온몸을 돌아 제자리로 돌아온다고 밝힌 하비의 발견은?",
+        "answer": "혈액순환",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "심장이 내보내는 양을 계산해 보면 새로 만들어질 수 없는 양이라는 데서 출발했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#005",
+      "seed": {
+        "subject": "레이우엔훅",
+        "aspect": "손수 만든 렌즈로 본 작은 생물",
+        "knowledgePoint": "직접 갈아 만든 렌즈로 물방울 속 미생물을 처음 관찰해 기록한 일"
+      },
+      "question": {
+        "ok": true,
+        "question": "레이우엔훅이 손수 갈아 만든 렌즈로 물방울 속을 들여다보고 처음 기록한, 눈에 보이지 않는 작은 생물들을 무엇이라 합니까?",
+        "answer": "미생물",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "직업은 포목상이었고, 정식 교육을 받지 않은 채 200배 넘는 배율의 렌즈를 만들었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#006",
+      "seed": {
+        "subject": "인슐린",
+        "aspect": "당뇨를 치료 가능한 병으로 바꾼 물질",
+        "knowledgePoint": "췌장에서 뽑아낸 물질이 혈당을 낮춘다는 것을 밝혀 치료의 길을 연 발견"
+      },
+      "question": {
+        "ok": true,
+        "question": "췌장에서 뽑아낸 것이 혈당을 낮춘다는 사실이 밝혀지면서, 당뇨를 치료 가능한 병으로 바꾼 물질은?",
+        "answer": "인슐린",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "발견자들은 많은 사람이 쓸 수 있도록 특허권을 아주 싼값에 넘겼습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#007",
+      "seed": {
+        "subject": "란트슈타이너",
+        "aspect": "수혈이 사람마다 달리 작용하는 까닭",
+        "knowledgePoint": "피를 섞었을 때 엉기는 조합이 있음을 밝혀 안전한 수혈의 길을 연 발견"
+      },
+      "question": {
+        "ok": true,
+        "question": "사람마다 피를 섞었을 때 엉기는 조합이 따로 있음을 밝혀 안전한 수혈을 가능하게 한 발견으로, 사람의 피를 나눈 이 구분을 무엇이라 합니까?",
+        "answer": "혈액형",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "1901년 란트슈타이너가 ABO 구분을 밝혔고, 그전까지 수혈은 목숨을 건 도박이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#008",
+      "seed": {
+        "subject": "에테르",
+        "aspect": "통증 없이 수술할 수 있게 한 기체",
+        "knowledgePoint": "공개 시연을 통해 외과 수술에 쓰이기 시작한 마취제와 그 파급"
+      },
+      "question": {
+        "ok": true,
+        "question": "1846년 공개 시연을 계기로 외과 수술에 쓰이기 시작해, 통증 없이 수술할 수 있게 만든 처치는?",
+        "answer": "마취",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "그전까지 수술은 빠르기가 곧 실력이었습니다. 에테르가 처음 쓰인 기체였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#009",
+      "seed": {
+        "subject": "소크",
+        "aspect": "특허를 내지 않은 백신",
+        "knowledgePoint": "소아마비 백신을 만들고 특허를 두지 않겠다고 밝힌 일과 그 배경"
+      },
+      "question": {
+        "ok": true,
+        "question": "'태양에도 특허를 낼 수 있겠느냐'며 특허를 두지 않겠다고 밝힌 조너스 소크가 만든 백신은 어떤 병에 대한 것입니까?",
+        "answer": "소아마비",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "당시 여름마다 아이들이 마비되던 병이어서 백신 소식이 큰 환영을 받았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#010",
+      "seed": {
+        "subject": "헬라 세포",
+        "aspect": "죽지 않고 계속 자라는 세포주",
+        "knowledgePoint": "한 환자에게서 떼어 낸 세포가 실험실에서 무한히 증식해 연구에 쓰이게 된 일"
+      },
+      "question": {
+        "ok": true,
+        "question": "1951년 한 여성 환자에게서 떼어 낸 뒤 실험실에서 끝없이 증식해 지금도 세계 곳곳의 연구에 쓰이는 세포주는?",
+        "answer": "헬라 세포",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "본인과 가족의 동의 없이 쓰인 일이 뒷날 연구 윤리 논쟁을 일으켰습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#011",
+      "seed": {
+        "subject": "제멜바이스",
+        "aspect": "손을 씻자 산모의 사망률이 떨어졌다",
+        "knowledgePoint": "의사가 손을 소독하자 산욕열이 크게 줄었음을 보였으나 당대에 받아들여지지 않은 일"
+      },
+      "question": {
+        "ok": true,
+        "question": "시신을 다룬 뒤 손을 소독하게 하자 산모의 사망률이 크게 떨어졌음을 보였으나, 당대에는 받아들여지지 않고 조롱만 받은 의사는?",
+        "answer": "제멜바이스",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "세균의 존재가 알려지기 전이라 설명할 근거가 없었던 것이 배척의 한 이유였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "invention/4#012",
+      "seed": {
+        "subject": "바이러스",
+        "aspect": "세균보다 작아 거름종이를 통과한 것",
+        "knowledgePoint": "세균을 걸러 내는 필터를 그대로 통과하는 감염체가 있다는 사실의 발견"
+      },
+      "question": {
+        "ok": true,
+        "question": "세균을 걸러 내는 아주 촘촘한 필터를 그대로 통과하고도 병을 일으키는 감염체가 있다는 사실이 밝혀졌습니다. 이 감염체는?",
+        "answer": "바이러스",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "담배모자이크병을 연구하다 확인됐고, 실제 모습은 전자현미경이 나온 뒤에야 볼 수 있었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

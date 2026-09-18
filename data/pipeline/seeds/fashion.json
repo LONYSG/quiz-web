@@ -3,7 +3,7 @@
   "midName": "의복·패션",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-16T05:39:53.131Z",
+  "updatedAt": "2026-09-17T06:04:55.763Z",
   "subs": {
     "fashion/1": {
       "subName": "의류 명칭",
@@ -12,9 +12,276 @@
           "answer": "터틀넥",
           "origin": "db:309",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "트렌치코트",
+          "origin": "r019:fashion/1#001",
+          "note": null
+        },
+        {
+          "answer": "청바지",
+          "origin": "r019:fashion/1#002",
+          "note": null
+        },
+        {
+          "answer": "카디건",
+          "origin": "r019:fashion/1#003",
+          "note": null
+        },
+        {
+          "answer": "윈저 노트",
+          "origin": "r019:fashion/1#005",
+          "note": null
+        },
+        {
+          "answer": "고름",
+          "origin": "r019:fashion/1#006",
+          "note": null
+        },
+        {
+          "answer": "유카타",
+          "origin": "r019:fashion/1#007",
+          "note": null
+        },
+        {
+          "answer": "사리",
+          "origin": "r019:fashion/1#008",
+          "note": null
+        },
+        {
+          "answer": "드레스코드",
+          "origin": "r019:fashion/1#009",
+          "note": null
+        },
+        {
+          "answer": "가슴둘레",
+          "origin": "r019:fashion/1#011",
+          "note": null
+        },
+        {
+          "answer": "패스트패션",
+          "origin": "r019:fashion/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "fashion/1#001",
+          "subject": "트렌치코트",
+          "aspect": "참호에서 입던 옷",
+          "knowledgePoint": "1차 대전 참호에서 장교들이 입던 방수 외투가 민간 옷이 된 내력과 어깨의 견장 같은 흔적",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/fashion-1#001",
+            "answer": "트렌치코트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#002",
+          "subject": "청바지",
+          "aspect": "광부의 작업복에서 나왔다",
+          "knowledgePoint": "잘 찢어지지 않게 대갈못을 박아 만든 작업 바지가 일상복이 된 과정",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/fashion-1#002",
+            "answer": "청바지",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#003",
+          "subject": "카디건",
+          "aspect": "사람 이름이 옷 이름이 됐다",
+          "knowledgePoint": "앞이 트여 단추로 여미는 스웨터의 이름이 크림 전쟁의 지휘관에게서 온 내력",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/fashion-1#003",
+            "answer": "카디건",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#004",
+          "subject": "정장 소매 단추",
+          "aspect": "달려 있지만 잠그지 않는다",
+          "knowledgePoint": "재킷 소맷부리의 단추가 실제로 여닫지 않으면서도 남아 있는 관습과 그 유래",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "rejected",
+            "ref": "r019/fashion-1#004",
+            "answer": null,
+            "rejectReason": "이 소재의 핵심인 '소맷부리 단추가 왜 남아 있는가'는 나폴레옹 일화 등 확인되지 않은 속설뿐이어서 질문 문장에 사실로 쓸 수 없다. 관습 자체를 물으면 정답이 '단추'가 되어 질문이 성립하지 않는다.",
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#005",
+          "subject": "넥타이 매듭",
+          "aspect": "매는 방식마다 이름이 있다",
+          "knowledgePoint": "윈저 노트처럼 매듭 방식마다 이름이 붙어 있고 굵기가 달라지는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/fashion-1#005",
+            "answer": "윈저 노트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#006",
+          "subject": "한복의 고름",
+          "aspect": "단추 대신 끈으로 여민다",
+          "knowledgePoint": "저고리를 여미는 긴 끈의 이름과 그 매는 방식",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/fashion-1#006",
+            "answer": "고름",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#007",
+          "subject": "기모노와 유카타",
+          "aspect": "겉보기에 비슷하지만 쓰임이 다르다",
+          "knowledgePoint": "격식을 갖춘 옷과 여름에 가볍게 입는 옷의 구분",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/fashion-1#007",
+            "answer": "유카타",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#008",
+          "subject": "사리",
+          "aspect": "재단하지 않은 긴 천 한 장",
+          "knowledgePoint": "자르거나 꿰매지 않고 몸에 둘러 입는 인도의 옷",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/fashion-1#008",
+            "answer": "사리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#009",
+          "subject": "정장의 드레스코드",
+          "aspect": "초대장에 옷차림이 적혀 있다",
+          "knowledgePoint": "블랙타이·화이트타이처럼 자리의 격식에 따라 옷차림을 정해 두는 관례",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/fashion-1#009",
+            "answer": "드레스코드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#010",
+          "subject": "지퍼와 단추",
+          "aspect": "여미는 방식이 바뀐 시점",
+          "knowledgePoint": "옷에 지퍼가 널리 쓰이기까지 시간이 걸린 내력",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "rejected",
+            "ref": "r019/fashion-1#010",
+            "answer": null,
+            "rejectReason": "이 소재로 만들 수 있는 문제의 답은 결국 '지퍼'가 되는데, 같은 라운드의 다른 소분류(브랜드·기업 > 상표가 된 상품명)에서 이미 지퍼를 정답으로 하는 문제를 만들었다. 두 문제를 맞히게 해 주는 지식이 사실상 같다.",
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#011",
+          "subject": "기성복 치수",
+          "aspect": "같은 95인데 브랜드마다 다르다",
+          "knowledgePoint": "옷 치수 표기가 나라와 업체마다 기준이 달라 호환되지 않는 문제",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/fashion-1#011",
+            "answer": "가슴둘레",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "fashion/1#012",
+          "subject": "패스트패션",
+          "aspect": "몇 주 만에 새 옷이 걸린다",
+          "knowledgePoint": "기획에서 매장까지의 주기를 극단적으로 줄인 의류 생산 방식과 그로 인한 폐기 문제",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.858Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/fashion-1#012",
+            "answer": "패스트패션",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "fashion/2": {
       "subName": "패션 브랜드·디자이너",

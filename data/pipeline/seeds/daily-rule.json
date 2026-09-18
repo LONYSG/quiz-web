@@ -3,7 +3,7 @@
   "midName": "생활 규칙·안전",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-17T00:47:20.596Z",
+  "updatedAt": "2026-09-17T06:04:55.765Z",
   "subs": {
     "daily-rule/1": {
       "subName": "재난·안전 수칙",
@@ -12,9 +12,286 @@
           "answer": "하임리히법",
           "origin": "db:169",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "심폐소생술",
+          "origin": "r019:daily-rule/1#001",
+          "note": null
+        },
+        {
+          "answer": "자동심장충격기",
+          "origin": "r019:daily-rule/1#002",
+          "note": null
+        },
+        {
+          "answer": "연기",
+          "origin": "r019:daily-rule/1#003",
+          "note": null
+        },
+        {
+          "answer": "안전핀",
+          "origin": "r019:daily-rule/1#004",
+          "note": null
+        },
+        {
+          "answer": "탁자",
+          "origin": "r019:daily-rule/1#005",
+          "note": null
+        },
+        {
+          "answer": "엘리베이터",
+          "origin": "r019:daily-rule/1#006",
+          "note": null
+        },
+        {
+          "answer": "흐르는 물",
+          "origin": "r019:daily-rule/1#007",
+          "note": null
+        },
+        {
+          "answer": "구명환",
+          "origin": "r019:daily-rule/1#008",
+          "note": null
+        },
+        {
+          "answer": "위치",
+          "origin": "r019:daily-rule/1#009",
+          "note": null
+        },
+        {
+          "answer": "안전띠",
+          "origin": "r019:daily-rule/1#010",
+          "note": null
+        },
+        {
+          "answer": "수압",
+          "origin": "r019:daily-rule/1#011",
+          "note": null
+        },
+        {
+          "answer": "골든타임",
+          "origin": "r019:daily-rule/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "daily-rule/1#001",
+          "subject": "심폐소생술의 압박 속도",
+          "aspect": "노래 박자에 맞춘다",
+          "knowledgePoint": "가슴 압박을 1분에 100~120회로 하도록 권고하는 기준과 깊이",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#001",
+            "answer": "심폐소생술",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#002",
+          "subject": "자동심장충격기",
+          "aspect": "기계가 말로 알려 준다",
+          "knowledgePoint": "일반인도 쓸 수 있도록 음성 안내가 나오고 필요할 때만 전기를 흘리도록 만든 장치",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#002",
+            "answer": "자동심장충격기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#003",
+          "subject": "화재 시 자세",
+          "aspect": "낮게 엎드려 이동한다",
+          "knowledgePoint": "연기가 위로 차오르기 때문에 몸을 낮추고 코와 입을 막고 이동해야 하는 이유",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#003",
+            "answer": "연기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#004",
+          "subject": "소화기 사용 순서",
+          "aspect": "안전핀을 뽑고 바람을 등진다",
+          "knowledgePoint": "소화기를 쓰는 순서와 불길의 윗부분이 아니라 아래를 향해 뿌려야 하는 이유",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#004",
+            "answer": "안전핀",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#005",
+          "subject": "지진 시 행동",
+          "aspect": "흔들릴 때는 나가지 않는다",
+          "knowledgePoint": "흔들리는 동안에는 탁자 아래로 몸을 피하고 멈춘 뒤에 밖으로 나가야 하는 순서",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#005",
+            "answer": "탁자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#006",
+          "subject": "엘리베이터와 화재·지진",
+          "aspect": "계단으로 내려간다",
+          "knowledgePoint": "재난 때 엘리베이터를 쓰면 안 되는 이유와 갇혔을 때의 대처",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#006",
+            "answer": "엘리베이터",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#007",
+          "subject": "화상 응급처치",
+          "aspect": "얼음이 아니라 흐르는 물",
+          "knowledgePoint": "화상 부위를 미지근한 흐르는 물로 식혀야 하고 얼음이나 민간요법을 쓰면 안 되는 이유",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#007",
+            "answer": "흐르는 물",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#008",
+          "subject": "물에 빠진 사람 구조",
+          "aspect": "직접 뛰어들지 않는다",
+          "knowledgePoint": "구조자가 함께 위험해지는 것을 막으려 띄울 것을 던지거나 잡을 것을 내미는 원칙",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#008",
+            "answer": "구명환",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#009",
+          "subject": "119 신고",
+          "aspect": "위치부터 말한다",
+          "knowledgePoint": "신고할 때 장소와 상황을 먼저 알려야 출동이 빨라지는 이유",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#009",
+            "answer": "위치",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#010",
+          "subject": "안전벨트 뒷좌석",
+          "aspect": "뒤에서도 매야 한다",
+          "knowledgePoint": "뒷좌석 안전띠 착용이 의무이고 미착용 시 앞좌석 승객까지 위험해지는 이유",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#010",
+            "answer": "안전띠",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#011",
+          "subject": "지하 주차장 침수",
+          "aspect": "차를 빼러 내려가지 않는다",
+          "knowledgePoint": "물이 차오르는 지하 공간에 들어가면 안 되는 이유와 수압 때문에 문이 열리지 않는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#011",
+            "answer": "수압",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/1#012",
+          "subject": "골든타임",
+          "aspect": "몇 분 안에 손을 써야 한다",
+          "knowledgePoint": "심정지 후 뇌 손상이 시작되기까지의 짧은 시간을 가리키는 말과 목격자 처치의 중요성",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.860Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/daily-rule-1#012",
+            "answer": "골든타임",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "daily-rule/2": {
       "subName": "생활 법규",

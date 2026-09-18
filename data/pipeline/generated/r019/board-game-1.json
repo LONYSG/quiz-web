@@ -1,0 +1,318 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "board-game/1",
+    "categoryPath": "스포츠·게임 > 보드게임·카드게임 > 바둑·장기",
+    "midKey": "board-game",
+    "subName": "바둑·장기",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T05:36:41.836Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 24,
+      "remainingUsable": 9,
+      "remainingUsableNote": "패·축·단수·정석·행마·장기의 포·장기의 상과 마·빅장·장기판의 궁성이 남았다.",
+      "estimatedCeiling": "실질 상한 21건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "덤",
+          "aspect": "흑이 먼저 두는 대신 백에게 주는 점수",
+          "reason": "DB 에 이미 답이 덤인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "흑선",
+          "aspect": "흑이 먼저 둔다",
+          "reason": "★ 위와 같은 지식이다. 덤을 아는 사람은 흑이 먼저라는 것도 안다 (seed-v2 기준)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-17T05:55:30.919Z"
+  },
+  "items": [
+    {
+      "seedId": "board-game/1#001",
+      "seed": {
+        "subject": "바둑판의 줄",
+        "aspect": "가로세로 열아홉 줄",
+        "knowledgePoint": "바둑판이 19×19로 이루어져 교차점이 361개가 되는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "바둑판은 가로세로 각각 몇 줄로 이루어져 있습니까?",
+        "answer": "19",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "교차점이 361개가 되어 한 해의 날수에 가깝다는 이야기가 전해집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#002",
+      "seed": {
+        "subject": "화점",
+        "aspect": "판에 찍힌 아홉 개의 점",
+        "knowledgePoint": "바둑판에 표시된 점의 위치와 접바둑에서 미리 돌을 놓는 자리로 쓰이는 쓰임"
+      },
+      "question": {
+        "ok": true,
+        "question": "바둑판 위에 굵게 찍혀 있는 아홉 개의 점으로, 접바둑에서 미리 돌을 놓는 자리로도 쓰이는 이것을 무엇이라 합니까?",
+        "answer": "화점",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "한가운데 점은 따로 천원이라고 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#003",
+      "seed": {
+        "subject": "집",
+        "aspect": "둘러싼 빈 곳을 센다",
+        "knowledgePoint": "돌로 에워싼 빈 교차점을 세어 승부를 가르는 바둑의 계산 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "바둑에서 자기 돌로 둘러싸 차지한 빈 교차점을 무엇이라 합니까? 이것을 더 많이 차지한 쪽이 이깁니다.",
+        "answer": "집",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "돌의 개수가 아니라 둘러싼 빈 자리를 세는 것이 바둑 계산의 핵심입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#004",
+      "seed": {
+        "subject": "불계승",
+        "aspect": "세어 보지 않고 이긴다",
+        "knowledgePoint": "차이가 커서 계가를 하지 않고 한쪽이 돌을 거두며 끝나는 승부"
+      },
+      "question": {
+        "ok": true,
+        "question": "바둑에서 차이가 너무 커서 끝까지 두고 계산하지도 않은 채 한쪽이 돌을 거두며 끝나는 승부를 무엇이라 합니까?",
+        "answer": "불계승",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "프로 대국에서는 오히려 이쪽이 더 흔합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#005",
+      "seed": {
+        "subject": "사활",
+        "aspect": "두 눈이 있으면 죽지 않는다",
+        "knowledgePoint": "돌 무리가 살아 있으려면 갈라진 빈 공간이 두 곳 있어야 한다는 원리"
+      },
+      "question": {
+        "ok": true,
+        "question": "바둑에서 돌 무리가 상대에게 잡히지 않고 완전히 살려면 갈라진 빈 공간, 곧 '눈'이 두 개 있어야 합니다. 이렇게 돌의 삶과 죽음을 다루는 문제를 무엇이라 합니까?",
+        "answer": "사활",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "눈이 하나뿐이면 그 자리를 메워 잡을 수 있기 때문에 두 개가 필요합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#006",
+      "seed": {
+        "subject": "알파고 대국",
+        "aspect": "2016년 서울에서의 다섯 판",
+        "knowledgePoint": "이세돌과 알파고의 대결과 인간이 한 판을 이긴 사실"
+      },
+      "question": {
+        "ok": true,
+        "question": "2016년 서울에서 이세돌 9단과 다섯 판을 두어 4대 1로 이긴 인공지능 바둑 프로그램은?",
+        "answer": "알파고",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "이때 이세돌이 거둔 한 판이 인간이 이 프로그램을 상대로 거둔 유일한 공식 승리로 남았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#007",
+      "seed": {
+        "subject": "기보",
+        "aspect": "둔 순서를 번호로 남긴다",
+        "knowledgePoint": "대국의 착수 순서를 숫자로 적어 나중에 그대로 되짚을 수 있게 한 기록"
+      },
+      "question": {
+        "ok": true,
+        "question": "바둑이나 장기에서 둔 순서를 숫자로 적어 나중에 그대로 되짚을 수 있게 한 기록을 무엇이라 합니까?",
+        "answer": "기보",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "수백 년 전 대국도 이 기록 덕분에 지금 그대로 되살려 둘 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#008",
+      "seed": {
+        "subject": "초읽기",
+        "aspect": "시간이 다 되면 한 수에 몇 초",
+        "knowledgePoint": "주어진 시간을 다 쓴 뒤 한 수마다 정해진 짧은 시간을 재는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "바둑이나 장기에서 주어진 생각할 시간을 다 쓴 뒤, 한 수마다 정해진 짧은 시간을 소리 내어 세어 주는 것을 무엇이라 합니까?",
+        "answer": "초읽기",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "일상에서도 마감이 닥친 상황을 가리키는 말로 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#009",
+      "seed": {
+        "subject": "장기의 궁",
+        "aspect": "정해진 아홉 칸을 벗어나지 못한다",
+        "knowledgePoint": "장기에서 왕에 해당하는 말이 궁성 안에서만 움직일 수 있다는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "장기에서 왕에 해당하는 말이 그 밖으로 나가지 못하도록 정해 둔, 대각선이 그어진 아홉 칸의 구역을 무엇이라 합니까?",
+        "answer": "궁성",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "이 구역 안에서는 대각선으로도 움직일 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#010",
+      "seed": {
+        "subject": "장기의 차",
+        "aspect": "직선으로 끝까지 간다",
+        "knowledgePoint": "장기에서 가장 활동 범위가 넓은 말과 그 움직임"
+      },
+      "question": {
+        "ok": true,
+        "question": "장기에서 가로와 세로로 거리 제한 없이 움직이되 다른 말을 뛰어넘지는 못하는, 활동 범위가 가장 넓은 말은?",
+        "answer": "차",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "뛰어넘어야만 움직일 수 있는 포와 구별됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#011",
+      "seed": {
+        "subject": "장군과 멍군",
+        "aspect": "부르면 받아야 한다",
+        "knowledgePoint": "상대의 궁을 노렸음을 알리는 말과 그것을 받아넘기는 말에서 온 관용 표현"
+      },
+      "question": {
+        "ok": true,
+        "question": "장기에서 상대의 궁을 노렸음을 알리며 '장군'이라 외치면, 상대는 그것을 막아 내며 무엇이라 외칩니까?",
+        "answer": "멍군",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "'장군 멍군'은 서로 팽팽하게 맞선다는 뜻의 관용구로도 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/1#012",
+      "seed": {
+        "subject": "한과 초",
+        "aspect": "장기판의 두 진영",
+        "knowledgePoint": "장기의 두 편 이름이 중국 초한 전쟁에서 왔다는 유래"
+      },
+      "question": {
+        "ok": true,
+        "question": "장기판의 두 진영 이름이 유래한, 유방과 항우가 천하를 두고 맞선 중국의 전쟁을 무엇이라 합니까?",
+        "answer": "초한전쟁",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "붉은 글씨 쪽이 유방, 푸른 글씨 쪽이 항우의 나라입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

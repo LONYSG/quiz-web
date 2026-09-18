@@ -1,0 +1,323 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "football/1",
+    "categoryPath": "스포츠·게임 > 축구 > 규칙",
+    "midKey": "football",
+    "subName": "규칙",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T05:36:41.815Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 25,
+      "remainingUsable": 10,
+      "remainingUsableNote": "간접 프리킥·코너킥·스로인의 두 손 규정·골키퍼의 백패스 처리·교체 인원·연장과 승부차기·경기 시간·센터서클 지름·페널티 아크·주심과 부심의 역할이 남았다.",
+      "estimatedCeiling": "실질 상한 22건으로 추정한다. 규칙 조항의 수가 정해져 있어 더 늘리기 어렵다.",
+      "droppedForOverlap": [
+        {
+          "subject": "오프사이드",
+          "aspect": "마지막 수비수보다 앞",
+          "reason": "DB 에 이미 답이 오프사이드인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "VAR",
+          "aspect": "오프사이드를 영상으로 다시 본다",
+          "reason": "★ 비디오 판독을 뽑았다. 같은 지식이다 (seed-v2 기준)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 현재 소속팀·순위·개인 통산 기록은 넣지 않았다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-17T05:55:30.904Z"
+  },
+  "items": [
+    {
+      "seedId": "football/1#001",
+      "seed": {
+        "subject": "해트트릭",
+        "aspect": "한 경기에 세 골",
+        "knowledgePoint": "한 선수가 한 경기에서 세 골을 넣는 것을 이르는 말과 그 말이 크리켓에서 온 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "축구에서 한 선수가 한 경기에 세 골을 넣는 것을 무엇이라 합니까?",
+        "answer": "해트트릭",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "크리켓에서 세 타자를 연속으로 잡은 투수에게 모자를 주던 관습에서 왔다고 전해집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/1#002",
+      "seed": {
+        "subject": "레드카드",
+        "aspect": "나간 자리를 채우지 못한다",
+        "knowledgePoint": "퇴장을 뜻하는 카드와 퇴장한 선수의 자리를 교체로 메울 수 없다는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "축구에서 선수를 즉시 경기장 밖으로 내보내고, 그 빈자리를 교체 선수로 메울 수도 없게 만드는 심판의 카드는?",
+        "answer": "레드카드",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "퇴장당한 팀은 한 명이 모자란 채로 남은 시간을 치러야 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/1#003",
+      "seed": {
+        "subject": "페널티킥",
+        "aspect": "11미터",
+        "knowledgePoint": "페널티 구역 안의 반칙에 주어지는 킥과 그 지점까지의 거리"
+      },
+      "question": {
+        "ok": true,
+        "question": "축구에서 골키퍼와 차는 선수만 남기고 골대 앞 11미터 지점에서 차게 하는 킥으로, 수비 쪽이 자기 진영 안에서 심각한 반칙을 했을 때 주어지는 것은?",
+        "answer": "페널티킥",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "11미터는 원래 12야드로 정한 값입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/1#004",
+      "seed": {
+        "subject": "추가 시간",
+        "aspect": "90분이 지나도 끝나지 않는다",
+        "knowledgePoint": "경기가 멈춘 시간을 전·후반 끝에 되돌려 주는 방식과 그 시간을 정하는 사람"
+      },
+      "question": {
+        "ok": true,
+        "question": "축구에서 전반이나 후반의 정규 시간이 끝난 뒤, 경기가 멈춰 있던 만큼을 되돌려 주려고 더 진행하는 시간을 무엇이라 합니까?",
+        "answer": "추가 시간",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "주심이 재량으로 정하며 4심이 판을 들어 최소 시간을 알립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/1#005",
+      "seed": {
+        "subject": "핸드볼 반칙",
+        "aspect": "골키퍼만 손을 쓸 수 있다",
+        "knowledgePoint": "손이나 팔로 공을 다루는 반칙과 자기 페널티 구역 안의 골키퍼만 예외가 되는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "축구에서 손이나 팔로 공을 다루었을 때 선언되는 반칙으로, 자기 진영 벌칙 구역 안에 있는 골키퍼만 예외가 되는 것은?",
+        "answer": "핸드볼",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "공이 저절로 팔에 맞은 경우까지 모두 반칙은 아니어서 판정이 자주 갈립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/1#006",
+      "seed": {
+        "subject": "어드밴티지",
+        "aspect": "반칙이 있었지만 휘슬을 불지 않는다",
+        "knowledgePoint": "반칙을 당한 쪽이 오히려 유리한 상황이면 경기를 이어 가게 하는 심판의 재량"
+      },
+      "question": {
+        "ok": true,
+        "question": "축구에서 반칙이 있었더라도 휘슬을 불지 않는 편이 당한 팀에 유리할 때 경기를 그대로 이어 가게 하는 심판의 판단을 무엇이라 합니까?",
+        "answer": "어드밴티지",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "이어 가기로 했는데 유리한 상황이 곧 사라지면 뒤늦게 반칙을 선언할 수도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/1#007",
+      "seed": {
+        "subject": "비디오 판독",
+        "aspect": "심판이 화면을 보러 나간다",
+        "knowledgePoint": "득점·페널티·퇴장·선수 확인 네 가지에만 쓰도록 정해 둔 영상 판독 제도"
+      },
+      "question": {
+        "ok": true,
+        "question": "축구에서 득점, 페널티킥, 퇴장, 선수를 잘못 본 경우 네 가지 상황에만 쓰도록 정해 둔 영상 판독 제도를 무엇이라 합니까?",
+        "answer": "VAR",
+        "acceptedAnswers": [
+          "비디오 판독"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "네 가지로 못박아 둔 것은 경기 흐름이 지나치게 끊기는 것을 막기 위해서입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "중복 판정 same (확신 0.95) — r017 football/2#004 와 db:410 이 같은 VAR 지식",
+          "decidedBy": "gemini 중복 판정 (D-043)",
+          "duplicateOf": "db:410",
+          "at": "2026-09-18T01:13:49.493Z"
+        }
+      }
+    },
+    {
+      "seedId": "football/1#008",
+      "seed": {
+        "subject": "골대 크기",
+        "aspect": "7.32미터와 2.44미터",
+        "knowledgePoint": "축구 골대의 너비와 높이가 야드·피트에서 온 값이라는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "축구 골대의 너비 7.32미터, 높이 2.44미터라는 어중간한 값은 규격을 처음 정할 때 미터가 아닌 단위를 썼기 때문입니다. 그 규칙을 만든 나라는?",
+        "answer": "영국",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "8야드와 8피트를 미터로 옮긴 값입니다. 근대 축구 규칙은 19세기 영국에서 정리됐습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/1#009",
+      "seed": {
+        "subject": "경고 누적",
+        "aspect": "노란색 두 장은 빨간색",
+        "knowledgePoint": "한 경기에서 옐로카드를 두 번 받으면 퇴장이 되는 규칙"
+      },
+      "question": {
+        "ok": false,
+        "rejectReason": "이 소재로 문제를 만들면 답이 같은 소분류의 다른 소재(레드카드)와 같아진다. '옐로카드 두 장이면 무엇인가'의 답이 레드카드이기 때문이다. 답을 옐로카드 쪽으로 돌리면 '경고를 뜻하는 카드는?'이 되어 알 가치가 없고, 여러 경기에 걸친 경고 누적을 물으면 질문에 '경고'가 들어가 정답이 노출된다."
+      }
+    },
+    {
+      "seedId": "football/1#010",
+      "seed": {
+        "subject": "킥오프",
+        "aspect": "이제는 앞으로 차지 않아도 된다",
+        "knowledgePoint": "경기를 시작하는 킥과 반드시 앞으로 차야 했던 규정이 바뀐 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "축구에서 경기를 시작하거나 득점 뒤에 경기를 다시 시작할 때 센터서클 한가운데에서 공을 차 넣는 것을 무엇이라 합니까?",
+        "answer": "킥오프",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "예전에는 반드시 앞으로 차야 했지만 지금은 어느 방향으로 차도 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/1#011",
+      "seed": {
+        "subject": "골든골",
+        "aspect": "넣는 순간 경기가 끝난다",
+        "knowledgePoint": "연장전에서 먼저 득점하면 즉시 경기를 끝내던 방식과 그것이 폐지된 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "축구 연장전에서 먼저 득점하는 순간 남은 시간과 상관없이 경기를 끝내던 방식으로, 오히려 수비만 하는 경기를 늘린다는 비판을 받아 폐지된 것은?",
+        "answer": "골든골",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "2002년 월드컵까지 쓰이다 사라졌습니다. 한국의 16강전 결승골도 이 방식이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "중복 판정 same (확신 1) — r017 football/2#007 과 db:413 이 같은 골든골 지식",
+          "decidedBy": "gemini 중복 판정 (D-043)",
+          "duplicateOf": "db:413",
+          "at": "2026-09-18T01:13:49.577Z"
+        }
+      }
+    },
+    {
+      "seedId": "football/1#012",
+      "seed": {
+        "subject": "축구공의 조각",
+        "aspect": "오각형과 육각형",
+        "knowledgePoint": "오랫동안 표준으로 쓰인 32조각 축구공의 도형 구성"
+      },
+      "question": {
+        "ok": true,
+        "question": "오랫동안 표준으로 쓰인 축구공은 32개의 조각을 이어 붙여 만들었습니다. 이때 쓰인 두 가지 도형은 육각형과 무엇입니까?",
+        "answer": "오각형",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "육각형 20개와 오각형 12개입니다. 평면 도형만으로 공에 가까운 모양을 만들려는 해법입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

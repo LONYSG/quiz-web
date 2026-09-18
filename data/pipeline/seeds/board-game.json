@@ -3,7 +3,7 @@
   "midName": "보드게임·카드게임",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-17T00:35:34.812Z",
+  "updatedAt": "2026-09-17T05:55:30.920Z",
   "subs": {
     "board-game/1": {
       "subName": "바둑·장기",
@@ -12,9 +12,286 @@
           "answer": "덤",
           "origin": "db:147",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "19",
+          "origin": "r019:board-game/1#001",
+          "note": null
+        },
+        {
+          "answer": "화점",
+          "origin": "r019:board-game/1#002",
+          "note": null
+        },
+        {
+          "answer": "집",
+          "origin": "r019:board-game/1#003",
+          "note": null
+        },
+        {
+          "answer": "불계승",
+          "origin": "r019:board-game/1#004",
+          "note": null
+        },
+        {
+          "answer": "사활",
+          "origin": "r019:board-game/1#005",
+          "note": null
+        },
+        {
+          "answer": "알파고",
+          "origin": "r019:board-game/1#006",
+          "note": null
+        },
+        {
+          "answer": "기보",
+          "origin": "r019:board-game/1#007",
+          "note": null
+        },
+        {
+          "answer": "초읽기",
+          "origin": "r019:board-game/1#008",
+          "note": null
+        },
+        {
+          "answer": "궁성",
+          "origin": "r019:board-game/1#009",
+          "note": null
+        },
+        {
+          "answer": "차",
+          "origin": "r019:board-game/1#010",
+          "note": null
+        },
+        {
+          "answer": "멍군",
+          "origin": "r019:board-game/1#011",
+          "note": null
+        },
+        {
+          "answer": "초한전쟁",
+          "origin": "r019:board-game/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "board-game/1#001",
+          "subject": "바둑판의 줄",
+          "aspect": "가로세로 열아홉 줄",
+          "knowledgePoint": "바둑판이 19×19로 이루어져 교차점이 361개가 되는 구조",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#001",
+            "answer": "19",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#002",
+          "subject": "화점",
+          "aspect": "판에 찍힌 아홉 개의 점",
+          "knowledgePoint": "바둑판에 표시된 점의 위치와 접바둑에서 미리 돌을 놓는 자리로 쓰이는 쓰임",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#002",
+            "answer": "화점",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#003",
+          "subject": "집",
+          "aspect": "둘러싼 빈 곳을 센다",
+          "knowledgePoint": "돌로 에워싼 빈 교차점을 세어 승부를 가르는 바둑의 계산 방식",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#003",
+            "answer": "집",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#004",
+          "subject": "불계승",
+          "aspect": "세어 보지 않고 이긴다",
+          "knowledgePoint": "차이가 커서 계가를 하지 않고 한쪽이 돌을 거두며 끝나는 승부",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#004",
+            "answer": "불계승",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#005",
+          "subject": "사활",
+          "aspect": "두 눈이 있으면 죽지 않는다",
+          "knowledgePoint": "돌 무리가 살아 있으려면 갈라진 빈 공간이 두 곳 있어야 한다는 원리",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#005",
+            "answer": "사활",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#006",
+          "subject": "알파고 대국",
+          "aspect": "2016년 서울에서의 다섯 판",
+          "knowledgePoint": "이세돌과 알파고의 대결과 인간이 한 판을 이긴 사실",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#006",
+            "answer": "알파고",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#007",
+          "subject": "기보",
+          "aspect": "둔 순서를 번호로 남긴다",
+          "knowledgePoint": "대국의 착수 순서를 숫자로 적어 나중에 그대로 되짚을 수 있게 한 기록",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#007",
+            "answer": "기보",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#008",
+          "subject": "초읽기",
+          "aspect": "시간이 다 되면 한 수에 몇 초",
+          "knowledgePoint": "주어진 시간을 다 쓴 뒤 한 수마다 정해진 짧은 시간을 재는 방식",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#008",
+            "answer": "초읽기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#009",
+          "subject": "장기의 궁",
+          "aspect": "정해진 아홉 칸을 벗어나지 못한다",
+          "knowledgePoint": "장기에서 왕에 해당하는 말이 궁성 안에서만 움직일 수 있다는 규칙",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#009",
+            "answer": "궁성",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#010",
+          "subject": "장기의 차",
+          "aspect": "직선으로 끝까지 간다",
+          "knowledgePoint": "장기에서 가장 활동 범위가 넓은 말과 그 움직임",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#010",
+            "answer": "차",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#011",
+          "subject": "장군과 멍군",
+          "aspect": "부르면 받아야 한다",
+          "knowledgePoint": "상대의 궁을 노렸음을 알리는 말과 그것을 받아넘기는 말에서 온 관용 표현",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#011",
+            "answer": "멍군",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/1#012",
+          "subject": "한과 초",
+          "aspect": "장기판의 두 진영",
+          "knowledgePoint": "장기의 두 편 이름이 중국 초한 전쟁에서 왔다는 유래",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.836Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/board-game-1#012",
+            "answer": "초한전쟁",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "board-game/2": {
       "subName": "체스",

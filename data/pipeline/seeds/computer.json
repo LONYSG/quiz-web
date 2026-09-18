@@ -3,7 +3,7 @@
   "midName": "컴퓨터·인터넷",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-16T06:07:31.916Z",
+  "updatedAt": "2026-09-18T01:02:49.325Z",
   "subs": {
     "computer/1": {
       "subName": "하드웨어",
@@ -266,6 +266,289 @@
             "answer": "프로토콜",
             "rejectReason": null,
             "questionPrompt": "question-v1"
+          }
+        }
+      ]
+    },
+    "computer/5": {
+      "subName": "정보 보안",
+      "usedAnswers": [
+        {
+          "answer": "피싱",
+          "origin": "r019:computer/5#001",
+          "note": null
+        },
+        {
+          "answer": "스미싱",
+          "origin": "r019:computer/5#002",
+          "note": null
+        },
+        {
+          "answer": "랜섬웨어",
+          "origin": "r019:computer/5#003",
+          "note": null
+        },
+        {
+          "answer": "방화벽",
+          "origin": "r019:computer/5#004",
+          "note": null
+        },
+        {
+          "answer": "2단계 인증",
+          "origin": "r019:computer/5#005",
+          "note": null
+        },
+        {
+          "answer": "VPN",
+          "origin": "r019:computer/5#006",
+          "note": null
+        },
+        {
+          "answer": "공개키",
+          "origin": "r019:computer/5#007",
+          "note": null
+        },
+        {
+          "answer": "해시",
+          "origin": "r019:computer/5#008",
+          "note": null
+        },
+        {
+          "answer": "디도스",
+          "origin": "r019:computer/5#009",
+          "note": null
+        },
+        {
+          "answer": "제로데이",
+          "origin": "r019:computer/5#010",
+          "note": null
+        },
+        {
+          "answer": "백도어",
+          "origin": "r019:computer/5#011",
+          "note": null
+        },
+        {
+          "answer": "무차별 대입 공격",
+          "origin": "r019:computer/5#012",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "computer/5#001",
+          "subject": "피싱",
+          "aspect": "진짜처럼 꾸민 화면으로 정보를 빼내는 수법",
+          "knowledgePoint": "믿을 만한 기관을 사칭한 화면이나 메일로 계정과 비밀번호를 입력하게 만드는 공격",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#001",
+            "answer": "피싱",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#002",
+          "subject": "스미싱",
+          "aspect": "문자메시지를 통로로 삼는 공격",
+          "knowledgePoint": "문자에 담긴 주소를 눌러 악성 프로그램이 깔리게 만드는 수법과 그 이름의 짜임",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#002",
+            "answer": "스미싱",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#003",
+          "subject": "랜섬웨어",
+          "aspect": "파일을 잠그고 돈을 요구하는 악성코드",
+          "knowledgePoint": "저장된 파일을 암호화해 열지 못하게 한 뒤 대가를 요구하는 악성 프로그램",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#003",
+            "answer": "랜섬웨어",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#004",
+          "subject": "방화벽",
+          "aspect": "드나드는 통신을 걸러 내는 장치",
+          "knowledgePoint": "규칙에 맞지 않는 통신을 막아 내부 망을 보호하는 장치나 소프트웨어",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#004",
+            "answer": "방화벽",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#005",
+          "subject": "이중 인증",
+          "aspect": "비밀번호 하나로는 부족한 까닭",
+          "knowledgePoint": "아는 것과 가진 것을 함께 확인해 비밀번호가 새어도 로그인을 막는 방식",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#005",
+            "answer": "2단계 인증",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#006",
+          "subject": "VPN",
+          "aspect": "공용망 위에 사설망처럼 통로를 만드는 기술",
+          "knowledgePoint": "공개된 망을 지나면서도 암호화된 통로를 만들어 내용을 감추는 기술",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#006",
+            "answer": "VPN",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#007",
+          "subject": "공개키",
+          "aspect": "열쇠를 둘로 나눈 암호 방식",
+          "knowledgePoint": "누구나 아는 열쇠로 잠그고 본인만 아는 열쇠로 여는 방식과 그 장점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#007",
+            "answer": "공개키",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#008",
+          "subject": "해시",
+          "aspect": "되돌릴 수 없게 요약하는 함수",
+          "knowledgePoint": "원문을 일정 길이의 값으로 바꾸되 되돌릴 수 없게 만들어 비밀번호 저장에 쓰는 함수",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#008",
+            "answer": "해시",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#009",
+          "subject": "디도스",
+          "aspect": "여러 곳에서 한꺼번에 몰아붙이는 공격",
+          "knowledgePoint": "감염된 많은 기기가 동시에 요청을 보내 서비스를 마비시키는 공격",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#009",
+            "answer": "디도스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#010",
+          "subject": "제로데이",
+          "aspect": "고칠 시간이 없었던 취약점",
+          "knowledgePoint": "만든 쪽이 알기도 전이거나 고칠 겨를이 없는 사이에 악용되는 취약점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#010",
+            "answer": "제로데이",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#011",
+          "subject": "백도어",
+          "aspect": "정상 절차를 건너뛰는 뒷문",
+          "knowledgePoint": "인증을 거치지 않고 시스템에 들어갈 수 있도록 남겨 둔 통로",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#011",
+            "answer": "백도어",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/5#012",
+          "subject": "무차별 대입 공격",
+          "aspect": "될 때까지 다 해 보는 방식",
+          "knowledgePoint": "가능한 조합을 차례로 넣어 비밀번호를 알아내려는 공격과 그 대비책",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:23:49.166Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/computer-5#012",
+            "answer": "무차별 대입 공격",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
           }
         }
       ]

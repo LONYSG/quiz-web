@@ -3,7 +3,7 @@
   "midName": "야구",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-16T05:39:53.034Z",
+  "updatedAt": "2026-09-17T05:55:30.910Z",
   "subs": {
     "baseball/1": {
       "subName": "규칙",
@@ -34,9 +34,286 @@
           "answer": "사이클링 히트",
           "origin": "db:211",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "희생번트",
+          "origin": "r019:baseball/4#001",
+          "note": null
+        },
+        {
+          "answer": "병살",
+          "origin": "r019:baseball/4#002",
+          "note": null
+        },
+        {
+          "answer": "퍼펙트게임",
+          "origin": "r019:baseball/4#003",
+          "note": null
+        },
+        {
+          "answer": "도루",
+          "origin": "r019:baseball/4#004",
+          "note": null
+        },
+        {
+          "answer": "만루",
+          "origin": "r019:baseball/4#005",
+          "note": null
+        },
+        {
+          "answer": "고의사구",
+          "origin": "r019:baseball/4#006",
+          "note": null
+        },
+        {
+          "answer": "스트라이크 존",
+          "origin": "r019:baseball/4#007",
+          "note": null
+        },
+        {
+          "answer": "끝내기",
+          "origin": "r019:baseball/4#008",
+          "note": null
+        },
+        {
+          "answer": "구원투수",
+          "origin": "r019:baseball/4#009",
+          "note": null
+        },
+        {
+          "answer": "체인지업",
+          "origin": "r019:baseball/4#010",
+          "note": null
+        },
+        {
+          "answer": "지명타자",
+          "origin": "r019:baseball/4#011",
+          "note": null
+        },
+        {
+          "answer": "덕아웃",
+          "origin": "r019:baseball/4#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "baseball/4#001",
+          "subject": "희생번트",
+          "aspect": "아웃을 내주고 주자를 보낸다",
+          "knowledgePoint": "타자가 스스로 아웃될 것을 알면서 주자를 진루시키는 타격과 그것이 타율에 반영되지 않는 이유",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#001",
+            "answer": "희생번트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#002",
+          "subject": "병살",
+          "aspect": "한 번에 두 명을 잡는다",
+          "knowledgePoint": "한 번의 플레이로 두 개의 아웃을 만드는 수비와 그 대표 경로인 2루-1루 연결",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#002",
+            "answer": "병살",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#003",
+          "subject": "퍼펙트 게임",
+          "aspect": "한 명도 1루를 밟지 못한다",
+          "knowledgePoint": "안타·볼넷·실책 어느 것으로도 주자를 내보내지 않고 끝낸 완투와 노히트노런과의 차이",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#003",
+            "answer": "퍼펙트게임",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#004",
+          "subject": "도루",
+          "aspect": "투수가 공을 던지는 순간 뛴다",
+          "knowledgePoint": "타자의 타격 없이 주자가 다음 베이스를 차지하는 플레이와 그 성패를 가르는 순간",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#004",
+            "answer": "도루",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#005",
+          "subject": "만루",
+          "aspect": "베이스가 모두 찼다",
+          "knowledgePoint": "1·2·3루에 모두 주자가 있는 상황을 이르는 말과 그때 수비의 선택지가 늘어나는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#005",
+            "answer": "만루",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#006",
+          "subject": "고의사구",
+          "aspect": "일부러 걸어 내보낸다",
+          "knowledgePoint": "강한 타자를 피해 일부러 볼넷을 주는 작전과 지금은 던지지 않고 신청만 해도 되는 규정",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#006",
+            "answer": "고의사구",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#007",
+          "subject": "스트라이크 존",
+          "aspect": "타자의 몸이 기준이다",
+          "knowledgePoint": "타자의 무릎과 가슴 사이로 정해지는 판정 구역이라 타자마다 다르다는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#007",
+            "answer": "스트라이크 존",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#008",
+          "subject": "끝내기",
+          "aspect": "9회말에 이기면 그대로 끝난다",
+          "knowledgePoint": "홈팀이 마지막 공격에서 역전하면 남은 이닝을 치르지 않고 경기가 끝나는 구조",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#008",
+            "answer": "끝내기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#009",
+          "subject": "구원투수",
+          "aspect": "선발 다음에 나온다",
+          "knowledgePoint": "선발 투수를 이어받아 던지는 투수들의 역할 구분과 경기 마지막을 맡는 투수",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#009",
+            "answer": "구원투수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#010",
+          "subject": "체인지업",
+          "aspect": "빠른 공처럼 던지고 느리게 간다",
+          "knowledgePoint": "같은 팔 동작으로 던지되 속도를 떨어뜨려 타자의 타이밍을 무너뜨리는 구종",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#010",
+            "answer": "체인지업",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#011",
+          "subject": "지명타자",
+          "aspect": "수비를 하지 않고 타석에만 선다",
+          "knowledgePoint": "투수 대신 타석에 들어서는 자리와 리그마다 채택 여부가 달랐던 내력",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#011",
+            "answer": "지명타자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/4#012",
+          "subject": "덕아웃",
+          "aspect": "그라운드보다 낮게 파여 있다",
+          "knowledgePoint": "선수들이 대기하는 자리가 관중의 시야를 가리지 않도록 파여 있어 생긴 이름",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.824Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/baseball-4#012",
+            "answer": "덕아웃",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     }
   }
 }

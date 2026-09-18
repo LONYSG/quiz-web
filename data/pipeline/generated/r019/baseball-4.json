@@ -1,0 +1,320 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "baseball/4",
+    "categoryPath": "스포츠·게임 > 야구 > 야구 용어·전술",
+    "midKey": "baseball",
+    "subName": "야구 용어·전술",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T05:36:41.824Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 26,
+      "remainingUsable": 11,
+      "remainingUsableNote": "히트앤런·스퀴즈 번트·보크·인필드 플라이·낫아웃·태그업·견제구·대타와 대주자·불펜·세이브 요건·시프트가 남았다.",
+      "estimatedCeiling": "실질 상한 23건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "사이클링 히트",
+          "aspect": "한 경기에 단타·2루타·3루타·홈런",
+          "reason": "DB 에 이미 답이 사이클링 히트인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "만루 홈런",
+          "aspect": "한 번에 4점",
+          "reason": "★ 만루를 뽑았다. '베이스가 다 찼다' 는 지식 하나로 둘 다 풀린다 (seed-v2 기준)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 선수 개인의 기록 수치는 넣지 않았다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-17T05:55:30.909Z"
+  },
+  "items": [
+    {
+      "seedId": "baseball/4#001",
+      "seed": {
+        "subject": "희생번트",
+        "aspect": "아웃을 내주고 주자를 보낸다",
+        "knowledgePoint": "타자가 스스로 아웃될 것을 알면서 주자를 진루시키는 타격과 그것이 타율에 반영되지 않는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구에서 타자가 스스로 아웃될 것을 알면서도 공을 살짝 굴려 주자를 다음 베이스로 보내는 타격을 무엇이라 합니까?",
+        "answer": "희생번트",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "팀을 위해 아웃을 내준 것이므로 타율 계산에서는 타수로 치지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#002",
+      "seed": {
+        "subject": "병살",
+        "aspect": "한 번에 두 명을 잡는다",
+        "knowledgePoint": "한 번의 플레이로 두 개의 아웃을 만드는 수비와 그 대표 경로인 2루-1루 연결"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구에서 한 번의 수비 플레이로 아웃 두 개를 한꺼번에 잡아내는 것을 무엇이라 합니까?",
+        "answer": "병살",
+        "acceptedAnswers": [
+          "더블플레이"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "주자가 1루에 있고 땅볼이 나왔을 때 2루를 거쳐 1루로 던지는 경로가 가장 흔합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#003",
+      "seed": {
+        "subject": "퍼펙트 게임",
+        "aspect": "한 명도 1루를 밟지 못한다",
+        "knowledgePoint": "안타·볼넷·실책 어느 것으로도 주자를 내보내지 않고 끝낸 완투와 노히트노런과의 차이"
+      },
+      "question": {
+        "ok": true,
+        "question": "투수가 한 경기를 끝까지 던지면서 안타는 물론 볼넷이나 실책으로도 주자를 단 한 명도 내보내지 않은 경기를 무엇이라 합니까?",
+        "answer": "퍼펙트게임",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "안타만 없고 볼넷은 허용한 경기는 노히트노런이라고 하여 구별합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#004",
+      "seed": {
+        "subject": "도루",
+        "aspect": "투수가 공을 던지는 순간 뛴다",
+        "knowledgePoint": "타자의 타격 없이 주자가 다음 베이스를 차지하는 플레이와 그 성패를 가르는 순간"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구에서 타자가 공을 치지 않았는데도 주자가 투수의 투구 순간에 달려 다음 베이스를 차지하는 것을 무엇이라 합니까?",
+        "answer": "도루",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "투수의 투구 동작 습관을 읽어 내는 것이 성공의 열쇠입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#005",
+      "seed": {
+        "subject": "만루",
+        "aspect": "베이스가 모두 찼다",
+        "knowledgePoint": "1·2·3루에 모두 주자가 있는 상황을 이르는 말과 그때 수비의 선택지가 늘어나는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구에서 1루, 2루, 3루에 모두 주자가 나가 있는 상황을 무엇이라 합니까?",
+        "answer": "만루",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "수비는 어느 베이스에서든 주자를 잡을 수 있게 되지만 실점 위험도 가장 큽니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#006",
+      "seed": {
+        "subject": "고의사구",
+        "aspect": "일부러 걸어 내보낸다",
+        "knowledgePoint": "강한 타자를 피해 일부러 볼넷을 주는 작전과 지금은 던지지 않고 신청만 해도 되는 규정"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구에서 강한 타자와 승부를 피하려고 일부러 볼넷으로 내보내는 것을 무엇이라 합니까? 지금은 공을 던지지 않고 신청만 해도 됩니다.",
+        "answer": "고의사구",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "경기 시간을 줄이려고 던지지 않고 곧바로 내보내는 규정이 생겼습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#007",
+      "seed": {
+        "subject": "스트라이크 존",
+        "aspect": "타자의 몸이 기준이다",
+        "knowledgePoint": "타자의 무릎과 가슴 사이로 정해지는 판정 구역이라 타자마다 다르다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구에서 그 범위가 타자의 무릎과 가슴 사이로 정해져 타자마다 높이가 달라지는, 투구의 판정 구역을 무엇이라 합니까?",
+        "answer": "스트라이크 존",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "타자의 몸을 기준으로 삼기 때문에 키가 작은 타자는 그 구역도 좁아집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#008",
+      "seed": {
+        "subject": "끝내기",
+        "aspect": "9회말에 이기면 그대로 끝난다",
+        "knowledgePoint": "홈팀이 마지막 공격에서 역전하면 남은 이닝을 치르지 않고 경기가 끝나는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "홈 팀이 마지막 공격에서 앞서 나가면 남은 수비를 치르지 않고 경기가 그대로 끝납니다. 이렇게 경기를 마무리한 안타나 홈런 앞에 붙이는 말은?",
+        "answer": "끝내기",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "홈 팀이 뒤에 공격하기 때문에 생기는 구조입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#009",
+      "seed": {
+        "subject": "구원투수",
+        "aspect": "선발 다음에 나온다",
+        "knowledgePoint": "선발 투수를 이어받아 던지는 투수들의 역할 구분과 경기 마지막을 맡는 투수"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구에서 선발 투수가 내려간 뒤 이어서 던지는 투수들을 통틀어 무엇이라 합니까?",
+        "answer": "구원투수",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "그중 경기 마지막을 맡아 승리를 지키는 투수를 마무리라고 따로 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#010",
+      "seed": {
+        "subject": "체인지업",
+        "aspect": "빠른 공처럼 던지고 느리게 간다",
+        "knowledgePoint": "같은 팔 동작으로 던지되 속도를 떨어뜨려 타자의 타이밍을 무너뜨리는 구종"
+      },
+      "question": {
+        "ok": true,
+        "question": "빠른 공과 똑같은 팔 동작으로 던지되 속도만 뚝 떨어뜨려 타자의 타이밍을 무너뜨리는 구종은?",
+        "answer": "체인지업",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "휘어지는 변화구와 달리 속도 차이 자체가 무기입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#011",
+      "seed": {
+        "subject": "지명타자",
+        "aspect": "수비를 하지 않고 타석에만 선다",
+        "knowledgePoint": "투수 대신 타석에 들어서는 자리와 리그마다 채택 여부가 달랐던 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구에서 투수 대신 타석에만 들어서고 수비는 하지 않는 자리를 무엇이라 합니까?",
+        "answer": "지명타자",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "리그마다 채택 여부가 달라 오랫동안 논쟁거리였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/4#012",
+      "seed": {
+        "subject": "덕아웃",
+        "aspect": "그라운드보다 낮게 파여 있다",
+        "knowledgePoint": "선수들이 대기하는 자리가 관중의 시야를 가리지 않도록 파여 있어 생긴 이름"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구장에서 선수들이 대기하는 자리로, 관중의 시야를 가리지 않도록 그라운드보다 낮게 파여 있어 이런 이름이 붙은 곳은?",
+        "answer": "덕아웃",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "'파낸 자리'라는 뜻입니다. 낮게 만든 덕에 관중석 앞줄 시야가 트입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

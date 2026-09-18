@@ -3,7 +3,7 @@
   "midName": "축구",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-16T06:59:40.362Z",
+  "updatedAt": "2026-09-18T01:13:49.583Z",
   "subs": {
     "football/1": {
       "subName": "규칙",
@@ -12,9 +12,295 @@
           "answer": "오프사이드",
           "origin": "db:85",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "해트트릭",
+          "origin": "r019:football/1#001",
+          "note": null
+        },
+        {
+          "answer": "레드카드",
+          "origin": "r019:football/1#002",
+          "note": null
+        },
+        {
+          "answer": "페널티킥",
+          "origin": "r019:football/1#003",
+          "note": null
+        },
+        {
+          "answer": "추가 시간",
+          "origin": "r019:football/1#004",
+          "note": null
+        },
+        {
+          "answer": "핸드볼",
+          "origin": "r019:football/1#005",
+          "note": null
+        },
+        {
+          "answer": "어드밴티지",
+          "origin": "r019:football/1#006",
+          "note": null
+        },
+        {
+          "answer": "VAR",
+          "origin": "r019:football/1#007",
+          "note": "r018 격리: 중복 판정 same (확신 0.95) — r017 football/2#004 와 db:410 이 같은 VAR 지식"
+        },
+        {
+          "answer": "영국",
+          "origin": "r019:football/1#008",
+          "note": null
+        },
+        {
+          "answer": "킥오프",
+          "origin": "r019:football/1#010",
+          "note": null
+        },
+        {
+          "answer": "골든골",
+          "origin": "r019:football/1#011",
+          "note": "r018 격리: 중복 판정 same (확신 1) — r017 football/2#007 과 db:413 이 같은 골든골 지식"
+        },
+        {
+          "answer": "오각형",
+          "origin": "r019:football/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "football/1#001",
+          "subject": "해트트릭",
+          "aspect": "한 경기에 세 골",
+          "knowledgePoint": "한 선수가 한 경기에서 세 골을 넣는 것을 이르는 말과 그 말이 크리켓에서 온 내력",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/football-1#001",
+            "answer": "해트트릭",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "football/1#002",
+          "subject": "레드카드",
+          "aspect": "나간 자리를 채우지 못한다",
+          "knowledgePoint": "퇴장을 뜻하는 카드와 퇴장한 선수의 자리를 교체로 메울 수 없다는 규칙",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/football-1#002",
+            "answer": "레드카드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "football/1#003",
+          "subject": "페널티킥",
+          "aspect": "11미터",
+          "knowledgePoint": "페널티 구역 안의 반칙에 주어지는 킥과 그 지점까지의 거리",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/football-1#003",
+            "answer": "페널티킥",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "football/1#004",
+          "subject": "추가 시간",
+          "aspect": "90분이 지나도 끝나지 않는다",
+          "knowledgePoint": "경기가 멈춘 시간을 전·후반 끝에 되돌려 주는 방식과 그 시간을 정하는 사람",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/football-1#004",
+            "answer": "추가 시간",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "football/1#005",
+          "subject": "핸드볼 반칙",
+          "aspect": "골키퍼만 손을 쓸 수 있다",
+          "knowledgePoint": "손이나 팔로 공을 다루는 반칙과 자기 페널티 구역 안의 골키퍼만 예외가 되는 규칙",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/football-1#005",
+            "answer": "핸드볼",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "football/1#006",
+          "subject": "어드밴티지",
+          "aspect": "반칙이 있었지만 휘슬을 불지 않는다",
+          "knowledgePoint": "반칙을 당한 쪽이 오히려 유리한 상황이면 경기를 이어 가게 하는 심판의 재량",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/football-1#006",
+            "answer": "어드밴티지",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "football/1#007",
+          "subject": "비디오 판독",
+          "aspect": "심판이 화면을 보러 나간다",
+          "knowledgePoint": "득점·페널티·퇴장·선수 확인 네 가지에만 쓰도록 정해 둔 영상 판독 제도",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r019/football-1#007",
+            "answer": "VAR",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 판정 same (확신 0.95) — r017 football/2#004 와 db:410 이 같은 VAR 지식",
+              "decidedBy": "gemini 중복 판정 (D-043)",
+              "duplicateOf": "db:410",
+              "at": "2026-09-18T01:13:49.493Z"
+            }
+          }
+        },
+        {
+          "seedId": "football/1#008",
+          "subject": "골대 크기",
+          "aspect": "7.32미터와 2.44미터",
+          "knowledgePoint": "축구 골대의 너비와 높이가 야드·피트에서 온 값이라는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/football-1#008",
+            "answer": "영국",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "football/1#009",
+          "subject": "경고 누적",
+          "aspect": "노란색 두 장은 빨간색",
+          "knowledgePoint": "한 경기에서 옐로카드를 두 번 받으면 퇴장이 되는 규칙",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "rejected",
+            "ref": "r019/football-1#009",
+            "answer": null,
+            "rejectReason": "이 소재로 문제를 만들면 답이 같은 소분류의 다른 소재(레드카드)와 같아진다. '옐로카드 두 장이면 무엇인가'의 답이 레드카드이기 때문이다. 답을 옐로카드 쪽으로 돌리면 '경고를 뜻하는 카드는?'이 되어 알 가치가 없고, 여러 경기에 걸친 경고 누적을 물으면 질문에 '경고'가 들어가 정답이 노출된다.",
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "football/1#010",
+          "subject": "킥오프",
+          "aspect": "이제는 앞으로 차지 않아도 된다",
+          "knowledgePoint": "경기를 시작하는 킥과 반드시 앞으로 차야 했던 규정이 바뀐 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/football-1#010",
+            "answer": "킥오프",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "football/1#011",
+          "subject": "골든골",
+          "aspect": "넣는 순간 경기가 끝난다",
+          "knowledgePoint": "연장전에서 먼저 득점하면 즉시 경기를 끝내던 방식과 그것이 폐지된 이유",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r019/football-1#011",
+            "answer": "골든골",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 판정 same (확신 1) — r017 football/2#007 과 db:413 이 같은 골든골 지식",
+              "decidedBy": "gemini 중복 판정 (D-043)",
+              "duplicateOf": "db:413",
+              "at": "2026-09-18T01:13:49.577Z"
+            }
+          }
+        },
+        {
+          "seedId": "football/1#012",
+          "subject": "축구공의 조각",
+          "aspect": "오각형과 육각형",
+          "knowledgePoint": "오랫동안 표준으로 쓰인 32조각 축구공의 도형 구성",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.815Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/football-1#012",
+            "answer": "오각형",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "football/2": {
       "subName": "월드컵",

@@ -3,7 +3,7 @@
   "midName": "기호·상징·표지",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-17T00:47:20.832Z",
+  "updatedAt": "2026-09-18T01:13:50.324Z",
   "subs": {
     "symbols/1": {
       "subName": "국기·국장",
@@ -45,9 +45,300 @@
           "answer": "쥐",
           "origin": "db:308",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "고양이",
+          "origin": "r019:symbols/5#001",
+          "note": null
+        },
+        {
+          "answer": "황도 12궁",
+          "origin": "r019:symbols/5#002",
+          "note": null
+        },
+        {
+          "answer": "세차운동",
+          "origin": "r019:symbols/5#003",
+          "note": null
+        },
+        {
+          "answer": "북극성",
+          "origin": "r019:symbols/5#004",
+          "note": "r018 격리: 중복 판정 same (확신 0.95) — db:167 과 같은 북극성 지식"
+        },
+        {
+          "answer": "히파르코스",
+          "origin": "r019:symbols/5#005",
+          "note": null
+        },
+        {
+          "answer": "자시",
+          "origin": "r019:symbols/5#006",
+          "note": null
+        },
+        {
+          "answer": "입춘",
+          "origin": "r019:symbols/5#007",
+          "note": "r018 격리: 중복 판정 same (확신 0.95) — r017 calendar/4#003 과 db:359 가 같은 입춘 지식"
+        },
+        {
+          "answer": "현무",
+          "origin": "r019:symbols/5#008",
+          "note": null
+        },
+        {
+          "answer": "은하수",
+          "origin": "r019:symbols/5#009",
+          "note": null
+        },
+        {
+          "answer": "유성우",
+          "origin": "r019:symbols/5#010",
+          "note": null
+        },
+        {
+          "answer": "88",
+          "origin": "r019:symbols/5#011",
+          "note": null
+        },
+        {
+          "answer": "소",
+          "origin": "r019:symbols/5#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "symbols/5#001",
+          "subject": "십이지",
+          "aspect": "고양이가 빠져 있다",
+          "knowledgePoint": "열두 동물로 해를 세는 체계와 그 목록에 고양이가 없다는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/symbols-5#001",
+            "answer": "고양이",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/5#002",
+          "subject": "황도 12궁",
+          "aspect": "태양이 지나는 길 위의 별자리",
+          "knowledgePoint": "태양이 1년 동안 지나가는 길목에 놓인 별자리들을 묶어 부르는 이름",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/symbols-5#002",
+            "answer": "황도 12궁",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/5#003",
+          "subject": "생일 별자리의 어긋남",
+          "aspect": "그 시기 태양은 거기에 없다",
+          "knowledgePoint": "지구 자전축이 서서히 흔들려 점성술의 별자리와 실제 하늘이 어긋나게 된 현상",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/symbols-5#003",
+            "answer": "세차운동",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/5#004",
+          "subject": "북극성",
+          "aspect": "밤새 자리가 거의 변하지 않는다",
+          "knowledgePoint": "지구 자전축이 향한 쪽에 있어 늘 북쪽을 가리키는 별과 그것을 찾는 방법",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r019/symbols-5#004",
+            "answer": "북극성",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 판정 same (확신 0.95) — db:167 과 같은 북극성 지식",
+              "decidedBy": "gemini 중복 판정 (D-043)",
+              "duplicateOf": "db:167",
+              "at": "2026-09-18T01:13:50.318Z"
+            }
+          }
+        },
+        {
+          "seedId": "symbols/5#005",
+          "subject": "별의 밝기 등급",
+          "aspect": "숫자가 작을수록 밝다",
+          "knowledgePoint": "눈에 보이는 밝기를 숫자로 매기되 밝을수록 작은 값을 주는 관습과 그 유래",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/symbols-5#005",
+            "answer": "히파르코스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/5#006",
+          "subject": "지지와 시각",
+          "aspect": "자시·축시로 하루를 나눈다",
+          "knowledgePoint": "열두 지지로 하루를 두 시간씩 열둘로 나누어 부르던 시각 체계",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/symbols-5#006",
+            "answer": "자시",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/5#007",
+          "subject": "정월 대보름의 띠",
+          "aspect": "띠가 바뀌는 기준이 갈린다",
+          "knowledgePoint": "띠의 기준을 양력 1월 1일로 볼지 설날로 볼지 입춘으로 볼지 견해가 나뉘는 점",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r019/symbols-5#007",
+            "answer": "입춘",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 판정 same (확신 0.95) — r017 calendar/4#003 과 db:359 가 같은 입춘 지식",
+              "decidedBy": "gemini 중복 판정 (D-043)",
+              "duplicateOf": "db:359",
+              "at": "2026-09-18T01:13:49.655Z"
+            }
+          }
+        },
+        {
+          "seedId": "symbols/5#008",
+          "subject": "사신",
+          "aspect": "네 방위를 지키는 짐승",
+          "knowledgePoint": "청룡·백호·주작·현무가 각각 맡은 방위와 고분 벽화에 그려진 배치",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/symbols-5#008",
+            "answer": "현무",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/5#009",
+          "subject": "은하수",
+          "aspect": "별이 모여 띠처럼 보인다",
+          "knowledgePoint": "우리 은하를 안쪽에서 옆으로 바라보기 때문에 하늘에 띠처럼 보이는 현상",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/symbols-5#009",
+            "answer": "은하수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/5#010",
+          "subject": "유성우",
+          "aspect": "해마다 같은 때에 쏟아진다",
+          "knowledgePoint": "혜성이 남긴 먼지 궤도를 지구가 해마다 같은 시기에 지나가기 때문에 되풀이되는 현상",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/symbols-5#010",
+            "answer": "유성우",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/5#011",
+          "subject": "별자리의 국제 기준",
+          "aspect": "경계선이 지도처럼 그어져 있다",
+          "knowledgePoint": "별자리를 그림이 아니라 하늘의 구역으로 정해 경계를 확정해 둔 국제 합의",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/symbols-5#011",
+            "answer": "88",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "symbols/5#012",
+          "subject": "십이지 동물의 순서",
+          "aspect": "소 등에 타고 와서 먼저 뛰어내렸다",
+          "knowledgePoint": "동물들의 경주로 순서를 설명하는 설화와 그 안에서 쥐와 소의 자리가 정해지는 대목",
+          "round": "r019",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-17T05:36:41.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r019/symbols-5#012",
+            "answer": "소",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "symbols/2": {
       "subName": "교통 표지",

@@ -1,0 +1,317 @@
+{
+  "_meta": {
+    "round": "r019",
+    "subId": "society/3",
+    "categoryPath": "인문·사회 > 사회 제도 > 인구·통계 개념",
+    "midKey": "society",
+    "subName": "인구·통계 개념",
+    "majorKey": "humanities",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-17T01:47:01.764Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 24,
+      "remainingUsable": 7,
+      "remainingUsableNote": "조출생률·성비·인구 이동의 사회적 증가·인구 오너스·표본 추출 방법·유소년부양비·평균과 중앙값의 차이가 남았다.",
+      "estimatedCeiling": "실질 상한 19건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "초고령사회",
+          "aspect": "노인 인구 비율의 기준",
+          "reason": "usedAnswers 의 '초고령사회' 와 맞히게 해주는 지식이 같다"
+        },
+        {
+          "subject": "지니계수",
+          "aspect": "소득 분배의 불평등 지표",
+          "reason": "R017 economy/1#004 와 맞히게 해주는 지식이 같다"
+        }
+      ]
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-18T00:48:34.582Z"
+  },
+  "items": [
+    {
+      "seedId": "society/3#001",
+      "seed": {
+        "subject": "합계출산율",
+        "aspect": "한 여성이 평생 낳는 아이 수",
+        "knowledgePoint": "인구가 유지되려면 이 값이 얼마여야 하는지와 그 기준의 근거"
+      },
+      "question": {
+        "ok": true,
+        "question": "한 여성이 평생 낳을 것으로 기대되는 아이의 수를 나타내는 지표로, 인구가 줄지 않으려면 2.1 정도는 되어야 한다고 보는 것은?",
+        "answer": "합계출산율",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "2가 아니라 2.1인 것은 어른이 되기 전에 숨지는 경우를 고려하기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#002",
+      "seed": {
+        "subject": "인구 피라미드",
+        "aspect": "모양으로 읽는 인구 구조",
+        "knowledgePoint": "연령별 인구를 쌓아 그린 그림의 모양이 그 사회의 단계를 보여 준다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "연령별 인구를 남녀로 나누어 아래에서부터 쌓아 그린 그림으로, 그 모양이 그 사회의 인구 구조를 한눈에 보여 주는 것은?",
+        "answer": "인구 피라미드",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "아래가 넓으면 젊은 사회, 항아리나 역삼각형이면 고령화된 사회로 읽습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#003",
+      "seed": {
+        "subject": "부양비",
+        "aspect": "일하는 사람이 짊어지는 부담",
+        "knowledgePoint": "생산 연령 인구 대비 유소년과 노년 인구의 비율로 부담을 나타내는 지표"
+      },
+      "question": {
+        "ok": true,
+        "question": "생산 연령 인구에 대한 유소년과 노년 인구의 비율로, 일하는 사람이 짊어지는 부담의 크기를 나타내는 지표는?",
+        "answer": "부양비",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "저출생으로 유소년 쪽은 줄지만 노년 쪽이 크게 늘어 전체 부담은 커집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#004",
+      "seed": {
+        "subject": "생산가능인구",
+        "aspect": "나이로 구분하는 일할 수 있는 인구",
+        "knowledgePoint": "실제 취업 여부와 상관없이 나이만으로 구분하는 인구 집단과 그 범위"
+      },
+      "question": {
+        "ok": true,
+        "question": "실제로 일을 하는지와 상관없이 나이만으로 15세부터 64세까지를 묶어 부르는 인구 집단은?",
+        "answer": "생산가능인구",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "학생과 전업주부, 실업자도 나이만 맞으면 여기에 들어갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#005",
+      "seed": {
+        "subject": "중위연령",
+        "aspect": "인구를 반으로 가르는 나이",
+        "knowledgePoint": "전체 인구를 나이순으로 세웠을 때 한가운데 있는 사람의 나이"
+      },
+      "question": {
+        "ok": true,
+        "question": "전체 인구를 나이순으로 줄 세웠을 때 한가운데 있는 사람의 나이를 무엇이라 합니까?",
+        "answer": "중위연령",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "평균과 달리 한쪽 극단에 휘둘리지 않아 인구의 고령화를 보기에 좋습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#006",
+      "seed": {
+        "subject": "센서스",
+        "aspect": "모든 가구를 조사하는 방식",
+        "knowledgePoint": "표본을 뽑지 않고 전체를 조사하는 방식과 그것을 5년마다 하는 까닭"
+      },
+      "question": {
+        "ok": true,
+        "question": "표본을 뽑지 않고 모든 가구를 빠짐없이 조사하는 방식으로, 우리나라에서 5년마다 실시하는 인구주택총조사가 여기에 해당합니다. 이를 무엇이라 합니까?",
+        "answer": "센서스",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "비용이 크기 때문에 자주 할 수 없고, 그 사이는 표본조사로 메웁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#007",
+      "seed": {
+        "subject": "기대수명",
+        "aspect": "태어난 해를 기준으로 본 예상 수명",
+        "knowledgePoint": "그해에 태어난 아이가 앞으로 살 것으로 기대되는 햇수를 나타내는 지표"
+      },
+      "question": {
+        "ok": true,
+        "question": "그해에 태어난 아이가 앞으로 몇 해를 더 살 것으로 기대되는지를 나타내는 지표는?",
+        "answer": "기대수명",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "그해의 사망률이 앞으로도 그대로라고 가정하고 계산한 값입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#008",
+      "seed": {
+        "subject": "인구 보너스",
+        "aspect": "일할 사람이 많아 성장이 쉬워지는 시기",
+        "knowledgePoint": "생산 연령 인구 비중이 높아 부양 부담이 낮은 동안 성장에 유리해지는 국면"
+      },
+      "question": {
+        "ok": true,
+        "question": "생산 연령 인구의 비중이 높아 부양 부담이 낮은 동안 경제 성장에 유리해지는 시기를 무엇이라 합니까?",
+        "answer": "인구 보너스",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "이 시기가 지나면 반대로 부담이 커지는 인구 오너스 국면이 옵니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#009",
+      "seed": {
+        "subject": "표본오차",
+        "aspect": "전부 조사하지 않아 생기는 오차",
+        "knowledgePoint": "표본으로 전체를 추정할 때 따라붙는 오차와 그것을 함께 밝혀야 하는 까닭"
+      },
+      "question": {
+        "ok": true,
+        "question": "전체를 조사하지 않고 일부만 뽑아 조사할 때 따라붙는 오차로, 여론조사 결과를 발표할 때 반드시 함께 밝히도록 되어 있는 것은?",
+        "answer": "표본오차",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "이 범위 안의 차이는 우열을 가렸다고 말할 수 없어 '오차범위 내'라고 보도합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#010",
+      "seed": {
+        "subject": "이촌향도",
+        "aspect": "농촌을 떠나 도시로 향하는 흐름",
+        "knowledgePoint": "산업화 시기에 인구가 한 방향으로 이동한 현상을 가리키는 말"
+      },
+      "question": {
+        "ok": true,
+        "question": "산업화 시기에 사람들이 농촌을 떠나 도시로 몰려간 인구 이동 현상을 네 글자로 무엇이라 합니까?",
+        "answer": "이촌향도",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "우리나라에서는 1960~80년대에 특히 두드러졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#011",
+      "seed": {
+        "subject": "도시화율",
+        "aspect": "도시에 사는 사람의 비율",
+        "knowledgePoint": "전체 인구 가운데 도시 지역에 사는 비율과 그 변화가 그리는 곡선"
+      },
+      "question": {
+        "ok": true,
+        "question": "전체 인구 가운데 도시 지역에 사는 사람의 비율을 무엇이라 합니까?",
+        "answer": "도시화율",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "초기에는 천천히, 중간에 급격히, 나중에 다시 완만해지는 S자 곡선을 그립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/3#012",
+      "seed": {
+        "subject": "인구 데드크로스",
+        "aspect": "태어난 수보다 죽은 수가 많아지는 시점",
+        "knowledgePoint": "출생아 수가 사망자 수보다 적어져 인구가 자연 감소로 돌아서는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "한 해에 태어난 아이 수가 죽은 사람 수보다 적어져 인구가 자연 감소로 돌아서는 현상을 무엇이라 합니까?",
+        "answer": "인구 데드크로스",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "우리나라는 2020년에 처음으로 이 상태에 들어섰습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}
