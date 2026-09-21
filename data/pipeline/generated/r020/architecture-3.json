@@ -1,0 +1,331 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "architecture/3",
+    "categoryPath": "문화·예술 > 건축 > 유명 건축물",
+    "midKey": "architecture",
+    "subName": "유명 건축물",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:17:22.025Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 27,
+      "remainingUsable": 11,
+      "remainingUsableNote": "판테온·노트르담·성 바실리 대성당·구겐하임 빌바오·롱샹 성당·낙수장·부르즈 할리파·페트로나스 트윈타워·금문교·후버댐·엠파이어 스테이트 빌딩이 남았다.",
+      "estimatedCeiling": "실질 상한 23건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "에펠탑",
+          "aspect": "만국박람회를 위해 세웠다",
+          "reason": "DB 에 이미 답이 에펠탑인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "시드니 오페라 하우스",
+          "aspect": "조개껍데기 지붕",
+          "reason": "★ R020 에서 이미 만들었다 (세계 지리 > 랜드마크·지형)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:47:36.663Z"
+  },
+  "items": [
+    {
+      "seedId": "architecture/3#001",
+      "seed": {
+        "subject": "사그라다 파밀리아",
+        "aspect": "100년 넘게 짓고 있다",
+        "knowledgePoint": "가우디가 설계하고 그가 죽은 뒤에도 공사가 이어지고 있는 바르셀로나의 성당"
+      },
+      "question": {
+        "ok": true,
+        "question": "가우디가 설계해 1882년에 착공했으나 그가 세상을 떠난 뒤에도 공사가 이어지고 있는 바르셀로나의 성당은?",
+        "answer": "사그라다 파밀리아",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "기부금으로만 지어 온 것이 공사가 오래 걸린 이유의 하나입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/3#002",
+      "seed": {
+        "subject": "하기아 소피아",
+        "aspect": "성당이었다가 모스크가 됐다",
+        "knowledgePoint": "동로마의 성당으로 지어졌다가 이슬람 사원으로, 다시 박물관으로 쓰임이 바뀐 건물"
+      },
+      "question": {
+        "ok": true,
+        "question": "동로마의 성당으로 지어졌다가 이슬람 사원이 되고 박물관으로 쓰이다 다시 사원이 된, 이스탄불의 건물은?",
+        "answer": "하기아 소피아",
+        "acceptedAnswers": [
+          "아야 소피아"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "내부에 기독교 모자이크와 이슬람 서예가 함께 남아 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/3#003",
+      "seed": {
+        "subject": "파르테논 신전",
+        "aspect": "기둥이 미세하게 휘어 있다",
+        "knowledgePoint": "직선으로 보이게 하려고 일부러 곡선을 준 설계와 그 신전이 모신 신"
+      },
+      "question": {
+        "ok": true,
+        "question": "기둥과 바닥을 일부러 아주 조금 휘어 놓아 오히려 똑바르게 보이도록 지은, 아테네의 신전은?",
+        "answer": "파르테논 신전",
+        "acceptedAnswers": [
+          "파르테논"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "도시의 수호신 아테나를 모신 신전입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:494)",
+          "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+          "duplicateOf": "db:494",
+          "at": "2026-09-21T05:41:19.642Z"
+        }
+      }
+    },
+    {
+      "seedId": "architecture/3#004",
+      "seed": {
+        "subject": "타지마할",
+        "aspect": "왕비를 위해 지은 무덤",
+        "knowledgePoint": "무굴 제국의 황제가 세상을 떠난 왕비를 위해 지은 대리석 묘당"
+      },
+      "question": {
+        "ok": true,
+        "question": "무굴 제국의 황제가 세상을 떠난 왕비를 위해 지은 흰 대리석 묘당으로, 인도 아그라에 있는 것은?",
+        "answer": "타지마할",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "좌우가 완벽하게 대칭이며 하루의 빛에 따라 색이 달라 보입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/3#005",
+      "seed": {
+        "subject": "피사의 사탑",
+        "aspect": "짓는 도중부터 기울었다",
+        "knowledgePoint": "지반이 약해 공사 중에 이미 기울기 시작한 종탑과 기울기를 늦추기 위한 보강 공사"
+      },
+      "question": {
+        "ok": true,
+        "question": "지반이 약해 공사 도중부터 기울기 시작했고, 기울기를 늦추는 보강 공사를 거쳐 지금도 서 있는 이탈리아의 종탑은?",
+        "answer": "피사의 사탑",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "공사가 여러 번 중단된 덕분에 땅이 다져져 무너지지 않았다는 설명이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/3#006",
+      "seed": {
+        "subject": "콜로세움의 이름",
+        "aspect": "옆에 있던 거대한 상에서 왔다",
+        "knowledgePoint": "본래 이름은 따로 있고 옆에 서 있던 거상에서 지금 이름이 왔다는 설명"
+      },
+      "question": {
+        "ok": true,
+        "question": "로마의 원형 경기장은 지금의 이름과 달리 본래 그것을 지은 황제 가문의 이름으로 불렸습니다. 그 본래 이름은?",
+        "answer": "플라비우스 원형극장",
+        "acceptedAnswers": [],
+        "accessibility": 1,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "지금의 이름은 옆에 서 있던 네로의 거대한 상에서 왔다는 설명이 유력합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/3#007",
+      "seed": {
+        "subject": "베르사유 궁전의 거울의 방",
+        "aspect": "조약이 이곳에서 맺어졌다",
+        "knowledgePoint": "거울로 벽을 채운 회랑과 1차 대전을 끝낸 조약이 조인된 장소라는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "거울로 벽을 가득 채운 회랑이 유명하며, 1차 세계대전을 끝낸 조약이 이곳에서 조인된 프랑스의 궁전은?",
+        "answer": "베르사유 궁전",
+        "acceptedAnswers": [
+          "베르사유"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "그 전에 독일제국의 선포식도 같은 자리에서 있었던 점이 조인 장소 선택에 얽혀 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/3#008",
+      "seed": {
+        "subject": "만리장성의 길이",
+        "aspect": "한 줄이 아니라 여러 겹이다",
+        "knowledgePoint": "여러 시대의 성벽이 겹쳐 있어 길이를 하나로 말하기 어려운 점"
+      },
+      "question": {
+        "ok": false,
+        "rejectReason": "이 소재로 만들 문제의 답은 '만리장성' 인데, R019 에서 이미 만리장성을 정답으로 하는 문제를 만들어 DB 에 적재했다 (동양사 > 중국 왕조). 길이를 묻더라도 답은 같거나 숫자가 되어 알 가치가 낮다 (D-090)."
+      }
+    },
+    {
+      "seedId": "architecture/3#009",
+      "seed": {
+        "subject": "자유의 여신상의 왕관",
+        "aspect": "뿔이 일곱 개다",
+        "knowledgePoint": "일곱 대륙과 일곱 바다를 뜻한다고 설명되는 왕관의 뾰족한 부분"
+      },
+      "question": {
+        "ok": true,
+        "question": "자유의 여신상이 쓴 왕관의 뾰족한 부분은 일곱 대륙과 일곱 바다를 뜻한다고 설명됩니다. 그 개수는 몇 개입니까?",
+        "answer": "7",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "자유가 온 세계로 퍼진다는 뜻을 담았다고 풀이됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "라운드 안 같은 답 '7' — 주사위 마주 보는 면의 합(board-game/4#007) 을 남겼다",
+          "decidedBy": "자체 판단 (D-090 · 라운드 안 같은 답)",
+          "duplicateOf": "r020:board-game/4#007",
+          "at": "2026-09-21T01:59:54.758Z"
+        }
+      }
+    },
+    {
+      "seedId": "architecture/3#010",
+      "seed": {
+        "subject": "숭례문",
+        "aspect": "국보 1호였다가 번호가 사라졌다",
+        "knowledgePoint": "화재로 소실되었다가 복원된 성문과 문화재 지정 번호를 없앤 제도 변화"
+      },
+      "question": {
+        "ok": true,
+        "question": "2008년 방화로 불타 5년에 걸쳐 복원된 서울의 성문으로, 오랫동안 '국보 1호' 로 불리던 것은?",
+        "answer": "숭례문",
+        "acceptedAnswers": [
+          "남대문"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "지금은 문화재에 순번을 매기지 않기로 해 '국보 1호' 라는 표현을 쓰지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/3#011",
+      "seed": {
+        "subject": "불국사의 두 탑",
+        "aspect": "마당에 성격이 다른 탑이 마주 선다",
+        "knowledgePoint": "단순하고 반듯한 탑과 화려하게 꾸민 탑이 한 마당에 함께 선 배치"
+      },
+      "question": {
+        "ok": true,
+        "question": "불국사 대웅전 앞마당에는 단순하고 반듯한 탑과 화려하게 꾸민 탑이 마주 서 있습니다. 이 가운데 화려한 쪽의 이름은?",
+        "answer": "다보탑",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "단순한 쪽은 석가탑이며, 그 안에서 무구정광대다라니경이 나왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/3#012",
+      "seed": {
+        "subject": "수원 화성",
+        "aspect": "공사 기록이 책으로 남았다",
+        "knowledgePoint": "설계와 공사 과정, 임금까지 적은 기록이 남아 복원이 가능했던 성곽"
+      },
+      "question": {
+        "ok": true,
+        "question": "설계와 공사 과정, 일꾼에게 준 임금까지 적은 기록이 남아 있어 훼손된 뒤에도 원형대로 복원할 수 있었던 조선의 성곽은?",
+        "answer": "수원 화성",
+        "acceptedAnswers": [
+          "화성"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "그 기록이 '화성성역의궤' 이며, 이것 덕분에 세계문화유산 등재도 가능했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

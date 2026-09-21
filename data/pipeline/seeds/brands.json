@@ -3,7 +3,7 @@
   "midName": "브랜드·기업",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-17T06:02:22.583Z",
+  "updatedAt": "2026-09-21T05:41:19.344Z",
   "subs": {
     "brands/1": {
       "subName": "기업 창업·역사",
@@ -28,9 +28,265 @@
           "answer": "스우시",
           "origin": "db:306",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "애플",
+          "origin": "r020:brands/2#001",
+          "note": null
+        },
+        {
+          "answer": "대륙",
+          "origin": "r020:brands/2#002",
+          "note": "r018 격리: 중복 — 판정 same, 기존 쪽이 낫다고 봤다 (olympic/4#001 / db:628)"
+        },
+        {
+          "answer": "재활용 표시",
+          "origin": "r020:brands/2#004",
+          "note": null
+        },
+        {
+          "answer": "방사능",
+          "origin": "r020:brands/2#005",
+          "note": null
+        },
+        {
+          "answer": "블루투스",
+          "origin": "r020:brands/2#006",
+          "note": null
+        },
+        {
+          "answer": "스타벅스",
+          "origin": "r020:brands/2#007",
+          "note": null
+        },
+        {
+          "answer": "맥도날드",
+          "origin": "r020:brands/2#008",
+          "note": null
+        },
+        {
+          "answer": "플랫 디자인",
+          "origin": "r020:brands/2#009",
+          "note": null
+        },
+        {
+          "answer": "상표권",
+          "origin": "r020:brands/2#010",
+          "note": null
+        },
+        {
+          "answer": "마스코트",
+          "origin": "r020:brands/2#011",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "brands/2#001",
+          "subject": "애플의 베어 문 사과",
+          "aspect": "한 입 베어 문 까닭",
+          "knowledgePoint": "체리와 구별하려고 한 입 베어 물었다는 디자이너의 설명",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/brands-2#001",
+            "answer": "애플",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "brands/2#002",
+          "subject": "올림픽의 오륜",
+          "aspect": "다섯 대륙을 뜻한다",
+          "knowledgePoint": "다섯 고리가 대륙을 뜻하고 어느 나라 국기든 적어도 한 색은 들어가도록 색을 골랐다는 설명",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/brands-2#002",
+            "answer": "대륙",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (olympic/4#001 / db:628)",
+              "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+              "duplicateOf": "db:628",
+              "at": "2026-09-21T05:41:19.338Z"
+            }
+          }
+        },
+        {
+          "seedId": "brands/2#003",
+          "subject": "적십자",
+          "aspect": "스위스 국기의 색을 뒤집었다",
+          "knowledgePoint": "창설자의 나라 국기에서 색을 바꿔 만든 표장과 문화권에 따라 다른 표장을 쓰는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "rejected",
+            "ref": "r020/brands-2#003",
+            "answer": null,
+            "rejectReason": "이 소재로 만들 문제의 답은 '적십자' 인데, DB 에 이미 적십자를 정답으로 하는 문제가 있다 (db:254). 표장의 유래를 묻더라도 답은 같다 (D-090).",
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "brands/2#004",
+          "subject": "재활용 표시",
+          "aspect": "세 화살표가 돌아간다",
+          "knowledgePoint": "뫼비우스 띠 모양으로 이어진 세 화살표와 그 안의 숫자가 뜻하는 것",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/brands-2#004",
+            "answer": "재활용 표시",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "brands/2#005",
+          "subject": "방사능 표지",
+          "aspect": "세 날개가 퍼져 나간다",
+          "knowledgePoint": "원자에서 퍼져 나가는 방사선을 나타낸 삼엽 표지와 그 색",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/brands-2#005",
+            "answer": "방사능",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "brands/2#006",
+          "subject": "블루투스",
+          "aspect": "덴마크 왕의 이름에서 왔다",
+          "knowledgePoint": "여러 부족을 통합한 왕의 별명에서 이름을 따오고 그 이름의 머리글자 룬 문자를 합쳐 로고를 만든 일",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/brands-2#006",
+            "answer": "블루투스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "brands/2#007",
+          "subject": "스타벅스의 세이렌",
+          "aspect": "바다의 요정에서 왔다",
+          "knowledgePoint": "뱃사람을 홀리던 신화 속 존재를 로고로 삼은 내력과 시간이 지나며 단순해진 과정",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/brands-2#007",
+            "answer": "스타벅스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "brands/2#008",
+          "subject": "맥도날드의 골든 아치",
+          "aspect": "건물 구조물이 로고가 됐다",
+          "knowledgePoint": "초기 매장 양옆에 세웠던 아치 구조물이 상표가 된 내력",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/brands-2#008",
+            "answer": "맥도날드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "brands/2#009",
+          "subject": "로고의 단순화",
+          "aspect": "화면이 작아지자 다들 납작해졌다",
+          "knowledgePoint": "입체적이고 복잡하던 로고들이 모바일 화면에 맞추어 단순한 평면으로 바뀐 흐름",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/brands-2#009",
+            "answer": "플랫 디자인",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "brands/2#010",
+          "subject": "상표권과 색",
+          "aspect": "색 자체를 등록하기도 한다",
+          "knowledgePoint": "특정 색이 브랜드를 식별하게 되면 색 자체를 상표로 보호받을 수 있는 제도",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/brands-2#010",
+            "answer": "상표권",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "brands/2#011",
+          "subject": "마스코트",
+          "aspect": "행사나 팀을 대신해 친근함을 만든다",
+          "knowledgePoint": "사람이 아닌 캐릭터를 내세워 대상에 친근한 인상을 만드는 장치",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.345Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/brands-2#011",
+            "answer": "마스코트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "brands/3": {
       "subName": "상표가 된 상품명",
@@ -98,7 +354,7 @@
         {
           "answer": "컬러링",
           "origin": "r019:brands/3#012",
-          "note": null
+          "note": "r018 격리: 알 가치 2 — 적재 대상에서 제외 (R020 건우 확정 C18: 알 가치 3 미만은 적재하지 않는다). ★ 소재는 usedSeeds 에 남는다. 2회차에서 이 소분류를 다시 볼 때 참고 자료다"
         }
       ],
       "seeds": [
@@ -310,12 +566,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-17T05:36:41.848Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r019/brands-3#012",
             "answer": "컬러링",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "알 가치 2 — 적재 대상에서 제외 (R020 건우 확정 C18: 알 가치 3 미만은 적재하지 않는다). ★ 소재는 usedSeeds 에 남는다. 2회차에서 이 소분류를 다시 볼 때 참고 자료다",
+              "decidedBy": "건우 확정 (R020 작업 A)",
+              "duplicateOf": null,
+              "at": "2026-09-21T00:50:45.059Z"
+            }
           }
         }
       ]

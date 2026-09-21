@@ -3,7 +3,7 @@
   "midName": "물리",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-18T00:55:37.287Z",
+  "updatedAt": "2026-09-21T01:35:18.719Z",
   "subs": {
     "physics/1": {
       "subName": "역학·운동",
@@ -300,9 +300,286 @@
           "answer": "옴의 법칙",
           "origin": "db:80",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "전자",
+          "origin": "r020:physics/2#001",
+          "note": null
+        },
+        {
+          "answer": "병렬",
+          "origin": "r020:physics/2#002",
+          "note": null
+        },
+        {
+          "answer": "저항",
+          "origin": "r020:physics/2#003",
+          "note": null
+        },
+        {
+          "answer": "전력",
+          "origin": "r020:physics/2#004",
+          "note": null
+        },
+        {
+          "answer": "고압 송전",
+          "origin": "r020:physics/2#005",
+          "note": null
+        },
+        {
+          "answer": "접지",
+          "origin": "r020:physics/2#006",
+          "note": null
+        },
+        {
+          "answer": "누전차단기",
+          "origin": "r020:physics/2#007",
+          "note": null
+        },
+        {
+          "answer": "정전기",
+          "origin": "r020:physics/2#008",
+          "note": null
+        },
+        {
+          "answer": "자극",
+          "origin": "r020:physics/2#009",
+          "note": null
+        },
+        {
+          "answer": "S극",
+          "origin": "r020:physics/2#010",
+          "note": null
+        },
+        {
+          "answer": "오른손 법칙",
+          "origin": "r020:physics/2#011",
+          "note": null
+        },
+        {
+          "answer": "전자기파",
+          "origin": "r020:physics/2#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "physics/2#001",
+          "subject": "전류의 방향",
+          "aspect": "실제로 움직이는 것과 반대로 정해져 있다",
+          "knowledgePoint": "전자는 음극에서 양극으로 흐르는데 전류의 방향은 그 반대로 약속된 내력",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#001",
+            "answer": "전자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#002",
+          "subject": "직렬과 병렬",
+          "aspect": "하나가 끊기면 다 꺼지는가",
+          "knowledgePoint": "직렬은 한 곳이 끊기면 전체가 끊기고 병렬은 그렇지 않은 차이와 가정용 배선이 병렬인 이유",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#002",
+            "answer": "병렬",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#003",
+          "subject": "저항",
+          "aspect": "굵고 짧을수록 잘 흐른다",
+          "knowledgePoint": "도선의 저항이 길이에 비례하고 단면적에 반비례하는 관계",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#003",
+            "answer": "저항",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#004",
+          "subject": "전력",
+          "aspect": "전압과 전류의 곱",
+          "knowledgePoint": "단위 시간에 쓰는 전기 에너지의 양과 그 단위",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#004",
+            "answer": "전력",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#005",
+          "subject": "고압 송전",
+          "aspect": "전압을 높이면 손실이 줄어든다",
+          "knowledgePoint": "같은 전력을 보낼 때 전압을 높이면 전류가 줄어 열로 버려지는 손실이 줄어드는 원리",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#005",
+            "answer": "고압 송전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#006",
+          "subject": "접지",
+          "aspect": "새는 전기를 땅으로 흘려보낸다",
+          "knowledgePoint": "기기의 금속 부분을 땅과 연결해 누전 시 사람 대신 전류가 흐르게 하는 안전 장치",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#006",
+            "answer": "접지",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#007",
+          "subject": "누전차단기",
+          "aspect": "들어간 전류와 나온 전류를 견준다",
+          "knowledgePoint": "들어오고 나가는 전류의 차이를 감지해 회로를 끊는 장치",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#007",
+            "answer": "누전차단기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#008",
+          "subject": "정전기",
+          "aspect": "마찰로 전자가 옮겨 간다",
+          "knowledgePoint": "서로 다른 물질을 비빌 때 전자가 한쪽으로 옮겨 가 쌓이는 현상과 겨울에 잦은 이유",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#008",
+            "answer": "정전기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#009",
+          "subject": "자석의 극",
+          "aspect": "반으로 잘라도 두 극이 남는다",
+          "knowledgePoint": "자석을 아무리 쪼개도 N극만 또는 S극만 따로 얻을 수 없는 성질",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#009",
+            "answer": "자극",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#010",
+          "subject": "지구 자기장",
+          "aspect": "나침반의 N극이 가리키는 쪽은 자기적으로 S극이다",
+          "knowledgePoint": "지구가 거대한 자석처럼 작용하며 지리상 북쪽에 자기적 S극이 있다는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#010",
+            "answer": "S극",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#011",
+          "subject": "오른손 법칙",
+          "aspect": "손 모양으로 방향을 찾는다",
+          "knowledgePoint": "전류가 흐르는 도선 둘레에 생기는 자기장의 방향을 손으로 나타내는 규칙",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#011",
+            "answer": "오른손 법칙",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/2#012",
+          "subject": "전자기파",
+          "aspect": "전기와 자기가 서로를 만들며 나아간다",
+          "knowledgePoint": "변하는 전기장이 자기장을, 변하는 자기장이 전기장을 만들며 퍼져 나가는 파동",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.432Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/physics-2#012",
+            "answer": "전자기파",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "physics/3": {
       "subName": "빛·소리·파동",

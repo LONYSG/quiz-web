@@ -3,7 +3,7 @@
   "midName": "사회 제도",
   "majorKey": "humanities",
   "majorName": "인문·사회",
-  "updatedAt": "2026-09-18T00:48:34.583Z",
+  "updatedAt": "2026-09-21T01:32:27.385Z",
   "subs": {
     "society/1": {
       "subName": "교육 제도",
@@ -12,9 +12,240 @@
           "answer": "대학수학능력시험",
           "origin": "db:153",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "의무교육",
+          "origin": "r020:society/1#001",
+          "note": null
+        },
+        {
+          "answer": "6-3-3-4 학제",
+          "origin": "r020:society/1#002",
+          "note": null
+        },
+        {
+          "answer": "고교평준화",
+          "origin": "r020:society/1#003",
+          "note": null
+        },
+        {
+          "answer": "중학교 무시험 진학",
+          "origin": "r020:society/1#004",
+          "note": null
+        },
+        {
+          "answer": "학점",
+          "origin": "r020:society/1#005",
+          "note": null
+        },
+        {
+          "answer": "서당",
+          "origin": "r020:society/1#006",
+          "note": null
+        },
+        {
+          "answer": "성균관",
+          "origin": "r020:society/1#007",
+          "note": null
+        },
+        {
+          "answer": "야학",
+          "origin": "r020:society/1#008",
+          "note": null
+        },
+        {
+          "answer": "문해율",
+          "origin": "r020:society/1#009",
+          "note": null
+        },
+        {
+          "answer": "교육기본법",
+          "origin": "r020:society/1#010",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "society/1#001",
+          "subject": "의무교육",
+          "aspect": "보내지 않으면 보호자가 책임을 진다",
+          "knowledgePoint": "우리나라에서 무상·의무로 정해진 교육 기간과 그것이 보호자의 의무라는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.903Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/society-1#001",
+            "answer": "의무교육",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/1#002",
+          "subject": "6-3-3-4 학제",
+          "aspect": "초·중·고·대의 햇수",
+          "knowledgePoint": "우리나라 학제의 기본 구조와 그것이 미국식을 들여온 것이라는 내력",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.903Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/society-1#002",
+            "answer": "6-3-3-4 학제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/1#003",
+          "subject": "고교평준화",
+          "aspect": "시험으로 고등학교를 가리지 않는다",
+          "knowledgePoint": "1974년부터 추첨으로 고등학교를 배정하게 한 정책과 그 배경",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.903Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/society-1#003",
+            "answer": "고교평준화",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/1#004",
+          "subject": "중학교 무시험 진학",
+          "aspect": "초등학생이 입시를 치르던 때가 있었다",
+          "knowledgePoint": "1969년에 중학교 입시를 없앤 조치와 그 전의 과열 경쟁",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.903Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/society-1#004",
+            "answer": "중학교 무시험 진학",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/1#005",
+          "subject": "학점",
+          "aspect": "수업 시간과 학습량을 재는 단위",
+          "knowledgePoint": "대학에서 한 과목의 분량을 나타내는 단위와 졸업에 필요한 총량",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.903Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/society-1#005",
+            "answer": "학점",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/1#006",
+          "subject": "서당",
+          "aspect": "근대 학교 이전의 초등 교육",
+          "knowledgePoint": "마을마다 두어 천자문과 소학을 가르치던 전통 교육기관과 훈장",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.903Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/society-1#006",
+            "answer": "서당",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/1#007",
+          "subject": "성균관",
+          "aspect": "조선의 최고 교육기관",
+          "knowledgePoint": "유학을 가르치고 공자에게 제사를 올리던 조선의 국립 교육기관",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.903Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/society-1#007",
+            "answer": "성균관",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/1#008",
+          "subject": "야학",
+          "aspect": "낮에 일하고 밤에 배웠다",
+          "knowledgePoint": "배울 기회를 놓친 사람들이 밤에 모여 공부하던 교육 형태와 그 사회적 배경",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.903Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/society-1#008",
+            "answer": "야학",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/1#009",
+          "subject": "문해율",
+          "aspect": "글을 읽고 쓸 수 있는 사람의 비율",
+          "knowledgePoint": "한 사회의 교육 수준을 재는 기본 지표와 우리나라가 짧은 기간에 이를 끌어올린 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.903Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/society-1#009",
+            "answer": "문해율",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "society/1#010",
+          "subject": "교육기본법",
+          "aspect": "교육의 원칙을 정해 둔 법",
+          "knowledgePoint": "교육의 이념과 국민의 학습권을 규정한 기본법과 그것이 다른 교육 법률의 바탕이 되는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.903Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/society-1#010",
+            "answer": "교육기본법",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "society/2": {
       "subName": "복지·의료 제도",

@@ -3,7 +3,7 @@
   "midName": "보드게임·카드게임",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-17T05:55:30.920Z",
+  "updatedAt": "2026-09-21T05:41:20.302Z",
   "subs": {
     "board-game/1": {
       "subName": "바둑·장기",
@@ -543,9 +543,254 @@
           "answer": "모노폴리",
           "origin": "db:275",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "퀸",
+          "origin": "r020:board-game/4#001",
+          "note": null
+        },
+        {
+          "answer": "체크메이트",
+          "origin": "r020:board-game/4#002",
+          "note": null
+        },
+        {
+          "answer": "캐슬링",
+          "origin": "r020:board-game/4#003",
+          "note": "r018 격리: 중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:148)"
+        },
+        {
+          "answer": "스테일메이트",
+          "origin": "r020:board-game/4#004",
+          "note": null
+        },
+        {
+          "answer": "딥 블루",
+          "origin": "r020:board-game/4#005",
+          "note": "r018 격리: 중복 — 판정 same. ★ 같은 대조인데 keep 이 엇갈렸다(xr6 keep=a / db13 keep=b). 선례대로 교체 후보에서 빼고 기존을 남긴다"
+        },
+        {
+          "answer": "부루마불",
+          "origin": "r020:board-game/4#006",
+          "note": null
+        },
+        {
+          "answer": "7",
+          "origin": "r020:board-game/4#007",
+          "note": null
+        },
+        {
+          "answer": "젠가",
+          "origin": "r020:board-game/4#008",
+          "note": null
+        },
+        {
+          "answer": "보드게임 카페",
+          "origin": "r020:board-game/4#009",
+          "note": null
+        },
+        {
+          "answer": "올해의 게임상",
+          "origin": "r020:board-game/4#010",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "board-game/4#001",
+          "subject": "체스의 기물",
+          "aspect": "퀸이 가장 강하다",
+          "knowledgePoint": "여섯 종류 기물의 움직임과 퀸이 가로·세로·대각선 모두로 움직이는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.335Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/board-game-4#001",
+            "answer": "퀸",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/4#002",
+          "subject": "체크메이트",
+          "aspect": "피할 수 없는 상태가 되면 끝난다",
+          "knowledgePoint": "왕이 공격받고 있는데 벗어날 방법이 없으면 경기가 끝나는 규칙과 그 말의 어원",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.335Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/board-game-4#002",
+            "answer": "체크메이트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/4#003",
+          "subject": "캐슬링",
+          "aspect": "두 기물이 한 번에 움직인다",
+          "knowledgePoint": "왕과 룩이 조건을 만족할 때 한 수에 함께 자리를 바꾸는 특수 규칙",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.335Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/board-game-4#003",
+            "answer": "캐슬링",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:148)",
+              "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+              "duplicateOf": "db:148",
+              "at": "2026-09-21T05:41:19.828Z"
+            }
+          }
+        },
+        {
+          "seedId": "board-game/4#004",
+          "subject": "스테일메이트",
+          "aspect": "둘 곳이 없으면 무승부다",
+          "knowledgePoint": "왕이 공격받고 있지는 않은데 둘 수 있는 수가 없으면 비기는 규칙",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.335Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/board-game-4#004",
+            "answer": "스테일메이트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/4#005",
+          "subject": "딥 블루",
+          "aspect": "컴퓨터가 세계 챔피언을 이겼다",
+          "knowledgePoint": "1997년에 체스 세계 챔피언을 이긴 컴퓨터와 그 상대 이름",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.335Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/board-game-4#005",
+            "answer": "딥 블루",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 — 판정 same. ★ 같은 대조인데 keep 이 엇갈렸다(xr6 keep=a / db13 keep=b). 선례대로 교체 후보에서 빼고 기존을 남긴다",
+              "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+              "duplicateOf": "db:352",
+              "at": "2026-09-21T05:41:20.296Z"
+            }
+          }
+        },
+        {
+          "seedId": "board-game/4#006",
+          "subject": "부루마불",
+          "aspect": "국내판 땅따먹기 보드게임",
+          "knowledgePoint": "1982년에 나와 국내에서 널리 퍼진 보드게임과 그 이름의 짜임",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.335Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/board-game-4#006",
+            "answer": "부루마불",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/4#007",
+          "subject": "주사위의 마주 보는 면",
+          "aspect": "합이 항상 7이다",
+          "knowledgePoint": "육면체 주사위에서 마주 보는 두 면의 눈 수를 더하면 7이 되도록 만드는 규칙",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.335Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/board-game-4#007",
+            "answer": "7",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/4#008",
+          "subject": "젠가",
+          "aspect": "쌓은 것을 빼서 다시 올린다",
+          "knowledgePoint": "블록을 빼내 맨 위에 올리며 무너뜨리지 않아야 하는 게임과 그 이름의 뜻",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.335Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/board-game-4#008",
+            "answer": "젠가",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/4#009",
+          "subject": "보드게임 카페",
+          "aspect": "게임을 사지 않고 빌려 한다",
+          "knowledgePoint": "여러 게임을 갖춰 두고 자리를 빌려 주는 형태의 공간이 자리 잡은 배경",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.335Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/board-game-4#009",
+            "answer": "보드게임 카페",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "board-game/4#010",
+          "subject": "독일 올해의 게임상",
+          "aspect": "수상하면 판매가 크게 뛴다",
+          "knowledgePoint": "보드게임 업계에서 가장 영향력 있는 상과 그 수상이 판매에 미치는 영향",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.335Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/board-game-4#010",
+            "answer": "올해의 게임상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "board-game/5": {
       "subName": "퍼즐",

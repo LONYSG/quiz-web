@@ -1,0 +1,329 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "baseball/1",
+    "categoryPath": "스포츠·게임 > 야구 > 규칙",
+    "midKey": "baseball",
+    "subName": "규칙",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:21:40.326Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 26,
+      "remainingUsable": 10,
+      "remainingUsableNote": "보크·인필드 플라이·낫아웃·태그업·견제·주자 추월·수비 방해·타순 오류·콜드게임·서스펜디드 게임이 남았다.",
+      "estimatedCeiling": "실질 상한 22건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "이닝",
+          "aspect": "공수를 한 번씩 교대한다",
+          "reason": "DB 에 이미 답이 이닝인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "스트라이크 존",
+          "aspect": "타자의 몸이 기준이다",
+          "reason": "★ R019 에서 이미 만들었다 (야구 > 야구 용어·전술)"
+        }
+      ],
+      "note": "★ R019 에서 같은 중분류의 '야구 용어·전술' 을 이미 다뤘다. 겹치지 않도록 **규칙 조항** 쪽으로 골랐다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:50:47.978Z"
+  },
+  "items": [
+    {
+      "seedId": "baseball/1#001",
+      "seed": {
+        "subject": "삼진",
+        "aspect": "스트라이크 세 개면 아웃",
+        "knowledgePoint": "타자가 스트라이크 세 개를 받으면 아웃이 되는 기본 규칙과 파울이 세 번째가 되지 않는 예외"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구에서 타자가 스트라이크를 세 개 받아 아웃되는 것을 무엇이라 합니까?",
+        "answer": "삼진",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "다만 세 번째가 파울이면 카운트에 넣지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#002",
+      "seed": {
+        "subject": "볼넷",
+        "aspect": "볼 네 개면 1루로 나간다",
+        "knowledgePoint": "스트라이크 존을 벗어난 공을 네 번 받으면 타자가 걸어 나가는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "투수가 스트라이크 존을 벗어난 공을 네 개 던져 타자가 걸어서 1루로 나가는 것을 무엇이라 합니까?",
+        "answer": "볼넷",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "타자가 친 것이 아니므로 타율 계산의 타수에는 들어가지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#003",
+      "seed": {
+        "subject": "파울",
+        "aspect": "두 스트라이크 뒤에는 세지 않는다",
+        "knowledgePoint": "파울이 스트라이크로 계산되지만 두 개가 된 뒤에는 더해지지 않는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구에서 이것은 스트라이크로 계산되지만, 이미 스트라이크가 두 개일 때는 아무리 여러 번 나와도 더해지지 않습니다. 이것은?",
+        "answer": "파울",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "그래서 타자가 계속 걷어 내며 좋은 공을 기다리는 승부가 가능해집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#004",
+      "seed": {
+        "subject": "야구장의 넓이",
+        "aspect": "규격이 정해지지 않은 유일한 구기",
+        "knowledgePoint": "내야는 규격이 정해져 있지만 외야 펜스까지의 거리는 구장마다 다른 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "내야는 규격이 정해져 있지만 담장까지의 거리와 모양은 구장마다 달라, 주요 구기 종목 가운데 경기장 크기가 통일돼 있지 않은 드문 종목은?",
+        "answer": "야구",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "그래서 구장에 따라 타자에게 유리하거나 투수에게 유리한 성격이 생깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#005",
+      "seed": {
+        "subject": "베이스 사이의 거리",
+        "aspect": "90피트로 정해져 있다",
+        "knowledgePoint": "내야 베이스 사이의 거리와 그것이 아웃과 세이프를 아슬아슬하게 만드는 절묘한 값이라는 평가"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구 내야에서 베이스와 베이스 사이의 거리는 90이라는 값으로 정해져 있습니다. 이때 쓰는 단위는?",
+        "answer": "피트",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "약 27.4미터이며, 이 절묘한 거리가 아웃과 세이프를 아슬아슬하게 만든다고 평가됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#006",
+      "seed": {
+        "subject": "투수판과 홈플레이트",
+        "aspect": "18.44미터",
+        "knowledgePoint": "투수판에서 홈플레이트까지의 거리와 그것이 60피트 6인치에서 온 값이라는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "투수가 공을 던지는 판에서 타자가 서는 홈플레이트까지의 거리는 18.44미터입니다. 이 값은 본래 몇 피트 6인치로 정한 것입니까?",
+        "answer": "60",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "처음에는 더 가까웠다가 투수가 유리해지자 뒤로 물린 것입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#007",
+      "seed": {
+        "subject": "홈런과 인정 2루타",
+        "aspect": "튀어서 넘어가면 홈런이 아니다",
+        "knowledgePoint": "타구가 그라운드에 맞고 튀어 담장을 넘으면 2루타로 인정하는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "친 공이 그라운드에 한 번 맞고 튀어 담장을 넘어가면 홈런이 아니라 무엇으로 인정합니까?",
+        "answer": "2루타",
+        "acceptedAnswers": [
+          "인정 2루타"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "타자와 주자 모두 두 베이스만 진루하는 것으로 처리합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#008",
+      "seed": {
+        "subject": "몸에 맞는 공",
+        "aspect": "피하려 했는지를 본다",
+        "knowledgePoint": "타자가 피하려 하지 않았다고 판단되면 1루로 보내지 않는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "투수가 던진 공에 타자가 맞아도 심판이 '피하려 하지 않았다' 고 보면 1루로 보내지 않습니다. 맞고 걸어 나가는 이 경우를 무엇이라 합니까?",
+        "answer": "몸에 맞는 공",
+        "acceptedAnswers": [
+          "사구"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "일부러 맞으려 드는 것을 막기 위한 규정입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#009",
+      "seed": {
+        "subject": "야구의 9이닝",
+        "aspect": "시간 제한이 없다",
+        "knowledgePoint": "정해진 이닝을 끝내야 경기가 끝나고 동점이면 연장을 치르는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구는 정해진 이닝을 끝내야 경기가 끝나고 동점이면 연장에 들어갑니다. 정규 경기는 몇 이닝입니까?",
+        "answer": "9",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "시간 제한이 없는 것이 다른 구기와 크게 다른 점입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#010",
+      "seed": {
+        "subject": "심판의 수",
+        "aspect": "네 명이 기본이다",
+        "knowledgePoint": "주심과 세 명의 누심으로 이루어진 기본 심판진과 큰 경기에서 늘어나는 구성"
+      },
+      "question": {
+        "ok": true,
+        "question": "야구 경기에 나서는 기본 심판진은 주심 한 명과 누심 세 명으로 모두 몇 명입니까?",
+        "answer": "4",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "큰 경기에서는 파울 라인 쪽에 두 명을 더해 여섯 명이 되기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "라운드 안 같은 답 '4' — 심장의 방 개수(human-body/2#001) 를 남겼다",
+          "decidedBy": "자체 판단 (D-090 · 라운드 안 같은 답)",
+          "duplicateOf": "r020:human-body/2#001",
+          "at": "2026-09-21T01:59:54.922Z"
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#011",
+      "seed": {
+        "subject": "투구 수 제한",
+        "aspect": "아마추어에서는 강제한다",
+        "knowledgePoint": "어린 선수의 어깨와 팔꿈치를 보호하려 투구 수를 제한하는 규정"
+      },
+      "question": {
+        "ok": true,
+        "question": "어린 선수의 어깨와 팔꿈치를 보호하려고 아마추어 야구에서 강제하는, 한 경기에 던질 수 있는 공의 개수 제한을 무엇이라 합니까?",
+        "answer": "투구 수 제한",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "성장기에 무리하면 회복이 어렵기 때문에 규정으로 못박아 둡니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/1#012",
+      "seed": {
+        "subject": "피치 클록",
+        "aspect": "던지기까지 시간을 잰다",
+        "knowledgePoint": "경기 시간을 줄이려 투구와 타격 준비에 제한 시간을 둔 규정"
+      },
+      "question": {
+        "ok": true,
+        "question": "늘어지는 경기 시간을 줄이려고 투수가 공을 던지기까지의 시간을 재는 장치를 도입했습니다. 이것을 무엇이라 합니까?",
+        "answer": "피치 클록",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "메이저리그가 도입한 뒤 평균 경기 시간이 크게 줄었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,326 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "design-photo/1",
+    "categoryPath": "문화·예술 > 사진·디자인 > 사진 기술·용어",
+    "midKey": "design-photo",
+    "subName": "사진 기술·용어",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:17:22.029Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 26,
+      "remainingUsable": 10,
+      "remainingUsableNote": "화이트밸런스·측광·히스토그램·RAW와 JPEG·광각과 망원·보케·파노라마·다중노출·필터·삼각대가 남았다.",
+      "estimatedCeiling": "실질 상한 22건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "조리개",
+          "aspect": "빛이 들어오는 구멍의 크기",
+          "reason": "DB 에 이미 답이 조리개인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "크로마키",
+          "aspect": "초록 배경을 지운다",
+          "reason": "★ R019 에서 이미 만들었다 (세계 영화 > 영화 용어·기법)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:47:36.666Z"
+  },
+  "items": [
+    {
+      "seedId": "design-photo/1#001",
+      "seed": {
+        "subject": "셔터스피드",
+        "aspect": "짧으면 멈추고 길면 흐른다",
+        "knowledgePoint": "빛을 받아들이는 시간의 길이가 움직임을 멈춰 보이게 하거나 흐르게 하는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "빛을 받아들이는 시간의 길이를 뜻하며, 짧게 하면 움직임이 멈춘 듯 찍히고 길게 하면 흐르듯 찍히는 값은?",
+        "answer": "셔터스피드",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "폭포를 비단처럼 찍는 것도 이 값을 길게 두어 얻는 효과입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#002",
+      "seed": {
+        "subject": "ISO",
+        "aspect": "올리면 밝아지지만 거칠어진다",
+        "knowledgePoint": "빛에 대한 감도를 나타내는 값과 높일수록 노이즈가 늘어나는 맞바꿈"
+      },
+      "question": {
+        "ok": true,
+        "question": "카메라가 빛에 얼마나 민감하게 반응하는지를 나타내는 값으로, 높이면 어두운 곳에서도 찍히지만 화면이 거칠어지는 것은?",
+        "answer": "ISO",
+        "acceptedAnswers": [
+          "감도"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "필름 시절 필름 자체의 감도를 나타내던 규격이 디지털에도 그대로 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#003",
+      "seed": {
+        "subject": "노출의 삼각형",
+        "aspect": "셋이 서로를 보상한다",
+        "knowledgePoint": "조리개·셔터스피드·감도 셋이 함께 밝기를 정하며 하나를 바꾸면 다른 것을 조절해야 하는 관계"
+      },
+      "question": {
+        "ok": true,
+        "question": "조리개·셔터스피드·감도 셋이 함께 사진의 밝기를 정하며 하나를 바꾸면 다른 것을 조절해야 하는 관계를, 도형에 빗대어 무엇이라 부릅니까?",
+        "answer": "노출의 삼각형",
+        "acceptedAnswers": [
+          "노출 삼각형"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "같은 밝기를 여러 조합으로 만들 수 있고, 그 선택이 사진의 성격을 바꿉니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#004",
+      "seed": {
+        "subject": "심도",
+        "aspect": "초점이 맞는 앞뒤 범위",
+        "knowledgePoint": "조리개를 열면 배경이 흐려지고 조이면 넓게 선명해지는 관계"
+      },
+      "question": {
+        "ok": true,
+        "question": "초점이 맞아 선명하게 보이는 앞뒤 범위를 뜻하며, 조리개를 열수록 얕아져 배경이 흐려지는 것은?",
+        "answer": "심도",
+        "acceptedAnswers": [
+          "피사계 심도"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "인물 사진에서 배경을 날리는 것도 이 값을 얕게 만드는 것입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#005",
+      "seed": {
+        "subject": "초점거리",
+        "aspect": "숫자가 클수록 멀리 당겨 보인다",
+        "knowledgePoint": "렌즈의 초점거리가 화각을 정하고 원근감까지 바꾸는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "렌즈에 적힌 50mm, 200mm 같은 값으로, 클수록 좁은 범위를 당겨 보게 되는 것은?",
+        "answer": "초점거리",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "화각만 바뀌는 것이 아니라 앞뒤 거리감까지 달라 보이게 만듭니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#006",
+      "seed": {
+        "subject": "카메라 옵스쿠라",
+        "aspect": "어두운 방의 작은 구멍",
+        "knowledgePoint": "작은 구멍으로 들어온 빛이 반대편 벽에 상을 맺는 현상과 그것이 사진의 원리가 된 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "어두운 방의 벽에 작은 구멍을 뚫으면 바깥 풍경이 반대편 벽에 거꾸로 맺히는 현상으로, 사진의 원리가 된 장치를 무엇이라 합니까?",
+        "answer": "카메라 옵스쿠라",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "'어두운 방' 이라는 뜻이며, 화가들이 밑그림을 그리는 데 쓰기도 했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#007",
+      "seed": {
+        "subject": "필름과 디지털",
+        "aspect": "빛을 기록하는 방식이 다르다",
+        "knowledgePoint": "화학 반응으로 상을 남기는 방식과 전기 신호로 바꿔 저장하는 방식의 차이"
+      },
+      "question": {
+        "ok": true,
+        "question": "디지털 카메라는 빛을 전기 신호로 바꿔 저장하는데, 필름은 무엇으로 상을 남깁니까?",
+        "answer": "화학 반응",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "빛을 받은 은 입자가 변하는 성질을 이용하며, 그래서 현상이라는 과정이 필요합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#008",
+      "seed": {
+        "subject": "셔터의 소리",
+        "aspect": "디지털 카메라는 소리를 일부러 낸다",
+        "knowledgePoint": "기계식 셔터가 없어도 촬영을 알리려 인공 소리를 내는 점과 국내에서 그것이 의무인 사정"
+      },
+      "question": {
+        "ok": true,
+        "question": "기계식 셔터가 없는 스마트폰에서도 촬영 때 소리가 나는 것은, 국내에서 이것이 무엇으로 정해져 있기 때문입니까?",
+        "answer": "의무",
+        "acceptedAnswers": [
+          "의무 규정"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "몰래 찍는 것을 막으려는 자율 규약에서 출발했고, 해외 기기에서는 끌 수 있는 경우가 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#009",
+      "seed": {
+        "subject": "삼분할 구도",
+        "aspect": "화면을 아홉 칸으로 나눈다",
+        "knowledgePoint": "가로세로를 셋으로 나눈 선이 만나는 자리에 주요 대상을 두는 구도"
+      },
+      "question": {
+        "ok": true,
+        "question": "화면을 가로세로 셋으로 나눈 선이 만나는 자리에 주요 대상을 두는 사진 구도를 무엇이라 합니까?",
+        "answer": "삼분할 구도",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "한가운데 두는 것보다 안정적이면서도 심심하지 않게 보입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#010",
+      "seed": {
+        "subject": "골든아워",
+        "aspect": "해 뜨고 진 직후의 빛",
+        "knowledgePoint": "태양이 낮게 떠 빛이 부드럽고 붉어지는 시간대와 그것을 사진가들이 선호하는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "해가 뜨고 난 직후와 지기 직전에 빛이 부드럽고 붉어져 사진가들이 가장 선호하는 시간대를 무엇이라 합니까?",
+        "answer": "골든아워",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "태양이 낮게 떠 빛이 대기를 길게 통과하면서 푸른빛이 흩어지기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#011",
+      "seed": {
+        "subject": "적목현상",
+        "aspect": "플래시에 눈이 빨갛게 나온다",
+        "knowledgePoint": "어두운 곳에서 커진 동공으로 플래시 빛이 들어가 망막의 혈관이 비치는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "어두운 곳에서 플래시를 터뜨렸을 때 눈동자가 빨갛게 나오는 현상을 무엇이라 합니까?",
+        "answer": "적목현상",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "커진 동공으로 빛이 들어가 망막의 혈관이 그대로 비치기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/1#012",
+      "seed": {
+        "subject": "결정적 순간",
+        "aspect": "기다렸다가 한 장을 찍는다",
+        "knowledgePoint": "형태와 사건이 완벽하게 맞아떨어지는 찰나를 포착해야 한다는 사진 미학"
+      },
+      "question": {
+        "ok": true,
+        "question": "형태와 사건이 완벽하게 맞아떨어지는 찰나를 기다렸다가 한 장을 찍어야 한다고 본 카르티에 브레송의 사진 미학을 무엇이라 합니까?",
+        "answer": "결정적 순간",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "연사로 수십 장을 찍어 고르는 방식과 대비되는 태도입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

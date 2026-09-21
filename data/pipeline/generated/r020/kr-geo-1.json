@@ -1,0 +1,255 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "kr-geo/1",
+    "categoryPath": "한국 > 한국 지리 > 행정구역·도시",
+    "midKey": "kr-geo",
+    "subName": "행정구역·도시",
+    "majorKey": "korea",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:06:01.792Z",
+    "seedResult": {
+      "ok": false,
+      "requestedCount": 12,
+      "actualCount": 9,
+      "shortfallReason": "★★ 9건에서 멈췄다. 남은 후보가 각 도의 도청 소재지·시 승격 기준·인구 순위인데, 전부 알 가치 2 이하로 판단했다. 도청 소재지는 외우는 것 말고 알게 되는 것이 없고, 인구 순위는 시간이 지나면 바뀐다.",
+      "listedCandidates": 22,
+      "remainingUsable": 4,
+      "remainingUsableNote": "통합 청주시·간척으로 넓어진 당진·경기도의 인구 규모·특례시 제도가 남았다. 나머지는 알 가치가 낮다.",
+      "estimatedCeiling": "실질 상한 13건으로 추정한다. ★ 이번 라운드에서 좁은 것으로 확인된 소분류다.",
+      "droppedForOverlap": [
+        {
+          "subject": "세종특별자치시",
+          "aspect": "행정 기능을 옮기려 만든 도시",
+          "reason": "DB 에 이미 답이 세종특별자치시인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "각 도의 도청 소재지",
+          "aspect": "경기도청은 수원",
+          "reason": "★ 알 가치 2 이하. 외우는 것 말고 알게 되는 것이 없다 (C18 하한 없음 규칙)"
+        }
+      ],
+      "note": "★★ 하한 없음 규칙을 적용한 첫 소분류다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:23:53.049Z"
+  },
+  "items": [
+    {
+      "seedId": "kr-geo/1#001",
+      "seed": {
+        "subject": "특별시",
+        "aspect": "우리나라에 하나뿐인 등급",
+        "knowledgePoint": "광역자치단체 가운데 특별시는 하나뿐이고 나머지는 광역시·도·특별자치시도라는 체계"
+      },
+      "question": {
+        "ok": true,
+        "question": "우리나라 광역자치단체 가운데 단 하나뿐인 등급으로, 서울이 여기에 해당하는 것은?",
+        "answer": "특별시",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "나머지는 광역시·도·특별자치시·특별자치도로 나뉩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/1#002",
+      "seed": {
+        "subject": "광역시",
+        "aspect": "직할시에서 이름이 바뀌었다",
+        "knowledgePoint": "1995년에 직할시를 고쳐 부르게 된 행정구역 등급과 지금 그 수"
+      },
+      "question": {
+        "ok": true,
+        "question": "부산·대구·인천·광주·대전·울산 여섯 곳이 속한 행정구역 등급으로, 1995년에 직할시에서 이름이 바뀐 것은?",
+        "answer": "광역시",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "도농 통합이 이루어지면서 '직할' 이라는 말이 맞지 않게 되어 이름을 바꿨습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/1#003",
+      "seed": {
+        "subject": "제주특별자치도",
+        "aspect": "가장 먼저 특별자치가 된 도",
+        "knowledgePoint": "2006년에 자치권을 크게 넓혀 출범한 도와 그 아래 기초자치단체를 두지 않는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "2006년에 자치권을 크게 넓혀 출범했고, 그 아래에 시·군 같은 기초자치단체를 두지 않는 우리나라의 도는?",
+        "answer": "제주특별자치도",
+        "acceptedAnswers": [
+          "제주도"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "제주시와 서귀포시는 단체장을 뽑지 않는 행정시입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/1#004",
+      "seed": {
+        "subject": "강원특별자치도",
+        "aspect": "2023년에 이름이 바뀐 도",
+        "knowledgePoint": "군사·산림 규제가 많은 사정을 반영해 특별자치도로 바뀐 도"
+      },
+      "question": {
+        "ok": true,
+        "question": "군사 규제와 산림 규제가 많은 사정을 반영해 2023년에 특별자치도로 이름이 바뀐 도는?",
+        "answer": "강원특별자치도",
+        "acceptedAnswers": [
+          "강원도"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "2024년에는 전라북도도 같은 방식으로 이름이 바뀌었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/1#005",
+      "seed": {
+        "subject": "창원시",
+        "aspect": "세 도시를 하나로 합쳤다",
+        "knowledgePoint": "마산·진해와 합쳐져 경상남도에서 가장 큰 도시가 된 곳"
+      },
+      "question": {
+        "ok": true,
+        "question": "2010년에 마산·진해와 합쳐져 경상남도에서 인구가 가장 많은 도시가 된 곳은?",
+        "answer": "창원시",
+        "acceptedAnswers": [
+          "창원"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "합친 뒤에도 옛 도시 이름을 따 마산합포구·진해구 같은 구 이름으로 남겼습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/1#006",
+      "seed": {
+        "subject": "울릉군",
+        "aspect": "독도가 속한 행정구역",
+        "knowledgePoint": "독도의 주소가 어느 도 어느 군에 속하는지와 그 법적 의미"
+      },
+      "question": {
+        "ok": true,
+        "question": "독도의 행정 주소가 속해 있는 경상북도의 군은?",
+        "answer": "울릉군",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "1900년 대한제국 칙령 제41호에서 이미 울도군의 관할로 명시했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/1#007",
+      "seed": {
+        "subject": "읍과 면",
+        "aspect": "인구로 갈린다",
+        "knowledgePoint": "군 아래의 행정구역을 인구 2만을 기준으로 읍과 면으로 나누는 규정"
+      },
+      "question": {
+        "ok": true,
+        "question": "군 아래의 행정구역은 인구 2만을 기준으로 둘로 나뉩니다. 2만 이상인 쪽을 무엇이라 합니까?",
+        "answer": "읍",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "2만이 되지 않으면 면으로 둡니다. 도시 지역의 같은 단계는 동입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/1#008",
+      "seed": {
+        "subject": "자치구와 행정구",
+        "aspect": "같은 '구' 인데 권한이 다르다",
+        "knowledgePoint": "광역시·특별시의 구는 단체장을 뽑는 자치구이고, 일반 시의 구는 그렇지 않다는 차이"
+      },
+      "question": {
+        "ok": true,
+        "question": "특별시와 광역시의 구는 구청장을 주민이 직접 뽑지만, 수원시나 성남시의 구는 그렇지 않습니다. 단체장을 직접 뽑는 앞의 것을 무엇이라 합니까?",
+        "answer": "자치구",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "뒤의 것은 행정구라 하며 시장이 구청장을 임명합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/1#009",
+      "seed": {
+        "subject": "경기도",
+        "aspect": "이름에 담긴 '서울 둘레' 라는 뜻",
+        "knowledgePoint": "도읍의 둘레를 뜻하는 말에서 온 이름과 그것이 지금까지 남아 있는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "'도읍의 둘레' 라는 뜻의 옛말에서 이름이 온 우리나라의 도로, 지금도 수도를 둘러싸고 있는 곳은?",
+        "answer": "경기도",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "고려 때 개경 둘레를 가리키던 말이 그대로 지명으로 굳었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

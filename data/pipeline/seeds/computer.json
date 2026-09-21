@@ -3,7 +3,7 @@
   "midName": "컴퓨터·인터넷",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-18T01:02:49.325Z",
+  "updatedAt": "2026-09-21T01:38:45.842Z",
   "subs": {
     "computer/1": {
       "subName": "하드웨어",
@@ -12,9 +12,286 @@
           "answer": "SSD",
           "origin": "db:95",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "CPU",
+          "origin": "r020:computer/1#001",
+          "note": null
+        },
+        {
+          "answer": "RAM",
+          "origin": "r020:computer/1#002",
+          "note": null
+        },
+        {
+          "answer": "GPU",
+          "origin": "r020:computer/1#003",
+          "note": null
+        },
+        {
+          "answer": "바이트",
+          "origin": "r020:computer/1#004",
+          "note": null
+        },
+        {
+          "answer": "2진법",
+          "origin": "r020:computer/1#005",
+          "note": null
+        },
+        {
+          "answer": "캐시",
+          "origin": "r020:computer/1#006",
+          "note": null
+        },
+        {
+          "answer": "무어의 법칙",
+          "origin": "r020:computer/1#007",
+          "note": null
+        },
+        {
+          "answer": "반도체",
+          "origin": "r020:computer/1#008",
+          "note": null
+        },
+        {
+          "answer": "트랜지스터",
+          "origin": "r020:computer/1#009",
+          "note": null
+        },
+        {
+          "answer": "에니악",
+          "origin": "r020:computer/1#010",
+          "note": null
+        },
+        {
+          "answer": "마우스",
+          "origin": "r020:computer/1#011",
+          "note": null
+        },
+        {
+          "answer": "쿼티",
+          "origin": "r020:computer/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "computer/1#001",
+          "subject": "CPU",
+          "aspect": "계산과 명령 처리를 맡는다",
+          "knowledgePoint": "컴퓨터에서 연산과 제어를 담당하는 핵심 부품과 그것을 사람의 뇌에 빗대는 비유",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#001",
+            "answer": "CPU",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#002",
+          "subject": "RAM",
+          "aspect": "전원을 끄면 사라진다",
+          "knowledgePoint": "작업 중인 자료를 임시로 담는 기억장치와 전원이 끊기면 내용이 지워지는 성질",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#002",
+            "answer": "RAM",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#003",
+          "subject": "GPU",
+          "aspect": "같은 계산을 한꺼번에 많이 한다",
+          "knowledgePoint": "화면 처리를 위해 단순 연산을 병렬로 수행하도록 만들어진 부품과 그것이 인공지능 학습에 쓰이게 된 까닭",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#003",
+            "answer": "GPU",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#004",
+          "subject": "비트와 바이트",
+          "aspect": "여덟 개가 모여 하나가 된다",
+          "knowledgePoint": "정보의 최소 단위와 그것 여덟 개를 묶은 단위의 관계",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#004",
+            "answer": "바이트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#005",
+          "subject": "2진법",
+          "aspect": "켜짐과 꺼짐 두 가지로 모든 것을 나타낸다",
+          "knowledgePoint": "전기가 흐르는지 아닌지 두 상태로 수와 문자를 나타내는 체계",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#005",
+            "answer": "2진법",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#006",
+          "subject": "캐시 메모리",
+          "aspect": "자주 쓰는 것을 가까이 둔다",
+          "knowledgePoint": "느린 주기억장치 대신 자주 쓰는 자료를 빠른 곳에 미리 담아 두는 계층 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#006",
+            "answer": "캐시",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#007",
+          "subject": "무어의 법칙",
+          "aspect": "2년마다 두 배로 늘어난다",
+          "knowledgePoint": "반도체에 들어가는 소자 수가 일정 기간마다 두 배가 된다는 경험적 관찰과 그 한계 논의",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#007",
+            "answer": "무어의 법칙",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#008",
+          "subject": "반도체",
+          "aspect": "조건에 따라 전기를 통하기도 막기도 한다",
+          "knowledgePoint": "도체와 부도체의 중간 성질을 가져 스위치 역할을 할 수 있는 물질",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#008",
+            "answer": "반도체",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#009",
+          "subject": "트랜지스터",
+          "aspect": "진공관을 대신한 작은 스위치",
+          "knowledgePoint": "전기 신호를 켜고 끄거나 키우는 소자와 그것이 컴퓨터를 작게 만든 전환점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#009",
+            "answer": "트랜지스터",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#010",
+          "subject": "ENIAC",
+          "aspect": "방 하나를 가득 채웠다",
+          "knowledgePoint": "진공관으로 만들어진 초기 전자식 컴퓨터의 규모와 무게",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#010",
+            "answer": "에니악",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#011",
+          "subject": "마우스",
+          "aspect": "꼬리가 달린 모양에서 이름이 왔다",
+          "knowledgePoint": "선이 달린 모습에서 이름이 붙은 입력 장치와 그것이 처음 공개된 자리",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#011",
+            "answer": "마우스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "computer/1#012",
+          "subject": "QWERTY 자판",
+          "aspect": "빨리 치지 못하게 만들었다는 이야기",
+          "knowledgePoint": "타자기의 활자가 엉키는 것을 막으려 흩어 놓았다는 설명과 그 배열이 지금까지 남은 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.465Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/computer-1#012",
+            "answer": "쿼티",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "computer/2": {
       "subName": "소프트웨어·운영체제",

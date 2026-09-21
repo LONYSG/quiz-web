@@ -1,0 +1,323 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "biology/2",
+    "categoryPath": "자연과학 > 생물학 > 분류·진화",
+    "midKey": "biology",
+    "subName": "분류·진화",
+    "majorKey": "science",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:13:57.443Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 27,
+      "remainingUsable": 10,
+      "remainingUsableNote": "5계 분류·원핵과 진핵·종의 정의·상동기관과 상사기관·흔적기관·공진화·적응방산·화석의 연대·계통수·멸종이 남았다.",
+      "estimatedCeiling": "실질 상한 22건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "이명법",
+          "aspect": "속명과 종소명으로 적는다",
+          "reason": "DB 에 이미 답이 이명법인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 사람 몸은 인체·해부로 보냈다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:35:18.723Z"
+  },
+  "items": [
+    {
+      "seedId": "biology/2#001",
+      "seed": {
+        "subject": "분류 단계",
+        "aspect": "종에서 계까지 일곱 계단",
+        "knowledgePoint": "종·속·과·목·강·문·계로 올라가는 생물 분류의 계층과 위로 갈수록 범위가 넓어지는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "생물 분류에서 종·속·과·목·강·문 위에 놓이는 가장 큰 갈래를 무엇이라 합니까?",
+        "answer": "계",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "위로 갈수록 범위가 넓어지고, 사람은 동물계에 속합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "fixedBy": "r020 규칙검사 expose/exposeSuspect 수정"
+      }
+    },
+    {
+      "seedId": "biology/2#002",
+      "seed": {
+        "subject": "자연선택",
+        "aspect": "살아남은 것이 물려준다",
+        "knowledgePoint": "환경에 더 잘 맞는 형질을 가진 개체가 더 많이 자손을 남겨 그 형질이 퍼지는 과정"
+      },
+      "question": {
+        "ok": true,
+        "question": "환경에 더 잘 맞는 형질을 가진 개체가 더 많은 자손을 남겨 그 형질이 집단에 퍼지는 과정을 무엇이라 합니까?",
+        "answer": "자연선택",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "개체가 환경에 맞춰 변하는 것이 아니라 이미 있던 변이 가운데 살아남는 쪽이 갈린다는 점이 핵심입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/2#003",
+      "seed": {
+        "subject": "갈라파고스의 핀치",
+        "aspect": "섬마다 부리 모양이 달랐다",
+        "knowledgePoint": "먹이에 따라 부리가 다르게 갈라진 새들이 다윈의 생각에 단서가 된 일"
+      },
+      "question": {
+        "ok": true,
+        "question": "다윈이 항해 중에 들른 섬들에서 먹이에 따라 부리 모양이 갈라진 새들을 관찰해 진화의 단서를 얻은 곳은?",
+        "answer": "갈라파고스",
+        "acceptedAnswers": [
+          "갈라파고스 제도"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "섬마다 떨어져 있어 서로 다른 방향으로 갈라진 것이 뚜렷하게 보였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/2#004",
+      "seed": {
+        "subject": "종의 기원",
+        "aspect": "20년을 묵혔다가 서둘러 냈다",
+        "knowledgePoint": "다윈이 오래 미루다 같은 생각을 담은 편지를 받고 출간한 책"
+      },
+      "question": {
+        "ok": true,
+        "question": "다윈이 20년 가까이 미루다 같은 생각을 담은 편지를 받고 서둘러 펴낸 1859년의 책은?",
+        "answer": "종의 기원",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "월리스가 보낸 편지가 출간을 앞당긴 계기가 되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/2#005",
+      "seed": {
+        "subject": "라마르크의 용불용설",
+        "aspect": "쓰면 발달하고 안 쓰면 퇴화한다",
+        "knowledgePoint": "살면서 얻은 형질이 자손에게 전해진다고 본 설명과 그것이 받아들여지지 않은 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "기린이 높은 잎을 먹으려 목을 늘였고 그 늘어난 목이 자손에게 전해졌다는 식으로, 살면서 얻은 형질이 유전된다고 본 학설은?",
+        "answer": "용불용설",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "몸에서 얻은 변화가 생식세포로 전달되지 않기 때문에 받아들여지지 않았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/2#006",
+      "seed": {
+        "subject": "수렴 진화",
+        "aspect": "먼 친척인데 닮았다",
+        "knowledgePoint": "계통이 다른데도 비슷한 환경에 적응하며 닮은 모습을 갖게 되는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "상어와 돌고래처럼 계통이 아주 먼데도 비슷한 환경에 적응하며 닮은 모습을 갖게 되는 현상을 무엇이라 합니까?",
+        "answer": "수렴 진화",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "겉모습만 보고 가까운 친척이라고 판단하면 안 되는 이유이기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/2#007",
+      "seed": {
+        "subject": "항생제 내성",
+        "aspect": "눈앞에서 벌어지는 진화",
+        "knowledgePoint": "약에 견디는 세균만 살아남아 퍼지는 과정이 자연선택의 현재형이라는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "약을 견디는 세균만 살아남아 퍼지면서 기존 약이 듣지 않게 되는 현상으로, 지금 눈앞에서 일어나는 자연선택의 사례로 꼽히는 것은?",
+        "answer": "항생제 내성",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "처방받은 항생제를 끝까지 먹어야 하는 것도 살아남은 세균이 퍼지는 것을 막기 위해서입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/2#008",
+      "seed": {
+        "subject": "화석",
+        "aspect": "남으려면 조건이 맞아야 한다",
+        "knowledgePoint": "죽은 생물이 빠르게 묻히고 단단한 부분이 있어야 남기 때문에 화석 기록이 치우쳐 있다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "죽은 생물이 빠르게 묻히고 단단한 부분이 있어야 남기 때문에, 기록이 특정 생물에 치우칠 수밖에 없는 이 흔적을 무엇이라 합니까?",
+        "answer": "화석",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "그래서 연한 몸을 가진 생물은 기록이 적어 '빠진 고리' 가 생깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/2#009",
+      "seed": {
+        "subject": "시조새",
+        "aspect": "깃털과 이빨을 함께 가졌다",
+        "knowledgePoint": "파충류와 새의 특징을 함께 지녀 둘을 잇는 고리로 이야기되는 화석"
+      },
+      "question": {
+        "ok": true,
+        "question": "깃털이 있으면서 이빨과 발톱도 함께 가져 파충류와 새를 잇는 고리로 이야기되는 화석 생물은?",
+        "answer": "시조새",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "지금은 깃털 달린 공룡 화석이 여럿 나와 새가 공룡의 한 갈래라는 설명이 굳어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/2#010",
+      "seed": {
+        "subject": "고래의 다리뼈",
+        "aspect": "쓰지 않는 뼈가 남아 있다",
+        "knowledgePoint": "고래의 몸속에 골반과 다리뼈의 흔적이 남아 뭍에서 살던 조상을 보여 주는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "고래의 몸속에 쓰이지 않는 골반과 다리뼈가 남아 있는 것처럼, 기능을 잃고 흔적만 남은 기관을 무엇이라 합니까?",
+        "answer": "흔적기관",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "조상이 뭍에서 살았다는 것을 보여 주는 증거로 쓰입니다. 사람의 꼬리뼈도 여기에 해당합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/2#011",
+      "seed": {
+        "subject": "3역 분류",
+        "aspect": "세균과 고세균은 다르다",
+        "knowledgePoint": "생물을 세균·고세균·진핵생물의 셋으로 나누는 체계와 그것이 유전자 비교에서 나온 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "유전자를 비교해 보니 겉보기에 비슷하던 세균 가운데 완전히 다른 무리가 있다는 것이 밝혀졌습니다. 극한 환경에 많이 사는 이 무리를 무엇이라 합니까?",
+        "answer": "고세균",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "이 발견으로 생물을 세균·고세균·진핵생물의 셋으로 나누는 체계가 자리 잡았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/2#012",
+      "seed": {
+        "subject": "바이러스의 분류",
+        "aspect": "생물인지 아닌지 논란이 있다",
+        "knowledgePoint": "스스로 물질대사를 하지 못하고 숙주 안에서만 증식해 생물의 정의에 걸치는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "스스로 물질대사를 하지 못하고 숙주 세포 안에서만 늘어나기 때문에, 생물로 볼지 아닐지 논란이 되는 것은?",
+        "answer": "바이러스",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "유전물질과 단백질 껍질만 가진 구조라 세포조차 아닙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "라운드 안 같은 답 '바이러스' — 감기에 항생제가 듣지 않는 이유(medicine/1#002) 를 남겼다",
+          "decidedBy": "자체 판단 (D-090 · 라운드 안 같은 답)",
+          "duplicateOf": "r020:medicine/1#002",
+          "at": "2026-09-21T01:59:55.016Z"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "removedAt": "2026-09-21T00:56:56.259Z",
+  "round": "r020",
+  "reason": "질문에 정답이 노출되던 원인. ★ 외국어가 아니라 한국어 변형이었다 (R020 작업 B-2)",
+  "note": "건우 지시는 \"B-1 로 변형이 빠지면 자동 해소된다\" 였으나 실제 원인 변형은 한국어였다. 프롬프트가 따로 금지한 유형(상위 개념 / 불필요한 축약)으로 제거했다",
+  "targets": [
+    {
+      "id": 49,
+      "v": "글자",
+      "rule": "정답보다 넓은 상위 개념 (음절 ⊂ 글자) — 프롬프트 v1·v2 가 금지한다"
+    },
+    {
+      "id": 92,
+      "v": "에도",
+      "rule": "불필요한 축약 (에도 막부 → 에도) — 빈센트 반 고흐 → 고흐 와 같은 유형이다"
+    },
+    {
+      "id": 203,
+      "v": "남원",
+      "rule": "불필요한 축약 (남원시 → 남원)"
+    },
+    {
+      "id": 228,
+      "v": "윷",
+      "rule": "불필요한 축약 (윷놀이 → 윷)"
+    }
+  ],
+  "rows": [
+    {
+      "question_id": "92",
+      "answer_text": "에도",
+      "answer_norm": "에도",
+      "is_primary": false
+    },
+    {
+      "question_id": "203",
+      "answer_text": "남원",
+      "answer_norm": "남원",
+      "is_primary": false
+    },
+    {
+      "question_id": "49",
+      "answer_text": "글자",
+      "answer_norm": "글자",
+      "is_primary": false
+    },
+    {
+      "question_id": "228",
+      "answer_text": "윷",
+      "answer_norm": "윷",
+      "is_primary": false
+    }
+  ]
+}

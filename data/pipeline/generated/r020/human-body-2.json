@@ -1,0 +1,321 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "human-body/2",
+    "categoryPath": "자연과학 > 인체·해부 > 장기·순환",
+    "midKey": "human-body",
+    "subName": "장기·순환",
+    "majorKey": "science",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:13:57.446Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 26,
+      "remainingUsable": 10,
+      "remainingUsableNote": "판막·대동맥·모세혈관·림프계·비장·쓸개·이자·소장의 융털·콩팥의 네프론·폐포가 남았다.",
+      "estimatedCeiling": "실질 상한 22건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "헤모글로빈",
+          "aspect": "산소를 실어 나르는 단백질",
+          "reason": "DB 에 이미 답이 헤모글로빈인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 질병·치료는 의학·건강 상식으로 보냈다. 여기는 정상 구조와 기능이다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:35:18.726Z"
+  },
+  "items": [
+    {
+      "seedId": "human-body/2#001",
+      "seed": {
+        "subject": "심장의 네 방",
+        "aspect": "두 심방과 두 심실",
+        "knowledgePoint": "심장이 네 개의 방으로 나뉘어 폐로 가는 피와 온몸으로 가는 피가 섞이지 않는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "사람의 심장은 몇 개의 방으로 나뉘어 있습니까? 이 덕분에 폐로 가는 피와 온몸으로 가는 피가 섞이지 않습니다.",
+        "answer": "4",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "두 심방과 두 심실로 이루어집니다. 물고기의 심장은 두 개의 방뿐입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#002",
+      "seed": {
+        "subject": "폐순환과 체순환",
+        "aspect": "피는 두 바퀴를 돈다",
+        "knowledgePoint": "심장에서 폐로 갔다 오는 경로와 온몸으로 갔다 오는 경로가 따로 있는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "심장에서 나가 폐를 거쳐 다시 심장으로 돌아오는 짧은 순환을 무엇이라 합니까?",
+        "answer": "폐순환",
+        "acceptedAnswers": [
+          "소순환"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "온몸을 도는 쪽은 체순환이라 하며, 피는 이 둘을 번갈아 돕니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#003",
+      "seed": {
+        "subject": "동맥과 정맥",
+        "aspect": "심장에서 나가느냐 들어오느냐로 가른다",
+        "knowledgePoint": "피의 산소 농도가 아니라 흐르는 방향으로 이름을 가르기 때문에 폐동맥에 산소가 적은 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "혈관의 이름은 산소가 많고 적음이 아니라 피가 흐르는 방향으로 가릅니다. 심장에서 나가는 쪽을 무엇이라 합니까?",
+        "answer": "동맥",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "그래서 폐로 가는 폐동맥에는 산소가 적은 피가 흐릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#004",
+      "seed": {
+        "subject": "간",
+        "aspect": "잘라 내도 다시 자란다",
+        "knowledgePoint": "해독과 영양 저장을 맡고 재생 능력이 커서 일부를 떼어 내도 회복되는 장기"
+      },
+      "question": {
+        "ok": true,
+        "question": "해독과 영양 저장을 맡고 재생 능력이 커서 일부를 떼어 내도 다시 자라는, 사람 몸에서 가장 큰 내장 기관은?",
+        "answer": "간",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "이 재생 능력 덕분에 살아 있는 사람에게서 일부를 떼어 이식하는 것이 가능합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#005",
+      "seed": {
+        "subject": "콩팥",
+        "aspect": "하루에 온몸의 피를 수십 번 거른다",
+        "knowledgePoint": "피에서 노폐물을 걸러 오줌을 만들고 물과 염분의 균형을 맞추는 장기"
+      },
+      "question": {
+        "ok": true,
+        "question": "피에서 노폐물을 걸러 오줌을 만들고 몸속 물과 염분의 균형을 맞추는, 강낭콩 모양의 기관은?",
+        "answer": "콩팥",
+        "acceptedAnswers": [
+          "신장"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "하루에 온몸의 피를 수십 번 거를 만큼 많은 양이 지나갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#006",
+      "seed": {
+        "subject": "위산",
+        "aspect": "금속도 녹일 만큼 강하다",
+        "knowledgePoint": "위에서 나오는 강한 산과 그런데도 위 자체가 녹지 않는 까닭"
+      },
+      "question": {
+        "ok": true,
+        "question": "금속도 녹일 만큼 강한 산이 위에서 나오는데도 위 자체가 녹지 않는 것은, 안쪽 벽이 이것으로 덮여 있기 때문입니다. 이것은?",
+        "answer": "점액",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "이 보호층이 얇아지면 위벽이 상해 위염이나 궤양이 생깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#007",
+      "seed": {
+        "subject": "소장",
+        "aspect": "몸에서 가장 긴 소화기관",
+        "knowledgePoint": "영양분 흡수를 맡는 기관의 길이와 안쪽 주름·융털로 표면적을 크게 늘린 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "안쪽에 주름과 융털이 촘촘히 나 표면적을 크게 늘려 영양분 흡수를 맡는, 사람 몸에서 가장 긴 소화기관은?",
+        "answer": "소장",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "융털까지 펼치면 표면적이 테니스 코트만 하다고 설명되곤 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#008",
+      "seed": {
+        "subject": "대장",
+        "aspect": "주로 물을 빨아들인다",
+        "knowledgePoint": "소화보다 수분과 무기염류의 흡수를 맡고 장내 세균이 사는 기관"
+      },
+      "question": {
+        "ok": true,
+        "question": "영양분 소화보다 수분과 무기염류를 빨아들이는 일을 주로 맡고, 수많은 세균이 함께 사는 기관은?",
+        "answer": "대장",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "여기에 사는 세균들이 면역과 기분에까지 영향을 준다는 연구가 이어지고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#009",
+      "seed": {
+        "subject": "횡격막",
+        "aspect": "이것이 내려가야 숨을 들이쉰다",
+        "knowledgePoint": "가슴과 배를 가르는 근육이 내려가며 가슴 안의 압력을 낮춰 공기가 들어오게 하는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "가슴과 배를 가르는 막 모양의 근육으로, 이것이 내려가며 가슴 안의 압력을 낮춰야 숨을 들이쉴 수 있는 것은?",
+        "answer": "횡격막",
+        "acceptedAnswers": [
+          "가로막"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "이 근육이 갑자기 경련을 일으키는 것이 딸꾹질입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#010",
+      "seed": {
+        "subject": "혈압의 두 수치",
+        "aspect": "심장이 짤 때와 늘어날 때",
+        "knowledgePoint": "수축기와 이완기의 압력을 두 수치로 나타내는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "혈압을 '120에 80' 처럼 두 수치로 나타낼 때, 앞의 큰 수는 심장이 어떤 상태일 때의 압력입니까?",
+        "answer": "수축",
+        "acceptedAnswers": [
+          "수축기"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "뒤의 수는 심장이 늘어나 피를 받아들일 때의 압력입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#011",
+      "seed": {
+        "subject": "혈소판",
+        "aspect": "피를 멎게 한다",
+        "knowledgePoint": "상처가 났을 때 모여 붙어 굳게 만드는 혈액 성분"
+      },
+      "question": {
+        "ok": true,
+        "question": "상처가 났을 때 그 자리에 모여 서로 들러붙어 피를 멎게 하는 혈액 성분은?",
+        "answer": "혈소판",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "이것이 모자라면 작은 상처에도 피가 잘 멎지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/2#012",
+      "seed": {
+        "subject": "적혈구의 수명",
+        "aspect": "넉 달쯤 살고 교체된다",
+        "knowledgePoint": "적혈구가 골수에서 만들어져 120일쯤 뒤 비장에서 걸러지는 순환"
+      },
+      "question": {
+        "ok": true,
+        "question": "골수에서 만들어져 약 120일 동안 온몸을 돌다가 비장에서 걸러져 사라지는, 산소를 나르는 혈액 세포는?",
+        "answer": "적혈구",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "핵이 없어 산소를 실을 공간이 더 넓고, 대신 스스로 수리하지 못해 수명이 정해져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

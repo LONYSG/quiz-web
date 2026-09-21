@@ -1,0 +1,325 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "transport/1",
+    "categoryPath": "기술·의학 > 자동차·교통 > 자동차 구조·용어",
+    "midKey": "transport",
+    "subName": "자동차 구조·용어",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:13:57.469Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 26,
+      "remainingUsable": 10,
+      "remainingUsableNote": "차동장치·서스펜션·터보차저·배기량·토크와 마력·전륜과 후륜·하이브리드·회생제동·타이어의 사이프·촉매변환기가 남았다.",
+      "estimatedCeiling": "실질 상한 22건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "ABS",
+          "aspect": "바퀴가 잠기는 것을 막는다",
+          "reason": "DB 에 이미 답이 ABS인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:42:33.701Z"
+  },
+  "items": [
+    {
+      "seedId": "transport/1#001",
+      "seed": {
+        "subject": "내연기관",
+        "aspect": "연료를 실린더 안에서 태운다",
+        "knowledgePoint": "연료를 기관 안에서 태워 그 팽창으로 힘을 얻는 방식과 증기기관과의 차이"
+      },
+      "question": {
+        "ok": true,
+        "question": "연료를 기관 바깥에서 태워 증기를 만드는 증기기관과 달리, 실린더 안에서 직접 태워 그 팽창으로 힘을 얻는 기관을 무엇이라 합니까?",
+        "answer": "내연기관",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "따로 보일러가 필요 없어 훨씬 작고 가볍게 만들 수 있었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#002",
+      "seed": {
+        "subject": "4행정 기관",
+        "aspect": "흡입·압축·폭발·배기를 되풀이한다",
+        "knowledgePoint": "피스톤이 네 번 오르내리며 한 주기를 이루는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "피스톤이 흡입·압축·폭발·배기의 네 단계를 거치며 한 주기를 이루는 기관을 무엇이라 합니까?",
+        "answer": "4행정 기관",
+        "acceptedAnswers": [
+          "사행정기관"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "두 단계로 한 주기를 끝내는 2행정 기관은 힘은 세지만 배기가 지저분합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#003",
+      "seed": {
+        "subject": "디젤과 가솔린",
+        "aspect": "불꽃으로 붙이느냐 압축으로 붙이느냐",
+        "knowledgePoint": "점화 플러그로 불을 붙이는 방식과 공기를 세게 압축해 저절로 붙게 하는 방식의 차이"
+      },
+      "question": {
+        "ok": true,
+        "question": "가솔린 엔진은 점화 플러그로 불꽃을 튀겨 연료를 태우는데, 이것과 달리 공기를 세게 압축해 뜨거워진 상태에서 연료를 뿜어 저절로 불붙게 하는 기관은?",
+        "answer": "디젤 엔진",
+        "acceptedAnswers": [
+          "디젤"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "그래서 점화 플러그가 없고 압축비가 훨씬 높습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#004",
+      "seed": {
+        "subject": "변속기",
+        "aspect": "같은 힘으로 다른 속도를 낸다",
+        "knowledgePoint": "기어비를 바꿔 엔진의 회전을 바퀴에 알맞게 전달하는 장치"
+      },
+      "question": {
+        "ok": true,
+        "question": "기어의 조합을 바꿔 엔진의 회전을 바퀴에 알맞은 힘과 속도로 바꾸어 전달하는 장치를 무엇이라 합니까?",
+        "answer": "변속기",
+        "acceptedAnswers": [
+          "미션"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "엔진이 힘을 잘 내는 회전수가 좁기 때문에 이 장치가 필요합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#005",
+      "seed": {
+        "subject": "에어백",
+        "aspect": "터지듯 부풀었다가 곧 꺼진다",
+        "knowledgePoint": "충돌 순간 화학 반응으로 기체를 만들어 순식간에 부풀고 곧 빠지는 구조와 안전띠와 함께 써야 하는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "충돌 순간 화학 반응으로 기체를 만들어 순식간에 부풀었다가 곧 빠지며, 안전띠와 함께 써야 제구실을 하는 장치는?",
+        "answer": "에어백",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "안전띠 없이 이것만 있으면 오히려 크게 다칠 수 있어 '보조 구속 장치' 로 분류됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#006",
+      "seed": {
+        "subject": "안전띠의 3점식",
+        "aspect": "특허를 공개했다",
+        "knowledgePoint": "어깨와 허리를 함께 잡는 방식을 만든 회사가 특허를 개방해 표준이 된 일"
+      },
+      "question": {
+        "ok": true,
+        "question": "어깨와 허리를 함께 잡는 안전띠를 만든 볼보가, 더 많은 생명을 구하기 위해 이 기술을 어떻게 했습니까?",
+        "answer": "특허를 공개했다",
+        "acceptedAnswers": [
+          "특허 개방"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "독점하지 않고 풀어 놓은 덕분에 세계 표준이 되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#007",
+      "seed": {
+        "subject": "크럼플 존",
+        "aspect": "일부러 찌그러지게 만든다",
+        "knowledgePoint": "충돌 에너지를 차체 앞뒤가 찌그러지며 흡수하도록 설계해 탑승 공간을 지키는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "충돌 에너지를 흡수하도록 차체의 앞뒤를 일부러 잘 찌그러지게 설계한 구역을 무엇이라 합니까?",
+        "answer": "크럼플 존",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "차가 멀쩡한 것보다 탑승 공간이 버티는 것이 중요하기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#008",
+      "seed": {
+        "subject": "제동거리와 공주거리",
+        "aspect": "밟기 전에도 차는 나아간다",
+        "knowledgePoint": "위험을 인지하고 브레이크를 밟기까지 나아간 거리와 밟은 뒤 멈출 때까지의 거리를 나누는 개념"
+      },
+      "question": {
+        "ok": true,
+        "question": "위험을 알아채고 브레이크를 밟기까지 차가 그대로 나아간 거리를 무엇이라 합니까? 여기에 밟은 뒤 멈출 때까지의 거리를 더해야 실제 정지거리가 됩니다.",
+        "answer": "공주거리",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "시속 100킬로미터면 1초만 늦어도 약 28미터를 그대로 갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#009",
+      "seed": {
+        "subject": "배터리 방전",
+        "aspect": "시동은 전기로 건다",
+        "knowledgePoint": "내연기관 차도 처음 시동에는 전기가 필요해 배터리가 방전되면 걸리지 않는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "휘발유로 달리는 차도 처음 시동을 걸 때는 이것의 전기로 엔진을 돌려야 합니다. 방전되면 시동이 걸리지 않는 이것은?",
+        "answer": "배터리",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "시동이 걸린 뒤에는 엔진이 돌리는 발전기가 다시 충전해 줍니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#010",
+      "seed": {
+        "subject": "타이어의 트레드",
+        "aspect": "홈이 물을 빼낸다",
+        "knowledgePoint": "빗길에서 물을 밀어내 노면에 닿게 하는 홈과 닳으면 미끄러지는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "타이어 표면에 파인 홈을 무엇이라 합니까? 빗길에서 물을 밀어내 노면에 닿게 해 주며, 닳으면 미끄러지기 쉬워집니다.",
+        "answer": "트레드",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "깊이가 1.6밀리미터 아래로 닳으면 교체해야 한다고 정해져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#011",
+      "seed": {
+        "subject": "하이드로플레이닝",
+        "aspect": "물 위에 떠서 조종이 안 된다",
+        "knowledgePoint": "빗길에서 타이어와 노면 사이에 물막이 생겨 접지력을 잃는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "빗길에서 빠르게 달릴 때 타이어와 노면 사이에 물막이 생겨 접지력을 잃고 배처럼 미끄러지는 현상을 무엇이라 합니까?",
+        "answer": "하이드로플레이닝",
+        "acceptedAnswers": [
+          "수막현상"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "이 상태에서는 핸들도 브레이크도 듣지 않으므로 속도를 미리 줄이는 것이 유일한 대비입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/1#012",
+      "seed": {
+        "subject": "VIN",
+        "aspect": "차마다 붙는 고유 번호",
+        "knowledgePoint": "제조사·연식·공장 정보를 담아 차 한 대를 식별하는 17자리 번호"
+      },
+      "question": {
+        "ok": true,
+        "question": "제조사·연식·생산 공장 정보를 담아 자동차 한 대를 식별하는 17자리 고유 번호를 세 글자 영문 약자로 무엇이라 합니까?",
+        "answer": "VIN",
+        "acceptedAnswers": [
+          "차대번호"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "중고차를 살 때 사고 이력과 리콜 여부를 조회하는 열쇠가 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

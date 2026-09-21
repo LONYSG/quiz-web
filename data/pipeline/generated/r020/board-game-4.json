@@ -1,0 +1,288 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "board-game/4",
+    "categoryPath": "스포츠·게임 > 보드게임·카드게임 > 보드게임",
+    "midKey": "board-game",
+    "subName": "보드게임",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:21:40.335Z",
+    "seedResult": {
+      "ok": false,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 개별 게임의 규칙 세부인데, 그 게임을 해 본 사람만 아는 정보라 알 가치 2 이하다.",
+      "listedCandidates": 23,
+      "remainingUsable": 7,
+      "remainingUsableNote": "카탄·카르카손·티켓 투 라이드·젠가·다이아몬드 게임·오목·도미노·워게임이 남았다.",
+      "estimatedCeiling": "실질 상한 17건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "모노폴리",
+          "aspect": "땅을 사고 집을 짓는다",
+          "reason": "DB 에 이미 답이 모노폴리인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "바둑판의 줄 수",
+          "aspect": "19줄",
+          "reason": "★ R019 에서 이미 만들었다 (보드게임·카드게임 > 바둑·장기)"
+        }
+      ],
+      "note": "★★ 하한 없음 규칙을 적용했다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:50:47.985Z"
+  },
+  "items": [
+    {
+      "seedId": "board-game/4#001",
+      "seed": {
+        "subject": "체스의 기물",
+        "aspect": "퀸이 가장 강하다",
+        "knowledgePoint": "여섯 종류 기물의 움직임과 퀸이 가로·세로·대각선 모두로 움직이는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "체스에서 가로·세로·대각선 모두로 거리 제한 없이 움직여 가장 강한 기물로 꼽히는 것은?",
+        "answer": "퀸",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "본래는 한 칸씩만 움직이는 약한 기물이었다가 중세 말에 지금처럼 강해졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/4#002",
+      "seed": {
+        "subject": "체크메이트",
+        "aspect": "피할 수 없는 상태가 되면 끝난다",
+        "knowledgePoint": "왕이 공격받고 있는데 벗어날 방법이 없으면 경기가 끝나는 규칙과 그 말의 어원"
+      },
+      "question": {
+        "ok": true,
+        "question": "체스에서 왕이 공격받고 있는데 피하거나 막을 방법이 없어 경기가 끝나는 상태를 무엇이라 합니까?",
+        "answer": "체크메이트",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "'왕이 죽었다' 는 뜻의 페르시아어에서 왔다는 설명이 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/4#003",
+      "seed": {
+        "subject": "캐슬링",
+        "aspect": "두 기물이 한 번에 움직인다",
+        "knowledgePoint": "왕과 룩이 조건을 만족할 때 한 수에 함께 자리를 바꾸는 특수 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "체스에서 조건을 만족할 때 왕과 룩이 한 수에 함께 자리를 바꾸는 특수 규칙을 무엇이라 합니까?",
+        "answer": "캐슬링",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "왕을 안전한 구석으로 피신시키면서 룩을 가운데로 꺼내는 일석이조의 수입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:148)",
+          "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+          "duplicateOf": "db:148",
+          "at": "2026-09-21T05:41:19.828Z"
+        }
+      }
+    },
+    {
+      "seedId": "board-game/4#004",
+      "seed": {
+        "subject": "스테일메이트",
+        "aspect": "둘 곳이 없으면 무승부다",
+        "knowledgePoint": "왕이 공격받고 있지는 않은데 둘 수 있는 수가 없으면 비기는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "체스에서 왕이 공격받고 있지는 않은데 둘 수 있는 합법적인 수가 하나도 없어 무승부가 되는 상황을 무엇이라 합니까?",
+        "answer": "스테일메이트",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "크게 불리한 쪽이 일부러 이 상황을 노려 비기려는 전략도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/4#005",
+      "seed": {
+        "subject": "딥 블루",
+        "aspect": "컴퓨터가 세계 챔피언을 이겼다",
+        "knowledgePoint": "1997년에 체스 세계 챔피언을 이긴 컴퓨터와 그 상대 이름"
+      },
+      "question": {
+        "ok": true,
+        "question": "1997년에 체스 세계 챔피언 카스파로프를 이겨 화제가 된 IBM의 컴퓨터는?",
+        "answer": "딥 블루",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "경우의 수를 빠르게 계산하는 방식이었고, 바둑에서 같은 일이 일어나기까지는 20년이 더 걸렸습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "중복 — 판정 same. ★ 같은 대조인데 keep 이 엇갈렸다(xr6 keep=a / db13 keep=b). 선례대로 교체 후보에서 빼고 기존을 남긴다",
+          "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+          "duplicateOf": "db:352",
+          "at": "2026-09-21T05:41:20.296Z"
+        }
+      }
+    },
+    {
+      "seedId": "board-game/4#006",
+      "seed": {
+        "subject": "부루마불",
+        "aspect": "국내판 땅따먹기 보드게임",
+        "knowledgePoint": "1982년에 나와 국내에서 널리 퍼진 보드게임과 그 이름의 짜임"
+      },
+      "question": {
+        "ok": true,
+        "question": "1982년에 나와 국내에서 널리 퍼진 땅 사기 보드게임으로, 주사위를 굴려 세계 도시를 사고 건물을 짓는 것은?",
+        "answer": "부루마불",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "'부루' 는 블루, '마불' 은 마블에서 온 것으로 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/4#007",
+      "seed": {
+        "subject": "주사위의 마주 보는 면",
+        "aspect": "합이 항상 7이다",
+        "knowledgePoint": "육면체 주사위에서 마주 보는 두 면의 눈 수를 더하면 7이 되도록 만드는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "일반적인 육면체 주사위에서 서로 마주 보는 두 면의 눈을 더하면 항상 얼마가 됩니까?",
+        "answer": "7",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "1과 6, 2와 5, 3과 4가 짝을 이루도록 만드는 것이 관례입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/4#008",
+      "seed": {
+        "subject": "젠가",
+        "aspect": "쌓은 것을 빼서 다시 올린다",
+        "knowledgePoint": "블록을 빼내 맨 위에 올리며 무너뜨리지 않아야 하는 게임과 그 이름의 뜻"
+      },
+      "question": {
+        "ok": true,
+        "question": "쌓아 올린 나무 블록에서 하나를 빼내 다시 맨 위에 올리며 무너뜨리지 않아야 하는 게임으로, 이름이 스와힐리어로 '쌓다' 를 뜻하는 것은?",
+        "answer": "젠가",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "탑이 높아질수록 무게중심이 올라가 무너지기 쉬워집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/4#009",
+      "seed": {
+        "subject": "보드게임 카페",
+        "aspect": "게임을 사지 않고 빌려 한다",
+        "knowledgePoint": "여러 게임을 갖춰 두고 자리를 빌려 주는 형태의 공간이 자리 잡은 배경"
+      },
+      "question": {
+        "ok": true,
+        "question": "값이 비싼 보드게임을 사지 않고도 여러 가지를 해 볼 수 있도록 자리와 게임을 함께 빌려 주는 공간을 무엇이라 합니까?",
+        "answer": "보드게임 카페",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "규칙 설명을 해 주는 직원이 있는 곳이 많아 진입 장벽을 낮추는 구실을 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "board-game/4#010",
+      "seed": {
+        "subject": "독일 올해의 게임상",
+        "aspect": "수상하면 판매가 크게 뛴다",
+        "knowledgePoint": "보드게임 업계에서 가장 영향력 있는 상과 그 수상이 판매에 미치는 영향"
+      },
+      "question": {
+        "ok": true,
+        "question": "보드게임 업계에서 가장 영향력이 큰 상으로, 수상하면 판매가 크게 뛰어 '보드게임의 노벨상' 으로 불리는 독일의 상은?",
+        "answer": "올해의 게임상",
+        "acceptedAnswers": [
+          "슈필 데스 야레스"
+        ],
+        "accessibility": 1,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "가족이 함께 즐길 수 있는지를 중요한 기준으로 삼습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

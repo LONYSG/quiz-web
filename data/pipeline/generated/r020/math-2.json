@@ -1,0 +1,328 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "math/2",
+    "categoryPath": "자연과학 > 수학·수 상식 > 도형·기하",
+    "midKey": "math",
+    "subName": "도형·기하",
+    "majorKey": "science",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:13:57.459Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 26,
+      "remainingUsable": 10,
+      "remainingUsableNote": "닮음비와 넓이비·삼각형의 오심·원주각·피보나치 나선·정다면체의 수·위상수학의 도넛과 컵·프랙털·테셀레이션·좌표평면·벡터가 남았다.",
+      "estimatedCeiling": "실질 상한 22건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "피타고라스 정리",
+          "aspect": "직각삼각형 세 변의 관계",
+          "reason": "DB 에 이미 답이 피타고라스 정리인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 단위·측정도 이 중분류 안에 있지만, 도형과 직접 이어지는 것만 골랐다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:38:45.836Z"
+  },
+  "items": [
+    {
+      "seedId": "math/2#001",
+      "seed": {
+        "subject": "원주율",
+        "aspect": "끝없이 이어지고 되풀이되지 않는다",
+        "knowledgePoint": "지름에 대한 둘레의 비가 무리수여서 소수점 아래가 끝나지도 반복되지도 않는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "원의 지름에 대한 둘레의 비를 나타내는 값으로, 분수로 나타낼 수 없어 소수점 아래가 끝나지도 되풀이되지도 않는 것은?",
+        "answer": "원주율",
+        "acceptedAnswers": [
+          "파이"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "지금은 컴퓨터로 수십조 자리까지 계산되어 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:294)",
+          "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+          "duplicateOf": "db:294",
+          "at": "2026-09-21T05:41:20.025Z"
+        }
+      }
+    },
+    {
+      "seedId": "math/2#002",
+      "seed": {
+        "subject": "삼각형의 내각의 합",
+        "aspect": "평면에서만 180도다",
+        "knowledgePoint": "구면처럼 휜 면에서는 내각의 합이 180도를 넘는다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "삼각형 세 각의 합이 180도가 되는 것은 평평한 면 위에서일 뿐이고, 지구본 같은 곡면에서는 그보다 커집니다. 이런 기하를 통틀어 무엇이라 합니까?",
+        "answer": "비유클리드 기하",
+        "acceptedAnswers": [
+          "비유클리드 기하학"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "아인슈타인의 일반상대성이론이 휜 공간을 다루는 데 이 기하를 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/2#003",
+      "seed": {
+        "subject": "정삼각형과 정사각형의 넓이",
+        "aspect": "같은 길이의 끈으로 가장 넓은 도형",
+        "knowledgePoint": "둘레가 같을 때 원이 가장 넓은 넓이를 갖는다는 성질"
+      },
+      "question": {
+        "ok": true,
+        "question": "같은 길이의 끈으로 도형을 만들 때 가장 넓은 넓이를 가지게 되는 것은 어떤 도형입니까?",
+        "answer": "원",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "비눗방울이 둥글어지는 것도 같은 원리가 입체에서 작용하기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/2#004",
+      "seed": {
+        "subject": "뫼비우스의 띠",
+        "aspect": "면이 하나뿐이다",
+        "knowledgePoint": "띠를 한 번 꼬아 붙이면 안과 밖의 구분이 사라지는 도형"
+      },
+      "question": {
+        "ok": true,
+        "question": "긴 띠를 한 번 꼬아 양 끝을 붙이면 안과 밖의 구분이 사라져 면이 하나뿐인 도형이 됩니다. 이것을 무엇이라 합니까?",
+        "answer": "뫼비우스의 띠",
+        "acceptedAnswers": [
+          "뫼비우스 띠"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "가운데를 따라 계속 자르면 끊어지지 않고 더 긴 하나의 띠가 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/2#005",
+      "seed": {
+        "subject": "황금비의 직사각형",
+        "aspect": "정사각형을 떼어 내도 같은 비가 남는다",
+        "knowledgePoint": "긴 변에서 짧은 변만큼 잘라 내도 남은 직사각형의 비가 그대로인 성질"
+      },
+      "question": {
+        "ok": true,
+        "question": "긴 변에서 짧은 변만큼 정사각형을 잘라 내도 남은 도형의 가로세로 비가 처음과 똑같은, 약 1.618의 비를 가진 직사각형을 무엇이라 합니까?",
+        "answer": "황금 직사각형",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "이것을 되풀이해 그린 호를 이으면 나선이 되고, 앵무조개 껍데기에 견주어지곤 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/2#006",
+      "seed": {
+        "subject": "케플러의 추측",
+        "aspect": "과일 가게가 쌓는 방식이 가장 빽빽하다",
+        "knowledgePoint": "같은 공을 쌓을 때 가장 조밀한 배열이 무엇인지에 대한 추측과 그 증명까지 걸린 시간"
+      },
+      "question": {
+        "ok": true,
+        "question": "같은 크기의 공을 쌓을 때 과일 가게에서 쌓는 방식보다 더 빽빽하게 채울 수는 없다는 주장으로, 400년 가까이 증명되지 않았던 수학 문제는?",
+        "answer": "케플러의 추측",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "1998년에 컴퓨터의 도움으로 증명됐고, 검증에만 여러 해가 걸렸습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/2#007",
+      "seed": {
+        "subject": "벌집의 육각형",
+        "aspect": "같은 재료로 가장 넓게 나눈다",
+        "knowledgePoint": "평면을 같은 넓이로 나눌 때 둘레의 합이 가장 작아지는 모양이 육각형이라는 성질"
+      },
+      "question": {
+        "ok": true,
+        "question": "평면을 같은 넓이로 빈틈없이 나눌 때 경계의 길이가 가장 짧아지는 모양으로, 벌집이 이 모양인 것은?",
+        "answer": "육각형",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "같은 밀랍으로 가장 넓은 방을 만들 수 있어 벌에게 유리합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/2#008",
+      "seed": {
+        "subject": "삼각형의 안정성",
+        "aspect": "네모는 찌그러지는데 세모는 안 그렇다",
+        "knowledgePoint": "변의 길이가 정해지면 삼각형의 모양이 하나로 정해져 구조물에 쓰이는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "변의 길이가 정해지면 모양이 하나로 결정되어 찌그러지지 않기 때문에, 다리와 철탑 같은 구조물에 즐겨 쓰이는 도형은?",
+        "answer": "삼각형",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "사각형은 변의 길이가 같아도 기울어질 수 있어 대각선을 넣어 삼각형으로 나눕니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/2#009",
+      "seed": {
+        "subject": "구의 부피",
+        "aspect": "원기둥에 꼭 들어맞는 구의 비",
+        "knowledgePoint": "아르키메데스가 밝힌 구와 그것을 감싸는 원기둥의 부피 비"
+      },
+      "question": {
+        "ok": true,
+        "question": "구에 꼭 맞게 씌운 원기둥의 부피에 대해 구의 부피가 몇 분의 몇인지를 밝혀 내고, 그것을 자기 묘비에 새기게 했다는 고대 그리스 수학자는?",
+        "answer": "아르키메데스",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "구의 부피는 그 원기둥의 3분의 2입니다. 스스로 가장 자랑스러워한 발견이라고 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/2#010",
+      "seed": {
+        "subject": "각의 삼등분",
+        "aspect": "자와 컴퍼스만으로는 할 수 없다",
+        "knowledgePoint": "고대부터 내려온 작도 문제 가운데 불가능함이 증명된 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "눈금 없는 자와 컴퍼스만으로는 할 수 없음이 19세기에 증명된 고대 그리스의 작도 문제로, 임의의 각을 셋으로 나누는 것은?",
+        "answer": "각의 삼등분",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "불가능함이 증명된 뒤에도 해냈다고 주장하는 사람이 끊이지 않았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/2#011",
+      "seed": {
+        "subject": "평행선 공준",
+        "aspect": "이것을 버리면 다른 기하가 생긴다",
+        "knowledgePoint": "유클리드의 다섯째 공준을 부정하면서 나온 비유클리드 기하"
+      },
+      "question": {
+        "ok": true,
+        "question": "'직선 밖의 한 점을 지나 그 직선과 평행한 직선은 오직 하나뿐이다' 라는 유클리드의 다섯째 명제를 무엇이라 합니까?",
+        "answer": "평행선 공준",
+        "acceptedAnswers": [
+          "평행 공준"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "이것만 증명하려는 시도가 2000년 넘게 이어졌고, 결국 버려도 된다는 것이 밝혀지며 새 기하가 열렸습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/2#012",
+      "seed": {
+        "subject": "위도와 경도의 각도",
+        "aspect": "지구를 좌표로 나눈다",
+        "knowledgePoint": "적도와 본초자오선을 기준으로 위치를 각도로 나타내는 체계"
+      },
+      "question": {
+        "ok": true,
+        "question": "지구 위의 위치를 각도로 나타낼 때 남북의 위치를 재는 기준이 되는 선은?",
+        "answer": "적도",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "동서의 기준이 되는 것은 영국 그리니치를 지나는 본초자오선입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

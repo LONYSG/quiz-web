@@ -1,0 +1,344 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "calendar/1",
+    "categoryPath": "생활·상식 > 절기·기념일·축제 > 세계 명절·축제",
+    "midKey": "calendar",
+    "subName": "세계 명절·축제",
+    "majorKey": "life",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:21:40.352Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 26,
+      "remainingUsable": 10,
+      "remainingUsableNote": "추수감사절·성 패트릭의 날·망자의 날·디왈리·송크란·라 토마티나·산페르민·옥토버페스트·리우 카니발·베네치아 가면 축제가 남았다.",
+      "estimatedCeiling": "실질 상한 22건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "할로윈",
+          "aspect": "호박 등과 분장",
+          "reason": "DB 에 이미 답이 할로윈인 문제가 있다 (usedAnswers)"
+        },
+        {
+          "subject": "부활절",
+          "aspect": "날짜가 해마다 바뀐다",
+          "reason": "★ R019 에서 이미 만들었다 (종교·경전 상식 > 기독교·성경)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 한국 명절은 한국 전통문화·풍습이 맡는다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:57:24.403Z"
+  },
+  "items": [
+    {
+      "seedId": "calendar/1#001",
+      "seed": {
+        "subject": "크리스마스",
+        "aspect": "날짜가 성경에 적혀 있지 않다",
+        "knowledgePoint": "예수의 탄생일이 기록되어 있지 않은데도 12월 25일로 굳은 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "예수의 탄생일이 성경에 적혀 있지 않은데도 12월 25일로 굳은 것은, 그 무렵 이미 있던 어떤 축제와 겹쳐 잡았기 때문으로 봅니다. 그 기준이 된 천문 현상은?",
+        "answer": "동지",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "해가 다시 길어지기 시작하는 시기의 로마 축제와 맞물렸다는 설명이 유력합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#002",
+      "seed": {
+        "subject": "산타클로스의 빨간 옷",
+        "aspect": "광고가 이미지를 굳혔다",
+        "knowledgePoint": "본래 여러 색으로 그려지던 모습이 20세기 광고로 지금의 모습으로 굳었다는 이야기"
+      },
+      "question": {
+        "ok": true,
+        "question": "본래 여러 색으로 그려지던 산타클로스의 옷이 지금의 모습으로 굳은 데는 20세기의 한 음료 회사 광고가 큰 몫을 했다고 이야기됩니다. 그 옷의 색은?",
+        "answer": "빨강",
+        "acceptedAnswers": [
+          "빨간색"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "광고 이전에도 그 색이 쓰이긴 했지만 널리 퍼뜨린 것은 광고였다고 봅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#003",
+      "seed": {
+        "subject": "라마단",
+        "aspect": "해가 떠 있는 동안 먹지 않는다",
+        "knowledgePoint": "이슬람력의 한 달 동안 일출부터 일몰까지 금식하는 관습과 해마다 시기가 당겨지는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "이슬람력의 아홉째 달 동안 해가 떠 있는 시간에는 먹고 마시지 않는 이슬람의 금식 기간은?",
+        "answer": "라마단",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "해가 지면 먹을 수 있고, 어린이와 환자 등은 면제됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#004",
+      "seed": {
+        "subject": "이슬람력",
+        "aspect": "해마다 열흘씩 당겨진다",
+        "knowledgePoint": "달의 주기만 따르고 윤달을 넣지 않아 계절과 어긋나며 도는 역법"
+      },
+      "question": {
+        "ok": true,
+        "question": "이슬람력은 윤달을 넣지 않고 달의 주기만 따르기 때문에 같은 명절이 해마다 양력으로 열흘쯤 당겨집니다. 이렇게 달만 따르는 역법을 무엇이라 합니까?",
+        "answer": "태음력",
+        "acceptedAnswers": [
+          "순태음력"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "그래서 라마단이 한여름에 올 때도 있고 한겨울에 올 때도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#005",
+      "seed": {
+        "subject": "중국의 춘절",
+        "aspect": "세계 최대 규모의 이동",
+        "knowledgePoint": "설을 쇠러 고향으로 가는 이동이 해마다 대규모로 일어나는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "고향에 가려는 사람이 한꺼번에 몰려 세계에서 가장 큰 규모의 이동이 일어난다고 하는, 중국의 설 명절은?",
+        "answer": "춘절",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "몇 주에 걸쳐 수십억 건의 이동이 집계됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#006",
+      "seed": {
+        "subject": "홍바오",
+        "aspect": "붉은 봉투에 돈을 넣어 준다",
+        "knowledgePoint": "중화권에서 명절과 경사에 붉은 봉투에 돈을 넣어 주는 풍습과 붉은색의 뜻"
+      },
+      "question": {
+        "ok": true,
+        "question": "중화권에서 명절이나 경사에 돈을 넣어 건네는 붉은 봉투를 무엇이라 합니까?",
+        "answer": "홍바오",
+        "acceptedAnswers": [
+          "훙바오"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "붉은색이 나쁜 기운을 물리친다고 여기는 관념에서 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#007",
+      "seed": {
+        "subject": "오봉",
+        "aspect": "조상이 돌아온다고 여긴다",
+        "knowledgePoint": "일본에서 조상의 영혼을 맞이하는 기간과 그때의 대규모 귀성"
+      },
+      "question": {
+        "ok": true,
+        "question": "조상의 영혼이 집으로 돌아온다고 여겨 맞이하고 보내는 일본의 여름 명절로, 이 기간에 대규모 귀성이 일어나는 것은?",
+        "answer": "오봉",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "우리 추석과 비슷한 위치에 있는 명절입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#008",
+      "seed": {
+        "subject": "노동절",
+        "aspect": "미국의 사건에서 시작됐다",
+        "knowledgePoint": "시카고의 8시간 노동 요구 시위에서 비롯되어 여러 나라가 5월 1일로 기리는 날"
+      },
+      "question": {
+        "ok": true,
+        "question": "시카고에서 하루 8시간 노동을 요구한 시위를 기려 여러 나라가 5월 1일에 기리는 날은?",
+        "answer": "노동절",
+        "acceptedAnswers": [
+          "메이데이"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "정작 미국은 9월에 따로 노동절을 두고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#009",
+      "seed": {
+        "subject": "새해맞이 카운트다운",
+        "aspect": "시간대마다 차례로 맞는다",
+        "knowledgePoint": "날짜변경선 가까운 곳부터 차례로 새해를 맞아 하루 종일 이어지는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "새해가 지구 전체에 동시에 오지 않고 하루에 걸쳐 차례로 오는 것은, 지구를 시간대로 나누어 놓았기 때문입니다. 태평양의 그 기준선을 무엇이라 합니까?",
+        "answer": "날짜변경선",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "이 선 가까운 섬나라들이 가장 먼저 새해를 맞습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (calendar/3#009 / db:835)",
+          "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+          "duplicateOf": "db:835",
+          "at": "2026-09-21T05:41:19.429Z"
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#010",
+      "seed": {
+        "subject": "카니발",
+        "aspect": "금식 기간 직전에 실컷 먹고 논다",
+        "knowledgePoint": "사순절에 들어가기 전에 벌이는 축제와 그 이름이 '고기를 치운다' 는 뜻에서 왔다는 설"
+      },
+      "question": {
+        "ok": true,
+        "question": "사순절의 금식에 들어가기 직전에 실컷 먹고 노는 축제로, 이름이 '고기를 치운다' 는 뜻에서 왔다는 설명이 전하는 것은?",
+        "answer": "카니발",
+        "acceptedAnswers": [
+          "사육제"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "브라질 리우의 축제가 가장 널리 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#011",
+      "seed": {
+        "subject": "블랙 프라이데이",
+        "aspect": "장부가 흑자로 돌아선다는 뜻",
+        "knowledgePoint": "추수감사절 다음 날의 대규모 할인과 그 이름의 유래로 전하는 설명"
+      },
+      "question": {
+        "ok": true,
+        "question": "미국에서 추수감사절 다음 날에 벌어지는 대규모 할인 행사로, 가게 장부가 적자에서 흑자로 돌아선다는 데서 이름이 왔다는 설명이 전하는 것은?",
+        "answer": "블랙 프라이데이",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "본래는 사람이 몰려 혼잡해진 상황을 부르던 말이었다는 설명도 함께 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/1#012",
+      "seed": {
+        "subject": "국제 기념일의 지정",
+        "aspect": "유엔이 정하는 날이 있다",
+        "knowledgePoint": "총회 결의로 특정 주제를 기리는 날을 정하는 방식과 그 목적"
+      },
+      "question": {
+        "ok": true,
+        "question": "'세계 물의 날' 이나 '세계 여성의 날' 처럼 특정 주제를 기리도록 총회 결의로 날짜를 정하는 국제기구는?",
+        "answer": "유엔",
+        "acceptedAnswers": [
+          "국제연합"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "각국이 그날에 맞춰 행사를 열도록 해 문제에 주의를 모으려는 장치입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "라운드 안 같은 답 '유엔' — 유엔기 도안(symbols/1#010) 을 남겼다",
+          "decidedBy": "자체 판단 (D-090 · 라운드 안 같은 답)",
+          "duplicateOf": "r020:symbols/1#010",
+          "at": "2026-09-21T01:59:55.100Z"
+        }
+      }
+    }
+  ]
+}

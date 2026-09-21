@@ -1,0 +1,292 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "brands/2",
+    "categoryPath": "생활·상식 > 브랜드·기업 > 로고·상징",
+    "midKey": "brands",
+    "subName": "로고·상징",
+    "majorKey": "life",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:21:40.345Z",
+    "seedResult": {
+      "ok": false,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보가 특정 기업 로고의 색 코드나 폰트인데, 알 가치 2 이하다.",
+      "listedCandidates": 24,
+      "remainingUsable": 8,
+      "remainingUsableNote": "미쉐린 맨·KFC 커넬·메르세데스의 삼각별·BMW의 프로펠러 설·아마존의 화살표·페덱스의 화살·구글의 색·마스코트 저작권이 남았다.",
+      "estimatedCeiling": "실질 상한 19건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "스우시",
+          "aspect": "나이키의 로고",
+          "reason": "DB 에 이미 답이 스우시인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 현재 매출·시가총액 순위는 넣지 않았다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:57:24.395Z"
+  },
+  "items": [
+    {
+      "seedId": "brands/2#001",
+      "seed": {
+        "subject": "애플의 베어 문 사과",
+        "aspect": "한 입 베어 문 까닭",
+        "knowledgePoint": "체리와 구별하려고 한 입 베어 물었다는 디자이너의 설명"
+      },
+      "question": {
+        "ok": true,
+        "question": "한 입 베어 문 모양이 된 것은 체리와 구별하기 위해서였다는 디자이너의 설명이 전하는, 미국 기업의 로고는?",
+        "answer": "애플",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "뉴턴이나 튜링과 연결짓는 이야기가 퍼져 있지만 정작 디자이너는 부인했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/2#002",
+      "seed": {
+        "subject": "올림픽의 오륜",
+        "aspect": "다섯 대륙을 뜻한다",
+        "knowledgePoint": "다섯 고리가 대륙을 뜻하고 어느 나라 국기든 적어도 한 색은 들어가도록 색을 골랐다는 설명"
+      },
+      "question": {
+        "ok": true,
+        "question": "올림픽을 상징하는 다섯 개의 고리는 무엇을 뜻합니까? 어느 나라 국기든 적어도 한 색은 들어가도록 색을 골랐다고 전합니다.",
+        "answer": "대륙",
+        "acceptedAnswers": [
+          "5대륙"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "특정 색이 특정 대륙을 가리키는 것은 아니라고 위원회가 밝히고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "discarded": {
+          "round": "r018",
+          "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (olympic/4#001 / db:628)",
+          "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+          "duplicateOf": "db:628",
+          "at": "2026-09-21T05:41:19.338Z"
+        }
+      }
+    },
+    {
+      "seedId": "brands/2#003",
+      "seed": {
+        "subject": "적십자",
+        "aspect": "스위스 국기의 색을 뒤집었다",
+        "knowledgePoint": "창설자의 나라 국기에서 색을 바꿔 만든 표장과 문화권에 따라 다른 표장을 쓰는 점"
+      },
+      "question": {
+        "ok": false,
+        "rejectReason": "이 소재로 만들 문제의 답은 '적십자' 인데, DB 에 이미 적십자를 정답으로 하는 문제가 있다 (db:254). 표장의 유래를 묻더라도 답은 같다 (D-090)."
+      }
+    },
+    {
+      "seedId": "brands/2#004",
+      "seed": {
+        "subject": "재활용 표시",
+        "aspect": "세 화살표가 돌아간다",
+        "knowledgePoint": "뫼비우스 띠 모양으로 이어진 세 화살표와 그 안의 숫자가 뜻하는 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "세 개의 화살표가 뫼비우스 띠처럼 이어져 돌아가는 모양으로, 포장재에 찍혀 분리배출 재질을 알려 주는 표시는?",
+        "answer": "재활용 표시",
+        "acceptedAnswers": [
+          "분리배출 표시"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "안이나 아래에 적힌 숫자와 글자가 재질을 나타냅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/2#005",
+      "seed": {
+        "subject": "방사능 표지",
+        "aspect": "세 날개가 퍼져 나간다",
+        "knowledgePoint": "원자에서 퍼져 나가는 방사선을 나타낸 삼엽 표지와 그 색"
+      },
+      "question": {
+        "ok": true,
+        "question": "가운데 원에서 세 개의 날이 퍼져 나가는 모양으로, 노란 바탕에 검은색으로 그려지는 이 표지는 무엇을 경고합니까?",
+        "answer": "방사능",
+        "acceptedAnswers": [
+          "방사선"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "원자에서 방사선이 퍼져 나가는 모습을 본떴습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/2#006",
+      "seed": {
+        "subject": "블루투스",
+        "aspect": "덴마크 왕의 이름에서 왔다",
+        "knowledgePoint": "여러 부족을 통합한 왕의 별명에서 이름을 따오고 그 이름의 머리글자 룬 문자를 합쳐 로고를 만든 일"
+      },
+      "question": {
+        "ok": true,
+        "question": "여러 부족을 하나로 묶은 덴마크 왕의 별명에서 이름을 따왔고, 그 이름의 머리글자 룬 문자를 겹쳐 로고를 만든 근거리 무선 통신 규격은?",
+        "answer": "블루투스",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "여러 기기를 하나로 잇는다는 뜻을 담아 붙인 이름입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/2#007",
+      "seed": {
+        "subject": "스타벅스의 세이렌",
+        "aspect": "바다의 요정에서 왔다",
+        "knowledgePoint": "뱃사람을 홀리던 신화 속 존재를 로고로 삼은 내력과 시간이 지나며 단순해진 과정"
+      },
+      "question": {
+        "ok": true,
+        "question": "뱃사람을 노래로 홀렸다는 신화 속 존재를 로고로 삼았고, 시간이 지나며 그림이 점점 단순해진 커피 회사는?",
+        "answer": "스타벅스",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "커피가 뱃길을 통해 오던 것과 연결지은 선택이라고 설명됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/2#008",
+      "seed": {
+        "subject": "맥도날드의 골든 아치",
+        "aspect": "건물 구조물이 로고가 됐다",
+        "knowledgePoint": "초기 매장 양옆에 세웠던 아치 구조물이 상표가 된 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "초기 매장 양옆에 세웠던 노란 아치 구조물이 그대로 상표가 된 미국의 햄버거 회사는?",
+        "answer": "맥도날드",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "건물의 일부였던 것이 상징이 된 드문 사례입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/2#009",
+      "seed": {
+        "subject": "로고의 단순화",
+        "aspect": "화면이 작아지자 다들 납작해졌다",
+        "knowledgePoint": "입체적이고 복잡하던 로고들이 모바일 화면에 맞추어 단순한 평면으로 바뀐 흐름"
+      },
+      "question": {
+        "ok": true,
+        "question": "2010년대 들어 기업 로고들이 입체감과 그림자를 걷어 내고 단순한 평면으로 바뀌었습니다. 이런 디자인 경향을 무엇이라 합니까?",
+        "answer": "플랫 디자인",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "작은 화면에서도 알아보기 쉽고 파일 크기도 줄어드는 것이 이유로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/2#010",
+      "seed": {
+        "subject": "상표권과 색",
+        "aspect": "색 자체를 등록하기도 한다",
+        "knowledgePoint": "특정 색이 브랜드를 식별하게 되면 색 자체를 상표로 보호받을 수 있는 제도"
+      },
+      "question": {
+        "ok": true,
+        "question": "특정 색이 그 브랜드를 떠올리게 할 만큼 굳어지면 그 색 자체를 등록해 보호받을 수 있습니다. 이런 권리를 무엇이라 합니까?",
+        "answer": "상표권",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "특정 회사의 파란색이나 빨간 구두 밑창이 실제로 이렇게 보호받은 사례가 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/2#011",
+      "seed": {
+        "subject": "마스코트",
+        "aspect": "행사나 팀을 대신해 친근함을 만든다",
+        "knowledgePoint": "사람이 아닌 캐릭터를 내세워 대상에 친근한 인상을 만드는 장치"
+      },
+      "question": {
+        "ok": true,
+        "question": "행사나 스포츠 팀을 대신해 친근한 인상을 만들려고 내세우는 캐릭터를 무엇이라 합니까?",
+        "answer": "마스코트",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "사람이 아니기 때문에 나이를 먹지 않고 오래 쓸 수 있다는 이점이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

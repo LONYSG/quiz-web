@@ -25,6 +25,8 @@ import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 
 import { normalizeAnswer, generateHint } from '../shared/dist/index.js';
+// ★★ R020: 판정을 공용 모듈로 옮겼다. 감사와 적재가 **같은 규칙**을 써야 갈라지지 않는다
+import { findAnswerInQuestion, classifyVariant } from '../pipeline/lib/answer-rules.mjs';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 try {
@@ -79,24 +81,7 @@ for (const a of answers) {
 //   exposeSuspect 문자열로는 있으나 낱말 경계가 아니다 → ★ 격리. 사람이 본다
 //   ★ 원문에서 판정한다. 정규화는 공백을 지워 경계를 볼 수 없게 만든다
 // ─────────────────────────────────────────────────────────────────────────────
-const BOUNDARY = /[\s.,!?'"()[\]{}·~:;/‘’“”–—-]/;
-function findInQuestion(question, answer) {
-  const q = (question ?? '').normalize('NFC');
-  const a = (answer ?? '').normalize('NFC').trim();
-  if (a.length === 0) return 'none';
-  let from = 0;
-  let sawSubstring = false;
-  for (;;) {
-    const i = q.indexOf(a, from);
-    if (i < 0) break;
-    sawSubstring = true;
-    const before = i === 0 ? '' : q[i - 1];
-    const after = i + a.length >= q.length ? '' : q[i + a.length];
-    if ((before === '' || BOUNDARY.test(before)) && (after === '' || BOUNDARY.test(after))) return 'word';
-    from = i + 1;
-  }
-  return sawSubstring ? 'substring' : 'none';
-}
+const findInQuestion = findAnswerInQuestion;
 
 /**
  * ★ 시간이 지나면 답이 바뀌는 문제인가.
@@ -191,7 +176,9 @@ for (const r of rows) {
 
   // ── ★ 표기 변형 품질
   const variants = rowAnswers.filter((a) => normalizeAnswer(a) !== normalizeAnswer(display));
-  const foreign = variants.filter((a) => /[A-Za-z]|[㐀-鿿]|[぀-ヿ]/.test(a));
+  // ★★ R020: 눈에 띄는 문자만 보지 않고 **적재 게이트와 같은 판정**을 쓴다.
+  //   ★ 근거: 전에는 `포드 모델 T` 가 'T' 때문에 외국어로 잡혔다. 한국어 변형이다.
+  const foreign = variants.filter((a) => classifyVariant(display, a).verdict === 'drop');
   if (foreign.length) findings.foreignVariant.push({ ...base, variants: foreign });
   if (variants.length >= 3) findings.manyVariants.push({ ...base, count: variants.length, variants });
 

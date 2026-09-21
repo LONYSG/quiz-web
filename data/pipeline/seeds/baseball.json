@@ -3,7 +3,7 @@
   "midName": "야구",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-17T05:55:30.910Z",
+  "updatedAt": "2026-09-21T01:59:54.928Z",
   "subs": {
     "baseball/1": {
       "subName": "규칙",
@@ -12,9 +12,293 @@
           "answer": "이닝",
           "origin": "db:98",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "삼진",
+          "origin": "r020:baseball/1#001",
+          "note": null
+        },
+        {
+          "answer": "볼넷",
+          "origin": "r020:baseball/1#002",
+          "note": null
+        },
+        {
+          "answer": "파울",
+          "origin": "r020:baseball/1#003",
+          "note": null
+        },
+        {
+          "answer": "야구",
+          "origin": "r020:baseball/1#004",
+          "note": null
+        },
+        {
+          "answer": "피트",
+          "origin": "r020:baseball/1#005",
+          "note": null
+        },
+        {
+          "answer": "60",
+          "origin": "r020:baseball/1#006",
+          "note": null
+        },
+        {
+          "answer": "2루타",
+          "origin": "r020:baseball/1#007",
+          "note": null
+        },
+        {
+          "answer": "몸에 맞는 공",
+          "origin": "r020:baseball/1#008",
+          "note": null
+        },
+        {
+          "answer": "9",
+          "origin": "r020:baseball/1#009",
+          "note": null
+        },
+        {
+          "answer": "4",
+          "origin": "r020:baseball/1#010",
+          "note": "r018 격리: 라운드 안 같은 답 '4' — 심장의 방 개수(human-body/2#001) 를 남겼다"
+        },
+        {
+          "answer": "투구 수 제한",
+          "origin": "r020:baseball/1#011",
+          "note": null
+        },
+        {
+          "answer": "피치 클록",
+          "origin": "r020:baseball/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "baseball/1#001",
+          "subject": "삼진",
+          "aspect": "스트라이크 세 개면 아웃",
+          "knowledgePoint": "타자가 스트라이크 세 개를 받으면 아웃이 되는 기본 규칙과 파울이 세 번째가 되지 않는 예외",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#001",
+            "answer": "삼진",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/1#002",
+          "subject": "볼넷",
+          "aspect": "볼 네 개면 1루로 나간다",
+          "knowledgePoint": "스트라이크 존을 벗어난 공을 네 번 받으면 타자가 걸어 나가는 규칙",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#002",
+            "answer": "볼넷",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/1#003",
+          "subject": "파울",
+          "aspect": "두 스트라이크 뒤에는 세지 않는다",
+          "knowledgePoint": "파울이 스트라이크로 계산되지만 두 개가 된 뒤에는 더해지지 않는 규칙",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#003",
+            "answer": "파울",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/1#004",
+          "subject": "야구장의 넓이",
+          "aspect": "규격이 정해지지 않은 유일한 구기",
+          "knowledgePoint": "내야는 규격이 정해져 있지만 외야 펜스까지의 거리는 구장마다 다른 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#004",
+            "answer": "야구",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/1#005",
+          "subject": "베이스 사이의 거리",
+          "aspect": "90피트로 정해져 있다",
+          "knowledgePoint": "내야 베이스 사이의 거리와 그것이 아웃과 세이프를 아슬아슬하게 만드는 절묘한 값이라는 평가",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#005",
+            "answer": "피트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/1#006",
+          "subject": "투수판과 홈플레이트",
+          "aspect": "18.44미터",
+          "knowledgePoint": "투수판에서 홈플레이트까지의 거리와 그것이 60피트 6인치에서 온 값이라는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#006",
+            "answer": "60",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/1#007",
+          "subject": "홈런과 인정 2루타",
+          "aspect": "튀어서 넘어가면 홈런이 아니다",
+          "knowledgePoint": "타구가 그라운드에 맞고 튀어 담장을 넘으면 2루타로 인정하는 규칙",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#007",
+            "answer": "2루타",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/1#008",
+          "subject": "몸에 맞는 공",
+          "aspect": "피하려 했는지를 본다",
+          "knowledgePoint": "타자가 피하려 하지 않았다고 판단되면 1루로 보내지 않는 규칙",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#008",
+            "answer": "몸에 맞는 공",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/1#009",
+          "subject": "야구의 9이닝",
+          "aspect": "시간 제한이 없다",
+          "knowledgePoint": "정해진 이닝을 끝내야 경기가 끝나고 동점이면 연장을 치르는 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#009",
+            "answer": "9",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/1#010",
+          "subject": "심판의 수",
+          "aspect": "네 명이 기본이다",
+          "knowledgePoint": "주심과 세 명의 누심으로 이루어진 기본 심판진과 큰 경기에서 늘어나는 구성",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/baseball-1#010",
+            "answer": "4",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "라운드 안 같은 답 '4' — 심장의 방 개수(human-body/2#001) 를 남겼다",
+              "decidedBy": "자체 판단 (D-090 · 라운드 안 같은 답)",
+              "duplicateOf": "r020:human-body/2#001",
+              "at": "2026-09-21T01:59:54.922Z"
+            }
+          }
+        },
+        {
+          "seedId": "baseball/1#011",
+          "subject": "투구 수 제한",
+          "aspect": "아마추어에서는 강제한다",
+          "knowledgePoint": "어린 선수의 어깨와 팔꿈치를 보호하려 투구 수를 제한하는 규정",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#011",
+            "answer": "투구 수 제한",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/1#012",
+          "subject": "피치 클록",
+          "aspect": "던지기까지 시간을 잰다",
+          "knowledgePoint": "경기 시간을 줄이려 투구와 타격 준비에 제한 시간을 둔 규정",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.326Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/baseball-1#012",
+            "answer": "피치 클록",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "baseball/3": {
       "subName": "MLB",

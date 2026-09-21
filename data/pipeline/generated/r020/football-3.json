@@ -1,0 +1,271 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "football/3",
+    "categoryPath": "스포츠·게임 > 축구 > 유럽 리그",
+    "midKey": "football",
+    "subName": "유럽 리그",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:21:40.318Z",
+    "seedResult": {
+      "ok": false,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 특정 구단의 우승 횟수나 선수 기록인데, 중분류 경계가 '현재 소속팀·순위·개인 통산 기록' 을 금지하고 시간이 지나면 답도 바뀐다.",
+      "listedCandidates": 23,
+      "remainingUsable": 6,
+      "remainingUsableNote": "유로파리그·안필드·산 시로·보스만 판결·유소년 아카데미·홈그로운 규정이 남았다.",
+      "estimatedCeiling": "실질 상한 16건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "엘 클라시코",
+          "aspect": "레알과 바르사의 맞대결",
+          "reason": "DB 에 이미 답이 엘 클라시코인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": "★★ 하한 없음 규칙을 적용했다. ★ 중분류 경계 때문에 쓸 수 있는 소재가 좁다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:50:47.973Z"
+  },
+  "items": [
+    {
+      "seedId": "football/3#001",
+      "seed": {
+        "subject": "프리미어리그",
+        "aspect": "1992년에 따로 떨어져 나왔다",
+        "knowledgePoint": "잉글랜드 1부 리그가 중계권 수익을 위해 독립해 만든 리그"
+      },
+      "question": {
+        "ok": true,
+        "question": "1992년에 잉글랜드 1부 리그 구단들이 중계권 수익을 직접 가져가려고 기존 리그에서 떨어져 나와 만든 대회는?",
+        "answer": "프리미어리그",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "중계권을 따로 팔면서 수익이 크게 늘었고 세계에서 가장 돈이 많이 도는 리그가 됐습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/3#002",
+      "seed": {
+        "subject": "챔피언스리그",
+        "aspect": "리그 우승팀들끼리 겨루던 대회에서 나왔다",
+        "knowledgePoint": "유럽 각국 상위 팀이 겨루는 클럽 대항전과 그 전신인 유러피언컵"
+      },
+      "question": {
+        "ok": true,
+        "question": "본래 각국 리그 우승팀끼리만 겨루던 유러피언컵을 확대해 만든, 유럽 클럽 최고 권위의 대항전은?",
+        "answer": "챔피언스리그",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "이름과 달리 지금은 리그 상위 여러 팀이 함께 나옵니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/3#003",
+      "seed": {
+        "subject": "승강제",
+        "aspect": "꼴찌는 아래 리그로 내려간다",
+        "knowledgePoint": "성적에 따라 상위·하위 리그를 오가는 제도와 그것이 북미 프로 스포츠와 다른 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "성적이 나쁜 팀은 아래 리그로 내려가고 아래 리그 상위 팀은 올라오는 제도로, 북미 프로 스포츠에는 없는 유럽 축구의 특징은?",
+        "answer": "승강제",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "하위권 경기에도 긴장이 유지되는 대신 구단 운영의 위험이 커집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/3#004",
+      "seed": {
+        "subject": "더비",
+        "aspect": "같은 도시 두 팀의 맞대결",
+        "knowledgePoint": "연고가 가까운 두 팀의 경기를 이르는 말과 그 이름이 영국 지명에서 온 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "같은 도시나 가까운 지역을 연고로 하는 두 팀의 맞대결을, 영국의 한 지명에서 따와 무엇이라 부릅니까?",
+        "answer": "더비",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "경마의 '더비' 와 같은 말에서 왔다는 설명이 유력합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/3#005",
+      "seed": {
+        "subject": "트레블",
+        "aspect": "한 시즌에 세 대회를 우승한다",
+        "knowledgePoint": "자국 리그·컵 대회·유럽 대항전을 한 해에 모두 우승하는 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "한 시즌에 자국 리그와 컵 대회, 그리고 유럽 대항전까지 세 가지를 모두 우승하는 것을 무엇이라 합니까?",
+        "answer": "트레블",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "'세 배' 를 뜻하는 말이며, 달성한 구단이 손에 꼽을 만큼 드뭅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/3#006",
+      "seed": {
+        "subject": "이적 시장",
+        "aspect": "정해진 기간에만 사고판다",
+        "knowledgePoint": "선수 등록을 여름과 겨울의 정해진 기간에만 할 수 있게 한 제도"
+      },
+      "question": {
+        "ok": true,
+        "question": "선수 등록을 여름과 겨울의 정해진 기간에만 할 수 있게 한 제도 때문에, 그 기간을 무엇이라 부릅니까?",
+        "answer": "이적 시장",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "마감 직전에 계약이 몰려 '데드라인 데이' 가 따로 화제가 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/3#007",
+      "seed": {
+        "subject": "재정 페어플레이",
+        "aspect": "번 것보다 많이 쓰지 못하게 한다",
+        "knowledgePoint": "구단이 수입을 넘는 지출을 하지 못하도록 막은 규정과 그 취지"
+      },
+      "question": {
+        "ok": true,
+        "question": "구단이 벌어들인 수입을 넘어서는 돈을 쓰지 못하도록 유럽축구연맹이 도입한 규정을 무엇이라 합니까?",
+        "answer": "재정 페어플레이",
+        "acceptedAnswers": [
+          "FFP"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "부유한 구단주의 돈으로 성적을 사는 것을 막고 구단의 파산을 예방하려는 취지입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/3#008",
+      "seed": {
+        "subject": "발롱도르",
+        "aspect": "한 해 최고의 선수에게 주는 상",
+        "knowledgePoint": "축구 잡지가 만들어 지금까지 이어지는 개인상과 그 이름의 뜻"
+      },
+      "question": {
+        "ok": true,
+        "question": "프랑스의 축구 잡지가 만들어 해마다 그해 최고의 선수에게 주는 상으로, 이름이 '황금 공' 을 뜻하는 것은?",
+        "answer": "발롱도르",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "한동안 FIFA의 상과 통합됐다가 다시 갈라졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/3#009",
+      "seed": {
+        "subject": "홈 앤드 어웨이",
+        "aspect": "두 번 붙어 합산한다",
+        "knowledgePoint": "서로의 홈에서 한 번씩 치러 결과를 합산하는 방식과 원정 다득점 규정의 폐지"
+      },
+      "question": {
+        "ok": true,
+        "question": "토너먼트에서 두 팀이 서로의 홈에서 한 번씩 치러 두 경기의 결과를 합산하는 방식을 무엇이라 합니까?",
+        "answer": "홈 앤드 어웨이",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "합계가 같을 때 원정 득점을 앞세우던 규정은 2021년에 없어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/3#010",
+      "seed": {
+        "subject": "유럽 슈퍼리그 무산",
+        "aspect": "팬들이 반대해 사흘 만에 접었다",
+        "knowledgePoint": "일부 구단이 폐쇄형 리그를 만들려다 여론의 반발로 철회한 일"
+      },
+      "question": {
+        "ok": true,
+        "question": "2021년 유럽의 일부 명문 구단이 승강제 없는 폐쇄형 대회를 만들려다 팬들의 거센 반발로 사흘 만에 철회한 구상은?",
+        "answer": "유럽 슈퍼리그",
+        "acceptedAnswers": [
+          "슈퍼리그"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "구단이 팬의 반대만으로 계획을 접은 드문 사례로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

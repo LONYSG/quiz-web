@@ -3,7 +3,7 @@
   "midName": "자동차·교통",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-18T01:02:49.329Z",
+  "updatedAt": "2026-09-21T01:42:33.702Z",
   "subs": {
     "transport/1": {
       "subName": "자동차 구조·용어",
@@ -12,9 +12,286 @@
           "answer": "ABS",
           "origin": "db:117",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "내연기관",
+          "origin": "r020:transport/1#001",
+          "note": null
+        },
+        {
+          "answer": "4행정 기관",
+          "origin": "r020:transport/1#002",
+          "note": null
+        },
+        {
+          "answer": "디젤 엔진",
+          "origin": "r020:transport/1#003",
+          "note": null
+        },
+        {
+          "answer": "변속기",
+          "origin": "r020:transport/1#004",
+          "note": null
+        },
+        {
+          "answer": "에어백",
+          "origin": "r020:transport/1#005",
+          "note": null
+        },
+        {
+          "answer": "특허를 공개했다",
+          "origin": "r020:transport/1#006",
+          "note": null
+        },
+        {
+          "answer": "크럼플 존",
+          "origin": "r020:transport/1#007",
+          "note": null
+        },
+        {
+          "answer": "공주거리",
+          "origin": "r020:transport/1#008",
+          "note": null
+        },
+        {
+          "answer": "배터리",
+          "origin": "r020:transport/1#009",
+          "note": null
+        },
+        {
+          "answer": "트레드",
+          "origin": "r020:transport/1#010",
+          "note": null
+        },
+        {
+          "answer": "하이드로플레이닝",
+          "origin": "r020:transport/1#011",
+          "note": null
+        },
+        {
+          "answer": "VIN",
+          "origin": "r020:transport/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "transport/1#001",
+          "subject": "내연기관",
+          "aspect": "연료를 실린더 안에서 태운다",
+          "knowledgePoint": "연료를 기관 안에서 태워 그 팽창으로 힘을 얻는 방식과 증기기관과의 차이",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#001",
+            "answer": "내연기관",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#002",
+          "subject": "4행정 기관",
+          "aspect": "흡입·압축·폭발·배기를 되풀이한다",
+          "knowledgePoint": "피스톤이 네 번 오르내리며 한 주기를 이루는 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#002",
+            "answer": "4행정 기관",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#003",
+          "subject": "디젤과 가솔린",
+          "aspect": "불꽃으로 붙이느냐 압축으로 붙이느냐",
+          "knowledgePoint": "점화 플러그로 불을 붙이는 방식과 공기를 세게 압축해 저절로 붙게 하는 방식의 차이",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#003",
+            "answer": "디젤 엔진",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#004",
+          "subject": "변속기",
+          "aspect": "같은 힘으로 다른 속도를 낸다",
+          "knowledgePoint": "기어비를 바꿔 엔진의 회전을 바퀴에 알맞게 전달하는 장치",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#004",
+            "answer": "변속기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#005",
+          "subject": "에어백",
+          "aspect": "터지듯 부풀었다가 곧 꺼진다",
+          "knowledgePoint": "충돌 순간 화학 반응으로 기체를 만들어 순식간에 부풀고 곧 빠지는 구조와 안전띠와 함께 써야 하는 이유",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#005",
+            "answer": "에어백",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#006",
+          "subject": "안전띠의 3점식",
+          "aspect": "특허를 공개했다",
+          "knowledgePoint": "어깨와 허리를 함께 잡는 방식을 만든 회사가 특허를 개방해 표준이 된 일",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#006",
+            "answer": "특허를 공개했다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#007",
+          "subject": "크럼플 존",
+          "aspect": "일부러 찌그러지게 만든다",
+          "knowledgePoint": "충돌 에너지를 차체 앞뒤가 찌그러지며 흡수하도록 설계해 탑승 공간을 지키는 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#007",
+            "answer": "크럼플 존",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#008",
+          "subject": "제동거리와 공주거리",
+          "aspect": "밟기 전에도 차는 나아간다",
+          "knowledgePoint": "위험을 인지하고 브레이크를 밟기까지 나아간 거리와 밟은 뒤 멈출 때까지의 거리를 나누는 개념",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#008",
+            "answer": "공주거리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#009",
+          "subject": "배터리 방전",
+          "aspect": "시동은 전기로 건다",
+          "knowledgePoint": "내연기관 차도 처음 시동에는 전기가 필요해 배터리가 방전되면 걸리지 않는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#009",
+            "answer": "배터리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#010",
+          "subject": "타이어의 트레드",
+          "aspect": "홈이 물을 빼낸다",
+          "knowledgePoint": "빗길에서 물을 밀어내 노면에 닿게 하는 홈과 닳으면 미끄러지는 현상",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#010",
+            "answer": "트레드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#011",
+          "subject": "하이드로플레이닝",
+          "aspect": "물 위에 떠서 조종이 안 된다",
+          "knowledgePoint": "빗길에서 타이어와 노면 사이에 물막이 생겨 접지력을 잃는 현상",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#011",
+            "answer": "하이드로플레이닝",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "transport/1#012",
+          "subject": "VIN",
+          "aspect": "차마다 붙는 고유 번호",
+          "knowledgePoint": "제조사·연식·공장 정보를 담아 차 한 대를 식별하는 17자리 번호",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.469Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/transport-1#012",
+            "answer": "VIN",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "transport/2": {
       "subName": "자동차 브랜드·역사",

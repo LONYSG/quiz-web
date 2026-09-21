@@ -3,7 +3,7 @@
   "midName": "지구과학·기상",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-18T00:55:37.303Z",
+  "updatedAt": "2026-09-21T01:38:45.833Z",
   "subs": {
     "earth/1": {
       "subName": "지질·암석",
@@ -311,9 +311,286 @@
           "answer": "안개",
           "origin": "db:271",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "대류권",
+          "origin": "r020:earth/3#001",
+          "note": null
+        },
+        {
+          "answer": "오존층",
+          "origin": "r020:earth/3#002",
+          "note": null
+        },
+        {
+          "answer": "태풍의 눈",
+          "origin": "r020:earth/3#003",
+          "note": null
+        },
+        {
+          "answer": "퇴출",
+          "origin": "r020:earth/3#004",
+          "note": null
+        },
+        {
+          "answer": "천둥",
+          "origin": "r020:earth/3#005",
+          "note": null
+        },
+        {
+          "answer": "푄 현상",
+          "origin": "r020:earth/3#006",
+          "note": null
+        },
+        {
+          "answer": "열섬 현상",
+          "origin": "r020:earth/3#007",
+          "note": null
+        },
+        {
+          "answer": "일교차",
+          "origin": "r020:earth/3#008",
+          "note": null
+        },
+        {
+          "answer": "장마",
+          "origin": "r020:earth/3#009",
+          "note": null
+        },
+        {
+          "answer": "기압",
+          "origin": "r020:earth/3#010",
+          "note": null
+        },
+        {
+          "answer": "체감온도",
+          "origin": "r020:earth/3#011",
+          "note": null
+        },
+        {
+          "answer": "강수확률",
+          "origin": "r020:earth/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "earth/3#001",
+          "subject": "대기의 층",
+          "aspect": "올라갈수록 추워지다가 다시 더워진다",
+          "knowledgePoint": "대류권·성층권·중간권·열권으로 나뉘며 층마다 기온 변화의 방향이 뒤집히는 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#001",
+            "answer": "대류권",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#002",
+          "subject": "오존층",
+          "aspect": "자외선을 막아 준다",
+          "knowledgePoint": "성층권에 모여 있어 해로운 자외선을 흡수하는 층과 그것이 얇아졌던 원인 물질",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#002",
+            "answer": "오존층",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#003",
+          "subject": "태풍의 눈",
+          "aspect": "한가운데는 오히려 잔잔하다",
+          "knowledgePoint": "강한 회전 때문에 중심에 바람이 약하고 구름이 없는 구역이 생기는 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#003",
+            "answer": "태풍의 눈",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#004",
+          "subject": "태풍의 이름",
+          "aspect": "여러 나라가 돌아가며 낸 이름을 쓴다",
+          "knowledgePoint": "태풍위원회 회원국이 제출한 이름을 순서대로 돌려 쓰고 큰 피해를 준 이름은 퇴출하는 방식",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#004",
+            "answer": "퇴출",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#005",
+          "subject": "천둥과 번개",
+          "aspect": "빛이 먼저 오고 소리가 나중에 온다",
+          "knowledgePoint": "빛과 소리의 속도 차이로 시간 간격을 재어 거리를 짐작할 수 있는 원리",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#005",
+            "answer": "천둥",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#006",
+          "subject": "푄 현상",
+          "aspect": "산을 넘으면 덥고 건조해진다",
+          "knowledgePoint": "산을 오르며 비를 뿌린 공기가 반대편으로 내려오며 기온이 오르는 현상",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#006",
+            "answer": "푄 현상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#007",
+          "subject": "열섬 현상",
+          "aspect": "도심이 주변보다 덥다",
+          "knowledgePoint": "아스팔트와 건물, 인공 열 때문에 도시 기온이 주변보다 높아지는 현상",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#007",
+            "answer": "열섬 현상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#008",
+          "subject": "일교차",
+          "aspect": "맑은 날에 더 크다",
+          "knowledgePoint": "구름이 없으면 낮에는 햇빛이 그대로 들고 밤에는 열이 빠져나가 하루 기온차가 커지는 원리",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#008",
+            "answer": "일교차",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#009",
+          "subject": "장마",
+          "aspect": "두 기단이 맞서 정체한다",
+          "knowledgePoint": "성질이 다른 공기 덩어리가 맞서 생긴 전선이 오래 머물며 비가 이어지는 현상",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#009",
+            "answer": "장마",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#010",
+          "subject": "기압",
+          "aspect": "공기에도 무게가 있다",
+          "knowledgePoint": "공기 기둥이 누르는 힘과 해수면에서의 표준값",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#010",
+            "answer": "기압",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#011",
+          "subject": "체감온도",
+          "aspect": "바람이 불면 더 춥게 느껴진다",
+          "knowledgePoint": "실제 기온과 별개로 바람과 습도가 몸이 느끼는 온도를 바꾸는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#011",
+            "answer": "체감온도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "earth/3#012",
+          "subject": "일기예보의 강수확률",
+          "aspect": "'비가 올 면적' 이라는 오해",
+          "knowledgePoint": "같은 조건이 반복될 때 비가 올 비율을 뜻하며 비의 양이나 지역 넓이와는 다르다는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.454Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/earth-3#012",
+            "answer": "강수확률",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "earth/4": {
       "subName": "해양",

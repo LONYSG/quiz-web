@@ -1,0 +1,62 @@
+{
+  "swappedAt": "2026-09-21T00:59:00.005Z",
+  "round": "r020",
+  "reason": "중복 판정이 신규 쪽을 남기라고 했고(keep=a), 8건을 직접 읽어 4건에 동의했다 (R020 작업 B-3 / 건우 확정 C20)",
+  "note": "★ 지우지 않았다. 기존의 is_active 만 false 로 내렸다. 되돌리려면 true 로 올리고 신규를 내리면 된다",
+  "swaps": [
+    {
+      "old": 36,
+      "neu": "animals/1#005",
+      "why": "기존은 \"목이 가장 긴 동물\" 로 맞혀도 알게 되는 것이 없다. 신규는 목뼈 개수를 알려 준다",
+      "newId": "1387"
+    },
+    {
+      "old": 237,
+      "neu": "music-theory/3#002",
+      "why": "기존의 생김새 묘사는 답을 유추하기 쉽게만 만든다. 신규는 연주 중 음높이를 바꾼다는 핵심을 짚는다",
+      "newId": "1388"
+    },
+    {
+      "old": 284,
+      "neu": "world-geo/1#011",
+      "why": "기존 \"면적이 가장 넓은 국가\" 는 알 가치가 낮다. 신규는 14개국과 접한다는 사실을 함께 준다",
+      "newId": "1389"
+    },
+    {
+      "old": 139,
+      "neu": "world-history-west/4#007",
+      "why": "기존은 정의를 그대로 말하고 용어를 묻는 암기 문제다. 신규는 몽테스키외의 맥락을 준다",
+      "newId": "1390"
+    }
+  ],
+  "replacedRows": [
+    {
+      "id": "36",
+      "source_id": "manual",
+      "question_text": "동물 중 목이 가장 긴 것으로 알려진 동물은?",
+      "display_answer": "기린",
+      "is_active": true
+    },
+    {
+      "id": "139",
+      "source_id": "gemini-gen",
+      "question_text": "국가 권력을 입법, 사법, 행정의 세 기관으로 나누어 상호 견제와 균형을 꾀하는 통치 원리는?",
+      "display_answer": "삼권분립",
+      "is_active": true
+    },
+    {
+      "id": "237",
+      "source_id": "gemini-gen",
+      "question_text": "반원형의 금속 통 위에 가죽을 씌우고 페달 등을 이용해 정확한 음정(음고)을 낼 수 있는 대표적인 서양 타악기는?",
+      "display_answer": "팀파니",
+      "is_active": true
+    },
+    {
+      "id": "284",
+      "source_id": "gemini-gen",
+      "question_text": "국토 면적이 세계에서 가장 넓은 국가는?",
+      "display_answer": "러시아",
+      "is_active": true
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "kr-food/3",
+    "categoryPath": "한국 > 한국 음식 > 분식·길거리 음식",
+    "midKey": "kr-food",
+    "subName": "분식·길거리 음식",
+    "majorKey": "korea",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:06:01.803Z",
+    "seedResult": {
+      "ok": false,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보(핫도그·튀김·계란빵·회오리감자)는 '무엇인지 묻고 답하면 끝' 이라 알 기 가치가 2 이하다. 음식 이름만 묻는 문제가 되기 때문이다.",
+      "listedCandidates": 21,
+      "remainingUsable": 5,
+      "remainingUsableNote": "국화빵·꽈배기·컵밥·분식집의 순대 소금·만두의 지역 차이가 남았다.",
+      "estimatedCeiling": "실질 상한 15건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "떡볶이",
+          "aspect": "고추장 양념에 볶은 떡",
+          "reason": "DB 에 이미 답이 떡볶이인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": "★★ 하한 없음 규칙을 적용했다. ★ 음식 이름만 묻는 문제는 알 가치가 낮다는 것이 이 소분류의 한계다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:26:16.271Z"
+  },
+  "items": [
+    {
+      "seedId": "kr-food/3#001",
+      "seed": {
+        "subject": "순대",
+        "aspect": "안에 무엇을 채우느냐가 지역마다 다르다",
+        "knowledgePoint": "창자에 소를 채워 찐 음식과 당면을 넣는 지역과 찹쌀·선지를 넣는 지역이 갈리는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "창자에 소를 채워 쪄 낸 음식으로, 지역에 따라 당면을 넣기도 하고 찹쌀과 선지를 넣기도 하는 것은?",
+        "answer": "순대",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "찍어 먹는 것도 지역에 따라 소금·초장·막장으로 갈립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/3#002",
+      "seed": {
+        "subject": "김밥",
+        "aspect": "밥에 식초를 넣느냐로 갈린다",
+        "knowledgePoint": "김에 밥과 여러 재료를 넣어 만 음식과 일본의 비슷한 음식과 구별되는 지점"
+      },
+      "question": {
+        "ok": true,
+        "question": "밥에 여러 재료를 넣고 김으로 말아 썰어 먹는 음식으로, 일본의 비슷한 음식과 달리 밥에 식초를 넣지 않는 것은?",
+        "answer": "김밥",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "참기름과 소금으로 밥을 간하는 것이 차이로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/3#003",
+      "seed": {
+        "subject": "어묵",
+        "aspect": "생선살을 갈아 반죽해 익힌다",
+        "knowledgePoint": "생선살을 으깨 전분과 섞어 익힌 가공식품과 국물에 꼬치로 꽂아 파는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "생선살을 으깨 전분과 섞어 익힌 가공식품으로, 꼬치에 꽂아 국물과 함께 파는 것이 흔한 것은?",
+        "answer": "어묵",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "생선살 함량에 따라 등급이 나뉩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/3#004",
+      "seed": {
+        "subject": "호떡",
+        "aspect": "안에 흑설탕이 녹아 흐른다",
+        "knowledgePoint": "밀가루 반죽에 설탕 소를 넣어 눌러 구운 간식과 그 이름에 '호' 가 붙은 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "밀가루 반죽에 흑설탕 소를 넣고 눌러 구워 내는 겨울 간식으로, 이름에 '오랑캐' 를 뜻하는 글자가 들어가는 것은?",
+        "answer": "호떡",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "중국에서 건너온 음식이라는 데서 이름이 붙었다고 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/3#005",
+      "seed": {
+        "subject": "붕어빵",
+        "aspect": "생선이 들어가지 않는다",
+        "knowledgePoint": "물고기 모양 틀에 반죽과 팥을 넣어 구운 간식과 일본에서 건너온 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "물고기 모양 틀에 반죽과 팥을 넣어 구운 겨울 간식으로, 정작 그 생선은 들어가지 않는 것은?",
+        "answer": "붕어빵",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "일본의 도미 모양 과자가 건너와 물고기가 바뀐 것으로 봅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/3#006",
+      "seed": {
+        "subject": "라면",
+        "aspect": "1963년에 처음 나왔다",
+        "knowledgePoint": "일본에서 기술을 들여와 국내에서 처음 만들어진 인스턴트 면과 당시 값"
+      },
+      "question": {
+        "ok": true,
+        "question": "1963년에 일본 기술을 들여와 국내에서 처음 만들어진 인스턴트 면 제품으로, 당시 한 봉지에 10원이던 것은?",
+        "answer": "라면",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "쌀이 모자라던 시절 정부가 분식을 권하던 흐름과 맞물려 퍼졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/3#007",
+      "seed": {
+        "subject": "쫄면",
+        "aspect": "실수로 굵게 뽑힌 면에서 나왔다",
+        "knowledgePoint": "인천의 냉면 공장에서 면이 굵게 뽑힌 것을 버리지 않고 쓰면서 생겼다고 전하는 음식"
+      },
+      "question": {
+        "ok": true,
+        "question": "인천의 냉면 공장에서 면이 굵게 뽑힌 것을 버리지 않고 쓰면서 생겼다고 전하는, 매콤한 양념에 비벼 먹는 분식은?",
+        "answer": "쫄면",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "실수에서 나온 음식이라는 이야기가 널리 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/3#008",
+      "seed": {
+        "subject": "달고나",
+        "aspect": "설탕을 녹여 소다를 넣으면 부푼다",
+        "knowledgePoint": "설탕에 탄산수소나트륨을 넣으면 이산화탄소가 생겨 부풀어 오르는 원리"
+      },
+      "question": {
+        "ok": true,
+        "question": "설탕을 녹인 뒤 탄산수소나트륨을 넣으면 이산화탄소가 생겨 부풀어 오르는 원리로 만드는 옛 간식은?",
+        "answer": "달고나",
+        "acceptedAnswers": [
+          "뽑기"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "흔히 말하는 '소다' 가 그 탄산수소나트륨입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/3#009",
+      "seed": {
+        "subject": "혼분식 장려 운동",
+        "aspect": "쌀을 아끼려 분식을 권했다",
+        "knowledgePoint": "1960~70년대에 쌀 소비를 줄이려 학교에서 도시락을 검사하고 분식을 권장한 정책"
+      },
+      "question": {
+        "ok": true,
+        "question": "1960~70년대에 쌀 소비를 줄이려고 학교에서 도시락을 검사하고 밀가루 음식을 권하던 정부 정책을 무엇이라 합니까?",
+        "answer": "혼분식 장려 운동",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "보리를 섞지 않으면 벌을 주기도 했고, 이것이 분식 문화가 퍼진 배경이 되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/3#010",
+      "seed": {
+        "subject": "만두",
+        "aspect": "빚는 방식으로 이름이 갈린다",
+        "knowledgePoint": "속을 넣어 빚은 음식이 찌고 굽고 삶는 방식에 따라 다르게 불리는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "밀가루 피에 소를 넣어 빚은 음식으로, 익히는 방법에 따라 찐것·군것·물것으로 나뉘어 불리는 것은?",
+        "answer": "만두",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "중국에서는 소가 없는 것을 그 이름으로 부르고 소가 든 것은 다르게 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

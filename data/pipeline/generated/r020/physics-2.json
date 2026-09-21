@@ -1,0 +1,318 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "physics/2",
+    "categoryPath": "자연과학 > 물리 > 전기·자기",
+    "midKey": "physics",
+    "subName": "전기·자기",
+    "majorKey": "science",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:13:57.432Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 27,
+      "remainingUsable": 11,
+      "remainingUsableNote": "쿨롱의 법칙·전기력선·축전기·전자기 유도·렌츠의 법칙·변압기·교류와 직류·전자석·자기장 속 도선이 받는 힘·초전도·정전기 방전이 남았다.",
+      "estimatedCeiling": "실질 상한 23건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "옴의 법칙",
+          "aspect": "전압은 전류 곱하기 저항",
+          "reason": "DB 에 이미 답이 옴의 법칙인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 '누가 처음 발견했는가' 는 발명·발견으로 보냈다. 여기는 개념 내용이다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:35:18.715Z"
+  },
+  "items": [
+    {
+      "seedId": "physics/2#001",
+      "seed": {
+        "subject": "전류의 방향",
+        "aspect": "실제로 움직이는 것과 반대로 정해져 있다",
+        "knowledgePoint": "전자는 음극에서 양극으로 흐르는데 전류의 방향은 그 반대로 약속된 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "도선 안에서 실제로 움직이는 것은 음의 전하를 띤 이것인데, 전류의 방향은 이것이 흐르는 쪽과 반대로 정해져 있습니다. 이것은?",
+        "answer": "전자",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "전류의 방향이 먼저 정해진 뒤에 전자가 발견됐기 때문에 생긴 어긋남입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/2#002",
+      "seed": {
+        "subject": "직렬과 병렬",
+        "aspect": "하나가 끊기면 다 꺼지는가",
+        "knowledgePoint": "직렬은 한 곳이 끊기면 전체가 끊기고 병렬은 그렇지 않은 차이와 가정용 배선이 병렬인 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "전구 하나가 끊어져도 나머지가 꺼지지 않도록 가정의 전기 배선에 쓰는 연결 방식은?",
+        "answer": "병렬",
+        "acceptedAnswers": [
+          "병렬연결"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "직렬로 이으면 한 곳만 끊겨도 전체 회로가 끊깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/2#003",
+      "seed": {
+        "subject": "저항",
+        "aspect": "굵고 짧을수록 잘 흐른다",
+        "knowledgePoint": "도선의 저항이 길이에 비례하고 단면적에 반비례하는 관계"
+      },
+      "question": {
+        "ok": true,
+        "question": "도선에서 이 값은 길이에 비례하고 단면적에 반비례합니다. 전류의 흐름을 방해하는 정도를 나타내는 이것은?",
+        "answer": "저항",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "그래서 같은 재료라면 굵고 짧은 선일수록 전기가 잘 흐릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/2#004",
+      "seed": {
+        "subject": "전력",
+        "aspect": "전압과 전류의 곱",
+        "knowledgePoint": "단위 시간에 쓰는 전기 에너지의 양과 그 단위"
+      },
+      "question": {
+        "ok": true,
+        "question": "전압과 전류를 곱해 구하며, 단위 시간에 쓰는 전기 에너지의 양을 나타내는 값은?",
+        "answer": "전력",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "단위는 와트를 쓰며, 여기에 시간을 곱한 것이 전력량입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/2#005",
+      "seed": {
+        "subject": "고압 송전",
+        "aspect": "전압을 높이면 손실이 줄어든다",
+        "knowledgePoint": "같은 전력을 보낼 때 전압을 높이면 전류가 줄어 열로 버려지는 손실이 줄어드는 원리"
+      },
+      "question": {
+        "ok": true,
+        "question": "같은 전력을 멀리 보낼 때 전압을 아주 높이면, 흐르는 전류가 줄어 열로 버려지는 양이 크게 줄어듭니다. 이 때문에 송전탑에서 쓰는 방식을 무엇이라 합니까?",
+        "answer": "고압 송전",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "열로 잃는 양이 전류의 제곱에 비례하기 때문에 전류를 줄이는 것이 핵심입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/2#006",
+      "seed": {
+        "subject": "접지",
+        "aspect": "새는 전기를 땅으로 흘려보낸다",
+        "knowledgePoint": "기기의 금속 부분을 땅과 연결해 누전 시 사람 대신 전류가 흐르게 하는 안전 장치"
+      },
+      "question": {
+        "ok": true,
+        "question": "기기의 금속 부분을 땅과 연결해, 누전이 생기면 사람 대신 그쪽으로 전류가 흐르게 하는 안전 장치를 무엇이라 합니까?",
+        "answer": "접지",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "콘센트의 세 번째 단자와 세탁기 뒤의 녹색 선이 이 구실을 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/2#007",
+      "seed": {
+        "subject": "누전차단기",
+        "aspect": "들어간 전류와 나온 전류를 견준다",
+        "knowledgePoint": "들어오고 나가는 전류의 차이를 감지해 회로를 끊는 장치"
+      },
+      "question": {
+        "ok": true,
+        "question": "들어오는 전류와 나가는 전류의 양을 견주어 차이가 생기면 회로를 끊어 버리는, 감전을 막는 장치는?",
+        "answer": "누전차단기",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "차이가 난다는 것은 어딘가로 전류가 새고 있다는 뜻이기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/2#008",
+      "seed": {
+        "subject": "정전기",
+        "aspect": "마찰로 전자가 옮겨 간다",
+        "knowledgePoint": "서로 다른 물질을 비빌 때 전자가 한쪽으로 옮겨 가 쌓이는 현상과 겨울에 잦은 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "서로 다른 물질을 비빌 때 전자가 한쪽으로 옮겨 가 쌓이면서 생기고, 건조한 겨울에 특히 잦은 현상은?",
+        "answer": "정전기",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "습하면 수분을 타고 전하가 빠져나가기 때문에 여름에는 잘 생기지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/2#009",
+      "seed": {
+        "subject": "자석의 극",
+        "aspect": "반으로 잘라도 두 극이 남는다",
+        "knowledgePoint": "자석을 아무리 쪼개도 N극만 또는 S극만 따로 얻을 수 없는 성질"
+      },
+      "question": {
+        "ok": true,
+        "question": "막대자석을 반으로 잘라도 한쪽 극만 따로 얻을 수 없고 또 두 극이 생깁니다. 이처럼 따로 떼어 낼 수 없는 자석의 양 끝을 무엇이라 합니까?",
+        "answer": "자극",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "전하와 달리 한 극만 있는 홑극 자석은 아직 발견되지 않았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/2#010",
+      "seed": {
+        "subject": "지구 자기장",
+        "aspect": "나침반의 N극이 가리키는 쪽은 자기적으로 S극이다",
+        "knowledgePoint": "지구가 거대한 자석처럼 작용하며 지리상 북쪽에 자기적 S극이 있다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "나침반의 N극이 북쪽을 가리키는 것은 지구가 거대한 자석처럼 작용하기 때문입니다. 그렇다면 지리상 북극 쪽에 놓인 지구 자석의 극은 무슨 극입니까?",
+        "answer": "S극",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "다른 극끼리 끌어당기므로 나침반의 N극이 향하는 쪽은 자기적으로 S극이어야 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "fixedBy": "r020 규칙검사 expose/exposeSuspect 수정"
+      }
+    },
+    {
+      "seedId": "physics/2#011",
+      "seed": {
+        "subject": "오른손 법칙",
+        "aspect": "손 모양으로 방향을 찾는다",
+        "knowledgePoint": "전류가 흐르는 도선 둘레에 생기는 자기장의 방향을 손으로 나타내는 규칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "엄지를 전류의 방향으로 두고 나머지 손가락을 감아쥐면 그 방향이 자기장의 방향이 된다는, 손으로 나타내는 규칙은?",
+        "answer": "오른손 법칙",
+        "acceptedAnswers": [
+          "앙페르의 오른나사 법칙"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "나사를 조이는 방향에 빗대어 오른나사 법칙이라고도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/2#012",
+      "seed": {
+        "subject": "전자기파",
+        "aspect": "전기와 자기가 서로를 만들며 나아간다",
+        "knowledgePoint": "변하는 전기장이 자기장을, 변하는 자기장이 전기장을 만들며 퍼져 나가는 파동"
+      },
+      "question": {
+        "ok": true,
+        "question": "변하는 전기장이 자기장을 만들고 그 자기장이 다시 전기장을 만들며 공간을 퍼져 나가는 파동으로, 빛과 전파가 여기에 속하는 것은?",
+        "answer": "전자기파",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "매질 없이도 나아갈 수 있어 진공인 우주를 건너 빛이 닿습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "midName": "의학·건강 상식",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-18T01:02:49.322Z",
+  "updatedAt": "2026-09-21T01:38:45.840Z",
   "subs": {
     "medicine/1": {
       "subName": "질병",
@@ -12,9 +12,286 @@
           "answer": "당뇨병",
           "origin": "db:81",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "비감염병",
+          "origin": "r020:medicine/1#001",
+          "note": null
+        },
+        {
+          "answer": "바이러스",
+          "origin": "r020:medicine/1#002",
+          "note": null
+        },
+        {
+          "answer": "팬데믹",
+          "origin": "r020:medicine/1#003",
+          "note": null
+        },
+        {
+          "answer": "자가면역질환",
+          "origin": "r020:medicine/1#004",
+          "note": null
+        },
+        {
+          "answer": "전이",
+          "origin": "r020:medicine/1#005",
+          "note": null
+        },
+        {
+          "answer": "잠복기",
+          "origin": "r020:medicine/1#006",
+          "note": null
+        },
+        {
+          "answer": "알츠하이머병",
+          "origin": "r020:medicine/1#007",
+          "note": null
+        },
+        {
+          "answer": "뇌졸중",
+          "origin": "r020:medicine/1#008",
+          "note": null
+        },
+        {
+          "answer": "심근경색",
+          "origin": "r020:medicine/1#009",
+          "note": null
+        },
+        {
+          "answer": "모기",
+          "origin": "r020:medicine/1#010",
+          "note": null
+        },
+        {
+          "answer": "백신",
+          "origin": "r020:medicine/1#011",
+          "note": null
+        },
+        {
+          "answer": "천연두",
+          "origin": "r020:medicine/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "medicine/1#001",
+          "subject": "감염병과 비감염병",
+          "aspect": "옮는가 아닌가로 가른다",
+          "knowledgePoint": "병원체가 옮겨 생기는 병과 생활습관·유전으로 생기는 병을 가르는 기준",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#001",
+            "answer": "비감염병",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#002",
+          "subject": "바이러스와 세균",
+          "aspect": "항생제가 듣는 쪽은 하나뿐이다",
+          "knowledgePoint": "세균에는 항생제가 듣지만 바이러스에는 듣지 않는 까닭",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#002",
+            "answer": "바이러스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#003",
+          "subject": "팬데믹",
+          "aspect": "여러 대륙으로 번진 상태",
+          "knowledgePoint": "한 지역의 유행과 세계적 대유행을 가르는 기준과 그것을 선언하는 기구",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#003",
+            "answer": "팬데믹",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#004",
+          "subject": "자가면역질환",
+          "aspect": "면역이 자기 몸을 공격한다",
+          "knowledgePoint": "외부의 적이 아니라 자기 조직을 적으로 인식해 생기는 병의 무리",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#004",
+            "answer": "자가면역질환",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#005",
+          "subject": "암의 전이",
+          "aspect": "원래 자리를 벗어나 퍼진다",
+          "knowledgePoint": "암세포가 혈관이나 림프관을 타고 다른 장기로 옮겨 가는 현상과 그것이 치료를 어렵게 하는 이유",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#005",
+            "answer": "전이",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#006",
+          "subject": "잠복기",
+          "aspect": "증상이 없는데도 옮길 수 있다",
+          "knowledgePoint": "감염되고 증상이 나타나기까지의 기간과 그 사이에도 전파가 일어날 수 있는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#006",
+            "answer": "잠복기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#007",
+          "subject": "치매와 알츠하이머",
+          "aspect": "둘은 같은 말이 아니다",
+          "knowledgePoint": "인지 기능이 떨어지는 상태를 통틀어 이르는 말과 그 원인 가운데 가장 흔한 병의 구분",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#007",
+            "answer": "알츠하이머병",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#008",
+          "subject": "뇌졸중",
+          "aspect": "막히는 것과 터지는 것이 있다",
+          "knowledgePoint": "뇌혈관이 막히는 경우와 터지는 경우로 나뉘며 치료가 정반대가 되는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#008",
+            "answer": "뇌졸중",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#009",
+          "subject": "심근경색",
+          "aspect": "심장 자신에게 가는 혈관이 막힌다",
+          "knowledgePoint": "심장 근육에 피를 보내는 혈관이 막혀 근육이 죽는 병",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#009",
+            "answer": "심근경색",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#010",
+          "subject": "황열과 모기",
+          "aspect": "모기가 옮기는 병이 여럿이다",
+          "knowledgePoint": "말라리아·뎅기열처럼 모기를 매개로 하는 병들과 그래서 모기가 가장 많은 사람을 죽이는 동물로 꼽히는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#010",
+            "answer": "모기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#011",
+          "subject": "백신",
+          "aspect": "병에 걸리지 않고 면역을 얻는다",
+          "knowledgePoint": "약하게 만들거나 일부만 쓴 병원체로 면역 반응을 미리 일으켜 두는 원리",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#011",
+            "answer": "백신",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/1#012",
+          "subject": "천연두",
+          "aspect": "인류가 박멸에 성공한 유일한 병",
+          "knowledgePoint": "1980년에 박멸이 선언된 감염병과 그것이 가능했던 조건",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.462Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/medicine-1#012",
+            "answer": "천연두",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "medicine/2": {
       "subName": "증상·진단",

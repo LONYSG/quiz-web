@@ -1,0 +1,315 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "earth/3",
+    "categoryPath": "자연과학 > 지구과학·기상 > 대기·기상",
+    "midKey": "earth",
+    "subName": "대기·기상",
+    "majorKey": "science",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:13:57.454Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 28,
+      "remainingUsable": 11,
+      "remainingUsableNote": "전선·고기압과 저기압·이슬점·상대습도·구름의 종류·우박·서리·무지개·오로라·엘니뇨·황사가 남았다.",
+      "estimatedCeiling": "실질 상한 23건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "안개",
+          "aspect": "지표 가까이 생긴 구름",
+          "reason": "DB 에 이미 답이 안개인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 현상과 원리만 다뤘다. 바다·지형의 이름·위치는 세계 지리가 맡는다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:38:45.831Z"
+  },
+  "items": [
+    {
+      "seedId": "earth/3#001",
+      "seed": {
+        "subject": "대기의 층",
+        "aspect": "올라갈수록 추워지다가 다시 더워진다",
+        "knowledgePoint": "대류권·성층권·중간권·열권으로 나뉘며 층마다 기온 변화의 방향이 뒤집히는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "구름이 생기고 날씨가 일어나는, 지표에서 가장 가까운 대기의 층을 무엇이라 합니까?",
+        "answer": "대류권",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "위로 올라갈수록 기온이 내려가 공기가 뒤섞이기 때문에 이런 이름이 붙었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#002",
+      "seed": {
+        "subject": "오존층",
+        "aspect": "자외선을 막아 준다",
+        "knowledgePoint": "성층권에 모여 있어 해로운 자외선을 흡수하는 층과 그것이 얇아졌던 원인 물질"
+      },
+      "question": {
+        "ok": true,
+        "question": "성층권에 모여 있어 해로운 자외선을 흡수해 주며, 냉매로 쓰이던 프레온가스 때문에 얇아졌던 층은?",
+        "answer": "오존층",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "몬트리올 의정서로 원인 물질을 규제한 뒤 회복되고 있어, 국제 환경 협약의 성공 사례로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#003",
+      "seed": {
+        "subject": "태풍의 눈",
+        "aspect": "한가운데는 오히려 잔잔하다",
+        "knowledgePoint": "강한 회전 때문에 중심에 바람이 약하고 구름이 없는 구역이 생기는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "태풍의 한가운데에는 강한 회전 때문에 바람이 약하고 구름이 없어 하늘이 보이기도 하는 구역이 생깁니다. 이곳을 무엇이라 합니까?",
+        "answer": "태풍의 눈",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "이곳이 지나간 뒤에는 반대 방향의 강한 바람이 다시 몰아칩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#004",
+      "seed": {
+        "subject": "태풍의 이름",
+        "aspect": "여러 나라가 돌아가며 낸 이름을 쓴다",
+        "knowledgePoint": "태풍위원회 회원국이 제출한 이름을 순서대로 돌려 쓰고 큰 피해를 준 이름은 퇴출하는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "태풍의 이름은 태풍위원회 회원국이 낸 이름을 차례로 돌려 쓰는데, 큰 피해를 준 이름은 어떻게 처리합니까?",
+        "answer": "퇴출",
+        "acceptedAnswers": [
+          "영구 제명"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "목록에서 빼고 그 나라가 새 이름을 제출합니다. '매미' 와 '루사' 도 이렇게 빠졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#005",
+      "seed": {
+        "subject": "천둥과 번개",
+        "aspect": "빛이 먼저 오고 소리가 나중에 온다",
+        "knowledgePoint": "빛과 소리의 속도 차이로 시간 간격을 재어 거리를 짐작할 수 있는 원리"
+      },
+      "question": {
+        "ok": true,
+        "question": "번개가 지나간 자리의 공기가 순식간에 뜨거워져 부풀면서 생긴 충격파가 소리로 들리는 것을 무엇이라 합니까?",
+        "answer": "천둥",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "빛이 소리보다 훨씬 빠르기 때문에 번쩍임과 소리 사이의 시간으로 거리를 어림할 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#006",
+      "seed": {
+        "subject": "푄 현상",
+        "aspect": "산을 넘으면 덥고 건조해진다",
+        "knowledgePoint": "산을 오르며 비를 뿌린 공기가 반대편으로 내려오며 기온이 오르는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "습한 공기가 산을 오르며 비를 뿌린 뒤 반대편으로 내려오면서 덥고 건조해지는 현상을 무엇이라 합니까?",
+        "answer": "푄 현상",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "우리나라의 높새바람이 이 현상의 사례입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#007",
+      "seed": {
+        "subject": "열섬 현상",
+        "aspect": "도심이 주변보다 덥다",
+        "knowledgePoint": "아스팔트와 건물, 인공 열 때문에 도시 기온이 주변보다 높아지는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "아스팔트와 건물, 그리고 사람이 내는 열 때문에 도심의 기온이 주변보다 높아지는 현상을 무엇이라 합니까?",
+        "answer": "열섬 현상",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "기온 분포를 그리면 도심이 섬처럼 떠오른 모양이 되어 붙은 이름입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#008",
+      "seed": {
+        "subject": "일교차",
+        "aspect": "맑은 날에 더 크다",
+        "knowledgePoint": "구름이 없으면 낮에는 햇빛이 그대로 들고 밤에는 열이 빠져나가 하루 기온차가 커지는 원리"
+      },
+      "question": {
+        "ok": true,
+        "question": "구름이 없는 맑은 날에는 낮에 햇빛이 그대로 들고 밤에는 열이 빠져나가, 하루 동안의 최고 기온과 최저 기온의 차이가 커집니다. 이 차이를 무엇이라 합니까?",
+        "answer": "일교차",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "사막에서 이 값이 특히 큰 것도 같은 이유입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#009",
+      "seed": {
+        "subject": "장마",
+        "aspect": "두 기단이 맞서 정체한다",
+        "knowledgePoint": "성질이 다른 공기 덩어리가 맞서 생긴 전선이 오래 머물며 비가 이어지는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "성질이 다른 두 공기 덩어리가 맞서 만든 전선이 한자리에 오래 머물며 비가 이어지는, 초여름의 우리나라 기상 현상은?",
+        "answer": "장마",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "최근에는 전선이 오르내리지 않고 국지성 호우가 잦아져 예보가 어려워졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#010",
+      "seed": {
+        "subject": "기압",
+        "aspect": "공기에도 무게가 있다",
+        "knowledgePoint": "공기 기둥이 누르는 힘과 해수면에서의 표준값"
+      },
+      "question": {
+        "ok": true,
+        "question": "공기 기둥이 누르는 힘을 뜻하며, 해수면에서의 표준값이 1013헥토파스칼인 것은?",
+        "answer": "기압",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "높이 올라갈수록 위에 쌓인 공기가 줄어 이 값이 내려갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#011",
+      "seed": {
+        "subject": "체감온도",
+        "aspect": "바람이 불면 더 춥게 느껴진다",
+        "knowledgePoint": "실제 기온과 별개로 바람과 습도가 몸이 느끼는 온도를 바꾸는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "기온이 같아도 바람이 세면 훨씬 춥게 느껴집니다. 이렇게 사람이 실제로 느끼는 온도를 따로 계산해 나타낸 값을 무엇이라 합니까?",
+        "answer": "체감온도",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "여름에는 습도가 높으면 땀이 마르지 않아 더 덥게 느껴집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/3#012",
+      "seed": {
+        "subject": "일기예보의 강수확률",
+        "aspect": "'비가 올 면적' 이라는 오해",
+        "knowledgePoint": "같은 조건이 반복될 때 비가 올 비율을 뜻하며 비의 양이나 지역 넓이와는 다르다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "일기예보에서 '비 올 확률 60%' 는 예보 구역의 60%에 비가 온다는 뜻이 아닙니다. 같은 조건이 여러 번 반복될 때 비가 내린 비율을 뜻하는 이 값을 무엇이라 합니까?",
+        "answer": "강수확률",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "비의 양이나 지속 시간과도 관계가 없습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

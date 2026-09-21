@@ -3,7 +3,7 @@
   "midName": "건축",
   "majorKey": "arts",
   "majorName": "문화·예술",
-  "updatedAt": "2026-09-18T01:13:49.948Z",
+  "updatedAt": "2026-09-21T05:41:19.658Z",
   "subs": {
     "architecture/1": {
       "subName": "건축 양식",
@@ -318,9 +318,295 @@
           "answer": "에펠탑",
           "origin": "db:295",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "사그라다 파밀리아",
+          "origin": "r020:architecture/3#001",
+          "note": null
+        },
+        {
+          "answer": "하기아 소피아",
+          "origin": "r020:architecture/3#002",
+          "note": null
+        },
+        {
+          "answer": "파르테논 신전",
+          "origin": "r020:architecture/3#003",
+          "note": "r018 격리: 중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:494)"
+        },
+        {
+          "answer": "타지마할",
+          "origin": "r020:architecture/3#004",
+          "note": null
+        },
+        {
+          "answer": "피사의 사탑",
+          "origin": "r020:architecture/3#005",
+          "note": null
+        },
+        {
+          "answer": "플라비우스 원형극장",
+          "origin": "r020:architecture/3#006",
+          "note": null
+        },
+        {
+          "answer": "베르사유 궁전",
+          "origin": "r020:architecture/3#007",
+          "note": null
+        },
+        {
+          "answer": "7",
+          "origin": "r020:architecture/3#009",
+          "note": "r018 격리: 라운드 안 같은 답 '7' — 주사위 마주 보는 면의 합(board-game/4#007) 을 남겼다"
+        },
+        {
+          "answer": "숭례문",
+          "origin": "r020:architecture/3#010",
+          "note": null
+        },
+        {
+          "answer": "다보탑",
+          "origin": "r020:architecture/3#011",
+          "note": null
+        },
+        {
+          "answer": "수원 화성",
+          "origin": "r020:architecture/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "architecture/3#001",
+          "subject": "사그라다 파밀리아",
+          "aspect": "100년 넘게 짓고 있다",
+          "knowledgePoint": "가우디가 설계하고 그가 죽은 뒤에도 공사가 이어지고 있는 바르셀로나의 성당",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/architecture-3#001",
+            "answer": "사그라다 파밀리아",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "architecture/3#002",
+          "subject": "하기아 소피아",
+          "aspect": "성당이었다가 모스크가 됐다",
+          "knowledgePoint": "동로마의 성당으로 지어졌다가 이슬람 사원으로, 다시 박물관으로 쓰임이 바뀐 건물",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/architecture-3#002",
+            "answer": "하기아 소피아",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "architecture/3#003",
+          "subject": "파르테논 신전",
+          "aspect": "기둥이 미세하게 휘어 있다",
+          "knowledgePoint": "직선으로 보이게 하려고 일부러 곡선을 준 설계와 그 신전이 모신 신",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/architecture-3#003",
+            "answer": "파르테논 신전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:494)",
+              "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+              "duplicateOf": "db:494",
+              "at": "2026-09-21T05:41:19.642Z"
+            }
+          }
+        },
+        {
+          "seedId": "architecture/3#004",
+          "subject": "타지마할",
+          "aspect": "왕비를 위해 지은 무덤",
+          "knowledgePoint": "무굴 제국의 황제가 세상을 떠난 왕비를 위해 지은 대리석 묘당",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/architecture-3#004",
+            "answer": "타지마할",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "architecture/3#005",
+          "subject": "피사의 사탑",
+          "aspect": "짓는 도중부터 기울었다",
+          "knowledgePoint": "지반이 약해 공사 중에 이미 기울기 시작한 종탑과 기울기를 늦추기 위한 보강 공사",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/architecture-3#005",
+            "answer": "피사의 사탑",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "architecture/3#006",
+          "subject": "콜로세움의 이름",
+          "aspect": "옆에 있던 거대한 상에서 왔다",
+          "knowledgePoint": "본래 이름은 따로 있고 옆에 서 있던 거상에서 지금 이름이 왔다는 설명",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/architecture-3#006",
+            "answer": "플라비우스 원형극장",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "architecture/3#007",
+          "subject": "베르사유 궁전의 거울의 방",
+          "aspect": "조약이 이곳에서 맺어졌다",
+          "knowledgePoint": "거울로 벽을 채운 회랑과 1차 대전을 끝낸 조약이 조인된 장소라는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/architecture-3#007",
+            "answer": "베르사유 궁전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "architecture/3#008",
+          "subject": "만리장성의 길이",
+          "aspect": "한 줄이 아니라 여러 겹이다",
+          "knowledgePoint": "여러 시대의 성벽이 겹쳐 있어 길이를 하나로 말하기 어려운 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "rejected",
+            "ref": "r020/architecture-3#008",
+            "answer": null,
+            "rejectReason": "이 소재로 만들 문제의 답은 '만리장성' 인데, R019 에서 이미 만리장성을 정답으로 하는 문제를 만들어 DB 에 적재했다 (동양사 > 중국 왕조). 길이를 묻더라도 답은 같거나 숫자가 되어 알 가치가 낮다 (D-090).",
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "architecture/3#009",
+          "subject": "자유의 여신상의 왕관",
+          "aspect": "뿔이 일곱 개다",
+          "knowledgePoint": "일곱 대륙과 일곱 바다를 뜻한다고 설명되는 왕관의 뾰족한 부분",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/architecture-3#009",
+            "answer": "7",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "라운드 안 같은 답 '7' — 주사위 마주 보는 면의 합(board-game/4#007) 을 남겼다",
+              "decidedBy": "자체 판단 (D-090 · 라운드 안 같은 답)",
+              "duplicateOf": "r020:board-game/4#007",
+              "at": "2026-09-21T01:59:54.758Z"
+            }
+          }
+        },
+        {
+          "seedId": "architecture/3#010",
+          "subject": "숭례문",
+          "aspect": "국보 1호였다가 번호가 사라졌다",
+          "knowledgePoint": "화재로 소실되었다가 복원된 성문과 문화재 지정 번호를 없앤 제도 변화",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/architecture-3#010",
+            "answer": "숭례문",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "architecture/3#011",
+          "subject": "불국사의 두 탑",
+          "aspect": "마당에 성격이 다른 탑이 마주 선다",
+          "knowledgePoint": "단순하고 반듯한 탑과 화려하게 꾸민 탑이 한 마당에 함께 선 배치",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/architecture-3#011",
+            "answer": "다보탑",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "architecture/3#012",
+          "subject": "수원 화성",
+          "aspect": "공사 기록이 책으로 남았다",
+          "knowledgePoint": "설계와 공사 과정, 임금까지 적은 기록이 남아 복원이 가능했던 성곽",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.025Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/architecture-3#012",
+            "answer": "수원 화성",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "architecture/4": {
       "subName": "한국 건축",

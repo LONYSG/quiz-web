@@ -3,7 +3,7 @@
   "midName": "정치·법 상식",
   "majorKey": "humanities",
   "majorName": "인문·사회",
-  "updatedAt": "2026-09-18T00:48:34.581Z",
+  "updatedAt": "2026-09-21T01:32:27.383Z",
   "subs": {
     "politics/1": {
       "subName": "정치 체제·기구",
@@ -12,9 +12,286 @@
           "answer": "삼권분립",
           "origin": "db:139",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "대통령제",
+          "origin": "r020:politics/1#001",
+          "note": null
+        },
+        {
+          "answer": "의원내각제",
+          "origin": "r020:politics/1#002",
+          "note": null
+        },
+        {
+          "answer": "내각불신임",
+          "origin": "r020:politics/1#003",
+          "note": null
+        },
+        {
+          "answer": "입헌군주제",
+          "origin": "r020:politics/1#004",
+          "note": null
+        },
+        {
+          "answer": "공화국",
+          "origin": "r020:politics/1#005",
+          "note": null
+        },
+        {
+          "answer": "게리맨더링",
+          "origin": "r020:politics/1#006",
+          "note": null
+        },
+        {
+          "answer": "필리버스터",
+          "origin": "r020:politics/1#007",
+          "note": null
+        },
+        {
+          "answer": "거부권",
+          "origin": "r020:politics/1#008",
+          "note": null
+        },
+        {
+          "answer": "사법권의 독립",
+          "origin": "r020:politics/1#009",
+          "note": null
+        },
+        {
+          "answer": "국정감사",
+          "origin": "r020:politics/1#010",
+          "note": null
+        },
+        {
+          "answer": "옴부즈맨",
+          "origin": "r020:politics/1#011",
+          "note": null
+        },
+        {
+          "answer": "감사원",
+          "origin": "r020:politics/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "politics/1#001",
+          "subject": "대통령제",
+          "aspect": "행정부 수반을 국민이 직접 뽑는다",
+          "knowledgePoint": "입법부와 행정부가 따로 구성되어 임기가 보장되는 정부 형태",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#001",
+            "answer": "대통령제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#002",
+          "subject": "의원내각제",
+          "aspect": "의회가 행정부를 만들고 무너뜨린다",
+          "knowledgePoint": "다수당이 내각을 구성하고 의회가 불신임하면 물러나는 정부 형태",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#002",
+            "answer": "의원내각제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#003",
+          "subject": "내각불신임",
+          "aspect": "의회가 정부를 물러나게 한다",
+          "knowledgePoint": "의회가 내각에 대한 신임을 거두어 총사퇴시키거나 의회를 해산하게 만드는 제도",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#003",
+            "answer": "내각불신임",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#004",
+          "subject": "입헌군주제",
+          "aspect": "왕은 있으나 다스리지 않는다",
+          "knowledgePoint": "군주가 상징으로 남고 실제 통치는 헌법과 의회가 맡는 체제",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#004",
+            "answer": "입헌군주제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#005",
+          "subject": "공화국",
+          "aspect": "주권이 세습되지 않는다",
+          "knowledgePoint": "주권이 국민에게 있고 국가원수를 세습하지 않는 국가 형태",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#005",
+            "answer": "공화국",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#006",
+          "subject": "게리맨더링",
+          "aspect": "선거구를 유리하게 구부린다",
+          "knowledgePoint": "선거구를 자기 편에 유리하게 그리는 일과 그 이름이 도롱뇽 모양 선거구에서 온 내력",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#006",
+            "answer": "게리맨더링",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#007",
+          "subject": "필리버스터",
+          "aspect": "말을 끌어 표결을 막는다",
+          "knowledgePoint": "소수파가 발언을 길게 이어 의사 진행을 늦추는 합법적 저지 수단",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#007",
+            "answer": "필리버스터",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#008",
+          "subject": "거부권",
+          "aspect": "통과된 법안을 되돌려 보낸다",
+          "knowledgePoint": "대통령이 국회를 통과한 법률안의 재의를 요구할 수 있는 권한과 그것을 넘어서는 요건",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#008",
+            "answer": "거부권",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#009",
+          "subject": "삼심제와 견제",
+          "aspect": "사법부는 누구에게도 지시받지 않는다",
+          "knowledgePoint": "법관이 헌법과 법률, 양심에 따라서만 재판하도록 한 사법권의 독립",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#009",
+            "answer": "사법권의 독립",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#010",
+          "subject": "국정감사",
+          "aspect": "국회가 행정부를 해마다 들여다본다",
+          "knowledgePoint": "국회가 정부의 업무 전반을 감사하는 제도와 그것이 우리 헌법의 특징인 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#010",
+            "answer": "국정감사",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#011",
+          "subject": "옴부즈맨",
+          "aspect": "시민의 민원을 대신 따져 준다",
+          "knowledgePoint": "행정기관의 잘못을 시민을 대신해 조사하는 제도와 스웨덴에서 온 이름",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#011",
+            "answer": "옴부즈맨",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/1#012",
+          "subject": "삼권 밖의 감사",
+          "aspect": "회계와 직무를 함께 감사한다",
+          "knowledgePoint": "국가의 세입·세출 결산과 공무원 직무를 감사하는 기관과 그 소속",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.899Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/politics-1#012",
+            "answer": "감사원",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "politics/2": {
       "subName": "선거·의회",

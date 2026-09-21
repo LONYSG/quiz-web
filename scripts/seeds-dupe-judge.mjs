@@ -110,6 +110,7 @@ for (let i = 0; i < pairs.length; i += JUDGE_CHUNK) chunks.push(pairs.slice(i, i
 console.log(`[묶음] ${pairs.length}쌍 → ${chunks.length}묶음 (묶음당 최대 ${JUDGE_CHUNK}쌍)`);
 
 const items = [];
+const skippedChunks = [];
 const usedModels = [];
 let usage = { promptTokens: 0, outputTokens: 0 };
 let result = null;
@@ -133,6 +134,7 @@ for (const [ci, chunk] of chunks.entries()) {
   }
   if (!got) {
     console.error(`  ★ 묶음 ${ci + 1} 을 판정하지 못했다. 이 묶음은 건너뛴다`);
+    skippedChunks.push({ chunk: ci + 1, pairIds: chunk.map((p) => p.pairId), error: String(lastErr?.name ?? 'unknown') });
     if (lastErr?.name === 'RateLimitError' || lastErr?.name === 'BudgetError') break;
     continue;
   }
@@ -159,6 +161,10 @@ closeSegment(state, false);
 await saveState(ROOT, state);
 
 const byId = new Map(pairs.map((p) => [p.pairId, p]));
+// ★★ R020 에서 드러난 것: 묶음 하나가 실패하면 그 쌍들이 **조용히 빠진 채** 판정이 끝났다.
+//   ★ 판정되지 않은 쌍을 파일과 화면에 반드시 남긴다. 안 남기면 중복이 그대로 통과한다.
+const judgedIds = new Set(items.map((j) => j.pairId));
+const unjudged = pairs.filter((p) => !judgedIds.has(p.pairId)).map((p) => ({ pairId: p.pairId, scope: p.scope, a: p.a?.ref, b: p.b?.ref }));
 const judged = items.map((j) => {
   const p = byId.get(j.pairId);
   return { ...j, scope: p?.scope ?? '?', a: p?.a, b: p?.b };
@@ -166,7 +172,7 @@ const judged = items.map((j) => {
 
 await writeFile(
   outFile,
-  `${JSON.stringify({ round: ROUND, model: result.model, usage: result.usage, judgedAt: new Date().toISOString(), counts: { pairs: pairs.length, inside: n, vsDb: m }, judged }, null, 2)}\n`,
+  `${JSON.stringify({ round: ROUND, model: result.model, usage: result.usage, judgedAt: new Date().toISOString(), counts: { pairs: pairs.length, inside: n, vsDb: m, judged: judged.length, unjudged: unjudged.length }, skippedChunks, unjudged, judged }, null, 2)}\n`,
   'utf8',
 );
 
@@ -181,3 +187,10 @@ const same = judged.filter((j) => j.verdict === 'same').length;
 const unsure = judged.filter((j) => j.verdict === 'unsure').length;
 console.log(`\n[요약] same ${same} / different ${judged.length - same - unsure} / unsure ${unsure}`);
 console.log(`  → ${path.relative(ROOT, outFile).split(path.sep).join('/')}`);
+if (unjudged.length) {
+  console.error(`
+★★ 판정되지 않은 쌍이 ${unjudged.length}개 있다. 묶음이 실패했다 — 그대로 두면 중복이 통과한다.`);
+  for (const u of unjudged) console.error(`   ${u.pairId} [${u.scope}] ${u.a} ↔ ${u.b}`);
+  console.error(`   ★ 다시 돌리거나 PIPELINE_JUDGE_CHUNK 를 줄여라.`);
+}
+

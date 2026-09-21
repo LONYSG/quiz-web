@@ -3,7 +3,7 @@
   "midName": "에너지·환경 기술",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-17T00:35:34.818Z",
+  "updatedAt": "2026-09-21T01:42:33.707Z",
   "subs": {
     "energy/1": {
       "subName": "발전 방식",
@@ -23,9 +23,263 @@
           "answer": "태양광 발전",
           "origin": "db:144",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "재생에너지",
+          "origin": "r020:energy/2#001",
+          "note": null
+        },
+        {
+          "answer": "풍력 발전",
+          "origin": "r020:energy/2#002",
+          "note": null
+        },
+        {
+          "answer": "수력 발전",
+          "origin": "r020:energy/2#003",
+          "note": null
+        },
+        {
+          "answer": "조력 발전",
+          "origin": "r020:energy/2#004",
+          "note": null
+        },
+        {
+          "answer": "지열 발전",
+          "origin": "r020:energy/2#005",
+          "note": null
+        },
+        {
+          "answer": "간헐성",
+          "origin": "r020:energy/2#006",
+          "note": null
+        },
+        {
+          "answer": "에너지 저장장치",
+          "origin": "r020:energy/2#007",
+          "note": null
+        },
+        {
+          "answer": "광전효과",
+          "origin": "r020:energy/2#008",
+          "note": null
+        },
+        {
+          "answer": "탄소중립",
+          "origin": "r020:energy/2#009",
+          "note": null
+        },
+        {
+          "answer": "발전 단가",
+          "origin": "r020:energy/2#010",
+          "note": null
+        },
+        {
+          "answer": "광물",
+          "origin": "r020:energy/2#011",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "energy/2#001",
+          "subject": "재생에너지의 정의",
+          "aspect": "다시 채워지는 원천을 쓴다",
+          "knowledgePoint": "자연에서 되풀이해 공급되는 원천을 쓰는 에너지와 화석연료·원자력과의 구분",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#001",
+            "answer": "재생에너지",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/2#002",
+          "subject": "풍력 발전",
+          "aspect": "날개가 셋인 것이 많다",
+          "knowledgePoint": "바람으로 날개를 돌려 전기를 만드는 방식과 날개를 세 개로 하는 것이 효율과 안정의 절충인 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#002",
+            "answer": "풍력 발전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/2#003",
+          "subject": "수력 발전",
+          "aspect": "물의 위치에너지를 쓴다",
+          "knowledgePoint": "높은 곳의 물이 떨어지며 터빈을 돌려 전기를 만드는 방식",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#003",
+            "answer": "수력 발전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/2#004",
+          "subject": "조력 발전",
+          "aspect": "밀물과 썰물의 높이 차를 쓴다",
+          "knowledgePoint": "조수 간만의 차가 큰 곳에 둑을 쌓아 물의 흐름으로 발전하는 방식",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#004",
+            "answer": "조력 발전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/2#005",
+          "subject": "지열 발전",
+          "aspect": "땅속의 열을 그대로 쓴다",
+          "knowledgePoint": "화산 지대에서 지하의 증기나 열수를 끌어올려 터빈을 돌리는 방식과 아이슬란드의 사례",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#005",
+            "answer": "지열 발전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/2#006",
+          "subject": "간헐성",
+          "aspect": "해가 지면 못 만든다",
+          "knowledgePoint": "태양광·풍력이 날씨와 시간에 따라 출력이 들쭉날쭉한 성질과 그것이 가장 큰 과제인 이유",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#006",
+            "answer": "간헐성",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/2#007",
+          "subject": "에너지 저장장치",
+          "aspect": "남을 때 담아 두었다가 모자랄 때 쓴다",
+          "knowledgePoint": "간헐성을 메우기 위해 전기를 저장했다가 내보내는 설비",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#007",
+            "answer": "에너지 저장장치",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/2#008",
+          "subject": "태양전지의 원리",
+          "aspect": "빛이 전자를 튕겨 낸다",
+          "knowledgePoint": "반도체에 빛이 닿으면 전자가 움직여 전류가 생기는 현상과 그것을 설명해 노벨상을 받은 사람",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#008",
+            "answer": "광전효과",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/2#009",
+          "subject": "탄소중립",
+          "aspect": "배출량과 흡수량을 맞춘다",
+          "knowledgePoint": "배출을 0으로 만드는 것이 아니라 배출한 만큼 흡수·제거해 순배출을 0으로 만든다는 개념",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#009",
+            "answer": "탄소중립",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/2#010",
+          "subject": "발전 단가",
+          "aspect": "설치비와 수명까지 나눠 계산한다",
+          "knowledgePoint": "짓는 비용과 운영비를 평생 생산량으로 나눠 견주는 방식과 그래야 공정한 비교가 되는 이유",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#010",
+            "answer": "발전 단가",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/2#011",
+          "subject": "재생에너지와 소재",
+          "aspect": "만드는 데도 자원이 든다",
+          "knowledgePoint": "태양광 패널과 배터리에 들어가는 광물의 채굴·폐기 문제가 함께 따라온다는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.474Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/energy-2#011",
+            "answer": "광물",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "energy/3": {
       "subName": "자원·연료",

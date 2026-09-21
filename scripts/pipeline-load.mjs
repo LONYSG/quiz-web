@@ -45,6 +45,7 @@ import { DATA_DIRS } from '../pipeline/dist/config.js';
 import { findMid, findMajor } from '../pipeline/dist/categories.js';
 import { resolveSubId } from '../pipeline/lib/subid.mjs';
 import { generatedDir } from '../pipeline/lib/seedstore.mjs';
+import { checkAnswerSet } from '../pipeline/lib/answer-rules.mjs';
 
 /**
  * ★ 소분류 이름 → categories 테이블의 리프 key.
@@ -69,6 +70,14 @@ try {
 const args = process.argv.slice(2);
 const DRY = args.includes('--dry-run');
 const AS_PENDING = args.includes('--pending');
+/**
+ * ★★ R020: 정답 표기 게이트. 기본으로 켠다.
+ *   ★ 근거 — 규칙은 프롬프트에만 있었고 적재는 그것을 한 번도 확인하지 않았다.
+ *     그래서 `gemini-gen` 253건 중 220건(87%)에 금지된 외국어·한자 변형이 들어왔고,
+ *     그 가운데 넷이 **질문에 정답을 노출**시켰다 (R019 감사).
+ *   ★ --no-gate 로 끌 수 있다. 다만 끄면 무엇을 지나치는지 반드시 눈으로 보라.
+ */
+const NO_GATE = args.includes('--no-gate');
 const roundIdx = args.indexOf('--round');
 const ROUNDS = roundIdx >= 0 ? args[roundIdx + 1].split(',').map((r) => r.trim()) : [];
 /** ★ 소재 기반 파이프라인의 source_id. 0005 마이그레이션이 이 행을 넣는다 */
@@ -322,6 +331,8 @@ try {
   let inserted = 0;
   let answerRows = 0;
   const skipped = [];
+  const gatedVariants = [];
+  const gateWarnings = [];
 
   for (const item of todo) {
     const g = item.generated;
@@ -343,8 +354,32 @@ try {
       // OpenTDB 가공 문제: 기존 플랫 카테고리를 쓴다
       categoryId = catByKey.get(CATEGORY_MAP[g.category] ?? '') ?? fallbackId;
     }
+    // ★★ R020 정답 표기 게이트 — 프롬프트의 규칙을 적재에서도 확인한다
+    let variants = g.answers ?? [];
+    if (!NO_GATE) {
+      const gate = checkAnswerSet(g.questionText, g.displayAnswer, variants);
+      if (gate.blocked.length) {
+        // ★★ 질문에 정답이 낱말로 들어 있다. 채팅으로 답하는 게임이라 질문을 베끼면 이긴다.
+        //   ★ 이것은 변형을 빼서 고칠 수 없다. 문제 자체를 다시 써야 한다
+        skipped.push({
+          ref: item.sourceRef,
+          reason: `★ 질문에 정답이 노출됐다 — "${gate.blocked.map((b) => b.answer).join(', ')}"`,
+        });
+        continue;
+      }
+      if (gate.dropped.length) {
+        // ★ 문제는 멀쩡하다. 금지된 변형만 떨어뜨리고 적재한다
+        const drop = new Set(gate.dropped.map((d) => d.answer));
+        variants = variants.filter((v) => !drop.has(v));
+        gatedVariants.push(
+          ...gate.dropped.map((d) => ({ ref: item.sourceRef, answer: d.answer, kind: d.kind })),
+        );
+      }
+      for (const w of gate.warned) gateWarnings.push({ ref: item.sourceRef, answer: w.answer });
+    }
+
     // ★ 정규화해서 같아지는 표기를 합친다. DB의 answer_norm UNIQUE 를 만족시켜야 한다.
-    const answers = dedupeAnswers([g.displayAnswer, ...g.answers]);
+    const answers = dedupeAnswers([g.displayAnswer, ...variants]);
     if (answers.length === 0) {
       skipped.push({ ref: item.sourceRef, reason: 'no_answers' });
       continue;
@@ -424,6 +459,17 @@ try {
   console.log(`[load] 적재 완료: 문제 ${inserted}건 / 정답 표기 ${answerRows}행`);
   console.log(`[load] status=${status} / is_active=${isActive}`);
   console.log(`[load] normalizeAnswer 버전 ${NORMALIZE_VERSION}`);
+  if (gatedVariants.length) {
+    const byKind = {};
+    for (const gv of gatedVariants) byKind[gv.kind] = (byKind[gv.kind] ?? 0) + 1;
+    console.log(`[게이트] ★ 금지된 표기 변형 ${gatedVariants.length}개를 빼고 적재했다 ${JSON.stringify(byKind)}`);
+    for (const gv of gatedVariants.slice(0, 20)) console.log(`  ${gv.ref}: ${gv.answer} (${gv.kind})`);
+    if (gatedVariants.length > 20) console.log(`  … 외 ${gatedVariants.length - 20}개`);
+  }
+  if (gateWarnings.length) {
+    console.log(`[게이트] 질문에 정답이 문자열로만 들어간 것 ${gateWarnings.length}건 (낱말 경계가 아니라 통과시켰다)`);
+    for (const w of gateWarnings.slice(0, 10)) console.log(`  ${w.ref}: ${w.answer}`);
+  }
   if (skipped.length) {
     console.log(`[load] ★ 건너뛴 것 ${skipped.length}건`);
     for (const s of skipped) console.log(`  ${s.ref}: ${s.reason}`);

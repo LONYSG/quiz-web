@@ -1,0 +1,298 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "energy/2",
+    "categoryPath": "기술·의학 > 에너지·환경 기술 > 재생 에너지",
+    "midKey": "energy",
+    "subName": "재생 에너지",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:13:57.474Z",
+    "seedResult": {
+      "ok": false,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보가 '어느 나라의 발전 비중' 같은 수치인데, 해마다 바뀌어 시간 의존 문제가 된다.",
+      "listedCandidates": 24,
+      "remainingUsable": 8,
+      "remainingUsableNote": "양수발전·해상풍력·태양열과 태양광의 차이·바이오매스·수소경제·RE100·계통 연계·에너지 저장장치가 남았다.",
+      "estimatedCeiling": "실질 상한 19건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "태양광 발전",
+          "aspect": "빛을 전기로 바꾼다",
+          "reason": "DB 에 이미 답이 태양광 발전인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:42:33.706Z"
+  },
+  "items": [
+    {
+      "seedId": "energy/2#001",
+      "seed": {
+        "subject": "재생에너지의 정의",
+        "aspect": "다시 채워지는 원천을 쓴다",
+        "knowledgePoint": "자연에서 되풀이해 공급되는 원천을 쓰는 에너지와 화석연료·원자력과의 구분"
+      },
+      "question": {
+        "ok": true,
+        "question": "햇빛·바람·물처럼 자연에서 되풀이해 공급되어 고갈되지 않는 원천을 쓰는 에너지를 무엇이라 합니까?",
+        "answer": "재생에너지",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "원자력은 탄소를 거의 내지 않지만 연료가 한정돼 있어 여기에 넣지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/2#002",
+      "seed": {
+        "subject": "풍력 발전",
+        "aspect": "날개가 셋인 것이 많다",
+        "knowledgePoint": "바람으로 날개를 돌려 전기를 만드는 방식과 날개를 세 개로 하는 것이 효율과 안정의 절충인 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "바람으로 날개를 돌려 전기를 만드는 발전 방식으로, 효율과 안정 사이의 절충으로 날개를 셋으로 두는 것이 흔한 것은?",
+        "answer": "풍력 발전",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "날개가 적으면 흔들리고 많으면 서로 바람을 가려 효율이 떨어집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/2#003",
+      "seed": {
+        "subject": "수력 발전",
+        "aspect": "물의 위치에너지를 쓴다",
+        "knowledgePoint": "높은 곳의 물이 떨어지며 터빈을 돌려 전기를 만드는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "높은 곳에 가둔 물이 떨어지며 터빈을 돌리게 하는, 물의 위치에너지를 쓰는 발전 방식은?",
+        "answer": "수력 발전",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "출력을 빠르게 조절할 수 있어 전력 수요가 갑자기 늘 때 쓰기 좋습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/2#004",
+      "seed": {
+        "subject": "조력 발전",
+        "aspect": "밀물과 썰물의 높이 차를 쓴다",
+        "knowledgePoint": "조수 간만의 차가 큰 곳에 둑을 쌓아 물의 흐름으로 발전하는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "밀물과 썰물의 높이 차이가 큰 곳에 둑을 쌓고 드나드는 물로 터빈을 돌리는 발전 방식은?",
+        "answer": "조력 발전",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "우리나라 서해안은 조수 간만의 차가 커 이 방식에 유리한 조건입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/2#005",
+      "seed": {
+        "subject": "지열 발전",
+        "aspect": "땅속의 열을 그대로 쓴다",
+        "knowledgePoint": "화산 지대에서 지하의 증기나 열수를 끌어올려 터빈을 돌리는 방식과 아이슬란드의 사례"
+      },
+      "question": {
+        "ok": true,
+        "question": "땅속의 뜨거운 증기나 열수를 끌어올려 터빈을 돌리는 발전 방식으로, 아이슬란드가 이것으로 전력과 난방을 크게 해결하는 것은?",
+        "answer": "지열 발전",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "날씨와 관계없이 꾸준히 만들 수 있지만 지질 조건이 맞는 곳이 한정돼 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/2#006",
+      "seed": {
+        "subject": "간헐성",
+        "aspect": "해가 지면 못 만든다",
+        "knowledgePoint": "태양광·풍력이 날씨와 시간에 따라 출력이 들쭉날쭉한 성질과 그것이 가장 큰 과제인 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "태양광과 풍력이 날씨와 시간에 따라 출력이 들쭉날쭉해, 필요할 때 원하는 만큼 만들 수 없는 성질을 무엇이라 합니까?",
+        "answer": "간헐성",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "재생에너지 확대에서 가장 큰 기술적 과제로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/2#007",
+      "seed": {
+        "subject": "에너지 저장장치",
+        "aspect": "남을 때 담아 두었다가 모자랄 때 쓴다",
+        "knowledgePoint": "간헐성을 메우기 위해 전기를 저장했다가 내보내는 설비"
+      },
+      "question": {
+        "ok": true,
+        "question": "전기가 남을 때 담아 두었다가 모자랄 때 내보내 재생에너지의 들쭉날쭉함을 메우는 설비를 무엇이라 합니까?",
+        "answer": "에너지 저장장치",
+        "acceptedAnswers": [
+          "ESS"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "전기는 그대로 쌓아 둘 수 없어 화학·위치 에너지 등 다른 형태로 바꾸어 저장합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/2#008",
+      "seed": {
+        "subject": "태양전지의 원리",
+        "aspect": "빛이 전자를 튕겨 낸다",
+        "knowledgePoint": "반도체에 빛이 닿으면 전자가 움직여 전류가 생기는 현상과 그것을 설명해 노벨상을 받은 사람"
+      },
+      "question": {
+        "ok": true,
+        "question": "빛이 금속이나 반도체에 닿으면 전자가 튀어나오거나 움직여 전류가 생기는 현상으로, 태양전지의 바탕이 되는 것은?",
+        "answer": "광전효과",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "아인슈타인이 이것을 설명해 노벨물리학상을 받았습니다. 상대성이론이 아니었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/2#009",
+      "seed": {
+        "subject": "탄소중립",
+        "aspect": "배출량과 흡수량을 맞춘다",
+        "knowledgePoint": "배출을 0으로 만드는 것이 아니라 배출한 만큼 흡수·제거해 순배출을 0으로 만든다는 개념"
+      },
+      "question": {
+        "ok": true,
+        "question": "배출을 완전히 0으로 만드는 것이 아니라, 배출한 만큼 흡수하거나 제거해 순배출을 0으로 맞추는 것을 무엇이라 합니까?",
+        "answer": "탄소중립",
+        "acceptedAnswers": [
+          "넷제로"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "숲을 늘리거나 포집 기술을 쓰는 것이 흡수 쪽에 해당합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/2#010",
+      "seed": {
+        "subject": "발전 단가",
+        "aspect": "설치비와 수명까지 나눠 계산한다",
+        "knowledgePoint": "짓는 비용과 운영비를 평생 생산량으로 나눠 견주는 방식과 그래야 공정한 비교가 되는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "발전소의 건설비와 운영비를 그 수명 동안 만들어 낼 전기량으로 나누어, 서로 다른 발전 방식을 공정하게 견주는 값을 무엇이라 합니까?",
+        "answer": "발전 단가",
+        "acceptedAnswers": [
+          "균등화 발전원가"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "초기 투자비가 큰 방식과 연료비가 큰 방식을 같은 잣대로 비교하기 위한 것입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/2#011",
+      "seed": {
+        "subject": "재생에너지와 소재",
+        "aspect": "만드는 데도 자원이 든다",
+        "knowledgePoint": "태양광 패널과 배터리에 들어가는 광물의 채굴·폐기 문제가 함께 따라온다는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "태양광 패널과 배터리를 만들려면 리튬·코발트 같은 것을 캐내야 해서, 채굴과 폐기의 환경 부담이 따라옵니다. 이런 물질을 통틀어 무엇이라 합니까?",
+        "answer": "광물",
+        "acceptedAnswers": [
+          "핵심광물"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "쓰는 동안 깨끗하다고 해서 만드는 과정까지 깨끗한 것은 아니라는 점이 지적됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "midName": "격투기·육상·수영",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-17T05:55:30.918Z",
+  "updatedAt": "2026-09-21T01:50:47.984Z",
   "subs": {
     "combat-athletics/1": {
       "subName": "격투기·복싱",
@@ -77,7 +77,7 @@
         {
           "answer": "인사",
           "origin": "r019:combat-athletics/2#011",
-          "note": null
+          "note": "r018 격리: 알 가치 2 — 적재 대상에서 제외 (R020 건우 확정 C18: 알 가치 3 미만은 적재하지 않는다). ★ 소재는 usedSeeds 에 남는다. 2회차에서 이 소분류를 다시 볼 때 참고 자료다"
         },
         {
           "answer": "계체",
@@ -276,12 +276,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-17T05:36:41.832Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r019/combat-athletics-2#011",
             "answer": "인사",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "알 가치 2 — 적재 대상에서 제외 (R020 건우 확정 C18: 알 가치 3 미만은 적재하지 않는다). ★ 소재는 usedSeeds 에 남는다. 2회차에서 이 소분류를 다시 볼 때 참고 자료다",
+              "decidedBy": "건우 확정 (R020 작업 A)",
+              "duplicateOf": null,
+              "at": "2026-09-21T00:50:45.125Z"
+            }
           }
         },
         {
@@ -311,9 +318,286 @@
           "answer": "이어달리기",
           "origin": "db:252",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "런던",
+          "origin": "r020:combat-athletics/3#001",
+          "note": null
+        },
+        {
+          "answer": "마라톤",
+          "origin": "r020:combat-athletics/3#002",
+          "note": null
+        },
+        {
+          "answer": "부정 출발",
+          "origin": "r020:combat-athletics/3#003",
+          "note": null
+        },
+        {
+          "answer": "스타팅 블록",
+          "origin": "r020:combat-athletics/3#004",
+          "note": null
+        },
+        {
+          "answer": "거리",
+          "origin": "r020:combat-athletics/3#005",
+          "note": null
+        },
+        {
+          "answer": "배면뛰기",
+          "origin": "r020:combat-athletics/3#006",
+          "note": null
+        },
+        {
+          "answer": "장대높이뛰기",
+          "origin": "r020:combat-athletics/3#007",
+          "note": null
+        },
+        {
+          "answer": "뒤로 넘어지는 것",
+          "origin": "r020:combat-athletics/3#008",
+          "note": null
+        },
+        {
+          "answer": "테이크오버 존",
+          "origin": "r020:combat-athletics/3#009",
+          "note": null
+        },
+        {
+          "answer": "10",
+          "origin": "r020:combat-athletics/3#010",
+          "note": null
+        },
+        {
+          "answer": "풍속",
+          "origin": "r020:combat-athletics/3#011",
+          "note": null
+        },
+        {
+          "answer": "필드",
+          "origin": "r020:combat-athletics/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "combat-athletics/3#001",
+          "subject": "마라톤의 거리",
+          "aspect": "42.195킬로미터",
+          "knowledgePoint": "어중간한 거리가 1908년 런던 대회에서 왕실의 요청으로 정해졌다는 내력",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#001",
+            "answer": "런던",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#002",
+          "subject": "마라톤의 유래",
+          "aspect": "승전보를 전하고 숨졌다는 전설",
+          "knowledgePoint": "그리스의 전령이 달려가 소식을 전하고 쓰러졌다는 이야기와 그 지명",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#002",
+            "answer": "마라톤",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#003",
+          "subject": "부정 출발",
+          "aspect": "총성 뒤 0.1초 안에 움직이면 실격",
+          "knowledgePoint": "사람이 소리를 듣고 반응하는 데 걸리는 최소 시간을 근거로 삼은 규정",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#003",
+            "answer": "부정 출발",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#004",
+          "subject": "스타팅 블록",
+          "aspect": "발을 밀어 낼 받침",
+          "knowledgePoint": "단거리 출발에서 발을 디디는 장치와 그것이 압력 센서로 부정 출발을 재는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#004",
+            "answer": "스타팅 블록",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#005",
+          "subject": "트랙의 레인",
+          "aspect": "바깥 레인은 앞에서 출발한다",
+          "knowledgePoint": "곡선 주로에서 바깥쪽이 더 길어 출발선을 어긋나게 두는 까닭",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#005",
+            "answer": "거리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#006",
+          "subject": "높이뛰기의 배면뛰기",
+          "aspect": "등을 바 쪽으로 돌려 넘는다",
+          "knowledgePoint": "포스베리가 선보인 뒤 표준이 된 기술과 그 이전의 가위뛰기",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#006",
+            "answer": "배면뛰기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#007",
+          "subject": "장대높이뛰기",
+          "aspect": "장대가 휘었다가 펴지며 밀어 올린다",
+          "knowledgePoint": "장대의 탄성을 이용해 몸을 밀어 올리는 원리와 재질이 바뀌며 기록이 뛴 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#007",
+            "answer": "장대높이뛰기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#008",
+          "subject": "멀리뛰기",
+          "aspect": "모래에 남은 가장 가까운 자국을 잰다",
+          "knowledgePoint": "몸의 어느 부분이든 모래에 닿은 자리 가운데 구름판에 가장 가까운 지점을 재는 규정",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#008",
+            "answer": "뒤로 넘어지는 것",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#009",
+          "subject": "계주의 배턴 구역",
+          "aspect": "정해진 구간 안에서 넘겨야 한다",
+          "knowledgePoint": "배턴을 주고받을 수 있는 구간이 정해져 있고 벗어나면 실격되는 규정",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#009",
+            "answer": "테이크오버 존",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#010",
+          "subject": "10초의 벽",
+          "aspect": "100미터의 상징적인 경계",
+          "knowledgePoint": "100미터에서 10초를 끊는 것이 오랫동안 상징적인 기준이 된 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#010",
+            "answer": "10",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#011",
+          "subject": "바람의 영향",
+          "aspect": "뒷바람이 세면 기록이 인정되지 않는다",
+          "knowledgePoint": "초속 2미터를 넘는 뒷바람에서 세운 기록은 공인하지 않는 규정",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#011",
+            "answer": "풍속",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/3#012",
+          "subject": "육상의 두 갈래",
+          "aspect": "트랙과 필드",
+          "knowledgePoint": "달리기 종목과 뛰고 던지는 종목으로 나누는 구분과 그 영어 이름",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.333Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/combat-athletics-3#012",
+            "answer": "필드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "combat-athletics/4": {
       "subName": "수영·수상 종목",

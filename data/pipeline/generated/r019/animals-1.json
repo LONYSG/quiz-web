@@ -145,12 +145,18 @@
           "uniqueAnswer": true,
           "questionSelfConsistent": true
         },
-        "discarded": {
-          "round": "r018",
-          "reason": "중복 판정 same (확신 0.95) — db:36 과 같은 기린 지식",
-          "decidedBy": "gemini 중복 판정 (D-043)",
-          "duplicateOf": "db:36",
-          "at": "2026-09-18T01:13:49.796Z"
+        "restored": {
+          "round": "r019",
+          "reason": "직접 읽고 동의했다 — 기존 db:36 '목이 가장 긴 동물은?' 은 맞혀도 알게 되는 것이 없다. 신규는 '목뼈가 사람과 같이 일곱 개' 라는 지식을 준다",
+          "decidedBy": "R020 작업 B-3 (건우 확정 C20)",
+          "at": "2026-09-21T00:58:25.909Z",
+          "wasDiscarded": {
+            "round": "r018",
+            "reason": "중복 판정 same (확신 0.95) — db:36 과 같은 기린 지식",
+            "decidedBy": "gemini 중복 판정 (D-043)",
+            "duplicateOf": "db:36",
+            "at": "2026-09-18T01:13:49.796Z"
+          }
         }
       }
     },

@@ -3,7 +3,7 @@
   "midName": "농구·배구·기타 구기",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-17T05:55:30.915Z",
+  "updatedAt": "2026-09-21T05:41:19.148Z",
   "subs": {
     "ball-sports/1": {
       "subName": "농구",
@@ -12,9 +12,293 @@
           "answer": "5",
           "origin": "db:121",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "농구",
+          "origin": "r020:ball-sports/1#001",
+          "note": null
+        },
+        {
+          "answer": "트래블링",
+          "origin": "r020:ball-sports/1#002",
+          "note": null
+        },
+        {
+          "answer": "3점슛",
+          "origin": "r020:ball-sports/1#003",
+          "note": null
+        },
+        {
+          "answer": "자유투",
+          "origin": "r020:ball-sports/1#004",
+          "note": null
+        },
+        {
+          "answer": "24초 룰",
+          "origin": "r020:ball-sports/1#005",
+          "note": null
+        },
+        {
+          "answer": "더블 드리블",
+          "origin": "r020:ball-sports/1#006",
+          "note": null
+        },
+        {
+          "answer": "파울 아웃",
+          "origin": "r020:ball-sports/1#007",
+          "note": null
+        },
+        {
+          "answer": "덩크",
+          "origin": "r020:ball-sports/1#008",
+          "note": null
+        },
+        {
+          "answer": "백보드",
+          "origin": "r020:ball-sports/1#009",
+          "note": null
+        },
+        {
+          "answer": "센터",
+          "origin": "r020:ball-sports/1#010",
+          "note": null
+        },
+        {
+          "answer": "드림팀",
+          "origin": "r020:ball-sports/1#011",
+          "note": "r018 격리: 중복 — 판정 same, 기존 쪽이 낫다고 봤다 (olympic/1#005 / db:480)"
+        },
+        {
+          "answer": "6",
+          "origin": "r020:ball-sports/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "ball-sports/1#001",
+          "subject": "농구의 발명",
+          "aspect": "겨울에 실내에서 할 운동이 필요했다",
+          "knowledgePoint": "네이스미스가 복숭아 바구니를 걸어 만든 경기와 그 배경",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#001",
+            "answer": "농구",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "ball-sports/1#002",
+          "subject": "드리블",
+          "aspect": "공을 들고 뛰면 안 된다",
+          "knowledgePoint": "공을 튀기지 않고 들고 걸음을 옮기면 반칙이 되는 규칙과 그 이름",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#002",
+            "answer": "트래블링",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "ball-sports/1#003",
+          "subject": "3점슛",
+          "aspect": "나중에 생긴 규칙이다",
+          "knowledgePoint": "일정 거리 밖에서 넣으면 3점을 주는 규칙이 도입된 시기와 그것이 경기 양상을 바꾼 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#003",
+            "answer": "3점슛",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "ball-sports/1#004",
+          "subject": "자유투",
+          "aspect": "아무도 막지 않는데도 놓친다",
+          "knowledgePoint": "반칙을 당했을 때 방해 없이 던지는 슛과 그 거리",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#004",
+            "answer": "자유투",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "ball-sports/1#005",
+          "subject": "24초 룰",
+          "aspect": "공격 시간을 제한한다",
+          "knowledgePoint": "공을 잡은 뒤 정해진 시간 안에 슛을 해야 하는 규정과 그것이 도입되기 전의 지루한 경기",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#005",
+            "answer": "24초 룰",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "ball-sports/1#006",
+          "subject": "더블 드리블",
+          "aspect": "멈췄다가 다시 튀기면 안 된다",
+          "knowledgePoint": "드리블을 멈춘 뒤 다시 시작하거나 두 손으로 잡았다 튀기면 선언되는 반칙",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#006",
+            "answer": "더블 드리블",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "ball-sports/1#007",
+          "subject": "파울 아웃",
+          "aspect": "정해진 횟수를 넘기면 나가야 한다",
+          "knowledgePoint": "개인 반칙이 일정 수에 이르면 더는 뛸 수 없게 하는 규정",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#007",
+            "answer": "파울 아웃",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "ball-sports/1#008",
+          "subject": "덩크",
+          "aspect": "한때 금지된 적이 있다",
+          "knowledgePoint": "림 위에서 공을 내리꽂는 슛과 대학 농구에서 한동안 금지됐던 내력",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#008",
+            "answer": "덩크",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "ball-sports/1#009",
+          "subject": "백보드",
+          "aspect": "관중을 막으려고 세웠다",
+          "knowledgePoint": "관중이 공을 건드리는 것을 막으려 세운 판이 지금은 슛의 도구가 된 내력",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#009",
+            "answer": "백보드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "ball-sports/1#010",
+          "subject": "포지션",
+          "aspect": "번호로 부르기도 한다",
+          "knowledgePoint": "가드·포워드·센터의 역할 구분과 1번부터 5번까지의 번호로 부르는 관행",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#010",
+            "answer": "센터",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "ball-sports/1#011",
+          "subject": "올림픽 드림팀",
+          "aspect": "프로 선수가 처음 나왔다",
+          "knowledgePoint": "1992년 바르셀로나에서 프로 선수의 출전이 허용되며 꾸려진 미국 대표팀",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/ball-sports-1#011",
+            "answer": "드림팀",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (olympic/1#005 / db:480)",
+              "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+              "duplicateOf": "db:480",
+              "at": "2026-09-21T05:41:19.141Z"
+            }
+          }
+        },
+        {
+          "seedId": "ball-sports/1#012",
+          "subject": "농구공의 크기",
+          "aspect": "남자와 여자가 다르다",
+          "knowledgePoint": "성별에 따라 공의 크기와 무게를 다르게 쓰는 규정",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.330Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/ball-sports-1#012",
+            "answer": "6",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "ball-sports/2": {
       "subName": "배구",

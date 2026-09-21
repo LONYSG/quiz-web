@@ -3,7 +3,7 @@
   "midName": "항공·우주 기술",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-18T01:02:49.331Z",
+  "updatedAt": "2026-09-21T05:41:19.530Z",
   "subs": {
     "aerospace/1": {
       "subName": "항공기",
@@ -12,9 +12,293 @@
           "answer": "콩코드",
           "origin": "db:131",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "양력",
+          "origin": "r020:aerospace/1#001",
+          "note": null
+        },
+        {
+          "answer": "라이트 형제",
+          "origin": "r020:aerospace/1#002",
+          "note": null
+        },
+        {
+          "answer": "블랙박스",
+          "origin": "r020:aerospace/1#003",
+          "note": null
+        },
+        {
+          "answer": "기체 구조의 부담",
+          "origin": "r020:aerospace/1#004",
+          "note": null
+        },
+        {
+          "answer": "난기류",
+          "origin": "r020:aerospace/1#005",
+          "note": null
+        },
+        {
+          "answer": "소닉붐",
+          "origin": "r020:aerospace/1#006",
+          "note": null
+        },
+        {
+          "answer": "제트기류",
+          "origin": "r020:aerospace/1#007",
+          "note": null
+        },
+        {
+          "answer": "IATA",
+          "origin": "r020:aerospace/1#008",
+          "note": "r018 격리: 중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:132)"
+        },
+        {
+          "answer": "관제탑",
+          "origin": "r020:aerospace/1#009",
+          "note": null
+        },
+        {
+          "answer": "비상구 좌석",
+          "origin": "r020:aerospace/1#010",
+          "note": null
+        },
+        {
+          "answer": "이코노미클래스 증후군",
+          "origin": "r020:aerospace/1#011",
+          "note": null
+        },
+        {
+          "answer": "회항",
+          "origin": "r020:aerospace/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "aerospace/1#001",
+          "subject": "양력",
+          "aspect": "날개 위아래의 압력 차이로 뜬다",
+          "knowledgePoint": "날개를 지나는 공기의 속도 차이가 압력 차이를 만들어 위로 떠받치는 힘이 생기는 원리",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#001",
+            "answer": "양력",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/1#002",
+          "subject": "라이트 형제",
+          "aspect": "12초 동안 36미터를 날았다",
+          "knowledgePoint": "동력 비행에 처음 성공한 형제와 그들이 자전거 가게를 하던 내력",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#002",
+            "answer": "라이트 형제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/1#003",
+          "subject": "블랙박스",
+          "aspect": "이름과 달리 주황색이다",
+          "knowledgePoint": "사고 뒤 찾기 쉽도록 눈에 띄는 색으로 칠하는 비행 기록 장치와 그 두 가지 구성",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#003",
+            "answer": "블랙박스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/1#004",
+          "subject": "기내 기압",
+          "aspect": "지상보다 낮게 유지한다",
+          "knowledgePoint": "기체 구조의 부담을 줄이려 해발 2000미터 안팎의 기압으로 맞추는 점과 그 때문에 생기는 증상",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#004",
+            "answer": "기체 구조의 부담",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/1#005",
+          "subject": "난기류",
+          "aspect": "맑은 하늘에서도 생긴다",
+          "knowledgePoint": "구름 없이도 공기의 흐름이 엇갈려 생기는 흔들림과 안전띠를 매고 있으라는 안내의 근거",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#005",
+            "answer": "난기류",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/1#006",
+          "subject": "소닉붐",
+          "aspect": "소리의 벽을 넘을 때 생기는 충격파",
+          "knowledgePoint": "음속을 넘을 때 압력파가 겹쳐 생기는 폭음과 그것이 초음속 여객기의 걸림돌이 된 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#006",
+            "answer": "소닉붐",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/1#007",
+          "subject": "제트기류",
+          "aspect": "타고 가면 빨리 간다",
+          "knowledgePoint": "상층에서 서쪽에서 동쪽으로 부는 빠른 바람과 그것이 항로와 비행시간을 바꾸는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#007",
+            "answer": "제트기류",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/1#008",
+          "subject": "공항 코드",
+          "aspect": "세 글자와 네 글자가 따로 있다",
+          "knowledgePoint": "예약에 쓰는 세 글자 코드와 관제에 쓰는 네 글자 코드가 다른 체계인 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/aerospace-1#008",
+            "answer": "IATA",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:132)",
+              "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+              "duplicateOf": "db:132",
+              "at": "2026-09-21T05:41:19.522Z"
+            }
+          }
+        },
+        {
+          "seedId": "aerospace/1#009",
+          "subject": "관제탑",
+          "aspect": "이착륙 순서를 정한다",
+          "knowledgePoint": "공항 주변의 항공기 이동과 이착륙을 지시하는 시설과 그 지시가 강제력을 갖는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#009",
+            "answer": "관제탑",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/1#010",
+          "subject": "비상구 좌석",
+          "aspect": "아무나 앉을 수 없다",
+          "knowledgePoint": "비상시 문을 여는 것을 도와야 하므로 나이와 신체 조건을 따지는 좌석",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#010",
+            "answer": "비상구 좌석",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/1#011",
+          "subject": "이코노미클래스 증후군",
+          "aspect": "오래 앉아 있으면 피가 굳는다",
+          "knowledgePoint": "좁은 자리에 오래 앉아 다리의 정맥에 혈전이 생기는 문제와 그 예방",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#011",
+            "answer": "이코노미클래스 증후군",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/1#012",
+          "subject": "회항",
+          "aspect": "출발지로 되돌아가기도 한다",
+          "knowledgePoint": "기상·기체 결함·응급 환자 등으로 목적지에 가지 못하고 돌아가거나 다른 공항에 내리는 일",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.471Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/aerospace-1#012",
+            "answer": "회항",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "aerospace/2": {
       "subName": "항공사·공항",

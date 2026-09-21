@@ -3,7 +3,7 @@
   "midName": "인체·해부",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-18T00:55:37.295Z",
+  "updatedAt": "2026-09-21T01:35:18.726Z",
   "subs": {
     "human-body/1": {
       "subName": "뼈·근육",
@@ -23,9 +23,286 @@
           "answer": "헤모글로빈",
           "origin": "db:116",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "4",
+          "origin": "r020:human-body/2#001",
+          "note": null
+        },
+        {
+          "answer": "폐순환",
+          "origin": "r020:human-body/2#002",
+          "note": null
+        },
+        {
+          "answer": "동맥",
+          "origin": "r020:human-body/2#003",
+          "note": null
+        },
+        {
+          "answer": "간",
+          "origin": "r020:human-body/2#004",
+          "note": null
+        },
+        {
+          "answer": "콩팥",
+          "origin": "r020:human-body/2#005",
+          "note": null
+        },
+        {
+          "answer": "점액",
+          "origin": "r020:human-body/2#006",
+          "note": null
+        },
+        {
+          "answer": "소장",
+          "origin": "r020:human-body/2#007",
+          "note": null
+        },
+        {
+          "answer": "대장",
+          "origin": "r020:human-body/2#008",
+          "note": null
+        },
+        {
+          "answer": "횡격막",
+          "origin": "r020:human-body/2#009",
+          "note": null
+        },
+        {
+          "answer": "수축",
+          "origin": "r020:human-body/2#010",
+          "note": null
+        },
+        {
+          "answer": "혈소판",
+          "origin": "r020:human-body/2#011",
+          "note": null
+        },
+        {
+          "answer": "적혈구",
+          "origin": "r020:human-body/2#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "human-body/2#001",
+          "subject": "심장의 네 방",
+          "aspect": "두 심방과 두 심실",
+          "knowledgePoint": "심장이 네 개의 방으로 나뉘어 폐로 가는 피와 온몸으로 가는 피가 섞이지 않는 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#001",
+            "answer": "4",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#002",
+          "subject": "폐순환과 체순환",
+          "aspect": "피는 두 바퀴를 돈다",
+          "knowledgePoint": "심장에서 폐로 갔다 오는 경로와 온몸으로 갔다 오는 경로가 따로 있는 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#002",
+            "answer": "폐순환",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#003",
+          "subject": "동맥과 정맥",
+          "aspect": "심장에서 나가느냐 들어오느냐로 가른다",
+          "knowledgePoint": "피의 산소 농도가 아니라 흐르는 방향으로 이름을 가르기 때문에 폐동맥에 산소가 적은 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#003",
+            "answer": "동맥",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#004",
+          "subject": "간",
+          "aspect": "잘라 내도 다시 자란다",
+          "knowledgePoint": "해독과 영양 저장을 맡고 재생 능력이 커서 일부를 떼어 내도 회복되는 장기",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#004",
+            "answer": "간",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#005",
+          "subject": "콩팥",
+          "aspect": "하루에 온몸의 피를 수십 번 거른다",
+          "knowledgePoint": "피에서 노폐물을 걸러 오줌을 만들고 물과 염분의 균형을 맞추는 장기",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#005",
+            "answer": "콩팥",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#006",
+          "subject": "위산",
+          "aspect": "금속도 녹일 만큼 강하다",
+          "knowledgePoint": "위에서 나오는 강한 산과 그런데도 위 자체가 녹지 않는 까닭",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#006",
+            "answer": "점액",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#007",
+          "subject": "소장",
+          "aspect": "몸에서 가장 긴 소화기관",
+          "knowledgePoint": "영양분 흡수를 맡는 기관의 길이와 안쪽 주름·융털로 표면적을 크게 늘린 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#007",
+            "answer": "소장",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#008",
+          "subject": "대장",
+          "aspect": "주로 물을 빨아들인다",
+          "knowledgePoint": "소화보다 수분과 무기염류의 흡수를 맡고 장내 세균이 사는 기관",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#008",
+            "answer": "대장",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#009",
+          "subject": "횡격막",
+          "aspect": "이것이 내려가야 숨을 들이쉰다",
+          "knowledgePoint": "가슴과 배를 가르는 근육이 내려가며 가슴 안의 압력을 낮춰 공기가 들어오게 하는 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#009",
+            "answer": "횡격막",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#010",
+          "subject": "혈압의 두 수치",
+          "aspect": "심장이 짤 때와 늘어날 때",
+          "knowledgePoint": "수축기와 이완기의 압력을 두 수치로 나타내는 방식",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#010",
+            "answer": "수축",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#011",
+          "subject": "혈소판",
+          "aspect": "피를 멎게 한다",
+          "knowledgePoint": "상처가 났을 때 모여 붙어 굳게 만드는 혈액 성분",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#011",
+            "answer": "혈소판",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "human-body/2#012",
+          "subject": "적혈구의 수명",
+          "aspect": "넉 달쯤 살고 교체된다",
+          "knowledgePoint": "적혈구가 골수에서 만들어져 120일쯤 뒤 비장에서 걸러지는 순환",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.446Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/human-body-2#012",
+            "answer": "적혈구",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "human-body/3": {
       "subName": "감각기관",

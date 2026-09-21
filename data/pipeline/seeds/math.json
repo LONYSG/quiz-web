@@ -3,7 +3,7 @@
   "midName": "수학·수 상식",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-18T01:13:50.179Z",
+  "updatedAt": "2026-09-21T05:41:20.031Z",
   "subs": {
     "math/1": {
       "subName": "수와 연산",
@@ -23,9 +23,293 @@
           "answer": "피타고라스 정리",
           "origin": "db:173",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "원주율",
+          "origin": "r020:math/2#001",
+          "note": "r018 격리: 중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:294)"
+        },
+        {
+          "answer": "비유클리드 기하",
+          "origin": "r020:math/2#002",
+          "note": null
+        },
+        {
+          "answer": "원",
+          "origin": "r020:math/2#003",
+          "note": null
+        },
+        {
+          "answer": "뫼비우스의 띠",
+          "origin": "r020:math/2#004",
+          "note": null
+        },
+        {
+          "answer": "황금 직사각형",
+          "origin": "r020:math/2#005",
+          "note": null
+        },
+        {
+          "answer": "케플러의 추측",
+          "origin": "r020:math/2#006",
+          "note": null
+        },
+        {
+          "answer": "육각형",
+          "origin": "r020:math/2#007",
+          "note": null
+        },
+        {
+          "answer": "삼각형",
+          "origin": "r020:math/2#008",
+          "note": null
+        },
+        {
+          "answer": "아르키메데스",
+          "origin": "r020:math/2#009",
+          "note": null
+        },
+        {
+          "answer": "각의 삼등분",
+          "origin": "r020:math/2#010",
+          "note": null
+        },
+        {
+          "answer": "평행선 공준",
+          "origin": "r020:math/2#011",
+          "note": null
+        },
+        {
+          "answer": "적도",
+          "origin": "r020:math/2#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "math/2#001",
+          "subject": "원주율",
+          "aspect": "끝없이 이어지고 되풀이되지 않는다",
+          "knowledgePoint": "지름에 대한 둘레의 비가 무리수여서 소수점 아래가 끝나지도 반복되지도 않는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/math-2#001",
+            "answer": "원주율",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (db:294)",
+              "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+              "duplicateOf": "db:294",
+              "at": "2026-09-21T05:41:20.025Z"
+            }
+          }
+        },
+        {
+          "seedId": "math/2#002",
+          "subject": "삼각형의 내각의 합",
+          "aspect": "평면에서만 180도다",
+          "knowledgePoint": "구면처럼 휜 면에서는 내각의 합이 180도를 넘는다는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#002",
+            "answer": "비유클리드 기하",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/2#003",
+          "subject": "정삼각형과 정사각형의 넓이",
+          "aspect": "같은 길이의 끈으로 가장 넓은 도형",
+          "knowledgePoint": "둘레가 같을 때 원이 가장 넓은 넓이를 갖는다는 성질",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#003",
+            "answer": "원",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/2#004",
+          "subject": "뫼비우스의 띠",
+          "aspect": "면이 하나뿐이다",
+          "knowledgePoint": "띠를 한 번 꼬아 붙이면 안과 밖의 구분이 사라지는 도형",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#004",
+            "answer": "뫼비우스의 띠",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/2#005",
+          "subject": "황금비의 직사각형",
+          "aspect": "정사각형을 떼어 내도 같은 비가 남는다",
+          "knowledgePoint": "긴 변에서 짧은 변만큼 잘라 내도 남은 직사각형의 비가 그대로인 성질",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#005",
+            "answer": "황금 직사각형",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/2#006",
+          "subject": "케플러의 추측",
+          "aspect": "과일 가게가 쌓는 방식이 가장 빽빽하다",
+          "knowledgePoint": "같은 공을 쌓을 때 가장 조밀한 배열이 무엇인지에 대한 추측과 그 증명까지 걸린 시간",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#006",
+            "answer": "케플러의 추측",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/2#007",
+          "subject": "벌집의 육각형",
+          "aspect": "같은 재료로 가장 넓게 나눈다",
+          "knowledgePoint": "평면을 같은 넓이로 나눌 때 둘레의 합이 가장 작아지는 모양이 육각형이라는 성질",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#007",
+            "answer": "육각형",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/2#008",
+          "subject": "삼각형의 안정성",
+          "aspect": "네모는 찌그러지는데 세모는 안 그렇다",
+          "knowledgePoint": "변의 길이가 정해지면 삼각형의 모양이 하나로 정해져 구조물에 쓰이는 이유",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#008",
+            "answer": "삼각형",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/2#009",
+          "subject": "구의 부피",
+          "aspect": "원기둥에 꼭 들어맞는 구의 비",
+          "knowledgePoint": "아르키메데스가 밝힌 구와 그것을 감싸는 원기둥의 부피 비",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#009",
+            "answer": "아르키메데스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/2#010",
+          "subject": "각의 삼등분",
+          "aspect": "자와 컴퍼스만으로는 할 수 없다",
+          "knowledgePoint": "고대부터 내려온 작도 문제 가운데 불가능함이 증명된 것",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#010",
+            "answer": "각의 삼등분",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/2#011",
+          "subject": "평행선 공준",
+          "aspect": "이것을 버리면 다른 기하가 생긴다",
+          "knowledgePoint": "유클리드의 다섯째 공준을 부정하면서 나온 비유클리드 기하",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#011",
+            "answer": "평행선 공준",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "math/2#012",
+          "subject": "위도와 경도의 각도",
+          "aspect": "지구를 좌표로 나눈다",
+          "knowledgePoint": "적도와 본초자오선을 기준으로 위치를 각도로 나타내는 체계",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:13:57.459Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/math-2#012",
+            "answer": "적도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "math/3": {
       "subName": "확률·통계",

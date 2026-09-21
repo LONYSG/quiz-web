@@ -1,0 +1,323 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "computer/1",
+    "categoryPath": "기술·의학 > 컴퓨터·인터넷 > 하드웨어",
+    "midKey": "computer",
+    "subName": "하드웨어",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:13:57.465Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 26,
+      "remainingUsable": 10,
+      "remainingUsableNote": "메인보드·파워서플라이·쿨링·USB·HDMI·해상도·주사율·SSD와 HDD의 소음·입출력 장치·바이오스가 남았다.",
+      "estimatedCeiling": "실질 상한 22건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "SSD",
+          "aspect": "움직이는 부품이 없는 저장장치",
+          "reason": "DB 에 이미 답이 SSD인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 현재 점유율·최신 버전에 기대는 소재는 넣지 않았다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:38:45.841Z"
+  },
+  "items": [
+    {
+      "seedId": "computer/1#001",
+      "seed": {
+        "subject": "CPU",
+        "aspect": "계산과 명령 처리를 맡는다",
+        "knowledgePoint": "컴퓨터에서 연산과 제어를 담당하는 핵심 부품과 그것을 사람의 뇌에 빗대는 비유"
+      },
+      "question": {
+        "ok": true,
+        "question": "컴퓨터에서 연산과 제어를 맡아 사람의 뇌에 비유되는 핵심 부품을 세 글자 영문 약자로 무엇이라 합니까?",
+        "answer": "CPU",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 5,
+        "explanation": "'중앙처리장치' 라는 뜻입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#002",
+      "seed": {
+        "subject": "RAM",
+        "aspect": "전원을 끄면 사라진다",
+        "knowledgePoint": "작업 중인 자료를 임시로 담는 기억장치와 전원이 끊기면 내용이 지워지는 성질"
+      },
+      "question": {
+        "ok": true,
+        "question": "작업 중인 자료를 임시로 담아 두며 전원이 끊기면 내용이 지워지는 기억장치를, 세 글자 영문 약자로 무엇이라 합니까?",
+        "answer": "RAM",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "그래서 저장하지 않고 전원이 나가면 작업하던 내용이 사라집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#003",
+      "seed": {
+        "subject": "GPU",
+        "aspect": "같은 계산을 한꺼번에 많이 한다",
+        "knowledgePoint": "화면 처리를 위해 단순 연산을 병렬로 수행하도록 만들어진 부품과 그것이 인공지능 학습에 쓰이게 된 까닭"
+      },
+      "question": {
+        "ok": true,
+        "question": "본래 화면 처리를 위해 단순한 계산을 한꺼번에 많이 하도록 만들어졌다가, 인공지능 학습의 핵심 장비가 된 부품은?",
+        "answer": "GPU",
+        "acceptedAnswers": [
+          "그래픽카드"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "학습이 같은 계산을 엄청나게 되풀이하는 일이라 병렬 처리에 딱 맞았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#004",
+      "seed": {
+        "subject": "비트와 바이트",
+        "aspect": "여덟 개가 모여 하나가 된다",
+        "knowledgePoint": "정보의 최소 단위와 그것 여덟 개를 묶은 단위의 관계"
+      },
+      "question": {
+        "ok": true,
+        "question": "정보의 최소 단위인 비트 여덟 개를 묶은 단위를 무엇이라 합니까?",
+        "answer": "바이트",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "여덟 개면 256가지를 나타낼 수 있어 영문자 하나를 담기에 알맞았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#005",
+      "seed": {
+        "subject": "2진법",
+        "aspect": "켜짐과 꺼짐 두 가지로 모든 것을 나타낸다",
+        "knowledgePoint": "전기가 흐르는지 아닌지 두 상태로 수와 문자를 나타내는 체계"
+      },
+      "question": {
+        "ok": true,
+        "question": "전기가 흐르는지 아닌지 두 가지 상태만으로 수와 문자를 나타내는, 컴퓨터가 쓰는 수 체계는?",
+        "answer": "2진법",
+        "acceptedAnswers": [
+          "이진법"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "상태가 둘뿐이라 전기 회로로 만들기 쉽고 오류에도 강합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#006",
+      "seed": {
+        "subject": "캐시 메모리",
+        "aspect": "자주 쓰는 것을 가까이 둔다",
+        "knowledgePoint": "느린 주기억장치 대신 자주 쓰는 자료를 빠른 곳에 미리 담아 두는 계층 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "느린 주기억장치를 기다리지 않도록 자주 쓰는 자료를 미리 담아 두는, 처리장치에 가까이 붙은 작고 빠른 기억장치는?",
+        "answer": "캐시",
+        "acceptedAnswers": [
+          "캐시 메모리"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "웹 브라우저가 한 번 본 이미지를 저장해 두는 것도 같은 개념입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#007",
+      "seed": {
+        "subject": "무어의 법칙",
+        "aspect": "2년마다 두 배로 늘어난다",
+        "knowledgePoint": "반도체에 들어가는 소자 수가 일정 기간마다 두 배가 된다는 경험적 관찰과 그 한계 논의"
+      },
+      "question": {
+        "ok": true,
+        "question": "반도체에 들어가는 소자의 수가 약 2년마다 두 배로 늘어난다는 경험적 관찰로, 반세기 가까이 들어맞은 것은?",
+        "answer": "무어의 법칙",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "물리적 한계에 가까워지면서 예전만큼 들어맞지 않는다는 이야기가 나옵니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#008",
+      "seed": {
+        "subject": "반도체",
+        "aspect": "조건에 따라 전기를 통하기도 막기도 한다",
+        "knowledgePoint": "도체와 부도체의 중간 성질을 가져 스위치 역할을 할 수 있는 물질"
+      },
+      "question": {
+        "ok": true,
+        "question": "도체와 부도체의 중간 성질을 가져 조건에 따라 전기를 통하기도 막기도 하는, 전자 부품의 바탕이 되는 물질은?",
+        "answer": "반도체",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "이 성질 덕분에 아주 작은 스위치를 만들 수 있습니다. 규소가 대표적인 재료입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#009",
+      "seed": {
+        "subject": "트랜지스터",
+        "aspect": "진공관을 대신한 작은 스위치",
+        "knowledgePoint": "전기 신호를 켜고 끄거나 키우는 소자와 그것이 컴퓨터를 작게 만든 전환점"
+      },
+      "question": {
+        "ok": true,
+        "question": "전기 신호를 켜고 끄거나 키우는 소자로, 크고 뜨겁던 진공관을 대신해 컴퓨터를 작게 만든 전환점이 된 것은?",
+        "answer": "트랜지스터",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "지금은 손톱만 한 칩 안에 수백억 개가 들어갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#010",
+      "seed": {
+        "subject": "ENIAC",
+        "aspect": "방 하나를 가득 채웠다",
+        "knowledgePoint": "진공관으로 만들어진 초기 전자식 컴퓨터의 규모와 무게"
+      },
+      "question": {
+        "ok": true,
+        "question": "1만 8천 개가 넘는 진공관으로 만들어져 방 하나를 가득 채웠던, 초기 전자식 컴퓨터의 이름은?",
+        "answer": "에니악",
+        "acceptedAnswers": [
+          "ENIAC"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "무게가 30톤에 이르렀고 진공관이 자주 타 버려 수리가 일이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#011",
+      "seed": {
+        "subject": "마우스",
+        "aspect": "꼬리가 달린 모양에서 이름이 왔다",
+        "knowledgePoint": "선이 달린 모습에서 이름이 붙은 입력 장치와 그것이 처음 공개된 자리"
+      },
+      "question": {
+        "ok": true,
+        "question": "선이 달린 모습이 쥐를 닮았다 하여 이름이 붙은 입력 장치로, 1968년 더글러스 엥겔바트의 시연에서 처음 공개된 것은?",
+        "answer": "마우스",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "그 시연은 창과 하이퍼텍스트까지 함께 선보여 '모든 시연의 어머니' 라 불립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/1#012",
+      "seed": {
+        "subject": "QWERTY 자판",
+        "aspect": "빨리 치지 못하게 만들었다는 이야기",
+        "knowledgePoint": "타자기의 활자가 엉키는 것을 막으려 흩어 놓았다는 설명과 그 배열이 지금까지 남은 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "타자기의 활자가 엉키는 것을 막으려 자주 쓰는 글자를 흩어 놓았다는 이야기가 전하는, 지금까지 쓰이는 영문 자판 배열은?",
+        "answer": "쿼티",
+        "acceptedAnswers": [
+          "QWERTY"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "왼쪽 위 여섯 글자를 그대로 읽은 이름입니다. 더 효율적인 배열이 나왔지만 자리를 잡지 못했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1134 @@
+{
+  "generatedAt": "2026-09-21T05:56:46.238Z",
+  "scanned": 1390,
+  "bySource": {
+    "manual": 53,
+    "opentdb": 10,
+    "gemini-gen": 253,
+    "seed-gen": 1074
+  },
+  "counts": {
+    "expose": {
+      "total": 1,
+      "bySource": {
+        "manual": 1
+      }
+    },
+    "exposeSuspect": {
+      "total": 4,
+      "bySource": {
+        "gemini-gen": 2,
+        "seed-gen": 2
+      }
+    },
+    "hintNull": {
+      "total": 35,
+      "bySource": {
+        "manual": 8,
+        "opentdb": 1,
+        "gemini-gen": 11,
+        "seed-gen": 15
+      }
+    },
+    "hintEqualsAnswer": {
+      "total": 0,
+      "bySource": {}
+    },
+    "answerNormCollisionInside": {
+      "total": 0,
+      "bySource": {}
+    },
+    "longAnswer": {
+      "total": 6,
+      "bySource": {
+        "opentdb": 1,
+        "gemini-gen": 2,
+        "seed-gen": 3
+      }
+    },
+    "timeDependentSuspect": {
+      "total": 18,
+      "bySource": {
+        "gemini-gen": 1,
+        "seed-gen": 17
+      }
+    },
+    "noAnswerRow": {
+      "total": 0,
+      "bySource": {}
+    },
+    "primaryMissingInRows": {
+      "total": 0,
+      "bySource": {}
+    },
+    "foreignVariant": {
+      "total": 0,
+      "bySource": {}
+    },
+    "manyVariants": {
+      "total": 26,
+      "bySource": {
+        "manual": 3,
+        "opentdb": 1,
+        "gemini-gen": 22
+      }
+    }
+  },
+  "findings": {
+    "expose": [
+      {
+        "ref": "db:33",
+        "source": "manual",
+        "sourceRef": "manual-seed-0033",
+        "active": false,
+        "category": "(없음) > (소분류 없음)",
+        "question": "무궁화의 학명에 쓰이는 우리나라의 국화 이름은?",
+        "answer": "무궁화",
+        "matched": "무궁화"
+      }
+    ],
+    "exposeSuspect": [
+      {
+        "ref": "db:93",
+        "source": "gemini-gen",
+        "sourceRef": "dcd5c3ea32930a98",
+        "active": true,
+        "category": "자연과학 > 원소 기호",
+        "question": "원소 기호 'Au'로 표기되는 귀금속 원소는?",
+        "answer": "금",
+        "matched": "금"
+      },
+      {
+        "ref": "db:121",
+        "source": "gemini-gen",
+        "sourceRef": "7b0aff6435bd16be",
+        "active": false,
+        "category": "스포츠·게임 > 농구",
+        "question": "정규 5인제 농구 경기에서 코트에서 뛰는 한 팀의 선수 수는 몇 명인가?",
+        "answer": "5",
+        "matched": "5"
+      },
+      {
+        "ref": "db:374",
+        "source": "seed-gen",
+        "sourceRef": "chemistry/1#008",
+        "active": true,
+        "category": "자연과학 > 원소 기호",
+        "question": "원소 기호를 Ag로 적으며, 모든 금속 가운데 전기와 열을 가장 잘 전달하는 것은 무엇인가요?",
+        "answer": "은",
+        "matched": "은"
+      },
+      {
+        "ref": "db:632",
+        "source": "seed-gen",
+        "sourceRef": "olympic/4#006",
+        "active": true,
+        "category": "스포츠·게임 > 올림픽 상징·의례",
+        "question": "올림픽 금메달은 순금이 아닙니다. 규정상 겉에 금을 입히기 전, 메달의 몸체를 이루는 금속은 무엇인가?",
+        "answer": "은",
+        "matched": "은"
+      }
+    ],
+    "hintNull": [
+      {
+        "ref": "db:14",
+        "source": "manual",
+        "sourceRef": "manual-seed-0014",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "포르쉐 로고에 그려진 동물은?",
+        "answer": "말",
+        "hintSource": "말"
+      },
+      {
+        "ref": "db:15",
+        "source": "manual",
+        "sourceRef": "manual-seed-0015",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "밤하늘에서 지구를 도는 지구의 유일한 위성은?",
+        "answer": "달",
+        "hintSource": "달"
+      },
+      {
+        "ref": "db:37",
+        "source": "manual",
+        "sourceRef": "manual-seed-0037",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "인간의 세포는 각 유전자를 보통 몇 개씩 가지고 있는가?",
+        "answer": "2",
+        "hintSource": "2"
+      },
+      {
+        "ref": "db:38",
+        "source": "manual",
+        "sourceRef": "manual-seed-0038",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "미국이 육상 국경을 맞대고 있는 나라의 수는?",
+        "answer": "2",
+        "hintSource": "2"
+      },
+      {
+        "ref": "db:39",
+        "source": "manual",
+        "sourceRef": "manual-seed-0039",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "베토벤이 청력을 잃은 뒤에도 작곡한 것으로 유명한 교향곡 번호는?",
+        "answer": "9",
+        "hintSource": "9"
+      },
+      {
+        "ref": "db:43",
+        "source": "manual",
+        "sourceRef": "manual-seed-0043",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "성경 창세기에서 신이 세상을 창조하는 데 걸린 날 수는?",
+        "answer": "6",
+        "hintSource": "6"
+      },
+      {
+        "ref": "db:50",
+        "source": "manual",
+        "sourceRef": "manual-seed-0050",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "올림픽이 열리는 주기는 몇 년인가?",
+        "answer": "4",
+        "hintSource": "4"
+      },
+      {
+        "ref": "db:52",
+        "source": "manual",
+        "sourceRef": "manual-seed-0052",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "빛이 프리즘을 통과할 때 나뉘어 보이는 색의 개수를 흔히 몇 가지라 하는가?",
+        "answer": "7",
+        "hintSource": "7"
+      },
+      {
+        "ref": "db:56",
+        "source": "opentdb",
+        "sourceRef": "otdb-268ef3593977b62f",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "알츠하이머병은 인체의 어느 부위에 주로 영향을 미치는가?",
+        "answer": "뇌",
+        "hintSource": "뇌"
+      },
+      {
+        "ref": "db:93",
+        "source": "gemini-gen",
+        "sourceRef": "dcd5c3ea32930a98",
+        "active": true,
+        "category": "자연과학 > 원소 기호",
+        "question": "원소 기호 'Au'로 표기되는 귀금속 원소는?",
+        "answer": "금",
+        "hintSource": "금"
+      },
+      {
+        "ref": "db:99",
+        "source": "gemini-gen",
+        "sourceRef": "67c2545e20746f8b",
+        "active": true,
+        "category": "생활·상식 > 위스키·증류주",
+        "question": "노간주나무 열매(주니퍼 베리)로 향을 내어 만드는 대표적인 무색투명한 증류주는?",
+        "answer": "진",
+        "hintSource": "진"
+      },
+      {
+        "ref": "db:121",
+        "source": "gemini-gen",
+        "sourceRef": "7b0aff6435bd16be",
+        "active": false,
+        "category": "스포츠·게임 > 농구",
+        "question": "정규 5인제 농구 경기에서 코트에서 뛰는 한 팀의 선수 수는 몇 명인가?",
+        "answer": "5",
+        "hintSource": "5"
+      },
+      {
+        "ref": "db:124",
+        "source": "gemini-gen",
+        "sourceRef": "a18b8b0330c9b79b",
+        "active": true,
+        "category": "생활·상식 > 라틴어·그리스어 어근",
+        "question": "‘아쿠아리움(Aquarium)’이나 ‘아쿠아(Aqua)’의 어원이 되는 라틴어 단어 ‘Aqua’는 무엇을 뜻하는가?",
+        "answer": "물",
+        "hintSource": "물"
+      },
+      {
+        "ref": "db:147",
+        "source": "gemini-gen",
+        "sourceRef": "08c552b79e05a1ed",
+        "active": true,
+        "category": "스포츠·게임 > 바둑·장기",
+        "question": "바둑에서 먼저 두는 흑의 유리함을 상쇄하기 위해 대국이 끝난 후 백에게 일정한 집 수를 더해주는 규칙은?",
+        "answer": "덤",
+        "hintSource": "덤"
+      },
+      {
+        "ref": "db:212",
+        "source": "gemini-gen",
+        "sourceRef": "37cd649f1bfdef15",
+        "active": true,
+        "category": "생활·상식 > 맥주",
+        "question": "맥주 양조 과정에서 특유의 쓴맛과 향을 내며 천연 보존제 역할을 하는 삼과의 덩굴식물 꽃은?",
+        "answer": "홉",
+        "hintSource": "홉"
+      },
+      {
+        "ref": "db:223",
+        "source": "gemini-gen",
+        "sourceRef": "da66242e4d162f78",
+        "active": true,
+        "category": "문화·예술 > 밴드·아티스트",
+        "question": "프레디 머큐리가 보컬로 활동하며 〈Bohemian Rhapsody〉, 〈We Will Rock You〉 등의 명곡을 남긴 영국의 록 밴드는?",
+        "answer": "퀸",
+        "hintSource": "퀸"
+      },
+      {
+        "ref": "db:235",
+        "source": "gemini-gen",
+        "sourceRef": "c76107cb44ce4ed5",
+        "active": true,
+        "category": "기술·의학 > 선박",
+        "question": "선박의 진행 방향을 조절하기 위해 선미 수중에 장착되어 좌우로 움직이는 판 형태의 조종 장치는?",
+        "answer": "키",
+        "hintSource": "키"
+      },
+      {
+        "ref": "db:260",
+        "source": "gemini-gen",
+        "sourceRef": "a06bb43eaf5a034b",
+        "active": true,
+        "category": "자연과학 > 작물·과일",
+        "question": "벼의 껍질을 벗겨 낸 알곡으로, 한국인의 주식인 밥을 짓는 데 쓰이는 곡물은?",
+        "answer": "쌀",
+        "hintSource": "쌀"
+      },
+      {
+        "ref": "db:268",
+        "source": "gemini-gen",
+        "sourceRef": "40b4f7bcefa5d873",
+        "active": true,
+        "category": "한국 > 광고",
+        "question": "2002년 롯데리아 신제품 광고에서 배우 신구가 바다 위 나룻배에서 외쳐 큰 화제가 된 대사는 \"니들이 ( ) 맛을 알아?\"이다. 괄호 속 음식 재료는?",
+        "answer": "게",
+        "hintSource": "게"
+      },
+      {
+        "ref": "db:308",
+        "source": "gemini-gen",
+        "sourceRef": "635bd0eb323d171d",
+        "active": true,
+        "category": "생활·상식 > 별자리·십이지",
+        "question": "십이지(12지) 순서 중 맨 처음에 해당하는 동물은?",
+        "answer": "쥐",
+        "hintSource": "쥐"
+      },
+      {
+        "ref": "db:349",
+        "source": "seed-gen",
+        "sourceRef": "board-game/2#003",
+        "active": true,
+        "category": "스포츠·게임 > 체스",
+        "question": "체스에서 폰이 상대 진영 맨 끝줄에 닿으면 킹을 뺀 다른 기물로 바꿀 수 있습니다. 실제 대국에서는 거의 언제나 어떤 기물을 고르나요?",
+        "answer": "퀸",
+        "hintSource": "퀸"
+      },
+      {
+        "ref": "db:355",
+        "source": "seed-gen",
+        "sourceRef": "board-game/2#009",
+        "active": true,
+        "category": "스포츠·게임 > 체스",
+        "question": "체스에서 유일하게 상대에게 실제로 잡히는 일이 없고, 대신 어디로도 피할 수 없게 위협받는 순간 그대로 경기가 끝나는 기물은?",
+        "answer": "킹",
+        "hintSource": "킹"
+      },
+      {
+        "ref": "db:370",
+        "source": "seed-gen",
+        "sourceRef": "chemistry/1#004",
+        "active": true,
+        "category": "자연과학 > 원소 기호",
+        "question": "원소 기호를 Pb로 적으며, 무르고 잘 녹아 옛날에는 수도관과 인쇄용 활자에 쓰였으나 중독 위험 때문에 쓰임이 크게 줄어든 금속은?",
+        "answer": "납",
+        "hintSource": "납"
+      },
+      {
+        "ref": "db:373",
+        "source": "seed-gen",
+        "sourceRef": "chemistry/1#007",
+        "active": true,
+        "category": "자연과학 > 원소 기호",
+        "question": "원소 기호 Fe가 라틴어 이름 페룸에서 왔으며, 지구 핵의 주성분이자 우리 피의 헤모글로빈에도 들어 있는 금속은?",
+        "answer": "철",
+        "hintSource": "철"
+      },
+      {
+        "ref": "db:374",
+        "source": "seed-gen",
+        "sourceRef": "chemistry/1#008",
+        "active": true,
+        "category": "자연과학 > 원소 기호",
+        "question": "원소 기호를 Ag로 적으며, 모든 금속 가운데 전기와 열을 가장 잘 전달하는 것은 무엇인가요?",
+        "answer": "은",
+        "hintSource": "은"
+      },
+      {
+        "ref": "db:439",
+        "source": "seed-gen",
+        "sourceRef": "kr-language/1#004",
+        "active": true,
+        "category": "한국 > 한글 자모·맞춤법",
+        "question": "'커피숍'을 '커피숖'으로 적지 않는 것은 외래어 표기법이 받침에 쓸 수 있는 글자를 한정해 두었기 때문입니다. 그 글자는 모두 몇 개인가요?",
+        "answer": "7",
+        "hintSource": "7"
+      },
+      {
+        "ref": "db:632",
+        "source": "seed-gen",
+        "sourceRef": "olympic/4#006",
+        "active": true,
+        "category": "스포츠·게임 > 올림픽 상징·의례",
+        "question": "올림픽 금메달은 순금이 아닙니다. 규정상 겉에 금을 입히기 전, 메달의 몸체를 이루는 금속은 무엇인가?",
+        "answer": "은",
+        "hintSource": "은"
+      },
+      {
+        "ref": "db:637",
+        "source": "seed-gen",
+        "sourceRef": "pets-garden/2#001",
+        "active": true,
+        "category": "생활·상식 > 고양이 품종",
+        "question": "몸통은 밝고 귀·발·꼬리·얼굴만 짙은 무늬를 가진 고양이가 있습니다. 체온이 낮은 부위에서만 색소가 만들어지기 때문에 생기는 이 무늬로 유명한 품종은?",
+        "answer": "샴",
+        "hintSource": "샴"
+      },
+      {
+        "ref": "db:701",
+        "source": "seed-gen",
+        "sourceRef": "world-geo/5#008",
+        "active": true,
+        "category": "인문·사회 > 도시 별칭",
+        "question": "하이든, 모차르트, 베토벤, 슈베르트가 잇달아 머물며 활동한 내력 때문에 '음악의 도시' 로 불리는 오스트리아의 수도는?",
+        "answer": "빈",
+        "hintSource": "빈"
+      },
+      {
+        "ref": "db:769",
+        "source": "seed-gen",
+        "sourceRef": "ball-sports/4#001",
+        "active": true,
+        "category": "스포츠·게임 > 골프",
+        "question": "골프에서 각 홀을 몇 타에 마치는 것이 표준인지 미리 정해 둔 기준 타수를 무엇이라 합니까? 18홀 합계가 보통 72가 되도록 짜여 있습니다.",
+        "answer": "파",
+        "hintSource": "파"
+      },
+      {
+        "ref": "db:807",
+        "source": "seed-gen",
+        "sourceRef": "board-game/1#003",
+        "active": true,
+        "category": "스포츠·게임 > 바둑·장기",
+        "question": "바둑에서 자기 돌로 둘러싸 차지한 빈 교차점을 무엇이라 합니까? 이것을 더 많이 차지한 쪽이 이깁니다.",
+        "answer": "집",
+        "hintSource": "집"
+      },
+      {
+        "ref": "db:814",
+        "source": "seed-gen",
+        "sourceRef": "board-game/1#010",
+        "active": true,
+        "category": "스포츠·게임 > 바둑·장기",
+        "question": "장기에서 가로와 세로로 거리 제한 없이 움직이되 다른 말을 뛰어넘지는 못하는, 활동 범위가 가장 넓은 말은?",
+        "answer": "차",
+        "hintSource": "차"
+      },
+      {
+        "ref": "db:1038",
+        "source": "seed-gen",
+        "sourceRef": "kr-language/2#011",
+        "active": true,
+        "category": "한국 > 순우리말",
+        "question": "엄지와 다른 손가락을 최대한 벌렸을 때의 거리를 나타내는 우리말 길이 단위는?",
+        "answer": "뼘",
+        "hintSource": "뼘"
+      },
+      {
+        "ref": "db:1080",
+        "source": "seed-gen",
+        "sourceRef": "kr-tradition/2#006",
+        "active": true,
+        "category": "한국 > 전통 의식주",
+        "question": "말의 꼬리털을 가늘게 엮어 속이 비치도록 만든, 조선 시대 남성이 예를 갖출 때 쓰던 모자는?",
+        "answer": "갓",
+        "hintSource": "갓"
+      },
+      {
+        "ref": "db:1258",
+        "source": "seed-gen",
+        "sourceRef": "symbols/5#012",
+        "active": true,
+        "category": "생활·상식 > 별자리·십이지",
+        "question": "십이지 설화에서 쥐가 몰래 등에 올라타고 있다가 결승점 직전에 뛰어내리는 바람에 첫째 자리를 내주고 둘째가 되었다는 동물은?",
+        "answer": "소",
+        "hintSource": "소"
+      }
+    ],
+    "hintEqualsAnswer": [],
+    "answerNormCollisionInside": [],
+    "longAnswer": [
+      {
+        "ref": "db:57",
+        "source": "opentdb",
+        "sourceRef": "otdb-1eab73a417ce4d03",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "닌텐도 Wii용으로 출시된 '동물의 숲' 시리즈 게임은 무엇인가?",
+        "answer": "타운으로 놀러가요 동물의 숲",
+        "len": 15
+      },
+      {
+        "ref": "db:70",
+        "source": "gemini-gen",
+        "sourceRef": "72a3f029dc4637f9",
+        "active": true,
+        "category": "문화·예술 > 일본 애니메이션",
+        "question": "돼지로 변해버린 부모를 구하기 위해 신들의 온천장에서 일하게 된 소녀의 모험을 그린 미야자키 하야오 감독의 장편 애니메이션은?",
+        "answer": "센과 치히로의 행방불명",
+        "len": 12
+      },
+      {
+        "ref": "db:182",
+        "source": "gemini-gen",
+        "sourceRef": "b16641eeea16a047",
+        "active": true,
+        "category": "인문·사회 > 정신 건강 용어",
+        "question": "전쟁이나 재난 등 극심한 충격적 사건을 경험한 후 반복적인 불안, 악몽, 회피 반응 등을 겪는 정신 질환은 무엇인가?",
+        "answer": "외상 후 스트레스 장애",
+        "len": 12
+      },
+      {
+        "ref": "db:328",
+        "source": "seed-gen",
+        "sourceRef": "art/1#002",
+        "active": true,
+        "category": "문화·예술 > 서양 회화",
+        "question": "어두운 배경에서 고개만 돌려 이쪽을 바라보는 소녀를 그렸고, 모델이 누구인지 알려지지 않아 '북유럽의 모나리자'라고도 불리는 얀 베르메르의 작품은?",
+        "answer": "진주 귀고리를 한 소녀",
+        "len": 12
+      },
+      {
+        "ref": "db:330",
+        "source": "seed-gen",
+        "sourceRef": "art/1#004",
+        "active": true,
+        "category": "문화·예술 > 서양 회화",
+        "question": "1830년 7월 혁명을 소재로, 삼색기를 치켜든 여인이 총을 든 시민들을 이끌고 시체를 넘어 나아가는 모습을 그린 외젠 들라크루아의 작품은?",
+        "answer": "민중을 이끄는 자유의 여신",
+        "len": 14
+      },
+      {
+        "ref": "db:582",
+        "source": "seed-gen",
+        "sourceRef": "kr-screen/4#002",
+        "active": true,
+        "category": "한국 > 한국 독립·예술영화",
+        "question": "강원도 산골에서 76년을 함께 산 노부부의 마지막 시간을 기록해 2014년에 크게 알려진 다큐멘터리 영화는?",
+        "answer": "님아 그 강을 건너지 마오",
+        "len": 14
+      }
+    ],
+    "timeDependentSuspect": [
+      {
+        "ref": "db:255",
+        "source": "gemini-gen",
+        "sourceRef": "d093e069d57affd2",
+        "active": true,
+        "category": "생활·상식 > 기호·아이콘",
+        "question": "웹 브라우저에서 현재 웹 페이지의 데이터를 다시 불러와 최신 상태로 갱신하는 기능의 아이콘 또는 명칭은?",
+        "answer": "새로고침",
+        "word": "현재"
+      },
+      {
+        "ref": "db:387",
+        "source": "seed-gen",
+        "sourceRef": "computer/4#001",
+        "active": true,
+        "category": "기술·의학 > 네트워크·인터넷",
+        "question": "1969년 미국 국방부의 지원으로 대학과 연구소 네 곳을 처음 연결해, 오늘날 인터넷의 뿌리가 된 통신망의 이름은?",
+        "answer": "아파넷",
+        "word": "오늘날"
+      },
+      {
+        "ref": "db:408",
+        "source": "seed-gen",
+        "sourceRef": "football/2#002",
+        "active": true,
+        "category": "스포츠·게임 > 월드컵",
+        "question": "규정에 따라 세 번째 우승을 이룬 나라가 영구히 갖게 되어 1970년 브라질이 가져갔으나, 뒤에 도난당해 지금까지 되찾지 못한 초대 월드컵 우승 트로피의 이름은?",
+        "answer": "줄리메 컵",
+        "word": "지금"
+      },
+      {
+        "ref": "db:503",
+        "source": "seed-gen",
+        "sourceRef": "world-language/1#008",
+        "active": true,
+        "category": "생활·상식 > 외래어 어원",
+        "question": "제임스 쿡의 남태평양 항해 기록을 통해 유럽에 알려진 폴리네시아 말로, 지금은 '해서는 안 되는 금기'를 뜻하는 말로 널리 쓰이는 것은?",
+        "answer": "터부",
+        "word": "지금"
+      },
+      {
+        "ref": "db:512",
+        "source": "seed-gen",
+        "sourceRef": "world-lit/2#007",
+        "active": true,
+        "category": "문화·예술 > 19세기 소설",
+        "question": "구두쇠 노인 스크루지가 성탄 전야에 세 유령을 따라 지난날과 지금과 앞날을 차례로 둘러본 뒤 달라지는 이야기를 담은 찰스 디킨스의 소설은?",
+        "answer": "크리스마스 캐럴",
+        "word": "지금"
+      },
+      {
+        "ref": "db:634",
+        "source": "seed-gen",
+        "sourceRef": "olympic/4#008",
+        "active": true,
+        "category": "스포츠·게임 > 올림픽 상징·의례",
+        "question": "고대 그리스에서는 제전이 열리는 동안 도시 국가들이 다툼을 멈췄습니다. 이 관습을 본떠 지금도 유엔 총회가 대회마다 채택하는 결의를 무엇이라 하는가?",
+        "answer": "올림픽 휴전",
+        "word": "지금"
+      },
+      {
+        "ref": "db:684",
+        "source": "seed-gen",
+        "sourceRef": "transport/4#001",
+        "active": true,
+        "category": "기술·의학 > 선박",
+        "question": "옛날 뱃사람들은 일정한 간격으로 매듭을 지은 밧줄을 바다에 흘려보내며 배의 빠르기를 쟀습니다. 여기서 이름이 온, 지금도 배와 항공기에 쓰는 속도 단위는?",
+        "answer": "노트",
+        "word": "지금"
+      },
+      {
+        "ref": "db:713",
+        "source": "seed-gen",
+        "sourceRef": "aerospace/4#010",
+        "active": true,
+        "category": "기술·의학 > 유인 우주 탐사",
+        "question": "1960년대에 만들어져 개량을 거듭하며 지금까지도 쓰이는, 가장 오래 현역으로 남아 있는 유인 우주선 계열은?",
+        "answer": "소유스",
+        "word": "지금"
+      },
+      {
+        "ref": "db:786",
+        "source": "seed-gen",
+        "sourceRef": "baseball/4#006",
+        "active": true,
+        "category": "스포츠·게임 > 야구 용어·전술",
+        "question": "야구에서 강한 타자와 승부를 피하려고 일부러 볼넷으로 내보내는 것을 무엇이라 합니까? 지금은 공을 던지지 않고 신청만 해도 됩니다.",
+        "answer": "고의사구",
+        "word": "지금"
+      },
+      {
+        "ref": "db:817",
+        "source": "seed-gen",
+        "sourceRef": "brands/3#001",
+        "active": true,
+        "category": "생활·상식 > 상표가 된 상품명",
+        "question": "3M의 상표였지만 지금은 투명 접착테이프 전체를 가리키는 말처럼 쓰이는 것은?",
+        "answer": "스카치테이프",
+        "word": "지금"
+      },
+      {
+        "ref": "db:838",
+        "source": "seed-gen",
+        "sourceRef": "calendar/3#012",
+        "active": true,
+        "category": "생활·상식 > 달력·역법",
+        "question": "양력 1월 1일을 신정이라 부르던 데 맞추어 음력설을 낮추어 부르던 말로, 지금은 '설날'로 바꾸어 쓰자는 지적을 받는 말은?",
+        "answer": "구정",
+        "word": "지금"
+      },
+      {
+        "ref": "db:989",
+        "source": "seed-gen",
+        "sourceRef": "invention/4#010",
+        "active": true,
+        "category": "기술·의학 > 의학·생명 분야 발견",
+        "question": "1951년 한 여성 환자에게서 떼어 낸 뒤 실험실에서 끝없이 증식해 지금도 세계 곳곳의 연구에 쓰이는 세포주는?",
+        "answer": "헬라 세포",
+        "word": "지금"
+      },
+      {
+        "ref": "db:994",
+        "source": "seed-gen",
+        "sourceRef": "kr-food/1#003",
+        "active": true,
+        "category": "한국 > 밥·국·찌개",
+        "question": "아이를 낳은 산모가 먹던 음식에서 이어져, 지금은 생일에 먹는 것으로 자리 잡은 국은?",
+        "answer": "미역국",
+        "word": "지금"
+      },
+      {
+        "ref": "db:1034",
+        "source": "seed-gen",
+        "sourceRef": "kr-language/2#007",
+        "active": true,
+        "category": "한국 > 순우리말",
+        "question": "한자어가 들어오기 전에 용을 가리키던 옛 우리말로, 지금도 사람 이름이나 상표에 남아 쓰이는 것은?",
+        "answer": "미르",
+        "word": "지금"
+      },
+      {
+        "ref": "db:1101",
+        "source": "seed-gen",
+        "sourceRef": "material/1#003",
+        "active": true,
+        "category": "기술·의학 > 금속·합금",
+        "question": "수은이 다른 금속을 녹여 만든 합금으로, 오랫동안 충치를 때우는 데 쓰이다 지금은 크게 줄어든 것은?",
+        "answer": "아말감",
+        "word": "지금"
+      },
+      {
+        "ref": "db:1164",
+        "source": "seed-gen",
+        "sourceRef": "philosophy/1#012",
+        "active": true,
+        "category": "인문·사회 > 고대 철학",
+        "question": "플라톤이 세워 900년 가까이 이어졌고, 오늘날 학술원이나 학원을 뜻하는 말의 어원이 된 서양 최초의 고등 교육 기관은?",
+        "answer": "아카데메이아",
+        "word": "오늘날"
+      },
+      {
+        "ref": "db:1202",
+        "source": "seed-gen",
+        "sourceRef": "popular-music/4#002",
+        "active": true,
+        "category": "문화·예술 > 밴드·아티스트",
+        "question": "혀를 내민 붉은 입술 모양을 상징으로 쓰며 1960년대부터 지금까지 활동을 이어 온 영국 밴드는?",
+        "answer": "롤링 스톤스",
+        "word": "지금"
+      },
+      {
+        "ref": "db:1340",
+        "source": "seed-gen",
+        "sourceRef": "world-history-east/1#012",
+        "active": true,
+        "category": "인문·사회 > 중국 왕조",
+        "question": "거북의 배딱지와 짐승 뼈에 점을 친 결과를 새긴 기록으로, 지금까지 확인된 한자의 가장 오래된 형태는?",
+        "answer": "갑골문",
+        "word": "지금"
+      }
+    ],
+    "noAnswerRow": [],
+    "primaryMissingInRows": [],
+    "foreignVariant": [],
+    "manyVariants": [
+      {
+        "ref": "db:35",
+        "source": "manual",
+        "sourceRef": "manual-seed-0035",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "1945년에 끝난, 20세기 최대 규모의 전쟁은?",
+        "answer": "제2차 세계대전",
+        "count": 3,
+        "variants": [
+          "2차세계대전",
+          "제이차세계대전",
+          "ww2"
+        ]
+      },
+      {
+        "ref": "db:43",
+        "source": "manual",
+        "sourceRef": "manual-seed-0043",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "성경 창세기에서 신이 세상을 창조하는 데 걸린 날 수는?",
+        "answer": "6",
+        "count": 3,
+        "variants": [
+          "6일",
+          "육일",
+          "엿새"
+        ]
+      },
+      {
+        "ref": "db:52",
+        "source": "manual",
+        "sourceRef": "manual-seed-0052",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "빛이 프리즘을 통과할 때 나뉘어 보이는 색의 개수를 흔히 몇 가지라 하는가?",
+        "answer": "7",
+        "count": 3,
+        "variants": [
+          "7가지",
+          "일곱",
+          "일곱가지"
+        ]
+      },
+      {
+        "ref": "db:62",
+        "source": "opentdb",
+        "sourceRef": "otdb-43f71c75071cf530",
+        "active": true,
+        "category": "(없음) > (소분류 없음)",
+        "question": "원 한 바퀴를 이루는 각도는 몇 도인가?",
+        "answer": "360",
+        "count": 3,
+        "variants": [
+          "360도",
+          "삼백육십",
+          "삼백육십도"
+        ]
+      },
+      {
+        "ref": "db:69",
+        "source": "gemini-gen",
+        "sourceRef": "64e3d4c80386267c",
+        "active": true,
+        "category": "인문·사회 > 발달·성격 이론",
+        "question": "인간의 욕구를 생리적 욕구부터 자아실현 욕구까지 피라미드 형태의 5단계 계층으로 설명한 미국의 심리학자는?",
+        "answer": "에이브러햄 매슬로",
+        "count": 3,
+        "variants": [
+          "매슬로",
+          "매슬로우",
+          "에이브러햄 매슬로우"
+        ]
+      },
+      {
+        "ref": "db:73",
+        "source": "gemini-gen",
+        "sourceRef": "333f09d9ee16b057",
+        "active": true,
+        "category": "문화·예술 > 사진가·유명 사진",
+        "question": "찰나의 순간을 포착하는 '결정적 순간'이라는 사진 미학 개념을 제시한 프랑스의 보도 사진가는?",
+        "answer": "앙리 카르티에 브레송",
+        "count": 4,
+        "variants": [
+          "카르티에 브레송",
+          "앙리 카르티에-브레송",
+          "카르티에-브레송",
+          "브레송"
+        ]
+      },
+      {
+        "ref": "db:78",
+        "source": "gemini-gen",
+        "sourceRef": "4402edd63c627d2f",
+        "active": true,
+        "category": "인문·사회 > 고대 그리스·로마",
+        "question": "고대 로마 공화정 말기에 카이사르, 폼페이우스, 크라수스가 맺은 비공식적인 권력 분점 정치 동맹 형태를 가리키는 말은?",
+        "answer": "삼두정치",
+        "count": 5,
+        "variants": [
+          "삼두정",
+          "제1차 삼두정치",
+          "제1차 삼두정",
+          "1차 삼두정치",
+          "1차 삼두정"
+        ]
+      },
+      {
+        "ref": "db:82",
+        "source": "gemini-gen",
+        "sourceRef": "683fe6f013af638d",
+        "active": true,
+        "category": "기술·의학 > 증상·진단",
+        "question": "두피에 전극을 부착하여 대뇌 피질 신경세포들의 자발적인 미세 전기 활동을 기록하는 신경과 진단 검사는?",
+        "answer": "뇌파 검사",
+        "count": 3,
+        "variants": [
+          "뇌전도",
+          "뇌파",
+          "EEG"
+        ]
+      },
+      {
+        "ref": "db:95",
+        "source": "gemini-gen",
+        "sourceRef": "1120efa063cbddb8",
+        "active": true,
+        "category": "기술·의학 > 하드웨어",
+        "question": "자기 디스크 대신 낸드 플래시 메모리를 사용하여 데이터를 영구 저장하는 컴퓨터 보조기억장치는?",
+        "answer": "SSD",
+        "count": 3,
+        "variants": [
+          "Solid State Drive",
+          "솔리드 스테이트 드라이브",
+          "에스에스디"
+        ]
+      },
+      {
+        "ref": "db:117",
+        "source": "gemini-gen",
+        "sourceRef": "8c12ae0b242c8f4b",
+        "active": true,
+        "category": "기술·의학 > 자동차 구조·용어",
+        "question": "자동차 급제동 시 바퀴가 완전히 잠기는 현상을 막아 조향력을 유지하도록 돕는 전자식 제동 보조 장치의 영문 약칭은?",
+        "answer": "ABS",
+        "count": 3,
+        "variants": [
+          "에이비에스",
+          "Anti-lock Braking System",
+          "앤티록 브레이크 시스템"
+        ]
+      },
+      {
+        "ref": "db:121",
+        "source": "gemini-gen",
+        "sourceRef": "7b0aff6435bd16be",
+        "active": false,
+        "category": "스포츠·게임 > 농구",
+        "question": "정규 5인제 농구 경기에서 코트에서 뛰는 한 팀의 선수 수는 몇 명인가?",
+        "answer": "5",
+        "count": 5,
+        "variants": [
+          "5명",
+          "다섯",
+          "다섯명",
+          "오",
+          "5인"
+        ]
+      },
+      {
+        "ref": "db:128",
+        "source": "gemini-gen",
+        "sourceRef": "ee3a85a5cdb7b7fb",
+        "active": true,
+        "category": "인문·사회 > 화폐·환율",
+        "question": "영국의 공식 법정 통화 단위는 무엇인가?",
+        "answer": "파운드",
+        "count": 3,
+        "variants": [
+          "파운드 스털링",
+          "영국 파운드",
+          "GBP"
+        ]
+      },
+      {
+        "ref": "db:143",
+        "source": "gemini-gen",
+        "sourceRef": "14fcf3910bca0e84",
+        "active": true,
+        "category": "기술·의학 > 발전 방식",
+        "question": "우라늄이나 플루토늄 같은 무거운 원자핵이 쪼개질 때 발생하는 핵분열 열에너지로 증기를 만들어 터빈을 돌리는 발전 방식은?",
+        "answer": "원자력 발전",
+        "count": 3,
+        "variants": [
+          "원자력",
+          "원전",
+          "핵발전"
+        ]
+      },
+      {
+        "ref": "db:149",
+        "source": "gemini-gen",
+        "sourceRef": "064c6a9f8d8fcc98",
+        "active": true,
+        "category": "생활·상식 > 세계 명절·축제",
+        "question": "매년 10월 31일 밤 유령이나 괴물 분장을 하고 '트릭 오어 트릿'을 외치며 사탕을 얻으러 다니는 서양의 축제는?",
+        "answer": "할로윈",
+        "count": 3,
+        "variants": [
+          "핼러윈",
+          "할로윈데이",
+          "핼러윈 데이"
+        ]
+      },
+      {
+        "ref": "db:154",
+        "source": "gemini-gen",
+        "sourceRef": "cbc77ae6cd429ed4",
+        "active": true,
+        "category": "인문·사회 > 복지·의료 제도",
+        "question": "근로자가 업무상 사유로 부상, 질병, 장해를 입거나 사망한 경우 보상해 주는 대한민국의 4대 사회보험 중 하나는?",
+        "answer": "산업재해보상보험",
+        "count": 3,
+        "variants": [
+          "산재보험",
+          "산재해보험",
+          "산업재해보험"
+        ]
+      },
+      {
+        "ref": "db:169",
+        "source": "gemini-gen",
+        "sourceRef": "715936fea9f398be",
+        "active": true,
+        "category": "생활·상식 > 재난·안전 수칙",
+        "question": "기도가 폐쇄되어 숨을 쉬지 못하는 환자에게 뒤에서 감싸 안고 복부 윗부분을 밀쳐 올려 이물질을 빼내는 응급처치법은?",
+        "answer": "하임리히법",
+        "count": 4,
+        "variants": [
+          "하임리히",
+          "하임리히 요법",
+          "하임리히 구명법",
+          "하임리히 manoeuvre"
+        ]
+      },
+      {
+        "ref": "db:170",
+        "source": "gemini-gen",
+        "sourceRef": "0231c7071c59709a",
+        "active": true,
+        "category": "생활·상식 > 생활 법규",
+        "question": "대한민국 도로교통법상 어린이 보호구역(스쿨존)에서 지정되는 차량의 최고 제한 속도는 시속 몇 킬로미터인가?",
+        "answer": "30",
+        "count": 5,
+        "variants": [
+          "30km/h",
+          "30km",
+          "30킬로",
+          "삼십",
+          "30킬로미터"
+        ]
+      },
+      {
+        "ref": "db:176",
+        "source": "gemini-gen",
+        "sourceRef": "a545bda1e14036ea",
+        "active": true,
+        "category": "생활·상식 > 개 품종",
+        "question": "짧은 다리와 여우를 닮은 얼굴, 풍성한 엉덩이가 특징이며 영국 왕실(엘리자베스 2세 여왕)의 반려견으로 유명한 개 품종은?",
+        "answer": "웰시 코기",
+        "count": 3,
+        "variants": [
+          "웰시코기 펨브로크",
+          "펨브로크 웰시 코기",
+          "코기"
+        ]
+      },
+      {
+        "ref": "db:204",
+        "source": "gemini-gen",
+        "sourceRef": "93522e0822e24473",
+        "active": true,
+        "category": "인문·사회 > 인도·동남아",
+        "question": "기원전 3세기 인도 마우리아 왕조의 제3대 군주로, 칼링가 정복 후 불교에 귀의하여 불법을 장려한 왕은?",
+        "answer": "아소카",
+        "count": 3,
+        "variants": [
+          "아소카 왕",
+          "아쇼카",
+          "아쇼카 왕"
+        ]
+      },
+      {
+        "ref": "db:216",
+        "source": "gemini-gen",
+        "sourceRef": "35e15a54ba8950a0",
+        "active": true,
+        "category": "인문·사회 > 제2차 세계대전",
+        "question": "1944년 6월 6일 연합군이 독일 치하의 서유럽을 탈환하기 위해 프랑스 북부 해안에 감행한 사상 최대 규모의 상륙작전은?",
+        "answer": "노르망디 상륙작전",
+        "count": 3,
+        "variants": [
+          "노르망디 작전",
+          "오버로드 작전",
+          "노르망디"
+        ]
+      },
+      {
+        "ref": "db:234",
+        "source": "gemini-gen",
+        "sourceRef": "1255fa0ba4e14aa8",
+        "active": true,
+        "category": "기술·의학 > 철도",
+        "question": "전자석의 힘으로 차량을 선로 위로 띄워 마찰 없이 주행하도록 만든 고속 철도 시스템은?",
+        "answer": "자기부상열차",
+        "count": 3,
+        "variants": [
+          "자기부상",
+          "자기부상 차",
+          "매글레브"
+        ]
+      },
+      {
+        "ref": "db:247",
+        "source": "gemini-gen",
+        "sourceRef": "2a52b6527455a6d1",
+        "active": true,
+        "category": "기술·의학 > 로켓·발사체",
+        "question": "2022년에 탑재 위성을 목표 궤도에 투입하는 데 성공한 대한민국 최초의 독자 개발 한국형 발사체의 이름은?",
+        "answer": "누리호",
+        "count": 3,
+        "variants": [
+          "KSLV-II",
+          "KSLV-2",
+          "누리"
+        ]
+      },
+      {
+        "ref": "db:252",
+        "source": "gemini-gen",
+        "sourceRef": "d86a26deeda6e2d4",
+        "active": true,
+        "category": "스포츠·게임 > 육상",
+        "question": "육상 경기에서 4명의 주자가 차례로 바통을 주고받으며 달리는 종목은?",
+        "answer": "이어달리기",
+        "count": 3,
+        "variants": [
+          "계주",
+          "릴레이",
+          "릴레이 경주"
+        ]
+      },
+      {
+        "ref": "db:264",
+        "source": "gemini-gen",
+        "sourceRef": "83a0170311a38a39",
+        "active": true,
+        "category": "문화·예술 > 만화 용어·형식",
+        "question": "오다 에이이치로의 만화 《원피스》의 주인공으로, 고무고무 열매(사람사람 열매 모델 니카)를 먹은 밀짚모자 해적단의 선장은?",
+        "answer": "몽키 D. 루피",
+        "count": 3,
+        "variants": [
+          "몽키 디 루피",
+          "몽키 D 루피",
+          "루피"
+        ]
+      },
+      {
+        "ref": "db:268",
+        "source": "gemini-gen",
+        "sourceRef": "40b4f7bcefa5d873",
+        "active": true,
+        "category": "한국 > 광고",
+        "question": "2002년 롯데리아 신제품 광고에서 배우 신구가 바다 위 나룻배에서 외쳐 큰 화제가 된 대사는 \"니들이 ( ) 맛을 알아?\"이다. 괄호 속 음식 재료는?",
+        "answer": "게",
+        "count": 3,
+        "variants": [
+          "게맛",
+          "크랩",
+          "게살"
+        ]
+      },
+      {
+        "ref": "db:273",
+        "source": "gemini-gen",
+        "sourceRef": "e871d816345dea30",
+        "active": true,
+        "category": "기술·의학 > 건설 공법",
+        "question": "굴착 공사 시 흙막이 벽체 바깥의 암반이나 지반에 구멍을 뚫고 인장재를 삽입한 뒤 시멘트 등으로 고정하여 토압을 지탱하는 건설 공법은?",
+        "answer": "어스앵커 공법",
+        "count": 3,
+        "variants": [
+          "어스앵커",
+          "그라운드 앵커",
+          "그라운드 앵커 공법"
+        ]
+      }
+    ]
+  }
+}

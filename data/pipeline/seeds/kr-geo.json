@@ -3,7 +3,7 @@
   "midName": "한국 지리",
   "majorKey": "korea",
   "majorName": "한국",
-  "updatedAt": "2026-09-16T05:39:53.153Z",
+  "updatedAt": "2026-09-21T01:23:53.050Z",
   "subs": {
     "kr-geo/1": {
       "subName": "행정구역·도시",
@@ -12,9 +12,217 @@
           "answer": "세종특별자치시",
           "origin": "db:89",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "특별시",
+          "origin": "r020:kr-geo/1#001",
+          "note": null
+        },
+        {
+          "answer": "광역시",
+          "origin": "r020:kr-geo/1#002",
+          "note": null
+        },
+        {
+          "answer": "제주특별자치도",
+          "origin": "r020:kr-geo/1#003",
+          "note": null
+        },
+        {
+          "answer": "강원특별자치도",
+          "origin": "r020:kr-geo/1#004",
+          "note": null
+        },
+        {
+          "answer": "창원시",
+          "origin": "r020:kr-geo/1#005",
+          "note": null
+        },
+        {
+          "answer": "울릉군",
+          "origin": "r020:kr-geo/1#006",
+          "note": null
+        },
+        {
+          "answer": "읍",
+          "origin": "r020:kr-geo/1#007",
+          "note": null
+        },
+        {
+          "answer": "자치구",
+          "origin": "r020:kr-geo/1#008",
+          "note": null
+        },
+        {
+          "answer": "경기도",
+          "origin": "r020:kr-geo/1#009",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "kr-geo/1#001",
+          "subject": "특별시",
+          "aspect": "우리나라에 하나뿐인 등급",
+          "knowledgePoint": "광역자치단체 가운데 특별시는 하나뿐이고 나머지는 광역시·도·특별자치시도라는 체계",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:06:01.792Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/kr-geo-1#001",
+            "answer": "특별시",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-geo/1#002",
+          "subject": "광역시",
+          "aspect": "직할시에서 이름이 바뀌었다",
+          "knowledgePoint": "1995년에 직할시를 고쳐 부르게 된 행정구역 등급과 지금 그 수",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:06:01.792Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/kr-geo-1#002",
+            "answer": "광역시",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-geo/1#003",
+          "subject": "제주특별자치도",
+          "aspect": "가장 먼저 특별자치가 된 도",
+          "knowledgePoint": "2006년에 자치권을 크게 넓혀 출범한 도와 그 아래 기초자치단체를 두지 않는 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:06:01.792Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/kr-geo-1#003",
+            "answer": "제주특별자치도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-geo/1#004",
+          "subject": "강원특별자치도",
+          "aspect": "2023년에 이름이 바뀐 도",
+          "knowledgePoint": "군사·산림 규제가 많은 사정을 반영해 특별자치도로 바뀐 도",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:06:01.792Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/kr-geo-1#004",
+            "answer": "강원특별자치도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-geo/1#005",
+          "subject": "창원시",
+          "aspect": "세 도시를 하나로 합쳤다",
+          "knowledgePoint": "마산·진해와 합쳐져 경상남도에서 가장 큰 도시가 된 곳",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:06:01.792Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/kr-geo-1#005",
+            "answer": "창원시",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-geo/1#006",
+          "subject": "울릉군",
+          "aspect": "독도가 속한 행정구역",
+          "knowledgePoint": "독도의 주소가 어느 도 어느 군에 속하는지와 그 법적 의미",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:06:01.792Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/kr-geo-1#006",
+            "answer": "울릉군",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-geo/1#007",
+          "subject": "읍과 면",
+          "aspect": "인구로 갈린다",
+          "knowledgePoint": "군 아래의 행정구역을 인구 2만을 기준으로 읍과 면으로 나누는 규정",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:06:01.792Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/kr-geo-1#007",
+            "answer": "읍",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-geo/1#008",
+          "subject": "자치구와 행정구",
+          "aspect": "같은 '구' 인데 권한이 다르다",
+          "knowledgePoint": "광역시·특별시의 구는 단체장을 뽑는 자치구이고, 일반 시의 구는 그렇지 않다는 차이",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:06:01.792Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/kr-geo-1#008",
+            "answer": "자치구",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-geo/1#009",
+          "subject": "경기도",
+          "aspect": "이름에 담긴 '서울 둘레' 라는 뜻",
+          "knowledgePoint": "도읍의 둘레를 뜻하는 말에서 온 이름과 그것이 지금까지 남아 있는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:06:01.792Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/kr-geo-1#009",
+            "answer": "경기도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "kr-geo/2": {
       "subName": "산·강·호수",

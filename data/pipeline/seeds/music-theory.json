@@ -3,7 +3,7 @@
   "midName": "음악 이론·악기",
   "majorKey": "arts",
   "majorName": "문화·예술",
-  "updatedAt": "2026-09-18T01:13:50.261Z",
+  "updatedAt": "2026-09-21T01:47:36.651Z",
   "subs": {
     "music-theory/1": {
       "subName": "악보·기호",
@@ -254,9 +254,286 @@
           "answer": "으뜸음",
           "origin": "db:120",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "옥타브",
+          "origin": "r020:music-theory/2#001",
+          "note": null
+        },
+        {
+          "answer": "3",
+          "origin": "r020:music-theory/2#002",
+          "note": null
+        },
+        {
+          "answer": "반음",
+          "origin": "r020:music-theory/2#003",
+          "note": null
+        },
+        {
+          "answer": "삼화음",
+          "origin": "r020:music-theory/2#004",
+          "note": null
+        },
+        {
+          "answer": "불협화음",
+          "origin": "r020:music-theory/2#005",
+          "note": null
+        },
+        {
+          "answer": "평균율",
+          "origin": "r020:music-theory/2#006",
+          "note": null
+        },
+        {
+          "answer": "음자리표",
+          "origin": "r020:music-theory/2#007",
+          "note": null
+        },
+        {
+          "answer": "한 마디의 박 수",
+          "origin": "r020:music-theory/2#008",
+          "note": null
+        },
+        {
+          "answer": "메트로놈",
+          "origin": "r020:music-theory/2#009",
+          "note": null
+        },
+        {
+          "answer": "12음 기법",
+          "origin": "r020:music-theory/2#010",
+          "note": null
+        },
+        {
+          "answer": "절대음감",
+          "origin": "r020:music-theory/2#011",
+          "note": null
+        },
+        {
+          "answer": "도",
+          "origin": "r020:music-theory/2#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "music-theory/2#001",
+          "subject": "옥타브",
+          "aspect": "진동수가 정확히 두 배다",
+          "knowledgePoint": "같은 이름의 높은 음이 낮은 음의 두 배 진동수를 가져 같은 음처럼 들리는 성질",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#001",
+            "answer": "옥타브",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#002",
+          "subject": "장조와 단조",
+          "aspect": "셋째 음 하나로 분위기가 갈린다",
+          "knowledgePoint": "으뜸음에서 셋째 음까지의 간격 차이가 밝고 어두운 느낌을 가르는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#002",
+            "answer": "3",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#003",
+          "subject": "반음과 온음",
+          "aspect": "피아노의 검은 건반이 사이를 메운다",
+          "knowledgePoint": "한 옥타브를 열두 반음으로 나눈 체계와 흰 건반 사이에 검은 건반이 없는 자리",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#003",
+            "answer": "반음",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#004",
+          "subject": "화음",
+          "aspect": "세 음을 한 칸씩 띄어 쌓는다",
+          "knowledgePoint": "음을 3도 간격으로 쌓아 만드는 화음의 기본 구조",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#004",
+            "answer": "삼화음",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#005",
+          "subject": "불협화음",
+          "aspect": "긴장을 만들었다가 풀어 준다",
+          "knowledgePoint": "듣기에 불안한 화음이 다음 화음으로 옮겨 가며 해결되는 흐름",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#005",
+            "answer": "불협화음",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#006",
+          "subject": "평균율",
+          "aspect": "조금씩 어긋나게 해서 모든 조를 쓸 수 있게 했다",
+          "knowledgePoint": "한 옥타브를 똑같이 열둘로 나누어 어느 조로 옮겨도 쓸 수 있게 한 조율 방식",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#006",
+            "answer": "평균율",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#007",
+          "subject": "음자리표",
+          "aspect": "같은 자리가 다른 음이 된다",
+          "knowledgePoint": "높은음자리표와 낮은음자리표에 따라 오선의 같은 칸이 다른 음을 뜻하는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#007",
+            "answer": "음자리표",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#008",
+          "subject": "박자표",
+          "aspect": "위와 아래 숫자가 뜻하는 것이 다르다",
+          "knowledgePoint": "한 마디의 박 수와 한 박이 되는 음표의 길이를 각각 나타내는 표기",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#008",
+            "answer": "한 마디의 박 수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#009",
+          "subject": "메트로놈",
+          "aspect": "1분에 몇 번인지로 빠르기를 적는다",
+          "knowledgePoint": "빠르기를 말이 아니라 수치로 나타낼 수 있게 한 장치",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#009",
+            "answer": "메트로놈",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#010",
+          "subject": "12음 기법",
+          "aspect": "열두 음을 한 번씩 다 쓴다",
+          "knowledgePoint": "조성을 버리고 열두 음을 고르게 쓰도록 규칙을 정한 20세기의 작곡 기법",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#010",
+            "answer": "12음 기법",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#011",
+          "subject": "절대음감",
+          "aspect": "기준 없이도 음 이름을 맞힌다",
+          "knowledgePoint": "비교 대상 없이 들은 음의 이름을 아는 능력과 상대음감과의 차이",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#011",
+            "answer": "절대음감",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "music-theory/2#012",
+          "subject": "도레미의 유래",
+          "aspect": "찬가의 각 행 첫 음절에서 왔다",
+          "knowledgePoint": "중세의 찬가 각 행이 한 음씩 높게 시작한 데서 음 이름을 따왔다는 내력",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:17:22.005Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/music-theory-2#012",
+            "answer": "도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "music-theory/3": {
       "subName": "관현악기",
@@ -356,18 +633,17 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-17T05:30:16.759Z",
           "question": {
-            "status": "discarded",
+            "status": "ok",
             "ref": "r019/music-theory-3#002",
             "answer": "팀파니",
             "rejectReason": null,
             "questionPrompt": "question-v2",
             "questionGenerator": "claude-opus-5",
-            "discarded": {
-              "round": "r018",
-              "reason": "중복 판정 same (확신 0.95) — db:237 과 같은 팀파니 지식",
-              "decidedBy": "gemini 중복 판정 (D-043)",
-              "duplicateOf": "db:237",
-              "at": "2026-09-18T01:13:50.256Z"
+            "restored": {
+              "round": "r020",
+              "reason": "R020 작업 B-3 — 판정이 신규가 낫다고 보았고 직접 읽어 동의했다 (건우 확정 C20)",
+              "decidedBy": "R020 작업 B-3",
+              "at": "2026-09-21T00:58:40.827Z"
             }
           }
         },

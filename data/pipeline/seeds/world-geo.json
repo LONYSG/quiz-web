@@ -3,7 +3,7 @@
   "midName": "세계 지리·국가·수도",
   "majorKey": "humanities",
   "majorName": "인문·사회",
-  "updatedAt": "2026-09-18T01:13:50.402Z",
+  "updatedAt": "2026-09-21T01:32:27.388Z",
   "subs": {
     "world-geo/1": {
       "subName": "국가·수도",
@@ -265,18 +265,17 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-17T01:47:01.766Z",
           "question": {
-            "status": "discarded",
+            "status": "ok",
             "ref": "r019/world-geo-1#011",
             "answer": "러시아",
             "rejectReason": null,
             "questionPrompt": "question-v2",
             "questionGenerator": "claude-opus-5",
-            "discarded": {
-              "round": "r018",
-              "reason": "중복 판정 same (확신 0.98) — db:284 와 같은 러시아 지식",
-              "decidedBy": "gemini 중복 판정 (D-043)",
-              "duplicateOf": "db:284",
-              "at": "2026-09-18T01:13:50.396Z"
+            "restored": {
+              "round": "r020",
+              "reason": "R020 작업 B-3 — 판정이 신규가 낫다고 보았고 직접 읽어 동의했다 (건우 확정 C20)",
+              "decidedBy": "R020 작업 B-3",
+              "at": "2026-09-21T00:58:40.831Z"
             }
           }
         },
@@ -318,9 +317,281 @@
           "answer": "콜로세움",
           "origin": "db:283",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "그랜드캐니언",
+          "origin": "r020:world-geo/3#001",
+          "note": null
+        },
+        {
+          "answer": "사하라 사막",
+          "origin": "r020:world-geo/3#002",
+          "note": null
+        },
+        {
+          "answer": "나일강",
+          "origin": "r020:world-geo/3#003",
+          "note": null
+        },
+        {
+          "answer": "사해",
+          "origin": "r020:world-geo/3#004",
+          "note": null
+        },
+        {
+          "answer": "마리아나 해구",
+          "origin": "r020:world-geo/3#005",
+          "note": null
+        },
+        {
+          "answer": "자유의 여신상",
+          "origin": "r020:world-geo/3#007",
+          "note": null
+        },
+        {
+          "answer": "피라미드",
+          "origin": "r020:world-geo/3#008",
+          "note": null
+        },
+        {
+          "answer": "시드니 오페라 하우스",
+          "origin": "r020:world-geo/3#009",
+          "note": null
+        },
+        {
+          "answer": "우랄산맥",
+          "origin": "r020:world-geo/3#010",
+          "note": null
+        },
+        {
+          "answer": "베수비오 화산",
+          "origin": "r020:world-geo/3#011",
+          "note": null
+        },
+        {
+          "answer": "그레이트배리어리프",
+          "origin": "r020:world-geo/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "world-geo/3#001",
+          "subject": "그랜드캐니언",
+          "aspect": "강이 깎아 낸 거대한 협곡",
+          "knowledgePoint": "콜로라도강이 고원을 깎아 만든 협곡과 그것이 속한 나라와 주",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#001",
+            "answer": "그랜드캐니언",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#002",
+          "subject": "사하라 사막",
+          "aspect": "세계에서 가장 큰 더운 사막",
+          "knowledgePoint": "아프리카 북부를 가로지르는 사막과 그 면적이 대륙 규모라는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#002",
+            "answer": "사하라 사막",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#003",
+          "subject": "나일강",
+          "aspect": "남에서 북으로 흐른다",
+          "knowledgePoint": "아프리카 북동부를 흐르며 지중해로 들어가는 강과 그 흐름의 방향",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#003",
+            "answer": "나일강",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#004",
+          "subject": "사해",
+          "aspect": "몸이 저절로 뜬다",
+          "knowledgePoint": "염분 농도가 매우 높아 부력이 크고 해수면이 육지에서 가장 낮은 호수",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#004",
+            "answer": "사해",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#005",
+          "subject": "마리아나 해구",
+          "aspect": "바다에서 가장 깊은 곳",
+          "knowledgePoint": "태평양에 있는 가장 깊은 해구와 그 최심부의 이름",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#005",
+            "answer": "마리아나 해구",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#006",
+          "subject": "만리장성과 달",
+          "aspect": "달에서 보인다는 말은 사실이 아니다",
+          "knowledgePoint": "널리 퍼진 속설과 실제로는 맨눈으로 확인할 수 없다는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "rejected",
+            "ref": "r020/world-geo-3#006",
+            "answer": null,
+            "rejectReason": "이 소재로 만들 문제의 답은 '만리장성' 인데, R019 에서 이미 만리장성을 정답으로 하는 문제를 만들어 DB 에 적재했다 (동양사 > 중국 왕조). 속설의 진위를 묻더라도 답은 같다 (D-090).",
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#007",
+          "subject": "자유의 여신상",
+          "aspect": "프랑스가 선물했다",
+          "knowledgePoint": "미국 독립 100주년을 기념해 프랑스가 보낸 조형물과 그것이 선 섬",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#007",
+            "answer": "자유의 여신상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#008",
+          "subject": "피라미드",
+          "aspect": "카이로 근처에 몰려 있다",
+          "knowledgePoint": "기자 지역에 남은 이집트의 거대 무덤과 그 가운데 가장 큰 것의 이름",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#008",
+            "answer": "피라미드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#009",
+          "subject": "오페라 하우스",
+          "aspect": "조개껍데기를 겹친 지붕",
+          "knowledgePoint": "시드니 항구에 자리한 공연장과 그 특징적인 지붕 형태",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#009",
+            "answer": "시드니 오페라 하우스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#010",
+          "subject": "우랄산맥",
+          "aspect": "대륙의 경계로 삼는다",
+          "knowledgePoint": "유럽과 아시아를 가르는 기준으로 쓰이는 산맥",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#010",
+            "answer": "우랄산맥",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#011",
+          "subject": "베수비오 화산",
+          "aspect": "도시를 통째로 덮었다",
+          "knowledgePoint": "79년에 분화해 폼페이를 화산재 아래 묻은 이탈리아의 화산",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#011",
+            "answer": "베수비오 화산",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-geo/3#012",
+          "subject": "그레이트배리어리프",
+          "aspect": "생물이 만든 가장 큰 구조물",
+          "knowledgePoint": "오스트레일리아 동북 해안을 따라 뻗은 산호초와 그 규모",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:09:25.906Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/world-geo-3#012",
+            "answer": "그레이트배리어리프",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "world-geo/4": {
       "subName": "국경·영토",

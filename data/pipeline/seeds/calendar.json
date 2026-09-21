@@ -3,7 +3,7 @@
   "midName": "절기·기념일·축제",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-18T01:13:50.022Z",
+  "updatedAt": "2026-09-21T05:41:19.437Z",
   "subs": {
     "calendar/1": {
       "subName": "세계 명절·축제",
@@ -12,9 +12,300 @@
           "answer": "할로윈",
           "origin": "db:149",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "동지",
+          "origin": "r020:calendar/1#001",
+          "note": null
+        },
+        {
+          "answer": "빨강",
+          "origin": "r020:calendar/1#002",
+          "note": null
+        },
+        {
+          "answer": "라마단",
+          "origin": "r020:calendar/1#003",
+          "note": null
+        },
+        {
+          "answer": "태음력",
+          "origin": "r020:calendar/1#004",
+          "note": null
+        },
+        {
+          "answer": "춘절",
+          "origin": "r020:calendar/1#005",
+          "note": null
+        },
+        {
+          "answer": "홍바오",
+          "origin": "r020:calendar/1#006",
+          "note": null
+        },
+        {
+          "answer": "오봉",
+          "origin": "r020:calendar/1#007",
+          "note": null
+        },
+        {
+          "answer": "노동절",
+          "origin": "r020:calendar/1#008",
+          "note": null
+        },
+        {
+          "answer": "날짜변경선",
+          "origin": "r020:calendar/1#009",
+          "note": "r018 격리: 중복 — 판정 same, 기존 쪽이 낫다고 봤다 (calendar/3#009 / db:835)"
+        },
+        {
+          "answer": "카니발",
+          "origin": "r020:calendar/1#010",
+          "note": null
+        },
+        {
+          "answer": "블랙 프라이데이",
+          "origin": "r020:calendar/1#011",
+          "note": null
+        },
+        {
+          "answer": "유엔",
+          "origin": "r020:calendar/1#012",
+          "note": "r018 격리: 라운드 안 같은 답 '유엔' — 유엔기 도안(symbols/1#010) 을 남겼다"
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "calendar/1#001",
+          "subject": "크리스마스",
+          "aspect": "날짜가 성경에 적혀 있지 않다",
+          "knowledgePoint": "예수의 탄생일이 기록되어 있지 않은데도 12월 25일로 굳은 내력",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/calendar-1#001",
+            "answer": "동지",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/1#002",
+          "subject": "산타클로스의 빨간 옷",
+          "aspect": "광고가 이미지를 굳혔다",
+          "knowledgePoint": "본래 여러 색으로 그려지던 모습이 20세기 광고로 지금의 모습으로 굳었다는 이야기",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/calendar-1#002",
+            "answer": "빨강",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/1#003",
+          "subject": "라마단",
+          "aspect": "해가 떠 있는 동안 먹지 않는다",
+          "knowledgePoint": "이슬람력의 한 달 동안 일출부터 일몰까지 금식하는 관습과 해마다 시기가 당겨지는 이유",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/calendar-1#003",
+            "answer": "라마단",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/1#004",
+          "subject": "이슬람력",
+          "aspect": "해마다 열흘씩 당겨진다",
+          "knowledgePoint": "달의 주기만 따르고 윤달을 넣지 않아 계절과 어긋나며 도는 역법",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/calendar-1#004",
+            "answer": "태음력",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/1#005",
+          "subject": "중국의 춘절",
+          "aspect": "세계 최대 규모의 이동",
+          "knowledgePoint": "설을 쇠러 고향으로 가는 이동이 해마다 대규모로 일어나는 현상",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/calendar-1#005",
+            "answer": "춘절",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/1#006",
+          "subject": "홍바오",
+          "aspect": "붉은 봉투에 돈을 넣어 준다",
+          "knowledgePoint": "중화권에서 명절과 경사에 붉은 봉투에 돈을 넣어 주는 풍습과 붉은색의 뜻",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/calendar-1#006",
+            "answer": "홍바오",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/1#007",
+          "subject": "오봉",
+          "aspect": "조상이 돌아온다고 여긴다",
+          "knowledgePoint": "일본에서 조상의 영혼을 맞이하는 기간과 그때의 대규모 귀성",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/calendar-1#007",
+            "answer": "오봉",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/1#008",
+          "subject": "노동절",
+          "aspect": "미국의 사건에서 시작됐다",
+          "knowledgePoint": "시카고의 8시간 노동 요구 시위에서 비롯되어 여러 나라가 5월 1일로 기리는 날",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/calendar-1#008",
+            "answer": "노동절",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/1#009",
+          "subject": "새해맞이 카운트다운",
+          "aspect": "시간대마다 차례로 맞는다",
+          "knowledgePoint": "날짜변경선 가까운 곳부터 차례로 새해를 맞아 하루 종일 이어지는 점",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/calendar-1#009",
+            "answer": "날짜변경선",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 — 판정 same, 기존 쪽이 낫다고 봤다 (calendar/3#009 / db:835)",
+              "decidedBy": "Gemini 판정 (r020-judged.json) — 자체 판단",
+              "duplicateOf": "db:835",
+              "at": "2026-09-21T05:41:19.429Z"
+            }
+          }
+        },
+        {
+          "seedId": "calendar/1#010",
+          "subject": "카니발",
+          "aspect": "금식 기간 직전에 실컷 먹고 논다",
+          "knowledgePoint": "사순절에 들어가기 전에 벌이는 축제와 그 이름이 '고기를 치운다' 는 뜻에서 왔다는 설",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/calendar-1#010",
+            "answer": "카니발",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/1#011",
+          "subject": "블랙 프라이데이",
+          "aspect": "장부가 흑자로 돌아선다는 뜻",
+          "knowledgePoint": "추수감사절 다음 날의 대규모 할인과 그 이름의 유래로 전하는 설명",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "ok",
+            "ref": "r020/calendar-1#011",
+            "answer": "블랙 프라이데이",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "calendar/1#012",
+          "subject": "국제 기념일의 지정",
+          "aspect": "유엔이 정하는 날이 있다",
+          "knowledgePoint": "총회 결의로 특정 주제를 기리는 날을 정하는 방식과 그 목적",
+          "round": "r020",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T01:21:40.352Z",
+          "question": {
+            "status": "discarded",
+            "ref": "r020/calendar-1#012",
+            "answer": "유엔",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "라운드 안 같은 답 '유엔' — 유엔기 도안(symbols/1#010) 을 남겼다",
+              "decidedBy": "자체 판단 (D-090 · 라운드 안 같은 답)",
+              "duplicateOf": "r020:symbols/1#010",
+              "at": "2026-09-21T01:59:55.100Z"
+            }
+          }
+        }
+      ]
     },
     "calendar/2": {
       "subName": "국제 기념일",

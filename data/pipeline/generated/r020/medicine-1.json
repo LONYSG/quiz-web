@@ -1,0 +1,321 @@
+{
+  "_meta": {
+    "round": "r020",
+    "subId": "medicine/1",
+    "categoryPath": "기술·의학 > 의학·건강 상식 > 질병",
+    "midKey": "medicine",
+    "subName": "질병",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T01:13:57.462Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 27,
+      "remainingUsable": 11,
+      "remainingUsableNote": "고혈압·통풍·골다공증·백내장·대상포진·알레르기·천식·간염·결핵·빈혈·패혈증이 남았다.",
+      "estimatedCeiling": "실질 상한 23건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "당뇨병",
+          "aspect": "혈당을 조절하지 못한다",
+          "reason": "DB 에 이미 답이 당뇨병인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": "★ 중분류 경계에 따라 진단이나 처방을 조언하는 형태로 쓰지 않았다. 명칭·용어의 사실만 물었다."
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T01:38:45.839Z"
+  },
+  "items": [
+    {
+      "seedId": "medicine/1#001",
+      "seed": {
+        "subject": "감염병과 비감염병",
+        "aspect": "옮는가 아닌가로 가른다",
+        "knowledgePoint": "병원체가 옮겨 생기는 병과 생활습관·유전으로 생기는 병을 가르는 기준"
+      },
+      "question": {
+        "ok": true,
+        "question": "병원체가 옮겨 다니며 생기는 병과 달리, 생활습관이나 유전으로 생겨 남에게 옮지 않는 병을 통틀어 무엇이라 합니까?",
+        "answer": "비감염병",
+        "acceptedAnswers": [
+          "비전염성 질환"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "고혈압·당뇨·암이 여기에 속하며 오늘날 사망 원인의 대부분을 차지합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#002",
+      "seed": {
+        "subject": "바이러스와 세균",
+        "aspect": "항생제가 듣는 쪽은 하나뿐이다",
+        "knowledgePoint": "세균에는 항생제가 듣지만 바이러스에는 듣지 않는 까닭"
+      },
+      "question": {
+        "ok": true,
+        "question": "감기에 항생제가 듣지 않는 것은 감기의 원인이 세균이 아니라 이것이기 때문입니다. 스스로 증식하지 못하고 세포에 들어가야만 늘어나는 이것은?",
+        "answer": "바이러스",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "그래도 항생제를 요구하는 관행이 내성 문제를 키운다는 지적이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#003",
+      "seed": {
+        "subject": "팬데믹",
+        "aspect": "여러 대륙으로 번진 상태",
+        "knowledgePoint": "한 지역의 유행과 세계적 대유행을 가르는 기준과 그것을 선언하는 기구"
+      },
+      "question": {
+        "ok": true,
+        "question": "감염병이 여러 대륙에 걸쳐 널리 퍼진 상태를 뜻하며, 세계보건기구가 선언하는 최고 경보 단계를 무엇이라 합니까?",
+        "answer": "팬데믹",
+        "acceptedAnswers": [
+          "세계적 대유행"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "한 지역에 한정된 유행은 에피데믹, 늘 일정하게 발생하는 것은 엔데믹이라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#004",
+      "seed": {
+        "subject": "자가면역질환",
+        "aspect": "면역이 자기 몸을 공격한다",
+        "knowledgePoint": "외부의 적이 아니라 자기 조직을 적으로 인식해 생기는 병의 무리"
+      },
+      "question": {
+        "ok": true,
+        "question": "면역 체계가 외부의 적이 아니라 자기 몸의 조직을 적으로 잘못 인식해 공격하면서 생기는 병들을 통틀어 무엇이라 합니까?",
+        "answer": "자가면역질환",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "류머티즘 관절염과 1형 당뇨가 여기에 속합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#005",
+      "seed": {
+        "subject": "암의 전이",
+        "aspect": "원래 자리를 벗어나 퍼진다",
+        "knowledgePoint": "암세포가 혈관이나 림프관을 타고 다른 장기로 옮겨 가는 현상과 그것이 치료를 어렵게 하는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "암세포가 처음 생긴 자리를 벗어나 혈관이나 림프관을 타고 다른 장기로 옮겨 가 자리를 잡는 것을 무엇이라 합니까?",
+        "answer": "전이",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "이것이 일어나면 한 곳을 떼어 내는 것만으로는 치료가 되지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#006",
+      "seed": {
+        "subject": "잠복기",
+        "aspect": "증상이 없는데도 옮길 수 있다",
+        "knowledgePoint": "감염되고 증상이 나타나기까지의 기간과 그 사이에도 전파가 일어날 수 있는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "병원체에 감염되고 나서 증상이 나타나기까지의 기간으로, 이 사이에도 남에게 옮길 수 있어 방역을 어렵게 만드는 것은?",
+        "answer": "잠복기",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "격리 기간을 정할 때 이 기간의 길이를 기준으로 삼습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#007",
+      "seed": {
+        "subject": "치매와 알츠하이머",
+        "aspect": "둘은 같은 말이 아니다",
+        "knowledgePoint": "인지 기능이 떨어지는 상태를 통틀어 이르는 말과 그 원인 가운데 가장 흔한 병의 구분"
+      },
+      "question": {
+        "ok": true,
+        "question": "인지 기능이 떨어지는 상태를 통틀어 이르는 말이 따로 있고, 그 원인 가운데 가장 흔한 병이 따로 있습니다. 그 원인 병의 이름은?",
+        "answer": "알츠하이머병",
+        "acceptedAnswers": [
+          "알츠하이머"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "치매는 증상을 묶어 부르는 말이고, 그 원인에는 혈관성 등 여러 가지가 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#008",
+      "seed": {
+        "subject": "뇌졸중",
+        "aspect": "막히는 것과 터지는 것이 있다",
+        "knowledgePoint": "뇌혈관이 막히는 경우와 터지는 경우로 나뉘며 치료가 정반대가 되는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "뇌혈관이 막히는 경우와 터지는 경우를 함께 가리키는 병으로, 두 경우의 치료 방법이 정반대가 되기 때문에 원인을 먼저 가려야 하는 것은?",
+        "answer": "뇌졸중",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "막힌 경우에는 피를 묽게 하지만 터진 경우에 그렇게 하면 더 위험해집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#009",
+      "seed": {
+        "subject": "심근경색",
+        "aspect": "심장 자신에게 가는 혈관이 막힌다",
+        "knowledgePoint": "심장 근육에 피를 보내는 혈관이 막혀 근육이 죽는 병"
+      },
+      "question": {
+        "ok": true,
+        "question": "심장 근육에 피를 보내는 혈관이 막혀 그 부분의 근육이 죽는 병으로, 가슴을 쥐어짜는 듯한 통증이 특징인 것은?",
+        "answer": "심근경색",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "심장도 스스로에게 피를 보내는 혈관을 따로 가지고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#010",
+      "seed": {
+        "subject": "황열과 모기",
+        "aspect": "모기가 옮기는 병이 여럿이다",
+        "knowledgePoint": "말라리아·뎅기열처럼 모기를 매개로 하는 병들과 그래서 모기가 가장 많은 사람을 죽이는 동물로 꼽히는 점"
+      },
+      "question": {
+        "ok": true,
+        "question": "말라리아·뎅기열·황열을 옮겨, 사람을 가장 많이 죽이는 동물로 꼽히는 곤충은?",
+        "answer": "모기",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "직접 해치는 것이 아니라 병원체를 옮기는 매개 구실을 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#011",
+      "seed": {
+        "subject": "백신",
+        "aspect": "병에 걸리지 않고 면역을 얻는다",
+        "knowledgePoint": "약하게 만들거나 일부만 쓴 병원체로 면역 반응을 미리 일으켜 두는 원리"
+      },
+      "question": {
+        "ok": true,
+        "question": "약하게 만들거나 일부만 떼어 낸 병원체를 미리 넣어 면역 반응을 일으켜 두는 예방 수단을 무엇이라 합니까?",
+        "answer": "백신",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 5,
+        "explanation": "일정 비율 이상이 맞으면 맞지 못한 사람까지 보호되는 집단면역이 생깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/1#012",
+      "seed": {
+        "subject": "천연두",
+        "aspect": "인류가 박멸에 성공한 유일한 병",
+        "knowledgePoint": "1980년에 박멸이 선언된 감염병과 그것이 가능했던 조건"
+      },
+      "question": {
+        "ok": true,
+        "question": "1980년에 세계보건기구가 박멸을 선언해, 인류가 완전히 없앤 유일한 사람 감염병으로 꼽히는 것은?",
+        "answer": "천연두",
+        "acceptedAnswers": [
+          "두창"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "사람만 걸리고 잠복 감염이 없어 박멸이 가능했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}
