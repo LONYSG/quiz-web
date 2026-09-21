@@ -3,7 +3,7 @@
   "midName": "야구",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-21T01:59:54.928Z",
+  "updatedAt": "2026-09-21T13:54:28.998Z",
   "subs": {
     "baseball/1": {
       "subName": "규칙",
@@ -61,7 +61,7 @@
         {
           "answer": "4",
           "origin": "r020:baseball/1#010",
-          "note": "r018 격리: 라운드 안 같은 답 '4' — 심장의 방 개수(human-body/2#001) 를 남겼다"
+          "note": "r018 격리: 라운드 안 같은 답 '4' — 심장의 방 개수(human-body/2#001) 를 남겼다 / r018 격리: ★ 판정 보류 — Gemini 429 (오늘 3번째. Q-62/D-056 대로 그날 중단). 중복 여부가 아직 판정되지 않았다. ★★ 판정하지 않은 채 적재하지 않는다는 선을 지키려고 이 건만 뺀다. 다음 라운드에 판정 후 seeds-restore 로 되살린다 — db:50 과 정답 '4' 가 겹친다"
         },
         {
           "answer": "투구 수 제한",
@@ -253,12 +253,25 @@
             "rejectReason": null,
             "questionPrompt": "question-v2",
             "questionGenerator": "claude-opus-5",
+            "restored": {
+              "round": "r020",
+              "reason": "정답이 '4' 뿐이다 — 심장의 방 개수(human-body/2#001)와 맞히게 해 주는 지식이 다르다",
+              "decidedBy": "건우 확정 (C24 → D-097). 숫자만으로 된 정답은 라운드 안 충돌 검사에서 제외한다",
+              "at": "2026-09-21T06:17:26.061Z",
+              "wasDiscarded": {
+                "round": "r018",
+                "reason": "라운드 안 같은 답 '4' — 심장의 방 개수(human-body/2#001) 를 남겼다",
+                "decidedBy": "자체 판단 (D-090 · 라운드 안 같은 답)",
+                "duplicateOf": "r020:human-body/2#001",
+                "at": "2026-09-21T01:59:54.922Z"
+              }
+            },
             "discarded": {
               "round": "r018",
-              "reason": "라운드 안 같은 답 '4' — 심장의 방 개수(human-body/2#001) 를 남겼다",
-              "decidedBy": "자체 판단 (D-090 · 라운드 안 같은 답)",
-              "duplicateOf": "r020:human-body/2#001",
-              "at": "2026-09-21T01:59:54.922Z"
+              "reason": "★ 판정 보류 — Gemini 429 (오늘 3번째. Q-62/D-056 대로 그날 중단). 중복 여부가 아직 판정되지 않았다. ★★ 판정하지 않은 채 적재하지 않는다는 선을 지키려고 이 건만 뺀다. 다음 라운드에 판정 후 seeds-restore 로 되살린다 — db:50 과 정답 '4' 가 겹친다",
+              "decidedBy": "자체 판단 (C22. 브리핑이 위임한 판단)",
+              "duplicateOf": null,
+              "at": "2026-09-21T06:19:30.319Z"
             }
           }
         },
@@ -307,9 +320,263 @@
           "answer": "뉴욕 양키스",
           "origin": "db:210",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "월드 시리즈",
+          "origin": "r021:baseball/3#001",
+          "note": null
+        },
+        {
+          "answer": "아메리칸리그와 내셔널리그",
+          "origin": "r021:baseball/3#002",
+          "note": null
+        },
+        {
+          "answer": "지명타자",
+          "origin": "r021:baseball/3#003",
+          "note": null
+        },
+        {
+          "answer": "재키 로빈슨",
+          "origin": "r021:baseball/3#004",
+          "note": null
+        },
+        {
+          "answer": "베이브 루스",
+          "origin": "r021:baseball/3#005",
+          "note": null
+        },
+        {
+          "answer": "7회 스트레치",
+          "origin": "r021:baseball/3#006",
+          "note": null
+        },
+        {
+          "answer": "밤비노의 저주",
+          "origin": "r021:baseball/3#007",
+          "note": null
+        },
+        {
+          "answer": "스프링 트레이닝",
+          "origin": "r021:baseball/3#008",
+          "note": null
+        },
+        {
+          "answer": "와일드카드",
+          "origin": "r021:baseball/3#009",
+          "note": null
+        },
+        {
+          "answer": "세이버메트릭스",
+          "origin": "r021:baseball/3#010",
+          "note": null
+        },
+        {
+          "answer": "퍼펙트게임",
+          "origin": "r021:baseball/3#011",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "baseball/3#001",
+          "subject": "월드 시리즈",
+          "aspect": "미국 안에서만 하는데 이름은 '세계' 다",
+          "knowledgePoint": "두 리그 우승팀이 겨루는 결승 시리즈와 그 이름",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#001",
+            "answer": "월드 시리즈",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/3#002",
+          "subject": "아메리칸리그와 내셔널리그",
+          "aspect": "지명타자 규정이 오래 달랐다",
+          "knowledgePoint": "두 리그로 나뉜 구조와 규정 차이",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#002",
+            "answer": "아메리칸리그와 내셔널리그",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/3#003",
+          "subject": "지명타자",
+          "aspect": "투수 대신 타석에 선다",
+          "knowledgePoint": "투수를 타격에서 빼기 위해 도입된 제도",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#003",
+            "answer": "지명타자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/3#004",
+          "subject": "재키 로빈슨",
+          "aspect": "인종의 벽을 처음 넘었다",
+          "knowledgePoint": "흑인 선수의 진출을 연 인물과 등번호 영구 결번",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#004",
+            "answer": "재키 로빈슨",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/3#005",
+          "subject": "베이브 루스",
+          "aspect": "투수에서 타자로 옮겨 성공했다",
+          "knowledgePoint": "홈런 시대를 연 선수",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#005",
+            "answer": "베이브 루스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/3#006",
+          "subject": "7회 스트레치",
+          "aspect": "7회에 다 같이 일어나 노래한다",
+          "knowledgePoint": "경기 중간에 관중이 일어서는 관행",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#006",
+            "answer": "7회 스트레치",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/3#007",
+          "subject": "밤비노의 저주",
+          "aspect": "선수를 판 뒤 오래 우승하지 못했다",
+          "knowledgePoint": "보스턴을 둘러싼 이야기와 그 종결",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#007",
+            "answer": "밤비노의 저주",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/3#008",
+          "subject": "스프링 트레이닝",
+          "aspect": "따뜻한 지역에 모여 준비한다",
+          "knowledgePoint": "시즌 전 캠프와 시범경기 제도",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#008",
+            "answer": "스프링 트레이닝",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/3#009",
+          "subject": "와일드카드",
+          "aspect": "지구 우승을 못 해도 나갈 수 있다",
+          "knowledgePoint": "포스트시즌 진출 방식의 하나",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#009",
+            "answer": "와일드카드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/3#010",
+          "subject": "세이버메트릭스",
+          "aspect": "통계로 선수를 평가한다",
+          "knowledgePoint": "기존 지표 대신 데이터로 가치를 재려 한 접근",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#010",
+            "answer": "세이버메트릭스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "baseball/3#011",
+          "subject": "퍼펙트 게임",
+          "aspect": "한 명도 출루시키지 않는다",
+          "knowledgePoint": "노히트노런과 구별되는 기록",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.382Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/baseball-3#011",
+            "answer": "퍼펙트게임",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "baseball/4": {
       "subName": "야구 용어·전술",

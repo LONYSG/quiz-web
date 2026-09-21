@@ -1,0 +1,159 @@
+{
+  "_meta": {
+    "round": "r021p",
+    "subId": "olympic/1",
+    "categoryPath": "스포츠·게임 > 올림픽·국제대회 > 하계 올림픽",
+    "midKey": "olympic",
+    "subName": "하계 올림픽",
+    "majorKey": "sports",
+    "seedPrompt": "seed-r2-v1",
+    "questionPrompt": "question-r2-v1",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T14:22:52.384Z",
+    "seedResult": {
+      "ok": false,
+      "requestedCount": 8,
+      "actualCount": 4,
+      "shortfallReason": "★★★ 4건에서 멈췄다. **이 소분류는 2회차가 잘 되지 않는다.** 대상이 대부분 '사건' 이고, 1회차가 그 사건의 핵심을 이미 썼다. 각도를 바꾸면 곧 그 사건의 주변부(몇 회 대회인가·누가 몇 위였나)로 밀려나 알 가치가 3 밑으로 내려간다.",
+      "firstPassRound": "r017",
+      "reusableSubjects": 10,
+      "droppedSubjects": [
+        {
+          "subject": "벤 존슨",
+          "reason": "★ 대상이 사건이다. 남은 각도는 '몇 초였나' 같은 수치로 내려간다"
+        },
+        {
+          "subject": "황영조",
+          "reason": "같은 이유. 1회차가 몬주익을 썼고 남은 각도는 기록 수치다"
+        },
+        {
+          "subject": "로스앤젤레스",
+          "reason": "1회차가 흑자 대회를 썼다. 남은 각도(몇 번째 개최인가)는 앞으로 값이 바뀐다"
+        },
+        {
+          "subject": "태권도",
+          "reason": "남은 각도(품새·겨루기)가 이미 R021 격투기 소분류에서 쓰였다"
+        },
+        {
+          "subject": "드림팀",
+          "reason": "남은 각도가 '아마추어리즘 폐지' 인데 대상이 사건에서 제도로 옮겨 간다"
+        },
+        {
+          "subject": "난민 선수단",
+          "reason": "1회차 접근성이 3이고 각도를 바꾸면 더 내려간다"
+        }
+      ],
+      "note": "★★★ 파일럿의 핵심 발견 — **2회차가 되는 소분류와 안 되는 소분류가 갈린다.**"
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T14:25:55.943Z"
+  },
+  "items": [
+    {
+      "seedId": "olympic/1#011",
+      "seed": {
+        "subject": "쿠베르탱",
+        "aspect": "'참가에 의의가 있다' 는 말이 그에게서 나왔다고 전한다",
+        "knowledgePoint": "그가 인용해 알려졌으나 본래는 다른 사람의 설교에서 왔다고 전한다는 것",
+        "pairedWith": "olympic/1#001"
+      },
+      "question": {
+        "ok": true,
+        "pass": 2,
+        "pairedWith": "olympic/1#001",
+        "firstPassQuestion": "고대 그리스의 제전을 본떠 국제 경기 대회를 되살리자고 주창하고, 1894년 국제올림픽위원회를 만든 프랑스인은?",
+        "firstPassAccessibility": 4,
+        "question": "'중요한 것은 이기는 것이 아니라 참가하는 것' 이라는 말을 널리 퍼뜨린 사람으로 알려졌으나, 본래 다른 사람의 설교에서 인용한 것이라 전하는 인물은?",
+        "answer": "쿠베르탱",
+        "acceptedAnswers": [
+          "피에르 드 쿠베르탱"
+        ],
+        "accessibility": 4,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "미국 주교의 설교를 듣고 연설에서 인용했다고 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true,
+          "sameTargetAsFirstPass": true,
+          "notAnsweredByFirstPassKnowledge": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/1#012",
+      "seed": {
+        "subject": "베를린",
+        "aspect": "성화를 붙이는 장소는 개최지가 아니다",
+        "knowledgePoint": "그리스 올림피아에서 채화해 개최지까지 나른다는 것",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "pass": 2,
+        "pairedWith": null,
+        "firstPassQuestion": "올림피아에서 붙인 불을 주자들이 이어 달려 개최지까지 나르는 성화 봉송은 1936년 대회에서 처음 시작되었습니다. 그 대회가 열린 도시는?",
+        "firstPassAccessibility": 3,
+        "question": "올림픽 성화는 개최지가 아니라 늘 같은 곳에서 햇빛을 모아 붙입니다. 고대 올림픽이 열렸던 그 그리스의 지역은?",
+        "answer": "올림피아",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "오목거울로 햇빛을 모아 채화합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true,
+          "sameTargetAsFirstPass": true,
+          "notAnsweredByFirstPassKnowledge": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/1#013",
+      "seed": {
+        "subject": "손기정",
+        "aspect": "기록에 남은 이름이 본인의 이름이 아니었다",
+        "knowledgePoint": "일본 이름으로 기록되어 뒤에 표기를 바로잡아 달라는 요구가 이어졌다는 것",
+        "pairedWith": "olympic/1#003"
+      },
+      "question": {
+        "ok": true,
+        "pass": 2,
+        "pairedWith": "olympic/1#003",
+        "firstPassQuestion": "1936년 베를린 대회 마라톤에서 우승하고도 일장기를 단 채 고개를 숙이고 시상대에 서야 했고, 이 사진에서 일장기를 지운 신문이 정간된 일로도 알려진 선수는?",
+        "firstPassAccessibility": 5,
+        "question": "올림픽 공식 기록에 국적과 이름이 일본식으로 남아 있어, 뒷날 이를 바로잡아 달라는 요구가 이어져 온 마라톤 우승자는?",
+        "answer": "손기정",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "기록 정정 문제는 오랫동안 해결되지 않았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true,
+          "sameTargetAsFirstPass": true,
+          "notAnsweredByFirstPassKnowledge": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/1#014",
+      "seed": {
+        "subject": "파리",
+        "aspect": "하계 올림픽을 세 번 연 도시다",
+        "knowledgePoint": "1900년과 1924년에 이어 다시 열려 런던과 함께 세 번 개최한 도시가 되었다는 것",
+        "pairedWith": "olympic/1#008"
+      },
+      "question": {
+        "ok": false,
+        "rejectReason": "★★ 2회차가 되지 않는다. 1회차는 '여성이 처음 출전한 1900년 대회의 개최 도시' 를 물어 답이 파리였다. 남은 각도는 '몇 번째로 개최했는가' 인데, (1) 개최 횟수는 앞으로 값이 바뀌어 시간 의존 문제가 되고 (2) 1회차를 아는 사람이 곧바로 맞힐 수 있어 겹친다. 억지로 만들지 않고 돌려보낸다."
+      }
+    }
+  ]
+}

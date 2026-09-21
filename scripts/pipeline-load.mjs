@@ -357,7 +357,7 @@ try {
     // ★★ R020 정답 표기 게이트 — 프롬프트의 규칙을 적재에서도 확인한다
     let variants = g.answers ?? [];
     if (!NO_GATE) {
-      const gate = checkAnswerSet(g.questionText, g.displayAnswer, variants);
+      const gate = checkAnswerSet(g.questionText, g.displayAnswer, variants, normalizeAnswer);
       if (gate.blocked.length) {
         // ★★ 질문에 정답이 낱말로 들어 있다. 채팅으로 답하는 게임이라 질문을 베끼면 이긴다.
         //   ★ 이것은 변형을 빼서 고칠 수 없다. 문제 자체를 다시 써야 한다

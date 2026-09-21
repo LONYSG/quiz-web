@@ -1,0 +1,332 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "olympic/3",
+    "categoryPath": "스포츠·게임 > 올림픽·국제대회 > 종목·규정",
+    "midKey": "olympic",
+    "subName": "종목·규정",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:38:27.386Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 25,
+      "remainingUsable": 7,
+      "remainingUsableNote": "근대 5종·철인 3종·컬링의 스위핑·양궁 과녁 점수·역도 체급·사격 규정·마라톤 거리의 확정이 남았다.",
+      "estimatedCeiling": "실질 상한 19건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "사브르",
+          "aspect": "펜싱의 한 종목",
+          "reason": "DB 에 이미 답이 사브르인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T13:54:28.999Z"
+  },
+  "items": [
+    {
+      "seedId": "olympic/3#001",
+      "seed": {
+        "subject": "도핑 검사",
+        "aspect": "메달을 박탈하기도 한다",
+        "knowledgePoint": "금지 약물을 가려내는 검사와 사후 재검사"
+      },
+      "question": {
+        "ok": true,
+        "question": "경기가 끝난 뒤에도 시료를 보관했다가 다시 검사해 메달을 박탈하기도 하는, 금지 약물 확인 절차를 무엇이라 합니까?",
+        "answer": "도핑 검사",
+        "acceptedAnswers": [
+          "도핑 테스트"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "새 검사법이 나오면 옛 시료를 다시 검사합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#002",
+      "seed": {
+        "subject": "세계반도핑기구",
+        "aspect": "금지 목록을 해마다 고친다",
+        "knowledgePoint": "도핑 규정을 통일해 관리하는 기구"
+      },
+      "question": {
+        "ok": true,
+        "question": "종목과 나라에 따라 제각각이던 금지 약물 규정을 통일해 관리하려고 세운 국제 기구는?",
+        "answer": "세계반도핑기구",
+        "acceptedAnswers": [
+          "WADA",
+          "와다"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "해마다 금지 목록을 새로 내놓습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#003",
+      "seed": {
+        "subject": "유도의 한판",
+        "aspect": "한 번으로 경기가 끝난다",
+        "knowledgePoint": "완전한 기술이 들어가면 즉시 승부가 나는 판정"
+      },
+      "question": {
+        "ok": true,
+        "question": "유도에서 완전한 기술이 들어가면 그 즉시 경기가 끝납니다. 이 판정을 무엇이라 합니까?",
+        "answer": "한판",
+        "acceptedAnswers": [
+          "일본"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "상대를 등이 닿게 강하고 빠르게 넘겨야 인정됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#004",
+      "seed": {
+        "subject": "태권도 전자호구",
+        "aspect": "판정 시비를 줄이려 도입했다",
+        "knowledgePoint": "타격을 센서로 감지하게 만든 장비"
+      },
+      "question": {
+        "ok": true,
+        "question": "태권도가 판정 시비를 줄이려고 도입해, 타격을 센서로 감지하게 만든 장비를 무엇이라 합니까?",
+        "answer": "전자호구",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "대신 점수를 노린 발 들기 같은 새 문제가 생겼다는 지적도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#005",
+      "seed": {
+        "subject": "체조의 난도 점수",
+        "aspect": "만점이 사라졌다",
+        "knowledgePoint": "10점 만점 대신 난도와 수행을 더하는 방식으로 바뀐 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "기계체조에서 10점 만점이 사라진 것은, 점수를 무엇과 수행 점수로 나누어 더하게 바꿨기 때문입니까?",
+        "answer": "난도",
+        "acceptedAnswers": [
+          "난이도"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "어려운 기술을 시도할 이유를 만들려는 개정이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#006",
+      "seed": {
+        "subject": "수영의 실격",
+        "aspect": "출발 반응이 너무 빨라도 안 된다",
+        "knowledgePoint": "부정 출발 기준과 영법 규정"
+      },
+      "question": {
+        "ok": true,
+        "question": "수영에서 출발 신호보다 먼저 움직이면 곧바로 실격됩니다. 이것을 무엇이라 합니까?",
+        "answer": "부정 출발",
+        "acceptedAnswers": [
+          "폴스 스타트"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "육상에서도 한 번만 해도 실격되도록 규정이 바뀌었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#007",
+      "seed": {
+        "subject": "마라톤",
+        "aspect": "42.195km 로 정해져 있다",
+        "knowledgePoint": "거리가 지금 값으로 굳은 내력"
+      },
+      "question": {
+        "ok": true,
+        "question": "올림픽 마라톤 거리가 42.195킬로미터라는 어중간한 값으로 굳은 것은, 어느 대회에서 왕실의 사정에 맞춰 출발점을 옮겼기 때문이라 전합니다. 그 대회가 열린 도시는?",
+        "answer": "런던",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "1908년 대회의 거리가 뒤에 표준으로 굳었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#008",
+      "seed": {
+        "subject": "사진 판정",
+        "aspect": "몸통이 결승선에 닿는 순간을 본다",
+        "knowledgePoint": "육상에서 순위를 가르는 기준"
+      },
+      "question": {
+        "ok": true,
+        "question": "육상 단거리에서 순위를 가를 때 결승선에 닿은 것으로 인정하는 신체 부위는?",
+        "answer": "몸통",
+        "acceptedAnswers": [
+          "토르소",
+          "상체"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "손이나 머리가 먼저 닿아도 기준이 되지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#009",
+      "seed": {
+        "subject": "체급",
+        "aspect": "몸무게로 나눠 겨룬다",
+        "knowledgePoint": "격투·역도 종목에서 공정을 위해 두는 구분"
+      },
+      "question": {
+        "ok": true,
+        "question": "격투기와 역도에서 몸무게를 기준으로 선수를 나누어 겨루게 하는 구분을 무엇이라 합니까?",
+        "answer": "체급",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "체격 차이가 결과를 좌우하지 않게 하려는 장치입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#010",
+      "seed": {
+        "subject": "혼성 종목",
+        "aspect": "남녀가 한 팀으로 뛴다",
+        "knowledgePoint": "최근 늘어난 남녀 혼성 경기 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "양궁 단체전이나 계주에서 남녀가 한 팀을 이뤄 겨루는 방식을 무엇이라 합니까?",
+        "answer": "혼성",
+        "acceptedAnswers": [
+          "혼성 경기",
+          "혼성전"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "최근 올림픽에서 이런 종목이 늘고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#011",
+      "seed": {
+        "subject": "시범 종목",
+        "aspect": "개최국이 제안할 수 있다",
+        "knowledgePoint": "정식 종목이 되기 전 단계"
+      },
+      "question": {
+        "ok": true,
+        "question": "정식 종목이 되기 전 단계로, 개최국이 제안해 그 대회에서만 치러 보는 종목을 무엇이라 합니까?",
+        "answer": "시범 종목",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "태권도도 이 단계를 거쳐 정식 종목이 되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "olympic/3#012",
+      "seed": {
+        "subject": "판정 번복",
+        "aspect": "비디오로 다시 본다",
+        "knowledgePoint": "여러 종목에 도입된 영상 판독 제도"
+      },
+      "question": {
+        "ok": true,
+        "question": "여러 종목에 도입되어, 판정에 이의가 있을 때 화면을 다시 보고 결정을 바로잡는 제도를 무엇이라 합니까?",
+        "answer": "비디오 판독",
+        "acceptedAnswers": [
+          "영상 판독"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "판정 시비를 줄이는 대신 경기 흐름이 끊긴다는 지적도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

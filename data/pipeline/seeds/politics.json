@@ -3,7 +3,7 @@
   "midName": "정치·법 상식",
   "majorKey": "humanities",
   "majorName": "인문·사회",
-  "updatedAt": "2026-09-21T01:32:27.383Z",
+  "updatedAt": "2026-09-21T06:47:43.557Z",
   "subs": {
     "politics/1": {
       "subName": "정치 체제·기구",
@@ -300,9 +300,286 @@
           "answer": "게리맨더링",
           "origin": "db:140",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "비밀선거",
+          "origin": "r021:politics/2#001",
+          "note": null
+        },
+        {
+          "answer": "비례대표제",
+          "origin": "r021:politics/2#002",
+          "note": null
+        },
+        {
+          "answer": "양원제",
+          "origin": "r021:politics/2#003",
+          "note": null
+        },
+        {
+          "answer": "필리버스터",
+          "origin": "r021:politics/2#004",
+          "note": null
+        },
+        {
+          "answer": "불체포특권",
+          "origin": "r021:politics/2#005",
+          "note": null
+        },
+        {
+          "answer": "국정감사",
+          "origin": "r021:politics/2#006",
+          "note": null
+        },
+        {
+          "answer": "결선투표",
+          "origin": "r021:politics/2#007",
+          "note": null
+        },
+        {
+          "answer": "의무투표제",
+          "origin": "r021:politics/2#008",
+          "note": null
+        },
+        {
+          "answer": "헌법재판소",
+          "origin": "r021:politics/2#009",
+          "note": null
+        },
+        {
+          "answer": "캐스팅보트",
+          "origin": "r021:politics/2#010",
+          "note": null
+        },
+        {
+          "answer": "출구조사",
+          "origin": "r021:politics/2#011",
+          "note": null
+        },
+        {
+          "answer": "여소야대",
+          "origin": "r021:politics/2#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "politics/2#001",
+          "subject": "선거의 4원칙",
+          "aspect": "보통·평등·직접·비밀",
+          "knowledgePoint": "민주 선거가 갖춰야 할 네 가지 원칙",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#001",
+            "answer": "비밀선거",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#002",
+          "subject": "비례대표제",
+          "aspect": "정당 득표율만큼 의석을 준다",
+          "knowledgePoint": "사표를 줄이려 만든 의석 배분 방식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#002",
+            "answer": "비례대표제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#003",
+          "subject": "양원제",
+          "aspect": "의회를 둘로 나눈다",
+          "knowledgePoint": "상원과 하원을 두어 서로를 견제하게 하는 구조",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#003",
+            "answer": "양원제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#004",
+          "subject": "필리버스터",
+          "aspect": "말을 길게 해 표결을 막는다",
+          "knowledgePoint": "소수파가 합법적으로 의사 진행을 지연시키는 수단",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#004",
+            "answer": "필리버스터",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#005",
+          "subject": "불체포특권",
+          "aspect": "회기 중에는 체포되지 않는다",
+          "knowledgePoint": "의원의 활동을 보장하려 둔 특권과 그 한계",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#005",
+            "answer": "불체포특권",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#006",
+          "subject": "국정감사",
+          "aspect": "국회가 행정부를 들여다본다",
+          "knowledgePoint": "해마다 정해진 기간에 국정 전반을 조사하는 제도",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#006",
+            "answer": "국정감사",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#007",
+          "subject": "결선투표",
+          "aspect": "과반이 없으면 한 번 더",
+          "knowledgePoint": "1차에서 과반 득표자가 없을 때 상위 두 명이 다시 겨루는 방식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#007",
+            "answer": "결선투표",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#008",
+          "subject": "의무투표제",
+          "aspect": "투표하지 않으면 벌칙이 있다",
+          "knowledgePoint": "투표를 의무로 정한 나라들의 제도",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#008",
+            "answer": "의무투표제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#009",
+          "subject": "탄핵소추",
+          "aspect": "국회가 의결하고 헌법재판소가 판단한다",
+          "knowledgePoint": "고위 공직자를 파면하려는 절차와 그 두 단계",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#009",
+            "answer": "헌법재판소",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#010",
+          "subject": "캐스팅보트",
+          "aspect": "가부 동수일 때 결정권",
+          "knowledgePoint": "표가 갈렸을 때 결정을 가르는 표를 이르는 말",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#010",
+            "answer": "캐스팅보트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#011",
+          "subject": "출구조사",
+          "aspect": "투표를 마친 사람에게 묻는다",
+          "knowledgePoint": "개표 전에 결과를 가늠하려는 조사와 그 오차",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#011",
+            "answer": "출구조사",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "politics/2#012",
+          "subject": "여소야대",
+          "aspect": "정부와 의회의 다수가 엇갈린다",
+          "knowledgePoint": "집권 세력이 의회 과반을 갖지 못한 상태",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.369Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/politics-2#012",
+            "answer": "여소야대",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "politics/3": {
       "subName": "헌법·법 개념",

@@ -3,7 +3,7 @@
   "midName": "한국어·한글",
   "majorKey": "korea",
   "majorName": "한국",
-  "updatedAt": "2026-09-21T01:26:16.274Z",
+  "updatedAt": "2026-09-21T06:42:42.642Z",
   "subs": {
     "kr-language/1": {
       "subName": "한글 자모·맞춤법",
@@ -825,9 +825,286 @@
           "answer": "진지",
           "origin": "db:313",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "압존법",
+          "origin": "r021:kr-language/5#001",
+          "note": null
+        },
+        {
+          "answer": "사물",
+          "origin": "r021:kr-language/5#002",
+          "note": null
+        },
+        {
+          "answer": "주체 높임법",
+          "origin": "r021:kr-language/5#003",
+          "note": null
+        },
+        {
+          "answer": "객체 높임법",
+          "origin": "r021:kr-language/5#004",
+          "note": null
+        },
+        {
+          "answer": "말씀이 있으시다",
+          "origin": "r021:kr-language/5#005",
+          "note": null
+        },
+        {
+          "answer": "상대 높임법",
+          "origin": "r021:kr-language/5#006",
+          "note": null
+        },
+        {
+          "answer": "모시고 가다",
+          "origin": "r021:kr-language/5#007",
+          "note": null
+        },
+        {
+          "answer": "여쭈다",
+          "origin": "r021:kr-language/5#008",
+          "note": null
+        },
+        {
+          "answer": "뵙다",
+          "origin": "r021:kr-language/5#009",
+          "note": null
+        },
+        {
+          "answer": "부모",
+          "origin": "r021:kr-language/5#010",
+          "note": null
+        },
+        {
+          "answer": "진지",
+          "origin": "r021:kr-language/5#011",
+          "note": null
+        },
+        {
+          "answer": "댁",
+          "origin": "r021:kr-language/5#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "kr-language/5#001",
+          "subject": "압존법",
+          "aspect": "듣는 사람이 더 윗사람이면 높이지 않는다",
+          "knowledgePoint": "할아버지에게 아버지 이야기를 할 때 아버지를 낮추던 어법",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#001",
+            "answer": "압존법",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#002",
+          "subject": "간접 높임",
+          "aspect": "'커피 나오셨습니다' 가 어색한 까닭",
+          "knowledgePoint": "사물에 높임을 붙이는 잘못된 표현과 그 이유",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#002",
+            "answer": "사물",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#003",
+          "subject": "주체 높임",
+          "aspect": "'-시-' 를 넣어 높인다",
+          "knowledgePoint": "문장의 주어를 높이는 방법",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#003",
+            "answer": "주체 높임법",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#004",
+          "subject": "객체 높임",
+          "aspect": "'주다' 대신 '드리다' 를 쓴다",
+          "knowledgePoint": "동작이 미치는 대상을 높이는 특수 어휘",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#004",
+            "answer": "객체 높임법",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#005",
+          "subject": "계시다",
+          "aspect": "'말씀이 계시다' 가 틀린 까닭",
+          "knowledgePoint": "사람에게만 쓰는 높임 어휘와 '있으시다' 의 구분",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#005",
+            "answer": "말씀이 있으시다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#006",
+          "subject": "상대 높임법",
+          "aspect": "듣는 사람에 따라 문장 끝이 달라진다",
+          "knowledgePoint": "해라체부터 하십시오체까지 종결 어미로 나뉘는 체계",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#006",
+            "answer": "상대 높임법",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#007",
+          "subject": "모시다",
+          "aspect": "'데리고 가다' 의 높임 표현",
+          "knowledgePoint": "윗사람을 동반할 때 쓰는 객체 높임 어휘",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#007",
+            "answer": "모시고 가다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#008",
+          "subject": "여쭈다",
+          "aspect": "'묻다' 의 높임 표현",
+          "knowledgePoint": "윗사람에게 물을 때 쓰는 어휘",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#008",
+            "answer": "여쭈다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#009",
+          "subject": "뵙다",
+          "aspect": "'보다' 의 높임 표현",
+          "knowledgePoint": "윗사람을 만날 때 쓰는 어휘",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#009",
+            "answer": "뵙다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#010",
+          "subject": "자기 가족 높이기",
+          "aspect": "남에게 내 부모를 말할 때",
+          "knowledgePoint": "밖에서는 자기 쪽을 낮추는 것이 원칙이나 부모는 예외로 두는 관행",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#010",
+            "answer": "부모",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#011",
+          "subject": "진지",
+          "aspect": "'밥' 의 높임말",
+          "knowledgePoint": "어휘 자체가 높임인 말들",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#011",
+            "answer": "진지",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "kr-language/5#012",
+          "subject": "댁",
+          "aspect": "'집' 의 높임말",
+          "knowledgePoint": "상대의 집을 가리킬 때 쓰는 높임 어휘",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:25:41.135Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/kr-language-5#012",
+            "answer": "댁",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "kr-language/2": {
       "subName": "순우리말",

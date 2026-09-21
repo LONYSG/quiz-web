@@ -3,7 +3,7 @@
   "midName": "에너지·환경 기술",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-21T01:42:33.707Z",
+  "updatedAt": "2026-09-21T06:56:03.201Z",
   "subs": {
     "energy/1": {
       "subName": "발전 방식",
@@ -12,9 +12,286 @@
           "answer": "원자력 발전",
           "origin": "db:143",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "터빈",
+          "origin": "r021:energy/1#001",
+          "note": null
+        },
+        {
+          "answer": "수력 발전",
+          "origin": "r021:energy/1#002",
+          "note": null
+        },
+        {
+          "answer": "양수 발전",
+          "origin": "r021:energy/1#003",
+          "note": null
+        },
+        {
+          "answer": "풍력 발전",
+          "origin": "r021:energy/1#004",
+          "note": null
+        },
+        {
+          "answer": "태양광",
+          "origin": "r021:energy/1#005",
+          "note": null
+        },
+        {
+          "answer": "지열 발전",
+          "origin": "r021:energy/1#006",
+          "note": null
+        },
+        {
+          "answer": "화력 발전",
+          "origin": "r021:energy/1#007",
+          "note": null
+        },
+        {
+          "answer": "기저부하",
+          "origin": "r021:energy/1#008",
+          "note": null
+        },
+        {
+          "answer": "에너지 저장 장치",
+          "origin": "r021:energy/1#009",
+          "note": null
+        },
+        {
+          "answer": "송전 손실",
+          "origin": "r021:energy/1#010",
+          "note": null
+        },
+        {
+          "answer": "수요 관리",
+          "origin": "r021:energy/1#011",
+          "note": null
+        },
+        {
+          "answer": "탄소 배출 계수",
+          "origin": "r021:energy/1#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "energy/1#001",
+          "subject": "터빈",
+          "aspect": "대부분의 발전이 결국 이것을 돌린다",
+          "knowledgePoint": "화력·원자력·수력이 공통으로 쓰는 회전 장치",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#001",
+            "answer": "터빈",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#002",
+          "subject": "수력 발전",
+          "aspect": "물의 위치 에너지를 쓴다",
+          "knowledgePoint": "낙차를 이용해 전기를 얻는 방식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#002",
+            "answer": "수력 발전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#003",
+          "subject": "양수 발전",
+          "aspect": "남는 전기로 물을 끌어올려 둔다",
+          "knowledgePoint": "전기를 저장하는 방법으로 쓰이는 발전",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#003",
+            "answer": "양수 발전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#004",
+          "subject": "풍력 발전",
+          "aspect": "바람의 세기에 따라 출력이 들쭉날쭉하다",
+          "knowledgePoint": "간헐성이 문제로 꼽히는 재생에너지",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#004",
+            "answer": "풍력 발전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#005",
+          "subject": "태양광과 태양열",
+          "aspect": "빛을 바로 전기로 바꾸느냐 열을 쓰느냐",
+          "knowledgePoint": "이름이 비슷하지만 원리가 다른 두 방식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#005",
+            "answer": "태양광",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#006",
+          "subject": "지열 발전",
+          "aspect": "화산 지대가 유리하다",
+          "knowledgePoint": "땅속 열을 이용하며 입지 제약이 큰 방식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#006",
+            "answer": "지열 발전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#007",
+          "subject": "화력 발전",
+          "aspect": "연료를 태워 물을 끓인다",
+          "knowledgePoint": "석탄·가스를 태워 증기로 터빈을 돌리는 방식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#007",
+            "answer": "화력 발전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#008",
+          "subject": "기저부하",
+          "aspect": "늘 필요한 만큼의 전력",
+          "knowledgePoint": "하루 내내 꾸준히 필요한 전력 수요",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#008",
+            "answer": "기저부하",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#009",
+          "subject": "전력 저장 장치",
+          "aspect": "남을 때 담고 모자랄 때 꺼낸다",
+          "knowledgePoint": "재생에너지의 간헐성을 메우는 설비",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#009",
+            "answer": "에너지 저장 장치",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#010",
+          "subject": "송전 손실",
+          "aspect": "멀리 보낼수록 줄어든다",
+          "knowledgePoint": "고압으로 보내는 이유와 손실의 관계",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#010",
+            "answer": "송전 손실",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#011",
+          "subject": "전력 수요 관리",
+          "aspect": "쓰는 쪽을 조절한다",
+          "knowledgePoint": "공급을 늘리는 대신 수요를 옮기거나 줄이는 방식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#011",
+            "answer": "수요 관리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "energy/1#012",
+          "subject": "탄소 배출 계수",
+          "aspect": "발전 방식마다 다르다",
+          "knowledgePoint": "같은 전기를 만들 때 나오는 온실가스가 방식별로 다른 것",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.851Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/energy-1#012",
+            "answer": "탄소 배출 계수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "energy/2": {
       "subName": "재생 에너지",

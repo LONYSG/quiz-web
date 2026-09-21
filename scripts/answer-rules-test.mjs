@@ -70,5 +70,13 @@ console.log('\n── checkAnswerSet (적재 게이트가 실제로 쓰는 경�
   say(r.blocked.length === 0 && r.dropped.length === 0, '멀쩡한 문항은 아무것도 걸리지 않는다');
 }
 
+{
+  // ★ R021 — 정규화하면 같아지는 변형은 적재 게이트가 떼낸다
+  const norm = (x) => x.replace(/\s+/g, '');
+  const r = checkAnswerSet('지구 자전 주기와 같아 멈춰 있는 것처럼 보이는 궤도는?', '정지궤도', ['정지 궤도', '정지권'], norm);
+  say(r.dropped.some((x) => x.kind === 'redundant' && x.answer === '정지 궤도'), "'정지 궤도' 가 redundant 로 떨어진다");
+  say(!r.dropped.some((x) => x.answer === '정지권'), '정규화해도 다른 변형은 남는다');
+}
+
 console.log(`\n[결과] ${pass}건 통과 / ${fail}건 실패`);
 process.exit(fail === 0 ? 0 : 1);

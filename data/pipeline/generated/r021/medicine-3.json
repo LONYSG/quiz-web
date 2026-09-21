@@ -1,0 +1,328 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "medicine/3",
+    "categoryPath": "기술·의학 > 의학·건강 상식 > 의약품·백신",
+    "midKey": "medicine",
+    "subName": "의약품·백신",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:32:40.840Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 24,
+      "remainingUsable": 6,
+      "remainingUsableNote": "제네릭·처방전 없이 사는 약·복약 시간·인슐린·마취제·소아용 용량 계산이 남았다.",
+      "estimatedCeiling": "실질 상한 18건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "알렉산더 플레밍",
+          "aspect": "페니실린을 발견했다",
+          "reason": "DB 에 이미 답이 알렉산더 플레밍인 문제가 있다 (usedAnswers). ★ 발견자는 발명·발견 중분류가 맡는다"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T06:56:03.189Z"
+  },
+  "items": [
+    {
+      "seedId": "medicine/3#001",
+      "seed": {
+        "subject": "백신",
+        "aspect": "약해진 병원체나 그 조각을 미리 보여 준다",
+        "knowledgePoint": "면역 기억을 만들어 실제 감염에 대비하게 하는 원리"
+      },
+      "question": {
+        "ok": true,
+        "question": "약하게 만든 병원체나 그 일부를 미리 몸에 넣어 면역 기억을 만들어 두는 것을 무엇이라 합니까?",
+        "answer": "백신",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "실제 감염이 일어나면 이미 준비된 면역이 빠르게 대응합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/3#002",
+      "seed": {
+        "subject": "집단면역",
+        "aspect": "일정 비율이 면역을 가지면 전파가 끊긴다",
+        "knowledgePoint": "접종하지 못한 사람까지 보호하게 되는 효과"
+      },
+      "question": {
+        "ok": true,
+        "question": "일정 비율 이상이 면역을 가지면 전파가 끊겨 접종하지 못한 사람까지 보호되는 현상을 무엇이라 합니까?",
+        "answer": "집단면역",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "필요한 비율은 전파력에 따라 달라집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/3#003",
+      "seed": {
+        "subject": "항생제 내성",
+        "aspect": "함부로 쓰면 듣지 않게 된다",
+        "knowledgePoint": "살아남은 균이 퍼지며 약이 듣지 않게 되는 과정"
+      },
+      "question": {
+        "ok": true,
+        "question": "약을 함부로 쓰거나 중간에 끊으면 살아남은 균이 퍼져 약이 듣지 않게 됩니다. 이 문제를 무엇이라 합니까?",
+        "answer": "항생제 내성",
+        "acceptedAnswers": [
+          "내성"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "새 약이 나오는 속도보다 내성이 생기는 속도가 빠르다는 경고가 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/3#004",
+      "seed": {
+        "subject": "아스피린",
+        "aspect": "버드나무 껍질에서 시작되었다",
+        "knowledgePoint": "해열·진통에서 출발해 혈전 예방에도 쓰이게 된 약"
+      },
+      "question": {
+        "ok": true,
+        "question": "버드나무 껍질에서 얻은 성분에서 출발했고, 지금은 혈전 예방에도 쓰이는 해열진통제는?",
+        "answer": "아스피린",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "본래 목적과 다른 쓰임이 나중에 밝혀진 대표적인 약입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/3#005",
+      "seed": {
+        "subject": "백신의 저온 유통",
+        "aspect": "온도가 깨지면 못 쓴다",
+        "knowledgePoint": "생산에서 접종까지 저온을 유지해야 하는 체계"
+      },
+      "question": {
+        "ok": true,
+        "question": "백신은 생산에서 접종까지 정해진 낮은 온도를 유지해야 효과가 유지됩니다. 이 유통 체계를 무엇이라 합니까?",
+        "answer": "콜드체인",
+        "acceptedAnswers": [
+          "저온 유통"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "온도 기록이 깨지면 그 물량을 쓸 수 없게 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/3#006",
+      "seed": {
+        "subject": "임상시험",
+        "aspect": "사람에게 쓰기까지 여러 단계를 거친다",
+        "knowledgePoint": "안전성과 효과를 단계별로 확인하는 절차"
+      },
+      "question": {
+        "ok": true,
+        "question": "새로 만든 약을 사람에게 쓰기 전에 안전성과 효과를 단계별로 확인하는 절차를 무엇이라 합니까?",
+        "answer": "임상시험",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "보통 1상부터 3상까지 나누어 진행합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/3#007",
+      "seed": {
+        "subject": "부작용",
+        "aspect": "효과와 떼어 놓을 수 없다",
+        "knowledgePoint": "주된 작용 외에 나타나는 반응과 이상반응 신고 제도"
+      },
+      "question": {
+        "ok": true,
+        "question": "약이 목적으로 하는 작용 외에 함께 나타나는 반응을 무엇이라 합니까? 효과와 떼어 놓기 어렵습니다.",
+        "answer": "부작용",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "예상하지 못한 해로운 반응은 이상반응으로 따로 신고합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/3#008",
+      "seed": {
+        "subject": "종두법",
+        "aspect": "소의 천연두를 이용했다",
+        "knowledgePoint": "백신이라는 말의 어원이 된 예방 접종"
+      },
+      "question": {
+        "ok": true,
+        "question": "어떤 가축의 질병을 사람에게 접종해 천연두를 막은 방법에서 '백신' 이라는 말이 나왔습니다. 그 가축은?",
+        "answer": "소",
+        "acceptedAnswers": [
+          "암소"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "라틴어로 소를 뜻하는 말에서 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "fixedBy": "r021 규칙검사 수정"
+      }
+    },
+    {
+      "seedId": "medicine/3#009",
+      "seed": {
+        "subject": "천연두",
+        "aspect": "인류가 박멸에 성공한 감염병",
+        "knowledgePoint": "전 지구적 접종으로 자연 발생이 사라진 유일한 사람 감염병"
+      },
+      "question": {
+        "ok": true,
+        "question": "전 세계적인 접종으로 자연 발생이 사라져, 인류가 박멸에 성공한 유일한 사람 감염병은?",
+        "answer": "천연두",
+        "acceptedAnswers": [
+          "두창"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "세계보건기구가 1980년에 박멸을 선언했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/3#010",
+      "seed": {
+        "subject": "모르핀",
+        "aspect": "강력한 진통 효과와 중독성을 함께 가진다",
+        "knowledgePoint": "양귀비에서 얻은 성분이며 엄격히 관리되는 약"
+      },
+      "question": {
+        "ok": true,
+        "question": "양귀비에서 얻은 성분으로 강력한 진통 효과가 있지만 중독성 때문에 엄격히 관리되는 약은?",
+        "answer": "모르핀",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "꿈의 신의 이름에서 유래했다고 설명됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/3#011",
+      "seed": {
+        "subject": "해열진통제 성분",
+        "aspect": "아세트아미노펜과 소염 계열은 다르다",
+        "knowledgePoint": "작용 방식과 주의점이 서로 다른 두 계열"
+      },
+      "question": {
+        "ok": true,
+        "question": "해열진통제 가운데 위에 부담이 적어 공복에도 비교적 쓸 수 있으나, 간에 부담이 될 수 있어 용량을 지켜야 하는 성분은?",
+        "answer": "아세트아미노펜",
+        "acceptedAnswers": [
+          "타이레놀 성분",
+          "파라세타몰"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "소염 효과가 있는 다른 계열과 작용 방식이 다릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/3#012",
+      "seed": {
+        "subject": "약의 유통기한",
+        "aspect": "지나면 효과가 떨어질 수 있다",
+        "knowledgePoint": "보관 조건과 기한이 약효에 영향을 준다는 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "약 상자에 적힌 날짜가 지나면 효과가 떨어지거나 변질될 수 있습니다. 이 날짜를 무엇이라 합니까?",
+        "answer": "유효기간",
+        "acceptedAnswers": [
+          "사용기한",
+          "유통기한"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "개봉한 뒤에는 기한이 더 짧아지는 약도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

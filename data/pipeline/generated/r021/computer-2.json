@@ -1,0 +1,323 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "computer/2",
+    "categoryPath": "기술·의학 > 컴퓨터·인터넷 > 소프트웨어·운영체제",
+    "midKey": "computer",
+    "subName": "소프트웨어·운영체제",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:32:40.844Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 25,
+      "remainingUsable": 7,
+      "remainingUsableNote": "가상 메모리·프로세스와 스레드·데드락·부팅 과정·드라이버·패키지 관리자가 남았다.",
+      "estimatedCeiling": "실질 상한 19건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "리눅스",
+          "aspect": "공개 소스 운영체제",
+          "reason": "DB 에 이미 답이 리눅스인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T06:56:03.192Z"
+  },
+  "items": [
+    {
+      "seedId": "computer/2#001",
+      "seed": {
+        "subject": "운영체제",
+        "aspect": "프로그램과 하드웨어 사이를 맡는다",
+        "knowledgePoint": "자원을 나눠 주고 관리하는 기본 소프트웨어"
+      },
+      "question": {
+        "ok": true,
+        "question": "프로그램과 하드웨어 사이에서 자원을 나눠 주고 관리하는 기본 소프트웨어를 무엇이라 합니까?",
+        "answer": "운영체제",
+        "acceptedAnswers": [
+          "OS"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "여러 프로그램이 동시에 돌 수 있는 것은 이것이 조정하기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#002",
+      "seed": {
+        "subject": "커널",
+        "aspect": "운영체제의 핵심 부분",
+        "knowledgePoint": "메모리와 프로세스를 직접 다루는 가장 안쪽 층"
+      },
+      "question": {
+        "ok": true,
+        "question": "운영체제에서 메모리와 프로세스를 직접 다루는 가장 안쪽의 핵심 부분을 무엇이라 합니까?",
+        "answer": "커널",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "여기서 문제가 생기면 시스템 전체가 멈춥니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#003",
+      "seed": {
+        "subject": "오픈 소스",
+        "aspect": "소스 코드를 공개한다",
+        "knowledgePoint": "누구나 보고 고쳐 배포할 수 있게 한 개발·배포 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "소스 코드를 공개해 누구나 보고 고쳐 배포할 수 있게 하는 개발·배포 방식을 무엇이라 합니까?",
+        "answer": "오픈 소스",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "공개만 하는 것이 아니라 라이선스로 조건을 정해 둡니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#004",
+      "seed": {
+        "subject": "GPL",
+        "aspect": "고쳐 배포하면 같은 조건으로 공개해야 한다",
+        "knowledgePoint": "자유 소프트웨어 라이선스의 전염 조항"
+      },
+      "question": {
+        "ok": true,
+        "question": "고쳐서 배포하면 그 결과물도 같은 조건으로 공개해야 한다는 조항이 있어 '전염성' 이 있다고 불리는 라이선스는?",
+        "answer": "GPL",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "자유를 지키기 위해 조건을 물려주는 구조입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#005",
+      "seed": {
+        "subject": "베타 버전",
+        "aspect": "정식 출시 전 시험판",
+        "knowledgePoint": "알파와 베타로 나뉘는 시험 단계"
+      },
+      "question": {
+        "ok": true,
+        "question": "정식 출시 전에 사용자에게 공개해 시험하는 판을 무엇이라 합니까? 그 앞 단계는 알파라고 부릅니다.",
+        "answer": "베타",
+        "acceptedAnswers": [
+          "베타 버전"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "실제 환경에서만 드러나는 문제를 찾으려는 단계입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#006",
+      "seed": {
+        "subject": "버그",
+        "aspect": "기계에 낀 나방에서 왔다는 이야기",
+        "knowledgePoint": "프로그램의 오류를 가리키는 말과 그 유래담"
+      },
+      "question": {
+        "ok": true,
+        "question": "프로그램의 오류를 가리키는 말로, 초기 컴퓨터에 낀 나방에서 유래했다는 이야기가 전하는 것은?",
+        "answer": "버그",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "그 이전부터 기계 결함을 뜻하는 말로 쓰였다는 지적도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#007",
+      "seed": {
+        "subject": "패치",
+        "aspect": "이미 배포한 것을 고친다",
+        "knowledgePoint": "결함이나 보안 문제를 뒤에 고쳐 배포하는 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "이미 배포한 소프트웨어의 결함이나 보안 문제를 뒤에 고쳐 내보내는 것을 무엇이라 합니까?",
+        "answer": "패치",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "'천을 덧대 깁는다' 는 뜻에서 온 말입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#008",
+      "seed": {
+        "subject": "가상화",
+        "aspect": "한 컴퓨터를 여러 대처럼 쓴다",
+        "knowledgePoint": "자원을 나눠 독립된 환경을 만드는 기술"
+      },
+      "question": {
+        "ok": true,
+        "question": "컴퓨터 한 대의 자원을 나누어 여러 대처럼 독립된 환경을 만드는 기술을 무엇이라 합니까?",
+        "answer": "가상화",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "서버를 효율적으로 쓰게 해 주어 클라우드의 바탕이 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#009",
+      "seed": {
+        "subject": "클라우드",
+        "aspect": "남의 컴퓨터를 빌려 쓴다",
+        "knowledgePoint": "필요한 만큼 자원을 빌려 쓰는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "필요한 만큼만 남의 서버와 저장 공간을 빌려 쓰는 방식을 무엇이라 합니까?",
+        "answer": "클라우드",
+        "acceptedAnswers": [
+          "클라우드 컴퓨팅"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "장비를 직접 사지 않아도 되는 대신 의존이 생깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#010",
+      "seed": {
+        "subject": "캐시",
+        "aspect": "자주 쓰는 것을 가까이 둔다",
+        "knowledgePoint": "느린 저장소 대신 빠른 곳에 임시로 두어 속도를 높이는 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "자주 쓰는 자료를 느린 저장소 대신 빠른 곳에 임시로 두어 속도를 높이는 것을 무엇이라 합니까?",
+        "answer": "캐시",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "오래된 내용이 남아 문제가 생기면 지우라고 안내합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#011",
+      "seed": {
+        "subject": "파일 확장자",
+        "aspect": "어떤 프로그램으로 열지 알려 준다",
+        "knowledgePoint": "이름 끝에 붙어 형식을 나타내는 표시"
+      },
+      "question": {
+        "ok": true,
+        "question": "파일 이름 끝에 점을 찍고 붙여 형식을 나타내며, 어떤 프로그램으로 열지 알려 주는 것은?",
+        "answer": "확장자",
+        "acceptedAnswers": [
+          "파일 확장자"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "이것만 바꾼다고 파일의 내용이 바뀌지는 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/2#012",
+      "seed": {
+        "subject": "압축",
+        "aspect": "손실이 있는 것과 없는 것이 있다",
+        "knowledgePoint": "원본을 그대로 되살릴 수 있는지로 갈리는 두 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "압축 방식은 원본을 그대로 되살릴 수 있는 것과 없는 것으로 나뉩니다. 되살릴 수 있는 쪽을 무엇이라 합니까?",
+        "answer": "무손실 압축",
+        "acceptedAnswers": [
+          "무손실"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "사진과 음악은 흔히 손실 압축을 써서 용량을 크게 줄입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "midName": "생활 규칙·안전",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-17T06:04:55.765Z",
+  "updatedAt": "2026-09-21T14:13:47.440Z",
   "subs": {
     "daily-rule/1": {
       "subName": "재난·안전 수칙",
@@ -300,9 +300,263 @@
           "answer": "30",
           "origin": "db:170",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "소멸시효",
+          "origin": "r021:daily-rule/2#001",
+          "note": null
+        },
+        {
+          "answer": "청약 철회",
+          "origin": "r021:daily-rule/2#002",
+          "note": null
+        },
+        {
+          "answer": "증명",
+          "origin": "r021:daily-rule/2#003",
+          "note": null
+        },
+        {
+          "answer": "확정일자",
+          "origin": "r021:daily-rule/2#004",
+          "note": null
+        },
+        {
+          "answer": "점유이탈물횡령",
+          "origin": "r021:daily-rule/2#005",
+          "note": null
+        },
+        {
+          "answer": "초상권",
+          "origin": "r021:daily-rule/2#006",
+          "note": null
+        },
+        {
+          "answer": "저작권",
+          "origin": "r021:daily-rule/2#007",
+          "note": null
+        },
+        {
+          "answer": "명예훼손",
+          "origin": "r021:daily-rule/2#008",
+          "note": null
+        },
+        {
+          "answer": "상당성",
+          "origin": "r021:daily-rule/2#009",
+          "note": null
+        },
+        {
+          "answer": "촉법소년",
+          "origin": "r021:daily-rule/2#010",
+          "note": null
+        },
+        {
+          "answer": "전과",
+          "origin": "r021:daily-rule/2#011",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "daily-rule/2#001",
+          "subject": "소멸시효",
+          "aspect": "권리도 오래 두면 사라진다",
+          "knowledgePoint": "일정 기간 행사하지 않으면 청구할 수 없게 되는 제도",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#001",
+            "answer": "소멸시효",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/2#002",
+          "subject": "청약 철회",
+          "aspect": "산 뒤에도 마음을 바꿀 수 있다",
+          "knowledgePoint": "전자상거래에서 일정 기간 안에 취소할 수 있는 권리",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#002",
+            "answer": "청약 철회",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/2#003",
+          "subject": "계약서",
+          "aspect": "구두 약속도 계약이다",
+          "knowledgePoint": "문서가 없어도 성립하지만 증명이 어려운 것",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#003",
+            "answer": "증명",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/2#004",
+          "subject": "임대차 보증금",
+          "aspect": "우선변제를 받으려면 조건이 있다",
+          "knowledgePoint": "전입신고와 확정일자가 필요한 이유",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#004",
+            "answer": "확정일자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/2#005",
+          "subject": "유실물",
+          "aspect": "주워서 가지면 죄가 된다",
+          "knowledgePoint": "점유이탈물횡령과 신고 의무",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#005",
+            "answer": "점유이탈물횡령",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/2#006",
+          "subject": "초상권",
+          "aspect": "얼굴이 찍힌 사진을 함부로 올릴 수 없다",
+          "knowledgePoint": "동의 없이 공개하면 문제가 되는 권리",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#006",
+            "answer": "초상권",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/2#007",
+          "subject": "저작권",
+          "aspect": "출처를 밝혀도 허락이 필요할 수 있다",
+          "knowledgePoint": "인용과 무단 이용을 가르는 기준",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#007",
+            "answer": "저작권",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/2#008",
+          "subject": "명예훼손",
+          "aspect": "사실을 말해도 성립할 수 있다",
+          "knowledgePoint": "허위가 아니어도 문제가 될 수 있는 이유",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#008",
+            "answer": "명예훼손",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/2#009",
+          "subject": "정당방위",
+          "aspect": "지나치면 인정되지 않는다",
+          "knowledgePoint": "방위 행위의 상당성 요건",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#009",
+            "answer": "상당성",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/2#010",
+          "subject": "촉법소년",
+          "aspect": "나이에 따라 처벌이 달라진다",
+          "knowledgePoint": "형사책임 연령과 보호처분",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#010",
+            "answer": "촉법소년",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "daily-rule/2#011",
+          "subject": "과태료와 벌금",
+          "aspect": "전과가 남느냐 아니냐",
+          "knowledgePoint": "행정 제재와 형벌의 차이",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:38:27.418Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/daily-rule-2#011",
+            "answer": "전과",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "daily-rule/3": {
       "subName": "우편·번호 체계",

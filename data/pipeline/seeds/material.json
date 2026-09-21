@@ -3,7 +3,7 @@
   "midName": "재료·건설 기술",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-18T01:02:49.333Z",
+  "updatedAt": "2026-09-21T06:56:03.203Z",
   "subs": {
     "material/1": {
       "subName": "금속·합금",
@@ -322,9 +322,263 @@
           "answer": "제방",
           "origin": "db:274",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "아치교",
+          "origin": "r021:material/4#001",
+          "note": null
+        },
+        {
+          "answer": "현수교",
+          "origin": "r021:material/4#002",
+          "note": null
+        },
+        {
+          "answer": "사장교",
+          "origin": "r021:material/4#003",
+          "note": null
+        },
+        {
+          "answer": "트러스",
+          "origin": "r021:material/4#004",
+          "note": null
+        },
+        {
+          "answer": "철근콘크리트",
+          "origin": "r021:material/4#005",
+          "note": null
+        },
+        {
+          "answer": "늘어나고 줄어든다",
+          "origin": "r021:material/4#006",
+          "note": null
+        },
+        {
+          "answer": "터널 굴착기",
+          "origin": "r021:material/4#007",
+          "note": null
+        },
+        {
+          "answer": "수압",
+          "origin": "r021:material/4#008",
+          "note": null
+        },
+        {
+          "answer": "내진 설계",
+          "origin": "r021:material/4#009",
+          "note": null
+        },
+        {
+          "answer": "면진 장치",
+          "origin": "r021:material/4#010",
+          "note": null
+        },
+        {
+          "answer": "간척",
+          "origin": "r021:material/4#011",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "material/4#001",
+          "subject": "아치교",
+          "aspect": "힘을 양옆으로 흘려보낸다",
+          "knowledgePoint": "위에서 누르는 힘을 압축으로 바꿔 견디는 구조",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#001",
+            "answer": "아치교",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "material/4#002",
+          "subject": "현수교",
+          "aspect": "케이블에 상판을 매단다",
+          "knowledgePoint": "긴 구간을 건널 수 있게 해 주는 다리 형식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#002",
+            "answer": "현수교",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "material/4#003",
+          "subject": "사장교",
+          "aspect": "탑에서 곧장 상판으로 케이블을 뻗는다",
+          "knowledgePoint": "현수교와 케이블 배치가 다른 다리 형식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#003",
+            "answer": "사장교",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "material/4#004",
+          "subject": "트러스",
+          "aspect": "삼각형을 이어 붙인다",
+          "knowledgePoint": "삼각형이 변형되지 않는 성질을 쓰는 구조",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#004",
+            "answer": "트러스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "material/4#005",
+          "subject": "철근콘크리트",
+          "aspect": "서로의 약점을 메운다",
+          "knowledgePoint": "압축에 강한 콘크리트와 인장에 강한 철근을 합친 것",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#005",
+            "answer": "철근콘크리트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "material/4#006",
+          "subject": "신축 이음",
+          "aspect": "다리에 일부러 틈을 둔다",
+          "knowledgePoint": "온도에 따라 늘고 주는 것을 견디려는 장치",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#006",
+            "answer": "늘어나고 줄어든다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "material/4#007",
+          "subject": "터널 굴착기",
+          "aspect": "땅을 갉아 파며 나아간다",
+          "knowledgePoint": "발파 대신 기계로 뚫는 공법",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#007",
+            "answer": "터널 굴착기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "material/4#008",
+          "subject": "댐",
+          "aspect": "아래가 더 두껍다",
+          "knowledgePoint": "깊을수록 수압이 커지기 때문에 생기는 형태",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#008",
+            "answer": "수압",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "material/4#009",
+          "subject": "내진 설계",
+          "aspect": "일부러 흔들리게 만든다",
+          "knowledgePoint": "지진 에너지를 흡수하도록 설계하는 방식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#009",
+            "answer": "내진 설계",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "material/4#010",
+          "subject": "면진 장치",
+          "aspect": "건물과 땅 사이를 끊는다",
+          "knowledgePoint": "지반의 흔들림이 위로 덜 전해지게 하는 장치",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#010",
+            "answer": "면진 장치",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "material/4#011",
+          "subject": "갯벌 간척",
+          "aspect": "땅을 넓히는 대신 생태계를 잃는다",
+          "knowledgePoint": "방조제로 바다를 막아 땅을 만드는 일과 그 대가",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.853Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/material-4#011",
+            "answer": "간척",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     }
   }
 }

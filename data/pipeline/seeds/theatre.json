@@ -3,7 +3,7 @@
   "midName": "공연·연극·뮤지컬",
   "majorKey": "arts",
   "majorName": "문화·예술",
-  "updatedAt": "2026-09-21T01:47:36.662Z",
+  "updatedAt": "2026-09-21T13:50:44.929Z",
   "subs": {
     "theatre/1": {
       "subName": "연극 사조·연출",
@@ -32,7 +32,7 @@
         {
           "answer": "레미제라블",
           "origin": "r020:theatre/2#001",
-          "note": null
+          "note": "r018 격리: ★ 판정 보류 — Gemini 429 (오늘 3번째. Q-62/D-056 대로 그날 중단). 중복 여부가 아직 판정되지 않았다. ★★ 판정하지 않은 채 적재하지 않는다는 선을 지키려고 이 건만 뺀다. 다음 라운드에 판정 후 seeds-restore 로 되살린다 — db:160 레 미제라블"
         },
         {
           "answer": "캣츠",
@@ -67,17 +67,17 @@
         {
           "answer": "웨스트엔드",
           "origin": "r020:theatre/2#008",
-          "note": null
+          "note": "r018 격리: 중복(same). ★ 알 가치가 같다. 판정 근거가 '간결하다' 뿐이어서 바꾸지 않는다"
         },
         {
           "answer": "토니상",
           "origin": "r020:theatre/2#009",
-          "note": null
+          "note": "r018 격리: 중복(same). ★ 알 가치가 같다. 판정 근거가 '간결하다' 뿐이어서 바꾸지 않는다"
         },
         {
           "answer": "커튼콜",
           "origin": "r020:theatre/2#010",
-          "note": null
+          "note": "r018 격리: 중복(same). ★ 알 가치가 같다. 기존은 '막이 내린 뒤' 까지 있다"
         }
       ],
       "seeds": [
@@ -91,12 +91,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T01:17:22.021Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r020/theatre-2#001",
             "answer": "레미제라블",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "★ 판정 보류 — Gemini 429 (오늘 3번째. Q-62/D-056 대로 그날 중단). 중복 여부가 아직 판정되지 않았다. ★★ 판정하지 않은 채 적재하지 않는다는 선을 지키려고 이 건만 뺀다. 다음 라운드에 판정 후 seeds-restore 로 되살린다 — db:160 레 미제라블",
+              "decidedBy": "자체 판단 (C22. 브리핑이 위임한 판단)",
+              "duplicateOf": null,
+              "at": "2026-09-21T06:19:30.479Z"
+            }
           }
         },
         {
@@ -217,12 +224,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T01:17:22.021Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r020/theatre-2#008",
             "answer": "웨스트엔드",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(same). ★ 알 가치가 같다. 판정 근거가 '간결하다' 뿐이어서 바꾸지 않는다",
+              "decidedBy": "자체 판단 (C23). ★ 판정 근거가 '간결하다' 뿐이면 바꾸지 않는다 — 간결함은 알 가치가 아니다",
+              "duplicateOf": "db:679",
+              "at": "2026-09-21T06:18:23.486Z"
+            }
           }
         },
         {
@@ -235,12 +249,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T01:17:22.021Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r020/theatre-2#009",
             "answer": "토니상",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(same). ★ 알 가치가 같다. 판정 근거가 '간결하다' 뿐이어서 바꾸지 않는다",
+              "decidedBy": "자체 판단 (C23). ★ 판정 근거가 '간결하다' 뿐이면 바꾸지 않는다 — 간결함은 알 가치가 아니다",
+              "duplicateOf": "db:681",
+              "at": "2026-09-21T06:18:23.561Z"
+            }
           }
         },
         {
@@ -253,12 +274,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T01:17:22.021Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r020/theatre-2#010",
             "answer": "커튼콜",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(same). ★ 알 가치가 같다. 기존은 '막이 내린 뒤' 까지 있다",
+              "decidedBy": "자체 판단 (C23). ★ 판정 근거가 '간결하다' 뿐이면 바꾸지 않는다 — 간결함은 알 가치가 아니다",
+              "duplicateOf": "db:674",
+              "at": "2026-09-21T06:18:23.626Z"
+            }
           }
         }
       ]
@@ -270,9 +298,286 @@
           "answer": "토슈즈",
           "origin": "db:287",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "백조의 호수",
+          "origin": "r021:theatre/3#001",
+          "note": null
+        },
+        {
+          "answer": "호두까기 인형",
+          "origin": "r021:theatre/3#002",
+          "note": null
+        },
+        {
+          "answer": "지젤",
+          "origin": "r021:theatre/3#003",
+          "note": null
+        },
+        {
+          "answer": "푸에테",
+          "origin": "r021:theatre/3#004",
+          "note": null
+        },
+        {
+          "answer": "파드되",
+          "origin": "r021:theatre/3#005",
+          "note": null
+        },
+        {
+          "answer": "포인트",
+          "origin": "r021:theatre/3#006",
+          "note": null
+        },
+        {
+          "answer": "프랑스어",
+          "origin": "r021:theatre/3#007",
+          "note": null
+        },
+        {
+          "answer": "현대무용",
+          "origin": "r021:theatre/3#008",
+          "note": null
+        },
+        {
+          "answer": "안무",
+          "origin": "r021:theatre/3#009",
+          "note": null
+        },
+        {
+          "answer": "봄의 제전",
+          "origin": "r021:theatre/3#010",
+          "note": null
+        },
+        {
+          "answer": "플라멩코",
+          "origin": "r021:theatre/3#011",
+          "note": null
+        },
+        {
+          "answer": "탈춤",
+          "origin": "r021:theatre/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "theatre/3#001",
+          "subject": "백조의 호수",
+          "aspect": "한 무용수가 두 역을 맡곤 한다",
+          "knowledgePoint": "차이콥스키의 발레와 백조·흑조의 이중 배역",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#001",
+            "answer": "백조의 호수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#002",
+          "subject": "호두까기 인형",
+          "aspect": "연말이면 무대에 오른다",
+          "knowledgePoint": "크리스마스 시즌의 관행이 된 발레",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#002",
+            "answer": "호두까기 인형",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#003",
+          "subject": "지젤",
+          "aspect": "낭만 발레의 대표작",
+          "knowledgePoint": "흰 의상의 군무로 상징되는 작품",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#003",
+            "answer": "지젤",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#004",
+          "subject": "푸에테",
+          "aspect": "제자리에서 연속으로 돈다",
+          "knowledgePoint": "'백조의 호수' 에서 32회전으로 유명해진 기술",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#004",
+            "answer": "푸에테",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#005",
+          "subject": "파드되",
+          "aspect": "둘이 함께 추는 춤",
+          "knowledgePoint": "발레에서 남녀 두 사람이 추는 대목",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#005",
+            "answer": "파드되",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#006",
+          "subject": "포인트",
+          "aspect": "발끝으로 서는 기법",
+          "knowledgePoint": "낭만 발레에서 자리 잡은 기술",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#006",
+            "answer": "포인트",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#007",
+          "subject": "발레 용어",
+          "aspect": "대부분 프랑스어다",
+          "knowledgePoint": "프랑스 궁정에서 체계가 잡힌 역사가 남긴 흔적",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#007",
+            "answer": "프랑스어",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#008",
+          "subject": "현대무용",
+          "aspect": "발레의 규칙에서 벗어나려 했다",
+          "knowledgePoint": "맨발과 자연스러운 움직임을 택한 흐름",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#008",
+            "answer": "현대무용",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#009",
+          "subject": "안무",
+          "aspect": "춤을 짜는 일",
+          "knowledgePoint": "동작과 배치를 설계하는 창작 작업",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#009",
+            "answer": "안무",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#010",
+          "subject": "봄의 제전",
+          "aspect": "초연 때 객석에서 소동이 일었다",
+          "knowledgePoint": "스트라빈스키의 음악과 파격적인 안무로 논란이 된 작품",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#010",
+            "answer": "봄의 제전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#011",
+          "subject": "플라멩코",
+          "aspect": "발을 구르는 소리가 리듬이 된다",
+          "knowledgePoint": "스페인 안달루시아의 춤과 음악",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#011",
+            "answer": "플라멩코",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "theatre/3#012",
+          "subject": "탈춤",
+          "aspect": "탈을 쓰고 풍자한다",
+          "knowledgePoint": "유네스코 인류무형문화유산에 오른 우리 전통 연희",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.592Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/theatre-3#012",
+            "answer": "탈춤",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "theatre/4": {
       "subName": "공연 용어·유명 극장",

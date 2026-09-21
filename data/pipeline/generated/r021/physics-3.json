@@ -1,0 +1,322 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "physics/3",
+    "categoryPath": "자연과학 > 물리 > 빛·소리·파동",
+    "midKey": "physics",
+    "subName": "빛·소리·파동",
+    "majorKey": "science",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:28:55.374Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 25,
+      "remainingUsable": 7,
+      "remainingUsableNote": "간섭·편광·전반사·초음파·공명·스펙트럼·레이저의 원리가 남았다.",
+      "estimatedCeiling": "실질 상한 19건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "회절",
+          "aspect": "장애물 뒤로 돌아 들어간다",
+          "reason": "DB 에 이미 답이 회절인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T06:50:07.220Z"
+  },
+  "items": [
+    {
+      "seedId": "physics/3#001",
+      "seed": {
+        "subject": "굴절",
+        "aspect": "물속의 젓가락이 꺾여 보인다",
+        "knowledgePoint": "매질이 바뀌며 속도가 달라져 빛의 진행 방향이 꺾이는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "물속에 담근 젓가락이 꺾여 보이는 것은, 빛이 매질을 지나며 속도가 달라져 방향이 꺾이기 때문입니다. 이 현상을 무엇이라 합니까?",
+        "answer": "굴절",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "렌즈와 안경이 모두 이 성질을 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#002",
+      "seed": {
+        "subject": "도플러 효과",
+        "aspect": "구급차가 지나가면 소리가 달라진다",
+        "knowledgePoint": "음원과 관찰자가 가까워지고 멀어지며 진동수가 달라지는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "구급차가 다가올 때와 멀어질 때 사이렌 소리의 높이가 다르게 들리는 현상을 무엇이라 합니까?",
+        "answer": "도플러 효과",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "별빛에도 같은 원리를 적용해 우주가 팽창한다는 근거로 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#003",
+      "seed": {
+        "subject": "무지개",
+        "aspect": "물방울이 프리즘 노릇을 한다",
+        "knowledgePoint": "굴절과 분산으로 색이 갈리며 생기는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "비가 그친 뒤 하늘에 색의 띠가 생기는 것은, 공중의 물방울이 무엇과 같은 구실을 하기 때문입니까?",
+        "answer": "프리즘",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "색마다 굴절되는 정도가 달라 갈라집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#004",
+      "seed": {
+        "subject": "메아리",
+        "aspect": "소리가 벽에 부딪혀 돌아온다",
+        "knowledgePoint": "소리의 반사로 생기며 거리와 시간차로 설명되는 현상"
+      },
+      "question": {
+        "ok": true,
+        "question": "산에서 소리를 지르면 잠시 뒤 같은 소리가 되돌아오는 것은, 소리의 어떤 성질 때문입니까?",
+        "answer": "반사",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "돌아오는 데 걸린 시간으로 거리를 잴 수도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#005",
+      "seed": {
+        "subject": "진공",
+        "aspect": "소리는 못 가고 빛은 간다",
+        "knowledgePoint": "매질이 필요한 파동과 필요 없는 파동의 차이"
+      },
+      "question": {
+        "ok": true,
+        "question": "우주 공간에서는 아무리 큰 폭발이 있어도 소리가 들리지 않습니다. 소리가 전달되려면 무엇이 있어야 하기 때문입니까?",
+        "answer": "매질",
+        "acceptedAnswers": [
+          "공기"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "빛은 매질이 없어도 나아가기 때문에 우주에서도 보입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#006",
+      "seed": {
+        "subject": "가시광선",
+        "aspect": "사람이 볼 수 있는 범위",
+        "knowledgePoint": "전자기파 가운데 눈으로 감지되는 좁은 구간"
+      },
+      "question": {
+        "ok": true,
+        "question": "전자기파 가운데 사람 눈으로 감지할 수 있는 좁은 구간을 무엇이라 합니까?",
+        "answer": "가시광선",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "전체 전자기파에서 아주 좁은 범위에 지나지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#007",
+      "seed": {
+        "subject": "적외선",
+        "aspect": "열로 느껴진다",
+        "knowledgePoint": "가시광선보다 파장이 길어 열화상과 리모컨에 쓰이는 파"
+      },
+      "question": {
+        "ok": true,
+        "question": "눈에 보이지 않지만 열로 느껴지며, 리모컨과 열화상 카메라에 쓰이는 파장이 긴 빛은?",
+        "answer": "적외선",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "온도가 있는 물체는 모두 이것을 내놓습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#008",
+      "seed": {
+        "subject": "자외선",
+        "aspect": "살균에도 쓰이고 피부도 상하게 한다",
+        "knowledgePoint": "가시광선보다 파장이 짧아 에너지가 큰 파"
+      },
+      "question": {
+        "ok": true,
+        "question": "살균에도 쓰이지만 오래 쬐면 피부를 상하게 하는, 가시광선보다 파장이 짧은 빛은?",
+        "answer": "자외선",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "오존층이 상당 부분을 막아 줍니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#009",
+      "seed": {
+        "subject": "데시벨",
+        "aspect": "소리 크기를 로그로 잰다",
+        "knowledgePoint": "10 늘면 에너지가 10배가 되는 소리 세기의 단위"
+      },
+      "question": {
+        "ok": true,
+        "question": "소리의 세기를 나타내는 단위로, 10이 오르면 에너지가 10배가 되는 로그 눈금인 것은?",
+        "answer": "데시벨",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "사람의 감각이 자극에 로그처럼 반응하기 때문에 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#010",
+      "seed": {
+        "subject": "음속",
+        "aspect": "공기보다 물에서, 물보다 쇠에서 빠르다",
+        "knowledgePoint": "매질이 빽빽할수록 소리가 빨리 전달되는 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "소리는 공기보다 물에서, 물보다 쇠에서 더 빠르게 전달됩니다. 매질의 어떤 성질이 이런 차이를 만듭니까?",
+        "answer": "밀도",
+        "acceptedAnswers": [
+          "분자의 조밀함"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "입자가 촘촘할수록 진동이 빨리 옮겨 갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#011",
+      "seed": {
+        "subject": "파장과 진동수",
+        "aspect": "하나가 길면 다른 하나는 작아진다",
+        "knowledgePoint": "속도가 일정할 때 둘이 반비례하는 관계"
+      },
+      "question": {
+        "ok": true,
+        "question": "파동의 속도가 일정할 때 파장이 길어지면 진동수는 어떻게 됩니까?",
+        "answer": "작아진다",
+        "acceptedAnswers": [
+          "줄어든다",
+          "낮아진다"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "둘은 서로 반비례합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/3#012",
+      "seed": {
+        "subject": "빛의 속도",
+        "aspect": "우주에서 가장 빠르다고 본다",
+        "knowledgePoint": "진공에서 초속 약 30만 킬로미터인 상수"
+      },
+      "question": {
+        "ok": true,
+        "question": "진공에서 초속 약 30만 킬로미터이며, 우주에서 그보다 빠른 것은 없다고 보는 상수는?",
+        "answer": "빛의 속도",
+        "acceptedAnswers": [
+          "광속"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "지금은 이 값을 정해 두고 미터를 정의합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

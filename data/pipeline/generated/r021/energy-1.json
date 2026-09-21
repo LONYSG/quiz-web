@@ -1,0 +1,339 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "energy/1",
+    "categoryPath": "기술·의학 > 에너지·환경 기술 > 발전 방식",
+    "midKey": "energy",
+    "subName": "발전 방식",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:32:40.851Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 24,
+      "remainingUsable": 6,
+      "remainingUsableNote": "조력·파력·바이오매스·연료전지·열병합·소수력이 남았다.",
+      "estimatedCeiling": "실질 상한 18건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "원자력 발전",
+          "aspect": "핵분열로 열을 얻는다",
+          "reason": "DB 에 이미 답이 원자력 발전인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T06:56:03.200Z"
+  },
+  "items": [
+    {
+      "seedId": "energy/1#001",
+      "seed": {
+        "subject": "터빈",
+        "aspect": "대부분의 발전이 결국 이것을 돌린다",
+        "knowledgePoint": "화력·원자력·수력이 공통으로 쓰는 회전 장치"
+      },
+      "question": {
+        "ok": true,
+        "question": "화력·원자력·수력이 방식은 달라도 결국 전기를 얻기 위해 공통으로 돌리는 장치는?",
+        "answer": "터빈",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "무엇으로 돌리느냐만 다를 뿐 발전기를 돌리는 구조는 같습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#002",
+      "seed": {
+        "subject": "수력 발전",
+        "aspect": "물의 위치 에너지를 쓴다",
+        "knowledgePoint": "낙차를 이용해 전기를 얻는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "높은 곳의 물이 떨어지는 힘으로 전기를 얻는 발전 방식은?",
+        "answer": "수력 발전",
+        "acceptedAnswers": [
+          "수력"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "낙차가 클수록 얻는 에너지가 커집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#003",
+      "seed": {
+        "subject": "양수 발전",
+        "aspect": "남는 전기로 물을 끌어올려 둔다",
+        "knowledgePoint": "전기를 저장하는 방법으로 쓰이는 발전"
+      },
+      "question": {
+        "ok": true,
+        "question": "전기가 남을 때 물을 높은 곳으로 끌어올려 두었다가 필요할 때 떨어뜨리는, 사실상 전기를 저장하는 발전 방식은?",
+        "answer": "양수 발전",
+        "acceptedAnswers": [
+          "양수식 발전"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "끌어올릴 때 쓴 전기보다 적게 돌려받지만 저장 수단으로 값을 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#004",
+      "seed": {
+        "subject": "풍력 발전",
+        "aspect": "바람의 세기에 따라 출력이 들쭉날쭉하다",
+        "knowledgePoint": "간헐성이 문제로 꼽히는 재생에너지"
+      },
+      "question": {
+        "ok": true,
+        "question": "바람의 세기에 따라 출력이 들쭉날쭉해 '간헐성' 이 문제로 꼽히는 재생에너지 발전 방식은?",
+        "answer": "풍력 발전",
+        "acceptedAnswers": [
+          "풍력"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "그래서 저장 장치나 다른 발전과 함께 운용합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#005",
+      "seed": {
+        "subject": "태양광과 태양열",
+        "aspect": "빛을 바로 전기로 바꾸느냐 열을 쓰느냐",
+        "knowledgePoint": "이름이 비슷하지만 원리가 다른 두 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "이름이 비슷하지만 하나는 빛을 바로 전기로 바꾸고 다른 하나는 열을 모아 씁니다. 빛을 바로 전기로 바꾸는 쪽은?",
+        "answer": "태양광",
+        "acceptedAnswers": [
+          "태양광 발전"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "태양열은 물을 데워 증기로 터빈을 돌리거나 난방에 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#006",
+      "seed": {
+        "subject": "지열 발전",
+        "aspect": "화산 지대가 유리하다",
+        "knowledgePoint": "땅속 열을 이용하며 입지 제약이 큰 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "땅속의 열을 이용하는 발전으로, 화산 지대인 아이슬란드가 특히 유리한 방식은?",
+        "answer": "지열 발전",
+        "acceptedAnswers": [
+          "지열"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "입지 조건에 크게 좌우된다는 제약이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#007",
+      "seed": {
+        "subject": "화력 발전",
+        "aspect": "연료를 태워 물을 끓인다",
+        "knowledgePoint": "석탄·가스를 태워 증기로 터빈을 돌리는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "석탄이나 천연가스를 태워 물을 끓이고 그 증기로 터빈을 돌리는 발전 방식은?",
+        "answer": "화력 발전",
+        "acceptedAnswers": [
+          "화력"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "온실가스와 미세먼지의 주요 배출원으로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#008",
+      "seed": {
+        "subject": "기저부하",
+        "aspect": "늘 필요한 만큼의 전력",
+        "knowledgePoint": "하루 내내 꾸준히 필요한 전력 수요"
+      },
+      "question": {
+        "ok": true,
+        "question": "하루 내내 꾸준히 필요한 최소한의 전력 수요를 무엇이라 합니까?",
+        "answer": "기저부하",
+        "acceptedAnswers": [
+          "베이스로드"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "이 부분은 출력을 자주 바꾸기 어려운 발전이 맡습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#009",
+      "seed": {
+        "subject": "전력 저장 장치",
+        "aspect": "남을 때 담고 모자랄 때 꺼낸다",
+        "knowledgePoint": "재생에너지의 간헐성을 메우는 설비"
+      },
+      "question": {
+        "ok": true,
+        "question": "재생에너지가 남을 때 담아 두었다가 모자랄 때 꺼내 쓰기 위해 설치하는 설비를 무엇이라 합니까?",
+        "answer": "에너지 저장 장치",
+        "acceptedAnswers": [
+          "ESS",
+          "전력 저장 장치"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "간헐성을 메우는 핵심 설비로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#010",
+      "seed": {
+        "subject": "송전 손실",
+        "aspect": "멀리 보낼수록 줄어든다",
+        "knowledgePoint": "고압으로 보내는 이유와 손실의 관계"
+      },
+      "question": {
+        "ok": true,
+        "question": "전기를 멀리 보낼 때 일부러 전압을 아주 높이는 것은, 무엇을 줄이기 위해서입니까?",
+        "answer": "송전 손실",
+        "acceptedAnswers": [
+          "전력 손실",
+          "손실"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "전압을 높이면 같은 전력을 더 적은 전류로 보낼 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#011",
+      "seed": {
+        "subject": "전력 수요 관리",
+        "aspect": "쓰는 쪽을 조절한다",
+        "knowledgePoint": "공급을 늘리는 대신 수요를 옮기거나 줄이는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "발전소를 더 짓는 대신 사용자가 쓰는 시간을 옮기거나 줄이게 해 수급을 맞추는 방식을 무엇이라 합니까?",
+        "answer": "수요 관리",
+        "acceptedAnswers": [
+          "전력 수요 관리",
+          "수요반응"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "여름철 절전 요청도 여기에 듭니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/1#012",
+      "seed": {
+        "subject": "탄소 배출 계수",
+        "aspect": "발전 방식마다 다르다",
+        "knowledgePoint": "같은 전기를 만들 때 나오는 온실가스가 방식별로 다른 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "같은 양의 전기를 만들 때 나오는 온실가스의 양이 발전 방식마다 다릅니다. 이를 나타내는 값을 무엇이라 합니까?",
+        "answer": "탄소 배출 계수",
+        "acceptedAnswers": [
+          "배출 계수",
+          "탄소 배출량"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "전원 구성에 따라 나라별 전기의 탄소 발자국이 달라집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

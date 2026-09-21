@@ -1,0 +1,293 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "kr-geo/2",
+    "categoryPath": "한국 > 한국 지리 > 산·강·호수",
+    "midKey": "kr-geo",
+    "subName": "산·강·호수",
+    "majorKey": "korea",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:25:41.116Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보(영산강·섬진강·주왕산·내장산)는 '어느 강인가 / 어느 산인가' 를 묻고 끝나 알 가치가 3에 못 미친다. 특징을 함께 물을 수 있는 대상만 골랐다.",
+      "listedCandidates": 24,
+      "remainingUsable": 6,
+      "remainingUsableNote": "영산강·섬진강·주왕산·내장산·팔당호·의암호가 남았으나 대부분 이름만 묻게 된다.",
+      "estimatedCeiling": "실질 상한 15건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "한라산",
+          "aspect": "남한에서 가장 높은 산",
+          "reason": "DB 에 이미 답이 한라산인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T06:40:54.005Z"
+  },
+  "items": [
+    {
+      "seedId": "kr-geo/2#001",
+      "seed": {
+        "subject": "천지",
+        "aspect": "화산 분화구에 물이 고인 호수",
+        "knowledgePoint": "백두산 꼭대기의 칼데라호이며 압록강·두만강·송화강의 발원지로 꼽힌다"
+      },
+      "question": {
+        "ok": true,
+        "question": "백두산 꼭대기의 분화구에 물이 고여 생긴 호수로, 압록강과 두만강의 발원지로 꼽히는 것은?",
+        "answer": "천지",
+        "acceptedAnswers": [
+          "백두산 천지"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "화산 활동으로 생긴 칼데라에 물이 고인 호수입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/2#002",
+      "seed": {
+        "subject": "지리산",
+        "aspect": "우리나라 첫 국립공원",
+        "knowledgePoint": "1967년에 처음으로 국립공원으로 지정된 산"
+      },
+      "question": {
+        "ok": true,
+        "question": "1967년에 우리나라에서 처음으로 국립공원으로 지정된 산은?",
+        "answer": "지리산",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "면적이 넓어 세 개 도에 걸쳐 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/2#003",
+      "seed": {
+        "subject": "설악산",
+        "aspect": "유네스코 생물권보전지역",
+        "knowledgePoint": "화강암 봉우리와 계곡으로 이루어져 보호 구역으로 지정된 산"
+      },
+      "question": {
+        "ok": true,
+        "question": "화강암 봉우리와 계곡으로 이루어져 유네스코 생물권보전지역으로 지정된, 강원도의 산은?",
+        "answer": "설악산",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "천연보호구역으로도 지정돼 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/2#004",
+      "seed": {
+        "subject": "한강",
+        "aspect": "남한강과 북한강이 만나 이루는 강",
+        "knowledgePoint": "두 물줄기가 양수리에서 합쳐져 서울을 지나 서해로 흐른다"
+      },
+      "question": {
+        "ok": true,
+        "question": "두 물줄기가 양수리에서 만나 서울을 가로질러 서해로 흐르는, 수도권의 젖줄이 되는 강은?",
+        "answer": "한강",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "두 물이 만난다고 하여 그곳을 두물머리라 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "fixedBy": "r021 규칙검사 수정"
+      }
+    },
+    {
+      "seedId": "kr-geo/2#005",
+      "seed": {
+        "subject": "낙동강",
+        "aspect": "남한에서 가장 긴 강",
+        "knowledgePoint": "태백에서 시작해 영남을 가로질러 남해로 흐르는 강"
+      },
+      "question": {
+        "ok": true,
+        "question": "태백에서 시작해 영남을 가로질러 남해로 흐르는, 남한에서 가장 긴 강은?",
+        "answer": "낙동강",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "남한에서 가장 길고, 한반도 전체로는 압록강이 가장 깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/2#006",
+      "seed": {
+        "subject": "압록강",
+        "aspect": "우리나라에서 가장 긴 강",
+        "knowledgePoint": "백두산에서 시작해 서해로 흐르며 중국과 국경을 이룬다"
+      },
+      "question": {
+        "ok": true,
+        "question": "백두산에서 시작해 중국과 국경을 이루며 서해로 흐르는, 한반도에서 가장 긴 강은?",
+        "answer": "압록강",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "남한만 놓고 보면 낙동강이 가장 깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/2#007",
+      "seed": {
+        "subject": "두만강",
+        "aspect": "세 나라가 만나는 하구",
+        "knowledgePoint": "하구에서 북한·중국·러시아의 국경이 만나는 강"
+      },
+      "question": {
+        "ok": true,
+        "question": "하구에서 북한·중국·러시아 세 나라의 국경이 만나는, 백두산에서 시작해 동해로 흐르는 강은?",
+        "answer": "두만강",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "세 나라가 맞닿는 드문 지점입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/2#008",
+      "seed": {
+        "subject": "소양호",
+        "aspect": "댐이 만든 인공 호수",
+        "knowledgePoint": "소양강댐을 세우며 생긴 우리나라에서 가장 큰 인공 호수"
+      },
+      "question": {
+        "ok": true,
+        "question": "댐을 세우며 생긴 우리나라에서 가장 큰 인공 호수로, 강원도에 있는 것은?",
+        "answer": "소양호",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "수도권에 물을 대고 홍수를 조절하는 구실을 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/2#009",
+      "seed": {
+        "subject": "우포늪",
+        "aspect": "국내 최대의 자연 내륙 습지",
+        "knowledgePoint": "창녕에 있으며 람사르 습지로 등록된 오래된 늪"
+      },
+      "question": {
+        "ok": true,
+        "question": "창녕에 있으며 람사르 습지로 등록된, 국내에서 가장 큰 자연 내륙 습지는?",
+        "answer": "우포늪",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "1억 년 넘게 유지돼 온 것으로 설명됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/2#010",
+      "seed": {
+        "subject": "백두대간",
+        "aspect": "백두산에서 지리산까지 이어지는 산줄기",
+        "knowledgePoint": "물줄기를 가르는 기준으로 삼아 온 한반도의 큰 산줄기 체계"
+      },
+      "question": {
+        "ok": true,
+        "question": "백두산에서 지리산까지 이어지며 물줄기를 가르는 기준으로 삼아 온, 한반도의 큰 산줄기 체계는?",
+        "answer": "백두대간",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "서양식 산맥 개념과 달리 물길을 기준으로 나눈 체계입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-geo/2#011",
+      "seed": {
+        "subject": "금강",
+        "aspect": "거꾸로 흐르는 것처럼 보이는 물길",
+        "knowledgePoint": "남쪽으로 흐르다 크게 방향을 틀어 서해로 빠지는 충청의 강"
+      },
+      "question": {
+        "ok": true,
+        "question": "충청 지역을 흐르다 크게 방향을 틀어 서해로 빠지는 강으로, 부여와 공주를 지나는 것은?",
+        "answer": "금강",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "백제의 도읍들이 이 강을 끼고 자리했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

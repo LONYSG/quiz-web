@@ -1,0 +1,303 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "material/4",
+    "categoryPath": "기술·의학 > 재료·건설 기술 > 토목 구조물",
+    "midKey": "material",
+    "subName": "토목 구조물",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:32:40.853Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보(특정 교량의 길이 순위)는 새 구조물이 생길 때마다 답이 바뀌어 시간 의존 문제가 된다.",
+      "listedCandidates": 23,
+      "remainingUsable": 5,
+      "remainingUsableNote": "갑문·방파제·해저터널·고가도로·수문이 남았다.",
+      "estimatedCeiling": "실질 상한 16건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "제방",
+          "aspect": "물을 막으려 쌓는다",
+          "reason": "DB 에 이미 답이 제방인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T06:56:03.202Z"
+  },
+  "items": [
+    {
+      "seedId": "material/4#001",
+      "seed": {
+        "subject": "아치교",
+        "aspect": "힘을 양옆으로 흘려보낸다",
+        "knowledgePoint": "위에서 누르는 힘을 압축으로 바꿔 견디는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "위에서 누르는 힘을 곡선을 따라 양옆으로 흘려보내 견디는 구조의 다리를 무엇이라 합니까?",
+        "answer": "아치교",
+        "acceptedAnswers": [
+          "아치 다리"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "돌처럼 당기는 힘에 약한 재료로도 큰 구조를 만들 수 있게 해 줍니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/4#002",
+      "seed": {
+        "subject": "현수교",
+        "aspect": "케이블에 상판을 매단다",
+        "knowledgePoint": "긴 구간을 건널 수 있게 해 주는 다리 형식"
+      },
+      "question": {
+        "ok": true,
+        "question": "두 탑 사이에 굵은 케이블을 늘어뜨리고 거기에 상판을 매달아, 긴 구간을 건널 수 있게 만든 다리는?",
+        "answer": "현수교",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "광안대교와 이순신대교가 이 형식입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/4#003",
+      "seed": {
+        "subject": "사장교",
+        "aspect": "탑에서 곧장 상판으로 케이블을 뻗는다",
+        "knowledgePoint": "현수교와 케이블 배치가 다른 다리 형식"
+      },
+      "question": {
+        "ok": true,
+        "question": "탑에서 상판으로 케이블을 곧장 비스듬히 뻗어 부채꼴이나 하프 모양을 이루는 다리를 무엇이라 합니까?",
+        "answer": "사장교",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "인천대교가 대표적인 예로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/4#004",
+      "seed": {
+        "subject": "트러스",
+        "aspect": "삼각형을 이어 붙인다",
+        "knowledgePoint": "삼각형이 변형되지 않는 성질을 쓰는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "삼각형이 힘을 받아도 모양이 변하지 않는 성질을 이용해, 삼각형을 이어 붙여 만드는 구조를 무엇이라 합니까?",
+        "answer": "트러스",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "적은 재료로 큰 강성을 얻을 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/4#005",
+      "seed": {
+        "subject": "철근콘크리트",
+        "aspect": "서로의 약점을 메운다",
+        "knowledgePoint": "압축에 강한 콘크리트와 인장에 강한 철근을 합친 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "누르는 힘에 강한 콘크리트와 당기는 힘에 강한 철근을 함께 써서 서로의 약점을 메운 재료는?",
+        "answer": "철근콘크리트",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "열팽창률이 비슷해 함께 써도 어긋나지 않는 점도 중요합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/4#006",
+      "seed": {
+        "subject": "신축 이음",
+        "aspect": "다리에 일부러 틈을 둔다",
+        "knowledgePoint": "온도에 따라 늘고 주는 것을 견디려는 장치"
+      },
+      "question": {
+        "ok": true,
+        "question": "다리 상판에 일부러 틈을 두고 톱니 모양 장치를 넣는 것은, 온도에 따라 구조물이 어떻게 되기 때문입니까?",
+        "answer": "늘어나고 줄어든다",
+        "acceptedAnswers": [
+          "팽창과 수축",
+          "열팽창"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "틈이 없으면 여름에 구조물이 밀려 뒤틀립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/4#007",
+      "seed": {
+        "subject": "터널 굴착기",
+        "aspect": "땅을 갉아 파며 나아간다",
+        "knowledgePoint": "발파 대신 기계로 뚫는 공법"
+      },
+      "question": {
+        "ok": true,
+        "question": "폭발로 암반을 깨는 대신 기계가 앞면을 갉아 파며 나아가는 터널 공법에 쓰이는 장비를 무엇이라 합니까?",
+        "answer": "터널 굴착기",
+        "acceptedAnswers": [
+          "TBM"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "진동과 소음이 적어 도심에서 유리합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/4#008",
+      "seed": {
+        "subject": "댐",
+        "aspect": "아래가 더 두껍다",
+        "knowledgePoint": "깊을수록 수압이 커지기 때문에 생기는 형태"
+      },
+      "question": {
+        "ok": true,
+        "question": "댐의 단면이 아래로 갈수록 두꺼워지는 것은, 깊어질수록 무엇이 커지기 때문입니까?",
+        "answer": "수압",
+        "acceptedAnswers": [
+          "물의 압력"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "수압은 깊이에 비례해 커집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/4#009",
+      "seed": {
+        "subject": "내진 설계",
+        "aspect": "일부러 흔들리게 만든다",
+        "knowledgePoint": "지진 에너지를 흡수하도록 설계하는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "지진에 대비할 때 건물을 무조건 단단하게 만들지 않고 어느 정도 흔들리며 에너지를 흡수하게 하는 설계를 무엇이라 합니까?",
+        "answer": "내진 설계",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "딱딱하기만 하면 오히려 부서지기 쉽습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/4#010",
+      "seed": {
+        "subject": "면진 장치",
+        "aspect": "건물과 땅 사이를 끊는다",
+        "knowledgePoint": "지반의 흔들림이 위로 덜 전해지게 하는 장치"
+      },
+      "question": {
+        "ok": true,
+        "question": "건물과 지반 사이에 고무나 베어링을 넣어 땅의 흔들림이 위로 덜 전해지게 하는 장치를 무엇이라 합니까?",
+        "answer": "면진 장치",
+        "acceptedAnswers": [
+          "면진"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "내진과 달리 흔들림 자체를 끊어 내려는 접근입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/4#011",
+      "seed": {
+        "subject": "갯벌 간척",
+        "aspect": "땅을 넓히는 대신 생태계를 잃는다",
+        "knowledgePoint": "방조제로 바다를 막아 땅을 만드는 일과 그 대가"
+      },
+      "question": {
+        "ok": true,
+        "question": "바다를 방조제로 막아 갯벌을 땅으로 바꾸는 일을 무엇이라 합니까? 땅을 얻는 대신 생태계를 잃는다는 지적을 받습니다.",
+        "answer": "간척",
+        "acceptedAnswers": [
+          "간척 사업"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "네덜란드와 우리나라가 대표적인 사례로 언급됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

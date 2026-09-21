@@ -1,0 +1,306 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "drinks/3",
+    "categoryPath": "생활·상식 > 술·음료 > 맥주",
+    "midKey": "drinks",
+    "subName": "맥주",
+    "majorKey": "life",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:38:27.408Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보가 특정 브랜드의 맛 묘사인데, 마셔 본 사람만 아는 감각 정보라 알 가치가 3에 못 미친다.",
+      "listedCandidates": 23,
+      "remainingUsable": 5,
+      "remainingUsableNote": "스타우트·바이젠·필스너 유래·캐스크 에일·맥주의 도수 표기가 남았다.",
+      "estimatedCeiling": "실질 상한 16건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "홉",
+          "aspect": "쓴맛과 향을 낸다",
+          "reason": "DB 에 이미 답이 홉인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T14:13:47.424Z"
+  },
+  "items": [
+    {
+      "seedId": "drinks/3#001",
+      "seed": {
+        "subject": "맥아",
+        "aspect": "보리를 싹틔워 말린다",
+        "knowledgePoint": "전분을 당으로 바꿀 수 있게 만드는 과정"
+      },
+      "question": {
+        "ok": true,
+        "question": "보리를 물에 담가 싹을 틔운 뒤 말려, 전분을 당으로 바꿀 수 있게 만든 맥주의 기본 재료는?",
+        "answer": "맥아",
+        "acceptedAnswers": [
+          "몰트"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "싹이 트면서 생긴 효소가 당화를 맡습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/3#002",
+      "seed": {
+        "subject": "에일과 라거",
+        "aspect": "효모가 위에서 뜨느냐 아래로 가라앉느냐",
+        "knowledgePoint": "발효 방식과 온도로 갈리는 두 계열"
+      },
+      "question": {
+        "ok": true,
+        "question": "맥주를 크게 두 계열로 나눌 때, 낮은 온도에서 효모가 아래로 가라앉으며 발효되는 쪽을 무엇이라 합니까?",
+        "answer": "라거",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "우리가 흔히 마시는 맥주가 대부분 이 계열입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/3#003",
+      "seed": {
+        "subject": "맥주 순수령",
+        "aspect": "네 가지 재료만 쓰게 했다",
+        "knowledgePoint": "독일에서 오래 지켜진 규정"
+      },
+      "question": {
+        "ok": true,
+        "question": "맥주에 물·보리·홉만 쓰도록 정해 오랫동안 지켜진 독일의 규정을 무엇이라 합니까?",
+        "answer": "맥주 순수령",
+        "acceptedAnswers": [
+          "순수령"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "효모의 존재가 알려지기 전에 만들어져 뒤에 효모가 더해졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/3#004",
+      "seed": {
+        "subject": "IPA",
+        "aspect": "먼 항해를 견디려 홉을 많이 넣었다는 이야기",
+        "knowledgePoint": "이름의 유래에 관한 설명과 강한 홉 향"
+      },
+      "question": {
+        "ok": true,
+        "question": "긴 항해 동안 상하지 않게 하려고 홉을 많이 넣었다는 이야기가 전하는, 홉 향이 강한 맥주 갈래는?",
+        "answer": "IPA",
+        "acceptedAnswers": [
+          "아이피에이"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "인도로 보내던 맥주라는 뜻의 이름입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/3#005",
+      "seed": {
+        "subject": "거품",
+        "aspect": "향이 날아가는 것을 막는다",
+        "knowledgePoint": "거품이 하는 역할과 따르는 방법"
+      },
+      "question": {
+        "ok": true,
+        "question": "맥주를 따를 때 거품을 적당히 내라고 하는 것은, 거품이 무엇이 날아가는 것을 막아 주기 때문입니까?",
+        "answer": "탄산",
+        "acceptedAnswers": [
+          "향",
+          "탄산과 향"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "뚜껑처럼 덮어 산화도 늦춥니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/3#006",
+      "seed": {
+        "subject": "생맥주",
+        "aspect": "열처리를 하지 않는다",
+        "knowledgePoint": "살균 여부로 갈리는 보관과 유통"
+      },
+      "question": {
+        "ok": true,
+        "question": "열처리로 살균하지 않아 보관과 유통 기간이 짧은 대신 신선한 맛을 살린 맥주를 무엇이라 합니까?",
+        "answer": "생맥주",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "통에 담아 파는 것만 가리키는 말은 아닙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/3#007",
+      "seed": {
+        "subject": "흑맥주",
+        "aspect": "맥아를 검게 볶는다",
+        "knowledgePoint": "색과 커피 같은 향이 생기는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "맥아를 검게 볶아 색이 진하고 커피나 초콜릿 같은 향이 나는 맥주를 무엇이라 합니까?",
+        "answer": "흑맥주",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "볶는 과정에서 생긴 향이 색과 함께 옮겨 옵니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/3#008",
+      "seed": {
+        "subject": "무알코올 맥주",
+        "aspect": "만든 뒤 알코올을 뺀다",
+        "knowledgePoint": "발효를 억제하거나 알코올을 제거하는 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "발효를 억제하거나 다 만든 뒤 알코올을 빼는 방식으로 만드는 맥주를 무엇이라 합니까?",
+        "answer": "무알코올 맥주",
+        "acceptedAnswers": [
+          "논알코올 맥주",
+          "무알콜 맥주"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "완전히 0이 아닌 제품도 있어 표기를 확인해야 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/3#009",
+      "seed": {
+        "subject": "수제 맥주",
+        "aspect": "소규모 양조장에서 만든다",
+        "knowledgePoint": "규모와 독립성을 기준으로 구분하는 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "대형 회사가 아닌 작은 양조장이 독립적으로 만드는 맥주를 무엇이라 합니까?",
+        "answer": "수제 맥주",
+        "acceptedAnswers": [
+          "크래프트 맥주"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "생산량과 지분 구조로 기준을 정하는 나라도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/3#010",
+      "seed": {
+        "subject": "맥주잔의 모양",
+        "aspect": "종류마다 잔이 다르다",
+        "knowledgePoint": "향과 거품을 살리려 잔 모양을 달리하는 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "맥주 종류마다 잔의 모양을 달리 쓰는 것은, 무엇을 살리기 위해서입니까?",
+        "answer": "향",
+        "acceptedAnswers": [
+          "향과 거품"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "입구가 좁으면 향이 모이고, 넓으면 거품이 잘 만들어집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/3#011",
+      "seed": {
+        "subject": "옥토버페스트",
+        "aspect": "이름과 달리 9월에 시작한다",
+        "knowledgePoint": "뮌헨의 축제와 그 시기"
+      },
+      "question": {
+        "ok": true,
+        "question": "이름과 달리 대부분의 일정이 9월에 시작되는, 독일 뮌헨의 맥주 축제는?",
+        "answer": "옥토버페스트",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "날씨가 좋은 시기로 앞당겨진 것이 굳었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

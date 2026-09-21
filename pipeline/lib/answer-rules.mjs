@@ -132,10 +132,30 @@ export function classifyVariant(display, variant) {
  *   dropped  ★ 이 변형만 빼고 적재한다. 문제 자체는 멀쩡하다
  *   warned   ★ 통과시키되 알린다 (낱말 경계가 아닌 부분 일치 — 오탐이 많다)
  */
-export function checkAnswerSet(questionText, display, variants) {
+export function checkAnswerSet(questionText, display, variants, normalize) {
   const blocked = [];
   const dropped = [];
   const warned = [];
+
+  // ★★ R021 — 정규화하면 대표 정답과 같아지는 변형은 죽은 행이다.
+  //   ★ 정지관도 ← 정지 관도 처럼 띄어쓰기만 다른 것은 normalizeAnswer 가 이미 공백을 지우므로
+  //     넣어도 판정에 영향이 없고 question_answers 행만 늘어난다.
+  //   ★ R021 실측: 422개 변형 가운데 27개(6.4%)가 이것이었다. ★★ DB 에는 0개였다.
+  //   ★ normalize 를 넘기지 않으면 이 검사를 건너뛰다 — 이 파일이 shared 에 의존하지 않게 하려는 것이다.
+  if (typeof normalize === 'function') {
+    const seen = new Set([normalize(display)]);
+    const kept = [];
+    for (const v of variants) {
+      const nv = normalize(v);
+      if (seen.has(nv)) {
+        dropped.push({ answer: v, kind: 'redundant', why: '정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다' });
+        continue;
+      }
+      seen.add(nv);
+      kept.push(v);
+    }
+    variants = kept;
+  }
 
   for (const cand of [display, ...variants]) {
     const kind = findAnswerInQuestion(questionText, cand);

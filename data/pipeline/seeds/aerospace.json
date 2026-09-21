@@ -3,7 +3,7 @@
   "midName": "항공·우주 기술",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-21T05:41:19.530Z",
+  "updatedAt": "2026-09-21T06:56:03.199Z",
   "subs": {
     "aerospace/1": {
       "subName": "항공기",
@@ -318,9 +318,263 @@
           "answer": "누리호",
           "origin": "db:247",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "작용 반작용",
+          "origin": "r021:aerospace/3#001",
+          "note": null
+        },
+        {
+          "answer": "다단 로켓",
+          "origin": "r021:aerospace/3#002",
+          "note": null
+        },
+        {
+          "answer": "탈출 속도",
+          "origin": "r021:aerospace/3#003",
+          "note": null
+        },
+        {
+          "answer": "정지궤도",
+          "origin": "r021:aerospace/3#004",
+          "note": null
+        },
+        {
+          "answer": "고체",
+          "origin": "r021:aerospace/3#005",
+          "note": null
+        },
+        {
+          "answer": "자전 속도",
+          "origin": "r021:aerospace/3#006",
+          "note": null
+        },
+        {
+          "answer": "페이로드",
+          "origin": "r021:aerospace/3#007",
+          "note": null
+        },
+        {
+          "answer": "스윙바이",
+          "origin": "r021:aerospace/3#008",
+          "note": null
+        },
+        {
+          "answer": "역추진",
+          "origin": "r021:aerospace/3#009",
+          "note": null
+        },
+        {
+          "answer": "마찰열",
+          "origin": "r021:aerospace/3#010",
+          "note": null
+        },
+        {
+          "answer": "카운트다운",
+          "origin": "r021:aerospace/3#011",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "aerospace/3#001",
+          "subject": "작용 반작용",
+          "aspect": "가스를 뒤로 뿜어 앞으로 간다",
+          "knowledgePoint": "진공에서도 로켓이 나아갈 수 있는 이유",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#001",
+            "answer": "작용 반작용",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/3#002",
+          "subject": "다단 로켓",
+          "aspect": "다 쓴 부분을 버린다",
+          "knowledgePoint": "무게를 줄이려 단계별로 분리하는 구조",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#002",
+            "answer": "다단 로켓",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/3#003",
+          "subject": "탈출 속도",
+          "aspect": "이보다 느리면 되돌아온다",
+          "knowledgePoint": "지구 중력을 벗어나는 데 필요한 속도",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#003",
+            "answer": "탈출 속도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/3#004",
+          "subject": "정지궤도",
+          "aspect": "지구에서 보면 멈춰 있는 것처럼 보인다",
+          "knowledgePoint": "지구 자전과 공전 주기가 같아지는 고도",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#004",
+            "answer": "정지궤도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/3#005",
+          "subject": "고체 연료와 액체 연료",
+          "aspect": "한번 붙으면 끄기 어렵다",
+          "knowledgePoint": "추력 조절 가능 여부로 갈리는 두 방식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#005",
+            "answer": "고체",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/3#006",
+          "subject": "적도 근처 발사",
+          "aspect": "자전 속도를 덤으로 얻는다",
+          "knowledgePoint": "발사장을 적도 가까이 두면 유리한 이유",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#006",
+            "answer": "자전 속도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/3#007",
+          "subject": "페이로드",
+          "aspect": "로켓이 싣고 올라가는 짐",
+          "knowledgePoint": "발사체의 성능을 나타내는 기준이 되는 탑재 중량",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#007",
+            "answer": "페이로드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/3#008",
+          "subject": "스윙바이",
+          "aspect": "행성의 중력으로 가속한다",
+          "knowledgePoint": "연료를 아끼려 행성 곁을 지나며 속도를 얻는 기법",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#008",
+            "answer": "스윙바이",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/3#009",
+          "subject": "역추진",
+          "aspect": "착륙하려면 거꾸로 분사한다",
+          "knowledgePoint": "감속과 착륙에 쓰이는 분사",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#009",
+            "answer": "역추진",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/3#010",
+          "subject": "대기권 재진입",
+          "aspect": "마찰열을 견뎌야 한다",
+          "knowledgePoint": "내열 타일과 진입 각도가 중요한 이유",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#010",
+            "answer": "마찰열",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "aerospace/3#011",
+          "subject": "카운트다운",
+          "aspect": "영화에서 먼저 쓰였다고 전한다",
+          "knowledgePoint": "발사 절차를 맞추려 거꾸로 세는 관행과 그 유래담",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.848Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/aerospace-3#011",
+            "answer": "카운트다운",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "aerospace/4": {
       "subName": "유인 우주 탐사",

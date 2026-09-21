@@ -1,0 +1,306 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "biology/4",
+    "categoryPath": "자연과학 > 생물학 > 미생물·바이러스",
+    "midKey": "biology",
+    "subName": "미생물·바이러스",
+    "majorKey": "science",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:31:00.936Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보(프리온·그람 염색·플라스미드)는 전공 지식이거나, 이미 다른 소분류(의약품·백신)가 더 잘 맡는다.",
+      "listedCandidates": 23,
+      "remainingUsable": 5,
+      "remainingUsableNote": "프리온·그람 염색·플라스미드·고세균·내성균이 남았다.",
+      "estimatedCeiling": "실질 상한 16건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "박테리오파지",
+          "aspect": "세균을 잡아먹는 바이러스",
+          "reason": "DB 에 이미 답이 박테리오파지인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T06:50:07.235Z"
+  },
+  "items": [
+    {
+      "seedId": "biology/4#001",
+      "seed": {
+        "subject": "세균",
+        "aspect": "스스로 번식한다",
+        "knowledgePoint": "세포 구조를 갖추고 혼자 분열해 늘어나는 단세포 생물"
+      },
+      "question": {
+        "ok": true,
+        "question": "세포 구조를 갖추고 혼자 분열해 늘어날 수 있는 단세포 생물로, 항생제가 듣는 대상이 되는 것은?",
+        "answer": "세균",
+        "acceptedAnswers": [
+          "박테리아"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "핵막이 없는 원핵생물입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/4#002",
+      "seed": {
+        "subject": "곰팡이",
+        "aspect": "포자로 퍼진다",
+        "knowledgePoint": "균사를 뻗고 포자를 날려 번지는 진균"
+      },
+      "question": {
+        "ok": true,
+        "question": "실 같은 균사를 뻗고 포자를 날려 퍼지는 진균으로, 눅눅한 곳에 잘 생기는 것은?",
+        "answer": "곰팡이",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "버섯도 같은 계통에 듭니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/4#003",
+      "seed": {
+        "subject": "효모",
+        "aspect": "빵과 술을 만든다",
+        "knowledgePoint": "당을 알코올과 이산화탄소로 바꾸는 단세포 진균"
+      },
+      "question": {
+        "ok": true,
+        "question": "당을 알코올과 이산화탄소로 바꾸어 빵을 부풀리고 술을 만드는 데 쓰이는 단세포 진균은?",
+        "answer": "효모",
+        "acceptedAnswers": [
+          "이스트"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "같은 작용이 빵에서는 부풀림으로, 술에서는 알코올로 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/4#004",
+      "seed": {
+        "subject": "발효와 부패",
+        "aspect": "사람에게 이로우면 발효",
+        "knowledgePoint": "같은 미생물 작용을 결과에 따라 달리 부르는 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "미생물이 유기물을 분해하는 같은 작용인데도, 사람에게 이로우면 발효라 하고 해로우면 무엇이라 부릅니까?",
+        "answer": "부패",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "작용 자체가 아니라 결과를 보고 사람이 이름을 붙인 구분입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/4#005",
+      "seed": {
+        "subject": "항생제",
+        "aspect": "세균에는 듣고 바이러스에는 안 듣는다",
+        "knowledgePoint": "세균의 구조를 표적으로 삼기 때문에 생기는 차이"
+      },
+      "question": {
+        "ok": true,
+        "question": "항생제가 세균에는 듣고 바이러스에는 듣지 않는 것은, 항생제가 무엇을 표적으로 삼기 때문입니까?",
+        "answer": "세균의 구조",
+        "acceptedAnswers": [
+          "세포벽",
+          "세균 세포"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "바이러스는 세포 구조가 없어 표적이 되지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/4#006",
+      "seed": {
+        "subject": "변이",
+        "aspect": "복제 오류가 쌓여 성질이 바뀐다",
+        "knowledgePoint": "바이러스가 빠르게 달라지며 백신을 새로 만들게 하는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "독감 백신을 해마다 새로 만들어야 하는 것은, 바이러스가 복제 과정에서 무엇을 자주 일으키기 때문입니까?",
+        "answer": "변이",
+        "acceptedAnswers": [
+          "돌연변이"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "복제 오류를 고치는 장치가 없거나 약해 변화가 빠릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/4#007",
+      "seed": {
+        "subject": "숙주",
+        "aspect": "바이러스는 남의 세포를 빌린다",
+        "knowledgePoint": "스스로 증식하지 못해 세포 안에서만 늘어나는 것"
+      },
+      "question": {
+        "ok": true,
+        "question": "바이러스가 살아 있는 생물의 세포 안에 들어가야만 늘어날 수 있기 때문에, 그 세포를 가진 쪽을 무엇이라 부릅니까?",
+        "answer": "숙주",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "혼자서는 증식할 수 없다는 점이 생물 여부 논란의 근거가 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/4#008",
+      "seed": {
+        "subject": "인수공통감염병",
+        "aspect": "동물에서 사람으로 넘어온다",
+        "knowledgePoint": "종의 경계를 넘어 전파되는 감염병"
+      },
+      "question": {
+        "ok": true,
+        "question": "동물에게 있던 병원체가 종의 경계를 넘어 사람에게 옮겨 오는 감염병을 무엇이라 합니까?",
+        "answer": "인수공통감염병",
+        "acceptedAnswers": [
+          "인수공통전염병"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "새로 나타나는 감염병 상당수가 여기에 해당한다고 설명됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/4#009",
+      "seed": {
+        "subject": "장내 세균",
+        "aspect": "사람 몸에 사는 미생물이 더 많다고도 한다",
+        "knowledgePoint": "소화와 면역에 관여하는 몸속 미생물 무리"
+      },
+      "question": {
+        "ok": true,
+        "question": "사람의 장에 사는 미생물 무리를 가리키며, 소화와 면역에 관여한다고 알려진 것은?",
+        "answer": "장내 세균",
+        "acceptedAnswers": [
+          "장내 미생물",
+          "마이크로바이옴"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "사람의 세포 수에 맞먹거나 더 많다는 추정이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/4#010",
+      "seed": {
+        "subject": "멸균과 소독",
+        "aspect": "모두 죽이느냐 줄이느냐",
+        "knowledgePoint": "미생물을 완전히 없애는 것과 해롭지 않은 수준으로 줄이는 것의 차이"
+      },
+      "question": {
+        "ok": true,
+        "question": "미생물을 남김없이 죽이는 것과, 해롭지 않은 수준으로 줄이는 것 가운데 앞의 것을 무엇이라 합니까?",
+        "answer": "멸균",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "뒤의 것은 소독이라 하며 목적과 방법이 다릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "biology/4#011",
+      "seed": {
+        "subject": "푸른곰팡이",
+        "aspect": "세균이 자라지 않는 자리를 만들었다",
+        "knowledgePoint": "항생물질을 내는 곰팡이와 그 발견의 계기"
+      },
+      "question": {
+        "ok": true,
+        "question": "배양 접시에 떨어진 어떤 곰팡이 주변에서만 세균이 자라지 못한 것이 항생제 발견의 계기가 되었습니다. 이 곰팡이는?",
+        "answer": "푸른곰팡이",
+        "acceptedAnswers": [
+          "페니실륨"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "우연한 오염을 그냥 버리지 않고 관찰한 것이 발견으로 이어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

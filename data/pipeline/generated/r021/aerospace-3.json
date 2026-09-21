@@ -1,0 +1,308 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "aerospace/3",
+    "categoryPath": "기술·의학 > 항공·우주 기술 > 로켓·발사체",
+    "midKey": "aerospace",
+    "subName": "로켓·발사체",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:32:40.848Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보(특정 발사체의 추력 수치·최근 발사 횟수)는 시간이 지나면 값이 바뀌거나 수치를 외우는 문제가 된다.",
+      "listedCandidates": 23,
+      "remainingUsable": 5,
+      "remainingUsableNote": "새턴 5호·스페이스셔틀·재사용 로켓·페어링·발사장 위치가 남았다.",
+      "estimatedCeiling": "실질 상한 16건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "누리호",
+          "aspect": "우리 기술로 만든 발사체",
+          "reason": "DB 에 이미 답이 누리호인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T06:56:03.198Z"
+  },
+  "items": [
+    {
+      "seedId": "aerospace/3#001",
+      "seed": {
+        "subject": "작용 반작용",
+        "aspect": "가스를 뒤로 뿜어 앞으로 간다",
+        "knowledgePoint": "진공에서도 로켓이 나아갈 수 있는 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "로켓이 공기가 없는 우주에서도 나아갈 수 있는 것은, 뉴턴의 어떤 법칙으로 설명됩니까?",
+        "answer": "작용 반작용",
+        "acceptedAnswers": [
+          "작용 반작용 법칙",
+          "운동 제3법칙"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "공기를 밀어서 가는 것이 아니라 자기 연료를 뒤로 내뿜어 나아갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/3#002",
+      "seed": {
+        "subject": "다단 로켓",
+        "aspect": "다 쓴 부분을 버린다",
+        "knowledgePoint": "무게를 줄이려 단계별로 분리하는 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "연료를 다 쓴 부분을 떼어 버리며 올라가도록 여러 단으로 만든 로켓을 무엇이라 합니까?",
+        "answer": "다단 로켓",
+        "acceptedAnswers": [
+          "다단식 로켓"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "빈 연료통을 계속 끌고 가지 않으려는 구조입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/3#003",
+      "seed": {
+        "subject": "탈출 속도",
+        "aspect": "이보다 느리면 되돌아온다",
+        "knowledgePoint": "지구 중력을 벗어나는 데 필요한 속도"
+      },
+      "question": {
+        "ok": true,
+        "question": "지구의 중력을 완전히 벗어나려면 넘어야 하는 속도를 무엇이라 합니까?",
+        "answer": "탈출 속도",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "지구에서는 초속 약 11.2킬로미터입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/3#004",
+      "seed": {
+        "subject": "정지궤도",
+        "aspect": "지구에서 보면 멈춰 있는 것처럼 보인다",
+        "knowledgePoint": "지구 자전과 공전 주기가 같아지는 고도"
+      },
+      "question": {
+        "ok": true,
+        "question": "위성이 지구 자전과 같은 주기로 돌아 지상에서 보면 한자리에 멈춰 있는 것처럼 보이는 궤도를 무엇이라 합니까?",
+        "answer": "정지궤도",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "통신과 기상 위성이 주로 이 궤도를 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/3#005",
+      "seed": {
+        "subject": "고체 연료와 액체 연료",
+        "aspect": "한번 붙으면 끄기 어렵다",
+        "knowledgePoint": "추력 조절 가능 여부로 갈리는 두 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "액체 연료와 달리 밸브로 추력을 조절할 수 없어, 한번 불이 붙으면 중간에 멈추기 어려운 로켓 연료는 어느 쪽입니까?",
+        "answer": "고체",
+        "acceptedAnswers": [
+          "고체 연료"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "액체 연료는 밸브로 추력을 조절할 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        },
+        "fixedBy": "r021 규칙검사 수정"
+      }
+    },
+    {
+      "seedId": "aerospace/3#006",
+      "seed": {
+        "subject": "적도 근처 발사",
+        "aspect": "자전 속도를 덤으로 얻는다",
+        "knowledgePoint": "발사장을 적도 가까이 두면 유리한 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "발사장을 되도록 적도 가까이 두면 유리한 것은, 지구의 무엇을 덤으로 얻을 수 있기 때문입니까?",
+        "answer": "자전 속도",
+        "acceptedAnswers": [
+          "자전"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "적도에서 자전 속도가 가장 빠르기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/3#007",
+      "seed": {
+        "subject": "페이로드",
+        "aspect": "로켓이 싣고 올라가는 짐",
+        "knowledgePoint": "발사체의 성능을 나타내는 기준이 되는 탑재 중량"
+      },
+      "question": {
+        "ok": true,
+        "question": "로켓이 싣고 올라가는 위성이나 화물을 가리키며, 발사체의 성능을 나타내는 기준이 되는 것은?",
+        "answer": "페이로드",
+        "acceptedAnswers": [
+          "탑재체"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "'어느 궤도에 몇 톤' 이라는 식으로 성능을 표시합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/3#008",
+      "seed": {
+        "subject": "스윙바이",
+        "aspect": "행성의 중력으로 가속한다",
+        "knowledgePoint": "연료를 아끼려 행성 곁을 지나며 속도를 얻는 기법"
+      },
+      "question": {
+        "ok": true,
+        "question": "탐사선이 연료를 아끼려고 행성 곁을 지나며 그 중력으로 속도를 얻는 방법을 무엇이라 합니까?",
+        "answer": "스윙바이",
+        "acceptedAnswers": [
+          "중력 도움",
+          "플라이바이"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 5,
+        "explanation": "먼 행성으로 가는 탐사선이 흔히 쓰는 방법입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/3#009",
+      "seed": {
+        "subject": "역추진",
+        "aspect": "착륙하려면 거꾸로 분사한다",
+        "knowledgePoint": "감속과 착륙에 쓰이는 분사"
+      },
+      "question": {
+        "ok": true,
+        "question": "착륙하거나 속도를 줄이려고 진행 방향으로 화염을 뿜는 것을 무엇이라 합니까?",
+        "answer": "역추진",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 4,
+        "explanation": "재사용 로켓이 수직으로 내려앉을 때 쓰는 방법입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/3#010",
+      "seed": {
+        "subject": "대기권 재진입",
+        "aspect": "마찰열을 견뎌야 한다",
+        "knowledgePoint": "내열 타일과 진입 각도가 중요한 이유"
+      },
+      "question": {
+        "ok": true,
+        "question": "우주선이 지구로 돌아올 때 표면이 수천 도까지 오르는 것은, 대기와 부딪히며 무엇이 생기기 때문입니까?",
+        "answer": "마찰열",
+        "acceptedAnswers": [
+          "압축열",
+          "열"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "정확히는 공기가 급격히 압축되며 생기는 열이 크다고 설명됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/3#011",
+      "seed": {
+        "subject": "카운트다운",
+        "aspect": "영화에서 먼저 쓰였다고 전한다",
+        "knowledgePoint": "발사 절차를 맞추려 거꾸로 세는 관행과 그 유래담"
+      },
+      "question": {
+        "ok": true,
+        "question": "발사 절차를 여러 팀이 맞추려고 남은 시간을 거꾸로 세는 것을 무엇이라 합니까? 영화에서 먼저 쓰였다는 이야기가 전합니다.",
+        "answer": "카운트다운",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "긴장을 높이려고 만든 연출이 실제 절차가 되었다는 설명입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

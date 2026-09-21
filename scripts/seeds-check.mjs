@@ -75,8 +75,18 @@ const findings = {
 };
 
 // ── 1. 정답 정규화 충돌 (신규 200건 안에서)
+//
+// ★★ R021 — **숫자만으로 된 정답은 이 검사에서 제외한다** (C24 확정, D-097).
+//   ★ 근거 (1) 야구 심판진 4명 / 교향곡 악장 4개 / 심장의 방 4개 는
+//     **맞히게 해 주는 지식이 완전히 다르다** (Q-91 기준. D-091 이 우선한다)
+//   ★ 근거 (2) 게임이 **한 판에 같은 정답이 두 번 나오지 않도록 이미 막고 있다** (Q-76).
+//     DB 에 여럿 있어도 체감 중복이 생기지 않는다
+//   ★ 라운드 **밖**(다른 라운드·DB) 은 그대로 둔다 — 그쪽은 LLM 판정을 거치므로
+//     ★★ "정답이 같아도 지식이 다르면 중복이 아니다"(D-091)가 거기서 적용된다.
+const isNumericOnly = (a) => /^\d+(\.\d+)?$/.test((a ?? '').trim());
 const byNorm = new Map();
 for (const it of items) {
+  if (isNumericOnly(it.q.answer)) continue; // ★ D-097
   const n = normalizeAnswer(it.q.answer);
   const arr = byNorm.get(n) ?? [];
   arr.push(it);

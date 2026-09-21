@@ -3,7 +3,7 @@
   "midName": "물리",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-21T01:35:18.719Z",
+  "updatedAt": "2026-09-21T06:50:07.228Z",
   "subs": {
     "physics/1": {
       "subName": "역학·운동",
@@ -588,9 +588,286 @@
           "answer": "회절",
           "origin": "db:192",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "굴절",
+          "origin": "r021:physics/3#001",
+          "note": null
+        },
+        {
+          "answer": "도플러 효과",
+          "origin": "r021:physics/3#002",
+          "note": null
+        },
+        {
+          "answer": "프리즘",
+          "origin": "r021:physics/3#003",
+          "note": null
+        },
+        {
+          "answer": "반사",
+          "origin": "r021:physics/3#004",
+          "note": null
+        },
+        {
+          "answer": "매질",
+          "origin": "r021:physics/3#005",
+          "note": null
+        },
+        {
+          "answer": "가시광선",
+          "origin": "r021:physics/3#006",
+          "note": null
+        },
+        {
+          "answer": "적외선",
+          "origin": "r021:physics/3#007",
+          "note": null
+        },
+        {
+          "answer": "자외선",
+          "origin": "r021:physics/3#008",
+          "note": null
+        },
+        {
+          "answer": "데시벨",
+          "origin": "r021:physics/3#009",
+          "note": null
+        },
+        {
+          "answer": "밀도",
+          "origin": "r021:physics/3#010",
+          "note": null
+        },
+        {
+          "answer": "작아진다",
+          "origin": "r021:physics/3#011",
+          "note": null
+        },
+        {
+          "answer": "빛의 속도",
+          "origin": "r021:physics/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "physics/3#001",
+          "subject": "굴절",
+          "aspect": "물속의 젓가락이 꺾여 보인다",
+          "knowledgePoint": "매질이 바뀌며 속도가 달라져 빛의 진행 방향이 꺾이는 현상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#001",
+            "answer": "굴절",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#002",
+          "subject": "도플러 효과",
+          "aspect": "구급차가 지나가면 소리가 달라진다",
+          "knowledgePoint": "음원과 관찰자가 가까워지고 멀어지며 진동수가 달라지는 현상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#002",
+            "answer": "도플러 효과",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#003",
+          "subject": "무지개",
+          "aspect": "물방울이 프리즘 노릇을 한다",
+          "knowledgePoint": "굴절과 분산으로 색이 갈리며 생기는 현상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#003",
+            "answer": "프리즘",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#004",
+          "subject": "메아리",
+          "aspect": "소리가 벽에 부딪혀 돌아온다",
+          "knowledgePoint": "소리의 반사로 생기며 거리와 시간차로 설명되는 현상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#004",
+            "answer": "반사",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#005",
+          "subject": "진공",
+          "aspect": "소리는 못 가고 빛은 간다",
+          "knowledgePoint": "매질이 필요한 파동과 필요 없는 파동의 차이",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#005",
+            "answer": "매질",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#006",
+          "subject": "가시광선",
+          "aspect": "사람이 볼 수 있는 범위",
+          "knowledgePoint": "전자기파 가운데 눈으로 감지되는 좁은 구간",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#006",
+            "answer": "가시광선",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#007",
+          "subject": "적외선",
+          "aspect": "열로 느껴진다",
+          "knowledgePoint": "가시광선보다 파장이 길어 열화상과 리모컨에 쓰이는 파",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#007",
+            "answer": "적외선",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#008",
+          "subject": "자외선",
+          "aspect": "살균에도 쓰이고 피부도 상하게 한다",
+          "knowledgePoint": "가시광선보다 파장이 짧아 에너지가 큰 파",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#008",
+            "answer": "자외선",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#009",
+          "subject": "데시벨",
+          "aspect": "소리 크기를 로그로 잰다",
+          "knowledgePoint": "10 늘면 에너지가 10배가 되는 소리 세기의 단위",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#009",
+            "answer": "데시벨",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#010",
+          "subject": "음속",
+          "aspect": "공기보다 물에서, 물보다 쇠에서 빠르다",
+          "knowledgePoint": "매질이 빽빽할수록 소리가 빨리 전달되는 것",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#010",
+            "answer": "밀도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#011",
+          "subject": "파장과 진동수",
+          "aspect": "하나가 길면 다른 하나는 작아진다",
+          "knowledgePoint": "속도가 일정할 때 둘이 반비례하는 관계",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#011",
+            "answer": "작아진다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/3#012",
+          "subject": "빛의 속도",
+          "aspect": "우주에서 가장 빠르다고 본다",
+          "knowledgePoint": "진공에서 초속 약 30만 킬로미터인 상수",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:28:55.374Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-3#012",
+            "answer": "빛의 속도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "physics/4": {
       "subName": "열·에너지",
@@ -602,6 +879,266 @@
         }
       ],
       "seeds": []
+    },
+    "physics/5": {
+      "subName": "현대 물리",
+      "usedAnswers": [
+        {
+          "answer": "특수 상대성 이론",
+          "origin": "r021:physics/5#001",
+          "note": null
+        },
+        {
+          "answer": "일반 상대성 이론",
+          "origin": "r021:physics/5#002",
+          "note": null
+        },
+        {
+          "answer": "질량-에너지 등가",
+          "origin": "r021:physics/5#003",
+          "note": null
+        },
+        {
+          "answer": "광전 효과",
+          "origin": "r021:physics/5#004",
+          "note": null
+        },
+        {
+          "answer": "이중성",
+          "origin": "r021:physics/5#005",
+          "note": null
+        },
+        {
+          "answer": "불확정성 원리",
+          "origin": "r021:physics/5#006",
+          "note": null
+        },
+        {
+          "answer": "슈뢰딩거의 고양이",
+          "origin": "r021:physics/5#007",
+          "note": null
+        },
+        {
+          "answer": "핵분열",
+          "origin": "r021:physics/5#008",
+          "note": null
+        },
+        {
+          "answer": "핵융합",
+          "origin": "r021:physics/5#009",
+          "note": null
+        },
+        {
+          "answer": "반물질",
+          "origin": "r021:physics/5#010",
+          "note": null
+        },
+        {
+          "answer": "블랙홀",
+          "origin": "r021:physics/5#011",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "physics/5#001",
+          "subject": "특수 상대성 이론",
+          "aspect": "빠르게 움직이면 시간이 느려진다",
+          "knowledgePoint": "광속 불변을 전제로 시간과 길이가 관측자에 따라 달라진다고 본 이론",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#001",
+            "answer": "특수 상대성 이론",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/5#002",
+          "subject": "일반 상대성 이론",
+          "aspect": "중력은 휘어진 시공간이다",
+          "knowledgePoint": "질량이 시공간을 휘게 해 중력으로 나타난다고 본 이론",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#002",
+            "answer": "일반 상대성 이론",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/5#003",
+          "subject": "질량-에너지 등가",
+          "aspect": "질량과 에너지는 같은 것의 두 모습",
+          "knowledgePoint": "원자력 발전과 핵무기의 원리가 되는 관계식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#003",
+            "answer": "질량-에너지 등가",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/5#004",
+          "subject": "광전 효과",
+          "aspect": "빛을 입자로 보아야 설명된다",
+          "knowledgePoint": "금속에 빛을 쬐면 전자가 튀어나오는 현상과 그 설명",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#004",
+            "answer": "광전 효과",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/5#005",
+          "subject": "이중성",
+          "aspect": "빛은 파동이면서 입자다",
+          "knowledgePoint": "관측 방식에 따라 파동과 입자의 성질이 모두 나타나는 것",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#005",
+            "answer": "이중성",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/5#006",
+          "subject": "불확정성 원리",
+          "aspect": "위치와 운동량을 동시에 정확히 알 수 없다",
+          "knowledgePoint": "측정의 한계가 아니라 자연의 성질이라고 보는 원리",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#006",
+            "answer": "불확정성 원리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/5#007",
+          "subject": "슈뢰딩거의 고양이",
+          "aspect": "상자를 열기 전에는 둘 다라고 한다",
+          "knowledgePoint": "양자 중첩의 기묘함을 드러내려 만든 사고실험",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#007",
+            "answer": "슈뢰딩거의 고양이",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/5#008",
+          "subject": "핵분열",
+          "aspect": "무거운 원자핵이 쪼개진다",
+          "knowledgePoint": "연쇄 반응으로 큰 에너지를 내는 반응",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#008",
+            "answer": "핵분열",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/5#009",
+          "subject": "핵융합",
+          "aspect": "태양이 에너지를 내는 방식",
+          "knowledgePoint": "가벼운 원자핵이 합쳐지며 에너지를 내는 반응",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#009",
+            "answer": "핵융합",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/5#010",
+          "subject": "반물질",
+          "aspect": "만나면 함께 사라진다",
+          "knowledgePoint": "전하가 반대인 짝 입자와 쌍소멸",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#010",
+            "answer": "반물질",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "physics/5#011",
+          "subject": "블랙홀",
+          "aspect": "빛도 빠져나오지 못한다",
+          "knowledgePoint": "중력이 너무 커서 탈출 속도가 광속을 넘는 천체와 사건의 지평선",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:31:00.921Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/physics-5#011",
+            "answer": "블랙홀",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     }
   }
 }

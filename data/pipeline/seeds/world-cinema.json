@@ -3,7 +3,7 @@
   "midName": "세계 영화",
   "majorKey": "arts",
   "majorName": "문화·예술",
-  "updatedAt": "2026-09-21T01:47:36.653Z",
+  "updatedAt": "2026-09-21T13:48:02.872Z",
   "subs": {
     "world-cinema/1": {
       "subName": "할리우드 고전",
@@ -326,7 +326,7 @@
         {
           "answer": "봉준호",
           "origin": "r020:world-cinema/4#001",
-          "note": null
+          "note": "r018 격리: ★ 판정 보류 — Gemini 429 (오늘 3번째. Q-62/D-056 대로 그날 중단). 중복 여부가 아직 판정되지 않았다. ★★ 판정하지 않은 채 적재하지 않는다는 선을 지키려고 이 건만 뺀다. 다음 라운드에 판정 후 seeds-restore 로 되살린다 — db:41 봉준호"
         },
         {
           "answer": "구로사와 아키라",
@@ -361,7 +361,7 @@
         {
           "answer": "박찬욱",
           "origin": "r020:world-cinema/4#008",
-          "note": null
+          "note": "r018 격리: ★ 판정 보류 — Gemini 429 (오늘 3번째. Q-62/D-056 대로 그날 중단). 중복 여부가 아직 판정되지 않았다. ★★ 판정하지 않은 채 적재하지 않는다는 선을 지키려고 이 건만 뺀다. 다음 라운드에 판정 후 seeds-restore 로 되살린다 — db:256 박찬욱"
         },
         {
           "answer": "이창동",
@@ -390,12 +390,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T01:17:22.008Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r020/world-cinema-4#001",
             "answer": "봉준호",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "★ 판정 보류 — Gemini 429 (오늘 3번째. Q-62/D-056 대로 그날 중단). 중복 여부가 아직 판정되지 않았다. ★★ 판정하지 않은 채 적재하지 않는다는 선을 지키려고 이 건만 뺀다. 다음 라운드에 판정 후 seeds-restore 로 되살린다 — db:41 봉준호",
+              "decidedBy": "자체 판단 (C22. 브리핑이 위임한 판단)",
+              "duplicateOf": null,
+              "at": "2026-09-21T06:19:30.559Z"
+            }
           }
         },
         {
@@ -516,12 +523,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T01:17:22.008Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r020/world-cinema-4#008",
             "answer": "박찬욱",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "★ 판정 보류 — Gemini 429 (오늘 3번째. Q-62/D-056 대로 그날 중단). 중복 여부가 아직 판정되지 않았다. ★★ 판정하지 않은 채 적재하지 않는다는 선을 지키려고 이 건만 뺀다. 다음 라운드에 판정 후 seeds-restore 로 되살린다 — db:256 박찬욱",
+              "decidedBy": "자체 판단 (C22. 브리핑이 위임한 판단)",
+              "duplicateOf": null,
+              "at": "2026-09-21T06:19:30.636Z"
+            }
           }
         },
         {
@@ -884,6 +898,266 @@
               "duplicateOf": null,
               "at": "2026-09-21T00:50:45.597Z"
             }
+          }
+        }
+      ]
+    },
+    "world-cinema/5": {
+      "subName": "영화상",
+      "usedAnswers": [
+        {
+          "answer": "아카데미상",
+          "origin": "r021:world-cinema/5#001",
+          "note": null
+        },
+        {
+          "answer": "황금사자상",
+          "origin": "r021:world-cinema/5#002",
+          "note": null
+        },
+        {
+          "answer": "황금곰상",
+          "origin": "r021:world-cinema/5#003",
+          "note": null
+        },
+        {
+          "answer": "유럽",
+          "origin": "r021:world-cinema/5#004",
+          "note": null
+        },
+        {
+          "answer": "골든글로브",
+          "origin": "r021:world-cinema/5#005",
+          "note": null
+        },
+        {
+          "answer": "심사위원대상",
+          "origin": "r021:world-cinema/5#006",
+          "note": null
+        },
+        {
+          "answer": "국제장편영화상",
+          "origin": "r021:world-cinema/5#007",
+          "note": null
+        },
+        {
+          "answer": "라즈베리상",
+          "origin": "r021:world-cinema/5#008",
+          "note": null
+        },
+        {
+          "answer": "공로상",
+          "origin": "r021:world-cinema/5#009",
+          "note": null
+        },
+        {
+          "answer": "회피",
+          "origin": "r021:world-cinema/5#010",
+          "note": null
+        },
+        {
+          "answer": "회계법인",
+          "origin": "r021:world-cinema/5#011",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "world-cinema/5#001",
+          "subject": "아카데미상",
+          "aspect": "회원들의 투표로 정한다",
+          "knowledgePoint": "영화예술과학아카데미 회원이 뽑는 상과 그 별칭",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#001",
+            "answer": "아카데미상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-cinema/5#002",
+          "subject": "황금사자상",
+          "aspect": "가장 오래된 영화제의 최고상",
+          "knowledgePoint": "베네치아 국제영화제의 최고상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#002",
+            "answer": "황금사자상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-cinema/5#003",
+          "subject": "황금곰상",
+          "aspect": "도시의 상징 동물에서 이름을 땄다",
+          "knowledgePoint": "베를린 국제영화제의 최고상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#003",
+            "answer": "황금곰상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-cinema/5#004",
+          "subject": "칸·베네치아·베를린",
+          "aspect": "세계 3대 영화제로 묶어 부른다",
+          "knowledgePoint": "유럽의 세 국제영화제를 함께 이르는 관행",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#004",
+            "answer": "유럽",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-cinema/5#005",
+          "subject": "골든글로브",
+          "aspect": "드라마와 코미디를 나눠 준다",
+          "knowledgePoint": "외신기자협회가 주는 상과 그 부문 구분",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#005",
+            "answer": "골든글로브",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-cinema/5#006",
+          "subject": "칸의 심사위원대상",
+          "aspect": "최고상 바로 다음 상",
+          "knowledgePoint": "그랑프리라고도 불리며 최고상과 혼동되는 상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#006",
+            "answer": "심사위원대상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-cinema/5#007",
+          "subject": "아카데미 국제장편영화상",
+          "aspect": "이름이 바뀌었다",
+          "knowledgePoint": "'외국어영화상' 에서 이름이 바뀐 배경",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#007",
+            "answer": "국제장편영화상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-cinema/5#008",
+          "subject": "라즈베리상",
+          "aspect": "가장 나쁜 영화에 준다",
+          "knowledgePoint": "아카데미를 비꼬아 만든 시상식",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#008",
+            "answer": "라즈베리상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-cinema/5#009",
+          "subject": "종신 공로상",
+          "aspect": "작품이 아니라 생애에 준다",
+          "knowledgePoint": "한 사람의 경력 전체를 기리는 상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#009",
+            "answer": "공로상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-cinema/5#010",
+          "subject": "이해관계 공개",
+          "aspect": "심사위원은 관련 작품을 심사하지 않는다",
+          "knowledgePoint": "공정성을 위해 두는 회피 규정",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#010",
+            "answer": "회피",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "world-cinema/5#011",
+          "subject": "봉인된 개표",
+          "aspect": "발표 직전까지 결과를 모른다",
+          "knowledgePoint": "회계법인이 집계와 보관을 맡는 관행",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:35:05.582Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/world-cinema-5#011",
+            "answer": "회계법인",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
           }
         }
       ]

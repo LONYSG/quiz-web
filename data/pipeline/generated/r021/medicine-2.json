@@ -1,0 +1,329 @@
+{
+  "_meta": {
+    "round": "r021",
+    "subId": "medicine/2",
+    "categoryPath": "기술·의학 > 의학·건강 상식 > 증상·진단",
+    "midKey": "medicine",
+    "subName": "증상·진단",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v2",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5",
+    "generatedAt": "2026-09-21T06:32:40.832Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 25,
+      "remainingUsable": 7,
+      "remainingUsableNote": "초음파·내시경·조영제·생검·심전도·혈압 측정·체온계가 남았다.",
+      "estimatedCeiling": "실질 상한 19건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "뇌파 검사",
+          "aspect": "뇌의 전기 신호를 기록한다",
+          "reason": "DB 에 이미 답이 뇌파 검사인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5",
+    "questionsAt": "2026-09-21T06:56:03.184Z"
+  },
+  "items": [
+    {
+      "seedId": "medicine/2#001",
+      "seed": {
+        "subject": "엑스선",
+        "aspect": "뼈는 하얗게, 살은 검게 나온다",
+        "knowledgePoint": "조직마다 투과도가 달라 명암이 생기는 원리"
+      },
+      "question": {
+        "ok": true,
+        "question": "뼈는 희게, 살은 어둡게 나오는 것은 조직마다 투과되는 정도가 다르기 때문입니다. 이때 쓰는 전자기파는?",
+        "answer": "엑스선",
+        "acceptedAnswers": [
+          "X선",
+          "엑스레이"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "밀도가 높을수록 덜 통과해 밝게 나타납니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#002",
+      "seed": {
+        "subject": "자기공명영상",
+        "aspect": "방사선을 쓰지 않는다",
+        "knowledgePoint": "강한 자기장과 전파로 연부 조직을 잘 보여 주는 검사"
+      },
+      "question": {
+        "ok": true,
+        "question": "방사선을 쓰지 않고 강한 자기장과 전파로 몸속을 찍어, 근육과 인대 같은 연부 조직을 잘 보여 주는 검사는?",
+        "answer": "자기공명영상",
+        "acceptedAnswers": [
+          "MRI",
+          "엠아르아이"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "금속이 든 몸에는 제한이 있어 미리 확인합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#003",
+      "seed": {
+        "subject": "컴퓨터단층촬영",
+        "aspect": "여러 각도에서 찍어 단면을 만든다",
+        "knowledgePoint": "엑스선을 돌려가며 찍어 단면 영상을 얻는 검사"
+      },
+      "question": {
+        "ok": true,
+        "question": "엑스선을 여러 각도에서 찍어 컴퓨터로 단면 영상을 만들어 내는 검사는?",
+        "answer": "컴퓨터단층촬영",
+        "acceptedAnswers": [
+          "CT",
+          "시티"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "빠르게 찍을 수 있어 응급 상황에서 많이 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#004",
+      "seed": {
+        "subject": "청진기",
+        "aspect": "몸속 소리를 듣는 도구",
+        "knowledgePoint": "환자에게 직접 귀를 대지 않으려는 데서 시작된 도구"
+      },
+      "question": {
+        "ok": true,
+        "question": "환자 몸에 직접 귀를 대지 않고 속의 소리를 듣기 위해 고안된, 의사를 상징하는 도구는?",
+        "answer": "청진기",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "처음에는 둘둘 만 종이에서 시작했다고 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#005",
+      "seed": {
+        "subject": "발열",
+        "aspect": "몸이 일부러 온도를 올린다",
+        "knowledgePoint": "면역 반응의 하나로 나타나는 증상"
+      },
+      "question": {
+        "ok": true,
+        "question": "감염이 일어났을 때 체온이 올라가는 것은, 몸이 병원체에 맞서 일부러 조건을 바꾸는 반응입니다. 이 증상을 무엇이라 합니까?",
+        "answer": "발열",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "무조건 나쁜 것이 아니라 면역 반응의 하나로 봅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#006",
+      "seed": {
+        "subject": "염증의 네 징후",
+        "aspect": "붉어지고 부어오르고 뜨겁고 아프다",
+        "knowledgePoint": "고대부터 정리된 염증의 전형적 증상"
+      },
+      "question": {
+        "ok": true,
+        "question": "붉어짐·부어오름·열감과 함께, 고대부터 정리된 염증의 네 가지 징후에 드는 나머지 하나는?",
+        "answer": "통증",
+        "acceptedAnswers": [
+          "아픔"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "기능 상실을 더해 다섯으로 보기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#007",
+      "seed": {
+        "subject": "탈수",
+        "aspect": "소변 색으로 짐작할 수 있다",
+        "knowledgePoint": "몸의 수분이 모자랄 때 나타나는 신호"
+      },
+      "question": {
+        "ok": true,
+        "question": "몸의 수분이 모자랄 때 소변 색이 진해지는 것으로도 짐작할 수 있는 상태를 무엇이라 합니까?",
+        "answer": "탈수",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "목마름을 느끼기 전에 이미 시작되기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#008",
+      "seed": {
+        "subject": "빈혈",
+        "aspect": "피 속 산소 운반이 모자란 상태",
+        "knowledgePoint": "헤모글로빈이 부족해 어지럽고 쉽게 지치는 상태"
+      },
+      "question": {
+        "ok": true,
+        "question": "헤모글로빈이 모자라 산소를 제대로 나르지 못해 쉽게 지치고 어지러운 상태를 무엇이라 합니까?",
+        "answer": "빈혈",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "'피가 모자라다' 는 말과 달리 혈액량이 아니라 성분의 문제입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#009",
+      "seed": {
+        "subject": "황달",
+        "aspect": "피부와 눈흰자가 노래진다",
+        "knowledgePoint": "빌리루빈이 쌓여 나타나는 증상"
+      },
+      "question": {
+        "ok": true,
+        "question": "빌리루빈이라는 색소가 쌓여 피부와 눈흰자가 노랗게 되는 증상을 무엇이라 합니까?",
+        "answer": "황달",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "간이나 담도의 문제를 알리는 신호로 다뤄집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#010",
+      "seed": {
+        "subject": "골든타임",
+        "aspect": "처치가 빠를수록 결과가 달라진다",
+        "knowledgePoint": "응급 상황에서 결정적인 시간을 이르는 말"
+      },
+      "question": {
+        "ok": true,
+        "question": "심정지나 뇌졸중처럼 처치가 빠를수록 결과가 크게 달라지는 상황에서, 결정적인 시간을 이르는 말은?",
+        "answer": "골든타임",
+        "acceptedAnswers": [
+          "골든아워"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 5,
+        "explanation": "질환마다 기준 시간이 다릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#011",
+      "seed": {
+        "subject": "잠복기",
+        "aspect": "감염됐지만 증상이 없다",
+        "knowledgePoint": "병원체가 들어온 뒤 증상이 나타나기까지의 기간"
+      },
+      "question": {
+        "ok": true,
+        "question": "병원체가 몸에 들어온 뒤 증상이 나타나기까지의 기간을 무엇이라 합니까? 이 기간에도 남에게 옮길 수 있습니다.",
+        "answer": "잠복기",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "격리 기간을 정하는 근거가 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "medicine/2#012",
+      "seed": {
+        "subject": "위약 효과",
+        "aspect": "가짜 약에도 효과가 나타난다",
+        "knowledgePoint": "기대 자체가 증상에 영향을 주는 현상과 임상시험의 대조군"
+      },
+      "question": {
+        "ok": true,
+        "question": "약효가 없는 가짜 약을 먹고도 증상이 나아지는 현상으로, 임상시험에서 대조군을 두는 이유가 되는 것은?",
+        "answer": "위약 효과",
+        "acceptedAnswers": [
+          "플라세보 효과",
+          "플라시보 효과"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 5,
+        "explanation": "기대 자체가 증상에 영향을 준다는 것을 보여 줍니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "midName": "의학·건강 상식",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-21T01:38:45.840Z",
+  "updatedAt": "2026-09-21T06:56:03.191Z",
   "subs": {
     "medicine/1": {
       "subName": "질병",
@@ -300,9 +300,286 @@
           "answer": "뇌파 검사",
           "origin": "db:82",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "엑스선",
+          "origin": "r021:medicine/2#001",
+          "note": null
+        },
+        {
+          "answer": "자기공명영상",
+          "origin": "r021:medicine/2#002",
+          "note": null
+        },
+        {
+          "answer": "컴퓨터단층촬영",
+          "origin": "r021:medicine/2#003",
+          "note": null
+        },
+        {
+          "answer": "청진기",
+          "origin": "r021:medicine/2#004",
+          "note": null
+        },
+        {
+          "answer": "발열",
+          "origin": "r021:medicine/2#005",
+          "note": null
+        },
+        {
+          "answer": "통증",
+          "origin": "r021:medicine/2#006",
+          "note": null
+        },
+        {
+          "answer": "탈수",
+          "origin": "r021:medicine/2#007",
+          "note": null
+        },
+        {
+          "answer": "빈혈",
+          "origin": "r021:medicine/2#008",
+          "note": null
+        },
+        {
+          "answer": "황달",
+          "origin": "r021:medicine/2#009",
+          "note": null
+        },
+        {
+          "answer": "골든타임",
+          "origin": "r021:medicine/2#010",
+          "note": null
+        },
+        {
+          "answer": "잠복기",
+          "origin": "r021:medicine/2#011",
+          "note": null
+        },
+        {
+          "answer": "위약 효과",
+          "origin": "r021:medicine/2#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "medicine/2#001",
+          "subject": "엑스선",
+          "aspect": "뼈는 하얗게, 살은 검게 나온다",
+          "knowledgePoint": "조직마다 투과도가 달라 명암이 생기는 원리",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#001",
+            "answer": "엑스선",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#002",
+          "subject": "자기공명영상",
+          "aspect": "방사선을 쓰지 않는다",
+          "knowledgePoint": "강한 자기장과 전파로 연부 조직을 잘 보여 주는 검사",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#002",
+            "answer": "자기공명영상",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#003",
+          "subject": "컴퓨터단층촬영",
+          "aspect": "여러 각도에서 찍어 단면을 만든다",
+          "knowledgePoint": "엑스선을 돌려가며 찍어 단면 영상을 얻는 검사",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#003",
+            "answer": "컴퓨터단층촬영",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#004",
+          "subject": "청진기",
+          "aspect": "몸속 소리를 듣는 도구",
+          "knowledgePoint": "환자에게 직접 귀를 대지 않으려는 데서 시작된 도구",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#004",
+            "answer": "청진기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#005",
+          "subject": "발열",
+          "aspect": "몸이 일부러 온도를 올린다",
+          "knowledgePoint": "면역 반응의 하나로 나타나는 증상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#005",
+            "answer": "발열",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#006",
+          "subject": "염증의 네 징후",
+          "aspect": "붉어지고 부어오르고 뜨겁고 아프다",
+          "knowledgePoint": "고대부터 정리된 염증의 전형적 증상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#006",
+            "answer": "통증",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#007",
+          "subject": "탈수",
+          "aspect": "소변 색으로 짐작할 수 있다",
+          "knowledgePoint": "몸의 수분이 모자랄 때 나타나는 신호",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#007",
+            "answer": "탈수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#008",
+          "subject": "빈혈",
+          "aspect": "피 속 산소 운반이 모자란 상태",
+          "knowledgePoint": "헤모글로빈이 부족해 어지럽고 쉽게 지치는 상태",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#008",
+            "answer": "빈혈",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#009",
+          "subject": "황달",
+          "aspect": "피부와 눈흰자가 노래진다",
+          "knowledgePoint": "빌리루빈이 쌓여 나타나는 증상",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#009",
+            "answer": "황달",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#010",
+          "subject": "골든타임",
+          "aspect": "처치가 빠를수록 결과가 달라진다",
+          "knowledgePoint": "응급 상황에서 결정적인 시간을 이르는 말",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#010",
+            "answer": "골든타임",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#011",
+          "subject": "잠복기",
+          "aspect": "감염됐지만 증상이 없다",
+          "knowledgePoint": "병원체가 들어온 뒤 증상이 나타나기까지의 기간",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#011",
+            "answer": "잠복기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/2#012",
+          "subject": "위약 효과",
+          "aspect": "가짜 약에도 효과가 나타난다",
+          "knowledgePoint": "기대 자체가 증상에 영향을 주는 현상과 임상시험의 대조군",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.832Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-2#012",
+            "answer": "위약 효과",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "medicine/3": {
       "subName": "의약품·백신",
@@ -311,9 +588,286 @@
           "answer": "페니실린",
           "origin": "db:194",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "백신",
+          "origin": "r021:medicine/3#001",
+          "note": null
+        },
+        {
+          "answer": "집단면역",
+          "origin": "r021:medicine/3#002",
+          "note": null
+        },
+        {
+          "answer": "항생제 내성",
+          "origin": "r021:medicine/3#003",
+          "note": null
+        },
+        {
+          "answer": "아스피린",
+          "origin": "r021:medicine/3#004",
+          "note": null
+        },
+        {
+          "answer": "콜드체인",
+          "origin": "r021:medicine/3#005",
+          "note": null
+        },
+        {
+          "answer": "임상시험",
+          "origin": "r021:medicine/3#006",
+          "note": null
+        },
+        {
+          "answer": "부작용",
+          "origin": "r021:medicine/3#007",
+          "note": null
+        },
+        {
+          "answer": "소",
+          "origin": "r021:medicine/3#008",
+          "note": null
+        },
+        {
+          "answer": "천연두",
+          "origin": "r021:medicine/3#009",
+          "note": null
+        },
+        {
+          "answer": "모르핀",
+          "origin": "r021:medicine/3#010",
+          "note": null
+        },
+        {
+          "answer": "아세트아미노펜",
+          "origin": "r021:medicine/3#011",
+          "note": null
+        },
+        {
+          "answer": "유효기간",
+          "origin": "r021:medicine/3#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "medicine/3#001",
+          "subject": "백신",
+          "aspect": "약해진 병원체나 그 조각을 미리 보여 준다",
+          "knowledgePoint": "면역 기억을 만들어 실제 감염에 대비하게 하는 원리",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#001",
+            "answer": "백신",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#002",
+          "subject": "집단면역",
+          "aspect": "일정 비율이 면역을 가지면 전파가 끊긴다",
+          "knowledgePoint": "접종하지 못한 사람까지 보호하게 되는 효과",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#002",
+            "answer": "집단면역",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#003",
+          "subject": "항생제 내성",
+          "aspect": "함부로 쓰면 듣지 않게 된다",
+          "knowledgePoint": "살아남은 균이 퍼지며 약이 듣지 않게 되는 과정",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#003",
+            "answer": "항생제 내성",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#004",
+          "subject": "아스피린",
+          "aspect": "버드나무 껍질에서 시작되었다",
+          "knowledgePoint": "해열·진통에서 출발해 혈전 예방에도 쓰이게 된 약",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#004",
+            "answer": "아스피린",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#005",
+          "subject": "백신의 저온 유통",
+          "aspect": "온도가 깨지면 못 쓴다",
+          "knowledgePoint": "생산에서 접종까지 저온을 유지해야 하는 체계",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#005",
+            "answer": "콜드체인",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#006",
+          "subject": "임상시험",
+          "aspect": "사람에게 쓰기까지 여러 단계를 거친다",
+          "knowledgePoint": "안전성과 효과를 단계별로 확인하는 절차",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#006",
+            "answer": "임상시험",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#007",
+          "subject": "부작용",
+          "aspect": "효과와 떼어 놓을 수 없다",
+          "knowledgePoint": "주된 작용 외에 나타나는 반응과 이상반응 신고 제도",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#007",
+            "answer": "부작용",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#008",
+          "subject": "종두법",
+          "aspect": "소의 천연두를 이용했다",
+          "knowledgePoint": "백신이라는 말의 어원이 된 예방 접종",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#008",
+            "answer": "소",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#009",
+          "subject": "천연두",
+          "aspect": "인류가 박멸에 성공한 감염병",
+          "knowledgePoint": "전 지구적 접종으로 자연 발생이 사라진 유일한 사람 감염병",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#009",
+            "answer": "천연두",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#010",
+          "subject": "모르핀",
+          "aspect": "강력한 진통 효과와 중독성을 함께 가진다",
+          "knowledgePoint": "양귀비에서 얻은 성분이며 엄격히 관리되는 약",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#010",
+            "answer": "모르핀",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#011",
+          "subject": "해열진통제 성분",
+          "aspect": "아세트아미노펜과 소염 계열은 다르다",
+          "knowledgePoint": "작용 방식과 주의점이 서로 다른 두 계열",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#011",
+            "answer": "아세트아미노펜",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        },
+        {
+          "seedId": "medicine/3#012",
+          "subject": "약의 유통기한",
+          "aspect": "지나면 효과가 떨어질 수 있다",
+          "knowledgePoint": "보관 조건과 기한이 약효에 영향을 준다는 것",
+          "round": "r021",
+          "seedPrompt": "seed-v2",
+          "generator": "claude-opus-5",
+          "createdAt": "2026-09-21T06:32:40.840Z",
+          "question": {
+            "status": "ok",
+            "ref": "r021/medicine-3#012",
+            "answer": "유효기간",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
     },
     "medicine/4": {
       "subName": "영양·비타민",
