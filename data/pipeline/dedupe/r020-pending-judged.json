@@ -1,9 +1,336 @@
 {
   "round": "r020-pending",
-  "blocked": {
-    "ok": false,
-    "reason": "rate_limited_today",
-    "detail": "오늘(2026-09-21) 429 를 받았다 (2026-09-21T06:18:49.454Z). 재개 뒤에도 429 를 받았다 (재개 한도 1회 소진). ★ Q-78: 15분 대기 후 1회 재개하고, 그 재개가 성공하면 한도를 돌려준다. 재개 직후 또 429 면 그날 중단한다."
+  "model": "claude-sonnet-5 (V001 검증 세션, Gemini 429 대체)",
+  "usage": {
+    "promptTokens": 0,
+    "outputTokens": 0
   },
-  "pairs": 8
+  "judgedAt": "2026-09-22T00:35:15.648Z",
+  "counts": {
+    "pairs": 11,
+    "judged": 11,
+    "unjudged": 0
+  },
+  "note": "★★ R020 잔여 판정. 원래 알려진 것은 8쌍(pairsVsRounds 1 + pairsVsDb 7)이었으나, V001 세션이 r020-judged.json의 pendingUnjudged(6건, 1차 Gemini 429로 조용히 빠졌던 항목)를 대조한 결과 theatre/2#008·009·010 vs db:679·681·674 3쌍이 이 8쌍 목록에서 누락되어 있었음을 발견했다 — 정답 문자열이 이미 DB와 완전히 같은 웨스트엔드·토니상·커튼콜이다. 이 3쌍을 gap1~gap3으로 추가해 총 11쌍을 판정했다. 상세는 ai-out/V001.txt 참조. ★★ DB에는 아무것도 쓰지 않았다.",
+  "unjudged": [],
+  "judged": [
+    {
+      "pairId": "xr1",
+      "verdict": "different",
+      "reason": "자유의 여신상 왕관 뾰족 부분 개수(7)와 외래어 표기법 받침 허용 글자 수(7)는 답만 우연히 같을 뿐 완전히 무관한 지식이다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-r017",
+      "a": {
+        "ref": "architecture/3#009",
+        "question": "자유의 여신상이 쓴 왕관의 뾰족한 부분은 일곱 대륙과 일곱 바다를 뜻한다고 설명됩니다. 그 개수는 몇 개입니까?",
+        "answer": "7",
+        "category": "문화·예술 > 건축 > 유명 건축물",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "kr-language/1#004",
+        "question": "'커피숍'을 '커피숖'으로 적지 않는 것은 외래어 표기법이 받침에 쓸 수 있는 글자를 한정해 두었기 때문입니다. 그 글자는 모두 몇 개인가요?",
+        "answer": "7",
+        "category": "한국 > 한국어·한글 > 한글 자모·맞춤법",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      }
+    },
+    {
+      "pairId": "db1",
+      "verdict": "different",
+      "reason": "자유의 여신상 왕관 개수(7)와 프리즘 무지개 색 개수(7)는 답만 우연히 같은 별개 지식이다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "architecture/3#009",
+        "question": "자유의 여신상이 쓴 왕관의 뾰족한 부분은 일곱 대륙과 일곱 바다를 뜻한다고 설명됩니다. 그 개수는 몇 개입니까?",
+        "answer": "7",
+        "category": "문화·예술 > 건축 > 유명 건축물",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:52",
+        "question": "빛이 프리즘을 통과할 때 나뉘어 보이는 색의 개수를 흔히 몇 가지라 하는가?",
+        "answer": "7",
+        "category": "(소분류 없음)",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db2",
+      "verdict": "different",
+      "reason": "자유의 여신상 왕관 개수와 외래어 표기법 받침 글자 수는 서로 다른 지식이며 답(7)만 같다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "architecture/3#009",
+        "question": "자유의 여신상이 쓴 왕관의 뾰족한 부분은 일곱 대륙과 일곱 바다를 뜻한다고 설명됩니다. 그 개수는 몇 개입니까?",
+        "answer": "7",
+        "category": "문화·예술 > 건축 > 유명 건축물",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:439",
+        "question": "'커피숍'을 '커피숖'으로 적지 않는 것은 외래어 표기법이 받침에 쓸 수 있는 글자를 한정해 두었기 때문입니다. 그 글자는 모두 몇 개인가요?",
+        "answer": "7",
+        "category": "L2:kr-language > 한글 자모·맞춤법",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db3",
+      "verdict": "different",
+      "reason": "야구 심판진 인원(4명)과 올림픽 개최 주기(4년)는 완전히 무관하며 답만 우연히 일치한다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "baseball/1#010",
+        "question": "야구 경기에 나서는 기본 심판진은 주심 한 명과 누심 세 명으로 모두 몇 명입니까?",
+        "answer": "4",
+        "category": "스포츠·게임 > 야구 > 규칙",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:50",
+        "question": "올림픽이 열리는 주기는 몇 년인가?",
+        "answer": "4",
+        "category": "(소분류 없음)",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db4",
+      "verdict": "different",
+      "reason": "고전주의 교향곡 악장 수(4)와 올림픽 개최 주기(4년)는 무관한 지식으로 답만 같다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "classical/2#010",
+        "question": "고전주의 교향곡은 보통 몇 개의 악장으로 이루어집니까? 빠름·느림·춤곡·빠름의 순서가 일반적입니다.",
+        "answer": "4",
+        "category": "문화·예술 > 클래식 음악 > 작품·악곡",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:50",
+        "question": "올림픽이 열리는 주기는 몇 년인가?",
+        "answer": "4",
+        "category": "(소분류 없음)",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db5",
+      "verdict": "same",
+      "reason": "장발장이 빵을 훔쳐 19년 옥살이를 했다는 위고 소설의 줄거리를 아는 지식 하나로 소설 제목(레 미제라블)과 동명 뮤지컬 둘 다 바로 맞힐 수 있다.",
+      "keep": "a",
+      "confidence": 0.65,
+      "keepReason": "원작 소설과 뮤지컬의 관계까지 알려주어 정보가치가 b보다 조금 더 높다.",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "theatre/2#001",
+        "question": "빵 한 덩이를 훔친 죄로 19년을 옥에서 보낸 장발장의 이야기를 옮긴, 위고의 소설 원작 뮤지컬은?",
+        "answer": "레미제라블",
+        "category": "문화·예술 > 공연·연극·뮤지컬 > 뮤지컬 작품",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:160",
+        "question": "장발장이 빵 한 조각을 훔친 죄로 19년간 감옥살이를 한 뒤 겪는 파란만장한 삶을 그린 프랑스 작가 빅토르 위고의 소설은?",
+        "answer": "레 미제라블",
+        "category": "L2:world-lit > 19세기 소설",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db6",
+      "verdict": "same",
+      "reason": "봉준호가 '기생충' 감독이라는 동일한 지식으로 두 문제 모두 바로 맞힐 수 있다.",
+      "keep": "a",
+      "confidence": 0.85,
+      "keepReason": "비영어 영화 최초 아카데미 작품상이라는 알 가치 높은 사실이 추가되어 있다.",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "world-cinema/4#001",
+        "question": "'기생충' 으로 비영어 영화로는 처음으로 아카데미 작품상을 받은 감독은?",
+        "answer": "봉준호",
+        "category": "문화·예술 > 세계 영화 > 감독",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:41",
+        "question": "영화 기생충을 연출한 한국 감독은?",
+        "answer": "봉준호",
+        "category": "(소분류 없음)",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db7",
+      "verdict": "same",
+      "reason": "박찬욱이 '올드보이' 등을 연출한 감독이라는 동일 지식으로 두 문제 모두 맞힐 수 있다.",
+      "keep": "a",
+      "confidence": 0.8,
+      "keepReason": "복수 3부작, 칸영화제 심사위원대상이라는 구체적이고 알 가치 높은 정보가 있다.",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "world-cinema/4#008",
+        "question": "복수를 주제로 세 편을 이어 만들고 '올드보이' 로 칸영화제 심사위원대상을 받은 한국 감독은?",
+        "answer": "박찬욱",
+        "category": "문화·예술 > 세계 영화 > 감독",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:256",
+        "question": "영화 《올드보이》, 《박쥐》, 《아가씨》, 《헤어질 결심》 등을 연출한 대한민국의 영화감독은?",
+        "answer": "박찬욱",
+        "category": "L2:kr-screen > 2000년대 이후 한국 영화",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "gap1",
+      "verdict": "same",
+      "reason": "브로드웨이와 함께 세계 공연의 양대 축으로 꼽히는 런던 웨스트엔드를 동일하게 설명 (발견된 누락 쌍, 정답 문자열 완전 일치)",
+      "keep": "b",
+      "confidence": 0.9,
+      "keepReason": "'세계 상업 공연의 양대 축'이라는 표현으로 위상을 더 명확히 설명",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "theatre/2#008",
+        "question": "뮤지컬의 두 중심지로 꼽히는 곳은 뉴욕의 브로드웨이와 런던의 어디입니까?",
+        "answer": "웨스트엔드",
+        "category": "문화·예술 > 공연·연극·뮤지컬 > 뮤지컬 작품",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:679",
+        "question": "뉴욕의 극장가와 나란히 세계 상업 공연의 양대 축으로 꼽히는, 런던의 극장 밀집 지역을 무엇이라 부르는가?",
+        "answer": "웨스트엔드",
+        "category": "L2:theatre > 공연 용어·유명 극장",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "gap2",
+      "verdict": "same",
+      "reason": "아카데미·그래미에 견주어지는 연극·뮤지컬 상 토니상을 동일하게 설명 (발견된 누락 쌍, 정답 문자열 완전 일치)",
+      "keep": "b",
+      "confidence": 0.9,
+      "keepReason": "두 문항의 정보량이 사실상 같아 기존 문항을 유지",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "theatre/2#009",
+        "question": "브로드웨이의 연극과 뮤지컬에 주는 상으로, 영화의 아카데미·음악의 그래미와 함께 묶어 이야기되는 것은?",
+        "answer": "토니상",
+        "category": "문화·예술 > 공연·연극·뮤지컬 > 뮤지컬 작품",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:681",
+        "question": "영화의 아카데미상, 음악의 그래미상에 견주어지는 상으로, 미국에서 연극과 뮤지컬을 대상으로 해마다 주는 것은?",
+        "answer": "토니상",
+        "category": "L2:theatre > 공연 용어·유명 극장",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "gap3",
+      "verdict": "same",
+      "reason": "공연 후 배우가 다시 나와 인사하는 커튼콜을 동일하게 설명 (발견된 누락 쌍, 정답 문자열 완전 일치)",
+      "keep": "b",
+      "confidence": 0.9,
+      "keepReason": "'막이 내린 뒤'라는 표현으로 상황을 더 구체적으로 묘사",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "a": {
+        "ref": "theatre/2#010",
+        "question": "공연이 끝난 뒤 배우들이 다시 무대로 나와 관객의 박수에 인사로 답하는 순서를 무엇이라 합니까?",
+        "answer": "커튼콜",
+        "category": "문화·예술 > 공연·연극·뮤지컬 > 뮤지컬 작품",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:674",
+        "question": "공연이 끝나고 막이 내린 뒤 배우들이 다시 무대에 나와 관객의 박수에 답하는 순서를 무엇이라 하는가?",
+        "answer": "커튼콜",
+        "category": "L2:theatre > 공연 용어·유명 극장",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    }
+  ]
 }
