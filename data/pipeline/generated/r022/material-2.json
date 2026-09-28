@@ -1,0 +1,340 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "material/2",
+    "categoryPath": "기술·의학 > 재료·건설 기술 > 플라스틱·신소재",
+    "midKey": "material",
+    "subName": "플라스틱·신소재",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:53:24.960Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보가 개별 상표명이라 알 가치가 3에 못 미친다.",
+      "listedCandidates": 21,
+      "remainingUsable": 2,
+      "remainingUsableNote": "스티로폼·실리콘이 남았다.",
+      "estimatedCeiling": "실질 상한 13건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "그래핀",
+          "aspect": "탄소 원자 한 층",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        },
+        {
+          "subject": "베이클라이트",
+          "aspect": "첫 합성수지",
+          "reason": "★ R021 발명 소분류에 플라스틱이 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "형상기억합금",
+            "probableAnswer": "형상기억합금",
+            "existing": "db:1109",
+            "why": "기존이 같은 정의로 묻는다",
+            "replacedWith": "스티로폼"
+          }
+        ],
+        "keptDespiteHit": [
+          {
+            "subject": "미세플라스틱",
+            "probableAnswer": "미세플라스틱",
+            "existing": "db:2300",
+            "whyDifferent": "기존은 플라스틱의 기원을, 이쪽은 잘게 부서진 조각의 해양 오염을 묻는다"
+          },
+          {
+            "subject": "생분해성 플라스틱",
+            "probableAnswer": "생분해성 플라스틱",
+            "existing": "db:2300",
+            "whyDifferent": "기존은 플라스틱의 기원을, 이쪽은 분해되도록 만든 소재를 묻는다"
+          }
+        ],
+        "checked": 12,
+        "hits": 3,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:21:41.965Z"
+  },
+  "items": [
+    {
+      "seedId": "material/2#001",
+      "seed": {
+        "subject": "나일론",
+        "aspect": "스타킹을 바꿔 놓았다",
+        "knowledgePoint": "최초의 합성 섬유와 그 쓰임",
+        "probableAnswer": "나일론"
+      },
+      "question": {
+        "ok": true,
+        "question": "1930년대 미국 듀폰이 개발한 최초의 합성 섬유로, 비단을 대신해 여성용 스타킹을 크게 바꿔 놓은 것은?",
+        "answer": "나일론",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "처음 판매된 날 스타킹을 사려는 사람들이 길게 줄을 섰다고 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/2#002",
+      "seed": {
+        "subject": "테플론",
+        "aspect": "프라이팬에 눌어붙지 않게 한다",
+        "knowledgePoint": "마찰이 매우 작은 불소 수지 코팅",
+        "probableAnswer": "테플론"
+      },
+      "question": {
+        "ok": true,
+        "question": "프라이팬에 음식이 눌어붙지 않게 입히는 불소 수지 코팅의 상표 이름으로, 1938년 냉매를 연구하다 우연히 발견된 것은?",
+        "answer": "테플론",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "마찰이 매우 작아 우주복과 배관 등에도 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/2#003",
+      "seed": {
+        "subject": "케블라",
+        "aspect": "방탄복에 쓰인다",
+        "knowledgePoint": "강철보다 질긴 합성 섬유",
+        "probableAnswer": "케블라"
+      },
+      "question": {
+        "ok": true,
+        "question": "같은 무게의 강철보다 몇 배 질겨 방탄복과 헬멧에 쓰이는, 듀폰의 여성 화학자가 개발한 합성 섬유는?",
+        "answer": "케블라",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "스테퍼니 퀄렉이 1960년대에 개발했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/2#004",
+      "seed": {
+        "subject": "탄소섬유",
+        "aspect": "가볍고 단단해 자전거·비행기에 쓴다",
+        "knowledgePoint": "탄소를 섬유로 만든 복합재",
+        "probableAnswer": "탄소섬유"
+      },
+      "question": {
+        "ok": true,
+        "question": "가벼우면서도 매우 단단해 경주용 자전거, 비행기 동체, 골프채 등에 쓰이는, 탄소를 가느다란 실로 만든 소재는?",
+        "answer": "탄소섬유",
+        "acceptedAnswers": [
+          "카본"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "흔히 \"카본\" 이라 줄여 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/2#005",
+      "seed": {
+        "subject": "초전도체",
+        "aspect": "전기 저항이 0 이 된다",
+        "knowledgePoint": "아주 낮은 온도에서 저항이 사라지는 물질",
+        "probableAnswer": "초전도체"
+      },
+      "question": {
+        "ok": true,
+        "question": "아주 낮은 온도로 냉각하면 전기 저항이 0 이 되어 전류가 손실 없이 흐르는 물질로, 자기부상열차와 MRI 에 쓰이는 것은?",
+        "answer": "초전도체",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "자석을 밀어내 공중에 띄우는 성질도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/2#006",
+      "seed": {
+        "subject": "미세플라스틱",
+        "aspect": "눈에 보이지 않게 잘게 부서진다",
+        "knowledgePoint": "5mm 미만의 플라스틱 조각과 해양 오염",
+        "probableAnswer": "미세플라스틱"
+      },
+      "question": {
+        "ok": true,
+        "question": "크기가 5mm 보다 작게 잘게 부서진 플라스틱 조각으로, 바다를 떠돌다 물고기와 사람 몸에까지 들어오는 것은?",
+        "answer": "미세플라스틱",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "세안제의 알갱이나 합성 섬유 옷을 빨 때도 나옵니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/2#007",
+      "seed": {
+        "subject": "생분해성 플라스틱",
+        "aspect": "미생물이 분해한다",
+        "knowledgePoint": "자연에서 분해되도록 만든 플라스틱",
+        "probableAnswer": "생분해성 플라스틱"
+      },
+      "question": {
+        "ok": true,
+        "question": "땅이나 물속의 미생물이 분해할 수 있도록 옥수수 전분 등으로 만든 플라스틱은?",
+        "answer": "생분해성 플라스틱",
+        "acceptedAnswers": [
+          "바이오 플라스틱"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "특정한 온도와 습도가 갖춰져야 제대로 분해되는 제품이 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/2#008",
+      "seed": {
+        "subject": "페트",
+        "aspect": "음료수 병의 재질",
+        "knowledgePoint": "투명하고 가벼운 병 재료",
+        "probableAnswer": "페트"
+      },
+      "question": {
+        "ok": true,
+        "question": "투명하고 가벼우며 잘 깨지지 않아 생수와 음료수 병에 가장 많이 쓰이는 플라스틱 재질을 흔히 무엇이라 합니까?",
+        "answer": "페트",
+        "acceptedAnswers": [
+          "PET"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "폴리에틸렌 테레프탈레이트의 약자입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/2#009",
+      "seed": {
+        "subject": "에어로젤",
+        "aspect": "가장 가벼운 고체",
+        "knowledgePoint": "대부분이 공기로 된 단열 소재",
+        "probableAnswer": "에어로젤"
+      },
+      "question": {
+        "ok": true,
+        "question": "부피의 90% 이상이 공기로 이루어져 가장 가벼운 고체로 불리며, 뛰어난 단열성 때문에 우주 탐사선에도 쓰인 소재는?",
+        "answer": "에어로젤",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "\"얼어붙은 연기\" 라는 별명이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/2#010",
+      "seed": {
+        "subject": "고어텍스",
+        "aspect": "물은 막고 땀은 내보낸다",
+        "knowledgePoint": "방수와 투습을 함께 하는 막",
+        "probableAnswer": "고어텍스"
+      },
+      "question": {
+        "ok": true,
+        "question": "빗물 같은 물방울은 막고 땀에서 나온 수증기는 내보내는 막으로, 등산복에 많이 쓰이는 소재의 상표 이름은?",
+        "answer": "고어텍스",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "구멍이 물방울보다 작고 수증기 분자보다 커서 가능한 일입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/2#011",
+      "seed": {
+        "subject": "스티로폼",
+        "aspect": "부피 대부분이 공기다",
+        "knowledgePoint": "폴리스티렌을 부풀린 포장·단열재",
+        "probableAnswer": "스티로폼"
+      },
+      "question": {
+        "ok": true,
+        "question": "폴리스티렌에 가스를 넣어 부풀려 부피 대부분이 공기인 흰 포장·단열재를 흔히 상표 이름으로 무엇이라 합니까?",
+        "answer": "스티로폼",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "가볍지만 잘게 부서지면 바다 쓰레기가 되기 쉽습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "pets-garden/4",
+    "categoryPath": "생활·상식 > 반려동물·원예 > 화초·원예",
+    "midKey": "pets-garden",
+    "subName": "화초·원예",
+    "majorKey": "life",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:04:36.496Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 품종 이름이라 아는 사람만 안다.",
+      "listedCandidates": 17,
+      "remainingUsable": 1,
+      "remainingUsableNote": "분갈이가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "수경재배",
+          "aspect": "흙 없이 기른다",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "접붙이기",
+            "probableAnswer": "접붙이기",
+            "existing": "r022:plants/3#005",
+            "why": "★ D-090 — 같은 라운드 작물·과일 소분류와 답·지식이 같다",
+            "replacedWith": "분갈이"
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:31:22.636Z"
+  },
+  "items": [
+    {
+      "seedId": "pets-garden/4#001",
+      "seed": {
+        "subject": "다육식물",
+        "aspect": "잎에 물을 저장한다",
+        "knowledgePoint": "물을 자주 주지 않는 식물",
+        "probableAnswer": "다육식물"
+      },
+      "question": {
+        "ok": true,
+        "question": "선인장이나 알로에처럼 잎이나 줄기에 물을 저장해 물을 자주 주지 않아도 되는 식물을 무엇이라 합니까?",
+        "answer": "다육식물",
+        "acceptedAnswers": [
+          "다육이"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "건조한 지역에서 살아남으려고 발달한 형태입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/4#002",
+      "seed": {
+        "subject": "과습",
+        "aspect": "물을 너무 많이 줘 뿌리가 썩는다",
+        "knowledgePoint": "화분 식물이 죽는 흔한 원인",
+        "probableAnswer": "과습"
+      },
+      "question": {
+        "ok": true,
+        "question": "화분 식물이 죽는 흔한 원인으로, 물을 너무 자주 줘 흙에 공기가 통하지 않아 뿌리가 썩는 상태는?",
+        "answer": "과습",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "흙 겉이 마른 것을 확인하고 물을 주라는 조언이 흔합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/4#003",
+      "seed": {
+        "subject": "꺾꽂이",
+        "aspect": "가지를 잘라 흙에 꽂는다",
+        "knowledgePoint": "줄기로 번식시키는 방법",
+        "probableAnswer": "꺾꽂이"
+      },
+      "question": {
+        "ok": true,
+        "question": "식물의 가지나 줄기를 잘라 흙이나 물에 꽂아 뿌리를 내리게 해 늘리는 방법은?",
+        "answer": "꺾꽂이",
+        "acceptedAnswers": [
+          "삽목"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "부모와 똑같은 성질의 식물을 얻을 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/4#004",
+      "seed": {
+        "subject": "분재",
+        "aspect": "작은 화분에서 큰 나무 모양을 만든다",
+        "knowledgePoint": "나무를 작게 기르는 원예",
+        "probableAnswer": "분재"
+      },
+      "question": {
+        "ok": true,
+        "question": "나무를 작은 화분에서 가지와 뿌리를 다듬으며 길러, 큰 나무의 모습을 작게 재현하는 원예는?",
+        "answer": "분재",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "수백 년 된 것도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/4#005",
+      "seed": {
+        "subject": "퇴비",
+        "aspect": "음식물·낙엽을 썩힌다",
+        "knowledgePoint": "유기물을 발효시킨 거름",
+        "probableAnswer": "퇴비"
+      },
+      "question": {
+        "ok": true,
+        "question": "낙엽·음식물 찌꺼기·가축 분뇨 같은 유기물을 쌓아 썩혀 만든 거름은?",
+        "answer": "퇴비",
+        "acceptedAnswers": [
+          "두엄"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "미생물이 유기물을 분해하며 열이 나기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/4#006",
+      "seed": {
+        "subject": "산세베리아",
+        "aspect": "밤에도 산소를 내놓는다고 알려졌다",
+        "knowledgePoint": "공기 정화 식물로 알려진 화초",
+        "probableAnswer": "산세베리아"
+      },
+      "question": {
+        "ok": true,
+        "question": "칼처럼 곧게 뻗은 두꺼운 잎에 줄무늬가 있고, 밤에 기공을 열어 이산화탄소를 받아들이는 것으로 알려진 실내 화초는?",
+        "answer": "산세베리아",
+        "acceptedAnswers": [
+          "산세비에리아"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "낮에 물이 빠져나가는 것을 줄이려는 건조 지역 식물의 방식입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/4#007",
+      "seed": {
+        "subject": "수국 색",
+        "aspect": "흙이 산성이면 파래진다",
+        "knowledgePoint": "흙의 산도에 따라 꽃 색이 바뀌는 식물",
+        "probableAnswer": "수국"
+      },
+      "question": {
+        "ok": true,
+        "question": "흙이 산성이면 꽃이 푸른빛, 알칼리성이면 붉은빛을 띠는 경향이 있는 꽃나무는?",
+        "answer": "수국",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "흙 속 알루미늄을 얼마나 빨아들이느냐에 따라 색이 달라집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/4#008",
+      "seed": {
+        "subject": "가지치기",
+        "aspect": "가지를 잘라 모양과 열매를 다듬는다",
+        "knowledgePoint": "나무를 다듬는 작업",
+        "probableAnswer": "가지치기"
+      },
+      "question": {
+        "ok": true,
+        "question": "나무의 모양을 다듬고 열매가 잘 열리게 하려고 필요 없는 가지를 잘라 내는 일은?",
+        "answer": "가지치기",
+        "acceptedAnswers": [
+          "전정"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "바람과 햇빛이 잘 들게 해 병도 줄여 줍니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/4#009",
+      "seed": {
+        "subject": "테라리움",
+        "aspect": "유리병 속 작은 정원",
+        "knowledgePoint": "밀폐된 용기에서 식물을 기르는 방식",
+        "probableAnswer": "테라리움"
+      },
+      "question": {
+        "ok": true,
+        "question": "유리병이나 유리 상자 안에 흙과 식물을 넣어 작은 정원처럼 꾸며 기르는 것은?",
+        "answer": "테라리움",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "뚜껑을 닫으면 안에서 물이 순환해 물을 거의 주지 않아도 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/4#010",
+      "seed": {
+        "subject": "분갈이",
+        "aspect": "뿌리가 화분 밖으로 나온다",
+        "knowledgePoint": "자란 식물을 더 큰 화분으로 옮겨 심는 일",
+        "probableAnswer": "분갈이"
+      },
+      "question": {
+        "ok": true,
+        "question": "식물이 자라 뿌리가 화분 밖으로 비어져 나오면, 더 큰 화분에 새 흙을 넣고 옮겨 심는 일은?",
+        "answer": "분갈이",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "식물이 쉬는 겨울보다 봄에 하는 것이 좋다고 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

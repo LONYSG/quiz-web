@@ -3,7 +3,7 @@
   "midName": "건축",
   "majorKey": "arts",
   "majorName": "문화·예술",
-  "updatedAt": "2026-09-21T13:50:44.932Z",
+  "updatedAt": "2026-09-28T02:24:55.572Z",
   "subs": {
     "architecture/1": {
       "subName": "건축 양식",
@@ -331,7 +331,7 @@
         {
           "answer": "바우하우스",
           "origin": "r021:architecture/2#005",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: db6). 기존 db:186 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "자하 하디드",
@@ -447,12 +447,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:35:05.596Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/architecture-2#005",
             "answer": "바우하우스",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: db6). 기존 db:186 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:186",
+              "at": "2026-09-28T01:31:39.912Z"
+            }
           }
         },
         {
@@ -791,7 +798,7 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T01:17:22.025Z",
           "question": {
-            "status": "discarded",
+            "status": "ok",
             "ref": "r020/architecture-3#009",
             "answer": "7",
             "rejectReason": null,
@@ -799,23 +806,16 @@
             "questionGenerator": "claude-opus-5",
             "restored": {
               "round": "r020",
-              "reason": "정답이 '7' 뿐이다 — 주사위 면의 합(board-game/4#007)과 맞히게 해 주는 지식이 다르다",
-              "decidedBy": "건우 확정 (C24 → D-097). 숫자만으로 된 정답은 라운드 안 충돌 검사에서 제외한다",
-              "at": "2026-09-21T06:17:25.978Z",
+              "reason": "V001 판정 different — 라운드 밖 중복이 아니다. 판정 보류를 풀고 적재한다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정 반영)",
+              "at": "2026-09-28T01:31:50.651Z",
               "wasDiscarded": {
                 "round": "r018",
-                "reason": "라운드 안 같은 답 '7' — 주사위 마주 보는 면의 합(board-game/4#007) 을 남겼다",
-                "decidedBy": "자체 판단 (D-090 · 라운드 안 같은 답)",
-                "duplicateOf": "r020:board-game/4#007",
-                "at": "2026-09-21T01:59:54.758Z"
+                "reason": "★ 판정 보류 — Gemini 429 (오늘 3번째. Q-62/D-056 대로 그날 중단). 중복 여부가 아직 판정되지 않았다. ★★ 판정하지 않은 채 적재하지 않는다는 선을 지키려고 이 건만 뺀다. 다음 라운드에 판정 후 seeds-restore 로 되살린다 — db:52 · db:439 · kr-language/1#004 와 정답 '7' 이 겹친다",
+                "decidedBy": "자체 판단 (C22. 브리핑이 위임한 판단)",
+                "duplicateOf": null,
+                "at": "2026-09-21T06:19:30.252Z"
               }
-            },
-            "discarded": {
-              "round": "r018",
-              "reason": "★ 판정 보류 — Gemini 429 (오늘 3번째. Q-62/D-056 대로 그날 중단). 중복 여부가 아직 판정되지 않았다. ★★ 판정하지 않은 채 적재하지 않는다는 선을 지키려고 이 건만 뺀다. 다음 라운드에 판정 후 seeds-restore 로 되살린다 — db:52 · db:439 · kr-language/1#004 와 정답 '7' 이 겹친다",
-              "decidedBy": "자체 판단 (C22. 브리핑이 위임한 판단)",
-              "duplicateOf": null,
-              "at": "2026-09-21T06:19:30.252Z"
             }
           }
         },
@@ -882,9 +882,194 @@
           "answer": "근정전",
           "origin": "db:296",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "단청",
+          "origin": "r022:architecture/4#001",
+          "note": null
+        },
+        {
+          "answer": "배흘림기둥",
+          "origin": "r022:architecture/4#002",
+          "note": null
+        },
+        {
+          "answer": "다포",
+          "origin": "r022:architecture/4#003",
+          "note": null
+        },
+        {
+          "answer": "종묘",
+          "origin": "r022:architecture/4#004",
+          "note": null
+        },
+        {
+          "answer": "장경판전",
+          "origin": "r022:architecture/4#005",
+          "note": null
+        },
+        {
+          "answer": "초가",
+          "origin": "r022:architecture/4#006",
+          "note": null
+        },
+        {
+          "answer": "창덕궁",
+          "origin": "r022:architecture/4#007",
+          "note": null
+        },
+        {
+          "answer": "누마루",
+          "origin": "r022:architecture/4#008",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "architecture/4#001",
+          "subject": "단청",
+          "aspect": "궁궐과 절에 입힌 색",
+          "knowledgePoint": "목조 건물을 보호하고 꾸미는 채색",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.421Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/architecture-4#001",
+            "answer": "단청",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "architecture/4#002",
+          "subject": "배흘림기둥",
+          "aspect": "가운데가 조금 불룩하다",
+          "knowledgePoint": "부석사 무량수전으로 알려진 기둥 양식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.421Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/architecture-4#002",
+            "answer": "배흘림기둥",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "architecture/4#003",
+          "subject": "다포",
+          "aspect": "기둥 사이에도 공포를 놓는다",
+          "knowledgePoint": "화려한 지붕을 받치는 공포 양식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.421Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/architecture-4#003",
+            "answer": "다포",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "architecture/4#004",
+          "subject": "종묘",
+          "aspect": "옆으로 길게 뻗은 건물",
+          "knowledgePoint": "왕과 왕비의 신주를 모신 사당",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.421Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/architecture-4#004",
+            "answer": "종묘",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "architecture/4#005",
+          "subject": "장경판전",
+          "aspect": "창 크기를 달리해 바람을 들인다",
+          "knowledgePoint": "팔만대장경을 보관한 해인사 건물과 그 통풍",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.421Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/architecture-4#005",
+            "answer": "장경판전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "architecture/4#006",
+          "subject": "초가",
+          "aspect": "볏짚으로 지붕을 인다",
+          "knowledgePoint": "서민의 집과 해마다 새로 잇는 지붕",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.421Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/architecture-4#006",
+            "answer": "초가",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "architecture/4#007",
+          "subject": "창덕궁",
+          "aspect": "자연 지형을 따라 앉혔다",
+          "knowledgePoint": "세계유산에 오른 조선의 궁궐과 후원",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.421Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/architecture-4#007",
+            "answer": "창덕궁",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "architecture/4#008",
+          "subject": "누마루",
+          "aspect": "기둥으로 한층 띄운 마루",
+          "knowledgePoint": "사랑채에서 경치를 보려 높인 마루",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.421Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/architecture-4#008",
+            "answer": "누마루",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     }
   }
 }

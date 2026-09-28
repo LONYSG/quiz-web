@@ -1,0 +1,326 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "world-geo/4",
+    "categoryPath": "인문·사회 > 세계 지리·국가·수도 > 국경·영토",
+    "midKey": "world-geo",
+    "subName": "국경·영토",
+    "majorKey": "humanities",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:46:34.274Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보가 진행 중인 분쟁 지역이라 시간이 지나면 답이 바뀐다.",
+      "listedCandidates": 22,
+      "remainingUsable": 3,
+      "remainingUsableNote": "남중국해·크림반도·나고르노카라바흐가 남았다.",
+      "estimatedCeiling": "실질 상한 14건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "러시아",
+          "aspect": "가장 넓은 나라",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "서사하라",
+            "probableAnswer": "서사하라",
+            "existing": "db:1980",
+            "whyDifferent": "★ 오탐 — '사하라 사막' 과 글자가 겹칠 뿐 영토 문제를 묻는다"
+          }
+        ],
+        "checked": 11,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:16:27.231Z"
+  },
+  "items": [
+    {
+      "seedId": "world-geo/4#001",
+      "seed": {
+        "subject": "비무장지대",
+        "aspect": "군사분계선 남북 2km",
+        "knowledgePoint": "휴전선을 따라 무장을 금한 지대",
+        "probableAnswer": "비무장지대"
+      },
+      "question": {
+        "ok": true,
+        "question": "휴전선인 군사분계선에서 남북으로 각각 2km씩 무장을 금한 지대를 무엇이라 합니까?",
+        "answer": "비무장지대",
+        "acceptedAnswers": [
+          "DMZ"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "사람의 출입이 드물어 생태계가 잘 보존된 곳으로도 알려졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-geo/4#002",
+      "seed": {
+        "subject": "카슈미르",
+        "aspect": "인도와 파키스탄이 다툰다",
+        "knowledgePoint": "분할 뒤 영유권 분쟁이 이어진 지역",
+        "probableAnswer": "카슈미르"
+      },
+      "question": {
+        "ok": true,
+        "question": "1947년 인도·파키스탄 분할 뒤 두 나라가 여러 차례 전쟁을 벌이며 영유권을 다투는 히말라야 서쪽 지역은?",
+        "answer": "카슈미르",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "중국도 일부 지역을 차지하고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-geo/4#003",
+      "seed": {
+        "subject": "쿠릴 열도",
+        "aspect": "일본과 러시아가 다툰다",
+        "knowledgePoint": "2차 대전 뒤 영유권 분쟁이 남은 섬들",
+        "probableAnswer": "쿠릴 열도"
+      },
+      "question": {
+        "ok": true,
+        "question": "제2차 세계대전 뒤 소련이 점령해 지금도 일본과 러시아가 남쪽 네 섬의 영유권을 다투는 열도는?",
+        "answer": "쿠릴 열도",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "일본은 이 네 섬을 북방 영토라 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-geo/4#004",
+      "seed": {
+        "subject": "포클랜드",
+        "aspect": "영국과 아르헨티나가 전쟁을 치렀다",
+        "knowledgePoint": "남대서양 섬을 둘러싼 1982년 분쟁",
+        "probableAnswer": "포클랜드"
+      },
+      "question": {
+        "ok": true,
+        "question": "1982년 영국과 아르헨티나가 전쟁을 벌인 남대서양의 섬들은?",
+        "answer": "포클랜드",
+        "acceptedAnswers": [
+          "포클랜드 제도",
+          "말비나스"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "아르헨티나는 이 섬들을 말비나스라 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-geo/4#005",
+      "seed": {
+        "subject": "가자지구",
+        "aspect": "지중해 연안의 좁은 땅",
+        "knowledgePoint": "팔레스타인 자치 지역 가운데 하나",
+        "probableAnswer": "가자지구"
+      },
+      "question": {
+        "ok": true,
+        "question": "이스라엘과 이집트 사이 지중해 연안의 좁고 긴 땅으로, 요르단강 서안과 함께 팔레스타인 지역을 이루는 곳은?",
+        "answer": "가자지구",
+        "acceptedAnswers": [
+          "가자"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "좁은 땅에 인구가 몰려 세계에서 인구 밀도가 가장 높은 곳 가운데 하나입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-geo/4#006",
+      "seed": {
+        "subject": "칼리닌그라드",
+        "aspect": "본토와 떨어진 러시아 땅",
+        "knowledgePoint": "폴란드와 리투아니아 사이의 러시아 월경지",
+        "probableAnswer": "칼리닌그라드"
+      },
+      "question": {
+        "ok": true,
+        "question": "폴란드와 리투아니아 사이에 끼어 러시아 본토와 떨어져 있는 러시아의 월경지는? 옛 이름은 쾨니히스베르크입니다.",
+        "answer": "칼리닌그라드",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "칸트가 태어나 평생을 보낸 도시입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-geo/4#007",
+      "seed": {
+        "subject": "미국·캐나다 국경",
+        "aspect": "세계에서 가장 긴 국경",
+        "knowledgePoint": "두 나라가 맞댄 국경의 길이",
+        "probableAnswer": "캐나다"
+      },
+      "question": {
+        "ok": true,
+        "question": "세계에서 가장 긴 두 나라 사이 국경을 사이에 두고 미국과 맞닿은 나라는?",
+        "answer": "캐나다",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "알래스카와 캐나다 사이 국경도 여기에 포함됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-geo/4#008",
+      "seed": {
+        "subject": "피레네산맥",
+        "aspect": "산맥이 국경이 되었다",
+        "knowledgePoint": "프랑스와 스페인을 가르는 자연 국경",
+        "probableAnswer": "피레네산맥"
+      },
+      "question": {
+        "ok": true,
+        "question": "프랑스와 스페인 사이에 동서로 뻗어 두 나라의 자연 국경을 이루며, 작은 나라 안도라가 자리한 산맥은?",
+        "answer": "피레네산맥",
+        "acceptedAnswers": [
+          "피레네"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "이베리아반도와 유럽 본토를 가르는 경계이기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-geo/4#009",
+      "seed": {
+        "subject": "영해",
+        "aspect": "해안에서 12해리",
+        "knowledgePoint": "나라의 주권이 미치는 바다",
+        "probableAnswer": "영해"
+      },
+      "question": {
+        "ok": true,
+        "question": "해안의 기선에서 12해리까지로, 그 나라의 주권이 미치는 바다를 무엇이라 합니까?",
+        "answer": "영해",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "1해리는 약 1.852km입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-geo/4#010",
+      "seed": {
+        "subject": "배타적 경제수역",
+        "aspect": "해안에서 200해리",
+        "knowledgePoint": "자원을 독점적으로 개발할 수 있는 바다",
+        "probableAnswer": "배타적 경제수역"
+      },
+      "question": {
+        "ok": true,
+        "question": "해안에서 200해리까지로, 연안국이 어업과 자원 개발을 독점적으로 할 수 있는 바다는?",
+        "answer": "배타적 경제수역",
+        "acceptedAnswers": [
+          "EEZ"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "다른 나라 배의 항행은 막지 못합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-geo/4#011",
+      "seed": {
+        "subject": "서사하라",
+        "aspect": "아프리카에 남은 비자치 지역",
+        "knowledgePoint": "모로코와 독립 세력이 다투는 지역",
+        "probableAnswer": "서사하라"
+      },
+      "question": {
+        "ok": true,
+        "question": "아프리카 북서부에 있어 유엔이 비자치 지역으로 분류하며, 모로코와 독립 세력 폴리사리오 전선이 다투는 지역은?",
+        "answer": "서사하라",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "1975년 스페인이 물러난 뒤 분쟁이 이어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "calendar/2",
+    "categoryPath": "생활·상식 > 절기·기념일·축제 > 국제 기념일",
+    "midKey": "calendar",
+    "subName": "국제 기념일",
+    "majorKey": "life",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:04:36.482Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 8,
+      "shortfallReason": "★ 8건에서 멈췄다. 전역 대조에서 노동절·핼러윈·블랙 프라이데이가 세계 명절·축제 소분류와 같아 버렸다.",
+      "listedCandidates": 17,
+      "remainingUsable": 1,
+      "remainingUsableNote": "세계 물의 날이 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "지구의 날",
+          "aspect": "4월 22일",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "노동절",
+            "probableAnswer": "노동절",
+            "existing": "db:1511",
+            "why": "기존(세계 명절·축제)이 5월 1일·시카고로 같은 지식을 묻는다",
+            "replacedWith": "세계 물의 날"
+          },
+          {
+            "subject": "핼러윈",
+            "probableAnswer": "핼러윈",
+            "existing": "db:149",
+            "why": "기존이 같은 날을 묻는다 (표기만 할로윈)",
+            "replacedWith": null
+          },
+          {
+            "subject": "블랙 프라이데이",
+            "probableAnswer": "블랙 프라이데이",
+            "existing": "db:1513",
+            "why": "기존이 추수감사절 다음 날 할인으로 같은 지식을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 3,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:31:22.617Z"
+  },
+  "items": [
+    {
+      "seedId": "calendar/2#001",
+      "seed": {
+        "subject": "세계 여성의 날",
+        "aspect": "3월 8일, 빵과 장미",
+        "knowledgePoint": "여성 노동자 시위에서 시작된 기념일",
+        "probableAnswer": "세계 여성의 날"
+      },
+      "question": {
+        "ok": true,
+        "question": "미국 여성 노동자들의 시위에서 비롯되어 '빵과 장미' 를 상징으로 삼는, 3월 8일의 기념일은?",
+        "answer": "세계 여성의 날",
+        "acceptedAnswers": [
+          "여성의 날"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "빵은 생존권을, 장미는 참정권을 뜻한다고 풀이합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/2#002",
+      "seed": {
+        "subject": "세계 환경의 날",
+        "aspect": "6월 5일",
+        "knowledgePoint": "스톡홀름 회의에서 정한 환경 기념일",
+        "probableAnswer": "세계 환경의 날"
+      },
+      "question": {
+        "ok": true,
+        "question": "1972년 스톡홀름 유엔 인간환경회의 개막일을 기려 정한 6월 5일의 기념일은?",
+        "answer": "세계 환경의 날",
+        "acceptedAnswers": [
+          "환경의 날"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "한국도 법정 기념일로 정해 두고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/2#003",
+      "seed": {
+        "subject": "만우절",
+        "aspect": "4월 1일 거짓말",
+        "knowledgePoint": "거짓말이 허용되는 날",
+        "probableAnswer": "만우절"
+      },
+      "question": {
+        "ok": true,
+        "question": "가벼운 거짓말이나 장난으로 남을 속여도 웃어넘기는 4월 1일은?",
+        "answer": "만우절",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "영어로는 \"바보들의 날\" 이라 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/2#004",
+      "seed": {
+        "subject": "밸런타인데이",
+        "aspect": "2월 14일",
+        "knowledgePoint": "성인의 이름에서 온 사랑의 날",
+        "probableAnswer": "밸런타인데이"
+      },
+      "question": {
+        "ok": true,
+        "question": "3세기 로마의 한 성인 이름에서 유래했다고 전하는, 2월 14일 연인끼리 선물을 주고받는 날은?",
+        "answer": "밸런타인데이",
+        "acceptedAnswers": [
+          "발렌타인데이"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "초콜릿을 주는 풍습은 일본에서 퍼졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/2#005",
+      "seed": {
+        "subject": "국제 연합의 날",
+        "aspect": "10월 24일",
+        "knowledgePoint": "유엔 헌장이 발효된 날",
+        "probableAnswer": "유엔의 날"
+      },
+      "question": {
+        "ok": true,
+        "question": "1945년 국제연합 헌장이 발효된 것을 기념하는 10월 24일은?",
+        "answer": "유엔의 날",
+        "acceptedAnswers": [
+          "국제 연합의 날",
+          "국제연합일"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "한국에서도 한때 공휴일이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/2#006",
+      "seed": {
+        "subject": "세계 인권의 날",
+        "aspect": "12월 10일",
+        "knowledgePoint": "세계인권선언이 채택된 날",
+        "probableAnswer": "세계 인권의 날"
+      },
+      "question": {
+        "ok": true,
+        "question": "1948년 유엔 총회에서 세계인권선언이 채택된 12월 10일을 기념하는 날은?",
+        "answer": "세계 인권의 날",
+        "acceptedAnswers": [
+          "인권의 날"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "노벨 평화상 시상식도 같은 날 열립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/2#007",
+      "seed": {
+        "subject": "세계 책의 날",
+        "aspect": "4월 23일, 세르반테스와 셰익스피어",
+        "knowledgePoint": "두 작가가 세상을 떠난 날",
+        "probableAnswer": "세계 책의 날"
+      },
+      "question": {
+        "ok": true,
+        "question": "세르반테스와 셰익스피어가 세상을 떠난 날로 알려진 4월 23일을 유네스코가 기념일로 정한 것은?",
+        "answer": "세계 책의 날",
+        "acceptedAnswers": [
+          "세계 책과 저작권의 날"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "스페인 카탈루냐에서 책과 장미를 주고받던 축일에서 비롯되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "calendar/2#008",
+      "seed": {
+        "subject": "세계 물의 날",
+        "aspect": "3월 22일",
+        "knowledgePoint": "물 부족을 알리려 유엔이 정한 날",
+        "probableAnswer": "세계 물의 날"
+      },
+      "question": {
+        "ok": true,
+        "question": "물 부족과 수질 오염의 심각성을 알리려고 유엔이 정한 3월 22일은?",
+        "answer": "세계 물의 날",
+        "acceptedAnswers": [
+          "물의 날"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "1992년 리우 환경회의 제안으로 이듬해부터 기념했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "midName": "종교·경전 상식",
   "majorKey": "humanities",
   "majorName": "인문·사회",
-  "updatedAt": "2026-09-21T06:45:10.084Z",
+  "updatedAt": "2026-09-28T02:16:27.204Z",
   "subs": {
     "religion/1": {
       "subName": "기독교·성경",
@@ -622,7 +622,7 @@
         {
           "answer": "미나레트",
           "origin": "r021:religion/3#008",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr54,db103). 기존 db:745 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "아잔",
@@ -782,12 +782,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:28:55.358Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/religion-3#008",
             "answer": "미나레트",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr54,db103). 기존 db:745 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:745",
+              "at": "2026-09-28T01:31:36.509Z"
+            }
           }
         },
         {
@@ -1097,6 +1104,549 @@
             "rejectReason": null,
             "questionPrompt": "question-v2",
             "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
+    },
+    "religion/4": {
+      "subName": "힌두교·유대교",
+      "usedAnswers": [
+        {
+          "answer": "베다",
+          "origin": "r022:religion/4#001",
+          "note": null
+        },
+        {
+          "answer": "트리무르티",
+          "origin": "r022:religion/4#002",
+          "note": null
+        },
+        {
+          "answer": "갠지스강",
+          "origin": "r022:religion/4#003",
+          "note": null
+        },
+        {
+          "answer": "소",
+          "origin": "r022:religion/4#004",
+          "note": null
+        },
+        {
+          "answer": "목샤",
+          "origin": "r022:religion/4#005",
+          "note": null
+        },
+        {
+          "answer": "토라",
+          "origin": "r022:religion/4#006",
+          "note": null
+        },
+        {
+          "answer": "탈무드",
+          "origin": "r022:religion/4#007",
+          "note": null
+        },
+        {
+          "answer": "안식일",
+          "origin": "r022:religion/4#008",
+          "note": null
+        },
+        {
+          "answer": "코셔",
+          "origin": "r022:religion/4#009",
+          "note": null
+        },
+        {
+          "answer": "유월절",
+          "origin": "r022:religion/4#010",
+          "note": null
+        },
+        {
+          "answer": "시나고그",
+          "origin": "r022:religion/4#011",
+          "note": null
+        },
+        {
+          "answer": "바르 미츠바",
+          "origin": "r022:religion/4#012",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "religion/4#001",
+          "subject": "베다",
+          "aspect": "힌두교의 가장 오래된 경전",
+          "knowledgePoint": "구전으로 이어진 힌두교 경전",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#001",
+            "answer": "베다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#002",
+          "subject": "트리무르티",
+          "aspect": "창조·유지·파괴의 세 신",
+          "knowledgePoint": "브라흐마·비슈누·시바를 묶어 이르는 말",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#002",
+            "answer": "트리무르티",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#003",
+          "subject": "갠지스강",
+          "aspect": "몸을 씻고 유골을 뿌린다",
+          "knowledgePoint": "힌두교도가 신성하게 여기는 강",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#003",
+            "answer": "갠지스강",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#004",
+          "subject": "소",
+          "aspect": "먹지 않고 신성하게 여긴다",
+          "knowledgePoint": "힌두교에서 소를 대하는 관념",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#004",
+            "answer": "소",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#005",
+          "subject": "목샤",
+          "aspect": "윤회에서 벗어난다",
+          "knowledgePoint": "힌두교가 추구하는 해탈의 개념",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#005",
+            "answer": "목샤",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#006",
+          "subject": "토라",
+          "aspect": "두루마리에 손으로 옮겨 쓴다",
+          "knowledgePoint": "유대교 경전의 핵심인 모세 오경",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#006",
+            "answer": "토라",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#007",
+          "subject": "탈무드",
+          "aspect": "율법의 해석과 토론을 모았다",
+          "knowledgePoint": "유대교 율법 해석서",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#007",
+            "answer": "탈무드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#008",
+          "subject": "안식일",
+          "aspect": "금요일 해 질 녘부터 쉰다",
+          "knowledgePoint": "유대교의 일곱째 날 휴식 규범",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#008",
+            "answer": "안식일",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#009",
+          "subject": "코셔",
+          "aspect": "먹어도 되는 음식의 규정",
+          "knowledgePoint": "유대교 식사 율법과 그 인증",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#009",
+            "answer": "코셔",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#010",
+          "subject": "유월절",
+          "aspect": "누룩 없는 빵을 먹는다",
+          "knowledgePoint": "이집트 탈출을 기념하는 유대교 명절",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#010",
+            "answer": "유월절",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#011",
+          "subject": "시나고그",
+          "aspect": "유대교의 회당",
+          "knowledgePoint": "유대교도가 모여 기도하고 배우는 곳",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#011",
+            "answer": "시나고그",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/4#012",
+          "subject": "바르 미츠바",
+          "aspect": "열세 살 소년의 성인식",
+          "knowledgePoint": "유대교에서 율법의 책임을 지는 나이가 된 것을 기리는 의식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.242Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-4#012",
+            "answer": "바르 미츠바",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
+    },
+    "religion/6": {
+      "subName": "종교 의식·상징",
+      "usedAnswers": [
+        {
+          "answer": "세례",
+          "origin": "r022:religion/6#001",
+          "note": null
+        },
+        {
+          "answer": "성찬",
+          "origin": "r022:religion/6#002",
+          "note": null
+        },
+        {
+          "answer": "묵주",
+          "origin": "r022:religion/6#003",
+          "note": null
+        },
+        {
+          "answer": "만자",
+          "origin": "r022:religion/6#004",
+          "note": null
+        },
+        {
+          "answer": "목탁",
+          "origin": "r022:religion/6#005",
+          "note": null
+        },
+        {
+          "answer": "합장",
+          "origin": "r022:religion/6#006",
+          "note": null
+        },
+        {
+          "answer": "할례",
+          "origin": "r022:religion/6#007",
+          "note": null
+        },
+        {
+          "answer": "성수",
+          "origin": "r022:religion/6#008",
+          "note": null
+        },
+        {
+          "answer": "연등",
+          "origin": "r022:religion/6#009",
+          "note": null
+        },
+        {
+          "answer": "성호",
+          "origin": "r022:religion/6#010",
+          "note": null
+        },
+        {
+          "answer": "다윗의 별",
+          "origin": "r022:religion/6#011",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "religion/6#001",
+          "subject": "세례",
+          "aspect": "물로 입교를 표시한다",
+          "knowledgePoint": "기독교에 들어오는 의식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#001",
+            "answer": "세례",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/6#002",
+          "subject": "성찬",
+          "aspect": "빵과 포도주를 나눈다",
+          "knowledgePoint": "최후의 만찬을 기념하는 기독교 의식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#002",
+            "answer": "성찬",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/6#003",
+          "subject": "묵주",
+          "aspect": "구슬을 세며 기도한다",
+          "knowledgePoint": "기도 횟수를 세는 구슬 꿰미",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#003",
+            "answer": "묵주",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/6#004",
+          "subject": "만자",
+          "aspect": "절 지도 기호로 쓰인다",
+          "knowledgePoint": "불교의 길상 표지와 지도에서의 쓰임",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#004",
+            "answer": "만자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/6#005",
+          "subject": "목탁",
+          "aspect": "물고기 모양에서 왔다",
+          "knowledgePoint": "불교 의식에서 두드리는 기구와 그 모양의 뜻",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#005",
+            "answer": "목탁",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/6#006",
+          "subject": "합장",
+          "aspect": "두 손바닥을 모은다",
+          "knowledgePoint": "불교를 비롯한 여러 전통의 인사·예법",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#006",
+            "answer": "합장",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/6#007",
+          "subject": "할례",
+          "aspect": "태어난 지 여드레 되는 날",
+          "knowledgePoint": "유대교·이슬람의 전통 의식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#007",
+            "answer": "할례",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/6#008",
+          "subject": "성수",
+          "aspect": "축복한 물",
+          "knowledgePoint": "가톨릭에서 축복해 쓰는 물",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#008",
+            "answer": "성수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/6#009",
+          "subject": "연등",
+          "aspect": "부처님오신날에 단다",
+          "knowledgePoint": "석가 탄신일에 등을 밝히는 풍습",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#009",
+            "answer": "연등",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/6#010",
+          "subject": "성호",
+          "aspect": "손으로 십자 모양을 긋는다",
+          "knowledgePoint": "가톨릭 신자가 기도 전후에 하는 몸짓",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#010",
+            "answer": "성호",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "religion/6#011",
+          "subject": "다윗의 별",
+          "aspect": "이스라엘 국기에 들어 있다",
+          "knowledgePoint": "유대교를 상징하는 육각별",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.246Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/religion-6#011",
+            "answer": "다윗의 별",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
           }
         }
       ]

@@ -1,0 +1,195 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "brands/4",
+    "categoryPath": "생활·상식 > 브랜드·기업 > 기업 국적",
+    "midKey": "brands",
+    "subName": "기업 국적",
+    "majorKey": "life",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:04:36.471Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 5,
+      "shortfallReason": "★ 5건에서 멈췄다. 나라 이름을 답으로 두면 다른 나라 답과 겹쳐 답을 기업 이름으로 돌렸는데, 레고·삼성·노키아는 기업 창업·역사 소분류와, 폭스바겐은 같은 라운드 자동차 소분류와 같아 버렸다. 남은 후보가 인수합병으로 국적이 흔들린다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "에릭슨이 남았다.",
+      "estimatedCeiling": "실질 상한 10건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "스웨덴",
+          "aspect": "이케아 국적",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "레고",
+            "probableAnswer": "레고",
+            "existing": "db:2151",
+            "why": "기존(기업 창업·역사)이 덴마크 장난감 회사로 같은 지식을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "삼성",
+            "probableAnswer": "삼성",
+            "existing": "db:2148",
+            "why": "기존이 무역상에서 시작한 한국 기업으로 같은 지식을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "폭스바겐",
+            "probableAnswer": "폭스바겐",
+            "existing": "r022:transport/2#003",
+            "why": "★ D-090 — 같은 라운드 자동차 브랜드 소분류와 답·지식이 같다",
+            "replacedWith": null
+          },
+          {
+            "subject": "노키아",
+            "probableAnswer": "노키아",
+            "existing": "db:2146",
+            "why": "기존이 제지 공장에서 시작한 핀란드 기업으로 같은 지식을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 9,
+        "hits": 4,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:31:22.603Z"
+  },
+  "items": [
+    {
+      "seedId": "brands/4#001",
+      "seed": {
+        "subject": "네슬레",
+        "aspect": "스위스의 세계 최대 식품 회사",
+        "knowledgePoint": "식품 기업의 국적(스위스)",
+        "probableAnswer": "네슬레"
+      },
+      "question": {
+        "ok": true,
+        "question": "커피와 초콜릿, 분유 등을 만드는, 세계 최대 식품 회사로 꼽히는 스위스 기업은?",
+        "answer": "네슬레",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "창업자 앙리 네슬레가 만든 분유에서 출발했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/4#002",
+      "seed": {
+        "subject": "자라",
+        "aspect": "스페인의 빠른 유행 옷 브랜드",
+        "knowledgePoint": "패션 기업의 국적(스페인)",
+        "probableAnswer": "자라"
+      },
+      "question": {
+        "ok": true,
+        "question": "유행하는 옷을 빠르게 만들어 싸게 파는 패스트 패션을 대표하는 스페인 브랜드는?",
+        "answer": "자라",
+        "acceptedAnswers": [
+          "ZARA"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "디자인에서 매장 진열까지 몇 주 만에 끝내는 것으로 유명합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/4#003",
+      "seed": {
+        "subject": "필립스",
+        "aspect": "전구에서 시작한 네덜란드 기업",
+        "knowledgePoint": "전자 기업의 국적(네덜란드)",
+        "probableAnswer": "필립스"
+      },
+      "question": {
+        "ok": true,
+        "question": "1891년 전구 공장으로 시작해 가전과 의료 기기 회사로 커진 네덜란드 기업은?",
+        "answer": "필립스",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "카세트테이프와 CD 개발에도 참여했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/4#004",
+      "seed": {
+        "subject": "유니클로",
+        "aspect": "일본의 기본 옷 브랜드",
+        "knowledgePoint": "의류 기업의 국적(일본)",
+        "probableAnswer": "유니클로"
+      },
+      "question": {
+        "ok": true,
+        "question": "기본 디자인의 옷과 '히트텍' 같은 기능성 속옷으로 알려진 일본의 의류 브랜드는?",
+        "answer": "유니클로",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "한 매장에서 시작해 세계적인 의류 기업이 되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "brands/4#005",
+      "seed": {
+        "subject": "화웨이",
+        "aspect": "중국 선전의 통신 장비 회사",
+        "knowledgePoint": "통신 기업의 국적(중국)",
+        "probableAnswer": "화웨이"
+      },
+      "question": {
+        "ok": true,
+        "question": "중국 선전에 본사를 둔 통신 장비·스마트폰 회사로, 미국의 제재 대상이 되어 크게 주목받은 곳은?",
+        "answer": "화웨이",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "세계 통신 장비 시장에서 손꼽히는 회사입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

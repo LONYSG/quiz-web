@@ -1,0 +1,288 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "world-food/3",
+    "categoryPath": "생활·상식 > 세계 음식·요리 > 아메리카 음식",
+    "midKey": "world-food",
+    "subName": "아메리카 음식",
+    "majorKey": "life",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:04:36.451Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 지역 요리 이름이라 아는 사람만 안다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "잠발라야가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "타코",
+          "aspect": "옥수수 전병",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [],
+        "checked": 10,
+        "hits": 0,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:31:22.585Z"
+  },
+  "items": [
+    {
+      "seedId": "world-food/3#001",
+      "seed": {
+        "subject": "핫도그",
+        "aspect": "소시지를 긴 빵에 끼운다",
+        "knowledgePoint": "미국 야구장의 대표 음식",
+        "probableAnswer": "핫도그"
+      },
+      "question": {
+        "ok": true,
+        "question": "길쭉한 빵 사이에 소시지를 끼우고 머스터드를 뿌려 먹는, 미국 야구장의 대표 먹을거리는?",
+        "answer": "핫도그",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "한국에서 흔한 막대에 꽂아 튀긴 것은 미국에서는 \"콘도그\" 라 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-food/3#002",
+      "seed": {
+        "subject": "추수감사절 칠면조",
+        "aspect": "11월 넷째 목요일 식탁",
+        "knowledgePoint": "미국 명절의 대표 요리",
+        "probableAnswer": "칠면조"
+      },
+      "question": {
+        "ok": true,
+        "question": "미국에서 11월 넷째 목요일 추수감사절 식탁에 통째로 구워 올리는 요리의 재료가 되는 새는?",
+        "answer": "칠면조",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "대통령이 칠면조 한 마리를 \"사면\" 해 주는 행사도 해마다 열립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-food/3#003",
+      "seed": {
+        "subject": "바비큐",
+        "aspect": "낮은 불에 오래 훈연한다",
+        "knowledgePoint": "미국 남부식 고기 요리",
+        "probableAnswer": "바비큐"
+      },
+      "question": {
+        "ok": true,
+        "question": "미국 남부에서 고기를 낮은 온도의 연기로 오랜 시간 천천히 익혀 먹는 요리 방식을 흔히 무엇이라 합니까?",
+        "answer": "바비큐",
+        "acceptedAnswers": [
+          "BBQ"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "텍사스·캔자스시티 등 지역마다 고기와 소스가 다릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-food/3#004",
+      "seed": {
+        "subject": "세비체",
+        "aspect": "날생선을 라임즙에 절인다",
+        "knowledgePoint": "페루의 대표 요리",
+        "probableAnswer": "세비체"
+      },
+      "question": {
+        "ok": true,
+        "question": "날생선이나 해산물을 라임즙에 절여 익히듯 만든, 페루를 대표하는 요리는?",
+        "answer": "세비체",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "산이 단백질을 굳혀 불에 익힌 것처럼 식감이 바뀝니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-food/3#005",
+      "seed": {
+        "subject": "슈하스코",
+        "aspect": "긴 꼬챙이 고기를 잘라 준다",
+        "knowledgePoint": "브라질식 숯불구이",
+        "probableAnswer": "슈하스코"
+      },
+      "question": {
+        "ok": true,
+        "question": "커다란 꼬챙이에 꿴 고기를 숯불에 구워 식탁에서 바로 잘라 주는 브라질식 바비큐는?",
+        "answer": "슈하스코",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "남부 초원의 목동 요리에서 시작되었다고 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-food/3#006",
+      "seed": {
+        "subject": "푸틴",
+        "aspect": "감자튀김에 치즈와 그레이비",
+        "knowledgePoint": "캐나다 퀘벡의 음식",
+        "probableAnswer": "푸틴"
+      },
+      "question": {
+        "ok": true,
+        "question": "감자튀김 위에 치즈 커드를 올리고 그레이비 소스를 부어 먹는 캐나다 퀘벡의 음식은?",
+        "answer": "푸틴",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "러시아 대통령의 이름과 한글 표기가 같아 종종 화제가 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-food/3#007",
+      "seed": {
+        "subject": "과카몰리",
+        "aspect": "아보카도를 으깬다",
+        "knowledgePoint": "멕시코의 소스",
+        "probableAnswer": "과카몰리"
+      },
+      "question": {
+        "ok": true,
+        "question": "아보카도를 으깨 라임즙·양파·고추 등을 섞어 만드는 멕시코의 소스는?",
+        "answer": "과카몰리",
+        "acceptedAnswers": [
+          "과카몰레"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "아즈텍 사람들도 먹었다고 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-food/3#008",
+      "seed": {
+        "subject": "엠파나다",
+        "aspect": "고기를 넣고 반달 모양으로 굽는다",
+        "knowledgePoint": "중남미의 만두 같은 빵",
+        "probableAnswer": "엠파나다"
+      },
+      "question": {
+        "ok": true,
+        "question": "밀가루 반죽에 고기나 채소 소를 넣고 반달 모양으로 접어 굽거나 튀긴, 스페인과 중남미의 음식은?",
+        "answer": "엠파나다",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "\"빵으로 감싼다\" 는 뜻의 스페인어에서 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-food/3#009",
+      "seed": {
+        "subject": "클램 차우더",
+        "aspect": "조개로 끓인 크림 수프",
+        "knowledgePoint": "보스턴의 명물 수프",
+        "probableAnswer": "클램 차우더"
+      },
+      "question": {
+        "ok": true,
+        "question": "조개와 감자를 넣어 걸쭉한 크림 수프로 끓인, 미국 보스턴 일대의 명물 요리는?",
+        "answer": "클램 차우더",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "토마토를 넣어 붉은 맨해튼식도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-food/3#010",
+      "seed": {
+        "subject": "나초",
+        "aspect": "토르티야 칩에 치즈를 녹인다",
+        "knowledgePoint": "멕시코에서 시작된 간식",
+        "probableAnswer": "나초"
+      },
+      "question": {
+        "ok": true,
+        "question": "토르티야를 삼각형으로 잘라 튀긴 칩에 녹인 치즈를 얹어 먹는, 멕시코 국경 마을에서 시작된 간식은?",
+        "answer": "나초",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "처음 만든 사람의 별명에서 이름이 왔다고 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "world-history-east/3",
+    "categoryPath": "인문·사회 > 동양사 > 인도·동남아",
+    "midKey": "world-history-east",
+    "subName": "인도·동남아",
+    "majorKey": "humanities",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:46:34.225Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보(촐라 왕조·스리위자야·아유타야)는 대상 자체가 마이너해 나쁜 어려움이 된다.",
+      "listedCandidates": 23,
+      "remainingUsable": 4,
+      "remainingUsableNote": "촐라·스리위자야·아유타야·마자파힛이 남았다.",
+      "estimatedCeiling": "실질 상한 15건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "아소카",
+          "aspect": "불교를 퍼뜨린 왕",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        },
+        {
+          "subject": "동인도회사",
+          "aspect": "인도 지배",
+          "reason": "★ 경제사·서양사에 이미 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "카스트",
+            "probableAnswer": "카스트",
+            "existing": "db:861",
+            "whyDifferent": "★ 오탐 — '카스트라토' 안에 글자로 들어 있을 뿐이다"
+          },
+          {
+            "subject": "앙코르 와트",
+            "probableAnswer": "앙코르 와트",
+            "existing": "db:2637",
+            "whyDifferent": "★ 오탐 — 프랑스어 '앙코르' 와 글자만 겹친다"
+          }
+        ],
+        "checked": 11,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:16:27.186Z"
+  },
+  "items": [
+    {
+      "seedId": "world-history-east/3#001",
+      "seed": {
+        "subject": "모헨조다로",
+        "aspect": "계획된 하수도를 갖춘 고대 도시",
+        "knowledgePoint": "인더스 문명의 대표 유적과 그 도시 설계",
+        "probableAnswer": "모헨조다로"
+      },
+      "question": {
+        "ok": true,
+        "question": "인더스 문명의 대표 유적으로, 구운 벽돌로 지은 반듯한 거리와 하수 시설, 대목욕탕이 발견된 도시는?",
+        "answer": "모헨조다로",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "하라파와 함께 인더스 문명의 계획도시로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-history-east/3#002",
+      "seed": {
+        "subject": "카스트",
+        "aspect": "태어날 때 신분이 정해진다",
+        "knowledgePoint": "인도의 세습 신분 제도와 그 네 계층",
+        "probableAnswer": "카스트"
+      },
+      "question": {
+        "ok": true,
+        "question": "브라만·크샤트리아·바이샤·수드라의 네 계층으로 나뉘며, 태어날 때 신분이 정해지는 인도의 세습 신분 제도는?",
+        "answer": "카스트",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "법으로는 차별이 금지되었지만 관습은 여전히 남아 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-history-east/3#003",
+      "seed": {
+        "subject": "굽타 왕조",
+        "aspect": "0 의 개념이 체계화된 시대",
+        "knowledgePoint": "인도 고전 문화의 황금기로 꼽히는 왕조",
+        "probableAnswer": "굽타 왕조"
+      },
+      "question": {
+        "ok": true,
+        "question": "4~6세기 인도 북부를 통일해 산스크리트 문학과 수학·천문학이 꽃피운, 인도 고전 문화의 황금기로 꼽히는 왕조는?",
+        "answer": "굽타 왕조",
+        "acceptedAnswers": [
+          "굽타"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "아잔타 석굴의 벽화도 이 무렵의 것이 널리 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-history-east/3#004",
+      "seed": {
+        "subject": "무굴 제국",
+        "aspect": "이슬람 왕조가 인도를 다스렸다",
+        "knowledgePoint": "티무르의 후손이 세운 인도의 이슬람 제국",
+        "probableAnswer": "무굴 제국"
+      },
+      "question": {
+        "ok": true,
+        "question": "티무르의 후손 바부르가 16세기에 세워 타지마할을 남긴 인도의 이슬람 제국은?",
+        "answer": "무굴 제국",
+        "acceptedAnswers": [
+          "무굴"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "\"무굴\" 은 몽골을 가리키는 말에서 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-history-east/3#005",
+      "seed": {
+        "subject": "앙코르 와트",
+        "aspect": "국기에 그려진 사원",
+        "knowledgePoint": "크메르 제국이 세운 사원과 캄보디아 국기",
+        "probableAnswer": "앙코르 와트"
+      },
+      "question": {
+        "ok": true,
+        "question": "크메르 제국이 12세기에 세운 사원으로, 캄보디아 국기 한가운데 그려져 있는 것은?",
+        "answer": "앙코르 와트",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "처음에는 힌두교 사원으로 지어졌다가 뒤에 불교 사원으로 쓰였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-history-east/3#006",
+      "seed": {
+        "subject": "보로부두르",
+        "aspect": "이슬람 국가에 있는 거대한 불교 유적",
+        "knowledgePoint": "자와섬의 불교 사원 유적",
+        "probableAnswer": "보로부두르"
+      },
+      "question": {
+        "ok": true,
+        "question": "이슬람 신자가 대부분인 인도네시아 자와섬에 있는 세계 최대 규모의 불교 사원 유적은?",
+        "answer": "보로부두르",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "8~9세기에 지어졌고 화산재에 묻혀 있다가 19세기에 다시 알려졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-history-east/3#007",
+      "seed": {
+        "subject": "세포이 항쟁",
+        "aspect": "탄약 포장의 기름이 불씨가 되었다",
+        "knowledgePoint": "영국 지배에 맞선 인도 용병의 봉기와 그 결과",
+        "probableAnswer": "세포이 항쟁"
+      },
+      "question": {
+        "ok": true,
+        "question": "1857년 영국 동인도회사의 인도인 용병들이 소와 돼지 기름을 바른 탄약 포장에 반발해 일으킨 봉기는? 이를 계기로 영국이 인도를 직접 다스리게 됩니다.",
+        "answer": "세포이 항쟁",
+        "acceptedAnswers": [
+          "세포이 반란"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "소는 힌두교도가, 돼지는 이슬람교도가 금기로 여겼습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-history-east/3#008",
+      "seed": {
+        "subject": "소금 행진",
+        "aspect": "소금세에 맞서 바다까지 걸었다",
+        "knowledgePoint": "간디가 이끈 비폭력 불복종 운동",
+        "probableAnswer": "소금 행진"
+      },
+      "question": {
+        "ok": true,
+        "question": "1930년 간디가 영국의 소금 독점에 맞서 400km 가까이 걸어 바닷가에서 직접 소금을 만든 비폭력 불복종 운동은?",
+        "answer": "소금 행진",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "수많은 사람이 뒤따르며 독립운동이 세계의 주목을 받았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-history-east/3#009",
+      "seed": {
+        "subject": "인도·파키스탄 분할",
+        "aspect": "독립과 동시에 둘로 나뉘었다",
+        "knowledgePoint": "1947년 종교를 기준으로 갈라진 두 나라",
+        "probableAnswer": "파키스탄"
+      },
+      "question": {
+        "ok": true,
+        "question": "1947년 영국령 인도가 독립하면서 종교를 기준으로 갈라져, 이슬람교도가 많은 지역에 세워진 나라는?",
+        "answer": "파키스탄",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "동쪽 지역은 1971년 방글라데시로 다시 갈라져 나왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-history-east/3#010",
+      "seed": {
+        "subject": "믈라카 왕국",
+        "aspect": "해협을 끼고 번성한 항구 왕국",
+        "knowledgePoint": "동서 교역로를 쥐고 이슬람을 퍼뜨린 동남아 왕국",
+        "probableAnswer": "믈라카 왕국"
+      },
+      "question": {
+        "ok": true,
+        "question": "15세기 말레이반도의 해협을 끼고 동서 교역을 쥐며 동남아에 이슬람을 퍼뜨린 항구 왕국은? 1511년 포르투갈에 점령되었습니다.",
+        "answer": "믈라카 왕국",
+        "acceptedAnswers": [
+          "말라카 왕국",
+          "믈라카",
+          "말라카"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "\"말라카\" 로도 널리 적어 두 표기를 모두 인정합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-history-east/3#011",
+      "seed": {
+        "subject": "크메르 루주",
+        "aspect": "도시민을 농촌으로 내몰았다",
+        "knowledgePoint": "캄보디아에서 대량 학살을 벌인 정권",
+        "probableAnswer": "크메르 루주"
+      },
+      "question": {
+        "ok": true,
+        "question": "1975년부터 캄보디아를 다스리며 도시민을 농촌으로 강제 이주시키고 대량 학살을 벌인 폴 포트의 정권은?",
+        "answer": "크메르 루주",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "4년 가까운 통치 동안 인구의 약 4분의 1이 목숨을 잃었다고 추정됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "kr-tv/2",
+    "categoryPath": "한국 > 한국 방송·예능 > 유행어",
+    "midKey": "kr-tv",
+    "subName": "유행어",
+    "majorKey": "korea",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:41:29.896Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 3,
+      "shortfallReason": "★★★ 3건에서 멈췄다. 유행어는 대부분 **그 시기에 그 프로를 본 사람만** 안다. 세대를 넘어 널리 알려진 것만 골랐더니 셋이었다. 나머지는 알 가치 2 이하다.",
+      "listedCandidates": 15,
+      "remainingUsable": 0,
+      "remainingUsableNote": "남은 후보는 전부 세대 한정이다.",
+      "estimatedCeiling": "실질 상한 3건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "무를 주세요",
+          "aspect": "광고 유행어",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [],
+        "checked": 3,
+        "hits": 0,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:09:59.323Z"
+  },
+  "items": [
+    {
+      "seedId": "kr-tv/2#001",
+      "seed": {
+        "subject": "영구 없다",
+        "aspect": "바보 캐릭터의 인사말",
+        "knowledgePoint": "심형래가 연기한 영구 캐릭터의 유행어",
+        "probableAnswer": "영구 없다"
+      },
+      "question": {
+        "ok": true,
+        "question": "심형래가 연기한 바보 캐릭터가 숨바꼭질하듯 외치던 유행어로, 이 캐릭터의 이름이 들어간 말은?",
+        "answer": "영구 없다",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "1980~90년대 코미디와 영화로 이어진 캐릭터입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-tv/2#002",
+      "seed": {
+        "subject": "나 떨고 있니",
+        "aspect": "사형 직전의 대사",
+        "knowledgePoint": "드라마 모래시계에서 나와 유행어가 된 대사",
+        "probableAnswer": "나 떨고 있니"
+      },
+      "question": {
+        "ok": true,
+        "question": "1995년 드라마 '모래시계' 에서 사형을 앞둔 태수가 친구에게 건넨 말로 유행어가 된 대사는?",
+        "answer": "나 떨고 있니",
+        "acceptedAnswers": [
+          "나 떨고 있냐"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "최민수가 연기한 태수의 마지막 장면 대사입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-tv/2#003",
+      "seed": {
+        "subject": "유행어",
+        "aspect": "방송에서 나와 일상어가 된다",
+        "knowledgePoint": "방송·광고의 말이 퍼져 일상에서 쓰이는 현상과 그 수명",
+        "probableAnswer": "유행어"
+      },
+      "question": {
+        "ok": false,
+        "rejectReason": "정답 \"유행어\" 가 너무 일반어라 질문이 곧 사전 정의가 된다. 알 가치가 3 에 못 미친다."
+      }
+    }
+  ]
+}

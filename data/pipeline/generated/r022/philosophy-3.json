@@ -1,0 +1,325 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "philosophy/3",
+    "categoryPath": "인문·사회 > 철학·사상 > 현대 철학",
+    "midKey": "philosophy",
+    "subName": "현대 철학",
+    "majorKey": "humanities",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:46:34.249Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보(해체·차연·언어 게임의 세부)는 전공자가 아니면 닿지 않는다.",
+      "listedCandidates": 22,
+      "remainingUsable": 3,
+      "remainingUsableNote": "데리다·들뢰즈·레비나스가 남았다.",
+      "estimatedCeiling": "실질 상한 14건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "실존주의",
+          "aspect": "실존은 본질에 앞선다",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "신은 죽었다",
+            "probableAnswer": "니체",
+            "existing": "db:1839",
+            "why": "기존이 \"'신은 죽었다' 고 선언한 독일 철학자\" 를 묻는다. 같은 지식이다",
+            "replacedWith": "악의 평범성"
+          }
+        ],
+        "keptDespiteHit": [
+          {
+            "subject": "사르트르",
+            "probableAnswer": "사르트르",
+            "existing": "db:1840",
+            "whyDifferent": "기존은 '실존이 본질에 앞선다' 는 명제로 묻고, 이쪽은 노벨문학상을 거절했다는 사실로 묻는다. 명제를 안다고 거절 일화를 아는 것은 아니다"
+          }
+        ],
+        "checked": 12,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:16:27.205Z"
+  },
+  "items": [
+    {
+      "seedId": "philosophy/3#001",
+      "seed": {
+        "subject": "위버멘시",
+        "aspect": "스스로 가치를 만드는 인간",
+        "knowledgePoint": "니체가 제시한 초인 개념",
+        "probableAnswer": "위버멘시"
+      },
+      "question": {
+        "ok": true,
+        "question": "니체가 기존 가치를 넘어 스스로 새 가치를 만드는 인간을 가리켜 쓴 말로, 흔히 '초인' 으로 번역되는 독일어는?",
+        "answer": "위버멘시",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "\"차라투스트라는 이렇게 말했다\" 에서 제시되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "philosophy/3#002",
+      "seed": {
+        "subject": "사르트르",
+        "aspect": "노벨상을 거절했다",
+        "knowledgePoint": "실존주의 철학자이자 수상을 거부한 작가",
+        "probableAnswer": "사르트르"
+      },
+      "question": {
+        "ok": true,
+        "question": "1964년 노벨 문학상에 선정되었으나 작가는 제도에 얽매여서는 안 된다며 수상을 거절한 프랑스 철학자는?",
+        "answer": "사르트르",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "실존주의를 대표하는 철학자로 \"실존은 본질에 앞선다\" 는 말을 남겼습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "philosophy/3#003",
+      "seed": {
+        "subject": "비트겐슈타인",
+        "aspect": "말할 수 없는 것에 대해서는 침묵하라",
+        "knowledgePoint": "언어의 한계를 다룬 철학자",
+        "probableAnswer": "비트겐슈타인"
+      },
+      "question": {
+        "ok": true,
+        "question": "'말할 수 없는 것에 대해서는 침묵해야 한다' 는 문장으로 '논리철학논고' 를 끝맺은 철학자는?",
+        "answer": "비트겐슈타인",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "뒤에는 언어의 쓰임을 강조하는 쪽으로 생각을 크게 바꿨습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "philosophy/3#004",
+      "seed": {
+        "subject": "실용주의",
+        "aspect": "쓸모가 있으면 참이다",
+        "knowledgePoint": "결과로 진리를 판단하는 미국 철학",
+        "probableAnswer": "실용주의"
+      },
+      "question": {
+        "ok": true,
+        "question": "제임스와 듀이 등이 이끈 미국 철학으로, 생각이 실제로 어떤 결과와 쓸모를 낳는지로 참을 가려야 한다고 본 것은?",
+        "answer": "실용주의",
+        "acceptedAnswers": [
+          "프래그머티즘"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "듀이는 이 생각을 교육에 적용해 \"경험을 통한 학습\" 을 강조했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "philosophy/3#005",
+      "seed": {
+        "subject": "구조주의",
+        "aspect": "개별이 아니라 관계의 구조를 본다",
+        "knowledgePoint": "언어학에서 출발해 인문학 전반에 퍼진 방법",
+        "probableAnswer": "구조주의"
+      },
+      "question": {
+        "ok": true,
+        "question": "소쉬르의 언어학에서 출발해 레비스트로스 등이 개별 요소보다 그것들 사이의 관계와 체계를 봐야 한다고 한 사상 흐름은?",
+        "answer": "구조주의",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "신화·친족·문학 연구 등 인문학 전반으로 퍼졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "philosophy/3#006",
+      "seed": {
+        "subject": "포스트모더니즘",
+        "aspect": "거대 담론을 의심한다",
+        "knowledgePoint": "근대의 보편 이론을 비판한 흐름",
+        "probableAnswer": "포스트모더니즘"
+      },
+      "question": {
+        "ok": true,
+        "question": "리오타르가 '거대 서사에 대한 불신' 이라 요약한, 근대의 보편 이성과 진보 이념을 의심한 20세기 후반의 흐름은?",
+        "answer": "포스트모더니즘",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "건축·예술에서도 같은 이름의 흐름이 나타났습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "philosophy/3#007",
+      "seed": {
+        "subject": "판옵티콘",
+        "aspect": "보이지 않는 감시자",
+        "knowledgePoint": "원형 감옥 구상과 푸코의 규율 권력 분석",
+        "probableAnswer": "판옵티콘"
+      },
+      "question": {
+        "ok": true,
+        "question": "벤담이 구상한 원형 감옥으로, 가운데 탑의 감시자가 보이지 않아 수감자가 늘 감시받는다고 느끼게 만든 것은? 푸코가 규율 권력을 설명하며 다시 불러냈습니다.",
+        "answer": "판옵티콘",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "\"모두 본다\" 는 뜻의 그리스어에서 이름을 지었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "philosophy/3#008",
+      "seed": {
+        "subject": "공론장",
+        "aspect": "시민이 자유롭게 토론하는 공간",
+        "knowledgePoint": "하버마스가 민주주의의 조건으로 본 개념",
+        "probableAnswer": "공론장"
+      },
+      "question": {
+        "ok": true,
+        "question": "하버마스가 민주주의의 조건으로 본, 시민이 사적 이해를 넘어 공적 문제를 자유롭게 토론하는 영역을 무엇이라 합니까?",
+        "answer": "공론장",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "18세기 유럽의 커피하우스와 살롱을 그 원형으로 들었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "philosophy/3#009",
+      "seed": {
+        "subject": "무지의 베일",
+        "aspect": "자기 처지를 모르는 채로 정한다",
+        "knowledgePoint": "롤스가 공정한 원칙을 끌어내려 쓴 사고실험",
+        "probableAnswer": "무지의 베일"
+      },
+      "question": {
+        "ok": true,
+        "question": "롤스가 공정한 원칙을 끌어내려고, 자신이 사회에서 어떤 처지에 놓일지 모르는 상태에서 규칙을 정하게 한 사고실험의 장치는?",
+        "answer": "무지의 베일",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "\"정의론\" 에서 제시되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "philosophy/3#010",
+      "seed": {
+        "subject": "현상학",
+        "aspect": "판단을 멈추고 경험 자체를 본다",
+        "knowledgePoint": "후설이 시작한 철학 방법",
+        "probableAnswer": "현상학"
+      },
+      "question": {
+        "ok": true,
+        "question": "후설이 시작한 철학 방법으로, 대상에 대한 선입견과 판단을 괄호 치고 의식에 나타나는 경험 자체를 기술하려 한 것은?",
+        "answer": "현상학",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "하이데거와 사르트르 등에게 이어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "philosophy/3#011",
+      "seed": {
+        "subject": "악의 평범성",
+        "aspect": "평범한 관료가 학살을 수행했다",
+        "knowledgePoint": "한나 아렌트가 아이히만 재판을 보며 제시한 개념",
+        "probableAnswer": "악의 평범성"
+      },
+      "question": {
+        "ok": true,
+        "question": "한나 아렌트가 아이히만 재판을 지켜보고, 엄청난 악이 평범한 사람의 생각 없음에서 나올 수 있다며 제시한 개념은?",
+        "answer": "악의 평범성",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "\"예루살렘의 아이히만\" 에 담긴 개념입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

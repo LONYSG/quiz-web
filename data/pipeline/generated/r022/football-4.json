@@ -1,0 +1,239 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "football/4",
+    "categoryPath": "스포츠·게임 > 축구 > K리그·아시아",
+    "midKey": "football",
+    "subName": "K리그·아시아",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:02:00.717Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 7,
+      "shortfallReason": "★ 7건에서 멈췄다. 전역 대조에서 승강제·홈 앤드 어웨이가 유럽 리그 소분류와 같은 제도라 버렸다. 남은 후보가 현재 순위·선수 기록이다.",
+      "listedCandidates": 17,
+      "remainingUsable": 1,
+      "remainingUsableNote": "동아시안컵이 남았다.",
+      "estimatedCeiling": "실질 상한 10건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "AFC 아시안컵",
+          "aspect": "아시아 국가 대항전",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "승강제",
+            "probableAnswer": "승강제",
+            "existing": "db:1648",
+            "why": "기존(유럽 리그)이 같은 제도를 같은 정의로 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "홈 앤드 어웨이",
+            "probableAnswer": "홈 앤드 어웨이",
+            "existing": "db:1654",
+            "why": "기존이 같은 경기 방식을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [
+          {
+            "subject": "AFC 챔피언스리그",
+            "probableAnswer": "AFC 챔피언스리그",
+            "existing": "db:1647",
+            "whyDifferent": "포함 관계 — 기존은 유럽 챔피언스리그, 이쪽은 아시아 클럽 대항전이다"
+          }
+        ],
+        "checked": 9,
+        "hits": 3,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:29:08.391Z"
+  },
+  "items": [
+    {
+      "seedId": "football/4#001",
+      "seed": {
+        "subject": "K리그 출범",
+        "aspect": "1983년 슈퍼리그로 시작했다",
+        "knowledgePoint": "한국 프로축구가 시작된 해와 이름",
+        "probableAnswer": "1983"
+      },
+      "question": {
+        "ok": true,
+        "question": "1983년 출범한 한국 프로축구 리그의 첫 이름으로, 프로 팀과 실업 팀이 함께 겨룬 것은?",
+        "answer": "슈퍼리그",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "뒤에 이름이 여러 번 바뀌어 지금의 K리그가 되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/4#002",
+      "seed": {
+        "subject": "AFC 챔피언스리그",
+        "aspect": "아시아 클럽의 정상을 가린다",
+        "knowledgePoint": "아시아 프로 클럽 대항전",
+        "probableAnswer": "AFC 챔피언스리그"
+      },
+      "question": {
+        "ok": true,
+        "question": "2002년 아시안 클럽 챔피언십과 컵위너스컵 등을 합쳐 출범한, 아시아 프로 축구 클럽의 정상을 가리는 대항전은?",
+        "answer": "AFC 챔피언스리그",
+        "acceptedAnswers": [
+          "ACL",
+          "아시아 챔피언스리그"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "우승 팀은 FIFA 클럽 월드컵에 나갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/4#003",
+      "seed": {
+        "subject": "2002 월드컵 공동 개최",
+        "aspect": "두 나라가 처음 함께 열었다",
+        "knowledgePoint": "한국과 일본이 공동 개최한 월드컵",
+        "probableAnswer": "일본"
+      },
+      "question": {
+        "ok": true,
+        "question": "2002년 월드컵은 처음으로 두 나라가 함께 개최한 대회였습니다. 한국과 함께 대회를 연 나라는?",
+        "answer": "일본",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "결승전은 일본 요코하마에서 열렸습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/4#004",
+      "seed": {
+        "subject": "4강 신화",
+        "aspect": "아시아 팀 최고 성적",
+        "knowledgePoint": "2002년 한국 대표팀의 월드컵 순위",
+        "probableAnswer": "4강"
+      },
+      "question": {
+        "ok": true,
+        "question": "2002년 월드컵에서 한국 대표팀이 거둔 최종 성적으로, 아시아 나라가 월드컵에서 거둔 가장 높은 성적은?",
+        "answer": "4강",
+        "acceptedAnswers": [
+          "4위"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "3·4위전에서 튀르키예에 져 4위로 대회를 마쳤습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/4#005",
+      "seed": {
+        "subject": "슈퍼매치",
+        "aspect": "서울과 수원의 맞대결",
+        "knowledgePoint": "K리그 라이벌전의 이름",
+        "probableAnswer": "슈퍼매치"
+      },
+      "question": {
+        "ok": true,
+        "question": "K리그에서 FC서울과 수원 삼성 블루윙즈의 맞대결을 부르는 이름은?",
+        "answer": "슈퍼매치",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "많은 관중이 몰려 K리그 최고의 라이벌전으로 꼽혔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/4#006",
+      "seed": {
+        "subject": "상무",
+        "aspect": "군인 선수로 꾸린 팀",
+        "knowledgePoint": "군 복무 중인 선수가 뛰는 구단",
+        "probableAnswer": "상무"
+      },
+      "question": {
+        "ok": true,
+        "question": "군 복무 중인 운동선수들로 꾸려 K리그 등에 참가해 온 국군체육부대 팀을 흔히 무엇이라 부릅니까?",
+        "answer": "상무",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "선수들은 복무하면서도 경기 감각을 이어 갈 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "football/4#007",
+      "seed": {
+        "subject": "J리그",
+        "aspect": "1993년 출범한 이웃 리그",
+        "knowledgePoint": "일본 프로축구 리그의 이름",
+        "probableAnswer": "J리그"
+      },
+      "question": {
+        "ok": true,
+        "question": "1993년 출범한 일본의 프로축구 리그는?",
+        "answer": "J리그",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "출범과 함께 지역 연고 정착을 강조했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

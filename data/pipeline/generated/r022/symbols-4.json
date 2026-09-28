@@ -1,0 +1,245 @@
+{
+ "_meta": {
+  "round": "r022",
+  "subId": "symbols/4",
+  "categoryPath": "생활·상식 > 기호·상징·표지 > 기호·아이콘",
+  "midKey": "symbols",
+  "subName": "기호·아이콘",
+  "majorKey": "life",
+  "seedPrompt": "seed-v3",
+  "questionPrompt": "question-v2",
+  "generator": "claude-opus-5-5",
+  "generatedAt": "2026-09-28T02:04:36.478Z",
+  "seedResult": {
+   "ok": true,
+   "requestedCount": 12,
+   "actualCount": 7,
+   "shortfallReason": "★ 7건에서 멈췄다. 전역 대조에서 골뱅이(발명)·블루투스·재활용 표시(로고·상징)·와이파이(네트워크)가 기존과 같아 버렸다.",
+   "listedCandidates": 18,
+   "remainingUsable": 1,
+   "remainingUsableNote": "해시태그가 남았다.",
+   "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+   "droppedForOverlap": [
+    {
+     "subject": "새로고침",
+     "aspect": "둥근 화살표",
+     "reason": "DB 에 이미 있다 (usedAnswers)"
+    }
+   ],
+   "note": null,
+   "globalCheck": {
+    "dropped": [
+     {
+      "subject": "골뱅이",
+      "probableAnswer": "골뱅이",
+      "existing": "db:2297",
+      "why": "기존(발명)이 이메일 주소의 @ 로 같은 지식을 묻는다",
+      "replacedWith": "해시태그"
+     },
+     {
+      "subject": "블루투스 로고",
+      "probableAnswer": "블루투스",
+      "existing": "db:1499",
+      "why": "기존(로고·상징)이 덴마크 왕·룬 문자로 같은 지식을 묻는다",
+      "replacedWith": null
+     },
+     {
+      "subject": "재활용 마크",
+      "probableAnswer": "재활용",
+      "existing": "db:1497",
+      "why": "기존이 세 화살표 뫼비우스 띠로 같은 지식을 묻는다",
+      "replacedWith": null
+     },
+     {
+      "subject": "와이파이 기호",
+      "probableAnswer": "와이파이",
+      "existing": "db:394",
+      "why": "같은 기술을 가리키고, 아이콘 모양만으로는 새로 알게 되는 것이 적다",
+      "replacedWith": null
+     }
+    ],
+    "keptDespiteHit": [],
+    "checked": 11,
+    "hits": 4,
+    "tool": "scripts/seeds-global-check.mjs"
+   }
+  },
+  "stage": "seeds+questions",
+  "questionGenerator": "claude-opus-5-5",
+  "questionsAt": "2026-09-28T02:31:22.612Z"
+ },
+ "items": [
+  {
+   "seedId": "symbols/4#001",
+   "seed": {
+    "subject": "햄버거 메뉴",
+    "aspect": "가로줄 세 개",
+    "knowledgePoint": "메뉴를 여는 아이콘의 별명",
+    "probableAnswer": "햄버거"
+   },
+   "question": {
+    "ok": true,
+    "question": "화면 구석에 가로줄 세 개를 겹쳐 놓은 메뉴 아이콘을 흔히 어떤 음식에 빗대어 부릅니까?",
+    "answer": "햄버거",
+    "acceptedAnswers": [],
+    "accessibility": 4,
+    "difficulty": 2,
+    "worthKnowing": 3,
+    "explanation": "빵·패티·빵이 겹친 모양을 닮았다는 데서 온 별명입니다.",
+    "selfCheck": {
+     "answerInQuestion": false,
+     "uniqueAnswer": true,
+     "questionSelfConsistent": true
+    }
+   }
+  },
+  {
+   "seedId": "symbols/4#002",
+   "seed": {
+    "subject": "플로피 디스크 저장",
+    "aspect": "이제 안 쓰는 물건이 저장 버튼",
+    "knowledgePoint": "저장 아이콘의 유래",
+    "probableAnswer": "플로피 디스크"
+   },
+   "question": {
+    "ok": true,
+    "question": "많은 프로그램의 '저장' 아이콘은 이제 거의 쓰지 않는 어떤 저장 매체의 모양을 본뜬 것입니까?",
+    "answer": "플로피 디스크",
+    "acceptedAnswers": [
+     "디스켓"
+    ],
+    "accessibility": 5,
+    "difficulty": 2,
+    "worthKnowing": 3,
+    "explanation": "실물을 본 적 없는 세대도 이 모양을 저장 표시로 알아봅니다.",
+    "selfCheck": {
+     "answerInQuestion": false,
+     "uniqueAnswer": true,
+     "questionSelfConsistent": true
+    }
+   }
+  },
+  {
+   "seedId": "symbols/4#003",
+   "seed": {
+    "subject": "전원 기호",
+    "aspect": "0 과 1 을 겹쳤다",
+    "knowledgePoint": "전원 버튼 기호의 뜻",
+    "probableAnswer": "전원"
+   },
+   "question": {
+    "ok": true,
+    "question": "원 위쪽이 끊기고 그 사이로 세로 막대가 꽂힌 기호는 0 과 1 을 합친 모양에서 왔다고 알려져 있습니다. 무엇을 켜고 끄는 버튼입니까?",
+    "answer": "전원",
+    "acceptedAnswers": [],
+    "accessibility": 5,
+    "difficulty": 1,
+    "worthKnowing": 3,
+    "explanation": "1 은 켜짐, 0 은 꺼짐을 뜻합니다.",
+    "selfCheck": {
+     "answerInQuestion": false,
+     "uniqueAnswer": true,
+     "questionSelfConsistent": true
+    }
+   }
+  },
+  {
+   "seedId": "symbols/4#004",
+   "seed": {
+    "subject": "앰퍼샌드",
+    "aspect": "라틴어 et 를 이어 썼다",
+    "knowledgePoint": "& 기호의 이름",
+    "probableAnswer": "앰퍼샌드"
+   },
+   "question": {
+    "ok": true,
+    "question": "영어 'and' 를 뜻하는 & 기호로, 라틴어 et 를 이어 쓴 데서 모양이 온 것의 이름은?",
+    "answer": "앰퍼샌드",
+    "acceptedAnswers": [],
+    "accessibility": 3,
+    "difficulty": 3,
+    "worthKnowing": 3,
+    "explanation": "한때 영어 알파벳 맨 끝에 붙여 외우던 글자였습니다.",
+    "selfCheck": {
+     "answerInQuestion": false,
+     "uniqueAnswer": true,
+     "questionSelfConsistent": true
+    }
+   }
+  },
+  {
+   "seedId": "symbols/4#005",
+   "seed": {
+    "subject": "USB 기호",
+    "aspect": "삼지창 모양",
+    "knowledgePoint": "USB 단자 표시",
+    "probableAnswer": "USB"
+   },
+   "question": {
+    "ok": true,
+    "question": "끝이 동그라미·세모·네모로 된 세 갈래 삼지창 모양 기호로, 컴퓨터에 여러 기기를 꽂는 단자를 나타내는 것은?",
+    "answer": "USB",
+    "acceptedAnswers": [],
+    "accessibility": 4,
+    "difficulty": 3,
+    "worthKnowing": 3,
+    "explanation": "세 가지 끝 모양은 여러 기기를 연결할 수 있다는 뜻을 담았다고 합니다.",
+    "selfCheck": {
+     "answerInQuestion": false,
+     "uniqueAnswer": true,
+     "questionSelfConsistent": true
+    }
+   }
+  },
+  {
+   "seedId": "symbols/4#006",
+   "seed": {
+    "subject": "샵",
+    "aspect": "우물 정 자를 닮았다",
+    "knowledgePoint": "# 기호를 부르는 이름",
+    "probableAnswer": "샵"
+   },
+   "question": {
+    "ok": true,
+    "question": "우물 정(井) 자와 닮은 # 기호를 우리나라에서 전화 버튼 등에서 흔히 부르는 이름은?",
+    "answer": "샵",
+    "acceptedAnswers": [
+     "샾"
+    ],
+    "accessibility": 5,
+    "difficulty": 1,
+    "worthKnowing": 3,
+    "explanation": "본래 음악의 올림표(♯)와는 모양과 뜻이 다른 기호입니다.",
+    "selfCheck": {
+     "answerInQuestion": false,
+     "uniqueAnswer": true,
+     "questionSelfConsistent": true
+    }
+   }
+  },
+  {
+   "seedId": "symbols/4#007",
+   "seed": {
+    "subject": "해시태그",
+    "aspect": "# 뒤에 낱말을 붙여 묶는다",
+    "knowledgePoint": "SNS 에서 주제별로 글을 모으는 표시",
+    "probableAnswer": "해시태그"
+   },
+   "question": {
+    "ok": true,
+    "question": "SNS 에서 # 뒤에 낱말을 띄어 쓰지 않고 붙여, 같은 주제의 글을 모아 볼 수 있게 한 표시는?",
+    "answer": "해시태그",
+    "acceptedAnswers": [],
+    "accessibility": 5,
+    "difficulty": 1,
+    "worthKnowing": 3,
+    "explanation": "2007년 트위터에서 한 사용자가 제안하며 퍼졌습니다.",
+    "selfCheck": {
+     "answerInQuestion": false,
+     "uniqueAnswer": true,
+     "questionSelfConsistent": true
+    }
+   }
+  }
+ ]
+}

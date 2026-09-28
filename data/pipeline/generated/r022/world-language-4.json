@@ -1,0 +1,313 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "world-language/4",
+    "categoryPath": "생활·상식 > 세계 언어·어원 > 세계 언어 분포",
+    "midKey": "world-language",
+    "subName": "세계 언어 분포",
+    "majorKey": "life",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:04:36.474Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 사용자 수 순위라 통계에 따라 답이 바뀐다.",
+      "listedCandidates": 17,
+      "remainingUsable": 1,
+      "remainingUsableNote": "스와힐리어가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "포르투갈어",
+          "aspect": "브라질 공용어",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "프랑스어",
+            "probableAnswer": "프랑스어",
+            "existing": "db:2540",
+            "whyDifferent": "기존은 발레 용어의 언어, 이쪽은 서아프리카 여러 나라의 공용어라는 분포다"
+          },
+          {
+            "subject": "아랍어",
+            "probableAnswer": "아랍어",
+            "existing": "db:499 / db:1373 / db:2518",
+            "whyDifferent": "기존은 알- 어원·오른쪽에서 쓰는 문자·꾸란의 언어, 이쪽은 모로코부터 이라크까지의 공용어 분포다. ★ 처음 초안의 '오른쪽에서 왼쪽으로' 단서는 db:1373 과 겹쳐 뺐다"
+          },
+          {
+            "subject": "스위스 공용어",
+            "probableAnswer": "4",
+            "existing": "db:50 외",
+            "whyDifferent": "숫자만 같다"
+          },
+          {
+            "subject": "러시아어",
+            "probableAnswer": "러시아어",
+            "existing": "db:1389",
+            "whyDifferent": "포함 관계 — 기존은 나라 러시아다"
+          }
+        ],
+        "checked": 10,
+        "hits": 4,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:31:22.607Z"
+  },
+  "items": [
+    {
+      "seedId": "world-language/4#001",
+      "seed": {
+        "subject": "스페인어",
+        "aspect": "중남미 대부분의 공용어",
+        "knowledgePoint": "브라질을 뺀 중남미의 언어",
+        "probableAnswer": "스페인어"
+      },
+      "question": {
+        "ok": true,
+        "question": "브라질을 뺀 중남미 대부분의 나라가 공용어로 쓰는 언어는?",
+        "answer": "스페인어",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "브라질은 포르투갈의 식민지였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-language/4#002",
+      "seed": {
+        "subject": "프랑스어",
+        "aspect": "아프리카에서 가장 많은 나라가 쓴다",
+        "knowledgePoint": "서아프리카 여러 나라의 공용어",
+        "probableAnswer": "프랑스어"
+      },
+      "question": {
+        "ok": true,
+        "question": "세네갈·코트디부아르·말리 등 서아프리카 여러 나라가 옛 식민 지배의 영향으로 공용어로 쓰는 유럽 언어는?",
+        "answer": "프랑스어",
+        "acceptedAnswers": [
+          "불어"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "이 언어를 쓰는 사람은 앞으로 아프리카에서 가장 많아질 것으로 전망됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-language/4#003",
+      "seed": {
+        "subject": "아랍어",
+        "aspect": "북아프리카와 중동 20여 나라",
+        "knowledgePoint": "모로코부터 이라크까지 공용어로 쓰는 언어 분포",
+        "probableAnswer": "아랍어"
+      },
+      "question": {
+        "ok": true,
+        "question": "서쪽 모로코에서 동쪽 이라크까지, 북아프리카와 서아시아의 20여 나라가 공용어로 쓰는 언어는?",
+        "answer": "아랍어",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "나라마다 입말은 크게 달라 서로 알아듣기 어려운 경우도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-language/4#004",
+      "seed": {
+        "subject": "힌디어",
+        "aspect": "인도에서 가장 많이 쓴다",
+        "knowledgePoint": "인도의 공용어 가운데 하나",
+        "probableAnswer": "힌디어"
+      },
+      "question": {
+        "ok": true,
+        "question": "인도에서 가장 많은 사람이 모국어로 쓰며, 영어와 함께 인도 중앙 정부의 공용어인 언어는?",
+        "answer": "힌디어",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "인도 헌법은 이 밖에도 20여 개 언어를 인정합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-language/4#005",
+      "seed": {
+        "subject": "영어",
+        "aspect": "인도·싱가포르·필리핀의 공용어",
+        "knowledgePoint": "식민 지배로 퍼진 공용어",
+        "probableAnswer": "영어"
+      },
+      "question": {
+        "ok": true,
+        "question": "인도·싱가포르·필리핀처럼 옛 영국이나 미국의 지배를 받은 여러 아시아 나라에서 공용어로 쓰는 언어는?",
+        "answer": "영어",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "여러 언어가 섞인 나라에서 공통어 역할을 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-language/4#006",
+      "seed": {
+        "subject": "퀘벡",
+        "aspect": "캐나다에서 프랑스어를 쓰는 곳",
+        "knowledgePoint": "캐나다 프랑스어권 주",
+        "probableAnswer": "퀘벡"
+      },
+      "question": {
+        "ok": true,
+        "question": "캐나다에서 프랑스어를 유일한 공용어로 삼고, 분리 독립을 묻는 주민 투표를 두 번 치른 주는?",
+        "answer": "퀘벡",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "1995년 투표에서는 아주 근소한 차이로 독립안이 부결되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-language/4#007",
+      "seed": {
+        "subject": "스위스 공용어",
+        "aspect": "네 개의 공용어",
+        "knowledgePoint": "독일어·프랑스어·이탈리아어·로망슈어",
+        "probableAnswer": "4"
+      },
+      "question": {
+        "ok": true,
+        "question": "스위스의 네 공용어 가운데 독일어·프랑스어·이탈리아어를 뺀, 라틴어에서 갈라져 나온 소수 언어는?",
+        "answer": "로망슈어",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "동부 그라우뷘덴주 일부에서 쓰이며, 인구의 1% 가 안 되는 사람이 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-language/4#008",
+      "seed": {
+        "subject": "바스크어",
+        "aspect": "어느 언어와도 친척이 아니다",
+        "knowledgePoint": "스페인·프랑스 국경의 고립어",
+        "probableAnswer": "바스크어"
+      },
+      "question": {
+        "ok": true,
+        "question": "스페인과 프랑스 국경의 피레네 지역에서 쓰이며, 알려진 어떤 언어와도 친척 관계가 확인되지 않은 고립어는?",
+        "answer": "바스크어",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "유럽에 인도유럽어가 들어오기 전부터 쓰였다는 추정이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-language/4#009",
+      "seed": {
+        "subject": "러시아어",
+        "aspect": "옛 소련 나라들의 공통어",
+        "knowledgePoint": "중앙아시아에서 널리 통하는 언어",
+        "probableAnswer": "러시아어"
+      },
+      "question": {
+        "ok": true,
+        "question": "옛 소련이 무너진 뒤에도 카자흐스탄·키르기스스탄 같은 중앙아시아 나라에서 널리 통하는 언어는?",
+        "answer": "러시아어",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "두 나라에서는 이 언어가 공용어의 지위를 갖고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-language/4#010",
+      "seed": {
+        "subject": "말레이어",
+        "aspect": "인도네시아어와 거의 같다",
+        "knowledgePoint": "동남아 해양 지역의 언어",
+        "probableAnswer": "말레이어"
+      },
+      "question": {
+        "ok": true,
+        "question": "말레이시아·브루나이의 공용어로, 인도네시아어와 서로 거의 알아들을 만큼 가까운 언어는?",
+        "answer": "말레이어",
+        "acceptedAnswers": [
+          "말레이시아어"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "인도네시아어도 이 언어를 바탕으로 만들어진 표준어입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

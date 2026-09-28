@@ -3,7 +3,7 @@
   "midName": "사회 제도",
   "majorKey": "humanities",
   "majorName": "인문·사회",
-  "updatedAt": "2026-09-21T01:32:27.385Z",
+  "updatedAt": "2026-09-28T02:16:27.230Z",
   "subs": {
     "society/1": {
       "subName": "교육 제도",
@@ -254,9 +254,240 @@
           "answer": "산업재해보상보험",
           "origin": "db:154",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "국민건강보험",
+          "origin": "r022:society/2#001",
+          "note": null
+        },
+        {
+          "answer": "국민연금",
+          "origin": "r022:society/2#002",
+          "note": null
+        },
+        {
+          "answer": "고용보험",
+          "origin": "r022:society/2#003",
+          "note": null
+        },
+        {
+          "answer": "노인장기요양보험",
+          "origin": "r022:society/2#004",
+          "note": null
+        },
+        {
+          "answer": "4대 보험",
+          "origin": "r022:society/2#005",
+          "note": null
+        },
+        {
+          "answer": "공공부조",
+          "origin": "r022:society/2#006",
+          "note": null
+        },
+        {
+          "answer": "기초생활보장",
+          "origin": "r022:society/2#007",
+          "note": null
+        },
+        {
+          "answer": "최저임금",
+          "origin": "r022:society/2#008",
+          "note": null
+        },
+        {
+          "answer": "육아휴직",
+          "origin": "r022:society/2#009",
+          "note": null
+        },
+        {
+          "answer": "본인부담금",
+          "origin": "r022:society/2#010",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "society/2#001",
+          "subject": "국민건강보험",
+          "aspect": "1989년 전 국민으로 넓혀졌다",
+          "knowledgePoint": "모든 국민이 가입하는 공적 의료보험",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.268Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-2#001",
+            "answer": "국민건강보험",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/2#002",
+          "subject": "국민연금",
+          "aspect": "나이 들어 받는 연금",
+          "knowledgePoint": "소득 활동 중 보험료를 내고 노후에 받는 사회보험",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.268Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-2#002",
+            "answer": "국민연금",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/2#003",
+          "subject": "고용보험",
+          "aspect": "실직하면 급여가 나온다",
+          "knowledgePoint": "실업급여를 주는 사회보험",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.268Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-2#003",
+            "answer": "고용보험",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/2#004",
+          "subject": "노인장기요양보험",
+          "aspect": "돌봄이 필요한 노인을 지원한다",
+          "knowledgePoint": "요양 서비스를 보장하는 사회보험",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.268Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-2#004",
+            "answer": "노인장기요양보험",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/2#005",
+          "subject": "4대 보험",
+          "aspect": "월급에서 떼는 네 가지",
+          "knowledgePoint": "건강·연금·고용·산재 보험을 묶어 이르는 말",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.268Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-2#005",
+            "answer": "4대 보험",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/2#006",
+          "subject": "사회보험과 공공부조",
+          "aspect": "보험료를 내느냐 세금으로 주느냐",
+          "knowledgePoint": "사회보장 제도의 두 갈래",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.268Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-2#006",
+            "answer": "공공부조",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/2#007",
+          "subject": "기초생활보장",
+          "aspect": "최저 생활을 보장한다",
+          "knowledgePoint": "소득이 낮은 가구에 생계를 지원하는 제도",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.268Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-2#007",
+            "answer": "기초생활보장",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/2#008",
+          "subject": "최저임금",
+          "aspect": "이보다 적게 줄 수 없다",
+          "knowledgePoint": "법으로 정한 임금의 하한",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.268Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-2#008",
+            "answer": "최저임금",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/2#009",
+          "subject": "육아휴직",
+          "aspect": "아이를 키우려고 쉰다",
+          "knowledgePoint": "자녀 양육을 위해 일을 쉬는 제도",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.268Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-2#009",
+            "answer": "육아휴직",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/2#010",
+          "subject": "건강보험 본인부담",
+          "aspect": "진료비의 일부만 낸다",
+          "knowledgePoint": "보험이 내고 남은 몫을 환자가 부담하는 구조",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.268Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-2#010",
+            "answer": "본인부담금",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "society/3": {
       "subName": "인구·통계 개념",
@@ -553,9 +784,286 @@
           "answer": "아노미",
           "origin": "db:270",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "사회화",
+          "origin": "r022:society/4#001",
+          "note": null
+        },
+        {
+          "answer": "준거집단",
+          "origin": "r022:society/4#002",
+          "note": null
+        },
+        {
+          "answer": "상대적 박탈감",
+          "origin": "r022:society/4#003",
+          "note": null
+        },
+        {
+          "answer": "낙인 이론",
+          "origin": "r022:society/4#004",
+          "note": null
+        },
+        {
+          "answer": "젠트리피케이션",
+          "origin": "r022:society/4#005",
+          "note": null
+        },
+        {
+          "answer": "문화 지체",
+          "origin": "r022:society/4#006",
+          "note": null
+        },
+        {
+          "answer": "사회적 자본",
+          "origin": "r022:society/4#007",
+          "note": null
+        },
+        {
+          "answer": "님비",
+          "origin": "r022:society/4#008",
+          "note": null
+        },
+        {
+          "answer": "능력주의",
+          "origin": "r022:society/4#009",
+          "note": null
+        },
+        {
+          "answer": "관료제",
+          "origin": "r022:society/4#010",
+          "note": null
+        },
+        {
+          "answer": "자민족중심주의",
+          "origin": "r022:society/4#011",
+          "note": null
+        },
+        {
+          "answer": "핵가족",
+          "origin": "r022:society/4#012",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "society/4#001",
+          "subject": "사회화",
+          "aspect": "사회의 규범을 배워 간다",
+          "knowledgePoint": "개인이 사회 구성원이 되어 가는 과정",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#001",
+            "answer": "사회화",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#002",
+          "subject": "준거집단",
+          "aspect": "스스로를 견주는 집단",
+          "knowledgePoint": "판단과 행동의 기준으로 삼는 집단",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#002",
+            "answer": "준거집단",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#003",
+          "subject": "상대적 박탈감",
+          "aspect": "남과 비교해서 느끼는 결핍",
+          "knowledgePoint": "절대적 처지가 아니라 비교에서 오는 불만",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#003",
+            "answer": "상대적 박탈감",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#004",
+          "subject": "낙인 이론",
+          "aspect": "딱지가 사람을 만든다",
+          "knowledgePoint": "일탈자로 불리면 일탈이 굳어진다는 이론",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#004",
+            "answer": "낙인 이론",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#005",
+          "subject": "젠트리피케이션",
+          "aspect": "동네가 뜨면 원주민이 밀려난다",
+          "knowledgePoint": "낙후 지역이 개발되며 기존 주민이 떠나는 현상",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#005",
+            "answer": "젠트리피케이션",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#006",
+          "subject": "문화 지체",
+          "aspect": "기술을 제도가 못 따라간다",
+          "knowledgePoint": "물질문화와 비물질문화의 변화 속도 차이",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#006",
+            "answer": "문화 지체",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#007",
+          "subject": "사회적 자본",
+          "aspect": "신뢰와 관계망도 자원이다",
+          "knowledgePoint": "사람 사이의 신뢰와 네트워크를 자원으로 보는 개념",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#007",
+            "answer": "사회적 자본",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#008",
+          "subject": "님비",
+          "aspect": "우리 동네에는 안 된다",
+          "knowledgePoint": "기피 시설이 자기 지역에 오는 것을 반대하는 현상",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#008",
+            "answer": "님비",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#009",
+          "subject": "능력주의",
+          "aspect": "능력대로 대우한다는 원칙과 그 한계",
+          "knowledgePoint": "메리토크라시라는 말과 그에 대한 비판",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#009",
+            "answer": "능력주의",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#010",
+          "subject": "관료제",
+          "aspect": "규칙과 위계로 움직인다",
+          "knowledgePoint": "베버가 분석한 근대 조직의 형태",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#010",
+            "answer": "관료제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#011",
+          "subject": "자민족중심주의",
+          "aspect": "자기 문화를 기준으로 남을 잰다",
+          "knowledgePoint": "다른 문화를 자기 기준으로 낮게 보는 태도",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#011",
+            "answer": "자민족중심주의",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "society/4#012",
+          "subject": "핵가족",
+          "aspect": "부부와 미혼 자녀만 산다",
+          "knowledgePoint": "산업화와 함께 늘어난 가족 형태",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.271Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/society-4#012",
+            "answer": "핵가족",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     }
   }
 }

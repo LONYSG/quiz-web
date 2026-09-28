@@ -1,0 +1,327 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "music-theory/4",
+    "categoryPath": "문화·예술 > 음악 이론·악기 > 건반·타악기",
+    "midKey": "music-theory",
+    "subName": "건반·타악기",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:59:13.400Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보가 개별 악기의 세부 부품이라 알 가치가 3에 못 미친다.",
+      "listedCandidates": 21,
+      "remainingUsable": 1,
+      "remainingUsableNote": "글로켄슈필이 남았다.",
+      "estimatedCeiling": "실질 상한 12건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "팀파니",
+          "aspect": "음정을 조율하는 북",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "피아노 건반 수",
+            "probableAnswer": "88",
+            "existing": "db:1257",
+            "whyDifferent": "숫자만 같다 — 기존은 별자리 수다"
+          },
+          {
+            "subject": "봉고",
+            "probableAnswer": "봉고",
+            "existing": "db:819",
+            "whyDifferent": "동음이의 — 기존은 기아 승합차, 이쪽은 쿠바의 북이다"
+          }
+        ],
+        "checked": 11,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:24:55.546Z"
+  },
+  "items": [
+    {
+      "seedId": "music-theory/4#001",
+      "seed": {
+        "subject": "피아노 건반 수",
+        "aspect": "흰건반과 검은건반을 합한 수",
+        "knowledgePoint": "표준 피아노의 건반 수",
+        "probableAnswer": "88"
+      },
+      "question": {
+        "ok": true,
+        "question": "표준 피아노의 흰건반과 검은건반을 모두 합하면 몇 개일까요?",
+        "answer": "88",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "흰건반 52개, 검은건반 36개입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "music-theory/4#002",
+      "seed": {
+        "subject": "피아노포르테",
+        "aspect": "여리게도 세게도 칠 수 있다",
+        "knowledgePoint": "피아노의 원래 이름과 그 뜻",
+        "probableAnswer": "피아노포르테"
+      },
+      "question": {
+        "ok": true,
+        "question": "피아노의 원래 이름으로, '여리게' 와 '세게' 를 뜻하는 이탈리아어를 합친 말은? 건반을 누르는 힘에 따라 소리 크기를 바꿀 수 있다는 데서 붙었습니다.",
+        "answer": "피아노포르테",
+        "acceptedAnswers": [
+          "포르테피아노"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "앞선 건반 악기인 하프시코드는 소리 크기를 마음대로 바꾸기 어려웠습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "music-theory/4#003",
+      "seed": {
+        "subject": "파이프오르간",
+        "aspect": "관에 바람을 불어넣는다",
+        "knowledgePoint": "성당에 설치된 거대한 건반 악기",
+        "probableAnswer": "파이프오르간"
+      },
+      "question": {
+        "ok": true,
+        "question": "크고 작은 수많은 관에 바람을 불어넣어 소리를 내는 건반 악기로, 성당이나 공연장 벽에 설치하는 것은?",
+        "answer": "파이프오르간",
+        "acceptedAnswers": [
+          "오르간"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "바흐는 이 악기의 연주자로도 이름이 높았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "music-theory/4#004",
+      "seed": {
+        "subject": "하프시코드",
+        "aspect": "건반을 누르면 줄을 뜯는다",
+        "knowledgePoint": "피아노 이전의 건반 악기와 소리 내는 방식",
+        "probableAnswer": "하프시코드"
+      },
+      "question": {
+        "ok": true,
+        "question": "건반을 누르면 안쪽의 작은 갈고리가 줄을 뜯어 소리를 내는 건반 악기로, 바로크 시대에 널리 쓰인 것은?",
+        "answer": "하프시코드",
+        "acceptedAnswers": [
+          "쳄발로"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "피아노는 줄을 망치로 때리고, 이 악기는 뜯는다는 점이 다릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "music-theory/4#005",
+      "seed": {
+        "subject": "마림바",
+        "aspect": "나무 건반 아래 울림관이 있다",
+        "knowledgePoint": "나무 막대를 두드리는 건반 타악기",
+        "probableAnswer": "마림바"
+      },
+      "question": {
+        "ok": true,
+        "question": "나무 건반을 채로 두드려 소리를 내며, 건반 아래에 울림관을 달아 소리를 키운 타악기는?",
+        "answer": "마림바",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "실로폰보다 크고 소리가 부드럽고 깊습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "music-theory/4#006",
+      "seed": {
+        "subject": "첼레스타",
+        "aspect": "사탕 요정의 춤",
+        "knowledgePoint": "호두까기 인형에서 영롱한 소리를 낸 건반 악기",
+        "probableAnswer": "첼레스타"
+      },
+      "question": {
+        "ok": true,
+        "question": "차이콥스키의 '호두까기 인형' 가운데 '사탕 요정의 춤' 에서 영롱한 종소리 같은 음색을 들려주는 건반 악기는?",
+        "answer": "첼레스타",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "건반을 누르면 작은 망치가 금속판을 두드립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "music-theory/4#007",
+      "seed": {
+        "subject": "하이햇",
+        "aspect": "발로 밟아 여닫는 심벌",
+        "knowledgePoint": "드럼 세트에서 리듬을 잘게 쪼개는 심벌",
+        "probableAnswer": "하이햇"
+      },
+      "question": {
+        "ok": true,
+        "question": "드럼 세트에서 두 장의 심벌을 위아래로 겹쳐 두고 발로 페달을 밟아 여닫으며 치는 것은?",
+        "answer": "하이햇",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "리듬을 잘게 쪼개 박자를 이끄는 역할을 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "music-theory/4#008",
+      "seed": {
+        "subject": "캐스터네츠",
+        "aspect": "손바닥 안에서 딱딱 친다",
+        "knowledgePoint": "스페인 춤과 함께하는 조개 모양 타악기",
+        "probableAnswer": "캐스터네츠"
+      },
+      "question": {
+        "ok": true,
+        "question": "조개껍데기 모양의 나무 조각 두 개를 끈으로 묶어 손바닥 안에서 딱딱 부딪쳐 치는, 스페인 춤과 함께하는 타악기는?",
+        "answer": "캐스터네츠",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "이름은 스페인어로 밤(열매)을 뜻하는 말에서 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "music-theory/4#009",
+      "seed": {
+        "subject": "트라이앵글",
+        "aspect": "한쪽 모서리가 트여 있다",
+        "knowledgePoint": "쇠막대를 구부린 타악기와 그 모양",
+        "probableAnswer": "트라이앵글"
+      },
+      "question": {
+        "ok": true,
+        "question": "쇠막대를 구부려 한쪽 모서리가 트인 삼각형으로 만든 타악기는?",
+        "answer": "트라이앵글",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "모서리가 막혀 있으면 소리가 제대로 울리지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "music-theory/4#010",
+      "seed": {
+        "subject": "비브라폰",
+        "aspect": "모터로 소리를 떨게 한다",
+        "knowledgePoint": "금속 건반 아래 회전판으로 떨림을 주는 악기",
+        "probableAnswer": "비브라폰"
+      },
+      "question": {
+        "ok": true,
+        "question": "금속 건반 아래 울림관 속에서 모터로 작은 판을 돌려 소리를 물결치듯 떨게 만드는 건반 타악기는?",
+        "answer": "비브라폰",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "재즈에서 많이 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "music-theory/4#011",
+      "seed": {
+        "subject": "봉고",
+        "aspect": "크기가 다른 두 북을 붙였다",
+        "knowledgePoint": "쿠바에서 온 한 쌍의 작은 북",
+        "probableAnswer": "봉고"
+      },
+      "question": {
+        "ok": true,
+        "question": "크기가 다른 작은 북 두 개를 붙여 무릎 사이에 끼우고 손으로 치는, 쿠바에서 온 타악기는?",
+        "answer": "봉고",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "라틴 음악의 리듬을 이끄는 악기입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

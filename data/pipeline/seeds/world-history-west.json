@@ -3,7 +3,7 @@
   "midName": "서양사",
   "majorKey": "humanities",
   "majorName": "인문·사회",
-  "updatedAt": "2026-09-21T06:45:10.074Z",
+  "updatedAt": "2026-09-28T01:31:36.785Z",
   "subs": {
     "world-history-west/1": {
       "subName": "고대 그리스·로마",
@@ -875,7 +875,7 @@
         {
           "answer": "홀로코스트",
           "origin": "r021:world-history-west/5#009",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr60,db123). 기존 db:1280 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "민권운동",
@@ -1048,12 +1048,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:28:55.341Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/world-history-west-5#009",
             "answer": "홀로코스트",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr60,db123). 기존 db:1280 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1280",
+              "at": "2026-09-28T01:31:36.780Z"
+            }
           }
         },
         {

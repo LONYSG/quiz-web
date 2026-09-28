@@ -3,7 +3,7 @@
   "midName": "생물학",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-21T06:50:07.237Z",
+  "updatedAt": "2026-09-28T02:19:29.932Z",
   "subs": {
     "biology/1": {
       "subName": "세포·유전",
@@ -634,7 +634,7 @@
         {
           "answer": "광합성",
           "origin": "r021:biology/3#008",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr67,db12). 기존 db:1857 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "숲",
@@ -794,12 +794,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:31:00.933Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/biology-3#008",
             "answer": "광합성",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr67,db12). 기존 db:1857 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1857",
+              "at": "2026-09-28T01:31:37.231Z"
+            }
           }
         },
         {
@@ -1137,6 +1144,266 @@
             "rejectReason": null,
             "questionPrompt": "question-v2",
             "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
+    },
+    "biology/5": {
+      "subName": "식물 생리",
+      "usedAnswers": [
+        {
+          "answer": "기공",
+          "origin": "r022:biology/5#001",
+          "note": null
+        },
+        {
+          "answer": "증산 작용",
+          "origin": "r022:biology/5#002",
+          "note": null
+        },
+        {
+          "answer": "굴광성",
+          "origin": "r022:biology/5#003",
+          "note": null
+        },
+        {
+          "answer": "옥신",
+          "origin": "r022:biology/5#004",
+          "note": null
+        },
+        {
+          "answer": "체관",
+          "origin": "r022:biology/5#005",
+          "note": null
+        },
+        {
+          "answer": "떨켜",
+          "origin": "r022:biology/5#006",
+          "note": null
+        },
+        {
+          "answer": "에틸렌",
+          "origin": "r022:biology/5#007",
+          "note": null
+        },
+        {
+          "answer": "광주기성",
+          "origin": "r022:biology/5#008",
+          "note": null
+        },
+        {
+          "answer": "뿌리털",
+          "origin": "r022:biology/5#009",
+          "note": null
+        },
+        {
+          "answer": "삼투",
+          "origin": "r022:biology/5#010",
+          "note": null
+        },
+        {
+          "answer": "굴지성",
+          "origin": "r022:biology/5#011",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "biology/5#001",
+          "subject": "기공",
+          "aspect": "잎 뒷면의 작은 구멍",
+          "knowledgePoint": "기체가 드나드는 잎의 구멍과 공변세포",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#001",
+            "answer": "기공",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "biology/5#002",
+          "subject": "증산 작용",
+          "aspect": "잎에서 물이 수증기로 빠져나간다",
+          "knowledgePoint": "뿌리의 물을 끌어올리는 원동력",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#002",
+            "answer": "증산 작용",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "biology/5#003",
+          "subject": "굴광성",
+          "aspect": "창가 화분이 빛 쪽으로 휜다",
+          "knowledgePoint": "빛을 향해 자라는 성질",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#003",
+            "answer": "굴광성",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "biology/5#004",
+          "subject": "옥신",
+          "aspect": "그늘진 쪽에 몰려 더 자라게 한다",
+          "knowledgePoint": "굴광성을 일으키는 식물 호르몬",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#004",
+            "answer": "옥신",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "biology/5#005",
+          "subject": "물관과 체관",
+          "aspect": "물은 위로, 양분은 온몸으로",
+          "knowledgePoint": "식물 안의 두 통로와 그 역할",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#005",
+            "answer": "체관",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "biology/5#006",
+          "subject": "떨켜",
+          "aspect": "잎자루 밑에 생겨 잎을 떨어뜨린다",
+          "knowledgePoint": "낙엽이 지게 하는 조직",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#006",
+            "answer": "떨켜",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "biology/5#007",
+          "subject": "에틸렌",
+          "aspect": "사과 옆 바나나가 빨리 익는다",
+          "knowledgePoint": "열매를 익게 하는 기체 호르몬",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#007",
+            "answer": "에틸렌",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "biology/5#008",
+          "subject": "광주기성",
+          "aspect": "밤의 길이로 꽃 필 때를 안다",
+          "knowledgePoint": "낮과 밤의 길이에 따라 개화가 정해지는 성질",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#008",
+            "answer": "광주기성",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "biology/5#009",
+          "subject": "뿌리털",
+          "aspect": "뿌리 끝의 가는 털",
+          "knowledgePoint": "물을 빨아들이는 표면을 넓히는 구조",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#009",
+            "answer": "뿌리털",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "biology/5#010",
+          "subject": "삼투",
+          "aspect": "소금에 절이면 배추가 숨이 죽는다",
+          "knowledgePoint": "농도 차이로 물이 막을 건너 이동하는 현상",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#010",
+            "answer": "삼투",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "biology/5#011",
+          "subject": "굴지성",
+          "aspect": "뿌리는 아래로, 줄기는 위로",
+          "knowledgePoint": "중력에 반응해 자라는 방향이 정해지는 성질",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.488Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/biology-5#011",
+            "answer": "굴지성",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
           }
         }
       ]

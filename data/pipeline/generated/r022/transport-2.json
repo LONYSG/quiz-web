@@ -1,0 +1,282 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "transport/2",
+    "categoryPath": "기술·의학 > 자동차·교통 > 자동차 브랜드·역사",
+    "midKey": "transport",
+    "subName": "자동차 브랜드·역사",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:53:24.942Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 9,
+      "shortfallReason": "★ 9건에서 멈췄다. 남은 후보가 판매 순위·최신 모델이라 시간이 지나면 답이 바뀐다.",
+      "listedCandidates": 19,
+      "remainingUsable": 2,
+      "remainingUsableNote": "볼보 안전벨트·미니가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "모델 T",
+          "aspect": "대량생산",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        },
+        {
+          "subject": "볼보 안전벨트",
+          "aspect": "특허를 공개했다",
+          "reason": "★ DB 에 이미 있다 (R020)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "하이브리드 자동차",
+            "probableAnswer": "하이브리드",
+            "existing": "r022:war-history/4#009",
+            "whyDifferent": "포함 관계일 뿐이다 — 하이브리드전은 전쟁 방식이다"
+          }
+        ],
+        "checked": 9,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:21:41.947Z"
+  },
+  "items": [
+    {
+      "seedId": "transport/2#001",
+      "seed": {
+        "subject": "칼 벤츠",
+        "aspect": "휘발유로 달리는 첫 자동차",
+        "knowledgePoint": "1886년 특허를 받은 최초의 가솔린 자동차",
+        "probableAnswer": "벤츠"
+      },
+      "question": {
+        "ok": true,
+        "question": "1886년 휘발유 엔진으로 달리는 세 바퀴 자동차로 특허를 받아, 최초의 가솔린 자동차를 만든 사람으로 꼽히는 독일 기술자는?",
+        "answer": "벤츠",
+        "acceptedAnswers": [
+          "칼 벤츠"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "그의 아내 베르타가 이 차로 장거리를 몰아 가능성을 보여 준 일화도 유명합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/2#002",
+      "seed": {
+        "subject": "포니",
+        "aspect": "우리나라 첫 고유 모델",
+        "knowledgePoint": "1976년 나온 국산 고유 모델 자동차",
+        "probableAnswer": "포니"
+      },
+      "question": {
+        "ok": true,
+        "question": "1976년 현대자동차가 내놓은, 우리나라 첫 고유 모델 자동차는?",
+        "answer": "포니",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "이 차로 한국은 고유 모델을 가진 나라가 되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/2#003",
+      "seed": {
+        "subject": "폭스바겐",
+        "aspect": "이름이 '국민차' 라는 뜻",
+        "knowledgePoint": "독일 자동차 회사 이름의 뜻",
+        "probableAnswer": "폭스바겐"
+      },
+      "question": {
+        "ok": true,
+        "question": "회사 이름이 독일어로 '국민차' 라는 뜻인 자동차 회사는?",
+        "answer": "폭스바겐",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "1930년대 누구나 살 수 있는 차를 만든다는 계획에서 나왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/2#004",
+      "seed": {
+        "subject": "람보르기니",
+        "aspect": "트랙터 회사로 출발했다",
+        "knowledgePoint": "스포츠카 회사의 뜻밖의 출발",
+        "probableAnswer": "람보르기니"
+      },
+      "question": {
+        "ok": true,
+        "question": "본래 트랙터를 만들던 이탈리아 기업가가 세운 스포츠카 회사로, 황소 문양을 쓰는 것은?",
+        "answer": "람보르기니",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "페라리의 차에 불만을 품고 직접 스포츠카를 만들었다는 이야기가 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/2#005",
+      "seed": {
+        "subject": "페라리",
+        "aspect": "앞발을 든 말 문양",
+        "knowledgePoint": "이탈리아 스포츠카 회사와 그 문양의 유래",
+        "probableAnswer": "페라리"
+      },
+      "question": {
+        "ok": true,
+        "question": "앞발을 들고 선 검은 말 문양으로 유명한 이탈리아 스포츠카 회사는?",
+        "answer": "페라리",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "말 문양은 제1차 세계대전의 한 비행사가 쓰던 것에서 왔다고 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/2#006",
+      "seed": {
+        "subject": "롤스로이스",
+        "aspect": "보닛 위의 여신상",
+        "knowledgePoint": "영국 고급차와 그 상징",
+        "probableAnswer": "롤스로이스"
+      },
+      "question": {
+        "ok": true,
+        "question": "보닛 위에 날개를 편 듯한 여신상 '환희의 여신' 을 단 영국의 고급 자동차 회사는?",
+        "answer": "롤스로이스",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "항공기 엔진도 만드는 회사로 이어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/2#007",
+      "seed": {
+        "subject": "토요타",
+        "aspect": "방직기 회사에서 출발했다",
+        "knowledgePoint": "일본 자동차 회사의 뿌리",
+        "probableAnswer": "토요타"
+      },
+      "question": {
+        "ok": true,
+        "question": "창업자 집안이 자동 방직기를 만드는 회사를 운영하다 자동차 사업으로 나아간 일본의 자동차 회사는?",
+        "answer": "토요타",
+        "acceptedAnswers": [
+          "도요타"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "방직기 특허를 판 돈이 자동차 개발 자금이 되었다는 설명이 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/2#008",
+      "seed": {
+        "subject": "적시 생산 방식",
+        "aspect": "필요한 만큼만 그때그때 만든다",
+        "knowledgePoint": "재고를 줄이는 토요타의 생산 방식",
+        "probableAnswer": "적시 생산 방식"
+      },
+      "question": {
+        "ok": true,
+        "question": "부품을 쌓아 두지 않고 필요한 것을 필요한 때 필요한 만큼만 만들어 재고를 줄이는, 토요타가 발전시킨 생산 방식은?",
+        "answer": "적시 생산 방식",
+        "acceptedAnswers": [
+          "저스트 인 타임",
+          "JIT"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "공급망이 끊기면 생산이 곧바로 멈추는 약점도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/2#009",
+      "seed": {
+        "subject": "하이브리드 자동차",
+        "aspect": "엔진과 전기 모터를 함께 쓴다",
+        "knowledgePoint": "두 동력원을 섞어 연비를 높인 자동차",
+        "probableAnswer": "하이브리드"
+      },
+      "question": {
+        "ok": true,
+        "question": "휘발유 엔진과 전기 모터를 함께 달아, 상황에 따라 번갈아 쓰거나 함께 써서 연비를 높인 자동차는?",
+        "answer": "하이브리드 자동차",
+        "acceptedAnswers": [
+          "하이브리드",
+          "하이브리드차"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "1997년 토요타 프리우스가 대량 생산의 시작으로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

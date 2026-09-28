@@ -1,0 +1,309 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "ball-sports/2",
+    "categoryPath": "스포츠·게임 > 농구·배구·기타 구기 > 배구",
+    "midKey": "ball-sports",
+    "subName": "배구",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:02:00.734Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 개별 선수·구단이라 아는 사람만 안다.",
+      "listedCandidates": 17,
+      "remainingUsable": 1,
+      "remainingUsableNote": "시간차 공격이 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "리베로",
+          "aspect": "수비 전문 선수",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "배구 코트 인원",
+            "probableAnswer": "6",
+            "existing": "db:43 / db:1466",
+            "whyDifferent": "숫자만 같다"
+          },
+          {
+            "subject": "세 번 안에 넘긴다",
+            "probableAnswer": "3",
+            "existing": "db:1799",
+            "whyDifferent": "숫자만 같다"
+          },
+          {
+            "subject": "랠리 포인트",
+            "probableAnswer": "랠리 포인트",
+            "existing": "db:2539",
+            "whyDifferent": "포함 관계 — 기존은 발레의 포인트다"
+          }
+        ],
+        "checked": 10,
+        "hits": 3,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:29:08.402Z"
+  },
+  "items": [
+    {
+      "seedId": "ball-sports/2#001",
+      "seed": {
+        "subject": "배구 코트 인원",
+        "aspect": "한 팀이 코트에 서는 수",
+        "knowledgePoint": "6인제 배구",
+        "probableAnswer": "6"
+      },
+      "question": {
+        "ok": true,
+        "question": "국제 규칙의 실내 배구 경기에서 한 팀이 코트에 세우는 선수는 몇 명입니까?",
+        "answer": "6",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "예전 한국에서는 9인제 배구도 널리 했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/2#002",
+      "seed": {
+        "subject": "세 번 안에 넘긴다",
+        "aspect": "한 팀이 공을 만지는 최대 횟수",
+        "knowledgePoint": "배구의 3회 터치 규칙",
+        "probableAnswer": "3"
+      },
+      "question": {
+        "ok": true,
+        "question": "배구에서 한 팀은 블로킹을 빼고 최대 몇 번 만에 공을 상대 코트로 넘겨야 합니까?",
+        "answer": "3",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "한 선수가 연속으로 두 번 만질 수도 없습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/2#003",
+      "seed": {
+        "subject": "랠리 포인트",
+        "aspect": "서브권과 관계없이 점수가 난다",
+        "knowledgePoint": "모든 랠리에 점수를 주는 방식",
+        "probableAnswer": "랠리 포인트"
+      },
+      "question": {
+        "ok": true,
+        "question": "서브권이 있든 없든 랠리에서 이긴 팀이 곧바로 점수를 얻는 방식으로, 경기 시간을 줄이려고 배구에 도입된 것은?",
+        "answer": "랠리 포인트",
+        "acceptedAnswers": [
+          "랠리 포인트 제도"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "예전에는 서브권을 가진 팀만 점수를 얻을 수 있었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/2#004",
+      "seed": {
+        "subject": "25점",
+        "aspect": "한 세트를 따는 점수",
+        "knowledgePoint": "배구 세트 점수와 듀스",
+        "probableAnswer": "25"
+      },
+      "question": {
+        "ok": true,
+        "question": "배구에서 마지막 5세트가 아닌 세트를 따려면 먼저 몇 점을 얻어야 합니까? 동점 상황에서는 2점을 앞서야 끝납니다.",
+        "answer": "25",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "5세트는 15점을 먼저 얻는 쪽이 이깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/2#005",
+      "seed": {
+        "subject": "로테이션",
+        "aspect": "서브권을 얻으면 시계 방향으로 돈다",
+        "knowledgePoint": "선수 위치를 돌리는 규칙",
+        "probableAnswer": "로테이션"
+      },
+      "question": {
+        "ok": true,
+        "question": "배구에서 서브권을 되찾은 팀의 선수들이 시계 방향으로 한 자리씩 옮기는 규칙은?",
+        "answer": "로테이션",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "이 규칙 때문에 모든 선수가 앞줄과 뒷줄을 번갈아 맡게 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/2#006",
+      "seed": {
+        "subject": "블로킹",
+        "aspect": "네트 위에서 손으로 막는다",
+        "knowledgePoint": "상대 공격을 네트에서 막는 기술",
+        "probableAnswer": "블로킹"
+      },
+      "question": {
+        "ok": true,
+        "question": "배구에서 네트 가까이 뛰어올라 두 손을 뻗어 상대의 공격을 막는 기술은?",
+        "answer": "블로킹",
+        "acceptedAnswers": [
+          "블록"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "블로킹으로 공을 건드린 것은 세 번의 터치에 넣지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/2#007",
+      "seed": {
+        "subject": "세터",
+        "aspect": "공을 올려 공격을 만든다",
+        "knowledgePoint": "토스를 맡는 포지션",
+        "probableAnswer": "세터"
+      },
+      "question": {
+        "ok": true,
+        "question": "배구에서 공을 알맞게 올려 주어 공격수가 때리게 하는, 경기를 조율하는 포지션은?",
+        "answer": "세터",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "\"코트 위의 사령관\" 이라 불리기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/2#008",
+      "seed": {
+        "subject": "스파이크",
+        "aspect": "높이 뛰어 내리꽂는다",
+        "knowledgePoint": "배구의 공격 기술",
+        "probableAnswer": "스파이크"
+      },
+      "question": {
+        "ok": true,
+        "question": "배구에서 높이 뛰어올라 공을 상대 코트로 세게 내리치는 공격은?",
+        "answer": "스파이크",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "공격 성공의 대부분이 이 기술로 나옵니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/2#009",
+      "seed": {
+        "subject": "비치발리볼",
+        "aspect": "모래 위에서 두 명이 한다",
+        "knowledgePoint": "해변 배구와 그 인원",
+        "probableAnswer": "비치발리볼"
+      },
+      "question": {
+        "ok": true,
+        "question": "모래 위에서 한 팀 두 명이 겨루는 배구 종목으로, 1996년 애틀랜타 올림픽에서 정식 종목이 된 것은?",
+        "answer": "비치발리볼",
+        "acceptedAnswers": [
+          "비치 배구"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "두 명이 코트 전체를 맡아야 해서 체력 소모가 큽니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/2#010",
+      "seed": {
+        "subject": "김연경",
+        "aspect": "국가대표 주장으로 올림픽 4강",
+        "knowledgePoint": "한국 여자배구를 대표한 선수",
+        "probableAnswer": "김연경"
+      },
+      "question": {
+        "ok": true,
+        "question": "2012년 런던과 2021년 도쿄 올림픽에서 한국 여자배구 대표팀의 4강 진출을 이끈, 한국 여자배구를 대표하는 선수는?",
+        "answer": "김연경",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "일본·튀르키예·중국 리그에서도 뛰었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

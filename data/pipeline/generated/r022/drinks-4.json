@@ -1,0 +1,257 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "drinks/4",
+    "categoryPath": "생활·상식 > 술·음료 > 전통주",
+    "midKey": "drinks",
+    "subName": "전통주",
+    "majorKey": "life",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:04:36.466Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 8,
+      "shortfallReason": "★ 8건에서 멈췄다. 전역 대조에서 식혜·수정과가 전통 음료 소분류와 같아 버렸다. 남은 후보가 지역 명주 이름이다.",
+      "listedCandidates": 17,
+      "remainingUsable": 1,
+      "remainingUsableNote": "두견주가 남았다.",
+      "estimatedCeiling": "실질 상한 10건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "이강주",
+          "aspect": "배와 생강 소주",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "식혜",
+            "probableAnswer": "식혜",
+            "existing": "db:2323",
+            "why": "기존(떡·한과·전통 음료)이 같은 음료를 같은 단서로 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "수정과",
+            "probableAnswer": "수정과",
+            "existing": "db:2322",
+            "why": "기존이 계피·생강·곶감으로 같은 지식을 묻는다",
+            "replacedWith": "두견주"
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 10,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:31:22.598Z"
+  },
+  "items": [
+    {
+      "seedId": "drinks/4#001",
+      "seed": {
+        "subject": "막걸리",
+        "aspect": "막 거른 술",
+        "knowledgePoint": "쌀로 빚어 뿌옇게 거른 술",
+        "probableAnswer": "막걸리"
+      },
+      "question": {
+        "ok": true,
+        "question": "쌀 등으로 빚은 술을 거칠게 걸러 내 뿌옇고 도수가 낮은 우리 전통주는?",
+        "answer": "막걸리",
+        "acceptedAnswers": [
+          "탁주"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "\"막 거른 술\" 이라는 뜻에서 이름이 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/4#002",
+      "seed": {
+        "subject": "동동주",
+        "aspect": "밥알이 동동 뜬다",
+        "knowledgePoint": "밥알이 뜨는 맑지 않은 술",
+        "probableAnswer": "동동주"
+      },
+      "question": {
+        "ok": true,
+        "question": "술이 익을 무렵 삭은 밥알이 위에 동동 떠 있는 데서 이름이 온 전통주는?",
+        "answer": "동동주",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "막걸리보다 맑은 윗부분을 떠서 마시는 경우가 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/4#003",
+      "seed": {
+        "subject": "누룩",
+        "aspect": "술을 빚는 발효제",
+        "knowledgePoint": "곡물에 곰팡이를 띄운 전통 발효제",
+        "probableAnswer": "누룩"
+      },
+      "question": {
+        "ok": true,
+        "question": "밀이나 쌀 같은 곡물을 반죽해 띄워 곰팡이와 효모를 번식시킨, 우리 술을 빚는 발효제는?",
+        "answer": "누룩",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "곡물의 녹말을 당으로 바꾸고 그 당을 알코올로 바꾸는 일을 함께 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/4#004",
+      "seed": {
+        "subject": "안동소주",
+        "aspect": "증류한 명주",
+        "knowledgePoint": "경북 안동의 전통 증류식 소주",
+        "probableAnswer": "안동소주"
+      },
+      "question": {
+        "ok": true,
+        "question": "경북 안동에서 전통 방식으로 증류해 빚는 소주로, 고려 때 원나라에서 증류 기술이 들어와 전해졌다는 명주는?",
+        "answer": "안동소주",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "희석식 소주와 달리 곡물로 빚은 술을 증류해 만듭니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/4#005",
+      "seed": {
+        "subject": "청주",
+        "aspect": "맑게 떠낸 윗부분",
+        "knowledgePoint": "발효한 술의 맑은 부분을 떠낸 술",
+        "probableAnswer": "청주"
+      },
+      "question": {
+        "ok": true,
+        "question": "발효한 술이 익으면 위에 맑게 뜬 부분만 떠내어 거른 술을 무엇이라 합니까?",
+        "answer": "청주",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "같은 술독에서 아래의 탁한 부분을 거르면 탁주가 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/4#006",
+      "seed": {
+        "subject": "문배주",
+        "aspect": "문배나무 열매 향이 난다",
+        "knowledgePoint": "남북 정상회담 만찬에 오른 평안도 술",
+        "probableAnswer": "문배주"
+      },
+      "question": {
+        "ok": true,
+        "question": "문배나무 열매 향이 난다는 데서 이름이 왔고, 남북 정상회담 만찬에도 오른 평안도 출신의 증류주는?",
+        "answer": "문배주",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "실제로는 문배를 넣지 않고 조와 수수로 빚습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/4#007",
+      "seed": {
+        "subject": "복분자주",
+        "aspect": "요강을 뒤집는다는 열매",
+        "knowledgePoint": "전북 고창의 과실주",
+        "probableAnswer": "복분자주"
+      },
+      "question": {
+        "ok": true,
+        "question": "먹으면 요강을 뒤집을 만큼 기운이 난다는 이야기가 전하는 산딸기류 열매로 담근, 전북 고창의 과실주는?",
+        "answer": "복분자주",
+        "acceptedAnswers": [
+          "복분자"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "이름의 한자가 \"요강을 뒤집는다\" 는 뜻이라는 풀이가 퍼져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/4#008",
+      "seed": {
+        "subject": "두견주",
+        "aspect": "진달래꽃으로 빚는다",
+        "knowledgePoint": "당진의 진달래 가향주",
+        "probableAnswer": "두견주"
+      },
+      "question": {
+        "ok": true,
+        "question": "진달래꽃을 넣어 빚는 충남 당진 면천의 전통주로, 진달래의 다른 이름을 딴 것은?",
+        "answer": "두견주",
+        "acceptedAnswers": [
+          "면천두견주"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "고려 개국공신 복지겸의 병을 낫게 했다는 이야기가 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "animals/6",
+    "categoryPath": "자연과학 > 동물 > 동물의 습성·생태",
+    "midKey": "animals",
+    "subName": "동물의 습성·생태",
+    "majorKey": "science",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:50:38.497Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보(탁란·각인·반향정위·공생)는 다른 소분류가 이미 다뤘다.",
+      "listedCandidates": 20,
+      "remainingUsable": 0,
+      "remainingUsableNote": "남은 후보는 다른 소분류에 있다.",
+      "estimatedCeiling": "실질 상한 10건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "탁란",
+          "aspect": "뻐꾸기",
+          "reason": "★ animals/2 에 있다"
+        },
+        {
+          "subject": "각인",
+          "aspect": "새끼 거위",
+          "reason": "★ psychology/2 에 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [],
+        "checked": 10,
+        "hits": 0,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:19:29.943Z"
+  },
+  "items": [
+    {
+      "seedId": "animals/6#001",
+      "seed": {
+        "subject": "동면",
+        "aspect": "겨울 동안 체온과 심박을 낮춘다",
+        "knowledgePoint": "먹이가 없는 겨울을 버티는 방식",
+        "probableAnswer": "동면"
+      },
+      "question": {
+        "ok": true,
+        "question": "곰이나 개구리처럼 먹이가 부족한 겨울 동안 체온과 심장 박동을 크게 낮추고 잠든 듯 지내는 것을 무엇이라 합니까?",
+        "answer": "동면",
+        "acceptedAnswers": [
+          "겨울잠"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "곰은 체온이 조금만 내려가 깊은 동면과 구별하기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "animals/6#002",
+      "seed": {
+        "subject": "철새의 길 찾기",
+        "aspect": "지구 자기장을 느낀다",
+        "knowledgePoint": "먼 거리를 이동하는 새가 방향을 찾는 단서",
+        "probableAnswer": "자기장"
+      },
+      "question": {
+        "ok": true,
+        "question": "먼 거리를 이동하는 철새는 해와 별 외에 지구의 이것을 느껴 방향을 찾는다고 알려져 있습니다. 나침반이 가리키는 것과 같은 이것은?",
+        "answer": "자기장",
+        "acceptedAnswers": [
+          "지구 자기장"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "새의 눈이나 부리에 이를 느끼는 구조가 있다는 연구가 이어지고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "animals/6#003",
+      "seed": {
+        "subject": "의태",
+        "aspect": "나뭇잎이나 나뭇가지를 닮는다",
+        "knowledgePoint": "다른 것을 흉내 내 몸을 지키는 적응",
+        "probableAnswer": "의태"
+      },
+      "question": {
+        "ok": true,
+        "question": "대벌레가 나뭇가지를, 나뭇잎벌레가 잎을 닮은 것처럼, 다른 물체나 생물의 모습을 흉내 내 몸을 지키는 것을 무엇이라 합니까?",
+        "answer": "의태",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "독 없는 동물이 독 있는 동물을 닮는 경우도 여기에 듭니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "animals/6#004",
+      "seed": {
+        "subject": "경계색",
+        "aspect": "눈에 띄는 색으로 경고한다",
+        "knowledgePoint": "독이 있음을 알리는 화려한 색",
+        "probableAnswer": "경계색"
+      },
+      "question": {
+        "ok": true,
+        "question": "독화살개구리나 말벌처럼 눈에 띄는 화려한 색으로 \"나는 위험하다\" 고 알리는 몸 색을 무엇이라 합니까?",
+        "answer": "경계색",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "한 번 혼난 포식자가 그 색을 피하게 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "animals/6#005",
+      "seed": {
+        "subject": "보호색",
+        "aspect": "주변과 비슷한 색으로 숨는다",
+        "knowledgePoint": "천적의 눈을 피하는 몸 색",
+        "probableAnswer": "보호색"
+      },
+      "question": {
+        "ok": true,
+        "question": "메뚜기의 초록색이나 겨울 산토끼의 흰색처럼 주변과 비슷한 색으로 천적의 눈을 피하는 몸 색은?",
+        "answer": "보호색",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "계절에 따라 털갈이로 색을 바꾸는 동물도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "animals/6#006",
+      "seed": {
+        "subject": "영역 표시",
+        "aspect": "냄새나 소리로 경계를 알린다",
+        "knowledgePoint": "자기 구역을 알리는 행동",
+        "probableAnswer": "영역 표시"
+      },
+      "question": {
+        "ok": true,
+        "question": "개가 전봇대에 오줌을 누거나 새가 노래하는 것처럼, 자기 구역의 경계를 냄새나 소리로 알리는 행동을 무엇이라 합니까?",
+        "answer": "영역 표시",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "싸우지 않고 충돌을 줄이는 역할을 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "animals/6#007",
+      "seed": {
+        "subject": "누 떼의 대이동",
+        "aspect": "비를 따라 수백만 마리가 움직인다",
+        "knowledgePoint": "세렝게티 초원의 계절 이동",
+        "probableAnswer": "누"
+      },
+      "question": {
+        "ok": true,
+        "question": "아프리카 세렝게티와 마사이마라 사이를 해마다 비와 풀을 따라 수백만 마리가 이동하는, 소처럼 생긴 영양은?",
+        "answer": "누",
+        "acceptedAnswers": [
+          "누우"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "강을 건널 때 악어에게 잡히는 장면으로 유명합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "animals/6#008",
+      "seed": {
+        "subject": "다람쥐의 먹이 저장",
+        "aspect": "묻어 둔 도토리를 잊는다",
+        "knowledgePoint": "먹이 저장이 숲을 퍼뜨리는 결과",
+        "probableAnswer": "다람쥐"
+      },
+      "question": {
+        "ok": true,
+        "question": "가을에 도토리를 땅에 묻어 두었다가 일부를 잊어버려, 결과적으로 참나무 숲을 퍼뜨리는 데 한몫하는 동물은?",
+        "answer": "다람쥐",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "어치 같은 새도 비슷한 역할을 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "animals/6#009",
+      "seed": {
+        "subject": "구애 행동",
+        "aspect": "춤과 깃털로 짝을 부른다",
+        "knowledgePoint": "짝짓기 상대를 끌기 위한 행동",
+        "probableAnswer": "구애"
+      },
+      "question": {
+        "ok": true,
+        "question": "공작이 꼬리깃을 펼치거나 두루미가 춤을 추는 것처럼, 짝짓기 상대를 끌기 위해 하는 행동을 무엇이라 합니까?",
+        "answer": "구애 행동",
+        "acceptedAnswers": [
+          "구애"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "주로 수컷이 하고 암컷이 고르는 경우가 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "animals/6#010",
+      "seed": {
+        "subject": "무리 짓기",
+        "aspect": "물고기 떼가 한 몸처럼 움직인다",
+        "knowledgePoint": "포식자를 피하려 모여 다니는 행동",
+        "probableAnswer": "무리"
+      },
+      "question": {
+        "ok": false,
+        "rejectReason": "정답 \"무리\" 가 너무 일반어라 한 문항으로 가리키기 어렵고, 전문어(군집 행동·떼 짓기)로 바꾸면 표기가 갈려 정답이 하나로 모이지 않는다."
+      }
+    }
+  ]
+}

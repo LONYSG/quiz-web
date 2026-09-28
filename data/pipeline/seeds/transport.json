@@ -3,7 +3,7 @@
   "midName": "자동차·교통",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-21T01:42:33.702Z",
+  "updatedAt": "2026-09-28T02:21:41.953Z",
   "subs": {
     "transport/1": {
       "subName": "자동차 구조·용어",
@@ -300,9 +300,217 @@
           "answer": "모델 T",
           "origin": "db:118",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "벤츠",
+          "origin": "r022:transport/2#001",
+          "note": null
+        },
+        {
+          "answer": "포니",
+          "origin": "r022:transport/2#002",
+          "note": null
+        },
+        {
+          "answer": "폭스바겐",
+          "origin": "r022:transport/2#003",
+          "note": null
+        },
+        {
+          "answer": "람보르기니",
+          "origin": "r022:transport/2#004",
+          "note": null
+        },
+        {
+          "answer": "페라리",
+          "origin": "r022:transport/2#005",
+          "note": null
+        },
+        {
+          "answer": "롤스로이스",
+          "origin": "r022:transport/2#006",
+          "note": null
+        },
+        {
+          "answer": "토요타",
+          "origin": "r022:transport/2#007",
+          "note": null
+        },
+        {
+          "answer": "적시 생산 방식",
+          "origin": "r022:transport/2#008",
+          "note": null
+        },
+        {
+          "answer": "하이브리드 자동차",
+          "origin": "r022:transport/2#009",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "transport/2#001",
+          "subject": "칼 벤츠",
+          "aspect": "휘발유로 달리는 첫 자동차",
+          "knowledgePoint": "1886년 특허를 받은 최초의 가솔린 자동차",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.942Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-2#001",
+            "answer": "벤츠",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/2#002",
+          "subject": "포니",
+          "aspect": "우리나라 첫 고유 모델",
+          "knowledgePoint": "1976년 나온 국산 고유 모델 자동차",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.942Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-2#002",
+            "answer": "포니",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/2#003",
+          "subject": "폭스바겐",
+          "aspect": "이름이 '국민차' 라는 뜻",
+          "knowledgePoint": "독일 자동차 회사 이름의 뜻",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.942Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-2#003",
+            "answer": "폭스바겐",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/2#004",
+          "subject": "람보르기니",
+          "aspect": "트랙터 회사로 출발했다",
+          "knowledgePoint": "스포츠카 회사의 뜻밖의 출발",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.942Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-2#004",
+            "answer": "람보르기니",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/2#005",
+          "subject": "페라리",
+          "aspect": "앞발을 든 말 문양",
+          "knowledgePoint": "이탈리아 스포츠카 회사와 그 문양의 유래",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.942Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-2#005",
+            "answer": "페라리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/2#006",
+          "subject": "롤스로이스",
+          "aspect": "보닛 위의 여신상",
+          "knowledgePoint": "영국 고급차와 그 상징",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.942Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-2#006",
+            "answer": "롤스로이스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/2#007",
+          "subject": "토요타",
+          "aspect": "방직기 회사에서 출발했다",
+          "knowledgePoint": "일본 자동차 회사의 뿌리",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.942Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-2#007",
+            "answer": "토요타",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/2#008",
+          "subject": "적시 생산 방식",
+          "aspect": "필요한 만큼만 그때그때 만든다",
+          "knowledgePoint": "재고를 줄이는 토요타의 생산 방식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.942Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-2#008",
+            "answer": "적시 생산 방식",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/2#009",
+          "subject": "하이브리드 자동차",
+          "aspect": "엔진과 전기 모터를 함께 쓴다",
+          "knowledgePoint": "두 동력원을 섞어 연비를 높인 자동차",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.942Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-2#009",
+            "answer": "하이브리드 자동차",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "transport/3": {
       "subName": "철도",
@@ -830,6 +1038,197 @@
             "rejectReason": null,
             "questionPrompt": "question-v2",
             "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
+    },
+    "transport/5": {
+      "subName": "도로·교통 체계",
+      "usedAnswers": [
+        {
+          "answer": "회전교차로",
+          "origin": "r022:transport/5#001",
+          "note": null
+        },
+        {
+          "answer": "하이패스",
+          "origin": "r022:transport/5#002",
+          "note": null
+        },
+        {
+          "answer": "버스전용차로",
+          "origin": "r022:transport/5#003",
+          "note": null
+        },
+        {
+          "answer": "유령 정체",
+          "origin": "r022:transport/5#004",
+          "note": null
+        },
+        {
+          "answer": "좌측통행",
+          "origin": "r022:transport/5#005",
+          "note": null
+        },
+        {
+          "answer": "중앙분리대",
+          "origin": "r022:transport/5#006",
+          "note": null
+        },
+        {
+          "answer": "환승 할인",
+          "origin": "r022:transport/5#007",
+          "note": null
+        },
+        {
+          "answer": "과속방지턱",
+          "origin": "r022:transport/5#008",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "transport/5#001",
+          "subject": "회전교차로",
+          "aspect": "신호 없이 돌아 나간다",
+          "knowledgePoint": "들어오는 차보다 돌고 있는 차가 먼저인 교차로",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.945Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-5#001",
+            "answer": "회전교차로",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/5#002",
+          "subject": "하이패스",
+          "aspect": "멈추지 않고 요금을 낸다",
+          "knowledgePoint": "무선으로 통행료를 내는 장치",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.945Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-5#002",
+            "answer": "하이패스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/5#003",
+          "subject": "버스전용차로",
+          "aspect": "파란 선을 그은 차로",
+          "knowledgePoint": "대중교통을 빠르게 하려 버스만 달리게 한 차로",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.945Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-5#003",
+            "answer": "버스전용차로",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/5#004",
+          "subject": "유령 정체",
+          "aspect": "사고도 없는데 막힌다",
+          "knowledgePoint": "앞차의 작은 감속이 뒤로 퍼지며 생기는 정체",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.945Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-5#004",
+            "answer": "유령 정체",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/5#005",
+          "subject": "좌측통행",
+          "aspect": "영국과 일본은 왼쪽으로 달린다",
+          "knowledgePoint": "나라마다 차가 다니는 방향이 다른 것",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.945Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-5#005",
+            "answer": "좌측통행",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/5#006",
+          "subject": "중앙분리대",
+          "aspect": "마주 오는 차로를 가른다",
+          "knowledgePoint": "정면 충돌을 막는 시설",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.945Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-5#006",
+            "answer": "중앙분리대",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/5#007",
+          "subject": "환승 할인",
+          "aspect": "갈아타도 요금을 한 번만 낸다",
+          "knowledgePoint": "대중교통을 이어 타면 요금을 합쳐 매기는 제도",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.945Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-5#007",
+            "answer": "환승 할인",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "transport/5#008",
+          "subject": "과속방지턱",
+          "aspect": "도로에 볼록 솟은 턱",
+          "knowledgePoint": "차의 속도를 물리적으로 줄이는 시설",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.945Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/transport-5#008",
+            "answer": "과속방지턱",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
           }
         }
       ]

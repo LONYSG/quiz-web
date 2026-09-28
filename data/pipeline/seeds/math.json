@@ -3,7 +3,7 @@
   "midName": "수학·수 상식",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-21T06:52:38.736Z",
+  "updatedAt": "2026-09-28T02:19:29.969Z",
   "subs": {
     "math/1": {
       "subName": "수와 연산",
@@ -12,9 +12,171 @@
           "answer": "소수",
           "origin": "db:172",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "음수",
+          "origin": "r022:math/1#001",
+          "note": null
+        },
+        {
+          "answer": "허수",
+          "origin": "r022:math/1#002",
+          "note": null
+        },
+        {
+          "answer": "인도",
+          "origin": "r022:math/1#003",
+          "note": null
+        },
+        {
+          "answer": "60진법",
+          "origin": "r022:math/1#004",
+          "note": null
+        },
+        {
+          "answer": "로마 숫자",
+          "origin": "r022:math/1#005",
+          "note": null
+        },
+        {
+          "answer": "구골",
+          "origin": "r022:math/1#006",
+          "note": null
+        },
+        {
+          "answer": "최대공약수",
+          "origin": "r022:math/1#007",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "math/1#001",
+          "subject": "음수",
+          "aspect": "빚을 적는 데 먼저 쓰였다",
+          "knowledgePoint": "0보다 작은 수가 받아들여진 과정",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.510Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-1#001",
+            "answer": "음수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/1#002",
+          "subject": "허수",
+          "aspect": "제곱해서 음수가 되는 수",
+          "knowledgePoint": "i 로 적는 수와 그 이름의 유래",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.510Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-1#002",
+            "answer": "허수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/1#003",
+          "subject": "아라비아 숫자",
+          "aspect": "실제로는 인도에서 왔다",
+          "knowledgePoint": "지금 쓰는 숫자가 전해진 경로",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.510Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-1#003",
+            "answer": "인도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/1#004",
+          "subject": "60진법",
+          "aspect": "한 시간은 60분",
+          "knowledgePoint": "바빌로니아에서 이어진 시간과 각도의 셈법",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.510Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-1#004",
+            "answer": "60진법",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/1#005",
+          "subject": "로마 숫자",
+          "aspect": "시계판과 영화 제작 연도에 남아 있다",
+          "knowledgePoint": "I·V·X 로 적는 숫자 체계와 0 이 없다는 것",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.510Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-1#005",
+            "answer": "로마 숫자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/1#006",
+          "subject": "구골",
+          "aspect": "10의 100제곱",
+          "knowledgePoint": "아이가 붙인 이름과 검색 회사 이름의 유래",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.510Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-1#006",
+            "answer": "구골",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/1#007",
+          "subject": "최대공약수",
+          "aspect": "두 수를 함께 나누는 가장 큰 수",
+          "knowledgePoint": "유클리드 호제법으로 구하는 수",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.510Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-1#007",
+            "answer": "최대공약수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "math/2": {
       "subName": "도형·기하",
@@ -318,9 +480,235 @@
           "answer": "평균",
           "origin": "db:293",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "중앙값",
+          "origin": "r022:math/3#001",
+          "note": null
+        },
+        {
+          "answer": "최빈값",
+          "origin": "r022:math/3#002",
+          "note": null
+        },
+        {
+          "answer": "표준편차",
+          "origin": "r022:math/3#003",
+          "note": null
+        },
+        {
+          "answer": "정규분포",
+          "origin": "r022:math/3#004",
+          "note": null
+        },
+        {
+          "answer": "몬티 홀 문제",
+          "origin": "r022:math/3#005",
+          "note": null
+        },
+        {
+          "answer": "생일 문제",
+          "origin": "r022:math/3#006",
+          "note": null
+        },
+        {
+          "answer": "도박사의 오류",
+          "origin": "r022:math/3#007",
+          "note": null
+        },
+        {
+          "answer": "표본",
+          "origin": "r022:math/3#008",
+          "note": null
+        },
+        {
+          "answer": "큰 수의 법칙",
+          "origin": "r022:math/3#010",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "math/3#001",
+          "subject": "중앙값",
+          "aspect": "한가운데 오는 값",
+          "knowledgePoint": "극단값의 영향을 덜 받는 대푯값",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.513Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-3#001",
+            "answer": "중앙값",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/3#002",
+          "subject": "최빈값",
+          "aspect": "가장 자주 나오는 값",
+          "knowledgePoint": "가장 많이 나타난 값을 대표로 삼는 것",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.513Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-3#002",
+            "answer": "최빈값",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/3#003",
+          "subject": "표준편차",
+          "aspect": "흩어진 정도",
+          "knowledgePoint": "자료가 평균에서 얼마나 퍼져 있는지 나타내는 값",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.513Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-3#003",
+            "answer": "표준편차",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/3#004",
+          "subject": "정규분포",
+          "aspect": "종 모양으로 퍼진다",
+          "knowledgePoint": "키·시험 점수처럼 가운데가 많고 양끝이 적은 분포",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.513Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-3#004",
+            "answer": "정규분포",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/3#005",
+          "subject": "몬티 홀 문제",
+          "aspect": "문을 바꾸면 이길 확률이 오른다",
+          "knowledgePoint": "직관과 어긋나는 확률 문제",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.513Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-3#005",
+            "answer": "몬티 홀 문제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/3#006",
+          "subject": "생일 문제",
+          "aspect": "23명이면 절반을 넘는다",
+          "knowledgePoint": "생일이 겹칠 확률이 생각보다 큰 까닭",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.513Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-3#006",
+            "answer": "생일 문제",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/3#007",
+          "subject": "도박사의 오류",
+          "aspect": "이번에는 나올 차례라고 믿는다",
+          "knowledgePoint": "독립 사건에 흐름이 있다고 착각하는 것",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.513Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-3#007",
+            "answer": "도박사의 오류",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/3#008",
+          "subject": "표본",
+          "aspect": "전체 대신 일부를 조사한다",
+          "knowledgePoint": "모집단을 대표하도록 뽑은 일부",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.513Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-3#008",
+            "answer": "표본",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/3#009",
+          "subject": "상관관계와 인과관계",
+          "aspect": "함께 움직인다고 원인은 아니다",
+          "knowledgePoint": "상관이 인과를 뜻하지 않는다는 원칙",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.513Z",
+          "question": {
+            "status": "rejected",
+            "ref": "r022/math-3#009",
+            "answer": null,
+            "rejectReason": "\"상관관계와 인과관계\" 는 두 개념의 구별이 지식의 핵심이라, 한쪽을 정답으로 삼으면 다른 쪽을 친 사람이 억울해지고 둘 다 인정하면 질문이 무의미해진다.",
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "math/3#010",
+          "subject": "큰 수의 법칙",
+          "aspect": "많이 던질수록 반에 가까워진다",
+          "knowledgePoint": "시행이 늘면 비율이 이론적 확률에 가까워지는 것",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.513Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/math-3#010",
+            "answer": "큰 수의 법칙",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "math/4": {
       "subName": "수학 기호·용어",
@@ -885,17 +1273,17 @@
         {
           "answer": "해리",
           "origin": "r021:math/5#006",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr10,db61). 기존 db:693 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "노트",
           "origin": "r021:math/5#007",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr11,db62). 기존 db:684 을 남긴다 — ★ 같은 두 문항을 두 번 비교했는데 keep 이 엇갈렸다. 합의가 없으므로 기존을 남긴다 (R019 football/1#011 선례)"
         },
         {
           "answer": "광년",
           "origin": "r021:math/5#008",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr36,db63). 기존 db:764 을 남긴다 — ★ 같은 두 문항을 두 번 비교했는데 keep 이 엇갈렸다. 합의가 없으므로 기존을 남긴다 (R019 football/1#011 선례)"
         },
         {
           "answer": "규모",
@@ -905,7 +1293,7 @@
         {
           "answer": "진도",
           "origin": "r021:math/5#010",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr37,db64). 기존 db:917 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "야드파운드법",
@@ -1019,12 +1407,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:31:00.951Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/math-5#006",
             "answer": "해리",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr10,db61). 기존 db:693 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:693",
+              "at": "2026-09-28T01:31:34.481Z"
+            }
           }
         },
         {
@@ -1037,12 +1432,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:31:00.951Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/math-5#007",
             "answer": "노트",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr11,db62). 기존 db:684 을 남긴다 — ★ 같은 두 문항을 두 번 비교했는데 keep 이 엇갈렸다. 합의가 없으므로 기존을 남긴다 (R019 football/1#011 선례)",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:684",
+              "at": "2026-09-28T01:31:34.545Z"
+            }
           }
         },
         {
@@ -1055,12 +1457,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:31:00.951Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/math-5#008",
             "answer": "광년",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr36,db63). 기존 db:764 을 남긴다 — ★ 같은 두 문항을 두 번 비교했는데 keep 이 엇갈렸다. 합의가 없으므로 기존을 남긴다 (R019 football/1#011 선례)",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:764",
+              "at": "2026-09-28T01:31:35.658Z"
+            }
           }
         },
         {
@@ -1091,12 +1500,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:31:00.951Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/math-5#010",
             "answer": "진도",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr37,db64). 기존 db:917 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:917",
+              "at": "2026-09-28T01:31:35.732Z"
+            }
           }
         },
         {

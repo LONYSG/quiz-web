@@ -1,0 +1,254 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "astronomy/4",
+    "categoryPath": "자연과학 > 천문·우주 > 우주 현상·관측",
+    "midKey": "astronomy",
+    "subName": "우주 현상·관측",
+    "majorKey": "science",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:50:38.508Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 7,
+      "shortfallReason": "★ 7건에서 멈췄다. ★★ 전역 대조에서 4건이 천문의 다른 소분류(별·은하·별자리)와 같은 지식으로 걸려 버렸다(유성우·초신성·중력 렌즈·성운). 남은 관측 소재는 빛 공해 하나를 더했다.",
+      "listedCandidates": 20,
+      "remainingUsable": 0,
+      "remainingUsableNote": "남은 후보는 다른 소분류에 있다.",
+      "estimatedCeiling": "실질 상한 10건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "개기일식",
+          "aspect": "달이 해를 가린다",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        },
+        {
+          "subject": "블랙홀",
+          "aspect": "빛도 못 빠져나온다",
+          "reason": "★ R021 현대 물리에 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "유성우",
+            "probableAnswer": "유성우",
+            "existing": "db:1256",
+            "why": "기존이 '혜성 먼지 궤도를 해마다 지나 생기는 현상' 을 묻는다",
+            "replacedWith": "빛 공해"
+          },
+          {
+            "subject": "초신성",
+            "probableAnswer": "초신성",
+            "existing": "db:763",
+            "why": "기존이 '무거운 별의 폭발' 을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "중력 렌즈",
+            "probableAnswer": "중력 렌즈",
+            "existing": "db:1454",
+            "why": "기존이 같은 현상을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "성운",
+            "probableAnswer": "성운",
+            "existing": "db:1448",
+            "why": "기존이 '별이 태어나는 가스 구름' 을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 4,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:19:29.959Z"
+  },
+  "items": [
+    {
+      "seedId": "astronomy/4#001",
+      "seed": {
+        "subject": "월식",
+        "aspect": "달이 붉게 보인다",
+        "knowledgePoint": "지구 그림자가 달을 가리는 현상과 붉은 달",
+        "probableAnswer": "월식"
+      },
+      "question": {
+        "ok": true,
+        "question": "지구의 그림자가 달을 가리는 현상으로, 전체가 가려질 때는 지구 대기를 지나 굴절된 붉은빛 때문에 달이 붉게 보이는 것은?",
+        "answer": "월식",
+        "acceptedAnswers": [
+          "개기월식"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "이때의 달을 흔히 \"블러드문\" 이라 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "astronomy/4#002",
+      "seed": {
+        "subject": "혜성의 꼬리",
+        "aspect": "늘 태양 반대쪽을 향한다",
+        "knowledgePoint": "태양풍 때문에 꼬리 방향이 정해지는 것",
+        "probableAnswer": "혜성"
+      },
+      "question": {
+        "ok": true,
+        "question": "태양에 가까워지면 얼음과 먼지가 증발해 꼬리가 생기는데, 그 꼬리가 늘 태양의 반대쪽을 향하는 천체는?",
+        "answer": "혜성",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "태양풍과 빛의 압력이 꼬리를 밀어내기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "astronomy/4#003",
+      "seed": {
+        "subject": "오로라",
+        "aspect": "극지방 하늘의 빛 커튼",
+        "knowledgePoint": "태양풍 입자가 대기와 부딪혀 빛나는 현상",
+        "probableAnswer": "오로라"
+      },
+      "question": {
+        "ok": true,
+        "question": "태양에서 날아온 전기를 띤 입자가 지구 대기와 부딪혀, 주로 극지방 밤하늘에 커튼처럼 빛이 일렁이는 현상은?",
+        "answer": "오로라",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "태양 활동이 강한 해에 더 자주, 더 남쪽까지 보입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "astronomy/4#004",
+      "seed": {
+        "subject": "흑점",
+        "aspect": "태양 표면의 어두운 점",
+        "knowledgePoint": "주변보다 온도가 낮은 태양 표면의 영역과 주기",
+        "probableAnswer": "흑점"
+      },
+      "question": {
+        "ok": true,
+        "question": "태양 표면에서 주변보다 온도가 낮아 검게 보이는 부분으로, 그 수가 약 11년 주기로 늘었다 줄었다 하는 것은?",
+        "answer": "흑점",
+        "acceptedAnswers": [
+          "태양 흑점"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "갈릴레이가 망원경으로 관측해 태양이 자전한다는 것을 알아냈습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "astronomy/4#005",
+      "seed": {
+        "subject": "외계 행성",
+        "aspect": "다른 별을 도는 행성",
+        "knowledgePoint": "태양계 밖 행성과 그 찾는 방법",
+        "probableAnswer": "외계 행성"
+      },
+      "question": {
+        "ok": true,
+        "question": "태양이 아닌 다른 별 주위를 도는 행성을 무엇이라 합니까? 태양과 비슷한 별 주위에서는 1995년 처음 확인된 뒤 수천 개가 발견되었습니다.",
+        "answer": "외계 행성",
+        "acceptedAnswers": [
+          "외계행성"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "행성이 별 앞을 지날 때 별빛이 조금 어두워지는 것을 보고 찾기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "astronomy/4#006",
+      "seed": {
+        "subject": "전파 망원경",
+        "aspect": "빛 대신 전파를 모은다",
+        "knowledgePoint": "커다란 접시 안테나로 우주를 관측하는 장치",
+        "probableAnswer": "전파 망원경"
+      },
+      "question": {
+        "ok": true,
+        "question": "눈에 보이는 빛 대신 천체가 내는 전파를 커다란 접시 모양 안테나로 모아 관측하는 장치는?",
+        "answer": "전파 망원경",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "구름이 끼어도, 낮에도 관측할 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "astronomy/4#007",
+      "seed": {
+        "subject": "빛 공해",
+        "aspect": "도시에서 별이 보이지 않는다",
+        "knowledgePoint": "인공 조명이 밤하늘 관측을 방해하는 현상",
+        "probableAnswer": "빛 공해"
+      },
+      "question": {
+        "ok": true,
+        "question": "가로등과 간판 같은 인공 조명 때문에 밤하늘이 밝아져 별이 잘 보이지 않고, 생태계에도 영향을 주는 현상은?",
+        "answer": "빛 공해",
+        "acceptedAnswers": [
+          "광공해"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "밤하늘 보호 구역을 정해 조명을 줄이는 곳도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

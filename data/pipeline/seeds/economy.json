@@ -3,7 +3,7 @@
   "midName": "경제·금융 상식",
   "majorKey": "humanities",
   "majorName": "인문·사회",
-  "updatedAt": "2026-09-21T06:47:43.551Z",
+  "updatedAt": "2026-09-28T02:16:27.217Z",
   "subs": {
     "economy/1": {
       "subName": "경제 개념·지표",
@@ -532,9 +532,263 @@
           "answer": "채권",
           "origin": "db:244",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "배당",
+          "origin": "r022:economy/3#001",
+          "note": null
+        },
+        {
+          "answer": "펀드",
+          "origin": "r022:economy/3#002",
+          "note": null
+        },
+        {
+          "answer": "상장지수펀드",
+          "origin": "r022:economy/3#003",
+          "note": null
+        },
+        {
+          "answer": "코스피",
+          "origin": "r022:economy/3#004",
+          "note": null
+        },
+        {
+          "answer": "공매도",
+          "origin": "r022:economy/3#005",
+          "note": null
+        },
+        {
+          "answer": "예금자 보호",
+          "origin": "r022:economy/3#006",
+          "note": null
+        },
+        {
+          "answer": "복리",
+          "origin": "r022:economy/3#007",
+          "note": null
+        },
+        {
+          "answer": "선물",
+          "origin": "r022:economy/3#008",
+          "note": null
+        },
+        {
+          "answer": "신용등급",
+          "origin": "r022:economy/3#009",
+          "note": null
+        },
+        {
+          "answer": "분산 투자",
+          "origin": "r022:economy/3#010",
+          "note": null
+        },
+        {
+          "answer": "비트코인",
+          "origin": "r022:economy/3#011",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "economy/3#001",
+          "subject": "배당",
+          "aspect": "이익을 주주에게 나눈다",
+          "knowledgePoint": "회사가 번 돈을 주주에게 나눠 주는 것",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#001",
+            "answer": "배당",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "economy/3#002",
+          "subject": "펀드",
+          "aspect": "여럿의 돈을 모아 대신 굴린다",
+          "knowledgePoint": "전문가가 모은 돈을 운용하는 간접 투자 상품",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#002",
+            "answer": "펀드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "economy/3#003",
+          "subject": "상장지수펀드",
+          "aspect": "지수를 따라가며 주식처럼 사고판다",
+          "knowledgePoint": "거래소에서 주식처럼 거래되는 펀드",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#003",
+            "answer": "상장지수펀드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "economy/3#004",
+          "subject": "코스피",
+          "aspect": "우리나라 대표 주가 지수",
+          "knowledgePoint": "유가증권시장 전체의 흐름을 나타내는 지수",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#004",
+            "answer": "코스피",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "economy/3#005",
+          "subject": "공매도",
+          "aspect": "없는 주식을 빌려 먼저 판다",
+          "knowledgePoint": "값이 내릴 것에 거는 거래 방식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#005",
+            "answer": "공매도",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "economy/3#006",
+          "subject": "예금자 보호",
+          "aspect": "은행이 망해도 일정액은 돌려준다",
+          "knowledgePoint": "금융기관 파산 때 예금을 보장하는 제도",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#006",
+            "answer": "예금자 보호",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "economy/3#007",
+          "subject": "복리",
+          "aspect": "이자에도 이자가 붙는다",
+          "knowledgePoint": "원금과 이자를 합친 금액에 다시 이자를 매기는 방식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#007",
+            "answer": "복리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "economy/3#008",
+          "subject": "선물",
+          "aspect": "미래의 값을 지금 정해 둔다",
+          "knowledgePoint": "정해진 날에 정한 값으로 사고팔기로 약속하는 거래",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#008",
+            "answer": "선물",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "economy/3#009",
+          "subject": "신용등급",
+          "aspect": "빌린 돈을 갚을 능력을 매긴다",
+          "knowledgePoint": "기업·국가의 채무 상환 능력을 평가한 등급",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#009",
+            "answer": "신용등급",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "economy/3#010",
+          "subject": "분산 투자",
+          "aspect": "달걀을 한 바구니에 담지 마라",
+          "knowledgePoint": "여러 곳에 나눠 위험을 줄이는 원칙",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#010",
+            "answer": "분산 투자",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "economy/3#011",
+          "subject": "비트코인",
+          "aspect": "중앙은행 없이 발행된다",
+          "knowledgePoint": "블록체인으로 거래를 기록하는 최초의 가상자산",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.259Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/economy-3#011",
+            "answer": "비트코인",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "economy/4": {
       "subName": "기업·경영 용어",
@@ -845,12 +1099,12 @@
         {
           "answer": "브레턴우즈 체제",
           "origin": "r021:economy/5#004",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr32,db37). 기존 db:931 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "동인도회사",
           "origin": "r021:economy/5#005",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr76,db38). 기존 db:2013 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "오일 쇼크",
@@ -865,7 +1119,7 @@
         {
           "answer": "보이지 않는 손",
           "origin": "r021:economy/5#008",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr1,db39). 기존 db:402 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "케인스",
@@ -953,12 +1207,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:28:55.366Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/economy-5#004",
             "answer": "브레턴우즈 체제",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr32,db37). 기존 db:931 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:931",
+              "at": "2026-09-28T01:31:35.525Z"
+            }
           }
         },
         {
@@ -971,12 +1232,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:28:55.366Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/economy-5#005",
             "answer": "동인도회사",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr76,db38). 기존 db:2013 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:2013",
+              "at": "2026-09-28T01:31:37.682Z"
+            }
           }
         },
         {
@@ -1025,12 +1293,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:28:55.366Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/economy-5#008",
             "answer": "보이지 않는 손",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr1,db39). 기존 db:402 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:402",
+              "at": "2026-09-28T01:31:33.955Z"
+            }
           }
         },
         {

@@ -1,0 +1,243 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "design-photo/3",
+    "categoryPath": "문화·예술 > 사진·디자인 > 그래픽 디자인",
+    "midKey": "design-photo",
+    "subName": "그래픽 디자인",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:59:13.425Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 7,
+      "shortfallReason": "★ 7건에서 멈췄다. 전역 대조에서 세리프·헬베티카·CMYK가 타이포그래피·색채 소분류와 같아 버렸고, 대체한 커닝도 같아 버렸다. 남은 후보가 소프트웨어 사용법이다.",
+      "listedCandidates": 19,
+      "remainingUsable": 1,
+      "remainingUsableNote": "커닝이 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "픽셀",
+          "aspect": "화면의 점",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "세리프",
+            "probableAnswer": "세리프",
+            "existing": "db:562",
+            "why": "기존(타이포그래피·색채)이 같은 정의로 묻는다",
+            "replacedWith": "커닝"
+          },
+          {
+            "subject": "헬베티카",
+            "probableAnswer": "헬베티카",
+            "existing": "db:564",
+            "why": "기존이 스위스 산세리프 서체로 같은 지식을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "CMYK",
+            "probableAnswer": "CMYK",
+            "existing": "db:565",
+            "why": "기존이 인쇄 네 가지 잉크로 같은 지식을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "커닝",
+            "probableAnswer": "커닝",
+            "existing": "db:563",
+            "why": "대체 소재도 기존 타이포그래피 문항과 같은 정의라 버렸다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 4,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:24:55.577Z"
+  },
+  "items": [
+    {
+      "seedId": "design-photo/3#001",
+      "seed": {
+        "subject": "타이포그래피",
+        "aspect": "글자를 다루는 디자인",
+        "knowledgePoint": "서체와 배치로 읽기 좋게 만드는 기술",
+        "probableAnswer": "타이포그래피"
+      },
+      "question": {
+        "ok": true,
+        "question": "서체를 고르고 글자의 크기·간격·배치를 다듬어 글을 읽기 좋고 보기 좋게 만드는 디자인 분야는?",
+        "answer": "타이포그래피",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "활판 인쇄 시대의 활자 조판에서 이름이 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/3#002",
+      "seed": {
+        "subject": "픽토그램",
+        "aspect": "말 없이 그림으로 알린다",
+        "knowledgePoint": "비상구·화장실 표시 같은 그림 문자",
+        "probableAnswer": "픽토그램"
+      },
+      "question": {
+        "ok": true,
+        "question": "비상구나 화장실 표시처럼 말을 몰라도 그림만 보고 뜻을 알 수 있게 만든 그림 문자는?",
+        "answer": "픽토그램",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "1964년 도쿄 올림픽에서 경기 종목을 나타내며 널리 알려졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/3#003",
+      "seed": {
+        "subject": "인포그래픽",
+        "aspect": "숫자를 그림으로 풀어 보여 준다",
+        "knowledgePoint": "정보를 시각적으로 정리한 그래픽",
+        "probableAnswer": "인포그래픽"
+      },
+      "question": {
+        "ok": true,
+        "question": "복잡한 통계나 정보를 도표·그림·아이콘으로 한눈에 알아보게 정리한 그래픽을 무엇이라 합니까?",
+        "answer": "인포그래픽",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "정보와 그래픽을 합친 말입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/3#004",
+      "seed": {
+        "subject": "벡터",
+        "aspect": "키워도 깨지지 않는다",
+        "knowledgePoint": "점이 아니라 수식으로 그린 그래픽",
+        "probableAnswer": "벡터"
+      },
+      "question": {
+        "ok": true,
+        "question": "점을 모아 그리는 방식과 달리 점과 선을 수식으로 기록해, 아무리 크게 키워도 가장자리가 깨지지 않는 그래픽 방식은?",
+        "answer": "벡터",
+        "acceptedAnswers": [
+          "벡터 그래픽"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "작은 점들로 이루어져 키우면 깨지는 방식은 비트맵이라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/3#005",
+      "seed": {
+        "subject": "그리드",
+        "aspect": "보이지 않는 격자에 맞춘다",
+        "knowledgePoint": "지면을 나눠 요소를 정렬하는 틀",
+        "probableAnswer": "그리드"
+      },
+      "question": {
+        "ok": true,
+        "question": "지면을 보이지 않는 가로세로 격자로 나누고 글과 사진을 그 선에 맞춰 정렬하는 디자인의 틀을 무엇이라 합니까?",
+        "answer": "그리드",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "스위스 디자이너들이 체계화해 신문·잡지 편집에 널리 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/3#006",
+      "seed": {
+        "subject": "DPI",
+        "aspect": "인치당 점의 수",
+        "knowledgePoint": "인쇄 해상도를 나타내는 단위",
+        "probableAnswer": "DPI"
+      },
+      "question": {
+        "ok": true,
+        "question": "1인치 안에 점을 몇 개 찍을 수 있는지로 인쇄 해상도를 나타내는 단위를 영문 약어로 무엇이라 합니까?",
+        "answer": "DPI",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "인쇄물은 보통 300 정도를 기준으로 삼습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/3#007",
+      "seed": {
+        "subject": "목업",
+        "aspect": "실제 쓰임을 흉내 낸 시안",
+        "knowledgePoint": "디자인을 실물처럼 보여 주는 견본",
+        "probableAnswer": "목업"
+      },
+      "question": {
+        "ok": true,
+        "question": "만든 디자인을 실제 제품이나 화면에 씌운 것처럼 보여 주려고 만드는 실물 크기의 견본이나 합성 이미지를 무엇이라 합니까?",
+        "answer": "목업",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "제품을 만들기 전에 겉모습을 확인하는 데 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

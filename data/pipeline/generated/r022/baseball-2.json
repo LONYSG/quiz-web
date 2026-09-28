@@ -1,0 +1,238 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "baseball/2",
+    "categoryPath": "스포츠·게임 > 야구 > KBO",
+    "midKey": "baseball",
+    "subName": "KBO",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:02:00.730Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 7,
+      "shortfallReason": "★ 7건에서 멈췄다. 전역 대조에서 와일드카드(MLB)·지명타자(야구 용어)가 기존과 같아 버렸고, 외국인 선수 한도는 시간 의존이라 뺐다. 남은 후보가 개인 기록 수치다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "올스타전 드림·나눔 올스타가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "와일드카드 결정전",
+            "probableAnswer": "와일드카드",
+            "existing": "db:2111",
+            "why": "기존(MLB)이 같은 개념을 묻는다 — 리그만 다르고 알게 되는 것이 같다",
+            "replacedWith": null
+          },
+          {
+            "subject": "외국인 선수 제한",
+            "probableAnswer": "3",
+            "existing": "db:1799",
+            "why": "★ 전역 대조 사유가 아니다 — 숫자 3 은 무관한 일치다. 다시 보니 보유 한도가 규정 개정으로 바뀔 수 있는 시간 의존 정답이라 뺐다",
+            "replacedWith": null
+          },
+          {
+            "subject": "지명타자",
+            "probableAnswer": "지명타자",
+            "existing": "db:791",
+            "why": "기존(야구 용어)이 같은 정의로 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 10,
+        "hits": 3,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:29:08.398Z"
+  },
+  "items": [
+    {
+      "seedId": "baseball/2#001",
+      "seed": {
+        "subject": "KBO 출범",
+        "aspect": "어린이에게 꿈을",
+        "knowledgePoint": "한국 프로야구가 시작된 해",
+        "probableAnswer": "1982"
+      },
+      "question": {
+        "ok": true,
+        "question": "'어린이에게 꿈을, 젊은이에게 낭만을' 이라는 구호를 내걸고 한국 프로야구가 출범한 해는?",
+        "answer": "1982",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "원년에는 여섯 팀이 참가했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/2#002",
+      "seed": {
+        "subject": "한국시리즈",
+        "aspect": "정규 시즌 1위가 기다린다",
+        "knowledgePoint": "KBO 최종 우승을 가리는 시리즈",
+        "probableAnswer": "한국시리즈"
+      },
+      "question": {
+        "ok": true,
+        "question": "KBO 리그에서 정규 시즌 1위 팀이 기다렸다가 플레이오프 승자와 우승을 다투는 마지막 시리즈는?",
+        "answer": "한국시리즈",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "7전 4선승제로 치릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/2#003",
+      "seed": {
+        "subject": "FA",
+        "aspect": "일정 기간 뛰면 팀을 고를 수 있다",
+        "knowledgePoint": "자유계약선수 제도",
+        "probableAnswer": "FA"
+      },
+      "question": {
+        "ok": true,
+        "question": "일정 기간 이상 뛴 프로 선수가 소속 구단의 허락 없이 다른 구단과 자유롭게 계약할 수 있게 한 제도를 영문 약어로 무엇이라 합니까?",
+        "answer": "FA",
+        "acceptedAnswers": [
+          "자유계약선수"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "Free Agent 의 약자입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/2#004",
+      "seed": {
+        "subject": "신인 드래프트",
+        "aspect": "새 선수를 순서대로 뽑는다",
+        "knowledgePoint": "신인 지명 제도",
+        "probableAnswer": "드래프트"
+      },
+      "question": {
+        "ok": true,
+        "question": "프로 구단들이 정해진 순서에 따라 돌아가며 새 선수를 지명해 뽑는 제도는?",
+        "answer": "드래프트",
+        "acceptedAnswers": [
+          "신인 드래프트"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "성적이 낮은 팀이 먼저 뽑게 해 전력 차이를 줄이는 경우가 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/2#005",
+      "seed": {
+        "subject": "OB 베어스",
+        "aspect": "원년 우승팀",
+        "knowledgePoint": "1982년 첫 우승 구단",
+        "probableAnswer": "OB 베어스"
+      },
+      "question": {
+        "ok": true,
+        "question": "1982년 KBO 리그 원년 한국시리즈에서 우승한 구단으로, 지금 두산 베어스의 전신은?",
+        "answer": "OB 베어스",
+        "acceptedAnswers": [
+          "OB"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "원년 한국시리즈 마지막 경기는 만루 홈런으로 끝났습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/2#006",
+      "seed": {
+        "subject": "잠실야구장",
+        "aspect": "두 팀이 함께 쓴다",
+        "knowledgePoint": "두산과 LG가 같이 홈으로 쓰는 구장",
+        "probableAnswer": "잠실"
+      },
+      "question": {
+        "ok": true,
+        "question": "두산 베어스와 LG 트윈스가 함께 홈구장으로 쓰는 서울의 야구장은?",
+        "answer": "잠실야구장",
+        "acceptedAnswers": [
+          "잠실"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "두 팀이 맞붙는 경기를 \"잠실 더비\" 라 부르기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "baseball/2#007",
+      "seed": {
+        "subject": "샐러리캡",
+        "aspect": "구단 연봉 총액에 상한을 둔다",
+        "knowledgePoint": "전력 평준화를 위한 연봉 총액 제한",
+        "probableAnswer": "샐러리캡"
+      },
+      "question": {
+        "ok": true,
+        "question": "구단이 선수에게 주는 연봉 총액에 상한을 두어, 돈 많은 구단이 선수를 싹쓸이하지 못하게 하는 제도는?",
+        "answer": "샐러리캡",
+        "acceptedAnswers": [
+          "연봉 상한제"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "넘기면 제재금을 내게 하는 방식 등이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

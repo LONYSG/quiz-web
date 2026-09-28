@@ -1,0 +1,324 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "computer/3",
+    "categoryPath": "기술·의학 > 컴퓨터·인터넷 > 프로그래밍 용어",
+    "midKey": "computer",
+    "subName": "프로그래밍 용어",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:53:24.932Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보(스택 오버플로·해시 충돌)는 개발자가 아니면 닿지 않는다.",
+      "listedCandidates": 21,
+      "remainingUsable": 2,
+      "remainingUsableNote": "객체 지향·이진 탐색이 남았다.",
+      "estimatedCeiling": "실질 상한 13건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "재귀",
+          "aspect": "자기 자신을 부른다",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        },
+        {
+          "subject": "버그",
+          "aspect": "나방",
+          "reason": "★ R021 소프트웨어 소분류에 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "주석",
+            "probableAnswer": "주석",
+            "existing": "db:375",
+            "whyDifferent": "동음이의 — 기존은 금속 주석(Sn), 이쪽은 코드에 남기는 설명이다"
+          }
+        ],
+        "checked": 11,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:21:41.940Z"
+  },
+  "items": [
+    {
+      "seedId": "computer/3#001",
+      "seed": {
+        "subject": "알고리즘",
+        "aspect": "페르시아 수학자 이름에서 왔다",
+        "knowledgePoint": "문제를 푸는 절차를 이르는 말과 그 어원",
+        "probableAnswer": "알고리즘"
+      },
+      "question": {
+        "ok": true,
+        "question": "9세기 페르시아 수학자 알콰리즈미의 이름에서 온 말로, 어떤 문제를 풀기 위한 단계적인 절차를 뜻하는 것은?",
+        "answer": "알고리즘",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "\"대수학(algebra)\" 도 그의 책 제목에서 온 말입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/3#002",
+      "seed": {
+        "subject": "변수",
+        "aspect": "값을 담아 두는 이름 붙은 상자",
+        "knowledgePoint": "프로그램에서 값을 저장하고 바꾸는 단위",
+        "probableAnswer": "변수"
+      },
+      "question": {
+        "ok": true,
+        "question": "프로그램에서 'x = 3' 처럼 이름을 붙여 값을 담아 두고, 필요하면 그 값을 바꿀 수 있게 한 저장 공간을 무엇이라 합니까?",
+        "answer": "변수",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "한번 정하면 바꿀 수 없는 것은 상수라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/3#003",
+      "seed": {
+        "subject": "반복문",
+        "aspect": "같은 일을 조건이 맞는 동안 되풀이한다",
+        "knowledgePoint": "명령을 여러 번 되풀이하는 구조",
+        "probableAnswer": "반복문"
+      },
+      "question": {
+        "ok": true,
+        "question": "프로그램에서 'for' 나 'while' 처럼 조건이 맞는 동안 같은 명령을 여러 번 되풀이하게 하는 구조는?",
+        "answer": "반복문",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "종료 조건을 잘못 쓰면 끝나지 않는 반복이 됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/3#004",
+      "seed": {
+        "subject": "조건문",
+        "aspect": "만약 ~라면",
+        "knowledgePoint": "조건에 따라 다른 명령을 실행하는 구조",
+        "probableAnswer": "조건문"
+      },
+      "question": {
+        "ok": true,
+        "question": "프로그램에서 'if' 처럼 '만약 ~라면 이것을, 아니면 저것을' 실행하도록 나누는 구조는?",
+        "answer": "조건문",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "대부분의 언어가 if 와 else 로 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/3#005",
+      "seed": {
+        "subject": "함수",
+        "aspect": "입력을 받아 결과를 돌려준다",
+        "knowledgePoint": "되풀이 쓰려고 묶어 둔 코드 단위",
+        "probableAnswer": "함수"
+      },
+      "question": {
+        "ok": true,
+        "question": "여러 번 쓸 코드를 이름 붙여 묶어 두고, 입력을 받아 결과를 돌려주게 만든 단위를 무엇이라 합니까?",
+        "answer": "함수",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "수학의 함수처럼 입력에 따라 출력이 정해진다는 데서 이름이 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/3#006",
+      "seed": {
+        "subject": "컴파일러",
+        "aspect": "사람의 코드를 기계어로 옮긴다",
+        "knowledgePoint": "소스 코드를 실행 가능한 형태로 번역하는 프로그램",
+        "probableAnswer": "컴파일러"
+      },
+      "question": {
+        "ok": true,
+        "question": "사람이 쓴 프로그래밍 언어의 소스 코드를 컴퓨터가 실행할 수 있는 기계어로 한꺼번에 번역하는 프로그램은?",
+        "answer": "컴파일러",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "한 줄씩 번역하며 바로 실행하는 방식은 인터프리터라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/3#007",
+      "seed": {
+        "subject": "디버깅",
+        "aspect": "오류를 찾아 고친다",
+        "knowledgePoint": "프로그램의 결함을 찾아 없애는 작업",
+        "probableAnswer": "디버깅"
+      },
+      "question": {
+        "ok": true,
+        "question": "프로그램의 오류를 찾아 고치는 작업으로, 컴퓨터에 들어간 '벌레' 를 없앤다는 뜻의 영어에서 온 말은?",
+        "answer": "디버깅",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "1947년 컴퓨터 부품 사이에 낀 나방을 떼어 낸 기록이 유명합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/3#008",
+      "seed": {
+        "subject": "무한 루프",
+        "aspect": "끝나지 않고 계속 돈다",
+        "knowledgePoint": "종료 조건이 없어 멈추지 않는 반복",
+        "probableAnswer": "무한 루프"
+      },
+      "question": {
+        "ok": true,
+        "question": "종료 조건이 없거나 늘 참이어서 프로그램이 멈추지 않고 같은 명령을 끝없이 되풀이하는 상태를 무엇이라 합니까?",
+        "answer": "무한 루프",
+        "acceptedAnswers": [
+          "무한 반복"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "애플 본사가 있던 거리의 이름으로도 쓰였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/3#009",
+      "seed": {
+        "subject": "헬로 월드",
+        "aspect": "처음 배울 때 화면에 찍는 인사",
+        "knowledgePoint": "새 언어를 배울 때 가장 먼저 짜는 관례적 예제",
+        "probableAnswer": "헬로 월드"
+      },
+      "question": {
+        "ok": true,
+        "question": "새 프로그래밍 언어를 배울 때 관례처럼 가장 먼저 화면에 찍어 보는 인사말 예제는?",
+        "answer": "헬로 월드",
+        "acceptedAnswers": [
+          "Hello World"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "1978년 C 언어 교재에 실리면서 널리 퍼졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/3#010",
+      "seed": {
+        "subject": "파이썬",
+        "aspect": "이름이 코미디 프로에서 왔다",
+        "knowledgePoint": "배우기 쉬운 언어와 그 이름의 유래",
+        "probableAnswer": "파이썬"
+      },
+      "question": {
+        "ok": true,
+        "question": "1991년 귀도 반 로섬이 내놓은 배우기 쉬운 프로그래밍 언어로, 이름이 영국 코미디 프로그램에서 왔다고 알려진 것은?",
+        "answer": "파이썬",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "뱀 이름으로 오해받지만 \"몬티 파이선의 날아다니는 서커스\" 에서 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "computer/3#011",
+      "seed": {
+        "subject": "주석",
+        "aspect": "실행되지 않는 메모",
+        "knowledgePoint": "사람이 읽으라고 코드 안에 남기는 설명",
+        "probableAnswer": "주석"
+      },
+      "question": {
+        "ok": true,
+        "question": "프로그램이 실행할 때는 무시하고, 사람이 읽으라고 코드 안에 남겨 두는 설명 글을 무엇이라 합니까?",
+        "answer": "주석",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "많은 언어에서 // 나 # 뒤에 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

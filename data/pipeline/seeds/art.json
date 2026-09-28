@@ -3,7 +3,7 @@
   "midName": "미술·화가",
   "majorKey": "arts",
   "majorName": "문화·예술",
-  "updatedAt": "2026-09-21T13:48:02.857Z",
+  "updatedAt": "2026-09-28T02:24:55.537Z",
   "subs": {
     "art/1": {
       "subName": "서양 회화",
@@ -298,12 +298,12 @@
         {
           "answer": "석굴암",
           "origin": "r021:art/2#010",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr64,db7). 기존 db:1709 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "반가사유상",
           "origin": "r021:art/2#011",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr65,db8). 기존 db:1443 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "테라코타",
@@ -484,12 +484,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:35:05.563Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/art-2#010",
             "answer": "석굴암",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr64,db7). 기존 db:1709 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1709",
+              "at": "2026-09-28T01:31:37.086Z"
+            }
           }
         },
         {
@@ -502,12 +509,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:35:05.563Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/art-2#011",
             "answer": "반가사유상",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr65,db8). 기존 db:1443 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1443",
+              "at": "2026-09-28T01:31:37.161Z"
+            }
           }
         },
         {
@@ -1104,6 +1118,197 @@
             "rejectReason": null,
             "questionPrompt": "question-v2",
             "questionGenerator": "claude-opus-5"
+          }
+        }
+      ]
+    },
+    "art/5": {
+      "subName": "판화·공예",
+      "usedAnswers": [
+        {
+          "answer": "목판화",
+          "origin": "r022:art/5#001",
+          "note": null
+        },
+        {
+          "answer": "에칭",
+          "origin": "r022:art/5#002",
+          "note": null
+        },
+        {
+          "answer": "실크스크린",
+          "origin": "r022:art/5#003",
+          "note": null
+        },
+        {
+          "answer": "나전칠기",
+          "origin": "r022:art/5#004",
+          "note": null
+        },
+        {
+          "answer": "달항아리",
+          "origin": "r022:art/5#005",
+          "note": null
+        },
+        {
+          "answer": "스테인드글라스",
+          "origin": "r022:art/5#006",
+          "note": null
+        },
+        {
+          "answer": "모자이크",
+          "origin": "r022:art/5#007",
+          "note": null
+        },
+        {
+          "answer": "에디션",
+          "origin": "r022:art/5#008",
+          "note": null
+        }
+      ],
+      "seeds": [
+        {
+          "seedId": "art/5#001",
+          "subject": "목판화",
+          "aspect": "새기지 않은 부분이 찍힌다",
+          "knowledgePoint": "나무판을 파서 찍는 판화 방식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.383Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/art-5#001",
+            "answer": "목판화",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "art/5#002",
+          "subject": "에칭",
+          "aspect": "산으로 금속판을 부식시킨다",
+          "knowledgePoint": "동판에 긁은 선을 산으로 파는 판화 기법",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.383Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/art-5#002",
+            "answer": "에칭",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "art/5#003",
+          "subject": "실크스크린",
+          "aspect": "앤디 워홀이 즐겨 썼다",
+          "knowledgePoint": "그물망으로 잉크를 통과시켜 찍는 판화",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.383Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/art-5#003",
+            "answer": "실크스크린",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "art/5#004",
+          "subject": "나전칠기",
+          "aspect": "조개껍데기를 붙여 무늬를 낸다",
+          "knowledgePoint": "옻칠 위에 자개를 박는 공예",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.383Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/art-5#004",
+            "answer": "나전칠기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "art/5#005",
+          "subject": "달항아리",
+          "aspect": "둥근 보름달 같은 백자",
+          "knowledgePoint": "위아래를 따로 빚어 붙인 조선 백자 항아리",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.383Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/art-5#005",
+            "answer": "달항아리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "art/5#006",
+          "subject": "스테인드글라스",
+          "aspect": "색유리 조각을 납으로 잇는다",
+          "knowledgePoint": "성당 창문을 장식한 색유리 공예",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.383Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/art-5#006",
+            "answer": "스테인드글라스",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "art/5#007",
+          "subject": "모자이크",
+          "aspect": "작은 조각을 붙여 그림을 만든다",
+          "knowledgePoint": "돌·유리 조각으로 벽과 바닥을 꾸미는 기법",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.383Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/art-5#007",
+            "answer": "모자이크",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "art/5#008",
+          "subject": "판화 에디션",
+          "aspect": "3/50 이라고 적힌 숫자",
+          "knowledgePoint": "판화 아래 적는 찍은 순번과 총 매수",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:59:13.383Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/art-5#008",
+            "answer": "에디션",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
           }
         }
       ]

@@ -1,0 +1,287 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "math/3",
+    "categoryPath": "자연과학 > 수학·수 상식 > 확률·통계",
+    "midKey": "math",
+    "subName": "확률·통계",
+    "majorKey": "science",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:50:38.513Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 전역 대조에서 표본오차가 society(인구·통계)와 같은 지식으로 걸려 버렸다.",
+      "listedCandidates": 21,
+      "remainingUsable": 2,
+      "remainingUsableNote": "기댓값·조건부 확률이 남았다.",
+      "estimatedCeiling": "실질 상한 13건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "평균",
+          "aspect": "합을 개수로 나눈다",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "표본오차",
+            "probableAnswer": "표본오차",
+            "existing": "db:1245",
+            "why": "기존이 '여론조사 결과와 함께 밝히는 오차' 를 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:19:29.967Z"
+  },
+  "items": [
+    {
+      "seedId": "math/3#001",
+      "seed": {
+        "subject": "중앙값",
+        "aspect": "한가운데 오는 값",
+        "knowledgePoint": "극단값의 영향을 덜 받는 대푯값",
+        "probableAnswer": "중앙값"
+      },
+      "question": {
+        "ok": true,
+        "question": "자료를 크기 순서로 늘어놓았을 때 한가운데 오는 값으로, 소득처럼 극단값이 있는 자료에서 평균보다 자주 쓰이는 대푯값은?",
+        "answer": "중앙값",
+        "acceptedAnswers": [
+          "중간값"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "몇 사람의 큰 부자가 평균 소득을 끌어올려도 이 값은 크게 흔들리지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/3#002",
+      "seed": {
+        "subject": "최빈값",
+        "aspect": "가장 자주 나오는 값",
+        "knowledgePoint": "가장 많이 나타난 값을 대표로 삼는 것",
+        "probableAnswer": "최빈값"
+      },
+      "question": {
+        "ok": true,
+        "question": "자료에서 가장 자주 나타나는 값을 대푯값으로 삼은 것을 무엇이라 합니까? 신발 가게가 가장 많이 팔린 치수를 알고 싶을 때 씁니다.",
+        "answer": "최빈값",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "숫자가 아닌 자료에도 쓸 수 있는 대푯값입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/3#003",
+      "seed": {
+        "subject": "표준편차",
+        "aspect": "흩어진 정도",
+        "knowledgePoint": "자료가 평균에서 얼마나 퍼져 있는지 나타내는 값",
+        "probableAnswer": "표준편차"
+      },
+      "question": {
+        "ok": true,
+        "question": "자료가 평균에서 얼마나 퍼져 있는지를 나타내는 값으로, 분산의 제곱근인 것은?",
+        "answer": "표준편차",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "이 값이 작을수록 자료가 평균 가까이 모여 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/3#004",
+      "seed": {
+        "subject": "정규분포",
+        "aspect": "종 모양으로 퍼진다",
+        "knowledgePoint": "키·시험 점수처럼 가운데가 많고 양끝이 적은 분포",
+        "probableAnswer": "정규분포"
+      },
+      "question": {
+        "ok": true,
+        "question": "키나 시험 점수처럼 평균 근처에 가장 많이 모이고 양쪽 끝으로 갈수록 좌우 대칭으로 줄어드는 종 모양의 분포는?",
+        "answer": "정규분포",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "가우스의 이름을 따 가우스 분포라고도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/3#005",
+      "seed": {
+        "subject": "몬티 홀 문제",
+        "aspect": "문을 바꾸면 이길 확률이 오른다",
+        "knowledgePoint": "직관과 어긋나는 확률 문제",
+        "probableAnswer": "몬티 홀 문제"
+      },
+      "question": {
+        "ok": true,
+        "question": "세 개의 문 가운데 하나를 고른 뒤, 사회자가 남은 문 중 꽝인 문을 열어 보이고 바꿀 기회를 줄 때 바꾸는 쪽이 유리하다는 확률 문제는? 미국 텔레비전 쇼 진행자의 이름이 붙었습니다.",
+        "answer": "몬티 홀 문제",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "바꾸면 이길 확률이 1/3 에서 2/3 로 올라갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/3#006",
+      "seed": {
+        "subject": "생일 문제",
+        "aspect": "23명이면 절반을 넘는다",
+        "knowledgePoint": "생일이 겹칠 확률이 생각보다 큰 까닭",
+        "probableAnswer": "생일 문제"
+      },
+      "question": {
+        "ok": true,
+        "question": "한 방에 23명만 모여도 생일이 같은 두 사람이 있을 확률이 절반을 넘는다는, 직관과 어긋나는 확률 문제를 무엇이라 합니까?",
+        "answer": "생일 문제",
+        "acceptedAnswers": [
+          "생일 역설"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "특정한 두 사람이 아니라 누구든 두 사람이 겹칠 확률이기 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/3#007",
+      "seed": {
+        "subject": "도박사의 오류",
+        "aspect": "이번에는 나올 차례라고 믿는다",
+        "knowledgePoint": "독립 사건에 흐름이 있다고 착각하는 것",
+        "probableAnswer": "도박사의 오류"
+      },
+      "question": {
+        "ok": true,
+        "question": "동전 앞면이 다섯 번 연속 나오면 '이제는 뒷면이 나올 차례' 라고 믿는 것처럼, 독립적인 사건에 흐름이 있다고 착각하는 것을 무엇이라 합니까?",
+        "answer": "도박사의 오류",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "동전은 앞의 결과를 기억하지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/3#008",
+      "seed": {
+        "subject": "표본",
+        "aspect": "전체 대신 일부를 조사한다",
+        "knowledgePoint": "모집단을 대표하도록 뽑은 일부",
+        "probableAnswer": "표본"
+      },
+      "question": {
+        "ok": true,
+        "question": "여론 조사처럼 전체를 다 조사하지 않고 전체를 대표하도록 뽑아 조사하는 일부를 무엇이라 합니까? 조사하려는 전체는 모집단이라 합니다.",
+        "answer": "표본",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "표본을 치우치게 뽑으면 조사 결과가 크게 틀어집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/3#009",
+      "seed": {
+        "subject": "상관관계와 인과관계",
+        "aspect": "함께 움직인다고 원인은 아니다",
+        "knowledgePoint": "상관이 인과를 뜻하지 않는다는 원칙",
+        "probableAnswer": "상관관계"
+      },
+      "question": {
+        "ok": false,
+        "rejectReason": "\"상관관계와 인과관계\" 는 두 개념의 구별이 지식의 핵심이라, 한쪽을 정답으로 삼으면 다른 쪽을 친 사람이 억울해지고 둘 다 인정하면 질문이 무의미해진다."
+      }
+    },
+    {
+      "seedId": "math/3#010",
+      "seed": {
+        "subject": "큰 수의 법칙",
+        "aspect": "많이 던질수록 반에 가까워진다",
+        "knowledgePoint": "시행이 늘면 비율이 이론적 확률에 가까워지는 것",
+        "probableAnswer": "큰 수의 법칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "동전을 많이 던질수록 앞면이 나온 비율이 1/2 에 가까워지는 것처럼, 시행 횟수가 늘면 실제 비율이 이론적 확률에 가까워진다는 법칙은?",
+        "answer": "큰 수의 법칙",
+        "acceptedAnswers": [
+          "대수의 법칙"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "보험 회사가 보험료를 정할 수 있는 근거이기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

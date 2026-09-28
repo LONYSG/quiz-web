@@ -3,7 +3,7 @@
   "midName": "올림픽·국제대회",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-21T14:25:55.945Z",
+  "updatedAt": "2026-09-28T01:31:40.295Z",
   "subs": {
     "olympic/1": {
       "subName": "하계 올림픽",
@@ -340,7 +340,7 @@
         {
           "answer": "도핑 검사",
           "origin": "r021:olympic/3#001",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr43,db75). 기존 db:1151 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "세계반도핑기구",
@@ -350,12 +350,12 @@
         {
           "answer": "한판",
           "origin": "r021:olympic/3#003",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: db76). 기존 db:136 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "전자호구",
           "origin": "r021:olympic/3#004",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr44,db77). 기존 db:862 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "난도",
@@ -365,12 +365,12 @@
         {
           "answer": "부정 출발",
           "origin": "r021:olympic/3#006",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr92,db78). 기존 db:1536 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "런던",
           "origin": "r021:olympic/3#007",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr93,db79). 기존 db:1534 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "몸통",
@@ -395,7 +395,7 @@
         {
           "answer": "비디오 판독",
           "origin": "r021:olympic/3#012",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr4,db80). 기존 db:410 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         }
       ],
       "seeds": [
@@ -409,12 +409,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.386Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/olympic-3#001",
             "answer": "도핑 검사",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr43,db75). 기존 db:1151 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1151",
+              "at": "2026-09-28T01:31:35.939Z"
+            }
           }
         },
         {
@@ -445,12 +452,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.386Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/olympic-3#003",
             "answer": "한판",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: db76). 기존 db:136 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:136",
+              "at": "2026-09-28T01:31:40.290Z"
+            }
           }
         },
         {
@@ -463,12 +477,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.386Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/olympic-3#004",
             "answer": "전자호구",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr44,db77). 기존 db:862 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:862",
+              "at": "2026-09-28T01:31:36.003Z"
+            }
           }
         },
         {
@@ -499,12 +520,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.386Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/olympic-3#006",
             "answer": "부정 출발",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr92,db78). 기존 db:1536 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1536",
+              "at": "2026-09-28T01:31:38.793Z"
+            }
           }
         },
         {
@@ -517,12 +545,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.386Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/olympic-3#007",
             "answer": "런던",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr93,db79). 기존 db:1534 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1534",
+              "at": "2026-09-28T01:31:38.865Z"
+            }
           }
         },
         {
@@ -607,12 +642,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.386Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/olympic-3#012",
             "answer": "비디오 판독",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr4,db80). 기존 db:410 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:410",
+              "at": "2026-09-28T01:31:34.100Z"
+            }
           }
         }
       ]

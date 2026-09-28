@@ -3,7 +3,7 @@
   "midName": "격투기·육상·수영",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-21T13:54:29.009Z",
+  "updatedAt": "2026-09-28T02:29:08.410Z",
   "subs": {
     "combat-athletics/1": {
       "subName": "격투기·복싱",
@@ -51,7 +51,7 @@
         {
           "answer": "샅바",
           "origin": "r021:combat-athletics/1#008",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr25,db25). 기존 db:865 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "그레코로만형",
@@ -71,7 +71,7 @@
         {
           "answer": "계체",
           "origin": "r021:combat-athletics/1#012",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr26,db26). 기존 db:872 을 남긴다 — 더한 것이 '무리한 감량 문제가 따라붙는다' 는 한 줄 논평이다. 지식이 아니다"
         }
       ],
       "seeds": [
@@ -211,12 +211,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.391Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/combat-athletics-1#008",
             "answer": "샅바",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr25,db25). 기존 db:865 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:865",
+              "at": "2026-09-28T01:31:35.032Z"
+            }
           }
         },
         {
@@ -283,12 +290,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.391Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/combat-athletics-1#012",
             "answer": "계체",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr26,db26). 기존 db:872 을 남긴다 — 더한 것이 '무리한 감량 문제가 따라붙는다' 는 한 줄 논평이다. 지식이 아니다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:872",
+              "at": "2026-09-28T01:31:35.099Z"
+            }
           }
         }
       ]
@@ -883,9 +897,240 @@
           "answer": "평영",
           "origin": "db:253",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "자유형",
+          "origin": "r022:combat-athletics/4#001",
+          "note": null
+        },
+        {
+          "answer": "접영",
+          "origin": "r022:combat-athletics/4#002",
+          "note": null
+        },
+        {
+          "answer": "배영",
+          "origin": "r022:combat-athletics/4#003",
+          "note": null
+        },
+        {
+          "answer": "개인혼영",
+          "origin": "r022:combat-athletics/4#004",
+          "note": null
+        },
+        {
+          "answer": "아티스틱 스위밍",
+          "origin": "r022:combat-athletics/4#005",
+          "note": null
+        },
+        {
+          "answer": "수구",
+          "origin": "r022:combat-athletics/4#006",
+          "note": null
+        },
+        {
+          "answer": "다이빙",
+          "origin": "r022:combat-athletics/4#007",
+          "note": null
+        },
+        {
+          "answer": "전신 수영복",
+          "origin": "r022:combat-athletics/4#008",
+          "note": null
+        },
+        {
+          "answer": "조정",
+          "origin": "r022:combat-athletics/4#009",
+          "note": null
+        },
+        {
+          "answer": "박태환",
+          "origin": "r022:combat-athletics/4#010",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "combat-athletics/4#001",
+          "subject": "자유형",
+          "aspect": "어떤 영법이든 된다",
+          "knowledgePoint": "자유형에서 사실상 크롤을 쓰는 이유",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.744Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/combat-athletics-4#001",
+            "answer": "자유형",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/4#002",
+          "subject": "접영",
+          "aspect": "나비처럼 두 팔을 함께 돌린다",
+          "knowledgePoint": "가장 늦게 생긴 영법",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.744Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/combat-athletics-4#002",
+            "answer": "접영",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/4#003",
+          "subject": "배영",
+          "aspect": "유일하게 물속에서 출발한다",
+          "knowledgePoint": "누워서 하는 영법과 출발 방식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.744Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/combat-athletics-4#003",
+            "answer": "배영",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/4#004",
+          "subject": "개인혼영",
+          "aspect": "한 사람이 네 영법을 다 한다",
+          "knowledgePoint": "접영·배영·평영·자유형 순서",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.744Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/combat-athletics-4#004",
+            "answer": "개인혼영",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/4#005",
+          "subject": "아티스틱 스위밍",
+          "aspect": "물속에서 음악에 맞춰 연기한다",
+          "knowledgePoint": "예전 이름이 싱크로나이즈드 스위밍",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.744Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/combat-athletics-4#005",
+            "answer": "아티스틱 스위밍",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/4#006",
+          "subject": "수구",
+          "aspect": "물속의 핸드볼",
+          "knowledgePoint": "공을 던져 넣는 수상 구기",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.744Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/combat-athletics-4#006",
+            "answer": "수구",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/4#007",
+          "subject": "다이빙 입수",
+          "aspect": "물보라가 적을수록 좋다",
+          "knowledgePoint": "다이빙 채점에서 입수가 중요한 까닭",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.744Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/combat-athletics-4#007",
+            "answer": "다이빙",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/4#008",
+          "subject": "전신 수영복",
+          "aspect": "기록이 쏟아져 금지되었다",
+          "knowledgePoint": "2010년 금지된 첨단 수영복",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.744Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/combat-athletics-4#008",
+            "answer": "전신 수영복",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/4#009",
+          "subject": "조정",
+          "aspect": "뒤를 보고 노를 젓는다",
+          "knowledgePoint": "진행 방향을 등지고 젓는 수상 종목",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.744Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/combat-athletics-4#009",
+            "answer": "조정",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "combat-athletics/4#010",
+          "subject": "박태환",
+          "aspect": "한국 첫 올림픽 수영 금메달",
+          "knowledgePoint": "2008년 자유형 400m",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.744Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/combat-athletics-4#010",
+            "answer": "박태환",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "combat-athletics/5": {
       "subName": "동계 종목",
@@ -893,7 +1138,7 @@
         {
           "answer": "쇼트트랙",
           "origin": "r021:combat-athletics/5#001",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr27,db27). 기존 db:1143 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "스피드스케이팅",
@@ -928,12 +1173,12 @@
         {
           "answer": "봅슬레이",
           "origin": "r021:combat-athletics/5#008",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr28,db29). 기존 db:1145 을 남긴다 — ★ 같은 두 문항을 두 번 비교했는데 keep 이 엇갈렸다. 합의가 없으므로 기존을 남긴다 (R019 football/1#011 선례)"
         },
         {
           "answer": "스켈레톤",
           "origin": "r021:combat-athletics/5#009",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr29,db30). 기존 db:1152 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "퍽",
@@ -962,12 +1207,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.394Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/combat-athletics-5#001",
             "answer": "쇼트트랙",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr27,db27). 기존 db:1143 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1143",
+              "at": "2026-09-28T01:31:35.165Z"
+            }
           }
         },
         {
@@ -1088,12 +1340,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.394Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/combat-athletics-5#008",
             "answer": "봅슬레이",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr28,db29). 기존 db:1145 을 남긴다 — ★ 같은 두 문항을 두 번 비교했는데 keep 이 엇갈렸다. 합의가 없으므로 기존을 남긴다 (R019 football/1#011 선례)",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1145",
+              "at": "2026-09-28T01:31:35.242Z"
+            }
           }
         },
         {
@@ -1106,12 +1365,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.394Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/combat-athletics-5#009",
             "answer": "스켈레톤",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr29,db30). 기존 db:1152 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1152",
+              "at": "2026-09-28T01:31:35.309Z"
+            }
           }
         },
         {

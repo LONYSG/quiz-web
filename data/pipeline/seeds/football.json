@@ -3,7 +3,7 @@
   "midName": "축구",
   "majorKey": "sports",
   "majorName": "스포츠·게임",
-  "updatedAt": "2026-09-21T13:54:28.995Z",
+  "updatedAt": "2026-09-28T02:29:08.395Z",
   "subs": {
     "football/1": {
       "subName": "규칙",
@@ -793,9 +793,171 @@
           "answer": "AFC 아시안컵",
           "origin": "db:199",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "슈퍼리그",
+          "origin": "r022:football/4#001",
+          "note": null
+        },
+        {
+          "answer": "AFC 챔피언스리그",
+          "origin": "r022:football/4#002",
+          "note": null
+        },
+        {
+          "answer": "일본",
+          "origin": "r022:football/4#003",
+          "note": null
+        },
+        {
+          "answer": "4강",
+          "origin": "r022:football/4#004",
+          "note": null
+        },
+        {
+          "answer": "슈퍼매치",
+          "origin": "r022:football/4#005",
+          "note": null
+        },
+        {
+          "answer": "상무",
+          "origin": "r022:football/4#006",
+          "note": null
+        },
+        {
+          "answer": "J리그",
+          "origin": "r022:football/4#007",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "football/4#001",
+          "subject": "K리그 출범",
+          "aspect": "1983년 슈퍼리그로 시작했다",
+          "knowledgePoint": "한국 프로축구가 시작된 해와 이름",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.717Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/football-4#001",
+            "answer": "슈퍼리그",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "football/4#002",
+          "subject": "AFC 챔피언스리그",
+          "aspect": "아시아 클럽의 정상을 가린다",
+          "knowledgePoint": "아시아 프로 클럽 대항전",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.717Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/football-4#002",
+            "answer": "AFC 챔피언스리그",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "football/4#003",
+          "subject": "2002 월드컵 공동 개최",
+          "aspect": "두 나라가 처음 함께 열었다",
+          "knowledgePoint": "한국과 일본이 공동 개최한 월드컵",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.717Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/football-4#003",
+            "answer": "일본",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "football/4#004",
+          "subject": "4강 신화",
+          "aspect": "아시아 팀 최고 성적",
+          "knowledgePoint": "2002년 한국 대표팀의 월드컵 순위",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.717Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/football-4#004",
+            "answer": "4강",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "football/4#005",
+          "subject": "슈퍼매치",
+          "aspect": "서울과 수원의 맞대결",
+          "knowledgePoint": "K리그 라이벌전의 이름",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.717Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/football-4#005",
+            "answer": "슈퍼매치",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "football/4#006",
+          "subject": "상무",
+          "aspect": "군인 선수로 꾸린 팀",
+          "knowledgePoint": "군 복무 중인 선수가 뛰는 구단",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.717Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/football-4#006",
+            "answer": "상무",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "football/4#007",
+          "subject": "J리그",
+          "aspect": "1993년 출범한 이웃 리그",
+          "knowledgePoint": "일본 프로축구 리그의 이름",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:02:00.717Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/football-4#007",
+            "answer": "J리그",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "football/5": {
       "subName": "축구 역사·클럽",
@@ -808,12 +970,12 @@
         {
           "answer": "더비",
           "origin": "r021:football/5#002",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr81,db48). 기존 db:1649 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "엘 클라시코",
           "origin": "r021:football/5#003",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: db49). 기존 db:198 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "FA컵",
@@ -823,7 +985,7 @@
         {
           "answer": "트레블",
           "origin": "r021:football/5#005",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr82,db50). 기존 db:1650 을 남긴다 — ★ 같은 두 문항을 두 번 비교했는데 keep 이 엇갈렸다. 합의가 없으므로 기존을 남긴다 (R019 football/1#011 선례)"
         },
         {
           "answer": "헤이젤 참사",
@@ -843,12 +1005,12 @@
         {
           "answer": "프리미어리그",
           "origin": "r021:football/5#009",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr83,db51). 기존 db:1646 을 남긴다 — 판정 근거가 '정보량 동일·간결' 이다"
         },
         {
           "answer": "챔피언스리그",
           "origin": "r021:football/5#010",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr84,db52). 기존 db:1647 을 남긴다 — ★ 같은 두 문항을 두 번 비교했는데 keep 이 엇갈렸다. 합의가 없으므로 기존을 남긴다 (R019 football/1#011 선례)"
         },
         {
           "answer": "손",
@@ -885,12 +1047,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.373Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/football-5#002",
             "answer": "더비",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr81,db48). 기존 db:1649 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1649",
+              "at": "2026-09-28T01:31:38.047Z"
+            }
           }
         },
         {
@@ -903,12 +1072,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.373Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/football-5#003",
             "answer": "엘 클라시코",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: db49). 기존 db:198 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:198",
+              "at": "2026-09-28T01:31:40.073Z"
+            }
           }
         },
         {
@@ -939,12 +1115,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.373Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/football-5#005",
             "answer": "트레블",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr82,db50). 기존 db:1650 을 남긴다 — ★ 같은 두 문항을 두 번 비교했는데 keep 이 엇갈렸다. 합의가 없으므로 기존을 남긴다 (R019 football/1#011 선례)",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1650",
+              "at": "2026-09-28T01:31:38.125Z"
+            }
           }
         },
         {
@@ -1011,12 +1194,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.373Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/football-5#009",
             "answer": "프리미어리그",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr83,db51). 기존 db:1646 을 남긴다 — 판정 근거가 '정보량 동일·간결' 이다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1646",
+              "at": "2026-09-28T01:31:38.192Z"
+            }
           }
         },
         {
@@ -1029,12 +1219,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.373Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/football-5#010",
             "answer": "챔피언스리그",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr84,db52). 기존 db:1647 을 남긴다 — ★ 같은 두 문항을 두 번 비교했는데 keep 이 엇갈렸다. 합의가 없으므로 기존을 남긴다 (R019 football/1#011 선례)",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1647",
+              "at": "2026-09-28T01:31:38.270Z"
+            }
           }
         },
         {

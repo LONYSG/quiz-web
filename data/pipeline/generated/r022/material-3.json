@@ -1,0 +1,274 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "material/3",
+    "categoryPath": "기술·의학 > 재료·건설 기술 > 건설 공법",
+    "midKey": "material",
+    "subName": "건설 공법",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:53:24.963Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 9,
+      "shortfallReason": "★ 9건에서 멈췄다. 남은 후보가 전문 공법 이름이라 전공자가 아니면 닿지 않는다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "슬럼프 시험이 남았다.",
+      "estimatedCeiling": "실질 상한 10건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "어스앵커 공법",
+          "aspect": "흙막이",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "모듈러 건축",
+            "probableAnswer": "모듈러",
+            "existing": "db:2080",
+            "whyDifferent": "동음이의 — 기존은 르 코르뷔지에의 인체 비례 치수 체계, 이쪽은 공장에서 만든 공간을 쌓는 건축 방식이다"
+          }
+        ],
+        "checked": 9,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:21:41.968Z"
+  },
+  "items": [
+    {
+      "seedId": "material/3#001",
+      "seed": {
+        "subject": "거푸집",
+        "aspect": "콘크리트를 부어 굳힐 틀",
+        "knowledgePoint": "굳기 전 콘크리트의 모양을 잡는 틀",
+        "probableAnswer": "거푸집"
+      },
+      "question": {
+        "ok": true,
+        "question": "굳기 전의 콘크리트를 부어 원하는 모양으로 굳히려고 나무나 철판으로 짜는 틀은?",
+        "answer": "거푸집",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "콘크리트가 굳으면 떼어 내고 다시 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/3#002",
+      "seed": {
+        "subject": "양생",
+        "aspect": "굳는 동안 물을 뿌리고 덮는다",
+        "knowledgePoint": "콘크리트가 제 강도를 내도록 돌보는 과정",
+        "probableAnswer": "양생"
+      },
+      "question": {
+        "ok": true,
+        "question": "콘크리트를 부은 뒤 제 강도가 나올 때까지 물을 뿌리거나 덮어 온도와 습기를 알맞게 지켜 주는 일을 무엇이라 합니까?",
+        "answer": "양생",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "이 과정을 서두르면 금이 가거나 약해집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/3#003",
+      "seed": {
+        "subject": "프리캐스트",
+        "aspect": "공장에서 만들어 와서 조립한다",
+        "knowledgePoint": "미리 만든 콘크리트 부재를 현장에서 짜 맞추는 공법",
+        "probableAnswer": "프리캐스트"
+      },
+      "question": {
+        "ok": true,
+        "question": "콘크리트 기둥이나 벽을 공장에서 미리 만들어 와서 현장에서 짜 맞추는 공법을 무엇이라 합니까?",
+        "answer": "프리캐스트",
+        "acceptedAnswers": [
+          "프리캐스트 콘크리트",
+          "PC 공법"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "\"미리 부어 만든다\" 는 뜻의 영어에서 온 말입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/3#004",
+      "seed": {
+        "subject": "모듈러 건축",
+        "aspect": "방 단위로 만들어 쌓는다",
+        "knowledgePoint": "공장에서 만든 상자형 공간을 조립하는 건축",
+        "probableAnswer": "모듈러"
+      },
+      "question": {
+        "ok": true,
+        "question": "공장에서 방이나 욕실 단위의 상자형 공간을 거의 완성해 만든 뒤, 현장에서 블록처럼 쌓아 짓는 건축 방식은?",
+        "answer": "모듈러 건축",
+        "acceptedAnswers": [
+          "모듈러"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "공사 기간을 크게 줄일 수 있어 기숙사·임대주택에 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/3#005",
+      "seed": {
+        "subject": "타워크레인",
+        "aspect": "건물과 함께 키가 자란다",
+        "knowledgePoint": "고층 공사에서 자재를 들어 올리는 장비",
+        "probableAnswer": "타워크레인"
+      },
+      "question": {
+        "ok": true,
+        "question": "고층 건물 공사에서 자재를 들어 올리는 장비로, 건물이 높아지면 몸체를 한 칸씩 끼워 넣어 함께 키를 높이는 것은?",
+        "answer": "타워크레인",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "센 바람이 불면 사고를 막으려고 작업을 멈춥니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/3#006",
+      "seed": {
+        "subject": "커튼월",
+        "aspect": "유리 벽을 커튼처럼 건다",
+        "knowledgePoint": "하중을 받지 않는 바깥 벽을 건물에 매다는 방식",
+        "probableAnswer": "커튼월"
+      },
+      "question": {
+        "ok": true,
+        "question": "건물의 무게를 받지 않는 유리나 금속판 바깥벽을 뼈대에 커튼처럼 매다는 방식으로, 고층 빌딩의 유리 외벽에 쓰이는 것은?",
+        "answer": "커튼월",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "벽이 무게를 받지 않으니 얇고 가볍게 만들 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/3#007",
+      "seed": {
+        "subject": "말뚝 기초",
+        "aspect": "무른 땅에 기둥을 박는다",
+        "knowledgePoint": "단단한 층까지 하중을 전하는 기초",
+        "probableAnswer": "말뚝"
+      },
+      "question": {
+        "ok": true,
+        "question": "무른 땅에 건물을 지을 때 단단한 층까지 기둥을 박아 건물의 무게를 전하게 하는 것은?",
+        "answer": "말뚝",
+        "acceptedAnswers": [
+          "파일"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "베네치아는 수많은 나무 기둥 위에 세워진 도시로 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/3#008",
+      "seed": {
+        "subject": "비계",
+        "aspect": "건물을 둘러싼 임시 발판",
+        "knowledgePoint": "높은 곳 작업을 위한 가설 구조물",
+        "probableAnswer": "비계"
+      },
+      "question": {
+        "ok": true,
+        "question": "높은 곳에서 작업하려고 건물 바깥을 둘러 세우는 임시 발판 구조물을 무엇이라 합니까?",
+        "answer": "비계",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "홍콩 등에서는 지금도 대나무로 세우기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "material/3#009",
+      "seed": {
+        "subject": "철골 구조",
+        "aspect": "강철 뼈대로 세운다",
+        "knowledgePoint": "강철 기둥과 보로 지은 건물 구조",
+        "probableAnswer": "철골 구조"
+      },
+      "question": {
+        "ok": true,
+        "question": "강철로 만든 기둥과 보로 뼈대를 세우는 건물 구조로, 19세기 말 시카고의 초기 마천루를 가능하게 한 것은?",
+        "answer": "철골 구조",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "불에 약해 내화 피복을 입힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

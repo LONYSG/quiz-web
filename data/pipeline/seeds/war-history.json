@@ -3,7 +3,7 @@
   "midName": "전쟁·군사사",
   "majorKey": "humanities",
   "majorName": "인문·사회",
-  "updatedAt": "2026-09-21T06:45:10.082Z",
+  "updatedAt": "2026-09-28T02:16:27.193Z",
   "subs": {
     "war-history/1": {
       "subName": "고대·중세 전쟁",
@@ -16,7 +16,7 @@
         {
           "answer": "마라톤 전투",
           "origin": "r021:war-history/1#001",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr105,db115). 기존 db:1535 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "테르모필레 전투",
@@ -31,7 +31,7 @@
         {
           "answer": "포에니 전쟁",
           "origin": "r021:war-history/1#004",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: db116). 기존 db:102 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "칸나이 전투",
@@ -85,12 +85,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:28:55.353Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/war-history-1#001",
             "answer": "마라톤 전투",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr105,db115). 기존 db:1535 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1535",
+              "at": "2026-09-28T01:31:39.598Z"
+            }
           }
         },
         {
@@ -139,12 +146,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:28:55.353Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/war-history-1#004",
             "answer": "포에니 전쟁",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: db116). 기존 db:102 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:102",
+              "at": "2026-09-28T01:31:40.437Z"
+            }
           }
         },
         {
@@ -853,9 +867,240 @@
           "answer": "걸프 전쟁",
           "origin": "db:217",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "알카에다",
+          "origin": "r022:war-history/4#001",
+          "note": null
+        },
+        {
+          "answer": "아프가니스탄 전쟁",
+          "origin": "r022:war-history/4#002",
+          "note": null
+        },
+        {
+          "answer": "대량살상무기",
+          "origin": "r022:war-history/4#003",
+          "note": null
+        },
+        {
+          "answer": "사라예보",
+          "origin": "r022:war-history/4#004",
+          "note": null
+        },
+        {
+          "answer": "르완다",
+          "origin": "r022:war-history/4#005",
+          "note": null
+        },
+        {
+          "answer": "코소보",
+          "origin": "r022:war-history/4#006",
+          "note": null
+        },
+        {
+          "answer": "드론",
+          "origin": "r022:war-history/4#007",
+          "note": null
+        },
+        {
+          "answer": "사이버전",
+          "origin": "r022:war-history/4#008",
+          "note": null
+        },
+        {
+          "answer": "하이브리드전",
+          "origin": "r022:war-history/4#009",
+          "note": null
+        },
+        {
+          "answer": "평화유지군",
+          "origin": "r022:war-history/4#010",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "war-history/4#001",
+          "subject": "9·11 테러",
+          "aspect": "민항기를 무기로 썼다",
+          "knowledgePoint": "2001년 미국 본토를 겨눈 테러와 그 뒤의 변화",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.236Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/war-history-4#001",
+            "answer": "알카에다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "war-history/4#002",
+          "subject": "아프가니스탄 전쟁",
+          "aspect": "20년 만에 철수했다",
+          "knowledgePoint": "테러 이후 시작되어 미국의 최장기 전쟁이 된 전쟁",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.236Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/war-history-4#002",
+            "answer": "아프가니스탄 전쟁",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "war-history/4#003",
+          "subject": "이라크 전쟁",
+          "aspect": "명분이 된 무기는 끝내 발견되지 않았다",
+          "knowledgePoint": "대량살상무기를 명분으로 시작된 2003년 전쟁",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.236Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/war-history-4#003",
+            "answer": "대량살상무기",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "war-history/4#004",
+          "subject": "보스니아 내전",
+          "aspect": "수도가 오래 포위되었다",
+          "knowledgePoint": "유고슬라비아 해체 뒤의 내전과 사라예보 포위",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.236Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/war-history-4#004",
+            "answer": "사라예보",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "war-history/4#005",
+          "subject": "르완다 학살",
+          "aspect": "라디오가 학살을 부추겼다",
+          "knowledgePoint": "1994년 후투족과 투치족 사이에 벌어진 학살",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.236Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/war-history-4#005",
+            "answer": "르완다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "war-history/4#006",
+          "subject": "코소보 전쟁",
+          "aspect": "유엔 결의 없이 나토가 공습했다",
+          "knowledgePoint": "인도적 개입을 둘러싼 논쟁을 낳은 공습",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.236Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/war-history-4#006",
+            "answer": "코소보",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "war-history/4#007",
+          "subject": "무인기 공격",
+          "aspect": "조종사 없이 원격으로 공격한다",
+          "knowledgePoint": "원격 조종 비행체가 전쟁 방식을 바꾼 것",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.236Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/war-history-4#007",
+            "answer": "드론",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "war-history/4#008",
+          "subject": "사이버전",
+          "aspect": "총 대신 해킹으로 공격한다",
+          "knowledgePoint": "전산망과 기반 시설을 공격하는 전쟁 방식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.236Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/war-history-4#008",
+            "answer": "사이버전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "war-history/4#009",
+          "subject": "하이브리드전",
+          "aspect": "선전·해킹·비정규군을 섞는다",
+          "knowledgePoint": "정규전과 비정규전을 뒤섞는 현대 전쟁 방식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.236Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/war-history-4#009",
+            "answer": "하이브리드전",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "war-history/4#010",
+          "subject": "평화유지군",
+          "aspect": "푸른 헬멧을 쓴다",
+          "knowledgePoint": "분쟁 지역에 파견되는 유엔의 부대",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:46:34.236Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/war-history-4#010",
+            "answer": "평화유지군",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "war-history/5": {
       "subName": "무기·군사 용어",
@@ -878,12 +1123,12 @@
         {
           "answer": "참호전",
           "origin": "r021:war-history/5#004",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr106,db117). 기존 db:1948 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "전격전",
           "origin": "r021:war-history/5#005",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr57,db118). 기존 db:1271 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "게릴라",
@@ -986,12 +1231,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:28:55.355Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/war-history-5#004",
             "answer": "참호전",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr106,db117). 기존 db:1948 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1948",
+              "at": "2026-09-28T01:31:39.666Z"
+            }
           }
         },
         {
@@ -1004,12 +1256,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:28:55.355Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/war-history-5#005",
             "answer": "전격전",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr57,db118). 기존 db:1271 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1271",
+              "at": "2026-09-28T01:31:36.576Z"
+            }
           }
         },
         {

@@ -1,0 +1,255 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "human-body/5",
+    "categoryPath": "자연과학 > 인체·해부 > 혈액·면역",
+    "midKey": "human-body",
+    "subName": "혈액·면역",
+    "majorKey": "science",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:50:38.491Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 7,
+      "shortfallReason": "★ 7건에서 멈췄다. ★★ 전역 대조에서 4건이 human-body/2(장기·순환)와 medicine/1 등 기존 소분류와 같은 지식으로 걸려 버렸다(헤모글로빈·혈소판·ABO·자가면역). 혈액은 순환과 한 몸이라 두 소분류가 겹친다.",
+      "listedCandidates": 21,
+      "remainingUsable": 2,
+      "remainingUsableNote": "T세포·대식세포가 남았다.",
+      "estimatedCeiling": "실질 상한 13건으로 추정한다.",
+      "droppedForOverlap": [],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "헤모글로빈",
+            "probableAnswer": "헤모글로빈",
+            "existing": "db:116",
+            "why": "기존이 '적혈구에서 산소를 나르는 단백질' 을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "혈소판",
+            "probableAnswer": "혈소판",
+            "existing": "db:1666",
+            "why": "기존이 '상처에 모여 피를 멎게 하는 성분' 을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "ABO 혈액형",
+            "probableAnswer": "ABO식 혈액형",
+            "existing": "db:986",
+            "why": "★ Q-97 형 — 기존이 란트슈타이너의 혈액형 발견을 '혈액형' 으로 묻는다. ABO 는 그 발견 자체라 일반어/구체어 차이일 뿐 같은 지식이다",
+            "replacedWith": null
+          },
+          {
+            "subject": "자가면역",
+            "probableAnswer": "자가면역",
+            "existing": "db:1789",
+            "why": "기존이 같은 정의로 '자가면역질환' 을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [
+          {
+            "subject": "Rh 혈액형",
+            "probableAnswer": "Rh식 혈액형",
+            "existing": "db:986",
+            "whyDifferent": "기존은 혈액형이라는 구분 자체를 묻고, 이쪽은 원숭이 실험에서 이름이 온 두 번째 분류를 묻는다. 기존을 안다고 Rh 의 유래를 아는 것은 아니다"
+          },
+          {
+            "subject": "알레르기",
+            "probableAnswer": "알레르기",
+            "existing": "db:505",
+            "whyDifferent": "기존은 독일어식 발음이라는 외래어 지식이고, 이쪽은 면역의 과민 반응이라는 생리 지식이다"
+          }
+        ],
+        "checked": 11,
+        "hits": 6,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:19:29.935Z"
+  },
+  "items": [
+    {
+      "seedId": "human-body/5#001",
+      "seed": {
+        "subject": "백혈구",
+        "aspect": "몸에 들어온 균을 잡아먹는다",
+        "knowledgePoint": "면역을 맡는 혈액 세포",
+        "probableAnswer": "백혈구"
+      },
+      "question": {
+        "ok": true,
+        "question": "몸 안에 들어온 세균을 잡아먹거나 항체를 만들어 우리 몸을 지키는 혈액 세포는?",
+        "answer": "백혈구",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "염증이 있으면 수가 늘어 혈액 검사로 감염을 짐작하기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/5#002",
+      "seed": {
+        "subject": "혈장",
+        "aspect": "피의 절반 이상을 차지하는 액체",
+        "knowledgePoint": "혈액에서 세포를 뺀 누런 액체 성분",
+        "probableAnswer": "혈장"
+      },
+      "question": {
+        "ok": true,
+        "question": "혈액에서 적혈구·백혈구·혈소판 같은 세포 성분을 뺀 누런 액체로, 혈액의 절반 이상을 차지하는 것은?",
+        "answer": "혈장",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "영양분과 호르몬, 노폐물을 실어 나릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/5#003",
+      "seed": {
+        "subject": "Rh 혈액형",
+        "aspect": "원숭이 실험에서 이름이 왔다",
+        "knowledgePoint": "Rh 인자의 유무로 나누는 혈액형",
+        "probableAnswer": "Rh식 혈액형"
+      },
+      "question": {
+        "ok": true,
+        "question": "붉은털원숭이의 혈액 연구에서 이름이 온 인자로, 이 인자가 있는지 없는지에 따라 혈액형을 +와 -로 나누는 것은?",
+        "answer": "Rh식 혈액형",
+        "acceptedAnswers": [
+          "Rh 혈액형",
+          "Rh"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "한국인은 대부분 + 이고 - 인 사람은 매우 드뭅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/5#004",
+      "seed": {
+        "subject": "항체",
+        "aspect": "특정 침입자에만 달라붙는다",
+        "knowledgePoint": "항원을 알아보고 무력화하는 단백질",
+        "probableAnswer": "항체"
+      },
+      "question": {
+        "ok": true,
+        "question": "몸에 들어온 특정 항원을 알아보고 달라붙어 무력화하는 단백질로, 백신을 맞으면 미리 만들어지는 것은?",
+        "answer": "항체",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "한 종류는 한 가지 항원에만 달라붙는 것이 특징입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/5#005",
+      "seed": {
+        "subject": "림프절",
+        "aspect": "감기에 걸리면 목 옆이 붓는다",
+        "knowledgePoint": "면역 세포가 모여 있는 곳",
+        "probableAnswer": "림프절"
+      },
+      "question": {
+        "ok": true,
+        "question": "감기에 걸리면 목 옆이나 겨드랑이에 콩알처럼 붓는 곳으로, 면역 세포가 모여 있는 기관은?",
+        "answer": "림프절",
+        "acceptedAnswers": [
+          "임파선"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "\"임파선\" 은 림프절의 옛 이름으로 지금도 흔히 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/5#006",
+      "seed": {
+        "subject": "알레르기",
+        "aspect": "해롭지 않은 것에 지나치게 반응한다",
+        "knowledgePoint": "꽃가루 등에 과민하게 반응하는 면역 현상",
+        "probableAnswer": "알레르기"
+      },
+      "question": {
+        "ok": true,
+        "question": "꽃가루나 땅콩처럼 대부분의 사람에게는 해롭지 않은 물질에 면역계가 지나치게 반응하는 것을 무엇이라 합니까?",
+        "answer": "알레르기",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "심하면 온몸에 반응이 오는 아나필락시스로 번질 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "human-body/5#007",
+      "seed": {
+        "subject": "수혈",
+        "aspect": "혈액형이 맞아야 한다",
+        "knowledgePoint": "남의 피를 넣어 주는 치료와 혈액형이 맞지 않을 때의 응집",
+        "probableAnswer": "응집"
+      },
+      "question": {
+        "ok": true,
+        "question": "혈액형이 맞지 않는 피를 수혈하면 적혈구끼리 엉겨 붙는 반응이 일어납니다. 이 현상을 무엇이라 합니까?",
+        "answer": "응집",
+        "acceptedAnswers": [
+          "응집 반응"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "ABO 혈액형은 이 반응을 보고 판정합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

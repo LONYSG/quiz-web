@@ -1,0 +1,250 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "transport/5",
+    "categoryPath": "기술·의학 > 자동차·교통 > 도로·교통 체계",
+    "midKey": "transport",
+    "subName": "도로·교통 체계",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:53:24.945Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 8,
+      "shortfallReason": "★ 8건에서 멈췄다. 전역 대조에서 경부고속도로가 기존 한국사 문항과 같은 지식으로 걸려 버렸다. 남은 후보가 구체적인 과태료·속도 수치라 법이 바뀌면 답이 바뀐다.",
+      "listedCandidates": 19,
+      "remainingUsable": 2,
+      "remainingUsableNote": "지능형 교통 체계·자전거 도로가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "어린이보호구역",
+          "aspect": "30km",
+          "reason": "★ DB 에 이미 있다 (생활 법규)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "경부고속도로",
+            "probableAnswer": "경부고속도로",
+            "existing": "db:1021",
+            "why": "기존이 '1970년 개통한 서울-부산 고속도로' 를 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 9,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:21:41.951Z"
+  },
+  "items": [
+    {
+      "seedId": "transport/5#001",
+      "seed": {
+        "subject": "회전교차로",
+        "aspect": "신호 없이 돌아 나간다",
+        "knowledgePoint": "들어오는 차보다 돌고 있는 차가 먼저인 교차로",
+        "probableAnswer": "회전교차로"
+      },
+      "question": {
+        "ok": true,
+        "question": "신호등 없이 가운데 원형 교통섬을 돌아 나가는 교차로로, 들어오는 차보다 이미 돌고 있는 차가 먼저 가는 것은?",
+        "answer": "회전교차로",
+        "acceptedAnswers": [
+          "로터리"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "신호를 기다리지 않아 교통 흐름이 부드럽고 큰 사고가 줄어든다고 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/5#002",
+      "seed": {
+        "subject": "하이패스",
+        "aspect": "멈추지 않고 요금을 낸다",
+        "knowledgePoint": "무선으로 통행료를 내는 장치",
+        "probableAnswer": "하이패스"
+      },
+      "question": {
+        "ok": true,
+        "question": "고속도로 요금소에서 멈추지 않고 지나가도 차에 단 단말기가 무선으로 통행료를 내게 해 주는 우리나라의 시스템은?",
+        "answer": "하이패스",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "2007년 전국 고속도로로 넓혀졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/5#003",
+      "seed": {
+        "subject": "버스전용차로",
+        "aspect": "파란 선을 그은 차로",
+        "knowledgePoint": "대중교통을 빠르게 하려 버스만 달리게 한 차로",
+        "probableAnswer": "버스전용차로"
+      },
+      "question": {
+        "ok": true,
+        "question": "출퇴근 시간 등에 버스만 달릴 수 있게 파란 선으로 표시한 차로는?",
+        "answer": "버스전용차로",
+        "acceptedAnswers": [
+          "버스 전용 차로"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "도로 가운데에 둔 중앙버스전용차로도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/5#004",
+      "seed": {
+        "subject": "유령 정체",
+        "aspect": "사고도 없는데 막힌다",
+        "knowledgePoint": "앞차의 작은 감속이 뒤로 퍼지며 생기는 정체",
+        "probableAnswer": "유령 정체"
+      },
+      "question": {
+        "ok": true,
+        "question": "사고나 공사가 없는데도 앞차가 잠깐 브레이크를 밟은 것이 뒤로 퍼져 나가며 생기는 정체를 무엇이라 합니까?",
+        "answer": "유령 정체",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "일정한 간격과 속도를 지키면 줄일 수 있다고 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/5#005",
+      "seed": {
+        "subject": "좌측통행",
+        "aspect": "영국과 일본은 왼쪽으로 달린다",
+        "knowledgePoint": "나라마다 차가 다니는 방향이 다른 것",
+        "probableAnswer": "좌측통행"
+      },
+      "question": {
+        "ok": true,
+        "question": "영국·일본·오스트레일리아처럼 차가 도로의 왼쪽으로 다니는 방식을 무엇이라 합니까?",
+        "answer": "좌측통행",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "이런 나라에서는 운전석이 오른쪽에 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/5#006",
+      "seed": {
+        "subject": "중앙분리대",
+        "aspect": "마주 오는 차로를 가른다",
+        "knowledgePoint": "정면 충돌을 막는 시설",
+        "probableAnswer": "중앙분리대"
+      },
+      "question": {
+        "ok": true,
+        "question": "고속도로 한가운데 설치해 마주 오는 차로를 갈라 정면 충돌을 막는 시설은?",
+        "answer": "중앙분리대",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "콘크리트 벽이나 철제 난간, 화단 등 형태가 여러 가지입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/5#007",
+      "seed": {
+        "subject": "환승 할인",
+        "aspect": "갈아타도 요금을 한 번만 낸다",
+        "knowledgePoint": "대중교통을 이어 타면 요금을 합쳐 매기는 제도",
+        "probableAnswer": "환승"
+      },
+      "question": {
+        "ok": true,
+        "question": "버스에서 지하철로 갈아탈 때처럼 대중교통을 이어 타면 요금을 합쳐 계산해 깎아 주는 제도는?",
+        "answer": "환승 할인",
+        "acceptedAnswers": [
+          "환승"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "서울에서는 2004년 버스 개편과 함께 시행되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "transport/5#008",
+      "seed": {
+        "subject": "과속방지턱",
+        "aspect": "도로에 볼록 솟은 턱",
+        "knowledgePoint": "차의 속도를 물리적으로 줄이는 시설",
+        "probableAnswer": "과속방지턱"
+      },
+      "question": {
+        "ok": true,
+        "question": "주택가나 학교 앞 도로에 볼록 솟게 만들어 차가 속도를 줄이지 않을 수 없게 한 시설은?",
+        "answer": "과속방지턱",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "흔히 \"과속 방지 턱\" 또는 \"방지턱\" 이라 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

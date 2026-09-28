@@ -1,0 +1,292 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "society/2",
+    "categoryPath": "인문·사회 > 사회 제도 > 복지·의료 제도",
+    "midKey": "society",
+    "subName": "복지·의료 제도",
+    "majorKey": "humanities",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:46:34.268Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 급여액·보험료율 같은 수치라 제도가 바뀌면 답이 바뀐다.",
+      "listedCandidates": 20,
+      "remainingUsable": 2,
+      "remainingUsableNote": "본인부담상한제·긴급복지가 남았다.",
+      "estimatedCeiling": "실질 상한 12건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "산업재해보상보험",
+          "aspect": "일하다 다치면",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [],
+        "checked": 10,
+        "hits": 0,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:16:27.225Z"
+  },
+  "items": [
+    {
+      "seedId": "society/2#001",
+      "seed": {
+        "subject": "국민건강보험",
+        "aspect": "1989년 전 국민으로 넓혀졌다",
+        "knowledgePoint": "모든 국민이 가입하는 공적 의료보험",
+        "probableAnswer": "국민건강보험"
+      },
+      "question": {
+        "ok": true,
+        "question": "1977년 대기업 직장인부터 시작해 1989년 전 국민으로 넓혀진, 모든 국민이 가입하는 공적 의료보험은?",
+        "answer": "국민건강보험",
+        "acceptedAnswers": [
+          "건강보험"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "짧은 기간에 전 국민으로 넓힌 사례로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/2#002",
+      "seed": {
+        "subject": "국민연금",
+        "aspect": "나이 들어 받는 연금",
+        "knowledgePoint": "소득 활동 중 보험료를 내고 노후에 받는 사회보험",
+        "probableAnswer": "국민연금"
+      },
+      "question": {
+        "ok": true,
+        "question": "소득이 있는 동안 보험료를 내고 나이가 들어 소득이 끊기면 매달 받는 사회보험은? 1988년에 시작했습니다.",
+        "answer": "국민연금",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "장애나 사망 때 본인이나 유족이 받는 연금도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/2#003",
+      "seed": {
+        "subject": "고용보험",
+        "aspect": "실직하면 급여가 나온다",
+        "knowledgePoint": "실업급여를 주는 사회보험",
+        "probableAnswer": "고용보험"
+      },
+      "question": {
+        "ok": true,
+        "question": "일자리를 잃었을 때 실업급여를 받을 수 있게 해 주는 사회보험은?",
+        "answer": "고용보험",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "직업 훈련과 육아휴직 급여도 이 보험에서 나옵니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/2#004",
+      "seed": {
+        "subject": "노인장기요양보험",
+        "aspect": "돌봄이 필요한 노인을 지원한다",
+        "knowledgePoint": "요양 서비스를 보장하는 사회보험",
+        "probableAnswer": "노인장기요양보험"
+      },
+      "question": {
+        "ok": true,
+        "question": "나이가 들거나 노인성 질병으로 혼자 생활하기 어려운 사람에게 요양 서비스를 보장하는, 2008년 도입된 사회보험은?",
+        "answer": "노인장기요양보험",
+        "acceptedAnswers": [
+          "장기요양보험"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "보험료는 건강보험료와 함께 걷습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/2#005",
+      "seed": {
+        "subject": "4대 보험",
+        "aspect": "월급에서 떼는 네 가지",
+        "knowledgePoint": "건강·연금·고용·산재 보험을 묶어 이르는 말",
+        "probableAnswer": "4대 보험"
+      },
+      "question": {
+        "ok": true,
+        "question": "국민연금·건강보험·고용보험·산재보험을 묶어 흔히 무엇이라 합니까?",
+        "answer": "4대 보험",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "산재보험은 사업주가 보험료를 모두 부담합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/2#006",
+      "seed": {
+        "subject": "사회보험과 공공부조",
+        "aspect": "보험료를 내느냐 세금으로 주느냐",
+        "knowledgePoint": "사회보장 제도의 두 갈래",
+        "probableAnswer": "공공부조"
+      },
+      "question": {
+        "ok": true,
+        "question": "사회보장 제도 가운데 보험료를 내지 않아도 생활이 어려운 사람에게 국가가 세금으로 지원하는 방식은? 보험료를 내는 사회보험과 구별됩니다.",
+        "answer": "공공부조",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "기초생활보장 제도가 대표적인 예입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/2#007",
+      "seed": {
+        "subject": "기초생활보장",
+        "aspect": "최저 생활을 보장한다",
+        "knowledgePoint": "소득이 낮은 가구에 생계를 지원하는 제도",
+        "probableAnswer": "기초생활보장"
+      },
+      "question": {
+        "ok": true,
+        "question": "소득과 재산이 기준에 못 미치는 가구에 생계·의료·주거·교육 급여를 주는 제도는?",
+        "answer": "기초생활보장",
+        "acceptedAnswers": [
+          "국민기초생활보장"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "2000년 생활보호 제도를 바꿔 시행했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/2#008",
+      "seed": {
+        "subject": "최저임금",
+        "aspect": "이보다 적게 줄 수 없다",
+        "knowledgePoint": "법으로 정한 임금의 하한",
+        "probableAnswer": "최저임금"
+      },
+      "question": {
+        "ok": true,
+        "question": "법으로 정해 사용자가 근로자에게 그보다 적게 줄 수 없게 한 임금의 하한은?",
+        "answer": "최저임금",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "해마다 최저임금위원회가 심의해 정합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/2#009",
+      "seed": {
+        "subject": "육아휴직",
+        "aspect": "아이를 키우려고 쉰다",
+        "knowledgePoint": "자녀 양육을 위해 일을 쉬는 제도",
+        "probableAnswer": "육아휴직"
+      },
+      "question": {
+        "ok": true,
+        "question": "근로자가 어린 자녀를 키우려고 일정 기간 일을 쉬고 복귀할 수 있게 한 제도는?",
+        "answer": "육아휴직",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "엄마와 아빠 모두 쓸 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "society/2#010",
+      "seed": {
+        "subject": "건강보험 본인부담",
+        "aspect": "진료비의 일부만 낸다",
+        "knowledgePoint": "보험이 내고 남은 몫을 환자가 부담하는 구조",
+        "probableAnswer": "본인부담금"
+      },
+      "question": {
+        "ok": true,
+        "question": "병원 진료비 가운데 건강보험이 내 주고 남은 몫으로 환자가 직접 내는 돈을 무엇이라 합니까?",
+        "answer": "본인부담금",
+        "acceptedAnswers": [
+          "본인부담"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "보험이 적용되지 않는 비급여 항목은 환자가 전부 냅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

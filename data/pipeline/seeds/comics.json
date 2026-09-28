@@ -3,7 +3,7 @@
   "midName": "만화·웹툰",
   "majorKey": "arts",
   "majorName": "문화·예술",
-  "updatedAt": "2026-09-21T13:50:44.923Z",
+  "updatedAt": "2026-09-28T01:31:35.387Z",
   "subs": {
     "comics/1": {
       "subName": "일본 만화",
@@ -21,7 +21,7 @@
         {
           "answer": "데즈카 오사무",
           "origin": "r021:comics/1#002",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr30,db33). 기존 db:728 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "잡지",
@@ -61,7 +61,7 @@
         {
           "answer": "집중선",
           "origin": "r021:comics/1#010",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr9,db34). 기존 db:534 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "단행본",
@@ -98,12 +98,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:35:05.587Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/comics-1#002",
             "answer": "데즈카 오사무",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr30,db33). 기존 db:728 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:728",
+              "at": "2026-09-28T01:31:35.382Z"
+            }
           }
         },
         {
@@ -242,12 +249,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:35:05.587Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/comics-1#010",
             "answer": "집중선",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr9,db34). 기존 db:534 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:534",
+              "at": "2026-09-28T01:31:34.408Z"
+            }
           }
         },
         {

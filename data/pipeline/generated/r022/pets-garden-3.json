@@ -1,0 +1,297 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "pets-garden/3",
+    "categoryPath": "생활·상식 > 반려동물·원예 > 반려동물 관리",
+    "midKey": "pets-garden",
+    "subName": "반려동물 관리",
+    "majorKey": "life",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:04:36.493Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 수의학 세부라 전문 지식이다.",
+      "listedCandidates": 17,
+      "remainingUsable": 1,
+      "remainingUsableNote": "중성화가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "초콜릿",
+          "aspect": "개에게 독",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "백합",
+            "probableAnswer": "백합",
+            "existing": "db:1185",
+            "whyDifferent": "기존은 순결의 상징(꽃말), 이쪽은 고양이에게 치명적인 독성이다"
+          }
+        ],
+        "checked": 10,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:31:22.631Z"
+  },
+  "items": [
+    {
+      "seedId": "pets-garden/3#001",
+      "seed": {
+        "subject": "양파 중독",
+        "aspect": "익혀도 위험하다",
+        "knowledgePoint": "개·고양이에게 빈혈을 일으키는 채소",
+        "probableAnswer": "양파"
+      },
+      "question": {
+        "ok": true,
+        "question": "개와 고양이의 적혈구를 망가뜨리는 성분이 들어 있어 익혀도 위험하다고 알려진 채소로, 썰면 눈물이 나는 것은?",
+        "answer": "양파",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "같은 무리인 마늘·파도 위험하다고 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/3#002",
+      "seed": {
+        "subject": "포도",
+        "aspect": "적은 양도 콩팥을 망가뜨린다",
+        "knowledgePoint": "개에게 위험한 과일",
+        "probableAnswer": "포도"
+      },
+      "question": {
+        "ok": true,
+        "question": "적은 양으로도 개의 콩팥을 망가뜨릴 수 있어, 말린 것까지 먹이면 안 된다고 하는 과일은?",
+        "answer": "포도",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "어떤 성분 때문인지는 아직 논의가 이어지고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/3#003",
+      "seed": {
+        "subject": "마이크로칩",
+        "aspect": "피부 밑에 넣는 칩",
+        "knowledgePoint": "반려동물 등록 방식",
+        "probableAnswer": "마이크로칩"
+      },
+      "question": {
+        "ok": true,
+        "question": "반려견 등록 방법의 하나로, 쌀알만 한 전자 칩을 어깨 부근 피부 밑에 넣어 주인 정보를 확인하게 하는 것은?",
+        "answer": "마이크로칩",
+        "acceptedAnswers": [
+          "내장형 칩"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "잃어버린 동물을 찾을 때 판독기로 읽어 냅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/3#004",
+      "seed": {
+        "subject": "광견병",
+        "aspect": "물린 사람에게 옮는다",
+        "knowledgePoint": "반려견이 맞는 필수 예방 접종",
+        "probableAnswer": "광견병"
+      },
+      "question": {
+        "ok": true,
+        "question": "감염된 동물에게 물리면 사람에게도 옮고, 증상이 나타나면 거의 목숨을 잃어 반려견이 예방 접종을 받는 병은?",
+        "answer": "광견병",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "물린 뒤 곧바로 치료를 받으면 발병을 막을 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/3#005",
+      "seed": {
+        "subject": "심장사상충",
+        "aspect": "모기가 옮긴다",
+        "knowledgePoint": "개에게 치명적인 기생충",
+        "probableAnswer": "심장사상충"
+      },
+      "question": {
+        "ok": true,
+        "question": "모기가 옮기는 기생충으로 개의 심장과 폐동맥에 자리 잡아 목숨을 위협해, 정기적으로 예방약을 먹이는 것은?",
+        "answer": "심장사상충",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "감염된 뒤에는 치료가 어렵고 부담이 커서 예방이 중요합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/3#006",
+      "seed": {
+        "subject": "헤어볼",
+        "aspect": "핥다 삼킨 털을 토한다",
+        "knowledgePoint": "고양이 그루밍의 부작용",
+        "probableAnswer": "헤어볼"
+      },
+      "question": {
+        "ok": true,
+        "question": "고양이가 몸을 핥아 털을 고르다 삼킨 털이 뱃속에서 뭉쳐 토해 내는 덩어리를 무엇이라 합니까?",
+        "answer": "헤어볼",
+        "acceptedAnswers": [
+          "털뭉치"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "빗질을 자주 해 주면 줄일 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/3#007",
+      "seed": {
+        "subject": "캣닢",
+        "aspect": "고양이가 취한 듯 뒹군다",
+        "knowledgePoint": "고양이가 좋아하는 허브",
+        "probableAnswer": "캣닢"
+      },
+      "question": {
+        "ok": true,
+        "question": "고양이가 냄새를 맡으면 몸을 비비고 뒹굴며 취한 듯 좋아하는 박하 무리의 허브는?",
+        "answer": "캣닢",
+        "acceptedAnswers": [
+          "개박하"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "모든 고양이가 반응하지는 않고, 반응은 유전에 따라 다르다고 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/3#008",
+      "seed": {
+        "subject": "펫티켓",
+        "aspect": "목줄과 배변 봉투",
+        "knowledgePoint": "반려동물과 외출할 때 예절",
+        "probableAnswer": "펫티켓"
+      },
+      "question": {
+        "ok": true,
+        "question": "산책할 때 목줄을 채우고 배변 봉투를 챙기는 것처럼, 반려동물과 함께할 때 지켜야 할 예절을 줄여 부르는 말은?",
+        "answer": "펫티켓",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "반려동물과 에티켓을 합친 말입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/3#009",
+      "seed": {
+        "subject": "자일리톨",
+        "aspect": "껌 속 감미료가 위험하다",
+        "knowledgePoint": "개의 혈당을 떨어뜨리는 감미료",
+        "probableAnswer": "자일리톨"
+      },
+      "question": {
+        "ok": true,
+        "question": "껌·사탕에 설탕 대신 쓰이는 감미료로, 사람에게는 괜찮지만 개가 먹으면 혈당이 갑자기 떨어져 위험한 것은?",
+        "answer": "자일리톨",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "적은 양으로도 위험할 수 있어 껌을 흘리지 않도록 조심해야 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "pets-garden/3#010",
+      "seed": {
+        "subject": "백합",
+        "aspect": "꽃가루만으로도 콩팥을 망가뜨린다",
+        "knowledgePoint": "고양이에게 치명적인 꽃",
+        "probableAnswer": "백합"
+      },
+      "question": {
+        "ok": true,
+        "question": "꽃가루나 꽃병의 물만 조금 먹어도 고양이의 콩팥을 망가뜨릴 수 있어 집에 두지 말라고 하는 꽃은?",
+        "answer": "백합",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "개에게는 이만큼 위험하지 않다고 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

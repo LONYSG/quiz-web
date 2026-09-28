@@ -1,0 +1,243 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "kr-music/1",
+    "categoryPath": "한국 > 한국 대중음악 > 1980년대 이전 가요",
+    "midKey": "kr-music",
+    "subName": "1980년대 이전 가요",
+    "majorKey": "korea",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:41:29.878Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 7,
+      "shortfallReason": "★ 7건에서 멈췄다. ★★ 전역 대조에서 4건이 R020 의 kr-music/2(트로트·포크)와 같은 지식으로 걸려 버렸다(동백아가씨·아침이슬·대학가요제·통기타). 두 소분류가 1960~70년대를 함께 다루는 탓이다. 남은 후보는 특정 수록곡이라 알 가치 2 이하다.",
+      "listedCandidates": 22,
+      "remainingUsable": 4,
+      "remainingUsableNote": "송창식·한대수·김추자·배호가 남았으나 대부분 곡 이름을 묻게 된다.",
+      "estimatedCeiling": "실질 상한 14건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "들국화",
+          "aspect": "록 밴드",
+          "reason": "DB 에 이미 답이 들국화인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "checked": 11,
+        "hits": 4,
+        "dropped": [
+          {
+            "subject": "동백 아가씨",
+            "probableAnswer": "동백 아가씨",
+            "existing": "db:1065",
+            "why": "기존이 \"왜색이라는 이유로 방송 금지된 이미자의 노래\" 를 묻는다. 같은 지식이다",
+            "replacedWith": null
+          },
+          {
+            "subject": "아침이슬",
+            "probableAnswer": "아침이슬",
+            "existing": "db:1066",
+            "why": "기존이 \"김민기가 만들어 금지곡이 된 포크 노래\" 를 묻는다. 같은 지식이다",
+            "replacedWith": null
+          },
+          {
+            "subject": "대학가요제",
+            "probableAnswer": "대학가요제",
+            "existing": "db:1071",
+            "why": "기존이 \"1977년 시작된 대학생 창작곡 경연\" 을 묻는다. 같은 지식이다",
+            "replacedWith": null
+          },
+          {
+            "subject": "통기타",
+            "probableAnswer": "통기타",
+            "existing": "db:1075",
+            "why": "기존이 \"1970년대 청년 문화의 상징인 악기\" 를 묻는다. 같은 지식이다",
+            "replacedWith": "쎄시봉"
+          }
+        ],
+        "keptDespiteHit": [],
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:09:59.301Z"
+  },
+  "items": [
+    {
+      "seedId": "kr-music/1#001",
+      "seed": {
+        "subject": "사의 찬미",
+        "aspect": "우리 대중가요의 첫머리로 꼽힌다",
+        "knowledgePoint": "윤심덕이 부른 1920년대 곡과 그에 얽힌 이야기",
+        "probableAnswer": "사의 찬미"
+      },
+      "question": {
+        "ok": true,
+        "question": "1926년 윤심덕이 부른 노래로, 녹음 직후 그가 극작가 김우진과 함께 현해탄에서 세상을 떠나 더욱 널리 알려진 곡은?",
+        "answer": "사의 찬미",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "이바노비치의 \"다뉴브강의 잔물결\" 에 우리말 가사를 붙였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-music/1#002",
+      "seed": {
+        "subject": "신중현",
+        "aspect": "한국 록의 출발점",
+        "knowledgePoint": "1960~70년대 록 음악을 이끈 기타리스트이자 작곡가",
+        "probableAnswer": "신중현"
+      },
+      "question": {
+        "ok": true,
+        "question": "'미인', '아름다운 강산' 등을 만들어 한국 록의 대부로 불리는 기타리스트이자 작곡가는?",
+        "answer": "신중현",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "1960~70년대 여러 가수에게 곡을 주며 록과 사이키델릭을 들여왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-music/1#003",
+      "seed": {
+        "subject": "돌아와요 부산항에",
+        "aspect": "재일 동포의 귀향과 겹쳐 크게 유행했다",
+        "knowledgePoint": "조용필이 부른 1970년대 대표곡",
+        "probableAnswer": "돌아와요 부산항에"
+      },
+      "question": {
+        "ok": true,
+        "question": "'꽃피는 동백섬에 봄이 왔건만' 으로 시작하며, 재일 동포의 모국 방문 무렵 크게 유행한 조용필의 노래는?",
+        "answer": "돌아와요 부산항에",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "1970년대 중반 재일 동포 모국 방문단과 맞물려 크게 퍼졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-music/1#004",
+      "seed": {
+        "subject": "산울림",
+        "aspect": "삼 형제가 만든 밴드",
+        "knowledgePoint": "형제로 이루어져 독특한 록을 선보인 밴드",
+        "probableAnswer": "산울림"
+      },
+      "question": {
+        "ok": true,
+        "question": "김창완·김창훈·김창익 삼 형제가 1977년 결성해 '아니 벌써' 등을 부른 밴드는?",
+        "answer": "산울림",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "당시로서는 낯선 소리로 한국 록의 흐름에 큰 영향을 주었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-music/1#005",
+      "seed": {
+        "subject": "트로트",
+        "aspect": "'뽕짝' 이라고도 불린다",
+        "knowledgePoint": "두 박자 리듬이 특징인 대중가요 장르",
+        "probableAnswer": "트로트"
+      },
+      "question": {
+        "ok": true,
+        "question": "'뽕짝' 이라고도 불리며, 쿵짝 하는 두 박자 리듬과 꺾는 창법이 특징인 한국 대중가요 장르는?",
+        "answer": "트로트",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "서양 춤곡 폭스트롯에서 이름이 왔다는 설명이 흔합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-music/1#006",
+      "seed": {
+        "subject": "금지곡",
+        "aspect": "1970년대에 무더기로 방송 금지되었다",
+        "knowledgePoint": "퇴폐·저항을 이유로 노래를 금하던 가요 정화 조치",
+        "probableAnswer": "금지곡"
+      },
+      "question": {
+        "ok": true,
+        "question": "1970년대 정부가 가요 정화를 내세워 '아침 이슬'·'미인' 같은 노래의 방송과 판매를 막았습니다. 이렇게 지정된 노래를 무엇이라 합니까?",
+        "answer": "금지곡",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "퇴폐·불신 조장 같은 모호한 사유가 붙었고, 뒤에 대부분 해제되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-music/1#007",
+      "seed": {
+        "subject": "쎄시봉",
+        "aspect": "포크 가수들이 모이던 음악감상실",
+        "knowledgePoint": "1960~70년대 포크 1세대가 무대에 서던 서울의 음악감상실",
+        "probableAnswer": "쎄시봉"
+      },
+      "question": {
+        "ok": true,
+        "question": "1960~70년대 서울 무교동에 있던 음악감상실로, 송창식·윤형주·조영남 등 포크 가수들이 무대에 섰던 곳은?",
+        "answer": "쎄시봉",
+        "acceptedAnswers": [
+          "세시봉"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "2010년대에 이 시절 가수들이 다시 주목받으며 영화로도 만들어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

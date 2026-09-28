@@ -1,0 +1,349 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "kr-food/4",
+    "categoryPath": "한국 > 한국 음식 > 향토 음식",
+    "midKey": "kr-food",
+    "subName": "향토 음식",
+    "majorKey": "korea",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:41:29.902Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 12,
+      "shortfallReason": null,
+      "listedCandidates": 25,
+      "remainingUsable": 8,
+      "remainingUsableNote": "진주 냉면·전주 콩나물국밥·속초 아바이순대·제주 고기국수·몸국·영덕 대게·호박엿·안흥찐빵이 남았다.",
+      "estimatedCeiling": "실질 상한 20건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "돔베고기",
+          "aspect": "도마에 썰어 낸다",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "checked": 14,
+        "hits": 2,
+        "dropped": [
+          {
+            "subject": "전주비빔밥",
+            "probableAnswer": "비빔밥",
+            "existing": "db:162",
+            "why": "답이 \"비빔밥\" 이 되면 기존의 비빔밥 정의 문제와 같은 지식으로 맞힌다",
+            "replacedWith": "진주냉면"
+          },
+          {
+            "subject": "부대찌개",
+            "probableAnswer": "부대찌개",
+            "existing": "db:996",
+            "why": "기존이 \"미군 부대에서 흘러나온 가공육으로 생긴 찌개\" 를 묻는다. 같은 지식이다",
+            "replacedWith": "고기국수"
+          }
+        ],
+        "keptDespiteHit": [],
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:09:59.291Z"
+  },
+  "items": [
+    {
+      "seedId": "kr-food/4#001",
+      "seed": {
+        "subject": "닭갈비",
+        "aspect": "철판에 채소와 함께 볶는다",
+        "knowledgePoint": "춘천을 대표하는 닭 요리",
+        "probableAnswer": "닭갈비"
+      },
+      "question": {
+        "ok": true,
+        "question": "철판에 닭고기와 양배추·고구마 등을 매콤한 양념에 볶아 먹는, 춘천을 대표하는 음식은?",
+        "answer": "닭갈비",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "갈비라는 이름이지만 주로 닭 다리살 같은 살코기를 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#002",
+      "seed": {
+        "subject": "찜닭",
+        "aspect": "간장 양념에 당면을 넣는다",
+        "knowledgePoint": "안동 시장에서 시작된 닭 요리",
+        "probableAnswer": "찜닭"
+      },
+      "question": {
+        "ok": true,
+        "question": "간장 양념에 닭과 감자, 당면을 넣고 졸여 내는 음식으로, 경북 안동의 시장 골목에서 이름난 것은?",
+        "answer": "찜닭",
+        "acceptedAnswers": [
+          "안동찜닭"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "안동 구시장 닭 골목에서 퍼졌다고 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#003",
+      "seed": {
+        "subject": "돼지국밥",
+        "aspect": "피란민이 만들었다는 설명이 있다",
+        "knowledgePoint": "부산을 대표하는 국밥",
+        "probableAnswer": "돼지국밥"
+      },
+      "question": {
+        "ok": true,
+        "question": "돼지 뼈를 우린 뽀얀 국물에 밥을 말아 새우젓으로 간을 맞춰 먹는, 피란민과 함께 퍼졌다는 설명이 전하는 부산의 대표 음식은?",
+        "answer": "돼지국밥",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "한국전쟁 때 부산으로 모인 피란민이 구하기 쉬운 돼지 뼈로 끓였다는 설명이 흔합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#004",
+      "seed": {
+        "subject": "밀면",
+        "aspect": "메밀 대신 밀가루로 냉면을 만들었다",
+        "knowledgePoint": "피란 시절 구하기 쉬운 밀가루로 만든 부산의 면",
+        "probableAnswer": "밀면"
+      },
+      "question": {
+        "ok": true,
+        "question": "한국전쟁 때 부산으로 내려온 피란민이 메밀 대신 구하기 쉬운 밀가루로 냉면을 만든 데서 비롯되었다는 부산의 면 요리는?",
+        "answer": "밀면",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "구호물자로 들어온 밀가루를 썼다는 설명이 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#005",
+      "seed": {
+        "subject": "충무김밥",
+        "aspect": "밥과 반찬을 따로 낸다",
+        "knowledgePoint": "뱃사람이 먹기 좋게 만든 통영의 김밥",
+        "probableAnswer": "충무김밥"
+      },
+      "question": {
+        "ok": true,
+        "question": "속을 넣지 않은 맨 김밥에 오징어무침과 섞박지를 따로 곁들이는, 뱃사람이 쉽게 상하지 않게 먹었다는 통영의 김밥은?",
+        "answer": "충무김밥",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "통영의 옛 이름이 충무여서 붙은 이름입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#006",
+      "seed": {
+        "subject": "막국수",
+        "aspect": "메밀 면에 양념을 비빈다",
+        "knowledgePoint": "춘천을 비롯한 강원의 메밀국수",
+        "probableAnswer": "막국수"
+      },
+      "question": {
+        "ok": true,
+        "question": "메밀 면에 양념장을 얹어 비비거나 동치미 국물을 부어 먹는, 춘천을 비롯한 강원도에서 이름난 국수는?",
+        "answer": "막국수",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "\"막 뽑아 먹는다\" 는 데서 이름이 왔다는 설명이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#007",
+      "seed": {
+        "subject": "오징어순대",
+        "aspect": "오징어 몸통에 소를 채운다",
+        "knowledgePoint": "속초 등 동해안의 순대",
+        "probableAnswer": "오징어순대"
+      },
+      "question": {
+        "ok": true,
+        "question": "오징어 몸통 안에 두부·채소·찹쌀 등으로 만든 소를 채워 찌는, 속초 등 동해안에서 이름난 음식은?",
+        "answer": "오징어순대",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "피란민이 고향의 순대를 오징어로 대신해 만들었다는 설명이 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#008",
+      "seed": {
+        "subject": "나주곰탕",
+        "aspect": "맑은 국물",
+        "knowledgePoint": "고기로 맑게 우려 내는 나주의 곰탕",
+        "probableAnswer": "나주곰탕"
+      },
+      "question": {
+        "ok": true,
+        "question": "사골보다 양지 같은 고기를 주로 우려 국물이 맑은 것으로 알려진, 전라남도의 한 고을 이름이 붙은 곰탕은?",
+        "answer": "나주곰탕",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "뽀얀 사골 곰탕과 달리 맑은 국물이 특징으로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#009",
+      "seed": {
+        "subject": "몸국",
+        "aspect": "해초 모자반을 넣는다",
+        "knowledgePoint": "돼지 육수에 모자반을 넣어 끓이는 제주 음식",
+        "probableAnswer": "몸국"
+      },
+      "question": {
+        "ok": true,
+        "question": "돼지고기와 뼈를 삶은 국물에 해초 모자반을 넣고 걸쭉하게 끓이는 제주의 향토 음식은?",
+        "answer": "몸국",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "제주말로 모자반을 \"몸\" 이라 부릅니다. 잔치 때 끓이던 음식입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#010",
+      "seed": {
+        "subject": "호떡",
+        "aspect": "피란민이 퍼뜨린 부산 씨앗호떡",
+        "knowledgePoint": "속에 씨앗을 채운 부산의 호떡",
+        "probableAnswer": "씨앗호떡"
+      },
+      "question": {
+        "ok": true,
+        "question": "구운 호떡을 갈라 해바라기씨 같은 견과류를 채워 넣은, 부산 남포동 일대에서 이름난 길거리 간식은?",
+        "answer": "씨앗호떡",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "기름에 튀기듯 구운 뒤 속을 채우는 것이 특징입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#011",
+      "seed": {
+        "subject": "진주냉면",
+        "aspect": "해물 육수에 육전을 얹는다",
+        "knowledgePoint": "평양·함흥냉면과 함께 꼽히는 진주의 냉면",
+        "probableAnswer": "진주냉면"
+      },
+      "question": {
+        "ok": true,
+        "question": "해물로 우린 육수에 채 썬 육전을 얹는 것이 특징으로, 평양냉면·함흥냉면과 함께 꼽혀 온 경남의 냉면은?",
+        "answer": "진주냉면",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "진주 기방 문화와 함께 발달했다는 설명이 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-food/4#012",
+      "seed": {
+        "subject": "고기국수",
+        "aspect": "돼지 육수에 수육을 올린다",
+        "knowledgePoint": "잔치 때 먹던 제주의 국수",
+        "probableAnswer": "고기국수"
+      },
+      "question": {
+        "ok": true,
+        "question": "돼지 뼈 국물에 굵은 면을 말고 삶은 돼지고기를 얹어 먹는, 잔칫날 먹던 데서 비롯된 제주의 국수는?",
+        "answer": "고기국수",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "제주에서는 잔치 때 돼지를 잡아 국수와 함께 나눠 먹었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

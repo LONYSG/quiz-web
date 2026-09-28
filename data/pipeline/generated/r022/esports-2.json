@@ -1,0 +1,276 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "esports/2",
+    "categoryPath": "스포츠·게임 > e스포츠·비디오게임 > 콘솔 게임",
+    "midKey": "esports",
+    "subName": "콘솔 게임",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:02:00.748Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 8,
+      "shortfallReason": "★ 8건에서 멈췄다. 전역 대조에서 마리오·패미컴·테트리스가 고전 게임 소분류와 같아 버렸다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "위(Wii)가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "젤다의 전설",
+          "aspect": "닌텐도 모험 게임",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "슈퍼 마리오",
+            "probableAnswer": "마리오",
+            "existing": "db:1627",
+            "why": "기존(고전 게임)이 같은 캐릭터를 묻는다",
+            "replacedWith": "위"
+          },
+          {
+            "subject": "패미컴",
+            "probableAnswer": "패미컴",
+            "existing": "db:1633",
+            "why": "기존이 같은 게임기를 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "테트리스",
+            "probableAnswer": "테트리스",
+            "existing": "db:1626",
+            "why": "기존이 소련 연구자·블록 게임으로 같은 지식을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [
+          {
+            "subject": "닌텐도 스위치",
+            "probableAnswer": "닌텐도 스위치",
+            "existing": "db:2147",
+            "whyDifferent": "포함 관계 — 기존은 화투 회사였던 기업 닌텐도다"
+          }
+        ],
+        "checked": 11,
+        "hits": 4,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:29:08.411Z"
+  },
+  "items": [
+    {
+      "seedId": "esports/2#001",
+      "seed": {
+        "subject": "플레이스테이션",
+        "aspect": "CD 로 게임을 돌렸다",
+        "knowledgePoint": "소니의 게임기",
+        "probableAnswer": "플레이스테이션"
+      },
+      "question": {
+        "ok": true,
+        "question": "1994년 소니가 내놓아 CD 로 게임을 돌린 가정용 게임기는?",
+        "answer": "플레이스테이션",
+        "acceptedAnswers": [
+          "플스",
+          "PS"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "카트리지보다 값싸고 용량이 큰 CD 덕분에 크게 성공했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/2#002",
+      "seed": {
+        "subject": "엑스박스",
+        "aspect": "컴퓨터 회사가 만든 게임기",
+        "knowledgePoint": "마이크로소프트의 콘솔",
+        "probableAnswer": "엑스박스"
+      },
+      "question": {
+        "ok": true,
+        "question": "2001년 마이크로소프트가 내놓은 가정용 게임기는?",
+        "answer": "엑스박스",
+        "acceptedAnswers": [
+          "Xbox"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "온라인 대전 서비스를 앞세웠습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/2#003",
+      "seed": {
+        "subject": "닌텐도 스위치",
+        "aspect": "TV 에서 떼어 들고 다닌다",
+        "knowledgePoint": "거치형과 휴대형을 합친 게임기",
+        "probableAnswer": "닌텐도 스위치"
+      },
+      "question": {
+        "ok": true,
+        "question": "TV 에 연결해 쓰다가 본체를 떼어 들고 다니며 할 수 있는, 2017년 닌텐도가 내놓은 게임기는?",
+        "answer": "닌텐도 스위치",
+        "acceptedAnswers": [
+          "스위치"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "양옆의 컨트롤러를 떼어 둘이 나눠 쓸 수도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/2#004",
+      "seed": {
+        "subject": "포켓몬스터",
+        "aspect": "두 가지 버전으로 나왔다",
+        "knowledgePoint": "교환을 유도한 게임 판매 방식",
+        "probableAnswer": "포켓몬스터"
+      },
+      "question": {
+        "ok": true,
+        "question": "1996년 적·녹 두 버전으로 나와, 버전마다 나오는 몬스터를 달리해 친구와 교환하게 만든 게임은?",
+        "answer": "포켓몬스터",
+        "acceptedAnswers": [
+          "포켓몬"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "두 버전을 모두 모아야 도감을 채울 수 있게 한 설계가 유명합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/2#005",
+      "seed": {
+        "subject": "게임보이",
+        "aspect": "흑백 화면 휴대용 게임기",
+        "knowledgePoint": "닌텐도의 휴대 게임기",
+        "probableAnswer": "게임보이"
+      },
+      "question": {
+        "ok": true,
+        "question": "1989년 닌텐도가 내놓은 흑백 화면의 휴대용 게임기로, 테트리스를 함께 팔아 크게 성공한 것은?",
+        "answer": "게임보이",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "건전지로 오래 쓸 수 있는 점도 인기 비결이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/2#006",
+      "seed": {
+        "subject": "아타리 쇼크",
+        "aspect": "게임이 안 팔려 사막에 묻었다",
+        "knowledgePoint": "1983년 북미 게임 시장 붕괴",
+        "probableAnswer": "아타리 쇼크"
+      },
+      "question": {
+        "ok": true,
+        "question": "1983년 질 낮은 게임이 쏟아져 북미 가정용 게임 시장이 무너진 사건으로, 팔리지 않은 게임을 사막에 묻었다는 이야기로 유명한 것은?",
+        "answer": "아타리 쇼크",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "이 사건 뒤 닌텐도는 게임 품질 심사를 엄격히 했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/2#007",
+      "seed": {
+        "subject": "소닉",
+        "aspect": "빠르게 달리는 파란 고슴도치",
+        "knowledgePoint": "세가의 마스코트 캐릭터",
+        "probableAnswer": "소닉"
+      },
+      "question": {
+        "ok": true,
+        "question": "빠르게 달리며 금빛 고리를 모으는 파란 고슴도치로, 세가의 마스코트 캐릭터는?",
+        "answer": "소닉",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "닌텐도의 마리오에 맞서려고 만든 캐릭터로 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/2#008",
+      "seed": {
+        "subject": "위(Wii)",
+        "aspect": "리모컨을 휘둘러 공을 친다",
+        "knowledgePoint": "동작 인식 컨트롤러로 게임 인구를 넓힌 닌텐도 게임기",
+        "probableAnswer": "위"
+      },
+      "question": {
+        "ok": true,
+        "question": "2006년 닌텐도가 내놓아, 리모컨처럼 생긴 컨트롤러를 휘둘러 테니스·볼링을 하게 만든 게임기는?",
+        "answer": "위",
+        "acceptedAnswers": [
+          "Wii"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "게임을 하지 않던 어른과 노인까지 끌어들였다는 평을 받습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

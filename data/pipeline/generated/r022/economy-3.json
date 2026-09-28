@@ -1,0 +1,318 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "economy/3",
+    "categoryPath": "인문·사회 > 경제·금융 상식 > 금융 상품·시장",
+    "midKey": "economy",
+    "subName": "금융 상품·시장",
+    "majorKey": "humanities",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:46:34.259Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보가 현재 금리·지수 값이라 중분류 경계(현재 시세에 의존하지 않는다)에 걸린다.",
+      "listedCandidates": 22,
+      "remainingUsable": 3,
+      "remainingUsableNote": "옵션·리츠·양적완화가 남았다.",
+      "estimatedCeiling": "실질 상한 14건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "채권",
+          "aspect": "빌려준 돈의 증서",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 0,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:16:27.215Z"
+  },
+  "items": [
+    {
+      "seedId": "economy/3#001",
+      "seed": {
+        "subject": "배당",
+        "aspect": "이익을 주주에게 나눈다",
+        "knowledgePoint": "회사가 번 돈을 주주에게 나눠 주는 것",
+        "probableAnswer": "배당"
+      },
+      "question": {
+        "ok": true,
+        "question": "회사가 벌어들인 이익의 일부를 주주에게 나눠 주는 것을 무엇이라 합니까?",
+        "answer": "배당",
+        "acceptedAnswers": [
+          "배당금"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "이익이 나도 배당하지 않고 재투자하는 회사도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "economy/3#002",
+      "seed": {
+        "subject": "펀드",
+        "aspect": "여럿의 돈을 모아 대신 굴린다",
+        "knowledgePoint": "전문가가 모은 돈을 운용하는 간접 투자 상품",
+        "probableAnswer": "펀드"
+      },
+      "question": {
+        "ok": true,
+        "question": "여러 사람의 돈을 모아 전문 운용사가 주식·채권 등에 대신 투자해 주는 간접 투자 상품은?",
+        "answer": "펀드",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "원금이 보장되지 않는 상품이 대부분입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "economy/3#003",
+      "seed": {
+        "subject": "상장지수펀드",
+        "aspect": "지수를 따라가며 주식처럼 사고판다",
+        "knowledgePoint": "거래소에서 주식처럼 거래되는 펀드",
+        "probableAnswer": "상장지수펀드"
+      },
+      "question": {
+        "ok": true,
+        "question": "코스피200 같은 지수를 따라가도록 만들어 주식처럼 거래소에서 사고파는 펀드는?",
+        "answer": "상장지수펀드",
+        "acceptedAnswers": [
+          "ETF"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "적은 돈으로 여러 종목에 나눠 투자하는 효과가 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "economy/3#004",
+      "seed": {
+        "subject": "코스피",
+        "aspect": "우리나라 대표 주가 지수",
+        "knowledgePoint": "유가증권시장 전체의 흐름을 나타내는 지수",
+        "probableAnswer": "코스피"
+      },
+      "question": {
+        "ok": true,
+        "question": "우리나라 유가증권시장에 상장된 주식 전체의 흐름을 나타내는 대표 주가 지수는?",
+        "answer": "코스피",
+        "acceptedAnswers": [
+          "KOSPI"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "1980년 1월 4일의 시가총액을 100으로 삼아 계산합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "economy/3#005",
+      "seed": {
+        "subject": "공매도",
+        "aspect": "없는 주식을 빌려 먼저 판다",
+        "knowledgePoint": "값이 내릴 것에 거는 거래 방식",
+        "probableAnswer": "공매도"
+      },
+      "question": {
+        "ok": true,
+        "question": "주가가 내릴 것을 예상하고 갖고 있지 않은 주식을 빌려 먼저 판 뒤 나중에 사서 갚는 거래는?",
+        "answer": "공매도",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "주가가 오르면 손실이 커질 수 있어 위험이 큰 거래입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "economy/3#006",
+      "seed": {
+        "subject": "예금자 보호",
+        "aspect": "은행이 망해도 일정액은 돌려준다",
+        "knowledgePoint": "금융기관 파산 때 예금을 보장하는 제도",
+        "probableAnswer": "예금자 보호"
+      },
+      "question": {
+        "ok": true,
+        "question": "은행이 망해도 예금보험공사가 1인당 일정 금액까지 예금을 돌려주는 제도는?",
+        "answer": "예금자 보호",
+        "acceptedAnswers": [
+          "예금자 보호 제도"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "보호 한도는 법으로 정하며, 상품에 따라 보호되지 않는 것도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "economy/3#007",
+      "seed": {
+        "subject": "복리",
+        "aspect": "이자에도 이자가 붙는다",
+        "knowledgePoint": "원금과 이자를 합친 금액에 다시 이자를 매기는 방식",
+        "probableAnswer": "복리"
+      },
+      "question": {
+        "ok": true,
+        "question": "원금에 붙은 이자에도 다시 이자가 붙는 계산 방식은?",
+        "answer": "복리",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "원금에만 이자가 붙는 방식은 단리라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "economy/3#008",
+      "seed": {
+        "subject": "선물",
+        "aspect": "미래의 값을 지금 정해 둔다",
+        "knowledgePoint": "정해진 날에 정한 값으로 사고팔기로 약속하는 거래",
+        "probableAnswer": "선물"
+      },
+      "question": {
+        "ok": true,
+        "question": "미래의 정해진 날에 미리 정한 값으로 사고팔기로 지금 약속하는 거래를 무엇이라 합니까?",
+        "answer": "선물",
+        "acceptedAnswers": [
+          "선물거래"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "값이 바뀔 위험을 미리 막으려는 데서 시작되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "economy/3#009",
+      "seed": {
+        "subject": "신용등급",
+        "aspect": "빌린 돈을 갚을 능력을 매긴다",
+        "knowledgePoint": "기업·국가의 채무 상환 능력을 평가한 등급",
+        "probableAnswer": "신용등급"
+      },
+      "question": {
+        "ok": true,
+        "question": "무디스·S&P 같은 평가사가 기업이나 국가의 빚 갚을 능력을 AAA 같은 기호로 매긴 것은?",
+        "answer": "신용등급",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "등급이 낮을수록 돈을 빌릴 때 이자를 더 내야 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "economy/3#010",
+      "seed": {
+        "subject": "분산 투자",
+        "aspect": "달걀을 한 바구니에 담지 마라",
+        "knowledgePoint": "여러 곳에 나눠 위험을 줄이는 원칙",
+        "probableAnswer": "분산 투자"
+      },
+      "question": {
+        "ok": true,
+        "question": "'달걀을 한 바구니에 담지 마라' 는 말로 요약되는, 여러 자산에 나눠 투자해 위험을 줄이는 원칙은?",
+        "answer": "분산 투자",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "한 곳이 떨어져도 전체 손실을 줄일 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "economy/3#011",
+      "seed": {
+        "subject": "비트코인",
+        "aspect": "중앙은행 없이 발행된다",
+        "knowledgePoint": "블록체인으로 거래를 기록하는 최초의 가상자산",
+        "probableAnswer": "비트코인"
+      },
+      "question": {
+        "ok": true,
+        "question": "2009년 사토시 나카모토라는 이름의 개발자가 내놓은, 블록체인으로 거래를 기록하는 최초의 가상자산은?",
+        "answer": "비트코인",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "개발자의 실제 정체는 지금도 밝혀지지 않았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

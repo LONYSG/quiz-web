@@ -1,0 +1,288 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "aerospace/5",
+    "categoryPath": "기술·의학 > 항공·우주 기술 > 인공위성·탐사선",
+    "midKey": "aerospace",
+    "subName": "인공위성·탐사선",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:53:24.952Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 9,
+      "shortfallReason": "★ 9건에서 멈췄다. 전역 대조에서 국제우주정거장이 기존과 같고, 아리랑 위성은 같은 라운드의 영화 아리랑과 답이 겹쳐 뺐다.",
+      "listedCandidates": 20,
+      "remainingUsable": 1,
+      "remainingUsableNote": "천리안 위성이 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다",
+      "droppedForOverlap": [
+        {
+          "subject": "스푸트니크",
+          "aspect": "최초의 인공위성",
+          "reason": "★ R021 발명 소분류에 있다"
+        },
+        {
+          "subject": "허블",
+          "aspect": "우주망원경",
+          "reason": "★ DB 에 이미 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "국제우주정거장",
+            "probableAnswer": "국제우주정거장",
+            "existing": "db:706",
+            "why": "기존이 '여러 나라가 모듈을 나눠 맡은 궤도 시설' 을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "아리랑 위성",
+            "probableAnswer": "아리랑",
+            "existing": "r022:kr-screen/1#001",
+            "why": "★ D-090 — 같은 라운드의 나운규 영화 「아리랑」과 정답이 같다. 지식은 다르지만 라운드 안 같은 답은 거절한다. 영화 쪽을 남긴다",
+            "replacedWith": "천리안"
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:21:41.958Z"
+  },
+  "items": [
+    {
+      "seedId": "aerospace/5#001",
+      "seed": {
+        "subject": "보이저 1호",
+        "aspect": "태양계를 벗어났다",
+        "knowledgePoint": "사람이 만든 것 가운데 가장 멀리 간 탐사선",
+        "probableAnswer": "보이저 1호"
+      },
+      "question": {
+        "ok": true,
+        "question": "1977년 발사되어 2012년 태양권을 벗어나 성간 우주에 들어선, 사람이 만든 물체 가운데 가장 멀리 간 탐사선은?",
+        "answer": "보이저 1호",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "출발 후 수십 년이 지난 지금도 지구와 신호를 주고받아 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/5#002",
+      "seed": {
+        "subject": "골든 레코드",
+        "aspect": "외계 문명에게 보낸 음반",
+        "knowledgePoint": "보이저에 실은 지구의 소리와 음악",
+        "probableAnswer": "골든 레코드"
+      },
+      "question": {
+        "ok": true,
+        "question": "보이저 탐사선에 실려 외계 문명이 발견할 경우를 대비해 지구의 소리와 음악, 인사말을 담은 금빛 음반은?",
+        "answer": "골든 레코드",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "칼 세이건이 담을 내용을 고르는 일을 이끌었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/5#003",
+      "seed": {
+        "subject": "다누리",
+        "aspect": "우리나라 첫 달 궤도선",
+        "knowledgePoint": "달을 도는 우리나라의 첫 탐사선",
+        "probableAnswer": "다누리"
+      },
+      "question": {
+        "ok": true,
+        "question": "2022년 발사되어 달 궤도를 돌며 관측하는, 우리나라의 첫 달 탐사선은?",
+        "answer": "다누리",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "\"달을 누리다\" 라는 뜻으로 공모를 거쳐 지은 이름입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/5#004",
+      "seed": {
+        "subject": "GPS",
+        "aspect": "위성 여러 대로 위치를 잰다",
+        "knowledgePoint": "위성 신호로 위치를 알아내는 체계",
+        "probableAnswer": "GPS"
+      },
+      "question": {
+        "ok": true,
+        "question": "하늘에 떠 있는 여러 위성의 신호가 도착하는 시간 차이로 지구 위의 위치를 알아내는, 미국이 운영하는 위성 항법 체계는?",
+        "answer": "GPS",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "위치를 정확히 알려면 적어도 네 개의 위성 신호가 필요합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/5#005",
+      "seed": {
+        "subject": "큐리오시티",
+        "aspect": "화성 표면을 달린다",
+        "knowledgePoint": "화성을 탐사하는 무인 탐사차",
+        "probableAnswer": "큐리오시티"
+      },
+      "question": {
+        "ok": true,
+        "question": "2012년 화성에 착륙해 표면을 달리며 암석을 조사하고, 옛날 화성에 물이 흘렀다는 증거를 찾은 미국 항공우주국의 탐사차는?",
+        "answer": "큐리오시티",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "이름은 학생 공모로 정해졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/5#006",
+      "seed": {
+        "subject": "뉴호라이즌스",
+        "aspect": "명왕성을 가까이서 찍었다",
+        "knowledgePoint": "명왕성을 처음 근접 관측한 탐사선",
+        "probableAnswer": "뉴호라이즌스"
+      },
+      "question": {
+        "ok": true,
+        "question": "2015년 명왕성을 처음으로 가까이 지나며 하트 모양 지형을 찍어 보낸 탐사선은?",
+        "answer": "뉴호라이즌스",
+        "acceptedAnswers": [
+          "뉴 호라이즌스"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "발사 뒤 명왕성은 행성에서 왜소행성으로 분류가 바뀌었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/5#007",
+      "seed": {
+        "subject": "우주 쓰레기",
+        "aspect": "궤도에 떠도는 파편",
+        "knowledgePoint": "버려진 위성과 파편이 궤도를 위협하는 문제",
+        "probableAnswer": "우주 쓰레기"
+      },
+      "question": {
+        "ok": true,
+        "question": "수명이 다한 위성과 로켓 잔해, 부딪혀 생긴 파편 등이 궤도를 떠돌며 다른 위성을 위협하는 것을 무엇이라 합니까?",
+        "answer": "우주 쓰레기",
+        "acceptedAnswers": [
+          "우주 잔해"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "파편끼리 부딪혀 더 많은 파편이 생기는 연쇄 충돌도 걱정거리입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/5#008",
+      "seed": {
+        "subject": "카시니",
+        "aspect": "토성에 뛰어들며 임무를 마쳤다",
+        "knowledgePoint": "토성을 탐사한 무인 탐사선",
+        "probableAnswer": "카시니"
+      },
+      "question": {
+        "ok": true,
+        "question": "13년 동안 토성과 위성들을 탐사하다가 2017년 스스로 토성 대기로 뛰어들어 임무를 마친 탐사선은?",
+        "answer": "카시니",
+        "acceptedAnswers": [
+          "카시니하위헌스"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "생명체 가능성이 있는 위성을 오염시키지 않으려고 이렇게 끝냈습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/5#009",
+      "seed": {
+        "subject": "천리안 위성",
+        "aspect": "한자리에서 날씨를 지켜본다",
+        "knowledgePoint": "정지궤도에서 기상과 해양을 관측하는 우리 위성",
+        "probableAnswer": "천리안"
+      },
+      "question": {
+        "ok": true,
+        "question": "2010년 발사되어 적도 상공의 정지궤도에서 한반도의 날씨와 바다를 지켜보는 우리나라의 위성은?",
+        "answer": "천리안",
+        "acceptedAnswers": [
+          "천리안 위성"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "지구 자전과 같은 속도로 돌아 늘 같은 곳을 내려다봅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

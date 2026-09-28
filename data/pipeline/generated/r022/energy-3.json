@@ -1,0 +1,303 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "energy/3",
+    "categoryPath": "기술·의학 > 에너지·환경 기술 > 자원·연료",
+    "midKey": "energy",
+    "subName": "자원·연료",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:53:24.956Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 매장량 순위·유가라 시간이 지나면 답이 바뀐다.",
+      "listedCandidates": 20,
+      "remainingUsable": 2,
+      "remainingUsableNote": "오일샌드·옥탄가가 남았다.",
+      "estimatedCeiling": "실질 상한 12건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "석탄",
+          "aspect": "화석 연료",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "수소 연료",
+            "probableAnswer": "수소",
+            "existing": "db:94",
+            "whyDifferent": "기존은 원자번호 1 인 원소를, 이쪽은 태우면 물만 나오는 연료로서의 수소를 묻는다"
+          },
+          {
+            "subject": "바이오에탄올",
+            "probableAnswer": "바이오에탄올",
+            "existing": "db:844",
+            "whyDifferent": "기존은 소독용 에탄올 농도, 이쪽은 식물로 만든 연료다"
+          }
+        ],
+        "checked": 10,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:21:41.961Z"
+  },
+  "items": [
+    {
+      "seedId": "energy/3#001",
+      "seed": {
+        "subject": "분별 증류",
+        "aspect": "끓는점 차이로 원유를 나눈다",
+        "knowledgePoint": "원유에서 휘발유·등유·경유를 갈라 내는 방법",
+        "probableAnswer": "분별 증류"
+      },
+      "question": {
+        "ok": true,
+        "question": "원유를 가열한 뒤 끓는점의 차이를 이용해 LPG·휘발유·등유·경유 등으로 나누는 방법은?",
+        "answer": "분별 증류",
+        "acceptedAnswers": [
+          "분별증류법"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "높은 탑 안에서 위로 갈수록 끓는점이 낮은 성분이 모입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/3#002",
+      "seed": {
+        "subject": "액화천연가스",
+        "aspect": "얼려서 배로 나른다",
+        "knowledgePoint": "천연가스를 차갑게 액화해 부피를 줄인 것",
+        "probableAnswer": "액화천연가스"
+      },
+      "question": {
+        "ok": true,
+        "question": "천연가스를 영하 160℃ 가까이 냉각해 액체로 만들어 부피를 약 600분의 1로 줄인 것으로, 배로 실어 나를 수 있게 한 연료는?",
+        "answer": "액화천연가스",
+        "acceptedAnswers": [
+          "LNG"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "액화석유가스(LPG)와는 성분이 다릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/3#003",
+      "seed": {
+        "subject": "셰일가스",
+        "aspect": "암석 틈에 갇혀 있다",
+        "knowledgePoint": "수압 파쇄로 뽑아 에너지 판도를 바꾼 가스",
+        "probableAnswer": "셰일가스"
+      },
+      "question": {
+        "ok": true,
+        "question": "진흙이 굳은 퇴적암 틈에 갇혀 있어 물을 세게 쏘아 암석을 깨는 수압 파쇄법으로 뽑아내며, 미국을 에너지 수출국으로 바꿔 놓은 가스는?",
+        "answer": "셰일가스",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "지하수 오염과 지진 유발 논란도 함께 따라다닙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/3#004",
+      "seed": {
+        "subject": "희토류",
+        "aspect": "적은 양이 첨단 제품에 꼭 필요하다",
+        "knowledgePoint": "전자제품·자석에 쓰이는 원소들과 자원 무기화",
+        "probableAnswer": "희토류"
+      },
+      "question": {
+        "ok": true,
+        "question": "스칸듐·이트륨과 란타넘족을 합친 17가지 원소로, 적은 양이 스마트폰·전기차 모터의 자석에 꼭 필요해 자원 무기화 논란이 있는 것은?",
+        "answer": "희토류",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "\"드물다\" 는 이름과 달리 매장량보다 정제가 어렵다는 점이 문제로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/3#005",
+      "seed": {
+        "subject": "우라늄",
+        "aspect": "원자력 발전의 연료",
+        "knowledgePoint": "핵분열에 쓰이는 원소와 농축",
+        "probableAnswer": "우라늄"
+      },
+      "question": {
+        "ok": true,
+        "question": "원자력 발전소에서 핵분열을 일으키는 연료로 쓰이며, 쓰기 전에 분열이 잘 되는 성분의 비율을 높이는 농축을 거치는 원소는?",
+        "answer": "우라늄",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "천연 상태에서는 분열이 잘 되는 성분이 1%도 되지 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/3#006",
+      "seed": {
+        "subject": "수소 연료",
+        "aspect": "태우면 물만 나온다",
+        "knowledgePoint": "연료 전지와 수소차의 에너지원",
+        "probableAnswer": "수소"
+      },
+      "question": {
+        "ok": true,
+        "question": "연료 전지에서 산소와 반응해 전기를 만들고 물만 내놓아, 친환경 자동차의 연료로 주목받는 기체는?",
+        "answer": "수소",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "만들 때 화석 연료를 쓰면 이산화탄소가 나온다는 한계도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/3#007",
+      "seed": {
+        "subject": "바이오에탄올",
+        "aspect": "옥수수나 사탕수수로 만든다",
+        "knowledgePoint": "식물을 발효해 얻는 연료와 식량 논쟁",
+        "probableAnswer": "바이오에탄올"
+      },
+      "question": {
+        "ok": true,
+        "question": "옥수수나 사탕수수의 당분을 발효해 만든 연료용 알코올로, 곡물 가격을 올린다는 식량 논쟁을 낳은 것은?",
+        "answer": "바이오에탄올",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "브라질은 사탕수수로 만든 이 연료를 자동차에 널리 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/3#008",
+      "seed": {
+        "subject": "배럴",
+        "aspect": "원유를 세는 단위",
+        "knowledgePoint": "석유의 양을 나타내는 통 단위",
+        "probableAnswer": "배럴"
+      },
+      "question": {
+        "ok": true,
+        "question": "원유의 양을 셀 때 쓰는 단위로, 약 159L 에 해당하는 통 하나를 가리키는 말은?",
+        "answer": "배럴",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "19세기 미국에서 원유를 나무통에 담아 나르던 데서 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/3#009",
+      "seed": {
+        "subject": "OPEC",
+        "aspect": "산유국들이 생산량을 조절한다",
+        "knowledgePoint": "석유수출국기구",
+        "probableAnswer": "석유수출국기구"
+      },
+      "question": {
+        "ok": true,
+        "question": "1960년 사우디아라비아·이란·이라크·쿠웨이트·베네수엘라가 만들어 원유 생산량을 조절해 온 산유국들의 기구는?",
+        "answer": "석유수출국기구",
+        "acceptedAnswers": [
+          "OPEC"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "1970년대 석유 파동 때 큰 영향력을 보였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "energy/3#010",
+      "seed": {
+        "subject": "가채연수",
+        "aspect": "지금처럼 쓰면 몇 해 남았나",
+        "knowledgePoint": "확인 매장량을 연간 생산량으로 나눈 값",
+        "probableAnswer": "가채연수"
+      },
+      "question": {
+        "ok": true,
+        "question": "지금까지 확인된 매장량을 한 해 생산량으로 나누어, 이대로 쓰면 앞으로 몇 해를 더 캘 수 있는지 나타낸 값은?",
+        "answer": "가채연수",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "새 매장지가 발견되거나 기술이 발전하면 이 값은 늘어납니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

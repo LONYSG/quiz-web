@@ -1,0 +1,253 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "world-cinema/3",
+    "categoryPath": "문화·예술 > 세계 영화 > 유럽·아시아 영화",
+    "midKey": "world-cinema",
+    "subName": "유럽·아시아 영화",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:59:13.406Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 8,
+      "shortfallReason": "★ 8건에서 멈췄다. 전역 대조에서 누벨바그가 기존 감독 소분류와 같아 버렸다.",
+      "listedCandidates": 19,
+      "remainingUsable": 2,
+      "remainingUsableNote": "왕가위·도그마 95가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "인생은 아름다워",
+          "aspect": "수용소의 아버지",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        },
+        {
+          "subject": "구로사와 아키라",
+          "aspect": "7인의 사무라이",
+          "reason": "★ R020 에 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "누벨바그",
+            "probableAnswer": "누벨바그",
+            "existing": "db:1963",
+            "why": "기존이 '비평가들이 카메라를 든 프랑스 영화 흐름' 으로 같은 지식을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 9,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:24:55.552Z"
+  },
+  "items": [
+    {
+      "seedId": "world-cinema/3#001",
+      "seed": {
+        "subject": "네오리얼리즘",
+        "aspect": "전쟁 뒤 거리에서 비전문 배우로 찍었다",
+        "knowledgePoint": "전후 이탈리아 영화 사조",
+        "probableAnswer": "네오리얼리즘"
+      },
+      "question": {
+        "ok": true,
+        "question": "제2차 세계대전 뒤 이탈리아에서 스튜디오 대신 거리에서, 전문 배우 대신 일반인을 세워 가난한 현실을 찍은 영화 사조는?",
+        "answer": "네오리얼리즘",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "\"신사실주의\" 라고도 옮깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/3#002",
+      "seed": {
+        "subject": "자전거 도둑",
+        "aspect": "일자리에 필요한 자전거를 잃는다",
+        "knowledgePoint": "이탈리아 네오리얼리즘의 대표작",
+        "probableAnswer": "자전거 도둑"
+      },
+      "question": {
+        "ok": true,
+        "question": "일자리를 얻는 데 꼭 필요한 자전거를 잃어버린 아버지가 아들과 함께 로마 거리를 헤매는, 비토리오 데 시카의 1948년 영화는?",
+        "answer": "자전거 도둑",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "이탈리아 네오리얼리즘의 대표작으로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/3#003",
+      "seed": {
+        "subject": "발리우드",
+        "aspect": "노래와 춤이 빠지지 않는다",
+        "knowledgePoint": "인도 뭄바이의 영화 산업",
+        "probableAnswer": "발리우드"
+      },
+      "question": {
+        "ok": true,
+        "question": "인도 뭄바이의 옛 이름과 할리우드를 합쳐 부르는, 노래와 춤이 빠지지 않는 인도 영화 산업은?",
+        "answer": "발리우드",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "한 해에 만드는 영화 편수가 세계에서 손꼽히게 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/3#004",
+      "seed": {
+        "subject": "이소룡",
+        "aspect": "쿵후 영화를 세계에 알렸다",
+        "knowledgePoint": "홍콩 무술 영화의 상징이 된 배우",
+        "probableAnswer": "이소룡"
+      },
+      "question": {
+        "ok": true,
+        "question": "1970년대 홍콩 무술 영화로 쿵후를 세계에 알리고 32세에 세상을 떠난 배우로, \"용쟁호투\" 의 주인공은?",
+        "answer": "이소룡",
+        "acceptedAnswers": [
+          "브루스 리"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "절권도라는 무술을 만든 사람으로도 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/3#005",
+      "seed": {
+        "subject": "오우삼",
+        "aspect": "비둘기와 쌍권총",
+        "knowledgePoint": "홍콩 누아르를 이끈 감독의 연출 표지",
+        "probableAnswer": "오우삼"
+      },
+      "question": {
+        "ok": true,
+        "question": "\"영웅본색\" 을 만들어 홍콩 누아르를 이끌었고, 날아오르는 비둘기와 쌍권총 액션이 연출의 표지로 알려진 감독은?",
+        "answer": "오우삼",
+        "acceptedAnswers": [
+          "존 우"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "뒤에 할리우드로 건너가 \"페이스 오프\" 등을 만들었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/3#006",
+      "seed": {
+        "subject": "시네마 천국",
+        "aspect": "영사기사와 소년의 우정",
+        "knowledgePoint": "이탈리아 시골 극장을 배경으로 한 영화",
+        "probableAnswer": "시네마 천국"
+      },
+      "question": {
+        "ok": true,
+        "question": "이탈리아 시골 마을 극장의 영사기사와 영화를 사랑한 소년의 우정을 그린 주세페 토르나토레의 1988년 영화는?",
+        "answer": "시네마 천국",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "검열로 잘려 나간 키스 장면들을 모은 마지막 장면이 유명합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/3#007",
+      "seed": {
+        "subject": "아멜리에",
+        "aspect": "몽마르트르의 엉뚱한 여인",
+        "knowledgePoint": "파리를 배경으로 한 2001년 프랑스 영화",
+        "probableAnswer": "아멜리에"
+      },
+      "question": {
+        "ok": true,
+        "question": "파리 몽마르트르의 카페에서 일하는 엉뚱한 여인이 남몰래 이웃을 돕는 이야기를 그린 2001년 프랑스 영화는?",
+        "answer": "아멜리에",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "장 피에르 죄네가 감독했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/3#008",
+      "seed": {
+        "subject": "라쇼몽 효과",
+        "aspect": "같은 사건을 저마다 다르게 기억한다",
+        "knowledgePoint": "한 영화에서 이름이 온 증언 불일치 현상",
+        "probableAnswer": "라쇼몽 효과"
+      },
+      "question": {
+        "ok": true,
+        "question": "같은 사건을 겪은 사람들이 저마다 다르게 증언해 진실을 가리기 어려운 현상으로, 구로사와 아키라의 1950년 영화 제목에서 이름이 온 것은?",
+        "answer": "라쇼몽 효과",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "법정 증언이나 역사 서술의 문제를 말할 때 자주 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

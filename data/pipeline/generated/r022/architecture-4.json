@@ -1,0 +1,276 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "architecture/4",
+    "categoryPath": "문화·예술 > 건축 > 한국 건축",
+    "midKey": "architecture",
+    "subName": "한국 건축",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:59:13.421Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 8,
+      "shortfallReason": "★ 8건에서 멈췄다. 전역 대조에서 온돌·대청·처마가 전통 의식주 소분류와 같은 지식으로 걸려 버렸다. 남은 후보가 공포 양식 세부라 전공 지식이다.",
+      "listedCandidates": 21,
+      "remainingUsable": 2,
+      "remainingUsableNote": "주심포·익공이 남았다.",
+      "estimatedCeiling": "실질 상한 13건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "근정전",
+          "aspect": "경복궁 정전",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        },
+        {
+          "subject": "수원 화성",
+          "aspect": "정약용 설계",
+          "reason": "★ DB 에 이미 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "온돌",
+            "probableAnswer": "온돌",
+            "existing": "db:1076",
+            "why": "기존(전통 의식주)이 같은 난방 방식을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "대청마루",
+            "probableAnswer": "대청마루",
+            "existing": "db:1077",
+            "why": "기존이 '여름을 나기 위한 마루' 로 같은 지식을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "처마",
+            "probableAnswer": "처마",
+            "existing": "db:1082",
+            "why": "기존이 해를 막고 들이는 지붕 끝으로 같은 지식을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [
+          {
+            "subject": "배흘림기둥",
+            "probableAnswer": "배흘림기둥",
+            "existing": "db:744",
+            "whyDifferent": "원리는 닮았지만 기존은 그리스 신전의 엔타시스, 이쪽은 한국 건축의 이름과 부석사 무량수전이다. ★ 같은 원리라 VERIFY 가 same 으로 볼 수 있다"
+          }
+        ],
+        "checked": 11,
+        "hits": 4,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:24:55.570Z"
+  },
+  "items": [
+    {
+      "seedId": "architecture/4#001",
+      "seed": {
+        "subject": "단청",
+        "aspect": "궁궐과 절에 입힌 색",
+        "knowledgePoint": "목조 건물을 보호하고 꾸미는 채색",
+        "probableAnswer": "단청"
+      },
+      "question": {
+        "ok": true,
+        "question": "궁궐과 절의 목조 건물에 청·적·황·백·흑의 다섯 색으로 무늬를 그려 넣어 나무를 보호하고 아름답게 꾸미는 것은?",
+        "answer": "단청",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "나무가 썩거나 벌레 먹는 것을 막는 역할도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/4#002",
+      "seed": {
+        "subject": "배흘림기둥",
+        "aspect": "가운데가 조금 불룩하다",
+        "knowledgePoint": "부석사 무량수전으로 알려진 기둥 양식",
+        "probableAnswer": "배흘림기둥"
+      },
+      "question": {
+        "ok": true,
+        "question": "기둥 가운데를 조금 불룩하게 만들어 멀리서 보면 곧고 안정되게 보이게 하는 기둥 양식으로, 부석사 무량수전의 기둥으로 유명한 것은?",
+        "answer": "배흘림기둥",
+        "acceptedAnswers": [
+          "배흘림"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "가운데가 가늘어 보이는 착시를 바로잡는 수법입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/4#003",
+      "seed": {
+        "subject": "다포",
+        "aspect": "기둥 사이에도 공포를 놓는다",
+        "knowledgePoint": "화려한 지붕을 받치는 공포 양식",
+        "probableAnswer": "다포"
+      },
+      "question": {
+        "ok": true,
+        "question": "지붕의 무게를 받치는 짜임새인 공포를 기둥 위뿐 아니라 기둥과 기둥 사이에도 여러 개 놓는 화려한 양식은?",
+        "answer": "다포",
+        "acceptedAnswers": [
+          "다포 양식"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "기둥 위에만 놓는 양식은 주심포라 합니다. 궁궐 정전에 많이 쓰였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/4#004",
+      "seed": {
+        "subject": "종묘",
+        "aspect": "옆으로 길게 뻗은 건물",
+        "knowledgePoint": "왕과 왕비의 신주를 모신 사당",
+        "probableAnswer": "종묘"
+      },
+      "question": {
+        "ok": true,
+        "question": "조선 왕과 왕비의 신주를 모시고 제사를 지낸 곳으로, 옆으로 길게 뻗은 정전이 특징이며 1995년 세계유산에 오른 곳은?",
+        "answer": "종묘",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "이곳에서 지내는 제사와 음악도 인류무형문화유산입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/4#005",
+      "seed": {
+        "subject": "장경판전",
+        "aspect": "창 크기를 달리해 바람을 들인다",
+        "knowledgePoint": "팔만대장경을 보관한 해인사 건물과 그 통풍",
+        "probableAnswer": "장경판전"
+      },
+      "question": {
+        "ok": true,
+        "question": "팔만대장경을 보관하는 해인사의 건물로, 앞뒤 벽의 창 크기를 위아래 다르게 내어 바람이 저절로 드나들게 한 것은?",
+        "answer": "장경판전",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "이 덕분에 목판이 수백 년 동안 썩지 않았다고 평가됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/4#006",
+      "seed": {
+        "subject": "초가",
+        "aspect": "볏짚으로 지붕을 인다",
+        "knowledgePoint": "서민의 집과 해마다 새로 잇는 지붕",
+        "probableAnswer": "초가"
+      },
+      "question": {
+        "ok": true,
+        "question": "볏짚이나 억새로 지붕을 이은 서민의 집으로, 지붕을 해마다 새로 덮어 주어야 하는 것은?",
+        "answer": "초가",
+        "acceptedAnswers": [
+          "초가집"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "1970년대 새마을 운동 때 지붕이 슬레이트로 많이 바뀌었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/4#007",
+      "seed": {
+        "subject": "창덕궁",
+        "aspect": "자연 지형을 따라 앉혔다",
+        "knowledgePoint": "세계유산에 오른 조선의 궁궐과 후원",
+        "probableAnswer": "창덕궁"
+      },
+      "question": {
+        "ok": true,
+        "question": "산자락의 자연 지형을 거스르지 않고 건물을 앉혀 1997년 세계유산에 오른 조선의 궁궐로, 후원이 아름다운 것은?",
+        "answer": "창덕궁",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "임진왜란 뒤 오랫동안 조선의 으뜸 궁궐 역할을 했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "architecture/4#008",
+      "seed": {
+        "subject": "누마루",
+        "aspect": "기둥으로 한층 띄운 마루",
+        "knowledgePoint": "사랑채에서 경치를 보려 높인 마루",
+        "probableAnswer": "누마루"
+      },
+      "question": {
+        "ok": true,
+        "question": "한옥 사랑채 등에서 기둥을 세워 바닥을 한층 높이 띄워 경치를 내려다볼 수 있게 만든 마루는?",
+        "answer": "누마루",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "누각처럼 높다는 뜻에서 이름이 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

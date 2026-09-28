@@ -1,0 +1,289 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "esports/3",
+    "categoryPath": "스포츠·게임 > e스포츠·비디오게임 > PC·온라인 게임",
+    "midKey": "esports",
+    "subName": "PC·온라인 게임",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:02:00.752Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 9,
+      "shortfallReason": "★ 9건에서 멈췄다. 전역 대조에서 스타크래프트(고전 게임)·부분 유료화(게임 용어)가 기존과 같아 버렸다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "서든어택이 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "리그 오브 레전드",
+          "aspect": "5대5 AOS",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "스타크래프트",
+            "probableAnswer": "스타크래프트",
+            "existing": "db:1631",
+            "why": "기존이 PC방 보급·e스포츠 출발점으로 같은 지식을 묻는다",
+            "replacedWith": "서든어택"
+          },
+          {
+            "subject": "부분 유료화",
+            "probableAnswer": "부분 유료화",
+            "existing": "db:944",
+            "why": "기존(게임 용어)이 같은 정의로 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [
+          {
+            "subject": "메이플스토리",
+            "probableAnswer": "메이플스토리",
+            "existing": "db:316",
+            "whyDifferent": "표기 변형 포함 관계일 뿐이다 — 기존은 캐나다 국기의 단풍잎이다"
+          }
+        ],
+        "checked": 11,
+        "hits": 3,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:29:08.415Z"
+  },
+  "items": [
+    {
+      "seedId": "esports/3#001",
+      "seed": {
+        "subject": "바람의 나라",
+        "aspect": "그래픽 온라인 게임의 시작",
+        "knowledgePoint": "1996년 나온 한국 온라인 게임",
+        "probableAnswer": "바람의 나라"
+      },
+      "question": {
+        "ok": true,
+        "question": "1996년 넥슨이 서비스를 시작한 한국 온라인 게임으로, 가장 오래 서비스된 그래픽 온라인 게임 가운데 하나로 꼽히는 것은?",
+        "answer": "바람의 나라",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "김진의 만화를 바탕으로 만들었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/3#002",
+      "seed": {
+        "subject": "리니지",
+        "aspect": "혈맹과 공성전",
+        "knowledgePoint": "엔씨소프트의 온라인 게임",
+        "probableAnswer": "리니지"
+      },
+      "question": {
+        "ok": true,
+        "question": "1998년 엔씨소프트가 내놓아 혈맹과 공성전으로 유명해진 온라인 게임은?",
+        "answer": "리니지",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "신일숙의 만화를 바탕으로 만들었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/3#003",
+      "seed": {
+        "subject": "MMORPG",
+        "aspect": "많은 사람이 한 세계에서 논다",
+        "knowledgePoint": "대규모 다중 사용자 온라인 롤플레잉 게임",
+        "probableAnswer": "MMORPG"
+      },
+      "question": {
+        "ok": true,
+        "question": "수많은 사람이 한 가상 세계에 동시에 접속해 각자 캐릭터를 키우는 온라인 게임 장르를 영문 약어로 무엇이라 합니까?",
+        "answer": "MMORPG",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "대규모 다중 사용자 온라인 롤플레잉 게임의 약자입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/3#004",
+      "seed": {
+        "subject": "PC방",
+        "aspect": "1990년대 말 골목마다 생겼다",
+        "knowledgePoint": "한국 게임 문화를 만든 가게",
+        "probableAnswer": "PC방"
+      },
+      "question": {
+        "ok": true,
+        "question": "1990년대 말 초고속 인터넷과 함께 골목마다 생겨, 돈을 내고 시간 단위로 컴퓨터 게임을 하는 한국의 가게는?",
+        "answer": "PC방",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "한국 e스포츠가 성장한 바탕으로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/3#005",
+      "seed": {
+        "subject": "배틀그라운드",
+        "aspect": "100명 가운데 마지막 1명",
+        "knowledgePoint": "한국 회사가 만든 배틀로얄 게임",
+        "probableAnswer": "배틀그라운드"
+      },
+      "question": {
+        "ok": true,
+        "question": "한국의 크래프톤이 만든 배틀로얄 게임으로, 100명이 한 섬에 떨어져 마지막 한 명이나 한 팀이 남을 때까지 싸우는 것은?",
+        "answer": "배틀그라운드",
+        "acceptedAnswers": [
+          "배그",
+          "PUBG"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "2017년 나와 전 세계적으로 크게 흥행했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/3#006",
+      "seed": {
+        "subject": "마인크래프트",
+        "aspect": "네모난 블록으로 세상을 짓는다",
+        "knowledgePoint": "가장 많이 팔린 게임 가운데 하나",
+        "probableAnswer": "마인크래프트"
+      },
+      "question": {
+        "ok": true,
+        "question": "네모난 블록을 캐고 쌓아 세상을 마음대로 짓는 게임으로, 역대 가장 많이 팔린 비디오 게임 가운데 하나로 꼽히는 것은?",
+        "answer": "마인크래프트",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "교육용으로도 널리 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/3#007",
+      "seed": {
+        "subject": "카트라이더",
+        "aspect": "귀여운 캐릭터들이 카트로 달린다",
+        "knowledgePoint": "넥슨의 레이싱 게임",
+        "probableAnswer": "카트라이더"
+      },
+      "question": {
+        "ok": true,
+        "question": "넥슨이 2004년 내놓은 레이싱 게임으로, 귀여운 캐릭터들이 카트를 타고 드리프트로 경주하는 것은?",
+        "answer": "카트라이더",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "\"크레이지 아케이드\" 의 캐릭터들이 나옵니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/3#008",
+      "seed": {
+        "subject": "메이플스토리",
+        "aspect": "옆으로 걷는 2D 세계",
+        "knowledgePoint": "넥슨의 횡스크롤 온라인 게임",
+        "probableAnswer": "메이플스토리"
+      },
+      "question": {
+        "ok": true,
+        "question": "넥슨이 2003년 내놓은, 캐릭터가 옆으로 걸으며 모험하는 2D 횡스크롤 온라인 게임은?",
+        "answer": "메이플스토리",
+        "acceptedAnswers": [
+          "메이플"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "버섯 모양 몬스터가 대표 캐릭터처럼 알려졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "esports/3#009",
+      "seed": {
+        "subject": "서든어택",
+        "aspect": "PC방을 휩쓴 한국 총싸움 게임",
+        "knowledgePoint": "한국에서 크게 유행한 1인칭 슈팅 온라인 게임",
+        "probableAnswer": "서든어택"
+      },
+      "question": {
+        "ok": true,
+        "question": "2005년 서비스를 시작해 한때 PC방 점유율 1위를 차지한, 한국에서 크게 유행한 1인칭 총싸움 온라인 게임은?",
+        "answer": "서든어택",
+        "acceptedAnswers": [
+          "서든"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "한국 FPS 게임 대중화를 이끈 게임으로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

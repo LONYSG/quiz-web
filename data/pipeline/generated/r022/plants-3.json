@@ -1,0 +1,296 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "plants/3",
+    "categoryPath": "자연과학 > 식물 > 작물·과일",
+    "midKey": "plants",
+    "subName": "작물·과일",
+    "majorKey": "science",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:50:38.499Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 전역 대조에서 뿌리혹박테리아가 plants/1(나무)와 같은 지식으로 걸려 버렸다. 남은 후보는 품종 이름이다.",
+      "listedCandidates": 22,
+      "remainingUsable": 3,
+      "remainingUsableNote": "인삼·파인애플·커피나무가 남았다.",
+      "estimatedCeiling": "실질 상한 14건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "쌀",
+          "aspect": "주식",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "콩의 뿌리혹",
+            "probableAnswer": "뿌리혹박테리아",
+            "existing": "db:1859",
+            "why": "기존이 콩과 식물의 질소 고정 미생물을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:19:29.948Z"
+  },
+  "items": [
+    {
+      "seedId": "plants/3#001",
+      "seed": {
+        "subject": "고추",
+        "aspect": "임진왜란 무렵 들어왔다",
+        "knowledgePoint": "고추가 전래된 시기와 김치의 변화",
+        "probableAnswer": "고추"
+      },
+      "question": {
+        "ok": true,
+        "question": "아메리카가 원산지로 임진왜란 무렵 우리나라에 들어왔다고 알려져, 그 뒤 김치를 붉게 바꿔 놓은 작물은?",
+        "answer": "고추",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "그 전의 김치는 소금에 절인 채소에 가까웠습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "plants/3#002",
+      "seed": {
+        "subject": "옥수수",
+        "aspect": "아메리카에서 건너온 곡물",
+        "knowledgePoint": "신대륙 원산 작물의 세계적 확산",
+        "probableAnswer": "옥수수"
+      },
+      "question": {
+        "ok": true,
+        "question": "아메리카 원주민이 오래전부터 길러 온 곡물로, 콜럼버스 이후 세계로 퍼져 지금은 쌀·밀과 함께 3대 곡물로 꼽히는 것은?",
+        "answer": "옥수수",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "가축 사료와 연료로도 많이 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "plants/3#003",
+      "seed": {
+        "subject": "토마토",
+        "aspect": "과일인가 채소인가",
+        "knowledgePoint": "식물학과 법적 분류가 갈린 사례",
+        "probableAnswer": "토마토"
+      },
+      "question": {
+        "ok": true,
+        "question": "식물학으로는 열매이지만, 1893년 미국 대법원이 관세 문제로 채소라고 판결한 작물은?",
+        "answer": "토마토",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "요리에서 쓰는 방식을 기준으로 판단했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "plants/3#004",
+      "seed": {
+        "subject": "바나나",
+        "aspect": "씨가 없어 복제로 번식한다",
+        "knowledgePoint": "유전적으로 같아 병에 약한 재배 방식",
+        "probableAnswer": "바나나"
+      },
+      "question": {
+        "ok": true,
+        "question": "우리가 먹는 품종은 씨가 거의 없어 뿌리에서 난 새싹을 옮겨 심어 늘리기 때문에, 병 하나가 돌면 전 세계 농장이 위협받는 과일은?",
+        "answer": "바나나",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "1950년대에 주력 품종 그로 미셸이 병으로 무너진 일이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "plants/3#005",
+      "seed": {
+        "subject": "접붙이기",
+        "aspect": "맛있는 품종을 튼튼한 뿌리에 붙인다",
+        "knowledgePoint": "과일나무를 번식시키는 방법",
+        "probableAnswer": "접붙이기"
+      },
+      "question": {
+        "ok": true,
+        "question": "맛있는 품종의 가지를 튼튼한 다른 나무의 뿌리 쪽 줄기에 붙여 길러 과일나무를 늘리는 방법은?",
+        "answer": "접붙이기",
+        "acceptedAnswers": [
+          "접목"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "씨를 심으면 부모와 다른 맛이 나와서 이 방법을 씁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "plants/3#006",
+      "seed": {
+        "subject": "고구마",
+        "aspect": "통신사가 들여왔다",
+        "knowledgePoint": "조선 후기 구황 작물로 전해진 고구마",
+        "probableAnswer": "고구마"
+      },
+      "question": {
+        "ok": true,
+        "question": "1763년 조선통신사로 일본에 간 조엄이 쓰시마에서 들여와 흉년에 굶주림을 덜어 주는 구황 작물이 된 것은?",
+        "answer": "고구마",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "\"감저\" 라 불리다가 이름이 고구마로 굳어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "plants/3#007",
+      "seed": {
+        "subject": "딸기",
+        "aspect": "씨가 겉에 붙어 있다",
+        "knowledgePoint": "우리가 먹는 부분이 씨방이 아니라는 것",
+        "probableAnswer": "딸기"
+      },
+      "question": {
+        "ok": true,
+        "question": "겉에 박힌 깨알 같은 것이 사실 하나하나의 열매이고, 우리가 먹는 붉은 부분은 꽃받침이 부푼 것인 과일은?",
+        "answer": "딸기",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "씨방이 아닌 부분이 자란 열매를 헛열매라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "plants/3#008",
+      "seed": {
+        "subject": "목화",
+        "aspect": "붓두껍에 씨를 숨겨 왔다는 이야기",
+        "knowledgePoint": "고려 말 목화 전래와 의생활의 변화",
+        "probableAnswer": "목화"
+      },
+      "question": {
+        "ok": true,
+        "question": "고려 말 문익점이 원나라에서 씨를 들여와 백성의 옷감을 바꿔 놓은 작물은?",
+        "answer": "목화",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "붓두껍에 씨를 숨겨 왔다는 이야기가 널리 전하지만 근거가 뚜렷하지는 않습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "plants/3#009",
+      "seed": {
+        "subject": "이모작",
+        "aspect": "한 해에 두 번 거둔다",
+        "knowledgePoint": "같은 땅에 두 작물을 차례로 기르는 농법",
+        "probableAnswer": "이모작"
+      },
+      "question": {
+        "ok": true,
+        "question": "같은 땅에서 한 해에 벼를 거둔 뒤 보리를 심는 것처럼 두 가지 작물을 차례로 기르는 농법은?",
+        "answer": "이모작",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "같은 땅에 두 작물을 동시에 심는 것은 사이짓기라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "plants/3#010",
+      "seed": {
+        "subject": "감자의 원산지",
+        "aspect": "높은 산맥에서 왔다",
+        "knowledgePoint": "감자가 처음 재배된 남아메리카 지역",
+        "probableAnswer": "안데스"
+      },
+      "question": {
+        "ok": true,
+        "question": "감자가 처음 재배된 곳으로, 남아메리카 서쪽을 따라 뻗은 높은 산맥 지역은?",
+        "answer": "안데스",
+        "acceptedAnswers": [
+          "안데스산맥"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "잉카 사람들은 감자를 얼렸다 말려 오래 보관했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

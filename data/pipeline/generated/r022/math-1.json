@@ -1,0 +1,234 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "math/1",
+    "categoryPath": "자연과학 > 수학·수 상식 > 수와 연산",
+    "midKey": "math",
+    "subName": "수와 연산",
+    "majorKey": "science",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:50:38.510Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 7,
+      "shortfallReason": "★ 7건에서 멈췄다. ★ 전역 대조에서 3건이 math 의 다른 소분류(유명한 수·수학 기호)와 같은 지식으로 걸려 버렸다(무리수·원주율·완전수). 남은 후보는 계산 문제다.",
+      "listedCandidates": 20,
+      "remainingUsable": 2,
+      "remainingUsableNote": "약수·유리수가 남았다.",
+      "estimatedCeiling": "실질 상한 12건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "소수",
+          "aspect": "1과 자신으로만 나뉜다",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "무리수",
+            "probableAnswer": "무리수",
+            "existing": "db:1117",
+            "why": "기존이 '분수로 나타낼 수 없는 수' 를 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "원주율",
+            "probableAnswer": "원주율",
+            "existing": "db:294",
+            "why": "기존이 '둘레를 지름으로 나눈 비율' 을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "완전수",
+            "probableAnswer": "완전수",
+            "existing": "db:1118",
+            "why": "기존이 6·28 을 예로 같은 수를 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 10,
+        "hits": 3,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:19:29.963Z"
+  },
+  "items": [
+    {
+      "seedId": "math/1#001",
+      "seed": {
+        "subject": "음수",
+        "aspect": "빚을 적는 데 먼저 쓰였다",
+        "knowledgePoint": "0보다 작은 수가 받아들여진 과정",
+        "probableAnswer": "음수"
+      },
+      "question": {
+        "ok": true,
+        "question": "고대 중국의 수학책에서는 빚이나 손해를 셈하려고 빨간 셈가지와 검은 셈가지를 나눠 썼습니다. 0보다 작은 이런 수를 무엇이라 합니까?",
+        "answer": "음수",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "유럽에서는 오랫동안 \"터무니없는 수\" 로 여겨졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/1#002",
+      "seed": {
+        "subject": "허수",
+        "aspect": "제곱해서 음수가 되는 수",
+        "knowledgePoint": "i 로 적는 수와 그 이름의 유래",
+        "probableAnswer": "허수"
+      },
+      "question": {
+        "ok": true,
+        "question": "제곱해서 -1 이 되는 수 i 처럼, 제곱하면 음수가 되는 수를 데카르트가 '상상의 수' 라 부른 데서 이름이 온 것은?",
+        "answer": "허수",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "지금은 전기공학과 양자역학에서 없어서는 안 될 도구입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/1#003",
+      "seed": {
+        "subject": "아라비아 숫자",
+        "aspect": "실제로는 인도에서 왔다",
+        "knowledgePoint": "지금 쓰는 숫자가 전해진 경로",
+        "probableAnswer": "인도"
+      },
+      "question": {
+        "ok": true,
+        "question": "지금 쓰는 0~9 숫자는 아라비아 숫자라 불리지만, 실제로 처음 만들어진 곳은 어느 나라일까요?",
+        "answer": "인도",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "아랍 상인과 학자를 거쳐 유럽에 전해져 이런 이름이 붙었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/1#004",
+      "seed": {
+        "subject": "60진법",
+        "aspect": "한 시간은 60분",
+        "knowledgePoint": "바빌로니아에서 이어진 시간과 각도의 셈법",
+        "probableAnswer": "60진법"
+      },
+      "question": {
+        "ok": true,
+        "question": "한 시간을 60분, 한 바퀴를 360도로 나누는 셈법은 고대 바빌로니아에서 이어졌습니다. 60을 한 단위로 자리를 올리는 이 셈법은?",
+        "answer": "60진법",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "60은 약수가 많아 나누기에 편리했다는 설명이 흔합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/1#005",
+      "seed": {
+        "subject": "로마 숫자",
+        "aspect": "시계판과 영화 제작 연도에 남아 있다",
+        "knowledgePoint": "I·V·X 로 적는 숫자 체계와 0 이 없다는 것",
+        "probableAnswer": "로마 숫자"
+      },
+      "question": {
+        "ok": true,
+        "question": "I·V·X·L·C 같은 글자로 수를 적으며 0 을 나타내는 기호가 없는 숫자 체계로, 지금도 시계판에 남아 있는 것은?",
+        "answer": "로마 숫자",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "4를 IV 로 적지만 시계판에는 IIII 로 적는 경우가 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/1#006",
+      "seed": {
+        "subject": "구골",
+        "aspect": "10의 100제곱",
+        "knowledgePoint": "아이가 붙인 이름과 검색 회사 이름의 유래",
+        "probableAnswer": "구골"
+      },
+      "question": {
+        "ok": true,
+        "question": "10을 100번 곱한 수에 한 수학자의 어린 조카가 붙여 준 이름으로, 한 검색 회사 이름의 유래가 되었다는 것은?",
+        "answer": "구골",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "회사 이름은 이 말의 철자를 잘못 적은 데서 굳어졌다는 이야기가 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "math/1#007",
+      "seed": {
+        "subject": "최대공약수",
+        "aspect": "두 수를 함께 나누는 가장 큰 수",
+        "knowledgePoint": "유클리드 호제법으로 구하는 수",
+        "probableAnswer": "최대공약수"
+      },
+      "question": {
+        "ok": true,
+        "question": "두 수를 함께 나누어떨어지게 하는 수 가운데 가장 큰 수로, 유클리드 호제법으로 구할 수 있는 것은?",
+        "answer": "최대공약수",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "큰 수를 작은 수로 나눈 나머지로 계속 나누어 가며 구합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

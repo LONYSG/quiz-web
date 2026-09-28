@@ -1,0 +1,303 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "war-history/4",
+    "categoryPath": "인문·사회 > 전쟁·군사사 > 냉전 이후",
+    "midKey": "war-history",
+    "subName": "냉전 이후",
+    "majorKey": "humanities",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:46:34.236Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 진행 중인 분쟁이라 시간이 지나면 답이 바뀐다.",
+      "listedCandidates": 20,
+      "remainingUsable": 2,
+      "remainingUsableNote": "체첸 전쟁·예멘 내전이 남았다.",
+      "estimatedCeiling": "실질 상한 12건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "걸프 전쟁",
+          "aspect": "쿠웨이트 침공",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "보스니아 내전",
+            "probableAnswer": "사라예보",
+            "existing": "db:103",
+            "whyDifferent": "기존은 1914년 황태자 암살(사라예보 사건)을, 이쪽은 1990년대 내전의 수도 포위를 묻는다. 별개의 사건이다"
+          }
+        ],
+        "checked": 10,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:16:27.192Z"
+  },
+  "items": [
+    {
+      "seedId": "war-history/4#001",
+      "seed": {
+        "subject": "9·11 테러",
+        "aspect": "민항기를 무기로 썼다",
+        "knowledgePoint": "2001년 미국 본토를 겨눈 테러와 그 뒤의 변화",
+        "probableAnswer": "9·11 테러"
+      },
+      "question": {
+        "ok": true,
+        "question": "2001년 납치한 여객기를 뉴욕 세계무역센터와 미 국방부 건물에 충돌시킨 테러를 일으킨 조직은? 오사마 빈 라덴이 이끌었습니다.",
+        "answer": "알카에다",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "이 테러 뒤 미국은 \"테러와의 전쟁\" 을 선언했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "war-history/4#002",
+      "seed": {
+        "subject": "아프가니스탄 전쟁",
+        "aspect": "20년 만에 철수했다",
+        "knowledgePoint": "테러 이후 시작되어 미국의 최장기 전쟁이 된 전쟁",
+        "probableAnswer": "아프가니스탄 전쟁"
+      },
+      "question": {
+        "ok": true,
+        "question": "2001년 테러 뒤 미국이 탈레반 정권을 무너뜨리며 시작해 2021년 철수로 끝난, 미국 역사상 가장 긴 전쟁은?",
+        "answer": "아프가니스탄 전쟁",
+        "acceptedAnswers": [
+          "아프간 전쟁"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "철수 직후 탈레반이 다시 정권을 잡았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "war-history/4#003",
+      "seed": {
+        "subject": "이라크 전쟁",
+        "aspect": "명분이 된 무기는 끝내 발견되지 않았다",
+        "knowledgePoint": "대량살상무기를 명분으로 시작된 2003년 전쟁",
+        "probableAnswer": "대량살상무기"
+      },
+      "question": {
+        "ok": true,
+        "question": "2003년 미국이 이라크를 침공할 때 명분으로 내세웠으나 끝내 발견되지 않은 것은?",
+        "answer": "대량살상무기",
+        "acceptedAnswers": [
+          "WMD"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "정보 판단의 실패와 전쟁의 정당성 논란으로 이어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "war-history/4#004",
+      "seed": {
+        "subject": "보스니아 내전",
+        "aspect": "수도가 오래 포위되었다",
+        "knowledgePoint": "유고슬라비아 해체 뒤의 내전과 사라예보 포위",
+        "probableAnswer": "사라예보"
+      },
+      "question": {
+        "ok": true,
+        "question": "1992년부터 약 4년 동안 세르비아계 군대에 포위되어 현대전 역사상 가장 긴 수도 포위를 겪은 보스니아의 도시는?",
+        "answer": "사라예보",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "유고슬라비아 해체 뒤 벌어진 보스니아 내전의 상징이 되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "war-history/4#005",
+      "seed": {
+        "subject": "르완다 학살",
+        "aspect": "라디오가 학살을 부추겼다",
+        "knowledgePoint": "1994년 후투족과 투치족 사이에 벌어진 학살",
+        "probableAnswer": "르완다"
+      },
+      "question": {
+        "ok": true,
+        "question": "1994년 약 100일 동안 후투족 강경파가 투치족 등을 학살하고 라디오 방송이 이를 부추긴 아프리카의 나라는?",
+        "answer": "르완다",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "국제 사회가 막지 못한 학살로 꼽혀 보호 책임 논의로 이어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "war-history/4#006",
+      "seed": {
+        "subject": "코소보 전쟁",
+        "aspect": "유엔 결의 없이 나토가 공습했다",
+        "knowledgePoint": "인도적 개입을 둘러싼 논쟁을 낳은 공습",
+        "probableAnswer": "코소보"
+      },
+      "question": {
+        "ok": true,
+        "question": "1999년 나토가 유엔 안보리 결의 없이 유고슬라비아를 공습해 '인도적 개입' 논쟁을 낳았습니다. 알바니아계 주민이 많은 어느 지역을 둘러싼 전쟁이었습니까?",
+        "answer": "코소보",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "코소보는 2008년 독립을 선언했지만 세르비아는 인정하지 않고 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "war-history/4#007",
+      "seed": {
+        "subject": "무인기 공격",
+        "aspect": "조종사 없이 원격으로 공격한다",
+        "knowledgePoint": "원격 조종 비행체가 전쟁 방식을 바꾼 것",
+        "probableAnswer": "드론"
+      },
+      "question": {
+        "ok": true,
+        "question": "조종사가 타지 않고 멀리서 원격으로 조종해 정찰하고 공격하는 무인 항공기를 흔히 무엇이라 합니까?",
+        "answer": "드론",
+        "acceptedAnswers": [
+          "무인기"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "벌이 윙윙거리는 소리를 뜻하는 영어에서 온 말입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "war-history/4#008",
+      "seed": {
+        "subject": "사이버전",
+        "aspect": "총 대신 해킹으로 공격한다",
+        "knowledgePoint": "전산망과 기반 시설을 공격하는 전쟁 방식",
+        "probableAnswer": "사이버전"
+      },
+      "question": {
+        "ok": true,
+        "question": "총이나 폭탄 대신 해킹으로 상대국의 전산망과 전력망 같은 기반 시설을 공격하는 전쟁 방식을 무엇이라 합니까?",
+        "answer": "사이버전",
+        "acceptedAnswers": [
+          "사이버 전쟁"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "공격 주체를 밝히기 어려워 대응이 까다롭다는 특징이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "war-history/4#009",
+      "seed": {
+        "subject": "하이브리드전",
+        "aspect": "선전·해킹·비정규군을 섞는다",
+        "knowledgePoint": "정규전과 비정규전을 뒤섞는 현대 전쟁 방식",
+        "probableAnswer": "하이브리드전"
+      },
+      "question": {
+        "ok": true,
+        "question": "정규군 작전에 가짜 뉴스 같은 선전, 해킹, 비정규군을 뒤섞어 전쟁과 평화의 경계를 흐리는 현대 전쟁 방식은?",
+        "answer": "하이브리드전",
+        "acceptedAnswers": [
+          "하이브리드 전쟁"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "2014년 러시아의 크림반도 병합이 대표 사례로 자주 거론됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "war-history/4#010",
+      "seed": {
+        "subject": "평화유지군",
+        "aspect": "푸른 헬멧을 쓴다",
+        "knowledgePoint": "분쟁 지역에 파견되는 유엔의 부대",
+        "probableAnswer": "평화유지군"
+      },
+      "question": {
+        "ok": true,
+        "question": "유엔이 분쟁 지역에 보내는 부대로, 푸른 헬멧을 써서 '블루 헬멧' 이라고도 불리는 것은?",
+        "answer": "평화유지군",
+        "acceptedAnswers": [
+          "유엔 평화유지군"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "1988년 노벨 평화상을 받았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "ball-sports/5",
+    "categoryPath": "스포츠·게임 > 농구·배구·기타 구기 > 탁구·배드민턴",
+    "midKey": "ball-sports",
+    "subName": "탁구·배드민턴",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:02:00.739Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 개별 선수의 전적이라 아는 사람만 안다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "펜홀더가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "탁구 11점",
+            "probableAnswer": "11",
+            "existing": "db:51",
+            "whyDifferent": "숫자만 같다 — 기존은 축구 선수 수다"
+          }
+        ],
+        "checked": 10,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:29:08.405Z"
+  },
+  "items": [
+    {
+      "seedId": "ball-sports/5#001",
+      "seed": {
+        "subject": "셔틀콕",
+        "aspect": "깃털 16개를 꽂았다",
+        "knowledgePoint": "배드민턴 공의 이름과 재료",
+        "probableAnswer": "셔틀콕"
+      },
+      "question": {
+        "ok": true,
+        "question": "배드민턴에서 코르크 머리에 깃털 16개를 꽂아 만든 공을 무엇이라 합니까?",
+        "answer": "셔틀콕",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "깃털 때문에 빠르게 날다가도 금세 느려집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/5#002",
+      "seed": {
+        "subject": "탁구 11점",
+        "aspect": "한 게임을 따는 점수",
+        "knowledgePoint": "21점에서 바뀐 탁구 점수제",
+        "probableAnswer": "11"
+      },
+      "question": {
+        "ok": true,
+        "question": "탁구는 2001년부터 한 게임을 21점이 아니라 몇 점을 먼저 얻는 쪽이 이기도록 바뀌었습니까?",
+        "answer": "11",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "10대10이 되면 2점을 앞서야 이깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/5#003",
+      "seed": {
+        "subject": "핑퐁 외교",
+        "aspect": "탁구 선수단이 먼저 오갔다",
+        "knowledgePoint": "1971년 미국과 중국의 관계 개선",
+        "probableAnswer": "핑퐁 외교"
+      },
+      "question": {
+        "ok": true,
+        "question": "1971년 미국 탁구 선수단이 중국을 방문한 것을 계기로 두 나라의 관계가 풀리기 시작한 일을 무엇이라 합니까?",
+        "answer": "핑퐁 외교",
+        "acceptedAnswers": [
+          "탁구 외교"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "이듬해 닉슨 대통령이 중국을 방문했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/5#004",
+      "seed": {
+        "subject": "러버",
+        "aspect": "라켓 면에 붙인 고무",
+        "knowledgePoint": "탁구 라켓의 앞뒤 색을 다르게 하는 규정",
+        "probableAnswer": "러버"
+      },
+      "question": {
+        "ok": true,
+        "question": "탁구 라켓의 나무판에 붙이는 고무판으로, 규정상 양면의 색을 서로 다르게 해야 하는 것은?",
+        "answer": "러버",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "앞뒤 고무의 성질이 달라 상대가 어느 면으로 쳤는지 알아볼 수 있게 한 규정입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/5#005",
+      "seed": {
+        "subject": "배드민턴 이름",
+        "aspect": "영국 귀족 저택에서 이름이 왔다",
+        "knowledgePoint": "배드민턴이라는 이름의 유래",
+        "probableAnswer": "배드민턴"
+      },
+      "question": {
+        "ok": true,
+        "question": "영국의 한 공작 저택 이름에서 종목 이름이 왔다고 알려진, 셔틀콕을 라켓으로 넘겨 치는 경기는?",
+        "answer": "배드민턴",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "인도에서 하던 놀이를 영국 장교들이 들여왔다는 설명이 흔합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/5#006",
+      "seed": {
+        "subject": "스매시",
+        "aspect": "가장 빠른 공",
+        "knowledgePoint": "배드민턴에서 내리꽂는 기술",
+        "probableAnswer": "스매시"
+      },
+      "question": {
+        "ok": true,
+        "question": "배드민턴이나 탁구에서 높이 뜬 공을 위에서 세게 내리꽂는 공격을 무엇이라 합니까?",
+        "answer": "스매시",
+        "acceptedAnswers": [
+          "스매싱"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "배드민턴에서는 셔틀콕이 시속 수백 km 로 날아가기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/5#007",
+      "seed": {
+        "subject": "셰이크핸드",
+        "aspect": "악수하듯 쥔다",
+        "knowledgePoint": "탁구 라켓을 쥐는 방식",
+        "probableAnswer": "셰이크핸드"
+      },
+      "question": {
+        "ok": true,
+        "question": "탁구 라켓을 악수하듯 손잡이를 감싸 쥐는 방식을 무엇이라 합니까? 펜을 쥐듯 잡는 펜홀더와 구별됩니다.",
+        "answer": "셰이크핸드",
+        "acceptedAnswers": [
+          "셰이크핸드 그립"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "양면을 모두 써서 공격하기 쉽습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/5#008",
+      "seed": {
+        "subject": "40mm 공",
+        "aspect": "공이 커져 느려졌다",
+        "knowledgePoint": "탁구공 지름 규격 변경",
+        "probableAnswer": "40"
+      },
+      "question": {
+        "ok": true,
+        "question": "2000년 탁구공의 지름을 38mm 에서 몇 mm 로 키워 공을 느리게 하고 랠리를 늘렸습니까?",
+        "answer": "40",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "관중이 보기 쉽게 하려는 목적이었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "ball-sports/5#009",
+      "seed": {
+        "subject": "서브 토스",
+        "aspect": "손바닥에서 공을 띄운다",
+        "knowledgePoint": "탁구 서브에서 공을 16cm 이상 띄우는 규정",
+        "probableAnswer": "16"
+      },
+      "question": {
+        "ok": false,
+        "rejectReason": "서브 때 공을 몇 cm 띄워야 하는지는 규정 수치 세부라, 몰랐던 사람이 알아서 좋을 것이 적다. 알 가치가 3 에 못 미친다."
+      }
+    },
+    {
+      "seedId": "ball-sports/5#010",
+      "seed": {
+        "subject": "현정화",
+        "aspect": "남북 단일팀으로 세계 대회 우승",
+        "knowledgePoint": "1991년 코리아 탁구 단일팀",
+        "probableAnswer": "현정화"
+      },
+      "question": {
+        "ok": true,
+        "question": "1991년 지바 세계탁구선수권대회에서 남북 단일팀 '코리아' 로 여자 단체전 우승을 이룰 때, 북한의 이분희와 함께 뛴 한국 선수는?",
+        "answer": "현정화",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "이 이야기는 2012년 영화 \"코리아\" 로 만들어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

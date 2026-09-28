@@ -1,0 +1,324 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "religion/6",
+    "categoryPath": "인문·사회 > 종교·경전 상식 > 종교 의식·상징",
+    "midKey": "religion",
+    "subName": "종교 의식·상징",
+    "majorKey": "humanities",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:46:34.246Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보가 개별 교단의 세부 의식이라 알 가치가 3에 못 미친다.",
+      "listedCandidates": 22,
+      "remainingUsable": 3,
+      "remainingUsableNote": "견진성사·사리·만다라가 남았다.",
+      "estimatedCeiling": "실질 상한 14건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "연꽃",
+          "aspect": "불교의 상징",
+          "reason": "★ DB 에 이미 연꽃 문제가 있다"
+        },
+        {
+          "subject": "108번뇌",
+          "aspect": "108배",
+          "reason": "★ DB 에 이미 108 문제가 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 0,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:16:27.202Z"
+  },
+  "items": [
+    {
+      "seedId": "religion/6#001",
+      "seed": {
+        "subject": "세례",
+        "aspect": "물로 입교를 표시한다",
+        "knowledgePoint": "기독교에 들어오는 의식",
+        "probableAnswer": "세례"
+      },
+      "question": {
+        "ok": true,
+        "question": "기독교에 들어오는 표시로 물을 머리에 붓거나 몸을 물에 잠기게 하는 의식은?",
+        "answer": "세례",
+        "acceptedAnswers": [
+          "침례"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "온몸을 물에 잠기게 하는 방식을 따로 침례라 부르는 교단도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "religion/6#002",
+      "seed": {
+        "subject": "성찬",
+        "aspect": "빵과 포도주를 나눈다",
+        "knowledgePoint": "최후의 만찬을 기념하는 기독교 의식",
+        "probableAnswer": "성찬"
+      },
+      "question": {
+        "ok": true,
+        "question": "예수가 최후의 만찬에서 한 일을 기념해 빵과 포도주를 나누는 기독교 의식은?",
+        "answer": "성찬",
+        "acceptedAnswers": [
+          "성찬식",
+          "성체성사"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "가톨릭에서는 성체성사라 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "religion/6#003",
+      "seed": {
+        "subject": "묵주",
+        "aspect": "구슬을 세며 기도한다",
+        "knowledgePoint": "기도 횟수를 세는 구슬 꿰미",
+        "probableAnswer": "묵주"
+      },
+      "question": {
+        "ok": true,
+        "question": "가톨릭에서 구슬을 하나씩 넘기며 기도 횟수를 세는 데 쓰는 구슬 꿰미는?",
+        "answer": "묵주",
+        "acceptedAnswers": [
+          "로사리오"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "불교의 염주, 이슬람의 미스바하도 비슷한 쓰임이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "religion/6#004",
+      "seed": {
+        "subject": "만자",
+        "aspect": "절 지도 기호로 쓰인다",
+        "knowledgePoint": "불교의 길상 표지와 지도에서의 쓰임",
+        "probableAnswer": "만자"
+      },
+      "question": {
+        "ok": true,
+        "question": "불교에서 길상의 표지로 쓰여 지도에서 절을 나타내는 기호로도 쓰이는 卍 모양을 무엇이라 합니까?",
+        "answer": "만자",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "나치의 하켄크로이츠와는 방향과 기울기가 다릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "religion/6#005",
+      "seed": {
+        "subject": "목탁",
+        "aspect": "물고기 모양에서 왔다",
+        "knowledgePoint": "불교 의식에서 두드리는 기구와 그 모양의 뜻",
+        "probableAnswer": "목탁"
+      },
+      "question": {
+        "ok": true,
+        "question": "불교 의식에서 두드려 소리를 내는 나무 기구로, 늘 눈을 뜨고 있는 물고기처럼 깨어 수행하라는 뜻에서 물고기 모양을 본떴다는 것은?",
+        "answer": "목탁",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "물고기는 잘 때도 눈을 감지 않는다고 여긴 데서 온 설명입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "religion/6#006",
+      "seed": {
+        "subject": "합장",
+        "aspect": "두 손바닥을 모은다",
+        "knowledgePoint": "불교를 비롯한 여러 전통의 인사·예법",
+        "probableAnswer": "합장"
+      },
+      "question": {
+        "ok": true,
+        "question": "두 손바닥을 가슴 앞에서 마주 모아 예를 표하는 불교의 인사법은?",
+        "answer": "합장",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "인도에서 온 인사로, 두 손이 하나 됨을 뜻한다는 풀이가 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "religion/6#007",
+      "seed": {
+        "subject": "할례",
+        "aspect": "태어난 지 여드레 되는 날",
+        "knowledgePoint": "유대교·이슬람의 전통 의식",
+        "probableAnswer": "할례"
+      },
+      "question": {
+        "ok": true,
+        "question": "유대교에서 남자아이가 태어난 지 여드레 되는 날 치르는, 생식기 포피를 잘라 내는 의식은?",
+        "answer": "할례",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "신과 맺은 약속의 표시로 여깁니다. 이슬람에도 이어진 관습입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "religion/6#008",
+      "seed": {
+        "subject": "성수",
+        "aspect": "축복한 물",
+        "knowledgePoint": "가톨릭에서 축복해 쓰는 물",
+        "probableAnswer": "성수"
+      },
+      "question": {
+        "ok": true,
+        "question": "가톨릭에서 사제가 축복한 물로, 성당에 들어갈 때 손가락에 찍어 십자를 긋는 데 쓰는 것은?",
+        "answer": "성수",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "성당 입구에 이 물을 담아 두는 그릇이 놓여 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "religion/6#009",
+      "seed": {
+        "subject": "연등",
+        "aspect": "부처님오신날에 단다",
+        "knowledgePoint": "석가 탄신일에 등을 밝히는 풍습",
+        "probableAnswer": "연등"
+      },
+      "question": {
+        "ok": true,
+        "question": "부처님오신날에 부처의 가르침으로 세상을 밝힌다는 뜻에서 거는 등불은?",
+        "answer": "연등",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "연등회는 2020년 유네스코 인류무형문화유산에 올랐습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "religion/6#010",
+      "seed": {
+        "subject": "성호",
+        "aspect": "손으로 십자 모양을 긋는다",
+        "knowledgePoint": "가톨릭 신자가 기도 전후에 하는 몸짓",
+        "probableAnswer": "성호"
+      },
+      "question": {
+        "ok": true,
+        "question": "가톨릭 신자가 기도하기 전후에 손으로 이마·가슴·양어깨를 짚어 십자 모양을 그리는 몸짓을 무엇이라 합니까?",
+        "answer": "성호",
+        "acceptedAnswers": [
+          "성호경"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "\"성호를 긋는다\" 고 말합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "religion/6#011",
+      "seed": {
+        "subject": "다윗의 별",
+        "aspect": "이스라엘 국기에 들어 있다",
+        "knowledgePoint": "유대교를 상징하는 육각별",
+        "probableAnswer": "다윗의 별"
+      },
+      "question": {
+        "ok": true,
+        "question": "두 정삼각형을 엇갈려 겹친 육각별로, 유대교를 상징하며 이스라엘 국기에 들어 있는 것은?",
+        "answer": "다윗의 별",
+        "acceptedAnswers": [
+          "다윗의 방패"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "히브리어로는 \"다윗의 방패\" 라는 뜻의 이름으로 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

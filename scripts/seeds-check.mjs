@@ -41,6 +41,10 @@ const files = (await readdir(dir)).filter((f) => f.endsWith('.json') && !f.start
 
 const items = [];
 let discarded = 0;
+// ★★ R022 — 격리로 빠진 문항을 **파일에 남긴다.**
+//   R021 에서 판정 대기 목록을 "후보 − 판정된 것" 으로 만들었는데, 그 사이에 격리된 3건이
+//   후보에서 조용히 빠졌다 (V001 이 찾은 웨스트엔드·토니상·커튼콜). ★ 왜 빠졌는지 보여 주는 기록이 없었다.
+const excluded = [];
 for (const f of files) {
   const doc = JSON.parse(await readFile(path.join(dir, f), 'utf8'));
   for (const it of doc.items) {
@@ -48,6 +52,7 @@ for (const f of files) {
     // ★ 격리된 문항은 적재 대상이 아니므로 검사·중복 후보에서 뺀다 (seeds-discard.mjs)
     if (it.question.discarded) {
       discarded += 1;
+      excluded.push({ ref: it.seedId, answer: it.question.answer, reason: it.question.discarded.reason ?? null, at: it.question.discarded.at ?? null, duplicateOf: it.question.discarded.duplicateOf ?? null });
       continue;
     }
     items.push({
@@ -175,7 +180,7 @@ const client = new pg.Client({
 await client.connect();
 const dbRows = (
   await client.query(`
-    SELECT q.id, q.question_text, q.display_answer, q.is_active, q.source_id,
+    SELECT q.id, q.question_text, q.display_answer, q.is_active, q.source_id, q.source_ref,
            t.mid_key, t.sub_name, t.major_key
       FROM questions q LEFT JOIN category_tree t ON q.category_id = t.category_id`)
 ).rows;
@@ -218,6 +223,11 @@ for (const it of items) {
     newByAnyNorm.set(n, arr);
   }
 }
+// ★★ R022 — 2회차 짝(pairedWith) 면제 (C28 확정 / D-102)
+//   2회차는 일부러 1회차와 같은 답을 쓴다. 그 짝과의 충돌만 후보에서 뺀다.
+//   ★ 짝이 아닌 것과의 충돌은 그대로 잡는다 (R021 파일럿의 동소체·석굴암 사례).
+//   ★ 면제한 쌍은 exemptedPairs 에 남겨 VERIFY 가 볼 수 있게 한다.
+const exemptedPairs = [];
 const pairsVsDb = [];
 const seenPair = new Set();
 for (const [n, arr] of newByAnyNorm) {
@@ -228,10 +238,15 @@ for (const [n, arr] of newByAnyNorm) {
       const key = `${it.ref}|${r.id}`;
       if (seenPair.has(key)) continue;
       seenPair.add(key);
+      if (it.q.pairedWith && r.source_ref === it.q.pairedWith) {
+        exemptedPairs.push({ scope: 'vs-db', a: it.ref, b: `db:${r.id}`, pairedWith: it.q.pairedWith, answer: it.q.answer });
+        continue;
+      }
       pairsVsDb.push({ newItem: it, dbRow: r });
     }
   }
 }
+const inDbByRef = new Map(dbRows.filter((r) => r.source_ref).map((r) => [r.source_ref, r]));
 
 // ── 다른 라운드와의 대조
 const crossRounds = [];
@@ -267,12 +282,21 @@ for (const other of AGAINST) {
   }
   const pairs = [];
   const seen = new Set();
+  let coveredByDb = 0;
   for (const it of items) {
     for (const a of [it.q.answer, ...it.q.acceptedAnswers]) {
       for (const o of oByNorm.get(normalizeAnswer(a)) ?? []) {
         const key = `${it.ref}|${o.ref}`;
         if (seen.has(key)) continue;
         seen.add(key);
+        if (it.q.pairedWith && o.ref === it.q.pairedWith) {
+          exemptedPairs.push({ scope: `vs-${other}`, a: it.ref, b: o.ref, pairedWith: it.q.pairedWith, answer: it.q.answer });
+          continue;
+        }
+        // ★★ R022 — 이미 DB 에 적재된 문항이고 같은 쌍이 DB 대조에도 있으면 여기서는 올리지 않는다.
+        //   V001 에서 같은 두 문항을 두 번 판정해 keep 이 엇갈린 것이 11건이었다. 한 번만 묻는다.
+        const loaded = inDbByRef.get(o.ref);
+        if (loaded && seenPair.has(`${it.ref}|${loaded.id}`)) { coveredByDb += 1; continue; }
         pairs.push({
           a: { ref: it.ref, cat: it.categoryPath, q: it.q.question, ans: it.q.answer },
           b: { ref: o.ref, cat: o.cat, q: o.q.question, ans: o.q.answer },
@@ -280,7 +304,7 @@ for (const other of AGAINST) {
       }
     }
   }
-  crossRounds.push({ round: other, items: oitems.length, allPairs: items.length * oitems.length, pairs });
+  crossRounds.push({ round: other, items: oitems.length, allPairs: items.length * oitems.length, coveredByDb, pairs });
 }
 
 const totalNewPairs = (items.length * (items.length - 1)) / 2;
@@ -304,6 +328,9 @@ const report = {
     })),
   },
   findings,
+  // ★★ R022 — 격리로 빠진 것 / 짝 면제로 빠진 것을 모두 적는다. 조용히 빠지는 것이 없게 한다
+  excluded,
+  exemptedPairs,
   pairsVsRounds: crossRounds,
   pairsInside: pairsInside.map(([a, b]) => ({
     a: { ref: a.ref, cat: a.categoryPath, q: a.q.question, ans: a.q.answer },
@@ -321,6 +348,20 @@ const report = {
   })),
 };
 
+// ★★ R022 — 문항별 묶음. 같은 문항이 여러 쌍에 걸리면 한 묶음으로 판정하라는 운영 지시를 돕는다.
+//   ★ VERIFY 가 배치를 나눌 때 이 묶음 단위로 나누면 같은 문항의 판정이 배치마다 갈리지 않는다.
+{
+  const g = new Map();
+  const add = (ref, scope, other) => { if (!g.has(ref)) g.set(ref, []); g.get(ref).push({ scope, other }); };
+  for (const p of report.pairsInside) { add(p.a.ref, 'inside', p.b.ref); add(p.b.ref, 'inside', p.a.ref); }
+  for (const c of crossRounds) for (const p of c.pairs) add(p.a.ref, `vs-${c.round}`, p.b.ref);
+  for (const p of report.pairsVsDb) add(p.a.ref, 'vs-db', p.b.ref);
+  report.byNewItem = [...g.entries()].map(([ref, pairs]) => ({ ref, pairCount: pairs.length, pairs })).sort((x, y) => y.pairCount - x.pairCount);
+  report.counts.excluded = excluded.length;
+  report.counts.exemptedPairs = exemptedPairs.length;
+  report.counts.itemsWithCandidates = report.byNewItem.length;
+}
+
 await mkdir(path.join(ROOT, 'data', 'pipeline', 'dedupe'), { recursive: true });
 const out = path.join(ROOT, 'data', 'pipeline', 'dedupe', `${ROUND}-candidates.json`);
 await writeFile(out, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
@@ -336,7 +377,12 @@ console.log(
 );
 for (const c of crossRounds) {
   console.log(
-    `  ${c.round} 대조  전체 ${c.allPairs}쌍 → 후보 ${c.pairs.length}쌍 (${((c.pairs.length / c.allPairs) * 100).toFixed(3)}%)`,
+    `  ${c.round} 대조  전체 ${c.allPairs}쌍 → 후보 ${c.pairs.length}쌍 (${((c.pairs.length / c.allPairs) * 100).toFixed(3)}%)` +
+      (c.coveredByDb ? ` / ★ DB 대조와 같은 쌍 ${c.coveredByDb}개는 뺐다` : ''),
   );
 }
 console.log(`\n  → ${path.relative(ROOT, out).split(path.sep).join('/')}`);
+console.log(`\n── ★ 빠진 것 (R022)`);
+console.log(`  격리로 빠진 문항         ${excluded.length}건   → excluded`);
+console.log(`  2회차 짝이라 면제한 쌍   ${exemptedPairs.length}쌍   → exemptedPairs`);
+console.log(`  후보가 걸린 신규 문항    ${report.byNewItem.length}건   → byNewItem (VERIFY 배치 단위)`);

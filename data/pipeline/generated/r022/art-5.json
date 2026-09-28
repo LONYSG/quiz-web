@@ -1,0 +1,262 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "art/5",
+    "categoryPath": "문화·예술 > 미술·화가 > 판화·공예",
+    "midKey": "art",
+    "subName": "판화·공예",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:59:13.383Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 8,
+      "shortfallReason": "★ 8건에서 멈췄다. 전역 대조에서 우키요에·분청사기·옹기가 다른 소분류(한국·동양 미술, 전통 의식주)의 기존 문항과 같은 지식으로 걸려 버렸다.",
+      "listedCandidates": 20,
+      "remainingUsable": 2,
+      "remainingUsableNote": "한지 공예·유약의 종류가 남았다.",
+      "estimatedCeiling": "실질 상한 12건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "상감청자",
+          "aspect": "무늬를 파고 메운다",
+          "reason": "★ DB 에 이미 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "우키요에",
+            "probableAnswer": "우키요에",
+            "existing": "db:1441",
+            "why": "기존이 '인상주의 화가에게 영향을 준 일본 목판화' 로 같은 지식을 묻는다",
+            "replacedWith": "에디션"
+          },
+          {
+            "subject": "분청사기",
+            "probableAnswer": "분청사기",
+            "existing": "db:1437",
+            "why": "기존이 '청자에서 백자로 넘어가던 시기, 흰 흙을 입힌 자기' 로 같은 지식을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "옹기",
+            "probableAnswer": "옹기",
+            "existing": "db:1084",
+            "why": "기존이 '숨 쉬는 그릇' 으로 같은 지식을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 3,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:24:55.532Z"
+  },
+  "items": [
+    {
+      "seedId": "art/5#001",
+      "seed": {
+        "subject": "목판화",
+        "aspect": "새기지 않은 부분이 찍힌다",
+        "knowledgePoint": "나무판을 파서 찍는 판화 방식",
+        "probableAnswer": "목판화"
+      },
+      "question": {
+        "ok": true,
+        "question": "나무판에서 그림이 될 부분만 남기고 나머지를 파낸 뒤, 도드라진 면에 먹이나 물감을 발라 찍어 내는 판화는?",
+        "answer": "목판화",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "팔만대장경도 같은 원리로 찍어 낸 목판입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "art/5#002",
+      "seed": {
+        "subject": "에칭",
+        "aspect": "산으로 금속판을 부식시킨다",
+        "knowledgePoint": "동판에 긁은 선을 산으로 파는 판화 기법",
+        "probableAnswer": "에칭"
+      },
+      "question": {
+        "ok": true,
+        "question": "금속판에 방식제를 바르고 바늘로 긁어 그린 뒤, 산에 담가 드러난 선을 부식시켜 찍는 판화 기법은?",
+        "answer": "에칭",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "렘브란트가 이 기법으로 많은 판화를 남겼습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "art/5#003",
+      "seed": {
+        "subject": "실크스크린",
+        "aspect": "앤디 워홀이 즐겨 썼다",
+        "knowledgePoint": "그물망으로 잉크를 통과시켜 찍는 판화",
+        "probableAnswer": "실크스크린"
+      },
+      "question": {
+        "ok": true,
+        "question": "촘촘한 그물망 천에 잉크가 통과할 부분만 뚫어 찍는 판화로, 앤디 워홀이 마릴린 먼로의 얼굴을 반복해 찍을 때 쓴 기법은?",
+        "answer": "실크스크린",
+        "acceptedAnswers": [
+          "스크린 프린팅"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "티셔츠 무늬를 찍을 때도 널리 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "art/5#004",
+      "seed": {
+        "subject": "나전칠기",
+        "aspect": "조개껍데기를 붙여 무늬를 낸다",
+        "knowledgePoint": "옻칠 위에 자개를 박는 공예",
+        "probableAnswer": "나전칠기"
+      },
+      "question": {
+        "ok": true,
+        "question": "얇게 간 전복·조개껍데기를 오려 붙이고 옻칠을 해서 무늬를 내는 우리나라의 전통 공예는?",
+        "answer": "나전칠기",
+        "acceptedAnswers": [
+          "나전"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "조개껍데기 조각을 \"자개\" 라고 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "art/5#005",
+      "seed": {
+        "subject": "달항아리",
+        "aspect": "둥근 보름달 같은 백자",
+        "knowledgePoint": "위아래를 따로 빚어 붙인 조선 백자 항아리",
+        "probableAnswer": "달항아리"
+      },
+      "question": {
+        "ok": true,
+        "question": "보름달처럼 둥글고 흰 조선 후기의 백자 항아리로, 너무 커서 위아래를 따로 빚어 이어 붙인 것은?",
+        "answer": "달항아리",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "이어 붙인 자국 때문에 모양이 완전히 대칭이 아닌 것이 오히려 멋으로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "art/5#006",
+      "seed": {
+        "subject": "스테인드글라스",
+        "aspect": "색유리 조각을 납으로 잇는다",
+        "knowledgePoint": "성당 창문을 장식한 색유리 공예",
+        "probableAnswer": "스테인드글라스"
+      },
+      "question": {
+        "ok": true,
+        "question": "여러 색의 유리 조각을 납으로 이어 붙여 그림을 만든 것으로, 고딕 성당의 창문을 장식한 공예는?",
+        "answer": "스테인드글라스",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "글을 모르는 신자에게 성경 이야기를 전하는 역할도 했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "art/5#007",
+      "seed": {
+        "subject": "모자이크",
+        "aspect": "작은 조각을 붙여 그림을 만든다",
+        "knowledgePoint": "돌·유리 조각으로 벽과 바닥을 꾸미는 기법",
+        "probableAnswer": "모자이크"
+      },
+      "question": {
+        "ok": true,
+        "question": "작은 돌이나 유리, 타일 조각을 촘촘히 붙여 벽이나 바닥에 그림과 무늬를 만드는 기법은?",
+        "answer": "모자이크",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "고대 로마와 비잔틴 교회에서 크게 발달했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "art/5#008",
+      "seed": {
+        "subject": "판화 에디션",
+        "aspect": "3/50 이라고 적힌 숫자",
+        "knowledgePoint": "판화 아래 적는 찍은 순번과 총 매수",
+        "probableAnswer": "에디션"
+      },
+      "question": {
+        "ok": true,
+        "question": "판화 아래에 연필로 적힌 '3/50' 같은 숫자에서 50 은 무엇을 뜻할까요? 같은 판으로 찍어 낸 이것의 총 매수입니다.",
+        "answer": "에디션",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "앞의 숫자는 몇 번째로 찍은 것인지를 나타냅니다. 매수가 적을수록 값이 높은 경향이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

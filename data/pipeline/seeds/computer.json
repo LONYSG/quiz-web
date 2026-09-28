@@ -3,7 +3,7 @@
   "midName": "컴퓨터·인터넷",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-21T06:56:03.194Z",
+  "updatedAt": "2026-09-28T02:21:41.945Z",
   "subs": {
     "computer/1": {
       "subName": "하드웨어",
@@ -334,7 +334,7 @@
         {
           "answer": "패치",
           "origin": "r021:computer/2#007",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr31,db35). 기존 db:942 을 남긴다 — 판정 근거가 '더 일반적·접근성' 이다. 알 가치가 아니다"
         },
         {
           "answer": "가상화",
@@ -349,7 +349,7 @@
         {
           "answer": "캐시",
           "origin": "r021:computer/2#010",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr75,db36). 기존 db:1561 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "확장자",
@@ -481,12 +481,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:32:40.844Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/computer-2#007",
             "answer": "패치",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr31,db35). 기존 db:942 을 남긴다 — 판정 근거가 '더 일반적·접근성' 이다. 알 가치가 아니다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:942",
+              "at": "2026-09-28T01:31:35.453Z"
+            }
           }
         },
         {
@@ -535,12 +542,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:32:40.844Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/computer-2#010",
             "answer": "캐시",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr75,db36). 기존 db:1561 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1561",
+              "at": "2026-09-28T01:31:37.603Z"
+            }
           }
         },
         {
@@ -588,9 +602,263 @@
           "answer": "재귀",
           "origin": "db:207",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "알고리즘",
+          "origin": "r022:computer/3#001",
+          "note": null
+        },
+        {
+          "answer": "변수",
+          "origin": "r022:computer/3#002",
+          "note": null
+        },
+        {
+          "answer": "반복문",
+          "origin": "r022:computer/3#003",
+          "note": null
+        },
+        {
+          "answer": "조건문",
+          "origin": "r022:computer/3#004",
+          "note": null
+        },
+        {
+          "answer": "함수",
+          "origin": "r022:computer/3#005",
+          "note": null
+        },
+        {
+          "answer": "컴파일러",
+          "origin": "r022:computer/3#006",
+          "note": null
+        },
+        {
+          "answer": "디버깅",
+          "origin": "r022:computer/3#007",
+          "note": null
+        },
+        {
+          "answer": "무한 루프",
+          "origin": "r022:computer/3#008",
+          "note": null
+        },
+        {
+          "answer": "헬로 월드",
+          "origin": "r022:computer/3#009",
+          "note": null
+        },
+        {
+          "answer": "파이썬",
+          "origin": "r022:computer/3#010",
+          "note": null
+        },
+        {
+          "answer": "주석",
+          "origin": "r022:computer/3#011",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "computer/3#001",
+          "subject": "알고리즘",
+          "aspect": "페르시아 수학자 이름에서 왔다",
+          "knowledgePoint": "문제를 푸는 절차를 이르는 말과 그 어원",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#001",
+            "answer": "알고리즘",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "computer/3#002",
+          "subject": "변수",
+          "aspect": "값을 담아 두는 이름 붙은 상자",
+          "knowledgePoint": "프로그램에서 값을 저장하고 바꾸는 단위",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#002",
+            "answer": "변수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "computer/3#003",
+          "subject": "반복문",
+          "aspect": "같은 일을 조건이 맞는 동안 되풀이한다",
+          "knowledgePoint": "명령을 여러 번 되풀이하는 구조",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#003",
+            "answer": "반복문",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "computer/3#004",
+          "subject": "조건문",
+          "aspect": "만약 ~라면",
+          "knowledgePoint": "조건에 따라 다른 명령을 실행하는 구조",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#004",
+            "answer": "조건문",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "computer/3#005",
+          "subject": "함수",
+          "aspect": "입력을 받아 결과를 돌려준다",
+          "knowledgePoint": "되풀이 쓰려고 묶어 둔 코드 단위",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#005",
+            "answer": "함수",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "computer/3#006",
+          "subject": "컴파일러",
+          "aspect": "사람의 코드를 기계어로 옮긴다",
+          "knowledgePoint": "소스 코드를 실행 가능한 형태로 번역하는 프로그램",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#006",
+            "answer": "컴파일러",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "computer/3#007",
+          "subject": "디버깅",
+          "aspect": "오류를 찾아 고친다",
+          "knowledgePoint": "프로그램의 결함을 찾아 없애는 작업",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#007",
+            "answer": "디버깅",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "computer/3#008",
+          "subject": "무한 루프",
+          "aspect": "끝나지 않고 계속 돈다",
+          "knowledgePoint": "종료 조건이 없어 멈추지 않는 반복",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#008",
+            "answer": "무한 루프",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "computer/3#009",
+          "subject": "헬로 월드",
+          "aspect": "처음 배울 때 화면에 찍는 인사",
+          "knowledgePoint": "새 언어를 배울 때 가장 먼저 짜는 관례적 예제",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#009",
+            "answer": "헬로 월드",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "computer/3#010",
+          "subject": "파이썬",
+          "aspect": "이름이 코미디 프로에서 왔다",
+          "knowledgePoint": "배우기 쉬운 언어와 그 이름의 유래",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#010",
+            "answer": "파이썬",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "computer/3#011",
+          "subject": "주석",
+          "aspect": "실행되지 않는 메모",
+          "knowledgePoint": "사람이 읽으라고 코드 안에 남기는 설명",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:53:24.932Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/computer-3#011",
+            "answer": "주석",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "computer/4": {
       "subName": "네트워크·인터넷",

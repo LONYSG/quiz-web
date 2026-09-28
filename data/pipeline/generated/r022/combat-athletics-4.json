@@ -1,0 +1,290 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "combat-athletics/4",
+    "categoryPath": "스포츠·게임 > 격투기·육상·수영 > 수영·수상 종목",
+    "midKey": "combat-athletics",
+    "subName": "수영·수상 종목",
+    "majorKey": "sports",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:02:00.744Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 개별 선수의 기록이라 시간이 지나면 바뀐다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "카누·카약 구분이 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "평영",
+          "aspect": "개구리헤엄",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [],
+        "checked": 10,
+        "hits": 0,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:29:08.408Z"
+  },
+  "items": [
+    {
+      "seedId": "combat-athletics/4#001",
+      "seed": {
+        "subject": "자유형",
+        "aspect": "어떤 영법이든 된다",
+        "knowledgePoint": "자유형에서 사실상 크롤을 쓰는 이유",
+        "probableAnswer": "자유형"
+      },
+      "question": {
+        "ok": true,
+        "question": "영법을 마음대로 고를 수 있는 종목이지만, 가장 빠른 크롤로 헤엄치는 것이 사실상 정해져 있는 수영 종목은?",
+        "answer": "자유형",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "그래서 크롤을 흔히 이 종목 이름으로 부릅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "combat-athletics/4#002",
+      "seed": {
+        "subject": "접영",
+        "aspect": "나비처럼 두 팔을 함께 돌린다",
+        "knowledgePoint": "가장 늦게 생긴 영법",
+        "probableAnswer": "접영"
+      },
+      "question": {
+        "ok": true,
+        "question": "두 팔을 동시에 앞으로 돌리고 두 다리를 모아 물을 차는, 나비의 날갯짓에 빗댄 영법은?",
+        "answer": "접영",
+        "acceptedAnswers": [
+          "버터플라이"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "평영에서 갈라져 나와 네 가지 영법 가운데 가장 늦게 독립했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "combat-athletics/4#003",
+      "seed": {
+        "subject": "배영",
+        "aspect": "유일하게 물속에서 출발한다",
+        "knowledgePoint": "누워서 하는 영법과 출발 방식",
+        "probableAnswer": "배영"
+      },
+      "question": {
+        "ok": true,
+        "question": "네 가지 경영 영법 가운데 유일하게 물속에서 출발하는, 누워서 하는 영법은?",
+        "answer": "배영",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "출발대 손잡이를 잡고 물속에서 몸을 웅크렸다 차고 나갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "combat-athletics/4#004",
+      "seed": {
+        "subject": "개인혼영",
+        "aspect": "한 사람이 네 영법을 다 한다",
+        "knowledgePoint": "접영·배영·평영·자유형 순서",
+        "probableAnswer": "개인혼영"
+      },
+      "question": {
+        "ok": true,
+        "question": "한 선수가 접영·배영·평영·자유형 순서로 네 영법을 모두 헤엄치는 종목은?",
+        "answer": "개인혼영",
+        "acceptedAnswers": [
+          "혼영"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "계영에서 네 명이 영법을 나눠 헤엄칠 때는 순서가 배영부터입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "combat-athletics/4#005",
+      "seed": {
+        "subject": "아티스틱 스위밍",
+        "aspect": "물속에서 음악에 맞춰 연기한다",
+        "knowledgePoint": "예전 이름이 싱크로나이즈드 스위밍",
+        "probableAnswer": "아티스틱 스위밍"
+      },
+      "question": {
+        "ok": true,
+        "question": "음악에 맞춰 물속과 물 위에서 연기를 펼치는 종목으로, 2017년 싱크로나이즈드 스위밍에서 이름을 바꾼 것은?",
+        "answer": "아티스틱 스위밍",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "물속에서 거꾸로 선 채 오래 버티는 연기가 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "combat-athletics/4#006",
+      "seed": {
+        "subject": "수구",
+        "aspect": "물속의 핸드볼",
+        "knowledgePoint": "공을 던져 넣는 수상 구기",
+        "probableAnswer": "수구"
+      },
+      "question": {
+        "ok": true,
+        "question": "물속에서 두 팀이 공을 던져 상대 골대에 넣는, '물속의 핸드볼' 이라 불리는 경기는?",
+        "answer": "수구",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "경기 중 선수들은 바닥에 발을 대지 못합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "combat-athletics/4#007",
+      "seed": {
+        "subject": "다이빙 입수",
+        "aspect": "물보라가 적을수록 좋다",
+        "knowledgePoint": "다이빙 채점에서 입수가 중요한 까닭",
+        "probableAnswer": "다이빙"
+      },
+      "question": {
+        "ok": true,
+        "question": "높은 곳에서 뛰어내려 공중 동작과 물에 들어갈 때 물보라가 얼마나 적은지로 점수를 매기는 종목은?",
+        "answer": "다이빙",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "물보라 없이 들어가는 것을 흔히 \"립 입수\" 라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "combat-athletics/4#008",
+      "seed": {
+        "subject": "전신 수영복",
+        "aspect": "기록이 쏟아져 금지되었다",
+        "knowledgePoint": "2010년 금지된 첨단 수영복",
+        "probableAnswer": "전신 수영복"
+      },
+      "question": {
+        "ok": true,
+        "question": "2008~2009년 세계 기록이 쏟아지게 만들어 2010년부터 금지된, 부력을 높이는 소재로 온몸을 덮는 수영복은?",
+        "answer": "전신 수영복",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "지금은 남자는 무릎 위, 여자는 어깨에서 무릎까지로 제한됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "combat-athletics/4#009",
+      "seed": {
+        "subject": "조정",
+        "aspect": "뒤를 보고 노를 젓는다",
+        "knowledgePoint": "진행 방향을 등지고 젓는 수상 종목",
+        "probableAnswer": "조정"
+      },
+      "question": {
+        "ok": true,
+        "question": "진행 방향을 등지고 앉아 노를 저어 배를 모는 수상 경기는?",
+        "answer": "조정",
+        "acceptedAnswers": [
+          "로잉"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "앞을 보고 젓는 카누·카약과 구별됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "combat-athletics/4#010",
+      "seed": {
+        "subject": "박태환",
+        "aspect": "한국 첫 올림픽 수영 금메달",
+        "knowledgePoint": "2008년 자유형 400m",
+        "probableAnswer": "박태환"
+      },
+      "question": {
+        "ok": true,
+        "question": "2008년 베이징 올림픽 자유형 400m 에서 한국 수영 선수로는 처음 올림픽 금메달을 딴 사람은?",
+        "answer": "박태환",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "같은 대회 200m 에서는 은메달을 땄습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

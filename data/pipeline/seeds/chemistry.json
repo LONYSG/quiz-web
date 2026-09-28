@@ -3,7 +3,7 @@
   "midName": "화학·원소",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-21T14:25:55.939Z",
+  "updatedAt": "2026-09-28T02:19:29.929Z",
   "subs": {
     "chemistry/1": {
       "subName": "원소 기호",
@@ -707,9 +707,263 @@
           "answer": "산화",
           "origin": "db:206",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "발화점",
+          "origin": "r022:chemistry/4#001",
+          "note": null
+        },
+        {
+          "answer": "중화",
+          "origin": "r022:chemistry/4#002",
+          "note": null
+        },
+        {
+          "answer": "촉매",
+          "origin": "r022:chemistry/4#003",
+          "note": null
+        },
+        {
+          "answer": "흡열 반응",
+          "origin": "r022:chemistry/4#004",
+          "note": null
+        },
+        {
+          "answer": "발열 반응",
+          "origin": "r022:chemistry/4#005",
+          "note": null
+        },
+        {
+          "answer": "환원",
+          "origin": "r022:chemistry/4#006",
+          "note": null
+        },
+        {
+          "answer": "질량 보존 법칙",
+          "origin": "r022:chemistry/4#007",
+          "note": null
+        },
+        {
+          "answer": "앙금",
+          "origin": "r022:chemistry/4#008",
+          "note": null
+        },
+        {
+          "answer": "전기분해",
+          "origin": "r022:chemistry/4#009",
+          "note": null
+        },
+        {
+          "answer": "가역 반응",
+          "origin": "r022:chemistry/4#010",
+          "note": null
+        },
+        {
+          "answer": "불꽃 반응",
+          "origin": "r022:chemistry/4#011",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "chemistry/4#001",
+          "subject": "연소의 조건",
+          "aspect": "탈 것·산소·온도",
+          "knowledgePoint": "불이 붙고 유지되는 세 가지 조건과 소화의 원리",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#001",
+            "answer": "발화점",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "chemistry/4#002",
+          "subject": "중화",
+          "aspect": "산과 염기가 만나 물과 염이 된다",
+          "knowledgePoint": "산성과 염기성을 섞으면 서로의 성질이 줄어드는 반응",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#002",
+            "answer": "중화",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "chemistry/4#003",
+          "subject": "촉매",
+          "aspect": "자신은 바뀌지 않고 반응을 빠르게 한다",
+          "knowledgePoint": "반응 속도를 바꾸는 물질",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#003",
+            "answer": "촉매",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "chemistry/4#004",
+          "subject": "흡열 반응",
+          "aspect": "주변 열을 빼앗아 차가워진다",
+          "knowledgePoint": "냉찜질 팩에 쓰이는 반응",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#004",
+            "answer": "흡열 반응",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "chemistry/4#005",
+          "subject": "발열 반응",
+          "aspect": "흔들면 따뜻해지는 손난로",
+          "knowledgePoint": "철가루가 산소와 반응하며 열을 내는 반응",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#005",
+            "answer": "발열 반응",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "chemistry/4#006",
+          "subject": "환원",
+          "aspect": "산소를 잃는다",
+          "knowledgePoint": "산화와 짝을 이루는 반응과 제련",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#006",
+            "answer": "환원",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "chemistry/4#007",
+          "subject": "질량 보존 법칙",
+          "aspect": "반응 전후 무게가 같다",
+          "knowledgePoint": "라부아지에가 밝힌 화학 반응의 원리",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#007",
+            "answer": "질량 보존 법칙",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "chemistry/4#008",
+          "subject": "침전",
+          "aspect": "두 용액을 섞으면 앙금이 생긴다",
+          "knowledgePoint": "녹지 않는 물질이 생겨 가라앉는 반응",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#008",
+            "answer": "앙금",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "chemistry/4#009",
+          "subject": "전기분해",
+          "aspect": "물에 전기를 흘리면 기체 둘이 나온다",
+          "knowledgePoint": "전류로 물질을 나누는 반응",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#009",
+            "answer": "전기분해",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "chemistry/4#010",
+          "subject": "가역 반응",
+          "aspect": "양쪽으로 모두 일어난다",
+          "knowledgePoint": "정반응과 역반응이 함께 일어나는 반응",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#010",
+            "answer": "가역 반응",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "chemistry/4#011",
+          "subject": "불꽃 반응",
+          "aspect": "원소마다 불꽃 색이 다르다",
+          "knowledgePoint": "금속 원소가 내는 고유한 불꽃 색과 불꽃놀이",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T01:50:38.485Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/chemistry-4#011",
+            "answer": "불꽃 반응",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "chemistry/3": {
       "subName": "화합물·분자",

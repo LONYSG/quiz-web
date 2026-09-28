@@ -1,0 +1,308 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "fashion/2",
+    "categoryPath": "생활·상식 > 의복·패션 > 패션 브랜드·디자이너",
+    "midKey": "fashion",
+    "subName": "패션 브랜드·디자이너",
+    "majorKey": "life",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:04:36.486Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 현재 수석 디자이너라 시간이 지나면 답이 바뀐다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "입생로랑이 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "버버리",
+          "aspect": "트렌치코트",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "코코 샤넬",
+            "probableAnswer": "샤넬",
+            "existing": "db:1641",
+            "why": "기존(복식사)이 리틀 블랙 드레스로 같은 지식을 묻는다",
+            "replacedWith": "입생로랑"
+          }
+        ],
+        "keptDespiteHit": [
+          {
+            "subject": "파리 컬렉션",
+            "probableAnswer": "파리",
+            "existing": "db:21 / db:483",
+            "whyDifferent": "기존은 빛의 도시·1900년 올림픽, 이쪽은 4대 패션 컬렉션이다"
+          }
+        ],
+        "checked": 11,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:31:22.622Z"
+  },
+  "items": [
+    {
+      "seedId": "fashion/2#001",
+      "seed": {
+        "subject": "루이 비통",
+        "aspect": "여행 가방에서 시작했다",
+        "knowledgePoint": "모노그램 무늬의 프랑스 브랜드",
+        "probableAnswer": "루이 비통"
+      },
+      "question": {
+        "ok": true,
+        "question": "1854년 파리에서 여행 가방을 만드는 공방으로 시작해 LV 모노그램 무늬로 알려진 브랜드는?",
+        "answer": "루이 비통",
+        "acceptedAnswers": [
+          "루이뷔통"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "모노그램 무늬는 위조품을 막으려고 만들었다고 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "fashion/2#002",
+      "seed": {
+        "subject": "크리스찬 디올",
+        "aspect": "뉴룩",
+        "knowledgePoint": "전후 풍성한 치마로 유행을 이끈 디자이너",
+        "probableAnswer": "크리스찬 디올"
+      },
+      "question": {
+        "ok": true,
+        "question": "1947년 잘록한 허리와 풍성한 치마로 '뉴룩' 을 선보여 전쟁 뒤 패션을 바꾼 프랑스 디자이너는?",
+        "answer": "크리스찬 디올",
+        "acceptedAnswers": [
+          "디올"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "전쟁 중 옷감을 아끼던 분위기와 정반대의 옷이어서 화제가 되었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "fashion/2#003",
+      "seed": {
+        "subject": "에르메스",
+        "aspect": "마구 공방에서 시작했다",
+        "knowledgePoint": "버킨 백의 브랜드",
+        "probableAnswer": "에르메스"
+      },
+      "question": {
+        "ok": true,
+        "question": "말안장과 마구를 만드는 공방으로 시작해, 한 배우의 이름을 딴 '버킨 백' 으로 유명한 프랑스 브랜드는?",
+        "answer": "에르메스",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "로고에도 마차와 말이 그려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "fashion/2#004",
+      "seed": {
+        "subject": "구찌",
+        "aspect": "피렌체의 가죽 공방",
+        "knowledgePoint": "이탈리아 명품 브랜드",
+        "probableAnswer": "구찌"
+      },
+      "question": {
+        "ok": true,
+        "question": "1921년 이탈리아 피렌체의 가죽 공방에서 시작해, 창업자 이름의 머리글자 G 두 개를 엇갈린 로고로 쓰는 브랜드는?",
+        "answer": "구찌",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "창업자는 구초 구치입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "fashion/2#005",
+      "seed": {
+        "subject": "나이키",
+        "aspect": "승리의 여신 이름",
+        "knowledgePoint": "부메랑 모양 로고의 스포츠 브랜드",
+        "probableAnswer": "나이키"
+      },
+      "question": {
+        "ok": true,
+        "question": "그리스 신화 승리의 여신 이름을 따고, 부메랑처럼 휜 '스우시' 로고를 쓰는 스포츠 브랜드는?",
+        "answer": "나이키",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "로고는 한 대학생이 적은 돈을 받고 디자인했다고 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "fashion/2#006",
+      "seed": {
+        "subject": "아디다스",
+        "aspect": "창업자 이름을 줄였다",
+        "knowledgePoint": "세 줄 무늬 브랜드",
+        "probableAnswer": "아디다스"
+      },
+      "question": {
+        "ok": true,
+        "question": "창업자 아돌프 다슬러의 애칭과 성을 줄여 이름을 짓고, 세 줄 무늬로 알려진 독일 스포츠 브랜드는?",
+        "answer": "아디다스",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "형제가 갈라서며 형은 푸마를 세웠습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "fashion/2#007",
+      "seed": {
+        "subject": "리바이스",
+        "aspect": "금광 광부를 위한 바지",
+        "knowledgePoint": "청바지를 처음 만든 회사",
+        "probableAnswer": "리바이스"
+      },
+      "question": {
+        "ok": true,
+        "question": "19세기 미국 골드러시 때 광부들의 작업복으로, 구리 리벳을 박은 튼튼한 청바지를 만든 회사는?",
+        "answer": "리바이스",
+        "acceptedAnswers": [
+          "리바이 스트라우스"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "주머니 모서리에 리벳을 박는 방식으로 특허를 받았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "fashion/2#008",
+      "seed": {
+        "subject": "앙드레 김",
+        "aspect": "흰 옷을 입은 디자이너",
+        "knowledgePoint": "한국 패션 디자이너",
+        "probableAnswer": "앙드레 김"
+      },
+      "question": {
+        "ok": true,
+        "question": "늘 흰 옷을 입고 다닌 것으로 유명하며 화려한 무대 패션쇼로 알려진 한국의 패션 디자이너는?",
+        "answer": "앙드레 김",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "한국 남성 디자이너 1호로 불렸습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "fashion/2#009",
+      "seed": {
+        "subject": "파리 컬렉션",
+        "aspect": "해마다 두 번 열리는 패션쇼",
+        "knowledgePoint": "세계 4대 컬렉션 가운데 하나",
+        "probableAnswer": "파리"
+      },
+      "question": {
+        "ok": true,
+        "question": "밀라노·런던·뉴욕과 함께 세계 4대 패션 컬렉션이 열리는 도시로, 오트 쿠튀르의 본고장은?",
+        "answer": "파리",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "해마다 봄·여름과 가을·겨울 두 번 컬렉션이 열립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "fashion/2#010",
+      "seed": {
+        "subject": "입생로랑",
+        "aspect": "여성에게 턱시도를 입혔다",
+        "knowledgePoint": "여성용 바지 정장 '르 스모킹' 을 내놓은 디자이너",
+        "probableAnswer": "입생로랑"
+      },
+      "question": {
+        "ok": true,
+        "question": "1966년 남성 턱시도를 여성용으로 바꾼 바지 정장 '르 스모킹' 을 내놓은 프랑스 디자이너는?",
+        "answer": "입생로랑",
+        "acceptedAnswers": [
+          "이브 생로랑",
+          "생로랑"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "여성이 바지 정장을 입는 흐름을 이끌었다고 평가됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "earth/5",
+    "categoryPath": "자연과학 > 지구과학·기상 > 기후 변화",
+    "midKey": "earth",
+    "subName": "기후 변화",
+    "majorKey": "science",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:50:38.504Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 연도별 수치라 시간이 지나면 답이 바뀐다.",
+      "listedCandidates": 20,
+      "remainingUsable": 2,
+      "remainingUsableNote": "티핑 포인트·탄소 흡수원이 남았다.",
+      "estimatedCeiling": "실질 상한 12건으로 추정한다.",
+      "droppedForOverlap": [],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "메탄",
+            "probableAnswer": "메탄",
+            "existing": "db:842",
+            "whyDifferent": "기존은 천연가스 주성분·분자 구조를 묻고, 이쪽은 온실가스로서의 메탄(소 트림·논)을 묻는다"
+          }
+        ],
+        "checked": 10,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:19:29.955Z"
+  },
+  "items": [
+    {
+      "seedId": "earth/5#001",
+      "seed": {
+        "subject": "온실효과",
+        "aspect": "대기가 이불처럼 열을 붙잡는다",
+        "knowledgePoint": "대기 중 기체가 지표의 열을 가두는 현상",
+        "probableAnswer": "온실효과"
+      },
+      "question": {
+        "ok": true,
+        "question": "대기 속 이산화탄소 같은 기체가 지표에서 나가는 열을 붙잡아 지구를 따뜻하게 유지하는 현상은?",
+        "answer": "온실효과",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "이것이 없다면 지구 평균 기온은 영하로 떨어진다고 알려져 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/5#002",
+      "seed": {
+        "subject": "킬링 곡선",
+        "aspect": "톱니처럼 오르내리며 올라간다",
+        "knowledgePoint": "하와이에서 잰 이산화탄소 농도 기록",
+        "probableAnswer": "킬링 곡선"
+      },
+      "question": {
+        "ok": true,
+        "question": "1958년부터 하와이 마우나로아 관측소에서 잰 대기 중 이산화탄소 농도를 그린 그래프로, 톱니처럼 오르내리면서도 계속 올라가는 것은? 측정을 시작한 과학자의 이름이 붙었습니다.",
+        "answer": "킬링 곡선",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "해마다 오르내리는 것은 북반구 식물의 계절 변화 때문입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/5#003",
+      "seed": {
+        "subject": "해수면 상승",
+        "aspect": "섬나라가 잠길 수 있다",
+        "knowledgePoint": "빙하가 녹고 바닷물이 팽창해 생기는 변화",
+        "probableAnswer": "해수면 상승"
+      },
+      "question": {
+        "ok": true,
+        "question": "빙하와 빙상이 녹고 바닷물이 데워져 부피가 늘어나면서 투발루 같은 섬나라를 위협하는 현상은?",
+        "answer": "해수면 상승",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "바닷물은 데워지기만 해도 부피가 늘어납니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/5#004",
+      "seed": {
+        "subject": "영구동토층",
+        "aspect": "녹으면 갇힌 가스가 나온다",
+        "knowledgePoint": "여러 해 얼어 있는 땅과 기후 변화",
+        "probableAnswer": "영구동토층"
+      },
+      "question": {
+        "ok": true,
+        "question": "시베리아나 알래스카처럼 여러 해 동안 줄곧 얼어 있는 땅으로, 녹으면 속에 갇힌 메탄 등이 나와 온난화를 부추길 수 있는 것은?",
+        "answer": "영구동토층",
+        "acceptedAnswers": [
+          "영구동토"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "땅이 녹으면서 건물과 도로가 무너지는 피해도 생깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/5#005",
+      "seed": {
+        "subject": "IPCC",
+        "aspect": "기후 보고서를 낸다",
+        "knowledgePoint": "기후변화에 관한 정부간 협의체",
+        "probableAnswer": "IPCC"
+      },
+      "question": {
+        "ok": true,
+        "question": "세계기상기구와 유엔환경계획이 1988년 만들어 기후변화에 관한 평가 보고서를 내는 기구를 영문 약어로 무엇이라 합니까?",
+        "answer": "IPCC",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "2007년 노벨 평화상을 받았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/5#006",
+      "seed": {
+        "subject": "메탄",
+        "aspect": "소의 트림과 논에서 나온다",
+        "knowledgePoint": "이산화탄소보다 온실효과가 큰 기체",
+        "probableAnswer": "메탄"
+      },
+      "question": {
+        "ok": true,
+        "question": "소의 트림과 논에서도 나오며, 같은 양이라면 이산화탄소보다 온실효과가 훨씬 큰 기체는?",
+        "answer": "메탄",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "대기에 머무는 기간은 이산화탄소보다 짧습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/5#007",
+      "seed": {
+        "subject": "열섬",
+        "aspect": "도시 한가운데가 더 덥다",
+        "knowledgePoint": "도시가 주변보다 기온이 높은 현상",
+        "probableAnswer": "열섬"
+      },
+      "question": {
+        "ok": true,
+        "question": "아스팔트와 건물이 열을 머금고 에어컨·자동차가 열을 내뿜어 도시 한가운데가 주변보다 더 더운 현상은?",
+        "answer": "열섬",
+        "acceptedAnswers": [
+          "열섬 현상"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "옥상 녹화나 공원이 이 현상을 누그러뜨리는 방법으로 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/5#008",
+      "seed": {
+        "subject": "탄소 배출권",
+        "aspect": "줄인 만큼 사고판다",
+        "knowledgePoint": "온실가스를 배출할 권리를 거래하는 제도",
+        "probableAnswer": "탄소 배출권"
+      },
+      "question": {
+        "ok": true,
+        "question": "기업이 온실가스를 배출할 수 있는 양을 정해 두고, 남거나 모자라는 만큼 사고팔 수 있게 한 권리는?",
+        "answer": "탄소 배출권",
+        "acceptedAnswers": [
+          "배출권"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "한국은 2015년 이 거래 제도를 시작했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/5#009",
+      "seed": {
+        "subject": "알베도",
+        "aspect": "얼음이 녹으면 더 빨리 데워진다",
+        "knowledgePoint": "햇빛을 반사하는 정도와 기후 되먹임",
+        "probableAnswer": "알베도"
+      },
+      "question": {
+        "ok": true,
+        "question": "햇빛을 반사하는 정도를 나타내는 값으로, 흰 얼음이 녹아 어두운 바다가 드러나면 이 값이 줄어 더 빨리 데워집니다. 이 값은?",
+        "answer": "알베도",
+        "acceptedAnswers": [
+          "반사율"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "신선한 눈은 이 값이 매우 커서 햇빛 대부분을 되돌려 보냅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/5#010",
+      "seed": {
+        "subject": "이상기후",
+        "aspect": "폭염과 폭우가 잦아진다",
+        "knowledgePoint": "평년과 크게 다른 기상이 되풀이되는 현상",
+        "probableAnswer": "이상기후"
+      },
+      "question": {
+        "ok": false,
+        "rejectReason": "\"이상기후\" 는 폭염·폭우·한파 등을 뭉뚱그리는 말이라 질문에서 하나의 답으로 좁히기 어렵고, 이상기상·기상이변 같은 말과 경계가 흐려 정답이 흔들린다."
+      }
+    }
+  ]
+}

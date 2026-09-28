@@ -1,0 +1,320 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "physics/4",
+    "categoryPath": "자연과학 > 물리 > 열·에너지",
+    "midKey": "physics",
+    "subName": "열·에너지",
+    "majorKey": "science",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:50:38.477Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 11,
+      "shortfallReason": "★ 11건에서 멈췄다. 남은 후보(카르노 기관·열효율 계산)는 공식을 묻게 되어 알 가치가 3에 못 미친다.",
+      "listedCandidates": 21,
+      "remainingUsable": 2,
+      "remainingUsableNote": "카르노 기관·열효율이 남았다.",
+      "estimatedCeiling": "실질 상한 13건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "전도",
+          "aspect": "맞닿은 곳으로 열이 옮는다",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "열팽창",
+            "probableAnswer": "열팽창",
+            "existing": "db:2411",
+            "why": "기존이 '다리 상판에 틈을 두는 까닭' 을 묻고 '열팽창' 을 표기 변형으로 받는다. 철길 틈과 같은 지식이다",
+            "replacedWith": "열기관"
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 12,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:19:29.919Z"
+  },
+  "items": [
+    {
+      "seedId": "physics/4#001",
+      "seed": {
+        "subject": "대류",
+        "aspect": "데워진 것이 올라가고 식은 것이 내려온다",
+        "knowledgePoint": "유체가 움직이며 열을 나르는 방식",
+        "probableAnswer": "대류"
+      },
+      "question": {
+        "ok": true,
+        "question": "냄비의 물을 데우면 아래쪽의 데워진 물은 올라가고 위쪽의 식은 물은 내려오며 열이 퍼집니다. 이렇게 유체가 직접 움직이며 열을 나르는 방식은?",
+        "answer": "대류",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "에어컨을 위에, 난로를 아래에 두는 까닭이기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/4#002",
+      "seed": {
+        "subject": "복사",
+        "aspect": "빈 공간을 건너 열이 온다",
+        "knowledgePoint": "태양열이 지구에 닿는 방식",
+        "probableAnswer": "복사"
+      },
+      "question": {
+        "ok": true,
+        "question": "태양의 열이 공기가 거의 없는 우주 공간을 건너 지구까지 전해지는 방식은?",
+        "answer": "복사",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "물질을 거치지 않고 전자기파로 열이 전달됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/4#003",
+      "seed": {
+        "subject": "비열",
+        "aspect": "물은 잘 데워지지 않고 잘 식지 않는다",
+        "knowledgePoint": "물질마다 온도를 올리는 데 드는 열이 다른 성질과 해륙풍",
+        "probableAnswer": "비열"
+      },
+      "question": {
+        "ok": true,
+        "question": "물은 잘 데워지지 않고 잘 식지 않아 바닷가에 낮에는 바다에서, 밤에는 육지에서 바람이 붑니다. 물질 1g의 온도를 1℃ 올리는 데 드는 열의 양을 무엇이라 합니까?",
+        "answer": "비열",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "물의 비열이 모래나 흙보다 커서 생기는 바람을 해륙풍이라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/4#004",
+      "seed": {
+        "subject": "엔트로피",
+        "aspect": "저절로 되돌아가지 않는다",
+        "knowledgePoint": "무질서도가 늘어나는 방향으로 변한다는 열역학 제2법칙",
+        "probableAnswer": "엔트로피"
+      },
+      "question": {
+        "ok": true,
+        "question": "열역학 제2법칙에서, 외부의 개입 없이 저절로 일어나는 변화는 늘 이 값이 커지는 쪽으로 진행한다고 봅니다. 흔히 무질서도라 설명되는 이 양은?",
+        "answer": "엔트로피",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "엎지른 물이 저절로 컵에 돌아가지 않는 것도 이것으로 설명합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/4#005",
+      "seed": {
+        "subject": "에너지 보존",
+        "aspect": "형태만 바뀔 뿐 총량은 같다",
+        "knowledgePoint": "열역학 제1법칙",
+        "probableAnswer": "에너지 보존 법칙"
+      },
+      "question": {
+        "ok": true,
+        "question": "에너지는 한 형태에서 다른 형태로 바뀔 뿐 새로 생기거나 없어지지 않고 그 총량이 늘 같다는 법칙은?",
+        "answer": "에너지 보존 법칙",
+        "acceptedAnswers": [
+          "에너지 보존"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 4,
+        "explanation": "열역학 제1법칙으로도 불립니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/4#006",
+      "seed": {
+        "subject": "영구기관",
+        "aspect": "특허청이 받아 주지 않는다",
+        "knowledgePoint": "에너지 없이 영원히 움직이는 장치가 불가능한 이유",
+        "probableAnswer": "영구기관"
+      },
+      "question": {
+        "ok": true,
+        "question": "외부에서 에너지를 넣지 않아도 영원히 일을 해 내는 장치로, 열역학 법칙에 어긋나 만들 수 없다고 여겨지는 것은?",
+        "answer": "영구기관",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "여러 나라 특허청이 이런 장치는 원칙적으로 심사하지 않거나 작동 증명을 요구합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/4#007",
+      "seed": {
+        "subject": "기화열",
+        "aspect": "땀이 마르며 몸을 식힌다",
+        "knowledgePoint": "액체가 기체가 되며 주변 열을 빼앗는 현상",
+        "probableAnswer": "기화열"
+      },
+      "question": {
+        "ok": true,
+        "question": "땀이 마를 때 몸이 시원해지는 것처럼, 액체가 기체로 바뀌면서 주변에서 빼앗아 가는 열을 무엇이라 합니까?",
+        "answer": "기화열",
+        "acceptedAnswers": [
+          "증발열"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "여름에 마당에 물을 뿌리면 시원해지는 것도 같은 원리입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/4#008",
+      "seed": {
+        "subject": "단열",
+        "aspect": "열이 드나들지 못하게 막는다",
+        "knowledgePoint": "건물과 옷에서 열의 이동을 줄이는 원리",
+        "probableAnswer": "단열"
+      },
+      "question": {
+        "ok": true,
+        "question": "건물 벽에 스티로폼을 넣거나 겨울옷을 겹쳐 입는 것처럼, 열이 드나들지 못하도록 막는 것을 무엇이라 합니까?",
+        "answer": "단열",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "공기층은 열을 잘 전하지 않아 좋은 단열재 역할을 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/4#009",
+      "seed": {
+        "subject": "보온병",
+        "aspect": "두 겹 사이를 비워 둔다",
+        "knowledgePoint": "진공층으로 전도와 대류를 막는 구조",
+        "probableAnswer": "진공"
+      },
+      "question": {
+        "ok": true,
+        "question": "보온병은 두 겹의 벽 사이를 무엇으로 만들어 전도와 대류로 열이 빠져나가는 것을 막을까요?",
+        "answer": "진공",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "안쪽 벽을 거울처럼 만들어 복사열도 되돌려 보냅니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/4#010",
+      "seed": {
+        "subject": "열평형",
+        "aspect": "시간이 지나면 온도가 같아진다",
+        "knowledgePoint": "맞닿은 두 물체의 온도가 같아지는 상태",
+        "probableAnswer": "열평형"
+      },
+      "question": {
+        "ok": true,
+        "question": "뜨거운 물체와 차가운 물체를 맞대어 두면 열이 옮겨 가다가 결국 두 물체의 온도가 같아집니다. 이 상태를 무엇이라 합니까?",
+        "answer": "열평형",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "온도계가 잴 수 있는 것도 이 원리 덕분입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "physics/4#011",
+      "seed": {
+        "subject": "열기관",
+        "aspect": "열을 일로 바꾼다",
+        "knowledgePoint": "증기기관·내연기관처럼 열로 움직이는 장치의 원리",
+        "probableAnswer": "열기관"
+      },
+      "question": {
+        "ok": true,
+        "question": "증기기관이나 자동차 엔진처럼 열에너지를 받아 일로 바꾸는 장치를 통틀어 무엇이라 합니까?",
+        "answer": "열기관",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "받은 열을 모두 일로 바꾸는 열기관은 만들 수 없습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

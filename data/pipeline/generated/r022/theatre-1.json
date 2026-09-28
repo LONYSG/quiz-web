@@ -1,0 +1,284 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "theatre/1",
+    "categoryPath": "문화·예술 > 공연·연극·뮤지컬 > 연극 사조·연출",
+    "midKey": "theatre",
+    "subName": "연극 사조·연출",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:59:13.418Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 9,
+      "shortfallReason": "★ 9건에서 멈췄다. 전역 대조에서 코러스가 기존 시·희곡 소분류와 같아 버렸다.",
+      "listedCandidates": 20,
+      "remainingUsable": 2,
+      "remainingUsableNote": "그로토프스키·피터 브룩이 남았다.",
+      "estimatedCeiling": "실질 상한 12건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "햄릿",
+          "aspect": "4대 비극",
+          "reason": "DB 에 이미 있다 (usedAnswers). ★ 희곡 텍스트는 세계 문학이다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "코러스",
+            "probableAnswer": "코러스",
+            "existing": "db:1386",
+            "why": "기존이 그리스 비극의 합창단으로 같은 지식을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [
+          {
+            "subject": "사실주의 연극",
+            "probableAnswer": "사실주의",
+            "existing": "db:755",
+            "whyDifferent": "기존은 쿠르베의 미술 사조, 이쪽은 입센의 근대극이다 — 이름만 같고 분야와 인물이 다르다"
+          }
+        ],
+        "checked": 10,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:24:55.567Z"
+  },
+  "items": [
+    {
+      "seedId": "theatre/1#001",
+      "seed": {
+        "subject": "스타니슬랍스키 시스템",
+        "aspect": "배우가 인물의 감정을 실제로 겪는다",
+        "knowledgePoint": "사실주의 연기론과 메소드 연기로 이어진 흐름",
+        "probableAnswer": "스타니슬랍스키"
+      },
+      "question": {
+        "ok": true,
+        "question": "배우가 인물의 감정과 상황을 실제로 겪듯 내면에서부터 연기해야 한다고 한 러시아의 연출가로, 그의 연기론이 미국의 메소드 연기로 이어진 사람은?",
+        "answer": "스타니슬랍스키",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "모스크바 예술극장에서 체호프의 희곡을 올리며 방법을 다듬었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "theatre/1#002",
+      "seed": {
+        "subject": "낯설게 하기",
+        "aspect": "관객이 몰입하지 않게 한다",
+        "knowledgePoint": "브레히트가 서사극에서 쓴 기법",
+        "probableAnswer": "낯설게 하기"
+      },
+      "question": {
+        "ok": true,
+        "question": "브레히트가 서사극에서, 관객이 이야기에 빠져들지 않고 거리를 두고 비판적으로 생각하도록 일부러 익숙한 것을 낯설게 보이게 한 기법은?",
+        "answer": "낯설게 하기",
+        "acceptedAnswers": [
+          "소격 효과",
+          "거리두기 효과"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "배우가 관객에게 직접 말을 걸거나 무대 장치를 드러내 보이기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "theatre/1#003",
+      "seed": {
+        "subject": "부조리극",
+        "aspect": "끝내 오지 않는 사람을 기다린다",
+        "knowledgePoint": "의미 없는 세계를 그린 20세기 연극 사조",
+        "probableAnswer": "부조리극"
+      },
+      "question": {
+        "ok": true,
+        "question": "베케트의 '고도를 기다리며' 처럼 줄거리와 논리가 무너진 대화로 의미 없는 세계 속 인간을 그린 20세기 연극 사조는?",
+        "answer": "부조리극",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "이오네스코의 \"대머리 여가수\" 도 대표작입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "theatre/1#004",
+      "seed": {
+        "subject": "제4의 벽",
+        "aspect": "무대와 객석 사이의 보이지 않는 벽",
+        "knowledgePoint": "배우가 관객이 없는 것처럼 연기하는 관습",
+        "probableAnswer": "제4의 벽"
+      },
+      "question": {
+        "ok": true,
+        "question": "무대와 객석 사이에 보이지 않는 벽이 있어 배우가 관객이 없는 것처럼 연기한다는 사실주의 연극의 관습에서 온 말은?",
+        "answer": "제4의 벽",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "배우가 관객에게 직접 말을 거는 것을 \"이 벽을 깬다\" 고 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "theatre/1#005",
+      "seed": {
+        "subject": "모노드라마",
+        "aspect": "배우 한 사람이 끝까지 끌고 간다",
+        "knowledgePoint": "1인극",
+        "probableAnswer": "모노드라마"
+      },
+      "question": {
+        "ok": true,
+        "question": "배우 한 사람이 처음부터 끝까지 무대를 이끌어 가는 연극을 무엇이라 합니까?",
+        "answer": "모노드라마",
+        "acceptedAnswers": [
+          "1인극"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "한 배우가 여러 인물을 오가며 연기하기도 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "theatre/1#006",
+      "seed": {
+        "subject": "마당극",
+        "aspect": "관객이 둘러앉은 마당에서 한다",
+        "knowledgePoint": "탈춤을 이어받은 1970년대 우리 연극 형식",
+        "probableAnswer": "마당극"
+      },
+      "question": {
+        "ok": true,
+        "question": "1970년대 탈춤과 판소리의 형식을 이어받아, 관객이 둘러앉은 마당에서 사회 문제를 풍자하며 관객과 어울려 벌인 우리 연극 형식은?",
+        "answer": "마당극",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "무대와 객석의 경계를 허물고 관객의 참여를 끌어냈습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "theatre/1#007",
+      "seed": {
+        "subject": "카타르시스",
+        "aspect": "비극을 보고 마음이 씻긴다",
+        "knowledgePoint": "아리스토텔레스가 말한 비극의 효과",
+        "probableAnswer": "카타르시스"
+      },
+      "question": {
+        "ok": true,
+        "question": "아리스토텔레스가 \"시학\" 에서, 비극을 보며 연민과 두려움을 느낀 관객의 마음이 씻겨 나간다고 한 효과는?",
+        "answer": "카타르시스",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "\"정화\" 라는 뜻의 그리스어입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "theatre/1#008",
+      "seed": {
+        "subject": "사실주의 연극",
+        "aspect": "문을 쾅 닫고 집을 나간다",
+        "knowledgePoint": "입센의 인형의 집과 근대극",
+        "probableAnswer": "사실주의"
+      },
+      "question": {
+        "ok": true,
+        "question": "입센의 '인형의 집' 처럼 일상의 인물과 사회 문제를 있는 그대로 무대에 올린 19세기 후반의 연극 사조는?",
+        "answer": "사실주의",
+        "acceptedAnswers": [
+          "리얼리즘"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "주인공 노라가 문을 닫고 집을 나가는 마지막 장면이 큰 논란을 불렀습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "theatre/1#009",
+      "seed": {
+        "subject": "즉흥극",
+        "aspect": "대본 없이 만들어 간다",
+        "knowledgePoint": "관객 제안을 받아 즉석에서 꾸미는 연극",
+        "probableAnswer": "즉흥극"
+      },
+      "question": {
+        "ok": true,
+        "question": "미리 정한 대본 없이 배우들이 관객의 제안이나 주어진 상황을 받아 즉석에서 꾸며 가는 연극은?",
+        "answer": "즉흥극",
+        "acceptedAnswers": [
+          "즉흥 연극"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "배우 훈련 방법으로도 널리 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

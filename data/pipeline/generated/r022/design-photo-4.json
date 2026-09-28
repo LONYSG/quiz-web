@@ -1,0 +1,280 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "design-photo/4",
+    "categoryPath": "문화·예술 > 사진·디자인 > 산업 디자인",
+    "midKey": "design-photo",
+    "subName": "산업 디자인",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:59:13.428Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 9,
+      "shortfallReason": "★ 9건에서 멈췄다. 남은 후보가 개별 제품의 디자이너 이름이라 아는 사람만 안다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "필립 스탁이 남았다.",
+      "estimatedCeiling": "실질 상한 10건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "바우하우스",
+          "aspect": "조형 학교",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        },
+        {
+          "subject": "형태는 기능을 따른다",
+          "aspect": "근대 디자인 표어",
+          "reason": "★ R021 건축가 소분류에 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "유니버설 디자인",
+            "probableAnswer": "유니버설 디자인",
+            "existing": "db:2532",
+            "whyDifferent": "기존은 색약 배려 설계(표기 변형에 유니버설 디자인이 들어 있다), 이쪽은 나이·장애 전반을 아우르는 설계 원칙이다"
+          }
+        ],
+        "checked": 9,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:24:55.579Z"
+  },
+  "items": [
+    {
+      "seedId": "design-photo/4#001",
+      "seed": {
+        "subject": "인체공학",
+        "aspect": "사람 몸에 맞춘다",
+        "knowledgePoint": "도구와 환경을 몸에 맞게 설계하는 학문",
+        "probableAnswer": "인체공학"
+      },
+      "question": {
+        "ok": true,
+        "question": "의자 높이나 마우스 모양처럼, 도구와 환경을 사람 몸의 크기와 움직임에 맞게 설계해 편하고 안전하게 쓰도록 연구하는 학문은?",
+        "answer": "인체공학",
+        "acceptedAnswers": [
+          "인간공학"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "오래 써도 몸에 무리가 덜 가게 하는 것이 목표입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/4#002",
+      "seed": {
+        "subject": "유니버설 디자인",
+        "aspect": "누구나 쓸 수 있게 만든다",
+        "knowledgePoint": "나이·장애와 관계없이 쓰도록 하는 설계",
+        "probableAnswer": "유니버설 디자인"
+      },
+      "question": {
+        "ok": true,
+        "question": "나이·성별·장애와 관계없이 누구나 따로 고치지 않고 쓸 수 있도록 처음부터 설계한다는 원칙은?",
+        "answer": "유니버설 디자인",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "문턱 없는 출입구, 손잡이가 큰 문고리 등이 예입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/4#003",
+      "seed": {
+        "subject": "레드 닷",
+        "aspect": "빨간 점을 주는 디자인상",
+        "knowledgePoint": "독일의 국제 디자인 공모전",
+        "probableAnswer": "레드 닷"
+      },
+      "question": {
+        "ok": true,
+        "question": "빨간 점 모양의 상을 주는 독일의 국제 디자인 공모전으로, iF 디자인상과 함께 세계적인 디자인상으로 꼽히는 것은?",
+        "answer": "레드 닷",
+        "acceptedAnswers": [
+          "레드닷 디자인 어워드"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "제품·브랜드·콘셉트 부문 등으로 나뉩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/4#004",
+      "seed": {
+        "subject": "디터 람스",
+        "aspect": "좋은 디자인의 열 가지 원칙",
+        "knowledgePoint": "'더 적게, 그러나 더 좋게' 를 내건 디자이너",
+        "probableAnswer": "디터 람스"
+      },
+      "question": {
+        "ok": true,
+        "question": "'더 적게, 그러나 더 좋게' 를 내걸고 좋은 디자인의 열 가지 원칙을 제시한 독일 브라운사의 디자이너는?",
+        "answer": "디터 람스",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "애플의 제품 디자인에 큰 영향을 주었다고 평가됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/4#005",
+      "seed": {
+        "subject": "컨투어 병",
+        "aspect": "어둠 속에서 만져도 알아본다",
+        "knowledgePoint": "잘록한 모양의 콜라 병 디자인",
+        "probableAnswer": "컨투어 병"
+      },
+      "question": {
+        "ok": true,
+        "question": "어둠 속에서 만져도, 깨진 조각만 봐도 알아볼 수 있게 하라는 요구로 1915년 만들어진, 잘록한 곡선의 콜라 병 디자인은?",
+        "answer": "컨투어 병",
+        "acceptedAnswers": [
+          "컨투어 보틀"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "카카오 열매의 모양에서 착안했다는 이야기가 전합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/4#006",
+      "seed": {
+        "subject": "계획적 진부화",
+        "aspect": "일부러 오래 못 쓰게 만든다",
+        "knowledgePoint": "새 제품을 사게 하려고 수명을 줄이는 전략",
+        "probableAnswer": "계획적 진부화"
+      },
+      "question": {
+        "ok": true,
+        "question": "소비자가 새 제품을 사도록 일부러 수명을 짧게 하거나 유행이 빨리 지나가게 만드는 전략을 무엇이라 합니까?",
+        "answer": "계획적 진부화",
+        "acceptedAnswers": [
+          "계획된 진부화"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "1920년대 전구 업체들이 전구 수명을 1,000시간으로 맞추기로 한 일이 대표 사례로 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/4#007",
+      "seed": {
+        "subject": "스큐어모피즘",
+        "aspect": "화면 속 버튼을 실물처럼 그린다",
+        "knowledgePoint": "실물의 질감을 흉내 내는 디자인과 플랫 디자인으로의 전환",
+        "probableAnswer": "스큐어모피즘"
+      },
+      "question": {
+        "ok": true,
+        "question": "화면 속 버튼과 아이콘을 가죽·나무·금속 같은 실제 물건의 질감처럼 그리는 디자인 방식으로, 뒤에 단순한 플랫 디자인에 자리를 내준 것은?",
+        "answer": "스큐어모피즘",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "2013년 애플이 iOS 7 에서 이 방식을 버리며 흐름이 크게 바뀌었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/4#008",
+      "seed": {
+        "subject": "사용자 경험",
+        "aspect": "쓰는 사람이 느끼는 모든 것",
+        "knowledgePoint": "UX 라 줄여 부르는 설계 관점",
+        "probableAnswer": "사용자 경험"
+      },
+      "question": {
+        "ok": true,
+        "question": "제품이나 서비스를 쓰는 사람이 처음부터 끝까지 느끼는 편의·감정·만족을 통틀어 이르는 말로, UX 라 줄여 부르는 것은?",
+        "answer": "사용자 경험",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "화면 겉모습을 다루는 UI 와 짝을 이뤄 자주 쓰입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "design-photo/4#009",
+      "seed": {
+        "subject": "프로토타입",
+        "aspect": "만들기 전에 먼저 시험해 본다",
+        "knowledgePoint": "양산 전에 만드는 시제품",
+        "probableAnswer": "프로토타입"
+      },
+      "question": {
+        "ok": true,
+        "question": "제품을 대량으로 만들기 전에 기능과 모양을 시험해 보려고 먼저 만들어 보는 시제품을 무엇이라 합니까?",
+        "answer": "프로토타입",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "문제를 일찍 찾아내 고치는 비용을 줄여 줍니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

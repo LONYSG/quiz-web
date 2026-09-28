@@ -1,0 +1,303 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "drinks/2",
+    "categoryPath": "생활·상식 > 술·음료 > 위스키·증류주",
+    "midKey": "drinks",
+    "subName": "위스키·증류주",
+    "majorKey": "life",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T02:04:36.462Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 10,
+      "shortfallReason": "★ 10건에서 멈췄다. 남은 후보가 개별 증류소·상표라 아는 사람만 안다.",
+      "listedCandidates": 18,
+      "remainingUsable": 1,
+      "remainingUsableNote": "칼바도스가 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "진",
+          "aspect": "노간주 열매 술",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "스카치 위스키",
+            "probableAnswer": "스카치",
+            "existing": "db:817",
+            "whyDifferent": "포함 관계 — 기존은 스카치테이프 상표다"
+          }
+        ],
+        "checked": 10,
+        "hits": 1,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:31:22.593Z"
+  },
+  "items": [
+    {
+      "seedId": "drinks/2#001",
+      "seed": {
+        "subject": "스카치 위스키",
+        "aspect": "스코틀랜드에서 만든다",
+        "knowledgePoint": "스코틀랜드산 위스키의 이름",
+        "probableAnswer": "스카치"
+      },
+      "question": {
+        "ok": true,
+        "question": "스코틀랜드에서 만들어 참나무통에서 3년 이상 숙성해야 하는 위스키를 흔히 무엇이라 부릅니까?",
+        "answer": "스카치",
+        "acceptedAnswers": [
+          "스카치 위스키"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "스코틀랜드 밖에서 만든 것은 이 이름을 쓸 수 없습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/2#002",
+      "seed": {
+        "subject": "버번",
+        "aspect": "옥수수로 만들고 새 참나무통에 숙성",
+        "knowledgePoint": "미국 켄터키의 위스키",
+        "probableAnswer": "버번"
+      },
+      "question": {
+        "ok": true,
+        "question": "옥수수를 주원료로 해 속을 태운 새 참나무통에서 숙성하는, 미국 켄터키를 대표하는 위스키는?",
+        "answer": "버번",
+        "acceptedAnswers": [
+          "버번 위스키"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "새 통을 쓰게 되어 있어 한 번 쓴 통은 스카치 숙성에 많이 팔려 갑니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/2#003",
+      "seed": {
+        "subject": "싱글 몰트",
+        "aspect": "한 증류소의 보리 맥아만 쓴다",
+        "knowledgePoint": "블렌디드와 다른 위스키 종류",
+        "probableAnswer": "싱글 몰트"
+      },
+      "question": {
+        "ok": true,
+        "question": "한 증류소에서 보리 맥아만으로 만든 위스키를 무엇이라 합니까? 여러 증류소의 원액을 섞은 블렌디드와 구별됩니다.",
+        "answer": "싱글 몰트",
+        "acceptedAnswers": [
+          "싱글 몰트 위스키"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "증류소마다 맛의 개성이 뚜렷해 애호가가 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/2#004",
+      "seed": {
+        "subject": "데킬라",
+        "aspect": "용설란으로 만든다",
+        "knowledgePoint": "멕시코의 증류주",
+        "probableAnswer": "데킬라"
+      },
+      "question": {
+        "ok": true,
+        "question": "용설란의 한 종류인 블루 아가베로 만드는 멕시코의 증류주는?",
+        "answer": "데킬라",
+        "acceptedAnswers": [
+          "테킬라"
+        ],
+        "accessibility": 5,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "멕시코의 정해진 지역에서 만든 것만 이 이름을 쓸 수 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/2#005",
+      "seed": {
+        "subject": "보드카",
+        "aspect": "색도 향도 거의 없다",
+        "knowledgePoint": "러시아·폴란드의 증류주",
+        "probableAnswer": "보드카"
+      },
+      "question": {
+        "ok": true,
+        "question": "곡물이나 감자를 증류한 뒤 숯에 걸러 색과 향이 거의 없는, 러시아와 폴란드를 대표하는 증류주는?",
+        "answer": "보드카",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "이름은 \"물\" 을 뜻하는 슬라브어에서 왔다는 설명이 흔합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/2#006",
+      "seed": {
+        "subject": "럼",
+        "aspect": "사탕수수로 만든다",
+        "knowledgePoint": "카리브해 뱃사람의 술",
+        "probableAnswer": "럼"
+      },
+      "question": {
+        "ok": true,
+        "question": "사탕수수 즙이나 당밀을 발효해 증류한 술로, 카리브해의 뱃사람과 해적이 즐겨 마신 것으로 알려진 것은?",
+        "answer": "럼",
+        "acceptedAnswers": [
+          "럼주"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "영국 해군은 오랫동안 수병에게 이 술을 배급했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/2#007",
+      "seed": {
+        "subject": "브랜디",
+        "aspect": "포도주를 증류한다",
+        "knowledgePoint": "과실주를 증류한 술",
+        "probableAnswer": "브랜디"
+      },
+      "question": {
+        "ok": true,
+        "question": "포도주 같은 과실주를 증류해 참나무통에서 숙성한 술을 통틀어 무엇이라 합니까?",
+        "answer": "브랜디",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "\"태운 포도주\" 라는 뜻의 네덜란드어에서 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/2#008",
+      "seed": {
+        "subject": "코냑",
+        "aspect": "프랑스 한 지방의 이름",
+        "knowledgePoint": "특정 지역에서 만든 브랜디",
+        "probableAnswer": "코냑"
+      },
+      "question": {
+        "ok": true,
+        "question": "프랑스의 한 지방 이름을 딴 브랜디로, 그 지역에서 정해진 방식으로 만든 것만 이 이름을 쓸 수 있는 것은?",
+        "answer": "코냑",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "숙성 기간에 따라 VS·VSOP·XO 같은 등급을 붙입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/2#009",
+      "seed": {
+        "subject": "엔젤스 셰어",
+        "aspect": "숙성 중에 술이 줄어든다",
+        "knowledgePoint": "통 속에서 증발해 사라지는 몫",
+        "probableAnswer": "엔젤스 셰어"
+      },
+      "question": {
+        "ok": true,
+        "question": "위스키를 참나무통에서 숙성하는 동안 해마다 조금씩 증발해 사라지는 몫을 '천사가 가져간다' 는 뜻으로 무엇이라 합니까?",
+        "answer": "엔젤스 셰어",
+        "acceptedAnswers": [
+          "천사의 몫"
+        ],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "스코틀랜드에서는 한 해에 2% 안팎이 줄어든다고 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "drinks/2#010",
+      "seed": {
+        "subject": "증류",
+        "aspect": "끓는점 차이로 알코올을 모은다",
+        "knowledgePoint": "발효주를 가열해 도수를 높이는 원리",
+        "probableAnswer": "증류"
+      },
+      "question": {
+        "ok": true,
+        "question": "발효로 만든 술을 가열해 끓는점이 낮은 알코올을 먼저 증기로 모아 식혀 도수를 높이는 방법은?",
+        "answer": "증류",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "위스키·소주·보드카 같은 독한 술은 모두 이 과정을 거칩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

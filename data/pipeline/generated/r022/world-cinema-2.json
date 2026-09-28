@@ -1,0 +1,210 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "world-cinema/2",
+    "categoryPath": "문화·예술 > 세계 영화 > 현대 할리우드",
+    "midKey": "world-cinema",
+    "subName": "현대 할리우드",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:59:13.403Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 6,
+      "shortfallReason": "★ 6건에서 멈췄다. 전역 대조에서 리부트(코믹스)·스필버그(감독)가 기존과 같아 버렸다. 남은 후보가 흥행 순위라 시간이 지나면 답이 바뀐다.",
+      "listedCandidates": 19,
+      "remainingUsable": 2,
+      "remainingUsableNote": "픽사 제외 실사 리메이크·스트리밍 개봉이 남았다.",
+      "estimatedCeiling": "실질 상한 10건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "아바타",
+          "aspect": "3D 흥행",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        },
+        {
+          "subject": "반지의 제왕",
+          "aspect": "뉴질랜드 촬영",
+          "reason": "★ R021 세계 문학에 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "리부트",
+            "probableAnswer": "리부트",
+            "existing": "db:1554",
+            "why": "기존(코믹스)이 '이야기를 처음으로 되돌려 다시 짜는 것' 으로 같은 개념을 묻는다",
+            "replacedWith": null
+          },
+          {
+            "subject": "스티븐 스필버그",
+            "probableAnswer": "스티븐 스필버그",
+            "existing": "db:250",
+            "why": "기존이 죠스·쥬라기 공원 감독으로 같은 사람을 같은 단서로 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 8,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:24:55.548Z"
+  },
+  "items": [
+    {
+      "seedId": "world-cinema/2#001",
+      "seed": {
+        "subject": "타이타닉",
+        "aspect": "실제 침몰 사고를 배경으로 한 사랑 이야기",
+        "knowledgePoint": "1997년 제임스 카메론의 영화",
+        "probableAnswer": "타이타닉"
+      },
+      "question": {
+        "ok": true,
+        "question": "1912년 실제 침몰 사고를 배경으로 두 남녀의 사랑을 그린 제임스 카메론의 1997년 영화는?",
+        "answer": "타이타닉",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "아카데미상 11개 부문을 받았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/2#002",
+      "seed": {
+        "subject": "마블 시네마틱 유니버스",
+        "aspect": "여러 영화가 한 세계를 공유한다",
+        "knowledgePoint": "영화들을 하나의 세계관으로 잇는 제작 방식",
+        "probableAnswer": "마블 시네마틱 유니버스"
+      },
+      "question": {
+        "ok": true,
+        "question": "아이언맨·캡틴 아메리카 등 여러 영화가 한 세계관을 공유하며 이야기와 인물이 서로 이어지는 마블 스튜디오의 영화 세계를 무엇이라 합니까?",
+        "answer": "마블 시네마틱 유니버스",
+        "acceptedAnswers": [
+          "MCU"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "2008년 \"아이언맨\" 으로 시작했습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/2#003",
+      "seed": {
+        "subject": "쥬라기 공원",
+        "aspect": "컴퓨터 그래픽 공룡",
+        "knowledgePoint": "CG로 만든 생물이 실사처럼 보이게 된 전환점",
+        "probableAnswer": "쥬라기 공원"
+      },
+      "question": {
+        "ok": true,
+        "question": "1993년 컴퓨터 그래픽으로 만든 공룡을 실사처럼 선보여 영화 특수효과의 전환점이 된 스티븐 스필버그의 영화는?",
+        "answer": "쥬라기 공원",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "마이클 크라이튼의 소설이 원작입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/2#004",
+      "seed": {
+        "subject": "인셉션",
+        "aspect": "꿈 속의 꿈",
+        "knowledgePoint": "꿈을 여러 층으로 설계한 크리스토퍼 놀런 영화",
+        "probableAnswer": "인셉션"
+      },
+      "question": {
+        "ok": true,
+        "question": "남의 꿈속에 들어가 생각을 심는다는 설정으로, 꿈 속의 꿈을 여러 층으로 쌓은 크리스토퍼 놀런의 2010년 영화는?",
+        "answer": "인셉션",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "마지막 장면의 팽이가 쓰러지는지를 두고 해석이 갈렸습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/2#005",
+      "seed": {
+        "subject": "불릿 타임",
+        "aspect": "총알을 피하는 느린 화면",
+        "knowledgePoint": "매트릭스가 알린 촬영 기법",
+        "probableAnswer": "불릿 타임"
+      },
+      "question": {
+        "ok": true,
+        "question": "1999년 영화 \"매트릭스\" 에서 주인공이 몸을 젖혀 총알을 피하는 장면처럼, 시간이 거의 멈춘 듯한 순간을 카메라가 빙 돌며 보여 주는 촬영 기법은?",
+        "answer": "불릿 타임",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "여러 대의 카메라를 줄지어 놓고 차례로 찍어 만듭니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-cinema/2#006",
+      "seed": {
+        "subject": "블록버스터",
+        "aspect": "한 블록을 날려 버릴 폭탄에서 온 말",
+        "knowledgePoint": "거액을 들인 대형 흥행 영화를 이르는 말",
+        "probableAnswer": "블록버스터"
+      },
+      "question": {
+        "ok": true,
+        "question": "제2차 세계대전 때 한 구역을 통째로 날려 버릴 만큼 큰 폭탄을 가리키던 말에서 온, 거액을 들인 대형 흥행 영화를 이르는 말은?",
+        "answer": "블록버스터",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "1975년 \"죠스\" 가 이런 영화의 시작으로 흔히 꼽힙니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

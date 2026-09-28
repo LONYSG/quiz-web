@@ -1,0 +1,210 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "kr-tv/3",
+    "categoryPath": "한국 > 한국 방송·예능 > 광고",
+    "midKey": "kr-tv",
+    "subName": "광고",
+    "majorKey": "korea",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:41:29.899Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 7,
+      "shortfallReason": "★ 7건에서 멈췄다. 남은 후보가 개별 광고 모델이나 특정 연도 광고인데, 시간이 지나면 답이 바뀌거나 아는 사람만 안다.",
+      "listedCandidates": 18,
+      "remainingUsable": 2,
+      "remainingUsableNote": "'침대는 가구가 아닙니다' 계열·박카스 캠페인이 남았다.",
+      "estimatedCeiling": "실질 상한 9건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "니들이 게맛을 알아",
+          "aspect": "광고 유행어",
+          "reason": "DB 에 이미 답이 게인 문제가 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "checked": 7,
+        "hits": 1,
+        "dropped": [],
+        "keptDespiteHit": [
+          {
+            "subject": "PPL",
+            "probableAnswer": "PPL",
+            "existing": "db:22",
+            "whyDifferent": "★ 오탐 — 정규화한 \"ppl\" 이 \"apple\" 안에 글자로 들어 있을 뿐이다"
+          }
+        ],
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:09:59.326Z"
+  },
+  "items": [
+    {
+      "seedId": "kr-tv/3#001",
+      "seed": {
+        "subject": "초코파이",
+        "aspect": "'정' 을 내세운 광고",
+        "knowledgePoint": "과자 광고가 정(情)을 앞세워 굳힌 이미지",
+        "probableAnswer": "초코파이"
+      },
+      "question": {
+        "ok": true,
+        "question": "'말하지 않아도 알아요' 라는 광고 노래와 함께 '정(情)' 을 내세운 과자는?",
+        "answer": "초코파이",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "1989년부터 \"정\" 을 앞세운 광고가 이어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-tv/3#002",
+      "seed": {
+        "subject": "침대 광고",
+        "aspect": "'침대는 가구가 아닙니다' ",
+        "knowledgePoint": "교과서에 틀린 답을 적게 할 만큼 퍼진 광고 문구",
+        "probableAnswer": "과학"
+      },
+      "question": {
+        "ok": true,
+        "question": "1990년대 '침대는 가구가 아닙니다' 라는 광고 문구가 유행해, 시험에서 침대를 가구가 아니라고 답한 아이들이 있었다는 이야기까지 나왔습니다. 이 광고에서 침대는 무엇이라고 했습니까?",
+        "answer": "과학",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "광고가 교과서 지식을 흔든 사례로 자주 인용됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-tv/3#003",
+      "seed": {
+        "subject": "보일러 광고",
+        "aspect": "'아버님 댁에 놔드려야겠어요'",
+        "knowledgePoint": "효도를 앞세워 유행어가 된 난방기 광고 문구",
+        "probableAnswer": "보일러"
+      },
+      "question": {
+        "ok": true,
+        "question": "'여보, 아버님 댁에 ○○ 놔드려야겠어요' 라는 광고 문구에서 ○○에 들어가는 것은?",
+        "answer": "보일러",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "효도를 앞세운 광고 문구가 유행어처럼 쓰였습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-tv/3#004",
+      "seed": {
+        "subject": "PPL",
+        "aspect": "드라마 속에 상품을 놓는다",
+        "knowledgePoint": "방송 안에 상품을 자연스럽게 노출하는 간접 광고",
+        "probableAnswer": "PPL"
+      },
+      "question": {
+        "ok": true,
+        "question": "드라마나 영화 속에 상품을 소품처럼 자연스럽게 등장시키는 간접 광고를 영문 약어로 무엇이라 합니까?",
+        "answer": "PPL",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "Product Placement 의 약자입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-tv/3#005",
+      "seed": {
+        "subject": "CM송",
+        "aspect": "짧은 노래로 상표를 외우게 한다",
+        "knowledgePoint": "상품 이름을 넣어 만든 광고 노래",
+        "probableAnswer": "CM송"
+      },
+      "question": {
+        "ok": true,
+        "question": "상품이나 회사 이름을 넣어 기억하기 쉽게 만든 광고용 노래를 무엇이라 합니까?",
+        "answer": "CM송",
+        "acceptedAnswers": [
+          "로고송"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "CM 은 광고 방송을 뜻하는 commercial message 의 약자입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-tv/3#006",
+      "seed": {
+        "subject": "공익광고",
+        "aspect": "상품을 팔지 않는다",
+        "knowledgePoint": "사회적 메시지를 전하려고 만드는 광고",
+        "probableAnswer": "공익광고"
+      },
+      "question": {
+        "ok": true,
+        "question": "상품을 팔려는 것이 아니라 금연·환경 보호처럼 사회적 메시지를 알리려고 만드는 광고는?",
+        "answer": "공익광고",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "방송사에는 일정 비율의 공익광고 편성이 요구됩니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "kr-tv/3#007",
+      "seed": {
+        "subject": "광고 심의",
+        "aspect": "과장 광고를 걸러 낸다",
+        "knowledgePoint": "방송 광고의 내용을 사전에 심사하는 제도",
+        "probableAnswer": "광고 심의"
+      },
+      "question": {
+        "ok": false,
+        "rejectReason": "방송 광고 사전 심의가 2008년 위헌 결정 뒤 자율 심의로 바뀌어, 질문을 어느 시점으로 쓰느냐에 따라 정답과 서술이 흔들린다."
+      }
+    }
+  ]
+}

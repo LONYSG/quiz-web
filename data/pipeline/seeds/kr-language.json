@@ -3,7 +3,7 @@
   "midName": "한국어·한글",
   "majorKey": "korea",
   "majorName": "한국",
-  "updatedAt": "2026-09-21T06:42:42.642Z",
+  "updatedAt": "2026-09-28T01:31:40.224Z",
   "subs": {
     "kr-language/1": {
       "subName": "한글 자모·맞춤법",
@@ -879,7 +879,7 @@
         {
           "answer": "진지",
           "origin": "r021:kr-language/5#011",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: db56). 기존 db:313 을 남긴다 — 더한 것이 '식사를 권할 때' 뿐이다"
         },
         {
           "answer": "댁",
@@ -1078,12 +1078,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:25:41.135Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/kr-language-5#011",
             "answer": "진지",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: db56). 기존 db:313 을 남긴다 — 더한 것이 '식사를 권할 때' 뿐이다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:313",
+              "at": "2026-09-28T01:31:40.218Z"
+            }
           }
         },
         {

@@ -3,7 +3,7 @@
   "midName": "세계 음식·요리",
   "majorKey": "life",
   "majorName": "생활·상식",
-  "updatedAt": "2026-09-21T14:13:47.422Z",
+  "updatedAt": "2026-09-28T02:31:22.590Z",
   "subs": {
     "world-food/1": {
       "subName": "아시아 음식",
@@ -61,12 +61,12 @@
         {
           "answer": "글루탐산나트륨",
           "origin": "r021:world-food/1#010",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr58,db119). 기존 db:1314 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "만두",
           "origin": "r021:world-food/1#011",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr107,db120). 기존 db:1688 을 남긴다 — 서로 다른 사실 하나씩을 준다(세계 확산 / 찐·군·물 분류). 우열이 없다"
         },
         {
           "answer": "두부",
@@ -247,12 +247,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.401Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/world-food-1#010",
             "answer": "글루탐산나트륨",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr58,db119). 기존 db:1314 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1314",
+              "at": "2026-09-28T01:31:36.644Z"
+            }
           }
         },
         {
@@ -265,12 +272,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.401Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/world-food-1#011",
             "answer": "만두",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr107,db120). 기존 db:1688 을 남긴다 — 서로 다른 사실 하나씩을 준다(세계 확산 / 찐·군·물 분류). 우열이 없다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1688",
+              "at": "2026-09-28T01:31:39.784Z"
+            }
           }
         },
         {
@@ -595,9 +609,240 @@
           "answer": "타코",
           "origin": "db:200",
           "note": "gemini-gen/approved"
+        },
+        {
+          "answer": "핫도그",
+          "origin": "r022:world-food/3#001",
+          "note": null
+        },
+        {
+          "answer": "칠면조",
+          "origin": "r022:world-food/3#002",
+          "note": null
+        },
+        {
+          "answer": "바비큐",
+          "origin": "r022:world-food/3#003",
+          "note": null
+        },
+        {
+          "answer": "세비체",
+          "origin": "r022:world-food/3#004",
+          "note": null
+        },
+        {
+          "answer": "슈하스코",
+          "origin": "r022:world-food/3#005",
+          "note": null
+        },
+        {
+          "answer": "푸틴",
+          "origin": "r022:world-food/3#006",
+          "note": null
+        },
+        {
+          "answer": "과카몰리",
+          "origin": "r022:world-food/3#007",
+          "note": null
+        },
+        {
+          "answer": "엠파나다",
+          "origin": "r022:world-food/3#008",
+          "note": null
+        },
+        {
+          "answer": "클램 차우더",
+          "origin": "r022:world-food/3#009",
+          "note": null
+        },
+        {
+          "answer": "나초",
+          "origin": "r022:world-food/3#010",
+          "note": null
         }
       ],
-      "seeds": []
+      "seeds": [
+        {
+          "seedId": "world-food/3#001",
+          "subject": "핫도그",
+          "aspect": "소시지를 긴 빵에 끼운다",
+          "knowledgePoint": "미국 야구장의 대표 음식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:04:36.451Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/world-food-3#001",
+            "answer": "핫도그",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "world-food/3#002",
+          "subject": "추수감사절 칠면조",
+          "aspect": "11월 넷째 목요일 식탁",
+          "knowledgePoint": "미국 명절의 대표 요리",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:04:36.451Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/world-food-3#002",
+            "answer": "칠면조",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "world-food/3#003",
+          "subject": "바비큐",
+          "aspect": "낮은 불에 오래 훈연한다",
+          "knowledgePoint": "미국 남부식 고기 요리",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:04:36.451Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/world-food-3#003",
+            "answer": "바비큐",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "world-food/3#004",
+          "subject": "세비체",
+          "aspect": "날생선을 라임즙에 절인다",
+          "knowledgePoint": "페루의 대표 요리",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:04:36.451Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/world-food-3#004",
+            "answer": "세비체",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "world-food/3#005",
+          "subject": "슈하스코",
+          "aspect": "긴 꼬챙이 고기를 잘라 준다",
+          "knowledgePoint": "브라질식 숯불구이",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:04:36.451Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/world-food-3#005",
+            "answer": "슈하스코",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "world-food/3#006",
+          "subject": "푸틴",
+          "aspect": "감자튀김에 치즈와 그레이비",
+          "knowledgePoint": "캐나다 퀘벡의 음식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:04:36.451Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/world-food-3#006",
+            "answer": "푸틴",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "world-food/3#007",
+          "subject": "과카몰리",
+          "aspect": "아보카도를 으깬다",
+          "knowledgePoint": "멕시코의 소스",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:04:36.451Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/world-food-3#007",
+            "answer": "과카몰리",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "world-food/3#008",
+          "subject": "엠파나다",
+          "aspect": "고기를 넣고 반달 모양으로 굽는다",
+          "knowledgePoint": "중남미의 만두 같은 빵",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:04:36.451Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/world-food-3#008",
+            "answer": "엠파나다",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "world-food/3#009",
+          "subject": "클램 차우더",
+          "aspect": "조개로 끓인 크림 수프",
+          "knowledgePoint": "보스턴의 명물 수프",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:04:36.451Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/world-food-3#009",
+            "answer": "클램 차우더",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        },
+        {
+          "seedId": "world-food/3#010",
+          "subject": "나초",
+          "aspect": "토르티야 칩에 치즈를 녹인다",
+          "knowledgePoint": "멕시코에서 시작된 간식",
+          "round": "r022",
+          "seedPrompt": "seed-v3",
+          "generator": "claude-opus-5-5",
+          "createdAt": "2026-09-28T02:04:36.451Z",
+          "question": {
+            "status": "ok",
+            "ref": "r022/world-food-3#010",
+            "answer": "나초",
+            "rejectReason": null,
+            "questionPrompt": "question-v2",
+            "questionGenerator": "claude-opus-5-5"
+          }
+        }
+      ]
     },
     "world-food/4": {
       "subName": "조리법·조리 도구",
@@ -630,7 +875,7 @@
         {
           "answer": "무게중심",
           "origin": "r021:world-food/4#005",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr59,db121). 기존 db:1176 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "교차 오염",
@@ -751,12 +996,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:38:27.404Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/world-food-4#005",
             "answer": "무게중심",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr59,db121). 기존 db:1176 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1176",
+              "at": "2026-09-28T01:31:36.710Z"
+            }
           }
         },
         {

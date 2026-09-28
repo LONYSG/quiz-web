@@ -1,0 +1,279 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "earth/4",
+    "categoryPath": "자연과학 > 지구과학·기상 > 해양",
+    "midKey": "earth",
+    "subName": "해양",
+    "majorKey": "science",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:50:38.502Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 9,
+      "shortfallReason": "★ 9건에서 멈췄다. 전역 대조에서 마리아나 해구(세계 지리)·쓰나미(화산·지진)가 기존과 같은 지식으로 걸려 버렸다.",
+      "listedCandidates": 21,
+      "remainingUsable": 2,
+      "remainingUsableNote": "라니냐·해수의 층 구조가 남았다.",
+      "estimatedCeiling": "실질 상한 13건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "태평양",
+          "aspect": "가장 넓은 바다",
+          "reason": "DB 에 이미 있다 (usedAnswers). ★ 이름·크기는 세계 지리 소분류다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "마리아나 해구",
+            "probableAnswer": "마리아나 해구",
+            "existing": "db:1983",
+            "why": "기존이 '가장 깊은 해구' 를 묻는다. 이름·크기는 세계 지리 경계이기도 하다",
+            "replacedWith": null
+          },
+          {
+            "subject": "쓰나미",
+            "probableAnswer": "쓰나미",
+            "existing": "db:920",
+            "why": "기존이 같은 현상을 '지진해일' 로 묻는다. 표기만 다른 같은 지식이다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 11,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:19:29.951Z"
+  },
+  "items": [
+    {
+      "seedId": "earth/4#001",
+      "seed": {
+        "subject": "난류와 한류",
+        "aspect": "적도 쪽에서 오는 따뜻한 물",
+        "knowledgePoint": "바닷물의 온도에 따라 나누는 해류",
+        "probableAnswer": "난류"
+      },
+      "question": {
+        "ok": true,
+        "question": "적도 부근에서 고위도 쪽으로 흘러와 주변 바다보다 수온이 높은 해류를 무엇이라 합니까?",
+        "answer": "난류",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "반대로 고위도에서 흘러오는 찬 해류는 한류라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/4#002",
+      "seed": {
+        "subject": "쿠로시오 해류",
+        "aspect": "우리 바다로 올라오는 따뜻한 해류",
+        "knowledgePoint": "북태평양 서쪽을 따라 흐르는 난류",
+        "probableAnswer": "쿠로시오 해류"
+      },
+      "question": {
+        "ok": true,
+        "question": "필리핀 동쪽에서 일본 남쪽을 따라 북상하며 우리나라 바다에 따뜻한 물을 보내 주는 북태평양의 큰 난류는?",
+        "answer": "쿠로시오 해류",
+        "acceptedAnswers": [
+          "쿠로시오"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "이름은 일본어로 \"검은 해류\" 라는 뜻입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/4#003",
+      "seed": {
+        "subject": "엘니뇨",
+        "aspect": "크리스마스 무렵 바다가 따뜻해진다",
+        "knowledgePoint": "동태평양 수온 상승과 그 영향",
+        "probableAnswer": "엘니뇨"
+      },
+      "question": {
+        "ok": true,
+        "question": "몇 년에 한 번 동태평양 적도 부근의 바닷물 온도가 평년보다 높아지는 현상으로, 크리스마스 무렵에 나타나 \"아기 예수\" 라는 이름이 붙은 것은?",
+        "answer": "엘니뇨",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "반대로 수온이 낮아지는 현상은 라니냐라 합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/4#004",
+      "seed": {
+        "subject": "조석",
+        "aspect": "하루 두 번 바닷물이 들고 난다",
+        "knowledgePoint": "달과 태양의 인력으로 생기는 밀물과 썰물",
+        "probableAnswer": "조석"
+      },
+      "question": {
+        "ok": true,
+        "question": "달과 태양의 인력으로 바닷물이 하루에 두 번쯤 들어오고 나가는 현상을 무엇이라 합니까?",
+        "answer": "조석",
+        "acceptedAnswers": [
+          "밀물과 썰물"
+        ],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "서해안은 이 차이가 커서 넓은 갯벌이 생겼습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/4#005",
+      "seed": {
+        "subject": "염분",
+        "aspect": "바닷물이 짠 까닭",
+        "knowledgePoint": "바닷물에 녹아 있는 염류의 양",
+        "probableAnswer": "염분"
+      },
+      "question": {
+        "ok": true,
+        "question": "바닷물 1kg 속에 녹아 있는 염류의 양을 g으로 나타낸 값을 무엇이라 합니까? 평균 약 35 정도입니다.",
+        "answer": "염분",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "비가 많이 오거나 강물이 들어오는 곳은 이 값이 낮아집니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/4#006",
+      "seed": {
+        "subject": "용승",
+        "aspect": "깊은 곳의 찬물이 올라온다",
+        "knowledgePoint": "영양분이 올라와 좋은 어장을 만드는 현상",
+        "probableAnswer": "용승"
+      },
+      "question": {
+        "ok": true,
+        "question": "바람 때문에 깊은 곳의 차갑고 영양분 많은 바닷물이 표면으로 올라와 좋은 어장을 만드는 현상은?",
+        "answer": "용승",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "페루 앞바다가 대표적인 예입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/4#007",
+      "seed": {
+        "subject": "조경 수역",
+        "aspect": "난류와 한류가 만나는 곳",
+        "knowledgePoint": "어족이 모여 좋은 어장이 되는 바다",
+        "probableAnswer": "조경 수역"
+      },
+      "question": {
+        "ok": true,
+        "question": "난류와 한류가 만나 먹이가 풍부해져 여러 물고기가 모이는 좋은 어장이 되는 바다를 무엇이라 합니까?",
+        "answer": "조경 수역",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "우리나라 동해도 이런 바다에 속합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/4#008",
+      "seed": {
+        "subject": "열염순환",
+        "aspect": "온도와 염분 차이로 바닷물이 돈다",
+        "knowledgePoint": "깊은 바다를 따라 전 지구를 도는 순환",
+        "probableAnswer": "열염순환"
+      },
+      "question": {
+        "ok": true,
+        "question": "극지방에서 차갑고 짠 물이 가라앉아 깊은 바다를 따라 전 지구를 천천히 도는 순환을, 온도와 염분이 움직인다는 뜻에서 무엇이라 합니까?",
+        "answer": "열염순환",
+        "acceptedAnswers": [],
+        "accessibility": 2,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "한 바퀴 도는 데 천 년 가까이 걸린다는 추정이 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "earth/4#009",
+      "seed": {
+        "subject": "해령",
+        "aspect": "바다 밑의 긴 산맥",
+        "knowledgePoint": "판이 벌어지며 새 지각이 생기는 곳",
+        "probableAnswer": "해령"
+      },
+      "question": {
+        "ok": true,
+        "question": "바다 밑에 길게 이어진 산맥으로, 판이 서로 벌어지며 마그마가 올라와 새 해양 지각이 만들어지는 곳은?",
+        "answer": "해령",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "대서양 한가운데를 남북으로 가로지르는 것이 대표적입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

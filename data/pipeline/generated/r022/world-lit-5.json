@@ -1,0 +1,282 @@
+{
+  "_meta": {
+    "round": "r022",
+    "subId": "world-lit/5",
+    "categoryPath": "문화·예술 > 세계 문학 > 동아시아 문학",
+    "midKey": "world-lit",
+    "subName": "동아시아 문학",
+    "majorKey": "arts",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:59:13.415Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 9,
+      "shortfallReason": "★ 9건에서 멈췄다. 전역 대조에서 하이쿠가 기존 시·희곡 소분류와 같아 버렸다. 홍루몽·겐지 이야기는 R020 에 있다.",
+      "listedCandidates": 20,
+      "remainingUsable": 0,
+      "remainingUsableNote": "남은 후보는 다른 소분류에 있다.",
+      "estimatedCeiling": "실질 상한 10건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "홍루몽",
+          "aspect": "청나라 소설",
+          "reason": "★ R020 에 있다"
+        },
+        {
+          "subject": "겐지 이야기",
+          "aspect": "궁정 여성의 장편",
+          "reason": "★ R020 에 있다"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "하이쿠",
+            "probableAnswer": "하이쿠",
+            "existing": "db:1385",
+            "why": "기존이 5·7·5 일본 정형시로 같은 지식을 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [
+          {
+            "subject": "나는 고양이로소이다",
+            "probableAnswer": "나는 고양이로소이다",
+            "existing": "db:1249",
+            "whyDifferent": "포함 관계일 뿐이다 — 기존은 십이지의 고양이다"
+          }
+        ],
+        "checked": 10,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:24:55.564Z"
+  },
+  "items": [
+    {
+      "seedId": "world-lit/5#001",
+      "seed": {
+        "subject": "아Q정전",
+        "aspect": "정신 승리법",
+        "knowledgePoint": "루쉰이 중국인의 병폐를 풍자한 소설",
+        "probableAnswer": "아Q정전"
+      },
+      "question": {
+        "ok": true,
+        "question": "루쉰이 쓴 소설로, 늘 얻어맞으면서도 머릿속으로 이겼다고 여기는 '정신 승리법' 의 주인공을 통해 중국인의 병폐를 풍자한 작품은?",
+        "answer": "아Q정전",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "\"정신 승리\" 라는 말은 이 작품에서 널리 퍼졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-lit/5#002",
+      "seed": {
+        "subject": "나는 고양이로소이다",
+        "aspect": "고양이가 사람을 관찰한다",
+        "knowledgePoint": "나쓰메 소세키의 풍자 소설",
+        "probableAnswer": "나는 고양이로소이다"
+      },
+      "question": {
+        "ok": true,
+        "question": "이름 없는 고양이가 주인집 교사와 손님들을 지켜보며 인간 사회를 풍자하는, 나쓰메 소세키의 첫 장편소설은?",
+        "answer": "나는 고양이로소이다",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "1905년 잡지에 연재되어 큰 인기를 끌었습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-lit/5#003",
+      "seed": {
+        "subject": "상실의 시대",
+        "aspect": "원제는 비틀즈의 노래 제목",
+        "knowledgePoint": "무라카미 하루키의 소설과 원제",
+        "probableAnswer": "노르웨이의 숲"
+      },
+      "question": {
+        "ok": true,
+        "question": "무라카미 하루키의 소설로, 한국에서는 '상실의 시대' 라는 제목으로 널리 알려졌습니다. 비틀스 노래 제목에서 따온 원제는?",
+        "answer": "노르웨이의 숲",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "지금은 원제 그대로 번역된 판본도 나와 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-lit/5#004",
+      "seed": {
+        "subject": "설국",
+        "aspect": "국경의 긴 터널을 빠져나오자",
+        "knowledgePoint": "가와바타 야스나리의 소설과 첫 문장",
+        "probableAnswer": "설국"
+      },
+      "question": {
+        "ok": true,
+        "question": "'국경의 긴 터널을 빠져나오자 ○○이었다' 는 첫 문장으로 유명한 가와바타 야스나리의 소설은?",
+        "answer": "설국",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "가와바타는 1968년 일본인 최초로 노벨 문학상을 받았습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-lit/5#005",
+      "seed": {
+        "subject": "모옌",
+        "aspect": "중국 작가로 노벨상을 받았다",
+        "knowledgePoint": "붉은 수수밭의 작가",
+        "probableAnswer": "모옌"
+      },
+      "question": {
+        "ok": true,
+        "question": "영화로도 만들어진 \"붉은 수수밭\" 을 쓰고, 2012년 중국 국적 작가로는 처음 노벨 문학상을 받은 소설가는?",
+        "answer": "모옌",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "필명은 \"말하지 말라\" 는 뜻입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-lit/5#006",
+      "seed": {
+        "subject": "인간 실격",
+        "aspect": "부끄러운 생애를 보냈습니다",
+        "knowledgePoint": "다자이 오사무의 자전적 소설",
+        "probableAnswer": "인간 실격"
+      },
+      "question": {
+        "ok": true,
+        "question": "'부끄러운 생애를 보냈습니다' 라는 고백으로 시작하는 수기가 이어지는, 다자이 오사무의 자전적 소설은?",
+        "answer": "인간 실격",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "작가가 세상을 떠나기 직전에 완성한 작품입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-lit/5#007",
+      "seed": {
+        "subject": "이백",
+        "aspect": "'시선' 이라 불렸다",
+        "knowledgePoint": "당나라의 낭만적 시인",
+        "probableAnswer": "이백"
+      },
+      "question": {
+        "ok": true,
+        "question": "당나라 시인으로 자유분방하고 낭만적인 시를 써 '시선(詩仙)' 이라 불린 사람은?",
+        "answer": "이백",
+        "acceptedAnswers": [
+          "이태백"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "술과 달을 노래한 시가 많아 달을 건지려다 물에 빠졌다는 전설도 있습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-lit/5#008",
+      "seed": {
+        "subject": "두보",
+        "aspect": "'시성' 이라 불렸다",
+        "knowledgePoint": "당나라의 현실을 노래한 시인",
+        "probableAnswer": "두보"
+      },
+      "question": {
+        "ok": true,
+        "question": "당나라 시인으로 전란 속 백성의 고통을 사실적으로 그려 '시성(詩聖)' 이라 불린 사람은?",
+        "answer": "두보",
+        "acceptedAnswers": [],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 4,
+        "explanation": "\"나라는 망했어도 산하는 그대로\" 로 시작하는 시가 유명합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "world-lit/5#009",
+      "seed": {
+        "subject": "시경",
+        "aspect": "중국에서 가장 오래된 시가집",
+        "knowledgePoint": "공자가 엮었다고 전하는 시집",
+        "probableAnswer": "시경"
+      },
+      "question": {
+        "ok": true,
+        "question": "주나라 무렵의 노래 300여 편을 모은 중국에서 가장 오래된 시가집으로, 공자가 엮었다고 전하는 것은?",
+        "answer": "시경",
+        "acceptedAnswers": [],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 4,
+        "explanation": "유학의 기본 경전인 오경 가운데 하나입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "midName": "발명·발견",
   "majorKey": "tech",
   "majorName": "기술·의학",
-  "updatedAt": "2026-09-21T06:56:03.196Z",
+  "updatedAt": "2026-09-28T01:31:38.417Z",
   "subs": {
     "invention/1": {
       "subName": "산업혁명기 발명",
@@ -281,7 +281,7 @@
         {
           "answer": "트랜지스터",
           "origin": "r021:invention/2#001",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr85,db53). 기존 db:1564 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "집적회로",
@@ -311,7 +311,7 @@
         {
           "answer": "라이트 형제",
           "origin": "r021:invention/2#007",
-          "note": null
+          "note": "r018 격리: 중복(V001 same: xr86,db54). 기존 db:1392 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다"
         },
         {
           "answer": "텔레비전",
@@ -350,12 +350,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:32:40.846Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/invention-2#001",
             "answer": "트랜지스터",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr85,db53). 기존 db:1564 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1564",
+              "at": "2026-09-28T01:31:38.346Z"
+            }
           }
         },
         {
@@ -458,12 +465,19 @@
           "generator": "claude-opus-5",
           "createdAt": "2026-09-21T06:32:40.846Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r021/invention-2#007",
             "answer": "라이트 형제",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5"
+            "questionGenerator": "claude-opus-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복(V001 same: xr86,db54). 기존 db:1392 을 남긴다 — VERIFY 제안 그대로 — 기존이 낫다",
+              "decidedBy": "자체 판단 (R022 작업 A — V001 판정을 연결 요소로 묶어 반영)",
+              "duplicateOf": "db:1392",
+              "at": "2026-09-28T01:31:38.412Z"
+            }
           }
         },
         {
