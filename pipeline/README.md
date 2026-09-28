@@ -253,6 +253,17 @@ OpenTDB는 CC BY-SA 4.0이다. 파생물인 한국어 문제 데이터도 같은
 | 판정 프롬프트에 "일반어 vs 구체어" | `pipeline/src/dedupe-llm.ts` → dist | D-103 |
 | 2회차 소재 프롬프트 v2 — 답이 1회차와 같아야 한다 | `pipeline/prompts/seed-r2-v2.md` (v1 유지) | D-105 |
 
+### ★★ R023 — 기준 먼저 (D-109)
+
+★ **문제 품질 기준의 정본은 [docs/15-QUALITY-STANDARD.md](../docs/15-QUALITY-STANDARD.md) 다.** 프롬프트는 그것을 전달하는 수단이다.
+
+| 무엇 | 파일 | 결정 |
+|---|---|---|
+| 해설 감사 (정답 알림 문장 분류 — 고치지 않는다) | `scripts/explanation-audit.mjs [--out <json>]` | D-106 |
+| 문제 프롬프트 v3 ★ **초안 — 앵커 확정 전 사용 금지** | `pipeline/prompts/question-v3.md` (v2 유지) | D-107 |
+| 전역 대조 C37 (2글자 개념어 · 된소리) + 2회차 짝 면제 | `scripts/seeds-global-check.mjs` (`--no-c37` 로 옛 방식) | D-108 |
+| 소분류 성격 분류 (2회차 규모 추정) | `scripts/seeds-nature.mjs` | Q-99 |
+
 ★ `seeds-check.mjs` 는 라운드 인자를 빼면 **기본값 r017** 로 돌아 `r017-candidates.json` 을 덮어쓴다. 반드시 라운드를 적을 것.
 ★ 전역 대조의 사각지대: 2글자 정답의 포함 관계(열섬 ⊂ 열섬 현상), 된소리 표기 차이(쎄시봉/세시봉) — C37.
 

@@ -1,266 +1,266 @@
 {
- "_meta": {
-  "round": "r022",
-  "subId": "aerospace/2",
-  "categoryPath": "기술·의학 > 항공·우주 기술 > 항공사·공항",
-  "midKey": "aerospace",
-  "subName": "항공사·공항",
-  "majorKey": "tech",
-  "seedPrompt": "seed-v3",
-  "questionPrompt": "question-v2",
-  "generator": "claude-opus-5-5",
-  "generatedAt": "2026-09-28T01:53:24.949Z",
-  "seedResult": {
-   "ok": true,
-   "requestedCount": 12,
-   "actualCount": 8,
-   "shortfallReason": "★ 8건에서 멈췄다. 전역 대조에서 블랙박스·관제탑이 기존 문항과 같은 지식으로 걸려 버렸다. 남은 후보가 항공사 순위·노선 수라 시간이 지나면 답이 바뀐다.",
-   "listedCandidates": 19,
-   "remainingUsable": 2,
-   "remainingUsableNote": "기내 비행기 모드·오버부킹이 남았다.",
-   "estimatedCeiling": "실질 상한 11건으로 추정한다.",
-   "droppedForOverlap": [
+  "_meta": {
+    "round": "r022",
+    "subId": "aerospace/2",
+    "categoryPath": "기술·의학 > 항공·우주 기술 > 항공사·공항",
+    "midKey": "aerospace",
+    "subName": "항공사·공항",
+    "majorKey": "tech",
+    "seedPrompt": "seed-v3",
+    "questionPrompt": "question-v2",
+    "generator": "claude-opus-5-5",
+    "generatedAt": "2026-09-28T01:53:24.949Z",
+    "seedResult": {
+      "ok": true,
+      "requestedCount": 12,
+      "actualCount": 8,
+      "shortfallReason": "★ 8건에서 멈췄다. 전역 대조에서 블랙박스·관제탑이 기존 문항과 같은 지식으로 걸려 버렸다. 남은 후보가 항공사 순위·노선 수라 시간이 지나면 답이 바뀐다.",
+      "listedCandidates": 19,
+      "remainingUsable": 2,
+      "remainingUsableNote": "기내 비행기 모드·오버부킹이 남았다.",
+      "estimatedCeiling": "실질 상한 11건으로 추정한다.",
+      "droppedForOverlap": [
+        {
+          "subject": "IATA",
+          "aspect": "공항 코드",
+          "reason": "DB 에 이미 있다 (usedAnswers)"
+        }
+      ],
+      "note": null,
+      "globalCheck": {
+        "dropped": [
+          {
+            "subject": "블랙박스",
+            "probableAnswer": "블랙박스",
+            "existing": "db:1393",
+            "why": "기존이 '주황색인데 이름은 검은 상자' 를 묻는다",
+            "replacedWith": "오버부킹"
+          },
+          {
+            "subject": "관제탑",
+            "probableAnswer": "관제탑",
+            "existing": "db:1398",
+            "why": "기존이 같은 시설을 같은 역할로 묻는다",
+            "replacedWith": null
+          }
+        ],
+        "keptDespiteHit": [],
+        "checked": 10,
+        "hits": 2,
+        "tool": "scripts/seeds-global-check.mjs"
+      }
+    },
+    "stage": "seeds+questions",
+    "questionGenerator": "claude-opus-5-5",
+    "questionsAt": "2026-09-28T02:21:41.955Z"
+  },
+  "items": [
     {
-     "subject": "IATA",
-     "aspect": "공항 코드",
-     "reason": "DB 에 이미 있다 (usedAnswers)"
+      "seedId": "aerospace/2#001",
+      "seed": {
+        "subject": "인천국제공항",
+        "aspect": "바다를 메운 섬에 지었다",
+        "knowledgePoint": "영종도와 용유도 사이를 메워 지은 공항",
+        "probableAnswer": "인천국제공항"
+      },
+      "question": {
+        "ok": true,
+        "question": "영종도와 용유도 사이의 바다를 메워 지어 2001년 문을 연 우리나라 최대의 공항은?",
+        "answer": "인천국제공항",
+        "acceptedAnswers": [
+          "인천공항"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "갯벌을 메운 땅 위에 지어졌습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/2#002",
+      "seed": {
+        "subject": "허브 공항",
+        "aspect": "바퀴의 중심처럼 노선이 모인다",
+        "knowledgePoint": "여러 노선이 모여 갈아타는 중심 공항",
+        "probableAnswer": "허브 공항"
+      },
+      "question": {
+        "ok": true,
+        "question": "자전거 바퀴의 바큇살이 가운데로 모이듯 여러 항공 노선이 모여 승객이 갈아타는 중심 공항을 무엇이라 합니까?",
+        "answer": "허브 공항",
+        "acceptedAnswers": [
+          "허브"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "두바이·싱가포르·인천 등이 이런 공항을 목표로 경쟁해 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/2#003",
+      "seed": {
+        "subject": "저비용 항공사",
+        "aspect": "기내식을 따로 판다",
+        "knowledgePoint": "서비스를 줄여 운임을 낮춘 항공사",
+        "probableAnswer": "저비용 항공사"
+      },
+      "question": {
+        "ok": true,
+        "question": "기내식과 수하물을 따로 돈을 받는 등 서비스를 줄여 운임을 낮춘 항공사를 무엇이라 합니까?",
+        "answer": "저비용 항공사",
+        "acceptedAnswers": [
+          "LCC",
+          "저가 항공사"
+        ],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "좌석 간격을 좁히고 비행기 기종을 통일해 비용을 줄입니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/2#004",
+      "seed": {
+        "subject": "활주로 번호",
+        "aspect": "방향을 나타내는 숫자",
+        "knowledgePoint": "나침반 방위를 10으로 나눠 매긴 활주로 이름",
+        "probableAnswer": "방위"
+      },
+      "question": {
+        "ok": true,
+        "question": "활주로 끝에 적힌 '09' '27' 같은 숫자는 그 활주로가 향하는 무엇을 10으로 나눈 값입니까?",
+        "answer": "방위",
+        "acceptedAnswers": [
+          "방위각"
+        ],
+        "accessibility": 3,
+        "difficulty": 4,
+        "worthKnowing": 3,
+        "explanation": "같은 활주로라도 양 끝의 번호는 18 차이가 납니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/2#005",
+      "seed": {
+        "subject": "시차증",
+        "aspect": "동쪽으로 갈 때 더 힘들다",
+        "knowledgePoint": "여러 시간대를 빠르게 건너 생기는 피로",
+        "probableAnswer": "시차증"
+      },
+      "question": {
+        "ok": true,
+        "question": "여러 시간대를 비행기로 빠르게 건넌 뒤 잠이 오지 않거나 피로가 몰려오는 증상은? 대개 동쪽으로 갈 때 더 심하다고 알려져 있습니다.",
+        "answer": "시차증",
+        "acceptedAnswers": [
+          "제트 래그"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "몸속 생체 시계가 바뀐 현지 시각을 따라가지 못해 생깁니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/2#006",
+      "seed": {
+        "subject": "마일리지",
+        "aspect": "탄 거리만큼 쌓인다",
+        "knowledgePoint": "비행 거리에 따라 주는 적립 제도",
+        "probableAnswer": "마일리지"
+      },
+      "question": {
+        "ok": true,
+        "question": "비행기를 탄 거리만큼 점수를 쌓아 두었다가 항공권이나 좌석 승급에 쓸 수 있게 한 제도는?",
+        "answer": "마일리지",
+        "acceptedAnswers": [],
+        "accessibility": 5,
+        "difficulty": 1,
+        "worthKnowing": 3,
+        "explanation": "비행 거리를 마일 단위로 셌던 데서 이름이 왔습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/2#007",
+      "seed": {
+        "subject": "항공 동맹",
+        "aspect": "항공사끼리 좌석을 나눈다",
+        "knowledgePoint": "여러 항공사가 노선과 마일리지를 공유하는 연합",
+        "probableAnswer": "항공 동맹"
+      },
+      "question": {
+        "ok": true,
+        "question": "스타얼라이언스·스카이팀처럼 여러 항공사가 노선과 라운지, 마일리지를 함께 쓰려고 맺은 연합을 무엇이라 합니까?",
+        "answer": "항공 동맹",
+        "acceptedAnswers": [
+          "항공사 동맹"
+        ],
+        "accessibility": 3,
+        "difficulty": 3,
+        "worthKnowing": 3,
+        "explanation": "같은 연합 안에서는 갈아탈 때 짐을 한 번에 부칠 수 있는 경우가 많습니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
+    },
+    {
+      "seedId": "aerospace/2#008",
+      "seed": {
+        "subject": "오버부킹",
+        "aspect": "좌석보다 표를 더 판다",
+        "knowledgePoint": "나타나지 않는 승객을 예상해 초과 예약하는 관행",
+        "probableAnswer": "오버부킹"
+      },
+      "question": {
+        "ok": true,
+        "question": "예약하고도 나타나지 않는 승객을 예상해, 항공사가 실제 좌석보다 표를 더 많이 파는 관행을 무엇이라 합니까?",
+        "answer": "오버부킹",
+        "acceptedAnswers": [
+          "초과 예약"
+        ],
+        "accessibility": 4,
+        "difficulty": 2,
+        "worthKnowing": 3,
+        "explanation": "모두 나타나면 보상을 주고 다른 편으로 옮겨 달라고 요청합니다.",
+        "selfCheck": {
+          "answerInQuestion": false,
+          "uniqueAnswer": true,
+          "questionSelfConsistent": true
+        }
+      }
     }
-   ],
-   "note": null,
-   "globalCheck": {
-    "dropped": [
-     {
-      "subject": "블랙박스",
-      "probableAnswer": "블랙박스",
-      "existing": "db:1393",
-      "why": "기존이 '주황색인데 이름은 검은 상자' 를 묻는다",
-      "replacedWith": "오버부킹"
-     },
-     {
-      "subject": "관제탑",
-      "probableAnswer": "관제탑",
-      "existing": "db:1398",
-      "why": "기존이 같은 시설을 같은 역할로 묻는다",
-      "replacedWith": null
-     }
-    ],
-    "keptDespiteHit": [],
-    "checked": 10,
-    "hits": 2,
-    "tool": "scripts/seeds-global-check.mjs"
-   }
-  },
-  "stage": "seeds+questions",
-  "questionGenerator": "claude-opus-5-5",
-  "questionsAt": "2026-09-28T02:21:41.955Z"
- },
- "items": [
-  {
-   "seedId": "aerospace/2#001",
-   "seed": {
-    "subject": "인천국제공항",
-    "aspect": "바다를 메운 섬에 지었다",
-    "knowledgePoint": "영종도와 용유도 사이를 메워 지은 공항",
-    "probableAnswer": "인천국제공항"
-   },
-   "question": {
-    "ok": true,
-    "question": "영종도와 용유도 사이의 바다를 메워 지어 2001년 문을 연 우리나라 최대의 공항은?",
-    "answer": "인천국제공항",
-    "acceptedAnswers": [
-     "인천공항"
-    ],
-    "accessibility": 5,
-    "difficulty": 1,
-    "worthKnowing": 3,
-    "explanation": "갯벌을 메운 땅 위에 지어졌습니다.",
-    "selfCheck": {
-     "answerInQuestion": false,
-     "uniqueAnswer": true,
-     "questionSelfConsistent": true
-    }
-   }
-  },
-  {
-   "seedId": "aerospace/2#002",
-   "seed": {
-    "subject": "허브 공항",
-    "aspect": "바퀴의 중심처럼 노선이 모인다",
-    "knowledgePoint": "여러 노선이 모여 갈아타는 중심 공항",
-    "probableAnswer": "허브 공항"
-   },
-   "question": {
-    "ok": true,
-    "question": "자전거 바퀴의 바큇살이 가운데로 모이듯 여러 항공 노선이 모여 승객이 갈아타는 중심 공항을 무엇이라 합니까?",
-    "answer": "허브 공항",
-    "acceptedAnswers": [
-     "허브"
-    ],
-    "accessibility": 4,
-    "difficulty": 2,
-    "worthKnowing": 3,
-    "explanation": "두바이·싱가포르·인천 등이 이런 공항을 목표로 경쟁해 왔습니다.",
-    "selfCheck": {
-     "answerInQuestion": false,
-     "uniqueAnswer": true,
-     "questionSelfConsistent": true
-    }
-   }
-  },
-  {
-   "seedId": "aerospace/2#003",
-   "seed": {
-    "subject": "저비용 항공사",
-    "aspect": "기내식을 따로 판다",
-    "knowledgePoint": "서비스를 줄여 운임을 낮춘 항공사",
-    "probableAnswer": "저비용 항공사"
-   },
-   "question": {
-    "ok": true,
-    "question": "기내식과 수하물을 따로 돈을 받는 등 서비스를 줄여 운임을 낮춘 항공사를 무엇이라 합니까?",
-    "answer": "저비용 항공사",
-    "acceptedAnswers": [
-     "LCC",
-     "저가 항공사"
-    ],
-    "accessibility": 5,
-    "difficulty": 1,
-    "worthKnowing": 3,
-    "explanation": "좌석 간격을 좁히고 비행기 기종을 통일해 비용을 줄입니다.",
-    "selfCheck": {
-     "answerInQuestion": false,
-     "uniqueAnswer": true,
-     "questionSelfConsistent": true
-    }
-   }
-  },
-  {
-   "seedId": "aerospace/2#004",
-   "seed": {
-    "subject": "활주로 번호",
-    "aspect": "방향을 나타내는 숫자",
-    "knowledgePoint": "나침반 방위를 10으로 나눠 매긴 활주로 이름",
-    "probableAnswer": "방위"
-   },
-   "question": {
-    "ok": true,
-    "question": "활주로 끝에 적힌 '09' '27' 같은 숫자는 그 활주로가 향하는 무엇을 10으로 나눈 값입니까?",
-    "answer": "방위",
-    "acceptedAnswers": [
-     "방위각"
-    ],
-    "accessibility": 3,
-    "difficulty": 4,
-    "worthKnowing": 3,
-    "explanation": "같은 활주로라도 양 끝의 번호는 18 차이가 납니다.",
-    "selfCheck": {
-     "answerInQuestion": false,
-     "uniqueAnswer": true,
-     "questionSelfConsistent": true
-    }
-   }
-  },
-  {
-   "seedId": "aerospace/2#005",
-   "seed": {
-    "subject": "시차증",
-    "aspect": "동쪽으로 갈 때 더 힘들다",
-    "knowledgePoint": "여러 시간대를 빠르게 건너 생기는 피로",
-    "probableAnswer": "시차증"
-   },
-   "question": {
-    "ok": true,
-    "question": "여러 시간대를 비행기로 빠르게 건넌 뒤 잠이 오지 않거나 피로가 몰려오는 증상은? 대개 동쪽으로 갈 때 더 심하다고 알려져 있습니다.",
-    "answer": "시차증",
-    "acceptedAnswers": [
-     "제트 래그"
-    ],
-    "accessibility": 4,
-    "difficulty": 2,
-    "worthKnowing": 3,
-    "explanation": "몸속 생체 시계가 바뀐 현지 시각을 따라가지 못해 생깁니다.",
-    "selfCheck": {
-     "answerInQuestion": false,
-     "uniqueAnswer": true,
-     "questionSelfConsistent": true
-    }
-   }
-  },
-  {
-   "seedId": "aerospace/2#006",
-   "seed": {
-    "subject": "마일리지",
-    "aspect": "탄 거리만큼 쌓인다",
-    "knowledgePoint": "비행 거리에 따라 주는 적립 제도",
-    "probableAnswer": "마일리지"
-   },
-   "question": {
-    "ok": true,
-    "question": "비행기를 탄 거리만큼 점수를 쌓아 두었다가 항공권이나 좌석 승급에 쓸 수 있게 한 제도는?",
-    "answer": "마일리지",
-    "acceptedAnswers": [],
-    "accessibility": 5,
-    "difficulty": 1,
-    "worthKnowing": 3,
-    "explanation": "비행 거리를 마일 단위로 셌던 데서 이름이 왔습니다.",
-    "selfCheck": {
-     "answerInQuestion": false,
-     "uniqueAnswer": true,
-     "questionSelfConsistent": true
-    }
-   }
-  },
-  {
-   "seedId": "aerospace/2#007",
-   "seed": {
-    "subject": "항공 동맹",
-    "aspect": "항공사끼리 좌석을 나눈다",
-    "knowledgePoint": "여러 항공사가 노선과 마일리지를 공유하는 연합",
-    "probableAnswer": "항공 동맹"
-   },
-   "question": {
-    "ok": true,
-    "question": "스타얼라이언스·스카이팀처럼 여러 항공사가 노선과 라운지, 마일리지를 함께 쓰려고 맺은 연합을 무엇이라 합니까?",
-    "answer": "항공 동맹",
-    "acceptedAnswers": [
-     "항공사 동맹"
-    ],
-    "accessibility": 3,
-    "difficulty": 3,
-    "worthKnowing": 3,
-    "explanation": "같은 연합 안에서는 갈아탈 때 짐을 한 번에 부칠 수 있는 경우가 많습니다.",
-    "selfCheck": {
-     "answerInQuestion": false,
-     "uniqueAnswer": true,
-     "questionSelfConsistent": true
-    }
-   }
-  },
-  {
-   "seedId": "aerospace/2#008",
-   "seed": {
-    "subject": "오버부킹",
-    "aspect": "좌석보다 표를 더 판다",
-    "knowledgePoint": "나타나지 않는 승객을 예상해 초과 예약하는 관행",
-    "probableAnswer": "오버부킹"
-   },
-   "question": {
-    "ok": true,
-    "question": "예약하고도 나타나지 않는 승객을 예상해, 항공사가 실제 좌석보다 표를 더 많이 파는 관행을 무엇이라 합니까?",
-    "answer": "오버부킹",
-    "acceptedAnswers": [
-     "초과 예약"
-    ],
-    "accessibility": 4,
-    "difficulty": 2,
-    "worthKnowing": 3,
-    "explanation": "모두 나타나면 보상을 주고 다른 편으로 옮겨 달라고 요청합니다.",
-    "selfCheck": {
-     "answerInQuestion": false,
-     "uniqueAnswer": true,
-     "questionSelfConsistent": true
-    }
-   }
-  }
- ]
+  ]
 }
