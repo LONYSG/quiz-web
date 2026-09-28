@@ -167,10 +167,24 @@ STATUS: 결정대기 (작업 A~D 완료 — 앵커는 건우 표시 대기)
 신규: docs/15-QUALITY-STANDARD.md · docs/anchors-review.md · pipeline/prompts/question-v3.md(초안) · scripts/explanation-audit.mjs
       · data/pipeline/audit/r023-explanation-fix.json · r023-anchor-candidates.json
 갱신: 05-STATUS · 06-WORKLOG · 07-DECISIONS(D-106~D-109) · 08-OPEN-QUESTIONS(Q-98·99 닫음, Q-100·101·102 신설)
-      · 13-PENDING-CHECKS(C35·36·37 닫음, C38~C41 신설) · pipeline/README · scripts/seeds-global-check.mjs
+      · 13-PENDING-CHECKS(C35·36·37 닫음, C40~C43 신설 — ★ C38·C39 는 V002 가 먼저 쓴 번호) · pipeline/README · scripts/seeds-global-check.mjs
 DB: questions.explanation 353건 (그 외 쓰기 없음)
-커밋: 7c4ee95 → origin/main push 완료. push 전 git fetch — V002 쪽 새 커밋 없음, 충돌 없음.
+커밋: 7c4ee95 (본 작업) · 32f8893 (보고서) · 그 뒤 수정 커밋 1개 — ★★ **push 실패** (아래 5-1)
       비밀값 검사: .env 는 .gitignore, 스테이징 diff 에서 키·접속 문자열 패턴 0건
+
+5-1. ★★ 보고할 것 — 커밋 충돌과 push 실패
+  (1) VERIFY V002 가 **이번 라운드 중에 같은 작업 폴더에서** 커밋했다 (b5d7189, 16:29 — ai-out/V002.txt · r022-judged.json · 13-PENDING-CHECKS).
+      push 전 git fetch 에 "새 커밋 없음" 으로 보였던 것은 그 커밋이 이미 로컬에 있었기 때문이다. ★ 처음 보고서 문구("새 커밋 없음")는 틀렸다 — 고쳤다.
+  (2) ★ 내가 13-PENDING-CHECKS 의 표 블록을 통째로 바꾸면서 **V002 의 C33 완료 표시·C38·C39·C33 세부 절을 덮어썼다.**
+      git 기록에서 V002 의 내용을 그대로 되살렸고, 번호가 겹친 내 항목은 C40~C43 으로 옮겼다.
+  (3) ★★ git push 가 **403 (Permission to LONYSG/quiz-web.git denied to LONYSG)** 으로 거절됐다. 자격 증명 문제로 보인다 (추정).
+      무리하게 다른 방법을 시도하지 않았다. 로컬 main 이 origin 보다 앞서 있다 — **건우가 push 해야 한다.**
+
+5-2. V002 결과 (참고 — 판정은 VERIFY 몫, 적재는 다음 라운드)
+  R022 31쌍: same 3 (열섬·쎄시봉·알레르기) / different 27 / unsure 1 (배흘림기둥).
+  ★ GEN 이 전역 대조에서 "살린" 27쌍 중 same 은 1건(3.7%, 알레르기) — R021 기준선 76.4% 보다 훨씬 낮다 = seed-v3 의 살림 판단은 대체로 맞았다.
+  ★ 열섬·쎄시봉 2건은 이번 C37 개선이 잡는 바로 그 2건이다.
+  ★ V002 의 C39 제안("같은 대상, 다른 사실" 은 same 으로 오판하기 쉽다 — 파리·사르트르)은 내 Q-102 #1(같은 대상 다른 단서 = same?) 과 같은 경계를 반대 방향에서 본 것이다. 함께 정해야 한다.
 
 
 ==================================================================
