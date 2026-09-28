@@ -1,0 +1,948 @@
+{
+  "round": "r022",
+  "model": "claude-sonnet-5 (V002 검증 세션)",
+  "usage": {
+    "promptTokens": 0,
+    "outputTokens": 0
+  },
+  "judgedAt": "2026-09-28T07:26:02.493Z",
+  "counts": {
+    "pairs": 31,
+    "judged": 31,
+    "unjudged": 0
+  },
+  "note": "★ V002 세션이 R022 후보 31쌍(byNewItem 26묶음)을 판정했다. 이 중 27쌍은 GEN이 seed 생성 단계 전역 대조에서 \"정답이 겹치지만 지식이 다르다\"고 판단해 살린 것이고(seedResult.globalCheck.keptDespiteHit), 나머지 4쌍은 전역 대조가 놓친 것이다(OB베어스/db:778 포함 오탐, 슈퍼리그/db:1655 별개 조직, 열섬/db:1597 및 쎄시봉/db:1067 표기 차이로 실제 same). 상세는 ai-out/V002.txt 참조. DB에는 아무것도 쓰지 않았다.",
+  "unjudged": [],
+  "judged": [
+    {
+      "pairId": "db1",
+      "verdict": "unsure",
+      "reason": "두 문항 모두 \"기둥 가운데를 볼록하게 만들어 착시를 막는다\"는 동일한 건축 기법을 설명한다. 한국의 \"배흘림기둥\"이 학술적으로 그리스 건축의 \"엔타시스\"와 같은 원리의 별개 사례로 분류되는 개념인지, 아니면 우연히 비슷해 보이는 별개 기법인지를 이 세션은 확인하지 못했다 — 확인 필요. 만약 같은 원리의 다른 문화권 적용이라면 same, 단순히 결과만 닮은 별개 기법이라면 different다.",
+      "keep": "none",
+      "confidence": 0.5,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "architecture/4#002",
+        "question": "기둥 가운데를 조금 불룩하게 만들어 멀리서 보면 곧고 안정되게 보이게 하는 기둥 양식으로, 부석사 무량수전의 기둥으로 유명한 것은?",
+        "answer": "배흘림기둥",
+        "category": "문화·예술 > 건축 > 한국 건축",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:744",
+        "question": "곧게 세운 기둥이 가운데가 홀쭉해 보이는 착시를 막으려고 일부러 가운데를 불룩하게 만든 수법을 무엇이라 합니까?",
+        "answer": "엔타시스",
+        "category": "L2:architecture > 건축 양식",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db2",
+      "verdict": "different",
+      "reason": "배구 코트 선수 인원(6명)과 성경 창세기 천지창조 기간(6일)은 완전히 무관한 지식이며 답만 우연히 일치한다.",
+      "keep": "none",
+      "confidence": 0.97,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "ball-sports/2#001",
+        "question": "국제 규칙의 실내 배구 경기에서 한 팀이 코트에 세우는 선수는 몇 명입니까?",
+        "answer": "6",
+        "category": "스포츠·게임 > 농구·배구·기타 구기 > 배구",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:43",
+        "question": "성경 창세기에서 신이 세상을 창조하는 데 걸린 날 수는?",
+        "answer": "6",
+        "category": "(소분류 없음)",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db3",
+      "verdict": "different",
+      "reason": "배구 코트 선수 인원(6명)과 여자 농구공 규격(6호)은 서로 다른 종목의 무관한 규정으로, 답만 우연히 일치한다.",
+      "keep": "none",
+      "confidence": 0.97,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "ball-sports/2#001",
+        "question": "국제 규칙의 실내 배구 경기에서 한 팀이 코트에 세우는 선수는 몇 명입니까?",
+        "answer": "6",
+        "category": "스포츠·게임 > 농구·배구·기타 구기 > 배구",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1466",
+        "question": "농구공은 성별에 따라 규격이 다릅니다. 남자 경기에서 쓰는 7호와 달리 여자 경기에서 쓰는 것은 몇 호입니까?",
+        "answer": "6",
+        "category": "L2:ball-sports > 농구",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db4",
+      "verdict": "different",
+      "reason": "배구에서 블로킹 제외 최대 터치 수(3)와 장조·단조를 가르는 음정 간격(3도)은 완전히 다른 분야(스포츠 규칙 vs 음악 이론)의 무관한 지식이다.",
+      "keep": "none",
+      "confidence": 0.97,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "ball-sports/2#002",
+        "question": "배구에서 한 팀은 블로킹을 빼고 최대 몇 번 만에 공을 상대 코트로 넘겨야 합니까?",
+        "answer": "3",
+        "category": "스포츠·게임 > 농구·배구·기타 구기 > 배구",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1799",
+        "question": "밝고 씩씩하게 들리는 조와 어둡고 슬프게 들리는 조는 으뜸음에서 몇째 음까지의 간격 차이로 갈립니까?",
+        "answer": "3",
+        "category": "L2:music-theory > 음계·화성",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db5",
+      "verdict": "different",
+      "reason": "탁구의 승점 기준(11점)과 축구 한 팀 선수 수(11명)는 서로 다른 종목의 무관한 규정으로, 답만 우연히 일치한다.",
+      "keep": "none",
+      "confidence": 0.97,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "ball-sports/5#002",
+        "question": "탁구는 2001년부터 한 게임을 21점이 아니라 몇 점을 먼저 얻는 쪽이 이기도록 바뀌었습니까?",
+        "answer": "11",
+        "category": "스포츠·게임 > 농구·배구·기타 구기 > 탁구·배드민턴",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:51",
+        "question": "축구 경기에서 한 팀이 경기장에 내보내는 선수의 수는?",
+        "answer": "11",
+        "category": "(소분류 없음)",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db6",
+      "verdict": "different",
+      "reason": "a의 \"OB 베어스\"는 야구단 이름(두산 베어스의 전신, OB맥주에서 유래)이고 b의 \"OB\"는 골프 규칙 용어(Out of Bounds)다. 둘 다 \"OB\"라는 글자를 포함할 뿐 완전히 다른 개념이며 정답 문자열도 다르다(OB 베어스 vs OB) — 부분 문자열 겹침에 의한 오탐으로 보인다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "missed-by-GEN",
+      "a": {
+        "ref": "baseball/2#005",
+        "question": "1982년 KBO 리그 원년 한국시리즈에서 우승한 구단으로, 지금 두산 베어스의 전신은?",
+        "answer": "OB 베어스",
+        "category": "스포츠·게임 > 야구 > KBO",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:778",
+        "question": "골프에서 공이 흰 말뚝으로 표시된 경기 구역 밖으로 나가 벌타를 받고 다시 쳐야 하는 상황을 무엇이라 합니까?",
+        "answer": "OB",
+        "category": "L2:ball-sports > 골프",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db7",
+      "verdict": "different",
+      "reason": "동음이의어. a의 \"주석\"은 프로그래밍 코드에 남기는 설명글이고, b의 \"주석\"은 원소 기호 Sn인 금속이다. 완전히 다른 지식 영역이다 (docs/12-SONNET-SESSION.md Q-91이 직접 드는 예시와 동일한 유형).",
+      "keep": "none",
+      "confidence": 0.98,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "computer/3#011",
+        "question": "프로그램이 실행할 때는 무시하고, 사람이 읽으라고 코드 안에 남겨 두는 설명 글을 무엇이라 합니까?",
+        "answer": "주석",
+        "category": "기술·의학 > 컴퓨터·인터넷 > 프로그래밍 용어",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:375",
+        "question": "원소 기호를 Sn으로 적으며, 구리와 섞으면 청동이 되고 강철판에 입히면 통조림 깡통이 되는 금속은?",
+        "answer": "주석",
+        "category": "L2:chemistry > 원소 기호",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db8",
+      "verdict": "different",
+      "reason": "a는 메탄이 \"소 트림·논에서 나오며 이산화탄소보다 온실효과가 큰 온실가스\"라는 환경과학 지식을 묻고, b는 \"탄소 하나에 수소 넷이 붙은 가장 단순한 탄화수소, 천연가스 주성분\"이라는 화학 구조 지식을 묻는다. 같은 물질(메탄)에 대한 서로 다른 구체적 사실이며, 온실가스로서의 메탄을 아는 사람이 분자 구조를 반드시 아는 것은 아니다(R021 산소 사례 — 사과 갈변 반응 vs 대기 중 비율 — 와 같은 유형).",
+      "keep": "none",
+      "confidence": 0.75,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "earth/5#006",
+        "question": "소의 트림과 논에서도 나오며, 같은 양이라면 이산화탄소보다 온실효과가 훨씬 큰 기체는?",
+        "answer": "메탄",
+        "category": "자연과학 > 지구과학·기상 > 기후 변화",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:842",
+        "question": "탄소 하나에 수소 넷이 정사면체 모양으로 붙은 가장 단순한 탄화수소로, 천연가스의 주성분인 것은?",
+        "answer": "메탄",
+        "category": "L2:chemistry > 화합물·분자",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db9",
+      "verdict": "same",
+      "reason": "\"열섬\"과 \"열섬 현상\"은 같은 개념의 표기 차이일 뿐이다. 두 문항 모두 아스팔트·건물이 머금은 열과 도시에서 배출되는 열 때문에 도심이 주변보다 더워지는 현상을 설명한다. 전역 대조가 \"현상\"이 붙은 표기 차이 때문에 놓친 것으로 보인다(V002 브리핑이 이미 지적함).",
+      "keep": "a",
+      "confidence": 0.93,
+      "keepReason": "a는 열 축적(아스팔트·건물)과 열 배출(에어컨·자동차) 두 메커니즘을 구분해 설명하고, b는 사람이 내는 열까지 포함해 설명한다 — 정보량이 비슷하나 a가 메커니즘을 조금 더 또렷이 가른다.",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "missed-by-GEN",
+      "a": {
+        "ref": "earth/5#007",
+        "question": "아스팔트와 건물이 열을 머금고 에어컨·자동차가 열을 내뿜어 도시 한가운데가 주변보다 더 더운 현상은?",
+        "answer": "열섬",
+        "category": "자연과학 > 지구과학·기상 > 기후 변화",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1597",
+        "question": "아스팔트와 건물, 그리고 사람이 내는 열 때문에 도심의 기온이 주변보다 높아지는 현상을 무엇이라 합니까?",
+        "answer": "열섬 현상",
+        "category": "L2:earth > 대기·기상",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db10",
+      "verdict": "different",
+      "reason": "a는 \"연료전지에서 산소와 반응해 전기를 만들고 물만 내놓는 친환경 연료로서의 수소\"라는 에너지기술 지식을 묻고, b는 \"주기율표 원자번호 1번 원소\"라는 화학 기초 지식을 묻는다. 같은 원소(수소)에 대한 서로 다른 구체적 사실이며, 하나를 안다고 다른 하나를 반드시 아는 것은 아니다(위 메탄 사례와 같은 유형).",
+      "keep": "none",
+      "confidence": 0.75,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "energy/3#006",
+        "question": "연료 전지에서 산소와 반응해 전기를 만들고 물만 내놓아, 친환경 자동차의 연료로 주목받는 기체는?",
+        "answer": "수소",
+        "category": "기술·의학 > 에너지·환경 기술 > 자원·연료",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:94",
+        "question": "주기율표에서 원자 번호 1번인 가장 가벼운 원소는?",
+        "answer": "수소",
+        "category": "L2:chemistry > 주기율표",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db11",
+      "verdict": "different",
+      "reason": "a의 정답 \"메이플스토리\"(넥슨의 온라인 게임)와 b의 정답 \"단풍잎\"(캐나다 국기 상징)은 완전히 다른 대상이며 지식도 무관하다. \"메이플\"이라는 영어 단어가 겹쳐서 걸린 것으로 보이는 오탐이다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "esports/3#008",
+        "question": "넥슨이 2003년 내놓은, 캐릭터가 옆으로 걸으며 모험하는 2D 횡스크롤 온라인 게임은?",
+        "answer": "메이플스토리",
+        "category": "스포츠·게임 > e스포츠·비디오게임 > PC·온라인 게임",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:316",
+        "question": "캐나다 국기 중앙에 위치하여 국가적 상징으로 쓰이는 나뭇잎의 종류는?",
+        "answer": "단풍잎",
+        "category": "L2:symbols > 국기·국장",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db12",
+      "verdict": "different",
+      "reason": "a는 파리가 \"세계 4대 패션 컬렉션·오트 쿠튀르의 본고장\"이라는 패션 산업 지식을 묻고, b는 파리가 \"빛의 도시라 불린다\"는 별칭 지식을 묻는다(영어 답변 요구). 같은 도시(파리)에 대한 서로 다른 구체적 사실이며, Q-91이 \"대상이 같은가로 판단하지 마라\"고 명시한 바로 그 유형이다 — 패션 산업에 밝은 사람이 \"빛의 도시\"라는 별칭을 반드시 아는 것은 아니다.",
+      "keep": "none",
+      "confidence": 0.7,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "fashion/2#009",
+        "question": "밀라노·런던·뉴욕과 함께 세계 4대 패션 컬렉션이 열리는 도시로, 오트 쿠튀르의 본고장은?",
+        "answer": "파리",
+        "category": "생활·상식 > 의복·패션 > 패션 브랜드·디자이너",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:21",
+        "question": "빛의 도시라 불리는 유럽의 수도는? (영어로)",
+        "answer": "Paris",
+        "category": "(소분류 없음)",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db13",
+      "verdict": "different",
+      "reason": "a는 파리의 패션 산업 지위를 묻고, b는 \"1900년 제2회 올림픽이자 만국박람회와 함께 열린 대회의 개최지\"라는 특정 올림픽 역사 지식을 묻는다. 같은 도시에 대한 서로 무관한 구체적 사실이다.",
+      "keep": "none",
+      "confidence": 0.8,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "fashion/2#009",
+        "question": "밀라노·런던·뉴욕과 함께 세계 4대 패션 컬렉션이 열리는 도시로, 오트 쿠튀르의 본고장은?",
+        "answer": "파리",
+        "category": "생활·상식 > 의복·패션 > 패션 브랜드·디자이너",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:483",
+        "question": "근대 올림픽에서 여성 선수가 처음으로 출전한 것은 1900년의 제2회 대회였습니다. 만국박람회와 함께 치러진 이 대회의 개최 도시는?",
+        "answer": "파리",
+        "category": "L2:olympic > 하계 올림픽",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db14",
+      "verdict": "different",
+      "reason": "a의 \"슈퍼리그\"는 1983년 한국 프로축구 출범 당시 리그명이고, b의 \"유럽 슈퍼리그\"는 2021년 유럽 일부 명문 구단이 추진하다 사흘 만에 철회한 폐쇄형 대회 구상이다. 이름이 겹칠 뿐 시대·지역·실체가 전혀 다른 별개의 조직/사건이다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "missed-by-GEN",
+      "a": {
+        "ref": "football/4#001",
+        "question": "1983년 출범한 한국 프로축구 리그의 첫 이름으로, 프로 팀과 실업 팀이 함께 겨룬 것은?",
+        "answer": "슈퍼리그",
+        "category": "스포츠·게임 > 축구 > K리그·아시아",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1655",
+        "question": "2021년 유럽의 일부 명문 구단이 승강제 없는 폐쇄형 대회를 만들려다 팬들의 거센 반발로 사흘 만에 철회한 구상은?",
+        "answer": "유럽 슈퍼리그",
+        "category": "L2:football > 유럽 리그",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db15",
+      "verdict": "same",
+      "reason": "b의 질문 문장 자체에 \"면역이 과하게 반응하는 현상을 가리키는 말\"이라는 a와 동일한 기능적 정의가 이미 포함되어 있다. b는 여기에 \"독일어식 발음을 그대로 받아들여 쓴다\"는 어원 트리비아를 얹었을 뿐, 요구하는 정답은 a와 완전히 같은 단어(알레르기)다 — 어원을 몰라도 면역 과민반응이라는 정의만 알면 b도 바로 맞힐 수 있다. GEN은 이를 \"다른 지식\"으로 보아 살렸으나(seedResult.globalCheck.keptDespiteHit), 문항 원문을 다시 읽어 보면 같은 정의를 두 번 묻는 것에 가깝다.",
+      "keep": "b",
+      "confidence": 0.8,
+      "keepReason": "b가 어원(독일어식 발음)이라는 추가 정보를 주며, 정의도 a와 동일하게 담고 있어 정보량이 더 많다.",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "human-body/5#006",
+        "question": "꽃가루나 땅콩처럼 대부분의 사람에게는 해롭지 않은 물질에 면역계가 지나치게 반응하는 것을 무엇이라 합니까?",
+        "answer": "알레르기",
+        "category": "자연과학 > 인체·해부 > 혈액·면역",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:505",
+        "question": "영어로는 '앨러지'에 가깝게 소리 나지만 한국에서는 독일어식 발음을 그대로 받아들여 쓰고 있는, 면역이 과하게 반응하는 현상을 가리키는 말은?",
+        "answer": "알레르기",
+        "category": "L2:world-language > 외래어 어원",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db16",
+      "verdict": "same",
+      "reason": "\"쎄시봉\"과 \"세시봉\"은 같은 고유명사(1960년대 서울 무교동 음악감상실)의 표기(경음/평음) 차이일 뿐이다. 전역 대조가 된소리 표기 차이 때문에 놓친 것으로 보인다.",
+      "keep": "a",
+      "confidence": 0.92,
+      "keepReason": "a는 실제 활동한 가수(송창식·윤형주·조영남)를 구체적으로 명시해 정보량이 더 많다.",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "missed-by-GEN",
+      "a": {
+        "ref": "kr-music/1#007",
+        "question": "1960~70년대 서울 무교동에 있던 음악감상실로, 송창식·윤형주·조영남 등 포크 가수들이 무대에 섰던 곳은?",
+        "answer": "쎄시봉",
+        "category": "한국 > 한국 대중음악 > 1980년대 이전 가요",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1067",
+        "question": "1960년대 서울의 음악감상실 이름이었다가, 그곳에 모여 노래하던 포크 가수들의 세대를 가리키는 말이 된 것은?",
+        "answer": "세시봉",
+        "category": "L2:kr-music > 트로트·포크",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db17",
+      "verdict": "different",
+      "reason": "a는 \"1926년 나운규가 각본·감독·주연을 맡은 민족 영화의 출발점\"이라는 특정 무성영화(영화사) 지식을 묻고, b는 \"정선·진도·밀양 등 지역마다 가락이 다르며 유네스코에 오른 민요\"라는 전통음악 지식을 묻는다. 같은 제목(아리랑)을 공유할 뿐 영화와 민요라는 서로 무관한 별개 작품/장르다.",
+      "keep": "none",
+      "confidence": 0.9,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "kr-screen/1#001",
+        "question": "1926년 나운규가 각본·감독·주연을 맡아 민족 영화의 출발점으로 꼽히는 무성영화는?",
+        "answer": "아리랑",
+        "category": "한국 > 한국 영화·드라마 > 1990년대 이전 한국 영화",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1766",
+        "question": "정선·진도·밀양처럼 지역마다 가락이 다르게 전하며 유네스코 인류무형문화유산에 오른 우리 민요는?",
+        "answer": "아리랑",
+        "category": "L2:kr-tradition > 국악·전통 예술",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db18",
+      "verdict": "different",
+      "reason": "동음이의어에 가깝다. a의 \"모듈러 건축\"은 공장에서 상자형 공간을 만들어 현장에서 쌓는 건축 공법이고, b의 \"모듈러\"는 르 코르뷔지에가 인체 비례에서 끌어낸 치수 체계(Modulor)다. 관련은 있으나 하나는 시공 방법, 하나는 설계 치수 이론으로 서로 다른 구체적 개념이다.",
+      "keep": "none",
+      "confidence": 0.85,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "material/3#004",
+        "question": "공장에서 방이나 욕실 단위의 상자형 공간을 거의 완성해 만든 뒤, 현장에서 블록처럼 쌓아 짓는 건축 방식은?",
+        "answer": "모듈러 건축",
+        "category": "기술·의학 > 재료·건설 기술 > 건설 공법",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:2080",
+        "question": "르 코르뷔지에가 사람의 몸 비례에서 건축 치수를 끌어내려고 만든 체계를 무엇이라 합니까?",
+        "answer": "모듈러",
+        "category": "L2:architecture > 건축가",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db19",
+      "verdict": "different",
+      "reason": "표준 피아노 건반 수(88개)와 국제천문연맹이 정한 별자리 수(88개)는 완전히 무관한 분야(악기 vs 천문학)의 지식으로, 답만 우연히 일치한다.",
+      "keep": "none",
+      "confidence": 0.97,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "music-theory/4#001",
+        "question": "표준 피아노의 흰건반과 검은건반을 모두 합하면 몇 개일까요?",
+        "answer": "88",
+        "category": "문화·예술 > 음악 이론·악기 > 건반·타악기",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1257",
+        "question": "국제천문연맹은 1930년에 하늘 전체를 빈틈없이 나누어 별자리의 경계를 확정했습니다. 이때 정해진 별자리는 모두 몇 개입니까?",
+        "answer": "88",
+        "category": "L2:symbols > 별자리·십이지",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db20",
+      "verdict": "different",
+      "reason": "동음이의어. a의 \"봉고\"는 쿠바에서 온 타악기이고, b의 \"봉고\"는 1980년대 기아의 소형 승합차 차종명에서 비롯해 소형 승합차 전체를 가리키게 된 말이다. 완전히 다른 대상이다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "music-theory/4#011",
+        "question": "크기가 다른 작은 북 두 개를 붙여 무릎 사이에 끼우고 손으로 치는, 쿠바에서 온 타악기는?",
+        "answer": "봉고",
+        "category": "문화·예술 > 음악 이론·악기 > 건반·타악기",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:819",
+        "question": "1980년대에 나온 기아의 소형 승합차 차종 이름이었다가, 국내에서 소형 승합차 전체를 가리키는 말처럼 쓰이게 된 것은?",
+        "answer": "봉고",
+        "category": "L2:brands > 상표가 된 상품명",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db21",
+      "verdict": "different",
+      "reason": "a는 \"백합이 고양이 콩팥에 치명적인 독성이 있다\"는 반려동물 안전 지식을 묻고, b는 \"백합이 서양 종교화에서 순결의 상징으로 쓰인다\"는 미술사·상징 지식을 묻는다. 같은 꽃(백합)에 대한 서로 무관한 구체적 사실이다.",
+      "keep": "none",
+      "confidence": 0.85,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "pets-garden/3#010",
+        "question": "꽃가루나 꽃병의 물만 조금 먹어도 고양이의 콩팥을 망가뜨릴 수 있어 집에 두지 말라고 하는 꽃은?",
+        "answer": "백합",
+        "category": "생활·상식 > 반려동물·원예 > 반려동물 관리",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1185",
+        "question": "서양 종교화에서 성모를 그릴 때 함께 그려지며 순결의 상징으로 굳어진 흰 꽃은?",
+        "answer": "백합",
+        "category": "L2:plants > 꽃·꽃말",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db22",
+      "verdict": "different",
+      "reason": "a는 \"1964년 노벨문학상을 거절했다\"는 전기적 사실을 묻고, b는 \"실존이 본질에 앞선다\"는 실존주의 철학의 핵심 명제를 묻는다. 같은 인물(사르트르)에 대한 서로 무관한 별개 사실이며, 하나를 안다고 다른 하나를 반드시 아는 것은 아니다 — Q-91이 경계하는 \"대상(인물)이 같다고 same으로 보지 말라\"는 사례에 해당한다.",
+      "keep": "none",
+      "confidence": 0.8,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "philosophy/3#002",
+        "question": "1964년 노벨 문학상에 선정되었으나 작가는 제도에 얽매여서는 안 된다며 수상을 거절한 프랑스 철학자는?",
+        "answer": "사르트르",
+        "category": "인문·사회 > 철학·사상 > 현대 철학",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1840",
+        "question": "사람은 먼저 존재하고 나서 스스로 무엇이 될지 정한다고 보아 '실존이 본질에 앞선다' 고 한 프랑스의 철학자는?",
+        "answer": "사르트르",
+        "category": "L2:philosophy > 근대 철학",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db23",
+      "verdict": "different",
+      "reason": "a는 \"유엔 안보리 5개 상임이사국이 갖는 거부권\"이라는 국제기구 제도를 묻고, b는 \"대통령이 법률안을 재의 요구할 수 있는 거부권\"이라는 국내 정치 제도를 묻는다. 이름(거부권)만 같을 뿐 완전히 다른 제도다.",
+      "keep": "none",
+      "confidence": 0.92,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "politics/4#002",
+        "question": "유엔 안보리의 미국·영국·프랑스·러시아·중국 다섯 상임이사국이 가진, 한 나라만 반대해도 결의를 막을 수 있는 권한은?",
+        "answer": "거부권",
+        "category": "인문·사회 > 정치·법 상식 > 국제기구·조약",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1871",
+        "question": "대통령이 국회를 통과한 법률안을 공포하지 않고 다시 심의해 달라며 돌려보낼 수 있는 권한을 무엇이라 합니까?",
+        "answer": "거부권",
+        "category": "L2:politics > 정치 체제·기구",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db24",
+      "verdict": "different",
+      "reason": "동음이의어. a의 \"챌린지\"는 짧은 영상 플랫폼에서 유행하는 춤·동작 따라하기이고, b의 \"챌린지\"는 테니스에서 선수가 판정에 이의를 제기해 영상판독을 요청하는 것이다. 완전히 다른 개념이다.",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "popular-music/3#006",
+        "question": "짧은 영상 플랫폼에서 특정 곡에 맞춘 춤이나 동작을 따라 해 올리는 유행을 흔히 무엇이라 합니까?",
+        "answer": "챌린지",
+        "category": "문화·예술 > 팝·록 음악 > 2000년대 이후",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:2103",
+        "question": "선수가 심판 판정에 이의를 제기해 영상 판독을 요청하는 것을 무엇이라 합니까? 횟수가 정해져 있습니다.",
+        "answer": "챌린지",
+        "category": "L2:ball-sports > 테니스",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db25",
+      "verdict": "different",
+      "reason": "a는 \"힌두교에서 소를 신성시해 먹지 않는다\"는 종교적 관념을 묻고, b는 \"십이지 설화에서 쥐에게 속아 둘째가 된 동물\"이라는 설화를 묻는다. 같은 동물(소)에 대한 서로 무관한 별개 지식이다 (V001에서 동일 db:1258에 대해 이미 different로 판정한 바 있다).",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "religion/4#004",
+        "question": "힌두교에서 신성하게 여겨 먹지 않고, 인도에서는 길에서 자유롭게 돌아다니는 모습을 흔히 볼 수 있는 동물은?",
+        "answer": "소",
+        "category": "인문·사회 > 종교·경전 상식 > 힌두교·유대교",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1258",
+        "question": "십이지 설화에서 쥐가 몰래 등에 올라타고 있다가 결승점 직전에 뛰어내리는 바람에 첫째 자리를 내주고 둘째가 되었다는 동물은?",
+        "answer": "소",
+        "category": "L2:symbols > 별자리·십이지",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db26",
+      "verdict": "different",
+      "reason": "a는 힌두교의 소 숭배 관념을 묻고, b는 \"우두를 사람에게 접종해 천연두를 막은 데서 백신이라는 말이 나왔다\"는 의학사 지식을 묻는다. 같은 동물(소)에 대한 서로 무관한 별개 지식이다 (V001에서 동일 db:2439에 대해 이미 different로 판정한 바 있다).",
+      "keep": "none",
+      "confidence": 0.95,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "religion/4#004",
+        "question": "힌두교에서 신성하게 여겨 먹지 않고, 인도에서는 길에서 자유롭게 돌아다니는 모습을 흔히 볼 수 있는 동물은?",
+        "answer": "소",
+        "category": "인문·사회 > 종교·경전 상식 > 힌두교·유대교",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:2439",
+        "question": "어떤 가축의 질병을 사람에게 접종해 천연두를 막은 방법에서 '백신' 이라는 말이 나왔습니다. 그 가축은?",
+        "answer": "소",
+        "category": "L2:medicine > 의약품·백신",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db27",
+      "verdict": "different",
+      "reason": "a는 \"입센의 인형의 집처럼 일상과 사회 문제를 그린 19세기 후반 연극 사조\"를 묻고, b는 \"쿠르베가 앞장서 신화 대신 농민·노동자의 일상을 그린 19세기 미술 사조\"를 묻는다. 이름(사실주의)은 같으나 연극사와 미술사라는 서로 다른 분야에서 각각 따로 익히는 지식이다.",
+      "keep": "none",
+      "confidence": 0.85,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "theatre/1#008",
+        "question": "입센의 '인형의 집' 처럼 일상의 인물과 사회 문제를 있는 그대로 무대에 올린 19세기 후반의 연극 사조는?",
+        "answer": "사실주의",
+        "category": "문화·예술 > 공연·연극·뮤지컬 > 연극 사조·연출",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:755",
+        "question": "'나는 천사를 본 적이 없으므로 천사를 그릴 수 없다'고 말한 쿠르베가 앞장섰고, 신화와 영웅 대신 농민과 노동자의 일상을 그린 19세기 사조는?",
+        "answer": "사실주의",
+        "category": "L2:art > 미술 사조",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db28",
+      "verdict": "different",
+      "reason": "a는 \"서아프리카 여러 나라가 옛 식민 지배 영향으로 공용어로 쓰는 언어\"라는 언어 분포·식민사 지식을 묻고, b는 \"발레 용어가 대부분 한 언어로 되어 있는 이유가 된 나라의 언어\"라는 무용사 지식을 묻는다. 같은 언어(프랑스어)에 대한 서로 무관한 별개 사실이다.",
+      "keep": "none",
+      "confidence": 0.85,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "world-language/4#002",
+        "question": "세네갈·코트디부아르·말리 등 서아프리카 여러 나라가 옛 식민 지배의 영향으로 공용어로 쓰는 유럽 언어는?",
+        "answer": "프랑스어",
+        "category": "생활·상식 > 세계 언어·어원 > 세계 언어 분포",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:2540",
+        "question": "발레 용어가 나라를 가리지 않고 대부분 한 언어로 되어 있는 것은, 궁정에서 체계가 잡힌 나라가 있기 때문입니다. 그 언어는?",
+        "answer": "프랑스어",
+        "category": "L2:theatre > 무용·발레",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db29",
+      "verdict": "different",
+      "reason": "a는 \"모로코부터 이라크까지 20여 나라의 공용어\"라는 언어 분포 지식을 묻고, b는 \"알코올·알칼리처럼 알-로 시작하는 외래어가 많은 이유가 된 언어의 정관사\"라는 어원 지식을 묻는다. 같은 언어(아랍어)에 대한 서로 무관한 별개 사실이다 (V001에서 동일 db:499에 대해 이미 different로 판정한 바 있다).",
+      "keep": "none",
+      "confidence": 0.9,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "world-language/4#003",
+        "question": "서쪽 모로코에서 동쪽 이라크까지, 북아프리카와 서아시아의 20여 나라가 공용어로 쓰는 언어는?",
+        "answer": "아랍어",
+        "category": "생활·상식 > 세계 언어·어원 > 세계 언어 분포",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:499",
+        "question": "알코올, 알칼리, 연금술을 뜻하는 알케미처럼 '알'로 시작하는 말이 많은 것은, 어느 언어의 정관사가 낱말에 붙은 채 유럽에 전해졌기 때문인가요?",
+        "answer": "아랍어",
+        "category": "L2:world-language > 외래어 어원",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db30",
+      "verdict": "different",
+      "reason": "a는 아랍어의 공용어 분포를 묻고, b는 \"오른쪽에서 왼쪽으로 쓰되 숫자는 왼쪽에서 오른쪽으로 쓰는 문자 체계\"라는 아랍 문자의 특징을 묻는다. 서로 무관한 별개 사실이다 (V001에서 동일 db:1373에 대해 이미 different로 판정한 바 있다).",
+      "keep": "none",
+      "confidence": 0.9,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "world-language/4#003",
+        "question": "서쪽 모로코에서 동쪽 이라크까지, 북아프리카와 서아시아의 20여 나라가 공용어로 쓰는 언어는?",
+        "answer": "아랍어",
+        "category": "생활·상식 > 세계 언어·어원 > 세계 언어 분포",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:1373",
+        "question": "라틴 문자와 반대로 오른쪽에서 왼쪽으로 써 나가면서도, 숫자만은 왼쪽에서 오른쪽으로 적는 문자를 쓰는 이슬람권의 언어는?",
+        "answer": "아랍어",
+        "category": "L2:world-language > 문자 체계",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    },
+    {
+      "pairId": "db31",
+      "verdict": "different",
+      "reason": "a는 아랍어의 공용어 분포를 묻고, b는 \"이슬람에서 번역본이 아니라 원문 자체를 경전으로 본다\"는 꾸란과 아랍어의 종교적 관계를 묻는다. 서로 무관한 별개 사실이다 (V001에서 동일 db:2518에 대해 이미 different로 판정한 바 있다).",
+      "keep": "none",
+      "confidence": 0.9,
+      "keepReason": "",
+      "mergeAnswers": [],
+      "scope": "vs-db",
+      "genTag": "GEN-kept-despite-hit",
+      "a": {
+        "ref": "world-language/4#003",
+        "question": "서쪽 모로코에서 동쪽 이라크까지, 북아프리카와 서아시아의 20여 나라가 공용어로 쓰는 언어는?",
+        "answer": "아랍어",
+        "category": "생활·상식 > 세계 언어·어원 > 세계 언어 분포",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1
+      },
+      "b": {
+        "ref": "db:2518",
+        "question": "이슬람에서는 번역본을 해설로 여기고 원문 자체를 경전으로 봅니다. 이 경전이 쓰인 언어는?",
+        "answer": "아랍어",
+        "category": "L2:religion > 이슬람",
+        "accessibility": 0,
+        "worthKnowing": 0,
+        "answerCount": 1,
+        "isActive": true
+      }
+    }
+  ]
+}
