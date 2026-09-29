@@ -3,7 +3,7 @@
   "midName": "한국 대중음악",
   "majorKey": "korea",
   "majorName": "한국",
-  "updatedAt": "2026-09-28T02:09:59.309Z",
+  "updatedAt": "2026-09-29T06:19:03.789Z",
   "subs": {
     "kr-music/1": {
       "subName": "1980년대 이전 가요",
@@ -46,7 +46,7 @@
         {
           "answer": "쎄시봉",
           "origin": "r022:kr-music/1#007",
-          "note": null
+          "note": "r018 격리: 중복 (V002 same — 쎄시봉/세시봉 표기 차이) — 기존 db:1067 유지. keep=a 제안은 신규가 더 가르치는 것이 없어 따르지 않음 (D-104)"
         }
       ],
       "seeds": [
@@ -168,12 +168,19 @@
           "generator": "claude-opus-5-5",
           "createdAt": "2026-09-28T01:41:29.878Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r022/kr-music-1#007",
             "answer": "쎄시봉",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5-5"
+            "questionGenerator": "claude-opus-5-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 (V002 same — 쎄시봉/세시봉 표기 차이) — 기존 db:1067 유지. keep=a 제안은 신규가 더 가르치는 것이 없어 따르지 않음 (D-104)",
+              "decidedBy": "GEN R024 (V002 반영)",
+              "duplicateOf": "db:1067",
+              "at": "2026-09-29T06:19:03.782Z"
+            }
           }
         }
       ]

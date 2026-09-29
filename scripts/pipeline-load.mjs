@@ -78,6 +78,17 @@ const AS_PENDING = args.includes('--pending');
  *   ★ --no-gate 로 끌 수 있다. 다만 끄면 무엇을 지나치는지 반드시 눈으로 보라.
  */
 const NO_GATE = args.includes('--no-gate');
+/**
+ * ★★ R024: 출제 선별 게이트 (D-044 / Q-100 확정). 기본으로 켠다.
+ *   소재 기반 문항은 **score-v1 로 채점된 점수(question.score)** 가 있어야 적재한다.
+ *   접근성 1 / 알 가치 3 미만은 적재하지 않는다. 기준: docs/15-QUALITY-STANDARD.md 6장
+ *   ★ 근거: R023 에서 선별 기준이 select.ts 에만 있고 이 경로에는 없었다 — 접근성 1 인 17건이 활성이었다
+ *   ★ 접근성 2 의 5% 는 문항 단위가 아니라 **활성 풀 단위**다 → 적재 뒤 비율을 보고한다 (D-112)
+ */
+const NO_SELECT = args.includes('--no-select-gate');
+const SELECT_MIN_ACC = 2;   // 1 은 제외
+const SELECT_MIN_WORTH = 3; // 3 미만 제외
+const SELECT_MAX_ACC2_SHARE = 0.05;
 const roundIdx = args.indexOf('--round');
 const ROUNDS = roundIdx >= 0 ? args[roundIdx + 1].split(',').map((r) => r.trim()) : [];
 /** ★ 소재 기반 파이프라인의 source_id. 0005 마이그레이션이 이 행을 넣는다 */
@@ -174,7 +185,7 @@ for (const round of ROUNDS) {
           hintAnswer: null,
           answerLang: 'ko',
           explanation: q.explanation ?? null,
-          difficulty: difficultyBand(q.difficulty),
+          difficulty: difficultyBand(q.score?.dif ?? q.difficulty),
           category: r.path,
         },
         gen: {
@@ -183,6 +194,8 @@ for (const round of ROUNDS) {
           accessibility: q.accessibility,
           difficultyScore: q.difficulty,
           worthKnowing: q.worthKnowing,
+          // ★ R024: score-v1 재채점 점수 (없으면 null — 선별 게이트가 막는다)
+          score: q.score ?? null,
           seedSubject: it.seed?.subject ?? null,
           seedAspect: it.seed?.aspect ?? null,
         },
@@ -313,7 +326,9 @@ try {
       console.log(`     카테고리: ${path} / 난이도: ${i.generated.difficulty}`);
       if (i.gen) {
         console.log(
-          `     접근성 ${i.gen.accessibility} / 난이도 ${i.gen.difficultyScore} / 알가치 ${i.gen.worthKnowing}`,
+          i.gen.score
+            ? `     ★ score-v1 접근성 ${i.gen.score.acc} / 난이도 ${i.gen.score.dif} / 알가치 ${i.gen.score.wor} — ${i.gen.score.worWhy}  (옛 기록 ${i.gen.accessibility}/${i.gen.difficultyScore}/${i.gen.worthKnowing})`
+            : `     접근성 ${i.gen.accessibility} / 난이도 ${i.gen.difficultyScore} / 알가치 ${i.gen.worthKnowing}  ★ 채점 안 됨`,
         );
       }
     }
@@ -354,6 +369,13 @@ try {
       // OpenTDB 가공 문제: 기존 플랫 카테고리를 쓴다
       categoryId = catByKey.get(CATEGORY_MAP[g.category] ?? '') ?? fallbackId;
     }
+    // ★★ R024 출제 선별 게이트
+    const sc = item.gen?.score ?? null;
+    if (!NO_SELECT && item.sourceId === SEED_SOURCE_ID) {
+      if (!sc) { skipped.push({ ref: item.sourceRef, reason: '★ 채점되지 않았다 — score-v1 점수가 없다 (선별 게이트)' }); continue; }
+      if (sc.acc < SELECT_MIN_ACC) { skipped.push({ ref: item.sourceRef, reason: `★ 접근성 ${sc.acc} — ${sc.accWhy} (선별 게이트: 1 제외)` }); continue; }
+      if (sc.wor < SELECT_MIN_WORTH) { skipped.push({ ref: item.sourceRef, reason: `★ 알 가치 ${sc.wor} — ${sc.worWhy} (선별 게이트: 3 미만 제외)` }); continue; }
+    }
     // ★★ R020 정답 표기 게이트 — 프롬프트의 규칙을 적재에서도 확인한다
     let variants = g.answers ?? [];
     if (!NO_GATE) {
@@ -393,8 +415,11 @@ try {
         `INSERT INTO questions
            (question_text, display_answer, hint_answer, answer_lang, category_id,
             difficulty, explanation, source_id, source_ref, license, status, is_active,
-            approved_at)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12, CASE WHEN $11 = 'approved' THEN now() ELSE NULL END)
+            approved_at,
+            accessibility, accessibility_why, difficulty_score, difficulty_why, worth_knowing, worth_why,
+            score_version, scored_at)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12, CASE WHEN $11 = 'approved' THEN now() ELSE NULL END,
+                 $13,$14,$15,$16,$17,$18,$19::text, CASE WHEN $19::text IS NULL THEN NULL ELSE now() END)
          RETURNING id`,
         [
           g.questionKo,
@@ -411,6 +436,8 @@ try {
           licenseBySource.get(item.sourceId) ?? null,
           status,
           isActive,
+          sc?.acc ?? null, sc?.accWhy ?? null, sc?.dif ?? null, sc?.difWhy ?? null,
+          sc?.wor ?? null, sc?.worWhy ?? null, sc?.version ?? null,
         ],
       );
       const questionId = res.rows[0].id;
@@ -459,6 +486,14 @@ try {
   console.log(`[load] 적재 완료: 문제 ${inserted}건 / 정답 표기 ${answerRows}행`);
   console.log(`[load] status=${status} / is_active=${isActive}`);
   console.log(`[load] normalizeAnswer 버전 ${NORMALIZE_VERSION}`);
+  // ★ R024: 접근성 2 는 활성 풀의 5% 이내 (D-112)
+  if (!DRY && !NO_SELECT) {
+    const pool = (await client.query(`SELECT count(*) FILTER (WHERE accessibility = 2)::int AS a2,
+        count(*) FILTER (WHERE accessibility IS NOT NULL)::int AS scored, count(*)::int AS n FROM questions WHERE is_active`)).rows[0];
+    const share = pool.scored ? pool.a2 / pool.scored : 0;
+    console.log(`[선별] 활성 ${pool.n} (채점 ${pool.scored}) — 접근성 2 = ${pool.a2}건 ${(share * 100).toFixed(1)}%` +
+      (share > SELECT_MAX_ACC2_SHARE ? `  ★★ 5% 를 넘었다 — 출제 쪽 비율 제한이 필요하다 (D-112)` : '  (5% 이내)'));
+  }
   if (gatedVariants.length) {
     const byKind = {};
     for (const gv of gatedVariants) byKind[gv.kind] = (byKind[gv.kind] ?? 0) + 1;

@@ -3,7 +3,7 @@
   "midName": "인체·해부",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-28T02:19:29.937Z",
+  "updatedAt": "2026-09-29T06:19:03.882Z",
   "subs": {
     "human-body/1": {
       "subName": "뼈·근육",
@@ -1188,7 +1188,7 @@
         {
           "answer": "알레르기",
           "origin": "r022:human-body/5#006",
-          "note": null
+          "note": "r018 격리: 중복 (V002 same, keep=b) — 기존 db:505 유지"
         },
         {
           "answer": "응집",
@@ -1297,12 +1297,19 @@
           "generator": "claude-opus-5-5",
           "createdAt": "2026-09-28T01:50:38.491Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r022/human-body-5#006",
             "answer": "알레르기",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5-5"
+            "questionGenerator": "claude-opus-5-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 (V002 same, keep=b) — 기존 db:505 유지",
+              "decidedBy": "GEN R024 (V002 반영)",
+              "duplicateOf": "db:505",
+              "at": "2026-09-29T06:19:03.875Z"
+            }
           }
         },
         {

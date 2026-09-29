@@ -253,6 +253,19 @@ OpenTDB는 CC BY-SA 4.0이다. 파생물인 한국어 문제 데이터도 같은
 | 판정 프롬프트에 "일반어 vs 구체어" | `pipeline/src/dedupe-llm.ts` → dist | D-103 |
 | 2회차 소재 프롬프트 v2 — 답이 1회차와 같아야 한다 | `pipeline/prompts/seed-r2-v2.md` (v1 유지) | D-105 |
 
+### ★★ R024 — 채점 기준 확정 + 선별 게이트 (D-110 ~ D-114)
+
+★ 순서: **생성 → 채점(score-v1, 생성과 다른 채점 단계) → 적재 게이트.** 소재 기반 문항은 `question.score` 가 없으면 적재되지 않는다.
+
+| 무엇 | 파일 |
+|---|---|
+| 채점 지시문 (기준표 + 근거 한 줄) | `pipeline/prompts/score-v1.md` |
+| 기준표 동기화 (기준서 → 프롬프트, 손으로 옮기지 않는다) | `scripts/criteria-sync.mjs [--check]` |
+| 중분류 접근성표 | `data/pipeline/criteria/mid-accessibility.json` |
+| 적재 선별 게이트 (접근성 1 · 알 가치 3 미만 차단, 접근성 2 풀 비율 보고) | `scripts/pipeline-load.mjs` (`--no-select-gate`) |
+| DB 세 점수 | 마이그레이션 `0007_question_scores.sql` |
+| ★ 재채점 방법의 교훈: 경계 문항만 모은 묶음은 점수가 오른다 — 무작위 문항과 섞어 채점한다 | D-113 |
+
 ### ★★ R023 — 기준 먼저 (D-109)
 
 ★ **문제 품질 기준의 정본은 [docs/15-QUALITY-STANDARD.md](../docs/15-QUALITY-STANDARD.md) 다.** 프롬프트는 그것을 전달하는 수단이다.

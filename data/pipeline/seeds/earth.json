@@ -3,7 +3,7 @@
   "midName": "지구과학·기상",
   "majorKey": "science",
   "majorName": "자연과학",
-  "updatedAt": "2026-09-28T02:19:29.958Z",
+  "updatedAt": "2026-09-29T06:19:03.704Z",
   "subs": {
     "earth/1": {
       "subName": "지질·암석",
@@ -1124,7 +1124,7 @@
         {
           "answer": "열섬",
           "origin": "r022:earth/5#007",
-          "note": null
+          "note": "r018 격리: 중복 (V002 same) — 기존 db:1597 유지. keep=a 제안은 신규가 더 가르치는 것이 없어 따르지 않음 (D-104)"
         },
         {
           "answer": "탄소 배출권",
@@ -1256,12 +1256,19 @@
           "generator": "claude-opus-5-5",
           "createdAt": "2026-09-28T01:50:38.504Z",
           "question": {
-            "status": "ok",
+            "status": "discarded",
             "ref": "r022/earth-5#007",
             "answer": "열섬",
             "rejectReason": null,
             "questionPrompt": "question-v2",
-            "questionGenerator": "claude-opus-5-5"
+            "questionGenerator": "claude-opus-5-5",
+            "discarded": {
+              "round": "r018",
+              "reason": "중복 (V002 same) — 기존 db:1597 유지. keep=a 제안은 신규가 더 가르치는 것이 없어 따르지 않음 (D-104)",
+              "decidedBy": "GEN R024 (V002 반영)",
+              "duplicateOf": "db:1597",
+              "at": "2026-09-29T06:19:03.696Z"
+            }
           }
         },
         {
