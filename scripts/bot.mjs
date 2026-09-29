@@ -27,6 +27,7 @@
 //   ★★ pausehost Phase 5 — PAUSED 중 방장 이전 (약 40초)
 //   ★★ pausehint Phase 5 — 일시정지와 힌트 / 정보 누출 방어선 (약 45초)
 //   ★★★ mask     Phase 6 — 경험 표시 / 정답 마스킹 / **판정과의 분리**
+//   ★★ difficulty R025 — 난이도 선택 (상만 / 중+상 / 전체 / 부족 / 다시 하기)
 //   ★★ result   Phase 4 — 결과 화면 데이터 / 공동 순위 / 다시 하기
 //   ★★ flood   Q-84 — 도배 완화 후 판정 성능 실측
 //
@@ -723,6 +724,78 @@ async function markExperiencedAll(accountId) {
         WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
        ON CONFLICT (account_id, question_id) DO NOTHING`,
       [accountId],
+    );
+    return r.rowCount ?? 0;
+  });
+}
+
+
+// ★ R025 — 난이도 검증용 DB 헬퍼 ───────────────────────────────────────────────
+const TIER_SCORES = { easy: [1, 2], medium: [3], hard: [4, 5] };
+const scoresOf = (tiers) => tiers.flatMap((x) => TIER_SCORES[x]);
+
+/** 게임에서 실제로 출제된 문제들의 difficulty_score */
+async function difficultyScoresOfGame(gameId) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `SELECT gq.question_index, q.difficulty_score
+         FROM game_questions gq JOIN questions q ON q.id = gq.question_id
+        WHERE gq.game_id = $1 ORDER BY gq.question_index`,
+      [gameId],
+    );
+    return r.rows.map((x) => x.difficulty_score);
+  });
+}
+
+/** ★ 서버와 **독립적으로** 센 출제 가능 수 (참가자 = 주어진 계정들) */
+async function expectedAvailable(accountIds, tiers) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `SELECT count(*)::int AS n FROM questions q
+        WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
+          AND q.difficulty_score = ANY($3::int[])
+          AND (SELECT count(*) FROM question_experiences qe
+                WHERE qe.question_id = q.id AND qe.account_id = ANY($1::bigint[])) < $2`,
+      [accountIds, accountIds.length, scoresOf(tiers)],
+    );
+    return r.rows[0].n;
+  });
+}
+
+/** ★ 지정 계정들을 "상" 문제 중 keep 개만 빼고 전부 경험자로 만든다 (부족 상황 재현) */
+async function exhaustHardExcept(accountIds, keep) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `WITH hard AS (
+         SELECT id FROM questions
+          WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
+            AND difficulty_score IN (4, 5)
+          ORDER BY id
+       ), target AS (SELECT id FROM hard OFFSET $2)
+       INSERT INTO question_experiences (account_id, question_id)
+       SELECT a.account_id, t.id FROM unnest($1::bigint[]) AS a(account_id), target t
+       ON CONFLICT (account_id, question_id) DO NOTHING`,
+      [accountIds, keep],
+    );
+    return r.rowCount ?? 0;
+  });
+}
+
+/** 남은 "상" 문제 하나를 더 경험하게 한다 (카운트다운 중 부족 재현) */
+async function consumeOneHard(accountIds) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `INSERT INTO question_experiences (account_id, question_id)
+       SELECT a.account_id, x.id
+         FROM unnest($1::bigint[]) AS a(account_id),
+              (SELECT q.id FROM questions q
+                WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
+                  AND q.difficulty_score IN (4, 5)
+                  AND NOT EXISTS (SELECT 1 FROM question_experiences qe
+                                   WHERE qe.question_id = q.id AND qe.account_id = ANY($1::bigint[]))
+                ORDER BY q.id LIMIT 1) x
+       ON CONFLICT (account_id, question_id) DO NOTHING`,
+      [accountIds],
     );
     return r.rowCount ?? 0;
   });
@@ -1440,6 +1513,9 @@ async function scenarioCountdown() {
 // -----------------------------------------------------------------------------
 async function scenarioEmptyCountdown() {
   log('시나리오 empty — 활성 0명 동안 카운트다운 보류 (B-4)');
+  // ★ R025 — 앞 시나리오(mask 는 방장을 전 문제 경험자로 만든다)의 기록이 남으면
+  //   출제 가능 수가 0 이 되어 카운트다운 자체가 시작되지 않는다. 전제를 명시적으로 만든다
+  await clearExperiences(PREFIX);
 
   const [host] = await makeBots(1);
   await host.connect();
@@ -3375,6 +3451,8 @@ async function scenarioMask() {
   await sleep(700);
   host.disconnect();
   guest.disconnect();
+  // ★ R025 — 방장을 전 문제 경험자로 만들어 두었다. 다음 시나리오를 오염시키지 않게 지운다
+  await clearExperiences(PREFIX);
   return checkSummary();
 }
 
@@ -3526,6 +3604,178 @@ async function scenarioResult() {
   return checkSummary();
 }
 
+
+// -----------------------------------------------------------------------------
+// ★★ difficulty — 게임 설정의 난이도 선택 (R025)
+//
+//   ★ 매핑 (건우 확정): 하 = difficulty_score 1~2 / 중 = 3 / 상 = 4~5
+//   ★ 단정하는 것 —
+//     · 상만 / 중+상 / 전체 각각에서 **출제된 문제의 난이도**가 선택 안에 있다 (DB 로 확인)
+//     · 출제 가능 수가 선택에 따라 바뀌고, 서버와 독립적으로 센 값과 같다
+//     · 부족하면 시작 거부 (NOT_ENOUGH_QUESTIONS) / 카운트다운 만료 재검증(D-025) 에도 반영된다
+//     · 다시 하기가 난이도를 이어받는다 (Q-31)
+//     · 비방장은 못 바꾼다 / 빈 선택은 서버가 거부한다 / 다른 필드만 고치면 난이도가 유지된다
+// -----------------------------------------------------------------------------
+async function scenarioDifficulty() {
+  log('시나리오 difficulty — ★★ 난이도 선택 (R025)');
+  await clearExperiences(PREFIX);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('R025 난이도 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  const ids = [host.snapshot.me.accountId, guest.snapshot.me.accountId];
+
+  // ── 0. 기본값
+  log('\n[0] 기본값');
+  expect(
+    '★ 기본값은 전체 (하·중·상)',
+    (host.snapshot.room.settings.difficulties ?? []).join(','),
+    'easy,medium,hard',
+  );
+
+  /** 설정을 보내고, 출제 가능 수가 서버와 독립 계산 값으로 맞춰질 때까지 기다린다 */
+  const apply = async (patch, tiers, label) => {
+    const want = await expectedAvailable(ids, tiers);
+    const from = host.mark();
+    host.socket.emit('lobby.updateSettings', { startMode: 'instant', countdownSec: 3, ...patch });
+    await host.waitFor(
+      () =>
+        host.since(from, 'lobby.settingsUpdated').some(
+          (e) => (e.settings?.difficulties ?? []).join(',') === tiers.join(',') &&
+            e.availableQuestionCount === want,
+        ),
+      8000,
+      `${label} 출제 가능 수 반영`,
+    );
+    expect(`★★ ${label} — 출제 가능 수가 선택을 따른다 (${want}건)`, host.snapshot.room.availableQuestionCount, want);
+    return want;
+  };
+
+  /** 한 판을 돌리고(방장이 넘긴다) 출제된 문제들의 난이도를 돌려준다 */
+  const playOne = async (count) => {
+    const g = host.mark();
+    host.socket.emit('game.start', {});
+    await host.waitFor(() => host.since(g, 'game.started').length > 0, 8000, '게임 시작');
+    for (let i = 1; i <= count; i += 1) {
+      const q = await host.waitQuestion(i, 15000);
+      const m = host.mark();
+      host.socket.emit('host.forceSkip', { epoch: q.epoch });
+      await host.waitFor(
+        () => host.since(m, 'question.resolved').length > 0 || host.since(m, 'game.result').length > 0,
+        8000,
+        `${i}번 넘김`,
+      );
+    }
+    await host.waitFor(() => host.snapshot.result !== null && host.snapshot.result !== undefined, 10000, '결과');
+    await sleep(500);
+    return { scores: await difficultyScoresOfGame(host.snapshot.game.gameId), result: host.snapshot.result };
+  };
+
+  const CASES = [
+    { tiers: ['hard'], label: '상만' },
+    { tiers: ['medium', 'hard'], label: '중+상' },
+    { tiers: ['easy', 'medium', 'hard'], label: '전체' },
+  ];
+  const all = [];
+  for (const c of CASES) {
+    log(`\n[1] ★★ ${c.label}`);
+    await apply({ questionCount: 4, difficulties: c.tiers }, c.tiers, c.label);
+    const { scores, result } = await playOne(4);
+    all.push(...scores);
+    const allowed = scoresOf(c.tiers);
+    expect(`★ ${c.label} — 4문제가 출제됐다`, scores.length, 4);
+    expectTrue(
+      `★★★ ${c.label} — 출제된 문제의 난이도가 전부 선택 안이다`,
+      scores.every((s) => allowed.includes(s)),
+      `난이도 ${scores.join(',')} / 허용 ${allowed.join(',')}`,
+    );
+    expect(`★ ${c.label} — 결과에 이 판의 난이도가 실린다`, (result.difficulties ?? []).join(','), c.tiers.join(','));
+
+    if (c.label === '상만') {
+      // ★★ 다시 하기가 난이도를 이어받는다 (Q-31)
+      log('\n[2] ★★ 다시 하기가 난이도를 이어받는다');
+      const a = host.mark();
+      host.socket.emit('game.again', {});
+      await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 6000, '로비 복귀');
+      await host.waitFor(() => host.since(a, 'lobby.settingsUpdated').length > 0, 6000, '설정 수신');
+      expect('★★ 다시 하기 후에도 상만', host.snapshot.room.settings.difficulties.join(','), 'hard');
+      await sleep(2500);
+      expect('★ 자동으로 시작하지 않는다', host.snapshot.room.state, 'LOBBY');
+    } else {
+      host.socket.emit('game.toLobby', {});
+      await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 6000, '로비 복귀');
+    }
+  }
+  log(`  ★ 세 판에서 출제된 난이도: ${all.join(',')}`);
+
+  // ── 3. 권한과 형식
+  log('\n[3] ★ 권한과 형식 (guide 44절)');
+  await apply({ questionCount: 4, difficulties: ['hard'] }, ['hard'], '상만(권한 검사 전)');
+  let from = guest.mark();
+  guest.socket.emit('lobby.updateSettings', { questionCount: 4, startMode: 'instant', countdownSec: 3, difficulties: ['easy'] });
+  await sleep(500);
+  expect('★ 비방장이 바꾸면 NOT_HOST', guest.since(from, 'error')[0]?.code, 'NOT_HOST');
+  expect('★ 설정은 그대로', host.snapshot.room.settings.difficulties.join(','), 'hard');
+
+  from = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 4, startMode: 'instant', countdownSec: 3, difficulties: [] });
+  await sleep(500);
+  expect('★★ 빈 선택은 서버가 거부한다', host.since(from, 'error')[0]?.code, 'BAD_REQUEST');
+  expect('★ 설정은 그대로', host.snapshot.room.settings.difficulties.join(','), 'hard');
+
+  from = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 6, startMode: 'instant', countdownSec: 3 });
+  await host.waitFor(() => host.since(from, 'lobby.settingsUpdated').length > 0, 4000, '설정');
+  expect('★★ 난이도를 안 보내면 지금 값을 유지한다', host.snapshot.room.settings.difficulties.join(','), 'hard');
+  expect('★ 문제 수는 바뀌었다', host.snapshot.room.settings.questionCount, 6);
+
+  // ── 4. ★★ 부족하면 시작 거부
+  log('\n[4] ★★ "상" 이 부족하면 시작을 거부한다');
+  const marked = await exhaustHardExcept(ids, 3);
+  log(`  ★ 경험 기록 ${marked}행 — "상" 미경험 문제를 3개로 줄였다`);
+  // ★ 난이도를 한 번 바꿔 서버가 다시 세게 한다 (참가자 변동 없이)
+  await apply({ questionCount: 5, difficulties: ['medium', 'hard'] }, ['medium', 'hard'], '중+상(재계산)');
+  const hardLeft = await apply({ questionCount: 5, difficulties: ['hard'] }, ['hard'], '상만(부족)');
+  expect('★ "상" 출제 가능 수가 3이다', hardLeft, 3);
+  from = host.mark();
+  host.socket.emit('game.start', {});
+  await sleep(1200);
+  expect('★★★ 부족하면 NOT_ENOUGH_QUESTIONS', host.since(from, 'error')[0]?.code, 'NOT_ENOUGH_QUESTIONS');
+  expect('★ 로비에 머문다', host.snapshot.room.state, 'LOBBY');
+  const allTiers = await apply({ questionCount: 5, difficulties: ['easy', 'medium', 'hard'] }, ['easy', 'medium', 'hard'], '전체(부족 해소)');
+  expectTrue('★ 전체로 바꾸면 충분해진다', allTiers >= 5, `${allTiers}건`);
+
+  // ── 5. ★★ 카운트다운 만료 재검증 (D-025) 도 난이도를 따른다
+  log('\n[5] ★★ 카운트다운 중 "상" 이 줄면 만료 시 로비로 돌아간다 (D-025)');
+  await apply({ questionCount: 3, difficulties: ['hard'], startMode: 'countdown', countdownSec: 3 }, ['hard'], '상만 3문제');
+  from = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(from, 'game.countdownStarted').length > 0, 5000, '카운트다운');
+  const used = await consumeOneHard(ids);
+  log(`  ★ 카운트다운 중 "상" 한 문제를 더 경험시켰다 (${used}행)`);
+  await host.waitFor(() => host.since(from, 'game.countdownCancelled').length > 0, 8000, '만료 재검증');
+  expect(
+    '★★ 만료 재검증에서 부족 → 로비로 (사유 not_enough_questions)',
+    host.since(from, 'game.countdownCancelled')[0]?.reason,
+    'not_enough_questions',
+  );
+  expect('★ 게임이 시작되지 않았다', host.since(from, 'game.started').length, 0);
+
+  host.leave();
+  await sleep(400);
+  guest.leave();
+  await sleep(600);
+  host.disconnect();
+  guest.disconnect();
+  await clearExperiences(PREFIX);
+  return checkSummary();
+}
+
 // -----------------------------------------------------------------------------
 const SCENARIOS = {
   join: scenarioJoin,
@@ -3552,6 +3802,8 @@ const SCENARIOS = {
   mask: scenarioMask,
   // ★★ Phase 4 (R016)
   result: scenarioResult,
+  // ★★ R025
+  difficulty: scenarioDifficulty,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

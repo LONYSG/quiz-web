@@ -842,6 +842,52 @@ try {
     //   ★★ 지금은 **게이트가 아니다** — 건우 우선순위가 "게임 화면 우선" 이고,
     //     로비는 30초 승부 중이 아니라 스크롤이 조잡함으로 이어지는 정도가 다르다.
     //   ★ 수치는 남긴다. 09-BACKLOG 의 다음 목표가 된다.
+    // ── ★★ R025 난이도 선택
+    //   ★ 버튼을 실제로 눌러 출제 가능 수 안내가 바뀌는지 본다 (서버 재계산이 화면까지 오는가)
+    console.log('\n[4-9] ★★ 난이도 선택 (R025)');
+    const availText = () =>
+      host.evaluate(
+        "[...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('출제할 수 있는 문제')) ?? ''",
+      );
+    const diffBtns = await host.evaluate(
+      "[...document.querySelectorAll('.card button[aria-pressed]')].map(b => b.innerText.trim() + ':' + b.getAttribute('aria-pressed')).join(',')",
+    );
+    record('★★ 난이도 버튼 셋이 있고 기본은 전부 켜짐', diffBtns === '하:true,중:true,상:true', diffBtns);
+    const beforeAvail = await availText();
+    await host.click('하');
+    await sleep(300);
+    await host.click('중');
+    const changed = await host.waitFor(
+      `([...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('출제할 수 있는 문제')) ?? '') !== ${JSON.stringify(beforeAvail)}`,
+      6000,
+    );
+    record('★★ "상" 만 남기면 출제 가능 수 안내가 바뀐다', changed, `${beforeAvail} → ${await availText()}`);
+    // ★ 마지막 하나는 끌 수 없다. 눌러도 켜진 채로 남고 안내가 뜬다
+    await host.click('상');
+    await sleep(300);
+    record(
+      '★ 마지막 하나를 끄려 하면 안내가 뜨고 켜진 채로 남는다',
+      (await host.text()).includes('난이도는 하나 이상 선택해야 합니다') &&
+        (await host.evaluate(
+          "[...document.querySelectorAll('.card button[aria-pressed]')].find(b => b.innerText.trim() === '상')?.getAttribute('aria-pressed')",
+        )) === 'true',
+    );
+    // 원래대로 (뒤 검사가 전체 기준이다)
+    await host.click('하');
+    await sleep(200);
+    await host.click('중');
+    await host.waitFor(
+      "[...document.querySelectorAll('.card button[aria-pressed]')].every(b => b.getAttribute('aria-pressed') === 'true')",
+      4000,
+    );
+    await sleep(800);
+    const noWrap = await host.evaluate(`(() => {
+      const bs = [...document.querySelectorAll('.card button[aria-pressed]')];
+      return bs.every(b => { const r = document.createRange(); r.selectNodeContents(b);
+        return new Set([...r.getClientRects()].map(x => Math.round(x.top))).size <= 1; });
+    })()`);
+    record('★ 난이도 버튼 라벨이 쪼개지지 않는다 (D-022)', noWrap);
+
     await measureOneScreen(host, '로비 화면', { gate: false });
     await host.setWidth(720);
     await sleep(250);
@@ -1128,6 +1174,10 @@ try {
     // ─────────────────────────────────────────────────────────────────────────
     console.log('\n[5-3b] ★★★ 한 화면 검사 — 게임 화면');
     await measureOneScreen(host, '게임 화면');
+    record(
+      '★ 게임 화면에 이 판의 난이도가 보인다 (R025)',
+      (await host.evaluate("document.querySelector('.question-card .badge.diff')?.innerText ?? ''")).includes('난이도'),
+    );
     // ★ 핵심 정보가 실제로 화면 안에 있는지도 좌표로 확인한다.
     //   ★★ "문서가 짧다" 와 "중요한 것이 보인다" 는 다른 말이다 (R009 교훈)
     for (const [name, sel] of [
