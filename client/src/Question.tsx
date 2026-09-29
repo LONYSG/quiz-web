@@ -19,6 +19,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
+import { formatDifficulties, type DifficultyTier } from '@quiz/shared';
 import type { QuestionView, ResolutionView, SkipView } from './useRoom.js';
 
 interface Props {
@@ -34,6 +35,8 @@ interface Props {
   /** 지금까지의 점수판 */
   players: { accountId: string; nickname: string; colorIndex: number; score: number; connected: boolean }[];
   myAccountId: string;
+  /** ★ R025 — 이 판의 난이도. 설정이 잠겨 있으므로 방 설정이 곧 이 판의 설정이다 */
+  difficulties: DifficultyTier[];
 }
 
 export default function Question({
@@ -46,6 +49,7 @@ export default function Question({
   state,
   players,
   myAccountId,
+  difficulties,
 }: Props) {
   const active = state === 'QUESTION_ACTIVE';
   const [remainMs, setRemainMs] = useState(() => Math.max(0, question.endsAt - serverNow()));
@@ -138,6 +142,8 @@ export default function Question({
           </span>
           {/* ★ 카테고리는 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 */}
           <span className="badge cat">{question.categoryName}</span>
+          {/* ★ R025 — 어떤 난이도로 하는 판인지 */}
+          <span className="badge diff">난이도 {formatDifficulties(difficulties)}</span>
           {question.selfExperienced && (
             /* ★ 본인에게만 보이는 배지 (01-GAME-RULES 12장) */
             <span className="badge exp">이미 풀어본 퀴즈입니다</span>

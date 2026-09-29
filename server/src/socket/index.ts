@@ -464,12 +464,16 @@ function registerRoomHandlers(socket: Socket): void {
       }
 
       // ★ 검증은 shared 의 순수 함수 하나로만 한다. 클라이언트와 같은 함수다.
-      const valid = validateRoomSettings(payload);
+      //   ★ R025 — 보낸 필드만 바꾼다. 난이도를 안 보냈으면 **지금 값을 유지**한다.
+      //     ★ 그러지 않으면 "문제 수만 고쳤더니 난이도가 전체로 풀렸다" 가 된다.
+      const valid = validateRoomSettings({ difficulties: room.settings.difficulties, ...payload });
       if (!valid.ok) {
         sendError(s, 'BAD_REQUEST', valid.message);
         return;
       }
 
+      const diffChanged =
+        valid.settings.difficulties.join(',') !== room.settings.difficulties.join(',');
       room.settings = { ...valid.settings };
 
       // ★ 출제 가능 수는 설정값과 무관하다(참가자 집합에만 의존한다).
@@ -480,6 +484,9 @@ function registerRoomHandlers(socket: Socket): void {
         settingsLocked: room.settingsLocked,
         availableQuestionCount: room.availableQuestionCount,
       });
+      // ★★ R025 — 난이도는 출제 가능 수를 바꾼다. 바뀐 경우에만 다시 센다.
+      //   ★ 결과는 refreshLobbyInfo 가 lobby.settingsUpdated 로 다시 보낸다
+      if (diffChanged) void refreshLobbyInfo(room);
     },
   );
 

@@ -14,7 +14,13 @@
 
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { RULES, validateRoomSettings } from '@quiz/shared';
+import {
+  DIFFICULTY_TIERS,
+  formatDifficulties,
+  RULES,
+  validateRoomSettings,
+  type DifficultyTier,
+} from '@quiz/shared';
 import type { RoomSettings } from './useRoom.js';
 
 /** Q-10 확정: UI 에 프리셋을 제공한다 */
@@ -61,6 +67,29 @@ export default function GameSettings({
   const shortage =
     availableQuestionCount !== null && draft.questionCount > availableQuestionCount;
 
+  /**
+   * ★ 난이도 켜고 끄기 (R025). 복수 선택이다.
+   *
+   * ★ **마지막 하나는 끌 수 없다.** 누르면 그대로 두고 안내만 띄운다.
+   *   ★ 처음에는 초안을 비워 두고 검증 문구를 띄웠다. 그런데 서버가 보낸 설정으로
+   *     초안이 다시 맞춰지면서 문구가 사라졌다 (R025 ui-check 가 잡았다).
+   *     ★ 빈 선택이라는 상태 자체를 만들지 않는 편이 단순하고 확실하다.
+   *   ★ 서버도 빈 선택을 거부한다 (guide 44절 — 화면을 믿지 않는다).
+   */
+  const [lastTierHint, setLastTierHint] = useState(false);
+  const toggleTier = (tier: DifficultyTier) => {
+    const has = draft.difficulties.includes(tier);
+    if (has && draft.difficulties.length === 1) {
+      setLastTierHint(true);
+      return;
+    }
+    setLastTierHint(false);
+    const next = has
+      ? draft.difficulties.filter((d) => d !== tier)
+      : DIFFICULTY_TIERS.map((i) => i.tier).filter((d) => d === tier || draft.difficulties.includes(d));
+    push({ ...draft, difficulties: next });
+  };
+
   if (!editable) {
     // ── 읽기 전용 표시 (참가자 / 설정 잠금 상태)
     return (
@@ -69,6 +98,8 @@ export default function GameSettings({
         <dl className="settings-view">
           <dt>문제 수</dt>
           <dd>{settings.questionCount}개</dd>
+          <dt>난이도</dt>
+          <dd>{formatDifficulties(settings.difficulties)}</dd>
           <dt>시작 방식</dt>
           <dd>
             {settings.startMode === 'instant'
@@ -144,6 +175,30 @@ export default function GameSettings({
             ? `★ 지금 출제할 수 있는 문제는 ${availableQuestionCount}개입니다. 이대로 시작할 수 없습니다.`
             : `지금 출제할 수 있는 문제: ${availableQuestionCount}개`}
       </p>
+
+      {/* ★★ 난이도 (R025). 하=1~2 / 중=3 / 상=4~5 (문제별 난이도 점수 기준)
+          ★ 켜고 끌 때마다 서버가 출제 가능 수를 다시 센다 (Q-21) */}
+      <div className="settings-label">
+        난이도
+        <div className="preset-row">
+          {DIFFICULTY_TIERS.map((info) => (
+            <button
+              key={info.tier}
+              type="button"
+              aria-pressed={draft.difficulties.includes(info.tier)}
+              className={draft.difficulties.includes(info.tier) ? 'preset active' : 'preset'}
+              onClick={() => toggleTier(info.tier)}
+            >
+              {info.label}
+            </button>
+          ))}
+        </div>
+        {lastTierHint ? (
+          <span className="form-error">난이도는 하나 이상 선택해야 합니다.</span>
+        ) : (
+          <span className="note dim">하 = 일상·중학 / 중 = 고교·관심층 / 상 = 대학 교양·전공</span>
+        )}
+      </div>
 
       <label className="settings-label">
         시작 방식

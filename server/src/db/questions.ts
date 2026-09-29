@@ -12,6 +12,7 @@
 //     Neon 같은 서버리스 DB는 스케일 투 제로가 영원히 발동하지 않는다.
 // =============================================================================
 
+import { difficultyScores, type DifficultyTier } from '@quiz/shared';
 import { query } from './pool.js';
 
 /**
@@ -22,6 +23,19 @@ import { query } from './pool.js';
  *     시작 검증을 통과했는데 선정에서 문제를 못 찾는 일이 생긴다.
  */
 export const POOL_WHERE = `q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'`;
+
+/**
+ * ★ 난이도 조건 (R025). `$n` 자리에 difficultyScores(...) 를 넘긴다.
+ *
+ * ★ 기준 열은 **difficulty_score(1~5 원점수)** 다. 옛 3단계 열(difficulty)이 아니다.
+ *   ★ 근거: 옛 열은 원점수에서 파생된 값이다. 지금은 3,263건 전부 일치하지만(R025 실측),
+ *     원점수만 다시 매기면 둘이 조용히 갈라진다.
+ * ★ difficulty_score 가 NULL 인 문제는 **어떤 난이도에도 들지 않는다** (= 출제되지 않는다).
+ *   ★ R025 실측 0건. 점수가 없는 문제는 선별 게이트(D-112)도 통과하지 못한 문제라 제외가 맞다.
+ */
+export function difficultyWhere(param: string): string {
+  return `q.difficulty_score = ANY(${param}::int[])`;
+}
 
 /** 경험률의 분모. 전체 활성 문제 수 (guide 6절: "분모는 전체 활성 문제 수") */
 export async function countActiveQuestions(): Promise<number> {
@@ -77,22 +91,30 @@ export async function countExperiencedByAccount(
  */
 export async function countAvailableQuestions(
   participantIds: readonly string[],
+  difficulties: readonly DifficultyTier[],
 ): Promise<number> {
+  const scores = difficultyScores(difficulties);
   const n = participantIds.length;
   if (n === 0) {
     // 참가자가 없으면 "전원 경험" 조건이 공허하게 참이 되어 0이 되어야 할지
     // 전체가 되어야 할지 애매하다. 참가자 0명인 방에서 게임을 시작할 수 없으므로
-    // 전체 활성 문제 수를 돌려주는 것이 화면 안내에 자연스럽다.
-    return countActiveQuestions();
+    // (선택한 난이도의) 전체 활성 문제 수를 돌려주는 것이 화면 안내에 자연스럽다.
+    const r0 = await query<{ n: number }>(
+      `SELECT count(*)::int AS n FROM questions q WHERE ${POOL_WHERE} AND ${difficultyWhere('$1')}`,
+      [scores],
+    );
+    return r0.rows[0]?.n ?? 0;
   }
+  // ★★ R025 — 선택한 난이도의 문제만 센다. 출제 풀(loadQuestionPool)과 **같은 조건**이어야 한다
   const r = await query<{ n: number }>(
     `SELECT count(*)::int AS n
        FROM questions q
       WHERE ${POOL_WHERE}
+        AND ${difficultyWhere('$3')}
         AND (SELECT count(*) FROM question_experiences qe
               WHERE qe.question_id = q.id
                 AND qe.account_id = ANY($1::bigint[])) < $2`,
-    [participantIds, n],
+    [participantIds, n, scores],
   );
   return r.rows[0]?.n ?? 0;
 }

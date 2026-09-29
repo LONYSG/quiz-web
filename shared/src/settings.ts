@@ -14,15 +14,78 @@ import { RULES } from './protocol.js';
 
 export type StartMode = 'instant' | 'countdown';
 
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ 난이도 선택 (R025)
+//
+// ★ 건우: "지금까지 만든 문제 난이도가 좀 쉬운 편이다 … 난이도 범위 설정을 만들어 달라.
+//   상·중·하 3단계면 좋겠다."
+//
+// ★ 매핑 (건우 확정) — questions.difficulty_score (1~5, R024 / 0007) 기준이다.
+//     하 = 1~2 / 중 = 3 / 상 = 4~5
+//   ★ 옛 3단계 열(questions.difficulty)을 쓰지 않는다. R025 에서 두 열을 대조했더니
+//     활성 3,263건 전부 같은 매핑으로 일치했다. 그래도 **원점수를 기준으로 한다** —
+//     옛 열은 파생값이라, 나중에 원점수만 다시 매기면 둘이 조용히 갈라진다.
+//
+// ★ 복수 선택이다. "상만" / "중+상" / "전체" 가 모두 가능하다. 최소 하나는 켜져 있어야 한다.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type DifficultyTier = 'easy' | 'medium' | 'hard';
+
+export interface DifficultyTierInfo {
+  tier: DifficultyTier;
+  /** 화면 표기 */
+  label: '하' | '중' | '상';
+  /** 이 단계에 드는 difficulty_score */
+  scores: readonly number[];
+}
+
+/** ★ 순서가 표기 순서다 (하 → 상) */
+export const DIFFICULTY_TIERS: readonly DifficultyTierInfo[] = [
+  { tier: 'easy', label: '하', scores: [1, 2] },
+  { tier: 'medium', label: '중', scores: [3] },
+  { tier: 'hard', label: '상', scores: [4, 5] },
+];
+
+/**
+ * ★ 기본값 = 전체 (하·중·상). 근거 (R025 판단, D-115)
+ *   · 지금까지의 동작과 같다 — 기존 방·다시 하기·테스트가 조용히 바뀌지 않는다
+ *   · 출제 풀이 가장 크다 — 기본 설정에서 "문제가 부족합니다" 가 뜨지 않는다
+ *   · ★ 어떤 난이도를 기본으로 할지는 **모임의 성격**에 달린 기획 판단이다.
+ *     방장이 한 번 누르면 바뀌므로, 기본은 아무것도 빼지 않는 쪽이 안전하다.
+ */
+export const DEFAULT_DIFFICULTIES: readonly DifficultyTier[] = ['easy', 'medium', 'hard'];
+
+/** 선택한 단계들 → difficulty_score 목록 (SQL 에 넘긴다) */
+export function difficultyScores(tiers: readonly DifficultyTier[]): number[] {
+  const out: number[] = [];
+  for (const info of DIFFICULTY_TIERS) {
+    if (tiers.includes(info.tier)) out.push(...info.scores);
+  }
+  return out;
+}
+
+/** 화면 표기. 세 개 다 켜져 있으면 "전체" */
+export function formatDifficulties(tiers: readonly DifficultyTier[]): string {
+  const labels = DIFFICULTY_TIERS.filter((i) => tiers.includes(i.tier)).map((i) => i.label);
+  if (labels.length === DIFFICULTY_TIERS.length) return '전체';
+  return labels.join('·');
+}
+
 export interface RoomSettingsInput {
   questionCount: number;
   startMode: StartMode;
   countdownSec: number;
+  /** ★ R025. 정규화된 순서(하→중→상)로 저장된다. 중복 없음, 최소 1개 */
+  difficulties: DifficultyTier[];
 }
 
 export type SettingsValidation =
   | { ok: true; settings: RoomSettingsInput }
-  | { ok: false; field: 'questionCount' | 'startMode' | 'countdownSec'; message: string };
+  | {
+      ok: false;
+      field: 'questionCount' | 'startMode' | 'countdownSec' | 'difficulties';
+      message: string;
+    };
 
 function isInt(value: unknown): value is number {
   return typeof value === 'number' && Number.isInteger(value);
@@ -77,12 +140,43 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
     };
   }
 
+  // ── ★ 난이도 (R025)
+  //   ★ 필드가 없으면 기본값(전체)을 쓴다. R024 이전 형식과 호환하기 위해서다.
+  //     ★ 방장이 설정을 바꿀 때 서버는 **현재 값을 먼저 채운 뒤** 이 함수를 부른다
+  //       (socket lobby.updateSettings). 그래서 "문제 수만 고쳤더니 난이도가 풀렸다" 는 일이 없다.
+  let difficulties: DifficultyTier[];
+  if (raw.difficulties === undefined) {
+    difficulties = [...DEFAULT_DIFFICULTIES];
+  } else {
+    if (!Array.isArray(raw.difficulties)) {
+      return { ok: false, field: 'difficulties', message: '난이도 형식이 올바르지 않습니다.' };
+    }
+    const known = new Set<string>(DIFFICULTY_TIERS.map((i) => i.tier));
+    for (const d of raw.difficulties as unknown[]) {
+      if (typeof d !== 'string' || !known.has(d)) {
+        return { ok: false, field: 'difficulties', message: '알 수 없는 난이도가 있습니다.' };
+      }
+    }
+    // ★ 정규화: 중복을 없애고 하→중→상 순서로 둔다. 같은 선택이 늘 같은 값이 되게 한다
+    difficulties = DIFFICULTY_TIERS.map((i) => i.tier).filter((tier) =>
+      (raw.difficulties as unknown[]).includes(tier),
+    );
+    if (difficulties.length === 0) {
+      return {
+        ok: false,
+        field: 'difficulties',
+        message: '난이도는 하나 이상 선택해야 합니다.',
+      };
+    }
+  }
+
   return {
     ok: true,
     settings: {
       questionCount: raw.questionCount,
       startMode: raw.startMode,
       countdownSec: raw.countdownSec,
+      difficulties,
     },
   };
 }

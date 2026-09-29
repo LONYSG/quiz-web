@@ -9,6 +9,7 @@
 //   여기서 게임 판정이나 상태 전환을 하지 않는다.
 // =============================================================================
 
+import type { DifficultyTier } from '@quiz/shared';
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 
@@ -44,6 +45,8 @@ export interface RoomSettings {
   questionCount: number;
   startMode: 'instant' | 'countdown';
   countdownSec: number;
+  /** ★ R025 — 출제할 난이도 (하·중·상 복수 선택) */
+  difficulties: DifficultyTier[];
 }
 
 /** 진행 중인 문제. ★ 정답은 들어 있지 않다 (QUESTION_ACTIVE 중) */
@@ -119,6 +122,8 @@ export interface GameResultView {
     avgResponseMs: number | null;
     fastestMs: number | null;
   }[];
+  /** ★ R025 — 이 판의 난이도 */
+  difficulties: DifficultyTier[];
   abortedNote: string | null;
   endedQuestionCount: number;
   totalQuestions: number;

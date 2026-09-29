@@ -429,6 +429,7 @@ export default function Lobby({
           state={snapshot.room.state}
           players={snapshot.players}
           myAccountId={snapshot.me.accountId}
+          difficulties={snapshot.room.settings.difficulties}
         />
       )}
 

@@ -44,6 +44,11 @@ export interface RoomSettings {
   questionCount: number;
   startMode: 'instant' | 'countdown';
   countdownSec: number;
+  /**
+   * ★ 출제할 난이도 (R025). 하=1~2 / 중=3 / 상=4~5 (questions.difficulty_score).
+   *   ★ 출제 가능 수(Q-21)·출제 풀·다시 하기(Q-31) 가 전부 이 값을 따른다.
+   */
+  difficulties: import('@quiz/shared').DifficultyTier[];
 }
 
 /**
@@ -377,6 +382,8 @@ export interface GameResultData {
     /** ★ 가장 빨리 맞힌 시간(ms) */
     fastestMs: number | null;
   }[];
+  /** ★ 이 판의 난이도 (R025). 결과 화면에 "어떤 난이도로 한 판인지" 를 보여준다 */
+  difficulties: import('@quiz/shared').DifficultyTier[];
   /** 조기 종료·강제 종료 사유 안내 */
   abortedNote: string | null;
   endedQuestionCount: number;

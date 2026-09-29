@@ -20,7 +20,7 @@
 // =============================================================================
 
 import { randomBytes } from 'node:crypto';
-import { RULES } from '@quiz/shared';
+import { DEFAULT_DIFFICULTIES, RULES } from '@quiz/shared';
 import type { ChatEntry, Player, Room, RoomSettings } from './types.js';
 
 const rooms = new Map<string, Room>();
@@ -32,6 +32,8 @@ export const DEFAULT_SETTINGS: RoomSettings = {
   questionCount: 20,
   startMode: 'instant',
   countdownSec: 5,
+  // ★ 전체. 근거는 shared/settings.ts DEFAULT_DIFFICULTIES 주석 (D-115)
+  difficulties: [...DEFAULT_DIFFICULTIES],
 };
 
 /**

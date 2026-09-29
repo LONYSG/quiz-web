@@ -521,6 +521,8 @@ export function finishGame(
         fastestMs: s?.fastest ?? null,
       };
     }),
+    // ★ 게임 중에는 설정이 잠겨 있으므로 지금 설정이 곧 이 판의 설정이다
+    difficulties: [...room.settings.difficulties],
     abortedNote,
     endedQuestionCount: game.endedQuestionCount,
     totalQuestions: game.totalQuestions,

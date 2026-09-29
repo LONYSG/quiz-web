@@ -12,7 +12,9 @@
 // ★ 왜 캐시하는가
 //   설정 변경(lobby.updateSettings)은 방장이 숫자를 고칠 때마다 발생한다.
 //   그때마다 DB를 조회하면 입력 한 글자마다 쿼리가 나간다.
-//   출제 가능 수는 설정값과 무관하고 참가자 집합에만 의존하므로 캐시가 정확하다.
+//   출제 가능 수는 문제 수·시작 방식과 무관하므로 그것들을 고칠 때는 캐시가 정확하다.
+//   ★★ R025 — 단 **난이도**는 출제 가능 수를 바꾼다. 난이도를 바꿀 때만 다시 조회한다
+//     (socket lobby.updateSettings). 난이도 토글은 드물어서 DB 부담이 없다.
 //   ★ 단 게임 시작 직전에는 캐시를 믿지 않고 반드시 다시 조회한다 (Q-21).
 // =============================================================================
 
@@ -46,13 +48,18 @@ export function participantIds(room: Room): string[] {
 export async function refreshLobbyInfo(room: Room): Promise<void> {
   const ids = participantIds(room);
   if (ids.length === 0) return;
+  // ★ 조회 중에 방장이 난이도를 또 바꿀 수 있다. 낡은 결과로 덮어쓰지 않도록 기억해 둔다
+  const diffKey = room.settings.difficulties.join(',');
 
   try {
     const [total, counts, available] = await Promise.all([
+      // ★ 경험률의 분모는 **난이도와 무관한** 전체 활성 문제 수다 (guide 6절 / Q-12).
+      //   ★ 경험률은 그 사람이 문제 DB 를 얼마나 봤는가이지, 이 방 설정의 값이 아니다.
       countActiveQuestions(),
       countExperiencedByAccount(ids),
-      countAvailableQuestions(ids),
+      countAvailableQuestions(ids, room.settings.difficulties),
     ]);
+    if (room.settings.difficulties.join(',') !== diffKey) return; // 더 새로운 조회가 뒤따른다
 
     // ★ 조회 중에 참가자가 바뀌었을 수 있다. 지금 방에 있는 사람만 남긴다.
     const byAccount = new Map(counts.map((c) => [c.accountId, c.experienced]));

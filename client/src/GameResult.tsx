@@ -24,6 +24,7 @@
 // =============================================================================
 
 import type { Socket } from 'socket.io-client';
+import { formatDifficulties } from '@quiz/shared';
 import type { GameResultView } from './useRoom.js';
 
 interface Props {
@@ -133,7 +134,8 @@ export default function GameResult({ socket, result, isHost, myAccountId }: Prop
         <p className="note">
           {endReasonText(result.endReason)}{' '}
           <span className="dim mono">
-            ({result.endedQuestionCount} / {result.totalQuestions}문제 진행)
+            ({result.endedQuestionCount} / {result.totalQuestions}문제 진행 · 난이도{' '}
+            {formatDifficulties(result.difficulties ?? [])})
           </span>
         </p>
         {result.abortedNote && <p className="info">{result.abortedNote}</p>}

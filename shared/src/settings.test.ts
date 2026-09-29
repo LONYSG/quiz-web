@@ -6,7 +6,12 @@
 // =============================================================================
 
 import { describe, expect, it } from 'vitest';
-import { formatExperienceRate, validateRoomSettings } from './settings.js';
+import {
+  difficultyScores,
+  formatDifficulties,
+  formatExperienceRate,
+  validateRoomSettings,
+} from './settings.js';
 
 const base = { questionCount: 20, startMode: 'instant' as const, countdownSec: 5 };
 
@@ -75,6 +80,8 @@ describe('validateRoomSettings — 형식 방어', () => {
     expect(r.ok).toBe(true);
     if (r.ok) expect(Object.keys(r.settings).sort()).toEqual([
       'countdownSec',
+      // ★ R025 — 난이도가 알려진 필드에 더해졌다
+      'difficulties',
       'questionCount',
       'startMode',
     ]);
@@ -97,5 +104,41 @@ describe('formatExperienceRate (guide 6절 표기 규칙)', () => {
   it('★ 분모가 0이면 0으로 나누지 않는다', () => {
     expect(formatExperienceRate(0, 0)).toBe('출제 가능한 문제가 없습니다');
     expect(formatExperienceRate(0, 0)).not.toContain('NaN');
+  });
+});
+
+describe('★ 난이도 선택 (R025)', () => {
+  it('★ 매핑: 하=1~2 / 중=3 / 상=4~5', () => {
+    expect(difficultyScores(['easy'])).toEqual([1, 2]);
+    expect(difficultyScores(['medium'])).toEqual([3]);
+    expect(difficultyScores(['hard'])).toEqual([4, 5]);
+    expect(difficultyScores(['medium', 'hard'])).toEqual([3, 4, 5]);
+  });
+
+  it('★ 필드가 없으면 전체 (옛 형식 호환)', () => {
+    const r = validateRoomSettings(base);
+    expect(r.ok && r.settings.difficulties).toEqual(['easy', 'medium', 'hard']);
+  });
+
+  it('★ 복수 선택을 하→상 순서로 정규화하고 중복을 없앤다', () => {
+    const r = validateRoomSettings({ ...base, difficulties: ['hard', 'medium', 'hard'] });
+    expect(r.ok && r.settings.difficulties).toEqual(['medium', 'hard']);
+  });
+
+  it('★★ 하나도 켜지 않으면 거부한다', () => {
+    const r = validateRoomSettings({ ...base, difficulties: [] });
+    expect(r.ok).toBe(false);
+    expect(!r.ok && r.field).toBe('difficulties');
+  });
+
+  it('★ 모르는 값·배열 아닌 값은 거부한다', () => {
+    expect(validateRoomSettings({ ...base, difficulties: ['insane'] }).ok).toBe(false);
+    expect(validateRoomSettings({ ...base, difficulties: 'hard' }).ok).toBe(false);
+  });
+
+  it('★ 표기: 전체 / 상 / 중·상', () => {
+    expect(formatDifficulties(['easy', 'medium', 'hard'])).toBe('전체');
+    expect(formatDifficulties(['hard'])).toBe('상');
+    expect(formatDifficulties(['medium', 'hard'])).toBe('중·상');
   });
 });

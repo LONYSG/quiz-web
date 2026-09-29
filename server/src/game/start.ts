@@ -76,7 +76,7 @@ export async function requestStart(room: Room): Promise<StartResult> {
 
     // ── 2. ★ 출제 가능 수 재검증 (Q-21). 캐시를 믿지 않고 지금 조회한다.
     const wanted = room.settings.questionCount;
-    const available = await countAvailableQuestions(participantIds(room));
+    const available = await countAvailableQuestions(participantIds(room), room.settings.difficulties);
     room.availableQuestionCount = available;
 
     // ★ await 뒤 상태 재확인. 조회 중에 방이 바뀔 수 있다.
@@ -156,7 +156,7 @@ export async function startFromCountdown(room: Room): Promise<StartResult> {
     // ★ 카운트다운 중 신규 입장이 허용되므로(Q-11) 참가자 집합이 바뀌었을 수 있다.
     //   출제 가능 수를 다시 확인한다. 사람이 늘면 수가 늘고, 나가면 줄어든다.
     const wanted = room.settings.questionCount;
-    const available = await countAvailableQuestions(participantIds(room));
+    const available = await countAvailableQuestions(participantIds(room), room.settings.difficulties);
     room.availableQuestionCount = available;
 
     // ★ await 뒤 재확인. 조회 중에 방장이 취소했을 수 있다.
@@ -237,7 +237,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   let experienced;
   try {
     [pool, experienced] = await Promise.all([
-      loadQuestionPool(),
+      loadQuestionPool(settings.difficulties),
       loadExperienced(participantIds(room)),
     ]);
   } catch (err) {
