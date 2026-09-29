@@ -8,6 +8,37 @@
 
 ---
 
+## 2026-09-29 — 게임 설정에 난이도 선택(하·중·상) 추가 (R025)
+
+### 0. 배경
+- ★ MAIN 단독 라운드. 게임 쪽 마지막 작업은 R016 이었다 (R017~R024 는 GEN).
+- 건우: "지금까지 만든 문제 난이도가 좀 쉬운 편이다 … 거의 타자 게임 수준이다. 상·중·하 3단계면 좋겠다."
+
+### 1. 확인 (D-116)
+- 옛 difficulty 열과 difficulty_score 가 활성 3,263건 **전부 일치**. score NULL 활성 **0건**.
+- ★ 브리핑과 다른 점: "상" 은 약 436건이 아니라 **395건**. 0007 주석의 "서버가 옛 열을 쓰고 있다" 는 사실이 아니었다.
+
+### 2. 구현
+| 무엇 | 어디 |
+|------|------|
+| 난이도 단계·매핑·검증·표기 | `shared/src/settings.ts` (`DIFFICULTY_TIERS` / `difficultyScores` / `formatDifficulties`) |
+| 출제 가능 수 (Q-21) | `server/src/db/questions.ts` `countAvailableQuestions(ids, difficulties)` |
+| 출제 풀 | `server/src/db/questionPool.ts` `loadQuestionPool(difficulties)` — ★ 같은 `difficultyWhere` 를 쓴다 |
+| 시작 검증 / 카운트다운 재검증(D-025) | `server/src/game/start.ts` |
+| 설정 변경 시 재계산 | `socket lobby.updateSettings` → 난이도가 바뀔 때만 `refreshLobbyInfo` |
+| 결과에 난이도 | `GameResultData.difficulties` |
+| 설정 UI / 게임 배지 / 결과 표기 | `GameSettings.tsx` / `Question.tsx` / `GameResult.tsx` |
+
+### 3. 실행해 보고 찾은 것
+- ★ 마지막 난이도를 끄면 뜨던 안내가 서버 동기화로 곧바로 사라졌다 (ui-check) → 마지막 하나는 끌 수 없게 (D-117).
+- ★ `empty` 봇이 `mask` 뒤에 돌면 실패했다 — `mask` 가 방장을 전 문제 경험자로 만들고 지우지 않았다 (R016 부터 있던 순서 의존). 두 시나리오 모두 기록을 지우도록 고쳤다.
+
+### 4. 검증
+- verify 통과 — vitest **336** / smoke 10 / ui-check **112** (107 → 112).
+- 봇 `difficulty` **32/32** (상만 / 중+상 / 전체 / 다시 하기 / 권한 / 부족 / D-025). 회귀 lobby·countdown·game·result·mask·empty·full·concur 통과.
+
+---
+
 ## 2026-09-29 — 채점 기준 확정 + 전체 재채점 + 선별 게이트 + R022 적재 (R024)
 
 ### 0. git

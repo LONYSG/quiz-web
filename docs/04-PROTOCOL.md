@@ -586,7 +586,7 @@ Cloudflare 터널 경유 RTT 133~257ms / 오프셋 −21 ~ +49.5ms.
 | `host.kickDisconnected` | C→S | `{ accountId }` (방장) | ✅ |
 | `state.resync` | C→S | `{}` → 서버가 `room.state` 응답 | ✅ |
 | `error` | S→C | `{ code, message, detail }` | ✅ |
-| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec }` (방장) | ✅ |
+| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec, difficulties? }` (방장) | ✅ ★ R025: `difficulties` 는 `('easy'\|'medium'\|'hard')[]`. **보내지 않으면 지금 값을 유지한다.** 빈 배열·모르는 값은 `BAD_REQUEST`. 바뀌면 서버가 출제 가능 수를 다시 세어 `lobby.settingsUpdated` 로 한 번 더 보낸다 |
 | `lobby.settingsUpdated` | S→C | `{ settings, settingsLocked, availableQuestionCount }` | ✅ |
 | `lobby.experienceRates` | S→C | `{ rates: [{ accountId, experienced, total }] }` | ✅ |
 
@@ -699,7 +699,7 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `host.forceEnd` | C→S | `{}` (방장, 확인창 후) — ✅ Phase 3. ★★ epoch 를 담지 않는다 (게임 전체 액션) |
 | `host.kickDisconnected` | C→S | `{ accountId }` (방장) |
 | `game.again` / `game.toLobby` | C→S | `{}` (방장) — ✅ Phase 3. ★★ 서버 동작이 동일하다 |
-| `game.result` | S→C | `{ gameId, endReason, ranking[], lastQuestionReveal, ★ questions[], ★ playerStats[], abortedNote, endedQuestionCount, totalQuestions }` — ✅ Phase 4 (R016)
+| `game.result` | S→C | `{ gameId, endReason, ranking[], lastQuestionReveal, ★ questions[], ★ playerStats[], ★ difficulties[], abortedNote, endedQuestionCount, totalQuestions }` — ✅ Phase 4 (R016). ★ `difficulties` 는 R025
   · `questions[]` = `{ index, text, categoryName, displayAnswer\|null, reason, winnerAccountId, responseMs, experiencedCount }`
     ★★ `displayAnswer` 는 **공개된 문제만** 값이 있다. 중단(aborted)된 문제는 null 이다
   · `playerStats[]` = `{ accountId, correct, avgResponseMs, fastestMs }` |
