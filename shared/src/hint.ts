@@ -17,6 +17,11 @@
 //   ★ 한글 정답은 guide 11절대로 공백을 제거한다. 영문은 단어 경계를 유지한다.
 //
 // Q-37 (확정): 전처리 후 길이가 1이면 힌트를 만들지 않는다.
+//   ★★ R028 개정 (D-004 개정 / 건우 확정): **한글 한 음절 정답은 초성을 준다.** "금" → "ㄱ", "소" → "ㅅ".
+//     ★ 건우가 전에 정한 규칙인데 문제 생성 프롬프트에만 들어가고 게임 코드에는 빠져 있었다
+//       (R026 에서 정답 "소" 의 초성 힌트가 "없음" 으로 확인됐다).
+//     ★ 한글 외의 한 글자(영문·숫자·기호·한자 등)는 그대로 **힌트 없음**이다.
+//       영문 한 글자는 힌트가 곧 정답이 되고(최종 방어선이 버린다), 숫자 한 자리는 "_" 뿐이라 정보가 없다.
 //   ★ 그리고 "생성된 힌트가 정규화 후 정답과 같아지면 무조건 버린다"는 최종 방어선을
 //     항상 적용한다. 규칙이 나중에 어떻게 바뀌어도 정답이 그대로 노출되는 일을 막는다.
 //     ("e" → 힌트가 "e", "C++" → 힌트가 "C++" 가 되는 결함을 이 방어선이 잡는다)
@@ -118,8 +123,14 @@ export function generateHint(answer: unknown): string | null {
 
   // ── 길이 판정 (Q-37)
   // 한글 모드는 공백을 제거한 길이, 영문 모드는 공백을 뺀 실질 문자 수로 센다.
-  const contentLength = [...pre.replace(/\s/g, '')].length;
-  if (contentLength <= 1) return null;
+  const content = [...pre.replace(/\s/g, '')];
+  const contentLength = content.length;
+  if (contentLength === 1) {
+    // ★★ R028 — 한글 한 음절이면 초성 하나를 준다 ("금" → "ㄱ"). 그 외 한 글자는 힌트 없음
+    const cp = content[0]!.codePointAt(0)!;
+    return isHangulSyllable(cp) ? toChoseong(cp) : null;
+  }
+  if (contentLength < 1) return null;
 
   let hint: string;
 

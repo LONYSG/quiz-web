@@ -22,8 +22,9 @@ describe('generateHint — R002 5-5 테스트 케이스 (Q-37/Q-38 확정 반영
     [5, '미토콘드리아', 'ㅁㅌㅋㄷㄹㅇ', '한글 초성'],
     [6, '김치', 'ㄱㅊ', '2글자'],
     [7, '떡볶이', 'ㄸㅂㅇ', '쌍자음 초성 ㄸ 노출'],
-    [8, '빵', null, '★ Q-37: 1글자'],
-    [9, '달', null, '★ Q-37: 1글자'],
+    // ★★ R028 개정 (D-004 개정): 한글 한 음절은 초성을 준다. 전에는 둘 다 null 이었다
+    [8, '빵', 'ㅃ', '★ R028: 한글 1글자 → 초성 (쌍자음도 그대로)'],
+    [9, '달', 'ㄷ', '★ R028: 한글 1글자 → 초성'],
     [10, '서울', 'ㅅㅇ', '2글자. 좁지만 규칙대로 생성'],
     [11, '반 고흐', 'ㅂㄱㅎ', '한글은 공백 제거 (guide 11절)'],
     [12, 'Van Gogh', 'V__ G___', '★ Q-38 변경: 단어마다 첫 글자'],
@@ -84,5 +85,24 @@ describe('generateHint — 최종 방어선과 경계', () => {
 
   it('NFD 입력도 NFC로 정규화해 같은 힌트를 만든다', () => {
     expect(generateHint('훈민정음'.normalize('NFD'))).toBe('ㅎㅁㅈㅇ');
+  });
+});
+
+describe('★ R028 — 한 글자 정답 (D-004 개정)', () => {
+  it('★★ 건우 예시: 금 → ㄱ / 소 → ㅅ', () => {
+    expect(generateHint('금')).toBe('ㄱ');
+    expect(generateHint('소')).toBe('ㅅ');
+  });
+  it('★ 앞뒤 공백이 있어도 한 음절로 본다', () => {
+    expect(generateHint(' 금 ')).toBe('ㄱ');
+  });
+  it('★ 한글 외 한 글자는 여전히 힌트 없음 (영문·숫자·한자·기호)', () => {
+    expect(generateHint('e')).toBe(null);
+    expect(generateHint('7')).toBe(null);
+    expect(generateHint('金')).toBe(null);
+    expect(generateHint('#')).toBe(null);
+  });
+  it('★ 초성 한 글자는 정답과 같지 않다 (최종 방어선을 통과한다)', () => {
+    expect(generateHint('ㄱ')).toBe(null); // 자모 자체는 음절이 아니다
   });
 });
