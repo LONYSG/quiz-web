@@ -43,6 +43,8 @@ function question(over: Partial<CurrentQuestion> = {}): CurrentQuestion {
     answersRaw: ['세종', '세종대왕'],
     hint: 'ㅅㅈ',
     hintPushed: false,
+    generalHint: null,
+    generalHintPushed: false,
     explanation: null,
     experiencedAccountIds: new Set(),
     startedAt: NOW,

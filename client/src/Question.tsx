@@ -152,6 +152,13 @@ export default function Question({
 
         <p className="q-text">{question.text}</p>
 
+        {/* ★★ R028 — 남은 시간과 힌트를 한 줄(q-live)에 둔다.
+            ★ 넓은 화면에서는 **타이머 왼쪽 / 힌트 오른쪽**이다.
+            ★ 근거: 힌트가 타이머 아래로 쌓이면 문제 카드가 두세 줄 길어져
+              "스크롤 없이 한 화면" 게이트를 넘었다 (실측 1.05배). 타이머 옆 빈자리에 두면
+              힌트가 나와도 카드 높이가 그대로이고, 화면이 **튀지 않는다**.
+            ★ 좁은 화면에서는 예전처럼 위아래로 쌓인다 (CSS). */}
+        <div className="q-live">
         {/* ── 남은 시간 */}
         {active ? (
           remainMs > 0 ? (
@@ -162,10 +169,20 @@ export default function Question({
           )
         ) : null}
 
-        {/* ── 힌트 (남은 10초부터. 서버가 push 한다) */}
+        <div className="q-hints">
+        {/* ── ★★ 일반 힌트 (R028). 남은 20초부터. 서버가 push 한다.
+            ★ 없는 문제는 아무것도 나오지 않는다 ("힌트가 있으면 보여 준다").
+            ★ 10초부터는 아래 초성 힌트와 함께 보인다 */}
+        {question.generalHint && (
+          <p className="q-hint q-hint-general">
+            <span className="hint-label">힌트</span> {question.generalHint}
+          </p>
+        )}
+
+        {/* ── 초성 힌트 (남은 10초부터. 서버가 push 한다) */}
         {question.hintRevealed && (
           <p className="q-hint">
-            힌트{' '}
+            <span className="hint-label">초성</span>{' '}
             {question.hint ? (
               <span className="mono hint-value">{question.hint}</span>
             ) : (
@@ -173,6 +190,8 @@ export default function Question({
             )}
           </p>
         )}
+        </div>
+        </div>
 
         {/* ── 경험자 목록 (전원 공개. guide 28절은 폐기되었다 — D-011)
             ★ 닉네임은 플레이어 색으로 칠한다. 이 게임의 사람 표기 규칙이다 (guide 47절) */}

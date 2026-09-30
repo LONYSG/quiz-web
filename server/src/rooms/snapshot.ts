@@ -127,6 +127,11 @@ export interface QuestionView {
   hint: string | null;
   /** 힌트가 이미 공개된 시점인가. null 힌트("힌트 없음")와 구분하기 위해 함께 보낸다 */
   hintRevealed: boolean;
+  /**
+   * ★★ 일반 힌트 (R028). **남은 시간이 20초 이하일 때만** 값이 있다. 없는 문제는 늘 null.
+   *   ★ 초성 힌트와 같은 규칙 — 재접속·중간 참가만으로 미리 보는 우회로를 막는다.
+   */
+  generalHint: string | null;
 }
 
 export interface ResolutionView {
@@ -327,6 +332,13 @@ function buildQuestionView(
     room.state === 'PAUSED' ? (room.paused?.remainingMs ?? 0) : q.endsAt - now;
   const revealed =
     q.hintPushed || remain <= RULES.HINT_REVEAL_AT_MS || room.state === 'QUESTION_RESOLVED';
+  // ★★ R028 — 일반 힌트도 **같은 remain** 으로 판단한다 (PAUSED 면 remainingMs).
+  //   ★ R015 에서 초성 힌트가 낡은 endsAt 때문에 28초 남은 문제에서 새던 결함을 고쳤다.
+  //     새 힌트도 그 방어를 그대로 탄다. 따로 계산하지 않는다.
+  const generalRevealed =
+    q.generalHintPushed ||
+    remain <= RULES.GENERAL_HINT_REVEAL_AT_MS ||
+    room.state === 'QUESTION_RESOLVED';
 
   const experienced: { accountId: string; nickname: string; colorIndex: number }[] = [];
   for (const id of q.experiencedAccountIds) {
@@ -348,6 +360,7 @@ function buildQuestionView(
     selfExperienced: q.experiencedAccountIds.has(viewerAccountId),
     hint: revealed ? q.hint : null,
     hintRevealed: revealed,
+    generalHint: generalRevealed ? q.generalHint : null,
   };
 }
 

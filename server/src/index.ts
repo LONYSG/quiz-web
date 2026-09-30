@@ -91,6 +91,8 @@ async function main(): Promise<void> {
               endsAt: room.currentQuestion.endsAt,
               resolved: room.currentQuestion.resolved,
               hintPushed: room.currentQuestion.hintPushed,
+              // ★ R028 — 일반 힌트는 보냈는지 여부만. 문장은 넣지 않는다
+              generalHintPushed: room.currentQuestion.generalHintPushed,
             }
           : null,
         paused: room.paused,

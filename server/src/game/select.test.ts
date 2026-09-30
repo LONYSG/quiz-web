@@ -23,6 +23,7 @@ function q(id: string, answers: string[]): PoolQuestion {
     categoryName: '테스트',
     displayAnswer: answers[0] ?? '',
     hintAnswer: null,
+    generalHint: null,
     explanation: null,
     answersNorm: answers,
     answersRaw: answers,

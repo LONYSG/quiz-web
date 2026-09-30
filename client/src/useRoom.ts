@@ -65,6 +65,8 @@ export interface QuestionView {
   /** ★ 남은 10초부터만 값이 있다 */
   hint: string | null;
   hintRevealed: boolean;
+  /** ★★ R028 — 일반 힌트. 남은 20초부터 값이 있다 (없는 문제는 늘 null) */
+  generalHint: string | null;
 }
 
 /** 정답 공개 구간 */
@@ -397,6 +399,8 @@ export function useRoom(socket: Socket | null): RoomHook {
                 // ★ 문제 시작 시점에는 힌트가 없다. 서버가 남은 10초에 push 한다
                 hint: null,
                 hintRevealed: false,
+                // ★ R028 — 일반 힌트도 남은 20초에 서버가 push 한다
+                generalHint: null,
               },
               resolution: null,
               skip: { votes: 0, threshold: prev.skip?.threshold ?? null, selfVoted: false },
@@ -432,6 +436,14 @@ export function useRoom(socket: Socket | null): RoomHook {
         // ★ 낡은 힌트를 새 문제에 붙이지 않는다. epoch 로 확인한다
         if (!prev?.question || prev.question.epoch !== p.epoch) return prev;
         return { ...prev, question: { ...prev.question, hint: p.hint, hintRevealed: true } };
+      });
+    };
+
+    // ★★ R028 — 일반 힌트 (남은 20초)
+    const onGeneralHint = (p: { epoch: number; hint: string }) => {
+      setSnapshot((prev) => {
+        if (!prev?.question || prev.question.epoch !== p.epoch) return prev;
+        return { ...prev, question: { ...prev.question, generalHint: p.hint } };
       });
     };
 
@@ -613,6 +625,7 @@ export function useRoom(socket: Socket | null): RoomHook {
     socket.on('question.started', onQuestionStarted);
     socket.on('question.experiencedUpdated', onExperiencedUpdated);
     socket.on('question.hint', onHint);
+    socket.on('question.generalHint', onGeneralHint);
     socket.on('question.resolved', onResolved);
     socket.on('skip.voteUpdated', onSkipUpdated);
     socket.on('game.result', onGameResult);
@@ -641,6 +654,7 @@ export function useRoom(socket: Socket | null): RoomHook {
       socket.off('question.started', onQuestionStarted);
       socket.off('question.experiencedUpdated', onExperiencedUpdated);
       socket.off('question.hint', onHint);
+      socket.off('question.generalHint', onGeneralHint);
       socket.off('question.resolved', onResolved);
       socket.off('skip.voteUpdated', onSkipUpdated);
       socket.off('game.result', onGameResult);

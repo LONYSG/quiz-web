@@ -180,6 +180,13 @@ export interface CurrentQuestion {
   hint: string | null;
   /** 힌트를 이미 보냈는가. ★ 중복 push 를 막는다 */
   hintPushed: boolean;
+  /**
+   * ★★ 일반 힌트 (R028). 남은 20초에 push 한다. null 이면 이 문제는 일반 힌트가 없다.
+   *   ★ 초성 힌트와 같은 이유로 문제와 함께 보내지 않는다 (개발자 도구로 미리 보인다).
+   */
+  generalHint: string | null;
+  /** 일반 힌트를 이미 보냈는가. ★ 힌트가 없는 문제는 보내지 않으므로 늘 false 로 남는다 */
+  generalHintPushed: boolean;
   explanation: string | null;
 
   /** ★ 이 문제를 이미 경험한 참가자. 판정 제외 + 배지 + 마스킹 대상 */

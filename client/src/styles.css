@@ -641,6 +641,22 @@ form button[type='submit'] { width: 100%; }
   margin: 12px 0 0;
   font-size: 0.95rem;
 }
+/* ★ R028 — 일반 힌트. 한 문장이다. 두 줄 안에 들어오도록 약간 작게 (0008: 120자 상한) */
+.q-hint-general {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.hint-label {
+  display: inline-block;
+  margin-right: 4px;
+  padding: 0 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  vertical-align: 1px;
+}
 .hint-value {
   font-size: 1.15rem;
   letter-spacing: 0.12em;
@@ -966,4 +982,23 @@ button kbd {
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text-dim);
+}
+
+/* ★★ R028 — 남은 시간 + 힌트 한 줄 (넓은 화면).
+   ★ 힌트가 나와도 문제 카드 높이가 변하지 않게 타이머 옆 빈자리를 쓴다 (한 화면 게이트) */
+@media (min-width: 1000px) {
+  .q-live {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    column-gap: 16px;
+    align-items: center;
+    min-height: 4.4rem;
+  }
+  .q-live .q-timer {
+    margin-top: 6px;
+    text-align: left;
+  }
+  .q-live .q-hints .q-hint { margin-top: 4px; }
+  .q-live .q-hints .q-hint:first-child { margin-top: 0; }
+  .q-live .q-hint-general { font-size: 0.85rem; line-height: 1.4; }
 }

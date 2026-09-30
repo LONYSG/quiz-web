@@ -118,6 +118,9 @@ export function beginQuestion(room: Room): boolean {
     // ── 4. ★ 힌트를 미리 계산해 둔다. 보내지는 않는다
     hint: generateHint(q.hintAnswer ?? q.displayAnswer),
     hintPushed: false,
+    // ── 4-2. ★★ 일반 힌트 (R028). 있으면 남은 20초에 보낸다. 보내지는 않는다
+    generalHint: q.generalHint,
+    generalHintPushed: false,
     explanation: q.explanation,
     // ── 5. 경험자 집합
     experiencedAccountIds: picked.experiencedAccountIds,
@@ -226,10 +229,26 @@ export function broadcastExperiencedUpdated(room: Room): void {
  */
 export function pushHintIfDue(room: Room, now: number): void {
   const current = room.currentQuestion;
-  if (!current || current.hintPushed || current.resolved) return;
+  if (!current || current.resolved) return;
+  // ★ PAUSED 방은 tick 이 여기까지 오지 않는다. 그래도 상태로 한 번 더 막는다
   if (room.state !== 'QUESTION_ACTIVE') return;
-  if (current.endsAt - now > RULES.HINT_REVEAL_AT_MS) return;
+  const remain = current.endsAt - now;
 
+  // ── ★★ 일반 힌트 (R028) — 남은 20초. **있을 때만** 보낸다.
+  //   ★ 없는 문제는 20초에 아무것도 나오지 않는다 (건우 확정: "힌트가 있으면 보여 준다").
+  //   ★ 난이도로 가르지 않는다. 어느 문제에 힌트를 달지는 GEN 이 정한다.
+  if (
+    current.generalHint !== null &&
+    !current.generalHintPushed &&
+    remain <= RULES.GENERAL_HINT_REVEAL_AT_MS
+  ) {
+    current.generalHintPushed = true;
+    emitRoom(room, 'question.generalHint', { epoch: current.epoch, hint: current.generalHint });
+  }
+
+  // ── 초성 힌트 — 남은 10초 (guide 11절)
+  if (current.hintPushed) return;
+  if (remain > RULES.HINT_REVEAL_AT_MS) return;
   current.hintPushed = true;
   emitRoom(room, 'question.hint', { epoch: current.epoch, hint: current.hint });
 }

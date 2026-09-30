@@ -34,6 +34,8 @@ export interface PoolQuestion {
   displayAnswer: string;
   /** 힌트 생성 기준. null 이면 displayAnswer 를 쓴다 */
   hintAnswer: string | null;
+  /** ★ 일반 힌트 (R028 / 0008). null 이면 없다 */
+  generalHint: string | null;
   explanation: string | null;
   /** ★ 판정에 쓰는 정규화 정답 집합 */
   answersNorm: string[];
@@ -57,6 +59,18 @@ export async function loadQuestionPool(
   );
   const hasTree = (viewCheck.rowCount ?? 0) > 0;
 
+  // ★★ R028 — 일반 힌트 열(0008)이 있는지 본다.
+  //   ★ 없으면 NULL 로 읽는다. 마이그레이션을 깜빡 안 돌렸다고 **게임 시작이 실패하면 안 된다**
+  //     (출제 풀 로드가 실패하면 게임을 시작하지 않는다 — D-059).
+  const hintColCheck = await query<{ n: number }>(
+    `SELECT 1 AS n FROM information_schema.columns
+      WHERE table_name = 'questions' AND column_name = 'general_hint'`,
+  );
+  const generalHintExpr = (hintColCheck.rowCount ?? 0) > 0 ? 'q.general_hint' : 'NULL::text';
+  if ((hintColCheck.rowCount ?? 0) === 0) {
+    console.warn('[pool] ★ questions.general_hint 열이 없다 (0008 미적용). 일반 힌트 없이 진행한다 — npm run db:migrate');
+  }
+
   // ★ 대분류 이름을 고르는 식.
   //   ★ category_tree 뷰(0003)는 리프(level 3)에 대해 major_name 을 준다.
   //     조인 키는 category_id 다 (id 가 아니다 — 실측에서 이것 때문에 한 번 깨졌다).
@@ -72,6 +86,7 @@ export async function loadQuestionPool(
     category_name: string;
     display_answer: string;
     hint_answer: string | null;
+    general_hint: string | null;
     explanation: string | null;
     answers_norm: string[];
     answers_raw: string[];
@@ -81,6 +96,7 @@ export async function loadQuestionPool(
             ${categoryExpr}                   AS category_name,
             q.display_answer,
             q.hint_answer,
+            ${generalHintExpr}                AS general_hint,
             q.explanation,
             -- ★ 정답을 한 번의 쿼리로 모은다. 문제마다 따로 조회하면 N+1 이 된다
             coalesce(a.norms, '{}')           AS answers_norm,
@@ -116,6 +132,8 @@ export async function loadQuestionPool(
       categoryName: r.category_name ?? '기타',
       displayAnswer: r.display_answer,
       hintAnswer: r.hint_answer,
+      // ★ 공백뿐인 값은 힌트 없음으로 본다 (0008 CHECK 가 막지만 방어한다)
+      generalHint: r.general_hint && r.general_hint.trim().length > 0 ? r.general_hint.trim() : null,
       explanation: r.explanation,
       answersNorm: norms,
       answersRaw: (r.answers_raw ?? []).filter((s) => typeof s === 'string' && s.length > 0),
