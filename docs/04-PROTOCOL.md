@@ -673,7 +673,8 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 > Phase 3에서는 그 경우 게임을 시작하지 않도록 바꿔야 한다 (TEMP-P3-03).
 | `question.started` | S→C | `{ epoch, index, total, text, categoryName, startedAt, endsAt, experiencedPlayers[], selfExperienced, state }` — ✅ Phase 3. ★★ 정답·힌트·해설 미포함 (봇이 페이로드 키를 검사한다). ★ R016 에서 `experiencedNicknames[]` → `experiencedPlayers[{accountId,nickname,colorIndex}]` |
 | `question.experiencedUpdated` | S→C | `{ epoch, experiencedPlayers, selfExperienced }` — ✅ Phase 3 (R016 에서 필드명 변경) |
-| `question.hint` | S→C | `{ epoch, hint \| null }` — ✅ Phase 3. 남은 10초 시점에 서버가 push |
+| `question.hint` | S→C | `{ epoch, hint \| null }` — ✅ Phase 3. 남은 10초 시점에 서버가 push (초성) |
+| `question.generalHint` | S→C | `{ epoch, hint }` — ✅ **R028.** 남은 **20초** 시점에 서버가 push. ★ **일반 힌트가 있는 문제에만** 보낸다(없으면 이벤트 자체가 없다). 한 문제에 한 번 |
 | `question.resolved` | S→C | `{ epoch, reason, winnerAccountId, displayAnswer, explanation, scores[], nextAt \| null, state }` — ✅ Phase 3. 마지막 문제면 nextAt=null |
 | ★ `game.returnedToLobby` | S→C | `{ state, settings, settingsLocked, players[], activeCount }` — ✅ Phase 3 **명세 추가** (T30/T31) |
 
@@ -793,6 +794,7 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
   ★ `endsAt` 은 멈춘 순간의 낡은 값이라 시간이 갈수록 "남은 시간이 줄어든 것처럼" 보인다.
   ★ 그대로 믿으면 **멈춘 시점에 28초가 남은 문제의 힌트가 재접속자에게 공개된다.**
     실측(R015): 20초 멈춰 두면 낡은 계산은 7.1초, 실제 남은 시간은 27.9초였다. 정보 누출의 크기가 그만큼이다.
+- ★★ **일반 힌트(R028)도 같은 규칙이다** — `question.generalHint` 는 남은 시간(PAUSED 면 `paused.remainingMs`) 20초 이하일 때만 담는다. 없는 문제는 늘 `null`
 - ★ `paused` 에는 서버가 계산한 `canResume` 을 함께 담는다. 클라이언트가 방장 여부로 유추하지 않는다
 
 ---
