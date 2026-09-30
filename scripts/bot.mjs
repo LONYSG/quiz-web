@@ -343,6 +343,13 @@ class Bot {
           this.snapshot.question.hintRevealed = true;
         }
       });
+      // ★★ R028 — 일반 힌트 (남은 20초)
+      s.on('question.generalHint', (p) => {
+        this.events.push({ type: 'question.generalHint', epoch: p.epoch, hint: p.hint, at: Date.now() });
+        if (this.snapshot?.question && this.snapshot.question.epoch === p.epoch) {
+          this.snapshot.question.generalHint = p.hint;
+        }
+      });
       s.on('question.resolved', (p) => {
         this.events.push({ type: 'question.resolved', epoch: p.epoch, reason: p.reason, winnerAccountId: p.winnerAccountId, displayAnswer: p.displayAnswer, at: Date.now(), payload: p });
         if (this.snapshot) {
@@ -796,6 +803,44 @@ async function consumeOneHard(accountIds) {
                 ORDER BY q.id LIMIT 1) x
        ON CONFLICT (account_id, question_id) DO NOTHING`,
       [accountIds],
+    );
+    return r.rowCount ?? 0;
+  });
+}
+
+
+// ★ R028 — 일반 힌트 테스트용 ─────────────────────────────────────────────────
+const BOT_HINT_VERSION = 'bot-test';
+
+/**
+ * ★ 출제 풀 맨 앞(id 순) 문제 하나에 **테스트용 일반 힌트**를 잠깐 넣는다.
+ *
+ * ★★ 문제 데이터를 건드리는 것이므로 규칙을 둔다 —
+ *   · general_hint 가 **비어 있는 행에만** 넣는다 (GEN 이 채운 힌트를 덮어쓰지 않는다)
+ *   · 버전을 'bot-test' 로 표시한다. 되돌릴 때 이 표시가 있는 행만 지운다
+ *   · 시나리오 끝(성공·실패 모두)에 clearBotHints() 로 되돌린다
+ */
+async function setBotHintOnFirst(text) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `UPDATE questions SET general_hint = $1, general_hint_version = $2
+        WHERE id = (SELECT id FROM questions
+                     WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
+                     ORDER BY id LIMIT 1)
+          AND general_hint IS NULL
+        RETURNING id::text AS id, question_text`,
+      [text, BOT_HINT_VERSION],
+    );
+    return r.rows[0] ?? null;
+  });
+}
+
+async function clearBotHints() {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `UPDATE questions SET general_hint = NULL, general_hint_version = NULL
+        WHERE general_hint_version = $1`,
+      [BOT_HINT_VERSION],
     );
     return r.rowCount ?? 0;
   });
@@ -3776,6 +3821,145 @@ async function scenarioDifficulty() {
   return checkSummary();
 }
 
+
+// -----------------------------------------------------------------------------
+// ★★ generalhint — 일반 힌트 20초 / 초성 10초 / 재접속 / PAUSED 누출 (R028)
+//
+//   ★ 두 문제만 남긴다 — 하나는 일반 힌트가 있고(테스트용으로 잠깐 넣는다) 하나는 없다.
+//   ★★ 단정하는 것
+//     · 힌트가 있는 문제: 남은 20초에 일반 힌트, 10초에 초성. 그 전에는 없다
+//     · 힌트가 없는 문제: 20초에 **아무것도 오지 않는다**
+//     · 재접속: 20초 전에는 스냅샷에 없고, 20초 뒤에는 있다
+//     · ★★★ PAUSED: 멈춰 둔 사이 낡은 endsAt 으로 보면 20초 이하가 되어도 **새지 않는다**.
+//       재개하면 다시 계산된 남은 20초에 온다
+//   ★ 약 90초 걸린다.
+// -----------------------------------------------------------------------------
+async function scenarioGeneralHint() {
+  log('시나리오 generalhint — ★★ 일반 힌트 (R028, 약 90초)');
+  await clearExperiences(PREFIX);
+  await clearBotHints();
+  const HINT = '[봇 테스트] 이 문제의 일반 힌트입니다.';
+
+  const [host, guest] = await makeBots(2);
+  let marked = null;
+  try {
+    await host.connect();
+    host.createRoom('R028 일반 힌트 테스트');
+    await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+    const roomId = host.snapshot.room.id;
+    await guest.connect();
+    guest.join(roomId);
+    await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+    const ids = [host.snapshot.me.accountId, guest.snapshot.me.accountId];
+
+    marked = await setBotHintOnFirst(HINT);
+    expectTrue('★ 테스트용 일반 힌트를 한 문제에 넣었다 (빈 칸에만)', marked !== null, JSON.stringify(marked));
+    await shrinkAvailableTo(ids, 2); // ★ 풀 맨 앞 두 문제만 남긴다 (그중 첫째가 힌트 문제)
+    guest.socket.emit('room.leave', {});
+    await host.waitFor(() => host.snapshot.players.length === 1, 6000, '게스트 퇴장');
+    guest.join(roomId);
+    await host.waitFor(() => host.snapshot.room.availableQuestionCount === 2, 6000, '출제 가능 2');
+
+    await startGame(host, [guest], 2);
+
+    let g = guest;
+    let h = host;
+    for (let i = 1; i <= 2; i += 1) {
+      const q = await h.waitQuestion(i, 15000);
+      const hinted = q.text === marked.question_text;
+      const qFrom = h.mark();
+      if (!hinted) {
+        log(`\n[${i}] ★ 힌트가 없는 문제 — 20초에 아무것도 오지 않는다`);
+        await h.waitFor(() => h.since(qFrom, 'question.hint').length > 0, 32000, '초성 힌트');
+        expect('★★ 20초를 지나 10초가 됐는데도 일반 힌트 이벤트가 없다', h.since(qFrom, 'question.generalHint').length, 0);
+        expect('★ 스냅샷에도 일반 힌트가 없다', h.snapshot.question.generalHint ?? null, null);
+      } else {
+        log(`\n[${i}] ★★ 힌트가 있는 문제`);
+        // (a) 20초 전 재접속 — 스냅샷에 없어야 한다
+        await sleep(1000);
+        g.socket.close();
+        await sleep(400);
+        const g1 = new Bot(guest.name);
+        g1.cookie = guest.cookie;
+        await g1.connect();
+        await g1.waitFor(() => g1.snapshot !== null, 6000, '게스트 재접속');
+        expect('★★ 20초 전 재접속 — 스냅샷에 일반 힌트가 없다', g1.snapshot.question.generalHint, null);
+        g = g1;
+
+        // (b) ★★★ PAUSED 누출 방어
+        h.socket.close();
+        g.socket.close();
+        await sleep(800);
+        const st1 = await roomStateOf(roomId);
+        expect('★ PAUSED', st1.state, 'PAUSED');
+        await sleep(12000);
+        const st2 = await roomStateOf(roomId);
+        const staleRemain = st2.question.endsAt - Date.now();
+        expectTrue(
+          '★★ 낡은 endsAt 으로 보면 이미 20초 이하다 (그래서 endsAt 을 믿으면 안 된다)',
+          staleRemain <= 20000,
+          `낡은 계산 ${Math.round(staleRemain)}ms / 실제 ${st2.paused.remainingMs}ms`,
+        );
+        expect('★★★ 멈춘 동안 일반 힌트가 push 되지 않았다', st2.question.generalHintPushed, false);
+        const h1 = new Bot(host.name);
+        h1.cookie = host.cookie;
+        await h1.connect();
+        await h1.waitFor(() => h1.snapshot !== null, 6000, '방장 재접속');
+        expect('★★★ PAUSED 중 재접속 스냅샷에 일반 힌트가 없다', h1.snapshot.question.generalHint, null);
+        h = h1;
+
+        // (c) 재개 → 다시 계산된 남은 20초에 온다
+        const r = h.mark();
+        h.resume();
+        await h.waitFor(() => h.since(r, 'game.resumed').length > 0, 5000, '재개');
+        const resumedEndsAt = h.since(r, 'game.resumed')[0].payload.endsAt;
+        await h.waitFor(() => h.since(r, 'question.generalHint').length > 0, 15000, '일반 힌트');
+        const ev = h.since(r, 'question.generalHint')[0];
+        const remainAt = resumedEndsAt - ev.at;
+        expectTrue('★★★ 일반 힌트가 남은 20초 무렵에 온다 (재개 기준)', Math.abs(remainAt - 20000) < 1500, `${Math.round(remainAt)}ms 남음`);
+        expect('★ 일반 힌트 내용', ev.hint, HINT);
+        expect('★ 그때는 아직 초성 힌트가 없다', h.since(r, 'question.hint').length, 0);
+
+        // (d) 20초 뒤 재접속 — 스냅샷에 있어야 한다 (게스트가 이제 돌아온다)
+        const g2 = new Bot(guest.name);
+        g2.cookie = guest.cookie;
+        await g2.connect();
+        await g2.waitFor(() => g2.snapshot !== null, 6000, '게스트 재접속 2');
+        expect('★★ 20초 뒤 재접속 — 스냅샷에 일반 힌트가 있다', g2.snapshot.question.generalHint, HINT);
+        expect('★ 그때 초성 힌트는 아직 공개 전이다', g2.snapshot.question.hintRevealed, false);
+        g = g2;
+
+        // (e) 10초에 초성 — 일반 힌트는 그대로 남는다
+        await h.waitFor(() => h.since(r, 'question.hint').length > 0, 15000, '초성 힌트');
+        const hev = h.since(r, 'question.hint')[0];
+        expectTrue('★ 초성 힌트가 남은 10초 무렵에 온다', Math.abs(resumedEndsAt - hev.at - 10000) < 1500, `${Math.round(resumedEndsAt - hev.at)}ms 남음`);
+        expect('★ 일반 힌트는 한 번만 왔다', h.since(r, 'question.generalHint').length, 1);
+        expect('★ 10초 뒤에도 일반 힌트가 함께 보인다', h.snapshot.question.generalHint, HINT);
+      }
+      const m = h.mark();
+      h.socket.emit('host.forceSkip', { epoch: h.snapshot.question.epoch });
+      await h.waitFor(
+        () => h.since(m, 'question.resolved').length > 0 || h.since(m, 'game.result').length > 0,
+        8000,
+        `${i}번 넘김`,
+      );
+    }
+    h.leave();
+    await sleep(400);
+    g.leave();
+    await sleep(600);
+    h.disconnect();
+    g.disconnect();
+  } finally {
+    const restored = await clearBotHints();
+    log(`  ★ 테스트용 일반 힌트 ${restored}건을 되돌렸다`);
+    await clearExperiences(PREFIX);
+    host.disconnect();
+    guest.disconnect();
+  }
+  return checkSummary();
+}
+
 // -----------------------------------------------------------------------------
 const SCENARIOS = {
   join: scenarioJoin,
@@ -3804,6 +3988,8 @@ const SCENARIOS = {
   result: scenarioResult,
   // ★★ R025
   difficulty: scenarioDifficulty,
+  // ★★ R028
+  generalhint: scenarioGeneralHint,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

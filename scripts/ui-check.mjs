@@ -62,7 +62,19 @@ const ONLY_BEHAVIOR = args.includes('--behavior');
 const DO_LAYOUT = !ONLY_BEHAVIOR;
 const DO_BEHAVIOR = !ONLY_LAYOUT;
 
-const CDP_PORT = Number(process.env.UICHECK_CDP_PORT ?? 9333);
+/**
+ * ★ CDP 포트. 지정하지 않으면 **후보를 차례로** 시도한다 (R028).
+ *
+ * ★★ 왜 — Windows 는 Hyper-V·WSL·Docker 가 TCP 포트 구간을 **동적으로 예약**한다
+ *   (`netsh interface ipv4 show excludedportrange protocol=tcp`).
+ *   ★ R028 실측: 9178~9677 이 예약되어 있어 기본값 9333 에서 Chrome 이
+ *     "bind() … 액세스 권한에 의해 숨겨진 소켓" 으로 DevTools 서버를 못 열었다. 코드 결함이 아니라 환경이다.
+ *   ★ 예약 구간은 재부팅마다 바뀔 수 있으므로 한 값에 묶지 않는다.
+ */
+const CDP_PORT_CANDIDATES = process.env.UICHECK_CDP_PORT
+  ? [Number(process.env.UICHECK_CDP_PORT)]
+  : [9333, 9922, 19333, 29333, 39333];
+let CDP_PORT = CDP_PORT_CANDIDATES[0];
 const PORT = Number(process.env.UICHECK_PORT ?? 3101);
 const EXTERNAL_URL = opt('--url', null);
 const BASE = EXTERNAL_URL ?? `http://localhost:${PORT}`;
@@ -433,6 +445,19 @@ async function closePreviousBrowser() {
 }
 
 async function launchBrowser() {
+  for (const port of CDP_PORT_CANDIDATES) {
+    CDP_PORT = port;
+    const r = await launchBrowserOn();
+    if (r) {
+      if (port !== CDP_PORT_CANDIDATES[0]) console.log(`[ui-check] ★ CDP 포트 ${port} 를 썼다 (앞 후보는 열리지 않았다)`);
+      return r;
+    }
+  }
+  skip('Chrome 이 CDP 포트를 열지 못했다 (후보 전부 실패 — 포트 예약 구간을 확인하라)');
+  return null;
+}
+
+async function launchBrowserOn() {
   const profile = mkdtempSync(path.join(os.tmpdir(), 'quizui-'));
   const proc = spawn(
     chromePath,
@@ -462,7 +487,6 @@ async function launchBrowser() {
     }
   }
   proc.kill();
-  skip('Chrome 이 CDP 포트를 열지 못했다');
   return null;
 }
 
@@ -512,6 +536,22 @@ async function measureOneScreen(page, label, { gate = true } = {}) {
   const detail = `${m.doc}px / ${m.view}px = ${ratio.toFixed(2)}배`;
   if (gate) {
     record(`★★★ ${label} — 스크롤 없이 한 화면에 들어온다 (1280×720)`, ratio <= 1.0, detail);
+    if (ratio > 1.0) {
+      // ★ R028 — 넘쳤을 때 무엇이 자리를 먹는지 바로 보이게 한다 (원인을 찾느라 다시 돌리지 않게)
+      const parts = await page.evaluate(`(() => {
+        const out = [];
+        for (const col of ['.col-main', '.col-side']) {
+          const el = document.querySelector(col);
+          if (!el) continue;
+          out.push(col + ' ' + Math.round(el.getBoundingClientRect().height) + 'px: ' +
+            [...el.children].map(c => (c.className || c.tagName) + '=' + Math.round(c.getBoundingClientRect().height)).join(' / '));
+        }
+        const q = document.querySelector('.question-card');
+        if (q) out.push('question-card: ' + [...q.children].map(c => (c.className || c.tagName) + '=' + Math.round(c.getBoundingClientRect().height)).join(' / '));
+        return out.join('\\n');
+      })()`);
+      console.log(`  ★ 높이 내역\n${parts.split('\n').map((l) => '    ' + l).join('\n')}`);
+    }
   } else {
     console.log(`  ★ ${label} 높이: ${detail} (참고값. 게이트 아님)`);
   }
@@ -612,6 +652,62 @@ async function shrinkAvailable(loginIdPattern, keepCount) {
 // 테스트 계정 정리
 // ★ 실행마다 계정이 쌓이면 DB가 지저분해진다. 자기가 만든 것만 지운다.
 // -----------------------------------------------------------------------------
+
+/**
+ * ★★ R028 — 테스트용 일반 힌트를 출제 풀 맨 앞 두 문제에 잠깐 넣는다.
+ *
+ * ★ 왜 — DB 에는 아직 일반 힌트가 없다(GEN 이 다음 라운드에 채운다).
+ *   ★ 힌트가 보이는 상태에서 "한 화면" 이 지켜지는지를 재려면 힌트가 있어야 한다.
+ *   ★ ui-check 의 게임은 출제 가능 수를 2 로 줄여 풀 맨 앞 두 문제가 나온다 → 그 두 문제에 넣는다.
+ * ★★ 규칙 — 비어 있는 행에만 넣고, 버전을 'ui-check' 로 표시해 끝나면 그 표시가 있는 행만 되돌린다.
+ */
+const UI_HINT_VERSION = 'ui-check';
+// ★ 길이는 0008 의 상한(120자)을 꽉 채운다 — 가장 긴 경우에서 한 화면이 지켜지는지 본다
+const UI_HINT_TEXT = (() => {
+  const base = '[ui-check] 한 화면 검사를 위해 잠깐 넣은 일반 힌트입니다. 상한 길이를 꽉 채워 가장 긴 경우를 흉내 냅니다. ';
+  let s = base;
+  while (s.length < 120) s += '가나다라마바사아자차카타파하';
+  return s.slice(0, 120);
+})();
+
+async function withPg(fn) {
+  const url = process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
+  const client = new pg.Client({ connectionString: url });
+  try {
+    await client.connect();
+    return await fn(client);
+  } catch (err) {
+    console.log(`  ★ DB 작업 실패 (건너뛴다): ${err.message}`);
+    return null;
+  } finally {
+    await client.end().catch(() => {});
+  }
+}
+
+function setUiHints() {
+  return withPg(async (c) => {
+    const r = await c.query(
+      `UPDATE questions SET general_hint = $1, general_hint_version = $2
+        WHERE id IN (SELECT id FROM questions
+                      WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
+                      ORDER BY id LIMIT 2)
+          AND general_hint IS NULL`,
+      [UI_HINT_TEXT, UI_HINT_VERSION],
+    );
+    return r.rowCount ?? 0;
+  });
+}
+
+function clearUiHints() {
+  return withPg(async (c) => {
+    const r = await c.query(
+      `UPDATE questions SET general_hint = NULL, general_hint_version = NULL WHERE general_hint_version = $1`,
+      [UI_HINT_VERSION],
+    );
+    return r.rowCount ?? 0;
+  });
+}
+
 async function cleanupAccounts(pattern = `${ACCOUNT_PREFIX}%`, label = '테스트 계정') {
   const url =
     process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
@@ -778,12 +874,17 @@ try {
   //   finally 가 돌지 않아 계정이 남는다. 그러면 다음 실행에서 그것을 알 수 없다.
   //   ★ 자기 접두어(uic)로 시작하는 것만 지운다. 사람이 만든 계정은 건드리지 않는다.
   await cleanupAccounts('uic%', '앞선 실행의 잔여 계정');
+  await clearUiHints(); // ★ 앞선 실행이 중간에 죽었을 때 남은 테스트 힌트
 
   await ensureServer();
   await closePreviousBrowser();
   const launched = await launchBrowser();
   browserProc = launched.proc;
   browser = launched.browser;
+  // ★★ R028 — 테스트용 일반 힌트는 **브라우저가 뜬 뒤에** 넣는다.
+  //   ★ 브라우저를 못 띄우면 skip() 이 process.exit 으로 끝나 되돌릴 기회가 없다 (R028 실측으로 남았다)
+  const uiHints = await setUiHints();
+  console.log(`[ui-check] 테스트용 일반 힌트 ${uiHints ?? 0}건을 넣었다 (끝나면 되돌린다)`);
 
   const host = await newPage(browser, 'host');
 
@@ -1173,7 +1274,21 @@ try {
     // ★★ Q-83 / Q-56 — 정수 타이머와 단축키 (R015)
     // ─────────────────────────────────────────────────────────────────────────
     console.log('\n[5-3b] ★★★ 한 화면 검사 — 게임 화면');
-    await measureOneScreen(host, '게임 화면');
+    // ★★ R028 — 일반 힌트가 보이는 상태에서 잰다 (가장 긴 경우)
+    const genShown = await host.waitFor(
+      "document.querySelector('.question-card .q-hint-general') !== null",
+      25000,
+    );
+    record('★★ 남은 20초에 일반 힌트가 화면에 나온다 (R028)', genShown);
+    if (genShown) {
+      record(
+        '★ 일반 힌트는 초성보다 먼저 나온다 (그 순간 초성 줄이 없다)',
+        await host.evaluate(
+          "[...document.querySelectorAll('.question-card .q-hint')].filter(p => !p.classList.contains('q-hint-general')).length === 0",
+        ),
+      );
+    }
+    await measureOneScreen(host, '게임 화면 (일반 힌트 표시 중)');
     record(
       '★ 게임 화면에 이 판의 난이도가 보인다 (R025)',
       (await host.evaluate("document.querySelector('.question-card .badge.diff')?.innerText ?? ''")).includes('난이도'),
@@ -1423,6 +1538,17 @@ try {
     // ── ★★ 결과 화면과 로비 복귀 (Phase 3 / R014)
     //   ★ Phase 2 에는 로비 복귀 경로가 없어 방을 나가고 새로 만들었다.
     //   ★★ Phase 3 에는 있다. 그 경로를 실제로 눌러 확인한다.
+    // ★★ R028 — 가장 긴 경우: 일반 힌트 + 초성 힌트가 **둘 다** 보일 때 한 화면인가
+    console.log('\n[5-5b] ★★★ 한 화면 검사 — 일반 힌트 + 초성 힌트 동시 표시');
+    const bothShown = await host.waitFor(
+      "document.querySelector('.question-card .q-hint-general') !== null && [...document.querySelectorAll('.question-card .q-hint')].some(p => !p.classList.contains('q-hint-general'))",
+      35000,
+    );
+    record('★★ 10초부터 일반 힌트와 초성 힌트가 함께 보인다 (R028)', bothShown);
+    if (bothShown) await measureOneScreen(host, '게임 화면 (힌트 두 줄)');
+    await host.setWidth(720);
+    await sleep(250);
+
     console.log('\n[5-6] ★★ 강제 종료 → 결과 화면 → 로비 복귀 (Phase 3)');
     await host.click('게임 강제 종료');
     await sleep(300);
@@ -1629,6 +1755,8 @@ try {
   browser?.close();
   browserProc?.kill();
   await cleanupAccounts();
+  const restoredHints = await clearUiHints();
+  console.log(`[ui-check] 테스트용 일반 힌트 ${restoredHints ?? 0}건을 되돌렸다`);
   stopServer();
 }
 
