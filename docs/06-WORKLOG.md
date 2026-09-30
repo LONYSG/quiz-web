@@ -8,6 +8,38 @@
 
 ---
 
+## 2026-09-30 — 질문 문장 규칙 "자연스럽게" + 기존 문항 128건 다듬기 + 난이도 4~5 일반 힌트 395건 소급 (R029)
+
+**무엇을 / 왜** — 건우 확정 두 가지를 규칙과 기존 데이터에 반영했다 (D-125 · D-126).
+
+**A. 규칙**
+- 기준서 3-1 (질문의 길이와 문장) 신설 · 4-1 H0·H1·H7·H8 개정. 두 구간을 SYNC 표시로 감쌌다
+- `scripts/criteria-sync.mjs` 가 SYNC 구간도 옮기고 검사한다 (D-127). `--check` 통과
+- 새 프롬프트: `question-v4` · `deep-v2` · `hint-v2` · `rewrite-v1`. 옛 판은 지우지 않았다
+
+**B. 질문 다듬기** — 활성 3,263건 전수 판정 → 128건 고침 (DB 반영)
+- 서브에이전트가 한 건씩 읽었다 (정규식 판정은 버렸다 — 300건 잡혔지만 대부분 자연스러웠다)
+- GEN 이 128건 전부를 읽었다. 7건 손질, hold 1건 해결
+- 재채점 없음 (문장만 나눴다)
+
+**C. 일반 힌트** — 난이도 4~5 활성 395건 전부 (DB 반영, hint-v2)
+- 비운 문항 0 · hint-check 막힘 0 · 경고 0 (B 뒤의 질문 기준). GEN 이 395건을 읽고 3건을 약하게 고쳤다
+
+**검증**
+- `node scripts/criteria-sync.mjs --check` → 모두 같음
+- `node scripts/r029-apply.mjs` (쓴 뒤 다시) → 새로 0 / 이미 같음 395 — 다시 돌려도 바뀌지 않는다
+- DB: `general_hint_version='hint-v2'` 395행 · 활성 난이도 4~5 가운데 힌트 빈 칸 0
+- `db-rule-audit` 수치가 적용 전과 같다 (노출 1 · 노출 의심 5 · 시간 의존 의심 52)
+- 봇·ui-check 가 테스트 힌트를 넣는 문항(id 1~3, 난이도 1~2)은 GEN 힌트가 없다 — 테스트 되돌림 규칙(빈 칸에만)과 부딪히지 않는다
+
+**남은 것**
+- VERIFY: `data/pipeline/audit/r029-verify-targets.json` (P1 396 · P2 14 · P3 113)
+- `pipeline-load` 는 아직 general_hint 를 쓰지 않는다 — R030 심화 적재 때 힌트 단계를 붙여야 한다 (보고서 6절)
+
+**파일**: docs/15-QUALITY-STANDARD.md · scripts/criteria-sync.mjs · scripts/r029-apply.mjs · pipeline/prompts/{question-v4,deep-v2,hint-v2,rewrite-v1}.md · data/pipeline/audit/r029-{question-rewrite,general-hints,verify-targets}.json
+
+---
+
 ## 2026-09-30 — 일반 힌트 저장·표시 + 한 글자 초성 + 난이도 비율 확인 (R028)
 
 ### 0. 배경
