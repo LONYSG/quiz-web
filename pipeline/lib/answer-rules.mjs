@@ -112,9 +112,16 @@ function looksLikeAbbrev(text) {
  *       ★ R020 실측 — `모델 T ← 포드 모델 T` 가 'T' 때문에 라틴으로 잡혔다. 한국어 변형이다.
  *   (3) 약어·기호는 손대지 않는다.
  */
-export function classifyVariant(display, variant) {
+export function classifyVariant(display, variant, opts = {}) {
   const d = (display ?? '').normalize('NFC');
   const v = (variant ?? '').normalize('NFC');
+  // ★★ R027 (C44) — 기준서 B10: 원제·상표가 **영어인** 작품·제품의 영문 표기는 넣는다 (Tell Me · Xbox · Hello World)
+  //   ★ 게이트는 어떤 영문이 "원제·상표" 인지 스스로 알 수 없다. 그래서 생성 단계가 문항에 명시한 목록만 믿는다
+  //     (question.originalTitleVariants — DB 에서는 question_answers.note 에 'B10' 이 들어 있는 행).
+  //   ★ 목록 밖의 영문 원어 표기는 그대로 떨어뜨린다 (B4 — 한국어 이름이 따로 있는 대상의 원어 표기)
+  if (opts.originalTitles && [...opts.originalTitles].some((t) => (t ?? '').normalize('NFC').trim() === v.trim())) {
+    return { verdict: 'ok', kind: 'original-title', why: '원제·상표가 영어인 대상의 영문 표기 — 기준서 B10' };
+  }
   if (!HANGUL.test(d)) return { verdict: 'ok', kind: 'none', why: '대표 정답이 한글이 아니다 — 표기 방식이지 원어 표기가 아니다' };
   if (HANGUL.test(v)) return { verdict: 'ok', kind: 'korean', why: '한국어 변형이다' };
   if (HANJA.test(v)) return { verdict: 'drop', kind: 'hanja', why: '한자 표기 — 프롬프트가 금지한다' };
@@ -132,7 +139,7 @@ export function classifyVariant(display, variant) {
  *   dropped  ★ 이 변형만 빼고 적재한다. 문제 자체는 멀쩡하다
  *   warned   ★ 통과시키되 알린다 (낱말 경계가 아닌 부분 일치 — 오탐이 많다)
  */
-export function checkAnswerSet(questionText, display, variants, normalize) {
+export function checkAnswerSet(questionText, display, variants, normalize, opts = {}) {
   const blocked = [];
   const dropped = [];
   const warned = [];
@@ -164,7 +171,7 @@ export function checkAnswerSet(questionText, display, variants, normalize) {
   }
 
   for (const v of variants) {
-    const c = classifyVariant(display, v);
+    const c = classifyVariant(display, v, opts);
     if (c.verdict === 'drop') dropped.push({ answer: v, kind: c.kind, why: c.why });
   }
 

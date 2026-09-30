@@ -63,11 +63,16 @@ const rows = (
 ).rows;
 
 const answers = (
-  await client.query('SELECT question_id, answer_text, is_primary FROM question_answers')
+  await client.query('SELECT question_id, answer_text, is_primary, note FROM question_answers')
 ).rows;
 await client.end();
 
 const ansById = new Map();
+// ★ R027 (C44): note 에 'B10' 이 들어 있는 행 = 원제·상표 영문 표기 (기준서 B10) — 게이트와 같은 판정
+const b10ById = new Map();
+for (const a of answers) {
+  if ((a.note ?? '').includes('B10')) { const k = String(a.question_id); (b10ById.get(k) ?? b10ById.set(k, []).get(k)).push(a.answer_text); }
+}
 for (const a of answers) {
   const k = String(a.question_id);
   const arr = ansById.get(k) ?? [];
@@ -178,7 +183,7 @@ for (const r of rows) {
   const variants = rowAnswers.filter((a) => normalizeAnswer(a) !== normalizeAnswer(display));
   // ★★ R020: 눈에 띄는 문자만 보지 않고 **적재 게이트와 같은 판정**을 쓴다.
   //   ★ 근거: 전에는 `포드 모델 T` 가 'T' 때문에 외국어로 잡혔다. 한국어 변형이다.
-  const foreign = variants.filter((a) => classifyVariant(display, a).verdict === 'drop');
+  const foreign = variants.filter((a) => classifyVariant(display, a, { originalTitles: b10ById.get(String(r.id)) ?? [] }).verdict === 'drop');
   if (foreign.length) findings.foreignVariant.push({ ...base, variants: foreign });
   if (variants.length >= 3) findings.manyVariants.push({ ...base, count: variants.length, variants });
 

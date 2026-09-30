@@ -53,6 +53,23 @@ for (const [display, variant, want, why] of variantCases) {
   say(got.verdict === want, `${display} ← ${variant}  기대 ${want} / 실제 ${got.verdict} (${got.kind})  — ${why}`);
 }
 
+console.log('\n── ★ R027 (C44) 기준서 B10 — 원제·상표가 영어인 영문 표기');
+{
+  const b10 = [
+    ['텔 미', 'Tell Me', ['Tell Me'], 'ok', '원제가 영어인 노래 — 목록에 있으면 통과'],
+    ['엑스박스', 'Xbox', ['Xbox'], 'ok', '상표가 영어인 제품'],
+    ['헬로 월드', 'Hello World', ['Hello World'], 'ok', '원문이 영어인 관용 예제'],
+    ['텔 미', 'Tell Me', [], 'drop', '★ 목록이 없으면 예전처럼 떨어진다 — 게이트가 스스로 판단하지 않는다'],
+    ['빈센트 반 고흐', 'Vincent van Gogh', ['Gogh'], 'drop', '목록에 없는 영문 원어 표기는 B4 대로 떨어진다'],
+  ];
+  for (const [d, v, list, want, why] of b10) {
+    const got = classifyVariant(d, v, { originalTitles: list });
+    say(got.verdict === want, `${d} ← ${v}  목록 ${JSON.stringify(list)}  기대 ${want} / 실제 ${got.verdict} (${got.kind})  — ${why}`);
+  }
+  const r = checkAnswerSet('2007년 원더걸스가 불러 온 국민이 따라 추는 춤 열풍을 일으킨 곡은?', '텔 미', ['Tell Me'], undefined, { originalTitles: ['Tell Me'] });
+  say(r.dropped.length === 0 && r.blocked.length === 0, `checkAnswerSet 도 B10 목록을 넘겨받는다 (dropped ${r.dropped.length})`);
+}
+
 console.log('\n── findAnswerInQuestion');
 for (const [q, a, want] of exposeCases) {
   const got = findAnswerInQuestion(q, a);

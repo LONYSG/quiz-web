@@ -181,6 +181,8 @@ for (const round of ROUNDS) {
           questionKo: q.question,
           displayAnswer: q.answer,
           answers: q.acceptedAnswers ?? [],
+          // ★ R027 (C44): 원제·상표가 영어인 영문 변형 — 기준서 B10. 게이트가 이 목록만 통과시킨다
+          originalTitleVariants: q.originalTitleVariants ?? [],
           // ★ 힌트는 서버가 display_answer 로 만든다. 따로 저장하지 않는다
           hintAnswer: null,
           answerLang: 'ko',
@@ -379,7 +381,7 @@ try {
     // ★★ R020 정답 표기 게이트 — 프롬프트의 규칙을 적재에서도 확인한다
     let variants = g.answers ?? [];
     if (!NO_GATE) {
-      const gate = checkAnswerSet(g.questionText, g.displayAnswer, variants, normalizeAnswer);
+      const gate = checkAnswerSet(g.questionText, g.displayAnswer, variants, normalizeAnswer, { originalTitles: g.originalTitleVariants ?? [] });
       if (gate.blocked.length) {
         // ★★ 질문에 정답이 낱말로 들어 있다. 채팅으로 답하는 게임이라 질문을 베끼면 이긴다.
         //   ★ 이것은 변형을 빼서 고칠 수 없다. 문제 자체를 다시 써야 한다
@@ -446,10 +448,12 @@ try {
         // ★ answer_norm 은 shared 의 normalizeAnswer 로 계산한다.
         //   ★ 런타임 판정과 같은 함수여야 한다. 다르면 정답이 조용히 오답 처리된다.
         await client.query(
-          `INSERT INTO question_answers (question_id, answer_text, answer_norm, is_primary)
-           VALUES ($1,$2,$3,$4)
+          `INSERT INTO question_answers (question_id, answer_text, answer_norm, is_primary, note)
+           VALUES ($1,$2,$3,$4,$5)
            ON CONFLICT DO NOTHING`,
-          [questionId, a, normalizeAnswer(a), a === g.displayAnswer],
+          [questionId, a, normalizeAnswer(a), a === g.displayAnswer,
+           // ★ R027 (C44): 감사(db-rule-audit)가 같은 판정을 하도록 B10 표시를 남긴다
+           (g.originalTitleVariants ?? []).includes(a) ? 'B10 원제·상표 영문 표기' : null],
         );
         answerRows += 1;
       }
