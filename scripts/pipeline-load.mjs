@@ -24,6 +24,7 @@
 //   npm run pipeline:load                      approved/ 전체를 적재
 //   npm run pipeline:load -- --dry-run         무엇이 적재될지만 보여준다
 //   npm run pipeline:load -- --pending         승인 대기 상태로 넣는다 (기본은 승인)
+//   npm run pipeline:load -- --round r030 --gate-only   ★ R030: 게이트만 돌린다 (쓰지 않는다)
 //
 // ★★ R018: 소재 기반 파이프라인(generated/<round>/)도 읽을 수 있게 했다.
 //   npm run pipeline:load -- --round r017 --dry-run
@@ -45,6 +46,7 @@ import { DATA_DIRS } from '../pipeline/dist/config.js';
 import { findMid, findMajor } from '../pipeline/dist/categories.js';
 import { resolveSubId } from '../pipeline/lib/subid.mjs';
 import { generatedDir } from '../pipeline/lib/seedstore.mjs';
+import { checkHint } from './hint-check.mjs';
 import { checkAnswerSet } from '../pipeline/lib/answer-rules.mjs';
 
 /**
@@ -89,6 +91,21 @@ const NO_SELECT = args.includes('--no-select-gate');
 const SELECT_MIN_ACC = 2;   // 1 은 제외
 const SELECT_MIN_WORTH = 3; // 3 미만 제외
 const SELECT_MAX_ACC2_SHARE = 0.05;
+/**
+ * ★★ R030: 일반 힌트 게이트 (기준서 4-1 H0 · H2). 기본으로 켠다.
+ *   · score-v1 난이도 4~5 인데 힌트가 없으면 적재하지 않는다 (H0 — 4~5 에는 반드시)
+ *   · hint-check 막힘(정답·변형·조각이 힌트에 있다)이면 적재하지 않는다 (H2)
+ *   · 경고(질문 되풀이·해설 겹침·낱말 중간 조각·로마자 음차)는 적재하되 목록으로 보여 준다 — 사람이 본다
+ *   ★ 문항 파일: question.generalHint (문자열) + question.generalHintVersion (예 'hint-v3')
+ *   ★ 근거: R029 까지 적재는 힌트를 쓰지 않았다 — 4~5 문항이 힌트 없이 들어갈 길이 열려 있었다 (R029 6절)
+ */
+const NO_HINT_GATE = args.includes('--no-hint-gate');
+/**
+ * ★ R030: --gate-only — 모든 게이트(선별·표기·힌트)를 돌리되 **아무것도 쓰지 않는다.**
+ *   --dry-run 은 게이트 앞에서 끝나 무엇이 막힐지 보여 주지 못했다. 적재 전 VERIFY·GEN 확인용이다.
+ */
+const GATE_ONLY = args.includes('--gate-only');
+const HINT_MIN_DIF = 4;
 const roundIdx = args.indexOf('--round');
 const ROUNDS = roundIdx >= 0 ? args[roundIdx + 1].split(',').map((r) => r.trim()) : [];
 /** ★ 소재 기반 파이프라인의 source_id. 0005 마이그레이션이 이 행을 넣는다 */
@@ -183,8 +200,11 @@ for (const round of ROUNDS) {
           answers: q.acceptedAnswers ?? [],
           // ★ R027 (C44): 원제·상표가 영어인 영문 변형 — 기준서 B10. 게이트가 이 목록만 통과시킨다
           originalTitleVariants: q.originalTitleVariants ?? [],
-          // ★ 힌트는 서버가 display_answer 로 만든다. 따로 저장하지 않는다
+          // ★ 초성 힌트는 서버가 display_answer 로 만든다. 따로 저장하지 않는다
           hintAnswer: null,
+          // ★ R030: 일반 힌트 (남은 20초) — 난이도 4~5 는 반드시 (기준서 4-1 H0)
+          generalHint: q.generalHint ?? null,
+          generalHintVersion: q.generalHintVersion ?? null,
           answerLang: 'ko',
           explanation: q.explanation ?? null,
           difficulty: difficultyBand(q.score?.dif ?? q.difficulty),
@@ -350,6 +370,7 @@ try {
   const skipped = [];
   const gatedVariants = [];
   const gateWarnings = [];
+  const hintWarnings = [];
 
   for (const item of todo) {
     const g = item.generated;
@@ -381,7 +402,9 @@ try {
     // ★★ R020 정답 표기 게이트 — 프롬프트의 규칙을 적재에서도 확인한다
     let variants = g.answers ?? [];
     if (!NO_GATE) {
-      const gate = checkAnswerSet(g.questionText, g.displayAnswer, variants, normalizeAnswer, { originalTitles: g.originalTitleVariants ?? [] });
+      // ★★ R030 고침: 전에는 g.questionText(없는 필드)를 넘겨 질문 노출 검사가 늘 빈 문자열을 봤다 (R020~R029).
+      //   생성 문항의 질문 필드는 questionKo 다. 옛 approved/ 경로도 questionKo 를 쓴다
+      const gate = checkAnswerSet(g.questionKo ?? g.questionText, g.displayAnswer, variants, normalizeAnswer, { originalTitles: g.originalTitleVariants ?? [] });
       if (gate.blocked.length) {
         // ★★ 질문에 정답이 낱말로 들어 있다. 채팅으로 답하는 게임이라 질문을 베끼면 이긴다.
         //   ★ 이것은 변형을 빼서 고칠 수 없다. 문제 자체를 다시 써야 한다
@@ -402,12 +425,32 @@ try {
       for (const w of gate.warned) gateWarnings.push({ ref: item.sourceRef, answer: w.answer });
     }
 
+    // ★★ R030 일반 힌트 게이트
+    const gh = g.generalHint ? String(g.generalHint).trim() : null;
+    if (!NO_HINT_GATE && item.sourceId === SEED_SOURCE_ID) {
+      if (!gh && (sc?.dif ?? 0) >= HINT_MIN_DIF) {
+        skipped.push({ ref: item.sourceRef, reason: `★ 난이도 ${sc.dif} 인데 일반 힌트가 없다 (기준서 4-1 H0 — 4~5 는 반드시)` });
+        continue;
+      }
+      if (gh) {
+        if (gh.length > 120) { skipped.push({ ref: item.sourceRef, reason: `★ 일반 힌트 ${gh.length}자 — 120자 초과 (H1)` }); continue; }
+        if (!g.generalHintVersion) { skipped.push({ ref: item.sourceRef, reason: '★ 일반 힌트에 버전이 없다 (generalHintVersion)' }); continue; }
+        const hc = checkHint({ hint: gh, answer: g.displayAnswer, variants, question: g.questionKo ?? '', explanation: g.explanation ?? '' });
+        if (hc.block.length) {
+          skipped.push({ ref: item.sourceRef, reason: `★ 일반 힌트에 정답 글자가 있다 — ${hc.block.map((b) => b.frag).join(', ')} (H2)` });
+          continue;
+        }
+        for (const w of hc.warn) hintWarnings.push({ ref: item.sourceRef, kind: w.kind, detail: w.frag ?? w.share ?? (w.shared ?? []).join('/') });
+      }
+    }
+
     // ★ 정규화해서 같아지는 표기를 합친다. DB의 answer_norm UNIQUE 를 만족시켜야 한다.
     const answers = dedupeAnswers([g.displayAnswer, ...variants]);
     if (answers.length === 0) {
       skipped.push({ ref: item.sourceRef, reason: 'no_answers' });
       continue;
     }
+    if (GATE_ONLY) { inserted += 1; answerRows += answers.length; continue; }
 
     // ★ 문제 하나와 그 정답들을 한 트랜잭션으로 넣는다.
     //   정답 없는 문제가 남으면 게임에서 아무도 맞힐 수 없다.
@@ -419,9 +462,10 @@ try {
             difficulty, explanation, source_id, source_ref, license, status, is_active,
             approved_at,
             accessibility, accessibility_why, difficulty_score, difficulty_why, worth_knowing, worth_why,
-            score_version, scored_at)
+            score_version, scored_at, general_hint, general_hint_version)
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12, CASE WHEN $11 = 'approved' THEN now() ELSE NULL END,
-                 $13,$14,$15,$16,$17,$18,$19::text, CASE WHEN $19::text IS NULL THEN NULL ELSE now() END)
+                 $13,$14,$15,$16,$17,$18,$19::text, CASE WHEN $19::text IS NULL THEN NULL ELSE now() END,
+                 $20::text, CASE WHEN $20::text IS NULL THEN NULL ELSE $21::text END)
          RETURNING id`,
         [
           g.questionKo,
@@ -440,6 +484,7 @@ try {
           isActive,
           sc?.acc ?? null, sc?.accWhy ?? null, sc?.dif ?? null, sc?.difWhy ?? null,
           sc?.wor ?? null, sc?.worWhy ?? null, sc?.version ?? null,
+          gh, g.generalHintVersion ?? null,
         ],
       );
       const questionId = res.rows[0].id;
@@ -487,11 +532,12 @@ try {
   }
 
   console.log('');
-  console.log(`[load] 적재 완료: 문제 ${inserted}건 / 정답 표기 ${answerRows}행`);
+  if (GATE_ONLY) console.log(`[load] ★ --gate-only — 아무것도 쓰지 않았다. 게이트를 통과한 것 ${inserted}건 / 정답 표기 ${answerRows}행`);
+  else console.log(`[load] 적재 완료: 문제 ${inserted}건 / 정답 표기 ${answerRows}행`);
   console.log(`[load] status=${status} / is_active=${isActive}`);
   console.log(`[load] normalizeAnswer 버전 ${NORMALIZE_VERSION}`);
   // ★ R024: 접근성 2 는 활성 풀의 5% 이내 (D-112)
-  if (!DRY && !NO_SELECT) {
+  if (!DRY && !NO_SELECT && !GATE_ONLY) {
     const pool = (await client.query(`SELECT count(*) FILTER (WHERE accessibility = 2)::int AS a2,
         count(*) FILTER (WHERE accessibility IS NOT NULL)::int AS scored, count(*)::int AS n FROM questions WHERE is_active`)).rows[0];
     const share = pool.scored ? pool.a2 / pool.scored : 0;
@@ -508,6 +554,10 @@ try {
   if (gateWarnings.length) {
     console.log(`[게이트] 질문에 정답이 문자열로만 들어간 것 ${gateWarnings.length}건 (낱말 경계가 아니라 통과시켰다)`);
     for (const w of gateWarnings.slice(0, 10)) console.log(`  ${w.ref}: ${w.answer}`);
+  }
+  if (hintWarnings.length) {
+    console.log(`[힌트] 경고 ${hintWarnings.length}건 — 적재는 했다. 사람이 본다 (hint-check)`);
+    for (const w of hintWarnings.slice(0, 20)) console.log(`  ${w.ref}: ${w.kind} ${w.detail}`);
   }
   if (skipped.length) {
     console.log(`[load] ★ 건너뛴 것 ${skipped.length}건`);
