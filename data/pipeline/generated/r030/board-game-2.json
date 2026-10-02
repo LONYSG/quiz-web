@@ -1,0 +1,170 @@
+{
+ "_meta": {
+  "round": "r030",
+  "subId": "board-game/2",
+  "categoryPath": "스포츠·게임 > 보드게임·카드게임 > 체스",
+  "midKey": "board-game",
+  "subName": "체스",
+  "seedPrompt": null,
+  "questionPrompt": "deep-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "generatedAt": "2026-10-02T00:28:55.088Z",
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+ },
+ "items": [
+  {
+   "seedId": "board-game/2#r030g-001",
+   "seed": {
+    "subject": "나이트",
+    "aspect": null,
+    "pairedWith": "board-game/2#004"
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": "board-game/2#004",
+    "pairDb": 350,
+    "question": "체스판 64칸을 빠짐없이 한 번씩만 밟고 지나가는 경로를 찾는 퍼즐은 수학자 오일러도 연구한 것으로 유명합니다. 이 퍼즐에서 판 위를 돌아다니는 체스 기물은 무엇일까요?",
+    "answer": "나이트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 기물은 한 번 움직일 때마다 흰 칸과 검은 칸을 번갈아 밟게 됩니다.",
+    "score": {
+     "version": "score-v1",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다",
+     "dif": 3,
+     "difWhy": "관심층 — 수학 퍼즐",
+     "wor": 3,
+     "worWhy": "이야깃거리"
+    },
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "기물은 유명하고 수학 퍼즐과의 연결은 덜 알려졌다",
+    "factCheck": [],
+    "gate": {
+     "pass": true
+    }
+   }
+  },
+  {
+   "seedId": "board-game/2#r030g-002",
+   "seed": {
+    "subject": "킹",
+    "aspect": null,
+    "pairedWith": "board-game/2#009"
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": "board-game/2#009",
+    "pairDb": 355,
+    "question": "체스의 특수 규칙 '캐슬링'에서 룩과 함께 한 번에 움직이며, 두 칸을 옆으로 옮겨 가는 기물은 무엇일까요?",
+    "answer": "킹",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그 기물이나 해당 룩이 한 번이라도 움직였거나, 지나는 칸이 공격받고 있으면 할 수 없는 등의 조건이 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다",
+     "dif": 3,
+     "difWhy": "관심층 — 체스 규칙",
+     "wor": 3,
+     "worWhy": "체스 기본 규칙 이야깃거리"
+    },
+    "selfJudge": "경계",
+    "selfJudgeWhy": "체스를 두는 사람에게는 쉽고 아닌 사람에게는 캐슬링이 낯설다",
+    "factCheck": [],
+    "gate": {
+     "pass": true
+    }
+   }
+  },
+  {
+   "seedId": "board-game/2#r030g-003",
+   "seed": {
+    "subject": "퀸",
+    "aspect": null,
+    "pairedWith": "board-game/2#003"
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": "board-game/2#003",
+    "pairDb": 349,
+    "question": "서로 공격하지 못하게 체스판 위에 같은 기물 8개를 놓는 고전 퍼즐은 컴퓨터 알고리즘의 예제로 자주 쓰입니다. 이 퍼즐에 쓰는 기물은 무엇일까요?",
+    "answer": "퀸",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "19세기 체스 잡지에 처음 실렸고, 서로 다른 해답은 모두 92가지입니다.",
+    "score": {
+     "version": "score-v1",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다",
+     "dif": 4,
+     "difWhy": "대학 전공 기초 알고리즘",
+     "wor": 3,
+     "worWhy": "이야깃거리"
+    },
+    "selfJudge": "경계",
+    "selfJudgeWhy": "프로그래밍을 배운 사람에겐 익숙하고 아니면 추리해야 한다. 묻는 문장만으로는 룩도 8개가 놓이므로 '고전 퍼즐'이 한정어 구실을 한다",
+    "factCheck": [
+     "'19세기 체스 잡지에 처음 실렸다'(1848년 막스 베첼로 알려짐)"
+    ],
+    "gate": {
+     "pass": true
+    },
+    "generalHint": "옛 체스에서는 대각선으로 한 칸밖에 못 가는 약한 기물이었다가 15세기 말 지금처럼 강해졌다.",
+    "generalHintVersion": "hint-v3",
+    "hintCheck": {
+     "warn": []
+    }
+   }
+  },
+  {
+   "seedId": "board-game/2#r030g-004",
+   "seed": {
+    "subject": "엘로 평점",
+    "aspect": null,
+    "pairedWith": "board-game/2#008"
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": "board-game/2#008",
+    "pairDb": 354,
+    "question": "영화 『소셜 네트워크』에서 저커버그는 여학생 사진을 둘씩 비교해 순위를 매기는 사이트를 만들며 친구에게 공식 하나를 창문에 적어 달라고 합니다. 이 공식은 체스의 어떤 실력 평가 체계에서 왔을까요?",
+    "answer": "엘로 평점",
+    "acceptedAnswers": [
+     "엘로 레이팅"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "두 사람의 점수 차이로 기대 승률을 계산하므로, 약한 상대를 이기면 조금 오르고 강한 상대를 이기면 많이 오릅니다.",
+    "score": {
+     "version": "score-v1",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다",
+     "dif": 4,
+     "difWhy": "체스 애호가 — 평점 체계",
+     "wor": 3,
+     "worWhy": "영화 일화 이야깃거리"
+    },
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 영화 장면과 체스 평점의 뜻밖의 연결",
+    "factCheck": [],
+    "gate": {
+     "pass": true
+    },
+    "generalHint": "헝가리 출신 미국 물리학 교수가 고안했고, 1970년 국제체스연맹이 공식 채택했다.",
+    "generalHintVersion": "hint-v3",
+    "hintCheck": {
+     "warn": []
+    }
+   }
+  }
+ ]
+}

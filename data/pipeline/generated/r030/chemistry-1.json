@@ -1,0 +1,69 @@
+{
+ "_meta": {
+  "round": "r030",
+  "subId": "chemistry/1",
+  "categoryPath": "자연과학 > 화학·원소 > 원소 기호",
+  "midKey": "chemistry",
+  "subName": "원소 기호",
+  "seedPrompt": null,
+  "questionPrompt": "deep-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "generatedAt": "2026-10-02T00:28:55.108Z",
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/1#r030n-001",
+   "seed": {
+    "subject": "구리(Cu)",
+    "aspect": null,
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "pairDb": null,
+    "question": "구리의 원소 기호 Cu는 라틴어 이름에서 왔는데, 이 라틴어는 고대에 구리가 많이 나던 지중해의 어느 섬 이름에서 비롯했을까요?",
+    "answer": "키프로스",
+    "acceptedAnswers": [
+     "사이프러스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "로마인은 구리를 '키프로스의 금속'이라는 뜻의 aes Cyprium이라 불렀고, 이것이 줄어 cuprum이 되었다.",
+    "score": {
+     "version": "score-v1",
+     "acc": 5,
+     "accWhy": "화학 — 중학 과학 교과 과목",
+     "dif": 4,
+     "difWhy": "원소 이름 어원 심화",
+     "wor": 3,
+     "worWhy": "어원 이야깃거리"
+    },
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 원소 기호의 뜻밖의 지명 유래",
+    "factCheck": [
+     "cuprum ← aes Cyprium ← 키프로스(Kypros)"
+    ],
+    "gate": {
+     "pass": true
+    },
+    "generalHint": "그리스 신화에서 바다 거품에서 태어난 아프로디테가 처음 뭍에 올랐다고 전하는 섬이다.",
+    "generalHintVersion": "hint-v3",
+    "hintCheck": {
+     "warn": [
+      {
+       "kind": "partial-mid",
+       "frag": "프로",
+       "of": "키프로스"
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

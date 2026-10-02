@@ -1,0 +1,57 @@
+{
+ "_meta": {
+  "round": "r030",
+  "subId": "medicine/2",
+  "categoryPath": "기술·의학 > 의학·건강 상식 > 증상·진단",
+  "midKey": "medicine",
+  "subName": "증상·진단",
+  "seedPrompt": null,
+  "questionPrompt": "deep-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "generatedAt": "2026-10-02T00:28:55.130Z",
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/2#r030n-001",
+   "seed": {
+    "subject": "혈압 단위",
+    "aspect": null,
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "pairDb": null,
+    "question": "혈압을 나타내는 단위 mmHg는 어떤 물질의 기둥 높이를 밀리미터로 잰 것일까요?",
+    "answer": "수은",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "혈압이 120이라는 말은 그 압력이 수은 기둥을 120mm 밀어 올릴 만하다는 뜻으로, 전자 혈압계가 널리 쓰이는 지금도 단위는 그대로 남아 있다.",
+    "score": {
+     "version": "score-v1",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심",
+     "dif": 2,
+     "difWhy": "중학 과학 — 압력",
+     "wor": 4,
+     "worWhy": "생활 과학 교양"
+    },
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "매일 듣는 혈압 숫자의 단위 속 물질 — 고교 화학 원소 기호로 추리 가능",
+    "factCheck": [
+     "mmHg = 수은주 밀리미터",
+     "Hg = 수은 원소 기호"
+    ],
+    "gate": {
+     "pass": true
+    }
+   }
+  }
+ ]
+}

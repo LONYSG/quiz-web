@@ -1,0 +1,133 @@
+{
+ "_meta": {
+  "round": "r030",
+  "subId": "human-body/1",
+  "categoryPath": "자연과학 > 인체·해부 > 뼈·근육",
+  "midKey": "human-body",
+  "subName": "뼈·근육",
+  "seedPrompt": null,
+  "questionPrompt": "deep-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "generatedAt": "2026-10-02T00:28:55.036Z",
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/1#r030g-001",
+   "seed": {
+    "subject": "등자뼈",
+    "aspect": null,
+    "pairedWith": "human-body/1#001"
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": "human-body/1#001",
+    "pairDb": 2269,
+    "question": "몸에서 가장 작은 골격근이 붙어 있어, 큰 소리가 나면 이 근육에 당겨져 진동이 줄어드는 귓속뼈는?",
+    "answer": "등자뼈",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 근육은 얼굴 신경이 움직이므로, 얼굴 신경이 마비되면 소리가 유난히 크게 울려 들리기도 합니다.",
+    "score": {
+     "version": "score-v1",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과",
+     "dif": 4,
+     "difWhy": "대학 교양 해부학",
+     "wor": 3,
+     "worWhy": "해부 이야깃거리"
+    },
+    "selfJudge": "경계",
+    "selfJudgeWhy": "사실은 '오'지만 귓속뼈 세 개를 구별해야 해서 난이도 4 쪽",
+    "factCheck": [],
+    "gate": {
+     "pass": true
+    },
+    "generalHint": "이름은 말을 탈 때 쓰는 마구 하나의 생김새를 본떴고, 달팽이관 쪽 창문 모양 구멍에 맞닿아 있다.",
+    "generalHintVersion": "hint-v3",
+    "hintCheck": {
+     "warn": []
+    },
+    "hintRedo": {
+     "old": "말을 탈 때 발을 디디는 마구를 닮은 모양에서 이름이 왔으며, 몸에서 가장 작은 뼈로 꼽힌다.",
+     "why": "R030 GEN 검토: 힌트만으로 답이 나왔다 (떠먹여 주기)"
+    }
+   }
+  },
+  {
+   "seedId": "human-body/1#r030g-002",
+   "seed": {
+    "subject": "갈비뼈",
+    "aspect": null,
+    "pairedWith": "human-body/1#002"
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": "human-body/1#002",
+    "pairDb": 2270,
+    "question": "구약성경 창세기에서 하느님이 잠든 아담의 몸에서 하나를 꺼내 하와를 지었다는 뼈는?",
+    "answer": "갈비뼈",
+    "acceptedAnswers": [
+     "늑골"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "남자는 이 뼈가 하나 적다는 속설이 생겼지만, 실제로는 남녀 모두 개수가 같습니다.",
+    "score": {
+     "version": "score-v1",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과",
+     "dif": 1,
+     "difWhy": "누구나 일상에서",
+     "wor": 3,
+     "worWhy": "성경 이야깃거리"
+    },
+    "selfJudge": "경계",
+    "selfJudgeWhy": "유명한 연결이라 난이도 2 정도로 쉬울 수 있다",
+    "factCheck": [],
+    "gate": {
+     "pass": true
+    }
+   }
+  },
+  {
+   "seedId": "human-body/1#r030g-003",
+   "seed": {
+    "subject": "칼슘",
+    "aspect": null,
+    "pairedWith": "human-body/1#012"
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": "human-body/1#012",
+    "pairDb": 2280,
+    "question": "'석회'를 뜻하는 라틴어에서 이름을 딴 원소로, 사람 몸에 가장 많이 들어 있는 무기질은?",
+    "answer": "칼슘",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "몸에 있는 양의 99% 가까이가 뼈와 이에 들어 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과",
+     "dif": 2,
+     "difWhy": "중학 과학",
+     "wor": 5,
+     "worWhy": "교과서 지식"
+    },
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름 유래로 한 층 깊게, 석회-뼈 연결로 추리 가능",
+    "factCheck": [],
+    "gate": {
+     "pass": true
+    }
+   }
+  }
+ ]
+}
