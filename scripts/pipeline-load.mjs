@@ -47,6 +47,7 @@ import { findMid, findMajor } from '../pipeline/dist/categories.js';
 import { resolveSubId } from '../pipeline/lib/subid.mjs';
 import { generatedDir } from '../pipeline/lib/seedstore.mjs';
 import { checkHint } from './hint-check.mjs';
+import { blankCheck, roundDupCheck, assertiveWords } from '../pipeline/lib/question-checks.mjs';
 import { checkAnswerSet } from '../pipeline/lib/answer-rules.mjs';
 
 /**
@@ -205,6 +206,8 @@ for (const round of ROUNDS) {
           // ★ R030: 일반 힌트 (남은 20초) — 난이도 4~5 는 반드시 (기준서 4-1 H0)
           generalHint: q.generalHint ?? null,
           generalHintVersion: q.generalHintVersion ?? null,
+          // ★ R031: 같은 라운드 같은 소재를 사람이 '다른 지식' 으로 판정했으면 그 이유 (게이트 통과)
+          roundDupOk: q.roundDupOk ?? null,
           answerLang: 'ko',
           explanation: q.explanation ?? null,
           difficulty: difficultyBand(q.score?.dif ?? q.difficulty),
@@ -371,6 +374,22 @@ try {
   const gatedVariants = [];
   const gateWarnings = [];
   const hintWarnings = [];
+  // ★★ R031 질문 게이트 (기준서 3-2 · pipeline/lib/question-checks.mjs)
+  //   · 빈칸(○) 개수 ≠ 정답 글자 수 → 막는다
+  //   · 같은 라운드 안 같은 소재(정답이 같다 / 한 문항의 정답이 다른 문항 질문에 낱말로 있다) → 둘 다 막는다
+  //     ★ 사람이 '다른 지식' 으로 판정한 것은 question.roundDupOk 에 이유를 적어 통과시킨다
+  //   · 단정어(처음·모두·평생 …)가 완충 없이 쓰였다 → 경고 (출처를 확인했으면 그대로 둔다)
+  const assertWarnings = [];
+  const roundBlock = new Map();
+  if (!NO_GATE) {
+    const seedTodo = todo.filter((i) => i.sourceId === SEED_SOURCE_ID);
+    const dups = roundDupCheck(seedTodo.map((i) => ({ ref: i.sourceRef, question: i.generated.questionKo, answer: i.generated.displayAnswer, explanation: i.generated.explanation })), normalizeAnswer);
+    const okRef = new Set(seedTodo.filter((i) => i.generated.roundDupOk).map((i) => i.sourceRef));
+    for (const d of dups) {
+      if (okRef.has(d.a) && okRef.has(d.b)) continue;
+      for (const r of [d.a, d.b]) if (!okRef.has(r)) roundBlock.set(r, `★ 같은 라운드 같은 소재 — ${d.kind === 'same-answer' ? `정답이 같다 (${d.detail})` : d.detail} (${d.a} ↔ ${d.b})`);
+    }
+  }
 
   for (const item of todo) {
     const g = item.generated;
@@ -398,6 +417,13 @@ try {
       if (!sc) { skipped.push({ ref: item.sourceRef, reason: '★ 채점되지 않았다 — score-v1 점수가 없다 (선별 게이트)' }); continue; }
       if (sc.acc < SELECT_MIN_ACC) { skipped.push({ ref: item.sourceRef, reason: `★ 접근성 ${sc.acc} — ${sc.accWhy} (선별 게이트: 1 제외)` }); continue; }
       if (sc.wor < SELECT_MIN_WORTH) { skipped.push({ ref: item.sourceRef, reason: `★ 알 가치 ${sc.wor} — ${sc.worWhy} (선별 게이트: 3 미만 제외)` }); continue; }
+    }
+    // ★★ R031 질문 게이트
+    if (!NO_GATE && item.sourceId === SEED_SOURCE_ID) {
+      if (roundBlock.has(item.sourceRef)) { skipped.push({ ref: item.sourceRef, reason: roundBlock.get(item.sourceRef) }); continue; }
+      const bc = blankCheck(g.questionKo, g.displayAnswer);
+      if (!bc.ok) { skipped.push({ ref: item.sourceRef, reason: `★ 빈칸 ${bc.blanks}칸 ≠ 정답 ${bc.answerLength}글자 (기준서 3-2)` }); continue; }
+      for (const t of [g.questionKo, g.explanation]) for (const a of assertiveWords(t)) assertWarnings.push({ ref: item.sourceRef, words: a.words.join('·'), sentence: a.sentence });
     }
     // ★★ R020 정답 표기 게이트 — 프롬프트의 규칙을 적재에서도 확인한다
     let variants = g.answers ?? [];
@@ -554,6 +580,11 @@ try {
   if (gateWarnings.length) {
     console.log(`[게이트] 질문에 정답이 문자열로만 들어간 것 ${gateWarnings.length}건 (낱말 경계가 아니라 통과시켰다)`);
     for (const w of gateWarnings.slice(0, 10)) console.log(`  ${w.ref}: ${w.answer}`);
+  }
+  if (assertWarnings.length) {
+    console.log(`[단정어] 경고 ${assertWarnings.length}건 — 출처를 확인했으면 그대로 둔다 (기준서 3-2)`);
+    for (const w of assertWarnings.slice(0, 15)) console.log(`  ${w.ref}: ${w.words} — ${w.sentence.slice(0, 60)}`);
+    if (assertWarnings.length > 15) console.log(`  … 외 ${assertWarnings.length - 15}건`);
   }
   if (hintWarnings.length) {
     console.log(`[힌트] 경고 ${hintWarnings.length}건 — 적재는 했다. 사람이 본다 (hint-check)`);

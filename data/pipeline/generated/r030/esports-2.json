@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.072Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.294Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -28,7 +32,7 @@
     "mode": "가",
     "pairedWith": "esports/2#001",
     "pairDb": 2888,
-    "question": "닌텐도와의 공동 개발 계약이 깨진 뒤 소니가 혼자 만들어 내놓은 첫 가정용 게임기는?",
+    "question": "닌텐도와의 공동 개발 계약이 깨진 뒤 한 전자 회사가 혼자 만들어 내놓은 첫 가정용 게임기는?",
     "answer": "플레이스테이션",
     "acceptedAnswers": [],
     "originalTitleVariants": [
@@ -49,6 +53,14 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "닌텐도와의 공동 개발 계약이 깨진 뒤 소니가 혼자 만들어 내놓은 첫 가정용 게임기는?"
+     },
+     "src": [
+      "R031 짝 재검 same — '소니가 혼자 만들어 내놓은 첫 가정용 게임기'가 1회차(소니의 CD 게임기)로 바로 풀린다."
+     ]
     }
    }
   },
@@ -64,13 +76,13 @@
     "mode": "가",
     "pairedWith": "esports/2#007",
     "pairDb": 2894,
-    "question": "빨간 운동화를 마이클 잭슨의 'Bad' 앨범 표지 속 부츠와 산타클로스 옷 색에서 따왔다고 전하는 세가의 캐릭터는?",
+    "question": "빨간 운동화를 마이클 잭슨의 'Bad' 앨범 표지 속 부츠와 산타클로스 옷 색에서 따왔다고 전하는 게임 캐릭터는?",
     "answer": "소닉",
     "acceptedAnswers": [],
     "originalTitleVariants": [
      "Sonic"
     ],
-    "explanation": "파란 몸 색은 세가 로고의 색에 맞춘 것이라고 합니다.",
+    "explanation": "세가의 캐릭터로, 파란 몸 색은 세가 로고의 색에 맞춘 것이라고 합니다.",
     "score": {
      "version": "score-v1",
      "acc": 3,
@@ -87,6 +99,15 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "빨간 운동화를 마이클 잭슨의 'Bad' 앨범 표지 속 부츠와 산타클로스 옷 색에서 따왔다고 전하는 세가의 캐릭터는?",
+      "explanation": "파란 몸 색은 세가 로고의 색에 맞춘 것이라고 합니다."
+     },
+     "src": [
+      "R031 짝 재검 same — '세가의 캐릭터'가 1회차(세가 마스코트)로 바로 풀려 운동화 사실이 꾸밈에 그친다."
+     ]
     }
    }
   },

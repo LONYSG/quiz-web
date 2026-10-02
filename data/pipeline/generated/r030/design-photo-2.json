@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.075Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.292Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -122,6 +126,11 @@
     ],
     "gate": {
      "pass": true
+    },
+    "discarded": {
+     "reason": "V004 짝 대조 drop — 고쳐도 1회차와 같은 사실",
+     "at": "r031",
+     "src": "V004 3-3"
     }
    }
   },
@@ -205,6 +214,11 @@
     ],
     "gate": {
      "pass": true
+    },
+    "discarded": {
+     "reason": "V004 짝 대조 drop — 고쳐도 1회차와 같은 사실",
+     "at": "r031",
+     "src": "V004 3-3"
     }
    }
   }

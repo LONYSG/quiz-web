@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.085Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.283Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -62,7 +66,7 @@
     "mode": "가",
     "pairedWith": "aerospace/5#003",
     "pairDb": 2665,
-    "question": "2022년 달로 가는 길에 방탄소년단의 '다이너마이트' 뮤직비디오를 지구로 보내 우주 인터넷을 시험한 우리나라 탐사선은?",
+    "question": "방탄소년단의 '다이너마이트' 뮤직비디오를 우주에서 지구로 보내 우주 인터넷을 시험한 우리나라 탐사선은?",
     "answer": "다누리",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -81,6 +85,14 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "2022년 달로 가는 길에 방탄소년단의 '다이너마이트' 뮤직비디오를 지구로 보내 우주 인터넷을 시험한 우리나라 탐사선은?"
+     },
+     "src": [
+      "R031 짝 재검 same — '2022년 달로 가는 우리나라 탐사선'이 1회차 그대로라 뮤직비디오 사실 없이 풀린다."
+     ]
     }
    }
   },
@@ -96,7 +108,7 @@
     "mode": "가",
     "pairedWith": "aerospace/5#005",
     "pairDb": 2667,
-    "question": "2013년 화성 착륙 1주년에 분석 장비를 진동시켜 혼자 '생일 축하' 노래를 연주한 미국 항공우주국의 탐사차는?",
+    "question": "화성에서 맞은 첫 생일에 분석 장비를 진동시켜 혼자 '생일 축하' 노래를 연주한, 미국 항공우주국의 탐사차는?",
     "answer": "큐리오시티",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -120,6 +132,14 @@
     "generalHintVersion": "hint-v3",
     "hintCheck": {
      "warn": []
+    },
+    "r031": {
+     "before": {
+      "question": "2013년 화성 착륙 1주년에 분석 장비를 진동시켜 혼자 '생일 축하' 노래를 연주한 미국 항공우주국의 탐사차는?"
+     },
+     "src": [
+      "R031 짝 재검 same — '2013년 화성 착륙 1주년'에서 1회차의 2012년 화성 착륙 탐사차가 바로 나온다."
+     ]
     }
    }
   },
@@ -135,7 +155,7 @@
     "mode": "가",
     "pairedWith": "aerospace/5#006",
     "pairDb": 2668,
-    "question": "명왕성을 발견한 미국 천문학자 톰보의 유골 일부를 싣고 날아간 탐사선은?",
+    "question": "미국 천문학자 클라이드 톰보의 유골 일부를 싣고 날아간 탐사선은?",
     "answer": "뉴호라이즌스",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -159,6 +179,14 @@
     "generalHintVersion": "hint-v3",
     "hintCheck": {
      "warn": []
+    },
+    "r031": {
+     "before": {
+      "question": "명왕성을 발견한 미국 천문학자 톰보의 유골 일부를 싣고 날아간 탐사선은?"
+     },
+     "src": [
+      "R031 짝 재검 same — '명왕성을 발견한'이 붙어 1회차의 명왕성 탐사선으로 바로 풀린다."
+     ]
     }
    }
   },
@@ -174,7 +202,7 @@
     "mode": "가",
     "pairedWith": "aerospace/5#008",
     "pairDb": 2670,
-    "question": "토성의 가장 큰 위성 타이탄에 착륙선 하위헌스를 내려보낸 탐사선은?",
+    "question": "착륙선 하위헌스를 싣고 가 위성 타이탄에 내려보낸 탐사선은?",
     "answer": "카시니",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -198,6 +226,14 @@
     "generalHintVersion": "hint-v3",
     "hintCheck": {
      "warn": []
+    },
+    "r031": {
+     "before": {
+      "question": "토성의 가장 큰 위성 타이탄에 착륙선 하위헌스를 내려보낸 탐사선은?"
+     },
+     "src": [
+      "R031 짝 재검 same — '토성의 위성'에 착륙선을 보낸 탐사선이면 1회차의 토성 탐사선으로 바로 풀린다."
+     ]
     }
    }
   }

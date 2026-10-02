@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.071Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.296Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -28,7 +32,7 @@
     "mode": "가",
     "pairedWith": "invention/3#004",
     "pairDb": 420,
-    "question": "영국 왕립연구소에서 어린이를 위한 크리스마스 강연을 시작했고, 그 강연을 엮은 '촛불의 과학'이 지금도 읽히는 과학자는?",
+    "question": "영국 왕립연구소의 어린이 크리스마스 강연을 여러 차례 맡았고, 그 내용을 엮은 '촛불의 과학'이 지금도 읽히는 과학자는?",
     "answer": "패러데이",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -54,6 +58,14 @@
     "generalHintVersion": "hint-v3",
     "hintCheck": {
      "warn": []
+    },
+    "r031": {
+     "before": {
+      "question": "영국 왕립연구소에서 어린이를 위한 크리스마스 강연을 시작했고, 그 강연을 엮은 '촛불의 과학'이 지금도 읽히는 과학자는?"
+     },
+     "src": [
+      "V004 + en.wikipedia Royal Institution Christmas Lectures (1825 창설 · 패러데이 첫 강연 1827)"
+     ]
     }
    }
   },

@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.036Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.295Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -28,13 +32,13 @@
     "mode": "가",
     "pairedWith": "human-body/2#009",
     "pairDb": 1664,
-    "question": "포유류에게만 있고 새나 파충류에게는 없는, 돔 모양의 호흡 근육은?",
+    "question": "포유류에게만 있고 새나 파충류에게는 없는, 돔 모양의 근육은?",
     "answer": "횡격막",
     "acceptedAnswers": [
      "가로막"
     ],
     "originalTitleVariants": [],
-    "explanation": "새는 이 근육 대신 몸속 여러 개의 공기주머니를 풀무처럼 써서 숨을 쉽니다.",
+    "explanation": "숨을 쉬는 데 쓰는 근육이며, 새는 이 근육 대신 몸속 여러 개의 공기주머니를 풀무처럼 써서 숨을 쉽니다.",
     "score": {
      "version": "score-v1",
      "acc": 5,
@@ -51,6 +55,15 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "포유류에게만 있고 새나 파충류에게는 없는, 돔 모양의 호흡 근육은?",
+      "explanation": "새는 이 근육 대신 몸속 여러 개의 공기주머니를 풀무처럼 써서 숨을 쉽니다."
+     },
+     "src": [
+      "R031 짝 재검 same — '호흡 근육'이 1회차 정의 그대로라 포유류에만 있다는 사실 없이 풀린다."
+     ]
     }
    }
   },

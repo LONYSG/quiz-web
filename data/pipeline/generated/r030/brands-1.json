@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.073Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.290Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -70,7 +74,7 @@
     "originalTitleVariants": [
      "Nokia"
     ],
-    "explanation": "회사 이름은 첫 공장이 있던 핀란드 남부의 소도시 이름에서 따왔습니다.",
+    "explanation": "회사 이름은 1868년 두 번째 공장을 세운 핀란드의 소도시 노키아에서 따왔습니다.",
     "score": {
      "version": "score-v1",
      "acc": 5,
@@ -85,6 +89,14 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "explanation": "회사 이름은 첫 공장이 있던 핀란드 남부의 소도시 이름에서 따왔습니다."
+     },
+     "src": [
+      "V004 + en.wikipedia Nokia"
+     ]
     }
    }
   },

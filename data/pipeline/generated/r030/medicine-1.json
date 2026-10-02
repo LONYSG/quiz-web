@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.129Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.304Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -32,7 +36,7 @@
     "answer": "결핵",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "한국에서는 1932년 캐나다 출신 선교 의사 셔우드 홀이 처음 크리스마스 실을 발행했다.",
+    "explanation": "한국에서는 1932년 선교사 부부의 아들로 서울에서 태어난 의사 셔우드 홀이 처음 크리스마스 실을 발행했다.",
     "score": {
      "version": "score-v1",
      "acc": 4,
@@ -50,6 +54,14 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "explanation": "한국에서는 1932년 캐나다 출신 선교 의사 셔우드 홀이 처음 크리스마스 실을 발행했다."
+     },
+     "src": [
+      "V004 + 한국교육신문 (1893 서울 출생 · 1932 첫 발행)"
+     ]
     }
    }
   }

@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.031Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.284Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -81,7 +85,8 @@
     "factCheck": [],
     "gate": {
      "pass": true
-    }
+    },
+    "roundDupOk": "정답 \"벌새\" 가 같은 kr-screen/4#r030g-003 은 영화 — 다른 대상"
    }
   },
   {
@@ -96,7 +101,7 @@
     "mode": "가",
     "pairedWith": "animals/2#004",
     "pairDb": 320,
-    "question": "덩치가 칠면조만 했지만 DNA로 보면 비둘기의 가까운 친척이었던, 사람 손에 멸종한 날지 못하는 새는?",
+    "question": "키가 1미터쯤 되었지만 DNA로 보면 비둘기의 가까운 친척이었던, 날지 못하는 새는?",
     "answer": "도도새",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -117,6 +122,15 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "덩치가 칠면조만 했지만 DNA로 보면 비둘기의 가까운 친척이었던, 사람 손에 멸종한 날지 못하는 새는?"
+     },
+     "src": [
+      "V004 + 웹 en.wikipedia Dodo (키 약 1m)",
+      "R031 짝 재검 (same) — '사람 손에 멸종한 날지 못하는 새'가 1회차·해설 그대로라 비둘기 친척 사실 없이 풀린다. · GEN 이 고쳐 썼다"
+     ]
     }
    }
   },
@@ -179,7 +193,7 @@
     "answer": "따오기",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "일본에서도 야생 개체가 2003년에 사라져, 한국처럼 중국에서 들여온 새로 복원하고 있습니다.",
+    "explanation": "일본에서도 야생 개체는 1981년에 모두 포획되어 사라졌고 2003년 마지막 토종 개체도 죽어, 한국처럼 중국에서 들여온 새로 복원하고 있습니다.",
     "score": {
      "version": "score-v1",
      "acc": 5,
@@ -201,6 +215,14 @@
     "generalHintVersion": "hint-v3",
     "hintCheck": {
      "warn": []
+    },
+    "r031": {
+     "before": {
+      "explanation": "일본에서도 야생 개체가 2003년에 사라져, 한국처럼 중국에서 들여온 새로 복원하고 있습니다."
+     },
+     "src": [
+      "V004 + 웹 nippon.com (1981 야생 5마리 포획 · 2003 긴 사망)"
+     ]
     }
    }
   }

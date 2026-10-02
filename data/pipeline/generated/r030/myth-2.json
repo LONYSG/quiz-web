@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.066Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.305Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -96,11 +100,11 @@
     "mode": "가",
     "pairedWith": "myth/2#009",
     "pairDb": 626,
-    "question": "독일어에서는 '천둥의 날'이라는 뜻의 이름(Donnerstag)으로 부르는 날은 한 주의 무슨 날일까요?",
+    "question": "프랑스어로 jeudi, 이탈리아어로 giovedì라 부르며 로마 신화 유피테르의 이름에서 온 한 주의 날은?",
     "answer": "목요일",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "로마인은 이 요일을 유피테르의 날이라 불렀는데, 천둥을 다루는 신끼리 짝지어 게르만 이름으로 옮긴 것입니다.",
+    "explanation": "독일어 Donnerstag(천둥의 날)도 천둥을 다루는 신끼리 짝지어 옮긴 이름입니다.",
     "score": {
      "version": "score-v1",
      "acc": 3,
@@ -115,6 +119,16 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "독일어에서는 '천둥의 날'이라는 뜻의 이름(Donnerstag)으로 부르는 날은 한 주의 무슨 날일까요?",
+      "explanation": "로마인은 이 요일을 유피테르의 날이라 불렀는데, 천둥을 다루는 신끼리 짝지어 게르만 이름으로 옮긴 것입니다."
+     },
+     "src": [
+      "V004 + etymonline (Jovis dies) — 해설이 질문과 겹치지 않게 바꿨다",
+      "R031 — 질문에 정답 조각(유형 낱말)이 새로 들어가 바꿨다"
+     ]
     }
    }
   },

@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.101Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.288Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -32,7 +36,7 @@
     "answer": "보크",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "주자가 없을 때 같은 부정 투구를 하면 주자를 속일 대상이 없으므로 볼 하나로 처리된다.",
+    "explanation": "주자가 없을 때는 보크가 선언되지 않고, 투수판을 밟지 않고 던지는 것 같은 부정 투구는 볼로 처리된다.",
     "score": {
      "version": "score-v1",
      "acc": 4,
@@ -50,6 +54,14 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "explanation": "주자가 없을 때 같은 부정 투구를 하면 주자를 속일 대상이 없으므로 볼 하나로 처리된다."
+     },
+     "src": [
+      "웹 en.wikipedia Balk — \"같은 부정 투구는 볼\" 은 일부 동작에만 맞다"
+     ]
     }
    }
   }

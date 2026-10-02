@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.056Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.303Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -28,7 +32,7 @@
     "mode": "가",
     "pairedWith": "kr-screen/4#005",
     "pairDb": 585,
-    "question": "대사가 거의 모두 제주어라 국내 개봉 때도 한국어 자막을 달았고, 제사 절차의 이름을 따라 장을 나눈 4·3 영화는?",
+    "question": "대사가 거의 모두 제주어라 국내 개봉 때도 한국어 자막을 달았고, 제사 절차의 이름을 따라 장을 나눈 한국 영화는?",
     "answer": "지슬",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -54,6 +58,14 @@
     "generalHintVersion": "hint-v3",
     "hintCheck": {
      "warn": []
+    },
+    "r031": {
+     "before": {
+      "question": "대사가 거의 모두 제주어라 국내 개봉 때도 한국어 자막을 달았고, 제사 절차의 이름을 따라 장을 나눈 4·3 영화는?"
+     },
+     "src": [
+      "짝 표본 same — '4·3 영화' (1회차) 를 뺐다 · Korea Herald (장 이름·자막 확인 — V004 unsure 해소)"
+     ]
     }
    }
   },
@@ -103,11 +115,11 @@
     "mode": "가",
     "pairedWith": "kr-screen/4#003",
     "pairDb": 583,
-    "question": "중학생 은희가 한문 학원 선생님 영지를 만나며 조금씩 자라는 과정을 그린 김보라 감독의 장편 데뷔작은?",
+    "question": "2019년 베를린 국제영화제 제너레이션 14플러스 부문에서 대상을 받은 한국 영화는?",
     "answer": "벌새",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "베를린 국제영화제 제너레이션 14플러스 부문에서 대상을 받았습니다.",
+    "explanation": "중학생 은희가 한문 학원 선생님 영지를 만나며 자라는 이야기로, 김보라 감독의 장편 데뷔작입니다.",
     "score": {
      "version": "score-v1",
      "acc": 5,
@@ -122,7 +134,17 @@
     "factCheck": [],
     "gate": {
      "pass": true
-    }
+    },
+    "r031": {
+     "before": {
+      "question": "중학생 은희가 한문 학원 선생님 영지를 만나며 조금씩 자라는 과정을 그린 김보라 감독의 장편 데뷔작은?",
+      "explanation": "베를린 국제영화제 제너레이션 14플러스 부문에서 대상을 받았습니다."
+     },
+     "src": [
+      "V004 + 웹 (2019 베를린 제너레이션 14플러스 그랑프리) — 질문과 해설을 맞바꿨다"
+     ]
+    },
+    "roundDupOk": "정답 \"벌새\" 가 같은 animals/2#r030g-002 는 새(동물) — 다른 대상"
    }
   }
  ]

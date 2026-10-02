@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.058Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.286Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -63,7 +67,7 @@
     "mode": "가",
     "pairedWith": "animation/5#007",
     "pairDb": 2069,
-    "question": "맥스 플라이셔가 동생 데이브에게 광대 옷을 입혀 찍은 필름을 한 장씩 따라 그려 '광대 코코'를 만든 기법은?",
+    "question": "맥스 플라이셔가 특허를 내고, 동생 데이브에게 광대 옷을 입혀 찍은 필름으로 '광대 코코'를 만든 장치이자 기법은?",
     "answer": "로토스코프",
     "acceptedAnswers": [
      "로토스코핑"
@@ -89,6 +93,14 @@
     "generalHintVersion": "hint-v3",
     "hintCheck": {
      "warn": []
+    },
+    "r031": {
+     "before": {
+      "question": "맥스 플라이셔가 동생 데이브에게 광대 옷을 입혀 찍은 필름을 한 장씩 따라 그려 '광대 코코'를 만든 기법은?"
+     },
+     "src": [
+      "경계선 — '필름을 따라 그린 기법' 은 1회차 정의라 뺐다 · fleischerstudios.com"
+     ]
     }
    }
   },

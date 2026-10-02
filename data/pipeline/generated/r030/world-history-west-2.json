@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.093Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.316Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -67,13 +71,13 @@
     "mode": "가",
     "pairedWith": "world-history-west/2#007",
     "pairDb": 1347,
-    "question": "보카치오의 '데카메론'에서 젊은 남녀 열 명이 피렌체를 떠나 교외로 피신한 까닭이 된, 14세기 유럽을 휩쓴 전염병은?",
+    "question": "보카치오의 '데카메론'에서 젊은 남녀 열 명이 피렌체를 떠나 교외로 피신한 까닭이 된 전염병은?",
     "answer": "흑사병",
     "acceptedAnswers": [
      "페스트"
     ],
     "originalTitleVariants": [],
-    "explanation": "쥐에 붙어 사는 벼룩이 페스트균을 사람에게 옮긴 것으로 봅니다.",
+    "explanation": "14세기 유럽을 휩쓴 이 병은 쥐에 붙어 사는 벼룩이 균을 사람에게 옮긴 것으로 봅니다.",
     "score": {
      "version": "score-v1",
      "acc": 4,
@@ -88,6 +92,15 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "보카치오의 '데카메론'에서 젊은 남녀 열 명이 피렌체를 떠나 교외로 피신한 까닭이 된, 14세기 유럽을 휩쓴 전염병은?",
+      "explanation": "쥐에 붙어 사는 벼룩이 페스트균을 사람에게 옮긴 것으로 봅니다."
+     },
+     "src": [
+      "R031 짝 재검 same — \"14세기 유럽을 휩쓴 전염병\"이 1회차 정의와 같아 데카메론 없이 풀림"
+     ]
     }
    }
   },
@@ -103,13 +116,13 @@
     "mode": "가",
     "pairedWith": "world-history-west/2#006",
     "pairDb": 1346,
-    "question": "템스강 가의 풀밭 러니미드에서 잉글랜드의 존 왕이 귀족들의 요구에 밀려 승인한 문서는?",
+    "question": "승인된 지 몇 달 만에 교황이 무효라고 선언했지만, 뒤에 여러 차례 고쳐 다시 반포된 잉글랜드의 문서는?",
     "answer": "마그나 카르타",
     "acceptedAnswers": [
      "대헌장"
     ],
     "originalTitleVariants": [],
-    "explanation": "승인 몇 달 뒤 교황이 무효를 선언해 내전이 벌어졌고, 이후 여러 차례 고쳐 다시 반포되었습니다.",
+    "explanation": "템스강 가의 풀밭 러니미드에서 존 왕이 귀족들의 요구에 밀려 승인했습니다.",
     "score": {
      "version": "score-v1",
      "acc": 4,
@@ -124,6 +137,15 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "템스강 가의 풀밭 러니미드에서 잉글랜드의 존 왕이 귀족들의 요구에 밀려 승인한 문서는?",
+      "explanation": "승인 몇 달 뒤 교황이 무효를 선언해 내전이 벌어졌고, 이후 여러 차례 고쳐 다시 반포되었습니다."
+     },
+     "src": [
+      "경계선 — 질문과 해설을 맞바꿨다 · en.wikipedia Magna Carta (1215.8 인노첸시오 3세)"
+     ]
     }
    }
   },
@@ -139,7 +161,7 @@
     "mode": "가",
     "pairedWith": "world-history-west/2#008",
     "pairDb": 1348,
-    "question": "독일 함부르크 자동차 번호판의 'HH'는 이 연합에 속했던 도시임을 내세우는 옛 칭호를 줄인 것입니다. 발트해와 북해 무역을 주름잡았던 이 중세 상업 도시 연합은?",
+    "question": "독일 함부르크 자동차 번호판의 'HH'는 이 연합에 속했던 도시임을 내세우는 옛 칭호를 줄인 것입니다. 이 연합은?",
     "answer": "한자 동맹",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -161,6 +183,14 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "독일 함부르크 자동차 번호판의 'HH'는 이 연합에 속했던 도시임을 내세우는 옛 칭호를 줄인 것입니다. 발트해와 북해 무역을 주름잡았던 이 중세 상업 도시 연합은?"
+     },
+     "src": [
+      "경계선 — '발트해와 북해 무역' (1회차) 을 뺐다 · en.wikipedia Lufthansa (HH = Hansestadt Hamburg)"
+     ]
     }
    }
   }

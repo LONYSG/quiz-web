@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.070Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.296Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -28,7 +32,7 @@
     "mode": "가",
     "pairedWith": "invention/2#012",
     "pairDb": 2302,
-    "question": "러시아어로 '동반자'라는 뜻의 이름을 가진, 인류 최초의 인공위성은?",
+    "question": "러시아어로 '길동무·동반자'라는 뜻의 이름이 붙은 인공위성은?",
     "answer": "스푸트니크",
     "acceptedAnswers": [
      "스푸트니크 1호"
@@ -49,6 +53,14 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "러시아어로 '동반자'라는 뜻의 이름을 가진, 인류 최초의 인공위성은?"
+     },
+     "src": [
+      "V004 unsure → '인류 최초' 를 빼 이름 뜻이 답을 정하게 · en.wikipedia Sputnik 1"
+     ]
     }
    }
   },

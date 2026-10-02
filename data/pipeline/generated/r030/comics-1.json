@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.058Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.291Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -28,7 +32,7 @@
     "mode": "가",
     "pairedWith": "comics/1#005",
     "pairDb": 2197,
-    "question": "'바람의 검심' 작가 밑에서 어시스턴트로 일하던 오다 에이치로가 그린 해적 만화는?",
+    "question": "오다 에이치로는 '바람의 검심' 작가 밑에서 어시스턴트로 일했습니다. 그가 그린 대표작은?",
     "answer": "원피스",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -47,6 +51,14 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "'바람의 검심' 작가 밑에서 어시스턴트로 일하던 오다 에이치로가 그린 해적 만화는?"
+     },
+     "src": [
+      "R031 짝 재검 same — 묻는 문장의 '해적 만화'만으로 1회차(해적왕 만화)를 아는 사람이 바로 답한다."
+     ]
     }
    }
   },
@@ -130,7 +142,7 @@
     "mode": "가",
     "pairedWith": "comics/1#008",
     "pairDb": 2200,
-    "question": "교통사고로 잃은 아들을 대신하려고 과학성 장관 덴마 박사가 만든 소년 로봇은?",
+    "question": "과학성 장관 덴마 박사가 교통사고로 잃은 아들을 대신하려고 만든 만화 주인공은?",
     "answer": "아톰",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -151,6 +163,14 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "교통사고로 잃은 아들을 대신하려고 과학성 장관 덴마 박사가 만든 소년 로봇은?"
+     },
+     "src": [
+      "R031 짝 재검 same — 묻는 문장의 '소년 로봇'이 1회차의 정의 그대로라 덴마 박사 사실 없이 풀린다."
+     ]
     }
    }
   }

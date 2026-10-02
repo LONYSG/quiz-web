@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.060Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.307Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -28,11 +32,11 @@
     "mode": "가",
     "pairedWith": "popular-music/2#001",
     "pairDb": 1876,
-    "question": "개국 초기 흑인 가수의 뮤직비디오를 거의 틀지 않아 비판받다가, 마이클 잭슨의 'Billie Jean'을 내보내며 그 벽이 허물어졌다고 평가받는 미국 방송은?",
+    "question": "개국 때 아폴로 11호의 달 착륙 장면에 방송사 깃발을 합성한 로고 영상을 썼고, 초기에 흑인 가수를 거의 다루지 않는다는 비판을 받은 미국 방송은?",
     "answer": "MTV",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "개국 때 쓴 로고 영상은 아폴로 11호의 달 착륙 장면에 방송사 깃발을 합성한 것이었습니다.",
+    "explanation": "흑인 가수의 뮤직비디오를 거의 틀지 않던 벽은 마이클 잭슨의 'Billie Jean'을 내보내며 허물어졌다고 평가받습니다.",
     "score": {
      "version": "score-v1",
      "acc": 3,
@@ -47,6 +51,15 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "개국 초기 흑인 가수의 뮤직비디오를 거의 틀지 않아 비판받다가, 마이클 잭슨의 'Billie Jean'을 내보내며 그 벽이 허물어졌다고 평가받는 미국 방송은?",
+      "explanation": "개국 때 쓴 로고 영상은 아폴로 11호의 달 착륙 장면에 방송사 깃발을 합성한 것이었습니다."
+     },
+     "src": [
+      "R031 짝 재검 same — '개국 초기 뮤직비디오를 튼 미국 방송'은 1회차 정의로 바로 풀림"
+     ]
     }
    }
   },
@@ -62,7 +75,7 @@
     "mode": "가",
     "pairedWith": "popular-music/2#002",
     "pairDb": 1877,
-    "question": "밥 겔도프가 자선 싱글 'Do They Know It's Christmas?'를 낸 다음 해인 1985년에 기획한 대형 자선 공연은?",
+    "question": "밥 겔도프가 자선 싱글 'Do They Know It's Christmas?'를 낸 다음 해에 기획한 공연은?",
     "answer": "라이브 에이드",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -81,6 +94,14 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "밥 겔도프가 자선 싱글 'Do They Know It's Christmas?'를 낸 다음 해인 1985년에 기획한 대형 자선 공연은?"
+     },
+     "src": [
+      "R031 짝 재검 same — '1985년 대형 자선 공연'은 1회차 정의 그대로"
+     ]
     }
    }
   },
@@ -130,7 +151,7 @@
     "mode": "가",
     "pairedWith": "popular-music/2#009",
     "pairDb": 1883,
-    "question": "소니 공동 창업자 이부카 마사루가 긴 비행기 출장길에도 음악을 듣고 싶다며 만들게 했다고 전하는 휴대용 음악 기기는?",
+    "question": "일본 전자 회사의 공동 창업자 이부카 마사루가 긴 비행기 출장길에도 음악을 듣고 싶다며 만들게 했다고 전하는 휴대용 음악 기기는?",
     "answer": "워크맨",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
@@ -151,6 +172,14 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "소니 공동 창업자 이부카 마사루가 긴 비행기 출장길에도 음악을 듣고 싶다며 만들게 했다고 전하는 휴대용 음악 기기는?"
+     },
+     "src": [
+      "R031 짝 재검 same — '소니의 휴대용 음악 기기'는 1회차 정의로 바로 풀림"
+     ]
     }
    }
   },
@@ -166,11 +195,11 @@
     "mode": "가",
     "pairedWith": "popular-music/2#007",
     "pairDb": 1882,
-    "question": "네덜란드의 필립스와 일본의 소니가 함께 규격을 만들어 1982년 상용화한 디지털 음악 원반은?",
+    "question": "네덜란드의 필립스와 일본의 소니가 함께 규격을 만들어 1982년 상용화한 매체는?",
     "answer": "CD",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "표면의 미세한 요철을 레이저로 읽기 때문에 바늘이 닿는 LP와 달리 들어도 닳지 않습니다.",
+    "explanation": "음악을 디지털로 담는 원반으로, 표면의 미세한 요철을 레이저로 읽기 때문에 바늘이 닿는 LP와 달리 들어도 닳지 않습니다.",
     "score": {
      "version": "score-v1",
      "acc": 3,
@@ -185,6 +214,15 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "네덜란드의 필립스와 일본의 소니가 함께 규격을 만들어 1982년 상용화한 디지털 음악 원반은?",
+      "explanation": "표면의 미세한 요철을 레이저로 읽기 때문에 바늘이 닿는 LP와 달리 들어도 닳지 않습니다."
+     },
+     "src": [
+      "R031 짝 재검 same — '1982년 디지털 음악 원반'은 1회차(1980년대 디지털 음반 매체)로 바로 풀림"
+     ]
     }
    }
   }

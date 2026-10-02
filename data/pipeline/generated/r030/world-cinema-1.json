@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.052Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.311Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -109,7 +113,7 @@
     "mode": "가",
     "pairedWith": "world-cinema/1#003",
     "pairDb": 1285,
-    "question": "피아니스트 샘에게 'As Time Goes By'를 다시 연주해 달라고 청하는 장면으로 유명한 1942년 영화는?",
+    "question": "피아니스트 샘에게 'As Time Goes By'를 다시 연주해 달라고 청하는 장면으로 유명한 영화는?",
     "answer": "카사블랑카",
     "acceptedAnswers": [],
     "originalTitleVariants": [
@@ -130,6 +134,14 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "피아니스트 샘에게 'As Time Goes By'를 다시 연주해 달라고 청하는 장면으로 유명한 1942년 영화는?"
+     },
+     "src": [
+      "R031 짝 재검 same — '1942년 영화'는 1회차 연도로 바로 풀림"
+     ]
     }
    }
   },
@@ -145,7 +157,7 @@
     "mode": "가",
     "pairedWith": "world-cinema/1#004",
     "pairDb": 1286,
-    "question": "히치콕이 결말을 숨기려고 원작 소설을 최대한 사들이고, 상영이 시작된 뒤에는 관객을 들여보내지 말라고 극장에 요구한 1960년 영화는?",
+    "question": "히치콕이 결말을 숨기려고 원작 소설을 최대한 사들이고, 상영이 시작된 뒤에는 관객을 들여보내지 말라고 극장에 요구한 영화는?",
     "answer": "사이코",
     "acceptedAnswers": [],
     "originalTitleVariants": [
@@ -166,6 +178,14 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "히치콕이 결말을 숨기려고 원작 소설을 최대한 사들이고, 상영이 시작된 뒤에는 관객을 들여보내지 말라고 극장에 요구한 1960년 영화는?"
+     },
+     "src": [
+      "R031 짝 재검 same — '히치콕의 1960년 영화'는 1회차로 바로 풀림"
+     ]
     }
    }
   },
@@ -181,7 +201,7 @@
     "mode": "가",
     "pairedWith": "world-cinema/1#005",
     "pairDb": 1287,
-    "question": "남북전쟁 때 북군 장군이었던 루 월리스의 소설을 원작으로 한 1959년 영화는?",
+    "question": "남북전쟁 때 북군 장군이었던 루 월리스의 소설을 원작으로 한 영화는?",
     "answer": "벤허",
     "acceptedAnswers": [],
     "originalTitleVariants": [
@@ -202,6 +222,14 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "남북전쟁 때 북군 장군이었던 루 월리스의 소설을 원작으로 한 1959년 영화는?"
+     },
+     "src": [
+      "R031 짝 재검 same — '1959년 영화'는 1회차 연도로 바로 풀림"
+     ]
     }
    }
   }

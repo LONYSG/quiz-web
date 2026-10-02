@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.114Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.292Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,7 +38,7 @@
      "회로도"
     ],
     "originalTitleVariants": [],
-    "explanation": "처음에 지하철 측은 너무 과감하다며 망설였지만 1933년 시험 인쇄본이 큰 인기를 얻어 채택되었고, 이후 세계 지하철 노선도의 본보기가 되었다.",
+    "explanation": "처음에 지하철 측은 너무 과감하다며 망설였지만 1932년 시험 인쇄본이 호평을 받아 1933년 정식으로 펴냈고, 이후 세계 지하철 노선도의 본보기가 되었다.",
     "score": {
      "version": "score-v1",
      "acc": 3,
@@ -54,10 +58,20 @@
     "gate": {
      "pass": true
     },
-    "generalHint": "그가 일하던 곳은 지하철 회사의 신호 부서였으니, 그곳에서 다루던 배선 도면을 떠올려 보자.",
+    "generalHint": "그가 일한 곳은 지하철 회사의 신호 부서였다.",
     "generalHintVersion": "hint-v3",
     "hintCheck": {
      "warn": []
+    },
+    "r031": {
+     "before": {
+      "generalHint": "그가 일하던 곳은 지하철 회사의 신호 부서였으니, 그곳에서 다루던 배선 도면을 떠올려 보자.",
+      "explanation": "처음에 지하철 측은 너무 과감하다며 망설였지만 1933년 시험 인쇄본이 큰 인기를 얻어 채택되었고, 이후 세계 지하철 노선도의 본보기가 되었다."
+     },
+     "src": [
+      "V004 힌트 fix — \"배선 도면\" 은 정답의 다른 이름 / en.wikipedia Harry Beck",
+      "V004 + en.wikipedia Harry Beck"
+     ]
     }
    }
   }

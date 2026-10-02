@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.116Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.293Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -32,7 +36,7 @@
     "answer": "흑요석",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "날이 금속 메스보다 얇고 날카롭게 깨져 오늘날에도 일부 정밀 수술용 칼날로 쓰인다.",
+    "explanation": "날이 금속 메스보다 훨씬 얇고 날카롭게 깨져, 일부 외과의가 정밀 수술에 시험 삼아 쓰기도 한다.",
     "score": {
      "version": "score-v1",
      "acc": 5,
@@ -51,6 +55,14 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "explanation": "날이 금속 메스보다 얇고 날카롭게 깨져 오늘날에도 일부 정밀 수술용 칼날로 쓰인다."
+     },
+     "src": [
+      "V004 + CNN 2015 (FDA 미승인 · 일부 사용)"
+     ]
     }
    }
   }

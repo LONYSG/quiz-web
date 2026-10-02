@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.029Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.284Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -32,7 +36,7 @@
     "answer": "낙타",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "라마·알파카 같은 같은 무리의 동물도 타원형 적혈구를 가지며, 포유류에서는 이 무리에서만 보이는 특징으로 꼽힙니다.",
+    "explanation": "라마·알파카 같은 무리의 동물도 타원형 적혈구를 가지며, 포유류에서는 이 무리에서만 보이는 특징으로 꼽힙니다.",
     "score": {
      "version": "score-v1",
      "acc": 5,
@@ -49,6 +53,14 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "explanation": "라마·알파카 같은 같은 무리의 동물도 타원형 적혈구를 가지며, 포유류에서는 이 무리에서만 보이는 특징으로 꼽힙니다."
+     },
+     "src": [
+      "V004 — \"같은 같은\" 오타"
+     ]
     }
    }
   },
@@ -189,7 +201,7 @@
     "answer": "코끼리",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "오늘날 살아 있는 가장 가까운 친척은 바다에 사는 듀공과 매너티로 알려져 있습니다.",
+    "explanation": "오늘날 살아 있는 친척 가운데 바다에 사는 듀공과 매너티가 가까운 무리로 꼽힙니다.",
     "score": {
      "version": "score-v1",
      "acc": 5,
@@ -204,6 +216,14 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "explanation": "오늘날 살아 있는 가장 가까운 친척은 바다에 사는 듀공과 매너티로 알려져 있습니다."
+     },
+     "src": [
+      "R031 짝 재검 (ok) — 사실 표시 — 바위너구리도 함께 꼽혀 단정을 풀었다 · GEN 이 고쳐 썼다"
+     ]
     }
    }
   }

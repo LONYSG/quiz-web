@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.055Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.303Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -66,7 +70,7 @@
     "answer": "대장금",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "주제가 '오나라'의 가사는 옛 노래처럼 들리도록 지어 낸 말이라는 설명이 있습니다.",
+    "explanation": "이병훈 PD는 이 작품 뒤에도 '이산', '동이' 같은 사극을 연출했습니다.",
     "score": {
      "version": "score-v1",
      "acc": 5,
@@ -83,6 +87,14 @@
     ],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "explanation": "주제가 '오나라'의 가사는 옛 노래처럼 들리도록 지어 낸 말이라는 설명이 있습니다."
+     },
+     "src": [
+      "웹 경향신문 2010 (이산·동이 연출) — '오나라' 가사 설명은 작곡가 설명과 달라 뺐다"
+     ]
     }
    }
   },

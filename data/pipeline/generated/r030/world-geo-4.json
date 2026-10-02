@@ -13,7 +13,11 @@
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
   "generatedAt": "2026-10-02T00:28:55.040Z",
-  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)"
+  "note": "★ R030 심화 생성 — 적재하지 않았다. VERIFY 판정(중복·사실·힌트 세기) 뒤 적재한다. (가)=1회차와 같은 답·더 깊은 각도(pairedWith) / (나)=새 소재(소재를 먼저 전역 대조)",
+  "r031": {
+   "at": "2026-10-02T12:39:43.314Z",
+   "note": "V004 반영 · 미확인 사실 확인 · 짝 재검 (data/pipeline/audit/r031-fixes.json)"
+  }
  },
  "items": [
   {
@@ -86,6 +90,11 @@
     "generalHintVersion": "hint-v3",
     "hintCheck": {
      "warn": []
+    },
+    "discarded": {
+     "reason": "V004 짝 대조 drop — 고쳐도 1회차와 같은 사실",
+     "at": "r031",
+     "src": "V004 3-3"
     }
    }
   },
@@ -101,13 +110,13 @@
     "mode": "가",
     "pairedWith": "world-geo/4#004",
     "pairDb": 3304,
-    "question": "1986년 월드컵 8강 아르헨티나와 잉글랜드의 경기는 마라도나의 '신의 손' 골로 유명합니다. 이 경기를 유독 뜨겁게 만든, 4년 전 두 나라가 전쟁을 벌인 섬들은 어디일까요?",
+    "question": "영국의 해외 영토로, 수도가 스탠리인 남대서양의 섬들은?",
     "answer": "포클랜드",
     "acceptedAnswers": [
      "포클랜드 제도"
     ],
     "originalTitleVariants": [],
-    "explanation": "마라도나는 같은 경기에서 다섯 명을 제치는 단독 드리블 골도 넣어, 이 골은 '세기의 골'로 꼽힙니다.",
+    "explanation": "1986년 월드컵 8강 아르헨티나와 잉글랜드의 경기는 이 섬을 둘러싼 전쟁 4년 뒤라 유독 뜨거웠고, 마라도나의 '신의 손' 골이 나왔습니다.",
     "score": {
      "version": "score-v1",
      "acc": 4,
@@ -122,6 +131,16 @@
     "factCheck": [],
     "gate": {
      "pass": true
+    },
+    "r031": {
+     "before": {
+      "question": "1986년 월드컵 8강 아르헨티나와 잉글랜드의 경기는 마라도나의 '신의 손' 골로 유명합니다. 이 경기를 유독 뜨겁게 만든, 4년 전 두 나라가 전쟁을 벌인 섬들은 어디일까요?",
+      "explanation": "마라도나는 같은 경기에서 다섯 명을 제치는 단독 드리블 골도 넣어, 이 골은 '세기의 골'로 꼽힙니다."
+     },
+     "src": [
+      "V004 same-fact + en.wikipedia Falkland Islands",
+      "R031 — 질문에 정답 조각(유형 낱말)이 새로 들어가 바꿨다"
+     ]
     }
    }
   }
