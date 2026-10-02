@@ -534,7 +534,7 @@ try {
   console.log('');
   if (GATE_ONLY) console.log(`[load] ★ --gate-only — 아무것도 쓰지 않았다. 게이트를 통과한 것 ${inserted}건 / 정답 표기 ${answerRows}행`);
   else console.log(`[load] 적재 완료: 문제 ${inserted}건 / 정답 표기 ${answerRows}행`);
-  console.log(`[load] status=${status} / is_active=${isActive}`);
+  if (!GATE_ONLY) console.log(`[load] status=${status} / is_active=${isActive}`);
   console.log(`[load] normalizeAnswer 버전 ${NORMALIZE_VERSION}`);
   // ★ R024: 접근성 2 는 활성 풀의 5% 이내 (D-112)
   if (!DRY && !NO_SELECT && !GATE_ONLY) {
