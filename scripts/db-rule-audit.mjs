@@ -97,6 +97,32 @@ const TIME_WORDS = [
   '현재', '지금', '최근', '올해', '작년', '요즘', '현직', '가장 최신', '최신',
   '오늘날', '이번', '역대 최다', '역대 최고',
 ];
+/**
+ * ★ R032 — 답이 바뀌지 않는 "지금·오늘날·현재" 쓰임은 빼고 센다 (오탐 정리)
+ *   R031 실측: 의심 84건 중 81건이 '지금(68)·오늘날(13)·현재(3)' 이었고, 읽어 보니 전부 답이 바뀌지 않는 서술이었다
+ *     · 과거에서 지금까지 이어지는 상태 — "지금도 남아 있다 / 쓰인다 / 서 있다 / 불린다"
+ *     · 이름 대응 — "지금의 칼리닌그라드" · "오늘날 무엇이라 부르는가" · "지금 쓰는 이름"
+ *   ★ 남기는 것: 수·순위·사람을 묻는 쓰임 ("현재 몇 개 / 지금 누가 / 지금 가장") 과 나머지 낱말(최근·올해·현직 …)
+ *   ★ 낱말이 여러 번 나오면 **하나라도** 바뀔 수 있는 쓰임이면 후보로 남긴다
+ */
+const STABLE_AFTER = /^(도\s*(남|쓰|서|불|이어|전해|읽|살|쓰이|지켜|볼|있|그대로|해마다|매년)|의\s|날의\s|은\s|날\s*(흔히|우리|무엇|어떤|쓰|부르|남|전하)|\s*(쓰는|쓰이는|부르는|불리는|남아|전하는|우리가|흔히|그대로|볼 수|이어지는|우리말|이름|표기))/;
+const RISKY_AFTER = /^\s*(몇|누가|누구|가장|어느 팀|최고|최다|최대|소속)/;
+function timeWordHit(text) {
+  const t = text ?? '';
+  for (const w of TIME_WORDS) {
+    let from = 0;
+    for (;;) {
+      const i = t.indexOf(w, from); if (i < 0) break; from = i + w.length;
+      const after = t.slice(i + w.length, i + w.length + 12);
+      const soft = ['지금', '오늘날', '현재'].includes(w);
+      if (!soft) return w;
+      if (RISKY_AFTER.test(after)) return w;
+      // '지금·오늘날' 은 묻는 것이 수·순위·사람이 아니면 이어지는 상태를 말한다 (R032 실측 — 남은 37건을 읽어 확인)
+      if (w === '현재' && !STABLE_AFTER.test(after)) return w;
+    }
+  }
+  return null;
+}
 
 const findings = {
   expose: [],
@@ -188,7 +214,7 @@ for (const r of rows) {
   if (variants.length >= 3) findings.manyVariants.push({ ...base, count: variants.length, variants });
 
   // ── 시간 의존 후보
-  const hit = TIME_WORDS.find((w) => (r.question_text ?? '').includes(w));
+  const hit = timeWordHit(r.question_text);
   if (hit) findings.timeDependentSuspect.push({ ...base, word: hit });
 }
 
