@@ -29,13 +29,34 @@
 
 import { spawn, spawnSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
+import net from 'node:net';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SERVER_ENTRY = path.join(ROOT, 'server', 'dist', 'index.js');
 const CLIENT_INDEX = path.join(ROOT, 'client', 'dist', 'index.html');
-const PORT = Number(process.env.SMOKE_PORT ?? 3100);
+/**
+ * ★ 포트 — 지정하지 않으면 열 수 있는 후보를 고른다 (R033).
+ *   ★ Windows 가 TCP 구간을 동적으로 예약한다(Hyper-V·WSL 등 — 추정). R033 실측: 3039~3138 예약 →
+ *     기본값 3100 에서 서버가 EACCES 로 죽어 smoke 가 "기동 중 종료" 로 실패했다. 코드 결함이 아니다 (D-124 와 같은 원인).
+ */
+async function bindable(port) {
+  return new Promise((resolve) => {
+    const s = net.createServer();
+    s.once('error', () => resolve(false));
+    s.listen(port, '0.0.0.0', () => s.close(() => resolve(true)));
+  });
+}
+const PORT_CANDIDATES = process.env.SMOKE_PORT ? [Number(process.env.SMOKE_PORT)] : [3100, 3300, 4100, 5100, 6100];
+let PORT = PORT_CANDIDATES[0];
+for (const cand of PORT_CANDIDATES) {
+  if (await bindable(cand)) {
+    PORT = cand;
+    break;
+  }
+}
+if (PORT !== PORT_CANDIDATES[0]) console.log(`[smoke] ★ 포트 ${PORT} 를 쓴다 (앞 후보는 열 수 없었다)`);
 const BASE = `http://localhost:${PORT}`;
 const SKIP_BUILD = process.argv.includes('--no-build');
 

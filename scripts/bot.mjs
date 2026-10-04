@@ -1170,9 +1170,8 @@ async function scenarioLobby() {
     ['문제 수 0', { questionCount: 0, startMode: 'instant', countdownSec: 5 }],
     ['문제 수 201', { questionCount: 201, startMode: 'instant', countdownSec: 5 }],
     ['문제 수 소수점', { questionCount: 10.5, startMode: 'instant', countdownSec: 5 }],
-    ['카운트다운 2초', { questionCount: 10, startMode: 'countdown', countdownSec: 2 }],
-    ['카운트다운 61초', { questionCount: 10, startMode: 'countdown', countdownSec: 61 }],
-    ['시작 방식 오타', { questionCount: 10, startMode: 'INSTANT', countdownSec: 5 }],
+    // ★ R033 (Q-11 개정) — 시작 방식·카운트다운 초는 더 이상 검증하지 않는다(항상 5초로 맞춘다).
+    //   그 세 경우는 아래 [4] 에서 "거부하지 않고 5초로 맞춘다" 로 단정한다
   ];
   for (const [label, payload] of cases) {
     const from = host.mark();
@@ -1189,8 +1188,10 @@ async function scenarioLobby() {
   for (const [label, payload, expectCount] of [
     ['문제 수 1', { questionCount: 1, startMode: 'instant', countdownSec: 5 }, 1],
     ['문제 수 200', { questionCount: 200, startMode: 'instant', countdownSec: 5 }, 200],
-    ['카운트다운 3초', { questionCount: 5, startMode: 'countdown', countdownSec: 3 }, 5],
-    ['카운트다운 60초', { questionCount: 5, startMode: 'countdown', countdownSec: 60 }, 5],
+    // ★ R033 — 무엇을 보내도 거부하지 않고 countdown / 5초로 맞춘다
+    ['카운트다운 2초를 보내도', { questionCount: 5, startMode: 'countdown', countdownSec: 2 }, 5],
+    ['카운트다운 61초를 보내도', { questionCount: 5, startMode: 'countdown', countdownSec: 61 }, 5],
+    ['시작 방식 오타를 보내도', { questionCount: 5, startMode: 'INSTANT', countdownSec: 5 }, 5],
   ]) {
     const from = host.mark();
     host.socket.emit('lobby.updateSettings', payload);
@@ -1200,9 +1201,11 @@ async function scenarioLobby() {
       label,
     );
     expect(`${label} → 반영됨`, host.snapshot.room.settings.questionCount, expectCount);
+    expect(`${label} → ★ 시작 방식은 countdown`, host.snapshot.room.settings.startMode, 'countdown');
+    expect(`${label} → ★ 카운트다운은 5초`, host.snapshot.room.settings.countdownSec, 5);
   }
   // 게스트에게도 전파되어야 한다 (읽기 전용으로 같은 값을 본다)
-  expect('게스트도 같은 설정을 본다', guest.snapshot.room.settings.countdownSec, 60);
+  expect('게스트도 같은 설정을 본다 (5초 고정)', guest.snapshot.room.settings.countdownSec, 5);
 
   // ── 5. 권한 (guide 44절)
   log('\n[5] 비방장 권한 차단');
@@ -1340,11 +1343,12 @@ async function scenarioCountdown() {
   const startedEvent = host.events.find((e) => e.type === 'game.countdownStarted');
   const remainAtStart = endsAt - startedEvent.at;
   expectTrue(
-    '★ endsAt 이 서버 기준 절대 시각이다 (설정 30초와 오차 2초 이내)',
-    Math.abs(remainAtStart - 30000) < 2000,
+    // ★ R033 (Q-11 개정) — 시작은 항상 5초다 (예전 시나리오는 30초로 설정했다)
+    '★ endsAt 이 서버 기준 절대 시각이다 (5초 고정과 오차 1초 이내)',
+    Math.abs(remainAtStart - 5000) < 1000,
     `수신 시점 남은 시간 ${remainAtStart}ms`,
   );
-  await sleep(1200);
+  await sleep(800);
   const remainLater = endsAt - Date.now();
   expectTrue(
     '★ 남은 시간이 실제 경과만큼 줄어든다',
@@ -1382,8 +1386,8 @@ async function scenarioCountdown() {
   const startedAt = host.since(from, 'game.started')[0].at;
   const elapsed = startedAt - startRequestedAt;
   expectTrue(
-    '★ 3초 카운트다운이 지난 뒤에 시작된다 (2.5~5초)',
-    elapsed > 2500 && elapsed < 5000,
+    '★ 5초 카운트다운이 지난 뒤에 시작된다 (4.5~7초) — R033 고정',
+    elapsed > 4500 && elapsed < 7000,
     `${elapsed}ms 경과`,
   );
   expect('상태가 QUESTION_ACTIVE', host.snapshot.room.state, 'QUESTION_ACTIVE');
@@ -1397,7 +1401,7 @@ async function scenarioCountdown() {
   expect('games 1행', games.length, 1);
   expect('setting_question_count', games[0]?.setting_question_count, 4);
   expect('setting_start_mode', games[0]?.setting_start_mode, 'countdown');
-  expect('setting_countdown_sec', games[0]?.setting_countdown_sec, 3);
+  expect('setting_countdown_sec (R033 — 항상 5)', games[0]?.setting_countdown_sec, 5);
   expectTrue(
     'planned_question_count 가 출제 가능 수로 기록된다 (Q-21)',
     games[0]?.planned_question_count >= 4,

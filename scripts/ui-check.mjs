@@ -40,7 +40,8 @@
 // =============================================================================
 
 import { spawn } from 'node:child_process';
-import { existsSync, mkdtempSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
+import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -75,7 +76,29 @@ const CDP_PORT_CANDIDATES = process.env.UICHECK_CDP_PORT
   ? [Number(process.env.UICHECK_CDP_PORT)]
   : [9333, 9922, 19333, 29333, 39333];
 let CDP_PORT = CDP_PORT_CANDIDATES[0];
-const PORT = Number(process.env.UICHECK_PORT ?? 3101);
+/**
+ * ★ 서버 포트 — 지정하지 않으면 **열 수 있는 후보**를 고른다 (R033).
+ *   ★ D-124 와 같은 이유다. Windows 가 TCP 구간을 동적으로 예약한다 —
+ *     R033 실측: 3039~3138 이 예약되어 기본값 3101 에서 서버가 EACCES 로 죽었다.
+ */
+async function bindable(port) {
+  return new Promise((resolve) => {
+    const s = net.createServer();
+    s.once('error', () => resolve(false));
+    s.listen(port, '0.0.0.0', () => s.close(() => resolve(true)));
+  });
+}
+const PORT_CANDIDATES = process.env.UICHECK_PORT
+  ? [Number(process.env.UICHECK_PORT)]
+  : [3101, 3301, 4101, 5101, 6101];
+let PORT = PORT_CANDIDATES[0];
+for (const cand of PORT_CANDIDATES) {
+  if (await bindable(cand)) {
+    PORT = cand;
+    break;
+  }
+}
+if (PORT !== PORT_CANDIDATES[0]) console.log(`[ui-check] ★ 서버 포트 ${PORT} 를 쓴다 (앞 후보는 열 수 없었다)`);
 const EXTERNAL_URL = opt('--url', null);
 const BASE = EXTERNAL_URL ?? `http://localhost:${PORT}`;
 const WIDTHS = [320, 360, 390, 480, 720];
@@ -523,7 +546,33 @@ async function newPage(browser, label, isolated = false) {
  */
 const ONE_SCREEN = { w: 1280, h: 720 };
 
-async function measureOneScreen(page, label, { gate = true } = {}) {
+/**
+ * ★★ R033 — 테마 3종. 한 화면 게이트는 **테마마다** 통과해야 한다.
+ *   ★ 테마는 색·테두리·둥글기만 바꾸고 간격은 같게 두었지만, 테두리 두께가 달라 높이가 몇 px 달라질 수 있다.
+ * ★ DESIGN_SHOTS=1 이면 테마마다 docs/design/<테마>-<화면>.png 를 찍는다 (docs/design-review.md 가 쓴다).
+ */
+const THEME_IDS = ['pastel', 'pop', 'night'];
+const DESIGN_SHOTS = process.env.DESIGN_SHOTS === '1';
+
+async function measureOneScreen(page, label, { gate = true, shotName = null } = {}) {
+  const original = await page.evaluate('document.documentElement.dataset.theme || "pastel"');
+  let worst = 0;
+  for (const theme of THEME_IDS) {
+    await page.evaluate(`document.documentElement.dataset.theme = ${JSON.stringify(theme)}`);
+    const r = await measureOneScreenOnce(page, `${label} [${theme}]`, { gate });
+    worst = Math.max(worst, r);
+    if (DESIGN_SHOTS && shotName) {
+      const shot = await page.send('Page.captureScreenshot', { format: 'png' });
+      const dir = path.join(ROOT, 'docs', 'design');
+      if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+      writeFileSync(path.join(dir, `${theme}-${shotName}.png`), Buffer.from(shot.data, 'base64'));
+    }
+  }
+  await page.evaluate(`document.documentElement.dataset.theme = ${JSON.stringify(original)}`);
+  return worst;
+}
+
+async function measureOneScreenOnce(page, label, { gate = true } = {}) {
   await page.setViewport(ONE_SCREEN.w, ONE_SCREEN.h);
   await page.evaluate('window.scrollTo(0, 0)');
   await sleep(250);
@@ -690,7 +739,7 @@ function setUiHints() {
       `UPDATE questions SET general_hint = $1, general_hint_version = $2
         WHERE id IN (SELECT id FROM questions
                       WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
-                      ORDER BY id LIMIT 2)
+                      ORDER BY id LIMIT 3)
           AND general_hint IS NULL`,
       [UI_HINT_TEXT, UI_HINT_VERSION],
     );
@@ -923,7 +972,8 @@ try {
     // 문제 수를 출제 가능 수보다 크게 만든다
     // ★★ 출제 가능 수를 2개로 줄인다. 그러지 않으면 200문제 요청이 통과해 버린다
     //   ★ 근거는 shrinkAvailable 주석에 있다 (R014 실측으로 고쳤다).
-    const shrunk = await shrinkAvailable(`${ACCOUNT_PREFIX}%`, 2);
+    // ★ R033 — 3문제를 남긴다. 2번째 문제에서 **정답자 연출**을 보려면 한 문제가 더 필요하다
+    const shrunk = await shrinkAvailable(`${ACCOUNT_PREFIX}%`, 3);
     console.log(`  ★ 경험 기록 ${shrunk}행으로 출제 가능 수를 2개로 줄였다`);
     // ★ 참가자 변동이 있어야 서버가 다시 계산한다. 방을 다시 만들어 그 이벤트를 만든다
     await host.click('방 나가기');
@@ -989,7 +1039,10 @@ try {
     })()`);
     record('★ 난이도 버튼 라벨이 쪼개지지 않는다 (D-022)', noWrap);
 
-    await measureOneScreen(host, '로비 화면', { gate: false });
+    // ★★ R033 — 로비도 **게이트**가 되었다 (2.54 → 1.55 → 1.71 → ★ 1.00배).
+    //   ★ 세로 칸 두 개(설정·시작 | 초대·참가자)로 다시 짜고 참가자 목록을 고정 높이로 가뒀다.
+    //   ★ 이 시점의 로비는 "출제 가능 수 부족" 경고가 두 줄로 떠 있다 — 긴 쪽에서 잰다
+    await measureOneScreen(host, '로비 화면', { shotName: '1-lobby' });
     await host.setWidth(720);
     await sleep(250);
 
@@ -1096,7 +1149,7 @@ try {
     record('★ 알림이 자동으로 사라진다', goneByItself);
 
     console.log('\n[5] ★★ Phase 3 — 문제 화면이 실제로 나온다 (R014)');
-    await setQuestionCount(host, 2);
+    await setQuestionCount(host, 3);
     const cleared = await host.waitFor(
       "!document.body.innerText.includes('이대로 시작할 수 없습니다')",
       4000,
@@ -1104,11 +1157,12 @@ try {
     record('경고가 사라진다', cleared);
     await host.click('게임 시작');
     // ★★ 문제 화면이 실제로 그려지는지 본다. DOM 존재가 아니라 화면 좌표로 잰다
+    // ★ R033 (Q-11 개정) — 시작은 항상 5초 카운트다운이다. 그만큼 더 기다린다
     const qShown = await host.waitFor(
       "document.querySelector('.question-card .q-text') !== null",
-      8000,
+      14000,
     );
-    record('★★ 즉시 시작 후 문제 화면이 나온다', qShown);
+    record('★★ 5초 카운트다운 뒤 문제 화면이 나온다', qShown);
 
     // ★ 문제 시작 시 스크롤이 문제 카드로 이동한다. 레이아웃이 정착할 시간을 준다
     await sleep(400);
@@ -1421,6 +1475,43 @@ try {
       12000,
     );
 
+    // ── ★★ R033 — 정답자 연출. 2번째 문제는 방장이 정답을 친다
+    console.log('\n[5-4b] ★★ 정답 공개 — 정답자를 가장 크게 (R033)');
+    const q2Text = await host.evaluate("document.querySelector('.question-card .q-text')?.innerText ?? ''");
+    const q2Answer = await withPg(async (c) => {
+      const r = await c.query(
+        `SELECT a.answer_text FROM questions q JOIN question_answers a ON a.question_id = q.id
+          WHERE q.question_text = $1 ORDER BY a.is_primary DESC, a.id LIMIT 1`,
+        [q2Text],
+      );
+      return r.rows[0]?.answer_text ?? null;
+    });
+    record('정답을 DB 에서 찾았다 (검사 전제)', Boolean(q2Answer), q2Text.slice(0, 30));
+    await host.setInput('.chat-card input', q2Answer ?? '');
+    await host.click('전송');
+    const winnerShown = await host.waitFor("document.querySelector('.reveal-card .winner-name') !== null", 6000);
+    record('★★ 정답이 나오면 정답자 이름이 크게 나온다', winnerShown);
+    if (winnerShown) {
+      const sizes = await host.evaluate(`(() => {
+        const fs = (sel) => parseFloat(getComputedStyle(document.querySelector(sel)).fontSize);
+        return { winner: fs('.reveal-card .winner-name'), text: fs('.question-card .q-text') };
+      })()`);
+      record(
+        '★★ 정답자 이름이 화면에서 가장 큰 글씨다 (문제 지문보다 크다)',
+        sizes.winner > sizes.text,
+        JSON.stringify(sizes),
+      );
+      await measureOneScreen(host, '정답 공개 화면', { shotName: '3-reveal' });
+      await host.setWidth(720);
+      await sleep(250);
+    }
+    // 3번째 문제를 기다린다 (정답 공개 5초 뒤)
+    await host.waitFor(
+      `document.querySelector('.question-card .q-text') !== null &&
+       document.querySelector('.question-card .q-text').innerText !== ${JSON.stringify(q2Text)}`,
+      12000,
+    );
+
     // ── ★ 새 문제가 시작되면 지문이 화면 안으로 들어온다 (R014 실측 결함의 회귀 방지)
     const qAfterSkip = await host.onScreen('.question-card .q-text');
     record(
@@ -1545,7 +1636,7 @@ try {
       35000,
     );
     record('★★ 10초부터 일반 힌트와 초성 힌트가 함께 보인다 (R028)', bothShown);
-    if (bothShown) await measureOneScreen(host, '게임 화면 (힌트 두 줄)');
+    if (bothShown) await measureOneScreen(host, '게임 화면 (힌트 두 줄)', { shotName: '2-game' });
     await host.setWidth(720);
     await sleep(250);
 
@@ -1591,7 +1682,7 @@ try {
 
     // ★★ 결과 화면도 한 화면이어야 한다 (Phase 4 에서 요소가 늘었다)
     console.log('\n[5-6b] ★★★ 한 화면 검사 — 결과 화면');
-    await measureOneScreen(host, '결과 화면');
+    await measureOneScreen(host, '결과 화면', { shotName: '4-result' });
     await host.shot('one-screen-result');
     await host.setWidth(720);
     await sleep(250);
