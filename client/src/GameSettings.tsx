@@ -100,12 +100,6 @@ export default function GameSettings({
           <dd>{settings.questionCount}개</dd>
           <dt>난이도</dt>
           <dd>{formatDifficulties(settings.difficulties)}</dd>
-          <dt>시작 방식</dt>
-          <dd>
-            {settings.startMode === 'instant'
-              ? '즉시 시작'
-              : `${settings.countdownSec}초 카운트다운`}
-          </dd>
           <dt>출제 가능</dt>
           <dd>
             {availableQuestionCount === null ? '—' : `${availableQuestionCount}개`}
@@ -196,47 +190,11 @@ export default function GameSettings({
         {lastTierHint ? (
           <span className="form-error">난이도는 하나 이상 선택해야 합니다.</span>
         ) : (
-          <span className="note dim">하 = 일상·중학 / 중 = 고교·관심층 / 상 = 대학 교양·전공</span>
+          <span className="note dim">하 일상·중학 · 중 고교·관심층 · 상 대학·전공</span>
         )}
       </div>
 
-      <label className="settings-label">
-        시작 방식
-        <div className="preset-row">
-          <button
-            type="button"
-            className={draft.startMode === 'instant' ? 'preset active' : 'preset'}
-            onClick={() => push({ ...draft, startMode: 'instant' })}
-          >
-            즉시 시작
-          </button>
-          <button
-            type="button"
-            className={draft.startMode === 'countdown' ? 'preset active' : 'preset'}
-            onClick={() => push({ ...draft, startMode: 'countdown' })}
-          >
-            카운트다운
-          </button>
-        </div>
-      </label>
-
-      {draft.startMode === 'countdown' && (
-        <label className="settings-label">
-          카운트다운 ({RULES.COUNTDOWN_SEC_MIN}~{RULES.COUNTDOWN_SEC_MAX}초)
-          <div className="field-row">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={RULES.COUNTDOWN_SEC_MIN}
-              max={RULES.COUNTDOWN_SEC_MAX}
-              value={Number.isFinite(draft.countdownSec) ? draft.countdownSec : ''}
-              onChange={(e) =>
-                push({ ...draft, countdownSec: Number.parseInt(e.target.value, 10) })
-              }
-            />
-          </div>
-        </label>
-      )}
+      {/* ★★ R033 (Q-11 개정) — 시작 방식·카운트다운 초 칸을 없앴다. 시작은 항상 5초 뒤다 */}
 
       {!valid.ok && <p className="form-error">{valid.message}</p>}
     </section>

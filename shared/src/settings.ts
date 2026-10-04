@@ -122,23 +122,10 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
     };
   }
 
-  if (raw.startMode !== 'instant' && raw.startMode !== 'countdown') {
-    return { ok: false, field: 'startMode', message: '시작 방식이 올바르지 않습니다.' };
-  }
-
-  if (!isInt(raw.countdownSec)) {
-    return { ok: false, field: 'countdownSec', message: '카운트다운 초는 정수여야 합니다.' };
-  }
-  if (
-    raw.countdownSec < RULES.COUNTDOWN_SEC_MIN ||
-    raw.countdownSec > RULES.COUNTDOWN_SEC_MAX
-  ) {
-    return {
-      ok: false,
-      field: 'countdownSec',
-      message: `카운트다운은 ${RULES.COUNTDOWN_SEC_MIN}~${RULES.COUNTDOWN_SEC_MAX}초 사이여야 합니다.`,
-    };
-  }
+  // ★★ R033 (Q-11 개정) — 시작 방식은 **항상 5초 카운트다운**이다.
+  //   ★ 들어온 startMode / countdownSec 은 **보지 않는다.** 옛 클라이언트·봇이 무엇을 보내도
+  //     거부하지 않고 고정값으로 맞춘다 (거부하면 문제 수만 고치려던 요청까지 막힌다).
+  //   ★ 필드 자체는 남긴다 — games 기록·프로토콜 형식이 그대로 유지된다.
 
   // ── ★ 난이도 (R025)
   //   ★ 필드가 없으면 기본값(전체)을 쓴다. R024 이전 형식과 호환하기 위해서다.
@@ -174,8 +161,8 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
     ok: true,
     settings: {
       questionCount: raw.questionCount,
-      startMode: raw.startMode,
-      countdownSec: raw.countdownSec,
+      startMode: 'countdown',
+      countdownSec: RULES.START_COUNTDOWN_SEC,
       difficulties,
     },
   };

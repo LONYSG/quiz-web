@@ -64,9 +64,15 @@ export const RULES = {
   /** 문제 수 입력 범위. Q-10 */
   QUESTION_COUNT_MIN: 1,
   QUESTION_COUNT_MAX: 200,
-  /** 카운트다운 초 범위. Q-11 */
+  /** 카운트다운 초 범위. Q-11 — ★ R033 부터 쓰지 않는다 (시작은 항상 5초, START_COUNTDOWN_SEC) */
   COUNTDOWN_SEC_MIN: 3,
   COUNTDOWN_SEC_MAX: 60,
+  /**
+   * ★★ 게임 시작 카운트다운 (R033 / Q-11 개정 / 건우 확정).
+   *   "시작 방식은 무조건 '5초 후 시작' 만 하도록 해라. 카운트다운 선택은 필요 없다. 선택하는 칸도 필요 없다."
+   *   ★ 즉시 시작은 없다. 방장 취소 · 카운트다운 중 입장 · 만료 재검증(D-025)은 그대로다.
+   */
+  START_COUNTDOWN_SEC: 5,
   /** 채팅 최대 길이. Q-18 */
   CHAT_MAX_LENGTH: 100,
   /**

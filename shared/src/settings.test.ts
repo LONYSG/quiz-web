@@ -43,30 +43,21 @@ describe('validateRoomSettings — 문제 수 (Q-10: 1~200)', () => {
   });
 });
 
-describe('validateRoomSettings — 카운트다운 초 (Q-11: 3~60)', () => {
-  it.each([3, 4, 30, 59, 60])('%i 은 통과한다', (countdownSec) => {
-    expect(validateRoomSettings({ ...base, countdownSec }).ok).toBe(true);
-  });
-
-  it.each([0, 1, 2, 61, 300])('%i 은 거부한다', (countdownSec) => {
-    const r = validateRoomSettings({ ...base, countdownSec });
-    expect(r.ok).toBe(false);
-    if (!r.ok) expect(r.field).toBe('countdownSec');
-  });
-
-  it('★ 즉시 시작이어도 카운트다운 초를 검증한다', () => {
-    const r = validateRoomSettings({ ...base, startMode: 'instant', countdownSec: 1 });
-    expect(r.ok).toBe(false);
-  });
-});
-
-describe('validateRoomSettings — 시작 방식', () => {
-  it('instant / countdown 만 허용한다', () => {
-    expect(validateRoomSettings({ ...base, startMode: 'instant' }).ok).toBe(true);
-    expect(validateRoomSettings({ ...base, startMode: 'countdown' }).ok).toBe(true);
-    const r = validateRoomSettings({ ...base, startMode: 'INSTANT' });
-    expect(r.ok).toBe(false);
-    if (!r.ok) expect(r.field).toBe('startMode');
+describe('★ R033 — 시작은 항상 5초 카운트다운 (Q-11 개정)', () => {
+  // ★ 전에는 시작 방식(즉시/카운트다운)과 카운트다운 초(3~60)를 검증했다.
+  //   ★★ 건우 확정: "시작 방식은 무조건 5초 후 시작". 선택 칸이 없어졌다.
+  it.each([
+    { startMode: 'instant', countdownSec: 30 },
+    { startMode: 'countdown', countdownSec: 3 },
+    { startMode: 'INSTANT', countdownSec: 1 },
+    { startMode: undefined, countdownSec: undefined },
+  ])('들어온 값과 무관하게 countdown / 5초로 맞춘다 (%o)', (extra) => {
+    const r = validateRoomSettings({ ...base, ...extra });
+    expect(r.ok).toBe(true);
+    if (r.ok) {
+      expect(r.settings.startMode).toBe('countdown');
+      expect(r.settings.countdownSec).toBe(5);
+    }
   });
 });
 

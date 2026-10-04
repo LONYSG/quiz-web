@@ -71,6 +71,8 @@ export async function requestStart(room: Room): Promise<StartResult> {
     // ── 1. 설정값 재검증 (guide 44절: 클라이언트 검증만 믿지 않는다)
     const valid = validateRoomSettings(room.settings);
     if (!valid.ok) return { ok: false, reason: 'settings', message: valid.message };
+    // ★ R033 — 검증 결과로 덮는다. 옛 설정(즉시 시작 등)이 남아 있어도 항상 5초 카운트다운이 된다
+    room.settings = { ...valid.settings };
 
     if (activeCount(room) < 1) return { ok: false, reason: 'no_active' };
 

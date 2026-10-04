@@ -30,8 +30,9 @@ const accountRoom = new Map<string, string>();
 
 export const DEFAULT_SETTINGS: RoomSettings = {
   questionCount: 20,
-  startMode: 'instant',
-  countdownSec: 5,
+  // ★ R033 (Q-11 개정) — 항상 5초 카운트다운. 값은 validateRoomSettings 가 다시 맞춘다
+  startMode: 'countdown',
+  countdownSec: RULES.START_COUNTDOWN_SEC,
   // ★ 전체. 근거는 shared/settings.ts DEFAULT_DIFFICULTIES 주석 (D-115)
   difficulties: [...DEFAULT_DIFFICULTIES],
 };
