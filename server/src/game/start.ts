@@ -2,8 +2,8 @@
 // 게임 시작과 카운트다운 (guide 8·9절 / docs/04-PROTOCOL.md T01~T04)
 //
 // 이 파일이 담당하는 전이
-//   T01  LOBBY → COUNTDOWN         방장 game.start (startMode=countdown)
-//   T02  LOBBY → QUESTION_ACTIVE   방장 game.start (startMode=instant)
+//   T01  LOBBY → COUNTDOWN         방장 game.start (★ R033 부터 항상 5초 카운트다운)
+//   (T02  즉시 시작 — ★ R034 에서 코드 경로를 지웠다. Q-11 개정으로 즉시 시작이 없어졌다 / D-153)
 //   T03  COUNTDOWN → LOBBY         방장 game.cancelCountdown
 //   T04  COUNTDOWN → QUESTION_ACTIVE  now >= countdownEndsAt (전역 tick 이 호출)
 //
@@ -55,9 +55,9 @@ export function notEnoughMessage(available: number, wanted: number): string {
 }
 
 /**
- * 게임 시작 요청 (T01 / T02). 방장의 game.start 가 호출한다.
+ * 게임 시작 요청 (T01). 방장의 game.start 가 호출한다.
  *
- * startMode 에 따라 카운트다운을 걸거나 즉시 시작한다.
+ * ★ 항상 5초 카운트다운을 건다 (Q-11 개정). 실제 시작은 tick 의 startFromCountdown(T04) 이다.
  */
 export async function requestStart(room: Room): Promise<StartResult> {
   // ── 동기 게이트. await 앞에서 세운다.
@@ -78,7 +78,7 @@ export async function requestStart(room: Room): Promise<StartResult> {
 
     // ── 2. ★ 출제 가능 수 재검증 (Q-21). 캐시를 믿지 않고 지금 조회한다.
     const wanted = room.settings.questionCount;
-    const available = await countAvailableQuestions(participantIds(room), room.settings.difficulties);
+    const available = await countAvailableQuestions(participantIds(room), room.settings);
     room.availableQuestionCount = available;
 
     // ★ await 뒤 상태 재확인. 조회 중에 방이 바뀔 수 있다.
@@ -95,27 +95,20 @@ export async function requestStart(room: Room): Promise<StartResult> {
       return { ok: false, reason: 'not_enough', available, wanted };
     }
 
-    // ── 3. 전이
-    if (room.settings.startMode === 'countdown') {
-      // T01. 여기는 동기 블록이다.
-      room.state = 'COUNTDOWN';
-      room.settingsLocked = true;
-      room.countdownEndsAt = Date.now() + room.settings.countdownSec * 1000;
-      console.log(
-        `[game] ${room.id} 카운트다운 시작 ${room.settings.countdownSec}초 (문제 ${wanted}개 / 가능 ${available}개)`,
-      );
-      emitRoom(room, 'game.countdownStarted', {
-        endsAt: room.countdownEndsAt,
-        state: room.state,
-        settingsLocked: true,
-        settings: { ...room.settings },
-      });
-      return { ok: true };
-    }
-
-    // T02. 즉시 시작.
-    const ok = await beginGame(room, available);
-    return ok ? { ok: true } : { ok: false, reason: 'record_failed' };
+    // ── 3. 전이 (T01). 여기는 동기 블록이다.
+    room.state = 'COUNTDOWN';
+    room.settingsLocked = true;
+    room.countdownEndsAt = Date.now() + room.settings.countdownSec * 1000;
+    console.log(
+      `[game] ${room.id} 카운트다운 시작 ${room.settings.countdownSec}초 (문제 ${wanted}개 / 가능 ${available}개)`,
+    );
+    emitRoom(room, 'game.countdownStarted', {
+      endsAt: room.countdownEndsAt,
+      state: room.state,
+      settingsLocked: true,
+      settings: { ...room.settings },
+    });
+    return { ok: true };
   } finally {
     room.startingGame = false;
   }
@@ -158,7 +151,7 @@ export async function startFromCountdown(room: Room): Promise<StartResult> {
     // ★ 카운트다운 중 신규 입장이 허용되므로(Q-11) 참가자 집합이 바뀌었을 수 있다.
     //   출제 가능 수를 다시 확인한다. 사람이 늘면 수가 늘고, 나가면 줄어든다.
     const wanted = room.settings.questionCount;
-    const available = await countAvailableQuestions(participantIds(room), room.settings.difficulties);
+    const available = await countAvailableQuestions(participantIds(room), room.settings);
     room.availableQuestionCount = available;
 
     // ★ await 뒤 재확인. 조회 중에 방장이 취소했을 수 있다.
@@ -196,7 +189,7 @@ export async function startFromCountdown(room: Room): Promise<StartResult> {
 }
 
 /**
- * 실제 게임 시작. T02 / T04 가 공통으로 쓴다.
+ * 실제 게임 시작. T04 (카운트다운 만료) 가 부른다.
  *
  * ★★ 순서가 중요하다 (Phase 3 에서 바뀌었다)
  *   1. ★ DB 준비를 **먼저** 한다 — games INSERT + 출제 풀 + 경험 기록
@@ -221,8 +214,8 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     gameId = await insertGame({
       roomId: room.id,
       settingQuestionCount: settings.questionCount,
-      settingStartMode: settings.startMode,
-      settingCountdownSec: settings.startMode === 'countdown' ? settings.countdownSec : null,
+      settingStartMode: 'countdown',
+      settingCountdownSec: settings.countdownSec,
       plannedQuestionCount: availableAtStart,
     });
     await insertGamePlayers(gameId, roster);
@@ -239,7 +232,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   let experienced;
   try {
     [pool, experienced] = await Promise.all([
-      loadQuestionPool(settings.difficulties),
+      loadQuestionPool(settings),
       loadExperienced(participantIds(room)),
     ]);
   } catch (err) {
@@ -252,7 +245,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     console.error(`[game] ★ ${room.id} 준비 중 다른 경로로 게임이 시작되었다. 중단한다.`);
     return false;
   }
-  if (room.state !== 'QUESTION_ACTIVE' && room.state !== 'LOBBY' && room.state !== 'COUNTDOWN') {
+  if (room.state !== 'COUNTDOWN') {
     return false;
   }
   if (activeCount(room) < 1) return false;

@@ -16,9 +16,8 @@
 //     ★ 다시 계산하면 정규화 버전이 바뀌었을 때 DB 와 메모리가 조용히 갈라진다.
 // =============================================================================
 
-import { difficultyScores, type DifficultyTier } from '@quiz/shared';
 import { query } from './pool.js';
-import { difficultyWhere, POOL_WHERE } from './questions.js';
+import { filterParams, filterWhere, POOL_WHERE, type PoolFilter } from './questions.js';
 
 /**
  * 출제 풀의 문제 하나.
@@ -52,7 +51,7 @@ export interface PoolQuestion {
  *   ★ 뷰가 없다고 게임이 멈추면 안 되므로 두 경로를 모두 둔다.
  */
 export async function loadQuestionPool(
-  difficulties: readonly DifficultyTier[],
+  filter: PoolFilter,
 ): Promise<PoolQuestion[]> {
   const viewCheck = await query<{ n: number }>(
     `SELECT 1 AS n FROM information_schema.views WHERE table_name = 'category_tree'`,
@@ -112,9 +111,9 @@ export async function loadQuestionPool(
           GROUP BY question_id
        ) a ON a.question_id = q.id
       WHERE ${POOL_WHERE}
-        -- ★★ R025 — 선택한 난이도만. countAvailableQuestions 와 같은 조건이다
-        AND ${difficultyWhere('$1')}`,
-    [difficultyScores(difficulties)],
+        -- ★★ R025 / R034 — 선택한 난이도 × 분야만. countAvailableQuestions 와 같은 조건이다
+        AND ${filterWhere(1)}`,
+    filterParams(filter),
   );
 
   const out: PoolQuestion[] = [];

@@ -18,6 +18,9 @@ export {
   DEFAULT_DIFFICULTIES,
   difficultyScores,
   formatDifficulties,
+  GAME_TOPICS,
+  DEFAULT_TOPICS,
+  formatTopics,
 } from './settings.js';
 export type {
   RoomSettingsInput,
@@ -25,5 +28,7 @@ export type {
   StartMode,
   DifficultyTier,
   DifficultyTierInfo,
+  GameTopic,
+  GameTopicInfo,
 } from './settings.js';
 export * from './protocol.js';

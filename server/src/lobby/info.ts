@@ -49,7 +49,7 @@ export async function refreshLobbyInfo(room: Room): Promise<void> {
   const ids = participantIds(room);
   if (ids.length === 0) return;
   // ★ 조회 중에 방장이 난이도를 또 바꿀 수 있다. 낡은 결과로 덮어쓰지 않도록 기억해 둔다
-  const diffKey = room.settings.difficulties.join(',');
+  const filterKey = `${room.settings.difficulties.join(',')}|${room.settings.topics.join(',')}`;
 
   try {
     const [total, counts, available] = await Promise.all([
@@ -57,9 +57,10 @@ export async function refreshLobbyInfo(room: Room): Promise<void> {
       //   ★ 경험률은 그 사람이 문제 DB 를 얼마나 봤는가이지, 이 방 설정의 값이 아니다.
       countActiveQuestions(),
       countExperiencedByAccount(ids),
-      countAvailableQuestions(ids, room.settings.difficulties),
+      countAvailableQuestions(ids, room.settings),
     ]);
-    if (room.settings.difficulties.join(',') !== diffKey) return; // 더 새로운 조회가 뒤따른다
+    // 더 새로운 조회가 뒤따른다 (★ R034 — 분야도 같은 방식으로 본다)
+    if (`${room.settings.difficulties.join(',')}|${room.settings.topics.join(',')}` !== filterKey) return;
 
     // ★ 조회 중에 참가자가 바뀌었을 수 있다. 지금 방에 있는 사람만 남긴다.
     const byAccount = new Map(counts.map((c) => [c.accountId, c.experienced]));

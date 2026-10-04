@@ -12,7 +12,7 @@
 //     Neon 같은 서버리스 DB는 스케일 투 제로가 영원히 발동하지 않는다.
 // =============================================================================
 
-import { difficultyScores, type DifficultyTier } from '@quiz/shared';
+import { difficultyScores, type DifficultyTier, type GameTopic } from '@quiz/shared';
 import { query } from './pool.js';
 
 /**
@@ -35,6 +35,33 @@ export const POOL_WHERE = `q.status = 'approved' AND q.is_active AND q.question_
  */
 export function difficultyWhere(param: string): string {
   return `q.difficulty_score = ANY(${param}::int[])`;
+}
+
+/**
+ * ★★ 분야 조건 (R034). `$n` 자리에 분야 키 배열(text[])을 넘긴다.
+ *   ★ 묶음은 뷰 category_game_topics 가 계산한다 (migrations/0009). 설정은 categories.game_topic 한 곳이다.
+ *   ★ 묶음이 없는(NULL) 카테고리의 문제는 어떤 분야에도 들지 않는다 — 0009 적용 시점 0건.
+ */
+export function topicWhere(param: string): string {
+  return `q.category_id IN (SELECT category_id FROM category_game_topics WHERE game_topic = ANY(${param}::text[]))`;
+}
+
+/** 출제 범위 설정. 난이도 × 분야 (방 설정의 일부) */
+export interface PoolFilter {
+  difficulties: readonly DifficultyTier[];
+  topics: readonly GameTopic[];
+}
+
+/**
+ * ★★ 난이도 × 분야 조건을 한 번에. ★ 출제 가능 수와 출제 풀이 **이 함수 하나**를 쓴다.
+ *   `$first` 가 난이도, `$first+1` 이 분야다. params 에 filterParams(filter) 를 그 자리에 펼친다.
+ */
+export function filterWhere(first: number): string {
+  return `${difficultyWhere(`$${first}`)} AND ${topicWhere(`$${first + 1}`)}`;
+}
+
+export function filterParams(filter: PoolFilter): [number[], string[]] {
+  return [difficultyScores(filter.difficulties), [...filter.topics]];
 }
 
 /** 경험률의 분모. 전체 활성 문제 수 (guide 6절: "분모는 전체 활성 문제 수") */
@@ -91,30 +118,29 @@ export async function countExperiencedByAccount(
  */
 export async function countAvailableQuestions(
   participantIds: readonly string[],
-  difficulties: readonly DifficultyTier[],
+  filter: PoolFilter,
 ): Promise<number> {
-  const scores = difficultyScores(difficulties);
   const n = participantIds.length;
   if (n === 0) {
     // 참가자가 없으면 "전원 경험" 조건이 공허하게 참이 되어 0이 되어야 할지
     // 전체가 되어야 할지 애매하다. 참가자 0명인 방에서 게임을 시작할 수 없으므로
     // (선택한 난이도의) 전체 활성 문제 수를 돌려주는 것이 화면 안내에 자연스럽다.
     const r0 = await query<{ n: number }>(
-      `SELECT count(*)::int AS n FROM questions q WHERE ${POOL_WHERE} AND ${difficultyWhere('$1')}`,
-      [scores],
+      `SELECT count(*)::int AS n FROM questions q WHERE ${POOL_WHERE} AND ${filterWhere(1)}`,
+      filterParams(filter),
     );
     return r0.rows[0]?.n ?? 0;
   }
-  // ★★ R025 — 선택한 난이도의 문제만 센다. 출제 풀(loadQuestionPool)과 **같은 조건**이어야 한다
+  // ★★ R025 / R034 — 선택한 난이도 × 분야의 문제만 센다. 출제 풀(loadQuestionPool)과 **같은 조건**이어야 한다
   const r = await query<{ n: number }>(
     `SELECT count(*)::int AS n
        FROM questions q
       WHERE ${POOL_WHERE}
-        AND ${difficultyWhere('$3')}
+        AND ${filterWhere(3)}
         AND (SELECT count(*) FROM question_experiences qe
               WHERE qe.question_id = q.id
                 AND qe.account_id = ANY($1::bigint[])) < $2`,
-    [participantIds, n, scores],
+    [participantIds, n, ...filterParams(filter)],
   );
   return r.rows[0]?.n ?? 0;
 }

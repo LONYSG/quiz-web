@@ -100,3 +100,22 @@ export async function updatePasswordHash(accountId: string, passwordHash: string
     passwordHash,
   ]);
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★ 화면·소리 설정 (R034 / 0010). 형식 검사는 http/authRoutes.ts sanitizePrefs 가 한다
+// ─────────────────────────────────────────────────────────────────────────────
+
+export async function getPrefs(accountId: string): Promise<Record<string, unknown> | null> {
+  const r = await query<{ prefs: Record<string, unknown> | null }>(
+    `SELECT prefs FROM accounts WHERE id = $1`,
+    [accountId],
+  );
+  return r.rows[0]?.prefs ?? null;
+}
+
+export async function savePrefs(accountId: string, prefs: Record<string, unknown>): Promise<void> {
+  await query(`UPDATE accounts SET prefs = $2::jsonb, updated_at = now() WHERE id = $1`, [
+    accountId,
+    JSON.stringify(prefs),
+  ]);
+}

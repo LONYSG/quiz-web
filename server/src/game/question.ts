@@ -7,7 +7,9 @@
 //   T07  시간 종료          → QUESTION_RESOLVED
 //   T08  스킵 투표 통과     → QUESTION_RESOLVED
 //   T09  방장 강제 스킵     → QUESTION_RESOLVED
-//   T10  ★ 마지막 문제면 위 네 경로 모두 → GAME_RESULT (5초 대기 없이)
+//   T10  ★ 마지막 문제면 5초 경과 후 → GAME_RESULT
+//        ★★ R034 (Q-17 개정 / D-152) — 옛 규칙은 "5초 대기 없이 곧바로" 였다. 지금은 다른 문제와 똑같이
+//          정답 공개 화면을 5초 보여 준 뒤 결과로 간다.
 //   T15  5초 경과           → 다음 문제
 //   T16  다음 문제 없음     → GAME_RESULT (no_questions)
 //
@@ -161,6 +163,9 @@ export function beginQuestion(room: Room): boolean {
   //   ★★ 정답·힌트·해설을 담지 않는다. QUESTION_ACTIVE 중에 정답을 보내지 않는다.
   //   ★ selfExperienced 는 수신자마다 다르므로 개별 emit 한다.
   broadcastQuestionStarted(room, current);
+  // ★★ R034 — 스킵 투표 현황(0표 / 기준 인원)을 **문제 시작 때 함께 보낸다.**
+  //   ★ 이것이 빠져 있어서 화면이 기준 인원을 몰랐고, 투표 버튼·Alt+S 가 늘 꺼져 있었다 (R034 1장).
+  broadcastSkipVotes(room);
   return true;
 }
 
@@ -324,8 +329,9 @@ export function resolveQuestionSync(
     experiencedCount: current.experiencedAccountIds.size,
   });
 
-  // ── 상태 전이. ★ 마지막 문제는 5초를 기다리지 않는다 (Q-17 / T10)
-  const nextAt = isLast ? null : now + RULES.RESOLVED_WAIT_MS;
+  // ── 상태 전이. ★★ R034 (Q-17 개정) — 마지막 문제도 5초를 기다린 뒤 결과로 간다 (T10).
+  //   ★ 결과로 넘기는 일은 advanceAfterResolved 가 한다 (다음 문제 대신 finishGame)
+  const nextAt = now + RULES.RESOLVED_WAIT_MS;
   game.resolution = {
     epoch: current.epoch,
     reason,
@@ -334,12 +340,12 @@ export function resolveQuestionSync(
     explanation: current.explanation,
     nextAt,
   };
-  room.state = isLast ? 'GAME_RESULT' : 'QUESTION_RESOLVED';
+  room.state = 'QUESTION_RESOLVED';
 
   console.log(
     `[game] ${room.id} 문제 ${current.index} 종료 (${reason}` +
       `${winnerAccountId ? ` / 정답자 ${room.players.get(winnerAccountId)?.nickname ?? winnerAccountId}` : ''})` +
-      `${isLast ? ' ★ 마지막 문제 — 5초 대기 없이 결과로' : ''}`,
+      `${isLast ? ' ★ 마지막 문제 — 5초 뒤 결과로' : ''}`,
   );
   // ── 동기 구간 끝. 여기서부터 브로드캐스트와 DB 다.
 
@@ -379,8 +385,6 @@ export function resolveQuestionSync(
     );
   }
 
-  // ★ 마지막 문제였으면 그 자리에서 결과로 간다 (T10)
-  if (isLast) finishGame(room, 'completed', null);
   return true;
 }
 
@@ -444,6 +448,13 @@ export function advanceAfterResolved(room: Room, now: number): void {
   const nextAt = game.resolution?.nextAt;
   if (nextAt === null || nextAt === undefined) return;
   if (now < nextAt) return;
+
+  // ★★ T10 (R034 Q-17 개정) — 마지막 문제의 5초가 끝났다 → 결과
+  const current = room.currentQuestion;
+  if (current && current.index >= game.totalQuestions) {
+    finishGame(room, 'completed', null);
+    return;
+  }
 
   if (beginQuestion(room)) return;
 
@@ -542,6 +553,7 @@ export function finishGame(
     }),
     // ★ 게임 중에는 설정이 잠겨 있으므로 지금 설정이 곧 이 판의 설정이다
     difficulties: [...room.settings.difficulties],
+    topics: [...room.settings.topics],
     abortedNote,
     endedQuestionCount: game.endedQuestionCount,
     totalQuestions: game.totalQuestions,
@@ -586,17 +598,26 @@ export function finishGame(
  *
  * ★★ 투표자 명단을 보내지 않는다 (guide 22절).
  *   ★ 누가 투표했는지 알려주면 경험자 추정에 쓰일 수 있고, 규칙이 금지한다.
+ * ★★ R034 — 받는 사람 **본인이** 투표했는지(selfVoted)만 사람마다 따로 보낸다.
+ *   ★ 이것이 빠져 있어서 화면이 "내가 투표했는지" 를 몰라 취소가 되지 않았다.
+ *   ★ 본인 것만 알려 주므로 명단 비공개 규칙과 부딪히지 않는다 (스냅샷도 같은 값을 준다).
  */
 export function broadcastSkipVotes(room: Room): void {
   const current = room.currentQuestion;
   if (!current) return;
   const active = activeCount(room);
-  emitRoom(room, 'skip.voteUpdated', {
-    epoch: current.epoch,
-    votes: current.skipVotes.size,
-    threshold: skipThreshold(active),
-    activeCount: active,
-  });
+  emitRoomPerPlayer(
+    room,
+    'skip.voteUpdated',
+    {
+      epoch: current.epoch,
+      votes: current.skipVotes.size,
+      threshold: skipThreshold(active),
+      activeCount: active,
+      selfVoted: false,
+    },
+    (player) => (current.skipVotes.has(player.accountId) ? { selfVoted: true } : null),
+  );
 }
 
 /**

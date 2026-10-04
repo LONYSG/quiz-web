@@ -49,6 +49,10 @@ export interface RoomSettings {
    *   ★ 출제 가능 수(Q-21)·출제 풀·다시 하기(Q-31) 가 전부 이 값을 따른다.
    */
   difficulties: import('@quiz/shared').DifficultyTier[];
+  /**
+   * ★ 출제할 분야 묶음 (R034). 출제 가능 수·출제 풀·다시 하기가 난이도와 함께 이 값을 따른다.
+   */
+  topics: import('@quiz/shared').GameTopic[];
 }
 
 /**
@@ -391,6 +395,8 @@ export interface GameResultData {
   }[];
   /** ★ 이 판의 난이도 (R025). 결과 화면에 "어떤 난이도로 한 판인지" 를 보여준다 */
   difficulties: import('@quiz/shared').DifficultyTier[];
+  /** ★ 이 판의 분야 (R034) */
+  topics: import('@quiz/shared').GameTopic[];
   /** 조기 종료·강제 종료 사유 안내 */
   abortedNote: string | null;
   endedQuestionCount: number;

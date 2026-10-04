@@ -59,6 +59,7 @@ import {
   unregisterRoom,
 } from '../rooms/registry.js';
 import { buildSnapshot, toPlayerView } from '../rooms/snapshot.js';
+import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
 import {
@@ -466,14 +467,20 @@ function registerRoomHandlers(socket: Socket): void {
       // ★ 검증은 shared 의 순수 함수 하나로만 한다. 클라이언트와 같은 함수다.
       //   ★ R025 — 보낸 필드만 바꾼다. 난이도를 안 보냈으면 **지금 값을 유지**한다.
       //     ★ 그러지 않으면 "문제 수만 고쳤더니 난이도가 전체로 풀렸다" 가 된다.
-      const valid = validateRoomSettings({ difficulties: room.settings.difficulties, ...payload });
+      //   ★ R034 — 분야도 같다.
+      const valid = validateRoomSettings({
+        difficulties: room.settings.difficulties,
+        topics: room.settings.topics,
+        ...payload,
+      });
       if (!valid.ok) {
         sendError(s, 'BAD_REQUEST', valid.message);
         return;
       }
 
       const diffChanged =
-        valid.settings.difficulties.join(',') !== room.settings.difficulties.join(',');
+        valid.settings.difficulties.join(',') !== room.settings.difficulties.join(',') ||
+        valid.settings.topics.join(',') !== room.settings.topics.join(',');
       room.settings = { ...valid.settings };
 
       // ★ 출제 가능 수는 설정값과 무관하다(참가자 집합에만 의존한다).
@@ -484,13 +491,13 @@ function registerRoomHandlers(socket: Socket): void {
         settingsLocked: room.settingsLocked,
         availableQuestionCount: room.availableQuestionCount,
       });
-      // ★★ R025 — 난이도는 출제 가능 수를 바꾼다. 바뀐 경우에만 다시 센다.
+      // ★★ R025 / R034 — 난이도·분야는 출제 가능 수를 바꾼다. 바뀐 경우에만 다시 센다.
       //   ★ 결과는 refreshLobbyInfo 가 lobby.settingsUpdated 로 다시 보낸다
       if (diffChanged) void refreshLobbyInfo(room);
     },
   );
 
-  // ── 게임 시작 (T01 / T02)
+  // ── 게임 시작 (T01)
   onRoom(
     socket,
     'game.start',
@@ -788,32 +795,6 @@ function playerViews(room: ReturnType<typeof getRoom> & object) {
   return [...room.players.values()]
     .sort((a, b) => a.joinOrder - b.joinOrder)
     .map((p) => toPlayerView(room, p, now));
-}
-
-function broadcastSystem(room: NonNullable<ReturnType<typeof getRoom>>, text: string): void {
-  const entry = {
-    id: randomUUID(),
-    seq: nextSeq(),
-    accountId: '',
-    nickname: '',
-    colorIndex: 0,
-    rawNfc: text,
-    maskedText: null,
-    ts: Date.now(),
-    system: true,
-  };
-  pushChat(room, entry);
-  emitRoom(room, 'chat.message', {
-    id: entry.id,
-    seq: entry.seq,
-    accountId: '',
-    nickname: '',
-    colorIndex: 0,
-    text,
-    masked: false,
-    ts: entry.ts,
-    system: true,
-  });
 }
 
 /**

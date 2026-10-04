@@ -71,19 +71,62 @@ export function formatDifficulties(tiers: readonly DifficultyTier[]): string {
   return labels.join('·');
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ 분야 선택 (R034 / 건우 요청)
+//
+// ★ 건우: "분야를 고를 수 있게 해 달라 (복수 선택, 최소 하나)."
+//
+// ★★ 이것은 **게임 출제용 묶음**이다. 통계용 categories 트리(대·중·소분류)는 그대로 둔다.
+//   ★ 묶음은 DB 의 categories.game_topic 이 정한다 (migrations/0009_game_topics.sql).
+//     중분류에 값이 있으면 그것, 없으면 대분류의 기본값을 따른다. 소분류는 중분류를 따른다.
+//     ★ 그래서 새 소분류·중분류가 들어와도 따로 손댈 것이 없다. 바꿀 곳은 DB 한 곳이다.
+//   ★ 이 목록의 키는 DB 의 game_topics 표와 **같아야 한다**. 다르면 그 분야 문제가 안 나온다
+//     (smoke 가 둘을 대조한다).
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type GameTopic = 'korea' | 'history' | 'science' | 'arts' | 'sports' | 'life' | 'media';
+
+export interface GameTopicInfo {
+  topic: GameTopic;
+  label: string;
+}
+
+/** ★ 순서가 표기 순서다 */
+export const GAME_TOPICS: readonly GameTopicInfo[] = [
+  { topic: 'korea', label: '한국' },
+  { topic: 'history', label: '역사·사회' },
+  { topic: 'science', label: '과학·기술' },
+  { topic: 'arts', label: '문화·예술' },
+  { topic: 'sports', label: '스포츠' },
+  { topic: 'life', label: '생활' },
+  { topic: 'media', label: '미디어·콘텐츠' },
+];
+
+/** ★ 기본값 = 전체. 난이도(D-115)와 같은 근거 — 지금까지의 동작과 같고 출제 풀이 가장 크다 */
+export const DEFAULT_TOPICS: readonly GameTopic[] = GAME_TOPICS.map((t) => t.topic);
+
+/** 화면 표기. 전부 켜져 있으면 "전체" */
+export function formatTopics(topics: readonly GameTopic[]): string {
+  const labels = GAME_TOPICS.filter((i) => topics.includes(i.topic)).map((i) => i.label);
+  if (labels.length === GAME_TOPICS.length) return '전체';
+  return labels.join(' · ');
+}
+
 export interface RoomSettingsInput {
   questionCount: number;
   startMode: StartMode;
   countdownSec: number;
   /** ★ R025. 정규화된 순서(하→중→상)로 저장된다. 중복 없음, 최소 1개 */
   difficulties: DifficultyTier[];
+  /** ★ R034. 정규화된 순서(GAME_TOPICS 순)로 저장된다. 중복 없음, 최소 1개 */
+  topics: GameTopic[];
 }
 
 export type SettingsValidation =
   | { ok: true; settings: RoomSettingsInput }
   | {
       ok: false;
-      field: 'questionCount' | 'startMode' | 'countdownSec' | 'difficulties';
+      field: 'questionCount' | 'startMode' | 'countdownSec' | 'difficulties' | 'topics';
       message: string;
     };
 
@@ -157,6 +200,26 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
     }
   }
 
+  // ── ★ 분야 (R034). 난이도와 같은 방식이다 — 없으면 기본값(전체), 있으면 정규화
+  let topics: GameTopic[];
+  if (raw.topics === undefined) {
+    topics = [...DEFAULT_TOPICS];
+  } else {
+    if (!Array.isArray(raw.topics)) {
+      return { ok: false, field: 'topics', message: '분야 형식이 올바르지 않습니다.' };
+    }
+    const known = new Set<string>(GAME_TOPICS.map((i) => i.topic));
+    for (const t of raw.topics as unknown[]) {
+      if (typeof t !== 'string' || !known.has(t)) {
+        return { ok: false, field: 'topics', message: '알 수 없는 분야가 있습니다.' };
+      }
+    }
+    topics = GAME_TOPICS.map((i) => i.topic).filter((t) => (raw.topics as unknown[]).includes(t));
+    if (topics.length === 0) {
+      return { ok: false, field: 'topics', message: '분야는 하나 이상 선택해야 합니다.' };
+    }
+  }
+
   return {
     ok: true,
     settings: {
@@ -164,6 +227,7 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
       startMode: 'countdown',
       countdownSec: RULES.START_COUNTDOWN_SEC,
       difficulties,
+      topics,
     },
   };
 }

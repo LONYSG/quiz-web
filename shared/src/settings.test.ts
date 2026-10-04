@@ -10,6 +10,8 @@ import {
   difficultyScores,
   formatDifficulties,
   formatExperienceRate,
+  formatTopics,
+  GAME_TOPICS,
   validateRoomSettings,
 } from './settings.js';
 
@@ -75,6 +77,8 @@ describe('validateRoomSettings — 형식 방어', () => {
       'difficulties',
       'questionCount',
       'startMode',
+      // ★ R034 — 분야
+      'topics',
     ]);
   });
 });
@@ -131,5 +135,29 @@ describe('★ 난이도 선택 (R025)', () => {
     expect(formatDifficulties(['easy', 'medium', 'hard'])).toBe('전체');
     expect(formatDifficulties(['hard'])).toBe('상');
     expect(formatDifficulties(['medium', 'hard'])).toBe('중·상');
+  });
+});
+
+describe('★ 분야 선택 (R034)', () => {
+  it('필드가 없으면 전체 (옛 형식 호환)', () => {
+    const r = validateRoomSettings(base);
+    expect(r.ok && r.settings.topics).toEqual(GAME_TOPICS.map((t) => t.topic));
+  });
+  it('중복을 없애고 정해진 순서로 둔다', () => {
+    const r = validateRoomSettings({ ...base, topics: ['media', 'korea', 'media'] });
+    expect(r.ok && r.settings.topics).toEqual(['korea', 'media']);
+  });
+  it('빈 선택은 거부한다 (최소 하나)', () => {
+    const r = validateRoomSettings({ ...base, topics: [] });
+    expect(r.ok).toBe(false);
+    expect(!r.ok && r.field).toBe('topics');
+  });
+  it('모르는 분야·잘못된 형식은 거부한다', () => {
+    expect(validateRoomSettings({ ...base, topics: ['games'] }).ok).toBe(false);
+    expect(validateRoomSettings({ ...base, topics: 'korea' }).ok).toBe(false);
+  });
+  it('표기 — 전부면 "전체"', () => {
+    expect(formatTopics(GAME_TOPICS.map((t) => t.topic))).toBe('전체');
+    expect(formatTopics(['media', 'korea'])).toBe('한국 · 미디어·콘텐츠');
   });
 });

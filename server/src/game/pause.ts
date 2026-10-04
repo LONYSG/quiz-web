@@ -35,7 +35,7 @@ import { config } from '../config.js';
 import { emitRoom } from '../rooms/emit.js';
 import { activeCount } from '../rooms/registry.js';
 import type { PausedState, Room } from '../rooms/types.js';
-import { abortQuestionSync } from './question.js';
+import { abortQuestionSync, broadcastSkipVotes } from './question.js';
 
 /** PAUSED 로 갈 수 있는 상태인가 */
 function pausableFrom(room: Room): PausedState['pausedFrom'] | null {
@@ -154,6 +154,9 @@ export function resumeGame(room: Room): ResumeResult {
     nextAt: pausedFrom === 'QUESTION_RESOLVED' ? room.game?.resolution?.nextAt ?? null : null,
     countdownEndsAt: pausedFrom === 'COUNTDOWN' ? room.countdownEndsAt : null,
   });
+  // ★★ R034 — 넘기기 투표 현황을 다시 보낸다. 화면은 일시정지 때 투표 칸을 지웠다
+  //   (이것이 없으면 재개 뒤 투표 버튼이 사라진다 — R034 ui-check 화면에서 찾았다)
+  if (pausedFrom === 'QUESTION_ACTIVE') broadcastSkipVotes(room);
   return { ok: true };
 }
 
