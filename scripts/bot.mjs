@@ -362,7 +362,15 @@ class Bot {
         }
       });
       s.on('skip.voteUpdated', (p) => {
-        this.events.push({ type: 'skip.voteUpdated', epoch: p.epoch, votes: p.votes, threshold: p.threshold });
+        this.events.push({
+          type: 'skip.voteUpdated',
+          epoch: p.epoch,
+          votes: p.votes,
+          threshold: p.threshold,
+          // ★ R034 — 받는 사람 본인이 투표했는가 (본인 것만 온다)
+          selfVoted: p.selfVoted,
+          at: Date.now(),
+        });
         if (this.snapshot) this.snapshot.skip = p;
       });
       s.on('game.result', (p) => {
@@ -1732,19 +1740,19 @@ async function scenarioGame() {
   );
   expect('★ "오답입니다" 류 메시지가 없다', host.since(from, 'error').length, 0);
 
-  // ── 4. 힌트 (남은 10초)
-  log('\n[4] 힌트가 남은 10초에 온다 (최대 22초 대기)');
+  // ── 4. 힌트 (남은 15초 — R034)
+  log('\n[4] 힌트가 남은 15초에 온다 (최대 27초 대기)');
   // ★ 봇마다 mark() 인덱스가 다르다. **각자의 mark 를 써야 한다.**
   //   ★ 처음 쓴 테스트가 host 의 mark 를 guest 에 적용해 0건으로 나왔다 (테스트 버그).
   const hintFrom = host.mark();
   const hintFromGuest = guest.mark();
-  await host.waitFor(() => host.since(hintFrom, 'question.hint').length > 0, 25000, '힌트');
+  await host.waitFor(() => host.since(hintFrom, 'question.hint').length > 0, 30000, '힌트');
   const hintEv = host.since(hintFrom, 'question.hint')[0];
   const remainAtHint = q2.endsAt - hintEv.at;
   expect('★ 힌트 epoch 가 현재 문제와 같다', hintEv.epoch, q2.epoch);
   expectTrue(
-    '★★ 힌트가 남은 10초 근처에 온다 (9.0~10.5초)',
-    remainAtHint > 9000 && remainAtHint < 10500,
+    '★★ 힌트가 남은 15초 근처에 온다 (14.0~15.5초 — R034)',
+    remainAtHint > 14000 && remainAtHint < 15500,
     `${remainAtHint}ms 남았을 때`,
   );
   expect('★ 힌트는 한 번만 온다', host.since(hintFrom, 'question.hint').length, 1);
@@ -1806,19 +1814,21 @@ async function scenarioGame() {
   expect('★ 정답자가 그 사람이다', resN.winnerAccountId, guest.snapshot.me.accountId);
   log(`  ★ "${variant}" → 정답 "${base}" 로 인정`);
 
-  // ── 6. 마지막 문제 → 5초 대기 없이 결과 (Q-17 / T10)
-  log('\n[6] 마지막 문제는 5초 대기 없이 결과로 간다 (Q-17)');
+  // ── 6. ★★ R034 (Q-17 개정) — 마지막 문제도 정답 공개 5초 뒤 결과 (T10)
+  log('\n[6] ★★ 마지막 문제도 정답 공개 5초 뒤에 결과로 간다 (Q-17 개정)');
   await host.waitQuestion(4);
   const q3 = host.snapshot.question;
   const ansFrom = host.mark();
   const answers3 = await answersForText(q3.text);
   host.chat(answers3[0]);
-  await host.waitFor(() => host.since(ansFrom, 'game.result').length > 0, 8000, '결과 화면');
+  await host.waitFor(() => host.since(ansFrom, 'question.resolved').length > 0, 5000, '정답 공개');
   const resolvedEv = host.since(ansFrom, 'question.resolved')[0];
+  expect('★★ 마지막 문제도 먼저 정답 공개 상태가 된다', resolvedEv.payload.state, 'QUESTION_RESOLVED');
+  expectTrue('★★ 마지막 문제의 nextAt 이 있다 (5초 뒤)', typeof resolvedEv.payload.nextAt === 'number');
+  await host.waitFor(() => host.since(ansFrom, 'game.result').length > 0, 9000, '결과 화면');
   const resultEv = host.since(ansFrom, 'game.result')[0];
-  expect('★ 마지막 문제의 nextAt 이 null 이다', resolvedEv.payload.nextAt, null);
   const gap = resultEv.at - resolvedEv.at;
-  expectTrue('★★ 5초를 기다리지 않는다 (500ms 이내)', gap < 500, `${gap}ms`);
+  expectTrue('★★★ 결과는 정답 공개 약 5초 뒤에 온다', gap >= 4700 && gap <= 6500, `${gap}ms`);
   expect('상태가 GAME_RESULT', host.snapshot.room.state, 'GAME_RESULT');
   expect('종료 사유', resultEv.endReason, 'completed');
 
@@ -2145,17 +2155,29 @@ async function scenarioConcurrent() {
   // ── 1. 스킵 투표 (활성 4명 → 임계 3표)
   log('\n[1] 스킵 투표 임계 도달 (활성 4명 → 3표)');
   let q = host.snapshot.question;
+  // ★★ R034 — 문제 시작 때 투표 현황(0표 / 임계값)이 온다. 이것이 빠져 화면 버튼이 꺼져 있었다
+  await g1.waitFor(
+    () => g1.events.some((e) => e.type === 'skip.voteUpdated' && e.epoch === q.epoch),
+    4000,
+    '문제 시작 투표 현황',
+  );
+  const sv0 = g1.events.find((e) => e.type === 'skip.voteUpdated' && e.epoch === q.epoch);
+  expect('★★★ 문제 시작 때 투표 현황이 온다 — 0표 / 임계 3표', `${sv0.votes}/${sv0.threshold}`, '0/3');
   let from = host.mark();
+  const g1From = g1.mark();
   host.skipVote(true);
-  await host.waitFor(() => host.since(from, 'skip.voteUpdated').length > 0, 4000, '투표 반영');
-  const sv = host.since(from, 'skip.voteUpdated')[0];
+  await host.waitFor(() => host.since(from, 'skip.voteUpdated').some((e) => e.votes === 1), 4000, '투표 반영');
+  const sv = host.since(from, 'skip.voteUpdated').find((e) => e.votes === 1);
   expect('★ 임계값이 3표다 (활성 4명)', sv.threshold, 3);
   expect('1표', sv.votes, 1);
+  expect('★★ R034 — 투표한 본인에게는 selfVoted=true', sv.selfVoted, true);
+  await g1.waitFor(() => g1.since(g1From, 'skip.voteUpdated').length > 0, 4000, '다른 사람 화면');
+  expect('★★ R034 — 다른 사람에게는 selfVoted=false (명단은 여전히 없다)', g1.since(g1From, 'skip.voteUpdated')[0].selfVoted, false);
 
   // ★ 투표자 명단이 오지 않는다
   expectTrue(
     '★★ skip.voteUpdated 에 투표자 명단이 없다 (guide 22절)',
-    !('voters' in sv) && !('voterIds' in sv),
+    !('voters' in sv) && !('voterIds' in sv) && !('voters' in (host.snapshot.skip ?? {})),
     Object.keys(sv).join(','),
   );
 
@@ -2164,6 +2186,7 @@ async function scenarioConcurrent() {
   host.skipVote(false);
   await host.waitFor(() => host.since(from, 'skip.voteUpdated').length > 0, 4000, '취소 반영');
   expect('★ 투표 취소가 된다', host.since(from, 'skip.voteUpdated')[0].votes, 0);
+  expect('★★ R034 — 취소하면 selfVoted=false', host.since(from, 'skip.voteUpdated')[0].selfVoted, false);
 
   // ★ 3표로 스킵된다
   from = host.mark();
@@ -2266,8 +2289,9 @@ async function scenarioConcurrent() {
   // 활성 4명 → 임계 3표. 2표만 넣는다
   host.skipVote(true);
   g1.skipVote(true);
-  await host.waitFor(() => host.since(from, 'skip.voteUpdated').length >= 2, 5000, '2표');
-  const before = host.since(from, 'skip.voteUpdated').slice(-1)[0];
+  // ★ R034 — 문제 시작 때도 현황(0표)이 오므로 "이벤트 2개" 가 아니라 "2표가 된 현황" 을 기다린다
+  await host.waitFor(() => host.since(from, 'skip.voteUpdated').some((e) => e.votes === 2), 5000, '2표');
+  const before = host.since(from, 'skip.voteUpdated').find((e) => e.votes === 2);
   expect('2표 / 임계 3표', `${before.votes}/${before.threshold}`, '2/3');
 
   // ★ 한 명이 끊긴다 → 활성 3명 → 임계 2표 → 이미 도달
@@ -2379,7 +2403,7 @@ async function scenarioFull() {
       const expectedEnd = q.endsAt;
       await host.waitFor(
         () => host.since(from, 'question.resolved').length > 0 || host.since(from, 'game.result').length > 0,
-        40000,
+        50000, // ★ R034 — 문제가 40초라 여유를 둔다
         `${i}번 시간 종료`,
       );
       const ev = host.since(from, 'question.resolved')[0];
@@ -2549,7 +2573,7 @@ async function scenarioCollide() {
     expect('★ 정답으로 끝났으면 accepted 가 1건이다', acc.length, 1);
     expectTrue(
       '★★ 정답 인정은 endsAt 이내에 도착한 것만이다 (guide 18절)',
-      acc[0].response_ms <= 30000,
+      acc[0].response_ms <= 40000,
       `${acc[0].response_ms}ms`,
     );
   } else {
@@ -3183,10 +3207,10 @@ async function scenarioPauseHost() {
 //       ★ (나) 재개한 뒤에는 힌트가 아예 오지 않는다 (이미 지났다고 판단해서)
 //     ★ 이 시나리오는 둘 다 일어나지 않음을 단정한다.
 //
-//   ★ 문제 시간 30초 / 힌트는 남은 10초. 그래서 약 45초 걸린다.
+//   ★ 문제 시간 40초 / 힌트는 남은 15초 (R034). 그래서 약 55초 걸린다.
 // -----------------------------------------------------------------------------
 async function scenarioPauseHint() {
-  log('시나리오 pausehint — ★★ 일시정지와 힌트 (B-5, 약 45초)');
+  log('시나리오 pausehint — ★★ 일시정지와 힌트 (B-5, 약 55초 / R034: 40초 문제·초성 남은 15초)');
   await clearExperiences(PREFIX);
 
   const [host, guest] = await makeBots(2);
@@ -3203,7 +3227,7 @@ async function scenarioPauseHint() {
   expect('★ 시작 시점에는 힌트가 없다', q1.hintRevealed, false);
 
   // ── 1. 힌트 시각 전에 멈춘다
-  log('\n[1] 힌트 시각(남은 10초) 전에 전원 이탈한다');
+  log('\n[1] 힌트 시각(남은 15초) 전에 전원 이탈한다');
   await sleep(2000);
   host.socket.close();
   guest.socket.close();
@@ -3212,14 +3236,14 @@ async function scenarioPauseHint() {
   expect('★ PAUSED', st1.state, 'PAUSED');
   expect('★ 힌트는 아직 push 되지 않았다', st1.question.hintPushed, false);
   expectTrue(
-    '★ 멈춘 시점에 남은 시간이 10초보다 많다 (힌트 전이다)',
-    st1.paused.remainingMs > 12000,
+    '★ 멈춘 시점에 남은 시간이 15초보다 많다 (힌트 전이다)',
+    st1.paused.remainingMs > 17000,
     `${st1.paused.remainingMs}ms 남음`,
   );
 
   // ── 2. ★★★ 멈춰 있는 동안 힌트 시각이 "지나가지" 않는다
-  log('\n[2] ★★★ 20초를 멈춘 채로 둔다 — 원래라면 힌트 시각을 지났을 시간이다');
-  await sleep(20000);
+  log('\n[2] ★★★ 25초를 멈춘 채로 둔다 — 원래라면 힌트 시각을 지났을 시간이다');
+  await sleep(25000);
   const st2 = await roomStateOf(roomId);
   expect('★ 여전히 PAUSED', st2.state, 'PAUSED');
   expect('★★ 남은 시간이 흐르지 않았다', st2.paused.remainingMs, st1.paused.remainingMs);
@@ -3231,7 +3255,7 @@ async function scenarioPauseHint() {
   const staleRemain = st2.question.endsAt - Date.now();
   expectTrue(
     '★★★ 낡은 endsAt 으로 보면 이미 힌트 시각을 지났다 (그래서 endsAt 을 믿으면 안 된다)',
-    staleRemain <= 10000,
+    staleRemain <= 15000,
     `낡은 계산 ${Math.round(staleRemain)}ms / 실제 ${st2.paused.remainingMs}ms`,
   );
 
@@ -3246,8 +3270,8 @@ async function scenarioPauseHint() {
   expect('★★★ 힌트가 공개되지 않았다', back.snapshot.question.hintRevealed, false);
   expect('★★ 힌트 문장 자체가 내려오지 않았다', back.snapshot.question.hint, null);
 
-  // ── 4. ★★ 재개하면 힌트가 남은 10초에 온다
-  log('\n[4] ★★ 재개한다. 힌트는 다시 계산된 남은 10초에 와야 한다');
+  // ── 4. ★★ 재개하면 힌트가 남은 15초에 온다
+  log('\n[4] ★★ 재개한다. 힌트는 다시 계산된 남은 15초에 와야 한다');
   let from = back.mark();
   back.resume();
   await back.waitFor(() => back.since(from, 'game.resumed').length > 0, 5000, '재개');
@@ -3258,8 +3282,8 @@ async function scenarioPauseHint() {
   const hintEv = back.since(hintFrom, 'question.hint')[0];
   const remainAtHint = resumedEndsAt - hintEv.at;
   expectTrue(
-    '★★★ 힌트가 남은 10초 무렵에 온다 (재개 후 다시 계산된 기준)',
-    Math.abs(remainAtHint - 10000) < 1500,
+    '★★★ 힌트가 남은 15초 무렵에 온다 (재개 후 다시 계산된 기준)',
+    Math.abs(remainAtHint - 15000) < 1500,
     `힌트 시점에 ${Math.round(remainAtHint)}ms 남음`,
   );
   expect('★ 힌트 epoch 가 같은 문제다', hintEv.epoch, q1.epoch);
@@ -3565,7 +3589,7 @@ async function scenarioResult() {
   expect('★ 1번 정답자', log1.winnerAccountId, hostId);
   expectTrue(
     '★★ 1번 응답 시간이 남는다 (0 초과 / 30초 이내)',
-    log1.responseMs > 0 && log1.responseMs <= 30_000,
+    log1.responseMs > 0 && log1.responseMs <= 40_000,
     `${log1.responseMs}ms`,
   );
   expectTrue('★ 1번 정답이 담긴다 (공개된 문제다)', typeof log1.displayAnswer === 'string');
@@ -3873,13 +3897,13 @@ async function scenarioGeneralHint() {
       const hinted = q.text === marked.question_text;
       const qFrom = h.mark();
       if (!hinted) {
-        log(`\n[${i}] ★ 힌트가 없는 문제 — 20초에 아무것도 오지 않는다`);
-        await h.waitFor(() => h.since(qFrom, 'question.hint').length > 0, 32000, '초성 힌트');
-        expect('★★ 20초를 지나 10초가 됐는데도 일반 힌트 이벤트가 없다', h.since(qFrom, 'question.generalHint').length, 0);
+        log(`\n[${i}] ★ 힌트가 없는 문제 — 남은 30초에 아무것도 오지 않는다`);
+        await h.waitFor(() => h.since(qFrom, 'question.hint').length > 0, 35000, '초성 힌트');
+        expect('★★ 30초를 지나 15초가 됐는데도 일반 힌트 이벤트가 없다', h.since(qFrom, 'question.generalHint').length, 0);
         expect('★ 스냅샷에도 일반 힌트가 없다', h.snapshot.question.generalHint ?? null, null);
       } else {
         log(`\n[${i}] ★★ 힌트가 있는 문제`);
-        // (a) 20초 전 재접속 — 스냅샷에 없어야 한다
+        // (a) 남은 30초 전 재접속 — 스냅샷에 없어야 한다
         await sleep(1000);
         g.socket.close();
         await sleep(400);
@@ -3887,7 +3911,7 @@ async function scenarioGeneralHint() {
         g1.cookie = guest.cookie;
         await g1.connect();
         await g1.waitFor(() => g1.snapshot !== null, 6000, '게스트 재접속');
-        expect('★★ 20초 전 재접속 — 스냅샷에 일반 힌트가 없다', g1.snapshot.question.generalHint, null);
+        expect('★★ 남은 30초 전 재접속 — 스냅샷에 일반 힌트가 없다', g1.snapshot.question.generalHint, null);
         g = g1;
 
         // (b) ★★★ PAUSED 누출 방어
@@ -3900,8 +3924,8 @@ async function scenarioGeneralHint() {
         const st2 = await roomStateOf(roomId);
         const staleRemain = st2.question.endsAt - Date.now();
         expectTrue(
-          '★★ 낡은 endsAt 으로 보면 이미 20초 이하다 (그래서 endsAt 을 믿으면 안 된다)',
-          staleRemain <= 20000,
+          '★★ 낡은 endsAt 으로 보면 이미 30초 이하다 (그래서 endsAt 을 믿으면 안 된다)',
+          staleRemain <= 30000,
           `낡은 계산 ${Math.round(staleRemain)}ms / 실제 ${st2.paused.remainingMs}ms`,
         );
         expect('★★★ 멈춘 동안 일반 힌트가 push 되지 않았다', st2.question.generalHintPushed, false);
@@ -3912,7 +3936,7 @@ async function scenarioGeneralHint() {
         expect('★★★ PAUSED 중 재접속 스냅샷에 일반 힌트가 없다', h1.snapshot.question.generalHint, null);
         h = h1;
 
-        // (c) 재개 → 다시 계산된 남은 20초에 온다
+        // (c) 재개 → 다시 계산된 남은 30초에 온다
         const r = h.mark();
         h.resume();
         await h.waitFor(() => h.since(r, 'game.resumed').length > 0, 5000, '재개');
@@ -3920,25 +3944,25 @@ async function scenarioGeneralHint() {
         await h.waitFor(() => h.since(r, 'question.generalHint').length > 0, 15000, '일반 힌트');
         const ev = h.since(r, 'question.generalHint')[0];
         const remainAt = resumedEndsAt - ev.at;
-        expectTrue('★★★ 일반 힌트가 남은 20초 무렵에 온다 (재개 기준)', Math.abs(remainAt - 20000) < 1500, `${Math.round(remainAt)}ms 남음`);
+        expectTrue('★★★ 일반 힌트가 남은 30초 무렵에 온다 (재개 기준)', Math.abs(remainAt - 30000) < 1500, `${Math.round(remainAt)}ms 남음`);
         expect('★ 일반 힌트 내용', ev.hint, HINT);
         expect('★ 그때는 아직 초성 힌트가 없다', h.since(r, 'question.hint').length, 0);
 
-        // (d) 20초 뒤 재접속 — 스냅샷에 있어야 한다 (게스트가 이제 돌아온다)
+        // (d) 남은 30초 뒤 재접속 — 스냅샷에 있어야 한다 (게스트가 이제 돌아온다)
         const g2 = new Bot(guest.name);
         g2.cookie = guest.cookie;
         await g2.connect();
         await g2.waitFor(() => g2.snapshot !== null, 6000, '게스트 재접속 2');
-        expect('★★ 20초 뒤 재접속 — 스냅샷에 일반 힌트가 있다', g2.snapshot.question.generalHint, HINT);
+        expect('★★ 남은 30초 뒤 재접속 — 스냅샷에 일반 힌트가 있다', g2.snapshot.question.generalHint, HINT);
         expect('★ 그때 초성 힌트는 아직 공개 전이다', g2.snapshot.question.hintRevealed, false);
         g = g2;
 
-        // (e) 10초에 초성 — 일반 힌트는 그대로 남는다
-        await h.waitFor(() => h.since(r, 'question.hint').length > 0, 15000, '초성 힌트');
+        // (e) 남은 15초에 초성 — 일반 힌트는 그대로 남는다
+        await h.waitFor(() => h.since(r, 'question.hint').length > 0, 25000, '초성 힌트');
         const hev = h.since(r, 'question.hint')[0];
-        expectTrue('★ 초성 힌트가 남은 10초 무렵에 온다', Math.abs(resumedEndsAt - hev.at - 10000) < 1500, `${Math.round(resumedEndsAt - hev.at)}ms 남음`);
+        expectTrue('★ 초성 힌트가 남은 15초 무렵에 온다', Math.abs(resumedEndsAt - hev.at - 15000) < 1500, `${Math.round(resumedEndsAt - hev.at)}ms 남음`);
         expect('★ 일반 힌트는 한 번만 왔다', h.since(r, 'question.generalHint').length, 1);
-        expect('★ 10초 뒤에도 일반 힌트가 함께 보인다', h.snapshot.question.generalHint, HINT);
+        expect('★ 15초 뒤에도 일반 힌트가 함께 보인다', h.snapshot.question.generalHint, HINT);
       }
       const m = h.mark();
       h.socket.emit('host.forceSkip', { epoch: h.snapshot.question.epoch });
@@ -3965,6 +3989,156 @@ async function scenarioGeneralHint() {
 }
 
 // -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// ★★ topics — 분야 선택 (R034)
+//
+//   ★ 단정하는 것 —
+//     · 기본값은 전체(일곱 묶음)
+//     · 출제 가능 수가 난이도 × 분야에 따라 바뀌고, 서버와 독립적으로 센 값과 같다
+//     · 출제된 문제의 분야가 전부 선택 안이다 (DB 의 category_game_topics 로 확인)
+//     · 다시 하기가 분야를 이어받는다 / 다른 필드만 고치면 분야가 유지된다
+//     · 비방장은 못 바꾼다 / 빈 선택·모르는 분야는 서버가 거부한다
+// -----------------------------------------------------------------------------
+async function expectedAvailableTopics(accountIds, tiers, topics) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `SELECT count(*)::int AS n FROM questions q
+         JOIN category_game_topics t ON t.category_id = q.category_id
+        WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
+          AND q.difficulty_score = ANY($3::int[])
+          AND t.game_topic = ANY($4::text[])
+          AND (SELECT count(*) FROM question_experiences qe
+                WHERE qe.question_id = q.id AND qe.account_id = ANY($1::bigint[])) < $2`,
+      [accountIds, accountIds.length, scoresOf(tiers), topics],
+    );
+    return r.rows[0].n;
+  });
+}
+
+async function topicsOfGame(gameId) {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `SELECT t.game_topic FROM game_questions gq
+         JOIN questions q ON q.id = gq.question_id
+         JOIN category_game_topics t ON t.category_id = q.category_id
+        WHERE gq.game_id = $1 ORDER BY gq.question_index`,
+      [gameId],
+    );
+    return r.rows.map((x) => x.game_topic);
+  });
+}
+
+async function scenarioTopics() {
+  log('시나리오 topics — ★★ 분야 선택 (R034)');
+  await clearExperiences(PREFIX);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('R034 분야 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  const ids = [host.snapshot.me.accountId, guest.snapshot.me.accountId];
+  const ALL = ['korea', 'history', 'science', 'arts', 'sports', 'life', 'media'];
+
+  log('\n[0] 기본값');
+  expect('★ 기본값은 분야 전체', (host.snapshot.room.settings.topics ?? []).join(','), ALL.join(','));
+
+  const apply = async (patch, tiers, topics, label) => {
+    const want = await expectedAvailableTopics(ids, tiers, topics);
+    const from = host.mark();
+    host.socket.emit('lobby.updateSettings', patch);
+    await host.waitFor(
+      () =>
+        host.since(from, 'lobby.settingsUpdated').some(
+          (e) => (e.settings?.topics ?? []).join(',') === topics.join(',') && e.availableQuestionCount === want,
+        ),
+      8000,
+      `${label} 출제 가능 수 반영`,
+    ).catch((err) => {
+      log(`  ★ 받은 설정: ${JSON.stringify(host.since(from, 'lobby.settingsUpdated').map((e) => [e.settings?.difficulties, e.settings?.topics, e.availableQuestionCount]))} / 기대 ${want} / 오류 ${JSON.stringify(host.since(from, 'error'))}`);
+      throw err;
+    });
+    expect(`★★ ${label} — 출제 가능 수가 난이도 × 분야를 따른다 (${want}건)`, host.snapshot.room.availableQuestionCount, want);
+    return want;
+  };
+
+  const playOne = async (count) => {
+    const g = host.mark();
+    host.socket.emit('game.start', {});
+    await host.waitFor(() => host.since(g, 'game.started').length > 0, 10000, '게임 시작');
+    for (let i = 1; i <= count; i += 1) {
+      const q = await host.waitQuestion(i, 15000);
+      const m = host.mark();
+      host.socket.emit('host.forceSkip', { epoch: q.epoch });
+      await host.waitFor(
+        () => host.since(m, 'question.resolved').length > 0 || host.since(m, 'game.result').length > 0,
+        8000,
+        `${i}번 넘김`,
+      );
+    }
+    await host.waitFor(() => host.snapshot.result !== null && host.snapshot.result !== undefined, 10000, '결과');
+    await sleep(500);
+    return { topics: await topicsOfGame(host.snapshot.game.gameId), result: host.snapshot.result };
+  };
+
+  // ── 1. 미디어·콘텐츠만
+  log('\n[1] ★★ 미디어·콘텐츠만');
+  await apply({ questionCount: 3, topics: ['media'] }, ['easy', 'medium', 'hard'], ['media'], '미디어만');
+  const one = await playOne(3);
+  expect('★ 3문제가 출제됐다', one.topics.length, 3);
+  expectTrue('★★★ 출제된 문제가 전부 미디어·콘텐츠다', one.topics.every((t) => t === 'media'), one.topics.join(','));
+  expect('★ 결과에 이 판의 분야가 실린다', (one.result.topics ?? []).join(','), 'media');
+
+  // ── 2. 다시 하기가 분야를 이어받는다 (Q-31)
+  log('\n[2] ★★ 다시 하기가 분야를 이어받는다');
+  const a = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 6000, '로비 복귀');
+  await host.waitFor(() => host.since(a, 'lobby.settingsUpdated').length > 0, 6000, '설정 수신');
+  expect('★★ 다시 하기 후에도 미디어만', host.snapshot.room.settings.topics.join(','), 'media');
+
+  // ── 3. 난이도 × 분야
+  log('\n[3] ★★ 난이도 "상" × 분야 "한국·과학·기술"');
+  await apply({ questionCount: 3, difficulties: ['hard'], topics: ['science', 'korea'] }, ['hard'], ['korea', 'science'], '상 × 한국·과학');
+
+  // ── 4. 다른 필드만 고치면 분야가 유지된다
+  log('\n[4] ★ 문제 수만 고치면 분야가 그대로');
+  let from = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5 });
+  await host.waitFor(() => host.since(from, 'lobby.settingsUpdated').length > 0, 5000, '설정 반영');
+  expect('★★ 분야가 유지된다', host.snapshot.room.settings.topics.join(','), 'korea,science');
+
+  // ── 5. 권한과 형식
+  log('\n[5] ★ 권한과 형식 (guide 44절)');
+  from = guest.mark();
+  guest.socket.emit('lobby.updateSettings', { questionCount: 3, topics: ['life'] });
+  await sleep(500);
+  expect('★ 비방장이 바꾸면 NOT_HOST', guest.since(from, 'error')[0]?.code, 'NOT_HOST');
+  from = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 3, topics: [] });
+  await sleep(500);
+  expect('★★ 빈 선택은 서버가 거부한다', host.since(from, 'error')[0]?.code, 'BAD_REQUEST');
+  expectTrue('★ 거부 사유가 분야다', /분야/.test(host.since(from, 'error')[0]?.detail ?? ''), host.since(from, 'error')[0]?.detail);
+  from = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 3, topics: ['games'] });
+  await sleep(500);
+  expect('★ 모르는 분야는 거부한다', host.since(from, 'error')[0]?.code, 'BAD_REQUEST');
+  expect('★ 설정은 그대로', host.snapshot.room.settings.topics.join(','), 'korea,science');
+
+  host.leave();
+  await sleep(300);
+  guest.leave();
+  await sleep(500);
+  host.disconnect();
+  guest.disconnect();
+  await clearExperiences(PREFIX);
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   duplicate: scenarioDuplicate,
@@ -3994,6 +4168,8 @@ const SCENARIOS = {
   difficulty: scenarioDifficulty,
   // ★★ R028
   generalhint: scenarioGeneralHint,
+  // ★★ R034
+  topics: scenarioTopics,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

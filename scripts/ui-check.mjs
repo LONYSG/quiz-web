@@ -385,10 +385,12 @@ class Page extends Cdp {
    * @param opts.text 문자로 입력되어야 하는가 (단독 문자키 확인용)
    */
   async key(key, opts = {}) {
+    // ★ R034 — opts.code 로 자판 위치를 따로 줄 수 있다 (한글 자판 상태: key='ㄴ', code='KeyS')
     const code =
-      key.length === 1
+      opts.code ??
+      (key.length === 1
         ? `Key${key.toUpperCase()}`
-        : key;
+        : key);
     const vk = {
       Escape: 27,
       Enter: 13,
@@ -396,7 +398,7 @@ class Page extends Cdp {
       F4: 115,
       F8: 119,
       F9: 120,
-    }[key] ?? (key.length === 1 ? key.toUpperCase().charCodeAt(0) : 0);
+    }[key] ?? opts.vk ?? (key.length === 1 ? key.toUpperCase().charCodeAt(0) : 0);
     const modifiers = opts.alt ? 1 : 0;
     // ★★ Enter 로 포커스된 버튼을 누르려면 **문자 이벤트**여야 한다.
     //   ★ rawKeyDown 만 보내면 keydown 리스너는 받지만 버튼의 기본 동작(click)이 안 난다.
@@ -589,7 +591,7 @@ async function measureOneScreenOnce(page, label, { gate = true } = {}) {
       // ★ R028 — 넘쳤을 때 무엇이 자리를 먹는지 바로 보이게 한다 (원인을 찾느라 다시 돌리지 않게)
       const parts = await page.evaluate(`(() => {
         const out = [];
-        for (const col of ['.col-main', '.col-side']) {
+        for (const col of ['.seats-left', '.center-main', '.chat-card', '.seats-right']) {
           const el = document.querySelector(col);
           if (!el) continue;
           out.push(col + ' ' + Math.round(el.getBoundingClientRect().height) + 'px: ' +
@@ -834,7 +836,7 @@ async function createRoom(page, title) {
   //   (이 도구가 실제로 그렇게 틀렸다)
   //   ★ 주소가 /r/<방ID> 로 바뀌고 참가자 목록이 생기는 것을 함께 확인한다.
   const ok = await page.waitFor(
-    "location.pathname.startsWith('/r/') && document.querySelector('.players') !== null",
+    "location.pathname.startsWith('/r/') && document.querySelector('.stage') !== null",
     10000,
   );
   if (!ok) throw new Error(`방 생성 실패: ${(await page.text()).slice(0, 200)}`);
@@ -977,7 +979,7 @@ try {
     console.log(`  ★ 경험 기록 ${shrunk}행으로 출제 가능 수를 2개로 줄였다`);
     // ★ 참가자 변동이 있어야 서버가 다시 계산한다. 방을 다시 만들어 그 이벤트를 만든다
     await host.click('방 나가기');
-    await host.waitFor("document.querySelector('.players') === null", 8000);
+    await host.waitFor("document.querySelector('.stage') === null", 8000);
     const roomIdShrunk = await createRoom(host, 'UI 점검용 방 제목 스물여덟글자');
     record('출제 가능 수 축소 후 방 재생성', Boolean(roomIdShrunk));
     await host.waitFor(
@@ -1001,7 +1003,7 @@ try {
         "[...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('출제할 수 있는 문제')) ?? ''",
       );
     const diffBtns = await host.evaluate(
-      "[...document.querySelectorAll('.card button[aria-pressed]')].map(b => b.innerText.trim() + ':' + b.getAttribute('aria-pressed')).join(',')",
+      "[...document.querySelectorAll('.card button[data-tier]')].map(b => b.innerText.trim() + ':' + b.getAttribute('aria-pressed')).join(',')",
     );
     record('★★ 난이도 버튼 셋이 있고 기본은 전부 켜짐', diffBtns === '하:true,중:true,상:true', diffBtns);
     const beforeAvail = await availText();
@@ -1020,7 +1022,7 @@ try {
       '★ 마지막 하나를 끄려 하면 안내가 뜨고 켜진 채로 남는다',
       (await host.text()).includes('난이도는 하나 이상 선택해야 합니다') &&
         (await host.evaluate(
-          "[...document.querySelectorAll('.card button[aria-pressed]')].find(b => b.innerText.trim() === '상')?.getAttribute('aria-pressed')",
+          "[...document.querySelectorAll('.card button[data-tier]')].find(b => b.innerText.trim() === '상')?.getAttribute('aria-pressed')",
         )) === 'true',
     );
     // 원래대로 (뒤 검사가 전체 기준이다)
@@ -1028,10 +1030,70 @@ try {
     await sleep(200);
     await host.click('중');
     await host.waitFor(
-      "[...document.querySelectorAll('.card button[aria-pressed]')].every(b => b.getAttribute('aria-pressed') === 'true')",
+      "[...document.querySelectorAll('.card button[data-tier]')].every(b => b.getAttribute('aria-pressed') === 'true')",
       4000,
     );
     await sleep(800);
+
+    // ── ★★ R034 분야 선택 — 출제 가능 수가 난이도 × 분야로 다시 계산되는가
+    console.log('\n[4-9b] ★★ 분야 선택 (R034)');
+    const topicStates = () =>
+      host.evaluate("[...document.querySelectorAll('.card button[data-topic]')].map(b => b.getAttribute('aria-pressed')).join(',')");
+    const t0 = await topicStates();
+    record('★★ 분야 버튼 일곱 개가 있고 기본은 전부 켜짐', t0 === 'true,true,true,true,true,true,true', t0);
+    // ★ 지금 출제 가능한 문제(방장 미경험 앞 3문제) 중 첫 문제의 분야를 끈다 — 그래야 수가 반드시 바뀐다
+    const firstTopic = await withPg(async (c) => {
+      const r = await c.query(
+        `SELECT t.game_topic FROM questions q JOIN category_game_topics t ON t.category_id = q.category_id
+          WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
+          ORDER BY q.id LIMIT 1`,
+      );
+      return r.rows[0]?.game_topic ?? null;
+    });
+    const beforeTopic = await availText();
+    await host.evaluate(`document.querySelector('.card button[data-topic="${firstTopic}"]')?.click()`);
+    const topicChanged = await host.waitFor(
+      `([...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('출제할 수 있는 문제')) ?? '') !== ${JSON.stringify(beforeTopic)}`,
+      6000,
+    );
+    record(
+      `★★ 분야(${firstTopic})를 끄면 출제 가능 수가 다시 계산된다 (난이도 × 분야 같은 조건)`,
+      topicChanged,
+      `${beforeTopic} → ${await availText()}`,
+    );
+    await host.click('전체');
+    record(
+      '★ "전체" 를 누르면 분야가 모두 켜진다',
+      await host.waitFor(
+        "[...document.querySelectorAll('.card button[data-topic]')].every(b => b.getAttribute('aria-pressed') === 'true')",
+        4000,
+      ),
+    );
+    await host.waitFor(
+      `([...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('출제할 수 있는 문제')) ?? '') === ${JSON.stringify(beforeTopic)}`,
+      6000,
+    );
+
+    // ── ★★ R034 단축키 Alt+T / Alt+M · 계정 저장
+    console.log('\n[4-9c] ★★ Alt+T 테마 · Alt+M 소리 · 설정 계정 저장 (R034)');
+    const themeBefore = await host.evaluate('document.documentElement.dataset.theme || "pastel"');
+    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+    await host.key('t', { alt: true });
+    const themeAfter = await host.evaluate('document.documentElement.dataset.theme || "pastel"');
+    record('★★ Alt+T 로 테마가 바뀐다', themeAfter !== themeBefore, `${themeBefore} → ${themeAfter}`);
+    await host.key('m', { alt: true });
+    const muted = await host.evaluate("JSON.parse(localStorage.getItem('qw.sound.v1') || '{}')");
+    record('★★ Alt+M 으로 소리가 모두 꺼진다', muted.bgmOn === false && muted.sfxOn === false, JSON.stringify(muted));
+    await host.key('m', { alt: true });
+    await sleep(1200); // ★ 계정 저장은 0.6초 모아서 한 번
+    const savedPrefs = await host.evaluate("fetch('/api/auth/prefs').then(r => r.json())");
+    record(
+      '★★ 바꾼 테마·소리가 계정에 저장된다',
+      savedPrefs?.prefs?.theme === themeAfter && savedPrefs?.prefs?.bgmOn === true,
+      JSON.stringify(savedPrefs?.prefs ?? savedPrefs),
+    );
+    globalThis.__uicSavedTheme = themeAfter;
+
     const noWrap = await host.evaluate(`(() => {
       const bs = [...document.querySelectorAll('.card button[aria-pressed]')];
       return bs.every(b => { const r = document.createRange(); r.selectNodeContents(b);
@@ -1202,8 +1264,8 @@ try {
       await host.evaluate("document.querySelector('.badge.cat') !== null"),
     );
     record(
-      '★ 점수판이 있다',
-      await host.evaluate("document.querySelector('.score-card .scores li') !== null"),
+      '★ 참여자 칸에 점수가 있다 (R034 — 점수판을 참여자 칸으로 옮겼다)',
+      await host.evaluate("document.querySelector('.seat-card .seat-score') !== null"),
     );
     record(
       '★ 채팅 입력창이 유지된다 (채팅 = 답안. guide 12절)',
@@ -1236,12 +1298,12 @@ try {
       //   ★ 이것은 실제 사용자에게도 일어난다 (확인창을 띄운 사이 문제가 끝난 경우).
       return true;
     })()`);
-    const skipBtn = await host.buttonState('이 문제 넘기기');
-    record('★ 방장에게 "이 문제 넘기기" 버튼이 있다', skipBtn.exists && skipBtn.visible, JSON.stringify(skipBtn));
+    const skipBtn = await host.buttonState('방장 넘기기');
+    record('★ 방장에게 "방장 넘기기" 버튼이 있다', skipBtn.exists && skipBtn.visible, JSON.stringify(skipBtn));
 
     // ★ 확인창이 방향키·Enter·마우스로 조작 가능해야 한다 (guide 23절).
     //   ★ autoFocus 로 Enter 가 바로 먹는지 본다
-    await host.click('이 문제 넘기기');
+    await host.click('방장 넘기기');
     await sleep(300);
     record(
       '★ 확인창이 나타난다',
@@ -1333,7 +1395,7 @@ try {
       "document.querySelector('.question-card .q-hint-general') !== null",
       25000,
     );
-    record('★★ 남은 20초에 일반 힌트가 화면에 나온다 (R028)', genShown);
+    record('★★ 남은 30초에 일반 힌트가 화면에 나온다 (R034 — 40초 문제)', genShown);
     if (genShown) {
       record(
         '★ 일반 힌트는 초성보다 먼저 나온다 (그 순간 초성 줄이 없다)',
@@ -1377,17 +1439,17 @@ try {
       `표시="${timerText.trim()}"`,
     );
 
-    // ── Q-56 단축키 안내가 화면에 있다
-    await host.scrollToBottom();
-    const keybar = await host.onScreen('.keybar');
+    // ── Q-56 단축키 안내가 화면에 있다. ★ R034 — 넘기기 투표만 크게(버튼 위), 나머지는 접어 둔다
+    const keybar = await host.onScreen('.keybar-btn');
     record(
-      '★★ Q-56 — 단축키 안내가 화면에 보인다',
-      keybar.exists && keybar.partlyVisible,
+      '★★ Q-56 — 단축키 버튼이 화면에 보인다 (접혀 있다)',
+      keybar.exists && keybar.fullyVisible &&
+        (await host.evaluate("document.querySelector('.keylist') === null")),
       JSON.stringify(keybar.rect ?? keybar),
     );
     record(
-      '★ 안내에 조합키가 표기된다 (Q-33: 화면에는 조합키)',
-      (await host.evaluate("document.querySelector('.keybar')?.innerText ?? ''")).includes('Alt+'),
+      '★★ R034 — 넘기기 투표 버튼에 Alt+S 가 크게 붙어 있다 (Q-33: 화면에는 조합키)',
+      (await host.evaluate("document.querySelector('.skip-btn kbd')?.innerText ?? ''")) === 'Alt+S',
     );
 
     // ── ★★★ 단독 문자키는 단축키로 먹지 않는다 (채팅 입력을 방해하지 않는다)
@@ -1428,6 +1490,14 @@ try {
       '★ Alt+G 를 다시 누르면 접힌다',
       await host.evaluate("document.querySelector('.keylist') === null"),
     );
+    // ★ R034 — F9 도 같은 일을 한다 (단축키 동작 표)
+    await host.key('F9');
+    const f9open = await host.evaluate("document.querySelector('.keylist') !== null");
+    await host.key('F9');
+    record(
+      '★★ F9 로 단축키 목록이 열리고 다시 F9 로 접힌다',
+      f9open && (await host.evaluate("document.querySelector('.keylist') === null")),
+    );
     // 입력창을 비워 둔다 (다음 검사에 영향을 주지 않게)
     await host.setInput('.chat-card input', '');
 
@@ -1439,6 +1509,16 @@ try {
       '★★ Esc 를 누르면 포커스가 채팅 입력으로 돌아온다',
       Boolean(focusBack?.inChatCard) && focusBack?.tag === 'INPUT',
       JSON.stringify(focusBack),
+    );
+
+    // ── ★ R034 — F4 도 방장 넘기기 확인창을 연다 (단축키 동작 표). 아니오로 닫는다
+    await host.key('F4');
+    const f4open = await host.evaluate("document.querySelector('.confirm') !== null");
+    await host.click('아니오');
+    await sleep(200);
+    record(
+      '★★ F4 로 방장 넘기기 확인창이 열린다 (아니오로 닫힌다)',
+      f4open && (await host.evaluate("document.querySelector('.confirm') === null")),
     );
 
     // ── ★★ 단축키가 버튼과 같은 확인창 경로를 탄다 + Enter 만으로 확정된다
@@ -1633,18 +1713,20 @@ try {
     console.log('\n[5-5b] ★★★ 한 화면 검사 — 일반 힌트 + 초성 힌트 동시 표시');
     const bothShown = await host.waitFor(
       "document.querySelector('.question-card .q-hint-general') !== null && [...document.querySelectorAll('.question-card .q-hint')].some(p => !p.classList.contains('q-hint-general'))",
-      35000,
+      45000,
     );
-    record('★★ 10초부터 일반 힌트와 초성 힌트가 함께 보인다 (R028)', bothShown);
+    record('★★ 남은 15초부터 일반 힌트와 초성 힌트가 함께 보인다 (R034)', bothShown);
     if (bothShown) await measureOneScreen(host, '게임 화면 (힌트 두 줄)', { shotName: '2-game' });
     await host.setWidth(720);
     await sleep(250);
 
     console.log('\n[5-6] ★★ 강제 종료 → 결과 화면 → 로비 복귀 (Phase 3)');
-    await host.click('게임 강제 종료');
+    // ★ R034 — 단축키 Alt+Q 로 연다 (단축키 동작 표)
+    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+    await host.key('q', { alt: true });
     await sleep(300);
     record(
-      '★ 강제 종료 확인창이 나타난다',
+      '★ Alt+Q 로 강제 종료 확인창이 나타난다',
       await host.evaluate("document.querySelector('.confirm') !== null"),
     );
     record(
@@ -1689,12 +1771,13 @@ try {
 
     const againBtn = await host.buttonState('다시 하기');
     record('★ 다시 하기 버튼이 있다', againBtn.exists && !againBtn.disabled, JSON.stringify(againBtn));
-    await host.click('로비로');
+    // ★ R034 — 단축키 Alt+L (단축키 동작 표)
+    await host.key('l', { alt: true });
     const backToLobby = await host.waitFor(
       "document.querySelector('#invite-url') !== null",
       8000,
     );
-    record('★★ 로비로 복귀한다 (초대 링크 카드가 다시 보인다)', backToLobby);
+    record('★★ Alt+L 로 로비로 복귀한다 (초대 링크 카드가 다시 보인다)', backToLobby);
     record(
       '★ 게임이 자동으로 시작되지 않는다 (guide 38절)',
       await host.evaluate("document.querySelector('.question-card') === null"),
@@ -1702,7 +1785,7 @@ try {
 
     // ── 방을 비우고 새로 만든다
     await host.click('방 나가기');
-    await host.waitFor("document.querySelector('.players') === null", 8000);
+    await host.waitFor("document.querySelector('.stage') === null", 8000);
     const roomId2 = await createRoom(host, '내보내기 확인용 방');
     record('두 번째 방 생성', Boolean(roomId2));
 
@@ -1713,7 +1796,7 @@ try {
     await signUp(guest, 'g');
     await guest.goto(`${BASE}/r/${roomId2}`);
     const guestIn = await guest.waitFor(
-      "document.querySelector('.players') !== null && location.pathname.startsWith('/r/')",
+      "document.querySelector('.stage') !== null && location.pathname.startsWith('/r/')",
       10000,
     );
     record(
@@ -1722,7 +1805,7 @@ try {
       guestIn ? '' : `게스트 화면="${(await guest.text()).replace(/\s+/g, ' ').slice(0, 140)}"`,
     );
     const twoPlayers = await host.waitFor(
-      "document.querySelectorAll('.players li').length === 2",
+      "document.querySelectorAll('.seat-card:not(.empty)').length === 2",
       8000,
     );
     record(
@@ -1730,7 +1813,222 @@ try {
       twoPlayers,
       twoPlayers
         ? ''
-        : `방장 목록="${await host.evaluate("[...document.querySelectorAll('.players li')].map(li=>li.innerText.replace(/\\s+/g,' ')).join(' | ')")}" / 게스트 화면="${(await guest.text()).replace(/\s+/g, ' ').slice(0, 120)}"`,
+        : `방장 목록="${await host.evaluate("[...document.querySelectorAll('.seat-card:not(.empty)')].map(li=>li.innerText.replace(/\\s+/g,' ')).join(' | ')")}" / 게스트 화면="${(await guest.text()).replace(/\s+/g, ' ').slice(0, 120)}"`,
+    );
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // ★★★ R034 — 두 사람 게임: 말풍선 마스킹 · 스킵 투표 · 마지막 문제 5초 · 닉네임 · 단축키
+    //   ★ 건우: "스킵 투표가 아예 안 된다." — R033 까지는 봇만 투표를 시험했다(봇은 화면을 거치지 않는다).
+    //     ★ 그래서 **두 브라우저가 실제 버튼·단축키로** 투표한다.
+    // ─────────────────────────────────────────────────────────────────────────
+    console.log('\n[6-A] ★★★ R034 — 두 사람 게임 (스킵 투표 · 말풍선 마스킹 · 마지막 문제 5초)');
+    const ids = await withPg(async (c) => {
+      const r = await c.query(`SELECT login_id, id::text AS id FROM accounts WHERE login_id = ANY($1)`, [
+        [`${ACCOUNT_PREFIX}_h`, `${ACCOUNT_PREFIX}_g`],
+      ]);
+      return Object.fromEntries(r.rows.map((x) => [x.login_id.endsWith('_h') ? 'h' : 'g', x.id]));
+    });
+    // ★ 방장은 앞 게임에서 문제를 봐서 경험이 늘었다 → 다시 "앞의 3문제만 미경험" 으로 맞춘다.
+    //   ★ 게스트는 **모든 문제의 경험자**로 만든다 → 게스트가 쓴 정답은 방장 화면에서 가려져야 한다
+    await withPg((c) => c.query(`DELETE FROM question_experiences WHERE account_id = $1`, [ids?.h]));
+    await shrinkAvailable(`${ACCOUNT_PREFIX}_h`, 3);
+    await withPg((c) =>
+      c.query(
+        `INSERT INTO question_experiences (account_id, question_id)
+         SELECT $1, q.id FROM questions q
+          WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
+         ON CONFLICT DO NOTHING`,
+        [ids?.g],
+      ),
+    );
+    await setQuestionCount(host, 2);
+    await sleep(300);
+    await host.click('게임 시작');
+    const bothQ = (await host.waitFor("document.querySelector('.question-card .q-text') !== null", 15000)) &&
+      (await guest.waitFor("document.querySelector('.question-card .q-text') !== null", 5000));
+    record('★ 두 사람 게임이 시작된다', bothQ);
+
+    const answerOf = async (page) => {
+      const text = await page.evaluate("document.querySelector('.question-card .q-text')?.innerText ?? ''");
+      return withPg(async (c) => {
+        const r = await c.query(
+          `SELECT a.answer_text FROM questions q JOIN question_answers a ON a.question_id = q.id
+            WHERE q.question_text = $1 ORDER BY a.is_primary DESC, a.id LIMIT 1`,
+          [text],
+        );
+        return r.rows[0]?.answer_text ?? null;
+      });
+    };
+
+    // ── 경험자 표시 — 참여자 칸 배지
+    record(
+      '★★ 방장 화면 — 게스트 칸에 "경험" 배지가 붙는다',
+      await host.waitFor(`document.querySelector('.seat-card[data-account="${ids?.g}"] .badge.exp') !== null`, 4000),
+    );
+
+    // ── ★★★ 말풍선 마스킹 — 경험자(게스트)가 정답을 쓴다
+    const ans1 = await answerOf(guest);
+    record('정답을 DB 에서 찾았다 (검사 전제)', Boolean(ans1));
+    await guest.setInput('.chat-card input', ans1 ?? '');
+    await guest.click('전송');
+    const maskedBubble = await host.waitFor(
+      `document.querySelector('.seat-card[data-account="${ids?.g}"] .bubble .masked-chip') !== null`,
+      5000,
+    );
+    const bubbleText = await host.evaluate(
+      `document.querySelector('.seat-card[data-account="${ids?.g}"] .bubble')?.innerText ?? ''`,
+    );
+    record(
+      '★★★ 방장 화면 — 경험자가 쓴 정답이 **말풍선에서도** 가려진다',
+      maskedBubble && Boolean(ans1) && !bubbleText.includes(ans1),
+      `말풍선="${bubbleText}"`,
+    );
+    const logText = await host.evaluate("document.querySelector('.chat-log')?.innerText ?? ''");
+    record('★★★ 채팅 로그에서도 가려진다 (같은 메시지)', Boolean(ans1) && !logText.includes(ans1));
+    record(
+      '★ 본인(게스트) 말풍선에는 원문 + "가려져서 전송됨"',
+      (await guest.evaluate(
+        `document.querySelector('.seat-card[data-account="${ids?.g}"] .bubble')?.innerText ?? ''`,
+      )).includes('가려져서 전송됨'),
+    );
+    record(
+      '★ 경험자의 정답은 판정되지 않는다 (정답 공개가 없다)',
+      await host.evaluate("document.querySelector('.reveal-card') === null"),
+    );
+
+    // ── ★ 게임 중 닉네임 변경은 서버가 막는다
+    const renameInGame = await guest.evaluate(`fetch('/api/auth/nickname', { method: 'PATCH',
+      headers: { 'content-type': 'application/json' }, body: JSON.stringify({ nickname: 'UIzz${STAMP}' }) })
+      .then(r => r.status)`);
+    record('★★ 게임 중 닉네임 변경은 거부된다 (409)', renameInGame === 409, `status=${renameInGame}`);
+
+    // ── ★★★ 스킵 투표 — 두 사람이 실제 버튼·단축키로
+    const skipState = (page) =>
+      page.evaluate(`JSON.stringify({
+        count: document.querySelector('.skip-count')?.innerText.replace(/\\s+/g, ' ').trim() ?? null,
+        btn: document.querySelector('.skip-btn')?.innerText ?? null,
+        disabled: document.querySelector('.skip-btn')?.disabled ?? null,
+        pressed: document.querySelector('.skip-btn')?.getAttribute('aria-pressed') ?? null })`).then(JSON.parse);
+    const s0h = await skipState(host);
+    const s0g = await skipState(guest);
+    record(
+      '★★★ 문제 시작부터 넘기기 투표 버튼이 켜져 있고 "0 / 2" 가 보인다 (두 사람 모두)',
+      s0h.count === '0 / 2' && s0h.disabled === false && s0g.count === '0 / 2' && s0g.disabled === false,
+      `방장=${JSON.stringify(s0h)} / 게스트=${JSON.stringify(s0g)}`,
+    );
+    await host.evaluate("document.querySelector('.skip-btn')?.click()");
+    const v1 = await host.waitFor("document.querySelector('.skip-count')?.innerText.replace(/\\s+/g,' ').trim() === '1 / 2'", 4000);
+    const s1h = await skipState(host);
+    const s1g = await guest.waitFor("document.querySelector('.skip-count')?.innerText.replace(/\\s+/g,' ').trim() === '1 / 2'", 4000);
+    const s1gs = await skipState(guest);
+    record('★★★ 방장이 투표하면 두 화면 모두 "1 / 2"', v1 && s1g, `방장=${JSON.stringify(s1h)} / 게스트=${JSON.stringify(s1gs)}`);
+    record('★★ 투표한 사람 버튼은 "넘기기 취소" 로 바뀐다 (본인 투표 여부)', s1h.pressed === 'true' && /취소/.test(s1h.btn ?? ''));
+    record('★★ 안 누른 사람 버튼은 그대로 "넘기기 투표"', s1gs.pressed === 'false' && /투표/.test(s1gs.btn ?? ''));
+    // ★ 취소 — 한글 자판 상태를 흉내 낸다 (key 는 'ㄴ', 자판 위치는 S). R034 에서 e.code 로 고친 부분
+    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+    await host.key('ㄴ', { alt: true, code: 'KeyS', vk: 83 });
+    record(
+      '★★★ Alt+S (한글 자판 상태에서도) 로 투표가 취소된다 → "0 / 2"',
+      await host.waitFor("document.querySelector('.skip-count')?.innerText.replace(/\\s+/g,' ').trim() === '0 / 2'", 4000),
+    );
+    // ★ 다시 투표 — F2
+    await host.key('F2');
+    record(
+      '★★ F2 로 다시 투표된다 → "1 / 2"',
+      await host.waitFor("document.querySelector('.skip-count')?.innerText.replace(/\\s+/g,' ').trim() === '1 / 2'", 4000),
+    );
+    const q1Text = await host.evaluate("document.querySelector('.question-card .q-text')?.innerText ?? ''");
+    await guest.evaluate("document.querySelector('.chat-card input')?.focus()");
+    await guest.key('s', { alt: true });
+    const skipped = await host.waitFor(
+      "document.querySelector('.reveal-card')?.innerText.includes('투표로 넘겼습니다') === true",
+      5000,
+    );
+    record('★★★ 게스트가 Alt+S 로 투표하면 2/2 — 문제가 넘어간다 ("투표로 넘겼습니다")', skipped);
+
+    // ── ★★ 마지막 문제 — 정답 공개 5초 뒤 결과 (Q-17 개정)
+    console.log('\n[6-B] ★★ 마지막 문제도 정답 공개 5초 뒤 결과 (R034 Q-17 개정)');
+    const q2Up = await host.waitFor(
+      `document.querySelector('.question-card .q-text') !== null &&
+       document.querySelector('.reveal-card') === null &&
+       document.querySelector('.question-card .q-text').innerText !== ${JSON.stringify(q1Text)}`,
+      10000,
+    );
+    record('★ 2번째(마지막) 문제가 시작된다', q2Up);
+    const ans2 = await answerOf(host);
+    await host.setInput('.chat-card input', ans2 ?? '');
+    await host.click('전송');
+    const revealUp = await host.waitFor("document.querySelector('.reveal-card .winner-name') !== null", 5000);
+    const revealAt = Date.now();
+    record(
+      '★★ 마지막 문제도 정답 공개 화면이 나온다 ("잠시 후 결과")',
+      revealUp && (await host.evaluate("document.querySelector('.reveal-card')?.innerText ?? ''")).includes('마지막 문제였습니다'),
+    );
+    const resultUp = await host.waitFor("document.querySelector('.result-card') !== null", 9000);
+    const waited = Date.now() - revealAt;
+    record(
+      '★★★ 결과 화면은 정답 공개 약 5초 뒤에 나온다 (곧바로 넘어가지 않는다)',
+      resultUp && waited >= 4300 && waited <= 7500,
+      `${waited}ms`,
+    );
+
+    // ── 다시 하기 (Alt+A) — 설정을 이어받는다
+    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+    await host.key('a', { alt: true });
+    const again = await host.waitFor("document.querySelector('#invite-url') !== null", 6000);
+    record(
+      '★★ Alt+A (다시 하기) 로 로비로 — 문제 수 설정이 이어진다',
+      again && (await host.evaluate("document.querySelector('.settings-label input[type=number]')?.value")) === '2',
+    );
+
+    // ── ★★ 닉네임 바꾸기 (로비)
+    console.log('\n[6-C] ★★ 닉네임 바꾸기 (R034)');
+    await guest.waitFor("document.querySelector('#rename-input') !== null", 6000);
+    const expBefore = await withPg(async (c) =>
+      (await c.query(`SELECT count(*)::int AS n FROM question_experiences WHERE account_id = $1`, [ids?.g])).rows[0].n,
+    );
+    const newNick = `UIr${STAMP}`;
+    await guest.setInput('#rename-input', newNick);
+    await sleep(150);
+    await guest.click('바꾸기');
+    const sysLine = await host.waitFor(
+      `document.querySelector('.chat-log')?.innerText.includes(${JSON.stringify(`${newNick}(으)로 이름을 바꿨습니다`)}) === true`,
+      5000,
+    );
+    record('★★ 채팅 로그에 "○○ 님이 △△(으)로 이름을 바꿨습니다" 가 남는다', sysLine);
+    record(
+      '★★ 방장 화면의 참여자 칸 이름이 바뀐다',
+      await host.waitFor(
+        `document.querySelector('.seat-card[data-account="${ids?.g}"] .seat-nick')?.innerText === ${JSON.stringify(newNick)}`,
+        4000,
+      ),
+    );
+    const expAfter = await withPg(async (c) =>
+      (await c.query(`SELECT count(*)::int AS n FROM question_experiences WHERE account_id = $1`, [ids?.g])).rows[0].n,
+    );
+    record('★★ 경험 기록은 계정에 그대로 붙어 있다 (개수 동일)', expBefore === expAfter && expAfter > 0, `${expBefore} → ${expAfter}`);
+    // ★ 겹치는 닉네임 — 방장 이름으로 바꾸려 한다
+    await guest.setInput('#rename-input', `UI${STAMP}h`);
+    await sleep(150);
+    await guest.click('바꾸기');
+    record(
+      '★★ 다른 사람이 쓰는 닉네임이면 막고 알려 준다',
+      await guest.waitForText('이미 사용 중인 닉네임', 4000),
+    );
+
+    // ── 말풍선 (마스킹 없는 보통 말) — 방장이 쓴 말이 게스트 화면의 방장 칸에 뜬다
+    await host.setInput('.chat-card input', '말풍선 확인');
+    await host.click('전송');
+    record(
+      '★★ 채팅이 참여자 칸 말풍선으로 잠깐 뜬다',
+      await guest.waitFor(
+        `document.querySelector('.seat-card[data-account="${ids?.h}"] .bubble')?.innerText.includes('말풍선 확인') === true`,
+        4000,
+      ),
+    );
+    record(
+      '★ 말풍선은 잠시 뒤 사라진다 (4초)',
+      await guest.waitFor(`document.querySelector('.seat-card[data-account="${ids?.h}"] .bubble') === null`, 7000),
     );
 
     // 게스트 탭을 닫아 접속 종료를 만든다
@@ -1740,7 +2038,7 @@ try {
     // ★ 텍스트로 찾으면 안 된다. 참가자 카드의 안내 문구에도 "접속 종료" 가 들어 있어
     //   배지가 없어도 통과한다(이 도구가 처음에 그렇게 오탐했다). 배지 요소를 직접 본다.
     const badge = await host.waitFor(
-      "document.querySelector('.players .badge.off') !== null",
+      "document.querySelector('.seat-card .badge.off') !== null",
       12000,
     );
     record('접속 종료 배지가 5초 유예 뒤 나타난다', badge);
@@ -1756,7 +2054,7 @@ try {
     if (kick.exists && kick.visible) {
       await host.click('내보내기');
       const removed = await host.waitFor(
-        "document.querySelectorAll('.players li').length === 1",
+        "document.querySelectorAll('.seat-card:not(.empty)').length === 1",
         8000,
       );
       record('★ 내보내기가 실제로 동작한다 (목록에서 사라진다)', removed);
@@ -1765,7 +2063,7 @@ try {
     }
 
     await host.click('방 나가기');
-    await host.waitFor("document.querySelector('.players') === null", 8000);
+    await host.waitFor("document.querySelector('.stage') === null", 8000);
 
     // ─────────────────────────────────────────────────────────────────────────
     // 에러 표시 경로 점검
@@ -1833,7 +2131,41 @@ try {
     );
 
     await host.click('방 나가기');
-    await host.waitFor("document.querySelector('.players') === null", 8000);
+    await host.waitFor("document.querySelector('.stage') === null", 8000);
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // ★★ R034 — 설정 계정 저장: 브라우저 저장소가 빈 곳에서 로그인하면 계정의 테마가 나온다
+    // ─────────────────────────────────────────────────────────────────────────
+    console.log('\n[9] ★★ 다른 브라우저에서 로그인 → 계정에 저장된 테마 (R034)');
+    const other = await newPage(browser, 'other', true);
+    await other.setWidth(720);
+    await other.goto(BASE);
+    await other.evaluate(`(() => {
+      const set = (el, v) => {
+        const d = Object.getOwnPropertyDescriptor(el.constructor.prototype, 'value');
+        d.set.call(el, v);
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+      };
+      const i = [...document.querySelectorAll('form input')];
+      set(i[0], ${JSON.stringify(`${ACCOUNT_PREFIX}_h`)});
+      set(i[1], 'uic1234');
+      return true;
+    })()`);
+    await sleep(150);
+    // ★ '로그인' 글자의 버튼이 둘(탭·제출)이라 글자로 누르면 탭이 눌린다 — 폼을 제출한다
+    await other.evaluate("document.querySelector('form').requestSubmit()");
+    record('다른 브라우저에서 같은 계정으로 로그인 (검사 전제)', await other.waitFor("document.querySelector('.tabs') === null", 8000));
+    const otherTheme = await other.waitFor(
+      `document.documentElement.dataset.theme === ${JSON.stringify(globalThis.__uicSavedTheme ?? '')}`,
+      5000,
+    );
+    record(
+      '★★ 새 브라우저(저장소 비어 있음)에서 로그인하면 계정에 저장된 테마가 적용된다',
+      otherTheme,
+      `기대=${globalThis.__uicSavedTheme} / 실제=${await other.evaluate('document.documentElement.dataset.theme')}`,
+    );
+    await browser.send('Target.closeTarget', { targetId: other.targetId });
+    other.close();
   }
 } catch (err) {
   record('실행', false, err.message);

@@ -31,7 +31,7 @@ import { spawn, spawnSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import net from 'node:net';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SERVER_ENTRY = path.join(ROOT, 'server', 'dist', 'index.js');
@@ -164,6 +164,36 @@ try {
   record('Socket.IO 핸드셰이크', res.ok, String(res.status));
 } catch (err) {
   record('Socket.IO 핸드셰이크', false, err.message);
+}
+
+// ── 5-2. ★ R034 — 분야 묶음: 코드(shared GAME_TOPICS)와 DB(game_topics)가 같은가
+//   ★ 다르면 그 분야 문제가 조용히 안 나온다. 묶음 없는(NULL) 활성 문제도 0이어야 한다.
+try {
+  const { GAME_TOPICS } = await import(pathToFileURL(path.join(ROOT, 'shared', 'dist', 'index.js')).href);
+  const { default: pg } = await import('pg');
+  try {
+    process.loadEnvFile?.(path.join(ROOT, '.env'));
+  } catch {
+    /* .env 가 없으면 환경 변수를 쓴다 */
+  }
+  const client = new pg.Client({ connectionString: process.env.DATABASE_URL });
+  await client.connect();
+  try {
+    const db = (await client.query(`SELECT key FROM game_topics ORDER BY sort_order`)).rows.map((r) => r.key);
+    const code = GAME_TOPICS.map((t) => t.topic);
+    record('★ 분야 묶음 — 코드와 DB 가 같다', JSON.stringify(db) === JSON.stringify(code), `DB=${db.join(',')}`);
+    const orphan = (
+      await client.query(
+        `SELECT count(*)::int AS n FROM questions q LEFT JOIN category_game_topics t ON t.category_id = q.category_id
+          WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer' AND t.game_topic IS NULL`,
+      )
+    ).rows[0].n;
+    record('★ 분야 묶음이 없는 활성 문제가 없다', orphan === 0, `${orphan}건`);
+  } finally {
+    await client.end();
+  }
+} catch (err) {
+  record('★ 분야 묶음 대조', false, `${err.message} — npm run db:migrate 를 돌렸는가`);
 }
 
 // ── 6. 종료와 포트 해제
