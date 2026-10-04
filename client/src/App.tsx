@@ -31,6 +31,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { io, type Socket } from 'socket.io-client';
 import AuthScreen from './AuthScreen.js';
 import Lobby from './Lobby.js';
+import Prefs from './Prefs.js';
 import Toast, { type ToastContent } from './Toast.js';
 import { errorMessage, fetchMe, logout, type Account } from './api.js';
 import { useRoom } from './useRoom.js';
@@ -190,10 +191,8 @@ export default function App() {
     window.history.replaceState(null, '', '/');
   }, []);
 
-  const clockLine = useMemo(() => {
-    if (clock.offset === null) return '시각 동기화 측정 중…';
-    return `서버 시각 오프셋 ${clock.offset >= 0 ? '+' : ''}${clock.offset}ms / RTT ${clock.rtt}ms`;
-  }, [clock.offset, clock.rtt]);
+  // ★★ R033 — 서버 시각 오프셋 **표시**를 뺐다 (건우: "굳이 표기할 필요 없지 않나").
+  //   ★ 시계 동기화 자체(useServerClock)는 그대로다 — 타이머·카운트다운이 이것에 기대고 있다.
 
   // ── 화면 선택. ★ return 은 이 함수 하나에서만 한다.
   const view = (() => {
@@ -224,7 +223,7 @@ export default function App() {
       return {
         narrow: true,
         body: <AuthScreen onAuthed={setAccount} pendingRoomId={pendingRoomId} />,
-        foot: null,
+        foot: <Prefs />,
       };
     }
 
@@ -243,7 +242,7 @@ export default function App() {
         ),
         foot: (
           <>
-            <span className="dim mono">{clockLine}</span>
+            <Prefs />
             <button type="button" className="ghost tiny" onClick={doLogout}>
               로그아웃
             </button>
@@ -256,17 +255,13 @@ export default function App() {
       narrow: true,
       body: (
         <>
-          <header className="lobby-head">
-            <div>
-              <h1>상식 퀴즈</h1>
-              <p className="sub">
-                <span className="nick">{account.nickname}</span> 님으로 접속 중
-              </p>
-            </div>
-            <button type="button" className="ghost" onClick={doLogout}>
-              로그아웃
-            </button>
-          </header>
+          <div className="brand">
+            <span className="brand-mark" aria-hidden="true">Q</span>
+            <h1>상식 퀴즈</h1>
+            <p className="sub">
+              <span className="nick">{account.nickname}</span> 님, 어서 오세요!
+            </p>
+          </div>
 
           <section className="card">
             <h2>방 만들기</h2>
@@ -280,7 +275,7 @@ export default function App() {
                   if (e.key === 'Enter' && !e.nativeEvent.isComposing) createRoom();
                 }}
               />
-              <button type="button" onClick={createRoom} disabled={!socket}>
+              <button type="button" className="primary" onClick={createRoom} disabled={!socket}>
                 만들기
               </button>
             </div>
@@ -312,23 +307,11 @@ export default function App() {
       ),
       foot: (
         <>
-          <span className="dim mono">{clockLine}</span>
-          {/* ★ 라이선스 의무 (Q-41 / DATA_LICENSE.md).
-              OpenTDB 는 CC BY-SA 4.0 이고 저작자 표시가 의무다.
-              ★ 미관 문제가 아니라 지켜야 하는 조건이므로 Phase 7로 미루지 않는다 (D-031 기준 4).
-
-              ★ R011: "문제 출처" → "일부 문제 출처" 로 고쳤다.
-                이제 문제 대부분이 직접 생성한 것이고 OpenTDB 문제는 10건만 남는다.
-                무조건 "문제 출처: OpenTDB" 라고 쓰면 **사실과 다른 표기**가 된다.
-                ★ 반대로 표기를 지우면 안 된다. OpenTDB 문제 10건이 아직 출제되므로
-                  저작자 표시 의무가 살아 있다 (DATA_LICENSE.md 참조). */}
-          <span className="dim attribution">
-            일부 문제 출처:{' '}
-            <a href="https://opentdb.com/" target="_blank" rel="noreferrer noopener">
-              Open Trivia Database
-            </a>{' '}
-            (CC BY-SA 4.0)
-          </span>
+          {/* ★ R033 — 출처(OpenTDB) 문구를 뺐다. OpenTDB 문항은 전부 내렸다 (건우 방침 / 저장소 Private) */}
+          <Prefs />
+          <button type="button" className="ghost tiny" onClick={doLogout}>
+            로그아웃
+          </button>
         </>
       ),
     };

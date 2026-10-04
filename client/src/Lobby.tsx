@@ -24,6 +24,11 @@ import GameResult from './GameResult.js';
 import Paused from './Paused.js';
 import ShortcutBar from './ShortcutBar.js';
 import { useFocusChatOnEscape, useShortcuts, type Shortcut } from './shortcuts.js';
+import Avatar from './Avatar.js';
+import { setRoomOwnsKeys } from './Prefs.js';
+import { toggleMuteAll } from './sound.js';
+import { cycleTheme } from './theme.js';
+import { useGameSounds } from './useGameSounds.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
 
 interface Props {
@@ -226,8 +231,34 @@ export default function Lobby({
       when: true,
       run: () => setShowKeys((v) => !v),
     },
+    // ★ R033 — 테마·소리. 방 안에서는 여기가 맡는다 (Prefs 의 전역 키는 쉰다)
+    {
+      combo: 'Alt+T',
+      fkey: null,
+      label: '테마 바꾸기',
+      when: true,
+      run: () => {
+        cycleTheme();
+      },
+    },
+    {
+      combo: 'Alt+M',
+      fkey: null,
+      label: '소리 켜기/끄기',
+      when: true,
+      run: () => {
+        toggleMuteAll();
+      },
+    },
   ];
   useShortcuts(shortcuts);
+  // ★ 방 안에 있는 동안 Alt+T / Alt+M 은 위 목록이 맡는다
+  useEffect(() => {
+    setRoomOwnsKeys(true);
+    return () => setRoomOwnsKeys(false);
+  }, []);
+  // ★★ R033 — 소리 (오답에는 소리가 없다)
+  useGameSounds(snapshot, serverNow);
   // ★★ Esc 로 채팅 입력에 포커스를 되돌린다. 마우스 없이 돌아가려면 반드시 필요하다
   useFocusChatOnEscape(inputRef);
 
@@ -246,9 +277,11 @@ export default function Lobby({
         <div>
           <h1>{snapshot.room.title}</h1>
           <p className="sub">
-            {snapshot.players.length} / {snapshot.room.maxPlayers}명
-            <span className="dim"> · 접속 {snapshot.room.activeCount}명</span>
-            <span className="dim"> · {snapshot.room.state}</span>
+            <span className="state-pill">{stateLabel(snapshot.room.state)}</span>
+            <span>
+              {snapshot.players.length} / {snapshot.room.maxPlayers}명
+            </span>
+            <span className="dim">· 접속 {snapshot.room.activeCount}명</span>
           </p>
         </div>
         <button type="button" className="ghost" onClick={leaveWithConfirm}>
@@ -309,8 +342,55 @@ export default function Lobby({
       {/* ★ 초대 링크·참가자·설정은 로비 계열 상태에서만 보여준다.
           ★ 근거: 게임 중 화면 위쪽은 문제 지문과 남은 시간이 차지해야 한다 (D-032).
             ★ 30초 승부의 핵심 정보다. 초대 링크가 그 위에 있으면 안 된다. */}
+      {/* ★★ R033 — 로비는 두 칸이다 (넓은 화면). 왼쪽 = 게임 설정·시작 / 오른쪽 = 초대 링크·참가자.
+          ★ 근거: 카드 높이가 제각각이라 2×2 격자로 두면 줄마다 빈자리가 생겨 화면을 넘었다 (R033 실측).
+            ★ 세로 칸 두 개로 쌓으면 빈자리가 없다 — 로비도 한 화면에 들어온다. */}
       {inGame ? null : (
-        <>
+        <div className="lobby-cols">
+          {/* 왼쪽 = 게임 설정 · 시작 (방장이 손댈 것) */}
+          <div className="lobby-col">
+      <GameSettings
+        socket={socket}
+        settings={snapshot.room.settings}
+        settingsLocked={snapshot.room.settingsLocked}
+        availableQuestionCount={snapshot.room.availableQuestionCount}
+        isHost={snapshot.me.isHost}
+      />
+      {/* ── 카운트다운 (COUNTDOWN 상태) */}
+      {snapshot.countdown && (
+        <Countdown
+          socket={socket}
+          endsAt={snapshot.countdown.endsAt}
+          serverNow={serverNow}
+          isHost={snapshot.me.isHost}
+        />
+      )}
+
+      {/* ── 게임 시작 버튼 (LOBBY + 방장) */}
+      {snapshot.room.state === 'LOBBY' && (
+        <section className="card start-card">
+          {/* ★ R033 — 제목 줄을 뺐다. 버튼 자체가 제목이다 (로비 한 화면) */}
+          {snapshot.me.isHost ? (
+            <>
+              <button
+                type="button"
+                className="primary big-btn"
+                onClick={() => socket.emit('game.start', {})}
+              >
+                게임 시작
+              </button>
+              {/* ★ R033 (Q-11 개정) — 시작은 항상 5초 뒤다 */}
+              <p className="note">누르면 5초 뒤에 시작합니다. 그 사이 취소할 수 있습니다.</p>
+            </>
+          ) : (
+            <p className="note">방장이 게임을 시작할 때까지 기다려 주세요.</p>
+          )}
+        </section>
+      )}
+
+          </div>
+          {/* 오른쪽 = 초대 링크 · 참가자 (누가 왔나) */}
+          <div className="lobby-col">
       <section className="card">
         <h2>초대 링크</h2>
         <div className="field-row">
@@ -324,20 +404,20 @@ export default function Lobby({
           새 주소에서 다시 복사해 주세요.
         </p>
       </section>
-
       <section className="card">
         <h2>참가자</h2>
         <ol className="players">
           {snapshot.players.map((p, index) => (
             <li key={p.accountId} className={p.connected ? undefined : 'offline'}>
               <span className="seat">{index + 1}</span>
+              <Avatar nickname={p.nickname} colorIndex={p.colorIndex} />
               {/* ★ 닉네임 자체를 플레이어 색상으로 표시한다 (guide 35절).
                   별도 색상 아이콘을 쓰지 않는다.
                   색약을 고려해 순번(seat)을 함께 표시한다. */}
               <span className="nick" style={{ color: `var(--p${p.colorIndex})` }}>
                 {p.nickname}
               </span>
-              {p.isHost && <span className="badge">방장</span>}
+              {p.isHost && <span className="badge host">방장</span>}
               {p.accountId === snapshot.me.accountId && <span className="badge me">나</span>}
               {!p.connected && <span className="badge off">접속 종료</span>}
               {snapshot.me.isHost && !p.connected && (
@@ -375,46 +455,8 @@ export default function Lobby({
           빠집니다(Phase 6). ★ 경험률이 높다는 이유로 게임 시작을 막지는 않습니다.
         </p>
       </section>
-
-      <GameSettings
-        socket={socket}
-        settings={snapshot.room.settings}
-        settingsLocked={snapshot.room.settingsLocked}
-        availableQuestionCount={snapshot.room.availableQuestionCount}
-        isHost={snapshot.me.isHost}
-      />
-        </>
-      )}
-
-      {/* ── 카운트다운 (COUNTDOWN 상태) */}
-      {snapshot.countdown && (
-        <Countdown
-          socket={socket}
-          endsAt={snapshot.countdown.endsAt}
-          serverNow={serverNow}
-          isHost={snapshot.me.isHost}
-        />
-      )}
-
-      {/* ── 게임 시작 버튼 (LOBBY + 방장) */}
-      {snapshot.room.state === 'LOBBY' && (
-        <section className="card">
-          <h2>게임 시작</h2>
-          {snapshot.me.isHost ? (
-            <>
-              <button type="button" onClick={() => socket.emit('game.start', {})}>
-                게임 시작
-              </button>
-              <p className="note">
-                {snapshot.room.settings.startMode === 'instant'
-                  ? '누르면 곧바로 시작합니다.'
-                  : `누르면 ${snapshot.room.settings.countdownSec}초 카운트다운이 시작됩니다. 카운트다운은 취소할 수 있습니다.`}
-              </p>
-            </>
-          ) : (
-            <p className="note">방장이 게임을 시작할 때까지 기다려 주세요.</p>
-          )}
-        </section>
+          </div>
+        </div>
       )}
 
       {/* ── ★★ 문제 화면 (Phase 3). Phase 2 의 임시 안내 화면(옛 표식 02)을 교체한 자리다 */}
@@ -461,7 +503,7 @@ export default function Lobby({
         <div className="col-side">
 
       <section className="card chat-card">
-        <h2>채팅</h2>
+        <h2>채팅 · 정답 입력</h2>
         <div
           className="chat-log"
           ref={logRef}
@@ -516,7 +558,7 @@ export default function Lobby({
               send();
             }}
           />
-          <button type="button" onClick={send}>
+          <button type="button" className="primary" onClick={send}>
             전송
           </button>
         </div>
@@ -549,32 +591,27 @@ export default function Lobby({
         </div>
       </div>
 
-      {/* ★ 라이선스 의무 (Q-41 / DATA_LICENSE.md). 방 안 화면에도 출처가 보여야 한다.
-          ★★ 게임 중에는 **한 줄로 접는다** (R016 판단).
-            ★ 근거: 고지 의무는 "방 안 화면에서 확인할 수 있을 것" 이고,
-              로비·결과 화면에서는 카드 전체가 그대로 보인다. 게임 중에도 한 줄 고지는 남는다.
-            ★ 30초 승부 중에 세 줄짜리 라이선스 문단이 화면을 차지할 이유가 없다. */}
-      {inGame ? (
-        <p className="note dim license-line">
-          문제 출처:{' '}
-          <a href="https://opentdb.com/" target="_blank" rel="noreferrer noopener">
-            Open Trivia Database
-          </a>{' '}
-          (CC BY-SA 4.0) 번역·가공
-        </p>
-      ) : (
-        <section className="card">
-          <h2>문제 출처</h2>
-          <p className="note">
-            문제 데이터의 일부는{' '}
-            <a href="https://opentdb.com/" target="_blank" rel="noreferrer noopener">
-              Open Trivia Database
-            </a>{' '}
-            (CC BY-SA 4.0) 를 한국어 주관식으로 번역·가공한 것입니다. 가공된 데이터도 같은
-            라이선스로 공개됩니다.
-          </p>
-        </section>
-      )}
+      {/* ★ R033 — 문제 출처(OpenTDB) 문구를 뺐다. OpenTDB 문항은 전부 내렸다 (건우 방침) */}
     </div>
   );
+}
+
+/** ★ R033 — 상태 코드를 사람 말로 (영문 상태값을 화면에 그대로 내보이지 않는다) */
+function stateLabel(state: string): string {
+  switch (state) {
+    case 'LOBBY':
+      return '대기 중';
+    case 'COUNTDOWN':
+      return '곧 시작';
+    case 'QUESTION_ACTIVE':
+      return '문제 풀이 중';
+    case 'QUESTION_RESOLVED':
+      return '정답 공개';
+    case 'PAUSED':
+      return '일시정지';
+    case 'GAME_RESULT':
+      return '결과';
+    default:
+      return state;
+  }
 }

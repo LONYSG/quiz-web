@@ -1,0 +1,429 @@
+// =============================================================================
+// 소리 (R033) — 배경음악 + 효과음. ★ 전부 브라우저에서 합성한다 (Web Audio).
+//
+// ★ 건우: "사운드도 하나도 없으니 너무 심심하다. 효과음도 다양하게 쓰면 좋겠다."
+//   · 기본 배경음악을 깐다
+//   · ★★ 정답 시 효과음 + 정답자 부각
+//   · ★★ **오답에는 소리를 넣지 않는다** — 채팅이 곧 답이라 오답이 아주 많다
+//
+// ★ 왜 합성인가 (자체 판단)
+//   · 파일이 없다 — 음원 수집·변환·용량·라이선스 확인이 필요 없다. 터널로 받는 데이터도 늘지 않는다
+//   · 후보를 코드 몇 줄로 바꿔 끼울 수 있다 (건우가 들어 보고 고른다)
+//   · 대가: 녹음된 음원보다 단순한 소리다. 고른 뒤 실제 음원으로 바꾸는 것은 쉽다 (R033 보고 4장)
+//
+// ★★ 자동재생 — 브라우저는 사용자가 한 번 누르기 전에는 소리를 막는다.
+//   → 첫 클릭·키 입력에서 AudioContext 를 만들고(풀고) 그때부터 배경음악을 튼다.
+//
+// ★ 설정은 localStorage 에 남는다. 배경음악과 효과음을 **따로** 끄고 음량을 따로 조절한다.
+// =============================================================================
+
+export type BgmId = 'bounce' | 'calm' | 'chip';
+export type CorrectId = 'dingdong' | 'coin' | 'fanfare';
+
+export const BGMS: readonly { id: BgmId; label: string }[] = [
+  { id: 'bounce', label: '통통 경쾌' },
+  { id: 'calm', label: '잔잔한 오르골' },
+  { id: 'chip', label: '8비트 게임기' },
+];
+
+export const CORRECTS: readonly { id: CorrectId; label: string }[] = [
+  { id: 'dingdong', label: '딩동댕' },
+  { id: 'coin', label: '코인' },
+  { id: 'fanfare', label: '빰빠밤' },
+];
+
+export interface SoundPrefs {
+  bgmOn: boolean;
+  sfxOn: boolean;
+  /** 0~1 */
+  bgmVol: number;
+  /** 0~1 */
+  sfxVol: number;
+  bgm: BgmId;
+  correct: CorrectId;
+}
+
+const KEY = 'qw.sound.v1';
+const DEFAULTS: SoundPrefs = {
+  bgmOn: true,
+  sfxOn: true,
+  // ★ 배경음악은 작게. 시끄러우면 끈다 — 그러면 효과음까지 끌 수 있다
+  bgmVol: 0.35,
+  sfxVol: 0.7,
+  bgm: 'bounce',
+  correct: 'dingdong',
+};
+
+let prefs: SoundPrefs = loadPrefs();
+
+function loadPrefs(): SoundPrefs {
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (!raw) return { ...DEFAULTS };
+    const p = JSON.parse(raw) as Partial<SoundPrefs>;
+    return {
+      bgmOn: typeof p.bgmOn === 'boolean' ? p.bgmOn : DEFAULTS.bgmOn,
+      sfxOn: typeof p.sfxOn === 'boolean' ? p.sfxOn : DEFAULTS.sfxOn,
+      bgmVol: clamp01(p.bgmVol, DEFAULTS.bgmVol),
+      sfxVol: clamp01(p.sfxVol, DEFAULTS.sfxVol),
+      bgm: BGMS.some((b) => b.id === p.bgm) ? (p.bgm as BgmId) : DEFAULTS.bgm,
+      correct: CORRECTS.some((c) => c.id === p.correct) ? (p.correct as CorrectId) : DEFAULTS.correct,
+    };
+  } catch {
+    return { ...DEFAULTS };
+  }
+}
+
+function clamp01(v: unknown, d: number): number {
+  return typeof v === 'number' && Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : d;
+}
+
+export function getSoundPrefs(): SoundPrefs {
+  return { ...prefs };
+}
+
+export function setSoundPrefs(patch: Partial<SoundPrefs>): SoundPrefs {
+  const before = prefs;
+  prefs = { ...prefs, ...patch };
+  try {
+    localStorage.setItem(KEY, JSON.stringify(prefs));
+  } catch {
+    /* 이번 세션에는 적용된다 */
+  }
+  applyVolumes();
+  if (prefs.bgmOn && (!before.bgmOn || before.bgm !== prefs.bgm)) restartBgm();
+  if (!prefs.bgmOn) stopBgm();
+  window.dispatchEvent(new CustomEvent('qw:sound', { detail: prefs }));
+  return { ...prefs };
+}
+
+/** Alt+M — 둘 다 켜져 있거나 하나라도 켜져 있으면 전부 끄고, 전부 꺼져 있으면 전부 켠다 */
+export function toggleMuteAll(): SoundPrefs {
+  const anyOn = prefs.bgmOn || prefs.sfxOn;
+  return setSoundPrefs({ bgmOn: !anyOn, sfxOn: !anyOn });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 오디오 그래프
+// ─────────────────────────────────────────────────────────────────────────────
+
+let ctx: AudioContext | null = null;
+let bgmGain: GainNode | null = null;
+let sfxGain: GainNode | null = null;
+/** 문제 진행 중에는 배경음악을 조금 줄인다 (지문에 집중) */
+let duck = 1;
+
+function ensureCtx(): AudioContext | null {
+  if (ctx) return ctx;
+  const AC = window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+  if (!AC) return null;
+  ctx = new AC();
+  bgmGain = ctx.createGain();
+  sfxGain = ctx.createGain();
+  bgmGain.connect(ctx.destination);
+  sfxGain.connect(ctx.destination);
+  applyVolumes();
+  return ctx;
+}
+
+function applyVolumes(): void {
+  if (!ctx || !bgmGain || !sfxGain) return;
+  const t = ctx.currentTime;
+  // ★ 음량은 제곱으로 — 슬라이더 중간이 귀에 "중간" 으로 들린다
+  bgmGain.gain.setTargetAtTime(prefs.bgmOn ? prefs.bgmVol ** 2 * 0.5 * duck : 0, t, 0.08);
+  sfxGain.gain.setTargetAtTime(prefs.sfxOn ? prefs.sfxVol ** 2 : 0, t, 0.02);
+}
+
+export function setDuck(on: boolean): void {
+  const next = on ? 0.55 : 1;
+  if (next === duck) return;
+  duck = next;
+  applyVolumes();
+}
+
+/**
+ * ★ 첫 사용자 조작에서 소리를 연다. 앱 시작 때 한 번 건다.
+ *   ★ 브라우저 자동재생 정책 — 조작 전에는 AudioContext 가 잠겨 있다.
+ */
+export function installAudioUnlock(): void {
+  const unlock = () => {
+    const c = ensureCtx();
+    if (!c) return;
+    void c.resume().then(() => {
+      if (prefs.bgmOn) startBgm();
+    });
+    window.removeEventListener('pointerdown', unlock);
+    window.removeEventListener('keydown', unlock);
+  };
+  window.addEventListener('pointerdown', unlock);
+  window.addEventListener('keydown', unlock);
+}
+
+export function audioReady(): boolean {
+  return ctx !== null && ctx.state === 'running';
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 악기
+// ─────────────────────────────────────────────────────────────────────────────
+
+const mtof = (m: number) => 440 * 2 ** ((m - 69) / 12);
+
+interface Voice {
+  type: OscillatorType;
+  /** 피크 음량 */
+  gain: number;
+  attack: number;
+  decay: number;
+  /** 화음 배음 (비율, 음량) */
+  partials?: [number, number][];
+}
+
+function playNote(
+  dest: AudioNode,
+  freq: number,
+  start: number,
+  dur: number,
+  v: Voice,
+  glideTo?: number,
+): void {
+  if (!ctx) return;
+  const parts = v.partials ?? [[1, 1]];
+  for (const [ratio, amp] of parts) {
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = v.type;
+    osc.frequency.setValueAtTime(freq * ratio, start);
+    if (glideTo) osc.frequency.exponentialRampToValueAtTime(glideTo * ratio, start + dur);
+    const peak = v.gain * amp;
+    g.gain.setValueAtTime(0.0001, start);
+    g.gain.exponentialRampToValueAtTime(peak, start + v.attack);
+    g.gain.exponentialRampToValueAtTime(0.0001, start + v.attack + Math.max(v.decay, dur));
+    osc.connect(g);
+    g.connect(dest);
+    osc.start(start);
+    osc.stop(start + v.attack + Math.max(v.decay, dur) + 0.05);
+  }
+}
+
+const BELL: Voice = { type: 'sine', gain: 0.35, attack: 0.005, decay: 0.6, partials: [[1, 1], [2, 0.35], [3.01, 0.12]] };
+const PLUCK: Voice = { type: 'triangle', gain: 0.28, attack: 0.004, decay: 0.22 };
+const SQUARE: Voice = { type: 'square', gain: 0.12, attack: 0.003, decay: 0.12 };
+const SOFT: Voice = { type: 'sine', gain: 0.28, attack: 0.01, decay: 0.25 };
+const BRASS: Voice = { type: 'sawtooth', gain: 0.1, attack: 0.02, decay: 0.35, partials: [[1, 1], [1.003, 0.8]] };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★ 효과음
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type SfxId =
+  | 'join'
+  | 'tick'
+  | 'go'
+  | 'question'
+  | 'hint'
+  | 'urgent'
+  | 'correct'
+  | 'mine'
+  | 'timeout'
+  | 'skip'
+  | 'result'
+  | 'pause'
+  | 'resume';
+
+/** ★ 효과음을 낸다. 꺼져 있거나 아직 잠겨 있으면 아무것도 하지 않는다 */
+export function sfx(id: SfxId): void {
+  if (!prefs.sfxOn || !ctx || ctx.state !== 'running' || !sfxGain) return;
+  const t = ctx.currentTime + 0.01;
+  const d = sfxGain;
+  switch (id) {
+    case 'join': // 뽁뽁
+      playNote(d, mtof(76), t, 0.08, PLUCK);
+      playNote(d, mtof(83), t + 0.08, 0.1, PLUCK);
+      break;
+    case 'tick': // 카운트다운 5·4·3·2·1
+      playNote(d, mtof(81), t, 0.06, { ...SOFT, gain: 0.22, decay: 0.12 });
+      break;
+    case 'go': // 시작!
+      [72, 76, 79, 84].forEach((m, i) => playNote(d, mtof(m), t + i * 0.06, 0.18, PLUCK));
+      break;
+    case 'question': // 문제 등장 — 위로 쓸어 올리는 소리
+      playNote(d, mtof(67), t, 0.18, { ...SOFT, gain: 0.18 }, mtof(79));
+      playNote(d, mtof(84), t + 0.16, 0.12, { ...BELL, gain: 0.18 });
+      break;
+    case 'hint': // 반짝
+      [88, 91, 96].forEach((m, i) => playNote(d, mtof(m), t + i * 0.07, 0.15, { ...BELL, gain: 0.14 }));
+      break;
+    case 'urgent': // 마지막 5초 — 작게 똑딱
+      playNote(d, mtof(93), t, 0.03, { ...SQUARE, gain: 0.05, decay: 0.05 });
+      break;
+    case 'correct':
+      playCorrect(d, t);
+      break;
+    case 'mine': // 내가 맞혔을 때 덧붙는 반짝
+      playCorrect(d, t);
+      [96, 100, 103, 108].forEach((m, i) => playNote(d, mtof(m), t + 0.35 + i * 0.05, 0.1, { ...BELL, gain: 0.1 }));
+      break;
+    case 'timeout': // 아쉬움 — 거슬리지 않게 부드럽게 내려간다
+      playNote(d, mtof(67), t, 0.22, SOFT);
+      playNote(d, mtof(63), t + 0.22, 0.35, SOFT);
+      break;
+    case 'skip':
+      playNote(d, mtof(76), t, 0.2, { ...SOFT, gain: 0.18 }, mtof(64));
+      break;
+    case 'result': // 결과 화면
+      [60, 64, 67, 72, 76, 79, 84].forEach((m, i) => playNote(d, mtof(m), t + i * 0.08, 0.3, { ...BELL, gain: 0.2 }));
+      break;
+    case 'pause':
+      playNote(d, mtof(60), t, 0.3, { ...SOFT, gain: 0.2 });
+      break;
+    case 'resume':
+      playNote(d, mtof(67), t, 0.12, PLUCK);
+      playNote(d, mtof(72), t + 0.1, 0.18, PLUCK);
+      break;
+  }
+}
+
+/** ★ 정답 효과음 후보 세 가지 — 설정에서 바꿔 들어 본다 */
+function playCorrect(d: AudioNode, t: number): void {
+  switch (prefs.correct) {
+    case 'dingdong': // 딩-동-댕
+      playNote(d, mtof(84), t, 0.25, BELL);
+      playNote(d, mtof(80), t + 0.18, 0.25, BELL);
+      playNote(d, mtof(88), t + 0.36, 0.6, { ...BELL, gain: 0.4 });
+      break;
+    case 'coin': // 띠링
+      playNote(d, mtof(83), t, 0.07, { ...SQUARE, gain: 0.16 });
+      playNote(d, mtof(88), t + 0.07, 0.4, { ...SQUARE, gain: 0.16, decay: 0.4 });
+      break;
+    case 'fanfare': // 빰빠밤!
+      playNote(d, mtof(67), t, 0.12, BRASS);
+      playNote(d, mtof(67), t + 0.13, 0.12, BRASS);
+      playNote(d, mtof(72), t + 0.26, 0.5, { ...BRASS, gain: 0.13 });
+      playNote(d, mtof(76), t + 0.26, 0.5, { ...BRASS, gain: 0.1 });
+      playNote(d, mtof(79), t + 0.26, 0.5, { ...BRASS, gain: 0.1 });
+      break;
+  }
+}
+
+/** 설정 창의 "들어 보기" */
+export function previewCorrect(): void {
+  sfx('correct');
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★ 배경음악 — 짧은 악보를 반복한다 (앞질러 예약하는 방식)
+// ─────────────────────────────────────────────────────────────────────────────
+
+interface Track {
+  bpm: number;
+  /** 16분음표 칸마다 [멜로디, 베이스]. null 은 쉼 */
+  steps: [number | null, number | null][];
+  lead: Voice;
+  bass: Voice;
+}
+
+/** "C5 . E5 . G5 ..." 같은 짧은 표기를 칸 배열로 */
+function parse(lead: string, bass: string): [number | null, number | null][] {
+  const toMidi = (s: string): number | null => {
+    if (s === '.' || s === '') return null;
+    const m = /^([A-G])(#?)(\d)$/.exec(s);
+    if (!m) return null;
+    const base = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 }[m[1] as 'C'];
+    return 12 * (Number(m[3]) + 1) + base + (m[2] ? 1 : 0);
+  };
+  const a = lead.trim().split(/\s+/);
+  const b = bass.trim().split(/\s+/);
+  const n = Math.max(a.length, b.length);
+  const out: [number | null, number | null][] = [];
+  for (let i = 0; i < n; i += 1) out.push([toMidi(a[i] ?? '.'), toMidi(b[i] ?? '.')]);
+  return out;
+}
+
+const TRACKS: Record<BgmId, Track> = {
+  // ★ 통통 경쾌 — 장조 오음계, 통통 튀는 삼각파
+  bounce: {
+    bpm: 112,
+    lead: { ...PLUCK, gain: 0.16 },
+    bass: { type: 'triangle', gain: 0.2, attack: 0.005, decay: 0.18 },
+    steps: parse(
+      'C5 . E5 . G5 . E5 . A5 . G5 . E5 . D5 . ' +
+        'C5 . D5 . E5 . G5 . E5 . D5 . C5 . . . ' +
+        'A4 . C5 . D5 . C5 . E5 . D5 . C5 . A4 . ' +
+        'G4 . A4 . C5 . D5 . E5 . D5 . C5 . . .',
+      'C3 . . . G2 . . . C3 . . . G2 . . . ' +
+        'F2 . . . C3 . . . F2 . . . G2 . . . ' +
+        'A2 . . . E2 . . . F2 . . . C3 . . . ' +
+        'G2 . . . D3 . . . G2 . . . C3 . . .',
+    ),
+  },
+  // ★ 잔잔한 오르골 — 종소리 아르페지오
+  calm: {
+    bpm: 84,
+    lead: { ...BELL, gain: 0.12, decay: 0.9 },
+    bass: { type: 'sine', gain: 0.16, attack: 0.02, decay: 0.8 },
+    steps: parse(
+      'C5 E5 G5 E5 C6 G5 E5 G5 A4 C5 E5 C5 A5 E5 C5 E5 ' +
+        'F4 A4 C5 A4 F5 C5 A4 C5 G4 B4 D5 B4 G5 D5 B4 D5',
+      'C3 . . . . . . . A2 . . . . . . . ' +
+        'F2 . . . . . . . G2 . . . . . . .',
+    ),
+  },
+  // ★ 8비트 게임기 — 사각파 멜로디 + 통통 베이스
+  chip: {
+    bpm: 132,
+    lead: { ...SQUARE, gain: 0.07, decay: 0.1 },
+    bass: { type: 'square', gain: 0.06, attack: 0.002, decay: 0.08 },
+    steps: parse(
+      'E5 E5 . E5 . C5 E5 . G5 . . . G4 . . . ' +
+        'C5 . . G4 . . E4 . . A4 . B4 . A#4 A4 . ' +
+        'G4 E5 . G5 A5 . F5 G5 . E5 . C5 D5 B4 . . ' +
+        'C5 . . G4 . . E4 . . A4 . B4 . A#4 A4 .',
+      'C3 . C3 . G2 . G2 . C3 . C3 . G2 . G2 . ' +
+        'A2 . A2 . E2 . E2 . F2 . F2 . G2 . G2 . ' +
+        'C3 . C3 . G2 . G2 . F2 . F2 . G2 . G2 . ' +
+        'A2 . A2 . E2 . E2 . F2 . G2 . C3 . . .',
+    ),
+  },
+};
+
+let timer: ReturnType<typeof setInterval> | null = null;
+let nextTime = 0;
+let stepIdx = 0;
+let playing: BgmId | null = null;
+
+function scheduler(): void {
+  if (!ctx || !bgmGain || !playing) return;
+  const tr = TRACKS[playing];
+  const stepDur = 60 / tr.bpm / 4;
+  // ★ 0.25초 앞까지 미리 예약한다 — setInterval 이 늦어도 박자가 흔들리지 않는다
+  while (nextTime < ctx.currentTime + 0.25) {
+    const [lead, bass] = tr.steps[stepIdx % tr.steps.length]!;
+    if (lead !== null) playNote(bgmGain, mtof(lead), nextTime, stepDur * 1.6, tr.lead);
+    if (bass !== null) playNote(bgmGain, mtof(bass), nextTime, stepDur * 2.5, tr.bass);
+    nextTime += stepDur;
+    stepIdx += 1;
+  }
+}
+
+export function startBgm(): void {
+  if (!ctx || ctx.state !== 'running' || !prefs.bgmOn) return;
+  if (playing === prefs.bgm && timer) return;
+  stopBgm();
+  playing = prefs.bgm;
+  stepIdx = 0;
+  nextTime = ctx.currentTime + 0.1;
+  timer = setInterval(scheduler, 60);
+  scheduler();
+}
+
+export function stopBgm(): void {
+  if (timer) clearInterval(timer);
+  timer = null;
+  playing = null;
+}
+
+function restartBgm(): void {
+  stopBgm();
+  startBgm();
+}

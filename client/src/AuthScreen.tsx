@@ -44,8 +44,11 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
 
   return (
     <>
-      <h1>상식 퀴즈</h1>
-      <p className="sub">친구들과 함께하는 실시간 주관식 퀴즈</p>
+      <div className="brand">
+        <span className="brand-mark" aria-hidden="true">Q</span>
+        <h1>상식 퀴즈</h1>
+        <p className="sub">친구들과 함께하는 실시간 주관식 퀴즈</p>
+      </div>
 
       {/* ★ 이것은 에러가 아니라 안내다. 배너(.notice)와 다른 모양을 쓴다.
           같은 모양이면 사용자가 "무슨 문제가 생겼나" 로 읽는다. */}

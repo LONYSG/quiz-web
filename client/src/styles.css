@@ -1,24 +1,174 @@
 /* =============================================================================
-   기본 스타일 — 다크 테마 단일 (Q-34 확정)
-   색상값은 전부 CSS 변수로 분리한다. 나중에 라이트 테마를 추가하려면 변수만 덮으면 된다.
-   플레이어 색상 10종도 여기에 둔다. 서로 충분히 구분되어야 하고(guide 35절),
-   색약을 고려해 명도 차이도 함께 확보한다.
+   ★★★ R033 — 디자인 전면 개편 / 테마 3종
+
+   ★ 건우: "UI 나 UX 가 너무 별로다 … 가시성이 너무 안 좋다. 색상이 단조로워서 문제와 시간초가 있는
+     공간이 티가 안 난다 … 남은 시간 표기가 너무 크다 … 전체적으로 디자인이 엉망이다."
+   ★ 참고: 캐치마인드 — 밝은 색감 · 둥근 모양 · 아기자기함 · 정답자 연출 · 채팅 흐름
+   ★ Q-34(다크 단일) 폐기. 밝은 화면이 기본이다.
+
+   ★★ 테마는 `html[data-theme]` 의 **토큰(변수)만** 바꾼다. 화면 규칙은 토큰만 쓴다.
+     · 간격·글자 크기는 테마마다 **같다** — 그래야 한 화면 게이트(1280×720)가 테마와 무관하게 지켜진다
+     · 테마가 바꾸는 것: 색 · 바탕 · 테두리 두께 · 둥글기 · 그림자
+   ★ 테마 고르기: 화면 맨 아래 "🎨 테마 · 🔊 소리" 또는 Alt+T (theme.ts / Prefs.tsx)
+
+   ★★ 정보 우선순위 (건우 지적에서 나온 것)
+     1. 문제 지문 — 가장 크고, 바탕과 확실히 구분되는 카드
+     2. 정답 공개·정답자 — 정답이 나오면 정답자 이름이 화면에서 가장 크다
+     3. 타이머·점수 — 작게. 타이머는 줄어드는 막대 + 작은 숫자, 마지막 몇 초만 눈에 띄게
    ============================================================================= */
 
+/* ── 공통 토큰 (테마와 무관) ───────────────────────────────────────────────── */
 :root {
+  --font: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, -apple-system,
+    'Segoe UI', 'Noto Sans KR', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── ★ 테마 1: 파스텔 (기본) — 캐치마인드 쪽. 크림 바탕 · 보라·분홍 포인트 · 큰 둥글기 ───── */
+:root,
+[data-theme='pastel'] {
+  color-scheme: light;
+  --page: radial-gradient(1200px 600px at 10% -10%, #ffe3f1 0%, transparent 60%),
+    radial-gradient(1000px 700px at 110% 10%, #dcefff 0%, transparent 55%),
+    radial-gradient(900px 600px at 50% 120%, #fff2c9 0%, transparent 60%), #fff8f0;
+  --surface: #ffffff;
+  --surface-2: #f7f3ff;
+  --surface-3: #efe8ff;
+  --border: #e6dcf7;
+  --bw: 1.5px;
+  --text: #3a3156;
+  --text-dim: #8d82a8;
+  --accent: #8a6bff;
+  --accent-ink: #ffffff;
+  --accent-2: #ff7eb3;
+  --accent-soft: #efe9ff;
+  --ok: #18b26b;
+  --ok-soft: #e3f8ee;
+  --bad: #f2486a;
+  --bad-soft: #ffe6ec;
+  --warn: #ff9f1c;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --shadow: 0 2px 0 rgba(138, 107, 255, 0.08), 0 10px 26px rgba(90, 64, 160, 0.09);
+  --shadow-pop: 0 4px 0 rgba(138, 107, 255, 0.18), 0 16px 34px rgba(90, 64, 160, 0.16);
+  /* 문제 카드 — 바탕과 확실히 구분되게 */
+  --q-bg: linear-gradient(160deg, #ffffff 0%, #fbf8ff 100%);
+  --q-border: #b9a6ff;
+  --q-band: linear-gradient(90deg, #8a6bff, #ff7eb3);
+  --q-text: #2a2244;
+  --bar-bg: #ece6fb;
+  --bar: linear-gradient(90deg, #8a6bff, #b39bff);
+  --reveal-bg: linear-gradient(150deg, #fff5fb 0%, #f1fff7 100%);
+  --reveal-border: #ffb3d1;
+  --chip-bg: #f3eeff;
+  --chat-bg: #fbf9ff;
+  --toast-bg: #fff4e5;
+  --toast-border: #ffcf8a;
+  --mask-bg: #e9e2fb;
+  --mask-fg: #7e6db3;
+  /* 플레이어 색 10종 — 밝은 바탕에서 읽히는 진한 쪽 (guide 35절) */
+  --p0: #e8445a;
+  --p1: #e57a00;
+  --p2: #b58900;
+  --p3: #2f9e44;
+  --p4: #0b9a8a;
+  --p5: #1c7ed6;
+  --p6: #7048e8;
+  --p7: #d6336c;
+  --p8: #9c5b3a;
+  --p9: #5c7cfa;
+}
+
+/* ── ★ 테마 2: 원색 — 쨍한 노랑·빨강·파랑 · 굵은 검정 테두리 · 만화 같은 그림자 ─────── */
+[data-theme='pop'] {
+  color-scheme: light;
+  --page: repeating-linear-gradient(135deg, #fff9db 0 22px, #fff3bf 22px 44px);
+  --surface: #ffffff;
+  --surface-2: #fff9db;
+  --surface-3: #ffec99;
+  --border: #1d1d1f;
+  --bw: 2.5px;
+  --text: #1d1d1f;
+  --text-dim: #5c5c66;
+  --accent: #ff3b5c;
+  --accent-ink: #ffffff;
+  --accent-2: #1e7bff;
+  --accent-soft: #ffe3e8;
+  --ok: #0ca44a;
+  --ok-soft: #d3f9d8;
+  --bad: #e8112d;
+  --bad-soft: #ffe3e3;
+  --warn: #ff8a00;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 4px 4px 0 #1d1d1f;
+  --shadow-pop: 6px 6px 0 #1d1d1f;
+  --q-bg: #ffffff;
+  --q-border: #1d1d1f;
+  --q-band: linear-gradient(90deg, #ffc400, #ff3b5c 50%, #1e7bff);
+  --q-text: #111114;
+  --bar-bg: #f1f3f5;
+  --bar: linear-gradient(90deg, #1e7bff, #4dabf7);
+  --reveal-bg: #fff3bf;
+  --reveal-border: #1d1d1f;
+  --chip-bg: #ffec99;
+  --chat-bg: #ffffff;
+  --toast-bg: #fff3bf;
+  --toast-border: #1d1d1f;
+  --mask-bg: #1d1d1f;
+  --mask-fg: #ffec99;
+  --p0: #e03131;
+  --p1: #e8590c;
+  --p2: #a07800;
+  --p3: #2b8a3e;
+  --p4: #0c8599;
+  --p5: #1864ab;
+  --p6: #6741d9;
+  --p7: #c2255c;
+  --p8: #8a4b2a;
+  --p9: #364fc7;
+}
+
+/* ── ★ 테마 3: 밤 — 짙은 남색 바탕 · 형광 포인트 ────────────────────────────── */
+[data-theme='night'] {
   color-scheme: dark;
-
-  --bg: #0f1115;
-  --bg-card: #171a21;
-  --bg-elev: #1f232c;
-  --border: #2a2f3a;
-  --text: #e7eaf0;
-  --text-dim: #98a0b0;
-  --accent: #5aa9ff;
-  --ok: #4ade80;
-  --bad: #f87171;
-
-  /* 플레이어 색상 10종 (guide 35절). 닉네임 텍스트에 직접 적용한다. */
+  --page: radial-gradient(1000px 600px at 15% -10%, #2a2160 0%, transparent 60%),
+    radial-gradient(900px 600px at 110% 20%, #13305a 0%, transparent 55%), #12142a;
+  --surface: #1d2040;
+  --surface-2: #252950;
+  --surface-3: #2e3360;
+  --border: #353a6b;
+  --bw: 1px;
+  --text: #eef0ff;
+  --text-dim: #9aa0cf;
+  --accent: #8f9bff;
+  --accent-ink: #12142a;
+  --accent-2: #ff7ac6;
+  --accent-soft: #2c3170;
+  --ok: #4ff0a0;
+  --ok-soft: #173d33;
+  --bad: #ff6b8b;
+  --bad-soft: #42213a;
+  --warn: #ffcf5c;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-pop: 0 0 0 1px rgba(143, 155, 255, 0.35), 0 14px 40px rgba(0, 0, 0, 0.5);
+  --q-bg: linear-gradient(160deg, #262b5c 0%, #1e2246 100%);
+  --q-border: #6f7cff;
+  --q-band: linear-gradient(90deg, #8f9bff, #ff7ac6);
+  --q-text: #ffffff;
+  --bar-bg: #2a2f5e;
+  --bar: linear-gradient(90deg, #8f9bff, #b7beff);
+  --reveal-bg: linear-gradient(150deg, #2b2050 0%, #183a36 100%);
+  --reveal-border: #ff7ac6;
+  --chip-bg: #2c3170;
+  --chat-bg: #181b38;
+  --toast-bg: #3a2c18;
+  --toast-border: #8a6a2f;
+  --mask-bg: #3a3f6b;
+  --mask-fg: #c6cbff;
   --p0: #ff8a80;
   --p1: #ffd180;
   --p2: #ffff8d;
@@ -31,40 +181,59 @@
   --p9: #c5e1a5;
 }
 
+/* =============================================================================
+   기본
+   ============================================================================= */
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--page);
+  background-attachment: fixed;
   color: var(--text);
-  font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans KR', sans-serif;
+  font-family: var(--font);
   font-size: 15px;
   line-height: 1.6;
+  transition: background-color 200ms, color 200ms;
 }
 
 .wrap {
   max-width: 720px;
   margin: 0 auto;
-  /* ★ 아래 여백이 토스트 높이보다 커야 한다.
-     토스트는 화면 고정이므로, 끝까지 스크롤했을 때 이 여백이 완충 역할을 한다.
-     ★ 320px 에서 토스트 높이가 133px 이었다(세 줄 + 여백). 여유를 두고 180px.
-     ★ 실제로 겹치지 않는지는 ui-check 가 좌표로 검사한다 (D-032).
-       검사 대상: 채팅 입력창 / 전송 버튼 / 하단 푸터(로그아웃) */
+  /* ★ 아래 여백이 토스트 높이보다 커야 한다 (D-032). 겹침은 ui-check 가 좌표로 검사한다 */
   padding: 24px 16px 180px;
 }
 
 h1 {
-  font-size: 1.35rem;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   margin: 0 0 4px;
 }
 
 h2 {
-  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
   margin: 0 0 12px;
   color: var(--text-dim);
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+/* ★ 카드 제목 앞의 작은 점 — 아기자기함 */
+h2::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow: 10px 0 0 var(--accent);
+  margin-right: 10px;
+  flex: 0 0 auto;
 }
 
 .sub {
@@ -74,11 +243,12 @@ h2 {
 }
 
 .card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px;
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
   margin-bottom: 16px;
+  box-shadow: var(--shadow);
 }
 
 dl {
@@ -87,32 +257,31 @@ dl {
   gap: 6px 16px;
   margin: 0;
 }
-
 dt {
   color: var(--text-dim);
   font-size: 0.85rem;
 }
-
 dd {
   margin: 0;
-}
-
-.mono {
-  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
-  font-variant-numeric: tabular-nums;
-}
-
-.big {
-  font-size: 1.1rem;
   font-weight: 600;
 }
 
+/* ★ R033 — 숫자 자리만 맞춘다. 한글까지 고정폭 글꼴로 바꾸면 글자 사이가 벌어져 보인다 */
+.mono {
+  font-variant-numeric: tabular-nums;
+}
+.big {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
 .ok {
   color: var(--ok);
 }
-
 .bad {
   color: var(--bad);
+}
+.dim {
+  color: var(--text-dim);
 }
 
 .note {
@@ -121,52 +290,77 @@ dd {
   margin: 12px 0 0;
 }
 
+a {
+  color: var(--accent);
+}
+
 /* =============================================================================
-   ★ 짧은 라벨 보호 규칙 (R007 A-2 / docs/07-DECISIONS.md D-022)
-
-   증상: 채팅 "전송" 버튼의 글자가 "전" / "송" 두 줄로 쪼개졌다.
-   원인(실측): 버튼이 flex 행의 항목이고 기본값이 flex-shrink:1 / min-width:auto 였다.
-     같은 행의 입력창이 width:100% 라 남는 폭이 없어 버튼이 min-content(한 글자 폭)까지
-     눌렸고, white-space 기본값이 normal 이라 한글 두 글자 사이에서 줄이 바뀌었다.
-     "복사" 버튼만 멀쩡했던 이유는 그 하나에만 white-space:nowrap 이 붙어 있었기 때문이다.
-
-   ★ 개별 요소마다 대응하지 않는다. 라벨성 요소 전체에 규칙으로 건다.
-     짧은 한글 라벨(전송/복사/취소/방장/나 …)은 전부 같은 위험을 갖는다.
-     Phase 2 이후 새로 만드는 버튼과 배지도 이 규칙을 자동으로 적용받는다.
-
-   ★ 제목(h1)과 본문은 이 규칙에서 제외한다. 방 제목은 30자까지 허용되므로
-     좁은 화면에서 여러 줄이 되는 것이 정상이다. 줄바꿈을 막으면 화면을 넘친다.
+   ★ 짧은 라벨 보호 규칙 (D-022) — 라벨성 요소는 줄바꿈되지 않고 flex 행에서 눌리지 않는다
    ============================================================================= */
 
 button,
 .badge,
 .seat,
 .preset,
-.pill {
-  /* 라벨은 줄바꿈되지 않는다 */
+.pill,
+.seg-btn {
   white-space: nowrap;
 }
 
 button {
-  /* flex 행에서 눌리지 않는다. .tab 처럼 늘어나야 하는 것은 뒤에서 덮어쓴다 */
   flex: 0 0 auto;
   margin-top: 14px;
-  background: var(--bg-elev);
+  background: var(--surface-2);
   color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 7px 14px;
+  border: var(--bw) solid var(--border);
+  border-radius: 999px;
+  padding: 8px 16px;
   font: inherit;
+  font-weight: 700;
   cursor: pointer;
+  transition: transform 90ms ease, box-shadow 120ms ease, background-color 120ms, border-color 120ms;
 }
-
 button:hover:not(:disabled) {
   border-color: var(--accent);
+  transform: translateY(-1px);
 }
-
+button:active:not(:disabled) {
+  transform: translateY(1px) scale(0.98);
+}
+button:focus-visible {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 2px;
+}
 button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+/* ★ 주요 행동 버튼 — 화면에서 가장 먼저 누를 것 (만들기 / 게임 시작 / 로그인 / 다시 하기 / 재개) */
+button.primary,
+form button[type='submit'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: var(--shadow);
+}
+button.primary:hover:not(:disabled),
+form button[type='submit']:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+button.big-btn {
+  font-size: 1.1rem;
+  padding: 12px 28px;
+}
+
+.ghost {
+  background: transparent;
+}
+
+.tiny {
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  margin-top: 0;
 }
 
 table {
@@ -174,25 +368,17 @@ table {
   border-collapse: collapse;
   font-size: 0.88rem;
 }
-
 th,
 td {
   text-align: left;
   padding: 6px 8px;
   border-bottom: 1px solid var(--border);
 }
-
 th {
   color: var(--text-dim);
   font-weight: 500;
 }
 
-tr.chosen td {
-  font-weight: 700;
-  color: var(--accent);
-}
-
-/* 모바일 세로 우선 (guide 41절) */
 @media (max-width: 480px) {
   dl {
     grid-template-columns: 1fr;
@@ -204,37 +390,131 @@ tr.chosen td {
 }
 
 /* =============================================================================
-   Phase 1 — 인증 / 로비
+   인증 / 방 목록
    ============================================================================= */
 
-.wrap.narrow { max-width: 480px; }
+.wrap.narrow {
+  max-width: 480px;
+}
 
-/* 단순 안내 문구 (에러가 아니다) */
+/* ★ 상식 퀴즈 로고 — 첫 화면의 인상 */
+.brand {
+  text-align: center;
+  margin: 18px 0 20px;
+}
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 22px;
+  background: var(--q-band);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 900;
+  box-shadow: var(--shadow-pop);
+  transform: rotate(-6deg);
+  animation: float 3.2s ease-in-out infinite;
+}
+.brand h1 {
+  font-size: 2rem;
+  margin-top: 12px;
+}
+.brand .sub {
+  margin: 0;
+}
+
 .info {
-  background: #1d2836;
-  border: 1px solid #2f4a6b;
-  border-radius: 8px;
+  background: var(--accent-soft);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius-sm);
   padding: 10px 12px;
   margin: 0 0 16px;
   font-size: 0.9rem;
 }
 
+.form-error {
+  color: var(--bad);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin: 10px 0 0;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 4px;
+  background: var(--surface-2);
+  border-radius: 999px;
+}
+.tab {
+  flex: 1;
+  margin: 0;
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-dim);
+}
+.tab.active {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+form label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+form input,
+.field-row input,
+.field-row select {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  background: var(--surface-2);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font: inherit;
+  padding: 9px 12px;
+  transition: border-color 120ms, box-shadow 120ms;
+}
+form input:focus,
+.field-row input:focus,
+.field-row select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+/* ★ .field-row — 입력 + 버튼 한 줄 공통 배치 (D-022). 입력창이 남는 폭을 먹고 버튼은 눌리지 않는다 */
+.field-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.field-row > input,
+.field-row > select {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-top: 0;
+}
+.field-row > button {
+  margin-top: 0;
+}
+
+form button[type='submit'] {
+  width: 100%;
+}
+
 /* =============================================================================
-   ★ 토스트 알림 — 서버 에러가 사람 눈에 도달하는 유일한 자리
-      (R008 D-027 로 경로를 만들고, R009 D-032 로 표시 방식을 바꿨다)
-
-   ★ 왜 배너에서 토스트로 바꿨는가
-     배너를 문서 흐름 맨 위에 두었더니, 로비는 스크롤이 길어서
-     아래쪽을 보고 있으면 화면 밖이었다. **스크롤을 최상단까지 올려야 보였다.**
-     경로는 있었지만 사람 눈에 도달하지 않았다.
-
-   ★ 왜 아래쪽(bottom)인가 — Toast.tsx 주석과 D-032 에 근거가 있다
-     · Phase 3의 문제 지문과 남은 시간은 위쪽에 온다. 아래는 그것을 가리지 않는다
-     · 페이지가 이미 아래 여백을 갖고 있어 조작 대상을 가리지 않는다
-     · 사용자의 시선과 손이 이미 아래(입력창)에 있다
-
-   ★ pointer-events
-     레이어는 none, 토스트만 auto 다. 시각적으로 겹쳐도 그 아래 버튼을 누를 수 있다.
+   ★ 토스트 — 화면 아래 고정 (D-032). 위치를 바꾸지 않는다
    ============================================================================= */
 
 .toast-layer {
@@ -245,11 +525,9 @@ tr.chosen td {
   display: flex;
   justify-content: center;
   padding: 0 12px;
-  /* ★ 뒤쪽 조작을 막지 않는다 */
   pointer-events: none;
   z-index: 50;
 }
-
 .toast {
   pointer-events: auto;
   display: flex;
@@ -258,456 +536,721 @@ tr.chosen td {
   gap: 12px;
   width: 100%;
   max-width: 560px;
-  background: #2a2118;
-  border: 1px solid #6b532f;
-  border-radius: 10px;
-  padding: 10px 12px;
+  background: var(--toast-bg);
+  border: var(--bw) solid var(--toast-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
   font-size: 0.9rem;
-  /* 떠 있는 요소임이 보여야 한다 */
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
-  animation: toast-in 140ms ease-out;
+  box-shadow: var(--shadow-pop);
+  animation: toast-in 160ms var(--ease-pop);
 }
-
 @keyframes toast-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
-
-/* ★ min-width:0 이 없으면 긴 문구가 "닫기" 버튼을 밀어낸다 (D-022와 같은 원리) */
-.toast-body { min-width: 0; }
-
-.toast-message { margin: 0; font-weight: 600; }
-
-/* ★ 실제 숫자가 여기 들어간다. message 만으로는 무엇을 해야 할지 알 수 없다 */
-.toast-detail { margin: 4px 0 0; color: var(--text); }
-
+.toast-body {
+  min-width: 0;
+}
+.toast-message {
+  margin: 0;
+  font-weight: 700;
+}
+.toast-detail {
+  margin: 4px 0 0;
+  color: var(--text);
+}
 .toast-code {
   margin: 4px 0 0;
   color: var(--text-dim);
   font-size: 0.72rem;
 }
-
-.toast button { flex: 0 0 auto; }
-
-/* ★ 좁은 화면에서는 글자를 조금 줄여 세 줄이 다 들어가게 한다.
-   ★ detail 을 숨기지 않는다. 숨기면 "왜 안 되는지 모른다" 로 되돌아간다. */
+.toast button {
+  flex: 0 0 auto;
+}
 @media (max-width: 480px) {
-  .toast { font-size: 0.85rem; padding: 9px 10px; }
+  .toast {
+    font-size: 0.85rem;
+    padding: 9px 10px;
+  }
 }
 
-.form-error {
-  color: var(--bad);
-  font-size: 0.88rem;
-  margin: 10px 0 0;
-}
+/* =============================================================================
+   로비
+   ============================================================================= */
 
-.tabs { display: flex; gap: 6px; margin-bottom: 16px; }
-
-.tab {
-  flex: 1;
-  margin: 0;
-  background: transparent;
-  border-color: transparent;
-  color: var(--text-dim);
-}
-
-.tab.active {
-  background: var(--bg-elev);
-  border-color: var(--border);
-  color: var(--text);
-  font-weight: 600;
-}
-
-form label {
-  display: block;
-  margin-bottom: 12px;
-  color: var(--text-dim);
-  font-size: 0.85rem;
-}
-
-form input,
-.field-row input,
-.field-row select {
-  display: block;
-  width: 100%;
-  margin-top: 5px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text);
-  font: inherit;
-  padding: 8px 10px;
-}
-
-form input:focus,
-.field-row input:focus,
-.field-row select:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-
-/* -----------------------------------------------------------------------------
-   ★ .field-row — 입력 + 버튼을 한 줄에 두는 공통 배치 (R007 A-2)
-
-   전용 클래스를 여러 개(.invite-row / .chat-input …) 두면 그중 하나에만
-   규칙을 빼먹는 일이 반복된다. 실제로 그렇게 해서 "전송" 버튼이 깨졌다.
-   ★ 한 줄 입력 배치는 전부 이 클래스를 쓴다.
-
-   · 입력창은 남는 폭을 먹는다. min-width:0 이 없으면 flex 항목의 기본
-     min-width:auto 때문에 입력창이 줄어들지 않고 버튼을 밀어낸다
-   · 버튼은 자기 내용 폭을 유지한다 (기본 button 규칙의 flex:0 0 auto)
-   -------------------------------------------------------------------------- */
-.field-row {
-  display: flex;
-  gap: 8px;
-  align-items: stretch;
-}
-
-.field-row > input,
-.field-row > select {
-  flex: 1 1 auto;
-  min-width: 0;
-  margin-top: 0;
-}
-
-.field-row > button {
-  margin-top: 0;
-}
-
-form button[type='submit'] { width: 100%; }
-
-.ghost { background: transparent; }
-
-.tiny { padding: 3px 8px; font-size: 0.78rem; margin-top: 0; }
-
-/* 로비 */
 .lobby-head {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+}
+.lobby-head > div {
+  min-width: 0;
+}
+.lobby-head h1 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.lobby-head .sub {
+  margin: 2px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.lobby-head button {
+  margin-top: 0;
 }
 
-/* ★ 제목 쪽은 줄어들 수 있어야 하고(min-width:0), 버튼은 눌리지 않아야 한다.
-   min-width:0 이 없으면 긴 방 제목이 버튼을 화면 밖으로 밀어낸다. */
-.lobby-head > div { min-width: 0; }
-.lobby-head h1 { margin: 0; overflow-wrap: anywhere; }
-.lobby-head .sub { margin: 2px 0 0; }
-.lobby-head button { margin-top: 0; }
+/* ★ 방 상태 알약 — 지금 무엇을 하는 중인가 (영문 상태 코드를 그대로 보여주지 않는다) */
+.state-pill {
+  display: inline-block;
+  padding: 1px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
 
-.dim { color: var(--text-dim); }
-
-/* 참가자 목록 */
-.players { list-style: none; margin: 0; padding: 0; }
-
+/* ── 참가자 */
+.players {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
 .players li {
   display: flex;
   align-items: center;
-  /* ★ 좁은 화면에서는 배지와 버튼이 다음 줄로 내려간다.
-     한 줄에 억지로 밀어넣으면 닉네임이 눌려 한 글자씩 쪼개진다. */
   flex-wrap: wrap;
-  gap: 8px 8px;
-  padding: 7px 0;
-  border-bottom: 1px solid var(--border);
+  gap: 6px 8px;
+  padding: 6px 10px;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+  animation: slide-up 220ms var(--ease-pop);
+}
+.players li.offline {
+  opacity: 0.5;
 }
 
-.players li:last-child { border-bottom: none; }
-.players li.offline { opacity: 0.5; }
-
-/* 색약을 고려해 색상만으로 구분하지 않고 순번을 함께 표시한다 (Q-34) */
+/* ★ 색약을 고려해 순번을 함께 표시한다 (Q-34 의 이 부분은 유지) */
 .seat {
-  width: 20px;
+  width: 18px;
   text-align: right;
   color: var(--text-dim);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
 }
 
-/* ★ 닉네임 자체를 플레이어 색상으로 표시한다 (guide 35절) */
-.nick { font-weight: 600; }
+/* ★ 아바타 — 닉네임 첫 글자 + 플레이어 색 (캐치마인드의 캐릭터 자리) */
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.85rem;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+}
+.avatar.lg {
+  width: 64px;
+  height: 64px;
+  font-size: 1.8rem;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.15), var(--shadow-pop);
+}
+
+/* ★ 닉네임 자체를 플레이어 색으로 (guide 35절) */
+.nick {
+  font-weight: 800;
+}
 
 .badge {
   font-size: 0.72rem;
-  padding: 1px 6px;
-  border-radius: 4px;
-  background: var(--bg-elev);
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--chip-bg);
   border: 1px solid var(--border);
   color: var(--text-dim);
 }
+.badge.me {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+.badge.off {
+  background: var(--bad-soft);
+  border-color: transparent;
+  color: var(--bad);
+}
+.badge.host {
+  background: var(--warn);
+  border-color: var(--warn);
+  color: #fff;
+}
 
-.badge.me { border-color: var(--accent); color: var(--accent); }
-.badge.off { border-color: #4a3030; color: var(--bad); }
+.rate {
+  font-size: 0.74rem;
+  margin-left: auto;
+}
 
-/* 채팅 */
-.chat-card { display: flex; flex-direction: column; }
-
+/* ── 채팅 */
+.chat-card {
+  display: flex;
+  flex-direction: column;
+}
 .chat-log {
   height: 240px;
   overflow-y: auto;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  background: var(--chat-bg);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius-sm);
   padding: 8px 10px;
   margin-bottom: 8px;
 }
+.chat-line,
+.chat-system {
+  margin: 0 0 3px;
+  font-size: 0.9rem;
+}
+.chat-line {
+  padding: 2px 8px;
+  border-radius: 10px;
+  animation: chat-in 160ms ease-out;
+}
+.chat-line:hover {
+  background: var(--surface-2);
+}
+.chat-line .nick {
+  margin-right: 6px;
+}
+.chat-text {
+  word-break: break-word;
+}
+.chat-system {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+}
+.chat-system::before,
+.chat-system::after {
+  content: ' · ';
+  opacity: 0.6;
+}
+@keyframes chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 
-.chat-line, .chat-system { margin: 0 0 4px; font-size: 0.9rem; }
-.chat-line .nick { margin-right: 6px; }
-.chat-text { word-break: break-word; }
-
-/* ★ 마스킹 칩 (Phase 6 / Q-42). ★ 길이가 정답 길이를 드러내지 않도록 고정 폭 라벨이다 */
+/* ★ 마스킹 칩 (Q-42). 길이가 정답 길이를 드러내지 않는 고정 라벨 */
 .masked-chip {
   display: inline-block;
-  padding: 0 6px;
+  padding: 0 7px;
   margin: 0 2px;
-  border-radius: 4px;
-  background: var(--mask-bg, #3a3f4b);
-  color: var(--mask-fg, #b9c0cc);
-  font-size: 0.85em;
-  letter-spacing: 0.02em;
-  vertical-align: baseline;
+  border-radius: 999px;
+  background: var(--mask-bg);
+  color: var(--mask-fg);
+  font-size: 0.82em;
+  font-weight: 700;
 }
-/* ★ 본인에게만 보이는 안내. 원문은 그대로 보여준다 */
 .masked-note {
   margin-left: 6px;
   font-size: 0.8em;
-  color: var(--muted, #8b93a1);
+  color: var(--text-dim);
 }
-.chat-system { color: var(--text-dim); font-size: 0.82rem; }
 
-/* 채팅 입력줄은 .field-row 를 그대로 쓴다. 전용 규칙을 두지 않는다 (A-2) */
-
+/* ── 푸터 — 테마·소리 버튼과 로그아웃 */
 .foot {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  margin-top: 24px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
   font-size: 0.78rem;
 }
-
-.foot button { margin-top: 0; }
-
-/* ★ 문제 출처 표기 (Q-41 라이선스 의무). 작게 보이되 반드시 있어야 한다 */
-.attribution { font-size: 0.72rem; }
-.attribution a { color: var(--text-dim); }
-.attribution a:hover { color: var(--accent); }
+.foot button {
+  margin-top: 0;
+}
 
 /* =============================================================================
-   Phase 2 — 게임 설정 / 경험률 / 카운트다운
+   ★ 테마·소리 설정 (Prefs.tsx) — 위로 열리는 작은 창. 문서 높이를 늘리지 않는다
+   ============================================================================= */
 
-   ★ 라벨 줄바꿈 금지와 flex 축소 금지는 위쪽 공통 규칙이 이미 적용한다 (A-2).
-     여기에 white-space 를 다시 쓰지 않는다.
+.prefs {
+  position: relative;
+}
+.prefs-pop {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  z-index: 60;
+  width: min(340px, calc(100vw - 32px));
+  padding: 14px 16px;
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-pop);
+  animation: pop-in 180ms var(--ease-pop);
+  font-size: 0.85rem;
+}
+.prefs-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 6px;
+  font-weight: 800;
+}
+.prefs-title:first-child {
+  margin-top: 0;
+}
+.prefs-sub {
+  margin: 8px 0 4px;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+.prefs-desc {
+  margin: 6px 0 0;
+  color: var(--text-dim);
+  font-size: 0.76rem;
+}
+.prefs-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 4px;
+  font-weight: 700;
+}
+.prefs-row input[type='range'] {
+  flex: 1 1 auto;
+  min-width: 0;
+  accent-color: var(--accent);
+}
+.prefs-row input[type='checkbox'] {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+}
+
+/* ★ 세그먼트 버튼 (테마·음악·효과음 고르기) */
+.seg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 3px;
+  background: var(--surface-2);
+  border-radius: 999px;
+}
+.seg-btn {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-dim);
+}
+.seg-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* =============================================================================
+   게임 설정 / 카운트다운
    ============================================================================= */
 
 .settings-label {
   display: block;
-  margin: 16px 0 14px;
+  margin: 14px 0 12px;
   color: var(--text-dim);
   font-size: 0.85rem;
+  font-weight: 700;
+}
+.settings-label:first-of-type {
+  margin-top: 0;
+}
+.settings-label .field-row {
+  margin-top: 5px;
+}
+.settings-label input[type='number'] {
+  max-width: 140px;
 }
 
-.settings-label:first-of-type { margin-top: 0; }
-
-.settings-label .field-row { margin-top: 5px; }
-
-/* 숫자 입력은 넓을 필요가 없다. 좁은 화면에서도 프리셋 버튼과 나란히 둘 수 있다 */
-.settings-label input[type='number'] { max-width: 140px; }
-
-/* ★ 프리셋 버튼 줄. 좁은 화면에서는 다음 줄로 내려간다.
-   한 줄에 밀어넣으면 "50문제" 가 "50" / "문제" 로 쪼개진다. */
+/* ★ 프리셋 줄 — 좁은 화면에서는 다음 줄로 내려간다 (D-022) */
 .preset-row {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 6px;
 }
-
 .preset {
   margin-top: 0;
-  padding: 5px 10px;
+  padding: 5px 12px;
   font-size: 0.85rem;
   color: var(--text-dim);
 }
-
 .preset.active {
+  background: var(--accent-soft);
   border-color: var(--accent);
   color: var(--accent);
-  font-weight: 600;
 }
 
-.settings-view { grid-template-columns: minmax(70px, auto) 1fr; gap: 4px 12px; }
-
-/* 참가자 줄의 경험률. 좁은 화면에서는 줄바꿈으로 내려가 전체 폭을 쓴다 */
-.rate {
-  font-size: 0.76rem;
-  margin-left: auto;
+.settings-view {
+  grid-template-columns: minmax(70px, auto) 1fr;
+  gap: 4px 12px;
 }
 
-.countdown-card { text-align: center; }
-.countdown-card h2 { text-align: left; }
+/* ★ 게임 시작 카드 */
+.start-card {
+  text-align: center;
+}
+.start-card h2 {
+  justify-content: flex-start;
+}
 
+/* ★ 카운트다운 — 5·4·3·2·1 이 매 초 튀어 오른다 */
+.countdown-card {
+  text-align: center;
+  background: var(--q-bg);
+  border-color: var(--q-border);
+}
+.countdown-card h2 {
+  text-align: left;
+}
 .countdown-big {
-  font-size: 2.6rem;
-  font-weight: 700;
-  margin: 4px 0 0;
+  display: inline-block;
+  font-size: 3.2rem;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1.1;
+  color: var(--accent);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
+  animation: count-pop 900ms var(--ease-pop);
 }
-
-/* ★ 임시 화면임을 한눈에 알 수 있게 한다.
-   ★ Phase 3(R014)에서 임시 안내 화면은 사라졌다. 클래스는 남긴다 —
-     앞으로도 "이 화면은 아직 임시다" 를 표시할 자리가 생긴다. */
-.temp-panel { border-style: dashed; border-color: #4a4436; }
+@keyframes count-pop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  35% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 /* =============================================================================
-   ★★ Phase 3 — 문제 화면 (R014)
-
-   ★ 새로 만드는 버튼·배지는 위의 라벨 보호 규칙(D-022)을 자동으로 받는다.
-     ★ 개별 요소에 white-space 를 다시 쓰지 않는다. 그것이 그 규칙의 목적이다.
-
-   ★ 좁은 화면(320px)에서 확인할 것 —
-     · 문제 지문이 넘치지 않는다 (word-break)
-     · 타이머 숫자가 잘리지 않는다
-     · 점수판의 닉네임·배지·점수가 한 줄에 안 들어가면 줄바꿈된다
+   ★★ 게임 중 — 문제 카드
    ============================================================================= */
 
 .question-card {
-  /* ★ 게임 중 가장 중요한 카드다. 테두리를 강조한다 */
-  border-color: #3a4a5a;
+  position: relative;
+  overflow: hidden;
+  background: var(--q-bg);
+  border: calc(var(--bw) + 1px) solid var(--q-border);
+  box-shadow: var(--shadow-pop);
+  padding-top: 20px;
+}
+/* ★ 위쪽 색띠 — 문제 영역이 바탕과 확실히 구분된다 (건우: "티가 안 난다") */
+.question-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: var(--q-band);
 }
 .question-card.urgent {
-  /* ★ 남은 10초 구간. 색으로 긴박함을 알린다 */
-  border-color: #5a4030;
+  border-color: var(--bad);
 }
 
 .q-head {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   margin-bottom: 10px;
 }
-
 .q-progress {
-  font-size: 0.8rem;
-  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 1px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
 }
-
 .badge.cat {
-  border-color: #3a4a5a;
-  color: #9fc0e0;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: transparent;
 }
 .badge.exp {
-  border-color: #4a4436;
-  color: #d8c48a;
+  background: var(--warn);
+  border-color: var(--warn);
+  color: #fff;
+}
+.badge.diff {
+  background: transparent;
 }
 
+/* ★★ 1순위 — 문제 지문. 가장 크다 */
 .q-text {
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.5;
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--q-text);
   margin: 0;
-  /* ★ 긴 단어가 있어도 화면을 넘치지 않게 한다. 지문은 제목이 아니라 본문이다 */
   overflow-wrap: anywhere;
+  animation: q-in 380ms var(--ease-pop);
 }
 .q-text.small {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
+  animation: none;
+}
+@keyframes q-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
+/* ★★ 타이머 — 작은 숫자 (머리줄 오른쪽) + 줄어드는 막대.
+   ★ 건우: "남은 시간 표기가 너무 크다" → 주객이 바뀌지 않게 작게. 마지막 5초만 눈에 띄게 */
 .q-timer {
-  font-size: 2.6rem;
-  font-weight: 700;
-  margin: 12px 0 0;
+  margin: 0 0 0 auto;
+  font-size: 0.95rem;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
-  text-align: center;
+  padding: 1px 12px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+  white-space: nowrap;
 }
 .q-timer.urgent {
-  color: var(--bad);
+  background: var(--bad);
+  color: #fff;
+  animation: pulse 1s ease-in-out infinite;
+}
+.q-timebar {
+  height: 10px;
+  margin: 14px 0 0;
+  border-radius: 999px;
+  background: var(--bar-bg);
+  overflow: hidden;
+}
+.q-timebar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--bar);
+  transform-origin: left center;
+  transition: transform 120ms linear;
+}
+.q-timebar-fill.warn {
+  background: var(--warn);
+}
+.q-timebar-fill.urgent {
+  background: var(--bad);
 }
 
-.q-hint {
-  margin: 12px 0 0;
-  font-size: 0.95rem;
+/* ★★ 힌트 자리 — **처음부터 잡아 둔다** (건우: 초성 공개 때 줄바꿈이 생겨 못생겨진다).
+   ★ 두 줄(일반 힌트 · 초성) 높이를 미리 확보하므로 힌트가 나와도 아래가 밀리지 않는다 */
+.q-hints {
+  min-height: 3.6rem;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
 }
-/* ★ R028 — 일반 힌트. 한 문장이다. 두 줄 안에 들어오도록 약간 작게 (0008: 120자 상한) */
+.q-hint {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  font-size: 0.95rem;
+  animation: hint-in 320ms var(--ease-pop);
+}
 .q-hint-general {
-  margin-top: 8px;
-  font-size: 0.9rem;
-  line-height: 1.45;
+  font-size: 0.88rem;
+  line-height: 1.4;
 }
 .hint-label {
-  display: inline-block;
-  margin-right: 4px;
-  padding: 0 6px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  vertical-align: 1px;
+  flex: 0 0 auto;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--accent-2);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  white-space: nowrap;
 }
 .hint-value {
-  font-size: 1.15rem;
-  letter-spacing: 0.12em;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
   color: var(--accent);
+}
+@keyframes hint-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .q-experienced {
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
-/* ── 정답 공개 */
+/* =============================================================================
+   ★★ 정답 공개 — 정답자를 가장 크게 (건우 요청)
+   ============================================================================= */
+
 .reveal-card {
-  border-color: #3a5a40;
+  position: relative;
+  overflow: hidden;
+  background: var(--reveal-bg);
+  border: calc(var(--bw) + 1px) solid var(--reveal-border);
+  box-shadow: var(--shadow-pop);
+  animation: pop-in 360ms var(--ease-pop);
+}
+.winner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.winner .avatar {
+  animation: bounce-in 600ms var(--ease-pop);
+}
+.winner-label {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--ok);
+  letter-spacing: 0.08em;
+}
+/* ★★ 화면에서 가장 큰 글씨 */
+.winner-name {
+  margin: 0;
+  font-size: 2.3rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  animation: name-in 520ms var(--ease-pop);
+}
+.winner-plus {
+  margin-left: auto;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--ok);
+  animation: rise 900ms ease-out;
+}
+.reveal-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text);
 }
 .reveal-answer {
-  font-size: 1.15rem;
-  margin: 8px 0 0;
+  font-size: 1.05rem;
+  margin: 10px 0 0;
   overflow-wrap: anywhere;
 }
 .reveal-answer strong {
+  display: inline-block;
+  padding: 1px 12px;
+  border-radius: 999px;
+  background: var(--ok-soft);
   color: var(--ok);
-  font-size: 1.3rem;
+  font-size: 1.25rem;
+  font-weight: 900;
 }
+/* ★ 꽃가루 — 정답이 나왔을 때만. 과하지 않게 몇 개 */
+.confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.confetti i {
+  position: absolute;
+  top: -12px;
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: confetti 1500ms ease-in forwards;
+}
+
 .last-reveal {
-  padding: 10px 12px;
+  padding: 10px 14px;
   margin-bottom: 14px;
-  border: 1px solid #3a5a40;
-  border-radius: 6px;
+  background: var(--reveal-bg);
+  border: var(--bw) solid var(--reveal-border);
+  border-radius: var(--radius-sm);
 }
 
 /* ── 스킵 */
 .skip-count {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin: 4px 0 0;
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin: 2px 0 0;
+  color: var(--accent);
 }
 
 /* ── 방장 확인창 */
 .confirm {
   padding: 10px 12px;
   margin-top: 10px;
-  border: 1px solid #5a4030;
-  border-radius: 6px;
+  background: var(--bad-soft);
+  border: var(--bw) solid var(--bad);
+  border-radius: var(--radius-sm);
+}
+.confirm-card {
+  border-color: var(--bad);
+  animation: pop-in 200ms var(--ease-pop);
 }
 
 /* ── 점수판 / 순위 */
 .scores,
 .ranking {
   list-style: none;
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   padding: 0;
+  display: grid;
+  gap: 4px;
 }
 .scores li,
 .ranking li {
@@ -715,188 +1258,56 @@ form button[type='submit'] { width: 100%; }
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  padding: 6px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 4px 10px;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
 }
 .scores li.offline,
 .ranking li.offline {
   opacity: 0.55;
 }
+.scores li.lead {
+  background: var(--accent-soft);
+}
 .score {
   margin-left: auto;
-  font-weight: 600;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  animation: score-bump 600ms var(--ease-pop);
 }
 .rank {
-  min-width: 3.2em;
+  min-width: 2.6em;
   color: var(--text-dim);
   font-size: 0.85rem;
+  font-weight: 800;
 }
-
-/* ★ 사람별 요약 (Phase 4). ★ 순위 줄 끝에 붙는다. 카드를 새로 만들지 않는다 */
+.medal {
+  font-size: 1.05rem;
+}
+.ranking li.first {
+  background: var(--reveal-bg);
+  border: var(--bw) solid var(--reveal-border);
+}
 .pstat {
   flex-basis: 100%;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
 }
 
-/* =============================================================================
-   ★★★ Phase 7 일부 — 스크롤 없이 한 화면 (R016)
-
-   ★ 건우 요구: "스크롤 없이 한 화면에 모든 요소가 다 보여야 한다. 스크롤 있으면 굉장히 조잡하다."
-   ★ 건우 우선순위: "일단은 웹 UI 가 우선이다. 모바일은 천천히 생각해보자."
-
-   ★★ 기준 해상도 — **1280×720 뷰포트** (노트북 1280×800 에서 브라우저 크롬을 뺀 값).
-     ★ 근거: 1366×768 과 1920×1080 사이에서 가장 빡빡한 실사용 조합이 1280×800 이고,
-       주소창·탭·북마크바를 빼면 내부 높이가 약 720px 남는다(추정. 크롬 구성에 따라 다르다).
-     ★ 여기서 1.0 이하면 더 큰 화면에서는 자동으로 만족한다.
-
-   ★★ 접근 방법 세 가지를 **함께** 썼다. 접는 것만으로는 부족했다.
-     (1) ★★ 넓은 화면에서 **2열 배치** — 세로를 가장 크게 줄인다
-     (2) ★ 게임 중 **불필요한 카드 접기** (라이선스 카드 → 한 줄 / 하단 여백 축소)
-     (3) ★ 긴 목록은 **고정 높이 + 내부 스크롤** (채팅·문제별 기록)
-
-   ★ 무엇을 접지 않았는가 — 문제 지문 / 남은 시간 / 채팅 입력창.
-     ★★ 30초 승부의 핵심 정보이고, 입력창은 곧 답안 입력창이다 (C-3).
-   ============================================================================= */
-
-/* ★ 게임 중에는 폭을 넓힌다. 2열이 성립하려면 폭이 필요하다.
-   ★★ 상단·하단 여백도 줄인다.
-     ★ 하단 180px 은 "스크롤 끝에서 토스트가 내용을 가리지 않게" 하려던 완충이었다.
-       ★ 스크롤이 없어지면 그 완충의 이유도 사라진다. 토스트 높이만큼만 남긴다.
-     ★ 겹침 여부는 ui-check 가 좌표로 검사한다 (D-032). 눈대중으로 줄이지 않는다. */
-/* ★ 방 안 화면(로비 포함)은 넓게 쓴다. 2열이 성립하려면 폭이 필요하다 */
-.wrap:has(.game-grid) {
-  max-width: 1180px;
-  /* ★★ 로비의 하단 여백은 줄이지 않는다.
-     ★ 근거: 로비는 아직 한 화면 목표(1.0)를 달성하지 못했고 **스크롤이 남아 있다.**
-       ★ 스크롤 끝에서 고정 토스트가 하단 푸터를 덮으면 안 된다 (D-032).
-       ★ 실제로 72px 로 줄였더니 ui-check 의 겹침 검사가 잡아냈다 (toast.top=770 / 푸터.top=787). */
-  padding: 16px 16px 160px;
-}
-.wrap:has(.in-game) {
-  /* ★★ 게임·결과 화면은 스크롤이 없다(1.00배). 완충 여백의 이유 자체가 사라진다.
-     ★ 이때 화면 맨 아래에 남는 것은 한 줄 라이선스와 개발용 푸터뿐이고,
-       ★ 지켜야 할 것(문제 지문 / 남은 시간 / 채팅 입력창)은 토스트에서 멀리 떨어져 있다 (C-3).
-       ★ 실측: 입력창 top=331, 토스트 top≈640. 겹치지 않는다. */
-  padding: 12px 16px 56px;
-}
-
-/* ★★ 게임·결과 화면의 밀도를 올린다. **정보를 지우지 않고** 얻는 공간이다 */
-.in-game .card { padding: 11px 14px; margin-bottom: 10px; }
-.in-game h1 { font-size: 1.2rem; }
-.in-game h2 { margin-bottom: 8px; }
-.in-game .sub { margin-bottom: 10px; }
-.in-game .lobby-head { margin-bottom: 4px; }
-
-@media (min-width: 1000px) {
-  .game-grid {
-    display: grid;
-    /* ★ 왼쪽이 더 넓다. 문제 지문이 들어가는 열이다 */
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: 16px;
-    align-items: start;
-  }
-  .col-main,
-  .col-side { min-width: 0; }
-  /* ★★ 로비에서는 왼쪽 열을 다시 2열로 나눈다 (초대·참가자 | 설정·시작).
-     ★ 근거: 로비 카드는 세로로 쌓으면 2.5배가 넘는다(실측). 카드가 5개다.
-       ★ 게임 중에는 나누지 않는다 — 문제 지문이 좁아지면 안 된다 (C-3). */
-  .lobby:not(.in-game) .col-main {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 0 12px;
-    align-items: start;
-  }
-  /* ★ 오른쪽 열은 화면 안에 머문다. 채팅이 길어져도 문서가 늘어나지 않는다 */
-  .col-side .chat-card { position: sticky; top: 12px; }
-  .in-game .chat-log { height: 196px; }
-  /* ★ 점수판은 길어질 수 있다 (최대 10명). 고정 높이 + 내부 스크롤로 가둔다.
-     ★ 지우지 않는다 — 내 점수와 1위는 게임 중에 계속 봐야 하는 정보다 */
-  .in-game .score-card .scores { max-height: 128px; overflow-y: auto; }
-}
-
-/* ★ 결과 화면 2열 (순위 | 문제별 기록) */
-@media (min-width: 1000px) {
-  .result-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 10px;
-    align-items: start;
-  }
-  /* ★ 사람별 요약을 같은 줄에 붙인다. 줄을 새로 만들지 않는다 */
-  .pstat { flex-basis: auto; }
-  .in-game .qlog { max-height: 148px; }
-}
-
-/* ★ 게임 중 한 줄 라이선스 고지 */
-.license-line { margin: 4px 2px 0; font-size: 0.78rem; }
-
-/* =============================================================================
-   ★★ Phase 4 — 문제별 기록 (R016)
-
-   ★ 고정 높이 + 내부 스크롤이다. 문제 수가 최대 200이라
-     문서를 늘리면 "스크롤 없이 한 화면" 이 원천적으로 불가능해진다.
-   ============================================================================= */
-.qlog {
-  list-style: none;
-  margin: 8px 0 0;
-  padding: 0 4px 0 0;
-  /* ★ 결과 화면이 한 화면에 들어오도록 고정 높이다. 넘치면 내부에서만 스크롤한다 */
-  max-height: 168px;
-  overflow-y: auto;
-}
-.qlog li {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 5px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.85rem;
-}
-.qlog li.miss { opacity: 0.7; }
-.qlog-no {
-  min-width: 2em;
-  color: var(--text-dim);
-  text-align: right;
-}
-.qlog-main {
-  flex: 1 1 auto;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.qlog-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.qlog-sub { font-size: 0.78rem; }
-.qlog-who {
-  flex: 0 0 auto;
-  text-align: right;
-  font-size: 0.8rem;
-}
-
-/* =============================================================================
-   ★★ Phase 5 — 일시정지 / 확인창 / 단축키 (R015)
-   ★ 새 버튼·배지는 위의 라벨 보호 규칙(D-022)을 자동으로 받는다
-   ============================================================================= */
-
+/* ── 일시정지 */
 .paused-card {
-  /* ★ 멈춰 있다는 것이 한눈에 보여야 한다 (D-030) */
-  border-color: #5a4a30;
-  background: #211d15;
+  background: var(--toast-bg);
+  border-color: var(--toast-border);
+  animation: pop-in 260ms var(--ease-pop);
 }
 
-.confirm-card {
-  border-color: #5a4030;
-}
+/* =============================================================================
+   ★ 단축키 안내 (Q-56)
+   ============================================================================= */
 
-/* ── ★ 단축키 안내 (Q-56) */
 .keybar {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--border);
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
 }
 .keybar-line {
   display: flex;
@@ -904,7 +1315,7 @@ form button[type='submit'] { width: 100%; }
   align-items: center;
   gap: 10px;
   margin: 0;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
 }
 .keyhint {
   white-space: nowrap;
@@ -915,7 +1326,7 @@ form button[type='submit'] { width: 100%; }
   gap: 10px;
   margin: 0 0 6px;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 800;
 }
 .keylist {
   list-style: none;
@@ -933,72 +1344,392 @@ form button[type='submit'] { width: 100%; }
 .keylabel {
   color: var(--text-dim);
 }
-
 kbd {
   display: inline-block;
-  padding: 1px 6px;
+  padding: 0 6px;
   border: 1px solid var(--border);
   border-bottom-width: 2px;
-  border-radius: 4px;
-  background: var(--bg-elev);
-  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
-  font-size: 0.76rem;
-  /* ★ 라벨이므로 줄바꿈하지 않는다 (D-022 와 같은 이유) */
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
   white-space: nowrap;
 }
-/* ★ 버튼 안의 단축키 표기는 작고 흐리게 */
 button kbd {
   margin-left: 4px;
   border-bottom-width: 1px;
   opacity: 0.7;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
+}
+button.primary kbd {
+  background: transparent;
+  color: inherit;
+  border-color: currentColor;
 }
 
-/* ── ★ 도배 억제 안내. 입력창 바로 위 문서 흐름에 둔다 (iOS 키보드 대응) */
+/* ── 도배 억제 안내 — 입력창 바로 위 (iOS 키보드 대응) */
 .warn {
   color: var(--bad);
   font-size: 0.82rem;
+  font-weight: 700;
   margin: 12px 0 0;
 }
 .throttle-note {
   margin-bottom: 0;
 }
 
-@media (max-width: 480px) {
-  .chat-log { height: 200px; }
-  .foot { flex-direction: column; align-items: flex-start; }
-  /* 좁은 화면에서는 경험률을 닉네임 아래 줄로 내린다 */
-  .rate { margin-left: 28px; flex-basis: 100%; }
-  .countdown-big { font-size: 2.2rem; }
-  /* ★ Phase 3 — 좁은 화면에서 지문과 타이머를 줄인다 */
-  .q-text { font-size: 1.1rem; }
-  .q-timer { font-size: 2.2rem; }
-  /* ★ 점수판에서 점수가 닉네임 줄에 안 들어가면 아래로 내린다 */
-  .score { margin-left: auto; }
+/* =============================================================================
+   ★★ 한 화면 (R016) — 넓은 화면 2열 / 고정 높이 + 내부 스크롤
+   ============================================================================= */
+
+.wrap:has(.game-grid) {
+  max-width: 1180px;
+  /* ★ 로비는 스크롤이 남을 수 있어 하단 완충을 유지한다 (D-032 / D-076).
+     ★ R033 에 120px 로 줄였다가 ui-check 겹침 검사가 잡았다 (toast.top=770 / 푸터.top=741) */
+  padding: 14px 16px 160px;
+}
+.wrap:has(.in-game) {
+  /* ★ 게임·결과는 스크롤이 없다(1.00배). 토스트 높이만큼만 남긴다 */
+  padding: 10px 16px 52px;
 }
 
-/* ★ R025 — 난이도 배지 (문제 머리줄). 카테고리 배지와 같은 크기 */
-.badge.diff {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-dim);
+.in-game .card {
+  padding: 11px 14px;
+  margin-bottom: 10px;
+}
+.in-game .question-card {
+  padding-top: 16px;
+}
+.in-game h1 {
+  font-size: 1.15rem;
+}
+.in-game h2 {
+  margin-bottom: 6px;
+}
+.in-game .lobby-head {
+  margin-bottom: 8px;
 }
 
-/* ★★ R028 — 남은 시간 + 힌트 한 줄 (넓은 화면).
-   ★ 힌트가 나와도 문제 카드 높이가 변하지 않게 타이머 옆 빈자리를 쓴다 (한 화면 게이트) */
 @media (min-width: 1000px) {
-  .q-live {
+  .game-grid {
     display: grid;
-    grid-template-columns: 9rem minmax(0, 1fr);
-    column-gap: 16px;
-    align-items: center;
-    min-height: 4.4rem;
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+    gap: 16px;
+    align-items: start;
   }
-  .q-live .q-timer {
-    margin-top: 6px;
-    text-align: left;
+  .col-main,
+  .col-side {
+    min-width: 0;
   }
-  .q-live .q-hints .q-hint { margin-top: 4px; }
-  .q-live .q-hints .q-hint:first-child { margin-top: 0; }
-  .q-live .q-hint-general { font-size: 0.85rem; line-height: 1.4; }
+  /* ★ R033 — 로비는 세로 칸 두 개 (초대·설정 | 참가자·시작). 줄 맞춤 빈자리가 없다 */
+  .lobby-cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0 14px;
+    align-items: start;
+  }
+  .lobby-col {
+    min-width: 0;
+  }
+  /* ★★ 넓은 화면의 로비는 한 화면에 들어온다 → 스크롤 끝 완충(160px)이 필요 없다.
+     ★ 좁은 화면은 여전히 스크롤이 있으므로 160px 를 그대로 둔다 (D-032 겹침 검사가 그 폭에서 돈다) */
+  .wrap:has(.game-grid) {
+    padding-bottom: 52px;
+  }
+  .col-side .chat-card {
+    position: sticky;
+    top: 12px;
+  }
+  .lobby:not(.in-game) .chat-log {
+    height: 300px;
+  }
+  .in-game .chat-log {
+    height: 230px;
+  }
+  .in-game .score-card .scores {
+    max-height: 120px;
+    overflow-y: auto;
+  }
+  .result-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+  }
+  .pstat {
+    flex-basis: auto;
+  }
+  .in-game .qlog {
+    max-height: 148px;
+  }
+}
+
+/* ── ★ 문제별 기록 (결과 화면) — 고정 높이 + 내부 스크롤 */
+.qlog {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0 4px 0 0;
+  max-height: 168px;
+  overflow-y: auto;
+}
+.qlog li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 0.84rem;
+}
+.qlog li.miss {
+  opacity: 0.7;
+}
+.qlog-no {
+  min-width: 2em;
+  color: var(--text-dim);
+  text-align: right;
+  font-weight: 800;
+}
+.qlog-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.qlog-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.qlog-sub {
+  font-size: 0.76rem;
+}
+.qlog-who {
+  flex: 0 0 auto;
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+/* =============================================================================
+   움직임 — 과하지 않게. 움직임을 줄인 설정에서는 끈다
+   ============================================================================= */
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0) rotate(-20deg);
+  }
+  70% {
+    transform: scale(1.15) rotate(6deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes name-in {
+  from {
+    opacity: 0;
+    transform: translateX(-16px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes score-bump {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.35);
+    color: var(--ok);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: rotate(-6deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-3deg) translateY(-4px);
+  }
+}
+@keyframes confetti {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(220px) rotate(540deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* =============================================================================
+   좁은 화면 (모바일 — 이번 목표는 아니지만 깨지지 않게)
+   ============================================================================= */
+
+@media (max-width: 480px) {
+  .chat-log {
+    height: 200px;
+  }
+  .foot {
+    flex-wrap: wrap;
+  }
+  .rate {
+    margin-left: 28px;
+    flex-basis: 100%;
+  }
+  .countdown-big {
+    font-size: 2.6rem;
+  }
+  .q-text {
+    font-size: 1.15rem;
+  }
+  .winner-name {
+    font-size: 1.7rem;
+  }
+  .avatar.lg {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+  }
+}
+
+/* ★ 스킵 카드 — 한 줄 (표 수 · 버튼 · 안내) */
+.skip-row {
+  align-items: center;
+  flex-wrap: wrap;
+}
+.skip-row .note {
+  margin: 0;
+}
+
+/* =============================================================================
+   ★ R033 — 로비 한 화면 (넓은 화면). 정보를 지우지 않고 밀도만 올린다 (D-076 의 원칙)
+   ============================================================================= */
+@media (min-width: 1000px) {
+  .lobby:not(.in-game) .card {
+    padding: 13px 16px;
+    margin-bottom: 12px;
+  }
+  .lobby:not(.in-game) .note {
+    font-size: 0.76rem;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+  .lobby:not(.in-game) .settings-label {
+    margin: 10px 0 8px;
+  }
+  .lobby:not(.in-game) .lobby-head {
+    margin-bottom: 12px;
+  }
+  /* ★ 참가자는 최대 10명이다. 목록만 고정 높이로 가두고 안에서 스크롤한다 */
+  .lobby:not(.in-game) .players {
+    max-height: 214px;
+    overflow-y: auto;
+  }
+  .start-card button.big-btn {
+    margin-top: 4px;
+  }
+}
+
+@media (min-width: 1000px) {
+  /* ★ 로비에서는 채팅을 조금 좁히고 설정 칸을 넓힌다 — 프리셋 버튼이 한 줄에 들어간다 */
+  .lobby:not(.in-game) .game-grid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+  }
+  .lobby:not(.in-game) .chat-log {
+    height: 236px;
+  }
+}
+
+@media (min-width: 1000px) {
+  /* ★ 로비 프리셋을 조금 작게 — "가능한 최대" 까지 한 줄에 든다 */
+  .lobby:not(.in-game) .preset {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ★ R033 — 결과 화면 우승자 */
+.champion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--reveal-bg);
+  border: var(--bw) solid var(--reveal-border);
+  animation: pop-in 420ms var(--ease-pop);
+}
+.champion-trophy {
+  font-size: 2rem;
+  animation: bounce-in 700ms var(--ease-pop);
+}
+.champion-names {
+  min-width: 0;
+}
+.champion-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
 }

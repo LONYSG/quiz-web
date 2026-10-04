@@ -25,6 +25,7 @@
 
 import type { Socket } from 'socket.io-client';
 import { formatDifficulties } from '@quiz/shared';
+import Avatar from './Avatar.js';
 import type { GameResultView } from './useRoom.js';
 
 interface Props {
@@ -107,13 +108,53 @@ export default function GameResult({ socket, result, isHost, myAccountId }: Prop
           </div>
         )}
 
+        {/* ★★ R033 — 우승자 연출. 공동 1위면 모두 (동점 공동 순위, guide 39절) */}
+        {(() => {
+          const champs = result.ranking.filter((r) => r.rank === 1 && r.score > 0);
+          if (champs.length === 0) return null;
+          return (
+            <div className="champion">
+              <span className="champion-trophy" aria-hidden="true">
+                🏆
+              </span>
+              <div className="champion-names">
+                <p className="winner-label">{champs.length > 1 ? '공동 우승!' : '우승!'}</p>
+                <p className="champion-name">
+                  {champs.map((c, i) => (
+                    <span key={c.accountId} style={{ color: `var(--p${c.colorIndex})` }}>
+                      {i > 0 && ' · '}
+                      {c.nickname}
+                    </span>
+                  ))}
+                </p>
+              </div>
+            </div>
+          );
+        })()}
+
         <ol className="ranking">
           {result.ranking.map((r) => {
             const s = statOf(r.accountId);
             return (
-              <li key={r.accountId} className={r.connected ? undefined : 'offline'}>
-                {/* ★ 동점자는 공동 순위다 (guide 39절). 서버가 계산해 보낸다 */}
-                <span className="rank mono">{r.rank}위</span>
+              <li
+                key={r.accountId}
+                className={
+                  [r.connected ? '' : 'offline', r.rank === 1 && r.score > 0 ? 'first' : '']
+                    .join(' ')
+                    .trim() || undefined
+                }
+              >
+                {/* ★ 동점자는 공동 순위다 (guide 39절). 서버가 계산해 보낸다
+                    ★ R033 — 1·2·3위에 메달 */}
+                <span className="rank mono">
+                  {r.score > 0 && r.rank <= 3 ? (
+                    <span className="medal" aria-hidden="true">
+                      {['🥇', '🥈', '🥉'][r.rank - 1]}
+                    </span>
+                  ) : null}{' '}
+                  {r.rank}위
+                </span>
+                <Avatar nickname={r.nickname} colorIndex={r.colorIndex} />
                 <span className="nick" style={{ color: `var(--p${r.colorIndex})` }}>
                   {r.nickname}
                 </span>
@@ -198,7 +239,12 @@ export default function GameResult({ socket, result, isHost, myAccountId }: Prop
               {/* ★★ 두 버튼의 서버 동작은 동일하다 (04-PROTOCOL T30/T31).
                   ★ UI 차이만 둔다 — 다시 하기는 곧 시작할 의도, 로비로는 설정을 볼 의도.
                   ★ 어느 쪽도 게임을 자동으로 시작하지 않는다 (guide 38절). */}
-              <button type="button" autoFocus onClick={() => socket.emit('game.again', {})}>
+              <button
+                type="button"
+                className="primary"
+                autoFocus
+                onClick={() => socket.emit('game.again', {})}
+              >
                 다시 하기 <kbd>Alt+A</kbd>
               </button>
               <button type="button" className="ghost" onClick={() => socket.emit('game.toLobby', {})}>

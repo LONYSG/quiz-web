@@ -20,6 +20,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import { formatDifficulties, type DifficultyTier } from '@quiz/shared';
+import Avatar from './Avatar.js';
 import type { QuestionView, ResolutionView, SkipView } from './useRoom.js';
 
 interface Props {
@@ -133,6 +134,17 @@ export default function Question({
     socket.emit('skip.vote', { vote, epoch: question.epoch });
   };
 
+  /** ★ 줄어드는 막대의 길이 (0~1). 문제 시간 30초 기준 */
+  const ratio = Math.max(0, Math.min(1, remainMs / Math.max(1, question.endsAt - question.startedAt)));
+  /** 마지막 5초 — 숫자와 막대가 빨갛게 뛴다 */
+  const last5 = active && remainMs <= 5_000;
+  const winner =
+    resolution?.reason === 'correct'
+      ? players.find((p) => p.accountId === resolution.winnerAccountId) ?? null
+      : null;
+  const ranked = [...players].sort((a, b) => b.score - a.score);
+  const topScore = ranked[0]?.score ?? 0;
+
   return (
     <>
       <section ref={cardRef} className={`card question-card${urgent ? ' urgent' : ''}`}>
@@ -148,53 +160,57 @@ export default function Question({
             /* ★ 본인에게만 보이는 배지 (01-GAME-RULES 12장) */
             <span className="badge exp">이미 풀어본 퀴즈입니다</span>
           )}
-        </div>
-
-        <p className="q-text">{question.text}</p>
-
-        {/* ★★ R028 — 남은 시간과 힌트를 한 줄(q-live)에 둔다.
-            ★ 넓은 화면에서는 **타이머 왼쪽 / 힌트 오른쪽**이다.
-            ★ 근거: 힌트가 타이머 아래로 쌓이면 문제 카드가 두세 줄 길어져
-              "스크롤 없이 한 화면" 게이트를 넘었다 (실측 1.05배). 타이머 옆 빈자리에 두면
-              힌트가 나와도 카드 높이가 그대로이고, 화면이 **튀지 않는다**.
-            ★ 좁은 화면에서는 예전처럼 위아래로 쌓인다 (CSS). */}
-        <div className="q-live">
-        {/* ── 남은 시간 */}
-        {active ? (
-          remainMs > 0 ? (
-            <p className={`q-timer mono${urgent ? ' urgent' : ''}`}>{sec}초</p>
-          ) : (
-            /* ★★ 0 이 되어도 여기서 상태를 바꾸지 않는다. 서버 이벤트를 기다린다 */
-            <p className="q-timer dim">결과 확인 중…</p>
-          )
-        ) : null}
-
-        <div className="q-hints">
-        {/* ── ★★ 일반 힌트 (R028). 남은 20초부터. 서버가 push 한다.
-            ★ 없는 문제는 아무것도 나오지 않는다 ("힌트가 있으면 보여 준다").
-            ★ 10초부터는 아래 초성 힌트와 함께 보인다 */}
-        {question.generalHint && (
-          <p className="q-hint q-hint-general">
-            <span className="hint-label">힌트</span> {question.generalHint}
-          </p>
-        )}
-
-        {/* ── 초성 힌트 (남은 10초부터. 서버가 push 한다) */}
-        {question.hintRevealed && (
-          <p className="q-hint">
-            <span className="hint-label">초성</span>{' '}
-            {question.hint ? (
-              <span className="mono hint-value">{question.hint}</span>
+          {/* ★★ R033 — 남은 시간은 **작은 숫자**로 머리줄 오른쪽에 (건우: "너무 크다").
+              ★ 0 이 되어도 여기서 상태를 바꾸지 않는다. 서버 이벤트를 기다린다 */}
+          {active &&
+            (remainMs > 0 ? (
+              <span className={`q-timer mono${last5 ? ' urgent' : ''}`}>{sec}초</span>
             ) : (
-              <span className="dim">이 문제는 힌트가 없습니다</span>
-            )}
-          </p>
-        )}
-        </div>
+              <span className="q-timer dim">결과 확인 중…</span>
+            ))}
         </div>
 
-        {/* ── 경험자 목록 (전원 공개. guide 28절은 폐기되었다 — D-011)
-            ★ 닉네임은 플레이어 색으로 칠한다. 이 게임의 사람 표기 규칙이다 (guide 47절) */}
+        {/* ★★ 1순위 — 문제 지문. 새 문제마다 살짝 올라오며 나타난다 (key=epoch) */}
+        <p key={question.epoch} className="q-text">
+          {question.text}
+        </p>
+
+        {/* ★ 줄어드는 막대. 남은 10초는 주황, 5초는 빨강 */}
+        {active && (
+          <div className="q-timebar" aria-hidden="true">
+            <div
+              className={`q-timebar-fill${last5 ? ' urgent' : urgent ? ' warn' : ''}`}
+              style={{ transform: `scaleX(${ratio})` }}
+            />
+          </div>
+        )}
+
+        {/* ★★ 힌트 자리 — **처음부터 두 줄을 잡아 둔다** (R033).
+            ★ 건우: "10초 초성 힌트 공개 시 문제와 초성 사이에 줄바꿈이 생겨서 못생겨진다."
+            ★ 힌트가 나와도 아래가 밀리지 않는다. 힌트가 없는 문제는 빈 자리로 남는다 */}
+        {active && (
+          <div className="q-hints">
+            {/* ── ★★ 일반 힌트 (R028). 남은 20초부터. 없는 문제는 아무것도 나오지 않는다 */}
+            {question.generalHint && (
+              <p className="q-hint q-hint-general">
+                <span className="hint-label">힌트</span> <span>{question.generalHint}</span>
+              </p>
+            )}
+            {/* ── 초성 힌트 (남은 10초부터) */}
+            {question.hintRevealed && (
+              <p className="q-hint">
+                <span className="hint-label">초성</span>{' '}
+                {question.hint ? (
+                  <span className="mono hint-value">{question.hint}</span>
+                ) : (
+                  <span className="dim">이 문제는 힌트가 없습니다</span>
+                )}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* ── 경험자 목록 (전원 공개 — D-011). 닉네임은 플레이어 색으로 (guide 47절) */}
         {question.experiencedPlayers.length > 0 && (
           <p className="q-experienced note">
             이 퀴즈를 풀어본 사람{' '}
@@ -206,20 +222,32 @@ export default function Question({
                 </span>
               </span>
             ))}
-            <br />
-            <span className="dim">
-              이 사람들은 정답 판정에서 제외됩니다. 점수를 얻을 수 없고,{' '}
-              {/* ★ Phase 6 — 이제 실제로 가려진다 */}
-              채팅에 정답을 쓰면 다른 사람에게는 가려집니다.
-            </span>
+            <span className="dim"> — 정답 판정에서 빠지고, 채팅에 쓴 정답은 가려집니다.</span>
           </p>
         )}
       </section>
 
-      {/* ── 정답 공개 (QUESTION_RESOLVED) */}
+      {/* ── ★★ 정답 공개 (QUESTION_RESOLVED) — 정답자를 화면에서 가장 크게 (건우 요청) */}
       {resolution && (
-        <section className="card reveal-card">
-          <h2>{resolveTitle(resolution, players)}</h2>
+        <section key={resolution.epoch} className="card reveal-card">
+          {winner ? (
+            <>
+              <Confetti />
+              <div className="winner">
+                <Avatar nickname={winner.nickname} colorIndex={winner.colorIndex} large />
+                <div>
+                  <p className="winner-label">정답!</p>
+                  <p className="winner-name" style={{ color: `var(--p${winner.colorIndex})` }}>
+                    {winner.nickname}
+                    {winner.accountId === myAccountId && <span className="badge me">나</span>}
+                  </p>
+                </div>
+                <span className="winner-plus">+1</span>
+              </div>
+            </>
+          ) : (
+            <p className="reveal-title">{resolveTitle(resolution, players)}</p>
+          )}
           <p className="reveal-answer">
             정답 <strong>{resolution.displayAnswer}</strong>
           </p>
@@ -242,17 +270,16 @@ export default function Question({
               {isHost && ' 방장은 아래 버튼으로 바로 넘길 수 있습니다.'}
             </p>
           ) : (
-            <>
-              <p className="skip-count mono">
+            <div className="field-row skip-row">
+              <span className="skip-count mono">
                 {skip.votes} / {skip.threshold}표
-              </p>
+              </span>
               <button type="button" onClick={() => sendSkipVote(!skip.selfVoted)}>
                 {skip.selfVoted ? '넘기기 취소' : '넘기기 투표'} <kbd>Alt+S</kbd>
               </button>
-              {/* ★ 누가 투표했는지는 표시하지 않는다 (guide 22절).
-                  ★ 서버도 명단을 보내지 않는다. */}
-              <p className="note dim">누가 투표했는지는 표시되지 않습니다.</p>
-            </>
+              {/* ★ 누가 투표했는지는 표시하지 않는다 (guide 22절). 서버도 명단을 보내지 않는다 */}
+              <span className="note dim">누가 투표했는지는 보이지 않아요</span>
+            </div>
           )}
         </section>
       )}
@@ -274,7 +301,7 @@ export default function Question({
             </div>
           )}
           {/* ★ 확인창. 방향키·Enter·마우스·터치로 모두 조작할 수 있어야 한다 (guide 23절).
-              ★ 버튼 두 개라 Tab/Enter 로 접근 가능하고, autoFocus 로 Enter 가 바로 먹는다. */}
+              ★ autoFocus 로 Enter 가 바로 먹는다. */}
           {confirming !== null && (
             <div className="confirm">
               <p className="big">
@@ -291,6 +318,7 @@ export default function Question({
               <div className="field-row">
                 <button
                   type="button"
+                  className="primary"
                   autoFocus
                   onClick={() => {
                     if (confirming === 'skip') {
@@ -310,8 +338,7 @@ export default function Question({
                   className="ghost"
                   onClick={() => {
                     setConfirming(null);
-                    // ★★ 확인창이 닫히면 포커스가 원래 자리(채팅 입력)로 돌아와야 한다.
-                    //   ★ Q-56 의 접근성 요구다. 포커스가 사라지면 정답을 쳐도 안 들어간다.
+                    // ★★ 확인창이 닫히면 포커스가 채팅 입력으로 돌아와야 한다 (Q-56)
                     document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
                   }}
                 >
@@ -323,25 +350,53 @@ export default function Question({
         </section>
       )}
 
-      {/* ── 점수판 */}
+      {/* ── 점수판. ★ 점수가 오르면 숫자가 톡 튄다 (key 에 점수를 넣어 다시 그린다) */}
       <section className="card score-card">
         <h2>점수</h2>
         <ol className="scores">
-          {[...players]
-            .sort((a, b) => b.score - a.score)
-            .map((p) => (
-              <li key={p.accountId} className={p.connected ? undefined : 'offline'}>
-                <span className="nick" style={{ color: `var(--p${p.colorIndex})` }}>
-                  {p.nickname}
-                </span>
-                {p.accountId === myAccountId && <span className="badge me">나</span>}
-                {!p.connected && <span className="badge off">접속 종료</span>}
-                <span className="score mono">{p.score}점</span>
-              </li>
-            ))}
+          {ranked.map((p) => (
+            <li
+              key={p.accountId}
+              className={[
+                p.connected ? '' : 'offline',
+                topScore > 0 && p.score === topScore ? 'lead' : '',
+              ]
+                .join(' ')
+                .trim() || undefined}
+            >
+              <Avatar nickname={p.nickname} colorIndex={p.colorIndex} />
+              <span className="nick" style={{ color: `var(--p${p.colorIndex})` }}>
+                {p.nickname}
+              </span>
+              {p.accountId === myAccountId && <span className="badge me">나</span>}
+              {!p.connected && <span className="badge off">접속 종료</span>}
+              <span key={`${p.accountId}-${p.score}`} className="score mono">
+                {p.score}점
+              </span>
+            </li>
+          ))}
         </ol>
       </section>
     </>
+  );
+}
+
+/** ★ 정답 꽃가루 — 정답이 나왔을 때만. 조각 몇 개만 (과하지 않게) */
+function Confetti() {
+  const colors = ['var(--accent)', 'var(--accent-2)', 'var(--ok)', 'var(--warn)', 'var(--p5)'];
+  return (
+    <div className="confetti" aria-hidden="true">
+      {Array.from({ length: 14 }, (_, i) => (
+        <i
+          key={i}
+          style={{
+            left: `${(i * 37) % 100}%`,
+            background: colors[i % colors.length],
+            animationDelay: `${(i % 7) * 70}ms`,
+          }}
+        />
+      ))}
+    </div>
   );
 }
 

@@ -42,9 +42,12 @@ export default function Countdown({ socket, endsAt, serverNow, isHost }: Props) 
 
   return (
     <section className="card countdown-card">
-      <h2>게임 시작</h2>
+      <h2>곧 시작합니다</h2>
       {remainMs > 0 ? (
-        <p className="countdown-big mono">{sec}초</p>
+        /* ★ R033 — key 에 초를 넣어 매 초 다시 튀어 오르게 한다 */
+        <p key={sec} className="countdown-big mono">
+          {sec}초
+        </p>
       ) : (
         /* ★ 0이 되어도 여기서 상태를 바꾸지 않는다. 서버 이벤트를 기다린다 */
         <p className="countdown-big dim">시작 중…</p>
@@ -53,7 +56,7 @@ export default function Countdown({ socket, endsAt, serverNow, isHost }: Props) 
         카운트다운 중에도 새로 들어올 수 있습니다. 들어온 사람은 그대로 이 게임에 참가합니다.
       </p>
       {isHost && (
-        <button type="button" onClick={() => socket.emit('game.cancelCountdown', {})}>
+        <button type="button" className="ghost" onClick={() => socket.emit('game.cancelCountdown', {})}>
           카운트다운 취소
         </button>
       )}

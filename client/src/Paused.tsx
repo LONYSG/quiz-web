@@ -91,7 +91,7 @@ export default function Paused({ socket, paused, serverNow }: Props) {
 
       {paused.canResume ? (
         <>
-          <button type="button" onClick={() => socket.emit('game.resume', {})}>
+          <button type="button" className="primary" onClick={() => socket.emit('game.resume', {})}>
             재개
           </button>
           <p className="note dim">
