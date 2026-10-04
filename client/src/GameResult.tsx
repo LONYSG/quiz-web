@@ -24,7 +24,7 @@
 // =============================================================================
 
 import type { Socket } from 'socket.io-client';
-import { formatDifficulties } from '@quiz/shared';
+import { formatDifficulties, formatTopics } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import type { GameResultView } from './useRoom.js';
 
@@ -93,19 +93,13 @@ export default function GameResult({ socket, result, isHost, myAccountId }: Prop
       <section className="card result-card">
         <h2>게임 결과</h2>
 
-        {/* ★★ 마지막 문제의 정답을 상단에 표시한다 (Q-17 확정).
-            ★ 마지막 문제는 5초 대기를 생략하므로 정답을 볼 기회가 여기밖에 없다. */}
+        {/* ★★ 마지막 문제의 정답 (Q-17). ★ R034 개정으로 마지막 문제도 정답 공개 화면을 5초 보여 준 뒤
+            여기로 온다 — 그래서 한 줄로 줄였다 (못 본 사람을 위한 다시 보기) */}
         {result.lastQuestionReveal && (
-          <div className="last-reveal">
-            <p className="note dim">마지막 문제 ({result.lastQuestionReveal.index}번)</p>
-            <p className="q-text small">{result.lastQuestionReveal.text}</p>
-            <p className="reveal-answer">
-              정답 <strong>{result.lastQuestionReveal.displayAnswer}</strong>
-            </p>
-            {result.lastQuestionReveal.explanation && (
-              <p className="note">{result.lastQuestionReveal.explanation}</p>
-            )}
-          </div>
+          <p className="last-reveal note">
+            마지막 문제 ({result.lastQuestionReveal.index}번) 정답{' '}
+            <strong>{result.lastQuestionReveal.displayAnswer}</strong>
+          </p>
         )}
 
         {/* ★★ R033 — 우승자 연출. 공동 1위면 모두 (동점 공동 순위, guide 39절) */}
@@ -176,7 +170,8 @@ export default function GameResult({ socket, result, isHost, myAccountId }: Prop
           {endReasonText(result.endReason)}{' '}
           <span className="dim mono">
             ({result.endedQuestionCount} / {result.totalQuestions}문제 진행 · 난이도{' '}
-            {formatDifficulties(result.difficulties ?? [])})
+            {formatDifficulties(result.difficulties ?? [])}
+            {result.topics ? ` · 분야 ${formatTopics(result.topics)}` : ''})
           </span>
         </p>
         {result.abortedNote && <p className="info">{result.abortedNote}</p>}

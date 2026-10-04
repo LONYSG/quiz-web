@@ -10,9 +10,7 @@
 import { useEffect, useState } from 'react';
 import {
   BGMS,
-  CORRECTS,
   getSoundPrefs,
-  previewCorrect,
   setSoundPrefs,
   toggleMuteAll,
   type SoundPrefs,
@@ -49,11 +47,11 @@ export default function Prefs() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (roomOwnsKeys || e.isComposing || !e.altKey || e.ctrlKey || e.metaKey) return;
-      const k = e.key.toLowerCase();
-      if (k === 't') {
+      // ★ R034 — 자판 위치(e.code)로 본다 (shortcuts.ts codeOf 주석)
+      if (e.code === 'KeyT') {
         e.preventDefault();
         cycleTheme();
-      } else if (k === 'm') {
+      } else if (e.code === 'KeyM') {
         e.preventDefault();
         toggleMuteAll();
       }
@@ -163,25 +161,9 @@ export default function Prefs() {
               onChange={(e) => setSoundPrefs({ sfxVol: Number(e.target.value) })}
             />
           </label>
-          <p className="prefs-sub">정답 효과음</p>
-          <div className="seg">
-            {CORRECTS.map((c) => (
-              <button
-                key={c.id}
-                type="button"
-                className={sound.correct === c.id ? 'seg-btn active' : 'seg-btn'}
-                aria-pressed={sound.correct === c.id}
-                onClick={() => {
-                  setSoundPrefs({ correct: c.id, sfxOn: true });
-                  previewCorrect();
-                }}
-              >
-                {c.label}
-              </button>
-            ))}
-          </div>
           <p className="prefs-desc">
-            오답에는 소리가 나지 않습니다. 소리는 화면을 한 번 누르거나 키를 친 뒤부터 나옵니다.
+            정답 효과음은 코인 소리입니다. 오답에는 소리가 나지 않습니다. 소리는 화면을 한 번
+            누르거나 키를 친 뒤부터 나옵니다. 로그인하면 이 설정이 계정에 저장됩니다.
           </p>
         </div>
       )}

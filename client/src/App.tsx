@@ -27,6 +27,7 @@
 //     "방 ID를 입력해 주세요." 가 남는다. 이미 해결된 문제를 화면이 계속 문제라고 말한다.
 // =============================================================================
 
+import { onSignedIn, onSignedOut } from './prefsSync.js';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { io, type Socket } from 'socket.io-client';
 import AuthScreen from './AuthScreen.js';
@@ -72,6 +73,13 @@ export default function App() {
       alive = false;
     };
   }, []);
+
+  // ── ★ R034 — 로그인하면 계정에 저장된 테마·소리를 불러온다 (닉네임만 바뀐 경우는 다시 부르지 않는다)
+  const accountId = account?.accountId ?? null;
+  useEffect(() => {
+    if (accountId) void onSignedIn();
+    else onSignedOut();
+  }, [accountId]);
 
   // ── 인증되면 소켓을 연다
   useEffect(() => {
@@ -238,6 +246,9 @@ export default function App() {
             onLeave={leaveRoom}
             serverNow={clock.serverNow}
             throttledUntil={room.throttledUntil}
+            onNicknameChanged={(nickname) =>
+              setAccount((prev) => (prev ? { ...prev, nickname } : prev))
+            }
           />
         ),
         foot: (

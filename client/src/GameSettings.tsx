@@ -17,9 +17,12 @@ import type { Socket } from 'socket.io-client';
 import {
   DIFFICULTY_TIERS,
   formatDifficulties,
+  formatTopics,
+  GAME_TOPICS,
   RULES,
   validateRoomSettings,
   type DifficultyTier,
+  type GameTopic,
 } from '@quiz/shared';
 import type { RoomSettings } from './useRoom.js';
 
@@ -90,6 +93,26 @@ export default function GameSettings({
     push({ ...draft, difficulties: next });
   };
 
+  /**
+   * ★★ 분야 켜고 끄기 (R034). 난이도와 같은 방식 — 복수 선택, **마지막 하나는 끌 수 없다.**
+   *   ★ "이것만" (길게 누르기 대신) — 분야는 일곱 개라 하나만 고르려면 여섯 번 눌러야 한다.
+   *     그래서 "전체" 버튼을 하나 둔다. 하나만 고르기는 전체에서 나머지를 끄면 된다.
+   */
+  const [lastTopicHint, setLastTopicHint] = useState(false);
+  const toggleTopic = (topic: GameTopic) => {
+    const has = draft.topics.includes(topic);
+    if (has && draft.topics.length === 1) {
+      setLastTopicHint(true);
+      return;
+    }
+    setLastTopicHint(false);
+    const next = has
+      ? draft.topics.filter((t) => t !== topic)
+      : GAME_TOPICS.map((i) => i.topic).filter((t) => t === topic || draft.topics.includes(t));
+    push({ ...draft, topics: next });
+  };
+  const allTopics = draft.topics.length === GAME_TOPICS.length;
+
   if (!editable) {
     // ── 읽기 전용 표시 (참가자 / 설정 잠금 상태)
     return (
@@ -100,6 +123,8 @@ export default function GameSettings({
           <dd>{settings.questionCount}개</dd>
           <dt>난이도</dt>
           <dd>{formatDifficulties(settings.difficulties)}</dd>
+          <dt>분야</dt>
+          <dd>{formatTopics(settings.topics ?? [])}</dd>
           <dt>출제 가능</dt>
           <dd>
             {availableQuestionCount === null ? '—' : `${availableQuestionCount}개`}
@@ -179,6 +204,7 @@ export default function GameSettings({
             <button
               key={info.tier}
               type="button"
+              data-tier={info.tier}
               aria-pressed={draft.difficulties.includes(info.tier)}
               className={draft.difficulties.includes(info.tier) ? 'preset active' : 'preset'}
               onClick={() => toggleTier(info.tier)}
@@ -192,6 +218,37 @@ export default function GameSettings({
         ) : (
           <span className="note dim">하 일상·중학 · 중 고교·관심층 · 상 대학·전공</span>
         )}
+      </div>
+
+      {/* ★★ 분야 (R034). 켜고 끌 때마다 서버가 출제 가능 수를 다시 센다 (난이도 × 분야) */}
+      <div className="settings-label">
+        분야
+        <div className="preset-row topic-row">
+          <button
+            type="button"
+            aria-pressed={allTopics}
+            className={allTopics ? 'preset active' : 'preset'}
+            onClick={() => {
+              setLastTopicHint(false);
+              if (!allTopics) push({ ...draft, topics: GAME_TOPICS.map((i) => i.topic) });
+            }}
+          >
+            전체
+          </button>
+          {GAME_TOPICS.map((info) => (
+            <button
+              key={info.topic}
+              type="button"
+              data-topic={info.topic}
+              aria-pressed={draft.topics.includes(info.topic)}
+              className={draft.topics.includes(info.topic) ? 'preset active' : 'preset'}
+              onClick={() => toggleTopic(info.topic)}
+            >
+              {info.label}
+            </button>
+          ))}
+        </div>
+        {lastTopicHint && <span className="form-error">분야는 하나 이상 선택해야 합니다.</span>}
       </div>
 
       {/* ★★ R033 (Q-11 개정) — 시작 방식·카운트다운 초 칸을 없앴다. 시작은 항상 5초 뒤다 */}

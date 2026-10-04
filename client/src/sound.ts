@@ -17,19 +17,13 @@
 // ★ 설정은 localStorage 에 남는다. 배경음악과 효과음을 **따로** 끄고 음량을 따로 조절한다.
 // =============================================================================
 
-export type BgmId = 'bounce' | 'calm' | 'chip';
-export type CorrectId = 'dingdong' | 'coin' | 'fanfare';
+// ★★ R034 (건우 선택) — 배경음악은 "통통 경쾌" · "8비트 게임기" 둘만 남긴다 (오르골 삭제).
+//   ★ 정답 효과음은 "코인" 하나로 고정한다 (딩동댕·빰빠밤 삭제). 고르는 칸도 없앴다.
+export type BgmId = 'bounce' | 'chip';
 
 export const BGMS: readonly { id: BgmId; label: string }[] = [
   { id: 'bounce', label: '통통 경쾌' },
-  { id: 'calm', label: '잔잔한 오르골' },
   { id: 'chip', label: '8비트 게임기' },
-];
-
-export const CORRECTS: readonly { id: CorrectId; label: string }[] = [
-  { id: 'dingdong', label: '딩동댕' },
-  { id: 'coin', label: '코인' },
-  { id: 'fanfare', label: '빰빠밤' },
 ];
 
 export interface SoundPrefs {
@@ -40,7 +34,6 @@ export interface SoundPrefs {
   /** 0~1 */
   sfxVol: number;
   bgm: BgmId;
-  correct: CorrectId;
 }
 
 const KEY = 'qw.sound.v1';
@@ -51,7 +44,6 @@ const DEFAULTS: SoundPrefs = {
   bgmVol: 0.35,
   sfxVol: 0.7,
   bgm: 'bounce',
-  correct: 'dingdong',
 };
 
 let prefs: SoundPrefs = loadPrefs();
@@ -66,8 +58,8 @@ function loadPrefs(): SoundPrefs {
       sfxOn: typeof p.sfxOn === 'boolean' ? p.sfxOn : DEFAULTS.sfxOn,
       bgmVol: clamp01(p.bgmVol, DEFAULTS.bgmVol),
       sfxVol: clamp01(p.sfxVol, DEFAULTS.sfxVol),
+      // ★ 지운 곡(오르골)이 저장돼 있으면 기본 곡으로
       bgm: BGMS.some((b) => b.id === p.bgm) ? (p.bgm as BgmId) : DEFAULTS.bgm,
-      correct: CORRECTS.some((c) => c.id === p.correct) ? (p.correct as CorrectId) : DEFAULTS.correct,
     };
   } catch {
     return { ...DEFAULTS };
@@ -210,7 +202,6 @@ const BELL: Voice = { type: 'sine', gain: 0.35, attack: 0.005, decay: 0.6, parti
 const PLUCK: Voice = { type: 'triangle', gain: 0.28, attack: 0.004, decay: 0.22 };
 const SQUARE: Voice = { type: 'square', gain: 0.12, attack: 0.003, decay: 0.12 };
 const SOFT: Voice = { type: 'sine', gain: 0.28, attack: 0.01, decay: 0.25 };
-const BRASS: Voice = { type: 'sawtooth', gain: 0.1, attack: 0.02, decay: 0.35, partials: [[1, 1], [1.003, 0.8]] };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ★ 효과음
@@ -284,26 +275,10 @@ export function sfx(id: SfxId): void {
   }
 }
 
-/** ★ 정답 효과음 후보 세 가지 — 설정에서 바꿔 들어 본다 */
+/** ★ 정답 효과음 — 코인 (R034 건우 선택으로 고정) */
 function playCorrect(d: AudioNode, t: number): void {
-  switch (prefs.correct) {
-    case 'dingdong': // 딩-동-댕
-      playNote(d, mtof(84), t, 0.25, BELL);
-      playNote(d, mtof(80), t + 0.18, 0.25, BELL);
-      playNote(d, mtof(88), t + 0.36, 0.6, { ...BELL, gain: 0.4 });
-      break;
-    case 'coin': // 띠링
-      playNote(d, mtof(83), t, 0.07, { ...SQUARE, gain: 0.16 });
-      playNote(d, mtof(88), t + 0.07, 0.4, { ...SQUARE, gain: 0.16, decay: 0.4 });
-      break;
-    case 'fanfare': // 빰빠밤!
-      playNote(d, mtof(67), t, 0.12, BRASS);
-      playNote(d, mtof(67), t + 0.13, 0.12, BRASS);
-      playNote(d, mtof(72), t + 0.26, 0.5, { ...BRASS, gain: 0.13 });
-      playNote(d, mtof(76), t + 0.26, 0.5, { ...BRASS, gain: 0.1 });
-      playNote(d, mtof(79), t + 0.26, 0.5, { ...BRASS, gain: 0.1 });
-      break;
-  }
+  playNote(d, mtof(83), t, 0.07, { ...SQUARE, gain: 0.16 });
+  playNote(d, mtof(88), t + 0.07, 0.4, { ...SQUARE, gain: 0.16, decay: 0.4 });
 }
 
 /** 설정 창의 "들어 보기" */
@@ -355,18 +330,6 @@ const TRACKS: Record<BgmId, Track> = {
         'F2 . . . C3 . . . F2 . . . G2 . . . ' +
         'A2 . . . E2 . . . F2 . . . C3 . . . ' +
         'G2 . . . D3 . . . G2 . . . C3 . . .',
-    ),
-  },
-  // ★ 잔잔한 오르골 — 종소리 아르페지오
-  calm: {
-    bpm: 84,
-    lead: { ...BELL, gain: 0.12, decay: 0.9 },
-    bass: { type: 'sine', gain: 0.16, attack: 0.02, decay: 0.8 },
-    steps: parse(
-      'C5 E5 G5 E5 C6 G5 E5 G5 A4 C5 E5 C5 A5 E5 C5 E5 ' +
-        'F4 A4 C5 A4 F5 C5 A4 C5 G4 B4 D5 B4 G5 D5 B4 D5',
-      'C3 . . . . . . . A2 . . . . . . . ' +
-        'F2 . . . . . . . G2 . . . . . . .',
     ),
   },
   // ★ 8비트 게임기 — 사각파 멜로디 + 통통 베이스

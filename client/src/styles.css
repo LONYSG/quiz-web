@@ -584,31 +584,6 @@ form button[type='submit'] {
    로비
    ============================================================================= */
 
-.lobby-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-.lobby-head > div {
-  min-width: 0;
-}
-.lobby-head h1 {
-  margin: 0;
-  overflow-wrap: anywhere;
-}
-.lobby-head .sub {
-  margin: 2px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-}
-.lobby-head button {
-  margin-top: 0;
-}
-
 /* ★ 방 상태 알약 — 지금 무엇을 하는 중인가 (영문 상태 코드를 그대로 보여주지 않는다) */
 .state-pill {
   display: inline-block;
@@ -619,37 +594,6 @@ form button[type='submit'] {
   font-size: 0.75rem;
   font-weight: 800;
   white-space: nowrap;
-}
-
-/* ── 참가자 */
-.players {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 6px;
-}
-.players li {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px 8px;
-  padding: 6px 10px;
-  background: var(--surface-2);
-  border-radius: var(--radius-sm);
-  animation: slide-up 220ms var(--ease-pop);
-}
-.players li.offline {
-  opacity: 0.5;
-}
-
-/* ★ 색약을 고려해 순번을 함께 표시한다 (Q-34 의 이 부분은 유지) */
-.seat {
-  width: 18px;
-  text-align: right;
-  color: var(--text-dim);
-  font-size: 0.78rem;
-  font-variant-numeric: tabular-nums;
 }
 
 /* ★ 아바타 — 닉네임 첫 글자 + 플레이어 색 (캐치마인드의 캐릭터 자리) */
@@ -1304,22 +1248,6 @@ form button[type='submit'] {
    ★ 단축키 안내 (Q-56)
    ============================================================================= */
 
-.keybar {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px dashed var(--border);
-}
-.keybar-line {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin: 0;
-  font-size: 0.76rem;
-}
-.keyhint {
-  white-space: nowrap;
-}
 .keybar-title {
   display: flex;
   align-items: center;
@@ -1377,92 +1305,6 @@ button.primary kbd {
 }
 .throttle-note {
   margin-bottom: 0;
-}
-
-/* =============================================================================
-   ★★ 한 화면 (R016) — 넓은 화면 2열 / 고정 높이 + 내부 스크롤
-   ============================================================================= */
-
-.wrap:has(.game-grid) {
-  max-width: 1180px;
-  /* ★ 로비는 스크롤이 남을 수 있어 하단 완충을 유지한다 (D-032 / D-076).
-     ★ R033 에 120px 로 줄였다가 ui-check 겹침 검사가 잡았다 (toast.top=770 / 푸터.top=741) */
-  padding: 14px 16px 160px;
-}
-.wrap:has(.in-game) {
-  /* ★ 게임·결과는 스크롤이 없다(1.00배). 토스트 높이만큼만 남긴다 */
-  padding: 10px 16px 52px;
-}
-
-.in-game .card {
-  padding: 11px 14px;
-  margin-bottom: 10px;
-}
-.in-game .question-card {
-  padding-top: 16px;
-}
-.in-game h1 {
-  font-size: 1.15rem;
-}
-.in-game h2 {
-  margin-bottom: 6px;
-}
-.in-game .lobby-head {
-  margin-bottom: 8px;
-}
-
-@media (min-width: 1000px) {
-  .game-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
-    gap: 16px;
-    align-items: start;
-  }
-  .col-main,
-  .col-side {
-    min-width: 0;
-  }
-  /* ★ R033 — 로비는 세로 칸 두 개 (초대·설정 | 참가자·시작). 줄 맞춤 빈자리가 없다 */
-  .lobby-cols {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 0 14px;
-    align-items: start;
-  }
-  .lobby-col {
-    min-width: 0;
-  }
-  /* ★★ 넓은 화면의 로비는 한 화면에 들어온다 → 스크롤 끝 완충(160px)이 필요 없다.
-     ★ 좁은 화면은 여전히 스크롤이 있으므로 160px 를 그대로 둔다 (D-032 겹침 검사가 그 폭에서 돈다) */
-  .wrap:has(.game-grid) {
-    padding-bottom: 52px;
-  }
-  .col-side .chat-card {
-    position: sticky;
-    top: 12px;
-  }
-  .lobby:not(.in-game) .chat-log {
-    height: 300px;
-  }
-  .in-game .chat-log {
-    height: 230px;
-  }
-  .in-game .score-card .scores {
-    max-height: 120px;
-    overflow-y: auto;
-  }
-  .result-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 10px;
-    align-items: start;
-  }
-  .pstat {
-    flex-basis: auto;
-  }
-  .in-game .qlog {
-    max-height: 148px;
-  }
 }
 
 /* ── ★ 문제별 기록 (결과 화면) — 고정 높이 + 내부 스크롤 */
@@ -1651,61 +1493,6 @@ button.primary kbd {
   }
 }
 
-/* ★ 스킵 카드 — 한 줄 (표 수 · 버튼 · 안내) */
-.skip-row {
-  align-items: center;
-  flex-wrap: wrap;
-}
-.skip-row .note {
-  margin: 0;
-}
-
-/* =============================================================================
-   ★ R033 — 로비 한 화면 (넓은 화면). 정보를 지우지 않고 밀도만 올린다 (D-076 의 원칙)
-   ============================================================================= */
-@media (min-width: 1000px) {
-  .lobby:not(.in-game) .card {
-    padding: 13px 16px;
-    margin-bottom: 12px;
-  }
-  .lobby:not(.in-game) .note {
-    font-size: 0.76rem;
-    margin-top: 8px;
-    line-height: 1.5;
-  }
-  .lobby:not(.in-game) .settings-label {
-    margin: 10px 0 8px;
-  }
-  .lobby:not(.in-game) .lobby-head {
-    margin-bottom: 12px;
-  }
-  /* ★ 참가자는 최대 10명이다. 목록만 고정 높이로 가두고 안에서 스크롤한다 */
-  .lobby:not(.in-game) .players {
-    max-height: 214px;
-    overflow-y: auto;
-  }
-  .start-card button.big-btn {
-    margin-top: 4px;
-  }
-}
-
-@media (min-width: 1000px) {
-  /* ★ 로비에서는 채팅을 조금 좁히고 설정 칸을 넓힌다 — 프리셋 버튼이 한 줄에 들어간다 */
-  .lobby:not(.in-game) .game-grid {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
-  }
-  .lobby:not(.in-game) .chat-log {
-    height: 236px;
-  }
-}
-
-@media (min-width: 1000px) {
-  /* ★ 로비 프리셋을 조금 작게 — "가능한 최대" 까지 한 줄에 든다 */
-  .lobby:not(.in-game) .preset {
-    padding: 4px 10px;
-    font-size: 0.8rem;
-  }
-}
 
 /* ★ R033 — 결과 화면 우승자 */
 .champion {
@@ -1732,4 +1519,421 @@ button.primary kbd {
   font-weight: 900;
   line-height: 1.15;
   overflow-wrap: anywhere;
+}
+
+/* =============================================================================
+   ★★★ R034 — 캐치마인드식 배치
+   [왼쪽 참여자 5칸] [가운데 = 로비·문제·결과 + 아래 채팅] [오른쪽 참여자 5칸]
+
+   ★ 건우: "가운데 문제, 양옆 참여자 칸(좌5·우5), 채팅 로그 유지. 로비·결과도 넓게."
+   ★ 기준 PC 1280×720 — 한 화면 게이트(테마마다)가 이 배치로 돈다. 모바일은 깨지지만 않게.
+   ★ 높이 예산: 무대(.stage)의 높이를 화면에서 머리줄·푸터·토스트 완충만 뺀 값으로 고정한다.
+     참여자 칸은 그 높이를 5등분하고, 가운데는 위(내용) + 아래(채팅이 남는 높이를 채움)다.
+   ============================================================================= */
+
+.wrap:has(.room) {
+  max-width: 1280px;
+  /* ★ 아래 52px = 토스트 높이 (D-032 겹침 검사) */
+  padding: 10px 14px 52px;
+}
+.wrap:has(.room) .foot {
+  margin-top: 8px;
+  padding-top: 6px;
+}
+
+.room-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.room-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  min-width: 0;
+}
+.room-title h1 {
+  font-size: 1.15rem;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.room-count {
+  font-size: 0.8rem;
+}
+.room-tools {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+/* ── ⓘ 안내 · 단축키 — 떠 있는 작은 창 (문서 높이를 늘리지 않는다) */
+.infotip,
+.keybar {
+  position: relative;
+  display: inline-block;
+}
+.infotip-pop,
+.keybar-pop {
+  position: absolute;
+  z-index: 40;
+  width: min(400px, calc(100vw - 32px));
+  padding: 12px 14px;
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-pop);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  white-space: normal;
+  animation: pop-in 140ms var(--ease-pop);
+}
+.infotip-pop {
+  top: calc(100% + 6px);
+  right: 0;
+}
+/* ★ 단축키 창은 입력창 옆에서 **위로** 열린다 */
+.keybar-pop {
+  bottom: calc(100% + 8px);
+  right: 0;
+}
+.info-list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+/* ── 무대 */
+.stage {
+  display: grid;
+  grid-template-columns: 196px minmax(0, 1fr) 196px;
+  gap: 10px;
+  /* ★ 위 10 + 머리줄 ≈44 + 푸터 ≈40 + 토스트 완충 52 ≈ 150 */
+  height: calc(100vh - 150px);
+  min-height: 520px;
+}
+.seats {
+  display: grid;
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+.center-main {
+  flex: 0 0 auto;
+}
+.room .card {
+  padding: 10px 14px;
+  margin-bottom: 8px;
+}
+.room h2 {
+  margin-bottom: 6px;
+}
+
+/* ── 참여자 칸 */
+.seat-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-height: 0;
+  padding: 7px 9px;
+  overflow: hidden;
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  animation: slide-up 220ms var(--ease-pop);
+}
+.seat-card.empty {
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 6px;
+  background: transparent;
+  border-style: dashed;
+  box-shadow: none;
+  color: var(--text-dim);
+  opacity: 0.55;
+  animation: none;
+}
+.seat-empty {
+  font-size: 0.78rem;
+}
+.seat-card.offline {
+  opacity: 0.5;
+}
+.seat-card.lead {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.seat-card.mine {
+  border-color: var(--accent-2);
+}
+.seat-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.seat-no {
+  flex: 0 0 auto;
+  min-width: 12px;
+  color: var(--text-dim);
+  font-size: 0.7rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.seat-nick {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.92rem;
+}
+.seat-score {
+  flex: 0 0 auto;
+  margin-left: auto;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.seat-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px 4px;
+  min-width: 0;
+}
+.seat-badges .badge {
+  font-size: 0.66rem;
+  padding: 0 6px;
+}
+.seat-badges button.tiny {
+  padding: 0 8px;
+  font-size: 0.68rem;
+}
+.seat-rate {
+  flex-basis: 100%;
+  font-size: 0.66rem;
+  line-height: 1.3;
+}
+/* ★★ 말풍선 — 칸 안에서 뜬다 (가운데 지문을 가리지 않는다). 두 줄까지 */
+.bubble {
+  margin-top: auto;
+  padding: 3px 9px;
+  background: var(--chat-bg);
+  border: 1px solid var(--accent);
+  border-radius: 12px 12px 12px 3px;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  animation: pop-in 160ms var(--ease-pop);
+}
+
+/* ── 가운데 — 로비 */
+.lobby-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 0 10px;
+  align-items: start;
+}
+.lobby-col {
+  min-width: 0;
+}
+.room .settings-label {
+  margin: 8px 0 6px;
+}
+.room .preset {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+.room .note {
+  font-size: 0.76rem;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.room .start-card button.big-btn {
+  margin-top: 2px;
+}
+.rename-msg {
+  margin-bottom: 0;
+}
+
+/* ── 가운데 — 문제. ★ 지문은 넓은 칸 · 글자 조금 작게 · 어절 중간에서 끊지 않는다 */
+.room .q-text {
+  font-size: 1.28rem;
+  line-height: 1.5;
+  /* ★ 한국어는 어절 단위로 줄을 바꾼다 — "문장 중간 줄바꿈" 을 줄인다. 아주 긴 낱말만 예외 */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+.room .question-card {
+  padding-top: 14px;
+}
+
+/* ── ★★ 행동 줄 — 넘기기 투표가 가장 눈에 띈다 */
+.action-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+.skip-box {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+button.skip-btn {
+  margin-top: 0;
+  padding: 9px 20px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: #fff;
+  box-shadow: var(--shadow-pop);
+}
+button.skip-btn kbd {
+  background: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+button.skip-btn.voted {
+  background: var(--surface);
+  color: var(--accent-2);
+  box-shadow: none;
+}
+.skip-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  min-width: 0;
+}
+.skip-status .note {
+  margin: 0;
+}
+.skip-count {
+  margin: 0;
+  color: var(--accent-2);
+}
+.skip-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+.skip-dots i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-2);
+}
+.skip-dots i.on {
+  background: var(--accent-2);
+  animation: bounce-in 300ms var(--ease-pop);
+}
+.host-tools {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+.room .confirm {
+  margin-top: 0;
+}
+
+/* ── 가운데 — 결과 */
+.result-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0 10px;
+  align-items: start;
+}
+.room .ranking {
+  max-height: 210px;
+  overflow-y: auto;
+}
+.room .qlog {
+  max-height: 238px;
+}
+.room .last-reveal {
+  margin: 0 0 8px;
+  padding: 6px 12px;
+}
+.pstat {
+  flex-basis: auto;
+}
+
+/* ── 가운데 아래 — 채팅. ★ 남는 높이를 채운다 */
+.room .chat-card {
+  flex: 1 1 auto;
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  padding: 8px 10px;
+}
+.room .chat-log {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 48px;
+  margin-bottom: 6px;
+}
+.chat-input-row button {
+  margin-top: 0;
+}
+.chat-input-row input.judging {
+  border-color: var(--accent);
+}
+
+/* ── 좁은 화면 (1000px 미만) — 한 열로 쌓는다. 깨지지만 않게 */
+@media (max-width: 999px) {
+  .wrap:has(.room) {
+    /* ★ 스크롤이 있으므로 토스트 완충을 크게 (D-032) */
+    padding-bottom: 160px;
+  }
+  .stage {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+  .seats {
+    grid-template-rows: none;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .seat-card.empty {
+    display: none;
+  }
+  .seats-right {
+    order: 1;
+  }
+  .center {
+    order: 2;
+  }
+  .lobby-cols,
+  .result-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .room .chat-log {
+    height: 200px;
+    flex: 0 0 auto;
+  }
 }

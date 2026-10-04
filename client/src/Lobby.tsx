@@ -15,7 +15,10 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatExperienceRate } from '@quiz/shared';
+import { formatExperienceRate, RULES } from '@quiz/shared';
+import { changeNickname, errorMessage } from './api.js';
+import InfoTip from './InfoTip.js';
+import Seat from './Seat.js';
 import ChatText from './ChatText.js';
 import Countdown from './Countdown.js';
 import GameSettings from './GameSettings.js';
@@ -40,7 +43,12 @@ interface Props {
   serverNow: () => number;
   /** ★ 도배 억제 안내 (Q-18). 입력창 바로 위에 인라인으로 표시한다 */
   throttledUntil: number | null;
+  /** ★ R034 — 닉네임을 바꿨다 (App 의 계정 표시를 맞춘다) */
+  onNicknameChanged: (nickname: string) => void;
 }
+
+/** ★ R034 — 말풍선이 떠 있는 시간 */
+const BUBBLE_MS = 4_000;
 
 export default function Lobby({
   socket,
@@ -49,6 +57,7 @@ export default function Lobby({
   onLeave,
   serverNow,
   throttledUntil,
+  onNicknameChanged,
 }: Props) {
   const [draft, setDraft] = useState('');
   const [copied, setCopied] = useState(false);
@@ -64,6 +73,18 @@ export default function Lobby({
    */
   const [confirmLeave, setConfirmLeave] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  /** ★ R034 — 닉네임 바꾸기 입력. null = 손대지 않음(현재 닉네임을 보여 준다) */
+  const [renameDraft, setRenameDraft] = useState<string | null>(null);
+  const [renameMsg, setRenameMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [renameBusy, setRenameBusy] = useState(false);
+  /**
+   * ★★ R034 — 참여자 칸 말풍선. 계정마다 **가장 최근 메시지 하나**를 BUBBLE_MS 동안.
+   *   ★ 처음 받은(스냅샷) 대화는 말풍선으로 띄우지 않는다 — 들어오자마자 옛 말이 뜨면 이상하다.
+   *   ★ 메시지 객체를 그대로 담는다 → 마스킹이 채팅 로그와 똑같이 걸린다 (Seat.tsx 헤더).
+   */
+  const [bubbles, setBubbles] = useState<Record<string, ChatView>>({});
+  const seenRef = useRef<Set<string> | null>(null);
+  const bubbleTimers = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
   const logRef = useRef<HTMLDivElement>(null);
   /** 사용자가 과거 메시지를 보고 있으면 강제로 아래로 끌어내리지 않는다 (guide 36절) */
   const stickToBottom = useRef(true);
@@ -83,6 +104,67 @@ export default function Lobby({
       logRef.current.scrollTop = logRef.current.scrollHeight;
     }
   }, [chat]);
+
+  // ★★ R034 — 새로 온 메시지를 말풍선으로
+  useEffect(() => {
+    if (seenRef.current === null) {
+      seenRef.current = new Set(chat.map((m) => m.id));
+      return;
+    }
+    const seen = seenRef.current;
+    const fresh: ChatView[] = [];
+    for (const m of chat) {
+      if (seen.has(m.id)) continue;
+      seen.add(m.id);
+      if (!m.system && m.accountId) fresh.push(m);
+    }
+    if (fresh.length === 0) return;
+    setBubbles((prev) => {
+      const next = { ...prev };
+      for (const m of fresh) next[m.accountId] = m;
+      return next;
+    });
+    for (const m of fresh) {
+      const old = bubbleTimers.current.get(m.accountId);
+      if (old) clearTimeout(old);
+      bubbleTimers.current.set(
+        m.accountId,
+        setTimeout(() => {
+          bubbleTimers.current.delete(m.accountId);
+          setBubbles((prev) => {
+            if (prev[m.accountId]?.id !== m.id) return prev;
+            const next = { ...prev };
+            delete next[m.accountId];
+            return next;
+          });
+        }, BUBBLE_MS),
+      );
+    }
+  }, [chat]);
+  useEffect(() => {
+    const timers = bubbleTimers.current;
+    return () => {
+      for (const t of timers.values()) clearTimeout(t);
+      timers.clear();
+    };
+  }, []);
+
+  /** ★ R034 — 닉네임 바꾸기. 결과(성공·겹침·게임 중)를 칸 아래에 바로 보여 준다 */
+  const doRename = async () => {
+    const next = (renameDraft ?? snapshot.me.nickname).trim();
+    if (!next || next === snapshot.me.nickname || renameBusy) return;
+    setRenameBusy(true);
+    try {
+      const saved = await changeNickname(next);
+      setRenameDraft(null);
+      setRenameMsg({ ok: true, text: `닉네임을 ${saved}(으)로 바꿨습니다.` });
+      onNicknameChanged(saved);
+    } catch (err) {
+      setRenameMsg({ ok: false, text: errorMessage(err, '닉네임을 바꿀 수 없습니다.') });
+    } finally {
+      setRenameBusy(false);
+    }
+  };
 
   // ★ 억제 안내는 서버가 준 시각까지만 보여주고 스스로 사라진다.
   //   ★ 사용자가 닫아야 사라지는 알림으로 만들지 않는다 — 입력 중에 뜨는 것이므로
@@ -160,8 +242,6 @@ export default function Lobby({
    * ★ 아직 값이 오지 않았으면 "—" 를 보여 준다. 0% 로 단정하지 않는다.
    *   "경험 기록이 없다" 와 "아직 모른다" 는 다르다.
    */
-  /** 접속 종료 표시 상태인 참가자가 있는가. 조건부 안내를 띄울 기준이다 */
-  const hasDisconnected = snapshot.players.some((p) => !p.connected);
 
   // ───────────────────────────────────────────────────────────────────────────
   // ★★ Q-56 단축키 (R015)
@@ -268,41 +348,114 @@ export default function Lobby({
     return formatExperienceRate(rate.experienced, rate.total);
   };
 
+  // ───────────────────────────────────────────────────────────────────────────
+  // ★★ R034 — 캐치마인드식 배치: [왼쪽 참여자 5칸] [가운데 = 문제·로비·결과 + 채팅] [오른쪽 5칸]
+  // ───────────────────────────────────────────────────────────────────────────
+  const phase = inGame ? (isResult ? 'result' : 'game') : 'lobby';
+  const showScore = phase !== 'lobby';
+  const experiencedIds = new Set(
+    snapshot.room.state === 'QUESTION_ACTIVE' || snapshot.room.state === 'QUESTION_RESOLVED'
+      ? (snapshot.question?.experiencedPlayers ?? []).map((p) => p.accountId)
+      : [],
+  );
+  const topScore = Math.max(0, ...snapshot.players.map((p) => p.score));
+  const seatOf = (index: number) => {
+    const p = snapshot.players[index] ?? null;
+    return (
+      <Seat
+        key={p ? p.accountId : `empty-${index}`}
+        seatNo={index + 1}
+        player={p}
+        me={p?.accountId === snapshot.me.accountId}
+        experienced={p ? experiencedIds.has(p.accountId) : false}
+        showScore={showScore}
+        lead={Boolean(p && showScore && topScore > 0 && p.score === topScore)}
+        rate={p && phase === 'lobby' ? rateText(p.accountId) : null}
+        bubble={p ? bubbles[p.accountId] ?? null : null}
+        canKick={Boolean(p && snapshot.me.isHost && !p.connected)}
+        onKick={() => p && socket.emit('host.kickDisconnected', { accountId: p.accountId })}
+      />
+    );
+  };
+  const slots = Array.from({ length: snapshot.room.maxPlayers }, (_, i) => i);
+  const half = Math.ceil(slots.length / 2);
+
+  /** ★ 입력창 자리표시 — 지금 입력이 답안으로 판정되는지 (옛 안내 문장을 대신한다) */
+  const placeholder = !me
+    ? '참가자가 아닙니다'
+    : judging
+      ? '정답을 입력하세요 — 모든 메시지가 답안입니다'
+      : snapshot.question?.selfExperienced && snapshot.room.state === 'QUESTION_ACTIVE'
+        ? '이미 풀어본 문제 — 이번 문제는 점수를 얻을 수 없어요'
+        : snapshot.room.state === 'QUESTION_RESOLVED'
+          ? '정답 공개 중 — 지금은 판정되지 않습니다'
+          : '메시지를 입력하세요';
+
   return (
-    /* ★★ 게임 중에는 레이아웃이 달라진다 (Phase 7 일부 / R016).
-       ★ 근거: 건우 요구가 "스크롤 없이 한 화면" 이고, 게임 화면이 가장 길다.
-         ★ 넓은 화면에서 **문제 열 / 채팅 열**로 나누면 세로가 절반 가까이 줄어든다. */
-    <div className={inGame ? 'lobby in-game' : 'lobby'}>
-      <header className="lobby-head">
-        <div>
+    <div className={`room room-${phase}${inGame ? ' in-game' : ''}`}>
+      <header className="room-head">
+        <div className="room-title">
           <h1>{snapshot.room.title}</h1>
-          <p className="sub">
-            <span className="state-pill">{stateLabel(snapshot.room.state)}</span>
-            <span>
-              {snapshot.players.length} / {snapshot.room.maxPlayers}명
-            </span>
-            <span className="dim">· 접속 {snapshot.room.activeCount}명</span>
-          </p>
+          <span className="state-pill">{stateLabel(snapshot.room.state)}</span>
+          <span className="dim room-count">
+            {snapshot.players.length} / {snapshot.room.maxPlayers}명 · 접속 {snapshot.room.activeCount}명
+          </span>
         </div>
-        <button type="button" className="ghost" onClick={leaveWithConfirm}>
-          방 나가기
-        </button>
+        <div className="room-tools">
+          {/* ★★ ⓘ — 늘 깔려 있던 안내 문장을 여기로 접었다 (R034) */}
+          <InfoTip>
+            <ul className="info-list">
+              <li>
+                <strong>채팅 입력창이 곧 답안 입력창입니다.</strong> 문제 중에 보낸 메시지가 정답과
+                같으면 가장 먼저 보낸 사람이 1점을 얻습니다. 틀려도 그냥 채팅으로 남습니다.
+              </li>
+              <li>
+                문제는 <strong>40초</strong>입니다. 남은 30초에 일반 힌트(있는 문제만), 남은 15초에
+                초성 힌트가 나옵니다.
+              </li>
+              <li>
+                <strong>넘기기 투표</strong> — 접속한 사람 중 정해진 수가 누르면 문제를 넘깁니다
+                (다시 누르면 취소). 누가 눌렀는지는 보이지 않습니다. 혼자일 때는 투표로 넘길 수
+                없고, 방장은 언제든 넘길 수 있습니다.
+              </li>
+              <li>
+                <span className="badge exp">경험</span> 이 문제를 이미 풀어 본 사람입니다. 판정에서
+                빠지고, 그 사람이 쓴 정답은 다른 사람에게 <span className="masked-chip">가려짐</span>
+                으로 보입니다 (말풍선도 같습니다).
+              </li>
+              <li>
+                로비의 경험률은 문제 DB 를 얼마나 풀어 봤는지입니다. 높다고 게임 시작을 막지는
+                않습니다.
+              </li>
+              <li>
+                접속이 끊긴 사람은 5초 뒤에 &quot;접속 종료&quot;로 표시됩니다 (새로고침 깜빡임
+                방지).{' '}
+                {snapshot.me.isHost
+                  ? '접속 종료자 칸의 "내보내기" 로 자리를 비울 수 있습니다.'
+                  : '접속 종료자를 내보내는 것은 방장만 할 수 있습니다.'}
+              </li>
+              <li>
+                닉네임은 로비에서만 바꿀 수 있습니다. 바꿔도 점수·경험 기록은 계정에 그대로
+                남습니다.
+              </li>
+            </ul>
+          </InfoTip>
+          <button type="button" className="ghost tiny" onClick={leaveWithConfirm}>
+            방 나가기
+          </button>
+        </div>
       </header>
 
-      {/* ★★ Q-82 — 게임 중 나가기 확인창.
-          ★ 마지막 활성자가 나가면 방이 즉시 폭파된다. 실수로 누르면 게임이 날아간다.
-          ★ autoFocus 로 Enter 만으로 조작할 수 있다 (Q-56 요구). */}
+      {/* ★★ Q-82 — 게임 중 나가기 확인창. autoFocus 로 Enter 만으로 조작할 수 있다 (Q-56) */}
       {confirmLeave && (
         <section className="card confirm-card">
           <h2>방을 나갈까요?</h2>
           <p className="note">
             ★ <strong>내가 마지막 접속자라면 방이 즉시 사라집니다.</strong> 진행 중인 게임도
-            함께 끝납니다.
-            <br />
-            다른 사람이 남아 있으면 게임은 계속되고, 자리는 게임이 끝날 때까지 유지됩니다.
-            <br />
+            함께 끝납니다. 다른 사람이 남아 있으면 게임은 계속되고, 자리는 게임이 끝날 때까지
+            유지됩니다.{' '}
             <span className="dim">
-              ★ 잠깐 끊기는 것(새로고침·네트워크)은 나가기와 다릅니다. 그때는 일시정지되고
+              잠깐 끊기는 것(새로고침·네트워크)은 나가기와 다릅니다. 그때는 일시정지되고
               기다립니다.
             </span>
           </p>
@@ -331,267 +484,212 @@ export default function Lobby({
         </section>
       )}
 
-      {/* ★★ 여기서부터 2열이다 (넓은 화면에서만. 좁으면 그대로 한 열).
-          ★ 왼쪽 = 로비 카드 / 문제·정답·스킵·방장·점수
-          ★ 오른쪽 = 채팅·입력창·단축키
-          ★★ 채팅 입력창은 **답안 입력창**이므로 오른쪽 열에서도 항상 보여야 한다.
-          ★ 로비에서는 왼쪽 열이 다시 2열로 나뉜다 (CSS). 근거는 styles.css 에 있다. */}
-      <div className="game-grid">
-        <div className="col-main">
+      <div className="stage">
+        <aside className="seats seats-left" aria-label="참여자 1~5">
+          {slots.slice(0, half).map(seatOf)}
+        </aside>
 
-      {/* ★ 초대 링크·참가자·설정은 로비 계열 상태에서만 보여준다.
-          ★ 근거: 게임 중 화면 위쪽은 문제 지문과 남은 시간이 차지해야 한다 (D-032).
-            ★ 30초 승부의 핵심 정보다. 초대 링크가 그 위에 있으면 안 된다. */}
-      {/* ★★ R033 — 로비는 두 칸이다 (넓은 화면). 왼쪽 = 게임 설정·시작 / 오른쪽 = 초대 링크·참가자.
-          ★ 근거: 카드 높이가 제각각이라 2×2 격자로 두면 줄마다 빈자리가 생겨 화면을 넘었다 (R033 실측).
-            ★ 세로 칸 두 개로 쌓으면 빈자리가 없다 — 로비도 한 화면에 들어온다. */}
-      {inGame ? null : (
-        <div className="lobby-cols">
-          {/* 왼쪽 = 게임 설정 · 시작 (방장이 손댈 것) */}
-          <div className="lobby-col">
-      <GameSettings
-        socket={socket}
-        settings={snapshot.room.settings}
-        settingsLocked={snapshot.room.settingsLocked}
-        availableQuestionCount={snapshot.room.availableQuestionCount}
-        isHost={snapshot.me.isHost}
-      />
-      {/* ── 카운트다운 (COUNTDOWN 상태) */}
-      {snapshot.countdown && (
-        <Countdown
-          socket={socket}
-          endsAt={snapshot.countdown.endsAt}
-          serverNow={serverNow}
-          isHost={snapshot.me.isHost}
-        />
-      )}
+        <div className="center">
+          <div className="center-main">
+            {/* ── 로비 (LOBBY / COUNTDOWN) — 왼쪽 = 설정 / 오른쪽 = 시작·초대·내 이름 */}
+            {!inGame && (
+              <div className="lobby-cols">
+                <div className="lobby-col">
+                  <GameSettings
+                    socket={socket}
+                    settings={snapshot.room.settings}
+                    settingsLocked={snapshot.room.settingsLocked}
+                    availableQuestionCount={snapshot.room.availableQuestionCount}
+                    isHost={snapshot.me.isHost}
+                  />
+                </div>
+                <div className="lobby-col">
+                  {snapshot.countdown && (
+                    <Countdown
+                      socket={socket}
+                      endsAt={snapshot.countdown.endsAt}
+                      serverNow={serverNow}
+                      isHost={snapshot.me.isHost}
+                    />
+                  )}
+                  {snapshot.room.state === 'LOBBY' && (
+                    <section className="card start-card">
+                      {snapshot.me.isHost ? (
+                        <>
+                          <button
+                            type="button"
+                            className="primary big-btn"
+                            onClick={() => socket.emit('game.start', {})}
+                          >
+                            게임 시작
+                          </button>
+                          {/* ★ R033 (Q-11 개정) — 시작은 항상 5초 뒤다 */}
+                          <p className="note">누르면 5초 뒤에 시작합니다. 그 사이 취소할 수 있습니다.</p>
+                        </>
+                      ) : (
+                        <p className="note">방장이 게임을 시작할 때까지 기다려 주세요.</p>
+                      )}
+                    </section>
+                  )}
+                  <section className="card invite-card">
+                    <h2>초대 링크</h2>
+                    <div className="field-row">
+                      <input id="invite-url" className="mono" readOnly value={inviteUrl} />
+                      <button type="button" onClick={copyInvite}>
+                        {copied ? '복사됨' : '복사'}
+                      </button>
+                    </div>
+                  </section>
+                  {/* ★★ R034 — 내 닉네임 바꾸기 (로비에서만) */}
+                  {snapshot.room.state === 'LOBBY' && me && (
+                    <section className="card rename-card">
+                      <h2>내 닉네임</h2>
+                      <div className="field-row">
+                        <input
+                          id="rename-input"
+                          value={renameDraft ?? snapshot.me.nickname}
+                          maxLength={RULES.NICKNAME_MAX_LENGTH}
+                          onChange={(e) => {
+                            setRenameDraft(e.target.value);
+                            setRenameMsg(null);
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
+                              e.preventDefault();
+                              void doRename();
+                            }
+                          }}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => void doRename()}
+                          disabled={renameBusy || (renameDraft ?? snapshot.me.nickname).trim() === snapshot.me.nickname}
+                        >
+                          바꾸기
+                        </button>
+                      </div>
+                      {renameMsg && (
+                        <p className={renameMsg.ok ? 'note rename-msg' : 'form-error rename-msg'}>
+                          {renameMsg.text}
+                        </p>
+                      )}
+                    </section>
+                  )}
+                </div>
+              </div>
+            )}
 
-      {/* ── 게임 시작 버튼 (LOBBY + 방장) */}
-      {snapshot.room.state === 'LOBBY' && (
-        <section className="card start-card">
-          {/* ★ R033 — 제목 줄을 뺐다. 버튼 자체가 제목이다 (로비 한 화면) */}
-          {snapshot.me.isHost ? (
-            <>
-              <button
-                type="button"
-                className="primary big-btn"
-                onClick={() => socket.emit('game.start', {})}
-              >
-                게임 시작
-              </button>
-              {/* ★ R033 (Q-11 개정) — 시작은 항상 5초 뒤다 */}
-              <p className="note">누르면 5초 뒤에 시작합니다. 그 사이 취소할 수 있습니다.</p>
-            </>
-          ) : (
-            <p className="note">방장이 게임을 시작할 때까지 기다려 주세요.</p>
-          )}
-        </section>
-      )}
+            {/* ── ★★ 문제 화면 */}
+            {snapshot.question && !snapshot.result && (
+              <Question
+                socket={socket}
+                question={snapshot.question}
+                resolution={snapshot.resolution}
+                skip={snapshot.skip}
+                serverNow={serverNow}
+                isHost={snapshot.me.isHost}
+                state={snapshot.room.state}
+                players={snapshot.players}
+                myAccountId={snapshot.me.accountId}
+                activeCount={snapshot.room.activeCount}
+                difficulties={snapshot.room.settings.difficulties}
+                topics={snapshot.room.settings.topics}
+              />
+            )}
 
+            {/* ── ★★ 일시정지 화면 (Phase 5) */}
+            {snapshot.paused && (
+              <Paused socket={socket} paused={snapshot.paused} serverNow={serverNow} />
+            )}
+
+            {/* ── ★★ 결과 화면 */}
+            {snapshot.result && (
+              <GameResult
+                socket={socket}
+                result={snapshot.result}
+                isHost={snapshot.me.isHost}
+                myAccountId={snapshot.me.accountId}
+              />
+            )}
+
+            {/* ★ 게임이 시작됐는데 문제가 아직 없는 짧은 순간 — 빈 화면을 보여주지 않는다 */}
+            {snapshot.game && !snapshot.question && !snapshot.result && !snapshot.paused && (
+              <section className="card">
+                <h2>게임 진행</h2>
+                <p className="big dim">문제를 준비하고 있습니다…</p>
+              </section>
+            )}
           </div>
-          {/* 오른쪽 = 초대 링크 · 참가자 (누가 왔나) */}
-          <div className="lobby-col">
-      <section className="card">
-        <h2>초대 링크</h2>
-        <div className="field-row">
-          <input id="invite-url" className="mono" readOnly value={inviteUrl} />
-          <button type="button" onClick={copyInvite}>
-            {copied ? '복사됨' : '복사'}
-          </button>
-        </div>
-        <p className="note">
-          이 주소는 지금 접속한 주소를 기준으로 만들어집니다. 터널을 다시 띄워 주소가 바뀌면
-          새 주소에서 다시 복사해 주세요.
-        </p>
-      </section>
-      <section className="card">
-        <h2>참가자</h2>
-        <ol className="players">
-          {snapshot.players.map((p, index) => (
-            <li key={p.accountId} className={p.connected ? undefined : 'offline'}>
-              <span className="seat">{index + 1}</span>
-              <Avatar nickname={p.nickname} colorIndex={p.colorIndex} />
-              {/* ★ 닉네임 자체를 플레이어 색상으로 표시한다 (guide 35절).
-                  별도 색상 아이콘을 쓰지 않는다.
-                  색약을 고려해 순번(seat)을 함께 표시한다. */}
-              <span className="nick" style={{ color: `var(--p${p.colorIndex})` }}>
-                {p.nickname}
-              </span>
-              {p.isHost && <span className="badge host">방장</span>}
-              {p.accountId === snapshot.me.accountId && <span className="badge me">나</span>}
-              {!p.connected && <span className="badge off">접속 종료</span>}
-              {snapshot.me.isHost && !p.connected && (
-                <button
-                  type="button"
-                  className="tiny"
-                  onClick={() =>
-                    socket.emit('host.kickDisconnected', { accountId: p.accountId })
-                  }
-                >
-                  내보내기
-                </button>
+
+          {/* ── 채팅 로그 + 입력 (= 답안 입력. guide 12절). 가운데 아래에 늘 있다 */}
+          <section className="card chat-card">
+            <div
+              className="chat-log"
+              ref={logRef}
+              onScroll={(e) => {
+                const el = e.currentTarget;
+                stickToBottom.current = el.scrollHeight - el.scrollTop - el.clientHeight < 40;
+              }}
+            >
+              {chat.length === 0 && <p className="note">아직 대화가 없습니다.</p>}
+              {chat.map((m) =>
+                m.system ? (
+                  <p key={m.id} className="chat-system">
+                    {m.text}
+                  </p>
+                ) : (
+                  <p key={m.id} className="chat-line">
+                    <span className="nick" style={{ color: `var(--p${m.colorIndex})` }}>
+                      {m.nickname}
+                    </span>
+                    <ChatText
+                      text={m.text}
+                      mine={m.accountId === snapshot.me.accountId}
+                      masked={m.masked}
+                    />
+                  </p>
+                ),
               )}
-              {/* ★ 경험률 (Q-12). 백분율과 절대 개수를 함께 보여 준다.
-                  ★ 표기 형식은 shared 의 함수 하나로만 만든다. 분모가 0이어도 NaN 이 되지 않는다. */}
-              <span className="rate dim mono">{rateText(p.accountId)}</span>
-            </li>
-          ))}
-        </ol>
-        {/* ★ "내보내기" 버튼은 방장에게만, 접속 종료자에게만 나타난다 (Q-15).
-            ★ 조건부로 나타나는 UI 는 왜 안 보이는지도 알려 줘야 한다.
-              R008에서 건우가 이 버튼을 찾지 못해 결함으로 의심했다. */}
-        {hasDisconnected && (
-          <p className="info">
-            {snapshot.me.isHost
-              ? '접속이 끊긴 참가자 옆의 "내보내기" 로 자리를 비울 수 있습니다. (방장만 가능)'
-              : '접속이 끊긴 참가자를 내보내는 것은 방장만 할 수 있습니다.'}
-          </p>
-        )}
-        <p className="note">
-          접속이 끊긴 사람은 5초 뒤에 &quot;접속 종료&quot;로 표시됩니다. 새로고침으로 표시가
-          깜빡이지 않게 하기 위한 것입니다.
-          <br />
-          숫자는 문제 경험률입니다. 이미 풀어 본 문제는 그 사람의 정답 판정 대상에서
-          빠집니다(Phase 6). ★ 경험률이 높다는 이유로 게임 시작을 막지는 않습니다.
-        </p>
-      </section>
-          </div>
-        </div>
-      )}
-
-      {/* ── ★★ 문제 화면 (Phase 3). Phase 2 의 임시 안내 화면(옛 표식 02)을 교체한 자리다 */}
-      {snapshot.question && (
-        <Question
-          socket={socket}
-          question={snapshot.question}
-          resolution={snapshot.resolution}
-          skip={snapshot.skip}
-          serverNow={serverNow}
-          isHost={snapshot.me.isHost}
-          state={snapshot.room.state}
-          players={snapshot.players}
-          myAccountId={snapshot.me.accountId}
-          difficulties={snapshot.room.settings.difficulties}
-        />
-      )}
-
-      {/* ── ★★ 일시정지 화면 (Phase 5) */}
-      {snapshot.paused && (
-        <Paused socket={socket} paused={snapshot.paused} serverNow={serverNow} />
-      )}
-
-      {/* ── ★★ 결과 화면 (Phase 4 / R016) */}
-      {snapshot.result && (
-        <GameResult
-          socket={socket}
-          result={snapshot.result}
-          isHost={snapshot.me.isHost}
-          myAccountId={snapshot.me.accountId}
-        />
-      )}
-
-      {/* ★ 게임이 시작됐는데 문제가 아직 없는 순간이 있을 수 있다 (첫 문제 선정 직전).
-          ★ 그 짧은 구간에 빈 화면을 보여주지 않는다. */}
-      {snapshot.game && !snapshot.question && !snapshot.result && !snapshot.paused && (
-        <section className="card">
-          <h2>게임 진행</h2>
-          <p className="big dim">문제를 준비하고 있습니다…</p>
-        </section>
-      )}
-
-        </div>
-        <div className="col-side">
-
-      <section className="card chat-card">
-        <h2>채팅 · 정답 입력</h2>
-        <div
-          className="chat-log"
-          ref={logRef}
-          onScroll={(e) => {
-            const el = e.currentTarget;
-            stickToBottom.current = el.scrollHeight - el.scrollTop - el.clientHeight < 40;
-          }}
-        >
-          {chat.length === 0 && <p className="note">아직 대화가 없습니다.</p>}
-          {chat.map((m) =>
-            m.system ? (
-              <p key={m.id} className="chat-system">
-                {m.text}
+            </div>
+            {/* ★★ 도배 억제 안내 (Q-18). 입력창 바로 위 문서 흐름에 둔다 (iOS 키보드) */}
+            {throttled && (
+              <p className="warn throttle-note">
+                너무 빨리 보내고 있습니다. 잠시 후 다시 보내 주세요.
               </p>
-            ) : (
-              <p key={m.id} className="chat-line">
-                <span className="nick" style={{ color: `var(--p${m.colorIndex})` }}>
-                  {m.nickname}
-                </span>
-                <ChatText
-                  text={m.text}
-                  mine={m.accountId === snapshot.me.accountId}
-                  masked={m.masked}
-                />
-              </p>
-            ),
-          )}
+            )}
+            <div className="field-row chat-input-row">
+              <input
+                ref={inputRef}
+                value={draft}
+                maxLength={100}
+                className={judging ? 'judging' : undefined}
+                placeholder={placeholder}
+                onChange={(e) => setDraft(e.target.value)}
+                onKeyDown={(e) => {
+                  // ★ 한글 IME 조합 중 Enter는 전송으로 처리하지 않는다 (미완성 문자열이 나간다)
+                  if (e.key !== 'Enter') return;
+                  if (e.nativeEvent.isComposing) return;
+                  e.preventDefault();
+                  send();
+                }}
+              />
+              <button type="button" className="primary" onClick={send}>
+                전송
+              </button>
+              {/* ★★ R034 — 단축키는 접어 둔다 (넘기기 투표만 넘기기 버튼에 크게) */}
+              <ShortcutBar
+                shortcuts={shortcuts}
+                expanded={showKeys}
+                onToggle={() => setShowKeys((v) => !v)}
+              />
+            </div>
+          </section>
         </div>
-        {/* ★★ 도배 억제 안내 (Q-18). **본인에게만** 온다.
-            ★ 토스트로 띄우지 않는다 — 이 알림이 필요한 순간은 정확히 키보드가 올라와 있는
-              순간이고, iOS 에서 화면 하단 고정 토스트는 키보드에 가려질 수 있다 (D-032 한계).
-            ★ 그래서 입력창 바로 위 문서 흐름에 둔다. 키보드가 올라오면 함께 밀려 올라온다. */}
-        {throttled && (
-          <p className="warn throttle-note">
-            너무 빨리 보내고 있습니다. 잠시 후 다시 보내 주세요.
-          </p>
-        )}
-        <div className="field-row">
-          <input
-            ref={inputRef}
-            value={draft}
-            maxLength={100}
-            placeholder={me ? '메시지를 입력하세요' : '참가자가 아닙니다'}
-            onChange={(e) => setDraft(e.target.value)}
-            onKeyDown={(e) => {
-              // ★ 한글 IME 조합 중 Enter는 전송으로 처리하지 않는다.
-              //   조합을 확정하는 Enter가 전송이 되면 "훈민정" 같은 미완성 문자열이 나간다.
-              //   Phase 3의 선착순 판정에서는 0.1초 차이로 승패가 갈리므로 치명적이다.
-              if (e.key !== 'Enter') return;
-              if (e.nativeEvent.isComposing) return;
-              e.preventDefault();
-              send();
-            }}
-          />
-          <button type="button" className="primary" onClick={send}>
-            전송
-          </button>
-        </div>
-        {/* ★★ Q-56 — 단축키 설명.
-            ★ 어디에 둘지 판단: **채팅 입력창 바로 아래**다.
-              ★ 근거 (1) 게임 중 시선과 손이 그곳에 있다
-                     (2) 상시 전체 표시는 자리를 먹는다 — 건우의 "스크롤 없이 한 화면" 목표와 충돌
-                     (3) 그래서 **지금 쓸 수 있는 것만** 한 줄로 보여주고 Alt+G 로 전체를 편다 */}
-        <ShortcutBar shortcuts={shortcuts} expanded={showKeys} onToggle={() => setShowKeys((v) => !v)} />
 
-        <p className="note">
-          {judging ? (
-            <>
-              ★ <strong>여기 입력하는 모든 메시지가 곧 답안입니다.</strong> 정답과 일치하면
-              가장 먼저 보낸 사람이 1점을 얻습니다. 틀려도 그냥 채팅으로 남습니다.
-            </>
-          ) : snapshot.question?.selfExperienced ? (
-            <>
-              ★ 이미 풀어본 문제여서 <strong>이번 문제에서는 점수를 얻을 수 없습니다.</strong>{' '}
-              채팅은 자유롭게 할 수 있습니다.
-            </>
-          ) : snapshot.room.state === 'QUESTION_RESOLVED' ? (
-            <>★ 정답이 공개된 구간입니다. 지금 입력한 메시지는 정답으로 판정되지 않습니다.</>
-          ) : (
-            <>게임이 시작되면 여기 입력하는 모든 메시지가 동시에 답안 제출이 됩니다.</>
-          )}
-        </p>
-      </section>
-
-        </div>
+        <aside className="seats seats-right" aria-label="참여자 6~10">
+          {slots.slice(half).map(seatOf)}
+        </aside>
       </div>
-
-      {/* ★ R033 — 문제 출처(OpenTDB) 문구를 뺐다. OpenTDB 문항은 전부 내렸다 (건우 방침) */}
     </div>
   );
 }

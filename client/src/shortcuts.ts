@@ -48,10 +48,17 @@ export interface Shortcut {
   run: () => void;
 }
 
-/** 'Alt+S' → 's' */
-function letterOf(combo: string): string {
+/**
+ * 'Alt+S' → 'KeyS'
+ *
+ * ★★ R034 — 글자(e.key)가 아니라 **자판 위치(e.code)** 로 맞춘다.
+ *   ★ e.key 는 입력 상태에 따라 바뀐다 — macOS 의 Option+S 는 'ß', 한글 자판 상태에서는
+ *     'ㄴ' 이 올 수 있다(브라우저·OS 마다 다름, 확인 필요). 그러면 단축키가 조용히 안 먹는다.
+ *   ★ e.code 는 자판 위치라 언어·입력기와 무관하다.
+ */
+function codeOf(combo: string): string {
   const parts = combo.split('+');
-  return (parts[parts.length - 1] ?? '').toLowerCase();
+  return `Key${(parts[parts.length - 1] ?? '').toUpperCase()}`;
 }
 
 /**
@@ -80,7 +87,7 @@ export function useShortcuts(shortcuts: Shortcut[]): void {
 
       for (const s of ref.current) {
         if (!s.when) continue;
-        const hitAlt = e.altKey && !isF && e.key.toLowerCase() === letterOf(s.combo);
+        const hitAlt = e.altKey && !isF && e.code === codeOf(s.combo);
         const hitF = isF && s.fkey !== null && e.key === s.fkey;
         if (!hitAlt && !hitF) continue;
         // ★ 브라우저 기본 동작을 막는다. 우리가 처리한 키다

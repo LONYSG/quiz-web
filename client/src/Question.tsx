@@ -19,7 +19,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatDifficulties, type DifficultyTier } from '@quiz/shared';
+import { formatDifficulties, formatTopics, type DifficultyTier, type GameTopic } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import type { QuestionView, ResolutionView, SkipView } from './useRoom.js';
 
@@ -38,6 +38,10 @@ interface Props {
   myAccountId: string;
   /** ★ R025 — 이 판의 난이도. 설정이 잠겨 있으므로 방 설정이 곧 이 판의 설정이다 */
   difficulties: DifficultyTier[];
+  /** ★ R034 — 이 판의 분야 */
+  topics: GameTopic[];
+  /** ★ R034 — 지금 접속 인원 (넘기기 투표 현황 "몇 명 중") */
+  activeCount: number;
 }
 
 export default function Question({
@@ -51,6 +55,8 @@ export default function Question({
   players,
   myAccountId,
   difficulties,
+  topics,
+  activeCount,
 }: Props) {
   const active = state === 'QUESTION_ACTIVE';
   const [remainMs, setRemainMs] = useState(() => Math.max(0, question.endsAt - serverNow()));
@@ -127,7 +133,12 @@ export default function Question({
    *   ★ 올림(ceil)을 쓴다. 0.4초 남았는데 "0초" 로 보이면 이미 끝난 것처럼 읽힌다.
    */
   const sec = Math.ceil(remainMs / 1000);
-  /** 남은 10초 구간인가. 색을 바꿔 긴박함을 보여준다 */
+  /**
+   * 남은 10초 구간인가. 색을 바꿔 긴박함을 보여준다.
+   * ★ R034 (40초) 판단 — **10초 주황 / 5초 빨강을 그대로 둔다.** 긴박함은 남은 "초" 의 문제라
+   *   전체 시간이 늘어도 기준이 같아야 한다. 막대 길이는 비율이라 40초에 맞춰 자연히 줄어든다.
+   *   (15초에는 초성 힌트가 나오는 것 자체가 신호다)
+   */
   const urgent = active && remainMs <= 10_000;
 
   const sendSkipVote = (vote: boolean) => {
@@ -142,8 +153,6 @@ export default function Question({
     resolution?.reason === 'correct'
       ? players.find((p) => p.accountId === resolution.winnerAccountId) ?? null
       : null;
-  const ranked = [...players].sort((a, b) => b.score - a.score);
-  const topScore = ranked[0]?.score ?? 0;
 
   return (
     <>
@@ -156,6 +165,10 @@ export default function Question({
           <span className="badge cat">{question.categoryName}</span>
           {/* ★ R025 — 어떤 난이도로 하는 판인지 */}
           <span className="badge diff">난이도 {formatDifficulties(difficulties)}</span>
+          {/* ★ R034 — 분야를 골라 한 판이면 표시한다 (전체면 자리를 차지하지 않는다) */}
+          {formatTopics(topics) !== '전체' && (
+            <span className="badge diff">분야 {formatTopics(topics)}</span>
+          )}
           {question.selfExperienced && (
             /* ★ 본인에게만 보이는 배지 (01-GAME-RULES 12장) */
             <span className="badge exp">이미 풀어본 퀴즈입니다</span>
@@ -175,7 +188,7 @@ export default function Question({
           {question.text}
         </p>
 
-        {/* ★ 줄어드는 막대. 남은 10초는 주황, 5초는 빨강 */}
+        {/* ★ 줄어드는 막대 (40초 기준 비율). 남은 10초는 주황, 5초는 빨강 */}
         {active && (
           <div className="q-timebar" aria-hidden="true">
             <div
@@ -190,13 +203,13 @@ export default function Question({
             ★ 힌트가 나와도 아래가 밀리지 않는다. 힌트가 없는 문제는 빈 자리로 남는다 */}
         {active && (
           <div className="q-hints">
-            {/* ── ★★ 일반 힌트 (R028). 남은 20초부터. 없는 문제는 아무것도 나오지 않는다 */}
+            {/* ── ★★ 일반 힌트 (R028). 남은 30초부터 (R034). 없는 문제는 아무것도 나오지 않는다 */}
             {question.generalHint && (
               <p className="q-hint q-hint-general">
                 <span className="hint-label">힌트</span> <span>{question.generalHint}</span>
               </p>
             )}
-            {/* ── 초성 힌트 (남은 10초부터) */}
+            {/* ── 초성 힌트 (남은 15초부터 — R034) */}
             {question.hintRevealed && (
               <p className="q-hint">
                 <span className="hint-label">초성</span>{' '}
@@ -210,21 +223,8 @@ export default function Question({
           </div>
         )}
 
-        {/* ── 경험자 목록 (전원 공개 — D-011). 닉네임은 플레이어 색으로 (guide 47절) */}
-        {question.experiencedPlayers.length > 0 && (
-          <p className="q-experienced note">
-            이 퀴즈를 풀어본 사람{' '}
-            {question.experiencedPlayers.map((p, i) => (
-              <span key={p.accountId}>
-                {i > 0 && ', '}
-                <span className="nick" style={{ color: `var(--p${p.colorIndex})` }}>
-                  {p.nickname}
-                </span>
-              </span>
-            ))}
-            <span className="dim"> — 정답 판정에서 빠지고, 채팅에 쓴 정답은 가려집니다.</span>
-          </p>
-        )}
+        {/* ★ R034 — 경험자는 참여자 칸의 "경험" 배지로 옮겼다 (전원 공개 D-011 은 그대로).
+            ★ 무슨 뜻인지는 ⓘ 안내에 있다 */}
       </section>
 
       {/* ── ★★ 정답 공개 (QUESTION_RESOLVED) — 정답자를 화면에서 가장 크게 (건우 요청) */}
@@ -253,130 +253,115 @@ export default function Question({
           </p>
           {resolution.explanation && <p className="note">{resolution.explanation}</p>}
           <p className="note dim">
-            {resolution.nextAt === null
-              ? '마지막 문제였습니다. 결과 화면으로 이동합니다.'
+            {/* ★★ R034 (Q-17 개정) — 마지막 문제도 5초 뒤에 결과로 간다 */}
+            {question.index >= question.total
+              ? '마지막 문제였습니다. 잠시 후 결과 화면으로 이동합니다.'
               : '잠시 후 다음 문제가 시작됩니다. 그 사이에도 채팅할 수 있습니다.'}
           </p>
         </section>
       )}
 
-      {/* ── 스킵 투표 (QUESTION_ACTIVE) */}
-      {active && skip && (
-        <section className="card skip-card">
-          <h2>넘기기</h2>
-          {skip.threshold === null ? (
-            <p className="note">
-              혼자일 때는 투표로 넘길 수 없습니다.
-              {isHost && ' 방장은 아래 버튼으로 바로 넘길 수 있습니다.'}
-            </p>
-          ) : (
-            <div className="field-row skip-row">
-              <span className="skip-count mono">
-                {skip.votes} / {skip.threshold}표
-              </span>
-              <button type="button" onClick={() => sendSkipVote(!skip.selfVoted)}>
-                {skip.selfVoted ? '넘기기 취소' : '넘기기 투표'} <kbd>Alt+S</kbd>
+      {/* ── ★★ 행동 줄 (R034) — 넘기기 투표를 가장 크게. 방장 버튼은 작게 옆에.
+          ★ 건우: "스킵 투표가 아예 안 된다 / 눈에 잘 띄게 / 몇 명 중 몇 명인지." */}
+      {(active || isHost) && confirming === null && (
+        <section className="card action-bar">
+          {active && skip && (
+            <div className="skip-box">
+              <button
+                type="button"
+                className={skip.selfVoted ? 'skip-btn voted' : 'skip-btn'}
+                disabled={skip.threshold === null}
+                aria-pressed={skip.selfVoted}
+                onClick={() => sendSkipVote(!skip.selfVoted)}
+              >
+                {skip.selfVoted ? '⏭ 넘기기 취소' : '⏭ 넘기기 투표'} <kbd>Alt+S</kbd>
               </button>
-              {/* ★ 누가 투표했는지는 표시하지 않는다 (guide 22절). 서버도 명단을 보내지 않는다 */}
-              <span className="note dim">누가 투표했는지는 보이지 않아요</span>
+              {skip.threshold === null ? (
+                <span className="skip-status note">
+                  혼자일 때는 투표로 넘길 수 없어요{isHost ? ' — 방장 넘기기를 쓰세요' : ''}
+                </span>
+              ) : (
+                <span className="skip-status">
+                  <span className="skip-count mono">
+                    {skip.votes} / {skip.threshold}
+                  </span>
+                  <span className="skip-dots" aria-hidden="true">
+                    {Array.from({ length: skip.threshold }, (_, i) => (
+                      <i key={i} className={i < skip.votes ? 'on' : undefined} />
+                    ))}
+                  </span>
+                  {/* ★ 누가 투표했는지는 표시하지 않는다 (guide 22절). 서버도 명단을 보내지 않는다 */}
+                  <span className="note dim">
+                    접속 {activeCount}명 중 {skip.threshold}명이 누르면 넘어가요
+                  </span>
+                </span>
+              )}
             </div>
           )}
-        </section>
-      )}
-
-      {/* ── 방장 액션 */}
-      {isHost && (
-        <section className="card host-card">
-          <h2>방장</h2>
-          {confirming === null && (
-            <div className="field-row">
+          {isHost && (
+            <div className="host-tools">
               {active && (
-                <button type="button" className="ghost" onClick={() => setConfirming('skip')}>
-                  이 문제 넘기기 <kbd>Alt+K</kbd>
+                <button type="button" className="ghost tiny" onClick={() => setConfirming('skip')}>
+                  방장 넘기기 <kbd>Alt+K</kbd>
                 </button>
               )}
-              <button type="button" className="ghost" onClick={() => setConfirming('end')}>
-                게임 강제 종료 <kbd>Alt+Q</kbd>
+              <button type="button" className="ghost tiny" onClick={() => setConfirming('end')}>
+                강제 종료 <kbd>Alt+Q</kbd>
               </button>
-            </div>
-          )}
-          {/* ★ 확인창. 방향키·Enter·마우스·터치로 모두 조작할 수 있어야 한다 (guide 23절).
-              ★ autoFocus 로 Enter 가 바로 먹는다. */}
-          {confirming !== null && (
-            <div className="confirm">
-              <p className="big">
-                {confirming === 'skip'
-                  ? '이 문제를 넘길까요? 정답이 공개됩니다.'
-                  : '게임을 강제 종료할까요? 정답을 공개하지 않고 결과 화면으로 갑니다.'}
-              </p>
-              {confirming === 'end' && (
-                <p className="note">
-                  강제 종료한 문제는 <strong>경험 기록을 남기지 않습니다.</strong> 정답을 보지
-                  않았기 때문입니다. 이미 지나간 문제의 기록은 그대로 유지됩니다.
-                </p>
-              )}
-              <div className="field-row">
-                <button
-                  type="button"
-                  className="primary"
-                  autoFocus
-                  onClick={() => {
-                    if (confirming === 'skip') {
-                      socket.emit('host.forceSkip', { epoch: question.epoch });
-                    } else {
-                      // ★ 강제 종료에는 epoch 를 담지 않는다. 게임 전체 액션이다
-                      socket.emit('host.forceEnd', {});
-                    }
-                    setConfirming(null);
-                    document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
-                  }}
-                >
-                  예
-                </button>
-                <button
-                  type="button"
-                  className="ghost"
-                  onClick={() => {
-                    setConfirming(null);
-                    // ★★ 확인창이 닫히면 포커스가 채팅 입력으로 돌아와야 한다 (Q-56)
-                    document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
-                  }}
-                >
-                  아니오
-                </button>
-              </div>
             </div>
           )}
         </section>
       )}
 
-      {/* ── 점수판. ★ 점수가 오르면 숫자가 톡 튄다 (key 에 점수를 넣어 다시 그린다) */}
-      <section className="card score-card">
-        <h2>점수</h2>
-        <ol className="scores">
-          {ranked.map((p) => (
-            <li
-              key={p.accountId}
-              className={[
-                p.connected ? '' : 'offline',
-                topScore > 0 && p.score === topScore ? 'lead' : '',
-              ]
-                .join(' ')
-                .trim() || undefined}
-            >
-              <Avatar nickname={p.nickname} colorIndex={p.colorIndex} />
-              <span className="nick" style={{ color: `var(--p${p.colorIndex})` }}>
-                {p.nickname}
-              </span>
-              {p.accountId === myAccountId && <span className="badge me">나</span>}
-              {!p.connected && <span className="badge off">접속 종료</span>}
-              <span key={`${p.accountId}-${p.score}`} className="score mono">
-                {p.score}점
-              </span>
-            </li>
-          ))}
-        </ol>
-      </section>
+      {/* ── 방장 확인창. 방향키·Enter·마우스·터치로 모두 조작할 수 있어야 한다 (guide 23절).
+          ★ autoFocus 로 Enter 가 바로 먹는다. */}
+      {isHost && confirming !== null && (
+        <section className="card host-card">
+          <div className="confirm">
+            <p className="big">
+              {confirming === 'skip'
+                ? '이 문제를 넘길까요? 정답이 공개됩니다.'
+                : '게임을 강제 종료할까요? 정답을 공개하지 않고 결과 화면으로 갑니다.'}
+            </p>
+            {confirming === 'end' && (
+              <p className="note">
+                강제 종료한 문제는 <strong>경험 기록을 남기지 않습니다.</strong> 이미 지나간 문제의
+                기록은 그대로 유지됩니다.
+              </p>
+            )}
+            <div className="field-row">
+              <button
+                type="button"
+                className="primary"
+                autoFocus
+                onClick={() => {
+                  if (confirming === 'skip') {
+                    socket.emit('host.forceSkip', { epoch: question.epoch });
+                  } else {
+                    // ★ 강제 종료에는 epoch 를 담지 않는다. 게임 전체 액션이다
+                    socket.emit('host.forceEnd', {});
+                  }
+                  setConfirming(null);
+                  document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
+                }}
+              >
+                예
+              </button>
+              <button
+                type="button"
+                className="ghost"
+                onClick={() => {
+                  setConfirming(null);
+                  // ★★ 확인창이 닫히면 포커스가 채팅 입력으로 돌아와야 한다 (Q-56)
+                  document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
+                }}
+              >
+                아니오
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }

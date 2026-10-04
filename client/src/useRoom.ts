@@ -9,7 +9,7 @@
 //   여기서 게임 판정이나 상태 전환을 하지 않는다.
 // =============================================================================
 
-import type { DifficultyTier } from '@quiz/shared';
+import type { DifficultyTier, GameTopic } from '@quiz/shared';
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 
@@ -47,6 +47,8 @@ export interface RoomSettings {
   countdownSec: number;
   /** ★ R025 — 출제할 난이도 (하·중·상 복수 선택) */
   difficulties: DifficultyTier[];
+  /** ★ R034 — 출제할 분야 (복수 선택) */
+  topics: GameTopic[];
 }
 
 /** 진행 중인 문제. ★ 정답은 들어 있지 않다 (QUESTION_ACTIVE 중) */
@@ -62,10 +64,10 @@ export interface QuestionView {
   /** ★ 경험자 목록. 닉네임과 색을 함께 받는다 (전원 공개. D-011) */
   experiencedPlayers: { accountId: string; nickname: string; colorIndex: number }[];
   selfExperienced: boolean;
-  /** ★ 남은 10초부터만 값이 있다 */
+  /** ★ 초성 힌트. 남은 15초부터만 값이 있다 (R034) */
   hint: string | null;
   hintRevealed: boolean;
-  /** ★★ R028 — 일반 힌트. 남은 20초부터 값이 있다 (없는 문제는 늘 null) */
+  /** ★★ R028 — 일반 힌트. 남은 30초부터 값이 있다 (R034. 없는 문제는 늘 null) */
   generalHint: string | null;
 }
 
@@ -126,6 +128,8 @@ export interface GameResultView {
   }[];
   /** ★ R025 — 이 판의 난이도 */
   difficulties: DifficultyTier[];
+  /** ★ R034 — 이 판의 분야 (옛 서버는 보내지 않는다) */
+  topics?: GameTopic[];
   abortedNote: string | null;
   endedQuestionCount: number;
   totalQuestions: number;
@@ -217,8 +221,11 @@ export function useRoom(socket: Socket | null): RoomHook {
     const patchPlayers = (payload: { players?: PlayerView[]; activeCount?: number }) => {
       setSnapshot((prev) => {
         if (!prev) return prev;
+        // ★ R034 — 내 닉네임이 바뀌었을 수 있다 (로비에서 이름 바꾸기)
+        const meNow = payload.players?.find((p) => p.accountId === prev.me.accountId);
         return {
           ...prev,
+          me: meNow && meNow.nickname !== prev.me.nickname ? { ...prev.me, nickname: meNow.nickname } : prev.me,
           players: payload.players ?? prev.players,
           room: {
             ...prev.room,
@@ -396,13 +403,16 @@ export function useRoom(socket: Socket | null): RoomHook {
                 endsAt: p.endsAt,
                 experiencedPlayers: p.experiencedPlayers,
                 selfExperienced: p.selfExperienced,
-                // ★ 문제 시작 시점에는 힌트가 없다. 서버가 남은 10초에 push 한다
+                // ★ 문제 시작 시점에는 힌트가 없다. 서버가 남은 15초에 push 한다 (R034)
                 hint: null,
                 hintRevealed: false,
-                // ★ R028 — 일반 힌트도 남은 20초에 서버가 push 한다
+                // ★ R028 — 일반 힌트도 남은 30초에 서버가 push 한다 (R034)
                 generalHint: null,
               },
               resolution: null,
+              // ★★ R034 — 기준 인원은 바로 뒤따르는 skip.voteUpdated 가 채운다 (서버가 문제 시작 때 보낸다).
+              //   ★ 옛 코드는 여기서 직전 값을 이어받았는데, 정답 공개 때 null 로 지워져 있어서
+              //     **기준 인원이 늘 null** 이었다 → 투표 버튼·Alt+S 가 꺼져 있었다 (스킵이 "아예 안 되던" 원인)
               skip: { votes: 0, threshold: prev.skip?.threshold ?? null, selfVoted: false },
               result: null,
               game: prev.game
@@ -479,19 +489,24 @@ export function useRoom(socket: Socket | null): RoomHook {
       votes: number;
       threshold: number | null;
       activeCount: number;
+      /** ★ R034 — 받는 사람 본인이 투표했는가 (본인 것만 온다) */
+      selfVoted?: boolean;
     }) => {
       setSnapshot((prev) => {
         if (!prev) return prev;
         // ★ 낡은 epoch 의 투표 현황을 새 문제에 붙이지 않는다
         if (prev.question && prev.question.epoch !== p.epoch) return prev;
+        // ★ 정답 공개 뒤 늦게 온 현황은 버린다
+        if (prev.resolution && prev.resolution.epoch === p.epoch) return prev;
         return {
           ...prev,
           room: { ...prev.room, activeCount: p.activeCount },
           skip: {
             votes: p.votes,
             threshold: p.threshold,
-            // ★ selfVoted 는 서버가 보내지 않는다 (명단 비공개). 내 클릭으로만 바뀐다
-            selfVoted: prev.skip?.selfVoted ?? false,
+            // ★★ R034 — 서버가 **본인 것만** 보낸다 (명단 비공개는 그대로).
+            //   ★ 옛 코드는 이 값을 받지 않고 늘 false 로 두었다 → 투표 취소가 되지 않았다
+            selfVoted: p.selfVoted ?? prev.skip?.selfVoted ?? false,
           },
         };
       });

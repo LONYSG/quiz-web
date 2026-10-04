@@ -71,3 +71,44 @@ export function errorMessage(err: unknown, fallback = '요청을 처리할 수 �
   }
   return fallback;
 }
+
+/**
+ * ★ R034 — 닉네임 변경. 로비(또는 방 밖)에서만 된다. 겹치면 409 + 안내 문구.
+ */
+export async function changeNickname(nickname: string): Promise<string> {
+  const res = await fetch('/api/auth/nickname', {
+    method: 'PATCH',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ nickname }),
+    credentials: 'same-origin',
+  });
+  const json = (await res.json().catch(() => ({}))) as { ok?: boolean; nickname?: string } & ApiError;
+  if (!res.ok || !json.nickname) throw json;
+  return json.nickname;
+}
+
+/** ★ R034 — 계정에 저장된 화면·소리 설정. null = 아직 저장한 적 없음 */
+export interface ServerPrefs {
+  theme?: string;
+  bgmOn?: boolean;
+  bgmTrack?: string;
+  bgmVolume?: number;
+  sfxOn?: boolean;
+  sfxVolume?: number;
+}
+
+export async function fetchPrefs(): Promise<ServerPrefs | null> {
+  const res = await fetch('/api/auth/prefs', { credentials: 'same-origin' });
+  if (!res.ok) throw new Error(`prefs ${res.status}`);
+  const json = (await res.json()) as { ok: true; prefs: ServerPrefs | null };
+  return json.prefs;
+}
+
+export async function savePrefs(prefs: ServerPrefs): Promise<void> {
+  await fetch('/api/auth/prefs', {
+    method: 'PUT',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(prefs),
+    credentials: 'same-origin',
+  });
+}
