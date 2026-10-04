@@ -99,7 +99,7 @@ q.resolved = true;        // 여기서 즉시 세운다
 | 스킵 투표 | O (활성 2명 이상) |
 | 방장 액션 | 강제 스킵 / 강제 종료 / 접속 종료자 강제 퇴장 |
 | 입장 | O (중간 참가) |
-| 시간 제한 | **정확히 30초.** 남은 10초 시점에 서버가 힌트 push (`hintPushed` 로 1회만) |
+| 시간 제한 | **정확히 40초** (R034). 남은 30초에 일반 힌트(있는 문제만), 남은 15초에 초성 힌트를 서버가 push (`generalHintPushed` / `hintPushed` 로 1회만) |
 
 ### QUESTION_RESOLVED
 
@@ -152,9 +152,9 @@ q.resolved = true;        // 여기서 즉시 세운다
 | ID | 전이 | 트리거 | 조건 | 부수 효과 |
 |----|------|--------|------|----------|
 | T01 | LOBBY → COUNTDOWN | 방장 `game.start` | startMode=countdown, 문제 수 1~200, 카운트다운 3~60, **출제 가능 수 ≥ 설정 수**, 활성 ≥ 1 | settingsLocked=true, countdownEndsAt 설정 |
-| T02 | LOBBY → QUESTION_ACTIVE | 방장 `game.start` | startMode=instant, 그 외 T01과 동일 | games INSERT, 점수 0 초기화, **[문제 시작 공통 절차]** |
+| ~~T02~~ | (삭제 — R034 / D-153) | | 시작은 항상 5초 카운트다운(T01 → T04)이다. 즉시 시작 경로를 코드에서 지웠다 | |
 | T03 | COUNTDOWN → LOBBY | 방장 `game.cancelCountdown` | — | settingsLocked=false |
-| T04 | COUNTDOWN → QUESTION_ACTIVE | `now ≥ countdownEndsAt` | 활성 ≥ 1, **출제 가능 수 ≥ 설정 수 (재확인)** | T02와 동일 |
+| T04 | COUNTDOWN → QUESTION_ACTIVE | `now ≥ countdownEndsAt` | 활성 ≥ 1, **출제 가능 수 ≥ 설정 수 (재확인)** | games INSERT, 점수 0 초기화, **[문제 시작 공통 절차]** |
 
 > **T04 에서 출제 가능 수를 다시 확인한다** (Phase 2 구현에서 추가, D-025).
 > 카운트다운 중 신규 입장이 허용되므로(Q-11) 참가자 집합이 바뀔 수 있고,
@@ -169,11 +169,11 @@ q.resolved = true;        // 여기서 즉시 세운다
 
 | ID | 전이 | 트리거 | 조건 | 부수 효과 |
 |----|------|--------|------|----------|
-| T06 | QUESTION_ACTIVE → QUESTION_RESOLVED | 정답 일치 메시지 | 2장 판정 조건 전부 만족, **마지막 문제 아님** | `resolved=true`(동기), 정답자 +1, **경험 기록**, answer_events INSERT, game_questions UPDATE(correct), nextAt=now+5000 |
+| T06 | QUESTION_ACTIVE → QUESTION_RESOLVED | 정답 일치 메시지 | 2장 판정 조건 전부 만족 (★ R034 — 마지막 문제도 여기로 온다) | `resolved=true`(동기), 정답자 +1, **경험 기록**, answer_events INSERT, game_questions UPDATE(correct), nextAt=now+5000 |
 | T07 | QUESTION_ACTIVE → QUESTION_RESOLVED | `now ≥ endsAt` | resolved=false, 마지막 문제 아님 | 정답 공개, **경험 기록**, resolution=timeout |
 | T08 | QUESTION_ACTIVE → QUESTION_RESOLVED | 스킵 투표 임계 도달 | 활성 ≥ 2, votes ≥ threshold, 마지막 문제 아님 | **시간 종료와 동일 경로.** 정답 공개, **경험 기록**, resolution=skip_vote |
 | T09 | QUESTION_ACTIVE → QUESTION_RESOLVED | 방장 `host.forceSkip` | resolved=false, 마지막 문제 아님 | T08과 동일. resolution=host_skip |
-| T10 | QUESTION_ACTIVE → **GAME_RESULT** | T06~T09 중 하나 | **마지막 문제** | 해당 사유로 정답 공개 + **경험 기록**, **5초 대기 없이 즉시**, endReason=completed, `lastQuestionReveal` 에 정답을 담아 결과 화면에 표시 |
+| T10 | QUESTION_RESOLVED → **GAME_RESULT** | `now ≥ nextAt` | **마지막 문제** (index ≥ total) | ★★ R034 (Q-17 개정 / D-152) — 마지막 문제도 T06~T09 로 정답을 공개하고 **5초 뒤** 결과로 간다. endReason=completed, `lastQuestionReveal` 에 정답을 담는다 |
 
 ### 문제 종료 — 정답 미공개 경로 (경험 기록 X)
 
@@ -242,7 +242,7 @@ T02 / T04 / T15가 공통으로 수행한다. **순서가 중요하다.**
 4. 힌트 미리 계산 (`shared/generateHint`)
 5. 경험자 집합 계산 — 현재 참가자 각자의 경험 여부
 6. **epoch += 1**, resolved=false, skipVotes 초기화, hintPushed=false
-7. startedAt = now, endsAt = startedAt + 30000
+7. startedAt = now, endsAt = startedAt + 40000 (R034)
 8. game_questions INSERT
 9. `question.started` 브로드캐스트 (개인별 `selfExperienced` 포함)
 
@@ -500,8 +500,8 @@ AND experiencedAccountIds.has(sender.accountId)
 1. COUNTDOWN: `now ≥ countdownEndsAt` → T04
 2. QUESTION_ACTIVE:
    a. `hintPushed=false` AND `endsAt − now ≤ 10000` → 힌트 push, hintPushed=true
-   b. `now ≥ endsAt` → T07 (마지막 문제면 T10)
-3. QUESTION_RESOLVED: `now ≥ nextAt` → T15 / T16
+   b. `now ≥ endsAt` → T07
+3. QUESTION_RESOLVED: `now ≥ nextAt` → 마지막 문제면 T10, 아니면 T15 / T16
 4. ★ **PAUSED: `now ≥ paused.abandonAt` → T14 (방 폭파).** 한 명이라도 돌아오면 `abandonAt` 을 다시 잡아 **처음부터 다시 센다**
 5. hostGraceUntil 만료 → T-HOST (**활성 0명이면 정지**. ★ PAUSED 중에도 활성 ≥ 1 이면 돈다)
 6. 방 삭제 조건 (활성 0명 10분) → T-ROOMDEL (**PAUSED 중이면 적용하지 않는다**. 대상은 LOBBY / GAME_RESULT)
@@ -513,7 +513,7 @@ AND experiencedAccountIds.has(sender.accountId)
 즉 tick 오차가 게임 판정에 영향을 주지 않는다.
 
 **힌트를 서버가 push하는 이유.** 문제와 함께 미리 보내면 클라이언트가 30초 시점에 이미
-힌트를 갖고 있어 개발자 도구로 볼 수 있다. 재접속 스냅샷에도 **남은 시간 10초 이하일 때만** 포함한다.
+힌트를 갖고 있어 개발자 도구로 볼 수 있다. 재접속 스냅샷에도 **남은 시간 15초 이하일 때만**(일반 힌트는 30초 이하) 포함한다 (R034).
 
 ### 클라이언트 — 시계 오프셋
 
@@ -586,7 +586,7 @@ Cloudflare 터널 경유 RTT 133~257ms / 오프셋 −21 ~ +49.5ms.
 | `host.kickDisconnected` | C→S | `{ accountId }` (방장) | ✅ |
 | `state.resync` | C→S | `{}` → 서버가 `room.state` 응답 | ✅ |
 | `error` | S→C | `{ code, message, detail }` | ✅ |
-| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec, difficulties? }` (방장) | ✅ ★★ R033: `startMode`·`countdownSec` 은 **무엇을 보내도 거부하지 않고 `countdown` / `5` 로 맞춘다** (Q-11 개정 — 형식은 그대로 둔다). 게임 시작 직전에도 한 번 더 맞춘다. ★ R025: `difficulties` 는 `('easy'\|'medium'\|'hard')[]`. **보내지 않으면 지금 값을 유지한다.** 빈 배열·모르는 값은 `BAD_REQUEST`. 바뀌면 서버가 출제 가능 수를 다시 세어 `lobby.settingsUpdated` 로 한 번 더 보낸다 |
+| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec, difficulties?, topics? }` (방장) | ✅ ★★ R033: `startMode`·`countdownSec` 은 **무엇을 보내도 거부하지 않고 `countdown` / `5` 로 맞춘다** (Q-11 개정 — 형식은 그대로 둔다). 게임 시작 직전에도 한 번 더 맞춘다. ★ R025: `difficulties` 는 `('easy'\|'medium'\|'hard')[]`. **보내지 않으면 지금 값을 유지한다.** 빈 배열·모르는 값은 `BAD_REQUEST`. 바뀌면 서버가 출제 가능 수를 다시 세어 `lobby.settingsUpdated` 로 한 번 더 보낸다. ★★ R034: `topics` 는 `('korea'\|'history'\|'science'\|'arts'\|'sports'\|'life'\|'media')[]` — 난이도와 같은 규칙(안 보내면 유지 / 빈 배열·모르는 값 `BAD_REQUEST` / 바뀌면 다시 셈). 출제 가능 수는 **난이도 × 분야** |
 | `lobby.settingsUpdated` | S→C | `{ settings, settingsLocked, availableQuestionCount }` | ✅ |
 | `lobby.experienceRates` | S→C | `{ rates: [{ accountId, experienced, total }] }` | ✅ |
 
@@ -673,9 +673,9 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 > Phase 3에서는 그 경우 게임을 시작하지 않도록 바꿔야 한다 (TEMP-P3-03).
 | `question.started` | S→C | `{ epoch, index, total, text, categoryName, startedAt, endsAt, experiencedPlayers[], selfExperienced, state }` — ✅ Phase 3. ★★ 정답·힌트·해설 미포함 (봇이 페이로드 키를 검사한다). ★ R016 에서 `experiencedNicknames[]` → `experiencedPlayers[{accountId,nickname,colorIndex}]` |
 | `question.experiencedUpdated` | S→C | `{ epoch, experiencedPlayers, selfExperienced }` — ✅ Phase 3 (R016 에서 필드명 변경) |
-| `question.hint` | S→C | `{ epoch, hint \| null }` — ✅ Phase 3. 남은 10초 시점에 서버가 push (초성) |
-| `question.generalHint` | S→C | `{ epoch, hint }` — ✅ **R028.** 남은 **20초** 시점에 서버가 push. ★ **일반 힌트가 있는 문제에만** 보낸다(없으면 이벤트 자체가 없다). 한 문제에 한 번 |
-| `question.resolved` | S→C | `{ epoch, reason, winnerAccountId, displayAnswer, explanation, scores[], nextAt \| null, state }` — ✅ Phase 3. 마지막 문제면 nextAt=null |
+| `question.hint` | S→C | `{ epoch, hint \| null }` — ✅ Phase 3. 남은 **15초** 시점에 서버가 push (초성. R034) |
+| `question.generalHint` | S→C | `{ epoch, hint }` — ✅ **R028.** 남은 **30초** 시점에 서버가 push (R034). ★ **일반 힌트가 있는 문제에만** 보낸다(없으면 이벤트 자체가 없다). 한 문제에 한 번 |
+| `question.resolved` | S→C | `{ epoch, reason, winnerAccountId, displayAnswer, explanation, scores[], nextAt \| null, state }` — ✅ Phase 3. ★ R034 — 마지막 문제도 `nextAt` 이 있고 `state=QUESTION_RESOLVED` (5초 뒤 `game.result`) |
 | ★ `game.returnedToLobby` | S→C | `{ state, settings, settingsLocked, players[], activeCount }` — ✅ Phase 3 **명세 추가** (T30/T31) |
 
 ### 일시정지 ★
@@ -695,12 +695,12 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `chat.message` | S→C | `{ id, seq, accountId, nickname, colorIndex, text, masked, ts }` ★ text/masked는 수신자별로 다를 수 있다 |
 | `chat.throttled` | S→C | `{ retryAfterMs }` — ✅ Phase 3. **본인에게만** |
 | `skip.vote` | C→S | `{ vote: boolean, epoch }` — ✅ Phase 3 |
-| `skip.voteUpdated` | S→C | `{ epoch, votes, threshold, activeCount }` — ✅ Phase 3. ★★ **투표자 명단을 보내지 않는다** (봇이 키를 검사한다) |
+| `skip.voteUpdated` | S→C | `{ epoch, votes, threshold, activeCount, selfVoted }` — ✅ Phase 3. ★★ **투표자 명단을 보내지 않는다** (봇이 키를 검사한다). ★★ R034 — **문제 시작 때마다** 한 번 보낸다(0표 / 필요 표수 — 이것이 없어 화면 투표 버튼이 꺼져 있었다, D-154). 재개 때도 보낸다. **사람마다** 보내며 `selfVoted` 는 받는 사람 본인의 투표 여부다 |
 | `host.forceSkip` | C→S | `{ epoch }` (방장, 확인창 후) — ✅ Phase 3. ★ 낡은 epoch 는 거부한다 |
 | `host.forceEnd` | C→S | `{}` (방장, 확인창 후) — ✅ Phase 3. ★★ epoch 를 담지 않는다 (게임 전체 액션) |
 | `host.kickDisconnected` | C→S | `{ accountId }` (방장) |
 | `game.again` / `game.toLobby` | C→S | `{}` (방장) — ✅ Phase 3. ★★ 서버 동작이 동일하다 |
-| `game.result` | S→C | `{ gameId, endReason, ranking[], lastQuestionReveal, ★ questions[], ★ playerStats[], ★ difficulties[], abortedNote, endedQuestionCount, totalQuestions }` — ✅ Phase 4 (R016). ★ `difficulties` 는 R025
+| `game.result` | S→C | `{ gameId, endReason, ranking[], lastQuestionReveal, ★ questions[], ★ playerStats[], ★ difficulties[], ★ topics[], abortedNote, endedQuestionCount, totalQuestions }` — ✅ Phase 4 (R016). ★ `difficulties` 는 R025, `topics` 는 R034
   · `questions[]` = `{ index, text, categoryName, displayAnswer\|null, reason, winnerAccountId, responseMs, experiencedCount }`
     ★★ `displayAnswer` 는 **공개된 문제만** 값이 있다. 중단(aborted)된 문제는 null 이다
   · `playerStats[]` = `{ accountId, correct, avgResponseMs, fastestMs }` |
@@ -736,8 +736,9 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 클라이언트가 목록을 뒤져 판단하는 로직은 accountId 비교 실수 하나로
 "배지가 안 뜨거나 남에게 뜨는" 버그가 되기 때문이다. 비용은 필드 하나다.
 
-`skip.voteUpdated` 의 `selfVoted` 는 **보내지 않는다.** 클라이언트 로컬 상태로 관리하고
-재접속 시 스냅샷으로 복구한다. 투표 갱신은 빈번하므로 개별 emit을 피한다.
+★★ R034 개정 — `skip.voteUpdated` 도 **사람마다** 보내고 `selfVoted`(본인 투표 여부)를 담는다.
+옛 설계는 "클라이언트 로컬 상태로 관리" 였는데, 실제로는 화면이 그 값을 바꾸지 않아 **투표 취소가 되지 않았다** (D-154).
+10명 방에서 개별 emit 10회는 무시할 수 있다. 명단은 여전히 보내지 않는다 — 본인 것만 본인에게 간다.
 
 **메커니즘**: 브로드캐스트 헬퍼 두 종류만 둔다. 무거운 일반화 장치를 만들지 않는다.
 
@@ -766,7 +767,7 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
   game: { gameId, totalQuestions, questionIndex } | null,   ★ Phase 2에서 추가
   question: {
     epoch, index, total, text, categoryName, startedAt, endsAt,
-    hint: string | null,          ★ 남은 시간 10초 이하일 때만 값이 온다. 그 전에는 반드시 null
+    hint: string | null,          ★ 남은 시간 15초 이하일 때만 값이 온다 (R034). 그 전에는 반드시 null
     experiencedPlayers[], selfExperienced, resolved,
     resolution: { reason, winnerAccountId, displayAnswer, explanation, nextAt } | null
   } | null,
@@ -794,7 +795,7 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
   ★ `endsAt` 은 멈춘 순간의 낡은 값이라 시간이 갈수록 "남은 시간이 줄어든 것처럼" 보인다.
   ★ 그대로 믿으면 **멈춘 시점에 28초가 남은 문제의 힌트가 재접속자에게 공개된다.**
     실측(R015): 20초 멈춰 두면 낡은 계산은 7.1초, 실제 남은 시간은 27.9초였다. 정보 누출의 크기가 그만큼이다.
-- ★★ **일반 힌트(R028)도 같은 규칙이다** — `question.generalHint` 는 남은 시간(PAUSED 면 `paused.remainingMs`) 20초 이하일 때만 담는다. 없는 문제는 늘 `null`
+- ★★ **일반 힌트(R028)도 같은 규칙이다** — `question.generalHint` 는 남은 시간(PAUSED 면 `paused.remainingMs`) 30초 이하일 때만 담는다 (R034). 없는 문제는 늘 `null`
 - ★ `paused` 에는 서버가 계산한 `canResume` 을 함께 담는다. 클라이언트가 방장 여부로 유추하지 않는다
 
 ---
@@ -813,3 +814,13 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 로그 | `seq / 시각 / roomId / accountId / event / epoch / 요약`. 정답 관련 이벤트는 판정 결과(eligible / matched / accepted 또는 거부 사유)도 남긴다. **★ 채팅 본문을 로그에 남기지 않는다**(길이와 일치 여부만) |
 | DB | `answer_events.submitted_seq` 에만 |
 | 클라이언트 | `chat.message` 에 실어 보낸다. 정렬·중복 제거와 재접속 시 이어붙이기에 쓴다 |
+
+---
+
+## ★ R034 — HTTP 추가·변경
+
+| 경로 | 내용 |
+|------|------|
+| `PATCH /api/auth/nickname` `{ nickname }` | ★ 허용 상태를 **LOBBY 또는 방 밖**으로 좁혔다(옛: 결과 화면도 허용). 겹치면 409 `{ field:'nickname', message:'이미 사용 중인 닉네임입니다…' }`, 게임 중이면 409. 성공하면 방 안에 `room.playersUpdated` + 시스템 채팅 "○○ 님이 △△(으)로 이름을 바꿨습니다" |
+| `GET /api/auth/prefs` | `{ ok, prefs \| null }` — 계정에 저장된 화면·소리 설정. null = 저장한 적 없음 |
+| `PUT /api/auth/prefs` `{ theme, bgmOn, bgmTrack, bgmVolume, sfxOn, sfxVolume }` | 저장. 서버가 형식을 거른다(`theme ∈ pastel/pop/night`, `bgmTrack ∈ bounce/chip`, 음량 0~1). 모르는 키는 버린다 |

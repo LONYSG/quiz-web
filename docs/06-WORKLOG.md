@@ -8,6 +8,44 @@
 
 ---
 
+## 2026-10-05 — 친구 3판 피드백: 스킵 투표 · 3열 화면 · 40초 · 닉네임 · 분야 · 설정 저장 (R034)
+
+### 0. 배경
+- 건우가 친구들과 세 판. "스킵 투표가 아예 안 된다" / "캐치마인드처럼 양옆에 참여자" / "시간이 짧다" / "닉네임 바꾸고 싶다" /
+  "분야를 고르고 싶다" / "설정이 기기마다 따로다". R033 선택(파스텔 기본 · 배경음악 2곡 · 코인) 반영.
+- 시작 전 DB 백업 (`backups/quizweb-20261005-043308.dump`).
+
+### 1. 스킵 투표 (D-154)
+- 원인: 서버가 문제 시작 때 현황을 안 보냄 + 화면이 직전 필요 표수(null)를 이어받음 → 버튼이 늘 꺼짐 / selfVoted 미전달 → 취소 불가.
+  봇은 화면을 거치지 않아 못 잡았다.
+- 수정: `beginQuestion` 끝과 재개 때 `broadcastSkipVotes` / 사람마다 `selfVoted` / 화면 행동 줄의 큰 버튼 + "1 / 2" + 점.
+
+### 2. 규칙 (D-151·D-152·D-153)
+- 40초 / 일반 힌트 30초 / 초성 15초 (상수만 — 스냅샷·PAUSED 조건은 같은 함수).
+- 마지막 문제도 `QUESTION_RESOLVED` 5초 → `advanceAfterResolved` 가 `finishGame` (Q-17 개정).
+- 즉시 시작(T02) 경로 · `COUNTDOWN_SEC_MIN/MAX` 삭제.
+
+### 3. 기능 (D-155·D-156·D-157·D-158)
+- 분야 7묶음: 0009 `game_topics` + `categories.game_topic` + 뷰 `category_game_topics`. `filterWhere` 하나를 출제 가능 수·출제 풀이 같이 쓴다.
+  브리핑 주장(영화·애니/게임/예능·가요가 흩어짐)은 DB 실측으로 사실.
+- 닉네임: 기존 PATCH 를 LOBBY 로 좁히고 방 안에 `room.playersUpdated` + 시스템 채팅. `rooms/systemChat.ts` 로 시스템 채팅을 뺐다.
+- 설정 저장: 0010 `accounts.prefs` + `GET/PUT /api/auth/prefs` + `client/src/prefsSync.ts`.
+- 소리: 오르골·딩동댕·빰빠밤 삭제, 코인 고정.
+
+### 4. 화면 (D-159·D-160)
+- `Lobby.tsx` 렌더를 3열로 다시 짰다 — `Seat.tsx`(참여자 칸·말풍선) · `InfoTip.tsx`(ⓘ) · `ShortcutBar.tsx`(접힌 단축키).
+  `Question.tsx` 점수판·경험자 줄 삭제, 행동 줄 추가. `GameSettings.tsx` 분야 버튼. `styles.css` R034 절 + 옛 2열 규칙 삭제.
+- 단축키 `e.key` → `e.code`.
+
+### 5. 검증
+- verify · 봇 전 시나리오 + 새 `topics` · ui-check 두 사람 게임. 숫자는 ai-out/R034.txt.
+- 도구 문제 두 건(봇 concur 이벤트 세기 · ui-check 로그인 버튼) — 10-TESTING 18장.
+
+### 6. 남은 것
+- 7장 결정 대기(R034 보고서) · 13-PENDING-CHECKS A15~A22.
+
+---
+
 ## 2026-10-04 — 첫 플레이 피드백: 시작 5초 고정 · 디자인 전면 개편(테마 3종) · 소리 (R033)
 
 ### 0. 배경

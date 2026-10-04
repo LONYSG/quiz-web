@@ -29,7 +29,8 @@
 | 테이블 | 역할 |
 |--------|------|
 | `sources` | 출처와 라이선스. 문제별 라이선스 추적의 근거 |
-| `categories` | 카테고리. 문자열이 아니라 테이블인 이유는 아래 참조 |
+| `categories` | 카테고리. 문자열이 아니라 테이블인 이유는 아래 참조. ★ R034 `game_topic` 칸 (게임 출제용 분야 묶음) |
+| `game_topics` | ★ R034 — 게임 출제용 분야 묶음 7개 (아래 "분야 묶음" 절) |
 | `question_raw` | 소스 원본 보관. 가공 규칙이 바뀌면 여기서 다시 돌린다 |
 | `questions` | 문제 본체 |
 | `question_answers` | 복수 정답 표기. 판정은 오직 이 테이블로 한다 |
@@ -39,7 +40,7 @@
 
 | 테이블 | 역할 |
 |--------|------|
-| `accounts` | 계정 |
+| `accounts` | 계정. ★ R034 `prefs` (jsonb — 화면·소리 설정) |
 | `sessions` | 세션 (토큰 해시만 저장) |
 | `rooms` | 방 레코드 (참가자 목록은 메모리에만) |
 | `games` | 게임 단위 기록 |
@@ -230,7 +231,7 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 
 | 열 | 형식 | 규칙 |
 |----|------|------|
-| `general_hint` | `text` NULL | ★ 남은 20초에 **그대로** 화면에 보일 한 문장. **NULL = 힌트 없음.** 공백뿐인 값 금지(CHECK). **최대 120자**(CHECK) |
+| `general_hint` | `text` NULL | ★ 남은 30초(R034)에 **그대로** 화면에 보일 한 문장. **NULL = 힌트 없음.** 공백뿐인 값 금지(CHECK). **최대 120자**(CHECK) |
 | `general_hint_version` | `text` NULL | 만든 기준 (예: `hint-v1`). ★ `general_hint` 가 있으면 **필수**(CHECK) |
 
 - ★ 채우는 쪽은 **GEN 의 적재 스크립트**다. 게임 서버는 읽기만 한다.
@@ -238,3 +239,24 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
   ★ ui-check 가 **120자짜리 테스트 힌트**로 그 경우를 잰다.
 - ★ 서버는 이 열이 없어도(0008 미적용) 동작한다 — NULL 로 읽고 경고 한 줄을 남긴다.
 - ★ 봇·ui-check 는 테스트할 때 비어 있는 행에만 잠깐 넣고(`bot-test` / `ui-check` 버전 표시) 끝나면 그 표시가 있는 행만 되돌린다.
+
+---
+
+## ★ 분야 묶음 (R034 / 0009)
+
+| 대상 | 형식 | 규칙 |
+|------|------|------|
+| `game_topics(key, name_ko, sort_order)` | 표 | 7묶음 — `korea` 한국 / `history` 역사·사회 / `science` 과학·기술 / `arts` 문화·예술 / `sports` 스포츠 / `life` 생활 / `media` 미디어·콘텐츠. ★ 키는 `shared/src/settings.ts` 의 `GAME_TOPICS` 와 같아야 한다 (smoke 가 대조) |
+| `categories.game_topic` | `text` NULL → `game_topics.key` | ★ **설정은 이 한 칸.** 대분류(level 1)에 기본 묶음, 중분류(level 2)에 예외, 소분류(level 3)는 비워 둔다. 옛 평면 카테고리(level 0)는 자기 값 |
+| 뷰 `category_game_topics(category_id, game_topic)` | 뷰 | 자기 → 부모 → 조부모 중 처음 값이 있는 것. 출제 가능 수와 출제 풀이 이 뷰로 거른다 (`server/src/db/questions.ts` `topicWhere`) |
+
+- ★ 통계용 트리(대·중·소분류)는 그대로다. 묶음은 게임 출제용이다.
+- ★ 새 소분류는 중분류를, 새 중분류는 대분류 기본값을 따르므로 **손대지 않아도 출제된다.**
+- ★ 묶음이 없는(NULL) 활성 문제는 출제되지 않는다 — smoke 가 0건인지 매번 확인한다.
+- 바꾸는 법: [DB-ADMIN.md](DB-ADMIN.md) "분야 묶음 바꾸기". 서버 재시작 없이 다음 로비 갱신·게임 시작부터 반영된다.
+
+## ★ 계정별 화면·소리 설정 (R034 / 0010)
+
+| 열 | 형식 | 규칙 |
+|----|------|------|
+| `accounts.prefs` | `jsonb` NULL | `{ theme, bgmOn, bgmTrack, bgmVolume, sfxOn, sfxVolume }`. NULL = 저장한 적 없음. 형식은 서버(`sanitizePrefs`)가 거른다 |
