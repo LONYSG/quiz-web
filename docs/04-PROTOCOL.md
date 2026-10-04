@@ -586,7 +586,7 @@ Cloudflare 터널 경유 RTT 133~257ms / 오프셋 −21 ~ +49.5ms.
 | `host.kickDisconnected` | C→S | `{ accountId }` (방장) | ✅ |
 | `state.resync` | C→S | `{}` → 서버가 `room.state` 응답 | ✅ |
 | `error` | S→C | `{ code, message, detail }` | ✅ |
-| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec, difficulties? }` (방장) | ✅ ★ R025: `difficulties` 는 `('easy'\|'medium'\|'hard')[]`. **보내지 않으면 지금 값을 유지한다.** 빈 배열·모르는 값은 `BAD_REQUEST`. 바뀌면 서버가 출제 가능 수를 다시 세어 `lobby.settingsUpdated` 로 한 번 더 보낸다 |
+| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec, difficulties? }` (방장) | ✅ ★★ R033: `startMode`·`countdownSec` 은 **무엇을 보내도 거부하지 않고 `countdown` / `5` 로 맞춘다** (Q-11 개정 — 형식은 그대로 둔다). 게임 시작 직전에도 한 번 더 맞춘다. ★ R025: `difficulties` 는 `('easy'\|'medium'\|'hard')[]`. **보내지 않으면 지금 값을 유지한다.** 빈 배열·모르는 값은 `BAD_REQUEST`. 바뀌면 서버가 출제 가능 수를 다시 세어 `lobby.settingsUpdated` 로 한 번 더 보낸다 |
 | `lobby.settingsUpdated` | S→C | `{ settings, settingsLocked, availableQuestionCount }` | ✅ |
 | `lobby.experienceRates` | S→C | `{ rates: [{ accountId, experienced, total }] }` | ✅ |
 
