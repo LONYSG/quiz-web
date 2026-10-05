@@ -8,6 +8,35 @@
 
 ---
 
+## 2026-10-05 — 화면 정리 2차: 칸 통합 · 참여자 칸 · 스크롤 없음 · 정답 공개 8초 · 다시 하기 즉시 시작 (R035)
+
+### 0. 배경
+- 건우가 R034 화면을 써 보고 15개를 짚었다. 큰 줄기 — **공간을 잘 써라 / 설명은 숨겨라.** 규칙 변경 둘(정답 공개 8초 · 다시 하기 즉시 시작).
+- 시작 전 DB 백업 (`backups/quizweb-20261005-122806.dump`). DB 구조 변경은 없다.
+
+### 1. 서버
+- `RESOLVED_WAIT_MS 8000` + 표시용 `RESOLVED_NOTICE_AT_MS 5000` (D-161).
+- `game.again` 분리 — 로비 정리 뒤 곧바로 `requestStart`, 실패하면 방 전체에 안내 (D-162). `game.toLobby` 는 그대로.
+- 마지막 문제 정답 공개 중 강제 종료 → `completed` (D-163).
+- ★ 정답 공개 구간 입장·재접속자 경험 기록 — 규칙에는 있었는데 구현이 없었다. `recordResolvedWitness` (D-168).
+
+### 2. 화면
+- `Lobby.tsx` 전면 재작성 — 상단 바 하나(🔗 · ✏️ · ⚙ · ⓘ · 나가기), 가운데 카드 하나, 채팅 ↓, 방 안 푸터 제거(App).
+- `Seat.tsx` 재작성 — 👑 · 나 테두리 · 큰 닉네임 · 구석 점수 · 마지막 메시지 유지·반짝 · 정답자 반짝 · 빈 칸 흐린 카드.
+- `Question.tsx` 카드 하나(머리줄 · `QuestionText` · 막대 · 힌트 · 정답 공개 · 행동 줄 · 확인창). `QuestionText.tsx` + `shared/sentences.ts`.
+- `GameSettings.tsx` 재작성(카드 없음 · 게스트 칩 · 설명 삭제) · `GameResult.tsx` 순위만 · `Countdown`·`Paused`·`Prefs`(⚙)·`ShortcutBar` 문구 정리.
+- `styles.css` R035 절 — 무대 `100vh − 70px`, 참여자 칸 `clamp(190px, 15vw, 300px)`, 채팅 스크롤바 숨김, 모바일 채팅 스크롤 없음.
+
+### 3. 검증
+- ui-check 해상도 5종 게이트 · 칸 안 스크롤 검사 · 모바일 검사 · 8초 · 다시 하기 · 칸 메시지 · ↓ · 문장 줄 맞춤.
+- 봇 새 `again` + 8초·다시 하기 반영(game · collide · result · difficulty · topics). 숫자는 ai-out/R035.txt.
+- 도구 문제 4건 — 10-TESTING 19장 (특히 `QuestionText` key 로 옛 지문이 남던 것).
+
+### 4. 남은 것
+- R035 보고서 6장 · 13-PENDING-CHECKS A23~A28.
+
+---
+
 ## 2026-10-05 — 친구 3판 피드백: 스킵 투표 · 3열 화면 · 40초 · 닉네임 · 분야 · 설정 저장 (R034)
 
 ### 0. 배경

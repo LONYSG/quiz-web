@@ -180,7 +180,7 @@ q.resolved = true;        // 여기서 즉시 세운다
 | ID | 전이 | 트리거 | 조건 | 부수 효과 |
 |----|------|--------|------|----------|
 | T11 | QUESTION_ACTIVE → GAME_RESULT | 방장 `host.forceEnd` | 언제든 | **정답 미공개, 경험 미기록.** game_questions.resolution=aborted, 현재 점수로 순위 확정, endReason=force_ended. **이미 지나간 문제의 경험 기록은 삭제하지 않는다** |
-| T12 | QUESTION_RESOLVED → GAME_RESULT | 방장 `host.forceEnd` | — | 정답은 이미 공개됐고 경험 기록도 이미 남았다. 그대로 유지. endReason=force_ended |
+| T12 | QUESTION_RESOLVED → GAME_RESULT | 방장 `host.forceEnd` | — | 정답은 이미 공개됐고 경험 기록도 이미 남았다. 그대로 유지. endReason=force_ended (★ R035 — 마지막 문제면 completed) |
 | T13 | PAUSED → GAME_RESULT | 방장 `host.forceEnd` | — | T11과 동일 처리 |
 | T14 | PAUSED → **방 폭파** | ★ **PAUSED 5분 초과** (설정값) | — | ★★ Q-82 개정. 결과 화면으로 가지 않고 **방이 사라진다.** games 는 `abandoned` 로 닫힌다. 정답 미공개, 경험 미기록. ★ 근거: 아무도 없는 방에 결과 화면을 띄워 둘 이유가 없다 |
 | T24 | 게임 중 → **방 폭파** | ★★ **마지막 활성자의 `room.leave`** | 게임 중(COUNTDOWN/QUESTION_\*/PAUSED) | ★★★ Q-82. **즉시 폭파한다.** PAUSED 로 가지 않고 5초도 기다리지 않는다. games 는 `abandoned` 로 닫히고, 진행 중이던 문제는 `aborted`. 정답 미공개, 경험 미기록 |
@@ -217,8 +217,8 @@ q.resolved = true;        // 여기서 즉시 세운다
 
 | ID | 전이 | 트리거 | 부수 효과 |
 |----|------|--------|----------|
-| T30 | GAME_RESULT → LOBBY | 방장 `game.again` | settings ← lastGameSettings, 점수·진행 초기화, **경험 기록 유지**, **접속 종료자 슬롯 반환**, settingsLocked=false. **자동 시작하지 않는다** |
-| T31 | GAME_RESULT → LOBBY | 방장 `game.toLobby` | **서버 동작은 T30과 동일.** UI 차이만 있다 |
+| T30 | GAME_RESULT → LOBBY → **COUNTDOWN** | 방장 `game.again` | settings ← lastGameSettings, 점수·진행 초기화, **경험 기록 유지**, **접속 종료자 슬롯 반환** → ★★ R035: **곧바로 T01 (5초 카운트다운)**. 부족하면 LOBBY + 안내 |
+| T31 | GAME_RESULT → LOBBY | 방장 `game.toLobby` | T30 의 로비 정리까지만. **자동 시작하지 않는다** (R035 부터 T30 과 다르다) |
 
 ### 상태를 바꾸지 않는 전이
 
@@ -824,3 +824,15 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `PATCH /api/auth/nickname` `{ nickname }` | ★ 허용 상태를 **LOBBY 또는 방 밖**으로 좁혔다(옛: 결과 화면도 허용). 겹치면 409 `{ field:'nickname', message:'이미 사용 중인 닉네임입니다…' }`, 게임 중이면 409. 성공하면 방 안에 `room.playersUpdated` + 시스템 채팅 "○○ 님이 △△(으)로 이름을 바꿨습니다" |
 | `GET /api/auth/prefs` | `{ ok, prefs \| null }` — 계정에 저장된 화면·소리 설정. null = 저장한 적 없음 |
 | `PUT /api/auth/prefs` `{ theme, bgmOn, bgmTrack, bgmVolume, sfxOn, sfxVolume }` | 저장. 서버가 형식을 거른다(`theme ∈ pastel/pop/night`, `bgmTrack ∈ bounce/chip`, 음량 0~1). 모르는 키는 버린다 |
+
+---
+
+## ★ R035 — 바뀐 것
+
+| 항목 | 내용 |
+|------|------|
+| `QUESTION_RESOLVED` | ★ **8초** (`RULES.RESOLVED_WAIT_MS`). `question.resolved.nextAt = 공개 시각 + 8000`. 화면은 남은 5초(`RESOLVED_NOTICE_AT_MS`)부터 "N초 후 다음 문제" 를 띄운다 — 표시용, 전이와 무관 |
+| T30 `game.again` | ★★ 로비 정리(T31 과 같다) **뒤 곧바로 T01**(5초 카운트다운). 참가자 = 그 순간 접속 중인 사람. 출제 가능 수 부족 → LOBBY 에 남고 방 전체에 `error{code:'NOT_ENOUGH_QUESTIONS', message:'다시 하기를 시작하지 못했습니다. …'}`. 결과 이벤트 순서: `game.returnedToLobby` → `lobby.settingsUpdated` → `game.countdownStarted` |
+| T31 `game.toLobby` | 그대로 (자동 시작 없음) |
+| T12 `host.forceEnd` | ★ QUESTION_RESOLVED(또는 거기서 멈춘 PAUSED)이고 **마지막 문제**면 `endReason='completed'`, abortedNote 없음. 그 밖은 기존대로 `force_ended` |
+| 입장·재접속 (QUESTION_RESOLVED) | ★ 그 문제의 경험 기록을 남긴다 (01-GAME-RULES 12장 — R035 에서 구현, D-168) |
