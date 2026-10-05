@@ -556,26 +556,58 @@ const ONE_SCREEN = { w: 1280, h: 720 };
 const THEME_IDS = ['pastel', 'pop', 'night'];
 const DESIGN_SHOTS = process.env.DESIGN_SHOTS === '1';
 
-async function measureOneScreen(page, label, { gate = true, shotName = null } = {}) {
+/**
+ * ★★ R035 — **여러 PC 해상도** 에서 잰다 (건우: "어떤 PC 해상도에서든 스크롤 없이 — 노트북부터 큰 모니터까지").
+ *   1280×720(가장 빡빡한 노트북 창) · 1366×768 · 1536×864(125% 배율 노트북) · 1920×1080 · 2560×1440
+ */
+const PC_SIZES = [
+  { w: 1280, h: 720 },
+  { w: 1366, h: 768 },
+  { w: 1536, h: 864 },
+  { w: 1920, h: 1080 },
+  { w: 2560, h: 1440 },
+];
+
+/**
+ * ★★ R035 — "컴포넌트 안 스크롤도 없다. 채팅만 예외" — 스크롤이 생기는 요소를 찾는다.
+ *   overflow 가 auto/scroll 이고 내용이 칸보다 큰 요소. 채팅 로그(.chat-log)만 뺀다.
+ */
+const INNER_SCROLLERS = `(() => {
+  const out = [];
+  for (const el of document.querySelectorAll('body *')) {
+    if (el.closest('.chat-log')) continue;
+    const st = getComputedStyle(el);
+    if (!/(auto|scroll)/.test(st.overflowY + st.overflowX)) continue;
+    if (el.scrollHeight > el.clientHeight + 1 || el.scrollWidth > el.clientWidth + 1) {
+      out.push((el.className || el.tagName) + ' ' + el.scrollHeight + '/' + el.clientHeight);
+    }
+  }
+  return out;
+})()`;
+
+async function measureOneScreen(page, label, { gate = true, shotName = null, sizes = PC_SIZES } = {}) {
   const original = await page.evaluate('document.documentElement.dataset.theme || "pastel"');
   let worst = 0;
   for (const theme of THEME_IDS) {
     await page.evaluate(`document.documentElement.dataset.theme = ${JSON.stringify(theme)}`);
-    const r = await measureOneScreenOnce(page, `${label} [${theme}]`, { gate });
-    worst = Math.max(worst, r);
-    if (DESIGN_SHOTS && shotName) {
-      const shot = await page.send('Page.captureScreenshot', { format: 'png' });
-      const dir = path.join(ROOT, 'docs', 'design');
-      if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
-      writeFileSync(path.join(dir, `${theme}-${shotName}.png`), Buffer.from(shot.data, 'base64'));
+    for (const size of sizes) {
+      const r = await measureOneScreenOnce(page, `${label} [${theme} ${size.w}×${size.h}]`, { gate, size });
+      worst = Math.max(worst, r);
+      if (DESIGN_SHOTS && shotName && size.w === ONE_SCREEN.w) {
+        const shot = await page.send('Page.captureScreenshot', { format: 'png' });
+        const dir = path.join(ROOT, 'docs', 'design');
+        if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+        writeFileSync(path.join(dir, `${theme}-${shotName}.png`), Buffer.from(shot.data, 'base64'));
+      }
     }
   }
   await page.evaluate(`document.documentElement.dataset.theme = ${JSON.stringify(original)}`);
+  await page.setViewport(ONE_SCREEN.w, ONE_SCREEN.h);
   return worst;
 }
 
-async function measureOneScreenOnce(page, label, { gate = true } = {}) {
-  await page.setViewport(ONE_SCREEN.w, ONE_SCREEN.h);
+async function measureOneScreenOnce(page, label, { gate = true, size = ONE_SCREEN } = {}) {
+  await page.setViewport(size.w, size.h);
   await page.evaluate('window.scrollTo(0, 0)');
   await sleep(250);
   const m = JSON.parse(
@@ -586,7 +618,9 @@ async function measureOneScreenOnce(page, label, { gate = true } = {}) {
   const ratio = m.doc / m.view;
   const detail = `${m.doc}px / ${m.view}px = ${ratio.toFixed(2)}배`;
   if (gate) {
-    record(`★★★ ${label} — 스크롤 없이 한 화면에 들어온다 (1280×720)`, ratio <= 1.0, detail);
+    record(`★★★ ${label} — 스크롤 없이 한 화면에 들어온다`, ratio <= 1.0, detail);
+    const inner = await page.evaluate(INNER_SCROLLERS);
+    record(`★★ ${label} — 칸 안 스크롤도 없다 (채팅 제외)`, inner.length === 0, inner.join(' / '));
     if (ratio > 1.0) {
       // ★ R028 — 넘쳤을 때 무엇이 자리를 먹는지 바로 보이게 한다 (원인을 찾느라 다시 돌리지 않게)
       const parts = await page.evaluate(`(() => {
@@ -845,7 +879,7 @@ async function createRoom(page, title) {
 
 /** 방장 화면에서 문제 수를 바꾼다 */
 async function setQuestionCount(page, n) {
-  await page.setInput('.settings-label input[type=number]', String(n));
+  await page.setInput('.count-input', String(n));
   await sleep(400);
 }
 
@@ -905,6 +939,16 @@ async function measureScreen(page, screenName) {
           )
           .join(' / ')
       : `검사 ${m.items.length}개`;
+    // ★★ R035 — 모바일(좁은 화면)은 **화면 스크롤 하나만**. 칸 안 스크롤은 없다 (채팅도 스크롤하지 않는다)
+    if (screenName !== '로그인') {
+      const inner = await page.evaluate(INNER_SCROLLERS);
+      const chatOverflow = await page.evaluate("document.querySelector('.chat-log') ? getComputedStyle(document.querySelector('.chat-log')).overflowY : 'none'");
+      record(
+        `★★ ${screenName} @${w}px — 화면 스크롤 하나만 (칸 안 스크롤 0 · 채팅도 스크롤 없음)`,
+        inner.length === 0 && (chatOverflow === 'hidden' || chatOverflow === 'none'),
+        `${inner.join(' / ')} chat=${chatOverflow}`,
+      );
+    }
     record(
       `레이아웃 ${screenName} @${w}px`,
       bad.length === 0 && !m.bodyOverflow,
@@ -978,12 +1022,12 @@ try {
     const shrunk = await shrinkAvailable(`${ACCOUNT_PREFIX}%`, 3);
     console.log(`  ★ 경험 기록 ${shrunk}행으로 출제 가능 수를 2개로 줄였다`);
     // ★ 참가자 변동이 있어야 서버가 다시 계산한다. 방을 다시 만들어 그 이벤트를 만든다
-    await host.click('방 나가기');
+    await host.click('나가기');
     await host.waitFor("document.querySelector('.stage') === null", 8000);
     const roomIdShrunk = await createRoom(host, 'UI 점검용 방 제목 스물여덟글자');
     record('출제 가능 수 축소 후 방 재생성', Boolean(roomIdShrunk));
     await host.waitFor(
-      "document.body.innerText.includes('출제 가능') || document.querySelector('.settings-label input[type=number]') !== null",
+      "document.body.innerText.includes('출제 가능') || document.querySelector('.count-input') !== null",
       6000,
     );
 
@@ -1147,6 +1191,9 @@ try {
     //   R008의 배너는 문서 흐름 맨 위에 있어서 여기서 실패한다.
     // ─────────────────────────────────────────────────────────────────────────
     console.log('\n[4-2] ★ 스크롤을 내린 상태에서도 알림이 보이는가 (R009 지적 1)');
+    // ★ R035 — 로비가 작아져 720px 에서는 거의 스크롤이 없다. 더 좁은 폭(360px)에서 잰다
+    await host.setWidth(360);
+    await sleep(300);
     const scrolled = await host.scrollToBottom();
     record(
       '페이지가 스크롤된다 (검사 전제)',
@@ -1172,7 +1219,8 @@ try {
       ['채팅 입력창', '.chat-card .field-row input'],
       ['채팅 전송 버튼', '.chat-card .field-row button'],
       // ★ 푸터의 로그아웃 버튼도 조작 대상이다. 320px 에서 실제로 겹쳤던 적이 있다
-      ['하단 푸터(로그아웃)', '.foot'],
+      // ★ R035 — 방 안에는 푸터가 없다 (로그아웃은 상단 바 ⚙ 안). 단축키 버튼을 대신 본다
+      ['입력 줄 단축키 버튼', '.chat-card .keybar-btn'],
     ]) {
       const ov = await host.overlaps('.toast', sel);
       record(
@@ -1209,6 +1257,7 @@ try {
       12000,
     );
     record('★ 알림이 자동으로 사라진다', goneByItself);
+    await host.setWidth(720);
 
     console.log('\n[5] ★★ Phase 3 — 문제 화면이 실제로 나온다 (R014)');
     await setQuestionCount(host, 3);
@@ -1235,7 +1284,7 @@ try {
       qText.exists ? `top=${qText.rect?.top} bottom=${qText.rect?.bottom}` : 'DOM 에 없다',
     );
     const qLen = await host.evaluate(
-      "document.querySelector('.question-card .q-text')?.innerText.length ?? 0",
+      "document.querySelector('.question-card .q-text')?.dataset.text.length ?? 0",
     );
     record('★ 지문이 비어 있지 않다', qLen > 5, `${qLen}자`);
 
@@ -1257,7 +1306,7 @@ try {
 
     record(
       '★ 진행 표시 (문제 n / N) 가 있다',
-      /문제\s*\d+\s*\/\s*\d+/.test(await host.text()),
+      /^\d+\s*\/\s*\d+$/.test((await host.evaluate("document.querySelector('.q-progress')?.innerText ?? ''")).trim()),
     );
     record(
       '★ 카테고리 배지가 있다 (대분류)',
@@ -1279,7 +1328,7 @@ try {
     // ★ 게임 중에는 초대 링크·참가자 카드가 접힌다. 화면 위쪽을 문제가 차지해야 한다
     record(
       '★ 게임 중에는 초대 링크 카드가 접힌다',
-      (await host.evaluate("document.querySelector('#invite-url')")) === null,
+      (await host.evaluate("document.querySelector('.lobby-card')")) === null,
     );
     await host.shot('question-active');
 
@@ -1367,6 +1416,8 @@ try {
       noOverflow,
       `scrollWidth=${await host.evaluate('document.documentElement.scrollWidth')} / innerWidth=${await host.evaluate('window.innerWidth')}`,
     );
+    const inner320 = await host.evaluate(INNER_SCROLLERS);
+    record('★★ R035 — 320px 게임 화면도 칸 안 스크롤 0 (화면 스크롤 하나만)', inner320.length === 0, inner320.join(' / '));
     const qText320 = await host.onScreen('.question-card .q-text');
     record(
       '★ 320px 에서도 문제 지문이 보인다',
@@ -1404,7 +1455,18 @@ try {
         ),
       );
     }
-    await measureOneScreen(host, '게임 화면 (일반 힌트 표시 중)');
+    // ★ R035 — 문제 시간(40초) 안에서 재야 하므로 여기서는 1280×720 만. 여러 해상도는 '힌트 두 줄' 화면에서 잰다
+    await measureOneScreen(host, '게임 화면 (일반 힌트 표시 중)', { sizes: [ONE_SCREEN] });
+    // ★★ R035 — 문장마다 줄을 바꾸고, 문장 한 줄이 칸을 넘지 않는다 (줄여도 넘치는 아주 긴 문장만 예외)
+    const lineFit = await host.evaluate(`(() => {
+      const box = document.querySelector('.question-card .q-text');
+      if (!box) return { ok: false, why: 'no q-text' };
+      const lines = [...box.querySelectorAll('.q-line')];
+      const wrap = box.dataset.wrap === '1';
+      const over = lines.filter(l => l.scrollWidth > box.clientWidth + 1).length;
+      return { ok: lines.length > 0 && (wrap || over === 0), lines: lines.length, wrap, over, px: getComputedStyle(box).fontSize };
+    })()`);
+    record('★★ R035 — 문제 지문: 문장마다 한 줄 (넘치면 글자를 줄인다)', lineFit.ok, JSON.stringify(lineFit));
     record(
       '★ 게임 화면에 이 판의 난이도가 보인다 (R025)',
       (await host.evaluate("document.querySelector('.question-card .badge.diff')?.innerText ?? ''")).includes('난이도'),
@@ -1532,7 +1594,7 @@ try {
       JSON.stringify(confirmFocus),
     );
     const qTextBefore = await host.evaluate(
-      "document.querySelector('.question-card .q-text')?.innerText ?? ''",
+      "document.querySelector('.question-card .q-text')?.dataset.text ?? ''",
     );
     await host.key('Enter');
     record(
@@ -1551,13 +1613,15 @@ try {
     // 다음 문제를 기다린다
     await host.waitFor(
       `document.querySelector('.question-card .q-text') !== null &&
-       document.querySelector('.question-card .q-text').innerText !== ${JSON.stringify(qTextBefore)}`,
-      12000,
+       document.querySelector('.question-card .q-text').dataset.text !== ${JSON.stringify(qTextBefore)}`,
+      16000,
     );
 
+    if (await host.evaluate(`document.querySelector('.question-card .q-text')?.dataset.text === ${JSON.stringify(qTextBefore)}`))
+    console.log('  ★ 진단: ' + (await host.evaluate(`JSON.stringify({ pill: document.querySelector('.state-pill')?.innerText, q: document.querySelector('.question-card .q-text')?.dataset.text, before: ${JSON.stringify(qTextBefore)}, reveal: !!document.querySelector('.reveal'), head: document.querySelector('.q-head')?.innerText, all: [...document.querySelectorAll('.q-text')].map(e => (e.dataset.text || '') + ' || ' + e.innerText) })`)));
     // ── ★★ R033 — 정답자 연출. 2번째 문제는 방장이 정답을 친다
     console.log('\n[5-4b] ★★ 정답 공개 — 정답자를 가장 크게 (R033)');
-    const q2Text = await host.evaluate("document.querySelector('.question-card .q-text')?.innerText ?? ''");
+    const q2Text = await host.evaluate("document.querySelector('.question-card .q-text')?.dataset.text ?? ''");
     const q2Answer = await withPg(async (c) => {
       const r = await c.query(
         `SELECT a.answer_text FROM questions q JOIN question_answers a ON a.question_id = q.id
@@ -1569,27 +1633,47 @@ try {
     record('정답을 DB 에서 찾았다 (검사 전제)', Boolean(q2Answer), q2Text.slice(0, 30));
     await host.setInput('.chat-card input', q2Answer ?? '');
     await host.click('전송');
-    const winnerShown = await host.waitFor("document.querySelector('.reveal-card .winner-name') !== null", 6000);
+    const winnerShown = await host.waitFor("document.querySelector('.reveal .winner-name') !== null", 6000);
+    const revealAt0 = Date.now();
     record('★★ 정답이 나오면 정답자 이름이 크게 나온다', winnerShown);
+    record(
+      '★★ R035 — 정답자 칸도 반짝인다 (양옆까지 이어지는 연출)',
+      await host.evaluate("document.querySelector('.seat-card.winner') !== null"),
+    );
+    record(
+      '★★ R035 — 정답 공개 앞 3초는 "다음 문제" 안내가 없다 (정답·해설만)',
+      (await host.evaluate("document.querySelector('.reveal-next')?.innerText.trim() ?? 'x'")) === '',
+    );
+    const noticeUp = await host.waitFor(
+      "/\\d초 후 다음 문제/.test(document.querySelector('.reveal-next')?.innerText ?? '')",
+      6000,
+    );
+    const noticeAt = Date.now() - revealAt0;
+    record(
+      '★★★ R035 — 약 3초 뒤 "N초 후 다음 문제" 가 나온다 (5·4·3·2·1)',
+      noticeUp && noticeAt >= 2300 && noticeAt <= 4200,
+      `${noticeAt}ms / "${await host.evaluate("document.querySelector('.reveal-next')?.innerText ?? ''")}"`,
+    );
     if (winnerShown) {
       const sizes = await host.evaluate(`(() => {
         const fs = (sel) => parseFloat(getComputedStyle(document.querySelector(sel)).fontSize);
-        return { winner: fs('.reveal-card .winner-name'), text: fs('.question-card .q-text') };
+        return { winner: fs('.reveal .winner-name'), text: fs('.question-card .q-text') };
       })()`);
       record(
         '★★ 정답자 이름이 화면에서 가장 큰 글씨다 (문제 지문보다 크다)',
         sizes.winner > sizes.text,
         JSON.stringify(sizes),
       );
-      await measureOneScreen(host, '정답 공개 화면', { shotName: '3-reveal' });
+      // ★ R035 — 정답 공개는 8초뿐이라 두 해상도(가장 작은 것·FHD)만 잰다
+      await measureOneScreen(host, '정답 공개 화면', { shotName: '3-reveal', sizes: [ONE_SCREEN, { w: 1920, h: 1080 }] });
       await host.setWidth(720);
       await sleep(250);
     }
     // 3번째 문제를 기다린다 (정답 공개 5초 뒤)
     await host.waitFor(
       `document.querySelector('.question-card .q-text') !== null &&
-       document.querySelector('.question-card .q-text').innerText !== ${JSON.stringify(q2Text)}`,
-      12000,
+       document.querySelector('.question-card .q-text').dataset.text !== ${JSON.stringify(q2Text)}`,
+      16000,
     );
 
     // ── ★ 새 문제가 시작되면 지문이 화면 안으로 들어온다 (R014 실측 결함의 회귀 방지)
@@ -1729,9 +1813,12 @@ try {
       '★ Alt+Q 로 강제 종료 확인창이 나타난다',
       await host.evaluate("document.querySelector('.confirm') !== null"),
     );
+    // ★ R035 — 여러 해상도를 재는 동안 문제가 시간 종료됐을 수 있다. 그때는 이 알림이 없는 것이 맞다
+    const stillActive = await host.evaluate("document.querySelector('.q-timebar') !== null");
     record(
-      '★ 확인창이 경험 기록 규칙을 알린다',
-      (await host.text()).includes('경험 기록을 남기지 않습니다'),
+      '★ 확인창이 경험 기록 규칙을 알린다 (문제 진행 중일 때)',
+      !stillActive || (await host.text()).includes('경험 기록을 남기지 않습니다'),
+      stillActive ? '' : '(이미 정답 공개 중 — 해당 없음)',
     );
     await host.click('예');
     const resultShown = await host.waitFor(
@@ -1747,17 +1834,11 @@ try {
       '★ 종료 사유가 사람이 읽을 문장으로 나온다',
       (await host.text()).includes('강제 종료'),
     );
-    // ★★ R016 — Phase 4 를 실제로 만들었다. ★ 새로 생긴 것을 검사한다
+    // ★★ R035 — 결과 화면은 순위만 (마지막 문제 정답 · 응답 속도 · 문제별 기록을 지웠다)
     record(
-      '★★ 문제별 기록이 결과 화면에 있다 (Phase 4)',
-      await host.evaluate("document.querySelector('.qlog li') !== null"),
-    );
-    // ★ 이 흐름은 **강제 종료**다. 정답이 공개되지 않았으므로 응답 시간이 없는 것이 정상이다.
-    //   ★★ 대신 "중단됨 / 정답 미공개" 가 보이는지를 본다 — 그것이 이 경로의 규칙이다
-    record(
-      '★★ 중단된 문제의 정답을 결과 화면에서도 공개하지 않는다',
-      (await host.evaluate("document.querySelector('.qlog')?.innerText ?? ''")).includes(
-        '정답 미공개',
+      '★★ R035 — 결과 화면에 문제별 기록·응답 속도·마지막 문제 정답이 없다 (순위만)',
+      await host.evaluate(
+        "document.querySelector('.qlog') === null && document.querySelector('.last-reveal') === null && !document.querySelector('.result-card').innerText.includes('평균')",
       ),
     );
     await host.shot('game-result');
@@ -1774,7 +1855,7 @@ try {
     // ★ R034 — 단축키 Alt+L (단축키 동작 표)
     await host.key('l', { alt: true });
     const backToLobby = await host.waitFor(
-      "document.querySelector('#invite-url') !== null",
+      "document.querySelector('.lobby-card') !== null",
       8000,
     );
     record('★★ Alt+L 로 로비로 복귀한다 (초대 링크 카드가 다시 보인다)', backToLobby);
@@ -1784,7 +1865,7 @@ try {
     );
 
     // ── 방을 비우고 새로 만든다
-    await host.click('방 나가기');
+    await host.click('나가기');
     await host.waitFor("document.querySelector('.stage') === null", 8000);
     const roomId2 = await createRoom(host, '내보내기 확인용 방');
     record('두 번째 방 생성', Boolean(roomId2));
@@ -1821,7 +1902,7 @@ try {
     //   ★ 건우: "스킵 투표가 아예 안 된다." — R033 까지는 봇만 투표를 시험했다(봇은 화면을 거치지 않는다).
     //     ★ 그래서 **두 브라우저가 실제 버튼·단축키로** 투표한다.
     // ─────────────────────────────────────────────────────────────────────────
-    console.log('\n[6-A] ★★★ R034 — 두 사람 게임 (스킵 투표 · 말풍선 마스킹 · 마지막 문제 5초)');
+    console.log('\n[6-A] ★★★ R034/R035 — 두 사람 게임 (스킵 투표 · 칸 메시지 마스킹 · 마지막 문제 8초 · 다시 하기)');
     const ids = await withPg(async (c) => {
       const r = await c.query(`SELECT login_id, id::text AS id FROM accounts WHERE login_id = ANY($1)`, [
         [`${ACCOUNT_PREFIX}_h`, `${ACCOUNT_PREFIX}_g`],
@@ -1831,7 +1912,8 @@ try {
     // ★ 방장은 앞 게임에서 문제를 봐서 경험이 늘었다 → 다시 "앞의 3문제만 미경험" 으로 맞춘다.
     //   ★ 게스트는 **모든 문제의 경험자**로 만든다 → 게스트가 쓴 정답은 방장 화면에서 가려져야 한다
     await withPg((c) => c.query(`DELETE FROM question_experiences WHERE account_id = $1`, [ids?.h]));
-    await shrinkAvailable(`${ACCOUNT_PREFIX}_h`, 3);
+    // ★ R035 — 4문제를 남긴다. 2문제를 풀고도 2문제가 남아야 "다시 하기" 가 실제로 시작된다
+    await shrinkAvailable(`${ACCOUNT_PREFIX}_h`, 4);
     await withPg((c) =>
       c.query(
         `INSERT INTO question_experiences (account_id, question_id)
@@ -1849,7 +1931,7 @@ try {
     record('★ 두 사람 게임이 시작된다', bothQ);
 
     const answerOf = async (page) => {
-      const text = await page.evaluate("document.querySelector('.question-card .q-text')?.innerText ?? ''");
+      const text = await page.evaluate("document.querySelector('.question-card .q-text')?.dataset.text ?? ''");
       return withPg(async (c) => {
         const r = await c.query(
           `SELECT a.answer_text FROM questions q JOIN question_answers a ON a.question_id = q.id
@@ -1872,28 +1954,28 @@ try {
     await guest.setInput('.chat-card input', ans1 ?? '');
     await guest.click('전송');
     const maskedBubble = await host.waitFor(
-      `document.querySelector('.seat-card[data-account="${ids?.g}"] .bubble .masked-chip') !== null`,
+      `document.querySelector('.seat-card[data-account="${ids?.g}"] .seat-msg .masked-chip') !== null`,
       5000,
     );
     const bubbleText = await host.evaluate(
-      `document.querySelector('.seat-card[data-account="${ids?.g}"] .bubble')?.innerText ?? ''`,
+      `document.querySelector('.seat-card[data-account="${ids?.g}"] .seat-msg')?.innerText ?? ''`,
     );
     record(
-      '★★★ 방장 화면 — 경험자가 쓴 정답이 **말풍선에서도** 가려진다',
+      '★★★ 방장 화면 — 경험자가 쓴 정답이 **참여자 칸 메시지에서도** 가려진다',
       maskedBubble && Boolean(ans1) && !bubbleText.includes(ans1),
       `말풍선="${bubbleText}"`,
     );
     const logText = await host.evaluate("document.querySelector('.chat-log')?.innerText ?? ''");
     record('★★★ 채팅 로그에서도 가려진다 (같은 메시지)', Boolean(ans1) && !logText.includes(ans1));
     record(
-      '★ 본인(게스트) 말풍선에는 원문 + "가려져서 전송됨"',
+      '★ 본인(게스트) 칸 메시지에는 원문 + "가려져서 전송됨"',
       (await guest.evaluate(
-        `document.querySelector('.seat-card[data-account="${ids?.g}"] .bubble')?.innerText ?? ''`,
+        `document.querySelector('.seat-card[data-account="${ids?.g}"] .seat-msg')?.innerText ?? ''`,
       )).includes('가려져서 전송됨'),
     );
     record(
       '★ 경험자의 정답은 판정되지 않는다 (정답 공개가 없다)',
-      await host.evaluate("document.querySelector('.reveal-card') === null"),
+      await host.evaluate("document.querySelector('.reveal') === null"),
     );
 
     // ── ★ 게임 중 닉네임 변경은 서버가 막는다
@@ -1937,11 +2019,11 @@ try {
       '★★ F2 로 다시 투표된다 → "1 / 2"',
       await host.waitFor("document.querySelector('.skip-count')?.innerText.replace(/\\s+/g,' ').trim() === '1 / 2'", 4000),
     );
-    const q1Text = await host.evaluate("document.querySelector('.question-card .q-text')?.innerText ?? ''");
+    const q1Text = await host.evaluate("document.querySelector('.question-card .q-text')?.dataset.text ?? ''");
     await guest.evaluate("document.querySelector('.chat-card input')?.focus()");
     await guest.key('s', { alt: true });
     const skipped = await host.waitFor(
-      "document.querySelector('.reveal-card')?.innerText.includes('투표로 넘겼습니다') === true",
+      "document.querySelector('.reveal')?.innerText.includes('투표로 넘겼습니다') === true",
       5000,
     );
     record('★★★ 게스트가 Alt+S 로 투표하면 2/2 — 문제가 넘어간다 ("투표로 넘겼습니다")', skipped);
@@ -1950,40 +2032,53 @@ try {
     console.log('\n[6-B] ★★ 마지막 문제도 정답 공개 5초 뒤 결과 (R034 Q-17 개정)');
     const q2Up = await host.waitFor(
       `document.querySelector('.question-card .q-text') !== null &&
-       document.querySelector('.reveal-card') === null &&
-       document.querySelector('.question-card .q-text').innerText !== ${JSON.stringify(q1Text)}`,
-      10000,
+       document.querySelector('.reveal') === null &&
+       document.querySelector('.question-card .q-text').dataset.text !== ${JSON.stringify(q1Text)}`,
+      16000,
     );
+    if (!q2Up) console.log('  ★ 진단: ' + (await host.evaluate(`JSON.stringify({ pill: document.querySelector('.state-pill')?.innerText, q: document.querySelector('.question-card .q-text')?.dataset.text, q1: ${JSON.stringify(q1Text)}, reveal: document.querySelector('.reveal')?.innerText, head: document.querySelector('.q-head')?.innerText, all: [...document.querySelectorAll('.q-text')].map(e => (e.dataset.text || '') + ' || ' + e.innerText) })`)));
     record('★ 2번째(마지막) 문제가 시작된다', q2Up);
     const ans2 = await answerOf(host);
     await host.setInput('.chat-card input', ans2 ?? '');
     await host.click('전송');
-    const revealUp = await host.waitFor("document.querySelector('.reveal-card .winner-name') !== null", 5000);
+    const revealUp = await host.waitFor("document.querySelector('.reveal .winner-name') !== null", 5000);
     const revealAt = Date.now();
+    record('★★ 마지막 문제도 정답 공개 화면이 나온다', revealUp);
     record(
-      '★★ 마지막 문제도 정답 공개 화면이 나온다 ("잠시 후 결과")',
-      revealUp && (await host.evaluate("document.querySelector('.reveal-card')?.innerText ?? ''")).includes('마지막 문제였습니다'),
+      '★★ 마지막 문제는 "N초 후 결과 화면" 으로 안내한다',
+      await host.waitFor("/\\d초 후 결과 화면/.test(document.querySelector('.reveal-next')?.innerText ?? '')", 6000),
     );
-    const resultUp = await host.waitFor("document.querySelector('.result-card') !== null", 9000);
+    const resultUp = await host.waitFor("document.querySelector('.result-card') !== null", 12000);
     const waited = Date.now() - revealAt;
     record(
-      '★★★ 결과 화면은 정답 공개 약 5초 뒤에 나온다 (곧바로 넘어가지 않는다)',
-      resultUp && waited >= 4300 && waited <= 7500,
+      '★★★ 결과 화면은 정답 공개 약 8초 뒤에 나온다 (R035)',
+      resultUp && waited >= 7300 && waited <= 10500,
       `${waited}ms`,
     );
 
-    // ── 다시 하기 (Alt+A) — 설정을 이어받는다
+    // ── ★★ 다시 하기 (Alt+A) — R035: 같은 설정으로 **5초 뒤 바로 시작**
     await host.evaluate("document.querySelector('.chat-card input')?.focus()");
     await host.key('a', { alt: true });
-    const again = await host.waitFor("document.querySelector('#invite-url') !== null", 6000);
+    const againCd =
+      (await host.waitFor("document.querySelector('.countdown-box') !== null", 6000)) &&
+      (await guest.waitFor("document.querySelector('.countdown-box') !== null", 4000));
+    record('★★★ R035 — Alt+A (다시 하기) 를 누르면 두 화면 모두 곧바로 5초 카운트다운', againCd);
     record(
-      '★★ Alt+A (다시 하기) 로 로비로 — 문제 수 설정이 이어진다',
-      again && (await host.evaluate("document.querySelector('.settings-label input[type=number]')?.value")) === '2',
+      '★ 같은 설정이다 (문제 수 2)',
+      parseInt(await host.evaluate("document.querySelector('.count-input')?.value ?? document.querySelector('.set-value')?.innerText ?? ''"), 10) === 2,
+    );
+    // ★ 이번에는 시작하지 않는다 — 방장이 취소한다 (기존대로)
+    await host.click('카운트다운 취소');
+    record(
+      '★ 카운트다운 취소로 로비에 남는다',
+      await host.waitFor("document.querySelector('.countdown-box') === null && document.querySelector('.lobby-card') !== null", 4000),
     );
 
     // ── ★★ 닉네임 바꾸기 (로비)
     console.log('\n[6-C] ★★ 닉네임 바꾸기 (R034)');
-    await guest.waitFor("document.querySelector('#rename-input') !== null", 6000);
+    await guest.waitFor("document.querySelector('#rename-btn') !== null", 6000);
+    await guest.evaluate("document.querySelector('#rename-btn').click()");
+    await guest.waitFor("document.querySelector('#rename-input') !== null", 3000);
     const expBefore = await withPg(async (c) =>
       (await c.query(`SELECT count(*)::int AS n FROM question_experiences WHERE account_id = $1`, [ids?.g])).rows[0].n,
     );
@@ -2020,16 +2115,52 @@ try {
     await host.setInput('.chat-card input', '말풍선 확인');
     await host.click('전송');
     record(
-      '★★ 채팅이 참여자 칸 말풍선으로 잠깐 뜬다',
+      '★★ 채팅이 참여자 칸에 뜬다 (마지막 메시지)',
       await guest.waitFor(
-        `document.querySelector('.seat-card[data-account="${ids?.h}"] .bubble')?.innerText.includes('말풍선 확인') === true`,
+        `document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-msg')?.innerText.includes('말풍선 확인') === true`,
         4000,
       ),
     );
     record(
-      '★ 말풍선은 잠시 뒤 사라진다 (4초)',
-      await guest.waitFor(`document.querySelector('.seat-card[data-account="${ids?.h}"] .bubble') === null`, 7000),
+      '★★ R035 — 새 메시지는 반짝 강조된다',
+      await guest.evaluate(`document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-msg.fresh') !== null`),
     );
+    await sleep(5000);
+    record(
+      '★★★ R035 — 마지막 메시지가 5초 뒤에도 칸에 그대로 남는다 (사라지지 않는다)',
+      (await guest.evaluate(`document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-msg')?.innerText ?? ''`)).includes('말풍선 확인'),
+    );
+
+    // ── ★★ R035 — 채팅: 스크롤바 없음 · 휠로 올려 보는 중 새 메시지 → ↓ 버튼 → 누르면 최신으로
+    await guest.setViewport(1280, 720);
+    for (let i = 1; i <= 14; i += 1) {
+      await host.setInput('.chat-card input', `채팅 줄 ${i}`);
+      await host.click('전송');
+      await sleep(60);
+    }
+    await guest.waitFor("document.querySelector('.chat-log')?.innerText.includes('채팅 줄 14') === true", 5000);
+    const sbHidden = await guest.evaluate(`(() => { const el = document.querySelector('.chat-log');
+      return getComputedStyle(el).scrollbarWidth === 'none' || el.offsetWidth === el.clientWidth; })()`);
+    record('★★ R035 — 채팅 스크롤바가 보이지 않는다', sbHidden);
+    const atBottom = await guest.evaluate(`(() => { const el = document.querySelector('.chat-log');
+      return el.scrollHeight - el.scrollTop - el.clientHeight < 24; })()`);
+    record('★ 맨 아래를 보고 있으면 새 메시지를 따라 내려간다', atBottom);
+    // 휠로 올려 본다 (스크롤 이벤트까지)
+    await guest.evaluate(`(() => { const el = document.querySelector('.chat-log'); el.scrollTop = 0; el.dispatchEvent(new Event('scroll')); })()`);
+    await sleep(200);
+    await host.setInput('.chat-card input', '새 메시지 도착');
+    await host.click('전송');
+    const downUp = await guest.waitFor("document.querySelector('.chat-down') !== null", 4000);
+    record('★★★ R035 — 올려 보는 중에 새 메시지가 오면 ↓ 버튼이 뜬다', downUp);
+    if (downUp) {
+      await guest.evaluate("document.querySelector('.chat-down').click()");
+      await sleep(300);
+      record(
+        '★★ ↓ 를 누르면 최신 메시지로 내려가고 버튼이 사라진다',
+        await guest.evaluate(`(() => { const el = document.querySelector('.chat-log');
+          return document.querySelector('.chat-down') === null && el.scrollHeight - el.scrollTop - el.clientHeight < 24; })()`),
+      );
+    }
 
     // 게스트 탭을 닫아 접속 종료를 만든다
     await browser.send('Target.closeTarget', { targetId: guest.targetId });
@@ -2062,7 +2193,7 @@ try {
       record('내보냈다는 시스템 메시지가 보인다', kickMsg.includes('내보냈습니다'));
     }
 
-    await host.click('방 나가기');
+    await host.click('나가기');
     await host.waitFor("document.querySelector('.stage') === null", 8000);
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -2130,7 +2261,7 @@ try {
       await host.evaluate("document.querySelector('.toast-message')?.textContent ?? ''"),
     );
 
-    await host.click('방 나가기');
+    await host.click('나가기');
     await host.waitFor("document.querySelector('.stage') === null", 8000);
 
     // ─────────────────────────────────────────────────────────────────────────

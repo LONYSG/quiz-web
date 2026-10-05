@@ -1399,6 +1399,9 @@ async function scenarioCountdown() {
     `${elapsed}ms 경과`,
   );
   expect('상태가 QUESTION_ACTIVE', host.snapshot.room.state, 'QUESTION_ACTIVE');
+  // ★ R035 — 방장이 받은 순간 다른 사람은 아직일 수 있다 (같은 이벤트, 도착 순서만 다르다)
+  await guest.waitFor(() => guest.since(0, 'game.started').length > 0, 3000, '게스트 game.started').catch(() => {});
+  await late.waitFor(() => late.since(0, 'game.started').length > 0, 3000, '중간 입장자 game.started').catch(() => {});
   expect('전원이 game.started 를 받는다', guest.since(0, 'game.started').length, 1);
   expect('중간 입장자도 받는다', late.since(0, 'game.started').length, 1);
 
@@ -1652,6 +1655,19 @@ async function scenarioEmptyCountdown() {
 // =============================================================================
 
 /** 게임을 시작해 첫 문제까지 진행시킨다. 공통 준비 절차 */
+/**
+ * ★★ R035 — "다시 하기" 는 같은 설정으로 **곧바로 5초 카운트다운**이다 (Q-31·Q-48 개정).
+ *   로비에서 무언가를 더 해야 하는 시나리오는 그 카운트다운을 방장이 취소하고 로비에 남는다.
+ */
+async function againAndCancel(host) {
+  const a = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(a, 'game.countdownStarted').length > 0, 8000, '다시 하기 카운트다운');
+  host.socket.emit('game.cancelCountdown', {});
+  await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 5000, '카운트다운 취소');
+  return a;
+}
+
 async function startGame(host, others, questionCount) {
   const from = host.mark();
   host.socket.emit('lobby.updateSettings', {
@@ -1772,7 +1788,7 @@ async function scenarioGame() {
   log('\n[5] 시간 종료');
   const toFrom = host.mark();
   const expectedEnd = q2.endsAt;
-  await host.waitFor(() => host.since(toFrom, 'question.resolved').length > 0, 15000, '시간 종료');
+  await host.waitFor(() => host.since(toFrom, 'question.resolved').length > 0, 20000, '시간 종료');
   const res2 = host.since(toFrom, 'question.resolved')[0];
   expect('★ 사유가 timeout', res2.reason, 'timeout');
   expect('정답자가 없다', res2.winnerAccountId, null);
@@ -1815,7 +1831,7 @@ async function scenarioGame() {
   log(`  ★ "${variant}" → 정답 "${base}" 로 인정`);
 
   // ── 6. ★★ R034 (Q-17 개정) — 마지막 문제도 정답 공개 5초 뒤 결과 (T10)
-  log('\n[6] ★★ 마지막 문제도 정답 공개 5초 뒤에 결과로 간다 (Q-17 개정)');
+  log('\n[6] ★★ 마지막 문제도 정답 공개 8초 뒤에 결과로 간다 (Q-17 개정 · R035 8초)');
   await host.waitQuestion(4);
   const q3 = host.snapshot.question;
   const ansFrom = host.mark();
@@ -1824,11 +1840,12 @@ async function scenarioGame() {
   await host.waitFor(() => host.since(ansFrom, 'question.resolved').length > 0, 5000, '정답 공개');
   const resolvedEv = host.since(ansFrom, 'question.resolved')[0];
   expect('★★ 마지막 문제도 먼저 정답 공개 상태가 된다', resolvedEv.payload.state, 'QUESTION_RESOLVED');
-  expectTrue('★★ 마지막 문제의 nextAt 이 있다 (5초 뒤)', typeof resolvedEv.payload.nextAt === 'number');
-  await host.waitFor(() => host.since(ansFrom, 'game.result').length > 0, 9000, '결과 화면');
+  expectTrue('★★ 마지막 문제의 nextAt 이 있다 (8초 뒤)', typeof resolvedEv.payload.nextAt === 'number');
+  await host.waitFor(() => host.since(ansFrom, 'game.result').length > 0, 12000, '결과 화면');
   const resultEv = host.since(ansFrom, 'game.result')[0];
   const gap = resultEv.at - resolvedEv.at;
-  expectTrue('★★★ 결과는 정답 공개 약 5초 뒤에 온다', gap >= 4700 && gap <= 6500, `${gap}ms`);
+  expectTrue('★★★ 결과는 정답 공개 약 8초 뒤에 온다 (R035)', gap >= 7700 && gap <= 9500, `${gap}ms`);
+  expect('★ nextAt − 공개 시각 = 8초', Math.round((resolvedEv.payload.nextAt - resolvedEv.at) / 1000), 8);
   expect('상태가 GAME_RESULT', host.snapshot.room.state, 'GAME_RESULT');
   expect('종료 사유', resultEv.endReason, 'completed');
 
@@ -1883,15 +1900,18 @@ async function scenarioGame() {
   );
 
   // ── 8. 다시 하기 (T30)
-  log('\n[8] 다시 하기');
+  log('\n[8] ★★ 다시 하기 — 같은 설정으로 5초 뒤 바로 시작 (R035)');
   from = host.mark();
   host.socket.emit('game.again', {});
-  await host.waitFor(() => host.since(from, 'game.returnedToLobby').length > 0, 5000, '로비 복귀');
-  expect('★ 상태가 LOBBY', host.snapshot.room.state, 'LOBBY');
-  expect('★ 설정 잠금이 풀린다', host.snapshot.room.settingsLocked, false);
+  await host.waitFor(() => host.since(from, 'game.countdownStarted').length > 0, 8000, '다시 하기 카운트다운');
+  expect('★★★ 상태가 COUNTDOWN (로비에 머물지 않는다)', host.snapshot.room.state, 'COUNTDOWN');
   expect('★ 직전 설정이 복원된다 (Q-31)', host.snapshot.room.settings.questionCount, 4);
   expectTrue('★ 점수가 초기화된다', host.snapshot.players.every((p) => p.score === 0));
-  expect('★★ 자동으로 시작되지 않는다', host.since(from, 'game.started').length, 0);
+  // ★ 방장 취소는 기존대로
+  host.socket.emit('game.cancelCountdown', {});
+  await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 5000, '취소');
+  expect('★ 카운트다운 취소로 LOBBY', host.snapshot.room.state, 'LOBBY');
+  expect('★ 설정 잠금이 풀린다', host.snapshot.room.settingsLocked, false);
 
   // ★ 경험 기록은 유지된다 → 출제 가능 수가 줄었다
   await host.waitFor(
@@ -2285,6 +2305,8 @@ async function scenarioConcurrent() {
   // ── 7. ★★ 스킵 투표 중 인원 변동으로 임계값이 바뀌어 이미 도달 상태가 되는 경우
   log('\n[7] ★★ 인원이 줄어 임계값이 내려가면 그 자리에서 스킵된다');
   const q9 = await host.waitQuestion(9, 15000);
+  // ★ R035 — 투표하는 사람도 9번 문제를 받은 뒤에 누른다 (낡은 epoch 의 표는 버려진다 — 테스트 경쟁 조건)
+  await g1.waitQuestion(9, 15000);
   from = host.mark();
   // 활성 4명 → 임계 3표. 2표만 넣는다
   host.skipVote(true);
@@ -2672,9 +2694,7 @@ async function scenarioCollide() {
   // ── 5. ★★ 마지막 플레이어가 정답을 맞히는 동시에 연결이 끊긴다
   log('\n[5] ★★ 마지막 플레이어의 정답 + 동시 끊김');
   // ★ 새 게임을 시작한다. 방장 혼자 남긴다
-  let from = host.mark();
-  host.socket.emit('game.again', {});
-  await host.waitFor(() => host.since(from, 'game.returnedToLobby').length > 0, 6000, '로비');
+  let from = await againAndCancel(host);
   for (const b of [g1, g2, g3]) {
     b.socket.emit('room.leave', {});
   }
@@ -3631,14 +3651,11 @@ async function scenarioResult() {
     JSON.stringify(back.snapshot.result.playerStats),
   );
 
-  // ── 6. ★★★ 다시 하기는 자동으로 시작하지 않는다 (Q-31/Q-32)
-  log('\n[6] ★★★ 다시 하기는 자동으로 시작하지 않는다');
+  // ── 6. ★★★ R035 — 다시 하기는 5초 뒤 바로 시작 / 로비로는 자동 시작 없음
+  log('\n[6] ★★★ 다시 하기 = 5초 카운트다운 (R035) · 로비로 = 자동 시작 없음');
   const beforeAvailable = host.snapshot.room.availableQuestionCount;
-  from = host.mark();
-  host.socket.emit('game.again', {});
-  await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 6000, '로비 복귀');
-  await sleep(3000);
-  expect('★★★ 3초가 지나도 LOBBY 다 (자동 시작 없음)', host.snapshot.room.state, 'LOBBY');
+  from = await againAndCancel(host);
+  expect('★★★ 다시 하기가 카운트다운을 걸었다', host.since(from, 'game.countdownStarted').length, 1);
   expect('★ 설정이 복원된다 (문제 수 3)', host.snapshot.room.settings.questionCount, 3);
   expect('★ 설정 잠금이 풀린다', host.snapshot.room.settingsLocked, false);
   expect('★ 결과 화면 데이터는 지워진다', host.snapshot.result, null);
@@ -3772,13 +3789,8 @@ async function scenarioDifficulty() {
     if (c.label === '상만') {
       // ★★ 다시 하기가 난이도를 이어받는다 (Q-31)
       log('\n[2] ★★ 다시 하기가 난이도를 이어받는다');
-      const a = host.mark();
-      host.socket.emit('game.again', {});
-      await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 6000, '로비 복귀');
-      await host.waitFor(() => host.since(a, 'lobby.settingsUpdated').length > 0, 6000, '설정 수신');
+      await againAndCancel(host);
       expect('★★ 다시 하기 후에도 상만', host.snapshot.room.settings.difficulties.join(','), 'hard');
-      await sleep(2500);
-      expect('★ 자동으로 시작하지 않는다', host.snapshot.room.state, 'LOBBY');
     } else {
       host.socket.emit('game.toLobby', {});
       await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 6000, '로비 복귀');
@@ -4095,10 +4107,7 @@ async function scenarioTopics() {
 
   // ── 2. 다시 하기가 분야를 이어받는다 (Q-31)
   log('\n[2] ★★ 다시 하기가 분야를 이어받는다');
-  const a = host.mark();
-  host.socket.emit('game.again', {});
-  await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 6000, '로비 복귀');
-  await host.waitFor(() => host.since(a, 'lobby.settingsUpdated').length > 0, 6000, '설정 수신');
+  await againAndCancel(host);
   expect('★★ 다시 하기 후에도 미디어만', host.snapshot.room.settings.topics.join(','), 'media');
 
   // ── 3. 난이도 × 분야
@@ -4139,6 +4148,114 @@ async function scenarioTopics() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★ again — R035 다시 하기 즉시 시작 · 접속 종료자 제외 · 부족하면 로비 · 정답 공개 8초 · 마지막 문제 강제 종료 = 완료
+// -----------------------------------------------------------------------------
+async function playersOfGame(gameId) {
+  return withDb(async (c) => {
+    const r = await c.query(`SELECT account_id::text AS id FROM game_players WHERE game_id = $1 ORDER BY account_id`, [gameId]);
+    return r.rows.map((x) => x.id);
+  });
+}
+
+async function scenarioAgain() {
+  log('시나리오 again — ★★ 다시 하기 즉시 시작 / 정답 공개 8초 / 강제 종료 "완료" (R035)');
+  await clearExperiences(PREFIX);
+  const [host, g1, g2, late] = await makeBots(4);
+  await host.connect();
+  host.createRoom('R035 다시 하기 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  for (const b of [g1, g2]) {
+    await b.connect();
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot !== null, 6000, `${b.name} 입장`);
+  }
+
+  // ── 1. 한 문제짜리 판 — 정답 공개 8초, 마지막 문제 중 강제 종료는 "완료"
+  log('\n[1] ★★ 정답 공개 8초 · 마지막 문제 정답 공개 중 강제 종료 → completed');
+  await startGame(host, [g1, g2], 1);
+  const q = host.snapshot.question;
+  const answers = await answersForText(q.text);
+  // ★ g2 는 정답 공개 순간에 끊겨 있다가 **공개 구간(8초)에 돌아온다** → 경험 기록이 남아야 한다 (D-168)
+  const g2id = g2.snapshot.me.accountId;
+  g2.socket.close();
+  await sleep(500);
+  let from = host.mark();
+  g1.chat(answers[0]);
+  await host.waitFor(() => host.since(from, 'question.resolved').length > 0, 5000, '정답');
+  const rev = host.since(from, 'question.resolved')[0];
+  const g2b = new Bot(g2.name);
+  g2b.cookie = g2.cookie;
+  await g2b.connect();
+  await g2b.waitFor(() => g2b.snapshot !== null, 6000, 'g2 재접속');
+  expect('★ g2 가 정답 공개 구간에 돌아왔다', g2b.snapshot.room.state, 'QUESTION_RESOLVED');
+  await sleep(800);
+  const seen = await withDb(async (c) =>
+    (await c.query(
+      `SELECT count(*)::int AS n FROM question_experiences qe JOIN questions q ON q.id = qe.question_id
+        WHERE qe.account_id = $1 AND q.question_text = $2`,
+      [g2id, q.text],
+    )).rows[0].n,
+  );
+  expect('★★★ 정답 공개 구간에 돌아온 사람도 그 문제의 경험 기록이 남는다 (01-GAME-RULES 12장)', seen, 1);
+  expect('★★ 정답 공개 = 8초 (nextAt − 공개 시각)', Math.round((rev.payload.nextAt - rev.at) / 1000), 8);
+  await sleep(1500);
+  host.socket.emit('host.forceEnd', {});
+  await host.waitFor(() => host.since(from, 'game.result').length > 0, 5000, '강제 종료');
+  const res1 = host.since(from, 'game.result')[0];
+  expect('★★★ 마지막 문제 정답 공개 중 강제 종료 → 종료 사유 completed (R034 결정 ②)', res1.endReason, 'completed');
+  await sleep(500);
+  const db1 = await gamesOfRoom(roomId);
+  expect('★ DB 종료 사유도 completed', db1.games[0]?.end_reason, 'completed');
+
+  // ── 2. 결과 화면에서 g2 가 끊기고 late 가 들어온다 → 다시 하기
+  log('\n[2] ★★★ 다시 하기 — 그 순간 접속 중인 사람만 (접속 종료자 제외 · 새로 온 사람 포함)');
+  g2b.socket.close();
+  await late.connect();
+  late.join(roomId);
+  await late.waitFor(() => late.snapshot !== null, 6000, 'late 입장');
+  await sleep(600);
+  from = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(from, 'game.countdownStarted').length > 0, 8000, '다시 하기 카운트다운');
+  expect('★★★ 다시 하기는 곧바로 COUNTDOWN', host.snapshot.room.state, 'COUNTDOWN');
+  const ids = host.snapshot.players.map((p) => p.accountId).sort();
+  expectTrue('★★ 끊긴 g2 는 자리에서 빠졌다', !ids.includes(g2id), ids.join(','));
+  expectTrue('★★ 결과 화면에 들어온 late 는 포함된다', ids.includes(late.snapshot.me.accountId));
+  expect('★ 설정이 같다 (문제 수 1)', host.snapshot.room.settings.questionCount, 1);
+  await host.waitFor(() => host.since(from, 'game.started').length > 0, 9000, '5초 뒤 시작');
+  const gap = host.since(from, 'game.started')[0] ? Date.now() - host.since(from, 'game.countdownStarted')[0].at : 0;
+  expectTrue('★ 약 5초 뒤 시작됐다', gap >= 4500 && gap <= 8000, `${gap}ms`);
+  await sleep(600);
+  const gp = await playersOfGame(host.snapshot.game.gameId);
+  expect('★★ 새 판의 참가자 = 방장 · g1 · late (3명)', gp.length, 3);
+  expectTrue('★★ 새 판 참가자에 g2 가 없다', !gp.includes(g2id));
+  from = host.mark();
+  host.socket.emit('host.forceEnd', {});
+  await host.waitFor(() => host.since(from, 'game.result').length > 0, 5000, '강제 종료');
+
+  // ── 3. 문제가 부족하면 시작하지 않고 로비 + 안내
+  log('\n[3] ★★ 문제가 부족하면 로비로 보내며 안내');
+  await markExperiencedAll(host.snapshot.me.accountId);
+  for (const b of [g1, late]) await markExperiencedAll(b.snapshot.me.accountId);
+  from = host.mark();
+  const fromG = g1.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(from, 'error').some((e) => e.code === 'NOT_ENOUGH_QUESTIONS'), 8000, '부족 안내');
+  await sleep(300);
+  expect('★★ 상태는 LOBBY', host.snapshot.room.state, 'LOBBY');
+  expect('★ 카운트다운이 걸리지 않았다', host.since(from, 'game.countdownStarted').length, 0);
+  expectTrue('★ 다른 참가자도 안내를 받는다', g1.since(fromG, 'error').some((e) => e.code === 'NOT_ENOUGH_QUESTIONS'));
+  expectTrue('★ 안내에 "다시 하기" 가 들어 있다', /다시 하기/.test(host.since(from, 'error')[0]?.message ?? ''));
+
+  for (const b of [host, g1, late]) b.leave();
+  await sleep(600);
+  for (const b of [host, g1, g2, g2b, late]) b.disconnect();
+  await clearExperiences(PREFIX);
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   duplicate: scenarioDuplicate,
@@ -4170,6 +4287,8 @@ const SCENARIOS = {
   generalhint: scenarioGeneralHint,
   // ★★ R034
   topics: scenarioTopics,
+  // ★★ R035
+  again: scenarioAgain,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };
