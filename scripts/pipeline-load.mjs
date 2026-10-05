@@ -94,7 +94,7 @@ const SELECT_MIN_WORTH = 3; // 3 미만 제외
 const SELECT_MAX_ACC2_SHARE = 0.05;
 /**
  * ★★ R030: 일반 힌트 게이트 (기준서 4-1 H0 · H2). 기본으로 켠다.
- *   · score-v1 난이도 4~5 인데 힌트가 없으면 적재하지 않는다 (H0 — 4~5 에는 반드시)
+ *   · score-v1 난이도 3~5 인데 힌트가 없으면 적재하지 않는다 (H0 — ★ R036 부터 3~5 에는 반드시)
  *   · hint-check 막힘(정답·변형·조각이 힌트에 있다)이면 적재하지 않는다 (H2)
  *   · 경고(질문 되풀이·해설 겹침·낱말 중간 조각·로마자 음차)는 적재하되 목록으로 보여 준다 — 사람이 본다
  *   ★ 문항 파일: question.generalHint (문자열) + question.generalHintVersion (예 'hint-v3')
@@ -106,7 +106,7 @@ const NO_HINT_GATE = args.includes('--no-hint-gate');
  *   --dry-run 은 게이트 앞에서 끝나 무엇이 막힐지 보여 주지 못했다. 적재 전 VERIFY·GEN 확인용이다.
  */
 const GATE_ONLY = args.includes('--gate-only');
-const HINT_MIN_DIF = 4;
+const HINT_MIN_DIF = 3; // ★ R036: 4 → 3 (기준서 4-1 H0 — 3~5 에는 반드시)
 const roundIdx = args.indexOf('--round');
 const ROUNDS = roundIdx >= 0 ? args[roundIdx + 1].split(',').map((r) => r.trim()) : [];
 /** ★ 소재 기반 파이프라인의 source_id. 0005 마이그레이션이 이 행을 넣는다 */
@@ -455,7 +455,7 @@ try {
     const gh = g.generalHint ? String(g.generalHint).trim() : null;
     if (!NO_HINT_GATE && item.sourceId === SEED_SOURCE_ID) {
       if (!gh && (sc?.dif ?? 0) >= HINT_MIN_DIF) {
-        skipped.push({ ref: item.sourceRef, reason: `★ 난이도 ${sc.dif} 인데 일반 힌트가 없다 (기준서 4-1 H0 — 4~5 는 반드시)` });
+        skipped.push({ ref: item.sourceRef, reason: `★ 난이도 ${sc.dif} 인데 일반 힌트가 없다 (기준서 4-1 H0 — 3~5 는 반드시)` });
         continue;
       }
       if (gh) {
