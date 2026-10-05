@@ -9,6 +9,7 @@
 export { normalizeAnswer, buildNormalizedIndex, NORMALIZE_VERSION } from './normalize.js';
 export { generateHint, HINT_VERSION } from './hint.js';
 export { computeRanking, skipThreshold } from './ranking.js';
+export { splitSentences } from './sentences.js';
 export { maskAnswers, MASK_SENTINEL, MASK_SHORT_ANSWER_MAX } from './mask.js';
 export type { MaskResult } from './mask.js';
 export {

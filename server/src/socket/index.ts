@@ -18,7 +18,7 @@ import { randomUUID } from 'node:crypto';
 import type { Server, Socket } from 'socket.io';
 import { maskAnswers, RULES, validateRoomSettings } from '@quiz/shared';
 import { closeRoom, findRoom, insertRoom } from '../db/rooms.js';
-import { insertMidgamePlayer } from '../db/gameQuestions.js';
+import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
 import { loadExperienced } from '../db/questionPool.js';
 import { cancelCountdown, notEnoughMessage, requestStart } from '../game/start.js';
 import { checkChatRate, judgeAnswer } from '../game/answer.js';
@@ -656,8 +656,14 @@ function registerRoomHandlers(socket: Socket): void {
       if (room.state === 'QUESTION_ACTIVE' || pausedFrom === 'QUESTION_ACTIVE') {
         abortQuestionSync(room);
       }
+      // ★★ R035 (R034 결정 ② · 건우 이견 없음) — **마지막 문제의 정답 공개 중**이면 모든 문제가 이미 끝났다.
+      //   ★ 그때의 강제 종료는 "결과로 바로 가기" 일 뿐이므로 종료 사유를 **completed** 로 남긴다 (D-163).
+      const resolvedPhase = room.state === 'QUESTION_RESOLVED' || pausedFrom === 'QUESTION_RESOLVED';
+      const cur = room.currentQuestion;
+      const lastDone = resolvedPhase && cur !== null && cur.resolved && cur.index >= room.game.totalQuestions;
       room.paused = null;
-      finishGame(room, 'force_ended', '방장이 게임을 강제 종료했습니다.');
+      if (lastDone) finishGame(room, 'completed', null);
+      else finishGame(room, 'force_ended', '방장이 게임을 강제 종료했습니다.');
     },
   );
 
@@ -682,19 +688,44 @@ function registerRoomHandlers(socket: Socket): void {
     },
   );
 
-  // ── 다시 하기 / 로비로 (guide 38절 / T30 / T31)
-  //   ★★ 서버 동작이 동일하다. UI 차이만 있다 (04-PROTOCOL T31).
-  //     ★ 그래서 같은 핸들러를 두 이벤트에 등록한다. 분기를 만들지 않는다.
-  for (const event of ['game.again', 'game.toLobby'] as const) {
-    onRoom(
-      socket,
-      event,
-      { requireHost: true, allowedStates: ['GAME_RESULT'] },
-      ({ room }) => {
-        returnToLobby(room);
-      },
-    );
-  }
+  // ── 로비로 (guide 38절 / T31) — 설정을 바꿀 수 있게 로비로 간다
+  onRoom(
+    socket,
+    'game.toLobby',
+    { requireHost: true, allowedStates: ['GAME_RESULT'] },
+    ({ room }) => {
+      returnToLobby(room);
+    },
+  );
+
+  // ── ★★ 다시 하기 (T30 — R035 Q-31·Q-48 개정 / D-162)
+  //   ★ 건우: "'다시 하기' 는 현재 세팅 그대로 5초 후 바로 시작되어야 맞다."
+  //   ★ 순서: 로비로 정리(접속 종료자 자리 반환 · 점수 초기화 · 설정 복원) → **곧바로** 5초 카운트다운(T01).
+  //     ★ 참가자 = 그 순간 접속 중인 사람 (returnToLobby 가 접속 종료자를 뺀다. 결과 화면에 새로 들어온 사람은 포함)
+  //   ★ 문제가 부족하거나 시작할 수 없으면 로비에 남기고 **방 전체에** 이유를 알린다.
+  onRoom(
+    socket,
+    'game.again',
+    { requireHost: true, allowedStates: ['GAME_RESULT'] },
+    async ({ room }) => {
+      returnToLobby(room);
+      const r = await requestStart(room);
+      if (r.ok) return;
+      if (r.reason === 'not_enough') {
+        emitRoom(room, 'error', {
+          code: 'NOT_ENOUGH_QUESTIONS',
+          message: `다시 하기를 시작하지 못했습니다. ${notEnoughMessage(r.available, r.wanted)}`,
+          detail: null,
+        });
+      } else if (r.reason !== 'busy' && r.reason !== 'invalid_state') {
+        emitRoom(room, 'error', {
+          code: 'INVALID_STATE',
+          message: '다시 하기를 시작하지 못했습니다. 로비에서 다시 시작해 주세요.',
+          detail: r.reason,
+        });
+      }
+    },
+  );
 
   // ── 방장이 접속 종료자를 강제 퇴장 (Q-15)
   onRoom<{ accountId: string }>(
@@ -836,8 +867,38 @@ async function onMidgameJoin(
       q.experiencedAccountIds.add(player.accountId);
       broadcastExperiencedUpdated(room);
     }
+    // ★★ 정답 공개 구간에 들어온 사람도 그 문제의 경험 기록을 남긴다 (01-GAME-RULES 12장 · R035 에서 구현 — D-168)
+    recordResolvedWitness(room, player.accountId);
   } catch (err) {
     console.error(`[room] ★ 중간 참가자 경험 기록 로드 실패:`, (err as Error).message);
+  }
+}
+
+/**
+ * ★★ 정답 공개 구간(QUESTION_RESOLVED)에 입장·재접속한 사람의 경험 기록 (01-GAME-RULES 12장 "공개 구간에 입장한 사람도 기록")
+ *
+ * ★ R035 확인 (원칙 7) — 규칙 문서에는 있었지만 코드는 **정답이 공개되는 순간 접속 중인 사람만** 기록했다.
+ *   정답 공개가 8초로 길어지며 차이가 커져 여기서 구현했다 (D-168).
+ * ★ 메모리(다음 문제 선정)와 DB 를 함께 갱신한다. 이미 기록이 있으면 아무 일도 없다.
+ * ★ 동기 부분만 판정 경로에 닿는다 — DB 쓰기는 기다리지 않는다.
+ */
+function recordResolvedWitness(room: NonNullable<ReturnType<typeof getRoom>>, accountId: string): void {
+  const game = room.game;
+  const q = room.currentQuestion;
+  if (!game || !q || room.state !== 'QUESTION_RESOLVED' || !q.resolved) return;
+  // ★ 중단(정답 미공개)된 문제는 기록하지 않는다 (Q-47)
+  if (game.resolution?.reason === 'aborted') return;
+  let set = game.experienced.get(accountId);
+  if (!set) {
+    set = new Set();
+    game.experienced.set(accountId, set);
+  }
+  if (set.has(q.questionId)) return;
+  set.add(q.questionId);
+  if (game.gameId) {
+    void recordExperiences({ accountIds: [accountId], questionId: q.questionId, gameId: game.gameId }).catch((err) =>
+      console.error('[room] ★ 공개 구간 입장자 경험 기록 실패:', (err as Error).message),
+    );
   }
 }
 
@@ -879,6 +940,8 @@ function attachToRoom(
       connected: true,
       activeCount: activeCount(room),
     });
+    // ★★ 정답이 공개되던 순간 끊겨 있었다가 공개 구간에 돌아왔다 — 정답을 본다 (D-168)
+    recordResolvedWitness(room, session.accountId);
   } else {
     broadcastSystem(room, `${session.nickname} 님이 입장했습니다.`);
     emitRoom(room, 'room.playerJoined', {
