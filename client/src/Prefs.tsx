@@ -26,7 +26,16 @@ export function setRoomOwnsKeys(v: boolean): void {
   roomOwnsKeys = v;
 }
 
-export default function Prefs() {
+interface Props {
+  /**
+   * ★ R035 — 'gear' = 방 안 상단 바의 ⚙ (아래로 열리고 로그아웃까지 담는다).
+   *   기본('footer') = 방 밖 화면 맨 아래 (위로 열린다).
+   */
+  variant?: 'footer' | 'gear';
+  onLogout?: () => void;
+}
+
+export default function Prefs({ variant = 'footer', onLogout }: Props) {
   const [open, setOpen] = useState(false);
   const [theme, setThemeState] = useState<ThemeId>(getTheme());
   const [sound, setSound] = useState<SoundPrefs>(getSoundPrefs());
@@ -79,16 +88,18 @@ export default function Prefs() {
 
   const muted = !sound.bgmOn && !sound.sfxOn;
 
+  // ★★ R035 — 창 안의 설명 문장을 지웠다 (건우: "설명은 숨겨라"). 소리 규칙 설명은 방 안 ⓘ 안내에 있다
   return (
-    <div className="prefs">
+    <div className={variant === 'gear' ? 'prefs gear' : 'prefs'}>
       <button
         type="button"
-        className="ghost tiny prefs-toggle"
+        className={variant === 'gear' ? 'ghost tiny prefs-toggle icon-btn' : 'ghost tiny prefs-toggle'}
         aria-expanded={open}
+        aria-label="테마 · 소리 · 로그아웃"
         onClick={() => setOpen((v) => !v)}
-        title="테마·소리 (Alt+T 테마 바꾸기 · Alt+M 소리 끄기)"
+        title="테마 · 소리 (Alt+T 테마 · Alt+M 소리)"
       >
-        🎨 테마 · {muted ? '🔇' : '🔊'} 소리
+        {variant === 'gear' ? '⚙' : <>🎨 테마 · {muted ? '🔇' : '🔊'} 소리</>}
       </button>
 
       {open && (
@@ -102,13 +113,11 @@ export default function Prefs() {
                 className={theme === t.id ? 'seg-btn active' : 'seg-btn'}
                 aria-pressed={theme === t.id}
                 onClick={() => setTheme(t.id)}
-                title={t.desc}
               >
                 {t.label}
               </button>
             ))}
           </div>
-          <p className="prefs-desc">{THEMES.find((t) => t.id === theme)?.desc}</p>
 
           <p className="prefs-title">
             소리 <kbd>Alt+M</kbd>
@@ -161,10 +170,11 @@ export default function Prefs() {
               onChange={(e) => setSoundPrefs({ sfxVol: Number(e.target.value) })}
             />
           </label>
-          <p className="prefs-desc">
-            정답 효과음은 코인 소리입니다. 오답에는 소리가 나지 않습니다. 소리는 화면을 한 번
-            누르거나 키를 친 뒤부터 나옵니다. 로그인하면 이 설정이 계정에 저장됩니다.
-          </p>
+          {onLogout && (
+            <button type="button" className="ghost tiny prefs-logout" onClick={onLogout}>
+              로그아웃
+            </button>
+          )}
         </div>
       )}
     </div>

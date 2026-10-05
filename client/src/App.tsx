@@ -249,16 +249,11 @@ export default function App() {
             onNicknameChanged={(nickname) =>
               setAccount((prev) => (prev ? { ...prev, nickname } : prev))
             }
+            onLogout={doLogout}
           />
         ),
-        foot: (
-          <>
-            <Prefs />
-            <button type="button" className="ghost tiny" onClick={doLogout}>
-              로그아웃
-            </button>
-          </>
-        ),
+        // ★ R035 — 방 안에서는 푸터가 없다. 테마·소리·로그아웃은 상단 바의 ⚙ 안에 있다 (화면 아래 빈 공간 제거)
+        foot: null,
       };
     }
 

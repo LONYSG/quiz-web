@@ -1,34 +1,32 @@
 // =============================================================================
-// 로비 화면 (guide 6절)
+// 방 화면 — 로비 · 게임 · 결과 (guide 6절 ~ 38절)
 //
-// Phase 1 범위: 방 제목 / 참가자 목록 / 인원 / 방장 표시 / 초대 링크 복사 / 채팅
-// Phase 2 범위: 게임 설정 / 경험률 / 게임 시작 / 카운트다운
-// ★ Phase 3 범위 (R014): 문제 화면 / 타이머 / 힌트 / 스킵 / 점수판 / 결과 화면
+// ★★ R035 배치 (건우: "칸을 줄이고 합쳐라 / 공간을 잘 써라 / 설명은 숨겨라")
+//   · ★ **상단 바 하나** — 방 제목 · 상태 · 인원 | 🔗 초대 · ✏ 닉네임(로비) · ⚙(테마·소리·로그아웃) · ⓘ 안내 · 나가기
+//   · ★ 가운데 **카드 하나** — 로비: 설정 + 게임 시작 / 게임: 문제 카드 / 일시정지 / 결과: 순위 카드
+//   · ★ 가운데 아래 채팅 / 양옆 참여자 칸 (좌 5 · 우 5)
+//   · ★ 화면에는 **진행에 필요한 알림만** 남기고 규칙·단축키·화면 설명은 ⓘ 안으로 (R035 보고 1장 표)
 //
-// ★★ 채팅 입력창이 곧 답안 제출이다 (guide 12절 절대 규칙).
-//   ★ 별도의 답안 입력창을 만들지 않는다. 이 파일에 그것이 없는 것이 그 구현이다.
-//   ★ chat.send 에 **epoch 를 담는다** — 그것이 장치 B 의 클라이언트 쪽 절반이다.
-//
-// ★ 새로 만드는 버튼과 배지는 styles.css 의 라벨 규칙을 그대로 받는다 (A-2 / D-022).
-//   개별 요소에 white-space 를 다시 쓰지 않는다.
+// ★★ 채팅 입력창이 곧 답안 제출이다 (guide 12절 절대 규칙). 별도의 답안 입력창을 만들지 않는다.
+//   ★ chat.send 에 **epoch 를 담는다** — 장치 B 의 클라이언트 쪽 절반이다.
+// ★ 새로 만드는 버튼과 배지는 styles.css 의 라벨 규칙을 그대로 받는다 (D-022).
 // =============================================================================
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import { formatExperienceRate, RULES } from '@quiz/shared';
 import { changeNickname, errorMessage } from './api.js';
-import InfoTip from './InfoTip.js';
-import Seat from './Seat.js';
 import ChatText from './ChatText.js';
 import Countdown from './Countdown.js';
 import GameSettings from './GameSettings.js';
 import Question from './Question.js';
 import GameResult from './GameResult.js';
+import InfoTip from './InfoTip.js';
 import Paused from './Paused.js';
+import Prefs, { setRoomOwnsKeys } from './Prefs.js';
+import Seat from './Seat.js';
 import ShortcutBar from './ShortcutBar.js';
 import { useFocusChatOnEscape, useShortcuts, type Shortcut } from './shortcuts.js';
-import Avatar from './Avatar.js';
-import { setRoomOwnsKeys } from './Prefs.js';
 import { toggleMuteAll } from './sound.js';
 import { cycleTheme } from './theme.js';
 import { useGameSounds } from './useGameSounds.js';
@@ -45,10 +43,9 @@ interface Props {
   throttledUntil: number | null;
   /** ★ R034 — 닉네임을 바꿨다 (App 의 계정 표시를 맞춘다) */
   onNicknameChanged: (nickname: string) => void;
+  /** ★ R035 — 로그아웃은 상단 바 ⚙ 안에 있다 */
+  onLogout: () => void;
 }
-
-/** ★ R034 — 말풍선이 떠 있는 시간 */
-const BUBBLE_MS = 4_000;
 
 export default function Lobby({
   socket,
@@ -58,117 +55,56 @@ export default function Lobby({
   serverNow,
   throttledUntil,
   onNicknameChanged,
+  onLogout,
 }: Props) {
   const [draft, setDraft] = useState('');
   const [copied, setCopied] = useState(false);
-  /** ★ 도배 억제 안내가 지금 유효한가. 시각이 지나면 스스로 사라진다 */
   const [throttled, setThrottled] = useState(false);
   /** ★ Q-56 — 단축키 전체 목록을 펼쳤는가 */
   const [showKeys, setShowKeys] = useState(false);
-  /**
-   * ★★ Q-82 — 게임 중 나가기 확인창.
-   *   ★ 근거: 마지막 활성자가 나가면 **즉시 방이 폭파된다.**
-   *     실수로 눌렀는데 게임이 날아가면 안 된다.
-   *   ★ 로비에서는 확인창을 두지 않는다 — 판단 근거는 아래 leaveWithConfirm 주석에 있다.
-   */
+  /** ★★ Q-82 — 게임 중 나가기 확인창 (마지막 활성자가 나가면 방이 즉시 사라진다) */
   const [confirmLeave, setConfirmLeave] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-  /** ★ R034 — 닉네임 바꾸기 입력. null = 손대지 않음(현재 닉네임을 보여 준다) */
+  /** ★ R034 — 닉네임 바꾸기 (R035 부터 상단 바 ✏ 의 작은 창) */
+  const [renameOpen, setRenameOpen] = useState(false);
   const [renameDraft, setRenameDraft] = useState<string | null>(null);
   const [renameMsg, setRenameMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [renameBusy, setRenameBusy] = useState(false);
-  /**
-   * ★★ R034 — 참여자 칸 말풍선. 계정마다 **가장 최근 메시지 하나**를 BUBBLE_MS 동안.
-   *   ★ 처음 받은(스냅샷) 대화는 말풍선으로 띄우지 않는다 — 들어오자마자 옛 말이 뜨면 이상하다.
-   *   ★ 메시지 객체를 그대로 담는다 → 마스킹이 채팅 로그와 똑같이 걸린다 (Seat.tsx 헤더).
-   */
-  const [bubbles, setBubbles] = useState<Record<string, ChatView>>({});
-  const seenRef = useRef<Set<string> | null>(null);
-  const bubbleTimers = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
+  /** ★★ R035 — 채팅을 올려 보는 중에 새 메시지가 왔는가 (↓ 버튼) */
+  const [newBelow, setNewBelow] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
   /** 사용자가 과거 메시지를 보고 있으면 강제로 아래로 끌어내리지 않는다 (guide 36절) */
   const stickToBottom = useRef(true);
+  /** ★ 처음 받은 대화(스냅샷)는 반짝이지 않는다 — 들어오자마자 전부 반짝이면 이상하다 */
+  const initialIds = useRef<Set<string> | null>(null);
+  if (initialIds.current === null) initialIds.current = new Set(chat.map((m) => m.id));
 
   /**
-   * ★ 초대 링크는 방장 브라우저의 origin 으로 만든다 (R004 0장).
-   *   서버 환경 변수에서 읽지 않는다. 터널 URL이 바뀌어도 서버 재시작이 필요 없다.
-   *   이 브라우저는 이미 새 URL에 있으므로 항상 올바른 값을 얻는다.
+   * ★ 초대 링크는 지금 브라우저의 origin 으로 만든다 (R004 0장). 터널 URL 이 바뀌어도 서버 재시작이 필요 없다.
+   * ★★ R035 — 주소는 화면에 보이지 않는다 (건우: "못생겨서 방해된다"). 🔗 버튼이 복사만 한다.
    */
-  const inviteUrl = useMemo(
-    () => `${window.location.origin}/r/${snapshot.room.id}`,
-    [snapshot.room.id],
-  );
+  const inviteUrl = useMemo(() => `${window.location.origin}/r/${snapshot.room.id}`, [snapshot.room.id]);
 
+  // ── 채팅: 맨 아래를 보고 있으면 따라 내려가고, 올려 보는 중이면 ↓ 를 띄운다
   useEffect(() => {
-    if (stickToBottom.current && logRef.current) {
-      logRef.current.scrollTop = logRef.current.scrollHeight;
+    const el = logRef.current;
+    if (!el) return;
+    if (stickToBottom.current) {
+      el.scrollTop = el.scrollHeight;
+      setNewBelow(false);
+    } else {
+      setNewBelow(true);
     }
   }, [chat]);
-
-  // ★★ R034 — 새로 온 메시지를 말풍선으로
-  useEffect(() => {
-    if (seenRef.current === null) {
-      seenRef.current = new Set(chat.map((m) => m.id));
-      return;
-    }
-    const seen = seenRef.current;
-    const fresh: ChatView[] = [];
-    for (const m of chat) {
-      if (seen.has(m.id)) continue;
-      seen.add(m.id);
-      if (!m.system && m.accountId) fresh.push(m);
-    }
-    if (fresh.length === 0) return;
-    setBubbles((prev) => {
-      const next = { ...prev };
-      for (const m of fresh) next[m.accountId] = m;
-      return next;
-    });
-    for (const m of fresh) {
-      const old = bubbleTimers.current.get(m.accountId);
-      if (old) clearTimeout(old);
-      bubbleTimers.current.set(
-        m.accountId,
-        setTimeout(() => {
-          bubbleTimers.current.delete(m.accountId);
-          setBubbles((prev) => {
-            if (prev[m.accountId]?.id !== m.id) return prev;
-            const next = { ...prev };
-            delete next[m.accountId];
-            return next;
-          });
-        }, BUBBLE_MS),
-      );
-    }
-  }, [chat]);
-  useEffect(() => {
-    const timers = bubbleTimers.current;
-    return () => {
-      for (const t of timers.values()) clearTimeout(t);
-      timers.clear();
-    };
-  }, []);
-
-  /** ★ R034 — 닉네임 바꾸기. 결과(성공·겹침·게임 중)를 칸 아래에 바로 보여 준다 */
-  const doRename = async () => {
-    const next = (renameDraft ?? snapshot.me.nickname).trim();
-    if (!next || next === snapshot.me.nickname || renameBusy) return;
-    setRenameBusy(true);
-    try {
-      const saved = await changeNickname(next);
-      setRenameDraft(null);
-      setRenameMsg({ ok: true, text: `닉네임을 ${saved}(으)로 바꿨습니다.` });
-      onNicknameChanged(saved);
-    } catch (err) {
-      setRenameMsg({ ok: false, text: errorMessage(err, '닉네임을 바꿀 수 없습니다.') });
-    } finally {
-      setRenameBusy(false);
-    }
+  const scrollChatToBottom = () => {
+    const el = logRef.current;
+    if (!el) return;
+    el.scrollTop = el.scrollHeight;
+    stickToBottom.current = true;
+    setNewBelow(false);
   };
 
-  // ★ 억제 안내는 서버가 준 시각까지만 보여주고 스스로 사라진다.
-  //   ★ 사용자가 닫아야 사라지는 알림으로 만들지 않는다 — 입력 중에 뜨는 것이므로
-  //     닫기 버튼을 누르게 하면 입력을 방해한다.
+  // ★ 억제 안내는 서버가 준 시각까지만 보여주고 스스로 사라진다
   useEffect(() => {
     if (throttledUntil === null) return undefined;
     const remain = throttledUntil - Date.now();
@@ -181,83 +117,87 @@ export default function Lobby({
   const send = () => {
     const text = draft.trim();
     if (!text) return;
-    // ★★ 장치 B — 지금 보고 있는 문제의 epoch 를 함께 보낸다 (guide 20절 / R003 2-3).
-    //   ★ 이것이 "정답 공개 5초 구간에 친 메시지가 다음 문제의 정답과 우연히 일치해
-    //     정답 처리되는" 사고를 막는다.
-    //   ★ 문제가 없으면 null 이다. 서버가 판정하지 않는다.
+    // ★★ 장치 B — 지금 보고 있는 문제의 epoch 를 함께 보낸다 (guide 20절 / R003 2-3)
     socket.emit('chat.send', { text, epoch: snapshot.question?.epoch ?? null });
     setDraft('');
-    // ★ PC에서 입력창을 계속 쓸 수 있어야 한다 (guide 14·42절).
-    //   전송 후 포커스를 잃지 않게 한다.
+    // ★ 내가 보낸 메시지는 맨 아래로 따라간다
+    stickToBottom.current = true;
     inputRef.current?.focus();
   };
 
   const copyInvite = async () => {
     try {
       await navigator.clipboard.writeText(inviteUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
     } catch {
-      // 클립보드 API가 막힌 환경(비-https 등)에서는 선택 상태로 대체한다
-      const el = document.getElementById('invite-url') as HTMLInputElement | null;
-      el?.select();
+      // ★ 클립보드 API 가 막힌 환경(비-https 등) — 숨은 입력칸으로 복사한다
+      const el = document.createElement('textarea');
+      el.value = inviteUrl;
+      el.style.position = 'fixed';
+      el.style.opacity = '0';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      el.remove();
     }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1600);
   };
 
-  const me = snapshot.players.find((p) => p.accountId === snapshot.me.accountId);
+  /** ★ R034 — 닉네임 바꾸기. 결과(성공·겹침·게임 중)를 창 안에 바로 보여 준다 */
+  const doRename = async () => {
+    const next = (renameDraft ?? snapshot.me.nickname).trim();
+    if (!next || next === snapshot.me.nickname || renameBusy) return;
+    setRenameBusy(true);
+    try {
+      const saved = await changeNickname(next);
+      setRenameDraft(null);
+      setRenameMsg({ ok: true, text: `${saved}(으)로 바꿨습니다.` });
+      onNicknameChanged(saved);
+    } catch (err) {
+      setRenameMsg({ ok: false, text: errorMessage(err, '닉네임을 바꿀 수 없습니다.') });
+    } finally {
+      setRenameBusy(false);
+    }
+  };
+  useEffect(() => {
+    if (!renameOpen) return undefined;
+    const onDown = (e: PointerEvent) => {
+      if (!(e.target as Element).closest('.rename')) setRenameOpen(false);
+    };
+    window.addEventListener('pointerdown', onDown);
+    return () => window.removeEventListener('pointerdown', onDown);
+  }, [renameOpen]);
 
-  /** 게임 계열 상태인가. 로비 전용 섹션을 접는 기준이다 */
-  const inGame =
-    snapshot.room.state === 'QUESTION_ACTIVE' ||
-    snapshot.room.state === 'QUESTION_RESOLVED' ||
-    snapshot.room.state === 'PAUSED' ||
-    snapshot.room.state === 'GAME_RESULT';
+  const me = snapshot.players.find((p) => p.accountId === snapshot.me.accountId);
+  const state = snapshot.room.state;
+  const inLobby = state === 'LOBBY' || state === 'COUNTDOWN';
+  const isActive = state === 'QUESTION_ACTIVE';
+  const isResult = state === 'GAME_RESULT';
+  const isPaused = state === 'PAUSED';
+  const epoch = snapshot.question?.epoch ?? null;
 
   /**
-   * ★★ Q-82 — 게임 중 나가기에만 확인창을 둔다.
-   *
-   * ★ 게임 중(COUNTDOWN / QUESTION_ACTIVE / QUESTION_RESOLVED / PAUSED)
-   *   → ★ 확인창. **마지막 활성자면 방이 즉시 폭파된다.**
-   * ★ 로비 / 결과 화면 → 확인창 없음.
-   *   ★ 판단 근거 — 그 상태에는 **잃을 것이 없다.** 진행 중인 게임이 없고,
-   *     방이 사라져도 다시 만들면 된다. 점수도 경험 기록도 이미 확정되어 있다.
-   *   ★★ 확인창을 남발하면 진짜 위험한 순간의 확인창도 습관적으로 넘기게 된다.
+   * ★★ Q-82 — 게임 중 나가기에만 확인창을 둔다. 로비·결과에는 잃을 것이 없다
+   *   (확인창을 남발하면 진짜 위험한 순간의 확인창도 습관적으로 넘기게 된다).
    */
   const needsLeaveConfirm =
-    snapshot.room.state === 'COUNTDOWN' ||
-    snapshot.room.state === 'QUESTION_ACTIVE' ||
-    snapshot.room.state === 'QUESTION_RESOLVED' ||
-    snapshot.room.state === 'PAUSED';
-
+    state === 'COUNTDOWN' || state === 'QUESTION_ACTIVE' || state === 'QUESTION_RESOLVED' || isPaused;
   const leaveWithConfirm = () => {
     if (needsLeaveConfirm) setConfirmLeave(true);
     else onLeave();
   };
 
-  /** ★ 지금 답안이 판정되는 상태인가. 입력창 안내 문구를 바꾼다 */
-  const judging = snapshot.room.state === 'QUESTION_ACTIVE' && !snapshot.question?.selfExperienced;
-
-  /**
-   * 경험률 문구.
-   * ★ 아직 값이 오지 않았으면 "—" 를 보여 준다. 0% 로 단정하지 않는다.
-   *   "경험 기록이 없다" 와 "아직 모른다" 는 다르다.
-   */
+  /** ★ 지금 답안이 판정되는 상태인가. 입력창 자리표시를 바꾼다 */
+  const judging = isActive && !snapshot.question?.selfExperienced;
 
   // ───────────────────────────────────────────────────────────────────────────
-  // ★★ Q-56 단축키 (R015)
-  //   ★ 전부 Alt 조합이다. 단독 문자키를 쓰지 않는다 — 채팅 입력을 방해하면 안 된다.
-  //   ★ 근거와 피한 키 목록은 shortcuts.ts 헤더에 있다.
+  // ★★ Q-56 단축키 — 전부 Alt 조합 (채팅 입력을 방해하지 않는다). 근거는 shortcuts.ts 헤더
   // ───────────────────────────────────────────────────────────────────────────
-  const isActive = snapshot.room.state === 'QUESTION_ACTIVE';
-  const isResult = snapshot.room.state === 'GAME_RESULT';
-  const isPaused = snapshot.room.state === 'PAUSED';
-  const epoch = snapshot.question?.epoch ?? null;
-
   const shortcuts: Shortcut[] = [
     {
       combo: 'Alt+S',
       fkey: 'F2',
-      label: '넘기기 투표',
+      label: '넘기기 투표 / 취소',
       when: isActive && snapshot.skip?.threshold != null,
       run: () => socket.emit('skip.vote', { vote: !snapshot.skip?.selfVoted, epoch }),
     },
@@ -280,13 +220,13 @@ export default function Lobby({
       combo: 'Alt+Q',
       fkey: null,
       label: '게임 강제 종료 (방장)',
-      when: (isActive || snapshot.room.state === 'QUESTION_RESOLVED' || isPaused) && snapshot.me.isHost,
+      when: (isActive || state === 'QUESTION_RESOLVED' || isPaused) && snapshot.me.isHost,
       run: () => window.dispatchEvent(new CustomEvent('qw:host-end')),
     },
     {
       combo: 'Alt+A',
       fkey: null,
-      label: '다시 하기 (방장)',
+      label: '다시 하기 — 5초 뒤 바로 시작 (방장)',
       when: isResult && snapshot.me.isHost,
       run: () => socket.emit('game.again', {}),
     },
@@ -297,51 +237,23 @@ export default function Lobby({
       when: isResult && snapshot.me.isHost,
       run: () => socket.emit('game.toLobby', {}),
     },
-    {
-      combo: 'Alt+X',
-      fkey: null,
-      label: '방 나가기',
-      when: true,
-      run: leaveWithConfirm,
-    },
-    {
-      combo: 'Alt+G',
-      fkey: 'F9',
-      label: '단축키 목록 열기/닫기',
-      when: true,
-      run: () => setShowKeys((v) => !v),
-    },
+    { combo: 'Alt+X', fkey: null, label: '방 나가기', when: true, run: leaveWithConfirm },
+    { combo: 'Alt+G', fkey: 'F9', label: '단축키 목록 열기/닫기', when: true, run: () => setShowKeys((v) => !v) },
     // ★ R033 — 테마·소리. 방 안에서는 여기가 맡는다 (Prefs 의 전역 키는 쉰다)
-    {
-      combo: 'Alt+T',
-      fkey: null,
-      label: '테마 바꾸기',
-      when: true,
-      run: () => {
-        cycleTheme();
-      },
-    },
-    {
-      combo: 'Alt+M',
-      fkey: null,
-      label: '소리 켜기/끄기',
-      when: true,
-      run: () => {
-        toggleMuteAll();
-      },
-    },
+    { combo: 'Alt+T', fkey: null, label: '테마 바꾸기', when: true, run: () => void cycleTheme() },
+    { combo: 'Alt+M', fkey: null, label: '소리 켜기/끄기', when: true, run: () => void toggleMuteAll() },
   ];
   useShortcuts(shortcuts);
-  // ★ 방 안에 있는 동안 Alt+T / Alt+M 은 위 목록이 맡는다
   useEffect(() => {
     setRoomOwnsKeys(true);
     return () => setRoomOwnsKeys(false);
   }, []);
   // ★★ R033 — 소리 (오답에는 소리가 없다)
   useGameSounds(snapshot, serverNow);
-  // ★★ Esc 로 채팅 입력에 포커스를 되돌린다. 마우스 없이 돌아가려면 반드시 필요하다
+  // ★★ Esc 로 채팅 입력에 포커스를 되돌린다
   useFocusChatOnEscape(inputRef);
 
+  /** ★ 경험률 — 아직 값이 오지 않았으면 "—" (0% 로 단정하지 않는다) */
   const rateText = (accountId: string): string => {
     const rate = snapshot.experienceRates?.find((r) => r.accountId === accountId);
     if (!rate) return '경험률 —';
@@ -349,29 +261,37 @@ export default function Lobby({
   };
 
   // ───────────────────────────────────────────────────────────────────────────
-  // ★★ R034 — 캐치마인드식 배치: [왼쪽 참여자 5칸] [가운데 = 문제·로비·결과 + 채팅] [오른쪽 5칸]
+  // ★★ 참여자 칸 — 마지막 메시지 · 반짝 · 정답자 반짝
   // ───────────────────────────────────────────────────────────────────────────
-  const phase = inGame ? (isResult ? 'result' : 'game') : 'lobby';
-  const showScore = phase !== 'lobby';
+  const lastMsgOf = useMemo(() => {
+    const out: Record<string, ChatView> = {};
+    for (const m of chat) if (!m.system && m.accountId) out[m.accountId] = m;
+    return out;
+  }, [chat]);
+  const showScore = !inLobby;
   const experiencedIds = new Set(
-    snapshot.room.state === 'QUESTION_ACTIVE' || snapshot.room.state === 'QUESTION_RESOLVED'
+    state === 'QUESTION_ACTIVE' || state === 'QUESTION_RESOLVED'
       ? (snapshot.question?.experiencedPlayers ?? []).map((p) => p.accountId)
       : [],
   );
   const topScore = Math.max(0, ...snapshot.players.map((p) => p.score));
+  const res = snapshot.resolution;
+  const winnerId = state === 'QUESTION_RESOLVED' && res?.reason === 'correct' ? res.winnerAccountId : null;
   const seatOf = (index: number) => {
     const p = snapshot.players[index] ?? null;
+    const msg = p ? lastMsgOf[p.accountId] ?? null : null;
     return (
       <Seat
         key={p ? p.accountId : `empty-${index}`}
-        seatNo={index + 1}
         player={p}
         me={p?.accountId === snapshot.me.accountId}
         experienced={p ? experiencedIds.has(p.accountId) : false}
         showScore={showScore}
         lead={Boolean(p && showScore && topScore > 0 && p.score === topScore)}
-        rate={p && phase === 'lobby' ? rateText(p.accountId) : null}
-        bubble={p ? bubbles[p.accountId] ?? null : null}
+        rate={p && inLobby ? rateText(p.accountId) : null}
+        lastMsg={msg}
+        fresh={Boolean(msg && !initialIds.current?.has(msg.id))}
+        winnerKey={p && winnerId === p.accountId ? res?.epoch ?? 0 : null}
         canKick={Boolean(p && snapshot.me.isHost && !p.connected)}
         onKick={() => p && socket.emit('host.kickDisconnected', { accountId: p.accountId })}
       />
@@ -385,63 +305,127 @@ export default function Lobby({
     ? '참가자가 아닙니다'
     : judging
       ? '정답을 입력하세요 — 모든 메시지가 답안입니다'
-      : snapshot.question?.selfExperienced && snapshot.room.state === 'QUESTION_ACTIVE'
+      : snapshot.question?.selfExperienced && isActive
         ? '이미 풀어본 문제 — 이번 문제는 점수를 얻을 수 없어요'
-        : snapshot.room.state === 'QUESTION_RESOLVED'
+        : state === 'QUESTION_RESOLVED'
           ? '정답 공개 중 — 지금은 판정되지 않습니다'
           : '메시지를 입력하세요';
 
+  const phase = inLobby ? 'lobby' : isResult ? 'result' : 'game';
+
   return (
-    <div className={`room room-${phase}${inGame ? ' in-game' : ''}`}>
+    <div className={`room room-${phase}`}>
+      {/* ── ★★ 상단 바 하나 */}
       <header className="room-head">
         <div className="room-title">
           <h1>{snapshot.room.title}</h1>
-          <span className="state-pill">{stateLabel(snapshot.room.state)}</span>
+          <span className="state-pill">{stateLabel(state)}</span>
           <span className="dim room-count">
             {snapshot.players.length} / {snapshot.room.maxPlayers}명 · 접속 {snapshot.room.activeCount}명
           </span>
         </div>
         <div className="room-tools">
-          {/* ★★ ⓘ — 늘 깔려 있던 안내 문장을 여기로 접었다 (R034) */}
+          <button type="button" id="invite-btn" className="ghost tiny" onClick={() => void copyInvite()} title="초대 링크 복사">
+            {copied ? '✓ 복사됨' : '🔗 초대'}
+          </button>
+          {state === 'LOBBY' && me && (
+            <span className="rename">
+              <button
+                type="button"
+                id="rename-btn"
+                className="ghost tiny"
+                aria-expanded={renameOpen}
+                onClick={() => {
+                  setRenameOpen((v) => !v);
+                  setRenameMsg(null);
+                }}
+              >
+                ✏️ 닉네임
+              </button>
+              {renameOpen && (
+                <div className="rename-pop" role="dialog" aria-label="닉네임 바꾸기">
+                  <div className="field-row">
+                    <input
+                      id="rename-input"
+                      autoFocus
+                      value={renameDraft ?? snapshot.me.nickname}
+                      maxLength={RULES.NICKNAME_MAX_LENGTH}
+                      onChange={(e) => {
+                        setRenameDraft(e.target.value);
+                        setRenameMsg(null);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
+                          e.preventDefault();
+                          void doRename();
+                        }
+                        if (e.key === 'Escape') setRenameOpen(false);
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => void doRename()}
+                      disabled={renameBusy || (renameDraft ?? snapshot.me.nickname).trim() === snapshot.me.nickname}
+                    >
+                      바꾸기
+                    </button>
+                  </div>
+                  {renameMsg && (
+                    <p className={renameMsg.ok ? 'note rename-msg' : 'form-error rename-msg'}>{renameMsg.text}</p>
+                  )}
+                </div>
+              )}
+            </span>
+          )}
+          <Prefs variant="gear" onLogout={onLogout} />
+          {/* ★★ ⓘ — 규칙·단축키·화면 설명은 전부 여기 (R035) */}
           <InfoTip>
             <ul className="info-list">
               <li>
-                <strong>채팅 입력창이 곧 답안 입력창입니다.</strong> 문제 중에 보낸 메시지가 정답과
-                같으면 가장 먼저 보낸 사람이 1점을 얻습니다. 틀려도 그냥 채팅으로 남습니다.
+                <strong>채팅 입력창이 곧 답안 입력창입니다.</strong> 문제 중에 보낸 메시지가 정답과 같으면 가장 먼저 보낸
+                사람이 1점. 틀려도 그냥 채팅으로 남습니다.
               </li>
               <li>
-                문제는 <strong>40초</strong>입니다. 남은 30초에 일반 힌트(있는 문제만), 남은 15초에
-                초성 힌트가 나옵니다.
+                문제는 <strong>40초</strong> — 남은 30초에 일반 힌트(있는 문제만), 15초에 초성 힌트. 정답 공개는{' '}
+                <strong>8초</strong>(마지막 문제도 같다) 뒤 다음 문제로 갑니다.
               </li>
               <li>
-                <strong>넘기기 투표</strong> — 접속한 사람 중 정해진 수가 누르면 문제를 넘깁니다
-                (다시 누르면 취소). 누가 눌렀는지는 보이지 않습니다. 혼자일 때는 투표로 넘길 수
-                없고, 방장은 언제든 넘길 수 있습니다.
+                <strong>넘기기 투표</strong> — 접속한 사람 중 정해진 수가 누르면 넘깁니다(다시 누르면 취소). 누가
+                눌렀는지는 보이지 않습니다. 혼자일 때는 투표로 넘길 수 없고, 방장은 언제든 넘길 수 있습니다.
               </li>
               <li>
-                <span className="badge exp">경험</span> 이 문제를 이미 풀어 본 사람입니다. 판정에서
-                빠지고, 그 사람이 쓴 정답은 다른 사람에게 <span className="masked-chip">가려짐</span>
-                으로 보입니다 (말풍선도 같습니다).
+                <span className="badge exp">경험</span> 이미 풀어 본 사람. 판정에서 빠지고, 그 사람이 쓴 정답은 남에게{' '}
+                <span className="masked-chip">가려짐</span> 으로 보입니다(참여자 칸도 같다). 강제 종료한 문제는 경험
+                기록을 남기지 않습니다.
               </li>
               <li>
-                로비의 경험률은 문제 DB 를 얼마나 풀어 봤는지입니다. 높다고 게임 시작을 막지는
-                않습니다.
+                시작 버튼을 누르면 <strong>5초 뒤</strong> 시작합니다(방장은 취소 가능). 카운트다운 중에 들어온 사람도 그
+                게임에 참가합니다.
               </li>
               <li>
-                접속이 끊긴 사람은 5초 뒤에 &quot;접속 종료&quot;로 표시됩니다 (새로고침 깜빡임
-                방지).{' '}
-                {snapshot.me.isHost
-                  ? '접속 종료자 칸의 "내보내기" 로 자리를 비울 수 있습니다.'
-                  : '접속 종료자를 내보내는 것은 방장만 할 수 있습니다.'}
+                결과 화면 — <strong>다시 하기</strong>는 같은 설정으로 5초 뒤 바로 시작(그때 접속 중인 사람만),{' '}
+                <strong>로비로</strong>는 설정을 바꾸러 갑니다. 경험 기록은 계속 남고 문제는 새로 고릅니다.
               </li>
               <li>
-                닉네임은 로비에서만 바꿀 수 있습니다. 바꿔도 점수·경험 기록은 계정에 그대로
-                남습니다.
+                모두 끊기면 일시정지. <strong>자동으로 재개되지 않습니다</strong> — 다들 돌아올 시간을 주려는 것입니다.
+                5분 동안 아무도 없으면 방이 사라집니다. 게임 중 마지막 사람이 나가기를 누르면 방이 바로 사라집니다.
+              </li>
+              <li>
+                로비의 경험률은 문제 DB 를 얼마나 풀어 봤는지입니다(높아도 시작은 막지 않는다). 접속이 끊긴 사람은 5초 뒤
+                &quot;접속 종료&quot;로 보이고, 방장은 그 칸의 &quot;내보내기&quot;로 자리를 비울 수 있습니다.
+              </li>
+              <li>
+                닉네임은 로비에서만 바꿀 수 있고 점수·경험 기록은 그대로입니다. ⚙ 의 테마·소리는 로그인한 계정에
+                저장됩니다. 오답에는 소리가 없고, 소리는 화면을 한 번 누른 뒤부터 납니다.
+              </li>
+              <li>
+                단축키는 전부 <kbd>Alt</kbd> 조합(정답 입력을 방해하지 않게). F키는 F2·F4·F8·F9 만. 목록은 입력창 옆
+                ⌨ 또는 <kbd>Alt+G</kbd>.
               </li>
             </ul>
           </InfoTip>
           <button type="button" className="ghost tiny" onClick={leaveWithConfirm}>
-            방 나가기
+            나가기
           </button>
         </div>
       </header>
@@ -449,15 +433,10 @@ export default function Lobby({
       {/* ★★ Q-82 — 게임 중 나가기 확인창. autoFocus 로 Enter 만으로 조작할 수 있다 (Q-56) */}
       {confirmLeave && (
         <section className="card confirm-card">
-          <h2>방을 나갈까요?</h2>
+          <p className="big">방을 나갈까요?</p>
           <p className="note">
-            ★ <strong>내가 마지막 접속자라면 방이 즉시 사라집니다.</strong> 진행 중인 게임도
-            함께 끝납니다. 다른 사람이 남아 있으면 게임은 계속되고, 자리는 게임이 끝날 때까지
-            유지됩니다.{' '}
-            <span className="dim">
-              잠깐 끊기는 것(새로고침·네트워크)은 나가기와 다릅니다. 그때는 일시정지되고
-              기다립니다.
-            </span>
+            ★ <strong>내가 마지막 접속자라면 방이 즉시 사라집니다.</strong> 잠깐 끊기는 것(새로고침)은 나가기와 달리
+            일시정지됩니다.
           </p>
           <div className="field-row">
             <button
@@ -485,102 +464,43 @@ export default function Lobby({
       )}
 
       <div className="stage">
-        <aside className="seats seats-left" aria-label="참여자 1~5">
+        <aside className="seats seats-left" aria-label="참여자">
           {slots.slice(0, half).map(seatOf)}
         </aside>
 
         <div className="center">
           <div className="center-main">
-            {/* ── 로비 (LOBBY / COUNTDOWN) — 왼쪽 = 설정 / 오른쪽 = 시작·초대·내 이름 */}
-            {!inGame && (
-              <div className="lobby-cols">
-                <div className="lobby-col">
-                  <GameSettings
-                    socket={socket}
-                    settings={snapshot.room.settings}
-                    settingsLocked={snapshot.room.settingsLocked}
-                    availableQuestionCount={snapshot.room.availableQuestionCount}
-                    isHost={snapshot.me.isHost}
-                  />
-                </div>
-                <div className="lobby-col">
-                  {snapshot.countdown && (
+            {/* ── 로비 (LOBBY / COUNTDOWN) — 카드 하나: 설정 + 게임 시작 */}
+            {inLobby && (
+              <section className="card lobby-card">
+                <GameSettings
+                  socket={socket}
+                  settings={snapshot.room.settings}
+                  settingsLocked={snapshot.room.settingsLocked}
+                  availableQuestionCount={snapshot.room.availableQuestionCount}
+                  isHost={snapshot.me.isHost}
+                />
+                <div className="start-area">
+                  {snapshot.countdown ? (
                     <Countdown
                       socket={socket}
                       endsAt={snapshot.countdown.endsAt}
                       serverNow={serverNow}
                       isHost={snapshot.me.isHost}
                     />
-                  )}
-                  {snapshot.room.state === 'LOBBY' && (
-                    <section className="card start-card">
-                      {snapshot.me.isHost ? (
-                        <>
-                          <button
-                            type="button"
-                            className="primary big-btn"
-                            onClick={() => socket.emit('game.start', {})}
-                          >
-                            게임 시작
-                          </button>
-                          {/* ★ R033 (Q-11 개정) — 시작은 항상 5초 뒤다 */}
-                          <p className="note">누르면 5초 뒤에 시작합니다. 그 사이 취소할 수 있습니다.</p>
-                        </>
-                      ) : (
-                        <p className="note">방장이 게임을 시작할 때까지 기다려 주세요.</p>
-                      )}
-                    </section>
-                  )}
-                  <section className="card invite-card">
-                    <h2>초대 링크</h2>
-                    <div className="field-row">
-                      <input id="invite-url" className="mono" readOnly value={inviteUrl} />
-                      <button type="button" onClick={copyInvite}>
-                        {copied ? '복사됨' : '복사'}
-                      </button>
-                    </div>
-                  </section>
-                  {/* ★★ R034 — 내 닉네임 바꾸기 (로비에서만) */}
-                  {snapshot.room.state === 'LOBBY' && me && (
-                    <section className="card rename-card">
-                      <h2>내 닉네임</h2>
-                      <div className="field-row">
-                        <input
-                          id="rename-input"
-                          value={renameDraft ?? snapshot.me.nickname}
-                          maxLength={RULES.NICKNAME_MAX_LENGTH}
-                          onChange={(e) => {
-                            setRenameDraft(e.target.value);
-                            setRenameMsg(null);
-                          }}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
-                              e.preventDefault();
-                              void doRename();
-                            }
-                          }}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => void doRename()}
-                          disabled={renameBusy || (renameDraft ?? snapshot.me.nickname).trim() === snapshot.me.nickname}
-                        >
-                          바꾸기
-                        </button>
-                      </div>
-                      {renameMsg && (
-                        <p className={renameMsg.ok ? 'note rename-msg' : 'form-error rename-msg'}>
-                          {renameMsg.text}
-                        </p>
-                      )}
-                    </section>
+                  ) : snapshot.me.isHost ? (
+                    <button type="button" className="primary big-btn" onClick={() => socket.emit('game.start', {})}>
+                      게임 시작
+                    </button>
+                  ) : (
+                    <p className="note">방장이 게임을 시작할 때까지 기다려 주세요.</p>
                   )}
                 </div>
-              </div>
+              </section>
             )}
 
-            {/* ── ★★ 문제 화면 */}
-            {snapshot.question && !snapshot.result && (
+            {/* ── ★★ 문제 화면 (카드 하나) */}
+            {snapshot.question && !snapshot.result && !snapshot.paused && (
               <Question
                 socket={socket}
                 question={snapshot.question}
@@ -588,7 +508,7 @@ export default function Lobby({
                 skip={snapshot.skip}
                 serverNow={serverNow}
                 isHost={snapshot.me.isHost}
-                state={snapshot.room.state}
+                state={state}
                 players={snapshot.players}
                 myAccountId={snapshot.me.accountId}
                 activeCount={snapshot.room.activeCount}
@@ -597,12 +517,10 @@ export default function Lobby({
               />
             )}
 
-            {/* ── ★★ 일시정지 화면 (Phase 5) */}
-            {snapshot.paused && (
-              <Paused socket={socket} paused={snapshot.paused} serverNow={serverNow} />
-            )}
+            {/* ── ★★ 일시정지 */}
+            {snapshot.paused && <Paused socket={socket} paused={snapshot.paused} serverNow={serverNow} />}
 
-            {/* ── ★★ 결과 화면 */}
+            {/* ── ★★ 결과 (순위 카드 하나) */}
             {snapshot.result && (
               <GameResult
                 socket={socket}
@@ -615,48 +533,47 @@ export default function Lobby({
             {/* ★ 게임이 시작됐는데 문제가 아직 없는 짧은 순간 — 빈 화면을 보여주지 않는다 */}
             {snapshot.game && !snapshot.question && !snapshot.result && !snapshot.paused && (
               <section className="card">
-                <h2>게임 진행</h2>
                 <p className="big dim">문제를 준비하고 있습니다…</p>
               </section>
             )}
           </div>
 
-          {/* ── 채팅 로그 + 입력 (= 답안 입력. guide 12절). 가운데 아래에 늘 있다 */}
+          {/* ── 채팅 로그 + 입력 (= 답안 입력. guide 12절). ★ 스크롤바는 보이지 않고 휠로 올려 본다 (R035) */}
           <section className="card chat-card">
-            <div
-              className="chat-log"
-              ref={logRef}
-              onScroll={(e) => {
-                const el = e.currentTarget;
-                stickToBottom.current = el.scrollHeight - el.scrollTop - el.clientHeight < 40;
-              }}
-            >
-              {chat.length === 0 && <p className="note">아직 대화가 없습니다.</p>}
-              {chat.map((m) =>
-                m.system ? (
-                  <p key={m.id} className="chat-system">
-                    {m.text}
-                  </p>
-                ) : (
-                  <p key={m.id} className="chat-line">
-                    <span className="nick" style={{ color: `var(--p${m.colorIndex})` }}>
-                      {m.nickname}
-                    </span>
-                    <ChatText
-                      text={m.text}
-                      mine={m.accountId === snapshot.me.accountId}
-                      masked={m.masked}
-                    />
-                  </p>
-                ),
+            <div className="chat-wrap">
+              <div
+                className="chat-log"
+                ref={logRef}
+                onScroll={(e) => {
+                  const el = e.currentTarget;
+                  const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
+                  stickToBottom.current = atBottom;
+                  if (atBottom) setNewBelow(false);
+                }}
+              >
+                {chat.map((m) =>
+                  m.system ? (
+                    <p key={m.id} className="chat-system">
+                      {m.text}
+                    </p>
+                  ) : (
+                    <p key={m.id} className="chat-line">
+                      <span className="nick" style={{ color: `var(--p${m.colorIndex})` }}>
+                        {m.nickname}
+                      </span>
+                      <ChatText text={m.text} mine={m.accountId === snapshot.me.accountId} masked={m.masked} />
+                    </p>
+                  ),
+                )}
+              </div>
+              {newBelow && (
+                <button type="button" className="chat-down" aria-label="최신 메시지로" onClick={scrollChatToBottom}>
+                  ↓
+                </button>
               )}
             </div>
-            {/* ★★ 도배 억제 안내 (Q-18). 입력창 바로 위 문서 흐름에 둔다 (iOS 키보드) */}
-            {throttled && (
-              <p className="warn throttle-note">
-                너무 빨리 보내고 있습니다. 잠시 후 다시 보내 주세요.
-              </p>
-            )}
+            {/* ★★ 도배 억제 안내 (Q-18) — 입력창 바로 위 문서 흐름 (iOS 키보드) */}
+            {throttled && <p className="warn throttle-note">너무 빨리 보내고 있습니다. 잠시 후 다시 보내 주세요.</p>}
             <div className="field-row chat-input-row">
               <input
                 ref={inputRef}
@@ -676,17 +593,12 @@ export default function Lobby({
               <button type="button" className="primary" onClick={send}>
                 전송
               </button>
-              {/* ★★ R034 — 단축키는 접어 둔다 (넘기기 투표만 넘기기 버튼에 크게) */}
-              <ShortcutBar
-                shortcuts={shortcuts}
-                expanded={showKeys}
-                onToggle={() => setShowKeys((v) => !v)}
-              />
+              <ShortcutBar shortcuts={shortcuts} expanded={showKeys} onToggle={() => setShowKeys((v) => !v)} />
             </div>
           </section>
         </div>
 
-        <aside className="seats seats-right" aria-label="참여자 6~10">
+        <aside className="seats seats-right" aria-label="참여자">
           {slots.slice(half).map(seatOf)}
         </aside>
       </div>

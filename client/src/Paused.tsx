@@ -50,6 +50,14 @@ export default function Paused({ socket, paused, serverNow }: Props) {
     return () => clearInterval(id);
   }, [paused.abandonAt, serverNow]);
 
+  // ★ R035 — 일시정지 중에는 문제 카드를 그리지 않으므로 강제 종료(Alt+Q) 확인창을 여기서 연다
+  const [confirmEnd, setConfirmEnd] = useState(false);
+  useEffect(() => {
+    const open = () => setConfirmEnd(true);
+    window.addEventListener('qw:host-end', open);
+    return () => window.removeEventListener('qw:host-end', open);
+  }, []);
+
   // ★ Q-83 — 정수 초로 표시한다. 소수점은 눈만 아프다
   const abandonSec = Math.ceil(abandonInMs / 1000);
   const abandonMin = Math.floor(abandonSec / 60);
@@ -68,11 +76,9 @@ export default function Paused({ socket, paused, serverNow }: Props) {
         복귀
       </p>
       <p className="note">
-        {fromText(paused.pausedFrom)}에 모두 접속이 끊겨 게임이 멈췄습니다.
-        <br />
+        {fromText(paused.pausedFrom)}에 모두 접속이 끊겨 게임이 멈췄습니다.{' '}
         {/* ★★ 멈춘 남은 시간을 보여준다. 재개하면 이 시간부터 이어진다 */}
-        멈춘 시점의 남은 시간 <span className="mono">{frozenSec}초</span> — 재개하면 여기서
-        이어집니다.
+        멈춘 시점의 남은 시간 <span className="mono">{frozenSec}초</span>
       </p>
 
       {/* ★ 방이 사라지기까지 남은 시간 (Q-82).
@@ -94,16 +100,32 @@ export default function Paused({ socket, paused, serverNow }: Props) {
           <button type="button" className="primary" onClick={() => socket.emit('game.resume', {})}>
             재개
           </button>
-          <p className="note dim">
-            ★ 단축키 <span className="mono">Alt+R</span> 또는 <span className="mono">F8</span>
-            <br />
-            ★★ <strong>자동으로 재개되지 않습니다.</strong> 다른 참가자들이 새 주소로 다시
-            들어올 시간을 주기 위한 것입니다. 먼저 들어온 한 명 때문에 게임이 돌아가면 나머지가
-            접속하는 동안 문제가 소모됩니다.
-          </p>
+          {/* ★ R035 — 진행 알림만 남긴다. 왜 자동 재개가 없는지는 ⓘ 안내로 옮겼다 */}
+          <p className="note dim">자동으로 재개되지 않습니다 — 모두 돌아오면 재개를 눌러 주세요.</p>
         </>
       ) : (
-        <p className="note">방장이 재개하기를 기다리는 중입니다.</p>
+        <p className="note">자동으로 재개되지 않습니다 — 방장이 재개하기를 기다리는 중입니다.</p>
+      )}
+      {confirmEnd && (
+        <div className="confirm">
+          <p className="big">게임을 강제 종료할까요? 결과 화면으로 갑니다.</p>
+          <div className="field-row">
+            <button
+              type="button"
+              className="primary"
+              autoFocus
+              onClick={() => {
+                socket.emit('host.forceEnd', {});
+                setConfirmEnd(false);
+              }}
+            >
+              예
+            </button>
+            <button type="button" className="ghost" onClick={() => setConfirmEnd(false)}>
+              아니오
+            </button>
+          </div>
+        </div>
       )}
     </section>
   );

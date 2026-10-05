@@ -25,8 +25,9 @@ export default function ShortcutBar({ shortcuts, expanded, onToggle }: Props) {
         aria-expanded={expanded}
         onClick={onToggle}
         title="단축키 전체 (Alt+G)"
+        aria-label="단축키"
       >
-        ⌨ 단축키
+        ⌨
       </button>
       {expanded && (
         <div className="keybar-pop" role="dialog" aria-label="단축키">
@@ -59,10 +60,6 @@ export default function ShortcutBar({ shortcuts, expanded, onToggle }: Props) {
               <span className="keylabel">입력창으로 돌아가기</span>
             </li>
           </ul>
-          <p className="note dim">
-            단축키는 전부 <kbd>Alt</kbd> 조합입니다 — 정답을 치는 중에 방해하지 않습니다. F키는
-            브라우저 기능과 겹치지 않는 넷(F2·F4·F8·F9)에만 있습니다.
-          </p>
         </div>
       )}
     </span>

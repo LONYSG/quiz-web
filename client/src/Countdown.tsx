@@ -40,26 +40,23 @@ export default function Countdown({ socket, endsAt, serverNow, isHost }: Props) 
   //   ★ 근거는 Question.tsx 의 같은 자리에 적었다. 소수점은 눈만 아프다.
   const sec = Math.ceil(remainMs / 1000);
 
+  // ★ R035 — 카드가 아니라 로비 카드 안의 "게임 시작" 자리에 들어간다. 설명 문장은 ⓘ 로 옮겼다
   return (
-    <section className="card countdown-card">
-      <h2>곧 시작합니다</h2>
+    <div className="countdown-box">
       {remainMs > 0 ? (
         /* ★ R033 — key 에 초를 넣어 매 초 다시 튀어 오르게 한다 */
         <p key={sec} className="countdown-big mono">
-          {sec}초
+          {sec}초 후 시작
         </p>
       ) : (
         /* ★ 0이 되어도 여기서 상태를 바꾸지 않는다. 서버 이벤트를 기다린다 */
         <p className="countdown-big dim">시작 중…</p>
       )}
-      <p className="note">
-        카운트다운 중에도 새로 들어올 수 있습니다. 들어온 사람은 그대로 이 게임에 참가합니다.
-      </p>
       {isHost && (
         <button type="button" className="ghost" onClick={() => socket.emit('game.cancelCountdown', {})}>
           카운트다운 취소
         </button>
       )}
-    </section>
+    </div>
   );
 }

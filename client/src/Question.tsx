@@ -19,7 +19,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatDifficulties, formatTopics, type DifficultyTier, type GameTopic } from '@quiz/shared';
+import { formatDifficulties, formatTopics, RULES, type DifficultyTier, type GameTopic } from '@quiz/shared';
+import QuestionText from './QuestionText.js';
 import Avatar from './Avatar.js';
 import type { QuestionView, ResolutionView, SkipView } from './useRoom.js';
 
@@ -60,6 +61,7 @@ export default function Question({
 }: Props) {
   const active = state === 'QUESTION_ACTIVE';
   const [remainMs, setRemainMs] = useState(() => Math.max(0, question.endsAt - serverNow()));
+  const [, setTick] = useState(0);
   /** 강제 스킵·강제 종료 확인창 */
   const [confirming, setConfirming] = useState<'skip' | 'end' | null>(null);
   const cardRef = useRef<HTMLElement>(null);
@@ -68,6 +70,8 @@ export default function Question({
     // 100ms 마다 다시 그린다. 서버 tick 주기와 같아 표시가 어긋나 보이지 않는다.
     const id = setInterval(() => {
       setRemainMs(Math.max(0, question.endsAt - serverNow()));
+      // ★ R035 — 정답 공개 중에도 "N초 후" 안내가 줄어들도록 다시 그린다
+      setTick((t) => t + 1);
     }, 100);
     return () => clearInterval(id);
   }, [question.endsAt, serverNow]);
@@ -154,82 +158,71 @@ export default function Question({
       ? players.find((p) => p.accountId === resolution.winnerAccountId) ?? null
       : null;
 
+  // ★★ R035 — 정답 공개 8초 중 남은 시간 (다음 문제·결과까지). 앞 3초는 안내를 띄우지 않는다
+  const nextRemainMs = resolution?.nextAt != null ? Math.max(0, resolution.nextAt - serverNow()) : null;
+  const showNext = nextRemainMs !== null && nextRemainMs <= RULES.RESOLVED_NOTICE_AT_MS;
+  const isLastQuestion = question.index >= question.total;
+
+  // ★★ R035 — 가운데 **카드 하나**: 머리줄 · 지문 · 막대 · (힌트 + 행동 줄) 또는 (정답 공개)
   return (
-    <>
-      <section ref={cardRef} className={`card question-card${urgent ? ' urgent' : ''}`}>
-        <div className="q-head">
-          <span className="q-progress mono">
-            문제 {question.index} / {question.total}
-          </span>
-          {/* ★ 카테고리는 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 */}
-          <span className="badge cat">{question.categoryName}</span>
-          {/* ★ R025 — 어떤 난이도로 하는 판인지 */}
-          <span className="badge diff">난이도 {formatDifficulties(difficulties)}</span>
-          {/* ★ R034 — 분야를 골라 한 판이면 표시한다 (전체면 자리를 차지하지 않는다) */}
-          {formatTopics(topics) !== '전체' && (
-            <span className="badge diff">분야 {formatTopics(topics)}</span>
-          )}
-          {question.selfExperienced && (
-            /* ★ 본인에게만 보이는 배지 (01-GAME-RULES 12장) */
-            <span className="badge exp">이미 풀어본 퀴즈입니다</span>
-          )}
-          {/* ★★ R033 — 남은 시간은 **작은 숫자**로 머리줄 오른쪽에 (건우: "너무 크다").
-              ★ 0 이 되어도 여기서 상태를 바꾸지 않는다. 서버 이벤트를 기다린다 */}
-          {active &&
-            (remainMs > 0 ? (
-              <span className={`q-timer mono${last5 ? ' urgent' : ''}`}>{sec}초</span>
-            ) : (
-              <span className="q-timer dim">결과 확인 중…</span>
-            ))}
+    <section ref={cardRef} className={`card question-card${urgent ? ' urgent' : ''}`}>
+      <div className="q-head">
+        <span className="q-progress mono">
+          {question.index} / {question.total}
+        </span>
+        {/* ★ 카테고리는 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 */}
+        <span className="badge cat">{question.categoryName}</span>
+        <span className="badge diff">난이도 {formatDifficulties(difficulties)}</span>
+        {formatTopics(topics) !== '전체' && <span className="badge diff">분야 {formatTopics(topics)}</span>}
+        {question.selfExperienced && (
+          /* ★ 본인에게만 보이는 배지 (01-GAME-RULES 12장) — 진행에 필요한 알림이다 */
+          <span className="badge exp">이미 풀어본 퀴즈 — 이번 문제는 점수 없음</span>
+        )}
+        {/* ★ 0 이 되어도 여기서 상태를 바꾸지 않는다. 서버 이벤트를 기다린다 */}
+        {active &&
+          (remainMs > 0 ? (
+            <span className={`q-timer mono${last5 ? ' urgent' : ''}`}>{sec}초</span>
+          ) : (
+            <span className="q-timer dim">결과 확인 중…</span>
+          ))}
+      </div>
+
+      {/* ★★ 1순위 — 문제 지문. 문장마다 줄을 바꾸고 긴 문장은 글자를 줄여 한 줄에 (R035) */}
+      <QuestionText text={question.text} />
+
+      {active && (
+        <div className="q-timebar" aria-hidden="true">
+          <div
+            className={`q-timebar-fill${last5 ? ' urgent' : urgent ? ' warn' : ''}`}
+            style={{ transform: `scaleX(${ratio})` }}
+          />
         </div>
+      )}
 
-        {/* ★★ 1순위 — 문제 지문. 새 문제마다 살짝 올라오며 나타난다 (key=epoch) */}
-        <p key={question.epoch} className="q-text">
-          {question.text}
-        </p>
+      {/* ── 문제 푸는 중: 힌트 자리(처음부터 확보) + 행동 줄 */}
+      {active && (
+        <div className="q-hints">
+          {question.generalHint && (
+            <p className="q-hint q-hint-general">
+              <span className="hint-label">힌트</span> <span>{question.generalHint}</span>
+            </p>
+          )}
+          {question.hintRevealed && (
+            <p className="q-hint">
+              <span className="hint-label">초성</span>{' '}
+              {question.hint ? (
+                <span className="mono hint-value">{question.hint}</span>
+              ) : (
+                <span className="dim">이 문제는 힌트가 없습니다</span>
+              )}
+            </p>
+          )}
+        </div>
+      )}
 
-        {/* ★ 줄어드는 막대 (40초 기준 비율). 남은 10초는 주황, 5초는 빨강 */}
-        {active && (
-          <div className="q-timebar" aria-hidden="true">
-            <div
-              className={`q-timebar-fill${last5 ? ' urgent' : urgent ? ' warn' : ''}`}
-              style={{ transform: `scaleX(${ratio})` }}
-            />
-          </div>
-        )}
-
-        {/* ★★ 힌트 자리 — **처음부터 두 줄을 잡아 둔다** (R033).
-            ★ 건우: "10초 초성 힌트 공개 시 문제와 초성 사이에 줄바꿈이 생겨서 못생겨진다."
-            ★ 힌트가 나와도 아래가 밀리지 않는다. 힌트가 없는 문제는 빈 자리로 남는다 */}
-        {active && (
-          <div className="q-hints">
-            {/* ── ★★ 일반 힌트 (R028). 남은 30초부터 (R034). 없는 문제는 아무것도 나오지 않는다 */}
-            {question.generalHint && (
-              <p className="q-hint q-hint-general">
-                <span className="hint-label">힌트</span> <span>{question.generalHint}</span>
-              </p>
-            )}
-            {/* ── 초성 힌트 (남은 15초부터 — R034) */}
-            {question.hintRevealed && (
-              <p className="q-hint">
-                <span className="hint-label">초성</span>{' '}
-                {question.hint ? (
-                  <span className="mono hint-value">{question.hint}</span>
-                ) : (
-                  <span className="dim">이 문제는 힌트가 없습니다</span>
-                )}
-              </p>
-            )}
-          </div>
-        )}
-
-        {/* ★ R034 — 경험자는 참여자 칸의 "경험" 배지로 옮겼다 (전원 공개 D-011 은 그대로).
-            ★ 무슨 뜻인지는 ⓘ 안내에 있다 */}
-      </section>
-
-      {/* ── ★★ 정답 공개 (QUESTION_RESOLVED) — 정답자를 화면에서 가장 크게 (건우 요청) */}
+      {/* ── ★★ 정답 공개 (8초) — 정답자 가장 크게 · 정답 · 해설 크게 · 3초 뒤 "N초 후 다음 문제" */}
       {resolution && (
-        <section key={resolution.epoch} className="card reveal-card">
+        <div key={resolution.epoch} className="reveal">
           {winner ? (
             <>
               <Confetti />
@@ -251,20 +244,19 @@ export default function Question({
           <p className="reveal-answer">
             정답 <strong>{resolution.displayAnswer}</strong>
           </p>
-          {resolution.explanation && <p className="note">{resolution.explanation}</p>}
-          <p className="note dim">
-            {/* ★★ R034 (Q-17 개정) — 마지막 문제도 5초 뒤에 결과로 간다 */}
-            {question.index >= question.total
-              ? '마지막 문제였습니다. 잠시 후 결과 화면으로 이동합니다.'
-              : '잠시 후 다음 문제가 시작됩니다. 그 사이에도 채팅할 수 있습니다.'}
+          {resolution.explanation && <p className="reveal-explain">{resolution.explanation}</p>}
+          {/* ★ 진행 알림 — 작고 흐리게. 앞 3초는 비워 둔다 (자리는 잡아 둔다 — 화면이 출렁이지 않게) */}
+          <p className="reveal-next" aria-live="polite">
+            {showNext && nextRemainMs !== null
+              ? `${Math.ceil(nextRemainMs / 1000)}초 후 ${isLastQuestion ? '결과 화면' : '다음 문제'}`
+              : ' '}
           </p>
-        </section>
+        </div>
       )}
 
-      {/* ── ★★ 행동 줄 (R034) — 넘기기 투표를 가장 크게. 방장 버튼은 작게 옆에.
-          ★ 건우: "스킵 투표가 아예 안 된다 / 눈에 잘 띄게 / 몇 명 중 몇 명인지." */}
+      {/* ── ★★ 행동 줄 — 넘기기 투표를 가장 크게. 방장 버튼은 작게 옆에 */}
       {(active || isHost) && confirming === null && (
-        <section className="card action-bar">
+        <div className="action-bar">
           {active && skip && (
             <div className="skip-box">
               <button
@@ -277,9 +269,7 @@ export default function Question({
                 {skip.selfVoted ? '⏭ 넘기기 취소' : '⏭ 넘기기 투표'} <kbd>Alt+S</kbd>
               </button>
               {skip.threshold === null ? (
-                <span className="skip-status note">
-                  혼자일 때는 투표로 넘길 수 없어요{isHost ? ' — 방장 넘기기를 쓰세요' : ''}
-                </span>
+                <span className="skip-status note">혼자일 때는 투표로 넘길 수 없어요</span>
               ) : (
                 <span className="skip-status">
                   <span className="skip-count mono">
@@ -290,10 +280,8 @@ export default function Question({
                       <i key={i} className={i < skip.votes ? 'on' : undefined} />
                     ))}
                   </span>
-                  {/* ★ 누가 투표했는지는 표시하지 않는다 (guide 22절). 서버도 명단을 보내지 않는다 */}
-                  <span className="note dim">
-                    접속 {activeCount}명 중 {skip.threshold}명이 누르면 넘어가요
-                  </span>
+                  {/* ★ 누가 투표했는지는 표시하지 않는다 (guide 22절) */}
+                  <span className="note dim">접속 {activeCount}명 중 {skip.threshold}명</span>
                 </span>
               )}
             </div>
@@ -310,59 +298,54 @@ export default function Question({
               </button>
             </div>
           )}
-        </section>
+        </div>
       )}
 
-      {/* ── 방장 확인창. 방향키·Enter·마우스·터치로 모두 조작할 수 있어야 한다 (guide 23절).
-          ★ autoFocus 로 Enter 가 바로 먹는다. */}
+      {/* ── 방장 확인창 (방향키·Enter·마우스·터치. autoFocus 로 Enter 가 바로 먹는다) */}
       {isHost && confirming !== null && (
-        <section className="card host-card">
-          <div className="confirm">
-            <p className="big">
-              {confirming === 'skip'
-                ? '이 문제를 넘길까요? 정답이 공개됩니다.'
-                : '게임을 강제 종료할까요? 정답을 공개하지 않고 결과 화면으로 갑니다.'}
-            </p>
-            {confirming === 'end' && (
-              <p className="note">
-                강제 종료한 문제는 <strong>경험 기록을 남기지 않습니다.</strong> 이미 지나간 문제의
-                기록은 그대로 유지됩니다.
-              </p>
-            )}
-            <div className="field-row">
-              <button
-                type="button"
-                className="primary"
-                autoFocus
-                onClick={() => {
-                  if (confirming === 'skip') {
-                    socket.emit('host.forceSkip', { epoch: question.epoch });
-                  } else {
-                    // ★ 강제 종료에는 epoch 를 담지 않는다. 게임 전체 액션이다
-                    socket.emit('host.forceEnd', {});
-                  }
-                  setConfirming(null);
-                  document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
-                }}
-              >
-                예
-              </button>
-              <button
-                type="button"
-                className="ghost"
-                onClick={() => {
-                  setConfirming(null);
-                  // ★★ 확인창이 닫히면 포커스가 채팅 입력으로 돌아와야 한다 (Q-56)
-                  document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
-                }}
-              >
-                아니오
-              </button>
-            </div>
+        <div className="confirm">
+          <p className="big">
+            {confirming === 'skip'
+              ? '이 문제를 넘길까요? 정답이 공개됩니다.'
+              : '게임을 강제 종료할까요? 결과 화면으로 갑니다.'}
+          </p>
+          {confirming === 'end' && active && (
+            /* ★ 이 판단에 필요한 알림이라 남긴다 (강제 종료 = 이 문제는 경험 기록 없음) */
+            <p className="note">지금 문제는 정답을 공개하지 않아 <strong>경험 기록을 남기지 않습니다.</strong></p>
+          )}
+          <div className="field-row">
+            <button
+              type="button"
+              className="primary"
+              autoFocus
+              onClick={() => {
+                if (confirming === 'skip') {
+                  socket.emit('host.forceSkip', { epoch: question.epoch });
+                } else {
+                  // ★ 강제 종료에는 epoch 를 담지 않는다. 게임 전체 액션이다
+                  socket.emit('host.forceEnd', {});
+                }
+                setConfirming(null);
+                document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
+              }}
+            >
+              예
+            </button>
+            <button
+              type="button"
+              className="ghost"
+              onClick={() => {
+                setConfirming(null);
+                // ★★ 확인창이 닫히면 포커스가 채팅 입력으로 돌아와야 한다 (Q-56)
+                document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
+              }}
+            >
+              아니오
+            </button>
           </div>
-        </section>
+        </div>
       )}
-    </>
+    </section>
   );
 }
 
