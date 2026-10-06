@@ -91,6 +91,10 @@ const NO_GATE = args.includes('--no-gate');
 const NO_SELECT = args.includes('--no-select-gate');
 const SELECT_MIN_ACC = 2;   // 1 은 제외
 const SELECT_MIN_WORTH = 3; // 3 미만 제외
+// ★★ R037 (건우 Q-105 확정 · 기준서 5-2): 분야 묶음이 미디어·콘텐츠면 알 가치 2 도 통과. 1 은 미디어도 제외.
+//   묶음은 categories.game_topic — category_game_topics 뷰(0009)가 가장 가까운 조상의 값을 준다. 축구는 스포츠라 예외 없음 (Q-106)
+const MEDIA_TOPIC = 'media';
+const SELECT_MIN_WORTH_MEDIA = 2;
 const SELECT_MAX_ACC2_SHARE = 0.05;
 /**
  * ★★ R030: 일반 힌트 게이트 (기준서 4-1 H0 · H2). 기본으로 켠다.
@@ -314,6 +318,11 @@ try {
   const catByKey = new Map(catRows.rows.map((r) => [r.key, r.id]));
   const fallbackId = catByKey.get('general') ?? catRows.rows[0]?.id;
   if (!fallbackId) throw new Error('categories 테이블이 비어 있다. 먼저 마이그레이션을 적용한다.');
+  // ★ R037 분야 묶음 — 미디어 알 가치 예외에 쓴다. 뷰가 없으면(0009 미적용) 예외 없이 3 이상으로 본다
+  const topicRows = await client.query(`SELECT to_regclass('public.category_game_topics') IS NOT NULL AS ok`);
+  const topicByCat = new Map(topicRows.rows[0]?.ok
+    ? (await client.query('SELECT category_id, game_topic FROM category_game_topics')).rows.map((r) => [r.category_id, r.game_topic])
+    : []);
 
   // ── 3. 이미 있는 source_ref 조회
   //   ★★ R011 수정: 전에는 items[0].sourceId 하나로만 조회했다.
@@ -416,7 +425,8 @@ try {
     if (!NO_SELECT && item.sourceId === SEED_SOURCE_ID) {
       if (!sc) { skipped.push({ ref: item.sourceRef, reason: '★ 채점되지 않았다 — score-v1 점수가 없다 (선별 게이트)' }); continue; }
       if (sc.acc < SELECT_MIN_ACC) { skipped.push({ ref: item.sourceRef, reason: `★ 접근성 ${sc.acc} — ${sc.accWhy} (선별 게이트: 1 제외)` }); continue; }
-      if (sc.wor < SELECT_MIN_WORTH) { skipped.push({ ref: item.sourceRef, reason: `★ 알 가치 ${sc.wor} — ${sc.worWhy} (선별 게이트: 3 미만 제외)` }); continue; }
+      const minWorth = topicByCat.get(categoryId) === MEDIA_TOPIC ? SELECT_MIN_WORTH_MEDIA : SELECT_MIN_WORTH;
+      if (sc.wor < minWorth) { skipped.push({ ref: item.sourceRef, reason: `★ 알 가치 ${sc.wor} — ${sc.worWhy} (선별 게이트: ${minWorth} 미만 제외${minWorth === SELECT_MIN_WORTH_MEDIA ? ' — 미디어·콘텐츠 예외' : ''})` }); continue; }
     }
     // ★★ R031 질문 게이트
     if (!NO_GATE && item.sourceId === SEED_SOURCE_ID) {

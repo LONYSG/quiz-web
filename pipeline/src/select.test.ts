@@ -232,7 +232,7 @@ describe('★ R012 소분류 설계 원칙 검증', () => {
   it('트리 규모가 R012 개정 결과와 맞는다', () => {
     expect(MAJORS).toHaveLength(7);
     expect(MIDS).toHaveLength(63);
-    expect(MIDS.reduce((n, m) => n + m.subs.length, 0)).toBe(297);
+    expect(MIDS.reduce((n, m) => n + m.subs.length, 0)).toBe(298); // ★ R037 해외 드라마 +1
   });
 });
 
