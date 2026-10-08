@@ -19,10 +19,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatDifficulties, formatTopics, RULES, type DifficultyTier, type GameTopic } from '@quiz/shared';
+import { formatDifficulties, formatGapNsString, formatTopics, RULES, type DifficultyTier, type GameTopic } from '@quiz/shared';
 import QuestionText from './QuestionText.js';
 import Avatar from './Avatar.js';
-import type { QuestionView, ResolutionView, SkipView } from './useRoom.js';
+import ChatText from './ChatText.js';
+import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
 
 interface Props {
   socket: Socket;
@@ -43,6 +44,8 @@ interface Props {
   topics: GameTopic[];
   /** ★ R034 — 지금 접속 인원 (넘기기 투표 현황 "몇 명 중") */
   activeCount: number;
+  /** ★★ R038 — 세레머니: 정답 공개 동안 정답자가 친 채팅 (정답 메시지부터) */
+  ceremony: ChatView[];
 }
 
 export default function Question({
@@ -58,6 +61,7 @@ export default function Question({
   difficulties,
   topics,
   activeCount,
+  ceremony,
 }: Props) {
   const active = state === 'QUESTION_ACTIVE';
   const [remainMs, setRemainMs] = useState(() => Math.max(0, question.endsAt - serverNow()));
@@ -143,16 +147,33 @@ export default function Question({
    *   전체 시간이 늘어도 기준이 같아야 한다. 막대 길이는 비율이라 40초에 맞춰 자연히 줄어든다.
    *   (15초에는 초성 힌트가 나오는 것 자체가 신호다)
    */
-  const urgent = active && remainMs <= 10_000;
+  const urgent = active && remainMs <= RULES.TIMER_WARN_MS;
 
   const sendSkipVote = (vote: boolean) => {
     socket.emit('skip.vote', { vote, epoch: question.epoch });
   };
 
   /** ★ 줄어드는 막대의 길이 (0~1). 문제 시간 30초 기준 */
-  const ratio = Math.max(0, Math.min(1, remainMs / Math.max(1, question.endsAt - question.startedAt)));
-  /** 마지막 5초 — 숫자와 막대가 빨갛게 뛴다 */
-  const last5 = active && remainMs <= 5_000;
+  /**
+   * ★★ R038 — 막대 = 남은 시간 ÷ **문제 시간(RULES.QUESTION_DURATION_MS)**.
+   *   ★ 옛 코드는 (endsAt − startedAt) 로 나눴다. 일시정지 뒤 재개하면 endsAt 이 미뤄지는데 startedAt 은 그대로라
+   *     분모가 커지고 → **막대가 남은 시간보다 짧게** 그려졌다 (R038 1장).
+   */
+  const ratio = Math.max(0, Math.min(1, remainMs / RULES.QUESTION_DURATION_MS));
+  /** 마지막 5초 — 숫자가 빨갛게 뛴다 */
+  const last5 = active && remainMs <= RULES.TIMER_URGENT_MS;
+  /**
+   * ★★ R038 — 막대 색을 **서서히** 바꾼다 (건우: "빨간색으로 자연스럽게 전환").
+   *   15→10초: 보라 → 주황 / 10→5초: 주황 → 빨강. 그 뒤는 빨강.
+   */
+  const toWarn = Math.max(0, Math.min(1, (RULES.TIMER_FADE_MS - remainMs) / (RULES.TIMER_FADE_MS - RULES.TIMER_WARN_MS)));
+  const toBad = Math.max(0, Math.min(1, (RULES.TIMER_WARN_MS - remainMs) / (RULES.TIMER_WARN_MS - RULES.TIMER_URGENT_MS)));
+  const barColor =
+    toBad > 0
+      ? `color-mix(in oklab, var(--bad) ${Math.round(toBad * 100)}%, var(--warn))`
+      : toWarn > 0
+        ? `color-mix(in oklab, var(--warn) ${Math.round(toWarn * 100)}%, var(--accent))`
+        : undefined;
   const winner =
     resolution?.reason === 'correct'
       ? players.find((p) => p.accountId === resolution.winnerAccountId) ?? null
@@ -193,8 +214,9 @@ export default function Question({
       {active && (
         <div className="q-timebar" aria-hidden="true">
           <div
-            className={`q-timebar-fill${last5 ? ' urgent' : urgent ? ' warn' : ''}`}
-            style={{ transform: `scaleX(${ratio})` }}
+            className={`q-timebar-fill${last5 ? ' urgent' : ''}`}
+            data-ratio={ratio.toFixed(3)}
+            style={{ transform: `scaleX(${ratio})`, ...(barColor ? { background: barColor } : {}) }}
           />
         </div>
       )}
@@ -220,32 +242,68 @@ export default function Question({
         </div>
       )}
 
-      {/* ── ★★ 정답 공개 (8초) — 정답자 가장 크게 · 정답 · 해설 크게 · 3초 뒤 "N초 후 다음 문제" */}
+      {/* ── ★★ 정답 공개 (8초) — 정답자 가장 크게 · 정답 · 해설 크게 · ★ R038 세레머니 · 뒷북 · 3초 뒤 "N초 후" */}
       {resolution && (
-        <div key={resolution.epoch} className="reveal">
-          {winner ? (
-            <>
-              <Confetti />
-              <div className="winner">
-                <Avatar nickname={winner.nickname} colorIndex={winner.colorIndex} large />
-                <div>
-                  <p className="winner-label">정답!</p>
-                  <p className="winner-name" style={{ color: `var(--p${winner.colorIndex})` }}>
-                    {winner.nickname}
-                    {winner.accountId === myAccountId && <span className="badge me">나</span>}
-                  </p>
+        <div key={resolution.epoch} className={winner ? 'reveal has-winner' : 'reveal'}>
+          <div className="reveal-main">
+            {winner ? (
+              <>
+                <Confetti />
+                <div className="winner">
+                  <Avatar nickname={winner.nickname} colorIndex={winner.colorIndex} large />
+                  <div>
+                    <p className="winner-label">정답!</p>
+                    <p className="winner-name" style={{ color: `var(--p${winner.colorIndex})` }}>
+                      {winner.nickname}
+                      {winner.accountId === myAccountId && <span className="badge me">나</span>}
+                    </p>
+                  </div>
+                  <span className="winner-plus">+1</span>
                 </div>
-                <span className="winner-plus">+1</span>
+              </>
+            ) : (
+              <p className="reveal-title">{resolveTitle(resolution, players)}</p>
+            )}
+            <p className="reveal-answer">
+              정답 <strong>{resolution.displayAnswer}</strong>
+            </p>
+            {resolution.explanation && <p className="reveal-explain">{resolution.explanation}</p>}
+          </div>
+
+          {/* ★★★ 세레머니 칸 — 정답자가 이 8초 동안 치는 채팅을 **모두에게 크게**. 정답자가 없으면 칸이 없다 */}
+          {winner && (
+            <div className="ceremony" aria-live="polite">
+              <p className="ceremony-head">
+                🎉 <span style={{ color: `var(--p${winner.colorIndex})` }}>{winner.nickname}</span> 의 세레머니
+              </p>
+              <div className="ceremony-msgs">
+                {ceremony.length === 0 ? (
+                  <p className="ceremony-empty">한마디 하세요!</p>
+                ) : (
+                  ceremony.slice(-3).map((m) => (
+                    <p key={m.id} className="ceremony-msg">
+                      <ChatText text={m.text} mine={m.accountId === myAccountId} masked={m.masked} />
+                    </p>
+                  ))
+                )}
               </div>
-            </>
-          ) : (
-            <p className="reveal-title">{resolveTitle(resolution, players)}</p>
+            </div>
           )}
-          <p className="reveal-answer">
-            정답 <strong>{resolution.displayAnswer}</strong>
-          </p>
-          {resolution.explanation && <p className="reveal-explain">{resolution.explanation}</p>}
-          {/* ★ 진행 알림 — 작고 흐리게. 앞 3초는 비워 둔다 (자리는 잡아 둔다 — 화면이 출렁이지 않게) */}
+
+          {/* ★★★ 뒷북 — 간발의 차로 늦은 사람 (세레머니와 대비되게 초라하게). 채팅은 강조하지 않는다 */}
+          {winner && resolution.late.length > 0 && (
+            <p className="late-row">
+              <span className="late-label">뒷북</span>
+              {resolution.late.map((l) => (
+                <span key={l.accountId} className="late-item">
+                  <span style={{ color: `var(--p${l.colorIndex})` }}>{l.nickname}</span>{' '}
+                  <span className="mono">+{formatGapNsString(l.diffNs)}초</span>
+                </span>
+              ))}
+            </p>
+          )}
+
+          {/* ★ 진행 안내 — 작고 흐리게. 자리를 잡아 두어 3초 뒤 나타나도 화면이 출렁이지 않는다 */}
           <p className="reveal-next" aria-live="polite">
             {showNext && nextRemainMs !== null
               ? `${Math.ceil(nextRemainMs / 1000)}초 후 ${isLastQuestion ? '결과 화면' : '다음 문제'}`
@@ -313,7 +371,7 @@ export default function Question({
             /* ★ 이 판단에 필요한 알림이라 남긴다 (강제 종료 = 이 문제는 경험 기록 없음) */
             <p className="note">지금 문제는 정답을 공개하지 않아 <strong>경험 기록을 남기지 않습니다.</strong></p>
           )}
-          <div className="field-row">
+          <div className="field-row" data-arrow-nav>
             <button
               type="button"
               className="primary"

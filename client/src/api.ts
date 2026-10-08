@@ -95,6 +95,9 @@ export interface ServerPrefs {
   bgmVolume?: number;
   sfxOn?: boolean;
   sfxVolume?: number;
+  /** ★ R038 */
+  chatOn?: boolean;
+  chatVolume?: number;
 }
 
 export async function fetchPrefs(): Promise<ServerPrefs | null> {

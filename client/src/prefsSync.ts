@@ -26,6 +26,8 @@ function current(): ServerPrefs {
     bgmVolume: s.bgmVol,
     sfxOn: s.sfxOn,
     sfxVolume: s.sfxVol,
+    chatOn: s.chatOn,
+    chatVolume: s.chatVol,
   };
 }
 
@@ -48,6 +50,8 @@ function apply(p: ServerPrefs): void {
     if (typeof p.bgmVolume === 'number') patch.bgmVol = p.bgmVolume;
     if (typeof p.sfxOn === 'boolean') patch.sfxOn = p.sfxOn;
     if (typeof p.sfxVolume === 'number') patch.sfxVol = p.sfxVolume;
+    if (typeof p.chatOn === 'boolean') patch.chatOn = p.chatOn;
+    if (typeof p.chatVolume === 'number') patch.chatVol = p.chatVolume;
     if (Object.keys(patch).length > 0) setSoundPrefs(patch);
   } finally {
     applying = false;

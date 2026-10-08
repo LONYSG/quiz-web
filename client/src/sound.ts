@@ -34,6 +34,13 @@ export interface SoundPrefs {
   /** 0~1 */
   sfxVol: number;
   bgm: BgmId;
+  /**
+   * ★★ R038 — 채팅 소리 (메시지가 하나 올라올 때마다 · 세레머니 때 정답자 채팅은 킹받는 소리).
+   *   ★ 내 귀에 들리는 것만 정한다 — 남에게 들리는 것은 끌 수 없다 (건우 확정). 그래서 받는 쪽에서 재생한다.
+   */
+  chatOn: boolean;
+  /** 0~1 */
+  chatVol: number;
 }
 
 const KEY = 'qw.sound.v1';
@@ -44,6 +51,9 @@ const DEFAULTS: SoundPrefs = {
   bgmVol: 0.35,
   sfxVol: 0.7,
   bgm: 'bounce',
+  // ★ 채팅 소리는 작게 — 도배 때 귀가 아프지 않게
+  chatOn: true,
+  chatVol: 0.45,
 };
 
 let prefs: SoundPrefs = loadPrefs();
@@ -60,6 +70,8 @@ function loadPrefs(): SoundPrefs {
       sfxVol: clamp01(p.sfxVol, DEFAULTS.sfxVol),
       // ★ 지운 곡(오르골)이 저장돼 있으면 기본 곡으로
       bgm: BGMS.some((b) => b.id === p.bgm) ? (p.bgm as BgmId) : DEFAULTS.bgm,
+      chatOn: typeof p.chatOn === 'boolean' ? p.chatOn : DEFAULTS.chatOn,
+      chatVol: clamp01(p.chatVol, DEFAULTS.chatVol),
     };
   } catch {
     return { ...DEFAULTS };
@@ -91,8 +103,8 @@ export function setSoundPrefs(patch: Partial<SoundPrefs>): SoundPrefs {
 
 /** Alt+M — 둘 다 켜져 있거나 하나라도 켜져 있으면 전부 끄고, 전부 꺼져 있으면 전부 켠다 */
 export function toggleMuteAll(): SoundPrefs {
-  const anyOn = prefs.bgmOn || prefs.sfxOn;
-  return setSoundPrefs({ bgmOn: !anyOn, sfxOn: !anyOn });
+  const anyOn = prefs.bgmOn || prefs.sfxOn || prefs.chatOn;
+  return setSoundPrefs({ bgmOn: !anyOn, sfxOn: !anyOn, chatOn: !anyOn });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -102,6 +114,8 @@ export function toggleMuteAll(): SoundPrefs {
 let ctx: AudioContext | null = null;
 let bgmGain: GainNode | null = null;
 let sfxGain: GainNode | null = null;
+/** ★ R038 — 채팅 소리 전용 (음량을 따로 조절한다) */
+let chatGain: GainNode | null = null;
 /** 문제 진행 중에는 배경음악을 조금 줄인다 (지문에 집중) */
 let duck = 1;
 
@@ -112,8 +126,10 @@ function ensureCtx(): AudioContext | null {
   ctx = new AC();
   bgmGain = ctx.createGain();
   sfxGain = ctx.createGain();
+  chatGain = ctx.createGain();
   bgmGain.connect(ctx.destination);
   sfxGain.connect(ctx.destination);
+  chatGain.connect(ctx.destination);
   applyVolumes();
   return ctx;
 }
@@ -124,6 +140,7 @@ function applyVolumes(): void {
   // ★ 음량은 제곱으로 — 슬라이더 중간이 귀에 "중간" 으로 들린다
   bgmGain.gain.setTargetAtTime(prefs.bgmOn ? prefs.bgmVol ** 2 * 0.5 * duck : 0, t, 0.08);
   sfxGain.gain.setTargetAtTime(prefs.sfxOn ? prefs.sfxVol ** 2 : 0, t, 0.02);
+  chatGain?.gain.setTargetAtTime(prefs.chatOn ? prefs.chatVol ** 2 : 0, t, 0.02);
 }
 
 export function setDuck(on: boolean): void {
@@ -275,10 +292,77 @@ export function sfx(id: SfxId): void {
   }
 }
 
-/** ★ 정답 효과음 — 코인 (R034 건우 선택으로 고정) */
+const BRASS: Voice = { type: 'sawtooth', gain: 0.09, attack: 0.02, decay: 0.3, partials: [[1, 1], [1.004, 0.7]] };
+
+/**
+ * ★ 정답 효과음 — 코인 (R034 건우 선택) + ★★ R038 **빵빠레** (건우: "정답이 나오면 빵빠레 효과음").
+ *   코인 "띠링" 뒤에 빰-빠-밤! 이 이어진다. 세레머니 8초의 시작 신호다.
+ */
 function playCorrect(d: AudioNode, t: number): void {
-  playNote(d, mtof(83), t, 0.07, { ...SQUARE, gain: 0.16 });
-  playNote(d, mtof(88), t + 0.07, 0.4, { ...SQUARE, gain: 0.16, decay: 0.4 });
+  playNote(d, mtof(83), t, 0.07, { ...SQUARE, gain: 0.14 });
+  playNote(d, mtof(88), t + 0.07, 0.3, { ...SQUARE, gain: 0.14, decay: 0.3 });
+  const f = t + 0.25;
+  playNote(d, mtof(67), f, 0.11, BRASS);
+  playNote(d, mtof(67), f + 0.12, 0.11, BRASS);
+  for (const m of [72, 76, 79]) playNote(d, mtof(m), f + 0.24, 0.6, { ...BRASS, gain: 0.08, decay: 0.6 });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ R038 — 채팅 소리
+//   · 'chat'  메시지가 올라왔다 — 짧고 작은 "톡". ★ 오답 소리가 아니다(중립 — D-177). 오답 전용 소리는 여전히 없다(D-149)
+//   · 'taunt' 세레머니 8초 동안 **정답자가 친 채팅** — 많이 들으면 킹받는 "메~롱" (솔-미-라-솔-미 놀림 가락 + 떨림)
+//   ★★ 도배 대비 — 1초에 20개까지 칠 수 있다(Q-84). 솎아 낸다:
+//     · 직전 소리와 60ms 안이면 건너뛴다 · 0.5초 안에 6개를 넘으면 건너뛴다 → 아무리 쳐도 초당 12개 이하
+//     · 놀림 소리는 길어서 0.35초에 한 번만
+// ─────────────────────────────────────────────────────────────────────────────
+let chatTimes: number[] = [];
+let lastTaunt = 0;
+
+export function chatSound(kind: 'chat' | 'taunt'): void {
+  if (!prefs.chatOn || !ctx || ctx.state !== 'running' || !chatGain) return;
+  const nowMs = performance.now();
+  if (kind === 'taunt') {
+    if (nowMs - lastTaunt < 350) return;
+    lastTaunt = nowMs;
+    playTaunt(chatGain, ctx.currentTime + 0.01);
+    return;
+  }
+  chatTimes = chatTimes.filter((x) => nowMs - x < 500);
+  const last = chatTimes[chatTimes.length - 1] ?? -1e9;
+  if (nowMs - last < 60 || chatTimes.length >= 6) return;
+  chatTimes.push(nowMs);
+  // ★ 음 높이를 살짝 흔들어 연타해도 기계음처럼 똑같이 들리지 않게
+  const pitch = 84 + ((chatTimes.length * 2) % 5);
+  playNote(chatGain, mtof(pitch), ctx.currentTime + 0.005, 0.04, { type: 'sine', gain: 0.22, attack: 0.003, decay: 0.07 });
+}
+
+function playTaunt(d: AudioNode, t: number): void {
+  if (!ctx) return;
+  // 솔-미-라-솔-미 (놀림 가락) — 비음 섞인 소리 + 떨림
+  const notes: [number, number][] = [[79, 0.13], [76, 0.13], [81, 0.11], [79, 0.11], [76, 0.2]];
+  let at = t;
+  for (const [m, dur] of notes) {
+    const osc = ctx.createOscillator();
+    const lfo = ctx.createOscillator();
+    const lfoGain = ctx.createGain();
+    const g = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(mtof(m), at);
+    lfo.frequency.setValueAtTime(14, at);
+    lfoGain.gain.setValueAtTime(mtof(m) * 0.03, at);
+    lfo.connect(lfoGain);
+    lfoGain.connect(osc.frequency);
+    g.gain.setValueAtTime(0.0001, at);
+    g.gain.exponentialRampToValueAtTime(0.07, at + 0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+    osc.connect(g);
+    g.connect(d);
+    osc.start(at);
+    lfo.start(at);
+    osc.stop(at + dur + 0.03);
+    lfo.stop(at + dur + 0.03);
+    at += dur * 0.92;
+  }
 }
 
 /** 설정 창의 "들어 보기" */

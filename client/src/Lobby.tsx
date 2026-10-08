@@ -12,7 +12,7 @@
 // ★ 새로 만드는 버튼과 배지는 styles.css 의 라벨 규칙을 그대로 받는다 (D-022).
 // =============================================================================
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import { formatExperienceRate, RULES } from '@quiz/shared';
 import { changeNickname, errorMessage } from './api.js';
@@ -27,7 +27,7 @@ import Prefs, { setRoomOwnsKeys } from './Prefs.js';
 import Seat from './Seat.js';
 import ShortcutBar from './ShortcutBar.js';
 import { useFocusChatOnEscape, useShortcuts, type Shortcut } from './shortcuts.js';
-import { toggleMuteAll } from './sound.js';
+import { chatSound, toggleMuteAll } from './sound.js';
 import { cycleTheme } from './theme.js';
 import { useGameSounds } from './useGameSounds.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
@@ -73,8 +73,6 @@ export default function Lobby({
   const [newBelow, setNewBelow] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
-  /** 사용자가 과거 메시지를 보고 있으면 강제로 아래로 끌어내리지 않는다 (guide 36절) */
-  const stickToBottom = useRef(true);
   /** ★ 처음 받은 대화(스냅샷)는 반짝이지 않는다 — 들어오자마자 전부 반짝이면 이상하다 */
   const initialIds = useRef<Set<string> | null>(null);
   if (initialIds.current === null) initialIds.current = new Set(chat.map((m) => m.id));
@@ -85,22 +83,56 @@ export default function Lobby({
    */
   const inviteUrl = useMemo(() => `${window.location.origin}/r/${snapshot.room.id}`, [snapshot.room.id]);
 
-  // ── 채팅: 맨 아래를 보고 있으면 따라 내려가고, 올려 보는 중이면 ↓ 를 띄운다
-  useEffect(() => {
+  // ── ★★ 채팅: 사용자가 **일부러 올려 본 때만** 멈추고, 그 밖에는 언제나 맨 아래 (R038 — 건우 버그 보고)
+  //   ★ 옛 방식의 결함 (R038 1장): "맨 아래인가" 를 **scroll 이벤트**로 판단했다.
+  //     (1) 코드가 맨 아래로 내린 직후 다음 메시지가 먼저 붙으면, 늦게 도착한 scroll 이벤트가 "맨 아래가 아니다" 로 읽혀
+  //         따라 내려가기가 꺼졌다 — 친구들이 빨리 칠수록 잘 깨졌다.
+  //     (2) 채팅 칸 높이가 바뀌면(정답 공개 카드가 커지는 등) 아래가 가려져도 아무도 다시 내리지 않았다.
+  //   ★ 고친 방식: "올려 보는 중" 은 **사용자 동작(휠 위로 · 터치 끌기 · PageUp/↑ 키)** 으로만 켠다.
+  //     맨 아래에 다시 닿거나 ↓ 를 누르면 끈다. 새 메시지 · 칸 크기 변화 때는 그 상태만 보고 내린다.
+  const userScrolledUp = useRef(false);
+  const pinToBottom = () => {
     const el = logRef.current;
-    if (!el) return;
-    if (stickToBottom.current) {
-      el.scrollTop = el.scrollHeight;
+    if (!el || userScrolledUp.current) return;
+    el.scrollTop = el.scrollHeight;
+  };
+  useLayoutEffect(() => {
+    if (userScrolledUp.current) setNewBelow(true);
+    else {
+      pinToBottom();
       setNewBelow(false);
-    } else {
-      setNewBelow(true);
     }
   }, [chat]);
-  const scrollChatToBottom = () => {
+  useEffect(() => {
     const el = logRef.current;
-    if (!el) return;
-    el.scrollTop = el.scrollHeight;
-    stickToBottom.current = true;
+    if (!el) return undefined;
+    const ro = new ResizeObserver(() => pinToBottom());
+    ro.observe(el);
+    const markUp = () => {
+      // 다음 프레임에 실제로 맨 아래에서 벗어났는지 본다
+      requestAnimationFrame(() => {
+        if (el.scrollHeight - el.scrollTop - el.clientHeight > 24) userScrolledUp.current = true;
+      });
+    };
+    const onWheel = (e: WheelEvent) => {
+      if (e.deltaY < 0) markUp();
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (['PageUp', 'ArrowUp', 'Home'].includes(e.key)) markUp();
+    };
+    el.addEventListener('wheel', onWheel, { passive: true });
+    el.addEventListener('touchmove', markUp, { passive: true });
+    el.addEventListener('keydown', onKey);
+    return () => {
+      ro.disconnect();
+      el.removeEventListener('wheel', onWheel);
+      el.removeEventListener('touchmove', markUp);
+      el.removeEventListener('keydown', onKey);
+    };
+  }, []);
+  const scrollChatToBottom = () => {
+    userScrolledUp.current = false;
+    pinToBottom();
     setNewBelow(false);
   };
 
@@ -121,7 +153,7 @@ export default function Lobby({
     socket.emit('chat.send', { text, epoch: snapshot.question?.epoch ?? null });
     setDraft('');
     // ★ 내가 보낸 메시지는 맨 아래로 따라간다
-    stickToBottom.current = true;
+    userScrolledUp.current = false;
     inputRef.current?.focus();
   };
 
@@ -268,6 +300,57 @@ export default function Lobby({
     for (const m of chat) if (!m.system && m.accountId) out[m.accountId] = m;
     return out;
   }, [chat]);
+  // ── ★★★ 세레머니 (R038) — 정답 공개 동안 정답자가 친 채팅. 정답 메시지부터 모은다
+  //   ★ 기준점: 정답 공개를 처음 본 순간, 채팅 목록에 있던 정답자의 마지막 메시지(= 정답 메시지)
+  const ceremonyFrom = useRef<{ epoch: number; seq: number } | null>(null);
+  const ceremonyWinner =
+    state === 'QUESTION_RESOLVED' && snapshot.resolution?.reason === 'correct' ? snapshot.resolution.winnerAccountId : null;
+  if (ceremonyWinner && snapshot.resolution && ceremonyFrom.current?.epoch !== snapshot.resolution.epoch) {
+    let seq = Number.MAX_SAFE_INTEGER;
+    for (const m of chat) if (m.accountId === ceremonyWinner) seq = m.seq;
+    ceremonyFrom.current = { epoch: snapshot.resolution.epoch, seq };
+  }
+  const ceremony = useMemo(() => {
+    if (!ceremonyWinner || !ceremonyFrom.current) return [];
+    const from = ceremonyFrom.current.seq;
+    return chat.filter((m) => !m.system && m.accountId === ceremonyWinner && m.seq >= from);
+  }, [chat, ceremonyWinner]);
+
+  // ── ★★ 채팅 소리 (R038) — 메시지가 올라올 때마다 (내 귀에만, 음량은 ⚙). 세레머니 중 정답자 채팅은 킹받는 소리
+  const heard = useRef<Set<string> | null>(null);
+  useEffect(() => {
+    if (heard.current === null) {
+      heard.current = new Set(chat.map((m) => m.id));
+      return;
+    }
+    for (const m of chat) {
+      if (heard.current.has(m.id)) continue;
+      heard.current.add(m.id);
+      if (m.system) continue;
+      const taunt = Boolean(ceremonyWinner && m.accountId === ceremonyWinner && ceremony.some((c) => c.id === m.id));
+      chatSound(taunt ? 'taunt' : 'chat');
+    }
+  }, [chat, ceremony, ceremonyWinner]);
+
+  // ── ★★ 방향키로 버튼 사이 이동 (R038 — 결과 화면·확인창). 엔터로 누른다
+  //   ★ [data-arrow-nav] 안의 버튼에 포커스가 있을 때만. 기본 동작(글자 사이 캐럿 이동)을 막는다
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+      const cur = document.activeElement as HTMLElement | null;
+      const group = cur?.closest<HTMLElement>('[data-arrow-nav]');
+      if (!cur || !group || cur.tagName !== 'BUTTON') return;
+      const btns = [...group.querySelectorAll<HTMLButtonElement>('button:not(:disabled)')];
+      const i = btns.indexOf(cur as HTMLButtonElement);
+      if (i < 0) return;
+      e.preventDefault();
+      const step = e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 1;
+      btns[(i + step + btns.length) % btns.length]?.focus();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
+
   const showScore = !inLobby;
   const experiencedIds = new Set(
     state === 'QUESTION_ACTIVE' || state === 'QUESTION_RESOLVED'
@@ -438,7 +521,7 @@ export default function Lobby({
             ★ <strong>내가 마지막 접속자라면 방이 즉시 사라집니다.</strong> 잠깐 끊기는 것(새로고침)은 나가기와 달리
             일시정지됩니다.
           </p>
-          <div className="field-row">
+          <div className="field-row" data-arrow-nav>
             <button
               type="button"
               autoFocus
@@ -461,6 +544,23 @@ export default function Lobby({
             </button>
           </div>
         </section>
+      )}
+
+      {/* ★ R038 — 모바일은 참여자 칸을 숨기므로, 방장에게 접속 종료자 "내보내기" 를 여기 따로 보인다 (넓은 화면에서는 숨김) */}
+      {snapshot.me.isHost && snapshot.players.some((p) => !p.connected) && (
+        <div className="mobile-kick" role="group" aria-label="접속 종료자">
+          {snapshot.players
+            .filter((p) => !p.connected)
+            .map((p) => (
+              <span key={p.accountId} className="mobile-kick-item">
+                <span className="nick" style={{ color: `var(--p${p.colorIndex})` }}>{p.nickname}</span>{' '}
+                <span className="badge off">접속 종료</span>{' '}
+                <button type="button" className="tiny" onClick={() => socket.emit('host.kickDisconnected', { accountId: p.accountId })}>
+                  내보내기
+                </button>
+              </span>
+            ))}
+        </div>
       )}
 
       <div className="stage">
@@ -514,6 +614,7 @@ export default function Lobby({
                 activeCount={snapshot.room.activeCount}
                 difficulties={snapshot.room.settings.difficulties}
                 topics={snapshot.room.settings.topics}
+                ceremony={ceremony}
               />
             )}
 
@@ -545,10 +646,12 @@ export default function Lobby({
                 className="chat-log"
                 ref={logRef}
                 onScroll={(e) => {
+                  // ★ 여기서는 "맨 아래에 다시 닿았다" 만 본다 (멈추는 것은 사용자 동작으로만 — 위 주석)
                   const el = e.currentTarget;
-                  const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
-                  stickToBottom.current = atBottom;
-                  if (atBottom) setNewBelow(false);
+                  if (el.scrollHeight - el.scrollTop - el.clientHeight < 24) {
+                    userScrolledUp.current = false;
+                    setNewBelow(false);
+                  }
                 }}
               >
                 {chat.map((m) =>
@@ -578,7 +681,7 @@ export default function Lobby({
               <input
                 ref={inputRef}
                 value={draft}
-                maxLength={100}
+                maxLength={RULES.CHAT_MAX_LENGTH}
                 className={judging ? 'judging' : undefined}
                 placeholder={placeholder}
                 onChange={(e) => setDraft(e.target.value)}

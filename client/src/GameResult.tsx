@@ -97,7 +97,7 @@ export default function GameResult({ socket, result, isHost, myAccountId }: Prop
 
       {notice && <p className="info">{notice}</p>}
 
-      <div className="next-row">
+      <div className="next-row" data-arrow-nav>
         {isHost ? (
           <>
             {/* ★★ R035 — 다시 하기 = 같은 설정으로 **5초 뒤 바로 시작** / 로비로 = 설정을 바꾸러 간다 */}

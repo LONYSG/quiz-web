@@ -86,7 +86,7 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
     };
   }, [open]);
 
-  const muted = !sound.bgmOn && !sound.sfxOn;
+  const muted = !sound.bgmOn && !sound.sfxOn && !sound.chatOn;
 
   // ★★ R035 — 창 안의 설명 문장을 지웠다 (건우: "설명은 숨겨라"). 소리 규칙 설명은 방 안 ⓘ 안내에 있다
   return (
@@ -168,6 +168,24 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
               value={sound.sfxVol}
               aria-label="효과음 음량"
               onChange={(e) => setSoundPrefs({ sfxVol: Number(e.target.value) })}
+            />
+          </label>
+          {/* ★★ R038 — 채팅 소리: 내 귀에 들리는 것만 (남에게 들리는 것은 끌 수 없다) */}
+          <label className="prefs-row">
+            <input
+              type="checkbox"
+              checked={sound.chatOn}
+              onChange={(e) => setSoundPrefs({ chatOn: e.target.checked })}
+            />
+            채팅 소리
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.05}
+              value={sound.chatVol}
+              aria-label="채팅 소리 음량"
+              onChange={(e) => setSoundPrefs({ chatVol: Number(e.target.value) })}
             />
           </label>
           {onLogout && (

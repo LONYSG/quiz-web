@@ -81,6 +81,15 @@ export interface ResolutionView {
   nextAt: number | null;
   index: number;
   text: string;
+  /** ★★ R038 — 뒷북 명단 (정답자 발생 후 3초 안에 정답을 보낸 사람. 도착 순). diffNs = 나노초 문자열 */
+  late: LateAnswerView[];
+}
+
+export interface LateAnswerView {
+  accountId: string;
+  nickname: string;
+  colorIndex: number;
+  diffNs: string;
 }
 
 /** 스킵 투표 현황. ★ 투표자 명단은 오지 않는다 */
@@ -477,6 +486,7 @@ export function useRoom(socket: Socket | null): RoomHook {
             nextAt: p.nextAt,
             index: prev.question?.index ?? 0,
             text: prev.question?.text ?? '',
+            late: [],
           },
           // ★ 정답이 공개되면 스킵 투표는 끝난다
           skip: null,
@@ -509,6 +519,14 @@ export function useRoom(socket: Socket | null): RoomHook {
             selfVoted: p.selfVoted ?? prev.skip?.selfVoted ?? false,
           },
         };
+      });
+    };
+
+    // ★★ R038 — 뒷북 명단 갱신 (늦게 온 사람이 생길 때마다 전체 명단이 온다)
+    const onLate = (p: { epoch: number; late: LateAnswerView[] }) => {
+      setSnapshot((prev) => {
+        if (!prev?.resolution || prev.resolution.epoch !== p.epoch) return prev;
+        return { ...prev, resolution: { ...prev.resolution, late: p.late } };
       });
     };
 
@@ -643,6 +661,7 @@ export function useRoom(socket: Socket | null): RoomHook {
     socket.on('question.generalHint', onGeneralHint);
     socket.on('question.resolved', onResolved);
     socket.on('skip.voteUpdated', onSkipUpdated);
+    socket.on('question.lateAnswers', onLate);
     socket.on('game.result', onGameResult);
     socket.on('game.returnedToLobby', onReturnedToLobby);
     socket.on('chat.throttled', onThrottled);
@@ -672,6 +691,7 @@ export function useRoom(socket: Socket | null): RoomHook {
       socket.off('question.generalHint', onGeneralHint);
       socket.off('question.resolved', onResolved);
       socket.off('skip.voteUpdated', onSkipUpdated);
+      socket.off('question.lateAnswers', onLate);
       socket.off('game.result', onGameResult);
       socket.off('game.returnedToLobby', onReturnedToLobby);
       socket.off('chat.throttled', onThrottled);
