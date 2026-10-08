@@ -136,6 +136,38 @@ export default function Lobby({
     setNewBelow(false);
   };
 
+  // ── ★★ 모바일 키보드 (R039) — 키보드가 내려가면 **올라가기 전 화면 위치로** 돌아온다
+  //   ★ 원인: 키보드가 올라오면 브라우저가 입력창이 보이도록 화면을 밀어 올린다. 내려가도 그 위치가 남아
+  //     아래에 빈 공간(모바일 하단 여백 160px)이 드러났다. → 여백을 없애고(CSS), 내려갈 때 위치를 되돌린다.
+  //   ★ visualViewport(보이는 영역) 높이로 키보드가 올라왔는지 판단한다 — 키보드는 이 높이만 줄인다.
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return undefined;
+    let full = vv.height;
+    let open = false;
+    let saved = 0;
+    const onFocus = (e: FocusEvent) => {
+      if (e.target instanceof HTMLInputElement && !open) saved = window.scrollY;
+    };
+    const onResize = () => {
+      if (vv.height < full * 0.8) {
+        open = true;
+      } else {
+        full = Math.max(full, vv.height);
+        if (open) {
+          open = false;
+          window.scrollTo({ top: saved });
+        }
+      }
+    };
+    document.addEventListener('focusin', onFocus);
+    vv.addEventListener('resize', onResize);
+    return () => {
+      document.removeEventListener('focusin', onFocus);
+      vv.removeEventListener('resize', onResize);
+    };
+  }, []);
+
   // ★ 억제 안내는 서버가 준 시각까지만 보여주고 스스로 사라진다
   useEffect(() => {
     if (throttledUntil === null) return undefined;
@@ -383,16 +415,7 @@ export default function Lobby({
   const slots = Array.from({ length: snapshot.room.maxPlayers }, (_, i) => i);
   const half = Math.ceil(slots.length / 2);
 
-  /** ★ 입력창 자리표시 — 지금 입력이 답안으로 판정되는지 (옛 안내 문장을 대신한다) */
-  const placeholder = !me
-    ? '참가자가 아닙니다'
-    : judging
-      ? '정답을 입력하세요 — 모든 메시지가 답안입니다'
-      : snapshot.question?.selfExperienced && isActive
-        ? '이미 풀어본 문제 — 이번 문제는 점수를 얻을 수 없어요'
-        : state === 'QUESTION_RESOLVED'
-          ? '정답 공개 중 — 지금은 판정되지 않습니다'
-          : '메시지를 입력하세요';
+  // ★ R039 — 입력칸 자리표시(placeholder)를 지웠다 (건우). 지금 판정되는지는 입력칸 테두리 색(judging)으로 보인다
 
   const phase = inLobby ? 'lobby' : isResult ? 'result' : 'game';
 
@@ -409,7 +432,7 @@ export default function Lobby({
         </div>
         <div className="room-tools">
           <button type="button" id="invite-btn" className="ghost tiny" onClick={() => void copyInvite()} title="초대 링크 복사">
-            {copied ? '✓ 복사됨' : '🔗 초대'}
+            {copied ? '✓' : '🔗'}<span className="lbl">{copied ? ' 복사됨' : ' 초대'}</span>
           </button>
           {state === 'LOBBY' && me && (
             <span className="rename">
@@ -423,7 +446,7 @@ export default function Lobby({
                   setRenameMsg(null);
                 }}
               >
-                ✏️ 닉네임
+                ✏️<span className="lbl"> 닉네임</span>
               </button>
               {renameOpen && (
                 <div className="rename-pop" role="dialog" aria-label="닉네임 바꾸기">
@@ -507,8 +530,8 @@ export default function Lobby({
               </li>
             </ul>
           </InfoTip>
-          <button type="button" className="ghost tiny" onClick={leaveWithConfirm}>
-            나가기
+          <button type="button" className="ghost tiny" onClick={leaveWithConfirm} aria-label="나가기">
+            🚪<span className="lbl"> 나가기</span>
           </button>
         </div>
       </header>
@@ -683,7 +706,6 @@ export default function Lobby({
                 value={draft}
                 maxLength={RULES.CHAT_MAX_LENGTH}
                 className={judging ? 'judging' : undefined}
-                placeholder={placeholder}
                 onChange={(e) => setDraft(e.target.value)}
                 onKeyDown={(e) => {
                   // ★ 한글 IME 조합 중 Enter는 전송으로 처리하지 않는다 (미완성 문자열이 나간다)

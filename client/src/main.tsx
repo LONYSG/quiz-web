@@ -4,6 +4,8 @@ import App from './App.js';
 import { installAudioUnlock } from './sound.js';
 import { initTheme } from './theme.js';
 import { installPrefsSync } from './prefsSync.js';
+// ★★ R039 — Pretendard 를 우리 서버에서 낸다 (동적 서브셋 — 화면에 쓰인 글자 조각만 내려받는다)
+import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
 import './styles.css';
 
 // ★ R033 — 첫 렌더 전에 테마를 붙인다 (기본 테마로 번쩍이는 것을 막는다)

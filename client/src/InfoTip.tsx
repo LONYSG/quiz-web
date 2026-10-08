@@ -38,7 +38,7 @@ export default function InfoTip({ label = '안내', children }: Props) {
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
-        ⓘ {label}
+        ⓘ<span className="lbl"> {label}</span>
       </button>
       {open && (
         <div className="infotip-pop" role="dialog" aria-label={label}>

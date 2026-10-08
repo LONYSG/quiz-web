@@ -275,7 +275,7 @@ export default function App() {
               <input
                 value={title}
                 maxLength={30}
-                placeholder="방 제목 (1~30자)"
+                placeholder="방 제목"
                 onChange={(e) => setTitle(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && !e.nativeEvent.isComposing) createRoom();
@@ -285,7 +285,6 @@ export default function App() {
                 만들기
               </button>
             </div>
-            <p className="note">한 사람이 동시에 가질 수 있는 방은 하나입니다.</p>
           </section>
 
           <section className="card">
@@ -293,7 +292,7 @@ export default function App() {
             <div className="field-row">
               <input
                 value={joinId}
-                placeholder="방 ID"
+                placeholder="방 ID (보통은 링크를 열면 끝)"
                 className="mono"
                 onChange={(e) => setJoinId(e.target.value)}
                 onKeyDown={(e) => {
@@ -304,10 +303,6 @@ export default function App() {
                 입장
               </button>
             </div>
-            <p className="note">
-              보통은 받은 링크를 그대로 열면 됩니다. 이 입력창은 링크가 깨졌을 때를 위한
-              것입니다.
-            </p>
           </section>
         </>
       ),

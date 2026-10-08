@@ -47,8 +47,15 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
       <div className="brand">
         <span className="brand-mark" aria-hidden="true">Q</span>
         <h1>상식 퀴즈</h1>
-        <p className="sub">친구들과 함께하는 실시간 주관식 퀴즈</p>
+        <p className="sub">친구들과 실시간 퀴즈</p>
       </div>
+
+      {/* ★★ R039 (건우 요청) — "회원가입을 해야 할 수 있다" 를 한눈에. 친구들이 자꾸 물어본다 */}
+      {mode === 'login' && (
+        <p className="join-hint">
+          처음이면 <button type="button" className="link-btn" onClick={() => { setMode('signup'); setError(null); }}>회원가입</button> 먼저! 가입해야 퀴즈에 들어갈 수 있어요.
+        </p>
+      )}
 
       {/* ★ 이것은 에러가 아니라 안내다. 배너(.notice)와 다른 모양을 쓴다.
           같은 모양이면 사용자가 "무슨 문제가 생겼나" 로 읽는다. */}
@@ -89,7 +96,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
               autoComplete="username"
               autoCapitalize="none"
               spellCheck={false}
-              placeholder="영문 소문자, 숫자, _ , -  (3~20자)"
+              placeholder="영문 소문자·숫자 3~20자"
               required
             />
           </label>
@@ -101,7 +108,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
                 maxLength={12}
-                placeholder="1~12자. 대소문자를 구분합니다"
+                placeholder="1~12자"
                 required
               />
             </label>
@@ -126,10 +133,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
           </button>
         </form>
 
-        <p className="note">
-          ★ 비밀번호를 잊으면 복구할 수 없습니다. 친구들끼리 쓰는 서비스라 재설정 기능을
-          만들지 않았습니다. 잊었다면 서버를 켜 준 사람에게 재설정을 요청해 주세요.
-        </p>
+        <p className="note dim">비밀번호를 잊으면 방장에게 재설정을 부탁하세요.</p>
       </section>
     </>
   );

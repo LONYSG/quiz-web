@@ -221,22 +221,32 @@ export default function Question({
         </div>
       )}
 
-      {/* ── 문제 푸는 중: 힌트 자리(처음부터 확보) + 행동 줄 */}
+      {/* ── ★★ R039 — 힌트 두 자리는 처음부터 **잠긴 칸**으로 보인다 (🔒 + 열리는 시점). 시간이 되면 열리며 내용이 나온다.
+          ★ 건우: "힌트가 나타나기까지 비어 있어서 불균형해 보인다." → 빈 자리가 아니라 "곧 열릴 자리". 칸 높이는 같아 출렁이지 않는다.
+          ★ 일반 힌트가 없는 문제는 30초에 "힌트 없음" 으로 바뀐다 (미리 알려 주지 않는다 — 서버도 그 전에는 보내지 않는다) */}
       {active && (
         <div className="q-hints">
-          {question.generalHint && (
-            <p className="q-hint q-hint-general">
+          {question.generalHint ? (
+            <p key="g-open" className="q-hint q-hint-general open">
               <span className="hint-label">힌트</span> <span>{question.generalHint}</span>
             </p>
+          ) : remainMs <= RULES.GENERAL_HINT_REVEAL_AT_MS ? (
+            <p className="q-hint locked none">
+              <span className="hint-label">힌트</span> <span>없음</span>
+            </p>
+          ) : (
+            <p className="q-hint locked">
+              <span className="hint-label">힌트</span> <span>🔒 {RULES.GENERAL_HINT_REVEAL_AT_MS / 1000}초</span>
+            </p>
           )}
-          {question.hintRevealed && (
-            <p className="q-hint">
+          {question.hintRevealed ? (
+            <p key="c-open" className="q-hint open">
               <span className="hint-label">초성</span>{' '}
-              {question.hint ? (
-                <span className="mono hint-value">{question.hint}</span>
-              ) : (
-                <span className="dim">이 문제는 힌트가 없습니다</span>
-              )}
+              {question.hint ? <span className="mono hint-value">{question.hint}</span> : <span className="dim">없음</span>}
+            </p>
+          ) : (
+            <p className="q-hint locked">
+              <span className="hint-label">초성</span> <span>🔒 {RULES.HINT_REVEAL_AT_MS / 1000}초</span>
             </p>
           )}
         </div>
@@ -255,7 +265,6 @@ export default function Question({
                     <p className="winner-label">정답!</p>
                     <p className="winner-name" style={{ color: `var(--p${winner.colorIndex})` }}>
                       {winner.nickname}
-                      {winner.accountId === myAccountId && <span className="badge me">나</span>}
                     </p>
                   </div>
                   <span className="winner-plus">+1</span>
@@ -280,7 +289,8 @@ export default function Question({
                 {ceremony.length === 0 ? (
                   <p className="ceremony-empty">한마디 하세요!</p>
                 ) : (
-                  ceremony.slice(-3).map((m) => (
+                  ceremony.slice(-1).map((m) => (
+                    /* ★ R039 — 최신 한 마디만. key=메시지 id 라 **같은 말이라도 새 채팅이면** 다시 튀어 오른다 */
                     <p key={m.id} className="ceremony-msg">
                       <ChatText text={m.text} mine={m.accountId === myAccountId} masked={m.masked} />
                     </p>
@@ -324,22 +334,27 @@ export default function Question({
                 aria-pressed={skip.selfVoted}
                 onClick={() => sendSkipVote(!skip.selfVoted)}
               >
-                {skip.selfVoted ? '⏭ 넘기기 취소' : '⏭ 넘기기 투표'} <kbd>Alt+S</kbd>
+                {skip.selfVoted ? '⏭ 취소' : '⏭ 넘기기'}
               </button>
               {skip.threshold === null ? (
-                <span className="skip-status note">혼자일 때는 투표로 넘길 수 없어요</span>
+                <span className="skip-status note dim">혼자선 투표 불가</span>
               ) : (
-                <span className="skip-status">
-                  <span className="skip-count mono">
-                    {skip.votes} / {skip.threshold}
-                  </span>
-                  <span className="skip-dots" aria-hidden="true">
-                    {Array.from({ length: skip.threshold }, (_, i) => (
-                      <i key={i} className={i < skip.votes ? 'on' : undefined} />
-                    ))}
-                  </span>
-                  {/* ★ 누가 투표했는지는 표시하지 않는다 (guide 22절) */}
-                  <span className="note dim">접속 {activeCount}명 중 {skip.threshold}명</span>
+                /* ★★ R039 (건우) — 숫자 없이: **접속 인원 수만큼** 아이콘, 투표마다 하나씩 채워진다.
+                   ★ 넘어가는 지점(필요 표수)의 아이콘에는 깃발을 단다 — 몇 개 채우면 넘어가는지 숫자 없이 보인다.
+                   ★ 누가 투표했는지는 표시하지 않는다 (guide 22절) — 앞에서부터 채운다 */
+                <span
+                  className="skip-icons"
+                  role="img"
+                  aria-label={`넘기기 ${skip.votes}표 · ${skip.threshold}표면 넘어감`}
+                  data-votes={skip.votes}
+                  data-threshold={skip.threshold}
+                >
+                  {Array.from({ length: Math.max(activeCount, skip.threshold ?? 0) }, (_, i) => (
+                    <i
+                      key={i}
+                      className={[i < skip.votes ? 'on' : '', i === (skip.threshold ?? 0) - 1 ? 'goal' : ''].filter(Boolean).join(' ') || undefined}
+                    />
+                  ))}
                 </span>
               )}
             </div>
@@ -348,11 +363,11 @@ export default function Question({
             <div className="host-tools">
               {active && (
                 <button type="button" className="ghost tiny" onClick={() => setConfirming('skip')}>
-                  방장 넘기기 <kbd>Alt+K</kbd>
+                  ⏭ 방장
                 </button>
               )}
               <button type="button" className="ghost tiny" onClick={() => setConfirming('end')}>
-                강제 종료 <kbd>Alt+Q</kbd>
+                ⏹ 종료
               </button>
             </div>
           )}
@@ -364,8 +379,8 @@ export default function Question({
         <div className="confirm">
           <p className="big">
             {confirming === 'skip'
-              ? '이 문제를 넘길까요? 정답이 공개됩니다.'
-              : '게임을 강제 종료할까요? 결과 화면으로 갑니다.'}
+              ? '이 문제를 넘길까요?'
+              : '게임을 끝낼까요?'}
           </p>
           {confirming === 'end' && active && (
             /* ★ 이 판단에 필요한 알림이라 남긴다 (강제 종료 = 이 문제는 경험 기록 없음) */

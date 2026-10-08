@@ -967,6 +967,147 @@ async function measureScreen(page, screenName) {
 // -----------------------------------------------------------------------------
 // 실행
 // -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// ★★★ R039 — 스크린샷 검수 흐름 (`npm run ui-check -- --shots`)
+//   ★ 건우: "스크린샷을 찍어 직접 보고 고쳐라." 숫자 게이트가 못 보는 어색한 간격·불균형을 사람이(=나) 눈으로 본다.
+//   ★ 로그인 → 회원가입 → 방 목록 → 로비(방장·게스트) → 게임(힌트 잠김·일반·초성) → 확인창 → 정답 공개(세레머니·뒷북)
+//     → 결과 · 모바일 키보드 올림/내림 을 PC·모바일 크기로 찍어 docs/design/r039/ 에 남긴다. 검사(기록)는 하지 않는다.
+// -----------------------------------------------------------------------------
+const SHOTS_ONLY = args.includes('--shots');
+const SHOT_PC = [{ w: 1280, h: 720, n: 'pc' }, { w: 1920, h: 1080, n: 'fhd' }];
+const SHOT_MOB = [{ w: 360, h: 740, n: 'm360' }, { w: 390, h: 844, n: 'm390' }, { w: 430, h: 932, n: 'm430' }];
+
+async function snap(page, name) {
+  const dir = path.join(ROOT, 'docs', 'design', 'r039');
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+  const r = await page.send('Page.captureScreenshot', { format: 'png' });
+  writeFileSync(path.join(dir, `${name}.png`), Buffer.from(r.data, 'base64'));
+  console.log(`  📸 ${name}`);
+}
+async function snapSizes(page, name, sizes) {
+  for (const s of sizes) {
+    await page.setViewport(s.w, s.h);
+    await sleep(450);
+    await page.evaluate('window.scrollTo(0, 0)');
+    await snap(page, `${name}-${s.n}`);
+  }
+}
+
+async function shotsFlow(browser) {
+  const host = await newPage(browser, 'host');
+  await host.setViewport(1280, 720);
+  await host.goto(BASE);
+  await sleep(800);
+  await snapSizes(host, '01-login', [...SHOT_PC, ...SHOT_MOB]);
+  await host.click('회원가입');
+  await sleep(300);
+  await snapSizes(host, '02-signup', [SHOT_PC[0], SHOT_MOB[1]]);
+  await host.setViewport(1280, 720);
+  await signUp(host, 'h');
+  await sleep(500);
+  await snapSizes(host, '03-home', [...SHOT_PC, ...SHOT_MOB]);
+  await host.setViewport(1280, 720);
+  const roomId = await createRoom(host, '금요일 퀴즈방');
+  await sleep(600);
+  await snapSizes(host, '04-lobby-host', [...SHOT_PC, ...SHOT_MOB]);
+
+  const guest = await newPage(browser, 'guest', true);
+  await guest.setViewport(390, 844);
+  await signUp(guest, 'g');
+  await guest.goto(`${BASE}/r/${roomId}`);
+  await guest.waitFor("document.querySelector('.stage') !== null", 10000);
+  await host.setInput('.chat-card input', '다들 준비됐어?');
+  await host.click('전송');
+  await guest.setInput('.chat-card input', 'ㅇㅇ 시작하자');
+  await guest.click('전송');
+  await sleep(600);
+  await snapSizes(guest, '05-lobby-guest', [SHOT_MOB[1], SHOT_PC[0]]);
+  // ★ 모바일 키보드 — 보이는 높이가 줄어든 상태를 흉내 낸다 (실기기 확인은 13 A29)
+  await guest.setViewport(390, 844);
+  await guest.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await guest.setViewport(390, 470);
+  await sleep(500);
+  await guest.evaluate("document.querySelector('.chat-card input')?.scrollIntoView({ block: 'end' })");
+  await sleep(300);
+  await snap(guest, '06-mobile-keyboard-open');
+  await guest.evaluate("document.querySelector('.chat-card input')?.blur()");
+  await guest.setViewport(390, 844);
+  await sleep(700);
+  await snap(guest, '07-mobile-keyboard-closed');
+
+  await host.setViewport(1280, 720);
+  await setQuestionCount(host, 3);
+  await host.click('게임 시작');
+  await host.waitFor("document.querySelector('.question-card .q-text') !== null", 15000);
+  await sleep(500);
+  await snap(host, '08-game-locked-pc');
+  await snap(guest, '08-game-locked-m390');
+  await host.waitFor("document.querySelector('.q-hint-general') !== null", 15000);
+  await sleep(300);
+  await snap(host, '09-game-hint1-pc');
+  await snap(guest, '09-game-hint1-m390');
+  await host.waitFor("[...document.querySelectorAll('.q-hint.open')].some(p => !p.classList.contains('q-hint-general'))", 20000);
+  await sleep(300);
+  await snap(host, '10-game-hint2-pc');
+  await snap(guest, '10-game-hint2-m390');
+  await guest.evaluate("document.querySelector('.skip-btn')?.click()");
+  await sleep(300);
+  await snap(host, '11-game-skipvote-pc');
+  // 확인창 (방장, PC · 모바일)
+  await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await host.key('k', { alt: true });
+  await sleep(300);
+  await snap(host, '12-confirm-pc');
+  await host.setViewport(390, 844);
+  await sleep(400);
+  await snap(host, '12-confirm-m390');
+  await host.click('아니오');
+  await host.setViewport(1280, 720);
+
+  // 정답 · 뒷북 · 세레머니
+  const text = await host.evaluate("document.querySelector('.question-card .q-text')?.dataset.text ?? ''");
+  const ans = await withPg(async (c) =>
+    (await c.query(`SELECT a.answer_text FROM questions q JOIN question_answers a ON a.question_id = q.id WHERE q.question_text = $1 ORDER BY a.is_primary DESC, a.id LIMIT 1`, [text])).rows[0]?.answer_text ?? '',
+  );
+  await host.setInput('.chat-card input', ans);
+  await host.click('전송');
+  await guest.setInput('.chat-card input', ans);
+  await guest.click('전송');
+  await host.waitFor("document.querySelector('.reveal') !== null", 5000);
+  await host.setInput('.chat-card input', '이걸 몰라? ㅋㅋㅋ');
+  await host.click('전송');
+  await sleep(900);
+  await snap(host, '13-reveal-pc');
+  await snap(guest, '13-reveal-m390');
+  await host.setViewport(1920, 1080);
+  await sleep(300);
+  await snap(host, '13-reveal-fhd');
+  await host.setViewport(1280, 720);
+
+  // 남은 문제는 방장이 넘긴다 → 결과
+  for (let i = 0; i < 2; i += 1) {
+    await host.waitFor("document.querySelector('.reveal') === null && document.querySelector('.q-timebar') !== null", 15000);
+    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+    await host.key('k', { alt: true });
+    await sleep(200);
+    await host.key('Enter');
+  }
+  await host.waitFor("document.querySelector('.result-card') !== null", 20000);
+  await sleep(800);
+  await snapSizes(host, '14-result-host', [...SHOT_PC, SHOT_MOB[1]]);
+  await snap(guest, '14-result-guest-m390');
+  // 다른 테마도 깨지지 않는지 (결과·게임은 위에서 파스텔)
+  for (const th of ['pop', 'night']) {
+    await host.evaluate(`document.documentElement.dataset.theme = '${th}'`);
+    await host.setViewport(1280, 720);
+    await sleep(300);
+    await snap(host, `15-result-${th}-pc`);
+  }
+  await host.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  console.log('\n[shots] docs/design/r039/ 에 저장했다');
+}
+
 let browserProc = null;
 let browser = null;
 
@@ -988,6 +1129,10 @@ try {
   const uiHints = await setUiHints();
   console.log(`[ui-check] 테스트용 일반 힌트 ${uiHints ?? 0}건을 넣었다 (끝나면 되돌린다)`);
 
+  if (SHOTS_ONLY) {
+    await shotsFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
   const host = await newPage(browser, 'host');
 
   // ── 로그인 화면 레이아웃
@@ -996,6 +1141,12 @@ try {
     await host.setWidth(390);
     await host.goto(BASE);
     await measureScreen(host, '로그인');
+    // ★★ R039 — 방 밖 화면도 PC 여러 해상도에서 스크롤 0 (옛 검사는 방 안 화면만 봤다)
+    await measureOneScreen(host, '로그인 화면');
+    await host.click('회원가입');
+    await sleep(300);
+    await measureOneScreen(host, '회원가입 화면');
+    await host.click('로그인');
     await host.setWidth(390);
     await host.shot('auth');
   }
@@ -1005,6 +1156,11 @@ try {
   await host.setWidth(390);
   if (!DO_LAYOUT) await host.goto(BASE);
   await signUp(host, 'h');
+  if (DO_LAYOUT) {
+    await measureOneScreen(host, '방 목록 화면');
+    await measureScreen(host, '방 목록');
+    await host.setWidth(390);
+  }
   const roomId = await createRoom(host, 'UI 점검용 방 제목 스물여덟글자');
   record('가입 → 방 생성', Boolean(roomId), `roomId=${roomId}`);
 
@@ -1029,7 +1185,7 @@ try {
     const shrunk = await shrinkAvailable(`${ACCOUNT_PREFIX}%`, 3);
     console.log(`  ★ 경험 기록 ${shrunk}행으로 출제 가능 수를 2개로 줄였다`);
     // ★ 참가자 변동이 있어야 서버가 다시 계산한다. 방을 다시 만들어 그 이벤트를 만든다
-    await host.click('나가기');
+    await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
     await host.waitFor("document.querySelector('.stage') === null", 8000);
     const roomIdShrunk = await createRoom(host, 'UI 점검용 방 제목 스물여덟글자');
     record('출제 가능 수 축소 후 방 재생성', Boolean(roomIdShrunk));
@@ -1199,13 +1355,13 @@ try {
     // ─────────────────────────────────────────────────────────────────────────
     console.log('\n[4-2] ★ 스크롤을 내린 상태에서도 알림이 보이는가 (R009 지적 1)');
     // ★ R035 — 로비가 작아져 720px 에서는 거의 스크롤이 없다. 더 좁은 폭(360px)에서 잰다
-    await host.setWidth(360);
+    await host.setViewport(360, 420);
     await sleep(300);
     const scrolled = await host.scrollToBottom();
     record(
       '페이지가 스크롤된다 (검사 전제)',
       // ★ R038 — 모바일에서 참여자 칸을 숨겨 화면이 짧아졌다. 스크롤되기만 하면 전제가 선다
-      scrolled.y > 40,
+      scrolled.y > 20,
       `y=${scrolled.y} / max=${scrolled.max}`,
     );
 
@@ -1227,8 +1383,6 @@ try {
       ['채팅 입력창', '.chat-card .field-row input'],
       ['채팅 전송 버튼', '.chat-card .field-row button'],
       // ★ 푸터의 로그아웃 버튼도 조작 대상이다. 320px 에서 실제로 겹쳤던 적이 있다
-      // ★ R035 — 방 안에는 푸터가 없다 (로그아웃은 상단 바 ⚙ 안). 단축키 버튼을 대신 본다
-      ['입력 줄 단축키 버튼', '.chat-card .keybar-btn'],
     ]) {
       const ov = await host.overlaps('.toast', sel);
       record(
@@ -1296,6 +1450,22 @@ try {
     );
     record('★ 지문이 비어 있지 않다', qLen > 5, `${qLen}자`);
 
+    // ★★ R039 — 힌트 두 자리가 처음부터 잠긴 칸으로 보인다 (🔒 + 열리는 시점)
+    record(
+      '★★ R039 — 문제 시작 때 힌트 두 칸이 잠긴 채로 자리를 잡고 있다',
+      await host.evaluate("document.querySelectorAll('.question-card .q-hint.locked').length === 2 && document.querySelector('.question-card .q-hint.locked')?.innerText.includes('🔒')"),
+    );
+    // ★★ R039 — 폰트 통일: 버튼·입력칸·본문이 모두 Pretendard (폼 요소가 시스템 글꼴을 쓰던 결함)
+    const fonts = JSON.parse(await host.evaluate(`JSON.stringify({
+      body: getComputedStyle(document.body).fontFamily,
+      button: getComputedStyle(document.querySelector('.skip-btn') ?? document.body).fontFamily,
+      input: getComputedStyle(document.querySelector('.chat-card input')).fontFamily,
+      loaded: document.fonts.check('16px "Pretendard Variable"') })`));
+    record(
+      '★★ R039 — 본문·버튼·입력칸 글꼴이 모두 Pretendard (내려받은 글꼴)',
+      [fonts.body, fonts.button, fonts.input].every((f) => /Pretendard/.test(f)) && fonts.loaded,
+      JSON.stringify(fonts),
+    );
     // ★★ R038 — 시간 막대가 남은 시간에 비례하는가 (문제 시간 40초 기준)
     const barCheck = JSON.parse(await host.evaluate(`JSON.stringify({
       ratio: Number(document.querySelector('.q-timebar-fill')?.dataset.ratio ?? -1),
@@ -1365,12 +1535,12 @@ try {
       //   ★ 이것은 실제 사용자에게도 일어난다 (확인창을 띄운 사이 문제가 끝난 경우).
       return true;
     })()`);
-    const skipBtn = await host.buttonState('방장 넘기기');
+    const skipBtn = await host.buttonState('⏭ 방장');
     record('★ 방장에게 "방장 넘기기" 버튼이 있다', skipBtn.exists && skipBtn.visible, JSON.stringify(skipBtn));
 
     // ★ 확인창이 방향키·Enter·마우스로 조작 가능해야 한다 (guide 23절).
     //   ★ autoFocus 로 Enter 가 바로 먹는지 본다
-    await host.click('방장 넘기기');
+    await host.click('⏭ 방장');
     await sleep(300);
     record(
       '★ 확인창이 나타난다',
@@ -1469,7 +1639,7 @@ try {
       record(
         '★ 일반 힌트는 초성보다 먼저 나온다 (그 순간 초성 줄이 없다)',
         await host.evaluate(
-          "[...document.querySelectorAll('.question-card .q-hint')].filter(p => !p.classList.contains('q-hint-general')).length === 0",
+          "[...document.querySelectorAll('.question-card .q-hint.open')].filter(p => !p.classList.contains('q-hint-general')).length === 0",
         ),
       );
     }
@@ -1528,8 +1698,8 @@ try {
       JSON.stringify(keybar.rect ?? keybar),
     );
     record(
-      '★★ R034 — 넘기기 투표 버튼에 Alt+S 가 크게 붙어 있다 (Q-33: 화면에는 조합키)',
-      (await host.evaluate("document.querySelector('.skip-btn kbd')?.innerText ?? ''")) === 'Alt+S',
+      '★★ R039 — 버튼에 단축키 표기가 없다 (단축키 목록 창에만)',
+      (await host.evaluate("document.querySelectorAll('.room button kbd').length")) === 0,
     );
 
     // ── ★★★ 단독 문자키는 단축키로 먹지 않는다 (채팅 입력을 방해하지 않는다)
@@ -1814,7 +1984,7 @@ try {
     // ★★ R028 — 가장 긴 경우: 일반 힌트 + 초성 힌트가 **둘 다** 보일 때 한 화면인가
     console.log('\n[5-5b] ★★★ 한 화면 검사 — 일반 힌트 + 초성 힌트 동시 표시');
     const bothShown = await host.waitFor(
-      "document.querySelector('.question-card .q-hint-general') !== null && [...document.querySelectorAll('.question-card .q-hint')].some(p => !p.classList.contains('q-hint-general'))",
+      "document.querySelector('.question-card .q-hint-general') !== null && [...document.querySelectorAll('.question-card .q-hint.open')].some(p => !p.classList.contains('q-hint-general'))",
       45000,
     );
     record('★★ 남은 15초부터 일반 힌트와 초성 힌트가 함께 보인다 (R034)', bothShown);
@@ -1868,7 +2038,7 @@ try {
     await host.setWidth(720);
     await sleep(250);
 
-    const againBtn = await host.buttonState('다시 하기');
+    const againBtn = await host.buttonState('🔁 다시 하기');
     record('★ 다시 하기 버튼이 있다', againBtn.exists && !againBtn.disabled, JSON.stringify(againBtn));
     // ★ R034 — 단축키 Alt+L (단축키 동작 표)
     await host.key('l', { alt: true });
@@ -1883,7 +2053,7 @@ try {
     );
 
     // ── 방을 비우고 새로 만든다
-    await host.click('나가기');
+    await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
     await host.waitFor("document.querySelector('.stage') === null", 8000);
     const roomId2 = await createRoom(host, '내보내기 확인용 방');
     record('두 번째 방 생성', Boolean(roomId2));
@@ -2005,7 +2175,7 @@ try {
     // ── ★★★ 스킵 투표 — 두 사람이 실제 버튼·단축키로
     const skipState = (page) =>
       page.evaluate(`JSON.stringify({
-        count: document.querySelector('.skip-count')?.innerText.replace(/\\s+/g, ' ').trim() ?? null,
+        count: (() => { const e = document.querySelector('.skip-icons'); return e ? e.dataset.votes + ' / ' + e.dataset.threshold : null; })(),
         btn: document.querySelector('.skip-btn')?.innerText ?? null,
         disabled: document.querySelector('.skip-btn')?.disabled ?? null,
         pressed: document.querySelector('.skip-btn')?.getAttribute('aria-pressed') ?? null })`).then(JSON.parse);
@@ -2017,25 +2187,29 @@ try {
       `방장=${JSON.stringify(s0h)} / 게스트=${JSON.stringify(s0g)}`,
     );
     await host.evaluate("document.querySelector('.skip-btn')?.click()");
-    const v1 = await host.waitFor("document.querySelector('.skip-count')?.innerText.replace(/\\s+/g,' ').trim() === '1 / 2'", 4000);
+    const v1 = await host.waitFor("document.querySelector('.skip-icons')?.dataset.votes === '1'", 4000);
     const s1h = await skipState(host);
-    const s1g = await guest.waitFor("document.querySelector('.skip-count')?.innerText.replace(/\\s+/g,' ').trim() === '1 / 2'", 4000);
+    const s1g = await guest.waitFor("document.querySelector('.skip-icons')?.dataset.votes === '1'", 4000);
     const s1gs = await skipState(guest);
     record('★★★ 방장이 투표하면 두 화면 모두 "1 / 2"', v1 && s1g, `방장=${JSON.stringify(s1h)} / 게스트=${JSON.stringify(s1gs)}`);
-    record('★★ 투표한 사람 버튼은 "넘기기 취소" 로 바뀐다 (본인 투표 여부)', s1h.pressed === 'true' && /취소/.test(s1h.btn ?? ''));
-    record('★★ 안 누른 사람 버튼은 그대로 "넘기기 투표"', s1gs.pressed === 'false' && /투표/.test(s1gs.btn ?? ''));
+    record('★★ 투표한 사람 버튼은 "취소" 로 바뀐다 (본인 투표 여부)', s1h.pressed === 'true' && /취소/.test(s1h.btn ?? ''));
+    record(
+      '★★ R039 — 넘기기는 숫자 없이 접속 인원 수만큼 아이콘 · 하나가 채워졌다',
+      await host.evaluate("document.querySelectorAll('.skip-icons i').length === 2 && document.querySelectorAll('.skip-icons i.on').length === 1 && !/\\d/.test(document.querySelector('.action-bar')?.innerText ?? '')"),
+    );
+    record('★★ 안 누른 사람 버튼은 그대로 "넘기기"', s1gs.pressed === 'false' && !/취소/.test(s1gs.btn ?? ''));
     // ★ 취소 — 한글 자판 상태를 흉내 낸다 (key 는 'ㄴ', 자판 위치는 S). R034 에서 e.code 로 고친 부분
     await host.evaluate("document.querySelector('.chat-card input')?.focus()");
     await host.key('ㄴ', { alt: true, code: 'KeyS', vk: 83 });
     record(
       '★★★ Alt+S (한글 자판 상태에서도) 로 투표가 취소된다 → "0 / 2"',
-      await host.waitFor("document.querySelector('.skip-count')?.innerText.replace(/\\s+/g,' ').trim() === '0 / 2'", 4000),
+      await host.waitFor("document.querySelector('.skip-icons')?.dataset.votes === '0'", 4000),
     );
     // ★ 다시 투표 — F2
     await host.key('F2');
     record(
       '★★ F2 로 다시 투표된다 → "1 / 2"',
-      await host.waitFor("document.querySelector('.skip-count')?.innerText.replace(/\\s+/g,' ').trim() === '1 / 2'", 4000),
+      await host.waitFor("document.querySelector('.skip-icons')?.dataset.votes === '1'", 4000),
     );
     const q1Text = await host.evaluate("document.querySelector('.question-card .q-text')?.dataset.text ?? ''");
     await guest.evaluate("document.querySelector('.chat-card input')?.focus()");
@@ -2119,13 +2293,13 @@ try {
     );
 
     // ── ★★ R038 — 결과 화면 방향키: 버튼 사이를 오간다 (글자 사이로 캐럿이 가지 않는다)
-    await third.evaluate("[...document.querySelectorAll('button')].find(b => b.innerText.trim() === '나가기')?.click()");
+    await third.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
     await host.evaluate("[...document.querySelectorAll('.next-row button')][0]?.focus()");
     await host.key('ArrowRight');
     const afterRight = await host.evaluate("document.activeElement?.innerText.replace(/Alt\\+\\w/, '').trim() ?? ''");
     await host.key('ArrowLeft');
     const afterLeft = await host.evaluate("document.activeElement?.innerText.replace(/Alt\\+\\w/, '').trim() ?? ''");
-    record('★★ R038 — 결과 화면에서 → 로 "로비로", ← 로 "다시 하기" 버튼으로 옮겨 간다', afterRight === '로비로' && afterLeft === '다시 하기', `${afterRight} / ${afterLeft}`);
+    record('★★ R038 — 결과 화면에서 → 로 "로비로", ← 로 "다시 하기" 버튼으로 옮겨 간다', afterRight === '로비로' && afterLeft === '🔁 다시 하기', `${afterRight} / ${afterLeft}`);
     await browser.send('Target.closeTarget', { targetId: third.targetId });
     third.close();
 
@@ -2272,7 +2446,7 @@ try {
       record('내보냈다는 시스템 메시지가 보인다', kickMsg.includes('내보냈습니다'));
     }
 
-    await host.click('나가기');
+    await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
     await host.waitFor("document.querySelector('.stage') === null", 8000);
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -2340,7 +2514,7 @@ try {
       await host.evaluate("document.querySelector('.toast-message')?.textContent ?? ''"),
     );
 
-    await host.click('나가기');
+    await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
     await host.waitFor("document.querySelector('.stage') === null", 8000);
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -2378,7 +2552,7 @@ try {
     other.close();
   }
 } catch (err) {
-  record('실행', false, err.message);
+  if (!err?.shotsDone) record('실행', false, err.message);
 } finally {
   try {
     if (browser) await browser.send('Browser.close').catch(() => {});

@@ -19,7 +19,7 @@
 
 /* ── 공통 토큰 (테마와 무관) ───────────────────────────────────────────────── */
 :root {
-  --font: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, -apple-system,
+  --font: 'Pretendard Variable', 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, -apple-system,
     'Segoe UI', 'Noto Sans KR', sans-serif;
   --font-mono: ui-monospace, 'Cascadia Mono', Consolas, monospace;
   --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -2396,4 +2396,255 @@ button {
   .mobile-kick button {
     margin-top: 0;
   }
+}
+
+
+/* =============================================================================
+   ★★★ R039 — 모던·깔끔 정리 (A: 버그·스크롤·모바일 / B: 폰트·다이어트)
+   ============================================================================= */
+
+/* ── ★★ 폰트 통일 — 폼 요소는 브라우저가 글꼴을 물려주지 않는다(시스템 기본 글꼴). 전부 물려받게 한다 */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+/* ── ★★ 방 밖 화면 (로그인 · 회원가입 · 방 목록) — 스크롤 없이 화면 가운데
+   ★ 옛 결함: .wrap 아래 여백이 180px(토스트 완충)이라 내용이 짧아도 화면을 넘었다 (R039 1장) */
+.wrap.narrow {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 16px 16px;
+}
+.wrap.narrow .brand {
+  margin: 0 0 14px;
+}
+.wrap.narrow .card {
+  margin-bottom: 12px;
+}
+.wrap.narrow .foot {
+  margin-top: 8px;
+}
+
+/* ── ★★★ 모바일 정비 (R039 A-3) — 미니멀: 아이콘만 · 작은 버튼 · 빈 공간 없음 */
+@media (max-width: 999px) {
+  /* 아래 여백(토스트 완충 160px)이 키보드와 함께 큰 빈 공간을 만들었다 → 없앤다. 토스트는 위로 */
+  .wrap:has(.room) {
+    padding: 8px 10px 10px;
+  }
+  body:has(.room) .toast-layer {
+    top: 8px;
+    bottom: auto;
+  }
+  /* 상단 바 — 아이콘만 */
+  .room-head .lbl {
+    display: none;
+  }
+  .room-head {
+    flex-wrap: nowrap;
+    margin-bottom: 6px;
+  }
+  .room-title h1 {
+    font-size: 1rem;
+  }
+  .room-count {
+    display: none;
+  }
+  .room-tools {
+    gap: 4px;
+  }
+  .room-tools button.tiny,
+  .room-tools .icon-btn {
+    min-width: 32px;
+    padding: 4px 8px;
+  }
+  /* 단축키 안내·단축키 모음 — 모바일에는 키보드 단축키가 없다 */
+  .keybar,
+  kbd {
+    display: none !important;
+  }
+  /* ★ 채팅 — 로그가 칸 폭을 다 쓰게 (옛 결함: 내용 폭으로 쪼그라들고 긴 글은 오른쪽으로 넘쳤다) */
+  .room .chat-log {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    height: 180px;
+  }
+  .chat-line {
+    overflow-wrap: anywhere;
+  }
+  .chat-input-row button {
+    padding: 8px 14px;
+  }
+  /* 결과 · 확인창 버튼 — 작게, 화면 안에 */
+  .next-row {
+    flex-wrap: wrap;
+  }
+  .next-row button,
+  .start-area .big-btn {
+    padding: 9px 18px;
+    font-size: 1rem;
+  }
+  .room .confirm .big {
+    font-size: 1rem;
+  }
+  .room .card {
+    padding: 10px 12px;
+  }
+}
+
+/* ── ★ R039 B — 로그인 안내 (회원가입 먼저) */
+.join-hint {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--text);
+  font-size: 0.88rem;
+  text-align: center;
+}
+.link-btn {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-weight: 900;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ── ★★ 잠긴 힌트 칸 — 처음부터 두 자리가 "곧 열릴 자리" 로 보인다. 열리면 살짝 튀며 내용이 나온다 */
+.q-hints {
+  min-height: 0;
+  justify-content: flex-start;
+}
+.q-hint {
+  min-height: 1.7em;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0;
+}
+.q-hint.locked {
+  opacity: 0.45;
+  font-size: 0.85rem;
+}
+.q-hint.locked .hint-label {
+  filter: grayscale(1);
+}
+.q-hint.locked.none {
+  opacity: 0.3;
+}
+.q-hint.open {
+  animation: hint-unlock 420ms var(--ease-pop);
+}
+@keyframes hint-unlock {
+  0% { opacity: 0; transform: translateY(4px) scale(0.97); }
+  100% { opacity: 1; transform: none; }
+}
+
+/* ── ★★ 넘기기 — 숫자 없이 아이콘이 채워진다. 깃발 = 여기까지 차면 넘어간다 */
+.skip-icons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+.skip-icons i {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-2);
+  opacity: 0.55;
+  transition: background-color 200ms, opacity 200ms, transform 200ms;
+}
+.skip-icons i.on {
+  background: var(--accent-2);
+  opacity: 1;
+  transform: scale(1.12);
+}
+.skip-icons i.goal::after {
+  content: '⚑';
+  position: absolute;
+  top: -15px;
+  left: 2px;
+  font-size: 0.7rem;
+  color: var(--accent-2);
+  font-style: normal;
+}
+.skip-icons {
+  padding-top: 8px;
+}
+
+/* ── ★ 세레머니 — 한 마디만, 크게 */
+.ceremony-msg,
+.ceremony-msg:last-child {
+  font-size: 1.6rem;
+  -webkit-line-clamp: 3;
+}
+
+/* ── ★★ 웹 채팅 — 크게 (B-7) */
+.room .chat-line,
+.room .chat-system {
+  font-size: 1.04rem;
+}
+.room .chat-system {
+  font-size: 0.85rem;
+}
+.room .chat-line {
+  padding: 2px 8px;
+  margin-bottom: 2px;
+}
+@media (max-width: 999px) {
+  .room .chat-line {
+    font-size: 0.98rem;
+  }
+  .ceremony-msg,
+  .ceremony-msg:last-child {
+    font-size: 1.3rem;
+  }
+}
+
+/* ── ★ R039 (스크린샷 검수) — 모바일: 채팅이 남는 높이를 채운다 (화면 아래가 비지 않게). 넘치면 화면 스크롤 하나 */
+@media (max-width: 999px) {
+  .room {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100dvh - 18px);
+  }
+  .room .stage {
+    flex: 1 1 auto;
+  }
+  .room .center {
+    flex: 1 1 auto;
+  }
+  /* ★ 기준 높이 0 에서 자란다 — 대화가 길어도 칸이 내용만큼 늘어나지 않는다 (위쪽 옛 메시지는 잘린다) */
+  .room .chat-card {
+    flex: 1 1 0;
+    min-height: 240px;
+  }
+  .room .chat-wrap {
+    flex: 1 1 0;
+    min-height: 0;
+  }
+  .room .chat-log {
+    flex: 1 1 0;
+    height: auto;
+    min-height: 0;
+  }
+}
+.skip-icons i {
+  width: 19px;
+  height: 19px;
 }

@@ -38,6 +38,10 @@ export default function QuestionText({ text }: { text: string }) {
         box.style.setProperty('--q-px', `${px}px`);
       }
       const wrap = widest() > width;
+      // ★★ R039 — 잴 때 바꾼 줄바꿈 상태를 **DOM 에도 다시** 적는다.
+      //   ★ 옛 코드의 결함: 재측정(창 크기·글꼴 로딩) 때 data-wrap 을 '0' 으로 바꿔 놓고, 결과가 이전과 같으면 React 가
+      //     다시 그리지 않아 '0'(줄바꿈 금지) 이 그대로 남았다 → 긴 문장이 **칸 밖으로 잘렸다** (R039 1장)
+      box.dataset.wrap = wrap ? '1' : '0';
       setFit((prev) => (prev.px === px && prev.wrap === wrap ? prev : { px, wrap }));
     };
     measure();

@@ -104,7 +104,7 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
 
       {open && (
         <div className="prefs-pop" role="dialog" aria-label="테마와 소리">
-          <p className="prefs-title">테마 <kbd>Alt+T</kbd></p>
+          <p className="prefs-title">테마</p>
           <div className="seg">
             {THEMES.map((t) => (
               <button
@@ -120,7 +120,7 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
           </div>
 
           <p className="prefs-title">
-            소리 <kbd>Alt+M</kbd>
+            소리
           </p>
           <label className="prefs-row">
             <input

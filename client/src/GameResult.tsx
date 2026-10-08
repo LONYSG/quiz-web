@@ -102,10 +102,10 @@ export default function GameResult({ socket, result, isHost, myAccountId }: Prop
           <>
             {/* ★★ R035 — 다시 하기 = 같은 설정으로 **5초 뒤 바로 시작** / 로비로 = 설정을 바꾸러 간다 */}
             <button type="button" className="primary big-btn" autoFocus onClick={() => socket.emit('game.again', {})}>
-              다시 하기 <kbd>Alt+A</kbd>
+              🔁 다시 하기
             </button>
             <button type="button" className="ghost" onClick={() => socket.emit('game.toLobby', {})}>
-              로비로 <kbd>Alt+L</kbd>
+              로비로
             </button>
           </>
         ) : (

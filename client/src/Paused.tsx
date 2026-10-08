@@ -108,7 +108,7 @@ export default function Paused({ socket, paused, serverNow }: Props) {
       )}
       {confirmEnd && (
         <div className="confirm">
-          <p className="big">게임을 강제 종료할까요? 결과 화면으로 갑니다.</p>
+          <p className="big">게임을 끝낼까요?</p>
           <div className="field-row" data-arrow-nav>
             <button
               type="button"
