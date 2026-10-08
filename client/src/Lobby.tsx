@@ -15,7 +15,9 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import { formatExperienceRate, RULES } from '@quiz/shared';
-import { changeNickname, errorMessage } from './api.js';
+import { changeNickname, deleteAvatar, errorMessage, uploadAvatar } from './api.js';
+import Avatar from './Avatar.js';
+import ProfileEditor from './ProfileEditor.js';
 import ChatText from './ChatText.js';
 import Countdown from './Countdown.js';
 import GameSettings from './GameSettings.js';
@@ -69,6 +71,8 @@ export default function Lobby({
   const [renameDraft, setRenameDraft] = useState<string | null>(null);
   const [renameMsg, setRenameMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [renameBusy, setRenameBusy] = useState(false);
+  /** ★ R039 — 편집 중인 프로필 사진 파일 */
+  const [photoFile, setPhotoFile] = useState<File | null>(null);
   /** ★★ R035 — 채팅을 올려 보는 중에 새 메시지가 왔는가 (↓ 버튼) */
   const [newBelow, setNewBelow] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -226,7 +230,7 @@ export default function Lobby({
   useEffect(() => {
     if (!renameOpen) return undefined;
     const onDown = (e: PointerEvent) => {
-      if (!(e.target as Element).closest('.rename')) setRenameOpen(false);
+      if (!(e.target as Element).closest('.rename') && !(e.target as Element).closest('.modal-back')) setRenameOpen(false);
     };
     window.addEventListener('pointerdown', onDown);
     return () => window.removeEventListener('pointerdown', onDown);
@@ -383,6 +387,9 @@ export default function Lobby({
     return () => document.removeEventListener('keydown', onKey);
   }, []);
 
+  /** ★ R039 — 계정별 사진 버전 (채팅 줄·결과 화면의 작은 아바타) */
+  const avatarOf = (accountId: string) => snapshot.players.find((p) => p.accountId === accountId)?.avatarV ?? null;
+
   const showScore = !inLobby;
   const experiencedIds = new Set(
     state === 'QUESTION_ACTIVE' || state === 'QUESTION_RESOLVED'
@@ -446,10 +453,47 @@ export default function Lobby({
                   setRenameMsg(null);
                 }}
               >
-                ✏️<span className="lbl"> 닉네임</span>
+                ✏️<span className="lbl"> 프로필</span>
               </button>
               {renameOpen && (
-                <div className="rename-pop" role="dialog" aria-label="닉네임 바꾸기">
+                <div className="rename-pop" role="dialog" aria-label="내 프로필">
+                  {/* ★★ R039 — 프로필 사진: 누르면 사진 고르기 → 원형 편집기 */}
+                  <div className="profile-row">
+                    <label className="profile-photo" title="사진 바꾸기">
+                      <Avatar
+                        nickname={snapshot.me.nickname}
+                        colorIndex={snapshot.me.colorIndex}
+                        large
+                        accountId={snapshot.me.accountId}
+                        avatarV={me?.avatarV}
+                      />
+                      <span className="profile-cam" aria-hidden="true">📷</span>
+                      <input
+                        id="avatar-file"
+                        type="file"
+                        accept="image/*"
+                        hidden
+                        onChange={(e) => {
+                          const f = e.target.files?.[0];
+                          e.target.value = '';
+                          if (f) setPhotoFile(f);
+                        }}
+                      />
+                    </label>
+                    {me?.avatarV ? (
+                      <button
+                        type="button"
+                        className="ghost tiny"
+                        onClick={() => {
+                          void deleteAvatar().catch((err) => setRenameMsg({ ok: false, text: errorMessage(err) }));
+                        }}
+                      >
+                        사진 지우기
+                      </button>
+                    ) : (
+                      <span className="dim profile-tip">📷 눌러 사진 넣기</span>
+                    )}
+                  </div>
                   <div className="field-row">
                     <input
                       id="rename-input"
@@ -535,6 +579,18 @@ export default function Lobby({
           </button>
         </div>
       </header>
+
+      {photoFile && (
+        <ProfileEditor
+          file={photoFile}
+          onCancel={() => setPhotoFile(null)}
+          onDone={async (blob) => {
+            await uploadAvatar(blob);
+            setPhotoFile(null);
+            setRenameMsg({ ok: true, text: '프로필 사진을 바꿨습니다.' });
+          }}
+        />
+      )}
 
       {/* ★★ Q-82 — 게임 중 나가기 확인창. autoFocus 로 Enter 만으로 조작할 수 있다 (Q-56) */}
       {confirmLeave && (
@@ -648,6 +704,7 @@ export default function Lobby({
             {snapshot.result && (
               <GameResult
                 socket={socket}
+                players={snapshot.players}
                 result={snapshot.result}
                 isHost={snapshot.me.isHost}
                 myAccountId={snapshot.me.accountId}
@@ -684,6 +741,13 @@ export default function Lobby({
                     </p>
                   ) : (
                     <p key={m.id} className="chat-line">
+                      <Avatar
+                        xs
+                        nickname={m.nickname}
+                        colorIndex={m.colorIndex}
+                        accountId={m.accountId}
+                        avatarV={avatarOf(m.accountId)}
+                      />
                       <span className="nick" style={{ color: `var(--p${m.colorIndex})` }}>
                         {m.nickname}
                       </span>

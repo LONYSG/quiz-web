@@ -149,6 +149,7 @@ export function addPlayer(
   accountId: string,
   nickname: string,
   socketId: string,
+  avatarV: number | null = null,
 ): AddPlayerResult {
   const existing = room.players.get(accountId);
   if (existing) {
@@ -156,6 +157,7 @@ export function addPlayer(
     existing.socketId = socketId;
     existing.disconnectedAt = null;
     existing.nickname = nickname; // 로비에서 닉네임을 바꿨을 수 있다
+    existing.avatarV = avatarV;
     accountRoom.set(accountId, room.id);
     room.emptySince = null;
     return { ok: true, player: existing, rejoined: true };
@@ -174,6 +176,7 @@ export function addPlayer(
     socketId,
     disconnectedAt: null,
     score: 0,
+    avatarV,
   };
   room.players.set(accountId, player);
   accountRoom.set(accountId, room.id);

@@ -21,6 +21,8 @@ export interface PlayerView {
   isHost: boolean;
   joinOrder: number;
   score: number;
+  /** ★ R039 — 프로필 사진 버전. null 이면 이름 첫 글자 */
+  avatarV?: number | null;
 }
 
 export interface ChatView {

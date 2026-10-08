@@ -116,6 +116,7 @@ export function registerSocketHandlers(io: Server): void {
           accountId: session.accountId,
           nickname: session.nickname,
           sessionId: session.sessionId,
+          avatarV: session.avatarV,
         };
       }
       next();
@@ -926,7 +927,7 @@ function attachToRoom(
     return;
   }
 
-  const added = addPlayer(room, session.accountId, session.nickname, socket.id);
+  const added = addPlayer(room, session.accountId, session.nickname, socket.id, session.avatarV);
   if (!added.ok) {
     sendError(socket, 'ROOM_FULL');
     return;

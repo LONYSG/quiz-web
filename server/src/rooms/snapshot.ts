@@ -32,6 +32,8 @@ export interface PlayerView {
   isHost: boolean;
   joinOrder: number;
   score: number;
+  /** ★ R039 — 프로필 사진 버전. null 이면 이름 첫 글자 */
+  avatarV: number | null;
 }
 
 export interface RoomSnapshot {
@@ -182,6 +184,7 @@ export function toPlayerView(room: Room, player: Player, now = Date.now()): Play
     isHost: room.hostAccountId === player.accountId,
     joinOrder: player.joinOrder,
     score: player.score,
+    avatarV: player.avatarV,
   };
 }
 

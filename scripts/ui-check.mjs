@@ -2326,6 +2326,25 @@ try {
     await guest.waitFor("document.querySelector('#rename-btn') !== null", 6000);
     await guest.evaluate("document.querySelector('#rename-btn').click()");
     await guest.waitFor("document.querySelector('#rename-input') !== null", 3000);
+
+    // ── ★★ R039 — 프로필 사진: 파일 고르기 → 원형 편집기 → 등록 → 방장 화면 참여자 칸에 사진
+    console.log('\n[6-C0] ★★ 프로필 사진 (R039)');
+    {
+      const doc = await guest.send('DOM.getDocument', { depth: -1, pierce: true });
+      const { nodeId } = await guest.send('DOM.querySelector', { nodeId: doc.root.nodeId, selector: '#avatar-file' });
+      await guest.send('DOM.setFileInputFiles', { nodeId, files: [path.join(ROOT, 'docs', 'design', 'pastel-1-lobby.png')] });
+      const editorUp = await guest.waitFor("document.querySelector('.profile-editor .crop-stage img') !== null", 5000);
+      record('★★ 사진을 고르면 원형 편집기가 열린다 (미리보기 포함)', editorUp && (await guest.evaluate("document.querySelectorAll('.crop-preview canvas').length === 2")));
+      // 확대 · 끌기
+      await guest.evaluate(`(() => { const r = document.querySelector('.crop-zoom'); const d = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value'); d.set.call(r, '1.6'); r.dispatchEvent(new Event('input', { bubbles: true })); })()`);
+      await sleep(200);
+      await guest.evaluate("[...document.querySelectorAll('.profile-editor button')].find(b => b.innerText.trim() === '등록')?.click()");
+      const hostSees = await host.waitFor(`document.querySelector('.seat-card[data-account="${ids?.g}"] img.avatar.photo')?.naturalWidth === 256`, 8000);
+      record('★★★ 등록하면 방장 화면 참여자 칸에 사진이 뜬다 (256×256 으로 줄여 올렸다)', hostSees);
+      const bytes = await withPg(async (c) => (await c.query(`SELECT bytes, mime FROM account_avatars WHERE account_id = $1`, [ids?.g])).rows[0]);
+      record('★ DB 에 작게 저장된다 (200KB 이하 · webp)', bytes && bytes.bytes <= 200 * 1024, JSON.stringify(bytes));
+      record('★ 채팅 줄에도 같은 사진 (작은 아바타)', await host.evaluate(`[...document.querySelectorAll('.chat-line img.avatar.xs')].length > 0`));
+    }
     const expBefore = await withPg(async (c) =>
       (await c.query(`SELECT count(*)::int AS n FROM question_experiences WHERE account_id = $1`, [ids?.g])).rows[0].n,
     );

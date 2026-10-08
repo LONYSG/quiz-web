@@ -14,6 +14,7 @@ import { Server as SocketIOServer } from 'socket.io';
 import { CLIENT_DIST, config } from './config.js';
 import { runBootCleanup } from './db/bootCleanup.js';
 import { closePool, getDbActiveMs } from './db/pool.js';
+import { avatarRouter } from './http/avatarRoutes.js';
 import { authRouter } from './http/authRoutes.js';
 import { registerSocketHandlers } from './socket/index.js';
 import { startTick, stopTick } from './tick.js';
@@ -104,6 +105,8 @@ async function main(): Promise<void> {
   }
 
   app.use('/api/auth', authRouter);
+  // ★ R039 — 프로필 사진
+  app.use('/api/avatar', avatarRouter);
 
   // ── 클라이언트 정적 서빙.
   //   ★ 오리진을 하나로 유지하는 것이 이 프로젝트의 기본 방침이다 (docs/02-ARCHITECTURE.md 1장).

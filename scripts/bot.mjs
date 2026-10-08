@@ -4364,6 +4364,75 @@ async function scenarioLate() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★ avatar — R039 프로필 사진 서버 확인 (형식 · 크기 · 게임 중 금지 · 방 안 알림)
+// -----------------------------------------------------------------------------
+const PNG_1PX = Buffer.from(
+  'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
+  'base64',
+);
+
+async function putAvatar(bot, body, type) {
+  const res = await fetch(`${BASE}/api/avatar`, {
+    method: 'PUT',
+    headers: { 'content-type': type, cookie: bot.cookie ?? '' },
+    body,
+  });
+  const json = await res.json().catch(() => ({}));
+  return { status: res.status, json };
+}
+
+async function scenarioAvatar() {
+  log('시나리오 avatar — ★★ 프로필 사진 (R039)');
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('R039 프사 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  await guest.connect();
+  guest.join(host.snapshot.room.id);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+
+  log('\n[1] 형식 · 크기');
+  let r = await putAvatar(guest, PNG_1PX, 'image/png');
+  expect('★ 진짜 PNG 는 받는다', r.status, 200);
+  expectTrue('★ 버전이 온다', typeof r.json.avatarV === 'number');
+  const get = await fetch(`${BASE}/api/avatar/${guest.snapshot.me.accountId}?v=${r.json.avatarV}`);
+  expect('★ 다시 받으면 같은 형식', get.headers.get('content-type'), 'image/png');
+  await host.waitFor(
+    () => host.snapshot.players.some((p) => p.accountId === guest.snapshot.me.accountId && p.avatarV === r.json.avatarV),
+    4000,
+    '방장 화면에 사진 버전',
+  );
+  expectTrue('★★ 방 안 사람들의 참여자 목록에 사진 버전이 실린다', true);
+  r = await putAvatar(guest, Buffer.from('<svg xmlns="http://www.w3.org/2000/svg"/>'), 'image/png');
+  expect('★★ 이름만 PNG 이고 내용이 아니면 거부 (앞머리 바이트 검사)', r.status, 400);
+  const big = Buffer.concat([PNG_1PX, Buffer.alloc(210 * 1024)]);
+  r = await putAvatar(guest, big, 'image/png');
+  expect('★★ 200KB 를 넘으면 거부', r.status, 413);
+
+  log('\n[2] 게임 중에는 바꿀 수 없다');
+  await startGame(host, [guest], 1);
+  r = await putAvatar(guest, PNG_1PX, 'image/png');
+  expect('★★ 게임 중 사진 변경 → 409', r.status, 409);
+  host.socket.emit('host.forceEnd', {});
+  await sleep(500);
+
+  log('\n[3] 지우기');
+  host.socket.emit('game.toLobby', {});
+  await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 5000, '로비');
+  const del = await fetch(`${BASE}/api/avatar`, { method: 'DELETE', headers: { cookie: guest.cookie ?? '' } });
+  expect('★ 지우기', del.status, 200);
+  const gone = await fetch(`${BASE}/api/avatar/${guest.snapshot.me.accountId}?v=1`);
+  expect('★ 지운 뒤에는 404 (이름 첫 글자로 돌아간다)', gone.status, 404);
+
+  host.leave();
+  guest.leave();
+  await sleep(400);
+  host.disconnect();
+  guest.disconnect();
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   duplicate: scenarioDuplicate,
@@ -4399,6 +4468,8 @@ const SCENARIOS = {
   again: scenarioAgain,
   // ★★ R038
   late: scenarioLate,
+  // ★★ R039
+  avatar: scenarioAvatar,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

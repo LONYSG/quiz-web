@@ -22,6 +22,8 @@ import type { SelectionStage } from '../game/select.js';
 export interface Player {
   accountId: string;
   nickname: string;
+  /** ★ R039 — 프로필 사진 버전(올린 시각 ms). null 이면 이름 첫 글자 아바타 */
+  avatarV: number | null;
   /** 색상 팔레트 인덱스. 게임 세션 동안 유지되고 재접속해도 같다 (guide 35절) */
   colorIndex: number;
   /** 입장 순서. 방장 이전 순서를 결정한다 (입장이 가장 빠른 활성 플레이어) */

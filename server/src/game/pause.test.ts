@@ -49,6 +49,7 @@ function player(over: Partial<Player> = {}): Player {
     socketId: 's1',
     disconnectedAt: null,
     score: 0,
+    avatarV: null,
     ...over,
   };
 }

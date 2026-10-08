@@ -39,6 +39,8 @@ export interface SessionInfo {
   sessionId: string;
   accountId: string;
   nickname: string;
+  /** ★ R039 — 프로필 사진 버전(올린 시각 ms). 없으면 null */
+  avatarV: number | null;
 }
 
 interface SessionRow {
@@ -46,6 +48,7 @@ interface SessionRow {
   account_id: string;
   expires_at: Date;
   nickname: string;
+  avatar_v: string | null;
 }
 
 /** 새 세션을 만들고 쿠키를 굽는다. */
@@ -129,9 +132,11 @@ export async function resolveSession(token: string | null): Promise<SessionInfo 
   if (!token) return null;
 
   const result = await query<SessionRow>(
-    `SELECT s.id, s.account_id, s.expires_at, a.nickname
+    `SELECT s.id, s.account_id, s.expires_at, a.nickname,
+            (extract(epoch from av.updated_at) * 1000)::bigint::text AS avatar_v
        FROM sessions s
        JOIN accounts a ON a.id = s.account_id
+       LEFT JOIN account_avatars av ON av.account_id = a.id
       WHERE s.token_hash = $1 AND s.expires_at > now()`,
     [hashToken(token)],
   );
@@ -147,7 +152,12 @@ export async function resolveSession(token: string | null): Promise<SessionInfo 
     ]);
   }
 
-  return { sessionId: row.id, accountId: row.account_id, nickname: row.nickname };
+  return {
+    sessionId: row.id,
+    accountId: row.account_id,
+    nickname: row.nickname,
+    avatarV: row.avatar_v === null ? null : Number(row.avatar_v),
+  };
 }
 
 export async function destroySession(token: string | null): Promise<void> {

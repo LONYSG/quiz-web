@@ -26,6 +26,8 @@ export interface SocketSession {
   accountId: string;
   nickname: string;
   sessionId: string;
+  /** ★ R039 — 프로필 사진 버전 */
+  avatarV: number | null;
 }
 
 /** socket.data 에 담기는 것 */

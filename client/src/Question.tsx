@@ -36,7 +36,7 @@ interface Props {
   /** 방 상태. QUESTION_ACTIVE / QUESTION_RESOLVED */
   state: string;
   /** 지금까지의 점수판 */
-  players: { accountId: string; nickname: string; colorIndex: number; score: number; connected: boolean }[];
+  players: { accountId: string; nickname: string; colorIndex: number; score: number; connected: boolean; avatarV?: number | null }[];
   myAccountId: string;
   /** ★ R025 — 이 판의 난이도. 설정이 잠겨 있으므로 방 설정이 곧 이 판의 설정이다 */
   difficulties: DifficultyTier[];
@@ -260,7 +260,7 @@ export default function Question({
               <>
                 <Confetti />
                 <div className="winner">
-                  <Avatar nickname={winner.nickname} colorIndex={winner.colorIndex} large />
+                  <Avatar nickname={winner.nickname} colorIndex={winner.colorIndex} large accountId={winner.accountId} avatarV={winner.avatarV} />
                   <div>
                     <p className="winner-label">정답!</p>
                     <p className="winner-name" style={{ color: `var(--p${winner.colorIndex})` }}>

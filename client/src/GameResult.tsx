@@ -9,10 +9,12 @@
 
 import type { Socket } from 'socket.io-client';
 import Avatar from './Avatar.js';
-import type { GameResultView } from './useRoom.js';
+import type { GameResultView, PlayerView } from './useRoom.js';
 
 interface Props {
   socket: Socket;
+  /** ★ R039 — 프로필 사진을 찾으려고 */
+  players: PlayerView[];
   result: GameResultView;
   isHost: boolean;
   myAccountId: string;
@@ -36,7 +38,7 @@ function endReasonText(reason: string): string {
   }
 }
 
-export default function GameResult({ socket, result, isHost, myAccountId }: Props) {
+export default function GameResult({ socket, players, result, isHost, myAccountId }: Props) {
   const champs = result.ranking.filter((r) => r.rank === 1 && r.score > 0);
   // ★ 사람이 많으면 순위를 두 줄로 나눠 세로를 아낀다 (스크롤 없음 — R035)
   const twoCols = result.ranking.length > 5;
@@ -85,7 +87,7 @@ export default function GameResult({ socket, result, isHost, myAccountId }: Prop
               ) : null}{' '}
               {r.rank}위
             </span>
-            <Avatar nickname={r.nickname} colorIndex={r.colorIndex} />
+            <Avatar nickname={r.nickname} colorIndex={r.colorIndex} accountId={r.accountId} avatarV={players.find((p) => p.accountId === r.accountId)?.avatarV} />
             <span className="nick" style={{ color: `var(--p${r.colorIndex})` }}>
               {r.nickname}
             </span>

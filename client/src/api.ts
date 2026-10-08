@@ -115,3 +115,22 @@ export async function savePrefs(prefs: ServerPrefs): Promise<void> {
     credentials: 'same-origin',
   });
 }
+
+/** ★ R039 — 프로필 사진 올리기 (브라우저에서 자른 이미지). 성공하면 새 버전 */
+export async function uploadAvatar(blob: Blob): Promise<number> {
+  const res = await fetch('/api/avatar', {
+    method: 'PUT',
+    headers: { 'content-type': blob.type || 'image/png' },
+    body: blob,
+    credentials: 'same-origin',
+  });
+  const json = (await res.json().catch(() => ({}))) as { ok?: boolean; avatarV?: number } & ApiError;
+  if (!res.ok || !json.avatarV) throw json;
+  return json.avatarV;
+}
+
+/** ★ R039 — 프로필 사진 지우기 */
+export async function deleteAvatar(): Promise<void> {
+  const res = await fetch('/api/avatar', { method: 'DELETE', credentials: 'same-origin' });
+  if (!res.ok) throw (await res.json().catch(() => ({}))) as ApiError;
+}

@@ -76,7 +76,7 @@ export default function Seat({
         </span>
       )}
       <div className="seat-top">
-        <Avatar nickname={player.nickname} colorIndex={player.colorIndex} />
+        <Avatar nickname={player.nickname} colorIndex={player.colorIndex} accountId={player.accountId} avatarV={player.avatarV} />
         <span className="nick seat-nick" style={{ color: `var(--p${player.colorIndex})` }}>
           {player.nickname}
         </span>

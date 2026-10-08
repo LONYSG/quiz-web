@@ -2648,3 +2648,114 @@ body {
   width: 19px;
   height: 19px;
 }
+
+/* =============================================================================
+   ★★ R039 C — 프로필 사진
+   ============================================================================= */
+img.avatar.photo {
+  object-fit: cover;
+  background: var(--surface-2);
+  padding: 0;
+}
+.avatar.xs {
+  width: 20px;
+  height: 20px;
+  font-size: 0.68rem;
+  margin-right: 6px;
+  vertical-align: -4px;
+  box-shadow: none;
+}
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.profile-photo {
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+}
+.profile-cam {
+  position: absolute;
+  right: -4px;
+  bottom: -2px;
+  font-size: 1rem;
+  background: var(--surface);
+  border-radius: 50%;
+  padding: 1px 3px;
+  box-shadow: var(--shadow);
+}
+.profile-tip {
+  font-size: 0.82rem;
+}
+.modal-back {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 16, 40, 0.45);
+  padding: 12px;
+}
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-pop);
+  padding: 16px;
+  max-width: calc(100vw - 24px);
+  animation: pop-in 180ms var(--ease-pop);
+}
+.modal-title {
+  margin: 0 0 10px;
+  font-weight: 900;
+}
+.crop-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: #111;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+.crop-stage img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: none;
+  pointer-events: none;
+}
+.crop-mask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 999px rgba(0, 0, 0, 0.55);
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: -2px;
+}
+.crop-zoom {
+  width: 100%;
+  margin: 10px 0 6px;
+}
+.crop-preview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.78rem;
+}
+.crop-preview canvas {
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+.crop-preview .pv64 {
+  width: 64px;
+  height: 64px;
+}
+.crop-preview .pv32 {
+  width: 32px;
+  height: 32px;
+}
