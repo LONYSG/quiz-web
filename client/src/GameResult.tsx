@@ -9,6 +9,7 @@
 
 import type { Socket } from 'socket.io-client';
 import Avatar from './Avatar.js';
+import FitText from './FitText.js';
 import type { GameResultView, PlayerView } from './useRoom.js';
 
 interface Props {
@@ -88,9 +89,7 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
               {r.rank}위
             </span>
             <Avatar nickname={r.nickname} colorIndex={r.colorIndex} accountId={r.accountId} avatarV={players.find((p) => p.accountId === r.accountId)?.avatarV} />
-            <span className="nick" style={{ color: `var(--p${r.colorIndex})` }}>
-              {r.nickname}
-            </span>
+            <FitText text={r.nickname} className="nick" style={{ color: `var(--p${r.colorIndex})` }} minPx={13} />
             {!r.connected && <span className="badge off">접속 종료</span>}
             <span className="score mono">{r.score}점</span>
           </li>

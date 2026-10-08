@@ -11,6 +11,7 @@ export { generateHint, HINT_VERSION } from './hint.js';
 export { computeRanking, skipThreshold } from './ranking.js';
 export { splitSentences } from './sentences.js';
 export { formatGapNs, formatGapNsString, formatGapSeconds } from './gap.js';
+export { nicknameUnits, nicknameFits, NICKNAME_MAX_UNITS, NICKNAME_TOO_LONG_MESSAGE } from './nickname.js';
 export { maskAnswers, MASK_SENTINEL, MASK_SHORT_ANSWER_MAX } from './mask.js';
 export type { MaskResult } from './mask.js';
 export {

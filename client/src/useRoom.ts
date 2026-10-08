@@ -73,6 +73,8 @@ export interface QuestionView {
   hintRevealed: boolean;
   /** ★★ R028 — 일반 힌트. 남은 30초부터 값이 있다 (R034. 없는 문제는 늘 null) */
   generalHint: string | null;
+  /** ★ R040 — 일반 힌트가 있는 문제인가 (문제 시작부터. 내용은 30초에) */
+  hasGeneralHint?: boolean;
 }
 
 /** 정답 공개 구간 */
@@ -421,6 +423,8 @@ export function useRoom(socket: Socket | null): RoomHook {
                 hintRevealed: false,
                 // ★ R028 — 일반 힌트도 남은 30초에 서버가 push 한다 (R034)
                 generalHint: null,
+                // ★★ R040 — 있음/없음 여부는 처음부터 온다
+                hasGeneralHint: p.hasGeneralHint,
               },
               resolution: null,
               // ★★ R034 — 기준 인원은 바로 뒤따르는 skip.voteUpdated 가 채운다 (서버가 문제 시작 때 보낸다).

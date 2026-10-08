@@ -134,6 +134,8 @@ export interface QuestionView {
    *   ★ 초성 힌트와 같은 규칙 — 재접속·중간 참가만으로 미리 보는 우회로를 막는다.
    */
   generalHint: string | null;
+  /** ★★ R040 — 일반 힌트가 있는 문제인가 (여부만 — 내용은 위 generalHint 규칙). 문제 시작부터 알려 준다 */
+  hasGeneralHint: boolean;
 }
 
 export interface ResolutionView {
@@ -369,6 +371,7 @@ function buildQuestionView(
     hint: revealed ? q.hint : null,
     hintRevealed: revealed,
     generalHint: generalRevealed ? q.generalHint : null,
+    hasGeneralHint: q.generalHint !== null,
   };
 }
 

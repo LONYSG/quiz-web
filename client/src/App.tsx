@@ -213,14 +213,15 @@ export default function App() {
         narrow: true,
         body: (
           <>
-            <h1>연결이 종료되었습니다</h1>
-            <p className="note">
-              다른 곳에서 접속하여 이 연결이 종료되었습니다. 한 계정은 한 곳에서만 접속할
-              수 있습니다.
-            </p>
-            <button type="button" onClick={() => window.location.reload()}>
-              다시 접속
-            </button>
+            {/* ★ R040 (건우) — 줄바꿈 없이 · 가운데 (PC · 모바일). 문장마다 한 줄 */}
+            <div className="terminated">
+              <h1>연결이 종료되었습니다</h1>
+              <p className="note">다른 곳에서 접속해 이 연결이 끊겼어요.</p>
+              <p className="note">한 계정은 한 곳에서만 접속할 수 있어요.</p>
+              <button type="button" onClick={() => window.location.reload()}>
+                다시 접속
+              </button>
+            </div>
           </>
         ),
         foot: null,

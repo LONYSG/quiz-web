@@ -13,8 +13,10 @@
 // ★ 메시지는 칸 **안**에 둔다 — 가운데로 튀어나오면 문제 지문을 가린다.
 // =============================================================================
 
+import { nicknameFits } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import Emoji from './Emoji.js';
+import FitText from './FitText.js';
 import type { PlayerView } from './useRoom.js';
 
 interface Props {
@@ -62,7 +64,9 @@ export default function Seat({
   ]
     .filter(Boolean)
     .join(' ');
-  const hasBadges = experienced || !player.connected || canKick;
+  // ★ R040 — 한도를 넘는 옛 닉네임: 바꾸기 전까지 게임 시작이 막힌다 → 방장도 누구 때문인지 본다
+  const mustRename = !nicknameFits(player.nickname);
+  const hasBadges = experienced || !player.connected || canKick || mustRename;
   return (
     <div key={winnerKey ?? 'seat'} className={cls} data-account={player.accountId}>
       {player.isHost && (
@@ -78,9 +82,8 @@ export default function Seat({
       )}
       <div className="seat-top">
         <Avatar nickname={player.nickname} colorIndex={player.colorIndex} accountId={player.accountId} avatarV={player.avatarV} />
-        <span className="nick seat-nick" style={{ color: `var(--p${player.colorIndex})` }}>
-          {player.nickname}
-        </span>
+        {/* ★★ R040 — "…" 없이: 자리보다 길면 글자를 줄인다 (한도 8칸 안이면 하한 위에서 다 들어간다) */}
+        <FitText text={player.nickname} className="nick seat-nick" style={{ color: `var(--p${player.colorIndex})` }} minPx={14} />
       </div>
       {hasBadges && (
         <div className="seat-badges">
@@ -90,6 +93,7 @@ export default function Seat({
             </span>
           )}
           {!player.connected && <span className="badge off">접속 종료</span>}
+          {mustRename && <span className="badge off">닉네임 변경 필요</span>}
           {canKick && (
             <button type="button" className="tiny" onClick={onKick}>
               내보내기

@@ -28,7 +28,7 @@
 //   · ★ 출제 풀과 경험 기록을 게임 시작 때 메모리로 올린다 (D-054 성능 항목)
 // =============================================================================
 
-import { validateRoomSettings } from '@quiz/shared';
+import { nicknameFits, validateRoomSettings } from '@quiz/shared';
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
 import { insertGame, insertGamePlayers } from '../db/games.js';
@@ -43,11 +43,26 @@ export type StartFailure =
   | { reason: 'invalid_state' }
   | { reason: 'settings'; message: string }
   | { reason: 'no_active' }
+  /** ★★ R040 — 한도(8칸)를 넘는 옛 닉네임이 있다. 바꾸기 전까지 시작에 참여할 수 없다 (건우 확정) */
+  | { reason: 'nickname'; nicknames: string[] }
   | { reason: 'not_enough'; available: number; wanted: number }
   /** ★ Phase 3 신설 — 게임 레코드를 만들지 못했다 (옛 임시 코드 03 을 교체한 것) */
   | { reason: 'record_failed' };
 
 export type StartResult = { ok: true } | ({ ok: false } & StartFailure);
+
+/**
+ * ★★ R040 — 닉네임을 바꿔야 하는 사람 (한도가 12자 → 8칸으로 줄기 전에 만든 긴 닉네임).
+ *   ★ 방의 참가자 전원이 판에 들어가므로(participantIds) 전원을 본다.
+ */
+export function nicknamesToChange(room: Room): string[] {
+  return [...room.players.values()].filter((p) => !nicknameFits(p.nickname)).map((p) => p.nickname);
+}
+
+/** 닉네임 때문에 시작하지 못할 때의 안내 */
+export function nicknameBlockMessage(names: string[]): string {
+  return `닉네임을 바꿔야 시작할 수 있어요: ${names.join(', ')} (한글 8자 · 영어·숫자 10자까지)`;
+}
 
 /** 부족 안내 문구. 서버와 봇 테스트가 같은 문구를 본다 */
 export function notEnoughMessage(available: number, wanted: number): string {
@@ -75,6 +90,8 @@ export async function requestStart(room: Room): Promise<StartResult> {
     room.settings = { ...valid.settings };
 
     if (activeCount(room) < 1) return { ok: false, reason: 'no_active' };
+    const longNames = nicknamesToChange(room);
+    if (longNames.length > 0) return { ok: false, reason: 'nickname', nicknames: longNames };
 
     // ── 2. ★ 출제 가능 수 재검증 (Q-21). 캐시를 믿지 않고 지금 조회한다.
     const wanted = room.settings.questionCount;
@@ -159,6 +176,7 @@ export async function startFromCountdown(room: Room): Promise<StartResult> {
       return { ok: false, reason: 'invalid_state' };
     }
     if (activeCount(room) < 1) return { ok: false, reason: 'no_active' };
+    // ★ R040 — 긴 닉네임은 여기서 다시 보지 않는다: requestStart 가 막았고, 그 뒤에는 LOBBY 가 아닌 방에 긴 닉네임이 들어올 수 없다(room.join)
 
     if (available < wanted) {
       // ★ 명세에 없는 경로다 (자체 판단, D-025).

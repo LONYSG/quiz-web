@@ -3019,3 +3019,227 @@ img.emoji {
 .join-hint {
   word-break: keep-all;
 }
+
+/* =============================================================================
+   ★★ R040 — 화면 다듬기
+   ============================================================================= */
+
+/* A-1 — 글자 아바타가 사진 아바타보다 아래로 밀림.
+   원인: 둘 다 vertical-align:-4px 인데, 사진(img)의 기준선은 아래 끝이고 글자(inline-flex)의 기준선은 **안의 글자 기준선**이라
+   같은 값이 다른 높이가 됐다 → 둘 다 middle (상자 가운데를 맞춘다) */
+.avatar.xs {
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+/* A-2 — 연결 종료 화면: 가운데 · 문장마다 한 줄 */
+.terminated {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+}
+.terminated h1,
+.terminated .note {
+  white-space: nowrap;
+  margin: 0;
+}
+.terminated h1 {
+  margin-bottom: 8px;
+  font-size: clamp(1.25rem, 6vw, 1.7rem);
+}
+.terminated .note {
+  font-size: clamp(0.82rem, 3.9vw, 0.95rem);
+}
+
+/* A-3 — 소감 칸: 좌우·상하 가운데 · 가로로 넘치면 줄바꿈 · 세로로 넘치면 "…" */
+.ceremony-head {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+}
+.ceremony-msgs {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.ceremony-msg,
+.ceremony-msg:last-child {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+/* A-4 — 넘기기 / 취소 버튼 크기 고정 (긴 쪽 글자에 맞춘 폭) */
+button.skip-btn {
+  min-width: 7.6em;
+  justify-content: center;
+  text-align: center;
+}
+
+/* A-5 — 정답 카드 크기 고정: 안내 줄의 높이를 글자 줄 높이와 **같게** 미리 잡는다.
+   원인: 자리는 min-height 1.3em 이었는데 글자가 들어오면 줄 높이(1.6)만큼 커졌다 → 카드가 약 4px 늘었다 */
+.reveal-next {
+  height: 1.6em;
+  min-height: 0;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+/* A-7 — "+1" 을 닉네임 가까이 ("정답!" 바로 옆) */
+.winner-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.winner-label .winner-plus {
+  margin-left: 6px;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+  vertical-align: -1px;
+}
+
+/* A-8 — 칸의 이모티콘 3초 */
+.seat-emoji-pop {
+  animation: emoji-pop 650ms var(--ease-pop), emoji-fade 3s ease-in forwards;
+}
+
+/* A-9 — 닉네임 "…" 없음. 자리보다 길면 글자를 줄인다 (FitText) */
+.fit-text {
+  display: block;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.fit-text[data-wrap='1'] {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.seat-nick {
+  text-overflow: clip;
+}
+.room .ranking li {
+  flex-wrap: nowrap;
+}
+.ranking li .fit-text {
+  flex: 0 1 auto;
+}
+/* ★ 참여자 칸 — 점수·순위를 오른쪽 **아래** 구석으로 → 닉네임이 칸 폭을 다 쓴다 (한글 8자 근거) */
+.seat-score {
+  top: auto;
+  bottom: 6px;
+}
+.seat-card:has(.seat-score) .seat-top {
+  padding-right: 0;
+}
+/* ★ 닉네임 변경 안내 (한도를 넘는 옛 닉네임) */
+.rename-must {
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--warn) 18%, var(--surface));
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.rename-must span {
+  display: block;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.rename-units {
+  align-self: center;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.rename-units.over {
+  color: var(--bad);
+  font-weight: 800;
+}
+.nick-over {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.78rem;
+}
+
+/* B-1 — 10칸 번호: 그림 아래 줄 (겹치지 않게) */
+.emoji-pop button.emoji-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 4px 0 3px;
+}
+.emoji-pop .emoji-slot img.emoji {
+  width: 26px;
+  height: 26px;
+}
+.emoji-key {
+  position: static;
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* C-2 — 분류 탭: 그림과 선택 네모를 맞춘다 (글자 그림의 기준선 때문에 아래로 밀렸다) */
+.emoji-pop button.emoji-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0;
+  line-height: 1;
+}
+
+@media (max-width: 999px) {
+  /* B-1 — 모바일은 번호를 숨긴다 (단축키 없음) */
+  .emoji-key {
+    display: none;
+  }
+  /* C-1 — 상단 메뉴 창은 버튼 위치가 아니라 **화면 가운데** */
+  .rename-pop,
+  .prefs.gear .prefs-pop,
+  .infotip-pop {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(360px, calc(100vw - 32px));
+    height: fit-content;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    z-index: 80;
+  }
+}
+
+/* C-4 — 모바일 맞춤 글자 (Lobby 가 --qs 를 0.75~1 로 정한다). 스크롤 대신 글자를 줄인다 */
+@media (max-width: 999px) {
+  .room .q-text {
+    font-size: calc(var(--q-px, 19px) * var(--qs, 1));
+  }
+  .room .reveal-answer {
+    font-size: calc(1.05rem * var(--qs, 1));
+  }
+  .room .reveal-answer strong {
+    font-size: calc(1.25rem * var(--qs, 1));
+  }
+  .room .reveal-explain {
+    font-size: calc(1.05rem * var(--qs, 1));
+  }
+  .room .ceremony-msg,
+  .room .ceremony-msg:last-child {
+    font-size: calc(1.3rem * var(--qs, 1));
+  }
+  .room.squeeze .chat-card {
+    min-height: 150px;
+  }
+}
+/* ★ R040 검수 — 모바일 ⓘ 안내 창: 문장 속 단축키 글자까지 숨어 "이모티콘은 또는" 처럼 문장이 깨졌다 → 안내 창 안에서는 보인다 */
+@media (max-width: 999px) {
+  .infotip-pop kbd {
+    display: inline-block !important;
+  }
+}

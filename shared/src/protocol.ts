@@ -107,6 +107,8 @@ export const RULES = {
    */
   EMOJI_RATE_WINDOW_MS: 1_000,
   EMOJI_RATE_MAX: 20,
+  /** ★ R040 (건우) — 참여자 칸에 이모티콘이 떠 있는 시간 (R039 6초 → 3초). 화면 표시 전용 */
+  SEAT_EMOJI_MS: 3_000,
   /**
    * ★★ 채팅 rate limit. Q-84 확정으로 **크게 완화했다** (R015).
    *
@@ -175,9 +177,12 @@ export const RULES = {
   /** 아이디 길이. 자체 판단 (R005 4-1) */
   LOGIN_ID_MIN_LENGTH: 3,
   LOGIN_ID_MAX_LENGTH: 20,
-  /** 닉네임 길이. 자체 판단 (R005 4-1) */
+  /**
+   * 닉네임 길이. ★★ R040 — 한도는 **폭**(nickname.ts `nicknameFits` — 한글 1 · 영어·숫자 0.8 · 8칸)으로 정한다 (Q-05 개정).
+   * MAX_LENGTH 는 입력칸·서버의 안전 상한(UTF-16 단위)일 뿐이다 — 이모지 등 두 단위 글자를 위해 넉넉히.
+   */
   NICKNAME_MIN_LENGTH: 1,
-  NICKNAME_MAX_LENGTH: 12,
+  NICKNAME_MAX_LENGTH: 20,
   /** 방 제목 길이. R001 8-11 자체 판단(승인됨) */
   ROOM_TITLE_MIN_LENGTH: 1,
   ROOM_TITLE_MAX_LENGTH: 30,

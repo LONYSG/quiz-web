@@ -14,7 +14,7 @@
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatExperienceRate, RULES } from '@quiz/shared';
+import { formatExperienceRate, nicknameFits, nicknameUnits, NICKNAME_MAX_UNITS, RULES } from '@quiz/shared';
 import { changeNickname, deleteAvatar, errorMessage, uploadAvatar } from './api.js';
 import Avatar from './Avatar.js';
 import ProfileEditor from './ProfileEditor.js';
@@ -51,6 +51,12 @@ interface Props {
   /** ★ R035 — 로그아웃은 상단 바 ⚙ 안에 있다 */
   onLogout: () => void;
 }
+
+/** ★ R040 C-4 — 모바일 맞춤 글자의 하한 (문제 19px → 약 14px · 해설 16.8px → 약 12.6px) */
+const MOBILE_FIT_MIN = 0.75;
+
+/** ★ R040 — 모바일 키보드를 내리는 상태 (C-3). 새 문제(QUESTION_ACTIVE)에는 내리지 않는다 */
+const KEYBOARD_DROP_STATES = new Set(['QUESTION_RESOLVED', 'GAME_RESULT', 'LOBBY', 'PAUSED', 'COUNTDOWN']);
 
 export default function Lobby({
   socket,
@@ -230,17 +236,49 @@ export default function Lobby({
       setRenameBusy(false);
     }
   };
+  /**
+   * ★★ R040 — 한도(8칸)를 넘는 옛 닉네임 (건우 확정): 로비에 들어오면 프로필 창을 **열어 두고** 바꾸라고 안내한다.
+   *   바꾸기 전까지는 서버가 게임 시작을 막는다(NICKNAME_CHANGE_REQUIRED). 창은 바꿀 때까지 닫히지 않는다.
+   */
+  const mustRename = !nicknameFits(snapshot.me.nickname);
   useEffect(() => {
-    if (!renameOpen) return undefined;
+    if (mustRename && snapshot.room.state === 'LOBBY') setRenameOpen(true);
+  }, [mustRename, snapshot.room.state]);
+  const renameText = renameDraft ?? snapshot.me.nickname;
+  const renameUnits = nicknameUnits(renameText.trim());
+  const renameFits = nicknameFits(renameText.trim());
+  useEffect(() => {
+    if (!renameOpen || mustRename) return undefined;
     const onDown = (e: PointerEvent) => {
       if (!(e.target as Element).closest('.rename') && !(e.target as Element).closest('.modal-back')) setRenameOpen(false);
     };
     window.addEventListener('pointerdown', onDown);
     return () => window.removeEventListener('pointerdown', onDown);
-  }, [renameOpen]);
+  }, [renameOpen, mustRename]);
 
   const me = snapshot.players.find((p) => p.accountId === snapshot.me.accountId);
   const state = snapshot.room.state;
+  /**
+   * ★★★ R040 — 모바일 키보드: **기본은 유지**, 이벤트 때만 내린다 (건우 확정).
+   *   ★ 보내기·새 문제 시작에는 내리지 않는다 — 답을 연달아 빨리 쳐야 한다.
+   *   ★ 내리는 때 = 화면을 봐야 하는 순간: 정답 공개(QUESTION_RESOLVED) · 결과(GAME_RESULT) · 로비로 돌아옴(LOBBY) ·
+   *     일시정지(PAUSED) · 게임 시작 카운트다운(COUNTDOWN). ★ 정답자를 포함해 **모두** 내린다.
+   *   ★ 방법: 입력칸 포커스를 푼다(blur) — 휴대폰 키보드가 내려간다. 다시 치려면 입력칸을 누른다.
+   *   ★ 모바일 배치(1000px 미만)에서만 한다. PC 에는 화면 키보드가 없고, 포커스를 빼앗으면 바로 칠 수 없다.
+   */
+  const prevStateRef = useRef(state);
+  useEffect(() => {
+    const prev = prevStateRef.current;
+    prevStateRef.current = state;
+    if (prev === state) return;
+    if (!KEYBOARD_DROP_STATES.has(state)) return;
+    if (!window.matchMedia('(max-width: 999px)').matches) return;
+    const a = document.activeElement as HTMLElement | null;
+    if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA')) {
+      a.blur();
+      document.documentElement.dataset.kbDropped = String(Number(document.documentElement.dataset.kbDropped ?? 0) + 1);
+    }
+  }, [state]);
   const inLobby = state === 'LOBBY' || state === 'COUNTDOWN';
   const isActive = state === 'QUESTION_ACTIVE';
   const isResult = state === 'GAME_RESULT';
@@ -366,19 +404,22 @@ export default function Lobby({
     if (!emojiSeen.current.has(seenKey)) emojiSeen.current.set(seenKey, initialIds.current?.has(e.key) ? 0 : Date.now());
   }
   useEffect(() => {
-    const t = setInterval(() => setEmojiNow(Date.now()), 1000);
+    const t = setInterval(() => setEmojiNow(Date.now()), 250);
     return () => clearInterval(t);
   }, []);
   const seatEmoji = (accountId: string) => {
     const e = lastEmojiOf[accountId];
     if (!e) return null;
     const at = emojiSeen.current.get(`${accountId}:${e.key}`) ?? 0;
-    return emojiNow - at < 6000 ? { id: e.id, key: e.key } : null;
+    // ★ R040 (건우) — 칸의 이모티콘은 **3초**만 (R039 의 6초 개정)
+    return emojiNow - at < RULES.SEAT_EMOJI_MS ? { id: e.id, key: e.key } : null;
   };
   /** 순위 (같은 점수는 같은 순위) — ★ 0점에는 붙이지 않는다 (R039 검수: 모두 0점이면 전원 "1위" 가 떠 군더더기) */
   const rankOf = (score: number) => 1 + snapshot.players.filter((p) => p.score > score).length;
-  // ── ★★★ 세레머니 (R038) — 정답 공개 동안 정답자가 친 채팅. 정답 메시지부터 모은다
+  // ── ★★★ 소감 칸 (R038 세레머니 → ★ R040 이름 "소감") — 정답 공개 동안 정답자가 친 채팅.
   //   ★ 기준점: 정답 공개를 처음 본 순간, 채팅 목록에 있던 정답자의 마지막 메시지(= 정답 메시지)
+  //   ★★ R040 (건우) — 정답 메시지는 **빼고** 그 **뒤**부터 모은다: "정답 단어는 이미 따로 나와 있다. 그냥 빈 칸으로 둬라"
+  //     ★ 서버는 정답 채팅(chat.message)을 먼저 보내고 question.resolved 를 보낸다 → 처음 본 순간의 마지막 메시지가 정답 메시지다
   const ceremonyFrom = useRef<{ epoch: number; seq: number } | null>(null);
   const ceremonyWinner =
     state === 'QUESTION_RESOLVED' && snapshot.resolution?.reason === 'correct' ? snapshot.resolution.winnerAccountId : null;
@@ -390,8 +431,65 @@ export default function Lobby({
   const ceremony = useMemo(() => {
     if (!ceremonyWinner || !ceremonyFrom.current) return [];
     const from = ceremonyFrom.current.seq;
-    return chat.filter((m) => !m.system && m.accountId === ceremonyWinner && m.seq >= from);
+    return chat.filter((m) => !m.system && m.accountId === ceremonyWinner && m.seq > from);
   }, [chat, ceremonyWinner]);
+
+  /**
+   * ★★ R040 C-4 — 모바일은 화면 스크롤이 생기면 안 된다 (건우: "글자 크기를 화면에 맞춤형으로").
+   *   ★ 가장 긴 문제·정답·해설 + 소감이 한꺼번에 나오는 정답 공개 화면이 360·390 폭에서 넘쳤다 (실측 최대 202px).
+   *   ★ 방법: 화면이 넘치면 문제 카드의 글자(지문·정답·해설·소감)를 4%씩 줄인다 — 하한 75%.
+   *     그래도 넘치면 채팅 칸의 최소 높이를 줄인다(240 → 150px, 입력칸 + 몇 줄). 그래도 넘치면 그대로 둔다(보고서 4장).
+   *   ★ 입력칸에 포커스가 있을 때(키보드가 올라온 동안)는 다시 재지 않는다 — 키보드 때문에 글자가 줄어들면 안 된다.
+   */
+  const roomRef = useRef<HTMLDivElement>(null);
+  const ceremonyCount = ceremony.length;
+  /** 키보드가 없을 때의 화면 높이 — 안드로이드는 키보드가 올라오면 innerHeight 가 줄어든다 */
+  const fullHeight = useRef(0);
+  useLayoutEffect(() => {
+    const room = roomRef.current;
+    if (!room) return undefined;
+    const typing = () => {
+      const a = document.activeElement;
+      return Boolean(a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA'));
+    };
+    if (!typing() || fullHeight.current === 0) fullHeight.current = window.innerHeight;
+    const fit = () => {
+      const se = document.scrollingElement ?? document.documentElement;
+      room.style.removeProperty('--qs');
+      room.classList.remove('squeeze');
+      if (!window.matchMedia('(max-width: 999px)').matches) {
+        room.dataset.qs = '1';
+        return;
+      }
+      const over = () => se.scrollHeight - Math.max(window.innerHeight, fullHeight.current);
+      let qs = 1;
+      while (over() > 0 && qs > MOBILE_FIT_MIN) {
+        qs = Math.max(MOBILE_FIT_MIN, Math.round((qs - 0.04) * 100) / 100);
+        room.style.setProperty('--qs', String(qs));
+      }
+      if (over() > 0) room.classList.add('squeeze');
+      room.dataset.qs = String(qs);
+      room.dataset.fitOver = String(Math.max(0, over()));
+    };
+    fit();
+    const onResize = () => {
+      if (typing()) return;
+      fullHeight.current = window.innerHeight;
+      fit();
+    };
+    window.addEventListener('resize', onResize);
+    void document.fonts?.ready.then(fit);
+    return () => window.removeEventListener('resize', onResize);
+  }, [
+    state,
+    snapshot.question?.epoch,
+    snapshot.question?.generalHint,
+    snapshot.question?.hintRevealed,
+    snapshot.resolution?.epoch,
+    snapshot.resolution?.late.length,
+    ceremonyCount,
+  ]);
+
 
   // ── ★★ 채팅 소리 (R038) — 메시지가 올라올 때마다 (내 귀에만, 음량은 ⚙). 세레머니 중 정답자 채팅은 킹받는 소리
   const heard = useRef<Set<string> | null>(null);
@@ -471,7 +569,7 @@ export default function Lobby({
   const phase = inLobby ? 'lobby' : isResult ? 'result' : 'game';
 
   return (
-    <div className={`room room-${phase}`}>
+    <div ref={roomRef} className={`room room-${phase}`}>
       {/* ── ★★ 상단 바 하나 */}
       <header className="room-head">
         <div className="room-title">
@@ -501,6 +599,12 @@ export default function Lobby({
               </button>
               {renameOpen && (
                 <div className="rename-pop" role="dialog" aria-label="내 프로필">
+                  {mustRename && (
+                    <p className="rename-must">
+                      ✏️ 닉네임을 바꿔야 게임에 참여할 수 있어요
+                      <span>한글 8자 · 영어·숫자 10자까지</span>
+                    </p>
+                  )}
                   {/* ★★ R039 — 프로필 사진: 누르면 사진 고르기 → 원형 편집기 */}
                   <div className="profile-row">
                     <label className="profile-photo" title="사진 바꾸기">
@@ -553,13 +657,17 @@ export default function Lobby({
                           e.preventDefault();
                           void doRename();
                         }
-                        if (e.key === 'Escape') setRenameOpen(false);
+                        if (e.key === 'Escape' && !mustRename) setRenameOpen(false);
                       }}
                     />
+                    {/* ★ R040 — 폭(칸) 세기: 한글 1 · 영어·숫자 0.8 */}
+                    <span className={renameFits ? 'rename-units dim mono' : 'rename-units over mono'} aria-label="닉네임 폭">
+                      {renameUnits.toFixed(1).replace(/\.0$/, '')}/{NICKNAME_MAX_UNITS}
+                    </span>
                     <button
                       type="button"
                       onClick={() => void doRename()}
-                      disabled={renameBusy || (renameDraft ?? snapshot.me.nickname).trim() === snapshot.me.nickname}
+                      disabled={renameBusy || !renameFits || renameText.trim() === snapshot.me.nickname}
                     >
                       바꾸기
                     </button>
@@ -832,7 +940,8 @@ export default function Lobby({
                   send();
                 }}
               />
-              <button type="button" className="primary" onClick={send}>
+              {/* ★ R040 C-3 — 누를 때 포커스가 버튼으로 가지 않게 → 휴대폰 키보드가 내려갔다 올라오지 않는다 (연달아 치기) */}
+              <button type="button" className="primary" onMouseDown={(e) => e.preventDefault()} onClick={send}>
                 전송
               </button>
               <ShortcutBar shortcuts={shortcuts} expanded={showKeys} onToggle={() => setShowKeys((v) => !v)} />

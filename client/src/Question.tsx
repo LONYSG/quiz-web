@@ -24,6 +24,7 @@ import QuestionText from './QuestionText.js';
 import Avatar from './Avatar.js';
 import ChatText from './ChatText.js';
 import Emoji from './Emoji.js';
+import FitText from './FitText.js';
 import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
 
 interface Props {
@@ -224,14 +225,15 @@ export default function Question({
 
       {/* ── ★★ R039 — 힌트 두 자리는 처음부터 **잠긴 칸**으로 보인다 (🔒 + 열리는 시점). 시간이 되면 열리며 내용이 나온다.
           ★ 건우: "힌트가 나타나기까지 비어 있어서 불균형해 보인다." → 빈 자리가 아니라 "곧 열릴 자리". 칸 높이는 같아 출렁이지 않는다.
-          ★ 일반 힌트가 없는 문제는 30초에 "힌트 없음" 으로 바뀐다 (미리 알려 주지 않는다 — 서버도 그 전에는 보내지 않는다) */}
+          ★★ R040 — 일반 힌트가 없는 문제는 **처음부터** "없음" (서버가 문제 시작 때 있음/없음 여부만 보낸다).
+            옛 R039 는 30초에 화면 시계로 "없음" 으로 바꿨다 → 힌트가 있는 문제도 서버 push 가 오기 전 잠깐 "없음" 이 떴다 */}
       {active && (
         <div className="q-hints">
           {question.generalHint ? (
             <p key="g-open" className="q-hint q-hint-general open">
               <span className="hint-label">힌트</span> <span>{question.generalHint}</span>
             </p>
-          ) : remainMs <= RULES.GENERAL_HINT_REVEAL_AT_MS ? (
+          ) : question.hasGeneralHint === false ? (
             <p className="q-hint locked none">
               <span className="hint-label">힌트</span> <span>없음</span>
             </p>
@@ -262,13 +264,14 @@ export default function Question({
                 <Confetti />
                 <div className="winner">
                   <Avatar nickname={winner.nickname} colorIndex={winner.colorIndex} large accountId={winner.accountId} avatarV={winner.avatarV} />
-                  <div>
-                    <p className="winner-label">정답!</p>
-                    <p className="winner-name" style={{ color: `var(--p${winner.colorIndex})` }}>
-                      {winner.nickname}
+                  <div className="winner-text">
+                    {/* ★ R040 (건우) — "+1" 이 오른쪽 끝에 어중간하게 떨어져 있었다 → "정답!" 바로 옆 (닉네임 바로 위) */}
+                    <p className="winner-label">
+                      정답! <span className="winner-plus">+1</span>
                     </p>
+                    {/* ★★ R040 — 화면에서 가장 큰 글씨지만 자리보다 길면 줄인다 ("…"·여러 줄 없이) */}
+                    <FitText as="p" text={winner.nickname} className="winner-name" style={{ color: `var(--p${winner.colorIndex})` }} minPx={18} />
                   </div>
-                  <span className="winner-plus">+1</span>
                 </div>
               </>
             ) : (
@@ -280,17 +283,16 @@ export default function Question({
             {resolution.explanation && <p className="reveal-explain">{resolution.explanation}</p>}
           </div>
 
-          {/* ★★★ 세레머니 칸 — 정답자가 이 8초 동안 치는 채팅을 **모두에게 크게**. 정답자가 없으면 칸이 없다 */}
+          {/* ★★★ 소감 칸 (R038 세레머니 → R040 "소감") — 정답자가 이 8초 동안 치는 채팅을 **모두에게 크게**. 정답자가 없으면 칸이 없다.
+              ★ R040 — 좌우·상하 가운데 · 가로로 넘치면 줄바꿈 · 세로로 넘치면 "…" (채팅 로그에는 전체) */}
           {winner && (
             <div className="ceremony" aria-live="polite">
               <p className="ceremony-head">
-                🎉 <span style={{ color: `var(--p${winner.colorIndex})` }}>{winner.nickname}</span> 의 세레머니
+                🎉 <span style={{ color: `var(--p${winner.colorIndex})` }}>{winner.nickname}</span>의 소감
               </p>
               <div className="ceremony-msgs">
-                {ceremony.length === 0 ? (
-                  <p className="ceremony-empty">한마디 하세요!</p>
-                ) : (
-                  ceremony.slice(-1).map((m) => (
+                {/* ★ R040 — 정답 공개 순간에는 **빈 칸** (정답 채팅은 넣지 않는다). 그 뒤 치는 말부터 */}
+                {ceremony.slice(-1).map((m) => (
                     /* ★ R039 — 최신 한 마디만. key=메시지 id 라 **같은 말이라도 새 채팅이면** 다시 튀어 오른다 */
                     <p key={m.id} className="ceremony-msg">
                       {m.emojiId ? (
@@ -299,8 +301,7 @@ export default function Question({
                         <ChatText text={m.text} mine={m.accountId === myAccountId} masked={m.masked} />
                       )}
                     </p>
-                  ))
-                )}
+                ))}
               </div>
             </div>
           )}

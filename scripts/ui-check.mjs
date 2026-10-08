@@ -841,7 +841,7 @@ async function cleanupAccounts(pattern = `${ACCOUNT_PREFIX}%`, label = '테스�
 // -----------------------------------------------------------------------------
 // 화면 조작 도우미
 // -----------------------------------------------------------------------------
-async function signUp(page, suffix) {
+async function signUp(page, suffix, nickname = null) {
   await page.goto(BASE);
   const switched = await page.click('회원가입');
   if (!switched) throw new Error(`[${page.label}] 회원가입 탭을 찾지 못했다`);
@@ -856,7 +856,7 @@ async function signUp(page, suffix) {
     };
     const i = [...document.querySelectorAll('form input')];
     set(i[0], ${JSON.stringify(`${ACCOUNT_PREFIX}_${suffix}`)});
-    set(i[1], ${JSON.stringify(`UI${STAMP}${suffix}`)});
+    set(i[1], ${JSON.stringify(nickname ?? `UI${STAMP}${suffix}`)});
     set(i[2], 'uic1234');
     return true;
   })()`);
@@ -975,11 +975,13 @@ async function measureScreen(page, screenName) {
 //     → 결과 · 모바일 키보드 올림/내림 을 PC·모바일 크기로 찍어 docs/design/r039/ 에 남긴다. 검사(기록)는 하지 않는다.
 // -----------------------------------------------------------------------------
 const SHOTS_ONLY = args.includes('--shots');
+/** ★ R040 C-4 — 가장 긴 문제·정답·해설만 나오게 한 판을 모바일 폭에서 찍는다 (`--long`) */
+const LONG_ONLY = args.includes('--long');
 const SHOT_PC = [{ w: 1280, h: 720, n: 'pc' }, { w: 1920, h: 1080, n: 'fhd' }];
 const SHOT_MOB = [{ w: 360, h: 740, n: 'm360' }, { w: 390, h: 844, n: 'm390' }, { w: 430, h: 932, n: 'm430' }];
 
 async function snap(page, name) {
-  const dir = path.join(ROOT, 'docs', 'design', 'r039');
+  const dir = path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r040');
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
   const r = await page.send('Page.captureScreenshot', { format: 'png' });
   writeFileSync(path.join(dir, `${name}.png`), Buffer.from(r.data, 'base64'));
@@ -994,6 +996,132 @@ async function snapSizes(page, name, sizes) {
   }
 }
 
+// ★ R040 — 검수 스크린샷은 **한도 길이의 한글 닉네임**으로 찍는다 (가장 넓게 차지하는 경우)
+const SHOT_NICKS = (process.env.SHOT_NICKS ?? '').split(',').filter(Boolean);
+const shotNick = (i) => SHOT_NICKS[i] ?? null;
+/** ★ R040 — 닉네임이 나오는 자리마다 폭·넘침·줄 수를 잰다 (한도 근거) */
+const NICK_PROBE = `(() => {
+  const sels = ['.seat-nick', '.winner-name', '.ceremony-head', '.late-item', '.ranking .nick', '.champion-name', '.chat-line .nick', '.mobile-kick-item .nick', '.room-head .nick', '.toast'];
+  const c = document.createElement('canvas').getContext('2d');
+  const out = [];
+  for (const sel of sels) for (const el of document.querySelectorAll(sel)) {
+    const r = el.getBoundingClientRect();
+    if (r.width === 0) continue;
+    const cs = getComputedStyle(el);
+    c.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+    const ga = c.measureText('가').width;
+    const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.6;
+    out.push({ sel, w: Math.round(r.width), cw: el.clientWidth, sw: el.scrollWidth, font: cs.fontSize, ga: +ga.toFixed(1), lines: Math.round(r.height / lh), fit: Math.floor(el.clientWidth / ga), text: el.innerText.slice(0, 30) });
+  }
+  return JSON.stringify(out);
+})()`;
+async function probeNicks(page, label) {
+  if (!process.env.NICK_PROBE) return;
+  console.log(`[nick-probe] ${label} ${page.label} ${await page.evaluate('innerWidth')}px ${await page.evaluate(NICK_PROBE)}`);
+}
+
+/**
+ * ★★ R040 C-4 — 가장 긴 문제 · 정답 · 해설 (DB 에서 고른다) 을 모바일 360 · 390 · 430 과 PC 에서 찍고 잰다.
+ *   ★ 문제 데이터는 건드리지 않는다 — 테스트 계정에 **나머지 문제의 경험 기록**을 넣어 출제 풀을 그 문제들만 남긴다
+ *     (테스트 계정을 지우면 경험 기록도 함께 지워진다 — ON DELETE CASCADE).
+ */
+const LONG_SIZES = [
+  { n: 'm360', w: 360, h: 740 },
+  { n: 'm390', w: 390, h: 844 },
+  { n: 'm430', w: 430, h: 932 },
+  { n: 'pc', w: 1280, h: 720 },
+];
+async function longestQuestionIds() {
+  return withPg(async (c) => {
+    const base = `status = 'approved' AND is_active AND question_type = 'short_answer'`;
+    const q = (await c.query(`SELECT id FROM questions WHERE ${base} ORDER BY char_length(question_text) DESC, id LIMIT 1`)).rows[0].id;
+    const e = (await c.query(`SELECT id FROM questions WHERE ${base} ORDER BY char_length(coalesce(explanation, '')) DESC, id LIMIT 1`)).rows[0].id;
+    const a = (
+      await c.query(
+        `SELECT q.id FROM questions q JOIN question_answers a ON a.question_id = q.id AND a.is_primary WHERE ${base.replaceAll('status', 'q.status').replace('is_active', 'q.is_active').replace('question_type', 'q.question_type')}
+         ORDER BY char_length(a.answer_text) DESC, q.id LIMIT 1`,
+      )
+    ).rows[0].id;
+    return [...new Set([q, e, a].map(String))];
+  });
+}
+async function measureLong(page) {
+  return JSON.parse(
+    await page.evaluate(`JSON.stringify((() => {
+      const se = document.scrollingElement;
+      const qt = document.querySelector('.q-text');
+      const f = (sel) => { const el = document.querySelector(sel); return el ? getComputedStyle(el).fontSize : null; };
+      return {
+        pageScroll: se.scrollHeight - innerHeight,
+        hScroll: se.scrollWidth - innerWidth,
+        qFont: f('.q-line') ?? f('.q-text'),
+        explainFont: f('.reveal-explain'),
+        answerFont: f('.reveal-answer strong'),
+        qOverflow: qt ? qt.scrollHeight - qt.clientHeight : null,
+        qs: document.querySelector('.room')?.dataset.qs ?? null,
+        squeeze: document.querySelector('.room')?.classList.contains('squeeze') ?? false,
+      };
+    })())`),
+  );
+}
+async function longFlow(browser) {
+  const ids = await longestQuestionIds();
+  console.log(`[long] 가장 긴 문제·해설·정답 = ${ids.join(', ')}`);
+  const host = await newPage(browser, 'host');
+  await host.setViewport(1280, 720);
+  await signUp(host, 'h', shotNick(0));
+  await createRoom(host, '긴 글 확인');
+  const marked = await withPg(async (c) =>
+    (
+      await c.query(
+        `INSERT INTO question_experiences (account_id, question_id)
+         SELECT a.id, q.id FROM accounts a, questions q WHERE a.login_id = $1 AND NOT (q.id = ANY($2::bigint[]))
+         ON CONFLICT DO NOTHING`,
+        [`${ACCOUNT_PREFIX}_h`, ids],
+      )
+    ).rowCount,
+  );
+  console.log(`[long] 테스트 계정 경험 기록 ${marked}행 (나머지 문제 제외용)`);
+  await setQuestionCount(host, ids.length);
+  await sleep(600);
+  await host.click('게임 시작');
+  const out = [];
+  for (let i = 0; i < ids.length; i += 1) {
+    const up = await host.waitFor("document.querySelector('.q-timebar') !== null && document.querySelector('.reveal') === null", 20000);
+    if (!up) break;
+    await sleep(500);
+    const qid = await withPg(async (c) =>
+      (await c.query(`SELECT id FROM questions WHERE question_text = $1`, [await host.evaluate("document.querySelector('.q-text')?.dataset.text ?? ''")])).rows[0]?.id,
+    );
+    for (const sz of LONG_SIZES) {
+      await host.setViewport(sz.w, sz.h);
+      await sleep(450);
+      await host.evaluate('window.scrollTo(0, 0)');
+      await snap(host, `20-long-q${qid}-game-${sz.n}`);
+      out.push({ qid, at: 'game', size: sz.n, ...(await measureLong(host)) });
+    }
+    const ans = await withPg(async (c) =>
+      (await c.query(`SELECT answer_text FROM question_answers WHERE question_id = $1 ORDER BY is_primary DESC, id LIMIT 1`, [qid])).rows[0]?.answer_text ?? '',
+    );
+    await host.setInput('.chat-card input', ans);
+    await host.click('전송');
+    await host.waitFor("document.querySelector('.reveal') !== null", 5000);
+    await host.setInput('.chat-card input', '이 정도 길이면 소감 칸은 어떻게 보일까? 줄이 바뀌고 넘치면 줄임표로 끝나야 한다 ㅋㅋㅋ 정말 긴 소감');
+    await host.click('전송');
+    await host.evaluate("document.activeElement?.blur()"); // ★ 키보드가 내려간 상태 (C-3 — 정답 공개 때 모바일은 내린다)
+    for (const sz of LONG_SIZES) {
+      await host.setViewport(sz.w, sz.h);
+      await sleep(450);
+      await host.evaluate('window.scrollTo(0, 0)');
+      await snap(host, `20-long-q${qid}-reveal-${sz.n}`);
+      out.push({ qid, at: 'reveal', size: sz.n, ...(await measureLong(host)) });
+    }
+    await host.setViewport(1280, 720);
+  }
+  for (const o of out) console.log(`[long] ${JSON.stringify(o)}`);
+  return out;
+}
+
 async function shotsFlow(browser) {
   const host = await newPage(browser, 'host');
   await host.setViewport(1280, 720);
@@ -1004,7 +1132,7 @@ async function shotsFlow(browser) {
   await sleep(300);
   await snapSizes(host, '02-signup', [SHOT_PC[0], SHOT_MOB[1]]);
   await host.setViewport(1280, 720);
-  await signUp(host, 'h');
+  await signUp(host, 'h', shotNick(0));
   await sleep(500);
   await snapSizes(host, '03-home', [...SHOT_PC, ...SHOT_MOB]);
   await host.setViewport(1280, 720);
@@ -1014,7 +1142,7 @@ async function shotsFlow(browser) {
 
   const guest = await newPage(browser, 'guest', true);
   await guest.setViewport(390, 844);
-  await signUp(guest, 'g');
+  await signUp(guest, 'g', shotNick(1));
   await guest.goto(`${BASE}/r/${roomId}`);
   await guest.waitFor("document.querySelector('.stage') !== null", 10000);
   await host.setInput('.chat-card input', '다들 준비됐어?');
@@ -1069,10 +1197,28 @@ async function shotsFlow(browser) {
   await host.evaluate("document.querySelector('.emoji-btn')?.click()");
   await sleep(600);
   await snap(host, '07e-emoji-picker-pc');
+  await host.evaluate("[...document.querySelectorAll('.emoji-tools button')][0]?.click()");
+  await sleep(300);
+  await snap(host, '07i-emoji-edit-pc');
+  await host.evaluate("[...document.querySelectorAll('.emoji-tools button')][0]?.click()");
   await host.key('Escape');
   await guest.evaluate("document.querySelector('.emoji-btn')?.click()");
   await sleep(600);
   await snap(guest, '07f-emoji-picker-m390');
+  await guest.key('Escape');
+  for (const [sel, name] of [
+    ['.prefs-toggle', '07j-pop-prefs-m390'],
+    ['.infotip-btn', '07k-pop-info-m390'],
+    ['#rename-btn', '07l-pop-profile-m390'],
+  ]) {
+    await guest.evaluate(`document.querySelector('${sel}')?.click()`);
+    await sleep(350);
+    await snap(guest, name);
+    await guest.evaluate(`document.querySelector('${sel}')?.click()`);
+    await sleep(200);
+  }
+  await guest.evaluate("document.querySelector('.emoji-btn')?.click()");
+  await sleep(400);
   await guest.evaluate("document.querySelectorAll('.emoji-pop .emoji-slot')[6]?.click()");
   await guest.key('Escape');
   await host.evaluate("document.querySelector('.chat-card input')?.focus()");
@@ -1125,6 +1271,14 @@ async function shotsFlow(browser) {
   await sleep(900);
   await snap(host, '13-reveal-pc');
   await snap(guest, '13-reveal-m390');
+  await probeNicks(host, 'reveal');
+  await probeNicks(guest, 'reveal');
+  for (const w of [1000, 360]) {
+    await host.setViewport(w, w === 360 ? 780 : 720);
+    await sleep(300);
+    await probeNicks(host, 'reveal');
+  }
+  await host.setViewport(1280, 720);
   await host.setViewport(1920, 1080);
   await sleep(300);
   await snap(host, '13-reveal-fhd');
@@ -1164,6 +1318,11 @@ async function shotsFlow(browser) {
   await host.waitFor("document.querySelector('.result-card') !== null", 20000);
   await sleep(800);
   await snapSizes(host, '14-result-host', [...SHOT_PC, SHOT_MOB[0], SHOT_MOB[1]]);
+  for (const w of [1280, 1000, 360]) {
+    await host.setViewport(w, w === 360 ? 780 : 720);
+    await sleep(300);
+    await probeNicks(host, 'result');
+  }
   // 다른 테마도 깨지지 않는지 (결과·게임은 위에서 파스텔)
   for (const th of ['pop', 'night']) {
     await host.evaluate(`document.documentElement.dataset.theme = '${th}'`);
@@ -1172,7 +1331,24 @@ async function shotsFlow(browser) {
     await snap(host, `15-result-${th}-pc`);
   }
   await host.evaluate("document.documentElement.dataset.theme = 'pastel'");
-  console.log('\n[shots] docs/design/r039/ 에 저장했다');
+  {
+    const other = await newPage(browser, 'other', true);
+    await other.setViewport(1280, 720);
+    await other.goto(BASE);
+    await other.evaluate(`(() => {
+      const set = (el, v) => { const d = Object.getOwnPropertyDescriptor(el.constructor.prototype, 'value'); d.set.call(el, v); el.dispatchEvent(new Event('input', { bubbles: true })); };
+      const i = [...document.querySelectorAll('form input')];
+      set(i[0], ${JSON.stringify(`${ACCOUNT_PREFIX}_h`)});
+      set(i[1], 'uic1234');
+    })()`);
+    await sleep(150);
+    await other.evaluate("document.querySelector('form').requestSubmit()");
+    const term = await host.waitFor("document.querySelector('.terminated') !== null", 8000);
+    if (term) await snapSizes(host, '16-terminated', [SHOT_PC[0], SHOT_MOB[0], SHOT_MOB[1]]);
+    await browser.send('Target.closeTarget', { targetId: other.targetId });
+    other.close();
+  }
+  console.log('\n[shots] docs/design/ 에 저장했다');
 }
 
 let browserProc = null;
@@ -1198,6 +1374,10 @@ try {
 
   if (SHOTS_ONLY) {
     await shotsFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (LONG_ONLY) {
+    await longFlow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   const host = await newPage(browser, 'host');

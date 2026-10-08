@@ -16,11 +16,11 @@
 
 import { randomUUID } from 'node:crypto';
 import type { Server, Socket } from 'socket.io';
-import { maskAnswers, RULES, validateRoomSettings } from '@quiz/shared';
+import { maskAnswers, nicknameFits, RULES, validateRoomSettings } from '@quiz/shared';
 import { closeRoom, findRoom, insertRoom } from '../db/rooms.js';
 import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
 import { loadExperienced } from '../db/questionPool.js';
-import { cancelCountdown, notEnoughMessage, requestStart } from '../game/start.js';
+import { cancelCountdown, nicknameBlockMessage, notEnoughMessage, requestStart } from '../game/start.js';
 import { checkChatRate, judgeAnswer } from '../game/answer.js';
 import {
   abortQuestionSync,
@@ -288,6 +288,12 @@ function registerRoomHandlers(socket: Socket): void {
         //   메모리에 없으면 DB를 보고 closed_at 으로 판별한다.
         const row = await findRoom(payload.roomId);
         sendError(s, row ? 'ROOM_CLOSED' : 'ROOM_NOT_FOUND');
+        return;
+      }
+      // ★★ R040 — 한도를 넘는 옛 닉네임은 **게임 중인 방에 새로 들어갈 수 없다** (로비에서 바꾸고 시작에 참여한다).
+      //   ★ 대기실(LOBBY)에는 들어간다 — 들어가면 화면이 닉네임을 바꾸라고 안내한다. 재접속은 막지 않는다.
+      if (!already && room.state !== 'LOBBY' && !nicknameFits(session.nickname)) {
+        sendError(s, 'NICKNAME_CHANGE_REQUIRED', '게임 중인 방에는 닉네임을 바꾼 뒤 들어갈 수 있어요. (한글 8자 · 영어·숫자 10자까지)');
         return;
       }
       attachToRoom(s, room.id, already ? 'reconnect' : 'join');
@@ -576,6 +582,10 @@ function registerRoomHandlers(socket: Socket): void {
         case 'no_active':
           sendError(s, 'INVALID_STATE', '접속 중인 참가자가 없습니다.');
           return;
+        case 'nickname':
+          // ★ R040 — 방 전체에 알린다 (바꿔야 하는 사람도 이유를 본다)
+          emitRoom(room, 'error', { code: 'NICKNAME_CHANGE_REQUIRED', message: nicknameBlockMessage(result.nicknames), detail: result.nicknames.join(',') });
+          return;
         case 'busy':
           sendError(s, 'INVALID_STATE', '이미 시작 처리 중입니다.');
           return;
@@ -774,6 +784,8 @@ function registerRoomHandlers(socket: Socket): void {
           message: `다시 하기를 시작하지 못했습니다. ${notEnoughMessage(r.available, r.wanted)}`,
           detail: null,
         });
+      } else if (r.reason === 'nickname') {
+        emitRoom(room, 'error', { code: 'NICKNAME_CHANGE_REQUIRED', message: nicknameBlockMessage(r.nicknames), detail: r.nicknames.join(',') });
       } else if (r.reason !== 'busy' && r.reason !== 'invalid_state') {
         emitRoom(room, 'error', {
           code: 'INVALID_STATE',

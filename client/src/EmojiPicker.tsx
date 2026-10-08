@@ -92,7 +92,8 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
                 onClick={() => (editing ? setEdit(i) : onSend(id))}
                 title={`Alt+${KEYS[i]}`}
               >
-                <Emoji id={id} size={28} />
+                <Emoji id={id} size={26} />
+                {/* ★ R040 — 번호는 그림 **아래 줄** (겹치면 안 보인다 — 건우) */}
                 <span className="emoji-key">{KEYS[i]}</span>
               </button>
             ))}
