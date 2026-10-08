@@ -2940,3 +2940,82 @@ img.emoji {
     padding-bottom: 4px;
   }
 }
+
+/* ── R039 E 검수 — 모바일 고르기 창이 오른쪽으로 넘침 (버튼 기본 최소 폭·안쪽 여백이 칸을 밀었다) */
+.emoji-slots {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+.emoji-pop button.emoji-slot,
+.emoji-pop button.emoji-cell,
+.emoji-pop button.emoji-tab {
+  min-width: 0;
+  min-height: 0;
+}
+.emoji-pop button.emoji-cell {
+  padding: 3px;
+}
+@media (max-width: 999px) {
+  .emoji-pop {
+    width: calc(100vw - 40px);
+  }
+  .emoji-slots {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .emoji-pop button.emoji-slot {
+    padding: 4px 0;
+  }
+}
+/* ── R039 E 검수 — 점수 칸의 "1위" 가 닉네임과 겹침 → 순위는 점수 아래 작은 줄로 */
+.seat-score {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.seat-score .seat-rank {
+  order: 2;
+  margin: 0;
+  font-size: 0.66rem;
+  line-height: 1;
+}
+/* ── R039 E 검수 — 고르기 창: 폭에 안쪽 여백이 더해져 모바일 오른쪽으로 넘침 · PC 10칸이 비좁음 · "칸 바꾸기" 가 두 줄 높이 */
+.emoji-pop {
+  box-sizing: border-box;
+  width: min(440px, calc(100vw - 24px));
+}
+.emoji-pop .emoji-slot img.emoji {
+  width: 28px;
+  height: 28px;
+}
+.emoji-tools button {
+  min-height: 0;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+@media (max-width: 999px) {
+  .emoji-pop {
+    width: calc(100vw - 40px);
+  }
+}
+/* ── R039 E 검수 — 문제 수 입력칸만 브라우저 기본 검은 네모였다 */
+.count-input {
+  border: var(--bw) solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+}
+.emoji-pop .emoji-tools {
+  align-items: center;
+}
+.emoji-pop .emoji-tools button,
+.emoji-pop .emoji-tools .emoji-search {
+  box-sizing: border-box;
+  height: 32px;
+  min-height: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.join-hint {
+  word-break: keep-all;
+}

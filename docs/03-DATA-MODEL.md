@@ -260,3 +260,31 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 | 열 | 형식 | 규칙 |
 |----|------|------|
 | `accounts.prefs` | `jsonb` NULL | `{ theme, bgmOn, bgmTrack, bgmVolume, sfxOn, sfxVolume }`. NULL = 저장한 적 없음. 형식은 서버(`sanitizePrefs`)가 거른다 |
+
+## ★ 프로필 사진 (R039 / 0012)
+
+| 열 | 형식 | 규칙 |
+|----|------|------|
+| `account_avatars.account_id` | bigint PK → accounts ON DELETE CASCADE | 계정당 1장 |
+| `image` · `mime` | bytea · `image/webp`·`jpeg`·`png` | 브라우저가 256×256 으로 잘라 올린다. 서버가 앞머리 바이트로 형식을 다시 본다 |
+| `bytes` | integer ≤ 204800 | 200KB 상한 (DB CHECK + 서버) |
+| `updated_at` | timestamptz | 화면 주소의 `?v=`(밀리초) — 바꿀 때마다 주소가 달라져 캐시가 안전하다 |
+
+- 세션 조회가 LEFT JOIN 으로 `avatar_v` 를 함께 읽어 방 플레이어(`avatarV`)로 전한다.
+- ★ DB 에 둔 이유 (D-184): 백업 한 번에 사진까지 들어가 새 PC 로 옮기기 쉽다.
+
+## ★ 이모티콘 (R039 / 0013)
+
+| 열 | 형식 | 규칙 |
+|----|------|------|
+| `emojis.id` | serial | ★★ **화면·소켓·설정 저장은 전부 이 번호로** |
+| `kind` | `standard` / `custom` | 표준(그림 = Twemoji 파일 `/emoji/<code>.svg`) / 직접 등록(그림 = DB) |
+| `code` · `char` | text UNIQUE · text | 표준만. Twemoji 파일 이름(소문자 16진, ZWJ 없으면 fe0f 뺌) · 원래 글자 |
+| `name_ko` · `tags` · `category` · `sort_order` | | 검색(이름·검색어) · 분류 탭 · 순서. 분류: custom · smileys · people · animals · food · activities · travel · objects · symbols · flags |
+| `image` · `mime` | bytea ≤ 1MB · png/gif/webp/apng/svg+xml | 직접 등록만(움직이는 형식 허용). CHECK: custom 은 image·mime 필수, standard 는 code 필수 |
+| `active` | boolean | 끄면 목록에서 빠진다(지우지 않는다 — 옛 채팅·10칸이 번호를 쓴다) |
+
+- 표준 1,855행은 `scripts/gen-emoji-migration.mjs` 가 emojibase(한국어) + @twemoji/svg 로 만든다 — SVG 가 없는 51개, 피부색 변형·구성 요소 제외.
+- 서버는 목록을 메모리에 두고 30초가 지난 다음 요청 때 다시 읽는다. 개인 10칸은 `accounts.prefs.emojiSlots`(번호 10개).
+- 직접 등록 SQL: [DB-ADMIN.md](DB-ADMIN.md) "이모티콘 직접 등록".
+

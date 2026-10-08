@@ -849,3 +849,19 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 도착 시각 | 가드가 첫 줄에서 `process.hrtime.bigint()` 로 잰다(`RoomCtx.arrivedNs`). 판정·전이에는 쓰지 않는다 — 정답 인정 경계는 여전히 `endsAt` |
 | `GET/PUT /api/auth/prefs` | `chatOn`, `chatVolume`(0~1) 추가 (D-177) |
 | RULES | `LATE_ANSWER_WINDOW_MS 3000` · `TIMER_FADE_MS 15000` · `TIMER_WARN_MS 10000` · `TIMER_URGENT_MS 5000` (화면 표시용) |
+
+## ★ R039 — 바뀐 것
+
+| 항목 | 내용 |
+|------|------|
+| `emoji.send` (C→S, 새) | `{ emojiId: number }` — ★ 번호만. 목록에 없는 번호·정수 아님 → BAD_REQUEST. **정답 판정·마스킹·answer_events 를 거치지 않는다.** 사람마다 1초 20개(`RULES.EMOJI_RATE_WINDOW_MS`·`EMOJI_RATE_MAX`), 넘치면 조용히 버린다 (D-187) |
+| `chat.message` (S→C) | `emojiId?: number` 추가 — 있으면 이모티콘 줄(`text` 는 빈 문자열). 스냅샷의 채팅 기록에도 같은 칸 |
+| `PlayerView.avatarV` | `number \| null` — 프로필 사진 버전(바꾼 시각 ms). null = 사진 없음 |
+| `GET /api/avatar/:accountId` | 사진(webp/jpeg/png). `?v=` 와 함께 쓰면 오래 캐시 |
+| `PUT /api/avatar` | 본문 = 이미지 바이트(`Content-Type` image/webp·jpeg·png), 200KB 상한(413). 형식 불일치 400. ★ 방 안에서 LOBBY 가 아니면 409. 성공하면 방 사람들에게 플레이어 목록을 다시 보낸다 |
+| `DELETE /api/avatar` | 사진 지우기 (같은 409 규칙) |
+| `GET /api/emoji` | `{ emojis: [{ id, kind, code, char, name, tags, category }], defaults: [번호 10개] }` |
+| `GET /api/emoji/:id/image` | 직접 등록 그림 |
+| `GET /emoji/<code>.svg` | 표준 그림 (Twemoji, 우리 서버 · 1년 캐시) |
+| `GET/PUT /api/auth/prefs` | `emojiSlots`(양의 정수 10개 이하) 추가 |
+

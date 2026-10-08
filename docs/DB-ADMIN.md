@@ -42,6 +42,8 @@ rooms ─< games                                             └── categorie
 | `question_experiences` | 누가 어떤 문제를 이미 봤나. **계정 id 에 붙는다** (닉네임을 바꿔도 그대로) |
 | `games` / `game_players` / `game_questions` | 판 기록 · 참가자 최종 점수·순위 · 문제별 결말 |
 | `categories` · `game_topics` | 통계용 분류 트리 · 게임 출제용 분야 묶음 |
+| `account_avatars` | ★ R039 프로필 사진. 계정당 1장 · 256×256 webp(보통 10~40KB) · 200KB 상한 · 계정을 지우면 함께 지워진다 |
+| `emojis` | ★ R039 이모티콘 목록. `kind` = `standard`(표준 1,855개 — 그림은 Twemoji 파일) / `custom`(직접 등록 — **그림을 DB 에**). 화면·소켓·설정 저장은 전부 **`id` 번호**로 오간다 |
 
 ---
 
@@ -119,6 +121,41 @@ SELECT count(*) FROM questions q LEFT JOIN category_game_topics t ON t.category_
 묶음 키: `korea` 한국 · `history` 역사·사회 · `science` 과학·기술 · `arts` 문화·예술 · `sports` 스포츠 · `life` 생활 · `media` 미디어·콘텐츠.
 ★ 묶음을 새로 **추가**하는 것은 코드(`shared/src/settings.ts` 의 `GAME_TOPICS`)도 같이 바꿔야 한다 — MAIN 에게.
 
+### 프로필 사진 (R039)
+```sql
+-- 누가 사진을 올렸나
+SELECT a.login_id, a.nickname, v.mime, v.bytes, v.updated_at
+FROM account_avatars v JOIN accounts a ON a.id = v.account_id ORDER BY v.updated_at DESC;
+-- 부적절한 사진 지우기 (그 사람은 글자 아바타로 돌아간다. 본인도 화면 ✏️ → "사진 지우기" 로 지울 수 있다)
+DELETE FROM account_avatars WHERE account_id = (SELECT id FROM accounts WHERE login_id = 'someone');
+```
+
+### 이모티콘 — 목록 보기 · 숨기기 (R039)
+```sql
+SELECT id, kind, char, name_ko, category FROM emojis WHERE name_ko LIKE '%하트%' ORDER BY id;
+-- 숨기기 (지우지 말고 끈다 — 누군가의 10칸·옛 채팅이 그 번호를 쓰고 있을 수 있다)
+UPDATE emojis SET active = false WHERE id = 123;
+```
+★ 기본 10칸(Alt+1~0)은 코드에 표준 코드로 박혀 있다(`server/src/http/emojiRoutes.ts` 의 `DEFAULT_EMOJI_CODES`). 바꾸려면 MAIN 에게.
+
+### ★ 이모티콘 직접 등록 (캐릭터 그림 등) — 화면은 아직 없다, SQL 로 (R039)
+그림 파일을 DB 컨테이너 안으로 복사한 뒤 읽어 넣는다. 형식: **PNG · GIF(움직임 가능) · WebP(움직임 가능) · APNG · SVG**, 1MB 이하 (정사각형 · 128~256px 권장).
+```bash
+docker compose cp ./my-cat.gif db:/tmp/my-cat.gif
+docker compose exec db psql -U <사용자> <DB이름>
+```
+```sql
+INSERT INTO emojis (kind, name_ko, tags, category, sort_order, image, mime)
+VALUES ('custom', '고양이 춤', ARRAY['고양이', '춤'], 'custom', 1,
+        pg_read_binary_file('/tmp/my-cat.gif'), 'image/gif')
+RETURNING id;
+```
+- `kind='custom'` · `category='custom'` 은 꼭 이대로 — 고르기 창 맨 앞 **⭐ 직접 등록** 분류에 모이고, 누구나 자기 10칸에 넣을 수 있다.
+- `code` 는 비워 둔다(표준 전용). 그림은 `/api/emoji/<id>/image` 로 나간다.
+- ★ 반영: 서버를 끄지 않아도 된다 — 서버가 목록을 30초마다(다음 요청 때) 다시 읽는다. 이미 열린 화면은 **새로고침** 뒤에 보인다.
+- 지우기 대신 `UPDATE emojis SET active = false WHERE id = …` (숨기기).
+- `pg_read_binary_file` 은 DB 관리자 사용자만 쓸 수 있다 — docker compose 의 `POSTGRES_USER` 가 그 사용자다. DBeaver 에서는 `image` 칸에 파일을 직접 불러 넣어도 된다.
+
 ---
 
 ## 4. 서버가 켜진 상태에서 바꾸면 — 언제 반영되나
@@ -131,4 +168,6 @@ SELECT count(*) FROM questions q LEFT JOIN category_game_topics t ON t.category_
 | 분야 묶음 | 위와 같다 (다음 로비 갱신·다음 게임) | 진행 중인 게임 |
 | 경험 기록 지우기·넣기 | 로비 경험률·출제 가능 수(다음 갱신) · 다음 게임 | 진행 중인 게임 |
 | 계정 설정(`prefs`) | 그 사람이 다음에 로그인(새로고침)할 때 | — |
+| 프로필 사진 지우기 (SQL 로) | 새로 접속·입장할 때 | 지금 방 안의 화면은 그 사람이 다시 들어올 때까지 옛 사진(브라우저 캐시) |
+| 이모티콘 등록·숨기기 | 서버 목록은 30초 안에 · 화면은 새로고침 뒤 | 이미 열린 화면의 고르기 창 |
 | DB 구조(`db:migrate`) | — | ★ 서버를 껐다 켜는 것이 안전하다 |

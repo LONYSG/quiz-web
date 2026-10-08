@@ -790,6 +790,8 @@ async function exhaustHardExcept(accountIds, keep) {
          SELECT id FROM questions
           WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
             AND difficulty_score IN (4, 5)
+            -- ★ R039 — 앞 단계의 판에서 이미 나온 문제는 "남길 문제" 로 고르지 않는다 (무작위 출제와 겹치면 2개만 남던 흔들림)
+            AND NOT EXISTS (SELECT 1 FROM question_experiences e WHERE e.question_id = questions.id AND e.account_id = ANY($1::bigint[]))
           ORDER BY id
        ), target AS (SELECT id FROM hard OFFSET $2)
        INSERT INTO question_experiences (account_id, question_id)
@@ -4403,7 +4405,10 @@ async function scenarioAvatar() {
     4000,
     '방장 화면에 사진 버전',
   );
-  expectTrue('★★ 방 안 사람들의 참여자 목록에 사진 버전이 실린다', true);
+  expectTrue(
+    '★★ 방 안 사람들의 참여자 목록에 사진 버전이 실린다',
+    host.snapshot.players.some((p) => p.accountId === guest.snapshot.me.accountId && p.avatarV === r.json.avatarV),
+  );
   r = await putAvatar(guest, Buffer.from('<svg xmlns="http://www.w3.org/2000/svg"/>'), 'image/png');
   expect('★★ 이름만 PNG 이고 내용이 아니면 거부 (앞머리 바이트 검사)', r.status, 400);
   const big = Buffer.concat([PNG_1PX, Buffer.alloc(210 * 1024)]);

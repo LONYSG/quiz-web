@@ -375,7 +375,7 @@ export default function Lobby({
     const at = emojiSeen.current.get(`${accountId}:${e.key}`) ?? 0;
     return emojiNow - at < 6000 ? { id: e.id, key: e.key } : null;
   };
-  /** 순위 (같은 점수는 같은 순위) */
+  /** 순위 (같은 점수는 같은 순위) — ★ 0점에는 붙이지 않는다 (R039 검수: 모두 0점이면 전원 "1위" 가 떠 군더더기) */
   const rankOf = (score: number) => 1 + snapshot.players.filter((p) => p.score > score).length;
   // ── ★★★ 세레머니 (R038) — 정답 공개 동안 정답자가 친 채팅. 정답 메시지부터 모은다
   //   ★ 기준점: 정답 공개를 처음 본 순간, 채팅 목록에 있던 정답자의 마지막 메시지(= 정답 메시지)
@@ -456,7 +456,7 @@ export default function Lobby({
         lead={Boolean(p && showScore && topScore > 0 && p.score === topScore)}
         rate={p && inLobby ? rateText(p.accountId) : null}
         emoji={p ? seatEmoji(p.accountId) : null}
-        rank={p && showScore ? rankOf(p.score) : null}
+        rank={p && showScore && p.score > 0 ? rankOf(p.score) : null}
         winnerKey={p && winnerId === p.accountId ? res?.epoch ?? 0 : null}
         canKick={Boolean(p && snapshot.me.isHost && !p.connected)}
         onKick={() => p && socket.emit('host.kickDisconnected', { accountId: p.accountId })}
@@ -615,6 +615,10 @@ export default function Lobby({
               <li>
                 단축키는 전부 <kbd>Alt</kbd> 조합(정답 입력을 방해하지 않게). F키는 F2·F4·F8·F9 만. 목록은 입력창 옆
                 ⌨ 또는 <kbd>Alt+G</kbd>.
+              </li>
+              <li>
+                닉네임·프로필 사진은 로비에서 ✏️. 이모티콘은 <kbd>Alt+1~0</kbd> 또는 입력창 왼쪽 😊 — 정답 판정과 무관합니다.
+                그림: Twemoji (CC-BY 4.0).
               </li>
             </ul>
           </InfoTip>

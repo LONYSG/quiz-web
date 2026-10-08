@@ -1036,6 +1036,51 @@ async function shotsFlow(browser) {
   await sleep(700);
   await snap(guest, '07-mobile-keyboard-closed');
 
+  // ── 프로필 편집 (PC 방장 · 모바일 게스트)
+  await host.setViewport(1280, 720);
+  await host.evaluate("document.querySelector('#rename-btn')?.click()");
+  await sleep(300);
+  await snap(host, '07b-profile-pop-pc');
+  {
+    const doc = await host.send('DOM.getDocument', { depth: -1, pierce: true });
+    const { nodeId } = await host.send('DOM.querySelector', { nodeId: doc.root.nodeId, selector: '#avatar-file' });
+    await host.send('DOM.setFileInputFiles', { nodeId, files: [path.join(ROOT, 'docs', 'design', 'pastel-3-reveal.png')] });
+  }
+  await host.waitFor("document.querySelector('.profile-editor .crop-stage img') !== null", 5000);
+  await sleep(300);
+  await snap(host, '07c-profile-editor-pc');
+  await host.evaluate("[...document.querySelectorAll('.profile-editor button')].find(b => b.innerText.trim() === '등록')?.click()");
+  await sleep(1200);
+  await host.evaluate("document.querySelector('#rename-btn')?.click()");
+  await guest.evaluate("document.querySelector('#rename-btn')?.click()");
+  await sleep(200);
+  {
+    const doc = await guest.send('DOM.getDocument', { depth: -1, pierce: true });
+    const { nodeId } = await guest.send('DOM.querySelector', { nodeId: doc.root.nodeId, selector: '#avatar-file' });
+    await guest.send('DOM.setFileInputFiles', { nodeId, files: [path.join(ROOT, 'docs', 'design', 'pop-1-lobby.png')] });
+  }
+  await guest.waitFor("document.querySelector('.profile-editor .crop-stage img') !== null", 5000);
+  await sleep(300);
+  await snap(guest, '07d-profile-editor-m390');
+  await guest.evaluate("[...document.querySelectorAll('.profile-editor button')].find(b => b.innerText.trim() === '등록')?.click()");
+  await sleep(1200);
+  await guest.evaluate("document.querySelector('#rename-btn')?.click()");
+  // ── 이모티콘 고르기 · 칸에 뜬 순간
+  await host.evaluate("document.querySelector('.emoji-btn')?.click()");
+  await sleep(600);
+  await snap(host, '07e-emoji-picker-pc');
+  await host.key('Escape');
+  await guest.evaluate("document.querySelector('.emoji-btn')?.click()");
+  await sleep(600);
+  await snap(guest, '07f-emoji-picker-m390');
+  await guest.evaluate("document.querySelectorAll('.emoji-pop .emoji-slot')[6]?.click()");
+  await guest.key('Escape');
+  await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await host.key('2', { alt: true, code: 'Digit2', vk: 50 });
+  await sleep(500);
+  await snap(host, '07g-seat-emoji-pc');
+  await snap(guest, '07h-emoji-sent-m390');
+
   await host.setViewport(1280, 720);
   await setQuestionCount(host, 3);
   await host.click('게임 시작');
@@ -1085,9 +1130,32 @@ async function shotsFlow(browser) {
   await snap(host, '13-reveal-fhd');
   await host.setViewport(1280, 720);
 
+  // ── 일시정지 — 둘 다 끊겼다가 방장만 돌아온다
+  await host.waitFor("document.querySelector('.reveal') === null && document.querySelector('.q-timebar') !== null", 15000);
+  await guest.goto('about:blank');
+  await sleep(6500); // ★ 게스트 접속 종료 유예(5초)가 지나야 "활성 0명" 이 된다
+  await host.goto('about:blank');
+  await sleep(7000); // 방장도 유예가 지나야 활성 0명 → PAUSED
+  await host.goto(`${BASE}/r/${roomId}`);
+  const pausedUp = await host.waitFor("document.querySelector('.paused-card') !== null", 15000);
+  console.log(`[shots] 일시정지 화면: ${pausedUp} · 상태=${await host.evaluate("document.querySelector('.room-head .badge, .room-head .state')?.innerText ?? '-'")}`);
+  if (!pausedUp) await snap(host, 'zz-debug-pause');
+  if (pausedUp) {
+    await sleep(400);
+    await snap(host, '13b-paused-pc');
+    await host.setViewport(390, 844);
+    await sleep(400);
+    await snap(host, '13b-paused-m390');
+    await host.setViewport(1280, 720);
+    await host.key('r', { alt: true });
+    await host.waitFor("document.querySelector('.q-timebar') !== null", 8000);
+  }
+
   // 남은 문제는 방장이 넘긴다 → 결과
-  for (let i = 0; i < 2; i += 1) {
-    await host.waitFor("document.querySelector('.reveal') === null && document.querySelector('.q-timebar') !== null", 15000);
+  for (let i = 0; i < 3; i += 1) {
+    if (await host.evaluate("document.querySelector('.result-card') !== null")) break;
+    await host.waitFor("document.querySelector('.result-card') !== null || (document.querySelector('.reveal') === null && document.querySelector('.q-timebar') !== null)", 15000);
+    if (await host.evaluate("document.querySelector('.result-card') !== null")) break;
     await host.evaluate("document.querySelector('.chat-card input')?.focus()");
     await host.key('k', { alt: true });
     await sleep(200);
@@ -1095,8 +1163,7 @@ async function shotsFlow(browser) {
   }
   await host.waitFor("document.querySelector('.result-card') !== null", 20000);
   await sleep(800);
-  await snapSizes(host, '14-result-host', [...SHOT_PC, SHOT_MOB[1]]);
-  await snap(guest, '14-result-guest-m390');
+  await snapSizes(host, '14-result-host', [...SHOT_PC, SHOT_MOB[0], SHOT_MOB[1]]);
   // 다른 테마도 깨지지 않는지 (결과·게임은 위에서 파스텔)
   for (const th of ['pop', 'night']) {
     await host.evaluate(`document.documentElement.dataset.theme = '${th}'`);

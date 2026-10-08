@@ -53,7 +53,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
       {/* ★★ R039 (건우 요청) — "회원가입을 해야 할 수 있다" 를 한눈에. 친구들이 자꾸 물어본다 */}
       {mode === 'login' && (
         <p className="join-hint">
-          처음이면 <button type="button" className="link-btn" onClick={() => { setMode('signup'); setError(null); }}>회원가입</button> 먼저! 가입해야 퀴즈에 들어갈 수 있어요.
+          처음이면 <button type="button" className="link-btn" onClick={() => { setMode('signup'); setError(null); }}>회원가입</button> 먼저! 가입해야 들어갈 수 있어요.
         </p>
       )}
 

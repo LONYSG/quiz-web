@@ -1,4 +1,4 @@
-# 디자인 — 테마 3종 × 네 화면 (R033 → R034 3열 → ★ R035 화면 정리 2차)
+# 디자인 — 테마 3종 × 네 화면 (R033 → R034 3열 → R035 화면 정리 2차 → ★ R039 모던·깔끔 정리)
 
 > ★ R034 — 건우 선택: **파스텔 기본**, 원색·밤은 고를 수 있게 남긴다. 그림은 R034 의 새 배치(양옆 참여자 칸 · 가운데 문제 · 아래 채팅)로 다시 찍었다.
 > ★ 실제 게임에서도 바로 바꿔 볼 수 있다 — 화면 맨 아래 **"🎨 테마 · 🔊 소리"** 또는 **`Alt+T`**. 로그인하면 계정에 저장된다.
@@ -38,6 +38,63 @@
 | 파스텔 | 원색 | 밤 |
 |---|---|---|
 | ![](design/pastel-4-result.png) | ![](design/pop-4-result.png) | ![](design/night-4-result.png) |
+
+## ★★ R039 — 전과 후 (모던·깔끔 정리 · 프로필 사진 · 이모티콘)
+
+- 찍은 방법: `npm run ui-check -- --shots` → `docs/design/r039/` (전 = 같은 흐름을 R039 A 이전 코드로 찍은 `docs/design/r039-before/`).
+- 크기: PC 1280×720 (`-pc`) · 1920×1080 (`-fhd`) · 모바일 360/390/430 (`-m360` 등). 파스텔 기본 + 결과 화면은 원색·밤.
+- ★ 그림 속 프로필 사진은 검사용으로 **화면 캡처를 사진으로 올린 것**이다(실제 사진 대신). 닉네임·방 제목도 가짜 값.
+
+| 화면 | 전 | 후 |
+|---|---|---|
+| **로그인 (PC)** — 회원가입 먼저 안내 한 줄 · 스크롤 없음 | ![](design/r039-before/01-login-pc.png) | ![](design/r039/01-login-pc.png) |
+| **로그인 (360)** — 좁은 폭에서도 한 화면 | ![](design/r039-before/01-login-m360.png) | ![](design/r039/01-login-m360.png) |
+| **회원가입** — 자리표시 글자 줄임 · 바닥 여백 180px 제거 | ![](design/r039-before/02-signup-pc.png) | ![](design/r039/02-signup-pc.png) |
+| **방 목록** — 안내문 삭제 · 가운데 정렬 | ![](design/r039-before/03-home-pc.png) | ![](design/r039/03-home-pc.png) |
+| **로비 방장 (PC)** — 상단 바 아이콘+짧은 글자 · 😊 · 채팅 글자 키움 | ![](design/r039-before/04-lobby-host-pc.png) | ![](design/r039/04-lobby-host-pc.png) |
+| **로비 방장 (360)** — 상단 바 아이콘만 · 채팅이 남은 높이를 채움 | ![](design/r039-before/04-lobby-host-m360.png) | ![](design/r039/04-lobby-host-m360.png) |
+| **로비 게스트 (390)** — 아래 빈 공간 없음 | ![](design/r039-before/05-lobby-guest-m390.png) | ![](design/r039/05-lobby-guest-m390.png) |
+| **키보드 올림 (390)** — 채팅 로그가 글자 폭으로 쪼그라들던 것 → 꽉 채움 · 단축키 버튼 없음 | ![](design/r039-before/06-mobile-keyboard-open.png) | ![](design/r039/06-mobile-keyboard-open.png) |
+| **키보드 내림 (390)** — 원래 화면으로 복귀 | ![](design/r039-before/07-mobile-keyboard-closed.png) | ![](design/r039/07-mobile-keyboard-closed.png) |
+| **문제 — 힌트 잠김** — 🔒 30초 / 🔒 15초 자리를 미리 잡음 | ![](design/r039-before/08-game-locked-pc.png) | ![](design/r039/08-game-locked-pc.png) |
+| **문제 — 힌트 잠김 (390)** — 단축키 줄 없음 · 스킵 동그라미 | ![](design/r039-before/08-game-locked-m390.png) | ![](design/r039/08-game-locked-m390.png) |
+| **문제 — 일반 힌트** — 같은 자리에서 열림(밀림 없음) | ![](design/r039-before/09-game-hint1-pc.png) | ![](design/r039/09-game-hint1-pc.png) |
+| **문제 — 초성** —  | ![](design/r039-before/10-game-hint2-pc.png) | ![](design/r039/10-game-hint2-pc.png) |
+| **스킵 투표** — "1 / 2 · 접속 2명 중 2명" → 동그라미만 · 버튼 단축키 글자 삭제 | ![](design/r039-before/11-game-skipvote-pc.png) | ![](design/r039/11-game-skipvote-pc.png) |
+| **확인창 (390)** — "이 문제를 넘길까요?" 한 줄 | ![](design/r039-before/12-confirm-m390.png) | ![](design/r039/12-confirm-m390.png) |
+| **정답 공개** — 세레머니 한 마디 · '나' 배지 삭제 · 순위 작은 줄 | ![](design/r039-before/13-reveal-pc.png) | ![](design/r039/13-reveal-pc.png) |
+| **정답 공개 (390)** —  | ![](design/r039-before/13-reveal-m390.png) | ![](design/r039/13-reveal-m390.png) |
+| **결과 (PC)** — 단축키 글자 삭제 · 🔁 다시 하기 | ![](design/r039-before/14-result-host-pc.png) | ![](design/r039/14-result-host-pc.png) |
+| **결과 (390)** — 버튼 넘침 없음 | ![](design/r039-before/14-result-host-m390.png) | ![](design/r039/14-result-host-m390.png) |
+| **결과 — 원색** — 다른 테마도 깨지지 않음 | ![](design/r039-before/15-result-pop-pc.png) | ![](design/r039/15-result-pop-pc.png) |
+| **결과 — 밤** —  | ![](design/r039-before/15-result-night-pc.png) | ![](design/r039/15-result-night-pc.png) |
+
+### R039 에 새로 생긴 화면
+
+| 화면 | 그림 |
+|---|---|
+| 프로필 창 (✏️) | ![](design/r039/07b-profile-pop-pc.png) |
+| 사진 편집기 (PC · 390) | ![](design/r039/07c-profile-editor-pc.png) ![](design/r039/07d-profile-editor-m390.png) |
+| 이모티콘 고르기 (PC · 390) | ![](design/r039/07e-emoji-picker-pc.png) ![](design/r039/07f-emoji-picker-m390.png) |
+| 참여자 칸에 뜬 이모티콘 | ![](design/r039/07g-seat-emoji-pc.png) |
+| 모바일 — 보냈다는 표시 | ![](design/r039/07h-emoji-sent-m390.png) |
+| 일시정지 (PC · 390) | ![](design/r039/13b-paused-pc.png) ![](design/r039/13b-paused-m390.png) |
+| 결과 (360) | ![](design/r039/14-result-host-m360.png) |
+
+### 검수에서 찾아 고친 것 (찍고 → 보고 → 고치고 → 다시 찍음)
+
+| 찾은 것 | 원인 | 고친 것 |
+|---|---|---|
+| 모바일 이모티콘 창이 오른쪽으로 넘쳐 10칸 중 6칸만 보임 | 버튼 기본 최소 폭 + 폭에 안쪽 여백이 더해짐(content-box) | 칸 `minmax(0,1fr)` · 모바일 5칸×2줄 · `box-sizing: border-box` |
+| PC 이모티콘 10칸이 비좁아 그림이 번호를 덮음 | 창 폭 380px | 440px |
+| "✏️ 칸 바꾸기" 버튼이 두 줄 높이 | 줄 높이를 검색칸 기본 높이에 맞춰 늘림 | 도구 줄 32px 고정 |
+| 참여자 칸 "1위" 가 닉네임에 붙어 겹침 | 순위를 점수 옆에 같은 줄로 둠 | 순위는 점수 아래 작은 줄 |
+| 모두 0점인데 전원 "1위" | 같은 점수 = 같은 순위 | 0점에는 순위를 붙이지 않음 |
+| 문제 수 입력칸만 검은 네모 | 브라우저 기본 테두리 | 테마 테두리·둥글기 |
+| 로그인 안내가 360px 에서 "있 / 어요" 로 끊김 | 한국어 글자 단위 줄바꿈 + 문구 길이 | `keep-all` · 문구 줄임 |
+| 일시정지·결과 화면을 못 찍음 (검수 흐름) | 접속 종료 유예 5초보다 빨리 돌아와 일시정지가 안 됨 · 넘기기 횟수 부족 | 찍기 흐름 수정 |
+
+---
 
 ## ★ R035 — 무엇이 바뀌었나 (건우 15개 지적)
 
