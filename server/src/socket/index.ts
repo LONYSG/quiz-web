@@ -29,6 +29,7 @@ import {
   broadcastSkipVotes,
   evaluateSkip,
   finishGame,
+  noteLateAnswer,
   recordAnswerEvent,
   resolveQuestionSync,
 } from '../game/question.js';
@@ -336,7 +337,7 @@ function registerRoomHandlers(socket: Socket): void {
         return { text, epoch };
       },
     },
-    ({ seq, socket: s, room, player, payload }) => {
+    ({ seq, socket: s, room, player, payload, arrivedNs }) => {
       const now = Date.now();
 
       // ── 단계 1. 검증
@@ -434,8 +435,13 @@ function registerRoomHandlers(socket: Socket): void {
         // ★★ 여기까지 오는 사이에 await 가 없었다. 그래서 두 번째 정답이 끼어들 수 없다.
         //   ★ 그리고 resolveQuestionSync 의 첫 두 줄(장치 A)이 한 번 더 막는다.
         if (resolveQuestionSync(room, 'correct', player.accountId)) {
+          // ★★ R038 — 뒷북의 기준점. 판정이 끝난 뒤에 적는다 (판정 블록은 그대로)
+          if (room.currentQuestion) room.currentQuestion.winnerArrivedNs = arrivedNs;
           broadcastPlayers(room);
         }
+      } else if (outcome.matched && outcome.rejectReason === 'already_resolved') {
+        // ★★ R038 — 간발의 차로 늦은 정답 → 뒷북 명단 (조건은 noteLateAnswer)
+        noteLateAnswer(room, player, payload.epoch, arrivedNs);
       }
     },
   );

@@ -79,6 +79,12 @@ export interface Ctx<P = unknown> {
 export interface RoomCtx<P = unknown> extends Ctx<P> {
   room: Room;
   player: Player;
+  /**
+   * ★★ R038 — 이 요청이 서버에 도착한 순간 (process.hrtime.bigint, 나노초).
+   *   ★ 뒷북 시간 차(마이크로초 단위)를 재는 데만 쓴다. Date.now(밀리초)로는 전부 0 이 된다.
+   *   ★ 판정·상태 전이에는 쓰지 않는다 — 정답 인정 경계는 여전히 endsAt(밀리초)이다.
+   */
+  arrivedNs: bigint;
 }
 
 export interface GuardOptions<P> {
@@ -130,6 +136,8 @@ export function onRoom<P = unknown>(
   handler: RoomHandler<P>,
 ): void {
   socket.on(event, (raw: unknown) => {
+    // ★★ R038 — 가장 먼저 도착 시각을 잰다 (파싱·검사 시간이 섞이지 않게)
+    const arrivedNs = process.hrtime.bigint();
     const seq = nextSeq();
     const data = socket.data as SocketData;
 
@@ -168,7 +176,7 @@ export function onRoom<P = unknown>(
     const payload = parsePayload(socket, event, options, raw);
     if (payload === undefined) return;
 
-    void runHandler(socket, event, seq, () => handler({ seq, socket, session, payload, room, player }));
+    void runHandler(socket, event, seq, () => handler({ seq, socket, session, payload, room, player, arrivedNs }));
   });
 }
 

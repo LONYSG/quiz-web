@@ -42,7 +42,7 @@ import {
 } from '../db/gameQuestions.js';
 import { emitRoom, emitRoomPerPlayer } from '../rooms/emit.js';
 import { activeCount } from '../rooms/registry.js';
-import { toPlayerView } from '../rooms/snapshot.js';
+import { lateAnswersView, toPlayerView } from '../rooms/snapshot.js';
 import { selectNextQuestion } from './select.js';
 import type { CurrentQuestion, GameResultData, Player, Room } from '../rooms/types.js';
 
@@ -132,6 +132,8 @@ export function beginQuestion(room: Room): boolean {
     resolved: false,
     skipVotes: new Set(),
     selectionStage: picked.stage,
+    winnerArrivedNs: null,
+    lateAnswers: [],
   };
 
   room.currentQuestion = current;
@@ -587,6 +589,36 @@ export function finishGame(
     );
     fireAndForget('games 종료', endGame(game.gameId, endReason, game.endedQuestionCount));
   }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ 뒷북 (R038 / D-174)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const LATE_WINDOW_NS = BigInt(RULES.LATE_ANSWER_WINDOW_MS) * 1_000_000n;
+
+/**
+ * ★★ 정답을 맞혔지만 간발의 차로 늦은 사람을 뒷북 명단에 올린다.
+ *
+ * ★ 판정은 이미 끝났다 — 이 함수는 판정 결과(already_resolved)를 받아 **기록만** 한다. 판정 블록을 바꾸지 않는다.
+ * ★ 조건 (건우 확정 + 설계 판단)
+ *   · 정답자가 있는 문제(사유 correct)이고 지금 그 문제의 정답 공개 중이다 · epoch 가 그 문제다
+ *   · 정답자 본인이 아니다 · ★ 이 문제의 경험자가 아니다 (명단에 뜨면 정답을 알고 있었다는 것이 드러난다)
+ *   · 한 사람은 처음 한 번만 · ★ 정답자 도착 후 **3초 이내** (서버 도착 시각 기준 — 각자의 네트워크 지연이 섞인다)
+ */
+export function noteLateAnswer(room: Room, player: Player, epoch: number | null, arrivedNs: bigint): void {
+  const q = room.currentQuestion;
+  const res = room.game?.resolution;
+  if (!q || !res || room.state !== 'QUESTION_RESOLVED') return;
+  if (res.reason !== 'correct' || q.winnerArrivedNs === null) return;
+  if (epoch !== q.epoch || res.epoch !== q.epoch) return;
+  if (player.accountId === res.winnerAccountId) return;
+  if (q.experiencedAccountIds.has(player.accountId)) return;
+  if (q.lateAnswers.some((l) => l.accountId === player.accountId)) return;
+  const diffNs = arrivedNs - q.winnerArrivedNs;
+  if (diffNs < 0n || diffNs > LATE_WINDOW_NS) return;
+  q.lateAnswers.push({ accountId: player.accountId, nickname: player.nickname, colorIndex: player.colorIndex, diffNs });
+  emitRoom(room, 'question.lateAnswers', { epoch: q.epoch, late: lateAnswersView(q) });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

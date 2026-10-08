@@ -19,7 +19,7 @@
 import { RULES, skipThreshold } from '@quiz/shared';
 import type { QuestionResolution, RoomState } from '@quiz/shared';
 import { activeCount } from './registry.js';
-import type { ExperienceRate, GameResultData, Player, Room } from './types.js';
+import type { CurrentQuestion, ExperienceRate, GameResultData, Player, Room } from './types.js';
 
 export type SnapshotReason = 'join' | 'reconnect' | 'resync';
 
@@ -143,6 +143,8 @@ export interface ResolutionView {
   nextAt: number | null;
   index: number;
   text: string;
+  /** ★ R038 — 뒷북 명단 (재접속해도 보이게) */
+  late: { accountId: string; nickname: string; colorIndex: number; diffNs: string }[];
 }
 
 export interface ChatView {
@@ -378,6 +380,7 @@ function buildResolutionView(room: Room): ResolutionView | null {
     nextAt: r.nextAt,
     index: q.index,
     text: q.text,
+    late: lateAnswersView(q),
   };
 }
 
@@ -399,3 +402,14 @@ function buildSkipView(
     selfVoted: q.skipVotes.has(viewerAccountId),
   };
 }
+
+/** 화면에 보내는 형태. ★ 나노초는 JSON 숫자로 정밀도가 깨지지 않게 문자열로 보낸다 */
+export function lateAnswersView(q: CurrentQuestion): { accountId: string; nickname: string; colorIndex: number; diffNs: string }[] {
+  return q.lateAnswers.map((l) => ({
+    accountId: l.accountId,
+    nickname: l.nickname,
+    colorIndex: l.colorIndex,
+    diffNs: l.diffNs.toString(),
+  }));
+}
+

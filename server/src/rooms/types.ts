@@ -212,6 +212,20 @@ export interface CurrentQuestion {
 
   /** ★ 선정이 몇 단계에서 성공했는가 (Q-76). 화면에는 표시하지 않는다 */
   selectionStage: SelectionStage;
+
+  /** ★★ R038 — 정답자 메시지의 서버 도착 시각 (hrtime 나노초). 정답자가 없으면 null */
+  winnerArrivedNs: bigint | null;
+  /** ★★ R038 — 뒷북 명단 (정답자 발생 후 3초 안에 정답을 보낸 사람. 도착 순) */
+  lateAnswers: LateAnswer[];
+}
+
+/** ★★ 뒷북 한 사람 (R038 / D-174) */
+export interface LateAnswer {
+  accountId: string;
+  nickname: string;
+  colorIndex: number;
+  /** 정답자와의 도착 시각 차 (나노초) */
+  diffNs: bigint;
 }
 
 /** 정답 공개 뒤 5초 대기 구간 */

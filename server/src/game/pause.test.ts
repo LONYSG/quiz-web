@@ -74,6 +74,8 @@ function question(over: Partial<CurrentQuestion> = {}): CurrentQuestion {
     resolved: false,
     skipVotes: new Set(),
     selectionStage: 1,
+    winnerArrivedNs: null,
+    lateAnswers: [],
     ...over,
   };
 }
