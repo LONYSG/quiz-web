@@ -35,6 +35,8 @@ export interface ChatView {
   masked: boolean;
   ts: number;
   system: boolean;
+  /** ★ R039 — 이모티콘이면 번호 (본문 없음) */
+  emojiId?: number | null;
 }
 
 export interface ExperienceRate {

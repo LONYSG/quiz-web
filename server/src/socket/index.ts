@@ -60,6 +60,7 @@ import {
   unregisterRoom,
 } from '../rooms/registry.js';
 import { buildSnapshot, toPlayerView } from '../rooms/snapshot.js';
+import { isEmojiId } from '../http/emojiRoutes.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
@@ -444,6 +445,55 @@ function registerRoomHandlers(socket: Socket): void {
         // ★★ R038 — 간발의 차로 늦은 정답 → 뒷북 명단 (조건은 noteLateAnswer)
         noteLateAnswer(room, player, payload.epoch, arrivedNs);
       }
+    },
+  );
+
+  // ── ★★ 이모티콘 (R039 / D-187) — **번호**로 받는다. 정답 판정·마스킹을 거치지 않는다 (채팅이 아니라 따로 보내는 신호)
+  //   ★ 채팅 로그에 작게 남긴다(모바일도 반응을 볼 수 있게). 도배 제한은 채팅과 같은 수준으로 따로 센다
+  onRoom<{ emojiId: number }>(
+    socket,
+    'emoji.send',
+    {
+      parse: (raw) => {
+        const obj = parseObject(raw);
+        if (!obj) return null;
+        const id = obj.emojiId;
+        if (typeof id !== 'number' || !Number.isInteger(id) || id <= 0 || !isEmojiId(id)) return null;
+        return { emojiId: id };
+      },
+    },
+    ({ seq, room, player, payload }) => {
+      const now = Date.now();
+      room.emojiTimestamps ??= new Map();
+      const arr = (room.emojiTimestamps.get(player.accountId) ?? []).filter((t) => now - t < RULES.EMOJI_RATE_WINDOW_MS);
+      if (arr.length >= RULES.EMOJI_RATE_MAX) return; // ★ 조용히 버린다 (도배 억제 안내는 채팅 쪽에만)
+      arr.push(now);
+      room.emojiTimestamps.set(player.accountId, arr);
+      const entry = {
+        id: randomUUID(),
+        seq,
+        accountId: player.accountId,
+        nickname: player.nickname,
+        colorIndex: player.colorIndex,
+        rawNfc: '',
+        maskedText: null,
+        ts: now,
+        system: false,
+        emojiId: payload.emojiId,
+      };
+      pushChat(room, entry);
+      emitRoom(room, 'chat.message', {
+        id: entry.id,
+        seq: entry.seq,
+        accountId: entry.accountId,
+        nickname: entry.nickname,
+        colorIndex: entry.colorIndex,
+        text: '',
+        masked: false,
+        ts: entry.ts,
+        system: false,
+        emojiId: entry.emojiId,
+      });
     },
   );
 

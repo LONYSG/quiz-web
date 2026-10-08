@@ -98,6 +98,8 @@ export interface ServerPrefs {
   /** ★ R038 */
   chatOn?: boolean;
   chatVolume?: number;
+  /** ★ R039 — 이모티콘 10칸 (번호) */
+  emojiSlots?: number[];
 }
 
 export async function fetchPrefs(): Promise<ServerPrefs | null> {

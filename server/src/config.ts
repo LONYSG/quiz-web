@@ -94,3 +94,9 @@ export const config = {
 } as const;
 
 export const CLIENT_DIST = path.join(ROOT, 'client', 'dist');
+
+/**
+ * ★ R039 — 표준 이모티콘 그림(Twemoji SVG). 서버 패키지 의존성(@twemoji/svg)에 들어 있다.
+ *   ★ 파일 하나가 1~3KB. 화면에 나온 것만 받는다 (외부 CDN 을 쓰지 않는다 — 터널 너머 외부 의존을 피한다).
+ */
+export const TWEMOJI_DIR = path.join(ROOT, 'node_modules', '@twemoji', 'svg');

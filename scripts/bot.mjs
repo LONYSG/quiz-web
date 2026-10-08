@@ -278,7 +278,7 @@ class Bot {
       );
       // ★ R016 — 마스킹 여부와 발신자를 함께 기록한다 (Phase 6 검증에 필요하다)
       s.on('chat.message', (m) =>
-        this.events.push({ type: 'chat', text: m.text, masked: m.masked === true, accountId: m.accountId }),
+        this.events.push({ type: 'chat', text: m.text, masked: m.masked === true, accountId: m.accountId, emojiId: m.emojiId ?? null }),
       );
 
       // ── Phase 2 이벤트
@@ -4433,6 +4433,65 @@ async function scenarioAvatar() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★ emoji — R039 이모티콘: 번호로 오간다 · 정답 판정에 들어가지 않는다 · 채팅 로그에 남는다 · 도배 제한 · 잘못된 번호 거부
+// -----------------------------------------------------------------------------
+async function scenarioEmoji() {
+  log('시나리오 emoji — ★★ 이모티콘 (R039)');
+  await clearExperiences(PREFIX);
+  const cat = await (await fetch(`${BASE}/api/emoji`)).json();
+  expectTrue('★ 목록이 온다 (표준 1,800개 안팎)', Array.isArray(cat.emojis) && cat.emojis.length > 1500, `${cat.emojis?.length}`);
+  expect('★ 기본 10칸', cat.defaults.length, 10);
+  const svg = await fetch(`${BASE}/emoji/${cat.emojis.find((e) => e.id === cat.defaults[1]).code}.svg`);
+  expect('★ 표준 그림(Twemoji SVG)을 우리 서버가 낸다', svg.headers.get('content-type')?.includes('svg'), true);
+
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('R039 이모티콘');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  await guest.connect();
+  guest.join(host.snapshot.room.id);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  const gameId = await startGame(host, [guest], 1);
+
+  log('\n[1] ★★ 번호로 오간다 · 채팅 로그에 남는다');
+  let from = host.mark();
+  guest.socket.emit('emoji.send', { emojiId: cat.defaults[1] });
+  await host.waitFor(() => host.since(from, 'chat').some((c) => c.emojiId === cat.defaults[1]), 4000, '이모티콘 도착');
+  const ev = host.since(from, 'chat').find((c) => c.emojiId === cat.defaults[1]);
+  expect('★★ 받은 것은 번호다 (본문은 비어 있다)', ev.text, '');
+  expectTrue('★ 보낸 사람이 맞다', ev.accountId === guest.snapshot.me.accountId);
+
+  log('\n[2] ★★ 정답 판정에 들어가지 않는다');
+  await sleep(500);
+  expect('★★ 이모티콘으로는 문제가 끝나지 않는다', host.since(from, 'question.resolved').length, 0);
+  const ae = await answerEventsOfGame(gameId);
+  expect('★ answer_events 에 남지 않는다', ae.length, 0);
+
+  log('\n[3] ★ 잘못된 번호 · 글자는 거부');
+  from = guest.mark();
+  guest.socket.emit('emoji.send', { emojiId: 99999999 });
+  guest.socket.emit('emoji.send', { emojiId: '😂' });
+  await sleep(500);
+  expect('★ 없는 번호 · 글자 → BAD_REQUEST 두 번', guest.since(from, 'error').filter((e) => e.code === 'BAD_REQUEST').length, 2);
+
+  log('\n[4] ★ 도배 제한 (1초 20개 — 채팅과 같은 서버 보호 수준)');
+  from = host.mark();
+  for (let i = 0; i < 30; i += 1) guest.socket.emit('emoji.send', { emojiId: cat.defaults[i % 10] });
+  await sleep(800);
+  const got = host.since(from, 'chat').filter((c) => c.emojiId).length;
+  expectTrue('★ 1초에 20개까지만 통과', got <= 20 && got >= 15, `${got}개`);
+
+  host.socket.emit('host.forceEnd', {});
+  await sleep(400);
+  host.leave();
+  guest.leave();
+  await sleep(400);
+  host.disconnect();
+  guest.disconnect();
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   duplicate: scenarioDuplicate,
@@ -4470,6 +4529,7 @@ const SCENARIOS = {
   late: scenarioLate,
   // ★★ R039
   avatar: scenarioAvatar,
+  emoji: scenarioEmoji,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

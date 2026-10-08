@@ -23,6 +23,7 @@ import { formatDifficulties, formatGapNsString, formatTopics, RULES, type Diffic
 import QuestionText from './QuestionText.js';
 import Avatar from './Avatar.js';
 import ChatText from './ChatText.js';
+import Emoji from './Emoji.js';
 import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
 
 interface Props {
@@ -292,7 +293,11 @@ export default function Question({
                   ceremony.slice(-1).map((m) => (
                     /* ★ R039 — 최신 한 마디만. key=메시지 id 라 **같은 말이라도 새 채팅이면** 다시 튀어 오른다 */
                     <p key={m.id} className="ceremony-msg">
-                      <ChatText text={m.text} mine={m.accountId === myAccountId} masked={m.masked} />
+                      {m.emojiId ? (
+                        <Emoji id={m.emojiId} size={56} />
+                      ) : (
+                        <ChatText text={m.text} mine={m.accountId === myAccountId} masked={m.masked} />
+                      )}
                     </p>
                   ))
                 )}

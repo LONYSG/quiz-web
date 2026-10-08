@@ -11,9 +11,10 @@ import { createServer } from 'node:http';
 import path from 'node:path';
 import express from 'express';
 import { Server as SocketIOServer } from 'socket.io';
-import { CLIENT_DIST, config } from './config.js';
+import { CLIENT_DIST, TWEMOJI_DIR, config } from './config.js';
 import { runBootCleanup } from './db/bootCleanup.js';
 import { closePool, getDbActiveMs } from './db/pool.js';
+import { emojiRouter, loadEmojiCatalog } from './http/emojiRoutes.js';
 import { avatarRouter } from './http/avatarRoutes.js';
 import { authRouter } from './http/authRoutes.js';
 import { registerSocketHandlers } from './socket/index.js';
@@ -107,6 +108,10 @@ async function main(): Promise<void> {
   app.use('/api/auth', authRouter);
   // ★ R039 — 프로필 사진
   app.use('/api/avatar', avatarRouter);
+  // ★ R039 — 이모티콘 목록 · 직접 등록 그림 / 표준 그림(Twemoji SVG)은 파일로 낸다
+  app.use('/api/emoji', emojiRouter);
+  app.use('/emoji', express.static(TWEMOJI_DIR, { maxAge: '365d', immutable: true }));
+  void loadEmojiCatalog();
 
   // ── 클라이언트 정적 서빙.
   //   ★ 오리진을 하나로 유지하는 것이 이 프로젝트의 기본 방침이다 (docs/02-ARCHITECTURE.md 1장).

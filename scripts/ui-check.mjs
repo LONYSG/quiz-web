@@ -582,7 +582,7 @@ const PC_SIZES = [
 const INNER_SCROLLERS = `(() => {
   const out = [];
   for (const el of document.querySelectorAll('body *')) {
-    if (el.closest('.chat-log')) continue;
+    if (el.closest('.chat-log') || el.closest('.emoji-grid')) continue;
     const st = getComputedStyle(el);
     if (!/(auto|scroll)/.test(st.overflowY + st.overflowX)) continue;
     if (el.scrollHeight > el.clientHeight + 1 || el.scrollWidth > el.clientWidth + 1) {
@@ -2141,25 +2141,16 @@ try {
     record('정답을 DB 에서 찾았다 (검사 전제)', Boolean(ans1));
     await guest.setInput('.chat-card input', ans1 ?? '');
     await guest.click('전송');
-    const maskedBubble = await host.waitFor(
-      `document.querySelector('.seat-card[data-account="${ids?.g}"] .seat-msg .masked-chip') !== null`,
-      5000,
-    );
-    const bubbleText = await host.evaluate(
-      `document.querySelector('.seat-card[data-account="${ids?.g}"] .seat-msg')?.innerText ?? ''`,
-    );
-    record(
-      '★★★ 방장 화면 — 경험자가 쓴 정답이 **참여자 칸 메시지에서도** 가려진다',
-      maskedBubble && Boolean(ans1) && !bubbleText.includes(ans1),
-      `말풍선="${bubbleText}"`,
-    );
+    const maskedLog = await host.waitFor("document.querySelector('.chat-log .masked-chip') !== null", 5000);
     const logText = await host.evaluate("document.querySelector('.chat-log')?.innerText ?? ''");
-    record('★★★ 채팅 로그에서도 가려진다 (같은 메시지)', Boolean(ans1) && !logText.includes(ans1));
+    record('★★★ 방장 화면 — 경험자가 쓴 정답이 채팅 로그에서 가려진다', maskedLog && Boolean(ans1) && !logText.includes(ans1), logText.slice(-80));
     record(
-      '★ 본인(게스트) 칸 메시지에는 원문 + "가려져서 전송됨"',
-      (await guest.evaluate(
-        `document.querySelector('.seat-card[data-account="${ids?.g}"] .seat-msg')?.innerText ?? ''`,
-      )).includes('가려져서 전송됨'),
+      '★ 본인(게스트) 채팅 로그에는 원문 + "가려져서 전송됨"',
+      (await guest.evaluate("document.querySelector('.chat-log')?.innerText ?? ''")).includes('가려져서 전송됨'),
+    );
+    record(
+      '★★ R039 — 참여자 칸에는 채팅이 보이지 않는다 (채팅은 로그에서만 — 건우 확인)',
+      await host.evaluate(`document.querySelector('.seat-card[data-account="${ids?.g}"]')?.innerText.includes(${JSON.stringify(ans1 ?? '@@')}) === false`),
     );
     record(
       '★ 경험자의 정답은 판정되지 않는다 (정답 공개가 없다)',
@@ -2377,25 +2368,49 @@ try {
       await guest.waitForText('이미 사용 중인 닉네임', 4000),
     );
 
-    // ── 말풍선 (마스킹 없는 보통 말) — 방장이 쓴 말이 게스트 화면의 방장 칸에 뜬다
-    await host.setInput('.chat-card input', '말풍선 확인');
-    await host.click('전송');
-    record(
-      '★★ 채팅이 참여자 칸에 뜬다 (마지막 메시지)',
-      await guest.waitFor(
-        `document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-msg')?.innerText.includes('말풍선 확인') === true`,
-        4000,
-      ),
-    );
-    record(
-      '★★ R035 — 새 메시지는 반짝 강조된다',
-      await guest.evaluate(`document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-msg.fresh') !== null`),
-    );
-    await sleep(5000);
-    record(
-      '★★★ R035 — 마지막 메시지가 5초 뒤에도 칸에 그대로 남는다 (사라지지 않는다)',
-      (await guest.evaluate(`document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-msg')?.innerText ?? ''`)).includes('말풍선 확인'),
-    );
+    // ── ★★★ R039 — 이모티콘: Alt+숫자 · 칸에 크게 · 로그 한 줄 · 고르기 창 · 10칸 바꾸기 저장 · 모바일 보내기
+    console.log('\n[6-E] ★★★ 이모티콘 (R039)');
+    await host.setViewport(1280, 720);
+    await sleep(400);
+    await host.waitFor("document.querySelector('.emoji-btn') !== null", 4000);
+    await sleep(800); // 목록 받기
+    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+    await host.key('2', { alt: true, code: 'Digit2', vk: 50 });
+    const seatEmoji = await host.waitFor(`document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-emoji-pop img.emoji') !== null`, 4000);
+    record('★★★ Alt+2 → 내 칸에 이모티콘이 크게 튀어 오른다', seatEmoji);
+    const emoSize = await host.evaluate(`(() => { const i = document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-emoji-pop'); const n = document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-nick'); return i && n ? Math.round(i.getBoundingClientRect().height) + '/' + Math.round(n.getBoundingClientRect().height) : '-'; })()`);
+    record('★★ 이모티콘 자리가 칸에서 가장 크다 (닉네임보다 높다)', /^(\d+)\/(\d+)$/.test(emoSize) && Number(emoSize.split('/')[0]) > Number(emoSize.split('/')[1]) * 1.5, emoSize);
+    record('★★ 채팅 로그에 작게 한 줄 (닉네임 + 그림)', await guest.waitFor("document.querySelector('.chat-log .chat-emoji') !== null", 4000));
+    record('★ 그림 세트(Twemoji SVG)로 그린다', await host.evaluate("document.querySelector('.seat-emoji-pop img.emoji')?.getAttribute('src')?.startsWith('/emoji/') === true"));
+    // 고르기 창 · 10칸 바꾸기
+    await host.evaluate("document.querySelector('.emoji-btn').click()");
+    const pop = await host.waitFor("document.querySelectorAll('.emoji-pop .emoji-slot').length === 10 && document.querySelectorAll('.emoji-grid .emoji-cell').length > 50", 4000);
+    record('★★ 😊 → 고르기 창 (내 10칸 + 분류별 목록)', pop);
+    await host.evaluate("[...document.querySelectorAll('.emoji-tools button')][0].click()");
+    await host.setInput('.emoji-search', '하트');
+    await sleep(300);
+    const firstHeart = await host.evaluate("Number(document.querySelector('.emoji-grid .emoji-cell img')?.dataset.emojiId ?? 0)");
+    record('★ 검색 (한국어 이름·검색어)', firstHeart > 0, String(firstHeart));
+    await host.evaluate("document.querySelector('.emoji-grid .emoji-cell')?.click()");
+    await sleep(1300);
+    const slots = await host.evaluate("fetch('/api/auth/prefs').then(r => r.json()).then(j => j.prefs?.emojiSlots ?? null)");
+    record('★★ 10칸 바꾸기 → 첫 칸이 바뀌고 계정에 저장된다', Array.isArray(slots) && slots[0] === firstHeart, JSON.stringify(slots));
+    await host.key('Escape');
+    await host.evaluate("document.querySelector('.keybar-btn')?.click()");
+    await sleep(250);
+    const keyText = await host.evaluate("document.querySelector('.keylist')?.innerText ?? ''");
+    await host.evaluate("document.querySelector('.keybar-btn')?.click()");
+    record('★ 단축키 목록 창에 Alt+1~0 이 한 줄로', keyText.includes('Alt+1~0') && !keyText.includes('이모티콘 5'), keyText.slice(-80));
+    // 모바일(게스트 720) — 😊 → 칸을 누르면 바로 보내고, 보냈다는 표시
+    await guest.evaluate("document.querySelector('.emoji-btn').click()");
+    await guest.waitFor("document.querySelectorAll('.emoji-pop .emoji-slot').length === 10", 4000);
+    await guest.evaluate("document.querySelectorAll('.emoji-pop .emoji-slot')[2].click()");
+    const flash = await guest.waitFor("document.querySelector('.emoji-flash img') !== null", 2000);
+    const hostGot = await host.waitFor(`document.querySelector('.seat-card[data-account="${ids?.g}"] .seat-emoji-pop img.emoji') !== null`, 4000);
+    record('★★★ 모바일 — 😊 에서 누르면 바로 보내고 "보냈다" 표시가 떠오른다 · 방장 칸에 뜬다', flash && hostGot);
+    await guest.key('Escape');
+    await host.setWidth(720);
+    await sleep(300);
 
     // ── ★★ R035 — 채팅: 스크롤바 없음 · 휠로 올려 보는 중 새 메시지 → ↓ 버튼 → 누르면 최신으로
     await guest.setViewport(1280, 720);

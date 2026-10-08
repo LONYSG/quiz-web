@@ -316,11 +316,22 @@ function playCorrect(d: AudioNode, t: number): void {
 //     · 놀림 소리는 길어서 0.35초에 한 번만
 // ─────────────────────────────────────────────────────────────────────────────
 let chatTimes: number[] = [];
+let emojiTimes: number[] = [];
 let lastTaunt = 0;
 
-export function chatSound(kind: 'chat' | 'taunt'): void {
+export function chatSound(kind: 'chat' | 'taunt' | 'emoji'): void {
   if (!prefs.chatOn || !ctx || ctx.state !== 'running' || !chatGain) return;
   const nowMs = performance.now();
+  if (kind === 'emoji') {
+    // ★ R039 — 이모티콘은 채팅과 다른 "뽀잉" (위로 튀는 소리). 같은 방식으로 솎는다 (채팅 소리 음량에 묶는다 — D-187)
+    emojiTimes = emojiTimes.filter((x) => nowMs - x < 500);
+    const lastE = emojiTimes[emojiTimes.length - 1] ?? -1e9;
+    if (nowMs - lastE < 70 || emojiTimes.length >= 5) return;
+    emojiTimes.push(nowMs);
+    const t = ctx.currentTime + 0.005;
+    playNote(chatGain, mtof(72), t, 0.09, { type: 'triangle', gain: 0.2, attack: 0.004, decay: 0.12 }, mtof(91));
+    return;
+  }
   if (kind === 'taunt') {
     if (nowMs - lastTaunt < 350) return;
     lastTaunt = nowMs;

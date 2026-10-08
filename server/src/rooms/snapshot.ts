@@ -159,6 +159,8 @@ export interface ChatView {
   masked: boolean;
   ts: number;
   system: boolean;
+  /** ★ R039 — 이모티콘 번호 */
+  emojiId?: number | null;
 }
 
 /**
@@ -216,6 +218,7 @@ export function toChatView(
       masked: entry.maskedText !== null,
       ts: entry.ts,
       system: entry.system,
+      emojiId: entry.emojiId ?? null,
     });
   }
   void now;

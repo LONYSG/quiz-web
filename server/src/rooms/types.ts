@@ -368,6 +368,8 @@ export interface Room {
 
   /** 계정별 채팅 rate limit 타임스탬프 (Q-18: 3초 이동 윈도 10개) */
   chatTimestamps: Map<string, number[]>;
+  /** ★ R039 — 이모티콘 도배 제한용 (채팅과 따로 센다) */
+  emojiTimestamps?: Map<string, number[]>;
 }
 
 /** 게임 결과 (guide 38·39절). ★ Phase 4 가 화면을 만든다 */
@@ -440,4 +442,6 @@ export interface ChatEntry {
   ts: number;
   /** 시스템 메시지(입퇴장, 게임 시작 구분선 등)면 true */
   system: boolean;
+  /** ★ R039 — 이모티콘이면 그 번호 (본문은 비어 있다). 정답 판정·마스킹 대상이 아니다 */
+  emojiId?: number | null;
 }

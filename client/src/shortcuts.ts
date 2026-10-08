@@ -46,6 +46,10 @@ export interface Shortcut {
   /** 지금 쓸 수 있는가. false 면 눌러도 아무 일도 없고 목록에도 안 나온다 */
   when: boolean;
   run: () => void;
+  /** ★ R039 — 단축키 목록 창에 따로 줄을 만들지 않는다 (Alt+1~0 은 한 줄로 묶어 보인다) */
+  hideInList?: boolean;
+  /** ★ R039 — 목록 창에 보이기만 하고 키는 받지 않는 줄 */
+  displayOnly?: boolean;
 }
 
 /**
@@ -58,7 +62,9 @@ export interface Shortcut {
  */
 function codeOf(combo: string): string {
   const parts = combo.split('+');
-  return `Key${(parts[parts.length - 1] ?? '').toUpperCase()}`;
+  const k = (parts[parts.length - 1] ?? '').toUpperCase();
+  // ★ R039 — 숫자 키 (Alt+1 ~ Alt+0 이모티콘)
+  return /^\d$/.test(k) ? `Digit${k}` : `Key${k}`;
 }
 
 /**
@@ -86,7 +92,7 @@ export function useShortcuts(shortcuts: Shortcut[]): void {
       if (!e.altKey && !isF) return;
 
       for (const s of ref.current) {
-        if (!s.when) continue;
+        if (!s.when || s.displayOnly) continue;
         const hitAlt = e.altKey && !isF && e.code === codeOf(s.combo);
         const hitF = isF && s.fkey !== null && e.key === s.fkey;
         if (!hitAlt && !hitF) continue;

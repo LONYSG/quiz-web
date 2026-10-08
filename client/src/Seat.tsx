@@ -5,7 +5,7 @@
 //               빈 자리와 계정 옆 번호는 필요 없다."
 //   · 방장 = 칸 모서리 👑 / 나 = 테두리 색 + 이름 굵게 / 점수 = 구석에 숫자만
 //   · 번호·"빈 자리" 글자 없음. 빈 칸은 흐린 빈 카드로 남긴다 (없애면 사람이 들어올 때마다 배치가 출렁인다)
-//   · ★★ **마지막 메시지를 칸에 계속 보인다.** 새 메시지가 오면 반짝 (4초 뒤 사라지던 R034 방식을 바꿨다)
+//   · ★★ R039 — 칸에 채팅을 보이지 않고 **이모티콘**을 크게 (건우: "대화가 잘려 애매했다. 이모티콘 공간으로")
 //   · ★ 정답 공개 때 정답자 칸도 반짝 — 정답자 연출이 양옆까지 이어진다
 //
 // ★★★ 경험자 정답 마스킹 — 칸의 메시지는 채팅 로그와 **같은 메시지 객체**를 같은 ChatText 로 그린다.
@@ -14,8 +14,8 @@
 // =============================================================================
 
 import Avatar from './Avatar.js';
-import ChatText from './ChatText.js';
-import type { ChatView, PlayerView } from './useRoom.js';
+import Emoji from './Emoji.js';
+import type { PlayerView } from './useRoom.js';
 
 interface Props {
   player: PlayerView | null;
@@ -28,10 +28,10 @@ interface Props {
   lead: boolean;
   /** 로비 — 경험률 문구 */
   rate: string | null;
-  /** 이 사람의 마지막 메시지 */
-  lastMsg: ChatView | null;
-  /** 막 도착한 메시지인가 (반짝) */
-  fresh: boolean;
+  /** ★ R039 — 지금 띄울 이모티콘 (번호 + 메시지 id — 같은 이모티콘이라도 새로 보내면 다시 튄다) */
+  emoji: { id: number; key: string } | null;
+  /** ★ R039 — 순위 (점수가 있을 때) */
+  rank: number | null;
   /** 방금 정답을 맞힌 사람인가 (반짝). 값이 바뀌면 다시 반짝인다 */
   winnerKey: number | null;
   canKick: boolean;
@@ -45,8 +45,8 @@ export default function Seat({
   showScore,
   lead,
   rate,
-  lastMsg,
-  fresh,
+  emoji,
+  rank,
   winnerKey,
   canKick,
   onKick,
@@ -72,6 +72,7 @@ export default function Seat({
       )}
       {showScore && (
         <span key={`${player.accountId}-${player.score}`} className="seat-score score mono">
+          {rank !== null && <span className="seat-rank">{rank}위</span>}
           {player.score}
         </span>
       )}
@@ -97,11 +98,14 @@ export default function Seat({
         </div>
       )}
       {rate && <span className="seat-rate dim mono">{rate}</span>}
-      {lastMsg && (
-        <div key={lastMsg.id} className={fresh ? 'seat-msg fresh' : 'seat-msg'}>
-          <ChatText text={lastMsg.text} mine={me} masked={lastMsg.masked} />
-        </div>
-      )}
+      {/* ★★ R039 — 칸의 가장 큰 자리 = 이모티콘. 나타날 때 튀어 오른다 (채팅은 채팅 로그에서만 — 건우 확인) */}
+      <div className="seat-emoji" aria-live="polite">
+        {emoji && (
+          <span key={emoji.key} className="seat-emoji-pop">
+            <Emoji id={emoji.id} size={64} />
+          </span>
+        )}
+      </div>
     </div>
   );
 }

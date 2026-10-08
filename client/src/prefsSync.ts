@@ -10,6 +10,7 @@
 import { fetchPrefs, savePrefs, type ServerPrefs } from './api.js';
 import { BGMS, getSoundPrefs, setSoundPrefs, type BgmId } from './sound.js';
 import { getTheme, setTheme, THEMES, type ThemeId } from './theme.js';
+import { getStoredSlots, setStoredSlots } from './emojiCatalog.js';
 
 let signedIn = false;
 /** 계정 값을 적용하는 동안에는 다시 저장하지 않는다 (되먹임 방지) */
@@ -28,6 +29,7 @@ function current(): ServerPrefs {
     sfxVolume: s.sfxVol,
     chatOn: s.chatOn,
     chatVolume: s.chatVol,
+    ...(getStoredSlots() ? { emojiSlots: getStoredSlots()! } : {}),
   };
 }
 
@@ -52,6 +54,7 @@ function apply(p: ServerPrefs): void {
     if (typeof p.sfxVolume === 'number') patch.sfxVol = p.sfxVolume;
     if (typeof p.chatOn === 'boolean') patch.chatOn = p.chatOn;
     if (typeof p.chatVolume === 'number') patch.chatVol = p.chatVolume;
+    if (Array.isArray(p.emojiSlots)) setStoredSlots(p.emojiSlots);
     if (Object.keys(patch).length > 0) setSoundPrefs(patch);
   } finally {
     applying = false;
@@ -64,6 +67,7 @@ export function installPrefsSync(): void {
   installed = true;
   window.addEventListener('qw:theme', scheduleSave);
   window.addEventListener('qw:sound', scheduleSave);
+  window.addEventListener('qw:emoji-slots', scheduleSave);
 }
 
 /** 로그인 확인 직후 부른다. 로그아웃하면 onSignedOut */

@@ -38,7 +38,7 @@ export default function ShortcutBar({ shortcuts, expanded, onToggle }: Props) {
             </button>
           </p>
           <ul className="keylist">
-            {shortcuts.map((s) => (
+            {shortcuts.filter((s) => !s.hideInList).map((s) => (
               <li key={s.combo} className={s.when ? undefined : 'dim'}>
                 <kbd>{s.combo}</kbd>
                 {s.fkey && (

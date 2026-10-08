@@ -27,6 +27,9 @@ import InfoTip from './InfoTip.js';
 import Paused from './Paused.js';
 import Prefs, { setRoomOwnsKeys } from './Prefs.js';
 import Seat from './Seat.js';
+import Emoji from './Emoji.js';
+import EmojiPicker from './EmojiPicker.js';
+import { useEmojiSlots } from './emojiCatalog.js';
 import ShortcutBar from './ShortcutBar.js';
 import { useFocusChatOnEscape, useShortcuts, type Shortcut } from './shortcuts.js';
 import { chatSound, toggleMuteAll } from './sound.js';
@@ -261,6 +264,15 @@ export default function Lobby({
   // ───────────────────────────────────────────────────────────────────────────
   // ★★ Q-56 단축키 — 전부 Alt 조합 (채팅 입력을 방해하지 않는다). 근거는 shortcuts.ts 헤더
   // ───────────────────────────────────────────────────────────────────────────
+  // ★★ R039 — 이모티콘 (번호로 보낸다). 내 10칸 = Alt+1 ~ Alt+0
+  const emojiSlots = useEmojiSlots();
+  const [emojiFlash, setEmojiFlash] = useState<{ id: number; key: number } | null>(null);
+  const sendEmoji = (id: number) => {
+    if (!id) return;
+    socket.emit('emoji.send', { emojiId: id });
+    setEmojiFlash({ id, key: Date.now() });
+  };
+
   const shortcuts: Shortcut[] = [
     {
       combo: 'Alt+S',
@@ -310,6 +322,16 @@ export default function Lobby({
     // ★ R033 — 테마·소리. 방 안에서는 여기가 맡는다 (Prefs 의 전역 키는 쉰다)
     { combo: 'Alt+T', fkey: null, label: '테마 바꾸기', when: true, run: () => void cycleTheme() },
     { combo: 'Alt+M', fkey: null, label: '소리 켜기/끄기', when: true, run: () => void toggleMuteAll() },
+    // ★ R039 — 이모티콘 10칸. 목록 창에는 한 줄로만 보인다
+    { combo: 'Alt+1~0', fkey: null, label: '이모티콘 보내기 (내 10칸 — 😊 에서 바꿀 수 있다)', when: true, run: () => {}, displayOnly: true },
+    ...['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((k, i) => ({
+      combo: `Alt+${k}`,
+      fkey: null,
+      label: `이모티콘 ${k}`,
+      when: emojiSlots.length > 0,
+      hideInList: true,
+      run: () => sendEmoji(emojiSlots[i] ?? 0),
+    })),
   ];
   useShortcuts(shortcuts);
   useEffect(() => {
@@ -331,11 +353,30 @@ export default function Lobby({
   // ───────────────────────────────────────────────────────────────────────────
   // ★★ 참여자 칸 — 마지막 메시지 · 반짝 · 정답자 반짝
   // ───────────────────────────────────────────────────────────────────────────
-  const lastMsgOf = useMemo(() => {
-    const out: Record<string, ChatView> = {};
-    for (const m of chat) if (!m.system && m.accountId) out[m.accountId] = m;
+  // ★★ R039 — 참여자 칸의 이모티콘: 계정마다 마지막 이모티콘을 6초 동안
+  const [emojiNow, setEmojiNow] = useState(() => Date.now());
+  const lastEmojiOf = useMemo(() => {
+    const out: Record<string, { id: number; key: string; at: number }> = {};
+    for (const m of chat) if (m.emojiId && m.accountId) out[m.accountId] = { id: m.emojiId, key: m.id, at: Date.now() };
     return out;
   }, [chat]);
+  const emojiSeen = useRef(new Map<string, number>());
+  for (const [acc, e] of Object.entries(lastEmojiOf)) {
+    const seenKey = `${acc}:${e.key}`;
+    if (!emojiSeen.current.has(seenKey)) emojiSeen.current.set(seenKey, initialIds.current?.has(e.key) ? 0 : Date.now());
+  }
+  useEffect(() => {
+    const t = setInterval(() => setEmojiNow(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  const seatEmoji = (accountId: string) => {
+    const e = lastEmojiOf[accountId];
+    if (!e) return null;
+    const at = emojiSeen.current.get(`${accountId}:${e.key}`) ?? 0;
+    return emojiNow - at < 6000 ? { id: e.id, key: e.key } : null;
+  };
+  /** 순위 (같은 점수는 같은 순위) */
+  const rankOf = (score: number) => 1 + snapshot.players.filter((p) => p.score > score).length;
   // ── ★★★ 세레머니 (R038) — 정답 공개 동안 정답자가 친 채팅. 정답 메시지부터 모은다
   //   ★ 기준점: 정답 공개를 처음 본 순간, 채팅 목록에 있던 정답자의 마지막 메시지(= 정답 메시지)
   const ceremonyFrom = useRef<{ epoch: number; seq: number } | null>(null);
@@ -363,6 +404,10 @@ export default function Lobby({
       if (heard.current.has(m.id)) continue;
       heard.current.add(m.id);
       if (m.system) continue;
+      if (m.emojiId) {
+        chatSound('emoji');
+        continue;
+      }
       const taunt = Boolean(ceremonyWinner && m.accountId === ceremonyWinner && ceremony.some((c) => c.id === m.id));
       chatSound(taunt ? 'taunt' : 'chat');
     }
@@ -401,7 +446,6 @@ export default function Lobby({
   const winnerId = state === 'QUESTION_RESOLVED' && res?.reason === 'correct' ? res.winnerAccountId : null;
   const seatOf = (index: number) => {
     const p = snapshot.players[index] ?? null;
-    const msg = p ? lastMsgOf[p.accountId] ?? null : null;
     return (
       <Seat
         key={p ? p.accountId : `empty-${index}`}
@@ -411,8 +455,8 @@ export default function Lobby({
         showScore={showScore}
         lead={Boolean(p && showScore && topScore > 0 && p.score === topScore)}
         rate={p && inLobby ? rateText(p.accountId) : null}
-        lastMsg={msg}
-        fresh={Boolean(msg && !initialIds.current?.has(msg.id))}
+        emoji={p ? seatEmoji(p.accountId) : null}
+        rank={p && showScore ? rankOf(p.score) : null}
         winnerKey={p && winnerId === p.accountId ? res?.epoch ?? 0 : null}
         canKick={Boolean(p && snapshot.me.isHost && !p.connected)}
         onKick={() => p && socket.emit('host.kickDisconnected', { accountId: p.accountId })}
@@ -751,7 +795,11 @@ export default function Lobby({
                       <span className="nick" style={{ color: `var(--p${m.colorIndex})` }}>
                         {m.nickname}
                       </span>
-                      <ChatText text={m.text} mine={m.accountId === snapshot.me.accountId} masked={m.masked} />
+                      {m.emojiId ? (
+                        <Emoji id={m.emojiId} size={24} className="chat-emoji" />
+                      ) : (
+                        <ChatText text={m.text} mine={m.accountId === snapshot.me.accountId} masked={m.masked} />
+                      )}
                     </p>
                   ),
                 )}
@@ -765,6 +813,7 @@ export default function Lobby({
             {/* ★★ 도배 억제 안내 (Q-18) — 입력창 바로 위 문서 흐름 (iOS 키보드) */}
             {throttled && <p className="warn throttle-note">너무 빨리 보내고 있습니다. 잠시 후 다시 보내 주세요.</p>}
             <div className="field-row chat-input-row">
+              <EmojiPicker slots={emojiSlots} onSend={sendEmoji} flash={emojiFlash} />
               <input
                 ref={inputRef}
                 value={draft}
