@@ -836,3 +836,16 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | T31 `game.toLobby` | 그대로 (자동 시작 없음) |
 | T12 `host.forceEnd` | ★ QUESTION_RESOLVED(또는 거기서 멈춘 PAUSED)이고 **마지막 문제**면 `endReason='completed'`, abortedNote 없음. 그 밖은 기존대로 `force_ended` |
 | 입장·재접속 (QUESTION_RESOLVED) | ★ 그 문제의 경험 기록을 남긴다 (01-GAME-RULES 12장 — R035 에서 구현, D-168) |
+
+---
+
+## ★ R038 — 바뀐 것
+
+| 항목 | 내용 |
+|------|------|
+| `question.lateAnswers` (S→C, 새) | `{ epoch, late: [{ accountId, nickname, colorIndex, diffNs }] }` — 뒷북 명단 전체(도착 순). `diffNs` 는 정답자와의 서버 도착 시각 차(나노초, **문자열** — JSON 숫자 정밀도 때문). 새 뒷북이 생길 때마다 보낸다 (D-174) |
+| `room.state` 스냅샷 `resolution.late` | 같은 명단 (재접속해도 보인다) |
+| `chat.send.text` | 최대 **300자** (`RULES.CHAT_MAX_LENGTH`). 넘으면 BAD_REQUEST (D-176) |
+| 도착 시각 | 가드가 첫 줄에서 `process.hrtime.bigint()` 로 잰다(`RoomCtx.arrivedNs`). 판정·전이에는 쓰지 않는다 — 정답 인정 경계는 여전히 `endsAt` |
+| `GET/PUT /api/auth/prefs` | `chatOn`, `chatVolume`(0~1) 추가 (D-177) |
+| RULES | `LATE_ANSWER_WINDOW_MS 3000` · `TIMER_FADE_MS 15000` · `TIMER_WARN_MS 10000` · `TIMER_URGENT_MS 5000` (화면 표시용) |
