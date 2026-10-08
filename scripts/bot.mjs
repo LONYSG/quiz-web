@@ -350,6 +350,11 @@ class Bot {
           this.snapshot.question.generalHint = p.hint;
         }
       });
+      // ★ R038 — 뒷북 명단
+      s.on('question.lateAnswers', (p) => {
+        this.events.push({ type: 'question.lateAnswers', epoch: p.epoch, late: p.late, at: Date.now() });
+        if (this.snapshot?.resolution) this.snapshot.resolution.late = p.late;
+      });
       s.on('question.resolved', (p) => {
         this.events.push({ type: 'question.resolved', epoch: p.epoch, reason: p.reason, winnerAccountId: p.winnerAccountId, displayAnswer: p.displayAnswer, at: Date.now(), payload: p });
         if (this.snapshot) {
@@ -4256,6 +4261,109 @@ async function scenarioAgain() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★ late — R038 뒷북 (정답자 발생 후 3초 안의 정답) · 300자 채팅
+//   단정: 거의 동시에 정답을 보낸 여러 명 → 정답자 1명 + 뒷북 명단(도착 순, 시간 차 오름차순)
+//         3초 넘은 것 제외 · 이 문제 경험자 제외 · 같은 사람은 한 번만 · 다음 문제 epoch 제외 · 300자 통과 / 301자 거부
+// -----------------------------------------------------------------------------
+async function scenarioLate() {
+  log('시나리오 late — ★★ 뒷북 · 300자 (R038)');
+  await clearExperiences(PREFIX);
+  const [host, g1, g2, g3, g4] = await makeBots(5);
+  await host.connect();
+  host.createRoom('R038 뒷북 테스트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  for (const b of [g1, g2, g3, g4]) {
+    await b.connect();
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot !== null, 6000, `${b.name} 입장`);
+  }
+  // ★ g3 은 모든 문제의 경험자 — 정답을 쳐도 뒷북 명단에 뜨면 안 된다
+  await markExperiencedAll(g3.snapshot.me.accountId);
+
+  // ── 0. 300자
+  log('\n[0] ★ 채팅 300자 (Q-18 개정)');
+  let from = g1.mark();
+  const t300 = '가'.repeat(300);
+  g1.chat(t300);
+  await g1.waitFor(() => g1.since(from, 'chat').some((c) => c.text === t300), 4000, '300자');
+  expectTrue('★★ 300자 메시지가 그대로 올라간다', g1.since(from, 'chat').some((c) => c.text.length === 300));
+  from = g1.mark();
+  g1.chat('나'.repeat(301));
+  await sleep(500);
+  expect('★ 301자는 거부된다 (BAD_REQUEST)', g1.since(from, 'error')[0]?.code, 'BAD_REQUEST');
+
+  await startGame(host, [g1, g2, g3, g4], 2);
+  const q = host.snapshot.question;
+  for (const b of [g1, g2, g3, g4]) await b.waitQuestion(1);
+  const ans = (await answersForText(q.text))[0];
+
+  // ── 1. 거의 동시에 — g1·g2·g3(경험자) 가 같은 틱에 정답
+  log('\n[1] ★★★ 거의 동시에 정답 — 정답자 1명 + 뒷북 명단');
+  from = host.mark();
+  g1.chat(ans);
+  g2.chat(ans);
+  g3.chat(ans);
+  await host.waitFor(() => host.since(from, 'question.resolved').length > 0, 5000, '정답');
+  const res = host.since(from, 'question.resolved')[0];
+  expect('★ 사유 correct', res.reason, 'correct');
+  const winnerId = res.winnerAccountId;
+  expectTrue('★ 정답자는 g1·g2 중 한 명 (경험자 g3 은 아니다)', [g1, g2].some((b) => b.snapshot.me.accountId === winnerId));
+  // 정답자도 정답을 한 번 더 친다 (본인은 뒷북에 오르지 않는다) · 뒷북 한 명은 두 번 친다
+  const loser = [g1, g2].find((b) => b.snapshot.me.accountId !== winnerId);
+  const winnerBot = [g1, g2].find((b) => b.snapshot.me.accountId === winnerId);
+  winnerBot.chat(ans);
+  loser.chat(ans);
+  await host.waitFor(() => host.since(from, 'question.lateAnswers').length > 0, 4000, '뒷북 명단');
+  await sleep(600);
+  const lates = host.since(from, 'question.lateAnswers');
+  const last = lates[lates.length - 1].late;
+  const ids = last.map((l) => l.accountId);
+  expect('★★★ 뒷북 명단 = 진 사람 한 명 (같은 사람 두 번 쳐도 한 번)', ids.join(','), loser.snapshot.me.accountId);
+  expectTrue('★★ 경험자(g3)는 뒷북에 없다', !ids.includes(g3.snapshot.me.accountId));
+  expectTrue('★★ 정답자 본인은 뒷북에 없다', !ids.includes(winnerId));
+  const diff = BigInt(last[0].diffNs);
+  expectTrue('★★ 시간 차는 0 이상 3초 이하 (나노초)', diff >= 0n && diff <= 3_000_000_000n, `${last[0].diffNs}ns`);
+  log(`  ★ 뒷북 시간 차 ${last[0].diffNs}ns (같은 틱에 보냄)`);
+
+  // ── 2. 3초 넘은 정답은 인정하지 않는다
+  log('\n[2] ★★ 정답자 발생 3초 뒤의 정답은 뒷북이 아니다');
+  await sleep(2600); // 정답 후 약 3.2초
+  const from2 = host.mark();
+  g4.chat(ans);
+  await sleep(700);
+  const after = host.since(from2, 'question.lateAnswers');
+  expect('★★ 3초 넘은 g4 는 명단에 오르지 않는다', after.length, 0);
+
+  // ── 3. 재접속 스냅샷에도 명단이 있다
+  const back = new Bot(g4.name);
+  back.cookie = g4.cookie;
+  g4.socket.close();
+  await back.connect();
+  await back.waitFor(() => back.snapshot !== null, 6000, '재접속');
+  if (back.snapshot.room.state === 'QUESTION_RESOLVED') {
+    expect('★ 재접속 스냅샷의 뒷북 명단', (back.snapshot.resolution?.late ?? []).map((l) => l.accountId).join(','), loser.snapshot.me.accountId);
+  }
+
+  // ── 4. 다음 문제에서 앞 문제 epoch 로 보낸 정답은 대상이 아니다 (판정 자체가 epoch 로 막힌다)
+  log('\n[4] ★ 다음 문제 — 명단이 비어서 시작한다');
+  const q2 = await host.waitQuestion(2, 15000);
+  expectTrue('★ 새 문제', q2.epoch !== q.epoch);
+  const from4 = host.mark();
+  loser.chat(ans, q.epoch); // 낡은 epoch
+  await sleep(600);
+  expect('★ 낡은 epoch 의 정답은 뒷북 이벤트를 만들지 않는다', host.since(from4, 'question.lateAnswers').length, 0);
+
+  host.socket.emit('host.forceEnd', {});
+  await sleep(500);
+  for (const b of [host, g1, g2, g3, back]) b.leave();
+  await sleep(500);
+  for (const b of [host, g1, g2, g3, g4, back]) b.disconnect();
+  await clearExperiences(PREFIX);
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   duplicate: scenarioDuplicate,
@@ -4289,6 +4397,8 @@ const SCENARIOS = {
   topics: scenarioTopics,
   // ★★ R035
   again: scenarioAgain,
+  // ★★ R038
+  late: scenarioLate,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

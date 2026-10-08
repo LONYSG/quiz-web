@@ -101,7 +101,8 @@ for (const cand of PORT_CANDIDATES) {
 if (PORT !== PORT_CANDIDATES[0]) console.log(`[ui-check] ★ 서버 포트 ${PORT} 를 쓴다 (앞 후보는 열 수 없었다)`);
 const EXTERNAL_URL = opt('--url', null);
 const BASE = EXTERNAL_URL ?? `http://localhost:${PORT}`;
-const WIDTHS = [320, 360, 390, 480, 720];
+// ★ R038 — 휴대폰 폭 430 을 더했다 (큰 휴대폰)
+const WIDTHS = [320, 360, 390, 430, 480, 720];
 const STAMP = Date.now().toString(36).slice(-5);
 const ACCOUNT_PREFIX = `uic${STAMP}`;
 
@@ -275,8 +276,9 @@ class Page extends Cdp {
   click(label) {
     return this.evaluate(`(() => {
       ${Page.LABEL_FN}
-      const b = [...document.querySelectorAll('button')]
-        .find(x => labelOf(x) === ${JSON.stringify(label)});
+      // ★ R038 — 같은 이름의 버튼이 숨은 것과 보이는 것 둘이면 보이는 것을 고른다 (모바일 전용 줄 등)
+      const all = [...document.querySelectorAll('button')].filter(x => labelOf(x) === ${JSON.stringify(label)});
+      const b = all.find(x => x.getClientRects().length > 0) ?? all[0];
       if (!b || b.disabled) return false;
       b.click();
       return true;
@@ -336,8 +338,9 @@ class Page extends Cdp {
   buttonState(label) {
     return this.evaluate(`(() => {
       ${Page.LABEL_FN}
-      const b = [...document.querySelectorAll('button')]
-        .find(x => labelOf(x) === ${JSON.stringify(label)});
+      // ★ R038 — 같은 이름의 버튼이 숨은 것과 보이는 것 둘이면 보이는 것을 고른다 (모바일 전용 줄 등)
+      const all = [...document.querySelectorAll('button')].filter(x => labelOf(x) === ${JSON.stringify(label)});
+      const b = all.find(x => x.getClientRects().length > 0) ?? all[0];
       if (!b) return { exists: false };
       return { exists: true, disabled: b.disabled, visible: b.getClientRects().length > 0 };
     })()`);
@@ -393,6 +396,10 @@ class Page extends Cdp {
         : key);
     const vk = {
       Escape: 27,
+      ArrowLeft: 37,
+      ArrowUp: 38,
+      ArrowRight: 39,
+      ArrowDown: 40,
       Enter: 13,
       F2: 113,
       F4: 115,
@@ -1197,7 +1204,8 @@ try {
     const scrolled = await host.scrollToBottom();
     record(
       '페이지가 스크롤된다 (검사 전제)',
-      scrolled.y > 100,
+      // ★ R038 — 모바일에서 참여자 칸을 숨겨 화면이 짧아졌다. 스크롤되기만 하면 전제가 선다
+      scrolled.y > 40,
       `y=${scrolled.y} / max=${scrolled.max}`,
     );
 
@@ -1288,6 +1296,16 @@ try {
     );
     record('★ 지문이 비어 있지 않다', qLen > 5, `${qLen}자`);
 
+    // ★★ R038 — 시간 막대가 남은 시간에 비례하는가 (문제 시간 40초 기준)
+    const barCheck = JSON.parse(await host.evaluate(`JSON.stringify({
+      ratio: Number(document.querySelector('.q-timebar-fill')?.dataset.ratio ?? -1),
+      sec: parseInt(document.querySelector('.q-timer')?.innerText ?? '-1', 10) })`));
+    record(
+      '★★ R038 — 시간 막대 = 남은 시간 ÷ 40초 (1초 오차 안)',
+      barCheck.ratio >= 0 && Math.abs(barCheck.ratio * 40 - barCheck.sec) <= 1.2,
+      JSON.stringify(barCheck),
+    );
+    record('★ 채팅 입력 최대 길이 300자 (R038)', (await host.evaluate("document.querySelector('.chat-card input')?.maxLength")) === 300);
     const timer = await host.onScreen('.q-timer');
     record(
       '★★ 남은 시간이 화면에 보인다',
@@ -2039,11 +2057,55 @@ try {
     if (!q2Up) console.log('  ★ 진단: ' + (await host.evaluate(`JSON.stringify({ pill: document.querySelector('.state-pill')?.innerText, q: document.querySelector('.question-card .q-text')?.dataset.text, q1: ${JSON.stringify(q1Text)}, reveal: document.querySelector('.reveal')?.innerText, head: document.querySelector('.q-head')?.innerText, all: [...document.querySelectorAll('.q-text')].map(e => (e.dataset.text || '') + ' || ' + e.innerText) })`)));
     record('★ 2번째(마지막) 문제가 시작된다', q2Up);
     const ans2 = await answerOf(host);
+
+    // ── ★★ R038 — 세 번째 참가자가 **휴대폰 폭(390)** 으로 중간 참가한다 (경험 없음 → 뒷북 후보)
+    const third = await newPage(browser, 'third', true);
+    await third.setViewport(390, 800);
+    await signUp(third, 't');
+    await third.goto(`${BASE}/r/${roomId2}`);
+    const thirdIn = await third.waitFor("document.querySelector('.question-card .q-text') !== null", 10000);
+    record('★ 휴대폰 폭 참가자가 게임 중에 들어온다', thirdIn);
+    const mob = JSON.parse(await third.evaluate(`JSON.stringify({
+      seats: getComputedStyle(document.querySelector('.seats')).display,
+      qOver: (() => { const b = document.querySelector('.question-card .q-text'); return b ? b.scrollWidth > b.clientWidth + 1 : true; })(),
+      cardOver: (() => { const c = document.querySelector('.question-card'); return c ? c.scrollWidth > c.clientWidth + 1 : true; })(),
+      pageX: document.documentElement.scrollWidth > window.innerWidth + 1 })`));
+    record('★★ R038 모바일 — 참여자 칸을 숨긴다 (문제·채팅에 집중)', mob.seats === 'none', JSON.stringify(mob));
+    record('★★ R038 모바일 — 문제 지문이 잘리지 않는다 (가로 넘침 없음)', !mob.qOver && !mob.cardOver && !mob.pageX, JSON.stringify(mob));
+    const innerMob = await third.evaluate(INNER_SCROLLERS);
+    record('★★ R038 모바일 — 칸 안 스크롤 0 (화면 스크롤 하나만)', innerMob.length === 0, innerMob.join(' / '));
+    record(
+      '★ 모바일 채팅은 스크롤하지 않는다 (overflow hidden)',
+      (await third.evaluate("getComputedStyle(document.querySelector('.chat-log')).overflowY")) === 'hidden',
+    );
+
     await host.setInput('.chat-card input', ans2 ?? '');
     await host.click('전송');
+    // ★ 세 번째 참가자가 곧바로 같은 정답 → 간발의 차로 늦는다 = 뒷북
+    await third.setInput('.chat-card input', ans2 ?? '');
+    await third.click('전송');
     const revealUp = await host.waitFor("document.querySelector('.reveal .winner-name') !== null", 5000);
     const revealAt = Date.now();
     record('★★ 마지막 문제도 정답 공개 화면이 나온다', revealUp);
+
+    // ── ★★★ 세레머니 · 뒷북 (PC 방장 화면 + 휴대폰 화면)
+    record('★★★ R038 — 정답자가 있으면 세레머니 칸이 나온다', await host.evaluate("document.querySelector('.ceremony') !== null"));
+    await host.setInput('.chat-card input', '메롱 세레머니');
+    await host.click('전송');
+    const cerHost = await host.waitFor("[...document.querySelectorAll('.ceremony-msg')].some(e => e.innerText.includes('메롱 세레머니'))", 4000);
+    const cerMob = await third.waitFor("[...document.querySelectorAll('.ceremony-msg')].some(e => e.innerText.includes('메롱 세레머니'))", 4000);
+    record('★★★ 세레머니 시간에 정답자가 친 채팅이 모두에게 크게 보인다 (PC · 휴대폰)', cerHost && cerMob);
+    const cerOn = await third.onScreen('.ceremony');
+    record('★★ R038 모바일 — 세레머니 칸이 화면에 보인다', cerOn.exists && cerOn.partlyVisible, JSON.stringify(cerOn.rect ?? {}));
+    const lateHost = await host.waitFor(`document.querySelector('.late-row')?.innerText.includes(${JSON.stringify(`UI${STAMP}t`)}) === true`, 4000);
+    const lateText = await host.evaluate("document.querySelector('.late-row')?.innerText ?? ''");
+    record('★★★ R038 — 뒷북 칸에 늦은 사람과 시간 차가 뜬다', lateHost && /\+\d+(\.\d+)?초/.test(lateText), lateText);
+    const lateMob = await third.onScreen('.late-row');
+    record('★★ R038 모바일 — 뒷북 칸이 보인다', lateMob.exists, JSON.stringify(lateMob.rect ?? {}));
+    record(
+      '★ 세레머니가 문제·정답·해설을 가리지 않는다 (겹침 없음)',
+      !(await host.overlaps('.ceremony', '.reveal-answer')).overlap && !(await host.overlaps('.ceremony', '.question-card .q-text')).overlap,
+    );
     record(
       '★★ 마지막 문제는 "N초 후 결과 화면" 으로 안내한다',
       await host.waitFor("/\\d초 후 결과 화면/.test(document.querySelector('.reveal-next')?.innerText ?? '')", 6000),
@@ -2055,6 +2117,17 @@ try {
       resultUp && waited >= 7300 && waited <= 10500,
       `${waited}ms`,
     );
+
+    // ── ★★ R038 — 결과 화면 방향키: 버튼 사이를 오간다 (글자 사이로 캐럿이 가지 않는다)
+    await third.evaluate("[...document.querySelectorAll('button')].find(b => b.innerText.trim() === '나가기')?.click()");
+    await host.evaluate("[...document.querySelectorAll('.next-row button')][0]?.focus()");
+    await host.key('ArrowRight');
+    const afterRight = await host.evaluate("document.activeElement?.innerText.replace(/Alt\\+\\w/, '').trim() ?? ''");
+    await host.key('ArrowLeft');
+    const afterLeft = await host.evaluate("document.activeElement?.innerText.replace(/Alt\\+\\w/, '').trim() ?? ''");
+    record('★★ R038 — 결과 화면에서 → 로 "로비로", ← 로 "다시 하기" 버튼으로 옮겨 간다', afterRight === '로비로' && afterLeft === '다시 하기', `${afterRight} / ${afterLeft}`);
+    await browser.send('Target.closeTarget', { targetId: third.targetId });
+    third.close();
 
     // ── ★★ 다시 하기 (Alt+A) — R035: 같은 설정으로 **5초 뒤 바로 시작**
     await host.evaluate("document.querySelector('.chat-card input')?.focus()");
@@ -2136,7 +2209,7 @@ try {
     for (let i = 1; i <= 14; i += 1) {
       await host.setInput('.chat-card input', `채팅 줄 ${i}`);
       await host.click('전송');
-      await sleep(60);
+      await sleep(5); // ★ R038 — 몰아쳐 보낸다 (옛 방식은 이때 맨 아래 따라가기가 꺼졌다)
     }
     await guest.waitFor("document.querySelector('.chat-log')?.innerText.includes('채팅 줄 14') === true", 5000);
     const sbHidden = await guest.evaluate(`(() => { const el = document.querySelector('.chat-log');
@@ -2144,9 +2217,10 @@ try {
     record('★★ R035 — 채팅 스크롤바가 보이지 않는다', sbHidden);
     const atBottom = await guest.evaluate(`(() => { const el = document.querySelector('.chat-log');
       return el.scrollHeight - el.scrollTop - el.clientHeight < 24; })()`);
-    record('★ 맨 아래를 보고 있으면 새 메시지를 따라 내려간다', atBottom);
+    record('★★★ R038 — 채팅을 몰아쳐도 맨 아래에 붙어 있다 (건드리지 않으면 항상 최하단)', atBottom);
     // 휠로 올려 본다 (스크롤 이벤트까지)
-    await guest.evaluate(`(() => { const el = document.querySelector('.chat-log'); el.scrollTop = 0; el.dispatchEvent(new Event('scroll')); })()`);
+    // ★ R038 — "올려 보기" 는 사용자 동작(휠 위로)으로만 켜진다. 휠 이벤트를 보내고 실제로 올린다
+    await guest.evaluate(`(() => { const el = document.querySelector('.chat-log'); el.scrollTop = 0; el.dispatchEvent(new WheelEvent('wheel', { deltaY: -300, bubbles: true })); el.dispatchEvent(new Event('scroll')); })()`);
     await sleep(200);
     await host.setInput('.chat-card input', '새 메시지 도착');
     await host.click('전송');
@@ -2174,6 +2248,11 @@ try {
     );
     record('접속 종료 배지가 5초 유예 뒤 나타난다', badge);
 
+    // ★ R038 — 모바일 폭(720)에서는 참여자 칸 대신 위쪽 "내보내기" 줄에 보인다
+    const kickMob = await host.onScreen('.mobile-kick button');
+    record('★★ R038 모바일 — 방장에게 접속 종료자 "내보내기" 줄이 보인다', kickMob.exists && kickMob.partlyVisible, JSON.stringify(kickMob.rect ?? kickMob));
+    await host.setViewport(1280, 720);
+    await sleep(300);
     const kick = await host.buttonState('내보내기');
     record(
       '★ 방장 화면에 "내보내기" 버튼이 나타난다',
