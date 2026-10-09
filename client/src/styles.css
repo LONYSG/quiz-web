@@ -3679,10 +3679,10 @@ button.people-row.pickable:focus-visible {
   white-space: nowrap;
 }
 .set-label {
-  flex: 0 0 4.6em;
+  flex: 0 0 3.6em; /* "문제 수" 글자 폭(약 3em) + 여유 — 1280 에서 옛 52px 와 거의 같고 화면이 커지면 함께 커진다 */
 }
 .avail-line {
-  margin: 0 0 0 calc(0.85rem * 4.6 + 10px) !important;
+  margin: 0 0 0 calc(0.85rem * 3.6 + 10px) !important;
 }
 .count-input {
   width: 4.75rem;
@@ -3719,4 +3719,25 @@ button.people-row.pickable:focus-visible {
   align-self: center;
   line-height: 1.2;
   font-size: 0.82rem;
+}
+/* ★★ R042 G — 해설은 자기 자리(최대 4줄) 안에서만. 넘치면 글자 맞춤(--ex, 하한 0.75) → 그래도 넘치면 마지막 줄 "…" */
+.reveal .reveal-explain {
+  --explain-lines: 4;
+  font-size: calc(1.05rem * var(--ex, 1));
+  line-height: 1.55;
+  max-height: calc(1.05rem * 1.55 * var(--explain-lines));
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+.reveal .reveal-explain[data-clamp='1'] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--explain-lines);
+}
+@media (max-width: 999px) {
+  /* 모바일은 R040 맞춤 글자(--qs)와 곱한다 */
+  .room .reveal .reveal-explain {
+    font-size: calc(1.05rem * var(--qs, 1) * var(--ex, 1));
+    max-height: calc(1.05rem * var(--qs, 1) * 1.55 * var(--explain-lines));
+  }
 }

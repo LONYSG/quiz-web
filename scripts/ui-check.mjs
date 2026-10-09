@@ -615,6 +615,35 @@ async function measureOneScreen(page, label, { gate = true, shotName = null, siz
   return worst;
 }
 
+/**
+ * ★★ R042 E — 라벨·버튼 글자가 꺾였는가 (두 줄 이상). 화면 크기별 글자(R041)로 고정 폭 자리가 모자라면 생긴다.
+ *   채팅 · 떠 있는 창 안의 긴 글 · 글자 맞춤(FitText)은 뺀다.
+ */
+const LABEL_WRAPS = `(() => {
+  const sel = 'button, .badge, .set-label, .hint-label, .state-pill, .preset, .chip, .pill, .seg-btn, .q-progress, .room-count, .skip-status, .winner-label, .late-label, .q-timer';
+  const out = [];
+  for (const el of document.querySelectorAll(sel)) {
+    const r = el.getBoundingClientRect();
+    if (r.width === 0 || r.height === 0) continue;
+    if (el.closest('.chat-log, .emoji-pop, .people-modal, .info-list, .keylist, .menu-modal, .confirm-modal')) continue;
+    if (el.classList.contains('fit-text') || !(el.innerText || '').trim()) continue;
+    // ★ 글자 줄의 개수 = 글자(텍스트 노드) 줄 상자의 서로 다른 세로 위치 수 (아이콘·여백·높이와 무관)
+    const tops = [];
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    for (let n = w.nextNode(); n; n = w.nextNode()) {
+      if (!n.textContent.trim()) continue;
+      const rg = document.createRange();
+      rg.selectNodeContents(n);
+      for (const rc of rg.getClientRects()) {
+        if (rc.width < 1 || rc.height < 1) continue;
+        if (!tops.some((t) => Math.abs(t - rc.top) < rc.height * 0.5)) tops.push(rc.top);
+      }
+    }
+    if (tops.length > 1) out.push((el.className || el.tagName) + ':' + el.innerText.trim().slice(0, 12) + ':' + tops.length + '줄');
+  }
+  return out;
+})()`;
+
 async function measureOneScreenOnce(page, label, { gate = true, size = ONE_SCREEN } = {}) {
   await page.setViewport(size.w, size.h);
   await page.evaluate('window.scrollTo(0, 0)');
@@ -630,6 +659,10 @@ async function measureOneScreenOnce(page, label, { gate = true, size = ONE_SCREE
     record(`★★★ ${label} — 스크롤 없이 한 화면에 들어온다`, ratio <= 1.0, detail);
     const inner = await page.evaluate(INNER_SCROLLERS);
     record(`★★ ${label} — 칸 안 스크롤도 없다 (채팅 제외)`, inner.length === 0, inner.join(' / '));
+    // ★ 검사 자체 확인용 (R042) — 옛 결함(라벨 52px · 줄바꿈 허용)을 되살려 이 검사가 실제로 잡는지 본다
+    if (process.env.WRAP_SELFTEST) await page.evaluate("(() => { if (document.getElementById('wrap-selftest')) return; const st = document.createElement('style'); st.id = 'wrap-selftest'; st.textContent = '.set-label{flex:0 0 52px!important;white-space:normal!important}'; document.head.appendChild(st); })()");
+    const wraps = await page.evaluate(LABEL_WRAPS);
+    record(`★★ ${label} — 라벨·버튼 글자가 꺾이지 않는다 (R042 E)`, wraps.length === 0, wraps.join(' / '));
     if (ratio > 1.0) {
       // ★ R028 — 넘쳤을 때 무엇이 자리를 먹는지 바로 보이게 한다 (원인을 찾느라 다시 돌리지 않게)
       const parts = await page.evaluate(`(() => {
@@ -1092,6 +1125,15 @@ async function measureLong(page) {
           const br = box.getBoundingClientRect();
           return el.getBoundingClientRect().right > br.right - (parseFloat(getComputedStyle(box).paddingRight) || 0) + 1;
         }).map((el) => el.className + ':' + el.innerText.slice(0, 12)),
+        // ★ R042 G — 해설: 자기 자리 안(넘침 없음 — 글자 맞춤 · 마지막 줄 줄임) · 소감 · 뒷북과 겹치지 않는다
+        explain: (() => {
+          const ex = document.querySelector('.reveal-explain');
+          if (!ex) return null;
+          const a = ex.getBoundingClientRect();
+          const hit = (sel) => { const o = document.querySelector(sel); if (!o) return false; const b = o.getBoundingClientRect(); return a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom; };
+          return { over: ex.scrollHeight - ex.clientHeight, clamp: ex.dataset.clamp, fit: ex.dataset.fit, hitCeremony: hit('.ceremony'), hitLate: hit('.late-row'), hitNext: hit('.reveal-next') };
+        })(),
+        cardH: Math.round(document.querySelector('.question-card')?.getBoundingClientRect().height ?? 0),
         // ★ R041 E-2 — "+1" 은 닉네임 바로 옆
         plus: (() => { const n = document.querySelector('.winner-name'); const pl = document.querySelector('.winner-plus'); if (!n || !pl) return null; const a = n.getBoundingClientRect(); const b = pl.getBoundingClientRect(); return { gap: Math.round(b.left - a.right), dy: Math.round((b.top + b.height / 2) - (a.top + a.height / 2)) }; })(),
         squeeze: document.querySelector('.room')?.classList.contains('squeeze') ?? false,
@@ -1395,6 +1437,7 @@ async function shotsFlow(browser) {
     ['.infotip-btn', '07k-pop-info-m390'],
     ['#rename-btn', '07l-pop-profile-m390'],
     ['#people-btn', '07m-people-m390'],
+    ['#menu-btn', '07q-menu-m390'],
   ]) {
     await guest.evaluate(`document.querySelector('${sel}')?.click()`);
     await sleep(350);
@@ -1910,7 +1953,8 @@ try {
     // ★★ R039 — 힌트 두 자리가 처음부터 잠긴 칸으로 보인다 (🔒 + 열리는 시점)
     record(
       '★★ R039 — 문제 시작 때 힌트 두 칸이 잠긴 채로 자리를 잡고 있다',
-      await host.evaluate("document.querySelectorAll('.question-card .q-hint.locked').length === 2 && document.querySelector('.question-card .q-hint.locked')?.innerText.includes('🔒')"),
+      // ★ R042 — 자물쇠는 이제 선 아이콘(svg)이다 (🔒 글자 아님)
+      await host.evaluate("document.querySelectorAll('.question-card .q-hint.locked').length === 2 && document.querySelector('.question-card .q-hint.locked svg.lucide-lock') !== null"),
     );
     // ★★ R039 — 폰트 통일: 버튼·입력칸·본문이 모두 Pretendard (폼 요소가 시스템 글꼴을 쓰던 결함)
     const fonts = JSON.parse(await host.evaluate(`JSON.stringify({
@@ -2661,7 +2705,7 @@ try {
       });
       const hintState = await host.evaluate(`(() => {
         const g = document.querySelector('.q-hints .q-hint');
-        return g ? (g.classList.contains('open') ? 'open' : g.classList.contains('none') ? 'none' : g.innerText.includes('🔒') ? 'locked' : 'other') : 'missing';
+        return g ? (g.classList.contains('open') ? 'open' : g.classList.contains('none') ? 'none' : g.querySelector('svg.lucide-lock') ? 'locked' : 'other') : 'missing';
       })()`);
       record(
         '★★ R040 — 일반 힌트 있음/없음이 문제 시작부터 보인다 (있음 = 🔒 30초 · 없음 = "없음")',
@@ -3262,6 +3306,9 @@ try {
       Math.abs(root.pc - 16) < 0.2 && Math.abs(root.lap - 17.6) < 0.2 && Math.abs(root.fhd - 20) < 0.2 && Math.abs(root.qhd - 24) < 0.2 && root.m390 === 16,
       JSON.stringify(root),
     );
+    // ★★ R042 G — 가장 긴 해설: 자기 자리 안 · 소감·뒷북·안내와 겹침 0 (모든 크기)
+    const exBad = out.filter((o) => o.at === 'reveal' && o.explain && (o.explain.hitCeremony || o.explain.hitLate || o.explain.hitNext || (o.explain.over > 1 && o.explain.clamp !== '1')));
+    record('★★★ R042 G — 긴 해설이 자기 자리 안에 있다 · 소감·뒷북 칸과 겹치지 않는다 (모바일 3 · PC 5 크기)', exBad.length === 0, exBad.map((o) => `${o.qid}/${o.size}:${JSON.stringify(o.explain)}`).join(' | ').slice(0, 300));
     const plus = out.filter((o) => o.at === 'reveal' && o.plus);
     record('★★ R041 E-2 — "+1" 이 닉네임 바로 옆 (간격 0~16px · 같은 줄)', plus.length > 0 && plus.every((o) => o.plus.gap >= 0 && o.plus.gap <= 16 && Math.abs(o.plus.dy) <= 8), plus.map((o) => `${o.size}:${JSON.stringify(o.plus)}`).join(' '));
   }

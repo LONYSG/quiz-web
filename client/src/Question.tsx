@@ -25,6 +25,7 @@ import Avatar from './Avatar.js';
 import ChatText from './ChatText.js';
 import Emoji from './Emoji.js';
 import FitText from './FitText.js';
+import ExplainText from './ExplainText.js';
 import ConfirmModal from './ConfirmModal.js';
 import { usePopup } from './popup.js';
 import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
@@ -302,7 +303,8 @@ export default function Question({
             <p className="reveal-answer">
               정답 <strong>{resolution.displayAnswer}</strong>
             </p>
-            {resolution.explanation && <p className="reveal-explain">{resolution.explanation}</p>}
+            {/* ★★ R042 G — 해설은 자기 자리(최대 4줄) 안에서만: 줄바꿈 → 글자 맞춤(75%) → "…" */}
+            {resolution.explanation && <ExplainText text={resolution.explanation} />}
           </div>
 
           {/* ★★★ 소감 칸 (R038 세레머니 → R040 "소감") — 정답자가 이 8초 동안 치는 채팅을 **모두에게 크게**. 정답자가 없으면 칸이 없다.

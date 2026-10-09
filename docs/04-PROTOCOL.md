@@ -884,3 +884,11 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `room.kicked` (S→C, 새) | 당한 사람에게만 `{ roomId, banned }`. 그 소켓은 방 채널에서 빠진다(연결은 유지 — 방 목록으로) |
 | 오류 `BANNED` (새) | `room.join` — 그 방에서 차단된 계정 |
 | 닉네임 한도 | 10칸 (shared `NICKNAME_MAX_UNITS`). 안내 문구 `NICKNAME_LIMIT_HINT` "한글 10자 · 영어·숫자 12자까지" |
+
+## ★ R042 — 바뀐 것
+
+| 항목 | 내용 |
+|------|------|
+| `host.transfer` (C→S, 새) | `{ accountId }` — 방장만 · 접속 중인 다른 사람에게만(아니면 BAD_REQUEST / INVALID_STATE) · 어느 상태에서나 (D-200) |
+| `room.hostChanged` | `reason` 추가: `grace`(끊김 30초) / `left`(★ 나가기 즉시) / `handover`(★ 넘기기). 방에 시스템 채팅 "○○ 님이 방장이 되었습니다" · 일시정지 중이면 `game.pauseStatus` 를 다시 보낸다 |
+| 방장 나가기 | `room.leave` — 방장이면 남은 접속자 중 가장 먼저 들어온 사람에게 **즉시** 넘긴다 |
