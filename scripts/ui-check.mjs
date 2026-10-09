@@ -1064,12 +1064,12 @@ async function measureLong(page) {
     })())`),
   );
 }
-async function longFlow(browser) {
+async function longFlow(browser, suffix = 'h') {
   const ids = await longestQuestionIds();
   console.log(`[long] 가장 긴 문제·해설·정답 = ${ids.join(', ')}`);
-  const host = await newPage(browser, 'host');
+  const host = await newPage(browser, `long-${suffix}`, true);
   await host.setViewport(1280, 720);
-  await signUp(host, 'h', shotNick(0));
+  await signUp(host, suffix, suffix === 'h' ? shotNick(0) : `긴글확인${STAMP.slice(0, 3)}`);
   await createRoom(host, '긴 글 확인');
   const marked = await withPg(async (c) =>
     (
@@ -1077,7 +1077,7 @@ async function longFlow(browser) {
         `INSERT INTO question_experiences (account_id, question_id)
          SELECT a.id, q.id FROM accounts a, questions q WHERE a.login_id = $1 AND NOT (q.id = ANY($2::bigint[]))
          ON CONFLICT DO NOTHING`,
-        [`${ACCOUNT_PREFIX}_h`, ids],
+        [`${ACCOUNT_PREFIX}_${suffix}`, ids],
       )
     ).rowCount,
   );
@@ -1097,7 +1097,7 @@ async function longFlow(browser) {
       await host.setViewport(sz.w, sz.h);
       await sleep(450);
       await host.evaluate('window.scrollTo(0, 0)');
-      await snap(host, `20-long-q${qid}-game-${sz.n}`);
+      if (LONG_ONLY) await snap(host, `20-long-q${qid}-game-${sz.n}`);
       out.push({ qid, at: 'game', size: sz.n, ...(await measureLong(host)) });
     }
     const ans = await withPg(async (c) =>
@@ -1113,7 +1113,7 @@ async function longFlow(browser) {
       await host.setViewport(sz.w, sz.h);
       await sleep(450);
       await host.evaluate('window.scrollTo(0, 0)');
-      await snap(host, `20-long-q${qid}-reveal-${sz.n}`);
+      if (LONG_ONLY) await snap(host, `20-long-q${qid}-reveal-${sz.n}`);
       out.push({ qid, at: 'reveal', size: sz.n, ...(await measureLong(host)) });
     }
     await host.setViewport(1280, 720);
@@ -1121,6 +1121,18 @@ async function longFlow(browser) {
   for (const o of out) console.log(`[long] ${JSON.stringify(o)}`);
   return out;
 }
+
+/** ★ R040 A-9 — 닉네임 자리에 "…" 줄임이 없고, 자리에 맞게 들어갔는가 */
+const NICK_NO_ELLIPSIS = `JSON.stringify((() => {
+  const bad = [];
+  for (const el of document.querySelectorAll('.seat-nick, .winner-name, .ceremony-head, .ranking .nick, .champion-name, .late-item, .chat-line .nick')) {
+    if (el.getBoundingClientRect().width === 0) continue;
+    const cs = getComputedStyle(el);
+    if (cs.textOverflow === 'ellipsis') bad.push('ellipsis:' + el.className);
+    if (el.classList.contains('fit-text') && el.scrollWidth > el.clientWidth + 1) bad.push('넘침:' + el.className + ':' + el.innerText);
+  }
+  return bad;
+})())`;
 
 async function shotsFlow(browser) {
   const host = await newPage(browser, 'host');
@@ -2036,11 +2048,16 @@ try {
       '★★★ Enter 만으로 확인창이 확정된다 (마우스 없이)',
       await host.waitFor("document.querySelector('.confirm') === null", 4000),
     );
-    record(
-      '★ 확정 뒤 포커스가 채팅 입력으로 돌아온다',
-      Boolean((await host.activeEl())?.inChatCard),
-      JSON.stringify(await host.activeEl()),
-    );
+    {
+      // ★ R040 C-3 — 모바일 폭이면 정답 공개(넘기기)에서 키보드를 내린다(포커스 해제)가 맞다. PC 폭이면 채팅 입력으로 돌아온다
+      const narrow = (await host.evaluate('innerWidth')) < 1000;
+      const ae = await host.activeEl();
+      record(
+        narrow ? '★ 확정 뒤 — 모바일 폭이라 정답 공개에서 키보드를 내린다 (R040 C-3 · 포커스 해제)' : '★ 확정 뒤 포커스가 채팅 입력으로 돌아온다',
+        narrow ? ae?.tag !== 'INPUT' : Boolean(ae?.inChatCard),
+        JSON.stringify(ae),
+      );
+    }
     record(
       '★★ 넘기기가 실제로 실행됐다 (정답 공개 화면으로 바뀐다)',
       await host.waitForText('정답', 6000),
@@ -2071,6 +2088,12 @@ try {
     const winnerShown = await host.waitFor("document.querySelector('.reveal .winner-name') !== null", 6000);
     const revealAt0 = Date.now();
     record('★★ 정답이 나오면 정답자 이름이 크게 나온다', winnerShown);
+    const cardH0 = await host.evaluate("document.querySelector('.question-card')?.getBoundingClientRect().height ?? 0");
+    record(
+      '★★ R040 A-3 — 정답 공개 순간 소감 칸은 비어 있다 (정답 채팅을 넣지 않는다) · 이름은 "의 소감"',
+      await host.evaluate("document.querySelector('.ceremony') !== null && document.querySelectorAll('.ceremony-msg').length === 0 && document.querySelector('.ceremony-head')?.innerText.includes('의 소감') === true"),
+      await host.evaluate("document.querySelector('.ceremony')?.innerText ?? '-'"),
+    );
     record(
       '★★ R035 — 정답자 칸도 반짝인다 (양옆까지 이어지는 연출)',
       await host.evaluate("document.querySelector('.seat-card.winner') !== null"),
@@ -2084,6 +2107,8 @@ try {
       6000,
     );
     const noticeAt = Date.now() - revealAt0;
+    const cardH1 = await host.evaluate("document.querySelector('.question-card')?.getBoundingClientRect().height ?? 0");
+    record('★★ R040 A-5 — "N초 후" 안내가 나와도 정답 카드 크기가 그대로다', cardH0 > 0 && Math.abs(cardH0 - cardH1) < 0.5, `${cardH0} → ${cardH1}`);
     record(
       '★★★ R035 — 약 3초 뒤 "N초 후 다음 문제" 가 나온다 (5·4·3·2·1)',
       noticeUp && noticeAt >= 2300 && noticeAt <= 4200,
@@ -2364,6 +2389,23 @@ try {
     const bothQ = (await host.waitFor("document.querySelector('.question-card .q-text') !== null", 15000)) &&
       (await guest.waitFor("document.querySelector('.question-card .q-text') !== null", 5000));
     record('★ 두 사람 게임이 시작된다', bothQ);
+    {
+      // ★★ R040 A-6 — 일반 힌트 있음/없음은 **문제 시작부터** (내용은 30초에)
+      const qtext = await host.evaluate("document.querySelector('.question-card .q-text')?.dataset.text ?? ''");
+      const has = await withPg(async (c) => {
+        const r = await c.query(`SELECT general_hint FROM questions WHERE question_text = $1`, [qtext]);
+        return Boolean(r.rows[0]?.general_hint?.trim());
+      });
+      const hintState = await host.evaluate(`(() => {
+        const g = document.querySelector('.q-hints .q-hint');
+        return g ? (g.classList.contains('open') ? 'open' : g.classList.contains('none') ? 'none' : g.innerText.includes('🔒') ? 'locked' : 'other') : 'missing';
+      })()`);
+      record(
+        '★★ R040 — 일반 힌트 있음/없음이 문제 시작부터 보인다 (있음 = 🔒 30초 · 없음 = "없음")',
+        has ? hintState === 'locked' : hintState === 'none',
+        `DB 힌트=${has} / 화면=${hintState}`,
+      );
+    }
 
     const answerOf = async (page) => {
       const text = await page.evaluate("document.querySelector('.question-card .q-text')?.dataset.text ?? ''");
@@ -2424,8 +2466,11 @@ try {
       s0h.count === '0 / 2' && s0h.disabled === false && s0g.count === '0 / 2' && s0g.disabled === false,
       `방장=${JSON.stringify(s0h)} / 게스트=${JSON.stringify(s0g)}`,
     );
+    const skipW0 = await host.evaluate("document.querySelector('.skip-btn')?.getBoundingClientRect().width ?? 0");
     await host.evaluate("document.querySelector('.skip-btn')?.click()");
     const v1 = await host.waitFor("document.querySelector('.skip-icons')?.dataset.votes === '1'", 4000);
+    const skipW1 = await host.evaluate("document.querySelector('.skip-btn')?.getBoundingClientRect().width ?? 0");
+    record('★★ R040 A-4 — 넘기기 / 취소 버튼 크기가 같다 (토글해도 고정)', skipW0 > 0 && Math.abs(skipW0 - skipW1) < 0.5, `${skipW0} → ${skipW1}`);
     const s1h = await skipState(host);
     const s1g = await guest.waitFor("document.querySelector('.skip-icons')?.dataset.votes === '1'", 4000);
     const s1gs = await skipState(guest);
@@ -2507,6 +2552,33 @@ try {
     const cerHost = await host.waitFor("[...document.querySelectorAll('.ceremony-msg')].some(e => e.innerText.includes('메롱 세레머니'))", 4000);
     const cerMob = await third.waitFor("[...document.querySelectorAll('.ceremony-msg')].some(e => e.innerText.includes('메롱 세레머니'))", 4000);
     record('★★★ 세레머니 시간에 정답자가 친 채팅이 모두에게 크게 보인다 (PC · 휴대폰)', cerHost && cerMob);
+    {
+      const c = JSON.parse(await host.evaluate(`JSON.stringify((() => {
+        const box = document.querySelector('.ceremony-msgs').getBoundingClientRect();
+        const m = document.querySelector('.ceremony-msg').getBoundingClientRect();
+        return { dx: Math.round((m.left + m.width / 2) - (box.left + box.width / 2)), dy: Math.round((m.top + m.height / 2) - (box.top + box.height / 2)) };
+      })())`));
+      record('★★ R040 A-3 — 소감은 칸의 좌우·상하 가운데', Math.abs(c.dx) <= 3 && Math.abs(c.dy) <= 3, JSON.stringify(c));
+      record(
+        '★ R040 A-3 — 소감 칸 글: 넘치면 줄바꿈, 세로로 넘치면 "…" (줄 수 제한)',
+        await host.evaluate("(() => { const cs = getComputedStyle(document.querySelector('.ceremony-msg')); return cs.whiteSpace !== 'nowrap' && cs.webkitLineClamp !== 'none'; })()"),
+      );
+      // ★ R040 C-3 — 키보드 검사 준비: 휴대폰 참가자가 입력칸에 있다 (결과 화면으로 바뀔 때 내려가야 한다 — 아래)
+      await third.evaluate("document.querySelector('.chat-card input')?.focus()");
+      record('★★ R040 C-3 — PC 는 포커스를 그대로 둔다 (바로 칠 수 있게)', (await host.evaluate("document.activeElement?.tagName ?? ''")) === 'INPUT');
+      const nickBad = JSON.parse(await host.evaluate(NICK_NO_ELLIPSIS));
+      record('★★★ R040 A-9 — 닉네임 자리에 "…" 줄임이 없고 잘리지 않는다 (PC 정답 공개)', nickBad.length === 0, nickBad.join(' / '));
+      const nickBadM = JSON.parse(await third.evaluate(NICK_NO_ELLIPSIS));
+      record('★★ R040 A-9 — 같은 검사 (휴대폰 390)', nickBadM.length === 0, nickBadM.join(' / '));
+      await third.evaluate("document.querySelector('.prefs-toggle')?.click()");
+      await sleep(300);
+      const pc = JSON.parse(await third.evaluate(`JSON.stringify((() => {
+        const r = document.querySelector('.prefs-pop')?.getBoundingClientRect();
+        return r ? { dx: Math.round(r.left + r.width / 2 - innerWidth / 2), dy: Math.round(r.top + r.height / 2 - innerHeight / 2), l: Math.round(r.left), r: Math.round(innerWidth - r.right) } : null;
+      })())`));
+      record('★★ R040 C-1 — 모바일 상단 메뉴 창(⚙)이 화면 가운데에 뜬다 (밖으로 나가지 않는다)', pc && Math.abs(pc.dx) <= 3 && Math.abs(pc.dy) <= 3 && pc.l >= 8 && pc.r >= 8, JSON.stringify(pc));
+      await third.evaluate("document.querySelector('.prefs-toggle')?.click()");
+    }
     const cerOn = await third.onScreen('.ceremony');
     record('★★ R038 모바일 — 세레머니 칸이 화면에 보인다', cerOn.exists && cerOn.partlyVisible, JSON.stringify(cerOn.rect ?? {}));
     const lateHost = await host.waitFor(`document.querySelector('.late-row')?.innerText.includes(${JSON.stringify(`UI${STAMP}t`)}) === true`, 4000);
@@ -2524,6 +2596,12 @@ try {
     );
     const resultUp = await host.waitFor("document.querySelector('.result-card') !== null", 12000);
     const waited = Date.now() - revealAt;
+    {
+      await third.waitFor("document.querySelector('.result-card') !== null", 4000);
+      await sleep(200);
+      const kb = JSON.parse(await third.evaluate("JSON.stringify({ tag: document.activeElement?.tagName ?? null, dropped: document.documentElement.dataset.kbDropped ?? '0' })"));
+      record('★★★ R040 C-3 — 이벤트(결과 화면) 때 모바일은 키보드를 내린다 (입력칸 포커스 해제 — 정답자 아닌 사람도)', kb.tag !== 'INPUT' && Number(kb.dropped) >= 1, JSON.stringify(kb));
+    }
     record(
       '★★★ 결과 화면은 정답 공개 약 8초 뒤에 나온다 (R035)',
       resultUp && waited >= 7300 && waited <= 10500,
@@ -2582,6 +2660,21 @@ try {
       const bytes = await withPg(async (c) => (await c.query(`SELECT bytes, mime FROM account_avatars WHERE account_id = $1`, [ids?.g])).rows[0]);
       record('★ DB 에 작게 저장된다 (200KB 이하 · webp)', bytes && bytes.bytes <= 200 * 1024, JSON.stringify(bytes));
       record('★ 채팅 줄에도 같은 사진 (작은 아바타)', await host.evaluate(`[...document.querySelectorAll('.chat-line img.avatar.xs')].length > 0`));
+      // ★★ R040 A-1 — 채팅 줄의 글자 아바타 · 사진 아바타가 닉네임과 같은 높이 (가운데 차이)
+      const al = JSON.parse(await host.evaluate(`JSON.stringify((() => {
+        const out = { photo: [], letter: [] };
+        for (const line of document.querySelectorAll('.chat-line')) {
+          const a = line.querySelector('.avatar.xs'); const n = line.querySelector('.nick');
+          if (!a || !n) continue;
+          const ar = a.getBoundingClientRect(); const nr = n.getBoundingClientRect();
+          const d = Math.round(((ar.top + ar.height / 2) - (nr.top + nr.height / 2)) * 10) / 10;
+          (a.tagName === 'IMG' ? out.photo : out.letter).push(d);
+        }
+        return out;
+      })())`));
+      const maxOff = Math.max(...al.photo.map(Math.abs), ...al.letter.map(Math.abs));
+      const gap = al.photo.length && al.letter.length ? Math.abs(al.photo[0] - al.letter[0]) : 99;
+      record('★★ R040 A-1 — 채팅의 글자 아바타가 사진 아바타와 같은 높이 (닉네임 가운데와 2px 이내)', al.photo.length > 0 && al.letter.length > 0 && maxOff <= 2 && gap <= 1, JSON.stringify(al));
     }
     const expBefore = await withPg(async (c) =>
       (await c.query(`SELECT count(*)::int AS n FROM question_experiences WHERE account_id = $1`, [ids?.g])).rows[0].n,
@@ -2614,6 +2707,38 @@ try {
       '★★ 다른 사람이 쓰는 닉네임이면 막고 알려 준다',
       await guest.waitForText('이미 사용 중인 닉네임', 4000),
     );
+    // ★★ R040 A-9 — 폭 한도: 한글 9자(9칸)는 화면에서 막히고 칸 수가 빨갛게 / 영어 10자(8칸)는 된다
+    await guest.setInput('#rename-input', '가나다라마바사아자');
+    await sleep(150);
+    record(
+      '★★ R040 A-9 — 한글 9자는 바꾸기 버튼이 꺼지고 "9/8" 이 빨갛게 (한글 1 · 영어·숫자 0.8 · 8칸)',
+      await guest.evaluate("[...document.querySelectorAll('.rename-pop button')].find(b => b.innerText.trim() === '바꾸기')?.disabled === true && document.querySelector('.rename-units.over')?.innerText === '9/8'"),
+      await guest.evaluate("document.querySelector('.rename-units')?.innerText ?? '-'"),
+    );
+    const longStatus = await guest.evaluate(`fetch('/api/auth/nickname', { method: 'PATCH', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ nickname: '가나다라마바사아자' }) }).then(r => r.status)`);
+    record('★★ R040 A-9 — 서버도 막는다 (한글 9자 → 400)', longStatus === 400, `status=${longStatus}`);
+    const tenLatin = `Ab${STAMP}xyz`.slice(0, 10);
+    await guest.setInput('#rename-input', tenLatin);
+    await sleep(150);
+    await guest.click('바꾸기');
+    record(
+      '★★ R040 A-9 — 영어·숫자 10자(8칸)는 된다',
+      await host.waitFor(`document.querySelector('.seat-card[data-account="${ids?.g}"] .seat-nick')?.innerText === ${JSON.stringify(tenLatin)}`, 4000),
+      tenLatin,
+    );
+    // ★★ R040 — 한도를 넘는 옛 닉네임: 로비에 들어오면 프로필 창이 열려 있고 바꾸라는 안내 · 방장이 시작하면 막힌다
+    await withPg((c) => c.query(`UPDATE accounts SET nickname = $2 WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_g`, `옛닉네임아주긴${STAMP}`]));
+    await guest.goto(`${BASE}/r/${roomId2}`);
+    const mustUp = await guest.waitFor("document.querySelector('.rename-must') !== null && document.querySelector('.rename-pop') !== null", 8000);
+    record('★★★ R040 — 한도를 넘는 옛 닉네임은 로비에 들어오면 바꾸라는 안내가 열려 있다', mustUp);
+    record('★ R040 — 방장 화면 그 사람 칸에 "닉네임 변경 필요"', await host.waitFor(`document.querySelector('.seat-card[data-account="${ids?.g}"]')?.innerText.includes('닉네임 변경 필요') === true`, 4000));
+    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+    await host.click('게임 시작');
+    record('★★★ R040 — 바꾸기 전에는 게임 시작이 막힌다 (방 전체에 이유)', await host.waitForText('닉네임을 바꿔야 시작할 수 있어요', 5000));
+    await guest.setInput('#rename-input', `UIb${STAMP}`);
+    await sleep(150);
+    await guest.click('바꾸기');
+    record('★★ R040 — 바꾸면 안내가 닫힐 수 있다 (안내 사라짐)', await guest.waitFor("document.querySelector('.rename-must') === null", 5000));
 
     // ── ★★★ R039 — 이모티콘: Alt+숫자 · 칸에 크게 · 로그 한 줄 · 고르기 창 · 10칸 바꾸기 저장 · 모바일 보내기
     console.log('\n[6-E] ★★★ 이모티콘 (R039)');
@@ -2831,6 +2956,18 @@ try {
     );
     await browser.send('Target.closeTarget', { targetId: other.targetId });
     other.close();
+  }
+
+  // ── ★★ R040 C-4 — 가장 긴 문제·정답·해설: 모바일 360·390·430 에서 화면 스크롤 없이 (글자를 맞춘다)
+  {
+    console.log('\n[10] ★★ R040 — 가장 긴 문제·정답·해설 (모바일 맞춤 글자)');
+    const out = await longFlow(browser, 'long');
+    const mob = out.filter((o) => o.size !== 'pc');
+    record('★ 긴 글 세 문제를 모두 돌았다 (검사 전제)', new Set(out.map((o) => o.qid)).size >= 2 && mob.length >= 12, `${out.length}건`);
+    const scrolled = out.filter((o) => o.pageScroll > 0 || o.hScroll > 0);
+    record('★★★ R040 C-4 — 긴 문제·정답·해설에도 화면 스크롤이 없다 (360·390·430·PC · 문제·정답 공개)', scrolled.length === 0, scrolled.map((o) => `${o.qid}/${o.at}/${o.size}:${o.pageScroll}`).join(' '));
+    const tooSmall = mob.filter((o) => Number(o.qs ?? 1) < 0.75);
+    record('★★ R040 C-4 — 글자는 하한(75%) 아래로 줄지 않는다', tooSmall.length === 0, mob.map((o) => `${o.size}:${o.qs}`).join(' '));
   }
 } catch (err) {
   if (!err?.shotsDone) record('실행', false, err.message);

@@ -3915,6 +3915,9 @@ async function scenarioGeneralHint() {
       const q = await h.waitQuestion(i, 15000);
       const hinted = q.text === marked.question_text;
       const qFrom = h.mark();
+      // ★★ R040 — 일반 힌트 **있음/없음 여부**는 문제 시작(question.started)에 온다. 내용은 오지 않는다 (30초에)
+      expect(`★★ R040 — ${i}번 문제 시작 때 일반 힌트 여부가 온다 (${hinted ? '있음' : '없음'})`, q.hasGeneralHint, hinted);
+      expect('★★★ R040 — 문제 시작 때 힌트 내용은 오지 않는다 (누출 방어 그대로)', q.generalHint ?? null, null);
       if (!hinted) {
         log(`\n[${i}] ★ 힌트가 없는 문제 — 남은 30초에 아무것도 오지 않는다`);
         await h.waitFor(() => h.since(qFrom, 'question.hint').length > 0, 35000, '초성 힌트');
@@ -3931,6 +3934,7 @@ async function scenarioGeneralHint() {
         await g1.connect();
         await g1.waitFor(() => g1.snapshot !== null, 6000, '게스트 재접속');
         expect('★★ 남은 30초 전 재접속 — 스냅샷에 일반 힌트가 없다', g1.snapshot.question.generalHint, null);
+        expect('★★ R040 — 재접속 스냅샷에도 "있음" 여부는 온다', g1.snapshot.question.hasGeneralHint, true);
         g = g1;
 
         // (b) ★★★ PAUSED 누출 방어
@@ -4439,6 +4443,93 @@ async function scenarioAvatar() {
 }
 
 // -----------------------------------------------------------------------------
+// ★★ nickname — R040 닉네임 폭 한도 (한글 1 · 영어·숫자 0.8 · 8칸 — 건우 확정) · 긴 옛 닉네임은 시작에 참여할 수 없다
+// -----------------------------------------------------------------------------
+async function postJson(pathname, body, cookie = null, method = 'POST') {
+  const res = await fetch(`${BASE}${pathname}`, {
+    method,
+    headers: { 'content-type': 'application/json', ...(cookie ? { cookie } : {}) },
+    body: JSON.stringify(body),
+  });
+  return { status: res.status, json: await res.json().catch(() => ({})) };
+}
+
+async function scenarioNickname() {
+  log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040)');
+  const stamp = Date.now().toString(36).slice(-4);
+  // ★ 한글 닉네임도 실행마다 다르게 (겹치면 409) — 시각 4글자를 한글 음절로 바꾼다
+  const hg = (n) => [...stamp].map((ch) => String.fromCharCode(0xac00 + parseInt(ch, 36) * 84 + n)).join('');
+  const signupNick = (n, nickname) => postJson('/api/auth/signup', { loginId: `${PREFIX}_nk${n}${stamp}`.toLowerCase(), password: 'bot1234', nickname });
+
+  log('\n[1] ★★ 회원가입 — 같은 규칙');
+  expect('★ 한글 8자 → 된다', (await signupNick(1, hg(1) + '마바사아')).status, 200);
+  expect('★★ 한글 9자 → 400', (await signupNick(2, '가나다라마바사아자')).status, 400);
+  expect('★ 영어·숫자 10자 → 된다', (await signupNick(3, `Nk${stamp}abcd`.slice(0, 10))).status, 200);
+  const r11 = await signupNick(4, `Nk${stamp}abcde`.slice(0, 11));
+  expect('★★ 영어·숫자 11자 (8.8칸) → 400', r11.status, 400);
+  expectTrue('★ 안내 문구 (한글 8자 · 영어·숫자 10자)', /한글 8자/.test(r11.json.message ?? ''), r11.json.message);
+  expect('★ 섞어서 7.8칸 (한글 7 + a) → 된다', (await signupNick(5, hg(2) + '라마바' + 'a')).status, 200);
+
+  log('\n[2] ★★ 닉네임 변경 · 긴 옛 닉네임');
+  const [host, guest] = await makeBots(2);
+  await host.connect();
+  host.createRoom('R040 닉네임');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  const rn = (nickname) => postJson('/api/auth/nickname', { nickname }, guest.cookie, 'PATCH');
+  expect('★★ 변경 — 한글 9자 → 400', (await rn('가나다라마바사아자')).status, 400);
+  expect('★★ 변경 — 섞어서 8.2칸 (한글 5 + 4자) → 400', (await rn('가나다라마bc12')).status, 400);
+
+  // ★ 옛 한도(12자)로 만든 닉네임을 흉내 낸다 — DB 를 직접 바꾸고 다시 접속한다
+  const longNick = `옛긴닉네임${hg(3)}`;
+  await withDb((c) => c.query(`UPDATE accounts SET nickname = $2 WHERE login_id = $1`, [guest.loginId, longNick]));
+  guest.socket.close();
+  await sleep(400);
+  const g2 = new Bot(guest.name);
+  g2.cookie = guest.cookie;
+  await g2.connect();
+  await g2.waitFor(() => g2.snapshot !== null, 6000, '게스트 재접속');
+  expect('★ 재접속하면 옛 긴 닉네임 그대로 (검사 전제)', g2.snapshot.me.nickname, longNick);
+
+  let from = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(from, 'error').length > 0, 5000, '시작 거부');
+  const err = host.since(from, 'error')[0];
+  expect('★★★ 긴 옛 닉네임이 있으면 게임 시작이 막힌다', err.code, 'NICKNAME_CHANGE_REQUIRED');
+  expectTrue('★ 누구 때문인지 알린다', (err.message ?? '').includes(longNick), err.message);
+  expectTrue('★ 그 사람에게도 이유가 간다', g2.events.some((e) => e.type === 'error' && e.code === 'NICKNAME_CHANGE_REQUIRED'));
+  expect('★ 로비에 머문다', host.snapshot.room.state, 'LOBBY');
+
+  // ★ 게임 중인 방에는 긴 옛 닉네임으로 새로 들어갈 수 없다 (대기실에는 들어간다)
+  const third = new Bot('nk3');
+  await third.auth();
+  await withDb((c) => c.query(`UPDATE accounts SET nickname = $2 WHERE login_id = $1`, [third.loginId, `셋째긴닉네임${hg(4)}`]));
+  expect('★★ 바꾸면 된다 (영어 10자)', (await rn(`Ok${stamp}abcd`.slice(0, 10))).status, 200);
+  await sleep(300);
+  const gameId = await startGame(host, [g2], 1);
+  expectTrue('★★ 바꾼 뒤에는 시작된다', Boolean(gameId));
+  await third.connect();
+  from = third.mark();
+  third.join(roomId);
+  await third.waitFor(() => third.since(from, 'error').length > 0 || third.snapshot !== null, 5000, '중간 입장 결과');
+  expect('★★ 게임 중인 방 — 긴 옛 닉네임은 들어갈 수 없다', third.since(from, 'error')[0]?.code, 'NICKNAME_CHANGE_REQUIRED');
+
+  host.socket.emit('host.forceEnd', {});
+  await sleep(400);
+  host.leave();
+  g2.leave();
+  await sleep(400);
+  host.disconnect();
+  g2.disconnect();
+  third.disconnect();
+  await withDb((c) => c.query(`DELETE FROM accounts WHERE login_id LIKE $1`, [`${PREFIX}_nk%`.toLowerCase()]));
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
 // ★★ emoji — R039 이모티콘: 번호로 오간다 · 정답 판정에 들어가지 않는다 · 채팅 로그에 남는다 · 도배 제한 · 잘못된 번호 거부
 // -----------------------------------------------------------------------------
 async function scenarioEmoji() {
@@ -4535,6 +4626,7 @@ const SCENARIOS = {
   // ★★ R039
   avatar: scenarioAvatar,
   emoji: scenarioEmoji,
+  nickname: scenarioNickname,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

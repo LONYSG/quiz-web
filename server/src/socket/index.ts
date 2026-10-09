@@ -1011,6 +1011,8 @@ function attachToRoom(
     });
     // ★★ 정답이 공개되던 순간 끊겨 있었다가 공개 구간에 돌아왔다 — 정답을 본다 (D-168)
     recordResolvedWitness(room, session.accountId);
+    // ★ R040 — 다시 들어왔더니 닉네임·사진이 바뀌어 있다 → 다른 사람 화면의 참여자 목록도 고친다 (옛 긴 닉네임 안내 등)
+    if (added.profileChanged) broadcastPlayers(room);
   } else {
     broadcastSystem(room, `${session.nickname} 님이 입장했습니다.`);
     emitRoom(room, 'room.playerJoined', {

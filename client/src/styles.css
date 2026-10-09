@@ -3243,3 +3243,14 @@ button.skip-btn {
     display: inline-block !important;
   }
 }
+/* ★ R040 검수 — 결과 순위(360): 접속 종료 배지가 있는 줄에서 닉네임·점수가 두 줄로 꺾였다
+   → 순위·배지·점수는 줄지 않고 꺾이지 않는다 / 닉네임이 남는 폭을 쓰고 넘치면 글자를 줄인다 (FitText) */
+.ranking li .rank,
+.ranking li .badge,
+.ranking li .score {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.ranking li .fit-text {
+  flex: 1 1 auto;
+}

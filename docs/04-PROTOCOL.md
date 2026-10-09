@@ -865,3 +865,12 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `GET /emoji/<code>.svg` | 표준 그림 (Twemoji, 우리 서버 · 1년 캐시) |
 | `GET/PUT /api/auth/prefs` | `emojiSlots`(양의 정수 10개 이하) 추가 |
 
+## ★ R040 — 바뀐 것
+
+| 항목 | 내용 |
+|------|------|
+| `question.started` · 스냅샷 `question` | `hasGeneralHint: boolean` 추가 — 일반 힌트 **여부만**. 내용(`generalHint`)은 그대로 남은 30초에 `question.generalHint` (D-189) |
+| 닉네임 검증 (`POST /api/auth/signup` · `PATCH /api/auth/nickname`) | 길이 대신 **폭**: shared `nicknameFits` (한글 1 · 영어·숫자 0.8 · 8칸). 넘으면 400 + "닉네임이 너무 깁니다 — 한글 8자 · 영어·숫자 10자까지" (D-188) |
+| 오류 `NICKNAME_CHANGE_REQUIRED` (새) | 게임 시작(`game.start` · `game.again`) — 방에 한도를 넘는 옛 닉네임이 있으면 **방 전체에** `error` (message 에 이름). `room.join` — 그런 계정이 LOBBY 가 아닌 방에 새로 들어오려 하면 그 사람에게 |
+| 재접속 | 닉네임·사진이 바뀌어 있으면 방에 플레이어 목록을 다시 보낸다 |
+| RULES | `NICKNAME_MAX_LENGTH` 12 → 20(안전 상한일 뿐) · `SEAT_EMOJI_MS 3000` (칸 이모티콘, 화면 전용) |

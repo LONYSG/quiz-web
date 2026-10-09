@@ -134,7 +134,7 @@ export function pickColorIndex(room: Room): number {
 }
 
 export type AddPlayerResult =
-  | { ok: true; player: Player; rejoined: boolean }
+  | { ok: true; player: Player; rejoined: boolean; profileChanged?: boolean }
   | { ok: false; reason: 'room_full' };
 
 /**
@@ -156,11 +156,13 @@ export function addPlayer(
     existing.connected = true;
     existing.socketId = socketId;
     existing.disconnectedAt = null;
+    // ★ R040 — 다시 들어올 때 닉네임·사진이 바뀌어 있을 수 있다 (DB 에서 바꿈 등) → 부르는 쪽이 방에 다시 알린다
+    const profileChanged = existing.nickname !== nickname || existing.avatarV !== avatarV;
     existing.nickname = nickname; // 로비에서 닉네임을 바꿨을 수 있다
     existing.avatarV = avatarV;
     accountRoom.set(accountId, room.id);
     room.emptySince = null;
-    return { ok: true, player: existing, rejoined: true };
+    return { ok: true, player: existing, rejoined: true, profileChanged };
   }
 
   if (room.players.size >= RULES.MAX_PLAYERS) {
