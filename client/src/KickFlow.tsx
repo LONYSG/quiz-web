@@ -13,7 +13,9 @@ import ConfirmModal from './ConfirmModal.js';
 export interface KickTarget {
   accountId: string;
   nickname: string;
-  step: 'choose' | 'kick' | 'ban';
+  step: 'choose' | 'kick' | 'ban' | 'host';
+  /** ★ R042 — 접속 중인가 (방장은 접속 중인 사람에게만 넘긴다) */
+  connected: boolean;
 }
 
 interface Props {
@@ -35,6 +37,28 @@ export default function KickFlow({ socket, target, onStep, onClose }: Props) {
         actions={[
           { label: '강퇴', danger: true, onClick: () => onStep('kick') },
           { label: '차단', danger: true, onClick: () => onStep('ban') },
+          // ★★ R042 (건우) — 방장 넘기기. 접속 중인 사람에게만
+          ...(target.connected ? [{ label: '방장 넘기기', onClick: () => onStep('host') }] : []),
+        ]}
+        onCancel={onClose}
+      />
+    );
+  }
+  if (target.step === 'host') {
+    return (
+      <ConfirmModal
+        key="host"
+        kind="kick-host"
+        title={<>{name} 님에게 방장을 넘길까요?</>}
+        note="넘기면 되돌릴 수 없어요. 새 방장이 넘겨줘야 해요."
+        actions={[
+          {
+            label: '넘기기',
+            onClick: () => {
+              socket.emit('host.transfer', { accountId: target.accountId });
+              onClose();
+            },
+          },
         ]}
         onCancel={onClose}
       />

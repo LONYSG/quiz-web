@@ -4560,6 +4560,97 @@ async function scenarioKick() {
 }
 
 // -----------------------------------------------------------------------------
+// ★★ hostmove — R042 방장 나감 즉시 이전 · 방장 넘기기 · 넘겨받은 방장의 시작·종료·재개
+// -----------------------------------------------------------------------------
+async function scenarioHostMove() {
+  log('시나리오 hostmove — ★★ 방장 이전 · 넘기기 (R042)');
+  await clearExperiences(PREFIX);
+  const [host, a, b] = await makeBots(3);
+  await host.connect();
+  host.createRoom('R042 방장 이전');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  for (const x of [a, b]) {
+    await x.connect();
+    x.join(roomId);
+    await x.waitFor(() => x.snapshot !== null, 6000, `${x.name} 입장`);
+  }
+  const aId = a.snapshot.me.accountId;
+  const bId = b.snapshot.me.accountId;
+
+  log('\n[1] ★★ 방장이 스스로 나가면 즉시 — 가장 먼저 들어온 사람(a)');
+  let from = a.mark();
+  const t0 = Date.now();
+  host.leave();
+  await a.waitFor(() => a.since(from, 'room.hostChanged').length > 0, 3000, '방장 이전');
+  expect('★★ 넘겨받은 사람 = 남은 사람 중 가장 먼저 들어온 a', a.since(from, 'room.hostChanged')[0].hostAccountId, aId);
+  expectTrue('★★ 즉시 (30초 유예 없이 · 3초 안)', Date.now() - t0 < 3000, `${Date.now() - t0}ms`);
+  host.disconnect();
+
+  log('\n[2] ★★ 방장 넘기기 — a → b');
+  from = b.mark();
+  a.socket.emit('host.transfer', { accountId: bId });
+  await b.waitFor(() => b.since(from, 'room.hostChanged').length > 0, 3000, '넘기기');
+  expect('★★ b 가 방장', b.since(from, 'room.hostChanged')[0].hostAccountId, bId);
+  from = a.mark();
+  a.socket.emit('host.transfer', { accountId: aId });
+  await sleep(400);
+  expect('★ 넘긴 사람은 더 이상 방장이 아니다 (NOT_HOST)', a.since(from, 'error')[0]?.code, 'NOT_HOST');
+  from = b.mark();
+  b.socket.emit('host.transfer', { accountId: bId });
+  await sleep(400);
+  expect('★ 자기 자신에게는 안 된다 (BAD_REQUEST)', b.since(from, 'error')[0]?.code, 'BAD_REQUEST');
+
+  log('\n[3] ★★ 넘겨받은 방장이 시작 · 게임 중 넘기기 · 강제 종료');
+  await startGame(b, [a], 2);
+  from = a.mark();
+  b.socket.emit('host.transfer', { accountId: aId });
+  await a.waitFor(() => a.since(from, 'room.hostChanged').length > 0, 3000, '게임 중 넘기기');
+  expect('★★ 게임 중에도 넘길 수 있다', a.since(from, 'room.hostChanged')[0].hostAccountId, aId);
+  from = a.mark();
+  a.socket.emit('host.forceSkip', { epoch: a.snapshot.question.epoch });
+  await a.waitFor(() => a.since(from, 'question.resolved').length > 0, 4000, '넘겨받은 방장의 넘기기');
+  expect('★★ 넘겨받은 방장이 문제를 넘긴다', a.since(from, 'question.resolved')[0].reason, 'host_skip');
+
+  log('\n[4] ★★ 일시정지 중 넘겨받은 방장이 재개');
+  await a.waitQuestion(2, 15000);
+  a.socket.close();
+  b.socket.close();
+  await sleep(800);
+  expect('★ 전원 끊김 → PAUSED', (await roomStateOf(roomId)).state, 'PAUSED');
+  const a2 = new Bot(a.name);
+  a2.cookie = a.cookie;
+  await a2.connect();
+  await a2.waitFor(() => a2.snapshot !== null, 6000, 'a 재접속');
+  const b2 = new Bot(b.name);
+  b2.cookie = b.cookie;
+  await b2.connect();
+  await b2.waitFor(() => b2.snapshot !== null, 6000, 'b 재접속');
+  from = b2.mark();
+  a2.socket.emit('host.transfer', { accountId: bId });
+  await b2.waitFor(() => b2.since(from, 'room.hostChanged').length > 0, 3000, '일시정지 중 넘기기');
+  from = b2.mark();
+  b2.resume();
+  await b2.waitFor(() => b2.since(from, 'game.resumed').length > 0, 4000, '재개');
+  expectTrue('★★★ 일시정지 중 넘겨받은 방장이 재개한다', b2.since(from, 'game.resumed').length > 0);
+  from = b2.mark();
+  b2.socket.emit('host.forceEnd', {});
+  await b2.waitFor(() => b2.since(from, 'game.result').length > 0, 6000, '강제 종료');
+  expectTrue('★★ 넘겨받은 방장이 강제 종료한다', true);
+
+  log('\n[5] ★ 게임 중 방장이 나가기 → 즉시 이전');
+  from = a2.mark();
+  b2.leave();
+  await a2.waitFor(() => a2.since(from, 'room.hostChanged').length > 0, 3000, '나가기 이전');
+  expect('★★ 남은 a 에게 즉시', a2.since(from, 'room.hostChanged')[0].hostAccountId, aId);
+
+  a2.leave();
+  await sleep(400);
+  for (const x of [a2, b2]) x.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
 // ★★ nickname — R040 닉네임 폭 한도 (한글 1 · 영어·숫자 0.8 · 8칸 — 건우 확정) · 긴 옛 닉네임은 시작에 참여할 수 없다
 // -----------------------------------------------------------------------------
 async function postJson(pathname, body, cookie = null, method = 'POST') {
@@ -4746,6 +4837,8 @@ const SCENARIOS = {
   nickname: scenarioNickname,
   // ★★★ R041
   kick: scenarioKick,
+  // ★★ R042
+  hostmove: scenarioHostMove,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

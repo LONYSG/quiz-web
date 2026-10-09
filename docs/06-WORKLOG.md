@@ -54,7 +54,7 @@
 
 - [x] **1단계 A·B·E·F·H** — Lucide 선 아이콘(Icon.tsx · lucide-react, 빌드에 포함) · 상단 바 버튼 같은 높이·간격 · 모바일 [제목][👥][☰] (MobileMenu) ·
       QHD "문제 수" 꺾임(라벨 칸 52px 고정 × rem 글자) → em 폭 + D-022 목록에 라벨 추가 · 모바일 로비 라벨 위/고르기 아래 · "혼자선 투표 불가" 정렬 · ⓘ 출처 삭제
-- [ ] C 방장 이전 · 넘기기
+- [x] **C 방장 이전 · 넘기기** — rooms/host.ts transferHost 한 곳 · 나가기 즉시(joinOrder 최소 접속자) · 끊김 30초 그대로 · host.transfer · 강퇴/차단 팝업에 "방장 넘기기" · 봇 hostmove
 - [ ] D 소리 전수 점검
 - [ ] G 긴 해설
 - [ ] 마무리

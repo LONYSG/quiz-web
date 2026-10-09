@@ -33,6 +33,7 @@ import { advanceAfterResolved, checkQuestionTimeout, pushHintIfDue } from './gam
 import { checkAbandon, idleDeleteApplies, pauseIfNoActive } from './game/pause.js';
 import { emitRoom } from './rooms/emit.js';
 import { activeCount, allRooms, nextHostCandidate } from './rooms/registry.js';
+import { transferHost } from './rooms/host.js';
 import { destroyRoom } from './rooms/lifecycle.js';
 import { toPlayerView } from './rooms/snapshot.js';
 import type { Room } from './rooms/types.js';
@@ -185,15 +186,8 @@ function checkHostTransfer(room: Room, now: number): void {
     return;
   }
 
-  const previous = room.hostAccountId;
-  room.hostAccountId = candidate.accountId;
-  room.hostGraceUntil = null;
-
-  console.log(`[tick] 방 ${room.id} 방장 이전: ${previous} → ${candidate.accountId}`);
-  emitRoom(room, 'room.hostChanged', {
-    hostAccountId: candidate.accountId,
-    nickname: candidate.nickname,
-  });
+  // ★ R042 — 이전은 rooms/host.ts 한 곳 (나감 즉시 · 직접 넘기기와 같은 처리)
+  transferHost(room, candidate, 'grace');
   // ★ 원래 방장이 돌아와도 돌려주지 않는다 (Q-15 확정).
   //   여기서 previous 를 기억해 두지 않는 것이 그 구현이다.
 }

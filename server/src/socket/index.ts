@@ -55,11 +55,13 @@ import {
   getRoom,
   getRoomOfAccount,
   markDisconnected,
+  nextHostCandidate,
   pushChat,
   registerRoom,
   removePlayer,
   unregisterRoom,
 } from '../rooms/registry.js';
+import { transferHost } from '../rooms/host.js';
 import { buildSnapshot, toPlayerView } from '../rooms/snapshot.js';
 import { isEmojiId } from '../http/emojiRoutes.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
@@ -855,6 +857,32 @@ function registerRoomHandlers(socket: Socket): void {
     { requireHost: true, parse: parseKick },
     ({ socket: s, room, session, payload }) => kick(s, room, payload.accountId, payload.ban, session.accountId),
   );
+  // ── ★★ R042 — 방장 넘기기 (강퇴/차단 팝업의 세 번째 갈래). 접속 중인 다른 사람에게만. 어느 상태에서나
+  onRoom<{ accountId: string }>(
+    socket,
+    'host.transfer',
+    {
+      requireHost: true,
+      parse: (raw) => {
+        const obj = parseObject(raw);
+        if (!obj) return null;
+        const accountId = parseString(obj.accountId, 1, 32);
+        return accountId === null ? null : { accountId };
+      },
+    },
+    ({ socket: s, room, session, payload }) => {
+      const target = room.players.get(payload.accountId);
+      if (!target || payload.accountId === session.accountId) {
+        sendError(s, 'BAD_REQUEST', '넘겨받을 사람을 찾을 수 없습니다.');
+        return;
+      }
+      if (!target.connected) {
+        sendError(s, 'INVALID_STATE', '접속 중인 사람에게만 방장을 넘길 수 있습니다.');
+        return;
+      }
+      transferHost(room, target, 'handover');
+    },
+  );
   // ★ 옛 이름 (Q-15) — 접속 종료자 내보내기. 이제 강퇴와 같은 처리다 (접속 중인 사람도 된다)
   onRoom<{ accountId: string; ban: boolean }>(
     socket,
@@ -1097,6 +1125,13 @@ function attachToRoom(
 function leaveRoom(socket: Socket, roomId: string, accountId: string): void {
   const room = getRoom(roomId);
   if (!room) return;
+
+  // ★★ R042 (건우) — 방장이 **스스로 나가면 즉시** 남은 사람 중 가장 먼저 들어온 사람(접속 중)에게 넘긴다.
+  //   끊김은 지금처럼 30초 유예(tick · Q-29). 남은 접속자가 없으면 넘기지 않는다(방 폭파·일시정지 흐름 그대로)
+  if (room.hostAccountId === accountId) {
+    const next = nextHostCandidate(room, accountId);
+    if (next) transferHost(room, next, 'left');
+  }
 
   const inGame =
     room.state === 'QUESTION_ACTIVE' ||

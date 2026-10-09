@@ -560,9 +560,9 @@ export default function Lobby({
   const res = snapshot.resolution;
   const winnerId = state === 'QUESTION_RESOLVED' && res?.reason === 'correct' ? res.winnerAccountId : null;
   /** ★★ R041 — 사람을 골랐다 (PC 참여자 칸 · 모바일 👥 창) → 강퇴 / 차단 고르기 팝업. 방장만 · 자기 자신은 안 된다 */
-  const pickPlayer = (p: { accountId: string; nickname: string }) => {
+  const pickPlayer = (p: { accountId: string; nickname: string; connected: boolean }) => {
     if (!snapshot.me.isHost || p.accountId === snapshot.me.accountId) return;
-    setKickTarget({ accountId: p.accountId, nickname: p.nickname, step: 'choose' });
+    setKickTarget({ accountId: p.accountId, nickname: p.nickname, step: 'choose', connected: p.connected });
     setKickOpen(true);
   };
   const seatOf = (index: number) => {
@@ -820,7 +820,7 @@ export default function Lobby({
           onClose={() => setPeopleOpen(false)}
         />
       )}
-      {kickOpen && kickTarget && snapshot.players.some((p) => p.accountId === kickTarget.accountId) && (
+      {kickOpen && kickTarget && snapshot.me.isHost && snapshot.players.some((p) => p.accountId === kickTarget.accountId) && (
         <KickFlow
           socket={socket}
           target={kickTarget}
