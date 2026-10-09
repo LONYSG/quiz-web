@@ -90,7 +90,19 @@ export default function App() {
     // ★ 접속 주소를 하드코딩하지 않는다. 같은 오리진에 붙는다.
     const s = io({ transports: ['websocket', 'polling'] });
     setSocket(s);
+    // ★★ R041 — 페이지를 떠나면(다른 주소 · 뒤로 가기 · 탭 닫기) 소켓을 **직접** 닫는다.
+    //   원인 (ui-check 실측): 브라우저가 떠난 페이지를 뒤로 가기 캐시(bfcache)에 얼려 두면 소켓이 열린 채 남아
+    //   서버가 "아직 접속 중" 으로 봤다 → 모두 떠나도 일시정지가 안 되고, 접속 종료 표시가 늦었다(하트비트 시간까지).
+    //   캐시에서 돌아오면(pageshow persisted) 다시 연결한다 — 서버가 방에 다시 붙여 준다(재접속과 같다).
+    const onHide = () => s.disconnect();
+    const onShow = (e: PageTransitionEvent) => {
+      if (e.persisted && !s.connected) s.connect();
+    };
+    window.addEventListener('pagehide', onHide);
+    window.addEventListener('pageshow', onShow);
     return () => {
+      window.removeEventListener('pagehide', onHide);
+      window.removeEventListener('pageshow', onShow);
       s.close();
     };
   }, [account]);

@@ -89,7 +89,7 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
               {r.rank}위
             </span>
             <Avatar nickname={r.nickname} colorIndex={r.colorIndex} accountId={r.accountId} avatarV={players.find((p) => p.accountId === r.accountId)?.avatarV} />
-            <FitText text={r.nickname} className="nick" style={{ color: `var(--p${r.colorIndex})` }} minPx={13} />
+            <FitText text={r.nickname} className="nick" style={{ color: `var(--p${r.colorIndex})` }} minPx={11} />
             {!r.connected && <span className="badge off">접속 종료</span>}
             <span className="score mono">{r.score}점</span>
           </li>

@@ -745,12 +745,13 @@ export default function Lobby({
           file={photoFile}
           onCancel={() => {
             setPhotoFile(null);
-            setPhotoOpen(false);
+            // ★ R041 — 편집기는 프로필 창 자리를 잠깐 빌렸다(팝업 하나) → 닫으면 프로필 창으로 돌아간다
+            setRenameOpen(true);
           }}
           onDone={async (blob) => {
             await uploadAvatar(blob);
             setPhotoFile(null);
-            setPhotoOpen(false);
+            setRenameOpen(true);
             setRenameMsg({ ok: true, text: '프로필 사진을 바꿨습니다.' });
           }}
         />

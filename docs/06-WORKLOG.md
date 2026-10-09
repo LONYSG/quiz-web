@@ -59,7 +59,8 @@
 - [x] **C 강퇴·차단 · 모바일 참여자 창** — host.kick {accountId, ban} (kickDisconnected 합침) · bannedAccountIds · room.kicked · BANNED · PC 칸 누르기 · 👥 PeoplePanel · KickFlow(고르기 → 최종 확인)
 - [x] **D ⓘ** 6줄 + ✕ · **E** ⚙ 설정 글자 · +1 닉네임 옆 · 단축키 "지금은 쓸 수 없음" 없앰(방장 전용은 방장에게만) · **F** 새 문제에도 키보드 내림
 - [x] **G 소리** — 조작마다 깨우기(pointerup·touchend·click·keydown) · statechange/visibilitychange 로 배경음 이어 틀기 · 무음 1샘플 · 밀린 음 건너뛰기 · 배경음 비중 0.5→1.2
-- [ ] 마무리 (ui-check · 봇 · 문서 · 보고서)
+- [x] **마무리** — ui-check 454([6-A0] 팝업·키보드·칸 누르기·상단 바·소리·ⓘ / [6-B] 👥 갱신·10명 계산·ⓘ 한 화면 / [10] 한글 10자 × 8크기 · 뿌리 글자 · +1) ·
+      봇 kick(16) · nickname 10칸 · 문서 01·04·05·07(D-192~198)·10·13·PLAY-GUIDE · 보고서. 검수에서: 내 칸 닉네임 줄 폭 · QHD 상한 24 · 강퇴 제목 · ⚙ 크기 · 사진 편집기 뒤 프로필 창 복귀
 
 ---
 

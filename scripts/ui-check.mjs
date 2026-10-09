@@ -501,6 +501,7 @@ async function launchBrowserOn() {
       '--no-default-browser-check',
       '--disable-gpu',
       '--hide-scrollbars',
+      ...(process.env.NO_BFCACHE ? ['--disable-features=BackForwardCache'] : []),
       'about:blank',
     ],
     { stdio: 'ignore' },
@@ -1041,7 +1042,14 @@ const LONG_SIZES = [
   { n: 'm390', w: 390, h: 844 },
   { n: 'm430', w: 430, h: 932 },
   { n: 'pc', w: 1280, h: 720 },
+  // ★ R041 — 건우 노트북(15인치 FHD 125%) · 같은 노트북 브라우저 안쪽 높이(추정) · FHD · QHD
+  { n: 'lap', w: 1536, h: 864 },
+  { n: 'lap2', w: 1536, h: 730 },
+  { n: 'fhd', w: 1920, h: 1080 },
+  { n: 'qhd', w: 2560, h: 1440 },
 ];
+/** ★ R041 — 한글 10자 닉네임 (실행마다 다르게 — 시각 글자를 한글 음절로) */
+const HANGUL10 = '십자닉네임' + [...STAMP].map((ch) => String.fromCharCode(0xac00 + parseInt(ch, 36) * 84 + 7)).join('');
 async function longestQuestionIds() {
   return withPg(async (c) => {
     const base = `status = 'approved' AND is_active AND question_type = 'short_answer'`;
@@ -1070,6 +1078,19 @@ async function measureLong(page) {
         answerFont: f('.reveal-answer strong'),
         qOverflow: qt ? qt.scrollHeight - qt.clientHeight : null,
         qs: document.querySelector('.room')?.dataset.qs ?? null,
+        rootPx: parseFloat(getComputedStyle(document.documentElement).fontSize),
+        // ★ R041 — 닉네임 자리: "…" · 넘침 · 담긴 칸 밖으로 밀려남
+        nickBad: [...document.querySelectorAll('.seat-nick, .winner-name, .ceremony-head, .ranking .nick, .champion-name, .late-item, .chat-line .nick')].filter((el) => el.getBoundingClientRect().width > 0).filter((el) => {
+          const cs = getComputedStyle(el);
+          if (cs.textOverflow === 'ellipsis') return true;
+          if (el.classList.contains('fit-text') && el.scrollWidth > el.clientWidth + 1) return true;
+          const box = el.closest('.seat-card, .ranking li, .ceremony, .reveal-main');
+          if (!box) return false;
+          const br = box.getBoundingClientRect();
+          return el.getBoundingClientRect().right > br.right - (parseFloat(getComputedStyle(box).paddingRight) || 0) + 1;
+        }).map((el) => el.className + ':' + el.innerText.slice(0, 12)),
+        // ★ R041 E-2 — "+1" 은 닉네임 바로 옆
+        plus: (() => { const n = document.querySelector('.winner-name'); const pl = document.querySelector('.winner-plus'); if (!n || !pl) return null; const a = n.getBoundingClientRect(); const b = pl.getBoundingClientRect(); return { gap: Math.round(b.left - a.right), dy: Math.round((b.top + b.height / 2) - (a.top + a.height / 2)) }; })(),
         squeeze: document.querySelector('.room')?.classList.contains('squeeze') ?? false,
       };
     })())`),
@@ -1080,7 +1101,7 @@ async function longFlow(browser, suffix = 'h') {
   console.log(`[long] 가장 긴 문제·해설·정답 = ${ids.join(', ')}`);
   const host = await newPage(browser, `long-${suffix}`, true);
   await host.setViewport(1280, 720);
-  await signUp(host, suffix, suffix === 'h' ? shotNick(0) : `긴글확인${STAMP.slice(0, 3)}`);
+  await signUp(host, suffix, suffix === 'h' ? (shotNick(0) ?? HANGUL10) : HANGUL10);
   await createRoom(host, '긴 글 확인');
   const marked = await withPg(async (c) =>
     (
@@ -1354,6 +1375,7 @@ async function shotsFlow(browser) {
   await guest.goto('about:blank');
   await sleep(6500); // ★ 게스트 접속 종료 유예(5초)가 지나야 "활성 0명" 이 된다
   await host.goto('about:blank');
+  console.log(`[shots] 방장 이동: ${await host.evaluate('location.href')} · 게스트: ${await guest.evaluate('location.href')}`);
   await sleep(7000); // 방장도 유예가 지나야 활성 0명 → PAUSED
   await host.goto(`${BASE}/r/${roomId}`);
   const pausedUp = await host.waitFor("document.querySelector('.paused-card') !== null", 15000);
@@ -2415,6 +2437,71 @@ try {
     //   ★ 건우: "스킵 투표가 아예 안 된다." — R033 까지는 봇만 투표를 시험했다(봇은 화면을 거치지 않는다).
     //     ★ 그래서 **두 브라우저가 실제 버튼·단축키로** 투표한다.
     // ─────────────────────────────────────────────────────────────────────────
+    console.log('\n[6-A0] ★★★ R041 — 팝업 하나 · 키보드 · 칸 누르기(강퇴/차단) · 상단 바 · 소리 · ⓘ');
+    {
+      const prev = JSON.parse(await host.evaluate('JSON.stringify([innerWidth, innerHeight])'));
+      await host.setViewport(1280, 720);
+      await sleep(300);
+      record(
+        '★ R041 E-1 — 웹 상단 바는 글자까지 (초대 · 설정 · 안내 · 나가기)',
+        await host.evaluate("(() => { const t = document.querySelector('.room-tools')?.innerText ?? ''; return ['초대', '설정', '안내', '나가기'].every((w) => t.includes(w)); })()"),
+        await host.evaluate("document.querySelector('.room-tools')?.innerText.replace(/\\s+/g, ' ') ?? ''"),
+      );
+      record('★★ R041 G — 화면을 한 번 누르면 소리가 깨어 있다 (AudioContext running)', await host.waitFor("document.documentElement.dataset.audio === 'running'", 3000), await host.evaluate("document.documentElement.dataset.audio ?? '-'"));
+      // 팝업 하나 — ⓘ 를 연 채 ⚙ 를 열면 ⓘ 는 닫힌다 · 나가기(Alt+X)를 열면 ⚙ 도 닫힌다
+      await host.evaluate("document.querySelector('.infotip-btn')?.click()");
+      await sleep(200);
+      await host.evaluate("document.querySelector('.prefs-toggle')?.click()");
+      await sleep(200);
+      const pops1 = await host.evaluate("[!!document.querySelector('.infotip-pop'), !!document.querySelector('.prefs-pop')].join(',')");
+      record('★★★ R041 B — 팝업은 하나만: ⓘ 를 연 채 ⚙ 를 열면 ⓘ 가 닫힌다', pops1 === 'false,true', pops1);
+      // ★ 로비에서는 나가기 확인이 없다(Q-82 — 바로 나간다) — 대신 칸 누르기로 강퇴 팝업을 띄운다
+      await host.evaluate("document.querySelector('.seat-card.pickable')?.click()");
+      await sleep(250);
+      const pops2 = JSON.parse(await host.evaluate("JSON.stringify({ prefs: !!document.querySelector('.prefs-pop'), modals: document.querySelectorAll('.confirm-modal').length, kind: document.querySelector('.confirm-modal')?.dataset.kind ?? null })"));
+      record('★★★ R041 B·C — PC 방장이 참여자 칸을 누르면 강퇴/차단 팝업 · ⚙ 창은 닫힌다 (하나만)', !pops2.prefs && pops2.modals === 1 && pops2.kind === 'kick-choose', JSON.stringify(pops2));
+      record('★ R041 C — 자기 칸은 누를 수 없다', await host.evaluate("document.querySelector('.seat-card.mine')?.classList.contains('pickable') === false"));
+      // 키보드 — 첫 버튼에 포커스 · → 로 다음 버튼 · Esc 로 닫힘
+      const f0 = await host.evaluate("document.activeElement?.innerText ?? ''");
+      await host.key('ArrowRight', { code: 'ArrowRight', vk: 39 });
+      const f1 = await host.evaluate("document.activeElement?.innerText ?? ''");
+      record('★★ R041 B — 팝업 키보드: 첫 버튼 포커스 · → 로 다음 버튼', f0 === '강퇴' && f1 === '차단', `${f0} → ${f1}`);
+      await host.key('Escape', { code: 'Escape', vk: 27 });
+      await sleep(200);
+      record('★★ R041 B — Esc 로 닫힌다', await host.evaluate("document.querySelector('.confirm-modal') === null"));
+      // 팝업 글자 — 위아래 가운데
+      await host.evaluate("document.querySelector('.seat-card.pickable')?.click()");
+      await sleep(250);
+      const mid = JSON.parse(await host.evaluate(`JSON.stringify((() => { const r = document.querySelector('.confirm-modal').getBoundingClientRect(); return { dy: Math.round(r.top + r.height / 2 - innerHeight / 2), dx: Math.round(r.left + r.width / 2 - innerWidth / 2) }; })())`));
+      record('★ R041 B — 팝업은 화면 가운데', Math.abs(mid.dx) <= 3 && Math.abs(mid.dy) <= 3, JSON.stringify(mid));
+      await host.click('취소');
+      // ⓘ — ✕ 로 닫힌다 · 짧다
+      await host.evaluate("document.querySelector('.infotip-btn')?.click()");
+      await sleep(200);
+      const infoLines = await host.evaluate("document.querySelectorAll('.infotip-pop .info-list li').length");
+      await host.evaluate("document.querySelector('.infotip-close')?.click()");
+      await sleep(200);
+      record('★★ R041 D — ⓘ 는 짧게(8줄 이하) · ✕ 로 닫힌다', infoLines > 0 && infoLines <= 8 && (await host.evaluate("document.querySelector('.infotip-pop') === null")), `${infoLines}줄`);
+      // 단축키 목록 — "지금은 쓸 수 없음" 문구 없음
+      await host.evaluate("document.querySelector('.keybar-btn')?.click()");
+      await sleep(250);
+      const keyText = await host.evaluate("document.querySelector('.keylist')?.innerText ?? ''");
+      await host.evaluate("document.querySelector('.keybar-btn')?.click()");
+      record('★★ R041 E-3 — 단축키 목록에 "지금은 쓸 수 없음" 이 없다', keyText.length > 0 && !keyText.includes('쓸 수 없음'), keyText.slice(0, 60));
+      // 게스트(방장 아님) — 방장 전용 단축키는 목록에 없다
+      await guest.setViewport(1280, 720);
+      await sleep(300);
+      await guest.evaluate("document.querySelector('.keybar-btn')?.click()");
+      await sleep(250);
+      const gKeys = await guest.evaluate("document.querySelector('.keylist')?.innerText ?? ''");
+      await guest.evaluate("document.querySelector('.keybar-btn')?.click()");
+      record('★ R041 E-3 — 방장이 아니면 방장 전용 단축키가 목록에 없다', gKeys.length > 0 && !gKeys.includes('(방장)'), gKeys.slice(0, 60));
+      record('★ R041 C — 방장이 아니면 참여자 칸을 누를 수 없다', await guest.evaluate("document.querySelector('.seat-card.pickable') === null"));
+      await guest.setViewport(720, 900);
+      await host.setViewport(prev[0], prev[1]);
+      await sleep(300);
+    }
+
     console.log('\n[6-A] ★★★ R034/R035 — 두 사람 게임 (스킵 투표 · 칸 메시지 마스킹 · 마지막 문제 8초 · 다시 하기)');
     const ids = await withPg(async (c) => {
       const r = await c.query(`SELECT login_id, id::text AS id FROM accounts WHERE login_id = ANY($1)`, [
@@ -2589,8 +2676,24 @@ try {
       (await third.evaluate("getComputedStyle(document.querySelector('.chat-log')).overflowY")) === 'hidden',
     );
 
+    // ★★ R041 C-2 — 휴대폰 참가자: ⓘ 가 한 화면에 들어오는가 · 👥 참여자 창을 연 채로 점수가 바로 바뀌는가
+    await third.evaluate("document.querySelector('.infotip-btn')?.click()");
+    await sleep(250);
+    const infoM = JSON.parse(await third.evaluate(`JSON.stringify((() => { const p = document.querySelector('.infotip-pop'); if (!p) return null; const r = p.getBoundingClientRect(); return { top: Math.round(r.top), bottom: Math.round(r.bottom), h: innerHeight, inner: p.scrollHeight - p.clientHeight, close: !!p.querySelector('.infotip-close') }; })())`));
+    record('★★ R041 D — 모바일 ⓘ: 한 화면 · 안에서 스크롤 없음 · ✕ 있음', infoM && infoM.top >= 0 && infoM.bottom <= infoM.h && infoM.inner <= 1 && infoM.close, JSON.stringify(infoM));
+    await third.evaluate("document.querySelector('.infotip-close')?.click()");
+    await sleep(150);
+    await third.evaluate("document.querySelector('#people-btn')?.click()");
+    const pUp = await third.waitFor("document.querySelector('.people-modal') !== null", 3000);
+    const pInfo = JSON.parse(await third.evaluate(`JSON.stringify((() => { const m = document.querySelector('.people-modal'); const rows = [...m.querySelectorAll('.people-list li')]; const rh = rows.length ? rows[0].getBoundingClientRect().height + 4 : 0; const r = m.getBoundingClientRect(); return { rows: rows.length, photos: m.querySelectorAll('.avatar').length, rowH: Math.round(rh), modalH: Math.round(r.height), h: innerHeight, est10: Math.round(r.height + rh * (10 - rows.length)), text: m.innerText.replace(/\\s+/g, ' ').slice(0, 80) }; })())`));
+    record('★★★ R041 C-2 — 모바일 👥 참여자 창: 사람마다 사진·닉네임·점수', pUp && pInfo.rows === 3 && pInfo.photos === 3 && /점/.test(pInfo.text), JSON.stringify(pInfo));
+    record('★★ R041 C-2 — 10명이어도 한 화면 (한 줄 높이로 계산)', pInfo.est10 <= pInfo.h - 16, `10명 예상 ${pInfo.est10}px / 화면 ${pInfo.h}px`);
     await host.setInput('.chat-card input', ans2 ?? '');
     await host.click('전송');
+    const liveScore = await third.waitFor(`(() => { const li = document.querySelector('.people-modal li[data-account="${ids?.h}"]'); return li ? /[1-9]\d*점/.test(li.innerText) && li.innerText.includes('위') : false; })()`, 5000);
+    record('★★★ R041 C-2 — 창을 열어 둔 채로 점수·순위가 바로 바뀐다', liveScore, await third.evaluate(`document.querySelector('.people-modal li[data-account="${ids?.h}"]')?.innerText.replace(/\\s+/g, ' ') ?? '-'`));
+    await third.evaluate("document.querySelector('.people-modal .popup-close')?.click()");
+    await sleep(150);
     // ★ 세 번째 참가자가 곧바로 같은 정답 → 간발의 차로 늦는다 = 뒷북
     await third.setInput('.chat-card input', ans2 ?? '');
     await third.click('전송');
@@ -2760,22 +2863,25 @@ try {
       '★★ 다른 사람이 쓰는 닉네임이면 막고 알려 준다',
       await guest.waitForText('이미 사용 중인 닉네임', 4000),
     );
-    // ★★ R040 A-9 — 폭 한도: 한글 9자(9칸)는 화면에서 막히고 칸 수가 빨갛게 / 영어 10자(8칸)는 된다
-    await guest.setInput('#rename-input', '가나다라마바사아자');
+    // ★★ R041 — 폭 한도 10칸: 한글 11자는 화면에서 막히고 **빨갛게 + 떨림 + "글자 수를 넘었어요"** (칸 수 표시는 없앴다) / 영어 12자는 된다
+    record('★ R041 — 닉네임 칸 수 표시("6.4/8" 같은)가 없다', await guest.evaluate("document.querySelector('.rename-units') === null"));
+    await guest.setInput('#rename-input', '가나다라마바사아자차카');
     await sleep(150);
     record(
-      '★★ R040 A-9 — 한글 9자는 바꾸기 버튼이 꺼지고 "9/8" 이 빨갛게 (한글 1 · 영어·숫자 0.8 · 8칸)',
-      await guest.evaluate("[...document.querySelectorAll('.rename-pop button')].find(b => b.innerText.trim() === '바꾸기')?.disabled === true && document.querySelector('.rename-units.over')?.innerText === '9/8'"),
-      await guest.evaluate("document.querySelector('.rename-units')?.innerText ?? '-'"),
+      '★★ R041 — 한글 11자: 바꾸기 꺼짐 · 입력칸 빨강+떨림 · "글자 수를 넘었어요"',
+      await guest.evaluate("[...document.querySelectorAll('.rename-pop button')].find(b => b.innerText.trim() === '바꾸기')?.disabled === true && document.querySelector('#rename-input.nick-input-over') !== null && getComputedStyle(document.querySelector('#rename-input')).animationName === 'nick-shake' && (document.querySelector('.rename-pop')?.innerText ?? '').includes('글자 수를 넘었어요')"),
     );
-    const longStatus = await guest.evaluate(`fetch('/api/auth/nickname', { method: 'PATCH', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ nickname: '가나다라마바사아자' }) }).then(r => r.status)`);
-    record('★★ R040 A-9 — 서버도 막는다 (한글 9자 → 400)', longStatus === 400, `status=${longStatus}`);
-    const tenLatin = `Ab${STAMP}xyz`.slice(0, 10);
+    await guest.setInput('#rename-input', '가나다라마바사아자차');
+    await sleep(150);
+    record('★ R041 — 한글 10자는 빨갛지 않다 (한도 안)', await guest.evaluate("document.querySelector('#rename-input.nick-input-over') === null"));
+    const longStatus = await guest.evaluate(`fetch('/api/auth/nickname', { method: 'PATCH', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ nickname: '가나다라마바사아자차카' }) }).then(r => r.status)`);
+    record('★★ R041 — 서버도 막는다 (한글 11자 → 400)', longStatus === 400, `status=${longStatus}`);
+    const tenLatin = `Ab${STAMP}xyzuv`.slice(0, 12);
     await guest.setInput('#rename-input', tenLatin);
     await sleep(150);
     await guest.click('바꾸기');
     record(
-      '★★ R040 A-9 — 영어·숫자 10자(8칸)는 된다',
+      '★★ R041 — 영어·숫자 12자(9.6칸)는 된다',
       await host.waitFor(`document.querySelector('.seat-card[data-account="${ids?.g}"] .seat-nick')?.innerText === ${JSON.stringify(tenLatin)}`, 4000),
       tenLatin,
     );
@@ -3021,6 +3127,20 @@ try {
     record('★★★ R040 C-4 — 긴 문제·정답·해설에도 화면 스크롤이 없다 (360·390·430·PC · 문제·정답 공개)', scrolled.length === 0, scrolled.map((o) => `${o.qid}/${o.at}/${o.size}:${o.pageScroll}`).join(' '));
     const tooSmall = mob.filter((o) => Number(o.qs ?? 1) < 0.75);
     record('★★ R040 C-4 — 글자는 하한(75%) 아래로 줄지 않는다', tooSmall.length === 0, mob.map((o) => `${o.size}:${o.qs}`).join(' '));
+    // ★★★ R041 — 한글 10자 닉네임이 모든 크기(1536×864 포함)에서 "…" 없이 · 자리 밖으로 나가지 않는다
+    const nickBad = out.filter((o) => o.nickBad.length > 0);
+    record('★★★ R041 A — 한글 10자 닉네임: 1280·1536×864·1536×730·1920·2560·모바일 모두 "…" 없음 · 넘침 없음', nickBad.length === 0, nickBad.map((o) => `${o.size}/${o.at}:${o.nickBad.join(',')}`).join(' | ').slice(0, 300));
+    const lap = out.filter((o) => o.size === 'lap' || o.size === 'lap2');
+    record('★★ R041 A — 1536×864 에서 한 화면 (스크롤 없음)', lap.length > 0 && lap.every((o) => o.pageScroll === 0 && o.hScroll === 0), lap.map((o) => `${o.size}/${o.at}:${o.pageScroll}`).join(' '));
+    // ★★ R041 A — 화면이 클수록 글자가 커진다 (뿌리 글자)
+    const root = Object.fromEntries(out.filter((o) => o.at === 'game').map((o) => [o.size, o.rootPx]));
+    record(
+      '★★ R041 A — 화면 크기별 글자: 1280×720 16 · 1536×864 17.6 · 1920×1080 20 · 2560×1440 24 · 모바일 16 (px)',
+      Math.abs(root.pc - 16) < 0.2 && Math.abs(root.lap - 17.6) < 0.2 && Math.abs(root.fhd - 20) < 0.2 && Math.abs(root.qhd - 24) < 0.2 && root.m390 === 16,
+      JSON.stringify(root),
+    );
+    const plus = out.filter((o) => o.at === 'reveal' && o.plus);
+    record('★★ R041 E-2 — "+1" 이 닉네임 바로 옆 (간격 0~16px · 같은 줄)', plus.length > 0 && plus.every((o) => o.plus.gap >= 0 && o.plus.gap <= 16 && Math.abs(o.plus.dy) <= 8), plus.map((o) => `${o.size}:${JSON.stringify(o.plus)}`).join(' '));
   }
 } catch (err) {
   if (!err?.shotsDone) record('실행', false, err.message);

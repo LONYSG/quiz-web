@@ -3520,3 +3520,14 @@ button.people-row.pickable:focus-visible {
 .room-tools .prefs-toggle.icon-btn {
   font-size: 0.78rem;
 }
+/* ★ R041 검수 — 결과 순위(360, 한글 10자 닉네임): 줄이 카드 밖으로 나가 점수가 잘렸다.
+   원인: grid 칸의 최소 폭이 "내용 폭"(닉네임 글자 전체)이라 닉네임 글자 맞춤이 줄일 기회가 없었다 → 칸을 카드 폭에 묶는다 */
+.ranking {
+  grid-template-columns: minmax(0, 1fr);
+}
+.room .ranking.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ranking li {
+  min-width: 0;
+}

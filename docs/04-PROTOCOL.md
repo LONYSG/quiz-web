@@ -874,3 +874,13 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 오류 `NICKNAME_CHANGE_REQUIRED` (새) | 게임 시작(`game.start` · `game.again`) — 방에 한도를 넘는 옛 닉네임이 있으면 **방 전체에** `error` (message 에 이름). `room.join` — 그런 계정이 LOBBY 가 아닌 방에 새로 들어오려 하면 그 사람에게 |
 | 재접속 | 닉네임·사진이 바뀌어 있으면 방에 플레이어 목록을 다시 보낸다 |
 | RULES | `NICKNAME_MAX_LENGTH` 12 → 20(안전 상한일 뿐) · `SEAT_EMOJI_MS 3000` (칸 이모티콘, 화면 전용) |
+
+## ★ R041 — 바뀐 것
+
+| 항목 | 내용 |
+|------|------|
+| `host.kick` (C→S, 새) | `{ accountId, ban: boolean }` — 방장만 · 어느 상태에서나 · 자기 자신 BAD_REQUEST. 방에 `room.playerLeft` + 시스템 채팅 "○○ 님을 내보냈습니다/차단했습니다" · 진행 중이면 경험자·스킵 투표 다시 계산 (D-194) |
+| `host.kickDisconnected` | 남겨 둔 옛 이름 — `host.kick` 과 같은 처리(ban=false). 접속 중인 사람도 된다 |
+| `room.kicked` (S→C, 새) | 당한 사람에게만 `{ roomId, banned }`. 그 소켓은 방 채널에서 빠진다(연결은 유지 — 방 목록으로) |
+| 오류 `BANNED` (새) | `room.join` — 그 방에서 차단된 계정 |
+| 닉네임 한도 | 10칸 (shared `NICKNAME_MAX_UNITS`). 안내 문구 `NICKNAME_LIMIT_HINT` "한글 10자 · 영어·숫자 12자까지" |

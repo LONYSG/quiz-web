@@ -252,6 +252,8 @@ class Bot {
         this.events.push({ type: 'room.state', reason: snap.reason });
       });
       s.on('room.created', (p) => this.events.push({ type: 'room.created', roomId: p.roomId }));
+      // ★ R041 — 강퇴·차단 알림
+      s.on('room.kicked', (p) => this.events.push({ type: 'room.kicked', roomId: p.roomId, banned: p.banned }));
       // 참가자 목록 부분 갱신을 반영한다. 그러지 않으면 스냅샷이 입장 시점에 멈춘다.
       const patch = (p) => {
         if (!this.snapshot || !p?.players) return;
@@ -4443,6 +4445,121 @@ async function scenarioAvatar() {
 }
 
 // -----------------------------------------------------------------------------
+// ★★★ kick — R041 강퇴 · 차단 (방장) · 게임 중 강퇴 시 인원·스킵 분모·순위
+// -----------------------------------------------------------------------------
+async function scenarioKick() {
+  log('시나리오 kick — ★★★ 강퇴 · 차단 (R041)');
+  await clearExperiences(PREFIX);
+  const [host, a, b, c] = await makeBots(4);
+  await host.connect();
+  host.createRoom('R041 강퇴 차단');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  for (const x of [a, b, c]) {
+    await x.connect();
+    x.join(roomId);
+    await x.waitFor(() => x.snapshot !== null, 6000, `${x.name} 입장`);
+  }
+  await host.waitFor(() => host.snapshot.players.length === 4, 6000, '4명');
+
+  log('\n[1] ★ 권한');
+  let from = a.mark();
+  a.socket.emit('host.kick', { accountId: b.snapshot.me.accountId, ban: false });
+  await sleep(400);
+  expect('★ 방장이 아니면 NOT_HOST', a.since(from, 'error')[0]?.code, 'NOT_HOST');
+  from = host.mark();
+  host.socket.emit('host.kick', { accountId: host.snapshot.me.accountId, ban: false });
+  await sleep(400);
+  expect('★ 자기 자신은 안 된다 (BAD_REQUEST)', host.since(from, 'error')[0]?.code, 'BAD_REQUEST');
+
+  log('\n[2] ★★ 강퇴 — 링크로 다시 들어올 수 있다');
+  const cId = c.snapshot.me.accountId;
+  let cFrom = c.mark();
+  host.socket.emit('host.kick', { accountId: cId, ban: false });
+  await c.waitFor(() => c.since(cFrom, 'room.kicked').length > 0, 4000, '강퇴 알림');
+  expect('★ 당한 사람에게 "강퇴" 알림 (banned=false)', c.since(cFrom, 'room.kicked')[0].banned, false);
+  await host.waitFor(() => host.snapshot.players.length === 3, 4000, '3명');
+  expectTrue('★ 방장 화면에서 빠진다', !host.snapshot.players.some((p) => p.accountId === cId));
+  c.snapshot = null;
+  c.join(roomId);
+  await c.waitFor(() => c.snapshot !== null, 6000, '다시 입장');
+  expectTrue('★★ 강퇴는 다시 들어올 수 있다', c.snapshot.room.id === roomId);
+  await host.waitFor(() => host.snapshot.players.length === 4, 4000, '다시 4명');
+
+  log('\n[3] ★★★ 차단 — 이 방에 다시 못 들어온다');
+  cFrom = c.mark();
+  host.socket.emit('host.kick', { accountId: cId, ban: true });
+  await c.waitFor(() => c.since(cFrom, 'room.kicked').length > 0, 4000, '차단 알림');
+  expect('★ 당한 사람에게 "차단" 알림 (banned=true)', c.since(cFrom, 'room.kicked')[0].banned, true);
+  await host.waitFor(() => host.snapshot.players.length === 3, 4000, '3명');
+  cFrom = c.mark();
+  c.snapshot = null;
+  c.join(roomId);
+  await c.waitFor(() => c.since(cFrom, 'error').length > 0 || c.snapshot !== null, 5000, '재입장 결과');
+  expect('★★★ 차단은 다시 들어올 수 없다 (BANNED)', c.since(cFrom, 'error')[0]?.code, 'BANNED');
+  expect('★ 방은 3명 그대로', host.snapshot.players.length, 3);
+  // ★ 다른 방은 들어갈 수 있다 (차단은 그 방만)
+  const other = new Bot('kx');
+  await other.auth();
+  await other.connect();
+  other.createRoom('R041 다른 방');
+  await other.waitFor(() => other.snapshot !== null, 6000, '다른 방');
+  const otherRoom = other.snapshot.room.id;
+  cFrom = c.mark();
+  c.join(otherRoom);
+  await c.waitFor(() => c.snapshot !== null, 6000, '다른 방 입장');
+  expect('★ 차단은 그 방만 — 다른 방에는 들어간다', c.snapshot.room.id, otherRoom);
+  c.leave();
+  other.leave();
+  await sleep(300);
+  c.disconnect();
+  other.disconnect();
+
+  log('\n[4] ★★★ 게임 중 강퇴 — 인원 · 스킵 투표 분모·분자 · 순위');
+  // 지금 3명(방장 · a · b). 다시 4명을 만들기 위해 새 사람 d 를 넣는다
+  const d = new Bot('kd');
+  await d.auth();
+  await d.connect();
+  d.join(roomId);
+  await d.waitFor(() => d.snapshot !== null, 6000, 'd 입장');
+  await host.waitFor(() => host.snapshot.players.length === 4, 4000, '4명');
+  await startGame(host, [a, b, d], 2);
+  const epoch = host.snapshot.question.epoch;
+  from = host.mark();
+  a.socket.emit('skip.vote', { vote: true, epoch });
+  b.socket.emit('skip.vote', { vote: true, epoch });
+  await host.waitFor(() => host.since(from, 'skip.voteUpdated').some((e) => e.votes === 2), 4000, '2표');
+  const before = host.since(from, 'skip.voteUpdated').filter((e) => e.votes === 2).pop();
+  expect('★ 4명 — 기준 3표 · 지금 2표 (넘어가지 않는다)', `${before.votes}/${before.threshold}`, '2/3');
+  from = host.mark();
+  const bId = b.snapshot.me.accountId;
+  host.socket.emit('host.kick', { accountId: bId, ban: false });
+  await host.waitFor(() => host.since(from, 'skip.voteUpdated').length > 0, 4000, '투표 다시 계산');
+  const after = host.since(from, 'skip.voteUpdated').pop();
+  expect('★★★ 투표한 사람을 강퇴하면 그 표가 빠지고 기준도 바로 바뀐다 (3명 — 기준 2표 · 1표)', `${after.votes}/${after.threshold}`, '1/2');
+  expect('★ 접속 인원 3', host.snapshot.room.activeCount ?? host.snapshot.players.length, 3);
+  expect('★ 문제는 그대로 (넘어가지 않았다)', host.since(from, 'question.resolved').length, 0);
+  // 남은 사람이 투표하면 2/2 → 넘어간다
+  from = host.mark();
+  d.socket.emit('skip.vote', { vote: true, epoch });
+  await host.waitFor(() => host.since(from, 'question.resolved').length > 0, 4000, '넘어감');
+  expect('★★ 바뀐 기준으로 넘어간다 (2/2)', host.since(from, 'question.resolved')[0].reason ?? host.since(from, 'question.resolved')[0].payload?.reason, 'skip_vote');
+  from = host.mark();
+  host.socket.emit('host.forceEnd', {});
+  await host.waitFor(() => host.since(from, 'game.result').length > 0, 6000, '결과');
+  const ranking = host.since(from, 'game.result')[0].payload.ranking;
+  expectTrue('★★★ 강퇴된 사람은 결과 순위에서 빠진다', !ranking.some((r) => r.accountId === bId), JSON.stringify(ranking.map((r) => r.nickname)));
+  expect('★ 결과 순위는 남은 3명', ranking.length, 3);
+
+  host.leave();
+  a.leave();
+  d.leave();
+  await sleep(400);
+  for (const x of [host, a, b, d]) x.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
 // ★★ nickname — R040 닉네임 폭 한도 (한글 1 · 영어·숫자 0.8 · 8칸 — 건우 확정) · 긴 옛 닉네임은 시작에 참여할 수 없다
 // -----------------------------------------------------------------------------
 async function postJson(pathname, body, cookie = null, method = 'POST') {
@@ -4455,19 +4572,19 @@ async function postJson(pathname, body, cookie = null, method = 'POST') {
 }
 
 async function scenarioNickname() {
-  log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040)');
+  log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
   // ★ 한글 닉네임도 실행마다 다르게 (겹치면 409) — 시각 4글자를 한글 음절로 바꾼다
   const hg = (n) => [...stamp].map((ch) => String.fromCharCode(0xac00 + parseInt(ch, 36) * 84 + n)).join('');
   const signupNick = (n, nickname) => postJson('/api/auth/signup', { loginId: `${PREFIX}_nk${n}${stamp}`.toLowerCase(), password: 'bot1234', nickname });
 
   log('\n[1] ★★ 회원가입 — 같은 규칙');
-  expect('★ 한글 8자 → 된다', (await signupNick(1, hg(1) + '마바사아')).status, 200);
-  expect('★★ 한글 9자 → 400', (await signupNick(2, '가나다라마바사아자')).status, 400);
-  expect('★ 영어·숫자 10자 → 된다', (await signupNick(3, `Nk${stamp}abcd`.slice(0, 10))).status, 200);
-  const r11 = await signupNick(4, `Nk${stamp}abcde`.slice(0, 11));
-  expect('★★ 영어·숫자 11자 (8.8칸) → 400', r11.status, 400);
-  expectTrue('★ 안내 문구 (한글 8자 · 영어·숫자 10자)', /한글 8자/.test(r11.json.message ?? ''), r11.json.message);
+  expect('★ 한글 10자 → 된다', (await signupNick(1, hg(1) + '마바사아자차')).status, 200);
+  expect('★★ 한글 11자 → 400', (await signupNick(2, '가나다라마바사아자차카')).status, 400);
+  expect('★ 영어·숫자 12자 → 된다', (await signupNick(3, `Nk${stamp}abcdef`.slice(0, 12))).status, 200);
+  const r13 = await signupNick(4, `Nk${stamp}abcdefg`.slice(0, 13));
+  expect('★★ 영어·숫자 13자 (10.4칸) → 400', r13.status, 400);
+  expectTrue('★ 안내 문구 (한글 10자 · 영어·숫자 12자)', /한글 10자/.test(r13.json.message ?? ''), r13.json.message);
   expect('★ 섞어서 7.8칸 (한글 7 + a) → 된다', (await signupNick(5, hg(2) + '라마바' + 'a')).status, 200);
 
   log('\n[2] ★★ 닉네임 변경 · 긴 옛 닉네임');
@@ -4480,11 +4597,11 @@ async function scenarioNickname() {
   guest.join(roomId);
   await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
   const rn = (nickname) => postJson('/api/auth/nickname', { nickname }, guest.cookie, 'PATCH');
-  expect('★★ 변경 — 한글 9자 → 400', (await rn('가나다라마바사아자')).status, 400);
-  expect('★★ 변경 — 섞어서 8.2칸 (한글 5 + 4자) → 400', (await rn('가나다라마bc12')).status, 400);
+  expect('★★ 변경 — 한글 11자 → 400', (await rn('가나다라마바사아자차카')).status, 400);
+  expect('★★ 변경 — 섞어서 10.2칸 (한글 7 + 4자) → 400', (await rn('가나다라마바사bc12')).status, 400);
 
   // ★ 옛 한도(12자)로 만든 닉네임을 흉내 낸다 — DB 를 직접 바꾸고 다시 접속한다
-  const longNick = `옛긴닉네임${hg(3)}`;
+  const longNick = `옛날아주긴닉네임${hg(3)}`;
   await withDb((c) => c.query(`UPDATE accounts SET nickname = $2 WHERE login_id = $1`, [guest.loginId, longNick]));
   guest.socket.close();
   await sleep(400);
@@ -4506,7 +4623,7 @@ async function scenarioNickname() {
   // ★ 게임 중인 방에는 긴 옛 닉네임으로 새로 들어갈 수 없다 (대기실에는 들어간다)
   const third = new Bot('nk3');
   await third.auth();
-  await withDb((c) => c.query(`UPDATE accounts SET nickname = $2 WHERE login_id = $1`, [third.loginId, `셋째긴닉네임${hg(4)}`]));
+  await withDb((c) => c.query(`UPDATE accounts SET nickname = $2 WHERE login_id = $1`, [third.loginId, `셋째아주긴닉네임${hg(4)}`]));
   expect('★★ 바꾸면 된다 (영어 10자)', (await rn(`Ok${stamp}abcd`.slice(0, 10))).status, 200);
   await sleep(300);
   const gameId = await startGame(host, [g2], 1);
@@ -4627,6 +4744,8 @@ const SCENARIOS = {
   avatar: scenarioAvatar,
   emoji: scenarioEmoji,
   nickname: scenarioNickname,
+  // ★★★ R041
+  kick: scenarioKick,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };
