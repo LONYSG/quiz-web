@@ -3254,3 +3254,45 @@ button.skip-btn {
 .ranking li .fit-text {
   flex: 1 1 auto;
 }
+
+/* =============================================================================
+   ★★★ R041 — 화면이 클수록 전체 글자를 키운다 (건우: "큰 모니터에서 닉네임 칸이 널널한데 글자 크기는 똑같다")
+   ★ 뿌리 글자(html) = 8px + min(폭 0.625% , 높이 1.111%) — 1280×720 에서 지금과 같은 16px.
+     1366×768 16.5 · 1536×864(15인치 FHD 125%) 17.6 · 1920×1080 20 · 2560×1440 24(상한) · 하한 15.
+   ★ 화면보다 **덜** 커진다 — 큰 화면은 글자도 커지고 자리도 남는다. 폭·높이 중 작은 쪽을 따라 한 화면 게이트를 지킨다.
+   ★ 모바일 배치(1000px 미만)는 그대로 16px.
+   ============================================================================= */
+@media (min-width: 1000px) {
+  html {
+    font-size: clamp(15px, calc(8px + min(0.625vw, 1.1112vh)), 24px);
+  }
+}
+body {
+  font-size: 0.9375rem;
+}
+
+/* ★ R041 A — 닉네임 한도를 넘으면 빨갛게 + 살짝 떨림 (칸 수 표시는 없앴다) */
+input.nick-input-over {
+  border-color: var(--bad) !important;
+  color: var(--bad);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--bad) 22%, transparent) !important;
+  animation: nick-shake 320ms ease-in-out;
+}
+@keyframes nick-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+.nick-over {
+  color: var(--bad);
+  font-weight: 700;
+}
+/* ★ R041 검수 — 정답자·1등(lead)인 내 칸에서 닉네임 줄이 칸보다 넓게(내용 폭) 늘어나 글자 맞춤이 "넉넉하다" 고 잘못 쟀다
+   → 닉네임 줄을 칸 폭에 묶는다 (FitText 가 제대로 줄인다) */
+.seat-top {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}

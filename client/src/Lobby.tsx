@@ -14,7 +14,7 @@
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatExperienceRate, nicknameFits, nicknameUnits, NICKNAME_MAX_UNITS, RULES } from '@quiz/shared';
+import { formatExperienceRate, NICKNAME_LIMIT_HINT, nicknameFits, NICKNAME_TOO_LONG_MESSAGE, RULES } from '@quiz/shared';
 import { changeNickname, deleteAvatar, errorMessage, uploadAvatar } from './api.js';
 import Avatar from './Avatar.js';
 import ProfileEditor from './ProfileEditor.js';
@@ -237,7 +237,7 @@ export default function Lobby({
     }
   };
   /**
-   * ★★ R040 — 한도(8칸)를 넘는 옛 닉네임 (건우 확정): 로비에 들어오면 프로필 창을 **열어 두고** 바꾸라고 안내한다.
+   * ★★ R040 — 한도(R041 10칸)를 넘는 옛 닉네임 (건우 확정): 로비에 들어오면 프로필 창을 **열어 두고** 바꾸라고 안내한다.
    *   바꾸기 전까지는 서버가 게임 시작을 막는다(NICKNAME_CHANGE_REQUIRED). 창은 바꿀 때까지 닫히지 않는다.
    */
   const mustRename = !nicknameFits(snapshot.me.nickname);
@@ -245,7 +245,6 @@ export default function Lobby({
     if (mustRename && snapshot.room.state === 'LOBBY') setRenameOpen(true);
   }, [mustRename, snapshot.room.state]);
   const renameText = renameDraft ?? snapshot.me.nickname;
-  const renameUnits = nicknameUnits(renameText.trim());
   const renameFits = nicknameFits(renameText.trim());
   useEffect(() => {
     if (!renameOpen || mustRename) return undefined;
@@ -602,7 +601,7 @@ export default function Lobby({
                   {mustRename && (
                     <p className="rename-must">
                       ✏️ 닉네임을 바꿔야 게임에 참여할 수 있어요
-                      <span>한글 8자 · 영어·숫자 10자까지</span>
+                      <span>{NICKNAME_LIMIT_HINT}</span>
                     </p>
                   )}
                   {/* ★★ R039 — 프로필 사진: 누르면 사진 고르기 → 원형 편집기 */}
@@ -645,6 +644,8 @@ export default function Lobby({
                   <div className="field-row">
                     <input
                       id="rename-input"
+                      className={renameFits ? undefined : 'nick-input-over'}
+                      aria-invalid={!renameFits}
                       autoFocus
                       value={renameDraft ?? snapshot.me.nickname}
                       maxLength={RULES.NICKNAME_MAX_LENGTH}
@@ -660,10 +661,6 @@ export default function Lobby({
                         if (e.key === 'Escape' && !mustRename) setRenameOpen(false);
                       }}
                     />
-                    {/* ★ R040 — 폭(칸) 세기: 한글 1 · 영어·숫자 0.8 */}
-                    <span className={renameFits ? 'rename-units dim mono' : 'rename-units over mono'} aria-label="닉네임 폭">
-                      {renameUnits.toFixed(1).replace(/\.0$/, '')}/{NICKNAME_MAX_UNITS}
-                    </span>
                     <button
                       type="button"
                       onClick={() => void doRename()}
@@ -672,6 +669,8 @@ export default function Lobby({
                       바꾸기
                     </button>
                   </div>
+                  {/* ★ R041 — 칸 수 대신: 넘으면 빨갛게 + 떨림 + 안내 (건우: "1씩 · 0.8씩 오르는 표시가 이상하다") */}
+                  {!renameFits && <p className="form-error rename-msg nick-over">{NICKNAME_TOO_LONG_MESSAGE}</p>}
                   {renameMsg && (
                     <p className={renameMsg.ok ? 'note rename-msg' : 'form-error rename-msg'}>{renameMsg.text}</p>
                   )}

@@ -29,11 +29,15 @@ export default function QuestionText({ text }: { text: string }) {
     const measure = () => {
       const spans = [...box.querySelectorAll<HTMLElement>('.q-line')];
       const width = box.clientWidth;
-      let px = BASE_PX;
+      // ★ R041 — 화면이 클수록 뿌리 글자(html)가 커진다 → 지문의 기본·하한도 같은 비율로 (16px 기준)
+      const k = parseFloat(getComputedStyle(document.documentElement).fontSize) / 16 || 1;
+      const base = Math.round(BASE_PX * k);
+      const min = Math.round(MIN_PX * k);
+      let px = base;
       const widest = () => Math.max(0, ...spans.map((el) => el.scrollWidth));
       box.style.setProperty('--q-px', `${px}px`);
       box.dataset.wrap = '0';
-      while (px > MIN_PX && widest() > width) {
+      while (px > min && widest() > width) {
         px -= 1;
         box.style.setProperty('--q-px', `${px}px`);
       }

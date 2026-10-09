@@ -10,7 +10,7 @@
 
 import { useState } from 'react';
 import { errorMessage, login, signup, type Account } from './api.js';
-import { nicknameFits, NICKNAME_TOO_LONG_MESSAGE, RULES } from '@quiz/shared';
+import { NICKNAME_LIMIT_HINT, nicknameFits, NICKNAME_TOO_LONG_MESSAGE, RULES } from '@quiz/shared';
 
 interface Props {
   onAuthed: (account: Account) => void;
@@ -109,10 +109,12 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
                 maxLength={RULES.NICKNAME_MAX_LENGTH}
-                placeholder="한글 8자 · 영어·숫자 10자까지"
+                placeholder={NICKNAME_LIMIT_HINT}
+                className={nicknameFits(nickname.trim()) ? undefined : 'nick-input-over'}
+                aria-invalid={!nicknameFits(nickname.trim())}
                 required
               />
-              {/* ★ R040 — 폭으로 센다 (한글 1 · 영어·숫자 0.8 · 8칸). 서버도 같은 함수로 다시 본다 */}
+              {/* ★ R041 — 칸 수 표시 없이: 넘으면 빨갛게 + 살짝 떨림 + 안내 (건우). 서버도 같은 함수로 다시 본다 */}
               {!nicknameFits(nickname.trim()) && <span className="form-error nick-over">{NICKNAME_TOO_LONG_MESSAGE}</span>}
             </label>
           )}

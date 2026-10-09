@@ -28,7 +28,7 @@
 //   · ★ 출제 풀과 경험 기록을 게임 시작 때 메모리로 올린다 (D-054 성능 항목)
 // =============================================================================
 
-import { nicknameFits, validateRoomSettings } from '@quiz/shared';
+import { NICKNAME_LIMIT_HINT, nicknameFits, validateRoomSettings } from '@quiz/shared';
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
 import { insertGame, insertGamePlayers } from '../db/games.js';
@@ -43,7 +43,7 @@ export type StartFailure =
   | { reason: 'invalid_state' }
   | { reason: 'settings'; message: string }
   | { reason: 'no_active' }
-  /** ★★ R040 — 한도(8칸)를 넘는 옛 닉네임이 있다. 바꾸기 전까지 시작에 참여할 수 없다 (건우 확정) */
+  /** ★★ R040 — 한도(R041 10칸)를 넘는 옛 닉네임이 있다. 바꾸기 전까지 시작에 참여할 수 없다 (건우 확정) */
   | { reason: 'nickname'; nicknames: string[] }
   | { reason: 'not_enough'; available: number; wanted: number }
   /** ★ Phase 3 신설 — 게임 레코드를 만들지 못했다 (옛 임시 코드 03 을 교체한 것) */
@@ -61,7 +61,7 @@ export function nicknamesToChange(room: Room): string[] {
 
 /** 닉네임 때문에 시작하지 못할 때의 안내 */
 export function nicknameBlockMessage(names: string[]): string {
-  return `닉네임을 바꿔야 시작할 수 있어요: ${names.join(', ')} (한글 8자 · 영어·숫자 10자까지)`;
+  return `닉네임을 바꿔야 시작할 수 있어요: ${names.join(', ')} (${NICKNAME_LIMIT_HINT})`;
 }
 
 /** 부족 안내 문구. 서버와 봇 테스트가 같은 문구를 본다 */

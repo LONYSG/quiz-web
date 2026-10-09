@@ -1,8 +1,9 @@
 // =============================================================================
 // ★★ 닉네임 폭 한도 (R040 · 건우 확정 — Q-05 개정)
 //
-// ★ 건우: "한글은 8자, 영어·숫자는 10자까지 들어가는 것을 확인했다.
-//          글자마다 폭을 다르게 센다 — 한글 1칸 · 영어·숫자 0.8칸 · 합계 8칸 이하."
+// ★ 건우 (R040): "글자마다 폭을 다르게 센다 — 한글 1칸 · 영어·숫자 0.8칸."
+// ★★ R041 (건우): "글자 제한은 **한글 기준 10자**면 된다. 저해상도에서도 한글 10자를 표기할 수 있게 조정하자."
+//   → 합계 **10칸** 이하 (한글만 10자 / 영어·숫자만 12자 / 섞으면 그 사이). 화면은 글자를 자리에 맞춰 줄인다(FitText).
 // ★★ 회원가입 · 닉네임 변경 · 서버 검증 · 기존 긴 닉네임 판정이 **전부 이 함수 하나**를 쓴다.
 //
 // ★ 그 밖의 글자 (자체 판단 — R040 보고서 1장 A-9)
@@ -13,8 +14,8 @@
 // ★ 계산은 0.1칸 단위 정수로 한다 (부동소수 오차로 8.000001 이 거부되지 않게).
 // =============================================================================
 
-/** 닉네임 폭 한도 (칸) */
-export const NICKNAME_MAX_UNITS = 8;
+/** 닉네임 폭 한도 (칸) — R040 8 → ★ R041 10 */
+export const NICKNAME_MAX_UNITS = 10;
 const MAX_TENTHS = NICKNAME_MAX_UNITS * 10;
 
 const ZERO_WIDTH = /[\p{M}\u200d\ufe00-\ufe0f\u20e3\u{1f3fb}-\u{1f3ff}]/u;
@@ -36,7 +37,7 @@ export function nicknameUnits(nickname: string): number {
   return t / 10;
 }
 
-/** ★ 한도 안인가 (8칸 이하) — 앞뒤 공백은 서버가 따로 막는다 */
+/** ★ 한도 안인가 (10칸 이하) — 앞뒤 공백은 서버가 따로 막는다 */
 export function nicknameFits(nickname: string): boolean {
   let t = 0;
   for (const ch of nickname) t += tenthsOf(ch);
@@ -44,4 +45,6 @@ export function nicknameFits(nickname: string): boolean {
 }
 
 /** 한도를 넘을 때 안내 — 서버 오류 · 화면 안내가 같은 문구 */
-export const NICKNAME_TOO_LONG_MESSAGE = '닉네임이 너무 깁니다 — 한글 8자 · 영어·숫자 10자까지 (섞으면 그 사이)';
+export const NICKNAME_TOO_LONG_MESSAGE = '글자 수를 넘었어요 — 한글 10자 · 영어·숫자 12자까지';
+/** 한도 안내 한 줄 (입력칸 자리표시 · 안내) */
+export const NICKNAME_LIMIT_HINT = '한글 10자 · 영어·숫자 12자까지';

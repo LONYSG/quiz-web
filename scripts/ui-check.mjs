@@ -977,7 +977,14 @@ async function measureScreen(page, screenName) {
 const SHOTS_ONLY = args.includes('--shots');
 /** ★ R040 C-4 — 가장 긴 문제·정답·해설만 나오게 한 판을 모바일 폭에서 찍는다 (`--long`) */
 const LONG_ONLY = args.includes('--long');
-const SHOT_PC = [{ w: 1280, h: 720, n: 'pc' }, { w: 1920, h: 1080, n: 'fhd' }];
+// ★ R041 — 1536×864 = 15인치 FHD 125% (건우 노트북). lap2 = 같은 노트북 브라우저 안쪽 높이(주소창·탭을 뺀 추정치)
+const SHOT_PC = [
+  { w: 1280, h: 720, n: 'pc' },
+  { w: 1536, h: 864, n: 'lap' },
+  { w: 1536, h: 730, n: 'lap2' },
+  { w: 1920, h: 1080, n: 'fhd' },
+  { w: 2560, h: 1440, n: 'qhd' },
+];
 const SHOT_MOB = [{ w: 360, h: 740, n: 'm360' }, { w: 390, h: 844, n: 'm390' }, { w: 430, h: 932, n: 'm430' }];
 
 async function snap(page, name) {
@@ -1011,7 +1018,11 @@ const NICK_PROBE = `(() => {
     c.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
     const ga = c.measureText('가').width;
     const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.6;
-    out.push({ sel, w: Math.round(r.width), cw: el.clientWidth, sw: el.scrollWidth, font: cs.fontSize, ga: +ga.toFixed(1), lines: Math.round(r.height / lh), fit: Math.floor(el.clientWidth / ga), text: el.innerText.slice(0, 30) });
+    // ★ R041 — 닉네임이 담긴 카드(참여자 칸 · 순위 줄 등)의 안쪽 오른쪽 끝을 넘는가 (글자 자체가 안 넘쳐도 자리가 밀려 나갈 수 있다)
+    const box = el.closest('.seat-card, .ranking li, .ceremony, .reveal, .chat-line, .champion');
+    let outR = 0;
+    if (box) { const br = box.getBoundingClientRect(); const pr = parseFloat(getComputedStyle(box).paddingRight) || 0; outR = Math.round(r.right - (br.right - pr)); }
+    out.push({ sel, w: Math.round(r.width), cw: el.clientWidth, sw: el.scrollWidth, font: cs.fontSize, ga: +ga.toFixed(1), lines: Math.round(r.height / lh), fit: Math.floor(el.clientWidth / ga), outR, text: el.innerText.slice(0, 30) });
   }
   return JSON.stringify(out);
 })()`;
@@ -1114,6 +1125,13 @@ async function longFlow(browser, suffix = 'h') {
       await sleep(450);
       await host.evaluate('window.scrollTo(0, 0)');
       if (LONG_ONLY) await snap(host, `20-long-q${qid}-reveal-${sz.n}`);
+      if (process.env.SEAT_DEBUG && sz.n === 'pc') {
+        console.log('[seat-debug] ' + await host.evaluate(`JSON.stringify([...document.querySelectorAll('.seat-nick')].map(el => {
+          const cs = getComputedStyle(el); const p = el.parentElement; const card = el.closest('.seat-card');
+          return { cw: el.clientWidth, sw: el.scrollWidth, fit: el.dataset.fit, wrap: el.dataset.wrap, minW: cs.minWidth, flex: cs.flex, fs: cs.fontSize, inline: el.style.fontSize,
+            pcw: p.clientWidth, psw: p.scrollWidth, cardCw: card.clientWidth, cls: card.className, kids: [...p.children].map(k => k.className + ':' + Math.round(k.getBoundingClientRect().width)) };
+        }))`));
+      }
       out.push({ qid, at: 'reveal', size: sz.n, ...(await measureLong(host)) });
     }
     await host.setViewport(1280, 720);
@@ -1294,6 +1312,12 @@ async function shotsFlow(browser) {
   await host.setViewport(1920, 1080);
   await sleep(300);
   await snap(host, '13-reveal-fhd');
+  for (const sz of [{ w: 1536, h: 864, n: 'lap' }, { w: 1536, h: 730, n: 'lap2' }, { w: 2560, h: 1440, n: 'qhd' }]) {
+    await host.setViewport(sz.w, sz.h);
+    await sleep(350);
+    await snap(host, `13-reveal-${sz.n}`);
+    await probeNicks(host, `reveal ${sz.n}`);
+  }
   await host.setViewport(1280, 720);
 
   // ── 일시정지 — 둘 다 끊겼다가 방장만 돌아온다
