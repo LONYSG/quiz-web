@@ -49,7 +49,10 @@ export function useGameSounds(snapshot: RoomSnapshot, serverNow: () => number): 
     if (!p) return;
 
     if (now.players > p.players && state === 'LOBBY') sfx('join');
-    if (now.epoch !== null && now.epoch !== p.epoch) sfx(p.state === 'COUNTDOWN' ? 'go' : 'question');
+    // ★ R042 (소리 전수 점검에서 찾음) — 옛 조건 "직전 상태가 카운트다운" 은 성립하지 않았다:
+    //   서버가 question.started 바로 앞에 game.started 를 보내 상태가 먼저 바뀐다 → "시작!" 소리가 한 번도 안 났다.
+    //   → 그 판의 **첫 문제**면 "시작!"
+    if (now.epoch !== null && now.epoch !== p.epoch) sfx(q?.index === 1 ? 'go' : 'question');
     else {
       if (now.generalHint && !p.generalHint) sfx('hint');
       if (now.hintRevealed && !p.hintRevealed) sfx('hint');

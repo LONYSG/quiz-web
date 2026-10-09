@@ -290,8 +290,30 @@ export type SfxId =
   | 'resume';
 
 /** ★ 효과음을 낸다. 꺼져 있거나 아직 잠겨 있으면 아무것도 하지 않는다 */
+/**
+ * ★ R042 — 소리 진단 기록 (전수 점검 · ui-check --sound). 호출마다 한 줄: 무엇을 · 실제로 울렸나 · 그때 오디오 상태.
+ *   최근 200개만. 화면·서버로 보내지 않는다 (개발자 도구에서 window.__qwSoundLog 로 본다).
+ */
+interface SoundLogEntry {
+  t: number;
+  id: string;
+  played: boolean;
+  state: string;
+  why?: string;
+}
+const soundLog: SoundLogEntry[] = [];
+(window as unknown as { __qwSoundLog?: SoundLogEntry[] }).__qwSoundLog = soundLog;
+function logSound(id: string, played: boolean, why?: string): void {
+  soundLog.push({ t: Math.round(performance.now()), id, played, state: ctx?.state ?? 'none', why });
+  if (soundLog.length > 200) soundLog.splice(0, soundLog.length - 200);
+}
+
 export function sfx(id: SfxId): void {
-  if (!prefs.sfxOn || !ctx || ctx.state !== 'running' || !sfxGain) return;
+  if (!prefs.sfxOn || !ctx || ctx.state !== 'running' || !sfxGain) {
+    logSound(id, false, !prefs.sfxOn ? 'off' : !ctx ? 'no-ctx' : `ctx-${ctx.state}`);
+    return;
+  }
+  logSound(id, true);
   const t = ctx.currentTime + 0.01;
   const d = sfxGain;
   switch (id) {
@@ -370,7 +392,11 @@ let emojiTimes: number[] = [];
 let lastTaunt = 0;
 
 export function chatSound(kind: 'chat' | 'taunt' | 'emoji'): void {
-  if (!prefs.chatOn || !ctx || ctx.state !== 'running' || !chatGain) return;
+  if (!prefs.chatOn || !ctx || ctx.state !== 'running' || !chatGain) {
+    logSound(`chat:${kind}`, false, !prefs.chatOn ? 'off' : !ctx ? 'no-ctx' : `ctx-${ctx.state}`);
+    return;
+  }
+  logSound(`chat:${kind}`, true);
   const nowMs = performance.now();
   if (kind === 'emoji') {
     // ★ R039 — 이모티콘은 채팅과 다른 "뽀잉" (위로 튀는 소리). 같은 방식으로 솎는다 (채팅 소리 음량에 묶는다 — D-187)
@@ -519,6 +545,7 @@ function scheduler(): void {
 export function startBgm(): void {
   if (!ctx || ctx.state !== 'running' || !prefs.bgmOn) return;
   if (playing === prefs.bgm && timer) return;
+  logSound(`bgm:${prefs.bgm}`, true);
   stopBgm();
   playing = prefs.bgm;
   stepIdx = 0;

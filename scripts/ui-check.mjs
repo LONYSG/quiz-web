@@ -502,6 +502,7 @@ async function launchBrowserOn() {
       '--disable-gpu',
       '--hide-scrollbars',
       ...(process.env.NO_BFCACHE ? ['--disable-features=BackForwardCache'] : []),
+
       'about:blank',
     ],
     { stdio: 'ignore' },
@@ -978,6 +979,8 @@ async function measureScreen(page, screenName) {
 const SHOTS_ONLY = args.includes('--shots');
 /** ★ R040 C-4 — 가장 긴 문제·정답·해설만 나오게 한 판을 모바일 폭에서 찍는다 (`--long`) */
 const LONG_ONLY = args.includes('--long');
+/** ★ R042 D — 소리 전수 점검 (`--sound`): 클릭(PC)·터치 흉내(모바일)로 한 판 — 소리마다 호출·재생 경로를 본다 */
+const SOUND_ONLY = args.includes('--sound');
 // ★ R041 — 1536×864 = 15인치 FHD 125% (건우 노트북). lap2 = 같은 노트북 브라우저 안쪽 높이(주소창·탭을 뺀 추정치)
 const SHOT_PC = [
   { w: 1280, h: 720, n: 'pc' },
@@ -1172,6 +1175,122 @@ const NICK_NO_ELLIPSIS = `JSON.stringify((() => {
   }
   return bad;
 })())`;
+
+/**
+ * ★★ R042 D — 소리 전수 점검.
+ *   방장 = PC 1280 (마우스 클릭) · 참가자 = 모바일 흉내 390 (터치 흉내 + 탭).
+ *   ★ 헤드리스 Chrome 은 자동재생 정책을 재현하지 못한다(실측) — "터치가 조작으로 인정되는가" 는 실기기에서만.
+ *   한 판: 입장 → 카운트다운 → 1번 시간 종료(힌트·마지막 5초 포함) → 2번 참가자 정답(소감 채팅 · 이모티콘) → 3번 넘기기 투표 → 결과.
+ *   ★ 참가자는 정답 공개 직전에 입력칸에 포커스가 있다 — R040·R041 의 "키보드 내림(포커스 해제)" 이 소리를 막는지 본다.
+ *   두 화면의 window.__qwSoundLog (호출 · 실제로 울렸나 · 그때 오디오 상태) 를 모아 표로 찍는다.
+ */
+async function trustedClick(page, x, y) {
+  await page.send('Input.dispatchMouseEvent', { type: 'mousePressed', x, y, button: 'left', clickCount: 1 });
+  await page.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x, y, button: 'left', clickCount: 1 });
+}
+async function trustedTap(page, x, y) {
+  await page.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y }] });
+  await sleep(60);
+  await page.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+}
+async function soundFlow(browser) {
+  const host = await newPage(browser, 'host');
+  await host.setViewport(1280, 720);
+  await signUp(host, 'h');
+  const roomId = await createRoom(host, '소리 점검');
+  await setQuestionCount(host, 3);
+  const before = await host.evaluate("document.documentElement.dataset.audio ?? 'none'");
+  await trustedClick(host, 640, 22);
+  const hostAudio = await host.waitFor("document.documentElement.dataset.audio === 'running'", 4000);
+  console.log(`[sound] 방장(PC) — 클릭 전 ${before} · 진짜 클릭 뒤 running=${hostAudio}`);
+
+  const guest = await newPage(browser, 'guest', true);
+  await guest.send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 2, mobile: true });
+  await guest.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 });
+  await signUp(guest, 'g');
+  await guest.goto(`${BASE}/r/${roomId}`);
+  await guest.waitFor("document.querySelector('.stage') !== null", 10000);
+  const gBefore = await guest.evaluate("document.documentElement.dataset.audio ?? 'none'");
+  // ★ 검사의 전제 — 스크립트 클릭(사용자 조작 아님)으로는 소리가 열리지 않아야 한다 (자동재생 정책이 실제로 걸려 있는가)
+  await guest.evaluate("document.body.click()");
+  await sleep(400);
+  const gScript = await guest.evaluate("document.documentElement.dataset.audio ?? 'none'");
+  console.log(`[sound] 참가자 — 스크립트 클릭만 했을 때 ${gScript}`);
+  // ★★ 실측 (R042): 이 헤드리스 Chrome 은 --autoplay-policy=user-gesture-required 를 줘도 스크립트 클릭으로 소리가 열린다 —
+  //   자동재생 정책이 **재현되지 않는다**. 그래서 이 검사는 "터치가 사용자 조작으로 인정되는가" 를 증명하지 못한다 → 실기기(13-PENDING A40·A43).
+  //   이 검사가 확인하는 것: 소리마다 호출·재생 경로가 살아 있는가 · 키보드 내림(포커스 해제)이 문제 끝 소리를 막는가.
+  await trustedTap(guest, 100, 30);
+  const guestAudio = await guest.waitFor("document.documentElement.dataset.audio === 'running'", 4000);
+  console.log(`[sound] 참가자(모바일 흉내) — 탭 전 ${gBefore} · 진짜 탭 뒤 running=${guestAudio}`);
+  await sleep(500);
+
+  // 게임 시작 → 1번은 시간 종료까지 둔다 (힌트 · 마지막 5초 · 시간 종료)
+  await host.click('게임 시작');
+  await host.waitFor("document.querySelector('.q-timebar') !== null", 15000);
+  await guest.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await host.waitFor("document.querySelector('.reveal') !== null", 50000);
+  const kb1 = await guest.evaluate("JSON.stringify({ tag: document.activeElement?.tagName, dropped: document.documentElement.dataset.kbDropped ?? '0' })");
+  console.log(`[sound] 1번 시간 종료 — 참가자 포커스 ${kb1}`);
+  // 2번 — 참가자가 입력칸에서 정답 → 소감 채팅 → 방장 이모티콘
+  await host.waitFor("document.querySelector('.reveal') === null && document.querySelector('.q-timebar') !== null", 15000);
+  const text = await host.evaluate("document.querySelector('.question-card .q-text')?.dataset.text ?? ''");
+  const ans = await withPg(async (c) =>
+    (await c.query(`SELECT a.answer_text FROM questions q JOIN question_answers a ON a.question_id = q.id WHERE q.question_text = $1 ORDER BY a.is_primary DESC, a.id LIMIT 1`, [text])).rows[0]?.answer_text ?? '',
+  );
+  await host.setInput('.chat-card input', '이거 뭐지');
+  await host.click('전송');
+  await guest.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await guest.setInput('.chat-card input', ans);
+  await guest.click('전송');
+  await host.waitFor("document.querySelector('.reveal') !== null", 5000);
+  await sleep(300);
+  const kb2 = await guest.evaluate("JSON.stringify({ tag: document.activeElement?.tagName, dropped: document.documentElement.dataset.kbDropped ?? '0' })");
+  console.log(`[sound] 2번 정답 — 참가자 포커스 ${kb2}`);
+  await guest.setInput('.chat-card input', '메롱');
+  await guest.click('전송');
+  await host.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await host.key('2', { alt: true, code: 'Digit2', vk: 50 });
+  // 3번 — 둘 다 넘기기 투표
+  await host.waitFor("document.querySelector('.reveal') === null && document.querySelector('.q-timebar') !== null", 15000);
+  await sleep(400);
+  await host.evaluate("document.querySelector('.skip-btn')?.click()");
+  await guest.evaluate("document.querySelector('.skip-btn')?.click()");
+  await host.waitFor("document.querySelector('.result-card') !== null", 20000);
+  await sleep(800);
+
+  const logs = {};
+  for (const [name, pg] of [['방장 PC', host], ['참가자 모바일', guest]]) {
+    logs[name] = JSON.parse(await pg.evaluate('JSON.stringify(window.__qwSoundLog ?? [])'));
+  }
+  const ids = ['bgm:bounce', 'join', 'tick', 'go', 'question', 'hint', 'urgent', 'timeout', 'correct', 'mine', 'skip', 'result', 'chat:chat', 'chat:taunt', 'chat:emoji'];
+  console.log('[sound] 소리         | 방장 PC (울림/호출)      | 참가자 모바일 (울림/호출)');
+  const table = [];
+  for (const id of ids) {
+    const row = [id];
+    for (const name of Object.keys(logs)) {
+      const l = logs[name].filter((e) => e.id === id);
+      const played = l.filter((e) => e.played).length;
+      const why = [...new Set(l.filter((e) => !e.played).map((e) => e.why))].join(',');
+      row.push(`${played}/${l.length}${why ? ' (' + why + ')' : ''}`);
+    }
+    table.push(row);
+    console.log(`[sound] ${row[0].padEnd(12)} | ${row[1].padEnd(24)} | ${row[2]}`);
+  }
+  record('★ R042 D — PC: 클릭 뒤 오디오가 깨어 있다', hostAudio);
+  record('★ R042 D — 모바일 흉내(터치): 탭 뒤 오디오가 깨어 있다', guestAudio);
+  const mustHost = ['bgm:bounce', 'join', 'tick', 'go', 'question', 'urgent', 'timeout', 'correct', 'skip', 'result', 'chat:chat', 'chat:taunt', 'chat:emoji'];
+  const mustGuest = ['bgm:bounce', 'tick', 'go', 'question', 'urgent', 'timeout', 'mine', 'skip', 'result', 'chat:chat', 'chat:taunt', 'chat:emoji'];
+  for (const [name, must] of [['방장 PC', mustHost], ['참가자 모바일', mustGuest]]) {
+    const miss = must.filter((id) => !logs[name].some((e) => e.id === id && e.played));
+    record(`★★★ R042 D — ${name}: 소리마다 실제로 울렸다 (${must.length}종)`, miss.length === 0, miss.length ? `안 울림: ${miss.join(', ')}` : '');
+  }
+  record(
+    '★★★ R042 D — 모바일: 정답 공개 때 키보드를 내려도(포커스 해제) 문제 끝 소리(시간 종료 · 정답 · 넘김)가 울린다',
+    JSON.parse(kb2).dropped >= 2 && ['timeout', 'mine', 'skip'].every((id) => logs['참가자 모바일'].some((e) => e.id === id && e.played)),
+    `포커스 해제 ${JSON.parse(kb2).dropped}번`,
+  );
+  return { hostAudio, guestAudio, logs, table };
+}
 
 async function shotsFlow(browser) {
   const host = await newPage(browser, 'host');
@@ -1465,6 +1584,10 @@ try {
   }
   if (LONG_ONLY) {
     await longFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (SOUND_ONLY) {
+    await soundFlow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   const host = await newPage(browser, 'host');
