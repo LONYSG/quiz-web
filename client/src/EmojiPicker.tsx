@@ -13,6 +13,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { usePopup } from './popup.js';
 import Emoji from './Emoji.js';
 import { EMOJI_CATEGORIES, setStoredSlots, useEmojiCatalog } from './emojiCatalog.js';
+import Icon from './Icon.js';
+import { Check, Pencil, Search, Smile } from 'lucide-react';
 
 interface Props {
   slots: number[];
@@ -76,7 +78,7 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
-        😊
+        <Icon icon={Smile} />
       </button>
       {flash && (
         <span key={flash.key} className="emoji-flash" aria-hidden="true">
@@ -109,9 +111,12 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
                 setEdit(editing ? null : 0);
               }}
             >
-              {editing ? '✓ 다 바꿨어요' : '✏️ 칸 바꾸기'}
+              <Icon icon={editing ? Check : Pencil} /> {editing ? '다 바꿨어요' : '칸 바꾸기'}
             </button>
-            <input className="emoji-search" value={q} placeholder="🔍" aria-label="이모티콘 찾기" onChange={(e) => setQ(e.target.value)} />
+            <label className="emoji-search-wrap">
+              <Icon icon={Search} />
+              <input className="emoji-search" value={q} placeholder="찾기" aria-label="이모티콘 찾기" onChange={(e) => setQ(e.target.value)} />
+            </label>
           </div>
           {editing && <p className="emoji-edit-tip">칸을 고르고 아래에서 넣을 이모티콘을 누르세요</p>}
           {!q && (

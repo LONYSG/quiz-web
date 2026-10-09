@@ -17,6 +17,8 @@ import {
   type SoundPrefs,
 } from './sound.js';
 import { cycleTheme, getTheme, setTheme, THEMES, type ThemeId } from './theme.js';
+import Icon from './Icon.js';
+import { Palette, Settings, Volume2, VolumeX } from 'lucide-react';
 
 /**
  * ★ 방 안에서는 Lobby 의 단축키 목록이 Alt+T / Alt+M 을 맡는다 (목록에 보이게 하려고).
@@ -95,7 +97,7 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
     <div className={variant === 'gear' ? 'prefs gear' : 'prefs'}>
       <button
         type="button"
-        className={variant === 'gear' ? 'ghost tiny prefs-toggle icon-btn' : 'ghost tiny prefs-toggle'}
+        className="ghost tiny prefs-toggle"
         aria-expanded={open}
         aria-label="테마 · 소리 · 로그아웃"
         onClick={() => setOpen((v) => !v)}
@@ -104,10 +106,13 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
         {/* ★ R041 (건우) — 웹은 글자까지 ("초대·안내·나가기는 글자가 있는데 톱니만 아이콘"), 모바일은 아이콘만 (.lbl) */}
         {variant === 'gear' ? (
           <>
-            ⚙<span className="lbl"> 설정</span>
+            <Icon icon={Settings} />
+            <span className="lbl">설정</span>
           </>
         ) : (
-          <>🎨 테마 · {muted ? '🔇' : '🔊'} 소리</>
+          <>
+            <Icon icon={Palette} /> 테마 · <Icon icon={muted ? VolumeX : Volume2} /> 소리
+          </>
         )}
       </button>
 

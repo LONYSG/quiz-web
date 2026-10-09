@@ -21,7 +21,10 @@ import ProfileEditor from './ProfileEditor.js';
 import ConfirmModal from './ConfirmModal.js';
 import KickFlow, { type KickTarget } from './KickFlow.js';
 import PeoplePanel from './PeoplePanel.js';
-import { usePopup, useCurrentPopup } from './popup.js';
+import { openPopup, usePopup, useCurrentPopup } from './popup.js';
+import MobileMenu from './MobileMenu.js';
+import Icon from './Icon.js';
+import { ArrowDown, Camera, Check, Keyboard, Link, LogOut, Menu, Pencil, Send, SkipForward, Smile, Users } from 'lucide-react';
 import ChatText from './ChatText.js';
 import Countdown from './Countdown.js';
 import GameSettings from './GameSettings.js';
@@ -84,6 +87,7 @@ export default function Lobby({
   /** ★★ Q-82 — 게임 중 나가기 확인창 (마지막 활성자가 나가면 방이 즉시 사라진다) */
   const [confirmLeave, setConfirmLeave] = usePopup('leave');
   const [peopleOpen, setPeopleOpen] = usePopup('people');
+  const [menuOpen, setMenuOpen] = usePopup('menu');
   const [kickOpen, setKickOpen] = usePopup('kick');
   const [kickTarget, setKickTarget] = useState<KickTarget | null>(null);
   const [photoOpen, setPhotoOpen] = usePopup('photo');
@@ -599,7 +603,8 @@ export default function Lobby({
         </div>
         <div className="room-tools">
           <button type="button" id="invite-btn" className="ghost tiny" onClick={() => void copyInvite()} title="초대 링크 복사">
-            {copied ? '✓' : '🔗'}<span className="lbl">{copied ? ' 복사됨' : ' 초대'}</span>
+            <Icon icon={copied ? Check : Link} />
+            <span className="lbl">{copied ? '복사됨' : '초대'}</span>
           </button>
           {state === 'LOBBY' && me && (
             <span className="rename">
@@ -613,13 +618,14 @@ export default function Lobby({
                   setRenameMsg(null);
                 }}
               >
-                ✏️<span className="lbl"> 프로필</span>
+                <Icon icon={Pencil} />
+                <span className="lbl">프로필</span>
               </button>
               {renameOpen && (
                 <div className="rename-pop" role="dialog" aria-label="내 프로필">
                   {mustRename && (
                     <p className="rename-must">
-                      ✏️ 닉네임을 바꿔야 게임에 참여할 수 있어요
+                      <Icon icon={Pencil} /> 닉네임을 바꿔야 게임에 참여할 수 있어요
                       <span>{NICKNAME_LIMIT_HINT}</span>
                     </p>
                   )}
@@ -633,7 +639,9 @@ export default function Lobby({
                         accountId={snapshot.me.accountId}
                         avatarV={me?.avatarV}
                       />
-                      <span className="profile-cam" aria-hidden="true">📷</span>
+                      <span className="profile-cam" aria-hidden="true">
+                        <Icon icon={Camera} />
+                      </span>
                       <input
                         id="avatar-file"
                         type="file"
@@ -660,7 +668,9 @@ export default function Lobby({
                         사진 지우기
                       </button>
                     ) : (
-                      <span className="dim profile-tip">📷 눌러 사진 넣기</span>
+                      <span className="dim profile-tip">
+                        <Icon icon={Camera} /> 눌러 사진 넣기
+                      </span>
                     )}
                   </div>
                   <div className="field-row">
@@ -709,7 +719,8 @@ export default function Lobby({
             aria-expanded={peopleOpen}
             onClick={() => setPeopleOpen((v) => !v)}
           >
-            👥<span className="people-count">{snapshot.players.length}</span>
+            <Icon icon={Users} />
+            <span className="people-count">{snapshot.players.length}</span>
           </button>
           <Prefs variant="gear" onLogout={onLogout} />
           {/* ★★ ⓘ — R041 (건우: "안내가 너무 많다. 필요한 설명만") — 처음 하는 사람이 꼭 알아야 할 것만. 뺀 것은 R041 보고서 4장 표 */}
@@ -722,23 +733,61 @@ export default function Lobby({
                 문제 <strong>40초</strong> — 30초에 힌트, 15초에 초성
               </li>
               <li>
-                <strong>⏭ 넘기기</strong> — 여럿이 누르면 다음 문제로
+                <strong>
+                  <Icon icon={SkipForward} /> 넘기기
+                </strong>{' '}
+                — 여럿이 누르면 다음 문제로
               </li>
               <li>
                 <span className="badge exp">경험</span> 이미 풀어 본 문제 — 맞혀도 점수 없음, 내가 친 정답은 남에게 가려짐
               </li>
               <li>
-                이모티콘 😊<span className="pc-only"> · <kbd>Alt+1~0</kbd> · 단축키 목록 ⌨</span>
+                이모티콘 <Icon icon={Smile} />
+                <span className="pc-only">
+                  {' '}
+                  · <kbd>Alt+1~0</kbd> · 단축키 목록 <Icon icon={Keyboard} />
+                </span>
               </li>
               <li>끊겨도 같은 링크로 돌아오면 이어져요</li>
             </ul>
-            <p className="info-credit dim">이모티콘 그림: Twemoji (CC-BY 4.0)</p>
           </InfoTip>
           <button type="button" className="ghost tiny" onClick={leaveWithConfirm} aria-label="나가기">
-            🚪<span className="lbl"> 나가기</span>
+            <Icon icon={LogOut} />
+            <span className="lbl">나가기</span>
+          </button>
+          {/* ★★ R042 B — 모바일 ☰ (초대 · 프로필 · 설정 · 안내 · 나가기를 몰아넣는다). 넓은 화면에서는 숨긴다 */}
+          <button
+            type="button"
+            id="menu-btn"
+            className="ghost tiny menu-btn"
+            aria-label="메뉴"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <Icon icon={Menu} />
           </button>
         </div>
       </header>
+
+      {/* ★★ R042 B — 모바일 ☰ 메뉴 (팝업 — 한 번에 하나). 항목을 누르면 그 창이 이 자리를 넘겨받는다 */}
+      {menuOpen && (
+        <MobileMenu
+          copied={copied}
+          canRename={state === 'LOBBY' && Boolean(me)}
+          onInvite={() => void copyInvite()}
+          onProfile={() => {
+            setRenameMsg(null);
+            setRenameOpen(true);
+          }}
+          onSettings={() => openPopup('prefs')}
+          onInfo={() => openPopup('info')}
+          onLeave={() => {
+            setMenuOpen(false);
+            leaveWithConfirm();
+          }}
+          onClose={() => setMenuOpen(false)}
+        />
+      )}
 
       {photoFile && photoOpen && (
         <ProfileEditor
@@ -927,7 +976,7 @@ export default function Lobby({
               </div>
               {newBelow && (
                 <button type="button" className="chat-down" aria-label="최신 메시지로" onClick={scrollChatToBottom}>
-                  ↓
+                  <Icon icon={ArrowDown} />
                 </button>
               )}
             </div>
@@ -950,8 +999,8 @@ export default function Lobby({
                 }}
               />
               {/* ★ R040 C-3 — 누를 때 포커스가 버튼으로 가지 않게 → 휴대폰 키보드가 내려갔다 올라오지 않는다 (연달아 치기) */}
-              <button type="button" className="primary" onMouseDown={(e) => e.preventDefault()} onClick={send}>
-                전송
+              <button type="button" className="primary send-btn" onMouseDown={(e) => e.preventDefault()} onClick={send}>
+                <Icon icon={Send} /> 전송
               </button>
               <ShortcutBar shortcuts={shortcuts} isHost={snapshot.me.isHost} expanded={showKeys} onToggle={() => setShowKeys((v) => !v)} />
             </div>

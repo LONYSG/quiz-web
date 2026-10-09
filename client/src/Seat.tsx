@@ -18,6 +18,8 @@ import Avatar from './Avatar.js';
 import Emoji from './Emoji.js';
 import FitText from './FitText.js';
 import type { PlayerView } from './useRoom.js';
+import Icon from './Icon.js';
+import { Crown } from 'lucide-react';
 
 interface Props {
   player: PlayerView | null;
@@ -89,7 +91,7 @@ export default function Seat({
     >
       {player.isHost && (
         <span className="crown" title="방장" aria-label="방장">
-          👑
+          <Icon icon={Crown} fill="currentColor" />
         </span>
       )}
       {showScore && (

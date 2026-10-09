@@ -1869,12 +1869,12 @@ try {
       //   ★ 이것은 실제 사용자에게도 일어난다 (확인창을 띄운 사이 문제가 끝난 경우).
       return true;
     })()`);
-    const skipBtn = await host.buttonState('⏭ 방장');
+    const skipBtn = await host.buttonState('방장');
     record('★ 방장에게 "방장 넘기기" 버튼이 있다', skipBtn.exists && skipBtn.visible, JSON.stringify(skipBtn));
 
     // ★ 확인창이 방향키·Enter·마우스로 조작 가능해야 한다 (guide 23절).
     //   ★ autoFocus 로 Enter 가 바로 먹는지 본다
-    await host.click('⏭ 방장');
+    await host.click('방장');
     await sleep(300);
     record(
       '★ 확인창이 나타난다',
@@ -2385,7 +2385,7 @@ try {
     await host.setWidth(720);
     await sleep(250);
 
-    const againBtn = await host.buttonState('🔁 다시 하기');
+    const againBtn = await host.buttonState('다시 하기');
     record('★ 다시 하기 버튼이 있다', againBtn.exists && !againBtn.disabled, JSON.stringify(againBtn));
     // ★ R034 — 단축키 Alt+L (단축키 동작 표)
     await host.key('l', { alt: true });
@@ -2771,7 +2771,7 @@ try {
     const afterRight = await host.evaluate("document.activeElement?.innerText.replace(/Alt\\+\\w/, '').trim() ?? ''");
     await host.key('ArrowLeft');
     const afterLeft = await host.evaluate("document.activeElement?.innerText.replace(/Alt\\+\\w/, '').trim() ?? ''");
-    record('★★ R038 — 결과 화면에서 → 로 "로비로", ← 로 "다시 하기" 버튼으로 옮겨 간다', afterRight === '로비로' && afterLeft === '🔁 다시 하기', `${afterRight} / ${afterLeft}`);
+    record('★★ R038 — 결과 화면에서 → 로 "로비로", ← 로 "다시 하기" 버튼으로 옮겨 간다', afterRight === '로비로' && afterLeft === '다시 하기', `${afterRight} / ${afterLeft}`);
     await browser.send('Target.closeTarget', { targetId: third.targetId });
     third.close();
 

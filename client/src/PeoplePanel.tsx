@@ -16,6 +16,8 @@ import { nicknameFits } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import FitText from './FitText.js';
 import type { PlayerView } from './useRoom.js';
+import Icon from './Icon.js';
+import { Crown, X } from 'lucide-react';
 
 interface Props {
   players: PlayerView[];
@@ -54,7 +56,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
         <div className="people-head">
           <p className="modal-title">참여자 {players.length}명</p>
           <button type="button" className="ghost tiny popup-close" aria-label="닫기" onClick={onClose}>
-            ✕
+            <Icon icon={X} />
           </button>
         </div>
         <ul className="people-list">
@@ -67,7 +69,11 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
                 <span className="people-name">
                   <FitText text={p.nickname} className="nick" style={{ color: `var(--p${p.colorIndex})` }} minPx={12} />
                   <span className="people-badges">
-                    {p.isHost && <span title="방장">👑</span>}
+                    {p.isHost && (
+                      <span className="host-mark" title="방장">
+                        <Icon icon={Crown} fill="currentColor" />
+                      </span>
+                    )}
                     {me && <span className="badge me">나</span>}
                     {experiencedIds.has(p.accountId) && <span className="badge exp">경험</span>}
                     {!p.connected && <span className="badge off">접속 종료</span>}

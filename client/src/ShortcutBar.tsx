@@ -9,6 +9,8 @@
 // =============================================================================
 
 import type { Shortcut } from './shortcuts.js';
+import Icon from './Icon.js';
+import { Keyboard } from 'lucide-react';
 
 interface Props {
   shortcuts: Shortcut[];
@@ -28,7 +30,7 @@ export default function ShortcutBar({ shortcuts, isHost, expanded, onToggle }: P
         title="단축키 전체 (Alt+G)"
         aria-label="단축키"
       >
-        ⌨
+        <Icon icon={Keyboard} />
       </button>
       {expanded && (
         <div className="keybar-pop" role="dialog" aria-label="단축키">

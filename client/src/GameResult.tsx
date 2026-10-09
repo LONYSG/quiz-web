@@ -11,6 +11,8 @@ import type { Socket } from 'socket.io-client';
 import Avatar from './Avatar.js';
 import FitText from './FitText.js';
 import type { GameResultView, PlayerView } from './useRoom.js';
+import Icon from './Icon.js';
+import { RotateCcw } from 'lucide-react';
 
 interface Props {
   socket: Socket;
@@ -103,7 +105,7 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
           <>
             {/* ★★ R035 — 다시 하기 = 같은 설정으로 **5초 뒤 바로 시작** / 로비로 = 설정을 바꾸러 간다 */}
             <button type="button" className="primary big-btn" autoFocus onClick={() => socket.emit('game.again', {})}>
-              🔁 다시 하기
+              <Icon icon={RotateCcw} /> 다시 하기
             </button>
             <button type="button" className="ghost" onClick={() => socket.emit('game.toLobby', {})}>
               로비로

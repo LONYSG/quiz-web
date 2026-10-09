@@ -28,6 +28,8 @@ import FitText from './FitText.js';
 import ConfirmModal from './ConfirmModal.js';
 import { usePopup } from './popup.js';
 import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
+import Icon from './Icon.js';
+import { Lock, PartyPopper, SkipForward, Square, Undo2 } from 'lucide-react';
 
 interface Props {
   socket: Socket;
@@ -251,7 +253,10 @@ export default function Question({
             </p>
           ) : (
             <p className="q-hint locked">
-              <span className="hint-label">힌트</span> <span>🔒 {RULES.GENERAL_HINT_REVEAL_AT_MS / 1000}초</span>
+              <span className="hint-label">힌트</span>{' '}
+              <span>
+                <Icon icon={Lock} /> {RULES.GENERAL_HINT_REVEAL_AT_MS / 1000}초
+              </span>
             </p>
           )}
           {question.hintRevealed ? (
@@ -261,7 +266,10 @@ export default function Question({
             </p>
           ) : (
             <p className="q-hint locked">
-              <span className="hint-label">초성</span> <span>🔒 {RULES.HINT_REVEAL_AT_MS / 1000}초</span>
+              <span className="hint-label">초성</span>{' '}
+              <span>
+                <Icon icon={Lock} /> {RULES.HINT_REVEAL_AT_MS / 1000}초
+              </span>
             </p>
           )}
         </div>
@@ -302,7 +310,7 @@ export default function Question({
           {winner && (
             <div className="ceremony" aria-live="polite">
               <p className="ceremony-head">
-                🎉 <span style={{ color: `var(--p${winner.colorIndex})` }}>{winner.nickname}</span>의 소감
+                <Icon icon={PartyPopper} /> <span style={{ color: `var(--p${winner.colorIndex})` }}>{winner.nickname}</span>의 소감
               </p>
               <div className="ceremony-msgs">
                 {/* ★ R040 — 정답 공개 순간에는 **빈 칸** (정답 채팅은 넣지 않는다). 그 뒤 치는 말부터 */}
@@ -354,7 +362,7 @@ export default function Question({
                 aria-pressed={skip.selfVoted}
                 onClick={() => sendSkipVote(!skip.selfVoted)}
               >
-                {skip.selfVoted ? '⏭ 취소' : '⏭ 넘기기'}
+                <Icon icon={skip.selfVoted ? Undo2 : SkipForward} /> {skip.selfVoted ? '취소' : '넘기기'}
               </button>
               {skip.threshold === null ? (
                 <span className="skip-status note dim">혼자선 투표 불가</span>
@@ -383,11 +391,11 @@ export default function Question({
             <div className="host-tools">
               {active && (
                 <button type="button" className="ghost tiny" onClick={() => setConfirming('skip')}>
-                  ⏭ 방장
+                  <Icon icon={SkipForward} /> 방장
                 </button>
               )}
               <button type="button" className="ghost tiny" onClick={() => setConfirming('end')}>
-                ⏹ 종료
+                <Icon icon={Square} /> 종료
               </button>
             </div>
           )}
