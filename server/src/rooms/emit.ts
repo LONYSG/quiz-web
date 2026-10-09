@@ -73,6 +73,14 @@ export function emitToSocket(socketId: string, event: string, payload: unknown):
 }
 
 /** 소켓을 강제로 끊는다. Q-06(계정당 연결 1개)에서 기존 연결을 승계할 때 쓴다 */
+/** ★ R041 — 소켓을 방 채널에서 뺀다 (강퇴·차단). 연결은 끊지 않는다 — 방 목록 화면으로 돌아간다 */
+export function leaveIoRoom(socketId: string, roomId: string): void {
+  const s = requireIo().sockets.sockets.get(socketId);
+  if (!s) return;
+  void s.leave(ioRoomName(roomId));
+  (s.data as { roomId?: string }).roomId = undefined;
+}
+
 export function disconnectSocket(socketId: string): void {
   const socket = requireIo().sockets.sockets.get(socketId);
   socket?.disconnect(true);

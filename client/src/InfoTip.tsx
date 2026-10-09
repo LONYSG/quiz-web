@@ -6,7 +6,8 @@
 //   창 밖을 누르거나 Esc 면 닫힌다.
 // =============================================================================
 
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
+import { usePopup } from './popup.js';
 
 interface Props {
   label?: string;
@@ -14,7 +15,8 @@ interface Props {
 }
 
 export default function InfoTip({ label = '안내', children }: Props) {
-  const [open, setOpen] = useState(false);
+  // ★ R041 — 팝업은 한 번에 하나
+  const [open, setOpen] = usePopup('info');
   useEffect(() => {
     if (!open) return undefined;
     const onDown = (e: PointerEvent) => {
@@ -29,7 +31,7 @@ export default function InfoTip({ label = '안내', children }: Props) {
       window.removeEventListener('pointerdown', onDown);
       window.removeEventListener('keydown', onKey);
     };
-  }, [open]);
+  }, [open, setOpen]);
   return (
     <span className="infotip">
       <button
@@ -42,6 +44,10 @@ export default function InfoTip({ label = '안내', children }: Props) {
       </button>
       {open && (
         <div className="infotip-pop" role="dialog" aria-label={label}>
+          {/* ★ R041 (건우) — ✕ 닫기 (모바일에서 가장자리를 아슬아슬하게 눌러야 닫혔다) */}
+          <button type="button" className="ghost tiny popup-close infotip-close" aria-label="닫기" onClick={() => setOpen(false)}>
+            ✕
+          </button>
           {children}
         </div>
       )}

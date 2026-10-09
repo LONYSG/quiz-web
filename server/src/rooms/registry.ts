@@ -101,6 +101,7 @@ export function createRoomObject(
     chat: [],
     hostGraceUntil: null,
     emptySince: null,
+    bannedAccountIds: new Set(),
     game: null,
     currentQuestion: null,
     result: null,

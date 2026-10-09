@@ -48,6 +48,7 @@ export type ErrorCode =
   | 'ALREADY_HAS_ROOM'
   | 'NOT_ENOUGH_QUESTIONS'
   | 'NICKNAME_CHANGE_REQUIRED'
+  | 'BANNED'
   | 'INTERNAL';
 
 const ERROR_MESSAGES: Record<ErrorCode, string> = {
@@ -66,6 +67,8 @@ const ERROR_MESSAGES: Record<ErrorCode, string> = {
   NOT_ENOUGH_QUESTIONS: '출제할 수 있는 문제가 부족합니다.',
   // ★★ R040 — 닉네임 한도(R041 10칸)를 넘는 옛 닉네임. 바꾸기 전까지 게임 시작에 참여할 수 없다 (건우 확정)
   NICKNAME_CHANGE_REQUIRED: '닉네임을 바꿔야 게임에 참여할 수 있습니다.',
+  // ★ R041 — 이 방에서 차단된 계정
+  BANNED: '이 방에서 차단되어 들어갈 수 없습니다.',
   INTERNAL: '서버에서 문제가 발생했습니다.',
 };
 

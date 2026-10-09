@@ -10,6 +10,7 @@
 // =============================================================================
 
 import { useEffect, useMemo, useState } from 'react';
+import { usePopup } from './popup.js';
 import Emoji from './Emoji.js';
 import { EMOJI_CATEGORIES, setStoredSlots, useEmojiCatalog } from './emojiCatalog.js';
 
@@ -24,7 +25,8 @@ const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
 export default function EmojiPicker({ slots, onSend, flash }: Props) {
   const cat = useEmojiCatalog();
-  const [open, setOpen] = useState(false);
+  // ★ R041 — 팝업은 한 번에 하나
+  const [open, setOpen] = usePopup('emoji');
   const [edit, setEdit] = useState<number | null>(null);
   const [editing, setEditing] = useState(false);
   const [tab, setTab] = useState('smileys');
@@ -44,7 +46,7 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
       window.removeEventListener('pointerdown', onDown);
       window.removeEventListener('keydown', onKey);
     };
-  }, [open]);
+  }, [open, setOpen]);
 
   const hasCustom = Boolean(cat?.list.some((e) => e.category === 'custom'));
   const shown = useMemo(() => {

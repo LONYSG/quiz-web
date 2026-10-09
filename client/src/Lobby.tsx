@@ -18,6 +18,10 @@ import { formatExperienceRate, NICKNAME_LIMIT_HINT, nicknameFits, NICKNAME_TOO_L
 import { changeNickname, deleteAvatar, errorMessage, uploadAvatar } from './api.js';
 import Avatar from './Avatar.js';
 import ProfileEditor from './ProfileEditor.js';
+import ConfirmModal from './ConfirmModal.js';
+import KickFlow, { type KickTarget } from './KickFlow.js';
+import PeoplePanel from './PeoplePanel.js';
+import { usePopup, useCurrentPopup } from './popup.js';
 import ChatText from './ChatText.js';
 import Countdown from './Countdown.js';
 import GameSettings from './GameSettings.js';
@@ -55,8 +59,11 @@ interface Props {
 /** ★ R040 C-4 — 모바일 맞춤 글자의 하한 (문제 19px → 약 14px · 해설 16.8px → 약 12.6px) */
 const MOBILE_FIT_MIN = 0.75;
 
-/** ★ R040 — 모바일 키보드를 내리는 상태 (C-3). 새 문제(QUESTION_ACTIVE)에는 내리지 않는다 */
-const KEYBOARD_DROP_STATES = new Set(['QUESTION_RESOLVED', 'GAME_RESULT', 'LOBBY', 'PAUSED', 'COUNTDOWN']);
+/**
+ * ★ R040 — 모바일 키보드를 내리는 상태 (C-3).
+ * ★★ R041 (건우) — **새 문제 시작(QUESTION_ACTIVE)도** 더한다: "문제를 봐야 하니까. 소감을 치다가 새 문제가 시작되면 안 보인다."
+ */
+const KEYBOARD_DROP_STATES = new Set(['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'GAME_RESULT', 'LOBBY', 'PAUSED', 'COUNTDOWN']);
 
 export default function Lobby({
   socket,
@@ -72,11 +79,17 @@ export default function Lobby({
   const [copied, setCopied] = useState(false);
   const [throttled, setThrottled] = useState(false);
   /** ★ Q-56 — 단축키 전체 목록을 펼쳤는가 */
-  const [showKeys, setShowKeys] = useState(false);
+  // ★★ R041 — 떠 있는 창은 전부 popup.ts 한 저장소 (한 번에 하나)
+  const [showKeys, setShowKeys] = usePopup('keys');
   /** ★★ Q-82 — 게임 중 나가기 확인창 (마지막 활성자가 나가면 방이 즉시 사라진다) */
-  const [confirmLeave, setConfirmLeave] = useState(false);
+  const [confirmLeave, setConfirmLeave] = usePopup('leave');
+  const [peopleOpen, setPeopleOpen] = usePopup('people');
+  const [kickOpen, setKickOpen] = usePopup('kick');
+  const [kickTarget, setKickTarget] = useState<KickTarget | null>(null);
+  const [photoOpen, setPhotoOpen] = usePopup('photo');
+  const openPopupId = useCurrentPopup();
   /** ★ R034 — 닉네임 바꾸기 (R035 부터 상단 바 ✏ 의 작은 창) */
-  const [renameOpen, setRenameOpen] = useState(false);
+  const [renameOpen, setRenameOpen] = usePopup('profile');
   const [renameDraft, setRenameDraft] = useState<string | null>(null);
   const [renameMsg, setRenameMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [renameBusy, setRenameBusy] = useState(false);
@@ -242,8 +255,9 @@ export default function Lobby({
    */
   const mustRename = !nicknameFits(snapshot.me.nickname);
   useEffect(() => {
-    if (mustRename && snapshot.room.state === 'LOBBY') setRenameOpen(true);
-  }, [mustRename, snapshot.room.state]);
+    // ★ R041 — 다른 창이 닫히고 아무 창도 없으면 다시 연다 (바꿀 때까지)
+    if (mustRename && snapshot.room.state === 'LOBBY' && openPopupId === null) setRenameOpen(true);
+  }, [mustRename, snapshot.room.state, openPopupId, setRenameOpen]);
   const renameText = renameDraft ?? snapshot.me.nickname;
   const renameFits = nicknameFits(renameText.trim());
   useEffect(() => {
@@ -253,7 +267,7 @@ export default function Lobby({
     };
     window.addEventListener('pointerdown', onDown);
     return () => window.removeEventListener('pointerdown', onDown);
-  }, [renameOpen, mustRename]);
+  }, [renameOpen, mustRename, setRenameOpen]);
 
   const me = snapshot.players.find((p) => p.accountId === snapshot.me.accountId);
   const state = snapshot.room.state;
@@ -321,7 +335,7 @@ export default function Lobby({
     {
       combo: 'Alt+K',
       fkey: 'F4',
-      label: '이 문제 넘기기 (방장)',
+      label: '이 문제 넘기기 (방장)', hostOnly: true,
       when: isActive && snapshot.me.isHost,
       // ★ 확인창을 거친다. 단축키로 문제를 즉시 넘기면 실수를 되돌릴 수 없다
       run: () => window.dispatchEvent(new CustomEvent('qw:host-skip')),
@@ -329,28 +343,28 @@ export default function Lobby({
     {
       combo: 'Alt+R',
       fkey: 'F8',
-      label: '재개 (방장)',
+      label: '재개 (방장)', hostOnly: true,
       when: isPaused && Boolean(snapshot.paused?.canResume),
       run: () => socket.emit('game.resume', {}),
     },
     {
       combo: 'Alt+Q',
       fkey: null,
-      label: '게임 강제 종료 (방장)',
+      label: '게임 강제 종료 (방장)', hostOnly: true,
       when: (isActive || state === 'QUESTION_RESOLVED' || isPaused) && snapshot.me.isHost,
       run: () => window.dispatchEvent(new CustomEvent('qw:host-end')),
     },
     {
       combo: 'Alt+A',
       fkey: null,
-      label: '다시 하기 — 5초 뒤 바로 시작 (방장)',
+      label: '다시 하기 — 5초 뒤 바로 시작 (방장)', hostOnly: true,
       when: isResult && snapshot.me.isHost,
       run: () => socket.emit('game.again', {}),
     },
     {
       combo: 'Alt+L',
       fkey: null,
-      label: '로비로 (방장)',
+      label: '로비로 (방장)', hostOnly: true,
       when: isResult && snapshot.me.isHost,
       run: () => socket.emit('game.toLobby', {}),
     },
@@ -541,6 +555,12 @@ export default function Lobby({
   const topScore = Math.max(0, ...snapshot.players.map((p) => p.score));
   const res = snapshot.resolution;
   const winnerId = state === 'QUESTION_RESOLVED' && res?.reason === 'correct' ? res.winnerAccountId : null;
+  /** ★★ R041 — 사람을 골랐다 (PC 참여자 칸 · 모바일 👥 창) → 강퇴 / 차단 고르기 팝업. 방장만 · 자기 자신은 안 된다 */
+  const pickPlayer = (p: { accountId: string; nickname: string }) => {
+    if (!snapshot.me.isHost || p.accountId === snapshot.me.accountId) return;
+    setKickTarget({ accountId: p.accountId, nickname: p.nickname, step: 'choose' });
+    setKickOpen(true);
+  };
   const seatOf = (index: number) => {
     const p = snapshot.players[index] ?? null;
     return (
@@ -555,8 +575,7 @@ export default function Lobby({
         emoji={p ? seatEmoji(p.accountId) : null}
         rank={p && showScore && p.score > 0 ? rankOf(p.score) : null}
         winnerKey={p && winnerId === p.accountId ? res?.epoch ?? 0 : null}
-        canKick={Boolean(p && snapshot.me.isHost && !p.connected)}
-        onKick={() => p && socket.emit('host.kickDisconnected', { accountId: p.accountId })}
+        onPick={p && snapshot.me.isHost && p.accountId !== snapshot.me.accountId ? () => pickPlayer(p) : undefined}
       />
     );
   };
@@ -623,7 +642,10 @@ export default function Lobby({
                         onChange={(e) => {
                           const f = e.target.files?.[0];
                           e.target.value = '';
-                          if (f) setPhotoFile(f);
+                          if (f) {
+                            setPhotoFile(f);
+                            setPhotoOpen(true);
+                          }
                         }}
                       />
                     </label>
@@ -678,56 +700,39 @@ export default function Lobby({
               )}
             </span>
           )}
+          {/* ★★ R041 — 모바일 참여자 창 (넓은 화면은 양옆 칸이 있어 숨긴다). 인원 수를 작게 붙인다 (판단) */}
+          <button
+            type="button"
+            id="people-btn"
+            className="ghost tiny people-btn"
+            aria-label="참여자"
+            aria-expanded={peopleOpen}
+            onClick={() => setPeopleOpen((v) => !v)}
+          >
+            👥<span className="people-count">{snapshot.players.length}</span>
+          </button>
           <Prefs variant="gear" onLogout={onLogout} />
-          {/* ★★ ⓘ — 규칙·단축키·화면 설명은 전부 여기 (R035) */}
+          {/* ★★ ⓘ — R041 (건우: "안내가 너무 많다. 필요한 설명만") — 처음 하는 사람이 꼭 알아야 할 것만. 뺀 것은 R041 보고서 4장 표 */}
           <InfoTip>
             <ul className="info-list">
               <li>
-                <strong>채팅 입력창이 곧 답안 입력창입니다.</strong> 문제 중에 보낸 메시지가 정답과 같으면 가장 먼저 보낸
-                사람이 1점. 틀려도 그냥 채팅으로 남습니다.
+                <strong>채팅창에 답을 치면 끝.</strong> 가장 먼저 맞힌 1명만 1점 · 틀려도 벌점 없음
               </li>
               <li>
-                문제는 <strong>40초</strong> — 남은 30초에 일반 힌트(있는 문제만), 15초에 초성 힌트. 정답 공개는{' '}
-                <strong>8초</strong>(마지막 문제도 같다) 뒤 다음 문제로 갑니다.
+                문제 <strong>40초</strong> — 30초에 힌트, 15초에 초성
               </li>
               <li>
-                <strong>넘기기 투표</strong> — 접속한 사람 중 정해진 수가 누르면 넘깁니다(다시 누르면 취소). 누가
-                눌렀는지는 보이지 않습니다. 혼자일 때는 투표로 넘길 수 없고, 방장은 언제든 넘길 수 있습니다.
+                <strong>⏭ 넘기기</strong> — 여럿이 누르면 다음 문제로
               </li>
               <li>
-                <span className="badge exp">경험</span> 이미 풀어 본 사람. 판정에서 빠지고, 그 사람이 쓴 정답은 남에게{' '}
-                <span className="masked-chip">가려짐</span> 으로 보입니다(참여자 칸도 같다). 강제 종료한 문제는 경험
-                기록을 남기지 않습니다.
+                <span className="badge exp">경험</span> 이미 풀어 본 문제 — 맞혀도 점수 없음, 내가 친 정답은 남에게 가려짐
               </li>
               <li>
-                시작 버튼을 누르면 <strong>5초 뒤</strong> 시작합니다(방장은 취소 가능). 카운트다운 중에 들어온 사람도 그
-                게임에 참가합니다.
+                이모티콘 😊<span className="pc-only"> · <kbd>Alt+1~0</kbd> · 단축키 목록 ⌨</span>
               </li>
-              <li>
-                결과 화면 — <strong>다시 하기</strong>는 같은 설정으로 5초 뒤 바로 시작(그때 접속 중인 사람만),{' '}
-                <strong>로비로</strong>는 설정을 바꾸러 갑니다. 경험 기록은 계속 남고 문제는 새로 고릅니다.
-              </li>
-              <li>
-                모두 끊기면 일시정지. <strong>자동으로 재개되지 않습니다</strong> — 다들 돌아올 시간을 주려는 것입니다.
-                5분 동안 아무도 없으면 방이 사라집니다. 게임 중 마지막 사람이 나가기를 누르면 방이 바로 사라집니다.
-              </li>
-              <li>
-                로비의 경험률은 문제 DB 를 얼마나 풀어 봤는지입니다(높아도 시작은 막지 않는다). 접속이 끊긴 사람은 5초 뒤
-                &quot;접속 종료&quot;로 보이고, 방장은 그 칸의 &quot;내보내기&quot;로 자리를 비울 수 있습니다.
-              </li>
-              <li>
-                닉네임은 로비에서만 바꿀 수 있고 점수·경험 기록은 그대로입니다. ⚙ 의 테마·소리는 로그인한 계정에
-                저장됩니다. 오답에는 소리가 없고, 소리는 화면을 한 번 누른 뒤부터 납니다.
-              </li>
-              <li>
-                단축키는 전부 <kbd>Alt</kbd> 조합(정답 입력을 방해하지 않게). F키는 F2·F4·F8·F9 만. 목록은 입력창 옆
-                ⌨ 또는 <kbd>Alt+G</kbd>.
-              </li>
-              <li>
-                닉네임·프로필 사진은 로비에서 ✏️. 이모티콘은 <kbd>Alt+1~0</kbd> 또는 입력창 왼쪽 😊 — 정답 판정과 무관합니다.
-                그림: Twemoji (CC-BY 4.0).
-              </li>
+              <li>끊겨도 같은 링크로 돌아오면 이어져요</li>
             </ul>
+            <p className="info-credit dim">이모티콘 그림: Twemoji (CC-BY 4.0)</p>
           </InfoTip>
           <button type="button" className="ghost tiny" onClick={leaveWithConfirm} aria-label="나가기">
             🚪<span className="lbl"> 나가기</span>
@@ -735,67 +740,71 @@ export default function Lobby({
         </div>
       </header>
 
-      {photoFile && (
+      {photoFile && photoOpen && (
         <ProfileEditor
           file={photoFile}
-          onCancel={() => setPhotoFile(null)}
+          onCancel={() => {
+            setPhotoFile(null);
+            setPhotoOpen(false);
+          }}
           onDone={async (blob) => {
             await uploadAvatar(blob);
             setPhotoFile(null);
+            setPhotoOpen(false);
             setRenameMsg({ ok: true, text: '프로필 사진을 바꿨습니다.' });
           }}
         />
       )}
 
-      {/* ★★ Q-82 — 게임 중 나가기 확인창. autoFocus 로 Enter 만으로 조작할 수 있다 (Q-56) */}
-      {confirmLeave && (
-        <section className="card confirm-card">
-          <p className="big">방을 나갈까요?</p>
-          <p className="note">
-            ★ <strong>내가 마지막 접속자라면 방이 즉시 사라집니다.</strong> 잠깐 끊기는 것(새로고침)은 나가기와 달리
-            일시정지됩니다.
-          </p>
-          <div className="field-row" data-arrow-nav>
-            <button
-              type="button"
-              autoFocus
-              onClick={() => {
-                setConfirmLeave(false);
-                onLeave();
-              }}
-            >
-              나가기
-            </button>
-            <button
-              type="button"
-              className="ghost"
-              onClick={() => {
-                setConfirmLeave(false);
-                inputRef.current?.focus();
-              }}
-            >
-              취소
-            </button>
-          </div>
-        </section>
+      {/* ★★ R041 — 모바일 참여자 창 · 강퇴/차단 (팝업 — 한 번에 하나) */}
+      {peopleOpen && (
+        <PeoplePanel
+          players={snapshot.players}
+          myAccountId={snapshot.me.accountId}
+          isHost={snapshot.me.isHost}
+          showScore={showScore}
+          rankOf={rankOf}
+          rateOf={(id) => (inLobby ? rateText(id) : null)}
+          experiencedIds={experiencedIds}
+          onPick={pickPlayer}
+          onClose={() => setPeopleOpen(false)}
+        />
+      )}
+      {kickOpen && kickTarget && snapshot.players.some((p) => p.accountId === kickTarget.accountId) && (
+        <KickFlow
+          socket={socket}
+          target={kickTarget}
+          onStep={(step) => setKickTarget({ ...kickTarget, step })}
+          onClose={() => {
+            setKickOpen(false);
+            setKickTarget(null);
+          }}
+        />
       )}
 
-      {/* ★ R038 — 모바일은 참여자 칸을 숨기므로, 방장에게 접속 종료자 "내보내기" 를 여기 따로 보인다 (넓은 화면에서는 숨김) */}
-      {snapshot.me.isHost && snapshot.players.some((p) => !p.connected) && (
-        <div className="mobile-kick" role="group" aria-label="접속 종료자">
-          {snapshot.players
-            .filter((p) => !p.connected)
-            .map((p) => (
-              <span key={p.accountId} className="mobile-kick-item">
-                <span className="nick" style={{ color: `var(--p${p.colorIndex})` }}>{p.nickname}</span>{' '}
-                <span className="badge off">접속 종료</span>{' '}
-                <button type="button" className="tiny" onClick={() => socket.emit('host.kickDisconnected', { accountId: p.accountId })}>
-                  내보내기
-                </button>
-              </span>
-            ))}
-        </div>
+      {/* ★★ Q-82 — 게임 중 나가기 확인 (★ R041 팝업 — 화면에 요소를 끼워 넣지 않는다). Enter 확정 · Esc 닫기 */}
+      {confirmLeave && (
+        <ConfirmModal
+          kind="leave"
+          title="방을 나갈까요?"
+          note="마지막 접속자면 방이 바로 사라져요."
+          actions={[
+            {
+              label: '나가기',
+              onClick: () => {
+                setConfirmLeave(false);
+                onLeave();
+              },
+            },
+          ]}
+          onCancel={() => {
+            setConfirmLeave(false);
+            inputRef.current?.focus();
+          }}
+        />
       )}
+
+      {/* ★ R041 — 옛 모바일 "내보내기" 줄(R038)은 👥 참여자 창의 강퇴로 합쳤다 */}
 
       <div className="stage">
         <aside className="seats seats-left" aria-label="참여자">
@@ -943,7 +952,7 @@ export default function Lobby({
               <button type="button" className="primary" onMouseDown={(e) => e.preventDefault()} onClick={send}>
                 전송
               </button>
-              <ShortcutBar shortcuts={shortcuts} expanded={showKeys} onToggle={() => setShowKeys((v) => !v)} />
+              <ShortcutBar shortcuts={shortcuts} isHost={snapshot.me.isHost} expanded={showKeys} onToggle={() => setShowKeys((v) => !v)} />
             </div>
           </section>
         </div>

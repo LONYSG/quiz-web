@@ -44,6 +44,7 @@ import {
   emitRoom,
   emitRoomPerPlayer,
   emitToSocket,
+  leaveIoRoom,
   ioRoomName,
 } from '../rooms/emit.js';
 import {
@@ -283,6 +284,11 @@ function registerRoomHandlers(socket: Socket): void {
       }
 
       const room = getRoom(payload.roomId);
+      // ★★ R041 — 차단된 계정은 이 방에 다시 들어올 수 없다 (방이 살아 있는 동안)
+      if (room?.bannedAccountIds.has(session.accountId)) {
+        sendError(s, 'BANNED', '이 방에서 차단되어 들어갈 수 없습니다.');
+        return;
+      }
       if (!room) {
         // ★ guide 49절: "존재하지 않는 방" 과 "이미 종료된 방" 을 구분해 안내한다.
         //   메모리에 없으면 DB를 보고 closed_at 으로 판별한다.
@@ -796,47 +802,65 @@ function registerRoomHandlers(socket: Socket): void {
     },
   );
 
-  // ── 방장이 접속 종료자를 강제 퇴장 (Q-15)
-  onRoom<{ accountId: string }>(
+  // ── ★★★ R041 — 강퇴 · 차단 (방장). 옛 "접속 종료자 내보내기"(Q-15)는 강퇴에 합쳤다 (host.kickDisconnected 는 같은 처리)
+  //   · 강퇴 = 이 방에서 내보낸다. 링크로 다시 들어올 수 있다
+  //   · 차단 = 내보내고, 이 방이 살아 있는 동안 다시 못 들어온다 (room.bannedAccountIds)
+  //   · 게임 중이면 판에서 빠진다 → 순위(결과)는 방의 참여자 목록으로 계산하므로 순위에서도 빠진다.
+  //     이미 남은 경험 기록 · game_players 행은 그대로 둔다 (Q-48).
+  //   · 인원이 바뀌면 경험자 집합 · 스킵 투표(분자·분모)를 **바로** 다시 계산한다
+  //   · 자기 자신은 안 된다. 방장만 (requireHost)
+  const kick = (s: Socket, room: Room, accountId: string, ban: boolean, me: string) => {
+    const target = room.players.get(accountId);
+    if (!target) {
+      sendError(s, 'BAD_REQUEST', '대상을 찾을 수 없습니다.');
+      return;
+    }
+    if (accountId === me) {
+      sendError(s, 'BAD_REQUEST', '자기 자신은 내보낼 수 없습니다.');
+      return;
+    }
+    if (ban) room.bannedAccountIds.add(accountId);
+    // 당한 사람 화면 — 짧은 안내 후 방 목록으로
+    if (target.connected && target.socketId) {
+      emitToSocket(target.socketId, 'room.kicked', { roomId: room.id, banned: ban });
+      leaveIoRoom(target.socketId, room.id);
+    }
+    removePlayer(room, accountId);
+    // ★ game_players 레코드는 유지한다. 그 게임 기록에는 남는다 (Q-48) — 결과 화면 순위에서는 빠진다
+    broadcastSystem(room, `${target.nickname} 님을 ${ban ? '차단했습니다' : '내보냈습니다'}.`);
+    emitRoom(room, 'room.playerLeft', {
+      accountId,
+      players: playerViews(room),
+      activeCount: activeCount(room),
+    });
+    if (room.currentQuestion) {
+      room.currentQuestion.skipVotes.delete(accountId);
+      room.currentQuestion.experiencedAccountIds.delete(accountId);
+      broadcastExperiencedUpdated(room);
+      evaluateSkip(room);
+      broadcastSkipVotes(room);
+    }
+    void refreshLobbyInfo(room);
+  };
+  const parseKick = (raw: unknown) => {
+    const obj = parseObject(raw);
+    if (!obj) return null;
+    const accountId = parseString(obj.accountId, 1, 32);
+    if (accountId === null) return null;
+    return { accountId, ban: obj.ban === true };
+  };
+  onRoom<{ accountId: string; ban: boolean }>(
+    socket,
+    'host.kick',
+    { requireHost: true, parse: parseKick },
+    ({ socket: s, room, session, payload }) => kick(s, room, payload.accountId, payload.ban, session.accountId),
+  );
+  // ★ 옛 이름 (Q-15) — 접속 종료자 내보내기. 이제 강퇴와 같은 처리다 (접속 중인 사람도 된다)
+  onRoom<{ accountId: string; ban: boolean }>(
     socket,
     'host.kickDisconnected',
-    {
-      requireHost: true,
-      parse: (raw) => {
-        const obj = parseObject(raw);
-        if (!obj) return null;
-        const accountId = parseString(obj.accountId, 1, 32);
-        return accountId === null ? null : { accountId };
-      },
-    },
-    ({ socket: s, room, payload }) => {
-      const target = room.players.get(payload.accountId);
-      if (!target) {
-        sendError(s, 'BAD_REQUEST', '대상을 찾을 수 없습니다.');
-        return;
-      }
-      if (target.connected) {
-        sendError(s, 'INVALID_STATE', '접속 중인 사람은 내보낼 수 없습니다.');
-        return;
-      }
-      removePlayer(room, payload.accountId);
-      // ★ game_players 레코드는 유지한다. 그 게임 결과에는 남는다 (Q-48).
-      //   ★ Phase 3 에서도 삭제하지 않는다. finalizeScores 가 그 행을 갱신한다.
-      broadcastSystem(room, `${target.nickname} 님을 내보냈습니다.`);
-      emitRoom(room, 'room.playerLeft', {
-        accountId: payload.accountId,
-        players: playerViews(room),
-        activeCount: activeCount(room),
-      });
-      // ★ 참가자가 줄면 경험자 집합과 스킵 임계값이 바뀐다. 동기적으로 재평가한다
-      if (room.currentQuestion) {
-        room.currentQuestion.experiencedAccountIds.delete(payload.accountId);
-        broadcastExperiencedUpdated(room);
-        evaluateSkip(room);
-        broadcastSkipVotes(room);
-      }
-      void refreshLobbyInfo(room);
-    },
+    { requireHost: true, parse: parseKick },
+    ({ socket: s, room, session, payload }) => kick(s, room, payload.accountId, false, session.accountId),
   );
 }
 

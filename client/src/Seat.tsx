@@ -36,8 +36,8 @@ interface Props {
   rank: number | null;
   /** 방금 정답을 맞힌 사람인가 (반짝). 값이 바뀌면 다시 반짝인다 */
   winnerKey: number | null;
-  canKick: boolean;
-  onKick: () => void;
+  /** ★ R041 — 방장이 이 칸을 누르면 강퇴/차단 팝업 (없으면 누를 수 없는 칸) */
+  onPick?: () => void;
 }
 
 export default function Seat({
@@ -50,8 +50,7 @@ export default function Seat({
   emoji,
   rank,
   winnerKey,
-  canKick,
-  onKick,
+  onPick,
 }: Props) {
   if (!player) return <div className="seat-card empty" aria-hidden="true" />;
 
@@ -61,14 +60,33 @@ export default function Seat({
     lead ? 'lead' : '',
     me ? 'mine' : '',
     winnerKey !== null ? 'winner' : '',
+    onPick ? 'pickable' : '',
   ]
     .filter(Boolean)
     .join(' ');
   // ★ R040 — 한도를 넘는 옛 닉네임: 바꾸기 전까지 게임 시작이 막힌다 → 방장도 누구 때문인지 본다
   const mustRename = !nicknameFits(player.nickname);
-  const hasBadges = experienced || !player.connected || canKick || mustRename;
+  const hasBadges = experienced || !player.connected || mustRename;
   return (
-    <div key={winnerKey ?? 'seat'} className={cls} data-account={player.accountId}>
+    <div
+      key={winnerKey ?? 'seat'}
+      className={cls}
+      data-account={player.accountId}
+      {...(onPick
+        ? {
+            role: 'button',
+            tabIndex: 0,
+            title: `${player.nickname} — 강퇴 · 차단`,
+            onClick: onPick,
+            onKeyDown: (e: React.KeyboardEvent) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onPick();
+              }
+            },
+          }
+        : {})}
+    >
       {player.isHost && (
         <span className="crown" title="방장" aria-label="방장">
           👑
@@ -94,11 +112,6 @@ export default function Seat({
           )}
           {!player.connected && <span className="badge off">접속 종료</span>}
           {mustRename && <span className="badge off">닉네임 변경 필요</span>}
-          {canKick && (
-            <button type="button" className="tiny" onClick={onKick}>
-              내보내기
-            </button>
-          )}
         </div>
       )}
       {rate && <span className="seat-rate dim mono">{rate}</span>}

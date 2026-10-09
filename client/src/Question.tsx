@@ -25,6 +25,8 @@ import Avatar from './Avatar.js';
 import ChatText from './ChatText.js';
 import Emoji from './Emoji.js';
 import FitText from './FitText.js';
+import ConfirmModal from './ConfirmModal.js';
+import { usePopup } from './popup.js';
 import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
 
 interface Props {
@@ -68,8 +70,18 @@ export default function Question({
   const active = state === 'QUESTION_ACTIVE';
   const [remainMs, setRemainMs] = useState(() => Math.max(0, question.endsAt - serverNow()));
   const [, setTick] = useState(0);
-  /** 강제 스킵·강제 종료 확인창 */
-  const [confirming, setConfirming] = useState<'skip' | 'end' | null>(null);
+  /** 강제 스킵·강제 종료 확인 — ★ R041 팝업 (한 번에 하나) */
+  const [skipOpen, setSkipOpen] = usePopup('host-skip');
+  const [endOpen, setEndOpen] = usePopup('host-end');
+  const confirming: 'skip' | 'end' | null = skipOpen ? 'skip' : endOpen ? 'end' : null;
+  const setConfirming = (v: 'skip' | 'end' | null) => {
+    if (v === 'skip') setSkipOpen(true);
+    else if (v === 'end') setEndOpen(true);
+    else {
+      setSkipOpen(false);
+      setEndOpen(false);
+    }
+  };
   const cardRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -132,8 +144,8 @@ export default function Question({
   //   ★ 근거: 확인창이 열린 채로 문제가 바뀌면 다음 문제를 스킵할 위험이 있다.
   //     ★ 서버가 epoch 로 막지만(host.forceSkip), 화면에서도 닫는 것이 맞다.
   useEffect(() => {
-    setConfirming(null);
-  }, [question.epoch]);
+    setSkipOpen(false);
+  }, [question.epoch, setSkipOpen]);
 
   /**
    * ★ Q-83 확정 — **정수 초로 표시한다.**
@@ -266,11 +278,13 @@ export default function Question({
                   <Avatar nickname={winner.nickname} colorIndex={winner.colorIndex} large accountId={winner.accountId} avatarV={winner.avatarV} />
                   <div className="winner-text">
                     {/* ★ R040 (건우) — "+1" 이 오른쪽 끝에 어중간하게 떨어져 있었다 → "정답!" 바로 옆 (닉네임 바로 위) */}
-                    <p className="winner-label">
-                      정답! <span className="winner-plus">+1</span>
-                    </p>
-                    {/* ★★ R040 — 화면에서 가장 큰 글씨지만 자리보다 길면 줄인다 ("…"·여러 줄 없이) */}
-                    <FitText as="p" text={winner.nickname} className="winner-name" style={{ color: `var(--p${winner.colorIndex})` }} minPx={18} />
+                    <p className="winner-label">정답!</p>
+                    {/* ★★ R040 — 화면에서 가장 큰 글씨지만 자리보다 길면 줄인다 ("…"·여러 줄 없이)
+                        ★ R041 (건우) — "+1" 은 **닉네임 바로 옆** ("정답 옆은 동떨어진 느낌") */}
+                    <div className="winner-name-row">
+                      <FitText as="p" text={winner.nickname} className="winner-name" style={{ color: `var(--p${winner.colorIndex})` }} minPx={18} />
+                      <span className="winner-plus">+1</span>
+                    </div>
                   </div>
                 </div>
               </>
@@ -329,7 +343,7 @@ export default function Question({
       )}
 
       {/* ── ★★ 행동 줄 — 넘기기 투표를 가장 크게. 방장 버튼은 작게 옆에 */}
-      {(active || isHost) && confirming === null && (
+      {(active || isHost) && (
         <div className="action-bar">
           {active && skip && (
             <div className="skip-box">
@@ -380,24 +394,17 @@ export default function Question({
         </div>
       )}
 
-      {/* ── 방장 확인창 (방향키·Enter·마우스·터치. autoFocus 로 Enter 가 바로 먹는다) */}
+      {/* ── 방장 확인 — ★ R041 팝업 (방향키·Enter·Esc · 화면 가운데). 카드에 요소를 끼워 넣지 않는다 */}
       {isHost && confirming !== null && (
-        <div className="confirm">
-          <p className="big">
-            {confirming === 'skip'
-              ? '이 문제를 넘길까요?'
-              : '게임을 끝낼까요?'}
-          </p>
-          {confirming === 'end' && active && (
-            /* ★ 이 판단에 필요한 알림이라 남긴다 (강제 종료 = 이 문제는 경험 기록 없음) */
-            <p className="note">지금 문제는 정답을 공개하지 않아 <strong>경험 기록을 남기지 않습니다.</strong></p>
-          )}
-          <div className="field-row" data-arrow-nav>
-            <button
-              type="button"
-              className="primary"
-              autoFocus
-              onClick={() => {
+        <ConfirmModal
+          kind={confirming === 'skip' ? 'host-skip' : 'host-end'}
+          title={confirming === 'skip' ? '이 문제를 넘길까요?' : '게임을 끝낼까요?'}
+          note={confirming === 'end' && active ? '지금 문제는 경험 기록이 남지 않아요.' : undefined}
+          actions={[
+            {
+              label: confirming === 'skip' ? '넘기기' : '끝내기',
+              danger: confirming === 'end',
+              onClick: () => {
                 if (confirming === 'skip') {
                   socket.emit('host.forceSkip', { epoch: question.epoch });
                 } else {
@@ -406,23 +413,15 @@ export default function Question({
                 }
                 setConfirming(null);
                 document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
-              }}
-            >
-              예
-            </button>
-            <button
-              type="button"
-              className="ghost"
-              onClick={() => {
-                setConfirming(null);
-                // ★★ 확인창이 닫히면 포커스가 채팅 입력으로 돌아와야 한다 (Q-56)
-                document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
-              }}
-            >
-              아니오
-            </button>
-          </div>
-        </div>
+              },
+            },
+          ]}
+          onCancel={() => {
+            setConfirming(null);
+            // ★★ 확인창이 닫히면 포커스가 채팅 입력으로 돌아와야 한다 (Q-56)
+            document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
+          }}
+        />
       )}
     </section>
   );

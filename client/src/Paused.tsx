@@ -12,6 +12,8 @@
 //   ★ canResume 은 서버가 계산해 보낸다. 클라이언트가 유추하지 않는다.
 // =============================================================================
 
+import ConfirmModal from './ConfirmModal.js';
+import { usePopup } from './popup.js';
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import type { PausedView } from './useRoom.js';
@@ -51,12 +53,12 @@ export default function Paused({ socket, paused, serverNow }: Props) {
   }, [paused.abandonAt, serverNow]);
 
   // ★ R035 — 일시정지 중에는 문제 카드를 그리지 않으므로 강제 종료(Alt+Q) 확인창을 여기서 연다
-  const [confirmEnd, setConfirmEnd] = useState(false);
+  const [confirmEnd, setConfirmEnd] = usePopup('host-end');
   useEffect(() => {
     const open = () => setConfirmEnd(true);
     window.addEventListener('qw:host-end', open);
     return () => window.removeEventListener('qw:host-end', open);
-  }, []);
+  }, [setConfirmEnd]);
 
   // ★ Q-83 — 정수 초로 표시한다. 소수점은 눈만 아프다
   const abandonSec = Math.ceil(abandonInMs / 1000);
@@ -107,25 +109,21 @@ export default function Paused({ socket, paused, serverNow }: Props) {
         <p className="note">자동으로 재개되지 않습니다 — 방장이 재개하기를 기다리는 중입니다.</p>
       )}
       {confirmEnd && (
-        <div className="confirm">
-          <p className="big">게임을 끝낼까요?</p>
-          <div className="field-row" data-arrow-nav>
-            <button
-              type="button"
-              className="primary"
-              autoFocus
-              onClick={() => {
+        <ConfirmModal
+          kind="host-end"
+          title="게임을 끝낼까요?"
+          actions={[
+            {
+              label: '끝내기',
+              danger: true,
+              onClick: () => {
                 socket.emit('host.forceEnd', {});
                 setConfirmEnd(false);
-              }}
-            >
-              예
-            </button>
-            <button type="button" className="ghost" onClick={() => setConfirmEnd(false)}>
-              아니오
-            </button>
-          </div>
-        </div>
+              },
+            },
+          ]}
+          onCancel={() => setConfirmEnd(false)}
+        />
       )}
     </section>
   );

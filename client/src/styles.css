@@ -3296,3 +3296,227 @@ input.nick-input-over {
   max-width: 100%;
   box-sizing: border-box;
 }
+
+/* =============================================================================
+   ★★★ R041 B — 확인 팝업 (나가기 · 강제 종료 · 방장 넘기기 · 강퇴/차단)
+   ★ 화면 가운데 · 위아래 가운데 정렬 · 제목 한 줄 + 짧은 설명 (옛 확인창은 문구가 아래로 쏠려 읽기 어려웠다)
+   ============================================================================= */
+.popup-back {
+  z-index: 90;
+}
+.confirm-modal {
+  width: min(360px, calc(100vw - 32px));
+  box-sizing: border-box;
+  padding: 22px 20px 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.confirm-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1.4;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.confirm-nick {
+  font-weight: 900;
+}
+.confirm-note {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+  word-break: keep-all;
+}
+.confirm-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.confirm-actions button {
+  margin: 0;
+  min-width: 5.5em;
+}
+button.primary.danger {
+  background: var(--bad);
+  border-color: var(--bad);
+  color: #fff;
+}
+/* ★ 팝업 닫기 ✕ */
+.popup-close {
+  margin: 0;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ★ R041 C-1 — 방장이 참여자 칸을 누를 수 있다 (강퇴·차단) */
+.seat-card.pickable {
+  cursor: pointer;
+}
+.seat-card.pickable:hover,
+.seat-card.pickable:focus-visible {
+  outline: 2px dashed var(--accent);
+  outline-offset: 1px;
+}
+
+/* ★ R041 C-2 — 모바일 참여자 창 (👥) */
+.people-btn {
+  display: none;
+  position: relative;
+}
+.people-count {
+  margin-left: 2px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  color: var(--text-dim);
+}
+@media (max-width: 999px) {
+  .people-btn {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+.people-modal {
+  width: min(380px, calc(100vw - 24px));
+  box-sizing: border-box;
+  padding: 12px 12px 10px;
+}
+.people-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.people-head .modal-title {
+  margin: 0;
+}
+.people-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.people-list li.offline {
+  opacity: 0.55;
+}
+.people-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 5px 8px;
+  min-height: 42px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border: var(--bw) solid transparent;
+  text-align: left;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+}
+button.people-row.pickable:hover,
+button.people-row.pickable:focus-visible {
+  border-color: var(--accent);
+}
+.people-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.people-name .nick {
+  font-size: 1rem;
+  font-weight: 800;
+}
+.people-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+.people-badges:empty {
+  display: none;
+}
+.people-score {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.1;
+}
+.people-rank {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+.people-rate {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+}
+.people-tip {
+  margin: 8px 0 0;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+/* ★ R041 E-2 — 정답 "+1" 은 닉네임 바로 옆 */
+.winner-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.winner-name-row .winner-name {
+  flex: 0 1 auto;
+}
+.winner-name-row .winner-plus {
+  flex-shrink: 0;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* ★ R041 D — ⓘ 안내: ✕ 닫기 · 짧게 */
+.infotip-pop {
+  position: absolute;
+}
+.infotip-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+.infotip-pop .info-list {
+  margin-top: 4px;
+  padding-right: 30px;
+}
+.info-credit {
+  margin: 8px 0 0;
+  font-size: 0.7rem;
+}
+@media (max-width: 999px) {
+  .pc-only {
+    display: none;
+  }
+  .infotip-pop {
+    position: fixed;
+  }
+}
+/* ★ R041 E-1 검수 — "⚙ 설정" 이 다른 상단 버튼보다 크게 보였다(icon-btn 1rem) → 같은 크기 */
+.room-tools .prefs-toggle.icon-btn {
+  font-size: 0.78rem;
+}

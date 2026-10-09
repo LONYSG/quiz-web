@@ -156,7 +156,7 @@ export default function App() {
       code: room.error.code,
     });
     // 들어갈 수 없는 방이면 대기 상태를 풀고 URL도 되돌린다
-    if (['ROOM_NOT_FOUND', 'ROOM_CLOSED', 'ROOM_FULL'].includes(room.error.code)) {
+    if (['ROOM_NOT_FOUND', 'ROOM_CLOSED', 'ROOM_FULL', 'KICKED', 'BANNED'].includes(room.error.code)) {
       setPendingRoomId(null);
       if (window.location.pathname !== '/') window.history.replaceState(null, '', '/');
     }

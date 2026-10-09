@@ -1008,7 +1008,7 @@ const SHOT_NICKS = (process.env.SHOT_NICKS ?? '').split(',').filter(Boolean);
 const shotNick = (i) => SHOT_NICKS[i] ?? null;
 /** ★ R040 — 닉네임이 나오는 자리마다 폭·넘침·줄 수를 잰다 (한도 근거) */
 const NICK_PROBE = `(() => {
-  const sels = ['.seat-nick', '.winner-name', '.ceremony-head', '.late-item', '.ranking .nick', '.champion-name', '.chat-line .nick', '.mobile-kick-item .nick', '.room-head .nick', '.toast'];
+  const sels = ['.seat-nick', '.winner-name', '.ceremony-head', '.late-item', '.ranking .nick', '.champion-name', '.chat-line .nick', '.room-head .nick', '.toast'];
   const c = document.createElement('canvas').getContext('2d');
   const out = [];
   for (const sel of sels) for (const el of document.querySelectorAll(sel)) {
@@ -1223,6 +1223,20 @@ async function shotsFlow(browser) {
   await guest.evaluate("[...document.querySelectorAll('.profile-editor button')].find(b => b.innerText.trim() === '등록')?.click()");
   await sleep(1200);
   await guest.evaluate("document.querySelector('#rename-btn')?.click()");
+  // ── ★ R041 — 강퇴/차단 (PC 방장 — 참여자 칸을 누른다) · ⓘ 안내 (PC)
+  await host.setViewport(1280, 720);
+  await host.evaluate("document.querySelectorAll('.seat-card.pickable')[0]?.click()");
+  await sleep(300);
+  await snap(host, '07n-kick-choose-pc');
+  await host.click('강퇴');
+  await sleep(300);
+  await snap(host, '07o-kick-confirm-pc');
+  await host.click('취소');
+  await host.evaluate("document.querySelector('.infotip-btn')?.click()");
+  await sleep(300);
+  await snap(host, '07p-info-pc');
+  await host.evaluate("document.querySelector('.infotip-close')?.click()");
+  await sleep(200);
   // ── 이모티콘 고르기 · 칸에 뜬 순간
   await host.evaluate("document.querySelector('.emoji-btn')?.click()");
   await sleep(600);
@@ -1240,6 +1254,7 @@ async function shotsFlow(browser) {
     ['.prefs-toggle', '07j-pop-prefs-m390'],
     ['.infotip-btn', '07k-pop-info-m390'],
     ['#rename-btn', '07l-pop-profile-m390'],
+    ['#people-btn', '07m-people-m390'],
   ]) {
     await guest.evaluate(`document.querySelector('${sel}')?.click()`);
     await sleep(350);
@@ -1280,10 +1295,24 @@ async function shotsFlow(browser) {
   await host.key('k', { alt: true });
   await sleep(300);
   await snap(host, '12-confirm-pc');
+  await host.click('취소');
+  await sleep(200);
+  // ★ R041 — 나가기 팝업 · 모바일 참여자 창(게임 중 — 점수·순위)
+  await host.key('x', { alt: true });
+  await sleep(300);
+  await snap(host, '12b-leave-pc');
+  await host.click('취소');
+  await guest.evaluate("document.querySelector('#people-btn')?.click()");
+  await sleep(350);
+  await snap(guest, '12c-people-game-m390');
+  await guest.evaluate("document.querySelector('.people-modal .popup-close')?.click()");
+  await sleep(200);
+  await host.key('k', { alt: true });
+  await sleep(300);
   await host.setViewport(390, 844);
   await sleep(400);
   await snap(host, '12-confirm-m390');
-  await host.click('아니오');
+  await host.click('취소');
   await host.setViewport(1280, 720);
 
   // 정답 · 뒷북 · 세레머니
@@ -1827,19 +1856,19 @@ try {
     await sleep(300);
     record(
       '★ 확인창이 나타난다',
-      await host.evaluate("document.querySelector('.confirm') !== null"),
+      await host.evaluate("document.querySelector('.confirm-modal') !== null"),
     );
     record(
-      '★★ 확인창의 "예" 에 포커스가 있다 (Enter 로 조작 가능)',
-      await host.evaluate("document.activeElement?.innerText === '예'"),
+      '★★ 확인 팝업의 "넘기기" 에 포커스가 있다 (Enter 로 조작 가능)',
+      await host.evaluate("document.activeElement?.innerText === '넘기기'"),
       await host.evaluate("document.activeElement?.innerText ?? '(없음)'"),
     );
     // ★ 취소로 닫는다. 여기서 문제를 넘기면 이후 검사가 흐트러진다
-    await host.click('아니오');
+    await host.click('취소');
     await sleep(250);
     record(
-      '★ 아니오로 확인창이 닫힌다',
-      (await host.evaluate("document.querySelector('.confirm')")) === null,
+      '★ 취소로 확인 팝업이 닫힌다',
+      (await host.evaluate("document.querySelector('.confirm-modal')")) === null,
     );
 
     // ★★ 토스트를 실제로 띄우고 겹침을 좌표로 잰다
@@ -2046,17 +2075,17 @@ try {
 
     // ── ★ R034 — F4 도 방장 넘기기 확인창을 연다 (단축키 동작 표). 아니오로 닫는다
     await host.key('F4');
-    const f4open = await host.evaluate("document.querySelector('.confirm') !== null");
-    await host.click('아니오');
+    const f4open = await host.evaluate("document.querySelector('.confirm-modal') !== null");
+    await host.click('취소');
     await sleep(200);
     record(
       '★★ F4 로 방장 넘기기 확인창이 열린다 (아니오로 닫힌다)',
-      f4open && (await host.evaluate("document.querySelector('.confirm') === null")),
+      f4open && (await host.evaluate("document.querySelector('.confirm-modal') === null")),
     );
 
     // ── ★★ 단축키가 버튼과 같은 확인창 경로를 탄다 + Enter 만으로 확정된다
     await host.key('k', { alt: true });
-    const skipConfirm = await host.evaluate("document.querySelector('.confirm') !== null");
+    const skipConfirm = await host.evaluate("document.querySelector('.confirm-modal') !== null");
     record('★★ Alt+K 가 방장 넘기기 확인창을 띄운다 (버튼과 같은 경로)', skipConfirm);
     const confirmFocus = await host.activeEl();
     record(
@@ -2070,7 +2099,7 @@ try {
     await host.key('Enter');
     record(
       '★★★ Enter 만으로 확인창이 확정된다 (마우스 없이)',
-      await host.waitFor("document.querySelector('.confirm') === null", 4000),
+      await host.waitFor("document.querySelector('.confirm-modal') === null", 4000),
     );
     {
       // ★ R040 C-3 — 모바일 폭이면 정답 공개(넘기기)에서 키보드를 내린다(포커스 해제)가 맞다. PC 폭이면 채팅 입력으로 돌아온다
@@ -2171,24 +2200,24 @@ try {
     // ── ★★ Q-82 게임 중 나가기 확인창
     await host.key('x', { alt: true });
     const leaveConfirm = await host.evaluate(
-      "document.querySelector('.confirm-card') !== null",
+      "document.querySelector('.confirm-modal') !== null",
     );
     record('★★ Q-82 — 게임 중 나가기에 확인창이 뜬다', leaveConfirm);
     const leaveText = await host.evaluate(
-      "document.querySelector('.confirm-card')?.innerText ?? ''",
+      "document.querySelector('.confirm-modal')?.innerText ?? ''",
     );
     record(
       '★★ 확인창이 "마지막 접속자면 방이 사라진다" 를 알린다',
-      leaveText.includes('방이 즉시 사라집니다'),
+      leaveText.includes('방이 바로 사라져요'),
     );
     record(
-      '★★ 끊김과 나가기가 다르다는 사실도 알린다 (Q-82 두 갈래)',
-      leaveText.includes('일시정지'),
+      '★ R041 — 나가기 팝업 문구는 짧게 (제목 한 줄 + 한 줄 설명)',
+      (await host.evaluate("document.querySelector('.confirm-modal .confirm-note')?.innerText.length ?? 99")) <= 30,
     );
     await host.click('취소');
     record(
       '★ 취소하면 게임이 그대로다',
-      (await host.evaluate("document.querySelector('.confirm-card') === null")) &&
+      (await host.evaluate("document.querySelector('.confirm-modal') === null")) &&
         (await host.evaluate("document.querySelector('.question-card') !== null")),
     );
     record(
@@ -2295,16 +2324,16 @@ try {
     await sleep(300);
     record(
       '★ Alt+Q 로 강제 종료 확인창이 나타난다',
-      await host.evaluate("document.querySelector('.confirm') !== null"),
+      await host.evaluate("document.querySelector('.confirm-modal') !== null"),
     );
     // ★ R035 — 여러 해상도를 재는 동안 문제가 시간 종료됐을 수 있다. 그때는 이 알림이 없는 것이 맞다
     const stillActive = await host.evaluate("document.querySelector('.q-timebar') !== null");
     record(
       '★ 확인창이 경험 기록 규칙을 알린다 (문제 진행 중일 때)',
-      !stillActive || (await host.text()).includes('경험 기록을 남기지 않습니다'),
+      !stillActive || (await host.text()).includes('경험 기록이 남지 않아요'),
       stillActive ? '' : '(이미 정답 공개 중 — 해당 없음)',
     );
-    await host.click('예');
+    await host.click('끝내기');
     const resultShown = await host.waitFor(
       "document.querySelector('.result-card .ranking li') !== null",
       8000,
@@ -2852,29 +2881,29 @@ try {
     );
     record('접속 종료 배지가 5초 유예 뒤 나타난다', badge);
 
-    // ★ R038 — 모바일 폭(720)에서는 참여자 칸 대신 위쪽 "내보내기" 줄에 보인다
-    const kickMob = await host.onScreen('.mobile-kick button');
-    record('★★ R038 모바일 — 방장에게 접속 종료자 "내보내기" 줄이 보인다', kickMob.exists && kickMob.partlyVisible, JSON.stringify(kickMob.rect ?? kickMob));
+    // ★★★ R041 — 모바일(720): 👥 참여자 창 → 사람 줄 → 강퇴/차단 고르기 → 최종 확인 (옛 R038 "내보내기" 줄을 합쳤다)
+    await host.evaluate("document.querySelector('#people-btn')?.click()");
+    const peopleUp = await host.waitFor("document.querySelector('.people-modal') !== null", 3000);
+    record('★★ R041 모바일 — 👥 를 누르면 참여자 창이 뜬다', peopleUp);
+    record(
+      '★ 참여자 창 — 사람마다 한 줄 · 접속 종료 표시',
+      await host.evaluate("document.querySelectorAll('.people-modal .people-list li').length === 2 && document.querySelector('.people-modal')?.innerText.includes('접속 종료') === true"),
+    );
+    await host.evaluate("document.querySelector('.people-modal button.people-row')?.click()");
+    const choose = await host.waitFor("document.querySelector('.confirm-modal[data-kind=\"kick-choose\"]') !== null && document.querySelector('.people-modal') === null", 3000);
+    record('★★★ R041 — 사람을 누르면 강퇴/차단 고르기 팝업 (참여자 창은 닫힌다 — 팝업은 하나)', choose);
+    await host.click('강퇴');
+    const fin = await host.waitFor("document.querySelector('.confirm-modal[data-kind=\"kick-kick\"]') !== null", 3000);
+    record(
+      '★★★ R041 — 바로 적용하지 않고 최종 확인 팝업이 한 번 더 (아직 그대로)',
+      fin && (await host.evaluate("document.querySelectorAll('.seat-card:not(.empty)').length")) === 2,
+    );
+    await host.click('내보내기');
+    const removed = await host.waitFor("document.querySelectorAll('.seat-card:not(.empty)').length === 1", 8000);
+    record('★ 강퇴가 실제로 동작한다 (목록에서 사라진다)', removed);
+    record('내보냈다는 시스템 메시지가 보인다', (await host.text()).includes('내보냈습니다'));
     await host.setViewport(1280, 720);
     await sleep(300);
-    const kick = await host.buttonState('내보내기');
-    record(
-      '★ 방장 화면에 "내보내기" 버튼이 나타난다',
-      kick.exists && kick.visible && !kick.disabled,
-      JSON.stringify(kick),
-    );
-    await host.shot('kick-button');
-
-    if (kick.exists && kick.visible) {
-      await host.click('내보내기');
-      const removed = await host.waitFor(
-        "document.querySelectorAll('.seat-card:not(.empty)').length === 1",
-        8000,
-      );
-      record('★ 내보내기가 실제로 동작한다 (목록에서 사라진다)', removed);
-      const kickMsg = await host.text();
-      record('내보냈다는 시스템 메시지가 보인다', kickMsg.includes('내보냈습니다'));
-    }
 
     await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
     await host.waitFor("document.querySelector('.stage') === null", 8000);

@@ -683,6 +683,16 @@ export function useRoom(socket: Socket | null): RoomHook {
     socket.on('room.hostChanged', onHostChanged);
     socket.on('chat.message', onChat);
     socket.on('room.left', onLeft);
+    // ★★ R041 — 방장이 강퇴·차단했다: 방 목록으로 돌아가고 짧게 알린다
+    const onKicked = (p: { roomId: string; banned: boolean }) => {
+      onLeft();
+      setError({
+        code: p.banned ? 'BANNED' : 'KICKED',
+        message: p.banned ? '방장이 이 방에서 차단했어요. 이 방에는 다시 들어갈 수 없어요.' : '방장이 이 방에서 내보냈어요.',
+        detail: null,
+      });
+    };
+    socket.on('room.kicked', onKicked);
     socket.on('lobby.settingsUpdated', onSettingsUpdated);
     socket.on('lobby.experienceRates', onExperienceRates);
     socket.on('game.countdownStarted', onCountdownStarted);
@@ -713,6 +723,7 @@ export function useRoom(socket: Socket | null): RoomHook {
       socket.off('room.hostChanged', onHostChanged);
       socket.off('chat.message', onChat);
       socket.off('room.left', onLeft);
+      socket.off('room.kicked', onKicked);
       socket.off('lobby.settingsUpdated', onSettingsUpdated);
       socket.off('lobby.experienceRates', onExperienceRates);
       socket.off('game.countdownStarted', onCountdownStarted);

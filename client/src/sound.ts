@@ -131,6 +131,13 @@ function ensureCtx(): AudioContext | null {
   sfxGain.connect(ctx.destination);
   chatGain.connect(ctx.destination);
   applyVolumes();
+  // ★★ R041 — 오디오가 다시 깨어나면(running) 배경음악을 이어 튼다 (탭 복귀 · 전화 뒤 · 다른 앱 소리 뒤 등)
+  ctx.onstatechange = () => {
+    // 검사용 표시 (ui-check — 탭 한 번 뒤 running 인가)
+    document.documentElement.dataset.audio = ctx?.state ?? 'none';
+    if (ctx?.state === 'running' && prefs.bgmOn && !timer) startBgm();
+  };
+  document.documentElement.dataset.audio = ctx.state;
   return ctx;
 }
 
@@ -138,34 +145,77 @@ function applyVolumes(): void {
   if (!ctx || !bgmGain || !sfxGain) return;
   const t = ctx.currentTime;
   // ★ 음량은 제곱으로 — 슬라이더 중간이 귀에 "중간" 으로 들린다
-  bgmGain.gain.setTargetAtTime(prefs.bgmOn ? prefs.bgmVol ** 2 * 0.5 * duck : 0, t, 0.08);
+  // ★ R041 — 배경음악 비중을 올렸다 (옛 0.5 → 1.2). 옛 값은 효과음보다 약 20dB 작아 노트북 스피커에서 "배경음이 안 들린다" (원인 — 코드 계산)
+  bgmGain.gain.setTargetAtTime(prefs.bgmOn ? prefs.bgmVol ** 2 * 1.2 * duck : 0, t, 0.08);
   sfxGain.gain.setTargetAtTime(prefs.sfxOn ? prefs.sfxVol ** 2 : 0, t, 0.02);
   chatGain?.gain.setTargetAtTime(prefs.chatOn ? prefs.chatVol ** 2 : 0, t, 0.02);
 }
 
 export function setDuck(on: boolean): void {
-  const next = on ? 0.55 : 1;
+  // ★ R041 — 문제 중 줄이는 폭도 줄였다 (0.55 → 0.7). 너무 줄이면 문제마다 배경음이 사라진 것처럼 들린다
+  const next = on ? 0.7 : 1;
   if (next === duck) return;
   duck = next;
   applyVolumes();
 }
 
 /**
- * ★ 첫 사용자 조작에서 소리를 연다. 앱 시작 때 한 번 건다.
+ * ★ 사용자 조작에서 소리를 연다. 앱 시작 때 한 번 건다.
  *   ★ 브라우저 자동재생 정책 — 조작 전에는 AudioContext 가 잠겨 있다.
+ *
+ * ★★★ R041 (건우: "삼성 인터넷은 소리가 아예 안 난다 · PC 도 배경음이 안 들릴 때가 있다") — 고친 것
+ *   (확인) 옛 코드는 **첫 pointerdown 한 번**에만 깨우고 바로 리스너를 지웠다.
+ *     ★ 터치의 pointerdown 은 브라우저가 "사용자 조작(활성화)" 으로 치지 않는다(활성화는 pointerup·touchend·click·keydown —
+ *       HTML 명세의 activation-triggering 이벤트). 그래서 휴대폰에서는 그 한 번의 resume() 이 실패할 수 있고, 다시 시도할 길이 없었다.
+ *       카카오톡 안 브라우저(WebView)는 자동 재생 제한이 느슨해 그 한 번으로도 열렸을 것이다 (추정 — 확인 필요).
+ *   (확인) 탭이 가려졌다 돌아오거나 전화·다른 앱 소리로 오디오가 잠들면(suspended · iOS interrupted) 다시 깨우는 코드가 없었다.
+ *   → 고침: 조작이 있을 **때마다**(pointerup · touchend · click · keydown · pointerdown) 잠들어 있으면 깨운다 — 리스너를 지우지 않는다.
+ *     깨어나면(statechange) 배경음악을 이어 튼다. 화면으로 돌아오면(visibilitychange) 한 번 깨워 본다.
+ *     WebKit 용으로 조작 안에서 무음 1샘플을 한 번 재생한다 (오디오 출력을 확실히 연다).
  */
 export function installAudioUnlock(): void {
-  const unlock = () => {
+  let primed = false;
+  const wake = () => {
     const c = ensureCtx();
     if (!c) return;
-    void c.resume().then(() => {
-      if (prefs.bgmOn) startBgm();
-    });
-    window.removeEventListener('pointerdown', unlock);
-    window.removeEventListener('keydown', unlock);
+    if (!primed) {
+      // ★ 조작 안에서 무음을 한 번 재생 — 일부 브라우저는 실제 재생이 있어야 출력을 연다
+      try {
+        const b = c.createBuffer(1, 1, 22050);
+        const src = c.createBufferSource();
+        src.buffer = b;
+        src.connect(c.destination);
+        src.start(0);
+        primed = true;
+      } catch {
+        // 무시 — 다음 조작에서 다시
+      }
+    }
+    if (c.state !== 'running') {
+      void c.resume().then(
+        () => {
+          if (prefs.bgmOn) startBgm();
+        },
+        () => undefined,
+      );
+    } else if (prefs.bgmOn && !timer) {
+      startBgm();
+    }
   };
-  window.addEventListener('pointerdown', unlock);
-  window.addEventListener('keydown', unlock);
+  for (const ev of ['pointerdown', 'pointerup', 'touchend', 'click', 'keydown'] as const) {
+    window.addEventListener(ev, wake, { capture: true, passive: true });
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible' || !ctx) return;
+    if (ctx.state !== 'running') {
+      void ctx.resume().then(
+        () => {
+          if (prefs.bgmOn) startBgm();
+        },
+        () => undefined,
+      );
+    }
+  });
 }
 
 export function audioReady(): boolean {
@@ -454,6 +504,8 @@ function scheduler(): void {
   if (!ctx || !bgmGain || !playing) return;
   const tr = TRACKS[playing];
   const stepDur = 60 / tr.bpm / 4;
+  // ★ R041 — 탭이 가려져 타이머가 늦게 돌면(브라우저가 1초에 한 번으로 줄인다) 밀린 음을 한꺼번에 울리지 않는다 → 지금으로 건너뛴다
+  if (nextTime < ctx.currentTime - 0.1) nextTime = ctx.currentTime + 0.05;
   // ★ 0.25초 앞까지 미리 예약한다 — setInterval 이 늦어도 박자가 흔들리지 않는다
   while (nextTime < ctx.currentTime + 0.25) {
     const [lead, bass] = tr.steps[stepIdx % tr.steps.length]!;

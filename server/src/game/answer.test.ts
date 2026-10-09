@@ -79,6 +79,7 @@ function room(over: Partial<Room> = {}, q: CurrentQuestion | null = question()):
     chat: [],
     hostGraceUntil: null,
     emptySince: null,
+    bannedAccountIds: new Set(),
     game: null,
     currentQuestion: q,
     result: null,

@@ -55,10 +55,10 @@
 - [x] **A 화면 크기별 글자 · 닉네임 10칸** — html 글자 clamp(15px, 8px+min(0.625vw,1.111vh), 24px) (PC 배치만) · 지문 px 도 비례 ·
       shared 한도 8→10 · 칸 수 표시 없앰(넘으면 빨강·떨림·안내) · 내 칸(정답자·1등)에서 닉네임 줄이 칸보다 넓어지던 것 고침 ·
       검수 크기에 1536×864 · 1536×730 · 2560×1440. 옛 긴 닉네임 0개
-- [ ] B 팝업 통일
-- [ ] C 강퇴·차단 · 모바일 참여자 창
-- [ ] D ⓘ · E 상단 바·+1·단축키 · F 키보드
-- [ ] G 소리
+- [x] **B 팝업 통일** — popup.ts(한 번에 하나 — 새 것이 열리면 먼저 것 닫힘) · ConfirmModal(나가기·강제 종료·방장 넘기기) · 메뉴 창·이모티콘·단축키·사진 편집기도 같은 규칙
+- [x] **C 강퇴·차단 · 모바일 참여자 창** — host.kick {accountId, ban} (kickDisconnected 합침) · bannedAccountIds · room.kicked · BANNED · PC 칸 누르기 · 👥 PeoplePanel · KickFlow(고르기 → 최종 확인)
+- [x] **D ⓘ** 6줄 + ✕ · **E** ⚙ 설정 글자 · +1 닉네임 옆 · 단축키 "지금은 쓸 수 없음" 없앰(방장 전용은 방장에게만) · **F** 새 문제에도 키보드 내림
+- [x] **G 소리** — 조작마다 깨우기(pointerup·touchend·click·keydown) · statechange/visibilitychange 로 배경음 이어 틀기 · 무음 1샘플 · 밀린 음 건너뛰기 · 배경음 비중 0.5→1.2
 - [ ] 마무리 (ui-check · 봇 · 문서 · 보고서)
 
 ---

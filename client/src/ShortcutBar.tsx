@@ -12,11 +12,12 @@ import type { Shortcut } from './shortcuts.js';
 
 interface Props {
   shortcuts: Shortcut[];
+  isHost: boolean;
   expanded: boolean;
   onToggle: () => void;
 }
 
-export default function ShortcutBar({ shortcuts, expanded, onToggle }: Props) {
+export default function ShortcutBar({ shortcuts, isHost, expanded, onToggle }: Props) {
   return (
     <span className="keybar">
       <button
@@ -38,7 +39,9 @@ export default function ShortcutBar({ shortcuts, expanded, onToggle }: Props) {
             </button>
           </p>
           <ul className="keylist">
-            {shortcuts.filter((s) => !s.hideInList).map((s) => (
+            {/* ★ R041 (건우) — "지금은 쓸 수 없음" 문구를 없앴다: 전부 실제로 동작한다(상황 때문에 지금만 못 쓰는 것) → 흐리게만.
+                방장 전용은 방장이 아니면 목록에서 뺀다 (R041 보고서 4장 표) */}
+            {shortcuts.filter((s) => !s.hideInList && !(s.hostOnly && !isHost)).map((s) => (
               <li key={s.combo} className={s.when ? undefined : 'dim'}>
                 <kbd>{s.combo}</kbd>
                 {s.fkey && (
@@ -48,7 +51,6 @@ export default function ShortcutBar({ shortcuts, expanded, onToggle }: Props) {
                   </>
                 )}
                 <span className="keylabel">{s.label}</span>
-                {!s.when && <span className="dim"> (지금은 쓸 수 없음)</span>}
               </li>
             ))}
             <li>

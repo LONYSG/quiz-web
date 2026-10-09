@@ -8,6 +8,7 @@
 // =============================================================================
 
 import { useEffect, useState } from 'react';
+import { usePopup } from './popup.js';
 import {
   BGMS,
   getSoundPrefs,
@@ -36,7 +37,8 @@ interface Props {
 }
 
 export default function Prefs({ variant = 'footer', onLogout }: Props) {
-  const [open, setOpen] = useState(false);
+  // ★ R041 — 팝업은 한 번에 하나 (popup.ts). 방 밖(footer)도 같은 규칙
+  const [open, setOpen] = usePopup('prefs');
   const [theme, setThemeState] = useState<ThemeId>(getTheme());
   const [sound, setSound] = useState<SoundPrefs>(getSoundPrefs());
 
@@ -84,7 +86,7 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
       window.removeEventListener('pointerdown', onDown);
       window.removeEventListener('keydown', onKey);
     };
-  }, [open]);
+  }, [open, setOpen]);
 
   const muted = !sound.bgmOn && !sound.sfxOn && !sound.chatOn;
 
@@ -99,7 +101,14 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
         onClick={() => setOpen((v) => !v)}
         title="테마 · 소리 (Alt+T 테마 · Alt+M 소리)"
       >
-        {variant === 'gear' ? '⚙' : <>🎨 테마 · {muted ? '🔇' : '🔊'} 소리</>}
+        {/* ★ R041 (건우) — 웹은 글자까지 ("초대·안내·나가기는 글자가 있는데 톱니만 아이콘"), 모바일은 아이콘만 (.lbl) */}
+        {variant === 'gear' ? (
+          <>
+            ⚙<span className="lbl"> 설정</span>
+          </>
+        ) : (
+          <>🎨 테마 · {muted ? '🔇' : '🔊'} 소리</>
+        )}
       </button>
 
       {open && (

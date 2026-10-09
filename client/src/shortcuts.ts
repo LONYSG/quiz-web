@@ -48,6 +48,8 @@ export interface Shortcut {
   run: () => void;
   /** ★ R039 — 단축키 목록 창에 따로 줄을 만들지 않는다 (Alt+1~0 은 한 줄로 묶어 보인다) */
   hideInList?: boolean;
+  /** ★ R041 — 방장 전용 (방장이 아니면 목록에 보이지 않는다) */
+  hostOnly?: boolean;
   /** ★ R039 — 목록 창에 보이기만 하고 키는 받지 않는 줄 */
   displayOnly?: boolean;
 }

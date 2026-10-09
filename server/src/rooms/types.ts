@@ -344,6 +344,8 @@ export interface Room {
    *   일시정지가 무의미해진다. (Phase 5에서 PAUSED 도입 시 적용)
    */
   emptySince: number | null;
+  /** ★ R041 — 이 방에서 차단한 계정. 방이 살아 있는 동안만 (방은 사람이 다 나가면 사라진다) */
+  bannedAccountIds: Set<string>;
 
   /** 진행 중인 게임. LOBBY 에서는 null 이다 */
   game: ActiveGame | null;
