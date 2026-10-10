@@ -3937,3 +3937,15 @@ button.primary.tone-warn {
   white-space: nowrap;
   overflow: hidden;
 }
+/* ★ R043 B — 웹 · 모바일 안내문을 따로 (pc-only 는 모바일에서 숨김) */
+.mobile-only {
+  display: none;
+}
+@media (max-width: 999px) {
+  .mobile-only {
+    display: block;
+  }
+}
+.info-list li .ico {
+  color: var(--accent);
+}

@@ -24,6 +24,7 @@ import PeoplePanel from './PeoplePanel.js';
 import { openPopup, usePopup, useCurrentPopup } from './popup.js';
 import MobileMenu from './MobileMenu.js';
 import InvitePopup from './InvitePopup.js';
+import InfoText from './InfoText.js';
 import PopupClose from './PopupClose.js';
 import Icon from './Icon.js';
 import { ArrowDown, Camera, Check, Keyboard, Link, LogOut, Menu, Pencil, Send, SkipForward, Smile, Users } from 'lucide-react';
@@ -718,32 +719,9 @@ export default function Lobby({
           </button>
           <Prefs variant="gear" onLogout={onLogout} />
           {/* ★★ ⓘ — R041 (건우: "안내가 너무 많다. 필요한 설명만") — 처음 하는 사람이 꼭 알아야 할 것만. 뺀 것은 R041 보고서 4장 표 */}
+          {/* ★★ R043 B — 안내문은 InfoText 한 곳 (웹 · 모바일 따로) */}
           <InfoTip>
-            <ul className="info-list">
-              <li>
-                <strong>채팅창에 답을 치면 끝.</strong> 가장 먼저 맞힌 1명만 1점 · 틀려도 벌점 없음
-              </li>
-              <li>
-                문제 <strong>40초</strong> — 30초에 힌트, 15초에 초성
-              </li>
-              <li>
-                <strong>
-                  <Icon icon={SkipForward} /> 넘기기
-                </strong>{' '}
-                — 여럿이 누르면 다음 문제로
-              </li>
-              <li>
-                <span className="badge exp">경험</span> 이미 풀어 본 문제 — 맞혀도 점수 없음, 내가 친 정답은 남에게 가려짐
-              </li>
-              <li>
-                이모티콘 <Icon icon={Smile} />
-                <span className="pc-only">
-                  {' '}
-                  · <kbd>Alt+1~0</kbd> · 단축키 목록 <Icon icon={Keyboard} />
-                </span>
-              </li>
-              <li>끊겨도 같은 링크로 돌아오면 이어져요</li>
-            </ul>
+            <InfoText />
           </InfoTip>
           <button type="button" className="ghost tiny" onClick={leaveWithConfirm} aria-label="나가기">
             <Icon icon={LogOut} />

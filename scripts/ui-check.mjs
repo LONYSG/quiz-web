@@ -2644,7 +2644,7 @@ try {
       // ⓘ — ✕ 로 닫힌다 · 짧다
       await host.evaluate("document.querySelector('.infotip-btn')?.click()");
       await sleep(200);
-      const infoLines = await host.evaluate("document.querySelectorAll('.infotip-pop .info-list li').length");
+      const infoLines = await host.evaluate("[...document.querySelectorAll('.infotip-pop .info-list li')].filter((li) => li.getClientRects().length > 0).length");
       await host.evaluate("document.querySelector('.infotip-close')?.click()");
       await sleep(200);
       record('★★ R041 D — ⓘ 는 짧게(8줄 이하) · ✕ 로 닫힌다', infoLines > 0 && infoLines <= 8 && (await host.evaluate("document.querySelector('.infotip-pop') === null")), `${infoLines}줄`);
