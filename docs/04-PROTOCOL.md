@@ -892,3 +892,21 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `host.transfer` (C→S, 새) | `{ accountId }` — 방장만 · 접속 중인 다른 사람에게만(아니면 BAD_REQUEST / INVALID_STATE) · 어느 상태에서나 (D-200) |
 | `room.hostChanged` | `reason` 추가: `grace`(끊김 30초) / `left`(★ 나가기 즉시) / `handover`(★ 넘기기). 방에 시스템 채팅 "○○ 님이 방장이 되었습니다" · 일시정지 중이면 `game.pauseStatus` 를 다시 보낸다 |
 | 방장 나가기 | `room.leave` — 방장이면 남은 접속자 중 가장 먼저 들어온 사람에게 **즉시** 넘긴다 |
+
+## ★ R043 — 바뀐 것
+
+| 항목 | 내용 |
+|------|------|
+| 방 코드 | 스냅샷 `room.code`(6자리 문자열). `room.join { roomId }` 는 **코드 또는 옛 긴 id** 둘 다 받는다 (D-205) |
+| `room.create` | 같은 소켓에서 진행 중인 만들기 요청이 있으면 다음 요청은 무시(연타) (D-209) |
+| HTTP `POST /api/auth/password` (새) | `{ password }` — must_change_password 계정만(아니면 409). 0000 이면 400. 성공하면 표시를 풀고 `{ ok }`. `/api/auth/me` · 로그인 응답에 `mustChangePassword` (· me 에 `avatarV`) |
+| 오류 `PASSWORD_CHANGE_REQUIRED` | 초기화된 계정의 모든 소켓 동작 (D-207) |
+| `friends.list` → `friends.state` | `{ friends:[{accountId,nickname,avatarV,status}], incoming:[…], outgoing:[…] }`. status = `{ kind: offline/online/lobby/game, count?, roomId? }` |
+| `friends.presence` (S→C) | `{ accountId, status }` — 서버가 1초마다 **바뀐 것만** |
+| `friends.request` | `{ loginId }` 또는 `{ accountId }` — 상대가 이미 나에게 신청했으면 바로 친구 |
+| `friends.respond` | `{ accountId, accept }` · `friends.cancel` / `friends.remove` `{ accountId }` |
+| `friends.invite` | `{ accountId }` — 내가 방에 있고 · 친구이고 · 접속 중이고 · 그 방에 없고 · 같은 사람 20초에 한 번 |
+| `friends.result` (S→C) | `{ action, ok, message }` — 요청한 사람에게 (버튼 로딩이 여기서 풀린다) |
+| `notifications.list` → `notifications.state` | `{ items:[{id,kind,fromAccountId,fromNickname,fromAvatarV,roomId,roomCode,createdAt,read}] }` |
+| `notifications.read` · `notifications.dismiss {id}` | 모두 읽음 · 하나 지우기 |
+| `notifications.new` (S→C) | `{ kind, fromNickname }` — 받는 사람에게 즉시 (화면은 게임 중이 아니면 알림 한 줄) |

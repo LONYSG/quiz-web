@@ -4173,3 +4173,17 @@ button.primary.tone-warn {
     width: 24rem;
   }
 }
+/* ★★ R043 D 검수 — ✕ 자리가 창마다 2~3px 달랐다(창 안쪽 여백 12/14px · 머리줄 높이 차이) → 모든 창에서 오른쪽 위 같은 자리에 고정 */
+.modal,
+.people-modal,
+.menu-modal {
+  position: relative;
+}
+.pop-head {
+  padding-right: 30px;
+}
+.pop-head > button.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

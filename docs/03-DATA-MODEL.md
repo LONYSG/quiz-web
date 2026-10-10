@@ -288,3 +288,14 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 - 서버는 목록을 메모리에 두고 30초가 지난 다음 요청 때 다시 읽는다. 개인 10칸은 `accounts.prefs.emojiSlots`(번호 10개).
 - 직접 등록 SQL: [DB-ADMIN.md](DB-ADMIN.md) "이모티콘 직접 등록".
 
+
+## ★ 비밀번호 초기화 · 친구 · 알림 (R043 / 0014)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `accounts.must_change_password` | boolean, 기본 false | 관리자 초기화(`reset-password -- <아이디>`)만 true 로 둔다. true 면 새 비밀번호를 정하기 전까지 소켓 동작 · 방 입장 불가. 새 비밀번호를 정하면 false (D-207) |
+| `friendships` | (requester_id, addressee_id) PK · status `pending`/`accepted` · created_at · accepted_at | 두 사람 사이 한 줄 — `LEAST/GREATEST` 유일 인덱스로 방향이 달라도 하나뿐. CHECK 자기 자신 금지. 거절·취소·삭제 = 줄 삭제. 계정이 지워지면 함께 지워진다(CASCADE) |
+| `notifications` | id bigserial · account_id(받는 사람) · kind `friend_request`/`friend_accepted`/`room_invite` · from_account_id · room_id(text, 초대만) · created_at · read_at | 친구 신청 알림의 정본은 friendships 줄(수락·거절하면 신청 알림을 지운다). 같은 사람의 옛 초대는 새 초대로 바뀐다. 사라진 방의 초대는 목록을 보낼 때 지운다. 최근 50개만 보낸다 |
+
+- 방 코드(6자리)는 DB 에 두지 않는다 — 방과 함께 메모리에만 있다 (D-205).
+- 마이그레이션 전 백업: `backups/quizweb-20261010-160233.dump`.

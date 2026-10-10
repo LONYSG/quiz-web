@@ -43,6 +43,7 @@ rooms ─< games                                             └── categorie
 | `games` / `game_players` / `game_questions` | 판 기록 · 참가자 최종 점수·순위 · 문제별 결말 |
 | `categories` · `game_topics` | 통계용 분류 트리 · 게임 출제용 분야 묶음 |
 | `account_avatars` | ★ R039 프로필 사진. 계정당 1장 · 256×256 webp(보통 10~40KB) · 200KB 상한 · 계정을 지우면 함께 지워진다 |
+| `friendships` · `notifications` | ★ R043 친구 관계(pending · accepted — 두 사람 사이 한 줄) · 알림(친구 신청 · 친구가 됨 · 방 초대). `accounts.must_change_password` = 관리자 비밀번호 초기화 표시 |
 | `emojis` | ★ R039 이모티콘 목록. `kind` = `standard`(표준 1,855개 — 그림은 Twemoji 파일) / `custom`(직접 등록 — **그림을 DB 에**). 화면·소켓·설정 저장은 전부 **`id` 번호**로 오간다 |
 
 ---
@@ -56,10 +57,26 @@ SELECT id, login_id, nickname, created_at FROM accounts ORDER BY created_at DESC
 
 ### 비밀번호 재설정 — ★ 쿼리가 아니라 스크립트로 (해시를 만들어야 한다)
 ```bash
-npm run reset-password -- --login-id 아이디 --generate     # 새 비밀번호를 한 번만 출력
+npm run reset-password -- 아이디                          # ★ R043 기본: 0000 + "바꿔야 함" 표시 (D-207)
+npm run reset-password -- --login-id 아이디 --generate     # 새 비밀번호를 한 번만 출력 (표시 없음)
 npm run reset-password -- --login-id 아이디 --password 새비번
 ```
 그 계정의 기존 로그인(세션)은 전부 끊긴다.
+★ 기본(아이디만)은 `accounts.must_change_password = true` — 그 사람은 0000 으로 로그인하면 새 비밀번호 화면만 보이고(0000 금지), 정하면 false 가 된다.
+표시된 계정 보기: `SELECT login_id, nickname FROM accounts WHERE must_change_password;`
+
+### ★ 친구 · 알림 (R043)
+```sql
+-- 어떤 사람의 친구·신청
+SELECT a.login_id, b.login_id, f.status, f.created_at FROM friendships f
+  JOIN accounts a ON a.id = f.requester_id JOIN accounts b ON b.id = f.addressee_id
+ WHERE a.login_id = '아이디' OR b.login_id = '아이디';
+-- 알림 (받는 사람 기준)
+SELECT n.kind, f.login_id AS from_login, n.room_id, n.created_at, n.read_at FROM notifications n
+  JOIN accounts f ON f.id = n.from_account_id WHERE n.account_id = (SELECT id FROM accounts WHERE login_id = '아이디')
+ ORDER BY n.created_at DESC;
+```
+친구를 끊어 주려면 friendships 줄을 지우면 된다(친구 화면의 삭제와 같다). 계정을 지우면 둘 다 함께 지워진다(CASCADE).
 
 ### 닉네임 바꾸기
 ★ 되도록 **게임 화면의 로비 "내 닉네임"** 으로 바꾼다 — 방 안에 바로 알리고 겹침도 막는다.
