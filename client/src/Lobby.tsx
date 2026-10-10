@@ -46,6 +46,8 @@ import { cycleTheme } from './theme.js';
 import { useGameSounds } from './useGameSounds.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
 import BusyButton from './BusyButton.js';
+import { BellButton, FriendsButton } from './SocialPopups.js';
+import type { Social } from './useSocial.js';
 
 interface Props {
   socket: Socket;
@@ -60,6 +62,10 @@ interface Props {
   onNicknameChanged: (nickname: string) => void;
   /** ★ R035 — 로그아웃은 상단 바 ⚙ 안에 있다 */
   onLogout: () => void;
+  /** ★ R043 C — 친구 · 알림 */
+  social: Social;
+  /** ★ R043 C — 다른 방으로 (친구 방 · 초대) — 확인은 App 이 한다 */
+  onJoinOther: (roomId: string) => void;
 }
 
 /** ★ R040 C-4 — 모바일 맞춤 글자의 하한 (문제 19px → 약 14px · 해설 16.8px → 약 12.6px) */
@@ -80,6 +86,8 @@ export default function Lobby({
   throttledUntil,
   onNicknameChanged,
   onLogout,
+  social,
+  onJoinOther,
 }: Props) {
   const [draft, setDraft] = useState('');
   // ★ R043 A-7 — 초대는 팝업 (방 코드 + 링크 복사)
@@ -550,8 +558,11 @@ export default function Lobby({
   const res = snapshot.resolution;
   const winnerId = state === 'QUESTION_RESOLVED' && res?.reason === 'correct' ? res.winnerAccountId : null;
   /** ★★ R041 — 사람을 골랐다 (PC 참여자 칸 · 모바일 👥 창) → 강퇴 / 차단 고르기 팝업. 방장만 · 자기 자신은 안 된다 */
+  // ★★ R043 C — 친구 신청은 누구나: 아직 친구도 아니고 신청도 없는 사람이면 "친구 신청" 이 붙는다
+  const related = new Set([...social.friends, ...social.incoming, ...social.outgoing].map((f) => f.accountId));
+  const canPick = (accountId: string) => accountId !== snapshot.me.accountId && (snapshot.me.isHost || !related.has(accountId));
   const pickPlayer = (p: { accountId: string; nickname: string; connected: boolean }) => {
-    if (!snapshot.me.isHost || p.accountId === snapshot.me.accountId) return;
+    if (!canPick(p.accountId)) return;
     setKickTarget({ accountId: p.accountId, nickname: p.nickname, step: 'choose', connected: p.connected });
     setKickOpen(true);
   };
@@ -569,7 +580,7 @@ export default function Lobby({
         emoji={p ? seatEmoji(p.accountId) : null}
         rank={p && showScore && p.score > 0 ? rankOf(p.score) : null}
         winnerKey={p && winnerId === p.accountId ? res?.epoch ?? 0 : null}
-        onPick={p && snapshot.me.isHost && p.accountId !== snapshot.me.accountId ? () => pickPlayer(p) : undefined}
+        onPick={p && canPick(p.accountId) ? () => pickPlayer(p) : undefined}
       />
     );
   };
@@ -599,6 +610,9 @@ export default function Lobby({
             </button>
             {inviteOpen && <InvitePopup code={snapshot.room.code} url={inviteUrl} onClose={() => setInviteOpen(false)} />}
           </span>
+          {/* ★★ R043 C — 친구 · 🔔 알림 (모바일은 ☰ 안) */}
+          <FriendsButton social={social} inRoom={new Set(snapshot.players.map((p) => p.accountId))} />
+          <BellButton social={social} onJoin={onJoinOther} />
           {state === 'LOBBY' && me && (
             <span className="rename">
               <button
@@ -737,6 +751,8 @@ export default function Lobby({
             onClick={() => setMenuOpen((v) => !v)}
           >
             <Icon icon={Menu} />
+            {/* ★ R043 C — 새 알림 · 받은 신청이 있으면 빨간 점 */}
+            {(social.unread > 0 || social.incoming.length > 0) && <span className="red-dot" aria-label="새 알림" />}
           </button>
         </div>
       </header>
@@ -746,6 +762,10 @@ export default function Lobby({
         <MobileMenu
           canRename={state === 'LOBBY' && Boolean(me)}
           onInvite={() => setInviteOpen(true)}
+          onFriends={() => openPopup('friends')}
+          onNotices={() => openPopup('notices')}
+          noticeCount={social.unread}
+          friendWaiting={social.incoming.length}
           onProfile={() => {
             setRenameMsg(null);
             setRenameOpen(true);
@@ -807,13 +827,16 @@ export default function Lobby({
           rateOf={(id) => (inLobby ? rateText(id) : null)}
           experiencedIds={experiencedIds}
           onPick={pickPlayer}
+          canPick={canPick}
           onClose={() => setPeopleOpen(false)}
         />
       )}
-      {kickOpen && kickTarget && snapshot.me.isHost && snapshot.players.some((p) => p.accountId === kickTarget.accountId) && (
+      {kickOpen && kickTarget && snapshot.players.some((p) => p.accountId === kickTarget.accountId) && (
         <KickFlow
           socket={socket}
           target={kickTarget}
+          isHost={snapshot.me.isHost}
+          onFriend={related.has(kickTarget.accountId) ? undefined : () => social.request({ accountId: kickTarget.accountId })}
           onStep={(step) => setKickTarget({ ...kickTarget, step })}
           onClose={() => {
             setKickOpen(false);

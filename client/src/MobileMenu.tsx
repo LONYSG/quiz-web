@@ -9,13 +9,18 @@
 
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Info, Link, LogOut, Pencil, Settings } from 'lucide-react';
+import { Bell, Info, Link, LogOut, Pencil, Settings, UserPlus } from 'lucide-react';
 import PopupClose from './PopupClose.js';
 import Icon from './Icon.js';
 
 interface Props {
   canRename: boolean;
   onInvite: () => void;
+  /** ★ R043 C — 친구 · 알림 */
+  onFriends: () => void;
+  onNotices: () => void;
+  noticeCount: number;
+  friendWaiting: number;
   onProfile: () => void;
   onSettings: () => void;
   onInfo: () => void;
@@ -23,7 +28,7 @@ interface Props {
   onClose: () => void;
 }
 
-export default function MobileMenu({ canRename, onInvite, onProfile, onSettings, onInfo, onLeave, onClose }: Props) {
+export default function MobileMenu({ canRename, onInvite, onFriends, onNotices, noticeCount, friendWaiting, onProfile, onSettings, onInfo, onLeave, onClose }: Props) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -50,6 +55,14 @@ export default function MobileMenu({ canRename, onInvite, onProfile, onSettings,
         <div className="menu-list" data-arrow-nav>
           <button type="button" className="menu-item" onClick={onInvite}>
             <Icon icon={Link} /> 초대
+          </button>
+          <button type="button" className="menu-item" onClick={onFriends}>
+            <Icon icon={UserPlus} /> 친구
+            {friendWaiting > 0 && <span className="count-badge inline">{friendWaiting}</span>}
+          </button>
+          <button type="button" className="menu-item" onClick={onNotices}>
+            <Icon icon={Bell} /> 알림
+            {noticeCount > 0 && <span className="count-badge inline">{noticeCount > 9 ? '9+' : noticeCount}</span>}
           </button>
           {canRename && (
             <button type="button" className="menu-item" onClick={onProfile}>

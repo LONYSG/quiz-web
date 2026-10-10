@@ -30,10 +30,12 @@ interface Props {
   rateOf: (accountId: string) => string | null;
   experiencedIds: Set<string>;
   onPick: (p: PlayerView) => void;
+  /** ★ R043 C — 누를 수 있는 사람 (방장: 모두 · 아니면 친구 신청할 수 있는 사람) */
+  canPick: (accountId: string) => boolean;
   onClose: () => void;
 }
 
-export default function PeoplePanel({ players, myAccountId, isHost, showScore, rankOf, rateOf, experiencedIds, onPick, onClose }: Props) {
+export default function PeoplePanel({ players, myAccountId, isHost, showScore, rankOf, rateOf, experiencedIds, onPick, canPick, onClose }: Props) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -61,7 +63,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
         <ul className="people-list">
           {list.map((p) => {
             const me = p.accountId === myAccountId;
-            const pickable = isHost && !me;
+            const pickable = !me && canPick(p.accountId);
             const body = (
               <>
                 <Avatar nickname={p.nickname} colorIndex={p.colorIndex} accountId={p.accountId} avatarV={p.avatarV} />
@@ -92,7 +94,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
             return (
               <li key={p.accountId} data-account={p.accountId} className={p.connected ? undefined : 'offline'}>
                 {pickable ? (
-                  <button type="button" className="people-row pickable" onClick={() => onPick(p)} aria-label={`${p.nickname} — 강퇴·차단`}>
+                  <button type="button" className="people-row pickable" onClick={() => onPick(p)} aria-label={isHost ? `${p.nickname} — 친구 신청·강퇴·차단` : `${p.nickname} — 친구 신청`}>
                     {body}
                   </button>
                 ) : (
@@ -102,7 +104,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
             );
           })}
         </ul>
-        {isHost && players.length > 1 && <p className="people-tip dim">사람을 누르면 강퇴 · 차단</p>}
+        {players.some((p) => p.accountId !== myAccountId && canPick(p.accountId)) && <p className="people-tip dim">{isHost ? '사람을 누르면 친구 신청 · 강퇴 · 차단' : '사람을 누르면 친구 신청'}</p>}
       </div>
     </div>,
     document.body,

@@ -70,9 +70,11 @@ export default function PasswordChange({ nickname, onDone, onLogout }: Props) {
           </BusyButton>
         </form>
       </section>
-      <button type="button" className="ghost tiny" onClick={onLogout}>
-        로그아웃
-      </button>
+      <div className="pw-foot">
+        <button type="button" className="ghost tiny" onClick={onLogout}>
+          로그아웃
+        </button>
+      </div>
     </>
   );
 }

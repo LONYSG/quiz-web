@@ -5,10 +5,11 @@
 //   사람 선택(PC 참여자 칸 · 모바일 👥 창) → ① 강퇴 / 차단 고르기 → ② 최종 확인 → 서버 host.kick
 // ★ 강퇴 = 방에서 내보낸다(링크로 다시 들어올 수 있다) / 차단 = 내보내고 이 방이 있는 동안 다시 못 들어온다.
 // ★ 팝업은 한 번에 하나 (popup.ts) — 두 단계 모두 같은 'kick' 팝업 자리를 쓴다.
+// ★★ R043 C — 같은 고르기 팝업에 **친구 신청**이 붙는다 (누구나). 방장이 아니면 친구 신청만 보인다.
 // =============================================================================
 
 import type { Socket } from 'socket.io-client';
-import ConfirmModal from './ConfirmModal.js';
+import ConfirmModal, { type ConfirmAction } from './ConfirmModal.js';
 
 export interface KickTarget {
   accountId: string;
@@ -23,27 +24,36 @@ interface Props {
   target: KickTarget;
   onStep: (step: KickTarget['step']) => void;
   onClose: () => void;
+  /** ★ R043 C — 방장인가 (아니면 친구 신청만) */
+  isHost: boolean;
+  /** ★ R043 C — 친구 신청 (이미 친구 · 신청 중이면 없음) */
+  onFriend?: () => void;
 }
 
-export default function KickFlow({ socket, target, onStep, onClose }: Props) {
+export default function KickFlow({ socket, target, onStep, onClose, isHost, onFriend }: Props) {
   const name = <strong className="confirm-nick">{target.nickname}</strong>;
   if (target.step === 'choose') {
-    return (
-      <ConfirmModal
-        key="choose"
-        kind="kick-choose"
-        title={<>{name} 님을 어떻게 할까요?</>}
-        actions={[
-          // ★ R043 A-10 (건우) — 설명 글 삭제 · 색을 다르게: 강퇴 주황 · 차단 빨강(가장 센 것) · 방장 넘기기 차분한 색
-          { label: '강퇴', tone: 'warn' as const, onClick: () => onStep('kick') },
-          { label: '차단', tone: 'danger' as const, onClick: () => onStep('ban') },
-          // ★★ R042 (건우) — 방장 넘기기. 접속 중인 사람에게만
-          ...(target.connected ? [{ label: '방장 넘기기', tone: 'calm' as const, onClick: () => onStep('host') }] : []),
-        ]}
-        onCancel={onClose}
-      />
-    );
+    const actions: ConfirmAction[] = [];
+    if (onFriend) {
+      actions.push({
+        label: '친구 신청',
+        tone: 'calm',
+        onClick: () => {
+          onFriend();
+          onClose();
+        },
+      });
+    }
+    if (isHost) {
+      // ★ R043 A-10 (건우) — 설명 글 삭제 · 색을 다르게: 강퇴 주황 · 차단 빨강(가장 센 것) · 방장 넘기기 차분한 색
+      actions.push({ label: '강퇴', tone: 'warn', onClick: () => onStep('kick') });
+      actions.push({ label: '차단', tone: 'danger', onClick: () => onStep('ban') });
+      // ★★ R042 (건우) — 방장 넘기기. 접속 중인 사람에게만
+      if (target.connected) actions.push({ label: '방장 넘기기', tone: 'calm', onClick: () => onStep('host') });
+    }
+    return <ConfirmModal key="choose" kind="kick-choose" title={<>{name} 님을 어떻게 할까요?</>} actions={actions} onCancel={onClose} />;
   }
+  if (!isHost) return null;
   if (target.step === 'host') {
     return (
       <ConfirmModal

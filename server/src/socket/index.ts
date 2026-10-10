@@ -63,6 +63,7 @@ import {
   unregisterRoom,
 } from '../rooms/registry.js';
 import { transferHost } from '../rooms/host.js';
+import { initFriends, onAccountOffline, onAccountOnline, registerFriendHandlers } from '../social/friends.js';
 
 /** ★ R043 — 방을 만드는 중인 계정 (연타 무시) */
 const creatingRooms = new Set<string>();
@@ -111,6 +112,8 @@ function maskForBroadcast(room: Room, senderAccountId: string, rawNfc: string): 
 const socketByAccount = new Map<string, string>();
 
 export function registerSocketHandlers(io: Server): void {
+  // ★ R043 — 친구 실시간 상태 (접속 소켓을 알려 준다)
+  initFriends((accountId) => socketByAccount.get(accountId));
   bindIo(io);
 
   // ── 핸드셰이크에서 세션을 확인한다.
@@ -160,6 +163,8 @@ export function registerSocketHandlers(io: Server): void {
       disconnectSocket(previousSocketId);
     }
     socketByAccount.set(accountId, socket.id);
+    // ★ R043 — 친구 상태 (접속 = 친구 목록을 읽어 둔다)
+    onAccountOnline(accountId);
 
     socket.emit('session.established', {
       accountId,
@@ -169,6 +174,7 @@ export function registerSocketHandlers(io: Server): void {
 
     registerCommonHandlers(socket);
     registerRoomHandlers(socket);
+    registerFriendHandlers(socket);
 
     // ── 재접속: 이미 방에 소속되어 있으면 자동으로 다시 붙인다
     const existingRoom = getRoomOfAccount(accountId);
@@ -180,6 +186,7 @@ export function registerSocketHandlers(io: Server): void {
       // ★ 승계된 소켓의 disconnect 가 새 소켓의 매핑을 지우지 않게 한다
       if (socketByAccount.get(accountId) === socket.id) {
         socketByAccount.delete(accountId);
+        onAccountOffline(accountId);
       }
       const room = getRoomOfAccount(accountId);
       if (!room) return;

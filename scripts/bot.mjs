@@ -4744,6 +4744,135 @@ async function scenarioPwReset() {
 // -----------------------------------------------------------------------------
 // ★★ nickname — R040 닉네임 폭 한도 (한글 1 · 영어·숫자 0.8 · 8칸 — 건우 확정) · 긴 옛 닉네임은 시작에 참여할 수 없다
 // -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// ★★★ friends — R043 친구 신청 · 수락 · 삭제 · 실시간 상태 · 초대 → 입장 · 차단된 방
+// -----------------------------------------------------------------------------
+function trackSocial(bot) {
+  bot.social = { friends: [], incoming: [], outgoing: [], notes: [], results: [], news: [] };
+  const s = bot.socket;
+  s.on('friends.state', (p) => Object.assign(bot.social, p));
+  s.on('friends.presence', (p) => {
+    bot.social.friends = bot.social.friends.map((f) => (f.accountId === p.accountId ? { ...f, status: p.status } : f));
+  });
+  s.on('notifications.state', (p) => (bot.social.notes = p.items));
+  s.on('notifications.new', (p) => bot.social.news.push(p));
+  s.on('friends.result', (p) => bot.social.results.push(p));
+  s.emit('friends.list', {});
+  s.emit('notifications.list', {});
+}
+async function scenarioFriends() {
+  log('시나리오 friends — ★★★ 친구 · 알림 · 초대 (R043)');
+  const [a, b, c] = await makeBots(3);
+  const ids = await withDb(async (cl) =>
+    (await cl.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [[a.loginId, b.loginId, c.loginId]])).rows,
+  );
+  const idOf = (bot) => ids.find((r) => r.login_id === bot.loginId).id;
+  const all = ids.map((r) => r.id);
+  await withDb((cl) => cl.query(`DELETE FROM friendships WHERE requester_id = ANY($1::bigint[]) OR addressee_id = ANY($1::bigint[])`, [all]));
+  await withDb((cl) => cl.query(`DELETE FROM notifications WHERE account_id = ANY($1::bigint[])`, [all]));
+  for (const x of [a, b, c]) {
+    await x.connect();
+    trackSocial(x);
+  }
+  await sleep(500);
+  const lastResult = (x) => x.social.results[x.social.results.length - 1];
+  const after = async (x, fn, label) => {
+    const n = x.social.results.length;
+    fn();
+    await x.waitFor(() => x.social.results.length > n, 3000, label);
+    return lastResult(x);
+  };
+
+  log('\n[1] ★★ 아이디로 신청 → 받은 쪽 알림 · 수락');
+  expect('★ 없는 아이디는 안내', (await after(a, () => a.socket.emit('friends.request', { loginId: 'no_such_id_zz' }), '없는 아이디')).ok, false);
+  a.socket.emit('friends.request', { loginId: b.loginId });
+  await b.waitFor(() => b.social.incoming.length === 1, 4000, 'b 받은 신청');
+  expect('★★ 받은 쪽 목록에 신청', b.social.incoming[0].accountId, idOf(a));
+  await b.waitFor(() => b.social.notes.some((n) => n.kind === 'friend_request'), 3000, '신청 알림');
+  expectTrue('★★ 받은 쪽 알림 (friend_request · 안 읽음)', b.social.notes.some((n) => n.kind === 'friend_request' && !n.read));
+  expectTrue('★ 실시간 알림 notifications.new', b.social.news.some((n) => n.kind === 'friend_request'));
+  await a.waitFor(() => a.social.outgoing.length === 1, 3000, '보낸 신청');
+  expect('★ 보낸 쪽 목록 (outgoing)', a.social.outgoing.length, 1);
+  expect('★ 두 번 신청은 막는다', (await after(a, () => a.socket.emit('friends.request', { loginId: b.loginId }), '두 번')).message, '이미 신청했어요.');
+  b.socket.emit('friends.respond', { accountId: idOf(a), accept: true });
+  await a.waitFor(() => a.social.friends.length === 1, 4000, 'a 친구 1');
+  await b.waitFor(() => b.social.friends.length === 1, 4000, 'b 친구 1');
+  expectTrue('★★★ 수락하면 둘 다 친구', a.social.friends[0].accountId === idOf(b) && b.social.friends[0].accountId === idOf(a));
+  await sleep(300);
+  expectTrue('★ 신청 알림은 지워진다', !b.social.notes.some((n) => n.kind === 'friend_request'));
+  await a.waitFor(() => a.social.notes.some((n) => n.kind === 'friend_accepted'), 3000, '수락 알림');
+  expectTrue('★★ 신청한 쪽에 "친구가 됐어요" 알림', a.social.notes.some((n) => n.kind === 'friend_accepted'));
+  b.socket.emit('notifications.read', {});
+  await b.waitFor(() => b.social.notes.every((n) => n.read), 3000, '모두 읽음');
+  expectTrue('★ 모두 읽음', b.social.notes.every((n) => n.read));
+
+  log('\n[2] ★★★ 실시간 상태 — 접속 중 → 대기실 · N명');
+  const bInA = () => a.social.friends.find((f) => f.accountId === idOf(b))?.status;
+  expect('★ 처음엔 접속 중', bInA()?.kind, 'online');
+  b.createRoom('R043 친구 방');
+  await b.waitFor(() => b.snapshot !== null, 6000, 'b 방');
+  const roomB = b.snapshot.room.id;
+  await a.waitFor(() => bInA()?.kind === 'lobby', 4000, '대기실 상태');
+  expect('★★★ 방을 만들면 대기실 · 1명', `${bInA().kind}:${bInA().count}`, 'lobby:1');
+  expect('★ 상태에 방 id (들어가기용)', bInA().roomId, roomB);
+
+  log('\n[3] ★★ 초대 → 들어가기');
+  expect('★ 친구가 아니면 초대 못 한다', (await after(b, () => b.socket.emit('friends.invite', { accountId: idOf(c) }), '비친구 초대')).ok, false);
+  expect('★★ 친구 초대', (await after(b, () => b.socket.emit('friends.invite', { accountId: idOf(a) }), '초대')).ok, true);
+  await a.waitFor(() => a.social.notes.some((n) => n.kind === 'room_invite'), 4000, '초대 알림');
+  const inv = a.social.notes.find((n) => n.kind === 'room_invite');
+  expect('★★ 초대 알림에 방 코드', inv.roomCode, b.snapshot.room.code);
+  expect('★ 같은 사람 연속 초대는 막는다 (20초)', (await after(b, () => b.socket.emit('friends.invite', { accountId: idOf(a) }), '연타')).ok, false);
+  a.join(inv.roomId);
+  await a.waitFor(() => a.snapshot !== null, 6000, '초대로 입장');
+  expect('★★★ 초대 → 들어가기', a.snapshot.room.id, roomB);
+  await b.waitFor(() => b.social.friends[0]?.status?.count === 2, 4000, '2명');
+  expect('★★ 친구 상태 인원 실시간 (대기실 · 2명)', b.social.friends[0].status.count, 2);
+  expect('★ 이미 방에 있으면 초대 안 됨', (await after(b, () => b.socket.emit('friends.invite', { accountId: idOf(a) }), '이미 방')).message, '이미 이 방에 있어요.');
+
+  log('\n[4] ★★ 차단된 방은 친구 방이어도 못 들어간다');
+  let from = a.mark();
+  b.socket.emit('host.kick', { accountId: idOf(a), ban: true });
+  await a.waitFor(() => a.since(from, 'room.kicked').length > 0, 4000, '차단');
+  await a.waitFor(() => bInA()?.kind === 'lobby' && bInA()?.count === 1, 4000, '1명으로');
+  expect('★ 친구 목록에는 여전히 그 방 (들어가기 버튼은 보인다)', bInA().roomId, roomB);
+  a.snapshot = null;
+  from = a.mark();
+  a.join(roomB);
+  await a.waitFor(() => a.since(from, 'error').length > 0 || a.snapshot !== null, 4000, '재입장');
+  expect('★★★ 차단된 방 → BANNED (막고 안내)', a.since(from, 'error')[0]?.code, 'BANNED');
+
+  log('\n[5] ★★ 끊기면 오프라인 · 삭제 · 거절 · 서로 신청');
+  b.leave();
+  await sleep(300);
+  b.disconnect();
+  await a.waitFor(() => bInA()?.kind === 'offline', 4000, '오프라인');
+  expect('★★ 끊기면 오프라인', bInA().kind, 'offline');
+  a.socket.emit('friends.remove', { accountId: idOf(b) });
+  await a.waitFor(() => a.social.friends.length === 0, 4000, '삭제');
+  expect('★★ 친구 삭제', a.social.friends.length, 0);
+  const left = await withDb(async (cl) =>
+    (await cl.query(
+      `SELECT count(*)::int AS n FROM friendships WHERE (requester_id = $1 AND addressee_id = $2) OR (requester_id = $2 AND addressee_id = $1)`,
+      [idOf(a), idOf(b)],
+    )).rows[0].n,
+  );
+  expect('★ DB 에서도 지워진다', left, 0);
+  a.socket.emit('friends.request', { loginId: c.loginId });
+  await c.waitFor(() => c.social.incoming.length === 1, 4000, 'c 받은 신청');
+  c.socket.emit('friends.respond', { accountId: idOf(a), accept: false });
+  await a.waitFor(() => a.social.outgoing.length === 0, 4000, '거절 반영');
+  expect('★★ 거절하면 보낸 쪽 목록에서도 빠진다', a.social.outgoing.length, 0);
+  a.socket.emit('friends.request', { accountId: idOf(c) });
+  await c.waitFor(() => c.social.incoming.length === 1, 4000, '다시 신청');
+  expect('★★ 서로 신청하면 바로 친구', (await after(c, () => c.socket.emit('friends.request', { loginId: a.loginId }), '맞신청')).message, '친구가 됐어요.');
+  await a.waitFor(() => a.social.friends.length === 1, 4000, '친구');
+  a.socket.emit('friends.cancel', { accountId: idOf(c) });
+  await a.waitFor(() => a.social.friends.length === 0, 4000, '정리');
+  for (const x of [a, c]) x.disconnect();
+  return checkSummary();
+}
+
 async function postJson(pathname, body, cookie = null, method = 'POST') {
   const res = await fetch(`${BASE}${pathname}`, {
     method,
@@ -4933,6 +5062,7 @@ const SCENARIOS = {
   // ★★ R043
   roomcode: scenarioRoomCode,
   pwreset: scenarioPwReset,
+  friends: scenarioFriends,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

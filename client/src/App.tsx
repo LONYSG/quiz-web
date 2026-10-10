@@ -43,6 +43,9 @@ import Prefs from './Prefs.js';
 import Toast, { type ToastContent } from './Toast.js';
 import { errorMessage, fetchMe, logout, type Account } from './api.js';
 import { useRoom } from './useRoom.js';
+import { useSocial } from './useSocial.js';
+import FriendList from './FriendList.js';
+import { BellButton } from './SocialPopups.js';
 import { useServerClock } from './useServerClock.js';
 
 /** 경로에서 초대받은 방 ID를 뽑는다. /r/<roomId> */
@@ -63,6 +66,18 @@ export default function App() {
   const room = useRoom(socket);
   const [logoutOpen, setLogoutOpen] = usePopup('logout');
   const clock = useServerClock(socket);
+  // ★★ R043 C — 친구 · 알림. 새 알림은 🔔 숫자로. **게임 중이 아닐 때만** 짧은 알림 한 줄을 띄운다 (게임 중에는 숫자만)
+  const inGameRef = useRef(false);
+  inGameRef.current = Boolean(room.snapshot && !['LOBBY', 'GAME_RESULT'].includes(room.snapshot.room.state));
+  const onNewNotice = useCallback((n: { kind: string; fromNickname: string }) => {
+    if (inGameRef.current) return;
+    const what = n.kind === 'friend_request' ? '친구 신청을 보냈어요' : n.kind === 'friend_accepted' ? '친구 신청을 수락했어요' : '방으로 초대했어요';
+    setNotice({ message: `${n.fromNickname} 님이 ${what}.` });
+  }, []);
+  const social = useSocial(socket, onNewNotice);
+  /** ★ R043 C — 방 안에서 다른 방(친구 방 · 초대)으로 옮기기 전 확인 */
+  const [switchTo, setSwitchTo] = useState<string | null>(null);
+  const [switchOpen, setSwitchOpen] = usePopup('switch-room');
   /** ★ R043 A-2 — 서버를 기다리는 동작 (방 만들기 · 입장). 응답(방 화면 · 오류)이 오면 풀린다 */
   const [busy, setBusy] = useState<'create' | 'join' | null>(null);
   useEffect(() => {
@@ -225,6 +240,21 @@ export default function App() {
     if (lastRoomCode.current) setJoinId(lastRoomCode.current);
   }, [socket]);
 
+  /** ★ R043 C — 친구가 있는 방 · 초대받은 방으로. 방 안이면 확인 후 지금 방을 나가고 들어간다 */
+  const joinOther = useCallback(
+    (roomId: string) => {
+      if (!socket) return;
+      if (room.snapshot) {
+        if (room.snapshot.room.id === roomId) return;
+        setSwitchTo(roomId);
+        setSwitchOpen(true);
+        return;
+      }
+      setPendingRoomId(roomId);
+    },
+    [socket, room.snapshot, setSwitchOpen],
+  );
+
   const doLogout = useCallback(async () => {
     try {
       await logout();
@@ -325,6 +355,8 @@ export default function App() {
               setAccount((prev) => (prev ? { ...prev, nickname } : prev))
             }
             onLogout={doLogout}
+            social={social}
+            onJoinOther={joinOther}
           />
         ),
         // ★ R035 — 방 안에서는 푸터가 없다. 테마·소리·로그아웃은 상단 바의 ⚙ 안에 있다 (화면 아래 빈 공간 제거)
@@ -334,8 +366,13 @@ export default function App() {
 
     return {
       narrow: true,
+      home: true,
       body: (
         <>
+          {/* ★ R043 C — 🔔 알림 (방 목록 화면 오른쪽 위) */}
+          <div className="home-bar">
+            <BellButton social={social} onJoin={joinOther} />
+          </div>
           <div className="brand">
             <span className="brand-mark" aria-hidden="true">Q</span>
             <h1>상식 퀴즈</h1>
@@ -348,6 +385,8 @@ export default function App() {
             </p>
           </div>
 
+          <div className="home-grid">
+          <div className="home-col">
           <section className="card">
             <h2>방 만들기</h2>
             <div className="field-row">
@@ -397,6 +436,13 @@ export default function App() {
               </BusyButton>
             </div>
           </section>
+          </div>
+          {/* ★★ R043 C-2 — 방 목록 화면의 친구 목록 (크게). 방에 있는 친구는 [들어가기] */}
+          <section className="card home-friends">
+            <h2>친구</h2>
+            <FriendList social={social} mode="home" onJoin={joinOther} pageSize={window.matchMedia('(max-width: 999px)').matches ? 5 : 6} popupKey="home" />
+          </section>
+          </div>
         </>
       ),
       foot: (
@@ -421,12 +467,30 @@ export default function App() {
   })();
 
   return (
-    <main className={view.narrow ? 'wrap narrow' : 'wrap'}>
+    <main className={view.narrow ? ('home' in view && view.home ? 'wrap narrow home-wide' : 'wrap narrow') : 'wrap'}>
       {/* ★ 알림은 화면 종류와 무관하게 항상 여기 하나뿐이다 (D-027 / D-032).
           ★ 화면 고정(fixed)이므로 문서 흐름에서의 위치는 의미가 없다.
             그래도 여기 두는 이유는 "표시 경로가 한 곳" 임을 코드로 드러내기 위함이다. */}
       <Toast content={notice} onDismiss={() => setNotice(null)} />
       {view.body}
+      {switchOpen && switchTo && (
+        <ConfirmModal
+          kind="switch-room"
+          title="지금 방을 나가고 들어갈까요?"
+          actions={[
+            {
+              label: '옮기기',
+              tone: 'warn',
+              onClick: () => {
+                setSwitchOpen(false);
+                socket?.emit('room.leave', {});
+                setPendingRoomId(switchTo);
+              },
+            },
+          ]}
+          onCancel={() => setSwitchOpen(false)}
+        />
+      )}
       {view.foot && <footer className="foot">{view.foot}</footer>}
     </main>
   );
