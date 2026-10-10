@@ -9,7 +9,8 @@
 import { useEffect, type ReactNode } from 'react';
 import { usePopup } from './popup.js';
 import Icon from './Icon.js';
-import { Info, X } from 'lucide-react';
+import { Info } from 'lucide-react';
+import PopupClose from './PopupClose.js';
 
 interface Props {
   label?: string;
@@ -48,9 +49,10 @@ export default function InfoTip({ label = '안내', children }: Props) {
       {open && (
         <div className="infotip-pop" role="dialog" aria-label={label}>
           {/* ★ R041 (건우) — ✕ 닫기 (모바일에서 가장자리를 아슬아슬하게 눌러야 닫혔다) */}
-          <button type="button" className="ghost tiny popup-close infotip-close" aria-label="닫기" onClick={() => setOpen(false)}>
-            <Icon icon={X} />
-          </button>
+          <div className="pop-head">
+            <p className="pop-title">{label}</p>
+            <PopupClose onClose={() => setOpen(false)} className="infotip-close" />
+          </div>
           {children}
         </div>
       )}

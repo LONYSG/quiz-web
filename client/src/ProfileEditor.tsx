@@ -7,6 +7,7 @@
 // =============================================================================
 
 import { useEffect, useRef, useState } from 'react';
+import BusyButton from './BusyButton.js';
 
 const STAGE = 260;
 const OUT = 256;
@@ -167,9 +168,10 @@ export default function ProfileEditor({ file, onCancel, onDone }: Props) {
           </>
         )}
         <div className="field-row" data-arrow-nav>
-          <button type="button" className="primary" disabled={!img || busy || Boolean(error)} onClick={() => void save()}>
-            {busy ? '올리는 중…' : '등록'}
-          </button>
+          {/* ★ R043 A-2 — 공통 로딩 버튼 */}
+          <BusyButton className="primary" disabled={!img || Boolean(error)} busy={busy} onClick={() => void save()}>
+            등록
+          </BusyButton>
           <button type="button" className="ghost" onClick={onCancel}>
             취소
           </button>

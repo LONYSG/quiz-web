@@ -64,6 +64,7 @@ function room(over: Partial<Room> = {}, q: CurrentQuestion | null = question()):
     id: 'r1',
     title: '테스트',
     hostAccountId: 'A',
+    code: '000000',
     createdBy: 'A',
     createdAt: NOW,
     state: 'QUESTION_ACTIVE',

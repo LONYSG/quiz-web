@@ -171,6 +171,8 @@ export interface RoomSnapshot {
   me: { accountId: string; nickname: string; colorIndex: number; isHost: boolean };
   room: {
     id: string;
+    /** ★ R043 — 6자리 방 코드 */
+    code: string;
     title: string;
     hostAccountId: string;
     state: string;

@@ -10,6 +10,7 @@
 
 import { useState } from 'react';
 import { errorMessage, login, signup, type Account } from './api.js';
+import BusyButton from './BusyButton.js';
 import { NICKNAME_LIMIT_HINT, nicknameFits, NICKNAME_TOO_LONG_MESSAGE, RULES } from '@quiz/shared';
 
 interface Props {
@@ -61,7 +62,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
       {/* ★ 이것은 에러가 아니라 안내다. 배너(.notice)와 다른 모양을 쓴다.
           같은 모양이면 사용자가 "무슨 문제가 생겼나" 로 읽는다. */}
       {pendingRoomId && (
-        <p className="info">로그인하면 초대받은 방으로 바로 들어갑니다.</p>
+        <p className="info center-info">로그인하면 초대받은 방으로 바로 들어갑니다.</p>
       )}
 
       <section className="card">
@@ -133,12 +134,12 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
 
           {error && <p className="form-error">{error}</p>}
 
-          <button type="submit" disabled={busy}>
-            {busy ? '처리 중…' : mode === 'login' ? '로그인' : '가입하고 시작'}
-          </button>
+          {/* ★ R043 A-2 — 공통 로딩 버튼 (잠기고 돌아가는 표시 · 폭 그대로) */}
+          <BusyButton type="submit" busy={busy}>
+            {mode === 'login' ? '로그인' : '가입하고 시작'}
+          </BusyButton>
         </form>
-
-        <p className="note dim">비밀번호를 잊으면 방장에게 재설정을 부탁하세요.</p>
+        {/* ★ R043 A-3 — "비밀번호를 잊으면 방장에게…" 삭제 (방장에게 그런 권한이 없다 — 건우) */}
       </section>
     </>
   );

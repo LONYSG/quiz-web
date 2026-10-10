@@ -49,6 +49,8 @@ export interface RoomSnapshot {
   };
   room: {
     id: string;
+    /** ★ R043 — 6자리 방 코드 */
+    code: string;
     title: string;
     hostAccountId: string;
     state: RoomState;
@@ -249,6 +251,7 @@ export function buildSnapshot(
     },
     room: {
       id: room.id,
+      code: room.code,
       title: room.title,
       hostAccountId: room.hostAccountId,
       state: room.state,

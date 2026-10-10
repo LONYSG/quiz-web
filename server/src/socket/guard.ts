@@ -28,6 +28,8 @@ export interface SocketSession {
   sessionId: string;
   /** ★ R039 — 프로필 사진 버전 */
   avatarV: number | null;
+  /** ★ R043 — 관리자가 초기화한 계정 */
+  mustChangePassword?: boolean;
 }
 
 /** socket.data 에 담기는 것 */
@@ -49,6 +51,7 @@ export type ErrorCode =
   | 'NOT_ENOUGH_QUESTIONS'
   | 'NICKNAME_CHANGE_REQUIRED'
   | 'BANNED'
+  | 'PASSWORD_CHANGE_REQUIRED'
   | 'INTERNAL';
 
 const ERROR_MESSAGES: Record<ErrorCode, string> = {
@@ -69,6 +72,8 @@ const ERROR_MESSAGES: Record<ErrorCode, string> = {
   NICKNAME_CHANGE_REQUIRED: '닉네임을 바꿔야 게임에 참여할 수 있습니다.',
   // ★ R041 — 이 방에서 차단된 계정
   BANNED: '이 방에서 차단되어 들어갈 수 없습니다.',
+  // ★ R043 — 관리자가 비밀번호를 초기화한 계정
+  PASSWORD_CHANGE_REQUIRED: '새 비밀번호를 먼저 정해 주세요.',
   INTERNAL: '서버에서 문제가 발생했습니다.',
 };
 
@@ -127,6 +132,11 @@ export function on<P = unknown>(
       sendError(socket, 'UNAUTHENTICATED');
       return;
     }
+    // ★★ R043 — 관리자가 초기화한 계정은 새 비밀번호를 정하기 전에는 아무것도 못 한다 (방 만들기 · 입장 · 친구 등)
+    if (session.mustChangePassword) {
+      sendError(socket, 'PASSWORD_CHANGE_REQUIRED');
+      return;
+    }
     const payload = parsePayload(socket, event, options, raw);
     if (payload === undefined) return;
 
@@ -153,6 +163,11 @@ export function onRoom<P = unknown>(
     const session = data.session;
     if (!session) {
       sendError(socket, 'UNAUTHENTICATED');
+      return;
+    }
+    // ★★ R043 — 관리자가 초기화한 계정은 새 비밀번호를 정하기 전에는 아무것도 못 한다 (방 만들기 · 입장 · 친구 등)
+    if (session.mustChangePassword) {
+      sendError(socket, 'PASSWORD_CHANGE_REQUIRED');
       return;
     }
 

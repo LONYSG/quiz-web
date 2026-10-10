@@ -620,7 +620,7 @@ async function measureOneScreen(page, label, { gate = true, shotName = null, siz
  *   채팅 · 떠 있는 창 안의 긴 글 · 글자 맞춤(FitText)은 뺀다.
  */
 const LABEL_WRAPS = `(() => {
-  const sel = 'button, .badge, .set-label, .hint-label, .state-pill, .preset, .chip, .pill, .seg-btn, .q-progress, .room-count, .skip-status, .winner-label, .late-label, .q-timer';
+  const sel = 'button, .badge, .set-label, .hint-label, .state-pill, .preset, .chip, .pill, .seg-btn, .q-progress, .room-count, .skip-status, .winner-label, .late-label, .q-timer, .seat-rate, .pop-title, .confirm-title, .invite-code, .people-score, .menu-item';
   const out = [];
   for (const el of document.querySelectorAll(sel)) {
     const r = el.getBoundingClientRect();
@@ -1334,6 +1334,27 @@ async function soundFlow(browser) {
   return { hostAudio, guestAudio, logs, table };
 }
 
+/** ★ R043 — 단축키(Alt+K·Q·R·A·L·X)를 껐다 → 검사·촬영도 화면의 버튼으로 같은 경로를 탄다 */
+async function openHostSkip(page) {
+  await page.evaluate("[...document.querySelectorAll('.host-tools button')].find(b => b.innerText.trim() === '방장')?.click()");
+  await sleep(250);
+}
+async function openHostEnd(page) {
+  const clicked = await page.evaluate("(() => { const b = [...document.querySelectorAll('.host-tools button, .paused-card button')].find(b => /종료/.test(b.innerText)); b?.click(); return Boolean(b); })()");
+  if (!clicked) console.log('  ★ 종료 버튼을 찾지 못했다');
+  await sleep(250);
+}
+/** 나가기 — 상단 버튼(또는 ☰) → 확인 팝업 "나가기" (R043: 로비에서도 확인) */
+async function leaveViaUi(page) {
+  await page.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
+  await page.waitFor("document.querySelector('.confirm-modal[data-kind=\"leave\"]') !== null", 3000);
+  await page.evaluate("document.querySelector('.confirm-modal[data-kind=\"leave\"] .confirm-actions button')?.click()");
+}
+/** 확인 팝업의 첫 버튼(확정) */
+async function confirmFirst(page) {
+  await page.evaluate("document.querySelector('.confirm-modal .confirm-actions button')?.click()");
+}
+
 async function shotsFlow(browser) {
   const host = await newPage(browser, 'host');
   await host.setViewport(1280, 720);
@@ -1417,6 +1438,23 @@ async function shotsFlow(browser) {
   await host.evaluate("document.querySelector('.infotip-btn')?.click()");
   await sleep(300);
   await snap(host, '07p-info-pc');
+  // ★ R043 — 초대 팝업 (PC — 설정처럼 버튼 아래 · 모바일 — ☰ → 초대, 화면 가운데)
+  await host.evaluate("document.querySelector('.infotip-close')?.click()");
+  await host.evaluate("document.querySelector('#invite-btn')?.click()");
+  await sleep(300);
+  await snap(host, '07r-invite-pc');
+  await host.evaluate("document.querySelector('.invite-pop .popup-close')?.click()");
+  await guest.evaluate("document.querySelector('#menu-btn')?.click()");
+  await sleep(250);
+  await guest.evaluate("[...document.querySelectorAll('.menu-item')].find(b => b.innerText.includes('초대'))?.click()");
+  await sleep(300);
+  await snap(guest, '07s-invite-m390');
+  await guest.evaluate("document.querySelector('.invite-pop .popup-close')?.click()");
+  // ★ R043 — 로비 나가기 확인 팝업
+  await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
+  await sleep(300);
+  await snap(host, '07t-leave-lobby-pc');
+  await host.click('취소');
   await host.evaluate("document.querySelector('.infotip-close')?.click()");
   await sleep(200);
   // ── 이모티콘 고르기 · 칸에 뜬 순간
@@ -1474,14 +1512,12 @@ async function shotsFlow(browser) {
   await sleep(300);
   await snap(host, '11-game-skipvote-pc');
   // 확인창 (방장, PC · 모바일)
-  await host.evaluate("document.querySelector('.chat-card input')?.focus()");
-  await host.key('k', { alt: true });
-  await sleep(300);
+  await openHostSkip(host);
   await snap(host, '12-confirm-pc');
   await host.click('취소');
   await sleep(200);
   // ★ R041 — 나가기 팝업 · 모바일 참여자 창(게임 중 — 점수·순위)
-  await host.key('x', { alt: true });
+  await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
   await sleep(300);
   await snap(host, '12b-leave-pc');
   await host.click('취소');
@@ -1490,8 +1526,7 @@ async function shotsFlow(browser) {
   await snap(guest, '12c-people-game-m390');
   await guest.evaluate("document.querySelector('.people-modal .popup-close')?.click()");
   await sleep(200);
-  await host.key('k', { alt: true });
-  await sleep(300);
+  await openHostSkip(host);
   await host.setViewport(390, 844);
   await sleep(400);
   await snap(host, '12-confirm-m390');
@@ -1550,7 +1585,7 @@ async function shotsFlow(browser) {
     await sleep(400);
     await snap(host, '13b-paused-m390');
     await host.setViewport(1280, 720);
-    await host.key('r', { alt: true });
+    await host.click('재개');
     await host.waitFor("document.querySelector('.q-timebar') !== null", 8000);
   }
 
@@ -1559,9 +1594,7 @@ async function shotsFlow(browser) {
     if (await host.evaluate("document.querySelector('.result-card') !== null")) break;
     await host.waitFor("document.querySelector('.result-card') !== null || (document.querySelector('.reveal') === null && document.querySelector('.q-timebar') !== null)", 15000);
     if (await host.evaluate("document.querySelector('.result-card') !== null")) break;
-    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
-    await host.key('k', { alt: true });
-    await sleep(200);
+    await openHostSkip(host);
     await host.key('Enter');
   }
   await host.waitFor("document.querySelector('.result-card') !== null", 20000);
@@ -1685,7 +1718,7 @@ try {
     const shrunk = await shrinkAvailable(`${ACCOUNT_PREFIX}%`, 3);
     console.log(`  ★ 경험 기록 ${shrunk}행으로 출제 가능 수를 2개로 줄였다`);
     // ★ 참가자 변동이 있어야 서버가 다시 계산한다. 방을 다시 만들어 그 이벤트를 만든다
-    await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
+    await leaveViaUi(host);
     await host.waitFor("document.querySelector('.stage') === null", 8000);
     const roomIdShrunk = await createRoom(host, 'UI 점검용 방 제목 스물여덟글자');
     record('출제 가능 수 축소 후 방 재생성', Boolean(roomIdShrunk));
@@ -1707,7 +1740,7 @@ try {
     console.log('\n[4-9] ★★ 난이도 선택 (R025)');
     const availText = () =>
       host.evaluate(
-        "[...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('출제할 수 있는 문제')) ?? ''",
+        "[...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('낼 수 있는 문제')) ?? ''",
       );
     const diffBtns = await host.evaluate(
       "[...document.querySelectorAll('.card button[data-tier]')].map(b => b.innerText.trim() + ':' + b.getAttribute('aria-pressed')).join(',')",
@@ -1718,7 +1751,7 @@ try {
     await sleep(300);
     await host.click('중');
     const changed = await host.waitFor(
-      `([...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('출제할 수 있는 문제')) ?? '') !== ${JSON.stringify(beforeAvail)}`,
+      `([...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('낼 수 있는 문제')) ?? '') !== ${JSON.stringify(beforeAvail)}`,
       6000,
     );
     record('★★ "상" 만 남기면 출제 가능 수 안내가 바뀐다', changed, `${beforeAvail} → ${await availText()}`);
@@ -1760,7 +1793,7 @@ try {
     const beforeTopic = await availText();
     await host.evaluate(`document.querySelector('.card button[data-topic="${firstTopic}"]')?.click()`);
     const topicChanged = await host.waitFor(
-      `([...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('출제할 수 있는 문제')) ?? '') !== ${JSON.stringify(beforeTopic)}`,
+      `([...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('낼 수 있는 문제')) ?? '') !== ${JSON.stringify(beforeTopic)}`,
       6000,
     );
     record(
@@ -1777,21 +1810,29 @@ try {
       ),
     );
     await host.waitFor(
-      `([...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('출제할 수 있는 문제')) ?? '') === ${JSON.stringify(beforeTopic)}`,
+      `([...document.querySelectorAll('.card p')].map(p => p.innerText).find(s => s.includes('낼 수 있는 문제')) ?? '') === ${JSON.stringify(beforeTopic)}`,
       6000,
     );
 
     // ── ★★ R034 단축키 Alt+T / Alt+M · 계정 저장
-    console.log('\n[4-9c] ★★ Alt+T 테마 · Alt+M 소리 · 설정 계정 저장 (R034)');
+    console.log('\n[4-9c] ★★ 테마 · 소리 · 설정 계정 저장 (R034) — ★ R043: Alt+T · Alt+M 단축키는 껐다');
     const themeBefore = await host.evaluate('document.documentElement.dataset.theme || "pastel"');
     await host.evaluate("document.querySelector('.chat-card input')?.focus()");
     await host.key('t', { alt: true });
+    record('★ R043 A-9 — Alt+T 는 더 이상 테마를 바꾸지 않는다 (비활성)', (await host.evaluate('document.documentElement.dataset.theme || "pastel"')) === themeBefore);
+    // ⚙ 설정 창에서 바꾼다
+    await host.evaluate("document.querySelector('.prefs-toggle')?.click()");
+    await sleep(250);
+    await host.evaluate("[...document.querySelectorAll('.prefs-pop .seg button')].find(b => !b.classList.contains('on') && b.getAttribute('aria-pressed') !== 'true')?.click()");
+    await sleep(200);
     const themeAfter = await host.evaluate('document.documentElement.dataset.theme || "pastel"');
-    record('★★ Alt+T 로 테마가 바뀐다', themeAfter !== themeBefore, `${themeBefore} → ${themeAfter}`);
-    await host.key('m', { alt: true });
+    record('★★ ⚙ 설정 창에서 테마가 바뀐다', themeAfter !== themeBefore, `${themeBefore} → ${themeAfter}`);
+    const bgmBox = "[...document.querySelectorAll('.prefs-pop input[type=checkbox]')][0]";
+    await host.evaluate(`${bgmBox}?.click()`);
     const muted = await host.evaluate("JSON.parse(localStorage.getItem('qw.sound.v1') || '{}')");
-    record('★★ Alt+M 으로 소리가 모두 꺼진다', muted.bgmOn === false && muted.sfxOn === false, JSON.stringify(muted));
-    await host.key('m', { alt: true });
+    record('★★ ⚙ 설정 창에서 배경음악을 끈다', muted.bgmOn === false, JSON.stringify(muted));
+    await host.evaluate(`${bgmBox}?.click()`);
+    await host.evaluate("document.querySelector('.prefs-pop .popup-close')?.click()");
     await sleep(1200); // ★ 계정 저장은 0.6초 모아서 한 번
     const savedPrefs = await host.evaluate("fetch('/api/auth/prefs').then(r => r.json())");
     record(
@@ -2190,21 +2231,14 @@ try {
       `표시="${timerText.trim()}"`,
     );
 
-    // ── Q-56 단축키 안내가 화면에 있다. ★ R034 — 넘기기 투표만 크게(버튼 위), 나머지는 접어 둔다
-    const keybar = await host.onScreen('.keybar-btn');
+    // ── ★★ R043 A-9 (건우) — 단축키는 넘기기(Alt+S · F2)와 이모티콘(Alt+1~0)만. 목록 창·여는 버튼·설명은 없앴다
+    record('★★ R043 — 단축키 목록 버튼이 없다', await host.evaluate("document.querySelector('.keybar-btn') === null && document.querySelector('.keylist') === null"));
     record(
-      '★★ Q-56 — 단축키 버튼이 화면에 보인다 (접혀 있다)',
-      keybar.exists && keybar.fullyVisible &&
-        (await host.evaluate("document.querySelector('.keylist') === null")),
-      JSON.stringify(keybar.rect ?? keybar),
-    );
-    record(
-      '★★ R039 — 버튼에 단축키 표기가 없다 (단축키 목록 창에만)',
+      '★★ R039 — 버튼에 단축키 표기가 없다',
       (await host.evaluate("document.querySelectorAll('.room button kbd').length")) === 0,
     );
 
     // ── ★★★ 단독 문자키는 단축키로 먹지 않는다 (채팅 입력을 방해하지 않는다)
-    //   ★ 이것이 Q-56 의 핵심 제약이다. 입력창은 항상 포커스다
     await host.evaluate("document.querySelector('.chat-card input')?.focus()");
     await host.key('g', { text: true });
     const typed = await host.evaluate(
@@ -2215,39 +2249,15 @@ try {
       typed === 'g',
       `입력창="${typed}"`,
     );
-    record(
-      '★★ 단독 키로는 단축키 목록이 열리지 않는다',
-      (await host.evaluate("document.querySelector('.keylist') === null")),
-    );
-
-    // ── ★ Alt 조합은 문자를 만들지 않고 단축키로 동작한다
+    // ★ 꺼진 단축키는 아무 일도 하지 않는다 (Alt+G 목록 · F9 · Alt+K 방장 넘기기 · Alt+Q 종료)
     await host.key('g', { alt: true });
-    const listOpen = await host.evaluate("document.querySelector('.keylist') !== null");
-    record('★★ Alt+G 로 단축키 전체 목록이 열린다', listOpen);
-    const stillTyped = await host.evaluate(
-      "document.querySelector('.chat-card input')?.value ?? ''",
-    );
-    record(
-      '★★★ Alt 조합은 입력창에 문자를 넣지 않는다',
-      stillTyped === 'g',
-      `입력창="${stillTyped}"`,
-    );
-    record(
-      '★ 펼친 목록에 F키 안내가 함께 있다 (Q-33)',
-      (await host.evaluate("document.querySelector('.keylist')?.innerText ?? ''")).includes('F'),
-    );
-    await host.key('g', { alt: true });
-    record(
-      '★ Alt+G 를 다시 누르면 접힌다',
-      await host.evaluate("document.querySelector('.keylist') === null"),
-    );
-    // ★ R034 — F9 도 같은 일을 한다 (단축키 동작 표)
     await host.key('F9');
-    const f9open = await host.evaluate("document.querySelector('.keylist') !== null");
-    await host.key('F9');
+    await host.key('k', { alt: true });
+    await host.key('q', { alt: true });
+    await sleep(200);
     record(
-      '★★ F9 로 단축키 목록이 열리고 다시 F9 로 접힌다',
-      f9open && (await host.evaluate("document.querySelector('.keylist') === null")),
+      '★★ R043 — 꺼진 단축키(Alt+G · F9 · Alt+K · Alt+Q)는 아무 창도 열지 않는다',
+      await host.evaluate("document.querySelector('.keylist') === null && document.querySelector('.confirm-modal') === null"),
     );
     // 입력창을 비워 둔다 (다음 검사에 영향을 주지 않게)
     await host.setInput('.chat-card input', '');
@@ -2262,20 +2272,10 @@ try {
       JSON.stringify(focusBack),
     );
 
-    // ── ★ R034 — F4 도 방장 넘기기 확인창을 연다 (단축키 동작 표). 아니오로 닫는다
-    await host.key('F4');
-    const f4open = await host.evaluate("document.querySelector('.confirm-modal') !== null");
-    await host.click('취소');
-    await sleep(200);
-    record(
-      '★★ F4 로 방장 넘기기 확인창이 열린다 (아니오로 닫힌다)',
-      f4open && (await host.evaluate("document.querySelector('.confirm-modal') === null")),
-    );
-
-    // ── ★★ 단축키가 버튼과 같은 확인창 경로를 탄다 + Enter 만으로 확정된다
-    await host.key('k', { alt: true });
+    // ── ★★ 방장 넘기기 버튼 → 확인 팝업 + Enter 만으로 확정된다 (R043: 단축키 Alt+K · F4 는 껐다)
+    await openHostSkip(host);
     const skipConfirm = await host.evaluate("document.querySelector('.confirm-modal') !== null");
-    record('★★ Alt+K 가 방장 넘기기 확인창을 띄운다 (버튼과 같은 경로)', skipConfirm);
+    record('★★ 방장 넘기기 버튼이 확인 팝업을 띄운다', skipConfirm);
     const confirmFocus = await host.activeEl();
     record(
       '★★ 확인창이 열리면 포커스가 확인창 안으로 이동한다',
@@ -2386,8 +2386,9 @@ try {
       qAfterSkip.exists ? `top=${qAfterSkip.rect?.top}` : 'DOM 에 없다',
     );
 
-    // ── ★★ Q-82 게임 중 나가기 확인창
-    await host.key('x', { alt: true });
+    // ── ★★ Q-82 게임 중 나가기 확인창 (R043: Alt+X 는 껐다 → 나가기 버튼)
+    await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
+    await sleep(250);
     const leaveConfirm = await host.evaluate(
       "document.querySelector('.confirm-modal') !== null",
     );
@@ -2475,8 +2476,8 @@ try {
         await host.evaluate("document.querySelector('.paused-card') !== null"),
       );
 
-      // ★ 단축키로 재개한다 (마우스 없이)
-      await host.key('r', { alt: true });
+      // ★ 재개 버튼 (R043: Alt+R 단축키는 껐다)
+      await host.click('재개');
       const resumed = await host.waitFor(
         "document.querySelector('.question-card') !== null && document.querySelector('.paused-card') === null",
         8000,
@@ -2507,12 +2508,10 @@ try {
     await sleep(250);
 
     console.log('\n[5-6] ★★ 강제 종료 → 결과 화면 → 로비 복귀 (Phase 3)');
-    // ★ R034 — 단축키 Alt+Q 로 연다 (단축키 동작 표)
-    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
-    await host.key('q', { alt: true });
-    await sleep(300);
+    // ★ 종료 버튼으로 연다 (R043: Alt+Q 는 껐다)
+    await openHostEnd(host);
     record(
-      '★ Alt+Q 로 강제 종료 확인창이 나타난다',
+      '★ 종료 버튼으로 강제 종료 확인 팝업이 나타난다',
       await host.evaluate("document.querySelector('.confirm-modal') !== null"),
     );
     // ★ R035 — 여러 해상도를 재는 동안 문제가 시간 종료됐을 수 있다. 그때는 이 알림이 없는 것이 맞다
@@ -2554,20 +2553,20 @@ try {
 
     const againBtn = await host.buttonState('다시 하기');
     record('★ 다시 하기 버튼이 있다', againBtn.exists && !againBtn.disabled, JSON.stringify(againBtn));
-    // ★ R034 — 단축키 Alt+L (단축키 동작 표)
-    await host.key('l', { alt: true });
+    // ★ 로비로 버튼 (R043: Alt+L 은 껐다)
+    await host.click('로비로');
     const backToLobby = await host.waitFor(
       "document.querySelector('.lobby-card') !== null",
       8000,
     );
-    record('★★ Alt+L 로 로비로 복귀한다 (초대 링크 카드가 다시 보인다)', backToLobby);
+    record('★★ 로비로 버튼으로 로비에 돌아온다', backToLobby);
     record(
       '★ 게임이 자동으로 시작되지 않는다 (guide 38절)',
       await host.evaluate("document.querySelector('.question-card') === null"),
     );
 
     // ── 방을 비우고 새로 만든다
-    await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
+    await leaveViaUi(host);
     await host.waitFor("document.querySelector('.stage') === null", 8000);
     const roomId2 = await createRoom(host, '내보내기 확인용 방');
     record('두 번째 방 생성', Boolean(roomId2));
@@ -2649,20 +2648,9 @@ try {
       await host.evaluate("document.querySelector('.infotip-close')?.click()");
       await sleep(200);
       record('★★ R041 D — ⓘ 는 짧게(8줄 이하) · ✕ 로 닫힌다', infoLines > 0 && infoLines <= 8 && (await host.evaluate("document.querySelector('.infotip-pop') === null")), `${infoLines}줄`);
-      // 단축키 목록 — "지금은 쓸 수 없음" 문구 없음
-      await host.evaluate("document.querySelector('.keybar-btn')?.click()");
-      await sleep(250);
-      const keyText = await host.evaluate("document.querySelector('.keylist')?.innerText ?? ''");
-      await host.evaluate("document.querySelector('.keybar-btn')?.click()");
-      record('★★ R041 E-3 — 단축키 목록에 "지금은 쓸 수 없음" 이 없다', keyText.length > 0 && !keyText.includes('쓸 수 없음'), keyText.slice(0, 60));
-      // 게스트(방장 아님) — 방장 전용 단축키는 목록에 없다
+      // ★ R043 A-9 — 단축키 목록 창 자체가 없다 (R041 E-3 검사는 대상이 사라졌다)
       await guest.setViewport(1280, 720);
       await sleep(300);
-      await guest.evaluate("document.querySelector('.keybar-btn')?.click()");
-      await sleep(250);
-      const gKeys = await guest.evaluate("document.querySelector('.keylist')?.innerText ?? ''");
-      await guest.evaluate("document.querySelector('.keybar-btn')?.click()");
-      record('★ R041 E-3 — 방장이 아니면 방장 전용 단축키가 목록에 없다', gKeys.length > 0 && !gKeys.includes('(방장)'), gKeys.slice(0, 60));
       record('★ R041 C — 방장이 아니면 참여자 칸을 누를 수 없다', await guest.evaluate("document.querySelector('.seat-card.pickable') === null"));
       await guest.setViewport(720, 900);
       await host.setViewport(prev[0], prev[1]);
@@ -2932,7 +2920,7 @@ try {
     );
 
     // ── ★★ R038 — 결과 화면 방향키: 버튼 사이를 오간다 (글자 사이로 캐럿이 가지 않는다)
-    await third.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
+    await leaveViaUi(third);
     await host.evaluate("[...document.querySelectorAll('.next-row button')][0]?.focus()");
     await host.key('ArrowRight');
     const afterRight = await host.evaluate("document.activeElement?.innerText.replace(/Alt\\+\\w/, '').trim() ?? ''");
@@ -2942,13 +2930,12 @@ try {
     await browser.send('Target.closeTarget', { targetId: third.targetId });
     third.close();
 
-    // ── ★★ 다시 하기 (Alt+A) — R035: 같은 설정으로 **5초 뒤 바로 시작**
-    await host.evaluate("document.querySelector('.chat-card input')?.focus()");
-    await host.key('a', { alt: true });
+    // ── ★★ 다시 하기 — R035: 같은 설정으로 **5초 뒤 바로 시작** (R043: Alt+A 는 껐다 → 버튼)
+    await host.click('다시 하기');
     const againCd =
       (await host.waitFor("document.querySelector('.countdown-box') !== null", 6000)) &&
       (await guest.waitFor("document.querySelector('.countdown-box') !== null", 4000));
-    record('★★★ R035 — Alt+A (다시 하기) 를 누르면 두 화면 모두 곧바로 5초 카운트다운', againCd);
+    record('★★★ R035 — 다시 하기를 누르면 두 화면 모두 곧바로 5초 카운트다운', againCd);
     record(
       '★ 같은 설정이다 (문제 수 2)',
       parseInt(await host.evaluate("document.querySelector('.count-input')?.value ?? document.querySelector('.set-value')?.innerText ?? ''"), 10) === 2,
@@ -3094,11 +3081,7 @@ try {
     const slots = await host.evaluate("fetch('/api/auth/prefs').then(r => r.json()).then(j => j.prefs?.emojiSlots ?? null)");
     record('★★ 10칸 바꾸기 → 첫 칸이 바뀌고 계정에 저장된다', Array.isArray(slots) && slots[0] === firstHeart, JSON.stringify(slots));
     await host.key('Escape');
-    await host.evaluate("document.querySelector('.keybar-btn')?.click()");
-    await sleep(250);
-    const keyText = await host.evaluate("document.querySelector('.keylist')?.innerText ?? ''");
-    await host.evaluate("document.querySelector('.keybar-btn')?.click()");
-    record('★ 단축키 목록 창에 Alt+1~0 이 한 줄로', keyText.includes('Alt+1~0') && !keyText.includes('이모티콘 5'), keyText.slice(-80));
+    // ★ R043 — 단축키 목록 창은 없앴다. Alt+1~0 은 ⓘ 안내(웹)에 적는다
     // 모바일(게스트 720) — 😊 → 칸을 누르면 바로 보내고, 보냈다는 표시
     await guest.evaluate("document.querySelector('.emoji-btn').click()");
     await guest.waitFor("document.querySelectorAll('.emoji-pop .emoji-slot').length === 10", 4000);
@@ -3178,7 +3161,7 @@ try {
     await host.setViewport(1280, 720);
     await sleep(300);
 
-    await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
+    await leaveViaUi(host);
     await host.waitFor("document.querySelector('.stage') === null", 8000);
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -3246,7 +3229,7 @@ try {
       await host.evaluate("document.querySelector('.toast-message')?.textContent ?? ''"),
     );
 
-    await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
+    await leaveViaUi(host);
     await host.waitFor("document.querySelector('.stage') === null", 8000);
 
     // ─────────────────────────────────────────────────────────────────────────

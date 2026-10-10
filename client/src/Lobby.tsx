@@ -23,6 +23,8 @@ import KickFlow, { type KickTarget } from './KickFlow.js';
 import PeoplePanel from './PeoplePanel.js';
 import { openPopup, usePopup, useCurrentPopup } from './popup.js';
 import MobileMenu from './MobileMenu.js';
+import InvitePopup from './InvitePopup.js';
+import PopupClose from './PopupClose.js';
 import Icon from './Icon.js';
 import { ArrowDown, Camera, Check, Keyboard, Link, LogOut, Menu, Pencil, Send, SkipForward, Smile, Users } from 'lucide-react';
 import ChatText from './ChatText.js';
@@ -37,12 +39,12 @@ import Seat from './Seat.js';
 import Emoji from './Emoji.js';
 import EmojiPicker from './EmojiPicker.js';
 import { useEmojiSlots } from './emojiCatalog.js';
-import ShortcutBar from './ShortcutBar.js';
 import { useFocusChatOnEscape, useShortcuts, type Shortcut } from './shortcuts.js';
 import { chatSound, toggleMuteAll } from './sound.js';
 import { cycleTheme } from './theme.js';
 import { useGameSounds } from './useGameSounds.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
+import BusyButton from './BusyButton.js';
 
 interface Props {
   socket: Socket;
@@ -79,11 +81,12 @@ export default function Lobby({
   onLogout,
 }: Props) {
   const [draft, setDraft] = useState('');
-  const [copied, setCopied] = useState(false);
+  // ★ R043 A-7 — 초대는 팝업 (방 코드 + 링크 복사)
+  const [inviteOpen, setInviteOpen] = usePopup('invite');
   const [throttled, setThrottled] = useState(false);
   /** ★ Q-56 — 단축키 전체 목록을 펼쳤는가 */
   // ★★ R041 — 떠 있는 창은 전부 popup.ts 한 저장소 (한 번에 하나)
-  const [showKeys, setShowKeys] = usePopup('keys');
+  // ★ R043 A-9 — 단축키 목록 창은 없앴다 (옛 'keys' 팝업)
   /** ★★ Q-82 — 게임 중 나가기 확인창 (마지막 활성자가 나가면 방이 즉시 사라진다) */
   const [confirmLeave, setConfirmLeave] = usePopup('leave');
   const [peopleOpen, setPeopleOpen] = usePopup('people');
@@ -91,6 +94,7 @@ export default function Lobby({
   const [kickOpen, setKickOpen] = usePopup('kick');
   const [kickTarget, setKickTarget] = useState<KickTarget | null>(null);
   const [photoOpen, setPhotoOpen] = usePopup('photo');
+  const [photoDelOpen, setPhotoDelOpen] = usePopup('photo-delete');
   const openPopupId = useCurrentPopup();
   /** ★ R034 — 닉네임 바꾸기 (R035 부터 상단 바 ✏ 의 작은 창) */
   const [renameOpen, setRenameOpen] = usePopup('profile');
@@ -219,23 +223,6 @@ export default function Lobby({
     inputRef.current?.focus();
   };
 
-  const copyInvite = async () => {
-    try {
-      await navigator.clipboard.writeText(inviteUrl);
-    } catch {
-      // ★ 클립보드 API 가 막힌 환경(비-https 등) — 숨은 입력칸으로 복사한다
-      const el = document.createElement('textarea');
-      el.value = inviteUrl;
-      el.style.position = 'fixed';
-      el.style.opacity = '0';
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      el.remove();
-    }
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1600);
-  };
 
   /** ★ R034 — 닉네임 바꾸기. 결과(성공·겹침·게임 중)를 창 안에 바로 보여 준다 */
   const doRename = async () => {
@@ -306,12 +293,10 @@ export default function Lobby({
    * ★★ Q-82 — 게임 중 나가기에만 확인창을 둔다. 로비·결과에는 잃을 것이 없다
    *   (확인창을 남발하면 진짜 위험한 순간의 확인창도 습관적으로 넘기게 된다).
    */
-  const needsLeaveConfirm =
+  // ★★ R043 A-6 (건우) — "돌이키기 힘든 결정은 반드시 확인 팝업". 로비·결과에서도 나가기는 확인한다 (옛 Q-82: 게임 중에만)
+  const inGameForLeave =
     state === 'COUNTDOWN' || state === 'QUESTION_ACTIVE' || state === 'QUESTION_RESOLVED' || isPaused;
-  const leaveWithConfirm = () => {
-    if (needsLeaveConfirm) setConfirmLeave(true);
-    else onLeave();
-  };
+  const leaveWithConfirm = () => setConfirmLeave(true);
 
   /** ★ 지금 답안이 판정되는 상태인가. 입력창 자리표시를 바꾼다 */
   const judging = isActive && !snapshot.question?.selfExperienced;
@@ -336,47 +321,51 @@ export default function Lobby({
       when: isActive && snapshot.skip?.threshold != null,
       run: () => socket.emit('skip.vote', { vote: !snapshot.skip?.selfVoted, epoch }),
     },
-    {
-      combo: 'Alt+K',
-      fkey: 'F4',
-      label: '이 문제 넘기기 (방장)', hostOnly: true,
-      when: isActive && snapshot.me.isHost,
-      // ★ 확인창을 거친다. 단축키로 문제를 즉시 넘기면 실수를 되돌릴 수 없다
-      run: () => window.dispatchEvent(new CustomEvent('qw:host-skip')),
-    },
-    {
-      combo: 'Alt+R',
-      fkey: 'F8',
-      label: '재개 (방장)', hostOnly: true,
-      when: isPaused && Boolean(snapshot.paused?.canResume),
-      run: () => socket.emit('game.resume', {}),
-    },
-    {
-      combo: 'Alt+Q',
-      fkey: null,
-      label: '게임 강제 종료 (방장)', hostOnly: true,
-      when: (isActive || state === 'QUESTION_RESOLVED' || isPaused) && snapshot.me.isHost,
-      run: () => window.dispatchEvent(new CustomEvent('qw:host-end')),
-    },
-    {
-      combo: 'Alt+A',
-      fkey: null,
-      label: '다시 하기 — 5초 뒤 바로 시작 (방장)', hostOnly: true,
-      when: isResult && snapshot.me.isHost,
-      run: () => socket.emit('game.again', {}),
-    },
-    {
-      combo: 'Alt+L',
-      fkey: null,
-      label: '로비로 (방장)', hostOnly: true,
-      when: isResult && snapshot.me.isHost,
-      run: () => socket.emit('game.toLobby', {}),
-    },
-    { combo: 'Alt+X', fkey: null, label: '방 나가기', when: true, run: leaveWithConfirm },
-    { combo: 'Alt+G', fkey: 'F9', label: '단축키 목록 열기/닫기', when: true, run: () => setShowKeys((v) => !v) },
-    // ★ R033 — 테마·소리. 방 안에서는 여기가 맡는다 (Prefs 의 전역 키는 쉰다)
-    { combo: 'Alt+T', fkey: null, label: '테마 바꾸기', when: true, run: () => void cycleTheme() },
-    { combo: 'Alt+M', fkey: null, label: '소리 켜기/끄기', when: true, run: () => void toggleMuteAll() },
+    /* ★★ R043 A-9 (건우) — "스킵 투표와 이모티콘 말고는 쓸 일이 없다" → 아래 단축키는 **비활성화**(지우지 않고 주석).
+       되돌리는 법: 이 주석을 풀면 그대로 다시 동작한다 (Question · Paused 의 qw:host-skip / qw:host-end 받는 쪽은 남아 있다).
+       단축키 목록 창(ShortcutBar)과 여는 버튼도 그렸던 자리에서 뺐다 — 07-DECISIONS D-206.
+        {
+          combo: 'Alt+K',
+          fkey: 'F4',
+          label: '이 문제 넘기기 (방장)', hostOnly: true,
+          when: isActive && snapshot.me.isHost,
+          // ★ 확인창을 거친다. 단축키로 문제를 즉시 넘기면 실수를 되돌릴 수 없다
+          run: () => window.dispatchEvent(new CustomEvent('qw:host-skip')),
+        },
+        {
+          combo: 'Alt+R',
+          fkey: 'F8',
+          label: '재개 (방장)', hostOnly: true,
+          when: isPaused && Boolean(snapshot.paused?.canResume),
+          run: () => socket.emit('game.resume', {}),
+        },
+        {
+          combo: 'Alt+Q',
+          fkey: null,
+          label: '게임 강제 종료 (방장)', hostOnly: true,
+          when: (isActive || state === 'QUESTION_RESOLVED' || isPaused) && snapshot.me.isHost,
+          run: () => window.dispatchEvent(new CustomEvent('qw:host-end')),
+        },
+        {
+          combo: 'Alt+A',
+          fkey: null,
+          label: '다시 하기 — 5초 뒤 바로 시작 (방장)', hostOnly: true,
+          when: isResult && snapshot.me.isHost,
+          run: () => socket.emit('game.again', {}),
+        },
+        {
+          combo: 'Alt+L',
+          fkey: null,
+          label: '로비로 (방장)', hostOnly: true,
+          when: isResult && snapshot.me.isHost,
+          run: () => socket.emit('game.toLobby', {}),
+        },
+        { combo: 'Alt+X', fkey: null, label: '방 나가기', when: true, run: leaveWithConfirm },
+        { combo: 'Alt+G', fkey: 'F9', label: '단축키 목록 열기/닫기', when: true, run: () => setShowKeys((v) => !v) },
+        // ★ R033 — 테마·소리. 방 안에서는 여기가 맡는다 (Prefs 의 전역 키는 쉰다)
+        { combo: 'Alt+T', fkey: null, label: '테마 바꾸기', when: true, run: () => void cycleTheme() },
+        { combo: 'Alt+M', fkey: null, label: '소리 켜기/끄기', when: true, run: () => void toggleMuteAll() },
+    */
     // ★ R039 — 이모티콘 10칸. 목록 창에는 한 줄로만 보인다
     { combo: 'Alt+1~0', fkey: null, label: '이모티콘 보내기 (내 10칸 — 😊 에서 바꿀 수 있다)', when: true, run: () => {}, displayOnly: true },
     ...['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((k, i) => ({
@@ -602,10 +591,13 @@ export default function Lobby({
           </span>
         </div>
         <div className="room-tools">
-          <button type="button" id="invite-btn" className="ghost tiny" onClick={() => void copyInvite()} title="초대 링크 복사">
-            <Icon icon={copied ? Check : Link} />
-            <span className="lbl">{copied ? '복사됨' : '초대'}</span>
-          </button>
+          <span className="invite">
+            <button type="button" id="invite-btn" className="ghost tiny" aria-expanded={inviteOpen} onClick={() => setInviteOpen((v) => !v)}>
+              <Icon icon={Link} />
+              <span className="lbl">초대</span>
+            </button>
+            {inviteOpen && <InvitePopup code={snapshot.room.code} url={inviteUrl} onClose={() => setInviteOpen(false)} />}
+          </span>
           {state === 'LOBBY' && me && (
             <span className="rename">
               <button
@@ -623,6 +615,10 @@ export default function Lobby({
               </button>
               {renameOpen && (
                 <div className="rename-pop" role="dialog" aria-label="내 프로필">
+                  <div className="pop-head">
+                    <p className="pop-title">프로필</p>
+                    {!mustRename && <PopupClose onClose={() => setRenameOpen(false)} />}
+                  </div>
                   {mustRename && (
                     <p className="rename-must">
                       <Icon icon={Pencil} /> 닉네임을 바꿔야 게임에 참여할 수 있어요
@@ -661,9 +657,7 @@ export default function Lobby({
                       <button
                         type="button"
                         className="ghost tiny"
-                        onClick={() => {
-                          void deleteAvatar().catch((err) => setRenameMsg({ ok: false, text: errorMessage(err) }));
-                        }}
+                        onClick={() => setPhotoDelOpen(true)}
                       >
                         사진 지우기
                       </button>
@@ -693,13 +687,13 @@ export default function Lobby({
                         if (e.key === 'Escape' && !mustRename) setRenameOpen(false);
                       }}
                     />
-                    <button
-                      type="button"
+                    <BusyButton
                       onClick={() => void doRename()}
-                      disabled={renameBusy || !renameFits || renameText.trim() === snapshot.me.nickname}
+                      busy={renameBusy}
+                      disabled={!renameFits || renameText.trim() === snapshot.me.nickname}
                     >
                       바꾸기
-                    </button>
+                    </BusyButton>
                   </div>
                   {/* ★ R041 — 칸 수 대신: 넘으면 빨갛게 + 떨림 + 안내 (건우: "1씩 · 0.8씩 오르는 표시가 이상하다") */}
                   {!renameFits && <p className="form-error rename-msg nick-over">{NICKNAME_TOO_LONG_MESSAGE}</p>}
@@ -772,9 +766,8 @@ export default function Lobby({
       {/* ★★ R042 B — 모바일 ☰ 메뉴 (팝업 — 한 번에 하나). 항목을 누르면 그 창이 이 자리를 넘겨받는다 */}
       {menuOpen && (
         <MobileMenu
-          copied={copied}
           canRename={state === 'LOBBY' && Boolean(me)}
-          onInvite={() => void copyInvite()}
+          onInvite={() => setInviteOpen(true)}
           onProfile={() => {
             setRenameMsg(null);
             setRenameOpen(true);
@@ -803,6 +796,25 @@ export default function Lobby({
             setRenameOpen(true);
             setRenameMsg({ ok: true, text: '프로필 사진을 바꿨습니다.' });
           }}
+        />
+      )}
+
+      {/* ★ R043 A-6 — 사진 지우기도 확인 */}
+      {photoDelOpen && (
+        <ConfirmModal
+          kind="photo-delete"
+          title="프로필 사진을 지울까요?"
+          actions={[
+            {
+              label: '지우기',
+              tone: 'warn',
+              onClick: () => {
+                setPhotoDelOpen(false);
+                void deleteAvatar().catch((err) => setRenameMsg({ ok: false, text: errorMessage(err) }));
+              },
+            },
+          ]}
+          onCancel={() => setPhotoDelOpen(false)}
         />
       )}
 
@@ -837,10 +849,11 @@ export default function Lobby({
         <ConfirmModal
           kind="leave"
           title="방을 나갈까요?"
-          note="마지막 접속자면 방이 바로 사라져요."
+          note={inGameForLeave ? '마지막 접속자면 방이 바로 사라져요.' : `방 코드 ${snapshot.room.code} 로 다시 들어올 수 있어요.`}
           actions={[
             {
               label: '나가기',
+              tone: 'warn',
               onClick: () => {
                 setConfirmLeave(false);
                 onLeave();
@@ -1002,7 +1015,7 @@ export default function Lobby({
               <button type="button" className="primary send-btn" onMouseDown={(e) => e.preventDefault()} onClick={send}>
                 <Icon icon={Send} /> 전송
               </button>
-              <ShortcutBar shortcuts={shortcuts} isHost={snapshot.me.isHost} expanded={showKeys} onToggle={() => setShowKeys((v) => !v)} />
+              {/* ★ R043 A-9 — 단축키 목록 버튼·창 삭제 (단축키는 넘기기 · 이모티콘만 — ⓘ 안내에 적었다) */}
             </div>
           </section>
         </div>

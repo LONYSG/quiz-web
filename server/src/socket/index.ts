@@ -52,6 +52,7 @@ import {
   addPlayer,
   createRoomObject,
   generateRoomId,
+  findRoomByCodeOrId,
   getRoom,
   getRoomOfAccount,
   markDisconnected,
@@ -62,6 +63,9 @@ import {
   unregisterRoom,
 } from '../rooms/registry.js';
 import { transferHost } from '../rooms/host.js';
+
+/** ★ R043 — 방을 만드는 중인 계정 (연타 무시) */
+const creatingRooms = new Set<string>();
 import { buildSnapshot, toPlayerView } from '../rooms/snapshot.js';
 import { isEmojiId } from '../http/emojiRoutes.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
@@ -121,6 +125,7 @@ export function registerSocketHandlers(io: Server): void {
           nickname: session.nickname,
           sessionId: session.sessionId,
           avatarV: session.avatarV,
+          mustChangePassword: session.mustChangePassword,
         };
       }
       next();
@@ -242,14 +247,22 @@ function registerRoomHandlers(socket: Socket): void {
       },
     },
     async ({ socket: s, session, payload }) => {
+      // ★★ R043 — 만들기 연타: 처리 중인 요청이 있으면 조용히 무시한다 (옛: 두 번째가 DB 제약에 걸려 "이미 만든 방" 오류가 떴다)
+      if (creatingRooms.has(session.accountId)) return;
       // 이미 어느 방에 있으면 거절한다. 한 사람이 두 방에 동시에 있을 수 없다.
       if (getRoomOfAccount(session.accountId)) {
         sendError(s, 'ALREADY_HAS_ROOM', '이미 방에 참가한 상태입니다.');
         return;
       }
 
+      creatingRooms.add(session.accountId);
       const roomId = generateRoomId();
-      const inserted = await insertRoom(roomId, payload.title, session.accountId);
+      let inserted: Awaited<ReturnType<typeof insertRoom>>;
+      try {
+        inserted = await insertRoom(roomId, payload.title, session.accountId);
+      } finally {
+        creatingRooms.delete(session.accountId);
+      }
       if (!inserted.ok) {
         // ★ 부팅 정리 절차가 없으면 여기서 영구히 막힌다.
         //   docs/02-ARCHITECTURE.md 2장 참조.
@@ -280,12 +293,13 @@ function registerRoomHandlers(socket: Socket): void {
     },
     async ({ socket: s, session, payload }) => {
       const already = getRoomOfAccount(session.accountId);
-      if (already && already.id !== payload.roomId) {
+      if (already && already.id !== payload.roomId && already.code !== payload.roomId) {
         sendError(s, 'ALREADY_HAS_ROOM', '다른 방에 참가한 상태입니다.');
         return;
       }
 
-      const room = getRoom(payload.roomId);
+      // ★★ R043 — 6자리 방 코드로도 들어온다 (긴 id · 초대 링크는 그대로)
+      const room = findRoomByCodeOrId(payload.roomId);
       // ★★ R041 — 차단된 계정은 이 방에 다시 들어올 수 없다 (방이 살아 있는 동안)
       if (room?.bannedAccountIds.has(session.accountId)) {
         sendError(s, 'BANNED', '이 방에서 차단되어 들어갈 수 없습니다.');

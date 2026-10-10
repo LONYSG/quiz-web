@@ -33,12 +33,12 @@ export default function KickFlow({ socket, target, onStep, onClose }: Props) {
         key="choose"
         kind="kick-choose"
         title={<>{name} 님을 어떻게 할까요?</>}
-        note="강퇴 — 다시 들어올 수 있어요 · 차단 — 이 방엔 다시 못 와요"
         actions={[
-          { label: '강퇴', danger: true, onClick: () => onStep('kick') },
-          { label: '차단', danger: true, onClick: () => onStep('ban') },
+          // ★ R043 A-10 (건우) — 설명 글 삭제 · 색을 다르게: 강퇴 주황 · 차단 빨강(가장 센 것) · 방장 넘기기 차분한 색
+          { label: '강퇴', tone: 'warn' as const, onClick: () => onStep('kick') },
+          { label: '차단', tone: 'danger' as const, onClick: () => onStep('ban') },
           // ★★ R042 (건우) — 방장 넘기기. 접속 중인 사람에게만
-          ...(target.connected ? [{ label: '방장 넘기기', onClick: () => onStep('host') }] : []),
+          ...(target.connected ? [{ label: '방장 넘기기', tone: 'calm' as const, onClick: () => onStep('host') }] : []),
         ]}
         onCancel={onClose}
       />
@@ -50,10 +50,10 @@ export default function KickFlow({ socket, target, onStep, onClose }: Props) {
         key="host"
         kind="kick-host"
         title={<>{name} 님에게 방장을 넘길까요?</>}
-        note="넘기면 되돌릴 수 없어요. 새 방장이 넘겨줘야 해요."
         actions={[
           {
             label: '넘기기',
+            tone: 'calm',
             onClick: () => {
               socket.emit('host.transfer', { accountId: target.accountId });
               onClose();
@@ -70,11 +70,10 @@ export default function KickFlow({ socket, target, onStep, onClose }: Props) {
       key={target.step}
       kind={ban ? 'kick-ban' : 'kick-kick'}
       title={<>{name} 님을 {ban ? '차단할까요?' : '내보낼까요?'}</>}
-      note={ban ? '이 방이 있는 동안 다시 들어올 수 없어요.' : '링크로 다시 들어올 수 있어요.'}
       actions={[
         {
           label: ban ? '차단하기' : '내보내기',
-          danger: true,
+          tone: ban ? 'danger' : 'warn',
           onClick: () => {
             socket.emit('host.kick', { accountId: target.accountId, ban });
             onClose();

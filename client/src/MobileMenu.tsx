@@ -9,11 +9,11 @@
 
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Check, Info, Link, LogOut, Pencil, Settings, X } from 'lucide-react';
+import { Info, Link, LogOut, Pencil, Settings } from 'lucide-react';
+import PopupClose from './PopupClose.js';
 import Icon from './Icon.js';
 
 interface Props {
-  copied: boolean;
   canRename: boolean;
   onInvite: () => void;
   onProfile: () => void;
@@ -23,7 +23,7 @@ interface Props {
   onClose: () => void;
 }
 
-export default function MobileMenu({ copied, canRename, onInvite, onProfile, onSettings, onInfo, onLeave, onClose }: Props) {
+export default function MobileMenu({ canRename, onInvite, onProfile, onSettings, onInfo, onLeave, onClose }: Props) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -43,15 +43,13 @@ export default function MobileMenu({ copied, canRename, onInvite, onProfile, onS
       }}
     >
       <div className="modal menu-modal" role="dialog" aria-label="메뉴">
-        <div className="people-head">
-          <p className="modal-title">메뉴</p>
-          <button type="button" className="ghost tiny popup-close" aria-label="닫기" onClick={onClose}>
-            <Icon icon={X} />
-          </button>
+        <div className="pop-head">
+          <p className="pop-title">메뉴</p>
+          <PopupClose onClose={onClose} />
         </div>
         <div className="menu-list" data-arrow-nav>
           <button type="button" className="menu-item" onClick={onInvite}>
-            <Icon icon={copied ? Check : Link} /> {copied ? '복사됨' : '초대 링크 복사'}
+            <Icon icon={Link} /> 초대
           </button>
           {canRename && (
             <button type="button" className="menu-item" onClick={onProfile}>

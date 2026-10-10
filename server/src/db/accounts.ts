@@ -16,6 +16,8 @@ export interface AccountRow {
   password_hash: string;
   nickname: string;
   created_at: Date;
+  /** ★ R043 — 관리자가 초기화했다 (로그인 뒤 새 비밀번호를 반드시 정해야 한다) */
+  must_change_password: boolean;
 }
 
 /** 아이디 정규화. 저장과 조회에 항상 같은 함수를 써야 한다. */
@@ -25,7 +27,7 @@ export function normalizeLoginId(loginId: string): string {
 
 export async function findAccountByLoginId(loginId: string): Promise<AccountRow | null> {
   const result = await query<AccountRow>(
-    `SELECT id, login_id, password_hash, nickname, created_at
+    `SELECT id, login_id, password_hash, nickname, created_at, must_change_password
        FROM accounts WHERE login_id = $1`,
     [normalizeLoginId(loginId)],
   );
@@ -34,7 +36,7 @@ export async function findAccountByLoginId(loginId: string): Promise<AccountRow 
 
 export async function findAccountById(id: string): Promise<AccountRow | null> {
   const result = await query<AccountRow>(
-    `SELECT id, login_id, password_hash, nickname, created_at
+    `SELECT id, login_id, password_hash, nickname, created_at, must_change_password
        FROM accounts WHERE id = $1`,
     [id],
   );
@@ -99,6 +101,14 @@ export async function updatePasswordHash(accountId: string, passwordHash: string
     accountId,
     passwordHash,
   ]);
+}
+
+/** ★ R043 — 초기화 뒤 새 비밀번호 저장: 비밀번호를 바꾸고 "바꿔야 함" 표시를 지운다 (한 문장) */
+export async function completePasswordChange(accountId: string, passwordHash: string): Promise<void> {
+  await query(
+    `UPDATE accounts SET password_hash = $2, must_change_password = false, updated_at = now() WHERE id = $1`,
+    [accountId, passwordHash],
+  );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

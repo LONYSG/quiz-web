@@ -9,6 +9,8 @@
 
 import { useEffect, useState } from 'react';
 import { usePopup } from './popup.js';
+import ConfirmModal from './ConfirmModal.js';
+import PopupClose from './PopupClose.js';
 import {
   BGMS,
   getSoundPrefs,
@@ -57,7 +59,9 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
   }, []);
 
   // ★ 방 밖(로그인·방 목록)에서도 단축키가 먹게 한다
+  // ★★ R043 A-9 — 테마(Alt+T)·소리(Alt+M) 단축키 비활성화 (주석 — 되돌릴 때 아래 return 줄을 지운다)
   useEffect(() => {
+    return undefined;
     const onKey = (e: KeyboardEvent) => {
       if (roomOwnsKeys || e.isComposing || !e.altKey || e.ctrlKey || e.metaKey) return;
       // ★ R034 — 자판 위치(e.code)로 본다 (shortcuts.ts codeOf 주석)
@@ -91,6 +95,8 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
   }, [open, setOpen]);
 
   const muted = !sound.bgmOn && !sound.sfxOn && !sound.chatOn;
+  // ★ R043 A-6 — 로그아웃도 확인 팝업
+  const [logoutOpen, setLogoutOpen] = usePopup('logout');
 
   // ★★ R035 — 창 안의 설명 문장을 지웠다 (건우: "설명은 숨겨라"). 소리 규칙 설명은 방 안 ⓘ 안내에 있다
   return (
@@ -118,6 +124,11 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
 
       {open && (
         <div className="prefs-pop" role="dialog" aria-label="테마와 소리">
+          {/* ★ R043 A-8 — 모든 팝업에 같은 ✕ */}
+          <div className="pop-head">
+            <p className="pop-title">설정</p>
+            <PopupClose onClose={() => setOpen(false)} />
+          </div>
           <p className="prefs-title">테마</p>
           <div className="seg">
             {THEMES.map((t) => (
@@ -203,11 +214,28 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
             />
           </label>
           {onLogout && (
-            <button type="button" className="ghost tiny prefs-logout" onClick={onLogout}>
+            <button type="button" className="ghost tiny prefs-logout" onClick={() => setLogoutOpen(true)}>
               로그아웃
             </button>
           )}
         </div>
+      )}
+      {logoutOpen && onLogout && (
+        <ConfirmModal
+          kind="logout"
+          title="로그아웃할까요?"
+          actions={[
+            {
+              label: '로그아웃',
+              tone: 'warn',
+              onClick: () => {
+                setLogoutOpen(false);
+                onLogout();
+              },
+            },
+          ]}
+          onCancel={() => setLogoutOpen(false)}
+        />
       )}
     </div>
   );

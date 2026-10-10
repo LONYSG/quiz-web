@@ -413,7 +413,7 @@ export default function Question({
           actions={[
             {
               label: confirming === 'skip' ? '넘기기' : '끝내기',
-              danger: confirming === 'end',
+              tone: confirming === 'end' ? 'danger' : 'calm',
               onClick: () => {
                 if (confirming === 'skip') {
                   socket.emit('host.forceSkip', { epoch: question.epoch });

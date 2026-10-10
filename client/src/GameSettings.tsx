@@ -143,7 +143,7 @@ export default function GameSettings({
           ? '출제 가능 문제 수를 확인하는 중입니다.'
           : shortage
             ? `★ 지금 출제할 수 있는 문제는 ${availableQuestionCount}개입니다. 이대로 시작할 수 없습니다.`
-            : `지금 출제할 수 있는 문제: ${availableQuestionCount}개`}
+            : `이번 설정으로 낼 수 있는 문제 ${availableQuestionCount.toLocaleString('ko-KR')}개`}
       </p>
 
       {/* ★★ 난이도 (R025) — 하=1~2 / 중=3 / 상=4~5 */}

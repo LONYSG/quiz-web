@@ -28,9 +28,16 @@
 // =============================================================================
 
 import { onSignedIn, onSignedOut } from './prefsSync.js';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { io, type Socket } from 'socket.io-client';
 import AuthScreen from './AuthScreen.js';
+import Avatar from './Avatar.js';
+import BusyButton from './BusyButton.js';
+import Icon from './Icon.js';
+import PasswordChange from './PasswordChange.js';
+import ConfirmModal from './ConfirmModal.js';
+import { usePopup } from './popup.js';
+import { LoaderCircle } from 'lucide-react';
 import Lobby from './Lobby.js';
 import Prefs from './Prefs.js';
 import Toast, { type ToastContent } from './Toast.js';
@@ -54,7 +61,18 @@ export default function App() {
   const [notice, setNotice] = useState<ToastContent | null>(null);
 
   const room = useRoom(socket);
+  const [logoutOpen, setLogoutOpen] = usePopup('logout');
   const clock = useServerClock(socket);
+  /** ★ R043 A-2 — 서버를 기다리는 동작 (방 만들기 · 입장). 응답(방 화면 · 오류)이 오면 풀린다 */
+  const [busy, setBusy] = useState<'create' | 'join' | null>(null);
+  useEffect(() => {
+    if (room.snapshot || room.error) setBusy(null);
+  }, [room.snapshot, room.error]);
+  /** ★ R043 A-6 — 방을 나오면 방 코드 칸에 그 방의 코드를 채워 둔다 (바로 다시 들어갈 수 있게) */
+  const lastRoomCode = useRef<string | null>(null);
+  useEffect(() => {
+    if (room.snapshot?.room.code) lastRoomCode.current = room.snapshot.room.code;
+  }, [room.snapshot?.room.code]);
 
   // ── 세션 확인
   useEffect(() => {
@@ -82,8 +100,10 @@ export default function App() {
   }, [accountId]);
 
   // ── 인증되면 소켓을 연다
+  const mustChange = Boolean(account?.mustChangePassword);
   useEffect(() => {
-    if (!account) {
+    // ★ R043 A-4 — 관리자가 초기화한 계정은 새 비밀번호를 정하기 전에는 소켓도 열지 않는다
+    if (!account || mustChange) {
       setSocket(null);
       return undefined;
     }
@@ -105,7 +125,7 @@ export default function App() {
       window.removeEventListener('pageshow', onShow);
       s.close();
     };
-  }, [account]);
+  }, [account?.accountId, mustChange]);
 
   // ── 소켓이 열리면 대기 중인 방으로 들어간다
   useEffect(() => {
@@ -181,6 +201,7 @@ export default function App() {
       setNotice({ message: '방 제목을 입력해 주세요.' });
       return;
     }
+    setBusy('create');
     socket.emit('room.create', { title: trimmed });
   }, [socket, title]);
 
@@ -190,15 +211,18 @@ export default function App() {
     // ★ 조용히 반환하지 않는다. 아무 반응이 없으면 사용자는 고장으로 받아들인다.
     //   이번 라운드 결함의 원인이 정확히 그것이었다.
     if (!trimmed) {
-      setNotice({ message: '방 ID를 입력해 주세요.' });
+      setNotice({ message: '방 코드 6자리를 입력해 주세요.' });
       return;
     }
+    setBusy('join');
     socket.emit('room.join', { roomId: trimmed });
   }, [socket, joinId]);
 
   const leaveRoom = useCallback(() => {
     socket?.emit('room.leave', {});
     window.history.replaceState(null, '', '/');
+    // ★ R043 A-6 — 나온 방의 코드를 입장 칸에 채워 둔다
+    if (lastRoomCode.current) setJoinId(lastRoomCode.current);
   }, [socket]);
 
   const doLogout = useCallback(async () => {
@@ -243,8 +267,46 @@ export default function App() {
     if (!account) {
       return {
         narrow: true,
-        body: <AuthScreen onAuthed={setAccount} pendingRoomId={pendingRoomId} />,
+        body: (
+          <AuthScreen
+            onAuthed={(a) => {
+              setAccount(a);
+              // ★ R043 A-1 — 로그인 응답에는 사진 버전이 없다 → 한 번 더 물어 내 사진을 채운다
+              void fetchMe().then((me) => me && setAccount((prev) => (prev ? { ...prev, ...me.account } : prev)));
+            }}
+            pendingRoomId={pendingRoomId}
+          />
+        ),
         foot: <Prefs />,
+      };
+    }
+
+    // ★★ R043 A-4 — 관리자가 초기화한 계정: 새 비밀번호 화면만 (다른 곳으로 못 간다)
+    if (account.mustChangePassword) {
+      return {
+        narrow: true,
+        body: (
+          <PasswordChange
+            nickname={account.nickname}
+            onDone={() => setAccount((prev) => (prev ? { ...prev, mustChangePassword: false } : prev))}
+            onLogout={() => void doLogout()}
+          />
+        ),
+        foot: null,
+      };
+    }
+
+    // ★ R043 A-2 — 방에 들어가는 중 (초대 링크·코드·친구로 들어갈 때 방 화면이 오기 전): 화면 가운데 로딩
+    if (pendingRoomId && !room.snapshot && socket) {
+      return {
+        narrow: true,
+        body: (
+          <div className="entering" role="status" aria-live="polite">
+            <Icon icon={LoaderCircle} className="spin" />
+            <p>방에 들어가는 중…</p>
+          </div>
+        ),
+        foot: null,
       };
     }
 
@@ -277,8 +339,12 @@ export default function App() {
           <div className="brand">
             <span className="brand-mark" aria-hidden="true">Q</span>
             <h1>상식 퀴즈</h1>
-            <p className="sub">
-              <span className="nick">{account.nickname}</span> 님, 어서 오세요!
+            {/* ★ R043 A-1 — 내 사진도 */}
+            <p className="sub home-me">
+              <Avatar nickname={account.nickname} colorIndex={0} accountId={account.accountId} avatarV={account.avatarV ?? null} />
+              <span>
+                <span className="nick">{account.nickname}</span> 님, 어서 오세요!
+              </span>
             </p>
           </div>
 
@@ -294,27 +360,41 @@ export default function App() {
                   if (e.key === 'Enter' && !e.nativeEvent.isComposing) createRoom();
                 }}
               />
-              <button type="button" className="primary" onClick={createRoom} disabled={!socket}>
+              <BusyButton className="primary" onClick={createRoom} disabled={!socket} busy={busy === 'create'}>
                 만들기
-              </button>
+              </BusyButton>
             </div>
           </section>
 
+          {/* ★★ R043 A-7 — 방 코드 6자리로 입장 (숫자 키패드 · 6자리를 다 치면 바로 들어간다 — 판단). 긴 링크도 그대로 받는다 */}
           <section className="card">
-            <h2>초대 링크로 입장</h2>
+            <h2>방 코드로 입장</h2>
             <div className="field-row">
               <input
+                id="join-code"
                 value={joinId}
-                placeholder="방 ID (보통은 링크를 열면 끝)"
-                className="mono"
-                onChange={(e) => setJoinId(e.target.value)}
+                placeholder="6자리 숫자"
+                className="mono code-input"
+                inputMode="numeric"
+                autoComplete="off"
+                onChange={(e) => {
+                  const v = e.target.value.trim();
+                  // 숫자만 치면 6자리까지 · 링크를 붙여 넣으면 방 id 만 뽑는다
+                  const fromLink = v.match(/\/r\/([A-Za-z0-9_-]+)/)?.[1];
+                  const next = fromLink ?? (/^\d*$/.test(v) ? v.slice(0, 6) : v);
+                  setJoinId(next);
+                  if (/^\d{6}$/.test(next) && socket && busy === null) {
+                    setBusy('join');
+                    socket.emit('room.join', { roomId: next });
+                  }
+                }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && !e.nativeEvent.isComposing) joinRoom();
                 }}
               />
-              <button type="button" onClick={joinRoom} disabled={!socket}>
+              <BusyButton onClick={joinRoom} disabled={!socket} busy={busy === 'join'}>
                 입장
-              </button>
+              </BusyButton>
             </div>
           </section>
         </>
@@ -323,9 +403,18 @@ export default function App() {
         <>
           {/* ★ R033 — 출처(OpenTDB) 문구를 뺐다. OpenTDB 문항은 전부 내렸다 (건우 방침 / 저장소 Private) */}
           <Prefs />
-          <button type="button" className="ghost tiny" onClick={doLogout}>
+          {/* ★ R043 A-6 — 로그아웃도 확인 팝업 (방 안 ⚙ 의 로그아웃과 같은 팝업) */}
+          <button type="button" className="ghost tiny" onClick={() => setLogoutOpen(true)}>
             로그아웃
           </button>
+          {logoutOpen && (
+            <ConfirmModal
+              kind="logout"
+              title="로그아웃할까요?"
+              actions={[{ label: '로그아웃', tone: 'warn', onClick: () => { setLogoutOpen(false); void doLogout(); } }]}
+              onCancel={() => setLogoutOpen(false)}
+            />
+          )}
         </>
       ),
     };

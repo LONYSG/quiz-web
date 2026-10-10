@@ -9,6 +9,10 @@
 export interface Account {
   accountId: string;
   nickname: string;
+  /** ★ R043 — 프로필 사진 버전 (방 목록 화면의 내 사진) */
+  avatarV?: number | null;
+  /** ★ R043 — 관리자가 초기화한 계정 (새 비밀번호 화면만) */
+  mustChangePassword?: boolean;
 }
 
 export interface ApiError {
@@ -46,6 +50,11 @@ export async function signup(
 export async function login(loginId: string, password: string): Promise<Account> {
   const r = await post<{ ok: true; account: Account }>('/api/auth/login', { loginId, password });
   return r.account;
+}
+
+/** ★ R043 — 관리자 초기화 뒤 새 비밀번호 */
+export async function setNewPassword(password: string): Promise<void> {
+  await post('/api/auth/password', { password });
 }
 
 export async function logout(): Promise<void> {

@@ -45,7 +45,13 @@ function flag(name) {
 }
 
 const LIST = args.includes('--list');
-const loginId = flag('--login-id');
+// ★★ R043 (건우 확정) — `npm run reset-password -- <아이디>` 만 쓰면: 비밀번호 0000 + "바꿔야 함" 표시.
+//   그 계정은 로그인 뒤 새 비밀번호 화면만 뜨고(0000 은 못 쓴다), 저장하면 표시가 지워진다.
+//   ★ 판단 기준은 비밀번호가 0000 인가가 아니라 **이 표시** — 스스로 0000 으로 정한 계정은 아무 일도 없다.
+const positional = args.find((a, i) => !a.startsWith('--') && !(i > 0 && args[i - 1].startsWith('--') && ['--login-id', '--password'].includes(args[i - 1])));
+const loginId = flag('--login-id') ?? positional ?? null;
+const ADMIN_RESET = !args.includes('--password') && !args.includes('--generate');
+const RESET_PASSWORD = '0000';
 const password = flag('--password');
 const generate = args.includes('--generate');
 
@@ -55,6 +61,7 @@ const MAX_BYTES = 72;
 function usage() {
   console.log(`
 사용법
+  npm run reset-password -- <아이디>          ★ 비밀번호 0000 + 로그인 뒤 새 비밀번호를 반드시 정하게 한다 (R043)
   node scripts/reset-password.mjs --list
   node scripts/reset-password.mjs --login-id <아이디> --password <새 비밀번호>
   node scripts/reset-password.mjs --login-id <아이디> --generate
@@ -91,7 +98,9 @@ try {
   }
 
   let newPassword;
-  if (generate) {
+  if (ADMIN_RESET) {
+    newPassword = RESET_PASSWORD;
+  } else if (generate) {
     // 읽어 주기 쉬운 형태. 8자 base64url 은 48비트로 이 용도에 충분하다.
     newPassword = randomBytes(6).toString('base64url');
   } else if (typeof password === 'string') {
@@ -102,7 +111,7 @@ try {
     process.exit(1);
   }
 
-  if (newPassword.length < MIN_LENGTH) {
+  if (!ADMIN_RESET && newPassword.length < MIN_LENGTH) {
     console.error(`비밀번호는 ${MIN_LENGTH}자 이상이어야 합니다.`);
     process.exit(1);
   }
@@ -126,16 +135,21 @@ try {
   const passwordHash = await hash(newPassword, { algorithm: Algorithm.Argon2id });
 
   await client.query('BEGIN');
-  await client.query(`UPDATE accounts SET password_hash = $2, updated_at = now() WHERE id = $1`, [
-    accountId,
-    passwordHash,
-  ]);
+  // ★ R043 — 관리자 초기화(0000)면 "바꿔야 함" 표시를 붙이고, 비밀번호를 직접 정해 준 경우(--password · --generate)는 붙이지 않는다
+  await client.query(
+    `UPDATE accounts SET password_hash = $2, must_change_password = $3, updated_at = now() WHERE id = $1`,
+    [accountId, passwordHash, ADMIN_RESET],
+  );
   // ★ 기존 세션을 전부 무효화한다. 재설정의 목적상 남겨 둘 이유가 없다.
   const sessions = await client.query(`DELETE FROM sessions WHERE account_id = $1`, [accountId]);
   await client.query('COMMIT');
 
   console.log(`\n계정 ${normalized} (${nickname}) 의 비밀번호를 재설정했습니다.`);
   console.log(`기존 세션 ${sessions.rowCount}개를 무효화했습니다.`);
+  if (ADMIN_RESET) {
+    console.log('\n  임시 비밀번호:  0000');
+    console.log('★ 친구에게 "0000 으로 로그인한 뒤 새 비밀번호를 정하라" 고 알려 주세요. 로그인하면 새 비밀번호 화면만 뜹니다.');
+  }
   if (generate) {
     console.log('\n  새 비밀번호:  ' + newPassword);
     console.log('\n★ 이 값은 다시 볼 수 없습니다. 전달한 뒤 본인이 바꾸도록 안내하세요.');

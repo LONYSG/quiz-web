@@ -3542,6 +3542,7 @@ button.people-row.pickable:focus-visible {
 }
 /* ★ 상단 바 버튼 — 전부 같은 높이 · 같은 안쪽 여백 · 같은 글자 크기 (옛 ⚙ 는 아이콘 버튼 규칙 때문에 혼자 달랐다) */
 .room-tools > button,
+.room-tools > .invite > button,
 .room-tools > .rename > button,
 .room-tools > .prefs > .prefs-toggle,
 .room-tools > .infotip > .infotip-btn {
@@ -3608,7 +3609,7 @@ button.people-row.pickable:focus-visible {
 
 /* ★★★ R042 B — 모바일 상단 = [방 제목] [👥 인원] [☰] (건우 확정) */
 @media (max-width: 999px) {
-  .room-tools > #invite-btn,
+  .room-tools > .invite > #invite-btn,
   .room-tools > .rename > #rename-btn,
   .room-tools > .prefs > .prefs-toggle,
   .room-tools > .infotip > .infotip-btn,
@@ -3740,4 +3741,199 @@ button.people-row.pickable:focus-visible {
     font-size: calc(1.05rem * var(--qs, 1) * var(--ex, 1));
     max-height: calc(1.05rem * var(--qs, 1) * 1.55 * var(--explain-lines));
   }
+}
+
+/* =============================================================================
+   ★★★ R043 — 공통 부품 (재사용: 팝업 머리 줄 · ✕ · 로딩 버튼 · 확인 버튼 색)
+   ============================================================================= */
+/* ★ 팝업 머리 줄 — 설정 · 안내 · 프로필 · 초대 · 참여자 · 메뉴 · 친구 · 알림 모두 같은 틀 */
+.pop-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: -2px 0 8px;
+  min-height: 28px;
+}
+.pop-title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+/* ★ A-8 — ✕ 는 모두 같은 크기·같은 자리 (옛 32px → 28px · 아이콘 0.9rem) */
+button.popup-close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+.infotip-close {
+  position: static;
+}
+.infotip-pop .info-list {
+  padding-right: 0;
+}
+
+/* ★ A-2 — 로딩 버튼: 잠기고 돌아가는 표시 · 폭 그대로 */
+.busy-btn {
+  position: relative;
+}
+.busy-btn.is-busy .busy-label {
+  visibility: hidden;
+}
+.busy-spin {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* 방에 들어가는 중 — 화면 가운데 */
+.entering {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 40vh;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+.entering .ico {
+  font-size: 2rem;
+  color: var(--accent);
+}
+.entering p {
+  margin: 0;
+}
+
+/* ★ A-10 — 확인 팝업 버튼 색 규칙: 빨강(가장 셈) · 주황(경고) · 보라(차분) · 취소는 기본 */
+button.primary.tone-danger {
+  background: var(--bad);
+  border-color: var(--bad);
+  color: #fff;
+}
+button.primary.tone-warn {
+  background: var(--warn);
+  border-color: var(--warn);
+  color: #fff;
+}
+
+/* ★ A-1 — 방 목록 화면의 내 사진 */
+.home-me {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+/* ★ A-3 — 로그인 안내 가운데 */
+.center-info {
+  text-align: center;
+}
+/* ★ A-7 — 방 코드 입력 · 초대 팝업 */
+.code-input {
+  letter-spacing: 0.18em;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.invite {
+  position: relative;
+  display: inline-block;
+}
+.invite-pop {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 60;
+  width: 280px;
+  box-sizing: border-box;
+  padding: 12px 14px 14px;
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-pop);
+  font-size: 0.85rem;
+  animation: pop-in 140ms var(--ease-pop);
+  text-align: center;
+}
+.invite-label {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-dim);
+}
+.invite-code {
+  margin: 2px 0 12px;
+  font-size: 2.1rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  color: var(--accent);
+}
+.invite-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.invite-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+@media (max-width: 999px) {
+  .invite-pop {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(320px, calc(100vw - 32px));
+    height: fit-content;
+    z-index: 80;
+  }
+}
+/* 새 비밀번호 화면 */
+.password-change form {
+  display: grid;
+  gap: 10px;
+}
+/* ★ R043 — 일시정지: 재개 · 종료 한 줄 (세로 가운데) */
+.paused-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.paused-actions button {
+  margin: 0;
+}
+/* ★ R043 검수 — 방 코드 칸: 자리표시 글자는 글자 간격을 벌리지 않는다 */
+.code-input::placeholder {
+  letter-spacing: normal;
+  font-weight: 500;
+}
+/* ★ R043 검수 — 참여자 칸 경험률이 두 줄로 꺾였다 → 줄이지 않고 한 줄 (문구도 줄였다) */
+.seat-rate {
+  white-space: nowrap;
+  overflow: hidden;
 }

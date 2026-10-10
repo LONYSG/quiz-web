@@ -85,15 +85,15 @@ describe('validateRoomSettings — 형식 방어', () => {
 
 describe('formatExperienceRate (guide 6절 표기 규칙)', () => {
   it('백분율과 절대 개수를 함께 보여준다', () => {
-    expect(formatExperienceRate(153, 1234)).toBe('1,234문제 중 153문제 (12.4%)');
+    expect(formatExperienceRate(153, 1234)).toBe('전체 1,234 중 153 풀어봄 (12.4%)');
   });
 
   it('경험 기록이 없으면 0.0%', () => {
-    expect(formatExperienceRate(0, 53)).toBe('53문제 중 0문제 (0.0%)');
+    expect(formatExperienceRate(0, 53)).toBe('전체 53 중 0 풀어봄 (0.0%)');
   });
 
   it('전부 경험했으면 100.0%', () => {
-    expect(formatExperienceRate(53, 53)).toBe('53문제 중 53문제 (100.0%)');
+    expect(formatExperienceRate(53, 53)).toBe('전체 53 중 53 풀어봄 (100.0%)');
   });
 
   it('★ 분모가 0이면 0으로 나누지 않는다', () => {

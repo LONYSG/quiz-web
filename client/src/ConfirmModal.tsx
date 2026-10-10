@@ -11,9 +11,19 @@
 import { useEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
+/**
+ * ★★ R043 A-10 — 버튼 색 규칙 (모든 확인 팝업 같은 규칙)
+ *   danger = 빨강 · 가장 센 것 (차단 · 게임 강제 종료)
+ *   warn   = 주황 · 되돌리기 어렵지만 덜 센 것 (강퇴 · 나가기 · 로그아웃 · 사진 지우기 · 친구 삭제)
+ *   calm   = 보라(기본 강조) · 차분한 것 (방장 넘기기 · 문제 넘기기)
+ *   취소   = 기본 버튼
+ */
+export type ConfirmTone = 'danger' | 'warn' | 'calm';
+
 export interface ConfirmAction {
   label: string;
-  /** 위험한 동작(강퇴·차단·종료) — 붉은 버튼 */
+  tone?: ConfirmTone;
+  /** 옛 이름 — tone 'danger' 와 같다 */
   danger?: boolean;
   onClick: () => void;
 }
@@ -54,7 +64,7 @@ export default function ConfirmModal({ title, note, actions, cancelLabel = '취�
         {note && <p className="confirm-note">{note}</p>}
         <div className="confirm-actions" data-arrow-nav>
           {actions.map((a, i) => (
-            <button key={a.label} type="button" className={a.danger ? 'primary danger' : 'primary'} autoFocus={i === 0} onClick={a.onClick}>
+            <button key={a.label} type="button" className={`primary tone-${a.tone ?? (a.danger ? 'danger' : 'calm')}`} autoFocus={i === 0} onClick={a.onClick}>
               {a.label}
             </button>
           ))}

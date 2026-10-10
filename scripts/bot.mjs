@@ -4651,6 +4651,97 @@ async function scenarioHostMove() {
 }
 
 // -----------------------------------------------------------------------------
+// ★★ roomcode — R043 방 코드 6자리 · 긴 링크 그대로 · 만들기 연타
+// -----------------------------------------------------------------------------
+async function scenarioRoomCode() {
+  log('시나리오 roomcode — ★★ 방 코드 6자리 (R043)');
+  const [host, a, b] = await makeBots(3);
+  await host.connect();
+  let from = host.mark();
+  // ★ 만들기 연타 — 두 번 눌러도 방은 하나 · 오류 없음
+  host.createRoom('R043 코드');
+  host.createRoom('R043 코드');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  await sleep(600);
+  expect('★★ 만들기 연타 — room.created 는 한 번', host.since(from, 'room.created').length, 1);
+  expect('★★ 만들기 연타 — 오류가 뜨지 않는다', host.since(from, 'error').length, 0);
+  const code = host.snapshot.room.code;
+  expectTrue('★★ 방 코드는 6자리 숫자', /^\d{6}$/.test(code), code);
+  await a.connect();
+  a.join(code);
+  await a.waitFor(() => a.snapshot !== null, 6000, '코드로 입장');
+  expect('★★★ 6자리 코드로 들어간다', a.snapshot.room.id, host.snapshot.room.id);
+  await b.connect();
+  b.join(host.snapshot.room.id);
+  await b.waitFor(() => b.snapshot !== null, 6000, '긴 id 로 입장');
+  expect('★★ 긴 id(초대 링크)도 그대로 된다', b.snapshot.room.code, code);
+  const c = new Bot('rc');
+  await c.auth();
+  await c.connect();
+  from = c.mark();
+  c.join(code === '000000' ? '000001' : String((Number(code) + 1) % 1_000_000).padStart(6, '0'));
+  await c.waitFor(() => c.since(from, 'error').length > 0 || c.snapshot !== null, 4000, '없는 코드');
+  expectTrue('★ 없는 코드는 막고 안내', c.since(from, 'error')[0]?.code === 'ROOM_NOT_FOUND' || c.snapshot?.room.id === host.snapshot.room.id, c.since(from, 'error')[0]?.code);
+  for (const x of [host, a, b]) x.leave();
+  await sleep(400);
+  for (const x of [host, a, b, c]) x.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
+// ★★★ pwreset — R043 관리자 비밀번호 초기화 (건우 확정)
+//   초기화한 계정만 새 비밀번호를 강제 · ★ 스스로 0000 으로 정한 계정은 그대로
+// -----------------------------------------------------------------------------
+async function scenarioPwReset() {
+  log('시나리오 pwreset — ★★★ 관리자 비밀번호 초기화 (R043)');
+  const stamp = Date.now().toString(36).slice(-4);
+  const post = async (pathname, body, cookie = null) => {
+    const res = await fetch(`${BASE}${pathname}`, { method: 'POST', headers: { 'content-type': 'application/json', ...(cookie ? { cookie } : {}) }, body: JSON.stringify(body) });
+    const set = (res.headers.getSetCookie?.() ?? []).map((x) => x.split(';')[0]).find((x) => x.startsWith('qw_session='));
+    return { status: res.status, json: await res.json().catch(() => ({})), cookie: set ?? cookie };
+  };
+  const self = `${PREFIX}_pw0${stamp}`.toLowerCase();
+  const target = `${PREFIX}_pw1${stamp}`.toLowerCase();
+
+  log('\n[1] ★★ 스스로 0000 으로 가입한 계정 — 아무 일도 없다');
+  expect('★ 0000 으로 가입', (await post('/api/auth/signup', { loginId: self, password: '0000', nickname: `P0${stamp}` })).status, 200);
+  const l0 = await post('/api/auth/login', { loginId: self, password: '0000' });
+  expect('★★★ 스스로 0000 — 재설정 표시가 없다', l0.json.account?.mustChangePassword, false);
+
+  log('\n[2] ★★ 관리자 초기화 → 0000 + 바꿔야 함');
+  expect('★ 대상 계정 가입', (await post('/api/auth/signup', { loginId: target, password: 'origpw1', nickname: `P1${stamp}` })).status, 200);
+  const { execFileSync } = await import('node:child_process');
+  execFileSync(process.execPath, ['scripts/reset-password.mjs', target], { cwd: ROOT, stdio: 'ignore' });
+  const l1 = await post('/api/auth/login', { loginId: target, password: '0000' });
+  expect('★★ 초기화 뒤 0000 으로 로그인된다', l1.status, 200);
+  expect('★★★ 초기화한 계정 — 재설정 표시가 있다', l1.json.account?.mustChangePassword, true);
+  const bot = new Bot('pw1');
+  bot.cookie = l1.cookie;
+  await bot.connect();
+  let from = bot.mark();
+  bot.createRoom('막혀야 한다');
+  await sleep(500);
+  expect('★★★ 서버도 막는다 — 방 만들기 PASSWORD_CHANGE_REQUIRED', bot.since(from, 'error')[0]?.code, 'PASSWORD_CHANGE_REQUIRED');
+  bot.disconnect();
+  expect('★★ 새 비밀번호로 0000 은 안 된다', (await post('/api/auth/password', { password: '0000' }, l1.cookie)).status, 400);
+  expect('★ 새 비밀번호 저장', (await post('/api/auth/password', { password: 'newpw77' }, l1.cookie)).status, 200);
+  const l2 = await post('/api/auth/login', { loginId: target, password: 'newpw77' });
+  expect('★★ 저장하면 표시가 지워진다', l2.json.account?.mustChangePassword, false);
+  expect('★ 표시 없는 계정은 이 API 를 쓸 수 없다 (409)', (await post('/api/auth/password', { password: 'abcd1' }, l0.cookie)).status, 409);
+  const bot2 = new Bot('pw2');
+  bot2.cookie = l2.cookie;
+  await bot2.connect();
+  bot2.createRoom('이제 된다');
+  await bot2.waitFor(() => bot2.snapshot !== null, 6000, '방 생성');
+  expectTrue('★★ 바꾼 뒤에는 방을 만든다', Boolean(bot2.snapshot.room.code));
+  bot2.leave();
+  await sleep(300);
+  bot2.disconnect();
+  // ★ 계정은 남긴다 (다른 봇 계정처럼 — 만든 방 기록이 계정을 가리킨다)
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
 // ★★ nickname — R040 닉네임 폭 한도 (한글 1 · 영어·숫자 0.8 · 8칸 — 건우 확정) · 긴 옛 닉네임은 시작에 참여할 수 없다
 // -----------------------------------------------------------------------------
 async function postJson(pathname, body, cookie = null, method = 'POST') {
@@ -4839,6 +4930,9 @@ const SCENARIOS = {
   kick: scenarioKick,
   // ★★ R042
   hostmove: scenarioHostMove,
+  // ★★ R043
+  roomcode: scenarioRoomCode,
+  pwreset: scenarioPwReset,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

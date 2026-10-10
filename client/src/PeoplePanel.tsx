@@ -17,7 +17,8 @@ import Avatar from './Avatar.js';
 import FitText from './FitText.js';
 import type { PlayerView } from './useRoom.js';
 import Icon from './Icon.js';
-import { Crown, X } from 'lucide-react';
+import { Crown } from 'lucide-react';
+import PopupClose from './PopupClose.js';
 
 interface Props {
   players: PlayerView[];
@@ -53,11 +54,9 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
       }}
     >
       <div className="modal people-modal" role="dialog" aria-label="참여자">
-        <div className="people-head">
-          <p className="modal-title">참여자 {players.length}명</p>
-          <button type="button" className="ghost tiny popup-close" aria-label="닫기" onClick={onClose}>
-            <Icon icon={X} />
-          </button>
+        <div className="pop-head">
+          <p className="pop-title">참여자 {players.length}명</p>
+          <PopupClose onClose={onClose} />
         </div>
         <ul className="people-list">
           {list.map((p) => {

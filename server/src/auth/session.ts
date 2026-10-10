@@ -41,6 +41,8 @@ export interface SessionInfo {
   nickname: string;
   /** ★ R039 — 프로필 사진 버전(올린 시각 ms). 없으면 null */
   avatarV: number | null;
+  /** ★ R043 — 관리자가 초기화한 계정 (새 비밀번호를 정하기 전에는 방에 들어갈 수 없다) */
+  mustChangePassword: boolean;
 }
 
 interface SessionRow {
@@ -49,6 +51,7 @@ interface SessionRow {
   expires_at: Date;
   nickname: string;
   avatar_v: string | null;
+  must_change_password: boolean;
 }
 
 /** 새 세션을 만들고 쿠키를 굽는다. */
@@ -132,7 +135,7 @@ export async function resolveSession(token: string | null): Promise<SessionInfo 
   if (!token) return null;
 
   const result = await query<SessionRow>(
-    `SELECT s.id, s.account_id, s.expires_at, a.nickname,
+    `SELECT s.id, s.account_id, s.expires_at, a.nickname, a.must_change_password,
             (extract(epoch from av.updated_at) * 1000)::bigint::text AS avatar_v
        FROM sessions s
        JOIN accounts a ON a.id = s.account_id
@@ -157,6 +160,7 @@ export async function resolveSession(token: string | null): Promise<SessionInfo 
     accountId: row.account_id,
     nickname: row.nickname,
     avatarV: row.avatar_v === null ? null : Number(row.avatar_v),
+    mustChangePassword: row.must_change_password === true,
   };
 }
 

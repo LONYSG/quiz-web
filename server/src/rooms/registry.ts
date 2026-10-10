@@ -19,7 +19,7 @@
 //   ★ 이 분리를 유지하는 것이 (2)를 지키는 실질적 장치다.
 // =============================================================================
 
-import { randomBytes } from 'node:crypto';
+import { randomBytes, randomInt } from 'node:crypto';
 import { DEFAULT_DIFFICULTIES, DEFAULT_TOPICS, RULES } from '@quiz/shared';
 import type { ChatEntry, Player, Room, RoomSettings } from './types.js';
 
@@ -66,6 +66,27 @@ export function roomCount(): number {
 
 export function registerRoom(room: Room): void {
   rooms.set(room.id, room);
+  roomByCode.set(room.code, room.id);
+}
+
+/** ★ R043 — 방 코드 → 방 id (열린 방만) */
+const roomByCode = new Map<string, string>();
+
+/** ★ R043 — 열린 방과 겹치지 않는 6자리 숫자 코드. 0 으로 시작해도 된다 */
+export function generateRoomCode(): string {
+  for (;;) {
+    const code = String(randomInt(0, 1_000_000)).padStart(6, '0');
+    if (!roomByCode.has(code)) return code;
+  }
+}
+
+/** ★ R043 — 6자리 코드 또는 긴 id 로 방을 찾는다 */
+export function findRoomByCodeOrId(key: string): Room | undefined {
+  if (/^\d{6}$/.test(key)) {
+    const id = roomByCode.get(key);
+    return id ? rooms.get(id) : undefined;
+  }
+  return rooms.get(key);
 }
 
 export function unregisterRoom(roomId: string): void {
@@ -75,6 +96,7 @@ export function unregisterRoom(roomId: string): void {
     if (accountRoom.get(accountId) === roomId) accountRoom.delete(accountId);
   }
   rooms.delete(roomId);
+  if (roomByCode.get(room.code) === roomId) roomByCode.delete(room.code);
 }
 
 export function createRoomObject(
@@ -84,6 +106,7 @@ export function createRoomObject(
 ): Room {
   return {
     id,
+    code: generateRoomCode(),
     title,
     hostAccountId,
     createdBy: hostAccountId,
@@ -246,4 +269,5 @@ export function pushChat(room: Room, entry: ChatEntry): void {
 export function resetRegistryForTest(): void {
   rooms.clear();
   accountRoom.clear();
+  roomByCode.clear();
 }

@@ -282,6 +282,11 @@ export interface PausedState {
 
 export interface Room {
   id: string;
+  /**
+   * ★★ R043 (건우 확정) — 방 코드 6자리 숫자 (문자열 — 0 으로 시작해도 된다). 전화로 불러 줘도 쉽게.
+   *   지금 열려 있는 방끼리 겹치지 않는다. 메모리에만 있다(방이 메모리에만 살기 때문 — 판단). 긴 id(초대 링크)는 그대로 쓴다.
+   */
+  code: string;
   title: string;
   /** 현재 방장. 이전되면 바뀐다 (rooms.host_account_id 는 생성 당시 값으로 고정) */
   hostAccountId: string;

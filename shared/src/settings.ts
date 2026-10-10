@@ -245,5 +245,6 @@ export function formatExperienceRate(experienced: number, total: number): string
   const fmt = (n: number) => n.toLocaleString('ko-KR');
   if (total <= 0) return '출제 가능한 문제가 없습니다';
   const pct = (experienced / total) * 100;
-  return `${fmt(total)}문제 중 ${fmt(experienced)}문제 (${pct.toFixed(1)}%)`;
+  // ★ R043 (건우) — 출제 가능 수와 다른 것을 센다는 게 보이게: "전체 … 중 … 풀어봄" (경험률은 전체 활성 문제 기준 그대로 — 건우 확정)
+  return `전체 ${fmt(total)} 중 ${fmt(experienced)} 풀어봄 (${pct.toFixed(1)}%)`;
 }

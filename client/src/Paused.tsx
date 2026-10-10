@@ -14,6 +14,8 @@
 
 import ConfirmModal from './ConfirmModal.js';
 import { usePopup } from './popup.js';
+import Icon from './Icon.js';
+import { Square } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import type { PausedView } from './useRoom.js';
@@ -99,9 +101,15 @@ export default function Paused({ socket, paused, serverNow }: Props) {
 
       {paused.canResume ? (
         <>
-          <button type="button" className="primary" onClick={() => socket.emit('game.resume', {})}>
-            재개
-          </button>
+          <div className="paused-actions">
+            <button type="button" className="primary" onClick={() => socket.emit('game.resume', {})}>
+              재개
+            </button>
+            {/* ★★ R043 — 일시정지 중 강제 종료는 Alt+Q 로만 열 수 있었다 → 단축키를 끄면서 버튼으로 (문제 화면의 종료와 같은 모양) */}
+            <button type="button" className="ghost tiny" onClick={() => setConfirmEnd(true)}>
+              <Icon icon={Square} /> 종료
+            </button>
+          </div>
           {/* ★ R035 — 진행 알림만 남긴다. 왜 자동 재개가 없는지는 ⓘ 안내로 옮겼다 */}
           <p className="note dim">자동으로 재개되지 않습니다 — 모두 돌아오면 재개를 눌러 주세요.</p>
         </>
