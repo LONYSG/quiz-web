@@ -10,6 +10,7 @@
 
 import { useEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import PopupClose from './PopupClose.js';
 
 /**
  * ★★ R043 A-10 — 버튼 색 규칙 (모든 확인 팝업 같은 규칙)
@@ -33,13 +34,16 @@ interface Props {
   note?: ReactNode;
   /** 앞에서부터 — 첫 버튼에 포커스(Enter 로 확정) */
   actions: ConfirmAction[];
-  cancelLabel?: string;
   onCancel: () => void;
   /** 검사용 이름 */
   kind?: string;
 }
 
-export default function ConfirmModal({ title, note, actions, cancelLabel = '취소', onCancel, kind }: Props) {
+/**
+ * ★★ R044 B (건우) — "취소 버튼이 따로 있는 게 못생겼다" → [취소] 를 없애고 오른쪽 위 ✕ (모든 팝업 같은 PopupClose).
+ *   ✕ · 바깥 누르기 · Esc = 취소. 확인 팝업은 결정이라 뒤를 어둡게 한다 (정보 창은 어둡게 하지 않는다 — 설계 제안 · 건우 승인).
+ */
+export default function ConfirmModal({ title, note, actions, onCancel, kind }: Props) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape' || e.isComposing) return;
@@ -60,6 +64,9 @@ export default function ConfirmModal({ title, note, actions, cancelLabel = '취�
       }}
     >
       <div className="modal confirm-modal" role="alertdialog" aria-modal="true" data-kind={kind}>
+        <div className="pop-head confirm-head">
+          <PopupClose onClose={onCancel} />
+        </div>
         <p className="confirm-title">{title}</p>
         {note && <p className="confirm-note">{note}</p>}
         <div className="confirm-actions" data-arrow-nav>
@@ -68,9 +75,6 @@ export default function ConfirmModal({ title, note, actions, cancelLabel = '취�
               {a.label}
             </button>
           ))}
-          <button type="button" className="ghost" onClick={onCancel}>
-            {cancelLabel}
-          </button>
         </div>
       </div>
     </div>,

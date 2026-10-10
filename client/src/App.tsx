@@ -45,7 +45,8 @@ import { errorMessage, fetchMe, logout, type Account } from './api.js';
 import { useRoom } from './useRoom.js';
 import { useSocial } from './useSocial.js';
 import FriendList from './FriendList.js';
-import { BellButton } from './SocialPopups.js';
+// import { BellButton } from './SocialPopups.js'; // ★ R044 A-3 — 알림 끔 (D-214)
+import InviteToast from './InviteToast.js';
 import { useServerClock } from './useServerClock.js';
 
 /** 경로에서 초대받은 방 ID를 뽑는다. /r/<roomId> */
@@ -63,18 +64,32 @@ export default function App() {
   const [joinId, setJoinId] = useState('');
   const [notice, setNotice] = useState<ToastContent | null>(null);
 
+  // ★ R044 진단 — App 이 몇 번 그려졌나 (ui-check 가 읽는다 · 화면에는 안 보인다)
+  (window as unknown as { __qwAppRenders?: number }).__qwAppRenders = ((window as unknown as { __qwAppRenders?: number }).__qwAppRenders ?? 0) + 1;
   const room = useRoom(socket);
   const [logoutOpen, setLogoutOpen] = usePopup('logout');
   const clock = useServerClock(socket);
   // ★★ R043 C — 친구 · 알림. 새 알림은 🔔 숫자로. **게임 중이 아닐 때만** 짧은 알림 한 줄을 띄운다 (게임 중에는 숫자만)
   const inGameRef = useRef(false);
   inGameRef.current = Boolean(room.snapshot && !['LOBBY', 'GAME_RESULT'].includes(room.snapshot.room.state));
-  const onNewNotice = useCallback((n: { kind: string; fromNickname: string }) => {
+  // ★★ R044 A-4 (건우: "굳이 위에 알림 띄우지 말자. 어차피 메뉴 아이콘에 빨간 점이 들어온다") — 화면 위 알림 한 줄을 끈다.
+  //   친구 신청은 친구 버튼 숫자 · ☰ 점으로만, 초대는 아래 초대 토스트(InviteToast)로. 되살리려면 아래 주석을 푼다 (D-214)
+  const onNewNotice = useCallback((_n: { kind: string; fromNickname: string }) => {
+    /*
     if (inGameRef.current) return;
     const what = n.kind === 'friend_request' ? '친구 신청을 보냈어요' : n.kind === 'friend_accepted' ? '친구 신청을 수락했어요' : '방으로 초대했어요';
     setNotice({ message: `${n.fromNickname} 님이 ${what}.` });
+    */
   }, []);
   const social = useSocial(socket, onNewNotice);
+  // ★ R044 A-5 — 초대받은 방에 들어가면 그 방 초대는 지운다 (처리 끝)
+  const currentRoomId = room.snapshot?.room.id ?? null;
+  const staleInviteIds = social.invites.filter((n) => n.roomId === currentRoomId).map((n) => n.id).join(',');
+  const dismissNotice = social.dismiss;
+  useEffect(() => {
+    if (!staleInviteIds) return;
+    for (const id of staleInviteIds.split(',')) dismissNotice(id);
+  }, [staleInviteIds, dismissNotice]);
   /** ★ R043 C — 방 안에서 다른 방(친구 방 · 초대)으로 옮기기 전 확인 */
   const [switchTo, setSwitchTo] = useState<string | null>(null);
   const [switchOpen, setSwitchOpen] = usePopup('switch-room');
@@ -255,6 +270,11 @@ export default function App() {
     [socket, room.snapshot, setSwitchOpen],
   );
 
+  // ★ R044 — 토스트 닫기 함수는 고정한다. Toast 의 자동 만료 타이머(7초)는 onDismiss 가 바뀌면 처음부터 다시 센다 —
+  //   렌더마다 새 함수를 넘겼더니, 시계 맞추기(30초마다 몇 번 상태가 바뀐다 → App 이 다시 그려진다)가 알림이 떠 있는 동안 오면
+  //   알림이 12초 넘게 남았다 (R044 verify 첫 실행에서 ui-check [4-2] 가 잡았다 — 실행마다 결과가 달랐다. 옛 결함)
+  const dismissToast = useCallback(() => setNotice(null), []);
+
   const doLogout = useCallback(async () => {
     try {
       await logout();
@@ -369,10 +389,12 @@ export default function App() {
       home: true,
       body: (
         <>
-          {/* ★ R043 C — 🔔 알림 (방 목록 화면 오른쪽 위) */}
+          {/* ★ R043 C — 🔔 알림 (방 목록 화면 오른쪽 위)
+              ★★ R044 A-3 (건우) — 화면에서 뺐다. 되살리려면 이 주석을 푼다 — 07-DECISIONS D-214
           <div className="home-bar">
             <BellButton social={social} onJoin={joinOther} />
           </div>
+          */}
           <div className="brand">
             <span className="brand-mark" aria-hidden="true">Q</span>
             <h1>상식 퀴즈</h1>
@@ -440,7 +462,7 @@ export default function App() {
           {/* ★★ R043 C-2 — 방 목록 화면의 친구 목록 (크게). 방에 있는 친구는 [들어가기] */}
           <section className="card home-friends">
             <h2>친구</h2>
-            <FriendList social={social} mode="home" onJoin={joinOther} pageSize={window.matchMedia('(max-width: 999px)').matches ? 5 : 6} popupKey="home" />
+            <FriendList social={social} mode="home" onJoin={joinOther} pageSize={window.matchMedia('(max-width: 999px)').matches ? 5 : 6} />
           </section>
           </div>
         </>
@@ -471,7 +493,11 @@ export default function App() {
       {/* ★ 알림은 화면 종류와 무관하게 항상 여기 하나뿐이다 (D-027 / D-032).
           ★ 화면 고정(fixed)이므로 문서 흐름에서의 위치는 의미가 없다.
             그래도 여기 두는 이유는 "표시 경로가 한 곳" 임을 코드로 드러내기 위함이다. */}
-      <Toast content={notice} onDismiss={() => setNotice(null)} />
+      <Toast content={notice} onDismiss={dismissToast} />
+      {/* ★★ R044 A-5 — 친구 초대 토스트 (게임 중에는 띄우지 않는다 — 숫자 · 점만) */}
+      {socket && account && !mustChange && !(pendingRoomId && !room.snapshot) && (
+        <InviteToast social={social} show={!inGameRef.current} onAccept={joinOther} />
+      )}
       {view.body}
       {switchOpen && switchTo && (
         <ConfirmModal

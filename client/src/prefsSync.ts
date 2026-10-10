@@ -46,6 +46,8 @@ function apply(p: ServerPrefs): void {
   applying = true;
   try {
     if (THEMES.some((t) => t.id === p.theme)) setTheme(p.theme as ThemeId);
+    // ★ R044 — 옛 원색('pop')을 저장해 둔 계정은 파스텔로 (다음 저장 때 계정 값도 바뀐다)
+    else if (p.theme === 'pop') setTheme('pastel');
     const patch: Parameters<typeof setSoundPrefs>[0] = {};
     if (typeof p.bgmOn === 'boolean') patch.bgmOn = p.bgmOn;
     if (BGMS.some((b) => b.id === p.bgmTrack)) patch.bgm = p.bgmTrack as BgmId;

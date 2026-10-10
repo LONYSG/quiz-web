@@ -11,6 +11,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { usePopup } from './popup.js';
+import PopupClose from './PopupClose.js';
 import Emoji from './Emoji.js';
 import { EMOJI_CATEGORIES, setStoredSlots, useEmojiCatalog } from './emojiCatalog.js';
 import Icon from './Icon.js';
@@ -87,6 +88,11 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
       )}
       {open && (
         <div className="emoji-pop" role="dialog" aria-label="이모티콘">
+          {/* ★ R044 B — 모든 팝업에 같은 ✕ */}
+          <div className="pop-head">
+            <p className="pop-title">이모티콘</p>
+            <PopupClose onClose={() => setOpen(false)} />
+          </div>
           <div className="emoji-slots">
             {slots.map((id, i) => (
               <button

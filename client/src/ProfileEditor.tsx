@@ -8,6 +8,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import BusyButton from './BusyButton.js';
+import PopupClose from './PopupClose.js';
+import { useDismiss } from './useDismiss.js';
 
 const STAGE = 260;
 const OUT = 256;
@@ -107,6 +109,8 @@ export default function ProfileEditor({ file, onCancel, onDone }: Props) {
     if (pointers.current.size < 2) pinch.current = null;
   };
 
+  useDismiss(true, onCancel, '.profile-editor');
+
   const save = async () => {
     if (!img) return;
     setBusy(true);
@@ -123,9 +127,20 @@ export default function ProfileEditor({ file, onCancel, onDone }: Props) {
   };
 
   return (
-    <div className="modal-back" role="dialog" aria-label="프로필 사진">
+    // ★★ R044 B — 정보 창 규칙: 뒤를 어둡게 하지 않는다(clear) · 오른쪽 위 ✕ · 바깥 누르기 · Esc = 취소 · [취소] 버튼 없음
+    <div
+      className="modal-back popup-back clear"
+      role="dialog"
+      aria-label="프로필 사진"
+      onPointerDown={(e) => {
+        if (e.target === e.currentTarget) onCancel();
+      }}
+    >
       <div className="modal profile-editor">
-        <p className="modal-title">프로필 사진</p>
+        <div className="pop-head">
+          <p className="pop-title">프로필 사진</p>
+          <PopupClose onClose={onCancel} />
+        </div>
         {error ? (
           <p className="form-error">{error}</p>
         ) : (
@@ -172,9 +187,6 @@ export default function ProfileEditor({ file, onCancel, onDone }: Props) {
           <BusyButton className="primary" disabled={!img || Boolean(error)} busy={busy} onClick={() => void save()}>
             등록
           </BusyButton>
-          <button type="button" className="ghost" onClick={onCancel}>
-            취소
-          </button>
         </div>
       </div>
     </div>

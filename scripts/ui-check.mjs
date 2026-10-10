@@ -562,7 +562,7 @@ const ONE_SCREEN = { w: 1280, h: 720 };
  *   ★ 테마는 색·테두리·둥글기만 바꾸고 간격은 같게 두었지만, 테두리 두께가 달라 높이가 몇 px 달라질 수 있다.
  * ★ DESIGN_SHOTS=1 이면 테마마다 docs/design/<테마>-<화면>.png 를 찍는다 (docs/design-review.md 가 쓴다).
  */
-const THEME_IDS = ['pastel', 'pop', 'night'];
+const THEME_IDS = ['pastel', 'night']; // ★ R044 — 원색 삭제
 const DESIGN_SHOTS = process.env.DESIGN_SHOTS === '1';
 
 /**
@@ -1350,6 +1350,40 @@ async function leaveViaUi(page) {
   await page.waitFor("document.querySelector('.confirm-modal[data-kind=\"leave\"]') !== null", 3000);
   await page.evaluate("document.querySelector('.confirm-modal[data-kind=\"leave\"] .confirm-actions button')?.click()");
 }
+/**
+ * ★★★ R044 A-2 — **진짜 클릭**(CDP 마우스 입력). element.click() 은 화면에서 무엇이 덮고 있든 그 요소에 바로 눌린다 —
+ *   사람이 누르는 것과 다르다(덮인 버튼 · 눌림 순서 · 바깥 누르기 닫힘을 못 본다). 버튼 가운데 좌표를 진짜로 누른다.
+ *   반환: { ok, hit } — hit = 그 좌표에서 실제로 맨 위에 있던 요소가 그 버튼(또는 그 안)인가
+ */
+async function realClick(page, selector, text = null) {
+  const info = JSON.parse(await page.evaluate(`JSON.stringify((() => {
+    const els = [...document.querySelectorAll(${JSON.stringify(selector)})].filter((b) => b.offsetParent !== null || getComputedStyle(b).position === 'fixed');
+    const el = ${text === null ? 'els[0]' : `els.find((b) => b.innerText.trim() === ${JSON.stringify(text)})`};
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    const x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const top = document.elementFromPoint(x, y);
+    return { x, y, hit: Boolean(top && (top === el || el.contains(top))), top: top ? (top.className || top.tagName) : null };
+  })())`));
+  if (!info) return { ok: false, hit: false };
+  for (const type of ['mousePressed', 'mouseReleased']) {
+    await page.send('Input.dispatchMouseEvent', { type, x: info.x, y: info.y, button: 'left', clickCount: 1 });
+  }
+  await sleep(250);
+  return { ok: true, hit: info.hit, top: info.top };
+}
+/** 진짜 클릭으로 화면 바깥 빈 곳(왼쪽 아래 구석)을 누른다 */
+async function realClickAt(page, x, y) {
+  for (const type of ['mousePressed', 'mouseReleased']) {
+    await page.send('Input.dispatchMouseEvent', { type, x, y, button: 'left', clickCount: 1 });
+  }
+  await sleep(250);
+}
+/** ★ R044 B — 맨 위 팝업을 ✕ 로 닫는다 ([취소] 버튼은 없앴다). 확인 팝업이 있으면 그것부터 */
+async function closeTop(page) {
+  await page.evaluate("(document.querySelector('.confirm-modal .popup-close') ?? [...document.querySelectorAll('.popup-close')].filter((b) => b.offsetParent !== null).pop())?.click()");
+  await sleep(150);
+}
 /** 확인 팝업의 첫 버튼(확정) */
 async function confirmFirst(page) {
   await page.evaluate("document.querySelector('.confirm-modal .confirm-actions button')?.click()");
@@ -1409,40 +1443,47 @@ async function socialFlow(browser) {
   const fourth = await newPage(browser, 'fourth', true);
   await fourth.setViewport(1280, 720);
   await signUp(fourth, 'y', '넷째');
+  const zed = await newPage(browser, 'zed', true);
+  await zed.setViewport(1280, 720);
+  await signUp(zed, 'z', '다섯째');
+  const idRows = await withPg(async (c) => (await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [['g', 'x', 'y', 'z'].map(loginOf)])).rows);
+  const idOf = (sfx) => idRows?.find((r) => r.login_id === loginOf(sfx))?.id ?? '-';
+  const row = (sfx) => `li[data-account="${idOf(sfx)}"]`;
 
-  // ── 친구 맺기: 방장 → 게스트(아이디로) · 셋째 → 방장 · 넷째 → 방장(받은 신청으로 남긴다)
-  await requestFriend(host, loginOf('g'));
-  await snapSizes(host, '30-home-request-sent', [SHOT_PC[0]]);
-  record('★★ 아이디로 친구 신청 → "보냈어요" 안내 · 보낸 신청 줄', await host.evaluate("document.querySelector('.friend-msg.ok') !== null && document.body.innerText.includes('수락을 기다려요')"));
-  record('★ 신청하면 아이디 칸이 비워진다', (await host.evaluate("document.querySelector('.friend-add input').value")) === '');
-  await guest.setViewport(390, 844);
+  // ── ★★ A-1 — 아이디로 친구 신청: 누름 → 안내가 뜰 때까지 (화면 기준 실측)
+  await host.setInput('.friend-add input', loginOf('g'));
+  await sleep(150);
+  const reqMs = await host.evaluate(`(async () => {
+    const b = [...document.querySelectorAll('.friend-add button')].find((b) => b.innerText.trim() === '신청');
+    const t0 = performance.now();
+    b.click();
+    while (!document.querySelector('.friend-msg') && performance.now() - t0 < 8000) await new Promise((r) => setTimeout(r, 5));
+    return Math.round(performance.now() - t0);
+  })()`);
+  record('★★ A-1 — 아이디로 친구 신청: 누름 → "보냈어요" 까지 500ms 이하 (화면 실측)', reqMs <= 500, `${reqMs}ms`);
   await sleep(500);
+  await snapSizes(host, '30-home-request-sent', [SHOT_PC[0]]);
+  record('★★ A-3 — 🔔 알림 버튼이 없다 (방 목록 화면)', await host.evaluate("document.querySelector('#bell-btn') === null"));
+
+  // ── 받은 쪽(모바일 게스트): 화면 위 알림 한 줄 없음 · 방 목록 친구 칸에서 수락
+  await guest.setViewport(390, 844);
+  await sleep(700);
+  record('★★ A-4 — 친구 신청을 받아도 화면 위 알림 한 줄(토스트)이 뜨지 않는다', await guest.evaluate("document.querySelector('.toast') === null"));
+  record('★★ A-4 — 받은 신청은 친구 칸에서 (수락 · 거절)', await guest.evaluate("(document.querySelector('.home-friends')?.innerText ?? '').includes('받은 신청')"));
   await snapSizes(guest, '31-home-incoming', SHOT_MOB);
-  record('★★ 받은 쪽 — 방 목록 화면에 받은 신청 · 🔔 숫자', await guest.evaluate("document.body.innerText.includes('받은 신청') && document.querySelector('#bell-btn .count-badge')?.innerText === '1'"));
-  // 게스트는 🔔 에서 수락
   await guest.setViewport(390, 844);
-  await guest.evaluate("document.querySelector('#bell-btn')?.click()");
-  await sleep(400);
-  await snapSizes(guest, '32-notices-request', SHOT_MOB);
-  await guest.setViewport(360, 740);
-  await probePopup(guest, '.notices-pop', '알림 창 (모바일 360 · 방 목록)');
-  await guest.setViewport(390, 844);
-  await clickIn(guest, '.notices-pop button', '수락');
-  await sleep(800);
-  await snap(guest, '33-notices-accepted-m390');
-  record('★★★ 수락 → 친구 목록에 들어온다 · 🔔 숫자 사라짐', await guest.evaluate("(document.querySelector('.home-friends')?.innerText ?? '').includes('친구 1') && !document.querySelector('#bell-btn .count-badge')"));
-  await guest.evaluate("document.querySelector('.notices-pop .popup-close')?.click()");
+  const acc = await realClick(guest, '.home-friends button', '수락');
+  record('★ 수락(방 목록 화면) — 진짜 클릭이 버튼에 닿는다', acc.hit, acc.top ?? '');
+  record('★★★ 수락 → 친구 목록에 들어온다', await guest.waitFor("(document.querySelector('.home-friends')?.innerText ?? '').includes('친구 1')", 5000));
+  await snap(guest, '33-home-accepted-m390');
+  // 셋째 · 넷째 → 방장에게 신청 / 다섯째 → 게스트에게 신청 (게스트가 수락)
   await requestFriend(third, loginOf('h'));
-  await host.evaluate("document.querySelector('#bell-btn')?.click()");
-  await sleep(300);
-  await snap(host, '34-notices-host-pc');
-  await clickIn(host, '.notices-pop button', '수락');
-  await sleep(600);
-  await host.evaluate("document.querySelector('.notices-pop .popup-close')?.click()");
   await requestFriend(fourth, loginOf('h'));
-  await sleep(400);
+  await requestFriend(zed, loginOf('g'));
+  await guest.waitFor("(document.querySelector('.home-friends')?.innerText ?? '').includes('받은 신청')", 4000);
+  await realClick(guest, '.home-friends button', '수락');
+  await sleep(600);
   await snapSizes(host, '35-home-friends', [...SHOT_PC, ...SHOT_MOB]);
-  await host.evaluate("document.querySelector('.toast button')?.click()");
   for (const sz of SHOT_PC) {
     await host.setViewport(sz.w, sz.h);
     await sleep(250);
@@ -1465,11 +1506,21 @@ async function socialFlow(browser) {
   await guest.setViewport(390, 844);
   await snapSizes(guest, '36-home-friend-in-room', [SHOT_MOB[1], SHOT_PC[0]]);
   record('★★★ 실시간 상태 — 친구가 방을 만들면 "대기실 · 1명" + [들어가기]', await guest.evaluate("(() => { const t = document.querySelector('.home-friends')?.innerText ?? ''; return t.includes('대기실 · 1명') && t.includes('들어가기'); })()"));
+  await guest.setViewport(390, 844);
+  await realClick(guest, '.home-friends button', '들어가기');
+  record('★★★ 방 목록 화면 친구 [들어가기] → 그 방', await guest.waitFor("document.querySelector('.stage') !== null", 8000));
+  await sleep(800);
+  record('★★ A-3 — 🔔 알림 버튼이 없다 (방 안)', await host.evaluate("document.querySelector('#bell-btn') === null"));
+  await host.evaluate("document.querySelector('#invite-btn')?.click()");
+  await sleep(300);
+  const roomCode = await host.evaluate("(document.querySelector('.invite-code')?.innerText ?? '').replace(/\\D/g, '')");
+  await closeTop(host);
 
-  // ── 방 안 친구 창 (PC 버튼 아래) — 셋째에게 [초대]
+  // ── ★★★ A-2 — 방 안 친구 창: 버튼 전부 **진짜 클릭** (수락 · 거절 · 신청 · 취소 · 초대 · 삭제)
   await host.setViewport(1280, 720);
-  await host.evaluate("document.querySelector('#friends-btn')?.click()");
-  await sleep(400);
+  record('★★ A-4 — 친구 버튼 숫자 = 받은 신청 2', (await host.evaluate("document.querySelector('#friends-btn .count-badge')?.innerText ?? ''")) === '2');
+  await realClick(host, '#friends-btn');
+  record('★ 방 안 친구 창이 열린다 (진짜 클릭)', await host.waitFor("document.querySelector('.friends-pop') !== null", 3000));
   for (const s of SHOT_PC) {
     await host.setViewport(s.w, s.h);
     await sleep(350);
@@ -1477,133 +1528,248 @@ async function socialFlow(browser) {
     await probePopup(host, '.friends-pop', `친구 창 PC ${s.w}×${s.h}`);
   }
   await host.setViewport(1280, 720);
-  await clickIn(host, '.friends-pop button', '초대');
-  await sleep(600);
+  await sleep(300);
+  let r = await realClick(host, `.friends-pop ${row('x')} button`, '수락');
+  record('★★★ A-2 방 안 [수락] — 버튼에 닿고 친구가 된다', r.hit && (await host.waitFor(`document.querySelector('.friends-pop ${row('x')}')?.innerText.includes('접속 중') ?? false`, 4000)), r.top ?? '');
+  r = await realClick(host, `.friends-pop ${row('y')} button`, '거절');
+  record('★★★ A-2 방 안 [거절] — 받은 신청에서 빠진다', r.hit && (await host.waitFor(`document.querySelector('.friends-pop ${row('y')}') === null`, 4000)), r.top ?? '');
+  await host.setInput('.friends-pop .friend-add input', loginOf('z'));
+  await sleep(150);
+  r = await realClick(host, '.friends-pop .friend-add button', '신청');
+  record('★★★ A-2 방 안 아이디 [신청] — 보낸 신청 줄', r.hit && (await host.waitFor(`(document.querySelector('.friends-pop ${row('z')}')?.innerText ?? '').includes('수락을 기다려요')`, 4000)), r.top ?? '');
+  r = await realClick(host, `.friends-pop ${row('z')} button`, '취소');
+  record('★★★ A-2 방 안 보낸 신청 [취소] — 줄이 빠진다', r.hit && (await host.waitFor(`document.querySelector('.friends-pop ${row('z')}') === null`, 4000)), r.top ?? '');
+  r = await realClick(host, `.friends-pop ${row('x')} button`, '초대');
+  record('★★★ A-2 방 안 [초대] — "초대했어요"', r.hit && (await host.waitFor("(document.querySelector('.friends-pop .friend-msg.ok')?.innerText ?? '').includes('초대했어요')", 4000)), r.top ?? '');
   await snap(host, '38-friends-invited-pc');
-  record('★★ 초대 → "초대했어요"', await host.evaluate("(document.querySelector('.friends-pop .friend-msg.ok')?.innerText ?? '').includes('초대했어요')"));
-  await host.evaluate("document.querySelector('.friends-pop .popup-close')?.click()");
-  // 셋째: 🔔 숫자 → 알림 창 (초대 · 들어가기)
-  await sleep(400);
-  await snap(third, '39-home-bell-badge-pc');
-  await third.evaluate("document.querySelector('#bell-btn')?.click()");
-  await sleep(400);
-  await snap(third, '40-notices-invite-pc');
-  await probePopup(third, '.notices-pop', '알림 창 PC 1280 (초대)');
-  await clickIn(third, '.notices-pop button', '들어가기');
-  record('★★★ 초대 알림 [들어가기] → 그 방', await third.waitFor("document.querySelector('.stage') !== null", 8000));
-  // 게스트: 방 목록 화면에서 [들어가기]
-  await guest.setViewport(390, 844);
-  await clickIn(guest, '.home-friends button', '들어가기');
-  record('★★★ 방 목록 화면 친구 [들어가기] → 그 방', await guest.waitFor("document.querySelector('.stage') !== null", 8000));
-  await sleep(800);
+  record('★ 버튼을 눌러도 친구 창은 열린 채', await host.evaluate("document.querySelector('.friends-pop') !== null"));
 
-  // ── 방 안 · 방장 PC: 알림 창 ↔ 설정 창, 친구 창 ↔ (PC 에는 👥 가 없다 — 모바일에서 비교)
-  await host.setViewport(1280, 720);
-  for (const s of [SHOT_PC[0], SHOT_PC[1], SHOT_PC[4]]) {
-    await host.setViewport(s.w, s.h);
-    await host.evaluate("document.querySelector('#bell-btn')?.click()");
-    await sleep(350);
-    await snap(host, `41-cmp-notices-${s.n}`);
-    await probePopup(host, '.notices-pop', `알림 창 PC ${s.w}×${s.h}`);
-    await host.evaluate("document.querySelector('.notices-pop .popup-close')?.click()");
-    await host.evaluate("document.querySelector('.prefs-toggle')?.click()");
-    await sleep(350);
-    await snap(host, `41-cmp-prefs-${s.n}`);
-    await probePopup(host, '.prefs-pop', `설정 창 PC ${s.w}×${s.h} (비교)`);
-    await host.evaluate("document.querySelector('.prefs-pop .popup-close')?.click()");
-    await sleep(150);
+  // ── ★★★ A-5 — 초대 토스트 (셋째 — 방 목록 화면): [거절] → 사라짐 · 친구 줄 "나를 초대했어요"
+  record('★★★ A-5 — 초대를 받으면 아래 토스트 (수락 · 거절)', await third.waitFor("document.querySelector('.invite-toast') !== null", 5000));
+  record('★★ A-5 — 친구 줄에도 "나를 초대했어요" + [들어가기]', await third.evaluate("(document.querySelector('.home-friends')?.innerText ?? '').includes('나를 초대했어요')"));
+  record('★ A-5 — 초대 토스트에 ✕', await third.evaluate("document.querySelector('.invite-toast .popup-close') !== null"));
+  await snap(third, '40-invite-toast-pc');
+  await third.setViewport(390, 844);
+  await sleep(350);
+  await snap(third, '40-invite-toast-m390');
+  await third.setViewport(1280, 720);
+  r = await realClick(third, '.invite-toast button', '거절');
+  record('★★ A-5 초대 [거절] — 토스트가 닫히고 친구 줄에서도 빠진다', r.hit && (await third.waitFor("document.querySelector('.invite-toast') === null && !(document.querySelector('.home-friends')?.innerText ?? '').includes('나를 초대했어요')", 4000)), r.top ?? '');
+  // 다시 초대(20초 간격) → [수락] → 그 방
+  await sleep(20500);
+  if (!(await host.evaluate("document.querySelector('.friends-pop') !== null"))) await realClick(host, '#friends-btn');
+  await realClick(host, `.friends-pop ${row('x')} button`, '초대');
+  await third.waitFor("document.querySelector('.invite-toast') !== null", 5000);
+  r = await realClick(third, '.invite-toast button', '수락');
+  record('★★★ A-5 초대 [수락] → 그 방으로', r.hit && (await third.waitFor("document.querySelector('.stage') !== null", 8000)), r.top ?? '');
+  await sleep(800);
+  record('★ 초대받은 방에 들어가면 초대는 지워진다 (토스트 없음)', await third.evaluate("document.querySelector('.invite-toast') === null"));
+  // [삭제] — 확인 팝업이 친구 창 위에 뜬다 (A-2 원인)
+  if (!(await host.evaluate("document.querySelector('.friends-pop') !== null"))) await realClick(host, '#friends-btn');
+  r = await realClick(host, `.friends-pop ${row('x')} button[aria-label$="친구 삭제"]`);
+  const delUp = await host.waitFor("document.querySelector('.confirm-modal[data-kind=\"friend-delete\"]') !== null", 3000);
+  record('★★★ A-2 방 안 [삭제] — 확인 팝업이 뜨고 친구 창은 그대로 (옛 결함: 둘 다 사라졌다)', r.hit && delUp && (await host.evaluate("document.querySelector('.friends-pop') !== null")), r.top ?? '');
+  await snap(host, '38b-friend-delete-confirm-pc');
+  r = await realClick(host, '.confirm-modal button', '지우기');
+  record('★★★ A-2 방 안 삭제 [지우기] — 친구에서 빠진다', r.hit && (await host.waitFor(`document.querySelector('.friends-pop ${row('x')}') === null`, 4000)), r.top ?? '');
+  // 바깥을 누르면 친구 창이 닫힌다 (진짜 클릭 — 채팅 기록 칸 가운데)
+  await realClickAt(host, 640, 420);
+  record('★★ B — 친구 창: 바깥 누르기 = 닫힘', await host.evaluate("document.querySelector('.friends-pop') === null"));
+
+  // ── ★★ B — 팝업 규칙 (방장 PC 로비): ✕ 있음 · 바깥 누르기 닫힘 · Esc 닫힘 · 정보 창은 뒤를 어둡게 하지 않는다
+  const POPS = [
+    ['.prefs-toggle', '.prefs-pop', '설정'],
+    ['.infotip-btn', '.infotip-pop', '안내'],
+    ['#invite-btn', '.invite-pop', '초대'],
+    ['#friends-btn', '.friends-pop', '친구'],
+    ['#rename-btn', '.rename-pop', '프로필'],
+    ['.emoji-btn', '.emoji-pop', '이모티콘'],
+  ];
+  for (const [btn, pop, name] of POPS) {
+    await realClick(host, btn);
+    const up = await host.waitFor(`document.querySelector('${pop}') !== null`, 2000);
+    const hasX = await host.evaluate(`document.querySelector('${pop} .popup-close') !== null`);
+    // 바깥 = 오른쪽 빈 참여자 칸 (어느 창도 덮지 않는 자리 — 이모티콘 창은 채팅 칸 가운데까지 덮는다)
+    await realClickAt(host, 1170, 600);
+    const closedOut = await host.evaluate(`document.querySelector('${pop}') === null`);
+    await realClick(host, btn);
+    await host.waitFor(`document.querySelector('${pop}') !== null`, 2000);
+    await host.key('Escape', { code: 'Escape', vk: 27 });
+    await sleep(200);
+    const closedEsc = await host.evaluate(`document.querySelector('${pop}') === null`);
+    record(`★★ B — ${name} 창: ✕ 있음 · 바깥 누르기 닫힘 · Esc 닫힘`, up && hasX && closedOut && closedEsc, `열림=${up} ✕=${hasX} 바깥=${closedOut} Esc=${closedEsc}`);
+    if (!closedEsc) await closeTop(host);
   }
-  // ── 게스트(방장 아님) PC: 참여자 칸 누르기 → 친구 신청만 (넷째를 방에 넣는다)
+  // ── 다른 사람(넷째)을 방에 넣는다 → 셋째(방장 아님) 가 넷째 칸 → 친구 신청만 · ✕ · 바깥 = 닫힘 · 뒤 어둡게
   await fourth.goto(`${BASE}/r/${roomId}`);
   await fourth.waitFor("document.querySelector('.stage') !== null", 8000);
   await third.setViewport(1280, 720);
-  await sleep(600);
-  const picked = await third.evaluate(
-    "(() => { const c = [...document.querySelectorAll('.seat-card.pickable')].find(c => c.innerText.includes('넷째')); c?.click(); return Boolean(c); })()",
-  );
+  await sleep(700);
+  r = await realClick(third, `.seat-card.pickable`);
   await sleep(300);
-  if (picked) await snap(third, '42-guest-pick-friend-pc');
-  else console.log('  ★ 넷째 칸을 누를 수 없다 (pickable 아님)');
-  record('★★ 방장 아님 — 자리를 누르면 "친구 신청" 만', picked && (await third.evaluate("[...document.querySelectorAll('.confirm-modal .confirm-actions button')].map(b => b.innerText.trim()).join(',')")) === '친구 신청,취소');
-  await third.evaluate("document.querySelector('.confirm-modal .confirm-actions button:last-child')?.click()");
-  // 방장: 참여자 칸 → 친구 신청 + 강퇴 · 차단 · 방장 넘기기 (넷째는 아직 친구가 아니다)
-  await host.evaluate(
-    "(() => { const c = [...document.querySelectorAll('.seat-card.pickable')].find(c => c.innerText.includes('넷째')); c?.click(); })()",
-  );
+  const acts = await third.evaluate("[...document.querySelectorAll('.confirm-modal .confirm-actions button')].map(b => b.innerText.trim()).join(',')");
+  await snap(third, '42-guest-pick-friend-pc');
+  record('★★ B — 확인 팝업: [취소] 버튼 없이 ✕ (방장 아님 — 친구 신청만)', acts.includes('친구 신청') && !acts.includes('취소') && (await third.evaluate("document.querySelector('.confirm-modal .popup-close') !== null")), acts);
+  const dim = await third.evaluate("getComputedStyle(document.querySelector('.confirm-modal').closest('.modal-back')).backgroundColor");
+  record('★★ B — 확인 팝업은 뒤를 어둡게 한다', dim !== 'rgba(0, 0, 0, 0)' && dim !== 'transparent', dim);
+  await realClickAt(third, 30, 700);
+  record('★★ B — 확인 팝업: 바깥 누르기 = 취소', await third.evaluate("document.querySelector('.confirm-modal') === null"));
+  // 방장: 넷째 칸 → 친구 신청 · 강퇴 · 차단 · 방장 넘기기 (넷째는 거절당해 친구가 아니다)
+  await realClick(host, '.seat-card.pickable');
   await sleep(300);
   await snap(host, '43-host-pick-pc');
-  await host.key('Escape');
+  const hacts = await host.evaluate("[...document.querySelectorAll('.confirm-modal .confirm-actions button')].map(b => b.innerText.trim()).join(',')");
+  record('★ 방장 고르기 팝업 — 친구 신청 · 강퇴 · 차단 · 방장 넘기기 (취소 없음)', /강퇴/.test(hacts) && !/취소/.test(hacts), hacts);
+  await host.key('Escape', { code: 'Escape', vk: 27 });
+  await sleep(200);
 
-  // ── 모바일 게스트: ☰ 빨간 점 · 메뉴 · 친구 창 ↔ 👥 참여자 창 · 알림 창
-  await third.evaluate("document.querySelector('#friends-btn')?.click()");
+  // ── ★★ C-1 — 테마는 색만: 파스텔 ↔ 밤 크기·자리 같음 (방장 PC 로비)
+  const geo = () => host.evaluate("JSON.stringify(['.room-head', '.seat-card', '.lobby-card', '.chat-card', '#friends-btn', '.settings'].map((s) => { const r = document.querySelector(s)?.getBoundingClientRect(); return r ? [Math.round(r.left), Math.round(r.top), Math.round(r.width), Math.round(r.height)].join(',') : '-'; }))");
+  await host.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  await sleep(250);
+  const gPastel = await geo();
+  await host.evaluate("document.documentElement.dataset.theme = 'night'");
+  await sleep(250);
+  const gNight = await geo();
+  record('★★ C-1 — 테마를 바꿔도 크기·자리가 같다 (파스텔 ↔ 밤)', gPastel === gNight, `${gPastel} | ${gNight}`);
+  await snap(host, '52-night-lobby-pc');
+  await host.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  record('★ C-1 — 설정 창 테마는 둘 (파스텔 · 밤)', await (async () => {
+    await realClick(host, '.prefs-toggle');
+    const t = await host.evaluate("[...document.querySelectorAll('.prefs-pop .seg')[0]?.querySelectorAll('button') ?? []].map(b => b.innerText.trim()).join(',')");
+    await closeTop(host);
+    return t === '파스텔,밤';
+  })());
+
+  // ── ★★ C-2 — 이모티콘이 경험률 · 닉네임 글자를 가리지 않는다 (1536×864 · 1536×730 로비)
+  for (const sz of [SHOT_PC[1], SHOT_PC[2]]) {
+    await host.setViewport(sz.w, sz.h);
+    await sleep(400);
+    await realClick(host, '.emoji-btn');
+    await sleep(300);
+    await realClick(host, '.emoji-slot');
+    await sleep(900);
+    const ov = JSON.parse(await host.evaluate(`JSON.stringify((() => {
+      const card = document.querySelector('.seat-card.mine') ?? document.querySelector('.seat-card');
+      const img = card?.querySelector('.seat-emoji-pop img, .seat-emoji-pop');
+      if (!img) return { none: true };
+      const a = img.getBoundingClientRect();
+      const hit = (sel) => { const t = card.querySelector(sel); if (!t) return 0; const b = t.getBoundingClientRect(); const w = Math.min(a.right, b.right) - Math.max(a.left, b.left); const h = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top); return w > 0.5 && h > 0.5 ? Math.round(w * h) : 0; };
+      return { rate: hit('.seat-rate'), nick: hit('.seat-nick'), badges: hit('.seat-badges') };
+    })())`));
+    await snap(host, `50-emoji-${sz.n}`);
+    record(`★★ C-2 — ${sz.w}×${sz.h} 이모티콘이 경험률 · 닉네임 · 배지 글자를 가리지 않는다`, !ov.none && ov.rate === 0 && ov.nick === 0 && ov.badges === 0, JSON.stringify(ov));
+    await closeTop(host);
+    await sleep(200);
+  }
+  // ── ★ C-3 — "문제 수" 줄과 "이번 설정으로 낼 수 있는 문제" 간격
+  await host.setViewport(1280, 720);
   await sleep(300);
-  await requestFriendInRoom(third, loginOf('g'));
+  const gap = await host.evaluate("(() => { const a = document.querySelector('.settings .set-row'); const b = document.querySelector('.avail-line'); return a && b ? Math.round(b.getBoundingClientRect().top - a.getBoundingClientRect().bottom) : null; })()");
+  await snap(host, '51-avail-gap-pc');
+  record('★ C-3 — 문제 수 ↔ 낼 수 있는 문제 간격 4px 이하', gap !== null && gap <= 4, `${gap}px`);
+  // ── ★★ C-4 — 안내 창: 한 항목 한 줄 (PC 5 · 모바일 3)
+  const INFO_LINES = "(() => [...document.querySelectorAll('.infotip-pop .info-list li')].filter((li) => li.getClientRects().length > 0).map((li) => { const tops = []; const w = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); for (let n = w.nextNode(); n; n = w.nextNode()) { if (!n.textContent.trim()) continue; const rg = document.createRange(); rg.selectNodeContents(n); for (const rc of rg.getClientRects()) { if (rc.width < 1) continue; if (!tops.some((t) => Math.abs(t - rc.top) < rc.height * 0.5)) tops.push(rc.top); } } return tops.length; }))()";
+  for (const s of SHOT_PC) {
+    await host.setViewport(s.w, s.h);
+    await sleep(300);
+    await realClick(host, '.infotip-btn');
+    await sleep(250);
+    const lines = await host.evaluate(INFO_LINES);
+    const inView = await host.evaluate("(() => { const r = document.querySelector('.infotip-pop')?.getBoundingClientRect(); return Boolean(r) && r.left >= 0 && r.right <= innerWidth && r.bottom <= innerHeight; })()");
+    if (s.n === 'pc' || s.n === 'qhd') await snap(host, `53-info-${s.n}`);
+    record(`★★ C-4 — 안내 PC ${s.w}×${s.h}: 줄마다 한 줄 · 화면 안`, lines.length > 0 && lines.every((n) => n === 1) && inView, lines.join(','));
+    await closeTop(host);
+  }
+
+  // ── 모바일 게스트: ☰ 빨간 점(받은 신청) · 메뉴(알림 없음) · 친구 창 ↔ 👥 참여자 창(뒤 어둡게 안 함) · 설정 · 안내
+  await fourth.evaluate("document.querySelector('#friends-btn')?.click()");
+  await sleep(300);
+  await requestFriendInRoom(fourth, loginOf('g'));
   for (const s of SHOT_MOB) {
     await guest.setViewport(s.w, s.h);
     await sleep(400);
-    // 알림 한 줄(토스트)이 상단 바를 가리면 닫고 찍는다
     await guest.evaluate("document.querySelector('.toast button')?.click()");
     await sleep(200);
     await snap(guest, `44-room-dot-${s.n}`);
-    record(`★★ 모바일 ${s.w} — 받은 신청이 있으면 ☰ 빨간 점`, await guest.evaluate("document.querySelector('#menu-btn .red-dot') !== null"));
-    await guest.evaluate("document.querySelector('#menu-btn')?.click()");
+    record(`★★ A-4 모바일 ${s.w} — 받은 신청이 있으면 ☰ 빨간 점 · 화면 위 알림 한 줄 없음`, await guest.evaluate("document.querySelector('#menu-btn .red-dot') !== null && document.querySelector('.toast') === null"));
+    await realClick(guest, '#menu-btn');
     await sleep(300);
     await snap(guest, `45-menu-${s.n}`);
-    await guest.evaluate("[...document.querySelectorAll('.menu-item')].find(b => b.innerText.includes('친구'))?.click()");
+    record(`★ A-3 모바일 ${s.w} — ☰ 안에 알림이 없다 · 친구 숫자 1`, await guest.evaluate("(() => { const items = [...document.querySelectorAll('.menu-item')].map((b) => b.innerText); return !items.some((t) => t.includes('알림')) && items.some((t) => t.includes('친구') && t.includes('1')); })()"));
+    const menuBack = await guest.evaluate("getComputedStyle(document.querySelector('.menu-modal').closest('.modal-back')).backgroundColor");
+    record(`★★ B 모바일 ${s.w} — 메뉴(정보 창)는 뒤를 어둡게 하지 않는다`, menuBack === 'rgba(0, 0, 0, 0)', menuBack);
+    await realClick(guest, '.menu-item:nth-child(2)');
     await sleep(350);
     await snap(guest, `46-cmp-friends-${s.n}`);
     await probePopup(guest, '.friends-pop', `친구 창 모바일 ${s.w}`);
-    await guest.evaluate("document.querySelector('.friends-pop .popup-close')?.click()");
-    await guest.evaluate("document.querySelector('#people-btn')?.click()");
+    await realClickAt(guest, 10, s.h - 10);
+    record(`★★ B 모바일 ${s.w} — 친구 창 바깥 누르기 = 닫힘`, await guest.evaluate("document.querySelector('.friends-pop') === null"));
+    await realClick(guest, '#people-btn');
     await sleep(350);
     await snap(guest, `46-cmp-people-${s.n}`);
-    await guest.evaluate("document.querySelector('.people-modal .popup-close')?.click()");
-    await guest.evaluate("document.querySelector('#menu-btn')?.click()");
+    const pBack = await guest.evaluate("getComputedStyle(document.querySelector('.people-modal').closest('.modal-back')).backgroundColor");
+    record(`★★ B 모바일 ${s.w} — 참여자 창(정보 창)은 뒤를 어둡게 하지 않는다`, pBack === 'rgba(0, 0, 0, 0)', pBack);
+    await realClickAt(guest, 10, s.h - 10);
+    record(`★★ B 모바일 ${s.w} — 참여자 창 바깥 누르기 = 닫힘`, await guest.evaluate("document.querySelector('.people-modal') === null"));
+    await realClick(guest, '#menu-btn');
     await sleep(250);
-    await guest.evaluate("[...document.querySelectorAll('.menu-item')].find(b => b.innerText.includes('알림'))?.click()");
-    await sleep(350);
-    await snap(guest, `47-notices-${s.n}`);
-    await probePopup(guest, '.notices-pop', `알림 창 모바일 ${s.w}`);
-    await guest.evaluate("document.querySelector('.notices-pop .popup-close')?.click()");
-    await guest.evaluate("document.querySelector('#menu-btn')?.click()");
-    await sleep(250);
-    await guest.evaluate("[...document.querySelectorAll('.menu-item')].find(b => b.innerText.includes('설정'))?.click()");
+    await realClick(guest, '.menu-item', '설정');
     await sleep(350);
     await snap(guest, `47-cmp-prefs-${s.n}`);
-    await guest.evaluate("document.querySelector('.prefs-pop .popup-close')?.click()");
+    await closeTop(guest);
+    await realClick(guest, '#menu-btn');
+    await sleep(250);
+    await realClick(guest, '.menu-item', '안내');
+    await sleep(350);
+    const mlines = await guest.evaluate(INFO_LINES);
+    const mInView = await guest.evaluate("(() => { const r = document.querySelector('.infotip-pop')?.getBoundingClientRect(); return Boolean(r) && r.top >= 0 && r.bottom <= innerHeight; })()");
+    await snap(guest, `53-info-${s.n}`);
+    record(`★★ C-4 — 안내 모바일 ${s.w}: 줄마다 한 줄 · 한 화면`, mlines.length > 0 && mlines.every((n) => n === 1) && mInView, mlines.join(','));
+    await closeTop(guest);
     await sleep(150);
   }
 
-  // ── ★★ 게임 중에는 알림 팝업(한 줄)이 뜨지 않는다 — 🔔 숫자 / ☰ 점만
-  await guest.setViewport(390, 844);
+  // ── ★★★ A-5 — 게임 중에는 초대 토스트를 띄우지 않는다 → 게임이 끝나면 뜬다
+  //   다섯째(게스트의 친구)가 자기 방을 만들어 게임 중인 게스트를 초대한다
+  await zed.goto(BASE);
+  await zed.waitFor("document.querySelector('#join-code') !== null", 8000);
+  await createRoom(zed, '다섯째 방');
   await host.setViewport(1280, 720);
-  await host.evaluate("document.querySelector('#invite-btn')?.click()");
-  await sleep(300);
-  const roomCode = await host.evaluate("(document.querySelector('.invite-code')?.innerText ?? '').replace(/\\D/g, '')");
-  await host.evaluate("document.querySelector('.invite-pop .popup-close')?.click()");
+  await guest.setViewport(390, 844);
   await host.evaluate("[...document.querySelectorAll('button')].find(b => b.innerText.trim() === '게임 시작')?.click()");
   await guest.waitFor("document.querySelector('.room-game') !== null", 12000);
   await guest.evaluate("document.querySelector('.toast button')?.click()");
-  const late = await newPage(browser, 'late', true);
-  await late.setViewport(1280, 720);
-  await signUp(late, 'z', '다섯째');
-  await requestFriend(late, loginOf('g'));
-  await sleep(900);
-  record('★★★ 게임 중 — 새 알림이 와도 알림 한 줄(팝업)이 뜨지 않는다', await guest.evaluate("document.querySelector('.toast') === null"));
-  record('★★ 게임 중 — ☰ 빨간 점으로만 알린다', await guest.evaluate("document.querySelector('#menu-btn .red-dot') !== null"));
-  await snap(guest, '47z-game-no-popup-m390');
+  await realClick(zed, '#friends-btn');
+  await sleep(300);
+  r = await realClick(zed, `.friends-pop button`, '초대');
+  await sleep(1200);
+  record('★★★ A-5 — 게임 중: 초대 토스트가 뜨지 않는다', await guest.evaluate("document.querySelector('.invite-toast') === null && document.querySelector('.toast') === null"), `초대 클릭=${r.hit}`);
+  record('★★ A-5 — 게임 중: ☰ 빨간 점으로만', await guest.evaluate("document.querySelector('#menu-btn .red-dot') !== null"));
+  await snap(guest, '47z-game-no-toast-m390');
+  // 방장이 게임을 끝낸다 → 결과 화면 → 아직 살아 있는 초대가 토스트로
+  await openHostEnd(host);
+  await confirmFirst(host);
+  await guest.waitFor("document.querySelector('.room-result') !== null", 12000);
+  record('★★★ A-5 — 게임이 끝나 결과 화면이 되면 초대 토스트가 뜬다', await guest.waitFor("document.querySelector('.invite-toast') !== null", 5000));
+  await snap(guest, '47y-result-invite-toast-m390');
+  r = await realClick(guest, '.invite-toast button', '수락');
+  record('★★ A-5 — 다른 방에 있을 때 [수락] → "지금 방을 나가고 들어갈까요?"', r.hit && (await guest.waitFor("document.querySelector('.confirm-modal[data-kind=\"switch-room\"]') !== null", 3000)));
+  await snap(guest, '47x-switch-confirm-m390');
+  await closeTop(guest);
+  record('★ ✕ 로 닫으면 방에 그대로', await guest.evaluate("document.querySelector('.confirm-modal') === null && document.querySelector('.stage') !== null"));
+
   // ── ★★ 나가면 방 코드 칸에 그 방 코드
   await leaveViaUi(guest);
   await guest.waitFor("document.querySelector('#join-code') !== null", 8000);
   const pre = await guest.evaluate("document.querySelector('#join-code')?.value ?? ''");
   record('★★ 나오면 방 코드 칸에 그 방 6자리', /^\d{6}$/.test(pre) && pre === roomCode, `${pre} / ${roomCode}`);
-  // ── ✕ 크기 · 자리 (모든 창 같은 값)
   const sizesX = new Set(xSeen.map((x) => `${x.w}×${x.h}`));
   record('★★ 창마다 ✕ 크기가 같다', xSeen.length > 0 && sizesX.size === 1, [...sizesX].join(' '));
   const pos = new Set(xSeen.map((x) => `${x.dr},${x.dt}`));
   record('★ ✕ 자리(창 오른쪽 위 여백)가 같다', pos.size === 1, [...pos].join(' | '));
 
-  // ── 새 비밀번호 화면 (관리자 초기화 흉내 — 이 실행의 테스트 계정만)
+  // ── ★★★ 반드시 거쳐야 하는 화면 — 새 비밀번호 (✕ 없음 · 바깥 · Esc 로 안 닫힘)
   const pw = await newPage(browser, 'pw', true);
   await pw.setViewport(1280, 720);
   await signUp(pw, 'p', '비번초기화');
@@ -1611,8 +1777,11 @@ async function socialFlow(browser) {
   await pw.goto(BASE);
   await pw.waitFor("document.querySelector('.password-change') !== null", 8000);
   await snapSizes(pw, '48-password-change', [...SHOT_PC, ...SHOT_MOB]);
-  record('★★★ 초기화된 계정 — 새 비밀번호 화면만 (방 목록 없음)', await pw.evaluate("document.querySelector('.password-change') !== null && document.querySelector('#join-code') === null"));
-  await pw.setViewport(390, 844);
+  await pw.setViewport(1280, 720);
+  await realClickAt(pw, 20, 700);
+  await pw.key('Escape', { code: 'Escape', vk: 27 });
+  await sleep(200);
+  record('★★★ 필수 화면 — 새 비밀번호: ✕ 없음 · 바깥 · Esc 로 안 닫힘', await pw.evaluate("document.querySelector('.password-change') !== null && document.querySelector('.password-change .popup-close') === null && document.querySelector('#join-code') === null"));
   await pw.evaluate(`(() => {
     const set = (el, v) => { const d = Object.getOwnPropertyDescriptor(el.constructor.prototype, 'value'); d.set.call(el, v); el.dispatchEvent(new Event('input', { bubbles: true })); };
     const i = [...document.querySelectorAll('.password-change input')];
@@ -1620,7 +1789,7 @@ async function socialFlow(browser) {
   })()`);
   await clickIn(pw, '.password-change button', '저장하고 시작');
   await sleep(500);
-  await snap(pw, '49-password-0000-m390');
+  await snap(pw, '49-password-0000-pc');
   record('★★★ 새 비밀번호로 0000 은 안 된다', await pw.evaluate("(document.querySelector('.password-change .form-error')?.innerText ?? '').includes('0000')"));
   await pw.evaluate(`(() => {
     const set = (el, v) => { const d = Object.getOwnPropertyDescriptor(el.constructor.prototype, 'value'); d.set.call(el, v); el.dispatchEvent(new Event('input', { bubbles: true })); };
@@ -1629,7 +1798,7 @@ async function socialFlow(browser) {
   })()`);
   await clickIn(pw, '.password-change button', '저장하고 시작');
   record('★★★ 새 비밀번호를 정하면 방 목록 화면', await pw.waitFor("document.querySelector('#join-code') !== null", 6000));
-  // ── ★★ 방 코드로 입장 (숫자 6자리 → 바로) · 만들기 버튼 로딩 잠금
+  // 방 코드 6자리 → 바로 입장 · 만들기 즉시 잠금
   await pw.setInput('#join-code', roomCode);
   record('★★★ 방 코드 6자리를 치면 바로 그 방', await pw.waitFor("document.querySelector('.stage') !== null", 8000));
   await leaveViaUi(pw);
@@ -1637,6 +1806,16 @@ async function socialFlow(browser) {
   await pw.setInput('.card input', '로딩 확인');
   const lock = await pw.evaluate("(async () => { const b = [...document.querySelectorAll('button')].find(b => b.innerText.trim() === '만들기'); b.click(); await new Promise((r) => setTimeout(r, 0)); return b.disabled && b.classList.contains('is-busy'); })()");
   record('★★ 만들기 — 누르는 즉시 잠기고 도는 표시 (연타 막음)', lock);
+  await pw.waitFor("document.querySelector('.stage') !== null", 8000);
+  // ── ★★★ 반드시 거쳐야 하는 창 — 닉네임 바꿔야 함 (R040): ✕ 없음 · 바깥 · Esc 로 안 닫힘
+  await withPg((c) => c.query(`UPDATE accounts SET nickname = $2 WHERE login_id = $1`, [loginOf('p'), `아주아주긴옛닉네임${STAMP.slice(-2)}`]));
+  await pw.goto(`${BASE}/r/${await pw.evaluate("location.pathname.slice(3)")}`);
+  await pw.waitFor("document.querySelector('.rename-pop') !== null", 8000);
+  await realClickAt(pw, 640, 420);
+  await pw.key('Escape', { code: 'Escape', vk: 27 });
+  await sleep(250);
+  await snap(pw, '54-must-rename-pc');
+  record('★★★ 필수 창 — 닉네임 바꿔야 함: ✕ 없음 · 바깥 · Esc 로 안 닫힘', await pw.evaluate("document.querySelector('.rename-pop') !== null && document.querySelector('.rename-pop .popup-close') === null"));
 }
 async function requestFriendInRoom(page, loginId) {
   await page.setInput('.friends-pop .friend-add input', loginId);
@@ -1725,7 +1904,7 @@ async function shotsFlow(browser) {
   await host.click('강퇴');
   await sleep(300);
   await snap(host, '07o-kick-confirm-pc');
-  await host.click('취소');
+  await closeTop(host);
   await host.evaluate("document.querySelector('.infotip-btn')?.click()");
   await sleep(300);
   await snap(host, '07p-info-pc');
@@ -1745,7 +1924,7 @@ async function shotsFlow(browser) {
   await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
   await sleep(300);
   await snap(host, '07t-leave-lobby-pc');
-  await host.click('취소');
+  await closeTop(host);
   await host.evaluate("document.querySelector('.infotip-close')?.click()");
   await sleep(200);
   // ── 이모티콘 고르기 · 칸에 뜬 순간
@@ -1805,13 +1984,13 @@ async function shotsFlow(browser) {
   // 확인창 (방장, PC · 모바일)
   await openHostSkip(host);
   await snap(host, '12-confirm-pc');
-  await host.click('취소');
+  await closeTop(host);
   await sleep(200);
   // ★ R041 — 나가기 팝업 · 모바일 참여자 창(게임 중 — 점수·순위)
   await host.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.click()");
   await sleep(300);
   await snap(host, '12b-leave-pc');
-  await host.click('취소');
+  await closeTop(host);
   await guest.evaluate("document.querySelector('#people-btn')?.click()");
   await sleep(350);
   await snap(guest, '12c-people-game-m390');
@@ -1821,7 +2000,7 @@ async function shotsFlow(browser) {
   await host.setViewport(390, 844);
   await sleep(400);
   await snap(host, '12-confirm-m390');
-  await host.click('취소');
+  await closeTop(host);
   await host.setViewport(1280, 720);
 
   // 정답 · 뒷북 · 세레머니
@@ -1897,7 +2076,7 @@ async function shotsFlow(browser) {
     await probeNicks(host, 'result');
   }
   // 다른 테마도 깨지지 않는지 (결과·게임은 위에서 파스텔)
-  for (const th of ['pop', 'night']) {
+  for (const th of ['night']) { // ★ R044 — 원색 삭제
     await host.evaluate(`document.documentElement.dataset.theme = '${th}'`);
     await host.setViewport(1280, 720);
     await sleep(300);
@@ -2201,6 +2380,13 @@ try {
       `y=${scrolled.y} / max=${scrolled.max}`,
     );
 
+    // ★ R044 진단 — 가만히 있는 로비에서 App 이 3초 동안 몇 번 다시 그려지나 (참고값)
+    {
+      const r0 = await host.evaluate('window.__qwAppRenders ?? 0');
+      await sleep(3000);
+      const r1 = await host.evaluate('window.__qwAppRenders ?? 0');
+      console.log(`  ★ 진단 — 가만히 있는 로비 3초 동안 App 렌더 ${r1 - r0}번`);
+    }
     // 스크롤을 내린 상태에서 다시 거부를 만든다
     await host.click('게임 시작');
     await host.waitFor("document.querySelector('.toast') !== null", 5000);
@@ -2250,6 +2436,9 @@ try {
     // ★ 자동 만료
     await host.click('게임 시작');
     await host.waitFor("document.querySelector('.toast') !== null", 5000);
+    const rr0 = await host.evaluate('window.__qwAppRenders ?? 0');
+    await sleep(3000);
+    console.log(`  ★ 진단 — 알림이 떠 있는 3초 동안 App 렌더 ${(await host.evaluate('window.__qwAppRenders ?? 0')) - rr0}번`);
     const goneByItself = await host.waitFor(
       "document.querySelector('.toast') === null",
       12000,
@@ -2389,7 +2578,7 @@ try {
       await host.evaluate("document.activeElement?.innerText ?? '(없음)'"),
     );
     // ★ 취소로 닫는다. 여기서 문제를 넘기면 이후 검사가 흐트러진다
-    await host.click('취소');
+    await closeTop(host);
     await sleep(250);
     record(
       '★ 취소로 확인 팝업이 닫힌다',
@@ -2699,7 +2888,7 @@ try {
       '★ R041 — 나가기 팝업 문구는 짧게 (제목 한 줄 + 한 줄 설명)',
       (await host.evaluate("document.querySelector('.confirm-modal .confirm-note')?.innerText.length ?? 99")) <= 30,
     );
-    await host.click('취소');
+    await closeTop(host);
     record(
       '★ 취소하면 게임이 그대로다',
       (await host.evaluate("document.querySelector('.confirm-modal') === null")) &&
@@ -2941,7 +3130,7 @@ try {
       await sleep(250);
       const mid = JSON.parse(await host.evaluate(`JSON.stringify((() => { const r = document.querySelector('.confirm-modal').getBoundingClientRect(); return { dy: Math.round(r.top + r.height / 2 - innerHeight / 2), dx: Math.round(r.left + r.width / 2 - innerWidth / 2) }; })())`));
       record('★ R041 B — 팝업은 화면 가운데', Math.abs(mid.dx) <= 3 && Math.abs(mid.dy) <= 3, JSON.stringify(mid));
-      await host.click('취소');
+      await closeTop(host);
       // ⓘ — ✕ 로 닫힌다 · 짧다
       await host.evaluate("document.querySelector('.infotip-btn')?.click()");
       await sleep(200);
@@ -2956,7 +3145,7 @@ try {
       await guest.evaluate("document.querySelector('.seat-card.pickable')?.click()");
       await sleep(250);
       const guestActs = await guest.evaluate("[...document.querySelectorAll('.confirm-modal .confirm-actions button')].map(b => b.innerText.trim()).join(',')");
-      record('★ R041 C → R043 C — 방장이 아니면 칸을 눌러도 친구 신청만', guestActs === '친구 신청,취소', guestActs);
+      record('★ R041 C → R043 C — 방장이 아니면 칸을 눌러도 친구 신청만', guestActs === '친구 신청', guestActs);
       await guest.key('Escape', { code: 'Escape', vk: 27 });
       await sleep(150);
       await guest.setViewport(720, 900);

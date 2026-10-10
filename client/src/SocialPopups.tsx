@@ -6,6 +6,9 @@
 // ★ 🔔 숫자 = 읽지 않은 알림. 창을 열면 모두 읽음이 된다 — 연 순간 새것이던 줄은 점으로 표시해 둔다.
 // ★★ 알림 줄도 쪽 넘기기 (칸 안 스크롤 없음 — 0장 원칙 3)
 // ★ 지난 초대(방이 사라짐)는 서버가 목록을 보낼 때 지운다.
+// ★★★ R044 A-3 (건우) — 🔔 알림은 **화면에서 뺐다** (친구 창과 기능이 겹친다). BellButton 은 지우지 않고 남겨 둔다 —
+//   쓰는 곳(Lobby 상단 바 · App 방 목록 화면 · MobileMenu 의 알림 줄)을 주석으로 막았다. 되살리는 법 07-DECISIONS D-214.
+// ★ R044 B — 닫기 규칙은 useDismiss 한 곳 (✕ · 바깥 누르기 · Esc)
 // =============================================================================
 
 import { useEffect, useRef, useState } from 'react';
@@ -17,30 +20,18 @@ import FriendList, { colorOf } from './FriendList.js';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import { usePopup } from './popup.js';
+import { useDismiss } from './useDismiss.js';
 import type { NotificationView, Social } from './useSocial.js';
-
-function useEsc(open: boolean, close: () => void) {
-  useEffect(() => {
-    if (!open) return undefined;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape' || e.isComposing) return;
-      e.preventDefault();
-      e.stopPropagation();
-      close();
-    };
-    window.addEventListener('keydown', onKey, true);
-    return () => window.removeEventListener('keydown', onKey, true);
-  }, [open, close]);
-}
 
 const isMobile = () => window.matchMedia('(max-width: 999px)').matches;
 
 /** 친구 버튼 + 창 (방 안). 모바일에서는 버튼을 숨기고 ☰ 의 "친구" 가 같은 창을 연다 */
-export function FriendsButton({ social, inRoom }: { social: Social; inRoom: Set<string> }) {
+export function FriendsButton({ social, inRoom, onJoin }: { social: Social; inRoom: Set<string>; onJoin: (roomId: string) => void }) {
   const [open, setOpen] = usePopup('friends');
   const close = () => setOpen(false);
-  useEsc(open, close);
-  const waiting = social.incoming.length;
+  useDismiss(open, close, '.social');
+  // ★ R044 A-4 — 숫자 = 받은 신청 + 받은 초대 (🔔 대신 여기 하나)
+  const waiting = social.pending;
   return (
     <span className="social">
       <button type="button" id="friends-btn" className="ghost tiny" aria-expanded={open} onClick={() => setOpen((v) => !v)}>
@@ -54,7 +45,16 @@ export function FriendsButton({ social, inRoom }: { social: Social; inRoom: Set<
             <p className="pop-title">친구</p>
             <PopupClose onClose={close} />
           </div>
-          <FriendList social={social} mode="room" inRoom={inRoom} pageSize={isMobile() ? 5 : 6} popupKey="room" />
+          <FriendList
+            social={social}
+            mode="room"
+            inRoom={inRoom}
+            pageSize={isMobile() ? 5 : 6}
+            onJoin={(id) => {
+              close();
+              onJoin(id);
+            }}
+          />
         </div>
       )}
     </span>
@@ -114,7 +114,7 @@ function NoticeRow({ n, fresh, social, onJoin }: { n: NotificationView; fresh: b
 export function BellButton({ social, onJoin }: { social: Social; onJoin: (roomId: string) => void }) {
   const [open, setOpen] = usePopup('notices');
   const close = () => setOpen(false);
-  useEsc(open, close);
+  useDismiss(open, close, '.social');
   const [page, setPage] = useState(0);
   // 연 순간 읽지 않았던 알림 (창이 열려 있는 동안 점으로 남긴다)
   const freshIds = useRef<Set<string>>(new Set());

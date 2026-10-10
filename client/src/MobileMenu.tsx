@@ -42,7 +42,7 @@ export default function MobileMenu({ canRename, onInvite, onFriends, onNotices, 
 
   return createPortal(
     <div
-      className="modal-back popup-back"
+      className="modal-back popup-back clear"
       onPointerDown={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -58,12 +58,15 @@ export default function MobileMenu({ canRename, onInvite, onFriends, onNotices, 
           </button>
           <button type="button" className="menu-item" onClick={onFriends}>
             <Icon icon={UserPlus} /> 친구
-            {friendWaiting > 0 && <span className="count-badge inline">{friendWaiting}</span>}
+            {/* ★ R044 A-4 — 받은 신청 + 받은 초대 */}
+            {friendWaiting > 0 && <span className="count-badge inline">{friendWaiting > 9 ? '9+' : friendWaiting}</span>}
           </button>
+          {/* ★★ R044 A-3 (건우) — 알림은 화면에서 뺐다 (친구와 겹친다). 되살리려면 이 주석을 푼다 — 07-DECISIONS D-214
           <button type="button" className="menu-item" onClick={onNotices}>
             <Icon icon={Bell} /> 알림
             {noticeCount > 0 && <span className="count-badge inline">{noticeCount > 9 ? '9+' : noticeCount}</span>}
           </button>
+          */}
           {canRename && (
             <button type="button" className="menu-item" onClick={onProfile}>
               <Icon icon={Pencil} /> 프로필

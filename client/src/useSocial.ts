@@ -5,7 +5,7 @@
 // ★ 버튼 로딩(A-2): 동작을 보내면 그 줄의 버튼이 잠기고, 서버 결과(friends.result)가 오면 풀린다.
 // =============================================================================
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 
 export interface FriendStatus {
@@ -43,6 +43,10 @@ export interface Social {
   outgoing: FriendView[];
   notifications: NotificationView[];
   unread: number;
+  /** ★ R044 A-5 — 아직 살아 있는 방으로 받은 초대 (최근 것이 앞) */
+  invites: NotificationView[];
+  /** ★ R044 A-4 — 친구 버튼 숫자 · 모바일 ☰ 점 = 받은 신청 + 받은 초대 */
+  pending: number;
   /** 지금 서버를 기다리는 동작 (예: 'invite:12') */
   busy: string | null;
   lastResult: SocialResult | null;
@@ -52,7 +56,7 @@ export interface Social {
   remove: (accountId: string) => void;
   invite: (accountId: string) => void;
   readAll: () => void;
-  dismiss: (id: string) => void;
+  dismiss: (id: string) => unknown;
 }
 
 export function useSocial(socket: Socket | null, onNew?: (n: { kind: string; fromNickname: string }) => void): Social {
@@ -82,6 +86,13 @@ export function useSocial(socket: Socket | null, onNew?: (n: { kind: string; fro
       onNew?.(p);
     };
     const onResult = (p: Omit<SocialResult, 'at'>) => {
+      const s0 = sentAt.current;
+      if (s0) {
+        const w = window as unknown as { __qwSocialTimes?: { action: string; ms: number }[] };
+        (w.__qwSocialTimes ??= []).push({ action: s0.key.split(':')[0] ?? '', ms: Math.round(performance.now() - s0.at) });
+        if (w.__qwSocialTimes.length > 30) w.__qwSocialTimes.shift();
+      }
+      sentAt.current = null;
       setBusy(null);
       setLastResult({ ...p, at: Date.now() });
     };
@@ -91,6 +102,13 @@ export function useSocial(socket: Socket | null, onNew?: (n: { kind: string; fro
     socket.on('notifications.state', onNotes);
     socket.on('notifications.new', onNewNote);
     socket.on('friends.result', onResult);
+    // ★ R044 — 오류가 오면(서버가 결과 대신 error) 로딩을 푼다 (화면 위 오류 안내는 App 이 띄운다)
+    const onError = () => {
+      if (!sentAt.current) return;
+      sentAt.current = null;
+      setBusy(null);
+    };
+    socket.on('error', onError);
     if (socket.connected) load();
     return () => {
       socket.off('connect', load);
@@ -99,19 +117,39 @@ export function useSocial(socket: Socket | null, onNew?: (n: { kind: string; fro
       socket.off('notifications.state', onNotes);
       socket.off('notifications.new', onNewNote);
       socket.off('friends.result', onResult);
+      socket.off('error', onError);
     };
   }, [socket, onNew]);
 
+  /**
+   * ★★ R044 A-1 — 로딩이 끝나지 않던 길을 막는다:
+   *   서버가 결과(friends.result) 대신 오류(error)를 보내면 로딩이 영원히 돌았다 → 오류가 와도 풀린다.
+   *   8초 안에 답이 없으면 풀고 "응답이 늦어요" 를 보인다.
+   *   ★ 진단: 동작마다 걸린 시간(보냄 → 결과)을 window.__qwSocialTimes 에 남긴다 (최근 30개 — 화면에는 안 보인다).
+   */
+  const sentAt = useRef<{ key: string; at: number } | null>(null);
   const send = useCallback(
     (event: string, payload: unknown, busyKey: string) => {
       if (!socket) return;
       setBusy(busyKey);
+      sentAt.current = { key: busyKey, at: performance.now() };
       socket.emit(event, payload);
+      window.setTimeout(() => {
+        if (sentAt.current?.key !== busyKey) return;
+        sentAt.current = null;
+        setBusy((b) => (b === busyKey ? null : b));
+        setLastResult({ action: busyKey.split(':')[0] ?? '', ok: false, message: '응답이 늦어요. 다시 해 주세요.', at: Date.now() });
+      }, 8000);
     },
     [socket],
   );
 
+  const dismiss = useCallback((id: string) => socket?.emit('notifications.dismiss', { id }), [socket]);
+  // ★ 방 코드가 없는 초대 = 방이 사라졌다 (서버가 목록을 보낼 때 지우지만, 그 사이에도 보이지 않게)
+  const invites = notifications.filter((n) => n.kind === 'room_invite' && n.roomId && n.roomCode);
   return {
+    invites,
+    pending: incoming.length + invites.length,
     friends,
     incoming,
     outgoing,
@@ -125,6 +163,6 @@ export function useSocial(socket: Socket | null, onNew?: (n: { kind: string; fro
     remove: (accountId) => send('friends.remove', { accountId }, `remove:${accountId}`),
     invite: (accountId) => send('friends.invite', { accountId }, `invite:${accountId}`),
     readAll: () => socket?.emit('notifications.read', {}),
-    dismiss: (id) => socket?.emit('notifications.dismiss', { id }),
+    dismiss,
   };
 }

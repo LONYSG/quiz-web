@@ -12,7 +12,7 @@
 // ★ 새로 만드는 버튼과 배지는 styles.css 의 라벨 규칙을 그대로 받는다 (D-022).
 // =============================================================================
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import { formatExperienceRate, NICKNAME_LIMIT_HINT, nicknameFits, NICKNAME_TOO_LONG_MESSAGE, RULES } from '@quiz/shared';
 import { changeNickname, deleteAvatar, errorMessage, uploadAvatar } from './api.js';
@@ -47,6 +47,7 @@ import { useGameSounds } from './useGameSounds.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
 import BusyButton from './BusyButton.js';
 import { BellButton, FriendsButton } from './SocialPopups.js';
+import { useDismiss } from './useDismiss.js';
 import type { Social } from './useSocial.js';
 
 interface Props {
@@ -260,14 +261,9 @@ export default function Lobby({
   }, [mustRename, snapshot.room.state, openPopupId, setRenameOpen]);
   const renameText = renameDraft ?? snapshot.me.nickname;
   const renameFits = nicknameFits(renameText.trim());
-  useEffect(() => {
-    if (!renameOpen || mustRename) return undefined;
-    const onDown = (e: PointerEvent) => {
-      if (!(e.target as Element).closest('.rename') && !(e.target as Element).closest('.modal-back')) setRenameOpen(false);
-    };
-    window.addEventListener('pointerdown', onDown);
-    return () => window.removeEventListener('pointerdown', onDown);
-  }, [renameOpen, mustRename, setRenameOpen]);
+  // ★ R044 B — 바깥 누르기 · Esc = ✕. ★★ 닉네임을 바꿔야 하면(mustRename) 반드시 거쳐야 하는 창 — ✕ 없음 · 바깥 · Esc 로도 안 닫힌다
+  const closeRename = useCallback(() => setRenameOpen(false), [setRenameOpen]);
+  useDismiss(renameOpen, closeRename, '.rename', !mustRename);
 
   const me = snapshot.players.find((p) => p.accountId === snapshot.me.accountId);
   const state = snapshot.room.state;
@@ -611,8 +607,10 @@ export default function Lobby({
             {inviteOpen && <InvitePopup code={snapshot.room.code} url={inviteUrl} onClose={() => setInviteOpen(false)} />}
           </span>
           {/* ★★ R043 C — 친구 · 🔔 알림 (모바일은 ☰ 안) */}
-          <FriendsButton social={social} inRoom={new Set(snapshot.players.map((p) => p.accountId))} />
+          <FriendsButton social={social} inRoom={new Set(snapshot.players.map((p) => p.accountId))} onJoin={onJoinOther} />
+          {/* ★★ R044 A-3 (건우) — 🔔 알림은 화면에서 뺐다 (친구 창과 겹친다). 되살리려면 주석을 푼다 — 07-DECISIONS D-214
           <BellButton social={social} onJoin={onJoinOther} />
+          */}
           {state === 'LOBBY' && me && (
             <span className="rename">
               <button
@@ -752,7 +750,8 @@ export default function Lobby({
           >
             <Icon icon={Menu} />
             {/* ★ R043 C — 새 알림 · 받은 신청이 있으면 빨간 점 */}
-            {(social.unread > 0 || social.incoming.length > 0) && <span className="red-dot" aria-label="새 알림" />}
+            {/* ★ R044 A-4 — 받은 신청 + 받은 초대 (옛: 안 읽은 알림 포함) */}
+            {social.pending > 0 && <span className="red-dot" aria-label="새 친구 신청 · 초대" />}
           </button>
         </div>
       </header>
@@ -765,7 +764,7 @@ export default function Lobby({
           onFriends={() => openPopup('friends')}
           onNotices={() => openPopup('notices')}
           noticeCount={social.unread}
-          friendWaiting={social.incoming.length}
+          friendWaiting={social.pending}
           onProfile={() => {
             setRenameMsg(null);
             setRenameOpen(true);

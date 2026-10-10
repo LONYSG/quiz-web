@@ -51,7 +51,7 @@ export default function KickFlow({ socket, target, onStep, onClose, isHost, onFr
       // ★★ R042 (건우) — 방장 넘기기. 접속 중인 사람에게만
       if (target.connected) actions.push({ label: '방장 넘기기', tone: 'calm', onClick: () => onStep('host') });
     }
-    return <ConfirmModal key="choose" kind="kick-choose" title={<>{name} 님을 어떻게 할까요?</>} actions={actions} onCancel={onClose} />;
+    return <ConfirmModal key="choose" kind="kick-choose" title={<>{name} <span className="nowrap">님을 어떻게 할까요?</span></>} actions={actions} onCancel={onClose} />;
   }
   if (!isHost) return null;
   if (target.step === 'host') {
@@ -59,7 +59,7 @@ export default function KickFlow({ socket, target, onStep, onClose, isHost, onFr
       <ConfirmModal
         key="host"
         kind="kick-host"
-        title={<>{name} 님에게 방장을 넘길까요?</>}
+        title={<>{name} <span className="nowrap">님에게 방장을 넘길까요?</span></>}
         actions={[
           {
             label: '넘기기',
@@ -79,7 +79,7 @@ export default function KickFlow({ socket, target, onStep, onClose, isHost, onFr
     <ConfirmModal
       key={target.step}
       kind={ban ? 'kick-ban' : 'kick-kick'}
-      title={<>{name} 님을 {ban ? '차단할까요?' : '내보낼까요?'}</>}
+      title={<>{name} <span className="nowrap">님을 {ban ? '차단할까요?' : '내보낼까요?'}</span></>}
       actions={[
         {
           label: ban ? '차단하기' : '내보내기',

@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { Check, Copy, Link } from 'lucide-react';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
+import { useDismiss } from './useDismiss.js';
 
 interface Props {
   code: string;
@@ -35,6 +36,8 @@ async function copyText(text: string): Promise<void> {
 
 export default function InvitePopup({ code, url, onClose }: Props) {
   const [copied, setCopied] = useState<'code' | 'link' | null>(null);
+  // ★ R044 B — 바깥 누르기 · Esc = ✕
+  useDismiss(true, onClose, '.invite, .invite-pop');
   const copy = (what: 'code' | 'link') => {
     void copyText(what === 'code' ? code : url).then(() => {
       setCopied(what);

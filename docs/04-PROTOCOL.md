@@ -910,3 +910,12 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `notifications.list` → `notifications.state` | `{ items:[{id,kind,fromAccountId,fromNickname,fromAvatarV,roomId,roomCode,createdAt,read}] }` |
 | `notifications.read` · `notifications.dismiss {id}` | 모두 읽음 · 하나 지우기 |
 | `notifications.new` (S→C) | `{ kind, fromNickname }` — 받는 사람에게 즉시 (화면은 게임 중이 아니면 알림 한 줄) |
+
+## ★ R044 — 바뀐 것
+
+| 항목 | 내용 |
+|------|------|
+| 소켓 이벤트 | 새것 · 바뀐 것 없음. 🔔 화면은 뺐지만 `notifications.*` 는 그대로 — ★ 방 초대(초대 토스트 · 친구 줄)가 이 목록을 읽는다 (D-214) |
+| 화면 쪽 | `friends.result` 대신 `error` 가 와도 버튼 로딩을 푼다 · 8초 안에 답이 없으면 풀고 "응답이 늦어요" (R044 A-1) |
+| 서버 로그 | `friends.request` 처리가 300ms 를 넘으면 `[friends] 신청 느림 Nms (아이디 찾기 · 저장)` (진단) |
+| `PUT /api/me/prefs` theme | `pastel` · `night` 만 (원색 `pop` 삭제 — D-218) |

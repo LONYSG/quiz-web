@@ -10,7 +10,8 @@
 // ★ 고른 테마는 localStorage 에 남는다 — 같은 브라우저에서 다시 들어와도 유지된다.
 // =============================================================================
 
-export type ThemeId = 'pastel' | 'pop' | 'night';
+// ★ R044 (건우) — 원색(pop) 테마 삭제. 저장된 'pop' 은 기본(파스텔)으로 읽는다 (isTheme 이 거른다)
+export type ThemeId = 'pastel' | 'night';
 
 export interface ThemeInfo {
   id: ThemeId;
@@ -22,7 +23,6 @@ export interface ThemeInfo {
 /** ★ 순서가 Alt+T 순환 순서다. 첫째가 기본값이다 */
 export const THEMES: readonly ThemeInfo[] = [
   { id: 'pastel', label: '파스텔', desc: '밝고 부드러운 색 · 둥근 모양 (캐치마인드 느낌)' },
-  { id: 'pop', label: '원색', desc: '쨍한 원색 · 굵은 테두리 · 만화 같은 그림자' },
   { id: 'night', label: '밤', desc: '어두운 바탕 · 형광 포인트' },
 ];
 

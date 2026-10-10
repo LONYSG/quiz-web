@@ -80,55 +80,7 @@
   --p9: #5c7cfa;
 }
 
-/* ── ★ 테마 2: 원색 — 쨍한 노랑·빨강·파랑 · 굵은 검정 테두리 · 만화 같은 그림자 ─────── */
-[data-theme='pop'] {
-  color-scheme: light;
-  --page: repeating-linear-gradient(135deg, #fff9db 0 22px, #fff3bf 22px 44px);
-  --surface: #ffffff;
-  --surface-2: #fff9db;
-  --surface-3: #ffec99;
-  --border: #1d1d1f;
-  --bw: 2.5px;
-  --text: #1d1d1f;
-  --text-dim: #5c5c66;
-  --accent: #ff3b5c;
-  --accent-ink: #ffffff;
-  --accent-2: #1e7bff;
-  --accent-soft: #ffe3e8;
-  --ok: #0ca44a;
-  --ok-soft: #d3f9d8;
-  --bad: #e8112d;
-  --bad-soft: #ffe3e3;
-  --warn: #ff8a00;
-  --radius: 16px;
-  --radius-sm: 10px;
-  --shadow: 4px 4px 0 #1d1d1f;
-  --shadow-pop: 6px 6px 0 #1d1d1f;
-  --q-bg: #ffffff;
-  --q-border: #1d1d1f;
-  --q-band: linear-gradient(90deg, #ffc400, #ff3b5c 50%, #1e7bff);
-  --q-text: #111114;
-  --bar-bg: #f1f3f5;
-  --bar: linear-gradient(90deg, #1e7bff, #4dabf7);
-  --reveal-bg: #fff3bf;
-  --reveal-border: #1d1d1f;
-  --chip-bg: #ffec99;
-  --chat-bg: #ffffff;
-  --toast-bg: #fff3bf;
-  --toast-border: #1d1d1f;
-  --mask-bg: #1d1d1f;
-  --mask-fg: #ffec99;
-  --p0: #e03131;
-  --p1: #e8590c;
-  --p2: #a07800;
-  --p3: #2b8a3e;
-  --p4: #0c8599;
-  --p5: #1864ab;
-  --p6: #6741d9;
-  --p7: #c2255c;
-  --p8: #8a4b2a;
-  --p9: #364fc7;
-}
+/* ★ R044 (건우) — 원색 테마 삭제 ("이상하고 컴포넌트 크기·배치가 약간 바뀐다" — 테두리 2.5px · 둥글기 16px 가 크기를 바꿨다) */
 
 /* ── ★ 테마 3: 밤 — 짙은 남색 바탕 · 형광 포인트 ────────────────────────────── */
 [data-theme='night'] {
@@ -139,7 +91,7 @@
   --surface-2: #252950;
   --surface-3: #2e3360;
   --border: #353a6b;
-  --bw: 1px;
+  --bw: 1.5px; /* ★ R044 — 테마는 색만: 크기 토큰은 파스텔과 같게 (옛 1px) */
   --text: #eef0ff;
   --text-dim: #9aa0cf;
   --accent: #8f9bff;
@@ -151,7 +103,7 @@
   --bad: #ff6b8b;
   --bad-soft: #42213a;
   --warn: #ffcf5c;
-  --radius: 18px;
+  --radius: 20px; /* ★ R044 — 옛 18px */
   --radius-sm: 12px;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   --shadow-pop: 0 0 0 1px rgba(143, 155, 255, 0.35), 0 14px 40px rgba(0, 0, 0, 0.5);
@@ -2792,8 +2744,9 @@ img.emoji {
 .seat-emoji-pop img.emoji {
   width: 100%;
   height: 100%;
-  /* ★ 칸이 좁으면 위 줄을 살짝 침범해도 된다 (건우: "다른 공간을 약간 침범해도 괜찮다") */
-  transform: scale(1.15);
+  /* ★ R039 — "칸이 좁으면 위 줄을 살짝 침범해도 된다" 였다(scale 1.15).
+     ★★ R044 C-2 (건우: "1536×864 에서 경험 문구가 가려진다") — 침범해도 되는 범위 = **칸 안 빈 자리까지, 글자(닉네임 · 배지 · 경험률)는 가리지 않는다**.
+     그래서 키우지 않는다 — 그림은 자기 자리(.seat-emoji, 남는 높이 · 최대 84px) 안에만 */
 }
 @keyframes emoji-pop {
   0% { transform: scale(0.2) rotate(-25deg); opacity: 0; }
@@ -4186,4 +4139,113 @@ button.primary.tone-warn {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+/* =============================================================================
+   ★★★ R044 B — 팝업 규칙 통일
+   ★ 모든 팝업 오른쪽 위 같은 ✕ · [취소] 버튼 없음 · 바깥 누르기 = ✕ · Esc = ✕
+   ★ 뒤 어둡게: 확인 팝업(결정)만. 정보 창(친구 · 참여자 · 설정 · 안내 · 초대 · 프로필 · 메뉴 · 사진 편집)은 어둡게 하지 않는다
+   ============================================================================= */
+.modal-back.clear {
+  background: transparent;
+}
+.confirm-head {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+/* ★ ✕ 는 제목 위 줄(오른쪽 위) — 제목 옆을 비우지 않는다 (옛: 양옆 26px 를 비워 긴 닉네임 제목이 문장 중간에서 꺾였다) */
+.confirm-modal {
+  width: min(420px, calc(100vw - 32px));
+  padding-top: 38px;
+}
+/* 좁으면 닉네임 다음에서만 줄이 바뀐다 (닉네임 · "님을 …" 은 각자 한 덩어리) */
+.confirm-title .confirm-nick,
+.confirm-title .nowrap {
+  white-space: nowrap;
+}
+/* ── R044 A-5 — 친구 초대 토스트 */
+.invite-layer {
+  z-index: 51;
+}
+.invite-toast {
+  position: relative;
+  align-items: center;
+  max-width: 460px;
+  padding: 8px 44px 8px 10px;
+}
+.invite-toast > .popup-close {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+}
+.invite-toast-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  line-height: 1.3;
+  /* ★ 닉네임은 어디서도 "…" 로 줄이지 않는다(R040) — 좁으면 두 줄 (닉네임 · "님이 초대했어요") */
+  word-break: keep-all;
+}
+.invite-toast-text .nick {
+  font-weight: 800;
+}
+.invite-toast-actions {
+  flex-shrink: 0;
+  display: inline-flex;
+  gap: 6px;
+}
+.invite-toast-actions button {
+  margin: 0;
+}
+.people-sub.status-invite {
+  color: var(--accent);
+  font-weight: 800;
+}
+/* ★★ R044 C-4 — 안내 창: 한 항목 한 줄. PC 는 창 폭을 가장 긴 줄에 맞춘다(옛 440px 고정 — 큰 화면에서 글자만 커져 꺾였다) */
+@media (min-width: 1000px) {
+  .infotip-pop {
+    width: max-content;
+    max-width: calc(100vw - 32px);
+  }
+  .infotip-pop .info-list li {
+    white-space: nowrap;
+  }
+}
+/* ★ R044 C-3 (건우: "문제 수와 '낼 수 있는 문제' 는 같은 분류 — 더 붙어야") — 이 줄만 위로 붙인다 (설정 칸 줄 간격 8px → 3px). 다른 간격은 그대로 */
+@media (min-width: 1000px) {
+  .settings .avail-line {
+    margin-top: -5px !important;
+  }
+}
+/* ★ R044 C-2 — 튀어 오를 때(1.3배)도 위 글자로 번지지 않게: 위쪽 가운데를 기준으로 커진다 (아래 빈 자리 쪽으로) */
+.seat-emoji-pop {
+  transform-origin: 50% 0;
+}
+/* ★ R044 A-6 — 친구 신청 안내 줄: 자리 고정 · 입력칸과 아래 제목 사이 가운데 (옛: 위 10px · 아래 25px · 사라지면 목록이 출렁) */
+.friend-list .friend-msg {
+  min-height: 1.4em;
+  line-height: 1.4;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.friend-list .friend-msg + .list-head,
+.friend-list .friend-msg + p.list-head {
+  margin-top: 0;
+}
+.friend-list .form-error.friend-msg {
+  margin: 0;
+}
+/* ★ R044 A-6 검수 — 다시 찍은 그림에서 위 8px · 아래 14px → 3px 내려 위아래를 같게 */
+.friend-list .friend-msg {
+  margin: 3px 0 -3px;
+}
+/* ★ R044 A-5 검수 — 모바일 방 안: 초대 토스트가 상단 바(☰ · 👥 · 제목)를 덮었다(저절로 사라지지 않아 계속 막는다) → 상단 바 바로 아래 */
+@media (max-width: 999px) {
+  body:has(.room) .toast-layer.invite-layer {
+    top: 52px;
+  }
 }

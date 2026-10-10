@@ -50,7 +50,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
   const list = showScore ? [...players].sort((a, b) => b.score - a.score) : players;
   return createPortal(
     <div
-      className="modal-back popup-back"
+      className="modal-back popup-back clear"
       onPointerDown={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}

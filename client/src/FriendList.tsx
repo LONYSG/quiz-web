@@ -6,6 +6,10 @@
 // ★ 방 목록 화면: 방에 있는 친구는 [들어가기] / 방 안: 친구마다 [초대] (접속 중 · 아직 내 방에 없는 친구만)
 // ★★ 길어지면 칸 안 스크롤 대신 **쪽 넘기기** (‹ 1/3 ›) — 0장 원칙 3. 순서: 방에 있는 친구 → 접속 중 → 오프라인
 // ★ 친구 삭제는 확인 팝업 (A-6 — 돌이키기 힘든 결정)
+// ★★ R044 A-2 (버그) — 방 안에서 삭제가 "아무 동작도 안 했다": 삭제 확인을 팝업 저장소(한 번에 하나)로 열어
+//   그 순간 **친구 창 자신이 닫히고**, 확인 팝업은 친구 창 안에서 그려지므로 함께 사라졌다(방 목록 화면은 창이 아니라 칸이라 멀쩡했다).
+//   → 삭제 확인은 이 목록의 **안쪽 단계**(로컬 상태)로 연다 — 친구 창은 열린 채, 확인이 그 위에 뜬다 (KickFlow 의 두 단계와 같은 생각).
+// ★★ R044 A-5 — 나를 초대한 친구 줄: "나를 초대했어요" + [들어가기] (아래 토스트를 놓쳐도 들어갈 수 있게)
 // =============================================================================
 
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
@@ -15,7 +19,6 @@ import BusyButton from './BusyButton.js';
 import ConfirmModal from './ConfirmModal.js';
 import FitText from './FitText.js';
 import Icon from './Icon.js';
-import { usePopup } from './popup.js';
 import type { FriendStatus, FriendView, Social } from './useSocial.js';
 
 interface Props {
@@ -23,11 +26,9 @@ interface Props {
   mode: 'home' | 'room';
   /** 방 안 — 이미 내 방에 있는 사람 */
   inRoom?: Set<string>;
-  /** 방 목록 화면 — 친구가 있는 방으로 들어가기 */
+  /** 친구가 있는 방 · 초대받은 방으로 들어가기 (방 안이면 App 이 "나가고 들어갈까요?" 를 묻는다) */
   onJoin?: (roomId: string) => void;
   pageSize: number;
-  /** 다른 화면이 쓰는 확인 팝업 id 와 겹치지 않게 */
-  popupKey: string;
 }
 
 /** ★ 사진이 없을 때 첫 글자 바탕색 — 계정마다 고정 (방 안 색 번호가 없으니 계정 id 로 고른다) */
@@ -40,14 +41,14 @@ export function statusText(s?: FriendStatus): string {
 }
 const rank = (s?: FriendStatus) => (s?.kind === 'game' || s?.kind === 'lobby' ? 0 : s?.kind === 'online' ? 1 : 2);
 
-export function FriendRow({ f, sub, children }: { f: FriendView; sub: string; children?: ReactNode }) {
+export function FriendRow({ f, sub, invited, children }: { f: FriendView; sub: string; invited?: boolean; children?: ReactNode }) {
   return (
     <li data-account={f.accountId} className={f.status?.kind === 'offline' ? 'offline' : undefined}>
       <div className="people-row">
         <Avatar nickname={f.nickname} colorIndex={colorOf(f.accountId)} accountId={f.accountId} avatarV={f.avatarV} />
         <span className="people-name">
           <FitText text={f.nickname} className="nick" minPx={12} />
-          <span className={`people-sub status-${f.status?.kind ?? 'none'}`}>{sub}</span>
+          <span className={invited ? 'people-sub status-invite' : `people-sub status-${f.status?.kind ?? 'none'}`}>{sub}</span>
         </span>
         {children && <span className="row-actions">{children}</span>}
       </div>
@@ -55,11 +56,11 @@ export function FriendRow({ f, sub, children }: { f: FriendView; sub: string; ch
   );
 }
 
-export default function FriendList({ social, mode, inRoom, onJoin, pageSize, popupKey }: Props) {
+export default function FriendList({ social, mode, inRoom, onJoin, pageSize }: Props) {
   const [loginId, setLoginId] = useState('');
   const [page, setPage] = useState(0);
   const [delTarget, setDelTarget] = useState<FriendView | null>(null);
-  const [delOpen, setDelOpen] = usePopup(`friend-delete:${popupKey}`);
+  const inviteFrom = (accountId: string) => social.invites.find((n) => n.fromAccountId === accountId);
   const sorted = useMemo(() => [...social.friends].sort((a, b) => rank(a.status) - rank(b.status) || a.nickname.localeCompare(b.nickname)), [social.friends]);
   const pages = Math.max(1, Math.ceil(sorted.length / pageSize));
   useEffect(() => {
@@ -85,7 +86,10 @@ export default function FriendList({ social, mode, inRoom, onJoin, pageSize, pop
           신청
         </BusyButton>
       </form>
-      {recent && <p className={recent.ok ? 'friend-msg ok' : 'friend-msg form-error'}>{recent.message}</p>}
+      {/* ★ R044 A-6 — 안내 자리는 늘 비워 둔다: 나타났다 사라질 때 아래 목록이 출렁이지 않고, 입력칸 · 목록 사이 가운데에 선다 */}
+      <p className={recent ? (recent.ok ? 'friend-msg ok' : 'friend-msg form-error') : 'friend-msg'} aria-live="polite">
+        {recent?.message ?? ''}
+      </p>
 
       {social.incoming.length > 0 && (
         <>
@@ -128,12 +132,21 @@ export default function FriendList({ social, mode, inRoom, onJoin, pageSize, pop
           {shown.map((f) => {
             const inMyRoom = inRoom?.has(f.accountId) ?? false;
             const inSomeRoom = f.status?.kind === 'game' || f.status?.kind === 'lobby';
+            const inv = inMyRoom ? undefined : inviteFrom(f.accountId);
             return (
-              <FriendRow key={f.accountId} f={f} sub={inMyRoom ? '이 방에 있어요' : statusText(f.status)}>
-                {mode === 'home' && inSomeRoom && f.status?.roomId && (
-                  <button type="button" className="primary tiny" onClick={() => onJoin?.(f.status!.roomId!)}>
+              <FriendRow key={f.accountId} f={f} sub={inMyRoom ? '이 방에 있어요' : inv ? '나를 초대했어요' : statusText(f.status)} invited={Boolean(inv)}>
+                {inv ? (
+                  <button type="button" className="primary tiny" onClick={() => onJoin?.(inv.roomId!)}>
                     들어가기
                   </button>
+                ) : (
+                  mode === 'home' &&
+                  inSomeRoom &&
+                  f.status?.roomId && (
+                    <button type="button" className="primary tiny" onClick={() => onJoin?.(f.status!.roomId!)}>
+                      들어가기
+                    </button>
+                  )
                 )}
                 {mode === 'room' && !inMyRoom && f.status?.kind !== 'offline' && f.status !== undefined && (
                   <BusyButton className="primary tiny" busy={busy(`invite:${f.accountId}`)} onClick={() => social.invite(f.accountId)}>
@@ -144,10 +157,7 @@ export default function FriendList({ social, mode, inRoom, onJoin, pageSize, pop
                   type="button"
                   className="ghost tiny icon-only"
                   aria-label={`${f.nickname} 친구 삭제`}
-                  onClick={() => {
-                    setDelTarget(f);
-                    setDelOpen(true);
-                  }}
+                  onClick={() => setDelTarget(f)}
                 >
                   <Icon icon={UserMinus} />
                 </button>
@@ -172,12 +182,12 @@ export default function FriendList({ social, mode, inRoom, onJoin, pageSize, pop
         </>
       )}
 
-      {delOpen && delTarget && (
+      {delTarget && (
         <ConfirmModal
           kind="friend-delete"
           title={
             <>
-              <strong className="confirm-nick">{delTarget.nickname}</strong> 님을 친구에서 지울까요?
+              <strong className="confirm-nick">{delTarget.nickname}</strong> <span className="nowrap">님을 친구에서 지울까요?</span>
             </>
           }
           actions={[
@@ -186,11 +196,11 @@ export default function FriendList({ social, mode, inRoom, onJoin, pageSize, pop
               tone: 'warn',
               onClick: () => {
                 social.remove(delTarget.accountId);
-                setDelOpen(false);
+                setDelTarget(null);
               },
             },
           ]}
-          onCancel={() => setDelOpen(false)}
+          onCancel={() => setDelTarget(null)}
         />
       )}
     </div>

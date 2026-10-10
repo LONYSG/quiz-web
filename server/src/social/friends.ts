@@ -178,11 +178,18 @@ export function registerFriendHandlers(socket: Socket): void {
       },
     },
     async ({ socket: s, session, payload }) => {
+      // ★ R044 A-1 — 단계별 시간. 300ms 를 넘으면 서버 로그에 남긴다 (로컬 실측은 약 8ms — 느린 환경에서 어디가 걸리는지 보려고)
+      const t0 = performance.now();
       let target = payload.accountId;
       if (!target && payload.loginId) target = (await findAccountIdByLoginId(payload.loginId))?.id ?? null;
+      const tFind = performance.now();
       if (!target) return result(s, 'request', false, '그 아이디를 찾을 수 없어요.');
       if (target === session.accountId) return result(s, 'request', false, '자기 자신에게는 신청할 수 없어요.');
       const r = await requestFriend(session.accountId, target);
+      const tSave = performance.now();
+      if (tSave - t0 > 300) {
+        console.warn(`[friends] 신청 느림 ${Math.round(tSave - t0)}ms (아이디 찾기 ${Math.round(tFind - t0)}ms · 저장 ${Math.round(tSave - tFind)}ms)`);
+      }
       if (r === 'already_friends') return result(s, 'request', false, '이미 친구예요.');
       if (r === 'already_requested') return result(s, 'request', false, '이미 신청했어요.');
       result(s, 'request', true, r === 'accepted' ? '친구가 됐어요.' : '친구 신청을 보냈어요.');
