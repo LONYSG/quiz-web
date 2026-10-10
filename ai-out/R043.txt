@@ -26,6 +26,7 @@ STATUS: 완료 — 새로 정한 것(판단)은 5장 · 전부 되돌리기 쉬�
 어디까지
 - A(10개) · B(안내문) · C(친구·알림·초대) · D(검수) 전부 끝. 단계마다 커밋 (A ff7f253 · B 876e66f · C 94c0fa7 · D 이번 커밋).
 - npm run verify 통과 — typecheck · vitest 362 · smoke 12/12 · ui-check 546/546 · ui-check:sound 5/5 · ★ ui-check:social 92/92 (새로 verify 에 넣었다).
+  ※ 정확히는 한 번에 다 돈 것이 아니다: 첫 verify 가 ui-check 6건에서 멈췄고(옛 기대값 — 1장 · 10-TESTING 25장), 고친 뒤 ui-check · sound · social 을 하나씩 다시 돌려 각각 통과했다.
   ※ ui-check 가 R042 554 → 546 으로 줄었다: 없앤 단축키 목록 창의 검사들을 "버튼으로 하는 검사" 와 "꺼진 단축키는 아무것도 열지 않는다" 로 바꿔서다.
 - 봇: ★ R043 새 시나리오 — friends 27/27 · roomcode 6/6 · pwreset 11/11 (각각 따로 돌려 통과).
   전체 한 번 돌리기(34종)는 ★ **끝까지 못 했다** — 시스템 메모리가 모자라 Claude Code 가 백그라운드 실행을 멈췄다(race 를 도는 중).
