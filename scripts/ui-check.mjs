@@ -2425,8 +2425,11 @@ try {
   }
   if (SOCIAL_ONLY) {
     await socialFlow(browser);
-    await profileFlow(browser); // ★ R045 D — verify 에서도 돈다
-    await emojiFlow(browser); // ★ R045 A — verify 에서도 돈다
+    // ★ R045 — verify 에서는 이어서 돈다. UICHECK_NO_CHAIN=1 이면 친구 흐름만 (나눠 돌릴 때 — 메모리 · 시간)
+    if (!process.env.UICHECK_NO_CHAIN) {
+      await profileFlow(browser); // ★ R045 D
+      await emojiFlow(browser); // ★ R045 A
+    }
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (LONG_ONLY) {
@@ -3177,9 +3180,12 @@ try {
     const leaveText = await host.evaluate(
       "document.querySelector('.confirm-modal')?.innerText ?? ''",
     );
+    // ★ R045 B — 문구는 상황에 맞게: 나 말고 접속 중인 사람이 있으면 "방 코드 N 으로 다시 …" / 없으면 "방이 사라져요" (D-222)
+    const othersOnline = await host.evaluate("[...document.querySelectorAll('.seat-card:not(.empty):not(.mine)')].some((c) => !c.classList.contains('offline'))");
     record(
-      '★★ 확인창이 "마지막 접속자면 방이 사라진다" 를 알린다',
-      leaveText.includes('방이 바로 사라져요'),
+      '★★ 확인창 문구가 상황에 맞다 (다른 접속자 있음 → 방 코드 / 없음 → 방이 사라져요)',
+      othersOnline ? /방 코드 \d{6}/.test(leaveText) : leaveText.includes('방이 사라져요'),
+      `다른 접속자=${othersOnline} · ${leaveText.replace(/\s+/g, ' ')}`,
     );
     record(
       '★ R041 — 나가기 팝업 문구는 짧게 (제목 한 줄 + 한 줄 설명)',
