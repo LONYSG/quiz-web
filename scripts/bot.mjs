@@ -1557,16 +1557,20 @@ async function scenarioCountdown() {
   //       끊겼다가 돌아와 결과를 확인할 사람이 있을 수 있다.
   //   ★ 그래서 결과 화면·로비는 기존 경로인 **활성 0명 10분 idle 삭제**(Q-14/D-066)로 정리한다.
   //     ★ 10분을 기다릴 수는 없으므로 여기서는 "그 경로에 올라탔는지"까지만 단정한다.
+  // ★★★ R046 (D-225) — 끊긴 사람은 60초가 지나면 빠진다. 그래서 "남은 슬롯" 이 있을 때만 방이 남는다:
+  //   나가기 직전 목록에 다른 사람이 있으면(끊겼어도 60초 전) → 방이 남는다(결과 화면 · 활성 0 → 10분 idle 경로)
+  //   다른 사람이 없으면(이미 60초로 빠졌다) → 목록에 나만 → 즉시 정리 (D-222 · D-225)
+  const othersInList = (back.snapshot?.players ?? []).filter((p) => p.accountId !== back.snapshot.me.accountId).length;
   back.leave();
   await sleep(800);
   const rest = await roomStateOf(roomId);
-  expectTrue(
-    '★★ 결과 화면에서 나가면 즉시 폭파되지 않는다 (남은 슬롯이 결과를 본다)',
-    rest.exists === true,
-    `state=${rest.state}`,
-  );
-  expect('★★ 활성은 0명이다 → 10분 idle 삭제 경로에 오른다 (Q-14)', rest.activeCount, 0);
-  expect('★ 상태는 결과 화면이다 (PAUSED 로 가지 않는다)', rest.state, 'GAME_RESULT');
+  if (othersInList > 0) {
+    expectTrue('★★ 결과 화면에서 나가도 (끊긴 사람이 아직 목록에 있으면) 방이 남는다', rest.exists === true, `state=${rest.state} · 남은 ${othersInList}명`);
+    expect('★★ 활성은 0명이다 → 10분 idle 삭제 경로에 오른다 (Q-14)', rest.activeCount, 0);
+    expect('★ 상태는 결과 화면이다 (PAUSED 로 가지 않는다)', rest.state, 'GAME_RESULT');
+  } else {
+    expectTrue('★★ R046 — 다른 사람이 60초로 이미 빠졌다 → 목록에 나만 → 나가면 방이 정리된다', rest.exists !== true, `state=${rest.state}`);
+  }
   back.disconnect();
 
   host.disconnect();

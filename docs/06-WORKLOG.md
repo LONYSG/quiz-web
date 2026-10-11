@@ -58,7 +58,7 @@
 - [x] **B 옮기기** — 방 안 친구 창에도 [들어가기](다른 방에 있는 친구) · [초대] 같이 / **C 채팅** — 한 말투 · 나간 줄 다음에 방장 줄 /
       **D 메인 프로필** — ProfilePanel 로 꺼내 방 목록 화면에도 · 친구 목록에 바로(onProfileChanged) / **E 밤 첫 글자** — 짙은 남색
 - [x] **경우의 수** — 봇 leavematrix 60칸 · ui-check:leave 28(진짜 클릭 · verify 포함)
-- [ ] 끝 점검 (봇 전체 + verify 한 번에) · 보고서
+- [x] **끝 점검** — 봇 37 끝까지(countdown 옛 기대값 → 고쳐 43/43) · verify 는 메모리 부족으로 시작 직후 멈춤 → 단계별 끝까지 통과(ui-check 447 · 소리 5 · social 118 · profile 24 · emoji 16 · leave 28 · vitest 362 · smoke 12) · 보고서 R046
 
 ---
 
