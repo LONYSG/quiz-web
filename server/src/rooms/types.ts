@@ -40,6 +40,11 @@ export interface Player {
   disconnectedAt: number | null;
   /** 현재 게임에서의 점수. Phase 3에서 사용한다 */
   score: number;
+  /**
+   * ★ R046 — 끊긴 채로 지난 시간(ms). 전원이 끊긴 동안은 늘지 않는다(일시정지 중 시계 멈춤).
+   *   DISCONNECT_REMOVE_MS 에 닿으면 나간 것과 똑같이 빠진다. 다시 붙으면 0.
+   */
+  awayMs: number;
 }
 
 export interface RoomSettings {
@@ -351,6 +356,13 @@ export interface Room {
   emptySince: number | null;
   /** ★ R041 — 이 방에서 차단한 계정. 방이 살아 있는 동안만 (방은 사람이 다 나가면 사라진다) */
   bannedAccountIds: Set<string>;
+  /**
+   * ★★ R046 — 끊겨서(타의) 빠진 사람의 그 게임 점수. 같은 게임에 다시 들어오면 되살린다 (건우 확정).
+   *   ★ 자의(나가기 · 옮기기)나 강퇴 · 차단으로 빠진 사람은 지운다(0점부터). 게임이 끝나 로비로 가면 비운다.
+   */
+  departedScores: Map<string, { gameId: string | null; score: number }>;
+  /** ★ R046 — 끊긴 시간을 세는 tick 의 마지막 시각 */
+  awayTickAt: number | null;
 
   /** 진행 중인 게임. LOBBY 에서는 null 이다 */
   game: ActiveGame | null;

@@ -13,10 +13,13 @@ import { emitRoom } from './emit.js';
 import { broadcastSystem } from './systemChat.js';
 import { broadcastPauseStatus } from '../game/pause.js';
 import type { Player, Room } from './types.js';
+import { updateRoomHost } from '../db/rooms.js';
 
 export type HostChangeReason = 'grace' | 'left' | 'handover';
 
 export function transferHost(room: Room, to: Player, reason: HostChangeReason): void {
+  // ★ R046 — DB 의 방장도 함께 (나간 옛 방장이 곧바로 새 방을 만들 수 있게 — 0015)
+  void updateRoomHost(room.id, to.accountId).catch((err) => console.error(`[host] DB 방장 갱신 실패 ${room.id}:`, (err as Error).message));
   const previous = room.hostAccountId;
   if (previous === to.accountId) return;
   room.hostAccountId = to.accountId;

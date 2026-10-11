@@ -17,7 +17,7 @@
 import { randomUUID } from 'node:crypto';
 import type { Server, Socket } from 'socket.io';
 import { maskAnswers, NICKNAME_LIMIT_HINT, nicknameFits, RULES, validateRoomSettings } from '@quiz/shared';
-import { closeRoom, findRoom, insertRoom } from '../db/rooms.js';
+import { closeRoom, findRoom, insertRoom, openRoomsHostedBy, updateRoomHost } from '../db/rooms.js';
 import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
 import { loadExperienced } from '../db/questionPool.js';
 import { cancelCountdown, nicknameBlockMessage, notEnoughMessage, requestStart } from '../game/start.js';
@@ -62,6 +62,7 @@ import {
   registerRoom,
   removePlayer,
   unregisterRoom,
+  onAwayExpired,
 } from '../rooms/registry.js';
 import { transferHost } from '../rooms/host.js';
 import { initFriends, onAccountOffline, onAccountOnline, registerFriendHandlers } from '../social/friends.js';
@@ -117,6 +118,8 @@ export function registerSocketHandlers(io: Server): void {
   initFriends((accountId) => socketByAccount.get(accountId));
   // ★ R045 D — HTTP 로 닉네임 · 사진이 바뀌면 그 사람 소켓 세션도 고친다
   bindAccountSockets((accountId) => socketByAccount.get(accountId));
+  // ★ R046 — 끊긴 채 60초가 지나면 tick 이 이 경로로 뺀다 (나간 것과 같다 · 점수는 같은 게임 동안 기억)
+  onAwayExpired((room, accountId) => ejectPlayer(room, accountId, 'timeout'));
   bindIo(io);
 
   // ── 핸드셰이크에서 세션을 확인한다.
@@ -270,6 +273,16 @@ function registerRoomHandlers(socket: Socket): void {
       let inserted: Awaited<ReturnType<typeof insertRoom>>;
       try {
         inserted = await insertRoom(roomId, payload.title, session.accountId);
+        if (!inserted.ok) {
+          // ★★ R046 — DB 가 아직 나를 어느 열린 방의 방장으로 안다. 메모리와 맞춘 뒤 한 번 더:
+          //   메모리에 없는 방(죽은 줄) = 닫는다 / 다른 사람이 방장인 방(내가 나가며 넘겼다) = DB 방장을 그 사람으로.
+          for (const id of await openRoomsHostedBy(session.accountId)) {
+            const mem = getRoom(id);
+            if (!mem) await closeRoom(id);
+            else if (mem.hostAccountId !== session.accountId) await updateRoomHost(id, mem.hostAccountId);
+          }
+          inserted = await insertRoom(roomId, payload.title, session.accountId);
+        }
       } finally {
         creatingRooms.delete(session.accountId);
       }
@@ -845,28 +858,8 @@ function registerRoomHandlers(socket: Socket): void {
       sendError(s, 'BAD_REQUEST', '자기 자신은 내보낼 수 없습니다.');
       return;
     }
-    if (ban) room.bannedAccountIds.add(accountId);
-    // 당한 사람 화면 — 짧은 안내 후 방 목록으로
-    if (target.connected && target.socketId) {
-      emitToSocket(target.socketId, 'room.kicked', { roomId: room.id, banned: ban });
-      leaveIoRoom(target.socketId, room.id);
-    }
-    removePlayer(room, accountId);
-    // ★ game_players 레코드는 유지한다. 그 게임 기록에는 남는다 (Q-48) — 결과 화면 순위에서는 빠진다
-    broadcastSystem(room, `${target.nickname} 님을 ${ban ? '차단했습니다' : '내보냈습니다'}.`);
-    emitRoom(room, 'room.playerLeft', {
-      accountId,
-      players: playerViews(room),
-      activeCount: activeCount(room),
-    });
-    if (room.currentQuestion) {
-      room.currentQuestion.skipVotes.delete(accountId);
-      room.currentQuestion.experiencedAccountIds.delete(accountId);
-      broadcastExperiencedUpdated(room);
-      evaluateSkip(room);
-      broadcastSkipVotes(room);
-    }
-    void refreshLobbyInfo(room);
+    // ★★ R046 — 강퇴 · 차단도 나가기와 같은 한 경로 (즉시 빠짐 · 0점부터)
+    ejectPlayer(room, accountId, ban ? 'ban' : 'kick');
   };
   const parseKick = (raw: unknown) => {
     const obj = parseObject(raw);
@@ -930,8 +923,12 @@ function returnToLobby(room: NonNullable<ReturnType<typeof getRoom>>): void {
     if (!p.connected) {
       removePlayer(room, p.accountId);
       removed.push(p.nickname);
+      // ★ R046 — 빠진 것은 채팅에 남긴다 (나간 것과 같은 문구)
+      broadcastSystem(room, `${p.nickname} 님이 나갔습니다.`);
     }
   }
+  // ★ R046 — 게임이 끝났다 → 끊겨서 빠진 사람의 점수 기억도 끝 (다음 게임은 모두 0점부터)
+  room.departedScores.clear();
 
   room.state = 'LOBBY';
   room.settingsLocked = false;
@@ -1065,10 +1062,23 @@ function attachToRoom(
     return;
   }
 
+  // ★ R046 — "접속 끊김" 이 보이던 사람이 돌아왔나 (5초 표시 유예를 넘겼다) → 채팅에 "다시 들어왔습니다"
+  const before = room.players.get(session.accountId);
+  const wasShownAway = Boolean(before && !before.connected && before.disconnectedAt !== null && Date.now() - before.disconnectedAt >= RULES.DISCONNECT_DISPLAY_GRACE_MS);
   const added = addPlayer(room, session.accountId, session.nickname, socket.id, session.avatarV);
   if (!added.ok) {
     sendError(socket, 'ROOM_FULL');
     return;
+  }
+  // ★★ R046 — 끊겨서(타의) 빠졌던 사람이 **같은 게임**에 돌아왔다 → 점수를 되살린다 (건우 확정)
+  let restored = false;
+  if (!added.rejoined) {
+    const saved = room.departedScores.get(session.accountId);
+    if (saved && room.game && saved.gameId === room.game.gameId && isInGame(room)) {
+      added.player.score = saved.score;
+      restored = true;
+    }
+    room.departedScores.delete(session.accountId);
   }
 
   data.roomId = roomId;
@@ -1089,8 +1099,9 @@ function attachToRoom(
     recordResolvedWitness(room, session.accountId);
     // ★ R040 — 다시 들어왔더니 닉네임·사진이 바뀌어 있다 → 다른 사람 화면의 참여자 목록도 고친다 (옛 긴 닉네임 안내 등)
     if (added.profileChanged) broadcastPlayers(room);
+    if (wasShownAway) broadcastSystem(room, `${session.nickname} 님이 다시 들어왔습니다.`);
   } else {
-    broadcastSystem(room, `${session.nickname} 님이 입장했습니다.`);
+    broadcastSystem(room, restored ? `${session.nickname} 님이 다시 들어왔습니다. (점수 ${added.player.score}점 이어서)` : `${session.nickname} 님이 입장했습니다.`);
     emitRoom(room, 'room.playerJoined', {
       player: toPlayerView(room, added.player),
       players: playerViews(room),
@@ -1123,101 +1134,97 @@ function attachToRoom(
   void refreshLobbyInfo(room);
 }
 
-/**
- * 방 나가기.
- *
- * ★★★ Q-82 (R015) — **나가기 버튼과 끊김을 다르게 처리한다.**
- *
- *   ★ Q-15 는 "명시적 나가기와 예기치 못한 끊김을 구분하지 않는다" 였다.
- *     ★★ 그 규칙을 **이 부분만 뒤집었다.** 근거 —
- *       · ★ 의도적으로 나간 것은 **돌아올 생각이 없다**는 뜻이다
- *       · ★ 끊긴 것은 **돌아올 생각이 있다**는 뜻이다
- *       · ★★ 건우 지적: "모두가 나가기를 했는데 왜 게임이 살아있는 거냐?"
- *     ★ Q-15 의 나머지(점수·경험·슬롯 유지)는 그대로다. 뒤집은 것은 **방 종료 판단**뿐이다.
- *
- *   ┌────────────────────────────────┬──────────────────────────────────────┐
- *   │ 마지막 활성자가 나가기 버튼     │ ★★ **즉시 방 폭파.** PAUSED 로 가지   │
- *   │                                │ 않는다                               │
- *   │ 그 외 전원 이탈 (끊김·터널 등) │ ★ PAUSED → 5분 뒤 폭파               │
- *   └────────────────────────────────┴──────────────────────────────────────┘
- *
- *   ★ 마지막 활성자가 아니면 게임 중 나가기는 **끊김과 똑같이** 처리한다 (슬롯 유지).
- *     ★ 근거: 남은 사람들의 게임을 방해하지 않아야 한다.
- *
- * ★ 게임 중 슬롯 규칙은 그대로다 (01-GAME-RULES 13장 / D-060).
- */
-function leaveRoom(socket: Socket, roomId: string, accountId: string): void {
-  const room = getRoom(roomId);
-  if (!room) return;
+/** 게임이 진행 중인 상태 (카운트다운 · 문제 · 정답 공개 · 일시정지) */
+function isInGame(room: Room): boolean {
+  return room.state === 'COUNTDOWN' || room.state === 'QUESTION_ACTIVE' || room.state === 'QUESTION_RESOLVED' || room.state === 'PAUSED';
+}
 
-  // ★★ R042 (건우) — 방장이 **스스로 나가면 즉시** 남은 사람 중 가장 먼저 들어온 사람(접속 중)에게 넘긴다.
-  //   끊김은 지금처럼 30초 유예(tick · Q-29). 남은 접속자가 없으면 넘기지 않는다(방 폭파·일시정지 흐름 그대로)
+/** 빠지는 까닭 — 자의(left) · 타의 끊김 60초(timeout) · 강퇴(kick) · 차단(ban) */
+export type EjectReason = 'left' | 'timeout' | 'kick' | 'ban';
+
+/**
+ * ★★★ R046 (건우 확정 — Q-15 · Q-82 개정) — 방에서 **즉시** 뺀다. 나가기 · 다른 방으로 옮기기 · 강퇴 · 차단 · 끊김 60초가 모두 이 한 경로다.
+ *
+ *   건우: "어쨌든 세션에서 나가게 된 사람은 남기지 말고, 나간 것과 동일한 효과로 제외시키자."
+ *   → 자리 반환 · 순위(결과는 방 참여자로 계산)에서 빠짐 · 스킵 표 · 경험자 집합 · 출제 가능 수 · 인원을 **바로** 다시 계산한다.
+ *
+ *   ┌──────────────────────────┬─────────────────────────────────────┬─────────────────────┐
+ *   │ 자의 — 나가기 · 옮기기   │ 즉시 빠진다                          │ 다시 오면 0점부터   │
+ *   │ 강퇴 · 차단               │ 즉시 빠진다 (차단은 다시 못 온다)     │ 0점부터 / —         │
+ *   │ 타의 — 끊김 60초 (tick)   │ 60초가 지나면 빠진다                  │ 같은 게임이면 점수 이어서 │
+ *   └──────────────────────────┴─────────────────────────────────────┴─────────────────────┘
+ *   ★ 방장이면 먼저 넘긴다(가장 먼저 들어온 접속자). ★ 자의로 나가는데 게임 중이고 나 말고 접속자가 없으면 즉시 방 폭파(Q-82).
+ *   ★ 방이 비면 정리한다. ★ 채팅: 나감 · 60초 = "○○ 님이 나갔습니다." / 강퇴 · 차단 = "○○ 님을 내보냈습니다 / 차단했습니다."
+ *   ★ game_players 행 · 이미 남은 경험 기록은 그대로 둔다 (Q-48).
+ */
+export function ejectPlayer(room: Room, accountId: string, reason: EjectReason): void {
+  const target = room.players.get(accountId);
+  if (!target) return;
+  const inGame = isInGame(room);
+  const othersActive = [...room.players.values()].some((p) => p.accountId !== accountId && p.connected);
+
   if (room.hostAccountId === accountId) {
     const next = nextHostCandidate(room, accountId);
-    if (next) transferHost(room, next, 'left');
+    if (next) transferHost(room, next, reason === 'timeout' ? 'grace' : 'left');
   }
 
-  const inGame =
-    room.state === 'QUESTION_ACTIVE' ||
-    room.state === 'QUESTION_RESOLVED' ||
-    room.state === 'COUNTDOWN' ||
-    room.state === 'PAUSED';
+  // ★ 점수 되살림은 **타의(끊김)로 빠진 사람이 같은 게임에 돌아올 때만** (건우 확정). 그 밖에는 지운다(0점부터)
+  if (reason === 'timeout' && inGame && room.game) room.departedScores.set(accountId, { gameId: room.game.gameId, score: target.score });
+  else room.departedScores.delete(accountId);
+  if (reason === 'ban') room.bannedAccountIds.add(accountId);
 
-  if (inGame) {
-    const me = room.players.get(accountId);
-    // ★★ 내가 나가면 활성이 0이 되는가. **나가기 전에** 판단한다
-    const iAmLastActive = Boolean(me?.connected) && activeCount(room) === 1;
+  // 당사자 화면 — 아직 붙어 있으면 방에서 떼고 알린다
+  if (target.socketId) {
+    if (reason === 'kick' || reason === 'ban') emitToSocket(target.socketId, 'room.kicked', { roomId: room.id, banned: reason === 'ban' });
+    else emitToSocket(target.socketId, 'room.left', { roomId: room.id });
+    leaveIoRoom(target.socketId, room.id);
+  }
+  removePlayer(room, accountId);
 
-    markDisconnected(room, accountId);
-    const data0 = socket.data as SocketData;
-    data0.roomId = undefined;
-    void socket.leave(ioRoomName(roomId));
-    socket.emit('room.left', { roomId });
-
-    if (iAmLastActive) {
-      // ★★★ Q-82 — 즉시 폭파한다. 5초도 기다리지 않는다.
-      //   ★ 정답을 공개하지 않는다 → 경험 기록도 남지 않는다 (Q-47 기준으로 자동 충족).
-      //   ★ 이미 기록된 것은 지우지 않는다 (guide 25절).
-      if (room.state === 'QUESTION_ACTIVE') abortQuestionSync(room);
-      // ★ 남은 슬롯(접속 종료자)도 함께 사라진다. 방 자체가 없어지기 때문이다.
-      destroyRoom(roomId, 'abandoned', '★ 마지막 활성자가 나가기 버튼을 눌렀다 (Q-82)');
-      return;
-    }
-
-    emitRoom(room, 'room.connectionChanged', {
-      accountId,
-      connected: false,
-      activeCount: activeCount(room),
-    });
-    // ★ 인원이 줄면 스킵 임계값이 내려간다. 동기적으로 재평가한다
-    evaluateSkip(room);
-    broadcastSkipVotes(room);
-    // ★ 아직 사람이 남아 있으므로 PAUSED 로 가지 않는다. 방어적으로 확인만 한다
-    if (!pauseIfNoActive(room, Date.now())) broadcastPauseStatus(room);
-    console.log(`[room] ${roomId} 게임 중 퇴장 — ★ 슬롯을 유지한다 (${accountId})`);
+  // ★ 방이 비었다 · ★★ Q-82 — 자의로 나간 사람이 게임 중 마지막 접속자였다 → 즉시 폭파 (PAUSED 로 가지 않는다)
+  if (room.players.size === 0 || (reason === 'left' && inGame && !othersActive)) {
+    if (room.state === 'QUESTION_ACTIVE') abortQuestionSync(room);
+    destroyRoom(room.id, 'abandoned', room.players.size === 0 ? '마지막 참가자 퇴장' : '★ 마지막 접속자가 나가기를 눌렀다 (Q-82)');
     return;
   }
 
-  const player = removePlayer(room, accountId);
-  const data = socket.data as SocketData;
-  data.roomId = undefined;
-  void socket.leave(ioRoomName(roomId));
-  socket.emit('room.left', { roomId });
-
-  if (!player) return;
-
-  if (room.players.size === 0) {
-    // 아무도 남지 않았으면 즉시 정리한다. tick 의 10분 대기를 기다릴 이유가 없다.
-    destroyRoom(roomId, 'abandoned', '마지막 참가자 퇴장');
-    return;
-  }
-
-  broadcastSystem(room, `${player.nickname} 님이 퇴장했습니다.`);
+  broadcastSystem(
+    room,
+    reason === 'kick' ? `${target.nickname} 님을 내보냈습니다.` : reason === 'ban' ? `${target.nickname} 님을 차단했습니다.` : `${target.nickname} 님이 나갔습니다.`,
+  );
   emitRoom(room, 'room.playerLeft', {
     accountId,
     players: playerViews(room),
     activeCount: activeCount(room),
   });
-  // 참가자가 줄면 출제 가능 수가 줄어들 수 있다 (전원 경험 문제가 늘어난다)
+  if (room.currentQuestion) {
+    room.currentQuestion.skipVotes.delete(accountId);
+    room.currentQuestion.experiencedAccountIds.delete(accountId);
+    broadcastExperiencedUpdated(room);
+    evaluateSkip(room);
+    broadcastSkipVotes(room);
+  }
+  if (inGame && !pauseIfNoActive(room, Date.now())) broadcastPauseStatus(room);
+  // 참가자가 줄면 출제 가능 수가 바뀔 수 있다 (전원 경험 문제)
   void refreshLobbyInfo(room);
+  console.log(`[room] ${room.id} ${reason === 'timeout' ? '끊김 60초 — ' : ''}빠짐 (${reason}) ${accountId}`);
+}
+
+/**
+ * 방 나가기 (자의 — 나가기 버튼 · 다른 방으로 옮기기).
+ *
+ * ★★★ R046 — 즉시 빠진다(ejectPlayer). 옛 코드는 게임 중 나가기를 **끊김과 똑같이**(Q-15 · 슬롯 유지) 처리해
+ *   방 소속(accountRoom)이 남았다 → 새 방 만들기 · 다른 방 들어가기 · 초대 수락이 "이미 방이 있다" 로 막혔고,
+ *   채팅에도 아무것도 남지 않았다 (건우 버그 — 코드로 확인).
+ */
+function leaveRoom(socket: Socket, roomId: string, accountId: string): void {
+  const data = socket.data as SocketData;
+  data.roomId = undefined;
+  void socket.leave(ioRoomName(roomId));
+  const room = getRoom(roomId);
+  if (!room || !room.players.has(accountId)) {
+    socket.emit('room.left', { roomId });
+    return;
+  }
+  ejectPlayer(room, accountId, 'left');
 }

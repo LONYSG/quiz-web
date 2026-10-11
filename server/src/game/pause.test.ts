@@ -49,6 +49,7 @@ function player(over: Partial<Player> = {}): Player {
     socketId: 's1',
     disconnectedAt: null,
     score: 0,
+    awayMs: 0,
     avatarV: null,
     ...over,
   };
@@ -104,6 +105,8 @@ function room(over: Partial<Room> = {}, q: CurrentQuestion | null = question()):
     hostGraceUntil: null,
     emptySince: null,
     bannedAccountIds: new Set(),
+    departedScores: new Map(),
+    awayTickAt: null,
     game: null,
     currentQuestion: q,
     result: null,

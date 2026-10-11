@@ -32,7 +32,7 @@ import { startFromCountdown } from './game/start.js';
 import { advanceAfterResolved, checkQuestionTimeout, pushHintIfDue } from './game/question.js';
 import { checkAbandon, idleDeleteApplies, pauseIfNoActive } from './game/pause.js';
 import { emitRoom } from './rooms/emit.js';
-import { activeCount, allRooms, nextHostCandidate } from './rooms/registry.js';
+import { activeCount, allRooms, expireAway, nextHostCandidate } from './rooms/registry.js';
 import { transferHost } from './rooms/host.js';
 import { destroyRoom } from './rooms/lifecycle.js';
 import { toPlayerView } from './rooms/snapshot.js';
@@ -80,6 +80,7 @@ function tick(): void {
         }
         checkHostTransfer(room, now);
         checkDisconnectDisplay(room, now);
+        checkAway(room, now);
         continue;
       }
 
@@ -95,6 +96,8 @@ function tick(): void {
       advanceAfterResolved(room, now);
       checkHostTransfer(room, now);
       checkDisconnectDisplay(room, now);
+      checkAway(room, now);
+      if (!allRoomsHas(room)) continue; // 60초로 빠지다가 방이 정리됐다
       if (shouldDeleteRoom(room, now)) {
         toDelete.push({
           roomId: room.id,
@@ -175,7 +178,7 @@ function checkHostTransfer(room: Room, now: number): void {
   if (activeCount(room) === 0) return;
 
   if (room.hostGraceUntil === null) {
-    room.hostGraceUntil = now + RULES.HOST_TRANSFER_GRACE_MS;
+    room.hostGraceUntil = now + config.tuning.hostTransferGraceMs;
     return;
   }
   if (now < room.hostGraceUntil) return;
@@ -240,4 +243,26 @@ function shouldDeleteRoom(room: Room, now: number): boolean {
     return false;
   }
   return now - room.emptySince >= RULES.ROOM_IDLE_DELETE_MS;
+}
+
+function allRoomsHas(room: Room): boolean {
+  for (const r of allRooms()) if (r === room) return true;
+  return false;
+}
+
+/**
+ * ★★★ R046 (건우 확정) — 끊긴 사람(타의)은 60초 뒤 나간 것과 똑같이 빠진다.
+ *   ★ 끊긴 시간은 **전원이 끊긴 동안 · 일시정지 동안 늘지 않는다** (각자의 60초 시계가 멈춘다 — 터널이 끊겨 모두 돌아오는 경우).
+ *   ★ 60초 안에 돌아오면 addPlayer 가 0 으로 되돌린다(그대로 이어서). 빠진 뒤 같은 게임에 돌아오면 점수를 되살린다(ejectPlayer · attachToRoom).
+ */
+function checkAway(room: Room, now: number): void {
+  const last = room.awayTickAt ?? now;
+  room.awayTickAt = now;
+  if (activeCount(room) === 0 || room.state === 'PAUSED') return;
+  const dt = Math.max(0, now - last);
+  for (const p of [...room.players.values()]) {
+    if (p.connected) continue;
+    p.awayMs += dt;
+    if (p.awayMs >= config.tuning.disconnectRemoveMs) expireAway(room, p.accountId);
+  }
 }

@@ -103,6 +103,8 @@ const SCENARIO_ENV = {
   // ★ 실제 기본값은 5분이다. 테스트에서는 6초로 줄여 같은 경로를 검증한다.
   //   ★ 값만 다르고 코드 경로는 동일하다. 그것이 설정값으로 뺀 이유이기도 하다.
   abandon: { PAUSE_ABANDON_MS: '6000' },
+  // ★ R046 — 끊김 60초 → 4초 · 방장 이전 30초 → 1.5초 (값만 다르고 경로는 같다)
+  leave: { DISCONNECT_REMOVE_MS: '4000', HOST_TRANSFER_GRACE_MS: '1500' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -374,6 +376,7 @@ class Bot {
           epoch: p.epoch,
           votes: p.votes,
           threshold: p.threshold,
+          activeCount: p.activeCount,
           // ★ R034 — 받는 사람 본인이 투표했는가 (본인 것만 온다)
           selfVoted: p.selfVoted,
           at: Date.now(),
@@ -4938,6 +4941,268 @@ async function scenarioProfile() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ leave — R046 자의 즉시 · 타의 60초 (테스트에서는 DISCONNECT_REMOVE_MS=4000 · HOST_TRANSFER_GRACE_MS=1500)
+//   ★ 따로 띄운 서버(PORT=3003)에서 돈다 — 이미 떠 있는 서버에는 줄인 값이 안 먹는다
+// -----------------------------------------------------------------------------
+const AWAY_MS = 4000;
+async function answerCurrent(bot) {
+  const q = bot.snapshot?.question;
+  if (!q) return false;
+  const answers = await answersForText(q.text);
+  if (!answers.length) return false;
+  bot.chat(answers[0], q.epoch);
+  return true;
+}
+const playerIds = (bot) => (bot.snapshot?.players ?? []).map((p) => p.accountId);
+const systemSince = (bot, from) => bot.events.slice(from).filter((e) => e.type === 'chat').map((e) => e.text);
+async function freshRoom(host, guests, title, game = false) {
+  for (const b of [host, ...guests]) {
+    if (b.snapshot) b.leave();
+  }
+  await sleep(300);
+  for (const b of [host, ...guests]) b.snapshot = null;
+  host.createRoom(title);
+  await host.waitFor(() => host.snapshot !== null, 6000, `${title} 만들기`);
+  for (const g of guests) {
+    g.join(host.snapshot.room.id);
+    await g.waitFor(() => g.snapshot !== null, 6000, `${g.name} 입장`);
+  }
+  await host.waitFor(() => host.snapshot.players.length === guests.length + 1, 4000, '인원');
+  if (game) await startGame(host, guests, 5);
+  return host.snapshot.room.id;
+}
+async function canGoElsewhere(bot, label) {
+  // 곧바로 새 방을 만들 수 있는가 ("이미 방이 있다" 가 나오면 안 된다)
+  const from = bot.mark();
+  bot.snapshot = null;
+  bot.createRoom(`${label} 새 방`);
+  await bot.waitFor(() => bot.snapshot !== null || bot.since(from, 'error').length > 0, 5000, `${label} 새 방`);
+  const err = bot.since(from, 'error')[0]?.code ?? null;
+  expect(`★★★ ${label} — 곧바로 새 방을 만들 수 있다 (ALREADY_HAS_ROOM 없음)`, err, null);
+  bot.leave();
+  await sleep(300);
+  bot.snapshot = null;
+}
+
+async function scenarioLeave() {
+  log(`시나리오 leave — ★★★ 자의 즉시 · 타의 ${AWAY_MS / 1000}초(실제 60초) (R046)`);
+  await clearExperiences(PREFIX);
+  const [host, a, b] = await makeBots(3);
+  for (const x of [host, a, b]) await x.connect();
+
+  log('\n[1] ★★ 로비 — 게스트 나가기: 즉시 빠짐 · 채팅 · 곧바로 다른 방');
+  await freshRoom(host, [a, b], 'R046 로비');
+  let from = host.mark();
+  a.leave();
+  await host.waitFor(() => !playerIds(host).includes(a.snapshot?.me.accountId ?? 'x'), 3000, '빠짐');
+  const aId = a.snapshot.me.accountId;
+  expectTrue('★★ 로비 나가기 — 즉시 참여자에서 빠진다', !playerIds(host).includes(aId));
+  await sleep(200);
+  expectTrue('★★ 로비 나가기 — 채팅 "나갔습니다"', systemSince(host, from).some((t) => t.includes('나갔습니다')));
+  await canGoElsewhere(a, '로비 나가기');
+
+  log('\n[2] ★★★ 문제 중 — 게스트 나가기: 즉시 빠짐 · 스킵 분모 · 다른 방 · 다시 오면 0점');
+  await freshRoom(host, [a, b], 'R046 게임', true);
+  const roomG = host.snapshot.room.id;
+  await answerCurrent(a);
+  await host.waitFor(() => (host.snapshot.players.find((p) => p.accountId === aId)?.score ?? 0) >= 1, 6000, 'a 점수');
+  expect('★ (준비) a 가 1점', host.snapshot.players.find((p) => p.accountId === aId)?.score, 1);
+  await host.waitQuestion(2, 15000);
+  from = host.mark();
+  a.leave();
+  await host.waitFor(() => !playerIds(host).includes(aId), 3000, '게임 중 빠짐');
+  expectTrue('★★★ 게임 중 나가기 — 즉시 빠진다 (옛: 접속 종료로 자리 차지)', !playerIds(host).includes(aId));
+  expect('★★ 활성 인원 2', host.snapshot.room.activeCount, 2);
+  await sleep(200);
+  expectTrue('★★ 게임 중 나가기 — 채팅 "나갔습니다"', systemSince(host, from).some((t) => t.includes('나갔습니다')));
+  // 스킵 분모 — 남은 접속자 2명 기준으로 다시 계산되는가
+  from = host.mark();
+  host.socket.emit('skip.vote', { vote: true, epoch: host.snapshot.question.epoch });
+  await host.waitFor(() => host.since(from, 'skip.voteUpdated').length > 0, 3000, '투표 현황');
+  expect('★★ 스킵 분모 = 남은 접속자 2명', host.since(from, 'skip.voteUpdated').pop()?.activeCount, 2);
+  await canGoElsewhere(a, '게임 중 나가기');
+  // 같은 게임에 다시 들어오면 0점부터 (자의)
+  a.snapshot = null;
+  a.join(roomG);
+  await a.waitFor(() => a.snapshot !== null, 6000, '다시 들어옴');
+  expect('★★★ 자의로 나간 뒤 같은 게임에 다시 오면 0점부터', a.snapshot.players.find((p) => p.accountId === aId)?.score, 0);
+
+  log('\n[3] ★★★ 문제 중 — 끊김: 4초 안 복귀 = 그대로(점수 유지) / 4초 넘김 = 빠짐 → 다시 오면 점수 되살림');
+  // a 가 다시 1점을 얻는다
+  await host.waitQuestion((host.snapshot.question?.index ?? 2) + 1, 20000).catch(() => undefined);
+  if (host.snapshot.question && host.snapshot.room.state === 'QUESTION_ACTIVE') {
+    await answerCurrent(a);
+    await host.waitFor(() => (host.snapshot.players.find((p) => p.accountId === aId)?.score ?? 0) >= 1, 6000, 'a 점수 2').catch(() => undefined);
+  }
+  const scoreBefore = host.snapshot.players.find((p) => p.accountId === aId)?.score ?? 0;
+  a.disconnect();
+  await sleep(1500);
+  expectTrue('★★ 끊긴 지 1.5초 — 아직 자리에 있다', playerIds(host).includes(aId));
+  await a.connect();
+  await a.waitFor(() => a.snapshot !== null, 6000, '재접속');
+  expect('★★★ 60초(테스트 4초) 안에 돌아오면 그대로 — 점수 유지', a.snapshot.players.find((p) => p.accountId === aId)?.score, scoreBefore);
+  from = host.mark();
+  a.disconnect();
+  await host.waitFor(() => !playerIds(host).includes(aId), AWAY_MS + 4000, '60초 뒤 빠짐');
+  expectTrue('★★★ 끊긴 채 60초(4초) — 나간 것과 똑같이 빠진다', !playerIds(host).includes(aId));
+  await sleep(200);
+  expectTrue('★★ 60초 빠짐 — 채팅 "나갔습니다" (나감과 같은 문구)', systemSince(host, from).some((t) => t.includes('나갔습니다')));
+  await a.connect();
+  a.snapshot = null;
+  a.join(roomG);
+  await a.waitFor(() => a.snapshot !== null, 6000, '같은 게임 다시');
+  if (['COUNTDOWN', 'QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'PAUSED'].includes(a.snapshot.room.state)) {
+    expect('★★★ 끊겨서 빠진 뒤 같은 게임에 돌아오면 점수를 되살린다', a.snapshot.players.find((p) => p.accountId === aId)?.score, scoreBefore);
+  } else {
+    log(`  ★ 게임이 이미 끝나 점수 되살림은 확인 못 함 (상태 ${a.snapshot.room.state})`);
+  }
+
+  log('\n[4] ★★ 방장 — 문제 중 나가기: 즉시 이전 · 방장도 곧바로 다른 방');
+  await freshRoom(host, [a, b], 'R046 방장 나가기', true);
+  const hId = host.snapshot.me.accountId;
+  let hm = a.mark();
+  host.leave();
+  await a.waitFor(() => a.since(hm, 'room.hostChanged').length > 0, 3000, '방장 이전');
+  await a.waitFor(() => !playerIds(a).includes(hId), 3000, '방장 빠짐');
+  expectTrue('★★ 방장이 나가면 즉시 다른 사람이 방장', a.since(hm, 'room.hostChanged')[0]?.hostAccountId !== hId && !playerIds(a).includes(hId));
+  await canGoElsewhere(host, '방장 게임 중 나가기');
+
+  log('\n[5] ★★ 방장 끊김 — 1.5초(실제 30초) 뒤 이전 → 4초(실제 60초) 뒤 빠짐');
+  await freshRoom(a, [host, b], 'R046 방장 끊김', true);
+  const aHost = a.snapshot.me.accountId;
+  hm = host.mark();
+  a.disconnect();
+  await host.waitFor(() => host.since(hm, 'room.hostChanged').length > 0, 5000, '유예 뒤 이전');
+  expectTrue('★★ 끊긴 방장 — 유예 뒤 이전', host.since(hm, 'room.hostChanged')[0]?.hostAccountId !== aHost);
+  expectTrue('★ 이전 직후엔 아직 자리에 있다', playerIds(host).includes(aHost));
+  await host.waitFor(() => !playerIds(host).includes(aHost), AWAY_MS + 4000, '60초 뒤 빠짐');
+  expectTrue('★★ 그 뒤 60초가 되면 빠진다', !playerIds(host).includes(aHost));
+  await a.connect();
+
+  log('\n[6] ★★★ 전원 끊김 — 일시정지 · 60초 시계 멈춤 (4초를 넘겨도 아무도 안 빠진다)');
+  await freshRoom(host, [a, b], 'R046 전원 끊김', true);
+  const roomP = host.snapshot.room.id;
+  const ids3 = playerIds(host);
+  for (const x of [host, a, b]) x.disconnect();
+  await sleep(AWAY_MS + 2500);
+  host.snapshot = null;
+  await host.connect();
+  await host.waitFor(() => host.snapshot !== null && host.snapshot.room.id === roomP, 6000, '방장 복귀');
+  expect('★★★ 전원 끊김 동안 시계가 멈춘다 — 아무도 빠지지 않았다', playerIds(host).length, ids3.length);
+  expectTrue('★ 일시정지 상태', host.snapshot.room.state === 'PAUSED' || Boolean(host.snapshot.paused), `${host.snapshot.room.state} · paused=${JSON.stringify(host.snapshot.paused ?? null)}`);
+  // 방장 혼자 돌아온 상태도 일시정지라 시계가 멈춘다
+  await sleep(AWAY_MS + 1000);
+  expect('★★ 일시정지 중(한 명 복귀)에도 시계가 멈춘다', playerIds(host).length, ids3.length);
+  await a.connect();
+  await b.connect();
+  await sleep(500);
+
+  log('\n[7] ★★★ Q-82 — 마지막 접속자가 게임 중 나가기 → 즉시 폭파');
+  await freshRoom(host, [a], 'R046 마지막', true);
+  const roomL = host.snapshot.room.id;
+  a.disconnect();
+  await sleep(300);
+  host.leave();
+  await sleep(500);
+  const c = new Bot('lc');
+  await c.auth();
+  await c.connect();
+  from = c.mark();
+  c.join(roomL);
+  await c.waitFor(() => c.since(from, 'error').length > 0 || c.snapshot !== null, 4000, '폭파 확인');
+  expectTrue('★★★ 마지막 접속자가 나가면 방이 사라진다', ['ROOM_NOT_FOUND', 'ROOM_CLOSED'].includes(c.since(from, 'error')[0]?.code));
+  await a.connect();
+
+  log('\n[8] ★★ 상태별 나가기 — 카운트다운 · 정답 공개 · 결과 · 일시정지: 즉시 빠짐 · 곧바로 다른 방');
+  // 카운트다운
+  await freshRoom(host, [a, b], 'R046 카운트다운');
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, startMode: 'countdown', countdownSec: 5 });
+  await sleep(400);
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.snapshot.room.state === 'COUNTDOWN', 4000, '카운트다운');
+  b.leave();
+  await host.waitFor(() => !playerIds(host).includes(b.snapshot.me.accountId), 3000, '카운트다운 나가기');
+  expectTrue('★★ 카운트다운 중 나가기 — 즉시 빠짐', !playerIds(host).includes(b.snapshot.me.accountId));
+  await canGoElsewhere(b, '카운트다운 나가기');
+  // 정답 공개
+  await host.waitFor(() => host.snapshot.room.state === 'QUESTION_ACTIVE', 10000, '문제');
+  await answerCurrent(host);
+  await host.waitFor(() => host.snapshot.room.state === 'QUESTION_RESOLVED', 6000, '정답 공개');
+  a.leave();
+  await host.waitFor(() => !playerIds(host).includes(a.snapshot.me.accountId), 3000, '정답 공개 나가기');
+  expectTrue('★★ 정답 공개 중 나가기 — 즉시 빠짐', !playerIds(host).includes(a.snapshot.me.accountId));
+  await canGoElsewhere(a, '정답 공개 나가기');
+  // 결과
+  await freshRoom(host, [a, b], 'R046 결과', true);
+  host.socket.emit('host.forceEnd', {});
+  await host.waitFor(() => host.snapshot.room.state === 'GAME_RESULT', 6000, '결과');
+  b.leave();
+  await host.waitFor(() => !playerIds(host).includes(b.snapshot.me.accountId), 3000, '결과 나가기');
+  expectTrue('★★ 결과 화면 나가기 — 즉시 빠짐', !playerIds(host).includes(b.snapshot.me.accountId));
+  await canGoElsewhere(b, '결과 나가기');
+  // 일시정지 (방장만 남고 끊김 → 방장 끊기면 일시정지 … 여기서는 a 가 붙어 있는 일시정지: 방장 혼자 접속 → 다른 사람 끊김이 아니라, 전원 끊김 뒤 한 명 복귀)
+  await freshRoom(host, [a, b], 'R046 일시정지', true);
+  const roomQ = host.snapshot.room.id;
+  for (const x of [host, a, b]) x.disconnect();
+  await sleep(500);
+  host.snapshot = null;
+  a.snapshot = null;
+  await host.connect();
+  await a.connect();
+  await a.waitFor(() => a.snapshot?.room.id === roomQ && (a.snapshot.room.state === 'PAUSED' || Boolean(a.snapshot.paused)), 6000, '일시정지 복귀');
+  a.leave();
+  await host.waitFor(() => !playerIds(host).includes(a.snapshot.me.accountId), 3000, '일시정지 나가기');
+  expectTrue('★★ 일시정지 중 나가기 — 즉시 빠짐', !playerIds(host).includes(a.snapshot.me.accountId));
+  await canGoElsewhere(a, '일시정지 나가기');
+  await b.connect();
+
+  log('\n[9] ★★★ 옮기기 — 게임 중에 다른 방(친구 방)으로: 나가기 + 들어가기가 곧바로 된다');
+  // b 는 [8] 의 일시정지 방에 자리가 남아 있다(전원 끊김 동안 시계 멈춤) → 먼저 나간다
+  if (b.snapshot) b.leave();
+  await sleep(300);
+  await freshRoom(host, [a], 'R046 옮기기 A', true);
+  const roomFrom = host.snapshot.room.id;
+  b.snapshot = null;
+  b.createRoom('R046 옮길 방');
+  await b.waitFor(() => b.snapshot !== null, 6000, '옮길 방');
+  const roomTo = b.snapshot.room.id;
+  from = a.mark();
+  const fromHost = host.mark();
+  a.leave();
+  a.snapshot = null;
+  a.join(roomTo);
+  await a.waitFor(() => a.snapshot !== null || a.since(from, 'error').length > 0, 5000, '옮기기');
+  expect('★★★ 게임 중 옮기기 — 오류 없이 (옛: "이미 방이 있다")', a.since(from, 'error')[0]?.code ?? null, null);
+  expect('★★★ 옮긴 방에 들어갔다', a.snapshot?.room.id, roomTo);
+  await sleep(300);
+  expectTrue('★★ 떠난 방 채팅 "나갔습니다"', systemSince(host, fromHost).some((t) => t.includes('나갔습니다')));
+  expectTrue('★ 떠난 방에서 빠졌다', !playerIds(host).includes(a.snapshot.me.accountId) && host.snapshot.room.id === roomFrom);
+
+  log('\n[10] ★★ 강퇴 — 즉시 빠짐 · 다시 오면 0점');
+  await freshRoom(host, [a, b], 'R046 강퇴', true);
+  const roomK = host.snapshot.room.id;
+  await answerCurrent(a);
+  await host.waitFor(() => (host.snapshot.players.find((p) => p.accountId === aId)?.score ?? 0) >= 1, 6000, 'a 점수');
+  host.socket.emit('host.kick', { accountId: aId, ban: false });
+  await host.waitFor(() => !playerIds(host).includes(aId), 3000, '강퇴');
+  a.snapshot = null;
+  a.join(roomK);
+  await a.waitFor(() => a.snapshot !== null, 6000, '다시');
+  expect('★★ 강퇴 뒤 다시 오면 0점부터', a.snapshot.players.find((p) => p.accountId === aId)?.score, 0);
+
+  for (const x of [host, a, b, c]) {
+    try {
+      x.leave();
+    } catch {
+      /* 무시 */
+    }
+  }
+  await sleep(300);
+  for (const x of [host, a, b, c]) x.disconnect();
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -5121,6 +5386,8 @@ const SCENARIOS = {
   friends: scenarioFriends,
   // ★★ R045
   profile: scenarioProfile,
+  // ★★★ R046
+  leave: scenarioLeave,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

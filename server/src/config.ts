@@ -87,6 +87,10 @@ export const config = {
     chatRateWindowMs: positiveInt('CHAT_RATE_WINDOW_MS', RULES.CHAT_RATE_WINDOW_MS),
     /** ★ 그 윈도 안의 최대 개수 (Q-84). 기본 20개 */
     chatRateMax: positiveInt('CHAT_RATE_MAX', RULES.CHAT_RATE_MAX),
+    /** ★ R046 — 끊긴 사람이 빠지기까지 (기본 60초). 테스트에서 줄인다 */
+    disconnectRemoveMs: positiveInt('DISCONNECT_REMOVE_MS', RULES.DISCONNECT_REMOVE_MS),
+    /** ★ 방장 이전 유예 (Q-29 · 기본 30초). 테스트에서 줄인다 */
+    hostTransferGraceMs: positiveInt('HOST_TRANSFER_GRACE_MS', RULES.HOST_TRANSFER_GRACE_MS),
   },
   get isProduction(): boolean {
     return this.nodeEnv === 'production';

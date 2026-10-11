@@ -41,7 +41,8 @@ export async function insertRoom(
     return { ok: true };
   } catch (err) {
     const e = err as { code?: string; constraint?: string };
-    if (e.code === '23505' && e.constraint === 'rooms_one_open_per_owner_idx') {
+    // ★ R046 — 0015 부터 "지금 방장" 기준 (rooms_one_open_per_host_idx)
+    if (e.code === '23505' && (e.constraint === 'rooms_one_open_per_host_idx' || e.constraint === 'rooms_one_open_per_owner_idx')) {
       return { ok: false, reason: 'already_has_open_room' };
     }
     throw err;
@@ -74,4 +75,15 @@ export async function findOpenRoomOfAccount(accountId: string): Promise<RoomRow 
     [accountId],
   );
   return result.rows[0] ?? null;
+}
+
+/** ★ R046 — 방장이 넘어가면 DB 의 방장도 바꾼다 ("한 사람당 열린 방 하나" 가 지금 방장 기준이다 — 0015) */
+export async function updateRoomHost(roomId: string, hostAccountId: string): Promise<void> {
+  await query(`UPDATE rooms SET host_account_id = $2 WHERE id = $1 AND closed_at IS NULL`, [roomId, hostAccountId]);
+}
+
+/** ★ R046 — DB 가 아직 나를 방장으로 아는 열린 방 (메모리와 맞추기 위해) */
+export async function openRoomsHostedBy(accountId: string): Promise<string[]> {
+  const r = await query<{ id: string }>(`SELECT id FROM rooms WHERE host_account_id = $1 AND closed_at IS NULL`, [accountId]);
+  return r.rows.map((x) => x.id);
 }

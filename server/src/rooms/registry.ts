@@ -125,6 +125,8 @@ export function createRoomObject(
     hostGraceUntil: null,
     emptySince: null,
     bannedAccountIds: new Set(),
+    departedScores: new Map(),
+    awayTickAt: null,
     game: null,
     currentQuestion: null,
     result: null,
@@ -180,6 +182,7 @@ export function addPlayer(
     existing.connected = true;
     existing.socketId = socketId;
     existing.disconnectedAt = null;
+    existing.awayMs = 0;
     // ★ R040 — 다시 들어올 때 닉네임·사진이 바뀌어 있을 수 있다 (DB 에서 바꿈 등) → 부르는 쪽이 방에 다시 알린다
     const profileChanged = existing.nickname !== nickname || existing.avatarV !== avatarV;
     existing.nickname = nickname; // 로비에서 닉네임을 바꿨을 수 있다
@@ -203,6 +206,7 @@ export function addPlayer(
     disconnectedAt: null,
     score: 0,
     avatarV,
+    awayMs: 0,
   };
   room.players.set(accountId, player);
   accountRoom.set(accountId, room.id);
@@ -211,11 +215,11 @@ export function addPlayer(
 }
 
 /**
- * 접속 종료 처리.
+ * 접속 종료(끊김 — 타의) 처리.
  *
- * ★ 명시적 나가기와 예기치 못한 끊김을 구분하지 않는다 (Q-15 확정).
- *   둘 다 "접속 종료" 로 동일하게 처리한다.
- *   점수·경험 기록·슬롯을 유지한다. 슬롯은 게임 종료 후 로비 복귀 시점에 반환한다.
+ * ★★★ R046 (건우 확정 — Q-15 개정) — **나가기(자의)와 끊김(타의)을 가른다.**
+ *   이 함수는 **끊김**만 다룬다: 점수 · 자리를 잠시 유지하고, 끊긴 시간(awayMs)이 DISCONNECT_REMOVE_MS(60초)에 닿으면
+ *   tick 이 나간 것과 똑같이 뺀다. 나가기 · 옮기기 · 강퇴 · 차단은 ejectPlayer(socket/index.ts) 가 즉시 뺀다.
  */
 export function markDisconnected(room: Room, accountId: string): Player | null {
   const player = room.players.get(accountId);
@@ -270,4 +274,15 @@ export function resetRegistryForTest(): void {
   rooms.clear();
   accountRoom.clear();
   roomByCode.clear();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★ R046 — 끊김 60초가 지났을 때 부를 곳 (socket/index.ts 가 ejectPlayer 를 건다 — tick 과 순환 import 를 피한다)
+// ─────────────────────────────────────────────────────────────────────────────
+let awayExpired: (room: Room, accountId: string) => void = () => undefined;
+export function onAwayExpired(fn: (room: Room, accountId: string) => void): void {
+  awayExpired = fn;
+}
+export function expireAway(room: Room, accountId: string): void {
+  awayExpired(room, accountId);
 }
