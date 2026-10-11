@@ -239,3 +239,12 @@ export function registerFriendHandlers(socket: Socket): void {
     await sendNotifications(payload.accountId);
   });
 }
+
+/**
+ * ★★ R046 D — 닉네임 · 사진이 바뀌었다 → 접속 중인 친구들의 친구 목록을 다시 보낸다 (방 목록 화면에서 바꿔도 친구 화면에 바로)
+ */
+export function onProfileChanged(accountId: string): void {
+  for (const [watcher, friends] of friendsOf) {
+    if (friends.has(accountId)) void sendState(watcher).catch(() => undefined);
+  }
+}

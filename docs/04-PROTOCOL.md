@@ -919,3 +919,15 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 화면 쪽 | `friends.result` 대신 `error` 가 와도 버튼 로딩을 푼다 · 8초 안에 답이 없으면 풀고 "응답이 늦어요" (R044 A-1) |
 | 서버 로그 | `friends.request` 처리가 300ms 를 넘으면 `[friends] 신청 느림 Nms (아이디 찾기 · 저장)` (진단) |
 | `PUT /api/me/prefs` theme | `pastel` · `night` 만 (원색 `pop` 삭제 — D-218) |
+
+## ★ R046 — 바뀐 것 (D-225 · D-226)
+
+| 항목 | 내용 |
+|------|------|
+| `room.leave` | ★ **어느 상태에서나 즉시 빠진다**(옛: 게임 중에는 끊김처럼 남았다). 서버 → 나간 사람 `room.left` · 방 → 채팅 "○○ 님이 나갔습니다." + `room.playerLeft`. 곧바로 `room.create` · `room.join` 이 된다 |
+| 끊김 | 그대로 `room.connectionChanged`. ★ 끊긴 채 `DISCONNECT_REMOVE_MS`(60초 · 전원 끊김 · 일시정지 동안 멈춤)가 지나면 서버가 나가기와 같은 처리(`room.playerLeft` · 채팅) |
+| 다시 들어옴 | 끊겨 빠졌던 사람이 같은 게임에 `room.join` → 점수를 되살린 스냅샷 · 채팅 "다시 들어왔습니다. (점수 N점 이어서)". 5초 넘게 끊겼다 돌아오면 "다시 들어왔습니다." |
+| `host.kick` | 같은 한 경로(즉시 빠짐). 당한 사람 `room.kicked` (그대로) |
+| 방장 이전 순서 | "○○ 님이 나갔습니다." 다음에 `room.hostChanged` · "방장이 되었습니다" |
+| DB | 0015 — 열린 방 유일 = `host_account_id`. 방장을 넘기면 DB 도 |
+| 설정값 (서버 env) | `DISCONNECT_REMOVE_MS`(기본 60000) · `HOST_TRANSFER_GRACE_MS`(기본 30000) — 테스트에서 줄인다 |

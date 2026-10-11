@@ -15,6 +15,7 @@ import { query } from '../db/pool.js';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import { getRoomOfAccount } from '../rooms/registry.js';
 import { patchAccountSession } from '../rooms/emit.js';
+import { onProfileChanged } from '../social/friends.js';
 import { broadcastPlayers } from '../game/question.js';
 
 export const avatarRouter = Router();
@@ -103,6 +104,8 @@ avatarRouter.delete('/', async (req, res) => {
 function applyToRoom(accountId: string, avatarV: number | null): void {
   // ★ R045 D — 지금 접속한 소켓의 세션도 (다음에 방을 만들거나 들어갈 때 옛 사진으로 돌아가지 않게)
   patchAccountSession(accountId, { avatarV });
+  // ★ R046 D — 친구들 화면(친구 목록)에도 바로
+  onProfileChanged(accountId);
   const room = getRoomOfAccount(accountId);
   const player = room?.players.get(accountId);
   if (room && player) {

@@ -12,12 +12,10 @@
 // ★ 새로 만드는 버튼과 배지는 styles.css 의 라벨 규칙을 그대로 받는다 (D-022).
 // =============================================================================
 
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatExperienceRate, NICKNAME_LIMIT_HINT, nicknameFits, NICKNAME_TOO_LONG_MESSAGE, RULES } from '@quiz/shared';
-import { changeNickname, deleteAvatar, errorMessage, uploadAvatar } from './api.js';
+import { formatExperienceRate, nicknameFits, RULES } from '@quiz/shared';
 import Avatar from './Avatar.js';
-import ProfileEditor from './ProfileEditor.js';
 import ConfirmModal from './ConfirmModal.js';
 import KickFlow, { type KickTarget } from './KickFlow.js';
 import PeoplePanel from './PeoplePanel.js';
@@ -25,9 +23,8 @@ import { openPopup, usePopup, useCurrentPopup } from './popup.js';
 import MobileMenu from './MobileMenu.js';
 import InvitePopup from './InvitePopup.js';
 import InfoText from './InfoText.js';
-import PopupClose from './PopupClose.js';
 import Icon from './Icon.js';
-import { ArrowDown, Camera, Check, Keyboard, Link, LogOut, Menu, Pencil, Send, SkipForward, Smile, Users } from 'lucide-react';
+import { ArrowDown, Check, Keyboard, Link, LogOut, Menu, Send, SkipForward, Smile, Users } from 'lucide-react';
 import ChatText from './ChatText.js';
 import Countdown from './Countdown.js';
 import GameSettings from './GameSettings.js';
@@ -45,9 +42,8 @@ import { chatSound, toggleMuteAll } from './sound.js';
 import { cycleTheme } from './theme.js';
 import { useGameSounds } from './useGameSounds.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
-import BusyButton from './BusyButton.js';
 import { BellButton, FriendsButton } from './SocialPopups.js';
-import { useDismiss } from './useDismiss.js';
+import ProfilePanel from './ProfilePanel.js';
 import type { Social } from './useSocial.js';
 
 interface Props {
@@ -104,16 +100,10 @@ export default function Lobby({
   const [menuOpen, setMenuOpen] = usePopup('menu');
   const [kickOpen, setKickOpen] = usePopup('kick');
   const [kickTarget, setKickTarget] = useState<KickTarget | null>(null);
-  const [photoOpen, setPhotoOpen] = usePopup('photo');
-  const [photoDelOpen, setPhotoDelOpen] = usePopup('photo-delete');
   const openPopupId = useCurrentPopup();
   /** ★ R034 — 닉네임 바꾸기 (R035 부터 상단 바 ✏ 의 작은 창) */
-  const [renameOpen, setRenameOpen] = usePopup('profile');
-  const [renameDraft, setRenameDraft] = useState<string | null>(null);
-  const [renameMsg, setRenameMsg] = useState<{ ok: boolean; text: string } | null>(null);
-  const [renameBusy, setRenameBusy] = useState(false);
-  /** ★ R039 — 편집 중인 프로필 사진 파일 */
-  const [photoFile, setPhotoFile] = useState<File | null>(null);
+  // ★ R046 D — 프로필 창은 ProfilePanel 한 곳 (방 목록 화면과 같은 창). 여기서는 "바꿔야 함" 이면 다시 여는 것만
+  const [, setRenameOpen] = usePopup('profile');
   /** ★★ R035 — 채팅을 올려 보는 중에 새 메시지가 왔는가 (↓ 버튼) */
   const [newBelow, setNewBelow] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -235,22 +225,6 @@ export default function Lobby({
   };
 
 
-  /** ★ R034 — 닉네임 바꾸기. 결과(성공·겹침·게임 중)를 창 안에 바로 보여 준다 */
-  const doRename = async () => {
-    const next = (renameDraft ?? snapshot.me.nickname).trim();
-    if (!next || next === snapshot.me.nickname || renameBusy) return;
-    setRenameBusy(true);
-    try {
-      const saved = await changeNickname(next);
-      setRenameDraft(null);
-      setRenameMsg({ ok: true, text: `${saved}(으)로 바꿨습니다.` });
-      onNicknameChanged(saved);
-    } catch (err) {
-      setRenameMsg({ ok: false, text: errorMessage(err, '닉네임을 바꿀 수 없습니다.') });
-    } finally {
-      setRenameBusy(false);
-    }
-  };
   /**
    * ★★ R040 — 한도(R041 10칸)를 넘는 옛 닉네임 (건우 확정): 로비에 들어오면 프로필 창을 **열어 두고** 바꾸라고 안내한다.
    *   바꾸기 전까지는 서버가 게임 시작을 막는다(NICKNAME_CHANGE_REQUIRED). 창은 바꿀 때까지 닫히지 않는다.
@@ -260,11 +234,6 @@ export default function Lobby({
     // ★ R041 — 다른 창이 닫히고 아무 창도 없으면 다시 연다 (바꿀 때까지)
     if (mustRename && snapshot.room.state === 'LOBBY' && openPopupId === null) setRenameOpen(true);
   }, [mustRename, snapshot.room.state, openPopupId, setRenameOpen]);
-  const renameText = renameDraft ?? snapshot.me.nickname;
-  const renameFits = nicknameFits(renameText.trim());
-  // ★ R044 B — 바깥 누르기 · Esc = ✕. ★★ 닉네임을 바꿔야 하면(mustRename) 반드시 거쳐야 하는 창 — ✕ 없음 · 바깥 · Esc 로도 안 닫힌다
-  const closeRename = useCallback(() => setRenameOpen(false), [setRenameOpen]);
-  useDismiss(renameOpen, closeRename, '.rename', !mustRename);
 
   const me = snapshot.players.find((p) => p.accountId === snapshot.me.accountId);
   const state = snapshot.room.state;
@@ -620,110 +589,14 @@ export default function Lobby({
           <BellButton social={social} onJoin={onJoinOther} />
           */}
           {state === 'LOBBY' && me && (
-            <span className="rename">
-              <button
-                type="button"
-                id="rename-btn"
-                className="ghost tiny"
-                aria-expanded={renameOpen}
-                onClick={() => {
-                  setRenameOpen((v) => !v);
-                  setRenameMsg(null);
-                }}
-              >
-                <Icon icon={Pencil} />
-                <span className="lbl">프로필</span>
-              </button>
-              {renameOpen && (
-                <div className="rename-pop" role="dialog" aria-label="내 프로필">
-                  <div className="pop-head">
-                    <p className="pop-title">프로필</p>
-                    {!mustRename && <PopupClose onClose={() => setRenameOpen(false)} />}
-                  </div>
-                  {mustRename && (
-                    <p className="rename-must">
-                      <Icon icon={Pencil} /> 닉네임을 바꿔야 게임에 참여할 수 있어요
-                      <span>{NICKNAME_LIMIT_HINT}</span>
-                    </p>
-                  )}
-                  {/* ★★ R039 — 프로필 사진: 누르면 사진 고르기 → 원형 편집기 */}
-                  <div className="profile-row">
-                    <label className="profile-photo" title="사진 바꾸기">
-                      <Avatar
-                        nickname={snapshot.me.nickname}
-                        colorIndex={snapshot.me.colorIndex}
-                        large
-                        accountId={snapshot.me.accountId}
-                        avatarV={me?.avatarV}
-                      />
-                      <span className="profile-cam" aria-hidden="true">
-                        <Icon icon={Camera} />
-                      </span>
-                      <input
-                        id="avatar-file"
-                        type="file"
-                        accept="image/*"
-                        hidden
-                        onChange={(e) => {
-                          const f = e.target.files?.[0];
-                          e.target.value = '';
-                          if (f) {
-                            setPhotoFile(f);
-                            setPhotoOpen(true);
-                          }
-                        }}
-                      />
-                    </label>
-                    {me?.avatarV ? (
-                      <button
-                        type="button"
-                        className="ghost tiny"
-                        onClick={() => setPhotoDelOpen(true)}
-                      >
-                        사진 지우기
-                      </button>
-                    ) : (
-                      <span className="dim profile-tip">
-                        <Icon icon={Camera} /> 눌러 사진 넣기
-                      </span>
-                    )}
-                  </div>
-                  <div className="field-row">
-                    <input
-                      id="rename-input"
-                      className={renameFits ? undefined : 'nick-input-over'}
-                      aria-invalid={!renameFits}
-                      autoFocus
-                      value={renameDraft ?? snapshot.me.nickname}
-                      maxLength={RULES.NICKNAME_MAX_LENGTH}
-                      onChange={(e) => {
-                        setRenameDraft(e.target.value);
-                        setRenameMsg(null);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
-                          e.preventDefault();
-                          void doRename();
-                        }
-                        if (e.key === 'Escape' && !mustRename) setRenameOpen(false);
-                      }}
-                    />
-                    <BusyButton
-                      onClick={() => void doRename()}
-                      busy={renameBusy}
-                      disabled={!renameFits || renameText.trim() === snapshot.me.nickname}
-                    >
-                      바꾸기
-                    </BusyButton>
-                  </div>
-                  {/* ★ R041 — 칸 수 대신: 넘으면 빨갛게 + 떨림 + 안내 (건우: "1씩 · 0.8씩 오르는 표시가 이상하다") */}
-                  {!renameFits && <p className="form-error rename-msg nick-over">{NICKNAME_TOO_LONG_MESSAGE}</p>}
-                  {renameMsg && (
-                    <p className={renameMsg.ok ? 'note rename-msg' : 'form-error rename-msg'}>{renameMsg.text}</p>
-                  )}
-                </div>
-              )}
-            </span>
+            <ProfilePanel
+              accountId={snapshot.me.accountId}
+              nickname={snapshot.me.nickname}
+              colorIndex={snapshot.me.colorIndex}
+              avatarV={me.avatarV}
+              mustRename={mustRename}
+              onNicknameChanged={onNicknameChanged}
+            />
           )}
           {/* ★★ R041 — 모바일 참여자 창 (넓은 화면은 양옆 칸이 있어 숨긴다). 인원 수를 작게 붙인다 (판단) */}
           <button
@@ -773,10 +646,7 @@ export default function Lobby({
           onNotices={() => openPopup('notices')}
           noticeCount={social.unread}
           friendWaiting={social.pending}
-          onProfile={() => {
-            setRenameMsg(null);
-            setRenameOpen(true);
-          }}
+          onProfile={() => setRenameOpen(true)}
           onSettings={() => openPopup('prefs')}
           onInfo={() => openPopup('info')}
           onLeave={() => {
@@ -787,43 +657,7 @@ export default function Lobby({
         />
       )}
 
-      {photoFile && photoOpen && (
-        <ProfileEditor
-          file={photoFile}
-          onCancel={() => {
-            setPhotoFile(null);
-            // ★ R041 — 편집기는 프로필 창 자리를 잠깐 빌렸다(팝업 하나) → 닫으면 프로필 창으로 돌아간다
-            setRenameOpen(true);
-          }}
-          onDone={async (blob) => {
-            await uploadAvatar(blob);
-            setPhotoFile(null);
-            setRenameOpen(true);
-            setRenameMsg({ ok: true, text: '프로필 사진을 바꿨습니다.' });
-          }}
-        />
-      )}
-
-      {/* ★ R043 A-6 — 사진 지우기도 확인 */}
-      {photoDelOpen && (
-        <ConfirmModal
-          kind="photo-delete"
-          title="프로필 사진을 지울까요?"
-          actions={[
-            {
-              label: '지우기',
-              tone: 'warn',
-              onClick: () => {
-                setPhotoDelOpen(false);
-                void deleteAvatar().catch((err) => setRenameMsg({ ok: false, text: errorMessage(err) }));
-              },
-            },
-          ]}
-          onCancel={() => setPhotoDelOpen(false)}
-        />
-      )}
-
-      {/* ★★ R041 — 모바일 참여자 창 · 강퇴/차단 (팝업 — 한 번에 하나) */}
+      {/* ★★ R041 — 모바일 참여자 창      {/* ★★ R041 — 모바일 참여자 창 · 강퇴/차단 (팝업 — 한 번에 하나) */}
       {peopleOpen && (
         <PeoplePanel
           players={snapshot.players}

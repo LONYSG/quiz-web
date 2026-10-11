@@ -47,6 +47,7 @@ import { useSocial } from './useSocial.js';
 import FriendList from './FriendList.js';
 // import { BellButton } from './SocialPopups.js'; // ★ R044 A-3 — 알림 끔 (D-214)
 import InviteToast from './InviteToast.js';
+import ProfilePanel from './ProfilePanel.js';
 import { useServerClock } from './useServerClock.js';
 
 /** 경로에서 초대받은 방 ID를 뽑는다. /r/<roomId> */
@@ -397,6 +398,17 @@ export default function App() {
             <BellButton social={social} onJoin={joinOther} />
           </div>
           */}
+          {/* ★★ R046 D (건우) — 방 목록 화면에서도 프로필(닉네임 · 사진) — 로비와 **같은 창**(ProfilePanel) */}
+          <div className="home-bar">
+            <ProfilePanel
+              accountId={account.accountId}
+              nickname={account.nickname}
+              colorIndex={0}
+              avatarV={account.avatarV ?? null}
+              onNicknameChanged={(nickname) => setAccount((prev) => (prev ? { ...prev, nickname } : prev))}
+              onAvatarChanged={(avatarV) => setAccount((prev) => (prev ? { ...prev, avatarV } : prev))}
+            />
+          </div>
           <div className="brand">
             <span className="brand-mark" aria-hidden="true">Q</span>
             <h1>상식 퀴즈</h1>

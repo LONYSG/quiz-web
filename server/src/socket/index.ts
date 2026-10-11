@@ -1163,10 +1163,8 @@ export function ejectPlayer(room: Room, accountId: string, reason: EjectReason):
   const inGame = isInGame(room);
   const othersActive = [...room.players.values()].some((p) => p.accountId !== accountId && p.connected);
 
-  if (room.hostAccountId === accountId) {
-    const next = nextHostCandidate(room, accountId);
-    if (next) transferHost(room, next, reason === 'timeout' ? 'grace' : 'left');
-  }
+  // ★ 방장이면 넘길 사람을 먼저 정해 둔다 (넘기는 것은 "나갔습니다" 다음 — 채팅 순서가 자연스럽게)
+  const nextHost = room.hostAccountId === accountId ? nextHostCandidate(room, accountId) : null;
 
   // ★ 점수 되살림은 **타의(끊김)로 빠진 사람이 같은 게임에 돌아올 때만** (건우 확정). 그 밖에는 지운다(0점부터)
   if (reason === 'timeout' && inGame && room.game) room.departedScores.set(accountId, { gameId: room.game.gameId, score: target.score });
@@ -1192,6 +1190,7 @@ export function ejectPlayer(room: Room, accountId: string, reason: EjectReason):
     room,
     reason === 'kick' ? `${target.nickname} 님을 내보냈습니다.` : reason === 'ban' ? `${target.nickname} 님을 차단했습니다.` : `${target.nickname} 님이 나갔습니다.`,
   );
+  if (nextHost) transferHost(room, nextHost, reason === 'timeout' ? 'grace' : 'left');
   emitRoom(room, 'room.playerLeft', {
     accountId,
     players: playerViews(room),

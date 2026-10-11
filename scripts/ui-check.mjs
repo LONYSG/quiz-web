@@ -1431,6 +1431,215 @@ async function probePopup(page, sel, label) {
   return true;
 }
 // -----------------------------------------------------------------------------
+// ★★★ R046 — 나가기 · 끊김 · 옮기기: 사람 동작을 **진짜 클릭**으로 (`npm run ui-check:leave`, verify 에 포함)
+//   ★ 이 모드는 자기 서버를 띄울 때 끊김 60초 → 5초 · 방장 이전 30초 → 2초로 줄인다 (값만 다르고 경로는 같다)
+// -----------------------------------------------------------------------------
+const LEAVE_ONLY = args.includes('--leave');
+if (LEAVE_ONLY) {
+  process.env.SHOT_DIR ??= 'r046';
+  process.env.DISCONNECT_REMOVE_MS ??= '5000';
+  process.env.HOST_TRANSFER_GRACE_MS ??= '2000';
+}
+const chatHas = (page, text) => page.evaluate(`(document.querySelector('.chat-log')?.innerText ?? '').includes(${JSON.stringify(text)})`);
+const seatNames = (page) => page.evaluate("[...document.querySelectorAll('.seat-card:not(.empty) .seat-nick')].map((e) => e.textContent.trim()).join(',')");
+async function leaveByButton(page) {
+  if (await page.evaluate("document.querySelector('button[aria-label=\"나가기\"]')?.offsetParent !== null")) await realClick(page, 'button[aria-label="나가기"]');
+  else {
+    await realClick(page, '#menu-btn');
+    await sleep(250);
+    await realClick(page, '.menu-item', '나가기');
+  }
+  await page.waitFor("document.querySelector('.confirm-modal[data-kind=\"leave\"]') !== null", 3000);
+  const r = await realClick(page, '.confirm-modal button', '나가기');
+  await page.waitFor("document.querySelector('#join-code') !== null", 8000);
+  return r.hit;
+}
+async function createRightAway(page, label) {
+  await page.setInput('.card input', `${label} 새 방`);
+  await sleep(150);
+  await realClick(page, '.card button', '만들기');
+  const ok = await page.waitFor("document.querySelector('.stage') !== null", 6000);
+  const toast = await page.evaluate("document.querySelector('.toast-code')?.textContent ?? ''");
+  record(`★★★ ${label} — 곧바로 새 방 만들기 (진짜 클릭 · "이미 방이 있다" 없음)`, ok && !toast.includes('ALREADY'), toast);
+  if (ok) await leaveByButton(page);
+}
+async function joinByCode(page, code) {
+  await realType(page, '#join-code', code);
+  return page.waitFor("document.querySelector('.stage') !== null", 8000);
+}
+async function leaveFlow(browser) {
+  const H = await newPage(browser, 'L-host');
+  await H.setViewport(1280, 720);
+  await signUp(H, 'lh', '방장님');
+  const G = await newPage(browser, 'L-guest', true);
+  await G.setViewport(1280, 720);
+  await signUp(G, 'lg', '손님하나');
+  const M = await newPage(browser, 'L-mobile', true);
+  await M.setViewport(390, 844);
+  await signUp(M, 'lm', '손님모바일');
+  const F = await newPage(browser, 'L-friend', true);
+  await F.setViewport(1280, 720);
+  await signUp(F, 'lf', '친구방장');
+  // 친구: 게스트 · 모바일 → 친구방장 (친구방장이 수락)
+  await requestFriend(G, loginOf('lf'));
+  await requestFriend(M, loginOf('lf'));
+  await F.waitFor("(document.querySelector('.home-friends')?.innerText ?? '').includes('받은 신청')", 5000);
+  await realClick(F, '.home-friends button', '수락');
+  await sleep(800);
+  await realClick(F, '.home-friends button', '수락');
+  await sleep(800);
+
+  // ── 방장 방 · 둘 입장 (코드)
+  const roomId = await createRoom(H, 'R046 나가기 방');
+  await realClick(H, '#invite-btn');
+  await sleep(300);
+  const code = await H.evaluate("(document.querySelector('.invite-code')?.innerText ?? '').replace(/\\D/g, '')");
+  await closeTop(H);
+  await joinByCode(G, code);
+  await joinByCode(M, code);
+  await sleep(800);
+
+  // ── [로비 · 게스트 · 나가기]
+  record('★★★ 로비 · 게스트 · 나가기 — 버튼 → 확인 → 방 목록 화면', await leaveByButton(G));
+  await sleep(500);
+  record('★★ 로비 · 게스트 · 나가기 — 참여자 칸에서 바로 빠짐', !(await seatNames(H)).includes('손님하나'), await seatNames(H));
+  record('★★ 로비 · 게스트 · 나가기 — 채팅 "손님하나 님이 나갔습니다."', await chatHas(H, '손님하나 님이 나갔습니다.'));
+  await createRightAway(G, '로비 나가기 뒤');
+  await joinByCode(G, code);
+  await sleep(600);
+
+  // ── 게임 시작
+  await realClick(H, 'button', '게임 시작');
+  await H.waitFor("document.querySelector('.room-game') !== null", 12000);
+  await H.waitFor("document.querySelector('.q-text') !== null", 12000);
+  await sleep(500);
+
+  // ── [문제 중 · 게스트(모바일 ☰) · 나가기]
+  record('★★★ 문제 중 · 게스트(모바일) · ☰ → 나가기 → 확인', await leaveByButton(M));
+  await sleep(500);
+  record('★★★ 문제 중 · 게스트 · 나가기 — 바로 빠짐 (옛: 접속 종료로 자리 차지)', !(await seatNames(H)).includes('손님모바일'), await seatNames(H));
+  record('★★ 문제 중 · 게스트 · 나가기 — 채팅 "나갔습니다"', await chatHas(H, '손님모바일 님이 나갔습니다.'));
+  await snap(H, '80-game-guest-left-pc');
+  await createRightAway(M, '문제 중 나가기 뒤(모바일)');
+
+  // ── [문제 중 · 게스트 · 정답 → 새로고침(60초 안)] — 점수 그대로
+  const qText = await H.evaluate("document.querySelector('.q-text')?.dataset.text ?? ''");
+  const ans = (await withPg(async (c) => (await c.query(`SELECT a.answer_text FROM questions q JOIN question_answers a ON a.question_id = q.id WHERE q.question_text = $1 ORDER BY a.is_primary DESC, a.id LIMIT 1`, [qText])).rows))?.[0]?.answer_text;
+  if (ans) {
+    await realType(G, '.chat-card input', ans);
+    await G.key('Enter', { code: 'Enter', vk: 13 });
+  }
+  const gScore = () => H.evaluate("(() => { const c = [...document.querySelectorAll('.seat-card:not(.empty)')].find((c) => c.innerText.includes('손님하나')); return (c?.querySelector('.seat-score')?.innerText ?? '').trim().match(/(\\d+)$/)?.[1] ?? '' })()");
+  await H.waitFor("[...document.querySelectorAll('.seat-card:not(.empty)')].some((c) => c.innerText.includes('손님하나') && /(^|\\D)1$/.test((c.querySelector('.seat-score')?.innerText ?? '').trim()))", 6000);
+  const s1 = await gScore();
+  record('★ (준비) 손님하나 1점', s1 === '1', s1);
+  await G.goto(await G.evaluate('location.href'));
+  await G.waitFor("document.querySelector('.stage') !== null", 8000);
+  await sleep(800);
+  record('★★★ 끊김 → 60초 안 복귀(새로고침) — 자리 · 점수 그대로', (await seatNames(H)).includes('손님하나') && (await gScore()) === '1', `${await seatNames(H)} · ${await gScore()}점`);
+
+  // ── [문제 중 · 게스트 · 끊김 60초 넘김(탭을 떠남)] → 빠짐 · "나갔습니다" → 다시 들어오면 점수 이어서
+  await G.goto('about:blank');
+  await H.waitFor("![...document.querySelectorAll('.seat-card:not(.empty) .seat-nick')].some((e) => e.textContent.includes('손님하나'))", 12000);
+  record('★★★ 끊김 → 60초(테스트 5초) 넘김 — 나간 것과 똑같이 빠짐', !(await seatNames(H)).includes('손님하나'), await seatNames(H));
+  record('★★ 60초 빠짐 — 채팅도 "나갔습니다" (나감과 같은 문구)', await chatHas(H, '손님하나 님이 나갔습니다.'));
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000);
+  await sleep(800);
+  record('★★★ 빠진 뒤 같은 게임에 다시 들어오면 점수를 되살린다', (await gScore()) === '1', `${await gScore()}점`);
+  record('★★ 채팅 "다시 들어왔습니다. (점수 1점 이어서)"', await chatHas(H, '손님하나 님이 다시 들어왔습니다. (점수 1점 이어서)'));
+  await snap(H, '81-rejoin-score-restored-pc');
+
+  // ── [문제 중 · 게스트 · 친구 방으로 옮기기] — 친구 창 [들어가기] → "지금 방을 나가고 들어갈까요?" → 옮기기
+  await F.goto(BASE);
+  await F.waitFor("document.querySelector('#join-code') !== null", 8000);
+  const fRoom = await createRoom(F, '친구 방');
+  await sleep(1500);
+  await realClick(G, '#friends-btn');
+  await G.waitFor("(document.querySelector('.friends-pop')?.innerText ?? '').includes('들어가기')", 5000);
+  await realClick(G, '.friends-pop button', '들어가기');
+  const sw = await G.waitFor("document.querySelector('.confirm-modal[data-kind=\"switch-room\"]') !== null", 3000);
+  await snap(G, '82-move-confirm-pc');
+  const r = await realClick(G, '.confirm-modal button', '옮기기');
+  const moved = await G.waitFor(`location.pathname === '/r/${fRoom}' && document.querySelector('.stage') !== null`, 8000);
+  const err = await G.evaluate("document.querySelector('.toast-code')?.textContent ?? ''");
+  record('★★★ 게임 중 친구 방 [들어가기] → 확인 → 옮겨진다 (옛: "이미 방이 있다")', sw && r.hit && moved && !err.includes('ALREADY'), err);
+  await sleep(500);
+  record('★★ 떠난 방에서 빠짐 · 채팅 "나갔습니다"', !(await seatNames(H)).includes('손님하나') && (await chatHas(H, '손님하나 님이 나갔습니다.')));
+
+  // ── [결과 · 게스트(모바일) · 초대 수락] — 모바일이 방장 방에 다시 들어와 있다가 결과 화면에서 초대 토스트 [수락]
+  await joinByCode(M, code);
+  await sleep(600);
+  await openHostEnd(H);
+  await confirmFirst(H);
+  await M.waitFor("document.querySelector('.room-result') !== null", 10000);
+  await realClick(F, '#friends-btn');
+  await F.waitFor("(document.querySelector('.friends-pop')?.innerText ?? '').includes('손님모바일')", 5000);
+  await F.evaluate("(() => { const li = [...document.querySelectorAll('.friends-pop li')].find((l) => l.innerText.includes('손님모바일')); [...(li?.querySelectorAll('button') ?? [])].find((b) => b.innerText.trim() === '초대')?.click(); })()");
+  const toast = await M.waitFor("document.querySelector('.invite-toast') !== null", 6000);
+  await snap(M, '83-result-invite-toast-m390');
+  await realClick(M, '.invite-toast button', '수락');
+  await M.waitFor("document.querySelector('.confirm-modal[data-kind=\"switch-room\"]') !== null", 3000);
+  await realClick(M, '.confirm-modal button', '옮기기');
+  const moved2 = await M.waitFor(`location.pathname === '/r/${fRoom}' && document.querySelector('.stage') !== null`, 8000);
+  record('★★★ 결과 화면 · 초대 토스트 [수락] → 확인 → 친구 방으로', toast && moved2);
+  await sleep(500);
+  record('★★ 결과 화면에서 옮김 — 떠난 방 채팅 "나갔습니다"', await chatHas(H, '손님모바일 님이 나갔습니다.'));
+
+  // ── [문제 중 · 방장 · 나가기] — 친구방장이 게임을 시작하고 나간다 → 남은 사람에게 즉시 이전 · 친구방장은 곧바로 새 방
+  await closeTop(F);
+  await realClick(F, 'button', '게임 시작');
+  await F.waitFor("document.querySelector('.room-game') !== null", 12000);
+  await sleep(600);
+  record('★★★ 문제 중 · 방장 · 나가기 — 버튼 → 확인', await leaveByButton(F));
+  const newHost = await G.waitFor("[...document.querySelectorAll('.seat-card.mine .crown, .host-tools')].length > 0 || (document.querySelector('.room-tools')?.innerText ?? '').length > 0 && document.querySelector('.host-tools') !== null", 5000)
+    || (await M.waitFor("document.querySelector('.host-tools') !== null", 3000));
+  record('★★ 방장이 나가면 남은 사람에게 즉시 방장 (방장 도구가 보인다)', newHost);
+  record('★★ 채팅 "친구방장 님이 나갔습니다." · "방장이 되었습니다"', (await chatHas(G, '친구방장 님이 나갔습니다.')) && (await chatHas(G, '방장이 되었습니다')));
+  await snap(G, '84-host-left-pc');
+  await createRightAway(F, '방장 게임 중 나가기 뒤');
+
+  // ── ★★ R046 D — 방 목록 화면에서 프로필 (로비와 같은 창) → 친구들 화면(친구 목록)에 바로
+  await F.setViewport(1280, 720);
+  record('★★ D 방 목록 화면에 [프로필] 이 있다', await F.evaluate("document.querySelector('.home-bar #rename-btn') !== null"));
+  await realClick(F, '#rename-btn');
+  await F.waitFor("document.querySelector('.rename-pop') !== null", 3000);
+  await snap(F, '85-home-profile-pc');
+  await realType(F, '#rename-input', '새이름친구');
+  const rr = await realClick(F, '.rename-pop button', '바꾸기');
+  const okMsg = await F.waitFor("(document.querySelector('.rename-pop .rename-msg')?.innerText ?? '').includes('바꿨습니다')", 5000);
+  record('★★★ D 방 목록 화면 — [바꾸기] 진짜 클릭 → 바뀜 · 인사도 새 이름', rr.hit && okMsg && (await F.evaluate("document.querySelector('.home-me')?.innerText.includes('새이름친구') ?? false")));
+  await realClick(G, '#friends-btn');
+  record('★★★ D 친구 화면(친구 목록)에 바로 새 이름', await G.waitFor("(document.querySelector('.friends-pop')?.innerText ?? '').includes('새이름친구')", 5000));
+  await closeTop(G);
+  await closeTop(F);
+  // 방 목록 화면에서 사진 등록 → 인사 옆 사진
+  await realClick(F, '#rename-btn');
+  await F.waitFor("document.querySelector('.rename-pop') !== null", 3000);
+  {
+    const doc = await F.send('DOM.getDocument', { depth: -1, pierce: true });
+    const { nodeId } = await F.send('DOM.querySelector', { nodeId: doc.root.nodeId, selector: '#avatar-file' });
+    await F.send('DOM.setFileInputFiles', { nodeId, files: [path.join(ROOT, 'docs', 'design', 'pastel-3-reveal.png')] });
+  }
+  await F.waitFor("document.querySelector('.profile-editor .crop-stage img') !== null", 5000);
+  await realClick(F, '.profile-editor button', '등록');
+  await F.waitFor("(document.querySelector('.rename-pop .rename-msg')?.innerText ?? '').includes('사진')", 6000);
+  await closeTop(F);
+  await sleep(500);
+  record('★★ D 방 목록 화면 — 사진 등록 → 인사 옆 사진', await F.evaluate("document.querySelector('.home-me img.avatar.photo') !== null"));
+  record('★★ D 친구 화면에도 사진', await (async () => { await realClick(G, '#friends-btn'); const ok = await G.waitFor("[...document.querySelectorAll('.friends-pop li')].some((l) => l.innerText.includes('새이름친구') && l.querySelector('img.avatar.photo'))", 5000); await closeTop(G); return ok; })());
+  await snap(F, '86-home-after-profile-pc');
+
+  // ── ★ R046 E — 밤 테마 첫 글자: 사람 색이 밝아 흰 글자가 안 읽혔다 → 짙은 글자
+  await G.evaluate("document.documentElement.dataset.theme = 'night'");
+  await sleep(300);
+  const nightInk = await G.evaluate("(() => { const a = document.querySelector('.seat-card .avatar:not(.photo)'); return a ? getComputedStyle(a).color : '' })()");
+  await snap(G, '87-night-initials-pc');
+  record('★★ E 밤 테마 — 첫 글자는 짙은 색 (밝은 사람 색 위에서 읽힌다)', nightInk === 'rgb(20, 22, 58)', nightInk);
+  await G.evaluate("document.documentElement.dataset.theme = 'pastel'");
+}
+
+// -----------------------------------------------------------------------------
 // ★★★ R045 A — 이모티콘이 참여자 칸의 글자를 가리지 않는가 (`npm run ui-check -- --emoji`, verify 의 ui-check:social 끝에도 돈다)
 //   10명(방장 화면 + 소켓 손님 9명) · 폭 1536 높이 864 → 650 · 1280×720 · 1366×768 · 파스텔 · 밤
 //   ★ 칸마다: 이모티콘(그림 + 그 상자)이 닉네임 · 배지 · 경험률 · 점수 · 마지막 말 글자와 겹친 넓이 = 0
@@ -2413,6 +2622,10 @@ try {
 
   if (SHOTS_ONLY) {
     await shotsFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (LEAVE_ONLY) {
+    await leaveFlow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (EMOJI_ONLY) {

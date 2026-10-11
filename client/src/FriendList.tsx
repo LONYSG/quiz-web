@@ -140,7 +140,8 @@ export default function FriendList({ social, mode, inRoom, onJoin, pageSize }: P
                     들어가기
                   </button>
                 ) : (
-                  mode === 'home' &&
+                  // ★★ R046 B — 방 안에서도: 다른 방에 있는 친구에게 [들어가기] (확인 후 지금 방을 나가고 옮긴다 — 자의 나가기와 같다)
+                  !inMyRoom &&
                   inSomeRoom &&
                   f.status?.roomId && (
                     <button type="button" className="primary tiny" onClick={() => onJoin?.(f.status!.roomId!)}>

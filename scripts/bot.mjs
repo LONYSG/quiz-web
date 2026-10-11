@@ -105,6 +105,7 @@ const SCENARIO_ENV = {
   abandon: { PAUSE_ABANDON_MS: '6000' },
   // ★ R046 — 끊김 60초 → 4초 · 방장 이전 30초 → 1.5초 (값만 다르고 경로는 같다)
   leave: { DISCONNECT_REMOVE_MS: '4000', HOST_TRANSFER_GRACE_MS: '1500' },
+  leavematrix: { DISCONNECT_REMOVE_MS: '3000', HOST_TRANSFER_GRACE_MS: '1500' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -5203,6 +5204,195 @@ async function scenarioLeave() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ leavematrix — R046 경우의 수 표 (누가 × 어디서 × 어떻게) — 서버 규칙을 칸마다 확인하고 표로 남긴다
+//   누가: 방장 / 게스트 · 어디서: 로비 · 카운트다운 · 문제 중 · 정답 공개 · 결과 · 일시정지
+//   어떻게: 나가기 · 끊김→60초 안 복귀 · 끊김→60초 넘김 · 강퇴 · 차단 · 옮기기(친구 방 · 초대 수락은 서버에서 같은 경로: 나가기 + 들어가기)
+//   ★ 60초 → 3초 · 방장 이전 30초 → 1.5초 (따로 띄운 서버). 표는 scripts 밖 파일로 남긴다(LEAVE_MATRIX_OUT)
+// -----------------------------------------------------------------------------
+async function scenarioLeaveMatrix() {
+  const AWAY = 3000;
+  log('시나리오 leavematrix — ★★★ 경우의 수 표 (R046)');
+  await clearExperiences(PREFIX);
+  const [H, G, X, T] = await makeBots(4);
+  for (const b of [H, G, X, T]) await b.connect();
+  T.createRoom('R046 옮겨 갈 방');
+  await T.waitFor(() => T.snapshot !== null, 6000, '옮겨 갈 방');
+  const target = T.snapshot.room.id;
+  const table = [];
+  const STATES = ['LOBBY', 'COUNTDOWN', 'QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'GAME_RESULT', 'PAUSED'];
+  const HOWS = ['나가기', '끊김-안', '끊김-넘김', '강퇴', '차단', '옮기기'];
+  const ensureConnected = async (b) => {
+    if (!b.socket?.connected) {
+      b.snapshot = null;
+      await b.connect();
+      await sleep(300);
+    }
+  };
+  const scoreOf = (bot, id) => bot.snapshot?.players.find((p) => p.accountId === id)?.score ?? null;
+  const isPaused = (bot) => bot.snapshot?.room.state === 'PAUSED' || Boolean(bot.snapshot?.paused);
+
+  async function enter(state, actor) {
+    for (const b of [H, G, X]) await ensureConnected(b);
+    await freshRoom(H, [G, X], `M ${state}`, false);
+    if (state === 'LOBBY') return;
+    if (state === 'COUNTDOWN') {
+      H.socket.emit('lobby.updateSettings', { questionCount: 5, startMode: 'countdown', countdownSec: 5 });
+      await sleep(300);
+      H.socket.emit('game.start', {});
+      await H.waitFor(() => H.snapshot.room.state === 'COUNTDOWN', 4000, '카운트다운');
+      return;
+    }
+    await startGame(H, [G, X], 5);
+    const me = actor.snapshot.me.accountId;
+    if (state === 'GAME_RESULT') {
+      await answerCurrent(actor);
+      await H.waitFor(() => scoreOf(H, me) >= 1, 6000, '점수');
+      H.socket.emit('host.forceEnd', {});
+      await H.waitFor(() => H.snapshot.room.state === 'GAME_RESULT', 6000, '결과');
+      return;
+    }
+    await answerCurrent(actor);
+    await H.waitFor(() => scoreOf(H, me) >= 1, 6000, '점수');
+    if (state === 'QUESTION_RESOLVED') {
+      await H.waitFor(() => H.snapshot.room.state === 'QUESTION_RESOLVED', 6000, '정답 공개');
+      return;
+    }
+    await H.waitQuestion(2, 15000);
+    if (state === 'QUESTION_ACTIVE') return;
+    // PAUSED — 전원 끊김 뒤 방장 · 게스트만 돌아온다 (X 는 끊긴 채)
+    for (const b of [H, G, X]) b.disconnect();
+    await sleep(500);
+    for (const b of [H, G]) {
+      b.snapshot = null;
+      await b.connect();
+    }
+    await H.waitFor(() => isPaused(H), 6000, '일시정지');
+    await G.waitFor(() => G.snapshot !== null, 6000, '게스트 복귀');
+  }
+
+  for (const who of ['방장', '게스트']) {
+    for (const state of STATES) {
+      for (const how of HOWS) {
+        if (who === '방장' && (how === '강퇴' || how === '차단')) continue; // 방장은 자기 자신을 내보낼 수 없다
+        const actor = who === '방장' ? H : G;
+        const obs = who === '방장' ? G : H;
+        const cell = { who, state, how, removed: '', host: '', destroyed: '', chat: '', elsewhere: '', rejoin: '' };
+        try {
+          await enter(state, actor);
+          const roomId = H.snapshot.room.id;
+          const me = actor.snapshot.me.accountId;
+          const before = scoreOf(H, me);
+          const hostBefore = H.snapshot.room.hostAccountId;
+          const m = obs.mark();
+          if (how === '나가기') actor.leave();
+          else if (how === '강퇴' || how === '차단') H.socket.emit('host.kick', { accountId: me, ban: how === '차단' });
+          else if (how === '옮기기') {
+            actor.leave();
+            actor.snapshot = null;
+            actor.join(target);
+          } else {
+            actor.disconnect();
+            if (how === '끊김-안') {
+              await sleep(1000);
+              actor.snapshot = null;
+              await actor.connect();
+              await actor.waitFor(() => actor.snapshot !== null, 6000, '복귀');
+            }
+          }
+          const expectRemoved = how !== '끊김-안' && !(how === '끊김-넘김' && state === 'PAUSED');
+          const waitMs = how === '끊김-넘김' ? AWAY + 3000 : 3000;
+          if (expectRemoved) await obs.waitFor(() => !playerIds(obs).includes(me), waitMs, '빠짐').catch(() => undefined);
+          else await sleep(how === '끊김-넘김' ? AWAY + 1500 : 500);
+          const removed = !playerIds(obs).includes(me);
+          cell.removed = removed === expectRemoved ? (removed ? '빠짐 ✓' : '남음 ✓') : `★ ${removed ? '빠짐' : '남음'}(기대 ${expectRemoved ? '빠짐' : '남음'})`;
+          if (who === '방장') {
+            const changed = obs.since(m, 'room.hostChanged').length > 0;
+            // 방장 이전 = 빠졌거나, 끊긴 채 이전 유예(30초 · 테스트 1.5초)를 넘겼을 때 (일시정지 중에도 넘긴다 — R015 · Q-29)
+            const expectChange = removed || how === '끊김-넘김';
+            cell.host = changed === expectChange ? (changed ? '이전 ✓' : '그대로 ✓') : `★ ${changed ? '이전' : '그대로'}`;
+          } else cell.host = '—';
+          {
+            // 방이 살아 있나 — 관찰자가 상태를 다시 달라고 한다 (방이 사라졌으면 NOT_IN_ROOM)
+            const r0 = obs.mark();
+            obs.socket.emit('state.resync', {});
+            await obs.waitFor(() => obs.since(r0, 'room.state').length > 0 || obs.since(r0, 'error').length > 0, 3000, '방 확인').catch(() => undefined);
+            cell.destroyed = obs.since(r0, 'room.state').length > 0 ? '안 함 ✓' : `★ ${obs.since(r0, 'error')[0]?.code ?? '응답 없음'}`;
+          }
+          await sleep(300);
+          const texts = systemSince(obs, m);
+          const want = how === '강퇴' ? '내보냈습니다' : how === '차단' ? '차단했습니다' : '나갔습니다';
+          cell.chat = removed ? (texts.some((t) => t.includes(want)) ? `"${want}" ✓` : `★ 없음`) : '— ✓';
+          // 곧바로 다른 방 (빠진 경우)
+          if (removed) {
+            if (how === '옮기기') {
+              await actor.waitFor(() => actor.snapshot !== null, 5000, '옮긴 방').catch(() => undefined);
+              cell.elsewhere = actor.snapshot?.room.id === target ? '옮긴 방 ✓' : `★ ${actor.lastError()?.code ?? '실패'}`;
+              actor.leave();
+              await sleep(300);
+              actor.snapshot = null;
+            } else {
+              await ensureConnected(actor);
+              const f = actor.mark();
+              actor.snapshot = null;
+              actor.createRoom('M 새 방');
+              await actor.waitFor(() => actor.snapshot !== null || actor.since(f, 'error').length > 0, 5000, '새 방').catch(() => undefined);
+              const err = actor.since(f, 'error')[0]?.code;
+              cell.elsewhere = err ? `★ ${err}` : '새 방 ✓';
+              actor.leave();
+              await sleep(300);
+              actor.snapshot = null;
+            }
+            // 다시 들어오기
+            const f2 = actor.mark();
+            actor.join(roomId);
+            await actor.waitFor(() => actor.snapshot !== null || actor.since(f2, 'error').length > 0, 5000, '다시').catch(() => undefined);
+            const err2 = actor.since(f2, 'error')[0]?.code;
+            const inGame = ['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'PAUSED'].includes(state);
+            if (how === '차단') cell.rejoin = err2 === 'BANNED' ? '못 들어옴 ✓' : `★ ${err2 ?? '들어옴'}`;
+            else if (err2) cell.rejoin = `★ ${err2}`;
+            else {
+              const sc = scoreOf(actor, me);
+              const expect = how === '끊김-넘김' && inGame ? before : 0;
+              cell.rejoin = sc === expect ? `${sc}점 ✓` : `★ ${sc}점(기대 ${expect})`;
+            }
+          } else {
+            cell.elsewhere = '—';
+            if (how === '끊김-넘김') await ensureConnected(actor);
+            const sc = scoreOf(obs, me);
+            cell.rejoin = sc === before ? `그대로 ${sc}점 ✓` : `★ ${sc}점(기대 ${before})`;
+          }
+          void hostBefore;
+        } catch (err) {
+          cell.removed = cell.removed || `★ 확인 못 함: ${err.message}`;
+        }
+        table.push(cell);
+        const bad = Object.values(cell).some((v) => String(v).includes('★'));
+        expectTrue(`${who} · ${state} · ${how}`, !bad, JSON.stringify(cell));
+        // 다음 칸을 위해 정리
+        for (const b of [H, G, X]) {
+          if (b.snapshot) {
+            b.leave();
+          }
+        }
+        await sleep(300);
+        for (const b of [H, G, X]) b.snapshot = null;
+      }
+    }
+  }
+  const out = process.env.LEAVE_MATRIX_OUT;
+  if (out) {
+    const { writeFileSync } = await import('node:fs');
+    writeFileSync(out, JSON.stringify(table, null, 1));
+  }
+  for (const b of [H, G, X, T]) {
+    if (b.snapshot) b.leave();
+  }
+  await sleep(300);
+  for (const b of [H, G, X, T]) b.disconnect();
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -5388,6 +5578,7 @@ const SCENARIOS = {
   profile: scenarioProfile,
   // ★★★ R046
   leave: scenarioLeave,
+  leavematrix: scenarioLeaveMatrix,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };
