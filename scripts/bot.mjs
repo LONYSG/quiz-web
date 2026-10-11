@@ -4882,6 +4882,62 @@ async function postJson(pathname, body, cookie = null, method = 'POST') {
   return { status: res.status, json: await res.json().catch(() => ({})) };
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ profile — R045 D: 닉네임 · 사진을 바꾼 뒤 **같은 접속으로** 방을 새로 만들거나 들어가도 새 값이어야 한다
+//   (옛 결함: 소켓 세션이 접속 때 값을 들고 있어 옛 닉네임 · 옛 사진으로 참가자가 만들어졌다)
+// -----------------------------------------------------------------------------
+async function scenarioProfile() {
+  log('시나리오 profile — ★★★ 닉네임 · 사진 바꾼 뒤 같은 접속으로 방 만들기 · 들어가기 (R045)');
+  const [host, other] = await makeBots(2);
+  await host.connect();
+  host.createRoom('R045 혼자 방');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const me = host.snapshot.me.accountId;
+  const nick = `${PREFIX}-p${Date.now().toString(36).slice(-4)}`.slice(0, 12);
+  const r = await postJson('/api/auth/nickname', { nickname: nick }, host.cookie, 'PATCH');
+  expect('★ 혼자 로비에서 닉네임 바꾸기', r.status, 200);
+  await host.waitFor(() => host.snapshot.players.find((p) => p.accountId === me)?.nickname === nick, 3000, '방에 반영');
+  expect('★★ 지금 방에 바로 반영', host.snapshot.players.find((p) => p.accountId === me)?.nickname, nick);
+  const av = await putAvatar(host, PNG_1PX, 'image/png');
+  expect('★ 사진 등록', av.status, 200);
+  host.leave();
+  await sleep(400);
+  host.snapshot = null;
+  host.createRoom('R045 다시 만든 방');
+  await host.waitFor(() => host.snapshot !== null, 6000, '다시 만들기');
+  const p1 = host.snapshot.players.find((p) => p.accountId === me);
+  expect('★★★ 같은 접속으로 방을 다시 만들어도 새 닉네임', p1?.nickname, nick);
+  expect('★★★ 같은 접속으로 방을 다시 만들어도 새 사진', p1?.avatarV, av.json.avatarV);
+  expect('★★ 내 정보(me)도 새 닉네임', host.snapshot.me.nickname, nick);
+  // 다른 사람 방에 들어갈 때도
+  await other.connect();
+  other.createRoom('R045 남의 방');
+  await other.waitFor(() => other.snapshot !== null, 6000, '남의 방');
+  host.leave();
+  await sleep(400);
+  host.snapshot = null;
+  host.join(other.snapshot.room.id);
+  await host.waitFor(() => host.snapshot !== null, 6000, '들어가기');
+  await other.waitFor(() => other.snapshot.players.some((p) => p.accountId === me), 3000, '상대 화면');
+  expect('★★★ 남의 방에 들어가도 상대 화면에 새 닉네임', other.snapshot.players.find((p) => p.accountId === me)?.nickname, nick);
+  await fetch(`${BASE}/api/avatar`, { method: 'DELETE', headers: { cookie: host.cookie ?? '' } });
+  await sleep(300);
+  host.leave();
+  other.leave();
+  await sleep(300);
+  host.snapshot = null;
+  host.createRoom('R045 사진 지운 뒤');
+  await host.waitFor(() => host.snapshot !== null, 6000, '세 번째 방');
+  expect('★★ 사진을 지운 뒤 다시 만든 방 — 사진 없음', host.snapshot.players.find((p) => p.accountId === me)?.avatarV ?? null, null);
+  host.leave();
+  await sleep(300);
+  // 원래 닉네임으로 되돌려 둔다 (다른 시나리오가 봇 닉네임을 기대한다)
+  await postJson('/api/auth/nickname', { nickname: host.nickname }, host.cookie, 'PATCH');
+  host.disconnect();
+  other.disconnect();
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -5063,6 +5119,8 @@ const SCENARIOS = {
   roomcode: scenarioRoomCode,
   pwreset: scenarioPwReset,
   friends: scenarioFriends,
+  // ★★ R045
+  profile: scenarioProfile,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

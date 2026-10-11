@@ -1395,7 +1395,7 @@ async function confirmFirst(page) {
 //   ★ 비교 그림: 친구 창 ↔ 참여자 창(👥), 알림 창 ↔ 설정 창(⚙)
 // -----------------------------------------------------------------------------
 const SOCIAL_ONLY = args.includes('--social');
-if (SOCIAL_ONLY) process.env.SHOT_DIR ??= 'r043';
+if (SOCIAL_ONLY) process.env.SHOT_DIR ??= 'r045';
 const loginOf = (suffix) => `${ACCOUNT_PREFIX}_${suffix}`.toLowerCase();
 async function clickIn(page, selector, text) {
   return page.evaluate(
@@ -1430,6 +1430,293 @@ async function probePopup(page, sel, label) {
   record(`★★ ${label} — 글자 꺾임 0`, wraps.length === 0, wraps.join(' / '));
   return true;
 }
+// -----------------------------------------------------------------------------
+// ★★★ R045 A — 이모티콘이 참여자 칸의 글자를 가리지 않는가 (`npm run ui-check -- --emoji`, verify 의 ui-check:social 끝에도 돈다)
+//   10명(방장 화면 + 소켓 손님 9명) · 폭 1536 높이 864 → 650 · 1280×720 · 1366×768 · 파스텔 · 밤
+//   ★ 칸마다: 이모티콘(그림 + 그 상자)이 닉네임 · 배지 · 경험률 · 점수 · 마지막 말 글자와 겹친 넓이 = 0
+// -----------------------------------------------------------------------------
+const EMOJI_ONLY = args.includes('--emoji');
+if (EMOJI_ONLY) process.env.SHOT_DIR ??= 'r045';
+const EMOJI_PROBE = `(() => {
+  const out = [];
+  for (const card of document.querySelectorAll('.seat-card:not(.empty)')) {
+    const pop = card.querySelector('.seat-emoji-pop');
+    if (!pop) continue;
+    const boxes = [pop, ...pop.querySelectorAll('*')].map((e) => e.getBoundingClientRect()).filter((r) => r.width > 0);
+    const texts = [...card.querySelectorAll('.seat-nick, .seat-badges .badge, .seat-rate, .seat-score, .seat-rank, .seat-msg, .crown')];
+    let worst = 0, who = '';
+    for (const t of texts) {
+      const b = t.getBoundingClientRect();
+      if (b.width === 0) continue;
+      for (const a of boxes) {
+        const w = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+        const h = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+        if (w > 0.5 && h > 0.5 && w * h > worst) { worst = Math.round(w * h); who = t.className.split(' ')[0]; }
+      }
+    }
+    // ★ 글자 줄이 눌려 잘렸는가 (R045 — 겹침이 아니라 줄 높이가 줄어 바탕이 덮는 모양이었다)
+    for (const t of card.querySelectorAll('.seat-nick, .seat-rate, .seat-badges')) {
+      const r = t.getBoundingClientRect();
+      const lh = parseFloat(getComputedStyle(t).lineHeight) || parseFloat(getComputedStyle(t).fontSize) * 1.3;
+      if (r.height > 0 && (r.height < lh * 0.9 || t.scrollHeight > t.clientHeight + 1)) { worst = Math.max(worst, 1); who = 'clipped:' + t.className.split(' ')[0]; }
+    }
+    const cr = card.getBoundingClientRect();
+    const pr = pop.getBoundingClientRect();
+    out.push({ nick: card.querySelector('.seat-nick')?.textContent?.trim() ?? '?', worst, who, cardH: Math.round(cr.height), popH: Math.round(pr.height), inCard: pr.top >= cr.top - 0.5 && pr.bottom <= cr.bottom + 0.5 });
+  }
+  return JSON.stringify(out);
+})()`;
+async function emojiGuests(roomId, n) {
+  const { io: ioc } = await import('socket.io-client');
+  const socks = [];
+  for (let i = 0; i < n; i += 1) {
+    const loginId = `${ACCOUNT_PREFIX}_e${i}`.toLowerCase();
+    const body = JSON.stringify({ loginId, password: 'uic1234', nickname: `이모${i}손님${STAMP.slice(-2)}` });
+    let res = await fetch(`${BASE}/api/auth/signup`, { method: 'POST', headers: { 'content-type': 'application/json' }, body });
+    if (res.status !== 200) res = await fetch(`${BASE}/api/auth/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ loginId, password: 'uic1234' }) });
+    const cookie = (res.headers.getSetCookie?.() ?? []).map((c) => c.split(';')[0]).find((c) => c.startsWith('qw_session=')) ?? '';
+    const s = ioc(BASE, { transports: ['websocket'], extraHeaders: { cookie }, reconnection: false });
+    await new Promise((r) => s.once('connect', r));
+    s.emit('room.join', { roomId });
+    await new Promise((r) => s.once('room.state', r));
+    socks.push(s);
+  }
+  return socks;
+}
+async function emojiFlow(browser) {
+  const host = await newPage(browser, 'e-host');
+  await host.setViewport(1536, 864);
+  await signUp(host, 'eh', shotNick(0) ?? '가나다라마바사아자차');
+  const roomId = await createRoom(host, '이모티콘 확인');
+  const socks = await emojiGuests(roomId, 9);
+  await sleep(1200);
+  // 손님 몇은 마지막 말이 있게 (말풍선 칸이 있는 경우)
+  socks[0].emit('chat.send', { text: '안녕하세요 반가워요', epoch: null });
+  // ★ 튀어 오르는 순간도 본다 (0.1 · 0.3 · 0.5초) — 자리 잡은 뒤만 재면 순간 겹침을 못 본다
+  for (const theme of ['pastel', 'night']) {
+    await host.evaluate(`document.documentElement.dataset.theme = '${theme}'`);
+    await host.setViewport(1536, 700);
+    await sleep(300);
+    socks[1].emit('emoji.send', { emojiId: 1 });
+    let worstMid = 0;
+    for (const t of [100, 200, 200]) {
+      await sleep(t);
+      const rows = JSON.parse(await host.evaluate(EMOJI_PROBE));
+      worstMid = Math.max(worstMid, ...rows.map((r) => r.worst));
+      await snap(host, `71-emoji-mid-${theme}-${t}`);
+    }
+    record(`★★ A ${theme} 1536×700 — 튀어 오르는 순간(0.1~0.5초)에도 글자를 가리지 않는다`, worstMid === 0, `가장 큰 겹침 ${worstMid}px²`);
+    await sleep(6000);
+  }
+  const SIZES = [
+    { w: 1536, h: 864 }, { w: 1536, h: 800 }, { w: 1536, h: 730 }, { w: 1536, h: 700 }, { w: 1536, h: 650 },
+    { w: 1280, h: 720 }, { w: 1366, h: 768 },
+  ];
+  for (const theme of ['pastel', 'night']) {
+    await host.evaluate(`document.documentElement.dataset.theme = '${theme}'`);
+    for (const sz of SIZES) {
+      await host.setViewport(sz.w, sz.h);
+      await sleep(350);
+      // 모두 이모티콘 (방장은 진짜 클릭 · 손님은 소켓)
+      for (const s of socks) s.emit('emoji.send', { emojiId: 1 });
+      await realClick(host, '.emoji-btn');
+      await sleep(250);
+      await realClick(host, '.emoji-slot');
+      await closeTop(host);
+      await sleep(1000); // 튀어 오르기(0.65초) 뒤 자리 잡은 모습
+      const rows = JSON.parse(await host.evaluate(EMOJI_PROBE));
+      const bad = rows.filter((r) => r.worst > 0 || !r.inCard);
+      if (sz.h === 864 || sz.h === 650 || sz.w !== 1536) await snap(host, `70-emoji-${theme}-${sz.w}x${sz.h}`);
+      record(`★★★ A ${theme} ${sz.w}×${sz.h} — 10명 · 이모티콘이 칸 안 글자를 가리지 않는다 · 칸 밖으로 안 나간다`, rows.length >= 10 && bad.length === 0,
+        `${rows.length}칸 · 칸 높이 ${Math.min(...rows.map((r) => r.cardH))}~${Math.max(...rows.map((r) => r.cardH))} · 그림 ${Math.min(...rows.map((r) => r.popH))}px` + (bad.length ? ` · 겹침 ${bad.map((b) => `${b.nick}:${b.who}=${b.worst}${b.inCard ? '' : '·칸밖'}`).join(' ')}` : ''));
+      await sleep(5200); // 이모티콘이 사라질 때까지(6초 흐려짐) — 다음 크기에서 새로 띄운다
+    }
+  }
+  await host.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  for (const s of socks) s.close();
+}
+
+// -----------------------------------------------------------------------------
+// ★★★ R045 D — 닉네임 · 프로필 사진: 진짜 클릭 · 진짜 키 입력 (`npm run ui-check -- --profile`, verify 의 ui-check:social 끝에도 돈다)
+//   혼자 · 둘 / 방장 · 게스트 / 바꾼 뒤 — 내 화면(참여자 칸 · 프로필 창 · 채팅) · 다른 사람 화면 · 새로고침 뒤 · 다시 로그인 뒤
+// -----------------------------------------------------------------------------
+const PROFILE_ONLY = args.includes('--profile');
+if (PROFILE_ONLY) process.env.SHOT_DIR ??= 'r045';
+/** 진짜 키 입력 — 입력칸을 진짜로 누르고 전부 고른 뒤(Ctrl+A) 글자를 넣는다 (IME 를 거치지 않는 insertText) */
+async function realType(page, selector, text) {
+  await realClick(page, selector);
+  await page.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'a', code: 'KeyA', modifiers: 2, windowsVirtualKeyCode: 65 });
+  await page.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'a', code: 'KeyA', modifiers: 2, windowsVirtualKeyCode: 65 });
+  await page.send('Input.insertText', { text });
+  await sleep(200);
+}
+const seatNicks = (page) => page.evaluate("[...document.querySelectorAll('.seat-card .seat-nick')].map((e) => e.textContent.trim()).join(',')");
+async function renameVia(page, next, label) {
+  if (!(await page.evaluate("document.querySelector('.rename-pop') !== null"))) {
+    // 모바일은 [프로필] 이 ☰ 안에 있다
+    if (await page.evaluate("document.querySelector('#rename-btn')?.offsetParent !== null")) await realClick(page, '#rename-btn');
+    else {
+      await realClick(page, '#menu-btn');
+      await sleep(250);
+      await realClick(page, '.menu-item', '프로필');
+    }
+  }
+  await page.waitFor("document.querySelector('.rename-pop') !== null", 3000);
+  await realType(page, '#rename-input', next);
+  const r = await realClick(page, '.rename-pop button', '바꾸기');
+  const ok = await page.waitFor("document.querySelector('.rename-pop .rename-msg')?.className.includes('note') ?? false", 5000);
+  const msg = await page.evaluate("document.querySelector('.rename-pop .rename-msg')?.innerText ?? '(없음)'");
+  record(`★★ D ${label} — [바꾸기] 진짜 클릭 → "바꿨습니다"`, r.hit && ok, `${msg} · hit=${r.hit} ${r.top ?? ''}`);
+  return ok;
+}
+async function profileFlow(browser) {
+  const sfx = `${STAMP.slice(-3)}`;
+  const host = await newPage(browser, 'p-host');
+  await host.setViewport(1280, 720);
+  await signUp(host, 'ph', `방장${sfx}`);
+  await createRoom(host, '프로필 확인');
+  await sleep(600);
+  // ── 혼자 로비
+  const n1 = `혼자바꿈${sfx}`;
+  await renameVia(host, n1, '방장 혼자 로비');
+  await sleep(500);
+  record('★★★ D 혼자 — 참여자 칸 닉네임이 바뀐다', (await seatNicks(host)).includes(n1), await seatNicks(host));
+  record('★★ D 혼자 — 프로필 창 입력칸이 새 닉네임', (await host.evaluate("document.querySelector('#rename-input')?.value ?? ''")) === n1, await host.evaluate("document.querySelector('#rename-input')?.value ?? ''"));
+  record('★ D 혼자 — 채팅에 "이름을 바꿨습니다" 한 줄', await host.evaluate(`document.querySelector('.chat-log')?.innerText.includes(${JSON.stringify(`${n1}(으)로 이름을 바꿨습니다`)}) ?? false`));
+  await snap(host, '60-rename-alone-pc');
+  await closeTop(host);
+  // 채팅을 치면 새 이름으로 나간다
+  await realType(host, '.chat-card input', '이름 바꾼 뒤 채팅');
+  await host.key('Enter', { code: 'Enter', vk: 13 });
+  await sleep(500);
+  record('★★ D 혼자 — 바꾼 뒤 채팅이 새 이름으로', await host.evaluate(`(() => { const lines = [...document.querySelectorAll('.chat-line')]; const l = lines[lines.length - 1]; return Boolean(l && l.innerText.includes(${JSON.stringify(n1)}) && l.innerText.includes('이름 바꾼 뒤 채팅')); })()`));
+  // ★ 한글 입력 그대로 — 조합 중(IME)에 Enter 로 바꾸기 (사람이 실제로 치는 방식)
+  {
+    await realClick(host, '#rename-btn');
+    await host.waitFor("document.querySelector('.rename-pop') !== null", 3000);
+    await realType(host, '#rename-input', `엔터${sfx}`);
+    await host.send('Input.imeSetComposition', { text: '기', selectionStart: 1, selectionEnd: 1 });
+    await sleep(100);
+    // 조합 중 Enter — 브라우저는 먼저 조합을 끝낸다(isComposing) → 앱은 이 Enter 를 무시한다 → 사람은 한 번 더 누른다
+    await host.key('Enter', { code: 'Enter', vk: 13 });
+    await host.send('Input.insertText', { text: '' });
+    await sleep(200);
+    const afterFirst = await host.evaluate("document.querySelector('.rename-pop .rename-msg')?.innerText ?? ''");
+    await host.key('Enter', { code: 'Enter', vk: 13 });
+    await sleep(800);
+    const val = await host.evaluate("document.querySelector('#rename-input')?.value ?? ''");
+    const nicksNow = await seatNicks(host);
+    console.log(`  ★ 진단 — IME 조합 중 Enter: 첫 Enter 뒤 안내="${afterFirst}" · 둘째 Enter 뒤 입력칸="${val}" · 참여자 칸="${nicksNow}"`);
+    record('★★ D 혼자 — 한글 조합 중 Enter 로도 바뀐다 (Enter 두 번 이내)', nicksNow.includes(`엔터${sfx}`), `${nicksNow} · 입력칸=${val}`);
+    await closeTop(host);
+  }
+  const n1b = (await seatNicks(host)).split(',')[0];
+  // ★★★ 바꾼 뒤 — 같은 접속으로 나갔다가 방을 다시 만든다 (새로고침 없이) → 새 방에서도 새 닉네임이어야 한다
+  {
+    // ★★ R045 B — 혼자(마지막)면: 확인 문구 "방이 사라져요" · 나가면 코드 칸 비움
+    await realClick(host, 'button[aria-label="나가기"]');
+    await host.waitFor("document.querySelector('.confirm-modal[data-kind=\"leave\"]') !== null", 3000);
+    const note = await host.evaluate("document.querySelector('.confirm-modal .confirm-note')?.innerText ?? ''");
+    await snap(host, '63-leave-last-pc');
+    record('★★ B 마지막 사람 — 나가기 확인 문구 "방이 사라져요"', note.includes('방이 사라져요'), note);
+    await realClick(host, '.confirm-modal button', '나가기');
+    await host.waitFor("document.querySelector('#join-code') !== null", 8000);
+    record('★★ B 마지막 사람 — 나간 뒤 방 코드 칸이 비어 있다', (await host.evaluate("document.querySelector('#join-code')?.value ?? '-'")) === '');
+    // ★★ R045 C — 밤 테마 로고 (방 목록 화면) — 크기는 offsetWidth 로 (로고는 기울어 떠 있어 화면 상자 크기가 순간마다 다르다)
+    const logoP = await host.evaluate("getComputedStyle(document.querySelector('.brand-mark')).backgroundImage");
+    await host.evaluate("document.documentElement.dataset.theme = 'night'");
+    await sleep(300);
+    const logoN = await host.evaluate("getComputedStyle(document.querySelector('.brand-mark')).backgroundImage");
+    const sizeSame = await host.evaluate("(() => { const e = document.querySelector('.brand-mark'); return e.offsetWidth + 'x' + e.offsetHeight; })()");
+    await snap(host, '64-logo-night-home-pc');
+    await host.setViewport(390, 844);
+    await sleep(300);
+    await snap(host, '64-logo-night-home-m390');
+    await host.setViewport(1280, 720);
+    await host.evaluate("document.documentElement.dataset.theme = 'pastel'");
+    await sleep(300);
+    await snap(host, '64-logo-pastel-home-pc');
+    record('★★ C 밤 테마 로고 — 파스텔과 다른 밤 색 (크기 같음)', logoP !== logoN && sizeSame === (await host.evaluate("(() => { const e = document.querySelector('.brand-mark'); return e.offsetWidth + 'x' + e.offsetHeight; })()")), `${sizeSame}`);
+    await createRoom(host, '다시 만든 방');
+    await sleep(600);
+    record('★★★ D 혼자 — 바꾼 뒤 나갔다가 방을 다시 만들어도 새 닉네임 (새로고침 없이)', (await seatNicks(host)).includes(n1b), `${await seatNicks(host)} / 기대 ${n1b}`);
+    await snap(host, '60b-rename-then-new-room-pc');
+  }
+  // 새로고침 뒤
+  await host.goto(await host.evaluate('location.href'));
+  await host.waitFor("document.querySelector('.stage') !== null", 8000);
+  await sleep(500);
+  record('★★ D 혼자 — 새로고침 뒤에도 새 닉네임', (await seatNicks(host)).includes(n1b), await seatNicks(host));
+
+  // ── 둘: 게스트가 들어온다 → 방장이 다시 바꾼다 → 게스트 화면 / 게스트가 바꾼다 → 방장 화면
+  const roomPath = await host.evaluate('location.pathname');
+  const guest = await newPage(browser, 'p-guest', true);
+  await guest.setViewport(390, 844);
+  await signUp(guest, 'pg', `손님${sfx}`);
+  await guest.goto(`${BASE}${roomPath}`);
+  await guest.waitFor("document.querySelector('.stage') !== null", 8000);
+  await sleep(600);
+  const n2 = `둘째바꿈${sfx}`;
+  await renameVia(host, n2, '방장 · 둘');
+  await sleep(600);
+  record('★★★ D 둘 — 방장이 바꾸면 게스트 화면에도', await guest.evaluate(`document.body.innerText.includes(${JSON.stringify(n2)})`));
+  await closeTop(host);
+  const g1 = `손님바꿈${sfx}`;
+  await renameVia(guest, g1, '게스트(모바일) · 둘');
+  await sleep(600);
+  record('★★★ D 둘 — 게스트가 바꾸면 방장 화면 참여자 칸에도', (await seatNicks(host)).includes(g1), await seatNicks(host));
+  await snap(guest, '61-rename-guest-m390');
+  await closeTop(guest);
+
+  // ── 프로필 사진: 등록 → 내 칸 · 다른 사람 칸 · 새로고침 뒤 / 지우기 → 첫 글자
+  await realClick(host, '#rename-btn');
+  await host.waitFor("document.querySelector('.rename-pop') !== null", 3000);
+  {
+    const doc = await host.send('DOM.getDocument', { depth: -1, pierce: true });
+    const { nodeId } = await host.send('DOM.querySelector', { nodeId: doc.root.nodeId, selector: '#avatar-file' });
+    await host.send('DOM.setFileInputFiles', { nodeId, files: [path.join(ROOT, 'docs', 'design', 'pastel-3-reveal.png')] });
+  }
+  await host.waitFor("document.querySelector('.profile-editor .crop-stage img') !== null", 5000);
+  await sleep(300);
+  let r = await realClick(host, '.profile-editor button', '등록');
+  const back = await host.waitFor("document.querySelector('.rename-pop .rename-msg')?.innerText.includes('사진') ?? false", 6000);
+  record('★★ D 사진 등록 — [등록] 진짜 클릭 → 프로필 창으로 돌아와 "바꿨습니다"', r.hit && back, `hit=${r.hit}`);
+  await sleep(800);
+  const hostImg = "document.querySelector('.seat-card.mine img.avatar.photo, .seat-card img.avatar.photo') !== null";
+  record('★★★ D 사진 — 내 참여자 칸에 사진', await host.evaluate(hostImg));
+  record('★★★ D 사진 — 다른 사람(게스트) 화면에도 사진', await guest.waitFor("document.querySelector('img.avatar.photo') !== null", 4000));
+  await snap(host, '62-photo-set-pc');
+  r = await realClick(host, '.rename-pop button', '사진 지우기');
+  await host.waitFor("document.querySelector('.confirm-modal[data-kind=\"photo-delete\"]') !== null", 3000);
+  const r2 = await realClick(host, '.confirm-modal button', '지우기');
+  await sleep(1000);
+  record('★★ D 사진 지우기 — 진짜 클릭 → 확인 → 내 칸이 첫 글자로', r.hit && r2.hit && (await host.evaluate("document.querySelector('.seat-card img.avatar.photo') === null")), `hit=${r.hit}/${r2.hit}`);
+  record('★★ D 사진 지우기 — 다른 사람 화면에서도 첫 글자로', await guest.waitFor("document.querySelector('img.avatar.photo') === null", 4000));
+
+  // ── 다시 로그인 뒤: 방 목록 화면 인사 · 방 칸 모두 새 닉네임
+  await closeTop(host);
+  // ★★ R045 B — 다른 사람이 남아 있으면: "방 코드 N 으로 다시 들어올 수 있어요" · 코드 칸 채움
+  await realClick(host, 'button[aria-label="나가기"]');
+  await host.waitFor("document.querySelector('.confirm-modal[data-kind=\"leave\"]') !== null", 3000);
+  const note2 = await host.evaluate("document.querySelector('.confirm-modal .confirm-note')?.innerText ?? ''");
+  record('★★ B 남은 사람이 있으면 — 확인 문구에 방 코드', /방 코드 \d{6}/.test(note2), note2);
+  await realClick(host, '.confirm-modal button', '나가기');
+  await host.waitFor("document.querySelector('#join-code') !== null", 8000);
+  record('★★ B 남은 사람이 있으면 — 나간 뒤 코드 칸에 그 방 코드', /^\d{6}$/.test(await host.evaluate("document.querySelector('#join-code')?.value ?? ''")));
+  record('★★ D 방 목록 화면 — 인사에 새 닉네임', await host.evaluate(`document.querySelector('.home-me')?.innerText.includes(${JSON.stringify(n2)}) ?? false`), await host.evaluate("document.querySelector('.home-me')?.innerText ?? ''"));
+  const relog = await newPage(browser, 'p-relog', true);
+  await relog.setViewport(1280, 720);
+  await relog.goto(BASE);
+  await relog.evaluate(`(() => {
+    const set = (el, v) => { const d = Object.getOwnPropertyDescriptor(el.constructor.prototype, 'value'); d.set.call(el, v); el.dispatchEvent(new Event('input', { bubbles: true })); };
+    const i = [...document.querySelectorAll('form input')];
+    set(i[0], ${JSON.stringify(`${ACCOUNT_PREFIX}_ph`)}); set(i[1], 'uic1234');
+  })()`);
+  await relog.evaluate("document.querySelector('form').requestSubmit()");
+  await relog.waitFor("document.querySelector('.home-me') !== null", 8000);
+  record('★★ D 다시 로그인 뒤 — 새 닉네임', await relog.evaluate(`document.querySelector('.home-me')?.innerText.includes(${JSON.stringify(n2)}) ?? false`), await relog.evaluate("document.querySelector('.home-me')?.innerText ?? ''"));
+}
+
 async function socialFlow(browser) {
   const host = await newPage(browser, 'host');
   await host.setViewport(1280, 720);
@@ -2128,8 +2415,18 @@ try {
     await shotsFlow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
+  if (EMOJI_ONLY) {
+    await emojiFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (PROFILE_ONLY) {
+    await profileFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
   if (SOCIAL_ONLY) {
     await socialFlow(browser);
+    await profileFlow(browser); // ★ R045 D — verify 에서도 돈다
+    await emojiFlow(browser); // ★ R045 A — verify 에서도 돈다
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (LONG_ONLY) {

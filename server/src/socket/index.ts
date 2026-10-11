@@ -39,6 +39,7 @@ import { refreshLobbyInfo } from '../lobby/info.js';
 import { destroyRoom } from '../rooms/lifecycle.js';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import {
+  bindAccountSockets,
   bindIo,
   disconnectSocket,
   emitRoom,
@@ -114,6 +115,8 @@ const socketByAccount = new Map<string, string>();
 export function registerSocketHandlers(io: Server): void {
   // ★ R043 — 친구 실시간 상태 (접속 소켓을 알려 준다)
   initFriends((accountId) => socketByAccount.get(accountId));
+  // ★ R045 D — HTTP 로 닉네임 · 사진이 바뀌면 그 사람 소켓 세션도 고친다
+  bindAccountSockets((accountId) => socketByAccount.get(accountId));
   bindIo(io);
 
   // ── 핸드셰이크에서 세션을 확인한다.

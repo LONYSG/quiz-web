@@ -54,7 +54,8 @@ interface Props {
   socket: Socket;
   snapshot: RoomSnapshot;
   chat: ChatView[];
-  onLeave: () => void;
+  /** ★ R045 B — roomGone: 내가 마지막이라 방이 사라진다 (코드 칸을 채우지 않는다) */
+  onLeave: (roomGone: boolean) => void;
   /** 서버 시각 추정치. 카운트다운·문제 타이머 표시에 쓴다 */
   serverNow: () => number;
   /** ★ 도배 억제 안내 (Q-18). 입력창 바로 위에 인라인으로 표시한다 */
@@ -302,6 +303,13 @@ export default function Lobby({
   const inGameForLeave =
     state === 'COUNTDOWN' || state === 'QUESTION_ACTIVE' || state === 'QUESTION_RESOLVED' || isPaused;
   const leaveWithConfirm = () => setConfirmLeave(true);
+  /**
+   * ★★ R045 B — 내가 나가면 방이 사라지는가 (서버 leaveRoom 과 같은 기준)
+   *   게임 중: 나 말고 **접속 중인** 사람이 없다 → 즉시 폭파(Q-82) / 로비 · 결과: 참가자 목록에 나만 → 즉시 정리
+   *   (로비에서 접속이 끊긴 사람이 목록에 남아 있으면 방은 남는다 — 그 사람이 돌아올 수 있다)
+   */
+  const othersHere = snapshot.players.filter((p) => p.accountId !== snapshot.me.accountId && (!inGameForLeave || p.connected));
+  const roomGoneOnLeave = othersHere.length === 0;
 
   /** ★ 지금 답안이 판정되는 상태인가. 입력창 자리표시를 바꾼다 */
   const judging = isActive && !snapshot.question?.selfExperienced;
@@ -849,14 +857,14 @@ export default function Lobby({
         <ConfirmModal
           kind="leave"
           title="방을 나갈까요?"
-          note={inGameForLeave ? '마지막 접속자면 방이 바로 사라져요.' : `방 코드 ${snapshot.room.code} 로 다시 들어올 수 있어요.`}
+          note={roomGoneOnLeave ? '마지막 사람이라 나가면 방이 사라져요.' : `방 코드 ${snapshot.room.code} 로 다시 들어올 수 있어요.`}
           actions={[
             {
               label: '나가기',
               tone: 'warn',
               onClick: () => {
                 setConfirmLeave(false);
-                onLeave();
+                onLeave(roomGoneOnLeave);
               },
             },
           ]}

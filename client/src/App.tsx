@@ -248,11 +248,13 @@ export default function App() {
     socket.emit('room.join', { roomId: trimmed });
   }, [socket, joinId]);
 
-  const leaveRoom = useCallback(() => {
+  const leaveRoom = useCallback((roomGone = false) => {
     socket?.emit('room.leave', {});
     window.history.replaceState(null, '', '/');
     // ★ R043 A-6 — 나온 방의 코드를 입장 칸에 채워 둔다
-    if (lastRoomCode.current) setJoinId(lastRoomCode.current);
+    // ★★ R045 B (건우) — 내가 마지막이라 방이 사라지면 채우지 않는다 (비워 둔다)
+    if (roomGone) setJoinId('');
+    else if (lastRoomCode.current) setJoinId(lastRoomCode.current);
   }, [socket]);
 
   /** ★ R043 C — 친구가 있는 방 · 초대받은 방으로. 방 안이면 확인 후 지금 방을 나가고 들어간다 */

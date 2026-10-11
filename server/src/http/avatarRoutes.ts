@@ -14,6 +14,7 @@ import express, { Router } from 'express';
 import { query } from '../db/pool.js';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import { getRoomOfAccount } from '../rooms/registry.js';
+import { patchAccountSession } from '../rooms/emit.js';
 import { broadcastPlayers } from '../game/question.js';
 
 export const avatarRouter = Router();
@@ -100,6 +101,8 @@ avatarRouter.delete('/', async (req, res) => {
 
 /** 방 안 메모리의 사진 버전을 바꾸고 참여자 목록을 다시 보낸다 */
 function applyToRoom(accountId: string, avatarV: number | null): void {
+  // ★ R045 D — 지금 접속한 소켓의 세션도 (다음에 방을 만들거나 들어갈 때 옛 사진으로 돌아가지 않게)
+  patchAccountSession(accountId, { avatarV });
   const room = getRoomOfAccount(accountId);
   const player = room?.players.get(accountId);
   if (room && player) {

@@ -85,3 +85,21 @@ export function disconnectSocket(socketId: string): void {
   const socket = requireIo().sockets.sockets.get(socketId);
   socket?.disconnect(true);
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ R045 D — 지금 접속한 소켓의 세션(닉네임 · 사진 버전)을 고친다
+//   소켓은 접속할 때 읽은 세션을 들고 있다. 닉네임 · 사진은 HTTP 로 바뀌므로 여기서 함께 고치지 않으면,
+//   같은 접속으로 방을 새로 만들거나 들어갈 때 **옛 닉네임 · 옛 사진**으로 참가자가 만들어졌다 (R045 건우 버그 — 진짜 클릭으로 재현).
+// ─────────────────────────────────────────────────────────────────────────────
+let socketOfAccount: (accountId: string) => string | undefined = () => undefined;
+export function bindAccountSockets(lookup: (accountId: string) => string | undefined): void {
+  socketOfAccount = lookup;
+}
+export function patchAccountSession(accountId: string, patch: { nickname?: string; avatarV?: number | null }): void {
+  const sid = socketOfAccount(accountId);
+  if (!sid || !io) return;
+  const data = io.sockets.sockets.get(sid)?.data as { session?: { nickname: string; avatarV?: number | null } } | undefined;
+  if (!data?.session) return;
+  if (patch.nickname !== undefined) data.session.nickname = patch.nickname;
+  if (patch.avatarV !== undefined) data.session.avatarV = patch.avatarV;
+}
