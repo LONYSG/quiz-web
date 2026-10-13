@@ -10,7 +10,8 @@
 // ★ 가정: 모임 전원이 처음 하는 사람이다 (DB 에 쌓인 경험 기록은 넣지 않는다). 매 판 같은 사람이 끝까지 있다
 //   → 한 명이라도 처음 오는 사람이 끼면 그 사람 몫으로 시작 검증은 늘 통과한다(판 수 제한 없음). 다만 나머지 사람에겐 이미 본 문제가 섞인다
 //
-// 사용법  node scripts/measure-pool-exhaust.mjs [--count 50] [--case 상|중+상|전체]
+// 사용법  node scripts/measure-pool-exhaust.mjs [--count 50] [--case 상|중+상|전체] [--topic media]
+//   ★ G001: --topic — 분야 묶음 하나만 (category_game_topics.game_topic — 게임 설정의 분야 7묶음, R034)
 // =============================================================================
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -21,6 +22,7 @@ process.loadEnvFile?.(path.join(ROOT, '.env'));
 const { selectNextQuestion } = await import(pathToFileURL(path.join(ROOT, 'server', 'dist', 'game', 'select.js')).href);
 const args = process.argv.slice(2);
 const COUNT = Number(args[args.indexOf('--count') + 1]) || 50;
+const TOPIC = args.includes('--topic') ? args[args.indexOf('--topic') + 1] : null;
 
 const c = new pg.Client({ connectionString: process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb' });
 await c.connect();
@@ -29,7 +31,8 @@ const rows = (await c.query(
           coalesce(array_agg(a.answer_norm) FILTER (WHERE a.answer_norm IS NOT NULL), '{}') AS norms
      FROM questions q LEFT JOIN question_answers a ON a.question_id = q.id
     WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
-    GROUP BY q.id, q.difficulty_score`)).rows;
+      AND ($1::text IS NULL OR q.category_id IN (SELECT category_id FROM category_game_topics WHERE game_topic = $1))
+    GROUP BY q.id, q.difficulty_score`, [TOPIC])).rows;
 await c.end();
 
 function rng(seed) { let x = seed >>> 0; return () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x / 0x100000000; }; }
@@ -59,7 +62,7 @@ function run(allowed, people) {
 
 const only = args.includes('--case') ? args[args.indexOf('--case') + 1] : null;
 const CASES = [['상', [4, 5]], ['중+상', [3, 4, 5]], ['전체', [1, 2, 3, 4, 5]]].filter(([l]) => !only || l === only);
-console.log(`문제 수 ${COUNT} · 전원 처음 하는 모임 · 매 판 같은 사람`);
+console.log(`문제 수 ${COUNT} · 전원 처음 하는 모임 · 매 판 같은 사람${TOPIC ? ` · 분야 묶음 ${TOPIC}` : ' · 분야 전체'}`);
 for (const [label, allowed] of CASES) {
   for (const people of [4, 5, 6]) {
     const r = run(allowed, people);
