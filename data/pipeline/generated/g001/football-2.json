@@ -1,0 +1,55 @@
+{
+ "_meta": {
+  "round": "g001",
+  "subId": "football/2",
+  "midKey": "football",
+  "subName": "월드컵",
+  "questionPrompt": "media-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "media",
+  "note": "G001 — R037 생성 · R047 정리 · V005 판정 · G001 반영 (data/pipeline/samples/g001-media.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/2#g001-football-22",
+   "seed": {
+    "subject": "이강인",
+    "aspect": "팬 세부",
+    "ref": "football-22"
+   },
+   "question": {
+    "ok": true,
+    "question": "2019년 폴란드에서 열린 FIFA U-20 월드컵에서 한국은 준우승을 차지했습니다. 이 대회 최우수 선수에게 주는 골든볼을 받은 한국 선수는 누구일까요?",
+    "answer": "이강인",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한국 남자 선수로는 FIFA 주관 대회에서 처음 받은 골든볼이었고, 당시 나이는 18세였습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — U-20 골든볼",
+     "wor": 3,
+     "worWhy": "대화 소재 — 이강인 수상",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "인천에서 태어났고, 아버지는 마라도나를 좋아하던 태권도 사범이었다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "해외축구",
+    "sources": [
+     "https://www.dailian.co.kr/news/view/803420/",
+     "https://www.mt.co.kr/hotissue/4005"
+    ],
+    "v005": {
+     "verdict": "fix",
+     "applied": true,
+     "why": "아시아 최초 → 한국 남자 선수 최초"
+    }
+   }
+  }
+ ]
+}

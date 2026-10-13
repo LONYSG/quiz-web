@@ -1,0 +1,56 @@
+{
+ "_meta": {
+  "round": "g001",
+  "subId": "comics/4",
+  "midKey": "comics",
+  "subName": "만화 용어·형식",
+  "questionPrompt": "media-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "media",
+  "note": "G001 — R037 생성 · R047 정리 · V005 판정 · G001 반영 (data/pipeline/samples/g001-media.json)"
+ },
+ "items": [
+  {
+   "seedId": "comics/4#g001-comics-25",
+   "seed": {
+    "subject": "네이버 웹툰",
+    "aspect": "팬 세부",
+    "ref": "comics-25"
+   },
+   "question": {
+    "ok": true,
+    "question": "네이버 웹툰에는 아마추어 누구나 작품을 올리는 게시판이 있습니다. 그 가운데 운영진이 추천작을 골라 올려 주는 중간 단계는 정식 연재로 가는 길목이 되어 왔습니다. 이 단계의 이름은 무엇일까요?",
+    "answer": "베스트도전",
+    "acceptedAnswers": [
+     "베도"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "'연애혁명'·'여신강림' 등이 이 단계를 거쳐 정식 연재로 올라간 작품으로 꼽힙니다.",
+    "score": {
+     "dif": 4,
+     "difWhy": "애호가 — 웹툰 플랫폼 구조",
+     "wor": 2,
+     "worWhy": "팬 아니면 알 이유 없는 용어",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "2016년부터는 이 단계 작가 가운데 일부에게 매달 지원금을 주는 '포텐업' 제도도 생겼다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://namu.wiki/w/%EB%B2%A0%EC%8A%A4%ED%8A%B8%20%EB%8F%84%EC%A0%84"
+    ],
+    "v005": {
+     "verdict": "fix",
+     "applied": true,
+     "why": "CV-03 — 제안 힌트(조석 2006년 데뷔)는 확인 못 함: 2006년 '마음의 소리' 는 '도전만화' 에 올라온 것으로 나오고, 이 단계 이름은 확인되지 않았다. VERIFY 가 나무위키로 확인한 포텐업(2016.1 · 월 지원)으로"
+    }
+   }
+  }
+ ]
+}

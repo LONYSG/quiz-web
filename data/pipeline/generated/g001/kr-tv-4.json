@@ -1,0 +1,94 @@
+{
+ "_meta": {
+  "round": "g001",
+  "subId": "kr-tv/4",
+  "midKey": "kr-tv",
+  "subName": "라디오 방송",
+  "questionPrompt": "media-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "media",
+  "note": "G001 — R037 생성 · R047 정리 · V005 판정 · G001 반영 (data/pipeline/samples/g001-media.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/4#g001-variety-05",
+   "seed": {
+    "subject": "두시탈출 컬투쇼",
+    "aspect": "대중",
+    "ref": "variety-05"
+   },
+   "question": {
+    "ok": true,
+    "question": "2006년 SBS 파워FM에서 시작한 오후 2시 라디오입니다. 방청객을 스튜디오에 두고 청취자 사연을 읽어 큰 인기를 끌었습니다. 이 프로그램은 무엇일까요?",
+    "answer": "컬투쇼",
+    "acceptedAnswers": [
+     "두시탈출 컬투쇼"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "개그맨 정찬우·김태균 콤비가 진행했고, 정찬우가 2018년 활동을 멈춘 뒤에는 김태균이 스페셜 DJ와 함께 이어서 진행했습니다.",
+    "score": {
+     "dif": 2,
+     "difWhy": "방송 — 흔히 들은 라디오",
+     "wor": 3,
+     "worWhy": "대중적 라디오 이름",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상",
+     "version": "score-v1"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "layer": "대중",
+    "genre": "예능",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/두시탈출_컬투쇼",
+     "https://ko.wikipedia.org/wiki/컬투"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "kr-tv/4#g001-variety-23",
+   "seed": {
+    "subject": "푸른 밤 그리고 성시경입니다",
+    "aspect": "팬 세부",
+    "ref": "variety-23"
+   },
+   "question": {
+    "ok": true,
+    "question": "가수 성시경은 2005~2008년 MBC FM4U 심야 라디오 '푸른 밤'을 진행하며 방송 끝마다 같은 인사를 남겼습니다. 그의 상징이 된 이 인사말은 무엇일까요?",
+    "answer": "잘 자요",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2011~2014년 'FM 음악도시'를 진행할 때도 같은 인사로 방송을 마쳤습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — 라디오 인사말",
+     "wor": 2,
+     "worWhy": "진행자 인사말 세부",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상",
+     "version": "score-v1"
+    },
+    "generalHint": "'푸른 밤'을 이어받은 DJ가 이 끝인사의 인상이 너무 강해 한동안 자기 끝인사를 정하지 못했다고 말했다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "예능",
+    "sources": [
+     "https://namu.wiki/w/성시경"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  }
+ ]
+}

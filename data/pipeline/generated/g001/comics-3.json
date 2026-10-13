@@ -1,0 +1,404 @@
+{
+ "_meta": {
+  "round": "g001",
+  "subId": "comics/3",
+  "midKey": "comics",
+  "subName": "한국 만화·웹툰",
+  "questionPrompt": "media-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "media",
+  "note": "G001 — R037 생성 · R047 정리 · V005 판정 · G001 반영 (data/pipeline/samples/g001-media.json)"
+ },
+ "items": [
+  {
+   "seedId": "comics/3#g001-comics-01",
+   "seed": {
+    "subject": "이끼",
+    "aspect": "대중",
+    "ref": "comics-01"
+   },
+   "question": {
+    "ok": true,
+    "question": "윤태호의 스릴러 웹툰에서, 아버지의 부고를 듣고 외딴 시골 마을을 찾은 주인공은 마을 이장과 주민들이 숨겨 온 과거를 파헤칩니다. 2010년 강우석 감독이 영화로 만든 이 웹툰은 무엇일까요?",
+    "answer": "이끼",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "영화에서는 정재영이 마을을 쥐고 흔드는 이장 천용덕을, 박해일이 주인공 유해국을 맡았습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "웹툰·영화 관심층",
+     "wor": 3,
+     "worWhy": "대중적 작품 제목",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "2007년 유료 웹진 '만끽'에서 연재를 시작했지만, 사이트가 문을 닫아 다음으로 옮겨 완결했다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "대중",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이끼_(만화)",
+     "https://m.seoul.co.kr/news/2010/07/06/20100706018017",
+     "https://www.newdaily.co.kr/site/data/html/2010/07/01/2010070100054.amp.html"
+    ],
+    "v005": {
+     "verdict": "unsure",
+     "applied": true,
+     "why": "unsure — 옛 힌트(제목의 상징 설명)는 출처 없음. 판정자 제안(박해일 염두)은 웹툰가이드 기사로 확인됐으나 해설이 박해일 캐스팅을 말해 해설과 맞닿는다 → ko.wikipedia 로 확인한 연재 이력으로"
+    }
+   }
+  },
+  {
+   "seedId": "comics/3#g001-comics-02",
+   "seed": {
+    "subject": "은밀하게 위대하게",
+    "aspect": "대중",
+    "ref": "comics-02"
+   },
+   "question": {
+    "ok": true,
+    "question": "작가 Hun이 다음에 연재한 웹툰입니다. 북한의 비밀 남파 특수부대 '5446 부대' 출신 간첩들이 남한에서 신분을 숨기고 살아갑니다. 이 웹툰은 무엇일까요?",
+    "answer": "은밀하게 위대하게",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2013년 장철수 감독, 김수현 주연의 영화로 만들어졌습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — 웹툰",
+     "wor": 3,
+     "worWhy": "유명 웹툰 제목",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "주인공 원류환은 북한 최정예 요원이지만, 남한에서는 '방동구'라는 이름으로 산다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "대중",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/은밀하게_위대하게",
+     "https://ko.wikipedia.org/wiki/은밀하게_위대하게_(영화)"
+    ],
+    "v005": {
+     "verdict": "fix",
+     "applied": true,
+     "why": "CV-03 — 남한 가명은 '동구' 가 아니라 '방동구'(ko.wikipedia 영화 문서 — 원류환(방동구) 역). 이름만 바로잡았다"
+    }
+   }
+  },
+  {
+   "seedId": "comics/3#g001-comics-03",
+   "seed": {
+    "subject": "기안84",
+    "aspect": "대중",
+    "ref": "comics-03"
+   },
+   "question": {
+    "ok": true,
+    "question": "네이버 웹툰 '패션왕'과 '복학왕'을 그린 작가는 누구일까요?",
+    "answer": "기안84",
+    "acceptedAnswers": [
+     "기안"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "본명은 김희민이며, 2023년 MBC 방송연예대상에서 대상을 받았습니다.",
+    "score": {
+     "dif": 2,
+     "difWhy": "방송에서 흔히",
+     "wor": 3,
+     "worWhy": "누구나 아는 인물 이름",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "layer": "대중",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/기안84"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/3#g001-comics-04",
+   "seed": {
+    "subject": "강풀",
+    "aspect": "대중",
+    "ref": "comics-04"
+   },
+   "question": {
+    "ok": true,
+    "question": "다음에 '순정만화'·'아파트'·'이웃사람'·'26년'을 연재한 웹툰 작가는 누구일까요?",
+    "answer": "강풀",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "'무빙' 극본으로 2024년 백상예술대상 TV 부문 극본상을 받았습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — 웹툰 작가",
+     "wor": 3,
+     "worWhy": "유명 인물 이름",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "차태현이 주연한 2008년 영화 '바보'의 원작 웹툰도 이 작가가 그렸다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "대중",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/강풀"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/3#g001-comics-05",
+   "seed": {
+    "subject": "유미의 세포들",
+    "aspect": "대중",
+    "ref": "comics-05"
+   },
+   "question": {
+    "ok": true,
+    "question": "이동건이 2015~2020년 네이버에 연재한 웹툰입니다. 주인공의 전 남자친구로, 게임 사업을 하는 '구웅'이 등장합니다. 이 웹툰은 무엇일까요?",
+    "answer": "유미의 세포들",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2021년 김고은 주연으로, 실사와 애니메이션을 섞은 드라마가 만들어졌습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — 웹툰",
+     "wor": 3,
+     "worWhy": "유명 웹툰 제목",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "작가 이동건은 앞서 네이버 웹툰 '달콤한 인생'을 연재했다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "대중",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/유미의_세포들"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/3#g001-comics-06",
+   "seed": {
+    "subject": "외모지상주의",
+    "aspect": "대중",
+    "ref": "comics-06"
+   },
+   "question": {
+    "ok": true,
+    "question": "2014년부터 네이버에 연재된 박태준의 웹툰입니다. 주인공 박형석은 일진들의 괴롭힘에 시달리다 전학을 가고 따로 자취를 시작합니다. 이 웹툰은 무엇일까요?",
+    "answer": "외모지상주의",
+    "acceptedAnswers": [
+     "Lookism"
+    ],
+    "originalTitleVariants": [
+     "Lookism"
+    ],
+    "explanation": "주인공 박형석은 실제 인물을 바탕으로 만든 캐릭터이고, 네이버 웹툰 가운데 처음으로 누적 조회수 100억 회를 넘겼다고 알려졌습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — 웹툰",
+     "wor": 3,
+     "worWhy": "유명 웹툰 제목",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "작가 박태준은 웹툰을 그리기 전 2009년 예능 '얼짱시대'로 이름을 알린 얼짱 출신이다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "대중",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://www.webtoonguide.com/en/board/totalreview/7851",
+     "https://www.webtoonguide.com/ko/board/totalreview/2534"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/3#g001-comics-20",
+   "seed": {
+    "subject": "신의 탑",
+    "aspect": "팬 세부",
+    "ref": "comics-20"
+   },
+   "question": {
+    "ok": true,
+    "question": "SIU의 네이버 웹툰 '신의 탑'에서 소녀 라헬을 따라 탑에 들어가는 주인공 소년은?",
+    "answer": "밤",
+    "acceptedAnswers": [
+     "스물다섯번째 밤",
+     "25번째 밤"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "탑을 오르며 쿤, 라크와 한 팀이 되고, 2020년 TV 애니메이션으로도 만들어졌습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "웹툰 — 관심층은 안다",
+     "wor": 2,
+     "worWhy": "웹툰 주인공 이름",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "주인공은 탑에 들어오기 전 오랫동안 빛이 들지 않는 곳에서 홀로 지냈다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/신의_탑"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/3#g001-comics-21",
+   "seed": {
+    "subject": "노블레스",
+    "aspect": "팬 세부",
+    "ref": "comics-21"
+   },
+   "question": {
+    "ok": true,
+    "question": "손제호·이광수의 네이버 웹툰 '노블레스'에서 820년 동안 잠들었다 깨어나 한국의 고등학교에 다니게 되는 귀족은?",
+    "answer": "라이",
+    "acceptedAnswers": [
+     "라이제르",
+     "카디스 에트라마 디 라이제르"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그를 주인으로 모시는 프랑켄슈타인이 그 학교, 예란 고등학교를 운영합니다.",
+    "score": {
+     "dif": 4,
+     "difWhy": "웹툰 — 애호가가 안다",
+     "wor": 2,
+     "worWhy": "웹툰 주인공 이름",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "주변에서 부르는 짧은 이름은, 긴 본명의 맨 끝 낱말에서 앞부분만 줄여 부르는 두 글자다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Noblesse_(manhwa)"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/3#g001-comics-22",
+   "seed": {
+    "subject": "갓 오브 하이스쿨",
+    "aspect": "팬 세부",
+    "ref": "comics-22"
+   },
+   "question": {
+    "ok": true,
+    "question": "박용제의 네이버 웹툰 '갓 오브 하이스쿨'의 주인공은 할아버지에게 무술을 배운 고등학생입니다. 뒤에 그 정체가 제천대성 손오공으로 밝혀집니다. 이 주인공은 누구일까요?",
+    "answer": "진모리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2020년 MAPPA가 TV 애니메이션으로 만들었습니다.",
+    "score": {
+     "dif": 4,
+     "difWhy": "애호가 — 웹툰 주인공",
+     "wor": 2,
+     "worWhy": "웹툰 팬 영역 인물",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "작가는 한국적인 배틀 만화를 지향한다는 뜻으로, 국악 장단 이름 하나에서 이 이름을 따왔다고 밝혔다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/갓_오브_하이스쿨"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/3#g001-comics-23",
+   "seed": {
+    "subject": "치즈인더트랩",
+    "aspect": "팬 세부",
+    "ref": "comics-23"
+   },
+   "question": {
+    "ok": true,
+    "question": "순끼의 네이버 웹툰 '치즈인더트랩'에서 홍설의 한 대학 선배는 겉으로는 다정하고 완벽하지만, 속을 알 수 없어 홍설을 긴장하게 만듭니다. 이 선배는 누구일까요?",
+    "answer": "유정",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2016년 드라마와 2018년 영화에서 모두 박해진이 이 역을 맡았습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — 웹툰 인물",
+     "wor": 2,
+     "worWhy": "유명 웹툰 주요 인물",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "대기업 회장 아버지를 둔 경영학과 4학년으로, 이름이 외자라 성까지 붙여도 두 글자뿐이다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cheese_in_the_Trap",
+     "https://ko.wikipedia.org/wiki/치즈인더트랩"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,367 @@
+{
+ "_meta": {
+  "round": "g001",
+  "subId": "comics/1",
+  "midKey": "comics",
+  "subName": "일본 만화",
+  "questionPrompt": "media-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "media",
+  "note": "G001 — R037 생성 · R047 정리 · V005 판정 · G001 반영 (data/pipeline/samples/g001-media.json)"
+ },
+ "items": [
+  {
+   "seedId": "comics/1#g001-comics-09",
+   "seed": {
+    "subject": "슬램덩크",
+    "aspect": "팬 세부",
+    "ref": "comics-09"
+   },
+   "question": {
+    "ok": true,
+    "question": "'슬램덩크' 산왕공고전 막판, 서태웅의 패스를 받은 강백호가 점프슛을 쏘기 직전 속으로 되뇐 짧은 말은?",
+    "answer": "왼손은 거들 뿐",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "전국대회를 앞둔 일주일 동안 안 선생님 아래서 슛 2만 개를 던지며 익힌 기본으로, 공은 오른손으로 던지고 왼손은 받치기만 하라는 뜻입니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — 만화 명대사",
+     "wor": 2,
+     "worWhy": "유명 만화 명대사",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "일본 원작에서도 명대사로 꼽혀, 농구 슛 요령을 말할 때 자주 인용된다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://namu.wiki/w/%EC%99%BC%EC%86%90%EC%9D%80%20%EA%B1%B0%EB%93%A4%20%EB%BF%90",
+     "https://ko.wikipedia.org/wiki/슬램덩크_(만화)"
+    ],
+    "v005": {
+     "verdict": "fix",
+     "applied": true,
+     "why": "합숙이 아니라 학교에 남아 일주일 — 제안 그대로"
+    }
+   }
+  },
+  {
+   "seedId": "comics/1#g001-comics-10",
+   "seed": {
+    "subject": "원피스",
+    "aspect": "팬 세부",
+    "ref": "comics-10"
+   },
+   "question": {
+    "ok": true,
+    "question": "'원피스'의 정상전쟁에서 한 인물이 처형대에서 풀려난 뒤, 루피를 감싸다 해군 대장 아카이누의 마그마 주먹에 숨집니다. 이렇게 숨진 루피의 의형은 누구일까요?",
+    "answer": "에이스",
+    "acceptedAnswers": [
+     "포트거스 D. 에이스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "해적왕 골 D. 로저의 친아들이며, 흰수염 해적단 2번대 대장이었습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "만화 관심층이면 안다",
+     "wor": 2,
+     "worWhy": "유명 만화 주요 인물",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "아버지가 아닌 어머니의 성을 물려받았고, 이름은 알파벳 세 글자짜리 영어 낱말이다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Portgas_D._Ace"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/1#g001-comics-11",
+   "seed": {
+    "subject": "헌터×헌터",
+    "aspect": "팬 세부",
+    "ref": "comics-11"
+   },
+   "question": {
+    "ok": true,
+    "question": "'헌터×헌터'에서 헌터 시험 때 곤과 만나 단짝이 되는, 이름난 암살자 가문 출신의 소년은?",
+    "answer": "키르아",
+    "acceptedAnswers": [
+     "킬루아",
+     "키르아 조르딕",
+     "킬루아 조르딕"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "전기를 다루는 넨 능력을 씁니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "만화 관심층이면 안다",
+     "wor": 2,
+     "worWhy": "유명 만화 주요 인물 이름",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "1999년과 2011년 두 TV 애니메이션 모두 여성 성우가 목소리를 맡았고, 점프 공식 인기투표 1위에 오른 적도 있다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://en.wikipedia.org/wiki/List_of_Hunter_%C3%97_Hunter_characters"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/1#g001-comics-12",
+   "seed": {
+    "subject": "데스노트",
+    "aspect": "팬 세부",
+    "ref": "comics-12"
+   },
+   "question": {
+    "ok": true,
+    "question": "'데스노트'에서 범죄자들이 잇따라 심장마비로 죽자, 언론이 그 정체 모를 살인자에게 붙인 이름은?",
+    "answer": "키라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "영어 '킬러(killer)'를 일본식으로 읽은 데서 온 이름입니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — 만화 설정",
+     "wor": 2,
+     "worWhy": "유명 작품의 설정 이름",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "작품 속에서는 이 정체 모를 살인자를 정의의 구세주로 떠받드는 웹사이트와 TV 특집 방송까지 생겨난다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Death_Note",
+     "https://en.wikipedia.org/wiki/Light_Yagami"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/1#g001-comics-13",
+   "seed": {
+    "subject": "나루토",
+    "aspect": "팬 세부",
+    "ref": "comics-13"
+   },
+   "question": {
+    "ok": true,
+    "question": "'나루토'의 한 인물은 하룻밤 새 일족을 몰살하고 동생 사스케만 살려 둔 뒤, 범죄 조직 '아카츠키'에 들어갑니다. 사스케의 형인 이 인물은 누구일까요?",
+    "answer": "이타치",
+    "acceptedAnswers": [
+     "우치하 이타치"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "뒤에 그 학살이 쿠데타를 막으려던 마을 수뇌부의 명령이었다는 진실이 밝혀집니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "만화 — 관심층은 안다",
+     "wor": 2,
+     "worWhy": "유명 작품 주요 조연",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "이름은 일본어로 족제비를 가리키는 낱말과 같다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Itachi_Uchiha"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/1#g001-comics-14",
+   "seed": {
+    "subject": "진격의 거인",
+    "aspect": "팬 세부",
+    "ref": "comics-14"
+   },
+   "question": {
+    "ok": true,
+    "question": "'진격의 거인'에서 '인류 최강의 병사'로 불리며 조사병단의 정예 분대를 이끄는 병장은?",
+    "answer": "리바이",
+    "acceptedAnswers": [
+     "리바이 아커만"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "청결에 집착하는 성격으로 그려지며, 미카사와 같은 아커만 혈통입니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — 만화 인물",
+     "wor": 2,
+     "worWhy": "유명 작품의 주요 조연",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "작가 이사야마 하지메는 미국 만화 '왓치맨'의 로르샤흐에게서 인상을 받아 이 인물을 만들었다고 밝혔다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Levi_Ackerman"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/1#g001-comics-15",
+   "seed": {
+    "subject": "원펀맨",
+    "aspect": "팬 세부",
+    "ref": "comics-15"
+   },
+   "question": {
+    "ok": true,
+    "question": "'원펀맨'에서 폭주 사이보그에게 가족을 잃고 기계 몸이 된 뒤, 사이타마를 스승으로 모시는 S급 히어로는?",
+    "answer": "제노스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "원작은 ONE이 그린 만화이고, 무라타 유스케가 작화를 맡은 판이 널리 읽혔습니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "만화 관심층이면 안다",
+     "wor": 2,
+     "worWhy": "유명 만화 주요 조연",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "열아홉 살로, 집세 몫으로 큰돈을 내고 스승의 집에 눌러살게 된다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://en.wikipedia.org/wiki/List_of_One-Punch_Man_characters"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/1#g001-comics-16",
+   "seed": {
+    "subject": "귀멸의 칼날",
+    "aspect": "팬 세부",
+    "ref": "comics-16"
+   },
+   "question": {
+    "ok": true,
+    "question": "'귀멸의 칼날' 무한열차 편에서 상현 3 아카자는 한 '주'에게 혈귀가 되라고 제안합니다. 그는 이를 거절하고 끝까지 싸우다 숨집니다. 이 '염주'는 누구일까요?",
+    "answer": "렌고쿠",
+    "acceptedAnswers": [
+     "렌고쿠 쿄쥬로",
+     "렌고쿠 교주로"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "탄지로는 뒤에 그의 칼 코등이를 물려받아 자기 칼에 답니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "관심층 — 만화 인물",
+     "wor": 2,
+     "worWhy": "유명 만화 주요 조연",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "성을 한자로 쓰면, 죽은 이의 영혼이 천국에 들기 전 불로 죄를 씻는다는 곳을 가리키는 말이 된다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://en.wikipedia.org/wiki/List_of_Demon_Slayer:_Kimetsu_no_Yaiba_characters"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  },
+  {
+   "seedId": "comics/1#g001-comics-24",
+   "seed": {
+    "subject": "드래곤볼",
+    "aspect": "팬 세부",
+    "ref": "comics-24"
+   },
+   "question": {
+    "ok": true,
+    "question": "'드래곤볼'에서 손오공이 두 번 연속 준우승한 끝에 세 번째 출전에서 피콜로를 꺾고 우승한 격투 시합의 이름은?",
+    "answer": "천하제일 무도회",
+    "acceptedAnswers": [
+     "천하제일 무술대회"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "우승 직후 손오공은 어린 시절 했던 약속대로 치치와 결혼합니다.",
+    "score": {
+     "dif": 3,
+     "difWhy": "만화 — 관심층은 안다",
+     "wor": 2,
+     "worWhy": "유명 작품 설정 이름",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심",
+     "version": "score-v1"
+    },
+    "generalHint": "작품 속 이 시합은 5년마다 열리다 참가자가 몰려 3년마다로 바뀌었고, 주인공은 21번째 시합부터 나갔다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "만화·웹툰",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Goku"
+    ],
+    "v005": {
+     "verdict": "ok",
+     "applied": false,
+     "why": "ok — 고칠 것 없음"
+    }
+   }
+  }
+ ]
+}
