@@ -30,6 +30,7 @@
 | V003.txt | R029 일반 힌트 395 + 재작성 질문 128 사실 확인 (C48) → `audit/v003-results.json`. 세기 fix 34 는 R030 기준 개정으로 되돌려짐(교훈 B) |
 | V004.txt | R030 심화 1,077 대상 — 힌트 188 · 사실 273 · 짝 598 · 중복 5 · 나-kept 13 (C52) → `audit/v004-results.json`. R031 이 반영(drop 12 · 경계선 20 → 15 §3-2·§3-3 신설) |
 | V005.txt | ★ R047 미디어 200 (C60 가, 적재 전): ok 162 · fix 36 · unsure 2 · drop 0 · 사실 758 주장(틀림 15) · 힌트 fix 22(떠먹여 주기 10 · 사실 13) · 중복 0 · 찬종 표시와 어긋남 0 → `audit/v005-results.json` · `v005-raw/`. 힌트 1,328 은 V006 |
+| V006.txt | ★ R036 중(3) 일반 힌트 1,328 (C60 나, 이미 적재) + R032 고침 63·변형 2·격리 1 (C55) + 참고 #3930 (C61): 힌트 ok 844 · fix 484(famous-one 298 · meaning 136 · letters 44 · question-repeat 48 · error 4) · 사실 틀림 4 · 지식 근거 표본 오류율 1.7% · R032 fix 1(#85) → `audit/v006-results.json` · `v006-raw/`. G002 가 DB 반영 · 6절을 hint-v3 에 되먹임 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 
