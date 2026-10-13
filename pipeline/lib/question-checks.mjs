@@ -78,6 +78,30 @@ export function assertiveWords(text) {
   return hits;
 }
 
+/**
+ * ★ G001 (V005 6절 3번) — 정답을 이루는 조각(한글 2글자 이상)이 질문에 그대로 있는가. 경고만
+ *   findAnswerInQuestion 은 정답 **전체**만 본다 — 귀검사('귀신의 팔' + '검사 직업') · 한상궁('상궁' 2회)이 그래서 통과했다
+ *   정답(공백·기호 뺀 한글)의 연속 조각 가운데 질문에 있는 것을 긴 것부터 모은다 (긴 조각에 들어 있는 짧은 조각은 뺀다)
+ *   ★ 거성('큰 별') 같은 뜻풀이는 글자로 잡을 수 없다 — 사람이 본다
+ * 반환: [{ frag, at }]  (at = 질문 안 위치)
+ */
+export function answerFragments(question, answer) {
+  const q = (question ?? '').normalize('NFC').replace(/\s/g, '');
+  const a = (answer ?? '').normalize('NFC').replace(/[^가-힣]/g, '');
+  const n = a.length;
+  if (n < 3) return []; // 두 글자 정답의 2글자 조각은 정답 전체 — findAnswerInQuestion 몫
+  const hits = [];
+  for (let k = n - 1; k >= 2; k--) {
+    for (let i = 0; i + k <= n; i++) {
+      const frag = a.slice(i, i + k);
+      if (hits.some((h) => h.frag.includes(frag))) continue;
+      const at = q.indexOf(frag);
+      if (at >= 0) hits.push({ frag, at });
+    }
+  }
+  return hits;
+}
+
 // 직접 실행하면 스스로 검사한다
 if (process.argv[1]?.replace(/\\/g, '/').endsWith('pipeline/lib/question-checks.mjs')) {
   const n = (s) => s.toLowerCase().replace(/\s/g, '');
@@ -91,6 +115,10 @@ if (process.argv[1]?.replace(/\\/g, '/').endsWith('pipeline/lib/question-checks.
     ['정답이 다른 질문에 나오기만 한다 (통과)', !roundDupCheck([{ ref: 'a', question: '다이너마이트를 발명한 사람은?', answer: '노벨' }, { ref: 'b', question: '노벨상 시상식이 열리는 도시는?', answer: '스톡홀름' }], n).some((d) => d.kind === 'answer-in-question')],
     ['단정어 — 칸트가 평생을 산', assertiveWords('철학자 칸트가 평생을 산 곳이기도 하다.').length === 1],
     ['단정어 — 완충 있음', assertiveWords('칸트가 평생 떠나지 않았다고 전한다.').length === 0],
+    ['정답 조각 — 귀검사 (V005)', answerFragments("'던전앤파이터'에서 한쪽 팔이 귀신의 팔 '귀수(鬼手)'로 변해 버린 검사 직업은?", '귀검사').some((h) => h.frag === '검사')],
+    ['정답 조각 — 한상궁 (V005)', answerFragments('양미경이 연기한 수라간 상궁은 … 이 상궁을 부르던 이름은?', '한상궁').some((h) => h.frag === '상궁')],
+    ['정답 조각 — 고친 귀검사 질문 (통과)', answerFragments("'던전앤파이터'의 한 기본 직업은 한쪽 팔이 붉게 뒤틀린 저주받은 손을 지닌 설정입니다.", '귀검사').length === 0],
+    ['정답 조각 — 두 글자 정답은 보지 않는다', answerFragments('거성 같은 별명', '거성').length === 0],
   ];
   let ok = 0; for (const [name, pass] of t) { console.log(`${pass ? 'ok  ' : '★실패'} ${name}`); if (pass) ok++; }
   console.log(`[question-checks] ${ok}/${t.length}`); if (ok !== t.length) process.exit(1);

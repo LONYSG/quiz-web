@@ -47,7 +47,7 @@ import { findMid, findMajor } from '../pipeline/dist/categories.js';
 import { resolveSubId } from '../pipeline/lib/subid.mjs';
 import { generatedDir } from '../pipeline/lib/seedstore.mjs';
 import { checkHint } from './hint-check.mjs';
-import { blankCheck, roundDupCheck, assertiveWords } from '../pipeline/lib/question-checks.mjs';
+import { blankCheck, roundDupCheck, assertiveWords, answerFragments } from '../pipeline/lib/question-checks.mjs';
 import { checkAnswerSet } from '../pipeline/lib/answer-rules.mjs';
 
 /**
@@ -389,6 +389,8 @@ try {
   //     ★ 사람이 '다른 지식' 으로 판정한 것은 question.roundDupOk 에 이유를 적어 통과시킨다
   //   · 단정어(처음·모두·평생 …)가 완충 없이 쓰였다 → 경고 (출처를 확인했으면 그대로 둔다)
   const assertWarnings = [];
+  // ★ G001 (V005 6절 3번): 정답 조각(한글 2글자 이상)이 질문에 있다 → 경고만 (DB 활성 실측 15% 가 걸린다 — 대부분 '○○ 전투' 의 '전투' 같은 갈래 낱말)
+  const fragWarnings = [];
   const roundBlock = new Map();
   if (!NO_GATE) {
     const seedTodo = todo.filter((i) => i.sourceId === SEED_SOURCE_ID);
@@ -434,6 +436,8 @@ try {
       const bc = blankCheck(g.questionKo, g.displayAnswer);
       if (!bc.ok) { skipped.push({ ref: item.sourceRef, reason: `★ 빈칸 ${bc.blanks}칸 ≠ 정답 ${bc.answerLength}글자 (기준서 3-2)` }); continue; }
       for (const t of [g.questionKo, g.explanation]) for (const a of assertiveWords(t)) assertWarnings.push({ ref: item.sourceRef, words: a.words.join('·'), sentence: a.sentence });
+      const fr = answerFragments(g.questionKo, g.displayAnswer);
+      if (fr.length) fragWarnings.push({ ref: item.sourceRef, answer: g.displayAnswer, frags: fr.map((h) => h.frag).join(',') });
     }
     // ★★ R020 정답 표기 게이트 — 프롬프트의 규칙을 적재에서도 확인한다
     let variants = g.answers ?? [];
@@ -595,6 +599,11 @@ try {
     console.log(`[단정어] 경고 ${assertWarnings.length}건 — 출처를 확인했으면 그대로 둔다 (기준서 3-2)`);
     for (const w of assertWarnings.slice(0, 15)) console.log(`  ${w.ref}: ${w.words} — ${w.sentence.slice(0, 60)}`);
     if (assertWarnings.length > 15) console.log(`  … 외 ${assertWarnings.length - 15}건`);
+  }
+  if (fragWarnings.length) {
+    console.log(`[정답 조각] 경고 ${fragWarnings.length}건 — 질문에 정답의 일부 낱말이 있다. 변형·갈래 낱말이면 그대로 둔다 (V005 6절 3)`);
+    for (const w of fragWarnings.slice(0, 20)) console.log(`  ${w.ref}: ${w.answer} ← ${w.frags}`);
+    if (fragWarnings.length > 20) console.log(`  … 외 ${fragWarnings.length - 20}건`);
   }
   if (hintWarnings.length) {
     console.log(`[힌트] 경고 ${hintWarnings.length}건 — 적재는 했다. 사람이 본다 (hint-check)`);
