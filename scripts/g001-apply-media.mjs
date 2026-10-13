@@ -146,7 +146,7 @@ for (const src of SRC.items) {
     const pick = (k, pk) => (d[k] !== undefined ? d[k] : d.take === 'all' && p[pk] != null ? p[pk] : undefined);
     const nq = pick('q', 'question'), ne = pick('e', 'explanation'), nh = pick('hint', 'hint'), nv = pick('v', 'variants'), nl = pick('layer', 'layer');
     const by = d.take === 'all' ? 'V005' : 'V005→GEN';
-    if (nq !== undefined) { const b = it.q; it.q = String(nq).replace(/\s*\/\s*/g, ' ').trim(); rec('q', b, it.q, by, d.why, d.sources); }
+    if (nq !== undefined) { const b = it.q; it.q = String(nq).replace(/\s*\n\s*/g, ' ').trim(); /* 제안 문구의 줄바꿈도 공백으로 (위와 같은 이유) */ rec('q', b, it.q, by, d.why, d.sources); }
     if (ne !== undefined) { const b = it.e; it.e = ne; rec('e', b, it.e, d.e !== undefined ? 'GEN' : by, d.why, d.sources); }
     if (nh !== undefined) { const b = it.hint; it.hint = nh; it.hintMeta = { ...(it.hintMeta ?? {}), source: (d.sources ?? [])[0] ?? (v.sources ?? [])[0] ?? it.hintMeta?.source ?? null, basis: 'web', genFix: 'G001' }; rec('hint', b, it.hint, d.hint !== undefined ? 'GEN' : by, d.why, d.sources); }
     if (nv !== undefined) { const b = JSON.stringify(it.v); it.v = nv; rec('v', b, JSON.stringify(it.v), by, d.why, d.sources); }
