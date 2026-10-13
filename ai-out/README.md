@@ -21,6 +21,16 @@
 - 인코딩은 UTF-8, 개행은 저장소 정책(LF)을 따른다.
 - 각 파일 맨 앞에 ROUND / DATE / TASK / STATUS 헤더가 있다.
 
+## VERIFY 라운드 (판정 세션 · `Vnnn.txt`)
+
+| 파일 | 주요 내용 |
+|------|-----------|
+| V001.txt | 밀린 중복 판정 239쌍 + 빠진 3쌍 (Q-91 "맞히게 해 주는 지식이 같은가") → `data/pipeline/dedupe/r021-judged.json` · `r020-pending-judged.json`. V031 사유가 원문과 달라 R022 에서 정정(교훈 A) |
+| V002.txt | R022 중복 31쌍 · GEN 이 "걸렸지만 살린" 27쌍의 same 비율(GEN 판단 오류율) · Q-97(일반어 vs 구체어) 첫 적용 → `dedupe/r022-judged.json` |
+| V003.txt | R029 일반 힌트 395 + 재작성 질문 128 사실 확인 (C48) → `audit/v003-results.json`. 세기 fix 34 는 R030 기준 개정으로 되돌려짐(교훈 B) |
+| V004.txt | R030 심화 1,077 대상 — 힌트 188 · 사실 273 · 짝 598 · 중복 5 · 나-kept 13 (C52) → `audit/v004-results.json`. R031 이 반영(drop 12 · 경계선 20 → 15 §3-2·§3-3 신설) |
+| V005.txt | ★ R047 미디어 200 (C60 가, 적재 전): ok 162 · fix 36 · unsure 2 · drop 0 · 사실 758 주장(틀림 15) · 힌트 fix 22(떠먹여 주기 10 · 사실 13) · 중복 0 · 찬종 표시와 어긋남 0 → `audit/v005-results.json` · `v005-raw/`. 힌트 1,328 은 V006 |
+
 ## 라운드 색인
 
 | 파일 | 주요 내용 |
