@@ -15,8 +15,13 @@
 - [x] A 번호 정리 — R047 결정 D-174·D-175 → DG-001·DG-002 · README GEN 표 · 15 §0 머리글 현재화 — 700d9b6
 - [x] B V005 반영 → `data/pipeline/samples/g001-media.json` · 기록 `data/pipeline/audit/g001-fixes.json` (60행) · 게이트 200/200 — b128006
 - [x] C 적재 — 백업 `backups/quizweb-20261013-153910.dump` → `pipeline-load --round g001` 200건 · **활성 3,943 → 4,143** · 다시 돌려도 0건
-- [ ] D 규칙·검사 되먹임
-- [ ] E 문서 · 보고
+- [x] C 보정 — #4196 질문 줄바꿈 → 공백 (V005 제안 문구 · 백업 `quizweb-20261013-154211`) · DB 200 = 파일 200 — fb55e4e
+- [x] D 규칙·검사 되먹임 — 15 H9 · MD9 · B2 · MD8 · 3-2 · H3 · H4 예시 · criteria-sync · `answerFragments` 경고 · Q-108 (DG-004 · DG-005) — e2c899d
+- [x] E 문서 · 보고 — 05 · 07(DG-003~005) · 13(C60 가 끝 · CV-02/03 끝 · C61 · C62) · README · `ai-out/G001.txt`
+
+**검증** — 게이트 200/200 · 적재 뒤 활성 4,143 · 3~5 힌트 빈 칸 0 · 해외축구 25 = sports · 같은 정답 3건 이상 신규 0 · 다시 적재 0건 · DB↔파일 대조 0 · criteria-sync --check · question-checks 13/13
+
+**겪은 문제** — V005 제안 문구 안의 줄바꿈이 적재 뒤에야 보였다(new-05) → 스크립트가 제안 문구에도 줄바꿈 정리를 하게 고치고 1행 보정
 
 ---
 
