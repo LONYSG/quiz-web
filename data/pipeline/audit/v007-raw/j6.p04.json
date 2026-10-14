@@ -1,0 +1,787 @@
+[
+ {
+  "ref": "C2-17",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "폰 노이만 구조 사실(1945 EDVAC 초안·에커트와 모클리 선행) 일치; 해설(병목·배커스 1977) 일치; 힌트(1944 게임 이론과 경제 행동) 두 번째 줄",
+  "score": {
+   "dif": 3,
+   "difWhy": "묻는 사실: 프로그램과 데이터를 같은 메모리에 두는 설계 → 폰 노이만 구조 — 고교 정보/교양 (GEN 3→3)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "\"초안\"이 폰 노이만 이름으로만 돌아 이름이 붙음·에커트와 모클리가 사실상 설계",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Von_Neumann_architecture",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "C2-18",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "엔디언 사실(코헨 1980 걸리버·x86 작은 자리·네트워크 큰 자리) 일치; 힌트 대표 예 둘은 정답 낱말을 가리키지 않음",
+  "score": {
+   "dif": 5,
+   "difWhy": "묻는 사실: 바이트 순서를 가리키는 걸리버 달걀 유래 말 → 엔디언 — 컴퓨터 구조 전공/자격증 (GEN 5→5)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1980 코헨이 걸리버 달걀 논쟁에서 따옴",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Endianness",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "x86 작은 자리·네트워크 큰 자리",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Endianness",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": "해설 \"처음 쓴 글\"은 문서가 코헨이 \"introduced\" 라고만 해 약간 느슨하나 허용(애매)"
+ },
+ {
+  "ref": "C2-19",
+  "verdict": "fix",
+  "categories": [
+   "variants"
+  ],
+  "reason": "A3/B1: 대표 \"조지 불\" 외에 한국 정보 교과에서 쓰는 \"조지 부울\"(부울 대수)이 빠져 억울한 오답 가능",
+  "score": {
+   "dif": 4,
+   "difWhy": "묻는 사실: 불리언 자료형 이름의 주인, 독학으로 코크 대학 교수가 된 영국 수학자 → 조지 불 — 컴퓨터/수학사 교양, 경계 3 (GEN 4→4, 경계)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": [
+    "조지 부울"
+   ],
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1854 사고의 법칙·초등 교육·1849 코크 수학 교수",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/George_Boole",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "젖은 옷으로 강의 뒤 폐렴으로 1864 사망",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/George_Boole",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "아내 메리 에베레스트는 조지 에베레스트의 조카",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/George_Boole",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "C2-20",
+  "verdict": "fix",
+  "categories": [
+   "fact-error"
+  ],
+  "reason": "Q3: 질문의 \"초콜릿 바\"는 인용 문서에 없음(문서: candy bar) — 확신 없는 세부는 뺀다",
+  "score": {
+   "dif": 2,
+   "difWhy": "묻는 사실: 레이더 곁에서 주머니 속 과자가 녹은 일을 계기로 발명된 가전 → 전자레인지 — 중학 과학 발명 일화 (GEN 2→2)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": "1945년 레이시온사의 기술자 퍼시 스펜서는 레이더 장치 곁에서 일하다 주머니 속 캔디 바가 녹은 것을 알아챘습니다. 팝콘과 달걀로 실험을 이어 가 이 발견을 바탕으로 만든 가전제품은?",
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "주머니 속 캔디 바가 녹음(초콜릿 바인지는 문서에 없음)",
+    "where": "q",
+    "result": "unverified",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Microwave_oven",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "팝콘·달걀 실험",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Microwave_oven",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1947 레이더레인지 큼·수랭식",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Microwave_oven",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": null,
+  "note": null
+ },
+ {
+  "ref": "C2-21",
+  "verdict": "fix",
+  "categories": [
+   "variants"
+  ],
+  "reason": "B2: 질문이 \"여밈 장치의 상표 이름\"을 요구하는데 변형 \"찍찍이\"는 상표가 아닌 통칭",
+  "score": {
+   "dif": 2,
+   "difWhy": "묻는 사실: 우엉 열매 갈고리를 본뜬 여밈 장치의 상표 → 벨크로 — 방송 상식 (GEN 2→2)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": [],
+   "layer": null,
+   "score": null
+  },
+  "webOpened": false,
+  "facts": [],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": null,
+  "note": "originalTitleVariants(Velcro)는 B10 로 유지. 찍찍이를 받고 싶으면 질문의 \"상표\"를 뺄 것 — VERIFY 가 선택(애매)"
+ },
+ {
+  "ref": "C2-22",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "혼잡통행료 사실(싱가포르 1975 최초·런던 2003·스톡홀름 2006); 해설(비크리 1952 \"아버지로 꼽힘\") 일치",
+  "score": {
+   "dif": 2,
+   "difWhy": "묻는 사실: 도심 진입 차에 걷는 체증 완화 요금 → 혼잡통행료 — 뉴스에서 흔히 (GEN 2→2)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "싱가포르 1975 최초·런던 2003·스톡홀름 2006",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Congestion_pricing",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "비크리 1952 뉴욕 지하철 제안·아버지로 여겨짐",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Congestion_pricing",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": null,
+  "note": "변형 \"혼잡세\"는 질문의 \"요금\"과 약간 다름 — 경미(애매)"
+ },
+ {
+  "ref": "C2-23",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "포르쉐 사실(1934 국민차·1901 혼합식 하이브리드·전후 구금) 일치; 힌트(티거(P)·마우스 전차 설계)는 두 번째 줄",
+  "score": {
+   "dif": 3,
+   "difWhy": "묻는 사실: 비틀의 원형을 설계한 하이브리드 차 개척 기술자 → 포르쉐 — 자동차사 관심층 (GEN 3→3)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": false,
+  "facts": [],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": "힌트의 \"(P)\"는 포르쉐 머리글자이나 한 글자 라틴 문자라 경미(H2 경계, 애매)"
+ },
+ {
+  "ref": "C2-24",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "코메트 사실(1952 BOAC 최초 제트 여객 정기 운항·1954 두 대 추락·물탱크 시험·피로) 일치; 해설(안테나 창 둘레 리벳 구멍) 일치; 힌트(님로드 2011까지) 문서와 일치",
+  "score": {
+   "dif": 4,
+   "difWhy": "묻는 사실: 1952 최초 제트 여객 정기 운항, 1954 공중 분해한 영국 여객기 → 코메트 — 항공사 애호 (GEN 4→4)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1952-05 BOAC 최초 제트 여객 운항·1954 두 대·물탱크 시험",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/De_Havilland_Comet",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "네모 창은 오해·균열은 ADF 창 둘레 리벳 구멍",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/De_Havilland_Comet",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "코메트 4 기반 님로드는 2011년까지 영국 공군 운용",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/De_Havilland_Comet",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "C2-25",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "폰 브라운 사실(페네뮌데 V-2·페이퍼클립·새턴 V·SS 소령) 일치; 힌트(1960 NASA·마셜 센터 초대 소장) 사실; 해설과 겹치지 않음",
+  "score": {
+   "dif": 3,
+   "difWhy": "묻는 사실: V-2를 이끌고 미국으로 건너가 새턴 V 설계 책임자가 된 공학자 → 폰 브라운 — 세 단서 모두 우주 개발사의 대표 일화(GEN 4→3) (GEN 4→3)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "V-2·페이퍼클립·새턴 V 수석 설계",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Wernher_von_Braun",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "SS 소령(1943)",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Wernher_von_Braun",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1960 NASA 편입·마셜 우주 비행 센터 초대 소장",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Wernher_von_Braun",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "C2-26",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "셀시우스 사실(처음엔 끓는점 0·어는점 100·1745 린네 뒤집음·오로라와 자기장) 일치; 힌트 없음",
+  "score": {
+   "dif": 2,
+   "difWhy": "묻는 사실: 온도 눈금을 만든 스웨덴 천문학자 → 셀시우스 — 중학 과학 섭씨 (GEN 2→2)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "끓는점 0·어는점 100·사후 이듬해 린네가 뒤집음",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Anders_Celsius",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "오로라와 지구 자기장 변화의 관계를 처음 제안",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Anders_Celsius",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": null,
+  "note": null
+ },
+ {
+  "ref": "P4-01",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "퀴닌 사실(기나나무 껍질·1820 펠티에·카방투 분리·토닉워터 쓴맛·형광) 일치; 힌트는 \"이야기에서 따왔다\"로 전승 표현 — 문서도 전설로 봄",
+  "score": {
+   "dif": 3,
+   "difWhy": "묻는 사실: 기나나무 알칼로이드, 말라리아 약, 토닉워터 쓴맛 → 퀴닌 — 관심층 (GEN 3→3)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1820 펠티에·카방투 분리",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Quinine",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "토닉워터 형광(자외선)",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Quinine",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "기나나무 학명은 1638 친촌 백작 부인 이야기에서(전설로 여겨짐)",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Cinchona",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "P4-02",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "1976 필라델피아 호텔·아메리칸 리전·29명 사망·1977 균 규명 사실; 해설 사실; 힌트 없음(난이도 2)",
+  "score": {
+   "dif": 2,
+   "difWhy": "묻는 사실: 1976 재향군인 대회 집단 폐렴의 병 → 레지오넬라증 — 뉴스(감염병), 경계 3 (GEN 2→2, 경계)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": false,
+  "facts": [],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": null,
+  "note": null
+ },
+ {
+  "ref": "P4-03",
+  "verdict": "fix",
+  "categories": [
+   "h-error",
+   "question-repeat"
+  ],
+  "reason": "H5 h-error: 힌트 \"18세기 하와이 신문\"은 문서에서도 [출처 필요] 표시된 불확실한 서술(하와이 신문은 19세기부터); 앞부분도 질문의 \"하와이 화산 여신의 이름\" 되풀이(H3)",
+  "score": {
+   "dif": 4,
+   "difWhy": "묻는 사실: 용암 분수에서 생긴 금빛 화산 유리 실, 하와이 화산 여신의 이름 → 펠레의 머리카락 — 화산 애호/대학 교양 (여신 이름을 알면 풀림, GEN 5→4) (GEN 5→4)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": "가닥의 굵기는 대개 1~300마이크로미터이며, 용암 분수뿐 아니라 용암 폭포나 세찬 용암 흐름에서도 생긴다.",
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "용암 분수에서 생긴 금빛 유리 실·몇 km 날아감·여신 펠레",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Pele%27s_hair",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "펠레의 눈물과 함께 생김",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Pele%27s_hair",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "굵기 1~300 마이크로미터",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Pele%27s_hair",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "18세기 하와이 신문에도 언급",
+    "where": "h",
+    "result": "unverified",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Pele%27s_hair",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "용암 폭포·세찬 용암류에서도 생김",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Pele%27s_hair",
+    "doubt": false,
+    "proposal": true
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": "H5·H3"
+  },
+  "note": null
+ },
+ {
+  "ref": "P4-04",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "브로켄 현상 사실(하르츠 최고봉·1780 질버슐라크·글로리·비행기에서 관찰·콜리지 시) 일치; 해설(발푸르기스 마녀 설명)은 한국어판에 있음",
+  "score": {
+   "dif": 4,
+   "difWhy": "묻는 사실: 해를 등진 산 안개 그림자 둘레 무지개 고리, 하르츠 최고봉 이름 → 브로켄 현상 — 기상 광학 교양 (GEN 4→4)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "하르츠 최고봉에서 이름·1780 질버슐라크·글로리",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Brocken_spectre",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "발푸르기스의 밤 마녀 연회 설명",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/브로켄_현상",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "비행기에서 관찰·콜리지 시가 이 장면으로 끝남",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Brocken_spectre",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "P4-05",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "라이덴프로스트 사실(1756·증기층·193℃·액체 질소) 일치; 힌트(미스버스터즈 녹은 납 실험) 사실",
+  "score": {
+   "dif": 4,
+   "difWhy": "묻는 사실: 뜨거운 팬 위 물방울이 구슬처럼 구르는 현상, 1756 독일 학자 → 라이덴프로스트 효과 — 열물리 애호/대학 교양 (GEN 4→4)",
+   "wor": null,
+   "acc": null
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1756 라이덴프로스트 기술·증기층",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Leidenfrost_effect",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "물 약 193℃·액체 질소 방울",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Leidenfrost_effect",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "미스버스터즈 2009 젖은 손을 녹은 납에",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Leidenfrost_effect",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": null
+ }
+]

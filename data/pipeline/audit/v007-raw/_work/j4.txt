@@ -1,0 +1,811 @@
+### L1-15  [life/L2:symbols/교통 표지]  method=나
+Q: 2011년 서해안고속도로 안산분기점에서 차로를 헷갈린 사망 사고가 나자, 한국도로공사의 한 직원이 아이들의 색칠 공부에서 착안해 갈림길 바닥에 분홍·연두 선을 처음 그렸습니다. 이 바닥 표시를 무엇이라 할까요?
+A: 노면 색깔 유도선   변형: 색깔 유도선
+E: 당시 도로교통법은 노면 표시를 흰색·노란색·파란색으로만 정해 두어 법에 맞지 않았고, 2016년 말 국토교통부의 시범 운영을 거쳐 설치 지침이 마련되었습니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (뉴스에서 흔히 — 도로 표시) · wor 3 (이야깃거리 — 유도선 유래) · acc 5   selfJudge: 경계 — 대상은 모두 보았지만 정식 이름을 바로 치기 어렵다. 변형 '색깔 유도선' 으로 완화
+facts: [q] 2011년 서해안고속도로 안산분기점 차로 혼동 사망 사고가 계기 <https://www.ajunews.com/view/20200625163537811>  ||  [q] 도로공사 군포지사 윤석덕 차장의 개인 아이디어, 아이들 색칠에서 착안 <https://www.ajunews.com/view/20200625163537811>  ||  [q] 분홍(좌)·연두(우) 선 <https://www.ajunews.com/view/20200625163537811>  ||  [q] 안산분기점이 처음 <https://www.ajunews.com/view/20200625163537811>  ||  [e] 노면 표시는 흰·노랑·파랑만 허용되어 법과 어긋남 <https://www.ajunews.com/view/20200625163537811>  ||  [e] 2016년 12월부터 국토부 1년 시범 운영 후 지침 <https://www.ajunews.com/view/20200625163537811>
+dbCheck: new
+warn: assert=[처음] frag=[] hint=[]
+webOpen: TRUE (selfJudge 경계, 단정어 처음)
+
+### L1-16  [life/L2:symbols/교통 표지]  method=나
+Q: 꼭짓점이 아래를 향한 역삼각형에 붉은 테두리를 두른 교통 표지는 도로 표지와 신호에 관한 빈 협약이 국제 표준으로 정한 모양입니다. 이 표지가 운전자에게 요구하는 것은?
+A: 양보
+E: 미국에서는 1950년 오클라호마주 털사의 경찰관 클린턴 리그스가 처음 세웠는데, 그의 첫 디자인은 쐐기돌 모양이었습니다.
+H: (힌트 없음 — 난이도 1)
+GEN: dif 1 (일상 — 교통 표지) · wor 4 (교양 — 생활 안전) · acc 5   selfJudge: 경계 — 운전면허 공부를 한 사람에게는 3 일 수 있다
+facts: [q] 빈 협약이 역정삼각형을 국제 표준으로 채택, 붉은 테두리 <https://en.wikipedia.org/wiki/Yield_sign>  ||  [e] 1950년 털사 경찰관 클린턴 리그스, 처음엔 키스톤 모양 <https://en.wikipedia.org/wiki/Yield_sign>
+dbCheck: new
+warn: assert=[처음] frag=[] hint=[]
+webOpen: TRUE (selfJudge 경계, 단정어 처음)
+
+### L1-17  [life/L2:symbols/색의 상징]  method=나
+Q: 오방색에서 중앙과 흙(토)을 맡는 색입니다. 중국에서는 밝은 빛깔의 이 색 옷을 황제와 그 집안만 입을 수 있었는데, 이 색은?
+A: 노랑   변형: 노란색 | 황색
+E: 오방색의 나머지는 파랑이 동쪽, 빨강이 남쪽, 하양이 서쪽, 검정이 북쪽을 맡습니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (중학 — 오방색 상징) · wor 4 (교양 — 오방색) · acc 5   selfJudge: 경계 — '황제' 의 '황' 이 단서가 되어 3 으로 내려갈 수 있다
+facts: [q] 오방색에서 노랑은 중앙·토 <https://ko.wikipedia.org/wiki/오방색>  ||  [q] 중국에서 밝은 노랑은 황제와 그 집안만 입을 수 있었다 <https://en.wikipedia.org/wiki/Yellow>  ||  [e] 파랑 동, 빨강 남, 하양 서, 검정 북 <https://ko.wikipedia.org/wiki/오방색>
+dbCheck: 노랑 pair-or-different #2527(공사장 경고색) — 지식이 다름 · 노란색 #668(중앙선 색) — 지식이 다름 · 황색 new
+warn: assert=[] frag=[] hint=[]
+  sameAnswerActive #2527 (dif 1): Q: 검정과 함께 쓰면 대비가 가장 커서 공사장 표지나 경고 테이프에 쓰이는 색은? | E: 벌이나 말벌의 경고색과 같은 조합입니다. | H: 
+webOpen: TRUE (selfJudge 경계, dbCheck(같은 정답 활성))
+
+### L1-18  [life/L2:symbols/색의 상징]  method=나
+Q: 네덜란드 축구 대표팀은 지금의 국기에 쓰이지 않는 색의 유니폼을 입습니다. 남프랑스의 한 공국에서 이름을 딴 왕가를 상징하는 이 색은?
+A: 주황   변형: 주황색 | 오렌지
+E: 네덜란드의 첫 국기는 이 색과 하양·파랑을 쓴 '왕자의 깃발'이었지만, 17세기 무렵 이 색 자리가 빨강으로 바뀌었습니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (방송 — 네덜란드 주황) · wor 3 (이야깃거리 — 색 유래) · acc 5   selfJudge: 경계 — '오렌지 군단' 을 아는 사람은 바로 맞힌다 — 3 일 수 있다
+facts: [q] 대표팀은 오라녜-나사우 왕가에서 딴 색, 역사적 국가색 <https://en.wikipedia.org/wiki/Netherlands_national_football_team>  ||  [q] 왕가 이름은 남프랑스 오랑주 공국에서 <https://en.wikipedia.org/wiki/Orange_(colour)>  ||  [q] 지금 국기는 빨강·하양·파랑 <https://en.wikipedia.org/wiki/Flag_of_the_Netherlands>  ||  [e] 첫 국기는 주황·하양·파랑, 1590년대~1630년 무렵 빨강으로 <https://en.wikipedia.org/wiki/Flag_of_the_Netherlands>
+dbCheck: new
+warn: assert=[] frag=[] hint=[]
+webOpen: TRUE (selfJudge 경계)
+
+### L1-19  [life/L2:symbols/기호·아이콘]  method=나
+Q: 원 안에 세로줄 하나와 아래로 뻗은 두 줄을 그린 평화 기호는 1958년 영국의 한 반대 운동을 위한 배지로 디자인되었습니다. 이 운동은 무엇을 없애자는 운동이었을까요?
+A: 핵무기   변형: 핵
+E: 디자이너 제럴드 홀텀은 깃발 수기 신호의 N 과 D 를 겹쳐 이 모양을 만들었고, 런던에서 올더마스턴 원자무기 연구소까지 걷는 행진에서 처음 쓰였습니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (방송 — 평화 기호 유래) · wor 3 (이야깃거리 — 기호 유래) · acc 5   selfJudge: 좋은 어려움 — 기호는 유명, 원래 핵군축 배지였다는 사실은 덜 알려짐
+facts: [q] 1958년 영국 핵군축운동(CND) 배지로 디자인 <https://en.wikipedia.org/wiki/Peace_symbols>  ||  [e] 수기 신호 N·D 결합, 제럴드 홀텀 <https://en.wikipedia.org/wiki/Peace_symbols>  ||  [e] 트래펄가 광장에서 올더마스턴 원자무기 연구소까지 행진에서 처음 사용 <https://en.wikipedia.org/wiki/Peace_symbols>
+dbCheck: new (핵도 new)
+warn: assert=[처음] frag=[] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### L1-20  [life/L2:symbols/기호·아이콘]  method=나
+Q: 북유럽 안내판에서 관광 명소를 표시하던, 네 귀퉁이에 고리가 달린 네모 기호가 있습니다. 1984년 매킨토시 개발팀이 이 기호를 빌려 와 키보드의 한 키에 새겼는데, 이 키는?
+A: 커맨드 키   변형: 커맨드
+E: 처음에는 사과 로고를 넣으려 했지만, 스티브 잡스가 메뉴마다 로고가 넘쳐 난다며 반대해 디자이너 수전 케어가 기호 사전에서 찾아냈습니다.
+H: 이 기호는 '성 요한의 문장'·'보언 매듭'이라고도 불리며, 앞서 애플 IIe에는 속이 빈 사과 로고 키가 있었다.   hintSources: https://en.wikipedia.org/wiki/Command_key
+GEN: dif 3 (관심층 — 맥 키보드 기호) · wor 3 (이야깃거리 — 기호 유래) · acc 5   selfJudge: 좋은 어려움 — 기호는 익숙, 유래가 뜻밖
+facts: [q] 북유럽에서 명소(place of interest) 표시로 쓰인 기호 <https://en.wikipedia.org/wiki/Looped_square>  ||  [q] 1984년 매킨토시 커맨드 키 <https://en.wikipedia.org/wiki/Command_key>  ||  [e] 잡스가 사과 로고 남용에 반대, 수전 케어가 기호 사전에서 찾음 <https://en.wikipedia.org/wiki/Command_key>
+dbCheck: new (커맨드도 new)
+warn: assert=[처음] frag=[] hint=[explain]
+questionWords: 북유럽 안내판 관광 명소 표시하던 귀퉁이 고리 달린 네모 기호 있습니다 1984년 매킨토시 개발팀 빌려 키보드 키에 새겼는데 키는
+webOpen: TRUE (단정어 처음)
+
+### L1-21  [life/L2:symbols/국기·국장]  method=나
+Q: 멕시코 국기 가운데에는 선인장 위에 앉아 뱀을 먹는 독수리가 그려져 있습니다. 이 모습을 본 곳에 도시를 세우라는 전설을 따라 아스테카인이 세운 도시는?
+A: 테노치티틀란
+E: 이 도시 자리가 오늘날의 멕시코시티이고, 국기의 문장도 아스테카의 테노치티틀란 상징에서 왔습니다.
+H: 1325년 무렵 텍스코코 호수의 늪진 섬 위에 세워졌고, 1521년 코르테스에게 함락되었다.   hintSources: https://en.wikipedia.org/wiki/Tenochtitlan
+GEN: dif 3 (고교 세계사 — 아스테카) · wor 4 (교양 — 아스테카 수도) · acc 5   selfJudge: 좋은 어려움 — 국기는 유명, 수도 이름은 세계사 교양
+facts: [q] 국기 문장: 선인장 위 뱀을 먹는 독수리 <https://en.wikipedia.org/wiki/Flag_of_Mexico>  ||  [q] 이 모습이 아스테카인이 도시를 세울 곳을 알린 전설 <https://en.wikipedia.org/wiki/Flag_of_Mexico>  ||  [e] 테노치티틀란 = 지금의 멕시코시티, 문장은 그 상징에서 <https://en.wikipedia.org/wiki/Flag_of_Mexico>
+dbCheck: new
+warn: assert=[] frag=[] hint=[]
+questionWords: 멕시코 국기 가운데에 선인장 위에 앉아 뱀을 먹는 독수리 그려져 있습니다 모습 곳에 도시 세우 전설 따라 아스테카인 세운
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L1-22  [life/L2:board-game/바둑·장기]  method=나
+Q: 바둑에서 두 쪽 돌이 공배를 나눠 가져, 어느 쪽이든 먼저 상대의 공배를 메우면 오히려 자기 돌이 잡히는 형태가 있습니다. 그래서 양쪽 돌을 모두 산 것으로 보는 이 상태를 무엇이라 할까요?
+A: 빅
+E: 이 돌들은 살아 있지만 집을 셀 때는 빼고 셉니다. 이름은 '비기다'에서 왔을 것으로 짐작됩니다.
+H: 일본·한국식 계가에서는 이 상태의 빈 점을 중립으로 보지만, 중국식 계가에서는 그대로 센다.   hintSources: https://en.wikipedia.org/wiki/Rules_of_Go
+GEN: dif 3 (관심층 — 바둑 용어) · wor 4 (분야 기본 어휘 — 바둑) · acc 4   selfJudge: 좋은 어려움 — 바둑을 두는 사람은 아는 말, 모르는 사람에게도 개념이 재미있음
+facts: [q] 서로 상대를 잡으려면 먼저 잡히는 상태, 양쪽 모두 산 돌 <https://en.wikipedia.org/wiki/Life_and_death>  ||  [q] 빅 = 서로 단수를 칠 수 없는 무승부 상태 <https://ko.wikipedia.org/wiki/빅_(바둑)>  ||  [e] 빅을 이루는 돌은 산 것으로 보고 집 계산에서 제외, 이름은 '비기다'에서 추측 <https://ko.wikipedia.org/wiki/빅_(바둑)>
+dbCheck: new
+warn: assert=[] frag=[] hint=[]
+questionWords: 바둑 돌이 공배 나눠 가져 어느 쪽이든 먼저 상대 메우면 오히려 자기 잡히 형태 있습니다 그래서 양쪽 돌을 모두 보는 상태 무엇이라 할까요
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L1-23  [life/L2:board-game/바둑·장기]  method=나
+Q: 바둑에는 도끼자루·난가·좌은 같은 여러 별칭이 있습니다. 이 가운데 마주 앉아 말 대신 돌을 놓으며 '손으로 나누는 대화'라는 뜻을 담은 별칭은?
+A: 수담
+E: '까마귀와 백로'라는 뜻의 오로, 그리고 흑백도 바둑을 가리키는 옛 별칭입니다.
+H: 근심을 잊게 한다는 '망우'처럼, 이 별칭도 바둑 두는 모습을 한자에 담은 이름이다.   hintSources: https://ko.wikipedia.org/wiki/바둑
+GEN: dif 4 (애호가 — 바둑 별칭) · wor 3 (이야깃거리 — 바둑 별칭) · acc 4   selfJudge: 경계 — '손으로 나누는 대화' 가 한자 풀이라 한자를 아는 사람에게는 쉽다
+facts: [q] 바둑 별칭: 수담, 도끼자루, 난가, 좌은, 오로, 망우 <https://ko.wikipedia.org/wiki/바둑>  ||  [q] 수담 = hand talk, 말 대신 수로 나누는 대화 <https://gomagic.org/go-term/shudan/>  ||  [e] 오로 = 까마귀와 백로, 흑백도 별칭 <https://ko.wikipedia.org/wiki/바둑>
+dbCheck: new
+warn: assert=[] frag=[] hint=[]
+questionWords: 바둑에 도끼자루 난가 좌은 같은 여러 별칭 있습니다 가운데 마주 앉아 대신 돌을 놓으며 나누 대화 라는 뜻을 담은
+webOpen: TRUE (selfJudge 경계, GEN 난이도 4)
+
+### L1-24  [life/L2:board-game/보드게임]  method=가 pairedWith=275
+Q: 1904년 리지 매기는 땅을 쥔 지주에게 부가 쏠리는 폐해를 보여 주려고, 헨리 조지의 사상을 담은 '지주 게임'의 특허를 냈습니다. 이 게임에서 비롯해 1935년 파커 브러더스가 펴낸 보드게임은?
+A: 모노폴리   originalTitle: Monopoly
+E: 오랫동안 찰스 대로가 발명한 게임으로 알려졌고, 파커 브러더스는 뒤늦게 매기의 특허권을 500달러에 사들였습니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (일상 — 유명 보드게임) · wor 3 (이야깃거리 — 게임 기원) · acc 4   selfJudge: 좋은 어려움 — 모두 아는 게임, 원래 반지주 교육용이었다는 반전
+facts: [q] 리지 매기, 1903년 고안·1904년 특허, 지주 게임 <https://en.wikipedia.org/wiki/Monopoly_(game)>  ||  [q] 헨리 조지 사상과 토지 독점의 폐해를 보여 주려 함 <https://en.wikipedia.org/wiki/Monopoly_(game)>  ||  [q] 1935년 파커 브러더스가 판매 시작 <https://en.wikipedia.org/wiki/Monopoly_(game)>  ||  [e] 대로가 단독 발명자가 아님을 알고 매기의 특허를 500달러에 삼 <https://en.wikipedia.org/wiki/Monopoly_(game)>
+dbCheck: pair-or-different #275 — (가) 2회차, 다른 지식   pairCheck: 1회차 #275 는 게임 진행(땅 사고 건물 짓고 파산)을 물었다. 2회차는 리지 매기·지주 게임 기원 — 1회차 지식만으로는 못 푼다
+warn: assert=[] frag=[] hint=[]
+  sameAnswerActive #275 (dif 2): Q: 주사위를 굴려 말을 이동하며 부동산을 매매하고 건물을 지어 다른 플레이어를 파산시키는 미국의 대표적 보드게임은? | E: 1935년 파커 브라더스에서 발매된 유명 부동산 거래 보드게임은 모노폴리이다. | H: 
+webOpen: TRUE (dbCheck(같은 정답 활성), 2회차)
+
+### L1-25  [life/L2:board-game/보드게임]  method=나
+Q: 루마니아에서 태어나 제2차 세계대전 뒤 이스라엘로 건너간 에프라임 헤르차노가 카드 게임과 마작을 섞어 만든 숫자 타일 게임은?
+A: 루미큐브   originalTitle: Rummikub
+E: 1부터 13까지 네 가지 색의 타일 두 벌과 조커 둘, 모두 106개의 타일을 쓰며 1980년 독일 '올해의 게임상'을 받았습니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (일상 — 보드게임) · wor 3 (이야깃거리 — 게임 유래) · acc 4   selfJudge: 좋은 어려움 — 한국에서 인기 있는 게임, 이스라엘 출신이 뜻밖
+facts: [q] 루마니아 태생, 2차 대전 뒤 이스라엘 이주 에프라임 헤르차노 <https://en.wikipedia.org/wiki/Rummikub>  ||  [q] 러미와 마작 요소 결합 타일 게임 <https://en.wikipedia.org/wiki/Rummikub>  ||  [e] 106개 타일(1~13 네 색 두 벌 + 조커 2) <https://en.wikipedia.org/wiki/Rummikub>  ||  [e] 1980년 Spiel des Jahres <https://en.wikipedia.org/wiki/Rummikub>
+dbCheck: new
+warn: assert=[모두] frag=[] hint=[]
+webOpen: TRUE (단정어 모두)
+
+### L1-26  [life/L2:board-game/퍼즐]  method=가 pairedWith=517
+Q: 1979년 미국의 퍼즐 잡지에 '넘버 플레이스'라는 이름으로 실린 숫자 퍼즐이 있습니다. 은퇴한 건축가 하워드 간스가 만든 것으로 보이는데, 1984년 일본 퍼즐 회사 니코리를 거쳐 새 이름을 얻은 이 퍼즐은?
+A: 스도쿠
+E: 홍콩 판사 출신 웨인 굴드가 퍼즐 생성 프로그램을 만들었고, 2004년 영국 더 타임스가 싣기 시작하면서 세계로 퍼졌습니다.
+H: (힌트 없음 — 난이도 1)
+GEN: dif 1 (일상 — 유명 퍼즐) · wor 3 (이야깃거리 — 퍼즐 이름 유래) · acc 4   selfJudge: 좋은 어려움 — '일본 퍼즐' 인 줄 알았던 반전
+facts: [q] 1979년 델 매거진에 Number Place 로 처음 실림, 하워드 간스(은퇴한 건축가)가 만든 것으로 보임 <https://en.wikipedia.org/wiki/Sudoku>  ||  [q] 1984년 니코리가 일본에 소개, 이름을 줄여 스도쿠 <https://en.wikipedia.org/wiki/Sudoku>  ||  [e] 웨인 굴드 프로그램, 2004년 더 타임스 <https://en.wikipedia.org/wiki/Sudoku>
+dbCheck: pair-or-different #517 — (가) 2회차, 다른 지식   pairCheck: 1회차 #517 은 규칙과 일본 이름의 뜻을 물었다. 2회차는 미국 기원(넘버 플레이스·간스) — 1회차 단서·해설 사실 재사용 없음
+warn: assert=[] frag=[] hint=[]
+  sameAnswerActive #517 (dif 1): Q: 가로·세로·작은 사각형 안에 1부터 9까지를 겹치지 않게 채우는 퍼즐로, 일본에서 붙은 이름 자체가 그 규칙을 담고 있는 것은? | E: '숫자는 하나여야 한다' 는 뜻의 일본어를 줄인 말이며, 퍼즐 자체는 미국에서 먼저 나왔습니다. | H: 
+webOpen: TRUE (dbCheck(같은 정답 활성), 2회차)
+
+### L1-27  [life/L2:board-game/퍼즐]  method=가 pairedWith=521
+Q: 프랑스 수학자 에두아르 뤼카는 1883년 'N. 클라우스 드 시암'이라는 가명으로 한 퍼즐을 내놓으며 전설 하나를 붙였습니다. 브라만 승려들이 사원에서 원반 64장을 다 옮기면 세상이 끝난다는 이야기가 딸린 이 퍼즐은?
+A: 하노이의 탑   변형: 하노이 탑
+E: 가명 'N. Claus de Siam'은 '아미앵의 뤼카(Lucas d'Amiens)'의 철자를 뒤섞어 만든 것입니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (일상 — 유명 퍼즐) · wor 3 (이야깃거리 — 퍼즐 전설) · acc 4   selfJudge: 좋은 어려움 — 64장·세상의 종말 전설은 이야깃거리
+facts: [q] 에두아르 뤼카, 1883년, 가명 N. Claus (de Siam) <https://en.wikipedia.org/wiki/Tower_of_Hanoi>  ||  [q] 브라만 승려가 64장 원반을 옮기면 세상이 끝난다는 전설 <https://en.wikipedia.org/wiki/Tower_of_Hanoi>  ||  [e] 가명은 Lucas d'Amiens 의 애너그램 <https://en.wikipedia.org/wiki/Tower_of_Hanoi>
+dbCheck: pair-or-different #521 — (가) 2회차, 다른 지식   pairCheck: 1회차 #521 은 규칙(큰 원반이 위로 못 감)과 최소 횟수를 물었다. 2회차는 발명자·가명·전설 — 원반 옮기기 규칙은 쓰지 않음
+warn: assert=[] frag=[] hint=[]
+  sameAnswerActive #521 (dif 3): Q: 크기가 다른 원반을 큰 것이 위로 올라가지 않게 지키며 다른 기둥으로 옮기는 퍼즐로, 원반이 하나 늘 때마다 최소 횟수가 두 배 남짓 늘어나는 것은? | E: 원반 n개일 때 최소 횟수는 2의 n제곱에서 1을 뺀 값이며, 재귀를 설명할 때 흔히 쓰입니다. | H: 프랑스 수학자 뤼카가 1883년에 내놓았고, 이름에 동남아시아 한 나라의 수도가 들어간다.
+webOpen: TRUE (dbCheck(같은 정답 활성), 2회차)
+
+### L1-28  [life/L2:board-game/화투·카드]  method=나
+Q: 프랑스식 트럼프의 그림 카드 왕에게는 역사 속 인물의 이름이 붙어 있습니다. 하트 왕은 샤를마뉴, 다이아몬드 왕은 율리우스 카이사르입니다. 스페이드 왕에 붙은 이스라엘 왕의 이름은 무엇일까요?
+A: 다윗
+E: 같은 파리식 그림에서 클로버 왕은 알렉산드로스 대왕입니다.
+H: 함부르크 계열 카드 그림에서는 이 스페이드 왕이 하프를 들고 있다.   hintSources: https://en.wikipedia.org/wiki/French-suited_playing_cards
+GEN: dif 4 (애호가 — 카드 그림 유래) · wor 3 (이야깃거리 — 카드 인물) · acc 4   selfJudge: 경계 — 카드 문양 세부라 5 에 가까울 수 있으나 성경 인물이라 추리 가능
+facts: [q] 파리식 무늬: 스페이드 왕 다윗, 하트 왕 샤를마뉴, 다이아 왕 카이사르, 클로버 왕 알렉산드로스 <https://en.wikipedia.org/wiki/French-suited_playing_cards>
+dbCheck: new
+warn: assert=[] frag=[] hint=[explain]
+questionWords: 프랑스식 트럼프 그림 카드 왕에게 역사 인물 이름 붙어 있습니다 하트 왕은 샤를마뉴 다이아몬드 율리우스 카이사르입니다 스페이드 왕에 붙은 이스라엘 왕의 무엇일까요
+webOpen: TRUE (selfJudge 경계, GEN 난이도 4)
+
+### L1-29  [life/L2:calendar/세계 명절·축제]  method=나
+Q: 춘분에 새해를 맞는 이란의 명절에는 페르시아 글자 '신(س)'으로 시작하는 물건 일곱 가지를 차린 상을 둡니다. 이 명절은?
+A: 노루즈   변형: 노우루즈
+E: 이름은 페르시아어로 '새로운 날'이라는 뜻이고, 유엔 총회는 2010년 이날을 국제 기념일로 인정했습니다.
+H: 명절 13일째에는 모두 집 밖으로 나가 소풍을 즐기고, 상에 올렸던 새싹을 흐르는 물에 던진다.   hintSources: https://en.wikipedia.org/wiki/Nowruz
+GEN: dif 4 (애호가 — 세계 명절) · wor 3 (이야깃거리 — 이란 새해) · acc 5   selfJudge: 좋은 어려움 — 들어 봤을 법한 명절, 하프트 신 세부가 새로움
+facts: [q] 이란력 새해, 춘분 <https://en.wikipedia.org/wiki/Nowruz>  ||  [q] 하프트 신: 신(س)으로 시작하는 일곱 가지 <https://en.wikipedia.org/wiki/Nowruz>  ||  [e] 뜻 '새로운 날' <https://en.wikipedia.org/wiki/Nowruz>  ||  [e] 2010년 유엔 총회 결의 64/253 <https://en.wikipedia.org/wiki/Nowruz>
+dbCheck: new (노우루즈도 new)
+warn: assert=[] frag=[] hint=[]
+questionWords: 춘분 새해 맞는 이란 명절에 페르시아 글자 으로 시작 물건 일곱 가지 차린 상을 둡니다 명절
+webOpen: TRUE (GEN 난이도 4)
+
+### L1-30  [life/L2:calendar/세계 명절·축제]  method=나
+Q: 마카베오 가문이 셀레우코스 왕조에 맞서 예루살렘을 되찾고 성전을 다시 봉헌한 일을 기리는, 여드레 동안 이어지는 유대교 명절은?
+A: 하누카
+E: 하루치뿐이던 기름이 여드레 동안 탔다는 이야기에 따라, 아홉 갈래 촛대에 밤마다 불을 하나씩 더 켭니다.
+H: 이 명절엔 기름에 지진 감자전 라트케스와 젤리 도넛 수프가니요트를 먹고, 드레이들 팽이를 돌린다.   hintSources: https://en.wikipedia.org/wiki/Hanukkah
+GEN: dif 3 (관심층 — 유대교 명절) · wor 3 (이야깃거리 — 세계 종교 명절) · acc 5   selfJudge: 좋은 어려움 — 이름은 들어 봤고 기원은 몰랐을 법
+facts: [q] 마카베오 봉기, 셀레우코스, 예루살렘 탈환과 제2성전 재봉헌 <https://en.wikipedia.org/wiki/Hanukkah>  ||  [q] 8일 명절 <https://en.wikipedia.org/wiki/Hanukkah>  ||  [e] 하루치 기름이 8일 탔다(탈무드), 아홉 갈래 촛대, 밤마다 하나씩 <https://en.wikipedia.org/wiki/Hanukkah>
+dbCheck: new
+warn: assert=[] frag=[] hint=[]
+questionWords: 마카베오 가문 셀레우코스 왕조 맞서 예루살렘 되찾고 성전 다시 봉헌 일을 기리 여드레 동안 이어지 유대교 명절
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L1-31  [life/L2:calendar/국제 기념일]  method=나
+Q: 영국·캐나다 같은 영연방 나라에서는 11월 11일 무렵 전사자를 기리며 가슴에 붉은 꽃 모양 배지를 답니다. 캐나다 군의관 존 매크레이의 시 '플랑드르 들판에서'에 나오는 이 꽃은?
+A: 양귀비
+E: 11월 11일은 제1차 세계대전의 휴전일이고, 시는 1915년 친구의 죽음 뒤에 쓰였습니다.
+H: 1921년 프랑스의 안 게랭이 영국 최초의 이 꽃 배지 값을 대 주었고, 영국 재향군인회가 뒤에 갚았다.   hintSources: https://en.wikipedia.org/wiki/Remembrance_poppy
+GEN: dif 3 (관심 있는 사람 — 추모 상징) · wor 3 (이야깃거리 — 양귀비 배지) · acc 5   selfJudge: 좋은 어려움 — 꽃은 유명, 추모 상징이라는 연결은 덜 알려짐
+facts: [q] 존 매크레이, 캐나다 의사, 'In Flanders Fields'에 붉은 양귀비 <https://en.wikipedia.org/wiki/Remembrance_poppy>  ||  [q] 11월 11일 기념일과 결부, 영국 상징 <https://en.wikipedia.org/wiki/Remembrance_poppy>  ||  [e] 1915년 5월 3일 친구의 죽음 뒤 작성, 11월 11일은 종전(휴전) 기념 <https://en.wikipedia.org/wiki/Remembrance_poppy>
+dbCheck: new
+warn: assert=[] frag=[] hint=[]
+questionWords: 영국 캐나다 같은 영연방 나라 11월 11일 무렵 전사자 기리며 가슴 붉은 모양 배지 답니다 군의관 매크레이 플랑드르 들판 나오 꽃은
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L1-32  [life/L2:calendar/국제 기념일]  method=나
+Q: 유네스코가 1999년 정한 '국제 모국어의 날'(2월 21일)은 1952년 다카에서 한 언어를 국어로 인정하라고 요구하던 시위대가 경찰에 희생된 날에서 왔습니다. 그들이 지키려던 언어는?
+A: 벵골어
+E: 방글라데시가 이 기념일을 제안했고, 그곳에서는 공휴일로 지키며 순교자 기념탑 '샤히드 미나르'를 찾습니다.
+H: 인도와 방글라데시 두 나라의 국가가 모두 타고르가 이 언어로 쓴 노래다.   hintSources: https://en.wikipedia.org/wiki/Bengali_language
+GEN: dif 4 (애호가 — 국제 기념일 유래) · wor 4 (교양 — 기념일 유래) · acc 5   selfJudge: 좋은 어려움 — 다카 → 방글라데시 → 벵골어로 한 걸음 추리
+facts: [q] 2월 21일, 1999년 유네스코 선포 <https://en.wikipedia.org/wiki/International_Mother_Language_Day>  ||  [q] 1952년 다카 벵골어 운동, 시위대가 경찰에 희생 <https://en.wikipedia.org/wiki/International_Mother_Language_Day>  ||  [e] 방글라데시 제안, 공휴일, 샤히드 미나르 <https://en.wikipedia.org/wiki/International_Mother_Language_Day>
+dbCheck: new
+warn: assert=[] frag=[] hint=[explain]
+questionWords: 유네스코 1999년 정한 국제 모국어 2월 21일 1952년 다카 언어 국어 인정하라고 요구하던 시위대 경찰 희생 왔습니다 그들 지키려던
+webOpen: TRUE (GEN 난이도 4)
+
+### L1-33  [life/L2:calendar/달력·역법]  method=가 pairedWith=832
+Q: 1917년 러시아에서 볼셰비키가 권력을 잡은 혁명은 오늘날 달력으로 11월 7일에 일어났는데도 '10월 혁명'이라 불립니다. 당시 러시아가 쓰던 달력으로는 10월 25일이었기 때문인데, 이 달력은?
+A: 율리우스력
+E: 소련이 달력을 바꾼 뒤에는 이 혁명을 '11월 혁명'이라 부르기도 합니다.
+H: 러시아 정교회는 지금도 이 달력으로 성탄절을 쇠어, 오늘날 달력으로는 1월 7일이 성탄절이다.   hintSources: https://en.wikipedia.org/wiki/Julian_calendar
+GEN: dif 3 (고교 세계사 — 역법) · wor 4 (교양 — 10월 혁명 이름) · acc 5   selfJudge: 좋은 어려움 — 유명 사건의 이름 속 달력 이야기
+facts: [q] 구력(율리우스력) 10월 25일 = 그레고리력 11월 7일 <https://en.wikipedia.org/wiki/October_Revolution>  ||  [q] 러시아는 당시 율리우스력 사용 <https://en.wikipedia.org/wiki/October_Revolution>  ||  [e] 달력 개혁 뒤 11월 혁명으로도 불림 <https://en.wikipedia.org/wiki/October_Revolution>
+dbCheck: pair-or-different #832 — (가) 2회차, 다른 지식   pairCheck: 1회차 #832 는 4년마다 윤년·1582년 그레고리력 교체를 물었다. 2회차는 10월 혁명 날짜 차이 — 1582년·윤년 규칙을 쓰지 않음
+warn: assert=[] frag=[] hint=[]
+  sameAnswerActive #832 (dif 3): Q: 1582년에 그레고리력으로 바뀌기 전까지 유럽이 1500년 넘게 써 온 달력으로, 4년마다 예외 없이 윤년을 두어 오차가 쌓인 것은? | E: 128년에 하루씩 어긋나 1582년에는 열흘이나 벌어져 있었습니다. | H: 7월의 영어 이름에 그 이름이 남은 로마의 정치가가 기원전 1세기에 들였다.
+questionWords: 1917년 러시아 볼셰비키 권력 잡은 혁명 오늘날 달력 11월 7일 일어났는데 10월 이라 불립니다 당시 쓰던 달력으로 25일이었기 때문인데
+webOpen: TRUE (dbCheck(같은 정답 활성), 2회차)
+
+### L1-34  [life/L2:calendar/달력·역법]  method=나
+Q: 한 달을 30일로 하고 열흘씩 세 묶음으로 나눈 달력이 1793년 말부터 쓰였습니다. 달 이름은 포도 수확·싹틈 같은 자연에서 따왔고, 나폴레옹이 1806년부터 폐지한 이 달력은?
+A: 프랑스 혁명력   변형: 혁명력 | 공화력 | 프랑스 공화력
+E: 열흘째 날이 일요일을 대신한 쉬는 날이었고, 시간도 십진법으로 나누려 했지만 자리 잡지 못했습니다.
+H: 달 이름은 시인 파브르 데글랑틴이 지었고, 날마다 성인 대신 곡식·동물·농기구 이름을 붙였다.   hintSources: https://en.wikipedia.org/wiki/French_Republican_calendar
+GEN: dif 4 (대학 교양 — 서양사 역법) · wor 4 (교양 — 프랑스 혁명) · acc 5   selfJudge: 좋은 어려움 — 프랑스 혁명은 교과 대상, 달력 세부는 한 층 깊음
+facts: [q] 30일 열두 달, 열흘 단위 데카드 세 개 <https://en.wikipedia.org/wiki/French_Republican_calendar>  ||  [q] 1793년 말부터 1805년까지 사용 <https://en.wikipedia.org/wiki/French_Republican_calendar>  ||  [q] 달 이름은 자연·날씨(방데미에르=포도 수확, 제르미날=발아) <https://en.wikipedia.org/wiki/French_Republican_calendar>  ||  [q] 나폴레옹이 1805년 9월 법령으로 1806년 1월 1일부터 폐지 <https://en.wikipedia.org/wiki/French_Republican_calendar>  ||  [e] 데카디가 일요일 대신 휴일, 십진 시간은 정착 못 함 <https://en.wikipedia.org/wiki/French_Republican_calendar>
+dbCheck: new (혁명력 · 공화력 · 프랑스 공화력도 new)
+warn: assert=[] frag=[] hint=[]
+questionWords: 달을 30일 하고 열흘씩 묶음 나눈 달력 1793년 쓰였습니다 이름 포도 수확 싹틈 같은 자연 따왔고 나폴레옹 1806년 폐지
+webOpen: TRUE (GEN 난이도 4)
+
+### L2-01  [life/L2:fashion/의류 명칭]  method=나
+Q: 1886년 미국 뉴욕주의 한 부유층 마을에서 클럽 무도회에 회원들이 꼬리 없는 야회복을 입고 나왔고, 그 마을 이름이 이 옷의 이름이 되었습니다. 영국에서는 흔히 '디너 재킷'이라 부르는 이 남성 예복은?
+A: 턱시도
+E: 옷차림 규정으로는 '블랙타이'에 해당하며, 이 이름이 남성복을 가리키는 말로 쓰인 것은 1888년 무렵 미국에서라고 합니다.
+H: (힌트 없음 — 난이도 1)
+GEN: dif 1 (일상 — 예복 이름) · wor 3 (이야깃거리 — 이름 유래) · acc 4   selfJudge: 좋은 어려움 — 유명한 옷, 이름의 뜻밖의 유래
+facts: [q] 이름이 뉴욕주 턱시도 파크 마을에서 왔다 <https://en.wikipedia.org/wiki/Tuxedo>  ||  [q] 1886년 클럽의 첫 가을 무도회에서 회원들이 꼬리 없는 야회복을 입었다 <https://en.wikipedia.org/wiki/Tuxedo>  ||  [q] 영국 영어로는 dinner suit / dinner jacket <https://en.wikipedia.org/wiki/Tuxedo>  ||  [e] 남성복 의미의 tuxedo 는 1888년 무렵 미국에서 <https://en.wikipedia.org/wiki/Tuxedo>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-02  [life/L2:fashion/의류 명칭]  method=나
+Q: 19세기 프랑스의 한 곡예사가 몸에 딱 붙는 한 벌 옷을 입고 공연하면서 그의 이름이 옷 이름이 되었습니다. 정작 그는 이 옷을 '마요'라고 불렀다는데, 오늘날 체조복·발레복으로 쓰는 이 옷은?
+A: 레오타드
+E: 그 곡예사 쥘 레오타르는 1859년 파리의 시르크 나폴레옹에서 세 개의 그네를 오가는 공중그네 곡예를 처음 선보인 사람으로 꼽힙니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (방송·생활 — 의류 이름) · wor 3 (이야깃거리 — 이름 유래) · acc 4   selfJudge: 좋은 어려움 — 익숙한 옷 이름의 인물 유래
+facts: [q] 프랑스 곡예사 쥘 레오타르(1838~1870)로 유명해진 옷 <https://en.wikipedia.org/wiki/Leotard>  ||  [q] 레오타르는 이 옷을 maillot 라 불렀다 <https://en.wikipedia.org/wiki/Leotard>  ||  [e] 1859년 11월 12일 시르크 나폴레옹에서 세 개의 그네로 첫 공중그네 곡예 <https://en.wikipedia.org/wiki/Jules_L%C3%A9otard>
+dbCheck: new — 활성·초안 없음
+warn: assert=[처음] frag=[] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### L2-03  [life/L2:fashion/액세서리·소재]  method=나
+Q: 본래 스코틀랜드 말로 능직을 뜻하는 '트윌'이라 불리던 모직물이었는데, 1831년 무렵 런던의 한 상인이 편지 속 낱말을 스코틀랜드 국경 지대를 흐르는 강 이름으로 잘못 읽었다는 이야기가 전합니다. 그 강 이름으로 굳어진 이 거친 모직물은?
+A: 트위드
+E: '해리스 트위드'는 영국 법으로 정해진 이름이라, 아우터헤브리디스 제도 주민이 집에서 손으로 짠 천만 그렇게 부를 수 있습니다.
+H: 이 천으로 지은 노퍽 재킷과 '플러스 포스' 바지는 사냥꾼·골퍼·자전거 타는 사람들에게 사랑받았다.   hintSources: https://en.wikipedia.org/wiki/Tweed_(cloth)
+GEN: dif 3 (관심층 — 직물 이름) · wor 3 (이야깃거리 — 이름 유래) · acc 4   selfJudge: 좋은 어려움 — 유명 소재, 이름의 뜻밖의 유래
+facts: [q] 본래 스코틀랜드 말 tweel(능직 twill)로 불렸다 <https://en.wikipedia.org/wiki/Tweed_(cloth)>  ||  [q] 1831년 무렵 런던 상인 제임스 로크가 tweels 를 트위드강 이름으로 잘못 읽었다는 이야기 <https://en.wikipedia.org/wiki/Tweed_(cloth)>  ||  [q] 트위드강은 스코틀랜드 국경 지대(Borders)를 흐른다 <https://en.wikipedia.org/wiki/Tweed_(cloth)>  ||  [e] 해리스 트위드 법(1993) — 아우터헤브리디스 섬 주민이 집에서 손으로 짠 것 <https://en.wikipedia.org/wiki/Tweed_(cloth)>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+questionWords: 본래 스코틀랜드 말로 능직 트윌 이라 불리던 모직물이었는데 1831년 무렵 런던 상인 편지 낱말 국경 지대 흐르 이름 잘못 읽었다 이야기 전합니다 굳어진 거친 모직물
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-04  [life/L2:fashion/액세서리·소재]  method=나
+Q: 이 여름 밀짚모자는 에콰도르에서 토키야라는 야자 비슷한 풀을 엮어 만듭니다. 그런데 수출 길에 거쳐 가던 곳에서 사 간 사람들이 그곳 이름으로 부르면서 엉뚱한 나라 이름이 붙었습니다. 이 모자는?
+A: 파나마모자   변형: 파나마햇
+E: 1906년 시어도어 루스벨트가 운하 공사 현장에서 이 모자를 쓴 사진이 찍히며 더 유명해졌고, 2012년 엮는 기술이 유네스코 인류무형문화유산에 올랐습니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (방송 — 여름 모자 이름) · wor 3 (이야깃거리 — 이름 유래) · acc 4   selfJudge: 좋은 어려움 — 이름과 원산지가 다르다는 반전
+facts: [q] 에콰도르가 원산지 <https://en.wikipedia.org/wiki/Panama_hat>  ||  [q] 토키야(Carludovica palmata, 야자 비슷한 식물)로 엮는다 <https://en.wikipedia.org/wiki/Panama_hat>  ||  [q] 파나마 지협을 거쳐 팔려 나가 그곳에서 산 사람들 때문에 이름이 붙었다 <https://en.wikipedia.org/wiki/Panama_hat>  ||  [e] 1906년 루스벨트가 운하 현장에서 쓴 사진 <https://en.wikipedia.org/wiki/Panama_hat>  ||  [e] 2012년 12월 5일 유네스코 무형문화유산 <https://en.wikipedia.org/wiki/Panama_hat>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[모자] hint=[]
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-05  [life/L2:fashion/복식사]  method=나
+Q: 1851년 미국의 한 여성 운동가가 자신이 펴내던 절제 운동 신문 '릴리'에 이 옷 만드는 법을 싣고 직접 입고 다녔습니다. 짧은 치마 아래 입는 헐렁한 바지로, 디자이너가 아니라 이 운동가의 성이 이름으로 붙은 것은?
+A: 블루머
+E: 1890년대 자전거 붐 때 고쳐진 형태가 여성의 표준 '자전거 옷'이 되었고, 애니 런던데리는 이 옷을 입고 자전거 세계 일주에 나섰습니다.
+H: 이 운동가는 1851년 엘리자베스 캐디 스탠턴과 수전 앤서니를 서로 소개해 주었다.   hintSources: https://en.wikipedia.org/wiki/Amelia_Bloomer
+GEN: dif 4 (애호가 — 복식사) · wor 3 (이야깃거리 — 블루머 유래) · acc 4   selfJudge: 좋은 어려움 — 익숙한 옷 이름과 여성 참정권 운동의 연결
+facts: [q] 아멜리아 블루머의 이름에서 왔고 그가 디자인한 것은 아니다 <https://en.wikipedia.org/wiki/Bloomers_(clothing)>  ||  [q] 블루머가 펴내던 절제 운동 신문 The Lily 에 만드는 법을 싣고 직접 입었다 <https://en.wikipedia.org/wiki/Bloomers_(clothing)>  ||  [q] 1851년 <https://en.wikipedia.org/wiki/Bloomers_(clothing)>  ||  [e] 1890년대 자전거 붐 때 표준 자전거 옷, 애니 런던데리 세계 일주 <https://en.wikipedia.org/wiki/Bloomers_(clothing)>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+questionWords: 1851년 미국 여성 운동가 자신 펴내던 절제 운동 신문 릴리 만드 법을 싣고 직접 입고 다녔습니다 짧은 치마 아래 입는 헐렁 바지 디자이너 아니라 성이 이름 붙은 것은
+webOpen: TRUE (GEN 난이도 4)
+
+### L2-06  [life/L2:fashion/패션 브랜드·디자이너]  method=나
+Q: 1920년대 프랑스의 한 테니스 선수는 다음 경기를 이기면 악어가죽 가방을 받기로 한 내기가 알려져 미국 언론에서 '악어'라는 별명을 얻었습니다. 1933년 이 선수가 세운 의류 브랜드는?
+A: 라코스테
+E: 1927년 미국인 로버트 조르주가 그려 준 악어 그림을, 그는 경기 전에 입는 흰 블레이저에 수놓아 달고 다녔다고 합니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (방송 — 유명 패션 브랜드) · wor 3 (이야깃거리 — 악어 로고 유래) · acc 4   selfJudge: 경계 — 악어 로고를 아는 사람은 쉽게 떠올려 난이도 3 쪽일 수 있음
+facts: [q] 악어가죽 가방 내기, 1923년 미국 기자가 '악어' 별명을 붙였다 <https://en.wikipedia.org/wiki/Lacoste>  ||  [q] 1933년 라코스테 설립 <https://en.wikipedia.org/wiki/Lacoste>  ||  [e] 1927년 로버트 조르주가 악어 그림을 그렸고 흰 블레이저에 수놓았다 <https://en.wikipedia.org/wiki/Lacoste>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+webOpen: TRUE (selfJudge 경계)
+
+### L2-07  [life/L2:daily-rule/재난·안전 수칙]  method=나
+Q: 나폴레옹 근위대의 외과 군의관 라레는 부상병을 계급이나 국적이 아니라 다친 정도에 따라 치료했습니다. 이 생각에서 이어져 온 것으로, 재난 현장에서 환자를 위급한 정도로 나눠 치료 순서를 정하는 일을 '고르다'라는 뜻의 프랑스어에서 온 말로 무엇이라 할까요?
+A: 트리아지   변형: 중증도 분류
+E: 1983년 미국에서 나온 START 방식은 환자를 즉시(빨강) · 지연(노랑) · 경상(초록)으로 색을 나눠 표시합니다.
+H: 라레는 말이 끄는 빠른 수레로 부상병을 전장에서 곧장 실어 나르는 '날아다니는 구급차'도 만들었다.   hintSources: https://en.wikipedia.org/wiki/Dominique_Jean_Larrey
+GEN: dif 3 (관심층 — 응급 분류) · wor 4 (교양 — 재난 기본 어휘) · acc 5   selfJudge: 좋은 어려움 — 들어 본 용어, 뿌리는 나폴레옹 전쟁이라는 연결
+facts: [q] 라레가 계급·국적과 관계없이 부상 정도에 따라 치료, 현대 트리아지의 토대 <https://en.wikipedia.org/wiki/Triage>  ||  [q] 어원은 고르다·나누다를 뜻하는 프랑스어 trier <https://en.wikipedia.org/wiki/Triage>  ||  [e] 1983년 START 방식, 빨강·노랑·초록 <https://en.wikipedia.org/wiki/Triage>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+questionWords: 나폴레옹 근위대 외과 군의관 라레 부상병 계급이나 국적 아니라 다친 정도 따라 치료했습니다 생각 이어져 재난 현장 환자 위급 나눠 치료 순서 일을 고르다 라는 뜻의 프랑스어 말로 무엇이라 할까요
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-08  [life/L2:daily-rule/재난·안전 수칙]  method=나
+Q: 1931년 미국의 한 보험회사에서 일하던 안전 연구자가 사고 보고서 수천 건을 살핀 끝에, 큰 재해 하나 앞에는 작은 사고와 아찔한 일이 훨씬 많이 쌓여 있다는 경험칙을 내놓았습니다. 그의 이름이 붙은 이 법칙은?
+A: 하인리히 법칙   변형: 하인리히의 법칙
+E: 중대 재해 1건에 경미한 재해 29건, 다치지 않은 사고 300건이 있다는 비율로 흔히 요약되어 '1:29:300'이라고도 부릅니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (방송·뉴스에서 흔히 — 안전 법칙) · wor 4 (시사 — 안전 기본 어휘) · acc 5   selfJudge: 좋은 어려움 — 들어 본 비율의 원래 이름을 묻는다
+facts: [q] 1931년 저서 Industrial Accident Prevention <https://en.wikipedia.org/wiki/Heinrich%27s_law>  ||  [q] 트래블러스 보험회사 직원 <https://en.wikipedia.org/wiki/Heinrich%27s_law>  ||  [q] 감독관이 쓴 사고 보고서 수천 건을 검토 <https://ko.wikipedia.org/wiki/하인리히_법칙>  ||  [e] 1:29:300 비율 <https://ko.wikipedia.org/wiki/하인리히_법칙>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[법칙] hint=[]
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-09  [life/L2:daily-rule/생활 법규]  method=나
+Q: 미국 속어에서 결함 있는 차를 가리키는 말이 이름에 들어 있고, 경제학자 애커로프가 정보 비대칭을 다룬 1970년 논문 제목에도 같은 말이 쓰였습니다. 반복해서 고장 나는 새 차를 교환·환불받게 하는 제도로, 한국에서는 2019년부터 시행된 것을 흔히 무엇이라 할까요?
+A: 레몬법
+E: 이 말이 결함 차를 가리키는 뜻으로 처음 쓰인 것은 1960년 폭스바겐 광고로 알려져 있고, 한국 도입은 BMW 차량 연쇄 화재가 계기가 되었습니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (방송·뉴스 — 소비자 제도) · wor 4 (시사 상식 — 소비자 법) · acc 5   selfJudge: 좋은 어려움 — 생활 법규와 경제학 개념의 연결
+facts: [q] lemon 은 결함 차를 가리키는 미국 속어 <https://en.wikipedia.org/wiki/Lemon_(automobile)>  ||  [q] 애커로프 1970년 논문 The Market for Lemons, 정보 비대칭 <https://en.wikipedia.org/wiki/Lemon_(automobile)>  ||  [q] 한국은 2019년부터 시행, BMW 연쇄 화재가 계기 <https://ko.wikipedia.org/wiki/레몬법>  ||  [e] 결함 차 뜻의 첫 사용은 1960년 폭스바겐 광고 <https://en.wikipedia.org/wiki/Lemon_(automobile)>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-10  [life/L2:daily-rule/생활 법규]  method=나
+Q: 프랑스·독일 같은 나라는 위험에 처한 사람을 돕지 않으면 처벌합니다. 한국은 2008년 응급의료법을 고쳐, 선의로 응급처치를 하다 생긴 손해에 고의나 중대한 과실이 없으면 책임을 묻지 않는 쪽으로 이 원칙을 받아들였습니다. 성경의 비유에서 이름을 딴 이 법을 흔히 무엇이라 할까요?
+A: 착한 사마리아인 법   변형: 선한 사마리아인 법
+E: 이름은 누가복음 10장에서 민족도 종교도 다른 사람이 강도를 만나 다친 이를 도왔다는 이야기에서 왔습니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (뉴스에서 흔히 — 생활 법규) · wor 4 (시사 — 법 기본 상식) · acc 5   selfJudge: 경계 — '성경의 비유' 단서로 아는 사람은 바로 떠올려 3 쪽일 수 있음
+facts: [q] 프랑스·독일은 구조 불이행 처벌 <https://ko.wikipedia.org/wiki/착한_사마리아인_법>  ||  [q] 2008년 응급의료에 관한 법률 개정(제5조의2), 고의·중대한 과실 없으면 민사·상해 형사책임 면제 <https://ko.wikipedia.org/wiki/착한_사마리아인_법>  ||  [q] 한국은 외면을 처벌하지 않고 면책 규정으로 받아들였다 <https://ko.wikipedia.org/wiki/착한_사마리아인_법>  ||  [e] 루가복음 10:29-37 선한 사마리아인 비유, 종교와 민족이 다른 사람을 도움 <https://ko.wikipedia.org/wiki/착한_사마리아인_법>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[한사] hint=[]
+webOpen: TRUE (selfJudge 경계)
+
+### L2-11  [life/L2:daily-rule/우편·번호 체계]  method=나
+Q: 1874년 스위스 베른에서 맺은 조약으로 세워진 국제기구로, 나라와 나라 사이에 편지와 소포를 주고받는 규칙을 맞춥니다. 대한제국이 1900년 정식 가입했고 지금은 국제연합 전문 기구인 이 기구는?
+A: 만국우편연합   변형: UPU
+E: 독일 체신 장관 하인리히 폰 슈테판이 설립을 이끌었고, 조약을 맺은 10월 9일은 세계 우편의 날입니다.
+H: 라인강 위원회와 국제전기통신연합 다음으로 오래된 정부 간 국제기구로 꼽힌다.   hintSources: https://en.wikipedia.org/wiki/Universal_Postal_Union
+GEN: dif 3 (고교 — 국제기구·근대사) · wor 4 (교양 — 국제기구) · acc 5   selfJudge: 좋은 어려움 — 교양 국제기구, 대한제국 근대화와의 연결
+facts: [q] 1874년 베른 조약으로 설립 <https://ko.wikipedia.org/wiki/만국우편연합>  ||  [q] 대한제국 1900년 1월 1일 정식 가입 <https://ko.wikipedia.org/wiki/만국우편연합>  ||  [q] UN 전문 기구 <https://en.wikipedia.org/wiki/Universal_Postal_Union>  ||  [e] 하인리히 폰 슈테판이 창설자 <https://en.wikipedia.org/wiki/Universal_Postal_Union>  ||  [e] 10월 9일 세계 우편의 날 <https://en.wikipedia.org/wiki/Universal_Postal_Union>
+dbCheck: new — 활성·초안 없음 (우정총국은 ban 이라 대신 고름)
+warn: assert=[] frag=[연합] hint=[]
+questionWords: 1874년 스위스 베른 맺은 조약 세워진 국제기구 나라 사이 편지 소포 주고받 규칙 맞춥니다 대한제국 1900년 정식 가입했고 지금 국제연합 전문 기구인 기구
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-12  [life/L2:drinks/와인]  method=나
+Q: 17세기 후반 포르투갈의 한 항구 도시 이름이 붙은 와인입니다. 1703년 메수엔 조약 뒤 낮은 관세로 영국에 많이 팔려 나갔는데, 발효 중간에 브랜디를 넣어 단맛을 남기고 도수를 높인 이 와인은?
+A: 포트와인   변형: 포트
+E: 포도는 도루강 계곡에서 나며, 이 계곡은 포트와인 생산지로 법으로 정해 보호하는 지역입니다.
+H: 이 와인은 하구 건너편 빌라 노바 드 가이아의 창고에서 숙성되었고, 예전엔 '하벨루' 배로 강을 따라 실어 날랐다.   hintSources: https://en.wikipedia.org/wiki/Port_wine
+GEN: dif 3 (관심층 — 와인 종류) · wor 4 (교양 — 주류 기본 어휘) · acc 4   selfJudge: 좋은 어려움 — 유명한 와인, 역사와 제조법의 연결
+facts: [q] 17세기 후반 항구 도시 포르투에서 이름이 왔다 <https://en.wikipedia.org/wiki/Port_wine>  ||  [q] 1703년 메수엔 조약 뒤 낮은 관세로 영국에 수입 <https://en.wikipedia.org/wiki/Port_wine>  ||  [q] 브랜디로 발효를 멈춰 당분을 남기고 도수를 높인다 <https://en.wikipedia.org/wiki/Port_wine>  ||  [e] 도루 계곡이 보호 산지로 지정 <https://en.wikipedia.org/wiki/Port_wine>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[와인] hint=[]
+questionWords: 17세기 후반 포르투갈 항구 도시 이름 붙은 와인입니다 1703년 메수엔 조약 낮은 관세 영국 많이 팔려 나갔는데 발효 중간 브랜디 넣어 단맛 남기고 도수 높인 와인
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-13  [life/L2:drinks/위스키·증류주]  method=나
+Q: 스코틀랜드 아일라섬의 여러 증류소는 싹 틔운 보리를 말릴 때 이것을 태워 위스키에 특유의 스모키한 향을 입힙니다. 습지에서 식물이 다 썩지 않고 쌓여 생긴 이 연료는?
+A: 피트   변형: 이탄
+E: 이 향의 세기는 페놀 함량(ppm)으로 나타내는데, 하이랜드 위스키는 30ppm 안팎, 아일라 위스키는 50ppm 안팎까지 간다고 합니다.
+H: 덴마크의 '톨룬 인간'처럼, 이것이 쌓인 산성 늪에서는 2천 년도 넘은 시신이 썩지 않고 나오기도 한다.   hintSources: https://en.wikipedia.org/wiki/Peat
+GEN: dif 4 (애호가 — 위스키 제조) · wor 3 (이야깃거리 — 위스키 향) · acc 4   selfJudge: 좋은 어려움 — 들어 본 위스키 향과 연료·지질의 연결
+facts: [q] 아일라 증류소들이 피트를 태워 맥아를 말려 스모키한 향 <https://en.wikipedia.org/wiki/Peat>  ||  [q] 피트는 습지에 덜 분해된 식물이 쌓인 것 <https://en.wikipedia.org/wiki/Peat>  ||  [e] 페놀 ppm — 하이랜드 30, 아일라 50 <https://en.wikipedia.org/wiki/Peat>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+questionWords: 스코틀랜드 아일라섬 여러 증류소 틔운 보리 말릴 이것 태워 위스키 특유 스모키 향을 입힙니다 습지 식물 썩지 않고 쌓여 생긴 연료
+webOpen: TRUE (GEN 난이도 4)
+
+### L2-14  [life/L2:drinks/맥주]  method=나
+Q: 1842년 보헤미아의 한 도시 양조장이 바이에른 출신 양조사 요제프 그롤을 불러 맑은 황금빛 라거를 처음 빚었습니다. 그 도시 이름에서 이름이 온 이 맥주 갈래는?
+A: 필스너
+E: 그 맑은 맛은 그 도시의 단물과 근처 자테츠의 홉, 단백질이 적은 맥아 덕분이었다고 설명됩니다. 그 첫 맥주가 오늘날의 '필스너 우르켈'입니다.
+H: 그 도시의 체코식 이름은 '플젠'이며, 첫 맥주는 1842년 10월 5일에 빚어졌다.   hintSources: https://en.wikipedia.org/wiki/Pilsner
+GEN: dif 3 (관심층 — 맥주 갈래) · wor 4 (분야 기본 어휘 — 맥주 종류) · acc 4   selfJudge: 좋은 어려움 — 흔한 맥주 갈래의 뿌리
+facts: [q] 보헤미아 도시 플젠(필젠)에서 이름 <https://en.wikipedia.org/wiki/Pilsner>  ||  [q] 바이에른 양조사 요제프 그롤이 1842년 첫 페일 라거 <https://en.wikipedia.org/wiki/Pilsner>  ||  [e] 단물·자츠 홉·저단백 맥아 <https://en.wikipedia.org/wiki/Pilsner>  ||  [e] 첫 맥주가 필스너 우르켈 <https://en.wikipedia.org/wiki/Pilsner>
+dbCheck: new — 활성·초안 없음
+warn: assert=[처음] frag=[] hint=[explain]
+questionWords: 1842년 보헤미아 도시 양조장 바이에른 출신 양조사 요제프 그롤 불러 맑은 황금빛 라거 처음 빚었습니다 이름 맥주 갈래
+webOpen: TRUE (단정어 처음)
+
+### L2-15  [life/L2:drinks/맥주]  method=나
+Q: 1951년 아일랜드에서 사냥을 하던 한 맥주 회사 사장이 유럽에서 가장 빠른 사냥새가 무엇인지 따지다가, 이를 가려 줄 책이 없다는 데서 세계 기록책을 떠올렸습니다. 그가 이끈, 흑맥주 스타우트로 유명한 회사는?
+A: 기네스   originalTitle: Guinness
+E: 회사는 처음에 기록책 약 천 부를 영국과 아일랜드의 펍에 공짜로 나눠 주었고, 반응이 좋자 1955년 첫 판매본을 냈습니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (방송 — 기네스북 유래) · wor 3 (이야깃거리 — 기네스북 기원) · acc 4   selfJudge: 좋은 어려움 — 유명한 두 대상의 몰랐던 연결
+facts: [q] 1951년 11월 기네스 양조 사장 휴 비버가 아일랜드 웩스퍼드 사냥에서 가장 빠른 사냥새를 두고 논쟁 <https://en.wikipedia.org/wiki/Guinness_World_Records>  ||  [q] 논쟁을 가릴 책이 없다는 것을 깨달음 <https://en.wikipedia.org/wiki/Guinness_World_Records>  ||  [e] 약 천 부를 펍에 무료 배포, 1955년 8월 첫 판 <https://en.wikipedia.org/wiki/Guinness_World_Records>
+dbCheck: new — 활성·초안 없음 (기네스북 활성 없음 확인은 정답 '기네스' 기준)
+warn: assert=[처음] frag=[] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### L2-16  [life/L2:drinks/전통주]  method=나
+Q: 개성 지방에서는 '아락주', 평안북도에서는 '아랑주'라 부르던 흔적이 남아 있는 우리 술입니다. 이 이름들은 증류를 뜻하는 아랍어 '아라크'에서 왔다고 설명되는데, 이 술은?
+A: 소주
+E: 불이 잘 붙는다 해서 '화주', 이슬처럼 한 방울씩 모은다 해서 '노주'라고도 불렸습니다.
+H: 오늘날 팔리는 대부분은 당밀·타피오카로 얻은 주정에 물을 타서 만든 희석식이다.   hintSources: https://ko.wikipedia.org/wiki/소주
+GEN: dif 3 (고교 한국사 — 소주 원나라 유래) · wor 3 (이야깃거리 — 소주 어원) · acc 4   selfJudge: 좋은 어려움 — 가장 익숙한 술의 뜻밖의 기원
+facts: [q] 개성 '아락주', 평북 '아랑주'에 흔적 <https://ko.wikipedia.org/wiki/소주>  ||  [q] 증류를 뜻하는 아랍어 아라크에서 온 이름 <https://ko.wikipedia.org/wiki/소주>  ||  [e] 화주·노주라는 별칭 <https://ko.wikipedia.org/wiki/소주>
+dbCheck: new — '소주' 활성 없음 (안동소주 2845 는 다른 답·다른 지식)
+warn: assert=[] frag=[] hint=[]
+questionWords: 개성 지방 아락주 평안북도 아랑주 부르던 흔적 남아 있는 우리 술입니다 이름들 증류 아랍어 아라크 에서 왔다고 설명되는데 술은
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-17  [life/L2:drinks/전통주]  method=나
+Q: 조선 숙종 때 궁중 음식을 맡던 사옹원의 참봉 최국준이 처음 빚었다고 전합니다. 경주 최부잣집에서 대대로 토종 찹쌀로 빚어 온 이 술은?
+A: 교동법주   변형: 경주 교동법주 | 경주법주
+E: 1986년 국가무형문화재로 지정되었으며, 물과 누룩, 쌀로만 빚는 곡주입니다.
+H: 집 마당의 우물물을 끓여 식혀 빚으며, 다 되기까지 100일쯤 걸리고 도수는 16~18도다.   hintSources: https://ko.wikipedia.org/wiki/경주_교동법주
+GEN: dif 4 (애호가 — 전통주) · wor 3 (이야깃거리 — 명가 전통주) · acc 4   selfJudge: 경계 — 술 자체 인지도는 두견주·문배주 급으로 중간 — 마이너 쪽에 가까울 수 있음
+facts: [q] 숙종 때 사옹원 참봉 최국준이 처음 빚음 <https://ko.wikipedia.org/wiki/경주_교동법주>  ||  [q] 경주 최부잣집에서 대대로 빚음 <https://ko.wikipedia.org/wiki/경주_교동법주>  ||  [q] 주원료 토종 찹쌀 <https://ko.wikipedia.org/wiki/경주_교동법주>  ||  [e] 1986년 국가무형문화재 지정, 물·누룩·쌀의 곡주 <https://ko.wikipedia.org/wiki/경주_교동법주>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+questionWords: 조선 숙종 궁중 음식 맡던 사옹원 참봉 최국준 처음 빚었다고 전합니다 경주 최부잣집 대대 토종 찹쌀 빚어 술은
+webOpen: TRUE (selfJudge 경계, GEN 난이도 4)
+
+### L2-18  [life/L2:drinks/커피·차]  method=나
+Q: 이 커피의 이름은 두건 달린 갈색 수도복을 입던 한 가톨릭 수도회에서 왔습니다. 두건이 아니라 수도복의 색을 빗댄 것이라고 설명되는, 에스프레소에 우유 거품을 얹은 이탈리아 커피는?
+A: 카푸치노
+E: 18세기 후반 합스부르크 제국의 빈 커피하우스에서 크림을 조금 넣은 갈색 커피를 '카푸치너'라 부른 것이 앞선 형태로 꼽힙니다.
+H: 이 수도회는 1525년 프란치스코회에서 갈라져 나왔고, 로마의 한 성당 지하에는 수도사 4천여 명의 뼈로 꾸민 납골당이 있다.   hintSources: https://en.wikipedia.org/wiki/Order_of_Friars_Minor_Capuchin
+GEN: dif 3 (관심층 — 커피 이름 어원) · wor 3 (이야깃거리 — 커피 이름 유래) · acc 4   selfJudge: 경계 — '우유 거품을 얹은 이탈리아 커피' 한정어로 라테와 갈리지만 다소 쉬울 수 있음
+facts: [q] 카푸친 수도회 수도복의 색에서 이름, 두건이 아니라 색 <https://en.wikipedia.org/wiki/Cappuccino>  ||  [e] 빈 커피하우스의 Kapuziner, 1700년대 후반, 크림 조금 넣은 갈색 커피 <https://en.wikipedia.org/wiki/Cappuccino>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+questionWords: 커피 이름 두건 달린 갈색 수도복 입던 가톨릭 수도회 왔습니다 아니라 색을 빗댄 것이라고 설명되 에스프레소 우유 거품 얹은 이탈리아
+webOpen: TRUE (selfJudge 경계)
+
+### L2-19  [life/L2:world-food/아시아 음식]  method=나
+Q: 16세기 나가사키에 온 포르투갈 선교사들에게서 밀가루와 달걀 반죽을 입혀 튀기는 법을 배운 데서 시작되었습니다. 이름이 사순절 같은 금식 기간을 가리키는 라틴어에서 왔다는 설명이 있는 일본 음식은?
+A: 덴푸라   변형: 텐푸라
+E: 포르투갈에서 금식 기간에 먹던, 껍질콩에 반죽을 입혀 튀긴 '페이시뉴스 다 오르타'가 그 조상으로 꼽힙니다.
+H: 에도 시대에는 강가 생선 시장의 노점에서 꼬치에 꿰어 소스에 찍어 먹던 간편한 음식이었다.   hintSources: https://en.wikipedia.org/wiki/Tempura
+GEN: dif 3 (관심 있는 사람 — 음식 유래) · wor 3 (이야깃거리 — 덴푸라 어원) · acc 4   selfJudge: 좋은 어려움 — 유명 음식의 뜻밖의 기원
+facts: [q] 16세기 포르투갈 선교사에게서 나가사키에서 배움 <https://en.wikipedia.org/wiki/Tempura>  ||  [q] 라틴어 tempora(금식 기간 — 사순절·사계재일)에서 왔다는 설명 <https://en.wikipedia.org/wiki/Tempura>  ||  [e] 포르투갈의 peixinhos da horta 가 조상, 껍질콩 튀김 <https://en.wikipedia.org/wiki/Tempura>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+questionWords: 16세기 나가사키 포르투갈 선교사들 밀가루 달걀 반죽 입혀 튀기 법을 배운 데서 시작되었습니다 이름 사순절 같은 금식 기간 가리키 라틴어 왔다 설명 있는 일본 음식
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-20  [life/L2:world-food/아시아 음식]  method=나
+Q: 청나라 때 쓰촨성 청두에서 천씨 부부가 연 작은 식당의 부인이 처음 만들었다고 합니다. 얼굴이 얽은 이 부인의 별명이 그대로 이름이 된 두부 요리는?
+A: 마파두부
+E: 그 식당은 1862년 또는 1874년에 문을 열었다고 전하며, 처음에는 고추·돼지고기·두부·쓰촨 후추로 만들었습니다.
+H: (힌트 없음 — 난이도 1)
+GEN: dif 1 (일상 — 중국 요리) · wor 3 (이야깃거리 — 요리 이름 유래) · acc 4   selfJudge: 좋은 어려움 — 흔한 요리 이름의 유래
+facts: [q] 청두의 천씨 부부가 연 식당, 천 부인이 처음 만듦 <https://en.wikipedia.org/wiki/Mapo_tofu>  ||  [q] 마(麻)=곰보 자국, 파(婆)=할머니 — 얽은 얼굴의 노부인이라는 별명 <https://en.wikipedia.org/wiki/Mapo_tofu>  ||  [e] 초기에는 고추·돼지고기·두부·쓰촨 후추 <https://en.wikipedia.org/wiki/Mapo_tofu>
+dbCheck: new — 활성·초안 없음 (두부 2585·3926 은 다른 답)
+warn: assert=[처음,처음] frag=[두부] hint=[]
+webOpen: TRUE (단정어 처음/처음)
+
+### L2-21  [life/L2:world-food/아시아 음식]  method=가 pairedWith=2582
+Q: 1900년대 초 베트남 북부 남딘 지방에서 지금의 모습이 나왔다고 하는 소고기 국수입니다. 서양 자료는 흔히 이 이름이 프랑스의 고기 스튜 '포토푀'에서 왔다고 설명하는데, 이 베트남 음식은?
+A: 쌀국수   변형: 퍼
+E: 소고기를 먹는 일은 프랑스 식민 지배 때 늘었다고 하며, 중국 국수 이름에서 왔다는 설도 있어 기원은 아직 논란입니다.
+H: (힌트 없음 — 난이도 1)
+GEN: dif 1 (일상 — 베트남 쌀국수) · wor 3 (이야깃거리 — 이름 유래) · acc 4   selfJudge: 경계 — 정답 표기가 쌀국수/퍼로 갈림 — 변형으로 받음
+facts: [q] 1900~1907년 북부 베트남 남딘성에서 현대적 형태 <https://en.wikipedia.org/wiki/Pho>  ||  [q] 서양 자료는 포토푀에서 왔다고 설명 <https://en.wikipedia.org/wiki/Pho>  ||  [e] 소고기 수요는 프랑스 식민 지배 때 <https://en.wikipedia.org/wiki/Pho>  ||  [e] 중국 국수 이름 설, 기원 논란 <https://en.wikipedia.org/wiki/Pho>
+dbCheck: pair-or-different — 2582 와 같은 답, 다른 지식이라 (가)로 씀   pairCheck: 1회차 2582 는 소뼈 국물·납작한 면·향채(생김새)를 묻고 해설 미상 — 2회차는 기원 지역·이름 어원설이라 다른 사실
+warn: assert=[] frag=[국수] hint=[]
+  sameAnswerActive #2582 (dif 1): Q: 소뼈를 오래 끓인 국물에 납작한 면을 말고 향채를 얹어 먹는 베트남의 국수 요리는? | E: 면이 밀이 아니라 쌀로 만들어졌다는 점이 이름이 되었습니다. | H: 
+webOpen: TRUE (selfJudge 경계, dbCheck(같은 정답 활성), 2회차)
+
+### L2-22  [life/L2:world-food/유럽 음식]  method=나
+Q: 1838~39년 무렵 오스트리아 출신 아우구스트 창이 파리에 빈식 빵집을 열고 고향의 초승달 모양 빵 '키펄'을 팔았습니다. 이를 따라 만든 프랑스 빵집들이 모양을 따서 새 이름을 붙인 빵은?
+A: 크루아상
+E: 1683년 빈 포위 때 오스만 군을 물리친 기념으로 만들었다는 이야기가 널리 퍼져 있지만, 그때의 기록은 없어 전설로 봅니다.
+H: (힌트 없음 — 난이도 1)
+GEN: dif 1 (일상 — 빵 이름) · wor 3 (이야깃거리 — 빵 유래) · acc 4   selfJudge: 좋은 어려움 — 흔한 빵의 뜻밖의 국적
+facts: [q] 오스트리아 키펄이 전신, 초승달 모양 <https://en.wikipedia.org/wiki/Croissant>  ||  [q] 아우구스트 창이 1838 또는 1839년 파리에 빈식 빵집 <https://en.wikipedia.org/wiki/Croissant>  ||  [q] 프랑스 모방자들이 초승달 모양에서 이름 <https://en.wikipedia.org/wiki/Croissant>  ||  [e] 1683년 빈 포위 전설은 당대 기록 없음 <https://en.wikipedia.org/wiki/Croissant>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-23  [life/L2:world-food/조리법·조리 도구]  method=나
+Q: 얕은 질그릇 바닥에 높은 원뿔 모양 뚜껑을 덮는 냄비로, 뚜껑에 맺힌 수증기가 다시 냄비 안으로 흘러내려 적은 물로도 요리할 수 있습니다. 모로코를 비롯한 북아프리카에서 쓰는 이 냄비는?
+A: 타진   변형: 타진 냄비
+E: 이름은 '프라이팬'을 뜻하는 고대 그리스어가 아랍어를 거쳐 온 것으로, 이 냄비로 만든 요리도 같은 이름으로 부릅니다.
+H: 튀니지에서는 뚜껑 없는 그릇으로 만드는 전혀 다른 요리를 같은 이름으로 부른다.   hintSources: https://en.wikipedia.org/wiki/Tajine
+GEN: dif 3 (관심층 — 세계 조리 도구) · wor 3 (이야깃거리 — 북아프리카 음식) · acc 4   selfJudge: 좋은 어려움 — 모양은 알 만한 도구, 원리와 이름
+facts: [q] 얕은 원형 질그릇과 높은 원뿔·돔 뚜껑 <https://en.wikipedia.org/wiki/Tajine>  ||  [q] 뚜껑이 응결된 물을 되돌려 적은 물로 요리 <https://en.wikipedia.org/wiki/Tajine>  ||  [q] 모로코·북아프리카(마그레브) <https://en.wikipedia.org/wiki/Tajine>  ||  [e] 그리스어 τάγηνον(프라이팬) → 아랍어, 그릇과 요리 둘 다 가리킴 <https://en.wikipedia.org/wiki/Tajine>
+dbCheck: new — 활성·초안 없음 (마이야르 반응은 2159 와 같은 지식이라 버리고 대신 고름)
+warn: assert=[] frag=[] hint=[explain]
+questionWords: 얕은 질그릇 바닥 높은 원뿔 모양 뚜껑 덮는 냄비 맺힌 수증기 다시 흘러내려 적은 물로 요리할 있습니다 모로코 비롯 북아프리카 쓰는
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-24  [life/L2:world-food/향신료·재료]  method=나
+Q: 인도네시아 반다 제도가 원산지인 향신료로, 네덜란드 동인도회사가 이를 독점하려고 1621년 반다 사람들과 피비린내 나는 싸움을 벌였습니다. 잉글랜드가 반다 제도의 작은 섬 런을 넘겨주고 뉴암스테르담을 얻은 일로도 이어진 이 향신료는?
+A: 육두구   변형: 넛맥
+E: 같은 열매에서 씨를 감싼 붉은 껍질은 따로 '메이스'라는 향신료가 됩니다.
+H: 카리브해의 섬나라 그레나다 국기에는 쪼개진 이 열매 그림이 들어 있다.   hintSources: https://en.wikipedia.org/wiki/Nutmeg
+GEN: dif 4 (대학 교양 — 향신료 무역사) · wor 4 (교양 — 대항해 시대) · acc 4   selfJudge: 좋은 어려움 — 향신료와 뉴욕의 몰랐던 연결
+facts: [q] 육두구 나무의 원산지는 반다 제도 <https://en.wikipedia.org/wiki/Nutmeg>  ||  [q] VOC가 1621년 반다 사람들과 유혈 전투 <https://en.wikipedia.org/wiki/Nutmeg>  ||  [q] 영국이 런 섬을 넘기고 뉴암스테르담을 얻음 <https://en.wikipedia.org/wiki/Nutmeg>  ||  [e] 메이스는 씨를 싼 붉은 가종피 <https://en.wikipedia.org/wiki/Nutmeg>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+questionWords: 인도네시아 반다 제도 원산지인 향신료 네덜란드 동인도회사 이를 독점하려고 1621년 사람들 피비린내 나는 싸움 벌였습니다 잉글랜드 작은 런을 넘겨주고 뉴암스테르담 얻은 일로 이어진
+webOpen: TRUE (GEN 난이도 4)
+
+### L2-25  [life/L2:world-food/아메리카 음식]  method=나
+Q: 1924년, 금주법을 피해 국경을 넘어온 미국 손님들로 붐비던 멕시코 티후아나의 한 식당에서 이탈리아 이민자인 주인이 남은 재료로 만들었다고 전합니다. 주인의 이름이 붙은 이 샐러드는?
+A: 시저 샐러드
+E: 처음에는 멸치(안초비)를 넣지 않고 우스터소스로만 맛을 냈다고 그의 딸이 전합니다.
+H: 처음엔 손님 식탁 옆에서 직접 버무려 냈고, 요리 연구가 줄리아 차일드도 어릴 적 그 식당에서 맛보았다고 한다.   hintSources: https://en.wikipedia.org/wiki/Caesar_salad
+GEN: dif 3 (관심 있는 사람 — 음식 유래) · wor 3 (이야깃거리 — 시저 샐러드) · acc 4   selfJudge: 좋은 어려움 — 흔한 음식의 뜻밖의 기원(로마 황제가 아님)
+facts: [q] 이탈리아 이민자 시저 카르디니, 티후아나 식당 <https://en.wikipedia.org/wiki/Caesar_salad>  ||  [q] 1924년 7월 4일 붐빌 때 남은 재료로 <https://en.wikipedia.org/wiki/Caesar_salad>  ||  [q] 금주법을 피하려는 미국 손님 <https://en.wikipedia.org/wiki/Caesar_salad>  ||  [e] 원래 안초비 없이 우스터소스 <https://en.wikipedia.org/wiki/Caesar_salad>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[샐러드] hint=[]
+questionWords: 1924년 금주법 피해 국경 넘어온 미국 손님들 붐비던 멕시코 티후아나 식당 이탈리아 이민자인 주인 남은 재료 만들었다고 전합니다 이름 붙은 샐러드
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-26  [life/L2:world-language/외국어 표현]  method=나
+Q: 로마 시인 호라티우스의 '송가' 1권 11번 시에 나오는 구절로, 바로 뒤에 '내일은 되도록 믿지 말라'는 말이 이어집니다. 영화 '죽은 시인의 사회'의 키팅 선생 대사로 널리 알려진 이 라틴어 구절은?
+A: 카르페 디엠
+E: '카르페'는 본래 열매나 꽃을 '따다'라는 뜻이라, 익은 열매를 따듯 하루를 거두라는 농사의 비유로 읽기도 합니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (방송 — 유명 라틴어 구절) · wor 4 (교양 — 명구) · acc 3   selfJudge: 경계 — '죽은 시인의 사회' 단서가 강해 3 쪽으로 매겨질 수 있음
+facts: [q] 호라티우스 송가 1권 11번 <https://en.wikipedia.org/wiki/Carpe_diem>  ||  [q] 뒤 구절 quam minimum credula postero (내일을 되도록 믿지 말라) <https://en.wikipedia.org/wiki/Carpe_diem>  ||  [q] 죽은 시인의 사회 키팅 대사 <https://en.wikipedia.org/wiki/Carpe_diem>  ||  [e] carpō = 따다, 익은 열매를 거두는 농사 비유 <https://en.wikipedia.org/wiki/Carpe_diem>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+webOpen: TRUE (selfJudge 경계)
+
+### L2-27  [life/L2:world-language/외국어 표현]  method=나
+Q: 1808년 프랑스의 레비 공작이 쓴 '잠언집'에서 비롯되었다고 흔히 알려진 말입니다. 발자크는 소설 '골짜기의 백합'에서 젊은이에게 준 긴 조언을 이 옛말 한마디로 줄였는데, 신분에 따르는 의무를 이르는 이 프랑스어 표현은?
+A: 노블레스 오블리주
+E: '골짜기의 백합'은 1835년에 쓰여 이듬해 나왔고, 옥스퍼드 영어 사전도 레비 공작의 1808년 책을 이 말의 출처로 듭니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (방송 — 흔한 외래 표현) · wor 4 (교양 — 사회 윤리 어휘) · acc 3   selfJudge: 경계 — 마지막 뜻풀이 한정어 때문에 아는 사람은 바로 풀어 3 쪽일 수 있음
+facts: [q] 레비 공작의 1808년 Maximes 에서 비롯 <https://en.wikipedia.org/wiki/Noblesse_oblige>  ||  [q] 발자크 '골짜기의 백합'에서 조언을 이 옛말로 요약 <https://en.wikipedia.org/wiki/Noblesse_oblige>  ||  [e] 1835년 집필, 1836년 출판 <https://en.wikipedia.org/wiki/Noblesse_oblige>  ||  [e] OED 가 이 책을 출처로 든다 <https://en.wikipedia.org/wiki/Noblesse_oblige>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+webOpen: TRUE (selfJudge 경계)
+
+### L2-28  [life/L2:world-language/라틴어·그리스어 어근]  method=나
+Q: 경제를 뜻하는 영어 economy와 생태학을 뜻하는 ecology는 앞부분이 같은 그리스어 낱말 '오이코스'에서 왔습니다. 이 낱말은 본래 무엇을 뜻할까요?
+A: 집   변형: 가정
+E: 생태학이라는 말은 1866년 독일 동물학자 에른스트 헤켈이 만들었고, 경제는 '집'에 '관리하다'가 붙은 데서 나왔습니다.
+H: 교회 일치 운동을 뜻하는 '에큐메니즘'도 '사람이 사는 온 세상'을 뜻하는 같은 뿌리의 그리스어에서 왔다.   hintSources: https://en.wikipedia.org/wiki/Ecumenism
+GEN: dif 4 (대학 교양 — 어원) · wor 4 (교양 — 낱말 어원) · acc 3   selfJudge: 좋은 어려움 — 익숙한 두 낱말의 몰랐던 연결 (4003 '사랑' 과 같은 꼴)
+facts: [q] ecology 는 oikos(집) + -logia <https://en.wikipedia.org/wiki/Ecology>  ||  [q] economy 의 앞부분 oikos 는 house <https://en.wikipedia.org/wiki/Economy>  ||  [e] 1866년 헤켈이 만든 말 <https://en.wikipedia.org/wiki/Ecology>  ||  [e] economy = 집 + 관리하다 <https://en.wikipedia.org/wiki/Economy>
+dbCheck: pair-or-different — 활성 807(바둑의 집)과 답만 같고 지식이 전혀 다름(D2)
+warn: assert=[] frag=[] hint=[]
+  sameAnswerActive #807 (dif 2): Q: 바둑에서 자기 돌로 둘러싸 차지한 빈 교차점을 무엇이라 합니까? 이것을 더 많이 차지한 쪽이 이깁니다. | E: 돌의 개수가 아니라 둘러싼 빈 자리를 세는 것이 바둑 계산의 핵심입니다. | H: 
+questionWords: 경제 영어 economy 생태학 ecology 앞부분 같은 그리스어 낱말 오이코스 에서 왔습니다 본래 무엇 뜻할까요
+webOpen: TRUE (dbCheck(같은 정답 활성), GEN 난이도 4)
+
+### L2-29  [life/L2:world-language/문자 체계]  method=나
+Q: 프랑스의 한 소년이 1824년 15살에 만든 체계로, 군인들이 불빛 없이 소리 내지 않고 연락하는 방법으로 검토되었던 샤를 바르비에의 '밤 글쓰기'를 바탕으로 했습니다. 이 소년의 이름으로도 불리는 이 문자는?
+A: 점자   변형: 브라유 점자
+E: 브라유는 1829년 이 체계를 책으로 펴냈고, 한글 점자는 1926년 박두성이 발표한 '훈맹정음'을 바탕으로 합니다.
+H: (힌트 없음 — 난이도 2)
+GEN: dif 2 (중학 — 점자 유래) · wor 4 (교양 — 점자) · acc 3   selfJudge: 경계 — '15살 소년'만으로 루이 브라유를 아는 사람은 바로 풀 수 있어 3 쪽 가능
+facts: [q] 브라유가 15세인 1824년에 만듦 <https://en.wikipedia.org/wiki/Braille>  ||  [q] 바르비에의 night writing 바탕, 군인이 불빛 없이 조용히 소통하는 수단으로 검토 <https://en.wikipedia.org/wiki/Braille>  ||  [e] 1829년 출판 <https://en.wikipedia.org/wiki/Braille>  ||  [e] 1926년 박두성 훈맹정음이 한글 점자의 바탕 <https://ko.wikipedia.org/wiki/한글_점자>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+webOpen: TRUE (selfJudge 경계)
+
+### L2-30  [life/L2:world-language/문자 체계]  method=나
+Q: 무선 통신 기술 블루투스의 로고는 10세기 덴마크 왕 하랄의 머리글자 H와 B에 해당하는 두 글자를 하나로 합친 모양입니다. 바이킹 시대 북유럽에서 쓰던 이 문자는?
+A: 룬 문자   변형: 룬
+E: 앞 여섯 글자의 소리를 따 '푸서크'라고도 부르며, 24자이던 옛 룬은 바이킹 시대에 16자로 줄었습니다.
+H: 하랄 왕이 부모를 기려 덴마크 옐링에 세운 큰 비석에도 이 글자로 덴마크의 기독교 개종이 새겨져 있다.   hintSources: https://en.wikipedia.org/wiki/Jelling_stones
+GEN: dif 3 (관심 있는 사람 — 문자사) · wor 3 (이야깃거리 — 블루투스 로고) · acc 3   selfJudge: 좋은 어려움 — 매일 보는 로고와 고대 문자의 연결
+facts: [q] 블루투스 로고는 하갈(H)·비야르칸(B) 두 룬을 합친 결합 룬 <https://en.wikipedia.org/wiki/Bluetooth>  ||  [q] 10세기 덴마크 왕 하랄 블루투스 <https://en.wikipedia.org/wiki/Bluetooth>  ||  [e] F U Þ A R K 순서에서 푸서크 <https://en.wikipedia.org/wiki/Runes>  ||  [e] 고대 푸서크 24자, 신 푸서크 16자 <https://en.wikipedia.org/wiki/Runes>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[문자] hint=[]
+questionWords: 무선 통신 기술 블루투스 로고 10세기 덴마크 하랄 머리글자 H와 B에 해당 글자 하나 합친 모양입니다 바이킹 시대 북유럽 쓰던 문자
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-31  [life/L2:world-language/세계 언어 분포]  method=나
+Q: 이 언어의 이름은 '해안'을 뜻하는 아랍어에서 왔고, 어휘의 40%쯤이 아랍어에서 빌린 말입니다. 문법 뼈대는 반투어 계통이며 케냐·탄자니아의 공용어인 이 언어는?
+A: 스와힐리어
+E: 아프리카 연합의 실무 언어 가운데 하나이기도 합니다.
+H: 영어 '사파리'도 '여행'을 뜻하는 이 언어 낱말이 1850년대 탐험가 리처드 버턴을 거쳐 건너간 것이다.   hintSources: https://en.wikipedia.org/wiki/Safari
+GEN: dif 3 (고교 세계지리 — 언어 분포) · wor 4 (교양 — 세계 언어) · acc 3   selfJudge: 좋은 어려움 — 알려진 언어의 뜻밖의 아랍어 연결
+facts: [q] 이름은 해안을 뜻하는 아랍어에서 <https://en.wikipedia.org/wiki/Swahili_language>  ||  [q] 어휘 약 40% 아랍어 차용 <https://en.wikipedia.org/wiki/Swahili_language>  ||  [q] 반투어 <https://en.wikipedia.org/wiki/Swahili_language>  ||  [q] 케냐·탄자니아 공용어 <https://en.wikipedia.org/wiki/Swahili_language>  ||  [e] 아프리카 연합 실무 언어 <https://en.wikipedia.org/wiki/Swahili_language>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[] hint=[]
+questionWords: 언어 이름 해안 아랍어 왔고 어휘 40%쯤 빌린 말입니다 문법 뼈대 반투어 계통 케냐 탄자니아 공용어인
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### L2-32  [life/L2:world-language/세계 언어 분포]  method=나
+Q: 1976년 남아프리카 공화국 소웨토에서 학생들이 들고일어났습니다. 흑인 학교 과목의 절반을 이 언어로 가르치라는 정부 결정에 맞선 것이었는데, 네덜란드어에서 갈라져 나온 이 언어는?
+A: 아프리칸스어
+E: 이름은 네덜란드어로 '아프리카의'라는 뜻이고, 예전에는 '케이프 네덜란드어'라 불렸습니다. 지금도 네덜란드어와 글로는 상당히 통합니다.
+H: 1975년 웨스턴케이프주 팔의 언덕에, 이 언어가 공용어로 인정된 지 50년을 기리는 기념비가 세워졌다.   hintSources: https://en.wikipedia.org/wiki/Afrikaans_Language_Monument
+GEN: dif 4 (대학 교양 — 남아공 현대사) · wor 4 (교양 — 아파르트헤이트사) · acc 3   selfJudge: 좋은 어려움 — 들어 본 언어와 역사 사건의 연결
+facts: [q] 1976년 소웨토 봉기 — 비백인 학교 과목 절반을 아프리칸스어로 가르치라는 결정에 반대 <https://en.wikipedia.org/wiki/Afrikaans>  ||  [q] 네덜란드 방언에서 나온 언어 <https://en.wikipedia.org/wiki/Afrikaans>  ||  [e] 이름은 네덜란드어 Afrikaansch(아프리카의), 옛 이름 Cape Dutch <https://en.wikipedia.org/wiki/Afrikaans>  ||  [e] 특히 글에서 네덜란드어와 상호 이해도 높음 <https://en.wikipedia.org/wiki/Afrikaans>
+dbCheck: new — 활성·초안 없음
+warn: assert=[] frag=[아프리] hint=[]
+questionWords: 1976년 남아프리카 공화국 소웨토 학생들 들고일어났습니다 흑인 학교 과목 절반 언어 가르치 정부 결정 맞선 것이었는데 네덜란드어 갈라져 나온
+webOpen: TRUE (GEN 난이도 4)
+
+### P2-01  [life/L2:brands/로고·상징]  method=나
+Q: 1898년 프랑스의 한 타이어 회사 포스터에는 타이어를 쌓아 만든 사람이 못과 깨진 유리가 담긴 잔을 들고 건배하는 모습이 실렸습니다. 호라티우스의 시에 나오는 '이제 마실 때다'라는 라틴어 구절에서 따온 이 마스코트의 공식 이름은?
+A: 비벤덤
+E: 타이어가 회백색이던 1894년 무렵 태어난 캐릭터라 흰색이며, 1912년 타이어에 카본을 넣어 검게 된 뒤 광고에서 검게 칠해 본 적도 있지만 되돌렸다.
+H: 포스터 그림은 화가가 원래 독일 뮌헨의 한 맥주 회사에 냈다가 퇴짜 맞은, 큰 맥주잔을 든 사람 그림을 고친 것이다.   hintSources: https://en.wikipedia.org/wiki/Michelin_Man
+GEN: dif 4 (애호가 — 브랜드 마스코트 이름) · wor 3 (이야깃거리 — 유명 마스코트) · acc 5   selfJudge: 좋은 어려움 — 유명한 대상의 숨은 공식 이름과 라틴어 유래
+facts: [q] 1898년 포스터에서 못과 깨진 유리가 담긴 잔으로 건배하는 모습 <https://en.wikipedia.org/wiki/Michelin_Man>  ||  [q] 이름은 호라티우스 송가의 'Nunc est bibendum(이제 마실 때다)'에서 왔다 <https://en.wikipedia.org/wiki/Michelin_Man>  ||  [e] 타이어 더미에서 착상해 만든 사람 모양 마스코트, 1894년 리옹 박람회에서 착상 <https://en.wikipedia.org/wiki/Michelin_Man>  ||  [e] 타이어는 원래 회백색, 1912년 카본을 넣어 검어졌고 검게 그린 광고를 시도했다가 그만둠 <https://en.wikipedia.org/wiki/Michelin_Man>
+dbCheck: 비벤덤 new (활성·초안 없음)
+warn: assert=[] frag=[] hint=[]
+questionWords: 1898년 프랑스 타이어 회사 포스터에 쌓아 만든 사람 못과 깨진 유리 담긴 잔을 들고 건배 모습 실렸습니다 호라티우스 시에 나오 이제 마실 때다 라는 라틴어 구절 따온 마스코트 공식 이름
+webOpen: TRUE (GEN 난이도 4)
+
+### P2-02  [life/L2:brands/상표가 된 상품명]  method=나
+Q: 1912년 미국 웨스팅하우스에서 일하던 두 기술자가 전기 절연재로 쓰던 광물 운모를 대신할 적층 소재를 만들었습니다. '운모 대신'이라는 뜻의 영어로 상표 이름을 지은 이 소재는 뒤에 부엌 조리대 같은 장식용 겉판으로 널리 쓰였는데, 이 상표는?
+A: 포마이카   변형: 호마이카 | Formica   originalTitle: Formica
+E: 1938년 멜라민 수지가 개발되면서 열과 습기에 더 강해지고 색도 다양해졌고, 1970년에는 공업용 생산을 끝내고 장식용 판만 만들게 되었다.
+H: 두 기술자 대니얼 오코너와 허버트 페이버는 회사를 나와 1913년 5월 이 소재로 따로 사업을 시작했다.   hintSources: https://en.wikipedia.org/wiki/Formica_(plastic)
+GEN: dif 4 (애호가 — 상표 유래) · wor 3 (이야깃거리 — 상표가 된 이름) · acc 5   selfJudge: 경계 — '운모 대신' 풀이가 영어에 밝은 사람에게 답을 거의 주는 단서라 난이도가 3으로 내려갈 수 있음 / 호마이카는 한국 구어 표기라 변형에 넣음(출처 아닌 판단)
+facts: [q] 1912년 웨스팅하우스의 오코너와 페이버가 발명 <https://en.wikipedia.org/wiki/Formica_(plastic)>  ||  [q] 전기 절연재로 쓰던 운모의 대용품으로 구상, 'for mica'에서 이름 <https://en.wikipedia.org/wiki/Formica_(plastic)>  ||  [q] 부엌 조리대 등 장식용 적층판 <https://en.wikipedia.org/wiki/Formica_(plastic)>  ||  [e] 1938년 멜라민 수지로 열·습기 저항과 색 다양화, 1970년 공업용 생산 중단 <https://en.wikipedia.org/wiki/Formica_(plastic)>
+dbCheck: 포마이카·호마이카 new
+warn: assert=[] frag=[] hint=[]
+questionWords: 1912년 미국 웨스팅하우스 일하던 기술자 전기 절연재 쓰던 광물 운모 대신할 적층 소재 만들었습니다 대신 뜻의 영어 상표 이름 지은 뒤에 부엌 조리대 같은 장식용 겉판 널리 쓰였는데
+webOpen: TRUE (selfJudge 경계, GEN 난이도 4)
+
+### P2-03  [life/L2:pets-garden/화초·원예]  method=나
+Q: 분갈이 흙에 섞는 하얀 알갱이 가운데 하나는 물을 머금은 화산 유리를 높은 열로 달궈 만듭니다. 속에 갇힌 물이 수증기로 빠져나가며 부피가 크게 부풀어 가볍고 하얘지는, 흙의 물 빠짐을 돕는 이 화산 유리 재료는?
+A: 펄라이트
+E: 흔히 흑요석이 물을 머금어 생긴 돌이 원료이고, 달구면 부피가 7~16배로 늘어나며 흙이 굳어 다져지는 것을 막아 준다.
+H: 흔히 함께 섞는 또 다른 분갈이 재료 질석은 화산 유리가 아니라 풍화된 운모를 달궈 부풀린 것이다.   hintSources: https://en.wikipedia.org/wiki/Vermiculite
+GEN: dif 3 (관심층 — 원예 기본 재료) · wor 3 (이야깃거리 — 원예 재료) · acc 4   selfJudge: 좋은 어려움 — 화분 흙에서 본 적 있는 재료의 정체(화산 유리 팽창)를 묻는다. 버미큘라이트(질석)와는 '화산 유리'로 갈림
+facts: [q] 물 함량이 높은 비정질 화산 유리 <https://en.wikipedia.org/wiki/Perlite>  ||  [q] 가열하면 갇힌 물이 증발하며 팽창, 기포 때문에 밝은 흰색 <https://en.wikipedia.org/wiki/Perlite>  ||  [q] 토양 개량제로 투수성이 높아 물 빠짐 <https://en.wikipedia.org/wiki/Perlite>  ||  [e] 흑요석의 수화로 생김, 부피 7~16배 팽창, 흙 다짐 방지 <https://en.wikipedia.org/wiki/Perlite>
+dbCheck: 펄라이트 new
+warn: assert=[] frag=[] hint=[]
+questionWords: 분갈 흙에 섞는 하얀 알갱 가운데 하나 물을 머금 화산 유리 높은 열로 달궈 만듭니다 속에 갇힌 물이 수증기 빠져나가며 부피 크게 부풀어 가볍고 하얘지 흙의 빠짐 돕는 재료
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### P2-04  [life/L2:symbols/교통 표지]  method=나
+Q: 1961년 동베를린에서 교통 심리학자 카를 페글라우가 제안한, 모자를 쓴 사람 모양의 보행자 신호등 그림이 처음 쓰였습니다. 통일 뒤 동독 신호가 바뀌어 가자 1995년 베를린에서 이를 지키자는 운동이 일었는데, 이 신호등 그림을 독일어로 무엇이라 부를까요?
+A: 암펠만   변형: 암펠맨헨
+E: 모자는 에리히 호네커가 밀짚모자를 쓴 여름 사진에서 착안했다고 하며, 그림은 페글라우의 비서 아넬리제 베그너가 그렸다.
+H: 빨간 멈춤 신호 속 인물은 두 팔을 양옆으로 굵게 벌려 길을 막아선 모습이다.   hintSources: https://en.wikipedia.org/wiki/Ampelmännchen
+GEN: dif 4 (애호가 — 독일 문화 상징) · wor 3 (이야깃거리 — 도시 상징) · acc 5   selfJudge: 좋은 어려움 — 분단·통일사와 이어지는 신호등 상징
+facts: [q] 1961년 동베를린에서 도입, 교통 심리학자 카를 페글라우가 제안 <https://en.wikipedia.org/wiki/Ampelm%C3%A4nnchen>  ||  [q] 통일 뒤 동독 신호 교체로 보존 요구, 1995년 초 베를린에서 첫 연대 운동 <https://en.wikipedia.org/wiki/Ampelm%C3%A4nnchen>  ||  [e] 모자는 호네커의 밀짚모자 사진에서 착안, 비서 아넬리제 베그너가 그림 <https://en.wikipedia.org/wiki/Ampelm%C3%A4nnchen>
+dbCheck: 암펠만 new
+warn: assert=[처음] frag=[] hint=[]
+questionWords: 1961년 동베를린 교통 심리학자 카를 페글라우 제안 모자 사람 모양 보행자 신호등 그림 처음 쓰였습니다 통일 동독 신호 바뀌어 가자 1995년 베를린 이를 지키자 운동 일었는데 독일어 무엇이라 부를까요
+webOpen: TRUE (단정어 처음, GEN 난이도 4)
+
+### P2-05  [life/L2:board-game/보드게임]  method=나
+Q: 치과 기공사로 일하던 독일의 클라우스 토이버는 아이슬란드에 정착한 바이킹의 역사에서 영감을 얻어 보드게임을 만들었습니다. 1995년 독일 '올해의 게임' 상을 받은, 섬에서 목재·벽돌·양털·곡식·광석을 모아 길과 마을을 짓는 이 게임은?
+A: 카탄   변형: 카탄의 개척자   originalTitle: Catan
+E: 토이버는 1991년부터 이 게임을 설계했고, 독일의 코스모스 출판사가 처음 펴냈다.
+H: 토이버는 1988년 '바르바로사'를 비롯해 이 상을 모두 네 번 받았다.   hintSources: https://en.wikipedia.org/wiki/Klaus_Teuber
+GEN: dif 3 (관심층 — 유명 보드게임) · wor 3 (유명 게임 제목 맞히기) · acc 4   selfJudge: 경계 — 자원 목록이 애호가에게는 강한 단서라 3으로 매겨질 수도 있음
+facts: [q] 토이버는 치과 기공사로 일했다 <https://en.wikipedia.org/wiki/Klaus_Teuber>  ||  [q] 아이슬란드 바이킹 정착사에서 영감 <https://en.wikipedia.org/wiki/Klaus_Teuber>  ||  [q] 1995년 독일 올해의 게임(Spiel des Jahres) 수상 <https://en.wikipedia.org/wiki/Catan>  ||  [q] 자원 목재·벽돌·양털·곡식·광석 <https://en.wikipedia.org/wiki/Catan>  ||  [e] 1991년부터 설계, 코스모스(Franckh-Kosmos)가 처음 출판 <https://en.wikipedia.org/wiki/Klaus_Teuber>
+dbCheck: 카탄 new
+warn: assert=[처음] frag=[] hint=[explain]
+questionWords: 치과 기공사 일하던 독일 클라우스 토이버 아이슬란드 정착 바이킹 역사 영감 얻어 보드게임 만들었습니다 1995년 올해 게임 상을 받은 목재 벽돌 양털 곡식 광석 모아 길과 마을 짓는
+webOpen: TRUE (selfJudge 경계, 단정어 처음)
+
+### P2-06  [life/L2:board-game/바둑·장기]  method=나
+Q: 장기에서 양쪽 궁이 같은 줄에 마주 서 있고, 그 사이를 가로막는 기물이 하나도 없는 상태가 있습니다. 형세가 불리한 쪽이 비기려고 일부러 만들기도 하는 이 상태를 무엇이라 할까요?
+A: 빅장
+E: 점수제에서는 이것이 성립하면 남은 기물 점수로 그 자리에서 승부를 가리는데, 차 13점·포 7점·마 5점에 후수인 한에 1.5점 덤을 준다.
+H: 중국 장기 샹치에서는 이런 상태를 만드는 수가 아예 반칙이다.   hintSources: https://en.wikipedia.org/wiki/Janggi
+GEN: dif 3 (관심층 — 장기 규칙 용어) · wor 4 (분야 기본 어휘 — 장기) · acc 4   selfJudge: 좋은 어려움 — 장기를 둬 본 사람은 '아 그거' 하고, 모르는 사람도 배워 갈 규칙
+facts: [q] 궁과 궁 사이에 장애물 없이 일직선에 놓이면 빅장, 무승부 <https://ko.wikipedia.org/wiki/%EC%9E%A5%EA%B8%B0>  ||  [q] 형세가 불리한 쪽이 비김을 청하는 수 <https://ko.wikipedia.org/wiki/%EC%9E%A5%EA%B8%B0>  ||  [e] 점수제에서는 남은 기물 점수로 승부, 차 13·포 7·마 5, 한 덤 1.5 <https://ko.wikipedia.org/wiki/%EC%9E%A5%EA%B8%B0>
+dbCheck: 빅장 new
+warn: assert=[] frag=[] hint=[explain]
+questionWords: 장기 양쪽 궁이 같은 줄에 마주 있고 사이 가로막 기물 하나 없는 상태 있습니다 형세 불리 쪽이 비기려고 일부러 만들기 하는 무엇이라 할까요
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### P2-07  [life/L2:calendar/세계 명절·축제]  method=나
+Q: 이슬람력 10월 샤왈의 첫날, 무슬림들은 새 옷을 입고 사원에 모여 예배를 드린 뒤 친척과 친구를 찾아가 선물을 주고받습니다. 한 달 동안의 금식이 끝난 것을 기리는 이 명절은?
+A: 이드 알피트르
+E: 이날은 금식이 금지되며, 명절 예배 전에 가난한 이웃을 위한 희사금(자카트 알피트르)을 낸다.
+H: 초승달이 처음 보인 날 해 질 녘부터 시작되며, 나라에 따라 하루에서 사흘 동안 쇤다.   hintSources: https://en.wikipedia.org/wiki/Eid_al-Fitr
+GEN: dif 4 (애호가 — 이슬람 명절 이름) · wor 4 (교양 — 세계 종교 명절) · acc 5   selfJudge: 좋은 어려움 — 세계 인구 큰 몫의 명절이라 알 가치 높음. 이드 알아드하(희생제)와는 '금식이 끝난'으로 갈림
+facts: [q] 샤왈(이슬람력 10월) 첫째 날, 라마단이 끝나며 열림 <https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%93%9C_%EC%95%8C%ED%94%BC%ED%8A%B8%EB%A5%B4>  ||  [q] 새 옷을 입고 사원에 모여 집단 예배, 친척·친구 방문, 선물 <https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%93%9C_%EC%95%8C%ED%94%BC%ED%8A%B8%EB%A5%B4>  ||  [e] 이날 금식 금지, 예배 전 자카트 알피트르를 가난한 이에게 <https://en.wikipedia.org/wiki/Eid_al-Fitr>
+dbCheck: 이드 알피트르 new
+warn: assert=[] frag=[] hint=[]
+questionWords: 이슬람력 10월 샤왈 첫날 무슬림들 옷을 입고 사원 모여 예배 드린 친척 친구 찾아 선물 주고받습니다 동안 금식 끝난 것을 기리 명절
+webOpen: TRUE (GEN 난이도 4)
+
+### P2-08  [life/L2:fashion/의류 명칭]  method=나
+Q: 워털루 전투에서 오른팔을 잃고 뒤에 크림 전쟁에서 영국군을 이끈 장군이 입었다고 해서 그의 이름이 붙은 소매가 있습니다. 어깨 솔기 없이 소매가 목둘레까지 한 장으로 이어져 겨드랑이에서 목 쪽으로 비스듬한 솔기가 나는 이 소매는?
+A: 라글란   변형: 래글런 | 나그랑 | 라글란 소매
+E: 그가 지휘하던 크림 전쟁에서는 명령이 분명하게 전달되지 않아 '경기병대의 돌격' 참사가 벌어졌고, 그는 1855년 크림반도에서 세상을 떠났다.
+H: 이 장군은 워털루에서 잘라 낸 팔을 다시 가져오게 해, 아내가 준 반지를 되찾으려 했다고 한다.   hintSources: https://en.wikipedia.org/wiki/FitzRoy_Somerset,_1st_Baron_Raglan
+GEN: dif 3 (관심층 — 의류 소매 명칭) · wor 4 (분야 기본 어휘 — 패션) · acc 4   selfJudge: 경계 — 한국 표기가 라글란·래글런·나그랑으로 갈려 변형 3개가 불가피
+facts: [q] 래글런 남작이 워털루에서 팔을 잃은 뒤 이 소매 옷을 입었다고 전함 <https://en.wikipedia.org/wiki/Raglan_sleeve>  ||  [q] 오른팔 절단, 크림 전쟁 영국군 지휘 <https://en.wikipedia.org/wiki/FitzRoy_Somerset,_1st_Baron_Raglan>  ||  [q] 소매가 깃까지 한 장으로 이어져 겨드랑이에서 쇄골로 비스듬한 솔기 <https://en.wikipedia.org/wiki/Raglan_sleeve>  ||  [e] 명령 전달이 불분명해 경기병대의 돌격, 1855년 크림에서 사망 <https://en.wikipedia.org/wiki/FitzRoy_Somerset,_1st_Baron_Raglan>
+dbCheck: 라글란·래글런·나그랑 new
+warn: assert=[] frag=[] hint=[]
+questionWords: 워털루 전투 오른팔 잃고 뒤에 크림 전쟁 영국군 이끈 장군 입었다고 해서 그의 이름 붙은 소매 있습니다 어깨 솔기 없이 목둘레 이어져 겨드랑이 비스듬 나는
+webOpen: TRUE (selfJudge 경계)
+
+### P2-09  [life/L2:daily-rule/재난·안전 수칙]  method=나
+Q: 불이 난 방에서는 천장 아래 고인 뜨거운 연기가 방 안 물건들을 복사열로 달굽니다. 이 열로 방 안 가연물 대부분이 거의 동시에 불붙어 방 전체가 한순간에 불길에 휩싸이는 현상을 무엇이라 할까요?
+A: 플래시오버   변형: 플래쉬오버
+E: 보통 500~600℃에서 일어나며, 산소가 모자란 방에 바깥 공기가 갑자기 들어가 터지는 백드래프트와 달리 열이 일으키는 현상이다.
+H: 이 현상이 다가오면 실내 온도가 갑자기 치솟고, 천장 아래 연기층의 경계가 바닥 쪽으로 내려온다.   hintSources: https://en.wikipedia.org/wiki/Flashover
+GEN: dif 3 (관심층 — 화재 현상 용어) · wor 4 (교양 — 화재 안전 상식) · acc 5   selfJudge: 경계 — '안전 수칙'보다 재난 현상 지식에 가까움. 백드래프트를 칠 사람이 있으나 '복사열·동시 발화'로 갈림
+facts: [q] 밀폐 공간에서 노출된 가연물 대부분이 거의 동시에 발화 <https://en.wikipedia.org/wiki/Flashover>  ||  [q] 천장 아래 뜨거운 연기가 복사로 표면을 가열 <https://en.wikipedia.org/wiki/Flashover>  ||  [e] 500~600℃, 열이 원인 / 백드래프트는 산소 유입이 원인 <https://en.wikipedia.org/wiki/Flashover>
+dbCheck: 플래시오버 new
+warn: assert=[] frag=[] hint=[explain]
+questionWords: 불이 천장 아래 고인 뜨거운 연기 물건들 복사열 달굽니다 열로 가연물 대부분 거의 동시 불붙어 전체 한순간 불길 휩싸이 현상 무엇이라 할까요
+webOpen: TRUE (selfJudge 경계)
+
+### P2-10  [life/L2:drinks/커피·차]  method=나
+Q: 이 커피 품종은 1930년대 에티오피아 남서부의 한 산악 지역에서 확인되었고, 그 지역 이름을 따왔습니다. 2004년 파나마의 에스메랄다 농장이 품평회에 내놓아 기록적인 값에 팔리면서 이름을 날린 이 품종은?
+A: 게이샤   변형: 게샤
+E: 1936년 표본을 모은 영국 관리들이 붙인 철자 탓에 일본의 게이샤와 자주 헷갈린다.
+H: 이 품종은 1953년 탄자니아의 연구소에서 코스타리카로 건너갔다가 1960년대 파나마 보케테로 퍼졌다.   hintSources: https://en.wikipedia.org/wiki/Geisha_(coffee)
+GEN: dif 3 (관심층 — 커피 품종) · wor 3 (이야깃거리 — 유명 커피) · acc 4   selfJudge: 좋은 어려움 — 카페 메뉴에서 보던 이름의 뜻밖 유래(일본이 아니라 에티오피아 지명)
+facts: [q] 1930년대 에티오피아 남서부 산악 게샤 지역에서 확인, 지역 이름에서 유래 <https://en.wikipedia.org/wiki/Geisha_(coffee)>  ||  [q] 2004년 아시엔다 라 에스메랄다가 베스트 오브 파나마에 출품, 기록적 값 <https://en.wikipedia.org/wiki/Geisha_(coffee)>  ||  [e] 1936년 영국 관리들이 붙인 철자로 일본 게이샤와 혼동 <https://en.wikipedia.org/wiki/Geisha_(coffee)>
+dbCheck: 게이샤·게샤 new
+warn: assert=[] frag=[] hint=[]
+questionWords: 커피 품종 1930년대 에티오피아 남서부 산악 지역 확인되었고 이름 따왔습니다 2004년 파나마 에스메랄다 농장 품평회 내놓아 기록적인 값에 팔리면서 날린
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### P2-11  [life/L2:world-food/아시아 음식]  method=나
+Q: 무굴 제국의 궁중 주방에서 오늘날의 모습이 갖춰졌다고 하는 남아시아의 쌀 요리입니다. 쌀과 양념한 고기를 겹겹이 쌓은 냄비를 봉해 뭉근히 익히기도 하는데, '튀기다·굽다'를 뜻하는 페르시아어에서 이름이 왔다는 이 요리는?
+A: 비리야니
+E: 콜카타식에는 감자가 들어가는데, 1850년대 와지드 알리 샤가 만들었다는 이야기가 전한다.
+H: 2009년 인도 하이데라바드의 요리사 단체가 이 요리로 지리적 표시를 신청했지만 유래를 입증하지 못해 실패했다.   hintSources: https://en.wikipedia.org/wiki/Biryani
+GEN: dif 3 (관심층 — 세계 음식) · wor 3 (이야깃거리 — 대표 요리) · acc 4   selfJudge: 좋은 어려움 — 필라프·풀라오와는 '겹겹이 쌓아 봉해 익힘·페르시아어 튀기다'로 갈림
+facts: [q] 무굴 제국 궁중 주방에서 현대 비리야니 발달(콜링햄) <https://en.wikipedia.org/wiki/Biryani>  ||  [q] 켜켜이 쌓아 냄비를 봉해 천천히 익힘(둠) <https://en.wikipedia.org/wiki/Biryani>  ||  [q] 페르시아어 biryan(튀기다·굽다)에서 <https://en.wikipedia.org/wiki/Biryani>  ||  [e] 콜카타 비리야니는 1850년대 와지드 알리 샤가 만들었다고 하며 감자가 들어감 <https://en.wikipedia.org/wiki/Biryani>
+dbCheck: 비리야니 new
+warn: assert=[] frag=[] hint=[]
+questionWords: 무굴 제국 궁중 주방 오늘날 모습 갖춰졌다고 하는 남아시아 요리입니다 쌀과 양념 고기 겹겹 쌓은 냄비 봉해 뭉근히 익히기 하는데 튀기다 굽다 페르시아어 이름 왔다 요리
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### P2-12  [life/L2:world-language/외국어 표현]  method=나
+Q: 포르투갈어와 갈리시아어에서 쓰는 이 낱말은 곁에 없는 사랑하는 사람이나 무언가를 애틋하게 그리워하는 쓸쓸한 감정을 가리키며, 다른 말로 딱 맞게 옮기기 어렵다는 말을 자주 듣습니다. 포르투갈 민속 음악 파두의 대표적인 주제이기도 한 이 낱말은?
+A: 사우다지   변형: 사우다드
+E: 브라질에서는 1월 30일을 이 감정의 날로 기리고, 갈리시아에서는 고향을 그리는 마음을 흔히 '모리냐'라는 말로 부른다.
+H: 13세기 포르투갈 노래책에도 이미 나오는 오래된 낱말로, 라틴어 '솔리타스(고독)'에서 왔다고 본다.   hintSources: https://en.wikipedia.org/wiki/Saudade
+GEN: dif 4 (애호가 — 외국어 낱말) · wor 3 (이야깃거리 — 번역 어려운 말) · acc 3   selfJudge: 좋은 어려움 — 유명한 정서 개념의 이름. 마이너하지 않으면서 교과 밖
+facts: [q] 포르투갈어·갈리시아어 낱말, 곁에 없는 사랑하는 대상에 대한 우울한 그리움 <https://en.wikipedia.org/wiki/Saudade>  ||  [q] 직역할 말이 없다고 함 <https://en.wikipedia.org/wiki/Saudade>  ||  [q] 파두의 흔한 주제 <https://en.wikipedia.org/wiki/Saudade>  ||  [e] 브라질은 1월 30일을 기림, 갈리시아는 morriña를 더 씀 <https://en.wikipedia.org/wiki/Saudade>
+dbCheck: 사우다지·사우다드 new
+warn: assert=[] frag=[] hint=[]
+questionWords: 포르투갈어 갈리시아어 쓰는 낱말 곁에 없는 사랑 사람이나 무언가 애틋하게 그리워 쓸쓸 감정 가리키며 다른 말로 맞게 옮기기 어렵다 말을 자주 듣습니다 포르투갈 민속 음악 파두 대표적인 주제이기
+webOpen: TRUE (GEN 난이도 4)
+
+### P4-11  [arts/L2:art/한국·동양 미술]  method=나
+Q: 조선 후기, 학문을 즐긴 임금 정조가 깊은 관심을 보이면서 양반들 사이에도 퍼진 그림이 있습니다. 청나라 다보격을 닮은 칸칸이 나뉜 책장에 책과 문방구·도자기를 채워 그리고, 서양의 원근법과 그림자 기법으로 입체감을 냈습니다. 이 그림을 무엇이라 할까요?
+A: 책가도   변형: 책거리 | 문방도
+E: 19세기에는 민화로 퍼지면서 다산·장수·출세 같은 소망을 담은, 더 자유롭고 추상적인 모습으로 바뀌었습니다.
+H: 1860~70년대 이응록이 그린 여러 폭짜리 병풍들이 오늘날까지 남아 있다.   hintSources: https://en.wikipedia.org/wiki/Chaekgeori
+GEN: dif 4 (수능 심화 — 조선 후기 미술) · wor 4 (교양 — 한국 미술) · acc 4   selfJudge: 좋은 어려움 — 들으면 '아 그 책장 그림' 하는 교양
+facts: [q] 정조의 관심으로 양반 계층에도 퍼졌다 · 18세기 후반부터 유행 <https://ko.wikipedia.org/wiki/책거리>  ||  [q] 책장 양식은 청나라 다보격의 영향 · 서양 선원근법과 그림자 기법 <https://ko.wikipedia.org/wiki/책거리>  ||  [q] 책장을 그린 것을 책가도라 한다 · 책거리·문방도라고도 <https://en.wikipedia.org/wiki/Chaekgeori>  ||  [e] 19세기 민화로 퍼져 다산·장수·출세 소망 · 더 표현적·추상적 <https://ko.wikipedia.org/wiki/책거리>
+dbCheck: new (책거리도 new · 활성 '민화' 와 지식 다름)
+warn: assert=[] frag=[] hint=[]
+questionWords: 조선 후기 학문 즐긴 임금 정조 깊은 관심 보이면서 양반들 사이에 퍼진 그림 있습니다 청나라 다보격 닮은 칸칸 나뉜 책장 책과 문방구 도자기 채워 그리고 서양 원근법 그림자 기법 입체감 냈습니다 무엇이라 할까요
+webOpen: TRUE (GEN 난이도 4)
+
+### P4-12  [arts/L2:classical/작품·악곡]  method=나
+Q: 1952년 8월 미국 우드스톡의 한 연주회장에서 피아니스트 데이비드 튜더는 건반 뚜껑을 닫았다 여는 것으로 세 악장의 시작과 끝만 알렸을 뿐, 한 음도 치지 않았습니다. 존 케이지가 하버드의 무향실에서 겪은 경험 등에서 영감을 얻은 이 작품의 제목은 무엇일까요?
+A: 4분 33초
+E: 케이지는 로버트 라우셴버그의 '흰 그림' 연작이 자신을 이 작품으로 밀어붙였다고 말했습니다.
+H: 케이지는 무향실에서 높고 낮은 두 소리를 들었는데, 기술자는 그것이 그의 신경계와 피가 도는 소리라고 했다.   hintSources: https://en.wikipedia.org/wiki/4′33″
+GEN: dif 3 (고교 — 현대 음악 감상) · wor 4 (교양 — 유명 현대음악) · acc 3   selfJudge: 좋은 어려움 — 유명한 곡의 초연 장면으로 묻는다
+facts: [q] 1952년 8월 29일 우드스톡 매버릭 콘서트홀에서 데이비드 튜더 초연 <https://en.wikipedia.org/wiki/4%E2%80%B233%E2%80%B3>  ||  [q] 세 악장 · 연주하지 않음 · 뚜껑을 닫고 열어 악장 표시 <https://en.wikipedia.org/wiki/4%E2%80%B233%E2%80%B3>  ||  [q] 하버드 무향실 경험이 작품으로 이끌었다 <https://en.wikipedia.org/wiki/4%E2%80%B233%E2%80%B3>  ||  [e] 라우셴버그의 White Paintings 가 밀어붙였다고 케이지가 말함 <https://en.wikipedia.org/wiki/4%E2%80%B233%E2%80%B3>
+dbCheck: new
+warn: assert=[] frag=[] hint=[explain]
+questionWords: 1952년 8월 미국 우드스톡 연주회장 피아니스트 데이비드 튜더 건반 뚜껑 닫았다 여는 악장 시작 끝만 알렸 음도 치지 않았습니다 케이지 하버드 무향실 겪은 경험 영감 얻은 작품 제목 무엇일까요
+webOpen: false (재채점 뒤 난이도 4~5 가 되면 TRUE)
+
+### P4-13  [arts/L2:music-theory/악보·기호]  method=나
+Q: 악보에 이 말이 적혀 있으면 연주자는 박자를 조금씩 당기고 늦추며 자유롭게 표현합니다. 이탈리아어로 '도둑맞은 시간'이라는 뜻으로, 쇼팽이 자기 작품 열네 곡에 적어 넣은 이 말은 무엇일까요?
+A: 루바토   변형: 템포 루바토
+E: 쇼팽의 제자 카롤 미쿨리는, 쇼팽이 반주하는 손은 늘 박자를 엄격히 지키고 선율만 자유롭게 움직였다고 전했습니다.
+H: 피아니스트 파데레프스키는 이렇게 가져간 시간을 꼭 되갚아야 한다는 생각에 '잃은 것은 잃은 것'이라고 맞섰다.   hintSources: https://en.wikipedia.org/wiki/Tempo_rubato
+GEN: dif 4 (대학 교양 — 음악 용어) · wor 4 (분야 기본 어휘 — 음악) · acc 4   selfJudge: 좋은 어려움 — 쇼팽 연주로 유명한 용어, 뜻이 뜻밖이다
+facts: [q] 템포 루바토 = 이탈리아어 '도둑맞은 시간' · 박자를 자유롭게 <https://en.wikipedia.org/wiki/Tempo_rubato>  ||  [q] 쇼팽이 14개 작품에 이 말을 적었다 <https://en.wikipedia.org/wiki/Tempo_rubato>  ||  [e] 미쿨리 — 반주하는 손은 엄격한 템포, 선율은 자유 <https://en.wikipedia.org/wiki/Tempo_rubato>
+dbCheck: new
+warn: assert=[] frag=[] hint=[]
+questionWords: 악보 말이 적혀 있으면 연주자 박자 조금씩 당기고 늦추며 자유롭게 표현합니다 이탈리아어 도둑맞 시간 쇼팽 자기 작품 열네 곡에 적어 넣은 말은 무엇일까요
+webOpen: TRUE (GEN 난이도 4)
+
+### P4-14  [arts/L2:theatre/뮤지컬 작품]  method=나
+Q: 1967년 조지프 팹의 퍼블릭 시어터에서 첫선을 보이고 이듬해 브로드웨이로 옮긴, 부제가 '아메리칸 트라이벌 러브-록 뮤지컬'인 작품입니다. 베트남전 징집을 앞둔 청년 클로드와 히피들의 이야기로, 1막 끝의 짧은 누드 장면이 큰 논란을 불렀습니다. 이 뮤지컬의 제목은 무엇일까요?
+A: 헤어   변형: Hair   originalTitle: Hair
+E: 대표곡 'Aquarius'로 잘 알려졌고, 브로드웨이로 옮기면서 결말을 밝게 하려고 'Let the Sun Shine In'을 더했습니다.
+H: 1968년 4월 브로드웨이 빌트모어 극장에서 막을 올려 1,750회 공연되었고, 1979년 영화로도 만들어졌다.   hintSources: https://en.wikipedia.org/wiki/Hair_(musical)
+GEN: dif 4 (애호가 — 뮤지컬 작품) · wor 3 (이야깃거리 — 유명 뮤지컬) · acc 3   selfJudge: 좋은 어려움 — 1960년대 반문화의 상징 작품 — 렌트와 같은 결
+facts: [q] 부제 The American Tribal Love-Rock Musical <https://en.wikipedia.org/wiki/Hair_(musical)>  ||  [q] 1967년 조지프 팹의 퍼블릭 시어터 초연 · 1968년 브로드웨이 <https://en.wikipedia.org/wiki/Hair_(musical)>  ||  [q] 클로드가 징집 거부를 고민 · 1막 끝 누드 장면 논란 <https://en.wikipedia.org/wiki/Hair_(musical)>  ||  [e] Aquarius 가 대표곡 · Let the Sun Shine In 은 브로드웨이에서 결말을 밝게 하려고 추가 <https://en.wikipedia.org/wiki/Hair_(musical)>
+dbCheck: new
+warn: assert=[] frag=[] hint=[explain]
+questionWords: 1967년 조지프 팹의 퍼블릭 시어터 첫선 이듬해 브로드웨이 옮긴 부제 아메리칸 트라이벌 러브 뮤지컬 작품입니다 베트남전 징집 앞둔 청년 클로드 히피들 이야기 1막 끝의 짧은 누드 장면 논란 불렀습니다 제목 무엇일까요
+webOpen: TRUE (GEN 난이도 4)
+
+### P4-15  [arts/L2:architecture/유명 건축물]  method=나
+Q: 피츠버그의 백화점 주인 에드거 카우프만은 숲속 개울의 폭포가 바라보이는 자리에 주말 별장을 원했습니다. 그러나 건축가는 집을 폭포 바로 위에 올리며 '폭포를 바라보지 말고 폭포와 함께 사십시오'라고 했습니다. 바위에서 허공으로 뻗은 캔틸레버 테라스로 유명한 이 1930년대 주택은 무엇일까요?
+A: 낙수장   변형: 폴링워터 | Fallingwater   originalTitle: Fallingwater
+E: 프랭크 로이드 라이트의 대표작으로, 2019년 그가 지은 다른 건물 7곳과 함께 유네스코 세계유산에 올랐습니다.
+H: 1963년 건축주의 아들이 이 집과 둘레 땅 약 1,500에이커를 서부 펜실베이니아 보존회에 기증했다.   hintSources: https://en.wikipedia.org/wiki/Fallingwater
+GEN: dif 4 (대학 교양 — 근대 건축) · wor 4 (교양 — 대표 건축물) · acc 3   selfJudge: 좋은 어려움 — 세계적 명작 주택, 들으면 '아 그 폭포 위 집'
+facts: [q] 카우프만 백화점(피츠버그) 사장 에드거 J. 카우프만 의뢰 <https://en.wikipedia.org/wiki/Fallingwater>  ||  [q] 카우프만은 폭포가 보이는 하류를 기대했으나 라이트가 폭포 위에 올리며 'live with the waterfall, not to look at it' <https://en.wikipedia.org/wiki/Fallingwater>  ||  [q] 캔틸레버 테라스 · 1935년 설계, 1930년대 완공 · 주말 별장 <https://ko.wikipedia.org/wiki/낙수장>  ||  [e] 2019년 라이트의 다른 7개 건물과 함께 유네스코 세계유산 <https://ko.wikipedia.org/wiki/낙수장>
+dbCheck: new (활성 '프랭크 로이드 라이트' 와 답이 다름 · 해설에서만 건축가를 밝힘)
+warn: assert=[] frag=[] hint=[]
+questionWords: 피츠버그 백화점 주인 에드거 카우프만 숲속 개울 폭포 바라보이 자리 주말 별장 원했습니다 그러나 건축가 집을 바로 위에 올리며 바라보지 말고 함께 사십시오 라고 했습니다 바위 허공 뻗은 캔틸레버 테라스 유명 1930년대 주택 무엇일까요
+webOpen: TRUE (GEN 난이도 4)

@@ -1,0 +1,10 @@
+너는 V007 사실 확인자다 (VERIFY 세션의 하위 에이전트). 판정은 하지 않고 **사실만** 웹 문서로 확인한다. DB 쓰기·파일 수정(아래 출력 파일 외)·서버 기동 금지. 한국어.
+
+입력: `C:/work/quiz-web/data/pipeline/audit/v007-raw/_work/t3.txt` (항목 20건; `###` 가 한 항목). 항목마다 질문(Q)·해설(E)·힌트(H)와 GEN 이 단 `facts`(주장 + url)가 있다. 이 항목들은 GEN 이 문서를 열었다고 한 것이지만 **우리는 아직 열지 않았다**.
+
+할 일: 항목마다 facts 의 **url 을 WebFetch 로 직접 열어**(같은 url 은 항목당 한 번) 질문·해설의 주장마다 true/false/unverified 를 정한다. 힌트(H)에 연도·숫자·직함·단정어 같은 세부가 있으면 `hintSources` 도 열어 힌트 주장도 대조한다. 숫자·연도·직함·"처음/유일/모두/가장" 같은 단정은 문서와 글자 단위로 맞춰 본다. 문서에서 못 찾으면 `unverified`(거짓 아님 — 요약 모델을 거치므로). 검색(WebSearch)은 쓰지 않는다(필요하면 전체에서 5회 이내). 나무위키는 403 이 잦다 — 위키백과 ko/en 을 쓴다.
+
+결과: `C:/work/quiz-web/data/pipeline/audit/v007-raw/t3.out.json` 에 JSON 배열 — 항목마다
+`{"ref":"…","claims":[{"claim":"주장 요약","where":"q|e|h","result":"true|false|unverified","source":"URL","note":"틀렸다면 문서가 말하는 것(한 줄)"}]}` 를 입력 순서대로. 10건마다 중간 저장(`t3.pNN.json`)해도 좋다. 끝에 개수·순서를 `t3.refs.json` 과 대조.
+
+보고(5줄 이내): 항목 수 · 주장 수 · true/false/unverified 개수 · false 인 것의 ref 와 한 줄 · WebFetch 횟수 · 못 끝낸 것.

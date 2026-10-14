@@ -1,0 +1,588 @@
+{
+ "counts": {
+  "g003": 490,
+  "missing": 0,
+  "g002Sample": 50,
+  "pairs29": 29,
+  "verdict": {
+   "ok": 407,
+   "fix": 80,
+   "drop": 3
+  }
+ },
+ "stats": {
+  "verdict": {
+   "ok": 407,
+   "fix": 80,
+   "drop": 3
+  },
+  "byTopic": {
+   "korea": {
+    "ok": 88,
+    "fix": 18,
+    "drop": 0,
+    "unsure": 0
+   },
+   "sports": {
+    "ok": 46,
+    "fix": 12,
+    "drop": 0,
+    "unsure": 0
+   },
+   "arts": {
+    "ok": 52,
+    "fix": 8,
+    "drop": 0,
+    "unsure": 0
+   },
+   "life": {
+    "ok": 65,
+    "fix": 11,
+    "drop": 2,
+    "unsure": 0
+   },
+   "media": {
+    "ok": 56,
+    "fix": 8,
+    "drop": 1,
+    "unsure": 0
+   },
+   "science": {
+    "ok": 52,
+    "fix": 13,
+    "drop": 0,
+    "unsure": 0
+   },
+   "history": {
+    "ok": 48,
+    "fix": 10,
+    "drop": 0,
+    "unsure": 0
+   }
+  },
+  "categories": {
+   "question-repeat": 13,
+   "h-error": 9,
+   "famous-one": 15,
+   "wrong-name": 3,
+   "fact-error": 9,
+   "variants": 19,
+   "not-unique": 2,
+   "expose": 3,
+   "explain-overlap": 3,
+   "assertive": 8,
+   "explanation": 6,
+   "pair-3-3": 4,
+   "missing-hint": 1,
+   "weak": 2,
+   "worth": 1,
+   "letters": 1,
+   "meaning": 1
+  },
+  "pieceStat": {
+   "j1": {
+    "n": 82,
+    "ok": 69,
+    "fix": 13
+   },
+   "j2": {
+    "n": 82,
+    "ok": 65,
+    "fix": 17
+   },
+   "j3": {
+    "n": 69,
+    "ok": 58,
+    "fix": 10,
+    "drop": 1
+   },
+   "j4": {
+    "n": 69,
+    "fix": 9,
+    "ok": 58,
+    "drop": 2
+   },
+   "j5": {
+    "n": 65,
+    "ok": 58,
+    "fix": 7
+   },
+   "j6": {
+    "n": 65,
+    "ok": 52,
+    "fix": 13
+   },
+   "j7": {
+    "n": 58,
+    "ok": 47,
+    "fix": 11
+   }
+  },
+  "difGen": {
+   "1": 8,
+   "2": 77,
+   "3": 252,
+   "4": 149,
+   "5": 4
+  },
+  "difNew": {
+   "1": 7,
+   "2": 88,
+   "3": 285,
+   "4": 108,
+   "5": 2
+  },
+  "difMatrix": {
+   "3->3": 241,
+   "2->2": 76,
+   "4->4": 104,
+   "4->2": 1,
+   "1->2": 1,
+   "3->4": 1,
+   "4->3": 44,
+   "5->4": 2,
+   "2->4": 1,
+   "3->2": 10,
+   "1->1": 7,
+   "5->5": 2
+  },
+  "difByTopic": {
+   "korea": {
+    "n": 106,
+    "up": 2,
+    "down": 7,
+    "same": 97,
+    "gen45": 24,
+    "new45": 19,
+    "genDist": {
+     "1": 1,
+     "2": 12,
+     "3": 69,
+     "4": 23,
+     "5": 1
+    },
+    "newDist": {
+     "2": 14,
+     "3": 73,
+     "4": 19
+    }
+   },
+   "sports": {
+    "n": 58,
+    "up": 0,
+    "down": 7,
+    "same": 51,
+    "gen45": 24,
+    "new45": 17,
+    "genDist": {
+     "2": 10,
+     "3": 24,
+     "4": 24
+    },
+    "newDist": {
+     "2": 10,
+     "3": 31,
+     "4": 17
+    }
+   },
+   "arts": {
+    "n": 60,
+    "up": 1,
+    "down": 7,
+    "same": 52,
+    "gen45": 27,
+    "new45": 21,
+    "genDist": {
+     "2": 5,
+     "3": 28,
+     "4": 27
+    },
+    "newDist": {
+     "2": 4,
+     "3": 35,
+     "4": 21
+    }
+   },
+   "life": {
+    "n": 78,
+    "up": 0,
+    "down": 10,
+    "same": 68,
+    "gen45": 16,
+    "new45": 11,
+    "genDist": {
+     "1": 6,
+     "2": 21,
+     "3": 35,
+     "4": 16
+    },
+    "newDist": {
+     "1": 6,
+     "2": 26,
+     "3": 35,
+     "4": 11
+    }
+   },
+   "media": {
+    "n": 65,
+    "up": 0,
+    "down": 5,
+    "same": 60,
+    "gen45": 10,
+    "new45": 5,
+    "genDist": {
+     "2": 15,
+     "3": 40,
+     "4": 10
+    },
+    "newDist": {
+     "2": 15,
+     "3": 45,
+     "4": 5
+    }
+   },
+   "science": {
+    "n": 65,
+    "up": 0,
+    "down": 8,
+    "same": 57,
+    "gen45": 22,
+    "new45": 18,
+    "genDist": {
+     "1": 1,
+     "2": 12,
+     "3": 30,
+     "4": 19,
+     "5": 3
+    },
+    "newDist": {
+     "1": 1,
+     "2": 15,
+     "3": 31,
+     "4": 16,
+     "5": 2
+    }
+   },
+   "history": {
+    "n": 58,
+    "up": 0,
+    "down": 13,
+    "same": 45,
+    "gen45": 30,
+    "new45": 19,
+    "genDist": {
+     "2": 2,
+     "3": 26,
+     "4": 30
+    },
+    "newDist": {
+     "2": 4,
+     "3": 35,
+     "4": 19
+    }
+   }
+  },
+  "borderDir": {
+   "1": 7,
+   "2": 67,
+   "3": 212,
+   "4": 63,
+   "5": 1,
+   "3/경계2": 31,
+   "4/경계3": 43,
+   "3/경계4": 42,
+   "2/경계3": 20,
+   "4/경계5": 2,
+   "2/경계1": 1,
+   "5/경계4": 1
+  },
+  "worDiff": [],
+  "noHintNeeded": [
+   {
+    "ref": "A2-11",
+    "dif": 4,
+    "answer": "시드니 오페라 하우스"
+   }
+  ],
+  "hintExtra": [
+   {
+    "ref": "K2-16",
+    "dif": 2,
+    "answer": "골동반"
+   },
+   {
+    "ref": "L1-02",
+    "dif": 2,
+    "answer": "미쓰비시"
+   },
+   {
+    "ref": "L1-08",
+    "dif": 2,
+    "answer": "프리스비"
+   },
+   {
+    "ref": "L2-18",
+    "dif": 2,
+    "answer": "카푸치노"
+   },
+   {
+    "ref": "L2-19",
+    "dif": 2,
+    "answer": "덴푸라"
+   },
+   {
+    "ref": "L2-25",
+    "dif": 2,
+    "answer": "시저 샐러드"
+   },
+   {
+    "ref": "C2-12",
+    "dif": 2,
+    "answer": "블루문"
+   },
+   {
+    "ref": "C2-15",
+    "dif": 2,
+    "answer": "레밍"
+   },
+   {
+    "ref": "P4-07",
+    "dif": 2,
+    "answer": "루미놀"
+   },
+   {
+    "ref": "H1-26",
+    "dif": 2,
+    "answer": "엔젤 폭포"
+   },
+   {
+    "ref": "H2-02",
+    "dif": 2,
+    "answer": "스나이퍼"
+   }
+  ],
+  "hintRules": {
+   "shapeOnly": 0,
+   "wrongName": 3,
+   "pairSame": 0
+  },
+  "hintFixCount": 39,
+  "facts": {
+   "claims": 1171,
+   "true": 1098,
+   "false": 9,
+   "unverified": 64,
+   "web": 1139,
+   "knowledge": 32,
+   "openedItems": 379,
+   "notOpenedItems": 111,
+   "genFactsNotOpened": 393
+  },
+  "falseList": [
+   {
+    "ref": "P1-04",
+    "claim": "1902년 고종이 내린 땅(문서: 하사 증서 1898, 호텔 신축 1902)",
+    "where": "q",
+    "source": "https://ko.wikipedia.org/wiki/손탁_호텔"
+   },
+   {
+    "ref": "P1-05",
+    "claim": "한국비료가 사카린을 건설자재로 위장해 들여와 판매하다 적발(반입 뒤 적발)",
+    "where": "q",
+    "source": "https://ko.wikipedia.org/wiki/한국비료_사카린_밀수_사건"
+   },
+   {
+    "ref": "P4-19",
+    "claim": "몬트리올 설이 가장 흔함",
+    "where": "q",
+    "source": "https://en.wikipedia.org/wiki/Mulligan_(games)"
+   },
+   {
+    "ref": "S2-27",
+    "claim": "세 종목 순위를 합쳐 메달(문서: 곱해서 가장 낮은 값이 우승)",
+    "where": "q",
+    "source": "https://en.wikipedia.org/wiki/Sport_climbing_at_the_2020_Summer_Olympics"
+   },
+   {
+    "ref": "S2-34",
+    "claim": "질책으로 1972년 대표에서 빠짐(문서: 주의를 받았고 제외 사유는 논쟁)",
+    "where": "e",
+    "source": "https://en.wikipedia.org/wiki/Peter_Norman"
+   },
+   {
+    "ref": "A1-25",
+    "claim": "중세·르네상스 이론가들이 피하던 탓에 'diabolus in musica' 별명",
+    "where": "q",
+    "source": "https://en.wikipedia.org/wiki/Tritone"
+   },
+   {
+    "ref": "C2-08",
+    "claim": "꼭대기 알루미늄 덮개를 1884-12-06 설치(헌정 1885-02)",
+    "where": "q",
+    "source": "https://en.wikipedia.org/wiki/Washington_Monument"
+   },
+   {
+    "ref": "C2-08",
+    "claim": "당시 알루미늄은 은만큼 귀하고 값나갔다(금보다 비싸다는 서술 아님)",
+    "where": "q",
+    "source": "https://en.wikipedia.org/wiki/Washington_Monument"
+   },
+   {
+    "ref": "H2-14",
+    "claim": "자식을 모두 잃음",
+    "where": "h",
+    "source": "https://en.wikipedia.org/wiki/Niobe"
+   }
+  ],
+  "propFacts": {
+   "total": 42,
+   "web": 41,
+   "knowledge": 1
+  },
+  "propCheck": {
+   "hint": {
+    "n": 74,
+    "block": [],
+    "warn": {
+     "explain": 2
+    }
+   },
+   "question": {
+    "n": 17,
+    "bad": [],
+    "assertive": [
+     {
+      "ref": "S2-09",
+      "words": [
+       "모두"
+      ]
+     },
+     {
+      "ref": "S2-27",
+      "words": [
+       "처음"
+      ]
+     }
+    ]
+   },
+   "long": []
+  },
+  "readN": {
+   "nonok": 83,
+   "border": 82,
+   "ok10": 41,
+   "ambig": 92,
+   "override": 2,
+   "total": 300
+  },
+  "okJudge": 407,
+  "flipOk": 2,
+  "flipFromNonOk": 3,
+  "dupscan": [
+   {
+    "ref": "C1-18",
+    "answer": "규조토",
+    "id": 1678,
+    "activeAnswer": "다이너마이트",
+    "dir": "both",
+    "overlap": 0.31
+   },
+   {
+    "ref": "H1-04",
+    "answer": "국제형사재판소",
+    "id": 3150,
+    "activeAnswer": "국제사법재판소",
+    "dir": "activeAnswerInMyQ",
+    "overlap": 0.37
+   },
+   {
+    "ref": "M1-17",
+    "answer": "점프맨",
+    "id": 3557,
+    "activeAnswer": "마리오",
+    "dir": "activeAnswerInMyQ",
+    "overlap": 0.31
+   },
+   {
+    "ref": "P3-05",
+    "answer": "고광렬",
+    "id": 4159,
+    "activeAnswer": "아귀",
+    "dir": "activeAnswerInMyQ",
+    "overlap": 0.32
+   },
+   {
+    "ref": "P4-08",
+    "answer": "사진 51",
+    "id": 793,
+    "activeAnswer": "이중나선",
+    "dir": "activeAnswerInMyQ",
+    "overlap": 0.37
+   }
+  ],
+  "cumulative": {
+   "distActivePlusThis": {
+    "1": 474,
+    "2": 16
+   },
+   "activeSame1": 16,
+   "activeSame2plus": [],
+   "aliasMatch": [
+    [
+     "K2-16",
+     "골동반",
+     [
+      162
+     ]
+    ]
+   ],
+   "targetDup": []
+  },
+  "warn": {
+   "assert": 88,
+   "assertWithHint": 109,
+   "assertQonly": 49,
+   "frag": 66,
+   "hintExplain": 42,
+   "hintBlock": 0,
+   "hintWarnKinds": {
+    "explain": 42
+   },
+   "exposure": {
+    "none": 490
+   },
+   "blankBad": 0
+  }
+ },
+ "nStat": {
+  "ok": 43,
+  "fix": 7
+ },
+ "nGroup": {
+  "무작위": {
+   "ok": 38,
+   "fix": 3
+  },
+  "경계": {
+   "ok": 5,
+   "fix": 1
+  },
+  "의심": {
+   "ok": 0,
+   "fix": 3
+  }
+ },
+ "dStat": {
+  "fix": 26,
+  "ok": 3
+ },
+ "t60": {
+  "items": 60,
+  "claims": 280,
+  "tally": {
+   "true": 270,
+   "false": 0,
+   "unverified": 10
+  }
+ }
+}
