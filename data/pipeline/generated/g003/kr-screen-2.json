@@ -5,12 +5,16 @@
   "midKey": "kr-screen",
   "subName": "2000년대 이후 한국 영화",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1999년 부산국제영화제 개막작으로 먼저 공개된 뒤 이듬해 1월 1일 극장에서 개봉했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송에서 흔히 — 명대사 패러디",
+     "difWhy": "V007: 묻는 사실: 명대사로 시작하는 이창동 영화 → 방송·밈에서 흔히 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "대중적 영화 제목",
      "acc": 5,
@@ -102,9 +106,9 @@
     "originalTitleVariants": [],
     "explanation": "산 낙지를 통째로 먹는 장면은 실제 낙지 네 마리를 써서 찍었다고 합니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "애호가 — 영화 조연 이름",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 오대수를 거둔 젊은 요리사(올드보이 여주인공) → 영화를 본 사람이 안다 — 관심 있는 사람 (GEN 4→3 내림)",
      "wor": 2,
      "worWhy": "팬 세부 — 유명 영화 조연",
      "acc": 5,
@@ -178,9 +182,9 @@
     "originalTitleVariants": [],
     "explanation": "국내에서는 DNA 감식을 할 수 없어 그의 시료를 미국으로 보냈지만, 결과는 범인이라고도 아니라고도 말할 수 없게 나옵니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 영화 조연 이름",
+     "difWhy": "V007: 묻는 사실: 노래 신청 단서로 쫓은 세 번째 용의자(손이 고운) 이름 → 영화 줄거리 세부, 영화 애호가가 안다 — 대학 교양/애호가 (GEN 4→4)",
      "wor": 2,
      "worWhy": "팬 세부 — 유명 영화 조연",
      "acc": 5,
@@ -247,16 +251,16 @@
     "originalTitleVariants": [],
     "explanation": "민혁 역은 박서준이 특별 출연으로 맡았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 기생충 명장면 소품",
+     "difWhy": "V007: 묻는 사실: 기생충에서 재물운을 가져다준다며 선물한 물건 → 영화를 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 대중 영화 상징",
      "acc": 5,
      "accWhy": "한국 영화·드라마 — 전 국민 일상"
     },
-    "generalHint": "영화에 쓰인 이 소품은 지금 미국 아카데미 영화 박물관에 전시되어 있다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "영화에 쓰인 이 소품은 미국 아카데미 영화 박물관에 전시된 적이 있다.",
+    "generalHintVersion": "hint-v3+v007",
     "layer": "팬 세부",
     "genre": "영화",
     "work": "기생충",
@@ -320,9 +324,9 @@
     "originalTitleVariants": [],
     "explanation": "허영만의 원작 만화 '타짜 1부: 지리산 작두'는 1960년대가 배경이지만, 영화는 1990년대로 옮겨 그렸습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 유명 영화 조연",
+     "difWhy": "V007: 묻는 사실: 유해진이 연기한 타짜 이름 → 영화를 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "유명 작품의 주요 조연",
      "acc": 5,

@@ -5,12 +5,16 @@
   "midKey": "medicine",
   "subName": "질병",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "메리 맬런은 1907년 뉴욕 이스트강의 노스브라더섬에 처음 격리되었고, 풀려났다가 1915년 다시 붙잡힌 뒤 1938년 숨질 때까지 그 섬에서 지냈습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 보균자 일화",
+     "difWhy": "V007: 묻는 사실: 증상 없는 보균자로 뉴욕에서 병을 퍼뜨린 요리사 메리 맬런 → 장티푸스 — 고교 생명/관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 감염병 상식",
      "acc": 4,
@@ -97,9 +101,9 @@
     "originalTitleVariants": [],
     "explanation": "그 펌프의 우물은 오래된 오물 구덩이에서 1미터 남짓 떨어져 있었고, 병을 앓던 아기의 기저귀를 빤 물이 이 구덩이로 흘러든 것이 시작이었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 역학의 시작",
+     "difWhy": "V007: 묻는 사실: 브로드가 펌프와 존 스노의 점 지도 → 콜레라 — 고교 생명/보건 교양 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 의학사",
      "acc": 4,
@@ -165,9 +169,9 @@
     "originalTitleVariants": [],
     "explanation": "대형 건물의 냉각탑·온수 탱크 같은 곳의 오염된 물이 미세한 물방울로 퍼질 때 들이마셔 걸리며, 사람 사이에는 대개 옮지 않습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "뉴스 — 여름철 감염병",
+     "difWhy": "V007: 묻는 사실: 1976 재향군인 대회 집단 폐렴의 병 → 레지오넬라증 — 뉴스(감염병), 경계 3 (GEN 2→2, 경계)",
      "wor": 4,
      "worWhy": "교양 — 질병 상식",
      "acc": 4,

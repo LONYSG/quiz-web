@@ -5,12 +5,16 @@
   "midKey": "music-theory",
   "subName": "건반·타악기",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "그가 1720년에 만든 피아노가 뉴욕 메트로폴리탄 미술관에 남아 있지만, 크게 개조되어 원래 소리는 알 수 없습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 피아노 발명자",
+     "difWhy": "V007: 묻는 사실: 1688 메디치 궁정의 파도바 출신 악기 장인, 피아노 발명자 → 크리스토포리 — 대학 교양 악기사 (GEN 4→4, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 악기 발명",
      "acc": 4,

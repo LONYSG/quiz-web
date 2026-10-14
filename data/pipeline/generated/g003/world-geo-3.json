@@ -5,12 +5,16 @@
   "midKey": "world-geo",
   "subName": "랜드마크·지형",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "물이 거의 수직으로 떨어져, 물이 적을 때는 바닥에 닿기 전에 안개처럼 흩어지기도 합니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 3,
-     "difWhy": "관심층 — 세계 지리 폭포",
+     "version": "score-v2",
+     "dif": 2,
+     "difWhy": "V007: 묻는 사실: 세계에서 가장 높은 폭포(베네수엘라) → 엔젤 폭포 — 중학 사회 세계지리 (GEN 3→2, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 세계 지리",
      "acc": 4,
@@ -99,9 +103,9 @@
     "originalTitleVariants": [],
     "explanation": "맑고 건조한 하늘 덕분에 알마(ALMA) 같은 천문 관측 시설이 들어서 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계지리",
+     "difWhy": "V007: 묻는 사실: 칠레 북부 태평양 연안의 가장 메마른 사막 → 아타카마 사막 — 고교 세계지리 (GEN 3→3, 경계 2)",
      "wor": 4,
      "worWhy": "교양 — 세계 지형",
      "acc": 4,
@@ -173,9 +177,9 @@
     "originalTitleVariants": [],
     "explanation": "이름을 고른 것은 그의 후임 측량국장 앤드루 워였고, 조지 에베레스트 자신은 성을 '이브리스트'에 가깝게 발음했다고 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 지리 — 세계 최고봉",
+     "difWhy": "V007: 묻는 사실: Peak XV 에 측량국장 이름을 붙인 경위 → 에베레스트 — 히말라야 최고봉, 누구나 아는 대상(방송·뉴스) (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 지명 유래",
      "acc": 4,

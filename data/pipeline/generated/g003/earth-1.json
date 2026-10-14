@@ -5,12 +5,16 @@
   "midKey": "earth",
   "subName": "지질·암석",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "시카 포인트의 두 지층 사이에는 약 6,500만 년의 공백이 있으며, 2022년 국제지질과학연맹이 꼽은 세계 지질 유산 100곳의 첫 번째가 되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 지구과학",
+     "difWhy": "V007: 묻는 사실: 지층이 쌓이다 오랫동안 끊긴 경계면 → 부정합 — 고교 지구과학 정의 문장 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 지층 구조",
      "acc": 5,
@@ -105,9 +109,9 @@
     "originalTitleVariants": [],
     "explanation": "산스크리트어로 '곤드족의 숲'이라는 뜻이며, 오스트리아의 지질학자 에두아르트 쥐스가 이 이름을 붙였습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 지구과학",
+     "difWhy": "V007: 묻는 사실: 남반구 옛 초대륙, 인도 지역 이름 → 곤드와나 — 고교 지구과학 대륙 이동 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 대륙 이동",
      "acc": 5,

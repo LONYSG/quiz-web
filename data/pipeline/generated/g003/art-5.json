@@ -5,12 +5,16 @@
   "midKey": "art",
   "subName": "판화·공예",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "그 코뿔소는 교황 레오 10세에게 선물로 보내지던 중 배가 폭풍에 난파해 사슬에 묶인 채 물에 빠져 죽었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 서양 미술사",
+     "difWhy": "V007: 묻는 사실: 1515 인도코뿔소를 보지 않고 글·스케치만으로 목판화를 새긴 독일 화가 → 뒤러 — 대학 교양 서양 미술사 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 르네상스 화가",
      "acc": 4,
@@ -97,9 +101,9 @@
     "originalTitleVariants": [],
     "explanation": "1642년 독일의 군인이자 아마추어 화가 루트비히 폰 지겐이 처음 만든 것으로 알려져 있으며, 18세기 영국에서 초상화를 옮겨 찍는 데 널리 쓰여 프랑스에서는 '영국식 기법'이라 불렀습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 판화 기법",
+     "difWhy": "V007: 묻는 사실: 톱니 도구로 판 전체를 거칠게 한 뒤 밝은 곳을 깎는 동판화 기법 → 메조틴트 — 애호가·판화 기법 (GEN 4→4, 경계 5)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 판화",
      "acc": 4,

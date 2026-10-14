@@ -5,12 +5,16 @@
   "midKey": "world-cinema",
   "subName": "영화 용어·기법",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "해가 지평선 아래에 있는 해 뜨기 직전·해 진 직후의 푸르스름한 시간은 '블루 아워'라고 부릅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 촬영 용어",
+     "difWhy": "V007: 묻는 사실: 해 뜬 직후/지기 직전 붉고 부드러운 빛의 시간 이름 → 촬영·사진에 관심 있는 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 영화 촬영 용어",
      "acc": 4,

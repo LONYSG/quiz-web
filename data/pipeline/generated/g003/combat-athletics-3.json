@@ -5,12 +5,16 @@
   "midKey": "combat-athletics",
   "subName": "육상",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -28,14 +32,15 @@
     "question": "1912년 스톡홀름 올림픽에서 미국의 짐 소프가 이 종목을 우승하자, 스웨덴 국왕 구스타프 5세가 그를 '세계 최고의 운동선수'라 불렀다고 전합니다. 그 뒤 이 종목 우승자에게 같은 칭호를 붙이는 전통이 생겼습니다. 이틀에 걸쳐 100m 달리기로 시작해 1500m 달리기로 끝나는 이 남자 육상 종목은 무엇일까요?",
     "answer": "십종 경기",
     "acceptedAnswers": [
-     "데카슬론"
+     "데카슬론",
+     "10종경기"
     ],
     "originalTitleVariants": [],
     "explanation": "첫날은 멀리뛰기·포환던지기·높이뛰기·400m가, 둘째 날은 110m 허들·원반던지기·장대높이뛰기·창던지기가 100m와 1500m 사이에 이어집니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 올림픽 종목",
+     "difWhy": "V007: 묻는 사실: 이틀 100m~1500m 남자 육상 종목·짐 소프 → 십종 경기 — 방송·뉴스 (GEN 2→2, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 육상 종목",
      "acc": 4,
@@ -101,9 +106,9 @@
     "originalTitleVariants": [],
     "explanation": "당시 수련의였던 그는 뒤에 신경과 의사가 되었고, 그의 기록은 46일 만에 존 랜디가 깼습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 육상 역사",
+     "difWhy": "V007: 묻는 사실: 1마일 4분 벽을 처음 깬 영국 선수 → 로저 배니스터 — 육상 역사 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 4분 벽 깬 인물",
      "acc": 4,
@@ -169,9 +174,9 @@
     "originalTitleVariants": [],
     "explanation": "4년 전 로마 대회에서는 새 신발이 물집을 일으키자 맨발로 달려 우승했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 마라톤사",
+     "difWhy": "V007: 묻는 사실: 맹장 수술 5주 뒤 도쿄 마라톤을 제패한 에티오피아 선수 → 아베베 비킬라 — \"맨발의 아베베\" 로 알려진 관심층 (GEN 3→3, 경계 2)",
      "wor": 3,
      "worWhy": "유명 선수 이름 맞히기",
      "acc": 4,
@@ -233,9 +238,9 @@
     "originalTitleVariants": [],
     "explanation": "그는 1948년 런던 올림픽에 대한민국 대표로 나섰고, 뒤에 1988년 서울 올림픽 남자 육상 감독을 맡았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 육상 역사 인물",
+     "difWhy": "V007: 묻는 사실: 1947 보스턴 마라톤 우승 한국 선수 → 서윤복 — 한국 마라톤사 애호가 (GEN 4→4, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 한국 스포츠사",
      "acc": 4,

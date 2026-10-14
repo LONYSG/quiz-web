@@ -5,12 +5,16 @@
   "midKey": "symbols",
   "subName": "기호·아이콘",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "디자이너 제럴드 홀텀은 깃발 수기 신호의 N 과 D 를 겹쳐 이 모양을 만들었고, 런던에서 올더마스턴 원자무기 연구소까지 걷는 행진에서 처음 쓰였습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 평화 기호 유래",
+     "difWhy": "V007: 묻는 사실: 평화 기호가 만들어진 운동의 목표 — 방송·뉴스 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 기호 유래",
      "acc": 5,
@@ -99,9 +103,9 @@
     "originalTitleVariants": [],
     "explanation": "처음에는 사과 로고를 넣으려 했지만, 스티브 잡스가 메뉴마다 로고가 넘쳐 난다며 반대해 디자이너 수전 케어가 기호 사전에서 찾아냈습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 맥 키보드 기호",
+     "difWhy": "V007: 묻는 사실: ⌘ 기호가 새겨진 맥 키보드 키 — 맥을 쓰는 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 기호 유래",
      "acc": 5,

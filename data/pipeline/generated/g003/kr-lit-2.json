@@ -5,12 +5,16 @@
   "midKey": "kr-lit",
   "subName": "고전 시가",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,16 +35,16 @@
     "originalTitleVariants": [],
     "explanation": "'악학궤범'에 실려 전하며, 조선 중종 때 '정읍사'와 함께 음란하다는 이유로 궁중에서 금지되었다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 문학 — 고려가요",
+     "difWhy": "V007: 묻는 사실: 서사+12달 연의 월령체 고려가요(6월 보름 빗 비유) → 동동 — 고교 문학 고려가요 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 고전 시가",
      "acc": 5,
      "accWhy": "한국 문학 — 중고교 국어 교과"
     },
-    "generalHint": "서사 한 연과 열두 달 연을 합쳐 모두 13연이며, 지은이와 지은 때는 알려져 있지 않다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "고려 때부터 조선에 이르기까지 묘정에서 〈아박〉과 함께 불렸다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/동동_(고려가요)",
      "https://ko.wikipedia.org/wiki/유두_(명절)"
@@ -102,9 +106,9 @@
     "originalTitleVariants": [],
     "explanation": "정철이 '사미인곡'에 이어 그 속편으로 지은 작품으로, 언어 구사와 간절함이 더 뛰어나다는 평을 받는다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 고전 시가",
+     "difWhy": "V007: 묻는 사실: 정철의 가사 중 두 여인 대화체 작품 → 속미인곡 — 고교 국어 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 고전 문학",
      "acc": 5,
@@ -172,9 +176,9 @@
     "originalTitleVariants": [],
     "explanation": "고려가요 가운데 지은이가 밝혀진 유일한 작품으로 꼽히며, '악학궤범'에는 곡조 이름인 '삼진작'으로 실렸다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 고려가요",
+     "difWhy": "V007: 묻는 사실: 정서가 유배지에서 산접동새에 자신을 빗댄 고려가요 → 정과정 — 고교 국어 고려가요 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 고려가요",
      "acc": 5,
@@ -244,9 +248,9 @@
     "originalTitleVariants": [],
     "explanation": "사절단은 500명에 이르렀고, 일행은 1764년 7월 8일에 돌아왔다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "수능 심화 — 조선 후기 기행 가사",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 통신사 서기가 쓴 장편 일본 기행 가사 → 일동장유가 — 고교 국어 고전 시가 (GEN 4→3, 경계 4)",
      "wor": 5,
      "worWhy": "교과서 — 고전 시가 작품",
      "acc": 5,

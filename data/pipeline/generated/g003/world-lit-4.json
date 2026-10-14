@@ -5,12 +5,16 @@
   "midKey": "world-lit",
   "subName": "시·희곡",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "첫 줄 '4월은 가장 잔인한 달'로 널리 알려져 있고, 영국 '크라이티리언'과 미국 '다이얼'에 거의 같은 때 실렸다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 영미 현대시",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 엘리엇의 1922 장시(파운드가 다듬음) → 황무지 — 고교 문학 (GEN 4→3, 가장 쉬운 단서 '엘리엇의 1922 장시' 가 교과 지식)",
      "wor": 4,
      "worWhy": "교양 — 현대시 대표작",
      "acc": 4,
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "빠진 여섯 편에 대한 프랑스의 금지는 거의 백 년 뒤인 1949년에야 풀렸다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계문학 — 상징주의 시",
+     "difWhy": "V007: 묻는 사실: 1857 공중도덕 모독으로 기소된 보들레르의 시집 → 악의 꽃 — 고교 세계문학 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 세계 문학 명작",
      "acc": 4,

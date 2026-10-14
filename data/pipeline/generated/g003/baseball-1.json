@@ -5,12 +5,16 @@
   "midKey": "baseball",
   "subName": "규칙",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "라인드라이브나 번트 뜬공에는 적용되지 않으며, 1895년 내셔널리그가 처음 도입했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 야구 규칙",
+     "difWhy": "V007: 묻는 사실: 무사/1사 1·2루 내야 뜬공 자동 아웃 규칙 → 인필드 플라이 — 야구 규칙 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "야구 대표 규칙 이름",
      "acc": 4,
@@ -91,15 +95,15 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "2008년 베이징 올림픽 야구에서는 10회까지 비기면 11회부터 무사 1·2루에서 공격을 시작하게 했습니다. 이처럼 연장전에서 공격 쪽에 유리한 조건을 주어 빨리 승부를 가리는 규칙을 무엇이라 할까요?",
+    "question": "2008년 베이징 올림픽 야구에서는 10회까지 비기면 11회부터 무사 1·2루에서 공격을 시작하게 했습니다. 이처럼 연장전에서 공격 쪽에 유리한 조건을 주어 경기를 빨리 끝내려는 규칙을 무엇이라 할까요?",
     "answer": "승부치기",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
     "explanation": "베이징 올림픽 때는 1·2루에 내보낼 두 주자를 공격 팀이 골라 타순을 조정할 수 있었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 야구 규칙",
+     "difWhy": "V007: 묻는 사실: 연장전 무사 1·2루 시작 규칙 → 승부치기 — 야구 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 연장전 규칙",
      "acc": 4,
@@ -165,9 +169,9 @@
     "originalTitleVariants": [],
     "explanation": "2014년 8월 5일 사직야구장에서는 조명이 꺼져 멈춘 경기를 다음 날 이어서 치렀습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 야구 규칙",
+     "difWhy": "V007: 묻는 사실: 중단 뒤 같은 상황에서 이어 치르는 경기 → 서스펜디드 게임 — 야구 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 경기 중단 규칙",
      "acc": 4,

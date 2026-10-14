@@ -5,12 +5,16 @@
   "midKey": "art",
   "subName": "미술 사조",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "보초니의 조각 '공간 속 연속성의 독특한 형태'는 이탈리아 20센트 유로 동전에 새겨져 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 미술 — 미술 사조",
+     "difWhy": "V007: 묻는 사실: 1909 마리네티가 속도·기계를 찬양한 이탈리아 예술 운동 → 미래주의 — 고교 미술 사조 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 미술 사조",
      "acc": 4,
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "회원들은 작품에 이름과 함께 모임의 머리글자 'PRB'를 적어 넣기로 약속했고, 비평가 러스킨이 신문 '더 타임스'에 글을 보내 이들을 옹호했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 서양 미술 사조",
+     "difWhy": "V007: 묻는 사실: 1848 런던에서 로세티·밀레이·헌트가 아카데미 화풍을 거부해 만든 모임 → 라파엘전파 — 대학 교양 서양 미술사 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 미술 사조",
      "acc": 4,

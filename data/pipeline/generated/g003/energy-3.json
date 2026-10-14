@@ -5,12 +5,16 @@
   "midKey": "energy",
   "subName": "자원·연료",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -25,7 +29,7 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "깊은 바다 밑 퇴적층이나 툰드라 땅속에는 천연가스가 낮은 온도와 높은 압력에서 물 분자에 갇혀 얼음처럼 굳은 물질이 있습니다. 불을 붙이면 타올라 '불타는 얼음'이라 불리는 이 물질은?",
+    "question": "깊은 바다 밑 퇴적층이나 툰드라 땅속에는, 탄소 원자 하나에 수소 원자 넷이 붙은 기체가 낮은 온도와 높은 압력에서 물 분자의 결정 구조에 갇혀 얼음처럼 굳은 물질이 있습니다. 불을 붙이면 타올라 '불타는 얼음'이라 불리는 이 물질은?",
     "answer": "메탄 하이드레이트",
     "acceptedAnswers": [
      "메테인 하이드레이트"
@@ -33,16 +37,16 @@
     "originalTitleVariants": [],
     "explanation": "2013년 일본이 난카이 해곡의 해저에서 이 물질로부터 가스를 뽑아내는 첫 바다 생산 시험에 성공했다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 지구과학 — 자원",
+     "difWhy": "V007: 묻는 사실: 천연가스가 물 분자에 갇힌 \"불타는 얼음\" → 메탄 하이드레이트 — 고교 지구과학/뉴스, 경계 2 (GEN 3→3, 경계)",
      "wor": 4,
      "worWhy": "시사 상식 — 미래 에너지",
      "acc": 4,
      "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
     },
-    "generalHint": "물 분자가 바구니처럼 기체 분자를 가둔 구조이며, 녹이면 부피의 160배쯤 되는 기체가 나온다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "한 덩이가 녹으면 그 부피의 160배쯤 되는 기체가 풀려난다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/메테인_하이드레이트",
      "https://en.wikipedia.org/wiki/Methane_clathrate"

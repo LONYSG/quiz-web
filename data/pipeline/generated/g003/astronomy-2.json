@@ -5,12 +5,16 @@
   "midKey": "astronomy",
   "subName": "별·별자리",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이름은 '암탉의 꼬리'라는 아랍어에서 왔으며, 자전축의 세차 때문에 9800년 무렵에는 북극 가까이에 오게 된다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 지구과학 — 여름 대삼각형",
+     "difWhy": "V007: 묻는 사실: 여름 대삼각형에서 베가·알타이르 말고 나머지 별 → 데네브 — 고교 지구과학 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 별자리·칠석",
      "acc": 5,

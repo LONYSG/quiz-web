@@ -5,12 +5,16 @@
   "midKey": "pets-garden",
   "subName": "화초·원예",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "포엽이 붉게 물들려면 한 번에 14시간 넘는 어둠이 6~8주 이어져야 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송에서 흔히 — 크리스마스 화초",
+     "difWhy": "V007: 묻는 사실: 붉은 포엽의 크리스마스 화초, 초대 멕시코 공사 이름이 붙음 → 포인세티아 — 방송에서 흔히 (GEN 2→2, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 포엽·이름 유래",
      "acc": 4,
@@ -99,9 +103,9 @@
     "originalTitleVariants": [],
     "explanation": "이런 식물은 밤중에 몇 분만 빛을 비춰도 꽃을 피우지 않습니다. 처음에는 낮의 길이가 중요하다고 여겼다가 나중에 밤의 길이가 핵심임이 밝혀졌습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 생명과학 — 광주기성",
+     "difWhy": "V007: 묻는 사실: 밤이 기준보다 길어져야 꽃피는 식물군의 이름 → 단일식물 — 고교 생명과학 광주기성 (GEN 3→3, 경계 4: 이름은 '낮'인데 묻기는 '밤')",
      "wor": 5,
      "worWhy": "교과 — 단일식물",
      "acc": 4,
@@ -173,9 +177,9 @@
     "originalTitleVariants": [],
     "explanation": "흔히 흑요석이 물을 머금어 생긴 돌이 원료이고, 달구면 부피가 7~16배로 늘어나며 흙이 굳어 다져지는 것을 막아 준다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 원예 기본 재료",
+     "difWhy": "V007: 묻는 사실: 분갈이 흙에 섞는 팽창한 화산 유리 — 원예 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 원예 재료",
      "acc": 4,

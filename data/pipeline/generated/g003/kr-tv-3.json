@@ -5,12 +5,16 @@
   "midKey": "kr-tv",
   "subName": "광고",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "광고가 크게 유행하자 이 말을 상표로 쓴 '델몬트 따봉' 주스까지 나왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 80년대 광고 유행어",
+     "difWhy": "V007: 묻는 사실: 광고 속 포르투갈어 외침 → 방송 광고에서 흔히 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유행어 유래",
      "acc": 5,
@@ -96,9 +100,9 @@
     "originalTitleVariants": [],
     "explanation": "비슷한 무렵 SK텔레콤 TTL(1999년) 광고도 대사 없이 신비로운 소녀의 모습만 보여 주는 티저 방식으로 화제가 됐습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 광고 문구",
+     "difWhy": "V007: 묻는 사실: 마이클럽 티저 벽보 문구 → 2000년대 광고를 기억하는 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유명 광고",
      "acc": 5,

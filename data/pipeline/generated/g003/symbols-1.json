@@ -5,12 +5,16 @@
   "midKey": "symbols",
   "subName": "국기·국장",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이 도시 자리가 오늘날의 멕시코시티이고, 국기의 문장도 아스테카의 테노치티틀란 상징에서 왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계사 — 아스테카",
+     "difWhy": "V007: 묻는 사실: 국기 독수리 전설대로 아스테카인이 세운 도시 — 고교 세계사 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 아스테카 수도",
      "acc": 5,

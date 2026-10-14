@@ -5,12 +5,16 @@
   "midKey": "pets-garden",
   "subName": "반려동물 관리",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "덴마크는 1970년대 중반부터 중성화한 고양이를 문신과 귀 끝 자르기로 표시하며 이 방식을 써 왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 길고양이 관리",
+     "difWhy": "V007: 묻는 사실: 길고양이를 잡아 중성화 후 제자리에 방사하는 관리 방식의 영문 약칭 → TNR — 관심 있는 사람·뉴스 (GEN 3→3, 경계 2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 동물 관리 제도",
      "acc": 4,
@@ -95,9 +99,9 @@
     "originalTitleVariants": [],
     "explanation": "루가스는 이 내용을 '개와 대화하기'라는 뜻의 책으로 펴냈고, 2006년에 2판이 나왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 반려견 행동",
+     "difWhy": "V007: 묻는 사실: 개의 하품·입술 핥기를 갈등 회피 신호로 이름 붙인 용어 → 카밍 시그널 — 반려견 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 반려견 신호",
      "acc": 4,

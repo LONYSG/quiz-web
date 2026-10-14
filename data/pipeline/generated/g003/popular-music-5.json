@@ -5,12 +5,16 @@
   "midKey": "popular-music",
   "subName": "힙합·일렉트로닉",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이름은 두 사람의 전 밴드를 '바보 같은 펑크풍 소음'이라고 깎아내린 음악 잡지 리뷰에서 따왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 해외 전자음악",
+     "difWhy": "V007: 묻는 사실: 파리 로봇 헬멧 전자음악 듀오 → 팝을 듣는 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "유명 그룹 이름 맞히기",
      "acc": 3,

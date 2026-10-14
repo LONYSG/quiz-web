@@ -5,12 +5,16 @@
   "midKey": "kr-geo",
   "subName": "행정구역·도시",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "같은 해 이 고을에 강원감영이 설치되어, 조선 시대 강원도 행정의 중심이 되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 지리 — 도명 유래",
+     "difWhy": "V007: 묻는 사실: 강원도 이름에서 강릉과 함께 쓰인 고을 → 원주 — 중학 지리·상식 (GEN 2→2)",
      "wor": 4,
      "worWhy": "교양 — 강원도 이름",
      "acc": 5,
@@ -89,9 +93,9 @@
     "originalTitleVariants": [],
     "explanation": "뒤에 '강남'이 이 지역을 가리키는 이름으로 자리 잡았고, 옛 이름은 영동대교 같은 이름에 남아 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 강남 지명",
+     "difWhy": "V007: 묻는 사실: 강남 개발 때 '영동' 이 가리키는 기준 지역 → 영등포 — 서울 지명 상식, 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 영동 유래",
      "acc": 5,
@@ -162,9 +166,9 @@
     "originalTitleVariants": [],
     "explanation": "이 군 말고도 공주시 장기면·반포면과 충청북도 청원군 부용면 일원이 세종시에 들어갔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 행정구역 변천",
+     "difWhy": "V007: 묻는 사실: 세종시 면적 대부분을 이루던 충남의 폐지된 군 → 연기군 — 지역 상식, 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 세종시 출범",
      "acc": 5,
@@ -228,16 +232,16 @@
     "originalTitleVariants": [],
     "explanation": "폭발 당시 근처 극장에서 공연하던 가수 하춘화를 무명 희극인 이주일이 업고 병원으로 뛰어간 일로 이주일이 이름을 알렸다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 옛 지명·현대사 사고",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 이리역 폭발 사고 도시의 옛 이름 → 이리 — 관심 있는 사람·현대사 (GEN 4→3, 경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 이리역 폭발·익산 옛 이름",
      "acc": 5,
      "accWhy": "한국 지리 — 초중 사회 교과"
     },
-    "generalHint": "1931년 군청이 있던 익산읍이 이 이름의 읍으로 이름을 바꾼 것이 시의 출발이다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "1931년 익산읍이 이 이름의 읍으로 이름을 바꾼 것이 시의 출발이다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/이리시",
      "https://ko.wikipedia.org/wiki/이리역_폭발_사고"

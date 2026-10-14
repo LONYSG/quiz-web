@@ -5,12 +5,16 @@
   "midKey": "world-history-west",
   "subName": "20세기 서양",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "1951년 유럽석탄철강공동체 설립 조약으로 이어졌고, 유럽연합은 1985년부터 5월 9일을 '유럽의 날'로 정해 이 선언을 기념해 왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 유럽 통합사",
+     "difWhy": "V007: 묻는 사실: 1950.5.9 프랑스 외무장관이 석탄·철강 초국가 기구를 제안한 선언 → 슈만 선언 — 대학 교양 유럽 통합사 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — EU 기원",
      "acc": 4,

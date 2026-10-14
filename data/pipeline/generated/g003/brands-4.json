@@ -5,12 +5,16 @@
   "midKey": "brands",
   "subName": "기업 국적",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이름에 쓰인 'ä'는 덴마크어에 없는 글자이고, 창업자는 아무 뜻 없는 소리를 늘어놓다가 마음에 드는 조합을 골랐다고 전합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 브랜드 국적 이야기",
+     "difWhy": "V007: 묻는 사실: 덴마크풍으로 지어낸 이름의 1960 브롱크스 아이스크림 → 하겐다즈 — 관심층 (GEN 3→3, 경계 2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유명 브랜드 유래",
      "acc": 5,
@@ -106,9 +110,9 @@
     ],
     "explanation": "브랜드 이름은 창업한 형제의 성에서 왔고, 지금은 서울에 본사를 두고 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "뉴스 — 브랜드 국적",
+     "difWhy": "V007: 묻는 사실: 이탈리아 형제 속옷에서 출발해 2007 한국 법인이 인수한 스포츠 브랜드 → 휠라 — 방송·뉴스에서 흔히 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 브랜드 인수",
      "acc": 5,

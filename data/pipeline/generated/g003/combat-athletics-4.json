@@ -5,12 +5,16 @@
   "midKey": "combat-athletics",
   "subName": "수영·수상 종목",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -92,9 +96,9 @@
     "originalTitleVariants": [],
     "explanation": "1936년 베를린 올림픽에서는 접영 팔 동작에 이 영법의 발차기를 섞어 헤엄친 선수들도 있었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 수영 영법",
+     "difWhy": "V007: 묻는 사실: 접영이 갈라져 나온 영법 → 평영 — 수영 영법사를 아는 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 접영 기원",
      "acc": 4,
@@ -156,9 +160,9 @@
     "originalTitleVariants": [],
     "explanation": "다른 한쪽 배는 한쪽 무릎을 꿇은 채 외날 노를 한쪽으로만 젓고, J 스트로크로 방향을 잡습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "일상 — 수상 종목",
+     "difWhy": "V007: 묻는 사실: 앞 보고 앉아 양날 노·발 키로 가는 배 → 카약 — 방송·뉴스에서 흔히 (GEN 2→2, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 배 종류 구분",
      "acc": 4,

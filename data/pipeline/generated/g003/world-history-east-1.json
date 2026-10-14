@@ -5,12 +5,16 @@
   "midKey": "world-history-east",
   "subName": "중국 왕조",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "반란군 장수였다가 882년 당에 투항한 주온은 907년 당을 무너뜨리고 후량을 세웠습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 최치원 격문",
+     "difWhy": "V007: 묻는 사실: 881 장안을 점령한 소금 밀매 출신의 반란, 최치원의 토황소격문 → 황소의 난 — 고교 한국사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 토황소격문",
      "acc": 4,
@@ -105,9 +109,9 @@
     "originalTitleVariants": [],
     "explanation": "흠종의 아우 조구가 남쪽으로 내려가 고종으로 즉위해 송을 다시 세웠고, 이를 남송이라 부릅니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "수능 심화 — 중국사 사건",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 1127 금이 북송 수도를 함락하고 휘종·흠종을 사로잡은 사건, 흠종 연호 → 정강의 변 — 고교 세계사 송 (GEN 4→3, 경계 4)",
      "wor": 4,
      "worWhy": "교양 — 송 왕조 전환점",
      "acc": 4,

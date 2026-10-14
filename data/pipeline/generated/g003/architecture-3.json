@@ -5,12 +5,16 @@
   "midKey": "architecture",
   "subName": "유명 건축물",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "정면에는 마르쿠스 아그리파가 지었다는 라틴어 글귀가 있지만, 지금 건물은 하드리아누스 황제 때 다시 지은 것이다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 고대 로마 건축",
+     "difWhy": "V007: 묻는 사실: 라파엘로가 묻힌 로마의 오쿨루스 돔 건물 → 판테온 — 고교 세계사·미술 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 세계 유명 건축",
      "acc": 3,
@@ -101,16 +105,16 @@
     "originalTitleVariants": [],
     "explanation": "웃손은 2003년 프리츠커상을 받았고, 그가 살아 있던 2007년 이 건물은 유네스코 세계유산이 되었다.",
     "score": {
-     "version": "score-v1",
-     "dif": 2,
-     "difWhy": "방송 — 세계적 랜드마크",
+     "version": "score-v2",
+     "dif": 4,
+     "difWhy": "V007: 묻는 사실: 웃손이 공사 중 사임해 완공을 못 본 건물 → 시드니 오페라 하우스 — 대학 교양 건축사 (GEN 2→4, 올림; 이름은 흔하나 단서가 경위 세부)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유명 건축물",
      "acc": 3,
      "accWhy": "건축 — 관심층이면 안다"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "웃손은 쿠웨이트 국회의사당도 설계했고, 그 건물은 1982년에 완공되었다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://en.wikipedia.org/wiki/Sydney_Opera_House",
      "https://ko.wikipedia.org/wiki/시드니_오페라_하우스"
@@ -172,9 +176,9 @@
     "originalTitleVariants": [],
     "explanation": "빨강은 사람이 오르내리는 동선과 소화기 같은 안전 설비에 칠했다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 유명 건축",
+     "difWhy": "V007: 묻는 사실: 배관·덕트를 바깥에 색으로 드러낸 1977 파리 문화 시설 → 퐁피두 센터 — 관심 있는 사람 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 대표 현대 건축",
      "acc": 3,
@@ -243,9 +247,9 @@
     ],
     "explanation": "프랭크 로이드 라이트의 대표작으로, 2019년 그가 지은 다른 건물 7곳과 함께 유네스코 세계유산에 올랐습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 근대 건축",
+     "difWhy": "V007: 묻는 사실: 폭포 위에 지은 캔틸레버 주말 별장 — 근대 건축 교양 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 대표 건축물",
      "acc": 3,

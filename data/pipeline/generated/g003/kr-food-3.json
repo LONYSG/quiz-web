@@ -5,12 +5,16 @@
   "midKey": "kr-food",
   "subName": "분식·길거리 음식",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "고추장 떡볶이는 1953년 마복림이 서울 신당동 공터에서 팔던 것에서 시작되었다고 합니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 1,
-     "difWhy": "일상 — 떡볶이 종류",
+     "version": "score-v2",
+     "dif": 2,
+     "difWhy": "V007: 묻는 사실: 간장·소고기 넣은 맵지 않은 떡볶이 → 궁중떡볶이 — 방송·식당 메뉴에서 흔함 (GEN 1→2 올림)",
      "wor": 3,
      "worWhy": "이야깃거리 — 음식 이름",
      "acc": 5,
@@ -102,9 +106,9 @@
     "originalTitleVariants": [],
     "explanation": "함경도식 순대를 변형한 것으로, 숙주와 배춧잎도 소에 들어갑니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송에서 흔히 — 지역 음식",
+     "difWhy": "V007: 묻는 사실: 속초 청호동(아바이마을) 실향민 특산 대창 순대 → 아바이순대 — 방송에서 흔히 (GEN 2→2, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 실향민 음식",
      "acc": 5,
@@ -160,15 +164,15 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "붕어빵은 19세기 말 일본에서 만들어진 것으로 추정되는 빵이 1930년대 한국에 들어와 모양이 바뀐 것으로 알려져 있습니다. 일본의 원조 빵은 어떤 생선 모양이었을까요?",
+    "question": "붕어빵은 일본에서 처음 만들어진 빵이 1930년대 한국에 들어와 모양이 바뀐 것으로 알려져 있습니다. 일본의 원조 빵은 어떤 생선 모양이었을까요?",
     "answer": "도미",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
     "explanation": "이 생선이 비싸고 귀해 먹지 못하자 모양만이라도 빵으로 만들어 먹자는 생각에서 나왔다고 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 음식 유래",
+     "difWhy": "V007: 묻는 사실: 붕어빵의 일본 원조 빵(타이야키)의 생선 → 도미 — 음식 유래, 관심 있는 사람 (GEN 3→3, 경계 2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 붕어빵 원조",
      "acc": 5,

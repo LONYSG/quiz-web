@@ -5,12 +5,16 @@
   "midKey": "material",
   "subName": "토목 구조물",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "개통 이듬해 서커스 흥행사 바넘이 코끼리 점보를 앞세워 21마리를 건너게 해 다리가 튼튼하다는 것을 알렸다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 건축사",
+     "difWhy": "V007: 묻는 사실: 로블링 부자와 에밀리가 완공한 1883 뉴욕의 다리 → 브루클린 다리 — 건축사 관심층, 경계 2 (GEN 3→3, 경계)",
      "wor": 3,
      "worWhy": "이야깃거리 — 다리 건설 일화",
      "acc": 2,

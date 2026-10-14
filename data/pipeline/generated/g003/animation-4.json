@@ -5,12 +5,16 @@
   "midKey": "animation",
   "subName": "유럽 애니메이션",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "벨기에 원작 쪽의 이브 델포르트가 '스머프를 죽이려는 자'에게 어울린다며 죽음의 천사 이름을 붙였습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 스머프 조연",
+     "difWhy": "V007: 묻는 사실: 가가멜의 고양이 이름(작품 조연) → 스머프를 본 사람은 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "팬 세부 — 유명 작품 조연",
      "acc": 4,
@@ -98,9 +102,9 @@
     "originalTitleVariants": [],
     "explanation": "토베 얀손이 한때 약혼했던 친구 아토스 비르타넨을 본떠 만든 캐릭터이며, 꼬마 미이와는 배다른 남매입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 무민 주요 인물",
+     "difWhy": "V007: 묻는 사실: 무민의 가장 친한 친구(텐트·하모니카) → 무민 팬이 안다 — 관심 있는 사람 (GEN 3→3, 경계 4)",
      "wor": 2,
      "worWhy": "팬 세부 — 유명 작품 조연",
      "acc": 4,

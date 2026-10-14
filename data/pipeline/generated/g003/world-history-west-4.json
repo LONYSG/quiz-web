@@ -5,12 +5,16 @@
   "midKey": "world-history-west",
   "subName": "근대 유럽·혁명",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -25,7 +29,7 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "1789년 6월 제3신분 대표들이 국민의회를 선언하자 루이 16세는 해산을 명령하고 회의장을 닫아 버렸습니다. 대표들이 베르사유의 한 실내 구기 경기장으로 옮겨 모여 헌법이 제정될 때까지 해산하지 않겠다고 맹세한 이 사건은?",
+    "question": "1789년 6월 제3신분 대표들이 국민의회를 선언하자 국왕 쪽은 회의장을 닫아 버렸습니다. 대표들은 베르사유의 한 실내 구기 경기장으로 옮겨 헌법이 제정될 때까지 해산하지 않겠다고 맹세했습니다. 이 사건은 무엇일까요?",
     "answer": "테니스코트의 서약",
     "acceptedAnswers": [
      "테니스코트 서약",
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "국왕이 군대로 의회를 누르려 하자 파리 시민들이 7월 14일 바스티유 감옥을 습격하며 맞섰습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계사 — 프랑스 혁명",
+     "difWhy": "V007: 묻는 사실: 헌법 제정 때까지 해산 않겠다 맹세한 1789 베르사유 구기장 사건 → 테니스코트의 서약 — 고교 세계사 프랑스 혁명 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 프랑스 혁명",
      "acc": 4,
@@ -104,16 +108,16 @@
     "originalTitleVariants": [],
     "explanation": "가톨릭교회가 진실을 외면하고 반유대주의 선동에 가담했다는 비판이 커지면서, 1905년 프랑스 정교분리법 제정으로 이어졌습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계사 — 근대 유럽",
+     "difWhy": "V007: 묻는 사실: 1894 악마섬에 유배된 유대계 포병 장교의 간첩 누명 사건 → 드레퓌스 사건 — 고교 세계사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 세계사",
      "acc": 4,
      "accWhy": "서양사 — 고교 세계사 교과"
     },
-    "generalHint": "1898년 1월 에밀 졸라가 신문 '로로르'에 대통령에게 보내는 공개 편지 '나는 고발한다'를 실었다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "1894년 9월 프랑스 군 정보기관이 독일 대사관에 들여보낸 가정부가 찢어진 쪽지를 찾아 넘기며 시작되었다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/드레퓌스_사건"
     ],
@@ -176,9 +180,9 @@
     "originalTitleVariants": [],
     "explanation": "아일랜드 대기근으로 식량이 절실해진 상황이 폐지를 앞당겼고, 경제사가들은 이를 영국이 자유무역으로 나아간 결정적 계기로 봅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계사 — 영국 자유무역",
+     "difWhy": "V007: 묻는 사실: 1815 수입 곡물 관세로 지주를 보호하다 1846 필이 폐지한 법 → 곡물법 — 고교 세계사 영국 자유무역 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 곡물법 폐지",
      "acc": 4,

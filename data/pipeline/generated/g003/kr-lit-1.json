@@ -5,12 +5,16 @@
   "midKey": "kr-lit",
   "subName": "고전 산문",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "지은이는 알려져 있지 않으며, '수성궁몽유록'이라는 다른 이름으로도 불린다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 고전 소설",
+     "difWhy": "V007: 묻는 사실: 수성궁 궁녀와 김 진사의 사랑 · 유영의 꿈 액자 소설 → 운영전 — 고교 국어 고전 소설 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 고전 소설",
      "acc": 5,
@@ -101,16 +105,16 @@
     "originalTitleVariants": [],
     "explanation": "다른 이름은 '삼국기봉'이며, 뒤에 주인공은 명나라 군대로 나갔다가 청군의 포로가 되어 그곳에서 맏아들 몽석을 만난다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "수능 심화 — 고전 소설",
+     "difWhy": "V007: 묻는 사실: 조위한 1621, 정유재란 때 헤어진 부부가 안남에서 재회하는 소설 → 최척전 — 수능 고전 소설 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 고전 문학",
      "acc": 5,
      "accWhy": "한국 문학 — 중고교 국어 교과"
     },
-    "generalHint": "남편과 헤어진 아내 옥영은 왜국 상선을 따라 안남에 왔다가 거기서 남편과 마주친다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "남편은 헤어진 뒤 명나라 장수 여유문을 따라 중국으로 건너갔다고 한다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://encykorea.aks.ac.kr/Article/E0057689"
     ],
@@ -171,9 +175,9 @@
     "originalTitleVariants": [],
     "explanation": "제목은 '범의 꾸짖음'이라는 뜻으로, 구덩이에서 나온 북곽 선생은 범을 만나 위선을 꾸지람 듣는다. '열하일기'의 '관내정사' 편에 실려 있다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 문학 — 박지원 한문소설",
+     "difWhy": "V007: 묻는 사실: 북곽 선생과 동리자 일화가 나오는 열하일기 한문 소설 → 호질 — 고교 문학 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 고전 문학",
      "acc": 5,
@@ -236,15 +240,15 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "고려 인종 때 임춘이 돈, 곧 엽전을 사람처럼 꾸며 그 일생을 전기 형식으로 쓴 가전 작품은?",
+    "question": "고려의 문인 임춘이 돈, 곧 엽전을 사람처럼 꾸며 그 일생을 전기 형식으로 쓴 가전 작품은?",
     "answer": "공방전",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
     "explanation": "주인공의 이름 '공방'은 가운데 구멍이 뚫린 엽전을 가리키는 말이며, 사람을 돈에 빗대어 권선징악을 꾀한 우화로 풀이된다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 문학 — 가전체",
+     "difWhy": "V007: 묻는 사실: 임춘이 엽전을 의인화해 쓴 가전 → 공방전 — 고교 국어 가전체 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 공방전",
      "acc": 5,
@@ -306,16 +310,16 @@
     "originalTitleVariants": [],
     "explanation": "박지원의 『방경각외전』에 실려 있으며, 천한 일을 하는 인물의 덕을 내세워 양반을 비판한 작품으로 읽힌다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "수능 심화 — 박지원 한문 소설",
+     "difWhy": "V007: 묻는 사실: 선귤자·엄 행수·자목이 나오는 박지원 한문 소설 → 예덕선생전 — 수능 심화 고전 소설 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 연암 대표작",
      "acc": 5,
      "accWhy": "한국 문학 — 중고교 국어 교과"
     },
-    "generalHint": "박지원은 이 작품을 거지 광문을 다룬 '광문자전', '마장전', '민옹전' 등과 한 책에 함께 묶었다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "이 소설을 쓴 박지원은 스무 살 무렵에 쓴 글들을 나이가 든 뒤 부끄러워해 자식들에게 모아 태우라고 했다고 전한다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/예덕선생전"
     ],

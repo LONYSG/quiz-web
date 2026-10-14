@@ -5,12 +5,16 @@
   "midKey": "kr-language",
   "subName": "사자성어",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,16 +35,16 @@
     "originalTitleVariants": [],
     "explanation": "그는 초나라 왕을 설득해 동맹을 이끌어 냈고, 돌아온 평원군은 그를 알아보지 못한 것을 부끄러워하며 상객으로 대우했다. '사기' 평원군열전에 나오는 이야기다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양·한자 — 고사성어",
+     "difWhy": "V007: 묻는 사실: 평원군의 식객 모수의 자천 일화 → 모수자천 — 사자성어, 한자 급수 고급·대학 교양 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 사자성어",
      "acc": 5,
      "accWhy": "한국어·한글 — 초중 국어 교과"
     },
-    "generalHint": "평원군은 함께 갈 스무 명 가운데 열아홉 명만 골라 놓고 마지막 한 자리를 채우지 못하고 있었다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "그는 칼을 쥐고 초왕 앞으로 나아가, 진나라 장수 백기가 초나라 도읍을 함락한 일을 들어 초왕을 압박했다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://zh.wikipedia.org/wiki/毛遂自薦"
     ],
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "염파가 웃통을 벗고 가시나무를 진 채 찾아가 사죄한 데서 '부형청죄'라는 말도 함께 나왔다. '사기' 염파·인상여열전에 실린 이야기다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "한자 급수 고급 — 사자성어",
+     "difWhy": "V007: 묻는 사실: 염파·인상여의 목을 베어 줄 만한 사귐 → 문경지교 — 사자성어, 한자 급수 고급 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 사자성어",
      "acc": 5,
@@ -171,9 +175,9 @@
     "originalTitleVariants": [],
     "explanation": "같은 고사에서 '길을 빌려 괵을 친다'는 뜻의 '가도벌괵'이라는 말도 나왔다. '좌전' 희공 5년의 이야기다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 한자 — 사자성어",
+     "difWhy": "V007: 묻는 사실: 우나라 궁지기의 간언에서 나온 사자성어 → 순망치한 — 중학 한자 성어 (GEN 2→2)",
      "wor": 4,
      "worWhy": "기본 사자성어",
      "acc": 5,

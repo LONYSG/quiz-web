@@ -5,12 +5,16 @@
   "midKey": "olympic",
   "subName": "하계 올림픽",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -96,9 +100,9 @@
     "originalTitleVariants": [],
     "explanation": "같은 대회 남자부 금메달은 영국의 저스틴 로즈가 차지했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 올림픽 금메달",
+     "difWhy": "V007: 묻는 사실: 2016 올림픽 여자 골프 금메달 한국 선수 → 박인비 — 방송·뉴스에서 흔히 (GEN 2→2, 경계 3)",
      "wor": 3,
      "worWhy": "유명 인물 이름 맞히기",
      "acc": 4,
@@ -156,11 +160,11 @@
     "answer": "피터 노먼",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "그는 이 일로 질책을 받아 1972년 대회 대표에서 빠졌고, 호주 의회는 2012년 그에게 공식 사과했습니다.",
+    "explanation": "그는 이 일 뒤 호주올림픽위원회의 주의를 받았고, 1972년 대회에 나서지 못한 것을 두고 이 일의 보복이라는 주장이 있습니다. 호주 하원은 2012년 그가 귀국 뒤 받은 대우를 두고 공식 사과했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 올림픽 사건사",
+     "difWhy": "V007: 묻는 사실: 1968 200m 시상식에서 두 선수와 연대한 호주 은메달리스트 → 피터 노먼 — 올림픽 사건사 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 블랙파워 경례",
      "acc": 4,

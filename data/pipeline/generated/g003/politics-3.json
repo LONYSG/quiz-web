@@ -5,12 +5,16 @@
   "midKey": "politics",
   "subName": "헌법·법 개념",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -28,16 +32,14 @@
     "question": "'참새를 잡으려고 대포를 쏘아서는 안 된다'는 법언으로 흔히 비유되는 원칙이 있습니다. 국가가 기본권을 제한할 때 목적의 정당성·수단의 적합성·침해의 최소성·법익의 균형성을 따지는, 한국 헌법재판소가 주로 쓰는 이 원칙의 이름은?",
     "answer": "과잉금지 원칙",
     "acceptedAnswers": [
-     "과잉금지의 원칙",
-     "비례의 원칙",
-     "비례 원칙"
+     "과잉금지의 원칙"
     ],
     "originalTitleVariants": [],
     "explanation": "19세기 후반 프로이센 경찰행정법에서 시작되어, 제2차 세계대전 뒤 독일 연방헌법재판소가 헌법 차원의 원리로 끌어올렸습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 정치와 법 — 기본권 제한",
+     "difWhy": "V007: 묻는 사실: 참새·대포 법언의 기본권 제한 4단계 심사 원칙 → 과잉금지 원칙 — 고교 정치와 법 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 과잉금지 원칙",
      "acc": 4,

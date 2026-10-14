@@ -5,12 +5,16 @@
   "midKey": "plants",
   "subName": "꽃·꽃말",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "중국에서는 '꽃의 왕'으로 불리며 부귀를 상징하고, 1903년 청나라 정부가 나라꽃으로 정한 적이 있다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 — 삼국유사 일화",
+     "difWhy": "V007: 묻는 사실: 선덕여왕이 향기 없음을 알아맞힌 꽃 그림의 꽃 → 모란 — 중학 한국사 일화 (GEN 2→2)",
      "wor": 4,
      "worWhy": "교양 — 선덕여왕 일화",
      "acc": 5,
@@ -96,9 +100,9 @@
     "originalTitleVariants": [],
     "explanation": "속 이름은 수마트라 벵쿨루의 부총독이던 영국인 스탬퍼드 래플스를 기려 붙였다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 세계 최대 꽃",
+     "difWhy": "V007: 묻는 사실: 기생·썩은 고기 냄새로 가장 큰 꽃 → 라플레시아 — 방송에서 흔히 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 특이 식물",
      "acc": 5,
@@ -166,9 +170,9 @@
     "originalTitleVariants": [],
     "explanation": "꽃 모양을 시계 문자판에 빗대 일본에서는 '도케이소(시계풀)', 이스라엘에서는 '시계꽃'이라 부르고, 영어 이름의 '패션'은 고난을 뜻하는 라틴어에서 왔습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 식물 이름",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 수난의 상징으로 여겨진 백향과와 같은 무리 덩굴 꽃 → 시계꽃/패션플라워 — 변형이 쉬운 길을 열어 3 (GEN 4→3) (GEN 4→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 꽃 이름 유래",
      "acc": 5,

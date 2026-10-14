@@ -5,12 +5,16 @@
   "midKey": "aerospace",
   "subName": "로켓·발사체",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "나치 친위대(SS)에 들어가 소령 계급까지 올랐던 이력 때문에 그의 평가는 지금도 엇갈린다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 우주 개발사",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: V-2를 이끌고 미국으로 건너가 새턴 V 설계 책임자가 된 공학자 → 폰 브라운 — 세 단서 모두 우주 개발사의 대표 일화(GEN 4→3) (GEN 4→3)",
      "wor": 4,
      "worWhy": "교양 — 로켓·아폴로 인물",
      "acc": 3,

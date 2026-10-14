@@ -5,12 +5,16 @@
   "midKey": "invention",
   "subName": "20세기 이후 발명",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -25,15 +29,15 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "1945년 레이시온사의 기술자 퍼시 스펜서는 레이더 장치 곁에서 일하다 주머니 속 초콜릿 바가 녹은 것을 알아챘습니다. 팝콘과 달걀로 실험을 이어 가 이 발견을 바탕으로 만든 가전제품은?",
+    "question": "1945년 레이시온사의 기술자 퍼시 스펜서는 레이더 장치 곁에서 일하다 주머니 속 캔디 바가 녹은 것을 알아챘습니다. 팝콘과 달걀로 실험을 이어 가 이 발견을 바탕으로 만든 가전제품은?",
     "answer": "전자레인지",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
     "explanation": "1947년 처음 팔린 제품의 이름은 '레이더레인지'였고, 몸집이 크고 물로 식혀야 하는 기계였다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 과학 — 발명 일화",
+     "difWhy": "V007: 묻는 사실: 레이더 곁에서 주머니 속 과자가 녹은 일을 계기로 발명된 가전 → 전자레인지 — 중학 과학 발명 일화 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 발명 계기",
      "acc": 4,
@@ -91,17 +95,15 @@
     "pairedWith": null,
     "question": "1941년 스위스 기술자 조르주 드 메스트랄은 개와 알프스로 사냥을 다녀온 뒤 옷과 털에 달라붙은 우엉 열매를 현미경으로 살폈습니다. 수백 개의 갈고리가 고리에 걸리는 것을 보고 그가 만든 여밈 장치의 상표 이름은?",
     "answer": "벨크로",
-    "acceptedAnswers": [
-     "찍찍이"
-    ],
+    "acceptedAnswers": [],
     "originalTitleVariants": [
      "Velcro"
     ],
     "explanation": "흔히 NASA가 발명했다고 오해받지만, 우주인들이 쓰면서 널리 알려졌을 뿐이다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 발명 일화",
+     "difWhy": "V007: 묻는 사실: 우엉 열매 갈고리를 본뜬 여밈 장치의 상표 → 벨크로 — 방송 상식 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 생체모방 발명",
      "acc": 4,

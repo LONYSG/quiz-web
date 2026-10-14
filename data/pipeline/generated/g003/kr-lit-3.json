@@ -5,12 +5,16 @@
   "midKey": "kr-lit",
   "subName": "근대 소설",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1922년 잡지 '신생활'에 연재될 때의 제목은 '묘지'였고, 1924년 '시대일보'에 다시 실리며 지금 제목으로 바뀌었다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 문학 — 근대 소설",
+     "difWhy": "V007: 묻는 사실: 도쿄 유학생 이인화의 귀국 여정 줄거리 → 만세전 — 고교 문학 근대 소설 (GEN 3→3, 보정 표본)",
      "wor": 5,
      "worWhy": "교과 — 근대 소설",
      "acc": 5,
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "작품의 배경인 강원도는 추워서 동백나무가 자라지 않는다는 풀이가 함께 붙는다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 근대 소설",
+     "difWhy": "V007: 묻는 사실: 동백꽃(김유정)의 노란 동백꽃의 실제 나무 → 생강나무 — 고교 국어 작품 해설 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 작품 속 사실",
      "acc": 5,

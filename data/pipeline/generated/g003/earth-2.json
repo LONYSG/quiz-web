@@ -5,12 +5,16 @@
   "midKey": "earth",
   "subName": "화산·지진",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "이런 분화는 가스의 힘으로 오래 이어지며 엄청난 양의 부석을 쏟아 냅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 화산학",
+     "difWhy": "V007: 묻는 사실: 로마 작가(소 플리니우스) 이름을 딴 격렬한 분화 유형 → 플리니식 분화 — 화산학 교양/애호 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 이름 유래",
      "acc": 5,
@@ -105,16 +109,16 @@
     "originalTitleVariants": [],
     "explanation": "함께 생기는 작은 용암 방울 덩어리는 '펠레의 눈물'이라 하며, 과학자들은 둘을 분석해 분화 온도와 마그마의 이동 경로를 연구합니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 5,
-     "difWhy": "전공 — 화산학 용어",
+     "version": "score-v2",
+     "dif": 4,
+     "difWhy": "V007: 묻는 사실: 용암 분수에서 생긴 금빛 화산 유리 실, 하와이 화산 여신의 이름 → 펠레의 머리카락 — 화산 애호/대학 교양 (여신 이름을 알면 풀림, GEN 5→4) (GEN 5→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 화산 현상",
      "acc": 5,
      "accWhy": "지구과학·기상 — 중학 과학 교과"
     },
-    "generalHint": "가닥의 굵기는 대개 1~300마이크로미터이며, 18세기 하와이 신문에도 그 여신의 이름을 붙여 적혀 있다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "가닥의 굵기는 대개 1~300마이크로미터이며, 용암 분수뿐 아니라 용암 폭포나 세찬 용암 흐름에서도 생긴다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://en.wikipedia.org/wiki/Pele%27s_hair"
     ],

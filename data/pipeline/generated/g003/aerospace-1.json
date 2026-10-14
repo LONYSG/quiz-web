@@ -5,12 +5,16 @@
   "midKey": "aerospace",
   "subName": "항공기",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "흔히 네모난 객실 창이 원인이라고 알려져 있지만, 치명적 균열은 조종석 위 안테나 구멍 둘레의 리벳 구멍에서 시작됐다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 항공 공학사",
+     "difWhy": "V007: 묻는 사실: 1952 최초 제트 여객 정기 운항, 1954 공중 분해한 영국 여객기 → 코메트 — 항공사 애호 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 금속 피로 사고",
      "acc": 3,

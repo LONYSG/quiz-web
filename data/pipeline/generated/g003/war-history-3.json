@@ -5,12 +5,16 @@
   "midKey": "war-history",
   "subName": "제2차 세계대전",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "황제 프리드리히 1세의 별명은 이탈리아어로 '붉은 수염'이라는 뜻입니다. 이 별명은 그가 죽은 뒤인 1298년에야 피렌체 사람들이 처음 썼다고 합니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 2차 대전",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 1941.6.22 독일의 소련 침공 작전(오토→개명) → 바르바로사 작전 — 가장 쉬운 단서 '1941 독일의 소련 침공 작전' 은 고교 세계사 독소전 (GEN 4→3, 경계 4)",
      "wor": 4,
      "worWhy": "교양 — 전쟁사",
      "acc": 3,

@@ -5,12 +5,16 @@
   "midKey": "kr-history",
   "subName": "고려",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "반란 세력은 나라 이름을 대위, 연호를 천개라 정하고 반란을 선언했으며, 1136년 2월에 진압되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사",
+     "difWhy": "V007: 묻는 사실: 1135년 인종 때 서경 천도 반란 → 묘청의 난 — 고교 한국사 (GEN 3→3, 경계 2)",
      "wor": 5,
      "worWhy": "교과서 — 고려 사건",
      "acc": 5,
@@ -98,9 +102,9 @@
     "originalTitleVariants": [],
     "explanation": "이규보의 문집 『동국이상국집』에 실려 전하며, 서문에서 고려가 본래 성인의 나라임을 알리려 했다고 밝혔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 고려 문학",
+     "difWhy": "V007: 묻는 사실: 이규보가 고구려 시조를 5언으로 읊은 서사시 → 동명왕편 — 고교 국어·한국사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 고려 역사서·서사시",
      "acc": 5,
@@ -163,16 +167,16 @@
     "originalTitleVariants": [],
     "explanation": "1107년 윤관이 이 부대를 이끌고 천리장성 너머로 나아가 여진족을 친 뒤 동북 지역에 9성을 쌓았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 고려 군제",
+     "difWhy": "V007: 묻는 사실: 신기군·신보군·항마군으로 이루어진 숙종 때 부대 → 별무반 — 고교 한국사 (GEN 3→3, 경계 2)",
      "wor": 5,
      "worWhy": "교과 — 고려 대외 관계",
      "acc": 5,
      "accWhy": "한국사 — 중학 교과 과목"
     },
-    "generalHint": "1104년 여진에 거듭 진 뒤 한 장수의 건의로 세운 임시 부대로, 철마다 훈련하며 큰 정벌을 준비했다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "문무 산관과 이서부터 장사꾼과 노복에 이르기까지 모든 백성을 징발 대상으로 삼았다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/별무반"
     ],

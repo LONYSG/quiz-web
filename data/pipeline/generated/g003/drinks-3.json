@@ -5,12 +5,16 @@
   "midKey": "drinks",
   "subName": "맥주",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "그 맑은 맛은 그 도시의 단물과 근처 자테츠의 홉, 단백질이 적은 맥아 덕분이었다고 설명됩니다. 그 첫 맥주가 오늘날의 '필스너 우르켈'입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 맥주 갈래",
+     "difWhy": "V007: 묻는 사실: 플젠 도시 이름에서 온 맑은 황금빛 라거 갈래 — 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 맥주 종류",
      "acc": 4,
@@ -105,9 +109,9 @@
     ],
     "explanation": "회사는 처음에 기록책 약 천 부를 영국과 아일랜드의 펍에 공짜로 나눠 주었고, 반응이 좋자 1955년 첫 판매본을 냈습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 기네스북 유래",
+     "difWhy": "V007: 묻는 사실: 기록책 아이디어를 낸 스타우트 회사 — 방송, 기네스북이 단서 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 기네스북 기원",
      "acc": 4,

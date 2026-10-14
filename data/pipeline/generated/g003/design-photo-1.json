@@ -5,12 +5,16 @@
   "midKey": "design-photo",
   "subName": "사진 기술·용어",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,16 +35,16 @@
     "originalTitleVariants": [],
     "explanation": "조리개 날개의 모양과 수에 따라 흐린 빛망울의 꼴이 달라지고, 반사 망원 렌즈는 도넛 모양을 만든다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 사진 용어",
+     "difWhy": "V007: 묻는 사실: 초점 밖 흐림의 아름다움을 가리키는 일본어 유래 사진 용어 → 보케 — 사진 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 사진",
      "acc": 3,
      "accWhy": "사진·디자인 — 관심층이면 안다"
     },
-    "generalHint": "이 철자는 사진 잡지 '포토 테크닉스'의 편집장 마이크 존스턴이 기사 세 편에 쓰면서 자리 잡았다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "미놀타와 소니의 135mm F2.8 STF 렌즈는 이 흐림을 곱게 만들려고 설계된 렌즈다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://en.wikipedia.org/wiki/Bokeh"
     ],
@@ -97,9 +101,9 @@
     ],
     "explanation": "이름은 회사 창업자의 성 'Leitz'와 'camera'의 앞 글자를 합친 것이다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 카메라 역사",
+     "difWhy": "V007: 묻는 사실: 1925 박람회에 나온 35mm 가로 감기 소형 카메라(바르나크) → 라이카 — 카메라 관심층 (GEN 3→3, 경계 2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 카메라 브랜드",
      "acc": 3,

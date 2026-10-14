@@ -5,12 +5,16 @@
   "midKey": "calendar",
   "subName": "국제 기념일",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "11월 11일은 제1차 세계대전의 휴전일이고, 시는 1915년 친구의 죽음 뒤에 쓰였습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 추모 상징",
+     "difWhy": "V007: 묻는 사실: 영연방 추모 배지의 꽃, 시 '플랑드르 들판에서' 의 꽃 — 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 양귀비 배지",
      "acc": 5,
@@ -91,13 +95,15 @@
     "pairedWith": null,
     "question": "유네스코가 1999년 정한 '국제 모국어의 날'(2월 21일)은 1952년 다카에서 한 언어를 국어로 인정하라고 요구하던 시위대가 경찰에 희생된 날에서 왔습니다. 그들이 지키려던 언어는?",
     "answer": "벵골어",
-    "acceptedAnswers": [],
+    "acceptedAnswers": [
+     "벵갈어"
+    ],
     "originalTitleVariants": [],
     "explanation": "방글라데시가 이 기념일을 제안했고, 그곳에서는 공휴일로 지키며 순교자 기념탑 '샤히드 미나르'를 찾습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "애호가 — 국제 기념일 유래",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 다카 시위(1952)가 지키려던 언어 = 방글라데시의 언어 — 다카→방글라데시→벵골어 한 걸음, 고교 지리 (GEN 4→3)",
      "wor": 4,
      "worWhy": "교양 — 기념일 유래",
      "acc": 5,

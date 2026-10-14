@@ -5,12 +5,16 @@
   "midKey": "energy",
   "subName": "발전 방식",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이름은 '자기 코일을 두른 도넛 모양 방'을 뜻하는 러시아어 줄임말로, 1957년 이고리 골로빈이 지었다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 핵융합",
+     "difWhy": "V007: 묻는 사실: 도넛 모양 자기장에 플라스마를 가두는 핵융합 방식 → 토카막 — 대학 교양/뉴스, 경계 3 (GEN 4→4, 경계)",
      "wor": 4,
      "worWhy": "시사 — 핵융합 기본 어휘",
      "acc": 4,

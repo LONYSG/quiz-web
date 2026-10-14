@@ -5,12 +5,16 @@
   "midKey": "philosophy",
   "subName": "근대 철학",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "생전에 출판된 그의 책은 '데카르트 철학의 원리'와 '신학정치론'뿐이고, 나머지 저작은 그가 죽은 뒤에 나왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 윤리 — 근대 철학",
+     "difWhy": "V007: 묻는 사실: 1656 파문당하고 렌즈를 갈며 '신 곧 자연'을 쓴 철학자 → 스피노자 — 고교 윤리 합리론 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 철학자",
      "acc": 4,

@@ -5,12 +5,16 @@
   "midKey": "theatre",
   "subName": "공연 용어·유명 극장",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     ],
     "explanation": "1948년 극작가 로버트 켐프가 이들을 '공식 페스티벌 연극의 가장자리'라고 쓴 데서 이름이 붙었다고 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 공연 축제",
+     "difWhy": "V007: 묻는 사실: 1947 에든버러 국제 페스티벌 곁에서 시작된 무심사 공연 축제 이름 → 프린지 — 공연 애호가 (GEN 4→4, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 프린지 유래",
      "acc": 3,

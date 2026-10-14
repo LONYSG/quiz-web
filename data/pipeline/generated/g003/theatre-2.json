@@ -5,12 +5,16 @@
   "midKey": "theatre",
   "subName": "뮤지컬 작품",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     ],
     "explanation": "퓰리처상 희곡 부문과 토니상 작품상을 받았고, 브로드웨이에서 12년 동안 5,123회 공연했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 뮤지컬",
+     "difWhy": "V007: 묻는 사실: 라 보엠을 뉴욕으로 옮겨 라슨이 개막 전 숨진 록 뮤지컬 → 렌트 — 뮤지컬 애호가 (GEN 4→4, 경계 3)",
      "wor": 3,
      "worWhy": "유명 작품 제목 맞히기",
      "acc": 3,
@@ -109,9 +113,9 @@
     ],
     "explanation": "주인공 킴 역의 필리핀 배우 레아 살롱가는 이 배역으로 올리비에상과 토니상을 모두 받았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 뮤지컬",
+     "difWhy": "V007: 묻는 사실: 나비부인을 베트남 전쟁으로 옮겨 헬기 철수 장면이 유명한 뮤지컬 → 미스 사이공 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "유명 뮤지컬 제목",
      "acc": 3,
@@ -185,9 +189,9 @@
     ],
     "explanation": "엘파바라는 이름은 원작자 L. 프랭크 바움의 머리글자 'L.F.B.'를 소리 나는 대로 이어 만든 것입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송·뉴스 — 영화화로 흔히",
+     "difWhy": "V007: 묻는 사실: 오즈의 서쪽 마녀 엘파바와 글린다의 뮤지컬 이름 → 위키드 — 방송·뉴스에서 흔히(2024 영화) (GEN 2→2, 경계 3)",
      "wor": 3,
      "worWhy": "대중적 뮤지컬 제목",
      "acc": 3,
@@ -258,9 +262,9 @@
     ],
     "explanation": "대표곡 'Aquarius'로 잘 알려졌고, 브로드웨이로 옮기면서 결말을 밝게 하려고 'Let the Sun Shine In'을 더했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 뮤지컬 작품",
+     "difWhy": "V007: 묻는 사실: 반문화 시대 러브-록 뮤지컬 작품의 제목 — 뮤지컬 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유명 뮤지컬",
      "acc": 3,

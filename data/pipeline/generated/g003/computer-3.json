@@ -5,12 +5,16 @@
   "midKey": "computer",
   "subName": "프로그래밍 용어",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -27,13 +31,15 @@
     "pairedWith": null,
     "question": "프로그래밍에서 참과 거짓 두 값만 갖는 자료형은 1854년 '사고의 법칙'에서 논리를 대수식으로 다룬 영국 수학자의 이름을 땄습니다. 정규 교육은 초등 과정뿐이었으나 독학으로 아일랜드 코크 대학의 수학 교수가 된 이 사람은?",
     "answer": "조지 불",
-    "acceptedAnswers": [],
+    "acceptedAnswers": [
+     "조지 부울"
+    ],
     "originalTitleVariants": [],
     "explanation": "1864년 큰비를 맞으며 걸어가 젖은 옷으로 강의한 뒤 폐렴을 앓다 세상을 떠났다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 컴퓨터·수학사",
+     "difWhy": "V007: 묻는 사실: 불리언 자료형 이름의 주인, 독학으로 코크 대학 교수가 된 영국 수학자 → 조지 불 — 컴퓨터/수학사 교양, 경계 3 (GEN 4→4, 경계)",
      "wor": 4,
      "worWhy": "교양 — 불 대수 어원",
      "acc": 5,

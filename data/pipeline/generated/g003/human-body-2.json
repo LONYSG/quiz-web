@@ -5,12 +5,16 @@
   "midKey": "human-body",
   "subName": "장기·순환",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -27,16 +31,13 @@
     "pairedWith": null,
     "question": "췌장 부피의 1~2%를 차지하며 섬처럼 흩어진 세포 덩어리가 있습니다. 알파 세포는 글루카곤을, 베타 세포는 인슐린을 내는 이 조직은 1869년 독일 병리해부학자의 이름을 따서 무엇이라 부를까요?",
     "answer": "랑게르한스섬",
-    "acceptedAnswers": [
-     "췌도",
-     "이자섬"
-    ],
+    "acceptedAnswers": [],
     "originalTitleVariants": [],
     "explanation": "부피는 작지만 이자로 가는 혈액의 10~15%를 받으며, 건강한 어른의 이자에는 약 100만 개가 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 생명과학 — 내분비",
+     "difWhy": "V007: 묻는 사실: 췌장의 알파·베타 세포 덩어리, 독일 병리해부학자 이름이 붙은 조직 → 랑게르한스섬 — 고교 생명과학 내분비 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 인체",
      "acc": 5,
@@ -107,9 +108,9 @@
     "originalTitleVariants": [],
     "explanation": "교감 신경은 이곳의 박자를 빠르게, 미주 신경은 느리게 바꿉니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 생명과학 — 심장 구조",
+     "difWhy": "V007: 묻는 사실: 우심방 위 벽 박동 조절 조직, 천연 박동기 → 동방결절 — 고교 생명과학 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 심장 박동 원리",
      "acc": 5,
@@ -179,9 +180,9 @@
     "originalTitleVariants": [],
     "explanation": "제임스 1세와 찰스 1세의 주치의를 지냈지만 모세혈관은 예측하지 못해, 피가 살의 틈으로 스며들어 정맥으로 돌아간다고 보았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 생명과학·과학사",
+     "difWhy": "V007: 묻는 사실: 1628 혈액 순환을 밝힌 책의 영국 의사 → 윌리엄 하비 — 고교 과학사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 혈액 순환 발견",
      "acc": 5,

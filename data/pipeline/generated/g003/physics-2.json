@@ -5,12 +5,16 @@
   "midKey": "physics",
   "subName": "전기·자기",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "다만 정지해 있거나 천천히 변하는 자기장은 막지 못해 그 안에서도 나침반은 제대로 움직입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 물리 — 정전기 차폐",
+     "difWhy": "V007: 묻는 사실: 도체로 둘러싼 공간이 외부 전기장을 막는 장치 → 패러데이 새장 — 고교 물리 정전기 차폐 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 기본 물리 개념",
      "acc": 5,

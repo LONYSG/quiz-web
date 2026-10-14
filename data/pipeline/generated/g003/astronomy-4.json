@@ -5,12 +5,16 @@
   "midKey": "astronomy",
   "subName": "우주 현상·관측",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이 점으로 거슬러 가지 않는, 어느 유성우에도 속하지 않는 별똥별은 산발 유성이라 부른다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 지구과학 — 유성우",
+     "difWhy": "V007: 묻는 사실: 유성우 별똥별이 퍼져 나오는 것처럼 보이는 한 점 → 복사점 — 고교 지구과학 (GEN 3→3)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 천문",
      "acc": 5,
@@ -95,9 +99,9 @@
     "originalTitleVariants": [],
     "explanation": "새 뜻을 퍼뜨린 것은 제임스 휴 프루엣이 '스카이 앤드 텔레스코프'에 쓴 글이며, 달력 기준 뜻으로는 2월에만 생길 수 없다.",
     "score": {
-     "version": "score-v1",
-     "dif": 3,
-     "difWhy": "관심층 — 천문 용어 유래",
+     "version": "score-v2",
+     "dif": 2,
+     "difWhy": "V007: 묻는 사실: 한 달 두 번째 보름달로 흔히 부르는 말 → 블루문 — 뉴스/방송에서 흔히(질문의 정의 문장이 가장 흔한 풀이, GEN 3→2) (GEN 3→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 말뜻 변천",
      "acc": 5,

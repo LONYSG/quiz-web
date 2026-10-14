@@ -5,12 +5,16 @@
   "midKey": "kr-geo",
   "subName": "지역 특산·별칭",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "고려 시대에는 인삼과 함께 품질이 뛰어난 물품으로 꼽혔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 지역 특산 공예",
+     "difWhy": "V007: 묻는 사실: 꽃무늬를 넣어 엮은 강화 특산 왕골 돗자리 → 화문석 — 전통 공예, 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 전통 공예",
      "acc": 5,
@@ -105,9 +109,9 @@
     "originalTitleVariants": [],
     "explanation": "바닷물과 함께 바람을 타고 올라온다 하여 '바람 풍(風)'에 '내 천(川)'을 써서 '풍천'이 붙었다는 이야기도 전합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 고창 풍천장어",
+     "difWhy": "V007: 묻는 사실: 고창 특산, 바닷물·민물이 만나는 곳에 머무는 물고기 → (풍천)장어 — 방송에서 흔히 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 지역 특산",
      "acc": 5,
@@ -175,9 +179,9 @@
     "originalTitleVariants": [],
     "explanation": "모시풀 줄기에서 겉껍질을 벗기고 부드러운 속살만 골라 햇볕에 말린 것으로 실을 만듭니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 지역 특산",
+     "difWhy": "V007: 묻는 사실: 한산모시짜기의 한산면이 속한 충남의 군 → 서천 — 지역 상식, 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 특산지",
      "acc": 5,

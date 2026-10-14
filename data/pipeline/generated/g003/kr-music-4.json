@@ -5,12 +5,16 @@
   "midKey": "kr-music",
   "subName": "아이돌·K팝",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "차은택이 연출한 뮤직비디오에서 지드래곤은 연인을 위해 누명을 쓰고 감옥에 갇힙니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 아이돌 히트곡",
+     "difWhy": "V007: 묻는 사실: 빅뱅 첫 미니 앨범 타이틀곡 → 방송에서 흔히 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "유명 곡 제목 맞히기",
      "acc": 5,
@@ -102,9 +106,9 @@
     "originalTitleVariants": [],
     "explanation": "일본 공식 팬클럽은 2006년 따로 발족한 '비기스트'입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 유명 팬클럽",
+     "difWhy": "V007: 묻는 사실: 동방신기 한국 공식 팬클럽 이름 → 방송에서 흔히 — 방송 (GEN 2→2, 경계 3)",
      "wor": 2,
      "worWhy": "팬 용어 — 팬클럽 이름",
      "acc": 5,
@@ -170,11 +174,11 @@
     "originalTitleVariants": [
      "Into the New World"
     ],
-    "explanation": "이 곡은 원래 2002년 걸그룹 밀크(M.I.L.K.)의 2집용으로 만들어졌던 노래로, 켄지가 작곡했습니다.",
+    "explanation": "이 곡은 2002년 걸그룹 밀크(M.I.L.K.)의 2집 후보곡으로 검토되었던 노래로, 켄지가 작곡했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송·뉴스 — 집회 노래",
+     "difWhy": "V007: 묻는 사실: 이대 시위와 탄핵 집회에서 불린 소녀시대 데뷔곡 → 뉴스에서 흔히 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "유명 곡 제목 맞히기",
      "acc": 5,

@@ -5,12 +5,16 @@
   "midKey": "world-food",
   "subName": "아시아 음식",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "포르투갈에서 금식 기간에 먹던, 껍질콩에 반죽을 입혀 튀긴 '페이시뉴스 다 오르타'가 그 조상으로 꼽힙니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 3,
-     "difWhy": "관심 있는 사람 — 음식 유래",
+     "version": "score-v2",
+     "dif": 2,
+     "difWhy": "V007: 묻는 사실: 밀가루 반죽을 입혀 튀기는 일본 음식 — 방송·일상 (GEN 3→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 덴푸라 어원",
      "acc": 4,
@@ -97,9 +101,9 @@
     "originalTitleVariants": [],
     "explanation": "그 식당은 1862년 또는 1874년에 문을 열었다고 전하며, 처음에는 고추·돼지고기·두부·쓰촨 후추로 만들었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 1,
-     "difWhy": "일상 — 중국 요리",
+     "difWhy": "V007: 묻는 사실: 곰보 부인의 별명이 이름이 된 두부 요리 — 일상 (GEN 1→1)",
      "wor": 3,
      "worWhy": "이야깃거리 — 요리 이름 유래",
      "acc": 4,
@@ -214,7 +218,8 @@
     "dbCheck": "pair-or-different — 2582 와 같은 답, 다른 지식이라 (가)로 씀",
     "warn": [
      "정답조각 국수"
-    ]
+    ],
+    "discarded": "V007 drop — 3-3 — '베트남의 소고기 국수' 는 1회차(#2582: 베트남 국수, 해설은 쌀 면)로 이미 정해진 대상이라 새 사실(남딘·포토푀) 없이 바로 풀림; 또 질문은 '이름이 포토푀에서' 인 퍼(pho)의 이름을 묻는데 대표 정답이 일반어 '쌀국수'(D3 일반어/구체어) — 고쳐도 같은 사실"
    }
   },
   {
@@ -231,13 +236,16 @@
     "pairedWith": null,
     "question": "무굴 제국의 궁중 주방에서 오늘날의 모습이 갖춰졌다고 하는 남아시아의 쌀 요리입니다. 쌀과 양념한 고기를 겹겹이 쌓은 냄비를 봉해 뭉근히 익히기도 하는데, '튀기다·굽다'를 뜻하는 페르시아어에서 이름이 왔다는 이 요리는?",
     "answer": "비리야니",
-    "acceptedAnswers": [],
+    "acceptedAnswers": [
+     "브리야니",
+     "비르야니"
+    ],
     "originalTitleVariants": [],
     "explanation": "콜카타식에는 감자가 들어가는데, 1850년대 와지드 알리 샤가 만들었다는 이야기가 전한다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 세계 음식",
+     "difWhy": "V007: 묻는 사실: 무굴 궁정 주방에서 갖춰진, 쌀과 고기를 겹겹이 봉해 익히는 남아시아 요리 — 세계 음식 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 대표 요리",
      "acc": 4,

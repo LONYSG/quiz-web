@@ -5,12 +5,16 @@
   "midKey": "kr-tv",
   "subName": "라디오 방송",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "두 사람이 2020년 물러난 뒤에도 이어졌지만, 2024년 6월 51년 만에 폐지되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송에서 흔히 — 장수 라디오",
+     "difWhy": "V007: 묻는 사실: 강석·김혜영의 MBC 장수 라디오 → 방송에서 흔히 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "대중적 프로그램 이름",
      "acc": 5,

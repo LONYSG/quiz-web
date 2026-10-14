@@ -5,12 +5,16 @@
   "midKey": "politics",
   "subName": "법률 용어",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,16 +37,16 @@
     "originalTitleVariants": [],
     "explanation": "이 법리는 1920년 실버손 목재 회사 사건 판결에서 처음 제시되었고, 독립된 출처나 불가피한 발견 같은 예외가 인정됩니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 형사법 법리",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 위법 수집 증거와 파생 증거까지 배제하는 법리 → 독수독과 — 고교 법과 정치 형사절차 정의 문장 (GEN 4→3, 경계)",
      "wor": 4,
      "worWhy": "시사 — 법 기본 어휘",
      "acc": 4,
      "accWhy": "정치·법 — 고교 사회 교과"
     },
-    "generalHint": "1939년 판결은 영장 없는 도청으로 얻은 대화와 거기서 끌어낸 증거까지 연방 법정에서 쓸 수 없다고 했다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "그 1939년 사건에서는 영장 없는 도청이 쟁점이었다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://en.wikipedia.org/wiki/Fruit_of_the_poisonous_tree"
     ],

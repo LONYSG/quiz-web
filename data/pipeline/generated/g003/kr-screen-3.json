@@ -5,12 +5,16 @@
   "midKey": "kr-screen",
   "subName": "한국 드라마",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "끝내 담관암으로 숨진 그는 유언대로 시신을 의학 연구용으로 기증하고, 스승 오경환이 해부를 맡습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 유명 드라마 주인공",
+     "difWhy": "V007: 묻는 사실: 하얀거탑 주인공 이름 → 방송에서 흔히 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "유명 작품 인물 이름",
      "acc": 5,
@@ -97,9 +101,9 @@
     "originalTitleVariants": [],
     "explanation": "원작 웹툰은 이야기를 '수'로 세었고, 단행본도 '착수'에서 '종국'까지 바둑 용어를 권 제목으로 썼습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 인기 드라마 설정",
+     "difWhy": "V007: 묻는 사실: 장그래가 매달린 것 → 미생을 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 미생 핵심 설정",
      "acc": 5,

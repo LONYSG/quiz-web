@@ -5,12 +5,16 @@
   "midKey": "drinks",
   "subName": "전통주",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,16 +35,16 @@
     "originalTitleVariants": [],
     "explanation": "불이 잘 붙는다 해서 '화주', 이슬처럼 한 방울씩 모은다 해서 '노주'라고도 불렸습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 소주 원나라 유래",
+     "difWhy": "V007: 묻는 사실: 아락주·아랑주 흔적이 남은, 아랍어 '아라크' 유래의 우리 술 — 이름 유래 세부, 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 소주 어원",
      "acc": 4,
      "accWhy": "술·음료 — 대부분이 관심"
     },
-    "generalHint": "오늘날 팔리는 대부분은 당밀·타피오카로 얻은 주정에 물을 타서 만든 희석식이다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "증류법은 몽골이 페르시아의 이슬람 문화를 받아들이며 들어왔다고 한다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/소주"
     ],
@@ -92,15 +96,14 @@
     "question": "조선 숙종 때 궁중 음식을 맡던 사옹원의 참봉 최국준이 처음 빚었다고 전합니다. 경주 최부잣집에서 대대로 토종 찹쌀로 빚어 온 이 술은?",
     "answer": "교동법주",
     "acceptedAnswers": [
-     "경주 교동법주",
-     "경주법주"
+     "경주 교동법주"
     ],
     "originalTitleVariants": [],
     "explanation": "1986년 국가무형문화재로 지정되었으며, 물과 누룩, 쌀로만 빚는 곡주입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 전통주",
+     "difWhy": "V007: 묻는 사실: 최부잣집이 대대로 빚은 숙종 때 유래의 경주 전통주 — 전통주 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 명가 전통주",
      "acc": 4,

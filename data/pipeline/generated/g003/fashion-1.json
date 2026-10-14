@@ -5,12 +5,16 @@
   "midKey": "fashion",
   "subName": "의류 명칭",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "옷차림 규정으로는 '블랙타이'에 해당하며, 이 이름이 남성복을 가리키는 말로 쓰인 것은 1888년 무렵 미국에서라고 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 1,
-     "difWhy": "일상 — 예복 이름",
+     "difWhy": "V007: 묻는 사실: 영국에서 디너 재킷이라 부르는 남성 예복의 이름 — 일상 (GEN 1→1)",
      "wor": 3,
      "worWhy": "이야깃거리 — 이름 유래",
      "acc": 4,
@@ -99,9 +103,9 @@
     "originalTitleVariants": [],
     "explanation": "그 곡예사 쥘 레오타르는 1859년 파리의 시르크 나폴레옹에서 세 개의 그네를 오가는 공중그네 곡예를 처음 선보인 사람으로 꼽힙니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송·생활 — 의류 이름",
+     "difWhy": "V007: 묻는 사실: 체조복·발레복으로 쓰는 한 벌 옷의 이름(곡예사 이름에서) — 방송·일상 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 이름 유래",
      "acc": 4,
@@ -168,9 +172,9 @@
     "originalTitleVariants": [],
     "explanation": "그가 지휘하던 크림 전쟁에서는 명령이 분명하게 전달되지 않아 '경기병대의 돌격' 참사가 벌어졌고, 그는 1855년 크림반도에서 세상을 떠났다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 의류 소매 명칭",
+     "difWhy": "V007: 묻는 사실: 워털루에서 팔을 잃은 장군의 이름이 붙은 어깨 솔기 없는 소매 — 의류 용어, 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 패션",
      "acc": 4,

@@ -5,12 +5,16 @@
   "midKey": "world-lit",
   "subName": "19세기 소설",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -76,7 +80,8 @@
     "targetWhy": "작품은 유명하나 헤밍웨이의 평은 대학 교양(미국 문학사)에서 접한다",
     "pairCheck": "1회차는 뗏목 여정·짐과의 우정·도덕 갈등(줄거리)을 물음 — 2회차는 헤밍웨이의 평(수용사), 줄거리 단서 없이는 1회차 지식만으로 바로 풀리지 않음",
     "dbCheck": "pair-or-different — 활성 513 의 2회차",
-    "warn": []
+    "warn": [],
+    "discarded": "G004 drop — V007 제안대로 짐 단서를 빼도 질문의 헤밍웨이 평('모든 현대 미국 문학이 이 책 한 권에서 나왔다')이 1회차 #513 해설 '미국 현대 소설의 출발점' 과 같은 지식 — 15 §3-3 판정 문장(1회차만 아는 사람이 새 사실 없이 푼다) · 브리핑 기준대로 drop"
    }
   },
   {
@@ -97,16 +102,16 @@
     "originalTitleVariants": [],
     "explanation": "1847년 처음 나올 때 샬럿 브론테는 '커러 벨'이라는 남자 이름 같은 필명을 썼다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 세계 명작 소설",
+     "difWhy": "V007: 묻는 사실: 저택 다락에 갇힌 첫 아내 버사가 나오는 샬럿 브론테 소설 → 제인 에어 — 고교 세계문학 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 세계 문학",
      "acc": 4,
      "accWhy": "세계 문학 — 고교 문학 교과"
     },
-    "generalHint": "남자 주인공 로체스터의 저택 이름은 '손필드 홀'이며, 버사는 끝내 이 저택에 불을 지른다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "진 리스는 1966년 『광막한 사르가소 바다』에서 이 소설 속 버사를 카리브해 출신 여인으로 되살려 그 사연을 따로 썼다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://en.wikipedia.org/wiki/The_Madwoman_in_the_Attic",
      "https://en.wikipedia.org/wiki/Jane_Eyre"
@@ -166,9 +171,9 @@
     "originalTitleVariants": [],
     "explanation": "이야기 끝에서 예수는 아무 말 없이 노인에게 입을 맞추고, 대심문관은 그를 풀어 주며 다시는 오지 말라고 한다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 러시아 문학",
+     "difWhy": "V007: 묻는 사실: '대심문관' 이야기가 나오는 도스토옙스키 장편 → 카라마조프가의 형제들 — 대학 교양 러시아 문학 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 세계 문학",
      "acc": 4,

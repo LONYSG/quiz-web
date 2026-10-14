@@ -5,12 +5,16 @@
   "midKey": "symbols",
   "subName": "색의 상징",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "오방색의 나머지는 파랑이 동쪽, 빨강이 남쪽, 하양이 서쪽, 검정이 북쪽을 맡습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 — 오방색 상징",
+     "difWhy": "V007: 묻는 사실: 오방색 중앙·토의 색, 황제만 입던 색 — 중학 (GEN 2→2)",
      "wor": 4,
      "worWhy": "교양 — 오방색",
      "acc": 5,
@@ -100,9 +104,9 @@
     "originalTitleVariants": [],
     "explanation": "네덜란드의 첫 국기는 이 색과 하양·파랑을 쓴 '왕자의 깃발'이었지만, 17세기 무렵 이 색 자리가 빨강으로 바뀌었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 네덜란드 주황",
+     "difWhy": "V007: 묻는 사실: 네덜란드 대표팀 유니폼 색(왕가 유래) — 방송·뉴스 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 색 유래",
      "acc": 5,

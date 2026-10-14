@@ -5,12 +5,16 @@
   "midKey": "popular-music",
   "subName": "1980~90년대",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     ],
     "explanation": "뮤직비디오에서는 그가 보도를 걸을 때마다 밟는 타일에 불이 켜집니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 마이클 잭슨 대표곡",
+     "difWhy": "V007: 묻는 사실: 문워크를 처음 선보인 마이클 잭슨 곡 → 방송에서 흔히 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "대중적 팝 명곡 제목",
      "acc": 3,

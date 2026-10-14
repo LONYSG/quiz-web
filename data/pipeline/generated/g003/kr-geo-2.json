@@ -5,12 +5,16 @@
   "midKey": "kr-geo",
   "subName": "산·강·호수",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1987년 국립지리원이 한강 발원지로 공식 인정했고, 2010년 명승으로 지정되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 지리 — 한강 발원지",
+     "difWhy": "V007: 묻는 사실: 태백 금대봉 기슭 한강 발원지의 소 → 검룡소 — 고교 지리 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 국토 지리",
      "acc": 5,
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "지은이와 간행 시기는 분명하지 않고, 신경준의 『여지고』를 바탕으로 후대 사람이 엮은 책으로 알려져 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국지리 — 백두대간",
+     "difWhy": "V007: 묻는 사실: 대간·정간·13정맥 체계를 담은 조선 지리서 → 산경표 — 고교 한국지리 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 전통 지리서",
      "acc": 5,
@@ -165,16 +169,16 @@
     "originalTitleVariants": [],
     "explanation": "전북 진안 팔공산 자락의 데미샘에서 발원하며, 넓은 모래사장 때문에 모래내·두치라고도 불렸습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 지명 유래",
+     "difWhy": "V007: 묻는 사실: 두꺼비 나루 뜻의 이름을 얻은 전설의 강 → 섬진강 — 지명 유래, 관심층 (GEN 3→3, 경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 강 이름 유래",
      "acc": 5,
      "accWhy": "한국 지리 — 초중 사회 교과"
     },
-    "generalHint": "광양만으로 흘러드는 강으로, 우리나라 다섯 큰 강 가운데 가장 맑다고 꼽히며 재첩으로 이름나다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "1993년 주암댐이 지어진 뒤 하구의 하동 쪽은 물이 모자라 황폐해졌다는 지적이 있다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/섬진강"
     ],
@@ -229,9 +233,9 @@
     "originalTitleVariants": [],
     "explanation": "새싹과 꽃이 산을 뒤덮는 봄의 이름이 바로 '금강'입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 금강산 이름",
+     "difWhy": "V007: 묻는 사실: 겨울 금강산의 이름 → 개골산 — 국어·상식, 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 계절별 이름",
      "acc": 5,
@@ -287,15 +291,15 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "강원 정선 여량면에서는 송천과 골지천이 만나 한강 본류인 조양강을 이룹니다. 두 물이 어우러진다는 뜻에서 이름이 왔다는 이 나루는 정선아리랑의 고향으로 알려져 있습니다. 이곳의 이름은 무엇일까요?",
+    "question": "강원 정선 여량면에서는 송천과 골지천이 만나 한강 본류인 조양강을 이룹니다. 이 나루는 정선아리랑의 고향으로 알려져 있습니다. 이곳의 이름은 무엇일까요?",
     "answer": "아우라지",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
     "explanation": "강 건너 서로 사랑하던 처녀와 총각이 홍수로 만나지 못한 그리움에서 노래가 나왔다는 이야기가 전하며, 나루에는 처녀상이 서 있다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 지역 지명·민요 유래",
+     "difWhy": "V007: 묻는 사실: 송천·골지천 합류 정선아리랑 나루 → 아우라지 — 지역 지리 애호 (GEN 4→4, 현 문구는 3으로 읽힘)",
      "wor": 3,
      "worWhy": "이야깃거리 — 정선아리랑 고향",
      "acc": 5,

@@ -5,12 +5,16 @@
   "midKey": "world-cinema",
   "subName": "현대 할리우드",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "한 솔로는 이 배로 '케셀 런'을 12파섹 안에 주파했다고 자랑하는데, 파섹은 시간이 아니라 거리 단위입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 스타워즈",
+     "difWhy": "V007: 묻는 사실: 한 솔로의 우주선 → 스타워즈 팬이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "레전드 작품 설정 세부",
      "acc": 4,
@@ -43,7 +47,7 @@
     },
     "generalHint": "처음 만든 모형이 '스페이스: 1999'의 이글호와 닮아 디자인을 바꿨고, 그 모형은 레아 공주의 배 '탄티브 IV'가 되었다.",
     "generalHintVersion": "hint-v3",
-    "layer": "팬 세부",
+    "layer": "대중",
     "genre": "영화",
     "work": "스타워즈",
     "sources": [
@@ -108,16 +112,16 @@
     "originalTitleVariants": [],
     "explanation": "시간 여행에 필요한 시속 88마일은 기술적 이유가 아니라 속도계에 찍힌 모습이 멋져 보여서 고른 숫자였습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 유명 영화",
+     "difWhy": "V007: 묻는 사실: 백 투 더 퓨처 타임머신으로 개조된 차 → 영화를 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 타임머신 차",
      "acc": 4,
      "accWhy": "세계 영화 — 대부분이 관심"
     },
-    "generalHint": "이탈리아 디자이너 주지아로가 그린 스테인리스강 차체에 걸윙 문을 달았고, 북아일랜드 던머리 공장에서 만들었다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "북아일랜드 던머리 공장에서 약 9천 대가 만들어졌고, 이 차를 만든 회사는 1982년 10월 파산을 신청했다.",
+    "generalHintVersion": "hint-v3+v007",
     "layer": "팬 세부",
     "genre": "영화",
     "work": "백 투 더 퓨처",
@@ -177,9 +181,9 @@
     "originalTitleVariants": [],
     "explanation": "끝내 목걸이를 간직해 온 늙은 로즈는 마지막에 탐사선 고물에서 그것을 바다에 떨어뜨립니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 영화 소품 이름",
+     "difWhy": "V007: 묻는 사실: 영화 첫머리 금고 속 스케치의 목걸이 이름 → 타이타닉을 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "팬 세부 — 유명 영화 설정",
      "acc": 4,
@@ -187,7 +191,7 @@
     },
     "generalHint": "영화 소품은 영국 보석 회사 애스프리 앤 개러드가 만들었고, 뒤에 진짜 사파이어로 만든 것이 140만 달러에 팔렸다.",
     "generalHintVersion": "hint-v3",
-    "layer": "팬 세부",
+    "layer": "대중",
     "genre": "영화",
     "work": "타이타닉 (1997)",
     "sources": [
@@ -240,9 +244,9 @@
     "originalTitleVariants": [],
     "explanation": "마지막 장면은 팽이가 아주 살짝 흔들리는 듯한 순간 엔딩 크레디트로 넘어가며, 놀런은 '코브는 팽이가 아니라 아이들을 보고 있다'고 말했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 인셉션 설정",
+     "difWhy": "V007: 묻는 사실: 인셉션에서 꿈과 현실을 가려 주는 개인 물건의 이름 → 영화를 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "유명 작품 설정 이름",
      "acc": 4,

@@ -5,12 +5,16 @@
   "midKey": "religion",
   "subName": "고대·소수 종교",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "신의 이름은 조로아스터교 이전부터 섬겨진 이란의 신 미트라에서 왔지만, 로마의 신앙이 페르시아의 것을 얼마나 이었는지는 논란이 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 종교사",
+     "difWhy": "V007: 묻는 사실: 로마 군인들에게 퍼진 황소 도살 장면의 지하 비밀 종교 → 미트라교 — 대학 교양 종교사 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 로마 종교",
      "acc": 3,

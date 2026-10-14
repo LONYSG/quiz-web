@@ -5,12 +5,16 @@
   "midKey": "ball-sports",
   "subName": "배구",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "공을 떨어뜨리지 않고 주고받는 모습을 보고 시범 경기를 본 앨프리드 홀스테드가 지금의 이름을 제안했다고 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 배구 역사",
+     "difWhy": "V007: 묻는 사실: 배구의 첫 이름 → 민토네트 — 배구 역사 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 배구 첫 이름",
      "acc": 4,

@@ -5,12 +5,16 @@
   "midKey": "philosophy",
   "subName": "철학 용어·명제",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "정작 그 철학자의 글에는 이 문제가 나오지 않으며, 후대 사람들이 그의 도덕적 결정론을 풍자하려고 쓴 예라고 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 철학 역설",
+     "difWhy": "V007: 묻는 사실: 같은 건초 두 더미 사이에서 못 고르고 굶어 죽는 동물의 역설, 14세기 프랑스 철학자 이름 → 뷔리당의 당나귀 — 대학 교양 철학 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 자유 의지 역설",
      "acc": 4,

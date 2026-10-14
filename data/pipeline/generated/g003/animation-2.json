@@ -5,12 +5,16 @@
   "midKey": "animation",
   "subName": "디즈니·픽사 극장 애니메이션",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "평소 몸값 대신 배우 조합 최저 출연료만 받는 대신 광고에 이름을 쓰지 말라고 했는데, 디즈니가 이를 어겨 한동안 사이가 틀어졌습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 애니 성우",
+     "difWhy": "V007: 묻는 사실: 지니 목소리 배우 → 알라딘을 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "유명 인물 이름 맞히기",
      "acc": 4,
@@ -100,9 +104,9 @@
     "originalTitleVariants": [],
     "explanation": "도리의 목소리는 코미디언이자 토크쇼 진행자인 엘런 디제너러스가 맡았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 유명 애니",
+     "difWhy": "V007: 묻는 사실: 니모를 가둔 치과의 도시 → 영화를 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "유명 작품 설정 세부",
      "acc": 4,
@@ -173,9 +177,9 @@
     "originalTitleVariants": [],
     "explanation": "목소리를 맡은 배우 리처드 카인드는 이 캐릭터를 '어린 시절이 바래 가는 것'이라고 풀이했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 픽사 캐릭터",
+     "difWhy": "V007: 묻는 사실: 라일리의 상상 속 친구 이름 → 인사이드 아웃을 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "유명 작품 캐릭터 이름",
      "acc": 4,

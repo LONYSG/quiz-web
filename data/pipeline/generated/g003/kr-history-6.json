@@ -5,12 +5,16 @@
   "midKey": "kr-history",
   "subName": "대한민국 현대",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "자유당은 이 셈법의 근거로 대한수학회장 최윤식 교수의 주장을 내세웠습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 이승만 정권",
+     "difWhy": "V007: 묻는 사실: 135표 부결을 정족수 135로 뒤집어 초대 대통령 중임 제한을 없앤 개헌 → 사사오입 개헌 — 고교 한국사 (GEN 3→3, 경계 2)",
      "wor": 5,
      "worWhy": "교과 — 사사오입 개헌",
      "acc": 5,
@@ -103,9 +107,9 @@
     "originalTitleVariants": [],
     "explanation": "대법원은 유일한 증거였던 관련자의 자백이 감금과 약물 투여로 얻어진 것이라 믿을 수 없다고 보았고, 이 사건은 대표적인 사법 살인으로 평가됩니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 현대사",
+     "difWhy": "V007: 묻는 사실: 진보당을 만들고 사형된 뒤 2011년 재심 무죄를 받은 정치인 → 조봉암 — 고교 한국사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 현대사",
      "acc": 5,
@@ -177,9 +181,9 @@
     "originalTitleVariants": [],
     "explanation": "박흥식·최남선·이광수 등이 조사 대상이 되었으나, 법 개정으로 활동 기간이 줄어들자 1949년 10월에 완전히 해체되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사",
+     "difWhy": "V007: 묻는 사실: 제헌국회의 친일 행위자 조사 기구(1949.6.6 특경대 무장해제) → 반민특위 — 고교 한국사 (GEN 3→3, 경계 2)",
      "wor": 5,
      "worWhy": "교과서 — 친일 청산",
      "acc": 5,
@@ -235,7 +239,7 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "1966년 한 재벌 계열 비료 회사가 공장 건설 자재로 위장해 일본에서 감미료를 대량으로 들여오려다 적발되었습니다. 그해 9월 국회 대정부 질의 도중 김두한 의원이 국무위원석에 오물을 던진 계기가 된 이 사건은 무엇일까요?",
+    "question": "1966년 한 재벌 계열 비료 회사가 공장 건설 자재로 위장해 일본에서 감미료를 대량으로 들여와 팔다가 적발되었습니다. 그해 9월 국회 대정부 질의 도중 김두한 의원이 국무위원석에 오물을 던진 계기가 된 이 사건은 무엇일까요?",
     "answer": "사카린 밀수 사건",
     "acceptedAnswers": [
      "한국비료 사카린 밀수 사건"
@@ -243,9 +247,9 @@
     "originalTitleVariants": [],
     "explanation": "1993년 이맹희는 회고록에서 자신이 밀수를 현장에서 지휘했고 정권도 알고 있었다고 주장했다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 1960년대 현대사 사건",
+     "difWhy": "V007: 묻는 사실: 김두한 오물 투척 계기 사카린 위장 밀수 → 사카린 밀수 사건 — 한능검 심화 현대사 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 재벌·정치 현대사 상식",
      "acc": 5,

@@ -5,12 +5,16 @@
   "midKey": "architecture",
   "subName": "한국 건축",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "지붕을 크게 고치기까지 보통 100~150년이 걸린다고 보아 1200년대 초에 지은 것으로 추정하며, 맞배지붕에 주심포 양식이다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 고려 건축",
+     "difWhy": "V007: 묻는 사실: 상량문으로 가장 오래된 목조 건물로 보는 안동의 절 건물 → 봉정사 극락전 — 고교 한국사 (GEN 3→3, 경계 2)",
      "wor": 5,
      "worWhy": "교과서 — 한국 건축",
      "acc": 3,
@@ -99,9 +103,9 @@
     "originalTitleVariants": [],
     "explanation": "경복궁 근정전과 경회루, 영주 부석사 무량수전, 강릉 오죽헌이 이 지붕을 얹었다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 전통 건축",
+     "difWhy": "V007: 묻는 사실: 맞배(위)+우진각(아래)을 합친 꼴의 한옥 지붕 → 팔작지붕 — 고교 한국사·미술 전통 건축 (GEN 3→3, 경계 4)",
      "wor": 4,
      "worWhy": "교양 — 한옥 지붕 형식",
      "acc": 3,

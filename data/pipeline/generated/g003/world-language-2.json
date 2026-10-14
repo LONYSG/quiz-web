@@ -5,12 +5,16 @@
   "midKey": "world-language",
   "subName": "라틴어·그리스어 어근",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "생태학이라는 말은 1866년 독일 동물학자 에른스트 헤켈이 만들었고, 경제는 '집'에 '관리하다'가 붙은 데서 나왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 어원",
+     "difWhy": "V007: 묻는 사실: economy·ecology 어근 oikos 의 본래 뜻 — 그리스어 어원, 대학 교양 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 낱말 어원",
      "acc": 3,

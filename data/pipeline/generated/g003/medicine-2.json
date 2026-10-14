@@ -5,12 +5,16 @@
   "midKey": "medicine",
   "subName": "증상·진단",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "그는 가느다란 실 모양 도체가 전류에 흔들리는 '현 검류계'를 1901년부터 만들어 아주 약한 심장 전류를 잴 수 있게 했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 과학 — 심장 검사",
+     "difWhy": "V007: 묻는 사실: 심장의 전기 신호를 기록하는 검사 → 심전도 — 중학 과학 (GEN 2→2)",
      "wor": 4,
      "worWhy": "교양 — 기본 의학 검사",
      "acc": 4,

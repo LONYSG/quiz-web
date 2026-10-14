@@ -5,12 +5,16 @@
   "midKey": "kr-history",
   "subName": "삼국·통일신라",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "본래 '육차모'라는 이름으로 전해지다가 1873년 신궁의 궁사가 칼에 새겨진 글을 발견하면서 학계에 알려졌습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 백제·왜 교류",
+     "difWhy": "V007: 묻는 사실: 이소노카미 신궁 소장·금상감 명문의 칼 → 칠지도 — 고교 한국사 (GEN 3→3, 보정 표본)",
      "wor": 5,
      "worWhy": "교과 — 한국사 유물",
      "acc": 5,
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "광복 뒤 한국인이 처음 발굴한 사례로 소개되며, 2015년 보물로 지정되어 국립중앙박물관에 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 신라·고구려",
+     "difWhy": "V007: 묻는 사실: 경주 호우총 출토 청동 그릇의 광개토대왕 명문 → 호우명 그릇 — 고교 한국사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 한국사 유물",
      "acc": 5,
@@ -174,9 +178,9 @@
     "originalTitleVariants": [],
     "explanation": "비석은 보존을 위해 경복궁으로 옮겨졌다가 1970년부터 국립중앙박물관이 소장하고 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 역사 — 순수비",
+     "difWhy": "V007: 묻는 사실: 북한산 비석이 기념한 신라 왕 → 진흥왕(순수비) — 중학 역사 (GEN 2→2)",
      "wor": 5,
      "worWhy": "교과서 — 신라사",
      "acc": 5,
@@ -238,9 +242,9 @@
     "originalTitleVariants": [],
     "explanation": "탑을 세우고 한참 뒤 새긴 이 글에는 의자왕과 왕족 등 1만 2천여 명이 낙양으로 끌려갔다는 내용이 담겨 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 백제 석탑",
+     "difWhy": "V007: 묻는 사실: 미륵사지탑과 함께 남은 부여의 백제 석탑·평제비문 → 정림사지 오층석탑 — 고교 한국사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 백제 문화재",
      "acc": 5,
@@ -304,9 +308,9 @@
     "originalTitleVariants": [],
     "explanation": "진품은 유물 보존 처리 도중 불에 타 없어졌고, 지금 전하는 것은 복제품이다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 신라 생활 유물",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 안압지 출토 14면 벌칙 주사위 → 주령구 — 고교 한국사 신라 문화유산 사진 (GEN 4→3, 경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 신라 술자리 놀이",
      "acc": 5,

@@ -5,12 +5,16 @@
   "midKey": "drinks",
   "subName": "커피·차",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "18세기 후반 합스부르크 제국의 빈 커피하우스에서 크림을 조금 넣은 갈색 커피를 '카푸치너'라 부른 것이 앞선 형태로 꼽힙니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 3,
-     "difWhy": "관심층 — 커피 이름 어원",
+     "version": "score-v2",
+     "dif": 2,
+     "difWhy": "V007: 묻는 사실: 에스프레소에 우유 거품을 얹은 이탈리아 커피 — 방송·일상 (GEN 3→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 커피 이름 유래",
      "acc": 4,
@@ -91,9 +95,9 @@
     "originalTitleVariants": [],
     "explanation": "1936년 표본을 모은 영국 관리들이 붙인 철자 탓에 일본의 게이샤와 자주 헷갈린다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 커피 품종",
+     "difWhy": "V007: 묻는 사실: 에티오피아 게샤 지역 이름을 딴, 2004 파나마 경매로 유명해진 커피 품종 — 커피 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유명 커피",
      "acc": 4,

@@ -5,12 +5,16 @@
   "midKey": "baseball",
   "subName": "KBO",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "롯데는 2011년 그가 세상을 떠난 뒤 등번호 11번을 구단 처음으로 영구 결번했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 야구 레전드",
+     "difWhy": "V007: 묻는 사실: 1984 혼자 4승 한 롯데 무쇠팔 투수 → 최동원 — 방송·뉴스에서 흔히 (GEN 2→2, 경계 3)",
      "wor": 3,
      "worWhy": "유명 인물 이름 맞히기",
      "acc": 4,
@@ -95,9 +99,9 @@
     "originalTitleVariants": [],
     "explanation": "매각은 1989년 12월 방송사 노사가 합의해 결정했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — KBO 역사",
+     "difWhy": "V007: 묻는 사실: LG 트윈스의 전신인 원년 서울 구단 → MBC 청룡 — 야구 관심층 (GEN 3→3, 경계 2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 원년 구단",
      "acc": 4,
@@ -165,9 +169,9 @@
     "originalTitleVariants": [],
     "explanation": "1987년 5월 16일 롯데 최동원과 맞붙어 둘 다 15회까지 던지며 2-2로 비긴 경기는 영화 '퍼펙트 게임'의 소재가 되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송·뉴스 — 야구 레전드",
+     "difWhy": "V007: 묻는 사실: 해태·주니치를 거쳐 삼성 감독으로 두 번 우승한 투수 출신 → 선동열 — 방송·뉴스에서 흔히 (GEN 2→2)",
      "wor": 3,
      "worWhy": "유명 인물 이름 맞히기",
      "acc": 4,

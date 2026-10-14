@@ -5,12 +5,16 @@
   "midKey": "myth",
   "subName": "이집트·메소포타미아 신화",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "따오기 말고 개코원숭이 모습으로도 그려졌고, 헬레니즘 시대에는 헤르메스와 합쳐져 '헤르메스 트리스메기스토스'로 불렸습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 이집트 신화",
+     "difWhy": "V007: 묻는 사실: 따오기 머리·문자 발명·심장 저울의 기록자인 이집트 신 → 토트 — 애호가 수준 이집트 신화 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 신화 인물",
      "acc": 3,

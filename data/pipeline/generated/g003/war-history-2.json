@@ -5,12 +5,16 @@
   "midKey": "war-history",
   "subName": "제1차 세계대전",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "오스만군 지휘관으로 이름을 떨친 무스타파 케말은 1923년 튀르키예 공화국을 세우고 초대 대통령이 됐습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 1차 대전사",
+     "difWhy": "V007: 묻는 사실: 다르다넬스 상륙 후 철수, 4.25 안작 데이 → 갈리폴리 전투 — 애호가 수준 1차대전사 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 세계사 주요 전투",
      "acc": 3,

@@ -5,12 +5,16 @@
   "midKey": "transport",
   "subName": "자동차 브랜드·역사",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "전쟁이 끝난 뒤 프랑스 당국에 전범으로 체포되어 바덴바덴·파리·디종에 갇혀 지냈다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 자동차사",
+     "difWhy": "V007: 묻는 사실: 비틀의 원형을 설계한 하이브리드 차 개척 기술자 → 포르쉐 — 자동차사 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 비틀 설계자",
      "acc": 4,

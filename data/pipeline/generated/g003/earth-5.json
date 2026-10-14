@@ -5,12 +5,16 @@
   "midKey": "earth",
   "subName": "기후 변화",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "그는 자전축 기울기의 약 4만 1천 년 주기를 중시했지만, 최근 100만 년의 빙하기는 궤도 이심률의 약 10만 년 주기를 따른 것으로 밝혀졌습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 기후학",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 이심률·자전축 기울기·세차로 빙하기를 설명하는 주기 → 밀란코비치 주기 — 고교 지구과학 기후 변화 단원(GEN 4→3) (GEN 4→3)",
      "wor": 4,
      "worWhy": "교양 — 빙하기 원인",
      "acc": 5,

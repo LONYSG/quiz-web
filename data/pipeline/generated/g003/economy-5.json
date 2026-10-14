@@ -5,12 +5,16 @@
   "midKey": "economy",
   "subName": "경제사",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "originalTitleVariants": [],
     "explanation": "아이작 뉴턴도 이 주식으로 7,000파운드를 벌었다가 폭락 뒤 2만 파운드를 잃었다고 전해집니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 경제사 버블",
+     "difWhy": "V007: 묻는 사실: 1711 설립 영국 회사의 1720 주가 폭등·폭락 → 남해 거품 사건 — 대학 교양 경제사 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 투기 거품 대표 사례",
      "acc": 4,
@@ -107,9 +111,9 @@
     "originalTitleVariants": [],
     "explanation": "엔화 강세로 한국 제품의 가격 경쟁력이 높아져, 저유가·저금리와 함께 1980년대 후반 한국 '3저 호황'의 배경이 되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 경제 — 국제 금융",
+     "difWhy": "V007: 묻는 사실: 1985 뉴욕 호텔에서 달러 약세를 합의한 G5 회담 → 플라자 합의 — 고교 경제 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 경제사",
      "acc": 4,

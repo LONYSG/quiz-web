@@ -5,12 +5,16 @@
   "midKey": "kr-tv",
   "subName": "유행어",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "2017년에는 시간을 거슬러 간 '대화가 필요해 1987'로 돌아왔고, 이번엔 김대희가 장동민의 아들 역을 맡았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 개그 유행어",
+     "difWhy": "V007: 묻는 사실: 코너 속 아버지의 대표 유행어 → 개그콘서트를 본 사람이 안다 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 국민 유행어",
      "acc": 5,

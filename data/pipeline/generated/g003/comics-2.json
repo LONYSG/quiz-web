@@ -5,12 +5,16 @@
   "midKey": "comics",
   "subName": "미국 코믹스·히어로",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이름은 '굴복하지 않는'을 뜻하는 그리스어 '아다마스'에서 온 영어 '어더먼트'에 금속 이름 꼬리 '-ium'을 붙여 지었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 마블 설정",
+     "difWhy": "V007: 묻는 사실: 울버린 뼈대의 금속 → 마블 팬이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "팬 세부 — 작품 설정 이름",
      "acc": 4,
@@ -102,9 +106,9 @@
     "originalTitleVariants": [],
     "explanation": "이 이름은 1807년 워싱턴 어빙이 풍자 잡지에서 뉴욕을 가리켜 쓴 뒤로 뉴욕의 별명이기도 했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 배트맨 도시",
+     "difWhy": "V007: 묻는 사실: 배트맨이 지키는 가상의 도시 → 방송·대중문화에서 흔히 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "유명 작품 설정 이름",
      "acc": 4,

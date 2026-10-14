@@ -5,12 +5,16 @@
   "midKey": "medicine",
   "subName": "의약품·백신",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "미국 식품의약국 심사관 프랜시스 켈시가 자료가 부족하다며 승인을 거부해 미국은 피해를 크게 피했습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 약화 사건",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 입덧 진정제로 쓰여 팔다리 짧은 아기를 낳게 한 약 → 탈리도마이드 — 약화 사건, 단서가 일반 교양이라 3(GEN 4→3) (GEN 4→3)",
      "wor": 4,
      "worWhy": "교양 — 의약 안전 역사",
      "acc": 4,
@@ -103,9 +107,9 @@
     "originalTitleVariants": [],
     "explanation": "자외선을 받으면 형광빛을 내는 성질이 있어, 퀴닌이 든 토닉워터는 자외선 등 아래에서 빛을 냅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 세계사·약물",
+     "difWhy": "V007: 묻는 사실: 기나나무 알칼로이드, 말라리아 약, 토닉워터 쓴맛 → 퀴닌 — 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 말라리아 약",
      "acc": 4,

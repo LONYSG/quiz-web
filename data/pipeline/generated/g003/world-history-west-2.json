@@ -5,12 +5,16 @@
   "midKey": "world-history-west",
   "subName": "중세 유럽",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "교황과 황제 모두 만족하지 못한 타협이었으며, 이듬해 제1차 라테란 공의회가 협약 내용을 다시 확인했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계사",
+     "difWhy": "V007: 묻는 사실: 1122 황제가 반지·지팡이 서임권을 포기한 독일 도시 이름의 협약 → 보름스 협약 — 고교 세계사 중세 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 서임권 투쟁",
      "acc": 4,

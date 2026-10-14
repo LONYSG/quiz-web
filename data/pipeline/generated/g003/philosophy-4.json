@@ -5,12 +5,16 @@
   "midKey": "philosophy",
   "subName": "동양 사상",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "'대학'의 팔조목은 격물·치지에서 시작해 성의·정심·수신·제가·치국·평천하로 이어집니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 윤리 — 성리학",
+     "difWhy": "V007: 묻는 사실: 대학 팔조목의 첫 두 조목을 합친 '사물의 이치를 따져 앎에 이름' → 격물치지 — 고교 윤리 성리학 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 대학 팔조목",
      "acc": 4,
@@ -100,9 +104,9 @@
     "originalTitleVariants": [],
     "explanation": "논쟁의 열쇠는 '아니다'로 옮기는 글자 非가 '같지 않다'와 '그 무리에 속하지 않는다' 두 뜻으로 읽힐 수 있다는 데 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 중국 철학",
+     "difWhy": "V007: 묻는 사실: 공손룡의 '말은 모양, 흰 것은 빛깔이라 흰 말은 말이 아니다' 논변 → 백마비마 — 대학 교양 중국 철학 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 제자백가 논변",
      "acc": 4,

@@ -5,12 +5,16 @@
   "midKey": "fashion",
   "subName": "복식사",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1890년대 자전거 붐 때 고쳐진 형태가 여성의 표준 '자전거 옷'이 되었고, 애니 런던데리는 이 옷을 입고 자전거 세계 일주에 나섰습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 복식사",
+     "difWhy": "V007: 묻는 사실: 절제 운동 신문 '릴리' 의 운동가 성이 이름이 된 바지 — 복식사 세부, 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 블루머 유래",
      "acc": 4,

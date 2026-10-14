@@ -5,12 +5,16 @@
   "midKey": "myth",
   "subName": "그리스·로마 신화",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,16 +35,16 @@
     "originalTitleVariants": [],
     "explanation": "그의 이름과 형벌에서 '감질나게 하다'를 뜻하는 영어 낱말 tantalize 가 나왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 그리스 신화",
+     "difWhy": "V007: 묻는 사실: 아들을 요리해 대접한 벌로 물·과일이 멀어지는 형벌을 받은 왕 → 탄탈로스 — 그리스 신화에 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — tantalize 어원",
      "acc": 3,
      "accWhy": "신화 — 관심층이면 안다"
     },
-    "generalHint": "그의 딸 니오베는 레토 앞에서 자식 자랑을 하다 아폴론과 아르테미스의 화살에 자식을 모두 잃었다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "그의 딸 니오베는 레토 앞에서 자식 자랑을 하다 아폴론과 아르테미스의 화살에 자식들을 잃었다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://en.wikipedia.org/wiki/Tantalus"
     ],
@@ -95,9 +99,9 @@
     "originalTitleVariants": [],
     "explanation": "트로이가 함락된 뒤 아가멤논의 첩으로 미케네에 끌려갔다가 클리타임네스트라와 아이기스토스에게 살해됐습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 그리스 신화",
+     "difWhy": "V007: 묻는 사실: 아폴론의 저주로 예언을 아무도 믿지 않은 트로이 공주 → 카산드라 — 그리스 신화에 관심 있는 사람 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 신화 인물",
      "acc": 3,

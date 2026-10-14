@@ -5,12 +5,16 @@
   "midKey": "politics",
   "subName": "선거·의회",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "약한 정당이 합쳐지거나 큰 정당에 흡수되고, 유권자가 당선 가능성이 낮은 정당을 버리고 표를 몰아주기 때문이라고 설명합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 정치학",
+     "difWhy": "V007: 묻는 사실: 소선거구제→양당제 가설을 1951 『정당론』에서 낸 학자 이름 → 뒤베르제의 법칙 — 대학 교양 정치학 (GEN 4→4, 경계: 단서 자체는 정치와 법)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 선거제도",
      "acc": 4,

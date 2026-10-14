@@ -5,12 +5,16 @@
   "midKey": "symbols",
   "subName": "교통 표지",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -25,7 +29,7 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "2011년 서해안고속도로 안산분기점에서 차로를 헷갈린 사망 사고가 나자, 한국도로공사의 한 직원이 아이들의 색칠 공부에서 착안해 갈림길 바닥에 분홍·연두 선을 처음 그렸습니다. 이 바닥 표시를 무엇이라 할까요?",
+    "question": "2011년 서해안고속도로 안산분기점에서 차로를 헷갈린 사망 사고가 나자, 한국도로공사의 한 직원이 아이들의 색칠 공부에서 착안해 갈림길 바닥에 분홍·연두 선을 그렸습니다. 이 바닥 표시를 무엇이라 할까요?",
     "answer": "노면 색깔 유도선",
     "acceptedAnswers": [
      "색깔 유도선"
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "당시 도로교통법은 노면 표시를 흰색·노란색·파란색으로만 정해 두어 법에 맞지 않았고, 2016년 말 국토교통부의 시범 운영을 거쳐 설치 지침이 마련되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "뉴스에서 흔히 — 도로 표시",
+     "difWhy": "V007: 묻는 사실: 갈림길 바닥의 분홍·연두 선 표시의 정식 이름 — 방송·뉴스 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유도선 유래",
      "acc": 5,
@@ -115,9 +119,9 @@
     "originalTitleVariants": [],
     "explanation": "미국에서는 1950년 오클라호마주 털사의 경찰관 클린턴 리그스가 처음 세웠는데, 그의 첫 디자인은 쐐기돌 모양이었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 1,
-     "difWhy": "일상 — 교통 표지",
+     "difWhy": "V007: 묻는 사실: 붉은 테두리 역삼각형 표지의 뜻 — 일상 (GEN 1→1)",
      "wor": 4,
      "worWhy": "교양 — 생활 안전",
      "acc": 5,
@@ -175,9 +179,9 @@
     "originalTitleVariants": [],
     "explanation": "모자는 에리히 호네커가 밀짚모자를 쓴 여름 사진에서 착안했다고 하며, 그림은 페글라우의 비서 아넬리제 베그너가 그렸다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 독일 문화 상징",
+     "difWhy": "V007: 묻는 사실: 동독 보행자 신호등 인물의 독일어 이름 — 독일 문화 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 도시 상징",
      "acc": 5,

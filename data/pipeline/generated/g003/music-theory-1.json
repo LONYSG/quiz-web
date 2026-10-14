@@ -5,12 +5,16 @@
   "midKey": "music-theory",
   "subName": "악보·기호",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "'D.S. 알 코다'는 이 표시로 돌아간 뒤 'To Coda'에서 코다로 건너뛰라는 뜻이고, 'D.S. 알 피네'는 'Fine'에서 끝내라는 뜻입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 음악 — 악보 기호",
+     "difWhy": "V007: 묻는 사실: D.S. 가 돌아가는 사선·두 점의 S자 표시의 이름 → 세뇨 — 고교 음악 악보 기호 (GEN 3→3, 경계 2)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 악보",
      "acc": 4,
@@ -99,9 +103,9 @@
     "originalTitleVariants": [],
     "explanation": "화살표가 아래를 향해 붙어 있으면 거꾸로 높은 음부터 낮은 음으로 펼쳐 연주합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 음악 — 연주법",
+     "difWhy": "V007: 묻는 사실: 화음 앞 물결선, 음을 차례로 펼치는 연주법 → 아르페지오 — 고교 음악 용어 (GEN 3→3, 경계 2)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 음악 용어",
      "acc": 4,
@@ -173,9 +177,9 @@
     "originalTitleVariants": [],
     "explanation": "고전주의 시대에도 많은 작품, 특히 교회 합창곡에서 계속 쓰였습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 음악 — 바로크",
+     "difWhy": "V007: 묻는 사실: 베이스 아래 숫자로 화음을 즉흥 채우던 바로크 반주법 → 통주저음 — 고교 음악 바로크 (GEN 3→3, 경계 4)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 음악사",
      "acc": 4,
@@ -246,9 +250,9 @@
     "originalTitleVariants": [],
     "explanation": "쇼팽의 제자 카롤 미쿨리는, 쇼팽이 반주하는 손은 늘 박자를 엄격히 지키고 선율만 자유롭게 움직였다고 전했습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 음악 용어",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 박자를 자유롭게 당기고 늦추는 표현, '도둑맞은 시간' — 단서가 음악 교과서의 용어 정의, 고교 음악 (GEN 4→3)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 음악",
      "acc": 4,

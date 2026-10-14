@@ -5,12 +5,16 @@
   "midKey": "music-theory",
   "subName": "관현악기",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "그의 바이올린 '메시아'는 옥스퍼드 애슈몰린 박물관에 전시되어 있으며, 보존을 위해 최근에는 거의 연주되지 않습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 악기 명장",
+     "difWhy": "V007: 묻는 사실: 크레모나의 바이올린 명장, 성의 라틴어형이 악기 이름 → 스트라디바리 — 관심 있는 사람 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 대표 명품 악기",
      "acc": 4,
@@ -106,9 +110,9 @@
     "originalTitleVariants": [],
     "explanation": "이름과 달리 영국 악기도 금관 호른의 친척도 아니며, '천사의 뿔피리'라는 독일어 이름이 '영국의'로 잘못 들려 굳었다는 설명이 있습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "애호가 — 관현악기",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 신세계 교향곡 2악장 독주를 맡은 오보에 가족 악기 → 잉글리시 호른 — 관심 있는 사람·중학 음악 감상 (GEN 4→3, 경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 악기 이름",
      "acc": 4,

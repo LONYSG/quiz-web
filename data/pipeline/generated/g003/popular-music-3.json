@@ -5,12 +5,16 @@
   "midKey": "popular-music",
   "subName": "2000년대 이후",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     ],
     "explanation": "녹음도 촬영장에 들여놓은 이동식 스튜디오에서 했다고 전합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 힙합 명곡",
+     "difWhy": "V007: 묻는 사실: 랩 곡 최초 아카데미 주제가상 수상곡 → 팝을 듣는 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "대중적 노래 제목",
      "acc": 3,
@@ -114,9 +118,9 @@
     ],
     "explanation": "이 곡은 2009년 그래미 시상식에서 올해의 노래상을 받았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 팝 명곡",
+     "difWhy": "V007: 묻는 사실: 칼로의 마지막 그림 문구를 제목으로 한 콜드플레이 곡 → 팝을 듣는 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "유명 팝 곡 제목",
      "acc": 3,
@@ -193,9 +197,9 @@
     ],
     "explanation": "2005년 2집의 첫 싱글 'Feel Good Inc.'는 데 라 소울과 함께한 곡으로 그래미상을 받았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 해외 밴드",
+     "difWhy": "V007: 묻는 사실: 블러 보컬과 만화가의 가상 밴드 → 팝을 듣는 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 가상 밴드",
      "acc": 3,

@@ -5,12 +5,16 @@
   "midKey": "economy",
   "subName": "경제 개념·지표",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "아일랜드 대기근 때의 감자가 대표 사례로 오래 꼽혔지만, 1999년 셔윈 로즌은 보통의 수요 모형으로도 설명된다고 반박했습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 경제원론",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 값이 오르는데 수요가 느는 열등재(수요 법칙의 예외) → 기펜재 — 고교 경제 수요 법칙 단원 정의 문장 (GEN 4→3, 경계)",
      "wor": 4,
      "worWhy": "교양 — 경제 기본 개념",
      "acc": 4,
@@ -97,9 +101,9 @@
     "originalTitleVariants": [],
     "explanation": "폴 크루그먼은 2008~2011년 선진국들이 이 상태에 빠져 있다고 주장했습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 거시경제",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 금리가 0 근처라 통화 확대가 안 듣는 상황 → 유동성 함정 — 고교 경제 통화정책 (GEN 4→3, 경계)",
      "wor": 4,
      "worWhy": "교양 — 경제 기본 어휘",
      "acc": 4,

@@ -5,12 +5,16 @@
   "midKey": "kr-tradition",
   "subName": "명절·세시풍속",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "『고려사』에는 명종 때 시어사들이 이날 광진사에서 술자리를 가졌다는 기록이 있어, 고려 때 이미 널리 지낸 명절로 봅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 세시풍속",
+     "difWhy": "V007: 묻는 사실: 음력 6월 15일 동쪽 개울물에 머리 감는 명절 → 유두 — 고교 국어·사회 세시풍속 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 전통 명절",
      "acc": 5,
@@ -95,16 +99,16 @@
     "originalTitleVariants": [],
     "explanation": "11월 중순에 들면 중동지, 하순에 들면 노동지라 부릅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 세시풍속 세부",
+     "difWhy": "V007: 묻는 사실: 음력 11월 초순에 든 동지(팥죽 대신 떡) → 애동지 — 민속 세부, 교과 밖 애호가 (GEN 4→4, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 동지 풍습",
      "acc": 5,
      "accWhy": "전통문화·풍습 — 초등 교과·명절 일상"
     },
-    "generalHint": "2025년 12월 22일에 든 동지가 바로 이렇게 일찍 든 동지였다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "동지는 양력으로는 해마다 12월 21일이나 22일로 거의 정해져 있지만, 음력 날짜는 해마다 달라진다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/애동지"
     ],
@@ -158,9 +162,9 @@
     "originalTitleVariants": [],
     "explanation": "양수인 9가 겹치는 날이라 하여 붙은 이름이며, 중국·일본·베트남 등 동아시아에서도 함께 지낸다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 세시풍속",
+     "difWhy": "V007: 묻는 사실: 음력 9월 9일 국화주·등고 명절 → 중양절 — 고교 한국사·국어 세시풍속 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 전통 명절",
      "acc": 5,
@@ -226,9 +230,9 @@
     "originalTitleVariants": [],
     "explanation": "『동국세시기』에는 영남 지방에서도 이달 초하루부터 보름에서 스무날가량 집집이 바깥사람을 꺼렸다는 기록이 있다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 제주 민속 신앙",
+     "difWhy": "V007: 묻는 사실: 제주 음력 2월 바람 여신 → 영등할머니 — 대학 교양 민속 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 제주 영등굿 신",
      "acc": 5,

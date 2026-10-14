@@ -5,12 +5,16 @@
   "midKey": "kr-language",
   "subName": "한글 자모·맞춤법",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "소리값은 [z]로 추정되며, 주로 울림소리 사이에서 쓰였다고 설명된다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 중세 국어 자모",
+     "difWhy": "V007: 묻는 사실: 훈민정음 자모 ㅿ 의 이름 → 반치음 — 고교 국어 중세 국어 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 훈민정음 자모",
      "acc": 5,
@@ -111,9 +115,9 @@
     "originalTitleVariants": [],
     "explanation": "이 원고는 대한민국 보물로 지정되었고, 2019년에는 같은 이름의 영화도 나왔다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 국어 운동",
+     "difWhy": "V007: 묻는 사실: 주시경이 1911년부터 엮은 조선광문회 사전 원고 → 말모이 — 고교 한국사(국어 운동) (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 우리말 역사",
      "acc": 5,

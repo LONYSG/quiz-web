@@ -5,12 +5,16 @@
   "midKey": "psychology",
   "subName": "심리 현상·효과",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1990년대 중반 이후 노르웨이·덴마크 같은 일부 선진국에서는 점수 상승이 멈추거나 오히려 떨어졌다는 보고가 나왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 심리학 효과",
+     "difWhy": "V007: 묻는 사실: 세대마다 지능 검사 점수가 10년 약 3점 오르는 현상을 알린 뉴질랜드 학자의 이름 효과 → 플린 효과 — 대학 교양 심리학 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 심리학 개념",
      "acc": 3,

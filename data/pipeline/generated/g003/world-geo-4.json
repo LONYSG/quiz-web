@@ -5,12 +5,16 @@
   "midKey": "world-geo",
   "subName": "국경·영토",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "한국은 2012년, 북한은 2016년에 이 군도에 관한 조약에 가입했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 극지 지리",
+     "difWhy": "V007: 묻는 사실: 1920 조약으로 노르웨이령이지만 조약국 국민이 동등하게 경제 활동하는 북극 군도 → 스발바르 제도 — 대학 교양 극지 지리 (GEN 4→4, 경계 3: 다산기지 단서)",
      "wor": 4,
      "worWhy": "시사 상식 — 극지 조약",
      "acc": 4,

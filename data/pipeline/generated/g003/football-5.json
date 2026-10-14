@@ -5,12 +5,16 @@
   "midKey": "football",
   "subName": "축구 역사·클럽",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "originalTitleVariants": [],
     "explanation": "이 전술의 네덜란드는 1974년 월드컵 결승에서 서독에 1-2로 져 준우승에 그쳤습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 축구 전술사",
+     "difWhy": "V007: 묻는 사실: 미헬스·크루이프의 자리 바꾸는 전술 → 토털 풋볼 — 축구 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "축구 기본 어휘",
      "acc": 4,
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "크게 다쳤던 맷 버즈비 감독은 팀을 다시 일으켜 1968년 유러피언컵 우승을 이뤘습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 축구 클럽 역사",
+     "difWhy": "V007: 묻는 사실: 1958 맨유 선수단 비행기 추락 사고 → 뮌헨 참사 — 축구 클럽 역사 애호가 (GEN 4→4, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유명 참사",
      "acc": 4,

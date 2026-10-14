@@ -5,12 +5,16 @@
   "midKey": "physics",
   "subName": "열·에너지",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "맥스웰은 이 존재를 '유한한 존재'라 불렀고, '악마'라는 이름은 1874년 켈빈 경이 붙였습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 열역학 사고실험",
+     "difWhy": "V007: 묻는 사실: 문 지키는 존재로 열역학 제2법칙을 깨는 듯한 사고 실험 → 맥스웰의 악마 — 대학 교양 열역학 (GEN 4→4, 경계)",
      "wor": 4,
      "worWhy": "교양 — 물리 기본 개념",
      "acc": 5,
@@ -99,9 +103,9 @@
     "originalTitleVariants": [],
     "explanation": "물은 대략 193°C 이상에서 이 효과가 나타나며, 상온의 피부 위에서 액체 질소 방울이 해를 주지 않고 굴러떨어지는 것도 같은 원리입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 열물리",
+     "difWhy": "V007: 묻는 사실: 뜨거운 팬 위 물방울이 구슬처럼 구르는 현상, 1756 독일 학자 → 라이덴프로스트 효과 — 열물리 애호/대학 교양 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 생활 물리",
      "acc": 5,

@@ -5,12 +5,16 @@
   "midKey": "art",
   "subName": "한국·동양 미술",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "지금은 일본 덴리 대학이 소장하고 있으며, 일본에서 국보로 지정되어 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 미술 — 조선 회화",
+     "difWhy": "V007: 묻는 사실: 안평대군의 꿈을 안견이 사흘 만에 그린 그림 → 몽유도원도 — 중학 교과 (GEN 2→2)",
      "wor": 5,
      "worWhy": "교과 — 안견 몽유도원도",
      "acc": 4,
@@ -93,9 +97,9 @@
     "originalTitleVariants": [],
     "explanation": "이건희 회장이 소장하던 작품으로, 그가 2020년 세상을 떠난 뒤 국립중앙박물관에 기증되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 미술 — 조선 회화",
+     "difWhy": "V007: 묻는 사실: 정선이 이병연의 병중에 비 갠 인왕산을 그린 국보 → 인왕제색도 — 중학 교과 조선 회화 (GEN 2→2)",
      "wor": 5,
      "worWhy": "교과 — 정선 인왕제색도",
      "acc": 4,
@@ -162,9 +166,9 @@
     "originalTitleVariants": [],
     "explanation": "1956년 서울 서대문적십자병원에서 간염으로 마흔한 살에 세상을 떠났습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 미술 — 한국 근대 화가",
+     "difWhy": "V007: 묻는 사실: 가족을 일본에 보내고 은지화를 그린 화가 → 이중섭 — 중학 교과 한국 근대 미술 (GEN 2→2, 경계 3)",
      "wor": 5,
      "worWhy": "교과 — 이중섭",
      "acc": 4,
@@ -233,9 +237,9 @@
     "originalTitleVariants": [],
     "explanation": "19세기에는 민화로 퍼지면서 다산·장수·출세 같은 소망을 담은, 더 자유롭고 추상적인 모습으로 바뀌었습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "수능 심화 — 조선 후기 미술",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 책장에 책과 문방구를 채워 그린 조선 후기 그림 — 단서가 교과서의 정의 문장에 가까움, 고교 한국사·미술 (GEN 4→3)",
      "wor": 4,
      "worWhy": "교양 — 한국 미술",
      "acc": 4,

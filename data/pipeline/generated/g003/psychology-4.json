@@ -5,12 +5,16 @@
   "midKey": "psychology",
   "subName": "정신 건강 용어",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "유럽 등에서는 세계보건기구가 만드는 국제질병분류(ICD)가 더 널리 쓰이며, 두 기준은 판을 거듭하며 서로 비슷해졌습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 심리학",
+     "difWhy": "V007: 묻는 사실: 미국정신의학회 정신 질환 분류 기준서의 약칭 → DSM — 대학 교양 심리학 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 정신의학",
      "acc": 3,
@@ -106,9 +110,9 @@
     "originalTitleVariants": [],
     "explanation": "미국의 월터 프리먼은 송곳 같은 기구를 눈구멍으로 찔러 넣는 방식을 개발했고, 존 F. 케네디의 누이 로즈메리도 이 수술 뒤 남은 생을 시설에서 보냈습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 정신의학사",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 전두엽 신경 연결을 끊는 폐기된 정신 질환 수술, 1949 노벨상 → 로보토미 — 영화·시사로 아는 관심층 (GEN 4→3, 경계 4)",
      "wor": 4,
      "worWhy": "교양 — 의학사",
      "acc": 3,

@@ -5,12 +5,16 @@
   "midKey": "daily-rule",
   "subName": "생활 법규",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이 말이 결함 차를 가리키는 뜻으로 처음 쓰인 것은 1960년 폭스바겐 광고로 알려져 있고, 한국 도입은 BMW 차량 연쇄 화재가 계기가 되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송·뉴스 — 소비자 제도",
+     "difWhy": "V007: 묻는 사실: 반복 고장 새 차 교환·환불 제도의 이름 — 뉴스에서 흔히 (GEN 2→2)",
      "wor": 4,
      "worWhy": "시사 상식 — 소비자 법",
      "acc": 5,
@@ -102,9 +106,9 @@
     "originalTitleVariants": [],
     "explanation": "이름은 누가복음 10장에서 민족도 종교도 다른 사람이 강도를 만나 다친 이를 도왔다는 이야기에서 왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "뉴스에서 흔히 — 생활 법규",
+     "difWhy": "V007: 묻는 사실: 성경 비유에서 이름 딴 응급처치 면책·구조 의무 법의 이름 — 뉴스에서 흔히 (GEN 2→2)",
      "wor": 4,
      "worWhy": "시사 — 법 기본 상식",
      "acc": 5,

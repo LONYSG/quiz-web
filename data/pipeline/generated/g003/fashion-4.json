@@ -5,12 +5,16 @@
   "midKey": "fashion",
   "subName": "액세서리·소재",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "'해리스 트위드'는 영국 법으로 정해진 이름이라, 아우터헤브리디스 제도 주민이 집에서 손으로 짠 천만 그렇게 부를 수 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 직물 이름",
+     "difWhy": "V007: 묻는 사실: 트윌을 강 이름으로 잘못 읽어 굳은 거친 모직물 — 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 이름 유래",
      "acc": 4,
@@ -103,9 +107,9 @@
     "originalTitleVariants": [],
     "explanation": "1906년 시어도어 루스벨트가 운하 공사 현장에서 이 모자를 쓴 사진이 찍히며 더 유명해졌고, 2012년 엮는 기술이 유네스코 인류무형문화유산에 올랐습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 여름 모자 이름",
+     "difWhy": "V007: 묻는 사실: 에콰도르산인데 파나마 이름이 붙은 밀짚모자 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 이름 유래",
      "acc": 4,

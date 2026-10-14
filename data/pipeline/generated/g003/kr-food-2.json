@@ -5,12 +5,16 @@
   "midKey": "kr-food",
   "subName": "김치·반찬",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "충남 홍성 광천의 토굴에서 숙성시킨 새우젓이 특산물로 이름나 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 젓갈 종류",
+     "difWhy": "V007: 묻는 사실: 오젓·추젓 사이 산란기 새우로 담근 최상품 새우젓 → 육젓 — 식재료 상식, 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 새우젓 이름",
      "acc": 5,
@@ -95,9 +99,9 @@
     "originalTitleVariants": [],
     "explanation": "소리를 빌려 '각독기(刻毒氣)'로 적고 독기를 없애는 음식으로 풀이하기도 했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 김치 유래",
+     "difWhy": "V007: 묻는 사실: 숙선옹주 유래설·젓무/홍저/송송이 별칭의 김치 → 깍두기 — 유래·별칭, 관심층 (GEN 3→3, 경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 깍두기 유래",
      "acc": 5,
@@ -159,9 +163,9 @@
     "originalTitleVariants": [],
     "explanation": "광양설은 그 인물의 비문에 근거하지만, 비는 사라지고 비문은 필사본으로 전하며 완도에서 시작됐다는 설도 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 김 어원 이야기",
+     "difWhy": "V007: 묻는 사실: 해의·해태라 부르는 해조류, 양식 시조 이름 어원 → 김 — 일상 반찬 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 김 이름 유래",
      "acc": 5,
@@ -229,9 +233,9 @@
     "originalTitleVariants": [],
     "explanation": "묵청포라고도 불렀으며, 주로 늦봄부터 여름까지 즐겨 먹었다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 탕평책 연계 음식",
+     "difWhy": "V007: 묻는 사실: 오색 재료에 붕당 풀이가 붙은 음식 → 탕평채 — 고교 한국사 탕평책 연계 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 탕평책 상징 음식",
      "acc": 5,

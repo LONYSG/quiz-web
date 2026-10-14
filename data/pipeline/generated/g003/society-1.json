@@ -5,12 +5,16 @@
   "midKey": "society",
   "subName": "교육 제도",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "1985년부터 대학이 선발 비율을 100~130% 사이에서 정할 수 있게 되며 사실상 힘을 잃었고, 1987년 폐지되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 5공 교육 정책",
+     "difWhy": "V007: 묻는 사실: 졸업 정원의 130% 선발·초과분 탈락 대학 제도 → 졸업정원제 — 고교 한국사 5공 교육개혁 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 현대사 제도",
      "acc": 4,
@@ -106,9 +110,9 @@
     "originalTitleVariants": [],
     "explanation": "이름은 그 회사 '발도르프-아스토리아 담배 회사'에서 왔으며, 말이나 음악에 맞춰 몸을 움직이는 '오이리트미'라는 고유 과목이 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 교육학",
+     "difWhy": "V007: 묻는 사실: 1919 담배 회사 사장의 요청으로 슈타이너가 연 학교, 7세 읽기·담임 장기 지도 → 발도르프 교육 — 대학 교양 교육학 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 대안 교육",
      "acc": 4,

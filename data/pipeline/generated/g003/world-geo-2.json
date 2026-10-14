@@ -5,12 +5,16 @@
   "midKey": "world-geo",
   "subName": "대륙·바다",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "스페인어권에서는 1525년 이 바다를 발견한 것으로 추정되는 항해사 프란시스코 데 오세스의 이름을 따 '오세스의 바다'라고 불러 왔습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 세계 지리",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 혼곶~사우스셰틀랜드 사이 해협, 1578 골든 하인드 영국 탐험가의 이름 → 드레이크 해협 — 가장 쉬운 단서 '골든 하인드의 영국 탐험가' 는 고교 세계사 인물 (GEN 4→3, 경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 해협 이름",
      "acc": 4,
@@ -99,16 +103,16 @@
     "originalTitleVariants": [],
     "explanation": "약 8,300만~7,900만 년 전 곤드와나에서 떨어져 나왔고, 1995년 브루스 루옌딕이 이 이름과 개념을 제안했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 지질학",
+     "difWhy": "V007: 묻는 사실: 94% 잠긴 그린란드보다 넓은 지각 덩어리 '잠긴 대륙' → 질랜디아 — 대학 교양 지질·최근 시사 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 잠긴 대륙",
      "acc": 4,
      "accWhy": "세계 지리 — 고교 세계지리 교과"
     },
-    "generalHint": "이 이름은 물 위로 드러난 가장 큰 섬나라 이름을 라틴어식으로 바꾼 꼴로, 그 뿌리는 네덜란드의 한 주 이름이다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "약 2,300만 년 전에는 이 땅덩어리가 통째로 바닷속에 잠겼을지도 모른다는 연구가 있다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/질란디아"
     ],

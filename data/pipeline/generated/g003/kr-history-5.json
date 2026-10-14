@@ -5,12 +5,16 @@
   "midKey": "kr-history",
   "subName": "개항기·일제강점기",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "정변이 실패하자 나흘 만에 폐지되었고, 남은 건물은 사적으로 지정되어 2012년에 우체 업무를 다시 시작했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 역사 — 갑신정변",
+     "difWhy": "V007: 묻는 사실: 갑신정변의 무대가 된 근대 우편 관청 → 우정총국 — 중학 역사 (GEN 2→2)",
      "wor": 5,
      "worWhy": "교과 — 우정총국",
      "acc": 5,
@@ -93,9 +97,9 @@
     "originalTitleVariants": [],
     "explanation": "이 사건으로 신민회의 전국 조직이 사실상 무너졌고, 항소심에서는 윤치호·양기탁 등 6명만 실형을 받았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 일제강점기",
+     "difWhy": "V007: 묻는 사실: 1911년 데라우치 암살 모의 조작 사건 → 105인 사건 — 고교 한국사 (GEN 3→3, 경계 2)",
      "wor": 5,
      "worWhy": "교과서 — 무단통치기 탄압",
      "acc": 5,
@@ -159,9 +163,9 @@
     "originalTitleVariants": [],
     "explanation": "국채보상운동을 주도하기도 했으나, 1910년 통감부에 매수된 뒤 병합과 함께 조선총독부의 기관지로 바뀌었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 항일 언론",
+     "difWhy": "V007: 묻는 사실: 영국인 베델이 창간해 검열을 피한 항일 신문 → 대한매일신보 — 고교 한국사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 대한매일신보",
      "acc": 5,
@@ -217,22 +221,22 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "1885년 러시아 공사 베베르와 함께 서울에 온 독일 국적의 한 여성은 궁중의 서양 요리와 실내 장식을 맡으며 고종의 신임을 얻었습니다. 1902년 고종이 내린 정동의 땅에 그녀의 이름을 따서 세운 2층 서양식 호텔은 무엇일까요?",
+    "question": "1885년 러시아 공사 베베르와 함께 서울에 온 독일 국적의 한 여성은 궁중의 서양 요리와 실내 장식을 맡으며 고종의 신임을 얻었습니다. 고종이 내린 정동의 땅에 그녀의 이름을 따서 1902년 세운 2층 서양식 호텔은 무엇일까요?",
     "answer": "손탁호텔",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
     "explanation": "1917년 이화학당이 건물과 터를 넘겨받아 기숙사로 썼고, 1922년 헐린 뒤 그 자리에 프라이홀이 들어섰다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 개항기 서울 근대 건축",
+     "difWhy": "V007: 묻는 사실: 독일 여성 손탁이 고종에게 받은 땅에 세운 호텔 → 손탁호텔 — 한능검 심화·대학 교양 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 근대 최초 호텔",
      "acc": 5,
      "accWhy": "한국사 — 중학 교과 과목"
     },
-    "generalHint": "1904년 러일전쟁을 취재하러 온 종군 기자 윈스턴 처칠도 이 호텔에 묵었다고 한다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "1904년 러일전쟁을 취재하러 온 종군 기자 잭 런던도 이 호텔에 묵었다고 한다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/손탁_호텔"
     ],

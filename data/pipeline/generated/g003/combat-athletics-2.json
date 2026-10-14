@@ -5,12 +5,16 @@
   "midKey": "combat-athletics",
   "subName": "태권도·유도·씨름",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "그는 1972년 정권과 갈등을 빚어 캐나다로 망명했고, 2002년 평양에서 세상을 떠났습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 태권도 역사",
+     "difWhy": "V007: 묻는 사실: 태권도 이름을 지은 ITF 창립 총재 → 최홍희 — 태권도 역사 애호가 (GEN 4→4, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 태권도 작명자",
      "acc": 4,
@@ -95,9 +99,9 @@
     "originalTitleVariants": [],
     "explanation": "그는 천하장사에 열 번, 백두장사에 열여덟 번 오르며 '모래판의 황제'로 불렸습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 씨름 레전드",
+     "difWhy": "V007: 묻는 사실: 1983 제1회 천하장사 우승 경남대생 → 이만기 — 방송·뉴스에서 흔히 (GEN 2→2, 경계 3)",
      "wor": 3,
      "worWhy": "유명 인물 이름 맞히기",
      "acc": 4,

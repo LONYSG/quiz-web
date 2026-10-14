@@ -5,12 +5,16 @@
   "midKey": "computer",
   "subName": "하드웨어",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "명령과 데이터가 한 통로를 나눠 써서 생기는 속도의 한계를 '병목'이라 부르며, 존 배커스가 1977년 튜링상 강연에서 이를 비판했다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 정보 — 컴퓨터 구조",
+     "difWhy": "V007: 묻는 사실: 프로그램과 데이터를 같은 메모리에 두는 설계 → 폰 노이만 구조 — 고교 정보/교양 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 기본 컴퓨터 어휘",
      "acc": 5,
@@ -106,9 +110,9 @@
     "originalTitleVariants": [],
     "explanation": "코헨이 이 말을 처음 쓴 글의 제목은 '성전에 대하여, 그리고 평화를 위한 호소'였다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 5,
-     "difWhy": "전공 — 컴퓨터 구조",
+     "difWhy": "V007: 묻는 사실: 바이트 순서를 가리키는 걸리버 달걀 유래 말 → 엔디언 — 컴퓨터 구조 전공/자격증 (GEN 5→5)",
      "wor": 3,
      "worWhy": "이야깃거리 — 걸리버 어원",
      "acc": 5,

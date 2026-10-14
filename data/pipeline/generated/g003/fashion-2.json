@@ -5,12 +5,16 @@
   "midKey": "fashion",
   "subName": "패션 브랜드·디자이너",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1927년 미국인 로버트 조르주가 그려 준 악어 그림을, 그는 경기 전에 입는 흰 블레이저에 수놓아 달고 다녔다고 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 유명 패션 브랜드",
+     "difWhy": "V007: 묻는 사실: 악어 별명 테니스 선수가 세운 의류 브랜드 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 악어 로고 유래",
      "acc": 4,

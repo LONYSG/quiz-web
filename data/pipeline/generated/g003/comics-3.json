@@ -5,12 +5,16 @@
   "midKey": "comics",
   "subName": "한국 만화·웹툰",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "조석의 형 조준은 이사한 뒤 아버지의 통닭집을 이어받아 장사하는 인물로 나옵니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 유명 웹툰 인물",
+     "difWhy": "V007: 묻는 사실: 마음의 소리 주인공의 아내 → 웹툰 독자가 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "유명 작품 조연",
      "acc": 4,
@@ -106,9 +110,9 @@
     "originalTitleVariants": [],
     "explanation": "광진 작가가 2017년부터 다음 웹툰에 연재했고, 2020년 JTBC 드라마로 만들어졌습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 인기 드라마 설정",
+     "difWhy": "V007: 묻는 사실: 박새로이가 이태원에 연 가게 이름 → 이태원 클라쓰를 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "유명 작품 설정 세부",
      "acc": 4,

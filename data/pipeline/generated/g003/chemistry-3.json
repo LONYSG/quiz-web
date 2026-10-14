@@ -5,12 +5,16 @@
   "midKey": "chemistry",
   "subName": "화합물·분자",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "이 분자를 찾아낸 크로토, 컬, 스몰리는 1996년 노벨 화학상을 함께 받았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 화학 — 탄소 동소체",
+     "difWhy": "V007: 묻는 사실: C60 축구공 탄소 분자 → 풀러렌 — 고교 화학 탄소 동소체 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 탄소 동소체",
      "acc": 5,

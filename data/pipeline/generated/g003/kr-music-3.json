@@ -5,12 +5,16 @@
   "midKey": "kr-music",
   "subName": "2000년대 이후 가요",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "원년 리더 채동하가 2008년 4월 활동을 끝으로 떠나고, 그 자리에 이석훈이 들어왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 인기 가수",
+     "difWhy": "V007: 묻는 사실: Timeless·살다가의 남성 보컬 그룹 → 방송에서 흔히 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "유명 그룹 이름 맞히기",
      "acc": 5,
@@ -104,9 +108,9 @@
     "originalTitleVariants": [],
     "explanation": "두 사람은 2000년 허니패밀리 앨범 작업에서 만났고, 윤건이 나얼의 코러스를 듣고 팀을 제안했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 2000년대 가요",
+     "difWhy": "V007: 묻는 사실: 벌써 일년의 2인조 → 가요를 아는 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "유명 그룹 이름 맞히기",
      "acc": 5,

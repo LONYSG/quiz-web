@@ -5,12 +5,16 @@
   "midKey": "world-cinema",
   "subName": "영화상",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,16 +37,16 @@
     "originalTitleVariants": [],
     "explanation": "1981년부터 유타주 파크시티에서 열려 왔는데, 2027년부터는 콜로라도주 볼더로 옮긴다고 2025년에 발표했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 영화제",
+     "difWhy": "V007: 묻는 사실: 레드퍼드의 땅 이름이 붙은 미국 최대 독립영화제 → 영화에 관심 있는 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 세계 영화제",
      "acc": 4,
      "accWhy": "세계 영화 — 대부분이 관심"
     },
-    "generalHint": "레드퍼드가 그 영화에서 맡은 배역은 부치 캐시디와 짝을 이룬 무법자이며, 영화제는 1991년에야 지금 이름을 얻었다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "처음에는 '유타/US 영화제'라는 다른 이름으로 열렸다가 1991년에야 지금 이름으로 바뀌었다.",
+    "generalHintVersion": "hint-v3+v007",
     "layer": "대중",
     "genre": "영화",
     "work": "선댄스 영화제",

@@ -5,12 +5,16 @@
   "midKey": "football",
   "subName": "월드컵",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -94,16 +98,16 @@
     "originalTitleVariants": [],
     "explanation": "월드컵에서는 2014년 브라질 대회에 처음 쓰였고, 이 기술로 인정된 첫 골은 프랑스-온두라스전에서 나왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 축구 판정 기술",
+     "difWhy": "V007: 묻는 사실: 램파드 오심 뒤 논의가 재개된 판정 기술 → 골라인 테크놀로지 — 축구를 챙겨 보는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 도입 계기",
      "acc": 4,
      "accWhy": "축구 — 대부분이 관심"
     },
-    "generalHint": "여러 고속 카메라로 공 위치를 삼각 측량하는 호크아이 방식이 널리 쓰이며, 골이면 1초 안에 주심 시계로 알린다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "2012년 7월 국제축구평의회가 규칙을 고쳐 이 기술의 사용을 허용했고, 그해 12월 일본에서 열린 클럽 월드컵에서 쓰였다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://en.wikipedia.org/wiki/Goal-line_technology"
     ],
@@ -160,9 +164,9 @@
     "originalTitleVariants": [],
     "explanation": "이 결승은 지단의 선수 생활 마지막 경기였지만, 그는 대회 최우수 선수에게 주는 골든볼을 받았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 월드컵 사건",
+     "difWhy": "V007: 묻는 사실: 2006 결승에서 지단이 들이받은 이탈리아 수비수 → 마테라치 — 월드컵을 본 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 박치기 사건",
      "acc": 4,
@@ -226,9 +230,9 @@
     "originalTitleVariants": [],
     "explanation": "'히혼의 수치'라 불린 이 일 뒤 FIFA는 1986년 대회부터 조별리그 마지막 경기들을 같은 시각에 치르게 했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 월드컵 역사",
+     "difWhy": "V007: 묻는 사실: 1982 서독을 꺾고도 히혼 경기로 탈락한 나라 → 알제리 — 월드컵 역사 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 히혼의 수치",
      "acc": 4,

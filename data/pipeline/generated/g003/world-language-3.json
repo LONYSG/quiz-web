@@ -5,12 +5,16 @@
   "midKey": "world-language",
   "subName": "문자 체계",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "브라유는 1829년 이 체계를 책으로 펴냈고, 한글 점자는 1926년 박두성이 발표한 '훈맹정음'을 바탕으로 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 — 점자 유래",
+     "difWhy": "V007: 묻는 사실: 15살 소년의 이름으로도 불리는 문자 — 중학 사회·방송 (GEN 2→2)",
      "wor": 4,
      "worWhy": "교양 — 점자",
      "acc": 3,
@@ -104,9 +108,9 @@
     "originalTitleVariants": [],
     "explanation": "앞 여섯 글자의 소리를 따 '푸서크'라고도 부르며, 24자이던 옛 룬은 바이킹 시대에 16자로 줄었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 문자사",
+     "difWhy": "V007: 묻는 사실: 블루투스 로고의 바탕이 된 바이킹 시대 문자 — 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 블루투스 로고",
      "acc": 3,

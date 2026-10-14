@@ -5,12 +5,16 @@
   "midKey": "classical",
   "subName": "음악 형식·용어",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "정작 바그너는 이 말을 인정한 적이 없고 '주요 동기' 같은 말을 썼으며, 1876년 볼초겐이 펴낸 '반지' 해설서가 이 말을 널리 퍼뜨렸습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 음악 용어",
+     "difWhy": "V007: 묻는 사실: 인물·사물에 붙은 짧은 되풀이 선율 수법의 이름 → 라이트모티프 — 대학 교양 음악 용어 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 음악 기본 어휘",
      "acc": 3,
@@ -104,9 +108,9 @@
     "originalTitleVariants": [],
     "explanation": "리스트의 '전주곡(레 프렐뤼드)'은 이 갈래의 대표작으로, 하나의 주제를 변형해 가며 곡 전체를 엮어 냅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 음악 — 음악 갈래",
+     "difWhy": "V007: 묻는 사실: 음악 밖 내용을 한 악장으로 그리는 관현악 갈래(리스트·블타바) → 교향시 — 고교 음악 (GEN 3→3)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 음악",
      "acc": 3,

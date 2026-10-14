@@ -5,12 +5,16 @@
   "midKey": "football",
   "subName": "규칙",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "골키퍼가 공을 잡은 곳이 골 에어리어 안이면, 반칙 지점에서 가장 가까운 골 에어리어 선 위에서 찹니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 축구 규칙",
+     "difWhy": "V007: 묻는 사실: 백패스 위반의 벌 → 간접 프리킥 — 축구를 챙겨 보는 사람 (GEN 3→3, 경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 백패스 규칙",
      "acc": 4,
@@ -164,9 +168,9 @@
     "originalTitleVariants": [],
     "explanation": "오프사이드 위치에 있는 것만으로는 반칙이 아니고, 그 위치에서 플레이에 관여해야 반칙이 됩니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 축구 규칙",
+     "difWhy": "V007: 묻는 사실: 오프사이드 예외 재개 셋 가운데 스로인 — 축구 애호 (GEN 3→3, 경계 4)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 축구 규칙",
      "acc": 4,
@@ -222,9 +226,9 @@
     "originalTitleVariants": [],
     "explanation": "이렇게 재개한 공은 서로 다른 두 선수가 건드리기 전에 골문에 들어가면 골로 인정되지 않습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 축구 규칙",
+     "difWhy": "V007: 묻는 사실: 공을 떨어뜨려 재개하는 방식 → 드롭볼 — 축구 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 규칙 변경",
      "acc": 4,

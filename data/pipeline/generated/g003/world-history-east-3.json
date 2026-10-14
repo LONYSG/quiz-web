@@ -5,12 +5,16 @@
   "midKey": "world-history-east",
   "subName": "인도·동남아",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "태수 편에는 프랑스 동인도 회사도 작은 부대를 보내 영국과 맞섰습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계사 — 인도 식민지화",
+     "difWhy": "V007: 묻는 사실: 1757 클라이브가 매수된 사령관 덕에 벵골 태수를 꺾은 전투 → 플라시 전투 — 고교 세계사 인도 식민지화 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 플라시 전투",
      "acc": 4,
@@ -107,15 +111,13 @@
     "pairedWith": null,
     "question": "1919년 4월 13일, 사방이 높은 담으로 둘러싸인 공원에 모인 비무장 군중에게 영국군 지휘관 다이어가 해산 경고도 없이 발포를 명령했습니다. 시크교 황금사원 가까이에서 벌어져, 펀자브 지방의 그 도시 이름으로 불리는 이 학살은?",
     "answer": "암리차르 학살",
-    "acceptedAnswers": [
-     "잘리안왈라 바그 학살"
-    ],
+    "acceptedAnswers": [],
     "originalTitleVariants": [],
     "explanation": "이 사건에 항의해 시인 타고르는 그해 5월 영국에서 받은 기사 작위를 내려놓았습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "수능 심화 — 인도 독립운동사",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 1919.4.13 암리차르 공원에서 다이어가 경고 없이 발포한 학살 → 암리차르 학살 — 고교 세계사 인도 민족운동 (GEN 4→3, 경계 4)",
      "wor": 4,
      "worWhy": "교양 — 식민 지배사",
      "acc": 4,

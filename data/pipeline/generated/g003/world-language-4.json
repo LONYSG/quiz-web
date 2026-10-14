@@ -5,12 +5,16 @@
   "midKey": "world-language",
   "subName": "세계 언어 분포",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "아프리카 연합의 실무 언어 가운데 하나이기도 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계지리 — 언어 분포",
+     "difWhy": "V007: 묻는 사실: 케냐·탄자니아 공용어인 반투어 계통 언어 — 고교 세계지리 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 세계 언어",
      "acc": 3,
@@ -107,9 +111,9 @@
     "originalTitleVariants": [],
     "explanation": "이름은 네덜란드어로 '아프리카의'라는 뜻이고, 예전에는 '케이프 네덜란드어'라 불렸습니다. 지금도 네덜란드어와 글로는 상당히 통합니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 남아공 현대사",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 소웨토 봉기에서 맞선 학교 수업 언어, 네덜란드어에서 갈라진 언어 — 남아공 언어, 고교 세계사·지리 (GEN 4→3)",
      "wor": 4,
      "worWhy": "교양 — 아파르트헤이트사",
      "acc": 3,

@@ -5,12 +5,16 @@
   "midKey": "design-photo",
   "subName": "산업 디자인",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1861년부터 가구와 장식품을 만들어 팔았고, 1892년 켈름스콧 출판사에서 러스킨의 '고딕의 본질'을 찍어 냈다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 디자인사",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 러스킨 사상을 이어 분업 생산에 맞서 미술 공예 운동을 이끈 영국인 → 윌리엄 모리스 — 고교 세계사·미술 (GEN 4→3, 정의 문장이 교과 설명)",
      "wor": 4,
      "worWhy": "교양 — 미술 공예 운동",
      "acc": 3,

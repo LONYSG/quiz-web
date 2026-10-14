@@ -5,12 +5,16 @@
   "midKey": "daily-rule",
   "subName": "우편·번호 체계",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "독일 체신 장관 하인리히 폰 슈테판이 설립을 이끌었고, 조약을 맺은 10월 9일은 세계 우편의 날입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 국제기구·근대사",
+     "difWhy": "V007: 묻는 사실: 1874 베른 조약으로 세워 대한제국이 가입한 우편 국제기구 — 고교 한국사·국제기구 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 국제기구",
      "acc": 5,

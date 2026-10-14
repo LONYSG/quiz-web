@@ -5,12 +5,16 @@
   "midKey": "brands",
   "subName": "기업 창업·역사",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,16 +35,16 @@
     "originalTitleVariants": [],
     "explanation": "1934년의 로고에는 관세음보살이 그려져 있었고, 회사는 1947년에 지금 이름이 들어간 사명으로 바꿨습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 기업 이름 유래",
+     "difWhy": "V007: 묻는 사실: 관세음보살(콰논)에서 이름을 딴 일본 광학 회사 → 캐논 — 관심층 (GEN 3→3, 경계 2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 사명 유래",
      "acc": 5,
      "accWhy": "브랜드·기업 — 전 국민 일상"
     },
-    "generalHint": "이 회사는 1987년 자동 초점 일안 반사식 카메라 계열 'EOS'를 처음 내놓았다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "이 회사는 처음에 정밀 광학 기기를 만드는 연구소로 출발했다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://en.wikipedia.org/wiki/Canon_Inc."
     ],
@@ -95,16 +99,16 @@
     "originalTitleVariants": [],
     "explanation": "로고의 네 고리는 1932년 합쳐 아우토 우니온을 이룬 네 회사(DKW·호르히·반더러 등)를 가리킵니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 브랜드 이름 유래",
+     "difWhy": "V007: 묻는 사실: 호르히가 자기 성을 못 쓰게 되자 라틴어 '들어라'로 지은 회사 이름 → 아우디 — 자동차 관심층 (GEN 3→3, 경계 2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 브랜드 작명",
      "acc": 5,
      "accWhy": "브랜드·기업 — 전 국민 일상"
     },
-    "generalHint": "1932년 이 회사와 합쳐진 반더러는 1896년 켐니츠에서 세워졌고, 1903년부터 자동차를 만들었다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "이 회사의 첫 자동차는 1910년에 나온 '타입 A' 스포츠 파에톤이었다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://en.wikipedia.org/wiki/Audi"
     ],

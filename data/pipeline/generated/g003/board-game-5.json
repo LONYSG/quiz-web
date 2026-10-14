@@ -5,12 +5,16 @@
   "midKey": "board-game",
   "subName": "퍼즐",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -72,7 +76,8 @@
     "targetWhy": "누구나 아는 퍼즐이 미국 출신이라는 기원 — 퍼즐 애호가 수준",
     "pairCheck": "1회차 #517 은 규칙과 일본 이름의 뜻을 물었다. 2회차는 미국 기원(넘버 플레이스·간스) — 1회차 단서·해설 사실 재사용 없음",
     "dbCheck": "pair-or-different #517 — (가) 2회차, 다른 지식",
-    "warn": []
+    "warn": [],
+    "discarded": "V007 drop — 3-3 — '숫자 퍼즐 … 일본 회사를 거쳐 새 이름' 만으로 1회차(#517: 일본에서 붙은 이름·퍼즐 자체는 미국에서 먼저) 를 아는 사람이 새 사실(넘버 플레이스·간스) 없이 바로 푼다; 고쳐도 같은 사실"
    }
   },
   {
@@ -95,9 +100,9 @@
     "originalTitleVariants": [],
     "explanation": "가명 'N. Claus de Siam'은 '아미앵의 뤼카(Lucas d'Amiens)'의 철자를 뒤섞어 만든 것입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "일상 — 유명 퍼즐",
+     "difWhy": "V007: 묻는 사실: 브라만 승려 64장 원반 전설이 붙은 퍼즐 — 중학 수학·일상 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 퍼즐 전설",
      "acc": 4,

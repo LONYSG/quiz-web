@@ -5,12 +5,16 @@
   "midKey": "energy",
   "subName": "재생 에너지",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "영국의 랜체스터가 1915년에 같은 값을 먼저 얻어, 발견자의 이름이 붙지 않는 '스티글러의 법칙'의 예로 꼽힌다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 5,
-     "difWhy": "전공 — 유체역학 한계",
+     "difWhy": "V007: 묻는 사실: 풍력 터빈이 거둘 수 있는 59.3% 상한 → 베츠 한계 — 풍력/유체역학 전공, 경계 4 (GEN 5→5, 경계)",
      "wor": 3,
      "worWhy": "이야깃거리 — 풍력 상한",
      "acc": 4,

@@ -5,12 +5,16 @@
   "midKey": "world-food",
   "subName": "향신료·재료",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "같은 열매에서 씨를 감싼 붉은 껍질은 따로 '메이스'라는 향신료가 됩니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 향신료 무역사",
+     "difWhy": "V007: 묻는 사실: 반다 제도 원산·런 섬과 뉴암스테르담 교환의 향신료 — 단서가 교과서 밖 세부, 대학 교양 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 대항해 시대",
      "acc": 4,

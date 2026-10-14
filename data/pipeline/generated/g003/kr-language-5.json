@@ -5,12 +5,16 @@
   "midKey": "kr-language",
   "subName": "높임말·어법",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "이 등급에서는 듣는 이를 '자네'라고 가리키며, 장인이 사위를 부를 때도 '자네'를 쓸 수 있다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 문법 — 높임법",
+     "difWhy": "V007: 묻는 사실: 상대 높임법 중 약간 대우하며 낮추는 등급 → 하게체 — 고교 국어 문법 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 상대 높임법",
      "acc": 5,
@@ -98,9 +102,9 @@
     "originalTitleVariants": [],
     "explanation": "같은 낱말이 부부 사이에서는 상대편을 높여 이르는 이인칭으로도 쓰인다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 문법 — 재귀칭",
+     "difWhy": "V007: 묻는 사실: 앞에 나온 웃어른을 다시 가리켜 높이는 재귀대명사 → 당신 — 고교 국어 문법 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 높임 어법",
      "acc": 5,
@@ -158,9 +162,9 @@
     "originalTitleVariants": [],
     "explanation": "돌아가신 남의 아버지를 높여 이를 때는 '선대인'이라고 한다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 국어 — 호칭어",
+     "difWhy": "V007: 묻는 사실: 가친과 짝인 돌아가신 아버지 호칭 → 선친 — 중학 국어 호칭어 (GEN 2→2, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 호칭 예절",
      "acc": 5,
@@ -222,9 +226,9 @@
     "originalTitleVariants": [],
     "explanation": "표준국어대사전은 같은 뜻의 말로 춘당·춘장·영존·존대인 등을 함께 싣고 있다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 높임 호칭 어휘",
+     "difWhy": "V007: 묻는 사실: 椿이 들어간 남의 아버지 높임 세 글자 → 춘부장 — 고교 국어 호칭 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 기본 높임 어휘",
      "acc": 5,

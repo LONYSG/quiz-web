@@ -5,12 +5,16 @@
   "midKey": "earth",
   "subName": "대기·기상",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "단계마다 우리말 이름도 있어 3계급은 산들바람, 가장 센 12계급은 싹쓸바람이라 부릅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 기상학",
+     "difWhy": "V007: 묻는 사실: 1805 해군 수로학자 이름이 붙은 0~12 바람 세기 기준 → 보퍼트 풍력 계급 — 대학 교양/기상 애호 (GEN 4→4, 경계)",
      "wor": 4,
      "worWhy": "교양 — 풍력 계급",
      "acc": 5,
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "발푸르기스의 밤에 마녀들이 이 산에 모인다는 전설이 이 현상을 마녀의 모임으로 여긴 데서 비롯되었다는 설명이 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 기상 광학",
+     "difWhy": "V007: 묻는 사실: 해를 등진 산 안개 그림자 둘레 무지개 고리, 하르츠 최고봉 이름 → 브로켄 현상 — 기상 광학 교양 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 기상 현상",
      "acc": 5,

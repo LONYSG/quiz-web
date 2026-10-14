@@ -5,12 +5,16 @@
   "midKey": "economy",
   "subName": "기업·경영 용어",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이 말은 1961년 하워드 휴스가 트랜스월드 항공을 통제하던 때 처음 쓰였다고 알려져 있고, 1980년대 정크 본드를 이용한 차입매수가 유행하며 널리 퍼졌습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 기업 경영 용어",
+     "difWhy": "V007: 묻는 사실: 인수 시 경영진 퇴직금으로 적대적 M&A 를 막는 제도 → 황금낙하산 — 대학 교양 경영·시사경제 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "시사 — 경제 기본 어휘",
      "acc": 4,

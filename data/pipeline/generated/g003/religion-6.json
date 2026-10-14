@@ -5,12 +5,16 @@
   "midKey": "religion",
   "subName": "종교 의식·상징",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "하누카 명절에는 갈래가 아홉인 등잔대를 쓰며, 현대 히브리어로는 하누키야라고 부릅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 종교 상징",
+     "difWhy": "V007: 묻는 사실: 예루살렘 성전의 일곱 갈래 등잔대의 히브리어 이름 → 메노라 — 대학 교양 종교 상징 (GEN 4→4, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유대교 상징",
      "acc": 3,
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "사순 시기는 주일을 빼고 40일이어서 달력으로는 46일이며, 그 전날은 참회 화요일입니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "대학 교양 — 가톨릭 전례",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 사순 시기의 첫날, 이마에 재로 십자 표시 → 재의 수요일 — 뉴스·영화로 접하는 관심 있는 사람 (GEN 4→3, 경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 종교 절기",
      "acc": 3,

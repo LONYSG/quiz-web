@@ -5,12 +5,16 @@
   "midKey": "world-lit",
   "subName": "고전(고대~18세기)",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "제프리 초서가 런던 방언의 중세 영어로 썼고, 순례의 목적지는 토머스 베켓의 성지가 있는 대성당이다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 세계 문학 고전",
+     "difWhy": "V007: 묻는 사실: 순례자들이 길에서 이야기를 나누는 틀의 중세 영국 작품 → 캔터베리 이야기 — 고교 세계사·문학 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 세계 문학 고전",
      "acc": 4,

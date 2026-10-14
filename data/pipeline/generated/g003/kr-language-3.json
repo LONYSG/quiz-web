@@ -5,12 +5,16 @@
   "midKey": "kr-language",
   "subName": "속담·관용어",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "날씨뿐 아니라 '살림이 매우 가난한 데가 있다'는 뜻으로도 쓰인다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 국어 — 어휘 유래",
+     "difWhy": "V007: 묻는 사실: 스산하고 쓸쓸한 분위기를 뜻하는 말(을사년 어원설) → 을씨년스럽다 — 중학 국어 어휘 (GEN 2→2)",
      "wor": 4,
      "worWhy": "교양 — 어휘 유래",
      "acc": 5,
@@ -97,16 +101,16 @@
     "originalTitleVariants": [],
     "explanation": "학질은 학질모기에 물려 걸리는 법정 감염병으로, 걸리면 심하게 앓고도 잘 낫지 않았던 데서 이 표현이 나왔다고 풀이된다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 관용어 어원",
+     "difWhy": "V007: 묻는 사실: '학을 떼다' 의 학이 가리키는 병 → 학질 — 관용어 어원, 고교 국어 (GEN 3→3, 경계 2)",
      "wor": 4,
      "worWhy": "교양 — 관용어 유래",
      "acc": 5,
      "accWhy": "한국어·한글 — 초중 국어 교과"
     },
-    "generalHint": "1897년 인도에서 로널드 로스가 모기 위장 속 원충을 찾아내, 이 병이 모기로 옮는다는 것을 밝혔다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "1596년 이시진은 『본초강목』에서 이 병의 증상에 청호로 만든 차를 권했다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wiktionary.org/wiki/학을_떼다",
      "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=학질"
@@ -168,9 +172,9 @@
     "originalTitleVariants": [],
     "explanation": "소리가 같은 '숙맥(宿麥)'은 보리를 달리 이르는 말로, 가을에 심어 이듬해 익는다고 묵을 숙(宿) 자를 붙였다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 국어 — 어휘",
+     "difWhy": "V007: 묻는 사실: 콩과 보리를 구별 못한다는 사자성어를 줄인 두 글자 말 → 숙맥 — 중학 국어 어휘 (GEN 2→2)",
      "wor": 4,
      "worWhy": "교양 — 어휘 유래",
      "acc": 5,
@@ -232,9 +236,9 @@
     "originalTitleVariants": [],
     "explanation": "두 고을은 1954년 함경남도에서 떨어져 나와 새로 생긴 량강도에 속하게 되었다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 사자성어·관용어",
+     "difWhy": "V007: 묻는 사실: 함경도 험한 귀양 고을 둘을 합친 관용어 → 삼수갑산 — 고교 국어 관용어 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 자주 쓰는 관용어",
      "acc": 5,

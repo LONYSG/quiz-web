@@ -5,12 +5,16 @@
   "midKey": "art",
   "subName": "서양 회화",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "템페라가 아닌 유화로 그린 유명 패널화 가운데 가장 오래된 것의 하나로 꼽히며, 1842년부터 런던 내셔널 갤러리가 소장하고 있습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 서양 미술사",
+     "difWhy": "V007: 묻는 사실: 볼록 거울에 문간 두 사람이 비치고 반 에이크 서명 글귀가 있는 그림 → 아르놀피니 부부의 초상 — 대학 교양 서양 미술사 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 북유럽 명화",
      "acc": 4,
@@ -109,9 +113,9 @@
     "originalTitleVariants": [],
     "explanation": "세 인물의 배치는 라파엘로의 밑그림을 마르칸토니오 라이몬디가 새긴 판화 '파리스의 심판'에서 따왔고, 처음 제목은 '목욕'이었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 미술 — 서양 명화",
+     "difWhy": "V007: 묻는 사실: 1863 낙선전의 옷 입은 남자와 벗은 여인이 앉은 마네 그림 → 풀밭 위의 점심 — 고교 미술 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 인상주의 직전 명화",
      "acc": 4,

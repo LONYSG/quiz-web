@@ -5,12 +5,16 @@
   "midKey": "world-food",
   "subName": "아메리카 음식",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "처음에는 멸치(안초비)를 넣지 않고 우스터소스로만 맛을 냈다고 그의 딸이 전합니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 3,
-     "difWhy": "관심 있는 사람 — 음식 유래",
+     "version": "score-v2",
+     "dif": 2,
+     "difWhy": "V007: 묻는 사실: 티후아나 식당 주인 이름이 붙은 샐러드 — 방송·일상 (GEN 3→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 시저 샐러드",
      "acc": 4,

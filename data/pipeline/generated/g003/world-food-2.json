@@ -5,12 +5,16 @@
   "midKey": "world-food",
   "subName": "유럽 음식",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -27,13 +31,16 @@
     "pairedWith": null,
     "question": "1838~39년 무렵 오스트리아 출신 아우구스트 창이 파리에 빈식 빵집을 열고 고향의 초승달 모양 빵 '키펄'을 팔았습니다. 이를 따라 만든 프랑스 빵집들이 모양을 따서 새 이름을 붙인 빵은?",
     "answer": "크루아상",
-    "acceptedAnswers": [],
+    "acceptedAnswers": [
+     "크로와상",
+     "크로아상"
+    ],
     "originalTitleVariants": [],
     "explanation": "1683년 빈 포위 때 오스만 군을 물리친 기념으로 만들었다는 이야기가 널리 퍼져 있지만, 그때의 기록은 없어 전설로 봅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 1,
-     "difWhy": "일상 — 빵 이름",
+     "difWhy": "V007: 묻는 사실: 초승달 모양 키펄을 따라 프랑스 빵집이 이름 붙인 빵 — 일상 (GEN 1→1)",
      "wor": 3,
      "worWhy": "이야깃거리 — 빵 유래",
      "acc": 4,

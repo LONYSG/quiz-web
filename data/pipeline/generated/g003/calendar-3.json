@@ -5,12 +5,16 @@
   "midKey": "calendar",
   "subName": "달력·역법",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "소련이 달력을 바꾼 뒤에는 이 혁명을 '11월 혁명'이라 부르기도 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계사 — 역법",
+     "difWhy": "V007: 묻는 사실: 10월 혁명이 11월 7일인 이유가 된 당시 러시아 달력 — 고교 세계사 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 10월 혁명 이름",
      "acc": 5,
@@ -99,9 +103,9 @@
     "originalTitleVariants": [],
     "explanation": "열흘째 날이 일요일을 대신한 쉬는 날이었고, 시간도 십진법으로 나누려 했지만 자리 잡지 못했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 서양사 역법",
+     "difWhy": "V007: 묻는 사실: 열흘 단위 30일 달과 포도 수확의 달 이름을 가진 혁명기 달력 — 대학 교양 서양사 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 프랑스 혁명",
      "acc": 5,

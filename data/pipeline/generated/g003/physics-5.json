@@ -5,12 +5,16 @@
   "midKey": "physics",
   "subName": "현대 물리",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이미 있던 자기장마저 밀어낸다는 점에서, 들어온 자기장을 가두어 두기만 하는 완전 도체와 초전도체가 갈립니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 초전도",
+     "difWhy": "V007: 묻는 사실: 초전도체가 자기장을 밀어내는 현상 → 마이스너 효과 — 초전도 애호/대학 교양, 경계 3 (GEN 4→4, 경계)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 물리",
      "acc": 5,

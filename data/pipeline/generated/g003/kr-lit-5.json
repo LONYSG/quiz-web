@@ -5,12 +5,16 @@
   "midKey": "kr-lit",
   "subName": "현대 시",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "정지용 연보에는 그가 도시샤대학을 졸업하고 귀국한 1929년 12월에 이 시를 썼다고 적혀 있다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 현대 시",
+     "difWhy": "V007: 묻는 사실: 정지용 시의 구절(밤에 홀로 … 산ㅅ새처럼 날러 갔구나) → 유리창 — 고교 국어 현대시 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 현대 시",
      "acc": 5,
@@ -98,9 +102,9 @@
     "originalTitleVariants": [],
     "explanation": "제목은 을사오적에서 따왔으며, 이 일로 시를 실은 '사상계'는 휴간 끝에 1970년 9월 폐간되었다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 문학 — 현대 시·필화",
+     "difWhy": "V007: 묻는 사실: 다섯 부류를 도둑에 빗댄 김지하 담시 → 오적 — 고교 문학·현대사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 현대사·문학",
      "acc": 5,

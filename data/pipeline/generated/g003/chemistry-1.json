@@ -5,12 +5,16 @@
   "midKey": "chemistry",
   "subName": "원소 기호",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "2006년 영국으로 망명한 전 러시아 정보요원 리트비넨코가 이 원소의 동위 원소 폴로늄-210에 중독되어 숨졌습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 화학 — 원소 이름",
+     "difWhy": "V007: 묻는 사실: 마리 퀴리의 조국 이름을 딴 원소 기호 Po → 폴로늄 — 고교 화학 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 원소·퀴리",
      "acc": 5,

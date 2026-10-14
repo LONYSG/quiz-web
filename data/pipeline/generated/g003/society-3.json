@@ -5,12 +5,16 @@
   "midKey": "society",
   "subName": "인구·통계 개념",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "사망률이 높은 일부 개발도상국에서는 이 값이 여성 1명당 3.4명까지 올라가며, 한국은 1983년 처음 이 수준 아래로 내려갔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 사회 — 인구 개념",
+     "difWhy": "V007: 묻는 사실: 세대 규모를 유지하는 합계출산율 기준(2명보다 약간 많음) → 대체출산율 — 고교 사회문화 인구 (GEN 3→3)",
      "wor": 4,
      "worWhy": "시사 상식 — 저출산 어휘",
      "acc": 4,

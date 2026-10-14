@@ -5,12 +5,16 @@
   "midKey": "world-lit",
   "subName": "20세기 문학",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "조이스가 그날을 고른 것은 훗날 아내가 된 노라 바너클과 처음 만나 함께 나간 날이었기 때문이라고 한다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 세계 문학",
+     "difWhy": "V007: 묻는 사실: 블룸스데이 6월 16일 하루를 그린 조이스 장편 → 율리시스 — 관심 있는 사람·세계 문학 (GEN 3→3, 경계 4)",
      "wor": 4,
      "worWhy": "교양 — 세계 문학 명작",
      "acc": 4,

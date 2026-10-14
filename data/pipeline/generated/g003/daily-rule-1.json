@@ -5,12 +5,16 @@
   "midKey": "daily-rule",
   "subName": "재난·안전 수칙",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "1983년 미국에서 나온 START 방식은 환자를 즉시(빨강) · 지연(노랑) · 경상(초록)으로 색을 나눠 표시합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 응급 분류",
+     "difWhy": "V007: 묻는 사실: 환자를 위급도로 나눠 치료 순서를 정하는 일의 이름 — 응급 상식, 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 재난 기본 어휘",
      "acc": 5,
@@ -99,9 +103,9 @@
     "originalTitleVariants": [],
     "explanation": "중대 재해 1건에 경미한 재해 29건, 다치지 않은 사고 300건이 있다는 비율로 흔히 요약되어 '1:29:300'이라고도 부릅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송·뉴스에서 흔히 — 안전 법칙",
+     "difWhy": "V007: 묻는 사실: 큰 재해 앞의 작은 사고 비율 경험칙의 이름 — 뉴스에서 흔히 (GEN 2→2)",
      "wor": 4,
      "worWhy": "시사 — 안전 기본 어휘",
      "acc": 5,
@@ -172,9 +176,9 @@
     "originalTitleVariants": [],
     "explanation": "보통 500~600℃에서 일어나며, 산소가 모자란 방에 바깥 공기가 갑자기 들어가 터지는 백드래프트와 달리 열이 일으키는 현상이다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 화재 현상 용어",
+     "difWhy": "V007: 묻는 사실: 연기층 복사열로 방 전체가 한순간에 타는 화재 현상 — 뉴스·소방 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 화재 안전 상식",
      "acc": 5,

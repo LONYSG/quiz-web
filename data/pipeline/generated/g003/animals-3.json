@@ -5,12 +5,16 @@
   "midKey": "animals",
   "subName": "어류·해양 생물",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1800년 훔볼트는 사람들이 말 30마리쯤을 웅덩이로 몰아 이 물고기의 공격을 끌어내는 모습을 보았고, 그 가운데 두 마리가 기절해 물에 빠져 죽었다고 기록했다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 1,
-     "difWhy": "초등 — 동물 이름",
+     "difWhy": "V007: 묻는 사실: 수백 볼트를 내는 아마존 물고기 → 전기뱀장어 — 초등 동물 이름 (GEN 1→1)",
      "wor": 3,
      "worWhy": "이야깃거리 — 이름과 분류",
      "acc": 5,

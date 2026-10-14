@@ -5,12 +5,16 @@
   "midKey": "classical",
   "subName": "작품·악곡",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "변주는 세 곡마다 한 번씩 카논이 나오며, 두 성부 사이의 음정이 같은 음에서 9도까지 한 단계씩 넓어집니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 바흐 대표곡",
+     "difWhy": "V007: 묻는 사실: 아리아와 30개 변주, 1741 출판된 바흐 건반곡 → 골드베르크 변주곡 — 관심층·고교 음악 (GEN 3→3)",
      "wor": 3,
      "worWhy": "유명 클래식 곡 제목",
      "acc": 3,
@@ -97,9 +101,9 @@
     "originalTitleVariants": [],
     "explanation": "오늘날 가장 많이 연주되는 관현악판은 1922년 지휘자 쿠세비츠키의 의뢰로 라벨이 편곡한 것입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 음악 — 명곡",
+     "difWhy": "V007: 묻는 사실: 하르트만 유작전을 보고 쓴 무소륵스키 피아노 모음곡 → 전람회의 그림 — 고교 음악 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 클래식 명곡",
      "acc": 3,
@@ -164,9 +168,9 @@
     "originalTitleVariants": [],
     "explanation": "1930년에 발견된 명왕성은 들어 있지 않아, 2000년 작곡가 콜린 매슈스가 '명왕성, 새롭게 하는 자'를 따로 지어 붙이기도 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 클래식 명곡",
+     "difWhy": "V007: 묻는 사실: 홀스트의 점성술식 일곱 악장 관현악 모음곡 → 행성 — 관심 있는 사람·고교 음악 (GEN 3→3)",
      "wor": 3,
      "worWhy": "유명 관현악곡 제목",
      "acc": 3,
@@ -228,9 +232,9 @@
     "originalTitleVariants": [],
     "explanation": "케이지는 로버트 라우셴버그의 '흰 그림' 연작이 자신을 이 작품으로 밀어붙였다고 말했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 — 현대 음악 감상",
+     "difWhy": "V007: 묻는 사실: 한 음도 치지 않은 케이지의 초연작 — 현대음악 감상, 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 유명 현대음악",
      "acc": 3,

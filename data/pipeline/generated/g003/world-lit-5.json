@@ -5,12 +5,16 @@
   "midKey": "world-lit",
   "subName": "동아시아 문학",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,16 +35,16 @@
     "originalTitleVariants": [],
     "explanation": "작가는 '난릉의 소소생(비웃는 선비)'이라는 필명만 남겨, 누구인지 지금도 밝혀지지 않았다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 중국 고전",
+     "difWhy": "V007: 묻는 사실: 수호전 무송 대목에서 갈라져 서문경 집안을 그린 명나라 소설 → 금병매 — 대학 교양 중국 고전 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 4대 기서",
      "acc": 4,
      "accWhy": "세계 문학 — 고교 문학 교과"
     },
-    "generalHint": "학자 앤드루 플랙스는 이 소설을 '삼국지연의'·'수호전'·'서유기'와 함께 명나라 소설의 네 걸작으로 꼽았다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "1695년 장주포가 일부를 고쳐 펴낸 판본이 가장 널리 읽혔다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://en.wikipedia.org/wiki/Jin_Ping_Mei"
     ],
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "1922년 잡지 '신초' 1월호에 처음 실렸고, 무대는 교토 근처의 대숲이다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 일본 문학",
+     "difWhy": "V007: 묻는 사실: 영화 라쇼몽의 줄거리를 낸 아쿠타가와의 다른 단편 → 덤불 속 — 영화·문학 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 라쇼몽 원작",
      "acc": 4,

@@ -5,12 +5,16 @@
   "midKey": "kr-lit",
   "subName": "현대 소설",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1970년 '여성동아' 여류장편소설 공모에 당선된 박완서의 데뷔작이다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "수능 심화 — 현대 소설",
+     "difWhy": "V007: 묻는 사실: PX 초상화부에서 화가 옥희도에게 끌리는 이경의 이야기, 박완서 장편 → 나목 — 줄거리, 수능 연계·대학 교양 (GEN 4→4)",
      "wor": 4,
      "worWhy": "교양 — 작가 데뷔작",
      "acc": 5,
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "조선일보 기자 이규태가 1966년에 쓴 르포 '소록도의 반란'이 집필의 영감이 되었다고 한다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "수능 심화 — 현대 소설",
+     "difWhy": "V007: 묻는 사실: 소록도 조백헌 원장의 오마도 간척 이야기, 이청준 장편 → 당신들의 천국 — 줄거리, 수능 연계 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 한국 현대문학",
      "acc": 5,
@@ -171,9 +175,9 @@
     "originalTitleVariants": [],
     "explanation": "2001년에 나와 그해 제21회 동인문학상을 받았다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 한국 소설",
+     "difWhy": "V007: 묻는 사실: 첫 문장 '버려진 섬마다 꽃이 피었다', 이순신 1인칭 소설 → 칼의 노래 — 대중 소설, 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 현대 문학 대표작",
      "acc": 5,
@@ -241,9 +245,9 @@
     "originalTitleVariants": [],
     "explanation": "1977년 『창작과비평』에 실렸으며, 권 씨는 출판사에 다니다 시위 사건에 휘말려 전과자가 된 인물로 그려진다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 문학 — 현대 소설 교과서 작품",
+     "difWhy": "V007: 묻는 사실: 권 씨의 셋방·강도 사건 줄거리 → 아홉 켤레의 구두로 남은 사내 — 고교 문학 현대 소설 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 1970년대 소설",
      "acc": 5,

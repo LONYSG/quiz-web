@@ -5,12 +5,16 @@
   "midKey": "theatre",
   "subName": "연극 사조·연출",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1560년대부터 여성이 여성 배역을 맡아, 고대 이후 유럽에서 처음 알려진 직업 여배우들을 배출했다고 평가됩니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 연극사",
+     "difWhy": "V007: 묻는 사실: 줄거리 뼈대만 두고 즉흥하며 가면 정형 인물이 나오는 16세기 이탈리아 연극 → 코메디아 델라르테 — 대학 교양 연극사 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 연극",
      "acc": 3,

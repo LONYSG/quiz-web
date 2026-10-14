@@ -5,12 +5,16 @@
   "midKey": "world-history-west",
   "subName": "르네상스·대항해",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "이 경계선 때문에 남아메리카에서 브라질만 포르투갈어를 쓰게 되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 세계사 — 대항해",
+     "difWhy": "V007: 묻는 사실: 1494 스페인·포르투갈이 카보베르데 서쪽 370레구아에 선을 그은 조약 → 토르데시야스 조약 — 고교 세계사 대항해 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 세계사",
      "acc": 4,

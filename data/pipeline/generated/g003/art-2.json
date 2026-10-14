@@ -5,12 +5,16 @@
   "midKey": "art",
   "subName": "조각",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "잃어버린 오른팔은 1905년 고고학자 루트비히 폴라크가 찾아냈고, 1957년에야 조각에 다시 붙었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 미술 — 고대 조각",
+     "difWhy": "V007: 묻는 사실: 바다뱀에 휘감긴 트로이 신관과 두 아들을 새긴 고대 군상 → 라오콘 — 고교 미술·세계사 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 대표 고대 조각",
      "acc": 4,

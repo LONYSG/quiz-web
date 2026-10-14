@@ -5,12 +5,16 @@
   "midKey": "psychology",
   "subName": "발달·성격 이론",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "이 개념을 교육에 옮긴 브루너·우드·로스가 '비계(스캐폴딩)'라는 말을 만들었는데, 비고츠키 자신은 이 낱말을 쓴 적이 없습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 교육심리",
+     "difWhy": "V007: 묻는 사실: 혼자는 못 하나 도움을 받으면 해내는 범위를 가리키는 비고츠키의 개념 → 근접 발달 영역 — 대학 교양 교육심리 (GEN 4→4)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 심리학",
      "acc": 3,

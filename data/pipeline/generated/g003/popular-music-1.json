@@ -5,12 +5,16 @@
   "midKey": "popular-music",
   "subName": "1960~70년대",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     ],
     "explanation": "표지 속 맨발의 폴 매카트니는 '폴이 이미 죽었다'는 소문의 증거처럼 읽히기도 했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송에서 흔히 — 비틀즈 앨범",
+     "difWhy": "V007: 묻는 사실: 횡단보도 표지의 비틀즈 앨범 → 방송에서 흔히 — 방송 (GEN 2→2)",
      "wor": 3,
      "worWhy": "대중적 앨범 제목",
      "acc": 3,
@@ -104,11 +108,11 @@
     "originalTitleVariants": [
      "Another Brick in the Wall"
     ],
-    "explanation": "합창을 맡은 아이들은 일주일쯤 연습한 뒤, 밴드 스튜디오 근처의 학교에서 녹음했습니다.",
+    "explanation": "합창을 맡은 아이들은 일주일쯤 연습한 뒤 녹음에 참여했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 록 명곡",
+     "difWhy": "V007: 묻는 사실: 이즐링턴 학생 합창·남아공 금지 곡 → 록을 듣는 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "유명 곡 제목 맞히기",
      "acc": 3,

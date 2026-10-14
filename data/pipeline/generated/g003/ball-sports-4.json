@@ -5,12 +5,16 @@
   "midKey": "ball-sports",
   "subName": "골프",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -25,15 +29,15 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "골프 친선 라운드에서 샷을 망쳤을 때 벌타 없이 같은 자리에서 한 번 더 치게 봐주는 것을 이렇게 부릅니다. 정식 규칙에는 없으며, 1920년대 몬트리올의 한 컨트리클럽에서 치던 캐나다 골퍼의 성에서 왔다는 설이 가장 흔합니다. 이것을 무엇이라 할까요?",
+    "question": "골프 친선 라운드에서 샷을 망쳤을 때 벌타 없이 같은 자리에서 한 번 더 치게 봐주는 것을 이렇게 부릅니다. 정식 규칙에는 없으며, 1920년대 몬트리올의 한 컨트리클럽에서 치던 캐나다 골퍼의 성에서 왔다는 설이 있습니다. 이것을 무엇이라 할까요?",
     "answer": "멀리건",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
     "explanation": "어원은 분명하지 않아 1930년대 미국 뉴저지 골프장의 라커룸 직원 이야기 같은 다른 설도 있으며, 카드 게임 '매직: 더 개더링'에서는 첫 손패를 다시 뽑는 규칙 이름으로 쓰입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 골프 용어",
+     "difWhy": "V007: 묻는 사실: 벌타 없이 다시 치게 봐주는 골프 관행 → 멀리건 — 골프 인구가 아는 말 (GEN 3→3)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 골프",
      "acc": 4,
@@ -95,9 +99,9 @@
     "originalTitleVariants": [],
     "explanation": "디 오픈을 다른 어느 코스보다 많이 열었는데, 2022년까지 30번입니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 골프 역사",
+     "difWhy": "V007: 묻는 사실: 올드 코스가 있는 골프의 고향 도시 → 세인트앤드루스 — 골프 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 골프의 고향",
      "acc": 4,
@@ -161,9 +165,9 @@
     ],
     "explanation": "처음에는 유럽 전체가 아니라 영국과 미국의 대결이었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 골프 대회",
+     "difWhy": "V007: 묻는 사실: 미국 대 유럽 상금 없는 골프 단체전 → 라이더컵 — 골프 애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 주요 대회",
      "acc": 4,

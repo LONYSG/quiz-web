@@ -5,12 +5,16 @@
   "midKey": "brands",
   "subName": "상표가 된 상품명",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "흔히 엘리베이터와 합친 말로 여기지만, 시버거는 이 이름이 엘리베이터에서 온 말이 아니라고 설명했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "일상 — 상표가 된 일반명",
+     "difWhy": "V007: 묻는 사실: 시버거가 라틴어 '계단' 뿌리로 지어 1950 상표권을 잃은 이름 → 에스컬레이터 — 일상 용어 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 이름 유래",
      "acc": 5,
@@ -99,9 +103,9 @@
     "originalTitleVariants": [],
     "explanation": "지금도 웸오의 등록 상표라서, 얼티밋이나 디스크 골프 같은 정식 종목은 이 낱말을 피해 '플라잉 디스크'라고 부릅니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 3,
-     "difWhy": "관심 있는 사람 — 상표 유래",
+     "version": "score-v2",
+     "dif": 2,
+     "difWhy": "V007: 묻는 사실: 웸오가 날리는 원반에 붙인 새 이름(파이 접시 유래) → 프리스비 — 방송·일상에서 흔히 (GEN 3→2, 내림: '날리는 원반의 새 이름' 이 일상 낱말)",
      "wor": 3,
      "worWhy": "이야깃거리 — 프리스비",
      "acc": 5,
@@ -168,9 +172,9 @@
     ],
     "explanation": "1938년 멜라민 수지가 개발되면서 열과 습기에 더 강해지고 색도 다양해졌고, 1970년에는 공업용 생산을 끝내고 장식용 판만 만들게 되었다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "애호가 — 상표 유래",
+     "difWhy": "V007: 묻는 사실: '운모 대신(for mica)' 에서 지은 적층 소재 상표 — 상표 유래 애호가 (GEN 4→4, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 상표가 된 이름",
      "acc": 5,

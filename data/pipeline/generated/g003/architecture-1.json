@@ -5,12 +5,16 @@
   "midKey": "architecture",
   "subName": "건축 양식",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "1955년 비평가 레이너 배넘이 '뉴 브루탈리즘'이라는 글로 이 말을 널리 알렸다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 건축 양식",
+     "difWhy": "V007: 묻는 사실: 베통 브뤼와 이어진 1950년대 영국의 육중한 노출 콘크리트 양식 → 브루탈리즘 — 대학 교양 건축 양식 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 건축 기본 어휘",
      "acc": 3,

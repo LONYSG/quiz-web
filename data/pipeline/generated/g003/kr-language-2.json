@@ -5,12 +5,16 @@
   "midKey": "kr-language",
   "subName": "순우리말",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "앞부분 '마수'는 처음 팔리는 것으로 미루어 점쳐 보는 그날의 장사 운을 뜻한다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 국어 — 순우리말",
+     "difWhy": "V007: 묻는 사실: 장사에서 맨 처음 물건을 파는 일 → 마수걸이 — 순우리말 어휘, 관심층 (GEN 3→3, 경계 2)",
      "wor": 4,
      "worWhy": "기본 어휘 — 순우리말",
      "acc": 5,
@@ -100,9 +104,9 @@
     "originalTitleVariants": [],
     "explanation": "같은 '가시'가 붙은 말로 장인을 뜻하는 '가시아버지', 장모를 뜻하는 '가시어머니'가 사전에 올라 있다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "수능 심화 — 순우리말 어휘",
+     "difWhy": "V007: 묻는 사실: 부부를 낮잡아 이르는 순우리말 → 가시버시 — 낯선 고유어, 수능 심화·애호가 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 순우리말",
      "acc": 5,

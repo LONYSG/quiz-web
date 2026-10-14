@@ -5,12 +5,16 @@
   "midKey": "board-game",
   "subName": "보드게임",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -25,7 +29,7 @@
     "ok": true,
     "mode": "가",
     "pairedWith": 275,
-    "question": "1904년 리지 매기는 땅을 쥔 지주에게 부가 쏠리는 폐해를 보여 주려고, 헨리 조지의 사상을 담은 '지주 게임'의 특허를 냈습니다. 이 게임에서 비롯해 1935년 파커 브러더스가 펴낸 보드게임은?",
+    "question": "1904년 리지 매기는 땅을 쥔 지주에게 부가 쏠리는 폐해를 보여 주려고, 헨리 조지의 사상을 담은 '지주 게임'의 특허를 냈습니다. 이 게임에서 비롯해 1930년대 미국에서 상품으로 팔리기 시작한 보드게임은?",
     "answer": "모노폴리",
     "acceptedAnswers": [],
     "originalTitleVariants": [
@@ -33,9 +37,9 @@
     ],
     "explanation": "오랫동안 찰스 대로가 발명한 게임으로 알려졌고, 파커 브러더스는 뒤늦게 매기의 특허권을 500달러에 사들였습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "일상 — 유명 보드게임",
+     "difWhy": "V007: 묻는 사실: 지주 게임에서 비롯된 보드게임 — 보드게임을 아는 사람 (GEN 2→2, 경계)",
      "wor": 3,
      "worWhy": "이야깃거리 — 게임 기원",
      "acc": 4,
@@ -103,9 +107,9 @@
     ],
     "explanation": "1부터 13까지 네 가지 색의 타일 두 벌과 조커 둘, 모두 106개의 타일을 쓰며 1980년 독일 '올해의 게임상'을 받았습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "일상 — 보드게임",
+     "difWhy": "V007: 묻는 사실: 숫자 타일 보드게임 루미큐브의 발명자 이력 — 한국에서 흔한 게임 (GEN 2→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 게임 유래",
      "acc": 4,
@@ -177,9 +181,9 @@
     ],
     "explanation": "토이버는 1991년부터 이 게임을 설계했고, 독일의 코스모스 출판사가 처음 펴냈다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 유명 보드게임",
+     "difWhy": "V007: 묻는 사실: 토이버가 만든 자원 교환 개척 보드게임 — 보드게임 관심층 (GEN 3→3, 경계 2)",
      "wor": 3,
      "worWhy": "유명 게임 제목 맞히기",
      "acc": 4,

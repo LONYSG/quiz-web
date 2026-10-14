@@ -5,12 +5,16 @@
   "midKey": "kr-tradition",
   "subName": "국악·전통 예술",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "고려 예종 때 송나라의 대성아악과 함께 들어왔지만, 좋은 돌을 구하기 어려워 중국에서 들여오거나 흙으로 구운 것을 대신 쓰기도 했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 음악 — 국악기",
+     "difWhy": "V007: 묻는 사실: ㄱ자 돌 16개를 두 단으로 매단 아악기 → 편경 — 고교 음악(국악기) (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 세종 대 국악기",
      "acc": 5,
@@ -101,9 +105,9 @@
     "originalTitleVariants": [],
     "explanation": "칸은 음의 길이만 나타내므로, 음 높이는 율자보나 오음약보 같은 다른 기보법을 섞어 적는다. 쉼표는 세모꼴로 표시한다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 음악 — 국악 기보법",
+     "difWhy": "V007: 묻는 사실: 칸 하나가 한 박인 세종 때 악보 → 정간보 — 고교 음악 국악 기보법 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 세종 악보",
      "acc": 5,

@@ -5,12 +5,16 @@
   "midKey": "politics",
   "subName": "정치 체제·기구",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "영국·캐나다·오스트레일리아 등에서는 제1야당과 이 조직을 공식적으로 '국왕(여왕) 폐하의 충성스러운 야당'이라 부릅니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 정치 — 의회 제도",
+     "difWhy": "V007: 묻는 사실: 제1야당의 부처별 대응 조직 → 그림자 내각 — 고교 정치와 법 (GEN 3→3)",
      "wor": 4,
      "worWhy": "시사 상식 — 정치 기본 어휘",
      "acc": 4,
@@ -97,9 +101,9 @@
     "originalTitleVariants": [],
     "explanation": "잦은 동거를 줄이려 2000년 국민투표로 대통령 임기를 7년에서 5년으로 줄여, 2002년부터 총선이 대선 한 달쯤 뒤에 치러지게 되었습니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "수능 심화 — 정치 체제",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 준대통령제에서 대통령과 의회 다수당이 다른 진영일 때 반대편 총리와 함께 국정을 이끄는 상태 → 동거정부 — 고교 정치와 법 정의 문장 (GEN 4→3, 경계 4)",
      "wor": 4,
      "worWhy": "교양 — 정치 기본 어휘",
      "acc": 4,

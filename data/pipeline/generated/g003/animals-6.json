@@ -5,12 +5,16 @@
   "midKey": "animals",
   "subName": "동물의 습성·생태",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "실제로는 몇 해를 주기로 개체 수가 크게 늘었다 줄었다 하며, 수가 너무 많아지면 무리 지어 옮겨 가다 물에 빠지기도 한다.",
     "score": {
-     "version": "score-v1",
-     "dif": 3,
-     "difWhy": "관심층 — 동물 속설",
+     "version": "score-v2",
+     "dif": 2,
+     "difWhy": "V007: 묻는 사실: 절벽에서 뛰어내린다는 속설의 툰드라 설치류 → 레밍 — 뉴스·방송에서 흔한 속설(GEN 3→2) (GEN 3→2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 속설 정정",
      "acc": 5,

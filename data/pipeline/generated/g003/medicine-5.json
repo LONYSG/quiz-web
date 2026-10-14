@@ -5,12 +5,16 @@
   "midKey": "medicine",
   "subName": "응급처치",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     ],
     "explanation": "1970년대 중반 미국의 셸던 캐플런이 처음 만들었고, 미국 식품의약국은 1987년에 판매를 승인했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 응급 의료 상표",
+     "difWhy": "V007: 묻는 사실: 아드레날린 자동 주사기의 대표 상표 → 에피펜 — 응급 상식, 관심층 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 아나필락시스 대처",
      "acc": 4,

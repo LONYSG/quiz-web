@@ -5,12 +5,16 @@
   "midKey": "kr-history",
   "subName": "조선 후기",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "1787년의 정미통공, 1794년의 갑인통공과 함께 정조 대 통공 정책으로 묶이며, 이후 사상의 성장으로 이어졌다고 설명됩니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 정조 상업 정책",
+     "difWhy": "V007: 묻는 사실: 1791년 채제공 건의, 육의전 제외 금난전권 폐지 → 신해통공 — 고교 한국사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과 — 신해통공",
      "acc": 5,
@@ -97,9 +101,9 @@
     "originalTitleVariants": [],
     "explanation": "1674년 효종비 인선왕후가 죽자 다시 벌어진 두 번째 논쟁에서는 남인의 주장이 받아들여져 남인이 집권했습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사",
+     "difWhy": "V007: 묻는 사실: 효종 사후 자의대비 복상 기간 논쟁 → 예송 — 고교 한국사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 조선 후기 붕당",
      "acc": 5,
@@ -161,9 +165,9 @@
     "originalTitleVariants": [],
     "explanation": "정조가 죽자 이 군영을 해체해 그 재정을 쓰자는 논의가 힘을 얻었고, 화성의 외영은 규모가 줄어 총리영으로 개편되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 정조 개혁",
+     "difWhy": "V007: 묻는 사실: 정조의 국왕 호위 군영(내영·외영, 1802 폐지) → 장용영 — 고교 한국사 (GEN 3→3)",
      "wor": 5,
      "worWhy": "교과서 — 조선 후기",
      "acc": 5,
@@ -231,9 +235,9 @@
     "originalTitleVariants": [],
     "explanation": "새 배를 만들지 않고 세금을 나르던 조운선과 한강을 오가던 경강선을 끌어 써서 비용을 줄였다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국사 — 정조 화성 행차",
+     "difWhy": "V007: 묻는 사실: 정조 행차의 한강 도강 시설 → 배다리 — 고교 한국사 화성 행차 (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 정조 대 대표 일화",
      "acc": 5,

@@ -5,12 +5,16 @@
   "midKey": "pets-garden",
   "subName": "고양이 품종",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "품종 이름은 삵의 학명 'bengalensis'(남아시아 벵골 지방의)에서 따왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 고양이 품종",
+     "difWhy": "V007: 묻는 사실: 삵과 집고양이를 교배해 만든 1963 캘리포니아의 고양이 품종 → 벵갈 — 고양이 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 품종 유래",
      "acc": 4,

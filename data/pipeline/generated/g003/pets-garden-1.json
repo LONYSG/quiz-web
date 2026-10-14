@@ -5,12 +5,16 @@
   "midKey": "pets-garden",
   "subName": "개 품종",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "보호소를 운영해 여러 개를 접할 수 있었던 것이 개량의 바탕이 되었고, 그가 죽은 뒤 1890년대에 오토 괴엘러가 품종을 다듬었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "일상 — 개 품종 이름",
+     "difWhy": "V007: 묻는 사실: 아폴다 세금 징수원이 자신을 지킬 개로 개량한 품종, 성이 이름 → 도베르만 — 방송·일상에서 흔히 (GEN 2→2, 경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 품종명 유래",
      "acc": 4,

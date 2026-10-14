@@ -5,12 +5,16 @@
   "midKey": "kr-geo",
   "subName": "섬·해안",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "우리나라 동해안에는 이런 호수가 18곳쯤 흩어져 있으며 속초의 영랑호·청초호도 여기에 듭니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "중학 사회 — 해안 지형",
+     "difWhy": "V007: 묻는 사실: 사주가 만 입구를 막아 생긴 호수(경포호·화진포) → 석호 — 중학 사회 해안 지형 (GEN 2→2, 경계 3)",
      "wor": 5,
      "worWhy": "교과서 — 지형",
      "acc": 5,
@@ -93,9 +97,9 @@
     "originalTitleVariants": [],
     "explanation": "성산일출봉은 얕은 바다에서 화산이 분출해 만들어진 응회구로, 2007년 세계자연유산 '제주 화산섬과 용암 동굴'의 일부가 되었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 지리 — 해안 지형",
+     "difWhy": "V007: 묻는 사실: 사주로 육지와 연결된 섬(성산일출봉·양양 죽도) → 육계도 — 한국지리 해안 지형 정의, 고교 (GEN 3→3, 보정 표본)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 지형",
      "acc": 5,
@@ -158,16 +162,16 @@
     "originalTitleVariants": [],
     "explanation": "섬의 생김새가 소가 누워 있는 모습 같다고 해서 이름이 붙었습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 제주 지리",
+     "difWhy": "V007: 묻는 사실: 홍조단괴 해빈(산호사 해수욕장)이 있는 제주 부속섬 → 우도 — 제주 지리, 관심층 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 우도 해변",
      "acc": 5,
      "accWhy": "한국 지리 — 초중 사회 교과"
     },
-    "generalHint": "성산항에서 여객선이 자주 오가며, 땅콩이 특산물로 꼽힌다.",
-    "generalHintVersion": "hint-v3",
+    "generalHint": "사람이 살기 시작한 것은 1698년께부터이고, 제주도 다음으로 큰 섬으로 소개된다.",
+    "generalHintVersion": "hint-v3+v007",
     "sources": [
      "https://ko.wikipedia.org/wiki/우도_홍조단괴해빈",
      "https://ko.wikipedia.org/wiki/우도"
@@ -237,9 +241,9 @@
     "originalTitleVariants": [],
     "explanation": "2001년 천연기념물로 지정되었고, 사구의 습지에는 맹꽁이·금개구리 같은 멸종위기종이 삽니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 한국지리",
+     "difWhy": "V007: 묻는 사실: 한국 최대 해안사구가 있는 태안의 마을 → 신두리 — 고교 한국지리 대표 사례 (GEN 3→3, 경계 4)",
      "wor": 4,
      "worWhy": "교양 — 국내 지형 명소",
      "acc": 5,
@@ -301,9 +305,9 @@
     "originalTitleVariants": [],
     "explanation": "2004년 이웃한 적벽강과 하나로 묶여 명승으로 지정되었다. 그 전에는 1976년부터 각각 전북 기념물이었다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "고교 지리 — 해안 퇴적 지형 명소",
+     "difWhy": "V007: 묻는 사실: 격포리 책 쌓은 듯한 해식 절벽 해안 → 채석강 — 중학~고교 지리 명소 (GEN 3→3, 경계 2)",
      "wor": 4,
      "worWhy": "교양 — 대표 해안 명승",
      "acc": 5,

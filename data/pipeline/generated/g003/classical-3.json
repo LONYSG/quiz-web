@@ -5,12 +5,16 @@
   "midKey": "classical",
   "subName": "오페라",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "베르디는 아리아 '여자의 마음'을 초연 몇 시간 전에야 출연진에게 보여 주고, 극장 밖에서 부르지 못하게 했다고 합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 오페라",
+     "difWhy": "V007: 묻는 사실: 위고 원작·검열로 무대가 바뀐 등 굽은 광대 주인공의 베르디 오페라 → 리골레토 — 오페라 애호가 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 오페라 명작",
      "acc": 3,

@@ -5,12 +5,16 @@
   "midKey": "drinks",
   "subName": "위스키·증류주",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "이 향의 세기는 페놀 함량(ppm)으로 나타내는데, 하이랜드 위스키는 30ppm 안팎, 아일라 위스키는 50ppm 안팎까지 간다고 합니다.",
     "score": {
-     "version": "score-v1",
-     "dif": 4,
-     "difWhy": "애호가 — 위스키 제조",
+     "version": "score-v2",
+     "dif": 3,
+     "difWhy": "V007: 묻는 사실: 습지에서 식물이 덜 썩고 쌓인 연료 = 이탄 — 정의 문장이 지구과학·지리 교과 (GEN 4→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 위스키 향",
      "acc": 4,

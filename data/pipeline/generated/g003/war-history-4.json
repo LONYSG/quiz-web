@@ -5,12 +5,16 @@
   "midKey": "war-history",
   "subName": "냉전 이후",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -34,9 +38,9 @@
     "originalTitleVariants": [],
     "explanation": "이 협정 아래 보스니아 헤르체고비나는 보스니아 헤르체고비나 연방과 스릅스카 공화국이라는 두 정치체로 이루어진 나라가 됐습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 현대 국제사",
+     "difWhy": "V007: 묻는 사실: 1995 오하이오 공군 기지에서 3주 협상한 보스니아 전쟁 종전 합의 → 데이턴 협정 — 대학 교양 현대 국제사 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 보스니아 전쟁 종전",
      "acc": 3,

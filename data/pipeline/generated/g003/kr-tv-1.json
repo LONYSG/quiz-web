@@ -5,12 +5,16 @@
   "midKey": "kr-tv",
   "subName": "예능 프로그램",
   "questionPrompt": "media-v2",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "originalTitleVariants": [],
     "explanation": "이 특집은 11회에 걸쳐 방송됐고, 방송에 나오지 않은 장면과 공연 전체를 담은 DVD도 나왔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 2,
-     "difWhy": "방송 — 무한도전 특집",
+     "difWhy": "V007: 묻는 사실: 무한도전 장기 특집의 종목 → 방송에서 흔히 — 방송 (GEN 2→2)",
      "wor": 2,
      "worWhy": "팬 세부 — 예능 특집 종목",
      "acc": 5,
@@ -104,9 +108,9 @@
     "originalTitleVariants": [],
     "explanation": "정재형은 이 가요제 출연을 계기로 방송 활동의 폭을 크게 넓혔습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심 있는 사람 — 예능 가요제",
+     "difWhy": "V007: 묻는 사실: 정형돈·정재형 팀의 가요제 곡 → 무한도전 팬이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "팬 세부 — 예능 곡 제목",
      "acc": 5,
@@ -172,9 +176,9 @@
     "originalTitleVariants": [],
     "explanation": "개리는 2016년 음악 활동에 집중하겠다며 '런닝맨'을 떠났습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 예능 별칭",
+     "difWhy": "V007: 묻는 사실: 개리·송지효를 묶는 별명 → 런닝맨 시청자가 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 2,
      "worWhy": "팬 용어 — 예능 커플 별칭",
      "acc": 5,
@@ -182,7 +186,7 @@
     },
     "generalHint": "2014년 드라마피버 어워즈에서 두 사람이 함께 '베스트 키스상'을 받았다.",
     "generalHintVersion": "hint-v3",
-    "layer": "팬 세부",
+    "layer": "대중",
     "genre": "예능",
     "work": "런닝맨",
     "sources": [
@@ -234,9 +238,9 @@
     "originalTitleVariants": [],
     "explanation": "맨 처음 코너는 '실화극장'이었고, 라디오스타는 2011년 10월 무릎팍도사가 끝난 뒤 따로 떨어져 나와 홀로 이어졌습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 예능 프로그램명",
+     "difWhy": "V007: 묻는 사실: 무릎팍도사·라디오스타를 품은 MBC 프로그램 이름 → 예능을 본 사람이 안다 — 관심 있는 사람 (GEN 3→3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유명 예능",
      "acc": 5,

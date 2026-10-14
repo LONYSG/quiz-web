@@ -5,12 +5,16 @@
   "midKey": "kr-tradition",
   "subName": "관혼상제",
   "questionPrompt": "deep-v3",
-  "scorePrompt": "score-v1",
+  "scorePrompt": "score-v1 → V007 재채점(score-v2 읽기)",
   "hintPrompt": "hint-v3",
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)",
+  "g004": {
+   "at": "2026-10-14",
+   "note": "V007 판정 반영 (scripts/g004-apply-g003.mjs · data/pipeline/audit/g004-fixes.json)"
+  }
  },
  "items": [
   {
@@ -31,9 +35,9 @@
     "originalTitleVariants": [],
     "explanation": "남자의 관례는 주로 스무 살에 치렀고, 후대에는 혼례 전날 간략히 치르는 경우가 많아졌습니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 전통 관례",
+     "difWhy": "V007: 묻는 사실: 남자 관례에 짝하는 여자의 성인 의식 → 계례 — 관혼상제 세부, 대학 교양 (GEN 4→4, 경계 3)",
      "wor": 4,
      "worWhy": "교양 — 전통 성인식",
      "acc": 5,
@@ -89,9 +93,9 @@
     "originalTitleVariants": [],
     "explanation": "『예기』는 표주박을 둘로 자른 잔으로 술을 마셔 두 사람의 몸을 합한다는 뜻이라고 풀이합니다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 4,
-     "difWhy": "대학 교양 — 전통 혼례",
+     "difWhy": "V007: 묻는 사실: 전통 혼례 마무리, 표주박 쪼갠 잔으로 술을 주고받는 의식 → 합근례 — 혼례 절차 세부, 대학 교양 (GEN 4→4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 혼례 절차",
      "acc": 5,
@@ -153,9 +157,9 @@
     "originalTitleVariants": [],
     "explanation": "옛 절차로는 운명한 다음 날 수의를 입혀 이불로 싸는 소렴, 그 이튿날 입관을 위해 다시 베로 감싸 매듭짓는 대렴으로 나뉘었다.",
     "score": {
-     "version": "score-v1",
+     "version": "score-v2",
      "dif": 3,
-     "difWhy": "관심층 — 상례 용어",
+     "difWhy": "V007: 묻는 사실: 시신 씻기고 수의 입혀 베로 묶는 일 → 염습 — 관심 있는 사람(상례 용어) (GEN 3→3)",
      "wor": 4,
      "worWhy": "교양 — 전통 의례 어휘",
      "acc": 5,
