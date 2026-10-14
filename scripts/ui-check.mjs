@@ -1395,7 +1395,7 @@ async function confirmFirst(page) {
 //   ★ 비교 그림: 친구 창 ↔ 참여자 창(👥), 알림 창 ↔ 설정 창(⚙)
 // -----------------------------------------------------------------------------
 const SOCIAL_ONLY = args.includes('--social');
-if (SOCIAL_ONLY) process.env.SHOT_DIR ??= 'r045';
+if (SOCIAL_ONLY) process.env.SHOT_DIR ??= 'verify'; // ★ R048 — 옛 라운드 그림(r045 …)을 verify 가 덮어쓰지 않게. 라운드 그림은 SHOT_DIR=rNNN 로 따로
 const loginOf = (suffix) => `${ACCOUNT_PREFIX}_${suffix}`.toLowerCase();
 async function clickIn(page, selector, text) {
   return page.evaluate(
@@ -1435,7 +1435,7 @@ async function probePopup(page, sel, label) {
 //   두 창(방장 PC · 게스트): 게스트가 6개를 빠르게 치면 게스트 창에만 안내가 뜬다. PC 파스텔 · 밤 · 모바일 390 — 잠긴 순간 · 3초 뒤.
 // -----------------------------------------------------------------------------
 const SPAM_ONLY = args.includes('--spam');
-if (SPAM_ONLY) process.env.SHOT_DIR ??= 'r048';
+if (SPAM_ONLY) process.env.SHOT_DIR ??= 'verify';
 async function typeAndEnter(page, text) {
   await page.send('Input.insertText', { text });
   await page.key('Enter', { code: 'Enter', vk: 13 });
@@ -1567,7 +1567,7 @@ async function spamFlow(browser) {
 // -----------------------------------------------------------------------------
 const LEAVE_ONLY = args.includes('--leave');
 if (LEAVE_ONLY) {
-  process.env.SHOT_DIR ??= 'r046';
+  process.env.SHOT_DIR ??= 'verify';
   process.env.DISCONNECT_REMOVE_MS ??= '5000';
   process.env.HOST_TRANSFER_GRACE_MS ??= '2000';
 }
@@ -1776,7 +1776,7 @@ async function leaveFlow(browser) {
 //   ★ 칸마다: 이모티콘(그림 + 그 상자)이 닉네임 · 배지 · 경험률 · 점수 · 마지막 말 글자와 겹친 넓이 = 0
 // -----------------------------------------------------------------------------
 const EMOJI_ONLY = args.includes('--emoji');
-if (EMOJI_ONLY) process.env.SHOT_DIR ??= 'r045';
+if (EMOJI_ONLY) process.env.SHOT_DIR ??= 'verify';
 const EMOJI_PROBE = `(() => {
   const out = [];
   for (const card of document.querySelectorAll('.seat-card:not(.empty)')) {
@@ -1881,7 +1881,7 @@ async function emojiFlow(browser) {
 //   혼자 · 둘 / 방장 · 게스트 / 바꾼 뒤 — 내 화면(참여자 칸 · 프로필 창 · 채팅) · 다른 사람 화면 · 새로고침 뒤 · 다시 로그인 뒤
 // -----------------------------------------------------------------------------
 const PROFILE_ONLY = args.includes('--profile');
-if (PROFILE_ONLY) process.env.SHOT_DIR ??= 'r045';
+if (PROFILE_ONLY) process.env.SHOT_DIR ??= 'verify';
 /** 진짜 키 입력 — 입력칸을 진짜로 누르고 전부 고른 뒤(Ctrl+A) 글자를 넣는다 (IME 를 거치지 않는 insertText) */
 async function realType(page, selector, text) {
   await realClick(page, selector);
