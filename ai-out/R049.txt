@@ -1,0 +1,121 @@
+===========================================
+ROUND: R049
+DATE: 2026-10-14
+TASK: 이모티콘샵 · 뽑기(갓챠) · 특별 이모티콘 보내기와 표시 — 고르기 창 "특별" 탭 · 10칸 · 떠 있는 큰 반응(대안 그림도) · 특별 도배 10초 3회
+STATUS: 완료 — 끝 점검 봇 40 시나리오 전부 통과(shop 은 전체 실행에서 24/28 → 검사 전제를 고쳐 다시 28/28) · verify 단계별 전부 통과(ui-check:shop 32/32 포함 · 메모리 규칙) · 결정 대기: 13 A57(표시 방식 — 막는 것 아님)
+===========================================
+
+[cmd 창 요약]
+1. 이모티콘샵: 상단 바 🎁(로비 · 게임 중 · 결과) · 모바일 ☰ · 방 목록 화면 — 내 포인트 · 테마 카드(x/27 격자) · [뽑기 — 20P] · 갓챠(캡슐 → 열림 1.5초 · 누르면 건너뜀 · 코인 소리) · 결과 카드 · [한 번 더]
+2. 뽑기 = 아직 갖지 않은 것 중 무작위(중복 없음) — 한 트랜잭션(계정 행 잠금): 27번 중복 0 · 28번째 409 · 부족 409 · 동시 두 번 → 1 성공 1 409 · 잔액 음수 없음(봇 shop 28)
+3. 특별 이모티콘: ✨ 특별 탭(가진 것만 · 테마 머리글) · 10칸에 넣고 계정에 저장 · 보내면 **입력창 위에 떠 있는 큰 반응**(96px · 3초 · 최대 3 · 닉네임) + 로그엔 32px 한 줄 · 특별 도배 10초 3회 따로
+4. ★ 표시 방식은 찬종이 그림으로 고른다 — docs/design/r049/120~123(기본 float) 과 130~132(대안 inline) 나란히 (13 A57)
+5. 끝 점검: 봇 40/40(shop 재실행 포함) · verify 단계별 전부(typecheck · vitest 367 · smoke 12 · ui-check 447 · 소리 5 · social 118 · profile 24 · emoji 16 · leave 28 · spam 19 · **shop 32**) · 메모리 때문에 미룬 단계 0(처음 1.45GB → 2분 기다려 3.3GB)
+
+===========================================
+0. 찬종이 볼 것 (짧게)
+===========================================
+
+[★ 표시 방식 — 두 그림을 나란히 보고 고르기 (13 A57 · D-231)]
+- 기본(설계 권장 · 지금 켜져 있음) "떠 있는 큰 반응": docs/design/r049/120-special-float-pc.png(보낸 직후) · 121(3개 겹친 때) · 123(3초 뒤 — 로그 줄만) · 124(밤) · 125(모바일 390) · 126(모바일 키보드 올라온 상태)
+  → 채팅 입력창 바로 위에 96px 로 3초 떠 있다가 사라지고, 로그엔 "닉네임 + 32px" 한 줄이 남는다. PC · 모바일 같은 자리. 참여자 칸(PC)은 전처럼 64px.
+- 대안 "로그 안에 크게": 130-special-inline-pc.png(보낸 직후) · 131(3개) · 132(3초 뒤 — 같다). 로그가 96px 줄로 밀린다(3개면 로그 한 화면이 거의 찬다).
+- 고르면 상수 한 줄(client/src/emojiCatalog.ts `SPECIAL_DISPLAY_DEFAULT`)로 바꾼다. 찬종이 말한 "참여자 카드 공간에만" 은 PC 에만 참여자 칸이 있어 모바일에서 안 보인다 — 그래서 기본을 입력창 위로 했다.
+[실기기로 볼 것 — 13-PENDING]
+- A57 표시 방식(위) · A58 갓챠 느낌(캡슐 1.5초 · 건너뜀 · 코인 소리 · 문구) · A59 모바일 키보드 위 큰 반응(검사는 390×470 뷰포트로 흉내 — 그림 126).
+- 실제 뽑기는 **찬종 계정(lonysg 133P — 추정)으로 아직 아무도 안 했다**(검사는 봇 계정만). 🎁 → [뽑기 — 20P] 한 번이면 바로 보인다.
+[못 한 것 · 알아둘 것]
+- 특별 이모티콘 그림은 여전히 git 에 없다(찬종 "gif git 에 넣는 건 일단 보류"). DB 가 정본 · 백업에 들어간다.
+- 찬종 PC 의 3000 번 감시 서버는 이번 라운드에도 **내려가 있었다**(healthz 응답 없음) — 봇 · ui-check 는 자기 서버로 돌았다. 건드리지 않았다. 실기기로 보려면 dev 창을 다시 띄워야 한다(확인 필요).
+- 결과 카드의 [닫기] 는 창을 닫지 않고 **목록으로** 돌아간다(격자가 채워진 것이 바로 보인다 · 창은 ✕). 다르게 원하면 한 줄.
+[원칙 메모 — 원칙 7 검증 · 동시 라운드]
+- ✓ 브리핑의 확인 항목 전부 맞았다: emoji_themes 1(chiikawa · 20P) · 특별 27 · account_emojis 0 · point_spends 0 · lonysg 133 · 바꾸기 전 /api/emoji 는 가진 특별만 · SPECIAL 10000·3·10000.
+- ✓ 라운드 끝 lonysg = 133 · 쓴 것 0 · 특별 0 (검사가 건드리지 않았다). 봇: bot_01 487P 중 270 씀 · 27/27(봇 shop · 값 10) · bot_02 408 중 80 씀 · 4/27(ui-check · 실제 값 20) · bot_06 19 → 9 · 1개.
+- 다른 점 없음. 브리핑이 "SHOP_PRICE_OVERRIDE=1" 을 예로 들었는데 **10** 으로 뒀다 — bot_06(19P)으로 "잔액이 값과 2×값 사이" 인 동시 두 번 검사를 하려면 1 로는 안 된다(19 ≥ 2). 값만 다르고 검사 내용은 같다.
+- 동시 라운드(G003): 충돌 없음 — `git pull --rebase` 전부 "up to date". GEN 의 미추적 `scripts/_g003-*` · `g003-build.mjs` 는 add 하지 않았다. 문서는 분담대로(05 Track D · 07 DG · 13 C/CV · README G 표 손대지 않음).
+
+===========================================
+1. A — 서버 (D-231)
+===========================================
+
+- `GET /api/emoji` → `{ emojis(전원에게 모든 활성 특별 메타 포함 · themeId), defaults, ownedSpecial:[내 것], themes:[active] }`. 남이 보낸 특별을 그리려면 메타가 모두에게 필요하다. 보내기는 여전히 가진 사람만(server/src/socket emoji.send).
+- `GET /api/shop` → `{ balance, themes:[{ key, name, price, total, owned:[ids] }] }` · 401.
+- `POST /api/shop/draw { themeKey }` — server/src/http/shopRoutes.ts: 한 트랜잭션 — `SELECT id FROM accounts WHERE id=$1 FOR UPDATE`(같은 계정 동시 요청을 직렬로) → 잔액 재계산(answer_events.accepted − point_spends) → 미보유 풀이 비면 409 complete → balance < price 면 409 insufficient "N점 모자라요." → `randomInt(pool)` → account_emojis INSERT + point_spends('gacha', 'theme:<key>/emoji:<id>') → COMMIT → `{ emoji:{id,name,themeKey}, balance, owned, total, price }`. 404 없는 테마 · 401 · 500 롤백.
+- 검사용 `SHOP_PRICE_OVERRIDE`(config.tuning · 0 = DB 값) — .env 에 두지 않는다(문서에 이름만).
+- 특별 도배: Room.specialTimestamps/specialLocks · `checkSpecialEmojiRate`(answer.ts · 같은 checkRate) · emoji.send 에서 특별이면 SPECIAL 값으로 따로 → `chat.throttled { kind:'special' }` · 로비 복귀 · 게임 시작 때 비움(표준과 같은 자리).
+- 채팅 항목 `special: true`(emit · 스냅샷 · 재접속).
+- 봇 shop 28/28(자기 서버 3005 · 값 10): 401 · 테마 27 · 404 · 0P 계정 409 · 한 번 뽑기(API balance = DB · 잔액 −10 · DB 보유 +1 · 쓴 +10 · owned = DB · /api/emoji 특별 메타 27 전원 + ownedSpecial · 남은 사람 ownedSpecial 0) · **27번 중복 0 · 28번째 409 complete · DB 27 · 쓴 270** · **bot_06(19P) 동시 두 번 → 200,409 · 19 → 9 · 기록 1** · 특별 4개 보내 3개 도착 · special=true · 4번째 kind special · 표준은 감 · 미보유 BAD_REQUEST · 재접속 스냅샷 special.
+  ★ 시나리오가 시작할 때 bot_01 · bot_06 의 뽑기 기록을 비운다(몇 번 돌려도 같은 결과 · 봇 계정만). 기본 서버(값 20)면 한 번만 뽑는다.
+- 단위 테스트 변화 없음(367). 커밋 4dad624.
+
+===========================================
+2. B — 샵 화면
+===========================================
+
+- client/src/ShopPanel.tsx(새) — 로비 상단 바(FriendsButton → 프로필 → **🎁 이모티콘샵** → 👥 → 설정 → 안내 → 나가기) · MobileMenu "이모티콘샵" 한 줄 · App 방 목록 화면 오른쪽 위(프로필 옆). 팝업 하나(popup.ts 'shop') · useDismiss(✕ · 바깥 · Esc) · 닫으면 채팅 입력 포커스.
+- 창: "내 포인트 N · 문제 하나 맞히면 1P" → 테마 카드(이름 · 20P · x/27 · 9×3 격자: 가진 것 그림 · 못 가진 것 점선 물음표) → [🎁 뽑기 — 20P] / [N점 모자라요](비활성) / [✨ 완성!](비활성).
+- 뽑기: 서버 응답을 받은 **뒤** 갓챠(.gacha — 캡슐 흔들림 1.0초 → 뚜껑 열림 0.5초 · CSS 만 · 누르면 바로 결과) → 코인 소리(sfx('correct')) → 결과 카드(✨ 새 이모티콘! · 96px 그림 · "치이카와 4 · 3/27") → [한 번 더 — 20P](포커스 · 모자라면/완성이면 비활성 문구) [닫기](목록으로). 방향키 · Enter(data-arrow-nav).
+- 뽑은 뒤 `/api/emoji` 를 다시 받아 cache 교체(reloadEmojiCatalog · qw:emoji-catalog) → 고르기 창 ✨ 탭 · 격자가 바로 바뀐다.
+- 그림(docs/design/r049 · 1280×720 파스텔): 100-shop-0pts-pc(0P — "20점 모자라요" · 0/27 물음표 27) · 101-shop-0of27-pc(bot_02 408P · 0/27 · [뽑기 — 20P]) · 102-shop-drawing-pc(캡슐 "두근두근…") · 103-shop-result-pc(결과 카드) · 104-shop-2of27-pc(닫기 → 목록 2/27) · 105-shop-night-pc(밤) · 106-shop-pc-1920(1920×1080) · 107-shop-7of27-pc · 108-shop-complete-pc(27/27 완성! — 방 목록 화면 · bot_01) · 109-shop-m390(☰ → 창 · 화면 가운데).
+  ★ 7/27 은 uic 테스트 계정에 account_emojis 7줄을 직접 넣어 만든 그림(끝나면 계정과 함께 지워진다 · CASCADE). 27/27 은 봇 shop 이 다 모은 bot_01.
+- ui-check:shop(B 부분): 🎁 높이·줄 = 초대 버튼 · 0P 비활성 · Esc → 채팅 포커스 · "내 포인트" = /api/shop · 뽑기 → .gacha → 결과 카드 1,598ms · 잔액 −20 · 보유 +1(API · 창) · [한 번 더] 포커스 → Enter → 누르면 즉시 결과 · ArrowRight → [닫기] → Enter → 목록 격자 +2 · 7/27 · 27/27 · 390 창 안.
+
+===========================================
+3. C — 고르기 창 ✨ 특별 탭 · 10칸
+===========================================
+
+- EMOJI_CATEGORIES 에 `special`(✨ 특별 — custom 다음). 탭은 **가진 것이 있을 때만** 보인다 · 찾기에도 가진 특별만. 탭 안은 테마별 머리글("치이카와 4/27") + 가진 것만(34px 칸). 누르면 바로 보냄 · "칸 바꾸기" 로 10칸(Alt+1~0)에 넣는다 → 기존 prefsSync 가 계정에 저장.
+- 그림: 110-picker-special-pc(✨ 탭 · 머리글 4/27 · 4칸) · 111-picker-slot-pc(1번 칸이 특별).
+- 검사: 방장(0개)은 ✨ 탭 없음 · bot_02 는 있음 · 머리글/칸 수 = API · 칸 바꾸기 → 1번 칸 = 가진 id · `/api/auth/prefs` emojiSlots[0] = 그 id(계정 저장 — 재로그인은 같은 prefs 를 읽는다 · R039 검사가 이미 재로그인을 본다).
+
+===========================================
+4. D — 표시 (떠 있는 큰 반응 · 대안 · 특별 도배)
+===========================================
+
+- 기본 float: Lobby 의 `.chat-foot`(입력 줄 + 안내를 감싼 자리) 위에 `.special-layer`(absolute · bottom 100% · pointer-events none · z 55) — 새 special 채팅마다 `{그림 96px(모바일 80px), 닉네임(색)}` 하나 · RULES.SPECIAL_FLOAT_MS 3000 뒤 제거 · SPECIAL_FLOAT_MAX 3(넘으면 오래된 것부터 밀림) · 들어올 때 받은 기록(스냅샷)은 띄우지 않는다. 로그 줄은 `<Emoji size=32 className="chat-special">`. PC 참여자 칸은 R039 그대로(64px · 3초). 소리는 기존 이모티콘 "뽀잉".
+- 대안 inline: `specialDisplayMode()`(emojiCatalog.ts) 가 'inline' 이면 층 없이 로그 줄을 96px(`chat-special-big`)로. 기본값 상수 `SPECIAL_DISPLAY_DEFAULT = 'float'` · 검사만 localStorage `qw.specialDisplay` 로 바꾼다(사람 설정 아님).
+- 특별 도배: 4번째에 "특별 이모티콘 도배 방지 · N초 후 다시 보낼 수 있어요"(throttledKind 'special' · 입력창 테두리 · 떨림 — R048 안내와 같은 자리) · 특별이 잠겨도 표준 이모티콘 · 채팅은 간다 · 표준이 잠겨도 특별은 간다(따로).
+- 그림: 120-special-float-pc(보낸 직후 · 96px · 닉네임) · 121-special-float-3-pc(3개 나란히) · 122-special-locked-pc(4번째 — 보낸 사람 화면 안내 10초) · 123-special-after-pc(3초 뒤 — 로그 32px 줄 3개만) · 124-special-float-night-pc · 125-special-float-m390 · 126-special-float-m390-keyboard(390×470 + 입력 포커스) · 130-special-inline-pc · 131-special-inline-3-pc · 132-special-inline-after-pc.
+- ui-check:shop(D 부분): 큰 반응 96×96 · 입력창 위(bottom ≤ input top) · 닉네임 · 로그 32px · 3개 나란히(겹치지 않음) · 4번째 → 안내(상대 화면엔 없음 · 3개까지만) · 3초 뒤 0개 · 로그 3줄 · 잠긴 중 표준 이모티콘 감 · 390/390×470 화면 안 · inline 96px · 층 0.
+- ★ 검사가 처음에 못 잡은 것/잘못 잰 것(29/32 → 32/32): (1) 튀어 오르는 애니메이션(650ms) **중에** 크기를 재 93.6px — 애니메이션 뒤에 재도록 (2) "칸 바꾸기" 모드를 끄지 않은 채 다음 단계에서 셀을 눌러 전송이 아니라 칸 편집이 됨 — [다 바꿨어요] 를 누르도록 (3) 키보드 상태에서 입력창 bottom 470.2 > 470 반올림 — 1px 여유. 셋 다 검사 쪽 · 화면 코드는 그대로.
+
+===========================================
+5. 끝 점검 (단계별 · 메모리 규칙)
+===========================================
+
+[방식] 봇 전체(runbots.sh — 시나리오마다 memwait ≥1.5GB · 2분 × 10번) → 이어서 verify 를 **단계별**(같은 memwait · runverify.sh — 끝에 ui-check:shop 추가). 한 번에 돈 것은 없다(단계별).
+  메모리: 시작할 때 1.45GB(찬종 Chrome 19 프로세스 3.1GB — 건드리지 않음) → 2분 기다린 뒤 3.3GB · 이후 봇 2.9~3.4GB · verify 0.97~3.4GB — 기다린 단계 1(첫 봇 join 앞 한 번) · 못 돌린 단계 0. 찬종 PC 의 3000 번 감시 서버는 내려가 있어 봇은 자기 서버를 띄웠다.
+[봇 40] 전체 실행 39/40 — ★ shop 24/28 실패 = **검사 전제**: bot_06 잔액이 19 가 아니라 20 이었다(앞 시나리오(game 등)에서 bot_06 이 한 문제를 맞혀 +1) → "잔액 ∈ [값, 2×값)" 전제가 깨져 동시 두 번이 둘 다 200(20 → 0 · 음수 아님 — 서버는 정상). 시나리오가 전제를 스스로 맞추게 고침(봇 계정에 'test-adjust' 지출 · 시작 때 지움) → 따로 다시 **28/28**(6c4764c).
+  join 9 ✓ duplicate 16 ✓ reconnect 9 ✓ host 20 ✓ chat 29 ✓ lobby 43 ✓ countdown 31 ✓ empty 9 ✓ game 8 ✓ race 10 ✓ epoch 10 ✓ concur 27 ✓ collide 15 ✓ full 60 ✓ pause 21 ✓ pausehost 11 ✓ pausehint 16 ✓ mask 12 ✓ result 37 ✓ difficulty 60 ✓ generalhint 39 ✓ topics 23 ✓ again 16 ✓ late 28 ✓ flood 21 ✓ avatar 8 ✓ emoji 7 ✓ nickname 8 ✓ kick 11 ✓ hostmove 7 ✓ roomcode 31 ✓ pwreset 6 ✓ friends 28 ✓ profile 24 ✓ spam 17 ✓ points 13 ✓ **shop 28 ✓(재실행)** abandon ✓ leave ✓ leavematrix ✓(60칸)
+[verify — 단계별 · 14:46~15:01] typecheck ✓ · vitest **367/367** · smoke 12/12 · ui-check 447/447 · ui-check:sound 5/5 · ui-check:social 118/118 · --profile 24/24 · --emoji 16/16 · ui-check:leave 28/28 · ui-check:spam 19/19 · **ui-check:shop 32/32**(verify 그림은 docs/design/verify/ — r049 안 덮음 · 27/27 그림도 나옴: 봇 shop 이 bot_01 을 다 모아 둔 뒤라서)
+[그림 — 끝 점검 빌드와 같은 빌드(client · server dist 는 B·C·D 뒤 다시 빌드하지 않았다 — 그 뒤 바뀐 것은 검사 스크립트 · 문서뿐)] docs/design/r049/ 22장 — 100~109(샵) · 110~111(✨ 탭 · 10칸) · 120~126(떠 있는 반응 · 잠김 · 3초 뒤 · 밤 · 390 · 390 키보드) · 130~132(대안 inline).
+[끝 lonysg] 133 · 쓴 것 0 · 특별 0 — 그대로.
+
+===========================================
+6. 판단 목록 (되돌리기 쉽다)
+===========================================
+
+1. 뽑기는 **미보유 중 무작위(중복 없음)** · 다 모으면 409 complete / "완성!" — 브리핑 확정. 환불 · 재뽑기 규칙 없음.
+2. 동시 요청 = 계정 행 `FOR UPDATE` 직렬화(하나 200 · 하나 409). 연출은 서버 확정 **뒤**.
+3. 표시 기본 = float(입력창 위 · 96px · 3초 · 최대 3 · 닉네임 · 모바일 80px) · 로그 32px. 대안 inline 은 상수 분기 + localStorage(검사용) — 찬종이 고르면 상수 한 줄 + 안 쓰는 CSS 삭제.
+4. 결과 카드 [닫기] = 목록으로(창은 열린 채). [한 번 더] 에 autoFocus · 모자라면 "N점 모자라요" · 완성이면 "완성!" 비활성.
+5. 갓챠 1.5초(흔들림 1.0 + 열림 0.5) · 코인 소리(sfx 'correct') · CSS 만 · 누르면 건너뜀.
+6. `/api/emoji` 가 특별 메타를 전원에게 — 남이 보낸 특별을 그리기 위해. ✨ 탭 · 찾기엔 가진 것만. 보내기 서버 차단은 그대로.
+7. 뽑기 값 덮어쓰기 `SHOP_PRICE_OVERRIDE` 는 검사용(봇 shop 10). 실제 서버 .env 에 두지 않는다 — 문서에 이름만.
+8. 봇 shop 은 시작할 때 bot_01 · bot_06 의 뽑기 기록을 비운다(멱등 · 봇 계정만). ui-check:shop 은 bot_02 로 실제 값 20 — 한 번 돌 때 40P 씀(봇 포인트).
+9. 7/27 그림은 uic 테스트 계정에 직접 INSERT(검사 끝에 계정과 함께 삭제).
+10. ui-check:shop 을 verify 체인 끝에 추가(약 3분). 그림 기본 폴더 verify/ · 라운드 그림은 SHOT_DIR=r049.
+11. 모바일 390 샵 창은 다른 상단 창과 같은 규칙(화면 가운데 fixed · 80).
+12. 특별 도배 잠금 중에도 emoji-flash(보냈다 표시)는 뜬다 — R048 표준과 같은 동작(서버가 거부해도 본인 안내가 바로 뒤따른다). 바꾸려면 sendEmoji 에서 특별 잠금 때 flash 를 안 띄우면 된다.
+
+===========================================
+7. 새 결정 필요
+===========================================
+
+- 없음(막는 것 없음). ★ 13 A57 — 표시 방식(float / inline) 은 찬종이 그림을 보고 고른다. 고르면 다음 라운드에서 상수 + 안 쓰는 쪽 정리.
+
+===========================================
+고친 문서
+===========================================
+
+01(마지막 갱신 · 9장 특별 도배 "구현" · 16장 이모티콘 행 개정 + 이모티콘샵 · 특별 표시 행) · 03(point_spends 쓰기 · account_emojis 메타 전원) · 04(R049 표 — /api/shop · draw · emoji.send special · chat.message special · env · RULES) · 05(R049 행 · 머리글) · 06(R049 블록) · 07 D-231 · 10(30절) · 13 A57~A59 · DB-ADMIN(뽑기 기록 보기 · 되돌리기 · 봇 기록 비우기 SQL) · ai-out/README R 표 · 이 보고서. 08 Q 없음 · 15 · 13 C/CV · README G 표 손대지 않음.
