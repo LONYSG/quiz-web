@@ -12,7 +12,7 @@
 
 import { describe, expect, it } from 'vitest';
 import { RULES } from '@quiz/shared';
-import { checkChatRate, judgeAnswer } from './answer.js';
+import { checkChatRate, checkEmojiRate, judgeAnswer } from './answer.js';
 import type { CurrentQuestion, Player, Room } from '../rooms/types.js';
 
 const NOW = 1_700_000_000_000;
@@ -337,15 +337,18 @@ describe('채팅 rate limit (Q-18: 3초 10개)', () => {
     expect(wait!).toBeLessThanOrEqual(RULES.CHAT_RATE_WINDOW_MS);
   });
 
-  it('★★ 정상적인 연타(초당 3개)를 막지 않는다', () => {
-    // ★ 이 게임은 정답을 맹렬히 타이핑하는 게임이다 (04-PROTOCOL 4장).
-    //   ★ 초당 3개를 10초간 보내도 막히지 않아야 한다
+  it('★★ R048 개정 — 초당 3개 연타는 이제 걸린다(5초 5회) · 퀴즈 답 속도(초당 1개)는 안 걸린다', () => {
+    // ★ 옛 규칙(Q-84 "서버 보호")은 초당 3개 × 10초를 허용했다. R048(찬종 실플레이)에서 "5초 5회" 로 개정 — D-228
     const r = room();
     let blocked = 0;
     for (let i = 0; i < 30; i += 1) {
       if (checkChatRate(r, 'A', NOW + i * 333, limits) !== null) blocked += 1;
     }
-    expect(blocked).toBe(0);
+    expect(blocked).toBeGreaterThan(0);
+    const r2 = room();
+    let blocked2 = 0;
+    for (let i = 0; i < 30; i += 1) if (checkChatRate(r2, 'A', NOW + i * 1000, limits) !== null) blocked2 += 1;
+    expect(blocked2).toBe(0);
   });
 
   it('윈도가 지나면 다시 허용한다', () => {
@@ -368,5 +371,43 @@ describe('채팅 rate limit (Q-18: 3초 10개)', () => {
     const r = room();
     for (let i = 0; i < 100; i += 1) checkChatRate(r, 'A', NOW + i * 1000, limits);
     expect(r.chatTimestamps.get('A')!.length).toBeLessThanOrEqual(RULES.CHAT_RATE_MAX);
+  });
+});
+
+// ★★ R048 — 창 + 잠금 (D-228): 5초 5회 · 6번째부터 5초 잠금 · 잠긴 동안 전부 거부 · 풀리면 창을 비워 다시
+describe('★★ R048 도배 방지 — 창 + 잠금', () => {
+  const limits = { windowMs: 5_000, max: 5, lockMs: 5_000 };
+  function fresh(): Room {
+    return { chatTimestamps: new Map() } as unknown as Room;
+  }
+  it('5초 안 5회까지는 허용 · 6번째가 잠근다 (남은 시간 = 잠금 길이)', () => {
+    const r = fresh();
+    for (let i = 0; i < 5; i += 1) expect(checkChatRate(r, 'A', NOW + i * 100, limits)).toBeNull();
+    expect(checkChatRate(r, 'A', NOW + 500, limits)).toBe(5_000);
+  });
+  it('★ 잠긴 동안은 전부 거부 · 남은 시간이 줄어든다', () => {
+    const r = fresh();
+    for (let i = 0; i < 6; i += 1) checkChatRate(r, 'A', NOW, limits);
+    expect(checkChatRate(r, 'A', NOW + 1_000, limits)).toBe(4_000);
+    expect(checkChatRate(r, 'A', NOW + 4_999, limits)).toBe(1);
+  });
+  it('★★ 잠금이 풀리면 창을 비워 다시 5회부터 센다', () => {
+    const r = fresh();
+    for (let i = 0; i < 6; i += 1) checkChatRate(r, 'A', NOW, limits);
+    expect(checkChatRate(r, 'A', NOW + 5_000, limits)).toBeNull();
+    for (let i = 1; i < 5; i += 1) expect(checkChatRate(r, 'A', NOW + 5_000 + i, limits)).toBeNull();
+    expect(checkChatRate(r, 'A', NOW + 5_010, limits)).toBe(5_000);
+  });
+  it('★★ 퀴즈 답 속도(초당 1개 · 60초)는 한 번도 걸리지 않는다', () => {
+    const r = fresh();
+    let blocked = 0;
+    for (let i = 0; i < 60; i += 1) if (checkChatRate(r, 'A', NOW + i * 1_000, limits) !== null) blocked += 1;
+    expect(blocked).toBe(0);
+  });
+  it('★ 계정별로 따로 잠긴다 · 이모티콘은 채팅과 따로', () => {
+    const r = fresh();
+    for (let i = 0; i < 6; i += 1) checkChatRate(r, 'A', NOW, limits);
+    expect(checkChatRate(r, 'B', NOW, limits)).toBeNull();
+    expect(checkEmojiRate(r, 'A', NOW, limits)).toBeNull();
   });
 });

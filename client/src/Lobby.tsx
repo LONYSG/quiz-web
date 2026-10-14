@@ -56,6 +56,8 @@ interface Props {
   serverNow: () => number;
   /** ★ 도배 억제 안내 (Q-18). 입력창 바로 위에 인라인으로 표시한다 */
   throttledUntil: number | null;
+  /** ★ R048 — 채팅 · 이모티콘 중 무엇이 잠겼나 */
+  throttledKind: 'chat' | 'emoji';
   /** ★ R034 — 닉네임을 바꿨다 (App 의 계정 표시를 맞춘다) */
   onNicknameChanged: (nickname: string) => void;
   /** ★ R035 — 로그아웃은 상단 바 ⚙ 안에 있다 */
@@ -82,6 +84,7 @@ export default function Lobby({
   onLeave,
   serverNow,
   throttledUntil,
+  throttledKind,
   onNicknameChanged,
   onLogout,
   social,
@@ -91,6 +94,9 @@ export default function Lobby({
   // ★ R043 A-7 — 초대는 팝업 (방 코드 + 링크 복사)
   const [inviteOpen, setInviteOpen] = usePopup('invite');
   const [throttled, setThrottled] = useState(false);
+  /** ★ R048 — 잠금 남은 초 (매초 줄어든다) · 잠긴 채 보내려 하면 입력창이 떨린다 */
+  const [lockLeft, setLockLeft] = useState(0);
+  const [shakeKey, setShakeKey] = useState(0);
   /** ★ Q-56 — 단축키 전체 목록을 펼쳤는가 */
   // ★★ R041 — 떠 있는 창은 전부 popup.ts 한 저장소 (한 번에 하나)
   // ★ R043 A-9 — 단축키 목록 창은 없앴다 (옛 'keys' 팝업)
@@ -204,18 +210,42 @@ export default function Lobby({
   }, []);
 
   // ★ 억제 안내는 서버가 준 시각까지만 보여주고 스스로 사라진다
+  // ★★ R048 (찬종: "알림 잘 띄워") — 남은 초를 매초 줄이며 보인다. 잠기는 순간 입력창이 한 번 떨린다
   useEffect(() => {
     if (throttledUntil === null) return undefined;
     const remain = throttledUntil - Date.now();
     if (remain <= 0) return undefined;
     setThrottled(true);
-    const id = setTimeout(() => setThrottled(false), remain);
-    return () => clearTimeout(id);
+    setLockLeft(Math.ceil(remain / 1000));
+    setShakeKey((k) => k + 1);
+    const tick = setInterval(() => {
+      const left = throttledUntil - Date.now();
+      if (left <= 0) {
+        setThrottled(false);
+        setLockLeft(0);
+        clearInterval(tick);
+      } else setLockLeft(Math.ceil(left / 1000));
+    }, 250);
+    return () => clearInterval(tick);
   }, [throttledUntil]);
+  /** 잠긴 동안 보내려 하면: 보내지 않고(치던 글은 남긴다) 입력창만 떨린다 */
+  const lockedNow = throttled && throttledUntil !== null && throttledUntil > Date.now();
+  // 떨림은 클래스를 잠깐 붙였다 뗀다 (입력창을 다시 만들지 않는다 — 포커스 · 커서를 지킨다)
+  const [shaking, setShaking] = useState(false);
+  useEffect(() => {
+    if (shakeKey === 0) return undefined;
+    setShaking(true);
+    const id = setTimeout(() => setShaking(false), 340);
+    return () => clearTimeout(id);
+  }, [shakeKey]);
 
   const send = () => {
     const text = draft.trim();
     if (!text) return;
+    if (lockedNow && throttledKind === 'chat') {
+      setShakeKey((k) => k + 1);
+      return;
+    }
     // ★★ 장치 B — 지금 보고 있는 문제의 epoch 를 함께 보낸다 (guide 20절 / R003 2-3)
     socket.emit('chat.send', { text, epoch: snapshot.question?.epoch ?? null });
     setDraft('');
@@ -291,6 +321,11 @@ export default function Lobby({
   const [emojiFlash, setEmojiFlash] = useState<{ id: number; key: number } | null>(null);
   const sendEmoji = (id: number) => {
     if (!id) return;
+    // ★ R048 — 이모티콘 잠금 중에는 보내지 않는다 (안내만 떨린다)
+    if (lockedNow && throttledKind === 'emoji') {
+      setShakeKey((k) => k + 1);
+      return;
+    }
     socket.emit('emoji.send', { emojiId: id });
     setEmojiFlash({ id, key: Date.now() });
   };
@@ -836,14 +871,18 @@ export default function Lobby({
               )}
             </div>
             {/* ★★ 도배 억제 안내 (Q-18) — 입력창 바로 위 문서 흐름 (iOS 키보드) */}
-            {throttled && <p className="warn throttle-note">너무 빨리 보내고 있습니다. 잠시 후 다시 보내 주세요.</p>}
+            {throttled && (
+              <p className="warn throttle-note" role="status" aria-live="polite">
+                {throttledKind === 'emoji' ? '이모티콘 도배 방지' : '도배 방지'} · <strong className="mono">{lockLeft}초</strong> 후 다시 보낼 수 있어요
+              </p>
+            )}
             <div className="field-row chat-input-row">
               <EmojiPicker slots={emojiSlots} onSend={sendEmoji} flash={emojiFlash} />
               <input
                 ref={inputRef}
                 value={draft}
                 maxLength={RULES.CHAT_MAX_LENGTH}
-                className={judging ? 'judging' : undefined}
+                className={[judging ? 'judging' : '', lockedNow ? 'locked' : '', shaking ? 'input-shake' : ''].filter(Boolean).join(' ') || undefined}
                 onChange={(e) => setDraft(e.target.value)}
                 onKeyDown={(e) => {
                   // ★ 한글 IME 조합 중 Enter는 전송으로 처리하지 않는다 (미완성 문자열이 나간다)

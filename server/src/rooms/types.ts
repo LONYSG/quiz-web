@@ -385,10 +385,14 @@ export interface Room {
    */
   paused: PausedState | null;
 
-  /** 계정별 채팅 rate limit 타임스탬프 (Q-18: 3초 이동 윈도 10개) */
+  /** 계정별 채팅 도배 창 타임스탬프 (R048: 5초 5회) */
   chatTimestamps: Map<string, number[]>;
+  /** ★ R048 — 채팅 잠금이 풀리는 시각 (계정별) */
+  chatLocks?: Map<string, number>;
   /** ★ R039 — 이모티콘 도배 제한용 (채팅과 따로 센다) */
   emojiTimestamps?: Map<string, number[]>;
+  /** ★ R048 — 이모티콘 잠금이 풀리는 시각 (계정별) */
+  emojiLocks?: Map<string, number>;
 }
 
 /** 게임 결과 (guide 38·39절). ★ Phase 4 가 화면을 만든다 */

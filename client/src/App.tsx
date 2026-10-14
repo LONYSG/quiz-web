@@ -374,6 +374,7 @@ export default function App() {
             onLeave={leaveRoom}
             serverNow={clock.serverNow}
             throttledUntil={room.throttledUntil}
+            throttledKind={room.throttledKind}
             onNicknameChanged={(nickname) =>
               setAccount((prev) => (prev ? { ...prev, nickname } : prev))
             }

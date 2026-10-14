@@ -17,7 +17,7 @@ import ConfirmModal from './ConfirmModal.js';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import ProfileEditor from './ProfileEditor.js';
-import { changeNickname, deleteAvatar, errorMessage, uploadAvatar } from './api.js';
+import { changeNickname, deleteAvatar, errorMessage, fetchPoints, uploadAvatar, type PointBalance } from './api.js';
 import { usePopup } from './popup.js';
 import { useDismiss } from './useDismiss.js';
 
@@ -49,6 +49,19 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
     if (open && !wasOpen) setMsg((m) => (m?.text.includes('사진') ? m : null));
     setWasOpen(open);
   }, [open, wasOpen]);
+
+  // ★ R048 C — 포인트 (맞힌 문제 수 − 쓴 포인트). 창을 열 때마다 새로 읽는다 (게임 중에도 열린다 — D-217)
+  const [points, setPoints] = useState<PointBalance | null>(null);
+  useEffect(() => {
+    if (!open) return undefined;
+    let alive = true;
+    void fetchPoints().then((p) => {
+      if (alive) setPoints(p);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [open]);
 
   const text = draft ?? nickname;
   const fits = nicknameFits(text.trim());
@@ -96,6 +109,12 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
                 <span>{NICKNAME_LIMIT_HINT}</span>
               </p>
             )}
+            {/* ★ R048 C — 포인트 한 줄 (찬종: "여태 맞힌 문제수 = 1 point") */}
+            <p className="profile-points" aria-live="polite">
+              <span className="dim">포인트</span>{' '}
+              <strong className="mono">{points ? points.balance.toLocaleString('ko-KR') : '—'}</strong>
+              {points && points.spent > 0 && <span className="dim profile-points-sub"> · 맞힌 문제 {points.earned.toLocaleString('ko-KR')} − 쓴 포인트 {points.spent.toLocaleString('ko-KR')}</span>}
+            </p>
             {/* ★★ R039 — 프로필 사진: 누르면 사진 고르기 → 원형 편집기 */}
             <div className="profile-row">
               <label className="profile-photo" title="사진 바꾸기">

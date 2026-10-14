@@ -73,6 +73,19 @@ export async function fetchMe(): Promise<MeResponse | null> {
   return { account: json.account, currentRoomId: json.currentRoomId };
 }
 
+/** ★ R048 — 포인트 = 맞힌 문제 수 − 쓴 포인트 (D-229) */
+export interface PointBalance {
+  earned: number;
+  spent: number;
+  balance: number;
+}
+export async function fetchPoints(): Promise<PointBalance | null> {
+  const res = await fetch('/api/me/points', { credentials: 'same-origin' });
+  if (!res.ok) return null;
+  const json = (await res.json()) as { ok: true } & PointBalance;
+  return { earned: json.earned, spent: json.spent, balance: json.balance };
+}
+
 export function errorMessage(err: unknown, fallback = '요청을 처리할 수 없습니다.'): string {
   if (err && typeof err === 'object' && 'message' in err) {
     const message = (err as { message?: unknown }).message;

@@ -33,12 +33,13 @@
     "reset-password": "node scripts/reset-password.mjs",
     "verify:gemini": "node scripts/verify-gemini.mjs",
     "smoke": "node scripts/smoke.mjs",
-    "verify": "npm run typecheck && npm test && npm run smoke && npm run ui-check && npm run ui-check:sound && npm run ui-check:social && npm run ui-check:leave",
+    "verify": "npm run typecheck && npm test && npm run smoke && npm run ui-check && npm run ui-check:sound && npm run ui-check:social && npm run ui-check:leave && npm run ui-check:spam",
     "build:force": "tsc -b shared server client --force && npm run build -w client",
     "ui-check": "node scripts/ui-check.mjs",
     "ui-check:sound": "node scripts/ui-check.mjs --sound",
     "ui-check:social": "node scripts/ui-check.mjs --social",
     "ui-check:leave": "node scripts/ui-check.mjs --leave",
+    "ui-check:spam": "node scripts/ui-check.mjs --spam",
     "pipeline:harvest": "node scripts/pipeline-harvest.mjs",
     "pipeline:process": "node scripts/pipeline-process.mjs",
     "pipeline:generate": "node scripts/pipeline-generate.mjs",
@@ -52,6 +53,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
+    "sharp": "^0.35.5",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8",
     "ws": "^8.18.0"

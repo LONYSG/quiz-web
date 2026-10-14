@@ -405,7 +405,7 @@ class Bot {
         }
       });
       s.on('chat.throttled', (p) => {
-        this.events.push({ type: 'chat.throttled', retryAfterMs: p.retryAfterMs });
+        this.events.push({ type: 'chat.throttled', retryAfterMs: p.retryAfterMs, kind: p.kind ?? 'chat' });
       });
 
       // ── ★★ Phase 5 이벤트 (R015)
@@ -5397,6 +5397,140 @@ async function scenarioLeaveMatrix() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ spam — R048 A 도배 방지 개정 (D-228): 5초 5회 · 6번째부터 5초 잠금 · 본인에게만 안내 · 풀리면 다시 · 이모티콘 같은 꼴
+//   ★ 감시 서버(기본값)에서 돈다 — RULES 기본값이 곧 규칙이다 (CHAT_RATE_WINDOW_MS 5000 · MAX 5 · LOCK 5000)
+// -----------------------------------------------------------------------------
+async function scenarioSpam() {
+  log('시나리오 spam — ★★★ 도배 방지: 5초 5회 · 6번째부터 5초 잠금 (R048)');
+  const [host, a] = await makeBots(2);
+  await host.connect();
+  host.createRoom('R048 도배');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  await a.connect();
+  a.join(host.snapshot.room.id);
+  await a.waitFor(() => a.snapshot !== null, 6000, 'a 입장');
+  const aId = a.snapshot.me.accountId;
+  const chatsFrom = (bot, from) => bot.since(from, 'chat').filter((e) => e.accountId === aId && !e.emojiId).length;
+  const emojisFrom = (bot, from) => bot.since(from, 'chat').filter((e) => e.accountId === aId && e.emojiId).length;
+
+  log('\n[1] ★★ 5초 안 6개 — 6번째부터 거부 · 안내는 본인에게만');
+  let fa = a.mark();
+  let fh = host.mark();
+  for (let i = 1; i <= 6; i += 1) a.chat(`도배 ${i}`);
+  await sleep(700);
+  expect('★★ 방(방장 화면)에는 5개만 도착', chatsFrom(host, fh), 5);
+  expect('★★ 보낸 사람에게 안내(chat.throttled) 1번', a.since(fa, 'chat.throttled').length, 1);
+  const t0 = a.since(fa, 'chat.throttled')[0];
+  expectTrue('★ 안내에 남은 시간 ≈ 5초 · kind=chat', t0 && t0.retryAfterMs > 4000 && t0.retryAfterMs <= 5000 && t0.kind === 'chat', JSON.stringify(t0));
+  expect('★ 방장에게는 안내가 가지 않는다', host.since(fh, 'chat.throttled').length, 0);
+
+  log('\n[2] ★★ 잠긴 동안 보낸 것은 전부 버린다 · 남은 시간이 줄어든다');
+  fa = a.mark();
+  fh = host.mark();
+  await sleep(1500);
+  a.chat('잠긴 중 1');
+  a.chat('잠긴 중 2');
+  await sleep(500);
+  expect('★ 잠긴 동안 보낸 2개는 방에 안 간다', chatsFrom(host, fh), 0);
+  const t1 = a.since(fa, 'chat.throttled');
+  expect('★ 보낼 때마다 안내가 온다 (2번)', t1.length, 2);
+  expectTrue('★ 남은 시간이 줄었다 (< 4초)', t1[0] && t1[0].retryAfterMs < 4000, String(t1[0]?.retryAfterMs));
+
+  log('\n[3] ★★ 5초 뒤 풀리면 다시 5개까지');
+  await sleep(3600);
+  fa = a.mark();
+  fh = host.mark();
+  for (let i = 1; i <= 5; i += 1) a.chat(`다시 ${i}`);
+  await sleep(600);
+  expect('★★ 풀린 뒤 5개가 다 도착', chatsFrom(host, fh), 5);
+  expect('★ 안내 없음', a.since(fa, 'chat.throttled').length, 0);
+  a.chat('6번째');
+  await sleep(400);
+  expect('★ 6번째는 다시 잠근다', a.since(fa, 'chat.throttled').length, 1);
+  await sleep(5200);
+
+  log('\n[4] ★★★ 퀴즈 답 속도(초당 1개 · 12초)는 한 번도 안 걸린다');
+  fa = a.mark();
+  fh = host.mark();
+  for (let i = 1; i <= 12; i += 1) {
+    a.chat(`답 ${i}`);
+    await sleep(1000);
+  }
+  expect('★ 12개 전부 도착', chatsFrom(host, fh), 12);
+  expect('★ 안내 0', a.since(fa, 'chat.throttled').length, 0);
+
+  await sleep(5200); // [4] 의 마지막 답들이 5초 창을 벗어나게
+  log('\n[5] ★★ 이모티콘 — 채팅과 따로 · 같은 값 (5초 5회 · 6번째부터 잠금 · 안내 kind=emoji)');
+  const emojiId = (await fetch(`${BASE}/api/emoji`).then((r) => r.json())).defaults[0];
+  fa = a.mark();
+  fh = host.mark();
+  a.chat('채팅은 따로');
+  for (let i = 0; i < 6; i += 1) a.socket.emit('emoji.send', { emojiId });
+  await sleep(700);
+  expect('★★ 이모티콘 5개만 도착', emojisFrom(host, fh), 5);
+  const te = a.since(fa, 'chat.throttled');
+  expect('★ 이모티콘 안내 1번', te.length, 1);
+  expect('★ kind=emoji', te[0]?.kind, 'emoji');
+  expect('★ 채팅은 그대로 간다 (따로 센다)', chatsFrom(host, fh), 1);
+  a.chat('이모티콘 잠겨도 채팅은 됨');
+  await sleep(400);
+  expect('★ 이모티콘이 잠겨도 채팅은 보낼 수 있다', chatsFrom(host, fh), 2);
+
+  for (const x of [host, a]) x.leave();
+  await sleep(300);
+  for (const x of [host, a]) x.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
+// ★★ points — R048 C: 포인트 = 맞힌 문제 수 − 쓴 포인트 (D-229). API 값 = SQL 로 센 값 · 한 문제 맞히면 1 오른다
+// -----------------------------------------------------------------------------
+async function scenarioPoints() {
+  log('시나리오 points — ★★ 포인트 (R048 C)');
+  await clearExperiences(PREFIX);
+  const [host, a] = await makeBots(2);
+  await host.connect();
+  host.createRoom('R048 포인트');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  await a.connect();
+  a.join(host.snapshot.room.id);
+  await a.waitFor(() => a.snapshot !== null, 6000, 'a 입장');
+  const aId = a.snapshot.me.accountId;
+  const api = async () => (await fetch(`${BASE}/api/me/points`, { headers: { cookie: a.cookie ?? '' } })).json();
+  const sql = async () =>
+    withDb(async (c) => {
+      const r = await c.query(
+        `SELECT (SELECT count(*) FROM answer_events WHERE account_id = $1 AND accepted)::int earned,
+                (SELECT coalesce(sum(amount), 0) FROM point_spends WHERE account_id = $1)::int spent`,
+        [aId],
+      );
+      return r.rows[0];
+    });
+  const p0 = await api();
+  const s0 = await sql();
+  expect('★ API earned = SQL 로 센 accepted 수', p0.earned, s0.earned);
+  expect('★ API spent = SQL point_spends 합', p0.spent, s0.spent);
+  expect('★ balance = earned − spent', p0.balance, p0.earned - p0.spent);
+  expect('★ 로그인 없이 401', (await fetch(`${BASE}/api/me/points`)).status, 401);
+
+  await startGame(host, [a], 3);
+  await answerCurrent(a);
+  await host.waitFor(() => (host.snapshot.players.find((p) => p.accountId === aId)?.score ?? 0) >= 1, 6000, 'a 정답');
+  await sleep(600); // answer_events 기록(비동기)
+  const p1 = await api();
+  expect('★★ 한 문제 맞히면 earned 가 1 오른다', p1.earned, p0.earned + 1);
+  expect('★★ balance 도 1 오른다', p1.balance, p0.balance + 1);
+  const s1 = await sql();
+  expect('★ 그 뒤에도 API = SQL', p1.earned, s1.earned);
+  host.socket.emit('host.forceEnd', {});
+  await sleep(500);
+  for (const x of [host, a]) x.leave();
+  await sleep(300);
+  for (const x of [host, a]) x.disconnect();
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -5583,6 +5717,9 @@ const SCENARIOS = {
   // ★★★ R046
   leave: scenarioLeave,
   leavematrix: scenarioLeaveMatrix,
+  // ★★ R048
+  spam: scenarioSpam,
+  points: scenarioPoints,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

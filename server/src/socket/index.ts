@@ -21,7 +21,7 @@ import { closeRoom, findRoom, insertRoom, openRoomsHostedBy, updateRoomHost } fr
 import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
 import { loadExperienced } from '../db/questionPool.js';
 import { cancelCountdown, nicknameBlockMessage, notEnoughMessage, requestStart } from '../game/start.js';
-import { checkChatRate, judgeAnswer } from '../game/answer.js';
+import { checkChatRate, checkEmojiRate, judgeAnswer } from '../game/answer.js';
 import {
   abortQuestionSync,
   broadcastExperiencedUpdated,
@@ -70,7 +70,7 @@ import { initFriends, onAccountOffline, onAccountOnline, registerFriendHandlers 
 /** ★ R043 — 방을 만드는 중인 계정 (연타 무시) */
 const creatingRooms = new Set<string>();
 import { buildSnapshot, toPlayerView } from '../rooms/snapshot.js';
-import { isEmojiId } from '../http/emojiRoutes.js';
+import { isEmojiId, isSpecialEmoji, ownedEmojiIds } from '../http/emojiRoutes.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
@@ -398,12 +398,14 @@ function registerRoomHandlers(socket: Socket): void {
       //     ★ 방 전체에 알리면 도배 자체가 알림이 된다.
       // ★ Q-84 — 설정값으로 덮을 수 있다. 기본은 1초 20개다.
       //   ★★ 기준이 "예절" 이 아니라 "서버 보호" 로 바뀌었다. 근거는 RULES 주석에 있다.
+      // ★★ R048 개정 (D-228) — 5초 5회 · 넘으면 5초 잠금. 잠긴 동안 보낸 것은 버리고 본인에게만 남은 시간을 알린다
       const retryAfterMs = checkChatRate(room, player.accountId, now, {
         windowMs: config.tuning.chatRateWindowMs,
         max: config.tuning.chatRateMax,
+        lockMs: config.tuning.chatRateLockMs,
       });
       if (retryAfterMs !== null) {
-        s.emit('chat.throttled', { retryAfterMs });
+        s.emit('chat.throttled', { retryAfterMs, kind: 'chat' });
         return;
       }
 
@@ -513,13 +515,23 @@ function registerRoomHandlers(socket: Socket): void {
         return { emojiId: id };
       },
     },
-    ({ seq, room, player, payload }) => {
+    async ({ seq, socket: s, room, player, payload }) => {
+      // ★★ R048 (D-230) — 특별 이모티콘(테마)은 **가진 사람만** 보낼 수 있다 (뽑기는 R049 — 규칙을 먼저 둔다)
+      if (isSpecialEmoji(payload.emojiId) && !(await ownedEmojiIds(player.accountId)).has(payload.emojiId)) {
+        sendError(s, 'BAD_REQUEST', '가지고 있지 않은 이모티콘입니다.');
+        return;
+      }
       const now = Date.now();
-      room.emojiTimestamps ??= new Map();
-      const arr = (room.emojiTimestamps.get(player.accountId) ?? []).filter((t) => now - t < RULES.EMOJI_RATE_WINDOW_MS);
-      if (arr.length >= RULES.EMOJI_RATE_MAX) return; // ★ 조용히 버린다 (도배 억제 안내는 채팅 쪽에만)
-      arr.push(now);
-      room.emojiTimestamps.set(player.accountId, arr);
+      // ★★ R048 (D-228) — 채팅과 같은 창+잠금(따로 센다). 옛 R039 는 조용히 버렸다 → 이번부터 본인에게 같은 안내
+      const retryAfterMs = checkEmojiRate(room, player.accountId, now, {
+        windowMs: config.tuning.emojiRateWindowMs,
+        max: config.tuning.emojiRateMax,
+        lockMs: config.tuning.emojiRateLockMs,
+      });
+      if (retryAfterMs !== null) {
+        s.emit('chat.throttled', { retryAfterMs, kind: 'emoji' });
+        return;
+      }
       const entry = {
         id: randomUUID(),
         seq,
@@ -937,6 +949,9 @@ function returnToLobby(room: NonNullable<ReturnType<typeof getRoom>>): void {
   room.currentQuestion = null;
   room.result = null;
   room.chatTimestamps.clear();
+  room.chatLocks?.clear();
+  room.emojiTimestamps?.clear();
+  room.emojiLocks?.clear();
   // ★ 점수만 초기화한다. 경험 기록은 DB 에 있고 건드리지 않는다
   for (const p of room.players.values()) p.score = 0;
   // ★ 직전 설정 복원 (Q-31)

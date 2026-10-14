@@ -16,6 +16,7 @@ import { runBootCleanup } from './db/bootCleanup.js';
 import { closePool, getDbActiveMs } from './db/pool.js';
 import { emojiRouter, loadEmojiCatalog } from './http/emojiRoutes.js';
 import { avatarRouter } from './http/avatarRoutes.js';
+import { meRouter } from './http/meRoutes.js';
 import { authRouter } from './http/authRoutes.js';
 import { registerSocketHandlers } from './socket/index.js';
 import { startTick, stopTick } from './tick.js';
@@ -108,6 +109,8 @@ async function main(): Promise<void> {
   app.use('/api/auth', authRouter);
   // ★ R039 — 프로필 사진
   app.use('/api/avatar', avatarRouter);
+  // ★ R048 — 포인트 (D-229)
+  app.use('/api/me', meRouter);
   // ★ R039 — 이모티콘 목록 · 직접 등록 그림 / 표준 그림(Twemoji SVG)은 파일로 낸다
   app.use('/api/emoji', emojiRouter);
   app.use('/emoji', express.static(TWEMOJI_DIR, { maxAge: '365d', immutable: true }));

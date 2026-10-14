@@ -83,10 +83,18 @@ export function useShortcuts(shortcuts: Shortcut[]): void {
   ref.current = shortcuts;
 
   useEffect(() => {
+    // ★★ R048 B (찬종: "단축키를 쭉 누르고 있으면 이모티콘이 계속 나온다 … 꾹 누르니까 얌체 같다") — 한 번 꾹 = 한 번.
+    //   (1) 자동 반복(e.repeat)은 무시한다. (2) 같은 키는 keyup 이 온 뒤에만 다시 받는다 (repeat 플래그가 없는 환경도 막는다).
+    //   창을 벗어나면(blur) 눌림 기록을 비운다 — keyup 을 못 받아 영원히 막히지 않게.
+    const held = new Set<string>();
+    const onUp = (e: KeyboardEvent) => held.delete(e.code);
+    const onBlur = () => held.clear();
     const onKey = (e: KeyboardEvent) => {
       // ★ IME 조합 중에는 아무것도 하지 않는다.
       //   ★ 한글 조합 중 Alt 가 눌리는 경우를 방어한다. 미완성 문자가 확정될 수 있다.
       if (e.isComposing) return;
+      if (e.repeat) return;
+      if (held.has(e.code)) return;
       // ★ Ctrl / Meta 가 함께 눌린 조합은 우리 것이 아니다. 브라우저에 넘긴다
       if (e.ctrlKey || e.metaKey) return;
 
@@ -101,12 +109,19 @@ export function useShortcuts(shortcuts: Shortcut[]): void {
         // ★ 브라우저 기본 동작을 막는다. 우리가 처리한 키다
         e.preventDefault();
         e.stopPropagation();
+        held.add(e.code);
         s.run();
         return;
       }
     };
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    document.addEventListener('keyup', onUp);
+    window.addEventListener('blur', onBlur);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('keyup', onUp);
+      window.removeEventListener('blur', onBlur);
+    };
   }, []);
 }
 

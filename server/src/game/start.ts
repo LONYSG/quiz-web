@@ -278,6 +278,9 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   room.lastGameSettings = settings; // "다시 하기" 에서 복원한다 (Q-31)
   for (const player of room.players.values()) player.score = 0;
   room.chatTimestamps.clear();
+  room.chatLocks?.clear();
+  room.emojiTimestamps?.clear();
+  room.emojiLocks?.clear();
   room.game = {
     gameId,
     totalQuestions: settings.questionCount,

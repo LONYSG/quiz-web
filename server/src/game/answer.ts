@@ -155,23 +155,66 @@ export function judgeAnswer(room: Room, player: Player, input: JudgeInput): Judg
  *
  * @returns 허용되면 null. 막히면 다시 시도할 수 있는 시각까지의 ms
  */
-export function checkChatRate(room: Room, accountId: string, now: number, limits: {
+export interface RateLimits {
   windowMs: number;
   max: number;
-}): number | null {
-  let stamps = room.chatTimestamps.get(accountId);
+  /**
+   * ★★ R048 — 넘었을 때 잠그는 시간. 0 이면 옛 방식(가장 오래된 기록이 윈도를 벗어날 때까지만 기다림).
+   *   잠긴 동안 보낸 것은 전부 버리고 남은 시간을 돌려준다. 잠금이 풀리면 창(기록)을 비워 다시 센다.
+   */
+  lockMs?: number;
+}
+
+/**
+ * ★ 창 + 잠금 — 채팅 · 이모티콘 · (R049) 특별 이모티콘이 같은 함수를 쓴다 (D-228).
+ * @returns 허용되면 null. 막히면 다시 보낼 수 있을 때까지의 ms
+ */
+export function checkRate(
+  stampsMap: Map<string, number[]>,
+  locks: Map<string, number>,
+  accountId: string,
+  now: number,
+  limits: RateLimits,
+): number | null {
+  const lockedUntil = locks.get(accountId);
+  if (lockedUntil !== undefined) {
+    if (now < lockedUntil) return Math.max(1, lockedUntil - now);
+    // ★ 잠금이 풀렸다 — 창을 비워 처음부터 센다
+    locks.delete(accountId);
+    stampsMap.set(accountId, []);
+  }
+  let stamps = stampsMap.get(accountId);
   if (!stamps) {
     stamps = [];
-    room.chatTimestamps.set(accountId, stamps);
+    stampsMap.set(accountId, stamps);
   }
   const cutoff = now - limits.windowMs;
   // ★ 윈도 밖의 기록을 버린다. 배열이 무한히 자라지 않게 한다
   while (stamps.length > 0 && stamps[0]! <= cutoff) stamps.shift();
 
   if (stamps.length >= limits.max) {
-    // ★ 가장 오래된 기록이 윈도를 벗어나는 시점까지 기다려야 한다
+    const lockMs = limits.lockMs ?? 0;
+    if (lockMs > 0) {
+      // ★★ R048 — 6번째부터: 지금부터 lockMs 동안 잠근다
+      locks.set(accountId, now + lockMs);
+      return lockMs;
+    }
+    // ★ (옛 방식) 가장 오래된 기록이 윈도를 벗어나는 시점까지 기다려야 한다
     return Math.max(1, stamps[0]! + limits.windowMs - now);
   }
   stamps.push(now);
   return null;
+}
+
+/** 채팅 — room.chatTimestamps · room.chatLocks 를 쓴다 */
+export function checkChatRate(room: Room, accountId: string, now: number, limits: RateLimits): number | null {
+  room.chatLocks ??= new Map();
+  return checkRate(room.chatTimestamps, room.chatLocks, accountId, now, limits);
+}
+
+/** ★ R048 — 이모티콘은 채팅과 따로 센다 (room.emojiTimestamps · room.emojiLocks) */
+export function checkEmojiRate(room: Room, accountId: string, now: number, limits: RateLimits): number | null {
+  room.emojiTimestamps ??= new Map();
+  room.emojiLocks ??= new Map();
+  return checkRate(room.emojiTimestamps, room.emojiLocks, accountId, now, limits);
 }

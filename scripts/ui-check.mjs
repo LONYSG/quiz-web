@@ -1431,6 +1431,137 @@ async function probePopup(page, sel, label) {
   return true;
 }
 // -----------------------------------------------------------------------------
+// ★★★ R048 — A 도배 방지 안내(본인에게만 · 남은 초 · 테두리 · 떨림) · B 단축키 꾹 누름 (`npm run ui-check:spam`, verify 포함)
+//   두 창(방장 PC · 게스트): 게스트가 6개를 빠르게 치면 게스트 창에만 안내가 뜬다. PC 파스텔 · 밤 · 모바일 390 — 잠긴 순간 · 3초 뒤.
+// -----------------------------------------------------------------------------
+const SPAM_ONLY = args.includes('--spam');
+if (SPAM_ONLY) process.env.SHOT_DIR ??= 'r048';
+async function typeAndEnter(page, text) {
+  await page.send('Input.insertText', { text });
+  await page.key('Enter', { code: 'Enter', vk: 13 });
+}
+const noteText = (page) => page.evaluate("document.querySelector('.throttle-note')?.innerText ?? ''");
+const noteSec = async (page) => Number(((await noteText(page)).match(/(\d+)초/) ?? [])[1] ?? -1);
+async function spamFlow(browser) {
+  const H = await newPage(browser, 'S-host');
+  await H.setViewport(1280, 720);
+  await signUp(H, 'sh', '방장님');
+  const G = await newPage(browser, 'S-guest', true);
+  await G.setViewport(1280, 720);
+  await signUp(G, 'sg', '도배손님');
+  const roomId = await createRoom(H, 'R048 도배 방지');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000);
+  await sleep(600);
+
+  for (const theme of ['pastel', 'night']) {
+    await G.evaluate(`document.documentElement.dataset.theme = '${theme}'`);
+    await H.evaluate(`document.documentElement.dataset.theme = '${theme}'`);
+    await sleep(200);
+    // ── 게스트가 6개를 빠르게 (진짜 입력 · Enter)
+    await realClick(G, '.chat-card input');
+    const hostLines0 = await H.evaluate("document.querySelectorAll('.chat-line').length");
+    for (let i = 1; i <= 6; i += 1) await typeAndEnter(G, `도배 ${i} ${theme}`);
+    const shown = await G.waitFor("document.querySelector('.throttle-note') !== null", 3000);
+    await sleep(150);
+    const sec0 = await noteSec(G);
+    const locked = await G.evaluate("document.querySelector('.chat-card input')?.classList.contains('locked')");
+    const draftKept = await G.evaluate("document.querySelector('.chat-card input')?.value ?? ''");
+    await snap(G, `90-spam-locked-${theme}-pc`);
+    record(`★★★ A ${theme} — 6번째에 안내가 뜬다 · 남은 초(4~5) · 입력창 경고 테두리`, shown && sec0 >= 4 && sec0 <= 5 && locked === true, `초=${sec0} locked=${locked} 글=${draftKept}`);
+    record(`★★ A ${theme} — 방장 창에는 안내가 없고 5개만 도착`, (await H.evaluate("document.querySelector('.throttle-note') === null")) && (await H.evaluate("document.querySelectorAll('.chat-line').length")) - hostLines0 === 5, `${(await H.evaluate("document.querySelectorAll('.chat-line').length")) - hostLines0}개`);
+    await snap(H, `90-spam-host-${theme}-pc`);
+    // 잠긴 채 보내기 — 글은 남고 입력창이 떨린다 · 안내 숫자가 줄어든다
+    await G.send('Input.insertText', { text: '잠긴 중' });
+    await G.key('Enter', { code: 'Enter', vk: 13 });
+    await sleep(60);
+    const shook = await G.evaluate("document.querySelector('.chat-card input')?.classList.contains('input-shake')");
+    const kept = await G.evaluate("document.querySelector('.chat-card input')?.value ?? ''");
+    record(`★★ A ${theme} — 잠긴 채 보내면: 안 보내고(글이 남는다) 입력창이 떨린다`, shook === true && kept === '잠긴 중', `shake=${shook} 글="${kept}"`);
+    await sleep(2800);
+    const sec1 = await noteSec(G);
+    await snap(G, `91-spam-3s-${theme}-pc`);
+    record(`★★ A ${theme} — 3초 뒤 남은 초가 줄었다 (${sec0} → ${sec1})`, sec1 >= 0 && sec1 < sec0, `${sec0}→${sec1}`);
+    await G.waitFor("document.querySelector('.throttle-note') === null", 4000);
+    record(`★ A ${theme} — 풀리면 안내가 사라지고 테두리도 원래대로`, await G.evaluate("document.querySelector('.throttle-note') === null && !document.querySelector('.chat-card input').classList.contains('locked')"));
+    // 남아 있던 글을 그대로 보낼 수 있다
+    await G.key('Enter', { code: 'Enter', vk: 13 });
+    await sleep(400);
+    record(`★ A ${theme} — 풀린 뒤 남아 있던 글이 그대로 간다`, await H.evaluate("[...document.querySelectorAll('.chat-line')].some((l) => l.innerText.includes('잠긴 중'))"));
+    await G.evaluate("(() => { const i = document.querySelector('.chat-card input'); const d = Object.getOwnPropertyDescriptor(i.constructor.prototype, 'value'); d.set.call(i, ''); i.dispatchEvent(new Event('input', { bubbles: true })); })()");
+    await sleep(5300); // 창이 비도록
+  }
+  await G.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  await H.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  // ── 모바일 390 — 잠긴 순간 · 3초 뒤 (키보드 위 자리 — 기존 throttle-note 와 같은 문서 흐름)
+  await G.setViewport(390, 844);
+  await sleep(400);
+  await realClick(G, '.chat-card input');
+  for (let i = 1; i <= 6; i += 1) await typeAndEnter(G, `모바일 도배 ${i}`);
+  await G.waitFor("document.querySelector('.throttle-note') !== null", 3000);
+  await sleep(150);
+  await G.evaluate("document.querySelector('.throttle-note')?.scrollIntoView({ block: 'center' })");
+  await snap(G, '92-spam-locked-m390');
+  const mIn = await G.evaluate("(() => { const r = document.querySelector('.throttle-note')?.getBoundingClientRect(); return Boolean(r) && r.top >= 0 && r.bottom <= innerHeight; })()");
+  record('★★ A 모바일 390 — 안내가 입력창 위 · 화면 안', mIn);
+  await sleep(3000);
+  await snap(G, '93-spam-3s-m390');
+  await G.waitFor("document.querySelector('.throttle-note') === null", 4000);
+  await G.setViewport(1280, 720);
+  await sleep(5300);
+
+  // ── 이모티콘 — 같은 안내 (kind=emoji) · 채팅은 그대로
+  await realClick(G, '.emoji-btn');
+  await sleep(250);
+  for (let i = 0; i < 6; i += 1) {
+    await realClick(G, '.emoji-slot');
+    await sleep(80);
+  }
+  const eShown = await G.waitFor("(document.querySelector('.throttle-note')?.innerText ?? '').includes('이모티콘')", 3000);
+  await snap(G, '94-spam-emoji-pc');
+  record('★★ A 이모티콘 — 6번째에 "이모티콘 도배 방지" 안내', eShown, await noteText(G));
+  await closeTop(G);
+  await realClick(G, '.chat-card input');
+  await typeAndEnter(G, '이모티콘 잠겨도 채팅');
+  await sleep(400);
+  record('★ A 이모티콘이 잠겨도 채팅은 간다 (따로 센다)', await H.evaluate("[...document.querySelectorAll('.chat-line')].some((l) => l.innerText.includes('이모티콘 잠겨도 채팅'))"));
+  await G.waitFor("document.querySelector('.throttle-note') === null", 7000);
+  await sleep(5300);
+
+  // ── ★★ B 단축키 꾹 누름 — Alt+1 을 자동 반복(autoRepeat)으로 5번 보내도 이모티콘은 1번 · keyup 뒤 다시 1번
+  const emojiLines = () => H.evaluate("[...document.querySelectorAll('.chat-line')].filter((l) => l.querySelector('.chat-emoji, img.emoji')).length");
+  const e0 = await emojiLines();
+  await realClick(G, '.chat-card input');
+  const down = (autoRepeat) => G.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: '1', code: 'Digit1', windowsVirtualKeyCode: 49, modifiers: 1, autoRepeat });
+  await down(false);
+  for (let i = 0; i < 4; i += 1) await down(true);
+  await sleep(500);
+  const e1 = await emojiLines();
+  record('★★★ B — Alt+1 을 꾹(자동 반복 5번) → 이모티콘 1번만', e1 - e0 === 1, `${e1 - e0}번`);
+  // keyup 없이 다시 keydown(반복 플래그 없음) — 그래도 1번만
+  await down(false);
+  await sleep(400);
+  const e2 = await emojiLines();
+  record('★★ B — keyup 전에는 같은 키를 다시 받지 않는다', e2 - e0 === 1, `${e2 - e0}번`);
+  await G.send('Input.dispatchKeyEvent', { type: 'keyUp', key: '1', code: 'Digit1', windowsVirtualKeyCode: 49, modifiers: 1 });
+  await down(false);
+  await sleep(500);
+  const e3 = await emojiLines();
+  record('★★ B — keyup 뒤 다시 누르면 1번 더', e3 - e0 === 2, `${e3 - e0}번`);
+  await G.send('Input.dispatchKeyEvent', { type: 'keyUp', key: '1', code: 'Digit1', windowsVirtualKeyCode: 49, modifiers: 1 });
+  await snap(H, '95-keyhold-host-pc');
+
+  // ── ★ C 포인트 — 프로필 창(게임 중에도 열린다)에 "포인트 N" · API 값과 같다
+  await realClick(H, '#rename-btn');
+  await H.waitFor("document.querySelector('.profile-points strong') !== null && document.querySelector('.profile-points strong').innerText !== '—'", 5000);
+  const shownPts = await H.evaluate("document.querySelector('.profile-points strong')?.innerText ?? ''");
+  const apiPts = await H.evaluate("fetch('/api/me/points').then((r) => r.json()).then((j) => String(j.balance))");
+  await snap(H, '96-profile-points-pc');
+  record('★★ C — 프로필 창 "포인트 N" = /api/me/points balance', shownPts.replace(/,/g, '') === apiPts, `${shownPts} / ${apiPts}`);
+  await closeTop(H);
+}
+
+// -----------------------------------------------------------------------------
 // ★★★ R046 — 나가기 · 끊김 · 옮기기: 사람 동작을 **진짜 클릭**으로 (`npm run ui-check:leave`, verify 에 포함)
 //   ★ 이 모드는 자기 서버를 띄울 때 끊김 60초 → 5초 · 방장 이전 30초 → 2초로 줄인다 (값만 다르고 경로는 같다)
 // -----------------------------------------------------------------------------
@@ -2622,6 +2753,10 @@ try {
 
   if (SHOTS_ONLY) {
     await shotsFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (SPAM_ONLY) {
+    await spamFlow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (LEAVE_ONLY) {

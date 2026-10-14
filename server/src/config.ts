@@ -83,10 +83,20 @@ export const config = {
   tuning: {
     /** ★ PAUSED 포기까지 (Q-82). 기본 5분 */
     pauseAbandonMs: positiveInt('PAUSE_ABANDON_MS', RULES.PAUSE_ABANDON_MS),
-    /** ★ 채팅 rate limit 윈도 (Q-84). 기본 1초 */
+    /** ★ 채팅 도배 윈도 (R048 개정 — 기본 5초) */
     chatRateWindowMs: positiveInt('CHAT_RATE_WINDOW_MS', RULES.CHAT_RATE_WINDOW_MS),
-    /** ★ 그 윈도 안의 최대 개수 (Q-84). 기본 20개 */
+    /** ★ 그 윈도 안의 최대 개수 (R048 — 기본 5개. 6번째부터 잠근다) */
     chatRateMax: positiveInt('CHAT_RATE_MAX', RULES.CHAT_RATE_MAX),
+    /** ★ R048 — 넘었을 때 잠그는 시간 (기본 5초) */
+    chatRateLockMs: positiveInt('CHAT_RATE_LOCK_MS', RULES.CHAT_RATE_LOCK_MS),
+    /** ★ R048 — 이모티콘은 채팅과 따로 세되 같은 값 */
+    emojiRateWindowMs: positiveInt('EMOJI_RATE_WINDOW_MS', RULES.EMOJI_RATE_WINDOW_MS),
+    emojiRateMax: positiveInt('EMOJI_RATE_MAX', RULES.EMOJI_RATE_MAX),
+    emojiRateLockMs: positiveInt('EMOJI_RATE_LOCK_MS', RULES.EMOJI_RATE_LOCK_MS),
+    /** ★ R048 — 특별 이모티콘(R049 에서 보냄) — 값만 */
+    specialEmojiRateWindowMs: positiveInt('SPECIAL_EMOJI_RATE_WINDOW_MS', RULES.SPECIAL_EMOJI_RATE_WINDOW_MS),
+    specialEmojiRateMax: positiveInt('SPECIAL_EMOJI_RATE_MAX', RULES.SPECIAL_EMOJI_RATE_MAX),
+    specialEmojiRateLockMs: positiveInt('SPECIAL_EMOJI_RATE_LOCK_MS', RULES.SPECIAL_EMOJI_RATE_LOCK_MS),
     /** ★ R046 — 끊긴 사람이 빠지기까지 (기본 60초). 테스트에서 줄인다 */
     disconnectRemoveMs: positiveInt('DISCONNECT_REMOVE_MS', RULES.DISCONNECT_REMOVE_MS),
     /** ★ 방장 이전 유예 (Q-29 · 기본 30초). 테스트에서 줄인다 */

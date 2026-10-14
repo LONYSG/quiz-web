@@ -217,6 +217,8 @@ export interface RoomHook {
    *     ★ 그래서 입력창 바로 위에 인라인으로 표시한다 (C-8 판단).
    */
   throttledUntil: number | null;
+  /** ★ R048 — 무엇이 잠겼나 (채팅 · 이모티콘) */
+  throttledKind: 'chat' | 'emoji';
 }
 
 export function useRoom(socket: Socket | null): RoomHook {
@@ -225,6 +227,7 @@ export function useRoom(socket: Socket | null): RoomHook {
   const [error, setError] = useState<SocketErrorPayload | null>(null);
   const [terminated, setTerminated] = useState(false);
   const [throttledUntil, setThrottledUntil] = useState<number | null>(null);
+  const [throttledKind, setThrottledKind] = useState<'chat' | 'emoji'>('chat');
 
   useEffect(() => {
     if (!socket) return undefined;
@@ -590,8 +593,9 @@ export function useRoom(socket: Socket | null): RoomHook {
       );
     };
 
-    const onThrottled = (p: { retryAfterMs: number }) => {
+    const onThrottled = (p: { retryAfterMs: number; kind?: 'chat' | 'emoji' }) => {
       setThrottledUntil(Date.now() + p.retryAfterMs);
+      setThrottledKind(p.kind === 'emoji' ? 'emoji' : 'chat');
     };
 
     // ── ★★ Phase 5 — 일시정지 (R015)
@@ -742,5 +746,6 @@ export function useRoom(socket: Socket | null): RoomHook {
     clearError: () => setError(null),
     terminated,
     throttledUntil,
+    throttledKind,
   };
 }
