@@ -2,6 +2,7 @@
 // ★★ 이모티콘 (R039 / D-187)
 //
 //   GET /api/emoji             목록 (표준 + 직접 등록, 사용 중인 것만) + 기본 10칸 번호
+//                              ★ R048 — 특별 이모티콘(theme_id 있음)은 **가진 사람에게만** 내려보낸다(로그인 세션으로 본다) — D-230
 //   GET /api/emoji/:id/image   직접 등록 이모티콘 그림 (DB 에 저장된 것)
 //   (표준 그림은 index.ts 가 /emoji/<code>.svg 로 낸다 — Twemoji)
 //
@@ -11,6 +12,7 @@
 
 import { Router } from 'express';
 import { query } from '../db/pool.js';
+import { readSessionToken, resolveSession } from '../auth/session.js';
 
 export const emojiRouter = Router();
 
@@ -25,6 +27,8 @@ export interface EmojiMeta {
   name: string;
   tags: string[];
   category: string;
+  /** ★ R048 — 특별 이모티콘의 테마 (없으면 null = 누구나) */
+  themeId: number | null;
 }
 
 let catalog = new Map<number, EmojiMeta>();
@@ -41,13 +45,14 @@ export async function loadEmojiCatalog(): Promise<void> {
       name_ko: string;
       tags: string[];
       category: string;
-    }>(`SELECT id, kind, code, char, name_ko, tags, category FROM emojis WHERE active ORDER BY
+      theme_id: number | null;
+    }>(`SELECT id, kind, code, char, name_ko, tags, category, theme_id FROM emojis WHERE active ORDER BY
           CASE category WHEN 'custom' THEN 0 WHEN 'smileys' THEN 1 WHEN 'people' THEN 2 WHEN 'animals' THEN 3
             WHEN 'food' THEN 4 WHEN 'activities' THEN 5 WHEN 'travel' THEN 6 WHEN 'objects' THEN 7
             WHEN 'symbols' THEN 8 ELSE 9 END, sort_order, id`);
     const next = new Map<number, EmojiMeta>();
     for (const x of r.rows) {
-      next.set(x.id, { id: x.id, kind: x.kind, code: x.code, char: x.char, name: x.name_ko, tags: x.tags ?? [], category: x.category });
+      next.set(x.id, { id: x.id, kind: x.kind, code: x.code, char: x.char, name: x.name_ko, tags: x.tags ?? [], category: x.category, themeId: x.theme_id ?? null });
     }
     catalog = next;
     const byCode = new Map([...next.values()].filter((e) => e.code).map((e) => [e.code!, e.id]));
@@ -64,10 +69,29 @@ export function isEmojiId(id: number): boolean {
   return catalog.has(id);
 }
 
-emojiRouter.get('/', async (_req, res) => {
+/** ★ R048 — 특별 이모티콘인가 (theme_id 있음) */
+export function isSpecialEmoji(id: number): boolean {
+  return (catalog.get(id)?.themeId ?? null) !== null;
+}
+
+/** ★ R048 — 계정이 가진 특별 이모티콘 (account_emojis). 소켓 emoji.send 가 막을 때 쓴다 */
+export async function ownedEmojiIds(accountId: string): Promise<Set<number>> {
+  try {
+    const r = await query<{ emoji_id: number }>(`SELECT emoji_id FROM account_emojis WHERE account_id = $1`, [accountId]);
+    return new Set(r.rows.map((x) => x.emoji_id));
+  } catch {
+    return new Set(); // 0016 미적용
+  }
+}
+
+emojiRouter.get('/', async (req, res) => {
   if (Date.now() - loadedAt > 30_000) await loadEmojiCatalog();
   res.setHeader('Cache-Control', 'no-cache');
-  res.json({ ok: true, emojis: [...catalog.values()], defaults });
+  // ★ R048 — 특별 이모티콘은 가진 사람에게만 (아직 뽑기가 없으니 지금은 아무도 못 본다 — R049)
+  const session = await resolveSession(readSessionToken(req.headers.cookie));
+  const owned = session ? await ownedEmojiIds(session.accountId) : new Set<number>();
+  const emojis = [...catalog.values()].filter((e) => e.themeId === null || owned.has(e.id));
+  res.json({ ok: true, emojis, defaults });
 });
 
 emojiRouter.get('/:id/image', async (req, res) => {
