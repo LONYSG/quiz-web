@@ -5549,7 +5549,7 @@ async function scenarioShop() {
   // ★ 몇 번을 돌려도 같게 — 이 시나리오가 쓰는 **봇 계정만** 뽑기 기록을 비운다 (bot_01 → 0/27 · 487P, bot_06 → 19P). 찬종 계정은 건드리지 않는다
   await withDb(async (c) => {
     await c.query(`DELETE FROM account_emojis WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[b1.loginId, b6.loginId]]);
-    await c.query(`DELETE FROM point_spends WHERE reason = 'gacha' AND account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[b1.loginId, b6.loginId]]);
+    await c.query(`DELETE FROM point_spends WHERE reason IN ('gacha', 'test-adjust') AND account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[b1.loginId, b6.loginId]]);
   });
   const get = async (bot, path) => (await fetch(`${BASE}${path}`, { headers: { cookie: bot.cookie ?? '' } })).json();
   const draw = async (bot, themeKey = 'chiikawa') => {
@@ -5619,7 +5619,13 @@ async function scenarioShop() {
     expect('★ DB 보유 27 · 쓴 포인트 = 27×price', `${dbDone.owned}:${dbDone.spent - before.spent}`, `27:${27 * price}`);
 
     log('\n[4] ★★★ 동시 두 번 — 잔액이 price 와 2price 사이인 계정: 하나만 성공 · 잔액 음수 아님');
-    const s6 = await get(b6, '/api/shop');
+    let s6 = await get(b6, '/api/shop');
+    // ★ 전제를 스스로 맞춘다 — 다른 시나리오에서 bot_06 이 문제를 맞혀 잔액이 늘 수 있다(끝 점검 전체 실행에서 19 → 20 이 됐다).
+    //   잔액이 2×값 이상이면 봇 계정에 'test-adjust' 지출을 넣어 (2×값 − 1) 로 맞춘다(시작할 때 지운다 · 봇 계정만).
+    if (s6.balance >= 2 * price) {
+      await withDb((c) => c.query(`INSERT INTO point_spends (account_id, amount, reason, ref) SELECT id, $2, 'test-adjust', 'bot shop 동시 검사 전제' FROM accounts WHERE login_id = $1`, [b6.loginId, s6.balance - (2 * price - 1)]));
+      s6 = await get(b6, '/api/shop');
+    }
     expectTrue(`★ (전제) bot_06 잔액 ${s6.balance} ∈ [${price}, ${2 * price})`, s6.balance >= price && s6.balance < 2 * price);
     const [c1, c2] = await Promise.all([draw(b6), draw(b6)]);
     const codes = [c1.status, c2.status].sort().join(',');
