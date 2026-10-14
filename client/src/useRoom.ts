@@ -37,6 +37,8 @@ export interface ChatView {
   system: boolean;
   /** ★ R039 — 이모티콘이면 번호 (본문 없음) */
   emojiId?: number | null;
+  /** ★ R049 — 특별 이모티콘 (크게 띄운다) */
+  special?: boolean;
 }
 
 export interface ExperienceRate {

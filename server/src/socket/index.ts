@@ -21,7 +21,7 @@ import { closeRoom, findRoom, insertRoom, openRoomsHostedBy, updateRoomHost } fr
 import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
 import { loadExperienced } from '../db/questionPool.js';
 import { cancelCountdown, nicknameBlockMessage, notEnoughMessage, requestStart } from '../game/start.js';
-import { checkChatRate, checkEmojiRate, judgeAnswer } from '../game/answer.js';
+import { checkChatRate, checkEmojiRate, checkSpecialEmojiRate, judgeAnswer } from '../game/answer.js';
 import {
   abortQuestionSync,
   broadcastExperiencedUpdated,
@@ -516,20 +516,27 @@ function registerRoomHandlers(socket: Socket): void {
       },
     },
     async ({ seq, socket: s, room, player, payload }) => {
-      // ★★ R048 (D-230) — 특별 이모티콘(테마)은 **가진 사람만** 보낼 수 있다 (뽑기는 R049 — 규칙을 먼저 둔다)
-      if (isSpecialEmoji(payload.emojiId) && !(await ownedEmojiIds(player.accountId)).has(payload.emojiId)) {
+      // ★★ R048 (D-230) — 특별 이모티콘(테마)은 **가진 사람만** 보낼 수 있다
+      const special = isSpecialEmoji(payload.emojiId);
+      if (special && !(await ownedEmojiIds(player.accountId)).has(payload.emojiId)) {
         sendError(s, 'BAD_REQUEST', '가지고 있지 않은 이모티콘입니다.');
         return;
       }
       const now = Date.now();
-      // ★★ R048 (D-228) — 채팅과 같은 창+잠금(따로 센다). 옛 R039 는 조용히 버렸다 → 이번부터 본인에게 같은 안내
-      const retryAfterMs = checkEmojiRate(room, player.accountId, now, {
-        windowMs: config.tuning.emojiRateWindowMs,
-        max: config.tuning.emojiRateMax,
-        lockMs: config.tuning.emojiRateLockMs,
-      });
+      // ★★ R048 (D-228) — 채팅과 같은 창+잠금(따로 센다). ★ R049 — 특별 이모티콘은 또 따로(10초 3회 · 10초 잠금 — D-231)
+      const retryAfterMs = special
+        ? checkSpecialEmojiRate(room, player.accountId, now, {
+            windowMs: config.tuning.specialEmojiRateWindowMs,
+            max: config.tuning.specialEmojiRateMax,
+            lockMs: config.tuning.specialEmojiRateLockMs,
+          })
+        : checkEmojiRate(room, player.accountId, now, {
+            windowMs: config.tuning.emojiRateWindowMs,
+            max: config.tuning.emojiRateMax,
+            lockMs: config.tuning.emojiRateLockMs,
+          });
       if (retryAfterMs !== null) {
-        s.emit('chat.throttled', { retryAfterMs, kind: 'emoji' });
+        s.emit('chat.throttled', { retryAfterMs, kind: special ? 'special' : 'emoji' });
         return;
       }
       const entry = {
@@ -543,6 +550,7 @@ function registerRoomHandlers(socket: Socket): void {
         ts: now,
         system: false,
         emojiId: payload.emojiId,
+        special,
       };
       pushChat(room, entry);
       emitRoom(room, 'chat.message', {
@@ -556,6 +564,7 @@ function registerRoomHandlers(socket: Socket): void {
         ts: entry.ts,
         system: false,
         emojiId: entry.emojiId,
+        special,
       });
     },
   );
@@ -952,6 +961,8 @@ function returnToLobby(room: NonNullable<ReturnType<typeof getRoom>>): void {
   room.chatLocks?.clear();
   room.emojiTimestamps?.clear();
   room.emojiLocks?.clear();
+  room.specialTimestamps?.clear();
+  room.specialLocks?.clear();
   // ★ 점수만 초기화한다. 경험 기록은 DB 에 있고 건드리지 않는다
   for (const p of room.players.values()) p.score = 0;
   // ★ 직전 설정 복원 (Q-31)

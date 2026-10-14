@@ -97,6 +97,11 @@ export const config = {
     specialEmojiRateWindowMs: positiveInt('SPECIAL_EMOJI_RATE_WINDOW_MS', RULES.SPECIAL_EMOJI_RATE_WINDOW_MS),
     specialEmojiRateMax: positiveInt('SPECIAL_EMOJI_RATE_MAX', RULES.SPECIAL_EMOJI_RATE_MAX),
     specialEmojiRateLockMs: positiveInt('SPECIAL_EMOJI_RATE_LOCK_MS', RULES.SPECIAL_EMOJI_RATE_LOCK_MS),
+    /**
+     * ★ R049 — 뽑기 값 덮어쓰기 (검사용 · 0 = DB 의 emoji_themes.price 를 쓴다). 봇 shop 이 자기 서버에서 10 으로 두고 27번 뽑는다.
+     *   ★ 실제 서버에서는 두지 않는다 — .env 에 넣지 말 것.
+     */
+    shopPriceOverride: Number(process.env.SHOP_PRICE_OVERRIDE ?? 0) > 0 ? Number(process.env.SHOP_PRICE_OVERRIDE) : 0,
     /** ★ R046 — 끊긴 사람이 빠지기까지 (기본 60초). 테스트에서 줄인다 */
     disconnectRemoveMs: positiveInt('DISCONNECT_REMOVE_MS', RULES.DISCONNECT_REMOVE_MS),
     /** ★ 방장 이전 유예 (Q-29 · 기본 30초). 테스트에서 줄인다 */

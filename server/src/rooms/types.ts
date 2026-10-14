@@ -393,6 +393,9 @@ export interface Room {
   emojiTimestamps?: Map<string, number[]>;
   /** ★ R048 — 이모티콘 잠금이 풀리는 시각 (계정별) */
   emojiLocks?: Map<string, number>;
+  /** ★ R049 — 특별 이모티콘 도배 창 · 잠금 (표준과 따로 — 10초 3회) */
+  specialTimestamps?: Map<string, number[]>;
+  specialLocks?: Map<string, number>;
 }
 
 /** 게임 결과 (guide 38·39절). ★ Phase 4 가 화면을 만든다 */
@@ -467,4 +470,6 @@ export interface ChatEntry {
   system: boolean;
   /** ★ R039 — 이모티콘이면 그 번호 (본문은 비어 있다). 정답 판정·마스킹 대상이 아니다 */
   emojiId?: number | null;
+  /** ★ R049 — 특별 이모티콘(테마)이면 true — 화면이 크게 띄운다 (D-231) */
+  special?: boolean;
 }

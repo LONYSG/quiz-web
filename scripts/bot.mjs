@@ -106,6 +106,8 @@ const SCENARIO_ENV = {
   // ★ R046 — 끊김 60초 → 4초 · 방장 이전 30초 → 1.5초 (값만 다르고 경로는 같다)
   leave: { DISCONNECT_REMOVE_MS: '4000', HOST_TRANSFER_GRACE_MS: '1500' },
   leavematrix: { DISCONNECT_REMOVE_MS: '3000', HOST_TRANSFER_GRACE_MS: '1500' },
+  // ★ R049 — 뽑기 값 10 (bot_01 이 27번 · bot_06(19) 동시 두 번). 기본 서버에서 돌리면 한 번만 뽑는다
+  shop: { SHOP_PRICE_OVERRIDE: '10' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -283,7 +285,7 @@ class Bot {
       );
       // ★ R016 — 마스킹 여부와 발신자를 함께 기록한다 (Phase 6 검증에 필요하다)
       s.on('chat.message', (m) =>
-        this.events.push({ type: 'chat', text: m.text, masked: m.masked === true, accountId: m.accountId, emojiId: m.emojiId ?? null }),
+        this.events.push({ type: 'chat', text: m.text, masked: m.masked === true, accountId: m.accountId, emojiId: m.emojiId ?? null, special: m.special === true }),
       );
 
       // ── Phase 2 이벤트
@@ -5532,6 +5534,139 @@ async function scenarioPoints() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ shop — R049 이모티콘샵 · 뽑기 (D-231)
+//   ★ 값은 GET /api/shop 의 price 를 믿는다. 자기 서버(PORT=3005 · SHOP_PRICE_OVERRIDE=10)면 27번 뽑기 · 동시 두 번 까지,
+//     기본 서버(price 20)면 한 번 뽑기 · 잔액 −20 · DB=API 만. ★ 봇 계정의 포인트만 쓴다(bot_01 487 · bot_02 408 · bot_06 19 — 찬종 계정 안 씀).
+// -----------------------------------------------------------------------------
+async function scenarioShop() {
+  log('시나리오 shop — ★★★ 이모티콘샵 · 뽑기 (R049)');
+  const [b1, b2] = await makeBots(2); // bot_01 · bot_02
+  const b6 = new Bot('06');
+  await b6.auth();
+  const fresh = new Bot(`sh${Date.now().toString(36).slice(-4)}`);
+  await fresh.auth();
+  const get = async (bot, path) => (await fetch(`${BASE}${path}`, { headers: { cookie: bot.cookie ?? '' } })).json();
+  const draw = async (bot, themeKey = 'chiikawa') => {
+    const r = await fetch(`${BASE}/api/shop/draw`, { method: 'POST', headers: { 'content-type': 'application/json', cookie: bot.cookie ?? '' }, body: JSON.stringify({ themeKey }) });
+    return { status: r.status, json: await r.json().catch(() => ({})) };
+  };
+  const dbOf = async (loginId) =>
+    withDb(async (c) => {
+      const r = await c.query(
+        `SELECT a.id::text AS id,
+                (SELECT count(*) FROM answer_events e WHERE e.account_id = a.id AND e.accepted)::int AS earned,
+                (SELECT coalesce(sum(amount), 0) FROM point_spends p WHERE p.account_id = a.id)::int AS spent,
+                (SELECT count(*) FROM account_emojis ae WHERE ae.account_id = a.id)::int AS owned
+           FROM accounts a WHERE a.login_id = $1`,
+        [loginId],
+      );
+      return r.rows[0];
+    });
+
+  log('\n[1] ★ 목록 · 로그인 없이 401 · 없는 테마 404');
+  expect('★ 로그인 없이 401', (await fetch(`${BASE}/api/shop`)).status, 401);
+  const shop0 = await get(b1, '/api/shop');
+  const theme = shop0.themes?.find((t) => t.key === 'chiikawa');
+  expectTrue('★ 테마 chiikawa · total 27', theme && theme.total === 27, JSON.stringify(theme));
+  const price = theme?.price ?? 20;
+  log(`  (값 ${price}P · ${price < 20 ? '검사용 덮어쓰기 — 27번 · 동시' : '기본 — 한 번'})`);
+  expect('★ 없는 테마 404', (await draw(b1, 'no-such')).status, 404);
+  expect('★ 포인트 0 계정은 409 insufficient', (await draw(fresh)).status, 409);
+
+  log('\n[2] ★★ 한 번 뽑기 — 잔액 −price · 보유 +1 · DB = API');
+  const before = await dbOf(b1.loginId);
+  const bal0 = before.earned - before.spent;
+  expect('★ API balance = DB', shop0.balance, bal0);
+  const d1 = await draw(b1);
+  expect('★★ 뽑기 200', d1.status, 200);
+  expectTrue('★ 응답에 emoji id · name', d1.json.emoji && d1.json.emoji.id > 0 && typeof d1.json.emoji.name === 'string', JSON.stringify(d1.json.emoji));
+  expect('★★ 잔액이 price 만큼 준다', d1.json.balance, bal0 - price);
+  const after = await dbOf(b1.loginId);
+  expect('★★ DB 보유 +1', after.owned, before.owned + 1);
+  expect('★★ DB 쓴 포인트 +price', after.spent, before.spent + price);
+  const shop1 = await get(b1, '/api/shop');
+  expect('★ 목록의 owned 가 DB 와 같다', shop1.themes.find((t) => t.key === 'chiikawa').owned.length, after.owned);
+  const cat1 = await get(b1, '/api/emoji');
+  expectTrue('★★ /api/emoji — 메타는 전원에게(특별 27 포함) · ownedSpecial 에 내 것', cat1.emojis.filter((e) => e.category === 'special').length === 27 && cat1.ownedSpecial.includes(d1.json.emoji.id), `special=${cat1.emojis.filter((e) => e.category === 'special').length} owned=${cat1.ownedSpecial.length}`);
+  const catFresh = await get(fresh, '/api/emoji');
+  expect('★ 남은 사람도 메타는 받되 ownedSpecial 은 비어 있다', catFresh.ownedSpecial.length, 0);
+
+  if (price < 20) {
+    log('\n[3] ★★★ 27번 — 전부 다른 것 · 28번째 409 complete');
+    const got = new Set([d1.json.emoji.id]);
+    let dup = 0;
+    let last = null;
+    while (true) {
+      const d = await draw(b1);
+      last = d;
+      if (d.status !== 200) break;
+      if (got.has(d.json.emoji.id)) dup += 1;
+      got.add(d.json.emoji.id);
+      if (got.size > 40) break;
+    }
+    expect('★★★ 중복 없이 27개를 다 모은다', got.size, 27);
+    expect('★ 중복 0', dup, 0);
+    expect('★★ 다 모은 뒤 409 complete', `${last.status}:${last.json.reason}`, '409:complete');
+    const shopDone = await get(b1, '/api/shop');
+    expect('★ owned 27/27', shopDone.themes.find((t) => t.key === 'chiikawa').owned.length, 27);
+    const dbDone = await dbOf(b1.loginId);
+    expect('★ DB 보유 27 · 쓴 포인트 = 27×price', `${dbDone.owned}:${dbDone.spent - before.spent}`, `27:${27 * price}`);
+
+    log('\n[4] ★★★ 동시 두 번 — 잔액이 price 와 2price 사이인 계정: 하나만 성공 · 잔액 음수 아님');
+    const s6 = await get(b6, '/api/shop');
+    expectTrue(`★ (전제) bot_06 잔액 ${s6.balance} ∈ [${price}, ${2 * price})`, s6.balance >= price && s6.balance < 2 * price);
+    const [c1, c2] = await Promise.all([draw(b6), draw(b6)]);
+    const codes = [c1.status, c2.status].sort().join(',');
+    expect('★★★ 하나는 200 · 하나는 409', codes, '200,409');
+    const s6b = await get(b6, '/api/shop');
+    expectTrue('★★ 잔액이 음수가 아니고 정확히 price 만 줄었다', s6b.balance === s6.balance - price, `${s6.balance} → ${s6b.balance}`);
+    const db6 = await dbOf(b6.loginId);
+    expect('★ DB 뽑기 기록 1', db6.owned, 1);
+  }
+
+  log('\n[5] ★★ 특별 이모티콘 보내기 — 가진 사람만 · 10초 3회 · 4번째 잠금(kind special) · 표준은 따로');
+  await b1.connect();
+  b1.createRoom('R049 특별');
+  await b1.waitFor(() => b1.snapshot !== null, 6000, '방');
+  await b2.connect();
+  b2.join(b1.snapshot.room.id);
+  await b2.waitFor(() => b2.snapshot !== null, 6000, 'b2 입장');
+  const mine = (await get(b1, '/api/emoji')).ownedSpecial;
+  const sp = mine[0];
+  let f2 = b2.mark();
+  let f1 = b1.mark();
+  for (let i = 0; i < 4; i += 1) b1.socket.emit('emoji.send', { emojiId: mine[i % mine.length] });
+  await sleep(700);
+  const seen = b2.since(f2, 'chat').filter((e) => e.emojiId);
+  expect('★★ 특별 3개만 방에 도착', seen.length, 3);
+  expectTrue('★★ 채팅 항목에 special=true', seen.every((e) => e.special === true), JSON.stringify(seen[0]));
+  const th = b1.since(f1, 'chat.throttled');
+  expect('★★ 4번째에 안내 kind=special', th[0]?.kind, 'special');
+  const cat = await (await fetch(`${BASE}/api/emoji`)).json();
+  f2 = b2.mark();
+  f1 = b1.mark();
+  b1.socket.emit('emoji.send', { emojiId: cat.defaults[0] });
+  await sleep(400);
+  expect('★ 특별이 잠겨도 표준 이모티콘은 간다 (따로 센다)', b2.since(f2, 'chat').filter((e) => e.emojiId && !e.special).length, 1);
+  f2 = b2.mark();
+  b2.socket.emit('emoji.send', { emojiId: sp });
+  await sleep(400);
+  expect('★★ 안 가진 사람의 특별 전송 → BAD_REQUEST', b2.lastError()?.code, 'BAD_REQUEST');
+  // 스냅샷에도 special 이 실린다
+  b2.disconnect();
+  await sleep(300);
+  b2.snapshot = null;
+  await b2.connect();
+  await b2.waitFor(() => b2.snapshot !== null, 6000, '재접속');
+  expectTrue('★ 재접속 스냅샷의 채팅에도 special=true', (b2.snapshot.chat ?? []).some((c) => c.special === true));
+
+  for (const x of [b1, b2]) x.leave();
+  await sleep(300);
+  for (const x of [b1, b2]) x.disconnect();
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -5722,6 +5857,8 @@ const SCENARIOS = {
   // ★★ R048
   spam: scenarioSpam,
   points: scenarioPoints,
+  // ★★★ R049
+  shop: scenarioShop,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

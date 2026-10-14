@@ -281,6 +281,8 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   room.chatLocks?.clear();
   room.emojiTimestamps?.clear();
   room.emojiLocks?.clear();
+  room.specialTimestamps?.clear();
+  room.specialLocks?.clear();
   room.game = {
     gameId,
     totalQuestions: settings.questionCount,

@@ -212,6 +212,13 @@ export function checkChatRate(room: Room, accountId: string, now: number, limits
   return checkRate(room.chatTimestamps, room.chatLocks, accountId, now, limits);
 }
 
+/** ★ R049 — 특별 이모티콘은 표준과도 따로 센다 (10초 3회 · 10초 잠금) */
+export function checkSpecialEmojiRate(room: Room, accountId: string, now: number, limits: RateLimits): number | null {
+  room.specialTimestamps ??= new Map();
+  room.specialLocks ??= new Map();
+  return checkRate(room.specialTimestamps, room.specialLocks, accountId, now, limits);
+}
+
 /** ★ R048 — 이모티콘은 채팅과 따로 센다 (room.emojiTimestamps · room.emojiLocks) */
 export function checkEmojiRate(room: Room, accountId: string, now: number, limits: RateLimits): number | null {
   room.emojiTimestamps ??= new Map();
