@@ -48,6 +48,7 @@ import FriendList from './FriendList.js';
 // import { BellButton } from './SocialPopups.js'; // ★ R044 A-3 — 알림 끔 (D-214)
 import InviteToast from './InviteToast.js';
 import ProfilePanel from './ProfilePanel.js';
+import ShopPanel from './ShopPanel.js';
 import { useServerClock } from './useServerClock.js';
 
 /** 경로에서 초대받은 방 ID를 뽑는다. /r/<roomId> */
@@ -409,6 +410,8 @@ export default function App() {
               onNicknameChanged={(nickname) => setAccount((prev) => (prev ? { ...prev, nickname } : prev))}
               onAvatarChanged={(avatarV) => setAccount((prev) => (prev ? { ...prev, avatarV } : prev))}
             />
+            {/* ★★ R049 — 이모티콘샵도 방 밖에서 (찬종: "언제든지 방문") */}
+            <ShopPanel />
           </div>
           <div className="brand">
             <span className="brand-mark" aria-hidden="true">Q</span>

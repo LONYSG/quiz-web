@@ -13,7 +13,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { usePopup } from './popup.js';
 import PopupClose from './PopupClose.js';
 import Emoji from './Emoji.js';
-import { EMOJI_CATEGORIES, setStoredSlots, useEmojiCatalog } from './emojiCatalog.js';
+import { EMOJI_CATEGORIES, setStoredSlots, useEmojiCatalog, type EmojiMeta } from './emojiCatalog.js';
 import Icon from './Icon.js';
 import { Check, Pencil, Search, Smile } from 'lucide-react';
 
@@ -52,12 +52,28 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
   }, [open, setOpen]);
 
   const hasCustom = Boolean(cat?.list.some((e) => e.category === 'custom'));
+  // ★ R049 — ✨ 특별 탭은 **가진 것이 있을 때만** (뽑기 전엔 탭이 없다). 못 가진 특별은 어디에도 안 나온다 (찾기에도)
+  const hasSpecial = Boolean(cat && cat.ownedSpecial.size > 0);
   const shown = useMemo(() => {
     if (!cat) return [];
+    const sendable = (e: EmojiMeta) => e.category !== 'special' || cat.ownedSpecial.has(e.id);
     const k = q.trim().toLowerCase();
-    if (k) return cat.list.filter((e) => e.name.toLowerCase().includes(k) || e.tags.some((t) => t.toLowerCase().includes(k))).slice(0, 160);
-    return cat.list.filter((e) => e.category === tab);
+    if (k) return cat.list.filter((e) => sendable(e) && (e.name.toLowerCase().includes(k) || e.tags.some((t) => t.toLowerCase().includes(k)))).slice(0, 160);
+    return cat.list.filter((e) => e.category === tab && sendable(e));
   }, [cat, q, tab]);
+  // ★ 특별 탭 — 테마별 머리글 (치이카와 7/27)
+  const specialGroups = useMemo(() => {
+    if (!cat || tab !== 'special' || q.trim()) return null;
+    return cat.themes
+      .map((th) => {
+        const all = cat.list.filter((e) => e.category === 'special' && e.themeId === th.id);
+        return { theme: th, total: all.length, owned: all.filter((e) => cat.ownedSpecial.has(e.id)) };
+      })
+      .filter((g) => g.owned.length > 0);
+  }, [cat, tab, q]);
+  useEffect(() => {
+    if (tab === 'special' && cat && !hasSpecial) setTab('smileys');
+  }, [tab, cat, hasSpecial]);
 
   const pick = (id: number) => {
     if (editing && edit !== null) {
@@ -127,7 +143,7 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
           {editing && <p className="emoji-edit-tip">칸을 고르고 아래에서 넣을 이모티콘을 누르세요</p>}
           {!q && (
             <div className="emoji-tabs" role="tablist">
-              {EMOJI_CATEGORIES.filter((c) => c.key !== 'custom' || hasCustom).map((c) => (
+              {EMOJI_CATEGORIES.filter((c) => (c.key !== 'custom' || hasCustom) && (c.key !== 'special' || hasSpecial)).map((c) => (
                 <button
                   key={c.key}
                   type="button"
@@ -142,13 +158,28 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
               ))}
             </div>
           )}
-          <div className="emoji-grid">
-            {shown.map((e) => (
-              <button key={e.id} type="button" className="emoji-cell" title={e.name} onClick={() => pick(e.id)}>
-                <Emoji id={e.id} size={26} />
-              </button>
-            ))}
-            {shown.length === 0 && <p className="dim">없어요</p>}
+          <div className={specialGroups ? 'emoji-grid emoji-grid-special' : 'emoji-grid'}>
+            {specialGroups
+              ? specialGroups.map((g) => (
+                  <div key={g.theme.key} className="emoji-group">
+                    <p className="emoji-group-head">
+                      {g.theme.name} <span className="mono dim">{g.owned.length}/{g.total}</span>
+                    </p>
+                    <div className="emoji-group-cells">
+                      {g.owned.map((e) => (
+                        <button key={e.id} type="button" className="emoji-cell special" title={e.name} onClick={() => pick(e.id)}>
+                          <Emoji id={e.id} size={34} />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))
+              : shown.map((e) => (
+                  <button key={e.id} type="button" className={e.category === 'special' ? 'emoji-cell special' : 'emoji-cell'} title={e.name} onClick={() => pick(e.id)}>
+                    <Emoji id={e.id} size={e.category === 'special' ? 34 : 26} />
+                  </button>
+                ))}
+            {shown.length === 0 && !specialGroups && <p className="dim">없어요</p>}
           </div>
         </div>
       )}

@@ -36,7 +36,7 @@ import Prefs, { setRoomOwnsKeys } from './Prefs.js';
 import Seat from './Seat.js';
 import Emoji from './Emoji.js';
 import EmojiPicker from './EmojiPicker.js';
-import { useEmojiSlots } from './emojiCatalog.js';
+import { isSpecialEmoji, specialDisplayMode, useEmojiSlots } from './emojiCatalog.js';
 import { useFocusChatOnEscape, useShortcuts, type Shortcut } from './shortcuts.js';
 import { chatSound, toggleMuteAll } from './sound.js';
 import { cycleTheme } from './theme.js';
@@ -44,6 +44,7 @@ import { useGameSounds } from './useGameSounds.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
 import { BellButton, FriendsButton } from './SocialPopups.js';
 import ProfilePanel from './ProfilePanel.js';
+import ShopPanel from './ShopPanel.js';
 import type { Social } from './useSocial.js';
 
 interface Props {
@@ -57,7 +58,7 @@ interface Props {
   /** ★ 도배 억제 안내 (Q-18). 입력창 바로 위에 인라인으로 표시한다 */
   throttledUntil: number | null;
   /** ★ R048 — 채팅 · 이모티콘 중 무엇이 잠겼나 */
-  throttledKind: 'chat' | 'emoji';
+  throttledKind: 'chat' | 'emoji' | 'special';
   /** ★ R034 — 닉네임을 바꿨다 (App 의 계정 표시를 맞춘다) */
   onNicknameChanged: (nickname: string) => void;
   /** ★ R035 — 로그아웃은 상단 바 ⚙ 안에 있다 */
@@ -321,8 +322,9 @@ export default function Lobby({
   const [emojiFlash, setEmojiFlash] = useState<{ id: number; key: number } | null>(null);
   const sendEmoji = (id: number) => {
     if (!id) return;
-    // ★ R048 — 이모티콘 잠금 중에는 보내지 않는다 (안내만 떨린다)
-    if (lockedNow && throttledKind === 'emoji') {
+    // ★ R048 — 이모티콘 잠금 중에는 보내지 않는다 (안내만 떨린다) · ★ R049 — 특별은 특별 잠금만 본다 (따로 센다)
+    const special = isSpecialEmoji(id);
+    if (lockedNow && throttledKind === (special ? 'special' : 'emoji')) {
       setShakeKey((k) => k + 1);
       return;
     }
@@ -437,6 +439,32 @@ export default function Lobby({
     // ★ R040 (건우) — 칸의 이모티콘은 **3초**만 (R039 의 6초 개정)
     return emojiNow - at < RULES.SEAT_EMOJI_MS ? { id: e.id, key: e.key } : null;
   };
+  // ── ★★★ R049 D — 특별 이모티콘 = **떠 있는 큰 반응** (채팅 입력창 바로 위 · 약 96px · 3초 · 동시 최대 3개 · 보낸 사람 닉네임)
+  //   ★ 찬종: "이 특별한 이모티콘은 공간을 좀더 차지해서 모두가 자세히 볼 수 있게 … 모바일에서는 채팅로그에 올라오지 않는 이상 안보이거든"
+  //   → PC · 모바일 같은 자리(입력창 위)에 뜬다. 로그엔 "닉네임 + 작은 그림(32px)" 한 줄이 남는다.
+  //   ★ 대안(로그 안에 크게 96px)은 specialDisplayMode() === 'inline' — 그림으로 비교하려고 남겨 둔 분기 (D-231)
+  const specialDisplay = specialDisplayMode();
+  const [floats, setFloats] = useState<{ key: string; id: number; nickname: string; colorIndex: number; at: number }[]>([]);
+  const floatSeen = useRef<Set<string> | null>(null);
+  if (floatSeen.current === null) floatSeen.current = new Set(chat.map((m) => m.id));
+  useEffect(() => {
+    if (specialDisplay !== 'float') return;
+    const seen = floatSeen.current!;
+    const fresh = chat.filter((m) => m.special && m.emojiId && !seen.has(m.id));
+    if (fresh.length === 0) return;
+    for (const m of fresh) seen.add(m.id);
+    const now = Date.now();
+    setFloats((prev) => [...prev, ...fresh.map((m) => ({ key: m.id, id: m.emojiId!, nickname: m.nickname, colorIndex: m.colorIndex, at: now }))].slice(-RULES.SPECIAL_FLOAT_MAX));
+  }, [chat, specialDisplay]);
+  useEffect(() => {
+    if (floats.length === 0) return undefined;
+    const t = setInterval(() => {
+      const cut = Date.now() - RULES.SPECIAL_FLOAT_MS;
+      setFloats((prev) => (prev.some((f) => f.at < cut) ? prev.filter((f) => f.at >= cut) : prev));
+    }, 200);
+    return () => clearInterval(t);
+  }, [floats.length]);
+
   /** 순위 (같은 점수는 같은 순위) — ★ 0점에는 붙이지 않는다 (R039 검수: 모두 0점이면 전원 "1위" 가 떠 군더더기) */
   const rankOf = (score: number) => 1 + snapshot.players.filter((p) => p.score > score).length;
   // ── ★★★ 소감 칸 (R038 세레머니 → ★ R040 이름 "소감") — 정답 공개 동안 정답자가 친 채팅.
@@ -633,6 +661,8 @@ export default function Lobby({
               onNicknameChanged={onNicknameChanged}
             />
           )}
+          {/* ★★ R049 — 🎁 이모티콘샵 (로비 · 게임 중 · 결과 전부 — 찬종: "게임 플레이 중이더라도"). 모바일은 ☰ 안 */}
+          <ShopPanel onClosed={() => inputRef.current?.focus()} />
           {/* ★★ R041 — 모바일 참여자 창 (넓은 화면은 양옆 칸이 있어 숨긴다). 인원 수를 작게 붙인다 (판단) */}
           <button
             type="button"
@@ -682,6 +712,7 @@ export default function Lobby({
           noticeCount={social.unread}
           friendWaiting={social.pending}
           onProfile={() => setRenameOpen(true)}
+          onShop={() => openPopup('shop')}
           onSettings={() => openPopup('prefs')}
           onInfo={() => openPopup('info')}
           onLeave={() => {
@@ -856,7 +887,12 @@ export default function Lobby({
                         {m.nickname}
                       </span>
                       {m.emojiId ? (
-                        <Emoji id={m.emojiId} size={24} className="chat-emoji" />
+                        // ★ R049 — 특별 이모티콘: 기본(float)은 로그에 32px 한 줄(큰 반응은 입력창 위에 떠 있다) · 대안(inline)은 로그 안에 96px
+                        <Emoji
+                          id={m.emojiId}
+                          size={m.special ? (specialDisplay === 'inline' ? 96 : 32) : 24}
+                          className={m.special ? (specialDisplay === 'inline' ? 'chat-emoji chat-special-big' : 'chat-emoji chat-special') : 'chat-emoji'}
+                        />
                       ) : (
                         <ChatText text={m.text} mine={m.accountId === snapshot.me.accountId} masked={m.masked} />
                       )}
@@ -870,10 +906,24 @@ export default function Lobby({
                 </button>
               )}
             </div>
+            <div className="chat-foot">
+            {/* ★★★ R049 D — 떠 있는 큰 반응 (입력창 바로 위에 겹쳐 뜨는 층 · 문서 흐름 밖 · 누를 수 없다) */}
+            {specialDisplay === 'float' && floats.length > 0 && (
+              <div className="special-layer" aria-live="polite" aria-label="특별 이모티콘">
+                {floats.map((f) => (
+                  <span key={f.key} className="special-float">
+                    <Emoji id={f.id} size={RULES.SPECIAL_FLOAT_PX} className="special-float-pic" />
+                    <span className="special-float-nick" style={{ color: `var(--p${f.colorIndex})` }}>
+                      {f.nickname}
+                    </span>
+                  </span>
+                ))}
+              </div>
+            )}
             {/* ★★ 도배 억제 안내 (Q-18) — 입력창 바로 위 문서 흐름 (iOS 키보드) */}
             {throttled && (
               <p className="warn throttle-note" role="status" aria-live="polite">
-                {throttledKind === 'emoji' ? '이모티콘 도배 방지' : '도배 방지'} · <strong className="mono">{lockLeft}초</strong> 후 다시 보낼 수 있어요
+                {throttledKind === 'special' ? '특별 이모티콘 도배 방지' : throttledKind === 'emoji' ? '이모티콘 도배 방지' : '도배 방지'} · <strong className="mono">{lockLeft}초</strong> 후 다시 보낼 수 있어요
               </p>
             )}
             <div className="field-row chat-input-row">
@@ -897,6 +947,7 @@ export default function Lobby({
                 <Icon icon={Send} /> 전송
               </button>
               {/* ★ R043 A-9 — 단축키 목록 버튼·창 삭제 (단축키는 넘기기 · 이모티콘만 — ⓘ 안내에 적었다) */}
+            </div>
             </div>
           </section>
         </div>

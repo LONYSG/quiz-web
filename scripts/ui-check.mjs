@@ -1562,6 +1562,309 @@ async function spamFlow(browser) {
 }
 
 // -----------------------------------------------------------------------------
+// ★★★ R049 — 이모티콘샵 · 뽑기 · ✨ 특별 탭 · 10칸 · 떠 있는 큰 반응 · 특별 도배 (`npm run ui-check:shop`, verify 에 포함)
+//   ★ 포인트가 있는 계정이 필요하다 → **봇 계정**(bot_02 · 비밀번호는 scripts/bot.mjs 의 것)으로 로그인해 실제 값(20P)으로 뽑는다 (찬종 계정 안 씀).
+//     7/27 그림은 uic 테스트 계정에 account_emojis 를 직접 넣어 만든다(끝나면 계정과 함께 지워진다 — CASCADE). 27/27 은 bot_01(봇 shop 이 다 모았다).
+//   ★ 표시 방식 두 가지(기본 float · 대안 inline)를 **같은 장면**으로 찍는다 — localStorage 'qw.specialDisplay' (D-231)
+// -----------------------------------------------------------------------------
+const SHOP_ONLY = args.includes('--shop');
+if (SHOP_ONLY) process.env.SHOT_DIR ??= 'verify';
+const BOT_PASSWORD = 'bot1234';
+async function loginAs(page, loginId, password) {
+  await page.goto(BASE);
+  await page.waitFor("document.querySelectorAll('form input').length >= 2", 8000);
+  await page.evaluate(`(() => {
+    const set = (el, v) => { const d = Object.getOwnPropertyDescriptor(el.constructor.prototype, 'value'); d.set.call(el, v); el.dispatchEvent(new Event('input', { bubbles: true })); };
+    const i = [...document.querySelectorAll('form input')];
+    set(i[0], ${JSON.stringify(loginId)}); set(i[1], ${JSON.stringify(password)});
+  })()`);
+  await page.evaluate("document.querySelector('form').requestSubmit()");
+  const ok = await page.waitFor("document.querySelector('.tabs') === null", 10000);
+  if (!ok) throw new Error(`[${page.label}] ${loginId} 로그인 실패: ${(await page.text()).slice(0, 150)}`);
+}
+const rectOf = (page, sel) => page.evaluate(`JSON.stringify((() => { const r = document.querySelector(${JSON.stringify(sel)})?.getBoundingClientRect(); return r ? { x: r.left, y: r.top, w: r.width, h: r.height, b: r.bottom } : null; })())`).then((s) => JSON.parse(s));
+const altDigit = async (page, d) => {
+  await page.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: d, code: `Digit${d}`, windowsVirtualKeyCode: 48 + Number(d), modifiers: 1 });
+  await page.send('Input.dispatchKeyEvent', { type: 'keyUp', key: d, code: `Digit${d}`, windowsVirtualKeyCode: 48 + Number(d), modifiers: 1 });
+};
+async function shopFlow(browser) {
+  const H = await newPage(browser, 'K-host');
+  await H.setViewport(1280, 720);
+  await signUp(H, 'kh', '샵방장');
+  const roomId = await createRoom(H, 'R049 이모티콘샵');
+  const G = await newPage(browser, 'K-bot2', true);
+  await G.setViewport(1280, 720);
+  await loginAs(G, 'bot_02', BOT_PASSWORD);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000);
+  await sleep(500);
+  const shopJson = (page) => page.evaluate("fetch('/api/shop').then((r) => r.json())");
+  const pts = (page) => page.evaluate("document.querySelector('.shop-points strong')?.innerText ?? ''").then((s) => Number(String(s).replace(/,/g, '')));
+  const ownedText = (page) => page.evaluate("document.querySelector('.shop-theme-owned')?.innerText ?? ''");
+  const drawBtn = (page) => page.evaluate("JSON.stringify((() => { const b = document.querySelector('.shop-draw'); return b ? { text: b.innerText.trim(), disabled: b.disabled } : null; })())").then((s) => JSON.parse(s));
+
+  // ── ★ B-1 상단 바 🎁 — 다른 버튼과 같은 높이 · 같은 줄
+  const rShop = await rectOf(H, '#shop-btn');
+  const rInvite = await rectOf(H, '#invite-btn');
+  record('★★ B 상단 바 🎁 "이모티콘샵" — 초대 버튼과 같은 높이 · 같은 줄', rShop && rInvite && Math.abs(rShop.h - rInvite.h) < 1 && Math.abs(rShop.y - rInvite.y) < 1, JSON.stringify({ rShop, rInvite }));
+
+  // ── ★ B-2 포인트 0 계정 — "20점 모자라요" 비활성
+  await realClick(H, '#shop-btn');
+  await H.waitFor("document.querySelector('.shop-pop .shop-draw') !== null", 5000);
+  await sleep(200);
+  const d0 = await drawBtn(H);
+  await snap(H, '100-shop-0pts-pc');
+  record('★★ B 포인트 0 — [N점 모자라요] 비활성 · 0/27 · 물음표 27칸', d0 && d0.disabled && /모자라요/.test(d0.text) && (await ownedText(H)) === '0/27' && (await H.evaluate("document.querySelectorAll('.shop-cell.none').length")) === 27, JSON.stringify(d0));
+  // Esc → 닫히고 채팅 입력으로 포커스
+  await H.key('Escape', { code: 'Escape', vk: 27 });
+  await sleep(200);
+  record('★ B Esc 로 닫히고 채팅 입력에 포커스', await H.evaluate("document.querySelector('.shop-pop') === null && document.activeElement === document.querySelector('.chat-card input')"));
+
+  // ── ★★★ B-3 bot_02 — 0/27 · 뽑기 → 애니메이션 → 결과 카드 → 한 번 더 → 닫기
+  const before = await shopJson(G);
+  const ownedBefore = before.themes[0].owned.length;
+  await realClick(G, '#shop-btn');
+  await G.waitFor("document.querySelector('.shop-pop .shop-draw') !== null", 5000);
+  await sleep(200);
+  const shownPts = await pts(G);
+  await snap(G, `101-shop-${ownedBefore}of27-pc`);
+  record('★★ B 샵 창 "내 포인트" = /api/shop balance', shownPts === before.balance, `${shownPts} / ${before.balance}`);
+  const dG = await drawBtn(G);
+  record('★★ B 포인트 있으면 [뽑기 — 20P] 활성', dG && !dG.disabled && /뽑기/.test(dG.text) && /20P/.test(dG.text), JSON.stringify(dG));
+  const t0 = Date.now();
+  await realClick(G, '.shop-draw');
+  const drawing = await G.waitFor("document.querySelector('.gacha') !== null", 5000);
+  await sleep(450);
+  await snap(G, '102-shop-drawing-pc');
+  record('★★ B 뽑기 → 캡슐 애니메이션(.gacha)', drawing);
+  const resultShown = await G.waitFor("document.querySelector('.gacha-result') !== null", 4000);
+  const took = Date.now() - t0;
+  await sleep(300);
+  await snap(G, '103-shop-result-pc');
+  const resName = await G.evaluate("document.querySelector('.gacha-result-name')?.innerText ?? ''");
+  record(`★★★ B 결과 카드 — "새 이모티콘! <이름> · ${ownedBefore + 1}/27" (${took}ms)`, resultShown && resName.includes(`${ownedBefore + 1}/27`) && took >= 1200 && took < 4000, resName);
+  const after1 = await shopJson(G);
+  record('★★ B 잔액 −20 · 보유 +1 (API)', after1.balance === before.balance - 20 && after1.themes[0].owned.length === ownedBefore + 1, `${before.balance}→${after1.balance} · ${ownedBefore}→${after1.themes[0].owned.length}`);
+  record('★ B 창의 포인트도 −20', (await pts(G)) === before.balance - 20, String(await pts(G)));
+  // 한 번 더 (포커스가 가 있다 → Enter) → 애니메이션을 눌러 건너뜀
+  record('★ B 결과 카드에서 [한 번 더] 에 포커스', await G.evaluate("document.activeElement?.innerText?.includes('한 번 더') ?? false"));
+  await G.key('Enter', { code: 'Enter', vk: 13 });
+  await G.waitFor("document.querySelector('.gacha') !== null", 5000);
+  await sleep(200);
+  await realClick(G, '.gacha');
+  const skipped = await G.waitFor("document.querySelector('.gacha-result') !== null", 800);
+  record('★★ B 애니메이션을 누르면 바로 결과', skipped);
+  // 방향키 → [닫기] → Enter → 목록 (격자에 그림 2칸)
+  await G.key('ArrowRight', { code: 'ArrowRight', vk: 39 });
+  await sleep(100);
+  record('★ B 방향키로 [닫기] 로 이동', await G.evaluate("document.activeElement?.innerText?.trim() === '닫기'"));
+  await G.key('Enter', { code: 'Enter', vk: 13 });
+  await G.waitFor("document.querySelector('.shop-list') !== null", 3000);
+  await sleep(250);
+  const after2 = await shopJson(G);
+  record(`★★ B 닫기 → 목록 · ${ownedBefore + 2}/27 · 격자에 가진 그림 ${ownedBefore + 2}칸`, (await ownedText(G)) === `${ownedBefore + 2}/27` && (await G.evaluate("document.querySelectorAll('.shop-cell.has img').length")) === ownedBefore + 2 && after2.themes[0].owned.length === ownedBefore + 2, `${await ownedText(G)} · has=${await G.evaluate("document.querySelectorAll('.shop-cell.has img').length")}`);
+  await snap(G, `104-shop-${ownedBefore + 2}of27-pc`);
+  // 밤 · 1920
+  await G.evaluate("document.documentElement.dataset.theme = 'night'");
+  await sleep(200);
+  await snap(G, '105-shop-night-pc');
+  await G.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  await G.setViewport(1920, 1080);
+  await sleep(300);
+  await snap(G, '106-shop-pc-1920');
+  await G.setViewport(1280, 720);
+  await closeTop(G);
+
+  // ── 7/27 — 테스트 계정(H)에 직접 넣는다 (그림용)
+  await withPg(async (c) => {
+    await c.query(`INSERT INTO account_emojis (account_id, emoji_id) SELECT a.id, e.id FROM accounts a, (SELECT id FROM emojis WHERE category = 'special' ORDER BY random() LIMIT 7) e WHERE a.login_id = $1 ON CONFLICT DO NOTHING`, [`${ACCOUNT_PREFIX}_kh`]);
+  });
+  await realClick(H, '#shop-btn');
+  await H.waitFor("document.querySelector('.shop-pop .shop-draw') !== null", 5000);
+  await sleep(300);
+  record('★ B 7/27 (직접 넣은 뒤) — 가진 7칸은 그림', (await ownedText(H)) === '7/27' && (await H.evaluate("document.querySelectorAll('.shop-cell.has img').length")) === 7, await ownedText(H));
+  await snap(H, '107-shop-7of27-pc');
+  await closeTop(H);
+
+  // ── 27/27 — bot_01 (봇 shop 이 다 모았다) → "완성!"
+  const P = await newPage(browser, 'K-bot1', true);
+  await P.setViewport(1280, 720);
+  await loginAs(P, 'bot_01', BOT_PASSWORD);
+  await P.waitFor("document.querySelector('#shop-btn') !== null", 8000);
+  await realClick(P, '#shop-btn');
+  await P.waitFor("document.querySelector('.shop-pop .shop-draw') !== null", 5000);
+  await sleep(300);
+  const dP = await drawBtn(P);
+  const ownP = await ownedText(P);
+  if (ownP === '27/27') {
+    record('★★ B 27/27 — [완성!] 비활성 (방 목록 화면에서도 같은 창)', dP && dP.disabled && /완성/.test(dP.text), JSON.stringify(dP));
+    await snap(P, '108-shop-complete-pc');
+  } else record('★ B 27/27 그림 — bot_01 이 다 모은 상태가 아니라 건너뜀 (봇 shop 을 먼저 돌리면 된다)', true, ownP);
+  await closeTop(P);
+
+  // ── 모바일 390 — ☰ → 이모티콘샵 → 화면 가운데 창
+  await G.setViewport(390, 844);
+  await sleep(400);
+  await realClick(G, '#menu-btn');
+  await sleep(200);
+  await realClick(G, '.menu-item', '이모티콘샵');
+  await G.waitFor("document.querySelector('.shop-pop') !== null", 4000);
+  await sleep(300);
+  const rPop = await rectOf(G, '.shop-pop');
+  await snap(G, '109-shop-m390');
+  record('★★ B 모바일 390 — ☰ → 이모티콘샵 → 창이 화면 안', rPop && rPop.x >= 0 && rPop.y >= 0 && rPop.b <= 844 && rPop.x + rPop.w <= 390, JSON.stringify(rPop));
+  await closeTop(G);
+  await G.setViewport(1280, 720);
+  await sleep(300);
+
+  // ── ★★ C 고르기 창 ✨ 특별 탭 (가진 사람만) · 테마 머리글 · 10칸에 넣기
+  await realClick(H, '.emoji-btn');
+  await sleep(250);
+  record('★ C 가진 특별이 없으면 ✨ 탭이 없다 (방장 — 목록은 들어올 때 받은 것)', await H.evaluate("![...document.querySelectorAll('.emoji-tab')].some((t) => t.innerText.includes('✨'))"));
+  await closeTop(H);
+  await realClick(G, '.emoji-btn');
+  await sleep(250);
+  const hasTab = await G.evaluate("[...document.querySelectorAll('.emoji-tab')].some((t) => t.innerText.includes('✨'))");
+  record('★★ C 뽑은 사람은 ✨ 특별 탭', hasTab);
+  await realClick(G, '.emoji-tab', '✨');
+  await sleep(250);
+  const head = await G.evaluate("document.querySelector('.emoji-group-head')?.innerText ?? ''");
+  const cells = await G.evaluate("document.querySelectorAll('.emoji-cell.special').length");
+  await snap(G, '110-picker-special-pc');
+  record(`★★ C ✨ 탭 — 테마 머리글 "치이카와 ${ownedBefore + 2}/27" · 가진 것만 ${ownedBefore + 2}칸`, head.includes('치이카와') && head.includes(`${ownedBefore + 2}/27`) && cells === ownedBefore + 2, `${head} · ${cells}`);
+  // 칸 바꾸기 → 1번 칸 → 특별
+  await realClick(G, '.emoji-tools button', '칸 바꾸기');
+  await sleep(150);
+  await realClick(G, '.emoji-slot');
+  await sleep(150);
+  await realClick(G, '.emoji-cell.special');
+  await sleep(300);
+  await realClick(G, '.emoji-tools button', '다 바꿨어요');
+  await sleep(150);
+  const slot1 = await G.evaluate("Number(document.querySelector('.emoji-slot img')?.dataset.emojiId ?? 0)");
+  const ownedIds = after2.themes[0].owned;
+  record('★★ C 칸 바꾸기 — 1번 칸에 특별 이모티콘', ownedIds.includes(slot1), `slot1=${slot1}`);
+  await snap(G, '111-picker-slot-pc');
+  await closeTop(G);
+  await sleep(1200); // 계정 저장(prefsSync)
+  const prefsSlots = await G.evaluate("fetch('/api/auth/prefs').then((r) => r.json()).then((j) => JSON.stringify(j.prefs?.emojiSlots ?? null))").then((s) => JSON.parse(s));
+  record('★★ C 10칸이 계정에 저장된다 (재로그인에도 같음 — 봇 shop 도 확인)', Array.isArray(prefsSlots) && prefsSlots[0] === slot1, JSON.stringify(prefsSlots));
+
+  // ── ★★★ D 떠 있는 큰 반응 — 보낸 직후 · 3개 · 3초 뒤 · 4번째 잠금 · 표준은 따로
+  const floats = (page) => page.evaluate("document.querySelectorAll('.special-layer .special-float').length");
+  const specialLines = (page) => page.evaluate("document.querySelectorAll('.chat-line .chat-special').length");
+  await realClick(G, '.chat-card input');
+  const l0 = await specialLines(H);
+  await altDigit(G, '1');
+  const f1 = await H.waitFor("document.querySelectorAll('.special-layer .special-float').length === 1", 3000);
+  await sleep(350);
+  await snap(H, '120-special-float-pc');
+  await sleep(400); // 튀어 오르는 애니메이션(650ms)이 끝난 뒤 크기를 잰다
+  const rPic = await rectOf(H, '.special-float-pic');
+  const rInput = await rectOf(H, '.chat-card input');
+  const nick = await H.evaluate("document.querySelector('.special-float-nick')?.innerText ?? ''");
+  const gNick = await G.evaluate("document.querySelector('.seat.me .seat-name, .seat.me .name')?.innerText ?? ''");
+  record('★★★ D 특별을 보내면 상대 화면 입력창 **위에 큰 반응**(96px · 닉네임)', f1 && rPic && Math.round(rPic.w) === 96 && rInput && rPic.b <= rInput.y && nick.length > 0, JSON.stringify({ rPic, inputTop: rInput?.y, nick, gNick }));
+  record('★★ D 로그엔 "닉네임 + 작은 그림(32px)" 한 줄', (await specialLines(H)) === l0 + 1 && (await H.evaluate("document.querySelector('.chat-line .chat-special')?.getBoundingClientRect().width")) === 32, String(await H.evaluate("document.querySelector('.chat-line .chat-special')?.getBoundingClientRect().width")));
+  await altDigit(G, '1');
+  await sleep(120);
+  await altDigit(G, '1');
+  const f3 = await H.waitFor("document.querySelectorAll('.special-layer .special-float').length === 3", 3000);
+  await sleep(300);
+  await snap(H, '121-special-float-3-pc');
+  record('★★ D 3개 겹치면 옆으로 나란히 (동시 최대 3)', f3 && (await H.evaluate("(() => { const r = [...document.querySelectorAll('.special-float')].map((e) => e.getBoundingClientRect()); return r.length === 3 && r[0].right <= r[1].left + 1 && r[1].right <= r[2].left + 1; })()")));
+  // 4번째 → 특별 도배 방지 (보낸 사람 화면)
+  await altDigit(G, '1');
+  const locked = await G.waitFor("(document.querySelector('.throttle-note')?.innerText ?? '').includes('특별')", 3000);
+  await sleep(150);
+  await snap(G, '122-special-locked-pc');
+  record('★★★ D 10초 안 4번째 → "특별 이모티콘 도배 방지 · N초" (보낸 사람만)', locked && (await H.evaluate("document.querySelector('.throttle-note') === null")), await G.evaluate("document.querySelector('.throttle-note')?.innerText ?? ''"));
+  record('★ D 상대 화면엔 3개까지만 (4번째는 안 간다)', (await specialLines(H)) === l0 + 3, String((await specialLines(H)) - l0));
+  await H.waitFor("document.querySelectorAll('.special-layer .special-float').length === 0", 4500);
+  await sleep(200);
+  await snap(H, '123-special-after-pc');
+  record('★★ D 3초 뒤 큰 반응은 사라지고 로그 줄만 남는다', (await floats(H)) === 0 && (await specialLines(H)) === l0 + 3);
+  // 특별이 잠겨도 표준 이모티콘은 간다
+  const e0 = await H.evaluate("document.querySelectorAll('.chat-line .chat-emoji').length");
+  await realClick(G, '.emoji-btn');
+  await sleep(200);
+  await realClick(G, '.emoji-tab', '😀');
+  await sleep(150);
+  await realClick(G, '.emoji-cell');
+  await sleep(500);
+  record('★ D 특별이 잠겨도 표준 이모티콘은 간다 (따로 센다)', (await H.evaluate("document.querySelectorAll('.chat-line .chat-emoji').length")) === e0 + 1);
+  await closeTop(G);
+  await G.waitFor("document.querySelector('.throttle-note') === null", 12000);
+  await sleep(300);
+
+  // 밤 테마 1장 (보낸 직후)
+  for (const p of [H, G]) await p.evaluate("document.documentElement.dataset.theme = 'night'");
+  await sleep(200);
+  await realClick(G, '.chat-card input');
+  await altDigit(G, '1');
+  await H.waitFor("document.querySelectorAll('.special-layer .special-float').length >= 1", 3000);
+  await sleep(350);
+  await snap(H, '124-special-float-night-pc');
+  for (const p of [H, G]) await p.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  await H.waitFor("document.querySelectorAll('.special-layer .special-float').length === 0", 4500);
+
+  // 모바일 390 — 보낸 사람 자신도 본다 (같은 자리). 키보드 올라온 상태(390×470 + 입력 포커스)
+  await G.setViewport(390, 844);
+  await sleep(400);
+  await realClick(G, '.chat-card input');
+  await altDigit(G, '1');
+  await G.waitFor("document.querySelectorAll('.special-layer .special-float').length >= 1", 3000);
+  await sleep(350);
+  await snap(G, '125-special-float-m390');
+  await sleep(400);
+  const rM = await rectOf(G, '.special-float-pic');
+  const rMi = await rectOf(G, '.chat-card input');
+  record('★★ D 모바일 390 — 입력창 위에 큰 반응 · 화면 안', rM && rMi && rM.y >= 0 && rM.b <= rMi.y + 1 && rM.b <= 844, JSON.stringify({ rM, inputTop: rMi?.y }));
+  await G.waitFor("document.querySelectorAll('.special-layer .special-float').length === 0", 4500);
+  await G.setViewport(390, 470);
+  await sleep(400);
+  await realClick(G, '.chat-card input');
+  await G.evaluate("document.querySelector('.chat-card input')?.scrollIntoView({ block: 'end' })");
+  await sleep(200);
+  await altDigit(G, '1');
+  await G.waitFor("document.querySelectorAll('.special-layer .special-float').length >= 1", 3000);
+  await sleep(350);
+  await snap(G, '126-special-float-m390-keyboard');
+  await sleep(400);
+  const rK = await rectOf(G, '.special-float-pic');
+  const rKi = await rectOf(G, '.chat-card input');
+  record('★★ D 모바일 390 키보드 올라온 상태(390×470) — 큰 반응이 입력창 위 · 화면 안', rK && rKi && rK.y >= 0 && rK.b <= rKi.y + 1 && rKi.b <= 471, JSON.stringify({ rK, input: rKi }));
+  await G.waitFor("document.querySelectorAll('.special-layer .special-float').length === 0", 4500);
+  await G.setViewport(1280, 720);
+  await sleep(300);
+  await G.waitFor("document.querySelector('.throttle-note') === null", 12000);
+  await sleep(10500); // 특별 창(10초)이 비도록
+
+  // ── ★ D 대안 — 로그 안에 크게(96px) : 상대(H)만 inline 으로 바꿔 같은 장면
+  await H.evaluate("localStorage.setItem('qw.specialDisplay', 'inline')");
+  await H.goto(`${BASE}/r/${roomId}`);
+  await H.waitFor("document.querySelector('.stage') !== null", 8000);
+  await sleep(600);
+  await realClick(G, '.chat-card input');
+  const b0 = await H.evaluate("document.querySelectorAll('.chat-special-big').length");
+  await altDigit(G, '1');
+  const big1 = await H.waitFor(`document.querySelectorAll('.chat-special-big').length === ${b0 + 1}`, 3000);
+  await sleep(350);
+  await snap(H, '130-special-inline-pc');
+  record('★★ D 대안(inline) — 로그 안에 96px 한 줄 · 떠 있는 층 없음', big1 && (await floats(H)) === 0 && (await H.evaluate("document.querySelector('.chat-special-big')?.getBoundingClientRect().width")) === 96);
+  await altDigit(G, '1');
+  await sleep(120);
+  await altDigit(G, '1');
+  await H.waitFor(`document.querySelectorAll('.chat-special-big').length === ${b0 + 3}`, 3000);
+  await sleep(300);
+  await snap(H, '131-special-inline-3-pc');
+  await sleep(3300);
+  await snap(H, '132-special-inline-after-pc');
+  await H.evaluate("localStorage.removeItem('qw.specialDisplay')");
+  record('★ D 대안 그림 3장 (130~132) — 기본 float 그림(120 · 121 · 123)과 같은 장면', true);
+}
+
+// -----------------------------------------------------------------------------
 // ★★★ R046 — 나가기 · 끊김 · 옮기기: 사람 동작을 **진짜 클릭**으로 (`npm run ui-check:leave`, verify 에 포함)
 //   ★ 이 모드는 자기 서버를 띄울 때 끊김 60초 → 5초 · 방장 이전 30초 → 2초로 줄인다 (값만 다르고 경로는 같다)
 // -----------------------------------------------------------------------------
@@ -2757,6 +3060,10 @@ try {
   }
   if (SPAM_ONLY) {
     await spamFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (SHOP_ONLY) {
+    await shopFlow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (LEAVE_ONLY) {

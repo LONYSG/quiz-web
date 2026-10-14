@@ -117,6 +117,10 @@ export const RULES = {
   SPECIAL_EMOJI_RATE_LOCK_MS: 10_000,
   /** ★ R040 (건우) — 참여자 칸에 이모티콘이 떠 있는 시간 (R039 6초 → 3초). 화면 표시 전용 */
   SEAT_EMOJI_MS: 3_000,
+  /** ★ R049 — 특별 이모티콘 큰 반응(입력창 위에 떠 있는 층): 머무는 시간 · 동시 최대 · 그림 크기(px) */
+  SPECIAL_FLOAT_MS: 3_000,
+  SPECIAL_FLOAT_MAX: 3,
+  SPECIAL_FLOAT_PX: 96,
   /**
    * ★★ 채팅 rate limit. Q-84 확정으로 **크게 완화했다** (R015).
    *

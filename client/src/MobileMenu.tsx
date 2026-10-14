@@ -9,7 +9,7 @@
 
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Bell, Info, Link, LogOut, Pencil, Settings, UserPlus } from 'lucide-react';
+import { Bell, Gift, Info, Link, LogOut, Pencil, Settings, UserPlus } from 'lucide-react';
 import PopupClose from './PopupClose.js';
 import Icon from './Icon.js';
 
@@ -22,13 +22,15 @@ interface Props {
   noticeCount: number;
   friendWaiting: number;
   onProfile: () => void;
+  /** ★ R049 — 이모티콘샵 (게임 중에도) */
+  onShop: () => void;
   onSettings: () => void;
   onInfo: () => void;
   onLeave: () => void;
   onClose: () => void;
 }
 
-export default function MobileMenu({ canRename, onInvite, onFriends, onNotices, noticeCount, friendWaiting, onProfile, onSettings, onInfo, onLeave, onClose }: Props) {
+export default function MobileMenu({ canRename, onInvite, onFriends, onNotices, noticeCount, friendWaiting, onProfile, onShop, onSettings, onInfo, onLeave, onClose }: Props) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -72,6 +74,9 @@ export default function MobileMenu({ canRename, onInvite, onFriends, onNotices, 
               <Icon icon={Pencil} /> 프로필
             </button>
           )}
+          <button type="button" className="menu-item" onClick={onShop}>
+            <Icon icon={Gift} /> 이모티콘샵
+          </button>
           <button type="button" className="menu-item" onClick={onSettings}>
             <Icon icon={Settings} /> 설정
           </button>

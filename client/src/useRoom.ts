@@ -220,7 +220,7 @@ export interface RoomHook {
    */
   throttledUntil: number | null;
   /** ★ R048 — 무엇이 잠겼나 (채팅 · 이모티콘) */
-  throttledKind: 'chat' | 'emoji';
+  throttledKind: 'chat' | 'emoji' | 'special';
 }
 
 export function useRoom(socket: Socket | null): RoomHook {
@@ -229,7 +229,7 @@ export function useRoom(socket: Socket | null): RoomHook {
   const [error, setError] = useState<SocketErrorPayload | null>(null);
   const [terminated, setTerminated] = useState(false);
   const [throttledUntil, setThrottledUntil] = useState<number | null>(null);
-  const [throttledKind, setThrottledKind] = useState<'chat' | 'emoji'>('chat');
+  const [throttledKind, setThrottledKind] = useState<'chat' | 'emoji' | 'special'>('chat');
 
   useEffect(() => {
     if (!socket) return undefined;
@@ -595,9 +595,10 @@ export function useRoom(socket: Socket | null): RoomHook {
       );
     };
 
-    const onThrottled = (p: { retryAfterMs: number; kind?: 'chat' | 'emoji' }) => {
+    const onThrottled = (p: { retryAfterMs: number; kind?: 'chat' | 'emoji' | 'special' }) => {
       setThrottledUntil(Date.now() + p.retryAfterMs);
-      setThrottledKind(p.kind === 'emoji' ? 'emoji' : 'chat');
+      // ★ R049 — 특별 이모티콘은 따로 센다 (10초 3회)
+      setThrottledKind(p.kind === 'emoji' || p.kind === 'special' ? p.kind : 'chat');
     };
 
     // ── ★★ Phase 5 — 일시정지 (R015)

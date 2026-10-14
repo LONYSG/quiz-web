@@ -86,6 +86,56 @@ export async function fetchPoints(): Promise<PointBalance | null> {
   return { earned: json.earned, spent: json.spent, balance: json.balance };
 }
 
+// ── ★★ R049 — 이모티콘샵 · 뽑기 (D-231)
+export interface ShopTheme {
+  key: string;
+  name: string;
+  price: number;
+  total: number;
+  owned: number[];
+}
+export interface ShopView {
+  balance: number;
+  themes: ShopTheme[];
+}
+export async function fetchShop(): Promise<ShopView | null> {
+  const res = await fetch('/api/shop', { credentials: 'same-origin' });
+  if (!res.ok) return null;
+  const json = (await res.json()) as { ok: true } & ShopView;
+  return { balance: json.balance, themes: json.themes };
+}
+export interface DrawResult {
+  emoji: { id: number; name: string; themeKey: string };
+  balance: number;
+  owned: number[];
+  total: number;
+  price: number;
+}
+export class DrawError extends Error {
+  constructor(
+    public reason: 'insufficient' | 'complete' | 'other',
+    message: string,
+    public balance: number | null = null,
+  ) {
+    super(message);
+  }
+}
+/** 뽑기 — 성공이면 결과, 모자라거나 다 모았으면 DrawError(reason) */
+export async function drawEmoji(themeKey: string): Promise<DrawResult> {
+  const res = await fetch('/api/shop/draw', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ themeKey }),
+  });
+  const json = (await res.json().catch(() => ({}))) as Partial<DrawResult> & { ok?: boolean; reason?: string; message?: string };
+  if (!res.ok || !json.ok || !json.emoji) {
+    const reason = json.reason === 'insufficient' || json.reason === 'complete' ? json.reason : 'other';
+    throw new DrawError(reason, json.message ?? '뽑기에 실패했어요. 다시 해 주세요.', typeof json.balance === 'number' ? json.balance : null);
+  }
+  return { emoji: json.emoji, balance: json.balance ?? 0, owned: json.owned ?? [], total: json.total ?? 0, price: json.price ?? 0 };
+}
+
 export function errorMessage(err: unknown, fallback = '요청을 처리할 수 없습니다.'): string {
   if (err && typeof err === 'object' && 'message' in err) {
     const message = (err as { message?: unknown }).message;

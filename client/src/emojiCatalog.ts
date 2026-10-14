@@ -16,11 +16,24 @@ export interface EmojiMeta {
   name: string;
   tags: string[];
   category: string;
+  /** ★ R048 — 특별 이모티콘의 테마 (없으면 null) */
+  themeId: number | null;
+}
+
+/** ★ R049 — 테마 (이모티콘샵) */
+export interface EmojiThemeMeta {
+  id: number;
+  key: string;
+  name: string;
+  price: number;
+  active: boolean;
 }
 
 /** 고르는 창의 분류 탭 (순서 = 표시 순서). custom 은 직접 등록 — 있을 때만 보인다 */
 export const EMOJI_CATEGORIES: { key: string; label: string; icon: string }[] = [
   { key: 'custom', label: '직접 등록', icon: '⭐' },
+  // ★ R049 — 뽑기로 얻은 특별 이모티콘 (가진 것이 있을 때만 보인다 — 찬종: "기존 이모티콘 탭 안에서 또 분리된 탭")
+  { key: 'special', label: '특별', icon: '✨' },
   { key: 'smileys', label: '표정', icon: '😀' },
   { key: 'people', label: '손·사람', icon: '👋' },
   { key: 'animals', label: '동물·자연', icon: '🐶' },
@@ -32,15 +45,62 @@ export const EMOJI_CATEGORIES: { key: string; label: string; icon: string }[] = 
   { key: 'flags', label: '깃발', icon: '🏁' },
 ];
 
-let cache: { list: EmojiMeta[]; byId: Map<number, EmojiMeta>; defaults: number[] } | null = null;
+export interface EmojiCatalog {
+  list: EmojiMeta[];
+  byId: Map<number, EmojiMeta>;
+  defaults: number[];
+  /** ★ R049 — 내가 가진 특별 이모티콘 (보낼 수 있는 것). 메타는 전원이 받지만(남이 보낸 것을 그리려고) 보내기는 가진 것만 */
+  ownedSpecial: Set<number>;
+  themes: EmojiThemeMeta[];
+}
+
+let cache: EmojiCatalog | null = null;
 let loading: Promise<void> | null = null;
 
 async function load(): Promise<void> {
   const res = await fetch('/api/emoji', { credentials: 'same-origin' });
   if (!res.ok) throw new Error(`emoji ${res.status}`);
-  const json = (await res.json()) as { emojis: EmojiMeta[]; defaults: number[] };
-  cache = { list: json.emojis, byId: new Map(json.emojis.map((e) => [e.id, e])), defaults: json.defaults };
+  const json = (await res.json()) as { emojis: EmojiMeta[]; defaults: number[]; ownedSpecial?: number[]; themes?: EmojiThemeMeta[] };
+  cache = {
+    list: json.emojis,
+    byId: new Map(json.emojis.map((e) => [e.id, e])),
+    defaults: json.defaults,
+    ownedSpecial: new Set(json.ownedSpecial ?? []),
+    themes: json.themes ?? [],
+  };
   window.dispatchEvent(new CustomEvent('qw:emoji-catalog'));
+}
+
+/** ★ R049 — 뽑기 뒤(또는 다시 로그인) 목록을 다시 받는다. 받으면 qw:emoji-catalog 로 모두에게 알린다 */
+export function reloadEmojiCatalog(): Promise<void> {
+  if (!loading) loading = load().catch(() => undefined).finally(() => (loading = null));
+  return loading;
+}
+
+/** 지금 받아 둔 목록 (훅 밖에서) */
+export function peekEmojiCatalog(): EmojiCatalog | null {
+  return cache;
+}
+
+/** 특별 이모티콘인가 (뽑기로 얻는 것 — 큰 반응 · 따로 세는 도배 방지) */
+export function isSpecialEmoji(id: number): boolean {
+  return cache?.byId.get(id)?.category === 'special';
+}
+
+// ── ★★ R049 — 특별 이모티콘 표시 방식 (찬종: "이건 실제로 봐야 알것 같네" → 두 가지를 그림으로 비교한다)
+//   'float'  = 떠 있는 큰 반응 (채팅 입력창 바로 위 · 약 96px · 3초 · 최대 3개) + 로그엔 작은 그림 한 줄  ← 기본 (설계 권장)
+//   'inline' = 로그 안에 크게 (96px 한 줄) — 대안. 찬종이 고르면 상수만 바꾼다 (D-231)
+//   ★ 검사(ui-check)가 두 그림을 찍으려고 localStorage 'qw.specialDisplay' 로 바꿀 수 있다 — 사람 설정이 아니다
+export type SpecialDisplay = 'float' | 'inline';
+export const SPECIAL_DISPLAY_DEFAULT: SpecialDisplay = 'float';
+export function specialDisplayMode(): SpecialDisplay {
+  try {
+    const v = localStorage.getItem('qw.specialDisplay');
+    if (v === 'float' || v === 'inline') return v;
+  } catch {
+    /* 기본 */
+  }
+  return SPECIAL_DISPLAY_DEFAULT;
 }
 
 /** 목록 (처음 부를 때 한 번 받아 온다) */
