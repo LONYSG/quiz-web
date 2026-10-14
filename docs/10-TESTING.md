@@ -1074,6 +1074,20 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 29. ★★★ R048 — 도배 방지 · 꾹 누름 · 포인트 · 특별 이모티콘
+
+```bash
+npm run bot -- spam                      ★★★ 5초 6개 → 6번째 거부 + 안내 본인만(kind=chat · ≈5초) · 잠긴 중 전부 버림 · 5초 뒤 다시 5개 · 초당 1개 12초 0건 · 이모티콘 따로(5개 · kind=emoji) · 이모티콘 잠겨도 채팅 됨 (17)
+npm run bot -- points                    ★★ /api/me/points = SQL(accepted 수 · point_spends 합) · 401 · 한 문제 맞히면 +1 (7)
+npm run ui-check:spam                    ★★ (verify 포함 · 18) 두 창 진짜 입력 — 게스트 6개 → 게스트만 안내(남은 초 4~5 · 테두리) · 방장 5개만 · 잠긴 채 Enter → 글 남고 떨림 · 3초 뒤 숫자 줄음 · 풀리면 사라짐 · 남은 글 그대로 감 (파스텔 · 밤 · 모바일 390) ·
+                                             이모티콘 6번째 "이모티콘 도배 방지" · 채팅은 됨 · ★ B: Alt+1 autoRepeat 5번 → 1번 · keyup 전 재누름 무시 · keyup 뒤 1번 더 · ★ C: 프로필 창 포인트 = API
+node scripts/emoji-import.mjs --theme chiikawa --name 치이카와 --price 20 [--dry]   ★ 변환 표(원본/변환 바이트 · 크기 · 프레임) · 멱등(두 번째는 건너뜀 27)
+```
+★ 새 검사가 옛 결함을 잡는지: 꾹 누름 검사는 **옛 shortcuts.ts 로 빌드해 돌려 3건 FAIL** 을 먼저 확인했다(`git stash` → build → `--spam` → pop). 도배 규칙은 값이 바뀐 것이라 단위 테스트(기존 "초당 3개 안 막힘" 이 실패 → 규칙대로 고침)가 그 역할을 했다.
+★ 메모리 규칙(R048 브리핑): 봇 · ui-check 앞마다 남는 메모리 ≥1.5GB 를 기다린다(2분 × 10번). 봇 전체는 세션 스크래치 `runbots.sh`(memwait 포함).
+
+---
+
 ## 28. ★★★ R046 — 나가기 · 끊김 · 옮기기 (경우의 수)
 
 ```bash

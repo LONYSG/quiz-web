@@ -8,6 +8,17 @@
 
 ---
 
+## 2026-10-14 — 도배 방지 개정 · 단축키 꾹 누름 · 포인트 · 특별 이모티콘 기반 (R048, MAIN) — ★ 진행 기록
+
+- [x] **A 도배 방지** — RULES 5초 5회 · 5초 잠금(채팅 · 이모티콘 같은 값 · 특별 10초 3회 값만) · `checkRate` 창+잠금(answer.ts) · emoji.send 도 같은 함수 + `chat.throttled{kind}` · 화면: 남은 초 카운트다운 · 입력창 경고 테두리 · 잠긴 채 보내면 떨림(글은 남음) · 단위 테스트 5 · 봇 spam 17/17 · ui-check:spam(PC 파스텔·밤 · 모바일 390 — 잠긴 순간 · 3초 뒤)
+- [x] **B 꾹 누름** — shortcuts.ts: e.repeat 무시 + keyup 게이트(blur 에 비움). 검사(CDP autoRepeat 5번 → 1번 · keyup 뒤 1번 더)를 **고치기 전 빌드로 먼저 돌려 3건 FAIL 확인** → 고친 뒤 통과
+- [x] **C 포인트** — 0016 point_spends · `GET /api/me/points` · 프로필 창 "포인트 N"(게임 중에도) · 봇 points 7/7(API = SQL · 한 문제 맞히면 +1) · 찬종(lonysg — 추정) 133
+- [x] **D 특별 이모티콘 기반** — assets/emoji/chiikawa 27 복사 + README + .gitignore · 0016 emoji_themes · theme_id · source_name · account_emojis · scripts/emoji-import.mjs(sharp — 움직이는 GIF 입·출력 확인 · ≤256px ≤1MB · 멱등) · 27 적재(최대 1,029,718B) · /api/emoji 미보유 숨김 · emoji.send 차단 · /api/emoji/1858/image 28프레임 확인
+- [x] **검수로 고친 것** — 이모티콘 창이 열린 채 잠기면 창이 안내를 덮음 → 안내를 창 위로
+- [ ] 끝 점검(봇 39 + verify 단계별 · 메모리 규칙) · 보고서 R048
+
+---
+
 ## 2026-10-14 — V006 반영 · 중 힌트 484 고침 · 6절 되먹임 · Q-109 (G002, GEN)
 
 **무엇을 / 왜** — 찬종 "퀄리티 있는 문제 수 늘리는 게 우선" — 생성(G003) 전에 지금 게임에 나가는 중(3) 힌트의 품질을 바로잡는다. V006 fix 484 를 받되, 제안 속 새 사실은 웹으로 다시 확인했다(16 5-2). 보고서 `ai-out/G002.txt`.

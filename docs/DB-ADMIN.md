@@ -175,6 +175,24 @@ RETURNING id;
 
 ---
 
+### ★ 특별 이모티콘 테마 — 가져오기 · 이름 · 가격 (R048)
+원본 그림은 `assets/emoji/<테마 key>/` (git 에는 없다 — DB 가 정본). 가져오기는 스크립트로(sharp 로 ≤256px · ≤1MB 로 줄여 넣는다 · 같은 파일명은 건너뜀):
+```bash
+npm run db:backup
+node scripts/emoji-import.mjs --theme chiikawa --name 치이카와 --price 20    # 새 테마면 만든다 · 있으면 이름·가격 그대로
+```
+```sql
+SELECT id, key, name_ko, price, active FROM emoji_themes;                                   -- 테마 목록
+UPDATE emoji_themes SET price = 30 WHERE key = 'chiikawa';                                   -- 뽑기 가격(포인트)
+UPDATE emoji_themes SET name_ko = '치이카와 친구들' WHERE key = 'chiikawa';                 -- 테마 이름
+SELECT id, name_ko, source_name, octet_length(image) bytes FROM emojis WHERE theme_id = 1 ORDER BY sort_order;  -- 그 테마의 이모티콘
+UPDATE emojis SET name_ko = '하치와레 웃음' WHERE theme_id = 1 AND source_name = 'Hachiware_1.gif';           -- 이모티콘 이름 바꾸기
+UPDATE emoji_themes SET active = false WHERE key = 'chiikawa';                               -- 테마 숨기기 (뽑기 목록에서)
+SELECT a.login_id, e.name_ko, ae.obtained_at FROM account_emojis ae JOIN accounts a ON a.id = ae.account_id JOIN emojis e ON e.id = ae.emoji_id;  -- 누가 무엇을 가졌나
+```
+- 특별 이모티콘은 **가진 사람만** 보고 보낼 수 있다(뽑기 — R049). 누구에게 바로 주려면 `INSERT INTO account_emojis (account_id, emoji_id) VALUES (…, …)`.
+- 포인트: `SELECT count(*) FROM answer_events WHERE account_id = … AND accepted` − `SELECT coalesce(sum(amount),0) FROM point_spends WHERE account_id = …`.
+
 ## 4. 서버가 켜진 상태에서 바꾸면 — 언제 반영되나
 
 | 바꾼 것 | 바로 반영 | 반영 안 되는 곳 |

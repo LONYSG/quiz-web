@@ -931,3 +931,13 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 방장 이전 순서 | "○○ 님이 나갔습니다." 다음에 `room.hostChanged` · "방장이 되었습니다" |
 | DB | 0015 — 열린 방 유일 = `host_account_id`. 방장을 넘기면 DB 도 |
 | 설정값 (서버 env) | `DISCONNECT_REMOVE_MS`(기본 60000) · `HOST_TRANSFER_GRACE_MS`(기본 30000) — 테스트에서 줄인다 |
+
+## ★ R048 — 바뀐 것 (D-228 · D-229 · D-230)
+
+| 항목 | 내용 |
+|------|------|
+| `chat.send` 도배 방지 | **5초 5회 · 6번째부터 5초 잠금**(서버 판정 — `checkRate` 창+잠금). 넘으면 보낸 사람에게만 `chat.throttled { retryAfterMs, kind: 'chat' }` — 잠긴 동안 보낼 때마다(남은 시간). 풀리면 창을 비운다 |
+| `emoji.send` | 채팅과 따로 세되 같은 값 → `chat.throttled { retryAfterMs, kind: 'emoji' }` (옛: 조용히 버림). ★ **특별 이모티콘(theme_id)은 가진 사람만** — 아니면 `error BAD_REQUEST "가지고 있지 않은 이모티콘입니다."` |
+| `GET /api/emoji` | 로그인 세션으로 **가진 특별 이모티콘만** 목록에 포함(`themeId` 필드 추가 — null = 누구나). 로그인 없이는 특별 0개 |
+| `GET /api/me/points` (새) | `{ ok, earned, spent, balance }` — earned = answer_events.accepted 수 · spent = point_spends 합. 401 if 로그인 없음 · no-store |
+| 설정값 (서버 env) | `CHAT_RATE_WINDOW_MS`(5000) · `CHAT_RATE_MAX`(5) · `CHAT_RATE_LOCK_MS`(5000) · `EMOJI_RATE_*`(같음) · `SPECIAL_EMOJI_RATE_*`(10000 · 3 · 10000 — R049) — 기본값은 RULES |
