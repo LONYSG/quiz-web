@@ -3119,17 +3119,18 @@ async function scenarioFlood() {
     `${totalThrottled}회`,
   );
 
-  // ── 3. ★ 사람의 정상 연타는 막히지 않는다
-  log('\n[3] ★ 사람의 정상 연타(초당 5개)는 막히지 않는다');
+  // ── 3. ★ 사람의 답 속도는 막히지 않는다
+  //   ★★ R048 개정 (D-228) — 규칙이 5초 5회로 바뀌어 옛 "초당 5개" 는 이제 걸린다. 퀴즈 답 속도(초당 1개)는 안 걸린다
+  log('\n[3] ★ 사람의 답 속도(초당 1개)는 막히지 않는다 (R048 — 초당 5개는 걸리게 됐다)');
   const q5 = await host.waitQuestion(5, 15000);
   const humanFrom = bots[2].mark();
-  for (let i = 0; i < 15; i += 1) {
+  for (let i = 0; i < 10; i += 1) {
     bots[2].chat(`사람연타${i}`, q5.epoch);
-    await sleep(200); // 초당 5개
+    await sleep(1000); // 초당 1개
   }
   await sleep(400);
   expect(
-    '★★ 초당 5개는 한 번도 막히지 않는다',
+    '★★ 초당 1개(퀴즈 답 속도)는 한 번도 막히지 않는다 (R048)',
     bots[2].since(humanFrom, 'chat.throttled').length,
     0,
   );
@@ -5648,12 +5649,13 @@ async function scenarioEmoji() {
   await sleep(500);
   expect('★ 없는 번호 · 글자 → BAD_REQUEST 두 번', guest.since(from, 'error').filter((e) => e.code === 'BAD_REQUEST').length, 2);
 
-  log('\n[4] ★ 도배 제한 (1초 20개 — 채팅과 같은 서버 보호 수준)');
+  log('\n[4] ★ 도배 제한 (★ R048 개정 — 채팅과 같은 5초 5회 · 6번째부터 잠금 — 자세한 것은 봇 spam)');
+  await sleep(5200); // 앞 단계의 이모티콘이 5초 창을 벗어나게
   from = host.mark();
   for (let i = 0; i < 30; i += 1) guest.socket.emit('emoji.send', { emojiId: cat.defaults[i % 10] });
   await sleep(800);
   const got = host.since(from, 'chat').filter((c) => c.emojiId).length;
-  expectTrue('★ 1초에 20개까지만 통과', got <= 20 && got >= 15, `${got}개`);
+  expectTrue('★ 5초에 5개까지만 통과 (R048)', got === 5, `${got}개`);
 
   host.socket.emit('host.forceEnd', {});
   await sleep(400);

@@ -15,7 +15,7 @@
 - [x] **C 포인트** — 0016 point_spends · `GET /api/me/points` · 프로필 창 "포인트 N"(게임 중에도) · 봇 points 7/7(API = SQL · 한 문제 맞히면 +1) · 찬종(lonysg — 추정) 133
 - [x] **D 특별 이모티콘 기반** — assets/emoji/chiikawa 27 복사 + README + .gitignore · 0016 emoji_themes · theme_id · source_name · account_emojis · scripts/emoji-import.mjs(sharp — 움직이는 GIF 입·출력 확인 · ≤256px ≤1MB · 멱등) · 27 적재(최대 1,029,718B) · /api/emoji 미보유 숨김 · emoji.send 차단 · /api/emoji/1858/image 28프레임 확인
 - [x] **검수로 고친 것** — 이모티콘 창이 열린 채 잠기면 창이 안내를 덮음 → 안내를 창 위로
-- [ ] 끝 점검(봇 39 + verify 단계별 · 메모리 규칙) · 보고서 R048
+- [x] **끝 점검** — 봇 39/39(flood · emoji 옛 규칙 기대값 → 고쳐 다시) · verify 단계별 전부 통과(vitest 367 · ui-check 447 · spam 19 …) · 메모리 대기 0 · 보고서 ai-out/R048.txt
 
 ---
 
