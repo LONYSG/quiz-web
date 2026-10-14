@@ -32,6 +32,7 @@
 | V005.txt | ★ R047 미디어 200 (C60 가, 적재 전): ok 162 · fix 36 · unsure 2 · drop 0 · 사실 758 주장(틀림 15) · 힌트 fix 22(떠먹여 주기 10 · 사실 13) · 중복 0 · 찬종 표시와 어긋남 0 → `audit/v005-results.json` · `v005-raw/`. 힌트 1,328 은 V006 |
 | V006.txt | ★ R036 중(3) 일반 힌트 1,328 (C60 나, 이미 적재) + R032 고침 63·변형 2·격리 1 (C55) + 참고 #3930 (C61): 힌트 ok 844 · fix 484(famous-one 298 · meaning 136 · letters 44 · question-repeat 48 · error 4) · 사실 틀림 4 · 지식 근거 표본 오류율 1.7% · R032 fix 1(#85) → `audit/v006-results.json` · `v006-raw/`. G002 가 DB 반영 · 6절을 hint-v3 에 되먹임 |
 | V007.txt | ★ G003 상 생성 1차 490 (C64, 적재 전) + G002 가 바꾼 중 힌트 표본 50 + 같은 정답 쌍 ok 쪽 29 (C63): (가) ok 407 · fix 80 · drop 3 · 난이도 "묻는 사실" 재채점 상 153→110 · 사실 틀림 9(fix 반영)·무작위 60 오류 0 · (나) fix 7/50 · (다) fix 26/29 → `audit/v007-results.json` · `v007-raw/`. G004 가 반영·적재 · Sonnet 5.5 첫 라운드 · CV-07~10 |
+| V008.txt | ★ 기존 활성 힌트 점검 (C63 (4)) — (가) G002 가 바꾼 중 힌트 나머지 433: ok 398 · fix 35 · (나) G004 에서 GEN 이 쓴 문구 40: ok 36 · fix 4(worse 1) · (다) H12 후보 246: fix 204 · ok 42 · 사실 틀림 무작위 40 → 0 → `audit/v008-results.json` · `v008-raw/`. G006 이 반영 · Sonnet 5.5 · CV-11~13 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 

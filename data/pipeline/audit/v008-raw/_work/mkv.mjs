@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+const SC = 'C:/Users/lonys/AppData/Local/Temp/claude/C--work-quiz-web/48121e5c-81cd-452a-b439-d1306ade57a2/scratchpad/v8';
+const R = 'C:/work/quiz-web/data/pipeline/audit/v008-raw';
+const J = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
+const q = J(SC + '/qrows.json'); const ga = Object.fromEntries(J(SC + '/ga.json').map((x) => [String(x.id), x])); const na = Object.fromEntries(J(SC + '/na.json').map((x) => [x.key, x]));
+const one = (s) => (s ?? '').replace(/\s*\n\s*/g, ' ').trim();
+const checked = new Set(); for (const k of ['t1', 't2', 'u1', 'u2']) for (const x of J(`${R}/${k}.out.json`)) checked.add(String(x.key));
+const items = [];
+for (const k of ['g1', 'n1']) for (const x of J(`${R}/${k}.out.json`)) if (x.doubt && !x.webOpened && !checked.has(x.key) && /^\d+$/.test(x.key)) items.push(x.key);
+const fmt = (key) => { const r = q[key]; const src = ga[key] ? ga[key].g002sources : (na[key]?.sources || []); const h = ga[key] ? ga[key].after : na[key].after;
+  return `### #${key}\nA: ${r.answer}\nQ: ${one(r.question)}\nE: ${one(r.explanation)}\nH(검증 대상): ${one(h)}\nsources(참고): ${(src || []).join(' ; ')}\n`; };
+const n = Math.ceil(items.length / 3); console.log('items', items.length);
+const p = fs.readFileSync('u1.prompt.txt', 'utf8');
+['v1', 'v2', 'v3'].forEach((k, i) => { const b = items.slice(i * n, (i + 1) * n); fs.writeFileSync(`${k}.txt`, b.map(fmt).join('\n')); fs.writeFileSync(`${k}.refs.json`, JSON.stringify(b)); fs.writeFileSync(`${k}.prompt.txt`, p.replaceAll('u1', k).replace('무작위로 뽑은 항목', '판정자가 사실 의심(doubt)으로 표시했지만 열어 보지 못한 항목')); console.log(k, b.length); });
