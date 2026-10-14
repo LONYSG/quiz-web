@@ -21,7 +21,11 @@
 //
 // ★ 세기(도와주기/떠먹여 주기)와 다른 이름(H10)은 기계가 보지 않는다 — 규칙(hint-v3)과 사람 읽기로 막는다
 //
-// ★ 한계 — 한 글자 조각("~궤" 꼴)은 보지 않는다. 한 글자까지 보면 거의 모든 힌트가 걸린다.
+// ★ 한계 — 한 글자 조각("~궤" 꼴)은 막지 않는다. 한 글자까지 막으면 거의 모든 힌트가 걸린다.
+//   ★ G002 (V006 6절 3 — DG-008) 좁은 두 가지만 **경고**로 본다
+//          single       여러 낱말 정답의 **한 글자 낱말**이 힌트 낱말 첫머리에 있다 (딥 블루 ← 전신 '딥 소트')
+//          letter-talk  힌트가 글자·소리 놀이를 말한다 — '첫 글자' · '같은 소리' 꼴 (형설지공 ← "'형광등'의 첫 글자와 같다" · 산통 ← "같은 소리의 말")
+//                       실측은 G002 보고서 4절
 // =============================================================================
 import { normalizeAnswer } from '../shared/dist/index.js';
 
@@ -110,6 +114,15 @@ export function checkHint({ hint, answer, variants = [], question = '', explanat
       }
     }
   }
+  // ★ G002 — 한 글자 낱말 조각 · 글자 놀이 (경고)
+  const qs1 = strip(question);
+  const hw = (hint ?? '').split(/[\s·,.'"“”‘’()「」\-]+/).map(strip).filter(Boolean);
+  for (const a of [answer, ...variants]) {
+    const parts = (a ?? '').split(/[\s·\-]+/).map(strip).filter(Boolean);
+    if (parts.length < 2) continue;
+    for (const w of parts) if (w.length === 1 && HANGUL.test(w) && !qs1.includes(w) && hw.some((x) => x.startsWith(w))) res.warn.push({ kind: 'single', frag: w, of: a });
+  }
+  if (/(첫|끝|마지막|앞|뒤)\s?글자|같은 소리|소리가 같은|글자와 같/.test(hint)) res.warn.push({ kind: 'letter-talk' });
   // H3 — 질문 되풀이: 힌트의 2글자 조각 가운데 질문에도 있는 비율
   const hg = grams(hint, 2), qg = grams(question, 2);
   if (hg.size) { const share = [...hg].filter((g) => qg.has(g)).length / hg.size; if (share >= 0.6) res.warn.push({ kind: 'question', share: Math.round(share * 100) }); }
@@ -141,6 +154,10 @@ if (process.argv[1]?.replace(/\\/g, '/').endsWith('scripts/hint-check.mjs')) {
     [{ hint: '이름은 미국야구연구협회의 영어 약칭 SABR에서 왔다', answer: '세이버메트릭스' }, 'roman'],
     [{ hint: '녹차의 감칠맛을 내는 성분으로도 꼽힌다', answer: '테아닌' }, 'none'],
     [{ hint: '오른쪽에서 왼쪽으로 써 나가는 문자를 쓰는 언어다', answer: '아랍어' }, 'none'],
+    // ★ G002 — V006 사례
+    [{ hint: "이름은 회사 로고 색에서 비롯된 IBM의 별명에서 땄고, 전신은 '딥 소트'라는 기계였다.", answer: '딥 블루' }, 'single'],
+    [{ hint: "'반딧불'을 뜻하는 한자는 '형광등'의 첫 글자와 같다.", answer: '형설지공' }, 'letter-talk'],
+    [{ hint: '같은 소리의 말로, 아이를 낳을 때 겪는 진통을 가리키는 낱말이 있다.', answer: '산통' }, 'letter-talk'],
   ];
   let ok = 0;
   for (const [c, want] of cases) {
@@ -150,7 +167,7 @@ if (process.argv[1]?.replace(/\\/g, '/').endsWith('scripts/hint-check.mjs')) {
     if (pass) ok++;
   }
   for (const [c, want] of warnCases) {
-    const r = checkHint(c); const got = r.warn.find((w) => w.kind === 'partial-mid' || w.kind === 'roman')?.kind ?? 'none';
+    const r = checkHint(c); const got = r.warn.find((w) => ['partial-mid', 'roman', 'single', 'letter-talk'].includes(w.kind))?.kind ?? 'none';
     const pass = got === want;
     console.log(`${pass ? 'ok  ' : '★실패'} [${c.answer}] "${c.hint}" → 경고 ${got} / 기대 ${want}`);
     if (pass) ok++;
