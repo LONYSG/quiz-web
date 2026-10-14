@@ -1,0 +1,154 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "drinks/4",
+  "midKey": "drinks",
+  "subName": "전통주",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "drinks/4#g003-L2-16",
+   "seed": {
+    "subject": "소주",
+    "aspect": null,
+    "ref": "L2-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "개성 지방에서는 '아락주', 평안북도에서는 '아랑주'라 부르던 흔적이 남아 있는 우리 술입니다. 이 이름들은 증류를 뜻하는 아랍어 '아라크'에서 왔다고 설명되는데, 이 술은?",
+    "answer": "소주",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "불이 잘 붙는다 해서 '화주', 이슬처럼 한 방울씩 모은다 해서 '노주'라고도 불렸습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 소주 원나라 유래",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 소주 어원",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "generalHint": "오늘날 팔리는 대부분은 당밀·타피오카로 얻은 주정에 물을 타서 만든 희석식이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/소주"
+    ],
+    "facts": [
+     {
+      "claim": "개성 '아락주', 평북 '아랑주'에 흔적",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/소주",
+      "note": "평안북도의 '아랑주', 개성 지방의 '아락주'에서도 그 흔적"
+     },
+     {
+      "claim": "증류를 뜻하는 아랍어 아라크에서 온 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/소주",
+      "note": "원명은 증류를 뜻하는 아랍어 '아라크(Araq)'를 한역"
+     },
+     {
+      "claim": "화주·노주라는 별칭",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/소주",
+      "note": "불이 잘 붙는다는 화주, 한 방울씩 모아 만든다는 노주"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/소주"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "가장 익숙한 술의 뜻밖의 기원",
+    "targetWhy": "소주는 국민 술이지만 아랍어 '아라크'에서 온 옛 이름은 대학 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — '소주' 활성 없음 (안동소주 2845 는 다른 답·다른 지식)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "drinks/4#g003-L2-17",
+   "seed": {
+    "subject": "교동법주",
+    "aspect": null,
+    "ref": "L2-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 숙종 때 궁중 음식을 맡던 사옹원의 참봉 최국준이 처음 빚었다고 전합니다. 경주 최부잣집에서 대대로 토종 찹쌀로 빚어 온 이 술은?",
+    "answer": "교동법주",
+    "acceptedAnswers": [
+     "경주 교동법주",
+     "경주법주"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1986년 국가무형문화재로 지정되었으며, 물과 누룩, 쌀로만 빚는 곡주입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 전통주",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 명가 전통주",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "generalHint": "집 마당의 우물물을 끓여 식혀 빚으며, 다 되기까지 100일쯤 걸리고 도수는 16~18도다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/경주_교동법주"
+    ],
+    "facts": [
+     {
+      "claim": "숙종 때 사옹원 참봉 최국준이 처음 빚음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경주_교동법주",
+      "note": "처음 만든 사람은 최국준, 숙종 때 사옹원 참봉"
+     },
+     {
+      "claim": "경주 최부잣집에서 대대로 빚음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경주_교동법주",
+      "note": "최부자 집에서 대대로 빚어 온 전통있는 술"
+     },
+     {
+      "claim": "주원료 토종 찹쌀",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경주_교동법주",
+      "note": "법주의 주원료는 토종 찹쌀"
+     },
+     {
+      "claim": "1986년 국가무형문화재 지정, 물·누룩·쌀의 곡주",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/경주_교동법주",
+      "note": "1986.11.1 제86-3호; 물과 누룩, 쌀로 빚는 순수한 곡주"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/경주_교동법주"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "술 자체 인지도는 두견주·문배주 급으로 중간 — 마이너 쪽에 가까울 수 있음",
+    "targetWhy": "경주 최부잣집은 유명하지만 그 집안 술의 이름은 전통주 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

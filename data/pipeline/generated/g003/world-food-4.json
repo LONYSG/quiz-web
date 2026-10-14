@@ -1,0 +1,89 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "world-food/4",
+  "midKey": "world-food",
+  "subName": "조리법·조리 도구",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-food/4#g003-L2-23",
+   "seed": {
+    "subject": "타진",
+    "aspect": null,
+    "ref": "L2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "얕은 질그릇 바닥에 높은 원뿔 모양 뚜껑을 덮는 냄비로, 뚜껑에 맺힌 수증기가 다시 냄비 안으로 흘러내려 적은 물로도 요리할 수 있습니다. 모로코를 비롯한 북아프리카에서 쓰는 이 냄비는?",
+    "answer": "타진",
+    "acceptedAnswers": [
+     "타진 냄비"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 '프라이팬'을 뜻하는 고대 그리스어가 아랍어를 거쳐 온 것으로, 이 냄비로 만든 요리도 같은 이름으로 부릅니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 세계 조리 도구",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 북아프리카 음식",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "generalHint": "튀니지에서는 뚜껑 없는 그릇으로 만드는 전혀 다른 요리를 같은 이름으로 부른다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tajine"
+    ],
+    "facts": [
+     {
+      "claim": "얕은 원형 질그릇과 높은 원뿔·돔 뚜껑",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tajine",
+      "note": "shallow circular clay skillet and a tall cone- or dome-shaped cover"
+     },
+     {
+      "claim": "뚜껑이 응결된 물을 되돌려 적은 물로 요리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tajine",
+      "note": "lid returns condensation; only a little water needed"
+     },
+     {
+      "claim": "모로코·북아프리카(마그레브)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tajine",
+      "note": "Maghrebi dish; conical lid originated in Tafraout, Morocco"
+     },
+     {
+      "claim": "그리스어 τάγηνον(프라이팬) → 아랍어, 그릇과 요리 둘 다 가리킴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tajine",
+      "note": "from Arabic طاجين, from Ancient Greek τάγηνον frying-pan; refers to both vessel and dish"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tajine"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "모양은 알 만한 도구, 원리와 이름",
+    "targetWhy": "요리 프로그램·여행에서 본 냄비지만 이름까지는 요리 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (마이야르 반응은 2159 와 같은 지식이라 버리고 대신 고름)",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-tv/2",
+  "midKey": "kr-tv",
+  "subName": "유행어",
+  "questionPrompt": "media-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/2#g003-M2-11",
+   "seed": {
+    "subject": "개그콘서트",
+    "aspect": "팬 세부",
+    "ref": "M2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2006~2008년 KBS '개그콘서트'의 코너 '대화가 필요해'에서 김대희는 신봉선의 남편이자 장동민의 아버지로 나왔습니다. 이 코너에서 나온 이 아버지의 대표 유행어는 무엇일까요?",
+    "answer": "밥 묵자",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2017년에는 시간을 거슬러 간 '대화가 필요해 1987'로 돌아왔고, 이번엔 김대희가 장동민의 아들 역을 맡았습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송 — 개그 유행어",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 국민 유행어",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "개그콘서트",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/김대희"
+    ],
+    "facts": [
+     {
+      "claim": "'대화가 필요해' 2006.11~2008.11, 김대희 = 신봉선의 남편·장동민의 아버지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김대희",
+      "note": "신봉선의 남편이자 장동민(김동민)의 아버지 역, 2006년 11월 19일~2008년 11월 30일"
+     },
+     {
+      "claim": "대표 유행어 '밥묵자'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김대희",
+      "note": "〈대화가 필요해〉에서 나온 대표적인 유행어는 \"밥묵자.\""
+     },
+     {
+      "claim": "2017년 '대화가 필요해 1987'에서 김대희가 김동민(장동민)의 아들 역",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/김대희",
+      "note": "〈대화가 필요해 1987〉(2017.7.9~2018.6.10) 김동민(장동민)의 아들"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 개그 프로그램의 대표 유행어",
+    "targetWhy": "개콘 전성기 시청자가 아는 코너 유행어 — 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "밥 묵자 new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,153 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "design-photo/1",
+  "midKey": "design-photo",
+  "subName": "사진 기술·용어",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/1#g003-A2-19",
+   "seed": {
+    "subject": "보케",
+    "aspect": null,
+    "ref": "A2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "초점이 맞지 않은 부분이 흐려진 모양새와 그 아름다움을 가리키는 사진 용어가 있습니다. '흐림·아지랑이'를 뜻하는 일본어에서 왔고, 1997년 미국 사진 잡지에서 끝에 h를 붙인 철자로 소개되며 퍼졌습니다. 이 말은 무엇일까요?",
+    "answer": "보케",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "조리개 날개의 모양과 수에 따라 흐린 빛망울의 꼴이 달라지고, 반사 망원 렌즈는 도넛 모양을 만든다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 사진 용어",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 사진",
+     "acc": 3,
+     "accWhy": "사진·디자인 — 관심층이면 안다"
+    },
+    "generalHint": "이 철자는 사진 잡지 '포토 테크닉스'의 편집장 마이크 존스턴이 기사 세 편에 쓰면서 자리 잡았다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bokeh"
+    ],
+    "facts": [
+     {
+      "claim": "초점 밖 흐림의 미적 특성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bokeh",
+      "note": "aesthetic quality of the blur in out-of-focus parts"
+     },
+     {
+      "claim": "일본어 boke(흐림·아지랑이), 1997년 Photo Techniques 에서 bokeh 철자로 퍼짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bokeh",
+      "note": "Mike Johnston, Photo Techniques 1997"
+     },
+     {
+      "claim": "조리개 모양·날개 수, 반사 렌즈는 도넛 모양",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bokeh",
+      "note": "mirror lenses produce doughnut-shaped highlights"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bokeh"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "폰 인물 모드로 익숙한 효과의 이름 — '심도'(활성 1571)와 다른 개념",
+    "targetWhy": "사진 애호가가 아는 용어와 그 유래",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "design-photo/1#g003-A2-20",
+   "seed": {
+    "subject": "라이카",
+    "aspect": null,
+    "ref": "A2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1925년 독일의 한 봄 박람회에서 영화용 35mm 필름을 가로로 감아 24×36mm 화면을 찍는 작은 카메라가 선보였습니다. 몸이 약해 무거운 건판 카메라를 들기 힘들었던 개발자 오스카 바르나크가 만든 이 소형 카메라의 이름은 무엇일까요?",
+    "answer": "라이카",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Leica"
+    ],
+    "explanation": "이름은 회사 창업자의 성 'Leitz'와 'camera'의 앞 글자를 합친 것이다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 카메라 역사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 카메라 브랜드",
+     "acc": 3,
+     "accWhy": "사진·디자인 — 관심층이면 안다"
+    },
+    "generalHint": "1914년에 시제품이 먼저 만들어졌고, 이 카메라 회사는 지금도 독일 베츨라어에 본사를 두고 있다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Leica_Camera"
+    ],
+    "facts": [
+     {
+      "claim": "1925년 라이프치히 봄 박람회에서 라이카 I 공개",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leica_Camera",
+      "note": "debuted at 1925 Leipzig Spring Fair as Leica I"
+     },
+     {
+      "claim": "영화용 35mm 필름을 가로로, 24×36mm",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leica_Camera",
+      "note": "ran film horizontally, 24×36 mm frame"
+     },
+     {
+      "claim": "바르나크, 건강 때문에 무거운 건판 카메라가 힘들었음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leica_Camera",
+      "note": "poor health made heavy plate cameras impractical"
+     },
+     {
+      "claim": "이름 Leitz + camera",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Leica_Camera",
+      "note": "lei-ca"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Leica_Camera"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 브랜드의 기원 — 35mm 표준의 유래",
+    "targetWhy": "브랜드는 알려졌으나 35mm 필름 카메라의 시작이라는 사실은 사진 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

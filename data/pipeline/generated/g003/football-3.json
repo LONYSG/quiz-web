@@ -1,0 +1,218 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "football/3",
+  "midKey": "football",
+  "subName": "유럽 리그",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/3#g003-S1-14",
+   "seed": {
+    "subject": "보스만 판결",
+    "aspect": null,
+    "ref": "S1-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1990년 벨기에의 한 선수는 계약이 끝났는데도 소속 구단 RFC 리에주가 이적료를 요구하며 놓아주지 않자 소송을 냈습니다. 1995년 유럽사법재판소가 그의 손을 들어 주어 계약이 끝난 선수는 이적료 없이 팀을 옮길 수 있게 되었습니다. 이 판결을 무엇이라 할까요?",
+    "answer": "보스만 판결",
+    "acceptedAnswers": [
+     "보스만 룰"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 판결로 유럽연합 회원국 국적 선수에게는 외국인 선수 수 제한도 걸 수 없게 되었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 축구 이적 제도",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 이적 제도",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "그가 옮기려던 팀은 프랑스의 됭케르크였지만, 됭케르크가 리에주가 부른 이적료를 맞춰 주지 않았다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bosman_ruling"
+    ],
+    "facts": [
+     {
+      "claim": "1990년 계약 만료 · 리에주가 이적료 요구하며 거부",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bosman_ruling",
+      "note": "contract with RFC Liège expired in 1990; Liège refused to release him"
+     },
+     {
+      "claim": "1995년 유럽사법재판소 · 계약 만료 선수 자유 이적",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bosman_ruling",
+      "note": "15 December 1995; right to a free transfer at the expiration of contracts"
+     },
+     {
+      "claim": "EU 선수 쿼터 금지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bosman_ruling",
+      "note": "barred quotas on EU players from other member states"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bosman_ruling"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "알 가치 높음(축구 산업의 기본) · 이름은 들어 봤을 법함",
+    "targetWhy": "이적 시장을 바꾼 판결 · 애호가가 아는 제도사",
+    "pairCheck": "",
+    "dbCheck": "보스만 판결 · 보스만 룰 new",
+    "warn": [
+     "정답조각 판결"
+    ]
+   }
+  },
+  {
+   "seedId": "football/3#g003-S1-15",
+   "seed": {
+    "subject": "원정 다득점 원칙",
+    "aspect": null,
+    "ref": "S1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "두 경기 합계 점수가 같으면 상대 팀 홈에서 골을 더 많이 넣은 팀이 올라가는 규정이 있었습니다. 1965-66 시즌 컵위너스컵에서 도입됐다가 2021년 유럽축구연맹이 폐지한 이 규정은 무엇일까요?",
+    "answer": "원정 다득점 원칙",
+    "acceptedAnswers": [
+     "원정 다득점",
+     "원정 다득점 규정"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 규정으로 처음 승부가 갈린 것은 그 시즌 2라운드 부다페스트 혼베드와 두클라 프라하의 맞대결이었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 축구 규정",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 축구 규정",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "2019-20·2020-21 시즌 코로나19로 빈 경기장이 이어져 홈 이점이 사라진 것도 폐지의 근거가 되었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Away_goals_rule"
+    ],
+    "facts": [
+     {
+      "claim": "1965-66 컵위너스컵에서 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Away_goals_rule",
+      "note": "introduced by UEFA in the 1965–66 European Cup Winners' Cup"
+     },
+     {
+      "claim": "2021년 UEFA 폐지(2021-22 시즌부터)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Away_goals_rule",
+      "note": "UEFA approved abolition on 24 June 2021"
+     },
+     {
+      "claim": "첫 적용 혼베드 대 두클라 프라하",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Away_goals_rule",
+      "note": "first use was Budapest Honvéd's win over Dukla Prague in second round"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Away_goals_rule"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "널리 알려진 규정의 도입·폐지 맥락",
+    "targetWhy": "폐지된 대회 규정 · 유럽 축구 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "원정 다득점 원칙 new (홈 앤드 어웨이 1654 와 다른 지식)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "football/3#g003-S1-16",
+   "seed": {
+    "subject": "게겐프레싱",
+    "aspect": null,
+    "ref": "S1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "공을 빼앗긴 바로 그 순간 공격수와 미드필더가 곧장 달려들어 상대 진영 높은 곳에서 공을 되찾으려는 전술이 있습니다. 위르겐 클롭·토마스 투헬 같은 독일 감독들과 함께 알려진, 독일어 이름으로 불리는 이 전술은 무엇일까요?",
+    "answer": "게겐프레싱",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "랄프 랑닉이 발전시킨 전술로 꼽히며, 앞에서부터 막는 '전방 수비'의 한 형태입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 축구 전술",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 축구 전술",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "클롭은 이 전술로 몰아치는 자기 팀의 축구를 '헤비메탈 축구'라 불렀다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gegenpressing"
+    ],
+    "facts": [
+     {
+      "claim": "공을 잃은 직후 공격수·미드필더가 곧장 압박 · 높은 곳에서 탈환",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gegenpressing",
+      "note": "press the opposition immediately following loss of possession"
+     },
+     {
+      "claim": "클롭·투헬 같은 독일 감독과 연관",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gegenpressing",
+      "note": "linked to German managers such as Jürgen Klopp and Thomas Tuchel"
+     },
+     {
+      "claim": "랑닉이 발전 · 전방 수비의 한 형태",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gegenpressing",
+      "note": "a form of forward defending; developed by Ralf Rangnick"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klopp"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "클롭과 함께 유명한 전술 이름",
+    "targetWhy": "중계에서 들리는 전술 용어 · 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "게겐프레싱 new",
+    "warn": []
+   }
+  }
+ ]
+}

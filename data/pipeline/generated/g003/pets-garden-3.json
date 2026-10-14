@@ -1,0 +1,145 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "pets-garden/3",
+  "midKey": "pets-garden",
+  "subName": "반려동물 관리",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "pets-garden/3#g003-L1-13",
+   "seed": {
+    "subject": "TNR",
+    "aspect": null,
+    "ref": "L1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "길고양이를 붙잡아 중성화 수술을 한 뒤 원래 살던 곳에 다시 풀어 주는 관리 방식이 있습니다. 수술을 마친 고양이는 귀 끝을 잘라 표시하는데, 이 방식을 흔히 부르는 영문 약칭은?",
+    "answer": "TNR",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "덴마크는 1970년대 중반부터 중성화한 고양이를 문신과 귀 끝 자르기로 표시하며 이 방식을 써 왔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 길고양이 관리",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 동물 관리 제도",
+     "acc": 4,
+     "accWhy": "반려동물·원예 — 대부분이 관심"
+    },
+    "generalHint": "기록에 남은 가장 이른 예는 1950년대 영국의 동물 운동가 루스 플랜트의 활동이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Trap%E2%80%93neuter%E2%80%93return"
+    ],
+    "facts": [
+     {
+      "claim": "포획-중성화-방사, 원래 장소로 돌려보냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Trap%E2%80%93neuter%E2%80%93return",
+      "note": "trap–neuter–return; most go back to original locations"
+     },
+     {
+      "claim": "귀 끝 자르기로 표시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Trap%E2%80%93neuter%E2%80%93return",
+      "note": "TNR cats are ear-tipped for identification"
+     },
+     {
+      "claim": "덴마크 1970년대 중반 문신·귀 끝 자르기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Trap%E2%80%93neuter%E2%80%93return",
+      "note": "Denmark's mid-1970s program marked neutered cats by tattooing and ear-tipping"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Trap%E2%80%93neuter%E2%80%93return"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "뉴스에 종종 나와 3 일 수도. 영문 약칭이 대표 정답(A4)",
+    "targetWhy": "반려·동물보호 관심층이 아는 제도 이름 — 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "pets-garden/3#g003-L1-14",
+   "seed": {
+    "subject": "카밍 시그널",
+    "aspect": null,
+    "ref": "L1-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "개가 하품을 하거나, 입술을 핥거나, 고개를 돌리거나, 땅 냄새를 맡는 몸짓은 긴장을 풀고 갈등을 피하려는 신호로 읽힙니다. 노르웨이의 훈련사 투리드 루가스가 이름 붙인 이 신호를 무엇이라 할까요?",
+    "answer": "카밍 시그널",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "루가스는 이 내용을 '개와 대화하기'라는 뜻의 책으로 펴냈고, 2006년에 2판이 나왔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 반려견 행동",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 반려견 신호",
+     "acc": 4,
+     "accWhy": "반려동물·원예 — 대부분이 관심"
+    },
+    "generalHint": "꼬리를 낮게 흔들기, 앞발 들기, 곡선을 그리며 걷기도 이 신호 목록에 든다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Calming_signals"
+    ],
+    "facts": [
+     {
+      "claim": "하품, 입술·코 핥기, 고개·몸 돌리기, 땅 냄새 맡기가 예",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Calming_signals",
+      "note": "examples: yawning, sniffing the ground, lip licking, turning away"
+     },
+     {
+      "claim": "노르웨이 훈련사 투리드 루가스가 만든 말",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Calming_signals",
+      "note": "coined by Turid Rugaas, Norwegian dog trainer"
+     },
+     {
+      "claim": "책 On Talking Terms with Dogs, 2판 2006",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Calming_signals",
+      "note": "On Talking Terms with Dogs: Calming Signals, 2nd ed. 2006"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Calming_signals"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "반려견 프로그램으로 알려진 용어, 알게 되면 쓸모 있음",
+    "targetWhy": "반려견 행동학 용어 — 애견 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,79 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "fashion/2",
+  "midKey": "fashion",
+  "subName": "패션 브랜드·디자이너",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "fashion/2#g003-L2-06",
+   "seed": {
+    "subject": "라코스테",
+    "aspect": null,
+    "ref": "L2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1920년대 프랑스의 한 테니스 선수는 다음 경기를 이기면 악어가죽 가방을 받기로 한 내기가 알려져 미국 언론에서 '악어'라는 별명을 얻었습니다. 1933년 이 선수가 세운 의류 브랜드는?",
+    "answer": "라코스테",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1927년 미국인 로버트 조르주가 그려 준 악어 그림을, 그는 경기 전에 입는 흰 블레이저에 수놓아 달고 다녔다고 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송 — 유명 패션 브랜드",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 악어 로고 유래",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lacoste"
+    ],
+    "facts": [
+     {
+      "claim": "악어가죽 가방 내기, 1923년 미국 기자가 '악어' 별명을 붙였다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lacoste",
+      "note": "bet for a crocodile-skinned suitcase; American journalist began calling him the Crocodile in 1923"
+     },
+     {
+      "claim": "1933년 라코스테 설립",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lacoste",
+      "note": "René Lacoste founded La Chemise Lacoste in 1933 with André Gillier"
+     },
+     {
+      "claim": "1927년 로버트 조르주가 악어 그림을 그렸고 흰 블레이저에 수놓았다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lacoste",
+      "note": "Robert George drew crocodiles 1927; embroidered on the white blazer he wore before matches"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "악어 로고를 아는 사람은 쉽게 떠올려 난이도 3 쪽일 수 있음",
+    "targetWhy": "라코스테는 유명하지만 악어 로고가 창업자 별명·내기에서 왔다는 이야기는 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

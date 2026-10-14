@@ -1,0 +1,89 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "psychology/1",
+  "midKey": "psychology",
+  "subName": "심리 현상·효과",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "psychology/1#g003-H2-08",
+   "seed": {
+    "subject": "플린 효과",
+    "aspect": null,
+    "ref": "H2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "20세기 동안 여러 나라에서 지능 검사 점수가 세대마다 꾸준히 올라, 검사의 평균 기준을 새로 맞춰야 했습니다. 미국에서는 10년에 약 3점꼴이었습니다. 이 현상을 널리 알린 뉴질랜드 학자의 이름을 딴 효과는?",
+    "answer": "플린 효과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1990년대 중반 이후 노르웨이·덴마크 같은 일부 선진국에서는 점수 상승이 멈추거나 오히려 떨어졌다는 보고가 나왔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 심리학 효과",
+     "wor": 4,
+     "worWhy": "교양 — 심리학 개념",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "generalHint": "이 이름은 1994년 헌스타인과 머리가 책 '벨 커브'에서 처음 붙였다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Flynn_effect"
+    ],
+    "facts": [
+     {
+      "claim": "미국에서 10년에 약 3점 상승(웩슬러 기준)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flynn_effect",
+      "note": "about three IQ points per decade in the United States"
+     },
+     {
+      "claim": "검사는 새 표본으로 재표준화돼 평균을 100에 맞춘다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flynn_effect",
+      "note": "periodically revised and re-standardized ... mean reset to 100"
+     },
+     {
+      "claim": "제임스 플린(뉴질랜드 오타고 대학)의 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flynn_effect",
+      "note": "named after James Flynn; University of Otago"
+     },
+     {
+      "claim": "노르웨이는 1990년대 중반 이후 정체, 덴마크는 1998~2004 하락",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Flynn_effect",
+      "note": "Norwegian scores stopped rising after mid-1990s; Danish declined 1998–2004"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Flynn_effect"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이름을 들어 본 사람이 적을 수 있으나 현상 자체는 대화 소재로 흥미",
+    "targetWhy": "심리학 개론·교양서에서 접하는 효과",
+    "pairCheck": "",
+    "dbCheck": "new (0건)",
+    "warn": [
+     "정답조각 효과"
+    ]
+   }
+  }
+ ]
+}

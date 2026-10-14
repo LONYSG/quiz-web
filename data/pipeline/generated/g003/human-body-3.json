@@ -1,0 +1,87 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "human-body/3",
+  "midKey": "human-body",
+  "subName": "감각기관",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/3#g003-C1-28",
+   "seed": {
+    "subject": "유스타키오관",
+    "aspect": null,
+    "ref": "C1-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "비행기가 내려앉을 때 귀가 먹먹하다가 침을 삼키면 뚫리는 것은, 가운데귀와 목 위쪽(코인두)을 잇는 약 3.5센티미터의 관이 열려 압력을 맞춰 주기 때문입니다. 16세기 이탈리아 해부학자의 이름이 붙은 이 관은 무엇일까요?",
+    "answer": "유스타키오관",
+    "acceptedAnswers": [
+     "이관"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "어린아이는 이 관이 짧고 좁으며 더 수평으로 놓여 있어 귀에 염증이 잘 생깁니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "중학 과학 — 귀 구조",
+     "wor": 5,
+     "worWhy": "교과 — 귀 구조",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Eustachian_tube"
+    ],
+    "facts": [
+     {
+      "claim": "가운데귀와 코인두 연결, 성인 약 35mm",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eustachian_tube",
+      "note": "connects nasopharynx to middle ear · about 35 mm long"
+     },
+     {
+      "claim": "삼킬 때 열려 압력을 맞춤, 비행 중 귀 먹먹함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eustachian_tube",
+      "note": "opens during swallowing · ears pop during flights"
+     },
+     {
+      "claim": "16세기 이탈리아 해부학자 에우스타키 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eustachian_tube",
+      "note": "named after 16th-century Italian anatomist Bartolomeo Eustachi"
+     },
+     {
+      "claim": "아이는 짧고 수평·좁아 감염 잘 됨",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Eustachian_tube",
+      "note": "children shorter, more horizontal, narrower · infections more likely"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "비행기 귀 먹먹함 단서가 쉬워 난이도 3 가능",
+    "targetWhy": "중고교 과학에 '귀인두관'으로 나오나 이름 유래·위치는 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,162 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-language/1",
+  "midKey": "kr-language",
+  "subName": "한글 자모·맞춤법",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-language/1#g003-K3-15",
+   "seed": {
+    "subject": "반치음",
+    "aspect": null,
+    "ref": "K3-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중세 국어에서는 '마음'과 '아우'를 'ㅿ'을 넣어 적었습니다. 이 글자의 소리는 임진왜란 무렵 사라졌지만 '여시(여우)' 같은 방언에 ㅅ으로 흔적을 남겼습니다. 훈민정음 자모 'ㅿ'의 이름은?",
+    "answer": "반치음",
+    "acceptedAnswers": [
+     "반시옷",
+     "반잇소리"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "소리값은 [z]로 추정되며, 주로 울림소리 사이에서 쓰였다고 설명된다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 국어 — 중세 국어 자모",
+     "wor": 5,
+     "worWhy": "교과 — 훈민정음 자모",
+     "acc": 5,
+     "accWhy": "한국어·한글 — 초중 국어 교과"
+    },
+    "generalHint": "훈민정음에서 이 글자는 맑지도 흐리지도 않은 '불청불탁' 소리로 나뉘었고, 중국 운서의 '日' 자모 소리를 적는 데 쓰였다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=반치음",
+     "https://ko.wikipedia.org/wiki/ㅿ"
+    ],
+    "facts": [
+     {
+      "claim": "ㅿ의 이름은 반치음(≒반잇소리)",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=반치음",
+      "note": "표준국어대사전: 훈민정음에서 ‘ㅿ’를 이르는 말 ≒반잇소리"
+     },
+     {
+      "claim": "마음·아우를 ㅿ으로 적음(ᄆᆞᅀᆞᆷ, 아ᅀᆞ)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/ㅿ",
+      "note": "예: 아ᅀᆞ(아우), ᄆᆞᅀᆞᆷ(마음)"
+     },
+     {
+      "claim": "임진왜란 이후 소멸, 중앙어에서 16세기 말 사라짐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/ㅿ",
+      "note": "임진왜란 이후로는 소멸 / 16세기 말 발음이 사라짐"
+     },
+     {
+      "claim": "방언 '여시(여우)'에 ㅅ으로 남음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/ㅿ",
+      "note": "여ᅀᆞ → 여우, 방언 여시·여수"
+     },
+     {
+      "claim": "[z] 추정, 울림소리 사이에서 쓰임",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/ㅿ",
+      "note": "유성 치조 마찰음 [z] 추정, 울림소리 사이"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/반치음"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "아래아·여린히읗과 같은 무리지만 'ㅿ'을 직접 제시해 답이 하나",
+    "targetWhy": "고교 문법 심화·대학 국어사 — 사라진 자모의 이름과 흔적",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건 (활성 여린히읗 #171 · 아래아 #3666과 다른 답·다른 자모)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-language/1#g003-K3-16",
+   "seed": {
+    "subject": "말모이",
+    "aspect": null,
+    "ref": "K3-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주시경이 1911년 무렵부터 제자들과 함께 엮은 우리말 사전 원고입니다. 조선광문회에서 펴내려 했던 이 원고의 이름은?",
+    "answer": "말모이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 원고는 대한민국 보물로 지정되었고, 2019년에는 같은 이름의 영화도 나왔다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 국어 운동",
+     "wor": 4,
+     "worWhy": "교양 — 우리말 역사",
+     "acc": 5,
+     "accWhy": "한국어·한글 — 초중 국어 교과"
+    },
+    "generalHint": "주시경과 제자 김두봉·권덕규·이규영이 엮었으나 사전으로 나오지 못했고, 'ㄱ'부터 '걀죽'까지 한 책만 남았다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/주시경",
+     "https://ko.wikipedia.org/wiki/말모이"
+    ],
+    "facts": [
+     {
+      "claim": "주시경 공저 《말모이》(1911년~)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주시경",
+      "note": "저술 목록: 《말모이》 (공저, 1911년 ~ ?)"
+     },
+     {
+      "claim": "조선광문회에서 출판하려던 한국어 사전, 주시경 주도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/말모이",
+      "note": "조선 광문회에서 출판하려던 한국어 사전 — 주시경 주도"
+     },
+     {
+      "claim": "말모이 원고는 보물 지정, 2019년 영화",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/말모이",
+      "note": "보물로 지정 / 2019년 개봉 영화"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/말모이_원고"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "영화 덕에 이름은 알려졌지만 원고와 주시경을 잇는 사람은 적다",
+    "targetWhy": "국어사 교양 — 주시경은 알아도 사전 원고 이름은 한 층 깊다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,159 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "economy/5",
+  "midKey": "economy",
+  "subName": "경제사",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "economy/5#g003-H1-17",
+   "seed": {
+    "subject": "남해 거품 사건",
+    "aspect": null,
+    "ref": "H1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1711년 영국 정부의 빚을 덜려고 세워진 한 회사는 스페인령 아메리카와의 무역과 노예무역 권리를 내세웠지만 실제 사업은 부진했습니다. 그런데도 1720년 이 회사 주가가 1주 100파운드에서 1,000파운드 넘게 치솟았다가 무너졌는데, 이 사건은?",
+    "answer": "남해 거품 사건",
+    "acceptedAnswers": [
+     "남해 버블",
+     "남해회사 사건",
+     "남해 포말 사건"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "아이작 뉴턴도 이 주식으로 7,000파운드를 벌었다가 폭락 뒤 2만 파운드를 잃었다고 전해집니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 경제사 버블",
+     "wor": 4,
+     "worWhy": "교양 — 투기 거품 대표 사례",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "generalHint": "같은 1720년 프랑스에서도 존 로가 이끈 미시시피 회사의 주가가 치솟았다가 무너졌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/남해_거품_사건"
+    ],
+    "facts": [
+     {
+      "claim": "1711년 영국 정부의 공공 부채를 줄이려 설립",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/남해_거품_사건",
+      "note": "남해회사 설립"
+     },
+     {
+      "claim": "아시엔토 협약으로 스페인령 서인도와의 무역·노예무역 권리, 사업은 부진",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/남해_거품_사건",
+      "note": "독점 사업"
+     },
+     {
+      "claim": "1720년 주가 1월 100파운드 → 6월 24일 1,050파운드, 이후 폭락",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/남해_거품_사건",
+      "note": "거품과 붕괴"
+     },
+     {
+      "claim": "뉴턴이 7,000파운드를 벌었다가 20,000파운드를 잃었다고 전해짐",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/남해_거품_사건",
+      "note": "1804년 출처 인용 각주"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mississippi_Company"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "거품 경제의 고전 사례, 뉴턴 일화가 '아 그렇구나'",
+    "targetWhy": "대학 교양 경제사 — 튤립 파동보다 덜 알려진 3대 거품 사건",
+    "pairCheck": "",
+    "dbCheck": "new — 활성 튤립 파동과 답·지식 다름",
+    "warn": [
+     "정답조각 사건"
+    ]
+   }
+  },
+  {
+   "seedId": "economy/5#g003-H1-18",
+   "seed": {
+    "subject": "플라자 합의",
+    "aspect": null,
+    "ref": "H1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1985년 9월 미국·일본·서독·프랑스·영국의 재무장관과 중앙은행 총재가 뉴욕의 한 호텔에 모여, 외환시장에 함께 개입해 달러 가치를 끌어내리기로 했습니다. 엔화와 마르크화의 가치를 끌어올린, 그 호텔 이름을 딴 이 합의는?",
+    "answer": "플라자 합의",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "엔화 강세로 한국 제품의 가격 경쟁력이 높아져, 저유가·저금리와 함께 1980년대 후반 한국 '3저 호황'의 배경이 되었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 경제 — 국제 금융",
+     "wor": 4,
+     "worWhy": "교양 — 경제사",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "generalHint": "달러가 그 뒤로도 계속 떨어지자, 1987년에는 거꾸로 하락을 멈추려는 루브르 합의가 뒤따랐다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/플라자_합의"
+    ],
+    "facts": [
+     {
+      "claim": "1985년 9월 22일 뉴욕 플라자 호텔, 미·프·서독·일·영 재무장관과 중앙은행 총재",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/플라자_합의",
+      "note": "G5"
+     },
+     {
+      "claim": "외환시장 개입으로 달러 가치를 낮추고 엔화·마르크화 절상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/플라자_합의",
+      "note": "내용"
+     },
+     {
+      "claim": "엔화 강세로 한국 제품 가격 경쟁력 상승, 저유가·저금리와 맞물려 3저 호황의 배경",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/플라자_합의",
+      "note": "한국 영향"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Plaza_Accord"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "환율 뉴스에 자주 소환되는 사건",
+    "targetWhy": "대학 교양 국제경제사·수능 경제 심화 — 일본 버블 이야기에서 접한다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성 닉슨 쇼크·브레턴우즈와 답·지식 다름",
+    "warn": [
+     "정답조각 합의"
+    ]
+   }
+  }
+ ]
+}

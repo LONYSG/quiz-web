@@ -1,0 +1,150 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "philosophy/4",
+  "midKey": "philosophy",
+  "subName": "동양 사상",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/4#g003-H2-17",
+   "seed": {
+    "subject": "격물치지",
+    "aspect": null,
+    "ref": "H2-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "명나라의 왕양명은 젊은 시절 주희의 가르침대로 정자 앞 대나무의 이치를 캐 보려다 이레 만에 병이 났다고 회고했습니다. 사물의 이치를 끝까지 따져 앎을 지극히 한다는 뜻으로, '대학' 팔조목의 첫 두 조목을 합친 네 글자 말은?",
+    "answer": "격물치지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "'대학'의 팔조목은 격물·치지에서 시작해 성의·정심·수신·제가·치국·평천하로 이어집니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 윤리 — 성리학",
+     "wor": 5,
+     "worWhy": "교과 — 대학 팔조목",
+     "acc": 4,
+     "accWhy": "철학·사상 — 고교 윤리 교과"
+    },
+    "generalHint": "왕양명은 뒤에 앎과 행함이 하나라는 지행합일을 내세워, 앎을 먼저 쌓자는 주희 쪽 이학과 맞섰다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://plato.stanford.edu/entries/wang-yangming/",
+     "https://ko.wikipedia.org/wiki/대학_(책)"
+    ],
+    "facts": [
+     {
+      "claim": "왕양명이 주희의 격물대로 정자 앞 대나무를 궁리하다 7일째 병이 났다고 썼다",
+      "where": "q",
+      "url": "https://plato.stanford.edu/entries/wang-yangming/",
+      "note": "On the seventh day I also became sick because I thought too hard"
+     },
+     {
+      "claim": "팔조목 순서 격물→치지→성의→정심→수신→제가→치국→평천하",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대학_(책)",
+      "note": "격물·치지: 사물의 이치를 따져 앎을 극진히 하는 단계"
+     },
+     {
+      "claim": "팔조목 순서",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/대학_(책)",
+      "note": "격물 → 치지 → 성의 → 정심 → 수신 → 제가 → 치국 → 평천하"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Wang_Yangming"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "사자성어로 들어 봤을 법, 대나무 일화는 몰랐던 사실",
+    "targetWhy": "윤리와 사상(수능)·동양철학 교양 — 성리학 활성보다 한 층 깊은 개념",
+    "pairCheck": "",
+    "dbCheck": "new (0건) · 성리학·지행합일(활성)과 다른 답",
+    "warn": [
+     "단정어 끝까지"
+    ]
+   }
+  },
+  {
+   "seedId": "philosophy/4#g003-H2-18",
+   "seed": {
+    "subject": "백마비마",
+    "aspect": null,
+    "ref": "H2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 전국 시대 명가의 공손룡은 '말'은 모양을 가리키는 이름이고 '희다'는 빛깔을 가리키는 이름이니, 둘을 합친 것은 그냥 말과 같지 않다고 주장했습니다. 네 글자 한자어로 알려진 이 논변은?",
+    "answer": "백마비마",
+    "acceptedAnswers": [
+     "백마비마론"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "논쟁의 열쇠는 '아니다'로 옮기는 글자 非가 '같지 않다'와 '그 무리에 속하지 않는다' 두 뜻으로 읽힐 수 있다는 데 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 중국 철학",
+     "wor": 4,
+     "worWhy": "교양 — 제자백가 논변",
+     "acc": 4,
+     "accWhy": "철학·사상 — 고교 윤리 교과"
+    },
+    "generalHint": "공손룡의 글은 본래 열네 편이었으나 그의 이름을 단 책에 여섯 편만 전하며, 이 논변이 그 가운데 하나다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/When_a_white_horse_is_not_a_horse"
+    ],
+    "facts": [
+     {
+      "claim": "공손룡, 명가, 전국 시대",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/When_a_white_horse_is_not_a_horse",
+      "note": "Gongsun Long (fl. 284–259 BCE), School of Names"
+     },
+     {
+      "claim": "'말'은 모양, '희다'는 빛깔을 가리킨다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/When_a_white_horse_is_not_a_horse",
+      "note": "'Horse' is what designates shape. 'White' is what designates color."
+     },
+     {
+      "claim": "非 의 두 뜻(동일성의 부정 / 무리에 속하지 않음)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/When_a_white_horse_is_not_a_horse",
+      "note": "ambiguity of 非 (fēi)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gongsun_Long"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "질문이 뜻을 거의 풀어 주어 추리 가능하나 공손룡 자체는 덜 알려졌다",
+    "targetWhy": "동양철학 교양 — 제자백가 수업에서 접하는 대표 궤변",
+    "pairCheck": "",
+    "dbCheck": "new (0건) · 겸애·법가(활성)와 다른 학파",
+    "warn": []
+   }
+  }
+ ]
+}

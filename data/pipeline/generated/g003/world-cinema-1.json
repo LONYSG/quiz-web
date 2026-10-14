@@ -1,0 +1,87 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "world-cinema/1",
+  "midKey": "world-cinema",
+  "subName": "할리우드 고전",
+  "questionPrompt": "media-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/1#g003-M1-26",
+   "seed": {
+    "subject": "시민 케인 (1941)",
+    "aspect": "팬 세부",
+    "ref": "M1-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영화 '시민 케인'은 신문왕 케인이 숨을 거두며 한마디를 남기는 장면으로 시작합니다. 기자 톰슨은 그 말의 뜻을 찾아 주변 사람들을 만나지만 끝내 풀지 못합니다. 케인이 마지막으로 남긴 이 말은 무엇일까요?",
+    "answer": "로즈버드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "마지막 장면에서 케인의 어린 시절 썰매가 화로에 타면서 그 위에 적힌 이 이름이 관객에게만 드러납니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 고전 영화 명대사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 영화사 명장면",
+     "acc": 4,
+     "accWhy": "세계 영화 — 대부분이 관심"
+    },
+    "generalHint": "마지막 장면은 진짜 불이 타는 화로를 두고 여러 번 찍었는데, 아홉 번째 촬영 때 연통에 불이 붙어 소방대가 왔다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "영화",
+    "work": "시민 케인 (1941)",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Citizen_Kane"
+    ],
+    "facts": [
+     {
+      "claim": "케인의 마지막 말 Rosebud",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Citizen_Kane",
+      "note": "Kane's dying word is 'Rosebud'"
+     },
+     {
+      "claim": "기자 제리 톰슨이 주변인을 만나지만 풀 수 없다고 결론",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Citizen_Kane",
+      "note": "Thompson interviews Kane's friends, associates, and ex-wife ... concludes the mystery can't be solved"
+     },
+     {
+      "claim": "썰매가 화로에 타며 관객에게만 드러남",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Citizen_Kane",
+      "note": "Kane's staff burn his childhood sled, which bears the trade name 'Rosebud', in a furnace; revealed only to the audience"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Citizen_Kane"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "영화사 레전드의 명대사 · 알 가치 3",
+    "targetWhy": "시민 케인은 이름은 알아도 '로즈버드'는 고전 영화 애호가가 아는 명장면",
+    "pairCheck": "",
+    "dbCheck": "로즈버드 new (시민 케인 활성 1건 — 작품명, 다른 지식)",
+    "warn": [
+     "단정어 마지막",
+     "단정어 마지막"
+    ]
+   }
+  }
+ ]
+}

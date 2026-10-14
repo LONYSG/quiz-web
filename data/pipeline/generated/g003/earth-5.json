@@ -1,0 +1,92 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "earth/5",
+  "midKey": "earth",
+  "subName": "기후 변화",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "earth/5#g003-C1-10",
+   "seed": {
+    "subject": "밀란코비치 주기",
+    "aspect": null,
+    "ref": "C1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "지구 공전 궤도의 찌그러진 정도, 자전축의 기울기, 자전축의 세차 운동이 수만 년 단위로 바뀌며 빙하기와 간빙기를 오가게 한다는 설명이 있습니다. 세르비아의 지구물리학자 이름이 붙은 이 주기적 변화를 무엇이라 할까요?",
+    "answer": "밀란코비치 주기",
+    "acceptedAnswers": [
+     "밀란코비치 이론",
+     "밀란코비치 사이클"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그는 자전축 기울기의 약 4만 1천 년 주기를 중시했지만, 최근 100만 년의 빙하기는 궤도 이심률의 약 10만 년 주기를 따른 것으로 밝혀졌습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 기후학",
+     "wor": 4,
+     "worWhy": "교양 — 빙하기 원인",
+     "acc": 5,
+     "accWhy": "지구과학·기상 — 중학 과학 교과"
+    },
+    "generalHint": "그는 1차 대전 초 포로가 되었다가 부다페스트에서 연구를 이어 갔고, 달 뒷면의 충돌구에도 그의 이름이 붙었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Milankovitch_cycles"
+    ],
+    "facts": [
+     {
+      "claim": "이심률·자전축 기울기·세차 세 요소",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Milankovitch_cycles",
+      "note": "eccentricity · obliquity · precession"
+     },
+     {
+      "claim": "빙하기 주기와 연결",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Milankovitch_cycles",
+      "note": "ice age cycles follow orbital patterns"
+     },
+     {
+      "claim": "밀란코비치는 세르비아의 지구물리학자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Milankovitch_cycles",
+      "note": "Serbian geophysicist and astronomer"
+     },
+     {
+      "claim": "그가 제시한 4만 1천 년(기울기) 대신 최근 100만 년은 10만 년(이심률) 주기를 따름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Milankovitch_cycles",
+      "note": "last million years followed 100,000-year eccentricity rather than 41,000-year obliquity he proposed"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Milutin_Milanković"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "기후 변화 논의에서 자주 나오는 이론",
+    "targetWhy": "고교 지구과학 심화·수능 지구과학 II 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "정답조각 주기"
+    ]
+   }
+  }
+ ]
+}

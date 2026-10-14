@@ -1,0 +1,96 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "physics/2",
+  "midKey": "physics",
+  "subName": "전기·자기",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "physics/2#g003-C1-12",
+   "seed": {
+    "subject": "패러데이 새장",
+    "aspect": null,
+    "ref": "C1-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "벼락 맞은 자동차나 비행기 안의 사람이 무사한 것은, 도체로 둘러싼 공간 안으로 바깥 전기장이 들어오지 못하기 때문입니다. 1836년 영국 과학자가 금속박을 입힌 방으로 이를 보였는데, 그의 이름이 붙은 이 도체 덮개를 무엇이라 할까요?",
+    "answer": "패러데이 새장",
+    "acceptedAnswers": [
+     "패러데이 케이지"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "다만 정지해 있거나 천천히 변하는 자기장은 막지 못해 그 안에서도 나침반은 제대로 움직입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 물리 — 정전기 차폐",
+     "wor": 4,
+     "worWhy": "교양 — 기본 물리 개념",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "generalHint": "전자레인지 문의 투명한 창에 덧댄 금속 그물망도 같은 원리로 안의 전자파가 새지 않게 막는다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Faraday_cage",
+     "https://ko.wikipedia.org/wiki/패러데이_새장"
+    ],
+    "facts": [
+     {
+      "claim": "자동차·비행기 탑승자를 벼락에서 보호",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Faraday_cage",
+      "note": "protecting vehicle and aircraft occupants from lightning"
+     },
+     {
+      "claim": "도체가 바깥 전기장을 상쇄해 안에 들어오지 못함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Faraday_cage",
+      "note": "external fields redistribute charge, canceling the field inside"
+     },
+     {
+      "claim": "1836년 패러데이가 금속박 입힌 방으로 시연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Faraday_cage",
+      "note": "Faraday built a metal foil-coated room in 1836"
+     },
+     {
+      "claim": "정적·느리게 변하는 자기장은 못 막아 나침반 작동",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Faraday_cage",
+      "note": "does not block static or slowly varying magnetic fields, so a compass still works"
+     },
+     {
+      "claim": "한국어 문서 제목 '패러데이 새장'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/패러데이_새장",
+      "note": "패러데이 새장 · 패러데이 실드 · 호프만 상자"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Faraday_cage"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "일상 현상(차 안 벼락)과 용어의 연결",
+    "targetWhy": "고교 물리 심화 · 대학 교양 물리의 정전기 차폐 용어",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

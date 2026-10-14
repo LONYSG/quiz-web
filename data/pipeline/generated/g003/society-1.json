@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "society/1",
+  "midKey": "society",
+  "subName": "교육 제도",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "society/1#g003-H1-10",
+   "seed": {
+    "subject": "졸업정원제",
+    "aspect": null,
+    "ref": "H1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1980년 7·30 교육개혁 조치로 도입되어 1981학년도 신입생부터 전면 시행된 대학 제도가 있습니다. 학교마다 학위를 줄 인원의 약 130%를 신입생으로 뽑고, 넘친 인원은 학사 경고·유급·제적으로 걸러 내게 했는데, 이 제도는?",
+    "answer": "졸업정원제",
+    "acceptedAnswers": [
+     "대학졸업정원제"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1985년부터 대학이 선발 비율을 100~130% 사이에서 정할 수 있게 되며 사실상 힘을 잃었고, 1987년 폐지되었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 5공 교육 정책",
+     "wor": 4,
+     "worWhy": "교양 — 현대사 제도",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "generalHint": "이 제도가 나온 같은 날의 조치로 국가보위비상대책위원회는 과외 전면 금지도 선언했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://encykorea.aks.ac.kr/Article/E0076167"
+    ],
+    "facts": [
+     {
+      "claim": "1980년 7월 30일 7·30 교육개혁 조치의 하나로 제정, 1981년 입학생부터 전면 시행",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0076167",
+      "note": "한국민족문화대백과 대학졸업정원제"
+     },
+     {
+      "claim": "졸업 정원의 약 130%(전문대 115%) 입학, 초과 인원은 학사 경고·유급·제적으로 탈락",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0076167",
+      "note": "핵심 규칙"
+     },
+     {
+      "claim": "1984년 2차 개정으로 1985년부터 100~130% 사이 자율 결정 → 유명무실",
+      "where": "e",
+      "url": "https://encykorea.aks.ac.kr/Article/E0076167",
+      "note": "개정 경과"
+     },
+     {
+      "claim": "1987년 폐지",
+      "where": "e",
+      "url": "https://encykorea.aks.ac.kr/Article/E0076167",
+      "note": "1988년 입학정원제로 복귀"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://theme.archives.go.kr/next/koreaOfRecord/privateLesson.do"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "부모 세대 경험으로 이름은 익숙, 묻는 것은 구조",
+    "targetWhy": "한국 현대 교육사(대학 교양) — 이름은 들어 봤어도 130% 선발 구조와 시기는 한 층 깊다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "society/1#g003-P4-17",
+   "seed": {
+    "subject": "발도르프 교육",
+    "aspect": null,
+    "ref": "P4-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1919년 독일 슈투트가르트의 한 담배 회사 사장이 공장 노동자의 자녀를 위한 학교를 부탁했고, 인지학을 창시한 사상가가 그 학교를 열었습니다. 글 읽기 같은 공부는 일곱 살 무렵에야 시작하고, 담임교사가 여러 해 같은 반을 맡는 이 교육 방식은 무엇일까요?",
+    "answer": "발도르프 교육",
+    "acceptedAnswers": [
+     "발도르프",
+     "슈타이너 교육"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 그 회사 '발도르프-아스토리아 담배 회사'에서 왔으며, 말이나 음악에 맞춰 몸을 움직이는 '오이리트미'라는 고유 과목이 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 교육학",
+     "wor": 4,
+     "worWhy": "교양 — 대안 교육",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "generalHint": "이 방식의 학교들은 나치 정권 아래 하나둘 문을 닫아 1941년에는 마지막 학교마저 닫혔다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Waldorf_education"
+    ],
+    "facts": [
+     {
+      "claim": "1919년 슈투트가르트 · 발도르프-아스토리아 담배 회사 사장 에밀 몰트가 노동자 자녀 학교를 요청",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Waldorf_education",
+      "note": "first school opened 1919 in Stuttgart; Emil Molt, owner of the Waldorf-Astoria Cigarette Company, requested it for children of factory employees"
+     },
+     {
+      "claim": "인지학 창시자 루돌프 슈타이너의 교육 철학",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Waldorf_education",
+      "note": "based on philosophy of Rudolf Steiner, founder of anthroposophy; also called Steiner education"
+     },
+     {
+      "claim": "읽기 등 학업은 일곱 살 무렵 시작 · 담임이 여러 해 같은 반",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Waldorf_education",
+      "note": "formal reading begins around age seven; core teacher stays with the same class for several years"
+     },
+     {
+      "claim": "오이리트미 — 말·음악에 맞춘 움직임 예술, 발도르프 고유",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Waldorf_education",
+      "note": "eurythmy, a movement art accompanying spoken texts or music, unique to Waldorf schools"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Waldorf_education"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "학교 이름이 담배 회사에서 왔다는 뜻밖의 유래",
+    "targetWhy": "대학 교양 — 대안교육. 교과서 밖, 교육에 관심 있는 성인은 '아 그거' 하는 이름",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "정답조각 교육"
+    ]
+   }
+  }
+ ]
+}

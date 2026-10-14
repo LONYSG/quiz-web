@@ -1,0 +1,81 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "plants/4",
+  "midKey": "plants",
+  "subName": "식물 이름의 유래",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "plants/4#g003-C2-04",
+   "seed": {
+    "subject": "히아신스",
+    "aspect": null,
+    "ref": "C2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "그리스 신화에서 아폴론이 던진 원반에 맞아 숨진 미소년이 있습니다. 아폴론이 그 소년의 피에서 피어나게 했다는 꽃이 그 이름을 이어받았는데, 이 꽃은 무엇일까요?",
+    "answer": "히아신스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "신화 속 꽃은 오늘날 이 이름으로 부르는 식물이 아니라 참제비고깔이나 붓꽃 무리였을 것으로 보는 학자가 많다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 — 신화 속 꽃 유래",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 꽃 이름 유래",
+     "acc": 5,
+     "accWhy": "식물 — 초등 과학·일상"
+    },
+    "generalHint": "다른 이야기에서는 소년을 함께 사랑한 서풍의 신 제피로스가 시샘해 원반의 방향을 틀었다고 한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hyacinth_(mythology)"
+    ],
+    "facts": [
+     {
+      "claim": "아폴론이 던진 원반에 맞아 히아킨토스가 숨짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hyacinth_(mythology)",
+      "note": "Apollo accidentally killed Hyacinth during a discus-throwing contest"
+     },
+     {
+      "claim": "아폴론이 그 피에서 꽃을 피어나게 해 그 이름이 됨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hyacinth_(mythology)",
+      "note": "Apollo made a flower from Hyacinth's spilled blood, the hyacinth"
+     },
+     {
+      "claim": "신화의 꽃은 현대의 히아신스가 아니며 참제비고깔·붓꽃 등이 후보",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hyacinth_(mythology)",
+      "note": "not the modern plant bearing that name · larkspur, iris, gladiolus italicus proposed"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hyacinth_(mythology)"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "꽃은 흔한데 이름의 유래가 뜻밖",
+    "targetWhy": "나르키소스(수선화)보다 덜 알려진 신화 유래 — 교양 그리스 신화 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,158 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "football/5",
+  "midKey": "football",
+  "subName": "축구 역사·클럽",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/5#g003-S1-17",
+   "seed": {
+    "subject": "토털 풋볼",
+    "aspect": null,
+    "ref": "S1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1970년대 리누스 미헬스 감독은 아약스와 네덜란드 대표팀에서 선수들이 자리를 바꿔 가며 누구나 다른 선수의 역할을 맡는 전술을 펼쳤습니다. 요한 크루이프가 대표 주자였던 이 전술은 무엇일까요?",
+    "answer": "토털 풋볼",
+    "acceptedAnswers": [
+     "토탈 풋볼",
+     "토털 사커",
+     "토탈 사커"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 전술의 네덜란드는 1974년 월드컵 결승에서 서독에 1-2로 져 준우승에 그쳤습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 축구 전술사",
+     "wor": 4,
+     "worWhy": "축구 기본 어휘",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "1930년대 오스트리아의 '분더팀'과 1950년대 헝가리 대표팀이 이 전술의 앞선 모습으로 꼽히기도 한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Total_Football"
+    ],
+    "facts": [
+     {
+      "claim": "리누스 미헬스가 1970년대 아약스·네덜란드에서 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Total_Football",
+      "note": "Rinus Michels generally credited with introducing this system during the 1970s"
+     },
+     {
+      "claim": "크루이프가 가장 유명한 구현자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Total_Football",
+      "note": "Johan Cruyff perhaps the system's most famous exponent"
+     },
+     {
+      "claim": "1974 결승 서독에 1-2 패",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Total_Football",
+      "note": "Netherlands lost the final 2–1 to West Germany"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Total_Football"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 봤을 법한 전술 · 알 가치 높음",
+    "targetWhy": "축구 전술사의 대표 개념 · 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "토털 풋볼 new (티키타카 4113 과 다른 전술)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/5#g003-S1-18",
+   "seed": {
+    "subject": "뮌헨 참사",
+    "aspect": null,
+    "ref": "S1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1958년 2월, 유러피언컵 레드스타 베오그라드 원정을 마치고 돌아오던 맨체스터 유나이티드 선수단의 비행기가 급유지에서 이륙하다 추락했습니다. '버즈비 세대'의 선수 여덟 명이 목숨을 잃은 이 사고는 무엇일까요?",
+    "answer": "뮌헨 참사",
+    "acceptedAnswers": [
+     "뮌헨 비행기 참사"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "크게 다쳤던 맷 버즈비 감독은 팀을 다시 일으켜 1968년 유러피언컵 우승을 이뤘습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 축구 클럽 역사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 참사",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "사고기는 영국 유럽 항공의 에어스피드 앰배서더였고, 조사 끝에 활주로의 눈 진창이 원인으로 밝혀졌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Munich_air_disaster",
+     "https://ko.wikipedia.org/wiki/뮌헨_비행기_참사"
+    ],
+    "facts": [
+     {
+      "claim": "1958년 2월 6일 · 레드스타 원정 귀국 · 뮌헨 급유 중 이륙 실패",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Munich_air_disaster",
+      "note": "home from European Cup match against Red Star Belgrade; stopped in Munich to refuel"
+     },
+     {
+      "claim": "선수 여덟 명 사망",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Munich_air_disaster",
+      "note": "Eight of them were United players"
+     },
+     {
+      "claim": "'버즈비 세대' 명칭 · 한국어 문서 제목 뮌헨 비행기 참사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/뮌헨_비행기_참사",
+      "note": "버즈비 세대"
+     },
+     {
+      "claim": "버즈비 중상 뒤 회복 · 1968 유러피언컵 우승",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Munich_air_disaster",
+      "note": "Busby recovered and rebuilt the team, which won the European Cup in 1968"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Munich_air_disaster"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 클럽의 유명 비극 · 도시 이름을 질문에서 뺐다",
+    "targetWhy": "맨유 역사의 핵심 사건 · 애호가가 안다",
+    "pairCheck": "",
+    "dbCheck": "뮌헨 참사 · 뮌헨 비행기 참사 new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,213 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-history/2",
+  "midKey": "kr-history",
+  "subName": "고려",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/2#g003-K1-05",
+   "seed": {
+    "subject": "묘청의 난",
+    "aspect": null,
+    "ref": "K1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "신채호는 『조선사연구초』에서 고려 인종 때 일어난 이 사건을 '조선 역사상 1천 년 이래 제일의 큰 사건'이라 평가했습니다. 1135년에 일어나 김부식이 이끈 군대에 진압된 이 사건은 무엇일까요?",
+    "answer": "묘청의 난",
+    "acceptedAnswers": [
+     "서경 천도 운동",
+     "묘청의 서경 천도 운동"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "반란 세력은 나라 이름을 대위, 연호를 천개라 정하고 반란을 선언했으며, 1136년 2월에 진압되었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 고려 사건",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "김부식은 진압에 나서기 전, 개경에 남아 있던 이 세력의 시인 정지상부터 처형했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/묘청의_난"
+    ],
+    "facts": [
+     {
+      "claim": "신채호 『조선사연구초』 '일천년래 제일대사건'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/묘청의_난",
+      "note": "신채호의 평가 항목"
+     },
+     {
+      "claim": "1135년 인종 13년 발생, 김부식이 평서원수로 진압",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/묘청의_난",
+      "note": "1135.1 ~ 1136.2"
+     },
+     {
+      "claim": "국호 대위, 연호 천개",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/묘청의_난",
+      "note": "서경에서 국호 대위, 연호 천개"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EB%AC%98%EC%B2%AD%EC%9D%98_%EB%82%9C"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 사건, 근대 역사가의 평가라는 다른 각도",
+    "targetWhy": "사건 자체는 고교 교과, 신채호의 평가는 수능 심화·교양 단골",
+    "pairCheck": "",
+    "dbCheck": "new — 묘청의 난·서경 천도 운동 모두 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g003-K1-06",
+   "seed": {
+    "subject": "동명왕편",
+    "aspect": null,
+    "ref": "K1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려의 문인 이규보는 『구삼국사』에서 고구려 시조의 이야기를 읽고, 김부식이 『삼국사기』에서 이 이야기를 생략한 것을 비판했습니다. 그가 1193년에 이 시조의 일대기를 다섯 글자 시구로 길게 읊은 서사시는 무엇일까요?",
+    "answer": "동명왕편",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이규보의 문집 『동국이상국집』에 실려 전하며, 서문에서 고려가 본래 성인의 나라임을 알리려 했다고 밝혔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 고려 문학",
+     "wor": 5,
+     "worWhy": "교과 — 고려 역사서·서사시",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "이 시가 읊는 시조는 하백의 딸 유화가 낳은 알에서 나왔다고 전한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/동명왕편"
+    ],
+    "facts": [
+     {
+      "claim": "이규보가 1193년(명종 23)에 지은 5언체 서사시",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동명왕편",
+      "note": "1193년 5언체 서사시"
+     },
+     {
+      "claim": "구삼국사 동명왕본기를 바탕, 김부식이 삼국사기에서 생략한 것을 비판",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동명왕편",
+      "note": "서문의 집필 동기"
+     },
+     {
+      "claim": "동국이상국집 수록, 고려가 성인의 나라임을 알리려 함",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/동명왕편",
+      "note": "전집 제3권"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동명성왕",
+     "https://ko.wikipedia.org/wiki/동명왕편"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이규보·김부식·구삼국사의 연결이 배워 갈 만함",
+    "targetWhy": "고교 한국사·문학의 작품이지만 집필 동기(삼국사기 비판)는 심화 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g003-K1-07",
+   "seed": {
+    "subject": "별무반",
+    "aspect": null,
+    "ref": "K1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려 숙종 때 여진족의 뛰어난 기병에 자주 밀리자, 기존의 2군 6위와 따로 편성한 부대가 있습니다. 기병인 신기군, 보병인 신보군과 함께 승려로 이루어진 항마군까지 둔 이 부대는 무엇일까요?",
+    "answer": "별무반",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1107년 윤관이 이 부대를 이끌고 천리장성 너머로 나아가 여진족을 친 뒤 동북 지역에 9성을 쌓았습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 고려 군제",
+     "wor": 5,
+     "worWhy": "교과 — 고려 대외 관계",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "1104년 여진에 거듭 진 뒤 한 장수의 건의로 세운 임시 부대로, 철마다 훈련하며 큰 정벌을 준비했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/별무반"
+    ],
+    "facts": [
+     {
+      "claim": "숙종 때 여진 기병에 밀려 1104년 2군 6위와 별도로 편성",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/별무반",
+      "note": "1104년(숙종 9년)"
+     },
+     {
+      "claim": "신기군(기병)·신보군(보병)·항마군(승병)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/별무반",
+      "note": "항마군은 승려로 구성"
+     },
+     {
+      "claim": "1107년 윤관이 이끌고 천리장성 너머 여진 토벌, 동북 9성",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/별무반",
+      "note": "예종 2년"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/별무반"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "고교 교과 대상이라 난이도 3 으로 매겨질 수 있음",
+    "targetWhy": "윤관·9성 단서를 빼고 부대 구성(항마군)으로 물어 수능 심화 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

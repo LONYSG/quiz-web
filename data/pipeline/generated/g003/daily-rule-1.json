@@ -1,0 +1,222 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "daily-rule/1",
+  "midKey": "daily-rule",
+  "subName": "재난·안전 수칙",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "daily-rule/1#g003-L2-07",
+   "seed": {
+    "subject": "트리아지",
+    "aspect": null,
+    "ref": "L2-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "나폴레옹 근위대의 외과 군의관 라레는 부상병을 계급이나 국적이 아니라 다친 정도에 따라 치료했습니다. 이 생각에서 이어져 온 것으로, 재난 현장에서 환자를 위급한 정도로 나눠 치료 순서를 정하는 일을 '고르다'라는 뜻의 프랑스어에서 온 말로 무엇이라 할까요?",
+    "answer": "트리아지",
+    "acceptedAnswers": [
+     "중증도 분류"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1983년 미국에서 나온 START 방식은 환자를 즉시(빨강) · 지연(노랑) · 경상(초록)으로 색을 나눠 표시합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 응급 분류",
+     "wor": 4,
+     "worWhy": "교양 — 재난 기본 어휘",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "generalHint": "라레는 말이 끄는 빠른 수레로 부상병을 전장에서 곧장 실어 나르는 '날아다니는 구급차'도 만들었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Triage"
+    ],
+    "facts": [
+     {
+      "claim": "라레가 계급·국적과 관계없이 부상 정도에 따라 치료, 현대 트리아지의 토대",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Triage",
+      "note": "Larrey, Surgeon in Chief of Napoleon's Imperial Guard, treated the wounded according to gravity regardless of rank or nationality"
+     },
+     {
+      "claim": "어원은 고르다·나누다를 뜻하는 프랑스어 trier",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Triage",
+      "note": "French triage, from Old French trier, to separate, sort"
+     },
+     {
+      "claim": "1983년 START 방식, 빨강·노랑·초록",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Triage",
+      "note": "START developed at Hoag Hospital 1983; Immediate red, Delayed yellow, Minor green"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dominique_Jean_Larrey"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 용어, 뿌리는 나폴레옹 전쟁이라는 연결",
+    "targetWhy": "재난·의료 뉴스에 나오는 말이지만 라레·어원까지는 대학 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "daily-rule/1#g003-L2-08",
+   "seed": {
+    "subject": "하인리히 법칙",
+    "aspect": null,
+    "ref": "L2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1931년 미국의 한 보험회사에서 일하던 안전 연구자가 사고 보고서 수천 건을 살핀 끝에, 큰 재해 하나 앞에는 작은 사고와 아찔한 일이 훨씬 많이 쌓여 있다는 경험칙을 내놓았습니다. 그의 이름이 붙은 이 법칙은?",
+    "answer": "하인리히 법칙",
+    "acceptedAnswers": [
+     "하인리히의 법칙"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "중대 재해 1건에 경미한 재해 29건, 다치지 않은 사고 300건이 있다는 비율로 흔히 요약되어 '1:29:300'이라고도 부릅니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송·뉴스에서 흔히 — 안전 법칙",
+     "wor": 4,
+     "worWhy": "시사 — 안전 기본 어휘",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Heinrich%27s_law",
+     "https://ko.wikipedia.org/wiki/하인리히_법칙"
+    ],
+    "facts": [
+     {
+      "claim": "1931년 저서 Industrial Accident Prevention",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Heinrich%27s_law",
+      "note": "published Industrial Accident Prevention, A Scientific Approach in 1931"
+     },
+     {
+      "claim": "트래블러스 보험회사 직원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Heinrich%27s_law",
+      "note": "assistant superintendent ... Travelers Insurance Company"
+     },
+     {
+      "claim": "감독관이 쓴 사고 보고서 수천 건을 검토",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/하인리히_법칙",
+      "note": "감독관들이 작성한 수천 건의 사고 보고서를 검토한 결과"
+     },
+     {
+      "claim": "1:29:300 비율",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/하인리히_법칙",
+      "note": "중대 재해 1건 : 경미한 재해 29건 : 무재해 사고 300건, 흔히 1:29:300"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 비율의 원래 이름을 묻는다",
+    "targetWhy": "산업 안전 교육·경영 교양에서 접하는 법칙, 이름까지 대는 것은 대학 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "정답조각 법칙"
+    ]
+   }
+  },
+  {
+   "seedId": "daily-rule/1#g003-P2-09",
+   "seed": {
+    "subject": "플래시오버",
+    "aspect": null,
+    "ref": "P2-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "불이 난 방에서는 천장 아래 고인 뜨거운 연기가 방 안 물건들을 복사열로 달굽니다. 이 열로 방 안 가연물 대부분이 거의 동시에 불붙어 방 전체가 한순간에 불길에 휩싸이는 현상을 무엇이라 할까요?",
+    "answer": "플래시오버",
+    "acceptedAnswers": [
+     "플래쉬오버"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "보통 500~600℃에서 일어나며, 산소가 모자란 방에 바깥 공기가 갑자기 들어가 터지는 백드래프트와 달리 열이 일으키는 현상이다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 화재 현상 용어",
+     "wor": 4,
+     "worWhy": "교양 — 화재 안전 상식",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "generalHint": "이 현상이 다가오면 실내 온도가 갑자기 치솟고, 천장 아래 연기층의 경계가 바닥 쪽으로 내려온다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Flashover"
+    ],
+    "facts": [
+     {
+      "claim": "밀폐 공간에서 노출된 가연물 대부분이 거의 동시에 발화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flashover",
+      "note": "near-simultaneous ignition of most of the directly exposed combustible material in an enclosed area"
+     },
+     {
+      "claim": "천장 아래 뜨거운 연기가 복사로 표면을 가열",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flashover",
+      "note": "hot smoke under ceiling heats surfaces by radiation"
+     },
+     {
+      "claim": "500~600℃, 열이 원인 / 백드래프트는 산소 유입이 원인",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Flashover",
+      "note": "between 500 °C and 600 °C; flashover is heat driven, backdraft oxygen-driven"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Flashover"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'안전 수칙'보다 재난 현상 지식에 가까움. 백드래프트를 칠 사람이 있으나 '복사열·동시 발화'로 갈림",
+    "targetWhy": "백드래프트(영화)보다 덜 알려진 화재 용어 — 소방·안전 관심층·애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "플래시오버 new",
+    "warn": []
+   }
+  }
+ ]
+}

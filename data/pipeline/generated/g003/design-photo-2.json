@@ -1,0 +1,81 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "design-photo/2",
+  "midKey": "design-photo",
+  "subName": "사진가·유명 사진",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/2#g003-A2-22",
+   "seed": {
+    "subject": "도로시아 랭",
+    "aspect": null,
+    "ref": "A2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "대공황 때 미국 재정착청에서 일하던 한 사진가는 1936년 캘리포니아 니포모의 완두콩 따는 이주 노동자 캠프에서 '이주민 어머니'를 찍었습니다. 이 사진을 찍은 사진가는 누구일까요?",
+    "answer": "도로시아 랭",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "사진 속 여성 플로런스 오언스 톰프슨은 1978년 한 기자가 찾아낼 때까지 이름이 알려지지 않았다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 사진사",
+     "wor": 3,
+     "worWhy": "유명 사진 작가 이름",
+     "acc": 3,
+     "accWhy": "사진·디자인 — 관심층이면 안다"
+    },
+    "generalHint": "이 사진가는 일곱 살 때 소아마비로 오른쪽 다리를 절게 되었고, 2차 대전 때는 일본계 미국인 강제 이주도 기록했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Migrant_Mother"
+    ],
+    "facts": [
+     {
+      "claim": "1936년 니포모 완두콩 이주 노동자 캠프, 도로시아 랭",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Migrant_Mother",
+      "note": "Dorothea Lange, 1936, migrant pea pickers, Nipomo"
+     },
+     {
+      "claim": "재정착청(뒤의 농업안정국)에서 일하던 때",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Migrant_Mother",
+      "note": "working for the Resettlement Administration"
+     },
+     {
+      "claim": "톰프슨은 1978년 기자가 찾아낼 때까지 무명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Migrant_Mother",
+      "note": "unnamed until identified in 1978"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dorothea_Lange"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대공황을 상징하는 사진의 작가",
+    "targetWhy": "사진은 교과서에도 실릴 만큼 유명하나 사진가 이름은 대학 교양(사진사·미국사) 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

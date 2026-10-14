@@ -1,0 +1,84 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "transport/5",
+  "midKey": "transport",
+  "subName": "도로·교통 체계",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "transport/5#g003-C2-22",
+   "seed": {
+    "subject": "혼잡통행료",
+    "aspect": null,
+    "ref": "C2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "도심으로 들어오는 차에 돈을 물려 교통 체증을 줄이는 제도는 1975년 싱가포르가 처음 시행했고, 2003년 런던과 2006년 스톡홀름이 뒤를 이었습니다. 이렇게 걷는 요금을 무엇이라 할까요?",
+    "answer": "혼잡통행료",
+    "acceptedAnswers": [
+     "혼잡세"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "노벨 경제학상을 받은 윌리엄 비크리가 1952년 뉴욕 지하철에 시간대별 요금을 제안해 이 생각의 아버지로 꼽힌다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "뉴스에서 흔히 — 교통 정책",
+     "wor": 4,
+     "worWhy": "시사 — 교통 정책 어휘",
+     "acc": 4,
+     "accWhy": "자동차·교통 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Congestion_pricing",
+     "https://ko.wikipedia.org/wiki/혼잡통행료"
+    ],
+    "facts": [
+     {
+      "claim": "1975년 싱가포르 지역 면허제가 첫 시행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Congestion_pricing",
+      "note": "first implementation was Singapore Area Licensing Scheme in 1975"
+     },
+     {
+      "claim": "런던 2003년 · 스톡홀름 2006년",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Congestion_pricing",
+      "note": "London 2003 · Stockholm 2006 trial then permanent"
+     },
+     {
+      "claim": "비크리가 1952년 뉴욕 지하철 요금 제안 · 아버지로 꼽힘",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Congestion_pricing",
+      "note": "Nobel laureate William Vickrey considered by some the father · 1952 NYC subway proposal"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "제도 설명만으로 답이 나와 3 으로 매겨질 수 있다 — 알 가치는 4",
+    "targetWhy": "경제·도시 교양 개념 — 세계 첫 시행지 싱가포르가 깊은 층",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

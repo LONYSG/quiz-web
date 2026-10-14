@@ -1,0 +1,209 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "baseball/1",
+  "midKey": "baseball",
+  "subName": "규칙",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "baseball/1#g003-S1-19",
+   "seed": {
+    "subject": "인필드 플라이",
+    "aspect": null,
+    "ref": "S1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "무사나 1사에 주자가 1·2루 또는 만루일 때, 내야수가 평범하게 잡을 수 있는 뜬공이 뜨면 공을 잡든 못 잡든 타자는 아웃이 됩니다. 수비가 일부러 공을 떨어뜨려 병살을 노리는 것을 막으려는 이 규칙은 무엇일까요?",
+    "answer": "인필드 플라이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "라인드라이브나 번트 뜬공에는 적용되지 않으며, 1895년 내셔널리그가 처음 도입했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 야구 규칙",
+     "wor": 3,
+     "worWhy": "야구 대표 규칙 이름",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "generalHint": "2012년 메이저리그 와일드카드 경기에서 좌익수 앞 얕은 곳에 떨어진 공에 이 판정이 나와, 관중이 병을 던지며 경기가 20분쯤 멈췄다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Infield_fly_rule"
+    ],
+    "facts": [
+     {
+      "claim": "2아웃 미만 · 1·2루 또는 만루 · 내야수가 평범하게 잡을 뜬공",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Infield_fly_rule",
+      "note": "fewer than two outs and runners on first and second or bases loaded; ordinary effort"
+     },
+     {
+      "claim": "잡든 못 잡든 타자 아웃 · 고의 낙구 병살 방지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Infield_fly_rule",
+      "note": "batter is out whether or not caught; prevents deliberately letting ball drop for double play"
+     },
+     {
+      "claim": "라인드라이브·번트 제외 · 1895 내셔널리그 도입",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Infield_fly_rule",
+      "note": "does not apply to line drives or bunts; introduced 1895 by the National League"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Infield_fly_rule"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "규칙의 존재 이유까지 알게 됨",
+    "targetWhy": "야구 팬도 헷갈리는 규칙 이름 · 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "인필드 플라이 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/1#g003-S1-20",
+   "seed": {
+    "subject": "승부치기",
+    "aspect": null,
+    "ref": "S1-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2008년 베이징 올림픽 야구에서는 10회까지 비기면 11회부터 무사 1·2루에서 공격을 시작하게 했습니다. 이처럼 연장전에서 공격 쪽에 유리한 조건을 주어 빨리 승부를 가리는 규칙을 무엇이라 할까요?",
+    "answer": "승부치기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "베이징 올림픽 때는 1·2루에 내보낼 두 주자를 공격 팀이 골라 타순을 조정할 수 있었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 야구 규칙",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 연장전 규칙",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "generalHint": "메이저리그는 2020년부터 정규 시즌 연장에 주자를 2루에 두고 시작하며, 2023년 이를 영구 규칙으로 삼았다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/승부치기"
+    ],
+    "facts": [
+     {
+      "claim": "베이징 올림픽 · 10회 말까지 승부 안 나면 11회부터 무사 1·2루",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/승부치기",
+      "note": "11회부터 무사에 주자 2명을 1루와 2루에 보낸 상태에서 공격"
+     },
+     {
+      "claim": "정의 — 연장전 일정 이닝부터 공격측에 유리한 조건 · 경기시간 단축",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/승부치기",
+      "note": "공격측에 유리한 조건으로 진행하도록 하는 규칙"
+     },
+     {
+      "claim": "주자 2명을 정할 수 있어 타순 조정 가능",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/승부치기",
+      "note": "주자 2명을 정할 수 있어 타순 조정이 가능"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Extra_innings"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "승부차기와 헷갈리는 재미",
+    "targetWhy": "국제 대회 중계에서 접하는 규칙 이름 · 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "승부치기 new",
+    "warn": [
+     "정답조각 승부"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/1#g003-S1-21",
+   "seed": {
+    "subject": "서스펜디드 게임",
+    "aspect": null,
+    "ref": "S1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "야구 경기가 비나 조명 고장 때문에 더 진행될 수 없을 때, 경기를 그대로 끝내지 않고 멈춘 뒤 나중에 같은 상황에서 이어 치르게 하기도 합니다. 이런 경기를 무엇이라 할까요?",
+    "answer": "서스펜디드 게임",
+    "acceptedAnswers": [
+     "일시정지경기"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "2014년 8월 5일 사직야구장에서는 조명이 꺼져 멈춘 경기를 다음 날 이어서 치렀습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 야구 규칙",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 경기 중단 규칙",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "generalHint": "메이저 리그 2008년 월드 시리즈 5차전은 6회 2-2에서 멈췄다가 이틀 뒤 마저 치러, 월드 시리즈 첫 사례가 되었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/서스펜디드_게임"
+    ],
+    "facts": [
+     {
+      "claim": "경기 중단 뒤 같은 상황에서 재개하는 규정 · 주요 사유 우천 · 조명 고장 · 정전",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/서스펜디드_게임",
+      "note": "경기를 중단하고 이후 같은 상황에서 경기를 재개하도록 하는 규정"
+     },
+     {
+      "claim": "2014.8.5 사직 조명 꺼짐 → 8.6 재개",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/서스펜디드_게임",
+      "note": "2014년 8월 5일 사직야구장 조명이 꺼져 선언, 8월 6일 재개"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Suspended_game"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "정의형이라 3 에 가까울 수 있음",
+    "targetWhy": "드물게 나오는 경기 형태의 이름 · 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "서스펜디드 게임 · 일시정지경기 new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,87 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "medicine/2",
+  "midKey": "medicine",
+  "subName": "증상·진단",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/2#g003-C1-05",
+   "seed": {
+    "subject": "심전도",
+    "aspect": null,
+    "ref": "C1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "네덜란드의 생리학자 빌럼 에인트호번은 이 검사의 파형에 P·Q·R·S·T라는 글자를 붙였고, 이 공로로 1924년 노벨 생리의학상을 받았습니다. 심장의 전기 신호를 기록하는 이 검사는 무엇일까요?",
+    "answer": "심전도",
+    "acceptedAnswers": [
+     "심전도 검사"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그는 가느다란 실 모양 도체가 전류에 흔들리는 '현 검류계'를 1901년부터 만들어 아주 약한 심장 전류를 잴 수 있게 했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "중학 과학 — 심장 검사",
+     "wor": 4,
+     "worWhy": "교양 — 기본 의학 검사",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Willem_Einthoven"
+    ],
+    "facts": [
+     {
+      "claim": "에인트호번은 네덜란드인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Willem_Einthoven",
+      "note": "Dutch"
+     },
+     {
+      "claim": "파형에 P·Q·R·S·T 글자를 붙임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Willem_Einthoven",
+      "note": "assigned letters P, Q, R, S, T to the deflections"
+     },
+     {
+      "claim": "1924년 노벨 생리의학상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Willem_Einthoven",
+      "note": "Nobel Prize in Physiology or Medicine 1924"
+     },
+     {
+      "claim": "1901년부터 현 검류계 시제품",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Willem_Einthoven",
+      "note": "string galvanometer prototypes beginning 1901"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 검사의 뒷이야기",
+    "targetWhy": "검사 이름은 흔하나 PQRST 이름과 발명자는 대학 교양(의학사·생리학) 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (82 뇌파 검사와 다른 대상)",
+    "warn": []
+   }
+  }
+ ]
+}

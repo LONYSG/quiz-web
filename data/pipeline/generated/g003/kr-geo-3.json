@@ -1,0 +1,352 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-geo/3",
+  "midKey": "kr-geo",
+  "subName": "섬·해안",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-geo/3#g003-K2-08",
+   "seed": {
+    "subject": "석호",
+    "aspect": null,
+    "ref": "K2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "강릉 경포호와 고성 화진포·송지호는 모래가 쌓인 사주가 만의 입구를 막아 바다와 떨어지면서 생긴 호수입니다. 이런 호수를 무엇이라 할까요?",
+    "answer": "석호",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "우리나라 동해안에는 이런 호수가 18곳쯤 흩어져 있으며 속초의 영랑호·청초호도 여기에 듭니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "중학 사회 — 해안 지형",
+     "wor": 5,
+     "worWhy": "교과서 — 지형",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/석호"
+    ],
+    "facts": [
+     {
+      "claim": "사취·사주가 만의 입구를 막아 바다와 분리되어 생긴 호수",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/석호",
+      "note": "사취, 사주 따위가 만의 입구를 막아 바다와 분리되어 생긴 호수"
+     },
+     {
+      "claim": "화진포·송지호·경포호 등 동해안 18개소",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/석호",
+      "note": "화진포, 송지호, 경포호 등 18개소가 산재"
+     },
+     {
+      "claim": "영랑호·청초호도 석호",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/석호",
+      "note": "영랑호와 청초호도 석호의 예로 언급"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "고교 지리 용어라 3으로 매겨질 수 있음",
+    "targetWhy": "고교 한국지리 해안 지형 용어 — 이름난 호수가 같은 지형이라는 연결",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/3#g003-K2-09",
+   "seed": {
+    "subject": "육계도",
+    "aspect": null,
+    "ref": "K2-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제주 성산일출봉과 양양 죽도는 본래 섬이었으나 모래가 쌓인 모래톱(사주)으로 육지와 이어졌습니다. 이처럼 사주로 육지와 연결된 섬을 무엇이라 할까요?",
+    "answer": "육계도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "성산일출봉은 얕은 바다에서 화산이 분출해 만들어진 응회구로, 2007년 세계자연유산 '제주 화산섬과 용암 동굴'의 일부가 되었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 지리 — 해안 지형",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 지형",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "generalHint": "이탈리아 토스카나의 몬테아르젠타리오와 지브롤터 바위산도 이런 섬의 예로 꼽힌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/육계도",
+     "https://ko.wikipedia.org/wiki/성산일출봉"
+    ],
+    "facts": [
+     {
+      "claim": "육계사주에 의해 육지와 연결된 섬이 육계도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/육계도",
+      "note": "육계사주에 의해 육지와 연결된 섬을 육계도라고 한다"
+     },
+     {
+      "claim": "대표 예 성산일출봉, 양양 죽도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/육계도",
+      "note": "대표적인 예로는 제주도의 성산일출봉, 영흥만의 호도반도, 양양의 죽도"
+     },
+     {
+      "claim": "성산일출봉 응회구, 2007년 세계자연유산 일부",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/성산일출봉",
+      "note": "얕은 바다에서 화산이 분출 / 2007년 세계자연유산 등재"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tombolo"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 대상(성산일출봉)의 지형 분류",
+    "targetWhy": "수능 한국지리 심화 해안 지형 — 성산일출봉이 육계도라는 사실은 잘 모름",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/3#g003-K2-10",
+   "seed": {
+    "subject": "우도",
+    "aspect": null,
+    "ref": "K2-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제주의 한 부속섬에는 산호사 해수욕장이라고도 불리는 해변이 있는데, 그 흰 알갱이는 홍조류가 탄산칼슘을 쌓아 만든 홍조단괴입니다. 2004년 천연기념물로 지정된 이 해변이 있는 섬은?",
+    "answer": "우도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "섬의 생김새가 소가 누워 있는 모습 같다고 해서 이름이 붙었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 제주 지리",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 우도 해변",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "generalHint": "성산항에서 여객선이 자주 오가며, 땅콩이 특산물로 꼽힌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/우도_홍조단괴해빈",
+     "https://ko.wikipedia.org/wiki/우도"
+    ],
+    "facts": [
+     {
+      "claim": "홍조단괴해빈(산호사해수욕장), 제주시 우도면",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우도_홍조단괴해빈",
+      "note": "제주특별자치도 제주시 우도면에 위치한 해수욕장"
+     },
+     {
+      "claim": "홍조류가 탄산칼슘을 침전시켜 홍조단괴 형성",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우도_홍조단괴해빈",
+      "note": "홍조류가 탄산칼슘을 침전시켜 홍조단괴를 형성"
+     },
+     {
+      "claim": "2004년 천연기념물 지정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우도_홍조단괴해빈",
+      "note": "2004년 4월 9일 천연기념물 제438호"
+     },
+     {
+      "claim": "산호사해수욕장이라는 다른 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우도",
+      "note": "우도 홍조단괴해빈(산호사해수욕장)"
+     },
+     {
+      "claim": "섬 모습이 소가 누워 있는 것 같아 이름 붙음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/우도",
+      "note": "우도란 이름은 섬의 모습이 소가 누워 있는 것 같다고 해서"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/우도"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 섬, 뜻밖의 사실",
+    "targetWhy": "우도는 유명 관광지지만 해변 모래의 정체는 지리·여행 애호가가 아는 사실",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/3#g003-K2-11",
+   "seed": {
+    "subject": "신두리",
+    "aspect": null,
+    "ref": "K2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "겨울철 강한 북서 계절풍이 바닷가 모래를 날라 쌓은 한국 최대의 해안사구가 충남 태안에 있습니다. 이 해안사구가 있는 마을(리)의 이름은?",
+    "answer": "신두리",
+    "acceptedAnswers": [
+     "신두리 해안사구"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "2001년 천연기념물로 지정되었고, 사구의 습지에는 맹꽁이·금개구리 같은 멸종위기종이 삽니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국지리",
+     "wor": 4,
+     "worWhy": "교양 — 국내 지형 명소",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "generalHint": "이 마을은 태안군 원북면에 속하며, 사구 전체 넓이는 264만㎡쯤이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/태안_신두리_해안사구"
+    ],
+    "facts": [
+     {
+      "claim": "태안군 원북면 신두리, 한국 최대의 해안사구",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/태안_신두리_해안사구",
+      "note": "충청남도 태안군 원북면 신두리에 있는 한국 최대의 해안사구"
+     },
+     {
+      "claim": "해안사구는 겨울철 강한 북서 계절풍으로 모래가 날려 퇴적",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/태안_신두리_해안사구",
+      "note": "겨울철 강한 북서 계절풍에 의해 바닷가의 모래가 바람에 날려 육지쪽에 퇴적"
+     },
+     {
+      "claim": "2001년 천연기념물 제431호, 맹꽁이·금개구리 서식",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/태안_신두리_해안사구",
+      "note": "천연기념물 제431호(2001.11.30) / 맹꽁이, 금개구리, 구렁이 서식"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%8B%A0%EB%91%90%EB%A6%AC_%ED%95%B4%EC%95%88%EC%82%AC%EA%B5%AC"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "대상의 지명 자체가 덜 알려졌을 수 있음 — 교과 대표 사례라 살림",
+    "targetWhy": "수능 한국지리 해안사구 대표 사례 — 이름은 지리 관심층만 앎",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/3#g003-P1-07",
+   "seed": {
+    "subject": "채석강",
+    "aspect": null,
+    "ref": "P1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "전북 부안 변산반도 격포리 해안에는 중생대 백악기 퇴적암이 파도에 깎여, 수만 권의 책을 쌓아 놓은 듯한 절벽이 이어집니다. 당나라 시인 이태백이 달그림자를 보며 노닐던 중국의 강 경치에 견줄 만하다는 데서 이름이 붙은 이 해안은 어디일까요?",
+    "answer": "채석강",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2004년 이웃한 적벽강과 하나로 묶여 명승으로 지정되었다. 그 전에는 1976년부터 각각 전북 기념물이었다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 지리 — 해안 퇴적 지형 명소",
+     "wor": 4,
+     "worWhy": "교양 — 대표 해안 명승",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "generalHint": "봉화대가 있던 닭이봉 아래로 높이 30~50m의 절벽이 이어지고, 절리를 따라 좁고 높은 해식 동굴도 파였다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/채석강",
+     "https://m.go.seoul.co.kr/news/2024/07/23/20240723026002"
+    ],
+    "facts": [
+     {
+      "claim": "부안군 변산면 격포리, 백악기 격포리층 퇴적암, 높은 해식애, 수만 권의 책을 쌓은 듯한 층리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/채석강",
+      "note": "부안 채석강·적벽강 일원 문서"
+     },
+     {
+      "claim": "이태백이 달그림자를 보며 풍류를 즐긴 중국 채석강 경치에 견줄 만하다 해서 붙은 이름",
+      "where": "q",
+      "url": "https://m.go.seoul.co.kr/news/2024/07/23/20240723026002",
+      "note": "서울신문 기사 — 이름 유래 문장"
+     },
+     {
+      "claim": "2004년 11월 17일 명승 지정(채석강·적벽강 일원), 1976년 각각 전북 기념물 지정 후 해지",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/채석강",
+      "note": "명승 제13호, 기념물 28·29호 해지"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/채석강"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 봤을 명소, 묻는 것은 지형과 이름 유래",
+    "targetWhy": "해안 지형은 교과서지만 채석강 이름의 이태백 유래는 여행·지리 애호가가 아는 이야기",
+    "pairCheck": "",
+    "dbCheck": "채석강 new",
+    "warn": []
+   }
+  }
+ ]
+}

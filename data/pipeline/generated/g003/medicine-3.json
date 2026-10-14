@@ -1,0 +1,168 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "medicine/3",
+  "midKey": "medicine",
+  "subName": "의약품·백신",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/3#g003-C1-03",
+   "seed": {
+    "subject": "탈리도마이드",
+    "aspect": null,
+    "ref": "C1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1957년 서독의 제약사 그뤼넨탈이 진정제로 내놓아 임신부의 입덧에도 쓰였던 약이 있습니다. 이 약 때문에 팔다리가 짧은 아기가 1만 명 넘게 태어나 1961년 유럽에서 회수되었습니다. 이 약은 무엇일까요?",
+    "answer": "탈리도마이드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "미국 식품의약국 심사관 프랜시스 켈시가 자료가 부족하다며 승인을 거부해 미국은 피해를 크게 피했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 약화 사건",
+     "wor": 4,
+     "worWhy": "교양 — 의약 안전 역사",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "generalHint": "오늘날에는 다발골수종 치료와 한센병의 아픈 피부 합병증 치료에 다시 쓰인다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Thalidomide_scandal"
+    ],
+    "facts": [
+     {
+      "claim": "1957년 서독 그뤼넨탈이 진정제로 출시, 입덧에도 쓰임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thalidomide_scandal",
+      "note": "1957 tranquilizer · Chemie Grünenthal · morning sickness"
+     },
+     {
+      "claim": "팔다리가 짧은 아기(해표지증) 1만 명 이상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thalidomide_scandal",
+      "note": "phocomelia · more than 10,000 babies"
+     },
+     {
+      "claim": "1961년 유럽 시장에서 회수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thalidomide_scandal",
+      "note": "removed from the European market in 1961"
+     },
+     {
+      "claim": "FDA 프랜시스 켈시가 승인 거부",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Thalidomide_scandal",
+      "note": "Frances Oldham Kelsey refused approval, further studies needed"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Thalidomide"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "의약품 규제 역사의 기본 사례, 이름은 들어 봤을 법함",
+    "targetWhy": "약화(藥禍) 사건의 대표 사례 — 대학 교양(약학·생명윤리) 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "medicine/3#g003-P4-01",
+   "seed": {
+    "subject": "퀴닌",
+    "aspect": null,
+    "ref": "P4-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "남아메리카 기나나무의 껍질에서 얻는 쓴맛의 알칼로이드로, 1820년 프랑스의 펠티에와 카방투가 처음 순수하게 뽑아냈습니다. 오랫동안 말라리아 치료의 대표 약이었고, 지금은 토닉워터의 쓴맛을 내는 성분으로도 쓰입니다. 이 물질은 무엇일까요?",
+    "answer": "퀴닌",
+    "acceptedAnswers": [
+     "키니네"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "자외선을 받으면 형광빛을 내는 성질이 있어, 퀴닌이 든 토닉워터는 자외선 등 아래에서 빛을 냅니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 — 세계사·약물",
+     "wor": 4,
+     "worWhy": "교양 — 말라리아 약",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "generalHint": "기나나무의 학명은 1638년 이 껍질로 열병을 고쳤다는 페루 총독 부인 친촌 백작 부인 이야기에서 린네가 따왔다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Quinine",
+     "https://ko.wikipedia.org/wiki/퀴닌"
+    ],
+    "facts": [
+     {
+      "claim": "기나나무(신코나) 껍질에서 얻는다 · 원산은 페루 등 남아메리카",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Quinine",
+      "note": "Quinine comes from the bark of the cinchona tree, native to Peru"
+     },
+     {
+      "claim": "1820년 펠티에와 카방투가 처음 분리했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Quinine",
+      "note": "Pelletier and Caventou first isolated quinine from cinchona bark (1820)"
+     },
+     {
+      "claim": "말라리아 치료에 쓰여 왔다 · 토닉워터의 쓴맛 성분",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Quinine",
+      "note": "used to treat malaria; flavor component of tonic water"
+     },
+     {
+      "claim": "키니네라는 이름으로도 부른다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/퀴닌",
+      "note": "본문에 '쓴맛이 나는 키니네' 표기"
+     },
+     {
+      "claim": "자외선을 받으면 형광빛을 낸다 · 토닉워터의 주 성분",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/퀴닌",
+      "note": "퀴닌은 토닉워터의 주 성분으로, 자외선을 받으면 형광빛을 낸다"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cinchona"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "말라리아·토닉워터는 익숙하고 물질 이름이 한 층 깊다",
+    "targetWhy": "대학 교양 — 약학사. 정답 이름이 교과서 밖이지만 들으면 '아 키니네' 하는 교양 지식",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 모두 없음 (키니네도 new)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

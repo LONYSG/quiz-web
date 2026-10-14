@@ -1,0 +1,283 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "baseball/4",
+  "midKey": "baseball",
+  "subName": "야구 용어·전술",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "baseball/4#g003-S1-27",
+   "seed": {
+    "subject": "토미 존 수술",
+    "aspect": null,
+    "ref": "S1-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "투수의 팔꿈치 인대가 손상되면 몸의 다른 곳이나 기증자의 힘줄로 바꿔 넣는 수술을 합니다. 1974년 의사 프랭크 조브가 처음 집도했고, 그때 수술을 받은 다저스 투수의 이름이 붙은 이 수술은 무엇일까요?",
+    "answer": "토미 존 수술",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "수술을 받은 그 투수는 수술 전보다 많은 164승을 더 올리고 46세에 은퇴했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 야구 의학 용어",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 수술 이름",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "generalHint": "집도의 조브는 수술 당시 성공 가능성을 100분의 1쯤으로 보았다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ulnar_collateral_ligament_reconstruction"
+    ],
+    "facts": [
+     {
+      "claim": "인대를 다른 곳이나 기증자 힘줄로 교체",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ulnar_collateral_ligament_reconstruction",
+      "note": "replaced with a tendon from elsewhere in the body or from a deceased donor"
+     },
+     {
+      "claim": "1974 프랭크 조브 · 다저스 투수 토미 존",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ulnar_collateral_ligament_reconstruction",
+      "note": "Frank Jobe, Dodgers team physician, performed it on Tommy John in 1974"
+     },
+     {
+      "claim": "수술 뒤 164승(전 124승) · 1989년 46세 은퇴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ulnar_collateral_ligament_reconstruction",
+      "note": "164 after, 124 before; retired 1989 at 46"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tommy_John_surgery"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름의 유래가 사람이라는 '아 그렇구나'",
+    "targetWhy": "투수 부상 뉴스에서 접하는 용어의 유래 · 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "토미 존 수술 new",
+    "warn": [
+     "정답조각 수술",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/4#g003-S1-28",
+   "seed": {
+    "subject": "오프너",
+    "aspect": null,
+    "ref": "S1-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "선발 투수 대신 불펜 투수가 경기 첫머리의 1이닝 정도만 막고 내려가면, 뒤이어 나온 투수가 긴 이닝을 맡는 기용법이 있습니다. 2018년 탬파베이 레이스가 세르히오 로모를 내세워 널리 퍼뜨린, 이 첫 투수를 무엇이라 부를까요?",
+    "answer": "오프너",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "경기를 끝내는 마무리 투수 '클로저'에 빗대어 붙은 이름입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 야구 전술",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 현대 야구 전술",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "generalHint": "앞선 예로 1924년 월드 시리즈 7차전에서 워싱턴이 두 타자만 상대할 투수를 먼저 내보낸 일이 꼽힌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Opener_(baseball)"
+    ],
+    "facts": [
+     {
+      "claim": "첫 이닝 정도만 던지고 롱 릴리버가 이어받음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Opener_(baseball)",
+      "note": "starts a game but expected to record only a few outs before a long reliever"
+     },
+     {
+      "claim": "2018 레이스 · 로모가 첫 오프너 · 널리 퍼짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Opener_(baseball)",
+      "note": "Rays began using openers May 19, 2018; Romo first opener, credited with wider use"
+     },
+     {
+      "claim": "클로저에 빗댄 이름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Opener_(baseball)",
+      "note": "name is a play on closer"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Opener_(baseball)"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "중계에서 들리는 새 전술 용어",
+    "targetWhy": "최근 전술 용어 · 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "오프너 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/4#g003-S1-29",
+   "seed": {
+    "subject": "스퀴즈 번트",
+    "aspect": null,
+    "ref": "S1-29",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "3루에 주자가 있을 때 타자가 번트를 대고 그 틈에 3루 주자가 홈으로 파고드는 작전이 있습니다. 투수가 와인드업을 시작하자마자 주자가 먼저 뛰는 방식에는 '수어사이드'라는 말이 붙는 이 작전은 무엇일까요?",
+    "answer": "스퀴즈 번트",
+    "acceptedAnswers": [
+     "스퀴즈",
+     "스퀴즈 플레이"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1894년 예일 대학교에서 열린 대학 경기에서 조지 케이스와 더치 카터가 처음 썼다고 전합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 야구 작전",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 야구 작전",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "generalHint": "주자가 타자의 번트가 공에 닿은 뒤에야 홈으로 뛰는 방식에는 '세이프티'라는 말이 붙는다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Squeeze_play_(baseball)"
+    ],
+    "facts": [
+     {
+      "claim": "3루 주자 · 번트 · 홈 쇄도",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Squeeze_play_(baseball)",
+      "note": "sacrifice bunt attempted with a runner on third"
+     },
+     {
+      "claim": "수어사이드 스퀴즈 — 와인드업 시작과 함께 주자 출발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Squeeze_play_(baseball)",
+      "note": "Suicide squeeze: the runner leaves as the pitcher starts his windup"
+     },
+     {
+      "claim": "1894 예일 대학 경기 · 케이스와 카터 (Baseball Almanac 설)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Squeeze_play_(baseball)",
+      "note": "Baseball Almanac credits George Case and Dutch Carter, 1894, Yale"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Squeeze_play_(baseball)"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "작전 이름 자체는 3 쪽일 수 있음 · 희생번트(781)와 구별되는 하위 작전",
+    "targetWhy": "작전 이름과 수어사이드 변형은 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "스퀴즈 번트 new (희생번트 781 과 답 다름 — 더 좁은 작전)",
+    "warn": [
+     "정답조각 번트"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/4#g003-S1-30",
+   "seed": {
+    "subject": "퀄리티 스타트",
+    "aspect": null,
+    "ref": "S1-30",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "선발 투수가 6이닝 이상을 던지며 자책점을 3점 이하로 막은 경기를 세는 지표가 있습니다. 1985년 미국 필라델피아 인콰이어러의 기자 존 로가 만든 이 지표는 무엇일까요?",
+    "answer": "퀄리티 스타트",
+    "acceptedAnswers": [
+     "QS"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "기준을 겨우 채우면 평균자책점이 4.50이 되어 너무 후한 지표라는 비판도 받습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 야구 지표",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 야구 지표",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "generalHint": "밥 깁슨은 1967~68년 이 기록을 26경기 잇달아 이어 갔고, 2018~19년 제이컵 디그롬이 그와 나란히 섰다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Quality_start"
+    ],
+    "facts": [
+     {
+      "claim": "6이닝 이상 · 자책 3점 이하",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Quality_start",
+      "note": "at least six innings and three or fewer earned runs"
+     },
+     {
+      "claim": "1985 존 로 · 필라델피아 인콰이어러",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Quality_start",
+      "note": "John Lowe developed it in 1985 while writing for The Philadelphia Inquirer"
+     },
+     {
+      "claim": "최소 기준이면 ERA 4.50 비판",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Quality_start",
+      "note": "Tim McCarver: three runs for six innings means ERA 4.50"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Quality_start"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "정의만으로도 풀릴 수 있어 3 쪽일 수 있음",
+    "targetWhy": "중계 지표 용어 · 정의는 팬이 알고 만든 이는 애호가가 안다",
+    "pairCheck": "",
+    "dbCheck": "퀄리티 스타트 · QS new",
+    "warn": []
+   }
+  }
+ ]
+}

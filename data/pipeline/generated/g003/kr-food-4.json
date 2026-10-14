@@ -1,0 +1,215 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-food/4",
+  "midKey": "kr-food",
+  "subName": "향토 음식",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/4#g003-K2-24",
+   "seed": {
+    "subject": "농마국수",
+    "aspect": null,
+    "ref": "K2-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "남한에서 함흥냉면이라 부르는 음식을 북한에서는 감자 녹말로 뽑은 국수라는 뜻의 이름으로 부릅니다. 북한말로 녹말을 이르는 말이 들어간 이 국수 이름은?",
+    "answer": "농마국수",
+    "acceptedAnswers": [
+     "감자농마국수"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "메밀국수를 쓰는 평양냉면과 달리 감자녹말 면은 발이 가늘고 질긴 것이 특징입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 북한 음식 이름",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 남북 음식명",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "같은 고장에서 온 매운 회국수와 짝을 이루며, 남쪽에서는 감자 대신 고구마 녹말을 주로 쓰게 되었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/함흥냉면"
+    ],
+    "facts": [
+     {
+      "claim": "함흥냉면(문화어: 함흥감자농마국수)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/함흥냉면",
+      "note": "함흥냉면(咸興冷麵, 문화어: 함흥감자농마국수)"
+     },
+     {
+      "claim": "함흥의 농마국수는 감자녹말 국수",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/함흥냉면",
+      "note": "함흥의 농마국수는 익반죽해 만든 감자녹말 국수"
+     },
+     {
+      "claim": "평양냉면과 달리 감자녹말 면은 가늘고 질김",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/함흥냉면",
+      "note": "메밀국수를 쓰는 평양냉면과 달리 감자녹말로 만든 국수가 발이 가늘고 질긴"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%ED%95%A8%ED%9D%A5%EB%83%89%EB%A9%B4"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 음식의 다른 이름",
+    "targetWhy": "함흥냉면의 북한 이름 — 냉면 애호가·북한 음식 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "정답조각 국수"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/4#g003-K2-25",
+   "seed": {
+    "subject": "빙떡",
+    "aspect": null,
+    "ref": "K2-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "메밀가루 반죽을 돼지비계로 얇게 지진 뒤 무채를 넣고 돌돌 말아 만드는 제주의 향토 음식은?",
+    "answer": "빙떡",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "제주 안에서도 지역에 따라 멍석떡·홀아방떡·전기떡 등 여러 이름으로 불립니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 제주 향토 음식",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "손이 덜 가 한꺼번에 많이 만들기 쉬웠고, 요즘은 한두 입 크기로 작게 빚어 소에 고기나 당근을 더하기도 한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/빙떡"
+    ],
+    "facts": [
+     {
+      "claim": "메밀가루 반죽을 돼지비계로 지진 전에 무채를 넣고 말아 만든 떡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/빙떡",
+      "note": "메밀가루를 반죽하여 돼지비계로 지진 전에 무채를 넣고 말아"
+     },
+     {
+      "claim": "제주 지방의 전통 음식",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/빙떡",
+      "note": "대한민국 제주 지방의 전통 음식"
+     },
+     {
+      "claim": "멍석떡·홀아방떡·전기떡 등",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/빙떡",
+      "note": "멍석떡, 홀아방떡 또는 홀애비떡, 전기떡"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/빙떡"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "대상이 몸국 정도로 덜 알려짐",
+    "targetWhy": "제주 여행·향토 음식 애호가가 아는 수준 — examplesHard 몸국과 같은 층",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/4#g003-P1-11",
+   "seed": {
+    "subject": "올챙이국수",
+    "aspect": null,
+    "ref": "P1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "옥수수로 쑨 반죽을 구멍 뚫린 바가지 틀에 부어 내리면, 반죽이 짧은 가락이 되어 뚝뚝 떨어집니다. 그 떨어진 가락의 생김새에서 이름이 붙었다는, 정선·평창 등 강원 산간에서 즐겨 먹는 국수는 무엇일까요?",
+    "answer": "올챙이국수",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "옥수수 대신 도토리로 만드는 도토리 올챙이국수도 있고, 진천·무주 같은 다른 산간 지역에서도 먹는다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 강원 향토 음식",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 이름 유래 음식",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "강원도 향토 음식 목록에는 홍천 지역의 음식으로 올라 있다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/올챙이국수"
+    ],
+    "facts": [
+     {
+      "claim": "옥수수를 재료로 올챙이 모양으로 만든 국수",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/올챙이국수",
+      "note": "정의"
+     },
+     {
+      "claim": "반죽이 바가지 틀(구멍)로 떨어지는 모양에서 이름이 옴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/올챙이국수",
+      "note": "이름 유래"
+     },
+     {
+      "claim": "강원 정선·평창 등 산간, 진천·무주 등에서도 먹음, 도토리 올챙이국수도 있음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/올챙이국수",
+      "note": "지역·변형"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/올챙이국수"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "만드는 과정과 생김새로 추리할 수 있는 향토 음식",
+    "targetWhy": "막국수는 누구나 알지만 올챙이국수는 교과서·방송 흔한 음식 밖 — 향토 음식 애호가가 아는 이름",
+    "pairCheck": "",
+    "dbCheck": "올챙이국수 new",
+    "warn": [
+     "정답조각 국수"
+    ]
+   }
+  }
+ ]
+}

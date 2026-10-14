@@ -1,0 +1,91 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "politics/5",
+  "midKey": "politics",
+  "subName": "법률 용어",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "politics/5#g003-H1-06",
+   "seed": {
+    "subject": "독수독과",
+    "aspect": null,
+    "ref": "H1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "위법한 수사로 얻은 증거는 물론, 그 증거를 실마리로 찾아낸 2차 증거까지 재판에서 쓸 수 없다는 법리가 있습니다. 1939년 미국 연방대법원 판결에서 펠릭스 프랭크퍼터 대법관이 쓴 비유에서 이름이 나온, 한자 네 글자로 부르는 이 이론은?",
+    "answer": "독수독과",
+    "acceptedAnswers": [
+     "독수독과 이론"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 법리는 1920년 실버손 목재 회사 사건 판결에서 처음 제시되었고, 독립된 출처나 불가피한 발견 같은 예외가 인정됩니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 형사법 법리",
+     "wor": 4,
+     "worWhy": "시사 — 법 기본 어휘",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "generalHint": "1939년 판결은 영장 없는 도청으로 얻은 대화와 거기서 끌어낸 증거까지 연방 법정에서 쓸 수 없다고 했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Fruit_of_the_poisonous_tree"
+    ],
+    "facts": [
+     {
+      "claim": "불법으로 얻은 증거에서 파생된 증거도 오염된 것으로 본다는 법적 비유",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fruit_of_the_poisonous_tree",
+      "note": "source tainted → derived tainted"
+     },
+     {
+      "claim": "용어는 1939년 Nardone v. United States 에서 펠릭스 프랭크퍼터 대법관이 처음 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fruit_of_the_poisonous_tree",
+      "note": "308 U.S. 338 (1939)"
+     },
+     {
+      "claim": "법리는 1920년 Silverthorne Lumber Co. v. United States 에서 처음 서술",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fruit_of_the_poisonous_tree",
+      "note": "251 U.S. 385 (1920)"
+     },
+     {
+      "claim": "독립된 출처·불가피한 발견·희석·선의 예외",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fruit_of_the_poisonous_tree",
+      "note": "네 가지 예외"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Nardone_v._United_States"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "법정 드라마·뉴스에 나오는 용어, 묻는 것은 파생 증거 배제와 이름의 유래",
+    "targetWhy": "대학 교양 형사소송법 — 위법수집증거 배제는 들어 봤어도 파생 증거까지 막는 이론 이름은 한 층 깊다",
+    "pairCheck": "",
+    "dbCheck": "new — 독수독과·독수독과 이론 모두 활성·초안 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

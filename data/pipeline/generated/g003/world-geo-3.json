@@ -1,0 +1,227 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "world-geo/3",
+  "midKey": "world-geo",
+  "subName": "랜드마크·지형",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/3#g003-H1-26",
+   "seed": {
+    "subject": "엔젤 폭포",
+    "aspect": null,
+    "ref": "H1-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "베네수엘라 카나이마 국립공원에 있는, 세계에서 가장 높은 폭포로 꼽히는 곳입니다. 1933년 광물 자원을 찾아 비행하던 비행사가 하늘에서 보고 널리 알린 뒤, 그의 이름을 따 이름 붙은 이 폭포는?",
+    "answer": "엔젤 폭포",
+    "acceptedAnswers": [
+     "앙헬 폭포"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "물이 거의 수직으로 떨어져, 물이 적을 때는 바닥에 닿기 전에 안개처럼 흩어지기도 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 세계 지리 폭포",
+     "wor": 4,
+     "worWhy": "교양 — 세계 지리",
+     "acc": 4,
+     "accWhy": "세계 지리 — 고교 세계지리 교과"
+    },
+    "generalHint": "그 비행사는 1937년 폭포 위 아우얀테푸이에 비행기를 내렸다가 다시 뜨지 못해, 일행과 열하루를 걸어 내려왔다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/앙헬_폭포"
+    ],
+    "facts": [
+     {
+      "claim": "베네수엘라 볼리바르 주 카나이마 국립공원, 세계에서 가장 높은 폭포",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/앙헬_폭포",
+      "note": "위치·높이 979m"
+     },
+     {
+      "claim": "1933년 11월 18일 광물자원을 탐사하던 지미 엔젤이 비행기에서 재발견해 널리 알려졌고 이름도 그에게서 왔다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/앙헬_폭포",
+      "note": "이름 유래"
+     },
+     {
+      "claim": "거의 수직으로 떨어지며 물이 적을 때는 바닥에 닿기 전 안개가 되어 흩어지기도 한다",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/앙헬_폭포",
+      "note": "특징"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jimmie_Angel"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름의 유래가 뜻밖인 유명 랜드마크",
+    "targetWhy": "애호가(여행·지리) — 폭포는 들어 봤어도 이름이 비행사에게서 왔다는 사실은 한 층 깊다",
+    "pairCheck": "",
+    "dbCheck": "new — 엔젤 폭포·앙헬 폭포 모두 활성·초안 없음",
+    "warn": [
+     "정답조각 폭포"
+    ]
+   }
+  },
+  {
+   "seedId": "world-geo/3#g003-H1-27",
+   "seed": {
+    "subject": "아타카마 사막",
+    "aspect": null,
+    "ref": "H1-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "칠레 북부 태평양 연안에 펼쳐져, NASA 등의 연구에서 세계에서 가장 메마른 곳으로 꼽히는 사막이 있습니다. 19세기에는 이곳의 초석을 둘러싸고 칠레·페루·볼리비아가 전쟁을 벌였는데, 이 사막은?",
+    "answer": "아타카마 사막",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "맑고 건조한 하늘 덕분에 알마(ALMA) 같은 천문 관측 시설이 들어서 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 세계지리",
+     "wor": 4,
+     "worWhy": "교양 — 세계 지형",
+     "acc": 4,
+     "accWhy": "세계 지리 — 고교 세계지리 교과"
+    },
+    "generalHint": "이 일대 바닷가에 살던 친초로 문화 사람들은 공들인 미라 만들기로 이름나다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아타카마_사막"
+    ],
+    "facts": [
+     {
+      "claim": "남아메리카 안데스 서쪽 태평양 연안 칠레 북부의 사막",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아타카마_사막",
+      "note": "위치"
+     },
+     {
+      "claim": "NASA·내셔널 지오그래픽 등의 연구에서 세계에서 가장 메마른 곳",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아타카마_사막",
+      "note": "건조"
+     },
+     {
+      "claim": "19세기 초석 생산으로 페루·칠레·볼리비아 사이에 전쟁",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아타카마_사막",
+      "note": "초석"
+     },
+     {
+      "claim": "건조한 기후를 활용해 ALMA 등 천문 관측 시설",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아타카마_사막",
+      "note": "천문"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Atacama_Desert"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "다큐·여행으로 들어 봤을 법한 이름, 초석 전쟁이 새 연결",
+    "targetWhy": "애호가(지리)·고교 세계지리 심화 — 사하라는 알아도 가장 건조한 사막은 한 층 깊다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성 사하라 사막과 답·지식 다름",
+    "warn": [
+     "정답조각 사막"
+    ]
+   }
+  },
+  {
+   "seedId": "world-geo/3#g003-H1-28",
+   "seed": {
+    "subject": "에베레스트",
+    "aspect": null,
+    "ref": "H1-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1865년 영국 왕립지리학회는 '피크 15'라 불리던 히말라야의 한 봉우리에 인도 측량국장을 지낸 인물의 이름을 붙였습니다. 정작 그 인물은 인도 사람들이 이 이름을 쓰지도 발음하지도 못한다며 반대했는데, 이 봉우리는?",
+    "answer": "에베레스트",
+    "acceptedAnswers": [
+     "에베레스트산"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름을 고른 것은 그의 후임 측량국장 앤드루 워였고, 조지 에베레스트 자신은 성을 '이브리스트'에 가깝게 발음했다고 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "중학 지리 — 세계 최고봉",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 지명 유래",
+     "acc": 4,
+     "accWhy": "세계 지리 — 고교 세계지리 교과"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mount_Everest"
+    ],
+    "facts": [
+     {
+      "claim": "영국 측량국이 임시로 Peak XV 라 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mount_Everest",
+      "note": "임시 명칭"
+     },
+     {
+      "claim": "1865년 왕립지리학회가 Mount Everest 를 공식 채택, 이름은 인도 측량국장 조지 에베레스트에게서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mount_Everest",
+      "note": "명명"
+     },
+     {
+      "claim": "에베레스트는 1857년 힌디어로 쓸 수 없고 인도 원주민이 발음할 수 없다며 반대",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mount_Everest",
+      "note": "반대"
+     },
+     {
+      "claim": "후임 측량국장 앤드루 워가 전임자 이름을 택함, 본인 발음은 EEV-rist",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mount_Everest",
+      "note": "제안자·발음"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대상은 국민 상식, 묻는 사실은 이름 유래의 뒷이야기",
+    "targetWhy": "애호가(지리·등산) — 산은 누구나 알지만 이름의 유래와 본인의 반대는 거의 모른다",
+    "pairCheck": "",
+    "dbCheck": "pair-or-different — 활성 53('세계에서 가장 높은 산', 다른 중분류)과 답만 같고 지식(이름의 유래·명명 경위)이 다르다(D2·D8). 이 job 맥락에 1회차가 없어 (나)로 씀",
+    "warn": []
+   }
+  }
+ ]
+}

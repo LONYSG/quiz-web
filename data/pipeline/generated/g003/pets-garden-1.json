@@ -1,0 +1,91 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "pets-garden/1",
+  "midKey": "pets-garden",
+  "subName": "개 품종",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "pets-garden/1#g003-L1-11",
+   "seed": {
+    "subject": "도베르만",
+    "aspect": null,
+    "ref": "L1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "19세기 말 독일 아폴다에서 세금 징수원으로 일하며 유기견 보호소도 맡았던 사람이 자신을 지켜 줄 개를 만들려고 개량했습니다. 그의 성이 그대로 이름이 된 이 품종은?",
+    "answer": "도베르만",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "보호소를 운영해 여러 개를 접할 수 있었던 것이 개량의 바탕이 되었고, 그가 죽은 뒤 1890년대에 오토 괴엘러가 품종을 다듬었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "일상 — 개 품종 이름",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 품종명 유래",
+     "acc": 4,
+     "accWhy": "반려동물·원예 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dobermann"
+    ],
+    "facts": [
+     {
+      "claim": "카를 프리드리히 루이 도베르만, 세금 징수원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dobermann",
+      "note": "tax collector Louis Dobermann"
+     },
+     {
+      "claim": "아폴다에서 개 보호소 운영",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dobermann",
+      "note": "ran a dog pound in Apolda, Thuringia"
+     },
+     {
+      "claim": "자신을 지킬 개를 원했다, 1880~1890년경",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dobermann",
+      "note": "wanted a dog that could protect him; bred 1880s / about 1890"
+     },
+     {
+      "claim": "보호소로 여러 개를 접함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dobermann",
+      "note": "access to many kinds of dogs shaped his breeding idea"
+     },
+     {
+      "claim": "1894년 사망, 오토 괴엘러가 1890년대에 다듬음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dobermann",
+      "note": "Dobermann died 1894; Otto Goeller refined the breed in the 1890s"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 품종, 세금 징수원 이야기가 뜻밖",
+    "targetWhy": "유명 품종의 이름이 사람 이름이라는 유래 — 애견 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

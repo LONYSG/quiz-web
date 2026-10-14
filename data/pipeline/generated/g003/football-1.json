@@ -1,0 +1,268 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "football/1",
+  "midKey": "football",
+  "subName": "규칙",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/1#g003-S1-01",
+   "seed": {
+    "subject": "간접 프리킥",
+    "aspect": null,
+    "ref": "S1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1990년 월드컵이 지나치게 지루했다는 비판을 받자, 1992년 수비수가 일부러 발로 넘겨 준 공을 골키퍼가 손으로 잡지 못하게 하는 '백패스 규칙'이 생겼습니다. 골키퍼가 이 규칙을 어기면 상대 팀은 어떤 킥을 얻을까요?",
+    "answer": "간접 프리킥",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "골키퍼가 공을 잡은 곳이 골 에어리어 안이면, 반칙 지점에서 가장 가까운 골 에어리어 선 위에서 찹니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 축구 규칙",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 백패스 규칙",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "주심은 이 킥을 줄 때 한 팔을 머리 위로 곧게 들어 알린다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Back-pass_rule"
+    ],
+    "facts": [
+     {
+      "claim": "1990년 월드컵이 지루하다는 비판 뒤 1992년 백패스 규칙 채택",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Back-pass_rule",
+      "note": "formally adopted May 1992 after the 1990 World Cup was widely criticised as excessively dull"
+     },
+     {
+      "claim": "위반하면 간접 프리킥",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Back-pass_rule",
+      "note": "The penalty for the offence is an indirect free kick"
+     },
+     {
+      "claim": "골 에어리어 안이면 가장 가까운 골 에어리어 선 위에서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Back-pass_rule",
+      "note": "taken from the point on the six-yard line closest to the offence"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Free_kick_(association_football)"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 규칙의 한 층 깊은 세부 · 들으면 '아 그렇지'",
+    "targetWhy": "백패스 금지는 알아도 그 벌칙이 간접 프리킥이라는 것은 축구 애호가가 아는 규칙 세부",
+    "pairCheck": "",
+    "dbCheck": "간접 프리킥 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/1#g003-S1-02",
+   "seed": {
+    "subject": "국제축구평의회",
+    "aspect": null,
+    "ref": "S1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "축구 경기 규칙을 정하는 기구는 1886년 잉글랜드·스코틀랜드·웨일스·아일랜드의 네 축구협회가 만들었고, FIFA는 1913년에야 회원이 되었습니다. 이 기구는 무엇일까요?",
+    "answer": "국제축구평의회",
+    "acceptedAnswers": [
+     "IFAB"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영국 네 협회가 한 표씩, FIFA가 네 표를 가지며 규칙을 바꾸려면 여덟 표 가운데 여섯 표가 필요합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 축구 행정",
+     "wor": 2,
+     "worWhy": "팬 세부 — 규칙 기구명",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "본부는 스위스 취리히에 있고, 첫 회의는 1886년 6월 런던의 잉글랜드 축구협회 사무실에서 열렸다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/International_Football_Association_Board"
+    ],
+    "facts": [
+     {
+      "claim": "경기 규칙(Laws of the Game)을 정하는 기구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Football_Association_Board",
+      "note": "self-regulatory body of association football that manages the Laws of the Game"
+     },
+     {
+      "claim": "1886년 영국 네 협회가 창설 · FIFA 1913년 가입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Football_Association_Board",
+      "note": "founded 1886 by FA, SFA, FAW, IFA; FIFA joined in 1913"
+     },
+     {
+      "claim": "네 협회 한 표씩 · FIFA 네 표 · 여섯 표 필요",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/International_Football_Association_Board",
+      "note": "at least six of the eight votes"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/International_Football_Association_Board"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대부분 FIFA라 생각하는 지점을 뒤집는 사실",
+    "targetWhy": "규칙을 FIFA가 아닌 IFAB가 정한다는 것은 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "국제축구평의회 · IFAB new",
+    "warn": [
+     "정답조각 축구"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (팬 세부 — 규칙 기구명) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "football/1#g003-S1-03",
+   "seed": {
+    "subject": "스로인",
+    "aspect": null,
+    "ref": "S1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "오프사이드 위치에 있던 선수라도 골킥이나 코너킥을 곧바로 받으면 반칙이 아닙니다. 이 둘과 함께 오프사이드가 적용되지 않는 나머지 재개 방법 하나는 무엇일까요?",
+    "answer": "스로인",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "오프사이드 위치에 있는 것만으로는 반칙이 아니고, 그 위치에서 플레이에 관여해야 반칙이 됩니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 축구 규칙",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 축구 규칙",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "이 재개 방법으로는 골을 곧바로 넣을 수 없고, 하는 선수는 두 발 일부가 터치라인 위나 그 바깥 땅에 닿아 있어야 한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Offside_(association_football)"
+    ],
+    "facts": [
+     {
+      "claim": "골킥 · 코너킥 · 스로인을 직접 받으면 오프사이드 아님",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Offside_(association_football)",
+      "note": "no offside offence if a player receives the ball directly from a goal kick, a corner kick, or a throw-in"
+     },
+     {
+      "claim": "위치만으로는 반칙이 아님",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Offside_(association_football)",
+      "note": "Being in an offside position is not an offence in itself"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Throw-in"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "축구 팬에게는 3에 가까울 수 있음",
+    "targetWhy": "오프사이드는 누구나 알지만 예외 재개 방법은 애호가가 아는 세부",
+    "pairCheck": "",
+    "dbCheck": "스로인 new (오프사이드 85 와 답·지식 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/1#g003-S1-04",
+   "seed": {
+    "subject": "드롭볼",
+    "aspect": null,
+    "ref": "S1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "심판이 반칙이 아닌 이유로 경기를 멈췄다가 다시 시작할 때 공을 손에서 떨어뜨려 재개합니다. 2019년부터 마지막으로 공을 건드린 팀의 선수 한 명에게만 떨어뜨려 주게 바뀐 이 재개 방법은 무엇일까요?",
+    "answer": "드롭볼",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이렇게 재개한 공은 서로 다른 두 선수가 건드리기 전에 골문에 들어가면 골로 인정되지 않습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 축구 규칙",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 규칙 변경",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "다른 선수는 모두 공이 땅에 닿을 때까지 4m 떨어져 있어야 하고, 페널티 에어리어 안이면 수비 팀 골키퍼에게 준다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dropped-ball"
+    ],
+    "facts": [
+     {
+      "claim": "2019년부터 마지막으로 건드린 팀 선수 한 명에게(페널티 구역이면 골키퍼)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dropped-ball",
+      "note": "2019: contested dropped ball abolished; dropped to a player of the team that last touched the ball"
+     },
+     {
+      "claim": "두 선수가 건드리기 전에는 골 불인정",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dropped-ball",
+      "note": "A goal may not be scored from a dropped ball until it has been touched by two different players"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dropped-ball"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "경기에서 보지만 이름과 바뀐 규칙은 잘 모름",
+    "targetWhy": "드롭볼 이름과 2019 개정은 애호가가 아는 규칙",
+    "pairCheck": "",
+    "dbCheck": "드롭볼 new",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  }
+ ]
+}

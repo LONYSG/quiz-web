@@ -1,0 +1,273 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-language/5",
+  "midKey": "kr-language",
+  "subName": "높임말·어법",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-language/5#g003-K3-25",
+   "seed": {
+    "subject": "하게체",
+    "aspect": null,
+    "ref": "K3-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'김 군, 이것 좀 연구해 보게. 혼자 할 수 있겠나?'처럼, 나이가 든 화자가 나이 든 손아랫사람이나 친숙한 동년배를 약간 대우하며 낮추어 쓰는 상대 높임법의 등급은?",
+    "answer": "하게체",
+    "acceptedAnswers": [
+     "하게"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 등급에서는 듣는 이를 '자네'라고 가리키며, 장인이 사위를 부를 때도 '자네'를 쓸 수 있다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 국어 문법 — 높임법",
+     "wor": 5,
+     "worWhy": "교과 — 상대 높임법",
+     "acc": 5,
+     "accWhy": "한국어·한글 — 초중 국어 교과"
+    },
+    "generalHint": "'그 일은 내가 맡음세'처럼 '-(으)ㅁ세'로 말하는 이의 뜻을 밝히는 꼴도 이 등급에 든다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=하게체",
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=자네"
+    ],
+    "facts": [
+     {
+      "claim": "하게체: 보통으로 낮추면서 약간 대우, 나이 든 화자가 나이 든 손아랫사람·친숙한 동년배에게",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=하게체",
+      "note": "표준국어대사전 뜻풀이 ≒하게"
+     },
+     {
+      "claim": "예문 '김 군. 이것 좀 연구해 보게. 혼자 할 수 있겠나?'",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=하게체",
+      "note": "사전 예시"
+     },
+     {
+      "claim": "자네: 하게할 자리에 쓰는 이인칭, 사위를 부를 때도 씀",
+      "where": "e",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=자네",
+      "note": "표준국어대사전 자네1"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://kimchi-reader.app/grammar/verb_%EC%9D%8C%EC%84%B8"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "활성 상대 높임법(#2366)의 하위 등급을 묻는 한 층 깊은 지식",
+    "targetWhy": "고교 문법 심화 — 상대 높임 6등급 가운데 하게체를 예문으로 가림",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-language/5#g003-K3-26",
+   "seed": {
+    "subject": "당신",
+    "aspect": null,
+    "ref": "K3-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'할아버지께서는 살아 계실 때 ○○이 손수 심은 나무를 무척 아끼셨다.' 빈칸에는 앞에 나온 웃어른을 다시 가리키며 '자기'를 아주 높여 이르는 말이 들어갑니다. 이 말은?",
+    "answer": "당신",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "같은 낱말이 부부 사이에서는 상대편을 높여 이르는 이인칭으로도 쓰인다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 국어 문법 — 재귀칭",
+     "wor": 4,
+     "worWhy": "교양 — 높임 어법",
+     "acc": 5,
+     "accWhy": "한국어·한글 — 초중 국어 교과"
+    },
+    "generalHint": "같은 낱말이 낯선 사람과 맞서 싸울 때 상대를 낮잡아 부르는 말로도 쓰인다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://opendict.korean.go.kr/search/searchResult?query=당신"
+    ],
+    "facts": [
+     {
+      "claim": "당신: '자기'를 아주 높여 이르는 말",
+      "where": "q",
+      "url": "https://opendict.korean.go.kr/search/searchResult?query=당신",
+      "note": "우리말샘 006"
+     },
+     {
+      "claim": "당신: 부부 사이에서 상대편을 높여 이르는 이인칭",
+      "where": "e",
+      "url": "https://opendict.korean.go.kr/search/searchResult?query=당신",
+      "note": "우리말샘 003"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wiktionary.org/wiki/%EB%8B%B9%EC%8B%A0"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 낱말의 낯선 쓰임, 알게 되면 바로 납득",
+    "targetWhy": "고교 문법 심화 — 3인칭 재귀 높임 '당신'은 수능 문법 단골 함정",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-language/5#g003-K3-27",
+   "seed": {
+    "subject": "선친",
+    "aspect": null,
+    "ref": "K3-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "남에게 자기 아버지를 높여 이를 때는 '가친'이라고 합니다. 그렇다면 남에게 이미 돌아가신 자기 아버지를 이를 때 쓰는 두 글자 말은?",
+    "answer": "선친",
+    "acceptedAnswers": [
+     "선고"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "돌아가신 남의 아버지를 높여 이를 때는 '선대인'이라고 한다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "중학 국어 — 호칭어",
+     "wor": 4,
+     "worWhy": "교양 — 호칭 예절",
+     "acc": 5,
+     "accWhy": "한국어·한글 — 초중 국어 교과"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=가친",
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=선친",
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=선대인"
+    ],
+    "facts": [
+     {
+      "claim": "가친: 남에게 자기 아버지를 높여 이르는 말",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=가친",
+      "note": "표준국어대사전"
+     },
+     {
+      "claim": "선친: 남에게 돌아가신 자기 아버지를 이르는 말 ≒선고",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=선친",
+      "note": "표준국어대사전"
+     },
+     {
+      "claim": "선대인: 돌아가신 남의 아버지를 높여 이르는 말",
+      "where": "e",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=선대인",
+      "note": "표준국어대사전"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "어른이 되면 쓰게 되는 실용 호칭, '두 글자' 한정으로 선대인과 갈림",
+    "targetWhy": "호칭어 교양 — 부고·인사말에서 접하는 애호가 수준의 높임말",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건. 같은 뜻 '선고'를 변형에 둠(드물게 치는 선군·선부는 넣지 않음)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-language/5#g003-P1-16",
+   "seed": {
+    "subject": "춘부장",
+    "aspect": null,
+    "ref": "P1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 전설에는 8천 년을 봄으로, 8천 년을 가을로 삼는다는 장수의 나무 대춘(大椿)이 있습니다. 이 나무와 같은 한자 \"椿\"이 들어간 말로, 남의 아버지를 높여 이르는 세 글자 말은 무엇일까요?",
+    "answer": "춘부장",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "표준국어대사전은 같은 뜻의 말로 춘당·춘장·영존·존대인 등을 함께 싣고 있다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 국어 — 높임 호칭 어휘",
+     "wor": 4,
+     "worWhy": "교양 — 기본 높임 어휘",
+     "acc": 5,
+     "accWhy": "한국어·한글 — 초중 국어 교과"
+    },
+    "generalHint": "같은 한자 '椿'은 일본에서는 동백나무를 가리키는 글자로 쓰인다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?pageSize=10&searchKeyword=대춘",
+     "https://stdict.korean.go.kr/search/searchResult.do?pageSize=10&searchKeyword=춘부장"
+    ],
+    "facts": [
+     {
+      "claim": "대춘(大椿) — 8,000년이 봄, 8,000년이 가을인 전설상의 장수 나무",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?pageSize=10&searchKeyword=대춘",
+      "note": "표준국어대사전"
+     },
+     {
+      "claim": "춘부장(椿府丈) — 남의 아버지를 높여 이르는 말",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?pageSize=10&searchKeyword=춘부장",
+      "note": "표준국어대사전"
+     },
+     {
+      "claim": "비슷한 말 춘당·춘장·영존·존대인 등",
+      "where": "e",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?pageSize=10&searchKeyword=춘부장",
+      "note": "유의어 목록"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wiktionary.org/wiki/椿"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 호칭어의 몰랐던 글자 뜻",
+    "targetWhy": "가친·선친은 중학 수준, 춘부장과 그 한자는 한자·호칭 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "춘부장 new",
+    "warn": []
+   }
+  }
+ ]
+}

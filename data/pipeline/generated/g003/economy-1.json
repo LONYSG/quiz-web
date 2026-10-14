@@ -1,0 +1,147 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "economy/1",
+  "midKey": "economy",
+  "subName": "경제 개념·지표",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "economy/1#g003-H1-13",
+   "seed": {
+    "subject": "기펜재",
+    "aspect": null,
+    "ref": "H1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "앨프리드 마셜은 빵값이 올라 가난한 사람들의 살림이 쪼그라들면, 고기를 줄이는 대신 오히려 빵을 더 사게 된다고 설명했습니다. 이처럼 값이 오르는데 수요가 늘어 수요 법칙을 거스르는 열등재를, 한 경제학자의 이름을 따 무엇이라 할까요?",
+    "answer": "기펜재",
+    "acceptedAnswers": [
+     "기펜 재화"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "아일랜드 대기근 때의 감자가 대표 사례로 오래 꼽혔지만, 1999년 셔윈 로즌은 보통의 수요 모형으로도 설명된다고 반박했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 경제원론",
+     "wor": 4,
+     "worWhy": "교양 — 경제 기본 개념",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "generalHint": "마셜은 이 역설을 한 스코틀랜드 통계학자가 짚었다고 적었지만, 뒤에 스티글러는 그 귀속이 잘못이라고 바로잡았다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/기펜재"
+    ],
+    "facts": [
+     {
+      "claim": "마셜이 『경제학 원리』에서 빵값 상승 시 빈민이 고기를 줄이고 빵을 더 산다고 설명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기펜재",
+      "note": "마셜의 설명"
+     },
+     {
+      "claim": "가격이 오르면 수요가 느는 열등재, 수요 법칙 위반, 경제학자 로버트 기펜의 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기펜재",
+      "note": "정의·이름"
+     },
+     {
+      "claim": "아일랜드 감자가 고전적 사례로 여겨졌으나 1999년 로즌 'Potato Paradoxes' 가 반박",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/기펜재",
+      "note": "사례 논쟁"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Giffen_good"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "수요 법칙의 예외라는 뜻밖의 사실, 경제원론 기본 어휘",
+    "targetWhy": "대학 교양 미시경제학(소득효과·대체효과) — 고교 경제는 수요 법칙까지만",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "economy/1#g003-H1-14",
+   "seed": {
+    "subject": "유동성 함정",
+    "aspect": null,
+    "ref": "H1-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "케인스 경제학에서는 금리가 0에 가까워지면 중앙은행이 돈을 아무리 풀어도 금리가 더 내려가지 않고 경기를 살리지 못하는 상황이 생긴다고 봅니다. 1990년대 이후 일본의 장기 침체로 다시 주목받은 이 상황을 무엇이라 할까요?",
+    "answer": "유동성 함정",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "폴 크루그먼은 2008~2011년 선진국들이 이 상태에 빠져 있다고 주장했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 거시경제",
+     "wor": 4,
+     "worWhy": "교양 — 경제 기본 어휘",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "generalHint": "케인스는 1936년 이런 일이 생길 수 있다고 썼지만, 실제로 그런 예는 아직 알지 못한다고 덧붙였다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/유동성_함정"
+    ],
+    "facts": [
+     {
+      "claim": "케인스 경제학 개념 — 통화를 주입해도 이자율을 낮추거나 통화정책을 강화하지 못하는 상황, 이자율 0 근처",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/유동성_함정",
+      "note": "정의·특징"
+     },
+     {
+      "claim": "일본이 0에 가까운 금리에도 1990년대 이후 장기 침체를 겪으며 다시 주목",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/유동성_함정",
+      "note": "일본 사례"
+     },
+     {
+      "claim": "크루그먼은 2008~2011년 선진국들이 유동성 함정에 있다고 주장",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/유동성_함정",
+      "note": "크루그먼"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Liquidity_trap"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "시사 경제 기본 어휘",
+    "targetWhy": "대학 교양 거시경제학 — 금리 뉴스에 가끔 나오지만 개념을 아는 사람은 적다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

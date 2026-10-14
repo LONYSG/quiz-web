@@ -1,0 +1,281 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-history/5",
+  "midKey": "kr-history",
+  "subName": "개항기·일제강점기",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/5#g003-K1-15",
+   "seed": {
+    "subject": "우정총국",
+    "aspect": null,
+    "ref": "K1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1884년 홍영식을 책임자로 세운 조선의 근대 우편 관청입니다. 그해 12월 이 관청의 청사 낙성 축하연을 틈타 개화파가 갑신정변을 일으켰습니다. 이 관청은 무엇일까요?",
+    "answer": "우정총국",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "정변이 실패하자 나흘 만에 폐지되었고, 남은 건물은 사적으로 지정되어 2012년에 우체 업무를 다시 시작했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "중학 역사 — 갑신정변",
+     "wor": 5,
+     "worWhy": "교과 — 우정총국",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/우정총국"
+    ],
+    "facts": [
+     {
+      "claim": "1884년 설치, 홍영식 책임자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우정총국",
+      "note": "고종 21년 4월 설치, 홍영식 임명"
+     },
+     {
+      "claim": "12월 4일 낙성 축하연에서 갑신정변",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우정총국",
+      "note": "갑신정변과 폐지"
+     },
+     {
+      "claim": "12월 8일 폐지, 사적, 2012년 우체 업무 재개",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/우정총국",
+      "note": "건물·이후"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 사건의 무대",
+    "targetWhy": "갑신정변은 교과, 그 무대가 된 관청 이름은 심화",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/5#g003-K1-16",
+   "seed": {
+    "subject": "105인 사건",
+    "aspect": null,
+    "ref": "K1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1911년 조선총독부는 데라우치 총독을 암살하려 했다는 음모를 꾸며 내 신민회 회원과 기독교인 등을 대거 잡아들였습니다. 재판에서 유죄를 받은 사람의 수에서 이름이 붙은 이 사건은 무엇일까요?",
+    "answer": "105인 사건",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 사건으로 신민회의 전국 조직이 사실상 무너졌고, 항소심에서는 윤치호·양기탁 등 6명만 실형을 받았습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 일제강점기",
+     "wor": 5,
+     "worWhy": "교과서 — 무단통치기 탄압",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "처음엔 신민회 중심 인물 600여 명이 잡혀 들어갔고, 그 가운데 122명이 기소되었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/105인_사건"
+    ],
+    "facts": [
+     {
+      "claim": "1911년 데라우치 총독 암살 모의 조작, 신민회·기독교인 체포",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/105인_사건",
+      "note": "fabricated plot, arrests from 1911"
+     },
+     {
+      "claim": "기소 122명 중 105명 유죄에서 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/105인_사건",
+      "note": "Verdict"
+     },
+     {
+      "claim": "신민회 조직 붕괴, 항소심 윤치호·양기탁 등 6명 실형",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/105인_사건",
+      "note": "Appeal·Impact (1913)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/105인_사건"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름 유래까지 배울 수 있음",
+    "targetWhy": "신민회 해체 계기로 수능 심화에 나오는 사건",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음. 숫자가 섞인 이름이지만 숫자 정답은 아님",
+    "warn": [
+     "정답조각 사건"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/5#g003-K1-17",
+   "seed": {
+    "subject": "대한매일신보",
+    "aspect": null,
+    "ref": "K1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국인 어니스트 베델이 양기탁 등의 도움을 받아 창간한 신문입니다. 사장이 영국인이어서 통감부의 검열을 피해 항일 논설을 실을 수 있었던 이 신문은 무엇일까요?",
+    "answer": "대한매일신보",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "국채보상운동을 주도하기도 했으나, 1910년 통감부에 매수된 뒤 병합과 함께 조선총독부의 기관지로 바뀌었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 항일 언론",
+     "wor": 5,
+     "worWhy": "교과 — 대한매일신보",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "그 영국인은 1909년 서른여섯 살에 숨져 서울 양화진 외국인 묘지에 묻혔다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/대한매일신보"
+    ],
+    "facts": [
+     {
+      "claim": "베델이 양기탁 등의 도움으로 창간",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대한매일신보",
+      "note": "창간과 성격"
+     },
+     {
+      "claim": "사장이 영국인이라 통감부 검열을 피해 항일 논설",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대한매일신보",
+      "note": "항일 논조"
+     },
+     {
+      "claim": "국채보상운동 주도, 1910년 5월 통감부 매수, 병합 후 총독부 기관지 매일신보",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/대한매일신보",
+      "note": "변질과 폐간"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ernest_Bethell"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 신문의 뒷이야기",
+    "targetWhy": "베델과 검열 회피 사연은 수능 심화·교양",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/5#g003-P1-04",
+   "seed": {
+    "subject": "손탁호텔",
+    "aspect": null,
+    "ref": "P1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1885년 러시아 공사 베베르와 함께 서울에 온 독일 국적의 한 여성은 궁중의 서양 요리와 실내 장식을 맡으며 고종의 신임을 얻었습니다. 1902년 고종이 내린 정동의 땅에 그녀의 이름을 따서 세운 2층 서양식 호텔은 무엇일까요?",
+    "answer": "손탁호텔",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1917년 이화학당이 건물과 터를 넘겨받아 기숙사로 썼고, 1922년 헐린 뒤 그 자리에 프라이홀이 들어섰다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 개항기 서울 근대 건축",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 근대 최초 호텔",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "1904년 러일전쟁을 취재하러 온 종군 기자 윈스턴 처칠도 이 호텔에 묵었다고 한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/손탁_호텔"
+    ],
+    "facts": [
+     {
+      "claim": "손탁은 독일 국적, 1885년 베베르와 함께 서울에 옴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/손탁_호텔",
+      "note": "독일 국적 손탁, 1885년 베베르와 함께 입국"
+     },
+     {
+      "claim": "궁중의 서양 요리·실내 장식을 맡아 왕실의 신임을 얻음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/손탁_호텔",
+      "note": "서양 요리와 실내 장식 제공, 신임"
+     },
+     {
+      "claim": "1902년 고종이 내린 정동의 황실 땅에 세운 2층 서양식 건물",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/손탁_호텔",
+      "note": "1902년 정동, 고종 하사 부지, 2층 양관 25실"
+     },
+     {
+      "claim": "1917년 이화학당이 넘겨받아 기숙사로, 1922년 철거 후 프라이홀",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/손탁_호텔",
+      "note": "1917 이화학당 기숙사 별관, 1922 철거·프라이홀"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/손탁호텔"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대한제국 외교 무대의 상징 건물, 이름이 정답이라 질문에 인물명을 숨김",
+    "targetWhy": "정동·고종은 교과서, 손탁호텔은 교과서 밖 — 근대사·정동 답사 애호가가 아는 이름",
+    "pairCheck": "",
+    "dbCheck": "손탁호텔 new",
+    "warn": [
+     "정답조각 호텔"
+    ]
+   }
+  }
+ ]
+}

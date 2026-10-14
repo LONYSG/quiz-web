@@ -1,0 +1,156 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "biology/4",
+  "midKey": "biology",
+  "subName": "미생물·바이러스",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "biology/4#g003-C1-22",
+   "seed": {
+    "subject": "담배 모자이크 바이러스",
+    "aspect": null,
+    "ref": "C1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1892년 러시아의 이바놉스키는 잎에 얼룩이 지는 병에 걸린 식물의 즙을 세균도 걸러 내는 필터에 통과시켜도 병이 옮는다는 것을 보였습니다. 이렇게 처음 정체가 드러난 바이러스로, 1935년 결정으로도 만들어진 것은 무엇일까요?",
+    "answer": "담배 모자이크 바이러스",
+    "acceptedAnswers": [
+     "TMV"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "길이 약 300나노미터의 막대 모양으로, 단백질 2,130개가 RNA 한 가닥을 감싸고 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 생명과학 — 바이러스",
+     "wor": 5,
+     "worWhy": "교과서 — 바이러스 발견",
+     "acc": 5,
+     "accWhy": "생물 — 중학 과학 교과 과목"
+    },
+    "generalHint": "1935년 이 바이러스를 결정으로 만든 웬델 스탠리는 그 공로로 1946년 노벨 화학상을 나눠 받았다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tobacco_mosaic_virus"
+    ],
+    "facts": [
+     {
+      "claim": "1892 이바놉스키, 걸러도 감염성 유지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tobacco_mosaic_virus",
+      "note": "Ivanovsky 1892 infectious sap stayed infectious after filtration"
+     },
+     {
+      "claim": "잎에 얼룩(모자이크) 변색",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tobacco_mosaic_virus",
+      "note": "mottled mosaic-like leaf discoloration"
+     },
+     {
+      "claim": "처음 발견된 바이러스, 1935 스탠리가 결정화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tobacco_mosaic_virus",
+      "note": "first virus to be discovered · Stanley crystallized TMV in 1935"
+     },
+     {
+      "claim": "막대 모양 약 300nm, 단백질 2,130개, RNA 게놈",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tobacco_mosaic_virus",
+      "note": "300 nm long · 2,130 coat protein molecules · single RNA genome"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Wendell_Meredith_Stanley"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "바이러스 발견의 대표 사례",
+    "targetWhy": "고교 생명과학 바이러스 발견사 · 대학 교양",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "정답조각 바이러스",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "biology/4#g003-C1-23",
+   "seed": {
+    "subject": "프리온",
+    "aspect": null,
+    "ref": "C1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "광우병과 크로이츠펠트-야코프병을 일으키는 병원체는 DNA도 RNA도 없이, 잘못 접힌 단백질이 정상 단백질을 같은 꼴로 바꾸며 퍼집니다. 1982년 미국의 스탠리 프루시너가 이름 붙인 이 병원체는 무엇일까요?",
+    "answer": "프리온",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "열·방사선·포름알데하이드에도 잘 견뎌 보통의 멸균으로는 없애기 어렵고, 프루시너는 이 연구로 1997년 노벨 생리의학상을 받았습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 생명과학 — 병원체",
+     "wor": 4,
+     "worWhy": "교양 — 광우병 병원체",
+     "acc": 5,
+     "accWhy": "생물 — 중학 과학 교과 과목"
+    },
+    "generalHint": "1950년대 가이듀섹이 침팬지에게 옮길 수 있음을 보인 사람의 병 '쿠루'도 이것이 일으킨다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Prion"
+    ],
+    "facts": [
+     {
+      "claim": "광우병·CJD 원인, DNA/RNA 없음, 잘못 접힌 단백질이 정상 단백질을 바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Prion",
+      "note": "misfolded protein · no DNA or RNA · BSE, Creutzfeldt–Jakob disease"
+     },
+     {
+      "claim": "1982 프루시너가 명명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Prion",
+      "note": "coined the term in 1982 as shorthand for proteinaceous infectious particle"
+     },
+     {
+      "claim": "열·방사선·포름알데하이드에 강함, 1997 노벨 생리의학상",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Prion",
+      "note": "resist proteases, heat, radiation, formaldehyde · 1997 Nobel Prize"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Prion"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "광우병으로 들어 봤을 법한 이름, 핵산 없는 병원체라는 뜻밖의 사실",
+    "targetWhy": "광우병 파동으로 들어 봤을 법한 대학 교양 생물학 용어",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

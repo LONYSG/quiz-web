@@ -1,0 +1,289 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-tv/1",
+  "midKey": "kr-tv",
+  "subName": "예능 프로그램",
+  "questionPrompt": "media-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/1#g003-M2-08",
+   "seed": {
+    "subject": "무한도전",
+    "aspect": "팬 세부",
+    "ref": "M2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'무한도전' 멤버들은 2009년 7월부터 손스타 코치에게 훈련을 받았고, 정형돈이 뇌진탕을 겪는 등 부상과 지연을 거듭했습니다. 2010년 8월 장충체육관에서 관객 앞에 선 이 장기 특집의 종목은 무엇일까요?",
+    "answer": "프로레슬링",
+    "acceptedAnswers": [
+     "레슬링"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 특집은 11회에 걸쳐 방송됐고, 방송에 나오지 않은 장면과 공연 전체를 담은 DVD도 나왔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송 — 무한도전 특집",
+     "wor": 2,
+     "worWhy": "팬 세부 — 예능 특집 종목",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "무한도전",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Infinite_Challenge"
+    ],
+    "facts": [
+     {
+      "claim": "2009년 7월 훈련 시작, 손스타 코치",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Infinite_Challenge",
+      "note": "Training began in July 2009, with Sonstar as coach"
+     },
+     {
+      "claim": "정형돈 뇌진탕 등 부상과 지연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Infinite_Challenge",
+      "note": "numerous injuries, including a concussion suffered by Jeong Hyeong-don, setbacks and delays"
+     },
+     {
+      "claim": "2010년 8월 19일 장충체육관 공연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Infinite_Challenge",
+      "note": "performance in front of a live audience on August 19, 2010, at Jangchung Gymnasium"
+     },
+     {
+      "claim": "11회 방송 · DVD",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Infinite_Challenge",
+      "note": "broadcast over 11 episodes; MBC released a DVD with unaired segments and full uncut performance"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국 예능 레전드의 대표 장기 프로젝트",
+    "targetWhy": "무한도전 장기 특집 중 하나 — 코치·장소 단서로 아는 것은 무도 팬",
+    "pairCheck": "",
+    "dbCheck": "프로레슬링 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g003-M2-09",
+   "seed": {
+    "subject": "무한도전",
+    "aspect": "팬 세부",
+    "ref": "M2-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2011년 '무한도전 서해안고속도로 가요제'에서 정형돈은 작곡가 정재형과 한 팀을 이뤘습니다. 두 사람이 함께 만들어 무대에 올린 노래의 제목은 무엇일까요?",
+    "answer": "순정마초",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "정재형은 이 가요제 출연을 계기로 방송 활동의 폭을 크게 넓혔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 예능 가요제",
+     "wor": 2,
+     "worWhy": "팬 세부 — 예능 곡 제목",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "generalHint": "두 사람의 팀 이름은 '파리돼지앵'이었고, 이 가요제에서는 참가팀 모두가 대상을 받았다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "무한도전",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Infinite_Challenge",
+     "https://ko.wikipedia.org/wiki/정재형"
+    ],
+    "facts": [
+     {
+      "claim": "2011년 서해안고속도로 가요제",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Infinite_Challenge",
+      "note": "In 2011, Infinite Challenge held the West Coast Highway Music Festival"
+     },
+     {
+      "claim": "정재형·정형돈이 2011년 7월 2일 무한도전에서 '순정마초'를 선보임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/정재형",
+      "note": "2011년 7월 2일 《무한도전》 정재형과 정형돈 '순정마초'"
+     },
+     {
+      "claim": "가요제 출연을 계기로 방송 활동 폭 넓어짐",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/정재형",
+      "note": "2011년 《무한도전 서해안고속도로 가요제》 방송 출연을 계기로 방송 활동 폭이 넓어졌다"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/무한도전_서해안고속도로_가요제"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 예능의 레전드 회차 · 팬이면 '아 그거!'",
+    "targetWhy": "무도 가요제는 유명하지만 팀별 곡 제목은 무도 팬이 아는 세부",
+    "pairCheck": "",
+    "dbCheck": "순정마초 new (냉면 4195 는 2009 가요제 — 다른 지식)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g003-M2-10",
+   "seed": {
+    "subject": "런닝맨",
+    "aspect": "팬 세부",
+    "ref": "M2-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "SBS '런닝맨'에서 개리와 송지효는 스스로 '비즈니스 겸 썸 타는 관계'라고 부르며 연인 같은 짝으로 큰 사랑을 받았습니다. 두 사람을 묶어 부르던 별명은 무엇일까요?",
+    "answer": "월요커플",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "개리는 2016년 음악 활동에 집중하겠다며 '런닝맨'을 떠났습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 예능 별칭",
+     "wor": 2,
+     "worWhy": "팬 용어 — 예능 커플 별칭",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "generalHint": "2014년 드라마피버 어워즈에서 두 사람이 함께 '베스트 키스상'을 받았다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "런닝맨",
+    "sources": [
+     "https://www.newdaily.co.kr/site/data/html/2015/08/24/2015082400144.amp.html",
+     "https://en.wikipedia.org/wiki/Running_Man_(TV_program)"
+    ],
+    "facts": [
+     {
+      "claim": "개리·송지효 '월요커플', 인터뷰에서 '비즈니스 겸 썸 타는 관계'로 정의",
+      "where": "q",
+      "url": "https://www.newdaily.co.kr/site/data/html/2015/08/24/2015082400144.amp.html",
+      "note": "'월요커플'로 함께 활약 중 · “우리는 비즈니스 겸 ‘썸’타는 관계다”라고 정의"
+     },
+     {
+      "claim": "개리 2016년 하차, 음악 활동 집중",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Running_Man_(TV_program)",
+      "note": "On October 25, 2016, Gary announced his departure ... to focus on his music career"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/송지효"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "알 가치 2(팬 용어)지만 런닝맨은 아시아 레전드 예능",
+    "targetWhy": "런닝맨 시청자에게는 익숙한 팬 용어 — 안 본 사람은 모른다",
+    "pairCheck": "",
+    "dbCheck": "월요커플 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g003-P3-01",
+   "seed": {
+    "subject": "황금어장 (MBC)",
+    "aspect": "팬 세부",
+    "ref": "P3-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2006~2011년 MBC 수요일 밤에는 강호동의 '무릎팍도사'와 '라디오스타'가 한 프로그램 안에 묶여 방송됐습니다. 두 코너를 함께 품었던 이 프로그램의 이름은 무엇일까요?",
+    "answer": "황금어장",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "맨 처음 코너는 '실화극장'이었고, 라디오스타는 2011년 10월 무릎팍도사가 끝난 뒤 따로 떨어져 나와 홀로 이어졌습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 예능 프로그램명",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 예능",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "generalHint": "2007년 봄에는 정선희·윤종신 등이 진행한 '무월관'도 잠깐 이 프로그램의 한 코너였다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "황금어장 (MBC)",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/황금어장"
+    ],
+    "facts": [
+     {
+      "claim": "MBC, 2006-07-07 ~ 2011-10-12 방영",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황금어장",
+      "note": "문화방송, 2006년 7월 7일 ~ 2011년 10월 12일"
+     },
+     {
+      "claim": "무릎팍도사·라디오스타가 코너로 포함, 수요일 밤 편성",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황금어장",
+      "note": "코너: 실화극장·무월관·무릎팍도사·라디오스타 / 2006-11-08부터 수요일 밤 편성"
+     },
+     {
+      "claim": "첫 코너 실화극장, 라디오스타는 2011-10-19 별도 프로그램으로",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/황금어장",
+      "note": "실화극장 2006-07-07 첫 방송 / 2011년 10월 19일 '황금어장 라디오스타' 별도 프로그램 시작"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/황금어장"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 예능 두 코너의 '아 그거' 이름 — 대상은 유명",
+    "targetWhy": "무릎팍도사·라디오스타는 누구나 알지만 둘을 묶던 상위 프로그램 이름은 그 시절 예능을 챙겨 본 사람이 아는 것",
+    "pairCheck": "",
+    "dbCheck": "황금어장 new (활성·초안 없음)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

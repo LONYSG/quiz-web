@@ -1,0 +1,295 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "world-cinema/2",
+  "midKey": "world-cinema",
+  "subName": "현대 할리우드",
+  "questionPrompt": "media-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/2#g003-M1-22",
+   "seed": {
+    "subject": "스타워즈",
+    "aspect": "팬 세부",
+    "ref": "M1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'스타워즈'에서 한 솔로는 이 우주선을 랜도 칼리시안에게서 카드 게임 '사바크'로 따냈습니다. 제작진은 이 배의 모양을 옆에 올리브를 꽂은 햄버거에서 따왔다고 합니다. 추바카가 부조종사로 함께 타는 이 우주선의 이름은 무엇일까요?",
+    "answer": "밀레니엄 팔콘",
+    "acceptedAnswers": [
+     "밀레니엄 팰컨"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한 솔로는 이 배로 '케셀 런'을 12파섹 안에 주파했다고 자랑하는데, 파섹은 시간이 아니라 거리 단위입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 스타워즈",
+     "wor": 2,
+     "worWhy": "레전드 작품 설정 세부",
+     "acc": 4,
+     "accWhy": "세계 영화 — 대부분이 관심"
+    },
+    "generalHint": "처음 만든 모형이 '스페이스: 1999'의 이글호와 닮아 디자인을 바꿨고, 그 모형은 레아 공주의 배 '탄티브 IV'가 되었다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "영화",
+    "work": "스타워즈",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Millennium_Falcon"
+    ],
+    "facts": [
+     {
+      "claim": "랜도에게서 사바크로 따냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Millennium_Falcon",
+      "note": "Han Solo won the Millennium Falcon from Lando Calrissian in the card game sabacc"
+     },
+     {
+      "claim": "올리브를 곁들인 햄버거 모양",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Millennium_Falcon",
+      "note": "the shape of the ship was roughly based on a hamburger with an olive-on-the-side cockpit"
+     },
+     {
+      "claim": "추바카 부조종사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Millennium_Falcon",
+      "note": "Chewbacca as co-pilot"
+     },
+     {
+      "claim": "케셀 런 12파섹, 파섹은 거리 단위",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Millennium_Falcon",
+      "note": "made the Kessel Run in less than twelve parsecs; a parsec measures distance, not time"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Millennium_Falcon"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "세계적 레전드 작품의 상징 메카",
+    "targetWhy": "스타워즈는 누구나 알지만 우주선 이름과 그 내력은 영화 팬이 아는 세부",
+    "pairCheck": "",
+    "dbCheck": "밀레니엄 팔콘 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-cinema/2#g003-M1-23",
+   "seed": {
+    "subject": "백 투 더 퓨처",
+    "aspect": "팬 세부",
+    "ref": "M1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'백 투 더 퓨처' 초고에서 타임머신은 핵실험장으로 옮겨지는 냉장고였지만, 스필버그가 반대하자 감독 저메키스가 자동차로 바꾸자고 했습니다. 브라운 박사가 차고에서 타임머신으로 개조한 이 차의 이름은 무엇일까요?",
+    "answer": "들로리언",
+    "acceptedAnswers": [
+     "드로리안"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "시간 여행에 필요한 시속 88마일은 기술적 이유가 아니라 속도계에 찍힌 모습이 멋져 보여서 고른 숫자였습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 유명 영화",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 타임머신 차",
+     "acc": 4,
+     "accWhy": "세계 영화 — 대부분이 관심"
+    },
+    "generalHint": "이탈리아 디자이너 주지아로가 그린 스테인리스강 차체에 걸윙 문을 달았고, 북아일랜드 던머리 공장에서 만들었다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "영화",
+    "work": "백 투 더 퓨처",
+    "sources": [
+     "https://en.wikipedia.org/wiki/DeLorean_time_machine"
+    ],
+    "facts": [
+     {
+      "claim": "초고는 핵실험장의 냉장고, 스필버그 반대, 저메키스가 들로리언 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/DeLorean_time_machine",
+      "note": "first draft: a refrigerator taken to a nuclear bomb test; Spielberg rejected it, and Zemeckis proposed a DeLorean"
+     },
+     {
+      "claim": "브라운 박사가 차고에서 개조",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/DeLorean_time_machine",
+      "note": "retrofitted DMC DeLorean; Doc Brown built it in his garage"
+     },
+     {
+      "claim": "88마일은 속도계에 멋져 보여서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/DeLorean_time_machine",
+      "note": "the crew picked this number because it 'looked cool' on the speedometer"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/DMC_DeLorean"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 영화의 상징 소품 · 팬은 '아 그거!'",
+    "targetWhy": "작품은 레전드지만 차종 이름(과 냉장고 초안)은 영화 팬이 아는 세부",
+    "pairCheck": "",
+    "dbCheck": "들로리언 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-cinema/2#g003-M1-24",
+   "seed": {
+    "subject": "타이타닉 (1997)",
+    "aspect": "팬 세부",
+    "ref": "M1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영화 '타이타닉'의 첫머리에서 보물 사냥꾼 브록 로벳의 탐사대는 난파선에서 금고를 건져 올립니다. 금고에는 찾던 다이아몬드 목걸이 대신, 그 목걸이를 건 젊은 여인의 스케치만 들어 있었습니다. 이 목걸이의 이름은 무엇일까요?",
+    "answer": "대양의 심장",
+    "acceptedAnswers": [
+     "바다의 심장"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "끝내 목걸이를 간직해 온 늙은 로즈는 마지막에 탐사선 고물에서 그것을 바다에 떨어뜨립니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 영화 소품 이름",
+     "wor": 2,
+     "worWhy": "팬 세부 — 유명 영화 설정",
+     "acc": 4,
+     "accWhy": "세계 영화 — 대부분이 관심"
+    },
+    "generalHint": "영화 소품은 영국 보석 회사 애스프리 앤 개러드가 만들었고, 뒤에 진짜 사파이어로 만든 것이 140만 달러에 팔렸다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "영화",
+    "work": "타이타닉 (1997)",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Titanic_(1997_film)"
+    ],
+    "facts": [
+     {
+      "claim": "브록 로벳 탐사대가 난파선에서 목걸이를 찾음, 금고엔 스케치",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
+      "note": "searches the Titanic wreck for the necklace, the Heart of the Ocean; recover a safe containing a sketch of a young woman wearing it"
+     },
+     {
+      "claim": "로즈가 간직하다 켈디시호 고물에서 바다에 떨어뜨림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
+      "note": "Rose, who has kept the necklace, drops it into the sea above the wreck from the Keldysh's stern"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Heart_of_the_Ocean"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 작품의 핵심 소품(명장면)",
+    "targetWhy": "타이타닉은 국민 영화지만 목걸이 이름은 영화를 좋아한 사람이 '아 그거!' 하는 세부",
+    "pairCheck": "",
+    "dbCheck": "대양의 심장 new (타이타닉 활성 2건 — 작품명, 다른 지식)",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  },
+  {
+   "seedId": "world-cinema/2#g003-P3-10",
+   "seed": {
+    "subject": "인셉션 (2010)",
+    "aspect": "팬 세부",
+    "ref": "P3-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영화 '인셉션'에서 코브는 꿈속이면 끝없이 도는 팽이를 돌려 지금이 현실인지 확인합니다. 영화 속에서 이 팽이처럼 꿈과 현실을 가려 주는 개인 물건을 무엇이라 부를까요?",
+    "answer": "토템",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "마지막 장면은 팽이가 아주 살짝 흔들리는 듯한 순간 엔딩 크레디트로 넘어가며, 놀런은 '코브는 팽이가 아니라 아이들을 보고 있다'고 말했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 인셉션 설정",
+     "wor": 2,
+     "worWhy": "유명 작품 설정 이름",
+     "acc": 4,
+     "accWhy": "세계 영화 — 대부분이 관심"
+    },
+    "generalHint": "설계사 애리어드니는 체스의 비숍을, 아서는 무게를 조작한 주사위를 이것으로 쓴다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "팬 세부",
+    "genre": "영화",
+    "work": "인셉션 (2010)",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Inception"
+    ],
+    "facts": [
+     {
+      "claim": "꿈속에서 끝없이 도는 팽이로 현실 확인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Inception",
+      "note": "uses a top that spins indefinitely in a dream to verify that he is in the real world"
+     },
+     {
+      "claim": "팽이를 토템이라 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Inception",
+      "note": "a metal replica of the spinning top totem (한정판 블루레이 구성)"
+     },
+     {
+      "claim": "마지막 장면 팽이가 살짝 흔들리는 듯할 때 크레디트, 놀런 발언",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Inception",
+      "note": "cuts to the closing credits from a shot of the top apparently starting to show an ever so faint wobble / Cobb isn't looking at the top. He's looking at his kids."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://taylorholmes.com/2010/08/02/inception-totems-explanation/"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 영화의 핵심 설정 용어",
+    "targetWhy": "인셉션은 누구나 알지만 그 장치의 영화 속 용어는 본 사람이 '아 그거' 하는 팬 세부",
+    "pairCheck": "",
+    "dbCheck": "토템 new (인셉션 활성 #3280 꿈 층 설정·#3911 에디트 피아프와 다른 지식)",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  }
+ ]
+}

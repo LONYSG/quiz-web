@@ -1,0 +1,90 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "society/3",
+  "midKey": "society",
+  "subName": "인구·통계 개념",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "society/3#g003-H1-09",
+   "seed": {
+    "subject": "대체출산율",
+    "aspect": null,
+    "ref": "H1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 세대가 다음 세대로 인구 규모를 그대로 이어 가려면, 여성 한 명이 평생 낳는 아이 수가 2명보다 조금 많아야 합니다. 남자아이가 여자아이보다 조금 더 태어나고 일부는 가임기가 끝나기 전에 사망하기 때문인데, 이 기준 수준을 무엇이라 할까요?",
+    "answer": "대체출산율",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "사망률이 높은 일부 개발도상국에서는 이 값이 여성 1명당 3.4명까지 올라가며, 한국은 1983년 처음 이 수준 아래로 내려갔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 사회 — 인구 개념",
+     "wor": 4,
+     "worWhy": "시사 상식 — 저출산 어휘",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "generalHint": "미국에서는 흔히 2.1명으로 잡고, 유엔 인구국은 대략 2.2명보다 낮으면 이 수준에 못 미친다고 본다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sub-replacement_fertility"
+    ],
+    "facts": [
+     {
+      "claim": "각 세대가 앞 세대와 같은 크기가 되는 합계출산율 수준",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sub-replacement_fertility",
+      "note": "replacement fertility 정의"
+     },
+     {
+      "claim": "2를 넘는 이유는 남아 출생이 더 많고 일부 아이가 가임기 끝나기 전 사망하기 때문",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sub-replacement_fertility",
+      "note": "성비·사망률"
+     },
+     {
+      "claim": "일부 개발도상국은 3.4명까지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sub-replacement_fertility",
+      "note": "higher mortality"
+     },
+     {
+      "claim": "한국은 1983년 처음 대체 수준 아래 출산율 기록",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sub-replacement_fertility",
+      "note": "first recorded sub-replacement fertility in 1983"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sub-replacement_fertility"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "시사 상식과 이어지는 개념, 이유를 알면 '아 그렇구나'",
+    "targetWhy": "대학 교양 인구학 — 저출산 뉴스의 '2.1' 은 들어 봤어도 용어와 2를 넘는 이유는 한 층 깊다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성 합계출산율(인구·통계)과 답이 다르고, 묻는 지식(유지 기준선)도 다르다",
+    "warn": [
+     "단정어 평생",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

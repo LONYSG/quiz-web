@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "earth/3",
+  "midKey": "earth",
+  "subName": "대기·기상",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "earth/3#g003-C1-09",
+   "seed": {
+    "subject": "보퍼트 풍력 계급",
+    "aspect": null,
+    "ref": "C1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1805년 영국 해군의 수로학자가 군함의 돛이 받는 바람을 보고 바람의 세기를 0부터 12까지 13단계로 나눈 기준을 만들었습니다. 그의 이름이 붙은 이 바람 세기 기준은 무엇일까요?",
+    "answer": "보퍼트 풍력 계급",
+    "acceptedAnswers": [
+     "보퍼트 계급"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "단계마다 우리말 이름도 있어 3계급은 산들바람, 가장 센 12계급은 싹쓸바람이라 부릅니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 기상학",
+     "wor": 4,
+     "worWhy": "교양 — 풍력 계급",
+     "acc": 5,
+     "accWhy": "지구과학·기상 — 중학 과학 교과"
+    },
+    "generalHint": "아일랜드 출신인 이 수로학자의 이름은 북극해의 한 바다에도 붙어 있다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Beaufort_scale",
+     "https://ko.wikipedia.org/wiki/보퍼트_풍력_계급"
+    ],
+    "facts": [
+     {
+      "claim": "1805년 영국 해군 수로학자 프랜시스 보퍼트가 고안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beaufort_scale",
+      "note": "Francis Beaufort, Royal Navy hydrographer, devised it in 1805"
+     },
+     {
+      "claim": "처음에는 군함 돛에 미치는 영향을 기준으로 0~12, 13단계",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beaufort_scale",
+      "note": "original 13 levels (0 to 12) described effects on a frigate's sails"
+     },
+     {
+      "claim": "우리말 이름: 3 산들바람, 12 싹쓸바람",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/보퍼트_풍력_계급",
+      "note": "계급별 명칭 표 — 3 산들바람 · 12 싹쓸바람"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Francis_Beaufort"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 적 있는 기준의 뜻밖의 기원",
+    "targetWhy": "중학 과학에 표가 나오지만 이름과 기원(군함 돛)은 교양·애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "earth/3#g003-P4-04",
+   "seed": {
+    "subject": "브로켄 현상",
+    "aspect": null,
+    "ref": "P4-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "안개 낀 산에서 해를 등지고 서면, 앞쪽 구름에 거인처럼 커다랗게 비친 자기 그림자의 머리 둘레로 무지개빛 고리가 생기기도 합니다. 1780년에 관찰 기록이 남은, 독일 하르츠 산지의 가장 높은 봉우리 이름을 딴 이 현상은 무엇일까요?",
+    "answer": "브로켄 현상",
+    "acceptedAnswers": [
+     "브로켄의 요괴",
+     "브로켄의 유령"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "발푸르기스의 밤에 마녀들이 이 산에 모인다는 전설이 이 현상을 마녀의 모임으로 여긴 데서 비롯되었다는 설명이 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 기상 광학",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기상 현상",
+     "acc": 5,
+     "accWhy": "지구과학·기상 — 중학 과학 교과"
+    },
+    "generalHint": "구름 위를 나는 비행기 창밖에서도 볼 수 있으며, 영국 시인 콜리지의 한 시가 이 장면으로 끝난다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Brocken_spectre",
+     "https://ko.wikipedia.org/wiki/브로켄_현상"
+    ],
+    "facts": [
+     {
+      "claim": "해를 등진 관찰자의 그림자가 구름에 크게 비치고 머리 둘레에 무지개빛 고리(글로리)가 생긴다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Brocken_spectre",
+      "note": "magnified shadow of an observer cast upon cloud opposite the sun; rings of rainbow-coloured light (glory) around the head"
+     },
+     {
+      "claim": "하르츠 산지 최고봉 브로켄에서 이름이 왔다 · 1780년 질버슐라크가 관찰·기록",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Brocken_spectre",
+      "note": "named after the Brocken, highest peak of the Harz; observed and described by Johann Silberschlag in 1780"
+     },
+     {
+      "claim": "'브로켄의 요괴'라고도 부른다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/브로켄_현상",
+      "note": "일명 '브로켄의 환영' · '브로켄의 요괴'"
+     },
+     {
+      "claim": "발푸르기스의 밤 마녀 전설이 이 현상에서 비롯되었다는 설명",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/브로켄_현상",
+      "note": "마녀들이 브로켄 산에서 연회를 연다는 이야기는 이 현상을 마녀 모임으로 여긴 데서 비롯"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Brocken_spectre"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "현상은 익숙하고 이름의 유래(산 이름)를 묻는다",
+    "targetWhy": "대학 교양 — 대기광학. 등산객 사진으로 본 사람은 '아 그거' 하는 교과서 밖 이름",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "정답조각 현상"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,285 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "olympic/3",
+  "midKey": "olympic",
+  "subName": "종목·규정",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "olympic/3#g003-S2-25",
+   "seed": {
+    "subject": "줄다리기",
+    "aspect": null,
+    "ref": "S2-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1900년부터 1920년까지 하계 올림픽마다 치러진 종목이 있습니다. 1908년 런던 대회에서는 런던 시티 경찰 팀이 영국에 금메달을 안긴, 지금은 사라진 이 종목은?",
+    "answer": "줄다리기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 종목에서 메달을 가장 많이 딴 나라는 영국으로, 금 2개를 포함해 5개입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 올림픽 역사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 사라진 종목",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "generalHint": "1908년 대회 8강에서 미국 팀은 리버풀 경찰 팀의 근무용 장화에 항의했다가 받아들여지지 않자 기권했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tug_of_war_at_the_Summer_Olympics"
+    ],
+    "facts": [
+     {
+      "claim": "1900~1920 매 대회 치러짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tug_of_war_at_the_Summer_Olympics",
+      "note": "contested at every Games from 1900 to 1920"
+     },
+     {
+      "claim": "1908 런던 시티 경찰 팀 금메달",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tug_of_war_at_the_Summer_Olympics",
+      "note": "City of London Police team won the tug of war gold medal at London 1908"
+     },
+     {
+      "claim": "영국 최다 5개(금2 은2 동1)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tug_of_war_at_the_Summer_Olympics",
+      "note": "Great Britain won the most, 5 total (2 gold, 2 silver, 1 bronze)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tug_of_war_at_the_1908_Summer_Olympics"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 놀이가 올림픽 종목이었다는 뜻밖의 사실",
+    "targetWhy": "사라진 올림픽 종목 — 올림픽 애호가 4",
+    "pairCheck": "",
+    "dbCheck": "pair-or-different — 활성 1093(민속 줄다리기 유네스코)과 지식 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/3#g003-S2-26",
+   "seed": {
+    "subject": "짐 소프",
+    "aspect": null,
+    "ref": "S2-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1912년 올림픽에서 5종 경기와 10종 경기를 함께 우승한 미국 선수가 있습니다. 이듬해 세미프로 야구에서 돈을 받은 사실이 드러나 아마추어 규정 위반으로 두 금메달을 빼앗긴 이 선수는?",
+    "answer": "짐 소프",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "IOC는 1983년 그의 메달을 복제품으로 돌려주었고, 2022년에는 그를 두 종목의 단독 우승자로 인정했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 올림픽 역사 인물",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 메달 박탈 일화",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "generalHint": "색 앤 폭스 부족 출신인 그는 1920년 미국 프로 미식축구 협회(뒤의 NFL)의 첫 회장을 이름뿐으로 맡았다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Jim_Thorpe"
+    ],
+    "facts": [
+     {
+      "claim": "1912 5종·10종 금",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jim_Thorpe",
+      "note": "won pentathlon and decathlon golds at 1912 Stockholm"
+     },
+     {
+      "claim": "1913 세미프로 야구 보수로 아마추어 규정 위반, 박탈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jim_Thorpe",
+      "note": "1913 IOC stripped him after learning he had been paid for semi-professional baseball, violating amateurism rules"
+     },
+     {
+      "claim": "1983 복제 메달 반환, 2022 단독 우승자",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jim_Thorpe",
+      "note": "1983 restored medals as replicas; 2022 named sole champion"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jim_Thorpe"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "올림픽 아마추어리즘의 대표 사건",
+    "targetWhy": "아마추어 규정 역사 — 올림픽 애호가 4",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/3#g003-S2-27",
+   "seed": {
+    "subject": "볼더링",
+    "aspect": null,
+    "ref": "S2-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2020 도쿄 올림픽에서 처음 정식 종목이 된 스포츠클라이밍은 세 세부 종목의 순위를 합쳐 메달을 가렸습니다. 이 가운데 로프 없이 대체로 6m가 안 되는 낮은 벽에서 '문제'라 부르는 짧은 과제를 푸는 종목은?",
+    "answer": "볼더링",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "도쿄 대회에서는 리드·스피드·이 종목의 순위를 곱한 값이 가장 작은 선수가 우승했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 올림픽 종목",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 신규 종목",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "generalHint": "떨어질 때를 대비해 바닥에 폼 매트 '크래시 패드'를 깔고, 난도는 흔히 V0부터 매기는 V 등급으로 나타낸다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sport_climbing_at_the_2020_Summer_Olympics",
+     "https://en.wikipedia.org/wiki/Bouldering"
+    ],
+    "facts": [
+     {
+      "claim": "2020 도쿄 첫 정식, 세 종목 결합",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sport_climbing_at_the_2020_Summer_Olympics",
+      "note": "debut at 2020 Tokyo; combined event with three disciplines"
+     },
+     {
+      "claim": "로프·하네스 없이, 6m 안팎 이하, 문제라 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bouldering",
+      "note": "without ropes or harnesses; each climb is called a problem; usually under about 6 metres"
+     },
+     {
+      "claim": "세 종목 순위를 곱해 가장 작은 값이 우승",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sport_climbing_at_the_2020_Summer_Olympics",
+      "note": "multiplying each climber rank in three disciplines, lowest product winning"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bouldering"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "새 종목의 세부 갈래 — 이름은 들어 봤을 법",
+    "targetWhy": "신종목 세부 — 애호가 4",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/3#g003-S2-28",
+   "seed": {
+    "subject": "가라테",
+    "aspect": null,
+    "ref": "S2-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "오키나와의 옛 무술에서 발전한 이 무도는 2020 도쿄 올림픽에서 일본 무도관을 무대로 처음 정식 종목으로 치러졌습니다. 그러나 2024년 파리 대회에서는 빠졌는데, 이 종목은?",
+    "answer": "가라테",
+    "acceptedAnswers": [
+     "공수도"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "도쿄 대회에서는 대련인 구미테와 혼자 형을 펼치는 가타, 두 갈래로 나뉘어 열렸습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송 — 도쿄올림픽 종목",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 올림픽 종목",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Karate",
+     "https://en.wikipedia.org/wiki/Karate_at_the_2020_Summer_Olympics"
+    ],
+    "facts": [
+     {
+      "claim": "류큐(오키나와) 옛 무술에서 발전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Karate",
+      "note": "developed in the Ryukyu Kingdom, present-day Okinawa, from indigenous Ryukyuan martial arts"
+     },
+     {
+      "claim": "2020 도쿄 무도관 첫 등장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Karate_at_the_2020_Summer_Olympics",
+      "note": "debut at 2020 Summer Olympics, Nippon Budokan"
+     },
+     {
+      "claim": "2024 파리 제외",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Karate_at_the_2020_Summer_Olympics",
+      "note": "not included in the 2024 Paris Games"
+     },
+     {
+      "claim": "구미테·가타 두 갈래",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Karate_at_the_2020_Summer_Olympics",
+      "note": "two disciplines: kumite and kata"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "종목 자체는 유명, 한 번만 치러졌다는 사실이 핵심 — 3과 4 경계",
+    "targetWhy": "올림픽 종목 변동 — 애호가 4",
+    "pairCheck": "",
+    "dbCheck": "new (변형 공수도 — 한국에서 함께 씀)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

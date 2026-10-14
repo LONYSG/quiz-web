@@ -1,0 +1,154 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "material/1",
+  "midKey": "material",
+  "subName": "금속·합금",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "material/1#g003-C2-08",
+   "seed": {
+    "subject": "알루미늄",
+    "aspect": null,
+    "ref": "C2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1885년 완공된 미국 워싱턴 기념탑의 꼭대기에는 녹슬지 않는 피뢰침 덮개로 이 금속을 씌웠습니다. 당시에는 제련이 어려워 값이 금보다 비쌌던 이 금속은 무엇일까요?",
+    "answer": "알루미늄",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1886년 미국의 홀과 프랑스의 에루가 각각 따로 개발한 전기 분해 제련법 덕분에 대량 생산의 길이 열렸다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 금속사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 금보다 비싼 알루미늄",
+     "acc": 2,
+     "accWhy": "재료·건설 기술 — 애호가 영역"
+    },
+    "generalHint": "나폴레옹 3세가 연회에서 가장 귀한 손님에게만 이 금속 식기를, 나머지에게는 금 식기를 냈다는 이야기가 전한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Aluminium"
+    ],
+    "facts": [
+     {
+      "claim": "1885년 완공된 워싱턴 기념탑의 꼭대기 덮개로 쓰였고 피뢰침 역할을 의도",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aluminium",
+      "note": "used as the cap of the Washington Monument, completed in 1885 · intended to serve as a lightning rod peak"
+     },
+     {
+      "claim": "생산이 어려워 값이 금을 넘었던 시기가 있다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aluminium",
+      "note": "its cost exceeded that of gold · remained rare"
+     },
+     {
+      "claim": "1886년 홀과 에루가 각각 독립적으로 홀-에루 공정 개발 → 대량 생산",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Aluminium",
+      "note": "Hall–Héroult process developed independently by Héroult and Hall in 1886 · mass production"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/History_of_aluminium"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대상은 누구나 아는 금속, 묻는 사실이 뜻밖",
+    "targetWhy": "흔한 금속이 한때 금보다 비쌌다는 것은 화학사 교양 이야깃거리",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "material/1#g003-C2-09",
+   "seed": {
+    "subject": "다마스쿠스강",
+    "aspect": null,
+    "ref": "C2-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중동의 옛 명검은 남인도에서 들여온 '우츠강' 덩이를 벼려 만들었고, 칼 표면에 물결 같은 무늬가 흐릅니다. 1900년 무렵 만드는 법의 맥이 끊긴 이 칼의 강철을 무엇이라 할까요?",
+    "answer": "다마스쿠스강",
+    "acceptedAnswers": [
+     "다마스커스강",
+     "다마스쿠스 강철"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 흔히 시리아의 도시에서 왔다고 하지만 그 도시는 이 강철을 직접 만들지 않았고, '물 뿌린 듯한' 무늬를 뜻하는 아랍어에서 왔다는 설도 있다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 재료사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 다마스쿠스강",
+     "acc": 2,
+     "accWhy": "재료·건설 기술 — 애호가 영역"
+    },
+    "generalHint": "2006년 '네이처'에 이 강철로 만든 옛 칼에서 탄소 나노튜브를 찾았다는 독일 연구가 실렸지만, 뒤의 연구로 확인되지는 않았다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Damascus_steel"
+    ],
+    "facts": [
+     {
+      "claim": "남인도에서 들여온 우츠강 덩이로 근동에서 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Damascus_steel",
+      "note": "first manufactured in the Near East from ingots of wootz steel from southern India"
+     },
+     {
+      "claim": "흐르는 물 같은 무늬",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Damascus_steel",
+      "note": "banding and mottling that looks like flowing water"
+     },
+     {
+      "claim": "1900년 무렵 생산이 끊김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Damascus_steel",
+      "note": "Production declined and ended around 1900"
+     },
+     {
+      "claim": "이름 유래 — 도시 설(도시는 도가니강을 만들지 않음) · '물 뿌린' 뜻 아랍어 설",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Damascus_steel",
+      "note": "city did not produce crucible steel itself · Arabic root for 'watered'"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Damascus_steel"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 봤을 법, 묻는 것은 원료와 내력",
+    "targetWhy": "게임·칼 애호가에게 이름은 익숙, 우츠강 원료와 끊긴 기술은 재료·역사 교양",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

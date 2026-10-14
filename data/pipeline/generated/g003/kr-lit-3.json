@@ -1,0 +1,153 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-lit/3",
+  "midKey": "kr-lit",
+  "subName": "근대 소설",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-lit/3#g003-K3-08",
+   "seed": {
+    "subject": "만세전",
+    "aspect": null,
+    "ref": "K3-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "도쿄 유학생 이인화는 아내가 위독하다는 전보를 받고 고베, 시모노세키, 부산, 김천, 대전을 거쳐 서울로 돌아옵니다. 이 귀국 여정을 그린 염상섭의 소설은?",
+    "answer": "만세전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1922년 잡지 '신생활'에 연재될 때의 제목은 '묘지'였고, 1924년 '시대일보'에 다시 실리며 지금 제목으로 바뀌었다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 문학 — 근대 소설",
+     "wor": 5,
+     "worWhy": "교과 — 근대 소설",
+     "acc": 5,
+     "accWhy": "한국 문학 — 중고교 국어 교과"
+    },
+    "generalHint": "연재 셋째 회는 총독부 검열로 통째 삭제되었고, 주인공은 아내 장례 뒤 다시 도쿄로 떠난다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/만세전"
+    ],
+    "facts": [
+     {
+      "claim": "주인공 동경 유학생 이인화, 아내 위독 전보로 귀국",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/만세전",
+      "note": "아내가 위독하다는 전보를 받고 귀국"
+     },
+     {
+      "claim": "도쿄→고베→시모노세키→부산→김천→대전→서울 여정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/만세전",
+      "note": "여정 경로"
+     },
+     {
+      "claim": "작자 염상섭",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/만세전",
+      "note": "염상섭"
+     },
+     {
+      "claim": "원제 묘지(신생활 1922), 시대일보 연재 때 제목 변경",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/만세전",
+      "note": "〈묘지〉 → 시대일보(1924) 연재 때 지금 제목"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EB%A7%8C%EC%84%B8%EC%A0%84"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "작가는 유명, 묻는 것은 다른 작품의 줄거리",
+    "targetWhy": "수능 근대 소설 심화 — 염상섭은 삼대로 알지만 만세전 여정은 한 층 깊다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건 (활성 삼대와 다른 답)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-lit/3#g003-K3-09",
+   "seed": {
+    "subject": "생강나무",
+    "aspect": null,
+    "ref": "K3-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "김유정의 단편 '동백꽃'에 나오는 '노란 동백꽃'은 남쪽 지방에서 피는 붉은 동백꽃이 아닙니다. 이 노란 꽃은 실제로 어떤 나무의 꽃일까요?",
+    "answer": "생강나무",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "작품의 배경인 강원도는 추워서 동백나무가 자라지 않는다는 풀이가 함께 붙는다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 국어 — 근대 소설",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 작품 속 사실",
+     "acc": 5,
+     "accWhy": "한국 문학 — 중고교 국어 교과"
+    },
+    "generalHint": "이 나무 열매로 짠 기름은 옛날 머릿기름으로 쓰였다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/동백꽃_(소설)"
+    ],
+    "facts": [
+     {
+      "claim": "김유정의 단편 동백꽃(1936, 조광)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동백꽃_(소설)",
+      "note": "김유정, 1936년 조광"
+     },
+     {
+      "claim": "작품 속 동백꽃은 생강나무의 꽃",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동백꽃_(소설)",
+      "note": "주해: 작품에 나오는 동백꽃은 생강나무의 꽃이다"
+     },
+     {
+      "claim": "강원도에는 추워서 동백나무가 살지 않음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/동백꽃_(소설)",
+      "note": "주해 설명"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/생강나무"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "작품은 유명하고 꽃의 정체가 '아 그렇구나' 거리. 다만 답이 작품 이름이 아니라 작품 속 소재라 중분류 경계(작품을 묻는다)에 걸리는지 VERIFY 판단 필요",
+    "targetWhy": "교과서에 실린 작품의 세부 — 문학 수업 심화에서나 접하는 사실",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건",
+    "warn": [
+     "정답조각 나무"
+    ]
+   }
+  }
+ ]
+}

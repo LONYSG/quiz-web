@@ -1,0 +1,83 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "drinks/2",
+  "midKey": "drinks",
+  "subName": "위스키·증류주",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "drinks/2#g003-L2-13",
+   "seed": {
+    "subject": "피트",
+    "aspect": null,
+    "ref": "L2-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "스코틀랜드 아일라섬의 여러 증류소는 싹 틔운 보리를 말릴 때 이것을 태워 위스키에 특유의 스모키한 향을 입힙니다. 습지에서 식물이 다 썩지 않고 쌓여 생긴 이 연료는?",
+    "answer": "피트",
+    "acceptedAnswers": [
+     "이탄"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 향의 세기는 페놀 함량(ppm)으로 나타내는데, 하이랜드 위스키는 30ppm 안팎, 아일라 위스키는 50ppm 안팎까지 간다고 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 위스키 제조",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 위스키 향",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "generalHint": "덴마크의 '톨룬 인간'처럼, 이것이 쌓인 산성 늪에서는 2천 년도 넘은 시신이 썩지 않고 나오기도 한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Peat"
+    ],
+    "facts": [
+     {
+      "claim": "아일라 증류소들이 피트를 태워 맥아를 말려 스모키한 향",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Peat",
+      "note": "distilleries, particularly on Islay, use peat fires to dry malted barley; distinctive smoky flavour"
+     },
+     {
+      "claim": "피트는 습지에 덜 분해된 식물이 쌓인 것",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Peat",
+      "note": "peat: accumulation of partially decayed vegetation (lead)"
+     },
+     {
+      "claim": "페놀 ppm — 하이랜드 30, 아일라 50",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Peat",
+      "note": "Highland about 30 ppm, Islay up to about 50 ppm (better source needed 표시)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Peat"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 위스키 향과 연료·지질의 연결",
+    "targetWhy": "위스키 애호가가 아는 '피트 향'의 정체를 묻는다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

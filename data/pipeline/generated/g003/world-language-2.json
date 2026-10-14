@@ -1,0 +1,90 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "world-language/2",
+  "midKey": "world-language",
+  "subName": "라틴어·그리스어 어근",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-language/2#g003-L2-28",
+   "seed": {
+    "subject": "집",
+    "aspect": null,
+    "ref": "L2-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "경제를 뜻하는 영어 economy와 생태학을 뜻하는 ecology는 앞부분이 같은 그리스어 낱말 '오이코스'에서 왔습니다. 이 낱말은 본래 무엇을 뜻할까요?",
+    "answer": "집",
+    "acceptedAnswers": [
+     "가정"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "생태학이라는 말은 1866년 독일 동물학자 에른스트 헤켈이 만들었고, 경제는 '집'에 '관리하다'가 붙은 데서 나왔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 어원",
+     "wor": 4,
+     "worWhy": "교양 — 낱말 어원",
+     "acc": 3,
+     "accWhy": "언어·어원 — 관심층이면 안다"
+    },
+    "generalHint": "교회 일치 운동을 뜻하는 '에큐메니즘'도 '사람이 사는 온 세상'을 뜻하는 같은 뿌리의 그리스어에서 왔다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ecology",
+     "https://en.wikipedia.org/wiki/Economy"
+    ],
+    "facts": [
+     {
+      "claim": "ecology 는 oikos(집) + -logia",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ecology",
+      "note": "from Ancient Greek οἶκος (oîkos) 'house' and -λογία"
+     },
+     {
+      "claim": "economy 의 앞부분 oikos 는 house",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Economy",
+      "note": "first part oikos means house, second part nemein means to manage"
+     },
+     {
+      "claim": "1866년 헤켈이 만든 말",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ecology",
+      "note": "coined in 1866 by the German scientist Ernst Haeckel"
+     },
+     {
+      "claim": "economy = 집 + 관리하다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Economy",
+      "note": "nemein means to manage"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ecumenism"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 두 낱말의 몰랐던 연결 (4003 '사랑' 과 같은 꼴)",
+    "targetWhy": "경제·생태가 같은 어근이라는 사실은 대학 교양 어원 수준",
+    "pairCheck": "",
+    "dbCheck": "pair-or-different — 활성 807(바둑의 집)과 답만 같고 지식이 전혀 다름(D2)",
+    "warn": []
+   }
+  }
+ ]
+}

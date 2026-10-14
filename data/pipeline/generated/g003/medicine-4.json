@@ -1,0 +1,87 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "medicine/4",
+  "midKey": "medicine",
+  "subName": "영양·비타민",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/4#g003-C1-04",
+   "seed": {
+    "subject": "비타민",
+    "aspect": null,
+    "ref": "C1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1912년 폴란드 출신 생화학자 카지미에시 풍크는 쌀겨에서 얻은 물질을 두고, '생명'을 뜻하는 라틴어에 질소 화합물 '아민'을 붙여 이름을 지었습니다. 오늘날 이 말에서 끝 글자 e가 빠진 채 쓰이는 영양소 무리의 이름은 무엇일까요?",
+    "answer": "비타민",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "뒤에 이 무리가 모두 아민은 아니라는 것이 밝혀져 끝의 e를 떼어 냈습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "중학 과학 — 영양소",
+     "wor": 4,
+     "worWhy": "교양 — 낱말 유래",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Casimir_Funk"
+    ],
+    "facts": [
+     {
+      "claim": "풍크는 폴란드 출신(폴란드계 미국인) 생화학자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Casimir_Funk",
+      "note": "Polish-American biochemist"
+     },
+     {
+      "claim": "1912년 저술에서 vitamine 이라는 말을 만듦, 쌀겨에서 분리한 물질",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Casimir_Funk",
+      "note": "coined the term in his 1912 work · isolated from rice bran"
+     },
+     {
+      "claim": "vital + amine 결합",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Casimir_Funk",
+      "note": "vitamine = vital amine"
+     },
+     {
+      "claim": "비타민이 꼭 아민이 아님이 밝혀져 e를 뗌",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Casimir_Funk",
+      "note": "final e removed when vitamins need not be nitrogen-containing amines"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "유래가 뜻밖이라 좋지만 '아민'·'생명' 단서로 풀어 버릴 수 있어 난이도 3 일 수 있음",
+    "targetWhy": "누구나 아는 낱말의 유래 — 대학 교양(영양학사) 수준 사실",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (비타민 B1·C·D 등 개별 비타민 답은 다른 지식)",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

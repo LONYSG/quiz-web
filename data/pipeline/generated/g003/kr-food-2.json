@@ -1,0 +1,279 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-food/2",
+  "midKey": "kr-food",
+  "subName": "김치·반찬",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/2#g003-K2-18",
+   "seed": {
+    "subject": "육젓",
+    "aspect": null,
+    "ref": "K2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "새우젓은 잡는 때에 따라 이름이 달라, 5월 새우로 담근 것은 오젓, 가을 새우로 담근 것은 추젓이라 합니다. 그 사이 산란기 새우로 담가 새우젓 가운데 가장 상등품으로 치는 것은?",
+    "answer": "육젓",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "충남 홍성 광천의 토굴에서 숙성시킨 새우젓이 특산물로 이름나 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 젓갈 종류",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 새우젓 이름",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "다른 철 새우보다 크고 살이 통통해, 김치 담글 때 가장 즐겨 찾는 새우젓이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/새우젓"
+    ],
+    "facts": [
+     {
+      "claim": "오젓은 5월, 추젓은 가을 새우",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/새우젓",
+      "note": "오젓: 5월 / 추젓: 가을에 잡은 자잘한 새우"
+     },
+     {
+      "claim": "육젓은 6월 산란기 새우, 가장 상등품",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/새우젓",
+      "note": "새우젓 가운데서 가장 상등품으로 여겨진다"
+     },
+     {
+      "claim": "광천 토굴 새우젓 특산",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/새우젓",
+      "note": "광천의 토굴에서 숙성시킨 새우젓이 특산물"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%83%88%EC%9A%B0%EC%A0%93"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "새우젓은 누구나 알고, 오젓·추젓 단서로 추리 가능",
+    "targetWhy": "김장하는 집·음식 애호가가 아는 새우젓 등급",
+    "pairCheck": "",
+    "dbCheck": "new — 2306(젓갈)과 답 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/2#g003-K2-19",
+   "seed": {
+    "subject": "깍두기",
+    "aspect": null,
+    "ref": "K2-19",
+    "pairedWith": 163
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 163,
+    "question": "정조의 딸 숙선옹주가 만들어 임금께 바친 데서 비롯되었다는 설이 전하는 김치가 있습니다. 젓무·홍저라고도 하며 궁중에서는 '송송이'라고도 불렀다는 이 김치는?",
+    "answer": "깍두기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "소리를 빌려 '각독기(刻毒氣)'로 적고 독기를 없애는 음식으로 풀이하기도 했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 김치 유래",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 깍두기 유래",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "1913년 『요리제법』에는 오이·굴·닭으로 담근 여러 갈래의 이 김치가 실려 있다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/깍두기"
+    ],
+    "facts": [
+     {
+      "claim": "정조의 딸 숙선옹주가 만들어 바친 데서 유래했다는 설",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/깍두기",
+      "note": "깍두기가 정조의 딸 숙선옹주가 만들어 바친 데서 유래했다는 설이 실려 있다"
+     },
+     {
+      "claim": "젓무·홍저, 궁중에서는 송송이",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/깍두기",
+      "note": "젓무·홍저(紅葅)라고도 부르며, 궁중에서는 송송이라고도 하였다"
+     },
+     {
+      "claim": "각독기 표기, 독기를 없애는 음식으로 풀이",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/깍두기",
+      "note": "음차해 각독기(刻毒氣)로 표기하며 독기를 없애는 음식으로 풀이하기도"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/깍두기"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 대상, 묻는 사실은 유래·옛 이름",
+    "targetWhy": "깍두기는 국민 반찬이지만 궁중 이름·숙선옹주 설은 음식사 교양 수준",
+    "pairCheck": "1회차(163)는 깍둑썰기한 무·양념 재료(정의)를 묻고 해설도 같은 정의 — 2회차는 숙선옹주 설·궁중 이름(송송이)이라 1회차만으로 풀 수 없음",
+    "dbCheck": "pair-or-different — 163 과 같은 답, (가) 2회차로 씀",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/2#g003-K2-20",
+   "seed": {
+    "subject": "김",
+    "aspect": null,
+    "ref": "K2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1640년 지금의 광양 태인도로 들어가 이 해조류의 양식을 처음 시작했다는 인물의 이름에서 해조류의 이름이 왔다는 민간 어원이 있습니다. 해의·해태라고도 부르는 이 해조류는?",
+    "answer": "김",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "광양설은 그 인물의 비문에 근거하지만, 비는 사라지고 비문은 필사본으로 전하며 완도에서 시작됐다는 설도 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송 — 김 어원 이야기",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 김 이름 유래",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/김_(음식)"
+    ],
+    "facts": [
+     {
+      "claim": "김여익이 1640년 인호(지금의 태인도)로 이주해 김 양식 시작(비문)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김_(음식)",
+      "note": "1640년 우본현 인호(지금의 태인도)로 이주하여 김 양식을 시작"
+     },
+     {
+      "claim": "민간 어원: 김 양식을 처음 시작한 김여익 이름에서",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김_(음식)",
+      "note": "김 양식을 처음으로 시작한 김여익의 이름에서 왔다는 설"
+     },
+     {
+      "claim": "해의·해태 등 다른 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김_(음식)",
+      "note": "청태, 감태, 해우, 해의, 해태라고도 부른다"
+     },
+     {
+      "claim": "비는 사라지고 비문은 필사본, 완도설",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/김_(음식)",
+      "note": "비 자체는 사라졌고 필사본으로 전해짐 / 완도설도 있다"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'해태' 단서로 쉬워질 수 있음 — 그래도 국민 반찬의 이름 유래",
+    "targetWhy": "김 이름의 민간 어원(김여익)은 음식 교양 방송에서 접하는 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/2#g003-P1-09",
+   "seed": {
+    "subject": "탕평채",
+    "aspect": null,
+    "ref": "P1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "청포묵을 채 썰어 소고기·숙주·미나리와 함께 간장·참기름·식초로 무치고 김과 달걀지단을 얹는 궁중 음식입니다. 흰 묵, 붉은 소고기, 푸른 미나리, 검은 김이 각각 조선의 서로 다른 붕당을 뜻한다는 풀이가 전하는 이 음식은 무엇일까요?",
+    "answer": "탕평채",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "묵청포라고도 불렀으며, 주로 늦봄부터 여름까지 즐겨 먹었다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 탕평책 연계 음식",
+     "wor": 4,
+     "worWhy": "교양 — 탕평책 상징 음식",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "이 음식에 쓰는 흰 묵을 치자로 노랗게 물들이면 전주비빔밥의 필수 재료인 황포묵이 된다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/탕평채"
+    ],
+    "facts": [
+     {
+      "claim": "청포묵·소고기·숙주·미나리를 간장·참기름·식초로 무치고 김·달걀지단을 얹는 궁중 음식",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탕평채",
+      "note": "재료와 조리"
+     },
+     {
+      "claim": "흰 묵=서인, 붉은 소고기=남인, 푸른 미나리=동인, 검은 김=북인이라는 풀이, 영조 탕평책과 연결",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탕평채",
+      "note": "색과 붕당"
+     },
+     {
+      "claim": "묵청포라고도 함, 늦봄~여름에 먹음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/탕평채",
+      "note": "다른 이름·계절"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/청포묵"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "붕당 풀이에서 탕평을 떠올리는 한 걸음 추리",
+    "targetWhy": "탕평책은 교과서지만 그 이름을 딴 음식은 교과서 밖 — 음식·역사 이야깃거리를 아는 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "탕평채 new",
+    "warn": []
+   }
+  }
+ ]
+}

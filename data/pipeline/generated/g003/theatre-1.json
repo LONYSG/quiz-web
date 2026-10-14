@@ -1,0 +1,87 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "theatre/1",
+  "midKey": "theatre",
+  "subName": "연극 사조·연출",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "theatre/1#g003-A1-31",
+   "seed": {
+    "subject": "코메디아 델라르테",
+    "aspect": null,
+    "ref": "A1-31",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "16세기 이탈리아에서 시작돼 18세기까지 유럽을 누빈 직업 극단의 연극으로, 줄거리 뼈대만 정해 두고 대사는 배우가 즉흥으로 채웠습니다. 아를레키노·판탈로네 같은 가면 쓴 정형 인물이 나오는 이 연극 형식은 무엇일까요?",
+    "answer": "코메디아 델라르테",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1560년대부터 여성이 여성 배역을 맡아, 고대 이후 유럽에서 처음 알려진 직업 여배우들을 배출했다고 평가됩니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 연극사",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 연극",
+     "acc": 3,
+     "accWhy": "공연·뮤지컬 — 관심층이면 안다"
+    },
+    "generalHint": "배우들은 어느 장면에나 끼워 넣을 수 있는 '라치'라는 정해진 우스개 몸짓을 익혀 두고 즉흥 연기에 섞어 썼다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Commedia_dell%27arte"
+    ],
+    "facts": [
+     {
+      "claim": "이탈리아에서 시작, 16~18세기 유럽에서 인기, 직업 연극",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Commedia_dell%27arte",
+      "note": "early professional theatre that began in Italy, popular across Europe 16th–18th centuries"
+     },
+     {
+      "claim": "줄거리 시나리오만 정하고 즉흥",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Commedia_dell%27arte",
+      "note": "key plot points fixed in scenarios, actors improvised within them"
+     },
+     {
+      "claim": "아를레키노·판탈로네 가면 정형 인물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Commedia_dell%27arte",
+      "note": "masked stock characters Arlecchino, Pantalone, il Dottore"
+     },
+     {
+      "claim": "1560년대부터 여성이 여성 역, 고대 이후 유럽 첫 직업 여배우들",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Commedia_dell%27arte",
+      "note": "women played female roles from the 1560s, among Europe's first known professional actresses since antiquity"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Commedia_dell%27arte"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이름을 모르면 추리하기 어려움 — 4~5 경계",
+    "targetWhy": "서양 연극사 교양의 기본 항목",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건 (즉흥극 3249 는 일반 개념이라 다른 지식)",
+    "warn": []
+   }
+  }
+ ]
+}

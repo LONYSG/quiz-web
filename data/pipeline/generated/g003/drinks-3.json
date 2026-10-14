@@ -1,0 +1,155 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "drinks/3",
+  "midKey": "drinks",
+  "subName": "맥주",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "drinks/3#g003-L2-14",
+   "seed": {
+    "subject": "필스너",
+    "aspect": null,
+    "ref": "L2-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1842년 보헤미아의 한 도시 양조장이 바이에른 출신 양조사 요제프 그롤을 불러 맑은 황금빛 라거를 처음 빚었습니다. 그 도시 이름에서 이름이 온 이 맥주 갈래는?",
+    "answer": "필스너",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그 맑은 맛은 그 도시의 단물과 근처 자테츠의 홉, 단백질이 적은 맥아 덕분이었다고 설명됩니다. 그 첫 맥주가 오늘날의 '필스너 우르켈'입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 맥주 갈래",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 맥주 종류",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "generalHint": "그 도시의 체코식 이름은 '플젠'이며, 첫 맥주는 1842년 10월 5일에 빚어졌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pilsner"
+    ],
+    "facts": [
+     {
+      "claim": "보헤미아 도시 플젠(필젠)에서 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pilsner",
+      "note": "takes its name from the Bohemian city of Plzeň"
+     },
+     {
+      "claim": "바이에른 양조사 요제프 그롤이 1842년 첫 페일 라거",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pilsner",
+      "note": "Bavarian brewer Josef Groll produced the first batch of pale lager on 5 October 1842"
+     },
+     {
+      "claim": "단물·자츠 홉·저단백 맥아",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pilsner",
+      "note": "soft water, local Saaz hops, low-protein malt"
+     },
+     {
+      "claim": "첫 맥주가 필스너 우르켈",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pilsner",
+      "note": "world's first pale lager (now known as Pilsner Urquell)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pilsner"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 맥주 갈래의 뿌리",
+    "targetWhy": "필스너는 흔한 이름이지만 기원 도시·1842년 그롤은 맥주 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "drinks/3#g003-L2-15",
+   "seed": {
+    "subject": "기네스",
+    "aspect": null,
+    "ref": "L2-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1951년 아일랜드에서 사냥을 하던 한 맥주 회사 사장이 유럽에서 가장 빠른 사냥새가 무엇인지 따지다가, 이를 가려 줄 책이 없다는 데서 세계 기록책을 떠올렸습니다. 그가 이끈, 흑맥주 스타우트로 유명한 회사는?",
+    "answer": "기네스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Guinness"
+    ],
+    "explanation": "회사는 처음에 기록책 약 천 부를 영국과 아일랜드의 펍에 공짜로 나눠 주었고, 반응이 좋자 1955년 첫 판매본을 냈습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송 — 기네스북 유래",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기네스북 기원",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Guinness_World_Records"
+    ],
+    "facts": [
+     {
+      "claim": "1951년 11월 기네스 양조 사장 휴 비버가 아일랜드 웩스퍼드 사냥에서 가장 빠른 사냥새를 두고 논쟁",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Guinness_World_Records",
+      "note": "Sir Hugh Beaver, managing director of Guinness Breweries, shooting party County Wexford, fastest game bird"
+     },
+     {
+      "claim": "논쟁을 가릴 책이 없다는 것을 깨달음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Guinness_World_Records",
+      "note": "no book in the world with which to settle arguments about records"
+     },
+     {
+      "claim": "약 천 부를 펍에 무료 배포, 1955년 8월 첫 판",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Guinness_World_Records",
+      "note": "gave away about a thousand free copies to pubs; first edition bound August 1955"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 두 대상의 몰랐던 연결",
+    "targetWhy": "기네스북은 누구나 알지만 맥주 회사 사장의 사냥 논쟁에서 나왔다는 연결은 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (기네스북 활성 없음 확인은 정답 '기네스' 기준)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,220 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "medicine/1",
+  "midKey": "medicine",
+  "subName": "질병",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/1#g003-C1-01",
+   "seed": {
+    "subject": "장티푸스",
+    "aspect": null,
+    "ref": "C1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "20세기 초 뉴욕의 부잣집들을 옮겨 다니며 일한 아일랜드 출신 요리사 메리 맬런은 자신은 멀쩡하면서 수십 명에게 병을 옮겼습니다. 그녀가 증상 없는 보균자로 퍼뜨린, 살모넬라균의 한 종류가 일으키는 병은 무엇일까요?",
+    "answer": "장티푸스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "메리 맬런은 1907년 뉴욕 이스트강의 노스브라더섬에 처음 격리되었고, 풀려났다가 1915년 다시 붙잡힌 뒤 1938년 숨질 때까지 그 섬에서 지냈습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 보균자 일화",
+     "wor": 4,
+     "worWhy": "교양 — 감염병 상식",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "generalHint": "조사관은 그녀가 생복숭아를 얹어 낸 아이스크림을 감염 경로로 의심했고, 그녀는 쓸개를 떼는 수술을 거부했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mary_Mallon"
+    ],
+    "facts": [
+     {
+      "claim": "아일랜드 출신 요리사, 뉴욕 부유층 가정의 요리사로 일함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mary_Mallon",
+      "note": "Cookstown, County Tyrone 출생 · 뉴욕 부유한 가정의 private cook"
+     },
+     {
+      "claim": "증상 없는 보균자로 수십 명(최대 57명 추정)을 감염시킴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mary_Mallon",
+      "note": "미국 최초 확인된 Salmonella typhi 무증상 보균자 · up to 57 infected"
+     },
+     {
+      "claim": "1907년 노스브라더섬 격리, 1910년 석방, 1915년 재격리, 1938년 섬에서 사망",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mary_Mallon",
+      "note": "Riverside Hospital, North Brother Island · 1907~1910 · 1915~1938 사망"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mary_Mallon"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 병 · 보건사 대표 일화라는 한 층 깊은 단서",
+    "targetWhy": "장티푸스는 누구나 들어 봤지만 '장티푸스 메리' 일화는 대학 교양(역학·보건사) 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "medicine/1#g003-C1-02",
+   "seed": {
+    "subject": "콜레라",
+    "aspect": null,
+    "ref": "C1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1854년 런던 소호에서 전염병으로 수백 명이 죽자, 의사 존 스노는 사망자 집을 지도에 점으로 찍어 브로드가의 공용 펌프를 원인으로 지목했습니다. 펌프 손잡이를 떼어 내게 한 이 일화로 역학의 출발점이 된 병은 무엇일까요?",
+    "answer": "콜레라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그 펌프의 우물은 오래된 오물 구덩이에서 1미터 남짓 떨어져 있었고, 병을 앓던 아기의 기저귀를 빤 물이 이 구덩이로 흘러든 것이 시작이었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 — 역학의 시작",
+     "wor": 4,
+     "worWhy": "교양 — 의학사",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "generalHint": "같은 1854년 이탈리아의 필리포 파치니가 쉼표 모양의 이 병 원인균을 관찰해 기록했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/1854_Broad_Street_cholera_outbreak"
+    ],
+    "facts": [
+     {
+      "claim": "1854년 런던 소호, 사망자 수백 명(420명)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1854_Broad_Street_cholera_outbreak",
+      "note": "Soho, London · killed 420 people"
+     },
+     {
+      "claim": "존 스노가 점 지도로 브로드가 펌프를 원인으로 추적, 다음 날 손잡이 제거",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1854_Broad_Street_cholera_outbreak",
+      "note": "dot map · the handle of the pump was removed on the following day"
+     },
+     {
+      "claim": "우물이 오물 구덩이에서 약 3피트 거리, 아기 기저귀 빤 물이 구덩이로 흘러듦",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1854_Broad_Street_cholera_outbreak",
+      "note": "index case a baby · nappies wastewater into cesspit · well dug 3 feet from cesspit"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Filippo_Pacini"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 질병, 역학사의 대표 사건을 단서로",
+    "targetWhy": "콜레라는 중학 수준이지만 존 스노의 브로드가 펌프는 대학 교양(역학 입문) 일화",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "medicine/1#g003-P4-02",
+   "seed": {
+    "subject": "레지오넬라증",
+    "aspect": null,
+    "ref": "P4-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1976년 미국 필라델피아의 한 호텔에서 참전 군인 단체 '아메리칸 리전'의 대회가 열린 뒤, 참가자들 사이에 원인 모를 폐렴이 번져 29명이 숨졌습니다. 이듬해 밝혀진 원인 세균에는 이 단체의 이름이 붙었습니다. 이 세균이 일으키는 병은 무엇일까요?",
+    "answer": "레지오넬라증",
+    "acceptedAnswers": [
+     "재향군인병",
+     "재향군인회병",
+     "레지오넬라"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "대형 건물의 냉각탑·온수 탱크 같은 곳의 오염된 물이 미세한 물방울로 퍼질 때 들이마셔 걸리며, 사람 사이에는 대개 옮지 않습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "뉴스 — 여름철 감염병",
+     "wor": 4,
+     "worWhy": "교양 — 질병 상식",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Legionnaires%27_disease",
+     "https://ko.wikipedia.org/wiki/레지오넬라증"
+    ],
+    "facts": [
+     {
+      "claim": "1976년 필라델피아 벨뷰-스트랫퍼드 호텔 아메리칸 리전 대회 참가자 집단 발병 · 182명 중 29명 사망",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Legionnaires%27_disease",
+      "note": "outbreak among attendees of an American Legion convention at the Bellevue-Stratford Hotel in Philadelphia in 1976; of 182 cases, 29 died"
+     },
+     {
+      "claim": "1977년 원인균이 밝혀져 Legionella 로 이름 붙었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Legionnaires%27_disease",
+      "note": "causative agent identified January 1977 and named Legionella"
+     },
+     {
+      "claim": "한국어 이름 레지오넬라증 · 재향군인회병",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/레지오넬라증",
+      "note": "레지오넬라증, 재향군인회병으로 병기 — 재향군인회 모임에서 붙은 이름"
+     },
+     {
+      "claim": "냉각탑·온수 탱크 등 오염된 물의 에어로졸을 들이마셔 걸리고 사람 사이 전파는 대개 없다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Legionnaires%27_disease",
+      "note": "spread by breathing aerosolized contaminated water; sources include hot water tanks, cooling towers; not transmitted person to person"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "단체 이름(리전 → 레지오넬라)을 이어 추리할 수 있다. 29명 수치는 배경일 뿐 묻지 않는다",
+    "targetWhy": "대학 교양 — 감염병 이름의 유래. 냉각탑 수질 뉴스로 이름은 들어 봤으나 유래는 교과서 밖",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (재향군인병도 new)",
+    "warn": []
+   }
+  }
+ ]
+}

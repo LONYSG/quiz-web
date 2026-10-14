@@ -1,0 +1,235 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "human-body/2",
+  "midKey": "human-body",
+  "subName": "장기·순환",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/2#g003-C1-26",
+   "seed": {
+    "subject": "랑게르한스섬",
+    "aspect": null,
+    "ref": "C1-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "췌장 부피의 1~2%를 차지하며 섬처럼 흩어진 세포 덩어리가 있습니다. 알파 세포는 글루카곤을, 베타 세포는 인슐린을 내는 이 조직은 1869년 독일 병리해부학자의 이름을 따서 무엇이라 부를까요?",
+    "answer": "랑게르한스섬",
+    "acceptedAnswers": [
+     "췌도",
+     "이자섬"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "부피는 작지만 이자로 가는 혈액의 10~15%를 받으며, 건강한 어른의 이자에는 약 100만 개가 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 생명과학 — 내분비",
+     "wor": 5,
+     "worWhy": "교과서 — 인체",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "generalHint": "이 이름의 주인은 베를린에서 박사 과정을 밟던 스물한 살 무렵 이 조직을 기술했고, 피부의 한 면역 세포에도 이름을 남겼다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pancreatic_islets"
+    ],
+    "facts": [
+     {
+      "claim": "이자 부피의 1~2%",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pancreatic_islets",
+      "note": "about 1–2% of pancreatic volume"
+     },
+     {
+      "claim": "알파 글루카곤, 베타 인슐린",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pancreatic_islets",
+      "note": "alpha cells glucagon · beta cells insulin"
+     },
+     {
+      "claim": "1869년 독일 병리해부학자 파울 랑게르한스가 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pancreatic_islets",
+      "note": "discovered in 1869 by German pathological anatomist Paul Langerhans"
+     },
+     {
+      "claim": "혈류 10~15%, 약 100만 개",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pancreatic_islets",
+      "note": "receive roughly 10–15% of blood flow · about one million islets"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Paul_Langerhans"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "인슐린은 누구나 알지만 그 생산 조직 이름은 한 층 깊음",
+    "targetWhy": "고교 생명과학 혈당 조절 심화 · 대학 교양",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "human-body/2#g003-C1-27",
+   "seed": {
+    "subject": "동방결절",
+    "aspect": null,
+    "ref": "C1-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "심장 오른쪽 위 방의 벽, 위대정맥이 들어오는 자리 옆에 스스로 전기 신호를 만들어 심장 박동의 박자를 정하는 작은 조직이 있습니다. 1907년 키스와 의대생 플랙이 두더지의 심장을 연구하다 찾아낸 이 '천연 박동기'는 무엇일까요?",
+    "answer": "동방결절",
+    "acceptedAnswers": [
+     "굴심방결절",
+     "동결절"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "교감 신경은 이곳의 박자를 빠르게, 미주 신경은 느리게 바꿉니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 생명과학 — 심장 구조",
+     "wor": 5,
+     "worWhy": "교과 — 심장 박동 원리",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "generalHint": "이곳에 피를 대는 가는 동맥은 대개 오른쪽 관상동맥에서 갈라져 나온다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sinoatrial_node"
+    ],
+    "facts": [
+     {
+      "claim": "오른심방 위쪽 뒤 벽, 위대정맥 입구 옆",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sinoatrial_node",
+      "note": "upper back wall of the right atrium, near the superior vena cava"
+     },
+     {
+      "claim": "심장의 천연 박동기, 박동 신호 생성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sinoatrial_node",
+      "note": "natural pacemaker · generates electrical impulses"
+     },
+     {
+      "claim": "1907 키스와 의대생 플랙이 두더지 심장에서 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sinoatrial_node",
+      "note": "Arthur Keith and medical student Martin Flack, 1907, mole's heart"
+     },
+     {
+      "claim": "교감 신경 빠르게, 미주(부교감) 신경 느리게",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sinoatrial_node",
+      "note": "sympathetic speed · parasympathetic (vagus) slow"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sinoatrial_node"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "심근(2277)의 자동 박동을 한 층 더 깊게 — 정상 구조와 기능",
+    "targetWhy": "고교 생명과학 심화 · 대학 교양 생리학",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (2277 심근과 답·지식 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "human-body/2#g003-P4-09",
+   "seed": {
+    "subject": "윌리엄 하비",
+    "aspect": null,
+    "ref": "P4-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1628년 프랑크푸르트에서 『동물의 심장과 혈액의 운동에 관한 해부학적 연구』가 나왔습니다. 심장이 피를 펌프질해 몸을 한 바퀴 돌게 한다고 밝혀 오랫동안 의학을 지배한 갈레노스의 학설을 흔든 책입니다. 팔을 끈으로 묶는 실험으로 정맥 판막이 피를 한 방향으로만 흐르게 한다는 것도 보인 이 영국 의사는 누구일까요?",
+    "answer": "윌리엄 하비",
+    "acceptedAnswers": [
+     "하비"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "제임스 1세와 찰스 1세의 주치의를 지냈지만 모세혈관은 예측하지 못해, 피가 살의 틈으로 스며들어 정맥으로 돌아간다고 보았습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 — 생명과학·과학사",
+     "wor": 5,
+     "worWhy": "교과서 — 혈액 순환 발견",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "generalHint": "이 의사는 이탈리아 파도바 대학에서 정맥 판막을 연구한 파브리치우스에게 배웠고, 영국 포크스턴에서 태어났다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/William_Harvey"
+    ],
+    "facts": [
+     {
+      "claim": "1628년 프랑크푸르트에서 『De Motu Cordis』 출간 · 심장이 피를 순환시킨다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_Harvey",
+      "note": "In 1628 published Exercitatio Anatomica de Motu Cordis et Sanguinis in Animalibus in Frankfurt; heart pumps blood in a circuit"
+     },
+     {
+      "claim": "갈레노스 학설과 충돌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_Harvey",
+      "note": "findings conflicted with Galen's long-dominant teachings"
+     },
+     {
+      "claim": "팔을 묶는 실험으로 판막이 피를 한 방향으로 흐르게 함을 보였다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_Harvey",
+      "note": "tied a band around upper arm; valves keep blood flowing one way"
+     },
+     {
+      "claim": "제임스 1세·찰스 1세의 주치의 · 모세혈관을 예측하지 못하고 살의 구멍으로 스며든다고 봄",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/William_Harvey",
+      "note": "Physician Extraordinary to James I, Physician in Ordinary to Charles I; did not predict capillaries, blood permeates the pores of the flesh"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/William_Harvey"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들으면 '아 하비' 하는 과학사 인물",
+    "targetWhy": "대학 교양 — 의학사(혈액 순환). 혈액 순환은 중학 교과, 증명한 인물은 교과서 밖 교양",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

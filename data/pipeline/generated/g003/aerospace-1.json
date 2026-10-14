@@ -1,0 +1,91 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "aerospace/1",
+  "midKey": "aerospace",
+  "subName": "항공기",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/1#g003-C2-24",
+   "seed": {
+    "subject": "코메트",
+    "aspect": null,
+    "ref": "C2-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1952년 세계 처음으로 돈을 낸 승객을 태우고 정기 운항한 제트 여객기는, 1954년 두 대가 잇따라 하늘에서 부서져 떨어졌습니다. 물탱크 속 압력 시험 끝에 금속 피로가 원인으로 밝혀진 이 영국 여객기는?",
+    "answer": "코메트",
+    "acceptedAnswers": [
+     "드 하빌랜드 코메트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "흔히 네모난 객실 창이 원인이라고 알려져 있지만, 치명적 균열은 조종석 위 안테나 구멍 둘레의 리벳 구멍에서 시작됐다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 항공 공학사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 금속 피로 사고",
+     "acc": 3,
+     "accWhy": "항공·우주 기술 — 관심층이면 안다"
+    },
+    "generalHint": "이 여객기를 바탕으로 만든 해상 초계기 님로드는 2011년까지 영국 공군에서 쓰였다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/De_Havilland_Comet"
+    ],
+    "facts": [
+     {
+      "claim": "1952년 5월 BOAC가 운항 시작, 요금 낸 승객을 태운 세계 첫 제트 여객기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/De_Havilland_Comet",
+      "note": "2 May 1952 · world's first jetliner to carry fare-paying passengers"
+     },
+     {
+      "claim": "1954년 1월·4월 두 대가 공중 분해",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/De_Havilland_Comet",
+      "note": "Flight 781 broke up off Elba 10 Jan 1954 · Flight 201 near Naples 8 Apr 1954"
+     },
+     {
+      "claim": "물탱크 시험으로 금속 피로가 원인으로 밝혀짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/De_Havilland_Comet",
+      "note": "Cohen Committee found metal fatigue · water-tank test burst after 3,057 cycles"
+     },
+     {
+      "claim": "네모 창 원인설은 오해 · 균열은 조종석 위 ADF 안테나 구멍 근처 리벳 구멍",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/De_Havilland_Comet",
+      "note": "passenger windows were not the cause · rivet hole near the ADF antenna cut-out above the cockpit"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/De_Havilland_Comet"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "콩코드만큼 유명하지 않아 대상이 마이너하다는 평이 나올 수 있다 — 항공사의 대표 사건이라 남김",
+    "targetWhy": "항공 애호가가 아는 첫 제트 여객기 — 금속 피로 사례는 공학 교양",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "religion/2",
+  "midKey": "religion",
+  "subName": "불교",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "religion/2#g003-H2-12",
+   "seed": {
+    "subject": "다비",
+    "aspect": null,
+    "ref": "H2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "불교에서는 스님이 입적하면 그 시신을 불에 태워 장례를 치르고, 오래 수행한 스님이면 타고 남은 자리에서 구슬 같은 사리를 거두기도 합니다. 불교에서 시신을 화장하는 일을 이르는 두 글자 말은?",
+    "answer": "다비",
+    "acceptedAnswers": [
+     "다비식"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한자로는 '茶毘'라고 쓰며, 육신을 그것이 온 곳으로 돌려보낸다는 뜻을 담고 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 불교 장례 용어",
+     "wor": 4,
+     "worWhy": "교양 — 불교 기본 어휘",
+     "acc": 3,
+     "accWhy": "종교·경전 — 관심층이면 안다"
+    },
+    "generalHint": "2010년 길상사에서 입적한 법정 스님도 순천 송광사에서 이 의식으로 떠나보냈다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wiktionary.org/wiki/다비",
+     "https://ko.wikipedia.org/wiki/사리",
+     "https://ko.wikipedia.org/wiki/다비"
+    ],
+    "facts": [
+     {
+      "claim": "다비 = 불교에서 시체를 화장하는 일, 한자 茶毘",
+      "where": "q",
+      "url": "https://ko.wiktionary.org/wiki/다비",
+      "note": "불교에서, 시체를 화장하는 일 / 茶毘"
+     },
+     {
+      "claim": "오래 수행한 스님을 화장하면 나오는 구슬을 사리라 한다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/사리",
+      "note": "오랜 수행을 한 스님을 화장한 결과 나오는 구슬"
+     },
+     {
+      "claim": "육신을 원래 이루어진 곳으로 돌려보낸다는 의미",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/다비",
+      "note": "다비(茶毘): 불교에서 화장, 육신을 원래 이루어진 곳으로 돌려보낸다는 의미"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/법정_(승려)"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "뉴스 노출이 있어 난이도 3 으로 매겨질 수 있다",
+    "targetWhy": "큰스님 입적 뉴스('다비식')로 접하지만 뜻을 아는 사람은 적다 — 경계(3~4)",
+    "pairCheck": "",
+    "dbCheck": "new (0건) · 사리는 활성에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "energy/2",
+  "midKey": "energy",
+  "subName": "재생 에너지",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "energy/2#g003-C2-07",
+   "seed": {
+    "subject": "베츠 한계",
+    "aspect": null,
+    "ref": "C2-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "풍력 터빈이 바람의 운동 에너지를 모두 빼앗으면 지나간 공기가 멈춰 새 바람이 들어오지 못합니다. 그래서 어떤 풍력 터빈도 바람 에너지의 약 59.3%보다 많이 거둘 수 없다는 이론상 상한을, 1919년 이를 발표한 독일 물리학자의 이름을 붙여 무엇이라 할까요?",
+    "answer": "베츠 한계",
+    "acceptedAnswers": [
+     "베츠의 법칙"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영국의 랜체스터가 1915년에 같은 값을 먼저 얻어, 발견자의 이름이 붙지 않는 '스티글러의 법칙'의 예로 꼽힌다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 5,
+     "difWhy": "전공 — 유체역학 한계",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 풍력 상한",
+     "acc": 4,
+     "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
+    },
+    "generalHint": "그 물리학자는 1936년 루트비히 프란틀의 뒤를 이어 괴팅겐 공기역학 연구소장이 되었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Betz%27s_law"
+    ],
+    "facts": [
+     {
+      "claim": "공기가 터빈을 지난 뒤에도 움직여야 해서 에너지를 다 거둘 수 없다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Betz%27s_law",
+      "note": "If the turbine removed all energy, air would stop and no fresh air could flow in"
+     },
+     {
+      "claim": "어떤 풍력 터빈도 16/27(59.3%) 넘게 거둘 수 없다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Betz%27s_law",
+      "note": "no wind turbine ... can capture more than 16/27 (59.3%)"
+     },
+     {
+      "claim": "독일 물리학자 알베르트 베츠가 1919년 발표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Betz%27s_law",
+      "note": "German physicist Albert Betz published it in 1919"
+     },
+     {
+      "claim": "랜체스터가 1915년 같은 값을 얻음 · 스티글러의 법칙 예",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Betz%27s_law",
+      "note": "Lanchester derived the same maximum in 1915 · example of Stigler's law"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Albert_Betz"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "풍력은 친숙하지만 법칙 이름은 전공 쪽에 가까워 5로 매겨질 수 있다 — 질문이 원리를 풀어 주어 추리 여지를 둠",
+    "targetWhy": "풍력 효율 상한은 대학 교양 물리·에너지 공학에서 접함",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

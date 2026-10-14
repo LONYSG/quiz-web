@@ -1,0 +1,87 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "medicine/5",
+  "midKey": "medicine",
+  "subName": "응급처치",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/5#g003-C1-06",
+   "seed": {
+    "subject": "에피펜",
+    "aspect": null,
+    "ref": "C1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "심한 알레르기 반응이 온 사람이 허벅지 바깥쪽 근육에 스스로 찔러 아드레날린을 넣는 자동 주사기가 있습니다. 이런 자동 주사기는 원래 신경가스 해독제를 빨리 놓으려고 개발되었습니다. 이 아드레날린 자동 주사기의 대표 상표 이름은 무엇일까요?",
+    "answer": "에피펜",
+    "acceptedAnswers": [
+     "EpiPen"
+    ],
+    "originalTitleVariants": [
+     "EpiPen"
+    ],
+    "explanation": "1970년대 중반 미국의 셸던 캐플런이 처음 만들었고, 미국 식품의약국은 1987년에 판매를 승인했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 응급 의료 상표",
+     "wor": 4,
+     "worWhy": "교양 — 아나필락시스 대처",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "generalHint": "2016년 제약사 밀란이 2개들이 도매가를 600달러 넘게 올려, 회사 경영진이 미국 의회 증언대에 섰다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Epinephrine_autoinjector"
+    ],
+    "facts": [
+     {
+      "claim": "허벅지 바깥쪽 가운데 근육(외측광근)에 근육 주사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Epinephrine_autoinjector",
+      "note": "middle of the outer side of the thigh · vastus lateralis"
+     },
+     {
+      "claim": "자동 주사기는 원래 신경가스 해독제 투여용으로 개발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Epinephrine_autoinjector",
+      "note": "autoinjectors originally developed for rapid administration of nerve gas antidotes"
+     },
+     {
+      "claim": "셸던 캐플런이 1970년대 중반 발명, FDA 1987 승인",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Epinephrine_autoinjector",
+      "note": "Sheldon Kaplan mid-1970s · FDA first approved 1987"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/EpiPen"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "상표 이름이라 알 가치 3 경계, 아드레날린(에피네프린)으로 답할 사람을 '상표 이름'으로 막음",
+    "targetWhy": "알레르기 환자·보건 관심층은 알지만 일반인은 이름이 낯선 응급 의약품 — 애호가·교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (1129 아나필락시스와 답·지식 다름)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "physics/1",
+  "midKey": "physics",
+  "subName": "역학·운동",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "physics/1#g003-C1-15",
+   "seed": {
+    "subject": "푸코 진자",
+    "aspect": null,
+    "ref": "C1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1851년 파리 팡테옹의 둥근 천장에 67미터 줄로 28킬로그램 추를 매달아 흔들자, 흔들리는 면이 몇 시간에 걸쳐 천천히 돌아갔습니다. 지구가 자전한다는 것을 눈앞에서 보여 준 이 장치는 무엇일까요?",
+    "answer": "푸코 진자",
+    "acceptedAnswers": [
+     "푸코의 진자"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "북극에서는 흔들리는 면이 하루에 한 바퀴 돌지만, 적도에서는 전혀 돌지 않습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 지구과학",
+     "wor": 5,
+     "worWhy": "교과서 — 지구 자전 증거",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "generalHint": "이 장치를 만든 물리학자는 회전 거울로 빛의 속도를 쟀고, '자이로스코프'라는 이름도 붙였다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Foucault_pendulum"
+    ],
+    "facts": [
+     {
+      "claim": "1851년 파리 팡테옹 돔에 67m 줄·28kg 추",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Foucault_pendulum",
+      "note": "28 kg bob on a 67 m wire from the Panthéon's dome, 1851"
+     },
+     {
+      "claim": "흔들리는 면이 돌아 지구 자전 증명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Foucault_pendulum",
+      "note": "swing plane appears to turn as Earth rotates"
+     },
+     {
+      "claim": "북극 하루 한 바퀴, 적도 회전 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Foucault_pendulum",
+      "note": "North Pole one turn per sidereal day · at equator remains fixed"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/L%C3%A9on_Foucault"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "유명 장치라 난이도 3 일 수 있음",
+    "targetWhy": "고교 지구과학 심화 · 교양 과학사 — 이름은 들어 봤으나 세부는 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (1174 진자와 답 다름 · 진자의 등시성과 다른 지식)",
+    "warn": []
+   }
+  }
+ ]
+}

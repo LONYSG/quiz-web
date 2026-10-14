@@ -1,0 +1,141 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "drinks/5",
+  "midKey": "drinks",
+  "subName": "커피·차",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "drinks/5#g003-L2-18",
+   "seed": {
+    "subject": "카푸치노",
+    "aspect": null,
+    "ref": "L2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 커피의 이름은 두건 달린 갈색 수도복을 입던 한 가톨릭 수도회에서 왔습니다. 두건이 아니라 수도복의 색을 빗댄 것이라고 설명되는, 에스프레소에 우유 거품을 얹은 이탈리아 커피는?",
+    "answer": "카푸치노",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "18세기 후반 합스부르크 제국의 빈 커피하우스에서 크림을 조금 넣은 갈색 커피를 '카푸치너'라 부른 것이 앞선 형태로 꼽힙니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 커피 이름 어원",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 커피 이름 유래",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "generalHint": "이 수도회는 1525년 프란치스코회에서 갈라져 나왔고, 로마의 한 성당 지하에는 수도사 4천여 명의 뼈로 꾸민 납골당이 있다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cappuccino"
+    ],
+    "facts": [
+     {
+      "claim": "카푸친 수도회 수도복의 색에서 이름, 두건이 아니라 색",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cappuccino",
+      "note": "name not from the hood but from the color of the hooded robes worn by Capuchin friars"
+     },
+     {
+      "claim": "빈 커피하우스의 Kapuziner, 1700년대 후반, 크림 조금 넣은 갈색 커피",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cappuccino",
+      "note": "Kapuziner listed around late 1700s; brown coffee with a little cream"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Order_of_Friars_Minor_Capuchin"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'우유 거품을 얹은 이탈리아 커피' 한정어로 라테와 갈리지만 다소 쉬울 수 있음",
+    "targetWhy": "카푸치노는 일상어지만 수도회 수도복 색 유래는 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "drinks/5#g003-P2-10",
+   "seed": {
+    "subject": "게이샤",
+    "aspect": null,
+    "ref": "P2-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 커피 품종은 1930년대 에티오피아 남서부의 한 산악 지역에서 확인되었고, 그 지역 이름을 따왔습니다. 2004년 파나마의 에스메랄다 농장이 품평회에 내놓아 기록적인 값에 팔리면서 이름을 날린 이 품종은?",
+    "answer": "게이샤",
+    "acceptedAnswers": [
+     "게샤"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1936년 표본을 모은 영국 관리들이 붙인 철자 탓에 일본의 게이샤와 자주 헷갈린다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 커피 품종",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 커피",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "generalHint": "이 품종은 1953년 탄자니아의 연구소에서 코스타리카로 건너갔다가 1960년대 파나마 보케테로 퍼졌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Geisha_(coffee)"
+    ],
+    "facts": [
+     {
+      "claim": "1930년대 에티오피아 남서부 산악 게샤 지역에서 확인, 지역 이름에서 유래",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Geisha_(coffee)",
+      "note": "identified in 1930s in mountainous Gesha region of SW Ethiopia; name from Amharic region name"
+     },
+     {
+      "claim": "2004년 아시엔다 라 에스메랄다가 베스트 오브 파나마에 출품, 기록적 값",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Geisha_(coffee)",
+      "note": "2004 Best of Panama, record $21 per pound"
+     },
+     {
+      "claim": "1936년 영국 관리들이 붙인 철자로 일본 게이샤와 혼동",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Geisha_(coffee)",
+      "note": "'Geisha' spelling applied by British officials collecting samples in 1936; confusion with Japanese geisha"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Geisha_(coffee)"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "카페 메뉴에서 보던 이름의 뜻밖 유래(일본이 아니라 에티오피아 지명)",
+    "targetWhy": "스페셜티 커피 애호가에게 유명한 품종 이름 — 교과·방송 밖",
+    "pairCheck": "",
+    "dbCheck": "게이샤·게샤 new",
+    "warn": []
+   }
+  }
+ ]
+}

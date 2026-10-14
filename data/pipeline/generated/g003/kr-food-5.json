@@ -1,0 +1,300 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-food/5",
+  "midKey": "kr-food",
+  "subName": "떡·한과·전통 음료",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/5#g003-K2-26",
+   "seed": {
+    "subject": "약식",
+    "aspect": null,
+    "ref": "K2-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "『삼국유사』 사금갑 조에는 488년 정월 대보름에 까마귀가 신라 소지왕에게 위험을 알려 목숨을 구한 이야기가 실려 있습니다. 그 뒤 까마귀를 기리며 찰밥을 지어 제사 지낸 데서 비롯되었다고 전하는 음식은?",
+    "answer": "약식",
+    "acceptedAnswers": [
+     "약밥"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "찹쌀에 밤·대추·잣을 섞어 찐 뒤 참기름·꿀·간장 등으로 버무려 만듭니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 음식 유래",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 약식 유래",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "정월 대보름 말고도 혼례와 환갑잔치 상에 올리던 음식이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/약식"
+    ],
+    "facts": [
+     {
+      "claim": "삼국유사 사금갑조에 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/약식",
+      "note": "삼국유사 사금갑(射琴匣)조에 기록"
+     },
+     {
+      "claim": "488년 소지왕, 음력 1월 15일, 까마귀가 위기를 알림",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/약식",
+      "note": "488년 신라의 소지왕이 음력 1월 15일 … 까마귀가 날아와"
+     },
+     {
+      "claim": "까마귀를 기념해 찰밥으로 제사, 약식이 여기서 비롯",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/약식",
+      "note": "까마귀를 기념하여 찰밥을 지어 제사지냈으며, 약식은 여기서 비롯되었다고 한다"
+     },
+     {
+      "claim": "찹쌀에 밤·대추·잣, 참기름·꿀·간장",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/약식",
+      "note": "찹쌀에 밤, 대추, 잣을 섞어 찐 후에, 참기름, 꿀, 간장 등으로 버무려"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/약식"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 음식과 유명 설화의 몰랐던 연결",
+    "targetWhy": "약식은 누구나 알지만 삼국유사 사금갑과의 연결은 고교 국어·한국사 심화",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/5#g003-K2-27",
+   "seed": {
+    "subject": "증편",
+    "aspect": null,
+    "ref": "K2-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "쌀가루에 막걸리 같은 쌀술을 넣어 발효시킨 뒤 고명을 얹어 쪄 냅니다. 더운 여름에도 빨리 쉬지 않아 여름에 주로 먹는 이 떡은?",
+    "answer": "증편",
+    "acceptedAnswers": [
+     "기주떡",
+     "기지떡"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "기증떡·벙거지떡 등 지역마다 여러 이름으로 불립니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 떡 종류",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 전통 떡",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "원나라에서 들어왔다는 떡 '상화'도 밀가루에 술을 넣어 부풀려 찌는 비슷한 방식이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/증편"
+    ],
+    "facts": [
+     {
+      "claim": "쌀가루에 술을 넣어 발효시킨 뒤 고명을 뿌리고 쪄냄",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/증편",
+      "note": "쌀가루에 술을 넣어 발효시킨 뒤에 고명을 뿌리고 쪄낸다"
+     },
+     {
+      "claim": "쌀로 만든 술, 막걸리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/증편",
+      "note": "쌀로 만든 술로 막걸리 등이 사용된다"
+     },
+     {
+      "claim": "여름에 빨리 쉬지 않아 여름에 주로 먹음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/증편",
+      "note": "빨리 쉬지도 않기 때문에, 여름에 주로 먹는 떡"
+     },
+     {
+      "claim": "기주떡, 기증떡, 기지떡, 술떡, 벙거지떡",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/증편",
+      "note": "증편 또는 기주떡 / 기증떡, 기지떡, 술떡, 벙거지떡 등"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%A6%9D%ED%8E%B8"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "술떡(질문에 '술'이 있어 변형에서 뺌)으로 친 사람은 오답 — B9 때문",
+    "targetWhy": "떡 이름 '증편'은 떡집 애호가 수준 — 흔히 '술떡'으로만 앎",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/5#g003-K2-28",
+   "seed": {
+    "subject": "매작과",
+    "aspect": null,
+    "ref": "K2-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "밀가루에 생강즙과 소금을 넣어 반죽해 얇게 편 뒤 직사각형으로 썰고, 칼집 셋을 넣어 양 끝을 가운데 칼집에 넣고 꼬아 기름에 튀기는 한과는?",
+    "answer": "매작과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "과자의 모양이 매화나무 가지에 참새가 앉은 모습과 닮았다고 해서 붙은 이름입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 한과 종류",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 전통 과자",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "튀긴 뒤 꿀이나 조청을 바르고 잣가루와 계핏가루를 뿌려 마무리한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/매작과"
+    ],
+    "facts": [
+     {
+      "claim": "밀가루에 물·생강즙·소금 반죽하여 폄",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/매작과",
+      "note": "밀가루에 물과 생강즙, 약간의 소금을 넣어 반죽하여 편 다음"
+     },
+     {
+      "claim": "직사각형, 칼집 셋, 양끝을 가운데 칼집에 넣고 꼬아 튀김",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/매작과",
+      "note": "직사각형으로 썰고 칼집 세 개, 양쪽 끝을 가운데 칼집 안에 넣고 꼬아 튀김"
+     },
+     {
+      "claim": "매화나무에 참새가 앉은 모습",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/매작과",
+      "note": "매화나무에 참새가 앉은 모습과 유사하다는데서"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/매작과"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이름을 모르면 손을 못 대는 쪽 — 그래도 흔히 보는 한과",
+    "targetWhy": "모양은 익숙하나 이름은 한과 애호가가 아는 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/5#g003-P1-10",
+   "seed": {
+    "subject": "제호탕",
+    "aspect": null,
+    "ref": "P1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "오매·사인·백단향·초과를 가루 내어 꿀에 달인 뒤 찬물에 타 마시는 궁중의 여름 음료입니다. 단오가 되면 내의원이 이것을 만들어 임금께 올렸고, 임금은 기로소의 신하들에게 나누어 주었다고 합니다. 이 음료는 무엇일까요?",
+    "answer": "제호탕",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름의 제호(醍醐)는 인도·불교 문헌에서 우유를 정제하는 다섯 단계 가운데 마지막이자 가장 좋은 것을 가리키는 말이다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 5,
+     "difWhy": "전공 — 궁중 약용 음료",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 단오 궁중 풍속",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "재료 가운데 오매는 덜 익은 매실을 연기에 그을려 말린 것이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/제호탕",
+     "https://en.wikipedia.org/wiki/Jehotang",
+     "https://en.wikipedia.org/wiki/Sarpir-maṇḍa"
+    ],
+    "facts": [
+     {
+      "claim": "오매·사인·초과·백단향 가루를 꿀과 달여 냉수에 타 마심",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제호탕",
+      "note": "재료·만드는 법"
+     },
+     {
+      "claim": "궁중 요리의 으뜸 여름 음료",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jehotang",
+      "note": "best summer drink in royal court cuisine"
+     },
+     {
+      "claim": "단오에 내의원이 만들어 진상, 임금이 기로소 신하에게 나눠 줌",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제호탕",
+      "note": "단오 진상 풍습"
+     },
+     {
+      "claim": "제호(醍醐, sarpir-maṇḍa)는 우유의 다섯 단계 중 마지막·최상, 열반경 비유",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sarpir-maṇḍa",
+      "note": "fifth of five stages of milk, the best"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jeho-tang"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "단오·내의원이라는 들어 본 배경, 이름은 한 층 깊음",
+    "targetWhy": "식혜·수정과는 누구나 알지만 제호탕은 교과서 밖 — 전통 음식·궁중 문화 애호가가 아는 이름",
+    "pairCheck": "",
+    "dbCheck": "제호탕 new",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  }
+ ]
+}

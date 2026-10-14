@@ -1,0 +1,89 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "chemistry/3",
+  "midKey": "chemistry",
+  "subName": "화합물·분자",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/3#g003-C1-21",
+   "seed": {
+    "subject": "풀러렌",
+    "aspect": null,
+    "ref": "C1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "탄소 원자 60개가 육각형 20개와 오각형 12개를 이뤄 축구공 모양으로 닫힌 분자가 1985년에 발견되었습니다. 비슷한 모양의 측지선 돔을 설계한 미국 건축가의 이름을 딴 이 탄소 분자를 무엇이라 할까요?",
+    "answer": "풀러렌",
+    "acceptedAnswers": [
+     "버크민스터풀러렌"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 분자를 찾아낸 크로토, 컬, 스몰리는 1996년 노벨 화학상을 함께 받았습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 화학 — 탄소 동소체",
+     "wor": 5,
+     "worWhy": "교과 — 탄소 동소체",
+     "acc": 5,
+     "accWhy": "화학 — 중학 과학 교과 과목"
+    },
+    "generalHint": "그 건축가는 1967년 몬트리올 엑스포 미국관 돔과, 왜곡을 줄인 '다이맥션' 세계 지도를 만들었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Buckminsterfullerene"
+    ],
+    "facts": [
+     {
+      "claim": "C60, 육각형 20·오각형 12, 축구공 모양",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buckminsterfullerene",
+      "note": "truncated icosahedron, 20 hexagons and 12 pentagons, resembles a soccer ball"
+     },
+     {
+      "claim": "1985년 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buckminsterfullerene",
+      "note": "discovered in 1985 at Rice University"
+     },
+     {
+      "claim": "측지선 돔 건축가 버크민스터 풀러 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buckminsterfullerene",
+      "note": "named after architect R. Buckminster Fuller, geodesic domes"
+     },
+     {
+      "claim": "크로토·컬·스몰리 1996 노벨 화학상",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Buckminsterfullerene",
+      "note": "shared the 1996 Nobel Prize in Chemistry"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Buckminster_Fuller"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름의 유래가 뜻밖",
+    "targetWhy": "고교 화학 동소체 심화 · 대학 교양",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (849 동소체와 답 다름)",
+    "warn": []
+   }
+  }
+ ]
+}

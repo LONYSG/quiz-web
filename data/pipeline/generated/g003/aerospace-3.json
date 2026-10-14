@@ -1,0 +1,89 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "aerospace/3",
+  "midKey": "aerospace",
+  "subName": "로켓·발사체",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/3#g003-C2-25",
+   "seed": {
+    "subject": "폰 브라운",
+    "aspect": null,
+    "ref": "C2-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "나치 독일의 페네뮌데에서 V-2 로켓 개발을 이끈 이 공학자는, 전쟁이 끝나자 '페이퍼클립 작전'으로 미국에 건너갔습니다. 훗날 아폴로 우주선을 달로 보낸 새턴 V 로켓의 설계 책임자가 된 이 사람은?",
+    "answer": "폰 브라운",
+    "acceptedAnswers": [
+     "베르너 폰 브라운"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "나치 친위대(SS)에 들어가 소령 계급까지 올랐던 이력 때문에 그의 평가는 지금도 엇갈린다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 우주 개발사",
+     "wor": 4,
+     "worWhy": "교양 — 로켓·아폴로 인물",
+     "acc": 3,
+     "accWhy": "항공·우주 기술 — 관심층이면 안다"
+    },
+    "generalHint": "1960년 나사에 들어가 앨라배마주 헌츠빌의 마셜 우주 비행 센터 첫 소장이 되었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Wernher_von_Braun"
+    ],
+    "facts": [
+     {
+      "claim": "페네뮌데에서 V-2 설계·개발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wernher_von_Braun",
+      "note": "helped design and co-develop the V-2 at Peenemünde"
+     },
+     {
+      "claim": "페이퍼클립 작전으로 미국행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wernher_von_Braun",
+      "note": "moved to the United States under Operation Paperclip"
+     },
+     {
+      "claim": "새턴 V의 수석 설계자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wernher_von_Braun",
+      "note": "chief architect of the Saturn V rocket, which carried Apollo spacecraft to the Moon"
+     },
+     {
+      "claim": "SS 입대, 1943년 소령(Sturmbannführer)까지 진급",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Wernher_von_Braun",
+      "note": "joined Allgemeine-SS 1940 · promoted to Sturmbannführer (major) June 1943"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Wernher_von_Braun"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "V-2·아폴로 둘 다 유명, 같은 사람이라는 연결",
+    "targetWhy": "우주 개발사 교양 — V-2와 새턴 V를 잇는 인물",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "animals/6",
+  "midKey": "animals",
+  "subName": "동물의 습성·생태",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/6#g003-C2-15",
+   "seed": {
+    "subject": "레밍",
+    "aspect": null,
+    "ref": "C2-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북극 툰드라에 사는 이 작은 설치류는 무리 지어 절벽에서 뛰어내려 스스로 목숨을 끊는다는 속설로 유명합니다. 1958년 디즈니 다큐멘터리가 이 장면을 연출해 찍어 속설을 퍼뜨린 이 동물은?",
+    "answer": "레밍",
+    "acceptedAnswers": [
+     "나그네쥐"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "실제로는 몇 해를 주기로 개체 수가 크게 늘었다 줄었다 하며, 수가 너무 많아지면 무리 지어 옮겨 가다 물에 빠지기도 한다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 동물 속설",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 속설 정정",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "generalHint": "그 장면은 캐나다 앨버타의 보 강에서 찍었으며, 제작진은 동물들을 회전판에 올렸다가 벼랑 아래로 밀었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lemming"
+    ],
+    "facts": [
+     {
+      "claim": "레밍은 주로 북극 툰드라에 사는 작은 설치류",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lemming",
+      "note": "small Arctic rodents · mainly in Arctic tundra"
+     },
+     {
+      "claim": "절벽에서 뛰어내려 집단 자살한다는 오래된 오해",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lemming",
+      "note": "belief that lemmings jump off cliffs to die is a long-standing misconception"
+     },
+     {
+      "claim": "1958년 디즈니 'White Wilderness'가 장면을 연출해 속설을 퍼뜨림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lemming",
+      "note": "producers staged the 'mass suicide' footage · popularized the myth"
+     },
+     {
+      "claim": "개체 수가 주기적으로 급증·급감 · 밀도가 높으면 무리 이동 중 익사",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lemming",
+      "note": "boom and crash roughly every four years · migrations can end in drowning"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/White_Wilderness_(film)"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "레밍 속설을 아는 사람에게는 첫 문장만으로 풀려 3 일 수 있다",
+    "targetWhy": "레밍 속설은 들어 봤어도 디즈니 연출이 근원이라는 것은 교양 이야깃거리",
+    "pairCheck": "",
+    "dbCheck": "new (레밍 · 나그네쥐 둘 다)",
+    "warn": []
+   }
+  }
+ ]
+}

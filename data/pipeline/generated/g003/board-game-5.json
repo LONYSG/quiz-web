@@ -1,0 +1,143 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "board-game/5",
+  "midKey": "board-game",
+  "subName": "퍼즐",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "board-game/5#g003-L1-26",
+   "seed": {
+    "subject": "스도쿠",
+    "aspect": null,
+    "ref": "L1-26",
+    "pairedWith": 517
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 517,
+    "question": "1979년 미국의 퍼즐 잡지에 '넘버 플레이스'라는 이름으로 실린 숫자 퍼즐이 있습니다. 은퇴한 건축가 하워드 간스가 만든 것으로 보이는데, 1984년 일본 퍼즐 회사 니코리를 거쳐 새 이름을 얻은 이 퍼즐은?",
+    "answer": "스도쿠",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "홍콩 판사 출신 웨인 굴드가 퍼즐 생성 프로그램을 만들었고, 2004년 영국 더 타임스가 싣기 시작하면서 세계로 퍼졌습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 1,
+     "difWhy": "일상 — 유명 퍼즐",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 퍼즐 이름 유래",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sudoku"
+    ],
+    "facts": [
+     {
+      "claim": "1979년 델 매거진에 Number Place 로 처음 실림, 하워드 간스(은퇴한 건축가)가 만든 것으로 보임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sudoku",
+      "note": "most likely designed by Howard Garns, retired architect; Dell 1979 as Number Place"
+     },
+     {
+      "claim": "1984년 니코리가 일본에 소개, 이름을 줄여 스도쿠",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sudoku",
+      "note": "1984 Maki Kaji of Nikoli; shortened to sudoku"
+     },
+     {
+      "claim": "웨인 굴드 프로그램, 2004년 더 타임스",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sudoku",
+      "note": "Wayne Gould program; The Times launched Su Doku Nov 2004"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'일본 퍼즐' 인 줄 알았던 반전",
+    "targetWhy": "누구나 아는 퍼즐이 미국 출신이라는 기원 — 퍼즐 애호가 수준",
+    "pairCheck": "1회차 #517 은 규칙과 일본 이름의 뜻을 물었다. 2회차는 미국 기원(넘버 플레이스·간스) — 1회차 단서·해설 사실 재사용 없음",
+    "dbCheck": "pair-or-different #517 — (가) 2회차, 다른 지식",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "board-game/5#g003-L1-27",
+   "seed": {
+    "subject": "하노이의 탑",
+    "aspect": null,
+    "ref": "L1-27",
+    "pairedWith": 521
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 521,
+    "question": "프랑스 수학자 에두아르 뤼카는 1883년 'N. 클라우스 드 시암'이라는 가명으로 한 퍼즐을 내놓으며 전설 하나를 붙였습니다. 브라만 승려들이 사원에서 원반 64장을 다 옮기면 세상이 끝난다는 이야기가 딸린 이 퍼즐은?",
+    "answer": "하노이의 탑",
+    "acceptedAnswers": [
+     "하노이 탑"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "가명 'N. Claus de Siam'은 '아미앵의 뤼카(Lucas d'Amiens)'의 철자를 뒤섞어 만든 것입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "일상 — 유명 퍼즐",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 퍼즐 전설",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tower_of_Hanoi"
+    ],
+    "facts": [
+     {
+      "claim": "에두아르 뤼카, 1883년, 가명 N. Claus (de Siam)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tower_of_Hanoi",
+      "note": "Lucas presented it in 1883 under pseudonym N. Claus (de Siam)"
+     },
+     {
+      "claim": "브라만 승려가 64장 원반을 옮기면 세상이 끝난다는 전설",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tower_of_Hanoi",
+      "note": "Brahmin priests moving 64-disk tower; world ends when finished"
+     },
+     {
+      "claim": "가명은 Lucas d'Amiens 의 애너그램",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tower_of_Hanoi",
+      "note": "anagram of Lucas d'Amiens"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "64장·세상의 종말 전설은 이야깃거리",
+    "targetWhy": "유명 퍼즐의 발명자와 전설 — 대학 교양(알고리즘 수업에서 접함)",
+    "pairCheck": "1회차 #521 은 규칙(큰 원반이 위로 못 감)과 최소 횟수를 물었다. 2회차는 발명자·가명·전설 — 원반 옮기기 규칙은 쓰지 않음",
+    "dbCheck": "pair-or-different #521 — (가) 2회차, 다른 지식",
+    "warn": []
+   }
+  }
+ ]
+}

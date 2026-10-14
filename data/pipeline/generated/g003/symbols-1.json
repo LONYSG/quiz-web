@@ -1,0 +1,81 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "symbols/1",
+  "midKey": "symbols",
+  "subName": "국기·국장",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "symbols/1#g003-L1-21",
+   "seed": {
+    "subject": "테노치티틀란",
+    "aspect": null,
+    "ref": "L1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "멕시코 국기 가운데에는 선인장 위에 앉아 뱀을 먹는 독수리가 그려져 있습니다. 이 모습을 본 곳에 도시를 세우라는 전설을 따라 아스테카인이 세운 도시는?",
+    "answer": "테노치티틀란",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 도시 자리가 오늘날의 멕시코시티이고, 국기의 문장도 아스테카의 테노치티틀란 상징에서 왔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 세계사 — 아스테카",
+     "wor": 4,
+     "worWhy": "교양 — 아스테카 수도",
+     "acc": 5,
+     "accWhy": "기호·표지 — 전 국민 일상"
+    },
+    "generalHint": "1325년 무렵 텍스코코 호수의 늪진 섬 위에 세워졌고, 1521년 코르테스에게 함락되었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Flag_of_Mexico"
+    ],
+    "facts": [
+     {
+      "claim": "국기 문장: 선인장 위 뱀을 먹는 독수리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flag_of_Mexico",
+      "note": "golden eagle on a nopal cactus devouring a serpent"
+     },
+     {
+      "claim": "이 모습이 아스테카인이 도시를 세울 곳을 알린 전설",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flag_of_Mexico",
+      "note": "legend signaled where the Aztecs should found their city"
+     },
+     {
+      "claim": "테노치티틀란 = 지금의 멕시코시티, 문장은 그 상징에서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Flag_of_Mexico",
+      "note": "emblem based on Aztec symbol for Tenochtitlan, now Mexico City"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tenochtitlan"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "국기는 유명, 수도 이름은 세계사 교양",
+    "targetWhy": "세계사 교양(아스테카 수도)과 국기 상징의 연결",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

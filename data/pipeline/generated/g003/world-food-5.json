@@ -1,0 +1,89 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "world-food/5",
+  "midKey": "world-food",
+  "subName": "향신료·재료",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-food/5#g003-L2-24",
+   "seed": {
+    "subject": "육두구",
+    "aspect": null,
+    "ref": "L2-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "인도네시아 반다 제도가 원산지인 향신료로, 네덜란드 동인도회사가 이를 독점하려고 1621년 반다 사람들과 피비린내 나는 싸움을 벌였습니다. 잉글랜드가 반다 제도의 작은 섬 런을 넘겨주고 뉴암스테르담을 얻은 일로도 이어진 이 향신료는?",
+    "answer": "육두구",
+    "acceptedAnswers": [
+     "넛맥"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "같은 열매에서 씨를 감싼 붉은 껍질은 따로 '메이스'라는 향신료가 됩니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 향신료 무역사",
+     "wor": 4,
+     "worWhy": "교양 — 대항해 시대",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "generalHint": "카리브해의 섬나라 그레나다 국기에는 쪼개진 이 열매 그림이 들어 있다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Nutmeg"
+    ],
+    "facts": [
+     {
+      "claim": "육두구 나무의 원산지는 반다 제도",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nutmeg",
+      "note": "true nutmeg tree is native to the Banda Islands"
+     },
+     {
+      "claim": "VOC가 1621년 반다 사람들과 유혈 전투",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nutmeg",
+      "note": "VOC waged a bloody battle with the Bandanese in 1621 to monopolize nutmeg"
+     },
+     {
+      "claim": "영국이 런 섬을 넘기고 뉴암스테르담을 얻음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nutmeg",
+      "note": "British ceded control of Run Island to the Dutch, in exchange for New Amsterdam (Treaty of Breda)"
+     },
+     {
+      "claim": "메이스는 씨를 싼 붉은 가종피",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Nutmeg",
+      "note": "mace: the reddish seed covering (aril)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Nutmeg"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "향신료와 뉴욕의 몰랐던 연결",
+    "targetWhy": "육두구 이름은 알지만 맨해튼 교환과의 연결은 세계사 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

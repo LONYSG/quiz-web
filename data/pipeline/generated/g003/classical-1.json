@@ -1,0 +1,158 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "classical/1",
+  "midKey": "classical",
+  "subName": "작곡가",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "classical/1#g003-A1-16",
+   "seed": {
+    "subject": "헨델",
+    "aspect": null,
+    "ref": "A1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "독일 할레에서 태어나 1727년 영국에 귀화한 작곡가는 1723년부터 숨질 때까지 런던 브룩 스트리트 25번지에 살았습니다. 200여 년 뒤 바로 옆 23번지에 기타리스트 지미 헨드릭스가 살아, 지금은 두 집이 한 박물관이 되었습니다. 이 작곡가는 누구일까요?",
+    "answer": "헨델",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1759년 세상을 떠나 웨스트민스터 사원에 묻혔고, 이 집은 '메시아'를 연습한 곳이기도 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 작곡가 생애",
+     "wor": 3,
+     "worWhy": "유명 작곡가 이름 맞히기",
+     "acc": 3,
+     "accWhy": "클래식 음악 — 관심층이면 안다"
+    },
+    "generalHint": "이 작곡가는 바흐·도메니코 스카를라티와 같은 1685년에 태어났다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/George_Frideric_Handel",
+     "https://en.wikipedia.org/wiki/Handel_House_Museum"
+    ],
+    "facts": [
+     {
+      "claim": "할레 출생, 1727 영국 귀화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/George_Frideric_Handel",
+      "note": "born in Halle; naturalised British subject in 1727"
+     },
+     {
+      "claim": "1723년부터 브룩 스트리트 25번지, 그곳에서 1759 사망",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Handel_House_Museum",
+      "note": "rented 25 Brook Street from 1723 and died there in 1759"
+     },
+     {
+      "claim": "헨드릭스가 23번지에 1968~69 거주, 박물관 통합",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Handel_House_Museum",
+      "note": "Hendrix lived at 23 Brook Street 1968–69; museum now Handel Hendrix House"
+     },
+     {
+      "claim": "웨스트민스터 사원에 묻힘",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/George_Frideric_Handel",
+      "note": "buried in Westminster Abbey"
+     },
+     {
+      "claim": "메시아를 이 집에서 연습",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Handel_House_Museum",
+      "note": "Messiah was rehearsed at the house"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/George_Frideric_Handel"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "뜻밖의 연결, 대상은 누구나 아는 작곡가",
+    "targetWhy": "헨델은 교과 인물이나 귀화·헨드릭스 이웃 연결은 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "classical/1#g003-A1-17",
+   "seed": {
+    "subject": "라흐마니노프",
+    "aspect": null,
+    "ref": "A1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1897년 교향곡 1번 초연이 혹평을 받은 뒤 깊은 우울에 빠져 3년쯤 작곡을 멈춘 러시아 작곡가가 있습니다. 신경과 의사 니콜라이 달의 최면 치료로 다시 일어서 피아노 협주곡 2번을 그에게 바친 이 작곡가는 누구일까요?",
+    "answer": "라흐마니노프",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "에릭 카먼의 팝송 'All by Myself'는 이 협주곡 2악장의 선율을 바탕으로 만들어졌습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 클래식 작곡가",
+     "wor": 4,
+     "worWhy": "교양 — 작곡가 인물",
+     "acc": 3,
+     "accWhy": "클래식 음악 — 관심층이면 안다"
+    },
+    "generalHint": "1917년 혁명 뒤 가족과 함께 러시아를 떠나 1918년 뉴욕에 자리 잡고, 주로 피아니스트로 무대에 서며 생계를 꾸렸다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Piano_Concerto_No._2_(Rachmaninoff)"
+    ],
+    "facts": [
+     {
+      "claim": "1897년 교향곡 1번 초연 실패, 약 3년 작곡 중단",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Piano_Concerto_No._2_(Rachmaninoff)",
+      "note": "March 1897 premiere a disaster; breakdown, stopped composing for about three years"
+     },
+     {
+      "claim": "니콜라이 달 최면 치료, 협주곡 헌정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Piano_Concerto_No._2_(Rachmaninoff)",
+      "note": "neurologist Dahl treated him with hypnotherapy; dedicated the concerto to Dahl"
+     },
+     {
+      "claim": "All by Myself 는 2악장 바탕",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Piano_Concerto_No._2_(Rachmaninoff)",
+      "note": "Eric Carmen's All by Myself based on the second movement"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sergei_Rachmaninoff"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 인물의 몰랐던 뒷이야기",
+    "targetWhy": "작곡가는 유명, 우울증·최면 치료 일화는 클래식 애호 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건",
+    "warn": []
+   }
+  }
+ ]
+}

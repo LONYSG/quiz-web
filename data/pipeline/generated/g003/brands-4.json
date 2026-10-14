@@ -1,0 +1,168 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "brands/4",
+  "midKey": "brands",
+  "subName": "기업 국적",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "brands/4#g003-L1-03",
+   "seed": {
+    "subject": "하겐다즈",
+    "aspect": null,
+    "ref": "L1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "덴마크 말처럼 들리게 일부러 지어낸 이름이지만, 실제로는 1960년 미국 뉴욕 브롱크스에서 폴란드계 이민자 부부가 시작한 아이스크림 브랜드는?",
+    "answer": "하겐다즈",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름에 쓰인 'ä'는 덴마크어에 없는 글자이고, 창업자는 아무 뜻 없는 소리를 늘어놓다가 마음에 드는 조합을 골랐다고 전합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 브랜드 국적 이야기",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 브랜드 유래",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "generalHint": "창업자는 2차 세계대전 때 유대인을 감싼 덴마크에 경의를 표하려 이렇게 지었다고 말했고, 초기 상표에는 덴마크 지도가 들어갔다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/H%C3%A4agen-Dazs"
+    ],
+    "facts": [
+     {
+      "claim": "1960년 브롱크스에서 폴란드계 미국인 루벤·로즈 마투스 부부가 설립",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/H%C3%A4agen-Dazs",
+      "note": "founded 1960 in The Bronx by Polish-American Reuben and Rose Mattus"
+     },
+     {
+      "claim": "덴마크풍으로 들리게 지어낸 가짜 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/H%C3%A4agen-Dazs",
+      "note": "invented pseudo-Scandinavian phrase; wanted Danish-sounding name"
+     },
+     {
+      "claim": "ä 는 덴마크어에 없다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/H%C3%A4agen-Dazs",
+      "note": "ä is not Danish; Danish uses æ"
+     },
+     {
+      "claim": "뜻 없는 말을 늘어놓다 조합을 골랐다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/H%C3%A4agen-Dazs",
+      "note": "daughter said he said nonsense words until he found a combination he liked"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/H%C3%A4agen-Dazs"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 브랜드, '유럽 브랜드인 줄 알았다' 는 반전",
+    "targetWhy": "누구나 아는 브랜드의 국적 착각을 바로잡는 사실 — 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "brands/4#g003-L1-04",
+   "seed": {
+    "subject": "휠라",
+    "aspect": null,
+    "ref": "L1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1911년 이탈리아 피에몬테에서 형제가 알프스 지역 사람들을 위한 속옷을 만들며 출발한 스포츠 브랜드가 있습니다. 2007년 한국 법인이 이 브랜드와 해외 자회사를 모두 사들였는데, 이 브랜드는?",
+    "answer": "휠라",
+    "acceptedAnswers": [
+     "필라",
+     "FILA"
+    ],
+    "originalTitleVariants": [
+     "FILA"
+    ],
+    "explanation": "브랜드 이름은 창업한 형제의 성에서 왔고, 지금은 서울에 본사를 두고 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "뉴스 — 브랜드 국적",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 브랜드 인수",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Fila_(company)"
+    ],
+    "facts": [
+     {
+      "claim": "1911년 이탈리아에서 필라 형제가 설립(비엘라, 피에몬테)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fila_(company)",
+      "note": "founded 1911 in Coggiola by brothers Ettore and Giansevero Fila; Biella, Piedmont"
+     },
+     {
+      "claim": "알프스 지역 사람들을 위한 속옷이 주력",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fila_(company)",
+      "note": "clothing for people in the Italian Alps, primarily underwear"
+     },
+     {
+      "claim": "2007년 휠라코리아가 브랜드와 해외 자회사 전부 인수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fila_(company)",
+      "note": "January 2007 Fila Korea acquired the brand and all its international subsidiaries"
+     },
+     {
+      "claim": "본사 서울",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fila_(company)",
+      "note": "headquarters Seoul, South Korea"
+     },
+     {
+      "claim": "이름은 창업 형제의 성",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fila_(company)",
+      "note": "brothers Ettore and Giansevero Fila"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 브랜드의 출신과 국적이 바뀐 사연",
+    "targetWhy": "이탈리아 출신 브랜드가 한국 기업이 되었다는 기업사 — 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new (필라 · FILA 도 new)",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

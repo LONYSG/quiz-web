@@ -1,0 +1,88 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "architecture/2",
+  "midKey": "architecture",
+  "subName": "건축가",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "architecture/2#g003-A2-16",
+   "seed": {
+    "subject": "프랭크 게리",
+    "aspect": null,
+    "ref": "A2-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1997년 스페인 빌바오에 문을 연 구겐하임 미술관은 얇은 티타늄 판 3만여 장을 비늘처럼 덮은 곡면으로, 건물 하나가 도시를 바꾼다는 '빌바오 효과'라는 말을 낳았습니다. 이 미술관을 설계한 건축가는 누구일까요?",
+    "answer": "프랭크 게리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "복잡한 곡면은 다쏘시스템의 3차원 설계 프로그램 CATIA로 계산해, 비평가 폴 골드버거는 CATIA 없이는 지을 수 없었다고 했다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 현대 건축가",
+     "wor": 4,
+     "worWhy": "교양 — 빌바오 효과",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "generalHint": "토론토에서 태어난 이 건축가는 프라하의 '춤추는 집'과 로스앤젤레스 월트 디즈니 콘서트홀도 설계했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Guggenheim_Museum_Bilbao",
+     "https://en.wikipedia.org/wiki/Bilbao_effect"
+    ],
+    "facts": [
+     {
+      "claim": "1997년 개관, 프랭크 게리 설계",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Guggenheim_Museum_Bilbao",
+      "note": "opened 18 October 1997; Frank Gehry"
+     },
+     {
+      "claim": "티타늄 판 약 33,000장 비늘처럼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Guggenheim_Museum_Bilbao",
+      "note": "about 33,000 titanium plates arranged in scales"
+     },
+     {
+      "claim": "빌바오 효과",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bilbao_effect",
+      "note": "star architect's prestige building transforms a city"
+     },
+     {
+      "claim": "CATIA 사용, 골드버거 평",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Guggenheim_Museum_Bilbao",
+      "note": "'could not have been constructed without CATIA'"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Frank_Gehry"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 건축가의 대표작 — 알 가치 4",
+    "targetWhy": "현대 건축가 대표 — 빌바오 효과는 교양·시사 상식, 설계자 이름은 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

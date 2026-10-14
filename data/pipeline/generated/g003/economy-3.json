@@ -1,0 +1,149 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "economy/3",
+  "midKey": "economy",
+  "subName": "금융 상품·시장",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "economy/3#g003-H1-15",
+   "seed": {
+    "subject": "블루칩",
+    "aspect": null,
+    "ref": "H1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 포커 테이블에서 가장 값이 높은 칩의 색깔에서 나온 증권 용어가 있습니다. 경기가 좋을 때나 나쁠 때나 꾸준히 이익을 내는, 전국적으로 믿을 만하다고 알려진 대기업의 주식을 가리키는 이 말은?",
+    "answer": "블루칩",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "다우존스에는 1920년대 직원 올리버 깅골드가 주당 200달러가 넘는 비싼 주식 거래를 보고 이 말을 썼다는 이야기가 전해집니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송·뉴스에서 흔히 — 증권 용어",
+     "wor": 4,
+     "worWhy": "시사 — 경제 기본 어휘",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Blue_chip_(stock_market)"
+    ],
+    "facts": [
+     {
+      "claim": "포커에서 유래, 미국 전통에서 파란 칩이 가장 값이 높다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blue_chip_(stock_market)",
+      "note": "origin"
+     },
+     {
+      "claim": "전국적으로 품질·신뢰로 알려지고 호황·불황에도 이익을 내는 회사의 주식",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blue_chip_(stock_market)",
+      "note": "definition"
+     },
+     {
+      "claim": "다우존스 사내 전승: 1920년대 올리버 깅골드가 200~250달러 이상 거래를 보고 사용",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Blue_chip_(stock_market)",
+      "note": "folklore — '전해진다'로 씀"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'칩의 색깔' 단서로 낱말을 아는 사람은 바로 떠올려 3 으로 매겨질 수 있다",
+    "targetWhy": "애호가(주식 투자자)·교양 — 말은 흔해도 포커 칩 유래는 덜 알려졌다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "economy/3#g003-P4-18",
+   "seed": {
+    "subject": "데드 캣 바운스",
+    "aspect": null,
+    "ref": "P4-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1985년 말 싱가포르와 말레이시아 증시가 폭락 끝에 잠깐 반등하자, 『파이낸셜 타임스』 기자들은 '아주 높은 데서 떨어지면 죽은 동물도 튀어 오른다'는 말을 빌려 이를 꼬집었습니다. 하락장에서 잠깐 반짝 오르는 일시적 반등을 가리키는 이 증권 용어는 무엇일까요?",
+    "answer": "데드 캣 바운스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그 뒤 두 시장은 실제로 다시 떨어졌으며, 속아 넘어간 사람들의 반등이라는 뜻으로 '서커 랠리'라고도 부릅니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 증권 용어",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 증시",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "generalHint": "1986년 한 투자 칼럼니스트는 유가 하락을 두고 '이것을 조심하라'를 자동차 범퍼 스티커 문구로 쓰자고 했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dead_cat_bounce"
+    ],
+    "facts": [
+     {
+      "claim": "1985년 12월 싱가포르·말레이시아 증시 반등에 FT 기자들이 처음 썼다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dead_cat_bounce",
+      "note": "earliest citation December 1985; FT journalists Sherwell and Wong called the rise 'a dead cat bounce'"
+     },
+     {
+      "claim": "'높은 데서 떨어지면 죽은 고양이도 튄다'에서 왔다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dead_cat_bounce",
+      "note": "even a dead cat will bounce if it falls from a great height"
+     },
+     {
+      "claim": "하락 중 자산 가격의 짧은 일시적 회복",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dead_cat_bounce",
+      "note": "a small, brief recovery in the price of a declining asset"
+     },
+     {
+      "claim": "두 시장은 계속 떨어졌다 · sucker rally 라고도",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dead_cat_bounce",
+      "note": "Both markets continued to fall; sometimes called a sucker rally"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dead_cat_bounce"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유래가 재미있는 시장 용어 — 황금낙하산과 같은 결",
+    "targetWhy": "대학 교양 — 증권 용어. 교과서 밖, 경제 기사를 읽는 사람은 '아 그거'",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

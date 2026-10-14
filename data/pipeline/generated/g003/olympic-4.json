@@ -1,0 +1,148 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "olympic/4",
+  "midKey": "olympic",
+  "subName": "올림픽 상징·의례",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "olympic/4#g003-S2-35",
+   "seed": {
+    "subject": "앤트워프",
+    "aspect": null,
+    "ref": "S2-35",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "다섯 고리가 그려진 올림픽기가 처음 내걸리고, 선수 대표의 올림픽 선서가 처음 행해진 것은 1920년 대회였습니다. 이 대회가 열린 벨기에 도시는?",
+    "answer": "앤트워프",
+    "acceptedAnswers": [
+     "안트베르펜"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 대회는 1920년 8월 14일부터 9월 12일까지 열렸고, 공식 이름은 제7회 올림픽 대회입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 올림픽 개최지",
+     "wor": 2,
+     "worWhy": "기록 세부 — 개최 도시",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "generalHint": "화가 루벤스가 1610년 무렵부터 세상을 떠날 때까지 살며 그림을 그린 집이 이 도시에 있다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/1920_Summer_Olympics"
+    ],
+    "facts": [
+     {
+      "claim": "1920 앤트워프, 오륜기 첫 게양",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1920_Summer_Olympics",
+      "note": "first to fly the five-ring flag"
+     },
+     {
+      "claim": "올림픽 선서 처음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1920_Summer_Olympics",
+      "note": "the first in which the Olympic Oath was voiced"
+     },
+     {
+      "claim": "8.14~9.12, 제7회",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1920_Summer_Olympics",
+      "note": "Games of the VII Olympiad, 14 August to 12 September 1920"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Rubens_House"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "오륜기·선서의 시작 — 도시는 들어 봤을 법",
+    "targetWhy": "올림픽 의례 기원 — 애호가 4",
+    "pairCheck": "",
+    "dbCheck": "new (변형 안트베르펜 — 네덜란드어 지명, 한국 표기 둘 다 흔함)",
+    "warn": [
+     "단정어 처음"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (기록 세부 — 개최 도시) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "olympic/4#g003-S2-36",
+   "seed": {
+    "subject": "비둘기",
+    "aspect": null,
+    "ref": "S2-36",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1988년 서울 올림픽 개회식에서 성화대에 불을 붙일 때, 그 위에 앉아 있던 일부가 불에 타 비난을 받았습니다. 이 대회를 끝으로 개회식에서 살아 있는 채로 날려 보내지 않게 된 것은?",
+    "answer": "비둘기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 일 뒤로 개회식에서는 살아 있는 새 대신 물건이나 사람 연기자로 그 상징을 나타냈습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송·뉴스 — 서울올림픽 일화",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 올림픽 의례",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/1988_Summer_Olympics_opening_ceremony"
+    ],
+    "facts": [
+     {
+      "claim": "1988 개회식 성화 점화 때 일부 비둘기가 타 죽음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1988_Summer_Olympics_opening_ceremony",
+      "note": "some of the doves did not leave and were burnt alive"
+     },
+     {
+      "claim": "1988이 비둘기를 날린 마지막 대회",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1988_Summer_Olympics_opening_ceremony",
+      "note": "the last one at which doves were released"
+     },
+     {
+      "claim": "이후 물건·사람 연기자로 대체",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1988_Summer_Olympics_opening_ceremony",
+      "note": "replacement of the live birds with inanimate objects or human actors"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "서울 올림픽의 뜻밖의 일화",
+    "targetWhy": "올림픽 의례 뒷이야기 — 애호가 4",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

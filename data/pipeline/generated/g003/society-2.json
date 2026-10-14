@@ -1,0 +1,157 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "society/2",
+  "midKey": "society",
+  "subName": "복지·의료 제도",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "society/2#g003-H1-07",
+   "seed": {
+    "subject": "음의 소득세",
+    "aspect": null,
+    "ref": "H1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "소득이 일정 기준보다 많은 사람은 세금을 내고, 기준에 못 미치는 사람은 모자란 만큼에 비례해 정부에서 돈을 받는 세금 구상이 있습니다. 밀턴 프리드먼이 1962년 『자본주의와 자유』에서 구체안을 내놓아 널리 알려진 이 제도는?",
+    "answer": "음의 소득세",
+    "acceptedAnswers": [
+     "부의 소득세"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "프리드먼은 기준 소득 3,000달러·세율 50%를 예로 들며, 모자란 소득을 100% 메워 주는 보장 소득보다 일할 의욕을 덜 꺾는다고 주장했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 경제 정책",
+     "wor": 4,
+     "worWhy": "교양 — 경제 개념",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "generalHint": "1971~1982년 미국 시애틀과 덴버에서 이 구상을 실제 가구에 적용해 보는 대규모 실험이 있었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/음의_소득세"
+    ],
+    "facts": [
+     {
+      "claim": "기준 이상 소득자는 세금을 내고 미만은 부족분에 비례해 보조금을 받는 소득세 체계",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/음의_소득세",
+      "note": "정의"
+     },
+     {
+      "claim": "밀턴·로즈 프리드먼이 1962년 『자본주의와 자유』에서 구체안 제시 (원래 1940년대 리스윌리엄스 제안)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/음의_소득세",
+      "note": "제안자"
+     },
+     {
+      "claim": "1968년 예시: 기준 3,000달러·세율 50%, 100% 암묵 세율의 보장 소득보다 근로 유인 보존",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/음의_소득세",
+      "note": "프리드먼 모델"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Negative_income_tax"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "프리드먼은 유명, 묻는 것은 그의 복지 구상",
+    "targetWhy": "대학 교양 경제·복지 정책 — 기본소득 논쟁에서 접하는 개념",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (부의 소득세는 같은 대상의 흔한 번역어)",
+    "warn": [
+     "정답조각 소득"
+    ]
+   }
+  },
+  {
+   "seedId": "society/2#g003-H1-08",
+   "seed": {
+    "subject": "포괄수가제",
+    "aspect": null,
+    "ref": "H1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "입원 환자가 받은 검사·수술·약의 양과 관계없이, 질병 분류마다 미리 정해 둔 금액을 진료비로 내는 지불 방식이 있습니다. 1970년대 미국 예일 대학에서 개발된 진단명 기준 환자군(DRG) 분류에 바탕을 둔, 진료 행위마다 값을 매기는 방식과 대비되는 이 제도는?",
+    "answer": "포괄수가제",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "같은 질병이라도 환자의 중증도에 따라 정해진 금액이 달라지며, 미국은 1980년대 초 메디케어에 이 분류를 쓰기 시작했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 의료 제도 뉴스",
+     "wor": 4,
+     "worWhy": "시사 상식 — 건강보험 제도",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "generalHint": "한국은 2012년 7월부터 병·의원의 백내장·편도·맹장·탈장·치질·제왕절개·자궁 수술 등 7개 질병군에 의무로 적용했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/포괄수가제",
+     "https://en.wikipedia.org/wiki/Diagnosis-related_group"
+    ],
+    "facts": [
+     {
+      "claim": "검사·수술·투약 양과 관계없이 질병마다 미리 정해진 진료비를 지불",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/포괄수가제",
+      "note": "DRG 기반 입원 진료비 지불 방식"
+     },
+     {
+      "claim": "DRG 는 1970년대 초 예일 대학의 페터와 톰프슨이 개발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Diagnosis-related_group",
+      "note": "Yale, early 1970s"
+     },
+     {
+      "claim": "같은 질병이라도 중증도에 따라 지불 금액이 다르다",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/포괄수가제",
+      "note": "중증도 반영"
+     },
+     {
+      "claim": "미국 메디케어는 1982~1983년부터 DRG 사용",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Diagnosis-related_group",
+      "note": "문서 안에서 1982/1983 엇갈림 → '1980년대 초'"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://medicaltimes.com/Main/News/NewsView.html?ID=1138816",
+     "https://ko.wikipedia.org/wiki/포괄수가제"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "의료 제도 용어라 관심 없는 사람에게는 낯설 수 있다",
+    "targetWhy": "대학 교양 보건 정책 — 건강보험 뉴스에 나오나 행위별 수가제와의 구별·DRG 기원은 한 층 깊다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

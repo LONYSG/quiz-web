@@ -1,0 +1,291 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "world-food/1",
+  "midKey": "world-food",
+  "subName": "아시아 음식",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-food/1#g003-L2-19",
+   "seed": {
+    "subject": "덴푸라",
+    "aspect": null,
+    "ref": "L2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "16세기 나가사키에 온 포르투갈 선교사들에게서 밀가루와 달걀 반죽을 입혀 튀기는 법을 배운 데서 시작되었습니다. 이름이 사순절 같은 금식 기간을 가리키는 라틴어에서 왔다는 설명이 있는 일본 음식은?",
+    "answer": "덴푸라",
+    "acceptedAnswers": [
+     "텐푸라"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "포르투갈에서 금식 기간에 먹던, 껍질콩에 반죽을 입혀 튀긴 '페이시뉴스 다 오르타'가 그 조상으로 꼽힙니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 음식 유래",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 덴푸라 어원",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "generalHint": "에도 시대에는 강가 생선 시장의 노점에서 꼬치에 꿰어 소스에 찍어 먹던 간편한 음식이었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tempura"
+    ],
+    "facts": [
+     {
+      "claim": "16세기 포르투갈 선교사에게서 나가사키에서 배움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tempura",
+      "note": "acquired in Nagasaki from Portuguese missionaries, 16th century"
+     },
+     {
+      "claim": "라틴어 tempora(금식 기간 — 사순절·사계재일)에서 왔다는 설명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tempura",
+      "note": "originates from the Latin word tempora, referring to fasting times (Lent, Ember Days)"
+     },
+     {
+      "claim": "포르투갈의 peixinhos da horta 가 조상, 껍질콩 튀김",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tempura",
+      "note": "Portuguese ancestor; green beans dipped in batter and fried, eaten during Lent or Ember days"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tempura"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 음식의 뜻밖의 기원",
+    "targetWhy": "덴푸라는 익숙하지만 포르투갈·라틴어 기원은 음식 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-food/1#g003-L2-20",
+   "seed": {
+    "subject": "마파두부",
+    "aspect": null,
+    "ref": "L2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "청나라 때 쓰촨성 청두에서 천씨 부부가 연 작은 식당의 부인이 처음 만들었다고 합니다. 얼굴이 얽은 이 부인의 별명이 그대로 이름이 된 두부 요리는?",
+    "answer": "마파두부",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그 식당은 1862년 또는 1874년에 문을 열었다고 전하며, 처음에는 고추·돼지고기·두부·쓰촨 후추로 만들었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 1,
+     "difWhy": "일상 — 중국 요리",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 요리 이름 유래",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mapo_tofu"
+    ],
+    "facts": [
+     {
+      "claim": "청두의 천씨 부부가 연 식당, 천 부인이 처음 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mapo_tofu",
+      "note": "opened 1862 or 1874 as a Fanpu eatery by a couple named Chen; created by Mrs. Chen nicknamed Chen Mapo"
+     },
+     {
+      "claim": "마(麻)=곰보 자국, 파(婆)=할머니 — 얽은 얼굴의 노부인이라는 별명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mapo_tofu",
+      "note": "mázi = pockmarks, pópo = old woman"
+     },
+     {
+      "claim": "초기에는 고추·돼지고기·두부·쓰촨 후추",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mapo_tofu",
+      "note": "made with chili, pork, tofu, and Sichuan pepper"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 요리 이름의 유래",
+    "targetWhy": "마파두부는 흔하지만 이름이 '얽은 할머니' 별명이라는 유래는 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (두부 2585·3926 은 다른 답)",
+    "warn": [
+     "정답조각 두부",
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "world-food/1#g003-L2-21",
+   "seed": {
+    "subject": "쌀국수",
+    "aspect": null,
+    "ref": "L2-21",
+    "pairedWith": 2582
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2582,
+    "question": "1900년대 초 베트남 북부 남딘 지방에서 지금의 모습이 나왔다고 하는 소고기 국수입니다. 서양 자료는 흔히 이 이름이 프랑스의 고기 스튜 '포토푀'에서 왔다고 설명하는데, 이 베트남 음식은?",
+    "answer": "쌀국수",
+    "acceptedAnswers": [
+     "퍼"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "소고기를 먹는 일은 프랑스 식민 지배 때 늘었다고 하며, 중국 국수 이름에서 왔다는 설도 있어 기원은 아직 논란입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 1,
+     "difWhy": "일상 — 베트남 쌀국수",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 이름 유래",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pho"
+    ],
+    "facts": [
+     {
+      "claim": "1900~1907년 북부 베트남 남딘성에서 현대적 형태",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pho",
+      "note": "modern form emerged between 1900 and 1907 in northern Vietnam, Nam Định Province"
+     },
+     {
+      "claim": "서양 자료는 포토푀에서 왔다고 설명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pho",
+      "note": "Western sources generally maintain that phở is derived from pot-au-feu"
+     },
+     {
+      "claim": "소고기 수요는 프랑스 식민 지배 때",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pho",
+      "note": "demand for beef only appeared under French colonial rule"
+     },
+     {
+      "claim": "중국 국수 이름 설, 기원 논란",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pho",
+      "note": "Hue and Gouin: lục phở; exact origins remain a topic of debate"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "정답 표기가 쌀국수/퍼로 갈림 — 변형으로 받음",
+    "targetWhy": "쌀국수는 일상이지만 프랑스 포토푀 어원설·남딘 기원은 애호가 수준",
+    "pairCheck": "1회차 2582 는 소뼈 국물·납작한 면·향채(생김새)를 묻고 해설 미상 — 2회차는 기원 지역·이름 어원설이라 다른 사실",
+    "dbCheck": "pair-or-different — 2582 와 같은 답, 다른 지식이라 (가)로 씀",
+    "warn": [
+     "정답조각 국수"
+    ]
+   }
+  },
+  {
+   "seedId": "world-food/1#g003-P2-11",
+   "seed": {
+    "subject": "비리야니",
+    "aspect": null,
+    "ref": "P2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "무굴 제국의 궁중 주방에서 오늘날의 모습이 갖춰졌다고 하는 남아시아의 쌀 요리입니다. 쌀과 양념한 고기를 겹겹이 쌓은 냄비를 봉해 뭉근히 익히기도 하는데, '튀기다·굽다'를 뜻하는 페르시아어에서 이름이 왔다는 이 요리는?",
+    "answer": "비리야니",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "콜카타식에는 감자가 들어가는데, 1850년대 와지드 알리 샤가 만들었다는 이야기가 전한다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 세계 음식",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대표 요리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "generalHint": "2009년 인도 하이데라바드의 요리사 단체가 이 요리로 지리적 표시를 신청했지만 유래를 입증하지 못해 실패했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Biryani"
+    ],
+    "facts": [
+     {
+      "claim": "무굴 제국 궁중 주방에서 현대 비리야니 발달(콜링햄)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Biryani",
+      "note": "modern biryani developed in the royal kitchens of the Mughal Empire"
+     },
+     {
+      "claim": "켜켜이 쌓아 냄비를 봉해 천천히 익힘(둠)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Biryani",
+      "note": "layers sealed and cooked slowly; dum pukht, pot sealed with dough"
+     },
+     {
+      "claim": "페르시아어 biryan(튀기다·굽다)에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Biryani",
+      "note": "from Persian biryan meaning to fry or to roast"
+     },
+     {
+      "claim": "콜카타 비리야니는 1850년대 와지드 알리 샤가 만들었다고 하며 감자가 들어감",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Biryani",
+      "note": "Kolkata biryani reportedly invented by Wajid Ali Shah in the 1850s, includes potato"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Biryani"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "필라프·풀라오와는 '겹겹이 쌓아 봉해 익힘·페르시아어 튀기다'로 갈림",
+    "targetWhy": "인도 음식 애호가가 아는 이름, 교과서 밖 — 들으면 '아 그거'",
+    "pairCheck": "",
+    "dbCheck": "비리야니 new",
+    "warn": []
+   }
+  }
+ ]
+}

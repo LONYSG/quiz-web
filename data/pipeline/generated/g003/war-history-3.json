@@ -1,0 +1,98 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "war-history/3",
+  "midKey": "war-history",
+  "subName": "제2차 세계대전",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "war-history/3#g003-H2-04",
+   "seed": {
+    "subject": "바르바로사 작전",
+    "aspect": null,
+    "ref": "H2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1941년 6월 22일 시작된 독일의 소련 침공 작전은 처음에 '오토 작전'으로 불리다가 히틀러가 이름을 바꿨습니다. 새 이름은 3차 십자군 원정 길에 강에서 익사한 12세기 신성 로마 황제의 별명에서 따왔습니다. 이 작전은?",
+    "answer": "바르바로사 작전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "황제 프리드리히 1세의 별명은 이탈리아어로 '붉은 수염'이라는 뜻입니다. 이 별명은 그가 죽은 뒤인 1298년에야 피렌체 사람들이 처음 썼다고 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 2차 대전",
+     "wor": 4,
+     "worWhy": "교양 — 전쟁사",
+     "acc": 3,
+     "accWhy": "전쟁·군사사 — 관심층이면 안다"
+    },
+    "generalHint": "그 황제는 죽지 않고 독일 키프호이저 산 밑에 잠들어 있다가 나라가 가장 어려울 때 돌아온다는 전설이 전한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+     "https://en.wikipedia.org/wiki/Frederick_Barbarossa"
+    ],
+    "facts": [
+     {
+      "claim": "1941년 6월 22일 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "note": "began on 22 June 1941"
+     },
+     {
+      "claim": "처음 이름은 오토 작전, 1940년 12월 히틀러가 바꿨다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "note": "first codenamed Operation Otto ... changed to Operation Barbarossa in December 1940"
+     },
+     {
+      "claim": "12세기 신성 로마 황제 프리드리히 바르바로사에서 이름을 땄다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "note": "named after Frederick Barbarossa, 12th-century Holy Roman Emperor"
+     },
+     {
+      "claim": "3차 십자군 중 살레프강에서 익사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Frederick_Barbarossa",
+      "note": "died in the Saleph River during the Third Crusade, 1190"
+     },
+     {
+      "claim": "별명은 이탈리아어 '붉은 수염', 1298년 피렌체인이 처음 사용",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Frederick_Barbarossa",
+      "note": "nickname first used by the Florentines only in 1298"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Kyffh%C3%A4user"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "몰랐던 연결(2차 대전 작전 ↔ 십자군 황제)",
+    "targetWhy": "세계사 심화 — 작전 이름은 들어 봤어도 그 유래(중세 황제)는 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new (0건) · 스탈린그라드 전투(1275)·전격전과 다른 지식",
+    "warn": [
+     "정답조각 작전",
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

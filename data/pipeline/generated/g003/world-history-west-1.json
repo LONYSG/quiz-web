@@ -1,0 +1,83 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "world-history-west/1",
+  "midKey": "world-history-west",
+  "subName": "고대 그리스·로마",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/1#g003-H1-22",
+   "seed": {
+    "subject": "델로스 동맹",
+    "aspect": null,
+    "ref": "H1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기원전 477년 페르시아의 재침공에 대비한다는 명분으로, 아테네를 맹주로 에게해의 폴리스들이 해상 동맹을 맺었습니다. 원래 공동 금고를 두었던 섬의 이름에서 이름을 딴 이 동맹은?",
+    "answer": "델로스 동맹",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "기원전 454년 금고가 아테네로 옮겨진 뒤 동맹 기금이 아테네의 공공 건축 등에 쓰이며, 동맹은 아테네 제국주의의 도구로 변했다는 평가를 받습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 세계사 — 고대 그리스",
+     "wor": 5,
+     "worWhy": "교과서 — 고대사",
+     "acc": 4,
+     "accWhy": "서양사 — 고교 세계사 교과"
+    },
+    "generalHint": "그 섬은 아폴론과 아르테미스 쌍둥이 신이 태어난 곳으로 여겨져, 한때 섬에서 아이를 낳거나 묻히는 것조차 금했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/델로스_동맹"
+    ],
+    "facts": [
+     {
+      "claim": "기원전 477년 봄 페르시아 재침공 대비 명분, 아테네 맹주, 이오니아·에게해 폴리스",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/델로스_동맹",
+      "note": "결성"
+     },
+     {
+      "claim": "동맹 금고는 원래 델로스 섬에 있었다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/델로스_동맹",
+      "note": "금고"
+     },
+     {
+      "claim": "기원전 454년 금고를 아테네로 옮김, 기금이 공공 건축 등에 쓰임, 제국주의 도구로 변함",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/델로스_동맹",
+      "note": "변질"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Delos"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "세계사 교과서 용어라 3 으로 매겨질 수 있다",
+    "targetWhy": "고교 세계사 심화 — 펠로폰네소스 전쟁의 배경으로 접한다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "정답조각 동맹"
+    ]
+   }
+  }
+ ]
+}

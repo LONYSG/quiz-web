@@ -1,0 +1,216 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-food/3",
+  "midKey": "kr-food",
+  "subName": "분식·길거리 음식",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/3#g003-K2-21",
+   "seed": {
+    "subject": "궁중떡볶이",
+    "aspect": null,
+    "ref": "K2-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "19세기 조리서 『시의전서』에는 흰떡을 썰어 잠깐 볶아 찜처럼 만드는 조리법이 나옵니다. 고추장 대신 간장으로 맛을 내고 소고기를 함께 넣어 매운맛이 거의 없는 이 떡볶이를 오늘날 무엇이라 부를까요?",
+    "answer": "궁중떡볶이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "고추장 떡볶이는 1953년 마복림이 서울 신당동 공터에서 팔던 것에서 시작되었다고 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 1,
+     "difWhy": "일상 — 떡볶이 종류",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 이름",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/떡볶이",
+     "https://ko.wikipedia.org/wiki/비빔밥"
+    ],
+    "facts": [
+     {
+      "claim": "시의전서의 떡볶이 조리법(흰떡을 썰어 잠깐 볶음, 찜과 같은 방법)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/떡볶이",
+      "note": "흰떡을 탕무처럼 썰어 잠깐 볶는다"
+     },
+     {
+      "claim": "시의전서는 19세기 조리서",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/비빔밥",
+      "note": "19세기 말엽 조리서 《시의전서》"
+     },
+     {
+      "claim": "궁중떡볶이는 간장 바탕, 소고기, 매운맛 거의 없음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/떡볶이",
+      "note": "고추장이 아닌 간장을 바탕으로 만들고, 소고기를 같이 넣어서"
+     },
+     {
+      "claim": "1953년 마복림, 신당동",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/떡볶이",
+      "note": "1953년에 마복림이 서울 신당동 공터에서"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "간장·소고기 단서로 아는 사람은 쉽게 맞힘",
+    "targetWhy": "떡볶이의 옛 모습·문헌은 음식사 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 281(떡볶이)와 답 다름",
+    "warn": [
+     "정답조각 떡볶이"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/3#g003-K2-22",
+   "seed": {
+    "subject": "아바이순대",
+    "aspect": null,
+    "ref": "K2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국전쟁 중 1·4 후퇴 뒤 함경남도 실향민들이 모래 해변에 마을을 이룬 곳이 속초 청호동입니다. 돼지 대창에 선지·찹쌀·우거지 등을 채운, 이 마을의 특산물인 순대는?",
+    "answer": "아바이순대",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "함경도식 순대를 변형한 것으로, 숙주와 배춧잎도 소에 들어갑니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송에서 흔히 — 지역 음식",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 실향민 음식",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아바이순대"
+    ],
+    "facts": [
+     {
+      "claim": "1·4 후퇴 이후 함경남도 실향민이 청호동 모래 해변에 정착",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아바이순대",
+      "note": "청호동은 본래 모래 해변 … 함경남도의 실향민들이 정착"
+     },
+     {
+      "claim": "돼지 대창에 선지·찹쌀·우거지·숙주·배춧잎, 청호동 아바이마을 특산",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아바이순대",
+      "note": "돼지의 대창에 선지, 찹쌀, 우거지, 숙주, 배춧잎 등"
+     },
+     {
+      "claim": "함경도식 순대를 변형",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아바이순대",
+      "note": "함경도식 순대를 변형하여"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "속초·실향민 단서로 아는 사람은 쉬움 — 3~4",
+    "targetWhy": "실향민 마을의 역사와 음식의 연결 — 여행·음식 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 3617·1679(순대)와 답 다름",
+    "warn": [
+     "정답조각 순대"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/3#g003-K2-23",
+   "seed": {
+    "subject": "도미",
+    "aspect": null,
+    "ref": "K2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "붕어빵은 19세기 말 일본에서 만들어진 것으로 추정되는 빵이 1930년대 한국에 들어와 모양이 바뀐 것으로 알려져 있습니다. 일본의 원조 빵은 어떤 생선 모양이었을까요?",
+    "answer": "도미",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 생선이 비싸고 귀해 먹지 못하자 모양만이라도 빵으로 만들어 먹자는 생각에서 나왔다고 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 음식 유래",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 붕어빵 원조",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "generalHint": "일본의 가게 나니와야 소혼텐에서 1909년 처음 팔렸다고 하며, 둥근 풀빵 이마가와야키의 꼴을 바꾼 것이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/붕어빵"
+    ],
+    "facts": [
+     {
+      "claim": "19세기 말 일본 도미빵에서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/붕어빵",
+      "note": "19세기 말에 처음 만들어진 것으로 추정되는 일본의 도미빵에서 유래"
+     },
+     {
+      "claim": "1930년대 한국에 들어옴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/붕어빵",
+      "note": "1930년대 한국에 들어와 현재의 붕어빵이 되었다"
+     },
+     {
+      "claim": "도미가 비싸 모양의 빵이라도 만들자는 생각",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/붕어빵",
+      "note": "비싼 탓에 먹지 못하자 도미의 모양으로 된 빵이라도"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Taiyaki"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 붕어빵의 뜻밖의 기원",
+    "targetWhy": "국민 간식의 원형 — 일본 문화·음식 관심층이 아는 사실",
+    "pairCheck": "",
+    "dbCheck": "new — 1683(붕어빵)과 답 다름",
+    "warn": []
+   }
+  }
+ ]
+}

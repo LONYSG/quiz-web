@@ -1,0 +1,81 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "world-lit/3",
+  "midKey": "world-lit",
+  "subName": "20세기 문학",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/3#g003-A2-04",
+   "seed": {
+    "subject": "율리시스",
+    "aspect": null,
+    "ref": "A2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "더블린에서는 해마다 6월 16일을 주인공 레오폴드 블룸의 이름을 딴 '블룸스데이'로 기념합니다. 1904년 그날 하루 동안 더블린에서 벌어지는 일을 그린 제임스 조이스의 장편은 무엇일까요?",
+    "answer": "율리시스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "조이스가 그날을 고른 것은 훗날 아내가 된 노라 바너클과 처음 만나 함께 나간 날이었기 때문이라고 한다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 세계 문학",
+     "wor": 4,
+     "worWhy": "교양 — 세계 문학 명작",
+     "acc": 4,
+     "accWhy": "세계 문학 — 고교 문학 교과"
+    },
+    "generalHint": "1922년 조이스의 마흔 번째 생일에 파리의 실비아 비치가 자기 서점 이름을 단 출판사로 처음 책으로 펴냈다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bloomsday"
+    ],
+    "facts": [
+     {
+      "claim": "블룸스데이는 6월 16일, 율리시스의 사건이 벌어지는 1904년 6월 16일을 기념",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bloomsday",
+      "note": "events take place on Thursday 16 June 1904; Ulysses (1922)"
+     },
+     {
+      "claim": "주인공 레오폴드 블룸",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bloomsday",
+      "note": "protagonist Leopold Bloom"
+     },
+     {
+      "claim": "그날은 노라 바너클과 처음 함께 나간 날",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bloomsday",
+      "note": "the day of his first encounter with Nora Barnacle; first went out together"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ulysses_(novel)"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "20세기 대표 고전, 묻는 것은 기념일·구성",
+    "targetWhy": "율리시스 이름은 알아도 블룸스데이·하루 이야기라는 구성은 대학 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

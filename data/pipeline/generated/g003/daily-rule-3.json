@@ -1,0 +1,98 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "daily-rule/3",
+  "midKey": "daily-rule",
+  "subName": "우편·번호 체계",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "daily-rule/3#g003-L2-11",
+   "seed": {
+    "subject": "만국우편연합",
+    "aspect": null,
+    "ref": "L2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1874년 스위스 베른에서 맺은 조약으로 세워진 국제기구로, 나라와 나라 사이에 편지와 소포를 주고받는 규칙을 맞춥니다. 대한제국이 1900년 정식 가입했고 지금은 국제연합 전문 기구인 이 기구는?",
+    "answer": "만국우편연합",
+    "acceptedAnswers": [
+     "UPU"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "독일 체신 장관 하인리히 폰 슈테판이 설립을 이끌었고, 조약을 맺은 10월 9일은 세계 우편의 날입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 — 국제기구·근대사",
+     "wor": 4,
+     "worWhy": "교양 — 국제기구",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "generalHint": "라인강 위원회와 국제전기통신연합 다음으로 오래된 정부 간 국제기구로 꼽힌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/만국우편연합",
+     "https://en.wikipedia.org/wiki/Universal_Postal_Union"
+    ],
+    "facts": [
+     {
+      "claim": "1874년 베른 조약으로 설립",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/만국우편연합",
+      "note": "1874년 10월 9일 국제 우편 조약, 베른"
+     },
+     {
+      "claim": "대한제국 1900년 1월 1일 정식 가입",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/만국우편연합",
+      "note": "1900년 1월 1일에 정식 가입"
+     },
+     {
+      "claim": "UN 전문 기구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Universal_Postal_Union",
+      "note": "a specialized agency of the United Nations"
+     },
+     {
+      "claim": "하인리히 폰 슈테판이 창설자",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Universal_Postal_Union",
+      "note": "German Postmaster-General Heinrich von Stephan, founder of the General Postal Union"
+     },
+     {
+      "claim": "10월 9일 세계 우편의 날",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Universal_Postal_Union",
+      "note": "9 October, World Post Day"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Universal_Postal_Union"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교양 국제기구, 대한제국 근대화와의 연결",
+    "targetWhy": "국제기구 이름은 고교 세계사·한국사 심화(대한제국 가입)에서 접하는 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (우정총국은 ban 이라 대신 고름)",
+    "warn": [
+     "정답조각 연합"
+    ]
+   }
+  }
+ ]
+}

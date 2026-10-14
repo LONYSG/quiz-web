@@ -1,0 +1,101 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "world-cinema/5",
+  "midKey": "world-cinema",
+  "subName": "영화상",
+  "questionPrompt": "media-v2",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/5#g003-M1-27",
+   "seed": {
+    "subject": "선댄스 영화제",
+    "aspect": "대중",
+    "ref": "M1-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "로버트 레드퍼드가 중심이 되어 1978년 유타주에서 시작한 영화제가 있습니다. 이름은 레드퍼드가 '내일을 향해 쏴라'에서 맡은 배역 이름을 딴 그의 땅에서 왔습니다. 미국 최대의 독립 영화제로 불리는 이 영화제는 무엇일까요?",
+    "answer": "선댄스 영화제",
+    "acceptedAnswers": [
+     "선댄스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1981년부터 유타주 파크시티에서 열려 왔는데, 2027년부터는 콜로라도주 볼더로 옮긴다고 2025년에 발표했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 영화제",
+     "wor": 4,
+     "worWhy": "교양 — 세계 영화제",
+     "acc": 4,
+     "accWhy": "세계 영화 — 대부분이 관심"
+    },
+    "generalHint": "레드퍼드가 그 영화에서 맡은 배역은 부치 캐시디와 짝을 이룬 무법자이며, 영화제는 1991년에야 지금 이름을 얻었다.",
+    "generalHintVersion": "hint-v3",
+    "layer": "대중",
+    "genre": "영화",
+    "work": "선댄스 영화제",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sundance_Film_Festival",
+     "https://ko.wikipedia.org/wiki/내일을_향해_쏴라"
+    ],
+    "facts": [
+     {
+      "claim": "1978년 유타에서 시작, 레드퍼드가 주 창립자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sundance_Film_Festival",
+      "note": "began in August 1978 as the Utah/US Film Festival; Robert Redford was its main founder"
+     },
+     {
+      "claim": "레드퍼드의 'Sundance' 땅 이름, 내일을 향해 쏴라 배역에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sundance_Film_Festival",
+      "note": "named for Redford's Sundance land, which he named after his character in Butch Cassidy and the Sundance Kid"
+     },
+     {
+      "claim": "미국 최대 독립 영화제",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sundance_Film_Festival",
+      "note": "the largest independent film festival in the United States"
+     },
+     {
+      "claim": "1981 파크시티, 2027부터 볼더 이전(2025 발표)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sundance_Film_Festival",
+      "note": "1981 moved to Park City; March 2025 announced moving to Boulder, Colorado, for the 2027 festival and beyond"
+     },
+     {
+      "claim": "내일을 향해 쏴라 = Butch Cassidy and the Sundance Kid, 레드퍼드는 선댄스 키드 역",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/내일을_향해_쏴라",
+      "note": "내일을 향해 쏴라(Butch Cassidy and the Sundance Kid) · 로버트 레드퍼드(선댄스 키드)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sundance_Film_Festival"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "세계적 영화제 · 대중 층 · 이름 유래로 깊이",
+    "targetWhy": "이름은 알려졌지만 창립자와 이름 유래로 묻는 것은 영화 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "선댄스 영화제 new",
+    "warn": [
+     "정답조각 영화제"
+    ]
+   }
+  }
+ ]
+}

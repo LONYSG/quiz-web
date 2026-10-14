@@ -1,0 +1,158 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "computer/1",
+  "midKey": "computer",
+  "subName": "하드웨어",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "computer/1#g003-C2-17",
+   "seed": {
+    "subject": "폰 노이만 구조",
+    "aspect": null,
+    "ref": "C2-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프로그램 명령과 데이터를 같은 메모리에 넣어 두는 컴퓨터 설계는 1945년 'EDVAC에 관한 보고서 초안'으로 널리 퍼졌습니다. 실제 설계는 에커트와 모클리가 먼저 했는데도 보고서를 쓴 수학자 한 사람의 이름만 붙은 이 설계 방식은?",
+    "answer": "폰 노이만 구조",
+    "acceptedAnswers": [
+     "폰 노이만 아키텍처",
+     "폰 노이만 방식"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "명령과 데이터가 한 통로를 나눠 써서 생기는 속도의 한계를 '병목'이라 부르며, 존 배커스가 1977년 튜링상 강연에서 이를 비판했다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 정보 — 컴퓨터 구조",
+     "wor": 4,
+     "worWhy": "교양 — 기본 컴퓨터 어휘",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "generalHint": "보고서를 쓴 이 수학자는 1944년 모르겐슈테른과 함께 '게임 이론과 경제 행동'을 펴냈다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Von_Neumann_architecture"
+    ],
+    "facts": [
+     {
+      "claim": "명령과 데이터를 하나의 메모리에 둠",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Von_Neumann_architecture",
+      "note": "one memory for both program instructions and data"
+     },
+     {
+      "claim": "1945년 First Draft of a Report on the EDVAC",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Von_Neumann_architecture",
+      "note": "1945: First Draft of a Report on the EDVAC"
+     },
+     {
+      "claim": "에커트와 모클리가 먼저 설계했으나 초안이 폰 노이만 이름으로만 돌아 이름이 붙음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Von_Neumann_architecture",
+      "note": "Eckert and Mauchly had largely finished designing · draft circulated under only von Neumann's name"
+     },
+     {
+      "claim": "폰 노이만 병목 · 배커스 1977년 튜링상 강연",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Von_Neumann_architecture",
+      "note": "John Backus described this limitation in his 1977 Turing Award lecture"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Theory_of_Games_and_Economic_Behavior"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 봤을 법한 이름, 묻는 단서가 명명 논란",
+    "targetWhy": "컴퓨터 개론(대학 교양) 첫 장의 개념, 이름이 붙은 뒷이야기가 한 층 깊다",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "computer/1#g003-C2-18",
+   "seed": {
+    "subject": "엔디언",
+    "aspect": null,
+    "ref": "C2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "컴퓨터가 여러 바이트로 된 값을 메모리에 담을 때 큰 자리부터 쓰는지 작은 자리부터 쓰는지를 가리키는 말이 있습니다. 1980년 대니 코헨이 '걸리버 여행기'에서 삶은 달걀의 어느 쪽 끝을 깨느냐로 다투는 소인국 이야기에서 따온 이 말은?",
+    "answer": "엔디언",
+    "acceptedAnswers": [
+     "엔디안"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "코헨이 이 말을 처음 쓴 글의 제목은 '성전에 대하여, 그리고 평화를 위한 호소'였다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 5,
+     "difWhy": "전공 — 컴퓨터 구조",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 걸리버 어원",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "generalHint": "인텔 x86은 작은 자리부터, 인터넷 통신 규약은 큰 자리부터 담는 쪽을 따른다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Endianness"
+    ],
+    "facts": [
+     {
+      "claim": "바이트를 저장하는 순서를 가리킴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Endianness",
+      "note": "applied the labels to the order in which computers store bytes"
+     },
+     {
+      "claim": "1980년 대니 코헨이 걸리버 여행기 소인국 달걀 논쟁에서 따옴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Endianness",
+      "note": "Danny Cohen 1980 · Gulliver's Travels · Lilliput · crack a boiled egg big end / small end"
+     },
+     {
+      "claim": "글 제목 'On Holy Wars and a Plea for Peace'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Endianness",
+      "note": "1980 Internet Experiment Note, 'On Holy Wars and a Plea for Peace'"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Endianness"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "걸리버 여행기는 누구나 알고, 용어 유래가 뜻밖",
+    "targetWhy": "컴퓨터 구조(대학 교양) 용어, 걸리버 유래는 프로그래머 사이 이야깃거리",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

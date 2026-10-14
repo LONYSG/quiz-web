@@ -1,0 +1,140 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "combat-athletics/5",
+  "midKey": "combat-athletics",
+  "subName": "동계 종목",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "combat-athletics/5#g003-S2-23",
+   "seed": {
+    "subject": "악셀",
+    "aspect": null,
+    "ref": "S2-23",
+    "pairedWith": 2188
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2188,
+    "question": "1882년 오스트리아 빈에서 열린 첫 국제 피겨 대회에서, 한 노르웨이 선수가 스피드스케이트를 신은 채 이 점프를 처음 선보였습니다. 그 노르웨이 선수의 이름을 딴 이 점프는?",
+    "answer": "악셀",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "여자 선수로 처음 세 바퀴 반짜리 이 점프에 성공한 사람은 1988년 일본의 이토 미도리입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송 — 피겨 중계 용어",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 피겨 점프",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Axel_jump"
+    ],
+    "facts": [
+     {
+      "claim": "1882 빈 첫 국제 대회에서 노르웨이 악셀 파울센이 스피드스케이트 신고 선보임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Axel_jump",
+      "note": "Paulsen did it in 1882 at the first international figure skating competition in Vienna, wearing speed skates"
+     },
+     {
+      "claim": "이름은 노르웨이 스케이터 악셀 파울센",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Axel_jump",
+      "note": "named after Norwegian skater Axel Paulsen"
+     },
+     {
+      "claim": "여자 첫 트리플 악셀 이토 미도리 1988",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Axel_jump",
+      "note": "first triple Axel by a woman: Midori Ito, 1988"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 기술의 이름 유래",
+    "targetWhy": "점프 이름의 유래 — 피겨 애호가 4",
+    "pairCheck": "1회차 2188은 앞으로 뛰어 반 바퀴 더 도는 동작 특징을 물음 — 이 문항은 이름의 주인(노르웨이 선수·1882 빈)을 물어 1회차 지식만으로 풀 수 없다(러츠·살코와 국적으로 갈림)",
+    "dbCheck": "pair-or-different — 2188 의 (가) 2회차",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "combat-athletics/5#g003-S2-24",
+   "seed": {
+    "subject": "노르딕 복합",
+    "aspect": null,
+    "ref": "S2-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 동계 종목은 스키 점프를 먼저 치르고, 그 점수 차를 크로스컨트리 출발 시각의 차이로 바꿉니다. 그래서 크로스컨트리에서 결승선을 맨 먼저 통과한 선수가 이기는 이 종목은?",
+    "answer": "노르딕 복합",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1892년 노르웨이 오슬로의 홀멘콜렌 점프대에서 첫 큰 대회가 열렸고, 올림픽에는 1924년부터 들어갔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 동계 종목",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 종목 방식",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "generalHint": "이 출발 방식은 1980년대에 이를 고안한 선수 군더 군더슨의 이름으로 부르며, 올림픽에서는 남자 경기만 열려 왔다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Nordic_combined"
+    ],
+    "facts": [
+     {
+      "claim": "점프 결과로 출발 지연 결정, 먼저 들어온 선수가 승리(군데르센 방식)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nordic_combined",
+      "note": "jump results set start delay for cross-country; first to cross finish wins"
+     },
+     {
+      "claim": "1892 오슬로 홀멘콜렌 첫 큰 대회, 1924 올림픽",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Nordic_combined",
+      "note": "first major competition 1892 Oslo, first Holmenkollen ski jump; Olympic program since 1924"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Nordic_combined"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 봤지만 방식은 몰랐던 종목",
+    "targetWhy": "경기 방식을 아는 것은 동계 종목 애호가 — 4",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

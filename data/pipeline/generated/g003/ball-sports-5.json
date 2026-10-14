@@ -1,0 +1,141 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "ball-sports/5",
+  "midKey": "ball-sports",
+  "subName": "탁구·배드민턴",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "ball-sports/5#g003-S2-11",
+   "seed": {
+    "subject": "사라예보",
+    "aspect": null,
+    "ref": "S2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1973년 이에리사·정현숙 등이 나선 한국 여자 탁구 대표팀은 세계 탁구 선수권 대회 단체전에서 우승해, 구기 종목 사상 처음으로 단체전 세계 제패를 이뤘습니다. 이 대회가 열린 당시 유고슬라비아의 도시는?",
+    "answer": "사라예보",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 도시는 지금 보스니아 헤르체고비나 땅으로, 대표팀에는 김순옥·박미라도 함께 뛰었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 사라예보 탁구",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 스포츠사 명장면",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "generalHint": "도시 동쪽에서 가운데로 밀랴츠카강이 흐르고, 15세기에 생긴 옛 시장 거리 바슈차르시야가 중심이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이에리사"
+    ],
+    "facts": [
+     {
+      "claim": "1973 사라예보 세계선수권 여자 단체 우승, 구기 사상 첫 단체전 세계 제패",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이에리사",
+      "note": "1973년 유고슬라비아 사라예보 세계 탁구 선수권 여자 단체전 우승, 구기 종목 사상 처음으로 단체전 세계 제패"
+     },
+     {
+      "claim": "정현숙 함께 출전",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이에리사",
+      "note": "김순옥, 박미라, 정현숙과 함께 출전"
+     },
+     {
+      "claim": "현 보스니아 헤르체고비나, 김순옥·박미라",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이에리사",
+      "note": "사라예보(현 보스니아 헤르체고비나 영토)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sarajevo"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국 스포츠사 이정표, 도시는 유명",
+    "targetWhy": "한국 탁구사 애호가 수준 — 4",
+    "pairCheck": "",
+    "dbCheck": "pair-or-different — 활성 3270(사라예보 포위전)과 지식 다름",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "ball-sports/5#g003-S2-12",
+   "seed": {
+    "subject": "박주봉",
+    "aspect": null,
+    "ref": "S2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "배드민턴이 정식 메달 종목이 된 첫 대회인 1992년 바르셀로나 올림픽에서, 남자 복식 금메달은 김문수와 한 한국 선수가 차지했습니다. 이 선수는 누구일까요?",
+    "answer": "박주봉",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그는 1996년 애틀랜타 올림픽에서는 라경민과 짝을 이뤄 혼합 복식 은메달을 땄습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 배드민턴 금메달",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 한국 올림픽 영웅",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "generalHint": "국제 그랑프리 대회에서만 47번 우승했고, 2001년 한국 선수로는 처음 배드민턴 명예의 전당에 올랐다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Park_Joo-bong"
+    ],
+    "facts": [
+     {
+      "claim": "1992 바르셀로나, 배드민턴 첫 정식 메달 종목, 김문수와 남자 복식 금",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Park_Joo-bong",
+      "note": "gold in men's doubles with Kim Moon-soo at 1992 Barcelona, first year badminton was an official medal sport"
+     },
+     {
+      "claim": "1996 혼합 복식 은 라경민",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Park_Joo-bong",
+      "note": "1996 Atlanta silver in mixed doubles with Ra Kyung-min"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Park_Joo-bong"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국 배드민턴의 대표 인물",
+    "targetWhy": "배드민턴 애호가가 아는 레전드 — 4",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

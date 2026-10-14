@@ -1,0 +1,168 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "chemistry/5",
+  "midKey": "chemistry",
+  "subName": "실생활 화학",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/5#g003-C1-18",
+   "seed": {
+    "subject": "규조토",
+    "aspect": null,
+    "ref": "C1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1866년 알프레드 노벨은 작은 충격에도 터지던 니트로글리세린을 어떤 흙에 스며들게 해 안전하게 들고 다닐 수 있는 다이너마이트를 만들었습니다. 껍데기가 단단한 미세한 조류가 화석으로 쌓여 생긴 이 흙은 무엇일까요?",
+    "answer": "규조토",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "규조토는 80~90%가 실리카로 되어 있으며, 노벨은 함부르크 근처 공장 옆 엘베강에서 이 흙을 얻었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 화학 — 규조토",
+     "wor": 4,
+     "worWhy": "교양 — 다이너마이트 원리",
+     "acc": 5,
+     "accWhy": "화학 — 중학 과학 교과 과목"
+    },
+    "generalHint": "같은 흙은 오늘날 수영장 물 거름재와 물기를 빨리 빨아들이는 욕실 발 매트에도 쓰인다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dynamite",
+     "https://en.wikipedia.org/wiki/Diatomaceous_earth"
+    ],
+    "facts": [
+     {
+      "claim": "1866년 노벨이 니트로글리세린을 규조토에 흡수시켜 다이너마이트 발명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dynamite",
+      "note": "invented by Alfred Nobel in 1866 · settled on diatomaceous earth"
+     },
+     {
+      "claim": "규조토 = 단단한 껍데기의 미세 조류(규조) 화석",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Diatomaceous_earth",
+      "note": "fossilized remains of diatoms, hard-shelled microalgae"
+     },
+     {
+      "claim": "80~90% 실리카",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Diatomaceous_earth",
+      "note": "typically 80–90% silica"
+     },
+     {
+      "claim": "함부르크 공장 근처 엘베강에서 채취",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dynamite",
+      "note": "took diatomaceous earth from the Elbe River near his factory in Hamburg"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Diatomaceous_earth"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 발명의 핵심 재료 — 규조토 매트로 생활에서도 익숙한 낱말",
+    "targetWhy": "노벨·다이너마이트는 누구나 알지만 '무엇에 스며들게 했나'는 교양 과학사 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "chemistry/5#g003-C1-19",
+   "seed": {
+    "subject": "베이클라이트",
+    "aspect": null,
+    "ref": "C1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1907년 미국 뉴욕주 용커스에서 페놀과 포름알데하이드를 반응시켜 만든 수지가 있습니다. 합성 성분만으로 만든 첫 플라스틱으로 꼽히며, 열과 전기에 강해 옛 전화기와 라디오 몸체에 많이 쓰였습니다. 이 플라스틱은 무엇일까요?",
+    "answer": "베이클라이트",
+    "acceptedAnswers": [
+     "Bakelite"
+    ],
+    "originalTitleVariants": [
+     "Bakelite"
+    ],
+    "explanation": "만든 이는 앞서 사진 인화지 '벨록스'의 권리를 코닥에 팔아 이미 큰돈을 번 화학자였습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 화학사",
+     "wor": 4,
+     "worWhy": "교양 — 첫 합성 플라스틱",
+     "acc": 5,
+     "accWhy": "화학 — 중학 과학 교과 과목"
+    },
+    "generalHint": "이 수지는 '천 가지 쓰임의 재료'라는 광고 문구를 달고 팔렸다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bakelite"
+    ],
+    "facts": [
+     {
+      "claim": "1907년 뉴욕주 용커스에서 개발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bakelite",
+      "note": "developed in Yonkers, New York, in 1907"
+     },
+     {
+      "claim": "페놀·포름알데하이드 수지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bakelite",
+      "note": "thermosetting phenol-formaldehyde resin"
+     },
+     {
+      "claim": "합성 성분으로 만든 첫 플라스틱",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bakelite",
+      "note": "first plastic made from synthetic components"
+     },
+     {
+      "claim": "내열·비전도성으로 전화기·라디오에 쓰임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bakelite",
+      "note": "heat resistance and electrical nonconductivity · telephones, radios"
+     },
+     {
+      "claim": "벨록스 인화지 권리를 1899년 코닥에 팔아 부유했음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bakelite",
+      "note": "wealthy from selling Velox photographic paper rights to Eastman Kodak in 1899"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bakelite"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이름이 일반인에게 다소 낯설 수 있으나 플라스틱사의 대표 물질",
+    "targetWhy": "플라스틱 역사의 출발점 — 대학 교양(재료·화학사) 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

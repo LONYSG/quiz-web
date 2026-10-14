@@ -1,0 +1,225 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "fashion/1",
+  "midKey": "fashion",
+  "subName": "의류 명칭",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "fashion/1#g003-L2-01",
+   "seed": {
+    "subject": "턱시도",
+    "aspect": null,
+    "ref": "L2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1886년 미국 뉴욕주의 한 부유층 마을에서 클럽 무도회에 회원들이 꼬리 없는 야회복을 입고 나왔고, 그 마을 이름이 이 옷의 이름이 되었습니다. 영국에서는 흔히 '디너 재킷'이라 부르는 이 남성 예복은?",
+    "answer": "턱시도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "옷차림 규정으로는 '블랙타이'에 해당하며, 이 이름이 남성복을 가리키는 말로 쓰인 것은 1888년 무렵 미국에서라고 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 1,
+     "difWhy": "일상 — 예복 이름",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 이름 유래",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tuxedo"
+    ],
+    "facts": [
+     {
+      "claim": "이름이 뉴욕주 턱시도 파크 마을에서 왔다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tuxedo",
+      "note": "synonym tuxedo was derived from the village of Tuxedo Park in New York State"
+     },
+     {
+      "claim": "1886년 클럽의 첫 가을 무도회에서 회원들이 꼬리 없는 야회복을 입었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tuxedo",
+      "note": "first Autumn Ball October 1886, members wore a tailless dress coat"
+     },
+     {
+      "claim": "영국 영어로는 dinner suit / dinner jacket",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tuxedo",
+      "note": "In British English ... dinner suit or dinner jacket"
+     },
+     {
+      "claim": "남성복 의미의 tuxedo 는 1888년 무렵 미국에서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tuxedo",
+      "note": "Tuxedo in the context of menswear originated in the United States around 1888"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 옷, 이름의 뜻밖의 유래",
+    "targetWhy": "턱시도는 누구나 알지만 이름이 뉴욕의 마을 이름이라는 유래는 패션 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "fashion/1#g003-L2-02",
+   "seed": {
+    "subject": "레오타드",
+    "aspect": null,
+    "ref": "L2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "19세기 프랑스의 한 곡예사가 몸에 딱 붙는 한 벌 옷을 입고 공연하면서 그의 이름이 옷 이름이 되었습니다. 정작 그는 이 옷을 '마요'라고 불렀다는데, 오늘날 체조복·발레복으로 쓰는 이 옷은?",
+    "answer": "레오타드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그 곡예사 쥘 레오타르는 1859년 파리의 시르크 나폴레옹에서 세 개의 그네를 오가는 공중그네 곡예를 처음 선보인 사람으로 꼽힙니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송·생활 — 의류 이름",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 이름 유래",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Leotard",
+     "https://en.wikipedia.org/wiki/Jules_L%C3%A9otard"
+    ],
+    "facts": [
+     {
+      "claim": "프랑스 곡예사 쥘 레오타르(1838~1870)로 유명해진 옷",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leotard",
+      "note": "made famous by the French acrobatic performer Jules Léotard (1838–1870)"
+     },
+     {
+      "claim": "레오타르는 이 옷을 maillot 라 불렀다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leotard",
+      "note": "Léotard called the garment a maillot"
+     },
+     {
+      "claim": "1859년 11월 12일 시르크 나폴레옹에서 세 개의 그네로 첫 공중그네 곡예",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jules_L%C3%A9otard",
+      "note": "first flying trapeze routine performed on three trapeze bars at the Cirque Napoleon, 12 November 1859"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 옷 이름의 인물 유래",
+    "targetWhy": "레오타드는 잘 알려진 옷이지만 곡예사 이름에서 왔다는 유래는 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "fashion/1#g003-P2-08",
+   "seed": {
+    "subject": "라글란",
+    "aspect": null,
+    "ref": "P2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "워털루 전투에서 오른팔을 잃고 뒤에 크림 전쟁에서 영국군을 이끈 장군이 입었다고 해서 그의 이름이 붙은 소매가 있습니다. 어깨 솔기 없이 소매가 목둘레까지 한 장으로 이어져 겨드랑이에서 목 쪽으로 비스듬한 솔기가 나는 이 소매는?",
+    "answer": "라글란",
+    "acceptedAnswers": [
+     "래글런",
+     "나그랑",
+     "라글란 소매"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그가 지휘하던 크림 전쟁에서는 명령이 분명하게 전달되지 않아 '경기병대의 돌격' 참사가 벌어졌고, 그는 1855년 크림반도에서 세상을 떠났다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 의류 소매 명칭",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 패션",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "generalHint": "이 장군은 워털루에서 잘라 낸 팔을 다시 가져오게 해, 아내가 준 반지를 되찾으려 했다고 한다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Raglan_sleeve",
+     "https://en.wikipedia.org/wiki/FitzRoy_Somerset,_1st_Baron_Raglan"
+    ],
+    "facts": [
+     {
+      "claim": "래글런 남작이 워털루에서 팔을 잃은 뒤 이 소매 옷을 입었다고 전함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Raglan_sleeve",
+      "note": "said to have worn a coat with this sleeve after losing his arm at Waterloo"
+     },
+     {
+      "claim": "오른팔 절단, 크림 전쟁 영국군 지휘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/FitzRoy_Somerset,_1st_Baron_Raglan",
+      "note": "right arm amputated after Waterloo; commanded British forces in the Crimean War"
+     },
+     {
+      "claim": "소매가 깃까지 한 장으로 이어져 겨드랑이에서 쇄골로 비스듬한 솔기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Raglan_sleeve",
+      "note": "extends in one piece fully to the collar; diagonal seam underarm to collarbone"
+     },
+     {
+      "claim": "명령 전달이 불분명해 경기병대의 돌격, 1855년 크림에서 사망",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/FitzRoy_Somerset,_1st_Baron_Raglan",
+      "note": "failure to deliver orders clearly caused the Charge of the Light Brigade; died in Crimea June 1855"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/FitzRoy_Somerset,_1st_Baron_Raglan"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "한국 표기가 라글란·래글런·나그랑으로 갈려 변형 3개가 불가피",
+    "targetWhy": "옷 이름으로는 흔하지만 인물 유래는 패션·역사 애호가 지식 — 블루머(4)와 같은 꼴",
+    "pairCheck": "",
+    "dbCheck": "라글란·래글런·나그랑 new",
+    "warn": []
+   }
+  }
+ ]
+}

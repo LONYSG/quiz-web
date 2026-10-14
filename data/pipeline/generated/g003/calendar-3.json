@@ -1,0 +1,161 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "calendar/3",
+  "midKey": "calendar",
+  "subName": "달력·역법",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "calendar/3#g003-L1-33",
+   "seed": {
+    "subject": "율리우스력",
+    "aspect": null,
+    "ref": "L1-33",
+    "pairedWith": 832
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 832,
+    "question": "1917년 러시아에서 볼셰비키가 권력을 잡은 혁명은 오늘날 달력으로 11월 7일에 일어났는데도 '10월 혁명'이라 불립니다. 당시 러시아가 쓰던 달력으로는 10월 25일이었기 때문인데, 이 달력은?",
+    "answer": "율리우스력",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "소련이 달력을 바꾼 뒤에는 이 혁명을 '11월 혁명'이라 부르기도 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 세계사 — 역법",
+     "wor": 4,
+     "worWhy": "교양 — 10월 혁명 이름",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "generalHint": "러시아 정교회는 지금도 이 달력으로 성탄절을 쇠어, 오늘날 달력으로는 1월 7일이 성탄절이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/October_Revolution"
+    ],
+    "facts": [
+     {
+      "claim": "구력(율리우스력) 10월 25일 = 그레고리력 11월 7일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/October_Revolution",
+      "note": "25 October O.S. Julian; 7 November Gregorian"
+     },
+     {
+      "claim": "러시아는 당시 율리우스력 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/October_Revolution",
+      "note": "Russia was still using the Julian calendar"
+     },
+     {
+      "claim": "달력 개혁 뒤 11월 혁명으로도 불림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/October_Revolution",
+      "note": "sometimes known as the November Revolution after the Soviet Union modernized its calendar"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Julian_calendar"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 사건의 이름 속 달력 이야기",
+    "targetWhy": "세계사 교양 — 10월 혁명 날짜의 어긋남은 대학 교양·수능 세계사 심화",
+    "pairCheck": "1회차 #832 는 4년마다 윤년·1582년 그레고리력 교체를 물었다. 2회차는 10월 혁명 날짜 차이 — 1582년·윤년 규칙을 쓰지 않음",
+    "dbCheck": "pair-or-different #832 — (가) 2회차, 다른 지식",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "calendar/3#g003-L1-34",
+   "seed": {
+    "subject": "프랑스 혁명력",
+    "aspect": null,
+    "ref": "L1-34",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 달을 30일로 하고 열흘씩 세 묶음으로 나눈 달력이 1793년 말부터 쓰였습니다. 달 이름은 포도 수확·싹틈 같은 자연에서 따왔고, 나폴레옹이 1806년부터 폐지한 이 달력은?",
+    "answer": "프랑스 혁명력",
+    "acceptedAnswers": [
+     "혁명력",
+     "공화력",
+     "프랑스 공화력"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "열흘째 날이 일요일을 대신한 쉬는 날이었고, 시간도 십진법으로 나누려 했지만 자리 잡지 못했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 서양사 역법",
+     "wor": 4,
+     "worWhy": "교양 — 프랑스 혁명",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "generalHint": "달 이름은 시인 파브르 데글랑틴이 지었고, 날마다 성인 대신 곡식·동물·농기구 이름을 붙였다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/French_Republican_calendar"
+    ],
+    "facts": [
+     {
+      "claim": "30일 열두 달, 열흘 단위 데카드 세 개",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/French_Republican_calendar",
+      "note": "twelve 30-day months each divided into three 10-day décades"
+     },
+     {
+      "claim": "1793년 말부터 1805년까지 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/French_Republican_calendar",
+      "note": "used from late 1793 to 1805"
+     },
+     {
+      "claim": "달 이름은 자연·날씨(방데미에르=포도 수확, 제르미날=발아)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/French_Republican_calendar",
+      "note": "Vendémiaire (grape harvest), Germinal (germination)"
+     },
+     {
+      "claim": "나폴레옹이 1805년 9월 법령으로 1806년 1월 1일부터 폐지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/French_Republican_calendar",
+      "note": "abolished by act dated 9 September 1805, effective 1 January 1806"
+     },
+     {
+      "claim": "데카디가 일요일 대신 휴일, 십진 시간은 정착 못 함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/French_Republican_calendar",
+      "note": "décadi replaced Sunday; decimal time did not catch on"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/French_Republican_calendar"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "프랑스 혁명은 교과 대상, 달력 세부는 한 층 깊음",
+    "targetWhy": "세계사 교양 — 테르미도르·브뤼메르 달 이름의 출처, 대학 교양",
+    "pairCheck": "",
+    "dbCheck": "new (혁명력 · 공화력 · 프랑스 공화력도 new)",
+    "warn": []
+   }
+  }
+ ]
+}

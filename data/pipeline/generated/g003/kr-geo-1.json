@@ -1,0 +1,285 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-geo/1",
+  "midKey": "kr-geo",
+  "subName": "행정구역·도시",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-geo/1#g003-K2-01",
+   "seed": {
+    "subject": "원주",
+    "aspect": null,
+    "ref": "K2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1395년 조선은 동쪽 도의 이름을 그 도의 큰 고을 두 곳에서 한 글자씩 따서 지었습니다. 강릉과 함께 강원도라는 이름을 이룬 고을은 어디일까요?",
+    "answer": "원주",
+    "acceptedAnswers": [
+     "원주시"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "같은 해 이 고을에 강원감영이 설치되어, 조선 시대 강원도 행정의 중심이 되었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "중학 지리 — 도명 유래",
+     "wor": 4,
+     "worWhy": "교양 — 강원도 이름",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/원주시"
+    ],
+    "facts": [
+     {
+      "claim": "1395년 강릉의 '강'과 원주의 '원'을 합해 강원도라 함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/원주시",
+      "note": "1395년 강릉의 '강'자와 원주의 '원'자를 합하여 강원도라 하였다"
+     },
+     {
+      "claim": "원주에 강원감영 설치",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/원주시",
+      "note": "원주에 강원감영을 설치하여 이때부터"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "원주·강원도 모두 유명, 묻는 것은 이름의 유래",
+    "targetWhy": "강원도 이름의 구성은 고교 한국지리·한국사 심화에서 접하는 사실 — 원주가 앞 글자를 내준 고을이라는 연결은 덜 알려짐",
+    "pairCheck": "",
+    "dbCheck": "new — 3627(팔도 이름 짓는 방식, 답 경기도)과 방식은 같으나 답·지식이 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g003-K2-02",
+   "seed": {
+    "subject": "영등포",
+    "aspect": null,
+    "ref": "K2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1960년대 서울 강남 개발 때 개발 지역은 '영동지구'로 지정되어, 한동안 강남 일대를 '영동'이라 불렀습니다. 이 '영동'은 어느 지역의 동쪽이라는 뜻일까요?",
+    "answer": "영등포",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "뒤에 '강남'이 이 지역을 가리키는 이름으로 자리 잡았고, 옛 이름은 영동대교 같은 이름에 남아 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 강남 지명",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 영동 유래",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "generalHint": "1936년 경성부에 들어온 한강 남쪽 지역으로, 1973년 관악구, 1980년 구로구가 이곳에서 갈라져 나갔다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/영동_(서울)",
+     "https://ko.wikipedia.org/wiki/영동"
+    ],
+    "facts": [
+     {
+      "claim": "영동은 영등포의 동쪽이라는 뜻",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/영동_(서울)",
+      "note": "이름은 말 그대로 '영등포의 동쪽'을 의미한다"
+     },
+     {
+      "claim": "1960년대 강남 개발 때 영동지구로 지정되어 강남 일대를 가리키는 명칭이 됨",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/영동_(서울)",
+      "note": "1960년대 강남 개발 당시 개발지역이 '영동지구'로 지정"
+     },
+     {
+      "claim": "이후 '강남'이 명칭을 대체",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/영동_(서울)",
+      "note": "이후 '영동' 대신 '강남'이 이 지역을 가리키는 명칭으로 대체"
+     },
+     {
+      "claim": "영동대교가 이 '영동'에서 온 이름",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/영동",
+      "note": "동음이의 문서 — 영동(서울) 항목 아래 영동대교"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/영등포구"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "강남·영동대교는 누구나 아는 이름, 유래가 뜻밖",
+    "targetWhy": "강남 개발사·서울 지명 유래를 아는 애호가·교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g003-K2-03",
+   "seed": {
+    "subject": "연기군",
+    "aspect": null,
+    "ref": "K2-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2012년 7월 1일 세종특별자치시가 출범하면서 충청남도의 한 군은 전체가 편입되어 폐지되었습니다. 세종시 면적의 대부분을 이루는 이 군은?",
+    "answer": "연기군",
+    "acceptedAnswers": [
+     "연기"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 군 말고도 공주시 장기면·반포면과 충청북도 청원군 부용면 일원이 세종시에 들어갔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 행정구역 변천",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 세종시 출범",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "generalHint": "군청은 조치원읍에 있었고, 1914년 일제가 여러 군을 합쳐 이 군을 지금의 꼴로 만들었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/연기군"
+    ],
+    "facts": [
+     {
+      "claim": "군 전체가 2012년 7월 1일 세종특별자치시로 편입되어 폐지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/연기군",
+      "note": "군역 전체가 2012년 7월 1일 세종특별자치시로 편입되어 폐지"
+     },
+     {
+      "claim": "세종시 면적의 93.3%가 연기군 지역(2008 계획)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/연기군",
+      "note": "세종시 면적의 93.3%가 연기군 지역"
+     },
+     {
+      "claim": "공주시 장기면·반포면, 청원군 부용면 일원도 편입",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/연기군",
+      "note": "연기군 전체 면적과 공주시 장기면, 반포면 및 충청북도 청원군 부용면 일원에 설치"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/연기군"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대상(세종시) 유명, 묻는 사실이 한 층 깊음",
+    "targetWhy": "세종시는 누구나 알지만 그 바탕이 된 옛 군 이름은 시사·지리 관심층이 아는 사실",
+    "pairCheck": "",
+    "dbCheck": "new — 89(세종특별자치시 지위)와 답·지식 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g003-P1-08",
+   "seed": {
+    "subject": "이리",
+    "aspect": null,
+    "ref": "P1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1912년 역이 문을 연 전북의 한 고을은 1947년 익산군에서 떨어져 나와 1949년 시가 되었습니다. 1977년에는 이 역에서 화약을 실은 화물 열차가 폭발해 59명이 숨졌습니다. 1995년 군과 통합해 이름이 바뀌기 전, 이 시의 이름은 무엇일까요?",
+    "answer": "이리",
+    "acceptedAnswers": [
+     "이리시"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "폭발 당시 근처 극장에서 공연하던 가수 하춘화를 무명 희극인 이주일이 업고 병원으로 뛰어간 일로 이주일이 이름을 알렸다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 옛 지명·현대사 사고",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 이리역 폭발·익산 옛 이름",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "generalHint": "1931년 군청이 있던 익산읍이 이 이름의 읍으로 이름을 바꾼 것이 시의 출발이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이리시",
+     "https://ko.wikipedia.org/wiki/이리역_폭발_사고"
+    ],
+    "facts": [
+     {
+      "claim": "1912년 이리역 개업, 1947년 이리부로 승격해 익산군에서 분리, 1949년 이리시",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이리시",
+      "note": "연혁"
+     },
+     {
+      "claim": "1995년 이리시와 익산군 도농통합으로 익산시",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이리시",
+      "note": "1995 통합"
+     },
+     {
+      "claim": "1977년 11월 11일 이리역 한국화약 화물열차 폭발, 사망 59명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이리역_폭발_사고",
+      "note": "다이너마이트 등 40t, 사망 59"
+     },
+     {
+      "claim": "이주일이 하춘화를 업고 병원으로 뛰어가 유명해짐",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이리역_폭발_사고",
+      "note": "일화"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이리시"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "폭발 사고가 단서라 한국사 경계에 닿지만 묻는 것은 행정구역 이름의 변천",
+    "targetWhy": "익산은 누구나 알지만 옛 이름 이리는 교과서 밖 — 1970~80년대를 아는 사람·지명 애호가가 아는 사실",
+    "pairCheck": "",
+    "dbCheck": "이리 new",
+    "warn": []
+   }
+  }
+ ]
+}

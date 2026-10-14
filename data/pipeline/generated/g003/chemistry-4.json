@@ -1,0 +1,161 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "chemistry/4",
+  "midKey": "chemistry",
+  "subName": "화학 반응",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/4#g003-C1-17",
+   "seed": {
+    "subject": "테르밋 반응",
+    "aspect": null,
+    "ref": "C1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "알루미늄 가루와 산화철을 섞어 불을 붙이면 알루미늄이 철에서 산소를 빼앗으며 엄청난 열을 내고 녹은 철이 흘러나옵니다. 1893년 독일 화학자 골드슈미트가 찾아내 철도 레일 용접에 쓰이는 이 반응을 무엇이라 할까요?",
+    "answer": "테르밋 반응",
+    "acceptedAnswers": [
+     "테르밋"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "반응물 안에 산소가 들어 있어 공기 없이도 타오르고, 물을 부으면 수증기 폭발이 일어날 수 있어 끄기가 어렵습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 화학 반응",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 용접 반응",
+     "acc": 5,
+     "accWhy": "화학 — 중학 과학 교과 과목"
+    },
+    "generalHint": "제2차 세계대전 때 독일과 연합국의 소이탄 속 작은 통들에도 이 혼합물이 채워졌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Thermite"
+    ],
+    "facts": [
+     {
+      "claim": "알루미늄이 산화철을 환원해 녹은 철과 산화알루미늄, 강한 발열",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thermite",
+      "note": "aluminium reduces iron oxide to molten iron · strongly exothermic"
+     },
+     {
+      "claim": "1893년 골드슈미트 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thermite",
+      "note": "Hans Goldschmidt discovered the reaction in 1893"
+     },
+     {
+      "claim": "철도 레일 용접에 주로 쓰임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thermite",
+      "note": "main use welding, especially railway tracks"
+     },
+     {
+      "claim": "자체 산소 공급, 물과 만나면 수증기 폭발, 끄기 어려움",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Thermite",
+      "note": "contains its own supply of oxygen · difficulty smothering · steam explosions with water"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Thermite"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "산화·환원의 유명한 실연 반응",
+    "targetWhy": "고교 화학 산화·환원의 응용 — 교과서 밖 대학 교양 수준 이름",
+    "pairCheck": "",
+    "dbCheck": "테르밋 new — 활성·초안 없음 (테르밋 반응 대표로 씀)",
+    "warn": [
+     "정답조각 반응"
+    ]
+   }
+  },
+  {
+   "seedId": "chemistry/4#g003-P4-07",
+   "seed": {
+    "subject": "루미놀",
+    "aspect": null,
+    "ref": "P4-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "과학 수사 요원이 범죄 현장에 이 시약을 뿌리고 불을 끄면, 닦아 낸 핏자국까지 푸른빛으로 떠오릅니다. 혈액 헤모글로빈의 철이 과산화수소와의 반응을 도와 빛을 내는 화학 발광 물질로, 1937년 독일의 발터 슈페히트가 혈흔 검사에 쓰는 법을 연구했습니다. 이 물질은 무엇일까요?",
+    "answer": "루미놀",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "빛은 30초 남짓만 이어지며, 구리 화합물·표백제·서양고추냉이 등에도 반응해 피가 아닌데 빛나는 경우가 있습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 — 과학수사 시약",
+     "wor": 4,
+     "worWhy": "교양 — 과학 상식",
+     "acc": 5,
+     "accWhy": "화학 — 중학 과학 교과 과목"
+    },
+    "generalHint": "1902년 독일에서 처음 합성되었지만 지금의 이름은 1934년에야 붙었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Luminol"
+    ],
+    "facts": [
+     {
+      "claim": "산화제와 섞이면 푸른빛을 낸다 · 과산화수소가 흔한 산화제",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Luminol",
+      "note": "glows blue when mixed with an oxidizing agent; basic hydrogen peroxide typical"
+     },
+     {
+      "claim": "헤모글로빈의 철이 촉매 · 닦아 낸 피도 드러낸다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Luminol",
+      "note": "iron in hemoglobin catalyzes the glow; reveals trace blood including cleaned-up blood"
+     },
+     {
+      "claim": "1937년 발터 슈페히트가 혈흔 검사 용도를 연구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Luminol",
+      "note": "In 1937, Walter Specht studied its use for finding blood at crime scenes"
+     },
+     {
+      "claim": "빛은 약 30초 · 구리·표백제·서양고추냉이 등에도 반응",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Luminol",
+      "note": "glow lasts about 30 seconds; reacts to copper compounds, bleaches, horseradish"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Luminol"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "CSI 장면을 본 사람은 '아 그거'",
+    "targetWhy": "애호가·대학 교양 — 화학 발광. 수사 드라마로 장면은 익숙하고 시약 이름은 교과서 밖",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

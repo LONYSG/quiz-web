@@ -1,0 +1,85 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "animals/3",
+  "midKey": "animals",
+  "subName": "어류·해양 생물",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/3#g003-C2-16",
+   "seed": {
+    "subject": "전기뱀장어",
+    "aspect": null,
+    "ref": "C2-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "남아메리카 아마존 일대에 사는 이 물고기는 몸의 대부분을 차지하는 발전용 기관으로 수백 볼트를 내고, 공기를 들이마셔야 사는 물고기이기도 합니다. 이름과 달리 실제로는 칼고기 무리에 속하는 이 물고기는?",
+    "answer": "전기뱀장어",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1800년 훔볼트는 사람들이 말 30마리쯤을 웅덩이로 몰아 이 물고기의 공격을 끌어내는 모습을 보았고, 그 가운데 두 마리가 기절해 물에 빠져 죽었다고 기록했다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 1,
+     "difWhy": "초등 — 동물 이름",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 이름과 분류",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Electric_eel"
+    ],
+    "facts": [
+     {
+      "claim": "참뱀장어와 가깝지 않고 남아메리카 칼고기목(김노투스목)에 속함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Electric_eel",
+      "note": "not closely related to true eels · knifefish order Gymnotiformes"
+     },
+     {
+      "claim": "최소 600볼트 이상 · 한 종은 860볼트",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Electric_eel",
+      "note": "main organ discharges at least 600 volts · 860 V for E. voltai"
+     },
+     {
+      "claim": "반드시 공기 호흡을 하는 동물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Electric_eel",
+      "note": "obligate air-breathing animals"
+     },
+     {
+      "claim": "1800년 훔볼트가 말 약 30마리를 몰아넣는 장면 목격, 두 마리가 기절해 익사",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Electric_eel",
+      "note": "In 1800 Humboldt watched about thirty horses driven into a pond · two stunned and drowned"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'발전 기관 · 수백 볼트'만으로 풀릴 수 있어 3 쪽일 수 있다 — 대신 알 가치가 높다",
+    "targetWhy": "이름은 누구나 알지만 뱀장어가 아니라는 분류와 공기 호흡은 생물 교양",
+    "pairCheck": "",
+    "dbCheck": "new (뱀장어 · 장어 와는 다른 정답 문자열 — K2-13 '장어' 와 대상이 다름)",
+    "warn": []
+   }
+  }
+ ]
+}

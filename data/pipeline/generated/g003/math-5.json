@@ -1,0 +1,84 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "math/5",
+  "midKey": "math",
+  "subName": "단위·측정",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "math/5#g003-C2-26",
+   "seed": {
+    "subject": "셀시우스",
+    "aspect": null,
+    "ref": "C2-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 스웨덴 천문학자가 만든 온도 눈금은 처음에 물이 끓는 점을 0도, 어는 점을 100도로 정해 지금과 거꾸로였습니다. 그가 죽은 이듬해 린네가 위아래를 뒤집은 이 눈금에 이름을 남긴 천문학자는?",
+    "answer": "셀시우스",
+    "acceptedAnswers": [
+     "안데르스 셀시우스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그는 나침반 바늘의 흔들림을 지켜보며 오로라와 지구 자기장 변화의 관계를 처음 제안하기도 했다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "중학 과학 — 온도 단위",
+     "wor": 4,
+     "worWhy": "교양 — 단위 이름 유래",
+     "acc": 5,
+     "accWhy": "수학 — 초중 교과 과목"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Anders_Celsius"
+    ],
+    "facts": [
+     {
+      "claim": "처음 눈금은 끓는점 0, 어는점 100",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anders_Celsius",
+      "note": "original scale put 0 at the boiling point and 100 at the freezing point"
+     },
+     {
+      "claim": "사망 이듬해(1745) 린네가 뒤집음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anders_Celsius",
+      "note": "reversed by Carl Linnaeus in 1745, a year after Celsius died"
+     },
+     {
+      "claim": "오로라와 지구 자기장 변화의 관련을 처음 제안",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Anders_Celsius",
+      "note": "first to suggest a link between the aurora borealis and changes in Earth's magnetic field"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 단위의 뜻밖의 내력 — 섭씨의 '섭'이 인명 음역이라는 추리도 열려 있다",
+    "targetWhy": "섭씨는 누구나, 눈금이 거꾸로였다는 것은 과학사 교양",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

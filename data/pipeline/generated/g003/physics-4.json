@@ -1,0 +1,158 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "physics/4",
+  "midKey": "physics",
+  "subName": "열·에너지",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "physics/4#g003-C1-14",
+   "seed": {
+    "subject": "맥스웰의 악마",
+    "aspect": null,
+    "ref": "C1-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기체가 든 상자를 둘로 나누고 그 사이의 작은 문을 지키는 존재가 빠른 분자만 한쪽으로 보내면, 일을 하지 않고도 온도 차를 만들어 열역학 제2법칙을 깨는 것처럼 보입니다. 1867년 영국 물리학자가 내놓은 이 사고 실험을 무엇이라 할까요?",
+    "answer": "맥스웰의 악마",
+    "acceptedAnswers": [
+     "맥스웰의 도깨비"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "맥스웰은 이 존재를 '유한한 존재'라 불렀고, '악마'라는 이름은 1874년 켈빈 경이 붙였습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 열역학 사고실험",
+     "wor": 4,
+     "worWhy": "교양 — 물리 기본 개념",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "generalHint": "1929년 실라르드는 그 존재가 분자의 빠르기를 알아내는 데도 에너지가 들어 결국 엔트로피가 늘어난다고 반박했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Maxwell%27s_demon"
+    ],
+    "facts": [
+     {
+      "claim": "두 칸 사이 작은 문, 빠른 분자를 한쪽으로 보내 일 없이 엔트로피 감소",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maxwell%27s_demon",
+      "note": "small door · fast molecules one direction · lowering entropy without work"
+     },
+     {
+      "claim": "1867년 맥스웰이 제안, 제2법칙을 어기는 것처럼 보임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maxwell%27s_demon",
+      "note": "proposed by James Clerk Maxwell in 1867 · seems to violate second law"
+     },
+     {
+      "claim": "맥스웰은 'finite being', 켈빈이 1874년 'demon'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Maxwell%27s_demon",
+      "note": "Maxwell called it a finite being · Lord Kelvin called it a demon in 1874"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Maxwell%27s_demon"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "슈뢰딩거의 고양이급 유명 사고 실험, 이름 들어 봤을 법",
+    "targetWhy": "대학 교양 열역학·정보 이론의 대표 사고 실험",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음 (3123 엔트로피와 답 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "physics/4#g003-P4-05",
+   "seed": {
+    "subject": "라이덴프로스트 효과",
+    "aspect": null,
+    "ref": "P4-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아주 뜨겁게 달군 프라이팬에 물을 튀기면, 물방울이 곧바로 끓어 사라지지 않고 구슬처럼 굴러다니며 오히려 더 오래 버팁니다. 물방울 밑면이 순식간에 증발해 생긴 증기층이 열을 막기 때문인데, 1756년 이를 기록한 독일 학자의 이름을 딴 이 현상은 무엇일까요?",
+    "answer": "라이덴프로스트 효과",
+    "acceptedAnswers": [
+     "라이덴프로스트 현상"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "물은 대략 193°C 이상에서 이 효과가 나타나며, 상온의 피부 위에서 액체 질소 방울이 해를 주지 않고 굴러떨어지는 것도 같은 원리입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 열물리",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 생활 물리",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "generalHint": "젖은 손을 녹은 납에 잠깐 담가도 다치지 않는다는 것을 미국 과학 실험 방송 '미스버스터즈'가 이 원리로 보여 주었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Leidenfrost_effect",
+     "https://ko.wikipedia.org/wiki/라이덴프로스트_효과"
+    ],
+    "facts": [
+     {
+      "claim": "뜨거운 팬 위 물방울이 굴러다니며 더 오래 남는다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leidenfrost_effect",
+      "note": "water drops on a pan above the Leidenfrost point skitter and last longer before evaporating"
+     },
+     {
+      "claim": "밑면이 증발해 생긴 증기층이 단열한다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leidenfrost_effect",
+      "note": "insulating vapor layer; steam conducts heat poorly"
+     },
+     {
+      "claim": "1756년 요한 고틀로프 라이덴프로스트가 기술해 그 이름이 붙었다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/라이덴프로스트_효과",
+      "note": "1756년 라이덴프로스트가 처음 기술, 그의 이름을 땄다"
+     },
+     {
+      "claim": "물은 약 193°C · 액체 질소 방울이 피부 위를 해 없이 굴러간다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Leidenfrost_effect",
+      "note": "approximately 193 °C for water; liquid nitrogen droplets can roll off skin without harm"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Leidenfrost_effect"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 본 현상, 이름이 한 층 깊다",
+    "targetWhy": "대학 교양 — 열전달(막비등). 부엌에서 본 현상의 이름이 교과서 밖",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": [
+     "정답조각 라이"
+    ]
+   }
+  }
+ ]
+}

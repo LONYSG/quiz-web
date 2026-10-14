@@ -1,0 +1,81 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "physics/5",
+  "midKey": "physics",
+  "subName": "현대 물리",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "physics/5#g003-C1-16",
+   "seed": {
+    "subject": "마이스너 효과",
+    "aspect": null,
+    "ref": "C1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "초전도체를 임계 온도 아래로 식히면 그 속에 있던 자기장까지 바깥으로 밀어내, 위에 올린 자석이 공중에 뜹니다. 1933년 독일의 두 물리학자가 주석과 납으로 찾아낸 이 현상을 무엇이라 할까요?",
+    "answer": "마이스너 효과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이미 있던 자기장마저 밀어낸다는 점에서, 들어온 자기장을 가두어 두기만 하는 완전 도체와 초전도체가 갈립니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 초전도",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 물리",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "generalHint": "1933년 이 현상을 함께 찾은 두 사람 가운데 한 명은 로베르트 옥센펠트다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Meissner_effect"
+    ],
+    "facts": [
+     {
+      "claim": "임계 온도 아래에서 초전도체가 자기장을 밀어냄, 자석 반발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Meissner_effect",
+      "note": "expulsion of a magnetic field as it cools below critical temperature · repel nearby magnets"
+     },
+     {
+      "claim": "1933년 마이스너·옥젠펠트가 주석·납 시료로 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Meissner_effect",
+      "note": "discovered 1933 by measuring fields around cooled tin and lead"
+     },
+     {
+      "claim": "완전 도체는 기존 자속을 가두지만 초전도체는 밀어냄",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Meissner_effect",
+      "note": "perfect conductor would trap flux already present, superconductor expels it"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Meissner_effect"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "초전도 공중부양 장면은 익숙, 이름은 한 층 깊음",
+    "targetWhy": "대학 교양 물리 — 2023 LK-99 소동 때 뉴스에 오르내린 용어",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

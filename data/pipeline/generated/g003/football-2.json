@@ -1,0 +1,279 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "football/2",
+  "midKey": "football",
+  "subName": "월드컵",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/2#g003-S1-10",
+   "seed": {
+    "subject": "헝가리",
+    "aspect": null,
+    "ref": "S1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국은 1954년 스위스 대회에서 처음 월드컵 본선에 나섰습니다. 이 대회 첫 경기에서 한국에 0-9 패배를 안긴 나라는 어디일까요?",
+    "answer": "헝가리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한국은 다음 경기에서도 터키에 0-7로 져 조 최하위로 대회를 마쳤습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 월드컵 기록",
+     "wor": 2,
+     "worWhy": "기록 세부 — 첫 경기 상대",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "이 나라는 그 대회 결승에서 서독에 2-3으로 져, 5년 넘게 공식 경기에서 지지 않던 기록이 끊겼다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/South_Korea_at_the_FIFA_World_Cup"
+    ],
+    "facts": [
+     {
+      "claim": "1954 대회 한국 0-9 헝가리 · 0-7 터키 · 조 최하위",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/South_Korea_at_the_FIFA_World_Cup",
+      "note": "lost 9–0 to Hungary and 7–0 to Turkey, finished last"
+     },
+     {
+      "claim": "인도네시아에 이은 아시아 두 번째 출전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/South_Korea_at_the_FIFA_World_Cup",
+      "note": "second Asian team after Indonesia to enter the World Cup"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/1954_FIFA_World_Cup_final"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국 축구사의 출발점 · 기록 수치가 아니라 상대를 묻는다",
+    "targetWhy": "한국 월드컵 첫 출전의 상대는 애호가가 아는 역사",
+    "pairCheck": "",
+    "dbCheck": "헝가리 new",
+    "warn": [
+     "단정어 처음"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (기록 세부 — 첫 경기 상대) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "football/2#g003-S1-11",
+   "seed": {
+    "subject": "골라인 테크놀로지",
+    "aspect": null,
+    "ref": "S1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2010년 월드컵 독일전에서 잉글랜드 램파드의 슛이 크로스바를 맞고 골문 안쪽에 떨어졌지만 골로 인정되지 않았습니다. 이 일 뒤 반대하던 블라터 FIFA 회장도 도입 논의를 다시 열겠다고 한 판정 기술은 무엇일까요?",
+    "answer": "골라인 테크놀로지",
+    "acceptedAnswers": [
+     "골라인 판독 기술"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "월드컵에서는 2014년 브라질 대회에 처음 쓰였고, 이 기술로 인정된 첫 골은 프랑스-온두라스전에서 나왔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 축구 판정 기술",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 도입 계기",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "여러 고속 카메라로 공 위치를 삼각 측량하는 호크아이 방식이 널리 쓰이며, 골이면 1초 안에 주심 시계로 알린다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Goal-line_technology"
+    ],
+    "facts": [
+     {
+      "claim": "램파드 슛이 크로스바 맞고 라인 넘었으나 노골 · 독일 4-1 잉글랜드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Goal-line_technology",
+      "note": "Lampard's shot bounced off the crossbar and over the line; not signalled"
+     },
+     {
+      "claim": "반대하던 블라터가 논의 재개 선언",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Goal-line_technology",
+      "note": "Blatter, who had opposed the technology, would reopen the discussion"
+     },
+     {
+      "claim": "2014 월드컵 첫 사용 · 첫 골 프랑스 3-0 온두라스",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Goal-line_technology",
+      "note": "GoalControl used at 2014; first goal awarded in France v Honduras 15 June 2014"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Goal-line_technology"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 오심과 제도의 연결",
+    "targetWhy": "기술 이름은 알아도 도입 계기가 된 오심은 애호가가 아는 연결",
+    "pairCheck": "",
+    "dbCheck": "골라인 테크놀로지 new (비디오 판독 410 과 다른 기술)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "football/2#g003-S1-12",
+   "seed": {
+    "subject": "마테라치",
+    "aspect": null,
+    "ref": "S1-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2006년 월드컵 결승 연장전에서 지단은 한 이탈리아 수비수를 머리로 들이받아 퇴장당했습니다. 이 경기에서 이탈리아의 동점골을 넣기도 한 그 수비수는 누구일까요?",
+    "answer": "마테라치",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 결승은 지단의 선수 생활 마지막 경기였지만, 그는 대회 최우수 선수에게 주는 골든볼을 받았습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 월드컵 사건",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 박치기 사건",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "그는 인터 밀란에서 10년을 뛰며 2009-10 시즌 트레블을 함께했고, 에버턴에서는 27경기에 세 번 퇴장당했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final"
+    ],
+    "facts": [
+     {
+      "claim": "연장 108분 지단 박치기 · 퇴장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final",
+      "note": "108th minute headbutt"
+     },
+     {
+      "claim": "마테라치는 이탈리아 센터백 · 동점골",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final",
+      "note": "Materazzi headed in a Pirlo corner in the 19th minute"
+     },
+     {
+      "claim": "지단 마지막 경기 · 골든볼",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final",
+      "note": "this was the last match of Zidane's career; Golden Ball"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Marco_Materazzi"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "월드컵 최고 명장면의 상대 인물",
+    "targetWhy": "박치기는 누구나 알지만 맞은 선수 이름은 애호가가 안다",
+    "pairCheck": "",
+    "dbCheck": "마테라치 new",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  },
+  {
+   "seedId": "football/2#g003-S1-13",
+   "seed": {
+    "subject": "알제리",
+    "aspect": null,
+    "ref": "S1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1982년 월드컵에서 이 나라는 첫 경기에서 서독을 2-1로 꺾었습니다. 그러나 조 마지막 경기에서 서독이 오스트리아를 1-0으로 이겨 두 나라가 함께 올라가는 바람에 골 득실에서 밀려 탈락했습니다. 이 나라는 어디일까요?",
+    "answer": "알제리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "'히혼의 수치'라 불린 이 일 뒤 FIFA는 1986년 대회부터 조별리그 마지막 경기들을 같은 시각에 치르게 했습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 월드컵 역사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 히혼의 수치",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "generalHint": "이 나라는 조 마지막 경기에서 칠레를 3-2로 이겼고, 문제의 경기 유일한 골은 흐루베시가 10분에 넣었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Disgrace_of_Gijón"
+    ],
+    "facts": [
+     {
+      "claim": "알제리 2-1 서독 (개막전)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Disgrace_of_Gijón",
+      "note": "Algeria had opened by beating West Germany 2–1"
+     },
+     {
+      "claim": "서독 1-0 오스트리아 · 둘 다 진출 · 알제리 골 득실 탈락",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Disgrace_of_Gijón",
+      "note": "Algeria eliminated on goal difference"
+     },
+     {
+      "claim": "1986년부터 마지막 조별 경기 동시 진행",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Disgrace_of_Gijón",
+      "note": "final group matches played at the same time from 1986"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Disgrace_of_Gij%C3%B3n"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "제도의 유래가 된 사건의 피해국",
+    "targetWhy": "조별리그 동시 킥오프의 계기가 된 사건 · 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "알제리 new",
+    "warn": [
+     "단정어 마지막",
+     "단정어 마지막"
+    ]
+   }
+  }
+ ]
+}

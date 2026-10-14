@@ -1,0 +1,83 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "transport/2",
+  "midKey": "transport",
+  "subName": "자동차 브랜드·역사",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "transport/2#g003-C2-23",
+   "seed": {
+    "subject": "포르쉐",
+    "aspect": null,
+    "ref": "C2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1934년 히틀러에게서 '국민차' 설계를 맡아 폭스바겐 비틀의 원형을 만든 자동차 기술자가 있습니다. 1901년에는 휘발유 엔진과 전기 모터를 함께 쓴 하이브리드 차를 내놓기도 한 이 사람은 누구일까요?",
+    "answer": "포르쉐",
+    "acceptedAnswers": [
+     "페르디난트 포르쉐"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "전쟁이 끝난 뒤 프랑스 당국에 전범으로 체포되어 바덴바덴·파리·디종에 갇혀 지냈다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심 있는 사람 — 자동차사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 비틀 설계자",
+     "acc": 4,
+     "accWhy": "자동차·교통 — 대부분이 관심"
+    },
+    "generalHint": "그는 2차 대전 때 '티거(P)' 시제 전차와 초중전차 '마우스'도 설계했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ferdinand_Porsche"
+    ],
+    "facts": [
+     {
+      "claim": "1934년 6월 히틀러에게서 국민차 설계 계약",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ferdinand_Porsche",
+      "note": "June 1934 · a contract from Hitler to design a people's car"
+     },
+     {
+      "claim": "1901년 로너-포르쉐 믹스테 하이브리드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ferdinand_Porsche",
+      "note": "Lohner-Porsche Mixte Hybrid introduced in 1901 · first petroleum-electric hybrid on record"
+     },
+     {
+      "claim": "전후 프랑스 당국에 전범으로 체포, 바덴바덴·파리·디종에 구금",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ferdinand_Porsche",
+      "note": "French authorities arrested · held in Baden-Baden, Paris, and Dijon"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ferdinand_Porsche"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 이름과 다른 유명 차의 몰랐던 연결",
+    "targetWhy": "포르쉐 브랜드는 누구나, 비틀 설계자·하이브리드 선구는 자동차 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new (질문의 '폭스바겐'은 활성 3252·3888 의 정답이지만 이 문항 정답이 아님)",
+    "warn": []
+   }
+  }
+ ]
+}

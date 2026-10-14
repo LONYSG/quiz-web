@@ -1,0 +1,369 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "kr-history/3",
+  "midKey": "kr-history",
+  "subName": "조선 전기",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/3#g003-K1-08",
+   "seed": {
+    "subject": "혼일강리역대국도지도",
+    "aspect": null,
+    "ref": "K1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1402년 김사형·이무·이회가 만들고 권근이 발문을 쓴 조선의 세계 지도입니다. 아프리카와 유럽까지 담았지만 원본은 국내에 없고 일본에 필사본이 전하는 이 지도는 무엇일까요?",
+    "answer": "혼일강리역대국도지도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "땅이 둥글다는 지구설이 아니라 하늘은 둥글고 땅은 네모나다는 천원지방 관념에 따라 네모난 꼴로 그렸고, 아메리카와 오스트레일리아는 없습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 조선 지도",
+     "wor": 5,
+     "worWhy": "교과 — 조선 전기 문화",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "일본에 남은 필사본은 류코쿠 대학본과, 1988년 나가사키 시마바라의 혼코지에서 찾은 더 큰 종이본 둘이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/혼일강리역대국도지도"
+    ],
+    "facts": [
+     {
+      "claim": "1402년 태종 2년 김사형·이무·이회 제작, 권근 발문",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/혼일강리역대국도지도",
+      "note": "제작 항목"
+     },
+     {
+      "claim": "아프리카·유럽 포함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/혼일강리역대국도지도",
+      "note": "범위와 내용"
+     },
+     {
+      "claim": "원본은 한국에 없고 일본에 필사본 2점",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/혼일강리역대국도지도",
+      "note": "현존본"
+     },
+     {
+      "claim": "천원지방 관념으로 사각형, 아메리카·오스트레일리아 없음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/혼일강리역대국도지도",
+      "note": "형식·범위"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gangnido"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름이 길어 치기 어렵지만 유명한 지도",
+    "targetWhy": "고교 교과서에 사진으로 나오지만 이름까지 아는 것은 수능 심화·교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "정답조각 지도"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/3#g003-K1-09",
+   "seed": {
+    "subject": "칠정산",
+    "aspect": null,
+    "ref": "K1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "세종 때 중국의 수시력과 이슬람 역법인 회회력을 바탕으로, 한양을 기준으로 해 뜨고 지는 시각과 밤낮의 길이를 계산해 펴낸 역법서가 있습니다. 내편과 외편으로 이루어진 이 책은 무엇일까요?",
+    "answer": "칠정산",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "책 이름의 '칠정'은 해와 달, 그리고 화성·수성·목성·금성·토성의 다섯 행성을 가리킵니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 세종 과학",
+     "wor": 5,
+     "worWhy": "교과 — 조선 전기 역법",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "내편은 정인지·정흠지·정초 등이 1442년에 만들었고, 외편은 이순지·김담 등이 엮었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/칠정산"
+    ],
+    "facts": [
+     {
+      "claim": "수시력·대통력과 회회력 바탕, 한양 경위도 기준 보정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/칠정산",
+      "note": "기반 항목"
+     },
+     {
+      "claim": "한양 기준 일출몰 시각·밤낮 길이 표",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/칠정산",
+      "note": "내편 설명"
+     },
+     {
+      "claim": "내편(1442 정인지 등)·외편(이순지·김담)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/칠정산",
+      "note": "세종 대"
+     },
+     {
+      "claim": "칠정 = 해·달·화성·수성·목성·금성·토성",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/칠정산",
+      "note": "정의"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/칠정산"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 봤을 법한 이름, 내용은 한 층 깊음",
+    "targetWhy": "세종 과학 업적 중 수능 심화에서 나오는 역법서",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/3#g003-K1-10",
+   "seed": {
+    "subject": "직전법",
+    "aspect": null,
+    "ref": "K1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1466년 세조는 세습되던 과전을 없애고, 물러난 관리를 빼고 현직 관리에게만 세금을 걷을 땅을 나누어 주게 했습니다. 이 토지 제도는 무엇일까요?",
+    "answer": "직전법",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "주는 땅의 양도 품계마다 크게 줄었고, 전직 관리와 수신전·휼양전을 받던 유가족이 가장 큰 타격을 받았습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 조선 토지제도",
+     "wor": 5,
+     "worWhy": "교과서 — 한국사",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "이 제도 뒤로 관수관급제를 거쳐 명종 때에는 땅을 나눠 주기 어려워졌고, 임진왜란 뒤 완전히 사라졌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/직전법"
+    ],
+    "facts": [
+     {
+      "claim": "1466년 세조 12년, 현직 관료에게만 수조지 지급, 세습 과전 폐지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/직전법",
+      "note": "조선의 직전 항목"
+     },
+     {
+      "claim": "지급량 품계별 크게 줄고 전직자·수신전·휼양전 받던 이들 타격",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/직전법",
+      "note": "같은 항목"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/과전법"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "토지 제도 변천의 기본 어휘",
+    "targetWhy": "과전법→직전법→관수관급 흐름은 수능 한국사 심화",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음(과전법 2357 은 다른 제도)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/3#g003-K1-11",
+   "seed": {
+    "subject": "원각사지 십층석탑",
+    "aspect": null,
+    "ref": "K1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1467년 세조 때 세운 대리석 탑으로, 국립중앙박물관에 있는 고려 경천사 터의 탑과 생김새가 매우 닮았습니다. 지금은 서울 탑골공원의 유리 보호각 안에 서 있는 이 탑은 무엇일까요?",
+    "answer": "원각사지 십층석탑",
+    "acceptedAnswers": [
+     "원각사지 10층석탑"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "탑이 섰던 원각사는 1504년 연산군이 기생이 머무는 곳으로 바꾸면서 없어졌고, 탑의 위 3층은 오래 내려져 있다가 1947년에 다시 올렸습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 한국사 — 조선 문화재",
+     "wor": 5,
+     "worWhy": "교과서 — 한국사 문화재",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "옛 국보 지정 번호로는 숭례문 바로 다음인 제2호였고, 높이는 12m쯤이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/서울_원각사지_십층석탑",
+     "https://ko.wikipedia.org/wiki/경천사지_십층석탑"
+    ],
+    "facts": [
+     {
+      "claim": "1467년 세조 13년 건립, 대리석",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/서울_원각사지_십층석탑",
+      "note": "Built 1467, marble"
+     },
+     {
+      "claim": "경천사지 십층석탑과 형태가 매우 닮음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/서울_원각사지_십층석탑",
+      "note": "closely resemble Gyeongcheonsa pagoda"
+     },
+     {
+      "claim": "경천사지 십층석탑은 고려 개성 부근 경천사 터의 대리석 탑, 국립중앙박물관 소장, 원각사지 탑에 영향",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경천사지_십층석탑",
+      "note": "2005년부터 국립중앙박물관 전시"
+     },
+     {
+      "claim": "탑골공원, 2000년 유리 보호각",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/서울_원각사지_십층석탑",
+      "note": "glass enclosure 2000"
+     },
+     {
+      "claim": "1504년 연산군이 원각사를 기생방으로, 위 3층 1947년 복원",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/서울_원각사지_십층석탑",
+      "note": "Historical context / Restoration"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EC%9B%90%EA%B0%81%EC%82%AC%EC%A7%80_%EC%8B%AD%EC%B8%B5%EC%84%9D%ED%83%91"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "몰랐던 연결(고려 탑을 본뜬 조선 탑)",
+    "targetWhy": "국보 2호로 이름은 알려졌지만 경천사지 탑과의 연결은 답사·교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음(경천사지 십층석탑 1721 과 다른 답)",
+    "warn": [
+     "정답조각 석탑"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/3#g003-P1-02",
+   "seed": {
+    "subject": "태실",
+    "aspect": null,
+    "ref": "P1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "경북 성주에는 세종의 아들 18명과 세손 단종의 것 19기가 한곳에 모여 있습니다. 세조의 왕위 찬탈에 반대한 다섯 왕자의 것은 석물이 깨져 받침돌만 남았다고 합니다. 왕실 자손이 태어난 뒤 그 태를 항아리에 담아 묘소처럼 모셔 둔 이 시설은 무엇일까요?",
+    "answer": "태실",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "태실 둘레에는 금표를 세워 채석·벌목·개간·방목을 막았는데, 그 범위가 왕은 300보, 대군은 200보로 신분에 따라 달랐다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 조선 왕실 문화재",
+     "wor": 4,
+     "worWhy": "교양 — 문화재 기본 어휘",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "generalHint": "일제강점기에 조선 왕실의 이것들이 경기 고양 서삼릉 한곳으로 옮겨져, 지금 그곳에 54기가 모여 있다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/성주_세종대왕자_태실",
+     "https://ko.wikipedia.org/wiki/태실"
+    ],
+    "facts": [
+     {
+      "claim": "성주 세종대왕자 태실 19기 — 세종의 적서 18왕자와 세손 단종",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/성주_세종대왕자_태실",
+      "note": "총 19기, 18왕자 + 단종"
+     },
+     {
+      "claim": "세조의 왕위 찬탈에 반대한 다섯 왕자의 태실은 석물이 파괴되어 방형 대석만 남음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/성주_세종대왕자_태실",
+      "note": "다섯 왕자 태실은 연꽃무늬 방형 대석만 남음"
+     },
+     {
+      "claim": "태실은 왕실 자손의 태를 묘소처럼 보존하는 곳, 태옹(항아리)에 안치",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/태실",
+      "note": "태를 일정한 곳에 묘소처럼 보존, 태옹에 안치"
+     },
+     {
+      "claim": "금표 — 채석·벌목·개간·방목 금지, 왕 300보·대군 200보",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/태실",
+      "note": "왕 300보, 대군 200보, 기타 왕자·공주 100보"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/서삼릉"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "계유정난과 이어지는 몰랐던 이야기, 답은 들으면 '아 그거'",
+    "targetWhy": "세종·세조는 교과서지만 '태실' 제도는 교과서 밖 — 문화유산 답사 애호가가 아는 이름",
+    "pairCheck": "",
+    "dbCheck": "태실 new",
+    "warn": []
+   }
+  }
+ ]
+}

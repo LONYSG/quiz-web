@@ -1,0 +1,158 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "daily-rule/2",
+  "midKey": "daily-rule",
+  "subName": "생활 법규",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "daily-rule/2#g003-L2-09",
+   "seed": {
+    "subject": "레몬법",
+    "aspect": null,
+    "ref": "L2-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 속어에서 결함 있는 차를 가리키는 말이 이름에 들어 있고, 경제학자 애커로프가 정보 비대칭을 다룬 1970년 논문 제목에도 같은 말이 쓰였습니다. 반복해서 고장 나는 새 차를 교환·환불받게 하는 제도로, 한국에서는 2019년부터 시행된 것을 흔히 무엇이라 할까요?",
+    "answer": "레몬법",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 말이 결함 차를 가리키는 뜻으로 처음 쓰인 것은 1960년 폭스바겐 광고로 알려져 있고, 한국 도입은 BMW 차량 연쇄 화재가 계기가 되었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "방송·뉴스 — 소비자 제도",
+     "wor": 4,
+     "worWhy": "시사 상식 — 소비자 법",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lemon_(automobile)",
+     "https://ko.wikipedia.org/wiki/레몬법"
+    ],
+    "facts": [
+     {
+      "claim": "lemon 은 결함 차를 가리키는 미국 속어",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lemon_(automobile)",
+      "note": "American slang lemon = worthless thing; faulty car"
+     },
+     {
+      "claim": "애커로프 1970년 논문 The Market for Lemons, 정보 비대칭",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lemon_(automobile)",
+      "note": "Akerlof 1970 paper; asymmetrical information"
+     },
+     {
+      "claim": "한국은 2019년부터 시행, BMW 연쇄 화재가 계기",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/레몬법",
+      "note": "BMW 연쇄 화재를 계기로 2019년부터 시행"
+     },
+     {
+      "claim": "결함 차 뜻의 첫 사용은 1960년 폭스바겐 광고",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lemon_(automobile)",
+      "note": "first known use for a faulty car was a 1960 Volkswagen ad (DDB)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "생활 법규와 경제학 개념의 연결",
+    "targetWhy": "뉴스에 나온 제도지만 애커로프 논문과의 연결은 대학 교양(경제) 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "daily-rule/2#g003-L2-10",
+   "seed": {
+    "subject": "착한 사마리아인 법",
+    "aspect": null,
+    "ref": "L2-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프랑스·독일 같은 나라는 위험에 처한 사람을 돕지 않으면 처벌합니다. 한국은 2008년 응급의료법을 고쳐, 선의로 응급처치를 하다 생긴 손해에 고의나 중대한 과실이 없으면 책임을 묻지 않는 쪽으로 이 원칙을 받아들였습니다. 성경의 비유에서 이름을 딴 이 법을 흔히 무엇이라 할까요?",
+    "answer": "착한 사마리아인 법",
+    "acceptedAnswers": [
+     "선한 사마리아인 법"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 누가복음 10장에서 민족도 종교도 다른 사람이 강도를 만나 다친 이를 도왔다는 이야기에서 왔습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "뉴스에서 흔히 — 생활 법규",
+     "wor": 4,
+     "worWhy": "시사 — 법 기본 상식",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/착한_사마리아인_법"
+    ],
+    "facts": [
+     {
+      "claim": "프랑스·독일은 구조 불이행 처벌",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/착한_사마리아인_법",
+      "note": "프랑스 형사처벌, 독일 형법 323c조"
+     },
+     {
+      "claim": "2008년 응급의료에 관한 법률 개정(제5조의2), 고의·중대한 과실 없으면 민사·상해 형사책임 면제",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/착한_사마리아인_법",
+      "note": "2008.5.23 개정, 12.14 시행, 제5조의2"
+     },
+     {
+      "claim": "한국은 외면을 처벌하지 않고 면책 규정으로 받아들였다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/착한_사마리아인_법",
+      "note": "도움을 주지 않은 행위를 처벌하지 않고 선의의 도움을 장려하는 면책 규정"
+     },
+     {
+      "claim": "루가복음 10:29-37 선한 사마리아인 비유, 종교와 민족이 다른 사람을 도움",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/착한_사마리아인_법",
+      "note": "루가의 복음서 10:29-37"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'성경의 비유' 단서로 아는 사람은 바로 떠올려 3 쪽일 수 있음",
+    "targetWhy": "이름은 들어 봤으나 한국은 처벌이 아닌 면책형으로 들였다는 구별은 법 교양 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "정답조각 한사"
+    ]
+   }
+  }
+ ]
+}

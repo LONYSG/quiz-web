@@ -1,0 +1,91 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "drinks/1",
+  "midKey": "drinks",
+  "subName": "와인",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "drinks/1#g003-L2-12",
+   "seed": {
+    "subject": "포트와인",
+    "aspect": null,
+    "ref": "L2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "17세기 후반 포르투갈의 한 항구 도시 이름이 붙은 와인입니다. 1703년 메수엔 조약 뒤 낮은 관세로 영국에 많이 팔려 나갔는데, 발효 중간에 브랜디를 넣어 단맛을 남기고 도수를 높인 이 와인은?",
+    "answer": "포트와인",
+    "acceptedAnswers": [
+     "포트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "포도는 도루강 계곡에서 나며, 이 계곡은 포트와인 생산지로 법으로 정해 보호하는 지역입니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 와인 종류",
+     "wor": 4,
+     "worWhy": "교양 — 주류 기본 어휘",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "generalHint": "이 와인은 하구 건너편 빌라 노바 드 가이아의 창고에서 숙성되었고, 예전엔 '하벨루' 배로 강을 따라 실어 날랐다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Port_wine"
+    ],
+    "facts": [
+     {
+      "claim": "17세기 후반 항구 도시 포르투에서 이름이 왔다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Port_wine",
+      "note": "received its name in the latter half of the 17th century from the seaport city of Porto"
+     },
+     {
+      "claim": "1703년 메수엔 조약 뒤 낮은 관세로 영국에 수입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Port_wine",
+      "note": "after the Methuen Treaty of 1703, merchants permitted to import it at a low duty"
+     },
+     {
+      "claim": "브랜디로 발효를 멈춰 당분을 남기고 도수를 높인다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Port_wine",
+      "note": "fortified to stop the fermentation, leaving residual sugar, and to boost alcohol"
+     },
+     {
+      "claim": "도루 계곡이 보호 산지로 지정",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Port_wine",
+      "note": "Douro valley defined and established as a protected region"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Port_wine"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 와인, 역사와 제조법의 연결",
+    "targetWhy": "포트와인 이름은 들어 봤으나 메수엔 조약·주정 강화 방식은 와인 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "정답조각 와인"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,151 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "astronomy/4",
+  "midKey": "astronomy",
+  "subName": "우주 현상·관측",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "astronomy/4#g003-C2-11",
+   "seed": {
+    "subject": "복사점",
+    "aspect": null,
+    "ref": "C2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "유성우의 별똥별들은 실제로는 나란히 날아들지만, 원근 때문에 하늘의 한 점에서 사방으로 퍼져 나오는 것처럼 보입니다. 페르세우스자리 유성우처럼 유성우의 이름을 정하는 기준이 되는 이 점을 무엇이라 할까요?",
+    "answer": "복사점",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 점으로 거슬러 가지 않는, 어느 유성우에도 속하지 않는 별똥별은 산발 유성이라 부른다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 지구과학 — 유성우",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 천문",
+     "acc": 5,
+     "accWhy": "천문·우주 — 초중 과학 교과"
+    },
+    "generalHint": "유성우가 이어지는 동안 이 점은 별들 사이에서 하루 1도쯤씩 동쪽으로 옮겨 가고, 지평선 아래에 있으면 별똥별이 거의 안 보인다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Radiant_(meteor_shower)"
+    ],
+    "facts": [
+     {
+      "claim": "유성의 경로는 실제로 평행하며 원근 때문에 한 점에서 퍼져 나오는 듯 보인다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Radiant_(meteor_shower)",
+      "note": "paths are actually parallel · look like they spread out from a single location"
+     },
+     {
+      "claim": "유성우는 복사점이 있는 별자리 이름을 따 부른다(페르세우스자리 유성우)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Radiant_(meteor_shower)",
+      "note": "named after the constellation that contains their radiant · Perseids from Perseus"
+     },
+     {
+      "claim": "복사점으로 거슬러 가지 않는 유성은 산발 유성",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Radiant_(meteor_shower)",
+      "note": "Meteors that don't trace back to a shower's radiant are called sporadics"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Radiant_(meteor_shower)"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 현상의 한 층 깊은 원리",
+    "targetWhy": "유성우는 뉴스로 친숙, 이름 짓는 기준점의 용어는 지구과학 심화·천문 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "astronomy/4#g003-C2-12",
+   "seed": {
+    "subject": "블루문",
+    "aspect": null,
+    "ref": "C2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "흔히 '한 달 안에 두 번째로 뜨는 보름달'을 이렇게 부르지만, 본래 미국의 한 농사 달력에서는 보름달이 네 번 뜨는 계절의 세 번째 보름달을 가리켰습니다. 1946년 한 천문 잡지 기사가 이를 잘못 풀이하면서 뜻이 바뀐 이 말은?",
+    "answer": "블루문",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "새 뜻을 퍼뜨린 것은 제임스 휴 프루엣이 '스카이 앤드 텔레스코프'에 쓴 글이며, 달력 기준 뜻으로는 2월에만 생길 수 없다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 천문 용어 유래",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 말뜻 변천",
+     "acc": 5,
+     "accWhy": "천문·우주 — 초중 과학 교과"
+    },
+    "generalHint": "옛 뜻은 1937년판 '메인 농부 연감'에서 왔다고 알려졌고, 연구자들은 그 기준을 '메인 규칙'이라 부른다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Blue_moon"
+    ],
+    "facts": [
+     {
+      "claim": "오늘날 흔한 뜻은 달력상 한 달의 두 번째 보름달",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blue_moon",
+      "note": "second full moon in a calendar month — the one most people use today"
+     },
+     {
+      "claim": "원래 메인 농부 연감 규칙은 보름달이 넷인 계절의 세 번째",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blue_moon",
+      "note": "Maine Farmers' Almanac — when a season contains four full Moons, the third is called a Blue Moon"
+     },
+     {
+      "claim": "1946년 스카이 앤드 텔레스코프의 프루엣이 다르게 해석",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blue_moon",
+      "note": "Pruett's 1946 misinterpretation in Sky & Telescope"
+     },
+     {
+      "claim": "달력 기준 뜻은 2월을 뺀 모든 달에 생길 수 있음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Blue_moon",
+      "note": "can fall in any month except February"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Blue_moon"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 말의 뜻밖의 내력 — 질문 첫 문장이 정답 쪽으로 이끄는 공정한 단서",
+    "targetWhy": "블루문은 친숙하나 뜻이 잘못 바뀐 내력은 천문 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

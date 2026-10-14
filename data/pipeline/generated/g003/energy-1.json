@@ -1,0 +1,94 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "energy/1",
+  "midKey": "energy",
+  "subName": "발전 방식",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "energy/1#g003-C2-06",
+   "seed": {
+    "subject": "토카막",
+    "aspect": null,
+    "ref": "C2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1950년 무렵 소련의 사하로프와 탐이 구상한 핵융합 장치는, 수억 도의 플라스마를 도넛 모양의 자기장 속에 가둡니다. 한국의 KSTAR와 국제 핵융합 실험로 ITER도 따르는 이 장치의 방식을 무엇이라 할까요?",
+    "answer": "토카막",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름은 '자기 코일을 두른 도넛 모양 방'을 뜻하는 러시아어 줄임말로, 1957년 이고리 골로빈이 지었다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "대학 교양 — 핵융합",
+     "wor": 4,
+     "worWhy": "시사 — 핵융합 기본 어휘",
+     "acc": 4,
+     "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
+    },
+    "generalHint": "1968년 소련이 이 방식으로 낸 높은 전자 온도를, 이듬해 영국 컬햄 연구진이 레이저로 직접 재어 사실임을 확인했다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tokamak",
+     "https://ko.wikipedia.org/wiki/토카막"
+    ],
+    "facts": [
+     {
+      "claim": "사하로프와 탐이 1950년 무렵 처음 구상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tokamak",
+      "note": "Sakharov and Tamm first conceptualized · proposal to Kurchatov by October 1950"
+     },
+     {
+      "claim": "초고온 플라스마를 도넛 모양 자기장으로 가둠",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/토카막",
+      "note": "초고온 플라즈마를 자기장으로 가두는 도넛 모양 장치"
+     },
+     {
+      "claim": "KSTAR는 초전도 토카막",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/토카막",
+      "note": "초전도 토카막 KSTAR 2007년 완공 · 2008년 첫 플라즈마"
+     },
+     {
+      "claim": "ITER는 토카막",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tokamak",
+      "note": "ITER — the largest tokamak in the world"
+     },
+     {
+      "claim": "이름은 러시아어 줄임말(자기 코일을 두른 도넛 모양 방), 1957년 골로빈이 지음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tokamak",
+      "note": "acronym — toroidal chamber with magnetic coils · Igor Golovin coined the term in 1957"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tokamak"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "핵융합·KSTAR는 친숙, 방식의 이름이 한 층 깊다",
+    "targetWhy": "KSTAR 뉴스로 들어 봤을 법하지만 장치 방식 이름은 대학 교양 물리·에너지 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

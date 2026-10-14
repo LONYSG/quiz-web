@@ -1,0 +1,79 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "animals/4",
+  "midKey": "animals",
+  "subName": "곤충·절지동물",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/4#g003-C2-14",
+   "seed": {
+    "subject": "매미",
+    "aspect": null,
+    "ref": "C2-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북아메리카 동부의 어떤 곤충은 땅속에서 13년이나 17년을 지낸 뒤 한 지역에서 한꺼번에 어른벌레로 나옵니다. 주기가 소수라서 천적의 번식 주기와 잘 겹치지 않는다는 가설로 유명한 이 곤충은?",
+    "answer": "매미",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한꺼번에 너무 많이 나와 천적이 다 먹지 못하기 때문에 많은 수가 살아남아 번식한다는 설명도 있다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 2,
+     "difWhy": "중학 — 곤충 상식",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 소수 주기 매미",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Periodical_cicadas"
+    ],
+    "facts": [
+     {
+      "claim": "북아메리카 동부의 주기매미는 13년 또는 17년 주기로 한 지역 개체가 같은 해에 나온다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Periodical_cicadas",
+      "note": "eastern North America · 13 or 17 years · nearly all members emerge the same year"
+     },
+     {
+      "claim": "소수 주기는 짧은 주기 천적과 어긋나 포식을 피한다는 가설",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Periodical_cicadas",
+      "note": "predator avoidance — predator with shorter cycle out of sync"
+     },
+     {
+      "claim": "대량 출현으로 포식자가 다 먹지 못함(포식자 포만)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Periodical_cicadas",
+      "note": "predator satiation — predators cannot eat all"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 곤충의 몰랐던 사실",
+    "targetWhy": "소수 주기 매미는 수학·생물 교양서의 단골 이야깃거리 — 대학 교양",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

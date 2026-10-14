@@ -1,0 +1,221 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "brands/2",
+  "midKey": "brands",
+  "subName": "로고·상징",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "brands/2#g003-L1-01",
+   "seed": {
+    "subject": "스바루",
+    "aspect": null,
+    "ref": "L1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 일본 자동차 회사는 플레이아데스 성단을 가리키는 일본어 이름을 회사 이름으로 쓰고, 로고에도 그 성단의 별 여섯 개를 그려 넣었습니다. 이 회사는?",
+    "answer": "스바루",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "로고의 별들은 후지중공업을 만든 여러 회사의 합병을 가리킨다는 설명이 있습니다. 별이 여섯뿐인 것은 일곱 자매 가운데 하나는 보이지 않는다는 전승 때문이라고도 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 자동차 로고",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 로고 유래",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "generalHint": "모회사는 1953년부터 '후지중공업'이라는 이름을 쓰다가 2017년 자동차 브랜드와 같은 이름으로 바꿨다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Subaru"
+    ],
+    "facts": [
+     {
+      "claim": "스바루는 플레이아데스 성단의 일본어 이름이다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Subaru",
+      "note": "Subaru is the Japanese name for the Pleiades star cluster"
+     },
+     {
+      "claim": "로고에 별 여섯 개",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Subaru",
+      "note": "logo shows six stars"
+     },
+     {
+      "claim": "별들은 FHI 를 만든 회사들의 합병을 가리킨다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Subaru",
+      "note": "alludes to the companies that merged to create FHI"
+     },
+     {
+      "claim": "여섯인 것은 한 자매가 보이지 않는다는 전승",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Subaru",
+      "note": "tradition says one of the sisters is invisible"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Subaru_Corporation"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "스바루는 아는 이름, 성단 이름이라는 연결은 뜻밖",
+    "targetWhy": "자동차 애호가나 별자리에 관심 있는 사람이 아는 이름 유래 — 대학 교양급 연결",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "brands/2#g003-L1-02",
+   "seed": {
+    "subject": "미쓰비시",
+    "aspect": null,
+    "ref": "L1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'셋'을 뜻하는 한자와 물풀 '마름'을 뜻하는 한자를 합쳐 지은 이름에 맞춰, 마름모 세 개를 모은 로고를 쓰는 일본 기업은?",
+    "answer": "미쓰비시",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1870년 이와사키 야타로가 세운 해운 회사에서 출발했고, 1873년 지금의 이름으로 바꿨습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "관심층 — 기업 로고",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 로고 유래",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "generalHint": "이 이름을 단 중공업 회사는 2차 대전 때 호리코시 지로가 설계한 해군 전투기 '제로센'을 만들었다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mitsubishi"
+    ],
+    "facts": [
+     {
+      "claim": "미쓰(三)=셋, 히시(菱)=마름(water caltrop), 마름모의 뜻",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mitsubishi",
+      "note": "mitsu three + hishi water caltrop → rhombus, three diamonds"
+     },
+     {
+      "claim": "로고에 마름모가 반영",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mitsubishi",
+      "note": "hishi rhombus reflected in the logo"
+     },
+     {
+      "claim": "1870년 이와사키 야타로가 해운 회사로 설립, 1873년 미쓰비시 상회로 개명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mitsubishi",
+      "note": "Tsukumo Shokai 1870 → Mitsubishi Shokai 1873"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mitsubishi_A6M_Zero"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 기업, 이름 유래가 로고 모양으로 이어지는 연결",
+    "targetWhy": "기업 이름의 한자 풀이와 로고의 연결 — 애호가 수준",
+    "pairCheck": "",
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "brands/2#g003-P2-01",
+   "seed": {
+    "subject": "비벤덤",
+    "aspect": null,
+    "ref": "P2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1898년 프랑스의 한 타이어 회사 포스터에는 타이어를 쌓아 만든 사람이 못과 깨진 유리가 담긴 잔을 들고 건배하는 모습이 실렸습니다. 호라티우스의 시에 나오는 '이제 마실 때다'라는 라틴어 구절에서 따온 이 마스코트의 공식 이름은?",
+    "answer": "비벤덤",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "타이어가 회백색이던 1894년 무렵 태어난 캐릭터라 흰색이며, 1912년 타이어에 카본을 넣어 검게 된 뒤 광고에서 검게 칠해 본 적도 있지만 되돌렸다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 브랜드 마스코트 이름",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 마스코트",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "generalHint": "포스터 그림은 화가가 원래 독일 뮌헨의 한 맥주 회사에 냈다가 퇴짜 맞은, 큰 맥주잔을 든 사람 그림을 고친 것이다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Michelin_Man"
+    ],
+    "facts": [
+     {
+      "claim": "1898년 포스터에서 못과 깨진 유리가 담긴 잔으로 건배하는 모습",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michelin_Man",
+      "note": "1898 poster: toasting with a glass of nails and broken glass, 'Le pneu Michelin boit l'obstacle'"
+     },
+     {
+      "claim": "이름은 호라티우스 송가의 'Nunc est bibendum(이제 마실 때다)'에서 왔다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michelin_Man",
+      "note": "name from slogan Nunc est bibendum, from Horace's Odes"
+     },
+     {
+      "claim": "타이어 더미에서 착상해 만든 사람 모양 마스코트, 1894년 리옹 박람회에서 착상",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Michelin_Man",
+      "note": "1894 Lyon Exhibition, stack of tires suggested a man"
+     },
+     {
+      "claim": "타이어는 원래 회백색, 1912년 카본을 넣어 검어졌고 검게 그린 광고를 시도했다가 그만둠",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Michelin_Man",
+      "note": "tires gray-white until 1912 carbon; black Bibendum abandoned"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Michelin_Man"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 대상의 숨은 공식 이름과 라틴어 유래",
+    "targetWhy": "미쉐린맨은 누구나 보지만 공식 이름 '비벤덤'은 브랜드·광고 애호가가 아는 이름 — 교과서 밖 '아 그거'",
+    "pairCheck": "",
+    "dbCheck": "비벤덤 new (활성·초안 없음)",
+    "warn": []
+   }
+  }
+ ]
+}

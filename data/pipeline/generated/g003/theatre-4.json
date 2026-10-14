@@ -1,0 +1,87 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "theatre/4",
+  "midKey": "theatre",
+  "subName": "공연 용어·유명 극장",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "theatre/4#g003-A1-32",
+   "seed": {
+    "subject": "프린지",
+    "aspect": null,
+    "ref": "A1-32",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1947년 에든버러 국제 페스티벌이 처음 열릴 때, 초청받지 못한 극단 여덟 곳이 작은 공연장을 찾아 제멋대로 공연을 올렸습니다. 여기서 시작돼 지금은 심사 없이 누구나 참여하는 축제가 된 '에든버러 ○○○'의 빈칸에 들어갈 말은 무엇일까요?",
+    "answer": "프린지",
+    "acceptedAnswers": [
+     "Fringe"
+    ],
+    "originalTitleVariants": [
+     "Fringe"
+    ],
+    "explanation": "1948년 극작가 로버트 켐프가 이들을 '공식 페스티벌 연극의 가장자리'라고 쓴 데서 이름이 붙었다고 합니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "애호가 — 공연 축제",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 프린지 유래",
+     "acc": 3,
+     "accWhy": "공연·뮤지컬 — 관심층이면 안다"
+    },
+    "generalHint": "호주 애들레이드에도 같은 이름을 단 축제가 1960년부터 열려, 남반구 최대 예술 축제로 자랐다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Edinburgh_Festival_Fringe"
+    ],
+    "facts": [
+     {
+      "claim": "1947년 초청받지 않은 극단 8곳이 첫 국제 페스티벌 곁에서 공연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Edinburgh_Festival_Fringe",
+      "note": "1947, eight theatre companies performed uninvited alongside the inaugural Edinburgh International Festival, in smaller venues"
+     },
+     {
+      "claim": "심사 없이 누구나 참여(open access)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Edinburgh_Festival_Fringe",
+      "note": "open-access festival with no selection committee"
+     },
+     {
+      "claim": "1948년 로버트 켐프가 'fringe of official Festival drama' 로 이름 붙임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Edinburgh_Festival_Fringe",
+      "note": "Robert Kemp credited with coining the term in 1948"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Adelaide_Fringe"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국에도 프린지 축제가 있어 들어 봤을 법",
+    "targetWhy": "공연 애호가가 아는 축제 용어, 기원 일화는 한 층 깊음",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 0건",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

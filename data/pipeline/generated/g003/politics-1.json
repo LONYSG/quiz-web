@@ -1,0 +1,154 @@
+{
+ "_meta": {
+  "round": "g003",
+  "subId": "politics/1",
+  "midKey": "politics",
+  "subName": "정치 체제·기구",
+  "questionPrompt": "deep-v3",
+  "scorePrompt": "score-v1",
+  "hintPrompt": "hint-v3",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G003 — 상(4~5) 생성 1차. 적재하지 않았다 — V007 판정 뒤 G004 가 적재한다 (data/pipeline/audit/g003-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "politics/1#g003-H1-01",
+   "seed": {
+    "subject": "그림자 내각",
+    "aspect": null,
+    "ref": "H1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국식 웨스트민스터 의회 제도에서는 제1야당이 당수를 중심으로 부처마다 맡을 사람을 정해 두고 정부 정책을 따라가며 비판합니다. 이 야당이 집권하면 그 구성원이 대체로 실제 장관이 되는데, 이 야당 쪽 조직을 무엇이라 부를까요?",
+    "answer": "그림자 내각",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "영국·캐나다·오스트레일리아 등에서는 제1야당과 이 조직을 공식적으로 '국왕(여왕) 폐하의 충성스러운 야당'이라 부릅니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 3,
+     "difWhy": "고교 정치 — 의회 제도",
+     "wor": 4,
+     "worWhy": "시사 상식 — 정치 기본 어휘",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "generalHint": "영국 하원에서 이 조직의 구성원은 야당 쪽 맨 앞줄인 '프런트벤치'에 앉는다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/그림자_내각"
+    ],
+    "facts": [
+     {
+      "claim": "웨스트민스터 체제에서 제1야당 당원들로 구성되고 당수가 이끌며 여당 정책을 검토·비판한다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/그림자_내각",
+      "note": "제1야당 당원으로 구성된 부차적 내각, 정책 비판·대안 제시"
+     },
+     {
+      "claim": "제1야당이 집권하면 그림자 내각 의원들이 대체로 새 내각 장관이 된다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/그림자_내각",
+      "note": "집권 시 대체로 새 내각 장관으로 임명"
+     },
+     {
+      "claim": "영국·캐나다·오스트레일리아 등에서 '여왕(국왕) 폐하의 충성스러운 야당'이라 공식적으로 부른다",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/그림자_내각",
+      "note": "군주가 남성이면 His Majesty's"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Frontbencher"
+    ],
+    "selfJudge": "경계",
+    "selfJudgeWhy": "용어 자체는 들어 본 사람이 꽤 있어 3 으로 매겨질 수 있다",
+    "targetWhy": "대학 교양 정치학(비교 정치 제도) — 이름은 뉴스에서 들어 봤어도 구조를 아는 사람은 적다",
+    "pairCheck": "",
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "politics/1#g003-P4-16",
+   "seed": {
+    "subject": "동거정부",
+    "aspect": null,
+    "ref": "P4-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1986년 프랑스 총선에서 우파가 이기자, 사회당 출신의 미테랑 대통령은 우파 지도자 시라크를 총리로 임명해야 했습니다. 준대통령제에서 대통령과 의회 다수당이 서로 다른 진영이라, 반대편 총리와 함께 나라를 이끄는 이런 상태를 무엇이라 할까요?",
+    "answer": "동거정부",
+    "acceptedAnswers": [
+     "코아비타시옹"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "잦은 동거를 줄이려 2000년 국민투표로 대통령 임기를 7년에서 5년으로 줄여, 2002년부터 총선이 대선 한 달쯤 뒤에 치러지게 되었습니다.",
+    "score": {
+     "version": "score-v1",
+     "dif": 4,
+     "difWhy": "수능 심화 — 정치 체제",
+     "wor": 4,
+     "worWhy": "교양 — 정치 기본 어휘",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "generalHint": "1997년 시라크가 의회를 해산했다가 져서 사회당의 조스팽을 총리로 맞으며, 이 상태가 약 5년간 이어졌다.",
+    "generalHintVersion": "hint-v3",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cohabitation_(government)",
+     "https://ko.wikipedia.org/wiki/동거정부"
+    ],
+    "facts": [
+     {
+      "claim": "준대통령제에서 대통령과 의회 다수당이 다를 때 · 다수당이 받아들일 총리 임명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cohabitation_(government)",
+      "note": "occurs in semi-presidential systems when the president belongs to a different party than the parliamentary majority"
+     },
+     {
+      "claim": "1986년 미테랑이 시라크를 총리로 임명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cohabitation_(government)",
+      "note": "1986–1988: Mitterrand named Gaullist leader Jacques Chirac prime minister"
+     },
+     {
+      "claim": "한국어 이름 동거 정부 · 코아비타시옹",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동거정부",
+      "note": "동거 정부, 코아비타시옹(cohabitation)"
+     },
+     {
+      "claim": "2000년 국민투표로 임기 7년→5년 · 2002년부터 총선이 대선 한 달쯤 뒤",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cohabitation_(government)",
+      "note": "2000 referendum cut presidential term from seven to five years; since 2002 legislative elections follow about a month after presidential"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cohabitation_(government)"
+    ],
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "그림자 내각과 같은 결 — 들으면 '아 그거'",
+    "targetWhy": "대학 교양 — 비교정치. 이원집정부제는 고교 정치와 법에 나오나 이 이름은 교과서 밖 교양",
+    "pairCheck": "",
+    "dbCheck": "new (코아비타시옹도 new)",
+    "warn": []
+   }
+  }
+ ]
+}
