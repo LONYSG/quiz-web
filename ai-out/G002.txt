@@ -1,0 +1,1447 @@
+===========================================
+ROUND: G002
+DATE: 2026-10-14
+TASK: V006 판정 반영 — 지금 게임에 나가는 중(3) 힌트 484 고침(DB · 백업 뒤) + 사실 오류 4건 + R032 #85 · #3930 · 목록 밖 #1211 · #1148 · #741 + V006 반복 오류 10꼴 되먹임
+STATUS: 완료
+===========================================
+
+[cmd 창 요약]
+1. 힌트 484 고침 · 활성 4,143 그대로 — DB 489행(힌트 486 · 질문 2 · 해설 1), 백업 backups/quizweb-20261014-095404.dump, DB↔파일 차이 0.
+2. 제안 484 전부 웹 확인: 제안 그대로 243 · 확인된 사실로 다시 씀 241(사실 틀림 37 · 못 찾음 107 · 같은 정답 겹침 68 · 손질 29) · 보류 0 · 받지 않음 0.
+3. 같은 정답 60쌍: fix 쪽 92 대조, 겹쳐서 다시 씀 29 · ok 쪽 29 그대로(Q-109).
+4. 되먹임: 15 §4-1 V006 예시 · hint-v3 입력(질문 낱말 · 같은 정답 문항) · 한 글자 경고 · Q-109. 끝 점검 전부 통과.
+5. 보고서 ai-out/G002.txt · 결과 audit/g002-hint-decisions.json · audit/g002-fixes.json.
+
+0. 찬종이 볼 것
+- 지금 게임에 나가는 중(3) 힌트 1,328 중 484건이 바뀌었다(V006 fix 전부). VERIFY 가 판정했고, GEN 은 제안 속 사실을 웹 문서로 다시 열어 틀리거나 못 찾은 것은 확인된 사실로 바꿨다. 사실 오류가 남은 채 들어간 제안은 없다(보류 0 · 받지 않은 verdict 0).
+- 확인 못 한 사실: 0건이 DB 에 들어갔다. 단 하위 에이전트 4건(#1140 · #2382 · #3612 · #3851)은 위키 문서를 직접 열지 못해 검색 결과 요약으로 확인했다(1절 끝).
+- 같은 정답 문항 쌍에서 한쪽 힌트가 다른 쪽 질문과 같은 사실인 경우(예: #1211 우드스톡 힌트 = #3842 질문)는 ok 쪽 29건을 고치지 않았다 — 규칙이 없어 Q-109 로 올렸다.
+- 바뀐 힌트가 정말 "도와주기" 인지는 아직 판정이 아니다 — GEN 표본 30 기록(5절)에서 떠먹여 주기가 의심되는 것 3건(#1518 탄소 · #3630 한강 · #3817 고추). 다음 VERIFY(V007) 표본에서 볼 것.
+
+★ 원칙 메모
+- (1·2) 규칙 변경 0. 새 규칙 후보 둘은 Q-109 로. Q-108 · CV-05 · CV-06 은 건드리지 않았다. shape(꼴)만을 이유로 고친 것 0.
+- (5) 비밀값 없음. (6) 웹 확인은 항목마다 끝내는 대로 파일에 적어 중단·재개가 되게 했다(tmp/g002/out/c1~c6.jsonl → g002-hint-decisions.json).
+- 자기 검토는 판정이 아니다 — 5절 표본 30 은 기록이다. 다시 쓴 241건의 세기는 VERIFY 가 보지 않았다.
+- (7) 브리핑의 사실 확인 — 전부 파일·DB 에서 다시 셌다.
+  · midHints 1,328 · fix 484 · ok 844 · unsure 0 — 맞음. 제안은 484 전부 hint 만 · 줄바꿈 0 · 120자 초과 0 · checkHint 막힘 0 · 경고 16 · VERIFY 가 고쳐 쓴 것 19 — 맞음.
+  · 제안 사실 근거 web 66 · knowledge 섞임 402 · 표시 없음 16 — 맞음. ★ doubt 19 는 "지식 근거이면서 doubt" 인 것의 수다(V006 4-4 목록과 19/19 같음). 웹 근거까지 세면 doubt 표시가 붙은 제안은 105건이다.
+  · 사유 집계 famous-one 298 · meaning 136 · question-repeat 48 · letters 44 · spoon-feed 43 · explain-overlap 6 · error 4 · alias 2 — 맞음. ★ shape 는 fix 484 안에서 31(브리핑의 93 은 1,328 전체의 판정자 표시 수).
+  · DB 의 1,328 힌트 = V006 입력(targets) — 질문·해설·활성·난이도 3·hint-v3 까지 차이 0. 활성 4,143 — 맞음.
+  · 15 §4-1 현재 문구 = G001 문구(H9 꼴 둘 · H3·H4 사례) — 맞음.
+  · ★ 다른 것 하나: #1211 우드스톡은 midHints 안의 ok 항목이다(브리핑은 "목록 밖 참고" 로 적음). 힌트는 ok 라 그대로 두고 질문만 고쳤다.
+- 웹 예산: WebSearch 31회(하위 에이전트 30 · GEN 1) / 120. WebFetch 가 주 수단(하위 에이전트 6개 합계 도구 호출 약 950 — 대부분 WebFetch). 429 없음. 모델은 처음부터 끝까지 Opus 5.5.
+
+목차
+1. 사실 확인 표 (A) — 484 항목 전부
+2. 같은 정답 쌍 (B) — 60쌍
+3. 반영 결과 (C)
+4. 되먹임 (D)
+5. 표본 30 (E)
+6. GEN 판단 목록 (되돌리기 쉽다)
+7. 새로 생긴 결정 필요 항목
+고친 문서
+
+=====================================================================
+1. 사실 확인 표 (A)
+=====================================================================
+- 방법: 484건을 조각 6개(110 · 110 · 109 · 109 · 23 · 23)로 나눠 하위 에이전트에게(한 번에 4개 이내) 같은 지시서(tmp/g002/INSTRUCTIONS.md)로 맡겼다. 제안 힌트의 사실마다 ko/en.wikipedia 등 문서를 WebFetch 로 직접 열어 true / false / notfound 와 URL 을 적고, false·notfound 가 있으면 같은 취지(VERIFY 가 바꾸려던 방향 — 두 번째 줄 사실)로 확인된 사실만 써서 다시 썼다. 다시 쓴 문장은 `node scripts/_g002-check.mjs`(checkHint · 120자 · 줄바꿈 · 같은 정답 문항 구절)로 막힘 0 을 확인했다.
+- 범위: 지식 근거가 섞인 402 + 표시 없음 16 = 418(doubt 19 를 각 조각 맨 앞에) + web 66. ★ 브리핑은 web 66 을 표본 20 만 보라고 했다. 표본 20 에서 사실 틀림 1(#554 '경찰이 운영' — 출처는 3개 부처 합동) · 못 찾은 세부 4 · 같은 정답 겹침 5 가 나와(다시 씀 10/20) 나머지 46 도 같은 방식으로 열었다(GEN 판단 — 6절). 46 중 다시 씀 24.
+- 결과: 확인됨(제안 그대로) 243 · 다시 씀 241 · 보류 0 · 받지 않음 0.
+  · 그룹별: knowledge 402 → 확인됨 205 · 다시 씀 197 / none 16 → 6 · 10 / web 66 → 32 · 34.
+  · 다시 쓴 까닭(한 항목에 여럿이면 앞의 것으로 셈): 사실 틀림 37 · 못 찾음 107 · 같은 정답 문항의 질문·해설과 같은 사실 68 · 그 밖의 손질(정답 글자 · 단정어 · 질문 되풀이) 29.
+  · 사실 주장 764 (true 605 · false 37 · notfound 122).
+- 사실 틀림 37: #16 #198 #334 #454 #554 #669 #806 #893 #1347 #1430 #1473 #1482 #1747 #1822 #1907 #1919 #2121 #2274 #2389 #2514 #2524 #2552 #2569 #2701 #2717 #2809 #2869 #2884 #3022 #3140 #3358 #3581 #3620 #3706 #3765 #3831 #3918.
+  예: 칼카강 전투의 '러시아 연합군'(루스 제후국·쿠만) · 베벌리 힐턴의 위치(비벌리힐스) · 도로교통법 서행 장소에 '교차로 모퉁이' 없음 · 그라운드 룰 2루타는 구장별 규정이 아니라 공통 규칙 · 첫 ETF 는 SPY 가 아님(캐나다가 먼저 — '미국 거래소에 처음' 으로) · 대동맥은 횡격막을 뚫지 않음 · 카파 포위 1345~46 · 네팔 '연방 민주 공화국' 은 2015 헌법 · 객지는 중편 · 김시스터즈는 딸 둘과 조카.
+- ★ GEN 이 하위 에이전트 문구를 다시 고친 3건(표에 ★GEN재독): #595 시그널('theme song 이라 부른다' = 다른 이름 H10 → 배철수의 음악캠프 오프닝 곡) · #3042 허수('이것을 평면 위의 점으로' 가 복소수를 가리켜 느슨함 → 베셀 1797 직각 축) · #3843 브레이킹('2032 브리즈번에서 다시 치러질 수도' 는 바뀔 수 있는 전망 3-2 → 2028 LA 제외만).
+- 문서를 직접 열지 못하고 검색 결과 요약으로 확인한 것 4건(조각 4 보고): #1140 총보 악기 순서 · #2382 조침문 작자 추정 · #3612 제주 성게미역국 · #3851 로르샤흐 무채색 다섯 장. #398 은 VERIFY 가 적은 PDF 가 스캔본이라 같은 실험을 다룬 arXiv 1110.2096 으로 확인.
+- 하위 에이전트가 찾은 목록 밖 것: #3557 마리오 질문 '빌린 창고의 집주인' — en.wikipedia 는 첫 '사무실' 집주인으로 적음 → C63(질문이라 고치지 않음). #2809 네이팜탄 소녀 — 촬영자(닉 우트)가 2025년 다큐 뒤 논란 중이라 새 힌트에서 촬영자 이름을 뺐다(지금 DB 힌트·제안 둘 다 우트 단정이었다).
+- 표 읽는 법: [확인됨] 은 제안 그대로 · [다시 씀 ★] 은 제안과 다른 문구(→ 뒤가 DB 에 들어간 힌트) · 출처는 앞의 두 개만(전부는 g002-hint-decisions.json).
+
+- #16 냉전 [다시 씀 ★] '먼저 썼다' 는 최초 사용 단정인데 문서는 1930년대 프랑스어 표현을 앞선 출처로 적어 '그보다 두 해 앞서 ~도 썼다' 로 고침
+    → 1947년 미국 평론가 월터 리프먼의 책 제목으로 널리 퍼진 말이며, 그보다 두 해 앞서 조지 오웰도 원자폭탄을 다룬 글에서 이 말을 썼다.
+    출처: https://en.wikipedia.org/wiki/Cold_War
+- #39 9 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Anthem_of_Europe
+- #96 리눅스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Linux
+- #125 들국화 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/들국화_(밴드)
+- #127 스태그플레이션 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Stagflation
+- #148 캐슬링 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Castling
+- #177 스핑크스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Sphynx_cat
+- #198 엘 클라시코 [다시 씀 ★] '빌려 쓴다' 는 차용 방향이 문서와 반대라 '비슷한 이름이 쓰인다' 로 고치고, '멕시코' 는 정답 조각 '시코' 경고가 떠 뺌 (마드리드 경고는 장소 낱말이라 둠)
+    → 두 클럽의 첫 맞대결은 1902년 마드리드의 옛 경마장에서 열렸으며, 아르헨티나 같은 다른 나라의 라이벌전에도 비슷한 이름이 쓰인다.
+    출처: https://en.wikipedia.org/wiki/El_Clásico https://en.wikipedia.org/wiki/Superclásico
+- #206 산화 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Antoine_Lavoisier https://en.wikipedia.org/wiki/Redox
+- #211 사이클링 히트 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/사이클링_히트
+- #217 걸프 전쟁 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Peter_Arnett https://en.wikipedia.org/wiki/Gulf_War
+- #334 기억의 지속 [다시 씀 ★] '엽서만 한' 은 실제 24×33cm 와 어긋나 '가로 33cm 남짓의 작은 그림' 으로 고치고 바위 표현을 문서대로 '끝자락' 으로
+    → 뉴욕 현대미술관에 있는 가로 33cm 남짓의 작은 그림으로, 1931년 작이며 오른쪽 바위는 달리의 고향 카탈루냐 북동부 크레우스곶 끝자락이다.
+    출처: https://en.wikipedia.org/wiki/The_Persistence_of_Memory https://en.wikipedia.org/wiki/Salvador_Dalí
+- #352 딥 블루 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)
+- #365 소한 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/소한
+- #382 바그너 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Cosima_Wagner
+- #383 드뷔시 [다시 씀 ★] 확인 못 한 '라벨과 두 기둥' 구절을 빼고 확인된 가믈란 사실만 남김
+    → 1889년 파리 만국박람회에서 처음 들은 자바 가믈란 음악의 음계와 리듬에 깊이 끌렸다.
+    출처: https://en.wikipedia.org/wiki/Claude_Debussy
+- #390 MAC 주소 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Network_switch https://en.wikipedia.org/wiki/MAC_address
+- #398 매몰비용 [확인됨] 제안 그대로
+    출처: https://arxiv.org/pdf/1110.2096
+- #399 엥겔지수 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Ernst_Engel https://en.wikipedia.org/wiki/Engel%27s_law
+- #400 지니계수 [다시 씀 ★] web 표본 — '무솔리니 정부의'를 문서가 단정하지 않아 '로마의'로 작게 손질
+    → 1912년 논문 '변이성과 가변성'에서 제안됐으며, 이름의 주인은 1926년 로마의 중앙통계원 원장이 되었다가 1932년 물러났다.
+    출처: https://en.wikipedia.org/wiki/Corrado_Gini
+- #437 소리 [다시 씀 ★] 표음/표의주의 용어 출처 못 찾음 + '표음'은 정답(소리)의 한자 풀이에 가까움 → 해설과 다른 예(꽃이 대신 덥고/더워)로 같은 조항의 두 번째 줄 사실로 다시 씀
+    → 같은 낱말이라도 '덥고'와 '더워'처럼 모양을 하나로 고정할 수 없으면 이 원칙에 따라 두 가지로 적는다.
+    출처: https://korean.go.kr/kornorms/regltn/regltnView.do?regltn_code=0001&regltn_no=182
+- #440 자음군 단순화 [확인됨] 제안 그대로
+    출처: https://www.korean.go.kr/nkview/nknews/200311/64_5.html
+- #454 청록파 [다시 씀 ★] '조지훈은 뒷날 「승무」로' 는 승무가 1939년 등단 추천작이라 시점이 어긋남 → 문서대로 고침
+    → 세 시인은 모두 잡지 『문장』의 추천으로 시단에 나왔으며, 조지훈은 1939년 「승무」가 추천되어 등단했고 박목월은 「나그네」가 대표작으로 꼽힌다.
+    출처: https://ko.wikipedia.org/wiki/청록파 https://ko.wikipedia.org/wiki/조지훈
+- #480 드림팀 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/1992_United_States_men%27s_Olympic_basketball_team
+- #490 아우구스투스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Tiberius https://en.wikipedia.org/wiki/Aeneid
+- #491 팍스 로마나 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Pax_Romana https://en.wikiquote.org/wiki/Edward_Gibbon
+- #493 수도교 [다시 씀 ★] B 겹침(세고비아 모르타르 없음=3980 질문) 제거, 로마 수도 11개·첫 수도 연도로 다시 씀
+    → 로마 시에는 3세기 무렵 이런 물길이 열한 개 있었고, 그 첫 번째는 기원전 312년에 놓였다.
+    출처: https://en.wikipedia.org/wiki/Aqueduct_of_Segovia https://en.wikipedia.org/wiki/Roman_aqueduct
+- #513 허클베리 핀의 모험 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Adventures_of_Huckleberry_Finn
+- #522 마방진 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Magic_square
+- #534 집중선 [다시 씀 ★] 확인 못 한 '일본 만화에서 발달'·'놀란 얼굴'을 빼고, 정답 글자 '선'이 든 '효과선'도 피해 확인된 전용 도구 사실만 남김
+    → 클립 스튜디오 같은 만화 그리기 프로그램에는 범위만 지정하면 이것을 자동으로 그려 주는 전용 도구가 있다.
+    출처: https://ko.wikipedia.org/wiki/집중선 https://www.clipstudio.net/kr/comics-manga/tool/effects-tones/
+- #539 그래픽 노블 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Maus
+- #547 소인 [다시 씀 ★] 물결선 사실 못 찾음 + 날짜·우체국 이름은 질문 되풀이 → 몰타 십자 손도장·기계 소인으로 다시 씀
+    → 영국의 페니 블랙 우표와 함께 쓰인 손도장에는 몰타 십자 무늬가 새겨져 있었고, 요즘은 기계가 자동으로 찍기도 한다.
+    출처: https://en.wikipedia.org/wiki/Postmark https://en.wikipedia.org/wiki/Cancellation_(mail)
+- #554 117 [다시 씀 ★] web 표본 — '경찰이 운영'은 출처(3개 부처 합동)와 어긋나고 해설의 운영 주체와도 겹쳐 빼고 통합 신고센터 사실만 남김
+    → 학교폭력뿐 아니라 여성폭력과 성매매 피해 신고도 함께 받는 통합 신고센터의 번호다.
+    출처: https://studygov.kr/blog/3923-report-service-2/
+- #565 CMYK [다시 씀 ★] '가정용 프린터는 보통 네 색' 일반화를 문서가 단정하지 않아 '그런 기종이 있다' 로 낮춤
+    → 모니터 빛의 혼합을 나타내는 세 글자 RGB와 짝을 이루며, 잉크젯 프린터에도 이 네 색으로 나뉜 카트리지를 끼우는 기종이 있다.
+    출처: https://en.wikipedia.org/wiki/Inkjet_printing
+- #591 진폭 변조 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Airband
+- #595 시그널 [다시 씀 ★ ★GEN재독] GEN 재독 — 하위 에이전트 문구 'theme song 이라 부른다' 는 정답과 같은 대상의 다른 이름(H10)이라 뺐다. 배철수의 음악캠프 오프닝 곡(뉴스토마토 2020 — 30주년 기사)으로 다시 씀
+    → MBC 라디오 '배철수의 음악캠프'를 여는 이 음악으로는 비엔나 심포니 오케스트라 프로젝트가 1987년 낸 'Satisfaction'이 오래 쓰였다.
+    출처: https://www.dictionary.com/browse/theme-song https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=시그널
+- #603 허수단위 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Imaginary_unit
+- #606 필요조건 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/필요충분조건
+- #665 보조표지 [다시 씀 ★] 글자색·어린이 보호구역 사실을 못 찾음 → 문서의 표지 기준(바탕·테두리·모양)과 목록의 다른 종류로 바꿈(해설의 거리·시간 예는 피함)
+    → 흰 바탕에 검은 테두리를 두른 원형이나 직사각형 판이며, '견인지역'·'노면상태'·'해제' 같은 종류도 있다.
+    출처: https://ko.wikipedia.org/wiki/대한민국의_교통표지
+- #669 서행 [다시 씀 ★] '교차로 모퉁이'가 조문에 없어 조문 문구(구부러진 부근·고갯마루·내리막)로 고침
+    → 도로교통법은 도로가 구부러진 부근, 비탈길의 고갯마루 부근, 가파른 비탈길의 내리막에서 운전자가 반드시 이렇게 가도록 정한다.
+    출처: https://ko.wikisource.org/wiki/대한민국_도로교통법
+- #692 도선사 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/도선사 https://en.wikipedia.org/wiki/Maritime_pilot
+- #705 아폴로 13호 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Apollo_13
+- #708 미세중력 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Micro-g_environment
+- #725 반향정위 [다시 씀 ★] '장애물을 알아내는' 을 문서 표현인 '낯선 곳을 안전하게 다니는' 으로 작게 손질
+    → 박쥐와 돌고래가 쓰며, 시력을 잃은 사람 가운데 혀를 차는 소리로 낯선 곳을 안전하게 다니는 법을 익힌 이도 있다.
+    출처: https://en.wikipedia.org/wiki/Human_echolocation
+- #752 바로크 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/A_Dog_of_Flanders
+- #780 컷 탈락 [다시 씀 ★] '이틀째 저녁'은 확인 안 되고 질문 되풀이라 빼고, 확인된 인원 규정을 출처대로(65~70·마스터스 50) 씀
+    → 대회마다 다르지만 상위 65~70명과 그 동점자까지 남기는 경우가 많고, 마스터스는 상위 50명과 동점자를 남긴다.
+    출처: https://en.wikipedia.org/wiki/Cut_(golf)
+- #786 고의사구 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Intentional_base_on_balls
+- #790 체인지업 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Changeup https://en.wikipedia.org/wiki/Ryu_Hyun-jin
+- #791 지명타자 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Designated_hitter
+- #792 덕아웃 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Dugout_(baseball)
+- #806 화점 [다시 씀 ★] 위치 설명이 변·천원에 맞지 않고 '첫 수 포석' 을 못 찾아 문서 문장대로 귀/변 위치와 '초반에 많이 둔다' 로 고침
+    → 귀의 것은 넷째 줄끼리, 변의 것은 넷째 줄과 열째 줄이 만나는 자리에 있으며, 귀의 것은 초반에 귀를 차지하려고 많이 둔다.
+    출처: https://ko.wikipedia.org/wiki/화점
+- #809 사활 [다시 씀 ★] 확인 못 한 '날마다'·'간행'을 문서대로 '엮은'·'지금도 훈련에 쓰인다'로 고치고 연도·엮은이를 넣음
+    → 1713년 일본의 이노우에 인세키가 엮은 '발양론'이 이 분야 최고의 권위로 꼽히며, 지금도 프로 기사 훈련에 쓰인다.
+    출처: https://en.wikipedia.org/wiki/Igo_Hatsuy%C5%8Dron
+- #811 기보 [다시 씀 ★] 신문 바둑란 '날마다' 미확인이라 뺌. '기록' 도 정답 첫 글자 '기' 와 같아 피하고 확인된 알파고 학습 세부로 다시 씀
+    → 알파고는 사람 고수들의 대국에서 모은 약 3천만 수를 먼저 흉내 내며 배운 뒤 스스로 두며 실력을 키웠다.
+    출처: https://en.wikipedia.org/wiki/AlphaGo
+- #813 궁성 [다시 씀 ★] 위치 문장 못 찾음, 장군 말 부분은 질문 되풀이(H3) → 확인된 '사'의 제약만 남김
+    → '사' 말도 이 구역 안에서만 한 칸씩 움직일 수 있고 밖으로는 나갈 수 없다.
+    출처: https://ko.wikipedia.org/wiki/장기
+- #837 윤초 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Leap_second
+- #839 극성 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Chemical_polarity
+- #848 수소결합 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Hydrogen_bond
+- #856 세비야의 이발사 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/The_Barber_of_Seville
+- #862 전자 호구 [다시 씀 ★] '2008년 베이징' 특정을 못 찾아 문서대로 '앞선 올림픽들' 로 낮추고 비디오 판독 동시 도입을 덧붙임
+    → 앞선 올림픽들에서 판정 논란이 이어지자 2012년 런던 올림픽부터 즉석 비디오 판독과 함께 들여왔다.
+    출처: https://en.wikipedia.org/wiki/Taekwondo_at_the_2012_Summer_Olympics
+- #870 굳히기 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Judo
+- #880 청소년보호법 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/셧다운제
+- #893 무차별 대입 공격 [다시 씀 ★] '사전 공격=변종'은 문서와 어긋나고(다른 방법), 그 이름도 정답 낱말 '공격'과 겹치기 쉬워 빼고 확인된 대응책만 씀
+    → 이를 막으려고 몇 번 틀리면 입력 횟수를 제한하거나 계정을 잠그고, 그림 속 글자를 읽게 하는 장치를 두기도 한다.
+    출처: https://en.wikipedia.org/wiki/Brute-force_attack
+- #911 발효 [다시 씀 ★] '몇 시간'·'열을 가해' 를 못 찾아 문서 공정(시들리기·비비기·온습도·건조)대로 고침
+    → 홍차는 잎을 시들리고 비빈 뒤 온도와 습도를 맞춘 곳에서 이 과정을 거치게 하고, 마지막에 말려서 멈춘다.
+    출처: https://en.wikipedia.org/wiki/Black_tea
+- #929 기축통화 [다시 씀 ★] 출처 없는 평가 '흔히 이 후보로 꼽히며'를 빼고 확인된 바스켓 사실만 씀
+    → 국제통화기금의 특별인출권 바스켓은 다섯 나라·지역의 통화로 짜이며, 중국 위안은 2016년에 이 바스켓에 들어갔다.
+    출처: https://en.wikipedia.org/wiki/Special_drawing_rights
+- #930 평가절하 [다시 씀 ★] 1994년·'사흘 연달아' 를 문서로 닫지 못해, 같은 취지(중국 위안화 사례)를 확인된 2015년 8월 11일 1.86% 로 다시 씀
+    → 2015년 8월 11일 중국 인민은행이 위안화에 이 조치를 해 하루 만에 1.86% 낮췄다.
+    출처: https://en.wikipedia.org/wiki/Renminbi https://en.wikipedia.org/wiki/2015_Chinese_stock_market_turbulence
+- #965 어드밴티지 [다시 씀 ★] 수신호 세부를 글로 확인 못 해 빼고, IFAB 경기 규칙으로 확인된 경고 사실만 남김
+    → 이것을 적용했더라도 반칙한 선수가 경고감이었다면, 다음에 경기가 멈출 때 옐로카드를 받는다.
+    출처: https://www.theifab.com/laws/latest/the-referee/
+- #1022 협동 [다시 씀 ★] 단정어 '처음 제창' 을 출처 표현('언급')에 맞춰 '꺼냈고' 로 손질(위키는 1969년 명명이라 해 '처음' 은 피함)
+    → 박정희 대통령이 1970년 4월 22일 전국지방장관회의에서 이 운동을 꺼냈고, 그 기록물은 2013년 유네스코 세계기록유산에 올랐다.
+    출처: https://theme.archives.go.kr/next/koreaOfRecord/saemaeul.do https://ko.wikipedia.org/wiki/새마을운동
+- #1024 7·4 남북공동성명 [다시 씀 ★] B 겹침: 이후락 방북·조절위원회 둘 다 3665 질문·해설에 있어, 성명 본문의 비방 중지·직통 전화 약속으로 바꿈
+    → 서로 비방하지 않고, 뜻밖의 군사 충돌을 막으려 두 수도 사이에 직통 전화를 놓기로 한 약속도 담겼다.
+    출처: https://ko.wikipedia.org/wiki/7·4_남북_공동_성명 https://worldjpn.net/documents/texts/docs/19720704.D1E.html
+- #1026 유신헌법 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/대한민국_헌법_제8호
+- #1048 형설지공 [확인됨] 제안 그대로
+    출처: https://zh.wikipedia.org/wiki/車胤 https://www.theworldofchinese.com/2021/08/booklovers-in-ancient-times/
+- #1054 제망매가 [다시 씀 ★] B 겹침 — 피리·달 일화가 같은 정답 3677 해설과 같아 빼고 도솔가 일화를 문서대로 자세히 씀
+    → 지은이는 경덕왕 때 하늘에 해가 둘 나타나 열흘이 지나도록 사라지지 않자 왕의 청으로 '도솔가'를 지어 부른 승려다.
+    출처: https://ko.wikipedia.org/wiki/월명
+- #1055 청산별곡 [다시 씀 ★] 출처 없는 평가('문학성이 높다') 와 질문에 있는 '고려가요' 를 빼고 확인된 전승 자료 사실만 남김
+    → 『악장가사』에 노랫말 전문이, 『시용향악보』에 첫 연과 곡조가 실려 오늘날까지 전한다.
+    출처: https://ko.wikipedia.org/wiki/청산별곡
+- #1056 가시리 [다시 씀 ★] B 겹침(악장가사 전문=3678 해설)과 연·행 수 미확인 → 시용향악보 수록·기승전결 짜임으로 다시 씀(다른 이름 '귀호곡'은 H10 이라 안 씀)
+    → 조선 시대에 엮은 『시용향악보』에도 실려 전하며, 짧은 노랫말이 기승전결의 짜임을 갖춘 것으로 풀이된다.
+    출처: https://ko.wikipedia.org/wiki/가시리
+- #1060 관동별곡 [다시 씀 ★] 마지막 구절은 달빛 대목이라 '끝난다' 를 '뒷부분에서 이어진다' 로 손질
+    → 작가가 45세이던 1580년에 지었으며, 뒷부분에서 망양정에 올라 바다를 본 뒤 꿈에 신선을 만나 술을 나누는 대목이 이어진다.
+    출처: https://ko.wikipedia.org/wiki/관동별곡 https://ko.wikisource.org/wiki/관동별곡
+- #1063 사설시조 [다시 씀 ★] 만횡청류=사설시조의 이른 자취라는 연결이 확인되지 않아 확인된 두 번째 줄 사실(선구 작품 장진주사)로 바꿈
+    → 정철의 '장진주사'가 이 갈래의 선구적 작품으로 꼽힌다.
+    출처: https://encykorea.aks.ac.kr/Article/E0056281 https://encykorea.aks.ac.kr/Article/E0077430
+- #1064 목포의 눈물 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/목포의_눈물
+- #1065 동백아가씨 [다시 씀 ★] B 겹침 — 제안(백영호·동명 영화)이 같은 정답 3707 의 질문과 같아 작사가·판매 기록(확인됨)으로 다시 씀
+    → 한산도가 노랫말을 썼고, 음반이 100만 장 넘게 팔린 것으로 추정되는데 한국 음반으로는 처음이었다고 전한다.
+    출처: https://ko.wikipedia.org/wiki/동백아가씨
+- #1066 아침이슬 [다시 씀 ★] web 표본 — 사실은 맞으나 B 겹침(3708 해설의 대학 시절 작곡)이라 학전 부분만 남겨 연도·번안 세부를 보탬
+    → 지은이는 1991년 소극장 학전을 열었고, 그곳에서 번안·연출한 록 뮤지컬 '지하철 1호선'을 올렸다.
+    출처: https://ko.wikipedia.org/wiki/김민기_(가수)
+- #1067 세시봉 [다시 씀 ★] '통기타 가수들의 등용문' 을 문서에서 못 찾아 빼고 영화가 이곳을 무대로 했다는 확인된 사실로 메움
+    → 서울 무교동에 있던 곳으로, 2015년에는 이곳을 무대로 한 같은 이름의 영화가 만들어졌다.
+    출처: https://ko.wikipedia.org/wiki/쎄시봉_(음악_그룹) https://ko.wikipedia.org/wiki/쎄시봉_(영화)
+- #1070 상록수 [다시 씀 ★] '광고' 라는 매체 세부는 출처에서 확인 못 해 빼고 '직접 통기타를 치며 불러 화제' 로 고침
+    → 1970년대 말 양희은이 처음 음반에 담았고, 2002년 대통령 선거에서는 한 후보가 직접 통기타를 치며 이 노래를 불러 화제가 됐다.
+    출처: https://ko.wikipedia.org/wiki/김민기_(가수) https://www.pressian.com/pages/articles/86532
+- #1078 동정 [다시 씀 ★] 제안의 '빳빳하게·두루마기에도' 를 웹에서 못 찾음 → 같은 취지(만드는 법의 두 번째 줄 사실)로 문서의 '맨 마지막에 다는 가장 어려운 일' 로 바꿈
+    → 옷의 매무새를 다지고 다림질까지 마친 뒤 맨 마지막에 달았기에, 저고리 짓기에서 가장 까다로운 일로 꼽혔다.
+    출처: https://ko.wikipedia.org/wiki/동정_(옷)
+- #1121 파스칼의 삼각형 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Pascal%27s_calculator
+- #1122 직접압박법 [다시 씀 ★] '피가 멈춘 듯해도' → 출처 문장대로 '배어 나와도', '심장보다 높인다' → 출처대로 '들어 올린다' 로 손질
+    → 피가 천에 배어 나와도 천을 떼지 말고 그 위에 새 천을 덧대어 계속 눌러야 하며, 가능하면 다친 부위를 들어 올린다.
+    출처: https://medlineplus.gov/ency/article/000045.htm
+- #1124 회복자세 [다시 씀 ★] 제안의 교육·다리 세부를 확인 못 해 문서에 있는 팔다리 고정·여러 방식 사실로 다시 씀
+    → 팔과 다리를 서로 겹쳐 몸이 흔들리지 않게 받치며, 나라와 교육 기관마다 조금씩 다른 방식이 쓰인다.
+    출처: https://en.wikipedia.org/wiki/Recovery_position
+- #1128 RICE [다시 씀 ★] '책에서 처음' 을 확인 못 해 '책에서·처음' 을 빼 고침
+    → 1978년 미국 의사 게이브 머킨이 내놓은 약자인데, 뒷날 그 자신이 냉찜질과 완전한 안정이 회복을 늦출 수 있다며 생각을 바꿨다.
+    출처: https://en.wikipedia.org/wiki/RICE_(medicine)
+- #1140 총보 [확인됨] 제안 그대로
+    출처: https://steinberg.help/dorico_pro/v5/en/dorico/topics/library/library_instruments_score_orders_c.html
+- #1154 소피스트 [다시 씀 ★] B 겹침(고르기아스가 3791 질문에 있음)으로 이름을 빼고, '수요가 생겼고'를 문서 요지대로 '필요했던 것이 배경'으로 손질
+    → 아테네 민주정에서 배심원과 민회 앞에서 설득하는 말솜씨가 필요했던 것이 배경이며, 히피아스·프로디코스 등이 이 무리에 든다.
+    출처: https://en.wikipedia.org/wiki/Sophist
+- #1155 중용 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Nicomachean_Ethics
+- #1156 탈레스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Thales_of_Miletus
+- #1162 철인정치 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Philosopher_king https://en.wikipedia.org/wiki/Republic_(Plato)
+- #1210 너바나 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Nevermind
+- #1219 칵테일 파티 효과 [다시 씀 ★] '실험에서 나왔다' 는 인과를 문서가 말하지 않아 '그런 실험을 했다' 로 손질
+    → 1953년 영국 학자 콜린 체리가 이름 붙였으며, 그는 두 귀에 서로 다른 말을 들려주고 한쪽만 따라 말하게 하는 실험을 했다.
+    출처: https://en.wikipedia.org/wiki/Cocktail_party_effect
+- #1227 사복음서 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Four_Evangelists
+- #1248 인구 데드크로스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Demographics_of_Japan
+- #1257 88 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Constellation
+- #1275 스탈린그라드 전투 [다시 씀 ★] web 표본 — '첫 독일 원수' 단정어를 문서가 직접 말하지 않아 빼고 확인된 부분만 남김
+    → 독일 제6군 사령관 파울루스는 원수로 승진한 바로 다음 날 항복해 포로가 되었다.
+    출처: https://en.wikipedia.org/wiki/Friedrich_Paulus
+- #1279 맨해튼 계획 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Manhattan_Project
+- #1304 프레임 레이트 [다시 씀 ★] '목표로 삼는 일이 많다' 를 문서 문장('오래 최소치로 여겨짐')으로 바꿈
+    → 우리나라 TV 방송은 대개 30에 가까운 값을 쓰고, 게임에서는 오래전부터 60을 매끄러운 화면의 최소치로 여겨 왔다.
+    출처: https://ko.wikipedia.org/wiki/NTSC https://en.wikipedia.org/wiki/Frame_rate
+- #1341 봉건제 [다시 씀 ★] 확인 못 한 교회 부분을 빼고, 의식 묘사를 문서대로 손질
+    → 신하가 무릎을 꿇고 모은 두 손을 주군이 감싸 쥐는 신종 의식을 거쳐 주종 관계가 맺어졌다.
+    출처: https://en.wikipedia.org/wiki/Homage_(feudal)
+- #1347 흑사병 [다시 씀 ★] '1347년 카파 포위' 가 연도 어긋남(포위 1345~46) — 포위 일화와 1347년 10월 시칠리아 도착을 나눠 문서대로 씀
+    → 크림반도의 항구 카파를 에워싼 군대가 병든 시신을 성 안으로 던졌다고 전하며, 1347년 10월 제노바 갤리선 12척에 실려 시칠리아에 들어왔다.
+    출처: https://en.wikipedia.org/wiki/Black_Death
+- #1351 아비뇽 유수 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Avignon_Papacy https://en.wikipedia.org/wiki/Palais_des_Papes
+- #1383 오디세이아 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Argos_(dog)
+- #1430 베르사유 궁전 [다시 씀 ★] '소꿉놀이' 는 문서가 근거 없는 통설이라 밝힘 → 실제 쓰임(일하는 농장·산책·모임)으로 고침
+    → 왕비 마리 앙투아네트는 별채 프티 트리아농 곁에 실제로 농사를 짓는 농가 마을 '아모'를 두고 산책과 조촐한 모임을 즐겼다.
+    출처: https://en.wikipedia.org/wiki/Hameau_de_la_Reine
+- #1441 우키요에 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Ukiyo-e
+- #1473 2루타 [다시 씀 ★] 제안의 '구장별 특수 규정' 이 틀림(공통 규칙). '더블' 로 이어지는 '그라운드 룰' 이름도 피하고, 확인된 리글리 필드 담쟁이 구장 규정으로 다시 씀
+    → 시카고 리글리 필드에서는 친 공이 외야 담장을 덮은 담쟁이덩굴에 끼어 나오지 않을 때도 같은 판정을 내린다.
+    출처: https://en.wikipedia.org/wiki/Ground_rule_double
+- #1477 피치 클록 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Pitch_clock https://www.mlb.com/news/mlb-2023-rule-changes-pitch-timer-larger-bases-shifts
+- #1482 용불용설 [다시 씀 ★] '반박했다' 는 문서가 반박에 실패한 것으로 평가 → '반박하려 했다' 로 낮추고 세부(흰쥐·다섯 대) 문서대로
+    → 1809년 『동물철학』에서 제시되었고, 바이스만은 흰쥐 꼬리를 다섯 대에 걸쳐 잘라 보는 실험으로 이를 반박하려 했다.
+    출처: https://en.wikipedia.org/wiki/Philosophie_zoologique https://en.wikipedia.org/wiki/Lamarckism
+- #1505 동지 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Chinese_calendar
+- #1517 헬륨 [다시 씀 ★] 출처 문장대로 '모든 물질' → '모든 원소' 낱말 하나 손질
+    → 끓는점이 영하 269도 가까이로 모든 원소 가운데 가장 낮아, MRI의 초전도 자석을 식히는 데 쓰인다.
+    출처: https://en.wikipedia.org/wiki/Helium
+- #1518 탄소 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Carbon
+- #1522 반감기 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Uranium-238 https://en.wikipedia.org/wiki/Age_of_Earth
+- #1527 레퀴엠 [다시 씀 ★] B 겹침(3487 해설)으로 포레 사실을 버리고 확인된 브람스의 독일어 가사 사실로 바꿈
+    → 브람스는 이 갈래의 곡을 쓰며 가톨릭 전례의 라틴어 가사 대신 루터 성경의 독일어 구절을 손수 골라 썼다.
+    출처: https://en.wikipedia.org/wiki/Ein_deutsches_Requiem
+- #1528 녹턴 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Nocturne
+- #1530 볼레로 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Boléro
+- #1552 크립토나이트 [다시 씀 ★] B 겹침(3505 질문) → 시겔의 1940년 미발표 원고 사실로 다시 씀(원고 제목은 정답 조각이 들어 있어 뺌)
+    → 슈퍼맨을 만든 제리 시겔이 1940년에 쓴 원고에 그 원형이 처음 나왔지만, 편집진이 받아 주지 않아 발표되지 못했다.
+    출처: https://en.wikipedia.org/wiki/Kryptonite
+- #1572 초점거리 [다시 씀 ★] '함께 적어' 를 못 찾아 문서의 정의(같은 화각을 얻는 값으로 환산)로 다시 씀
+    → 35mm 필름 카메라에서 같은 화각을 얻으려면 필요한 값으로 바꿔 셈하면, 센서 크기가 다른 카메라끼리도 견줄 수 있다.
+    출처: https://en.wikipedia.org/wiki/35_mm_equivalent_focal_length
+- #1573 카메라 옵스쿠라 [다시 씀 ★] '이름을 붙여'는 지어냈다는 뜻으로 읽혀 문서대로 '처음 쓰인 곳'으로 손질하고 연도를 넣음
+    → 이 이름이 처음 쓰인 곳은 1604년 케플러가 낸 첫 광학 책이라고 한다.
+    출처: https://en.wikipedia.org/wiki/Camera_obscura
+- #1587 디캔팅 [확인됨] 제안 그대로
+    출처: https://culinaryagents.com/resources/wine-service-101-decanting
+- #1594 퇴출 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Hurricane_Katrina
+- #1596 푄 현상 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Foehn_wind
+- #1604 기업공개 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Initial_public_offering
+- #1605 카르텔 [다시 씀 ★] '첫 연방 법률' 단정을 출처 문장('formally began') 대로 '공식 출발점' 으로 손질
+    → 미국에서는 1890년 의회가 통과시킨 셔먼법이 이런 약속을 막는 반독점법의 공식 출발점으로 꼽힌다.
+    출처: https://en.wikipedia.org/wiki/Sherman_Antitrust_Act https://en.wikipedia.org/wiki/United_States_antitrust_law
+- #1628 스페이스 인베이더 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Space_Invaders
+- #1629 동키콩 [다시 씀 ★] B 겹침(3554 질문) → 레이더 스코프 개조 뒷이야기로 다시 씀
+    → 팔리지 않고 남은 '레이더 스코프' 오락기 약 2,000대를 고쳐 이 게임으로 바꿔 내놓았다.
+    출처: https://en.wikipedia.org/wiki/Donkey_Kong_(1981_video_game)
+- #1633 패미컴 [다시 씀 ★] B 겹침(3555 해설의 이름·외형 변경) 때문에 그 부분을 빼고 확인된 출시 일정으로 다시 씀
+    → 북미판은 1985년 10월 뉴욕에서 한정 시험 판매를 거친 뒤 이듬해 9월 북미 전역에 나왔다.
+    출처: https://en.wikipedia.org/wiki/Nintendo_Entertainment_System
+- #1687 혼분식 장려 운동 [다시 씀 ★] 사실은 맞으나 '같은 시기'를 출처대로 1965년·순곡주 제조 금지령으로 구체화
+    → 1965년 양곡관리법에 따른 순곡주 제조 금지령으로 막걸리도 쌀 대신 다른 원료로 빚어야 했다.
+    출처: https://theme.archives.go.kr/next/koreaOfRecord/sojunMakgeolli.do
+- #1693 창원시 [다시 씀 ★] 제안 사실은 맞지만 B 겹침(3628 해설의 공업 단지) → 확인된 주남저수지로 다시 씀
+    → 철새 도래지로 이름난 주남저수지가 이곳에 있다.
+    출처: https://en.wikipedia.org/wiki/Changwon
+- #1697 경기도 [다시 씀 ★] 당나라 사실 못 찾아 빼고, '처음 쓰인'을 출처대로 '정식으로 부르기 시작'으로 고침(적현·기현은 정답 글자 '기'가 있어 안 씀)
+    → 고려 현종 때인 1018년부터 왕도 바깥 고을들을 묶어 이 이름으로 정식으로 부르기 시작했다.
+    출처: https://ko.wikipedia.org/wiki/경기도
+- #1703 무령왕릉 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/무령왕릉
+- #1706 독서삼품과 [다시 씀 ★] 제안의 '『예기』·『문선』'이 셋 다 읽어야 하는 것처럼 읽혀 문서의 '또는'(가운데 하나)으로 바로잡음
+    → 가장 높은 등급에 들려면 『춘추좌씨전』·『예기』·『문선』 가운데 하나를 읽어 뜻에 통하고 『논어』·『효경』에도 밝아야 했다.
+    출처: https://ko.wikipedia.org/wiki/독서삼품과
+- #1710 훈요십조 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/훈요_10조
+- #1723 산통 [다시 씀 ★] 흔들어 뽑는 점법을 확인 못 해, 사전에 있는 '맹인이 쓰던 통' 사실로 다시 씀(유의어 '계산통'은 정답 글자라 뺌)
+    → 표준국어대사전에는 맹인이 점을 칠 때 쓰던 통으로 풀이되어 있다.
+    출처: https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=산통
+- #1726 백미 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Ma_Liang_(Three_Kingdoms)
+- #1734 무정 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/이광수
+- #1735 감자 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/감자_(소설) https://ko.wikipedia.org/wiki/김동인
+- #1738 태평천하 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/채만식
+- #1743 임꺽정 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/홍명희
+- #1747 신승훈 [다시 씀 ★] '데뷔 때부터 스스로 작곡'을 문서의 숫자(1집 10곡 중 7곡)로 바로잡음
+    → 데뷔 앨범에 실린 열 곡 가운데 데뷔곡을 포함한 일곱 곡을 데뷔 전에 직접 작곡해 두었다.
+    출처: https://ko.wikipedia.org/wiki/신승훈
+- #1751 듀스 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/듀스_(음악_그룹)
+- #1761 섣달그믐 [확인됨] 제안 그대로
+    출처: https://sgsg.hankyung.com/article/2016012976841
+- #1764 산조 [다시 씀 ★] '시나위·판소리에서 갈라져 나왔다' 를 문서의 과정(시나위 → 판소리 가락 수용)대로 손질
+    → 무속 음악과 얽힌 시나위가 독주로 기교를 늘려 가다 판소리 가락을 받아들이며 틀이 잡혔다고 본다.
+    출처: https://ko.wikipedia.org/wiki/산조
+- #1767 종묘제례악 [다시 씀 ★] 확인 못 한 '월대'를 문서의 당상·당하로 바꾸고 번갈아 연주하는 사실을 더함
+    → 악기를 당상의 등가와 당하의 헌가 두 곳에 벌여 놓고, 제사 순서에 따라 번갈아 연주한다.
+    출처: https://ko.wikisource.org/wiki/글로벌_세계_대백과사전/한국음악/한국음악/한국음악의_종류/제례악
+- #1776 원 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Isoperimetric_inequality https://en.wikipedia.org/wiki/Zenodorus_(mathematician)
+- #1797 천연두 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Ali_Maow_Maalin
+- #1822 보더 콜리 [다시 씀 ★] '최초' 가 틀림(첫 대회는 1867년 뉴질랜드) → 문서대로 '여러 나라가 겨룬 첫 기록' 으로 고침
+    → 여러 나라가 함께 겨룬 양치기 개 경연으로 기록된 첫 대회는 1873년 웨일스의 발라에서 열렸다.
+    출처: https://en.wikipedia.org/wiki/Sheepdog_trial
+- #1826 근친교배 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Habsburg_jaw
+- #1832 칸트 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Perpetual_Peace:_A_Philosophical_Sketch
+- #1872 사법권의 독립 [확인됨] 제안 그대로
+    출처: https://ko.wikisource.org/wiki/대한민국_헌법
+- #1876 MTV [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Video_jockey
+- #1889 조건반사 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Ivan_Pavlov
+- #1897 사성제 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Dhammacakkappavattana_Sutta
+- #1898 팔정도 [다시 씀 ★] '초기 불교에서' 한정을 확인 못 해 빼고 출처 표현(중도를 받치는 구체적 실천)에 맞춰 작게 고침
+    → 쾌락과 고행 어느 쪽에도 치우치지 않는 중도를 받쳐 주는 구체적인 실천으로 일컬어진다.
+    출처: https://ko.wikipedia.org/wiki/중도_(불교)
+- #1903 대승불교 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Nagarjuna
+- #1907 일주문 [다시 씀 ★] 문짝 사실은 못 찾고 맞배지붕은 실제 사례와 어긋나, 확인된 다포계 양식·보물 지정 예고로 다시 씀
+    → 대부분 화려한 다포계 양식으로 지었으며, 해인사·쌍계사·송광사 등에 있는 것이 보물로 지정 예고된 바 있다.
+    출처: https://ko.wikipedia.org/wiki/일주문 https://newsseoul.co.kr/news/view/1065598211213614
+- #1919 네팔 [다시 씀 ★] '연방 민주 공화국' 은 2015년 헌법 세부라 출처대로 '연방 공화국' 으로 고치고, 같은 문장의 '마지막 힌두 왕국' 사실을 더함
+    → 2008년 왕정이 폐지되어 연방 공화국이 되면서, 세계에 하나 남은 힌두 왕국이라는 지위도 내려놓았다.
+    출처: https://en.wikipedia.org/wiki/Nepal
+- #1934 웨스트 사이드 스토리 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/West_Side_Story
+- #1941 특허를 공개했다 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Nils_Bohlin
+- #1943 공주거리 [다시 씀 ★] '졸음'·'가장 먼저' 를 못 찾아 문서의 2.5초 설계 반응 시간 사실로 다시 씀
+    → 술에 취하거나 한눈을 파는 운전자까지 감안해, 도로 설계에서는 반응 시간을 2.5초로 넉넉히 잡기도 한다.
+    출처: https://en.wikipedia.org/wiki/Braking_distance
+- #1945 트레드 [다시 씀 ★] 확인 못 한 '승차감'과 질문에 이미 있는 '배수'를 빼고 확인된 소음 사실만 남김
+    → 고속도로를 달릴 때 나는 타이어 소음도 이것의 무늬를 어떻게 설계하느냐에 따라 달라진다.
+    출처: https://en.wikipedia.org/wiki/Tire_tread
+- #1946 하이드로플레이닝 [다시 씀 ★] 공기압이 '속도를 높인다' 는 세부가 출처에 없어 '위험을 줄인다' 로 손질
+    → 타이어 홈이 닳을수록 더 낮은 속도에서도 일어나며, 알맞은 공기압은 그 위험을 줄인다.
+    출처: https://en.wikipedia.org/wiki/Aquaplaning
+- #1954 크리스마스 휴전 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Christmas_truce
+- #1956 베르사유 조약 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Paris_Peace_Conference_(1919–1920)
+- #1988 베수비오 화산 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Mount_Vesuvius
+- #1989 그레이트배리어리프 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Great_Barrier_Reef
+- #1996 센고쿠 시대 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/센고쿠_시대
+- #2022 올로지 [다시 씀 ★] 사실은 맞으나 '타나톨로지'가 정답 조각 '로지'를 그대로 보여 줌(H2, 검사 partial-mid 경고) → 낱말을 빼고 학문의 내용으로 씀
+    → 죽음과 그로 인한 상실을 과학적으로 연구하는 학문의 영어 이름에도 같은 어미가 붙는다.
+    출처: https://en.wikipedia.org/wiki/Thanatology
+- #2024 뜻 [다시 씀 ★] 직함을 출처대로 '현대 분류학의 아버지' 로 손질
+    → '현대 분류학의 아버지' 린네가 18세기에 라틴어 꼴로 종을 부르는 이명법을 체계화했다.
+    출처: https://en.wikipedia.org/wiki/Carl_Linnaeus https://en.wikipedia.org/wiki/Binomial_nomenclature
+- #2048 페이로드 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Payload_(computing)
+- #2057 기관 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Respiratory_system_of_insects
+- #2064 단백질 [다시 씀 ★] 헤모글로빈·알부민 이름을 확인 못 해, 문서에 있는 소화·노른자 합성 과정으로 다시 씀('아미노산'은 정답을 바로 떠올리게 해 뺌)
+    → 모기 창자에서 나오는 효소가 피 속의 이것을 잘게 쪼개고, 그 조각으로 알 노른자의 재료를 만든다.
+    출처: https://en.wikipedia.org/wiki/Mosquito
+- #2066 드림웍스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Antz
+- #2077 안도 다다오 [다시 씀 ★] B 겹침(3401 해설의 프리츠커상)으로 확인된 나오시마 작품 사실로 바꿈
+    → 일본 가가와현 나오시마 섬의 지추 미술관과 베네세 하우스를 설계했다.
+    출처: https://en.wikipedia.org/wiki/Tadao_Ando
+- #2081 형태는 기능을 따른다 [다시 씀 ★] 바우하우스 미확인 → 출처의 '모더니즘 구호' 로, 해설의 설리번 이름은 빼고 1896년 글 세부로 다시 씀
+    → 1896년 고층 사무용 건물을 다룬 글에서 처음 나왔고, 1930년대 뒤로 모더니즘 건축가들의 구호가 되었다.
+    출처: https://en.wikipedia.org/wiki/Form_follows_function
+- #2103 챌린지 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Hawk-Eye
+- #2121 습지 [다시 씀 ★] '탄소를 많이 저장' 단정을 문서대로 '곳에 따라 흡수원' 으로 낮춤
+    → 물새와 도요·물떼새 같은 섭금류가 많이 기대어 살며, 곳에 따라 탄소를 빨아들여 기후 변화 완화에 도움이 되기도 한다.
+    출처: https://en.wikipedia.org/wiki/Wetland
+- #2146 노키아 [다시 씀 ★] web 표본 — 사실은 맞으나 B 겹침(3454 해설과 같은 문장)이라 확인된 2014년 휴대전화 사업 매각으로 다시 씀
+    → 2014년 휴대전화 사업부를 마이크로소프트에 넘긴 뒤로는 통신망 장비 사업에 힘을 모았다.
+    출처: https://en.wikipedia.org/wiki/Nokia
+- #2149 포드 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Ford_v_Ferrari
+- #2150 코카콜라 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Contour_bottle
+- #2160 캐러멜화 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Caramelization
+- #2170 실내악 [다시 씀 ★] '아버지로 불린다' 를 출처의 유보에 맞춰 '흔히' 로 낮추고, 정답 글자 '악' 과 해설의 '현악 사중주' 를 피해 편성으로 풀어 씀
+    → 하이든이 바이올린 둘·비올라·첼로로 이루는 사중주를 오늘날의 꼴로 발전시켜, 흔히 그 '아버지'로 불린다.
+    출처: https://en.wikipedia.org/wiki/String_quartet
+- #2179 사우스포 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Manny_Pacquiao
+- #2195 잡지 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Manga
+- #2205 오픈 소스 [다시 씀 ★] 혼란의 내용('공짜로 읽혀')을 문서가 명시하지 않아 문서 문장대로 '처음 접하는 사람에게 헷갈리고 업계 관심을 막는다' 로 고침
+    → '자유 소프트웨어'라는 이름이 처음 접하는 사람에게 헷갈리고 업계의 관심을 막는다는 지적에 따라 1998년에 제안된 이름이다.
+    출처: https://en.wikipedia.org/wiki/Open-source_software
+- #2216 확정일자 [다시 씀 ★] '동의 없이 혼자' 단정을 공식 출처로 못 닫아, 위키에 있는 받는 곳·수수료 사실로 다시 씀
+    → 동주민센터나 등기소, 공증사무소에서 받을 수 있으며 신분증과 600~1,000원 정도의 수수료가 든다.
+    출처: https://ko.wikipedia.org/wiki/확정일자
+- #2223 전과 [다시 씀 ★] '자격·임용 제한' 일반 진술을 문서에서 못 찾아 문서에 있는 성범죄 취업 제한 사례로 구체화
+    → 성범죄로 이것이 생기면 학교나 어린이집 같은 교육·보육 기관에 취업하는 데 제한을 받기도 한다.
+    출처: https://ko.wikipedia.org/wiki/전과
+- #2250 오일 쇼크 [다시 씀 ★] 문서 표현대로 '소형차'를 '가볍고 연비 좋은 일본·서독 차'로 손질
+    → 이 충격 뒤 미국 소비자들은 기름을 많이 먹는 큰 차 대신 가볍고 연비 좋은 일본·서독 차로 빠르게 옮겨 갔다.
+    출처: https://en.wikipedia.org/wiki/1973_oil_crisis
+- #2260 송전 손실 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Electric_power_transmission
+- #2263 잉글랜드 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/1966_FIFA_World_Cup
+- #2269 등자뼈 [다시 씀 ★] 정답 글자 뼈(등자뼈)가 제안에 들어 있고 액체 언급을 못 찾아 빼고 바닥판·타원창으로 손질
+    → 맨 끝에서 소리의 진동을 속귀로 넘겨주며, 바닥판이 타원창이라는 구멍에 맞닿아 있다.
+    출처: https://en.wikipedia.org/wiki/Stapes
+- #2274 경첩관절 [다시 씀 ★] 문서가 발목을 '덜 전형적'이라 해 빼고, 확인된 손가락·발가락 마디로 고침
+    → 손가락과 발가락 마디 사이의 관절도 이 갈래에 든다.
+    출처: https://en.wikipedia.org/wiki/Hinge_joint
+- #2276 골격근 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Skeletal_muscle
+- #2313 구절판 [다시 씀 ★] 잔칫상·오방색을 확인 못 해, 같은 취지(궁중·반가 쓰임)를 문서의 유두절 시절식·전채 사실로 다시 씀
+    → 궁실과 반가에서는 유두절에 차리는 명절 음식으로도 썼고, 교자상이나 주안상의 전채로 알맞다고 한다.
+    출처: https://ko.wikipedia.org/wiki/구절판
+- #2342 이어도 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/이어도
+- #2346 조차 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Tide
+- #2352 계유정난 [다시 씀 ★] B 겹침(1453년 → 계유년) 이라 연도를 빼고, 사사 장소를 출처대로 교동도로 밝힘
+    → 이 일로 안평대군도 강화도로 유배되었다가 교동도에서 사사되었다.
+    출처: https://ko.wikipedia.org/wiki/안평대군
+- #2373 구운몽 [다시 씀 ★] B 겹침(3671 해설)·질문의 김만중 되풀이 → 판본 사실로 다시 씀('몽자류' 등은 정답 글자 '몽'이 있어 피함)
+    → 지금 전하는 판본 가운데 가장 오래된 것은 서울대 도서관에 있는 4권 4책짜리 국문 필사본이다.
+    출처: https://ko.wikipedia.org/wiki/구운몽
+- #2380 박씨전 [확인됨] 제안 그대로
+    출처: https://ko.wikisource.org/wiki/박씨전
+- #2382 규중칠우쟁론기 [다시 씀 ★] '여성들 사이에서 읽혔다' 를 못 찾아 백과사전의 작자 추정(조침문 지은이와 같은 여성설)으로 바꿈
+    → 지은이와 연대는 알 수 없으며, 「조침문」을 쓴 여성과 같은 사람으로 추정하기도 하지만 확실하지 않다.
+    출처: https://ko.wikipedia.org/wiki/규중칠우쟁론기 https://encykorea.aks.ac.kr/Article/E0007289
+- #2385 무진기행 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/안개_(1967년_영화)
+- #2386 광장 [다시 씀 ★] 확인 못 한 '월북한 아버지'·'불려 다니던'을 문서 줄거리 문장대로 고침
+    → 주인공은 서울의 아버지 친구 집에서 책과 지내던 철학도로, 아버지가 이름난 '빨갱이'라는 이유로 경찰서에서 고문을 받는다.
+    출처: https://ko.wikipedia.org/wiki/광장_(소설)
+- #2389 삼포 가는 길 [다시 씀 ★] '단편' → '중편' 으로 고치고 발표 지면·내용 세부를 확인된 대로 씀
+    → 황석영은 1971년 『창작과비평』에 실린 중편 '객지'로 간척지 노동자들의 파업을 그려 주목받았다.
+    출처: https://accesson.kr/daejung/v.24/3/322/4908?lang=en https://www.happycampus.com/report-doc/4218446/
+- #2390 우리들의 일그러진 영웅 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/우리들의_일그러진_영웅
+- #2421 규모 [다시 씀 ★] 출처가 '큰 지진'에 한정하므로 범위를 출처대로 좁히고 강성 요소를 더함(작은 손질)
+    → 요즘 큰 지진은 단층의 면적과 미끄러진 거리, 암석의 단단함으로 계산한 값으로 발표하는 것이 표준이 되었다.
+    출처: https://en.wikipedia.org/wiki/Moment_magnitude_scale
+- #2422 야드파운드법 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/United_States_customary_units
+- #2429 통증 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Aulus_Cornelius_Celsus
+- #2439 소 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Edward_Jenner
+- #2456 몸통 [확인됨] 제안 그대로
+    출처: https://speedendurance.com/2008/06/09/photo-finish-how-to-read-a-finish-line-photo/ https://en.wikipedia.org/wiki/Fully_automatic_time
+- #2463 무위자연 [다시 씀 ★] 출처 문장대로 '낮은 곳으로 흐르며' → '만물을 이롭게 하면서도' 로 손질
+    → '도덕경'에서는 만물을 이롭게 하면서도 다투지 않는 물을 가장 높은 선에 빗대어 '상선약수'라 했다.
+    출처: https://ko.wikipedia.org/wiki/도덕경
+- #2464 호접지몽 [확인됨] 제안 그대로
+    출처: https://zh.wikisource.org/wiki/莊子/齊物論
+- #2479 데시벨 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Decibel https://en.wikipedia.org/wiki/Alexander_Graham_Bell
+- #2483 특수 상대성 이론 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/On_the_Electrodynamics_of_Moving_Bodies
+- #2484 일반 상대성 이론 [다시 씀 ★] '첫 성공' 단정을 빼고 출처의 1859년 · 관측값 일치 세부로 다시 씀
+    → 1859년부터 알려져 있던 수성 근일점 이동의 어긋남을 관측값과 거의 맞게 설명해 냈다.
+    출처: https://en.wikipedia.org/wiki/Tests_of_general_relativity
+- #2485 질량-에너지 등가 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Mass–energy_equivalence
+- #2502 소울 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Soul_music
+- #2505 펑크 록 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/CBGB
+- #2508 각인 [다시 씀 ★] '큰 새'·'같은 종 대신'이 출처와 꼭 맞지 않아 문서의 구체 사례(카카포 시로코)로 손질
+    → 사람 손에 자란 뉴질랜드 앵무새 카카포 '시로코'가 사람에게 짝짓기를 시도한 일도 이 현상의 한 갈래로 설명된다.
+    출처: https://en.wikipedia.org/wiki/Imprinting_(psychology)
+- #2509 방어기제 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/The_Ego_and_the_Mechanisms_of_Defence
+- #2514 이슬람의 다섯 기둥 [다시 씀 ★] '순니파가 꼽는 반면' 은 시아파도 인정한다는 문서와 어긋나 '순니파에서 특히 강조' 로 손질
+    → 순니파에서 특히 강조되며, 시아파는 기도·단식 등을 넣은 열 가지 실천 의무로 따로 정리한다.
+    출처: https://en.wikipedia.org/wiki/Five_Pillars_of_Islam
+- #2524 아라베스크 [다시 씀 ★] 제안의 '형상 금기로 발달' 설명을 문서가 근거 없다고 함 → 문서의 기원(정복지 덩굴 무늬 전통)으로 다시 씀
+    → 이슬람 정복 이전부터 그 땅에 있던 덩굴 식물 무늬 전통을 이어받아 발달한 것으로 본다.
+    출처: https://en.wikipedia.org/wiki/Arabesque
+- #2532 색약 배려 설계 [다시 씀 ★] 제안이 질문(무늬·모양)·해설(그래프)을 되풀이하고 흑백 복사 사실을 못 찾아, 문서의 캐나다 신호등 사례로 다시 씀
+    → 캐나다의 신호등에는 빨강을 네모, 노랑을 마름모, 초록을 동그라미로 만들어 같은 원리를 따른 것이 있다.
+    출처: https://en.wikipedia.org/wiki/Color_blindness
+- #2552 위장 후퇴 [다시 씀 ★] '칭기즈 칸 군대'·'러시아 연합군'을 문서대로 지휘관·루스 제후국·쿠만으로 바로잡음
+    → 1223년 칼카강 전투에서 제베와 수부타이가 이끈 몽골군이 이 전술로 루스 제후국과 쿠만 연합군을 무찔렀다.
+    출처: https://en.wikipedia.org/wiki/Battle_of_the_Kalka_River
+- #2559 병참 [다시 씀 ★] 사실은 맞음. '병사' 의 '병' 이 정답 '병참' 의 첫 글자(兵)와 같아 H2 를 피하려 '군인들' 로 낱말 하나 바꿈
+    → 제1차 세계대전 마른 전투에서는 파리의 택시 수백 대가 군인들을 전선으로 실어 날랐다.
+    출처: https://en.wikipedia.org/wiki/First_Battle_of_the_Marne
+- #2564 제네바 협약 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Geneva_Conventions
+- #2566 황금사자상 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Hana-bi
+- #2569 골든글로브 [다시 씀 ★] 위치 '로스앤젤레스'를 비벌리힐스로, 확인 못 한 '1월 초' 대신 문서의 '1961년부터'로 고침
+    → 1961년부터 미국 비벌리힐스의 베벌리 힐턴 호텔이 오랫동안 이 시상식이 열리는 곳이었다.
+    출처: https://en.wikipedia.org/wiki/Golden_Globe_Awards https://en.wikipedia.org/wiki/The_Beverly_Hilton
+- #2590 교차 오염 [확인됨] 제안 그대로
+    출처: https://www.qld.gov.au/health/staying-healthy/food-pantry/food-safety-for-consumers/food-safety-and-your-health/cross-contamination
+- #2596 발연점 [다시 씀 ★] 출처가 견주는 짝은 '정제하지 않은 기름' 이고 압착유는 예외가 있어 낱말 손질
+    → 정제한 기름이 정제하지 않은 날기름보다 이 온도가 대체로 높다.
+    출처: https://en.wikipedia.org/wiki/Smoke_point
+- #2607 지브롤터 해협 [다시 씀 ★] B 겹침(3948 해설의 바위산) → 남쪽 기슭 세우타·깊이로 다시 씀(해설의 폭 15km는 피함)
+    → 남쪽 기슭에는 아프리카 땅에 있는 스페인 자치 도시 세우타가 있고, 바다 깊이는 300~900미터에 이른다.
+    출처: https://en.wikipedia.org/wiki/Strait_of_Gibraltar
+- #2611 후계자 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Shia–Sunni_relations
+- #2616 술탄 [다시 씀 ★] B 겹침(3979 질문의 어원)으로 앞 구절을 빼고 확인된 셀주크·맘루크 사실만 남김
+    → 셀주크 튀르크와 이집트 맘루크 왕조의 통치자가 이 칭호를 썼다.
+    출처: https://en.wikipedia.org/wiki/Sultan
+- #2626 쿠바 미사일 위기 [다시 씀 ★] B 겹침(비밀 협상 = 3999 질문의 비밀 약속) → 확인된 U-2 격추 사실로 다시 씀
+    → 대치 막바지인 10월 27일, 미국 U-2 정찰기가 섬 상공에서 격추되어 조종사가 숨졌다.
+    출처: https://en.wikipedia.org/wiki/Cuban_Missile_Crisis
+- #2629 민권운동 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Bloody_Sunday_(1965)
+- #2643 변신 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Franz_Kafka https://en.wikipedia.org/wiki/The_Metamorphosis
+- #2650 이방인 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/The_Stranger_(Camus_novel)
+- #2671 천리안 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/GEO-KOMPSAT-2A
+- #2701 핑구 [다시 씀 ★] '화가 나면'이 문서와 어긋나 '소리칠 때'로, 단독 창작처럼 읽히는 부분을 '구트만 등'으로 고침
+    → 스위스의 오트마 구트만 등이 1986년 7분짜리 시험판을 만든 이 시리즈에서, 주인공은 소리칠 때 부리를 확성기처럼 길게 내민다.
+    출처: https://en.wikipedia.org/wiki/Pingu
+- #2717 실크스크린 [다시 씀 ★] '무늬 부분만 굳힌다' 는 실제(무늬 아닌 곳이 굳음)와 어긋나 문서 공정대로 고치고 '흔하다' 는 '근래 널리 퍼졌다' 로
+    → 감광액을 바른 망에 빛을 쬐어 빛 받은 곳을 굳히고 나머지를 씻어 내 무늬 틀을 만드는 방식이 근래 널리 퍼졌다.
+    출처: https://en.wikipedia.org/wiki/Screen_printing
+- #2790 아티스틱 스위밍 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Artistic_swimming
+- #2804 헬로 월드 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
+- #2807 로버트 카파 [다시 씀 ★] B 겹침(3519 질문) → 동생 코넬의 ICP 설립으로 다시 씀(3519 힌트의 매그넘·오마하, 해설의 '쓰러지는 병사'도 피함) / 영문 약자 ICP 는 검사 roman 경고라 뺌
+    → 동생 코넬도 사진가가 되어 1974년 뉴욕에 국제사진센터를 세웠다.
+    출처: https://en.wikipedia.org/wiki/Robert_Capa
+- #2809 네이팜탄 소녀 [다시 씀 ★] 촬영자가 지금 논란 중이라 '닉 우트가 찍어' 를 빼고 확인된 날짜·장소·수상만 남김(지금 DB 힌트의 닉 우트도 같은 문제)
+    → 1972년 6월 8일 남베트남 짱방 근처에서 찍혔고, 이듬해 퓰리처상과 세계 보도사진상을 받았다.
+    출처: https://en.wikipedia.org/wiki/The_Terror_of_War
+- #2811 창백한 푸른 점 [다시 씀 ★] '60장'을 확인 못 해 빼고 확인된 연작·카메라 종료 사실만 남김
+    → 보이저 1호가 찍은 태양계 '가족사진' 연작의 하나이며, 이 연작을 끝으로 탐사선의 카메라는 꺼졌다.
+    출처: https://en.wikipedia.org/wiki/Pale_Blue_Dot
+- #2822 목업 [다시 씀 ★] 확인한 예(컵·티셔츠)만 남기고 포스터를 뺀 작은 손질
+    → 디자이너들은 포토샵 템플릿 파일에 시안을 끼워 넣어 컵·티셔츠 같은 물건에 얹은 모습을 한 번에 만든다.
+    출처: https://pixelbuddha.net/mockups/11954-hand-held-coffee-cup-mockup https://creativemarket.com/leszdesign/292203181-T-Shirt-Mockup-PSD-Model
+- #2853 조석 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/조석
+- #2869 상장지수펀드 [다시 씀 ★] '시초' 는 캐나다(1990)가 먼저라 틀림 → '미국 거래소에 처음 오른' 으로 고침
+    → 1993년 1월 S&P 500을 따라가도록 나온 SPY가 미국 거래소에 처음 오른 이 상품이다.
+    출처: https://en.wikipedia.org/wiki/SPDR_S%26P_500_Trust_ETF https://en.wikipedia.org/wiki/Exchange-traded_fund
+- #2874 선물 [다시 씀 ★] 사실은 모두 맞으나 '곡물'의 '물'이 정답 '선물'의 글자(物)와 같아 '곡식'으로 바꿈(H2)
+    → 시카고 상품거래소가 19세기 곡식 거래에서 키운 방식이며, 오늘날은 주가지수·환율·금리까지 대상이 된다.
+    출처: https://en.wikipedia.org/wiki/Futures_contract
+- #2884 바이오에탄올 [다시 씀 ★] '~에만 넣을 수 있다' 가 출처와 어긋나 출처 문장대로 고침
+    → E85처럼 비율이 높은 혼합 연료는 높은 농도를 받아들이도록 고친 엔진에 쓴다.
+    출처: https://en.wikipedia.org/wiki/E85
+- #2896 바람의 나라 [다시 씀 ★] B 겹침(3565 질문) → 해외 서비스·회원 수로 다시 씀
+    → 1998년 미국을 시작으로 프랑스·일본·인도네시아에서도 서비스되었고, 2011년 누적 회원이 1,800만 명에 이르렀다.
+    출처: https://ko.wikipedia.org/wiki/바람의_나라_(온라인_게임)
+- #2898 MMORPG [다시 씀 ★] '열풍이 시작되었다' 를 못 찾아 문서의 가입자 수 사실로 바꿈
+    → 1998년 나온 '리니지'는 한때 가입자가 300만 명을 넘었는데, 그 대부분이 한국 사람이었다.
+    출처: https://en.wikipedia.org/wiki/Lineage_(video_game)
+- #2904 서든어택 [확인됨] 제안 그대로
+    출처: https://www.gamemeca.com/view.php?gid=478627
+- #2913 에르메스 [다시 씀 ★] 출처에 없는 '몰래' 를 빼고 지분 17%가량으로 세부 손질
+    → 1837년 파리에서 티에리라는 창업자가 문을 열었고, 2010년 한 명품 그룹이 지분을 17%가량 사들이자 창업 가문이 지주회사를 세워 맞섰다.
+    출처: https://en.wikipedia.org/wiki/Hermès
+- #2923 넥타이 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Necktie
+- #2927 AFC 챔피언스리그 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/AFC_Champions_League
+- #2952 통영 [다시 씀 ★] B 겹침(3638 질문의 윤이상) 때문에 다시 씀 — 확인된 음악창의도시·나전칠기로(옛 이름 '충무' 김밥은 H10 이라 피함)
+    → 2015년 유네스코 음악창의도시로 뽑혔고, 자개로 꾸민 나전칠기가 특산물로 이름나 있다.
+    출처: https://ko.wikipedia.org/wiki/통영시
+- #2982 아리랑 [다시 씀 ★] B 겹침(3710 질문의 영진)으로 앞 구절을 빼고 확인된 단성사 개봉 첫날 일화로 채움
+    → 1926년 10월 서울 단성사에서 개봉했는데, 첫날 인파가 몰려 경찰 기마대까지 나왔다고 한다.
+    출처: https://ko.wikipedia.org/wiki/아리랑_(1926년_영화)
+- #3005 쪽대본 [확인됨] 제안 그대로
+    출처: https://www.osen.co.kr/article/G1110076913
+- #3022 테플론 [다시 씀 ★] '흰 가루'가 출처('밀랍 같은 흰 물질')와 어긋나 낱말만 고침
+    → 듀폰 연구원 로이 플런킷이, 저장해 두던 기체가 통 안에서 미끄러운 흰 밀랍 같은 물질로 변해 있는 것을 보고 발견했다.
+    출처: https://en.wikipedia.org/wiki/Polytetrafluoroethylene
+- #3035 모듈러 건축 [다시 씀 ★] 영구 모듈러는 한자리에 두는 것이라 일반 장점으로 단정 못 함 → 문서대로 임시 건물의 이동성으로 좁힘
+    → 이렇게 지은 임시 건물은 다른 곳으로 옮기기 쉬워, 건물을 빌려 주는 업체들이 즐겨 쓴다.
+    출처: https://en.wikipedia.org/wiki/Modular_building
+- #3042 허수 [다시 씀 ★ ★GEN재독] GEN 재독 — 하위 에이전트 문구 '이것을 평면 위의 점으로' 는 복소수를 가리켜 느슨했다. 베셀 1797 논문(덴마크 왕립 학술원)·직각 축으로 고침
+    → 이것을 실수와 직각인 축에 놓아 평면 위에 그리는 방법은 1797년 측량가 베셀이 덴마크 왕립 학술원에 낸 논문에서 처음 나왔다.
+    출처: https://en.wikipedia.org/wiki/Complex_plane https://en.wikipedia.org/wiki/Caspar_Wessel
+- #3055 표본 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Sample_size_determination
+- #3057 피아노포르테 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Bartolomeo_Cristofori
+- #3085 자일리톨 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Xylitol
+- #3093 수국 [다시 씀 ★] 사실은 맞으나 '물'이 정답 수국(水菊)의 '수'를 풀어 쓴 조각이 되어(H2) '물'을 빼고 문서의 씨앗 주머니 모양 사실로 손질
+    → 학명의 속명은 씨앗 주머니의 생김새를 그리스어로 '그릇'에 빗댄 데서 왔다고 설명된다.
+    출처: https://en.wikipedia.org/wiki/Hydrangea
+- #3098 사르트르 [다시 씀 ★] B 겹침(3795 질문) → 확인된 리베라시옹 창간 사실로 다시 씀
+    → 1973년 파리에서 일간지 '리베라시옹'을 세운 사람 가운데 하나다.
+    출처: https://en.wikipedia.org/wiki/Libération
+- #3107 악의 평범성 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Eichmann_in_Jerusalem
+- #3125 영구기관 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Perpetual_motion
+- #3140 안데스 [다시 씀 ★] 출처마다 다른 높이 숫자를 빼고 확인된 최고봉 사실만 남김
+    → 이 산지에 있는 아르헨티나의 아콩카과는 아메리카 대륙에서 가장 높은 봉우리다.
+    출처: https://en.wikipedia.org/wiki/Aconcagua
+- #3155 헌법소원 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/대한민국_헌법재판소 https://ko.wikipedia.org/wiki/헌법소원
+- #3164 레이디 가가 [다시 씀 ★] B 겹침(3836 질문) → 토니 베넷 재즈 앨범·슈퍼볼 하프타임으로 다시 씀
+    → 2014년 토니 베넷과 함께 재즈 앨범을 냈고, 2017년에는 슈퍼볼 하프타임 쇼의 메인 무대를 맡았다.
+    출처: https://en.wikipedia.org/wiki/Lady_Gaga
+- #3188 계절성 정동장애 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Seasonal_affective_disorder
+- #3217 공공부조 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/공공부조
+- #3223 준거집단 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Reference_group https://en.wikipedia.org/wiki/Anticipatory_socialization
+- #3225 낙인 이론 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Labeling_theory
+- #3227 문화 지체 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Cultural_lag
+- #3256 토요타 [다시 씀 ★] 출처 없는 인과('배우려는 기업이 많아')를 빼고 문서 문장대로 손질
+    → '카이젠' 이라는 개선 원칙을 이 회사의 경영 방식에 담았고, 이 일본어 낱말은 뒤에 세계 곳곳으로 퍼졌다.
+    출처: https://en.wikipedia.org/wiki/Kaizen
+- #3262 유령 정체 [확인됨] 제안 그대로
+    출처: https://ir.library.osaka-u.ac.jp/repo/ouka/all/93262/
+- #3275 하이브리드전 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Hybrid_warfare
+- #3289 아멜리에 [다시 씀 ★] 확인 못 한 아코디언·피아노 묘사를 빼고 확인된 작곡 일화로 바꿈
+    → 음악을 맡은 얀 티에르상은 이 영화를 위해 두 주 만에 열아홉 곡을 지었고, 앞선 앨범의 곡들도 함께 쓰였다.
+    출처: https://en.wikipedia.org/wiki/Am%C3%A9lie https://en.wikipedia.org/wiki/Yann_Tiersen
+- #3297 과카몰리 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Guacamole
+- #3318 세포이 항쟁 [다시 씀 ★] B 겹침(3973 해설의 '제1차 독립 전쟁') 제거, 무굴 황제 추대 사실만 출처 표현대로 남김
+    → 봉기군은 델리에서 무굴 제국의 마지막 황제 바하두르 샤 2세를 온 인도의 황제로 받들었다.
+    출처: https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857
+- #3333 아Q정전 [다시 씀 ★] 사실은 모두 참, #4025 해설과 '첫 장에서' 낱말이 겹쳐 그 말만 뺀 작은 손질
+    → 1921년 12월부터 이듬해 2월까지 베이징의 신문 부록에 연재되었고, 서술자는 주인공의 성과 고향을 알 수 없다고 밝힌다.
+    출처: https://en.wikipedia.org/wiki/The_True_Story_of_Ah_Q
+- #3343 제트기류 [다시 씀 ★] '겨울철에 더 강하다' 를 못 찾아 뺌
+    → 공기 덩어리 사이의 온도 차가 클수록 세지고, 흐름이 남북으로 구불구불 휘기도 하는 바람이다.
+    출처: https://en.wikipedia.org/wiki/Jet_stream
+- #3348 보이저 1호 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Voyager_1
+- #3358 홍학 [다시 씀 ★] '원뿔 모양' 은 출처 없음, 외다리 자세는 홍학의 대표 상징이라 떠먹여 주기 우려 — 확인된 둥지·알 사실로 다시 씀
+    → 암수가 함께 진흙을 쌓아 올린 둔덕 둥지를 짓고, 그 위에 알을 하나만 낳는다.
+    출처: https://en.wikipedia.org/wiki/Greater_flamingo https://en.wikipedia.org/wiki/Flamingo
+- #3367 진주 [다시 씀 ★] 땀·화장품·보관 부분을 찾지 못해 빼고 확인된 굳기 사실만 남김
+    → 모스 굳기가 2.5~4.5 정도로 무른 편이다.
+    출처: https://en.wikipedia.org/wiki/Pearl
+- #3372 독화살개구리 [다시 씀 ★] web 표본 — 사실은 맞으나 B 겹침(2679 해설) → 어미가 알로 올챙이를 먹이는 사실로 다시 씀
+    → 몇몇 종은 어미가 올챙이가 자라는 물웅덩이에 알을 더 낳아 넣어 먹이로 보탠다.
+    출처: https://en.wikipedia.org/wiki/Poison_dart_frog
+- #3380 백설공주 [다시 씀 ★] B 겹침(#1414 질문·해설 = Disney's Folly) — 확인된 제작비 저당·시사회 사실로 바꿈
+    → 디즈니는 제작비를 대려고 자기 집을 저당 잡혔고, 1937년 12월 로스앤젤레스의 카세이 서클 극장에서 첫선을 보였다.
+    출처: https://en.wikipedia.org/wiki/Snow_White_and_the_Seven_Dwarfs_(1937_film)
+- #3382 픽사 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Pixar
+- #3385 스쿠비 두 [다시 씀 ★] '무서운 곳에 들어서려면' 세부 미확인 → 출처대로 '간식만 주면 구슬릴 수 있다' 로 손질 (간식 이름엔 정답 글자가 있어 안 씀)
+    → 주인공 개의 주인은 섀기 로저스로, 개 못지않은 겁쟁이이며 간식만 주면 쉽게 구슬릴 수 있다.
+    출처: https://en.wikipedia.org/wiki/Shaggy_Rogers
+- #3391 무민 [다시 씀 ★] B 겹침(#2705 질문의 트롤 설정을 제목이 드러냄) — 제목을 빼고 확인된 첫 반응·영국 연재 사실로
+    → 첫 책은 1945년에 나왔지만 처음 반응은 미지근했고, 1954년 영국 신문 '이브닝 뉴스'에 연재 만화가 실리며 널리 퍼졌다.
+    출처: https://en.wikipedia.org/wiki/Moomins
+- #3395 드림웍스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/DreamWorks_Pictures
+- #3401 안도 다다오 [다시 씀 ★] B 겹침(2077 질문의 독학)을 빼고, 문서가 나라를 특정하지 않아 '유럽과 미국' 대신 확인된 건축가 이름과 사무소 설립으로 다시 씀
+    → 젊은 시절 르코르뷔지에·라이트·칸 등의 건물을 찾아다니며 익힌 뒤, 1968년 오사카에 사무소를 열었다.
+    출처: https://en.wikipedia.org/wiki/Tadao_Ando
+- #3402 사그라다 파밀리아 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia
+- #3408 장경판전 [다시 씀 ★] 배치 '그 사이'를 문서대로 '그 옆'으로 작게 손질(건물 이름은 정답 글자 '장'이 들어 쓰지 않음)
+    → 남과 북에 긴 건물 두 채가 서고, 그 옆에 작은 건물 두 채가 더해져 모두 네 채로 이루어진다.
+    출처: https://ko.wikipedia.org/wiki/해인사_장경판전
+- #3409 창덕궁 [다시 씀 ★] web 표본 — 사실은 맞으나 B 겹침(2713 해설)으로 확인된 돈화문 사실로 바꿈
+    → 정문인 돈화문은 지금 남아 있는 조선 궁궐 정문 가운데 가장 오래된 것으로 꼽힌다.
+    출처: https://en.wikipedia.org/wiki/Changdeokgung
+- #3414 게르니카 [다시 씀 ★] B 겹침(#332 질문의 거대한 흑백 화면) — 확인된 소장처 사실로 바꿈
+    → 1937년 파리 만국박람회의 스페인관을 위해 그려졌고, 1992년부터 마드리드의 레이나 소피아 미술관에 걸려 있다.
+    출처: https://en.wikipedia.org/wiki/Guernica_(Picasso)
+- #3418 모빌 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Alexander_Calder
+- #3420 매너리즘 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Mannerism
+- #3422 금성 [다시 씀 ★] 사실은 모두 맞으나 B 겹침(337 질문의 이산화탄소 대기) 때문에 그 구절을 뺌
+    → 표면 기압이 지구의 약 90배이며, 짙은 황산 구름에 덮여 있다.
+    출처: https://en.wikipedia.org/wiki/Atmosphere_of_Venus
+- #3425 핼리 혜성 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Giotto_(spacecraft)
+- #3427 오리온자리 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Rigel
+- #3441 자연발생설 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Francesco_Redi
+- #3442 물 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Light-dependent_reactions
+- #3443 나이트 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Knight_(chess)
+- #3444 킹 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/King_(chess)
+- #3450 화투 [다시 씀 ★] '상인'·'카르타' 를 문서에서 못 찾아 빼고, 확인된 덴쇼 가루타 갈래로 '~고 한다' 체로 다시 씀
+    → 16세기 중반 포르투갈 사람들이 일본에 들여온 카드를 본뜬 '덴쇼 가루타'에서 갈래가 이어졌다고 한다.
+    출처: https://en.wikipedia.org/wiki/Hanafuda
+- #3454 노키아 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Nokia
+- #3455 닌텐도 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Nintendo_Entertainment_System
+- #3460 스타벅스 [다시 씀 ★] '원두 볶는 가게를 열었다' 를 확인 못 해 빼고, 피트를 '커피 볶는 사업가' 로 (문서 그대로)
+    → 창업자 세 사람은 샌프란시스코 대학교에서 만난 사이였고, 커피 볶는 사업가 앨프리드 피트에게서 영감을 받았다.
+    출처: https://en.wikipedia.org/wiki/Starbucks
+- #3464 트램펄린 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Trampoline
+- #3467 필립스 [다시 씀 ★] 사실은 맞으나 B 겹침(2764 질문)이라 확인된 다른 사실(1939년 회전 면도기·본사)로 다시 씀 — 제품 이름은 정답 글자라 뺌
+    → 1939년 회전 날을 단 전기면도기를 내놓았고, 지금 본사는 암스테르담에 있다.
+    출처: https://en.wikipedia.org/wiki/Philips
+- #3479 슈베르트 [다시 씀 ★] 확인 못 한 '이름을 알리기 시작했다'를 빼고 문서의 연도·출처(『파우스트』)로 고침
+    → 열일곱 살이던 1814년, 괴테의 『파우스트』 한 장면에 곡을 붙여 '실 잣는 그레트헨'을 썼다.
+    출처: https://en.wikipedia.org/wiki/Gretchen_am_Spinnrade
+- #3480 쇼팽 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Frédéric_Chopin
+- #3482 바그너 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Richard_Wagner
+- #3483 볼레로 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Boléro
+- #3485 합창 교향곡 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Symphony_No._9_(Beethoven)
+- #3486 베토벤 [다시 씀 ★] B 겹침(#1526 해설 = 하일리겐슈타트 유서) — 확인된 스승 사실(하이든→알브레히츠베르거)로 바꿈
+    → 빈에서 하이든에게 배우다가, 하이든이 1794년 영국으로 떠나자 알브레히츠베르거에게서 대위법을 이어 배웠다.
+    출처: https://en.wikipedia.org/wiki/Ludwig_van_Beethoven
+- #3487 레퀴엠 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Ein_deutsches_Requiem
+- #3491 카르멘 [다시 씀 ★] B 겹침(#851 해설의 초연 혹평) — 초연 절을 빼고 확인된 폰 메크 편지 사실로
+    → 차이콥스키는 후원자 폰 메크 부인에게 보낸 편지에서 이 오페라를 '모든 면에서 걸작'이라 평했다.
+    출처: https://en.wikipedia.org/wiki/Carmen
+- #3497 스코틀랜드 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Scotland https://en.wikipedia.org/wiki/Banknotes_of_Scotland
+- #3505 크립토나이트 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Kryptonite
+- #3506 DC [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/DC_Comics
+- #3510 고바우 영감 [다시 씀 ★] B 겹침(#874 해설의 연재 기간) — 연도를 빼고 확인된 연재 횟수·등록문화재만 남김
+    → 연재는 1만 4천 회를 넘겨 끝났고, 그 원화는 등록문화재로 지정되었다.
+    출처: https://ko.wikipedia.org/wiki/고바우_영감 https://www.newdaily.co.kr/site/data/html/2016/06/23/2016062300067.html
+- #3513 리눅스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Git https://en.wikipedia.org/wiki/TOP500
+- #3535 청주 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Sake https://ko.wikipedia.org/wiki/청주_(술)
+- #3536 동동주 [다시 씀 ★] 탁주 분류·파전 곁들임을 확인 못 해 문서의 재료·담금 시기로 다시 씀
+    → 찹쌀이나 멥쌀에 누룩가루를 섞어 빚으며, 1년 내내 담글 수 있지만 9~11월을 가장 좋은 때로 꼽는다.
+    출처: https://ko.wikipedia.org/wiki/동동주
+- #3537 보스턴 차 사건 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Intolerable_Acts
+- #3541 고종 [다시 씀 ★] '궁궐 첫'을 문서의 '한국 첫'으로, '에케르트에게 짓게 했다'를 '그의 지시로 에케르트가 곡을 붙인'으로 손질
+    → 재위 중인 1887년 경복궁 건청궁에 한국 첫 전깃불이 켜졌고, 1902년 그의 지시로 독일인 에케르트가 곡을 붙인 국가가 만들어졌다.
+    출처: https://ko.wikipedia.org/wiki/건청궁_(경복궁) https://ko.wikipedia.org/wiki/대한제국_애국가
+- #3549 금본위제 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Gold_standard
+- #3550 케인스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Bretton_Woods_Conference
+- #3557 마리오 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Donkey_Kong_(1981_video_game)
+- #3559 소닉 [다시 씀 ★] '지금 모습은 길거리 투표로'를 문서대로 '센트럴파크 행인들에게 물은 끝에'로 손질
+    → 1991년 첫 게임이 나오기 전 토끼·아르마딜로도 후보였고, 디자이너가 뉴욕 센트럴파크 행인들에게 물은 끝에 뽑혔다.
+    출처: https://en.wikipedia.org/wiki/Sonic_the_Hedgehog_(character)
+- #3562 게임보이 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Game_Boy_Pocket
+- #3563 마인크래프트 [다시 씀 ★] '판매했다'를 확인 못 해 출처 표현 '얼리 액세스로 공개'로 바꾸고 날짜를 출처대로 넣음
+    → 2009년 5월 미완성 시험판을 얼리 액세스로 먼저 내놓았고, 2년 반쯤 뒤인 2011년 11월에 정식 출시했다.
+    출처: https://en.wikipedia.org/wiki/Minecraft
+- #3581 횡격막 [다시 씀 ★] 대동맥은 구멍을 뚫지 않고 뒤로 지나 틀림 → 식도만 남기고 간 때문에 오른쪽이 높은 사실로 고침
+    → 식도가 이 근육에 난 구멍을 지나 배로 내려가며, 아래에 큰 간이 받친 오른쪽 절반이 왼쪽보다 높이 솟아 있다.
+    출처: https://en.wikipedia.org/wiki/Thoracic_diaphragm
+- #3582 간 [다시 씀 ★] B 겹침(1659 질문의 '가장 큰')으로 '가장 큰 샘'을 빼고 무게·문맥 사실만 남김
+    → 성인 기준 약 1.5kg이며, 소화관을 거친 영양분 많은 혈액이 문맥을 통해 곧장 이곳으로 모인다.
+    출처: https://en.wikipedia.org/wiki/Liver
+- #3583 콩팥 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Kidney
+- #3592 세로토닌 [다시 씀 ★] B 겹침(980 질문) → 혈소판 저장·방출 사실로 다시 씀(질문의 '혈관 수축'은 되풀이하지 않음)
+    → 피 속에서는 혈소판이 이것을 모아 두었다가, 피가 굳을 때 내놓는다.
+    출처: https://en.wikipedia.org/wiki/Serotonin
+- #3598 스푸트니크 [다시 씀 ★] B 겹침(2302 질문의 1957년 발사) 때문에 날짜를 빼고 확인된 궤도 기간으로 손질
+    → 카자흐스탄의 바이코누르에서 쏘아 올렸고, 석 달쯤 지구를 돈 뒤 대기권에 들어와 불타 사라졌다.
+    출처: https://en.wikipedia.org/wiki/Sputnik_1
+- #3606 마리 퀴리 [다시 씀 ★] 확인 못 한 '직접 몰고 전선을 다니며'를 빼고 문서의 차량 개발·20대 사실로 고침('작은 퀴리' 별칭은 정답 글자라 안 씀)
+    → 제1차 세계대전 때 X선 촬영 장비를 실은 이동 차량을 개발했고, 전쟁 첫해에만 이런 차 20대를 갖추게 했다.
+    출처: https://en.wikipedia.org/wiki/Marie_Curie
+- #3608 인슐린 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Paul_Langerhans
+- #3611 설렁탕 [다시 씀 ★] B 겹침(992 질문의 뽀얀 국물) → 간 맞추는 방식 차이로 다시 씀
+    → 곰탕과 달리 먹는 사람이 소금과 파를 넣어 간을 맞추는 것이 본래 방식이었다고 한다.
+    출처: https://ko.wikipedia.org/wiki/설렁탕
+- #3612 미역국 [다시 씀 ★] '옥돔' 을 못 찾아 빼고 확인된 성게·몸국 사실로 손질 (정답 글자 국 이 든 몸국 은 뺌)
+    → 제주에서는 성게를 넣어 끓인 것이 그 섬을 대표하는 향토 요리로 꼽힌다.
+    출처: https://www.heraldk.com/article/2026012804300012427 https://ko.wikipedia.org/wiki/미역국
+- #3620 만두 [다시 씀 ★] 설날 풍습을 문서대로 '개성 이북'으로 좁히고 지역 차이를 평안도식 크기로 구체화
+    → 개성 이북 지방에서는 설날에 빚어 국을 끓여 먹는 풍습이 있고, 평안도식은 피 지름이 12cm쯤 될 만큼 크다.
+    출처: https://ko.wikipedia.org/wiki/만두
+- #3624 인절미 [다시 씀 ★] B 겹침(콩고물) + 이사 떡 미확인 → 확인된 냉동 보관 특징으로 다시 씀
+    → 무른 채로 얼려 두었다가 상온에 꺼내 두면 다시 말랑해져, 냉동해 두고 조금씩 꺼내 먹기도 한다.
+    출처: https://ko.wikipedia.org/wiki/인절미
+- #3625 약과 [다시 씀 ★] B 겹침(2319 질문)·혼례 미확인 → 같은 취지(제례 음식)를 문서의 고려 불교 제례 사실로 다시 씀
+    → 고려 때는 고기와 생선을 올리지 않는 불교 제례에 대신 올렸고, 과일이나 짐승 모양으로 빚기도 했다.
+    출처: https://ko.wikipedia.org/wiki/약과
+- #3626 식혜 [다시 씀 ★] 두 사실 모두 못 찾아, 같은 취지(후식 음료라는 쓰임)를 문서 문장과 이웃 나라 비슷한 음료로 다시 씀
+    → 일본의 아마자케나 중국의 지우냥과 닮은 음료이며, 흔히 식사 뒤 후식으로 마신다.
+    출처: https://ko.wikipedia.org/wiki/식혜
+- #3627 경기도 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/수도권 https://ko.wikipedia.org/wiki/수도권_(대한민국)
+- #3628 창원시 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Changwon https://en.wikipedia.org/wiki/Changwon_LG_Sakers
+- #3629 지리산 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/지리산
+- #3630 한강 [다시 씀 ★] 희생자를 문서대로 '군인·경찰·민간인 수백 명 추정' 으로 정확히 손질
+    → 1950년 6월 28일 새벽 이 강의 인도교가 폭파되어, 다리 위에 있던 군인·경찰·민간인 수백 명이 숨진 것으로 추정된다.
+    출처: https://ko.wikipedia.org/wiki/한강_인도교_폭파_사건
+- #3632 우포늪 [다시 씀 ★] '여름에 넓게 핀다'를 못 찾아 문서의 서식 종 수로 고침
+    → 멸종위기종 가시연꽃을 비롯해 식물 340여 종과 조류 62종이 사는 곳이다.
+    출처: https://ko.wikipedia.org/wiki/우포늪
+- #3636 백령도 [다시 씀 ★] '해마다 찾아와' 세부 대신 출처 문장(보호구역·바위와 해변 관찰)으로 손질
+    → 점박이물범 보호구역이 있어 섬의 바위와 해변에서 물범을 볼 수 있다.
+    출처: https://en.wikipedia.org/wiki/Baengnyeongdo
+- #3637 이어도 [다시 씀 ★] B 겹침(2342 해설의 관할·분쟁 쟁점)과 '해마다' 미확인 → 1977년 영화화로 다시 씀(다른 이름 '파랑도'는 H10 이라 안 씀)
+    → 김기영 감독이 1977년 같은 제목의 영화로 만들었고, 제주를 배경으로 찍었다.
+    출처: https://ko.wikipedia.org/wiki/이어도 https://ko.wikipedia.org/wiki/이어도_(영화)
+- #3638 통영 [다시 씀 ★] 사실은 모두 맞으나 B 겹침(2952 해설의 한려 바다)이라 그 구절만 뺌 · 2952 질문의 항구 도시 표현도 뺌
+    → 굴과 꿀빵이 이름났고, 미륵산 꼭대기 쪽으로 오르는 케이블카가 있다.
+    출처: https://ko.wikipedia.org/wiki/통영시
+- #3642 장보고 [다시 씀 ★] 확인 못 한 '노비를 목격하고 귀국'을 빼고, 문서의 의형제 정년·서주 무령군 사실로 고침
+    → 의형제 정년과 함께 당나라에 건너가 서주의 무령군에서 장교로 일했다고 전한다.
+    출처: https://ko.wikipedia.org/wiki/장보고
+- #3643 무령왕릉 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/무령왕릉
+- #3644 석굴암 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/석굴암
+- #3649 무신정변 [다시 씀 ★] 사실은 맞으나 B 겹침(1717 질문의 정중부)이라 확인된 다른 사실(경대승 도방)로 다시 씀 (정답 조각 무신 은 피함)
+    → 이 사건 뒤 권력을 잡은 사람 가운데 경대승은 제 몸을 지키려고 도방을 두었다.
+    출처: https://ko.wikipedia.org/wiki/무신정권
+- #3652 기묘사화 [다시 씀 ★] B 겹침(2355 질문의 훈구 반발)으로 그 구절을 빼고 확인된 현량과 선발 세부로 다시 씀
+    → 이 일로 없어진 현량과는 천거된 120명 가운데 28명을 뽑았는데, 대부분 조광조를 따르는 신진 사림이었다.
+    출처: https://ko.wikipedia.org/wiki/현량과
+- #3653 대동법 [다시 씀 ★] B 겹침(427 해설) → 확인된 1결 12말 기준·반대파 세부로 다시 씀
+    → 땅 1결마다 쌀 12말을 거두는 것이 기준이었고, 송시열·김집 같은 이들은 시행에 반대했다.
+    출처: https://ko.wikipedia.org/wiki/대동법
+- #3659 조선어학회 사건 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/조선어학회_사건
+- #3665 7·4 남북공동성명 [다시 씀 ★] B 겹침(1024 해설의 체제 강화) → 성명의 국제적 배경으로 다시 씀(해설의 남북조절위원회도 피함) / 정답 조각 남북 이 들어가 검사 block → 한반도의 두 정부로 바꿈
+    → 닉슨 독트린과 미국·중국의 화해 같은 냉전 질서 변화가 한반도의 두 정부를 대화로 이끈 배경으로 꼽힌다.
+    출처: https://ko.wikipedia.org/wiki/7·4_남북_공동_성명
+- #3671 구운몽 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/The_Cloud_Dream_of_the_Nine
+- #3672 허생전 [확인됨] 제안 그대로
+    출처: https://ko.wikisource.org/wiki/열하일기/옥갑야화
+- #3673 박씨전 [확인됨] 제안 그대로
+    출처: https://ko.wikisource.org/wiki/박씨전
+- #3674 토끼전 [다시 씀 ★] 미확인 '작가·지은 때 불분명' 을 빼고 확인된 신재효 여섯 마당 세부로 다시 씀
+    → 신재효가 정리한 판소리 여섯 마당 가운데 오늘날까지 소리로 전하는 다섯 마당의 하나로 꼽힌다.
+    출처: https://ko.wikipedia.org/wiki/수궁가
+- #3676 공무도하가 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/공무도하가
+- #3677 제망매가 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/월명
+- #3679 무정 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/이광수
+- #3682 태평천하 [확인됨] 제안 그대로
+    출처: https://itwiki.kr/w/%ED%83%81%EB%A5%98
+- #3683 날개 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/오감도
+- #3686 광장 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/광장_(소설)
+- #3687 난장이가 쏘아올린 작은 공 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/난장이가_쏘아올린_작은_공
+- #3688 삼포 가는 길 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/장길산_(소설)
+- #3692 별 헤는 밤 [다시 씀 ★] 위치('마지막 부분 가까이')를 확인 못 해 빼고 확인된 구절 내용만 남김
+    → 시 속에서 화자는 어머니가 멀리 북간도에 계신다고 말한다.
+    출처: https://lady.khan.co.kr/finance/article/4133 https://ko.wikipedia.org/wiki/별_헤는_밤
+- #3694 신중현 [다시 씀 ★] B 겹침(2963 해설) 때문에 앞부분을 확인된 애드 포 결성으로 바꾸고, '만들었다' 는 문서대로 '활동한다' 로
+    → 1964년 '애드 포'를 꾸려 첫 음반 '빗속의 여인'을 냈고, 아들은 밴드 시나위에서 기타를 친다.
+    출처: https://ko.wikipedia.org/wiki/신중현
+- #3695 산울림 [다시 씀 ★] B 겹침(2965 질문의 삼 형제)으로 형제 구성 대신 확인된 데뷔 음반 녹음 일화로 바꿈
+    → 데뷔 음반은 리더가 취업 시험을 보기로 한 날 녹음되었는데, 그는 시험 대신 녹음을 택했다고 한다.
+    출처: https://ko.wikipedia.org/wiki/산울림
+- #3699 듀스 [다시 씀 ★] '세상을 떠나 활동을 접었다' 의 인과가 확인되지 않아, 같은 문서의 해체·앨범 수 사실로 다시 씀
+    → 1995년까지 정규 앨범 세 장과 리믹스 앨범 한 장을 내고 해체했다.
+    출처: https://ko.wikipedia.org/wiki/듀스_(음악_그룹)
+- #3706 목포의 눈물 [다시 씀 ★] 김시스터즈 구성(딸들+조카)을 출처대로 '딸들과 조카' 로 고침
+    → 노랫말은 신문사 가사 공모에 뽑힌 문일석이 썼고, 이 노래를 부른 가수는 뒷날 딸들과 조카를 김시스터즈로 길러 미국 무대에 세웠다.
+    출처: https://ko.wikipedia.org/wiki/목포의_눈물 https://ko.wikipedia.org/wiki/이난영
+- #3707 동백아가씨 [다시 씀 ★] B 겹침(#1065 질문·해설의 왜색 금지·1987 해금) — 확인된 음반 판매 추정 사실로 바꿈('추정' 그대로)
+    → 노랫말은 작사가 한산도가 썼으며, 한국에서 처음으로 음반이 100만 장 넘게 팔린 것으로 추정된다.
+    출처: https://ko.wikipedia.org/wiki/동백아가씨
+- #3709 대학가요제 [다시 씀 ★] B 겹침(1071 해설의 무한궤도) → 1986년 유열 대상·2012년 중단으로 다시 씀
+    → 1986년 대상은 가수 유열이 받았고, 이 대회는 2012년을 끝으로 한동안 열리지 않았다.
+    출처: https://ko.wikipedia.org/wiki/MBC_대학가요제
+- #3710 아리랑 [다시 씀 ★] 사실은 맞으나 B 겹침(2982 해설의 필름 유실·질문의 1926년)이라 확인된 흥행 세부로 다시 씀
+    → 서울 단성사에서 2년 넘게 걸리며 15만 명을 모았고, 개봉 첫날에는 경찰 기마대까지 나왔다.
+    출처: https://ko.wikipedia.org/wiki/아리랑_(1926년_영화)
+- #3711 오발탄 [확인됨] 제안 그대로
+    출처: https://ko.wikipedia.org/wiki/오발탄
+- #3715 괴물 [다시 씀 ★] B 겹침(2006년) 이라 연도를 빼고, 확인된 배역(3대 가족)으로 다시 씀
+    → 송강호·변희봉·박해일·배두나·고아성이 할아버지부터 손녀까지 3대 가족을 연기했다.
+    출처: https://en.wikipedia.org/wiki/The_Host_(2006_film)
+- #3724 님아 그 강을 건너지 마오 [다시 씀 ★] web 표본 — 사실은 모두 맞으나 B 겹침(582 질문의 '마지막 시간') 으로 할아버지 사망 대목을 빼고 촬영 시작 시점을 밝힘
+    → KBS '인간극장'에 소개됐던 부부를 감독이 2012년 9월부터 약 15개월 동안 따라가며 찍었다.
+    출처: https://ko.wikipedia.org/wiki/님아,_그_강을_건너지_마오
+- #3748 바순 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Bassoon
+- #3749 마림바 [다시 씀 ★] '연주자가 많다' 는 출처가 없어 '쥐기도 한다' 로 손질
+    → 화음을 칠 때는 채를 양손에 두 자루씩, 모두 네 자루를 쥐기도 한다.
+    출처: https://en.wikipedia.org/wiki/Marimba
+- #3754 팬플루트 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Gheorghe_Zamfir
+- #3757 오이디푸스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Oedipus
+- #3759 페르세포네 [다시 씀 ★] B 겹침(470 해설의 데메테르 딸) → 아도니스 다툼 이야기로 다시 씀(석류·계절은 470 질문이라 피함)
+    → 아프로디테가 맡긴 아기 아도니스를 키우다 돌려주지 않아, 제우스가 한 해를 셋으로 나눠 판가름했다고 전한다.
+    출처: https://en.wikipedia.org/wiki/Persephone
+- #3760 오딘 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Valkyrie
+- #3764 발키리 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Valkyrie
+- #3765 이시스 [다시 씀 ★] '6세기까지 섬겨짐' 은 출처가 다투는 세부라, 확인된 537년 폐쇄·교회 전환으로 다시 씀
+    → 이집트 필라이 섬에 있던 이 여신의 신전은 537년 유스티니아누스 황제의 명으로 문을 닫은 뒤 교회로 바뀌었다.
+    출처: https://en.wikipedia.org/wiki/Philae
+- #3766 사자의 서 [다시 씀 ★] B 겹침(1815 해설) 부분을 빼고 주문 수를 출처대로(192개쯤) 씀
+    → 신왕국 시대 초부터 쓰였고, 지금까지 알려진 주문은 모두 192개쯤이다.
+    출처: https://en.wikipedia.org/wiki/Book_of_the_Dead
+- #3770 마우이 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Māui_(mythology)
+- #3779 보더 콜리 [다시 씀 ★] '시조로 꼽힌다'를 문서 표현대로 '많은 개가 거슬러 올라간다'로 고치고 새끼 수를 더함
+    → 오늘날 이 품종의 많은 개가 '올드 헴프'라는 한 수컷으로 거슬러 올라가며, 그가 남긴 새끼는 200마리쯤이라고 한다.
+    출처: https://en.wikipedia.org/wiki/Border_Collie
+- #3781 세인트버나드 [다시 씀 ★] B 겹침(알프스 고개) → 고개 대목을 빼고 무게(출처 범위)와 1884년 바젤 클럽 창립으로 다시 씀. warn 은 구두점 조각이라 무시
+    → 수컷은 64~82킬로그램에 이르는 초대형견이며, 1884년 스위스 바젤에서 이 품종의 클럽이 세워졌다.
+    출처: https://en.wikipedia.org/wiki/St._Bernard_(dog)
+- #3784 러시안 블루 [다시 씀 ★] 장소(영국·스칸디나비아)와 '복원'을 확인 못 해 출처 표현대로 고침
+    → 제2차 세계대전 직후 수가 모자라 샴과 교배하기도 했으며, 낯선 사람 앞에서는 조심스러운 조용한 품종으로 알려졌다.
+    출처: https://en.wikipedia.org/wiki/Russian_Blue
+- #3790 스토아 학파 [다시 씀 ★] B 겹침(1159 해설의 에픽테토스) 때문에 세네카만 남김
+    → 네로 황제의 스승이었던 세네카가 로마 제정 시대 이 갈래의 대표 철학자로 꼽힌다.
+    출처: https://en.wikipedia.org/wiki/Seneca_the_Younger https://en.wikipedia.org/wiki/Epictetus
+- #3791 소피스트 [다시 씀 ★] 사실은 맞으나 앞 구절이 짝 1154 의 새 힌트와 같은 사실이라 빼고 '구름' 풍자만 남김
+    → 아리스토파네스의 희극 '구름'은 소크라테스를 이들과 한통속으로 그려 풍자했다.
+    출처: https://en.wikipedia.org/wiki/The_Clouds https://en.wikipedia.org/wiki/Sophist
+- #3792 칸트 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/What_Is_Enlightenment%3F https://en.wikipedia.org/wiki/Perpetual_Peace:_A_Philosophical_Sketch
+- #3796 사르트르 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Jean-Paul_Sartre
+- #3799 겸애 [확인됨] 제안 그대로
+    출처: https://zh.wikisource.org/wiki/韓非子/顯學
+- #3800 법가 [다시 씀 ★] 동문 사실을 문서에서 못 찾고 B 겹침(2466 질문의 한비자)도 있어 이사의 확인된 사실로 다시 씀
+    → 이 학파의 이사는 유학자 순자에게 배웠고, 뒤에 진나라의 승상이 되었다.
+    출처: https://en.wikipedia.org/wiki/Li_Si
+- #3801 타불라 라사 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/New_Essays_on_Human_Understanding
+- #3807 바오바브나무 [다시 씀 ★] B 겹침(1861 질문) → 확인된 가로수 길 세부(30m·2015 천연기념물)로 다시 씀. 첫 시안의 '나무' 는 정답 조각이라 뺌
+    → 이 길에 줄지어 선 것들은 높이가 30m쯤 되며, 이 일대는 2015년부터 천연기념물로 보호되고 있다.
+    출처: https://en.wikipedia.org/wiki/Avenue_of_the_Baobabs
+- #3809 튤립 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Tulip_breaking_virus
+- #3811 연꽃 [다시 씀 ★] '벌집' 비유를 문서 묘사(물뿌리개 꼭지)와 씨 개수로 바꿈 (정답 글자 꽃 은 뺌)
+    → 피고 진 뒤에는 물뿌리개 꼭지처럼 생긴 송이에 씨가 10~30개쯤 박힌다.
+    출처: https://en.wikipedia.org/wiki/Nelumbo_nucifera
+- #3812 동백 [다시 씀 ★] 확인 못 한 '옛날 여인들'을 문서의 '일본에서 머릿기름·화장품용 재배'로 고침
+    → 일본에서는 주로 씨앗에서 짠 기름을 머릿기름과 화장품 원료로 쓰려고 이 나무를 기른다.
+    출처: https://en.wikipedia.org/wiki/Camellia_oil
+- #3817 고추 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Scoville_scale
+- #3819 봉선화 [다시 씀 ★] 원산지·옛 문헌을 출처 그대로 구체화(작은 손질)
+    → 인도·말레이시아·중국이 원산지로 알려졌으며, 1241년의 『동국이상국집』에도 나올 만큼 오래 가꾼 화초다.
+    출처: https://ko.wikipedia.org/wiki/봉선화
+- #3820 할미꽃 [다시 씀 ★] B 겹침(647 질문의 흰 깃털 씨앗) 때문에 열매 부분을 빼고 확인된 키로 바꿈(꽃 모양·뿌리 약재는 647 질문·해설과 겹쳐 피함)
+    → 식물 전체에 흰 털이 빽빽하게 나 있어 희끄무레해 보이며, 키는 30~40cm쯤 자란다.
+    출처: https://ko.wikipedia.org/wiki/할미꽃
+- #3823 매니페스토 [다시 씀 ★] '총선 때마다 책자'를 확인 못 해 같은 영국 정당 쪽의 확인된 일화(1983 노동당)로 다시 씀
+    → 영국 노동당이 1983년 총선 때 내놓은 이것은 같은 당 의원에게서 '역사상 가장 긴 유서'라는 조롱을 들었다.
+    출처: https://en.wikipedia.org/wiki/Party_platform https://en.wikipedia.org/wiki/The_longest_suicide_note_in_history
+- #3825 플리바게닝 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Plea_bargain
+- #3829 펑크 록 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/CBGB
+- #3831 라이브 에이드 [다시 씀 ★] 맨 처음은 콜드스트림 근위대 군악대라 '첫 무대를 열었다' 가 어긋남 → '군악대 뒤 첫 밴드' 로 정확히
+    → 런던 웸블리 경기장에서는 근위대 군악대의 연주 뒤 스태터스 쿼가 첫 밴드로 'Rockin' All Over the World'를 불렀다.
+    출처: https://en.wikipedia.org/wiki/Live_Aid
+- #3832 마돈나 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Evita_(1996_film)
+- #3835 오토튠 [다시 씀 ★] B 겹침(3163 질문) → 확인된 출시 회사·연도와 타임지 목록으로 다시 씀
+    → 1997년 미국 회사 안타레스 오디오 테크놀로지스가 처음 내놓았고, 타임지의 '최악의 발명품 50'에 오르기도 했다.
+    출처: https://en.wikipedia.org/wiki/Auto-Tune
+- #3837 코첼라 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Coachella
+- #3841 밥 딜런 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Bob_Dylan
+- #3842 우드스톡 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Woodstock
+- #3843 브레이킹 [다시 씀 ★ ★GEN재독] GEN 재독 — 하위 에이전트 문구의 '2032년 브리즈번 대회에서 다시 치러질 수도 있다' 는 바뀔 수 있는 전망(3-2)이라 뺐다. 2024 파리는 #3168 질문이라 연도·도시를 쓰지 않았다
+    → 올림픽 종목이 되기도 했지만, 2028년 로스앤젤레스 대회의 종목 명단에서는 빠졌다.
+    출처: https://en.wikipedia.org/wiki/Breakdancing
+- #3844 스크래치 [다시 씀 ★] '핵심 기술로 꼽힌다' 평가를 확인 못 해 출처 표현으로 바꿈
+    → 믹서의 크로스페이더로 소리를 끊고 이어 가며 리듬을 더하는데, 판을 움직이는 손과 페이더를 여닫는 손을 엮는 방식에 따라 기술이 갈린다.
+    출처: https://en.wikipedia.org/wiki/Scratching
+- #3851 로르샤흐 검사 [확인됨] 제안 그대로
+    출처: https://www.science.gov/topicpages/r/rorschach+inkblot+test.html
+- #3855 요한계시록 [다시 씀 ★] '밧모 섬에서 받았다'를 문서대로 '밧모 섬에 있다고 밝히며'로 작게 손질
+    → 저자는 자신이 에게해의 밧모 섬에 있다고 밝히며, 소아시아의 일곱 교회에 보내는 편지로 글을 시작한다.
+    출처: https://en.wikipedia.org/wiki/Book_of_Revelation
+- #3861 아라베스크 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Arabesque_(ballet)
+- #3864 갠지스강 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Kumbh_Mela
+- #3870 천도교 [다시 씀 ★] B 겹침(662 해설의 33인 최다) 때문에 확인된 중앙대교당 사실로 다시 씀(정답 글자 교 가 든 교당·종교 는 피함)
+    → 1921년 서울 종로 경운동에 세운 중앙 본부 건물은 한때 서울 시내 3대 건물로 꼽혔다.
+    출처: https://ko.wikipedia.org/wiki/천도교_중앙대교당
+- #3871 원불교 [다시 씀 ★] B 겹침(664 질문의 1916년)으로 연호 구절을 빼고 확인된 교무·종법사 사실로 다시 씀('원기'는 정답 글자 '원'이 있어 안 씀)
+    → 성직자를 남녀 구분 없이 '교무'라 부르며, 최고 지도자인 종법사의 임기는 6년이다.
+    출처: https://ko.wikipedia.org/wiki/원불교
+- #3874 베버리지 보고서 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/William_Beveridge
+- #3876 스위스 [다시 씀 ★] '영세'와 '직접 민주주의로 이름났다'를 출처 표현(중립 인정·1848년 이래 국민 투표)으로 고침
+    → 1815년 빈 회의에서 열강이 이 나라의 중립을 인정했고, 1848년 헌법 이래 중요한 법을 국민 투표에 부쳐 왔다.
+    출처: https://en.wikipedia.org/wiki/Swiss_neutrality https://en.wikipedia.org/wiki/Politics_of_Switzerland
+- #3883 웨스트 사이드 스토리 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/West_Side_Story
+- #3885 해밀턴 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Hamilton_(musical)
+- #3887 포니 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Hyundai_Pony
+- #3897 베르사유 조약 [다시 씀 ★] '강요된 평화' 명칭을 못 찾아, 같은 취지(협상 배제)를 출처 사실로 다시 씀 / 변형 정답 조각 사이 가 들어가 검사 block → 문장 고침
+    → 독일은 서명 전 협상에 끼지 못했는데, 연합국을 외교적으로 갈라놓을 틈을 주지 않으려는 뜻이었다.
+    출처: https://en.wikipedia.org/wiki/Treaty_of_Versailles
+- #3902 사막의 폭풍 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Gulf_War
+- #3906 카사블랑카 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Casablanca_(film)
+- #3908 벤허 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Ben-Hur:_A_Tale_of_the_Christ
+- #3911 인셉션 [다시 씀 ★] B 겹침(3280 질문) 부분을 빼고 출연진에 아카데미 수상 사실을 더함
+    → 조셉 고든레빗과 톰 하디가 함께 나오며, 아카데미 촬영상·시각효과상 등 4개 부문을 받았다.
+    출처: https://en.wikipedia.org/wiki/Inception
+- #3912 오우삼 [다시 씀 ★] B 겹침(3287 해설의 할리우드·페이스 오프) 때문에 확인된 적벽대전 흥행 사실로 다시 씀 (정답 글자 삼 이 든 삼국지 는 뺌)
+    → 적벽 싸움을 두 편으로 그린 '적벽대전'을 연출했는데, 중국 본토에서 '타이타닉'의 흥행 기록을 넘어섰다.
+    출처: https://en.wikipedia.org/wiki/John_Woo
+- #3913 시네마 천국 [다시 씀 ★] web 표본 — '줄인 판이 칸 수상'의 인과를 출처가 말하지 않아 두 사실을 따로 씀
+    → 이탈리아에서 처음 개봉했을 때 흥행에 실패해 해외 개봉판은 124분으로 줄였고, 1989년 칸에서 심사위원 대상을 받았다.
+    출처: https://en.wikipedia.org/wiki/Cinema_Paradiso
+- #3917 스탠리 큐브릭 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Stanley_Kubrick
+- #3918 이창동 [다시 씀 ★] '문단에 이름을 알렸다'가 등단 사실(1983 전리)과 어긋나 문서의 1992년 수상 사실로 고침
+    → 1992년 소설 『녹천에는 똥이 많다』로 한국일보 문학상을 받았다.
+    출처: https://ko.wikipedia.org/wiki/이창동
+- #3920 박찬욱 [다시 씀 ★] 사실은 맞지만 B 겹침(2042 질문의 칸 심사위원 수상) → 확인된 학력·영국 드라마 연출로 다시 씀. 'BBC' 로마자 warn 을 피해 '영국 드라마' 로 씀
+    → 서강대학교에서 철학을 공부했고, 2018년 존 르카레 원작의 영국 드라마 '리틀 드러머 걸'을 연출했다.
+    출처: https://en.wikipedia.org/wiki/Thirst_(2009_film) https://en.wikipedia.org/wiki/Park_Chan-wook
+- #3925 똠얌꿍 [다시 씀 ★] '붉은 기름'을 확인 못 해 진한 국물의 출처 세부(1980년대·연유/크리머)로 바꿈(해설의 코코넛 밀크와는 다른 갈래)
+    → 맑은 국물로 끓이는 갈래와, 1980년대에 생긴 무가당 연유나 크리머를 넣은 진한 국물 갈래가 가장 널리 먹힌다.
+    출처: https://en.wikipedia.org/wiki/Tom_yum
+- #3927 마르게리타 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Pizza_napoletana
+- #3928 티라미수 [다시 씀 ★] B 겹침(1975 질문의 마스카르포네)으로 재료 대신 확인된 원조 다툼·전통 식품 등재로 바꿈
+    → 2017년 이탈리아 농업부가 이것을 프리울리베네치아줄리아 지방의 전통 농식품 목록에 올려, 원조를 둘러싼 지역 다툼이 이어졌다.
+    출처: https://en.wikipedia.org/wiki/Tiramisu
+- #3938 트러플 [다시 씀 ★] 출처가 든 이유('향이 강해서' 가 아니라 '열에 향이 날아가서')대로 손질
+    → 열을 가하면 향이 쉽게 날아가서, 익히지 않은 채 얇게 저며 버터 파스타나 달걀 요리 위에 올린다.
+    출처: https://en.wikipedia.org/wiki/Truffle
+- #3942 모나코 [다시 씀 ★] web 표본 — '옮겨 와 산다' 인과를 못 찾아 문서의 백만장자 비율로 바꾸고 소득세 예외(프랑스 국적자)를 넣음
+    → 그리말디 가문이 13세기 말부터 다스려 온 공국으로, 프랑스 국적자를 빼면 개인 소득세가 없고 주민의 30% 넘게가 백만장자다.
+    출처: https://en.wikipedia.org/wiki/Monaco
+- #3944 대서양 [다시 씀 ★] B 겹침(2597 질문) → 가장 깊은 곳(푸에르토리코 해구)으로 다시 씀
+    → 이 바다에서 가장 깊은 곳은 푸에르토리코 해구로, 깊이가 8,300미터를 넘는다.
+    출처: https://en.wikipedia.org/wiki/Mid-Atlantic_Ridge https://en.wikipedia.org/wiki/Puerto_Rico_Trench
+- #3947 그린란드 [다시 씀 ★] B 겹침(2606 질문의 가장 큰 섬) 때문에 확인된 인구 사실로 바꿈
+    → 수도는 누크이며, 2025년 추산 인구는 6만 명이 채 안 된다.
+    출처: https://en.wikipedia.org/wiki/Greenland
+- #3949 사하라 사막 [다시 씀 ★] 소금 운반을 출처로 못 닫아 문서의 대상 교역·운송 동물 사실로 고침
+    → 투아레그족이 선사 시대부터 대상을 꾸려 가로지르며 교역하던 곳으로, 처음엔 소와 말이, 뒤에는 낙타가 짐을 날랐다.
+    출처: https://en.wikipedia.org/wiki/Tuareg_people
+- #3951 사해 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Dead_Sea
+- #3953 자유의 여신상 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/The_New_Colossus
+- #3954 캐나다 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Charter_of_the_French_Language https://en.wikipedia.org/wiki/1995_Quebec_referendum
+- #3956 시애틀 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Amazon_(company) https://en.wikipedia.org/wiki/Boeing
+- #3960 싱가포르 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Singapore
+- #3964 쿠빌라이 칸 [다시 씀 ★] B 겹침(1339 해설)과 충렬왕 혼인 미확인 → 확인된 아리크 부케와의 계승 다툼만 남김
+    → 형 몽케가 죽은 뒤 동생 아리크 부케와 대칸 자리를 놓고 다투다 1264년 그의 항복을 받아 냈다.
+    출처: https://en.wikipedia.org/wiki/Kublai_Khan
+- #3965 정화 [다시 씀 ★] B 겹침(1337 질문의 일곱 차례) 때문에 그 부분을 확인된 보선 사실로 바꿈
+    → 영락제의 명으로 1405년 첫 항해에 나섰고, 함대의 가장 큰 배들은 '보선'이라 불렸다.
+    출처: https://en.wikipedia.org/wiki/Zheng_He
+- #3966 페리 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Matthew_C._Perry
+- #3971 무굴 제국 [다시 씀 ★] B 겹침(바부르 건국) → 건국 대목을 빼고 페르시아어는 남기고 확인된 아우랑제브 최대 영토를 더함
+    → 궁정의 공용어는 페르시아어였고, 영토는 아우랑제브 황제 때인 1700년 무렵 가장 넓었다.
+    출처: https://en.wikipedia.org/wiki/Mughal_Empire
+- #3973 세포이 항쟁 [다시 씀 ★] B 겹침(3318 질문의 직접 통치) → 마지막 무굴 황제의 재판·유배로 다시 씀
+    → 봉기가 진압된 뒤 무굴 제국의 마지막 황제는 델리 붉은 요새에서 재판을 받고 버마의 랑군으로 유배되었다.
+    출처: https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857 https://en.wikipedia.org/wiki/Bahadur_Shah_Zafar
+- #3977 오스만 제국 [다시 씀 ★] B 겹침(2614 해설의 공화국 수립) 때문에 확인된 마지막 술탄 사실로 바꿈 (정답 글자 제 가 든 술탄제 는 풀어 씀)
+    → 1922년 술탄 자리가 없어지자 마지막 술탄 메흐메트 6세는 영국 군함을 타고 수도를 떠났다.
+    출처: https://en.wikipedia.org/wiki/Abolition_of_the_Ottoman_sultanate
+- #3981 스파르타 [다시 씀 ★] B 겹침(492 질문의 7세 집단 훈련)으로 확인된 이중 왕정 사실로 바꿈
+    → 아기스 가문과 에우리폰 가문에서 나온 두 왕이 같은 권한으로 함께 다스리는 이중 왕정이었다.
+    출처: https://en.wikipedia.org/wiki/Sparta
+- #3986 마그나 카르타 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Magna_Carta
+- #3987 한자 동맹 [다시 씀 ★] B 겹침(뤼베크 중심) → 뤼베크·런던을 빼고 확인된 노브고로드·베르겐 상관으로 다시 씀
+    → 러시아 노브고로드와 노르웨이 베르겐 같은 바깥 도시에 상관을 두고 교역했으며, 베르겐의 상관 건물은 지금도 남아 있다.
+    출처: https://en.wikipedia.org/wiki/Hanseatic_League
+- #3990 메디치 가문 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Galilean_moons
+- #3994 비스마르크 [다시 씀 ★] B 겹침(1361 해설의 사회보험) 때문에 확인된 베를린 회의 사실로 다시 씀
+    → 1884~85년 베를린에서 유럽 열강의 아프리카 식민화 규칙을 정한 회의를 마련했다.
+    출처: https://en.wikipedia.org/wiki/Berlin_Conference
+- #3996 루이 14세 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Edict_of_Fontainebleau
+- #3999 쿠바 미사일 위기 [다시 씀 ★] 사실은 맞으나 '1962년' 이 해설(1962년의 핵 대치)과 겹친다는 warn 이 있어 연도를 '10월 중순' 으로 손질
+    → 10월 중순 미국 U-2 정찰기가 찍은 사진 한 묶음이 케네디 대통령의 비상 회의를 불러왔다.
+    출처: https://en.wikipedia.org/wiki/Cuban_Missile_Crisis
+- #4006 일리아스 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Iliad
+- #4007 돈키호테 [다시 씀 ★] 사실은 맞으나 작가 이름이 2027 질문과 이 문항 해설에 있어(B·H4) 이름을 빼고 연도만 남김
+    → 1부는 1605년, 2부는 1615년에 나와 꼭 10년 사이를 두고 완성되었다.
+    출처: https://en.wikipedia.org/wiki/Don_Quixote
+- #4008 천일야화 [다시 씀 ★] '사산 왕조 시대'를 문서가 단정하지 않아 빼고 출처명·덧붙은 지역을 문서대로 씀
+    → 이야기 틀은 지금은 전하지 않는 페르시아 설화집 『하자르 아프산』에서 왔다고 하며, 뒤에 이라크·시리아·이집트에서 이야기가 덧붙었다.
+    출처: https://en.wikipedia.org/wiki/One_Thousand_and_One_Nights
+- #4009 맥베스 [다시 씀 ★] B 겹침(2032 해설의 미신) → 질문이 다루는 '실제 왕' 쪽의 확인된 1050년 로마 순례 일화로 다시 씀
+    → 실제 왕은 1050년 로마로 순례를 가서 가난한 이들에게 돈을 씨앗 뿌리듯 나눠 주었다고 전한다.
+    출처: https://en.wikipedia.org/wiki/Macbeth,_King_of_Scotland
+- #4010 프랑켄슈타인 [다시 씀 ★] B 겹침(510 질문의 나이) 앞절을 빼고 초판의 익명·부수·권수로 씀
+    → 1818년 초판은 작가 이름 없이 500부, 세 권짜리로 나왔다.
+    출처: https://en.wikipedia.org/wiki/Frankenstein
+- #4012 오만과 편견 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Pride_and_Prejudice
+- #4013 모비 딕 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Moby-Dick
+- #4014 안나 카레니나 [다시 씀 ★] B 겹침(508 해설) → 확인된 연재 세부로 다시 씀
+    → 1875년부터 잡지 '러시아 통보'에 나뉘어 실렸는데, 마지막 편만은 이 잡지에 실리지 못했다.
+    출처: https://en.wikipedia.org/wiki/Anna_Karenina
+- #4016 변신 [다시 씀 ★] B 겹침(2643 해설) → 사과 장면으로 다시 씀
+    → 아버지가 성나서 던진 사과 하나가 주인공의 등에 박혀 큰 상처를 입힌다.
+    출처: https://en.wikipedia.org/wiki/The_Metamorphosis
+- #4017 1984 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Nineteen_Eighty-Four
+- #4024 파우스트 [다시 씀 ★] B 겹침(1380 해설의 집필 기간)으로 확인된 구노 오페라 사실로 바꿈
+    → 구노가 1859년 파리에서 초연한 같은 이름의 오페라는 이 희곡의 1부를 느슨하게 바탕으로 했다.
+    출처: https://en.wikipedia.org/wiki/Faust_(opera)
+- #4025 아Q정전 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/The_True_Story_of_Ah_Q
+- #4028 인간 실격 [확인됨] 제안 그대로
+    출처: https://en.wikipedia.org/wiki/Osamu_Dazai
+
+=====================================================================
+2. 같은 정답 쌍 (B) — V006 5-2 의 60쌍 (셋 묶음 1 포함)
+=====================================================================
+- 짝 판정: ok/ok 3 · fix/ok 22 · fix/fix 34 · fix/fix/ok 1.
+- fix 쪽 92건: 하위 에이전트가 새 힌트를 다른 쪽 문항의 질문·해설과 대조했다 → 같은 사실이라 다시 쓴 것 29. 정답 표기가 달라(우포늪↔습지 · 보이저 1호↔창백한 푸른 점) 입력에 짝이 없던 4건은 GEN 이 직접 대조 — 겹침 없음.
+- ok 쪽 29건: 브리핑대로 고치지 않고 셌다. 그중 22건은 다른 쪽 질문·해설과 한글 4글자 구절을 나눈다(기계 — 이름이 겹친 것도 들어 있어 같은 사실인지는 판정하지 않음). 대표: #1211 우드스톡 힌트 "지미 헨드릭스가 마지막 날 아침 미국 국가를…" = #3842 질문. → Q-109 (나).
+- 484 전체로 보면(60쌍 밖의 같은 정답 문항 포함) 같은 정답 문항과 겹쳐서 다시 쓴 것은 87건이다.
+- 쌍의 두 새 힌트가 서로 같은 사실인 것(질문과는 다름 — 기록만): #1065↔#3707(한산도 작사 · 100만 장) · #2380↔#3673(피화당 나무) · #1734↔#3679(2·8 독립선언서) · #3333↔#4025(연재 시기) · #3629↔#2327 · #3550↔#2252 · #3809↔#1180 · #3990↔#2012.
+- 쌍마다 한 줄:
+- 341↔3424 [천왕성]: #341 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 1781·781년·81년윌) / #3424 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 자전축이·공전궤도·누워있어)
+- 730↔3378 [신세기 에반게리온]: #730 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 안노히데·노히데아·히데아키) / #3378 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 병기에올·기에올라)
+- 916↔3541 [고종]: #916 ok(그대로) / #3541 fix→rewritten(B 겹침 없음)
+- 664↔3871 [원불교]: #664 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 소태산박·태산박중·산박중빈) / #3871 fix→rewritten(B 겹침 → 다시 씀)
+- 874↔3510 [고바우 영감]: #874 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 동아일보·아일보에·일보에서) / #3510 fix→rewritten(B 겹침 → 다시 씀)
+- 470↔3759 [페르세포네]: #470 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 오르페우·르페우스) / #3759 fix→rewritten(B 겹침 → 다시 씀)
+- 473↔3757 [오이디푸스]: #473 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 갓난아기·난아기때·아기때발) / #3757 fix→confirmed(B 겹침 없음)
+- 508↔4014 [안나 카레니나]: #508 ok(그대로) / #4014 fix→rewritten(B 겹침 → 다시 씀)
+- 509↔4013 [모비 딕]: #509 ok(그대로) / #4013 fix→confirmed(B 겹침 없음)
+- 622↔3764 [발키리]: #622 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 영웅시구·웅시구르·시구르드) / #3764 fix→confirmed(B 겹침 없음)
+- 639↔3784 [러시안 블루]: #639 ok(그대로) / #3784 fix→rewritten(B 겹침 없음)
+- 1014↔3659 [조선어학회 사건]: #1014 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 한여학생) / #3659 fix→confirmed(B 겹침 없음)
+- 1024↔3665 [7·4 남북공동성명]: #1024 fix→rewritten(B 겹침 → 다시 씀) / #3665 fix→rewritten(B 겹침 → 다시 씀)
+- 1053↔3676 [공무도하가]: #1053 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 뱃사공곽·사공곽리·공곽리자) / #3676 fix→confirmed(B 겹침 없음)
+- 1054↔3677 [제망매가]: #1054 fix→rewritten(B 겹침 → 다시 씀) / #3677 fix→confirmed(B 겹침 없음)
+- 3678↔1056 [가시리]: #3678 ok(그대로) / #1056 fix→rewritten(B 겹침 → 다시 씀)
+- 1064↔3706 [목포의 눈물]: #1064 fix→confirmed(B 겹침 없음) / #3706 fix→rewritten(B 겹침 없음)
+- 1065↔3707 [동백아가씨]: #1065 fix→rewritten(B 겹침 → 다시 씀) / #3707 fix→rewritten(B 겹침 → 다시 씀)
+- 1134↔3748 [바순]: #1134 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 프로코피·로코피예·코피예프) / #3748 fix→confirmed(B 겹침 없음)
+- 1154↔3791 [소피스트]: #1154 fix→rewritten(B 겹침 → 다시 씀) / #3791 fix→rewritten(B 겹침 없음)
+- 1159↔3790 [스토아 학파]: #1159 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 제논이아·논이아테·이아테네) / #3790 fix→rewritten(B 겹침 → 다시 씀)
+- 1211↔3842 [우드스톡]: #1211 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 마지막날·지막날아·막날아침) / #3842 fix→confirmed(B 겹침 없음)
+- 1323↔3942 [모나코]: #1323 ok(그대로) / #3942 fix→rewritten(B 겹침 없음)
+- 1339↔3964 [쿠빌라이 칸]: #1339 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 함께두차·께두차례·두차례일) / #3964 fix→rewritten(B 겹침 → 다시 씀)
+- 1348↔3987 [한자 동맹]: #1348 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 함부르크) / #3987 fix→rewritten(B 겹침 → 다시 씀)
+- 1832↔3792 [칸트]: #1832 fix→confirmed(B 겹침 없음) / #3792 fix→confirmed(B 겹침 없음)
+- 1840↔3098↔3796 [사르트르]: #1840 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 제2의성·2의성을·의성을쓴) / #3098 fix→rewritten(B 겹침 없음) / #3796 fix→confirmed(B 겹침 없음)
+- 1877↔3831 [라이브 에이드]: #1877 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 밥겔도프·겔도프가·자선싱글) / #3831 fix→rewritten(B 겹침 없음)
+- 1934↔3883 [웨스트 사이드 스토리]: #1934 fix→confirmed(B 겹침 없음) / #3883 fix→confirmed(B 겹침 없음)
+- 1956↔3897 [베르사유 조약]: #1956 fix→confirmed(B 겹침 없음) / #3897 fix→rewritten(B 겹침 없음)
+- 2066↔3395 [드림웍스]: #2066 fix→confirmed(B 겹침 없음) / #3395 fix→confirmed(B 겹침 없음)
+- 2077↔3401 [안도 다다오]: #2077 fix→rewritten(B 겹침 → 다시 씀) / #3401 fix→rewritten(B 겹침 → 다시 씀)
+- 2026↔4006 [일리아스]: #2026 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 트로이의·서사시는) / #4006 fix→confirmed(B 겹침 없음)
+- 3454↔2146 [노키아]: #3454 fix→confirmed(B 겹침 없음) / #2146 fix→rewritten(B 겹침 → 다시 씀)
+- 2342↔3637 [이어도]: #2342 fix→confirmed(B 겹침 없음) / #3637 fix→rewritten(B 겹침 → 다시 씀)
+- 3632↔2121 [우포늪]: #3632 fix→rewritten(B 기록 없음) / #2121 fix→rewritten(B 기록 없음)
+- 1552↔3505 [크립토나이트]: #1552 fix→rewritten(B 겹침 → 다시 씀) / #3505 fix→confirmed(B 겹침 없음)
+- 1530↔3483 [볼레로]: #1530 fix→confirmed(B 겹침 없음) / #3483 fix→confirmed(B 겹침 없음)
+- 1693↔3628 [창원시]: #1693 fix→rewritten(B 겹침 → 다시 씀) / #3628 fix→confirmed(B 겹침 없음)
+- 1697↔3627 [경기도]: #1697 fix→rewritten(B 겹침 없음) / #3627 fix→confirmed(B 겹침 없음)
+- 1703↔3643 [무령왕릉]: #1703 fix→confirmed(B 겹침 없음) / #3643 fix→confirmed(B 겹침 없음)
+- 1734↔3679 [무정]: #1734 fix→confirmed(B 겹침 없음) / #3679 fix→confirmed(B 겹침 없음)
+- 1738↔3682 [태평천하]: #1738 fix→confirmed(B 겹침 없음) / #3682 fix→confirmed(B 겹침 없음)
+- 1751↔3699 [듀스]: #1751 fix→confirmed(B 겹침 없음) / #3699 fix→rewritten(B 겹침 없음)
+- 1822↔3779 [보더 콜리]: #1822 fix→rewritten(B 겹침 없음) / #3779 fix→rewritten(B 겹침 없음)
+- 1527↔3487 [레퀴엠]: #1527 fix→rewritten(B 겹침 → 다시 씀) / #3487 fix→confirmed(B 겹침 없음)
+- 2373↔3671 [구운몽]: #2373 fix→rewritten(B 겹침 → 다시 씀) / #3671 fix→confirmed(B 겹침 없음)
+- 2375↔3672 [허생전]: #2375 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 박지원의·지원의열·원의열하) / #3672 fix→confirmed(B 겹침 없음)
+- 2380↔3673 [박씨전]: #2380 fix→confirmed(B 겹침 없음) / #3673 fix→confirmed(B 겹침 없음)
+- 2386↔3686 [광장]: #2386 fix→rewritten(B 겹침 없음) / #3686 fix→confirmed(B 겹침 없음)
+- 2389↔3688 [삼포 가는 길]: #2389 fix→rewritten(B 겹침 없음) / #3688 fix→confirmed(B 겹침 없음)
+- 2505↔3829 [펑크 록]: #2505 fix→confirmed(B 겹침 없음) / #3829 fix→confirmed(B 겹침 없음)
+- 2524↔3861 [아라베스크]: #2524 fix→rewritten(B 겹침 없음) / #3861 fix→confirmed(B 겹침 없음)
+- 2546↔3894 [살라미스 해전]: #2546 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 크세르크·세르크세·르크세스) / #3894 ok(그대로 — 다른 쪽 질문·해설과 구절 겹침 테미스토·미스토클·스토클레)
+- 2626↔3999 [쿠바 미사일 위기]: #2626 fix→rewritten(B 겹침 → 다시 씀) / #3999 fix→rewritten(B 겹침 없음)
+- 2643↔4016 [변신]: #2643 fix→confirmed(B 겹침 없음) / #4016 fix→rewritten(B 겹침 → 다시 씀)
+- 3348↔2811 [보이저 1호]: #3348 fix→confirmed(B 기록 없음) / #2811 fix→rewritten(B 기록 없음)
+- 2952↔3638 [통영]: #2952 fix→rewritten(B 겹침 → 다시 씀) / #3638 fix→rewritten(B 겹침 → 다시 씀)
+- 2982↔3710 [아리랑]: #2982 fix→rewritten(B 겹침 → 다시 씀) / #3710 fix→rewritten(B 겹침 → 다시 씀)
+- 2965↔3695 [산울림]: #2965 ok(그대로) / #3695 fix→rewritten(B 겹침 → 다시 씀)
+
+=====================================================================
+3. 반영 결과 (C)
+=====================================================================
+- 백업: `node scripts/backup.mjs` → backups/quizweb-20261014-095404.dump (쓰기 전).
+- 스크립트: scripts/g002-apply-v006.mjs (확인만 → --apply). 한 트랜잭션. 행마다 DB 값이 before(V006 이 판정한 값 = r047-verify-targets 의 hint · 목록 밖은 브리핑 시점 DB 값)와 같을 때만 바꾸고, after 와 같으면 건너뛴다(멱등) · 둘 다 아니면 건너뛰고 보고(이번 0).
+  ★ 지난 피드백 반영 — 쓰기 전에 파일 단계에서 줄바꿈 · 120자 · 두 문장 이상을 막고, DB 값(질문·정답·변형·해설)으로 checkHint 막힘을 막는다. 질문을 바꾸면 정답 노출 · 정답 조각 · 빈칸 수를 본다. 쓴 뒤 3~5 힌트 빈 칸이 0 이 아니면 되돌린다.
+- 바꾼 행 489 = g002-fixes.json 행 489:
+  · 힌트 486 — 중 484(hint-v3+v006) · #3930 사워도우(V006 제안 그대로 · hint-v3+v006) · #741 국제주의 양식(GEN 문구 · hint-v3+g002)
+  · 질문 2 — #85 오프사이드 · #1211 우드스톡
+  · 해설 1 — #1148 하프파이프
+  · by: verify 244(제안 그대로 243 + #3930) / gen 245(다시 쓴 241 + #85 · #1211 · #1148 · #741)
+- 목록 밖 5건 (before → after · 출처)
+  · #85 질문: "축구에서 공격팀 선수가 패스를 받는 순간, …" → "축구에서 같은 팀 동료가 공을 건드리는 순간, 공격팀 선수가 공과 끝에서 두 번째 상대 선수보다 상대 골라인에 더 가까이 있을 때 선언되는 반칙은?" ★ GEN 문구 — V006 제안의 '상대 진영에서 … 플레이에 관여하면' 은 해설("자기 진영에 있거나 … 플레이에 관여해야 선언됩니다")이 이미 말해 질문에서 뺐다. 시점만 규칙 11조('last touched by a teammate')에 맞췄다. https://en.wikipedia.org/wiki/Offside_(association_football)
+  · #1211 질문: "…한 농장에서 사흘간 열려 40만 명이 모였고, …" → "1969년 8월 미국 뉴욕주의 한 농장에서 열려 46만 명 넘게 모였고, 한 시대의 상징이 된 야외 음악 축제는?" ★ GEN 문구 — 8.15~18 나흘 · 46만 명 이상. 베설·낙농장은 같은 정답 #3842 해설이라 넣지 않았다. https://en.wikipedia.org/wiki/Woodstock
+  · #1148 해설: "국내에서는 2018년 평창 대회 은메달로 널리 알려졌습니다." → "2018년 평창 대회 여자부 금메달은 부모가 한국에서 이민한 미국 대표 클로이 김이 땄습니다." ★ GEN 문구. https://en.wikipedia.org/wiki/Snowboarding_at_the_2018_Winter_Olympics_–_Women's_halfpipe · https://en.wikipedia.org/wiki/Chloe_Kim
+  · #3930 힌트: V006 제안 그대로 "빵집마다 대를 이어 기르는 발효종이 있어, 1849년 골드러시 때 만든 것을 지금도 쓴다고 내세우는 가게도 있다." https://en.wikipedia.org/wiki/Boudin_Bakery (hint-check explain 경고 '발효종이' — 낱말 겹침, 사실은 다름)
+  · #741 힌트: "1932년 뉴욕 현대미술관 전시와 함께 나온 책 제목에서 이름이 굳었다." → "그 전시를 함께 꾸민 필립 존슨은 뒷날 이 양식으로 직접 건물을 짓는 건축가가 되었다." ★ GEN 문구 — 'Johnson later became one of its practitioners'. https://en.wikipedia.org/wiki/International_Style
+- 대조: DB ↔ g002-fixes.json after 차이 0 · general_hint_version 차이 0. 활성 힌트 버전: hint-v2 328 · hint-v3 1,229 · hint-v3+v006 485 · hint-v3+g002 1.
+- 끝 점검 (모두 끝까지 돌았다)
+  · 활성 4,143 그대로 (1 751 · 2 1,349 · 3 1,435 · 4 582 · 5 26)
+  · 난이도 3~5 힌트 빈 칸 0
+  · hint-check 활성 전체: `node scripts/hint-check-active.mjs` — 힌트 2,043 · 막힘 0 · 경고 explain 35 · letter-talk 11 · partial-mid 10 · roman 4 (반영 전 explain 27 · letter-talk 23 · single 2 · partial-mid 10 · roman 4). 반영분의 경고 12건(#198 · #813 · #1747 · #3637 · #3642 · #3672 · #3779 · #3781 · #3918 · #3956 · #4008 · #3930)은 읽어 보니 흔한 낱말 조각 — 해설과 같은 사실 아님.
+  · criteria-sync --check 통과 · hint-check 단위 17/17 · question-checks 13/13
+  · g002-apply 재실행: "할 일 0 · 이미 됨 489"
+- 되돌리기: g002-fixes.json 의 before 로 (CV-05 가 선을 바꾸면 그 범위의 id 만).
+
+=====================================================================
+4. 되먹임 (D) — V006 6절 10꼴
+=====================================================================
+| 6절 | 무엇을 했나 |
+|---|---|
+| 1) 가장 유명한 사실·정체·줄거리 요지 | 15 §4-1 H9 ② 예시 — 쇼팽(정체) · 픽사(대표 상징) · 오딘(대표 일화) · 인절미(정의) · 청소년보호법(대표 기능) + "두 번째 줄 사실(조연 인물 · 다른 작품 · 숫자 · 제도의 세부 · 뒷이야기)" |
+| 2) 뜻풀이·번역 | H9 ① 예시 — 산조(한자) · 트레드(영어) · 챌린지(구절) + "그 구절을 낱말로 바꾸면 정답이 되면 쓰지 않는다" |
+| 3) 정답 글자를 풀어 씀 | H2 예시 — 형설지공 ← '형광등' 첫 글자 · 진통↔산통 · 위장 후퇴 · 딥 블루 ← '딥 소트'. 기계 경고 single · letter-talk (DG-008) |
+| 4) 질문 되풀이 | H3 예시 + hint-v3 입력에 질문의 낱말 목록 · 쓰는 순서 7 (DG-009) |
+| 5) 쌍에서 힌트 = 다른 쪽 질문 | hint-v3 입력에 같은 정답의 다른 활성 문항 · 쓰는 순서 8 · 도구 scripts/hint-input.mjs (DG-009). 기존 쌍 처리와 규칙화는 Q-109 (나) |
+| 6) 연도·기원·방향 단정 | 확인: hint-v3 에는 3-2 가 없었다 → SYNC:QFACT 로 넣고 쓰는 순서 9 에 V006 4건 (DG-009 — 기준서가 이미 "힌트 모두 같다" 고 적은 규칙) |
+| 7) 틀린 답으로 유도(#2456) | 이번 반영으로 #2456 은 V006 제안으로 고침(사진 판독 · 몸통 앞면). 규칙화는 Q-109 (가) |
+| 8) 꼴(shape) | Q-108 결정 전 — 손대지 않음 |
+| 9) 해설과 같은 사실 | 기존 H4 · DG-005 그대로. 이번 반영으로 #3930 끝 |
+| 10) 대표 예 나열이 상위 개념을 가리킴 | H9 ② 예시 — 습지('우포늪과 순천만 갯벌') · 오픈 소스('리눅스가 대표적인 예') · 펑크 록('섹스 피스톨스와 라몬스') |
+- 프롬프트: criteria-sync → hint-v3 · deep-v3 (--check 통과). 규칙 문구(무엇을 하라/말라)는 그대로라 버전 유지(DG-007 · DG-009). hint-v3 머리글에 G002 줄.
+- 기계 검사 실측(활성 힌트 2,043, 반영 전): single 2(#352 딥 블루 · #3964 쿠빌라이 칸 — 둘 다 V006 fix) · letter-talk 23(12 가 V006 fix · 11 은 V006 ok — 배흘림기둥 · LCK · 이명법 · 규원가 · 울대 · 노트 · e.g. · 오감도 · 성운 · 벽란도 · IPCC). ok 11건은 이름 짜임·한자 풀이(CV-06)라 막으면 결정 전의 힌트를 막는다 → 경고만. 반영 뒤 single 0 · letter-talk 11.
+- Q-109 (08): (가) 정답이 아닌 이름으로 유도 · (나) 같은 정답 쌍. GEN 권장 (가-1) H10 에 반대 꼴 + (나-1) 기존 쌍의 ok 쪽 29 도 다음 힌트 점검 때 쌍으로 판정.
+
+=====================================================================
+5. 표본 30 (E) — 바꾼 484 중 무작위 30 (고정 시드). 기록이지 판정이 아니다
+=====================================================================
+- checkHint 경고: 30건 모두 막힘 0 · 경고 0.
+- "질문과 엮어 한 걸음이 필요한가" — GEN 이 읽은 느낌을 한 줄씩 (세기 판정은 V007 몫):
+  · #398 매몰비용 [확인됨] 극장 시즌권 실험 — 경제학 실험을 알아야 엮인다. 한 걸음.
+  · #603 허수단위 [확인됨] 복소수·세로축 눈금 — 질문이 이미 i 를 말해 둘 다 쉬움. 경계.
+  · #791 지명타자 [확인됨] 1982 KBO · 오타니 규칙 — 야구 팬은 바로. 경계.
+  · #870 굳히기 [확인됨] 20초 누르기 한판 — 질문의 '누르기·조르기·꺾기' 낱말이 다시 나옴(H3 경계).
+  · #1124 회복자세 [다시 씀] 팔다리를 겹쳐 받침 · 방식이 나라마다 다름 — 엮을 재료가 적다(약함).
+  · #1518 탄소 [확인됨] 14족 맨 위 · 원자 번호 6 — 화학을 배운 사람은 힌트만으로 바로. ★ 떠먹여 주기 의심.
+  · #1528 녹턴 [확인됨] 포레도 열세 곡 — 한 걸음.
+  · #1747 신승훈 [다시 씀] 1집 열 곡 중 일곱 곡 직접 작곡 — 한 걸음.
+  · #2022 올로지 [다시 씀] 죽음을 연구하는 학문 이름에도 — 한 걸음.
+  · #2057 기관 [확인됨] 나선 모양으로 단단한 벽 — 한 걸음.
+  · #2179 사우스포 [확인됨] 파키아오 — 한 걸음.
+  · #2421 규모 [다시 씀] 단층 면적·미끄러진 거리로 계산 — 한 걸음.
+  · #2505 펑크 록 [확인됨] CBGB — 한 걸음.
+  · #2532 색약 배려 설계 [다시 씀] 캐나다 신호등 모양 — 질문과 엮임.
+  · #2607 지브롤터 해협 [다시 씀] 세우타 · 깊이 — 한 걸음.
+  · #2809 네이팜탄 소녀 [다시 씀] 1972.6.8 짱방 · 퓰리처 — 한 걸음.
+  · #3225 낙인 이론 [확인됨] 베커 · 레머트 — 사회학 지식. 한 걸음.
+  · #3506 DC [확인됨] 휠러니컬슨 — 한 걸음.
+  · #3559 소닉 [다시 씀] 토끼·아르마딜로 후보 · 센트럴파크 설문 — 한 걸음.
+  · #3583 콩팥 [확인됨] 간에 눌려 오른쪽이 낮음 · 네프론 — '네프론' 은 콩팥의 대표 낱말. 경계.
+  · #3630 한강 [다시 씀 — 제안 취지 그대로, 희생자 표현만 출처대로] 1950.6.28 인도교 폭파 — 사건 이름에 정답이 든 대표 사건. ★ 떠먹여 주기 의심.
+  · #3637 이어도 [다시 씀] 김기영 1977 영화 — 한 걸음.
+  · #3781 세인트버나드 [다시 씀] 체중 · 1884 바젤 클럽 — 한 걸음.
+  · #3792 칸트 [확인됨] 독일 계몽기 철학자 · 『영구 평화를 위하여』 — 정체에 가깝다. 경계(CV-05 꼴).
+  · #3817 고추 [확인됨] 스코빌 지수 — 매운맛 단위 = 고추. ★ 떠먹여 주기 의심.
+  · #3842 우드스톡 [확인됨] 진흙탕 · 기록 영화 아카데미상 — 한 걸음.
+  · #3864 갠지스강 [확인됨] 프라야그라지 쿰브멜라 — 한 걸음.
+  · #3925 똠얌꿍 [다시 씀] 맑은/진한 국물 두 갈래 — 한 걸음.
+  · #3944 대서양 [다시 씀] 푸에르토리코 해구 — 한 걸음.
+  · #3996 루이 14세 [확인됨] 낭트 칙령 폐지 — 교과서 대표 사실. 경계(CV-05 꼴).
+- 집계(기록): 한 걸음 20 · 경계 6 · 떠먹여 주기 의심 3 · 약함 1. 의심 3 가운데 #1518 · #3817 은 VERIFY 제안 그대로(확인됨), #3630 도 VERIFY 제안의 취지 그대로다 — GEN 이 판정을 바꾸지 않았다. V007 표본에 넣기를 권한다.
+
+=====================================================================
+6. GEN 판단 목록 (되돌리기 쉽다)
+=====================================================================
+1. web 66 을 표본 20 이 아니라 66 전부 다시 열었다 — 표본에서 다시 씀 10/20(틀림 1 · 같은 정답 겹침 5). 비용은 WebSearch 3회 · 하위 에이전트 2개.
+2. 다시 쓴 241건의 문구 — 같은 취지(두 번째 줄 사실)의 확인된 사실로. 하위 에이전트 문구 가운데 3건(#595 · #3042 · #3843)은 GEN 이 다시 고쳤다.
+3. 한 글자 정답 조각 — 하위 에이전트에 "한 글자라도 정답을 이루는 낱말의 일부면 피한다" 고 지시했다(병사→군인들 · 기록→다른 말 등). 기계 검사보다 엄격하다.
+4. general_hint_version `hint-v3+v006` · `hint-v3+g002` (DG-006).
+5. #85 · #1211 · #1148 · #741 문구 (3절).
+6. hint-check 새 검사는 경고로만 (DG-008) · hint-v3 버전 유지 (DG-007 · DG-009).
+7. scripts/hint-check-active.mjs · scripts/hint-input.mjs 신설 (DB 읽기만).
+8. 임시 도구(scripts/_g002-*.mjs)는 커밋하지 않고 지웠다 — 작업 묶음과 하위 에이전트 출력은 tmp/g002/ 에 남겼다(.gitignore).
+
+=====================================================================
+7. 새로 생긴 결정 필요 항목
+=====================================================================
+- Q-109 (08) — (가) 정답이 아닌 이름으로 유도하는 힌트 · (나) 같은 정답 쌍에서 한쪽 힌트가 다른 쪽 질문과 같은 사실 (ok 쪽 29). GEN 권장 (가-1) + (나-1).
+- C63 (13) — #3557 마리오 질문 '창고' 확인 · 같은 정답 쌍 ok 쪽 29(Q-109 대기) · 바꾼 힌트 484 세기 재판정(V007 표본 — 5절 의심 3 · 경계 6 포함 권장).
+- 그대로 대기: Q-108 · CV-01 · CV-05 · CV-06.
+
+고친 문서
+- ai-out/G002.txt (이 문서) · ai-out/README.md (GEN 표 G002)
+- data/pipeline/audit/g002-hint-decisions.json (A·B) · data/pipeline/audit/g002-fixes.json (C)
+- scripts/g002-apply-v006.mjs · scripts/hint-check-active.mjs · scripts/hint-input.mjs · scripts/hint-check.mjs (경고 2 · 단위 3)
+- docs/15-QUALITY-STANDARD.md (§4-1 H2 · H3 · H9 · 머리글) · pipeline/prompts/hint-v3.md (입력 · SYNC:QFACT · 순서 7~9 · 머리글) · pipeline/prompts/deep-v3.md (SYNC:HINT)
+- docs/05-STATUS.md (Track D) · docs/06-WORKLOG.md · docs/07-DECISIONS.md (DG-006~009) · docs/08-OPEN-QUESTIONS.md (Q-109) · docs/13-PENDING-CHECKS.md (C55 · C60 나 · C61 · CV-04 끝 · C63)
+- DB: questions 489행 (힌트 486 · 질문 2 · 해설 1)
