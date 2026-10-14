@@ -305,10 +305,10 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 | 표 · 열 | 형식 | 규칙 |
 |---------|------|------|
 | **포인트 (번 것)** | — | 별도 열 없음. `answer_events` 에서 `accepted = true` 인 수(계정별 · 2026-09-10 처음부터 전부 — 옛 기록도 그대로 인정). 봇 계정도 센다(상관없다 — 찬종) |
-| `point_spends` | id bigserial · account_id · amount(>0) · reason('gacha' 등) · ref(이모티콘 id 등) · created_at | 쓴 포인트. **잔액 = 번 것 − 합** — 잔액 열을 두지 않는다(두 표에서 언제든 재구성). 쓰기는 R049 뽑기 |
+| `point_spends` | id bigserial · account_id · amount(>0) · reason('gacha' 등) · ref(이모티콘 id 등) · created_at | 쓴 포인트. **잔액 = 번 것 − 합** — 잔액 열을 두지 않는다(두 표에서 언제든 재구성). ★ R049 — 뽑기(`POST /api/shop/draw`)가 **한 트랜잭션**(계정 행 `FOR UPDATE` → 잔액 재계산 → 부족이면 409) 안에서 `reason='gacha'` · `ref='theme:<key>/emoji:<id>'` 로 넣는다. 되돌리기 · 보기 SQL 은 DB-ADMIN |
 | `emoji_themes` | id · key(UNIQUE — `assets/emoji/<key>/` 폴더 이름) · name_ko · price(뽑기 한 번 포인트) · sort_order · active | 테마. 지금 `chiikawa` "치이카와" 20포인트 |
 | `emojis.theme_id` · `emojis.source_name` | FK(nullable) · text | 특별 이모티콘 = `kind='custom'` · `category='special'` · theme_id 있음. 그림은 0013 처럼 DB 에(≤256px · ≤1MB 로 줄여 넣음). source_name = 가져온 파일명(테마 안 유일 — 다시 가져올 때 건너뜀) |
-| `account_emojis` | (account_id, emoji_id) PK · obtained_at | 누가 어떤 특별 이모티콘을 가졌나. ★ theme_id 가 있는 이모티콘은 **가진 사람에게만** 목록에 보이고(GET /api/emoji) **가진 사람만** 보낼 수 있다(emoji.send) |
+| `account_emojis` | (account_id, emoji_id) PK · obtained_at | 누가 어떤 특별 이모티콘을 가졌나. ★ R049 개정 — theme_id 가 있는 이모티콘의 **메타는 전원**이 받고(남이 보낸 것을 그리려고 · `GET /api/emoji` 의 `ownedSpecial` 로 내 것 구분) **가진 사람만** 보낼 수 있다(emoji.send). 뽑기는 `account_emojis` 에 (account_id, emoji_id) 한 줄 — PK 가 중복을 막는다 |
 
 - 원본 그림: `assets/emoji/<key>/` (git 에는 폴더·README 만 — `.gitignore` `assets/emoji/*/` · 정본은 DB). 가져오기 `node scripts/emoji-import.mjs --theme <key> --name <이름> --price <포인트>`.
 - 마이그레이션 전 백업: `backups/quizweb-20261014-110042.dump` · 적재 전 `backups/quizweb-20261014-110443.dump`.

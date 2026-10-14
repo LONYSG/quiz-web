@@ -941,3 +941,15 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `GET /api/emoji` | 로그인 세션으로 **가진 특별 이모티콘만** 목록에 포함(`themeId` 필드 추가 — null = 누구나). 로그인 없이는 특별 0개 |
 | `GET /api/me/points` (새) | `{ ok, earned, spent, balance }` — earned = answer_events.accepted 수 · spent = point_spends 합. 401 if 로그인 없음 · no-store |
 | 설정값 (서버 env) | `CHAT_RATE_WINDOW_MS`(5000) · `CHAT_RATE_MAX`(5) · `CHAT_RATE_LOCK_MS`(5000) · `EMOJI_RATE_*`(같음) · `SPECIAL_EMOJI_RATE_*`(10000 · 3 · 10000 — R049) — 기본값은 RULES |
+
+## ★ R049 — 바뀐 것 (D-231 · 이모티콘샵 · 뽑기 · 특별 이모티콘)
+
+| 항목 | 내용 |
+|------|------|
+| `GET /api/emoji` | **전원에게 모든 활성 특별 이모티콘의 메타**(남이 보낸 것을 그리려고) + `ownedSpecial: [내가 가진 특별 id]` + `themes: [{ id, key, name, price, active }]`. 로그인 없이는 `ownedSpecial` 빈 배열. 보내기는 여전히 가진 사람만 |
+| `GET /api/shop` (새) | `{ ok, balance, themes: [{ key, name, price, total, owned: [emoji id] }] }` — 401 if 로그인 없음 · no-store. balance = answer_events.accepted 수 − point_spends 합 |
+| `POST /api/shop/draw` (새) | `{ themeKey }` → `{ ok, emoji: { id, name, themeKey }, balance, owned, total, price }`. **한 트랜잭션**: 계정 행 `SELECT … FOR UPDATE`(같은 계정의 동시 뽑기를 직렬로 — 잔액이 음수가 되지 않는다) → 잔액 재계산 → **아직 갖지 않은 것 중 `randomInt`** → `account_emojis` INSERT + `point_spends(reason 'gacha', ref 'theme:<key>/emoji:<id>')`. 오류: 401 · 404 `없는 테마예요.` · 409 `{ reason: 'complete' }` 다 모음 · 409 `{ reason: 'insufficient', message: 'N점 모자라요.' }` · 500 롤백 |
+| `emoji.send` 특별 | 특별(theme_id)은 **표준과 따로** 센다 — 10초 3회 · 넘으면 10초 잠금 → `chat.throttled { retryAfterMs, kind: 'special' }`. 방의 `specialTimestamps` · `specialLocks`(로비 복귀 · 게임 시작 때 비움) |
+| `chat.message` | `special?: true` — 특별 이모티콘 줄. 스냅샷의 채팅 기록 · 재접속에도 같은 칸 |
+| 설정값 (서버 env) | `SHOP_PRICE_OVERRIDE`(검사용 · 0 = DB 의 `emoji_themes.price` — 실제 서버 .env 에 두지 않는다. 봇 shop 이 자기 서버에서 10 으로) |
+| RULES (shared) | `SPECIAL_FLOAT_MS` 3000 · `SPECIAL_FLOAT_MAX` 3 · `SPECIAL_FLOAT_PX` 96 — 화면(떠 있는 큰 반응)만 쓴다 |

@@ -5546,6 +5546,11 @@ async function scenarioShop() {
   await b6.auth();
   const fresh = new Bot(`sh${Date.now().toString(36).slice(-4)}`);
   await fresh.auth();
+  // ★ 몇 번을 돌려도 같게 — 이 시나리오가 쓰는 **봇 계정만** 뽑기 기록을 비운다 (bot_01 → 0/27 · 487P, bot_06 → 19P). 찬종 계정은 건드리지 않는다
+  await withDb(async (c) => {
+    await c.query(`DELETE FROM account_emojis WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[b1.loginId, b6.loginId]]);
+    await c.query(`DELETE FROM point_spends WHERE reason = 'gacha' AND account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[b1.loginId, b6.loginId]]);
+  });
   const get = async (bot, path) => (await fetch(`${BASE}${path}`, { headers: { cookie: bot.cookie ?? '' } })).json();
   const draw = async (bot, themeKey = 'chiikawa') => {
     const r = await fetch(`${BASE}/api/shop/draw`, { method: 'POST', headers: { 'content-type': 'application/json', cookie: bot.cookie ?? '' }, body: JSON.stringify({ themeKey }) });

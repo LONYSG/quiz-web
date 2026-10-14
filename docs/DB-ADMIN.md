@@ -193,6 +193,27 @@ SELECT a.login_id, e.name_ko, ae.obtained_at FROM account_emojis ae JOIN account
 - 특별 이모티콘은 **가진 사람만** 보고 보낼 수 있다(뽑기 — R049). 누구에게 바로 주려면 `INSERT INTO account_emojis (account_id, emoji_id) VALUES (…, …)`.
 - 포인트: `SELECT count(*) FROM answer_events WHERE account_id = … AND accepted` − `SELECT coalesce(sum(amount),0) FROM point_spends WHERE account_id = …`.
 
+### ★ 뽑기 기록 보기 · 되돌리기 (R049)
+```sql
+-- 누가 언제 무엇을 뽑았나 (최근 50)
+SELECT p.id, a.login_id, p.amount, p.ref, p.created_at FROM point_spends p JOIN accounts a ON a.id = p.account_id WHERE p.reason = 'gacha' ORDER BY p.id DESC LIMIT 50;
+-- 계정별 잔액 한눈에 (번 것 − 쓴 것)
+SELECT a.login_id,
+       (SELECT count(*) FROM answer_events e WHERE e.account_id = a.id AND e.accepted) AS earned,
+       (SELECT coalesce(sum(amount),0) FROM point_spends p WHERE p.account_id = a.id) AS spent,
+       (SELECT count(*) FROM account_emojis ae WHERE ae.account_id = a.id) AS owned_special
+  FROM accounts a ORDER BY earned DESC;
+-- ★ 뽑기 하나 되돌리기 (포인트 돌려주고 이모티콘 회수) — ref 'theme:chiikawa/emoji:1860' 꼴. 두 문장을 한 트랜잭션으로
+BEGIN;
+DELETE FROM account_emojis WHERE account_id = (SELECT account_id FROM point_spends WHERE id = 123) AND emoji_id = split_part((SELECT ref FROM point_spends WHERE id = 123), 'emoji:', 2)::int;
+DELETE FROM point_spends WHERE id = 123;
+COMMIT;
+-- 검사 계정(봇)의 뽑기 전부 비우기 (bot_01 등 — 찬종 계정은 건드리지 않는다)
+DELETE FROM account_emojis WHERE account_id IN (SELECT id FROM accounts WHERE login_id LIKE 'bot\_%');
+DELETE FROM point_spends WHERE reason = 'gacha' AND account_id IN (SELECT id FROM accounts WHERE login_id LIKE 'bot\_%');
+```
+- 뽑기 값은 `emoji_themes.price`(서버 재시작 없이 다음 뽑기부터 — 서버가 테마를 메모리에 두므로 **재시작이 필요하다** · 확인: `GET /api/shop` 의 price). 검사용 `SHOP_PRICE_OVERRIDE` 는 실제 서버에 두지 않는다.
+
 ## 4. 서버가 켜진 상태에서 바꾸면 — 언제 반영되나
 
 | 바꾼 것 | 바로 반영 | 반영 안 되는 곳 |

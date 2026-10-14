@@ -1074,6 +1074,21 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 30. ★★★ R049 — 이모티콘샵 · 뽑기 · 특별 이모티콘 표시
+
+```bash
+PORT=3005 npm run bot -- shop --url http://localhost:3005   ★★★ (28) 자기 서버 · SHOP_PRICE_OVERRIDE=10(SCENARIO_ENV) — 401 · 404 · 0P 계정 409 · 한 번 뽑기(잔액 −price · DB 보유 +1 · 쓴 포인트 +price · /api/shop owned = DB · /api/emoji 메타 27 전원 + ownedSpecial)
+                                                              · bot_01 27번 중복 0 → 28번째 409 complete · bot_06(19P) 동시 두 번 → 200+409 · 잔액 19→9 · 특별 보내기 3개 · 4번째 kind special · 표준은 감 · 미보유 BAD_REQUEST · 재접속 스냅샷 special
+                                                              ★ 시작할 때 bot_01 · bot_06 의 뽑기 기록을 비운다(몇 번 돌려도 같다 · 봇 계정만). 기본 서버(값 20)에서 돌리면 한 번만 뽑는다
+npm run ui-check:shop                                         ★★ (verify 포함 · 32) bot_02 로 로그인해 실제 값(20P)으로 뽑는다 — 🎁 높이=초대 · 0P "20점 모자라요" · Esc → 채팅 포커스 · 캡슐 → 결과 카드(≥1.2초) · 잔액 −20 · [한 번 더] 포커스 · 누르면 건너뜀 · 방향키 [닫기] → 목록 격자
+                                                              · 7/27(uic 계정 INSERT) · 27/27 "완성!"(bot_01 — 봇 shop 뒤) · 390 ☰ → 창 · ✨ 탭(가진 것만 · 머리글) · 칸 바꾸기 → prefs · ★ D: 큰 반응 96px 입력창 위 · 로그 32px · 3개 · 4번째 "특별 이모티콘 도배 방지" · 3초 뒤 · 표준은 감
+                                                              · 390 · 390×470(키보드) · 대안 inline(localStorage qw.specialDisplay) 같은 장면 3장. 그림은 SHOT_DIR=r049 로 docs/design/r049/(verify 는 verify/)
+```
+★ 처음 돌렸을 때 29/32 — 셋 다 **검사 쪽**(튀어 오르는 애니메이션 중에 크기를 잼 · "칸 바꾸기" 모드를 안 끄고 셀을 눌러 전송이 아니라 칸 편집이 됨 · 입력창 아래 470.2px 반올림). 화면 코드는 그대로 두고 검사를 고쳐 32/32.
+★ 검사 뽑기는 봇 계정만(bot_01 · bot_02 · bot_06). 찬종 계정 포인트는 쓰지 않는다. 봇 shop 이 돌 때 bot_01 · bot_06 기록을 비우므로 ui-check:shop 의 27/27 그림은 **봇 shop 다음에** 돌릴 때 나온다(아니면 건너뛰고 적는다).
+
+---
+
 ## 29. ★★★ R048 — 도배 방지 · 꾹 누름 · 포인트 · 특별 이모티콘
 
 ```bash
