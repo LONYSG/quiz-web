@@ -115,6 +115,7 @@ STATUS: 완료 — 끝 점검 봇 39/39(flood · emoji 는 옛 규칙 기대값 
 5. 포인트 내역 줄("맞힌 문제 N − 쓴 포인트 M")은 쓴 것이 있을 때만.
 6. 특별 이모티콘 이름 = 파일명 캐릭터 한글 + 번호 · tags = [테마 key, 캐릭터].
 7. 봇 메모리 대기는 runbots.sh 의 memwait(2분 × 10) — 기다리다 못 돌리면 SKIP-MEM 으로 적고 통과라 쓰지 않는다.
+8. (끝 점검 뒤 발견) verify 의 ui-check 모드(--social · --profile · --emoji · --leave · --spam)가 그림을 옛 라운드 폴더(r045 · r046)에 기본으로 써서 **기록을 덮어썼다** → git checkout 으로 되돌리고, 기본 폴더를 docs/design/verify/(.gitignore)로 바꿨다(a73aff2). 라운드 그림은 SHOT_DIR=rNNN 로 따로 찍는다.
 
 ===========================================
 7. 새로 발생한 결정 필요 항목
