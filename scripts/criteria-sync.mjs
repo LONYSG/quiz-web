@@ -21,7 +21,8 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 
 const STANDARD = 'docs/15-QUALITY-STANDARD.md';
-const TARGETS = ['pipeline/prompts/score-v1.md', 'pipeline/prompts/question-v3.md', 'pipeline/prompts/question-v4.md'];
+// ★ G004: score-v1 은 얼렸다 → score-v2 (DG-023)
+const TARGETS = ['pipeline/prompts/score-v2.md', 'pipeline/prompts/question-v3.md', 'pipeline/prompts/question-v4.md'];
 const BEGIN = '<!-- CRITERIA:BEGIN -->';
 const END = '<!-- CRITERIA:END -->';
 
