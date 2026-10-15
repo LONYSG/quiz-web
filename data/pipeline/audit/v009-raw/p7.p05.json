@@ -1,0 +1,810 @@
+[
+ {
+  "ref": "L3-09",
+  "verdict": "fix",
+  "categories": [
+   "alias"
+  ],
+  "reason": "힌트 '프랭크스기빙' 은 영어 이름 Thanksgiving 의 말장난이라 '땡스기빙' 같은 다른 이름으로 이끎(H10) → 말장난 없이 사실만 남긴다(변형을 늘려 해결하지 않음)",
+  "score": {
+   "dif": 3,
+   "easiestCue": "여러 대통령에게 편지를 보내며, 이날을 나라 전체의 공휴일로 만들자고 했습니다. 이 미국의 명절은 무엇일까요",
+   "difWhy": "묻는 사실: 헤일의 추수감사절 공휴일 운동 — 세계 명절 상식 (경계 2)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "'1863 링컨을 설득해'(쉬운 단서)를 빼고 해설로 옮김 — 유일"
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": "1939년 루스벨트가 이날을 한 주 앞당기자 미국인의 62%가 반대했고, 바뀐 날짜를 따른 주는 23곳뿐이었다.",
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "헤일이 '메리의 작은 양' 지음",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Sarah_Josepha_Hale",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1846년부터 17년간 공휴일 운동",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Sarah_Josepha_Hale",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "여러 대통령에게 편지, 링컨에게 보낸 편지가 1863 설득",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Sarah_Josepha_Hale",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1939 루스벨트가 11월 마지막에서 둘째 목요일로 앞당김, Franksgiving 조롱, 갤럽 62:38 반대, 23개 주가 따름",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Franksgiving",
+    "doubt": false,
+    "proposal": true
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "추수감사절(Thanksgiving 말장난을 읽은 사람)",
+   "rules": "H10 반대 꼴(다른 이름 유도)"
+  },
+  "note": null
+ },
+ {
+  "ref": "L3-17",
+  "verdict": "fix",
+  "categories": [
+   "famous-one"
+  ],
+  "reason": "힌트 '퀴닌 토닉워터에 설탕과 이 술을 타서' 는 진토닉 = 진의 대표 쓰임이라 질문 없이 정답(K3-07 엿 선) → 두 번째 줄 사실로 교체",
+  "score": {
+   "dif": 4,
+   "easiestCue": "1751년 윌리엄 호가스는 이 술에 찌든 비참한 거리를 그린 판화를, 건강하고 즐거운 '맥주 거리'와 짝지어 내놓았습니다",
+   "difWhy": "묻는 사실: 진 열풍과 호가스 진 레인 — 세계사·미술 교양 (경계 3)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": "1736년 법 아래에서는 이 술을 몰래 파는 가게를 알려 준 밀고자에게 5파운드를 주었다.",
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1688 윌리엄 즉위 뒤 잉글랜드에서 대중화, 정부가 장려",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Gin_Craze",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "호가스 Gin Lane(1751)을 Beer Street 와 짝지음",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Gin_Craze",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1751 법: 면허료 인하, 연 10파운드 이상 임차 가게만 '점잖은' 판매",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Gin_Craze",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "토닉워터+설탕+진, 영국령 인도 장교",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Gin_and_tonic",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1736 법: 불법 가게 신고 밀고자에게 5파운드",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Gin_Craze",
+    "doubt": false,
+    "proposal": true
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": "#99(노간주 열매 무색 증류주 · 정의)와 지식 다름 — 3-3 통과(질문 문장이 범주만으로 풀리지 않음)",
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "진(진토닉)",
+   "rules": "H9 ② 대표 쓰임(famous-one)"
+  },
+  "note": "해설의 '일정 값 이상의 가게' 는 문서가 '연 10파운드 이상 임차' — 표현 보정 가능"
+ },
+ {
+  "ref": "L3-25",
+  "verdict": "drop",
+  "categories": [
+   "pair-3-3"
+  ],
+  "reason": "2회차 질문이 '프랑스어로 된 한 느낌' 이라는 범주 단서만으로도 1회차 정답 데자뷔로 풀려 새 사실(1876 부아라크·측두엽 뇌전증)이 꾸밈에 그침 → 3-3·CV-10 drop",
+  "score": {
+   "dif": 3,
+   "easiestCue": "1876년 프랑스 철학자 에밀 부아라크가 처음 쓴 프랑스어로, 측두엽 뇌전증과 관련이 있다고 알려진 한 느낌을 가리킵니다",
+   "difWhy": "묻는 사실: 프랑스어 '느낌' 낱말 데자뷔 — 대중 용어, 범주 단서로 풀림 (경계 2)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1876 부아라크가 처음 사용",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/D%C3%A9j%C3%A0_vu",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "측두엽 뇌전증과 관련",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/D%C3%A9j%C3%A0_vu",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "데자 베퀴는 행동이 따르는 거짓 경험",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/D%C3%A9j%C3%A0_vu",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "에프런 1965(참고문헌은 1963) 두 반구 신호 어긋남",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/D%C3%A9j%C3%A0_vu",
+    "doubt": true,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": "#4004 1회차(정답 데자뷔, '이미 본 듯한 느낌' 프랑스어)와 같은 답 — 2회차 질문 문장이 범주 단서(프랑스어 느낌)로 풀림(CV-10)",
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "M1-02",
+  "verdict": "fix",
+  "categories": [
+   "weak"
+  ],
+  "reason": "재채점 3(국민 밈, 단서가 곧 대상)인데 힌트가 없음(H0) → 힌트를 붙이고 층은 '대중'(CV-01)으로 표시 제안; 나무위키 403 으로 문서 대조는 못 함",
+  "score": {
+   "dif": 3,
+   "easiestCue": "색이 커피와 비슷하다고 해서 커피 이름을 붙여 부른 이 벌칙 음료",
+   "difWhy": "묻는 사실: 1박 2일의 까나리카노 — 국민 밈, 단서가 곧 대상 (경계 2)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": "시즌 4 초반에는 딘딘이 한 잔을 모두 마시고 1,000원을 받아 화제가 됐다.",
+   "variants": null,
+   "layer": "대중",
+   "score": null
+  },
+  "webOpened": false,
+  "facts": [
+   {
+    "claim": "1박 2일 복불복에 까나리 액젓, 커피와 비슷한 색으로 위장해 까나리카노",
+    "where": "q",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://namu.wiki/w/까나리 액젓",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "최초의 원샷은 MC몽(WebSearch 요약은 MC몽이 초기에 원샷했다는 정도로만 지지)",
+    "where": "e",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://namu.wiki/w/까나리 액젓",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "딘딘이 시즌4 초반 한 잔을 모두 마셔 1,000원 획득(WebSearch 요약, 문서 미개봉)",
+    "where": "h",
+    "result": "unverified",
+    "basis": null,
+    "source": null,
+    "doubt": true,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": false,
+   "md": "MD11 국민 밈 → 층 대중"
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "해당 없음(힌트 없음)",
+   "rules": ""
+  },
+  "note": "제안 힌트는 검색 요약만 보고 쓴 것 — 문서 확인 필요. 1박 2일은 한국 레전드(MD10 통과)"
+ },
+ {
+  "ref": "M1-10",
+  "verdict": "fix",
+  "categories": [
+   "fact-error"
+  ],
+  "reason": "질문의 '같은 해 10월 MBC FM4U로 자리를 옮겼고'(2001 기준)는 사실이 아님 — 문서상 MBC FM4U 이동은 2003.10.20, 처음엔 SBS 파워FM(2003.4까지) → 연도를 바로잡는다",
+  "score": {
+   "dif": 3,
+   "easiestCue": "방송 첫머리에는 '청취로 생기는 정신적·육체적·물질적 피해, 불면증, 정서불안'에 제작진이 책임지지 않는다는 경고가 나왔는데",
+   "difWhy": "묻는 사실: 고스트스테이션 — 라디오 청취층의 오프닝 경고 문구 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "N.EX.T 리드보컬(쉬운 단서)을 해설로 옮기고 경고 문구 전문을 넣음 — 유일. 단 이동 연도 오류가 질문에 들어감"
+  },
+  "proposal": {
+   "question": "2001년 4월 1일 첫 방송을 탄 새벽 라디오로, 2003년 10월 MBC FM4U로 자리를 옮겼고 2012년 10월 22일 완전히 끝났습니다. 방송 첫머리에는 '청취로 생기는 정신적·육체적·물질적 피해, 불면증, 정서불안'에 제작진이 책임지지 않는다는 경고가 나왔는데, 이 프로그램은 무엇일까요?",
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "2001.4.1~2012.10.22 방송",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/신해철의_고스트스테이션",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "같은 해(2001) 10월 MBC FM4U 이동",
+    "where": "q",
+    "result": "false",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/신해철의_고스트스테이션",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "방송 시작 부분 경고 문구",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/신해철의_고스트스테이션",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "N.EX.T 리드보컬 신해철 진행, 4기 '쫌 놀아본 오빠…'",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/신해철의_고스트스테이션",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1기 SBS 파워FM(2001~2003.4) · 라이코스 뮤직 동시 송출",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/신해철의_고스트스테이션",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": "제안 질문은 이동 연도만 2003으로 고침. 힌트(SBS 파워FM)와 모순 없음"
+ },
+ {
+  "ref": "M1-18",
+  "verdict": "fix",
+  "categories": [
+   "variants"
+  ],
+  "reason": "정답이 영문 'Nobody' 뿐이라 한글 자판으로 '노바디' 를 치는 사람이 오답이 됨(MD8 흔한 표기·A1) → 변형 추가 제안(쓰임은 미확인)",
+  "score": {
+   "dif": 2,
+   "easiestCue": "2009년 10월 한 한국 걸그룹이 미국 진출 7개월 만에 영어 버전 싱글로 빌보드 핫 100 76위에 올랐습니다",
+   "difWhy": "묻는 사실: 원더걸스 Nobody 의 빌보드 진입 — 방송·뉴스에서 흔히 (국민곡)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": [
+    "노바디"
+   ],
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "미국 진출 7개월 만에 영어 버전 싱글로 핫 100 76위, 한국 가수 곡 처음",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/원더걸스",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "2006.12.22부터 MTV 리얼리티로 데뷔 과정 공개",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/원더걸스",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": "B10 영문 제목만 있고 한글 표기 '노바디' 누락 가능 — 한국 쓰임은 문서·검색으로 확인 못 함(unverified)"
+  },
+  "hintRead": {
+   "alone": "해당 없음(힌트 없음, 난이도 2라 H0 보류)",
+   "rules": ""
+  },
+  "note": "난이도 2 라 힌트 없음은 정상. 변형 제안은 낮은 확신"
+ },
+ {
+  "ref": "M1-26",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "아가씨의 원작 소설 질문 — 핑거스미스 하나, 문서 일치, 힌트(2002 부커상·오렌지상 최종 후보)는 세부 ok, 영문 변형은 B10",
+  "score": {
+   "dif": 4,
+   "easiestCue": "박찬욱 감독의 '아가씨'(2016)는 영국 작가 세라 워터스의 소설을 옮기며, 원작의 빅토리아 시대 영국을 1930년대 일제강점기 조선으로 바꿨습니다",
+   "difWhy": "묻는 사실: 아가씨의 원작 소설 제목 — 영화 애호가 (경계 3)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "원작 세라 워터스 '핑거스미스', 1930년대 일제강점기 조선 배경",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/아가씨_(영화)",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "원작이 빅토리아 시대 영국(이 문서에는 없음)",
+    "where": "q",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://ko.wikipedia.org/wiki/아가씨_(영화)",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "3부 구성, 1부 숙희 2부 히데코",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/아가씨_(영화)",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "2002 부커상·오렌지상 최종 후보",
+    "where": "h",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Sarah_Waters",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": "MD10 아가씨 — 레전드 경계"
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": "애매: 아가씨(2016)가 MD10 레전드(여러 해 뒤 회자) 인지 경계 — 칸 경쟁작·대중 화제작이라 통과로 봄. 원작의 빅토리아 시대 배경은 이 문서에 없음(상식 수준)"
+ },
+ {
+  "ref": "M2-07",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "On a Friday→EMI 요청 개명(토킹 헤즈 곡)으로 라디오헤드 하나, 문서 일치, 힌트(조니 그린우드 팬텀 스레드)는 구성원을 거쳐 ok. 층은 팬 세부가 더 맞음",
+  "score": {
+   "dif": 4,
+   "easiestCue": "옥스퍼드셔 애빙던 스쿨의 친구들은 1985년, 학교 음악실에서 늘 연습하던 요일을 딴 'On a Friday'라는 이름으로 밴드를 시작했습니다",
+   "difWhy": "묻는 사실: 라디오헤드의 개명 일화 — 록 애호가 (경계 3)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": "팬 세부",
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "애빙던 스쿨에서 만남, 1985 On a Friday(연습 요일)",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Radiohead",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "EMI 요청으로 토킹 헤즈 True Stories 곡 'Radio Head' 에서 이름",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Radiohead",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "12월 21일 EMI와 6장 계약(문서 문장에 연도 없음, 1991 추정)",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Radiohead",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "조니 그린우드 팬텀 스레드로 첫 아카데미 후보",
+    "where": "h",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Jonny_Greenwood",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": false,
+   "md": "층 표시 대중→팬 세부 제안"
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "라디오헤드(조니 그린우드를 아는 음악 애호가)",
+   "rules": ""
+  },
+  "note": "애매: 층 표시(대중)가 일화 중심 질문과 어긋남 — 팬 세부 제안"
+ },
+ {
+  "ref": "M2-15",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "그림자 병사 베르·이그리트와 2016~18 카카오페이지 웹소설 원작으로 나 혼자만 레벨업 하나, 문서 일치, 새 단서 사실 있음",
+  "score": {
+   "dif": 3,
+   "easiestCue": "주인공의 개미형 그림자 병사 '베르'는 소설 『개미』의 작가 베르나르 베르베르의 이름에서 따왔고, 기사형 그림자 병사 '이그리트'는 머리에 붉은 깃을 달고 있습니다",
+   "difWhy": "묻는 사실: 나 혼자만 레벨업의 그림자 병사 설정 — 한국 웹툰 대표작 팬 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "작가 추공·장성락 그림 연재(쉬운 단서)를 빼고 그림자 병사 설정으로 바꿈 — 유일"
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "웹소설 2016.7.25~2018.3.13 카카오페이지",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/나_혼자만_레벨업",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "베르: 개미형 그림자 병사, 베르베르에서 딴 이름",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/나_혼자만_레벨업",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "이그리트: 기사형 그림자 병사, 붉은 깃",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/나_혼자만_레벨업",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "성진우 E급 최약체, 레벨 업 가능한 유일무이한 능력",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/나_혼자만_레벨업",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "작화 장성락, A-1 Pictures 2024 애니(시즌1 2024.1~3)",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/나_혼자만_레벨업",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "나 혼자만 레벨업(2024 웹툰 원작 애니를 본 사람)",
+   "rules": ""
+  },
+  "note": "애매: 힌트 '웹툰 + 2024 A-1 애니' 가 H9 ② 대표 사건에 가까움 — 두 번째 줄 사실로도 읽혀 ok"
+ },
+ {
+  "ref": "M2-23",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "1-2 벽돌 사이 워프존 → 끝없는 물속 스테이지 → 마이너스 월드 하나, 문서 일치, 힌트(36번 타일)는 새 사실",
+  "score": {
+   "dif": 3,
+   "easiestCue": "1-2 스테이지에서 출구 앞 벽돌 사이를 뚫고 워프 존 구역으로 들어가면, 끝없이 되풀이되어 깰 수 없는 물속 스테이지에 갇힙니다",
+   "difWhy": "묻는 사실: 슈퍼 마리오의 마이너스 월드 — 게임 대중 상식 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1985 슈퍼 마리오 브라더스 버그 스테이지",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Minus_World",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1-2 출구와 워프 존 사이 벽돌을 통과",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Minus_World",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "NES판은 끝없는 물속 루프",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Minus_World",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "내부 World 36-1, 36번 타일은 빈칸",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Minus_World",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "디스크판은 세 스테이지 지나 끝까지",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Minus_World",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": "힌트가 질문의 '앞자리 빈칸' 조건을 다시 짚지만 36이라는 새 사실이 있어 ok"
+ }
+]

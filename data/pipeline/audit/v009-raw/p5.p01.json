@@ -1,0 +1,800 @@
+[
+ {
+  "ref": "A1-05",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "1824 살롱·루소/도비니·마을 이름 화파가 문서와 일치, 유일(바르비종파), 힌트는 컨스터블을 거치는 한 걸음.",
+  "score": {
+   "dif": 4,
+   "easiestCue": "테오도르 루소와 도비니가 이끌었고 그 마을 이름으로 불리는 이 화파",
+   "difWhy": "묻는 사실: 바르비종파(1824 살롱 자극 · 루소/도비니 지도) — 미술사 애호가 (경계 3)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "쉬운 단서(퐁텐블로 숲 가장자리)를 뺐고 정답 유일"
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1824 살롱에 걸린 영국 화가(컨스터블)의 시골 풍경이 자연 직접 그리기 자극",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Barbizon_school",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "바르비종 마을 이름에서 화파 명칭",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Barbizon_school",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "지도자 루소·도비니",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Barbizon_school",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "현장에서 스케치 뒤 작업실에서 완성",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Barbizon_school",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "영국 화가는 존 컨스터블 / 마을은 퐁텐블로 숲 가장자리",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Barbizon_school",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": false,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "컨스터블 → 풍경화 화파라 추측, 바르비종까지는 미술에 밝은 소수",
+   "rules": ""
+  },
+  "note": "애매: 힌트의 퐁텐블로 숲 가장자리는 rewrite 가 질문에서 뺀 단서의 재도입 — 보통 성인은 바르비종과 못 잇지만 VERIFY 가 한 번 더 읽을 것."
+ },
+ {
+  "ref": "A1-13",
+  "verdict": "fix",
+  "categories": [
+   "question-repeat"
+  ],
+  "reason": "H3: 힌트의 \"왕이 직접 이 악기로 협주곡 연주\" 는 질문 \"프리드리히 대왕은 이 악기를 즐겨 연주\" 와 같은 정보(그림 이름만 새것).",
+  "score": {
+   "dif": 3,
+   "easiestCue": "프리드리히 대왕은 이 악기를 즐겨 연주했고",
+   "difWhy": "묻는 사실: 프리드리히 대왕의 악기·크반츠 — 고교 음악/상식",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": "J. S. 바흐가 프리드리히 대왕이 건넨 주제로 쓴 '음악의 헌정'에는 이 악기를 위한 트리오 소나타가 들어 있다.",
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": false,
+  "facts": [
+   {
+    "claim": "음악의 헌정에 플루트·바이올린·통주저음 트리오 소나타",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/The_Musical_Offering",
+    "doubt": false,
+    "proposal": true
+   },
+   {
+    "claim": "크반츠는 왕의 플루트 스승 · E♭ 키 · 협주곡 약 300곡",
+    "where": "q",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Johann_Joachim_Quantz",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": false,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "왕이 협주곡을 연주하는 그림 → 악기는 플루트(질문 반복이라 새 도움 없음)",
+   "rules": "H3"
+  },
+  "note": "난이도 3 이라 질문 사실은 열지 않음(GEN note 만 확인)."
+ },
+ {
+  "ref": "A1-21",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "1862 쾨헬 목록·카를 대공 가정교사 15년·기사 작위·식물학자 모두 문서와 일치. 힌트 626번(모차르트 레퀴엠)은 목록→작곡가 한 걸음.",
+  "score": {
+   "dif": 4,
+   "easiestCue": "1862년 한 작곡가의 작품을 연대순·주제별로 정리한 목록을 펴냈는데",
+   "difWhy": "묻는 사실: 쾨헬 목록의 편자 — 클래식 애호가/대학 교양 (경계 3: 쾨헬 번호를 알면 풀림)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "새 단서 없이 머리글자(K) 단서만 뺌 — 남은 가정교사 이력으로 유일"
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "카를 대공의 네 아들을 15년 가르침",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Ludwig_von_Köchel",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "기사 작위(knighthood)",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Ludwig_von_Köchel",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1862 모차르트 작품의 연대순·주제별 목록",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Ludwig_von_Köchel",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "지질학·광물학에도 관심",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Ludwig_von_Köchel",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "K.626 레퀴엠 D단조 미완",
+    "where": "h",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/K%C3%B6chel_catalogue",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "모차르트 레퀴엠 → 쾨헬 번호까지 잇는 사람은 클래식 팬",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "A2-04",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "트리말키오 제목 → 퍼킨스의 반대 → 마지못해 수락 → 1925-04-10 모두 문서와 일치, 유일(위대한 개츠비).",
+  "score": {
+   "dif": 4,
+   "easiestCue": "편집자 맥스 퍼킨스가 너무 낯설어 사람들이 발음도 못 할 거라며 말렸습니다",
+   "difWhy": "묻는 사실: 제목 결정 일화 — 문학 애호가 (경계 3: 작품 자체는 유명)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "웨스트에그의 트리말키오 제목 문구를 뺌 — 유일 유지"
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "사티리콘의 트리말키오를 딴 제목을 선호",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/The_Great_Gatsby",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "퍼킨스가 너무 모호하고 발음 못 할 거라 설득",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/The_Great_Gatsby",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "마지못해(reluctantly) 현재 제목 택함, 1925-04-10 출간",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/The_Great_Gatsby",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "제목은 Le Grand Meaulnes 에서 영감",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/The_Great_Gatsby",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "화자 닉: 예일 졸업, 채권 판매, 웨스트에그",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/The_Great_Gatsby",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "화자의 신상 → 위대한 개츠비를 아는 독자는 떠올리나 줄거리 곁가지(조연)라 한 걸음",
+   "rules": ""
+  },
+  "note": "애매: 힌트가 질문에서 뺀 웨스트에그를 다시 쓴다(조연 닉 경유라 ok)."
+ },
+ {
+  "ref": "A2-12",
+  "verdict": "fix",
+  "categories": [
+   "variants"
+  ],
+  "reason": "변형: 한국에서 흔한 표기 \"타임스 뉴 로만\"(ko.wikipedia 글꼴 목록에도 쓰임)이 빠짐. 질문·사실은 문서와 일치.",
+  "score": {
+   "dif": 4,
+   "easiestCue": "스탠리 모리슨은 옛 서체 '플랑탱'을 바탕으로 획의 대비를 키운 새 세리프 서체를 기획했고, 레터링 화가 빅터 라든트가 글자를 그렸습니다",
+   "difWhy": "묻는 사실: 모리슨·라든트의 서체 — 타이포그래피 애호가 (경계 5)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "신문 쪽 단서를 빼고 디자이너 단서로 좁힘 — 유일(모리슨+플랑탱+라든트)"
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": [
+    "타임스 뉴 로만"
+   ],
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1931 타임스용 의뢰 서체",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Times_New_Roman",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "모노타입 미술 자문 모리슨 기획, 광고부 레터링 화가 라든트",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Times_New_Roman",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "플랑탱 기반, 획 대비 강화",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Times_New_Roman",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1932-10-03 데뷔 / 40년 사용",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Times_New_Roman",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "미 국무부 2004~2023 공문서 표준 글꼴",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Times_New_Roman",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": "표기 변형 \"타임스 뉴 로만\" 누락 — https://ko.wikipedia.org/wiki/타임스_뉴_로먼 본문에 로만 표기가 쓰임. \"타임즈\" 꼴은 문서에서 확인 못 해 제안에서 뺌"
+  },
+  "hintRead": {
+   "alone": "국무부 공문서 글꼴 → 여러 후보(Courier·Arial 등), 바로 못 댐",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "A2-20",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "1492 이후 왕실 · 1526 카를 5세 · 1832 어빙 모두 알함브라로 유일. 힌트(어빙이 1829 방에서 석 달 집필)는 새 사실.",
+  "score": {
+   "dif": 3,
+   "easiestCue": "1492년 이후 페르디난드와 이사벨의 왕실이 들어서, 콜럼버스가 항해에 왕실의 승인을 받은 곳입니다",
+   "difWhy": "묻는 사실: 그라나다 함락 뒤 왕실 · 알함브라 — 고교 세계사/상식 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": false,
+  "facts": [],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "어빙 이야기책 집필 → 알함브라 궁전을 떠올릴 수 있으나 질문 단서와 엮어야 함",
+   "rules": ""
+  },
+  "note": "난이도 3 — 질문 사실은 GEN note 만 보고 열지 않음."
+ },
+ {
+  "ref": "C1-03",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "펠라그라=나이아신 결핍 · 닉스타말화 · 이름 어원 모두 문서와 일치. 힌트(트립토판 60mg→1mg)는 두 번째 줄 사실.",
+  "score": {
+   "dif": 4,
+   "easiestCue": "니코틴과 헷갈리지 않도록 '니코틴산'과 '비타민'을 합쳐 이름을 지은 이 비타민",
+   "difWhy": "묻는 사실: 펠라그라 · 나이아신 이름 유래 — 대학 영양/교양 (경계 3)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "펠라그라는 나이아신(B3) 결핍병, 닉스타말화로 예방(멕시코·중미)",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Pellagra",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "20세기 초 미국 남부에서 유행",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Pellagra",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "이름은 nicotinic acid + vitamin, 니코틴과 구별하려 지음",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Niacin",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1915 골드버거 수감자 11명 곡물 위주 식단",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Pellagra",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "트립토판 60mg → 나이아신 1mg",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Niacin",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "트립토판과 바꿔 만드는 비타민 → 나이아신까지는 영양 관심층",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "C1-11",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "르보른 \"탄\" · 왼쪽 이마엽 손상 · 를롱 부검 · 브로카 명명 모두 문서와 일치, 유일. 힌트(1859 인류학회 창립자)는 의사를 거친 한 걸음.",
+  "score": {
+   "dif": 4,
+   "easiestCue": "프랑스 환자 르보른은 '탄 씨'라는 별명으로 불렸습니다",
+   "difWhy": "묻는 사실: 탄 환자와 브로카 영역 발견 — 대학 교양(심리/신경) (경계 3)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "증상 서술을 뺐으나 탄 씨+를롱 부검으로 유일, 읽기도 짧아짐"
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "30세에 거의 말 못 함, 질문에 \"tan\" 만",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Broca%27s_area",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "죽은 뒤 왼쪽 이마엽 겉 손상",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Broca%27s_area",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "를롱 부검 측면 이마엽 손상, 두 사례로 브로카 판단",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Broca%27s_area",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1859 파리 인류학회 설립(폴 브로카)",
+    "where": "h",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Paul_Broca",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": false,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "파리 인류학회를 세운 의사 → 폴 브로카까지는 아는 사람만",
+   "rules": ""
+  },
+  "note": "애매: 힌트 사실(1859)은 Paul_Broca 문서를 직접 열어 보지 않음."
+ },
+ {
+  "ref": "C1-19",
+  "verdict": "fix",
+  "categories": [
+   "famous-one"
+  ],
+  "reason": "H9②: 힌트 \"쇠붙이를 태우면 이것이 빠져나간다 … 무게 증가가 골칫거리\" 는 플로지스톤설의 정의/대표 난점이라 힌트만으로 정답(C1-10 모세혈관 경계와 같은 꼴). rewrite 가 질문에서 뺀 단서의 재도입.",
+  "score": {
+   "dif": 4,
+   "easiestCue": "독일 화학자 슈탈은 스승 베허가 '기름진 흙'이라 부른 것에 새 이름을 붙여 널리 퍼뜨렸습니다",
+   "difWhy": "묻는 사실: 슈탈의 개명 · 플로지스톤 — 화학사 (경계 3: 연소설은 교과)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "새 단서 없이 무게 증가 단서만 뺌 — 유일"
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": "이름은 '불에 타오른다'는 뜻의 고대 그리스어에서 왔다.",
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "슈탈이 베허의 terra pinguis 를 phlogiston 으로 개명",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Phlogiston_theory",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "라부아지에: 연소에는 질량 있는 기체(산소) 필요, 1770년대 대체",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Phlogiston_theory",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "일부 금속은 탄 뒤 질량이 늘었다",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Phlogiston_theory",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "이름은 고대 그리스어 phlogiston(burning up) < phlox(flame)",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Phlogiston_theory",
+    "doubt": false,
+    "proposal": true
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": false,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "플로지스톤",
+   "rules": "H9② 정의·대표 난점"
+  },
+  "note": "슈탈이 단어를 처음 만든 것은 아니라는 문서 서술이 있어(1606년 용례) \"붙인 이름\"은 \"개명해 퍼뜨린\" 정도로 읽힘 — 질문은 그 뜻으로 ok."
+ },
+ {
+  "ref": "C1-27",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "아리스토텔레스 · 프로이트 1876 · 슈미트 1904 모두 문서와 일치. 힌트(렙토세팔루스)는 새 사실, 장어(#4461)와 지식 다름.",
+  "score": {
+   "dif": 4,
+   "easiestCue": "아리스토텔레스는 이 물고기가 짝짓기 없이 젖은 흙의 창자에서 생겨난다고 보았습니다",
+   "difWhy": "묻는 사실: 뱀장어 생식 수수께끼(프로이트 일화) — 애호가/교양 (경계 3)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "아리스토텔레스: 뱀장어는 젖은 흙의 창자에서 생김",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Eel_life_history",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1876 프로이트가 수백 마리 해부, 첫 논문에서 실패 인정",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Eel_life_history",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "슈미트 1904~ 탐사",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Eel_life_history",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "렙토세팔루스: 납작하고 투명한 유생",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Eel_life_history",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": "#4461 장어(풍천장어) — 지식 다름(D1 아님)",
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "렙토세팔루스 → 장어류 유생(장어/뱀장어 못 가림)",
+   "rules": ""
+  },
+  "note": "애매: 답이 \"뱀장어\" 인데 한국인은 \"장어\" 로도 침 — 변형은 B7 이라 넣지 않았으나 오답 처리될 수 있음."
+ }
+]

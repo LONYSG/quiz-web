@@ -1,0 +1,99 @@
+[
+ {
+  "ref": "S3-13",
+  "verdict": "fix",
+  "categories": [
+   "question-repeat"
+  ],
+  "reason": "힌트 '1980년 2월 22일 뉴욕주 레이크플래시드 올림픽 센터에서 열렸다' 는 질문의 1980 동계 올림픽(개최지)을 되풀이하는 정보라 도움이 안 됨 — H3",
+  "score": {
+   "dif": 3,
+   "easiestCue": "1980년 동계 올림픽 아이스하키에서, 허브 브룩스 감독이 이끌고 대부분 아마추어 선수로 꾸린 미국 팀이 소련을 꺾었습니다",
+   "difWhy": "묻는 사실: 미라클 온 아이스 — 스포츠 상식 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": "이 경기에서 소련은 슈팅 39개를 퍼붓고도 3골에 그쳤다.",
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1980 동계 올림픽 미국이 소련을 4-3으로 꺾음",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Miracle_on_Ice",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "브룩스 감독 · 대부분 아마추어 vs 오랜 국제 스타",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Miracle_on_Ice",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1999 스포츠 일러스트레이티드 20세기 최고의 스포츠 순간",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Miracle_on_Ice",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "금메달은 이틀 뒤 핀란드전으로 확정",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Miracle_on_Ice",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1980-02-22 레이크플래시드 올림픽 센터",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Miracle_on_Ice",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "소련 슈팅 39개, 3골",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Miracle_on_Ice",
+    "doubt": false,
+    "proposal": true
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림 (올림픽 날짜 · 장소 되풀이)",
+   "rules": "H3 question-repeat"
+  },
+  "note": "Q 의 '아이스' 는 정답 조각(frag)이나 종목명이라 문제 없음. 변형 빙판 위의 기적은 GEN WebSearch 근거 있음"
+ }
+]

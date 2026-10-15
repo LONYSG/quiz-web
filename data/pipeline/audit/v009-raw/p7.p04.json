@@ -1,0 +1,849 @@
+[
+ {
+  "ref": "K4-18",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "사전 뜻풀이 그대로의 합죽선 문제(낱말 뜻 맞히기), 안 고친 이유 맞음, 힌트(전주 선자청 장인)는 세부 ok",
+  "score": {
+   "dif": 3,
+   "easiestCue": "얇게 깎은 대나무 겉대를 맞붙여 살을 만들고, 접었다 폈다 할 수 있게 만든 우리 부채",
+   "difWhy": "묻는 사실: 합죽선 — 사전 뜻풀이가 곧 단서 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": false,
+  "facts": [
+   {
+    "claim": "얇게 깎은 겉대를 맞붙여 살을 만든 접는 부채(표준국어대사전)",
+    "where": "q",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=합죽선",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "서긍 고려도경 접는 부채 기록",
+    "where": "e",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://ko.wikipedia.org/wiki/부채",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "전주 선자청 장인이 주로 제작, 외교·대외무역에도 사용",
+    "where": "h",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://ko.wikipedia.org/wiki/선자장",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": "열지 않음(재채점 3 이하·webOpen false) — GEN 인용 그대로라 unverified"
+ },
+ {
+  "ref": "K4-26",
+  "verdict": "fix",
+  "categories": [
+   "wrong-name"
+  ],
+  "reason": "힌트 '같은 날 궁중에서 임금이 잔치를 베풀고 자를 나눠 줌' 은 중화절 풍속이라 '중화절' 을 치게 이끎(정답은 머슴날, H10 반대 꼴) + 질문이 이미 날짜를 줌(H3)",
+  "score": {
+   "dif": 4,
+   "easiestCue": "음력 2월 1일, 농가에서 부리던 사람들에게 술과 음식을 내놓아 위로하며 한 해 농사를 부탁하던 이 날",
+   "difWhy": "묻는 사실: 머슴날 — 세시풍속 애호가 (경계 3)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": "경남 의령과 양산에서는 이날 스무 살이 된 청년이 동네 어른들에게 술과 음식을 한턱내는 성인식의 뜻도 있었다.",
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "음력 2월 1일 농가에서 머슴에게 술과 음식, 농사 부탁",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/머슴날",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "볏가릿대 곡식으로 송편 등을 만들어 나이 수대로 먹음",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/머슴날",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "머슴들끼리 풍물·노래·춤, 노비일·일꾼날",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/머슴날",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "중화절: 임금이 재상·시종에게 잔치, 중화척 나눔(정조 때 시작)",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://ko.wikipedia.org/wiki/중화절",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "경남 의령·양산에서는 머슴날이 성인식의 뜻(WebSearch 요약, 문서 미개봉)",
+    "where": "h",
+    "result": "unverified",
+    "basis": null,
+    "source": null,
+    "doubt": true,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "중화절(힌트가 중화절 풍속)",
+   "rules": "② wrong-name, H3"
+  },
+  "note": "교체 힌트는 검색 요약만 보고 쓴 것 — 문서 확인 필요"
+ },
+ {
+  "ref": "L1-03",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "2017 드라세나 속 이전·옛 속명 그대로·활시위 섬유로 산세베리아 하나, 문서 일치, 범주 단서만으로 풀리지 않아 3-3 통과, 힌트(NASA 공기정화 목록)는 1회차 사실과 다름",
+  "score": {
+   "dif": 3,
+   "easiestCue": "2017년부터 학명이 드라세나 속으로 옮겨졌지만 한국에서는 지금도 옛 속명 그대로 부르는 실내 화초",
+   "difWhy": "묻는 사실: 산세베리아 학명 변경·활시위 섬유 — 실내 식물 상식 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "영어 별칭(쉬운 단서)을 해설로 옮김 — 2017 학명·활시위 섬유로 유일"
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "2017년까지 Sansevieria trifasciata 로 알려짐",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Dracaena_trifasciata",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "활시위를 만들던 질긴 섬유(bowstring hemp)",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Dracaena_trifasciata",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "영어 별칭 mother-in-law's tongue, snake plant",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Dracaena_trifasciata",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1989 NASA Clean Air Study(연도는 참고문헌)",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Dracaena_trifasciata",
+    "doubt": true,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": "#3092 1회차(칼 모양 잎·줄무늬·밤 기공)와 사실 다름 — 2회차 질문 문장은 1회차 지식만으로 풀리지 않음",
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림(공기정화 식물 여럿)",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "L1-11",
+  "verdict": "fix",
+  "categories": [
+   "assertive"
+  ],
+  "reason": "'캐런 프라이어가 … 처음 널리 퍼뜨렸다' 의 '처음' 은 문서가 [citation needed] 이고 게리 윌크스를 달리 꼽는 문장도 있어 단정 불가(3-2·Q3) → '처음' 을 뺀다",
+  "score": {
+   "dif": 4,
+   "easiestCue": "캐런 프라이어가 글과 책으로 처음 널리 퍼뜨렸는데",
+   "difWhy": "묻는 사실: 클리커 트레이닝의 브렐랜드 '다리 자극'·프라이어 — 반려견 훈련 애호가 (경계 3)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "'반려견 주인들에게도 알려졌다'(쉬운 단서)를 뺌 — 유일(마커 트레이닝 등 상위어와 갈릴 위험은 경미)"
+  },
+  "proposal": {
+   "question": "B. F. 스키너의 제자 브렐랜드 부부는 행동을 표시해 보상과 이어 주는 신호에 '다리 자극'이라는 이름을 붙였습니다. 동물원과 해양 포유류 훈련에서 쓰이던 이 방법을 캐런 프라이어가 글과 책으로 널리 퍼뜨렸는데, 이 훈련법은 무엇일까요?",
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "브렐랜드 부부(마리안·켈러)는 스키너의 제자, 'bridging stimulus' 명명",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Clicker_training",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "동물원·해양 포유류 훈련에서 쓰임",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Clicker_training",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "프라이어가 글·책으로 '처음' 퍼뜨림 — [citation needed], 게리 윌크스를 대중화 주역으로 꼽는 문장 병존",
+    "where": "q",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Clicker_training",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "스키너가 조작적 조건 형성 원리를 처음 밝힘",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Clicker_training",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "IQ 동물원 1955 아칸소 핫스프링스",
+    "where": "h",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/IQ_Zoo",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": "해설 '스키너가 처음 밝힌' 은 문서가 지지(쪽 표시 필요 태그는 있음)"
+ },
+ {
+  "ref": "L1-19",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "앞면 국장·뒷면 재무 인장, 양면이 다른 국기로 파라과이 하나, 문서 일치('유일' 은 질문이 '꼽힙니다' 로 완화), 힌트(차코 전쟁)는 사건 한 걸음",
+  "score": {
+   "dif": 3,
+   "easiestCue": "이 나라 국기는 앞면에 국장이, 뒷면에는 재무 인장이 들어가 양면의 무늬가 다른 세계 유일의 국기로 꼽힙니다",
+   "difWhy": "묻는 사실: 파라과이 국기 — 국기 상식 관심층 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "앞면 국장, 뒷면 재무 인장",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Flag_of_Paraguay",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "양면 무늬가 다른 유일한 국기(문서는 단정, 인용 출처는 오리건 주기 문서)",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Flag_of_Paraguay",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "붉은 프리기아 모자 아래 노란 사자, Paz y Justicia",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Flag_of_Paraguay",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "사자는 용기를 상징(문서의 '용기' 괄호는 장대 위 모자에 붙은 듯 모호)",
+    "where": "e",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Flag_of_Paraguay",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "차코 전쟁 1932~35 볼리비아와",
+    "where": "h",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Chaco_War",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림(차코 전쟁을 아는 사람은 가능)",
+   "rules": ""
+  },
+  "note": "애매: 해설 '사자는 용기를 상징한다' 단정이 문서에서 모호 — '~로 풀이된다' 로 부드럽게 하는 편이 안전"
+ },
+ {
+  "ref": "L1-27",
+  "verdict": "fix",
+  "categories": [
+   "weak"
+  ],
+  "reason": "재채점 3(덴소 웨이브·자동차 부품 단서)인데 힌트가 없음(H0: 3 이상은 반드시) → 힌트를 붙인다",
+  "score": {
+   "dif": 3,
+   "easiestCue": "1994년 일본 덴소 웨이브의 하라 마사히로 팀이 자동차 부품의 종류와 수량을 쉽게 관리하려고 만들었습니다",
+   "difWhy": "묻는 사실: QR 코드의 개발 경위 — 개발사·개발자는 애호가, 이름은 대중 (경계 2)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": true,
+   "unique": true,
+   "addedCueInFacts": true,
+   "minor": false,
+   "readable": true,
+   "note": "'바둑돌에서 영향'(쉬운 단서 아님)을 '1:1:3:1:1 비율' 로 바꿈 — 유일"
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": "처음 설계는 바둑판 위의 흑백 돌에서 영향을 받았다고 한다.",
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1994 덴소 웨이브 발명, 하라 마사히로 팀",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/QR_code",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "자동차 부품의 종류와 수량 관리",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/QR_code",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "위치 검출 무늬 1:1:3:1:1 = 인쇄물에서 가장 적게 쓰이는 흑백 순서",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/QR_code",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "특허는 있으나 표준을 지키면 자유 사용",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/QR_code",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "초기 설계가 바둑판 위 흑백 돌에서 영향",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/QR_code",
+    "doubt": false,
+    "proposal": true
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림(제안 힌트)",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "L2-06",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "1920 아버크롬비 앤드 피치 첫 판매·레드 북·1920년대 유행으로 마작 하나, 문서 일치, 힌트(크레이지 리치 아시안 장면)는 다른 작품이라 ok",
+  "score": {
+   "dif": 3,
+   "easiestCue": "1920년 미국 아버크롬비 앤드 피치는 처음으로 이 놀이의 세트를 팔기 시작했습니다",
+   "difWhy": "묻는 사실: 마작의 미국 유행 — 놀이 이름 맞히기 (경계 2)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1920 A&F가 미국에서 첫 마작 세트 판매",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Mahjong",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "배브콕 'Rules of Mah-Jongg' = red book, 미국인에 맞게 단순화",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Mahjong",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1920년대 마작 유행",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Mahjong",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "에즈라 피치가 중국 마을에 사람을 보내 세트를 사들임",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Mahjong",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "크레이지 리치 아시안 마작 장면(문서에 언급)",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Mahjong",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "마작(영화 장면을 본 사람)",
+   "rules": ""
+  },
+  "note": null
+ },
+ {
+  "ref": "L2-14",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "ETA 톰케·1983.3.1 취리히 열두 모델로 스와치 하나, 문서 일치, 힌트(오메가·브레게·론진·티쏘를 거느린 같은 이름 모기업)는 그룹을 거쳐 ok",
+  "score": {
+   "dif": 3,
+   "easiestCue": "시계 부품 회사 ETA의 최고경영자 에른스트 톰케가 1980년대 초 개발을 이끈 시계 브랜드",
+   "difWhy": "묻는 사실: 스와치의 탄생 — 시계 브랜드 관심층 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "쿼츠 파동 대응으로 개발",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Swatch",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "ETA CEO 톰케가 1980년대 초 개발 주도",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Swatch",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "1983.3.1 취리히 12개 모델",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Swatch",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "하이에크 1986 회장 겸 CEO",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Swatch",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "모기업이 오메가·브레게·론진·티쏘 소유",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/The_Swatch_Group",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "스와치(오메가·론진을 거느린 그룹을 아는 사람)",
+   "rules": ""
+  },
+  "note": "애매: 힌트의 '같은 이름을 내건 모기업' 이 그룹 이름=브랜드 이름임을 알려 줌(명시 글자는 아님) — 한 걸음이라 ok"
+ },
+ {
+  "ref": "L2-22",
+  "verdict": "ok",
+  "categories": [],
+  "reason": "템스 강가 마을 조정 선수 유니폼 → 헨리넥 하나, 힌트(헨리 로열 레가타 1839·1851)는 마을 세부 ok, 변형 두 개는 국내 쇼핑 표기와 맞음",
+  "score": {
+   "dif": 3,
+   "easiestCue": "영국 템스 강가의 한 마을에서 조정 선수들이 전통 유니폼으로 입던 셔츠가 있습니다",
+   "difWhy": "묻는 사실: 헨리넥 셔츠 이름의 유래 — 의류 용어, 마을 이름 추론 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": null,
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": false,
+  "facts": [
+   {
+    "claim": "템스 강가 헨리 조정 선수의 전통 유니폼에서 이름",
+    "where": "q",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Henley_shirt",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "깃 없는 풀오버에 목 단추 여밈",
+    "where": "e",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Henley_shirt",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "헨리 로열 레가타 1839 창설, 1851 앨버트 공 후원",
+    "where": "h",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Henley_Royal_Regatta",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": "열지 않음(재채점 3 이하·webOpen false) — GEN 인용 그대로라 unverified"
+ },
+ {
+  "ref": "L3-01",
+  "verdict": "fix",
+  "categories": [
+   "fact-error"
+  ],
+  "reason": "'경쟁 식당 \\'다리야간지\\' 쪽 집안' 은 문서가 'Jaggi family 를 고소' 라고만 적어 '경쟁 식당' 부분을 확인 못 함(Q3 확신 없는 서술) → 문서 문장대로 고친다",
+  "score": {
+   "dif": 3,
+   "easiestCue": "1950년대 올드델리 다리야간지의 식당 '모티 마할'이 널리 퍼뜨린 닭고기 카레로, 같은 식당이 달 마카니도 처음 만들었다고 알려져 있습니다",
+   "difWhy": "묻는 사실: 버터 치킨의 모티 마할 기원 논란 — 인도 음식 관심층 (경계 4)",
+   "wor": null,
+   "acc": null
+  },
+  "rewriteCheck": {
+   "applies": false
+  },
+  "proposal": {
+   "question": "1950년대 올드델리 다리야간지의 식당 '모티 마할'이 널리 퍼뜨린 닭고기 카레로, 같은 식당이 달 마카니도 처음 만들었다고 알려져 있습니다. 2024년 모니시 구즈랄은 옛 동업자 가문인 자기 집안을 고소하며, 이 요리가 인도 분할 전 페샤와르에서 이미 만들어졌다고 주장했습니다. 이 요리는 무엇일까요?",
+   "explanation": null,
+   "hint": null,
+   "variants": null,
+   "layer": null,
+   "score": null
+  },
+  "webOpened": true,
+  "facts": [
+   {
+    "claim": "1950년대 다리야간지 모티 마할이 널리 퍼뜨림",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Butter_chicken",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "모티 마할이 달 마카니 등을 만든 것으로 알려짐('credited')",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Butter_chicken",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "2024 구즈랄이 Jaggi family 를 고소하며 분할 전 페샤와르 기원 주장(문서는 간접 서술, 2013 저서와 모순)",
+    "where": "q",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Butter_chicken",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "'경쟁 식당 다리야간지 쪽' 이라는 서술",
+    "where": "q",
+    "result": "unverified",
+    "basis": null,
+    "source": "https://en.wikipedia.org/wiki/Butter_chicken",
+    "doubt": true,
+    "proposal": false
+   },
+   {
+    "claim": "1975 맨해튼 게일로드에서 'butter chicken' 이름이 처음 인쇄물에 나옴",
+    "where": "e",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Butter_chicken",
+    "doubt": false,
+    "proposal": false
+   },
+   {
+    "claim": "자기·구즈랄은 페샤와르 출신 편자브 피란민",
+    "where": "h",
+    "result": "true",
+    "basis": "web",
+    "source": "https://en.wikipedia.org/wiki/Butter_chicken",
+    "doubt": false,
+    "proposal": false
+   }
+  ],
+  "depth": {
+   "layerOk": true,
+   "md": null
+  },
+  "dup": null,
+  "variantsCheck": {
+   "checked": true,
+   "issues": null
+  },
+  "hintRead": {
+   "alone": "못 떠올림",
+   "rules": ""
+  },
+  "note": "제안 질문은 '자기 집안' 을 쓰므로 힌트의 '쿤단 랄 자기' 이름과 겹침이 생길 수 있음(피란민 사실은 새 사실이라 ok)"
+ }
+]
