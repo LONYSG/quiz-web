@@ -1,0 +1,112 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "earth/5",
+  "midKey": "earth",
+  "subName": "기후 변화",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "earth/5#g005-C2-04",
+   "seed": {
+    "subject": "소빙기",
+    "aspect": null,
+    "ref": "C2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 시기의 추운 기후 때문에 나무가 더 촘촘하게 자라 스트라디바리 바이올린의 소리가 좋아졌을 수 있다는 주장이 있습니다. 그린란드가 1410년부터 1720년대까지 얼음으로 거의 고립되었던 것도 이 시기의 일인데, 이 비교적 추웠던 기후 시기를 무엇이라 할까요?",
+    "answer": "소빙기",
+    "acceptedAnswers": [
+     "소빙하기",
+     "소빙하 시대"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '소빙기', 본문 '소빙하 시대라고 표현하기도 한다' · 본문 링크 '소빙하기' 확인",
+    "explanation": "피터르 브뤼헐의 '눈 속의 사냥꾼'(1565) 같은 겨울 풍경화도 이 시기에 그려졌습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "1410년부터 1720년대까지의 비교적 추웠던 기후 시기",
+     "difWhy": "'중세 뒤 추웠던 시기' — 고교 지구과학·역사",
+     "wor": 4,
+     "worWhy": "교양 — 기후사 기본 용어",
+     "acc": 5,
+     "accWhy": "지구과학·기상 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "템스강이 얼던 1608~1814년 추운 기후 시기",
+     "difWhy": "'근세 추운 기후 시기' — 고교 지구과학",
+     "wor": 4,
+     "worWhy": "기후사 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "런던 템스강이 꽁꽁 얼어 강 위에 장터가 서던 '프로스트 페어'는 1608년에 처음, 1814년에 마지막으로 열렸습니다. 이 시기의 추위로 나무가 더 촘촘하게 자라 스트라디바리의 바이올린 소리가 좋아졌을 수 있다는 주장도 있습니다. 이 비교적 추웠던 기후 시기를 무엇이라 할까요?",
+     "beforeExplanation": null,
+     "removedCue": "템스강이 얼던 1608~1814년 프로스트 페어",
+     "addedCue": "그린란드가 1410~1720년대 얼음으로 고립",
+     "why": "잘 알려진 템스강 얼음 장터를 빼고 그린란드 고립 세부로 바꿈"
+    },
+    "generalHint": "1683~84년 겨울에는 얼어붙은 런던 템스강 위에 가장 이름난 '서리 장터'가 섰다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Little_Ice_Age",
+     "https://ko.wikipedia.org/wiki/소빙기"
+    ],
+    "facts": [
+     {
+      "claim": "추위로 나무가 촘촘해져 스트라디바리 바이올린 음색에 도움이 되었을 수 있음(주장)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Little_Ice_Age",
+      "note": "The colder climate may have caused the wood that was used in his violins to be denser than in warmer periods"
+     },
+     {
+      "claim": "소빙기 = 빙하기는 아니지만 비교적 추운 기후가 지속된 시기",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/소빙기",
+      "note": "소빙기(小氷期, 영어: little ice age)는 빙하기는 아니지만 비교적 추운 기후가 지속되었던 시기이다."
+     },
+     {
+      "claim": "브뤼헐 '눈 속의 사냥꾼' 1565년 무렵",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Little_Ice_Age",
+      "note": "(Bruegel the Elder's winter landscapes, including The Hunters in the Snow) are thought to have been painted around 1565"
+     },
+     {
+      "claim": "그린란드는 1410년부터 1720년대까지 얼음으로 거의 고립",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Little_Ice_Age",
+      "note": "Greenland was largely cut off by ice from 1410 to the 1720s."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/River_Thames_frost_fairs"
+    ],
+    "hintNote": "The most celebrated frost fair occurred in the winter of 1683–84.",
+    "easiestCue": "스트라디바리 바이올린 음색과 이어진 추운 시기",
+    "targetWhy": "스트라디바리 목재설·그린란드 고립은 기후사 애호가·대학 교양 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'추웠던 기후 시기' + 17세기 유럽만으로 소빙기를 떠올리는 고교 세계사 독자가 있을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": [
+     "단정어 처음,마지막"
+    ]
+   }
+  }
+ ]
+}

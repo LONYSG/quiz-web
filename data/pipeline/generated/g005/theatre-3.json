@@ -1,0 +1,181 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "theatre/3",
+  "midKey": "theatre",
+  "subName": "무용·발레",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "theatre/3#g005-A2-16",
+   "seed": {
+    "subject": "피나 바우슈",
+    "aspect": null,
+    "ref": "A2-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1973년 독일 부퍼탈 오페라 극장의 발레단을 맡은 이 안무가는 단체 이름을 '탄츠테아터 부퍼탈'로 바꿨습니다. 백조의 호수에 익숙했던 관객은 토마토를 던지거나 중간에 나가 버리기도 했습니다. 무용수 대부분이 눈을 감은 채 퍼셀의 아리아에 맞춰 탁자와 의자에 부딪히는 '카페 뮐러'(1978)를 만든 이 안무가는 누구일까요?",
+    "answer": "피나 바우슈",
+    "acceptedAnswers": [
+     "피나 바우쉬"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '피나 바우슈' 문서 제목, '피나 바우쉬' 넘겨주기 확인(API) — 두 표기 모두 한국에서 씀",
+    "explanation": "1984년 로스앤젤레스 올림픽 예술 축전의 개막 공연으로 미국 무대에 처음 섰습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'탄츠테아터 부퍼탈' 안무가",
+     "difWhy": "'탄츠테아터 부퍼탈' — 무용 애호가",
+     "wor": 3,
+     "worWhy": "현대 무용 대표 인물",
+     "acc": 3,
+     "accWhy": "공연·뮤지컬 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'탄츠테아터 부퍼탈' 안무가",
+     "difWhy": "'탄츠테아터 부퍼탈' — 무용 애호가",
+     "wor": 3,
+     "worWhy": "현대 무용 대표 인물"
+    },
+    "rewrite": null,
+    "generalHint": "그가 갑자기 세상을 떠난 뒤 빔 벤더스는 남은 무용수들과 함께 2011년 3D 다큐멘터리를 완성했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pina_Bausch"
+    ],
+    "facts": [
+     {
+      "claim": "1973/74 시즌부터 부퍼탈 오페라 발레를 맡아 탄츠테아터 부퍼탈로 개칭",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pina_Bausch",
+      "note": "Bausch was hired ... to run the Opernhaus Wuppertal ballet beginning with the 1973/74 season. Bausch was given artistic autonomy, ran the company independently and renamed it the Tanztheater Wuppertal."
+     },
+     {
+      "claim": "백조의 호수에 익숙한 관객이 토마토를 던지고 나감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pina_Bausch",
+      "note": "The audience in Wuppertal were more used to traditional ballet repertoire like Swan Lake ... The audience often threw tomatoes, walked out of performances"
+     },
+     {
+      "claim": "카페 뮐러(1978) — 퍼셀 아리아, 대부분 눈을 감고 탁자·의자에 부딪힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pina_Bausch",
+      "note": "the melancholic Café Müller (1978), in which dancers stumble around the stage crashing into tables and chairs, to arias by Henry Purcell. Bausch had most of the dancers perform this piece with their eyes closed."
+     },
+     {
+      "claim": "1984 LA 올림픽 예술 축전 개막 공연으로 미국 데뷔",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pina_Bausch",
+      "note": "The Tanztheater Wuppertal Pina Bausch made its American debut in Los Angeles as the opening performance of the 1984 Olympic Arts Festival."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pina_(film)"
+    ],
+    "hintNote": "Pina is a 2011 German 3D documentary film directed by Wim Wenders ... Bausch died unexpectedly, so Wenders cancelled the project ... her dancers persuaded him to continue",
+    "easiestCue": "'탄츠테아터 부퍼탈'을 이끈 안무가",
+    "targetWhy": "탄츠테아터 · 카페 뮐러 모두 현대 무용 애호가가 아는 세부, 교과·방송 단서 없음 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이름은 문화 관심층에 알려졌지만 대중 인지도는 중간 — 대상 유명도 경계",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "theatre/3#g005-A2-17",
+   "seed": {
+    "subject": "호두까기 인형",
+    "aspect": null,
+    "ref": "A2-17",
+    "pairedWith": 2535
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2535,
+    "question": "1892년 12월 상트페테르부르크 마린스키 극장에서, 작곡가의 마지막 오페라 '이올란타'와 함께 한 무대에 초연된 발레입니다. 초연 때는 아이들이 너무 많이 나오고, 발레리나가 2막 끝의 그랑 파드되에 가서야 춤춘다는 비판을 받았습니다. 이 발레는 무엇일까요?",
+    "answer": "호두까기 인형",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '호두까기 인형' 문서 제목 확인(API) — 변형 없음",
+    "explanation": "첼레스타 소리로 유명하지만, 작곡가는 이 악기를 한 해 전 교향적 발라드 '보예보다'에서 먼저 썼습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1892 마린스키, '이올란타'와 함께 초연된 발레",
+     "difWhy": "'이올란타와 같이 초연' — 대학 교양 음악",
+     "wor": 3,
+     "worWhy": "누구나 아는 작품 제목",
+     "acc": 3,
+     "accWhy": "공연·뮤지컬 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1892 마린스키, '이올란타'와 함께 초연된 발레",
+     "difWhy": "'이올란타와 같이 초연' — 대학 교양 음악",
+     "wor": 3,
+     "worWhy": "누구나 아는 작품 제목"
+    },
+    "rewrite": null,
+    "generalHint": "줄거리는 호프만의 1816년 이야기를 알렉상드르 뒤마가 고쳐 쓴 판본을 따랐다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/The_Nutcracker"
+    ],
+    "facts": [
+     {
+      "claim": "1892년 12월 18일(구력 6일) 마린스키 극장에서 이올란타와 이중 초연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Nutcracker",
+      "note": "The first performance of the ballet was held as a double premiere together with Tchaikovsky's last opera, Iolanta, on 18 December [O.S. 6 December] 1892, at the Imperial Mariinsky Theatre in Saint Petersburg"
+     },
+     {
+      "claim": "아이들 비중과 발레리나가 2막 끝 그랑 파드되까지 춤추지 않는다는 비판",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Nutcracker",
+      "note": "Much of the criticism focused on the featuring of children so prominently in the ballet, and many bemoaned the fact that the ballerina did not dance until the Grand Pas de Deux near the end of the second act"
+     },
+     {
+      "claim": "첼레스타를 1891 보예보다에서 먼저 씀",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Nutcracker",
+      "note": "the score is noted for its use of the celesta, an instrument the composer had already employed in his much lesser known symphonic ballad The Voyevoda (1891)."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Nutcracker"
+    ],
+    "hintNote": "based on E. T. A. Hoffmann's 1816 story ... Alexandre Dumas adapted that story as The Tale of a Nutcracker (1844), and the ballet's plot follows Dumas's version.",
+    "easiestCue": "차이콥스키 마지막 오페라 '이올란타'와 함께 초연된 발레",
+    "targetWhy": "크리스마스 · 차이콥스키 이름 · 사탕 요정 같은 대표 단서를 빼고 이중 초연 · 초연 비판만 남김 — 이올란타를 아는 클래식·발레 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "작품은 국민 수준, 초연 사정은 애호가 세부",
+    "pairCheck": "1회차 2535 는 '연말 · 차이콥스키의 크리스마스 발레' 를 묻는다 — 2회차는 크리스마스 · 차이콥스키 이름을 쓰지 않고 초연 무대 · 초연 비판을 물어 1회차 사실 재사용 없음",
+    "dbCheck": "pair-or-different — 활성 2535(같은 소분류) 1건, 지식이 다름(초연사)",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,95 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "world-language/3",
+  "midKey": "world-language",
+  "subName": "문자 체계",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-language/3#g005-L3-30",
+   "seed": {
+    "subject": "마야 문자",
+    "aspect": null,
+    "ref": "L3-30",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1950년대 소련의 언어학자 유리 크노로조프는 스페인 성직자 디에고 데 란다가 적어 둔 이른바 '란다 알파벳'이 사실은 음절 기호라고 주장했습니다. 란다는 이 문자로 쓴 책들을 모아 없애도록 했던 사람이기도 합니다. 크노로조프의 주장으로 해독의 길이 열린 이 문자는 무엇일까요?",
+    "answer": "마야 문자",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '마야 문자' 문서 제목, '마야문자' 넘겨주기 확인(API) — 띄어쓰기만 달라 변형 없음",
+    "explanation": "1973년 팔렝케 원탁회의에 모인 학자들은 오후 한나절 만에 팔렝케 왕조 명단의 대부분을 다시 짜 맞췄습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "란다 알파벳 / 디에고 데 란다가 책을 없앤 문자",
+     "difWhy": "란다·크노로조프 해독 — 대학 교양 고고학",
+     "wor": 4,
+     "worWhy": "교양 — 고대 문자 해독",
+     "acc": 3,
+     "accWhy": "언어·어원 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "란다 알파벳 / 디에고 데 란다가 책을 없앤 문자",
+     "difWhy": "란다·크노로조프 해독 — 대학 교양 고고학",
+     "wor": 4,
+     "worWhy": "교양 — 고대 문자 해독"
+    },
+    "rewrite": null,
+    "generalHint": "란다는 뒷날 스페인 왕 펠리페 2세에게 유카탄의 두 번째 주교로 임명되었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Maya_script"
+    ],
+    "facts": [
+     {
+      "claim": "크노로조프가 란다 알파벳이 음절 기호라고 주장(1952)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maya_script",
+      "note": "Knorozov argued that the so-called \"de Landa alphabet\" ... was made of syllabic, rather than alphabetic, symbols. (1952 paper)"
+     },
+     {
+      "claim": "란다가 마야 책들을 모아 없애게 함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maya_script",
+      "note": "Landa ordered the collection and destruction of written Maya works, and a sizable number of Maya codices were destroyed."
+     },
+     {
+      "claim": "1973년 팔렝케 원탁회의에서 한나절 만에 왕조 명단 대부분 재구성",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Maya_script",
+      "note": "The 1973 Mesa Redonda de Palenque ... the group reconstructed most of Palenque's dynastic list in one afternoon."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Diego_de_Landa"
+    ],
+    "hintNote": "Bishop Toral died in Mexico in 1571, allowing King Philip II of Spain to appoint Landa as the second bishop of Yucatán.",
+    "easiestCue": "디에고 데 란다가 책들을 없애게 한 문자",
+    "targetWhy": "'중앙아메리카 고대 문명의 상형 문자' 정의를 빼고 크노로조프·란다만 남김 — 고대 문자사 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 누구나 들어 봤고 해독사는 대학 교양 이상",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 문자"
+    ]
+   }
+  }
+ ]
+}

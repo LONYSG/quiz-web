@@ -1,0 +1,100 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "theatre/1",
+  "midKey": "theatre",
+  "subName": "연극 사조·연출",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "theatre/1#g005-A2-18",
+   "seed": {
+    "subject": "가부키",
+    "aspect": null,
+    "ref": "A2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "17세기 초, 이즈모 대사의 무녀였을지도 모른다는 한 여성이 젊은 여성 무용수들과 함께 교토 가모강의 마른 강바닥에 세운 임시 무대에서 새로운 춤극을 올렸습니다. 곧 궁중에 불려 가 공연할 만큼 인기를 끈 이 공연에서 비롯된 일본 전통 연극은 무엇일까요?",
+    "answer": "가부키",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '가부키' 문서 제목 확인(API) — 변형 없음",
+    "explanation": "1629년 여성의 무대 출연이 금지된 뒤 남성 배우가 여자 역까지 맡게 되었고, 이 배우를 '온나가타'라 부릅니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 17세기 초 교토 여성 춤극 + 일본 전통 연극",
+     "difWhy": "'17세기 초 일본 서민 연극 기원' — 고교 세계사",
+     "wor": 4,
+     "worWhy": "세계 전통 연극 기본 어휘",
+     "acc": 3,
+     "accWhy": "공연·뮤지컬 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이즈모노 오쿠니가 1603년 교토에서 올린 춤극",
+     "difWhy": "'오쿠니 가부키' — 고교 세계사(에도 문화)",
+     "wor": 4,
+     "worWhy": "교양 — 일본 전통 연극 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1603년 이즈모 대사의 무녀였을지도 모른다는 이즈모노 오쿠니가 젊은 여성 무용수들과 함께, 교토 가모강의 마른 강바닥에 세운 임시 무대에서 새로운 춤극을 올렸습니다. 곧 궁중에 불려 가 공연할 만큼 인기를 끈 이 공연에서 비롯된 일본 전통 연극은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "이즈모노 오쿠니라는 이름과 1603년",
+     "addedCue": "(새 단서 없음) 이름 없이 무녀 출신설·가모강 강바닥 임시 무대만 남김",
+     "why": "'오쿠니 1603년' 은 고교 세계사 에도 문화의 교과 단서라 빼고, 기원 공연의 장면 세부만으로 묻게 함"
+    },
+    "generalHint": "그 여성의 이름은 이즈모노 오쿠니로 전한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Kabuki"
+    ],
+    "facts": [
+     {
+      "claim": "1603년 이즈모 대사 무녀였을 수도 있는 오쿠니가 젊은 여성 무용수들과 가모강 마른 강바닥 임시 무대에서 공연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kabuki",
+      "note": "The history of kabuki began in 1603 during the Edo period when former shrine maiden Izumo no Okuni, possibly a miko of Izumo-taisha, began performing with a troupe of young female dancers a new, simple style of dance drama in pantomime, on a makeshift stage in the dry bed of the Kamo River in Kyoto."
+     },
+     {
+      "claim": "궁중 공연을 청받음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kabuki",
+      "note": "It did not take long for the style to become popular, and Okuni was asked to perform before the Imperial Court."
+     },
+     {
+      "claim": "1629년 여성 출연 금지 뒤 남성만, 여자 역 배우는 온나가타",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kabuki",
+      "note": "developed into its present all-male theatrical form after women were banned from performing in kabuki theatre in 1629 ... Cross-dressing male actors, known as \"onnagata\" (lit., \"woman role\") or \"oyama\" took over previously female- or wakashu-acted roles."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Izumo_no_Okuni"
+    ],
+    "hintNote": "is believed to have invented the theatrical art form of kabuki.",
+    "easiestCue": "여성 무용수들이 가모강 강바닥 무대에서 올린 춤극에서 비롯된 일본 연극",
+    "targetWhy": "창시자 이름 없이 기원 장면만 — 일본 연극 애호가·대학 교양 → 4 (경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'일본 전통 연극' 범주가 노·분라쿠·가부키 셋으로 좁아 찍을 여지가 있음",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

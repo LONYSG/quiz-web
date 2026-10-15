@@ -1,0 +1,117 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "art/1",
+  "midKey": "art",
+  "subName": "서양 회화",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "art/1#g005-A1-09",
+   "seed": {
+    "subject": "야경",
+    "aspect": null,
+    "ref": "A1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1715년 암스테르담 시청으로 옮겨질 때, 두 기둥 사이에 맞추려고 네 변이 모두 잘려 나간 것으로 보이는 그림이 있습니다. 노란 옷에 흰 띠를 두른 부관 곁에서 허리에 죽은 닭을 찬 소녀가 빛을 받고 서 있는 이 그림은 무엇일까요?",
+    "answer": "야경",
+    "acceptedAnswers": [
+     "야간순찰"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '야경 (렘브란트)' 첫 문단 — '야경(夜警)' · '야간순찰(夜間巡察)' 두 이름 확인",
+    "explanation": "실제로는 낮 장면이지만 오랫동안 덧칠한 어두운 니스 때문에 밤 장면으로 오해받아 지금의 이름이 붙었다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "노란 옷 부관 곁에 허리에 죽은 닭을 찬 소녀",
+     "difWhy": "'죽은 닭 찬 소녀' — 미술 애호가",
+     "wor": 4,
+     "worWhy": "렘브란트 대표작 — 미술 교양",
+     "acc": 4,
+     "accWhy": "미술 — 중고교 미술 교과·교양"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "민병대 대장 바닝 코크의 단체 초상화",
+     "difWhy": "'렘브란트 민병대 단체 초상' — 고교 미술",
+     "wor": 4,
+     "worWhy": "교양 — 서양 미술 대표작"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1715년 암스테르담 시청으로 옮겨질 때, 두 기둥 사이에 맞추려고 네 변이 모두 잘려 나간 것으로 보이는 단체 초상화가 있습니다. 민병대 대장 바닝 코크와 노란 옷의 부관이 앞장서고, 허리에 죽은 닭을 찬 소녀가 빛을 받고 서 있는 이 그림은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "민병대 대장 바닝 코크의 단체 초상화",
+     "addedCue": "(민병대·바닝 코크 없이) 노란 옷 흰 띠의 부관",
+     "why": "'렘브란트 민병대 단체 초상' 교과 단서를 빼고 그림 세부(잘린 네 변 · 죽은 닭 소녀)만 남김"
+    },
+    "generalHint": "그림 맨 앞에서 부대를 이끄는 대장은 검은 옷에 붉은 띠를 둘렀다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/The_Night_Watch",
+     "https://ko.wikipedia.org/wiki/야경_(렘브란트)"
+    ],
+    "facts": [
+     {
+      "claim": "1715 시청으로 옮길 때 네 변을 잘라냄, 두 기둥 사이에 맞추려 했던 것으로 추정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Night_Watch",
+      "note": "In 1715, the painting was moved to the Amsterdam Town Hall, for which it was trimmed on all four sides. This was done, presumably, to fit the painting between two columns."
+     },
+     {
+      "claim": "노란 옷에 흰 띠를 두른 부관",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Night_Watch",
+      "note": "commissioned around 1639 by Frans Banninck Cocq and seventeen members of his civic militia guards ... the lieutenant ... dressed in yellow, with a white sash."
+     },
+     {
+      "claim": "죽은 닭을 허리에 찬 소녀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Night_Watch",
+      "note": "the young girl who carries a dead chicken on her belt"
+     },
+     {
+      "claim": "어두운 니스로 밤 장면 오해 — 잘못 붙은 제목",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Night_Watch",
+      "note": "the painting was coated with a dark varnish, which gave the incorrect impression that it depicted a night scene. ... The title is a misnomer; the painting does not depict a nocturnal scene."
+     },
+     {
+      "claim": "한국어 이름 야경 / 야간순찰",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/야경_(렘브란트)",
+      "note": "야경 (夜警, 네덜란드어: De Nachtwacht) ... 야간순찰 (夜間巡察)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Night_Watch"
+    ],
+    "hintNote": "Captain Frans Banninck Cocq ... dressed in black, with a red sash",
+    "easiestCue": "허리에 죽은 닭을 찬 소녀가 빛을 받는 그림",
+    "targetWhy": "잘린 네 변 · 죽은 닭 소녀는 미술 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 그림, 단서는 그림 속·뒷이야기 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 야경·야간순찰 활성·초안 없음",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

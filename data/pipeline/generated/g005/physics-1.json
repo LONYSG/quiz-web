@@ -1,0 +1,102 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "physics/1",
+  "midKey": "physics",
+  "subName": "역학·운동",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "physics/1#g005-C2-06",
+   "seed": {
+    "subject": "마그누스 효과",
+    "aspect": null,
+    "ref": "C2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1924년 독일 기술자 안톤 플레트너의 배 '부카우'호는 돛 대신 갑판에 세운 커다란 원통 두 개를 돌려, 옆에서 부는 바람으로 앞으로 나아갔습니다. 1852년 빠르게 도는 놋쇠 원통에 바람을 쏘아 이 원리를 보인 독일 물리학자의 이름을 딴, 이 배가 이용한 효과는 무엇일까요?",
+    "answer": "마그누스 효과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1672년 뉴턴이 케임브리지의 한 칼리지에서 테니스 치는 사람들을 보고 먼저 관찰해 설명했다고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "도는 원통에 바람을 쏘아 보인 효과",
+     "difWhy": "'회전 원통 바람 효과' — 대학 교양 물리",
+     "wor": 4,
+     "worWhy": "물리 기본 어휘 — 회전 공 휨",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "도는 원통에 바람을 쏘아 보인 효과",
+     "difWhy": "'회전 원통 바람 효과' — 대학 교양 물리",
+     "wor": 4,
+     "worWhy": "물리 기본 어휘 — 회전 공 휨"
+    },
+    "rewrite": null,
+    "generalHint": "야구 커브볼이 아래로 떨어지고 탁구공이 회전으로 크게 휘는 것도 이 효과로 설명한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Rotor_ship",
+     "https://en.wikipedia.org/wiki/Magnus_effect"
+    ],
+    "facts": [
+     {
+      "claim": "플레트너가 이 효과로 추진하는 배를 처음 만듦, 1924년 10월 2로터 배 부카우 완성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rotor_ship",
+      "note": "The German engineer Anton Flettner was the first to build a ship which attempted to use the Magnus effect for propulsion ... October 1924 the Germaniawerft finished construction of a large two-rotor ship named Buckau."
+     },
+     {
+      "claim": "옆바람일 때 앞으로 미는 힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Magnus_effect",
+      "note": "When the wind blows from the side, the Magnus effect creates a forward thrust."
+     },
+     {
+      "claim": "마그누스가 1852년 빠르게 도는 놋쇠 원통과 송풍기로 시연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Magnus_effect",
+      "note": "(Heinrich Gustav Magnus) demonstrated the effect with a rapidly rotating brass cylinder and an air blower in 1852"
+     },
+     {
+      "claim": "뉴턴이 1672년 케임브리지 칼리지 테니스를 보고 처음 관찰·설명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Magnus_effect",
+      "note": "the first to observe and explain the effect in 1672 after observing tennis players at a Cambridge college"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Magnus_effect"
+    ],
+    "hintNote": "this effect is used to generate the downward motion of a curveball / In table tennis, the Magnus effect is easily observed",
+    "easiestCue": "원통을 돌려 옆바람으로 나아가는 배(플레트너 로터선)",
+    "targetWhy": "로터선·마그누스의 1852 놋쇠 원통 시연은 유체역학 애호가·대학 교양 — 대표 예(축구 바나나킥·야구 변화구)는 질문에서 뺐음 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "마그누스 효과는 스포츠로 들어 봤을 법, 배 추진 응용은 몰랐던 연결",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": [
+     "정답조각 효과"
+    ]
+   }
+  }
+ ]
+}

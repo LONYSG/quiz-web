@@ -1,0 +1,184 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "animation/2",
+  "midKey": "animation",
+  "subName": "디즈니·픽사 극장 애니메이션",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animation/2#g005-M2-24",
+   "seed": {
+    "subject": "토이 스토리",
+    "aspect": "팬 세부",
+    "ref": "M2-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "픽사 장편에는 한 가상 식당의 배달 트럭이 숨은 그림처럼 거의 빠짐없이 등장해 왔는데, 2004년 '인크레더블'에는 나오지 않습니다. 이 식당 이름은 무엇일까요?",
+    "answer": "피자 플래닛",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "'토이 스토리'에서 우디는 주유소에 선 이 트럭을 버즈에게 우주선이라고 둘러대고, 둘은 트럭을 얻어 타고 식당까지 갑니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "픽사 장편마다 숨은 그림처럼 나오는 가상 식당 배달 트럭",
+     "difWhy": "'픽사 숨은 배달 트럭' — 픽사 애호가",
+     "wor": 2,
+     "worWhy": "레전드 작품 팬 세부(이스터에그)",
+     "acc": 4,
+     "accWhy": "애니메이션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'토이 스토리' 주유소의 식당 배달 트럭",
+     "difWhy": "'토이 스토리 식당' — 관심 있는 사람",
+     "wor": 2,
+     "worWhy": "레전드 작품의 설정 세부"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "'토이 스토리'에서 우디는 주유소에 선 한 식당의 배달 트럭을 버즈에게 우주선이라고 둘러대고, 둘은 그 트럭을 얻어 타고 식당까지 갑니다. 이 식당은 '인크레더블'만 빼고 그 뒤 픽사 장편마다 숨은 그림처럼 등장했습니다. 이 가상의 식당 이름은 무엇일까요?",
+     "beforeExplanation": "'인크레더블'의 브래드 버드 감독은 영화를 만드느라 바빠 트럭을 넣어 달라고 할 틈이 없었다고 전해집니다.",
+     "removedCue": "'토이 스토리' 주유소의 식당 배달 트럭",
+     "addedCue": "(남은 깊은 단서) 픽사 장편마다 숨은 트럭 · 인크레더블만 빠짐",
+     "why": "토이 스토리 본편 장면을 해설로 옮기고 픽사 이스터에그 세부만 남김"
+    },
+    "generalHint": "배달 트럭은 낡은 토요타 하이럭스로, 뒷문 글자가 닳아 'YO'만 남았고 지붕에는 로켓이 얹혀 있다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "애니",
+    "work": "토이 스토리",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pizza_Planet"
+    ],
+    "facts": [
+     {
+      "claim": "인크레더블 빼고 모든 픽사 장편에 등장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pizza_Planet",
+      "note": "There is a Pizza Planet reference in every Pixar feature film to date except for the 2004 film The Incredibles."
+     },
+     {
+      "claim": "우디가 주유소에서 트럭을 우주선이라 하고 함께 타고 감",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pizza_Planet",
+      "note": "Woody spots the truck at a gas station and tells Buzz it's a spaceship, and they ride it to the restaurant."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pizza_Planet"
+    ],
+    "hintNote": "fleet of derelict Toyota Hilux pickup trucks ... leaving only YO ... with a rocket on the roof featuring the restaurant's logo",
+    "easiestCue": "픽사 장편마다 숨은 그림처럼 나오는 식당 배달 트럭",
+    "targetWhy": "픽사 이스터에그(인크레더블만 없음)는 애니 애호가 세부 — 4 노림",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'피자' 단서를 빼 정답 조각은 막았지만 팬은 기억",
+    "pairCheck": null,
+    "dbCheck": "피자 플래닛 new · 토이 스토리(71)·시드(4048)와 다른 지식",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "animation/2#g005-M2-25",
+   "seed": {
+    "subject": "픽사",
+    "aspect": "팬 세부",
+    "ref": "M2-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "칼아츠(CalArts)에서 캐릭터 애니메이션 학생들이 쓰던 강의실의 번호가 있습니다. 브래드 버드가 TV 시리즈 '어메이징 스토리'의 'Family Dog' 편에서 자동차 번호판으로 처음 넣은 뒤, 픽사 영화 거의 모두에 숨어 등장한 이 번호는 무엇일까요?",
+    "answer": "A113",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "브래드 버드는 이것을 캐리커처 화가 앨 허시펠드가 그림마다 숨겨 넣은 'Nina'에 빗댔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "픽사 영화 거의 모두에 숨은 칼아츠 강의실 번호",
+     "difWhy": "'픽사 숨은 번호' — 애니 애호가",
+     "wor": 2,
+     "worWhy": "팬 세부 — 이스터에그",
+     "acc": 4,
+     "accWhy": "애니메이션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "픽사 영화 거의 모두에 숨은 칼아츠 강의실 번호",
+     "difWhy": "'픽사 숨은 번호' — 애니 애호가",
+     "wor": 2,
+     "worWhy": "팬 세부 — 이스터에그"
+    },
+    "rewrite": null,
+    "generalHint": "이 방에서 배운 학생 가운데에는 존 라세터, 피트 닥터, 팀 버튼이 있다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "애니",
+    "work": "픽사",
+    "sources": [
+     "https://en.wikipedia.org/wiki/A113"
+    ],
+    "facts": [
+     {
+      "claim": "칼아츠 그래픽 디자인·캐릭터 애니메이션 학생 강의실",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/A113",
+      "note": "the classroom used by graphic design and character animation students"
+     },
+     {
+      "claim": "Family Dog 편 번호판에 처음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/A113",
+      "note": "Brad Bird first used it for a license plate number in the 'Family Dog' episode of Amazing Stories."
+     },
+     {
+      "claim": "거의 모든 픽사 영화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/A113",
+      "note": "It has appeared in several Disney films and almost every Pixar movie."
+     },
+     {
+      "claim": "허시펠드의 Nina에 비유",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/A113",
+      "note": "He compared the practice to caricaturist Al Hirschfeld's hidden \"Nina\" drawings."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/A113"
+    ],
+    "hintNote": "Students who have used the classroom include John Lasseter, Pete Docter, Chris Sanders, Tim Burton",
+    "easiestCue": "칼아츠 강의실 번호 · 픽사 이스터 에그",
+    "targetWhy": "픽사 애호가가 아는 이스터 에그 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "애니 팬 사이 유명 세부, 마니악하지 않음",
+    "pairCheck": null,
+    "dbCheck": "A113 new · 이스터 에그(4398)와 다른 지식",
+    "warn": [
+     "단정어 처음,모두"
+    ]
+   }
+  }
+ ]
+}

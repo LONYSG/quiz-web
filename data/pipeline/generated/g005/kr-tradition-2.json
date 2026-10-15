@@ -1,0 +1,365 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-tradition/2",
+  "midKey": "kr-tradition",
+  "subName": "전통 의식주",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-tradition/2#g005-K4-17",
+   "seed": {
+    "subject": "정낭",
+    "aspect": null,
+    "ref": "K4-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제주 전통 가옥은 대문 자리 양옆에 구멍 뚫린 돌이나 나무 기둥을 세우고, 그 구멍에 나무 막대 세 개를 가로로 걸쳐 두었습니다. 세 개가 다 걸쳐 있으면 주인이 먼 곳에 나갔고, 다 내려 있으면 집 안에 있다는 표시였던 이 나무 막대는?",
+    "answer": "정낭",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "막대를 거는 기둥은 돌로 만들면 정주석, 나무로 만들면 정주목이라 하며, 1970년대 초까지 제주 전역에 널리 퍼져 있었다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "제주 대문 자리 기둥에 거는 나무 막대 세 개",
+     "difWhy": "제주 대문 막대 — 지역문화 관심층",
+     "wor": 3,
+     "worWhy": "제주 문화 이야깃거리",
+     "acc": 5,
+     "accWhy": "전통문화·풍습 — 초등 교과·명절 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "제주 대문 자리 기둥에 거는 나무 막대 세 개",
+     "difWhy": "제주 대문 막대 — 지역문화 관심층",
+     "wor": 3,
+     "worWhy": "제주 문화 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 정답이 유일하지 않다 — '제주 대문 자리 기둥에 거는 막대 세 개'가 곧 정의이고, 남은 깊은 낱말(정주석·정주목)은 정답 조각을 품는다"
+    },
+    "generalHint": "막대가 하나만 걸쳐 있고 둘이 내려 있으면 주인이 가까운 곳에 갔다는 뜻이었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/정낭_(제주)"
+    ],
+    "facts": [
+     {
+      "claim": "대문 자리에 나무 막대 세 개를 기둥 구멍에 가로로 끼움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/정낭_(제주)",
+      "note": "전통가옥의 대문 자리에 놓여있는 나무 막대를 가리킨다. 담의 주 출입문에 나무 막대 세 개를 가로 방향으로 나무 기둥이나 돌기둥에 뚫린 구멍에 끼워 넣어 고정하는 구조이다."
+     },
+     {
+      "claim": "3개 다 걸치면 먼 곳 출타, 다 내리면 집 안에 있음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/정낭_(제주)",
+      "note": "정낭 3개가 정주목 혹은 정주석에 다 걸쳐 있으면 주인이 먼 곳에 출타 중이라는 표시이며, 다 내려 있으면 주인이 집안에 있다는 징표다."
+     },
+     {
+      "claim": "정주석·정주목, 1970년대 초까지 제주 전역",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/정낭_(제주)",
+      "note": "기둥을 돌로 만든 경우에 정주석이라고 하며, 나무로 만들 경우에 정주목 또는 정주먹이라고 부른다. / 정낭은 1970년대 초까지 제주 전역에 널리 퍼져 있었으나"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/정낭_(제주)"
+    ],
+    "hintNote": "1개 걸쳐 있고 2개 내려 있음: 주인이 가까운 곳에 갔다는 뜻",
+    "easiestCue": "막대 개수로 집주인 외출을 알리는 제주 대문",
+    "targetWhy": "제주 여행·민속 애호가가 아는 세부 — 4. 고교 한국지리에 제주 민가로 나오면 3 (까치구멍집 선례)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "제주 관광 안내에서 자주 소개돼 관심층 수준일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "정낭 — new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tradition/2#g005-K4-18",
+   "seed": {
+    "subject": "합죽선",
+    "aspect": null,
+    "ref": "K4-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "얇게 깎은 대나무 겉대를 맞붙여 살을 만들고, 접었다 폈다 할 수 있게 만든 우리 부채를 무엇이라 할까요?",
+    "answer": "합죽선",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "고려에 왔던 송나라 사신 서긍은 『선화봉사고려도경』에 고려 사람이 한겨울에도 접었다 폈다 하는 신기한 부채를 들고 다닌다고 적었다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "대나무 겉대를 맞붙여 살을 만든 접는 우리 부채",
+     "difWhy": "대나무 겉대 접부채 정의 — 전통문화 관심층",
+     "wor": 4,
+     "worWhy": "전통 기본 어휘",
+     "acc": 5,
+     "accWhy": "전통문화·풍습 — 초등 교과·명절 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "대나무 겉대를 맞붙여 살을 만든 접는 우리 부채",
+     "difWhy": "대나무 겉대 접부채 정의 — 전통문화 관심층",
+     "wor": 4,
+     "worWhy": "전통 기본 어휘"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서가 이 부채의 정의 그 자체 — 정의를 빼면 남는 확인 가능한 깊은 세부(제작지·역사)를 연 문서(ko 부채·표준국어대사전)에서 찾지 못함"
+    },
+    "generalHint": "조선 시대에는 전라감영이 있던 전주의 선자청 장인들이 주로 만들었고, 외교와 대외 무역에도 썼다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=합죽선",
+     "https://ko.wikipedia.org/wiki/부채"
+    ],
+    "facts": [
+     {
+      "claim": "합죽선은 얇게 깎은 겉대를 맞붙여 살을 만든 접었다 폈다 하는 부채",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=합죽선",
+      "note": "합죽-선(合竹扇)「명사」 얇게 깎은 겉대를 맞붙여서 살을 만든, 접었다 폈다 하게 된 부채."
+     },
+     {
+      "claim": "대나무의 껍질을 합쳐서 만든 합죽선",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/부채",
+      "note": "대나무의 껍질을 함쳐서 만든 합죽선(合竹扇)"
+     },
+     {
+      "claim": "서긍의 고려도경 기록",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/부채",
+      "note": "송나라 문신 서긍(徐兢)은 … 「선화봉사고려도경(宣和奉使高麗圖經)」 이란 책을 지었는데, 거기에다 '고려인은 한겨울에도 부채를 들고 다니는데, 접었다 폈다 하는 신기한 부채를 들고 다닌다.'고 적어놓기도 했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/선자장"
+    ],
+    "hintNote": "합죽선은 조선시대에는 전라감영이 있는 전주에서 선자청(扇子廳)이라는 관청의 장인들이 주로 제작하였고 외교나 대외무역에도 활용되었다.",
+    "easiestCue": "대나무 겉대를 맞붙여 살을 만든 접부채라는 정의",
+    "targetWhy": "쥘부채 가운데 '겉대를 맞붙인' 것의 이름은 공예 애호가 수준 — 4. '맞붙여'가 合 을 풀어 준 셈이라 3 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이름은 유명하고, '맞붙인 대나무' 가 이름 풀이에 가까워 추리될 수 있다",
+    "pairCheck": null,
+    "dbCheck": "합죽선 — new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tradition/2#g005-K4-19",
+   "seed": {
+    "subject": "방짜유기",
+    "aspect": null,
+    "ref": "K4-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "놋그릇 가운데, 여러 사람이 한 조를 이루어 조직적으로 만들어야 해서 고도의 숙련 기술이 필요하고, 주석 비율이 일반 청동 그릇보다 훨씬 높은 것을 무엇이라 할까요?",
+    "answer": "방짜유기",
+    "acceptedAnswers": [
+     "방짜"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "표준국어대사전 표제어 '방짜(두드려 만든 그릇)' · ko.wikipedia '놋그릇' 문서 절 제목 '방짜유기' — 둘 다 이 그릇의 이름",
+    "explanation": "구리와 주석의 합금액을 불에 달구어 망치로 여러 차례 두들겨서 만든다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "여럿이 조를 이뤄 만드는 주석 비율 높은 놋그릇",
+     "difWhy": "'두드려 만든 고급 놋그릇' — 전통 관심층",
+     "wor": 4,
+     "worWhy": "전통 공예 교양",
+     "acc": 5,
+     "accWhy": "전통문화·풍습 — 초등 교과·명절 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "불에 달구어 망치로 두들겨 만든 놋그릇",
+     "difWhy": "두들겨 만든 놋그릇 — 전통공예 관심층",
+     "wor": 4,
+     "worWhy": "전통 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "놋그릇 가운데, 구리와 주석의 합금을 불에 달구어 망치로 여러 차례 두들겨 만들어 주석 비율이 일반 청동 그릇보다 훨씬 높은 것을 무엇이라 할까요?",
+     "beforeExplanation": "사기그릇·스테인리스 그릇과 견주었을 때 열보존률이 가장 높게 나타났다고 한다.",
+     "removedCue": "불에 달구어 망치로 두들겨 만든 놋그릇(정의)",
+     "addedCue": "여러 사람이 한 조로 만드는 제작 방식",
+     "why": "두들겨 만든다는 정의가 관심층 충분 단서라 해설로 내리고 제작 조직·주석 비율로 좁힘"
+    },
+    "generalHint": "징과 꽹과리 같은 타악기는 이 방식으로만 만들 수 있었고, 놋 두께가 고르지 않으면 좋은 소리가 나지 않는다고 한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/놋그릇",
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=방짜"
+    ],
+    "facts": [
+     {
+      "claim": "방짜유기는 구리와 주석 합금액을 달구어 망치로 여러 차례 두들겨 만들며 주석 비율이 일반 청동 그릇보다 훨씬 높음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/놋그릇",
+      "note": "방짜유기는 음식을 담는 식기류에 쓰인다. 구리와 주석의 합금액을 불에 달구어 망치로 여러 차례 두들겨서 만든다. 이때 주석의 비율이 일반 청동 그릇에 비해 훨씬 높다."
+     },
+     {
+      "claim": "방짜: 좋은 놋쇠를 녹여 부은 다음 다시 두드려 만든 그릇",
+      "where": "e",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=방짜",
+      "note": "방짜「명사」『공예』 품질이 좋은 놋쇠를 녹여 부은 다음 다시 두드려 만든 그릇."
+     },
+     {
+      "claim": "방짜유기는 여러 사람이 한 조를 이루어 조직적으로 만들어야 해 고도의 숙련 기술이 필요",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/놋그릇",
+      "note": "여러 사람이 한 조를 이루어 조직적으로 제조해야 하므로, 만드는 과정이 복잡하고 고도의 숙련 기술이 요구된다."
+     },
+     {
+      "claim": "합금액을 불에 달구어 망치로 여러 차례 두들겨 만듦",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/놋그릇",
+      "note": "구리와 주석의 합금액을 불에 달구어 망치로 여러 차례 두들겨서 만든다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://lady.khan.co.kr/issue/article/4412"
+    ],
+    "hintNote": "방짜로 만든 징이나 꽹과리는 놋 두께가 아주 고르지 않으면 좋은 소리를 내지 못해요. / (기사 설명) 방짜는 징과 꽹과리 같은 타악기를 만들 수 있는 유일한 방법",
+    "easiestCue": "주석 비율이 일반 청동 그릇보다 훨씬 높은 놋그릇",
+    "targetWhy": "합금 비율과 조별 제작은 전통공예 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'방짜' 는 생활 공예 방송에 가끔 나와 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "방짜유기 — new (활성 1084 옹기 는 다른 그릇)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tradition/2#g005-K4-20",
+   "seed": {
+    "subject": "장옷",
+    "aspect": null,
+    "ref": "K4-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 시대 여성이 바깥에 나갈 때 얼굴을 가리려고 머리에 쓰던 쓰개 가운데, 바탕은 주로 초록색 명주로 하고 소매 아래에는 흰색 옷감을 써 구분한 것은?",
+    "answer": "장옷",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "윗저고리를 변형한 것처럼 소매와 동정이 달려 남자 두루마기와 비슷한 모양이며, 장의(長衣)라고도 한다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "조선 여성이 얼굴 가리려 쓰던 쓰개, 초록 명주",
+     "difWhy": "'여성 쓰개' — 고교 기술가정·역사",
+     "wor": 4,
+     "worWhy": "전통 복식 교양",
+     "acc": 5,
+     "accWhy": "전통문화·풍습 — 초등 교과·명절 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "소매·동정이 달려 두루마기와 비슷한 여성 쓰개",
+     "difWhy": "소매 달린 쓰개 — 고교 한국사·전통복식",
+     "wor": 4,
+     "worWhy": "전통 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "조선 시대 여성이 바깥에 나갈 때 얼굴을 가리려고 머리에 쓰던 쓰개 가운데, 윗저고리를 변형한 것처럼 소매가 달리고 동정까지 있어 두루마기와 비슷한 모양인 것은?",
+     "beforeExplanation": "장의(長衣)라고도 하며, 신윤복의 「장옷 입은 여인」에 그 모습이 남아 있다.",
+     "removedCue": "소매·동정이 달려 두루마기와 비슷한 모양(정의)",
+     "addedCue": "초록색 명주 바탕 · 소매 아래 흰 옷감",
+     "why": "두루마기 닮은 모양이 고교 한국사 정의 단서라 해설로 내리고 빛깔·옷감 세부로 좁힘"
+    },
+    "generalHint": "개화기에 여성들이 이 쓰개를 벗으면서, 처음에는 검정 우산이나 양산으로 얼굴을 가렸다고 한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/장옷"
+    ],
+    "facts": [
+     {
+      "claim": "장옷은 부녀자의 얼굴을 가리려 했던 풍속에서 유래한 쓰개",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/장옷",
+      "note": "장옷 혹은 장의(長衣)는 여성들이 착용했던 쓰개의 일종으로서 부녀자의 얼굴을 가리려 했던 풍속에서 유래된 의복이다."
+     },
+     {
+      "claim": "소매가 달리고 동정까지 있는 두루마기와 비슷한 모양이 장옷, 치마를 둘러쓴 것이 쓰개치마",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/장옷",
+      "note": "윗저고리를 변형한 것처럼 소매가 달리고 동정까지 있는, 두루마기와 비슷한 모양의 가리개가 장옷이고, 단순히 치마를 둘러쓴 것 같은 모양이 일명 쓰개치마라고 생각하면"
+     },
+     {
+      "claim": "장의, 신윤복 〈장옷 입은 여인〉",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/장옷",
+      "note": "장옷 혹은 장의(長衣) … 혜원 신윤복이 그린 〈 장옷 입은 여인 〉과 〈 처네 쓴 여인 〉에는 얼굴 가리개의 두 종류가 명확하게 대비되어 있다."
+     },
+     {
+      "claim": "바탕은 주로 초록색 명주, 소매 아래 흰색 옷감으로 구분",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/장옷",
+      "note": "장옷은 남자두루마기와 비슷한 모양으로, 바탕은 주로 초록색 명주, 소매 아래에는 흰색 옷감을 써 구분했으며 겨드랑이와 옷고름 및 깃도 옷감을 달리했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/장옷"
+    ],
+    "hintNote": "개화기가 되면서 여성들의 의복 변화 중 처음 일어난 것이 장옷과 쓰개 벗기로서 ... 검정 우산을 쓰거나 양산을 써서 얼굴을 가렸던 것으로 알려져 있다.",
+    "easiestCue": "초록색 명주 바탕에 소매 아래 흰 옷감을 댄 여성 쓰개",
+    "targetWhy": "쓰개의 빛깔·옷감 구성은 전통복식 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "장옷이라는 이름은 사극으로 익숙해 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "장옷 — new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,197 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "symbols/2",
+  "midKey": "symbols",
+  "subName": "교통 표지",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "symbols/2#g005-L1-15",
+   "seed": {
+    "subject": "파란색",
+    "aspect": null,
+    "ref": "L1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본에서는 신호등의 '가도 좋다' 불빛을 말로는 초록이 아닌 다른 색 이름으로 부릅니다. 그래서 1973년 일본 당국은 국제 기준인 초록을 지키면서도 그 불빛을 이 색에 가장 가까운 초록으로 바꾸도록 정했습니다. 일본에서 이 신호를 부르는 색 이름은?",
+    "answer": "파란색",
+    "acceptedAnswers": [
+     "파랑"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "일본어 '아오'는 예전에 파랑과 초록을 함께 아우르던 말이라, 신호등 불빛에도 그 이름이 남았다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "신호등 '가도 좋다' 불빛을 초록이 아닌 다른 색 이름으로 부른다",
+     "difWhy": "초록불을 다른 색으로 부름 — 일상(한국도 파란불)",
+     "wor": 3,
+     "worWhy": "언어·문화 이야깃거리",
+     "acc": 5,
+     "accWhy": "기호·표지 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "신호등 '가도 좋다' 불빛을 초록이 아닌 다른 색 이름으로 부른다",
+     "difWhy": "초록불을 다른 색으로 부름 — 일상(한국도 파란불)",
+     "wor": 3,
+     "worWhy": "언어·문화 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "질문 자체가 '초록 신호를 다른 색 이름으로 부른다'는 사실이라 그 단서를 빼면 묻는 것이 사라지고, 한국도 '파란불'이라 부르는 일상 지식으로 풀림"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Traffic_light",
+     "https://en.wikipedia.org/wiki/Blue–green_distinction_in_language"
+    ],
+    "facts": [
+     {
+      "claim": "일본에서 '가라' 신호를 ao(파랑)라 부른다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Traffic_light",
+      "note": "Japanese \"go\" signals are called 青 (ao), which is typically translated as \"blue\""
+     },
+     {
+      "claim": "1973년 일본 당국이 '가라' 불빛을 가장 파란 쪽 초록으로 바꾸도록 정함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Traffic_light",
+      "note": "Japanese officials decreed in 1973 that the \"go\" light should be changed to the bluest possible shade of green"
+     },
+     {
+      "claim": "ao 는 신호등 '가라' 색을 가리키는 말",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Blue–green_distinction_in_language",
+      "note": "Ao is also the word used to refer to the color on a traffic light that signals drivers to \"go\"."
+     },
+     {
+      "claim": "역사적 언어 변화로 그렇게 부름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Traffic_light",
+      "note": "which is typically translated as \"blue\" because of a historical language shift"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "일본 신호등 '가라' 불빛을 부르는 색 이름",
+    "targetWhy": "일본 신호등의 '파란 불' 명칭·1973 조정은 일본 문화 관심층~애호가 세부, 경계 3~4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'초록에 가까운 다른 색' 이라 파랑을 추리로 맞힐 수 있다",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different — #667('지시 표지 바탕색')과 정답만 같고 지식이 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "symbols/2#g005-L1-16",
+   "seed": {
+    "subject": "스웨덴",
+    "aspect": null,
+    "ref": "L1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1955년 국민투표에서 83%가 그대로 두자고 했지만, 이 나라는 이웃 나라가 모두 우측통행이고 운전자의 90% 넘게 왼쪽 운전석 차를 몬다는 사정 때문에 결국 통행 방향을 바꿨습니다. 1967년 9월 3일 새벽 '다겐 H'에 자동차 통행을 왼쪽에서 오른쪽으로 바꾼 이 나라는?",
+    "answer": "스웨덴",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "'H'는 우측통행을 뜻하는 스웨덴어 '회게르트라피크'의 머리글자다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1967년 '다겐 H'에 좌측→우측 통행으로 바꾼 나라",
+     "difWhy": "'다겐 H 통행 전환' — 애호가",
+     "wor": 3,
+     "worWhy": "교통 제도 이야깃거리",
+     "acc": 5,
+     "accWhy": "기호·표지 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1967년 '다겐 H'에 좌측→우측 통행으로 바꾼 나라",
+     "difWhy": "'다겐 H 통행 전환' — 애호가",
+     "wor": 3,
+     "worWhy": "교통 제도 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "질문 속 이웃 나라에는 이 나라와 땅으로 맞닿은 노르웨이와 핀란드가 들어 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dagen_H"
+    ],
+    "facts": [
+     {
+      "claim": "1955년 국민투표에서 83%가 좌측통행 유지에 투표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dagen_H",
+      "note": "83 percent voted to keep driving on the left"
+     },
+     {
+      "claim": "이웃 나라가 모두 우측통행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dagen_H",
+      "note": "All neighbouring countries drove on the right, including Norway and Finland."
+     },
+     {
+      "claim": "90% 넘게 왼쪽 운전석 차를 몰았다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dagen_H",
+      "note": "More than 90 percent of Swedes drove left-hand-drive vehicles"
+     },
+     {
+      "claim": "1967년 9월 3일, 05:00, 좌측→우측",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dagen_H",
+      "note": "3 September 1967 ... 05:00 ... the day on which Sweden switched from driving on the left-hand side of the road to the right"
+     },
+     {
+      "claim": "H 는 Högertrafik",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dagen_H",
+      "note": "The \"H\" stands for \"Högertrafik\", the Swedish word for right-hand traffic."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dagen_H"
+    ],
+    "hintNote": "All neighbouring countries drove on the right, including Norway and Finland",
+    "easiestCue": "1967년 '다겐 H' 통행 방향 전환",
+    "targetWhy": "다겐 H 는 교통·북유럽 애호가 세부 — 노르웨이·핀란드 이름은 질문에서 뺐다, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 나라, 몰랐던 교통 역사",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different — #227(이케아 창립국)과 정답만 같고 지식이 다름",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

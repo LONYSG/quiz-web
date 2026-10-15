@@ -1,0 +1,204 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "plants/1",
+  "midKey": "plants",
+  "subName": "나무",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "plants/1#g005-C1-13",
+   "seed": {
+    "subject": "메타세쿼이아",
+    "aspect": null,
+    "ref": "C1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1941년 일본의 고식물학자 미키 시게루가 새 속으로 학계에 보고한 나무입니다. 낙우송처럼 가을에 잎이 지는 바늘잎나무로, 잎이 줄기에 마주나는 이 나무는 무엇일까요?",
+    "answer": "메타세쿼이아",
+    "acceptedAnswers": [
+     "메타세콰이어",
+     "메타세콰이아"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '메타세쿼이아' 문서가 '메타세콰이어' 넘겨주기 안내 · 출처 목록의 '메타세콰이아' 표기를 함께 실음",
+    "explanation": "우리나라 거리에 자라는 이 나무들은 일본이 1940년대에 중국에서 들여온 것이 1956년 다시 들어온 것이고, 포항에서는 화석도 나왔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "낙우송처럼 가을에 잎이 지는 바늘잎나무, 잎이 마주남",
+     "difWhy": "'낙엽 침엽수·마주나기' — 대학 교양 식물학",
+     "wor": 3,
+     "worWhy": "가로수 내력 이야깃거리",
+     "acc": 5,
+     "accWhy": "식물 — 초등 과학·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "화석으로만 알려졌다가 1943년 중국에서 살아 있는 채 발견된 나무",
+     "difWhy": "'살아 있는 화석 나무' — 고교 생명과학·관심층",
+     "wor": 4,
+     "worWhy": "생물 교양 — 살아 있는 화석"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1941년 일본의 고식물학자 미키 시게루는 화석으로만 남은 멸종한 무리로 이 나무를 학계에 알렸습니다. 그런데 1943년 중국 후베이성 리촨현의 한 마을에서 살아 있는 나무가 발견되었고, 1948년 미국 아널드 수목원에 씨앗이 닿은 뒤 세계 곳곳으로 퍼졌습니다. 이 나무는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "화석으로만 알려졌다가 1943년 중국에서 살아 있는 채 발견됨(+1948년 아널드 수목원)",
+     "addedCue": "낙우송처럼 잎이 지는 바늘잎나무인데 잎이 마주남",
+     "why": "'살아 있는 화석' 발견 일화는 교과·관심층의 첫 줄 사실이라 빼고, 낙엽 침엽수 가운데 잎차례로 가르는 식물 세부로 바꿈"
+    },
+    "generalHint": "중국 후베이성 모다오 마을에서 채집한 살아 있는 나무가 1946년 바로 그 화석 속으로 밝혀졌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Metasequoia_glyptostroboides",
+     "https://ko.wikipedia.org/wiki/메타세쿼이아"
+    ],
+    "facts": [
+     {
+      "claim": "1941년 미키 시게루가 화석에 바탕한 멸종 속으로 보고했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Metasequoia_glyptostroboides",
+      "note": "Paleobotanist Shigeru Miki reported the genus as a widely distributed extinct genus based on fossils (1941)."
+     },
+     {
+      "claim": "국내 나무는 일본이 1940년대 중국에서 들여온 것이 1956년 다시 들어왔고, 포항에서 화석이 나왔다",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/메타세쿼이아",
+      "note": "경상북도 포항시에서 화석이 발견되었습니다. 현재 국내에 자라는 나무는 일본이 1940년대에 중국에서 들여온 것이 1956년 국내에 다시 들어온 것입니다."
+     },
+     {
+      "claim": "잎이 마주남",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Metasequoia_glyptostroboides",
+      "note": "The leaves are opposite, 1–3 cm (0.39–1.18 in) long, and bright fresh green."
+     },
+     {
+      "claim": "낙우송처럼 낙엽성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Metasequoia_glyptostroboides",
+      "note": "It differs from the coast redwood in that it is deciduous, like Taxodium distichum."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Metasequoia_glyptostroboides"
+    ],
+    "hintNote": "Wang Zhan collected samples from a tree in Moudao village, Lichuan County, Hubei / made the pivotal connection between Miki's fossil genus and the living samples in 1946",
+    "easiestCue": "낙우송처럼 낙엽이 지고 잎이 마주나는 바늘잎나무",
+    "targetWhy": "낙우송과의 잎차례 구별·미키 시게루 명명은 나무 애호가·대학 교양 수준 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "가로수로 흔한 나무의 몰랐던 발견 이야기",
+    "pairCheck": null,
+    "dbCheck": "메타세쿼이아 new — 세쿼이아(활성 1862 · 3808)와 다른 정답 · 다른 지식",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "plants/1#g005-C1-16",
+   "seed": {
+    "subject": "고무나무",
+    "aspect": null,
+    "ref": "C1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1870년대 영국의 헨리 위컴은 아마존에서 이 나무의 씨앗 약 7만 개를 몰래 빼내 런던 큐 식물원으로 보냈습니다. 1928년 헨리 포드는 브라질 아마존에 공장 도시 '포르들란지아'를 세워 이 나무를 기르려 했지만, 1934년 도시는 버려졌습니다. 이 나무는 무엇일까요?",
+    "answer": "고무나무",
+    "acceptedAnswers": [
+     "파라고무나무"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "파라고무나무는 Hevea brasiliensis 의 국명 — 더 정확한 이름이라 넣음",
+    "explanation": "남아메리카에서는 아마존 토박이 곰팡이가 일으키는 잎마름병 탓에 20세기 초 재배가 무너져, 지금은 농장 대부분이 남·동남아시아에 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "헨리 포드가 브라질 아마존에 세운 '포르들란지아'에서 기르려 한 나무",
+     "difWhy": "'포르들란지아·위컴 씨앗' — 대학 교양 경제사",
+     "wor": 3,
+     "worWhy": "식민지 작물 이전 이야깃거리",
+     "acc": 5,
+     "accWhy": "식물 — 초등 과학·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "아마존 씨앗을 빼내 말레이반도에 농장을 세운 나무",
+     "difWhy": "'아마존→말레이 플랜테이션' — 고교 세계사·지리",
+     "wor": 4,
+     "worWhy": "자원 이동사 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1870년대 영국의 헨리 위컴은 아마존에서 이 나무의 씨앗 약 7만 개를 몰래 빼내 런던 큐 식물원으로 보냈습니다. 싹 튼 묘목은 실론과 싱가포르로 건너갔고, 1898년에는 말레이반도에 농장이 세워졌습니다. 이 나무는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "묘목이 실론·싱가포르로 건너가 1898년 말레이반도에 농장이 세워짐",
+     "addedCue": "헨리 포드가 1928년 아마존에 세운 공장 도시 포르들란지아",
+     "why": "말레이반도 플랜테이션은 고교 세계사·지리 교과 사실이라 빼고, 포드의 실패한 아마존 도시라는 역사 세부로 바꿈"
+    },
+    "generalHint": "이 나무에서 얻는 물질에 황을 섞어 뜨거운 난로 위에서 굳히는 법을 1839년 굿이어가 찾아냈다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hevea_brasiliensis",
+     "https://en.wikipedia.org/wiki/Fordl%C3%A2ndia"
+    ],
+    "facts": [
+     {
+      "claim": "위컴이 씨앗 약 7만 개를 큐로 몰래 보냈다(1875), 1876년 묘목을 내보냈다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hevea_brasiliensis",
+      "note": "some 70,000 seeds being smuggled to Kew in 1875 by Henry Wickham / in 1876 roughly 2,000 seedlings were shipped out"
+     },
+     {
+      "claim": "남아메리카 잎마름병이 20세기 초 남미 재배를 끝냈고 농장 대부분이 남·동남아에 있다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hevea_brasiliensis",
+      "note": "South American leaf blight ... a fungus native to the Amazon Basin. It ended rubber cultivation in South America early in the 20th century, and most plantations are now in South and Southeast Asia."
+     },
+     {
+      "claim": "1928년 헨리 포드가 아마존에 세운 공장 도시, 재배 고무 확보 목적",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fordl%C3%A2ndia",
+      "note": "established by American industrialist Henry Ford in the Amazon rainforest in 1928 … to secure a source of cultivated rubber for the automobile manufacturing operations of the Ford Motor Company"
+     },
+     {
+      "claim": "1934년 실패하고 버려짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fordl%C3%A2ndia",
+      "note": "Ford's project failed, and the city was abandoned in 1934."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Charles_Goodyear"
+    ],
+    "hintNote": "combining rubber and sulfur over a hot stove caused the rubber to become rigid ... discovered in 1839",
+    "easiestCue": "위컴이 아마존에서 씨앗을 몰래 빼내 큐 식물원으로 보낸 나무",
+    "targetWhy": "위컴 밀반출·포르들란지아는 산업사·식물사 애호가·대학 교양 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'아마존 → 동남아 농장' 흐름만으로 고무를 짐작할 여지 — 교양 수준이면 3",
+    "pairCheck": null,
+    "dbCheck": "고무나무·파라고무나무 new",
+    "warn": [
+     "정답조각 나무"
+    ]
+   }
+  }
+ ]
+}

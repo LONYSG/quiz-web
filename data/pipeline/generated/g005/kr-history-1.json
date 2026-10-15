@@ -1,0 +1,464 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-history/1",
+  "midKey": "kr-history",
+  "subName": "삼국·통일신라",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/1#g005-K1-01",
+   "seed": {
+    "subject": "왕오천축국전",
+    "aspect": null,
+    "ref": "K1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "책 이름도 지은이 이름도 떨어져 나간 채 한 권의 두루마리 필사본으로 남은 여행기입니다. '개원 15년(727년) 11월 상순에 안서에 이르렀다'는 대목이 있고, 대식국(아랍) 동쪽 여러 나라의 기록도 담겨 있는데, 이 여행기는 무엇일까요?",
+    "answer": "왕오천축국전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1908년 프랑스의 폴 펠리오가 둔황 막고굴 장경동에서 사들인 문서 더미 속에 섞여 있었고, 지금은 프랑스 국립도서관에 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "727년 안서에 이르렀다는 지은이 떨어져 나간 여행기",
+     "difWhy": "'727년 두루마리 여행기' — 고교 한국사(혜초)",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 혜초의 여행기",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "펠리오가 둔황에서 찾은 신라 사람의 기록",
+     "difWhy": "'펠리오·둔황 신라 기록' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 혜초"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1908년 프랑스의 폴 펠리오는 둔황 막고굴 장경동에서 사들인 문서 더미 속에서, 책 이름도 지은이 이름도 떨어져 나간 두루마리 필사본 하나를 찾아냈습니다. 지금 프랑스 국립도서관에 보관된, 한 신라 사람이 남긴 이 기록은 무엇일까요?",
+     "beforeExplanation": "현재는 한 권의 두루마리 필사본만 남아 있고, 여러 글자가 빠져 있습니다.",
+     "removedCue": "펠리오가 둔황에서 찾은 신라 사람의 기록",
+     "addedCue": "개원 15년 안서 도착 대목 · 대식국 동쪽 나라들 기록",
+     "why": "교과서의 발견 경위·'신라' 를 해설로 옮기고 본문 세부로 엮음"
+    },
+    "generalHint": "지은이는 신라 승려로, 당나라에서 남인도 출신 밀교승 금강지에게 불도를 배웠다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/왕오천축국전"
+    ],
+    "facts": [
+     {
+      "claim": "책명·저자명이 떨어져 나간 두루마리 필사본, 여러 글자 결락",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/왕오천축국전",
+      "note": "현재는 한 권의 두루마리로 된 필사본만이 남아 있는데, 책명도 저자명도 떨어져 나가 남아 있지 않으며 여러 글자가 결락되었다."
+     },
+     {
+      "claim": "1908년 펠리오가 둔황 막고굴 장경동에서 구매한 유물 가운데 섞여 있었다",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/왕오천축국전",
+      "note": "1908년 프랑스인 폴 펠리오(Paul Pelliot, 1878~1945)가 간쑤성 둔황의 막고굴 장경동에서 당시 장경동을 지키던 왕위안루(왕원록)에게서 구매한 7,000점의 유물 중에 섞여 있었으며"
+     },
+     {
+      "claim": "프랑스 국립도서관 소장",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/왕오천축국전",
+      "note": "현재 프랑스 국립도서관에 비공개로 보관되어 있다"
+     },
+     {
+      "claim": "개원 15년(727) 11월 상순 안서 도착 기록",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/왕오천축국전",
+      "note": "본문에 \"개원 15년(727년) 11월 상순에 안서에 이르렀다\"는 기록이 있어 저술 시기를 알 수 있다. (문서 요지)"
+     },
+     {
+      "claim": "대식국 동쪽 여러 나라의 기록",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/왕오천축국전",
+      "note": "대식국(아랍, 니샤푸르) 동쪽 여러 나라의 기록이 포함되어 있다. (문서 요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/혜초"
+    ],
+    "hintNote": "일찍이 당나라에 건너가 719년(성덕왕 18) 남인도(南印度)의 밀교승(密敎僧) 금강지(金剛智)에게 불도를 배웠다.",
+    "easiestCue": "727년 안서에 이르렀다는 대목의 두루마리 여행기",
+    "targetWhy": "본문의 연대·대식국 기록은 교과서 밖 대학 교양 — 4 노림",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정답은 교과서에 나오는 유명한 책이고, 묻는 것은 발견 경위다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/1#g005-K1-02",
+   "seed": {
+    "subject": "감은사",
+    "aspect": null,
+    "ref": "K1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "『삼국유사』의 주석에는 한 절의 금당 섬돌 아래 동쪽으로 구멍을 하나 내어, 용이 절에 들어와 돌아다닐 수 있게 했다는 기록이 있습니다. 682년 신문왕이 완공한 이 신라의 절은 무엇일까요?",
+    "answer": "감은사",
+    "acceptedAnswers": [
+     "감은사지"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목이 '감은사지'(절터)라 절터 이름도 받는다",
+    "explanation": "절터의 동·서 삼층석탑을 1959년과 1997년에 해체 수리할 때, 삼층 탑신의 사리공에서 사리장엄구가 나왔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "682년 신문왕이 완공한 신라의 절 / 용이 드나드는 구멍",
+     "difWhy": "'신문왕·문무왕 해룡 절' — 고교 한국사",
+     "wor": 4,
+     "worWhy": "한국사 교양 — 문화유산",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "682년 신문왕이 완공한 신라의 절 / 용이 드나드는 구멍",
+     "difWhy": "'신문왕·문무왕 해룡 절' — 고교 한국사",
+     "wor": 4,
+     "worWhy": "한국사 교양 — 문화유산"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "용 구멍·신문왕 완공을 빼면 문서로 확인되는 남은 세부(태극 장대석 해석·배수 시설·익랑)가 해석 단계이거나 마이너해 정답을 공정하게 좁히지 못함 — 고치지 않음"
+    },
+    "generalHint": "문무왕은 죽은 뒤 나라를 지키는 용이 되겠다고 유언했고, 화장한 뒤 동해 대왕암에 안장되었다고 한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/감은사지"
+    ],
+    "facts": [
+     {
+      "claim": "금당 섬돌 아래 동쪽으로 구멍을 내어 용이 절에 들어와 돌 수 있게 했다는 삼국유사 주석",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/감은사지",
+      "note": "金堂砌下東向開一穴, 乃龍之入寺旋繞之備 — 금당 마루 아래 공간은 동해의 용(龍)이 된 문무왕이 드나들 수 있는 구조로 한 것 같다"
+     },
+     {
+      "claim": "신문왕이 즉위 이듬해 682년에 완공",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/감은사지",
+      "note": "즉위한 이듬해(682)에 완공하고"
+     },
+     {
+      "claim": "1959·1997 해체 수리 때 삼층 탑신 사리공에서 사리장엄구 발견",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/감은사지",
+      "note": "삼층탑신에 마련된 사리공(舍利孔) 속에 당대를 대표하는 사리장엄구(舍利莊嚴具)가 발견되어"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/감은사"
+    ],
+    "hintNote": "죽은 후 나라를 지키는 용이 되어 불법을 받들고 나라를 지킬 것 ... 동해 앞바다에 있는 대왕암(大王巖)에 안장하였으며",
+    "easiestCue": "용이 드나들게 금당 아래 구멍을 낸 682년 신문왕 완공 절",
+    "targetWhy": "교과서는 감은사지 삼층석탑 사진만 싣는다. 용 구멍 기록과 신문왕 완공은 미술사·한능검 심화(대학 교양) → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 봤을 절, 삼국유사의 세부 기록을 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (감은사 · 감은사지 모두 활성 0)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/1#g005-K1-03",
+   "seed": {
+    "subject": "김헌창의 난",
+    "aspect": null,
+    "ref": "K1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "신라의 한 귀족이 일으킨 반란은 성이 포위된 지 열흘 만에 우두머리가 스스로 목숨을 끊으며 끝났습니다. 3년 뒤 그 아들 김범문이 북한산주에서 다시 일어났다가 패했는데, 아버지가 일으킨 이 반란은 무엇일까요?",
+    "answer": "김헌창의 난",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "아버지 김주원이 원성왕에게 밀려 왕위에 오르지 못했던 일을 명분으로 삼았습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "아들 김범문이 3년 뒤 다시 일어난 반란",
+     "difWhy": "'김범문의 아버지 반란' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 신라 하대",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "웅천주 도독, 나라 이름 '장안'의 반란",
+     "difWhy": "신라 하대 반란 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 신라 하대"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "웅천주 도독으로 있던 신라의 한 귀족이 반란을 일으켜 나라 이름을 '장안', 연호를 '경운'이라 했습니다. 성이 포위된 지 열흘 만에 그가 스스로 목숨을 끊어 끝났고, 3년 뒤 그 아들 김범문이 북한산주에서 다시 일어났다가 패했습니다. 아버지가 일으킨 이 반란은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "웅천주 도독 + 나라 이름 '장안'·연호 '경운'",
+     "addedCue": "(뺌만) 포위 열흘 만의 자결 + 아들 김범문의 북한산주 재봉기",
+     "why": "교과서에서 외우는 웅천주·장안을 빼고 최후·아들 재봉기 세부만 남김"
+    },
+    "generalHint": "그는 웅천주에서 일어나 나라 이름을 장안, 연호를 경운이라 정했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/김헌창의_난"
+    ],
+    "facts": [
+     {
+      "claim": "포위 열흘 만에 자살",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김헌창의_난",
+      "note": "포위 공격 열흘 만에 김헌창은 자살하고"
+     },
+     {
+      "claim": "825년 아들 김범문이 북한산주에서 다시 반란, 패사 (822년의 3년 뒤)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김헌창의_난",
+      "note": "825년 정월 아들 김범문이 북한산주에서 재차 반란을 일으켰지만 패사하였다. / 822년 3월 … 웅천주에서 반란을 일으켰다."
+     },
+     {
+      "claim": "아버지 김주원이 원성왕에게 밀려 왕이 되지 못한 것을 이유로",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/김헌창의_난",
+      "note": "822년 3월 과거에 아버지인 김주원이 원성왕에게 밀려 왕이 되지 못했음을 이유로 웅천주에서 반란을 일으켰다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/김헌창의_난"
+    ],
+    "hintNote": "웅천주에서 반란을 일으켰다 ... 국호를 장안(長安), 연호를 경운(慶雲)으로 정했으며",
+    "easiestCue": "아들 김범문이 다시 일으킨 반란의 앞선 반란",
+    "targetWhy": "김범문의 난은 한국사 심화(한능검 고급) 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서에 이름이 나오는 반란, 세부로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/1#g005-K1-04",
+   "seed": {
+    "subject": "황룡사 구층목탑",
+    "aspect": null,
+    "ref": "K1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "경주에 있던 이 건축물의 중앙 심초석에서 나온 금동사리함에는, 경문왕 11년인 871년에 다시 고쳐 지은 사연이 새겨져 있습니다. 이 사리함은 1964년 12월 도난당했다가 1972년 국립박물관에서 처음 공개되었습니다. 이 건축물은 무엇일까요?",
+    "answer": "황룡사 구층목탑",
+    "acceptedAnswers": [
+     "황룡사 9층 목탑"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '황룡사' 문서가 '황룡사 9층 목탑'으로 적는다 — 숫자 표기도 받는다",
+    "explanation": "고려 고종 25년(1238년) 몽골의 침입으로 불타 없어져, 지금은 초석만 남아 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 경주 + 심초석(목탑)",
+     "difWhy": "'경주 목탑' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 신라 문화재",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "신라가 백제 장인 아비지를 불러 지은 건축물",
+     "difWhy": "'백제 장인 아비지' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 문화재"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "신라는 백제의 장인 아비지를 불러 이 건축물을 짓게 했습니다. 중앙 심초석에서 나온 금동사리함에는 871년 경문왕 때 다시 고쳐 지은 사연이 새겨져 있는데, 이 사리함은 1964년 도난당했다가 되찾았습니다. 경주에 있던 이 건축물은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "신라가 백제 장인 아비지를 불러 지음",
+     "addedCue": "(새로 넣지 않음) 남은 사리함 단서 둘",
+     "why": "고교 한국사 단서 아비지를 빼고 사리함의 871년 중수 명문·도난 내력으로 좁힘"
+    },
+    "generalHint": "상륜부까지 합한 높이는 약 66.7m로 추정되며, 공사는 백제에서 온 장인이 맡았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/황룡사"
+    ],
+    "facts": [
+     {
+      "claim": "사리함에 경문왕 11년(871) 중수 사연",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황룡사",
+      "note": "사리함 3면에는 경문왕 11년(871년)에 탑을 중수한 사연이 새겨져 있습니다."
+     },
+     {
+      "claim": "심초석의 금동사리함이 1964년 12월 도난당했다가 1972년 국립박물관에서 공개",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황룡사",
+      "note": "중앙의 심초석(心礎石)에서 1964년 12월에 도난당하였던 금동사리함(金銅舍利函)이 1972년 10월 28일 국립박물관에서 처음으로 공개된 적이 있다."
+     },
+     {
+      "claim": "1238년 몽골 침입으로 소실, 초석만 남음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/황룡사",
+      "note": "고려 고종 25년(1238년) 몽골의 침입으로 불타 없어졌습니다. 현재는 초석만 남아 있습니다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/황룡사_9층_목탑"
+    ],
+    "hintNote": "9층까지의 높이를 당척 기준 약 53.45m, 상륜부까지 합하면 약 66.70m ... 공장 아비지가 명을 받고 와서 목재와 석재를 경영하였고",
+    "easiestCue": "871년 경문왕 때 중수 사연이 새겨진 금동사리함이 나온 경주의 건축물",
+    "targetWhy": "사리함 명문은 한국사 심화·답사 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "아비지가 수험서에 나오는 이름이라 3으로 읽힐 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (구층목탑 · 9층 목탑 모두 활성 0)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/1#g005-K1-05",
+   "seed": {
+    "subject": "미륵사지 석탑",
+    "aspect": null,
+    "ref": "K1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1915년 무너짐을 막으려 시멘트로 덧발라 보수했던 이 석탑은 2001년부터 해체해 2019년 4월에야 보수를 마쳤습니다. 같은 절터의 짝 탑은 1991년 새로 지어졌는데, 그 설계 중에 탑이 9층이었음을 알려 주는 부재가 나왔습니다. 이 백제의 석탑은 무엇일까요?",
+    "answer": "미륵사지 석탑",
+    "acceptedAnswers": [
+     "익산 미륵사지 석탑"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '익산 미륵사지 석탑' 확인",
+    "explanation": "2009년 해체 중 심주에서 나온 금제 사리봉영기에는 절을 세운 왕후가 사택적덕의 딸이라고 적혀 있어 『삼국유사』의 이야기와 달랐습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 백제 석탑 + 짝 탑을 1991년 새로 지은 절터",
+     "difWhy": "'짝 탑이 있던 백제 석탑' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 백제 문화재",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "사리봉영기에 사택적덕의 딸이 절을 세웠다고 적힌 백제 석탑",
+     "difWhy": "사택적덕 사리봉영기 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 문화재"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1915년 무너진 부분을 시멘트로 덧발라 보수했던 이 석탑은 2001년부터 해체해 2019년 4월에야 복원을 마쳤습니다. 해체 중 심주에서 나온 금제 사리봉영기에는 절을 세운 왕후가 사택적덕의 딸이라고 적혀 있어 『삼국유사』의 이야기와 달라 주목받았습니다. 이 백제의 석탑은 무엇일까요?",
+     "beforeExplanation": "639년 무왕 때 세운 탑으로, 목탑의 모습을 돌로 옮긴 형식입니다.",
+     "removedCue": "사리봉영기에 절을 세운 왕후가 사택적덕의 딸",
+     "addedCue": "짝 탑(동탑) 1991년 새로 지음 · 설계 중 9층 부재",
+     "why": "고교 한국사 단서(사리봉영기)를 해설로 옮기고 복원사 세부를 넣음"
+    },
+    "generalHint": "같은 세계유산 '백제역사유적지구'에 묶인 왕궁리 유적과 한 고장에 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/익산_미륵사지_석탑"
+    ],
+    "facts": [
+     {
+      "claim": "1915년 일제 강점기 시멘트 보수",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/익산_미륵사지_석탑",
+      "note": "1915년 일본인들이 붕괴된 부분을 시멘트로 보수(문서 요지: A 1915 cement repair during Japanese rule)"
+     },
+     {
+      "claim": "2001년 해체 시작, 2019년 4월 복원 완료",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/익산_미륵사지_석탑",
+      "note": "2001년 해체·복원을 시작해 2019년 4월 마쳤다(문서 요지: Dismantling and restoration began in 2001, and the work was finished in April 2019)"
+     },
+     {
+      "claim": "2009년 심주에서 나온 금제 사리봉영기에 사택적덕의 딸인 왕후가 절을 세웠다고 적힘, 삼국유사 선화공주 기록과 다름",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/익산_미륵사지_석탑",
+      "note": "심주에서 639년 명문이 있는 금제 사리장엄이 나왔고, 사택적덕의 딸인 백제 왕후가 절을 세우고 사리를 봉안했다고 적혀 『삼국유사』의 선화공주 창건 기록과 달랐다(문서 요지)"
+     },
+     {
+      "claim": "동탑은 1991년 새로 조성",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/익산_미륵사지_석탑",
+      "note": "미륵사지 동탑은 1991년 노태우 정권 당시 문화재관리국 주관 하에 새로 조성되었다."
+     },
+     {
+      "claim": "동탑 복원 설계 중 9층이었음을 알려 주는 부자재 발견",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/익산_미륵사지_석탑",
+      "note": "동탑의 복원 설계 중에 9층이었음을 알려주는 부자재가 발견되었다"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/백제역사유적지구"
+    ],
+    "hintNote": "익산시 (2곳): 왕궁리 유적, 미륵사지",
+    "easiestCue": "2001년 해체해 2019년 보수를 마친 백제 석탑",
+    "targetWhy": "보수·동탑 복원 세부는 문화재 관심층 — 2019년 보수 완료가 뉴스로 알려져 3~4 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "2009년 사리봉영기 뉴스를 기억하는 사람에겐 3일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0 (활성 #4466 질문에 이름만 나옴, 정답 다름)",
+    "warn": [
+     "정답조각 석탑"
+    ]
+   }
+  }
+ ]
+}

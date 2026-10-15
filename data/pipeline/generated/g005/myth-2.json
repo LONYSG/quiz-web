@@ -1,0 +1,93 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "myth/2",
+  "midKey": "myth",
+  "subName": "북유럽 신화",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "myth/2#g005-H2-17",
+   "seed": {
+    "subject": "로키",
+    "aspect": null,
+    "ref": "H2-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북유럽 신화에서 이 신은 암말로 변해 성벽을 쌓던 석공의 수말 스바딜파리를 꾀어냈다가 슬레이프니르를 낳았습니다. 훗날 묶인 채 뱀의 독을 맞을 때 아내 시긴이 그릇을 받쳐 독을 받아 준다는 이 신은 누구일까요?",
+    "answer": "로키",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "시긴이 그릇을 비우러 간 사이 떨어진 독에 그가 몸부림치면 온 땅이 흔들린다 하여, 이것이 지진의 까닭으로 이야기됩니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "암말로 변해 슬레이프니르를 낳은 신 / 아내 시긴",
+     "difWhy": "로키 신화 세부 — 대학 교양·신화 애호",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 신 이름",
+     "acc": 3,
+     "accWhy": "신화 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "암말로 변해 슬레이프니르를 낳은 신 / 아내 시긴",
+     "difWhy": "로키 신화 세부 — 대학 교양·신화 애호",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 신 이름"
+    },
+    "rewrite": null,
+    "generalHint": "그는 거인 앙그르보다와의 사이에서 늑대 펜리르와 큰 뱀 요르문간드, 그리고 헬을 낳았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Loki"
+    ],
+    "facts": [
+     {
+      "claim": "암말로 변해 수말 스바딜파리를 꾀어내고 슬레이프니르를 낳음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Loki",
+      "note": "Loki was chased down and impregnated by the stallion Svaðilfari … a mare draws the stallion away from the builder's work, and Loki later gives birth to Sleipnir (Gylfaginning 요지)"
+     },
+     {
+      "claim": "묶인 채 뱀의 독, 아내 시긴이 그릇으로 받음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Loki",
+      "note": "Skaði fastened a venomous snake over Loki's face, and from it poison dripped. Sigyn, his spouse, sat with him holding a basin beneath the dripping venom"
+     },
+     {
+      "claim": "그릇을 비울 때 몸부림쳐 땅이 흔들림 = 지진",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Loki",
+      "note": "causing him to writhe with such violence that all of the earth shook from the force (지진의 설명)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Loki"
+    ],
+    "hintNote": "By the jötunn Angrboða, Loki is the father of Hel (being), the wolf Fenrir and the world serpent Jörmungandr.",
+    "easiestCue": "암말로 변해 슬레이프니르를 낳은 신",
+    "targetWhy": "대중 단서(장난의 신 · 마블 · 발드르 겨우살이)를 빼고 슬레이프니르 출생·시긴의 그릇만 — 북유럽 신화 애호가(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 이름, 신화 원전 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (오딘 #618 · 겨우살이 #624 와 다른 대상)",
+    "warn": []
+   }
+  }
+ ]
+}

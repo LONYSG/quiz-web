@@ -1,0 +1,374 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-history/3",
+  "midKey": "kr-history",
+  "subName": "조선 전기",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/3#g005-K1-10",
+   "seed": {
+    "subject": "삼포왜란",
+    "aspect": null,
+    "ref": "K1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "쓰시마의 지원을 받은 왜인들이 일으킨 변란으로, 부산포첨사 이우증이 이때 목숨을 잃었습니다. 이 변란은 무엇일까요?",
+    "answer": "삼포왜란",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2년 뒤 맺은 임신약조로 국교를 다시 열면서, 해마다 오는 세견선을 50척에서 25척으로 줄였습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "쓰시마 지원을 받은 왜인들의 변란, 부산포첨사 전사",
+     "difWhy": "'쓰시마 왜인 변란' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 조선 대외 관계",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "임신약조를 맺게 된 2년 전의 사건(1510)",
+     "difWhy": "임신약조 계기 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 조선 대일관계"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1512년 조선은 쓰시마와 임신약조를 맺어 국교를 다시 열었습니다. 이때 해마다 오는 세견선을 50척에서 25척으로, 해마다 주던 쌀과 콩을 200석에서 100석으로 줄이고 특송선을 금지했습니다. 이 약조를 맺게 된 계기인 2년 전의 사건은 무엇일까요?",
+     "beforeExplanation": "삼포에 살던 왜인들이 쓰시마의 지원을 받아 일으킨 난으로, 부산포첨사 이우증이 이때 목숨을 잃었습니다.",
+     "removedCue": "1512년 임신약조를 맺게 된 2년 전 사건",
+     "addedCue": "부산포첨사 이우증의 죽음",
+     "why": "교과서의 '임신약조 계기'를 해설로 옮기고 이우증 세부로 바꿈"
+    },
+    "generalHint": "제포에 살던 왜인 우두머리들이 병선 100척과 무장한 4~5천 명을 이끌고 성을 치면서 시작되었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/삼포왜란"
+    ],
+    "facts": [
+     {
+      "claim": "1512년 임신약조로 국교 재개",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/삼포왜란",
+      "note": "1512년 임신약조로 제포만 개항하고 국교를 재개했습니다."
+     },
+     {
+      "claim": "세견선 50→25척, 세사미두 200→100석, 특송선 금지",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/삼포왜란",
+      "note": "세견선을 50척에서 25척으로 줄였습니다. 해마다 주던 쌀과 콩을 200석에서 100석으로 줄였습니다. 특송선 파견을 금지했습니다."
+     },
+     {
+      "claim": "1510년(중종 5년) 삼포 왜인이 쓰시마의 지원으로 일으킨 변란 — 1512년의 2년 전",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼포왜란",
+      "note": "1510년(중종 5년) 4월 4일~19일, 제포·부산포·염포 삼포에 거주하던 왜인들이 쓰시마 다이칸 소 모리치카(宗盛親)의 지원을 받아 일으킨 변란"
+     },
+     {
+      "claim": "부산포첨사 이우증 살해",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼포왜란",
+      "note": "부산포첨사 이우증이 살해되었고"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/삼포왜란"
+    ],
+    "hintNote": "제포에 거주하고 있던 항거왜추, 대조마도, 노고수장 등이 병선 100척과 무장한 왜인 4~5천명을 거느리고 성을 공격하였다.",
+    "easiestCue": "쓰시마 지원 왜인 변란 — 부산포첨사 이우증 사망",
+    "targetWhy": "이우증은 한국사 심화 세부, '쓰시마 지원 왜인 변란'만으로는 삼포왜란·을묘왜변 등이 갈려 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서 사건을 뒤처리 조약으로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/3#g005-K1-11",
+   "seed": {
+    "subject": "해동제국기",
+    "aspect": null,
+    "ref": "K1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1443년 통신사의 서장관으로 일본에 다녀온 한 대신이, 1471년 성종의 명을 받아 일본과 류큐의 국정·지명·사신 접대 방식을 정리했습니다. 여기 실린 일본 지도는 현재 남은 것 가운데 한국에서 만든 가장 오래된 일본 지도로 평가받습니다. 이 책은 무엇일까요?",
+    "answer": "해동제국기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "지은이는 서문에서 오랑캐를 대하는 방법은 밖으로 치는 데가 아니라 안을 다스리는 데 있다고 썼습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1471년 성종의 명을 받아 일본과 류큐의 국정 정리",
+     "difWhy": "신숙주 대일 기록 — 수능 한국사 심화",
+     "wor": 4,
+     "worWhy": "교양 — 조선 대외관계 사료",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1471년 성종의 명을 받아 일본과 류큐의 국정 정리",
+     "difWhy": "신숙주 대일 기록 — 수능 한국사 심화",
+     "wor": 4,
+     "worWhy": "교양 — 조선 대외관계 사료"
+    },
+    "rewrite": null,
+    "generalHint": "지은이는 집현전 학사로 성삼문·박팽년 등과 함께 훈민정음 창제와 연구에 이바지했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/해동제국기"
+    ],
+    "facts": [
+     {
+      "claim": "저자는 세종 25년(1443) 통신사 서장관으로 일본에 갔다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/해동제국기",
+      "note": "세종 25년(1443년) 통신사의 서장관으로 일본에 갔고, 약 7개월간 머물며 대마도주와 계해약조를 체결했습니다."
+     },
+     {
+      "claim": "성종의 명으로 성종 2년(1471) 완성",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/해동제국기",
+      "note": "성종의 명을 받아 작성했으며, 성종 2년(1471년) 겨울에 완성되었습니다."
+     },
+     {
+      "claim": "일본·유구국의 국정, 지명, 사신 접대 방식 기록",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/해동제국기",
+      "note": "일본과 유구국(류큐)의 황실, 국왕, 지명, 국정, 교류 연혁, 사신 접대 방식을 기록했습니다."
+     },
+     {
+      "claim": "일본 지도는 현존 최고의 한국 제작 일본 지도로 평가",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/해동제국기",
+      "note": "이 중 일본 지도는 현존하는 가장 오래된 한국 제작 일본 지도로 평가받습니다."
+     },
+     {
+      "claim": "서문: 이적을 대하는 방법은 외정이 아닌 내치에",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/해동제국기",
+      "note": "저자는 서문에서 \"이적(夷狄)을 대하는 방법은 외정(外征)이 아닌 내치에 있으며\"라고 써"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/신숙주"
+    ],
+    "hintNote": "집현전의 학사로서 성삼문, 박팽년, 정인지 등과 함께 훈민정음의 창제와 연구에 기여하였다.",
+    "easiestCue": "1471년 성종의 명으로 일본·류큐를 정리한 책",
+    "targetWhy": "교과서 단서(신숙주 이름)를 뺐다. 서장관 경력·류큐·일본 지도는 대학 교양 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'조선 전기 일본 관련 책'만으로 떠올리는 수험생이 있어 3일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": [
+     "단정어 가장 오래"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/3#g005-K1-12",
+   "seed": {
+    "subject": "삼강행실도",
+    "aspect": null,
+    "ref": "K1-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "세종 때 진주에 사는 김화라는 사람이 아버지를 살해하는 사건이 일어나, 강상죄를 엄히 다스리자는 주장이 나왔습니다. 세종은 엄벌 대신 직제학 설순 등에게 명해 책을 엮게 했는데, 이 책은 무엇일까요?",
+    "answer": "삼강행실도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "성종 21년(1490년)에는 그림 위쪽에 우리말 풀이를 새겨 넣은 언해본이 나왔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "세종이 강상죄 엄벌 대신 엮게 한 책",
+     "difWhy": "'세종 때 강상 윤리서' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 조선 윤리서",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "세종이 효행을 널리 알리려 엮게 한 책",
+     "difWhy": "'세종 효행 윤리서' — 중학 역사",
+     "wor": 5,
+     "worWhy": "교과서 — 세종 편찬서"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "세종 때 진주에 사는 김화라는 사람이 아버지를 살해하는 사건이 일어나, 강상죄를 엄히 다스리자는 주장이 나왔습니다. 세종은 엄벌보다 효행을 널리 알리는 쪽을 택해 설순 등에게 책을 엮게 했습니다. 이 책은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'효행을 널리 알리려' 엮은 책",
+     "addedCue": "직제학 설순 (남은 단서: 김화 사건)",
+     "why": "책 성격(효행 윤리서)을 빼고 편찬 계기·편찬자 세부로 풀게"
+    },
+    "generalHint": "조선 사람으로는 효자 4명, 충신 6명, 열녀 6명의 이야기가 실렸다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/삼강행실도"
+    ],
+    "facts": [
+     {
+      "claim": "세종 10년(1428) 무렵 진주 김화의 부친 살해 사건",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼강행실도",
+      "note": "세종 10년(1428) 무렵, 진주에 사는 김화(金禾)가 아버지를 살해하는 사건이 일어났다."
+     },
+     {
+      "claim": "엄벌론 대신 효행을 알리는 책을 택함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼강행실도",
+      "note": "이 사건으로 강상죄 엄벌론이 나왔지만, 세종은 엄벌보다 효행을 널리 알리는 책을 펴내는 쪽을 택했습니다."
+     },
+     {
+      "claim": "설순 등이 세종의 명으로 편찬",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼강행실도",
+      "note": "세종 16년(1434) 직제학 설순(偰循) 등이 세종의 명에 따라"
+     },
+     {
+      "claim": "성종 21년(1490) 언해본",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/삼강행실도",
+      "note": "성종 21년(1490)에는 이를 언해하여 그림 상단에 새겨 넣은 언해본을 편찬함으로써"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/삼강행실도"
+    ],
+    "hintNote": "본문에는 조선 사람으로서 효자 4명, 충신 6명, 열녀 6명이 실렸다는 내용",
+    "easiestCue": "김화의 부친 살해 사건 뒤 설순 등이 엮은 책",
+    "targetWhy": "김화 사건·설순은 교과서 밖 대학 교양 세부 — 4 노림",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서의 책을 편찬 계기로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/3#g005-K1-13",
+   "seed": {
+    "subject": "동래성 전투",
+    "aspect": null,
+    "ref": "K1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1592년 4월 고니시 유키나가의 일본군은 성곽이 낮고 수비가 허술한 동문의 인생문을 집중해 공격해 방어선을 뚫었습니다. 양산에서 돌아온 조영규도 동문이 무너지자 일본군을 향해 돌진해 싸우다 전사한 이 싸움은 무엇일까요?",
+    "answer": "동래성 전투",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "성이 함락될 위기에 놓이자 부사 송상현은 조복으로 갈아입고 고향의 부모에게 보내는 시 한 수를 쓴 뒤 전사했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "엮음: 1592년 4월 고니시 + 양산에서 돌아온 조영규·동문 인생문",
+     "difWhy": "'1592.4 고니시·양산·동문' — 수능 심화 한국사",
+     "wor": 4,
+     "worWhy": "교양 — 임진왜란 초기 전투",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'싸워 죽기는 쉬워도 길을 빌려주기는 어렵다'",
+     "difWhy": "'송상현 전사이가도난' — 고교 한국사",
+     "wor": 4,
+     "worWhy": "임진왜란 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "고니시 유키나가의 군대가 성을 에워싸고 싸우지 않으려면 길을 내 달라는 팻말을 내걸자, 성을 지키던 부사는 '싸워 죽기는 쉬워도 길을 빌려주기는 어렵다'고 답했습니다. 부사가 조복을 입고 부모에게 남길 시를 쓴 뒤 최후를 맞은 1592년 4월의 이 싸움은 무엇일까요?",
+     "beforeExplanation": "이 성을 함락한 고니시 군은 경상도와 충청도를 지나 충주 탄금대에서 신립의 군대를 깨뜨렸습니다.",
+     "removedCue": "'싸워 죽기는 쉬워도 길을 빌려주기는 어렵다'(전사이가도난) · 부사의 조복 최후",
+     "addedCue": "동문 인생문 집중 공격 · 양산에서 돌아온 조영규의 전사",
+     "why": "교과서 명구를 빼고 공방 세부 둘로 엮음(부산진·동래 가운데 하나를 가르는 단서)"
+    },
+    "generalHint": "일본군은 성 앞에 '싸우려면 싸우고, 아니면 길을 비켜라'라고 쓴 나무판을 세웠다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/동래성_전투"
+    ],
+    "facts": [
+     {
+      "claim": "1592년 음력 4월 15일, 고니시 유키나가 군",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동래성_전투",
+      "note": "1592년 5월 25일(음력 4월 15일) 임진왜란 중, 동래부사 송상현이 고니시 유키나가의 일본군에 맞서 약 두 시간 성을 지켰으나 함락되고 전사(문서 요지)"
+     },
+     {
+      "claim": "일본군이 동문의 인생문을 집중 공격해 방어선을 뚫음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동래성_전투",
+      "note": "일본군은 성곽이 낮고 수비가 허술한 동문의 인생문(人生門)을 집중공격함으로써 방어선을 뚫는 데 성공하였다."
+     },
+     {
+      "claim": "양산에서 돌아온 조영규가 동문이 무너지자 돌진해 전사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동래성_전투",
+      "note": "양산에서 돌아온 조영규는 일시에 동문이 무너지는걸보고 쏟아져들어오는 일본군을 향해 돌진하여 싸우다가 전사하였다"
+     },
+     {
+      "claim": "송상현이 조복으로 갈아입고 부모에게 시를 쓴 뒤 전사",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/동래성_전투",
+      "note": "송상현은 조복으로 갈아입고 고향의 부모에게 보내는 시 한 수를 쓴 뒤 일본군의 칼에 맞아 전사했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Siege_of_Dongnae"
+    ],
+    "hintNote": "Konishi put up a board offering two choices: Fight if you want to, or let us pass.",
+    "easiestCue": "1592년 4월 고니시 군이 동문 인생문을 뚫은 성 싸움",
+    "targetWhy": "인생문·조영규는 교과서 밖 임진왜란 세부 — 대학 교양 4 노림",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이 싸움의 대표 일화라 관심층(3)으로 읽힐 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  }
+ ]
+}

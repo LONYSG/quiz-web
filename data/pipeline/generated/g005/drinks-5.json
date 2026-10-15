@@ -1,0 +1,184 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "drinks/5",
+  "midKey": "drinks",
+  "subName": "커피·차",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "drinks/5#g005-L3-22",
+   "seed": {
+    "subject": "아이리시 커피",
+    "aspect": null,
+    "ref": "L3-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1942년이나 1943년, 포인스의 비행정 터미널 식당 주방장 조 셰리든이 비행정에서 내린 승객들에게 처음 내놓았다고 전합니다. 1952년 11월 10일 샌프란시스코의 부에나비스타 카페가 스탠턴 델러플레인과 함께 팔기 시작한 이 커피 칵테일은 무엇일까요?",
+    "answer": "아이리시 커피",
+    "acceptedAnswers": [
+     "아이리쉬 커피"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '아이리시 커피', '아이리쉬 커피' 넘겨주기 확인(API)",
+    "explanation": "포인스는 오늘날 섀넌 공항에서 15km쯤 떨어진 곳입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "포인스 비행정 터미널 주방장 조 셰리든의 커피 칵테일",
+     "difWhy": "'포인스 비행정 커피' — 음료 애호가",
+     "wor": 3,
+     "worWhy": "칵테일 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "포인스 비행정 터미널 주방장 조 셰리든의 커피 칵테일",
+     "difWhy": "'포인스 비행정 커피' — 음료 애호가",
+     "wor": 3,
+     "worWhy": "칵테일 기원 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "조 셰리든은 뒤에 바로 그 샌프란시스코 카페로 건너가 일했고, 이 칵테일에는 그의 고국 위스키가 들어간다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Irish_coffee"
+    ],
+    "facts": [
+     {
+      "claim": "포인스 터미널 식당 주방장 조 셰리든이 1942~43년 내리는 승객에게",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Irish_coffee",
+      "note": "attributed to a Joe Sheridan, head chef at the restaurant and coffee shop ... In 1942 or 1943, he added whiskey to the coffee of some disembarking passengers."
+     },
+     {
+      "claim": "1952년 11월 10일 부에나비스타 카페가 델러플레인과 판매 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Irish_coffee",
+      "note": "Delaplane worked with the Buena Vista Cafe in San Francisco to start serving it on November 10, 1952."
+     },
+     {
+      "claim": "포인스는 섀넌 공항에서 약 15km",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Irish_coffee",
+      "note": "about 15 kilometres or 9.3 miles from present-day Shannon Airport, County Clare."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Irish_coffee"
+    ],
+    "hintNote": "Sheridan later emigrated to work at the Buena Vista Cafe. / 50 ml Irish whiskey",
+    "easiestCue": "포인스 비행정 터미널의 조 셰리든이 처음 내놓은 커피 칵테일",
+    "targetWhy": "'아일랜드'·'위스키를 넣은 커피'·섀넌 공항(정답 풀이로 가는 단서)을 빼고 발명·전파 세부만 남김 — 칵테일 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "음료 이름은 유명하고 포인스·부에나비스타는 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 커피"
+    ]
+   }
+  },
+  {
+   "seedId": "drinks/5#g005-L3-23",
+   "seed": {
+    "subject": "보이차",
+    "aspect": null,
+    "ref": "L3-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1973년 쿤밍 차창은 찻잎을 쌓아 물을 뿌리고 뒤집어 가며 발효시키는 '워두이' 기법을 개발했습니다. 2008년 말 중국 정부가 이 차를 지리적 표시 제품으로 정하자 광둥의 생산자들이 반발하기도 했는데, 이 차는 무엇일까요?",
+    "answer": "보이차",
+    "acceptedAnswers": [
+     "푸얼차"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '보이차' 문서 제목, '푸얼차' 넘겨주기 확인(API)",
+    "explanation": "말 등에 실어 옛 찻길로 나르기 쉽도록 벽돌 모양으로 눌러 굳히는 전통이 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "찻잎을 쌓아 물 뿌려 발효시킨 중국 차",
+     "difWhy": "'후발효 중국 차' — 차 관심층",
+     "wor": 3,
+     "worWhy": "유명 차 이야깃거리",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'숙차'를 만드는 발효 차",
+     "difWhy": "숙차·생차 구분 — 차 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대표 중국차"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1973년 쿤밍 차창은 찻잎을 쌓아 물을 뿌리고 뒤집어 가며 발효시키는 '워두이' 기법을 개발해, 이 차의 '숙차'를 만들어 냈습니다. 2008년 말 중국 정부가 지리적 표시 제품으로 정하자 광둥의 생산자들이 반발하기도 한 이 차는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'숙차'라는 이름",
+     "addedCue": "(빼기만) 워두이 기법 · 2008 지리적 표시 반발",
+     "why": "숙차라는 말이 차 관심층 충분 단서라 빼고 제조 기법·제도 세부로 좁힘"
+    },
+    "generalHint": "이름은 옛 차 교역 고을에서 왔는데, 그곳은 오늘날 윈난성의 닝얼 진이다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pu%27er_tea"
+    ],
+    "facts": [
+     {
+      "claim": "1973년 쿤밍 차창이 워두이 발효 기법 개발(숙차)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pu%27er_tea",
+      "note": "The wòduī fermentation process developed in 1973 by the Kunming Tea Factory ... a technique called wò duī (\"wet piling\"), which involves piling, dampening, and turning the tea leaves."
+     },
+     {
+      "claim": "2008년 말 지리적 표시 제품, 광둥 생산자 반발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pu%27er_tea",
+      "note": "In late 2008, the Chinese government approved a standard declaring pu'er tea as a \"product with geographical indications\" ... Producers in Guangdong disputed the standard."
+     },
+     {
+      "claim": "말 대상 수송을 위한 벽돌 모양",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pu%27er_tea",
+      "note": "bricks were the traditional shape used for ease of transport along the ancient tea route by horse caravans."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pu%27er_tea"
+    ],
+    "hintNote": "The tea got its name from the ancient tea-trading town of Pu'er (普洱). ... modern Ning'er Town (宁洱镇)",
+    "easiestCue": "쿤밍 차창의 '워두이' 발효 기법",
+    "targetWhy": "워두이 기법 이름과 지리적 표시 분쟁은 차 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 널리 알려졌고 숙차·워두이는 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 이차"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,199 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "astronomy/4",
+  "midKey": "astronomy",
+  "subName": "우주 현상·관측",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "astronomy/4#g005-C2-15",
+   "seed": {
+    "subject": "퉁구스카 대폭발",
+    "aspect": null,
+    "ref": "C2-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2007년 이탈리아 볼로냐 대학 연구진은 이 일이 일어난 지역의 체코 호수가 그때 생긴 충돌 구덩이일 수 있다고 보았습니다. 2016년 유엔은 이 일이 일어난 6월 30일을 '국제 소행성의 날'로 정했는데, 이 폭발 사건은 무엇일까요?",
+    "answer": "퉁구스카 대폭발",
+    "acceptedAnswers": [
+     "퉁구스카 폭발사건"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '퉁구스카 폭발사건', '퉁구스카 대폭발' 넘겨주기 확인",
+    "explanation": "약 2,150㎢에 걸쳐 수백만 그루의 나무가 쓰러졌는데, 흔히 말하는 '8천만 그루'는 과장된 수치라고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "엮음: 6월 30일 '국제 소행성의 날' + 폭발 사건",
+     "difWhy": "'소행성의 날 6월 30일 폭발' — 대학 교양 천문",
+     "wor": 4,
+     "worWhy": "교양 — 대표 천체 충돌 사건",
+     "acc": 5,
+     "accWhy": "천문·우주 — 초중 과학 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1927년 쿨리크 탐사대, 구덩이 없이 쓰러진 나무",
+     "difWhy": "'운석 구덩이 없는 폭발' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "과학 교양 — 대표 충돌 사건"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1927년 소련의 레오니트 쿨리크 탐사대는 운석 구덩이를 찾으러 그 자리에 갔지만 구덩이는 없었고, 한가운데에는 가지만 떨어져 나간 채 선 나무들이 남아 있었습니다. 이 일 직후 서유라시아 곳곳에서는 한밤중에도 밖에서 신문을 읽을 만큼 밤하늘이 밝았다고 합니다. 이 폭발 사건은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1927년 쿨리크 탐사대 — 구덩이 없이 선 나무 · 밤하늘이 밝아 신문을 읽음",
+     "addedCue": "볼로냐 대학의 체코 호수 가설 · 6월 30일 국제 소행성의 날",
+     "why": "대표 일화(쿨리크 탐사·밝은 밤)를 빼고 뒷이야기 세부 둘로 엮음"
+    },
+    "generalHint": "그 뒤 서유라시아 넓은 지역에서는 한밤에도 불빛 없이 신문을 읽을 만큼 밝은 밤이 보고되었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tunguska_event"
+    ],
+    "facts": [
+     {
+      "claim": "약 2,150㎢ 수백만 그루, 8천만은 잘못된 통설",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tunguska_event",
+      "note": "flattening several million trees across about 2,150 km² ... (80 million figure) popular but erroneous statement"
+     },
+     {
+      "claim": "2007년 볼로냐 대학 연구진이 체코 호수를 충돌 구덩이 후보로 봄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tunguska_event",
+      "note": "In June 2007, scientists from the University of Bologna identified a lake in the Tunguska region as a possible impact crater from the event. … Lake Cheko is a small bowl-shaped lake"
+     },
+     {
+      "claim": "2016년 유엔이 6월 30일을 국제 소행성의 날로 선포",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tunguska_event",
+      "note": "In 2016, the United Nations proclaimed 30 June as the annual International Asteroid Day"
+     },
+     {
+      "claim": "사건은 1908년 6월 30일 아침",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tunguska_event",
+      "note": "On the morning of Tuesday, 30 June (Old Style date: 17 June 1908)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tunguska_event"
+    ],
+    "hintNote": "to read a newspaper or photograph monuments around midnight without artificial lighting ... intense bright nights were observed across western Eurasia",
+    "easiestCue": "6월 30일 '국제 소행성의 날'의 유래가 된 폭발",
+    "targetWhy": "소행성의 날 유래·체코 호수 가설은 우주 애호가 세부 — 4 노림",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "퉁구스카는 이름은 들어 봤을 법, 묻는 세부는 교과 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": [
+     "정답조각 폭발"
+    ]
+   }
+  },
+  {
+   "seedId": "astronomy/4#g005-C2-16",
+   "seed": {
+    "subject": "와우 신호",
+    "aspect": null,
+    "ref": "C2-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1977년 8월 15일 미국 오하이오 주립대의 '빅 이어' 전파 망원경이 궁수자리 쪽에서 오는 강한 전파를 72초 동안 잡았고, 그 뒤 다시는 잡히지 않았습니다. 며칠 뒤 출력 기록을 보던 제리 이만은 세기를 나타낸 '6EQUJ5'에 동그라미를 치고 옆에 짧은 글귀를 적었습니다. 그 글귀에서 이름을 딴 이 신호는 무엇일까요?",
+    "answer": "와우 신호",
+    "acceptedAnswers": [
+     "와우! 신호",
+     "Wow! 신호",
+     "와우 시그널"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 'Wow! 신호', '와우! 신호' 넘겨주기, 첫 문장 '와우 신호', 본문 '와우 시그널' 확인",
+    "explanation": "'6EQUJ5'는 숨은 메시지가 아니라 시간에 따른 신호 세기의 변화를 이 관측의 표기법으로 적은 것입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'6EQUJ5'에 동그라미를 치고 적은 글귀에서 이름 딴 신호",
+     "difWhy": "빅 이어 6EQUJ5 — 우주 애호가",
+     "wor": 3,
+     "worWhy": "외계 신호 이야깃거리",
+     "acc": 5,
+     "accWhy": "천문·우주 — 초중 과학 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'6EQUJ5'에 동그라미를 치고 적은 글귀에서 이름 딴 신호",
+     "difWhy": "빅 이어 6EQUJ5 — 우주 애호가",
+     "wor": 3,
+     "worWhy": "외계 신호 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "2017년 한 연구자는 이 신호가 두 혜성의 수소 구름에서 왔다고 했지만, 혜성들이 그때 망원경 시야에 없었다는 반박을 받았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Wow!_signal",
+     "https://ko.wikipedia.org/wiki/와우!_신호"
+    ],
+    "facts": [
+     {
+      "claim": "1977년 8월 15일, 오하이오 주립대 빅 이어 전파 망원경",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wow!_signal",
+      "note": "detected on August 15, 1977 ... Ohio State University's Big Ear radio telescope"
+     },
+     {
+      "claim": "72초, 궁수자리 방향, 다시 나타나지 않음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wow!_signal",
+      "note": "lasted the full 72-second window ... from the direction of the constellation Sagittarius ... the signal has never recurred"
+     },
+     {
+      "claim": "며칠 뒤 이만이 6EQUJ5에 동그라미, 옆에 Wow!",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wow!_signal",
+      "note": "Jerry Ehman found it days later, circled the intensity reading 6EQUJ5, and wrote Wow! beside it"
+     },
+     {
+      "claim": "6EQUJ5는 메시지가 아닌 세기 변화 표기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Wow!_signal",
+      "note": "The string is not a hidden message. It represents the signal's intensity variation over time"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Wow!_signal"
+    ],
+    "hintNote": "the hydrogen cloud surrounding two comets, 266P/Christensen and 335P/Gibbs ... the cited comets were not in the beam at the correct time",
+    "easiestCue": "1977년 빅 이어 망원경이 잡은, 다시 안 잡힌 72초 신호",
+    "targetWhy": "SETI 역사의 세부 — 천문·SF 애호가가 아는 신호 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "대상이 '외계 신호 후보' 로 관심층에는 유명하지만 일반 성인에게는 마이너할 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": [
+     "정답조각 신호"
+    ]
+   }
+  }
+ ]
+}

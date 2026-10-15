@@ -1,0 +1,287 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "olympic/4",
+  "midKey": "olympic",
+  "subName": "올림픽 상징·의례",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "olympic/4#g005-S2-35",
+   "seed": {
+    "subject": "헤라",
+    "aspect": null,
+    "ref": "S2-35",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "올림픽 성화 채화식에서는 고대 여사제 차림의 여성들이 포물면 거울로 햇빛을 모아 불을 붙이고, 대사제 역의 배우가 첫 주자에게 성화를 건넵니다. 이 의식이 열리는 올림피아 유적의 신전은 어느 신에게 바친 신전일까요?",
+    "answer": "헤라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "채화 의식에 나서는 여성들은 로마의 베스타 여사제들을 본뜬 것입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "성화 채화식이 열리는 올림피아 신전의 신",
+     "difWhy": "'올림피아 채화 신전' — 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 의례 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "성화 채화식이 열리는 올림피아 신전의 신",
+     "difWhy": "'올림피아 채화 신전' — 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 의례 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "이 신전은 올림피아에서 가장 오래된 신전으로, 프락시텔레스의 헤르메스상이 이곳에서 나왔다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Olympic_flame"
+    ],
+    "facts": [
+     {
+      "claim": "헤라 신전에서 여성들이 햇빛으로 불을 붙임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Olympic_flame",
+      "note": "(at the Temple of Hera in Olympia) A group of women representing the Vestal Virgins perform a ceremony, during which a fire is kindled by the light of the Sun."
+     },
+     {
+      "claim": "포물면 거울",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Olympic_flame",
+      "note": "(sunlight focused by) a parabolic mirror"
+     },
+     {
+      "claim": "대사제 역 배우가 첫 주자에게 건넴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Olympic_flame",
+      "note": "An actress plays the role of the temple's high priestess (and hands the torch to the first relay bearer)."
+     },
+     {
+      "claim": "베스타 여사제를 본뜬 여성들",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Olympic_flame",
+      "note": "A group of women representing the Vestal Virgins"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Temple_of_Hera,_Olympia"
+    ],
+    "hintNote": "the oldest temple at Olympia ... a statue of Hermes holding baby Dionysos ... generally identified as the Hermes of Praxiteles",
+    "easiestCue": "성화를 채화하는 올림피아 신전의 주인",
+    "targetWhy": "많은 사람이 제우스로 짐작한다 — 헤라 신전이라는 것은 올림픽 애호가 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 신, 성화와의 연결은 몰랐던 사실",
+    "pairCheck": null,
+    "dbCheck": "헤라 — pair-or-different, #7(제우스의 아내)과 지식 다름 · 활성 #630(성화 채화 장소 올림피아)과도 정답 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/4#g005-S2-36",
+   "seed": {
+    "subject": "무하마드 알리",
+    "aspect": null,
+    "ref": "S2-36",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1996년 애틀랜타 올림픽 기간에 조지아 돔에서, 1960년 대회 때 받았던 메달을 대신할 새 메달을 받은 사람이 있습니다. 그가 첫 금메달을 어떻게 잃었는지를 두고는 1975년 자서전과 친구들의 말, 전기 작가 토머스 하우저의 기록이 서로 엇갈립니다. 이 사람은 누구일까요?",
+    "answer": "무하마드 알리",
+    "acceptedAnswers": [
+     "알리"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '무하마드 알리' — 한국에서 '알리' 로 흔히 부름",
+    "explanation": "자서전에는 백인 전용 식당에서 거절당한 뒤 금메달을 오하이오강에 던졌다고 썼지만, 친구들은 이를 부인했고 하우저는 금메달을 받고 1년 뒤 잃어버렸다고 적었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "1960년 받은 첫 금메달을 잃은 사람이 1996년 대체 메달",
+     "difWhy": "'잃어버린 1960년 금메달' — 스포츠 관심층",
+     "wor": 3,
+     "worWhy": "전설적 인물 일화",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1996 애틀랜타 성화 점화자, 금메달을 강에 던졌다는 일화",
+     "difWhy": "'애틀랜타 성화 점화' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1996년 애틀랜타 올림픽 때 성화에 불을 붙인 이 사람은, 그 대회 동안 1960년에 받았던 메달을 대신할 새 메달을 받았습니다. 그는 백인 전용 식당에서 거절당한 뒤 첫 금메달을 오하이오강에 던졌다고 자서전에 썼지만, 친구들은 이를 부인했습니다. 이 사람은 누구일까요?",
+     "beforeExplanation": "전기 작가 토머스 하우저는 그가 금메달을 받고 1년 뒤 잃어버렸다고 적었습니다.",
+     "removedCue": "1996년 애틀랜타 성화 점화 · 금메달을 강에 던졌다는 일화",
+     "addedCue": "조지아 돔에서 대체 메달 · 메달 분실 기록이 엇갈림",
+     "why": "성화 점화(방송으로 알려진 장면)를 빼고 강 일화는 해설로"
+    },
+    "generalHint": "그는 1964년 2월 마이애미비치에서 8 대 1의 열세를 뒤집고 소니 리스턴을 꺾어 헤비급 챔피언이 되었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Muhammad_Ali"
+    ],
+    "facts": [
+     {
+      "claim": "1996 대회 중 대체 메달",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Muhammad_Ali",
+      "note": "Ali received a replacement medal at the Georgia Dome during the 1996 Olympics in Atlanta"
+     },
+     {
+      "claim": "자서전 — 백인 전용 식당 거절 뒤 금메달을 오하이오강에 던졌다, 친구들은 부인",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Muhammad_Ali",
+      "note": "(1975 autobiography) he threw his gold medal into the Ohio River (after being refused service at a whites-only restaurant) ... his friends Bundini Brown and Howard Bingham denied it."
+     },
+     {
+      "claim": "하우저 — 1년 뒤 잃어버림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Muhammad_Ali",
+      "note": "Thomas Hauser's biography says he lost the medal a year after winning it."
+     },
+     {
+      "claim": "1996년 애틀랜타 대회 때 조지아 돔에서 대체 메달",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Muhammad_Ali",
+      "note": "received a replacement medal at the Georgia Dome"
+     },
+     {
+      "claim": "1975년 자서전에서 금메달을 오하이오강에 던졌다고 회고",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Muhammad_Ali",
+      "note": "in his 1975 autobiography ... threw his gold medal into the Ohio River ... The story was later disputed"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Muhammad_Ali_vs._Sonny_Liston"
+    ],
+    "hintNote": "The first fight took place on February 25, 1964, in Miami Beach ... Clay, an 8:1 underdog, won ... when the champion retired on his stool at the opening of the seventh round.",
+    "easiestCue": "1996년 대회 때 1960년 메달을 대신할 메달을 받은 사람",
+    "targetWhy": "대체 메달 수여는 스포츠 애호가 세부, 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "1996 점화 장면은 방송으로 널리 알려져 3 으로 볼 수 있다",
+    "pairCheck": null,
+    "dbCheck": "무하마드 알리 · 알리 — new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/4#g005-S2-37",
+   "seed": {
+    "subject": "토마스 헤더윅",
+    "aspect": null,
+    "ref": "S2-37",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2012년 런던 올림픽의 성화대는 참가 선수단마다 하나씩, 구리 '꽃잎' 204장이 모여 8.5m 높이의 '민들레'를 이루었습니다. 이 성화대를 디자인했고, 상하이 엑스포 2010 영국관 '씨앗 대성당'과 뉴욕 허드슨 야드의 계단 구조물 '베슬'도 만든 영국 디자이너는?",
+    "answer": "토마스 헤더윅",
+    "acceptedAnswers": [
+     "토머스 헤더윅"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '토마스 헤더윅' — 외래어 표기법 꼴 '토머스 헤더윅' 도 넣음",
+    "explanation": "꽃잎들은 자동차 차체를 만드는 숙련공들이 손으로 만들었고, 대회 뒤 참가국들에 나눠 주기로 했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "런던 올림픽 성화대·'베슬'을 만든 영국 디자이너",
+     "difWhy": "민들레 성화대·베슬 — 디자인 애호가",
+     "wor": 3,
+     "worWhy": "디자이너 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "런던 올림픽 성화대·'베슬'을 만든 영국 디자이너",
+     "difWhy": "민들레 성화대·베슬 — 디자인 애호가",
+     "wor": 3,
+     "worWhy": "디자이너 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "그는 런던의 새 이층 버스 '뉴 루트마스터'와 뉴욕 허드슨강 위의 공원 '리틀 아일랜드'도 디자인했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Olympic_flame",
+     "https://en.wikipedia.org/wiki/Thomas_Heatherwick"
+    ],
+    "facts": [
+     {
+      "claim": "204장 구리 꽃잎, 선수단마다 하나",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Olympic_flame",
+      "note": "igniting 204 copper petals (one for each delegation in the Games)"
+     },
+     {
+      "claim": "8.5m 높이 '민들레', 204 구리 꽃잎 — 헤더윅",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Heatherwick",
+      "note": "an 8.5m-high \"dandelion\" of 204 copper \"petals\" hand-made by skilled car body workers"
+     },
+     {
+      "claim": "상하이 엑스포 2010 영국관 '씨앗 대성당'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Heatherwick",
+      "note": "Heatherwick Studio designed the UK's pavilion, dubbed \"Seed Cathedral\", for Expo 2010 in Shanghai."
+     },
+     {
+      "claim": "허드슨 야드 '베슬' — 오를 수 있는 계단 구조물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Heatherwick",
+      "note": "(Vessel at Hudson Yards) The structure is in the form of a network of interlocking staircases that visitors can climb"
+     },
+     {
+      "claim": "차체 숙련공이 손으로 만듦, 꽃잎은 참가국에 나눠 줌",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Heatherwick",
+      "note": "hand-made by skilled car body workers ... The petals were later offered to participating countries."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Thomas_Heatherwick"
+    ],
+    "hintNote": "New Routemaster: The design features a long front window for the driver / Little Island has an outdoor amphitheater for 687 people",
+    "easiestCue": "뉴욕 허드슨 야드 '베슬' 을 만든 디자이너",
+    "targetWhy": "베슬·씨앗 대성당은 건축·디자인 애호가 — 성화대 이야기는 올림픽 애호가 → 4",
+    "selfJudge": "나쁜 어려움 의심",
+    "selfJudgeWhy": "헤더윅은 디자인 관심층에는 유명하지만 일반 성인에게는 이름이 낯설 수 있다",
+    "pairCheck": null,
+    "dbCheck": "토마스 헤더윅 · 토머스 헤더윅 — new",
+    "warn": []
+   }
+  }
+ ]
+}

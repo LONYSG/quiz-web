@@ -1,0 +1,279 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "art/3",
+  "midKey": "art",
+  "subName": "한국·동양 미술",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "art/3#g005-A1-01",
+   "seed": {
+    "subject": "김환기",
+    "aspect": null,
+    "ref": "A1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "시인 이상과 결혼했다가 넉 달 만에 사별한 변동림은 1944년 가족의 반대를 무릅쓰고 한 화가와 재혼했습니다. 이 화가는 누구일까요?",
+    "answer": "김환기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "변동림은 결혼하며 남편의 호 '향안'을 받아 김향안으로 살았고, 남편은 뒤에 호를 '수화(樹話)'로 바꾸었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "이상과 사별한 변동림이 1944년 재혼한 화가",
+     "difWhy": "'이상의 아내 변동림의 재혼' — 미술 애호가",
+     "wor": 3,
+     "worWhy": "유명 화가 이름 맞히기·일화",
+     "acc": 4,
+     "accWhy": "미술 — 중고교 미술 교과·교양"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "변동림이 남편의 호 '향안'을 받아 김향안으로",
+     "difWhy": "'김향안의 남편 화가' — 미술 관심층",
+     "wor": 3,
+     "worWhy": "유명 화가 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "시인 이상과 결혼했다가 넉 달 만에 사별한 변동림은 1944년 한 화가와 재혼했습니다. 그녀는 가족의 반대를 무릅쓰고 결혼하면서 남편의 호 '향안'을 받아 김향안으로 살았는데, 이 화가는 누구일까요?",
+     "beforeExplanation": "그는 뒤에 호를 '수화(樹話)'로 바꾸었고, 1963년 뉴욕으로 건너가자 김향안도 이듬해 뒤따라가 함께 지냈다.",
+     "removedCue": "남편의 호 '향안'을 받아 김향안으로 살았음",
+     "addedCue": "(남은 깊은 단서) 이상의 아내 변동림의 1944년 재혼",
+     "why": "김향안이라는 이름을 빼고 변동림=김향안을 알아야 풀리게"
+    },
+    "generalHint": "이 화가의 사위는 화가 윤형근이며, 그는 1970년 한국일보사 주최 한국미술대상전에서 대상을 받았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/김향안",
+     "https://en.wikipedia.org/wiki/Kim_Whanki"
+    ],
+    "facts": [
+     {
+      "claim": "변동림은 이상과 결혼했으나 이상의 죽음으로 4개월 만에 결혼 생활이 끝났다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김향안",
+      "note": "시인 겸 소설가 이상과 결혼하기도 했었지만, 이상의 갑작스런 죽음으로 인하여 결혼 생활은 4개월 만에 끝났다."
+     },
+     {
+      "claim": "1944년 김환기와 재혼",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김향안",
+      "note": "1944년 화가 김환기와 재혼했다."
+     },
+     {
+      "claim": "가족 반대를 무릅쓰고 결혼하며 김환기의 호 향안을 받아 평생 그 이름으로 삶",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kim_Whanki",
+      "note": "Defying the objections from their families, Byun took Kim's art name–Hyang-an–at the time of marriage and lived as such until her death."
+     },
+     {
+      "claim": "가족 반대를 무릅쓰고 결혼하며 김환기의 호 향안을 받아 평생 그 이름으로 삶",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kim_Whanki",
+      "note": "Defying the objections from their families, Byun took Kim's art name–Hyang-an–at the time of marriage and lived as such until her death."
+     },
+     {
+      "claim": "호를 수화로 바꿈 · 1963 뉴욕 이주 · 이듬해 김향안 합류",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kim_Whanki",
+      "note": "Kim changed his art name to Su-hwa (수화, 樹話). / Thus in 1963, Kim relocated to New York ... Hyang-an Kim joined Kim in New York the following year."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/김환기"
+    ],
+    "hintNote": "(문서 요약) 1970년 한국일보사 주최 한국미술대상전에서 대상 / 사위는 화가 윤형근",
+    "easiestCue": "이상과 사별한 변동림이 1944년 재혼한 화가",
+    "targetWhy": "변동림이 김향안이라는 것은 미술·문학 애호가 세부 — 4 노림",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 화가와 유명 시인이 한 여인으로 이어지는 '몰랐던 연결'",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "art/3#g005-A1-02",
+   "seed": {
+    "subject": "박수근",
+    "aspect": null,
+    "ref": "A1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1932년 제11회 조선 미술 전람회에 입선하며 화단에 나온 이 화가는, 정규 미술 교육 없이 강원도 인제군에서 독학으로 그림을 익혔습니다. 이 화가는 누구일까요?",
+    "answer": "박수근",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "박완서는 6·25 전쟁 중 미군 부대 초상화부에서 일하다 그를 만났고, 그를 그린 장편 '나목'으로 1970년 등단했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "엮음: 정규 미술 교육 없이 독학 + 1932년 조선미전 입선",
+     "difWhy": "'독학 화가 1932 선전 입선' — 대학 교양 미술사",
+     "wor": 3,
+     "worWhy": "국민 화가 이력",
+     "acc": 4,
+     "accWhy": "미술 — 중고교 미술 교과·교양"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "박완서 '나목'의 모델 화가",
+     "difWhy": "'나목의 화가' — 고교 문학·미술",
+     "wor": 4,
+     "worWhy": "교양 — 대표 한국 화가"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "박완서는 6·25 전쟁 중 생계를 위해 미군 부대 초상화부에서 일하다 한 화가를 만났고, 그를 그린 장편 '나목'으로 1970년 등단했습니다. 정규 미술 교육 없이 독학으로 그림을 익힌 이 화가는 누구일까요?",
+     "beforeExplanation": "고향 강원도 양구의 생가 터에 그의 이름을 딴 군립 미술관이 세워져 대표작과 유품, 판화 원본을 전시하고 있다.",
+     "removedCue": "박완서 '나목'의 모델 화가",
+     "addedCue": "1932년 제11회 조선 미술 전람회 입선 · 인제군에서 독학",
+     "why": "'나목의 화가'가 고교 문학 충분 단서라 해설로 내리고 화단 등장·독학 내력으로 좁힘"
+    },
+    "generalHint": "2007년 5월 그의 그림 '빨래터'는 45억 2천만 원에 낙찰되어 최고 기록을 새로 썼다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/박완서",
+     "https://ko.wikipedia.org/wiki/박수근"
+    ],
+    "facts": [
+     {
+      "claim": "나목은 박완서가 미군부대 초상화부에서 근무할 때 만난 화가 박수근에 대한 내용",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/박완서",
+      "note": "이 소설은 전쟁 중 노모와 어린 조카들의 생계를 위해 미군부대 초상화부에서 근무할 때 만난 화가 박수근에 대한 내용이다."
+     },
+     {
+      "claim": "1970년 여성동아 장편 공모에 나목으로 당선되어 등단",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/박완서",
+      "note": "40세의 나이에 《여성동아》 장편 소설 공모전에 〈나목〉(裸木)으로 당선되어 등단하였다. / 1970년 《여성동아》 장편소설 공모 당선「나목」"
+     },
+     {
+      "claim": "1932년 제11회 조선 미술 전람회 입선으로 화단 등장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/박수근",
+      "note": "1932년 제11회 조선 미술 전람회에 입선함으로써 화단에 등장하였다."
+     },
+     {
+      "claim": "강원도 인제군에서 독학으로 미술 공부",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/박수근",
+      "note": "강원도 인제군에서 독학으로 미술 공부를 하였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/박수근"
+    ],
+    "hintNote": "동년 5월에 그의 작품 〈빨래터〉가 45억 2천만원에 낙찰되어 최고 기록을 경신하였다.",
+    "easiestCue": "1932년 조선 미술 전람회에 입선한 독학 화가",
+    "targetWhy": "입선 연도와 독학 장소는 미술사 교양·애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 작가의 데뷔작과 유명 화가의 연결",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "art/3#g005-A1-03",
+   "seed": {
+    "subject": "수월관음도",
+    "aspect": null,
+    "ref": "A1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "화엄경 입법계품에서 구도의 길에 오른 소년이 포탈라카산으로 가 한 보살을 만나는 장면을 그린 불화가 있습니다. 그림 왼쪽 아래에 조그맣게 그려진 사람이 바로 그 소년인데, 이 불화를 무엇이라 할까요?",
+    "answer": "수월관음도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "고려 불화의 주요 도상으로 많은 작품이 남았지만, 조선 시대에는 흔하게 접할 수 없는 불화가 되었다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "구도 소년이 포탈라카산에서 한 보살을 만나는 장면의 불화",
+     "difWhy": "선재동자·보타락가산 도상 — 대학 교양 미술사",
+     "wor": 4,
+     "worWhy": "교양 — 고려 불화 대표 도상",
+     "acc": 4,
+     "accWhy": "미술 — 중고교 미술 교과·교양"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "구도 소년이 포탈라카산에서 한 보살을 만나는 장면의 불화",
+     "difWhy": "선재동자·보타락가산 도상 — 대학 교양 미술사",
+     "wor": 4,
+     "worWhy": "교양 — 고려 불화 대표 도상"
+    },
+    "rewrite": null,
+    "generalHint": "1323년 고려의 궁정 화원 서구방이 그린 같은 주제의 그림이 이 갈래의 기준작처럼 견주어진다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/수월관음도"
+    ],
+    "facts": [
+     {
+      "claim": "화엄경 입법계품에서 선재동자가 포탈라카산으로 가 관세음보살을 만나는 장면",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/수월관음도",
+      "note": "수월관음도(水月觀音圖)는 화엄경의 입법계품에서 선재동자가 포탈라카산으로 가서, 관세음보살을 만나는 것을 그린 그림이다."
+     },
+     {
+      "claim": "왼쪽 아래 조그만 사람이 선재동자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/수월관음도",
+      "note": "수월관음도의 왼쪽 아래에 있는 조그만 사람이 바로 선재동자이다."
+     },
+     {
+      "claim": "고려 불화의 주요 도상, 조선에서는 드묾",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/수월관음도",
+      "note": "수월관음도는 고려불화(高麗佛畵)의 주요 도상(圖像)으로 채택되어 많은 사례를 남기고 있으나 조선시대에는 흔하게 접할 수 없는 불화 가운데 하나이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://encykorea.aks.ac.kr/Article/E0031618"
+    ],
+    "hintNote": "선재동자: 합장 예배하는 자세는 1323년 서구방의 작품과 유사 / (검색 결과 인용) 1323년에 궁정 화원인 내반종사 서구방이 그린 「수월관음도」",
+    "easiestCue": "선재동자가 포탈라카산에서 관음을 만나는 장면(입법계품)을 그린 불화",
+    "targetWhy": "이름은 고교 한국사 사진으로 익숙하나 '고려 불화' 라는 교과 단서를 빼고 화엄경 장면·선재동자 위치만 남겨 불교 미술 교양(대학 교양) → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "포탈라카=관음 거처를 아는 사람에겐 바로 풀리지만 그 자체가 교양 수준; '보살' 로 관음을 감춰 정답 조각을 피함",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

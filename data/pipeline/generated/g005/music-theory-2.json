@@ -1,0 +1,101 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "music-theory/2",
+  "midKey": "music-theory",
+  "subName": "음계·화성",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "music-theory/2#g005-A1-16",
+   "seed": {
+    "subject": "온음음계",
+    "aspect": null,
+    "ref": "A1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "드뷔시의 전주곡 1권 둘째 곡 '돛'은 거의 전부 이 음계 하나로만 쓰였습니다. 평균율에서 서로 다른 것이 단 두 가지뿐인 여섯 음짜리 음계로, 이끎음이 없어 흐릿하고 몽롱한 느낌을 주는 이 음계는 무엇일까요?",
+    "answer": "온음음계",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "글린카는 오페라 '루슬란과 류드밀라' 서곡 끝에서 불길한 분위기를 그리는 데 이 음계를 썼다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "서로 다른 것이 두 가지뿐인 여섯 음짜리 음계",
+     "difWhy": "여섯 음 음계 정의 — 대학 교양 음악이론",
+     "wor": 4,
+     "worWhy": "음악 기본 어휘",
+     "acc": 4,
+     "accWhy": "음악 이론·악기 — 중학 음악 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "서로 다른 것이 두 가지뿐인 여섯 음짜리 음계",
+     "difWhy": "여섯 음 음계 정의 — 대학 교양 음악이론",
+     "wor": 4,
+     "worWhy": "음악 기본 어휘"
+    },
+    "rewrite": null,
+    "generalHint": "메시앙은 이 음계를 자신의 '제한된 이조 선법' 가운데 첫째로 꼽았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Whole-tone_scale"
+    ],
+    "facts": [
+     {
+      "claim": "돛(전주곡 1권 2곡)은 거의 전부 한 온음음계",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Whole-tone_scale",
+      "note": "Voiles, the second piece in Debussy's first book of Préludes, is almost entirely within one whole-tone scale."
+     },
+     {
+      "claim": "평균율에서 두 가지뿐, 여섯 음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Whole-tone_scale",
+      "note": "In twelve-tone equal temperament, there are only two complementary whole-tone scales, both six-note or hexatonic scales."
+     },
+     {
+      "claim": "이끎음 없음, 흐릿한 효과",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Whole-tone_scale",
+      "note": "The whole-tone scale has no leading tone. / the scale creates a blurred, indistinct effect."
+     },
+     {
+      "claim": "루슬란과 류드밀라 서곡 끝, 불길함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Whole-tone_scale",
+      "note": "the endings of the overtures to Glinka's opera Ruslan and Lyudmila ... to depict the ominous."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Whole-tone_scale"
+    ],
+    "hintNote": "Olivier Messiaen called the whole-tone scale his first mode of limited transposition.",
+    "easiestCue": "평균율에서 두 가지뿐인 여섯 음 음계(이끎음 없음)",
+    "targetWhy": "정의 문장('온음으로만 된')을 빼고 개수·이끎음·'돛' 만 — 대학 교양 음악 이론 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "음악 이론을 조금 아는 사람이 '여섯 음·두 가지' 로 추론 가능, 모르면 손을 못 대는 쪽이라 5 쪽 위험도 있음",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 없음",
+    "warn": [
+     "정답조각 음계"
+    ]
+   }
+  }
+ ]
+}

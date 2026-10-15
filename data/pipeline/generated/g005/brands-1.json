@@ -1,0 +1,301 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "brands/1",
+  "midKey": "brands",
+  "subName": "기업 창업·역사",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "brands/1#g005-L2-11",
+   "seed": {
+    "subject": "레드불",
+    "aspect": null,
+    "ref": "L2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "독일 회사 블렌닥스에서 일하던 디트리히 마테시츠는 1984년 찰레오 유위티야와 함께 회사를 세워, 두 사람이 지분을 49%씩 나눠 가졌습니다. 마테시츠는 원래의 음료에 탄산을 넣는 등 서양인의 입맛에 맞게 바꿨는데, 이 음료 브랜드는 무엇일까요?",
+    "answer": "레드불",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Red Bull"
+    ],
+    "variantCheck": "ko.wikipedia '레드불' 문서 제목(API) 확인 · 상표가 영어라 Red Bull 을 B10 으로",
+    "explanation": "태국의 원조 음료 이름 '끄라팅댕'은 영어로 '붉은 가우르(들소)'라는 뜻입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "디트리히 마테시츠가 태국 음료에 탄산을 넣어 서양인 입맛에",
+     "difWhy": "'마테시츠·태국 원조 음료' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 브랜드 기원 이야깃거리",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1987년 오스트리아에서 처음 나온 태국 기원 음료 브랜드",
+     "difWhy": "'오스트리아 에너지 음료' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "브랜드 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "독일 회사 블렌닥스에서 일하던 디트리히 마테시츠는 태국 출장길에 한 현지 음료가 시차 피로를 덜어 준다는 것을 알게 됐습니다. 그는 1984년 그 음료를 만든 태국 제약사 주인 찰레오 유위티야와 함께 회사를 세웠는데, 1987년 오스트리아에서 처음 나온 이 음료 브랜드는?",
+     "beforeExplanation": null,
+     "removedCue": "1987년 오스트리아 첫 출시 · 태국 출장 시차 피로 · 태국 제약사",
+     "addedCue": "49%씩 지분 · 탄산을 넣어 서양인 입맛에 맞춤",
+     "why": "'태국 기원 오스트리아 음료' 를 빼고 창업 지분·제품 변형 세부로 엮음"
+    },
+    "generalHint": "마테시츠는 1982년 태국에 갔다가 이 원조 음료로 시차 피로를 풀었다고 한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Red_Bull"
+    ],
+    "facts": [
+     {
+      "claim": "끄라팅댕 = red gaur",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Red_Bull",
+      "note": "introduced a drink called Krating Daeng in Thailand … means \"red gaur\" in English"
+     },
+     {
+      "claim": "블렌닥스에서 일하던 마테시츠가 태국에서 찰레오를 만남",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Red_Bull",
+      "note": "While working for German manufacturer Blendax … Mateschitz traveled to Thailand in 1982 and met Chaleo, who owned T.C. Pharmaceutical"
+     },
+     {
+      "claim": "1984년 공동 설립, 49%씩 지분",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Red_Bull",
+      "note": "In 1984, Mateschitz co-founded Red Bull GmbH with Chaleo … Chaleo and Mateschitz each held a 49 percent share of the new company"
+     },
+     {
+      "claim": "탄산을 넣는 등 서양인 입맛에 맞춤",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Red_Bull",
+      "note": "formulated a product that would suit the tastes of Westerners, such as by carbonating the drink"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Red_Bull"
+    ],
+    "hintNote": "Mateschitz discovered that Krating Daeng helped cure his jet lag (Thailand, 1982 — History section).",
+    "easiestCue": "마테시츠가 찰레오와 1984년 세운 회사의 음료",
+    "targetWhy": "마테시츠·찰레오 창업 세부는 브랜드 애호가 — 4 노림",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'시차 피로를 덜어 주는 음료'에서 에너지 음료로 추리될 여지",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "brands/1#g005-L2-12",
+   "seed": {
+    "subject": "소니",
+    "aspect": null,
+    "ref": "L2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "도쿄 니혼바시의 한 백화점 건물 안 전자 작업장에서 출발한 회사가 있습니다. 첫 제품은 전기밥솥이었고, 곧이어 일본 최초의 테이프 녹음기 'G형'을 내놓은 이 회사의 오늘날 이름은 무엇일까요?",
+    "answer": "소니",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Sony"
+    ],
+    "variantCheck": "상표가 영어(Sony)라 B10 으로",
+    "explanation": "공동 창업자는 이부카 마사루와 모리타 아키오입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "일본 최초의 테이프 녹음기 'G형'을 내놓은 회사",
+     "difWhy": "'첫 제품 전기밥솥·G형 녹음기' — 기업사 애호가",
+     "wor": 3,
+     "worWhy": "유명 기업 출발 이야깃거리",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1946년 '도쿄통신공업'",
+     "difWhy": "'도쿄통신공업' — 기업에 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "대기업 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "도쿄 니혼바시의 한 백화점 건물 안 전자 작업장에서 출발해, 1946년 '도쿄통신공업'이라는 이름으로 세워진 회사가 있습니다. 이 회사의 첫 제품은 전기밥솥이었고, 곧이어 일본 최초의 테이프 녹음기 'G형'을 내놓았습니다. 이 회사의 오늘날 이름은?",
+     "beforeExplanation": null,
+     "removedCue": "1946년 '도쿄통신공업' 이라는 이름으로 설립",
+     "addedCue": "(새 단서 없음) 니혼바시 백화점 작업장·첫 제품 전기밥솥·G형 녹음기만 남김",
+     "why": "옛 회사 이름은 기업 관심층이 바로 아는 단서라 빼고, 창업 초기 제품 세부만으로 묻게 함"
+    },
+    "generalHint": "이 회사는 네덜란드의 필립스와 함께 콤팩트디스크(CD)를 개발했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sony"
+    ],
+    "facts": [
+     {
+      "claim": "니혼바시 백화점 건물의 전자 작업장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sony",
+      "note": "an electronics workshop in a department store building in the Nihonbashi area of Tokyo"
+     },
+     {
+      "claim": "첫 제품 전기밥솥, 이어 일본 최초 테이프 녹음기 G형",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sony",
+      "note": "Sony's first product was an electric rice cooker in the late 1940s. … Not long afterward, the company launched the Type-G, Japan's first tape recorder."
+     },
+     {
+      "claim": "창업자 이부카·모리타",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sony",
+      "note": "founded in 1946 as Tokyo Tsushin Kogyo K.K. by Masaru Ibuka and Akio Morita."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Compact_disc"
+    ],
+    "hintNote": "co-developed by Philips and Sony to store and play digital audio recordings.",
+    "easiestCue": "첫 제품이 전기밥솥이고 일본 최초 테이프 녹음기 'G형'을 낸 회사",
+    "targetWhy": "창업 초기 제품은 기업사 애호가 수준 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "소니는 누구나 알고, 옛 이름·밥솥은 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 최초"
+    ]
+   }
+  },
+  {
+   "seedId": "brands/1#g005-L2-13",
+   "seed": {
+    "subject": "야마하",
+    "aspect": null,
+    "ref": "L2-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1871년 나가사키에서 영국인 기술자에게 시계 수리를 배운 한 일본인은, 1886년 하마마쓰로 옮긴 뒤 한 학교의 고장 난 리드 오르간을 고쳐 달라는 부탁을 받았습니다. 그는 오르간을 도쿄의 대학까지 250킬로미터나 짊어지고 가야 했다고 하는데, 그의 성을 딴 오늘날의 기업은?",
+    "answer": "야마하",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Yamaha"
+    ],
+    "variantCheck": "상표가 영어(Yamaha)라 B10 으로",
+    "explanation": "이 회사의 로고는 소리굽쇠 세 개를 서로 엇갈려 놓은 모양입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 리드 오르간을 고친 일본인 + 그의 성을 딴 기업",
+     "difWhy": "'오르간 고친 일본인 성 딴 기업' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 기업 창업 일화",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1887년 그가 세운 오르간 회사에서 시작한 기업",
+     "difWhy": "오르간으로 시작한 일본 악기 기업 — 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기업 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1871년 나가사키에서 영국인 기술자에게 시계 수리를 배운 한 일본인은, 수리할 사람이 없던 작은 고장의 한 소학교에서 고장 난 리드 오르간을 고쳐 달라는 부탁을 받았습니다. 그는 오르간을 도쿄의 대학까지 250킬로미터나 짊어지고 가야 했다고 하는데, 1887년 그가 세운 오르간 회사에서 시작한 기업은?",
+     "beforeExplanation": null,
+     "removedCue": "1887년 그가 세운 오르간 회사에서 시작한 기업",
+     "addedCue": "(오르간 회사 없이) 하마마쓰 이주 · 그의 성을 딴 기업",
+     "why": "'오르간으로 시작한 일본 악기 기업' 단서를 빼고 창업자 일화로만 좁힘"
+    },
+    "generalHint": "이 회사의 오토바이 부문은 1955년 따로 떨어져 나와 별개의 회사가 되었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Torakusu_Yamaha",
+     "https://en.wikipedia.org/wiki/Yamaha_Corporation"
+    ],
+    "facts": [
+     {
+      "claim": "1871년 나가사키에서 영국인 기술자에게 시계 수리 배움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Torakusu_Yamaha",
+      "note": "In 1871 he went to Nagasaki, where he started studying watchmaking under the guidance of an English engineer."
+     },
+     {
+      "claim": "1886년 하마마쓰로 옮긴 뒤 학교의 고장 난 리드 오르간 수리 부탁",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Torakusu_Yamaha",
+      "note": "(요지) After moving to Hamamatsu in 1886, he was asked to repair a broken school reed organ."
+     },
+     {
+      "claim": "오르간을 대학까지 250km 짊어지고 감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Torakusu_Yamaha",
+      "note": "to get the organ to the university, he was forced to carry it over a distance of 250 kilometres"
+     },
+     {
+      "claim": "1887년 리드 오르간 제조사로 설립",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Yamaha_Corporation",
+      "note": "was established in 1887 as a reed organ manufacturer by Torakusu Yamaha (Hamamatsu, Shizuoka Prefecture)"
+     },
+     {
+      "claim": "로고는 소리굽쇠 셋",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Yamaha_Corporation",
+      "note": "the group's logo—a trio of interlocking tuning forks"
+     },
+     {
+      "claim": "1987년 창업자를 기려 Yamaha Corporation 으로 이름을 바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Yamaha_Corporation",
+      "note": "renamed Yamaha Corporation in honor of its founder"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Yamaha_Motor_Company"
+    ],
+    "hintNote": "spun off from musical instrument manufacturer Yamaha Corporation in 1955",
+    "easiestCue": "오르간을 250km 짊어지고 간 일본인의 성을 딴 기업",
+    "targetWhy": "창업자 일화(나가사키 시계 · 250km)는 기업사 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'일본 오르간 회사'에서 악기 회사 야마하를 추리할 여지가 있어 3 가능",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

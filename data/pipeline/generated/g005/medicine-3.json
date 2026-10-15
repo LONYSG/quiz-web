@@ -1,0 +1,104 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "medicine/3",
+  "midKey": "medicine",
+  "subName": "의약품·백신",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/3#g005-C1-06",
+   "seed": {
+    "subject": "보툴리눔 독소",
+    "aspect": null,
+    "ref": "C1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1817년부터 1822년 사이 독일 의사 유스티누스 케르너는 상한 음식을 먹고 생긴 한 중독의 증상을 처음으로 빠짐없이 기록하고, 그 독을 치료에 쓸 수도 있다고 내다봤습니다. 1977년 미국 안과의사 앨런 스콧이 사시 환자의 눈 근육에 주사하면서 실제 치료제가 된 이 물질은 무엇일까요?",
+    "answer": "보툴리눔 독소",
+    "acceptedAnswers": [
+     "보톡스"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '보툴리눔 독소' · 같은 문서가 대표 제품 '보톡스' 를 소개 — 한국에서 이 물질을 보톡스로 부르는 일이 흔해 B1 로 넣음",
+    "explanation": "스콧의 회사를 사들인 앨러간이 1989년 미국 허가 뒤 이 약에 '보톡스'라는 상표를 붙였습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "상한 음식 중독의 독이 사시 주사 치료제가 됨",
+     "difWhy": "'식중독 독소의 치료제' — 생활 관심층",
+     "wor": 4,
+     "worWhy": "교양 — 의약품",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "사시 환자 눈 근육 주사 + 상한 소시지 독",
+     "difWhy": "보톡스 원료 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 의약품 상식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1817년부터 1822년 사이 독일 의사 유스티누스 케르너는 상한 소시지를 먹고 생긴 중독의 증상을 처음으로 빠짐없이 기록하고, 그 독을 치료에 쓸 수도 있다고 내다봤습니다. 1977년 미국 안과의사 앨런 스콧이 사시 환자의 눈 근육에 주사하면서 실제 치료제가 된 이 물질은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "상한 소시지(보툴리누스의 어원)",
+     "addedCue": "(새로 넣지 않음) 케르너 · 스콧 사시 치료",
+     "why": "이름 어원과 이어지는 '소시지'를 빼 케르너·스콧 내력으로 좁힘"
+    },
+    "generalHint": "클로스트리듐 속 세균이 만드는 신경 독 단백질로, 기록된 천연 물질 가운데 가장 치명적이라고 꼽힌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Botulinum_toxin"
+    ],
+    "facts": [
+     {
+      "claim": "케르너가 1817~1822년 소시지 독 중독의 증상을 처음 완전히 기술하고 치료에 쓸 수 있다고 제안했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Botulinum_toxin",
+      "note": "Justinus Kerner (1817–1822) published the first complete description of the symptoms of botulism / proposed the 'sausage toxin' for therapy / the first to suggest that it could be used therapeutically"
+     },
+     {
+      "claim": "앨런 스콧이 1977년 첫 사시 환자를 치료했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Botulinum_toxin",
+      "note": "Scott and colleagues first injected botulinum toxin into monkey eye muscles (1973) / He treated his first strabismus patients in 1977."
+     },
+     {
+      "claim": "1989년 FDA 허가 뒤 스콧의 회사를 인수한 앨러간이 보톡스 상표를 썼다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Botulinum_toxin",
+      "note": "The FDA approved Oculinum for adult strabismus and blepharospasm (1989) / Allergan, which had acquired Scott's company, began using the trademark Botox."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Botulinum_toxin"
+    ],
+    "hintNote": "produced by the bacterium Clostridium botulinum and related species ... considered the deadliest known natural substance ever recorded in chemical literature.",
+    "easiestCue": "1977년 사시 환자 눈 근육에 주사해 치료제가 된 독",
+    "targetWhy": "스콧의 사시 치료는 의학사 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'소시지 중독 = 보툴리누스 중독' 을 아는 사람은 바로 풂 — 관심층이면 3 일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "보툴리눔 독소·보톡스 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

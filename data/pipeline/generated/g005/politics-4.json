@@ -1,0 +1,196 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "politics/4",
+  "midKey": "politics",
+  "subName": "국제기구·조약",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "politics/4#g005-H1-04",
+   "seed": {
+    "subject": "인터폴",
+    "aspect": null,
+    "ref": "H1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1923년 9월 빈에서 열린 닷새간의 국제 회의 끝에 출범한 이 기구는, 1938년 오스트리아 병합 뒤 나치 독일의 손에 넘어가 본부가 베를린으로 옮겨지기도 했습니다. 이 국제기구를 흔히 무엇이라 부를까요?",
+    "answer": "인터폴",
+    "acceptedAnswers": [
+     "국제형사경찰기구"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '인터폴' → 문서 제목 '국제형사경찰기구'로 넘겨짐 (정식 한국어 이름)",
+    "explanation": "체포 권한을 가진 요원을 두지 않으며, 본부는 파리와 생클루를 거쳐 1989년 프랑스 리옹으로 옮겨 왔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1923년 빈 회의로 출범, 나치가 베를린으로 옮긴 기구",
+     "difWhy": "'1923 빈 출범 기구' — 대학 교양",
+     "wor": 4,
+     "worWhy": "시사 상식 — 국제기구",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "체포 권한을 가진 요원을 두지 않는 이 국제기구",
+     "difWhy": "체포권 없는 국제 경찰 기구 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 국제기구 상식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1923년 9월 빈에서 열린 닷새간의 국제 회의 끝에 출범한 이 기구는, 1938년 오스트리아 병합 뒤 나치 독일의 손에 넘어가 본부가 베를린으로 옮겨지기도 했습니다. 체포 권한을 가진 요원을 두지 않는 이 국제기구를 흔히 무엇이라 부를까요?",
+     "beforeExplanation": "본부는 파리와 생클루를 거쳐 1989년 프랑스 리옹으로 옮겨 왔고, 인터폴 자체는 법 집행 기관이 아닙니다.",
+     "removedCue": "체포 권한을 가진 요원을 두지 않음",
+     "addedCue": "(새로 넣지 않음) 1923 빈 출범 · 1938 나치 장악",
+     "why": "'체포권 없는 국제 경찰' 단서를 해설로 옮기고 설립·나치 시기 내력으로 좁힘(해설의 정답 되풀이도 뺌)"
+    },
+    "generalHint": "이 기구가 내는 수배서는 여러 빛깔로 나뉘며, 그 가운데 '적색'은 범죄인 인도를 위한 체포 요청이다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Interpol"
+    ],
+    "facts": [
+     {
+      "claim": "1923년 9월 7일 빈에서 닷새간의 국제 경찰 회의 끝에 설립",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Interpol",
+      "note": "was founded on 7 September 1923 at the close of a five-day International Police Congress in Vienna"
+     },
+     {
+      "claim": "1938년 오스트리아 병합 뒤 나치 통제, 본부 베를린 이전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Interpol",
+      "note": "After coming under Nazi control in 1938 following the German annexation of Austria, the agency was controlled by Nazi Germany, and its headquarters were later moved to Berlin."
+     },
+     {
+      "claim": "체포 권한을 가진 요원이 없음, 그 자체는 법 집행 기관이 아님",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Interpol",
+      "note": "Interpol \"has no agents with arresting powers.\" … \"Interpol is not itself a law enforcement agency.\""
+     },
+     {
+      "claim": "본부 리옹, 1989년 파리·생클루에서 이전",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Interpol",
+      "note": "It is headquartered in Lyon, France. The headquarters moved there in 1989 from Paris and then Saint-Cloud."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Interpol_notice"
+    ],
+    "hintNote": "seven of which are colour-coded by their function / Red Notice: To seek the location/arrest of a person wanted ... with a view to extradition",
+    "easiestCue": "1923년 빈에서 출범해 1938년 나치에 넘어간 국제기구",
+    "targetWhy": "설립·나치 시기 역사는 국제기구 애호·대학 교양 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'체포 권한 없음'이 경찰 기구를 떠올리게 해 관심층이 짐작할 수 있다 — 3 으로 읽힐 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0 (국제형사경찰기구 포함)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "politics/4#g005-H1-05",
+   "seed": {
+    "subject": "마스트리흐트 조약",
+    "aspect": null,
+    "ref": "H1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "덴마크 국민은 한 조약을 국민투표에서 50.7%의 반대로 부결시켰습니다. 그 뒤 덴마크는 에든버러 합의로 네 분야에서 빠질 수 있는 예외를 얻어 냈고, 이듬해 두 번째 국민투표에서 이 조약을 받아들였습니다. 이 조약은 무엇일까요?",
+    "answer": "마스트리흐트 조약",
+    "acceptedAnswers": [
+     "마스트리히트 조약"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '마스트리흐트 조약' 본문에 다른 표기 '마스트리히트 조약'",
+    "explanation": "정식 이름은 '유럽 연합에 관한 조약'으로, 1993년 11월 1일 발효되어 유럽 연합의 기초가 되었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "덴마크 부결 뒤 에든버러 합의로 받아들인 조약",
+     "difWhy": "'덴마크 부결·에든버러 합의' — 대학 교양 국제정치",
+     "wor": 4,
+     "worWhy": "EU 기초 조약 — 시사 교양",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1992년 덴마크 국민투표가 부결한 유럽 통합 조약",
+     "difWhy": "'1992 유럽 통합 조약' — 고교 세계사·통합사회",
+     "wor": 4,
+     "worWhy": "교양 — 유럽 연합의 기초 조약"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1992년 6월 덴마크 국민은 한 유럽 통합 조약을 국민투표에서 50.7%의 반대로 부결시켰습니다. 그 뒤 덴마크는 에든버러 합의로 네 분야에서 빠질 수 있는 예외를 얻어 냈고, 이듬해 두 번째 국민투표에서 이 조약을 받아들였습니다. 이 조약은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'1992년 6월' · '유럽 통합 조약'",
+     "addedCue": "(연도·성격 없이) 50.7% 부결 · 에든버러 합의 네 예외",
+     "why": "'1992 유럽 통합 조약' 교과 단서를 빼고 덴마크 국민투표 세부만 남김"
+    },
+    "generalHint": "1992년 2월 7일 당시 열두 회원국이 네덜란드 남부의 한 도시에서 서명했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/1992_Danish_Maastricht_Treaty_referendum",
+     "https://ko.wikipedia.org/wiki/마스트리흐트_조약"
+    ],
+    "facts": [
+     {
+      "claim": "1992년 6월 2일 덴마크 국민투표, 50.7% 반대로 부결",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1992_Danish_Maastricht_Treaty_referendum",
+      "note": "A referendum on the Maastricht Treaty for the founding of the European Union was held in Denmark on 2 June 1992. The treaty was rejected by 50.7% of voters with a turnout of 83.1%."
+     },
+     {
+      "claim": "에든버러 합의로 네 가지 예외(opt-out), 1993년 두 번째 국민투표에서 수용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1992_Danish_Maastricht_Treaty_referendum",
+      "note": "These talks produced the Edinburgh Agreement, which gave Denmark \"four exceptions or opt-outs\" … The Danish people accepted the treaty in a second referendum held in 1993."
+     },
+     {
+      "claim": "정식 명칭 '유럽 연합에 관한 조약', 1993년 11월 1일 발효, EU의 기초",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/마스트리흐트_조약",
+      "note": "정식 명칭: \"유럽 연합에 관한 조약\" … 1993년 11월 1일부터 효력을 발휘했습니다. 유럽 연합(EU)의 기초가 되는 조약입니다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Maastricht_Treaty"
+    ],
+    "hintNote": "signing date 7 February 1992, Maastricht, Netherlands ... concluded in 1992 between the then-twelve member states",
+    "easiestCue": "덴마크가 국민투표로 부결했다가 에든버러 합의 뒤 받아들인 조약",
+    "targetWhy": "덴마크 부결 · 에든버러 합의는 유럽사 대학 교양 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1992년 유럽 통합 조약'만으로 교과서 연도 기억이 있는 사람이 맞힐 수 있어 3 으로 읽힐 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": [
+     "정답조각 조약"
+    ]
+   }
+  }
+ ]
+}

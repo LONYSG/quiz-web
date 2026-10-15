@@ -1,0 +1,111 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "daily-rule/4",
+  "midKey": "daily-rule",
+  "subName": "신고·응급 번호",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "daily-rule/4#g005-L1-29",
+   "seed": {
+    "subject": "앰버 경고",
+    "aspect": null,
+    "ref": "L1-29",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1996년 1월 미국 텍사스주 알링턴에서 자전거를 타던 아홉 살 여자아이가 납치되었습니다. 이 일을 계기로 그 아이 이름을 붙인 긴급 경보 체계가 생겼고, 한국은 2007년 4월 경찰청 주관으로 아시아에서 처음 이를 시행했습니다. 이 경보는 무엇일까요?",
+    "answer": "앰버 경고",
+    "acceptedAnswers": [
+     "앰버 경보"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '앰버 경고' · 한국 보도에서 '앰버 경보'도 흔히 쓰임",
+    "explanation": "AMBER 는 '미국의 실종자: 방송 긴급 대응'이라는 영어 머리글자로도 풀이된다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "납치된 아이 이름을 붙인 긴급 경보, 한국 2007년 시행",
+     "difWhy": "'아이 이름 붙인 실종 경보' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "시사 상식 — 실종 아동 경보 제도",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "납치된 아이 이름을 붙인 긴급 경보, 한국 2007년 시행",
+     "difWhy": "'아이 이름 붙인 실종 경보' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "시사 상식 — 실종 아동 경보 제도"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "경보 자체가 아동 납치 긴급 경보로 하나뿐이라 유래·시행 어느 단서를 남겨도 '아이 납치 뒤 생긴 경보'로 풀림 — 쉬운 단서를 빼면 유일성이 흔들림"
+    },
+    "generalHint": "미국은 2012년 말 이 경보의 휴대 전화 전용 문자 체계를 접고 '무선 긴급 경보'로 보내기 시작했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Amber_alert",
+     "https://ko.wikipedia.org/wiki/앰버_경고"
+    ],
+    "facts": [
+     {
+      "claim": "1996년 1월 13일 알링턴에서 자전거를 타던 9세 앰버 해거먼 납치",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Amber_alert",
+      "note": "was abducted in Arlington, Texas, on January 13, 1996 ... a nine-year-old girl abducted while riding her bike"
+     },
+     {
+      "claim": "그 아이 이름을 딴 경보",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Amber_alert",
+      "note": "The Amber alert was named for Amber Hagerman"
+     },
+     {
+      "claim": "한국 2007년 4월 9일 경찰청 주관, 아시아 최초",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/앰버_경고",
+      "note": "대한민국에서는 2007년 4월 9일 경찰청 주관하에 아시아 국가에서는 최초로 시행이 시작되었다."
+     },
+     {
+      "claim": "AMBER 의 풀이",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Amber_alert",
+      "note": "\"AMBER\" officially stands for \"America's Missing: Broadcast Emergency Response.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/AMBER_Alert"
+    ],
+    "hintNote": "the Wireless Amber Alert program was retired on December 31, 2012, in favor of Wireless Emergency Alerts",
+    "easiestCue": "1996년 알링턴 9세 아이 이름을 딴 납치 긴급 경보",
+    "targetWhy": "제도 이름은 관심층이 들어 봤어도 계기·한국 도입은 애호가 세부, 경계 3~4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'아이 이름을 딴 경보' 에서 바로 떠올리는 관심층이 있다",
+    "pairCheck": null,
+    "dbCheck": "new (앰버 경고 · 앰버 경보)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

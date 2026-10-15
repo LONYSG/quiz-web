@@ -1,0 +1,180 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "world-geo/2",
+  "midKey": "world-geo",
+  "subName": "대륙·바다",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/2#g005-H2-08",
+   "seed": {
+    "subject": "사르가소해",
+    "aspect": null,
+    "ref": "H2-08",
+    "pairedWith": 3544
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 3544,
+    "question": "1920~1922년 덴마크의 요하네스 슈미트가 이끈 다나호 탐사는 유럽뱀장어가 알을 낳는 곳을 북대서양의 한 바다에서 찾아냈습니다. 그곳에서 깨어난 새끼들이 유럽이나 북아메리카 동해안으로 흘러가는 이 바다는 무엇일까요?",
+    "answer": "사르가소해",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1492년 콜럼버스는 이 바다의 해초와 잦아든 바람에 배가 갇힐까 두려워했다는 기록을 남겼습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "유럽뱀장어가 알을 낳는 곳 — 북대서양의 한 바다",
+     "difWhy": "뱀장어 산란지 — 대학 교양 생물·지리",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 뱀장어 산란지",
+     "acc": 4,
+     "accWhy": "세계 지리 — 고교 세계지리 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "유럽뱀장어가 알을 낳는 곳 — 북대서양의 한 바다",
+     "difWhy": "뱀장어 산란지 — 대학 교양 생물·지리",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 뱀장어 산란지"
+    },
+    "rewrite": null,
+    "generalHint": "이 바다의 서쪽 가장자리 가까이에 버뮤다가 있고, 썩지 않는 플라스틱 쓰레기가 많이 모인다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sargasso_Sea"
+    ],
+    "facts": [
+     {
+      "claim": "1920~1922 다나 탐사(요하네스 슈미트)가 유럽뱀장어 산란지를 사르가소해로 밝힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sargasso_Sea",
+      "note": "The 1920–1922 Dana expeditions, led by Johannes Schmidt, determined that the European eel's breeding sites were in the Sargasso Sea."
+     },
+     {
+      "claim": "깨어난 새끼가 유럽·북아메리카 동해안으로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sargasso_Sea",
+      "note": "The larvae of these species hatch within the sea, and as they grow they travel to Europe or the east coast of North America."
+     },
+     {
+      "claim": "콜럼버스가 해초와 바람 없음에 배가 갇힐까 두려워한 기록",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sargasso_Sea",
+      "note": "Later in 1492, Christopher Columbus wrote about seaweed that he feared would trap his ship … a lack of wind that he feared would trap them"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sargasso_Sea"
+    ],
+    "hintNote": "Bermuda is near the western fringes of the sea. / the Sargasso accumulates a high concentration of non-biodegradable plastic waste",
+    "easiestCue": "유럽뱀장어의 산란지인 북대서양 바다",
+    "targetWhy": "'해안선 없는 바다' 첫 줄 사실(1회차)을 빼고 뱀장어 산란지만 — 대학 교양 생물·지리(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "다큐로 접한 사람은 아는 '아 그거' 세부",
+    "pairCheck": "1회차 #3544 는 해안선 없음·모자반 해조류 — 뱀장어 산란·슈미트 탐사는 1회차에 없음. 해설의 해초는 콜럼버스 기록으로 다른 사실",
+    "dbCheck": "answercheck pair-or-different (#3544) — (가) 2회차, 다른 지식",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-geo/2#g005-H2-10",
+   "seed": {
+    "subject": "보스포루스 해협",
+    "aspect": null,
+    "ref": "H2-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "그리스 신화에서 암소로 변한 이오가 헤매다 건넜다고 전하는 해협이 있습니다. 페르시아의 다리우스 1세가 배를 이어 만든 거대한 다리로 군대를 건네기도 한 이 해협은 무엇일까요?",
+    "answer": "보스포루스 해협",
+    "acceptedAnswers": [
+     "보스포루스"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '보스포루스 해협' 문서 제목 — '해협' 을 뺀 꼴은 질문이 해협을 묻는 만큼 억울함 방지로 넣음",
+    "explanation": "이름은 그리스어로 '소가 건너는 물길'이라는 민간 어원 풀이가 붙어 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "엮음: 이오가 건넌 해협 + 다리우스 1세의 배다리",
+     "difWhy": "이오·다리우스 배다리 — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 주요 해협",
+     "acc": 4,
+     "accWhy": "세계 지리 — 고교 세계지리 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "엮음: 이오가 건넌 해협 + 다리우스 1세의 배다리",
+     "difWhy": "이오·다리우스 배다리 — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 주요 해협"
+    },
+    "rewrite": null,
+    "generalHint": "1973년 10월 이 해협에 처음 놓인 현수교는 2016년 쿠데타 시도 뒤 '7월 15일 순교자의 다리'로 이름이 바뀌었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bosporus",
+     "https://ko.wikipedia.org/wiki/보스포루스_해협"
+    ],
+    "facts": [
+     {
+      "claim": "암소로 변한 이오가 건넜다는 신화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bosporus",
+      "note": "Io, transformed into a cow, wandered until she crossed the strait (요지 — etymology 항목)"
+     },
+     {
+      "claim": "다리우스 1세의 군대가 배를 이은 거대한 다리로 건넘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bosporus",
+      "note": "Darius I's army crossed the Bosporus using an enormous bridge made by connecting boats."
+     },
+     {
+      "claim": "민간 어원 '소가 건너는 물길'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bosporus",
+      "note": "folk-etymologised as βοὸς πόρος, i.e. \"cattle strait\" (like \"Ox-ford\") … 'cattle-passage', or 'cow passage'"
+     },
+     {
+      "claim": "표기",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/보스포루스_해협",
+      "note": "보스포루스 해협(그리스어: Βόσπορος, 튀르키예어: Boğaziçi, 문화어: 보스포르 해협)은 튀르키예에 위치한 자연 해협이자 국제적으로 중요한 수로이며"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bosphorus_Bridge"
+    ],
+    "hintNote": "was completed on 30 October 1973 / formally renamed the bridge as the 15 Temmuz Şehitler Köprüsü",
+    "easiestCue": "다리우스 1세가 배다리로 건넌 해협",
+    "targetWhy": "'흑해와 마르마라해를 잇는 · 이스탄불' 첫 줄 사실을 빼고 신화·고대사 세부 둘 — 대학 교양(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "배다리는 크세르크세스의 헬레스폰토스와 헷갈릴 수 있음 — 다리우스·이오로 좁힘",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (이스탄불 #1326 은 다른 대상)",
+    "warn": [
+     "정답조각 해협"
+    ]
+   }
+  }
+ ]
+}

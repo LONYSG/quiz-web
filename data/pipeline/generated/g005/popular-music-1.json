@@ -1,0 +1,188 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "popular-music/1",
+  "midKey": "popular-music",
+  "subName": "1960~70년대",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "popular-music/1#g005-M2-03",
+   "seed": {
+    "subject": "데이비드 보위",
+    "aspect": "팬 세부",
+    "ref": "M2-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "데이비드 보위의 한 무대 페르소나는, 신경 쇠약 뒤 자신을 신과 외계인을 섞은 존재라고 믿게 된 영국 로큰롤 가수 빈스 테일러에게서 영감을 받았습니다. 1973년 7월 3일 런던 해머스미스 오데온 공연에서 보위가 한 은퇴 선언은 사실 이 페르소나의 은퇴였는데, 이 페르소나의 이름은 무엇일까요?",
+    "answer": "지기 스타더스트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서명 '지기 스타더스트'",
+    "explanation": "이 페르소나를 위해 일본 디자이너 야마모토 간사이가 모두 일곱 벌의 무대 의상을 만들었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1973년 해머스미스 오데온 은퇴 선언을 한 데이비드 보위의 페르소나",
+     "difWhy": "'보위의 은퇴한 페르소나' — 팝 애호가",
+     "wor": 3,
+     "worWhy": "레전드 음악가 대표 페르소나",
+     "acc": 3,
+     "accWhy": "팝·록 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "데이비드 보위가 '스파이더스 프롬 마스'를 거느린 가상 록 가수 페르소나",
+     "difWhy": "'보위·스파이더스 프롬 마스' — 팝 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 음악가의 대표 페르소나 이름"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "데이비드 보위는 1972~1973년 밴드 '스파이더스 프롬 마스'를 거느리고 한 가상의 록 가수 페르소나로 무대에 섰습니다. 1973년 7월 3일 해머스미스 오데온 공연에서 한 은퇴 선언은 사실 이 페르소나와 밴드의 은퇴였습니다. 이 페르소나의 이름은 무엇일까요?",
+     "beforeExplanation": "자신을 신과 외계인을 섞은 존재라고 믿던 영국 로큰롤 가수 빈스 테일러에게서 영감을 받았습니다.",
+     "removedCue": "'스파이더스 프롬 마스'를 거느린 1972~1973년 가상 록 가수",
+     "addedCue": "빈스 테일러에게서 받은 영감 · 해머스미스 오데온 은퇴 선언",
+     "why": "대표 정체(스파이더스 프롬 마스 · 가상 록 가수)를 빼고 팬 세부 둘을 엮음"
+    },
+    "generalHint": "이 페르소나 시절 보위 곁에서 기타를 친 사람은 믹 론슨이었다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "팝",
+    "work": "데이비드 보위",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ziggy_Stardust_(character)"
+    ],
+    "facts": [
+     {
+      "claim": "1973년 7월 3일 해머스미스 오데온에서 이 페르소나를 은퇴시킴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ziggy_Stardust_(character)",
+      "note": "Bowie retired Ziggy Stardust during a live concert on 3 July 1973, at London's Hammersmith Odeon. / it only referred to the Ziggy Stardust persona and the Spiders from Mars backing band."
+     },
+     {
+      "claim": "빈스 테일러(신경 쇠약 뒤 자신을 신·외계인 혼합이라 믿음)에게서 영감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ziggy_Stardust_(character)",
+      "note": "inspired by English rock and roll singer Vince Taylor ... (Bowie met Taylor after) a breakdown had left him convinced he was part deity, part extraterrestrial"
+     },
+     {
+      "claim": "야마모토 간사이가 이 캐릭터의 의상 일곱 벌을 디자인",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ziggy_Stardust_(character)",
+      "note": "In total, seven costumes were designed for Ziggy Stardust by Yamamoto."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Spiders_from_Mars"
+    ],
+    "hintNote": "the English singer David Bowie's backing band in the early 1970s ... initially consisted of Mick Ronson on guitars, Trevor Bolder on bass guitar, and Mick Woodmansey on drums / active 1970–1973",
+    "easiestCue": "1973년 해머스미스 오데온에서 은퇴시킨 보위의 페르소나",
+    "targetWhy": "빈스 테일러 영감 · 해머스미스 은퇴는 보위 애호가 세부 — 4(페르소나 범주로 추리 여지, 경계)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 아티스트의 대표 설정, 마니악하지 않음",
+    "pairCheck": null,
+    "dbCheck": "지기 스타더스트 new",
+    "warn": [
+     "정답조각 더스"
+    ]
+   }
+  },
+  {
+   "seedId": "popular-music/1#g005-M2-04",
+   "seed": {
+    "subject": "비틀스 — Yesterday",
+    "aspect": "팬 세부",
+    "ref": "M2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "폴 매카트니는 비틀스의 곡 '예스터데이'의 멜로디를 꿈에서 얻었습니다. 가사가 아직 없어 그는 한동안 임시 가사를 붙여 불렀습니다. 이 곡의 작업 제목은 무엇일까요?",
+    "answer": "스크램블드 에그",
+    "acceptedAnswers": [
+     "Scrambled Eggs"
+    ],
+    "originalTitleVariants": [
+     "Scrambled Eggs"
+    ],
+    "variantCheck": "en.wikipedia 'Yesterday' — working title \"Scrambled Eggs\" (영문 곡 제목 B10)",
+    "explanation": "최종 녹음에는 다른 멤버가 참여하지 않았고, 매카트니의 어쿠스틱 기타에 현악 4중주가 더해졌습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'예스터데이'의 임시 가사 작업 제목",
+     "difWhy": "'예스터데이 임시 제목' — 비틀스 애호가",
+     "wor": 3,
+     "worWhy": "명곡 탄생 일화",
+     "acc": 3,
+     "accWhy": "팝·록 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'예스터데이'의 임시 가사 작업 제목",
+     "difWhy": "'예스터데이 임시 제목' — 비틀스 애호가",
+     "wor": 3,
+     "worWhy": "명곡 탄생 일화"
+    },
+    "rewrite": null,
+    "generalHint": "매카트니는 1965년 5월 포르투갈 알부페이라 휴가에서 기타를 빌려 이 곡의 가사를 마무리했다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "팝",
+    "work": "비틀스 — Yesterday",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Yesterday_(Beatles_song)"
+    ],
+    "facts": [
+     {
+      "claim": "멜로디를 꿈에서 얻음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Yesterday_(Beatles_song)",
+      "note": "the entire melody came to McCartney in a dream one night"
+     },
+     {
+      "claim": "작업 제목 Scrambled Eggs, 임시 가사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Yesterday_(Beatles_song)",
+      "note": "The working title was \"Scrambled Eggs\". ... placeholder words as temporary working lyrics until something more suitable could be written."
+     },
+     {
+      "claim": "다른 멤버 불참, 현악 4중주",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Yesterday_(Beatles_song)",
+      "note": "none of the other band members were included in the final recording ... later overdubbing a string quartet for backup"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Yesterday_(Beatles_song)"
+    ],
+    "hintNote": "On 27 May 1965, he flew to Lisbon for a holiday in Albufeira, Algarve, borrowed an acoustic guitar from Bruce Welch, and completed the song there.",
+    "easiestCue": "예스터데이의 작업 제목",
+    "targetWhy": "곡은 국민적이지만 작업 제목은 비틀스 애호가가 아는 비화 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 곡의 대표 비화, 팬은 '아 그거'",
+    "pairCheck": null,
+    "dbCheck": "스크램블드 에그 new",
+    "warn": []
+   }
+  }
+ ]
+}

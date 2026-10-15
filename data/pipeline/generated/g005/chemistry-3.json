@@ -1,0 +1,110 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "chemistry/3",
+  "midKey": "chemistry",
+  "subName": "화합물·분자",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/3#g005-C1-18",
+   "seed": {
+    "subject": "니트로글리세린",
+    "aspect": null,
+    "ref": "C1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1840년대 이탈리아 화학자 아스카니오 소브레로가 토리노 대학에서 처음 합성한 물질입니다. 이 물질을 만드는 공장 노동자들은 주말 동안 내성을 잃었다가 월요일에 다시 노출되면 두통과 어지럼증을 겪었는데, 이를 '월요병(Monday disease)'이라 불렀습니다. 이 물질은 무엇일까요?",
+    "answer": "니트로글리세린",
+    "acceptedAnswers": [
+     "나이트로글리세린"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '나이트로글리세린(니트로글리세린)' — 두 표기 모두 씀",
+    "explanation": "1896년 심장병으로 이 약을 처방받은 알프레드 노벨은 '운명의 장난 아닌가'라는 편지를 남겼고, 약사와 사람들이 놀라지 않게 '트리니트린'이라는 이름으로 불렀다고 적었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "아스카니오 소브레로가 처음 합성, 공장 '월요병'",
+     "difWhy": "'소브레로 합성 물질' — 대학 교양 화학",
+     "wor": 4,
+     "worWhy": "교양 — 폭약·약물",
+     "acc": 5,
+     "accWhy": "화학 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "폭발물이자 협심증 약인 물질",
+     "difWhy": "'폭발물이자 협심증 약' — 고교 화학",
+     "wor": 4,
+     "worWhy": "교양 — 노벨·다이너마이트"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1840년대 이탈리아 화학자 아스카니오 소브레로는 이 물질을 처음 합성했지만, 폭발물로 쓰는 것은 강하게 말렸습니다. 1878년 영국 의사 윌리엄 머렐은 이 물질로 협심증 발작을 다스리기 시작했습니다. 이 물질은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "폭발물이자 협심증 약(소브레로의 폭발물 경고 + 머렐의 협심증 치료)",
+     "addedCue": "공장 노동자의 '월요병(Monday disease)'",
+     "why": "폭발물·협심증 약이라는 교과·일상 단서를 빼고 소브레로·월요병 세부로 바꿈"
+    },
+    "generalHint": "소브레로는 자기가 만든 이 물질이 너무 두려워 1년 넘게 비밀로 했다고 한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Nitroglycerin"
+    ],
+    "facts": [
+     {
+      "claim": "소브레로가 1846년(ko.wikipedia 는 1847년) 합성, 파이로글리세린이라 부르고 폭발물 사용을 강하게 경고했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nitroglycerin",
+      "note": "synthesized by the Italian chemist Ascanio Sobrero in 1846 / first named the substance \"pyroglycerin\" and warned vigorously against its use as an explosive"
+     },
+     {
+      "claim": "노벨은 1896년 죽기 직전 심장병으로 이것을 처방받고 운명의 장난이라는 편지를 썼으며, 트리니트린이라 불렀다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Nitroglycerin",
+      "note": "Shortly before his death in 1896, Nobel was prescribed nitroglycerin for his heart condition. 'Isn't it the irony of fate that I have been prescribed nitro-glycerin, to be taken internally!' ... called 'Trinitrin' so as not to alarm pharmacists or the public."
+     },
+     {
+      "claim": "소브레로가 토리노 대학에서 합성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nitroglycerin",
+      "note": "It was synthesized by the Italian chemist Ascanio Sobrero in 1846, working under Théophile-Jules Pelouze … at the University of Turin"
+     },
+     {
+      "claim": "공장 노동자의 월요병",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nitroglycerin",
+      "note": "Over the weekend, the workers lost their tolerance, and when they were re-exposed on Monday, … (fast heart rate, dizziness, headache) … This is referred to as \"Monday disease\"."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ascanio_Sobrero"
+    ],
+    "hintNote": "he was so frightened by what he created that he kept it a secret for over a year.",
+    "easiestCue": "소브레로가 처음 합성한 물질",
+    "targetWhy": "소브레로·월요병은 화학사·산업보건 교양 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "협심증 약을 아는 사람은 바로 풂 — 교양 수준이면 3",
+    "pairCheck": null,
+    "dbCheck": "니트로글리세린·나이트로글리세린 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

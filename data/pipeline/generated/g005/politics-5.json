@@ -1,0 +1,108 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "politics/5",
+  "midKey": "politics",
+  "subName": "법률 용어",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "politics/5#g005-H1-06",
+   "seed": {
+    "subject": "스모킹 건",
+    "aspect": null,
+    "ref": "H1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1972년 6월 23일 닉슨 대통령은 백악관 집무실에서 CIA를 시켜 FBI의 워터게이트 수사를 멈추게 하라는 계획을 승인했고, 이 대화는 녹음되어 있었습니다. 1974년 8월 이 녹음이 공개되자 닉슨의 정치적 지지는 거의 사라졌습니다. 이 녹음테이프에 붙은 영어 별명은 무엇일까요?",
+    "answer": "스모킹 건",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1893년 셜록 홈스 단편 「글로리아 스콧호」에 이 말의 변형인 '연기 나는 권총(smoking pistol)'을 든 목사가 나옵니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "워터게이트 수사 방해를 담은 닉슨 녹음테이프의 영어 별명",
+     "difWhy": "'워터게이트 결정적 녹음 별명' — 대학 교양 미국사",
+     "wor": 4,
+     "worWhy": "시사 상식 어휘",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "수사·재판 보도에서 자주 쓰는 영어 표현(결정적 증거)",
+     "difWhy": "'보도의 결정적 증거 표현' — 방송·뉴스",
+     "wor": 4,
+     "worWhy": "시사 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1972년 6월 23일 닉슨 대통령은 백악관 집무실에서 CIA를 시켜 FBI의 워터게이트 수사를 멈추게 하라는 계획을 승인했고, 이 대화는 녹음되어 있었습니다. 1974년 8월 이 녹음이 공개되자 닉슨의 정치적 지지는 거의 사라졌습니다. 이 녹음테이프에 붙은 별명이자, 오늘날 수사·재판 보도에서 자주 쓰는 이 영어 표현은?",
+     "beforeExplanation": null,
+     "removedCue": "오늘날 수사·재판 보도에서 자주 쓰는 영어 표현(결정적 증거라는 뜻 구실)",
+     "addedCue": "(새 단서 없음) 워터게이트 테이프의 별명으로만 묻게 함",
+     "why": "'보도에서 자주 쓰는 표현' 이 결정적 증거라는 뜻으로 이어져 방송 수준에서 풀려 빼고, 이름의 기원이 된 테이프의 세부만 남김"
+    },
+    "generalHint": "범행 현장에서 막 잡힌 것에 버금가는 결정적 증거를 가리키는 말로, 과학에서도 가설을 강하게 뒷받침하는 증거에 쓴다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Watergate_scandal",
+     "https://en.wikipedia.org/wiki/Nixon_White_House_tapes",
+     "https://en.wikipedia.org/wiki/Smoking_gun"
+    ],
+    "facts": [
+     {
+      "claim": "1972년 6월 23일, CIA가 FBI 수사를 막게 하는 계획을 승인한 녹음 대화 = 'Smoking Gun' 테이프",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Watergate_scandal",
+      "note": "on June 23, Nixon approved the plan in a recorded conversation known as the \"Smoking Gun\" tape … Nixon approved having the CIA pressure the FBI to drop its Watergate investigation."
+     },
+     {
+      "claim": "8월 5일 공개, 공개 뒤 정치적 지지가 사실상 사라짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nixon_White_House_tapes",
+      "note": "The White House released the subpoenaed tapes on August 5. … Once the \"Smoking Gun\" transcript was made public, Nixon's political support practically vanished."
+     },
+     {
+      "claim": "대화 날짜 1972년 6월 23일, 집무실(Oval Office)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nixon_White_House_tapes",
+      "note": "Nixon Oval Office meeting with H.R. Haldeman (the \"Smoking Gun\" conversation), June 23, 1972."
+     },
+     {
+      "claim": "「글로리아 스콧호」(1893)에 변형 'smoking pistol'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Smoking_gun",
+      "note": "A variant, \"smoking pistol,\" appears in Sherlock Holmes' \"The Adventure of the Gloria Scott\" (1893). … \"while the chaplain stood with a smoking pistol in his hand at his elbow.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Smoking_gun"
+    ],
+    "hintNote": "an object or fact that serves as conclusive evidence of a crime or similar act, just short of being caught ... smoking gun evidence.",
+    "easiestCue": "닉슨이 수사 방해를 승인한 1972년 6월 23일 녹음테이프의 별명",
+    "targetWhy": "워터게이트 테이프의 별명은 미국 정치사 대학 교양 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'스모킹 건'은 한국 뉴스에서 흔한 말, 그 출처 테이프는 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,95 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "medicine/2",
+  "midKey": "medicine",
+  "subName": "증상·진단",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/2#g005-C1-02",
+   "seed": {
+    "subject": "체질량지수",
+    "aspect": null,
+    "ref": "C1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "벨기에의 통계학자 케틀레는 1830년에서 1850년 사이 '평균인'을 연구하며 이 지표의 바탕을 만들었습니다. 지금 쓰는 이름은 1972년 미국 생리학자 앤설 키스 등이 한 학술지 논문에서 붙였습니다. 이 지표는 무엇일까요?",
+    "answer": "체질량지수",
+    "acceptedAnswers": [
+     "BMI"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "BMI 는 한국 건강검진 결과표 · 뉴스에서 약칭으로 흔히 씀(A4·B1)",
+    "explanation": "키스는 이 지표가 집단을 연구하는 데는 알맞지만 한 사람의 비만을 가늠하는 데는 맞지 않는다고 보았습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "케틀레 '평균인' 연구 / 앤설 키스가 붙인 지표 이름",
+     "difWhy": "케틀레·앤설 키스 — 대학 교양 의학사",
+     "wor": 4,
+     "worWhy": "건강 기본 어휘",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "케틀레 '평균인' 연구 / 앤설 키스가 붙인 지표 이름",
+     "difWhy": "케틀레·앤설 키스 — 대학 교양 의학사",
+     "wor": 4,
+     "worWhy": "건강 기본 어휘"
+    },
+    "rewrite": null,
+    "generalHint": "키스는 1972년 '만성 질환 저널'에 실은 논문에서 이것이 몸무게와 키로 만든 다른 비만 척도 못지않다고 했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Body_mass_index"
+    ],
+    "facts": [
+     {
+      "claim": "케틀레가 1830~1850년 사이 이 지표의 바탕을 만들었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Body_mass_index",
+      "note": "Adolphe Quetelet devised the basis of the BMI between 1830 and 1850"
+     },
+     {
+      "claim": "이름은 1972년 앤설 키스 등의 논문에서 붙었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Body_mass_index",
+      "note": "The term body mass index was coined in a paper published in the July 1972 edition of the Journal of Chronic Diseases by Ancel Keys and others"
+     },
+     {
+      "claim": "키스는 집단 연구에는 알맞고 개인 평가에는 맞지 않는다고 보았다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Body_mass_index",
+      "note": "Keys argued that BMI was \"if not fully satisfactory, at least as good as any other relative weight index as an indicator of relative obesity.\" / Keys considered BMI suitable for studying populations but not for assessing individuals."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Body_mass_index"
+    ],
+    "hintNote": "Journal of Chronic Diseases ... July 1972 ... if not fully satisfactory, at least as good as any other relative weight index as an indicator of relative obesity.",
+    "easiestCue": "케틀레가 바탕을 만든 지표",
+    "targetWhy": "계산식(키·몸무게)을 빼서 생활 단서가 없음 — 케틀레 · 앤설 키스는 통계사 · 영양학 교양, 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "케틀레 지수라는 옛 이름을 아는 사람에겐 바로 풀리지만 그 자체가 대학 교양",
+    "pairCheck": null,
+    "dbCheck": "체질량지수·BMI new",
+    "warn": []
+   }
+  }
+ ]
+}

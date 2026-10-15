@@ -1,0 +1,438 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-food/2",
+  "midKey": "kr-food",
+  "subName": "김치·반찬",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/2#g005-K3-01",
+   "seed": {
+    "subject": "잡채",
+    "aspect": null,
+    "ref": "K3-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 광해군 때 이충은 궁중 잔치에 이 음식을 바쳐 임금의 사랑을 받았습니다. 임금이 식사 때마다 이충의 집에서 오는 음식을 기다렸다가 수저를 들었다는 기록까지 남았고, 이충은 이 일로 높은 벼슬에 올랐다고 합니다. 이 음식은 무엇일까요?",
+    "answer": "잡채",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "당면이 들어간 요즘 모양은 1919년 황해도 사리원에 당면 공장이 생기면서 시작되었다고 한다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "광해군 때 이충은 궁중 잔치에 이 음식을 바쳐",
+     "difWhy": "'잡채판서 이충' 일화 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 일화",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "광해군 때 이충은 궁중 잔치에 이 음식을 바쳐",
+     "difWhy": "'잡채판서 이충' 일화 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 일화"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "이충 일화(잡채판서)가 유일한 유래 단서 — 빼면 남는 확인 세부는 '1919년 당면 공장'뿐이라 '당면 들어간 음식'으로 더 쉬워짐"
+    },
+    "generalHint": "같은 무렵 더덕 요리를 바쳐 출세한 재상은 '사삼 각로'라 불렸고, 이충에게도 이 음식 이름을 딴 별명이 붙었다고 전한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/잡채",
+     "https://en.wikipedia.org/wiki/Japchae"
+    ],
+    "facts": [
+     {
+      "claim": "광해군 때 궁중연회에서 선보임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/잡채",
+      "note": "잡채는 17세기 조선시대의 광해군 재위 시절, 궁중연회에서 처음 선보인 것으로 알려져 있다."
+     },
+     {
+      "claim": "임금이 이충의 집 음식을 기다렸다는 기록",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/잡채",
+      "note": "임금이 식사 때마다 이충의 집에서 오는 음식을 기다렸다가 수저를 들곤 했다는 기록이 남아 있을 정도다."
+     },
+     {
+      "claim": "이충이 왕의 연회를 위해 만들었고 높은 벼슬로 승진",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Japchae",
+      "note": "first made in the early 17th century by Yi Chung (1568‒1619) for King Gwanghaegun's palace banquet. The king liked the dish so much that he rewarded Yi by promoting him to a high-ranking position."
+     },
+     {
+      "claim": "당면 잡채는 1919년 사리원 당면공장 이후",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/잡채",
+      "note": "당면이 들어간 요즘 형태의 잡채는 일제강점기 1919년 황해도 사리원에 당면공장이 처음 생기면서 시작되었고"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/잡채"
+    ],
+    "hintNote": "문서: 광해군이 총애하던 이충이라는 사람이 특별한 음식을 만들어 궁중에 바치곤 했다는데 — 사삼각로·잡채상서 시구는 광해군일기 기록으로 널리 알려진 것",
+    "easiestCue": "광해군 때 이충이 바쳐 벼슬에 올랐다는 음식 일화",
+    "targetWhy": "'잡채판서' 일화는 교과서·방송 첫 줄이 아니라 음식사 애호가가 아는 세부 — 당면 같은 정의 단서는 해설로 뺐다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정답은 누구나 아는 음식, 단서는 음식사 일화 하나",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 잡채 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/2#g005-K3-02",
+   "seed": {
+    "subject": "명란젓",
+    "aspect": null,
+    "ref": "K3-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북한 문화어로는 '알밥젓'이라고도 부르는 이 젓갈은 함경도 신포와 서호(함흥)의 것이 이름났습니다. 일제강점기 부산에서 태어난 일본인 가와하라 도시오는 전쟁이 끝난 뒤, 일본에서 이 젓갈에서 비롯된 매운 젓갈을 파는 가장 오래된 회사를 세웠다고 합니다. 이 젓갈은 무엇일까요?",
+    "answer": "명란젓",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "19세기 조리서 「시의전서」에 담그는 법이 기록되어 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "'알밥젓', 일본 매운 젓갈의 원형",
+     "difWhy": "'알밥젓·일본 매운 젓갈' — 음식 관심층",
+     "wor": 3,
+     "worWhy": "음식 전파 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "후쿠오카 하카타의 명물 매운 젓갈은 한국 젓갈에서 비롯",
+     "difWhy": "'하카타 멘타이코 원조' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "음식 전파 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "일본 후쿠오카 하카타의 명물로 꼽히는 매운 젓갈은 한국의 한 젓갈에서 비롯되었습니다. 일제강점기 부산에서 태어난 일본인 가와하라 도시오가 전쟁이 끝난 뒤 일본에서 이 젓갈을 파는 가장 오래된 회사를 세웠다고 합니다. 그 한국 젓갈은?",
+     "beforeExplanation": "러시아에도 전해져 '이크라 민타야'라는 이름으로 알려져 있다.",
+     "removedCue": "후쿠오카 하카타의 명물 매운 젓갈이 한국 젓갈에서 비롯",
+     "addedCue": "문화어 '알밥젓' · 함경도 신포·서호의 것이 이름남",
+     "why": "하카타 멘타이코 원조는 관심층이 바로 아는 첫 줄 사실이라 빼고, 북한 이름·본고장 세부로 바꿈"
+    },
+    "generalHint": "이 젓갈의 알을 내주는 물고기는 반쯤 말리면 코다리, 얼리면 동태라 불린다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mentaiko",
+     "https://ko.wikipedia.org/wiki/명란젓"
+    ],
+    "facts": [
+     {
+      "claim": "가와하라 도시오는 일제강점기 부산 출생, 전후 일본 최고(最古) 멘타이코 회사 설립",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mentaiko",
+      "note": "Toshio Kawahara, who was born in the city of Busan, Korea during the Japanese occupation, ... founded the oldest mentaiko company in Japan called Aji no Mentaiko Fukuya ... after World War II"
+     },
+     {
+      "claim": "문화어로 알밥젓",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/명란젓",
+      "note": "문화어로는 알밥젓이라고도 한다 (요지)"
+     },
+     {
+      "claim": "함경도 신포와 서호(함흥)의 것이 유명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/명란젓",
+      "note": "함경도 신포와 서호(함흥)의 것이 유명하다 (요지)"
+     },
+     {
+      "claim": "19세기 시의전서에 담그는 법",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/명란젓",
+      "note": "19세기 조리서 《시의전서》에 담그는 법이 기록되어 있다 (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/명태"
+    ],
+    "hintNote": "반건조한 명태는 코다리 ... 얼어붙었으면 동태라고 불린다.",
+    "easiestCue": "가와하라 도시오가 일본에서 매운 젓갈로 판 한국 젓갈",
+    "targetWhy": "알밥젓·신포·가와하라는 음식 애호가 수준 — 하카타 단서 없음 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "일본 음식을 아는 관심층은 하카타 명물 젓갈에서 바로 닿을 수 있어 3 쪽 위험",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 가장 오래"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/2#g005-K3-03",
+   "seed": {
+    "subject": "어리굴젓",
+    "aspect": null,
+    "ref": "K3-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "무학대사가 간월암에서 수행하다가 태조에게 진상했다는 이야기가 전하는 충청도 지방의 젓갈입니다. 이 젓갈은 무엇일까요?",
+    "answer": "어리굴젓",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "생굴을 소금과 고춧가루로 버무려 담그는데, 고춧가루가 임진왜란 이후에 전해진 것을 들어 이 이야기의 진위를 의심하는 의견도 있다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "무학대사 간월암 진상 충청도 젓갈",
+     "difWhy": "서산 굴젓 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "무학대사 간월암 진상 충청도 젓갈",
+     "difWhy": "서산 굴젓 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "무학대사 간월암 진상 이야기가 문서에 있는 유일한 유래 단서 — 빼면 남는 것은 '생굴 젓갈·충청도'뿐이라 더 쉬워짐"
+    },
+    "generalHint": "이 젓갈의 재료는 영양이 풍부해 '바다의 우유'라고도 불린다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/어리굴젓"
+    ],
+    "facts": [
+     {
+      "claim": "무학대사 간월암 진상 이야기",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/어리굴젓",
+      "note": "무학대사가 간월암에서 수행하다가 태조에게 진상하였다고 전해지고 있으나, 고추가루가 임진왜란 이후에 전해진 것으로 볼 때 이러한 일화의 진위를 의심하는 의견도 있다."
+     },
+     {
+      "claim": "충청도 지방의 것이 유명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/어리굴젓",
+      "note": "서산, 당진, 예산, 간월도 등 충청도 지방에서 나는 어리굴젓이 유명하다."
+     },
+     {
+      "claim": "생굴에 소금·고춧가루",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/어리굴젓",
+      "note": "어리굴젓은 생굴에 소금과 고추가루를 버무려 담근 젓갈의 일종이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/굴"
+    ],
+    "hintNote": "굴은 영양가가 풍부해 '바다의 우유'라고도 불린다.",
+    "easiestCue": "무학대사·간월암 진상 이야기가 전하는 충청도 젓갈",
+    "targetWhy": "서산(관심층 단서)과 굴·고춧가루 정의는 뺐다 — 간월암 진상 이야기는 향토 음식 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "간월도=어리굴젓을 아는 관심층은 바로 닿는다 — 3~4",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/2#g005-K3-04",
+   "seed": {
+    "subject": "불고기",
+    "aspect": null,
+    "ref": "K3-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고구려의 고기구이 '맥적'은 불교의 영향으로 잊혔다가, 고려 말 몽골의 영향으로 고기를 다시 먹게 되면서 '설야멱'으로 되살아났다고 봅니다. 이 흐름이 조선을 거쳐 이어진 것으로 보는 오늘날의 고기 요리는 무엇일까요?",
+    "answer": "불고기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "조선 시대에는 쇠고기를 저며 두드려 간장 양념해 숯불에 굽는 궁중식 너비아니로 이어졌다고 본다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "맥적→설야멱으로 이어진 오늘날의 고기 요리",
+     "difWhy": "맥적·설야멱 계보 — 고교 한국사 교양",
+     "wor": 4,
+     "worWhy": "음식 역사 교양",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "맥적→설야멱으로 이어진 오늘날의 고기 요리",
+     "difWhy": "맥적·설야멱 계보 — 고교 한국사 교양",
+     "wor": 4,
+     "worWhy": "음식 역사 교양"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "확인되는 깊은 세부가 없다 — 맥적→설야멱→너비아니 계보가 문서의 전부이고 이것이 곧 정체라 빼면 유일하지 않다"
+    },
+    "generalHint": "광양식은 조선 때 읍성 밖에 살던 김해 김씨 부부가 유배 온 선비들에게 대접한 음식에서 왔다고 전한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/불고기"
+    ],
+    "facts": [
+     {
+      "claim": "맥적이 불교 영향으로 잊혔다가 고려 말 몽골 영향으로 설야멱으로 되살아남",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/불고기",
+      "note": "고구려의 고기구이인 맥적(貊炙)이 불교의 영향으로 잊혀졌다가 고려 말기에 몽골 제국 영향으로 고기를 다시 먹기 시작하면서 설야멱(雪夜覓)으로 되살아난 것이"
+     },
+     {
+      "claim": "조선의 너비아니, 현대의 불고기로 이어짐",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/불고기",
+      "note": "조선 시대의 너비아니, 현대의 불고기로 이어지는 것으로 본다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/불고기"
+    ],
+    "hintNote": "조선 시대 광양읍성 밖에 살던 김해 김씨 부부가 유배 온 선비들에게 대접한 음식에서 유래했다고 전해집니다.",
+    "easiestCue": "고구려 맥적에서 이어진 오늘날의 고기 요리",
+    "targetWhy": "맥적·설야멱은 음식사 애호가 세부. 너비아니(관심층 단서)는 해설로 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'고기구이의 현대형' 이라는 범주로 불고기를 찍을 수 있어 3 쪽 위험",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "정답조각 고기"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/2#g005-K3-05",
+   "seed": {
+    "subject": "도토리묵",
+    "aspect": null,
+    "ref": "K3-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "임진왜란 때 북쪽으로 피란한 선조에게, 먹을 것이 모자라자 마을 사람들이 이것을 쑤어 수라상에 올렸다고 전합니다. 선조는 궁궐로 돌아온 뒤에도 이것을 상에 올리게 했다는 이 음식은 무엇일까요?",
+    "answer": "도토리묵",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 일로 그 열매를 '상수리'라고 부르게 되었다는 설명이 전한다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "피란한 선조에게 쑤어 올린 음식, 궁에 돌아와서도 상에 올리게 함",
+     "difWhy": "'선조 피란 수라상 묵' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "음식 유래 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "피란한 선조에게 쑤어 올린 음식, 궁에 돌아와서도 상에 올리게 함",
+     "difWhy": "'선조 피란 수라상 묵' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "음식 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "질문 전체가 '선조 피란 수라상' 한 일화라 빼면 단서가 남지 않고, 해설의 '상수리' 유래도 도토리로 바로 이어짐 — 확인되는 다른 깊은 세부가 없음"
+    },
+    "generalHint": "재료 가루를 많은 물에 풀고 물을 여러 번 갈아 떫은 탄닌을 우려낸 뒤 앙금으로 쑨다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/도토리묵"
+    ],
+    "facts": [
+     {
+      "claim": "선조 피란 때 마을 사람들이 도토리로 묵을 쑤어 수라상에 올림, 환궁 뒤에도 올리게 함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/도토리묵",
+      "note": "(요지) 선조가 임진왜란 때 북쪽으로 피란했을 때 전란 중 식량이 부족해 마을 사람들이 도토리로 묵을 쑤어 수라상에 올렸고, 이후 궁궐로 돌아와서도 이 묵을 상에 올리게 했다는 이야기가 전해진다."
+     },
+     {
+      "claim": "수라상에 오르면서 '상수리'라 부르게 되었다는 설명",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/도토리묵",
+      "note": "(요지) 도토리묵이 수라상에 오르게 되면서 도토리를 \"상수리\"라고 부르게 되었다는 설명이 전해진다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/도토리묵"
+    ],
+    "hintNote": "도토리 가루를 많은 물에 풀어 우려낸 뒤 앙금을 가라앉혀 거릅니다 ... 탄닌 ... 물을 여러 차례 갈아 주어야",
+    "easiestCue": "선조 피란 때 수라상에 오른 '쑤어 만든' 음식",
+    "targetWhy": "상수리 이름 유래(방송에 나오는 쉬운 단서)는 해설로 뺐다 — 남은 선조 피란 일화는 관심층~애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "상수리-수라 이야기를 들어 본 사람은 일화만으로 바로 닿아 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

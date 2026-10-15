@@ -1,0 +1,548 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-geo/3",
+  "midKey": "kr-geo",
+  "subName": "섬·해안",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-geo/3#g005-K2-17",
+   "seed": {
+    "subject": "진도",
+    "aspect": null,
+    "ref": "K2-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려 때 중국과 일본을 잇는 직항로가 열리기 전, 일본으로 가던 중국 사절과 상선은 이 섬의 벽파항에 머물며 바람을 기다렸습니다. 섬 동쪽 첨찰산에는 천연기념물인 쌍계사 상록수림이 있는 이 섬은 어디일까요?",
+    "answer": "진도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "조선 말기 남종화의 대가 소치 허련이 말년에 머물며 창작하던 운림산방이 이 섬에 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "벽파항이 있고 첨찰산 쌍계사 상록수림이 있는 섬",
+     "difWhy": "'벽파항·첨찰산' — 지리·여행 애호가",
+     "wor": 3,
+     "worWhy": "섬의 역사 항로 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "소치 허련의 운림산방이 있는 섬",
+     "difWhy": "운림산방 소재지 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 지역 명소"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "조선 말기 남종화의 대가 소치 허련이 말년에 머물며 창작하던 운림산방이 이 섬에 있습니다. 운림산방 뒤 첨찰산에는 천연기념물인 쌍계사 상록수림이 있습니다. 이 섬은 어디일까요?",
+     "beforeExplanation": "운림산방은 2011년 국가 명승 제80호로 지정되었습니다.",
+     "removedCue": "소치 허련의 운림산방이 있는 섬",
+     "addedCue": "벽파항(일본행 배의 기착지) · 첨찰산 쌍계사 상록수림",
+     "why": "대표 명소(운림산방)를 해설로 옮기고 벽파항 역사 + 첨찰산 상록수림으로 좁힘"
+    },
+    "generalHint": "물살 소리가 바다가 우는 것 같다는 울돌목이 이 섬과 해남 사이에 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/운림산방",
+     "https://ko.wikipedia.org/wiki/진도_(섬)"
+    ],
+    "facts": [
+     {
+      "claim": "남종화 대가 소치 허련이 조성, 말년 거처하며 창작",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/운림산방",
+      "note": "조선말기 남종화의 대가인 소치 허련이 조성하여 말년에 거처하면서 창작과 저술 활동을 하던 곳"
+     },
+     {
+      "claim": "첨찰산의 쌍계사 상록수림(천연기념물)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/운림산방",
+      "note": "넓고 울창한 진도 쌍계사 상록수림(천연기념물 제107호)이 있는 첨찰산과 어우러져"
+     },
+     {
+      "claim": "벽파항은 중국 사절·상선이 일본으로 가던 중간 기착지, 고려 때 직항로 이전엔 반드시 거침",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/진도_(섬)",
+      "note": "(요지) 벽파항은 중국 사절이나 상선이 일본으로 가던 배들의 중간 기착지로, 바람을 기다리며 머물렀다. 고려시대 중·일 직항로가 열리기 전에는 반드시 거쳐야 하는 길목이었다."
+     },
+     {
+      "claim": "동쪽은 첨찰산 등 산지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/진도_(섬)",
+      "note": "(요지) 동쪽은 첨찰산(485m)과 여귀산(458.4m) 등 산지이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/명량_해협"
+    ],
+    "hintNote": "전라남도 해남군 문내면 학동리의 화원반도와 진도군 군내면 녹진리 사이의 있는 해협 / 바다가 우는 것 같다고 하여 울돌목이라고도 불린다",
+    "easiestCue": "첨찰산 쌍계사 상록수림이 있는 섬",
+    "targetWhy": "벽파항 기착지 · 쌍계사 상록수림은 지역·역사 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 섬의 몰랐던 미술사 연결",
+    "pairCheck": null,
+    "dbCheck": "진도 pair-or-different — 활성 #917(지진의 '진도')은 동음이의, 지식이 다름. 진도군 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/3#g005-K2-18",
+   "seed": {
+    "subject": "청산도",
+    "aspect": null,
+    "ref": "K2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "돌이 많고 물이 쉽게 빠지는 비탈에서 쌀을 더 얻으려고 자연환경을 재배치해 만든 '구들장 논'이 이 섬에 있습니다. 이 논은 2013년 국가중요농업유산 1호로 지정되었습니다. 완도의 이 섬은 어디일까요?",
+    "answer": "청산도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "임권택 감독의 영화 '서편제'가 이곳에서 촬영되면서 관광 명소로 주목받기 시작했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "엮음: 완도의 섬 + 구들장 논",
+     "difWhy": "구들장 논·농업유산 1호 — 여행 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 섬 명소",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "엮음: 완도의 섬 + 구들장 논",
+     "difWhy": "구들장 논·농업유산 1호 — 여행 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 섬 명소"
+    },
+    "rewrite": null,
+    "generalHint": "2007년 12월 국제슬로시티연맹이 이 섬을 슬로시티로 지정했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/청산도"
+    ],
+    "facts": [
+     {
+      "claim": "물이 쉽게 빠지는 조건에서 쌀을 더 얻으려고 만든 인공 논이 구들장 논",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/청산도",
+      "note": "경사가 심하고 돌이 많아 물이 쉽게 빠지는 사질토양 … 이러한 불리한 조건의 지역에서 더 많은 쌀을 생산해내기 위해 자연환경을 재배치하여 만든 인공적인 논이 바로 구들장 논이다."
+     },
+     {
+      "claim": "2013년 국가중요농업유산 1호",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/청산도",
+      "note": "2013년 1월 22일 대한민국 국가중요농업유산 1호로 지정되었다."
+     },
+     {
+      "claim": "완도군 청산면의 본섬",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/청산도",
+      "note": "청산도(靑山島)는 대한민국 남해 연안의 섬으로, 전라남도 완도군 청산면의 본섬이다."
+     },
+     {
+      "claim": "서편제 촬영으로 관광 명소",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/청산도",
+      "note": "임권택 감독의 <서편제>가 이곳에서 촬영되면서 관광명소로 주목받기 시작하였으며"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/청산도"
+    ],
+    "hintNote": "2007년 12월 1일에 국제슬로시티연맹으로부터 슬로시티로 지정되었다.",
+    "easiestCue": "구들장 논이 있는 완도의 섬",
+    "targetWhy": "청산도는 슬로시티로 들어 본 섬, 구들장 논은 농업·지리 애호가 수준. 슬로시티·서편제는 질문에서 뺐다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 섬의 몰랐던 농업 유산",
+    "pairCheck": null,
+    "dbCheck": "청산도 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/3#g005-K2-19",
+   "seed": {
+    "subject": "안면도",
+    "aspect": null,
+    "ref": "K2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 섬은 본래 반도에서 남쪽 바다로 길게 뻗어 나온 곶이었는데, 17세기에 육지에서 분리되어 섬이 되었습니다. 조선 시대에 이 섬의 소나무는 궁궐과 함선을 만드는 재목으로 중요하게 관리되었는데, 서해의 이 섬은 어디일까요?",
+    "answer": "안면도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "꽃게장 국물에 김치 등을 넣어 끓인 게국지가 대표 향토음식입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "곶이 17세기에 분리된 섬, 궁궐 재목 소나무",
+     "difWhy": "'곶이던 서해 섬' — 지리 관심층",
+     "wor": 3,
+     "worWhy": "지형 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "게국지가 대표 향토음식인 서해의 섬",
+     "difWhy": "게국지 고장 섬 — 여행·음식 관심층",
+     "wor": 3,
+     "worWhy": "지역 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 섬은 본래 반도에서 남쪽 바다로 길게 뻗어 나온 곶이었는데, 17세기에 육지에서 분리되어 섬이 되었습니다. 꽃게장 국물에 김치 등을 넣어 끓인 게국지가 대표 향토음식인 서해의 이 섬은 어디일까요?",
+     "beforeExplanation": "조선 시대 이 섬의 소나무는 궁궐과 함선을 만드는 데 꼭 필요한 재목이라 중요하게 관리되었습니다.",
+     "removedCue": "게국지가 대표 향토음식",
+     "addedCue": "조선 시대 궁궐·함선 재목 소나무(해설에서 옮김)",
+     "why": "게국지가 여행·음식 관심층 충분 단서라 해설로 내리고 지형 내력과 소나무 재목을 엮음"
+    },
+    "generalHint": "꽃지 해변 앞바다에 나란히 선 할미·할아비 바위가 이 섬의 이름난 경치다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/안면도"
+    ],
+    "facts": [
+     {
+      "claim": "본래 태안반도에서 남쪽으로 뻗은 곶, 17세기에 분리되어 섬",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/안면도",
+      "note": "안면도는 본래 태안반도에서 남쪽 바다로 길게 뻗어나온 곶(串)이었는데, 17세기에 육지에서 분리되어 섬이 되었다."
+     },
+     {
+      "claim": "대표 향토음식 게국지",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/안면도",
+      "note": "안면도의 대표적인 향토음식으로는 게국지가 있다. (꽃게장 국물에 김치 등을 넣어 끓인 음식)"
+     },
+     {
+      "claim": "소나무가 궁궐·함선 재목",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/안면도",
+      "note": "궁궐이나 함선 등을 만드는 데 있어 필수적인 재목이었기 때문이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/안면도"
+    ],
+    "hintNote": "안면읍 승언리 소재 할미할아비바위의 전경(사진 설명) / 관광지 목록: 꽃지해수욕장 — 바위가 꽃지 해변에 있는 것은 널리 알려진 사실",
+    "easiestCue": "조선 시대 궁궐·함선 재목 소나무가 나던 서해 섬",
+    "targetWhy": "곶이 끊겨 섬이 된 내력과 소나무 관리는 교과서 밖 지리·역사 교양",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 섬의 몰랐던 지형 내력",
+    "pairCheck": null,
+    "dbCheck": "안면도 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/3#g005-K2-20",
+   "seed": {
+    "subject": "비금도",
+    "aspect": null,
+    "ref": "K2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1946년 호남에서는 처음으로 이 섬에 염전이 조성되었고, 1948년에는 주민들이 힘을 모아 대동염전을 만들었습니다. 이웃한 도초도와 다리로 이어진 전라남도 신안군의 이 섬은 어디일까요?",
+    "answer": "비금도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "바둑 기사 이세돌의 고향이기도 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "도초도와 다리로 이어진 신안군의 섬",
+     "difWhy": "'도초도와 이어진 섬' — 지리·여행 애호가",
+     "wor": 3,
+     "worWhy": "호남 첫 염전 섬 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "바둑 기사 이세돌의 고향 섬",
+     "difWhy": "이세돌 고향 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명인 고향"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1946년 호남에서는 처음으로 이 섬에 염전이 조성되었고, 1948년에는 주민들이 힘을 모아 대동염전을 만들었습니다. 바둑 기사 이세돌의 고향이기도 한 이 섬은 어디일까요?",
+     "beforeExplanation": "대동염전은 2007년 증도 태평염전과 함께 등록문화재로 지정되었습니다.",
+     "removedCue": "바둑 기사 이세돌의 고향",
+     "addedCue": "이웃한 도초도와 다리로 이어진 신안군 섬",
+     "why": "유명 인물 고향 단서를 해설로 옮기고 염전 역사 + 도초도 연결로 좁힘"
+    },
+    "generalHint": "이 섬이 속한 면은 '섬초'라 부르는 시금치를 천일염과 함께 특산물로 꼽는다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://m.go.seoul.co.kr/news/2022/03/28/20220328012013",
+     "https://ko.wikipedia.org/wiki/비금도"
+    ],
+    "facts": [
+     {
+      "claim": "1946년 호남 최초로 비금도에 염전 조성",
+      "where": "q",
+      "url": "https://m.go.seoul.co.kr/news/2022/03/28/20220328012013",
+      "note": "1946년 호남에서는 처음으로 신안 비금도에 염전이 조성됐다."
+     },
+     {
+      "claim": "1948년 주민들이 대동염전을 만듦",
+      "where": "q",
+      "url": "https://m.go.seoul.co.kr/news/2022/03/28/20220328012013",
+      "note": "1948년에는 비금도 주민들이 힘을 모아 대동염전을 만들었다."
+     },
+     {
+      "claim": "이세돌의 고향",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/비금도",
+      "note": "이세돌의 고향이다."
+     },
+     {
+      "claim": "신안군 비금면, 이웃 도초도와 다리로 연결",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/비금도",
+      "note": "(요지) 전라남도 신안군 비금면에 속하는 섬으로, 이웃한 도초도와 다리로 연결되어 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/비금면"
+    ],
+    "hintNote": "특산물: 섬초 (시금치) / 천일염",
+    "easiestCue": "1946년 호남 최초 염전이 생긴 신안 섬",
+    "targetWhy": "호남 첫 염전 · 대동염전 · 도초도 연결은 지역·지리 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "섬 이름의 유명도가 경계 — 이세돌 덕에 들어 봤을 법함",
+    "pairCheck": null,
+    "dbCheck": "비금도 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-geo/3#g005-K2-21",
+   "seed": {
+    "subject": "영종도",
+    "aspect": null,
+    "ref": "K2-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려사와 세종실록 등에는 '제비가 많은 섬'이라는 뜻의 자연도(紫燕島)로 적혀 있습니다. 1875년 일본 운요호의 포격으로 이 섬의 수군진에 있던 조선군 수십 명이 전사하고 주변이 약탈당했는데, 인천의 이 섬은 어디일까요?",
+    "answer": "영종도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1992년부터 1994년까지 용유도·삼목도·신불도 사이를 방조제로 잇고 갯벌을 메워 지금의 모습이 되었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "1875년 일본 운요호의 포격을 받은 인천의 섬",
+     "difWhy": "'운요호 포격' — 고교 한국사",
+     "wor": 4,
+     "worWhy": "개항 사건 무대 — 교양",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "용유도·삼목도·신불도를 이어 메운 인천의 섬",
+     "difWhy": "'용유도 잇고 갯벌 메운 인천 섬' — 고교 지리",
+     "wor": 3,
+     "worWhy": "지명 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "고려사와 세종실록 등에는 '제비가 많은 섬'이라는 뜻의 자연도(紫燕島)로 적혀 있습니다. 1990년대 용유도·삼목도·신불도 사이를 방조제로 잇고 갯벌을 메워 지금의 모습이 된 인천의 이 섬은 어디일까요?",
+     "beforeExplanation": "섬의 운서동에 인천국제공항이 있습니다.",
+     "removedCue": "용유도·삼목도·신불도를 이어 메운 인천의 섬(공항 섬)",
+     "addedCue": "1875년 운요호 포격으로 수군진 조선군 수십 명 전사",
+     "why": "공항 간척(뉴스 상식)을 해설로 옮기고 옛 이름 + 운요호 사건의 두 번째 줄 사실로 좁힘"
+    },
+    "generalHint": "2009년 10월 개통한 인천대교로 송도와 곧장 이어진다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/영종도"
+    ],
+    "facts": [
+     {
+      "claim": "옛 기록에 자연도(제비가 많은 섬)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/영종도",
+      "note": "《고려사》, 《세종실록》, 《신증동국여지승람》 등에는 자연도로 기록 … 이는 '제비가 많은 섬'이라는 뜻이다."
+     },
+     {
+      "claim": "용유도·삼목도·신불도 사이를 방조제로 연결, 간척해 지금의 영종도(1992~1994)",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/영종도",
+      "note": "영종도와 용유도, 삼목도, 신불도 사이를 방조제로 연결하고 … 바다와 분리된 간석지를 간척해서 현재의 영종도가 되었다. (1992년부터 1994년까지)"
+     },
+     {
+      "claim": "효종 때 수군진 영종진 설치",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/영종도",
+      "note": "(요지) 조선 후기 효종 때 수군진인 영종진이 설치되었다."
+     },
+     {
+      "claim": "1875년 운요호 포격으로 영종진의 조선군 수십 명 전사, 주변 약탈",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/영종도",
+      "note": "1875년 일본 운요호의 포격으로 영종진에 주둔하던 조선군 수십명이 전사하고, 주변이 약탈당했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Incheon_Bridge"
+    ],
+    "hintNote": "At its opening in October 2009 ... the second bridge connection between Yeongjong Island and the mainland of Incheon ... direct access between Songdo and Incheon International Airport",
+    "easiestCue": "운요호 포격을 받은 인천의 섬",
+    "targetWhy": "운요호는 교과지만 그 포격지가 이 섬이라는 것 · 자연도 옛 이름은 한국사 심화 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'인천의 섬 + 간척' 에서 공항 섬을 떠올리면 3",
+    "pairCheck": null,
+    "dbCheck": "영종도 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/3#g005-K2-22",
+   "seed": {
+    "subject": "거문도",
+    "aspect": null,
+    "ref": "K2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고도·서도·동도 세 섬으로 이루어져 '삼도' 또는 '삼산도'라고도 불렸고, 세 섬 사이의 깊은 바다가 큰 배가 드나드는 항만을 이룹니다. 이러한 중요성 때문에 1905년 남해 연안 최초의 등대가 세워진 이 섬은 어디일까요?",
+    "answer": "거문도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1885년 거문도 사건 때 영국인들은 이 섬에 '포트해밀턴'이라는 이름을 붙였습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "세 섬 '삼도', 1905년 남해 첫 등대",
+     "difWhy": "'삼산도·첫 등대' — 지리 관심층",
+     "wor": 3,
+     "worWhy": "섬 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "무인군도 백도가 동쪽 25km에 있는 섬",
+     "difWhy": "백도 인근 섬 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 섬 지리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "고도·서도·동도 세 섬으로 이루어져, 그 사이의 깊은 바다가 큰 배가 드나드는 항만을 이룹니다. 동쪽으로 25km 떨어진 무인군도 백도는 '남해의 소금강'이라 불립니다. 이 섬은 어디일까요?",
+     "beforeExplanation": null,
+     "removedCue": "동쪽 25km 무인군도 백도('남해의 소금강')",
+     "addedCue": "옛 이름 삼도·삼산도 · 1905년 남해 연안 최초의 등대",
+     "why": "관광 단서 백도를 빼고 옛 이름·등대 세부를 엮음"
+    },
+    "generalHint": "동쪽으로 25km 떨어진 곳에 상백도와 하백도로 나뉘는 무인도 무리가 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/거문도"
+    ],
+    "facts": [
+     {
+      "claim": "고도·서도·동도 3개 섬",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/거문도",
+      "note": "거문도는 고도(古島)·서도·동도의 3개 섬으로 이루어져 있으며, 면적은 12 km2이다."
+     },
+     {
+      "claim": "가운데 깊은 바다가 큰 배가 드나드는 항만",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/거문도",
+      "note": "세 섬은 바다를 사이에 두고 둘러싸여 있고, 그 가운데 수심이 깊은 바다가 큰 배가 드나들 수 있는 항만을 이룬다(문서 요지)"
+     },
+     {
+      "claim": "영국인들이 포트해밀턴이라 이름 붙임",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/거문도",
+      "note": "영국인들은 거문도 사건 당시 이 섬에 포트해밀턴(Port Hamilton)이란 이름을 붙였다."
+     },
+     {
+      "claim": "삼도 또는 삼산도라고도 불림",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/거문도",
+      "note": "삼도(三島) 또는 삼산도(三山島)"
+     },
+     {
+      "claim": "1905년 남해 연안 최초의 등대",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/거문도",
+      "note": "1905년 남해 연안 최초의 거문도 등대가 건립된 것도 이러한 중요성 때문이었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/거문도"
+    ],
+    "hintNote": "거문도에서 동쪽 25 km 지점에 있는 무인군도(無人群島)인 백도는 상백도와 하백도로 나뉘는데",
+    "easiestCue": "1905년 남해 연안 최초의 등대가 세워진 섬",
+    "targetWhy": "남해 첫 등대·삼산도는 지리·섬 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'거문도·백도' 관광 묶음을 아는 관심층이 있을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "거문도 new",
+    "warn": []
+   }
+  }
+ ]
+}

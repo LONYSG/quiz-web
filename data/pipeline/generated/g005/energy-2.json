@@ -1,0 +1,189 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "energy/2",
+  "midKey": "energy",
+  "subName": "재생 에너지",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "energy/2#g005-C2-10",
+   "seed": {
+    "subject": "덕 커브",
+    "aspect": null,
+    "ref": "C2-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "하루 전력 수요에서 태양광 같은 변동성 재생에너지 발전량을 뺀 나머지를 그리면, 한낮에 움푹 꺼졌다가 해 질 무렵 빠르게 치솟습니다. 2012년 캘리포니아 독립계통운영기관(CAISO)이 이 그래프를 어떤 동물의 윤곽을 닮았다며 이름 붙였습니다. 이 그래프를 무엇이라 할까요?",
+    "answer": "덕 커브",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '덕 커브' 확인 — '오리 곡선' 은 문서에서 확인 못 해 넣지 않음",
+    "explanation": "이 모양이 더 심하게 나타나는 하와이에서는 '네스호의 괴물 곡선(네시 곡선)'이라고도 부릅니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "순수요를 그린 그래프가 어떤 동물 윤곽을 닮았다",
+     "difWhy": "순수요 곡선 이름 — 대학 교양 에너지",
+     "wor": 4,
+     "worWhy": "에너지 분야 기본 어휘",
+     "acc": 4,
+     "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "순수요를 그린 그래프가 어떤 동물 윤곽을 닮았다",
+     "difWhy": "순수요 곡선 이름 — 대학 교양 에너지",
+     "wor": 4,
+     "worWhy": "에너지 분야 기본 어휘"
+    },
+    "rewrite": null,
+    "generalHint": "2024년 무렵 캘리포니아에서는 대형 배터리가 저녁에 전기를 풀어 이 그래프의 꺾임이 크게 누그러졌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Duck_curve",
+     "https://ko.wikipedia.org/wiki/덕_커브"
+    ],
+    "facts": [
+     {
+      "claim": "순부하 = 변동성 재생에너지 공급을 뺀 나머지 수요",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Duck_curve",
+      "note": "the electricity demand remaining after subtracting electricity supplied by variable renewable energy sources"
+     },
+     {
+      "claim": "해 질 무렵 빠른 증가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Duck_curve",
+      "note": "a rapid increase around sunset"
+     },
+     {
+      "claim": "2012년 CAISO가 이름 붙임, 오리 윤곽을 닮아",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Duck_curve",
+      "note": "was coined in 2012 by the California Independent System Operator ... The curve is named for its visual similarity to the outline of a duck."
+     },
+     {
+      "claim": "하와이에서는 네시 곡선",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/덕_커브",
+      "note": "하와이의 더 뚜렷한 형태를 '네스호의 괴물 곡선' 이라 부름 / en: the Nessie curve, used for the more pronounced pattern in Hawaii"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Duck_curve"
+    ],
+    "hintNote": "by 2024, large battery systems in California had greatly reduced the curve's severity, with evening battery discharge shortening the neck (문서 요약)",
+    "easiestCue": "한낮에 꺼지고 해 질 녘 치솟는 순부하 그래프(동물 윤곽)",
+    "targetWhy": "덕 커브는 에너지 정책 기사·대학 교양 수준 용어, 교과에 없음 — '동물' 만으로는 오리를 고르기 어려움 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "재생에너지 뉴스로 들어 봤을 법한 이름, 모양과 유래가 '아 그거'",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "energy/2#g005-C2-11",
+   "seed": {
+    "subject": "페로브스카이트",
+    "aspect": null,
+    "ref": "C2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1839년 독일 광물학자 구스타프 로제는 러시아 우랄산맥에서 칼슘·타이타늄 산화 광물을 찾아 러시아 광물학자 레프의 성을 붙였습니다. 이 광물(CaTiO3)과 같은 꼴의 결정 구조를 지닌 화합물들도 이 광물의 이름으로 묶어 부릅니다. 이 광물의 이름은 무엇일까요?",
+    "answer": "페로브스카이트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "같은 결정 구조의 화합물은 광다이오드와 태양 전지 같은 오늘날의 광전 소자에 쓰입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "CaTiO3와 같은 꼴의 결정 구조를 묶어 부르는 이름",
+     "difWhy": "'CaTiO3 결정 구조' — 대학 교양 재료",
+     "wor": 4,
+     "worWhy": "신소재 시사 어휘",
+     "acc": 4,
+     "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "CaTiO3와 같은 꼴의 결정 구조를 묶어 부르는 이름",
+     "difWhy": "'CaTiO3 결정 구조' — 대학 교양 재료",
+     "wor": 4,
+     "worWhy": "신소재 시사 어휘"
+    },
+    "rewrite": null,
+    "generalHint": "지구 맨틀에 가장 많은 광물인 브리지머나이트도 이 꼴의 결정 구조를 지녔다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Perovskite",
+     "https://ko.wikipedia.org/wiki/페로브스카이트"
+    ],
+    "facts": [
+     {
+      "claim": "1839 구스타프 로제가 러시아 우랄산맥에서 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Perovskite",
+      "note": "discovered in the Ural Mountains of Russia by Gustav Rose in 1839"
+     },
+     {
+      "claim": "러시아 광물학자 레프 페롭스키의 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Perovskite",
+      "note": "named after Russian mineralogist Lev Perovski (1792–1856)"
+     },
+     {
+      "claim": "칼슘 타이타늄 산화 광물 CaTiO3",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/페로브스카이트",
+      "note": "페로브스카이트(perovskite)는 티탄산 칼슘(CaTiO3)으로 이루어진 칼슘 타이타늄 산화광물이다."
+     },
+     {
+      "claim": "같은 결정 구조의 화합물도 이 이름으로 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Perovskite",
+      "note": "(also covers compounds with) the same type of crystal structure as CaTiO3, known as the perovskite structure"
+     },
+     {
+      "claim": "광다이오드·태양 전지에 쓰임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Perovskite",
+      "note": "typically found in modern photovoltaics like photodiodes and solar panels"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bridgmanite"
+    ],
+    "hintNote": "Bridgmanite is the most abundant mineral in the mantle ... when arranged in a perovskite structure.",
+    "easiestCue": "결정 구조 이름으로도 쓰이는 칼슘·타이타늄 산화 광물",
+    "targetWhy": "대표 단서(차세대 태양 전지)는 해설로 뺐음 — 우랄·로제·CaTiO3·결정 구조 이름은 재료과학 대학 교양 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "태양 전지를 빼니 질문만으로는 이름을 떠올리기 어려워 5 로 갈 수 있음 — '레프' 성 단서가 그나마 길잡이",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

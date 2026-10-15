@@ -1,0 +1,108 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "human-body/4",
+  "midKey": "human-body",
+  "subName": "신경·뇌",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/4#g005-C1-11",
+   "seed": {
+    "subject": "브로카 영역",
+    "aspect": null,
+    "ref": "C1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프랑스 환자 르보른은 '탄 씨'라는 별명으로 불렸습니다. 그가 죽은 뒤 뇌의 겉에서 손상이 발견되었고, 비슷한 환자 를롱의 부검 결과와 함께 한 의사가 이 부위를 밝혀 그 이름이 붙었습니다. 이 뇌 부위는 무엇일까요?",
+    "answer": "브로카 영역",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 브로카 영역 — 다른 이름 확인 못 해 넣지 않음",
+    "explanation": "르보른은 서른 살 무렵부터 말을 거의 하지 못해 무엇을 물어도 '탄'이라는 소리만 되풀이했고, 그의 손상은 왼쪽 이마엽에 있었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'탄 씨' 환자의 뇌 손상으로 밝혀져 의사 이름이 붙은 부위",
+     "difWhy": "'탄 씨 환자 부검' — 대학 교양 신경과학",
+     "wor": 4,
+     "worWhy": "교양 — 뇌 기본 어휘",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "말을 못하게 된 환자, 의사 이름이 붙은 뇌 부위",
+     "difWhy": "'언어 장애·의사 이름 뇌 부위' — 고교 생명과학",
+     "wor": 4,
+     "worWhy": "뇌과학 기본 개념"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "서른 살 무렵부터 말을 거의 하지 못하게 된 프랑스 환자 르보른은 무엇을 물어도 '탄'이라는 소리만 되풀이해 '탄 씨'로 불렸습니다. 그가 죽은 뒤 뇌의 겉에서 손상이 발견되었고, 비슷한 환자 를롱의 부검 결과와 함께 이 부위에 의사의 이름이 붙었습니다. 이 뇌 부위는 무엇일까요?",
+     "beforeExplanation": "대개 왼쪽인 우세 반구의 이마엽에 있는 부위로, 르보른의 손상도 왼쪽 이마엽에 있었습니다.",
+     "removedCue": "말을 거의 하지 못하게 됨 + 의사의 이름이 붙은 뇌 부위(언어 장애 → 교과 단서)",
+     "addedCue": "(새 단서 없음) 증상 없이 '탄 씨' 르보른과 를롱의 부검 사례만 남김",
+     "why": "'말을 못 하는 환자의 뇌 부위' 는 고교 생명과학의 브로카·베르니케 구분으로 바로 풀려 증상을 해설로 옮기고, 역사적 환자 사례만으로 묻게 함"
+    },
+    "generalHint": "이 부위에 이름을 남긴 의사는 1859년 파리 인류학회를 세운 사람이기도 하다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Broca%27s_area",
+     "https://en.wikipedia.org/wiki/Louis_Victor_Leborgne",
+     "https://ko.wikipedia.org/wiki/브로카_영역"
+    ],
+    "facts": [
+     {
+      "claim": "르보른은 서른 살 무렵 말을 거의 못 하게 되었고 무엇을 물어도 'tan' 만 되풀이했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Broca%27s_area",
+      "note": "At 30 years old, he was almost completely unable to produce any words or phrases. When asked a question, he was only able to repetitively produce the syllable \"tan\"."
+     },
+     {
+      "claim": "죽은 뒤 왼쪽 이마엽 겉에서 손상이 발견되었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Louis_Victor_Leborgne",
+      "note": "After his death, a neurosyphilitic lesion was discovered on the surface of his left frontal lobe."
+     },
+     {
+      "claim": "를롱의 부검에서도 이마엽 옆쪽 손상이 나와, 두 사례로 브로카가 말하기가 이 부위에 있다고 보았다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Broca%27s_area",
+      "note": "Lelong was another patient of Broca's. A lesion within the lateral frontal lobe was discovered during Lelong's autopsy. These two cases led Broca to believe that speech was localized to this particular area."
+     },
+     {
+      "claim": "1861년 폴 브로카가 밝혀 그의 이름을 따 명명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/브로카_영역",
+      "note": "1861년 프랑스 외과의사 폴 브로카가 밝혀냈고, 그의 이름을 따 명명되었습니다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Paul_Broca"
+    ],
+    "hintNote": "In 1859, he founded the Society of Anthropology of Paris.",
+    "easiestCue": "'탄 씨' 르보른의 부검으로 이름이 붙은 뇌 부위",
+    "targetWhy": "탄 씨·를롱 사례는 신경과학사·심리학 대학 교양 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'말을 못 하게 된 환자' 가 언어 중추로 이끌어 고교 생명과학(언어 중추)으로 풀릴 여지",
+    "pairCheck": null,
+    "dbCheck": "브로카 영역 new",
+    "warn": []
+   }
+  }
+ ]
+}

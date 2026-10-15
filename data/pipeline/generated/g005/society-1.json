@@ -1,0 +1,117 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "society/1",
+  "midKey": "society",
+  "subName": "교육 제도",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "society/1#g005-H1-12",
+   "seed": {
+    "subject": "몬테소리 교육",
+    "aspect": null,
+    "ref": "H1-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1896년 로마 대학교를 의학 박사로 졸업한 한 이탈리아 여성은 대학 정신과 병원에서 연구를 이어 갔고, 19세기 프랑스 의사 이타르와 세갱의 연구에 큰 영향을 받았습니다. 1990년 이탈리아 1000리라 지폐에도 실린 이 사람의 이름을 딴 교육법은 무엇일까요?",
+    "answer": "몬테소리 교육",
+    "acceptedAnswers": [
+     "몬테소리",
+     "몬테소리 교육법"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "이름을 딴 교육법을 물으므로 사람 이름만 친 '몬테소리'·'몬테소리 교육법'도 같은 대상(B1)",
+    "explanation": "흔히 이탈리아 최초의 여성 의사로 소개되지만, 에르네스티나 파퍼가 1877년에 먼저 자격을 얻었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1896년 로마 대학교 의학 박사 이탈리아 여성의 이름을 딴 교육법",
+     "difWhy": "'로마대 여성 의사·이타르·세갱' — 대학 교양 교육학",
+     "wor": 4,
+     "worWhy": "교양 — 교육 기본 어휘",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1907년 로마 '어린이의 집'을 연 여성 의사의 교육법",
+     "difWhy": "'어린이의 집 교육법' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교육 교양 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1896년 로마 대학교를 의학 박사로 졸업한 한 이탈리아 여성은, 1907년 1월 6일 로마의 가난한 동네 산로렌초의 한 아파트 건물에 일하는 부모의 아이들을 맡는 '어린이의 집'을 열었습니다. 1990년 이탈리아 1000리라 지폐에도 실린 이 사람의 이름을 딴 교육법은?",
+     "beforeExplanation": null,
+     "removedCue": "1907년 로마 산로렌초에 '어린이의 집'을 엶",
+     "addedCue": "대학 정신과 병원 연구 · 이타르와 세갱의 영향",
+     "why": "'어린이의 집' 은 그 교육법의 대표 사실이라 빼고, 의사 시절의 연구 내력으로 바꿈"
+    },
+    "generalHint": "그는 1907년 1월 로마 산로렌초 지구의 한 아파트 건물에 첫 '어린이의 집'을 열었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Maria_Montessori"
+    ],
+    "facts": [
+     {
+      "claim": "1896년 로마 대학교 의학 박사 졸업",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maria_Montessori",
+      "note": "Montessori \"graduated from the University of Rome in 1896 as a doctor of medicine.\""
+     },
+     {
+      "claim": "1990년 이탈리아 1000리라 지폐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maria_Montessori",
+      "note": "\"She and Montessori schools were featured on coins and banknotes of Italy.\" (image caption: 1990 Italian 1000 lire note)"
+     },
+     {
+      "claim": "최초 여성 의사라는 말은 부정확, 에르네스티나 파퍼 1877",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Maria_Montessori",
+      "note": "she is often called Italy's first woman doctor, but that is inaccurate, since Ernestina Paper qualified in 1877."
+     },
+     {
+      "claim": "로마 대학교 정신과 병원에서 연구를 이어 감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maria_Montessori",
+      "note": "Montessori also continued with her research at the university's psychiatric clinic."
+     },
+     {
+      "claim": "19세기 의사 이타르와 세갱의 연구가 큰 영향을 줌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maria_Montessori",
+      "note": "She read and studied the work of 19th-century physicians Jean Marc Gaspard Itard and Édouard Séguin, who greatly influenced her work. (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Maria_Montessori"
+    ],
+    "hintNote": "the first Casa opened on 6 January 1907 ... in the San Lorenzo district in Rome",
+    "easiestCue": "1896년 로마 대학교 의학 박사 출신 이탈리아 여성 교육자의 교육법",
+    "targetWhy": "의사 출신·이타르와 세갱·리라 지폐는 교육학 대학 교양 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대상은 유명, 단서는 교과 밖 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0 (몬테소리 · 몬테소리 교육)",
+    "warn": [
+     "정답조각 교육"
+    ]
+   }
+  }
+ ]
+}

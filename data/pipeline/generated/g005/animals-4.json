@@ -1,0 +1,95 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "animals/4",
+  "midKey": "animals",
+  "subName": "곤충·절지동물",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/4#g005-C1-25",
+   "seed": {
+    "subject": "쇠똥구리",
+    "aspect": null,
+    "ref": "C1-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2013년 학술지 '커런트 바이올로지'에 실린 연구에서, 아프리카의 밤에 활동하는 이 곤충의 한 종은 밝은 별 무리가 보이면 은하수를 보고 방향을 잡는다는 것이 밝혀졌습니다. 은하수로 길을 찾는다고 알려진 유일한 곤충인 이 무리는 무엇일까요?",
+    "answer": "쇠똥구리",
+    "acceptedAnswers": [
+     "소똥구리"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목(국명) 소똥구리 · 활성 1818 의 정답이 쇠똥구리 — 두 이름 모두 흔히 씀",
+    "explanation": "아프리카의 다른 종은 달빛의 편광 무늬로 방향을 잡는데, 달빛 편광으로 길을 찾는다고 처음 알려진 동물입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "은하수로 길을 찾는다고 알려진 유일한 곤충",
+     "difWhy": "은하수로 방향 잡는 곤충 — 대학 교양·과학 뉴스",
+     "wor": 3,
+     "worWhy": "동물 행동 이야깃거리",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "은하수로 길을 찾는다고 알려진 유일한 곤충",
+     "difWhy": "은하수로 방향 잡는 곤충 — 대학 교양·과학 뉴스",
+     "wor": 3,
+     "worWhy": "동물 행동 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "1965년부터 호주는 소의 배설물이 목초지에 몇 달씩 남아 파리가 꾀자 이 곤충을 외국에서 들여오는 사업을 벌였다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dung_beetle"
+    ],
+    "facts": [
+     {
+      "claim": "아프리카의 밤 활동 종 Scarabaeus satyrus 가 은하수로 방향을 잡는다(2013 Dacke 등, Current Biology)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dung_beetle",
+      "note": "the nocturnal African dung beetle Scarabaeus satyrus is one of the few known invertebrate animals that navigate by the Milky Way (2013 study by Dacke and colleagues in Current Biology)"
+     },
+     {
+      "claim": "밝은 별 무리가 보이면 길을 찾고, 은하수로 방향을 잡는다고 알려진 유일한 곤충",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dung_beetle",
+      "note": "dung beetles can navigate when clusters of bright stars are visible, which makes them the only insects known to orient themselves by the Milky Way"
+     },
+     {
+      "claim": "S. zambesianus 는 달빛 편광으로 길을 찾고, 그렇게 알려진 첫 동물이다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dung_beetle",
+      "note": "the African Scarabaeus zambesianus navigates by polarization patterns in moonlight ... the first animal known to do so"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Australian_Dung_Beetle_Project"
+    ],
+    "hintNote": "Australian Dung Beetle Project (1965–1985) ... to control the polluting effects of cattle dung ... conceived and led by George Bornemissza",
+    "easiestCue": "은하수를 보고 방향을 잡는 곤충",
+    "targetWhy": "똥 경단 굴리기 · 이집트 스카라베(대표 사실)를 뺌 — 은하수 길 찾기는 과학 뉴스 애호가, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "곤충은 누구나 알고, 은하수 길 찾기는 '아 그렇구나' 할 사실",
+    "pairCheck": null,
+    "dbCheck": "쇠똥구리 pair-or-different — 활성 1818(이집트 신화 소분류)은 태양을 굴리는 이집트 상징 · 지식이 다름 / 소똥구리 new",
+    "warn": []
+   }
+  }
+ ]
+}

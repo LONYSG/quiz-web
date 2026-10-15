@@ -1,0 +1,207 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "esports/1",
+  "midKey": "esports",
+  "subName": "고전 게임(1980~90년대)",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "esports/1#g005-M2-20",
+   "seed": {
+    "subject": "갤러그",
+    "aspect": "대중",
+    "ref": "M2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1981년 일본에서 나온 아케이드 슈팅 게임입니다. 적 보스가 트랙터 빔으로 플레이어의 비행기를 붙잡아 가는데, 그 보스를 쏘아 비행기를 구해 내면 두 대가 나란히 붙은 '듀얼 파이터'가 됩니다. 이 게임은 무엇일까요?",
+    "answer": "갤러그",
+    "acceptedAnswers": [
+     "갤러가",
+     "Galaga"
+    ],
+    "originalTitleVariants": [
+     "Galaga"
+    ],
+    "variantCheck": "ko.wikipedia 문서명 '갤러가', '갤러그'는 넘겨주기 · 원제 Galaga(B10)",
+    "explanation": "남코가 '갤럭시안'의 후속으로 만든 게임으로, 한국에서는 복제 기판에 'Gallag'로 적혀 있어 '갤러그'로 알려졌습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "보스가 트랙터 빔으로 비행기를 붙잡는 1981 아케이드 슈팅",
+     "difWhy": "'듀얼 파이터 슈팅' — 게임 관심층",
+     "wor": 3,
+     "worWhy": "추억의 게임 제목",
+     "acc": 3,
+     "accWhy": "e스포츠·게임 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'갤럭시안' 후속 남코 슈팅 게임",
+     "difWhy": "듀얼 파이터 게임 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 게임 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1981년 남코가 내놓은, '갤럭시안'의 후속 아케이드 슈팅 게임입니다. 적 보스가 트랙터 빔으로 플레이어의 비행기를 붙잡아 가는데, 그 보스를 쏘아 비행기를 구해 내면 두 대가 나란히 붙은 '듀얼 파이터'가 됩니다. 이 게임은 무엇일까요?",
+     "beforeExplanation": "한국에서는 복제 기판에 'Gallag'로 적혀 있어 '갤러그'로 알려졌고, '벌레잡기'라고도 불렸습니다.",
+     "removedCue": "'갤럭시안'의 후속 · 남코",
+     "addedCue": "(빼기만) 트랙터 빔 · 듀얼 파이터",
+     "why": "갤럭시안 후속이라는 계보가 관심층 충분 단서라 해설로 내리고 게임 시스템 세부만 남김"
+    },
+    "generalHint": "셋째 판부터 네 판마다 적이 총을 쏘지 않고 정해진 대형으로 날아가기만 하는 보너스 판이 나온다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "대중",
+    "genre": "게임",
+    "work": "갤러그",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Galaga",
+     "https://ko.wikipedia.org/wiki/갤러그"
+    ],
+    "facts": [
+     {
+      "claim": "갤럭시안 후속, 남코 1981",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Galaga",
+      "note": "It is the sequel to 1979's Galaxian ... was released in Japan in September 1981."
+     },
+     {
+      "claim": "보스 갤러가의 트랙터 빔",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Galaga",
+      "note": "These enemies can use a tractor beam to capture the player's ship"
+     },
+     {
+      "claim": "구출하면 듀얼 파이터",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Galaga",
+      "note": "will result in the captured Fighter being rescued, forming a dual-fighter with additional firepower"
+     },
+     {
+      "claim": "한국 Gallag·벌레잡기",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/갤러그",
+      "note": "대한민국에서는 갤러가의 복제 기판 \"Galaga\"에서 \"Gallag\"로 되어 있어 ... 갤러그 혹은 벌레잡기란 이름으로 알려져 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Galaga"
+    ],
+    "hintNote": "the stage falls on the third stage and every fourth one after it, and the aliens fly in a preset formation without firing at the player.",
+    "easiestCue": "보스의 트랙터 빔과 '듀얼 파이터'",
+    "targetWhy": "듀얼 파이터 시스템은 그 게임을 해 본 사람의 팬 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "듀얼 파이터는 해 본 사람이면 떠올림 — 3 가능",
+    "pairCheck": null,
+    "dbCheck": "갤러그 · 갤러가 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "esports/1#g005-M2-21",
+   "seed": {
+    "subject": "심시티",
+    "aspect": "대중",
+    "ref": "M2-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "게임 'Raid on Bungeling Bay'를 만들던 개발자는 게임을 하는 것보다 레벨 에디터로 섬을 꾸미는 일이 더 즐거웠습니다. 여기서 출발한 새 게임은 이길 수도 질 수도 없다는 점 때문에 팔리기 어렵다고 여겨졌고 브로더번드도 출시를 거절해, 결국 1989년 작은 소프트웨어 회사를 통해 나왔습니다. 이 게임은 무엇일까요?",
+    "answer": "심시티",
+    "acceptedAnswers": [
+     "SimCity"
+    ],
+    "originalTitleVariants": [
+     "SimCity"
+    ],
+    "variantCheck": "원제 영문 SimCity(B10)",
+    "explanation": "처음 붙인 작업 제목은 '마이크로폴리스(Micropolis)'였습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "이길 수도 질 수도 없는 게임, 1989년 출시",
+     "difWhy": "'승패 없는 1989년 게임' — 게임 애호가",
+     "wor": 3,
+     "worWhy": "유명 게임 탄생 일화",
+     "acc": 3,
+     "accWhy": "e스포츠·게임 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "윌 라이트, 1989년 맥시스를 통해 나온 게임",
+     "difWhy": "'윌 라이트·맥시스 1989' — 게임 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "누구나 아는 게임 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "윌 라이트는 게임 'Raid on Bungeling Bay'를 만들면서, 게임을 하는 것보다 레벨 에디터로 섬을 꾸미는 일이 더 즐거웠습니다. 여기서 출발해 브로더번드가 출시를 거절했다가 1989년 맥시스를 통해 나온 게임은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "윌 라이트 · 맥시스",
+     "addedCue": "이길 수도 질 수도 없는 게임이라 팔기 어렵다고 여겨져 브로더번드가 거절",
+     "why": "개발자 이름·회사 이름을 빼고 개발 일화 둘을 엮음"
+    },
+    "generalHint": "이 게임을 펴내려고 개발자 윌 라이트와 제프 브라운이 1987년 회사를 함께 세웠다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "대중",
+    "genre": "게임",
+    "work": "심시티",
+    "sources": [
+     "https://en.wikipedia.org/wiki/SimCity_(1989_video_game)"
+    ],
+    "facts": [
+     {
+      "claim": "Raid on Bungeling Bay 레벨 에디터로 섬 꾸미기가 더 즐거움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/SimCity_(1989_video_game)",
+      "note": "While working on Raid on Bungeling Bay, Wright found he enjoyed designing the islands in the level editor rather than playing the actual game"
+     },
+     {
+      "claim": "브로더번드 거절, 맥시스 출시, 1989",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/SimCity_(1989_video_game)",
+      "note": "Broderbund declined to publish the game ... Jeff Braun, founder of the small software company Maxis, agreed to publish SimCity ... the game came out for the Amiga and Macintosh in 1989"
+     },
+     {
+      "claim": "이길 수도 질 수도 없어 출판사들이 팔 수 있다고 믿지 않았고, 브로더번드가 출시를 거절",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/SimCity_(1989_video_game)",
+      "note": "the game \"could neither be won or lost\" … publishers \"did not believe it was possible to market and sell such a game successfully.\" … \"Broderbund declined to publish the title when Wright proposed it.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Maxis"
+    ],
+    "hintNote": "Maxis was founded in 1987 by Will Wright and Jeff Braun to help publish SimCity on home computers.",
+    "easiestCue": "'Raid on Bungeling Bay' 개발자가 레벨 에디터에서 출발해 만든 1989년 게임",
+    "targetWhy": "Raid on Bungeling Bay·브로더번드 거절 일화는 게임 애호가 수준 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "장르·플레이 설명 없이 비화만",
+    "pairCheck": null,
+    "dbCheck": "심시티 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

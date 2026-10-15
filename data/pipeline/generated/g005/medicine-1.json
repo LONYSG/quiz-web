@@ -1,0 +1,187 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "medicine/1",
+  "midKey": "medicine",
+  "subName": "질병",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/1#g005-C1-01",
+   "seed": {
+    "subject": "한센병",
+    "aspect": null,
+    "ref": "C1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 병을 일으키는 세균은 숙주 조직 밖에서는 기를 수 없어, 생쥐나 아르마딜로 같은 실험동물을 써서 길러 연구합니다. 사람은 아르마딜로를 만지거나 그 고기를 먹다가 이 병에 걸리기도 하는데, 이 병은 무엇일까요?",
+    "answer": "한센병",
+    "acceptedAnswers": [
+     "나병"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '한센병' 문서가 '나병(한센병)' 으로 두 이름을 함께 씀",
+    "explanation": "다미앵 신부는 1873년부터 하와이 몰로카이섬의 환자 마을에서 환자들을 돌보다 자신도 이 병에 걸려 1889년 숨졌습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "아르마딜로를 만지거나 먹다가 걸리는 병",
+     "difWhy": "'아르마딜로 매개 병' — 대학 교양 의학",
+     "wor": 4,
+     "worWhy": "교양 — 감염병",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "다미앵 신부 + 몰로카이 격리 마을의 병",
+     "difWhy": "격리 마을의 병 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 질병 상식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "하와이 몰로카이섬의 칼라우파파 반도에는 이 병에 걸린 사람들을 떼어 놓아 살게 한 마을이 있었습니다. 다미앵 신부는 1873년부터 그곳에서 환자들을 돌보다 자신도 이 병에 걸려 1889년 숨졌습니다. 아르마딜로를 만지거나 그 고기를 먹다가 옮기도 하는 이 병은 무엇일까요?",
+     "beforeExplanation": "병원균은 1873년 노르웨이 의사 아르메우에르 한센이 찾아냈고, 병 이름도 그의 이름에서 왔습니다.",
+     "removedCue": "다미앵 신부 · 몰로카이 격리 마을",
+     "addedCue": "병원균을 배지에서 기르지 못해 생쥐·아르마딜로로 기름",
+     "why": "유명 인물·격리 마을을 해설로 옮기고 병원균 배양 세부와 아르마딜로 전파를 엮음"
+    },
+    "generalHint": "1873년 노르웨이의 한 의사가 원인균을 찾아내, 병을 일으키는 세균 가운데 가장 먼저 밝혀진 것들에 든다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Father_Damien",
+     "https://en.wikipedia.org/wiki/Leprosy"
+    ],
+    "facts": [
+     {
+      "claim": "다미앵 신부는 1873년부터 1889년 죽을 때까지 몰로카이의 환자 마을에서 일했고 그 병에 걸려 숨졌다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Father_Damien",
+      "note": "He ministered to a leper colony in Molokaʻi, Kingdom of Hawaii, from 1873 until his death in 1889. / Damien contracted leprosy. / Damien died of leprosy at Kalawao on 15 April 1889 (마을은 Kalaupapa 반도의 Kalawao)"
+     },
+     {
+      "claim": "아르마딜로를 만지거나 고기를 먹어 사람이 옮을 수 있다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leprosy",
+      "note": "Humans can acquire a leprosy infection from armadillos by handling them or consuming armadillo meat."
+     },
+     {
+      "claim": "병원균은 숙주 조직 밖에서 배양할 수 없고 생쥐·아르마딜로로 기름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leprosy",
+      "note": "cannot grow or be cultured outside of host tissues. However, they can be grown using research animals such as mice and armadillos."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Leprosy"
+    ],
+    "hintNote": "Norwegian physician Gerhard Armauer Hansen (1841–1912) discovered M. leprae in 1873 ... one of the first species of pathogenic bacteria to be identified.",
+    "easiestCue": "아르마딜로를 만지거나 먹어서 옮는 병",
+    "targetWhy": "아르마딜로 전파·배양 불가는 대학 교양(미생물) 세부, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "병 이름은 누구나 알고, 단서는 하와이 격리 마을 · 아르마딜로라는 교과서 밖 세부",
+    "pairCheck": null,
+    "dbCheck": "한센병·나병 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "medicine/1#g005-C1-05",
+   "seed": {
+    "subject": "말라리아",
+    "aspect": null,
+    "ref": "C1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1880년 알제리 콘스탄틴의 군 병원으로 돌아온 프랑스 군의관 라브랑은, 막 숨진 환자에게서 이 병의 병원체를 찾아냈습니다. 그는 이 일로 1907년 노벨 생리의학상을 받았는데, 이 병은 무엇일까요?",
+    "answer": "말라리아",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "고대 로마에서는 이 병이 너무 흔해 '로마 열병'이라 불렸습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 5,
+     "easiestCue": "라브랑이 병원체를 찾아내 1907년 노벨 생리의학상",
+     "difWhy": "'라브랑의 병원체 발견' — 의학사 전공",
+     "wor": 3,
+     "worWhy": "질병 발견사 이야깃거리",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "피에서 이 병을 일으키는 원생생물을 찾아냄",
+     "difWhy": "'원생생물 병원체 질병' — 고교 생명과학",
+     "wor": 4,
+     "worWhy": "질병 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1880년 알제리 콘스탄틴의 군 병원으로 돌아온 프랑스 군의관 라브랑은, 막 숨진 환자의 피에서 이 병을 일으키는 원생생물을 찾아냈습니다. 그는 이 일로 1907년 노벨 생리의학상을 받았습니다. 이 병은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "피에서 이 병을 일으키는 원생생물을 찾아냄",
+     "addedCue": "(새 단서 없음) 라브랑·콘스탄틴 군 병원·1907년 노벨상만 남김",
+     "why": "'피 속 원생생물 병원체' 는 고교 생명과학의 말라리아 정의로 바로 풀려 빼고, 발견자와 발견 장소만으로 묻게 함"
+    },
+    "generalHint": "2015년 노벨 생리의학상을 받은 투유유는 개똥쑥에서 이 병의 치료 물질을 찾아냈다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Alphonse_Laveran",
+     "https://en.wikipedia.org/wiki/Malaria"
+    ],
+    "facts": [
+     {
+      "claim": "1880년 알제리 콘스탄틴의 군 병원에서 원충을 찾았다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alphonse_Laveran",
+      "note": "Soon after he returned to the military hospital in Constantine, Algeria, in 1880 ... identified the parasite in a blood sample from a patient who had just died of malaria / discovered the cause of malaria as a protozoan"
+     },
+     {
+      "claim": "1907년 노벨상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alphonse_Laveran",
+      "note": "Nobel Prize 1907 in recognition of his work on the role played by protozoa in causing diseases"
+     },
+     {
+      "claim": "고대 로마에서 로마 열병이라 불렸다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Malaria",
+      "note": "the disease was so pervasive in Rome that it was known as the \"Roman fever\"."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tu_Youyou"
+    ],
+    "hintNote": "sweet wormwood (Artemisia annua) ... Nobel Prize in Physiology or Medicine on 5 October 2015, for her discoveries concerning a novel therapy against Malaria",
+    "easiestCue": "라브랑이 병원체를 찾아 1907년 노벨상을 받은 병",
+    "targetWhy": "라브랑의 발견은 의학사 대학 교양 — 병원체 정체 단서 없음 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'원생생물이 일으키는 병' 범주가 말라리아로 쏠림 — 범주 단서로 3 이 될 수 있음",
+    "pairCheck": null,
+    "dbCheck": "말라리아 new",
+    "warn": []
+   }
+  }
+ ]
+}

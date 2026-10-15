@@ -1,0 +1,97 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "society/4",
+  "midKey": "society",
+  "subName": "사회학 개념",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "society/4#g005-H1-13",
+   "seed": {
+    "subject": "자기실현적 예언",
+    "aspect": null,
+    "ref": "H1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "철학자 칼 포퍼가 '오이디푸스 효과'라고 부른 현상과 같은 갈래로, 사회학자 로버트 머턴이 이름 붙인 개념은 무엇일까요?",
+    "answer": "자기실현적 예언",
+    "acceptedAnswers": [
+     "자기 충족적 예언",
+     "자기 성취적 예언"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '자기실현적 예언' 본문: \"자기 충족적 예언\", \"자기 성취적 예언\"이라고도 부른다",
+    "explanation": "머턴은 멀쩡한 마을 은행이 곧 파산한다는 소문에 예금자들이 몰려가 정말로 은행이 무너지는 예로 이를 설명했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "사회학자 로버트 머턴이 이름 붙인 개념",
+     "difWhy": "'머턴의 개념' — 대학 교양 사회학",
+     "wor": 4,
+     "worWhy": "교양 — 사회학 기본 어휘",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "상황을 실재라고 규정하면 그 결과도 실재 + 은행 소문 예",
+     "difWhy": "뱅크런 예시 개념 — 고교 사회·문화",
+     "wor": 4,
+     "worWhy": "교양 — 사회학 기본 개념"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1928년 토머스 부부는 '사람들이 어떤 상황을 실재라고 규정하면 그 결과도 실재가 된다'는 명제를 내놓았습니다. 사회학자 로버트 머턴은 이를 이어받아, 멀쩡한 마을 은행이 곧 파산한다는 소문에 예금자들이 몰려가 정말로 은행이 무너지는 예를 들었습니다. 머턴이 이 예로 설명하며 이름 붙인 개념은?",
+     "beforeExplanation": "머턴은 아노미 이론을 발전시키기도 했으며, 이 은행 이야기를 \"붕괴의 예언이 스스로를 실현했다\"고 정리했습니다.",
+     "removedCue": "토머스 정리('상황을 실재라 규정하면 결과도 실재') + 은행 소문 예",
+     "addedCue": "포퍼의 '오이디푸스 효과' + 머턴이 이름 붙인 개념",
+     "why": "교과서 정의 문장(토머스 정리)과 대표 예(뱅크런)를 빼고 포퍼의 별칭으로 바꿈 — 은행 예는 해설로"
+    },
+    "generalHint": "머턴은 '사람들이 상황을 실재라 규정하면 그 결과도 실재가 된다'는 토머스 정리의 연구를 이어 이 말을 지었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Self-fulfilling_prophecy"
+    ],
+    "facts": [
+     {
+      "claim": "머턴이 용어를 만듦, 은행 파산 소문 예",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Self-fulfilling_prophecy",
+      "note": "The phrase \"self-fulfilling prophecy\" was coined by Robert K. Merton … \"In his illustration, rumors spread about the town that the local bank is going to file for bankruptcy\" … \"The prophecy of collapse led to its own fulfillment.\" / ko: 로버트 머튼이 토마스의 이론을 바탕으로 \"자기 충족적 예언\"이라는 용어를 만들었습니다."
+     },
+     {
+      "claim": "포퍼는 예측이 예측된 사건에 영향을 주는 것을 오이디푸스 효과라 불렀다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Self-fulfilling_prophecy",
+      "note": "Popper: \"One of the ideas I had discussed in The Poverty of Historicism was the influence of a prediction upon the event predicted.\" … he called this the Oedipus effect (the oracle shaped the events that fulfilled its prophecy)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Self-fulfilling_prophecy"
+    ],
+    "hintNote": "If men define situations as real, they are real in their consequences. ... Robert K. Merton, continued the research, and is credited with coining the term",
+    "easiestCue": "포퍼가 '오이디푸스 효과'라 부른 현상",
+    "targetWhy": "포퍼의 오이디푸스 효과는 대학 교양(과학철학·사회학) 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "은행 예가 개념을 보여 주어 관심층이 짐작할 수 있음(3 가능). 뱅크런으로 오답 칠 사람은 '머턴이 이름 붙인 개념'으로 막음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0 (세 표기 모두). 마태 효과(4643)도 머턴이지만 지식이 다름",
+    "warn": []
+   }
+  }
+ ]
+}

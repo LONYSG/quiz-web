@@ -1,0 +1,184 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "human-body/2",
+  "midKey": "human-body",
+  "subName": "장기·순환",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/2#g005-C1-07",
+   "seed": {
+    "subject": "비장",
+    "aspect": null,
+    "ref": "C1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "맨몸 잠수로 이름난 동남아시아의 바다 유목민 바자우족은, 이웃한 육지 부족 살루안족보다 이 장기가 50%쯤 더 크다는 연구 결과가 있습니다. 옛 서양 의학에서 네 가지 체액 가운데 검은 담즙을 담는 곳으로 여겨져 우울과 이어진 이 장기는 무엇일까요?",
+    "answer": "비장",
+    "acceptedAnswers": [
+     "지라"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "지라는 비장의 우리말 이름(교과서에서 함께 씀)",
+    "explanation": "깊이 잠수하는 바다표범 무리는 적혈구를 쌓아 두는 이 장기가 아주 큽니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "네 가지 체액 가운데 검은 담즙을 담는 장기",
+     "difWhy": "'검은 담즙의 장기' — 대학 교양 의학사",
+     "wor": 4,
+     "worWhy": "교양 — 비장·4체액설·잠수 적응",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "적혈구를 쌓아 두는 장기",
+     "difWhy": "'적혈구 저장 장기' — 고교 생명과학",
+     "wor": 4,
+     "worWhy": "인체 교양 — 장기 기능"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "맨몸 잠수로 이름난 동남아시아의 바다 유목민 바자우족은, 이웃한 육지 부족 살루안족보다 이 장기가 50%쯤 더 크다는 연구 결과가 있습니다. 깊이 잠수하는 바다표범 무리도 적혈구를 쌓아 두는 이 장기가 아주 큽니다. 이 장기는 무엇일까요?",
+     "beforeExplanation": "옛 서양 의학에서는 네 가지 체액 가운데 검은 담즙을 담는 곳으로 여겨, 우울과 이어진 장기로 보았습니다.",
+     "removedCue": "적혈구를 쌓아 두는 장기",
+     "addedCue": "4체액설의 검은 담즙·우울과 이어진 장기",
+     "why": "고교 생명과학 기능 단서를 해설로 옮기고 의학사 세부와 엮음"
+    },
+    "generalHint": "이 장기의 붉은 속질에서는 대식세포가 낡거나 망가진 적혈구를 걸러 없앤다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bajau_people",
+     "https://en.wikipedia.org/wiki/Spleen"
+    ],
+    "facts": [
+     {
+      "claim": "바자우족은 맨몸 잠수로 이름나 있고 비장이 이웃 육지 부족 살루안족보다 약 50% 크다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bajau_people",
+      "note": "Sama-Bajau are noted for their exceptional abilities in free-diving. / Bajau spleens are about 50 percent larger than those of a neighbouring land-based group, the Saluan."
+     },
+     {
+      "claim": "비장은 검은 담즙을 담는 곳으로 여겨졌고 우울과 이어졌다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Spleen",
+      "note": "the spleen was believed to be a reservoir for an elusive fluid known as \"black bile\" (one of the four humours) / In various cultures, the organ has been linked to melancholia."
+     },
+     {
+      "claim": "깊이 잠수하는 기각류는 적혈구 저장 때문에 비장이 매우 크다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Spleen",
+      "note": "in deep-diving seals (pinnipeds), the spleen can be massive, due to their function of storing red blood cells"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Spleen"
+    ],
+    "hintNote": "Macrophages in the red pulp remove old or damaged red blood cells",
+    "easiestCue": "바자우족에서 50% 더 큰 장기 / 검은 담즙을 담는다던 장기",
+    "targetWhy": "바자우족 연구·4체액설 장기 대응은 대학 교양 — 4 노림",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "장기는 누구나 알고, 잠수 적응은 몰랐다가 '아 그렇구나' 할 사실",
+    "pairCheck": null,
+    "dbCheck": "비장·지라 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "human-body/2#g005-C1-10",
+   "seed": {
+    "subject": "모세혈관",
+    "aspect": null,
+    "ref": "C1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1661년 이탈리아의 마르첼로 말피기는 양 같은 큰 짐승은 너무 커서 대신 개구리의 허파를 확대해 들여다보다가 이 혈관을 관찰했습니다. 말피기가 찾아낸 이 혈관은 무엇일까요?",
+    "answer": "모세혈관",
+    "acceptedAnswers": [
+     "실핏줄"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "실핏줄은 모세혈관의 우리말로 중학 교과·사전에 함께 나옴",
+    "explanation": "콩팥의 말피기 소체, 곤충의 말피기관처럼 그의 이름이 붙은 몸의 구조가 여럿입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 말피기 + 개구리 허파를 확대해 본 혈관",
+     "difWhy": "'말피기가 확대해 본 혈관' — 고교 생명과학",
+     "wor": 4,
+     "worWhy": "과학사 교양 — 기본 혈관",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "하비의 혈액 순환설을 뒷받침한, 말피기가 찾은 혈관",
+     "difWhy": "'순환설 뒷받침한 가는 혈관' — 고교 생명과학",
+     "wor": 5,
+     "worWhy": "교과 — 혈관 구조"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1661년 이탈리아의 마르첼로 말피기는 양 같은 큰 짐승 대신 개구리의 허파를 확대해 들여다보다가 이 구조를 찾아냈습니다. 이 발견은 윌리엄 하비의 혈액 순환설을 뒷받침했습니다. 말피기가 찾아낸 이 혈관은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "하비의 혈액 순환설을 뒷받침",
+     "addedCue": "(새 단서 없음 — 말피기·개구리 허파로)",
+     "why": "고교 생명과학의 순환설 연결을 빼 말피기 관찰 세부만 남김"
+    },
+    "generalHint": "이 발견은 윌리엄 하비가 찾지 못한, 동맥과 정맥을 잇는 고리를 채워 그의 혈액 순환설을 뒷받침했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Marcello_Malpighi"
+    ],
+    "facts": [
+     {
+      "claim": "1661년 말피기가 개구리 허파에서 모세혈관을 관찰했다(양 같은 큰 짐승은 너무 커서 개구리를 썼다)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Marcello_Malpighi",
+      "note": "In 1661, Malpighi observed capillary structures in frog lungs. He used frogs because larger animals like sheep were too big to show the capillary network under magnification."
+     },
+     {
+      "claim": "콩팥의 말피기 소체, 곤충의 말피기관 등 그의 이름이 붙은 구조가 여럿",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Marcello_Malpighi",
+      "note": "Malpighi's name is borne by several physiological features related to the biological excretory system: Malpighian corpuscles and Malpighian pyramids (kidneys), the Malpighian tubule system (insects) ..."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Marcello_Malpighi"
+    ],
+    "hintNote": "discovered the link between arteries and veins that had eluded William Harvey / This discovery of capillaries also contributed to William Harvey's theory of blood circulation.",
+    "easiestCue": "1661년 말피기가 개구리 허파에서 찾은 혈관",
+    "targetWhy": "말피기와 모세혈관 발견의 연결은 대학 교양(과학사), 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'확대해야 보이는 혈관' 이 범주 단서가 되어 중학 지식으로 추리될 여지",
+    "pairCheck": null,
+    "dbCheck": "모세혈관·실핏줄 new",
+    "warn": [
+     "정답조각 혈관"
+    ]
+   }
+  }
+ ]
+}

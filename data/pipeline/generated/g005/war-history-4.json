@@ -1,0 +1,109 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "war-history/4",
+  "midKey": "war-history",
+  "subName": "냉전 이후",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "war-history/4#g005-H2-12",
+   "seed": {
+    "subject": "모가디슈 전투",
+    "aspect": null,
+    "ref": "H2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1993년 10월 3~4일, 한 아프리카 도시에서 군벌 세력을 잡으려던 미군의 작전 도중 헬기가 잇따라 격추되었고, 조종사 마이클 듀란트가 포로로 붙잡혔습니다. 미군 18명이 숨진 이 전투는 무엇일까요?",
+    "answer": "모가디슈 전투",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '모가디슈 전투 (1993년)' 문서 제목 · 조종사 표기 '마이클 듀란트'",
+    "explanation": "이 전투로 미군의 '고딕 서펜트 작전'은 막을 내렸고, 1995년 초까지 유엔군도 모두 소말리아에서 물러났습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1993년 10월 아프리카 도시, 미군 헬기 격추·18명 사망 전투",
+     "difWhy": "블랙호크 다운 사건 — 대학 교양·영화 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 현대 전투",
+     "acc": 3,
+     "accWhy": "전쟁·군사사 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1993년 10월 아프리카 도시, 미군 헬기 격추·18명 사망 전투",
+     "difWhy": "블랙호크 다운 사건 — 대학 교양·영화 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 현대 전투"
+    },
+    "rewrite": null,
+    "generalHint": "2001년 리들리 스콧은 이때 블랙 호크 헬기 두 대가 격추된 일을 전쟁 영화로 그렸다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Battle_of_Mogadishu_(1993)",
+     "https://ko.wikipedia.org/wiki/모가디슈_전투_(1993년)"
+    ],
+    "facts": [
+     {
+      "claim": "1993년 10월 3~4일, 모가디슈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Mogadishu_(1993)",
+      "note": "It was fought on 3–4 October 1993, in Mogadishu, Somalia"
+     },
+     {
+      "claim": "헬기가 잇따라 격추, 조종사 포로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Mogadishu_(1993)",
+      "note": "three Black Hawks were shot down … with two crashing deep in hostile territory, resulting in the capture of an American pilot (요지)"
+     },
+     {
+      "claim": "조종사 마이클 듀란트 포로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/모가디슈_전투_(1993년)",
+      "note": "유일하게 생존한 조종사인 준위 마이클 듀란트는 전쟁 포로가 되었으나 추후에 석방됐다."
+     },
+     {
+      "claim": "미군 18명 사망",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Mogadishu_(1993)",
+      "note": "Casualties included 18 dead American soldiers and 73 wounded"
+     },
+     {
+      "claim": "고딕 서펜트 작전 종료, 1995년 초 유엔군 철수",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Mogadishu_(1993)",
+      "note": "The battle led to the end of Operation Gothic Serpent. … By early 1995, all UN forces withdrew from Somalia."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Black_Hawk_Down_(film)"
+    ],
+    "hintNote": "Ridley Scott ... 2001 ... about two Black Hawk helicopters shot down during the Battle of Mogadishu.",
+    "easiestCue": "1993년 아프리카 도시에서 미군 헬기가 격추돼 18명 사망",
+    "targetWhy": "영화 '블랙 호크 다운'과 나라 이름 '소말리아'를 빼고 날짜·조종사 이름만 — 현대 군사사 애호가(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "영화를 본 사람은 '1993 미군 헬기 격추'로 바로 떠올려 3일 수도",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (걸프 전쟁 등 다른 대상)",
+    "warn": [
+     "정답조각 전투",
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

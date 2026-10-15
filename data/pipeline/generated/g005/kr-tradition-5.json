@@ -1,0 +1,265 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-tradition/5",
+  "midKey": "kr-tradition",
+  "subName": "관혼상제",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-tradition/5#g005-K4-27",
+   "seed": {
+    "subject": "회혼례",
+    "aspect": null,
+    "ref": "K4-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "다산 정약용이 마지막으로 남긴 시 「회근시」는 이 잔치를 치를 날을 사흘 앞두고 지은 것으로, 그는 바로 그날 일흔다섯 살로 눈을 감았습니다. 부부가 함께 맞는 이 잔치는 무엇일까요?",
+    "answer": "회혼례",
+    "acceptedAnswers": [
+     "회혼식"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "검색 결과 기사 문장 '지금도 회혼식이 치러지고' — 같은 잔치를 이르는 말로 실제 쓰임",
+    "explanation": "부부가 혼인하여 함께 맞이하는 예순 돌을 기념하는 잔치입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "다산 정약용이 이 잔치 사흘 앞두고 「회근시」를 짓고 그날 눈을 감음",
+     "difWhy": "'정약용 회근시' — 한국사 애호가",
+     "wor": 4,
+     "worWhy": "전통 의례 기본 어휘",
+     "acc": 5,
+     "accWhy": "전통문화·풍습 — 초등 교과·명절 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "부부가 혼인 예순 돌을 기념하는 잔치",
+     "difWhy": "'혼인 60주년 잔치' — 전통에 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "전통 의례 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "부부가 혼인하여 함께 맞이하는 예순 돌을 기념하는 잔치를 무엇이라 할까요?",
+     "beforeExplanation": "정약용은 이날을 사흘 앞두고 「회근시」를 지었고, 결혼 60주년이 되는 날 일흔다섯 살로 세상을 떠났다고 전한다.",
+     "removedCue": "부부가 혼인 예순 돌을 기념하는 잔치(정의 문장)",
+     "addedCue": "정약용이 이 잔치 사흘 전에 마지막 시 「회근시」를 짓고 그날 세상을 떠남",
+     "why": "정의 문장만으로 풀리던 1단 문제를 정의는 해설로 옮기고, 정약용의 최후 일화로 묻게 함"
+    },
+    "generalHint": "예부터 자녀 가운데 누구도 먼저 잃지 않아야 이 잔치를 치를 수 있다고 여겼다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=회혼례",
+     "https://www.etoday.co.kr/news/view/2446897"
+    ],
+    "facts": [
+     {
+      "claim": "회혼례는 부부가 혼인하여 함께 맞이하는 예순 돌을 기념하는 잔치",
+      "where": "e",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=회혼례",
+      "note": "회혼-례(回婚禮)「명사」 부부가 혼인하여 함께 맞이하는 예순 돌을 기념하는 잔치."
+     },
+     {
+      "claim": "정약용은 회근시를 쓰고 사흘 후 결혼 60주년 일에 75세로 눈을 감음",
+      "where": "q",
+      "url": "https://www.etoday.co.kr/news/view/2446897",
+      "note": "만 60년을 살다가 묘하게도 회혼일에 운명하였으니 … 회근시를 쓰고 사흘 후 결혼 60주년 일에 75세를 일기로 눈을 감았다."
+     },
+     {
+      "claim": "회근시는 회혼일 사흘 앞두고 쓴 다산 최후의 유작",
+      "where": "q",
+      "url": "https://www.etoday.co.kr/news/view/2446897",
+      "note": "회혼일을 사흘 앞두고 쓴 이 시는 다산 최후의 유작이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://www.seoul.co.kr/news/1993/04/13/19930413016001"
+    ],
+    "hintNote": "회혼례의 경우 결혼생활이 60주년이 되어야하는것과 동시에 어느 한자녀도 결손이 있어서는 안됩니다.",
+    "easiestCue": "정약용이 사흘 앞두고 「회근시」를 지은 부부의 잔치",
+    "targetWhy": "다산의 최후와 회근시는 전통·고전 애호가 수준 — 정의 문장 없음 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 봤을 법하고, 정약용 일화로 '아 그렇구나'가 된다",
+    "pairCheck": null,
+    "dbCheck": "회혼례 — new (활성 2401 회갑 · 3729 고희 와 다른 지식)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tradition/5#g005-K4-28",
+   "seed": {
+    "subject": "초혼",
+    "aspect": null,
+    "ref": "K4-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "사람이 숨을 거두면 죽은 이의 윗옷을 지붕 위로 던졌다가 끌어내려, 사자밥과 함께 대문 밖에 두거나 시신의 가슴 위에 덮어 두는 민간 의식이 있습니다. 이 의식은 무엇일까요?",
+    "answer": "초혼",
+    "acceptedAnswers": [
+     "고복"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '초혼' 문서 '고복(皐復)이라고도 한다' — 같은 의식의 다른 이름",
+    "explanation": "마당에서 죽은 이가 살던 동네와 이름을 대며 '복, 복, 복' 하고 부르는데, 몸을 떠난 넋을 불러 되살리려는 것입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "죽은 이의 윗옷을 지붕 위로 던졌다가 끌어내려 사자밥과 함께",
+     "difWhy": "'윗옷을 지붕에 던지는 상례' — 전통 상례 애호가",
+     "wor": 4,
+     "worWhy": "전통 상례 기본 어휘",
+     "acc": 5,
+     "accWhy": "전통문화·풍습 — 초등 교과·명절 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'복, 복, 복' 부르며 윗옷을 지붕에 던져 넋을 되살리려는 의식",
+     "difWhy": "'넋을 부르는 상례 의식' — 고교 국어·전통",
+     "wor": 4,
+     "worWhy": "전통 상례 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "사람이 숨을 거두면 마당에서 그가 살던 동네와 이름을 대며 '복, 복, 복' 하고 부른 뒤, 죽은 이의 윗옷을 지붕 위로 던지는 민간 의식이 있습니다. 사람이 죽는 것을 넋이 몸을 떠난 것으로 믿어 그를 되살리려던 이 의식은?",
+     "beforeExplanation": "지붕에 던진 옷은 끌어내려 사자밥과 함께 대문 밖에 두거나, 헛간 구석에 넣거나, 시신의 가슴 위에 덮어 두기도 한다.",
+     "removedCue": "'복, 복, 복' 부르기 + 넋이 떠난 것을 되살리려 함(뜻풀이)",
+     "addedCue": "던진 윗옷을 끌어내려 사자밥과 함께 대문 밖에 두거나 시신 가슴에 덮음",
+     "why": "'복·복·복' 과 넋 부르기는 이름 뜻(혼을 부름)을 풀어 주는 단서라 해설로 옮기고, 옷을 처리하는 절차 세부로 바꿈"
+    },
+    "generalHint": "김소월은 1925년 시집 '진달래꽃'에 이 의식의 이름을 제목으로 한 시를 실었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/초혼"
+    ],
+    "facts": [
+     {
+      "claim": "마당에서 '○○동리의 ○○○ 복·복·복' 부르고 윗옷을 지붕 위로 던짐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/초혼",
+      "note": "오늘날 민간에서는 마당에서 '○○동리의 ○○○복·복·복'이라고 부르고 죽은 이의 윗옷을 지붕위로 던진다."
+     },
+     {
+      "claim": "죽음을 혼이 나간 것으로 믿어 소생시키려는 신앙 행위, 고복이라고도 함",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/초혼",
+      "note": "초혼(招魂)은 혼을 부르는 민간 의식이다. 고복(皐復)이라고도 한다. … 사람이 죽는 것이 혼이 나간 것으로 믿고 나간 혼을 불러 사자(死者)를 소생시키려는 믿음에 연유한 신앙적 행위이다."
+     },
+     {
+      "claim": "던진 옷 처리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/초혼",
+      "note": "그 던져진 옷을 지붕에서 끌어내려 사자밥과 함께 대문 바깥에 놓아 두거나, 헛간 구석에 구겨 넣거나, 시체의 가슴 위에 덮어 두거나 한다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/초혼_(시)"
+    ],
+    "hintNote": "초혼(招魂)은 1925년 12월, 김소월이 펴낸 시집 《진달래꽃》에서 처음 발표된 시다.",
+    "easiestCue": "죽은 이의 윗옷을 지붕에 던지는 상례 의식",
+    "targetWhy": "옷 처리 절차는 전통 상례 애호가 — 뜻풀이 없음 → 4 (경계 3)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "시 제목으로 아는 말이 실제 상례 의식이라는 연결",
+    "pairCheck": null,
+    "dbCheck": "초혼 — new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tradition/5#g005-K4-29",
+   "seed": {
+    "subject": "만장",
+    "aspect": null,
+    "ref": "K4-29",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "죽은 이를 슬퍼하여 지은 글을 비단이나 종이에 적어 깃발처럼 만든 것으로, 주검을 산소로 옮길 때 상여 뒤에 들고 따라갑니다. 이것을 무엇이라 할까요?",
+    "answer": "만장",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "국어사전에는 '만사'나 '상여글'이라는 비슷한 말도 함께 올라 있다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "상여 뒤에 들고 따라가는 죽은 이를 슬퍼한 글 깃발",
+     "difWhy": "상례 용어 '만장' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 전통 상례",
+     "acc": 5,
+     "accWhy": "전통문화·풍습 — 초등 교과·명절 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "상여 뒤에 들고 따라가는 죽은 이를 슬퍼한 글 깃발",
+     "difWhy": "상례 용어 '만장' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 전통 상례"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "사전 정의가 유일한 단서이고 비슷한 말(만사·상여글)은 해설에 있으며, 문서로 확인되는 더 깊은 세부가 없음"
+    },
+    "generalHint": "이 글에는 고인의 학식·덕행·직위를 기리는 말을 적고, 장례가 끝나면 태운다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=만장"
+    ],
+    "facts": [
+     {
+      "claim": "만장(輓章): 죽은 이를 슬퍼하여 지은 글 또는 그 글을 비단·종이에 적어 기처럼 만든 것, 상여 뒤에 들고 따라감",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=만장",
+      "note": "만장(輓章) 죽은 이를 슬퍼하여 지은 글. 또는 그 글을 비단이나 종이에 적어 기(旗)처럼 만든 것. 주검을 산소로 옮길 때에 상여 뒤에 들고 따라간다.≒만사, 상여글."
+     },
+     {
+      "claim": "≒만사, 상여글",
+      "where": "e",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=만장",
+      "note": "≒만사, 상여글."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/만장"
+    ],
+    "hintNote": "(문서 요약) 고인의 학식과 덕행, 선행, 문장, 직위를 칭송 / 장례가 끝나면 만장을 태웁니다.",
+    "easiestCue": "상여 뒤에 들고 가는 추모 글 깃발",
+    "targetWhy": "장례 보도에서 '만장 행렬'로 들은 사람이 있어 3 경계, 정의만으로 이름을 대는 것은 관혼상제 애호가 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "큰 장례 보도에 나오는 말이라 관심층(3)일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "만장 — new",
+    "warn": []
+   }
+  }
+ ]
+}

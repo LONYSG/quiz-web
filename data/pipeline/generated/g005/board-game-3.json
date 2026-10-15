@@ -1,0 +1,110 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "board-game/3",
+  "midKey": "board-game",
+  "subName": "화투·카드",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "board-game/3#g005-L2-10",
+   "seed": {
+    "subject": "타로",
+    "aspect": null,
+    "ref": "L2-10",
+    "pairedWith": 2145
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2145,
+    "question": "1781년 프랑스의 앙투안 쿠르 드 제블랭은 이 카드를 처음 보자마자 이집트 사제들이 '토트의 책'을 그림으로 담아 둔 것이라고 확신했지만, 역사적 근거는 내놓지 못했습니다. 1789년 무렵에는 에테이야가 점술을 위해 따로 만든 첫 덱을 내놓은 이 카드는 무엇일까요?",
+    "answer": "타로",
+    "acceptedAnswers": [
+     "타로 카드"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '타로' 문서 제목(API) 확인 · '타로 카드'는 한국에서 흔히 붙여 부르는 꼴",
+    "explanation": "프랑스에서는 이 카드로 하는 '프렌치 타로'가 두 번째로 인기 있는 카드 게임으로 꼽힙니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "점술을 위해 만든 덱이 나온 카드",
+     "difWhy": "'점술 카드' — 방송·생활",
+     "wor": 3,
+     "worWhy": "이집트 기원설 이야깃거리",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "웨이트 지시로 패멀라 콜먼 스미스가 그린 카드",
+     "difWhy": "라이더-웨이트 덱 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 카드 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1781년 프랑스의 앙투안 쿠르 드 제블랭은 이 카드를 처음 보자마자 이집트 사제들이 '토트의 책'을 그림으로 담아 둔 것이라고 확신했지만, 역사적 근거는 내놓지 못했습니다. 1909년 12월 런던에서는 A. E. 웨이트의 지시에 따라 패멀라 콜먼 스미스가 그림을 그린 판이 처음 나왔습니다. 이 카드는?",
+     "beforeExplanation": null,
+     "removedCue": "웨이트 지시로 패멀라 콜먼 스미스가 그린 1909년 런던 판",
+     "addedCue": "1789년 무렵 에테이야의 첫 점술 전용 덱",
+     "why": "애호가에게 가장 알려진 라이더-웨이트 판을 빼고 18세기 점술화 세부로"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Antoine_Court_de_G%C3%A9belin",
+     "https://en.wikipedia.org/wiki/Tarot"
+    ],
+    "facts": [
+     {
+      "claim": "1781년 쿠르 드 제블랭, 처음 보고 이집트의 비밀이라 여김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Antoine_Court_de_G%C3%A9belin",
+      "note": "(volume viii, 1781) It was his immediate perception, the first time he saw the Tarot deck, that it held the secrets of the Egyptians."
+     },
+     {
+      "claim": "토트의 책을 이미지로 담음, 근거 없음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Antoine_Court_de_G%C3%A9belin",
+      "note": "Egyptian priests had distilled the ancient Book of Thoth into these images … without producing any historical evidence."
+     },
+     {
+      "claim": "프렌치 타로가 프랑스 2위 인기 카드 게임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tarot",
+      "note": "French Tarot itself is now the second most popular card game in France."
+     },
+     {
+      "claim": "에테이야가 1789년 무렵 점술 전용으로 만든 첫 덱",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tarot",
+      "note": "Etteilla was the first to produce a bespoke tarot deck specifically designed for occult purposes around 1789."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "쿠르 드 제블랭이 '토트의 책'이라 여긴 카드",
+    "targetWhy": "쿠르 드 제블랭·에테이야는 오컬트·카드 애호가 세부, 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'이집트 신비'에서 점술 카드로 한 걸음 추리될 여지",
+    "pairCheck": "1회차 #2145 는 '점술용이지만 본래 게임용', 해설은 '점술 용도는 18세기 이후' — 제블랭·토트의 책·웨이트 판은 1회차에 없음",
+    "dbCheck": "pair-or-different — 활성 #2145 와 같은 답, (가) 2회차",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

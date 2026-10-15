@@ -1,0 +1,107 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "world-geo/4",
+  "midKey": "world-geo",
+  "subName": "국경·영토",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/4#g005-H2-09",
+   "seed": {
+    "subject": "지브롤터",
+    "aspect": null,
+    "ref": "H2-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이곳으로 들어가는 큰길 윈스턴 처칠 애비뉴는 공항 활주로를 가로질러, 2023년 터널이 생기기 전까지 비행기가 뜨고 내릴 때마다 막혔습니다. 1704년 에스파냐 왕위 계승 전쟁 중 영국·네덜란드 연합군이 점령한 이 영국령은 어디일까요?",
+    "answer": "지브롤터",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1713년 위트레흐트 조약으로 영국에 넘어갔고, 이곳의 바바리마카크 원숭이가 떠나면 영국도 떠난다는 미신이 전해집니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "1704년 에스파냐 왕위 계승 전쟁 중 영국이 점령한 영국령",
+     "difWhy": "'에스파냐 왕위 계승 전쟁 영국령' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 영국령 지브롤터",
+     "acc": 4,
+     "accWhy": "세계 지리 — 고교 세계지리 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1713년 위트레흐트 조약으로 영국에 넘어간 곳",
+     "difWhy": "위트레흐트 조약 영국령 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 영국령 영토 분쟁지"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1704년 에스파냐 왕위 계승 전쟁 중 영국·네덜란드 연합군이 점령한 이곳은 1713년 위트레흐트 조약으로 영국에 넘어갔습니다. 2023년 터널이 생기기 전까지는 이곳으로 들어가는 큰길이 공항 활주로를 가로질러, 비행기가 뜨고 내릴 때마다 막혔던 이 영국령은 어디일까요?",
+     "beforeExplanation": "이곳에 사는 바바리마카크 원숭이가 떠나면 영국도 떠난다는 미신이 전해집니다.",
+     "removedCue": "1713년 위트레흐트 조약으로 영국에 넘어간 곳",
+     "addedCue": "큰길 이름 윈스턴 처칠 애비뉴 (남은 단서: 활주로 횡단 · 1704년 점령)",
+     "why": "교과서 조약 단서를 해설로 옮기고 도로·점령 세부로 엮음"
+    },
+    "generalHint": "이곳의 바위는 옛날 '헤라클레스의 기둥' 둘 가운데 북쪽 기둥으로 여겨졌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gibraltar_International_Airport",
+     "https://en.wikipedia.org/wiki/Gibraltar"
+    ],
+    "facts": [
+     {
+      "claim": "윈스턴 처칠 애비뉴가 활주로를 가로질러 이착륙 때 막힘, 2023년 3월 터널",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gibraltar_International_Airport",
+      "note": "Winston Churchill Avenue intersects the airport runway, and in the past had to be closed for aircraft movements. … the road closes when aircraft take off and land (more than 15 times per day). … Since March 2023 there is a tunnel which allows traffic to flow whilst aircraft are landing or taking off."
+     },
+     {
+      "claim": "1704년 에스파냐 왕위 계승 전쟁 중 영국·네덜란드군 점령",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gibraltar",
+      "note": "In 1704, Anglo-Dutch forces captured Gibraltar from Spain during the War of the Spanish Succession."
+     },
+     {
+      "claim": "1713년 위트레흐트 조약으로 영국에 할양",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gibraltar",
+      "note": "it was ceded to Great Britain in perpetuity under the Treaty of Utrecht in 1713."
+     },
+     {
+      "claim": "원숭이가 떠나면 영국도 떠난다는 미신",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gibraltar",
+      "note": "if the apes ever leave, so will the British (superstition — Barbary macaques)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Rock_of_Gibraltar"
+    ],
+    "hintNote": "The Rock of Gibraltar, the northern of the two historic Pillars of Hercules",
+    "easiestCue": "큰길이 활주로를 가로지르던 영국령",
+    "targetWhy": "활주로 횡단 도로·1704년 점령은 지리·세계사 애호가 세부 — 4 노림(활주로 일화가 방송으로 알려졌으면 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'에스파냐 곁 영국령' 으로 찍기 쉬움 — 위치 단서는 넣지 않았음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (지브롤터 해협 #2607·#3948 은 정규화가 다른 답·다른 지식 — 해협 아닌 영토)",
+    "warn": []
+   }
+  }
+ ]
+}

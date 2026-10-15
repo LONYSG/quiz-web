@@ -1,0 +1,350 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-history/2",
+  "midKey": "kr-history",
+  "subName": "고려",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/2#g005-K1-06",
+   "seed": {
+    "subject": "이자겸의 난",
+    "aspect": null,
+    "ref": "K1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려의 한 권신은 왕위를 빼앗으려고 왕에게 독이 든 떡을 올렸으나, 떡 속에 독이 든 것을 알고 있던 왕비, 곧 그의 넷째 딸 때문에 실패했다고 전합니다. 이 권신이 일으킨 사건은 무엇일까요?",
+    "answer": "이자겸의 난",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "사건이 진압된 뒤 그는 영광으로 유배되었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 왕위를 빼앗으려던 고려 권신 + 딸이 왕비",
+     "difWhy": "'고려 외척 권신의 왕위 찬탈' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 사건",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'십팔자가 왕이 된다' 도참을 믿은 고려 권신",
+     "difWhy": "'십팔자 도참 권신' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "고려의 한 권신은 '십팔자(十八子)가 왕이 된다'는 도참을 믿고 왕에게 독이 든 떡을 올렸으나, 왕비였던 그의 넷째 딸이 이를 막았다고 전합니다. 이 권신이 일으킨 사건은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'십팔자(十八子)가 왕이 된다' 도참",
+     "addedCue": "(도참 없이) 독이 든 떡 · 넷째 딸 왕비 일화만",
+     "why": "교과 단서(십팔자 도참)를 빼고 독 떡 일화로 좁힘"
+    },
+    "generalHint": "처음엔 그의 편에서 궁성을 장악했다가 뒤에 왕 쪽으로 돌아서 그를 잡은 무장이 척준경이다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이자겸의_난"
+    ],
+    "facts": [
+     {
+      "claim": "독이 든 떡으로 인종 독살을 꾀했으나 넷째 딸인 왕비가 막음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이자겸의_난",
+      "note": "독이 든 떡을 올려 인종을 독살하려 했으나, 넷째 딸인 왕비가 이를 막아 실패했습니다."
+     },
+     {
+      "claim": "영광으로 유배",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이자겸의_난",
+      "note": "결국 이자겸은 영광으로 유배되었습니다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이자겸의_난"
+    ],
+    "hintNote": "척준경은 이자겸의 사돈으로 ... 처음에는 이자겸 편에서 ... 궁궐을 장악했다 ... 이자겸을 불러내 체포하는 데 협력했다",
+    "easiestCue": "독이 든 떡을 넷째 딸 왕비가 막은 고려 권신",
+    "targetWhy": "독 떡 일화는 교과 밖 한국사 심화 — 4(사건 자체가 교과라 3 경계)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "十八子 파자가 李를 바로 가리켜, 고려 李씨 권신을 떠올리는 한 걸음이 짧다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g005-K1-07",
+   "seed": {
+    "subject": "처인성 전투",
+    "aspect": null,
+    "ref": "K1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려 때 승병 100여 명과 피란민 1,000여 명이 나서 몽골군을 물리친 싸움입니다. 이 공으로 그 땅의 부곡이 일반 군현으로 승격되었는데, 이 싸움은 무엇일까요?",
+    "answer": "처인성 전투",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "싸움을 이끈 김윤후는 임금이 내린 상장군 벼슬을 사양하고 받지 않았습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "승병·피란민이 몽골군을 물리친 싸움, 부곡이 군현으로 승격",
+     "difWhy": "'승병이 몽골군 격퇴·부곡 승격' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "고교 한국사 대몽 항쟁",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "용인 부곡의 성에서 몽골군을 물리침, 상장군 사양",
+     "difWhy": "'용인 부곡 성에서 몽골군 격퇴' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 대몽 항쟁"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "고려 때 지금의 경기도 용인 땅에 있던 한 부곡은, 그곳 성에서 몽골군을 물리친 공으로 일반 군현으로 승격되었습니다. 싸움을 이끈 사람은 왕이 내린 상장군 벼슬을 사양하고 받지 않았다고 합니다. 이 싸움은 무엇일까요?",
+     "beforeExplanation": "승병 100여 명과 피란민 1,000여 명이 싸움에 나섰다고 합니다.",
+     "removedCue": "지금의 용인 땅 + 싸움을 이끈 이의 상장군 사양",
+     "addedCue": "승병 100여 명과 피란민 1,000여 명의 참전",
+     "why": "교과서 단서(용인·김윤후의 상장군 사양)를 해설로 옮기고 참전 규모 세부로 바꿈"
+    },
+    "generalHint": "이 싸움을 이끈 승려는 1253년 충주산성에서도 몽골군을 막았고, 그때는 관노와 백정까지 상을 받았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/김윤후",
+     "https://ko.wikipedia.org/wiki/처인성_전투"
+    ],
+    "facts": [
+     {
+      "claim": "이 전투로 부곡이 일반 군현으로 승격",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김윤후",
+      "note": "처인부곡은 일반 군현으로 승격되었다."
+     },
+     {
+      "claim": "상장군을 내렸으나 사양",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/김윤후",
+      "note": "임금이 상장군을 주었으나 사양하고 받지 않았다."
+     },
+     {
+      "claim": "승병 100여 명과 피란민 1,000여 명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/처인성_전투",
+      "note": "고려 측은 김윤후가 지휘했고 승병 100여 명과 피란민 1,000여 명이 참여"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/김윤후"
+    ],
+    "hintNote": "그 공으로 감문위(監門衛) 섭상장군(攝上將軍)이 되고 그 밖의 공적이 있는 관노·백정에 이르기까지 상을 받았다. (1253년 충주산성 전투 대목)",
+    "easiestCue": "부곡이 군현으로 승격된 몽골 격퇴 싸움",
+    "targetWhy": "참전 규모는 심화 세부지만 '부곡 승격'이 고교 한국사에 나와 경계 3~4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 싸움을 결과의 세부로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g005-K1-08",
+   "seed": {
+    "subject": "황산대첩",
+    "aspect": null,
+    "ref": "K1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1380년 9월 왜구는 남원 인월역에 머물며 장차 북쪽으로 올라가겠다고 큰소리쳐 조정을 놀라게 했습니다. 이 왜구가 운봉을 넘어 정산봉에서 벌인 싸움에서 크게 무너졌는데, 이 싸움을 무엇이라 할까요?",
+    "answer": "황산대첩",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "조선 선조 10년(1577년) 전라도관찰사 박계현의 건의로 승전을 기리는 비가 세워졌고, 일제강점기에 파괴되었다가 1977년 다시 세워졌습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "1380년 남원 운봉에서 왜구가 크게 무너진 싸움",
+     "difWhy": "'1380 남원 운봉 왜구 격파' — 고교 한국사",
+     "wor": 4,
+     "worWhy": "한국사 주요 전투",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "아지발도를 두목으로 한 왜구를 무찌른 싸움",
+     "difWhy": "'아지발도·이성계' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 고려 말 왜구 격퇴"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1380년 9월 왜구는 남원 인월역에 머물며 장차 북쪽으로 올라가겠다고 큰소리쳐 조정을 놀라게 했습니다. 아지발도를 두목으로 한 이 왜구는 운봉을 넘어 정산봉에서 벌어진 싸움에서 크게 무너졌습니다. 이 싸움을 무엇이라 할까요?",
+     "beforeExplanation": null,
+     "removedCue": "아지발도를 두목으로 한 왜구(→ 이성계 대첩)",
+     "addedCue": "(새 단서 없음) 인월역 주둔·운봉·정산봉 지명만 남김",
+     "why": "아지발도는 이성계 대첩으로 바로 이어지는 교과서 단서라 빼고, 싸움 경과의 지명 세부만으로 묻게 함"
+    },
+    "generalHint": "이 싸움에서 크게 무너진 왜구의 두목은 아지발도라 불렸다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/황산대첩"
+    ],
+    "facts": [
+     {
+      "claim": "1380년 9월, 우왕 6년 왜구",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황산대첩",
+      "note": "고려 우왕 6년(1380년) 고려를 침입한 왜구(이른바 '경신년 왜구')를 9월…"
+     },
+     {
+      "claim": "인월역에 주둔하며 북상하겠다고 호언, 조정이 놀람",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황산대첩",
+      "note": "인월역(引月驛)에 주둔하면서 장차 북상하겠다고 호언하여 조정을 놀라게 하였다."
+     },
+     {
+      "claim": "운봉을 넘어 정산봉에서 전투",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황산대첩",
+      "note": "양측은 운봉을 넘어 황산 서북의 정산봉(鼎山峰)에서 치열한 전투를 벌였는데"
+     },
+     {
+      "claim": "선조 10년(1577) 박계현 건의로 비 건립, 일제강점기 파괴, 1977년 복원",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/황산대첩",
+      "note": "선조 10년(1577년) 전라도관찰사 박계현의 건의로 그 업적을 기리기 위해… 이 기념비는 일제강점기 때 파괴되었다가 1977년 새로 복원되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/황산대첩"
+    ],
+    "hintNote": "아지발도(阿只拔都)를 두목으로 한 왜구를 크게 물리쳤다.",
+    "easiestCue": "1380년 남원 인월역 왜구가 운봉을 넘어 무너진 싸움",
+    "targetWhy": "인월역·운봉·정산봉은 한능검 심화·고려사 애호가 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 대첩을 상대 쪽 세부로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g005-K1-09",
+   "seed": {
+    "subject": "동북 9성",
+    "aspect": null,
+    "ref": "K1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "『세종실록』 지리지는 고려가 공험진의 선춘령에 '고려지경'이라 새긴 비를 세웠다고 적었고, 조선은 4군 6진을 개척할 때 이 비를 찾게 했습니다. 고려가 이때 쌓은 성들을 묶어 무엇이라 할까요?",
+    "answer": "동북 9성",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "예종 4년(1109년) 고려 조정은 윤관 등의 반대에도 이 성들을 여진족에게 돌려주기로 했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "공험진 선춘령 '고려지경' 비, 고려가 쌓은 성들",
+     "difWhy": "'윤관 공험진 성들' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 고려 대외 관계",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'고려지경' 비 + 함주~공험진 성들",
+     "difWhy": "윤관의 축성 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 고려 대외관계"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "『세종실록』 지리지는 고려가 함주에서 공험진까지 성을 쌓고, 공험진의 선춘령에 '고려지경'이라 새긴 비를 세웠다고 적었습니다. 조선은 4군 6진을 개척할 때 이 비를 찾게 했습니다. 고려가 이때 쌓은 성들을 묶어 무엇이라 할까요?",
+     "beforeExplanation": null,
+     "removedCue": "함주에서 공험진까지 성을 쌓음",
+     "addedCue": "(새 단서 없음 — 선춘령 '고려지경' 비와 조선의 비 찾기로)",
+     "why": "성의 범위(교과서 지도)를 빼 비석 기록 세부만 남김"
+    },
+    "generalHint": "『고려사』 지리지는 이 성들의 자리로 함주·복주·길주·영주·웅주 등을 꼽는다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/동북_9성"
+    ],
+    "facts": [
+     {
+      "claim": "세종실록 지리지: 함주에서 공험진까지 9성을 쌓고 선춘령에 경계비, '고려지경'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동북_9성",
+      "note": "『세종실록 지리지』는 함주에서 공험진까지 9성을 쌓고, 공험진의 선춘령에 경계비를 세웠다고 기록합니다. 이 비석에는 '고려지경'이라는 글귀가 새겨졌다고 전해집니다."
+     },
+     {
+      "claim": "조선은 4군 6진 개척 때 선춘령 비석을 찾게 했다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동북_9성",
+      "note": "조선은 4군 6진을 개척할 때 선춘령 비석을 찾게 했고, 명과의 외교에서 이 지역을 조선 영토로 주장해 명의 인정을 받았습니다."
+     },
+     {
+      "claim": "1109년 윤관 등의 반대에도 여진에 반환 결정",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/동북_9성",
+      "note": "예종 4년(1109년) 조정은 윤관 등의 반대에도 9성을 여진족에게 돌려주기로 결정했습니다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동북_9성"
+    ],
+    "hintNote": "고려사 지리지에서는 9개의 성들의 위치를 함주(咸州, 함흥시)·복주(福州, 단천시)·길주(吉州, 길주군)·영주(英州)·웅주(雄州)·통태진·진양진·숭녕진·공험진이라고 기록하고 있다.",
+    "easiestCue": "공험진 선춘령 '고려지경' 비",
+    "targetWhy": "선춘령 비는 수능 심화(공험진 위치 논쟁) 세부, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서의 이름을 후대 기록의 세부로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0 (활성 #4470 별무반과 지식 다름)",
+    "warn": []
+   }
+  }
+ ]
+}

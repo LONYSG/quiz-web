@@ -1,0 +1,112 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "material/4",
+  "midKey": "material",
+  "subName": "토목 구조물",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "material/4#g005-C2-14",
+   "seed": {
+    "subject": "후버 댐",
+    "aspect": null,
+    "ref": "C2-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1930년대 이 댐을 지을 때 기술자들은 콘크리트를 한꺼번에 부으면 식는 데 125년이 걸리고 그 응력으로 댐이 갈라진다고 계산해, 기둥 모양 블록으로 나눠 붓고 블록 속 강철관에 강물과 냉동 공장의 찬물을 흘려 식혔습니다. 루스벨트 행정부가 '볼더 댐'이라 이름 붙였다가 1947년 의회가 원래 이름을 되살린 이 댐은 무엇일까요?",
+    "answer": "후버 댐",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1995년 시추 시험에서 이 댐의 콘크리트는 아직도 천천히 강도가 늘고 있는 것으로 나타났습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'볼더 댐'이라 불렸다가 1947년 원래 이름을 되살린 댐",
+     "difWhy": "'볼더 댐 개명' — 토목·미국사 애호가",
+     "wor": 3,
+     "worWhy": "유명 댐 공법 이야깃거리",
+     "acc": 2,
+     "accWhy": "재료·건설 기술 — 애호가 영역"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "미드호를 막고 있는 댐",
+     "difWhy": "미드호 댐 — 여행·지리 관심층",
+     "wor": 3,
+     "worWhy": "공학 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1930년대 이 댐을 지을 때 기술자들은 콘크리트를 한꺼번에 부으면 식는 데 125년이 걸리고 그 응력으로 댐이 갈라진다고 계산했습니다. 그래서 기둥 모양 블록으로 나눠 붓고, 블록 속 강철관에 강물과 냉동 공장의 찬물을 흘려 식혔습니다. 미드호를 막고 있는 이 댐은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "미드호를 막고 있는 댐",
+     "addedCue": "루스벨트 행정부의 '볼더 댐' 이름 · 1947년 의회가 원래 이름을 되살림",
+     "why": "지리 상식(미드호)을 빼고 이름 변천 세부와 냉각 공법을 엮음"
+    },
+    "generalHint": "네바다주와 애리조나주의 경계에 있으며, 콜로라도강을 막아 미드호를 이루었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hoover_Dam"
+    ],
+    "facts": [
+     {
+      "claim": "한 번에 부으면 식는 데 125년, 응력으로 갈라짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+      "note": "a single continuous pour would take 125 years to cool, and the resulting stresses would have caused the dam to crack"
+     },
+     {
+      "claim": "기둥 모양 블록으로 나눠 부음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+      "note": "concrete blocks in columns were poured"
+     },
+     {
+      "claim": "블록 속 강철관에 강물, 이어 냉동 공장의 찬물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+      "note": "Each form contained steel pipes; river water was first poured through the pipes, followed by ice-cold water from a refrigeration plant (요지)"
+     },
+     {
+      "claim": "1995 시추 시험 — 콘크리트 강도 계속 증가",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+      "note": "(core tests in 1995) Hoover Dam's concrete has continued to slowly gain strength"
+     },
+     {
+      "claim": "루스벨트 행정부가 '볼더 댐'으로 명명, 1947년 의회가 후버 댐 이름을 되살림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+      "note": "the Roosevelt administration named it Boulder Dam ... (1947) Congress reinstated the name Hoover Dam"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hoover_Dam"
+    ],
+    "hintNote": "Hoover Dam impounds Lake Mead ... on the boundary between the U.S. states of Nevada and Arizona, in Black Canyon on the Colorado River.",
+    "easiestCue": "한때 '볼더 댐'으로 불린 댐",
+    "targetWhy": "볼더 댐 이름 변천 · 125년 냉각 계산은 건축·역사 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1930년대 거대 댐' 이면 가장 유명한 후버 댐을 찍어 맞히는 사람이 있음 — 찍기 쉬움",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

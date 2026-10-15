@@ -1,0 +1,442 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-food/4",
+  "midKey": "kr-food",
+  "subName": "향토 음식",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/4#g005-K3-14",
+   "seed": {
+    "subject": "초당두부",
+    "aspect": null,
+    "ref": "K3-14",
+    "pairedWith": 2957
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2957,
+    "question": "허균·허난설헌의 아버지인 조선 중기 문인 허엽은 처가 고을에서 나는 맛이 특이한 샘물로 두부를 만들어 먹었는데, 그 맛이 사람들을 매료시켰다고 합니다. 이 이야기가 기원으로 전하는 두부는 무엇일까요?",
+    "answer": "초당두부",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "허엽이 발명했다는 설에는 문헌 증거가 없다는 지적도 있으며, 이 두부로 이름난 마을은 1990년대 이후 순두부를 중심으로 상업 활동이 활발해졌다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "허엽(초당)의 샘물 두부 이야기",
+     "difWhy": "허엽 샘물 두부 — 음식 관심층",
+     "wor": 3,
+     "worWhy": "향토 음식 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "허엽(초당)의 샘물 두부 이야기",
+     "difWhy": "허엽 샘물 두부 — 음식 관심층",
+     "wor": 3,
+     "worWhy": "향토 음식 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "허엽 일화가 정답 이름(초당)의 유래라 빼면 유일하지 않고, 다른 깊은 단서(바닷물 간수)는 같은 답 활성 #2957 질문에 이미 있음"
+    },
+    "generalHint": "이 두부로 이름난 동네에는 허균·허난설헌 기념공원과 강문해변이 함께 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/허엽",
+     "https://ko.wikipedia.org/wiki/초당두부"
+    ],
+    "facts": [
+     {
+      "claim": "허엽은 허균·허봉·허성·허난설헌의 아버지, 호는 초당",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/허엽",
+      "note": "자는 태휘(太輝), 호는 초당(草堂), 본관은 양천(陽川)이다. / 허균과 허봉, 허성, 허난설헌의 아버지이며"
+     },
+     {
+      "claim": "처가 강릉의 특이한 맛 샘물로 두부, 사람들을 매료",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/허엽",
+      "note": "그는 처가인 강원도 강릉에서 나는 특이한 맛의 샘물로 두부를 담가서 먹었는데, 그 맛이 사람들을 매료시켰다. / 강릉초당의 맑은 물로 두부를 만들어 초당두부의 기원이 되었다."
+     },
+     {
+      "claim": "허엽 발명설은 문헌 증거 없음, 1990년대 이후 순두부 상업 활동",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/초당두부",
+      "note": "조선 중기 문인 초당 허엽이 발명했다는 설이 있으나, 문헌적 증거는 없다. / 초당마을은 … 1990년대 이후 순두부를 중심으로 한 상업 활동이 활발해졌다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/초당동"
+    ],
+    "hintNote": "관광: 허균·허난설헌 기념공원과 기념관, 강문해변, 스카이베이 경포호텔, 초당두부마을 등이 있다.",
+    "easiestCue": "허난설헌 아버지 허엽(호 초당)이 기원으로 전하는 두부",
+    "targetWhy": "1회차의 '강릉·바닷물 간수' 를 빼고 허엽 일화로만 — 허엽의 호가 초당이라는 것은 한국사·향토 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름 유래가 인물을 거쳐 간다(뜻밖의 연결)",
+    "pairCheck": "1회차(#2957, 지역 특산·별칭)는 '동해 바닷물로 굳힌, 강릉 마을 이름이 붙은 두부' — 2회차는 강릉·바닷물을 쓰지 않고 허엽 일화로 묻는다. 1회차만 아는 사람은 허엽을 알아야 닿는다",
+    "dbCheck": "pair-or-different — #2957 (가) 2회차(다른 중분류 kr-geo 쪽 문항), 지식 다름",
+    "warn": [
+     "정답조각 두부"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/4#g005-K3-15",
+   "seed": {
+    "subject": "호두과자",
+    "aspect": null,
+    "ref": "K3-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1934년 제과 기술자 조귀금이 한 기차역 근처 가게에서 처음 만들었다고 알려진 과자입니다. 지금도 그 후손들이 가게를 운영하며 이 과자의 상표권을 갖고 있습니다. 이 과자는 무엇일까요?",
+    "answer": "호두과자",
+    "acceptedAnswers": [
+     "호도과자"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '호두과자' 문서 — 원조 가게의 상표가 '호도과자'로 적혀 있어 실제로 치는 표기",
+    "explanation": "조귀금은 충남 천안 사람으로, 처음 만든 가게는 천안역 근처에 있었다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "1934년 기차역 근처 가게에서 처음 만든 과자",
+     "difWhy": "'기차역 명물 과자' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "향토 과자 기원",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "가게 '학화'에서 처음 만든 과자",
+     "difWhy": "학화 호두과자 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 과자"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1934년 제과 기술자 조귀금이 한 기차역 근처의 가게 '학화'에서 처음 만들었다고 알려진 과자입니다. 지금도 그 후손들이 가게를 운영하며 상표권을 갖고 있다는 이 과자는 무엇일까요?",
+     "beforeExplanation": "조귀금은 충남 천안 사람으로, 가게는 천안역 근처에 있었다.",
+     "removedCue": "가게 이름 '학화'",
+     "addedCue": "(새로 넣지 않음) 조귀금 · 1934년",
+     "why": "상표로 널리 알려진 가게 이름을 빼 만든 사람으로 좁힘"
+    },
+    "generalHint": "광덕사에는 천연기념물로 지정된, 이 과자 이름 속 열매의 나무가 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/호두과자"
+    ],
+    "facts": [
+     {
+      "claim": "1934년 조귀금이 천안역 근처 학화호도과자에서 처음 만듦, 후손이 상표권 보유·운영",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/호두과자",
+      "note": "호두과자는 1934년 제과기술자였던 조귀금(충남 천안, 1907년 출생~1987년 사망)씨가 천안역 근처 \"학화호도과자\"에서 처음 만들었으며 현재에도 후손들이 호도과자 상표권을 보유하며 가게를 운영하고 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/광덕사"
+    ],
+    "hintNote": "천안 광덕사 호두나무(天安 廣德寺 호두나무) - 천연기념물 제398호",
+    "easiestCue": "1934년 조귀금이 기차역 근처에서 처음 만든 과자",
+    "targetWhy": "창시자 이름은 향토 음식 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'기차역 과자' 에서 휴게소 호두과자를 떠올리는 사람이 있어 3 쪽 위험",
+    "pairCheck": null,
+    "dbCheck": "new — 호두과자·호도과자 활성 없음",
+    "warn": [
+     "정답조각 과자"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/4#g005-K3-16",
+   "seed": {
+    "subject": "편수",
+    "aspect": null,
+    "ref": "K3-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "개성 지방에서 즐겨 먹는 여름철 별미 만두입니다. 시원한 맛을 내려고 오이나 호박 같은 채소로 소를 만들고, 네모나게 빚습니다. 이 만두를 무엇이라 할까요?",
+    "answer": "편수",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "한자로 흔히 片水라 쓰며, 19세기 황필수의 『명물기략』은 중국의 '편식(扁食)'을 잘못 읽어 생긴 이름이라고 전한다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "개성 지방 여름철 네모난 채소 만두",
+     "difWhy": "개성 여름 네모 만두 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "향토 음식 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "개성 지방 여름철 네모난 채소 만두",
+     "difWhy": "개성 여름 네모 만두 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "향토 음식 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "국물 없이 삶아 초간장에 찍어 먹거나, 양지머리 육수를 차게 식혀 띄워 먹는다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/편수"
+    ],
+    "facts": [
+     {
+      "claim": "개성 지방의 사각형 여름철 만두",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/편수",
+      "note": "편수는 조선민주주의인민공화국 개성 지방에서 즐겨먹는 만두의 일종으로, 채 썬 야채를 소로 넣어 사각형 모양으로 빚은 시원한 맛의 여름철 별미 음식이다."
+     },
+     {
+      "claim": "오이·호박 채소 소",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/편수",
+      "note": "만두와 달리 여름철 음식인 편수는 시원한 맛을 내기 위해 오이나 호박 같은 채소를 이용해서 소를 만든다."
+     },
+     {
+      "claim": "명물기략 — 편식을 잘못 읽어 편수",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/편수",
+      "note": "19세기 문헌인 황필수의 《명물기략》에서는 중국의 \"편식(扁食)\"을 잘못 읽어 \"편수\"가 되었다고 전한다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://encykorea.aks.ac.kr/Article/E0059843"
+    ],
+    "hintNote": "(문서 요약) Boiled without broth and dipped in sweet soy sauce (초간장). Served chilled, floating in cold broth made from boiled brisket (양지머리).",
+    "easiestCue": "개성의 네모난 여름 만두",
+    "targetWhy": "'편식' 이름 유래(정답 조각)는 해설로 — 개성 여름 만두의 이름은 향토·북한 음식 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 봤을 법한 이름(개성편수), 단서는 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/4#g005-K3-17",
+   "seed": {
+    "subject": "황남빵",
+    "aspect": null,
+    "ref": "K3-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1939년 제과인 최영화가 처음 만들었다고 알려진 빵으로, 지금은 그의 손자가 가업을 잇고 있습니다. 1978년 이 가게에서 일하던 김춘경이 독립해 따로 가게를 열었고, 그 뒤 두 가게 사이에는 상표 분쟁이 여러 차례 이어졌습니다. 그 가게가 있던 동네 이름에서 온 이 빵은?",
+    "answer": "황남빵",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "김춘경이 연 가게는 '경주빵'이라는 이름을 내걸었다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1939년 최영화가 처음 만든 동네 이름에서 온 빵",
+     "difWhy": "'최영화가 만든 빵' — 향토 음식 애호가",
+     "wor": 3,
+     "worWhy": "유명 향토빵 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "직원이 독립해 도시 이름 빵을 연, 동네 이름 원조 빵",
+     "difWhy": "'경주빵의 원조 빵' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "향토 음식 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1939년 제과인 최영화가 처음 만들었고, 지금은 그의 손자가 가업을 잇는 빵입니다. 1978년에는 이 가게에서 일하던 사람이 독립해 그 도시 이름을 붙인 빵으로 따로 가게를 열었습니다. 최영화의 가게가 있던 동네 이름에서 온 원조 빵의 이름은?",
+     "beforeExplanation": "기원은 1937년 설과 1939년 설이 함께 있고, 두 가게 사이에는 상표 분쟁이 여러 차례 이어졌다.",
+     "removedCue": "직원이 독립해 도시 이름을 붙인 빵(경주빵)으로 가게를 엶",
+     "addedCue": "(도시 이름 없이) 김춘경 독립 · 상표 분쟁",
+     "why": "'경주빵의 원조' 단서를 해설로 옮기고 인물·분쟁 세부로 좁힘"
+    },
+    "generalHint": "2025년 이 빵은 외교부 심사를 거쳐 APEC 정상회의 공식 디저트로 뽑혔다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/황남빵"
+    ],
+    "facts": [
+     {
+      "claim": "1939년 최영화가 처음 만듦, 손자 최진환이 가업 운영",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황남빵",
+      "note": "1939년 제과인 최영화에 의해 처음 만들어졌으며, 현재는 그의 손자 최진환이 가업을 이어 운영하고 있다."
+     },
+     {
+      "claim": "1978년 일하던 김춘경이 독립해 개업(경주빵 이름)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황남빵",
+      "note": "가게에서 일하던 김춘경이 독립하여 황남동 쪽샘 옆 현재의 경주빵 황남본점 자리에서 경주빵라는 이름으로 분리 개업하였다. (1978년 12월)"
+     },
+     {
+      "claim": "황남동에서 파는 빵이라 황남빵",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황남빵",
+      "note": "가게는 황남동에서 파는 빵이라는 뜻으로 황남빵이라 불리기 시작했다."
+     },
+     {
+      "claim": "두 가게 사이 상표 분쟁이 여러 차례",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황남빵",
+      "note": "기원은 1937년설과 1939년설이 병존하고 있으며 / 두 가게 사이의 상표 분쟁은 이후 여러 차례 이어졌다. (요지)"
+     },
+     {
+      "claim": "김춘경 가게는 '경주빵' 상호",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/황남빵",
+      "note": "(요지) 1978년 직원 김춘경이 독립해 '경주빵' 상호로 개업했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/황남빵"
+    ],
+    "hintNote": "2025년 황남빵은 대한민국 외교부 심사를 거쳐 APEC 정상회의 공식 디저트로 선정되며 그 명성을 다시 한번 확인하였다.",
+    "easiestCue": "제과인 최영화가 처음 만든 빵",
+    "targetWhy": "최영화 · 김춘경 · 상표 분쟁은 향토 음식 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'도시 이름 빵' 에서 경주빵→황남빵 두 걸음 — 관심층이면 3, 대부분은 4",
+    "pairCheck": null,
+    "dbCheck": "new — 황남빵·경주빵 활성 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/4#g005-K3-18",
+   "seed": {
+    "subject": "떡갈비",
+    "aspect": null,
+    "ref": "K3-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 초 문신 송희경(1376~1446)이 전했다는 이야기가 있는 전라남도의 고기 요리입니다. 이 지역에서는 유배 온 양반들이 요리법을 전했다고 하며, 지금 이름은 1960년대 후반부터 쓰이기 시작했습니다. 이 요리는 무엇일까요?",
+    "answer": "떡갈비",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "담양의 것이 가장 이름나며, 1950년대 광주 송정리에서는 소고기 반 돼지고기 반으로 만든 것을 처음 만들어 팔았다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "전남 고기 요리, 유배 양반이 전했다는 이야기",
+     "difWhy": "'전남 다진 고기 요리' — 음식 관심층",
+     "wor": 3,
+     "worWhy": "향토 음식 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "담양의 것이 가장 이름난 고기 요리",
+     "difWhy": "'담양 고기 요리' — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "향토 음식 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "조선 초 문신 송희경(1376~1446)이 전했다는 담양의 것이 가장 이름난 고기 요리입니다. 전라남도에서는 유배 온 양반들이 요리법을 전했다고 하며, 지금 이름은 1960년대 후반부터 쓰이기 시작했습니다. 이 요리는 무엇일까요?",
+     "beforeExplanation": "이름은 떡과 모양이 비슷해서 붙었고, 1950년대 광주 송정리에서는 소고기 반 돼지고기 반으로 만든 것을 처음 만들어 팔았다.",
+     "removedCue": "담양의 것이 가장 이름난 고기 요리",
+     "addedCue": "(빼기만) 송희경이 전했다는 전남 고기 요리 · 유배 양반 · 1960년대 후반 이름",
+     "why": "'담양 고기 요리'가 방송 수준 충분 단서라 해설로 내리고 송희경·유배 양반 내력으로 좁힘"
+    },
+    "generalHint": "광주에서는 오리고기로 빚어 숯불에 구운 것도 인기가 많다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/떡갈비"
+    ],
+    "facts": [
+     {
+      "claim": "전라남도 요리법은 유배 중인 양반들이 전함, 송희경이 전한 담양 떡갈비가 가장 유명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/떡갈비",
+      "note": "전라남도의 요리법은 유배 중인 양반들에 의해 전해진 것으로 전해지고 있다. 그중에서도 송희경 (1376~1446)이 전한 담양 떡갈비가 가장 유명하다."
+     },
+     {
+      "claim": "전라남도 요리법은 유배 중인 양반들이 전함, 송희경이 전한 담양 떡갈비가 가장 유명",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/떡갈비",
+      "note": "전라남도의 요리법은 유배 중인 양반들에 의해 전해진 것으로 전해지고 있다. 그중에서도 송희경 (1376~1446)이 전한 담양 떡갈비가 가장 유명하다."
+     },
+     {
+      "claim": "이 이름은 1960년대 후반~1970년대 초부터 쓰임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/떡갈비",
+      "note": "(요지) 이 단어는 1960년대 후반부터 1970년대 초반에 쓰이기 시작했고, 그전에는 '효갈비'라고 불렀다."
+     },
+     {
+      "claim": "떡과 모양이 비슷해 붙은 이름, 1950년대 광주 송정리 소·돼지 반반",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/떡갈비",
+      "note": "이름은 떡과 모양이 비슷해서 붙여진 이름이다. / 소고기 반 돼지고기로 만든 떡갈비는 1950년대 광주 송정리에서 최저자가 처음 만들어 판매했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/떡갈비"
+    ],
+    "hintNote": "광주에서는 오리고기로 만든 오리떡갈비도 인기가 많습니다.",
+    "easiestCue": "전남에 유배 온 양반들이 요리법을 전했다는 고기 요리",
+    "targetWhy": "송희경 전래설과 이름의 시기는 음식사 애호가 세부 — 다만 '전남 고기 요리' 범주로 짐작될 여지가 있어 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "담양=떡갈비를 아는 관심층이 많아 3 으로 읽힐 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

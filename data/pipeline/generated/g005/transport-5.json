@@ -1,0 +1,103 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "transport/5",
+  "midKey": "transport",
+  "subName": "도로·교통 체계",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "transport/5#g005-C2-22",
+   "seed": {
+    "subject": "브라에스의 역설",
+    "aspect": null,
+    "ref": "C2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1990년 '지구의 날'에 뉴욕 맨해튼 42번가를 막았더니 그 일대 정체가 오히려 줄었고, 서울에서도 청계천 복원으로 청계고가도로를 헐자 도심 교통이 빨라졌습니다. 이처럼 도로를 새로 놓으면 도리어 흐름이 막힐 수 있다는 이 역설을, 1968년 이를 지적한 독일 수학자의 이름을 따 무엇이라 할까요?",
+    "answer": "브라에스의 역설",
+    "acceptedAnswers": [
+     "브라에스 역설"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '브라에스의 역설'(en 문서 언어 연결) — '의' 를 뺀 꼴은 같은 이름이라 함께 받음",
+    "explanation": "운전자마다 가장 빠른 길을 고른 결과인 내시 균형이 전체로는 가장 나은 흐름이 아닐 수 있다는 점을 보여 줍니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "도로를 새로 놓으면 도리어 흐름이 막힐 수 있다는 역설",
+     "difWhy": "도로 추가 역설 — 대학 교양 수학·교통",
+     "wor": 4,
+     "worWhy": "교양 — 이름난 역설",
+     "acc": 4,
+     "accWhy": "자동차·교통 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "도로를 새로 놓으면 도리어 흐름이 막힐 수 있다는 역설",
+     "difWhy": "도로 추가 역설 — 대학 교양 수학·교통",
+     "wor": 4,
+     "worWhy": "교양 — 이름난 역설"
+    },
+    "rewrite": null,
+    "generalHint": "용수철 둘을 짧은 줄로 이은 장치에서 팽팽한 줄을 끊으면 매단 추가 오히려 올라가는 것도 같은 꼴의 현상이다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Braess%27s_paradox"
+    ],
+    "facts": [
+     {
+      "claim": "1990 지구의 날 42번가 폐쇄로 정체 감소",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Braess%27s_paradox",
+      "note": "A 1990 Earth Day closure of 42nd Street in Manhattan reduced congestion in the area (요지)"
+     },
+     {
+      "claim": "청계천 복원으로 청계고가 철거 뒤 도심 교통이 빨라짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Braess%27s_paradox",
+      "note": "When the Cheonggye Expressway was removed during the Cheonggyecheon restoration, traffic around the city sped up (요지)"
+     },
+     {
+      "claim": "1968년 독일 수학자 브라에스 — 새 도로가 흐름을 막을 수 있음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Braess%27s_paradox",
+      "note": "named after German mathematician Dietrich Braess, who noticed in 1968 that the flow in a road network could be impeded by adding a new road"
+     },
+     {
+      "claim": "내시 균형이 최적 흐름이 아닐 수 있음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Braess%27s_paradox",
+      "note": "the Nash equilibrium may not equate with the best overall flow through a network"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Braess%27s_paradox"
+    ],
+    "hintNote": "a hung weight can rise in height despite a taut rope in the hanging system being cut.",
+    "easiestCue": "도로를 더 놓으면 오히려 막힐 수 있다는 역설(독일 수학자 이름)",
+    "targetWhy": "브라에스의 역설은 게임 이론·교통 공학 대학 교양, 교과에 없음 — 정의가 있어도 이름을 아는 층은 애호가 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이름이 일반 성인에게 다소 마이너할 수 있음 — 다만 청계천 사례로 '아 그거' 할 사람이 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": [
+     "정답조각 역설"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "biology/3",
+  "midKey": "biology",
+  "subName": "생태계",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "biology/3#g005-C1-24",
+   "seed": {
+    "subject": "해달",
+    "aspect": null,
+    "ref": "C1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "18세기부터 이어진 모피 무역으로 약 100만 마리가 사냥되어, 한때 세계에 1,000~2,000마리만 남았던 동물입니다. 대부분의 바다 포유류와 달리 지방층이 없어 두꺼운 털로 몸을 데우고, 앞다리 밑의 늘어진 피부 주머니에 먹이를 넣고, 때로는 조개를 깰 돌까지 넣고 다니는 이 동물은 무엇일까요?",
+    "answer": "해달",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "털이 1제곱센티미터에 15만 가닥까지 나 있어, 동물 가운데 가장 빽빽한 털을 지녔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "앞다리 밑 피부 주머니에 조개 깰 돌까지 넣고 다니는 동물",
+     "difWhy": "'돌로 조개 깨는 바다 동물' — 중학 수준 상식",
+     "wor": 3,
+     "worWhy": "동물 생태 이야깃거리",
+     "acc": 5,
+     "accWhy": "생물 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "성게를 잡아먹어 켈프 숲을 지키는 동물",
+     "difWhy": "'켈프 숲 핵심종' — 고교 생명과학",
+     "wor": 4,
+     "worWhy": "생태 교양 — 핵심종"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "바닷가에서 이 동물이 성게를 잡아먹어 수를 줄여 주지 않으면, 불어난 성게가 켈프 숲을 크게 망가뜨립니다. 18세기부터 이어진 모피 무역으로 약 100만 마리가 사냥되어, 한때 세계에 1,000~2,000마리만 남기도 했습니다. 이 동물은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "성게를 잡아먹어 켈프 숲을 지키는 동물(핵심종)",
+     "addedCue": "지방층 없이 털로 체온 유지 · 앞다리 밑 피부 주머니에 먹이와 돌",
+     "why": "켈프 숲 핵심종은 고교 생명과학 대표 사례라 빼고, 몸의 구조 세부로 바꿈"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sea_otter"
+    ],
+    "facts": [
+     {
+      "claim": "18세기부터 해양 모피 무역으로 약 100만 마리가 사냥되었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sea_otter",
+      "note": "Large-scale hunting, part of the Maritime Fur Trade, which would eventually kill approximately one million sea otters (beginning in the 18th century)"
+     },
+     {
+      "claim": "세계 개체 수가 1,000~2,000마리로 줄었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sea_otter",
+      "note": "the world population fell to 1,000–2,000 individuals living in a fraction of their historic range"
+     },
+     {
+      "claim": "1제곱센티미터에 15만 가닥, 동물 가운데 가장 빽빽한 털",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sea_otter",
+      "note": "With up to 150,000 strands of hair per square centimetre (970,000/in2), its fur is the densest of any animal."
+     },
+     {
+      "claim": "다른 바다 포유류와 달리 지방층이 없고 두꺼운 털로 체온 유지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sea_otter",
+      "note": "Unlike most other marine mammals, the sea otter has no blubber and relies on its exceptionally thick fur to keep warm."
+     },
+     {
+      "claim": "앞다리 밑 피부 주머니에 먹이와 돌을 넣고 다님",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sea_otter",
+      "note": "Under each foreleg, the sea otter has a loose pouch of skin that extends across the chest. In this pouch (preferentially the left one), the animal stores collected food to bring to the surface, and sometimes a rock that is used to break open shellfish and clams."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "앞다리 밑 피부 주머니에 조개 깰 돌을 넣고 다니는 바다 포유류",
+    "targetWhy": "지방층 없음·피부 주머니는 동물 애호가가 아는 세부(돌 쓰기 자체는 유명하나 주머니는 한 층 깊음) → 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "동물은 누구나 알고, 켈프 숲 생태 역할은 '아 그렇구나' 할 사실",
+    "pairCheck": null,
+    "dbCheck": "해달 new — 활성에 해달·성게·켈프 단서 문항 없음",
+    "warn": []
+   }
+  }
+ ]
+}

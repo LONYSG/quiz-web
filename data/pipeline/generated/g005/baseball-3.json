@@ -1,0 +1,798 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "baseball/3",
+  "midKey": "baseball",
+  "subName": "MLB",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "baseball/3#g005-S1-12",
+   "seed": {
+    "subject": "테드 윌리엄스",
+    "aspect": null,
+    "ref": "S1-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1946년 7월 클리블랜드 감독 루 부드로는 이 타자를 막으려고 2루 왼쪽에 좌익수 한 명만 남기는 수비 배치를 짰습니다. 한국 전쟁 때는 전투기 조종사로 39차례 출격했고, 후반에는 존 글렌의 윙맨으로 날았던 보스턴 레드삭스의 타자는 누구일까요?",
+    "answer": "테드 윌리엄스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '테드 윌리엄스' 문서 제목 확인(API)",
+    "explanation": "한국에서는 대공포에 맞은 기체를 몰고 K-13 기지로 돌아와 동체 착륙을 하기도 했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "윌리엄스 시프트 + 한국전 조종사 레드삭스 타자",
+     "difWhy": "MLB 레전드 일화 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 전설적 인물",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "윌리엄스 시프트 + 한국전 조종사 레드삭스 타자",
+     "difWhy": "MLB 레전드 일화 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 전설적 인물"
+    },
+    "rewrite": null,
+    "generalHint": "낚시 TV 프로그램을 진행했고 국제게임어류협회(IGFA) 낚시 명예의 전당에도 이름을 올렸다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ted_Williams"
+    ],
+    "facts": [
+     {
+      "claim": "1946년 7월 부드로가 2루 왼쪽에 좌익수만 남긴 배치",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ted_Williams",
+      "note": "after Williams hit three home runs ... in a July 14 doubleheader opener, Lou Boudreau created a defensive alignment that left \"only one player on the left side of second base\" (the left fielder)"
+     },
+     {
+      "claim": "한국 전쟁 39회 출격",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ted_Williams",
+      "note": "Williams flew 39 combat missions in Korea, earning the Air Medal with two Gold Stars"
+     },
+     {
+      "claim": "후반 존 글렌의 윙맨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ted_Williams",
+      "note": "In the last half of his missions, Williams was flying as Glenn's wingman."
+     },
+     {
+      "claim": "전투기(F9F 팬서) 조종",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ted_Williams",
+      "note": "began refresher flight training in the F9F Panther jet fighter with VMF-223"
+     },
+     {
+      "claim": "대공포 피격 뒤 K-13 동체 착륙",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ted_Williams",
+      "note": "Williams's plane was hit by anti-aircraft fire ... belly landing at K-13 air base"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ted_Williams"
+    ],
+    "hintNote": "an avid sport fisherman who hosted a television program about fishing and was inducted into the IGFA Fishing Hall of Fame.",
+    "easiestCue": "한국 전쟁에 전투기 조종사로 참전한 레드삭스 타자",
+    "targetWhy": "마지막 4할 타자라는 첫 줄 사실을 뺐다 — 부드로 시프트·한국전 출격·글렌 윙맨은 MLB 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "MLB 전설 타자, 한국과 이어진 의외의 이야기",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/3#g005-S1-13",
+   "seed": {
+    "subject": "재키 로빈슨",
+    "aspect": null,
+    "ref": "S1-13",
+    "pairedWith": 2106
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2106,
+    "question": "UCLA에서 처음으로 야구·농구·미식축구·육상 네 종목의 대표 선수 자격(레터)을 딴 학생이었습니다. 1944년 육군 복무 중 군사 재판에 섰다가 무죄를 받았고, 1946년에는 마이너리그 몬트리올 로열스에 배정되었던 이 야구 선수는 누구일까요?",
+    "answer": "재키 로빈슨",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "군사 재판은 그가 군용 버스 뒷자리로 옮기라는 지시를 거부한 일 때문이었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1946년 마이너리그 몬트리올 로열스에 배정된 야구 선수",
+     "difWhy": "몬트리올 로열스 1946 — MLB 애호가",
+     "wor": 3,
+     "worWhy": "유명 인물 맞히기",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1946년 마이너리그 몬트리올 로열스에 배정된 야구 선수",
+     "difWhy": "몬트리올 로열스 1946 — MLB 애호가",
+     "wor": 3,
+     "worWhy": "유명 인물 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "그의 형 맥은 1936년 베를린 올림픽 200m에서 제시 오언스에게 0.4초 뒤져 은메달을 땄다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Jackie_Robinson"
+    ],
+    "facts": [
+     {
+      "claim": "UCLA 첫 4종목 레터",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jackie_Robinson",
+      "note": "the school's first athlete to win varsity letters in four sports (baseball, basketball, football, and track)"
+     },
+     {
+      "claim": "1944년 군사 재판 무죄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jackie_Robinson",
+      "note": "Robinson was court-martialed ... Robinson was acquitted by an all-white panel of nine officers."
+     },
+     {
+      "claim": "1946년 몬트리올 로열스 배정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jackie_Robinson",
+      "note": "assigned to the Montreal Royals of the Class AAA International League"
+     },
+     {
+      "claim": "버스 뒷자리 거부로 군사 재판",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jackie_Robinson",
+      "note": "After he refused to move to the back of an Army bus, Robinson was court-martialed."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mack_Robinson_(athlete)"
+    ],
+    "hintNote": "0.4 seconds behind Jesse Owens ... the older brother of Baseball Hall of Fame member Jackie Robinson.",
+    "easiestCue": "1946년 몬트리올 로열스에 배정된 선수",
+    "targetWhy": "흑인 최초·42번·다저스·버스 사건(인종 단서)을 질문에서 뺐다 — UCLA 4종목·군사 재판·로열스는 MLB 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "답은 유명 인물, 단서는 데뷔 이전 이력",
+    "pairCheck": "1회차 #2106 은 1947 최초 흑인 선수·42번 영구 결번 — 2회차는 대학·군 시절·마이너 이력으로 겹치는 사실 없음",
+    "dbCheck": "pair-or-different — 활성 #2106 과 같은 답, (가) 2회차",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/3#g005-S1-14",
+   "seed": {
+    "subject": "베이브 루스",
+    "aspect": null,
+    "ref": "S1-14",
+    "pairedWith": 2107
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2107,
+    "question": "일곱 살에 볼티모어의 감화원 겸 고아원인 세인트메리 직업학교에 보내졌고, 그곳의 마티아스 수사가 공을 치는 모습을 처음 본 날 자신이 타자로 태어났다고 회고했습니다. 1914년 초 마이너리그 볼티모어 오리올스의 구단주 겸 감독 잭 던과 프로 계약을 맺은 이 선수는 누구일까요?",
+    "answer": "베이브 루스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "별명은 그가 '던이 데려온 아기(Dunnie's babe)' 같은 말로 불린 데서 나왔다는 설명이 많습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "볼티모어 세인트메리 직업학교, 마티아스 수사",
+     "difWhy": "'세인트메리 학교 출신' — 야구 애호가",
+     "wor": 3,
+     "worWhy": "전설 선수 이름 맞히기",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "볼티모어 세인트메리 직업학교, 마티아스 수사",
+     "difWhy": "'세인트메리 학교 출신' — 야구 애호가",
+     "wor": 3,
+     "worWhy": "전설 선수 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "1923년 문을 연 양키 스타디움은 신문 기자에게서 '그가 지은 집'이라는 별명을 얻었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Babe_Ruth"
+    ],
+    "facts": [
+     {
+      "claim": "일곱 살에 세인트메리 직업학교(감화원·고아원)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Babe_Ruth",
+      "note": "Ruth was sent there at age seven. It was a reformatory and orphanage in Baltimore"
+     },
+     {
+      "claim": "마티아스 수사를 보고 타자로 태어났다고 회고",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Babe_Ruth",
+      "note": "Ruth later said he was \"born as a hitter\" the first day he saw Matthias hit a baseball"
+     },
+     {
+      "claim": "1914년 초 잭 던(오리올스 구단주 겸 감독)과 계약",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Babe_Ruth",
+      "note": "In early 1914, Ruth signed a professional contract with Jack Dunn, who owned and managed the minor-league Orioles."
+     },
+     {
+      "claim": "별명 유래 'Dunnie's babe'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Babe_Ruth",
+      "note": "Accounts differ, but most center on Ruth being called \"Dunnie's babe\" or a variant."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Yankee_Stadium_(1923)"
+    ],
+    "hintNote": "When the park opened, Fred Lieb of the New York Evening Telegram dubbed it 'The House That Ruth Built'.",
+    "easiestCue": "1914년 볼티모어 오리올스 잭 던과 계약한 선수",
+    "targetWhy": "홈런왕·투수→타자·양키스·밤비노 같은 첫 줄 사실을 뺐다 — 감화원 시절·잭 던 계약은 MLB 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "답은 누구나 아는 이름, 단서는 어린 시절",
+    "pairCheck": "1회차 #2107 은 투수→타자·홈런 시대 — 2회차는 어린 시절·첫 프로 계약으로 겹치지 않음 (#2109·#210 의 양키스·레드삭스 판매도 안 씀)",
+    "dbCheck": "pair-or-different — 활성 #2107 과 같은 답, (가) 2회차",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/3#g005-S1-15",
+   "seed": {
+    "subject": "루 게릭",
+    "aspect": null,
+    "ref": "S1-15",
+    "pairedWith": 3437
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 3437,
+    "question": "독일 이민자 부모 아래 맨해튼에서 태어나 컬럼비아 대학에서 공학을 2년 공부했습니다. 1925년 6월 2일 뉴욕 양키스 감독 밀러 허긴스는 두통을 호소한 1루수 월리 핍 대신 이 선수를 1루수로 내보냈습니다. 이 선수는 누구일까요?",
+    "answer": "루 게릭",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1931년 기자들은 그의 꾸준함을 두고 '철마(Iron Horse)'라는 별명을 붙였습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1925년 6월 2일 월리 핍 대신 1루수로 나섬",
+     "difWhy": "'월리 핍 대신 출전' — 야구 애호가",
+     "wor": 3,
+     "worWhy": "전설 선수 이름 맞히기",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1925년 6월 2일 월리 핍 대신 1루수로 나섬",
+     "difWhy": "'월리 핍 대신 출전' — 야구 애호가",
+     "wor": 3,
+     "worWhy": "전설 선수 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "양키스가 그의 등 번호 4를 영구 결번하면서, 메이저리그에서 처음으로 등 번호가 결번된 선수가 되었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lou_Gehrig"
+    ],
+    "facts": [
+     {
+      "claim": "맨해튼, 독일 이민자 부모",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lou_Gehrig",
+      "note": "Gehrig was born in Manhattan ... of \"German immigrants.\""
+     },
+     {
+      "claim": "컬럼비아 대학 공학 2년",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lou_Gehrig",
+      "note": "studied engineering at Columbia University for two years"
+     },
+     {
+      "claim": "1925년 6월 2일 두통 호소한 핍 대신 1루 선발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lou_Gehrig",
+      "note": "June 2, 1925: Yankee manager Miller Huggins started Gehrig at first base in place of Pipp, who was sidelined \"with complaints of a headache.\""
+     },
+     {
+      "claim": "1931년 'Iron Horse' 별명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lou_Gehrig",
+      "note": "Sportswriters in 1931 gave him the nickname \"the Iron Horse,\" reflecting his durability."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Lou_Gehrig"
+    ],
+    "hintNote": "The Yankees retired Gehrig's uniform number 4, making him the first player in MLB history to be so honored.",
+    "easiestCue": "1925년 두통을 호소한 월리 핍 대신 나선 양키스 1루수",
+    "targetWhy": "ALS·연속 출장 기록·'가장 운 좋은 사람' 연설을 뺐다 — 핍 일화·컬럼비아 공학은 MLB 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 인물, 단서는 데뷔 무렵 이야기",
+    "pairCheck": "1회차 #3437 은 ALS 와 병 이름 — 2회차는 출신·대학·주전 발탁 일화로 겹치지 않음",
+    "dbCheck": "pair-or-different — 활성 #3437 과 같은 답, (가) 2회차",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/3#g005-S1-16",
+   "seed": {
+    "subject": "사이영상",
+    "aspect": null,
+    "ref": "S1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1956년 커미셔너 포드 프릭이 만든 메이저리그의 상입니다. 1966년까지는 두 리그를 통틀어 한 명에게만 주었고, 첫 수상자는 브루클린 다저스의 돈 뉴컴이었습니다. 이 상은 무엇일까요?",
+    "answer": "사이영상",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '사이 영 상' 문서 · '사이영상' 넘겨주기 확인(API) — 띄어쓰기만 달라 변형 불필요",
+    "explanation": "상 이름의 주인인 명예의 전당 투수는 이 상이 생기기 한 해 전에 세상을 떠났습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1956년 포드 프릭이 만든 상, 첫 수상 돈 뉴컴",
+     "difWhy": "사이영상 기원 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대표 상",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1956년 포드 프릭이 만든 상, 첫 수상 돈 뉴컴",
+     "difWhy": "사이영상 기원 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대표 상"
+    },
+    "rewrite": null,
+    "generalHint": "상 이름의 주인은 통산 511승과 316패를 남겨, 두 기록 모두 메이저리그 최다다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cy_Young_Award"
+    ],
+    "facts": [
+     {
+      "claim": "1956년 포드 프릭이 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cy_Young_Award",
+      "note": "introduced in 1956 by Commissioner of Baseball Ford C. Frick"
+     },
+     {
+      "claim": "1956~1966년 한 명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cy_Young_Award",
+      "note": "From 1956 to 1966, the award was given to one pitcher in Major League Baseball."
+     },
+     {
+      "claim": "첫 수상자 돈 뉴컴(브루클린 다저스)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cy_Young_Award",
+      "note": "Don Newcombe, of the Brooklyn Dodgers, was \"the first recipient of the Cy Young Award.\""
+     },
+     {
+      "claim": "한 해 전 세상을 떠난 사이 영을 기림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cy_Young_Award",
+      "note": "Frick created it to honor Cy Young, who had died the year before. ... a \"Hall of Fame pitcher.\"(요약)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cy_Young"
+    ],
+    "hintNote": "Young compiled 511 wins, which is the most in major league history / He also retired with 316 losses, the most in MLB history.",
+    "easiestCue": "첫 수상자가 돈 뉴컴인 상",
+    "targetWhy": "'최고 투수에게 주는 상' 정의와 사이 영이라는 투수 이야기를 질문에서 뺐다 — 제정자·첫 수상자는 MLB 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "답은 유명 상, 단서는 제정 역사",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/3#g005-S1-17",
+   "seed": {
+    "subject": "니그로 리그",
+    "aspect": null,
+    "ref": "S1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1920년 루브 포스터가 첫 리그를 세운 것이 본격적인 출발이었습니다. 2020년 12월 메이저리그는 1920~1948년의 이 일곱 리그를 메이저리그로 공식 인정했고, 2024년 5월 기록을 합치자 조시 깁슨이 통산 타율 1위가 되었습니다. 이 리그들을 통틀어 무엇이라 할까요?",
+    "answer": "니그로 리그",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '니그로 리그' → '니그로 리그 베이스볼' 넘겨주기 확인(API)",
+    "explanation": "이 인정으로 이 리그들에서 뛴 약 3,400명의 선수가 메이저리그 선수로 기록되었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "루브 포스터 첫 리그 / 조시 깁슨 타율 1위",
+     "difWhy": "루브 포스터·조시 깁슨 — MLB 애호가",
+     "wor": 3,
+     "worWhy": "야구 역사 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "루브 포스터 첫 리그 / 조시 깁슨 타율 1위",
+     "difWhy": "루브 포스터·조시 깁슨 — MLB 애호가",
+     "wor": 3,
+     "worWhy": "야구 역사 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "재키 로빈슨은 1945년 이 리그의 캔자스시티 모나크스에서 유격수로 47경기를 뛰었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Negro_league_baseball"
+    ],
+    "facts": [
+     {
+      "claim": "1920년 루브 포스터가 첫 리그",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Negro_league_baseball",
+      "note": "the first Negro National League was formed in 1920 by Rube Foster"
+     },
+     {
+      "claim": "2020년 12월 일곱 리그 메이저리그 인정(1920~1948)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Negro_league_baseball",
+      "note": "In December 2020, Major League Baseball recognized the seven Negro major leagues as major leagues, covering roughly 3,400 players from 1920 to 1948."
+     },
+     {
+      "claim": "2024년 5월 기록 통합, 깁슨 통산 타율 1위",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Negro_league_baseball",
+      "note": "In May 2024, MLB incorporated Negro league statistics into its records, making Josh Gibson the career batting average leader at .372."
+     },
+     {
+      "claim": "약 3,400명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Negro_league_baseball",
+      "note": "covering roughly 3,400 players from 1920 to 1948"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jackie_Robinson"
+    ],
+    "hintNote": "In early 1945 ... the Kansas City Monarchs sent him a written offer / (문서 요약) in 1945 he played 47 games at shortstop for the Monarchs and hit .387",
+    "easiestCue": "2020년 메이저리그가 공식 인정한 1920~1948년의 일곱 리그",
+    "targetWhy": "'흑인 선수들이 뛴 리그' 정의를 뺐다 — 2020년 인정·깁슨 기록 통합은 MLB 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "답은 들어 봤을 역사 용어, 단서는 최근 MLB 결정",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 그로,리그"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/3#g005-S1-18",
+   "seed": {
+    "subject": "노모 히데오",
+    "aspect": null,
+    "ref": "S1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1994년 시즌 뒤 긴테쓰 버펄로스와 계약 문제로 맞선 이 투수는, 에이전트 돈 노무라가 찾아낸 '임의 은퇴' 조항의 허점을 이용했습니다. 은퇴한 선수가 복귀하면 원래 팀으로 돌아가야 한다는 이 조항이 해외 구단에는 적용되지 않았던 것인데, 이 투수는 누구일까요?",
+    "answer": "노모 히데오",
+    "acceptedAnswers": [
+     "노모"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '노모 히데오' 문서 제목 확인(API)",
+    "explanation": "몸을 크게 비틀어 등이 타자 쪽을 향하는 와인드업 때문에 '토네이도'라는 별명이 붙었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "긴테쓰와 맞서 '임의 은퇴' 허점으로 미국 간 투수",
+     "difWhy": "긴테쓰 임의 은퇴 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "유명 인물 맞히기",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "긴테쓰와 맞서 '임의 은퇴' 허점으로 미국 간 투수",
+     "difWhy": "긴테쓰 임의 은퇴 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "유명 인물 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "그는 메이저리그 양대 리그에서 모두 노히트 경기를 해낸 다섯 투수 가운데 한 명이다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hideo_Nomo"
+    ],
+    "facts": [
+     {
+      "claim": "1994년 시즌 뒤 긴테쓰와 계약 분쟁",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hideo_Nomo",
+      "note": "Nomo's contract fight with the Buffaloes followed the 1994 season, and the Dodgers signed him in February 1995.(요약)"
+     },
+     {
+      "claim": "돈 노무라가 허점 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hideo_Nomo",
+      "note": "Nomo's agent, Don Nomura, found a loophole in the Japanese Uniform Players Contract."
+     },
+     {
+      "claim": "임의 은퇴 조항 — 복귀 시 원래 팀, 해외 미적용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hideo_Nomo",
+      "note": "The \"voluntary retirement clause\" required a retired player who returned to active status to return to their former team. (applied in Japan but not abroad)"
+     },
+     {
+      "claim": "와인드업으로 토네이도 별명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hideo_Nomo",
+      "note": "The windup gave him the nickname \"Tornado\". ... turned his back to the hitter"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hideo_Nomo"
+    ],
+    "hintNote": "Nomo is one of only five players to pitch at least one no-hitter in both the National League and American League",
+    "easiestCue": "임의 은퇴 조항의 허점으로 긴테쓰를 떠난 투수",
+    "targetWhy": "토네이도 투구폼·다저스·박찬호 동료 같은 첫 줄 사실을 뺐다 — 계약 허점 이야기는 MLB 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "답은 유명 투수, 단서는 이적 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/3#g005-S1-19",
+   "seed": {
+    "subject": "이치로",
+    "aspect": null,
+    "ref": "S1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고교 시절 강한 어깨 덕에 주로 투수로 뛰었던 이 일본 선수는 프로 첫 두 시즌 대부분을 2군에서 보냈습니다. 감독 도이 쇼조가 다리를 시계추처럼 움직이는 그의 독특한 타법을 받아들이지 않았기 때문인데, 1994년 새 감독 오기 아키라는 그를 날마다 2번 타자로 내보냈습니다. 이 선수는 누구일까요?",
+    "answer": "이치로",
+    "acceptedAnswers": [
+     "스즈키 이치로"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '스즈키 이치로' 문서 제목 확인(API)",
+    "explanation": "1994년 오릭스 감독은 약한 팀의 이미지를 새롭게 하려는 홍보 방안으로, 그의 유니폼 등에 성 대신 이름을 쓰게 했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "다리를 시계추처럼 움직이는 독특한 타법",
+     "difWhy": "'시계추 타법' — 야구 관심층",
+     "wor": 3,
+     "worWhy": "유명 선수 무명 시절 이야기",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "오릭스에서 등에 성 대신 이름을 단 선수",
+     "difWhy": "'오릭스 등 이름' — 야구 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1994년 오릭스 블루웨이브 감독은 약한 팀의 이미지를 새롭게 하려는 홍보 방안으로, 떠오르던 한 젊은 선수의 유니폼 등에 성 대신 이름을 쓰게 했습니다. 나고야의 아이코다이 메이덴 고교 시절에는 강한 어깨 때문에 주로 투수로 뛰었던 이 선수는 누구일까요?",
+     "beforeExplanation": "선수 본인은 처음에 이 방식을 싫어했지만, 그 시즌이 끝날 무렵 그 이름은 누구나 아는 말이 되었습니다.",
+     "removedCue": "오릭스에서 유니폼 등에 성 대신 이름을 단 선수",
+     "addedCue": "2군 시절 · 도이 감독이 거부한 시계추 타법 · 1994 오기 감독의 2번 타자 기용",
+     "why": "등 이름 일화가 관심층 충분 단서라 해설로 내리고 무명 시절 세부를 엮음"
+    },
+    "generalHint": "그 1994년에 그는 한 시즌 210안타로 일본 프로야구에서 처음 200안타를 넘긴 선수가 되었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ichiro_Suzuki"
+    ],
+    "facts": [
+     {
+      "claim": "1994년 성 대신 이름을 유니폼에",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ichiro_Suzuki",
+      "note": "In 1994, he began using \"Ichiro,\" not his family name, on the back of his uniform."
+     },
+     {
+      "claim": "감독의 약팀 이미지 쇄신 홍보 방안",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ichiro_Suzuki",
+      "note": "his manager introduced the idea as a publicity move to help create a new image for what had been a relatively weak team"
+     },
+     {
+      "claim": "아이코다이 메이덴 고교에서 강한 어깨로 주로 투수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ichiro_Suzuki",
+      "note": "At Nagoya's Aikodai Meiden High School, he was mainly used as a pitcher rather than an outfielder, because of his unusually strong arm."
+     },
+     {
+      "claim": "데뷔 뒤 첫 두 시즌 대부분을 2군에서 보냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ichiro_Suzuki",
+      "note": "he spent most of his first two seasons in the farm system"
+     },
+     {
+      "claim": "감독 도이 쇼조가 그의 독특한 스윙을 받아들이지 않음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ichiro_Suzuki",
+      "note": "His manager, Shōzō Doi, refused to accept Suzuki's unorthodox swing."
+     },
+     {
+      "claim": "다리 움직임 때문에 '진자(시계추)' 타법이라 불림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ichiro_Suzuki",
+      "note": "The swing was nicknamed \"pendulum\" because of the motion of his leg"
+     },
+     {
+      "claim": "새 감독 오기 아키라가 매일 2번 타순에 기용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ichiro_Suzuki",
+      "note": "[Akira Ōgi] played him every day in the second spot of the lineup."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ichiro_Suzuki"
+    ],
+    "hintNote": "He set the NPB single-season record with 210 hits, the first player ever to top 200 hits in a single season.",
+    "easiestCue": "다리를 시계추처럼 움직이는 타법의 일본 선수",
+    "targetWhy": "진자 타법과 도이·오기 감독 일화는 야구 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이치로가 이름 등록명이라는 점은 관심층도 안다 — 3 가능",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/3#g005-S1-20",
+   "seed": {
+    "subject": "쿠퍼스타운",
+    "aspect": null,
+    "ref": "S1-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1906년 밀스 위원회와의 인터뷰에서 애브너 그레이브스는, 세상을 떠난 친구 애브너 더블데이가 1839년 이 마을의 소 목장에서 야구를 만들었다고 말했습니다. 야구 역사가들은 이 이야기를 하나같이 믿지 않는데, 뉴욕주 오치고 호숫가의 이 마을은 어디일까요?",
+    "answer": "쿠퍼스타운",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '쿠퍼스타운' 문서는 없음 — 한국 언론 관용 표기 '쿠퍼스타운' 하나만 둠",
+    "explanation": "1939년 이곳에 국립 야구 명예의 전당 박물관이 세워졌습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "애브너 더블데이가 1839년 이 마을에서 야구를 만들었다",
+     "difWhy": "'더블데이 야구 창시 설' — 야구 애호가",
+     "wor": 3,
+     "worWhy": "명예의 전당 마을 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "애브너 더블데이가 1839년 이 마을에서 야구를 만들었다",
+     "difWhy": "'더블데이 야구 창시 설' — 야구 애호가",
+     "wor": 3,
+     "worWhy": "명예의 전당 마을 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "'모히칸족의 최후'를 쓴 소설가가 자란 마을로, 1786년 그의 아버지가 세웠다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cooperstown,_New_York"
+    ],
+    "facts": [
+     {
+      "claim": "1906년 밀스 위원회 인터뷰, 그레이브스가 더블데이 1839 소 목장 발명 주장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cooperstown,_New_York",
+      "note": "In a 1906 Mills Commission interview, Abner Graves credited his late friend Abner Doubleday with inventing baseball on a cow pasture in 1839.(요약)"
+     },
+     {
+      "claim": "역사가들이 하나같이 믿지 않음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cooperstown,_New_York",
+      "note": "Baseball historians \"universally discounted\" this claim."
+     },
+     {
+      "claim": "오치고 호숫가 마을",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cooperstown,_New_York",
+      "note": "William Cooper ... established the village on Otsego Lake in 1786."
+     },
+     {
+      "claim": "1939년 명예의 전당 설립",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cooperstown,_New_York",
+      "note": "The National Baseball Hall of Fame and Museum was \"founded in 1939 by Stephen Carlton Clark.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cooperstown,_New_York"
+    ],
+    "hintNote": "Cooper established the village of Cooperstown in 1786 ... His son, James Fenimore Cooper, grew up in the frontier town ... The Last of the Mohicans",
+    "easiestCue": "더블데이가 야구를 만들었다는 전설의 마을",
+    "targetWhy": "'명예의 전당이 있는 곳'이라는 첫 줄 사실을 해설로 뺐다 — 더블데이 기원 전설은 MLB 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "명예의 전당 마을로 들어 봤을 이름, 단서는 기원 전설",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "computer/5",
+  "midKey": "computer",
+  "subName": "정보 보안",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "computer/5#g005-C2-21",
+   "seed": {
+    "subject": "스턱스넷",
+    "aspect": null,
+    "ref": "C2-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2010년 벨라루스의 보안 업체 바이러스블록아다가 찾아낸 이 웜은 USB 저장 장치를 타고 인터넷과 끊긴 망에까지 들어가 지멘스의 산업 제어 장치를 노렸습니다. 윈도의 알려지지 않은 취약점을 네 개나 썼고, 이란 나탄즈 농축 시설의 원심분리기를 망가뜨린 것으로 알려졌습니다. 이 악성 코드는 무엇일까요?",
+    "answer": "스턱스넷",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "여러 언론은 미국과 이스라엘이 '올림픽 게임 작전'으로 함께 만든 사이버 무기라고 보도했지만, 두 정부 모두 공식 인정하지 않았습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "이란 나탄즈 농축 시설의 원심분리기를 망가뜨린 웜",
+     "difWhy": "'나탄즈 원심분리기 웜' — 대학 교양 정보보안",
+     "wor": 4,
+     "worWhy": "시사 교양 — 대표 사이버 무기",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "이란 나탄즈 농축 시설의 원심분리기를 망가뜨린 웜",
+     "difWhy": "'나탄즈 원심분리기 웜' — 대학 교양 정보보안",
+     "wor": 4,
+     "worWhy": "시사 교양 — 대표 사이버 무기"
+    },
+    "rewrite": null,
+    "generalHint": "2016년 알렉스 기브니 감독의 다큐멘터리 '제로 데이즈'가 이 웜이 만들어지고 발견된 과정을 다뤘다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Stuxnet",
+     "https://ko.wikipedia.org/wiki/스턱스넷"
+    ],
+    "facts": [
+     {
+      "claim": "벨라루스 바이러스블록아다가 2010년 6월 찾아냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stuxnet",
+      "note": "Belarusian antivirus firm VirusBlokAda identified the worm in June 2010 ... first uncovered on 17 June 2010 (요지)"
+     },
+     {
+      "claim": "USB로 망 분리(에어 갭)를 넘음, 지멘스 산업 제어 장치 노림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stuxnet",
+      "note": "It typically entered isolated networks through infected USB flash drives, bypassing air gaps ... attacks Siemens industrial control systems (요지)"
+     },
+     {
+      "claim": "윈도 제로데이 취약점 4개",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stuxnet",
+      "note": "It used four zero-day vulnerabilities in Windows (요지)"
+     },
+     {
+      "claim": "나탄즈 농축 시설 원심분리기 손상(보도)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stuxnet",
+      "note": "It reportedly damaged gas centrifuges at the Natanz enrichment facility in Iran (요지)"
+     },
+     {
+      "claim": "2010년 6월 발견된 웜",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/스턱스넷",
+      "note": "스턱스넷(Stuxnet)은 2010년 6월에 발견된 웜 바이러스이다."
+     },
+     {
+      "claim": "미국·이스라엘 올림픽 게임 작전 보도, 공식 인정 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Stuxnet",
+      "note": "Multiple news outlets attribute it to a joint US-Israeli cyberweapon effort called Operation Olympic Games. Neither government has officially claimed it (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Zero_Days"
+    ],
+    "hintNote": "Zero Days is a 2016 American documentary film directed by Alex Gibney. ... attempts to tell the story of the development, deployment, discovery, and investigation of the Stuxnet computer virus.",
+    "easiestCue": "이란 나탄즈 원심분리기를 망가뜨린 악성 코드",
+    "targetWhy": "스턱스넷은 국제 시사·보안 애호가가 아는 이름, 교과·일상 뉴스 수준은 아님 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "사이버전 대표 사례로 들어 봤을 법, 단서는 발견 경위·전파 경로 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

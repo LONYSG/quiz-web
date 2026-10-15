@@ -1,0 +1,104 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "earth/2",
+  "midKey": "earth",
+  "subName": "화산·지진",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "earth/2#g005-C2-02",
+   "seed": {
+    "subject": "탐보라산",
+    "aspect": null,
+    "ref": "C2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1815년 이 화산이 크게 터질 때 난 소리를 멀리 수마트라 사람들은 처음에 총을 쏘는 소리로 여겼습니다. 이 분화의 화산재로 기온이 내려가 이듬해 1816년은 북미와 유럽에서 '여름 없는 해'로 불렸습니다. 인도네시아 숨바와섬에 있는 이 화산은 무엇일까요?",
+    "answer": "탐보라산",
+    "acceptedAnswers": [
+     "탐보라"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '탐보라산'(첫 문장 '탐보라산(Tambora)') — 산 이름만 친 '탐보라' 를 함께 받음",
+    "explanation": "화산 폭발 지수(VEI) 7로, 확인된 VEI 7 분화 가운데 가장 최근의 것입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1816 '여름 없는 해'를 낳은 인도네시아 화산",
+     "difWhy": "'여름 없는 해 화산' — 대학 교양 지구과학",
+     "wor": 4,
+     "worWhy": "교양 — 화산과 기후",
+     "acc": 5,
+     "accWhy": "지구과학·기상 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1816 '여름 없는 해'를 낳은 인도네시아 화산",
+     "difWhy": "'여름 없는 해 화산' — 대학 교양 지구과학",
+     "wor": 4,
+     "worWhy": "교양 — 화산과 기후"
+    },
+    "rewrite": null,
+    "generalHint": "분화 전 높이는 약 4,300m였으나, 1815년 분화 뒤 가장 높은 곳이 2,851m로 낮아졌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/1815_eruption_of_Mount_Tambora",
+     "https://ko.wikipedia.org/wiki/탐보라산"
+    ],
+    "facts": [
+     {
+      "claim": "숨바와섬의 탐보라산 1815 분화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1815_eruption_of_Mount_Tambora",
+      "note": "Mount Tambora, a volcano on the island of Sumbawa in present-day Indonesia"
+     },
+     {
+      "claim": "수마트라 사람들은 처음에 그 소리를 총소리로 여김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1815_eruption_of_Mount_Tambora",
+      "note": "The explosion was heard at least 2,600 km away ... people in Sumatra first took the sounds to be the sound of firing guns"
+     },
+     {
+      "claim": "1816년 북미와 유럽 날씨에 영향 — '여름 없는 해'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탐보라산",
+      "note": "1816년은 북미와 유럽의 날씨에 미친 영향 때문에 '여름 없는 해'로 알려지게 되었다 / en: lowered global temperatures in an event sometimes known as the Year Without a Summer in 1816"
+     },
+     {
+      "claim": "VEI 7, 가장 최근 확인된 VEI 7 분화",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1815_eruption_of_Mount_Tambora",
+      "note": "with a volcanic explosivity index (VEI) of 7 ... the most recent confirmed VEI-7 eruption"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mount_Tambora"
+    ],
+    "hintNote": "Before the explosion, Mount Tambora was approximately 4,300 metres ... After the eruption of 1815, the maximum elevation was reduced to 2,851 metres",
+    "easiestCue": "1816년 '여름 없는 해'를 부른 1815년 인도네시아 분화",
+    "targetWhy": "'여름 없는 해'와 탐보라의 연결은 화산·기후사 애호가·대학 교양 수준, 교과서 대표 화산(베수비오·피나투보 등)이 아님 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "역사상 최대급 분화라 이름은 들어 봤을 법, 단서는 교과서 밖 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

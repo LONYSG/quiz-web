@@ -1,0 +1,94 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "chemistry/4",
+  "midKey": "chemistry",
+  "subName": "화학 반응",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/4#g005-C1-19",
+   "seed": {
+    "subject": "플로지스톤",
+    "aspect": null,
+    "ref": "C1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "독일 화학자 슈탈은 스승 베허가 '기름진 흙'이라 부른 것에 새 이름을 붙여 널리 퍼뜨렸습니다. 슈탈이 붙인 이 이름은 무엇일까요?",
+    "answer": "플로지스톤",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '플로지스톤설' 의 표기",
+    "explanation": "1770년대 라부아지에가 연소에는 무게가 있는 기체인 산소가 필요하다는 것을 보이면서 이 학설은 밀려났습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "슈탈이 '기름진 흙'에 붙인 새 이름",
+     "difWhy": "'슈탈의 연소 물질 이름' — 대학 교양 과학사",
+     "wor": 4,
+     "worWhy": "교양 — 과학사 대표 폐기 학설",
+     "acc": 5,
+     "accWhy": "화학 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "금속을 태우면 오히려 무거워지는 문제 / 음의 질량",
+     "difWhy": "'연소설·라부아지에 이전 학설' — 고교 화학",
+     "wor": 4,
+     "worWhy": "과학사 교양 — 연소 이론"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "독일 화학자 슈탈은 스승 베허가 말한 '기름진 흙'에 새 이름을 붙여 널리 퍼뜨렸습니다. 금속을 태우면 오히려 무거워지는 문제가 나오자, 일부 지지자들은 이것이 음의 질량을 가졌다고 설명하기도 했습니다. 슈탈이 붙인 이 이름은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "금속을 태우면 오히려 무거워지는 문제 · 음의 질량",
+     "addedCue": "(남은 깊은 단서) 베허의 '기름진 흙'을 슈탈이 새로 이름 붙임",
+     "why": "고교 화학의 연소설 논쟁 단서를 빼고 학설 이름의 유래 세부만 남김"
+    },
+    "generalHint": "쇠붙이를 태우면 이것이 빠져나간다고 했는데, 오히려 무게가 늘어나는 것이 이 학설의 골칫거리였다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Phlogiston_theory"
+    ],
+    "facts": [
+     {
+      "claim": "슈탈이 베허의 terra pinguis(기름진 흙)를 플로지스톤으로 바꿔 불렀다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Phlogiston_theory",
+      "note": "Stahl renamed Becher's terra pinguis to phlogiston / 슈탈은 1679년 기름 성분의 흙을 플로지스톤이라고 이름 붙였다 (ko.wikipedia — 베허의 제자)"
+     },
+     {
+      "claim": "라부아지에가 연소에 무게 있는 기체(산소)가 필요함을 보여 1770년대에 대체했다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Phlogiston_theory",
+      "note": "Lavoisier showed that combustion requires a gas that has mass (specifically, oxygen) ... This replaced phlogiston theory in the 1770s."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Phlogiston_theory"
+    ],
+    "hintNote": "some metals gained mass after they burned, even though they were supposed to have lost phlogiston.",
+    "easiestCue": "베허의 '기름진 흙'에 슈탈이 붙인 이름",
+    "targetWhy": "베허→슈탈 계보는 화학사 대학 교양 — 4 노림",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 봤을 법하고 단서는 슈탈 · 음의 질량이라는 세부",
+    "pairCheck": null,
+    "dbCheck": "플로지스톤 new",
+    "warn": []
+   }
+  }
+ ]
+}

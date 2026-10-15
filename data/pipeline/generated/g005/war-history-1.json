@@ -1,0 +1,102 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "war-history/1",
+  "midKey": "war-history",
+  "subName": "고대·중세 전쟁",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "war-history/1#g005-H2-14",
+   "seed": {
+    "subject": "마라톤 전투",
+    "aspect": null,
+    "ref": "H2-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아테네의 비극 작가 아이스킬로스의 묘비명은 그의 연극은 한마디도 없이 한 싸움에서 보인 용맹만을 기렸습니다. 그의 형제 키네게이로스도 이 싸움에서 해안을 떠나려는 적의 배를 붙잡으려다 숨졌다고 전하는데, 이 전투는 무엇일까요?",
+    "answer": "마라톤 전투",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "아이스킬로스는 뒷날 시칠리아의 겔라에서 죽었는데, 독수리가 떨어뜨린 거북에 맞아 죽었다는 이야기도 전합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "아이스킬로스 묘비명이 기린 싸움의 용맹",
+     "difWhy": "'아이스킬로스 묘비명의 전투' — 대학 교양 서양고전",
+     "wor": 4,
+     "worWhy": "교양 — 그리스 대표 전투",
+     "acc": 3,
+     "accWhy": "전쟁·군사사 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 아테네 + 해안에서 달아나는 페르시아 배",
+     "difWhy": "페르시아 전쟁 아테네 승전 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 페르시아 전쟁 대표 전투"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "아테네의 비극 작가 아이스킬로스의 묘비명은 그의 연극은 한마디도 없이 한 싸움에서 보인 용맹만을 기렸습니다. 그의 형제 키네게이로스가 해안에서 달아나는 페르시아 배를 붙잡으려다 숨졌다고 전하는 이 전투는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'페르시아' 배(페르시아 전쟁의 아테네 승전으로 바로 이어짐)",
+     "addedCue": "(남은 깊은 단서) 아이스킬로스 묘비명 · 키네게이로스의 죽음",
+     "why": "적의 이름을 빼 살라미스·마라톤 가운데 어느 쪽인지를 세부로 가르게 함"
+    },
+    "generalHint": "작은 도시 플라타이아가 중장보병 1,000명을 보내 아테네를 도왔고, 스파르타는 축제 기간이라며 늦었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Aeschylus"
+    ],
+    "facts": [
+     {
+      "claim": "묘비명은 연극을 언급하지 않고 군공만, 마라톤의 숲이 말해 주리라",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aeschylus",
+      "note": "makes no mention of his theatrical renown, commemorating only his military achievements … of his noble prowess the grove of Marathon can speak"
+     },
+     {
+      "claim": "형제 키네게이로스가 달아나는 페르시아 배를 막으려다 전사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aeschylus",
+      "note": "Cynegeirus was killed while trying to prevent a Persian ship retreating from the shore."
+     },
+     {
+      "claim": "겔라에서 죽음, 독수리가 떨어뜨린 거북 이야기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Aeschylus",
+      "note": "the city of Gela, where he died in 456 or 455 BC. Valerius Maximus wrote that he was killed outside the city by a tortoise dropped by an eagle."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Battle_of_Marathon"
+    ],
+    "hintNote": "1,000 hoplites from the small city of Plataea ... Pheidippides reached Sparta during the Carneia festival ... could not march until the full moon",
+    "easiestCue": "아이스킬로스 묘비명이 기린 싸움",
+    "targetWhy": "묘비명·키네게이로스 일화는 고대사 대학 교양 세부 — 4 노림",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 전투, 몰랐던 연결(비극 작가의 전투)",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (살라미스 #2546 등은 다른 대상)",
+    "warn": [
+     "정답조각 전투"
+    ]
+   }
+  }
+ ]
+}

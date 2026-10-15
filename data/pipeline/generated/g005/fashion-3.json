@@ -1,0 +1,199 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "fashion/3",
+  "midKey": "fashion",
+  "subName": "복식사",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "fashion/3#g005-L2-27",
+   "seed": {
+    "subject": "킬트",
+    "aspect": null,
+    "ref": "L2-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1720년대 잉글랜드 랭커셔 출신의 퀘이커 교도 토머스 롤린슨은 그때 입던 긴 옷이 거추장스럽고 다루기 힘들다고 보았습니다. 그는 주름을 미리 박은 아랫부분을 따로 떼어 만들어 내기 시작했다고 하는데, 이렇게 생겨난 오늘날의 옷은 무엇일까요?",
+    "answer": "킬트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '킬트' 문서 제목(API) 확인",
+    "explanation": "그보다 앞선 벨티드 플레이드는 16세기에 처음 기록된 긴 옷으로, 위쪽을 망토처럼 어깨에 두를 수 있었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "롤린슨이 주름 박은 아랫부분을 떼어 만든 옷",
+     "difWhy": "'롤린슨의 주름 아랫단 옷' — 복식사 애호가",
+     "wor": 3,
+     "worWhy": "유명 전통 의상 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'벨티드 플레이드'의 아랫부분만 떼어 만든 옷",
+     "difWhy": "'플레이드 아랫부분 옷' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "전통 의상 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1720년대 잉글랜드 랭커셔 출신의 퀘이커 교도 토머스 롤린슨은 '벨티드 플레이드'라는 옷이 거추장스럽고 다루기 힘들다고 보았습니다. 그는 주름을 미리 박은 아랫부분만 따로 떼어 만들어 내기 시작했다고 하는데, 이렇게 생겨난 오늘날의 옷은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'벨티드 플레이드'라는 옷 이름",
+     "addedCue": "(남은 깊은 단서) 롤린슨 · 주름 박은 아랫부분",
+     "why": "스코틀랜드 옷임을 바로 알리는 옷 이름을 빼고 발명 일화만 남김"
+    },
+    "generalHint": "1746년 복장법은 스코틀랜드 남성이 이 옷을 포함한 하일랜드 복장을 입지 못하게 막았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Kilt"
+    ],
+    "facts": [
+     {
+      "claim": "랭커셔 출신 영국 퀘이커 교도 토머스 롤린슨이 1720년대에 작은 킬트를 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kilt",
+      "note": "invented by an English Quaker from Lancashire named Thomas Rawlinson … some time in the 1720s"
+     },
+     {
+      "claim": "벨티드 플레이드를 거추장스럽게 여김, 주름 박은 아랫부분을 따로 만들어 생산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kilt",
+      "note": "Rawlinson found the belted plaid \"cumbrous and unwieldy\". His fix was to make the skirt a separate garment with pleats already sewn in, which he began producing himself."
+     },
+     {
+      "claim": "16세기 처음 기록, 위쪽을 망토처럼 어깨에",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kilt",
+      "note": "The kilt was first recorded as the great kilt, the breacan or belted plaid, during the 16th century. … a full-length garment whose upper half could be worn as a cloak draped over the shoulder"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dress_Act_1746"
+    ],
+    "hintNote": "illegal for men and boys in Scotland to wear \"Highland clothes,\" including the \"Philabeg, or little Kilt.\"",
+    "easiestCue": "1720년대 퀘이커 교도 롤린슨이 아랫부분만 떼어 만든 옷",
+    "targetWhy": "롤린슨 일화는 복식사 애호가 세부 — 4 노림",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'플레이드(격자 천)'와 주름에서 범주로 추리될 여지",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "fashion/3#g005-L2-28",
+   "seed": {
+    "subject": "오트 쿠튀르",
+    "aspect": null,
+    "ref": "L2-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국에서 태어나 파리에서 활동한 찰스 프레더릭 워스는 디자인을 살아 있는 모델에게 입혀 보여 주었고, 1868년 세워진 디자이너 조합의 결성을 이끌어 오늘날 이것의 아버지로 불립니다. 이 조합의 회원은 철마다 낮옷과 밤옷을 아우르는 독창적인 디자인 50벌 이상을 선보여야 하는데, 이것은 무엇일까요?",
+    "answer": "오트 쿠튀르",
+    "acceptedAnswers": [
+     "오뜨 꾸뛰르"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '오트쿠튀르' 문서 확인 · '오뜨 꾸뛰르'는 보그 코리아 등 국내 매체에서 흔히 씀(WebSearch 1회)",
+    "explanation": "이 말은 프랑스 법이 보호해, 파리에 상근 직원 15명 이상을 둔 작업실이 있어야 쓸 수 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "찰스 프레더릭 워스가 아버지로 불리는 것",
+     "difWhy": "'워스·디자이너 조합' — 패션 애호가",
+     "wor": 4,
+     "worWhy": "패션 기본 어휘",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "프랑스 법이 보호하는, 파리 작업실이 있어야 쓰는 말",
+     "difWhy": "파리 고급 맞춤복 용어 — 패션 관심층",
+     "wor": 4,
+     "worWhy": "패션 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "영국에서 태어나 파리에서 활동한 찰스 프레더릭 워스는 자기 의상실에서 디자인을 살아 있는 모델에게 입혀 보여 준 것으로 이름을 떨쳐, 오늘날 이것의 아버지로 불립니다. 프랑스 법이 보호하는 이 말은 파리에 상근 직원 15명 이상을 둔 작업실이 있어야 쓸 수 있는데, 이것은 무엇일까요?",
+     "beforeExplanation": "이 말의 더 엄격한 기준은 나치 점령기가 끝난 뒤인 1945년에 만들어졌습니다.",
+     "removedCue": "프랑스 법이 보호, 파리 작업실이 있어야 쓰는 말",
+     "addedCue": "1868년 조합 결성 · 철마다 50벌 이상 발표 요건",
+     "why": "가장 잘 알려진 법적 보호 요건을 해설로 옮기고 조합·발표 요건 세부로"
+    },
+    "generalHint": "워스는 외제니 황후의 공식 의상가였고, 지은 옷마다 자기 이름표를 꿰매 넣은 첫 디자이너다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Haute_couture"
+    ],
+    "facts": [
+     {
+      "claim": "워스는 오늘날 의미의 오트 쿠튀르의 아버지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Haute_couture",
+      "note": "widely considered the father of haute couture as it is known today (born in England, career in the French fashion industry)"
+     },
+     {
+      "claim": "살아 있는 모델에게 디자인을 입혀 보임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Haute_couture",
+      "note": "he is best known for preparing a portfolio of designs that were shown on live models at the House of Worth."
+     },
+     {
+      "claim": "프랑스 법이 보호, 파리 작업실 상근 15명 이상",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Haute_couture",
+      "note": "The term haute couture is protected by French law and defined by the Paris Chamber of Commerce. … have a workshop (atelier) in Paris that employs at least fifteen staff members full-time."
+     },
+     {
+      "claim": "조합(샹브르 생디칼)은 1868년 세워졌고 워스가 결성을 이끎",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Haute_couture",
+      "note": "founded in 1868 as an outgrowth of medieval guilds ... Formation of the organisation was brought about by Charles Frederick Worth."
+     },
+     {
+      "claim": "회원은 철마다 낮옷·밤옷 포함 독창 디자인 50벌 이상 발표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Haute_couture",
+      "note": "present a collection of at least 50 original designs to the public every fashion season, of both day and evening garments"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Charles_Frederick_Worth"
+    ],
+    "hintNote": "Worth became Empress Eugénie's official dressmaker / the first designer to label his clothing, sewing his name into each garment he produced",
+    "easiestCue": "워스가 아버지로 불리는 패션 분야",
+    "targetWhy": "워스와 이 말의 연결은 패션 애호가 세부, 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'파리 + 법이 보호하는 패션 말'에서 관심층이 바로 떠올릴 수 있어 3 여지",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음 (오뜨꾸뛰르도 new)",
+    "warn": []
+   }
+  }
+ ]
+}

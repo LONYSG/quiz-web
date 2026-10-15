@@ -1,0 +1,451 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-history/4",
+  "midKey": "kr-history",
+  "subName": "조선 후기",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/4#g005-K1-14",
+   "seed": {
+    "subject": "황사영 백서",
+    "aspect": null,
+    "ref": "K1-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "정약용의 맏형 정약현의 사위가 제천 배론의 토굴에 숨어 쓴 글입니다. 원본은 약 100년 동안 의금부 창고에 있다가 1894년 우연히 발견되어 뮈텔 주교에게 넘어갔고, 지금은 교황청 민속박물관에 있습니다. 이 글은 무엇일까요?",
+    "answer": "황사영 백서",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "가로 62cm, 세로 40cm의 흰 비단에 한 줄 110자씩 122행, 모두 1만 3천여 자를 적었고, 붙잡힌 그의 옷 속에서 말린 채 나왔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "정약현의 사위가 제천 배론 토굴에 숨어 쓴 글",
+     "difWhy": "'배론 토굴에서 쓴 글' — 수능 심화 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과(신유박해)",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "천주교 신자가 배론 토굴에서 쓴 천 위의 글",
+     "difWhy": "신유박해 비단 편지 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 조선 후기 천주교 박해"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "정약용의 맏형 정약현의 사위였던 한 천주교 신자는 제천 배론의 토굴에 숨어 글을 썼습니다. 가로 62cm, 세로 40cm 천에 한 줄 110자씩 122행, 1만 3천여 자에 이르는 이 글은 그가 붙잡혔을 때 옷 속에서 말린 채 나왔습니다. 이 글은 무엇일까요?",
+     "beforeExplanation": "원본은 의금부 창고에 있다가 1894년 발견되어 뮈텔 주교에게 넘어갔고, 지금은 교황청 민속박물관에 있습니다.",
+     "removedCue": "천주교 신자가 토굴에서 쓴 '천 위의 글'(백서 뜻풀이에 닿음) · 옷 속에서 나옴",
+     "addedCue": "의금부 창고 → 1894년 발견 → 뮈텔 주교 → 교황청 민속박물관",
+     "why": "천에 쓴 글(정답 이름 풀이)과 천주교 신자를 빼고 원본의 행방으로 바꿈"
+    },
+    "generalHint": "글쓴이는 열여섯 살에 진사시에 붙어, 정조에게서 스무 살이 되면 벼슬을 주겠다는 약속을 받았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/황사영_백서"
+    ],
+    "facts": [
+     {
+      "claim": "정약용의 맏형 정약현의 사위",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황사영_백서",
+      "note": "정약용의 맏형 정약현의 사위가 되면서 천주학을 접하게 되었다"
+     },
+     {
+      "claim": "제천 배론 토굴에 숨어 작성",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황사영_백서",
+      "note": "황사영은 제천 배론의 토굴에 숨어 지내며 백서 작성을 시작했습니다."
+     },
+     {
+      "claim": "가로 62cm 세로 40cm, 110자씩 122행 13,311자",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/황사영_백서",
+      "note": "흰 비단(명주천)에 썼으며 가로 62cm, 세로 40cm … 한 줄에 110자씩 122행, 총 13,311자"
+     },
+     {
+      "claim": "체포된 그의 옷 속에서 말린 채 발견",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/황사영_백서",
+      "note": "백서는 체포된 황사영의 옷 속에서 둘둘 말린 채 발견되었습니다."
+     },
+     {
+      "claim": "의금부 창고 → 1894 발견 뮈텔 주교 → 교황청 민속박물관",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황사영_백서",
+      "note": "원본은 신유박해 후 약 100년간 의금부 창고에 보관되었습니다. 1894년 갑오경장 때 우연히 발견되어 뮈텔 주교에게 넘어갔고 … 현재는 교황청 민속박물관에 소장되어 있습니다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/황사영"
+    ],
+    "hintNote": "1790년 16세의 나이에 진사시에 합격하였고 ... 나이 20세가 되면 벼슬을 내리겠다고 약속했다",
+    "easiestCue": "정약현의 사위가 배론 토굴에서 쓴 글",
+    "targetWhy": "정약현 사위 · 원본 행방은 한국사 심화 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'천주교 신자가 숨어 쓴 글'만으로 떠올릴 수험생이 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/4#g005-K1-15",
+   "seed": {
+    "subject": "기사환국",
+    "aspect": null,
+    "ref": "K1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "송시열은 송나라 신종이 후궁의 아들을 먼저 번왕에 봉했던 선례를 들어 숙종의 결정에 반대하는 상소를 올렸다가, 파직되어 제주도로 유배된 뒤 사약을 받았습니다. 이 일과 함께 정권이 남인에게 넘어간 사건은 무엇일까요?",
+    "answer": "기사환국",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 일이 있고 넉 달 만에 숙종은 서인계 왕비 인현왕후를 내쫓고 그 부모의 봉작을 빼앗았습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "엮음: 숙종 때 송시열 사약 + 정권이 남인에게 넘어간 사건",
+     "difWhy": "'숙종·남인 집권·송시열 사사' — 수능 심화 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 숙종 환국",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "엮음: 숙종 때 송시열 사약 + 정권이 남인에게 넘어간 사건",
+     "difWhy": "'숙종·남인 집권·송시열 사사' — 수능 심화 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 숙종 환국"
+    },
+    "rewrite": null,
+    "generalHint": "이 일로 정권을 잡은 남인은 다섯 해 뒤 갑술년에 일어난 또 한 번의 바뀜으로 다시 밀려났다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/기사환국"
+    ],
+    "facts": [
+     {
+      "claim": "송시열이 송 신종이 후궁 아들을 번왕에 책봉한 예를 들어 상소",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기사환국",
+      "note": "송시열은 상소를 하여 송나라 신종이 28세에 철종을 낳았으나 후궁의 아들이라 하여 번왕(藩王)에 책봉하였다가"
+     },
+     {
+      "claim": "파직, 제주 유배 후 사사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기사환국",
+      "note": "송시열을 파직시키고 제주도에 유배시킨 후 사사(賜死)하였다."
+     },
+     {
+      "claim": "서인에서 남인으로 정권 이동",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기사환국",
+      "note": "숙종은 서인의 반대를 누르고 명호를 정했고 정권은 서인에서 남인으로 넘어갔다(문서 요지: shifting power from the Western to the Southern faction)"
+     },
+     {
+      "claim": "4개월 만에 인현왕후 폐출, 부모 봉작 박탈",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/기사환국",
+      "note": "기사환국이 단행된 지 4개월 만에 숙종은 서인계 왕비인 인현왕후 민씨를 폐출하고 부모의 봉작을 빼앗았다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/기사환국"
+    ],
+    "hintNote": "기사환국(1689년·숙종 15년) ... 갑술옥사(갑술환국)가 일어나기 전까지 남인이 정권을 잡았습니다.",
+    "easiestCue": "송시열이 상소 때문에 제주 유배 뒤 사약을 받은 정변",
+    "targetWhy": "드라마로 흔한 단서(장희빈 · 원자 · 인현왕후 폐위)를 해설로 뺐다. 송시열 사사·송 신종 선례 상소는 한능검 심화 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'후궁의 아들' 선례가 장희빈 아들 문제를 떠올리게 해 한 걸음 짧아질 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0 (활성 #4477 예송과 지식 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/4#g005-K1-16",
+   "seed": {
+    "subject": "이괄의 난",
+    "aspect": null,
+    "ref": "K1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선의 한 반란군은 길마재 싸움에서 진 뒤 물러났고, 우두머리는 이천에서 부하 기익헌·이수백에게 죽임을 당했습니다. 이 반란은 무엇일까요?",
+    "answer": "이괄의 난",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "반란군은 한양에 들어가 경복궁 옛터에서 선조의 열째 아들 흥안군을 왕으로 세우기도 했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "길마재 싸움에서 진 반란군, 기익헌·이수백",
+     "difWhy": "'길마재 싸움' — 대학 교양 한국사",
+     "wor": 4,
+     "worWhy": "조선 후기 주요 반란",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "반란군이 한양에 들어가 흥안군을 왕으로 세웠다",
+     "difWhy": "한양 점령한 인조 때 반란 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 한국사 사건"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "한 반란군이 한양에 들어가 경복궁 옛터에서 선조의 열째 아들 흥안군을 왕으로 세웠습니다. 그러나 길마재 싸움에서 진 뒤 물러났고, 우두머리는 이천에서 부하 기익헌·이수백에게 죽임을 당했습니다. 이 반란은 무엇일까요?",
+     "beforeExplanation": "반란군이 한양에 들어오자 인조는 6일 동안 공주로 피해 있어야 했습니다.",
+     "removedCue": "반란군이 한양에 들어가 흥안군을 왕으로 세움",
+     "addedCue": "(뺌만) 길마재 패배 + 이천에서 부하에게 살해",
+     "why": "교과서의 '한양 점령' 단서를 해설로 옮기고 패퇴·최후 세부만 남김"
+    },
+    "generalHint": "반란을 일으킨 장수는 인조반정에 공을 세우고도 2등 공신에 그쳤고, 평안도 병마절도사로 나가 불만이 컸다고 한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이괄의_난"
+    ],
+    "facts": [
+     {
+      "claim": "한양 입성, 경복궁 옛터에서 선조의 열 번째 아들 흥안군을 왕으로",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이괄의_난",
+      "note": "이괄군은 한양에 입성하여 경복궁 옛터에서 … 선조의 열 번째 아들 흥안군 제(興安君 瑅)를 왕으로 세웠다."
+     },
+     {
+      "claim": "길마재 공격에서 패배",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이괄의_난",
+      "note": "이후 길마재를 포위 공격했으나 패배했다(문서 요지) — 안령 일대 전투에서 패하며 밀리기 시작했다"
+     },
+     {
+      "claim": "4월 1일 이천에서 부하 기익헌·이수백에게 살해",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이괄의_난",
+      "note": "4월 1일 이천에서 … 부하 기익헌, 이수백에게 살해되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이괄의_난"
+    ],
+    "hintNote": "그러나 이괄은 2등 공신에 책록되었고 / 반정 뒤 평안도 병마절도사로 임명되어 불만이 컸다",
+    "easiestCue": "길마재 싸움에서 패한 반란",
+    "targetWhy": "길마재 전투·기익헌·이수백은 한국사 심화(한능검 고급) 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 유명한 반란, 경과 세부로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/4#g005-K1-17",
+   "seed": {
+    "subject": "삼전도비",
+    "aspect": null,
+    "ref": "K1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "비문은 이경석이 짓고 글씨는 오준이 썼습니다. 1895년 강물에 던져졌다가 1913년 다시 세워진 이 비는 흔히 무엇이라 부를까요?",
+    "answer": "삼전도비",
+    "acceptedAnswers": [
+     "대청황제공덕비"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '삼전도비' 문서에 정식 명칭 '대청황제공덕비' 확인",
+    "explanation": "2007년 2월 한 남성이 비에 붉은 페인트를 뿌렸고, 그해 7월까지 돌에서 페인트를 빨아내는 방식으로 복원했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "이경석이 짓고 오준이 쓴 비",
+     "difWhy": "'이경석 비문·오준 글씨' — 대학 교양 한국사",
+     "wor": 4,
+     "worWhy": "병자호란 상징 유적",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1639년 세운, 만주·몽골·한자 새긴 비",
+     "difWhy": "'1639 만주·몽골 문자 비' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 병자호란"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1639년에 세운 이 비는 앞면 오른쪽에 만주 문자, 왼쪽에 몽골 문자, 뒷면에 한자가 새겨져 있습니다. 비문은 이경석이 짓고 오준이 글씨를 썼으며, 1895년 강물에 던져졌다가 1913년 다시 세워졌습니다. 이 비는 흔히 무엇이라 부를까요?",
+     "beforeExplanation": null,
+     "removedCue": "1639년 · 만주·몽골·한자 세 문자",
+     "addedCue": "(새로 넣지 않음) 이경석 비문 · 1895 수장",
+     "why": "고교 한국사의 '세 문자 비' 단서를 빼고 비문 작자·수난 내력으로 좁힘"
+    },
+    "generalHint": "이 비석 앞면에는 몽골 글자와 만주 글자가, 뒷면에는 한자가 새겨져 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/삼전도비"
+    ],
+    "facts": [
+     {
+      "claim": "이경석 찬, 오준 글씨",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼전도비",
+      "note": "비문은 이경석이 짓고 글씨는 오준, 전액은 여이징(문서 요지)"
+     },
+     {
+      "claim": "1895년 강물에 던져졌다가 1913년 다시 세움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼전도비",
+      "note": "청일 전쟁에서 청이 진 뒤 1895년 강물에 던져졌고, 1913년 조선총독부가 다시 세웠다(문서 요지)"
+     },
+     {
+      "claim": "정식 명칭 대청황제공덕비",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼전도비",
+      "note": "대청황제공덕비(大淸皇帝功德碑)"
+     },
+     {
+      "claim": "2007년 2월 붉은 페인트 훼손, 7월까지 복원",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/삼전도비",
+      "note": "2007년 2월 한 남성이 붉은 페인트를 뿌렸고, 2007년 7월 15일까지 페인트를 빨아내는 방식으로 복원(문서 요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/삼전도비"
+    ],
+    "hintNote": "비석 앞면의 왼쪽에는 몽골글자, 오른쪽에는 만주글자, 뒷면에는 한자로 쓰여져 있다.",
+    "easiestCue": "이경석이 비문을 지은 비",
+    "targetWhy": "비문 작자·1895 수장은 한국사 심화(한능검 고급) — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 비를 비 자체의 세부로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/4#g005-K1-18",
+   "seed": {
+    "subject": "나선 정벌",
+    "aspect": null,
+    "ref": "K1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "청군과 함께 떠난 한 원정에서 조선 장수는 '이 작은 배로 어떻게 저런 커다란 서양 배를 막을 수 있겠느냐'며 선봉을 거절했습니다. 4년 뒤 다시 나간 장수 신류는 그때의 일을 일기 『북정록』으로 남겼는데, 이 두 차례 원정을 무엇이라 할까요?",
+    "answer": "나선 정벌",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "첫 원정에서 러시아 배들은 노가 없어 흑룡강의 거센 물살을 이기지 못하고 떠내려갔다고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "청군과 함께 떠난 두 차례 원정(서양 배를 막는)",
+     "difWhy": "'청 요청 두 차례 원정' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과(효종 나선 정벌)",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "청 요구로 조총수를 두만강 너머 보낸 두 차례 원정",
+     "difWhy": "'청 요구 조총수 원정' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 효종 대 원정"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "청이 '조총을 잘 쓰는 사람 1백여 명을 뽑아 보내라'고 요구하자 조선은 군사를 두만강 너머로 보냈고, 조선 장수는 작은 배로 큰 서양 배를 막을 수 없다며 선봉을 거절했습니다. 4년 뒤 다시 나간 장수는 그때의 일을 일기 『북정록』으로 남겼습니다. 이 두 차례 원정을 무엇이라 할까요?",
+     "beforeExplanation": null,
+     "removedCue": "청이 조총수 1백여 명을 요구해 두만강 너머로 보낸 원정",
+     "addedCue": "(조총수 요구 없이) 선봉 거절 일화 · 신류의 『북정록』",
+     "why": "교과 정의(청 요구 조총수 원정)를 빼고 일화 + 일기 이름으로 좁힘"
+    },
+    "generalHint": "첫 원정 때 효종이 그 상대가 어떤 나라냐고 묻자 '영고탑 근처에 사는 별종들'이라는 답이 돌아왔다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/나선_정벌"
+    ],
+    "facts": [
+     {
+      "claim": "작은 자피선으로 큰 서양 배를 막을 수 없다며 선봉 거부",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/나선_정벌",
+      "note": "이 작은 자피선으로 어떻게 저런 커다란 서양 배를 막을 수 있겠습니까?"
+     },
+     {
+      "claim": "1654년 첫 원정, 1658년(4년 뒤) 신류 원정, 일기 『북정록』",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/나선_정벌",
+      "note": "1654년 변급 원정 / 1658년 신류 원정 — 신류가 남긴 일기 《북정록》이 당시 상황을 전하며"
+     },
+     {
+      "claim": "러시아 배들이 노가 없어 흑룡강 물살에 떠내려감",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/나선_정벌",
+      "note": "아무르강(흑룡강)의 거센 물살을 이기지 못하고 떠내려가고 말았다"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/나선_정벌"
+    ],
+    "hintNote": "이에 당시 조선의 왕이었던 효종이 '나선'이 어떤 나라냐고 묻자 ... 한거원은 나선을 '영고탑 근처에 사는 별종들'이라고 대답했다고 합니다.",
+    "easiestCue": "신류의 일기 『북정록』",
+    "targetWhy": "북정록 · 서양 배 일화는 한국사 심화 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'청의 요구로 조총병 파견'이 교과서 서술과 가깝다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  }
+ ]
+}

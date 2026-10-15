@@ -1,0 +1,106 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "world-lit/3",
+  "midKey": "world-lit",
+  "subName": "20세기 문학",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/3#g005-A2-04",
+   "seed": {
+    "subject": "위대한 개츠비",
+    "aspect": null,
+    "ref": "A2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "작가는 처음에 고대 로마 소설 '사티리콘'에 나오는 벼락부자의 이름을 넣은 제목을 정했지만, 편집자 맥스 퍼킨스가 너무 낯설어 사람들이 발음도 못 할 거라며 말렸습니다. 작가가 마지못해 다른 제목을 받아들여 1925년 4월 10일 나온 이 소설은 무엇일까요?",
+    "answer": "위대한 개츠비",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '위대한 개츠비' 문서 제목 확인(API) — 변형 없음",
+    "explanation": "지금 제목은 알랭푸르니에의 소설 '대장 몬느(Le Grand Meaulnes)'에서 영감을 받았다고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1925년 4월 10일 나온 소설, 편집자 맥스 퍼킨스",
+     "difWhy": "'1925 퍼킨스 편집 소설' — 대학 교양 문학",
+     "wor": 3,
+     "worWhy": "명작 제목 일화",
+     "acc": 4,
+     "accWhy": "세계 문학 — 고교 문학 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'웨스트에그의 트리말키오'라는 처음 제목",
+     "difWhy": "웨스트에그 — 소설·영화 관심층",
+     "wor": 3,
+     "worWhy": "명작 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "작가는 고대 로마 소설 '사티리콘'의 벼락부자 이름을 따서 '웨스트에그의 트리말키오'라는 제목을 정했습니다. 편집자 맥스 퍼킨스는 너무 낯설어 사람들이 발음도 못 할 거라며 말렸고, 작가는 마지못해 다른 제목을 받아들였습니다. 1925년 4월 10일 나온 이 소설은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'웨스트에그의 트리말키오'라는 처음 제목(웨스트에그)",
+     "addedCue": "(새로 넣지 않음) 사티리콘 벼락부자 이름의 제목",
+     "why": "작중 지명 웨스트에그를 빼 사티리콘·퍼킨스 일화로만 좁힘"
+    },
+    "generalHint": "이 소설의 화자는 중서부 출신 예일대 졸업생으로, 웨스트에그에 살며 채권을 파는 사람이다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/The_Great_Gatsby"
+    ],
+    "facts": [
+     {
+      "claim": "사티리콘의 벼락부자 트리말키오를 딴 제목을 선호, '웨스트에그의 트리말키오'로 정함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Great_Gatsby",
+      "note": "Fitzgerald initially preferred titles referencing Trimalchio, the crude upstart in Petronius's Satyricon ... By November 1924, Fitzgerald wrote to Perkins that he had settled upon the title of Trimalchio in West Egg."
+     },
+     {
+      "claim": "퍼킨스가 너무 모호하고 발음 못 할 거라며 설득",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Great_Gatsby",
+      "note": "Disliking Fitzgerald's chosen title of Trimalchio in West Egg, editor Max Perkins persuaded him that the reference was too obscure and that people would be unable to pronounce it."
+     },
+     {
+      "claim": "작가는 마지못해(reluctantly) 지금 제목을 택함, 1925년 4월 10일 출간",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Great_Gatsby",
+      "note": "entertained many choices before reluctantly deciding on The Great Gatsby ... The novel was published as The Great Gatsby on April 10, 1925."
+     },
+     {
+      "claim": "제목은 알랭푸르니에의 Le Grand Meaulnes 에서 영감",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Great_Gatsby",
+      "note": "a title inspired by Alain-Fournier's Le Grand Meaulnes"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Great_Gatsby"
+    ],
+    "hintNote": "a Yale University alumnus from the Midwest, a World War I veteran ... He works as a bond salesman and lives in West Egg.",
+    "easiestCue": "사티리콘의 벼락부자 이름을 넣은 처음 제목 · 퍼킨스 편집 · 1925년",
+    "targetWhy": "트리말키오 제목 일화는 영미문학 애호가 수준 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "제목은 누구나 아는 작품, 단서는 출간 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

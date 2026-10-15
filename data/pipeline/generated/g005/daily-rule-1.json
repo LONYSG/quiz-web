@@ -1,0 +1,275 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "daily-rule/1",
+  "midKey": "daily-rule",
+  "subName": "재난·안전 수칙",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "daily-rule/1#g005-L1-22",
+   "seed": {
+    "subject": "스위스 치즈 모델",
+    "aspect": null,
+    "ref": "L1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1990년 영국 맨체스터 대학의 심리학자 제임스 리즌이 정리한 사고 모형이 있습니다. 2020년 코로나19 때는 뉴질랜드에서 방역 대책을 설명하는 데도 쓰였는데, 이 사고 모형은 무엇일까요?",
+    "answer": "스위스 치즈 모델",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '스위스 치즈 모델'",
+    "explanation": "방어막마다 결함이 있어도, 그 결함들이 한 줄로 겹칠 때에만 사고로 이어진다고 설명한다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "심리학자 제임스 리즌이 정리한 사고 모형",
+     "difWhy": "'제임스 리즌의 사고 모형' — 안전관리 대학 교양 수준",
+     "wor": 4,
+     "worWhy": "교양 — 안전·위험관리 기본 개념",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "여러 겹의 방역 대책을 설명한, 음식 이름 사고 모형",
+     "difWhy": "'코로나 여러 겹 방역 모형' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "안전 교양 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1990년 영국 맨체스터 대학의 심리학자 제임스 리즌이 정리한 사고 모형이 있습니다. 2020년 코로나19 때는 뉴질랜드에서 여러 겹의 방역 대책을 설명하는 데도 쓰였습니다. 음식 이름이 붙은 이 사고 모형은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'음식 이름이 붙은' · '여러 겹의' 방역 대책",
+     "addedCue": "(남은 깊은 단서) 제임스 리즌 1990 · 뉴질랜드 코로나 방역 설명",
+     "why": "이름과 구조를 바로 일러 주는 꾸밈말을 빼고 제안자 세부로 풀게"
+    },
+    "generalHint": "항공·의료 안전 교육에서 흔히 쓰는 이 모형은 구멍 난 얇은 조각 여러 장을 나란히 세운 그림으로 그린다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Swiss_cheese_model",
+     "https://ko.wikipedia.org/wiki/스위스_치즈_모델"
+    ],
+    "facts": [
+     {
+      "claim": "맨체스터 대학의 제임스 리즌이 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Swiss_cheese_model",
+      "note": "The model was originally formally propounded by James T. Reason of the University of Manchester."
+     },
+     {
+      "claim": "1990년 논문",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Swiss_cheese_model",
+      "note": "참고문헌: Reason (1990) \"The Contribution of Latent Human Failures to the Breakdown of Complex Systems\""
+     },
+     {
+      "claim": "2020년 뉴질랜드 코로나19 대응 설명에 쓰임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Swiss_cheese_model",
+      "note": "New Zealand's Swiss cheese model for managing COVID-19 ... Wiles & Morris (2020) \"Covid-19 and the Swiss cheese system\""
+     },
+     {
+      "claim": "방어 계층마다 결함, 정렬되면 사고",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/스위스_치즈_모델",
+      "note": "위험과 사고 사이에 많은 방어 계층이 있지만 각 계층에는 정렬되면 사고가 발생할 수 있는 결함이 있음을 보여준다"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Swiss_cheese_model"
+    ],
+    "hintNote": "aviation safety (applications) / New Zealand's Swiss cheese model for managing COVID-19 (caption, 그림)",
+    "easiestCue": "제임스 리즌이 1990년 정리한 사고 모형",
+    "targetWhy": "리즌의 모형은 안전 관리 애호가·대학 교양 — 4 노림",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "코로나 때 들어 봤을 이름, 기원은 몰랐던 사실",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "daily-rule/1#g005-L1-23",
+   "seed": {
+    "subject": "비상구",
+    "aspect": null,
+    "ref": "L1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1979년 일본 디자이너 오타 유키오가 디자인한 표지가 1982년부터 일본에서 쓰였고, 1987년에는 ISO 국제 표준이 되었습니다. 이 표지는 무엇을 알리는 표지일까요?",
+    "answer": "비상구",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "한국·중국·유럽 연합·일본 등 대부분 지역에서 이 표지는 초록을 쓴다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "1987년 ISO 국제 표준이 된 일본 디자인 표지",
+     "difWhy": "'국제 표준 표지' — 일상·방송",
+     "wor": 3,
+     "worWhy": "생활 기호 기원",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "그림 속 사람으로 유명한 표지",
+     "difWhy": "'달리는 사람 그림 표지' — 누구나 일상에서",
+     "wor": 3,
+     "worWhy": "표지 디자인 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1979년 일본 디자이너 오타 유키오가 디자인한 표지가 1982년부터 일본에서 쓰였고, 1987년에는 ISO 국제 표준이 되었습니다. 그림 속 사람으로 유명한 이 표지는 무엇을 알리는 표지일까요?",
+     "beforeExplanation": null,
+     "removedCue": "그림 속 사람으로 유명한 표지",
+     "addedCue": "(새 단서 없음 — 디자이너·연도로)",
+     "why": "일상에서 누구나 아는 그림 단서를 빼 디자이너·표준화 세부만 남김"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Exit_sign"
+    ],
+    "facts": [
+     {
+      "claim": "1979년 오타 유키오 디자인, 1982년 이후 일본 표지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Exit_sign",
+      "note": "Post-1982 Japanese exit sign (\"running man\") designed by Yukio Ota in 1979."
+     },
+     {
+      "claim": "1987년 ISO 표준",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Exit_sign",
+      "note": "ISO Standard (1987) sign in parts of Asia-Pacific, Europe, and the Americas"
+     },
+     {
+      "claim": "한국·중국·EU·일본 등은 초록",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Exit_sign",
+      "note": "In most regions, including China, the European Union, Japan, and South Korea exit signs have green lettering."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "오타 유키오가 디자인해 1987년 ISO 표준이 된 표지",
+    "targetWhy": "오타 유키오와 이 표지의 연결은 디자인 애호가 세부, 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'사람 그림 + 국제 표준 표지' 로 짐작할 여지가 있다",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "daily-rule/1#g005-L1-24",
+   "seed": {
+    "subject": "안전띠",
+    "aspect": null,
+    "ref": "L1-24",
+    "pairedWith": 903
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 903,
+    "question": "닐스 볼린은 1942년부터 스웨덴 항공기 회사 사브에서 전투기 사출 좌석 개발을 도왔습니다. 1959년 그는 한 자동차 회사에 이 장치의 새 설계를 내놓았고, 그 설계는 1968년 누구나 쓸 수 있게 공개되었습니다. 이 장치는 무엇일까요?",
+    "answer": "안전띠",
+    "acceptedAnswers": [
+     "안전벨트",
+     "3점식 안전띠",
+     "3점식 안전벨트"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "한국에서 '안전띠'(법령)와 '안전벨트'(일상) 둘 다 흔히 씀 · 볼린의 발명은 '3점식'이라 더 정확한 표현도 받음",
+    "explanation": "그 자동차 회사는 볼보로, 볼린은 1959년 이 발명으로 첫 특허를 받았다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 사출 좌석 개발자 + 자동차 회사에 낸 장치",
+     "difWhy": "'볼보에 낸 안전장치' — 자동차 관심층",
+     "wor": 3,
+     "worWhy": "안전장치 기원",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "볼보가 새 설계를 누구나 쓸 수 있게 공개한 장치",
+     "difWhy": "볼보 3점식 안전띠 공개 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 발명 일화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "닐스 볼린은 1942년부터 스웨덴 항공기 회사 사브에서 전투기 사출 좌석을 개발했습니다. 1959년 볼보로 옮겨 이 장치의 새 설계를 내놓았고, 그 설계는 1968년 누구나 쓸 수 있게 공개되었습니다. 이 장치는 무엇일까요?",
+     "beforeExplanation": "볼린은 1959년 이 발명을 볼보에 소개하며 첫 특허를 받았다.",
+     "removedCue": "볼보",
+     "addedCue": "(새로 넣지 않음) 사브 사출 좌석 개발자 볼린",
+     "why": "'볼보 공개' 일화의 회사 이름을 해설로 옮겨 볼린 이력에서 장치를 떠올려야 풀리게 함"
+    },
+    "generalHint": "볼린은 1999년 자동차 명예의 전당에, 세상을 뜬 뒤에는 미국 발명가 명예의 전당에 올랐다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Nils_Bohlin"
+    ],
+    "facts": [
+     {
+      "claim": "1942년부터 사브에서 항공기 설계자로 사출 좌석 개발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nils_Bohlin",
+      "note": "In 1942 he started working for the aircraft maker Saab as an aircraft designer and helped develop ejection seats."
+     },
+     {
+      "claim": "1959년 볼보에 3점식 안전띠 소개",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nils_Bohlin",
+      "note": "introduced his invention to the Volvo company in 1959 and received his first patent"
+     },
+     {
+      "claim": "1968년 공개",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nils_Bohlin",
+      "note": "In 1968, the new seat belt design was made free for the public to use."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Nils_Bohlin"
+    ],
+    "hintNote": "He was inducted into the Automotive Hall of Fame in 1999. He was also posthumously inducted into the National Inventors Hall of Fame (문서 요약)",
+    "easiestCue": "사출 좌석 개발자 볼린이 자동차 회사에 낸 장치 설계",
+    "targetWhy": "볼린 이름으로 안전띠를 떠올리는 것은 자동차 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "볼보=안전 이미지로 짐작하면 에어백과 헷갈릴 수 있으나 공정",
+    "pairCheck": "1회차 #903 은 '모든 좌석 착용 의무·과태료' — 이 문항은 발명자 볼린·사브·1968 공개로 1회차 사실을 쓰지 않는다",
+    "dbCheck": "pair-or-different — #903 (가) 2회차 짝",
+    "warn": []
+   }
+  }
+ ]
+}

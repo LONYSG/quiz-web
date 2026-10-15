@@ -1,0 +1,112 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "medicine/5",
+  "midKey": "medicine",
+  "subName": "응급처치",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/5#g005-C1-04",
+   "seed": {
+    "subject": "애니",
+    "aspect": null,
+    "ref": "C1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1960년 노르웨이 스타방에르의 소생술 심포지엄에서 첫 형태를 선보인 심폐소생술 연습용 마네킹이 있습니다. 장난감 제작자 레르달은 남자 교육생이 남자 얼굴에 입을 대기를 꺼릴 것이라 보고, 19세기 말 센강에서 숨진 것으로 여겨지는 이름 모를 젊은 여성의 데스마스크를 얼굴로 삼았습니다. 이 마네킹에 붙은 여자 이름은 무엇일까요?",
+    "answer": "애니",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "레서시 애니 등 한국어 전체 이름 표기는 검색으로 확인 못 해 넣지 않음 — 질문은 '여자 이름' 만 물음",
+    "explanation": "마이클 잭슨의 노래 'Smooth Criminal' 후렴의 'Annie, are you OK?'도 이 마네킹에서 왔다고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "심폐소생술 연습용 마네킹의 여자 이름",
+     "difWhy": "'CPR 마네킹 이름' — 교육 받은 관심층",
+     "wor": 3,
+     "worWhy": "데스마스크 이야깃거리",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'Smooth Criminal' 후렴에서 안부를 묻는 대상",
+     "difWhy": "'Annie, are you OK' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — CPR 마네킹 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1960년 노르웨이의 장난감 제작자 레르달이 내놓은 심폐소생술 연습용 마네킹의 얼굴은, 19세기 말 센강에서 숨진 것으로 여겨지는 이름 모를 젊은 여성의 데스마스크를 본떴습니다. 마이클 잭슨의 노래 'Smooth Criminal' 후렴에서 안부를 묻는 대상도 이 마네킹이라고 합니다. 이 마네킹에 붙은 여자 이름은 무엇일까요?",
+     "beforeExplanation": "교육생은 마네킹을 깨우듯 이 이름을 부르며 반응을 확인하는 연습을 합니다.",
+     "removedCue": "'Smooth Criminal' 후렴에서 안부를 묻는 대상",
+     "addedCue": "1960년 스타방에르 심포지엄 · 남자 교육생이 꺼릴까 봐 여자 얼굴",
+     "why": "노래 가사(관심층 상식)를 해설로 옮기고 마네킹 개발 세부를 넣음"
+    },
+    "generalHint": "1977년 브로드웨이에 오른 뮤지컬 속 빨강 머리 고아 소녀와 같은 이름이다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Resusci_Anne"
+    ],
+    "facts": [
+     {
+      "claim": "1960년 노르웨이 장난감 제작자 레르달이 처음 선보였다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Resusci_Anne",
+      "note": "developed by Norwegian toy maker Åsmund S. Lærdal / presented at the First International Symposium on Resuscitation at Stavanger, Norway, in 1960"
+     },
+     {
+      "claim": "얼굴은 센강에서 익사한 것으로 여겨지는 신원 미상 여성(L'Inconnue de la Seine)의 데스마스크를 본떴다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Resusci_Anne",
+      "note": "The distinctive face of Resusci Anne was based on L'Inconnue de la Seine. (unidentified young woman believed to have drowned in the Seine in the late 1880s)"
+     },
+     {
+      "claim": "'Smooth Criminal' 후렴 'Annie, are you OK?' 는 이 마네킹에서 영감을 받았다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Resusci_Anne",
+      "note": "The chorus refrain, \"Annie, are you OK?\" in Michael Jackson's \"Smooth Criminal\" was inspired by Resusci Anne."
+     },
+     {
+      "claim": "첫 형태는 1960년 노르웨이 스타방에르의 소생술 심포지엄에서 선보임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Resusci_Anne",
+      "note": "The first version was shown in 1960 at a resuscitation symposium in Stavanger, Norway"
+     },
+     {
+      "claim": "남자 교육생이 남자 얼굴에 입 맞추기를 꺼릴 것이라 여겨 여자 얼굴을 택함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Resusci_Anne",
+      "note": "thought male trainees might be reluctant to kiss a man's face"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Annie_(musical)"
+    ],
+    "hintNote": "the original Broadway production opened in 1977 ... adapted from Harold Gray's 1924 comic strip Little Orphan Annie",
+    "easiestCue": "센강의 이름 모를 여성 데스마스크를 본뜬 CPR 마네킹",
+    "targetWhy": "앵코뉘 드 라 센 데스마스크와 CPR 마네킹의 연결은 애호가 세부, 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "후렴을 기억하는 사람에겐 바로 풀림 — 팝 관심층이면 3 일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "애니 new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,101 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "biology/2",
+  "midKey": "biology",
+  "subName": "분류·진화",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "biology/2#g005-C1-23",
+   "seed": {
+    "subject": "붉은 여왕 가설",
+    "aspect": null,
+    "ref": "C1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1973년 고생물학자 리 밴 베일런은 한 무리가 멸종할 확률이 그 무리가 얼마나 오래 살아왔는지와 상관없이 거의 일정하다는 '멸종의 법칙'을 설명하려고 이 가설을 내놓았습니다. 그는 이 논문을 자신이 만든 학술지 '진화 이론'에 실었습니다. 루이스 캐럴 소설 속 인물에서 이름을 딴 이 가설은 무엇일까요?",
+    "answer": "붉은 여왕 가설",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "다른 학술지가 실어 주겠다고 했지만 게재료를 내야 해서 그가 논문을 거두어들였다고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "루이스 캐럴 인물에서 이름 딴 진화 가설",
+     "difWhy": "공진화 가설 — 대학 교양(생물)",
+     "wor": 4,
+     "worWhy": "교양 — 진화 개념",
+     "acc": 5,
+     "accWhy": "생물 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "루이스 캐럴 인물에서 이름 딴 진화 가설",
+     "difWhy": "공진화 가설 — 대학 교양(생물)",
+     "wor": 4,
+     "worWhy": "교양 — 진화 개념"
+    },
+    "rewrite": null,
+    "generalHint": "그 인물은 『거울 나라의 앨리스』 속 체스 말로, 앞선 소설에 나오는 하트 카드 인물과 흔히 헷갈린다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Red_Queen_hypothesis"
+    ],
+    "facts": [
+     {
+      "claim": "1973년 밴 베일런이 '멸종의 법칙'을 설명하려 내놓았다 — 멸종 확률은 무리의 나이와 상관없이 거의 일정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Red_Queen_hypothesis",
+      "note": "Van Valen offered the hypothesis (1973) as an explanatory tangent to explain the law of extinction / extinction probability does not depend on a species' or higher taxon's age, and stays roughly steady over millions of years"
+     },
+     {
+      "claim": "그가 만든 학술지 Evolutionary Theory 에 실었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Red_Queen_hypothesis",
+      "note": "He then published it in Evolutionary Theory, a journal he founded."
+     },
+     {
+      "claim": "이름은 루이스 캐럴의 '거울 나라의 앨리스' 속 붉은 여왕에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Red_Queen_hypothesis",
+      "note": "borrowing from the Red Queen in Lewis Carroll's Through the Looking-Glass"
+     },
+     {
+      "claim": "Journal of Theoretical Biology 가 받아 주었으나 게재료 때문에 철회했다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Red_Queen_hypothesis",
+      "note": "It was accepted by the Journal of Theoretical Biology, but Van Valen withdrew it because \"the manner of processing depended on payment of page charges.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Red_Queen_(Through_the_Looking-Glass)"
+    ],
+    "hintNote": "she is the queen for the side opposing Alice / The Red Queen is commonly mistaken for the Queen of Hearts from the story's predecessor.",
+    "easiestCue": "루이스 캐럴 소설 인물 이름이 붙은 진화 가설",
+    "targetWhy": "'제자리에 있으려면 계속 달려야 한다' 는 대표 구절을 뺌 — 진화생물학 교양, 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "캐럴 소설 인물 + 진화 가설로 교양서 독자는 바로 떠올림",
+    "pairCheck": null,
+    "dbCheck": "붉은 여왕 가설 new",
+    "warn": [
+     "정답조각 가설"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,180 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "world-food/2",
+  "midKey": "world-food",
+  "subName": "유럽 음식",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-food/2#g005-L3-04",
+   "seed": {
+    "subject": "카르보나라",
+    "aspect": null,
+    "ref": "L3-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 파스타의 이름은 1939년 네덜란드령 동인도의 한 신문에 처음 인쇄되어 나왔습니다. 1950년 이탈리아 신문 '라 스탐파'는 미군 장교들이 몇 해째 로마 트라스테베레의 식당들에서 이 요리를 찾아 왔다고 썼습니다. 이 파스타는 무엇일까요?",
+    "answer": "카르보나라",
+    "acceptedAnswers": [
+     "까르보나라"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '카르보나라', '까르보나라' 넘겨주기 확인(API)",
+    "explanation": "이탈리아에서 처음 실린 조리법(1954년 잡지 '라 쿠치나 이탈리아나')에는 판체타와 마늘, 그뤼에르 치즈가 들어갔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "미군 장교들이 로마 트라스테베레 식당에서 찾은 파스타",
+     "difWhy": "미군 기원설 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 기원",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "미군 장교들이 로마 트라스테베레 식당에서 찾은 파스타",
+     "difWhy": "미군 기원설 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 기원"
+    },
+    "rewrite": null,
+    "generalHint": "이탈리아 조리법에는 대개 크림을 넣지 않아, 크림을 듬뿍 넣는 해외식과 자주 견주어진다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Carbonara"
+    ],
+    "facts": [
+     {
+      "claim": "1939년 네덜란드령 동인도 신문에 이름이 처음 인쇄됨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carbonara",
+      "note": "The name spaghetti alla carbonara first appears in print in a 1939 Dutch East Indies newspaper (De Koerier)."
+     },
+     {
+      "claim": "1950년 라 스탐파가 미군 장교들이 몇 해째 트라스테베레 식당에서 찾았다고 보도",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carbonara",
+      "note": "A 1950 La Stampa article later reported that American officers had been seeking the dish in Trastevere restaurants for years."
+     },
+     {
+      "claim": "1954년 이탈리아 첫 조리법 — 판체타·마늘·그뤼에르",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Carbonara",
+      "note": "The first recipe for carbonara published in Italy appeared in La Cucina Italiana magazine. That recipe used pancetta, garlic, and Gruyère cheese."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Carbonara"
+    ],
+    "hintNote": "Cream is not used in most Italian recipes ... adding cream makes the dish more stable.",
+    "easiestCue": "1950년 라 스탐파 — 미군 장교들이 로마 트라스테베레에서 찾던 파스타",
+    "targetWhy": "달걀·치즈·관찰레 같은 정의와 '숯쟁이' 이름 풀이를 빼고 기록 세부만 남김 — 미군 기원설을 아는 파스타 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 파스타, 단서는 첫 인쇄·1950년 보도라는 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "world-food/2#g005-L3-05",
+   "seed": {
+    "subject": "비너 슈니첼",
+    "aspect": null,
+    "ref": "L3-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "라데츠키 원수가 1857년 이탈리아에서 이 요리의 조리법을 들여왔다는 이야기가 퍼져 있지만, 언어학자 하인츠디터 폴은 이를 지어낸 이야기로 봅니다. 그 나라의 법은 헷갈리지 않도록 이 이름의 요리를 반드시 송아지고기로 만들게 정해 두었습니다. 이 요리는 무엇일까요?",
+    "answer": "비너 슈니첼",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '비너 슈니첼' 문서 제목 확인(API) — '슈니첼'은 별도 문서(더 넓은 말, B7)라 넣지 않음",
+    "explanation": "이 이름이 나오는 가장 이른 기록은 1831년에 나온 요리책입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "그 나라의 법이 송아지고기로 만들게 정한 요리",
+     "difWhy": "오스트리아 송아지 커틀릿 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대표 요리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "그 나라의 법이 송아지고기로 만들게 정한 요리",
+     "difWhy": "오스트리아 송아지 커틀릿 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대표 요리"
+    },
+    "rewrite": null,
+    "generalHint": "전통적으로 감자 샐러드나 단맛 낸 드레싱에 버무린 버터헤드 상추를 곁들여 낸다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Wiener_schnitzel"
+    ],
+    "facts": [
+     {
+      "claim": "라데츠키가 1857년 이탈리아에서 조리법을 들여왔다는 이야기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wiener_schnitzel",
+      "note": "According to a tale, Field Marshal Joseph Radetzky von Radetz brought the recipe from Italy to Vienna in 1857."
+     },
+     {
+      "claim": "하인츠디터 폴은 지어낸 이야기로 봄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wiener_schnitzel",
+      "note": "Linguist Heinz-Dieter Pohl calls this story invented."
+     },
+     {
+      "claim": "오스트리아 법이 송아지고기로 만들게 정함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wiener_schnitzel",
+      "note": "To avoid confusion, Austrian law requires that Wiener Schnitzel be made of veal."
+     },
+     {
+      "claim": "가장 이른 기록은 1831년 요리책",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Wiener_schnitzel",
+      "note": "The term appeared in the 19th century, with the earliest known mention in an 1831 cookbook."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Wiener_schnitzel"
+    ],
+    "hintNote": "served in Austria with butterhead lettuce tossed with a sweetened vinaigrette dressing ... potato salad",
+    "easiestCue": "오스트리아(라데츠키의 나라) 법이 송아지고기로 정한 요리",
+    "targetWhy": "'빈'·'얇게 두드려 튀긴 커틀릿' 정의를 빼고 라데츠키 전설·법 규정만 남김 — 라데츠키를 오스트리아와 잇는 데 세계사 교양, 법 규정은 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "요리 이름은 유명하고, 단서는 전설의 진위·법 규정이라는 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

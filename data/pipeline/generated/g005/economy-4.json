@@ -1,0 +1,108 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "economy/4",
+  "midKey": "economy",
+  "subName": "기업·경영 용어",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "economy/4#g005-H1-19",
+   "seed": {
+    "subject": "파킨슨의 법칙",
+    "aspect": null,
+    "ref": "H1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1955년 『이코노미스트』에 실린 한 풍자 에세이는, 영국의 함선과 식민지가 줄어드는데도 해군성의 조직은 오히려 커졌고 식민성은 관리할 식민지가 거의 남지 않았을 때 직원이 가장 많았다는 점을 들었습니다. 해군사 연구자였던 필자의 이름이 붙은 이 법칙은 무엇일까요?",
+    "answer": "파킨슨의 법칙",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "에세이의 첫 문장은 '일은 그것을 마치는 데 주어진 시간을 채우도록 늘어난다'로, 오늘날 이 법칙은 흔히 이 문장으로 알려져 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "식민지가 줄어도 조직은 커졌다는 풍자 법칙",
+     "difWhy": "'관료 조직 팽창 법칙' — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 경영 기본 어휘",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "관료 조직이 일의 양과 상관없이 불어난다는 법칙",
+     "difWhy": "관료제 팽창 법칙 — 고교 사회·문화",
+     "wor": 4,
+     "worWhy": "교양 — 관료제 기본 개념"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1955년 『이코노미스트』에 실린 한 풍자 에세이는, 영국의 함선과 식민지가 줄어드는데도 해군성의 조직은 오히려 커졌고 식민성은 관리할 식민지가 거의 남지 않았을 때 직원이 가장 많았다는 점을 들었습니다. 해군사 연구자였던 필자의 이름이 붙은, 관료 조직이 일의 양과 상관없이 불어난다는 이 법칙은?",
+     "beforeExplanation": null,
+     "removedCue": "관료 조직이 일의 양과 상관없이 불어난다는 법칙(정의)",
+     "addedCue": "(새 단서 없음 — 1955년 에세이의 사례로)",
+     "why": "고교 사회·문화의 정의 문장을 빼 에세이 사례 세부로만 묻게 함"
+    },
+    "generalHint": "필자는 1950년부터 싱가포르 말라야 대학에서 래플스 역사학 교수로 일했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Parkinson%27s_law"
+    ],
+    "facts": [
+     {
+      "claim": "1955년 이코노미스트 풍자 에세이, 해군사 연구자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Parkinson%27s_law",
+      "note": "Parkinson's Law comes from a satirical essay by a historian of naval affairs, written for The Economist in 1955"
+     },
+     {
+      "claim": "함선과 식민지가 줄어드는데 해군성 성장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Parkinson%27s_law",
+      "note": "Parkinson cited growth in the British Admiralty even though … \"the numbers of, respectively, their ships and colonies were declining.\""
+     },
+     {
+      "claim": "식민성은 식민지가 거의 없을 때(외무부에 합쳐질 때) 직원이 가장 많음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Parkinson%27s_law",
+      "note": "Parkinson \"showed that it had its greatest number of staff when it was folded into the Foreign Office,\" after the empire had few colonies left to run."
+     },
+     {
+      "claim": "첫 문장 'Work expands so as to fill the time available for its completion'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Parkinson%27s_law",
+      "note": "\"Work expands so as to fill the time available for its completion.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/C._Northcote_Parkinson"
+    ],
+    "hintNote": "In 1950, he was appointed Raffles Professor of History at the new University of Malaya in Singapore.",
+    "easiestCue": "1955년 『이코노미스트』 풍자 에세이의 해군성·식민성 사례",
+    "targetWhy": "사례에서 법칙을 떠올리는 것은 대학 교양(행정학) 수준, 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'관료 조직 비대' 정의가 남아 있어 경영서 독자는 바로 풀 수 있음 — 대학 교양으로 4 를 노림",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": [
+     "정답조각 법칙"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,271 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "architecture/3",
+  "midKey": "architecture",
+  "subName": "유명 건축물",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "architecture/3#g005-A2-20",
+   "seed": {
+    "subject": "알함브라 궁전",
+    "aspect": null,
+    "ref": "A2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1492년 이후 페르디난드와 이사벨의 왕실이 들어서, 콜럼버스가 항해에 왕실의 승인을 받은 곳입니다. 1526년 카를 5세는 옛 왕궁들 바로 옆에 르네상스식 새 궁전을 짓게 했고, 1832년 미국 작가 워싱턴 어빙이 펴낸 이야기책이 이곳을 다시 세계에 알렸습니다. 이 궁전은 무엇일까요?",
+    "answer": "알함브라 궁전",
+    "acceptedAnswers": [
+     "알람브라 궁전",
+     "알함브라",
+     "알람브라"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '알람브라', '알함브라 궁전' · '알함브라' 넘겨주기 확인(API) — 한국에서 '알함브라 궁전' 이 흔하고 두 표기 모두 씀",
+    "explanation": "1238년 그라나다 나스르 왕조의 첫 군주 무함마드 1세가 짓기 시작했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1832년 워싱턴 어빙이 펴낸 이야기책",
+     "difWhy": "어빙의 '알함브라 이야기' — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 세계 유명 건축물",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1832년 워싱턴 어빙이 펴낸 이야기책",
+     "difWhy": "어빙의 '알함브라 이야기' — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 세계 유명 건축물"
+    },
+    "rewrite": null,
+    "generalHint": "워싱턴 어빙은 1829년 이 궁전 안의 방에서 석 달쯤 묵으며 그 이야기책을 썼다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Alhambra"
+    ],
+    "facts": [
+     {
+      "claim": "1492년 이후 페르디난드·이사벨의 왕실, 콜럼버스가 왕실 승인을 받은 곳",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alhambra",
+      "note": "After the conclusion of the Christian Reconquista in 1492, the site became the Royal Court of Ferdinand and Isabella (where Christopher Columbus received royal endorsement for his expedition)"
+     },
+     {
+      "claim": "1526년 카를 5세가 나스르 궁전 바로 옆에 르네상스 궁전을 짓게 함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alhambra",
+      "note": "In 1526, Charles V commissioned a new Renaissance-style palace in direct juxtaposition with the Nasrid palaces."
+     },
+     {
+      "claim": "어빙의 1832년 책이 국제적 관심을 불러옴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alhambra",
+      "note": "The most influential of them was Washington Irving, whose Tales of the Alhambra (1832) brought international attention to the site."
+     },
+     {
+      "claim": "1238년 나스르 왕조 첫 군주 무함마드 1세가 착공",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Alhambra",
+      "note": "The building of the complex was begun in 1238 CE by Muhammad I Ibn al-Ahmar, the first Nasrid emir and founder of the Emirate of Granada"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tales_of_the_Alhambra"
+    ],
+    "hintNote": "lived in an apartment there for about three months (1829) / plaque: Washington Irving wrote his Tales of Alhambra in these rooms in 1829",
+    "easiestCue": "1492년 이후 페르디난드·이사벨 왕실이 들어선 옛 왕궁",
+    "targetWhy": "그라나다 · 이슬람 · 나스르 왕조 · 타레가의 기타곡 같은 쉬운 단서를 빼고 정복 뒤 역사 · 카를 5세 궁전 · 어빙만 남김 — 대학 교양 건축·세계사 세부라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "1492 + 공동왕 → 그라나다 함락 → 궁전으로 이어지는 길이 고교 세계사 한 걸음이라 3 경계",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 궁전"
+    ]
+   }
+  },
+  {
+   "seedId": "architecture/3#g005-A2-21",
+   "seed": {
+    "subject": "엠파이어 스테이트 빌딩",
+    "aspect": null,
+    "ref": "A2-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 건물의 꼭대기 첨탑은 원래 비행선을 매어 두는 계류탑으로 계획되었지만, 높은 곳의 거센 바람 때문에 계획은 포기되었습니다. 1928년 대선 후보였던 전 뉴욕 주지사 앨 스미스가 사업 회사를 이끈 이 건물은 무엇일까요?",
+    "answer": "엠파이어 스테이트 빌딩",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '엠파이어 스테이트 빌딩' 문서 제목 확인(API) — 변형 없음",
+    "explanation": "1977년 10월 12일부터 첨탑에 계절과 기념일에 맞춘 색 조명을 켜 왔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "첨탑이 원래 비행선 계류탑으로 계획된 건물",
+     "difWhy": "'비행선 계류탑 첨탑' — 건축 관심층",
+     "wor": 3,
+     "worWhy": "유명 건물 이야깃거리",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "102층 정류장을 둔 맨해튼 건물",
+     "difWhy": "'맨해튼 102층 빌딩' — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "유명 건물 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 건물의 꼭대기 첨탑은 원래 비행선을 매어 두는 계류탑으로 계획되어, 승객이 비행선에 오를 102층 정류장까지 마련되었습니다. 그러나 높은 곳의 거센 바람 때문에 계획은 포기되었습니다. 1928년 대선 후보였던 전 뉴욕 주지사 앨 스미스가 사업 회사를 이끈 이 맨해튼 건물은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "승객이 비행선에 오를 102층 정류장 + 맨해튼 건물",
+     "addedCue": "(새 단서 없음) 남은 비행선 계류탑 계획·앨 스미스가 이끈 사업 회사로 묻게 함",
+     "why": "'맨해튼 102층' 은 층수로 바로 이어지는 방송 수준 단서라 빼고, 건축 내력과 사업 주체만 남김"
+    },
+    "generalHint": "1945년 7월 짙은 안개 속에서 B-25 폭격기가 이 건물 78~80층 사이 북쪽 벽에 부딪혔다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Empire_State_Building"
+    ],
+    "facts": [
+     {
+      "claim": "첨탑은 비행선 계류탑으로 계획, 강풍으로 포기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Empire_State_Building",
+      "note": "The spire of the Empire State Building was originally intended to serve as a mooring mast for zeppelins and other airships, although the plan was abandoned when it was determined that high winds would make that impossible."
+     },
+     {
+      "claim": "1928년 대선 후보였던 전 뉴욕 주지사 앨 스미스가 회사 대표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Empire_State_Building",
+      "note": "Alfred E. Smith, a former Governor of New York and U.S. presidential candidate whose 1928 campaign had been managed by Raskob, was appointed head of the company"
+     },
+     {
+      "claim": "1977년 10월 12일부터 첨탑 색 조명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Empire_State_Building",
+      "note": "Since October 12, 1977, the spire has been lit in colors chosen to match seasonal events and holidays."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/1945_Empire_State_Building_B-25_crash"
+    ],
+    "hintNote": "On Saturday, July 28, 1945 ... a B-25 Mitchell bomber ... accidentally crashed into the north side ... between the 78th and 80th floors ... while flying in thick fog",
+    "easiestCue": "첨탑을 비행선 계류탑으로 계획했던 뉴욕의 빌딩",
+    "targetWhy": "계류탑 계획·앨 스미스 회사는 건축사·뉴욕 애호가 수준 → 4 (경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'맨해튼의 유명 첨탑 건물' 로 엠파이어·크라이슬러 둘 중 찍을 여지",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "architecture/3#g005-A2-22",
+   "seed": {
+    "subject": "부르즈 할리파",
+    "aspect": null,
+    "ref": "A2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "스트라발라의 말에 따르면 이 건물은 서울의 73층 주거용 건물 '타워팰리스 3차'를 바탕으로 설계되었습니다. 건물과 둘레 공원은 사막 식물 히메노칼리스의 꽃 모양을 본떴는데, 이 건물은 무엇일까요?",
+    "answer": "부르즈 할리파",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '부르즈 할리파' 문서 제목 확인(API) — 변형 없음",
+    "explanation": "개장 전까지는 '부르즈 두바이'였는데, 금융 위기 때 두바이를 도운 아부다비 통치자 칼리파 빈 자이드를 기려 2010년 1월 개장식에서 이름을 바꿨습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 사막 식물 꽃 모양 + 초고층 건물",
+     "difWhy": "'사막 초고층·타워팰리스' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "세계 최고층 건물 이야기",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "삼성물산이 주 시공한 히메노칼리스 꽃 모양 초고층 건물",
+     "difWhy": "'삼성물산 시공 초고층' — 뉴스에서 흔히",
+     "wor": 3,
+     "worWhy": "유명 건물 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "스트라발라의 말에 따르면, 이 건물은 서울의 73층 주거용 건물 '타워팰리스 3차'를 바탕으로 설계되었습니다. 건물과 둘레 공원은 히메노칼리스 꽃 모양을 본떴고, 시카고의 SOM이 설계를, 한국의 삼성물산이 주 시공을 맡았습니다. 이 건물은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "삼성물산이 주 시공 · 시카고 SOM 설계",
+     "addedCue": "(뺌만) 타워팰리스 3차 바탕 + 히메노칼리스 꽃",
+     "why": "뉴스로 흔한 '삼성물산 시공'을 빼 설계 세부만 남김"
+    },
+    "generalHint": "'미션 임파서블: 고스트 프로토콜'에서 톰 크루즈는 여러 줄에 묶인 채 이 건물 바깥 유리벽을 타는 장면을 찍었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Burj_Khalifa"
+    ],
+    "facts": [
+     {
+      "claim": "스트라발라에 따르면 서울의 73층 주거용 타워팰리스 3차를 바탕으로 설계",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+      "note": "According to Strabala, Burj Khalifa was designed based on the 73 floor Tower Palace Three, an all-residential building in Seoul."
+     },
+     {
+      "claim": "건물과 공원이 히메노칼리스 꽃을 바탕",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+      "note": "Like the tower, the park's design was based on the flower of the Hymenocallis, a desert plant."
+     },
+     {
+      "claim": "개장 전 이름 부르즈 두바이, 2010년 1월 개장 때 아부다비 통치자 칼리파 빈 자이드를 기려 개명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+      "note": "The tower was known as Burj Dubai (\"Dubai Tower\") until its official opening in January 2010. It was renamed in honour of the ruler of Abu Dhabi, Khalifa bin Zayed Al Nahyan"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mission:_Impossible_%E2%80%93_Ghost_Protocol"
+    ],
+    "hintNote": "he was securely attached to the Burj Khalifa at all times by multiple cables",
+    "easiestCue": "히메노칼리스 꽃 모양을 본뜬 초고층 건물",
+    "targetWhy": "타워팰리스 3차 원형·히메노칼리스 꽃 설계는 건축 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'삼성물산 시공 초고층' 이 한국 뉴스로 알려져 3 으로 읽힐 수 있음",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

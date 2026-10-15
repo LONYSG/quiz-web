@@ -1,0 +1,282 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "board-game/5",
+  "midKey": "board-game",
+  "subName": "퍼즐",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "board-game/5#g005-L2-07",
+   "seed": {
+    "subject": "루빅스 큐브",
+    "aspect": null,
+    "ref": "L2-07",
+    "pairedWith": 516
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 516,
+    "question": "'슈퍼플립'이라 불리는 배열은 1992년 딕 빈터가 면을 20번 돌리는 풀이를 찾았고, 1995년 마이클 리드가 그보다 짧은 풀이가 없음을 보였습니다. 2010년에는 컴퓨터로 어떤 배열이든 20번 안에 풀 수 있음이 증명됐는데, 이 퍼즐은 무엇일까요?",
+    "answer": "루빅스 큐브",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '루빅스 큐브' 문서 제목(API) 확인",
+    "explanation": "1982년 6월 5일 부다페스트에서 첫 세계 대회가 열렸습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "면을 돌리는 퍼즐",
+     "difWhy": "'면을 20번 돌리는 퍼즐' — 방송·생활",
+     "wor": 3,
+     "worWhy": "신의 수 이야깃거리",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "어떤 상태로 흐트러져 있든 다 맞출 수 있는 장난감 퍼즐, '신의 수'",
+     "difWhy": "'흐트러진 것을 맞추는 퍼즐 장난감' — 방송·일상에서 흔히",
+     "wor": 3,
+     "worWhy": "이야깃거리 — '신의 수' 20"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2010년 구글이 내준 컴퓨터로 계산한 끝에, 이 장난감은 어떤 상태로 흐트러져 있든 20번 안에 다 맞출 수 있다는 것이 증명됐습니다. 이 20을 흔히 '신의 수'라고 부르는 퍼즐은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "어떤 상태로 흐트러져 있든 다 맞출 수 있는 장난감 · '신의 수' · 구글",
+     "addedCue": "슈퍼플립 배열 · 딕 빈터·마이클 리드",
+     "why": "'맞추는 퍼즐 장난감' 일상 단서와 신의 수 이름을 빼고 슈퍼플립 세부로"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Optimal_solutions_for_the_Rubik%27s_Cube",
+     "https://en.wikipedia.org/wiki/Rubik%27s_Cube"
+    ],
+    "facts": [
+     {
+      "claim": "어떤 상태든 최대 20번 면 돌리기로 풂",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Optimal_solutions_for_the_Rubik%27s_Cube",
+      "note": "all cube positions could be solved with a maximum of 20 face turns."
+     },
+     {
+      "claim": "1982년 6월 5일 부다페스트 첫 세계 대회",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rubik%27s_Cube",
+      "note": "The first world championship was the 1982 World Rubik's Cube Championship held in Budapest on 5 June 1982"
+     },
+     {
+      "claim": "1992년 딕 빈터가 슈퍼플립의 20수 풀이를 찾고 1995년 마이클 리드가 최소임을 보임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Optimal_solutions_for_the_Rubik%27s_Cube",
+      "note": "a solution for the superflip with 20 face turns was found by Dik T. Winter (1992) ... Michael Reid showed in 1995 that this solution was minimal"
+     },
+     {
+      "claim": "2010년 컴퓨터 증명: 모든 배열이 최대 20번 면 돌리기로 풀림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Optimal_solutions_for_the_Rubik%27s_Cube",
+      "note": "gave the final computer-assisted proof that all cube positions could be solved with a maximum of 20 face turns"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'슈퍼플립' 배열이 있는 퍼즐",
+    "targetWhy": "슈퍼플립은 큐브 애호가 용어, 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'신의 수'는 큐브 관심층에도 알려진 말이라 3 여지",
+    "pairCheck": "1회차 #516 은 헝가리 건축학 교수의 교구·여섯 면 색 — 신의 수·2010 증명은 1회차 질문·해설에 없음",
+    "dbCheck": "pair-or-different — 활성 #516 과 같은 답, (가) 2회차",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "board-game/5#g005-L2-08",
+   "seed": {
+    "subject": "칠교놀이",
+    "aspect": null,
+    "ref": "L2-08",
+    "pairedWith": 520
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 520,
+    "question": "1815~1816년 무렵 한 미국 선장이 항구에서 이 퍼즐을 다룬 책을 받아 필라델피아로 가져왔고, 이 퍼즐은 영국에 이어 유럽 여러 나라에서도 크게 유행했습니다. 20세기 초 퍼즐 작가 샘 로이드는 이 퍼즐의 기원을 그럴듯하게 꾸며 낸 책을 냈지만, 1910년 무렵 지어낸 이야기로 드러났습니다. 이 퍼즐은?",
+    "answer": "칠교놀이",
+    "acceptedAnswers": [
+     "탱그램",
+     "칠교"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '탱그램' → '칠교놀이' 넘겨주기(API) 확인 — 서양 유행을 묻는 질문이라 탱그램도 받음",
+    "explanation": "1910년 옥스퍼드의 제임스 머리는 로이드의 책에 나오는 인물과 신이 중국 문헌에 전혀 없다고 편지에 적었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "샘 로이드가 기원을 꾸며 낸 퍼즐",
+     "difWhy": "탱그램 역사 — 퍼즐 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 퍼즐 기원",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "샘 로이드가 기원을 꾸며 낸 퍼즐",
+     "difWhy": "탱그램 역사 — 퍼즐 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 퍼즐 기원"
+    },
+    "rewrite": null,
+    "generalHint": "1942년 두 수학자는 이 조각들로 만들 수 있는 볼록한 꼴이 13가지뿐임을 증명했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tangram"
+    ],
+    "facts": [
+     {
+      "claim": "1815~1816 선장 도널드슨이 책을 받아 필라델피아로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tangram",
+      "note": "Americans first saw it in 1815–1816, when Captain M. Donnaldson received books on the subject during a port call and brought them to Philadelphia."
+     },
+     {
+      "claim": "영국에 이어 유럽 여러 나라로 유행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tangram",
+      "note": "The craze quickly spread to other European countries (after England embraced the puzzle)"
+     },
+     {
+      "claim": "샘 로이드의 꾸며 낸 역사, 1910년 무렵 거짓으로 드러남",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tangram",
+      "note": "popular but fraudulently written history by famed puzzle maker Samuel Loyd … By 1910 it was clear that it was a hoax."
+     },
+     {
+      "claim": "1910 제임스 머리 편지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tangram",
+      "note": "A 1910 letter from Oxford's James Murray stated that \"the man Tan, the god Tan, and the Book of Tan are entirely unknown to Chinese literature.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tangram"
+    ],
+    "hintNote": "Fu Traing Wang and Chuan-Chih Hsiung proved in 1942 that there are only thirteen convex tangram configurations",
+    "easiestCue": "샘 로이드가 기원을 꾸며 낸 퍼즐",
+    "targetWhy": "일곱 조각·정사각형(1회차 정의)을 빼고 서양 유행사·로이드의 날조만 남김 — 퍼즐 애호가 수준이라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "단서가 퍼즐사 세부라 좁혀지긴 하나, 모르는 사람은 아예 손을 못 댈 수 있음",
+    "pairCheck": "1회차 #520 은 일곱 조각 정의, 해설은 중국 시작·탱그램 이름 — 미국 전래·로이드 날조는 1회차에 없음",
+    "dbCheck": "pair-or-different — 활성 #520 과 같은 답, (가) 2회차 · 탱그램 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "board-game/5#g005-L2-09",
+   "seed": {
+    "subject": "십자말풀이",
+    "aspect": null,
+    "ref": "L2-09",
+    "pairedWith": 518
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 518,
+    "question": "1944년 노르망디 상륙 계획을 앞두고 영국 '데일리 텔레그래프'의 이 난에 '유타'·'멀베리' 같은 작전 암호명이 잇달아 실려 정보 당국이 간첩 행위를 의심했습니다. 알고 보니 출제자인 교장 레너드 도가 군인들 말을 엿들은 학생들에게서 낱말을 얻은 것이었는데, 이 난은 무엇일까요?",
+    "answer": "십자말풀이",
+    "acceptedAnswers": [
+     "크로스워드",
+     "크로스워드 퍼즐",
+     "십자말"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '십자말풀이' → '십자말' 넘겨주기(API) 확인 · 크로스워드는 한국에서 흔히 쓰는 외래어",
+    "explanation": "블레칠리 파크의 암호 해독가 가운데 일부는 이 퍼즐 풀기 대회에서 좋은 성적을 낸 사람 중에서 뽑혔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "엮음: 신문의 낱말 난 + 출제자",
+     "difWhy": "'신문 낱말 퍼즐 난' — 방송·일상",
+     "wor": 3,
+     "worWhy": "전쟁 일화 이야깃거리",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "엮음: 신문의 낱말 난 + 출제자",
+     "difWhy": "'신문 낱말 퍼즐 난' — 방송·일상",
+     "wor": 3,
+     "worWhy": "전쟁 일화 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "범주 단서(신문 낱말 퍼즐)를 빼면 묻는 대상(그 난)을 가리킬 수 없음 — 암호명이 '답으로 실렸다'는 것 자체가 낱말 퍼즐을 뜻해, 어떤 깊은 세부로 바꿔도 범주 단서로 풀림"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Leonard_Dawe",
+     "https://en.wikipedia.org/wiki/Crossword"
+    ],
+    "facts": [
+     {
+      "claim": "데일리 텔레그래프 퍼즐에 D-Day 암호명 '유타'·'멀베리'가 답으로 실림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leonard_Dawe",
+      "note": "several codenames related to the D-Day plans, such as 'Utah' and 'Mulberry', appeared as solutions in Dawe's crosswords."
+     },
+     {
+      "claim": "정보 당국이 간첩 행위를 의심",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leonard_Dawe",
+      "note": "The inclusion of the codewords was initially suspected by the British Secret Services to be a form of espionage."
+     },
+     {
+      "claim": "도는 교장, 학생들이 군인 말을 엿들음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leonard_Dawe",
+      "note": "progressing to become the school's head teacher … Dawe had got the words from boys at the school, who had overheard them from soldiers."
+     },
+     {
+      "claim": "블레칠리 파크가 대회 성적으로 일부 선발",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Crossword",
+      "note": "Some cryptologists for Bletchley Park were selected after doing well in a crossword-solving competition."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1944년 데일리 텔레그래프의 이 난에 D-Day 암호명이 실린 사건",
+    "targetWhy": "가로세로 뜻풀이(1회차 정의)를 빼고 D-Day 암호명 사건만 남김 — 2차 대전사·퍼즐 애호가 수준이라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'출제자·낱말·신문 난'에서 범주로 추리될 여지가 있어 3 가능",
+    "pairCheck": "1회차 #518 은 1913년 미국 신문 첫 게재·뜻풀이 정의, 해설은 마름모꼴 — D-Day 사건은 1회차에 없음",
+    "dbCheck": "pair-or-different — 활성 #518 과 같은 답, (가) 2회차 · 크로스워드 new",
+    "warn": []
+   }
+  }
+ ]
+}

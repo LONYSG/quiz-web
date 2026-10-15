@@ -1,0 +1,198 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "drinks/3",
+  "midKey": "drinks",
+  "subName": "맥주",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "drinks/3#g005-L3-19",
+   "seed": {
+    "subject": "트라피스트 맥주",
+    "aspect": null,
+    "ref": "L3-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "벨기에 베스트말러 수도원이 1856년에 빚은 맥주는 '두벨', 1930년대에 내놓은 맥주는 '트리펠' 양식의 바탕이 되었습니다. 국제 협회가 정한 기준을 지킨 양조장만 공식 로고를 붙일 수 있는, 이 가톨릭 수도회의 이름을 딴 맥주의 갈래는 무엇일까요?",
+    "answer": "트라피스트 맥주",
+    "acceptedAnswers": [
+     "트라피스트"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '트라피스트 맥주' 문서 제목 확인(API) — 질문이 '수도회 이름'을 묻기도 해 '트라피스트'도 받음",
+    "explanation": "기준에 따르면 이 맥주는 수익을 내려는 사업이 아니어서, 수도사의 생활비와 시설 유지비를 뺀 나머지는 자선에 씁니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "가톨릭 수도회 이름을 딴, 공식 로고를 붙이는 맥주 갈래",
+     "difWhy": "수도회 맥주 갈래 — 맥주 애호가",
+     "wor": 3,
+     "worWhy": "맥주 이야깃거리",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "가톨릭 수도회 이름을 딴, 공식 로고를 붙이는 맥주 갈래",
+     "difWhy": "수도회 맥주 갈래 — 맥주 애호가",
+     "wor": 3,
+     "worWhy": "맥주 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "로슈포르 10과 베스트플레테런 12는 이 갈래 가운데 도수가 높은 '쿼드루펠'의 예로 꼽힌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Trappist_beer"
+    ],
+    "facts": [
+     {
+      "claim": "베스트말러 수도원 1856년 맥주가 두벨의 뿌리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Trappist_beer",
+      "note": "The dubbel style traces back to a beer brewed in the Trappist Abbey of Westmalle in 1856."
+     },
+     {
+      "claim": "1930년대 베스트말러 트리펠이 트리펠 양식의 바탕",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Trappist_beer",
+      "note": "Westmalle Tripel is considered to be the foundation of this beer style, and was developed in the 1930s."
+     },
+     {
+      "claim": "국제 협회(ITA)가 기준을 지킨 양조장에만 로고 부여",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Trappist_beer",
+      "note": "The Authentic Trappist Product label is assigned by the International Trappist Association (ITA) to just ten breweries that meet its criteria."
+     },
+     {
+      "claim": "수익 사업이 아니며 남는 돈은 자선에",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Trappist_beer",
+      "note": "The brewery is not intended to be a profit-making venture ... is donated to charity for social work and to help persons in need."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Trappist_beer"
+    ],
+    "hintNote": "Rochefort 10, Westvleteren 12 and Zundert 10 are also examples of quadrupels.",
+    "easiestCue": "베스트말러 수도원이 두벨·트리펠의 바탕을 빚은 수도회 맥주",
+    "targetWhy": "'수도원 담장 안에서 수도사가 빚는 맥주' 정의와 시메이·베스트블레테런 같은 대표 이름을 빼고 베스트말러·양식 기원만 남김 — 맥주 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "맥주 좋아하는 사람은 이름을 들어 봤고, 두벨·트리펠의 기원은 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 스트,맥주"
+    ]
+   }
+  },
+  {
+   "seedId": "drinks/3#g005-L3-20",
+   "seed": {
+    "subject": "버드와이저",
+    "aspect": null,
+    "ref": "L3-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국의 한 양조 회사는 1876년 보헤미아의 한 도시 맥주 맛에 맞추려는 뜻도 담아, 그 도시의 독일어 이름을 딴 맥주를 내놓았습니다. 체코어를 쓰는 그 도시 시민들이 세운 국영 양조장과 1907년부터 세계 곳곳에서 100건 넘는 소송을 벌여 온 이 맥주는 무엇일까요?",
+    "answer": "버드와이저",
+    "acceptedAnswers": [
+     "Budweiser"
+    ],
+    "originalTitleVariants": [
+     "Budweiser"
+    ],
+    "variantCheck": "ko.wikipedia '버드와이저' 문서 제목 확인(API) — 상표가 영어라 Budweiser 를 B10 으로 넣음",
+    "explanation": "유럽 대부분에서는 줄인 이름 '버드'로 팔고, 체코 양조장은 북아메리카에서 '체크바르'라는 이름으로 팝니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "보헤미아 도시의 독일어 이름을 딴 미국 맥주, 100건 넘는 소송",
+     "difWhy": "'부드바르 상표 소송' — 맥주 애호가",
+     "wor": 3,
+     "worWhy": "유명 맥주 이름 유래",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "앤하이저부시가 1876년 내놓은 맥주",
+     "difWhy": "앤하이저부시 대표 맥주 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 상표 분쟁"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1876년 미국의 앤하이저부시는 보헤미아의 한 도시 맥주 맛에 맞추려는 뜻도 담아, 그 도시의 독일어 이름을 딴 맥주를 내놓았습니다. 그 도시 시민들이 세운 체코 국영 양조장과 1907년부터 세계 곳곳에서 100건 넘는 소송을 벌여 온 이 맥주는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "앤하이저부시",
+     "addedCue": "(새로 넣지 않음) 보헤미아 도시 독일어 이름 · 체코 양조장 소송",
+     "why": "회사 이름을 빼 도시 이름(부드바이스)과 상표 분쟁을 알아야 풀리게 함"
+    },
+    "generalHint": "보헤미아 맥주가 16세기부터 듣던 '왕들의 맥주'라는 말을 뒤집어 '맥주의 왕'이라는 구호로 삼았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Budweiser_trademark_dispute"
+    ],
+    "facts": [
+     {
+      "claim": "1876년 앤하이저부시가 부드바이스 맥주 맛에 맞추려는 뜻도 담아 같은 이름의 맥주를 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Budweiser_trademark_dispute",
+      "note": "Anheuser-Busch began making a beer which they also called \"Budweiser\", partly to match the taste of the Budweis beer (1876)."
+     },
+     {
+      "claim": "체코어를 쓰는 부드바이스 시민들이 세운 국영 양조장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Budweiser_trademark_dispute",
+      "note": "state-owned brewery founded by Czech-speaking citizens of Budweis"
+     },
+     {
+      "claim": "1907년부터 100건 넘는 소송",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Budweiser_trademark_dispute",
+      "note": "The dispute, ongoing since 1907, has involved more than 100 court cases around the world."
+     },
+     {
+      "claim": "유럽 대부분에서 Bud, 북미에서 Czechvar",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Budweiser_trademark_dispute",
+      "note": "AB InBev uses the name \"Bud\" in most of Europe, while Budvar sells in North America as \"Czechvar.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Budweiser"
+    ],
+    "hintNote": "called 'The Beer of Kings' since the 16th century ... Adolphus Busch adapted that phrase into 'The King of Beers'",
+    "easiestCue": "체코 국영 양조장과 100건 넘는 상표 소송을 벌인 맥주",
+    "targetWhy": "부드바이스 상표 분쟁은 맥주 애호가 수준 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 상표, 이름이 체코 도시에서 왔다는 것은 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 이저"
+    ]
+   }
+  }
+ ]
+}

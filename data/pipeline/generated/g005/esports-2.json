@@ -1,0 +1,110 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "esports/2",
+  "midKey": "esports",
+  "subName": "콘솔 게임",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "esports/2#g005-M2-23",
+   "seed": {
+    "subject": "슈퍼 마리오브라더스",
+    "aspect": "팬 세부",
+    "ref": "M2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1985년 '슈퍼 마리오브라더스'의 1-2 스테이지에서 출구 앞 벽돌 사이를 뚫고 워프 존 구역으로 들어가면, 끝없이 되풀이되어 깰 수 없는 물속 스테이지에 갇힙니다. 화면의 스테이지 번호 앞자리가 빈칸으로 나와 붙은 이 숨은 스테이지의 이름은 무엇일까요?",
+    "answer": "마이너스 월드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "패미컴 디스크판에서는 되풀이되지 않고 세 스테이지를 지나 끝까지 갈 수 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "슈퍼 마리오 1-2 벽 뚫기로 가는 끝없는 숨은 스테이지",
+     "difWhy": "'마리오 숨은 스테이지' — 게임 애호가",
+     "wor": 2,
+     "worWhy": "게임 내부 명칭 — 팬 세부",
+     "acc": 3,
+     "accWhy": "e스포츠·게임 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "슈퍼 마리오 1-2 벽 뚫기로 가는 끝없는 숨은 스테이지",
+     "difWhy": "'마리오 숨은 스테이지' — 게임 애호가",
+     "wor": 2,
+     "worWhy": "게임 내부 명칭 — 팬 세부"
+    },
+    "rewrite": null,
+    "generalHint": "앞자리 빈칸 자리의 실제 번호는 36으로, 게임의 36번 타일이 공백이라 비어 보이는 것이다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "게임",
+    "work": "슈퍼 마리오브라더스",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Minus_World"
+    ],
+    "facts": [
+     {
+      "claim": "1985 슈퍼 마리오브라더스의 버그 스테이지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Minus_World",
+      "note": "an extraneous level created by a glitch found in the 1985 video game Super Mario Bros."
+     },
+     {
+      "claim": "1-2에서 출구와 워프 존 사이 벽돌 통과",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Minus_World",
+      "note": "Accessed from World 1-2, players must maneuver Mario through the bricks separating the normal exit from the Warp Zone area."
+     },
+     {
+      "claim": "끝없이 반복되는 물속 스테이지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Minus_World",
+      "note": "In the NES cartridge version, players meet an endless, looping water level that cannot be beaten."
+     },
+     {
+      "claim": "월드 번호가 빈칸으로 표시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Minus_World",
+      "note": "Internally the level is stored as World 36-1, but a blank tile is shown"
+     },
+     {
+      "claim": "디스크판은 세 스테이지 지나 골",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Minus_World",
+      "note": "goes through three different levels until players reach the goal"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Minus_World"
+    ],
+    "hintNote": "a blank tile is shown, as 36 is the tile number for a blank space (World 36-1)",
+    "easiestCue": "1-2 벽 뚫기로 가는 끝없는 물속 스테이지",
+    "targetWhy": "마리오는 국민 게임, 버그 스테이지 이름은 고전 게임 애호가 수준 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 게임의 유명 버그, 수치·설정집 아님",
+    "pairCheck": null,
+    "dbCheck": "마이너스 월드 new",
+    "warn": [
+     "단정어 끝까지"
+    ]
+   }
+  }
+ ]
+}

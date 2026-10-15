@@ -1,0 +1,287 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-tv/3",
+  "midKey": "kr-tv",
+  "subName": "광고",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/3#g005-M1-07",
+   "seed": {
+    "subject": "대우전자 기업 광고",
+    "aspect": "팬 세부",
+    "ref": "M1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "대우전자는 1993년 1월 한 구호를 선언했습니다. 사장 배순훈은 1990년대 초 탤런트 유인촌과 함께 광고에 나섰고, '○○○○가 바로 핵심 기술입니다'라는 슬로건으로도 알려졌습니다. 빈칸에 들어갈 이 구호는 무엇일까요?",
+    "answer": "탱크주의",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "국내 광고 사상 처음으로 석·박사급 연구원 300여 명이 나온 기업 PR 광고 '탱크 박사들'에 배순훈 사장도 직접 출연했다고 전합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "대우전자 '○○○○가 바로 핵심 기술입니다'",
+     "difWhy": "대우전자 광고 구호 — 관심층(옛 광고)",
+     "wor": 3,
+     "worWhy": "광고 문화 이야깃거리",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "대우전자 '○○○○가 바로 핵심 기술입니다'",
+     "difWhy": "대우전자 광고 구호 — 관심층(옛 광고)",
+     "wor": 3,
+     "worWhy": "광고 문화 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 정답이 유일하지 않다 — 묻는 것이 '대우전자의 1993년 구호' 자체라, 슬로건 빈칸을 빼도 남는 단서(대우전자·배순훈 광고)가 같은 정체이고 더 깊은 확인 사실(문서)이 없다"
+    },
+    "generalHint": "이 구호를 내건 회사는 같은 해 세 면에서 찬 바람이 나오는 냉장고를, 앞서 1991년에는 공기방울 세탁기를 내놓았다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "광고",
+    "work": "대우전자 기업 광고",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/대우전자",
+     "https://ko.wikipedia.org/wiki/배순훈"
+    ],
+    "facts": [
+     {
+      "claim": "1993년 1월 탱크주의 선언",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대우전자",
+      "note": "1993년 1월 : 탱크주의 선언, 세계 최초 '3면 입체냉각시스템 냉장고' 개발."
+     },
+     {
+      "claim": "배순훈이 사장 시절 유인촌과 함께 광고, '탱크 주의가 바로 핵심 기술입니다' 슬로건",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/배순훈",
+      "note": "1990년대 초반 대우전자 사장으로 재직할 당시 탤런트 유인촌과 함께 … '탱크 주의가 바로 핵심 기술입니다'라는 슬로건"
+     },
+     {
+      "claim": "석·박사급 연구원 300여 명이 출연한 기업 PR 광고 '탱크 박사들'에 직접 출연",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/배순훈",
+      "note": "국내 광고 사상 처음으로 석·박사급 기술 연구원 300여 명이 출연한 기업 PR 광고 '탱크 박사들'에 직접 출연"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/대우전자"
+    ],
+    "hintNote": "(문서 요약) 1991 '공기방울 세탁기' / 1993 3면 입체 냉장 냉장고 / 1993 탱크주의 경영 선언",
+    "easiestCue": "1990년대 대우전자의 광고 구호",
+    "targetWhy": "30대에게는 광고사를 아는 애호가 세부, 윗세대에는 관심층 — 3~4 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "한국 광고사에서 오래 회자되는 구호지만 30대 기준 깊은 편",
+    "pairCheck": null,
+    "dbCheck": "탱크주의 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/3#g005-M1-08",
+   "seed": {
+    "subject": "애니콜 광고",
+    "aspect": "대중",
+    "ref": "M1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "해외에서는 대부분 다른 브랜드를 쓰고 한국과 중화권에서만 쓰인 한 휴대전화 브랜드가 있습니다. 1994년 10월부터 쓰이기 시작해, 당시 국내 선두였던 모토로라를 겨냥해 만든 이 브랜드는 무엇일까요?",
+    "answer": "애니콜",
+    "acceptedAnswers": [
+     "Anycall"
+    ],
+    "originalTitleVariants": [
+     "Anycall"
+    ],
+    "variantCheck": "ko.wikipedia '애니콜' — 애니콜(Anycall) 상표 영문",
+    "explanation": "브랜드 이름에는 '언제 어디서나 통화가 잘 된다'는 뜻을 담았습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "1994년 모토로라를 겨냥해 만든 한국 휴대전화 브랜드",
+     "difWhy": "'94년 모토로라 겨냥 국산 폰' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "추억의 브랜드 이야깃거리",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "'한국지형에 강하다' 광고 문구",
+     "difWhy": "'한국지형에 강하다' — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "유명 광고 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1994년 10월부터 쓰인 한 휴대전화 브랜드의 첫 광고 문구는 '한국지형에 강하다'였습니다. 당시 국내 휴대전화 선두였던 모토로라를 겨냥해 만든 이 브랜드는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "첫 광고 문구 '한국지형에 강하다'",
+     "addedCue": "해외에서는 거의 쓰지 않고 한국과 중화권에서만 쓰인 브랜드",
+     "why": "방송으로 널리 알려진 광고 문구를 빼고, 쓰인 지역이라는 덜 알려진 세부로 바꿈"
+    },
+    "generalHint": "이 브랜드는 'Digital Exciting'·'TALK PLAY LOVE' 같은 광고 문구를 차례로 내세웠다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "대중",
+    "genre": "광고",
+    "work": "애니콜 광고",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/애니콜"
+    ],
+    "facts": [
+     {
+      "claim": "선두 모토로라를 겨냥한 브랜드",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/애니콜",
+      "note": "당시 대한민국 휴대전화 선두 업체인 모토로라를 겨냥하여 만든 브랜드"
+     },
+     {
+      "claim": "이름 뜻",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/애니콜",
+      "note": "애니콜의 의미는 '언제 어디서나 통화가 잘 된다'는 뜻"
+     },
+     {
+      "claim": "1994년 10월부터 브랜드 사용",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/애니콜",
+      "note": "삼성전자가 1994년 10월부터 2014년 8월 1일까지 사용한 휴대전화 브랜드"
+     },
+     {
+      "claim": "해외에서는 대부분 삼성모바일, 이 브랜드는 한국과 중화권에서만 사용",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/애니콜",
+      "note": "해외에서는 대부분 '삼성모바일' 브랜드를 썼고, 애니콜은 한국과 중화권에서만 사용되었다"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/애니콜"
+    ],
+    "hintNote": "\"Digital Exciting\" (2001년 3월 ~ 2007년 9월 16일) / \"TALK PLAY LOVE\" (2007년 9월 17일 ~ 2011년 2월 11일)",
+    "easiestCue": "1994년 10월부터 쓰인, 모토로라를 겨냥한 휴대전화 브랜드",
+    "targetWhy": "브랜드 출범 연도·겨냥 상대·사용 지역은 휴대전화 역사 애호가 — 대표 광고 문구 없음 → 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대중 몫 — 국민 휴대전화 브랜드를 광고 문구로",
+    "pairCheck": null,
+    "dbCheck": "애니콜 · Anycall new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/3#g005-M1-09",
+   "seed": {
+    "subject": "부라보콘 CM송",
+    "aspect": "대중",
+    "ref": "M1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1976년부터 쓰여 온 한 아이스크림 CM송에는 '12시에 만나요'라는 가사가 나옵니다. 1971년 2월 해태가 내놓은 이 아이스크림 콘은 무엇일까요?",
+    "answer": "부라보콘",
+    "acceptedAnswers": [
+     "브라보콘"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "나무위키 '부라보콘' — 지금 표기법으로는 '브라보콘'이 맞다는 설명, 실제로 흔히 침",
+    "explanation": "가사 속 '12시'는 1960년대 은어로 '데이트'를 뜻했다는 설명이 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 1,
+     "easiestCue": "'12시에 만나요'라는 가사의 아이스크림 CM송",
+     "difWhy": "'12시에 만나요 CM송' — 누구나 일상",
+     "wor": 3,
+     "worWhy": "국민 CM송 이야깃거리",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "'12시에 만나요'라는 가사의 아이스크림 CM송",
+     "difWhy": "'12시에 만나요 CM송' — 누구나 일상",
+     "wor": 3,
+     "worWhy": "국민 CM송 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "'12시에 만나요' CM송이 이 광고 소분류 문항의 대상 자체라 빼면 소분류와 멀어지고, 문서로 확인되는 남은 단서(해태 · 첫 아이스크림 콘 · 최장수 기네스)도 일상·방송 수준 — 고치지 않음"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "layer": "대중",
+    "genre": "광고",
+    "work": "부라보콘 CM송",
+    "sources": [
+     "https://namu.wiki/w/부라보콘",
+     "https://ko.wikipedia.org/wiki/브라보콘"
+    ],
+    "facts": [
+     {
+      "claim": "1976년부터 쓰인 CM송, '12시에 만나요' 가사",
+      "where": "q",
+      "url": "https://namu.wiki/w/부라보콘",
+      "note": "1976년부터 사용되고 있는 전통의 CM송 가사 / \"12시에 만나요란 가사 때문에\""
+     },
+     {
+      "claim": "1971년 2월 해태가 출시한 한국 최초 아이스크림 콘",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/브라보콘",
+      "note": "1971년 2월 6일부터 해태에서 생산 판매하고 있는 대한민국 최초의 아이스크림 콘이다."
+     },
+     {
+      "claim": "'12시'는 1960년대 은어로 데이트",
+      "where": "e",
+      "url": "https://namu.wiki/w/부라보콘",
+      "note": "'12시'는 1960년대 은어로 '데이트'를 뜻한다는 주석"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'12시에 만나요' CM송",
+    "targetWhy": "누구나 흥얼거리는 CM송 — 2 (대중)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대중 몫 — 장수 CM송",
+    "pairCheck": null,
+    "dbCheck": "부라보콘 · 브라보콘 new",
+    "warn": []
+   }
+  }
+ ]
+}

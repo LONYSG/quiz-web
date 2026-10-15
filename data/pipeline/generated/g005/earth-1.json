@@ -1,0 +1,96 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "earth/1",
+  "midKey": "earth",
+  "subName": "지질·암석",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "earth/1#g005-C2-01",
+   "seed": {
+    "subject": "지르콘",
+    "aspect": null,
+    "ref": "C2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "오스트레일리아 잭 힐스에서 나온 이 광물 알갱이들은 우라늄-납 연대가 약 44억 년으로 측정되어, 지구에서 연대를 잰 가장 오래된 광물로 꼽힙니다. 이 광물은 결정이 생길 때 우라늄과 토륨은 받아들이지만 납은 강하게 밀어내, 연대 측정에 즐겨 쓰입니다. 이 광물은 무엇일까요?",
+    "answer": "지르콘",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "굴절률이 1.92로 높아 다이아몬드 대용 보석으로 쓰이기도 했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "잭 힐스 44억 년, 지구에서 가장 오래된 광물",
+     "difWhy": "잭 힐스 최고령 광물 — 대학 교양 지질",
+     "wor": 3,
+     "worWhy": "지구사 이야깃거리",
+     "acc": 5,
+     "accWhy": "지구과학·기상 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "잭 힐스 44억 년, 지구에서 가장 오래된 광물",
+     "difWhy": "잭 힐스 최고령 광물 — 대학 교양 지질",
+     "wor": 3,
+     "worWhy": "지구사 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "미국의 현대 탄생석 목록에서 터키석·탄자나이트와 함께 12월의 보석으로 꼽힌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Zircon",
+     "https://en.wikipedia.org/wiki/Uranium–lead_dating"
+    ],
+    "facts": [
+     {
+      "claim": "잭 힐스 지르콘의 U-Pb 연대 최대 약 44억 년, 지구에서 연대를 잰 가장 오래된 광물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zircon",
+      "note": "Jack Hills zircons have yielded U–Pb ages up to 4.404 billion years ... interpreted as crystallization ages, making them the oldest minerals dated on Earth"
+     },
+     {
+      "claim": "결정에 우라늄·토륨은 받아들이고 납은 강하게 밀어냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Uranium–lead_dating",
+      "note": "This mineral incorporates uranium and thorium atoms into its crystal structure, but strongly rejects lead when forming."
+     },
+     {
+      "claim": "굴절률 1.92로 다이아몬드 대용으로 쓰이기도 함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Zircon",
+      "note": "Because of its high refractive index (1.92) it has sometimes been used as a substitute for diamond"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Birthstone"
+    ],
+    "hintNote": "December — Modern (U.S., 2019 list): Turquoise, zircon, tanzanite",
+    "easiestCue": "잭 힐스의 약 44억 년 된 가장 오래된 광물 알갱이",
+    "targetWhy": "잭 힐스 지르콘·U-Pb 연대 측정 광물은 지질학 교양서·대학 교양 수준 — 고교 지구과학 교과에 없음 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "지르콘은 보석 이름으로 들어 봤을 법하고, 묻는 것은 지구 최고(最古) 광물이라는 몰랐던 사실",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": [
+     "단정어 가장 오래"
+    ]
+   }
+  }
+ ]
+}

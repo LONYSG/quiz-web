@@ -1,0 +1,93 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "symbols/5",
+  "midKey": "symbols",
+  "subName": "별자리·십이지",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "symbols/5#g005-L1-21",
+   "seed": {
+    "subject": "고양이",
+    "aspect": null,
+    "ref": "L1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "베트남의 십이지는 중국과 거의 같지만 두 자리가 다릅니다. 소 자리에는 물소가 들어가고, 넷째인 토끼 자리에는 다른 동물이 들어갑니다. 베트남 십이지에서 토끼 대신 들어가는 동물은 무엇일까요?",
+    "answer": "고양이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "토끼 띠를 나타내는 한자 '묘(卯)'의 베트남 소리가 고양이를 뜻하는 베트남어 '메오'와 비슷해서라는 설명이 있다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "베트남 십이지에서 토끼 대신 들어가는 동물",
+     "difWhy": "'베트남 십이지' — 애호가",
+     "wor": 3,
+     "worWhy": "문화 차이 이야깃거리",
+     "acc": 5,
+     "accWhy": "기호·표지 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "베트남 십이지에서 토끼 대신 들어가는 동물",
+     "difWhy": "'베트남 십이지' — 애호가",
+     "wor": 3,
+     "worWhy": "문화 차이 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "타이 피마이에서 온 이 동물의 품종 '코랏'은 행운을 빈다며 신혼부부에게 짝으로 주었다고 한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Vietnamese_zodiac"
+    ],
+    "facts": [
+     {
+      "claim": "베트남 십이지는 소를 물소로, 토끼를 고양이로 바꾼다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vietnamese_zodiac",
+      "note": "replaces the ox with the water buffalo, and the rabbit with the cat"
+     },
+     {
+      "claim": "고양이는 쥐·물소·호랑이 다음 넷째",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vietnamese_zodiac",
+      "note": "표의 순서: 쥐, 물소, 호랑이, 고양이(Mão) …"
+     },
+     {
+      "claim": "卯 가 베트남어 고양이(Mèo)와 비슷하다는 설명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Vietnamese_zodiac",
+      "note": "卯 is very similar to the Vietnamese word Mèo for cat (출처는 위키낱말사전이라 '~라는 설명이 있다' 로 씀)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Korat_cat"
+    ],
+    "hintNote": "Traditionally, they are given in pairs to newlyweds or people who are highly esteemed, for good luck.",
+    "easiestCue": "베트남 십이지에서 토끼 대신 들어가는 동물",
+    "targetWhy": "베트남 십이지의 차이는 아시아 문화 애호가 세부, 4 — 단 '십이지에 없는 고양이' 설화에서 짐작할 여지는 있다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "찍기로 고양이를 떠올릴 수 있다(설화 #1249)",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different — #1249('십이지에 없는 고양이' 설화)와 정답만 같고 지식이 다름(베트남 십이지)",
+    "warn": []
+   }
+  }
+ ]
+}

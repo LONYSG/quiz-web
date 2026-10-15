@@ -1,0 +1,100 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-food/3",
+  "midKey": "kr-food",
+  "subName": "분식·길거리 음식",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/3#g005-K3-06",
+   "seed": {
+    "subject": "수제비",
+    "aspect": null,
+    "ref": "K3-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "경기도와 강원도에서는 '뜨데기', 전라남도에서는 '떠넌죽', 여수와 봉화에서는 '다부렁죽'이라고도 불러 온 밀가루 음식입니다. 표준어로는 무엇이라 할까요?",
+    "answer": "수제비",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "북한에서는 '밀가루뜨더국'이라 부르며, 1960~1970년대 혼분식 장려운동 때 원조받은 밀가루로 칼국수와 함께 널리 퍼졌다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "'떠넌죽'이라고도 부른 밀가루 음식",
+     "difWhy": "'떠 넣는 밀가루 죽' 사투리 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "음식 방언 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'떠넌죽'이라고도 부른 밀가루 음식",
+     "difWhy": "'떠 넣는 밀가루 죽' 사투리 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "음식 방언 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "단서가 모두 지역 이름(뜨데기·떠넌죽·다부렁죽·밀가루뜨더국)이라 어느 것을 남겨도 '떠/뜯어 넣는' 뜻풀이로 풀림 — 대신할 깊은 세부 없음"
+    },
+    "generalHint": "지금은 서민 음식이지만 예전엔 쉽게 먹기 어려워 돌잔치 같은 잔칫날에 나왔고, 비 오는 날 빈대떡과 함께 찾는다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/수제비"
+    ],
+    "facts": [
+     {
+      "claim": "지역별 명칭: 경기·강원 뜨데기, 전남 떠넌죽, 여수·봉화 다부렁죽",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/수제비",
+      "note": "경기도·강원도: 뜨데기, 뜨덕국 / 전라남도: 떠넌죽, 띠연죽 / 전라남도 여수시·경상북도 봉화군: 다부렁죽, 벙으래기 (문서의 지역별 명칭 표)"
+     },
+     {
+      "claim": "북한은 밀가루뜨더국",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/수제비",
+      "note": "(요지) 북한에서는 수제비 대신 '밀가루뜨더국'이라고 부르며, '밀가루를 뜯어 만든 국'이라는 뜻이다."
+     },
+     {
+      "claim": "혼분식 장려운동 때 원조 밀가루로 널리 퍼짐",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/수제비",
+      "note": "(요지) 1960~1970년대 혼분식 장려운동 때 원조받은 밀가루로 수제비와 칼국수를 만들어 먹으면서 널리 퍼졌다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/수제비"
+    ],
+    "hintNote": "과거에는 쉽게 먹기 어려워 돌잔치 같은 잔치에서 나오는 특별한 음식 / 빈대떡과 함께 비 오는 날 먹는 음식으로 알려져",
+    "easiestCue": "'뜨데기'(뜯다) 같은 방언 이름에 '밀가루 음식'",
+    "targetWhy": "방언 이름은 교과·방송 밖 — 뜨데기에서 '뜯어 넣는 밀가루 음식'을 한 번 추리해야 닿는다. 북한말 뜻풀이(정의)는 해설로 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "방언 낱말 꼴로 추리하면 3 으로 읽힐 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

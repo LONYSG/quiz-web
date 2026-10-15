@@ -1,0 +1,101 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "drinks/1",
+  "midKey": "drinks",
+  "subName": "와인",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "drinks/1#g005-L3-24",
+   "seed": {
+    "subject": "파리의 심판",
+    "aspect": null,
+    "ref": "L3-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1976년 5월 24일 영국 와인 상인 스티븐 스퍼리어와 미국인 동료 퍼트리샤 갤러거가 미국 독립 200주년을 기념해 블라인드 시음회를 열었습니다. 프랑스 심사위원들의 점수만 센 결과 화이트와 레드 두 부문 모두 캘리포니아 나파의 와인이 1위에 올랐습니다. 이 시음회를 흔히 무엇이라 부를까요?",
+    "answer": "파리의 심판",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '파리의 심판' 문서 제목 확인(API) — 변형 없음",
+    "explanation": "현장에 온 기자는 타임지의 조지 테이버 한 사람뿐이었고, 그가 곧바로 결과를 세상에 알렸습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1976년 스퍼리어 블라인드 시음회",
+     "difWhy": "나파 와인 승리 — 와인 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 와인사 사건",
+     "acc": 4,
+     "accWhy": "술·음료 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1976년 스퍼리어 블라인드 시음회",
+     "difWhy": "나파 와인 승리 — 와인 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 와인사 사건"
+    },
+    "rewrite": null,
+    "generalHint": "2008년 영화 '보틀 쇼크'에서 앨런 릭먼이 이 시음회를 연 영국 와인 상인을 연기했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Judgment_of_Paris_(wine)"
+    ],
+    "facts": [
+     {
+      "claim": "스퍼리어와 갤러거가 1976년 5월 24일 개최, 미국 200주년 기념",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Judgment_of_Paris_(wine)",
+      "note": "Steven Spurrier, a British wine merchant, and his American colleague, Patricia Gallagher, organized the competition ... organized in Paris, France, on 24 May 1976 (commemoration of the U.S. Bicentennial)."
+     },
+     {
+      "claim": "블라인드 시음 두 부문, 프랑스 심사위원 점수만",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Judgment_of_Paris_(wine)",
+      "note": "participated in two blind tasting comparisons ... thus counting only grades of French judges."
+     },
+     {
+      "claim": "두 부문 모두 나파 와인이 1위",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Judgment_of_Paris_(wine)",
+      "note": "A wine from Napa County, California was rated best in each category."
+     },
+     {
+      "claim": "현장 기자는 타임의 조지 테이버뿐",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Judgment_of_Paris_(wine)",
+      "note": "the only reporter to attend was George M. Taber from Time, who promptly revealed the results to the world."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bottle_Shock"
+    ],
+    "hintNote": "The film is a 2008 comedy-drama about the 1976 tasting ... Alan Rickman as Steven Spurrier.",
+    "easiestCue": "1976년 블라인드 시음회에서 나파 와인이 프랑스 와인을 이긴 사건",
+    "targetWhy": "개최 도시(정답 조각)를 빼고 주최자·결과만 남김 — 사건 자체가 와인 애호가 수준의 이야기라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "단서가 이 사건의 첫 줄 사실이라, 와인 관심층에게 흔한 이야기면 3",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

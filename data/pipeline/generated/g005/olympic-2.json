@@ -1,0 +1,360 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "olympic/2",
+  "midKey": "olympic",
+  "subName": "동계 올림픽",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "olympic/2#g005-S2-26",
+   "seed": {
+    "subject": "독수리 에디",
+    "aspect": null,
+    "ref": "S2-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "활강 스키로 대표가 되지 못하자 스키 점프로 바꾼 이 선수는, 미장이로 일하며 핀란드의 한 정신 병원에 임시로 머물던 중 올림픽 출전 자격을 얻었다는 소식을 들었습니다. 1991년에는 핀란드어를 할 줄 모르면서 소리만 익혀 부른 핀란드어 싱글로 핀란드 차트 2위에 오른 이 선수의 별명은 무엇일까요?",
+    "answer": "독수리 에디",
+    "acceptedAnswers": [
+     "에디 디 이글"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '독수리 에디'(2016 영화 한국 제목) 확인 — 원래 별명 'Eddie the Eagle' 의 음차 '에디 디 이글' 도 넣음",
+    "explanation": "그 뒤 IOC가 만든 한 출전 규정에는 그의 별명이 붙었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "핀란드어 싱글을 낸 스키 점프 선수의 별명",
+     "difWhy": "'영화화된 스키 점프 선수' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 일화 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1988 캘거리, 두꺼운 안경 쓴 영국 스키 점프 선수의 별명",
+     "difWhy": "'캘거리 영국 스키 점프' — 관심 있는 사람(영화)",
+     "wor": 3,
+     "worWhy": "영화화된 인물 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1988년 캘거리 동계 올림픽에 나간 이 영국 스키 점프 선수는 심한 원시라 고글 안에 두꺼운 안경을 썼고, 높은 곳에서는 안경에 김이 서렸습니다. 미장이로 일하며 핀란드의 한 정신 병원에 임시로 머물던 중 출전 자격을 얻었다는 소식을 들은 이 선수의 별명은?",
+     "beforeExplanation": null,
+     "removedCue": "1988년 캘거리 · 영국 · 고글 안 두꺼운 안경",
+     "addedCue": "활강 스키에서 스키 점프로 전환 · 1991년 핀란드어 싱글 차트 2위",
+     "why": "'캘거리 영국 스키 점프 선수'(영화로 알려진 정체)를 빼고 팬 세부 둘을 엮음"
+    },
+    "generalHint": "2015년 태런 에저턴이 그를 연기하고 휴 잭맨이 함께 나온 전기 영화가 만들어졌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Eddie_the_Eagle"
+    ],
+    "facts": [
+     {
+      "claim": "미장이로 일하며 핀란드 정신 병원에 임시로 머물던 중 자격 소식",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eddie_the_Eagle",
+      "note": "while working as a plasterer and temporarily residing in a Finnish mental hospital"
+     },
+     {
+      "claim": "IOC의 '에디 디 이글 규칙'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Eddie_the_Eagle",
+      "note": "the International Olympic Committee (IOC) instituted what became known as the Eddie the Eagle Rule."
+     },
+     {
+      "claim": "활강 스키에서 대표가 되지 못해 스키 점프로 전환",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eddie_the_Eagle",
+      "note": "Having not made the grade as a downhill skier, he switched to ski jumping"
+     },
+     {
+      "claim": "1991년 핀란드어를 모르면서 발음으로 익힌 핀란드어 싱글이 핀란드 차트 2위",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eddie_the_Eagle",
+      "note": "recorded a Finnish-language single in 1991 despite not speaking Finnish ... learned it phonetically ... the song reached No. 2 in the Finnish charts."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Eddie_the_Eagle_(film)"
+    ],
+    "hintNote": "a 2015 biographical sports comedy-drama film directed by Dexter Fletcher / The film stars Taron Egerton ... Hugh Jackman ... co-star",
+    "easiestCue": "핀란드 정신 병원에 머물던 미장이 스키 점프 선수",
+    "targetWhy": "정신 병원·핀란드어 싱글은 스포츠 애호가 세부 — 국가·대회 단서 없이 엮어야 풀림, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "영화로 들어 봤을 법한 별명, 세부는 몰랐던 사실",
+    "pairCheck": null,
+    "dbCheck": "독수리 에디 · 에디 디 이글 — new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/2#g005-S2-27",
+   "seed": {
+    "subject": "루지",
+    "aspect": null,
+    "ref": "S2-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1968년 동계 올림픽 이 종목의 여자 경기에서는, 메달권에 있던 동독 선수들이 썰매 날을 데웠다는 혐의로 실격되었습니다. 그 덕분에 이탈리아의 에리카 레히너가 금메달을 딴 이 썰매 종목은 무엇일까요?",
+    "answer": "루지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "네 번째 경기가 취소되어 세 번째 경기까지의 결과로 순위가 정해졌습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "엮음: 1968년 여자 썰매 종목 + 썰매 날을 데워 실격",
+     "difWhy": "'1968 여자 썰매 날 가열 실격' — 동계 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 부정 일화",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "엮음: 1968년 여자 썰매 종목 + 썰매 날을 데워 실격",
+     "difWhy": "'1968 여자 썰매 날 가열 실격' — 동계 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 부정 일화"
+    },
+    "rewrite": null,
+    "generalHint": "독일의 게오르크 하클은 이 종목 남자 1인승에서 1992·1994·1998년 올림픽 금메달을 땄다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Luge_at_the_1968_Winter_Olympics"
+    ],
+    "facts": [
+     {
+      "claim": "메달권 동독 선수들이 썰매 날을 데웠다는 혐의로 실격",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Luge_at_the_1968_Winter_Olympics",
+      "note": "Two East Germans, Ortrun Enderlein and Anna-Maria Müller, led after three runs ... the East German team was accused of heating the runners of their sleds ... disqualified"
+     },
+     {
+      "claim": "이탈리아 에리카 레히너 금메달",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Luge_at_the_1968_Winter_Olympics",
+      "note": "which moved Italy's Erika Lechner up to gold"
+     },
+     {
+      "claim": "네 번째 경기 취소로 세 번째까지 결과",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Luge_at_the_1968_Winter_Olympics",
+      "note": "The fourth run had been cancelled, which left the earlier results standing."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Georg_Hackl"
+    ],
+    "hintNote": "improved his performance to win the gold, a feat he repeated in 1994 and 1998 / first in Olympic men's singles history",
+    "easiestCue": "1968년 동독 선수들의 썰매 날 데우기 실격 사건",
+    "targetWhy": "루지의 정의(등을 대고 발부터)를 빼고 사건만 — 동계 스포츠 애호가 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "썰매 종목은 셋뿐이라 찍어 맞힐 여지가 있다",
+    "pairCheck": null,
+    "dbCheck": "루지 — new (활성 #1152 스켈레톤 질문에 '루지' 가 비교로 나옴, 정답 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/2#g005-S2-28",
+   "seed": {
+    "subject": "아폴로 안톤 오노",
+    "aspect": null,
+    "ref": "S2-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미용실을 하던 아버지 손에 자란 이 선수는 1996년 열세 살에 레이크플래시드 올림픽 훈련 센터에 최연소로 들어갔습니다. 2007년에는 미국 TV 춤 경연 '댄싱 위드 더 스타'에서 우승한 이 동계 올림픽 메달리스트는 누구일까요?",
+    "answer": "아폴로 안톤 오노",
+    "acceptedAnswers": [
+     "아폴로 오노",
+     "오노"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia — '아폴로 안톤 오노' 가 '아폴로 오노' 문서로 넘겨줌, 한국 보도는 '오노' 로 흔히 부름",
+    "explanation": "그의 이름은 그리스어 낱말 'apo'와 'lo'를 이어 지은 것이라고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'댄싱 위드 더 스타' 우승한 동계 올림픽 메달리스트",
+     "difWhy": "'댄싱 위드 더 스타 우승' — 스포츠 애호가",
+     "wor": 3,
+     "worWhy": "국내에도 유명한 선수 이야기",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 일본 태생 아버지 + 동계 올림픽 메달리스트",
+     "difWhy": "일본계 미국 쇼트트랙 스타 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "한국에 알려진 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "미용실을 하던 일본 태생 아버지 손에 자란 이 선수는 1996년 열세 살에 레이크플래시드 올림픽 훈련 센터에 최연소로 들어갔습니다. 2007년에는 미국 TV 춤 경연 '댄싱 위드 더 스타'에서 우승한 이 동계 올림픽 메달리스트는?",
+     "beforeExplanation": null,
+     "removedCue": "일본 태생 아버지",
+     "addedCue": "(새로 넣지 않음) 남은 레이크플래시드·댄싱 위드 더 스타 단서",
+     "why": "일본계라는 짐작 고리를 빼고 훈련 센터 입소·춤 경연 우승으로 좁힘"
+    },
+    "generalHint": "그는 동계 올림픽에서 금 2·은 2·동 4, 모두 8개의 메달을 땄다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Apolo_Ohno"
+    ],
+    "facts": [
+     {
+      "claim": "일본 태생 아버지 유키 오노, 미용실 운영",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Apolo_Ohno",
+      "note": "born to a Japanese-born father, Yuki Ohno. His father ran a salon and often worked 12-hour shifts."
+     },
+     {
+      "claim": "1996년 13세로 레이크플래시드 훈련 센터 최연소 입소",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Apolo_Ohno",
+      "note": "his father got him admitted to the Lake Placid Olympic Training Center in 1996. He was the youngest skater admitted to the center at age 13."
+     },
+     {
+      "claim": "2007 댄싱 위드 더 스타 우승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Apolo_Ohno",
+      "note": "Ohno won the 2007 season of Dancing with the Stars ... crowned the champions on May 22, 2007."
+     },
+     {
+      "claim": "이름은 그리스어 apo + lo",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Apolo_Ohno",
+      "note": "the name combines two Greek words, apo and lo, meaning roughly \"steer away from\" and \"look out; here he comes.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Apolo_Ohno"
+    ],
+    "hintNote": "an eight-time medalist (two gold, two silver, four bronze) in the Winter Olympics",
+    "easiestCue": "'댄싱 위드 더 스타' 2007 우승 동계 올림픽 메달리스트",
+    "targetWhy": "미국 예능 우승 이력은 동계 스포츠 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "한국인에게 '일본계 미국 빙상 선수' 는 바로 오노라 관심층 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "아폴로 안톤 오노 · 아폴로 오노 · 오노 — new (활성 #4585 브래드버리 질문에 '아폴로' 가 나옴, 정답 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/2#g005-S2-30",
+   "seed": {
+    "subject": "토냐 하딩",
+    "aspect": null,
+    "ref": "S2-30",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1991년 2월 16일, 이 피겨 스케이팅 선수는 미국 여자 선수로는 처음 대회에서 트리플 악셀을 뛰었습니다. 국제 대회에서 이토 미도리에 이어 두 번째로 트리플 악셀에 성공한 여자 선수이며, 2003~2004년에는 프로 복서로도 뛴 이 선수는?",
+    "answer": "토냐 하딩",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2017년 영화 '아이, 토냐'에서는 마고 로비가 그를 연기했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "미국 여자 첫 트리플 악셀 + 프로 복서",
+     "difWhy": "하딩의 경력 — 피겨 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 스캔들 인물",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "미국 여자 첫 트리플 악셀 + 프로 복서",
+     "difWhy": "하딩의 경력 — 피겨 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 스캔들 인물"
+    },
+    "rewrite": null,
+    "generalHint": "1994년 릴레함메르 올림픽 프리 스케이팅에서 스케이트 끈이 끊어져 다시 연기할 기회를 받았고, 8위로 마쳤다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tonya_Harding"
+    ],
+    "facts": [
+     {
+      "claim": "1991년 2월 16일 미국 여자 첫 대회 트리플 악셀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tonya_Harding",
+      "note": "(1991) completed her first triple Axel in competition on February 16—becoming the first American woman to do so."
+     },
+     {
+      "claim": "이토 미도리에 이어 국제 대회 두 번째 여자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tonya_Harding",
+      "note": "the second woman in history (after Midori Ito) to successfully land a triple Axel in an international competition."
+     },
+     {
+      "claim": "2003~2004 프로 복서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tonya_Harding",
+      "note": "From 2003 to 2004, Harding competed as a professional boxer."
+     },
+     {
+      "claim": "2017 영화 '아이, 토냐' 마고 로비",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tonya_Harding",
+      "note": "to write the film I, Tonya in 2017, in which Margot Robbie portrayed Harding."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tonya_Harding"
+    ],
+    "hintNote": "after an issue with a broken skate lace in the long program, she was given a re-skate by the judges ... finished in eighth place",
+    "easiestCue": "미국 여자 선수 첫 트리플 악셀",
+    "targetWhy": "1994 케리건 피습 사건이라는 첫 줄 사실을 빼고 기술·복싱만 — 피겨 애호가 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "사건으로 이름은 알려졌고, 기술 업적은 몰랐던 사실",
+    "pairCheck": null,
+    "dbCheck": "토냐 하딩 — new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

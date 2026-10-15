@@ -1,0 +1,104 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "design-photo/4",
+  "midKey": "design-photo",
+  "subName": "산업 디자인",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/4#g005-A2-13",
+   "seed": {
+    "subject": "베스파",
+    "aspect": null,
+    "ref": "A2-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "오토바이를 '크고 더럽고 믿을 수 없다'며 싫어하던 이탈리아의 항공 기술자 코라디노 다스카니오가 설계를 맡은 스쿠터가 있습니다. 그는 엔진을 뒷바퀴 옆에 붙이고 바퀴를 변속기로 바로 돌려 체인을 없앴습니다. 이 스쿠터는 무엇일까요?",
+    "answer": "베스파",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Vespa"
+    ],
+    "variantCheck": "ko.wikipedia '베스파' 문서 제목 확인(API) — 상표가 이탈리아어 로마자라 B10 원표기를 함께 넣음",
+    "explanation": "사장 엔리코 피아조가 시제품을 처음 보고 '말벌 같다!'고 외친 것이 그대로 이름이 되었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 이탈리아 + 스쿠터",
+     "difWhy": "'이탈리아 스쿠터' — 탈것·디자인 관심층",
+     "wor": 3,
+     "worWhy": "유명 스쿠터 탄생 이야기",
+     "acc": 3,
+     "accWhy": "사진·디자인 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "2차 대전 뒤 항공기 회사가 만든 1946년 스쿠터",
+     "difWhy": "'항공기 회사의 1946 스쿠터' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 제품 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2차 세계대전 뒤 비행기 생산이 크게 묶인 한 항공기 회사가, 오토바이를 '크고 더럽고 믿을 수 없다'며 싫어하던 항공 기술자 코라디노 다스카니오에게 스쿠터 설계를 맡겼습니다. 그는 엔진을 뒷바퀴 옆에 붙이고 바퀴를 변속기로 바로 돌려 체인을 없앴습니다. 1946년 특허를 낸 이 스쿠터는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "2차 대전 뒤 항공기 회사 · 1946년 특허",
+     "addedCue": "(빼기만) 설계자 다스카니오와 체인 없는 구동 구조로 좁힘",
+     "why": "'항공기 회사의 1946 스쿠터' 맥락이 관심층 충분 단서라 빼고 설계자·구조 세부만 남김"
+    },
+    "generalHint": "영화 '로마의 휴일'에서 오드리 헵번은 그레고리 펙이 모는 이 스쿠터 뒤에 옆으로 걸터앉아 탄다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Vespa"
+    ],
+    "facts": [
+     {
+      "claim": "오토바이를 크고 더럽고 믿을 수 없다며 싫어한 항공 기술자 다스카니오에게 재설계를 맡김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vespa",
+      "note": "He contracted aeronautical engineer Corradino D'Ascanio, to redesign the scooter. D'Ascanio ... made it immediately known that he hated motorcycles, believing them to be bulky, dirty, and unreliable."
+     },
+     {
+      "claim": "엔진을 뒷바퀴 옆에, 변속기 직결로 체인 없앰",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vespa",
+      "note": "D'Ascanio's MP6 prototype had its engine mounted beside the rear wheel. The wheel was driven directly from the transmission, eliminating the drive chain"
+     },
+     {
+      "claim": "엔리코 피아조가 '말벌 같다' 외쳐 이름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Vespa",
+      "note": "Upon seeing the MP6 for the first time, Enrico Piaggio exclaimed: \"Sembra una vespa!\" (\"It looks like a wasp!\") Piaggio effectively named his new scooter on the spot."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Vespa"
+    ],
+    "hintNote": "side-saddled Gregory Peck's Vespa in the feature film Roman Holiday",
+    "easiestCue": "항공 기술자 다스카니오가 설계한 스쿠터",
+    "targetWhy": "설계자 이름과 체인 없는 직결 구동은 디자인사 애호가 수준",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "상표는 누구나 아는 이름, 설계 뒷이야기는 디자인사 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

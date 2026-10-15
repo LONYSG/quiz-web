@@ -1,0 +1,184 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "pets-garden/2",
+  "midKey": "pets-garden",
+  "subName": "고양이 품종",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "pets-garden/2#g005-L1-08",
+   "seed": {
+    "subject": "스코티시 폴드",
+    "aspect": null,
+    "ref": "L1-08",
+    "pairedWith": 641
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 641,
+    "question": "1961년 영국의 한 농장 헛간에서 '수지'라는 흰 고양이가 발견되었습니다. 이웃 농부이자 고양이 애호가였던 윌리엄 로스 부부가 수지의 새끼 한 마리를 얻어 기르면서 품종이 시작되었고, 1966년에 지금 이름이 붙었습니다. 이 고양이 품종은 무엇일까요?",
+    "answer": "스코티시 폴드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "처음에는 귀가 처진 토끼에 빗대 '롭 이어스(Lop-ears)'라고 불렸다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1961년 영국 농장 헛간의 흰 고양이 '수지'",
+     "difWhy": "'고양이 수지·윌리엄 로스' — 애묘 애호가",
+     "wor": 3,
+     "worWhy": "유명 품종 기원",
+     "acc": 4,
+     "accWhy": "반려동물·원예 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1961년 영국 농장 헛간의 흰 고양이 '수지'",
+     "difWhy": "'고양이 수지·윌리엄 로스' — 애묘 애호가",
+     "wor": 3,
+     "worWhy": "유명 품종 기원"
+    },
+    "rewrite": null,
+    "generalHint": "가수 테일러 스위프트가 기르는 고양이 메러디스와 올리비아도 이 품종이다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Scottish_Fold"
+    ],
+    "facts": [
+     {
+      "claim": "1961년 농장에서 발견된 흰 헛간 고양이 수지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Scottish_Fold",
+      "note": "a white barn cat named Susie, who was found at a farm near Coupar Angus in Tayside, Scotland, in 1961"
+     },
+     {
+      "claim": "이웃 농부이자 고양이 애호가 윌리엄 로스 부부가 새끼를 얻음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Scottish_Fold",
+      "note": "was acquired by William Ross and his wife, Molly, neighbouring farmers who were cat fanciers"
+     },
+     {
+      "claim": "1966년 Scottish Fold 라는 이름이 됨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Scottish_Fold",
+      "note": "became Scottish Fold in 1966"
+     },
+     {
+      "claim": "처음 이름은 Lop-ears / Lops",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Scottish_Fold",
+      "note": "originally Lop-ears or Lops, after the lop-eared rabbit"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Scottish_Fold"
+    ],
+    "hintNote": "US singer Taylor Swift ... two Scottish Folds, named Meredith Grey and Olivia Benson",
+    "easiestCue": "1961년 헛간 고양이 '수지'에서 시작된 품종",
+    "targetWhy": "품종 시조 고양이 이름은 고양이 애호가 세부 — '스코틀랜드'(정답 조각)와 접힌 귀(1회차 단서)는 뺐다, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 품종, 기원 이야기는 애호가만 안다",
+    "pairCheck": "1회차 #641 은 접힌 귀·연골 유전자·관절 질환 — 이 문항은 시조 수지·로스 부부·1966 명명으로 1회차 사실을 쓰지 않는다(귀 모양 언급 없음)",
+    "dbCheck": "pair-or-different — #641 (가) 2회차 짝",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "pets-garden/2#g005-L1-09",
+   "seed": {
+    "subject": "랙돌",
+    "aspect": null,
+    "ref": "L1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1960년대 미국 캘리포니아주 리버사이드의 브리더 앤 베이커는 '조세핀'이라는 흰 장모 고양이의 새끼들로 이 품종을 만들기 시작했습니다. 베이커는 품종 이름을 상표로 등록하고 1971년 무렵 자기 협회를 세워, 그 이름으로 번식하거나 파는 사람에게 엄격한 조건을 걸었습니다. 이 고양이 품종은 무엇일까요?",
+    "answer": "랙돌",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '랙돌' — 다른 표기 없음",
+    "explanation": "조상으로는 흰 장모 집고양이와 버먼이 꼽힌다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "앤 베이커가 품종 이름을 상표로 등록한 고양이",
+     "difWhy": "'앤 베이커 상표 품종' — 애묘 애호가",
+     "wor": 3,
+     "worWhy": "유명 품종 기원",
+     "acc": 4,
+     "accWhy": "반려동물·원예 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "앤 베이커가 품종 이름을 상표로 등록한 고양이",
+     "difWhy": "'앤 베이커 상표 품종' — 애묘 애호가",
+     "wor": 3,
+     "worWhy": "유명 품종 기원"
+    },
+    "rewrite": null,
+    "generalHint": "1994년 베이커의 협회를 떠난 브리더들은 이 이름을 쓸 수 없어 고양이에게 '라가머핀'이라는 새 이름을 붙였다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ragdoll",
+     "https://ko.wikipedia.org/wiki/랙돌"
+    ],
+    "facts": [
+     {
+      "claim": "캘리포니아 리버사이드의 브리더 앤 베이커가 개발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ragdoll",
+      "note": "The breed was developed in Riverside, California, by a breeder named Ann Baker."
+     },
+     {
+      "claim": "1963년 흰 장모 집고양이 조세핀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ragdoll",
+      "note": "In 1963, a regular, non-pedigreed, white domestic longhaired cat named Josephine produced several litters"
+     },
+     {
+      "claim": "이름을 상표 등록, 1971년 무렵 IRCA 설립, 엄격한 기준",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ragdoll",
+      "note": "trademarked the name ... Around 1971 she founded the International Ragdoll Cat Association (IRCA) ... enforced stringent standards on anyone who wanted to breed or sell cats under that name"
+     },
+     {
+      "claim": "조상은 도메스틱 화이트 롱헤어와 버먼",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/랙돌",
+      "note": "조상은 도메스틱 화이트 롱헤어와 버먼"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ragamuffin_cat"
+    ],
+    "hintNote": "In 1994, a group of IRCA breeders decided to leave and form their own group ... Because Baker held trademarks on \"Ragdoll\" and \"Cherubim,\" the group gave its cats the name Ragamuffin.",
+    "easiestCue": "앤 베이커·조세핀에서 시작된 품종",
+    "targetWhy": "품종 창시자·상표 이야기는 고양이 애호가 세부 — '안으면 축 늘어진다'(이름 뜻풀이)는 뺐다, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "인기 품종, 숨은 기원",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,194 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "comics/2",
+  "midKey": "comics",
+  "subName": "미국 코믹스·히어로",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "comics/2#g005-M2-12",
+   "seed": {
+    "subject": "배트맨 — 조커",
+    "aspect": "팬 세부",
+    "ref": "M2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "배트맨의 악당 조커의 얼굴은 빌 핑거가 동료들에게 보여 준 1928년 영화 속 콘라트 파이트의 사진에서 나왔습니다. 독일 표현주의 감독 파울 레니가 유니버설에서 만든, 파이트가 그윈플렌을 연기한 이 영화의 제목은 무엇일까요?",
+    "answer": "웃는 남자",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "조커는 1940년 4월 25일 나온 '배트맨' 창간호에서 처음 등장했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "콘라트 파이트가 그윈플렌을 연기한 1928년 영화",
+     "difWhy": "'그윈플렌·조커 원형 영화' — 영화 애호가",
+     "wor": 3,
+     "worWhy": "조커 유래 이야깃거리",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 빅토르 위고 소설 원작 + 조커 얼굴의 원형",
+     "difWhy": "'조커 원형 위고 작품' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "명작 제목 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "배트맨의 악당 조커의 얼굴은 빌 핑거가 동료들에게 보여 준 1928년 영화 속 한 배우의 사진에서 나왔습니다. 콘라트 파이트가 그윈플렌을 연기한, 빅토르 위고의 소설이 원작인 이 영화의 제목은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "빅토르 위고의 소설이 원작",
+     "addedCue": "독일 표현주의 감독 파울 레니가 유니버설에서 만든 영화",
+     "why": "위고 원작이라는 교과 쪽 단서를 빼고, 감독·제작사라는 영화사 세부로 바꿈"
+    },
+    "generalHint": "빅토르 위고가 1869년에 쓴 같은 이름의 소설을 바탕으로 했다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "웹툰·만화",
+    "work": "배트맨 — 조커",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Joker_(character)",
+     "https://en.wikipedia.org/wiki/The_Man_Who_Laughs_(1928_film)"
+    ],
+    "facts": [
+     {
+      "claim": "핑거가 1928년 웃는 남자 속 콘라트 파이트 사진을 보여 줌, 조커 디자인의 영감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Joker_(character)",
+      "note": "Finger showed the others an image of Conrad Veidt as Gwynplaine in The Man Who Laughs (1928), and Veidt's grinning visage inspired the Joker design."
+     },
+     {
+      "claim": "1940년 4월 25일 배트맨 창간호 첫 등장",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Joker_(character)",
+      "note": "The character first appeared in the debut issue of the comic book Batman on April 25, 1940."
+     },
+     {
+      "claim": "독일 표현주의 감독 파울 레니 연출, 유니버설 제작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Man_Who_Laughs_(1928_film)",
+      "note": "directed by the German Expressionist filmmaker Paul Leni … Production company: Universal Pictures"
+     },
+     {
+      "claim": "콘라트 파이트가 그윈플렌 역, 조커 외모의 원형",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Man_Who_Laughs_(1928_film)",
+      "note": "Conrad Veidt as Gwynplaine … the Joker owes his appearance to Veidt's portrayal of Gwynplaine in the film."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Man_Who_Laughs_(1928_film)"
+    ],
+    "hintNote": "The film is an adaptation of Victor Hugo's 1869 novel of the same name.",
+    "easiestCue": "조커 얼굴의 원형이 된 1928년 콘라트 파이트 영화",
+    "targetWhy": "조커 디자인의 기원 영화 — 코믹스·고전 영화 애호가 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'웃음' 단서를 빼 정답 뜻풀이 막음",
+    "pairCheck": null,
+    "dbCheck": "웃는 남자 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "comics/2#g005-M2-13",
+   "seed": {
+    "subject": "아이언맨",
+    "aspect": "팬 세부",
+    "ref": "M2-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'테일스 오브 서스펜스' 1963년 3월호(39호)에 처음 실린 아이언맨의 토니 스타크는, 반전 성향의 독자들이 처음엔 싫어할 만한 무기 사업가로 만들어졌습니다. 스탠 리가 이 인물의 외모와 사업가·플레이보이 이미지를 본뜬 실존 미국 사업가는 누구일까요?",
+    "answer": "하워드 휴스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "아이언맨이 처음 실린 이야기의 제목은 'Iron Man is Born!'이었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "토니 스타크 외모·이미지를 본뜬 실존 사업가",
+     "difWhy": "아이언맨 모델 — 코믹스 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 캐릭터 모델",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "토니 스타크 외모·이미지를 본뜬 실존 사업가",
+     "difWhy": "아이언맨 모델 — 코믹스 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 캐릭터 모델"
+    },
+    "rewrite": null,
+    "generalHint": "그 사업가는 금속을 아끼려 거의 자작나무로 만든 거대 비행정 '스프루스 구스'를 1947년 단 한 번 띄웠다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "웹툰·만화",
+    "work": "아이언맨",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Iron_Man"
+    ],
+    "facts": [
+     {
+      "claim": "Tales of Suspense #39, 표지 날짜 1963년 3월",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Iron_Man",
+      "note": "Iron Man's first appearance, 'Iron Man is Born!', appeared in Tales of Suspense #39. The issue's cover date is March 1963"
+     },
+     {
+      "claim": "반전 독자가 싫어할 무기 사업가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Iron_Man",
+      "note": "he aimed to create someone \"unpalatable to his generally anti-war readers\" yet still likable"
+     },
+     {
+      "claim": "하워드 휴스를 본뜸 — 외모·사업가·플레이보이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Iron_Man",
+      "note": "Lee modeled Iron Man after businessman Howard Hughes ... drew on Hughes's looks, his public image as a businessman, and his reputation as a playboy."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hughes_H-4_Hercules"
+    ],
+    "hintNote": "made almost entirely of birch ... built mostly of wood to conserve metal ... made only one brief flight, on November 2, 1947.",
+    "easiestCue": "토니 스타크의 실존 모델",
+    "targetWhy": "아이언맨은 대중적이나 실존 모델은 코믹스 애호가 수준 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "항공·영화 단서를 빼 일반 상식으로 바로 닿지 않게",
+    "pairCheck": null,
+    "dbCheck": "하워드 휴스 new (아이언맨 S3-03 초안과 답 다름)",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

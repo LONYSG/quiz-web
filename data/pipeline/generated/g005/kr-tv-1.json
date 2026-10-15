@@ -1,0 +1,359 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-tv/1",
+  "midKey": "kr-tv",
+  "subName": "예능 프로그램",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/1#g005-M1-01",
+   "seed": {
+    "subject": "무한도전",
+    "aspect": "팬 세부",
+    "ref": "M1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'무한도전' 가요제에서 유재석은 '삼바의 매력'으로 은상을, 정준하는 'My Way'로 금상을 받았습니다. 이 가요제의 이름은 무엇일까요?",
+    "answer": "강변북로 가요제",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 가요제에서 대상을 받은 하하의 '키 작은 꼬마 이야기'는 음반이 나오자마자 멜론 일간차트 3위에 올랐습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'삼바의 매력' 은상 · 'My Way' 금상 무한도전 가요제",
+     "difWhy": "'삼바의 매력·My Way 가요제' — 무한도전 애호가",
+     "wor": 2,
+     "worWhy": "레전드 예능의 팬 세부(가요제 이름)",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "무한도전 2007년 첫 가요제, 서울 도로 이름",
+     "difWhy": "'무도 첫 가요제 도로명' — 관심 있는 사람",
+     "wor": 2,
+     "worWhy": "레전드 예능의 팬 세부"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "'무한도전'이 2007년 7월 처음 연 가요제에서 유재석은 '삼바의 매력'으로 은상, 정준하는 'My Way'로 금상을 받았습니다. 서울의 한 도로 이름을 붙인 이 첫 가요제는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "2007년 처음 연 가요제 · 서울의 도로 이름",
+     "addedCue": "(남은 깊은 단서) 유재석 '삼바의 매력' 은상 · 정준하 'My Way' 금상",
+     "why": "'첫 가요제' 와 이름의 뜻을 빼고 수상곡 세부만으로 가르게"
+    },
+    "generalHint": "무한도전의 다음 가요제들은 2009년 '올림픽대로 듀엣가요제', 2011년 '서해안고속도로 가요제'로 이어졌다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "무한도전",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/강변북로_가요제"
+    ],
+    "facts": [
+     {
+      "claim": "2007년 7월 7일·14일 방영, 유재석 '삼바의 매력' 은상, 정준하 'My Way' 금상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강변북로_가요제",
+      "note": "2007년 7월 7일과 7월 14일 2회에 걸쳐 방영 / 정준하 My Way 금상 / 유재석 삼바의 매력 은상 / 하하 키 작은 꼬마 이야기 대상"
+     },
+     {
+      "claim": "대상곡이 음반 발매 직후 멜론 일간차트 3위",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/강변북로_가요제",
+      "note": "가요제에서 대상을 수상했던 〈키 작은 꼬마 이야기〉는 음반이 나오자마자 온라인 음악 사이트 멜론의 일간차트 3위"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/무한도전_가요제"
+    ],
+    "hintNote": "1회 〈강변북로 가요제〉 (2007) / 2회 〈올림픽대로 듀엣가요제〉 (2009) / 3회 〈서해안고속도로 가요제〉 (2011)",
+    "easiestCue": "유재석 '삼바의 매력'·정준하 'My Way' 가 상을 받은 무도 가요제",
+    "targetWhy": "회차별 수상곡은 무도 팬 세부 — 4 노림",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "국민 예능의 레전드 특집, 팬이면 '아 그거' 할 세부",
+    "pairCheck": null,
+    "dbCheck": "강변북로 가요제 new",
+    "warn": [
+     "정답조각 가요제",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g005-M1-02",
+   "seed": {
+    "subject": "1박 2일",
+    "aspect": "팬 세부",
+    "ref": "M1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "KBS '1박 2일'의 복불복에서는 비린 액젓을 커피처럼 컵에 담아 내놓는 벌칙이 자주 나왔습니다. 색이 커피와 비슷하다고 해서 커피 이름을 붙여 부른 이 벌칙 음료는 무엇일까요?",
+    "answer": "까나리카노",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "방송에서 이 음료를 처음 한 번에 들이켠 사람은 MC몽이었다고 전합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "'1박 2일' 복불복 액젓 커피 벌칙",
+     "difWhy": "'1박 2일 액젓 벌칙' — 방송에서 흔히",
+     "wor": 2,
+     "worWhy": "예능 팬 용어",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "'1박 2일' 복불복 액젓 커피 벌칙",
+     "difWhy": "'1박 2일 액젓 벌칙' — 방송에서 흔히",
+     "wor": 2,
+     "worWhy": "예능 팬 용어"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "묻는 것 자체가 '1박 2일' 액젓 벌칙의 이름이라 그 단서를 빼면 대상을 가리킬 수 없음 — 국민 밈에 가까운 팬 세부(층 표시 문제)"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "1박 2일",
+    "sources": [
+     "https://namu.wiki/w/까나리 액젓"
+    ],
+    "facts": [
+     {
+      "claim": "1박 2일 복불복에 까나리 액젓을 쓰며, 커피와 비슷한 색으로 위장해 '까나리카노'라 부름",
+      "where": "q",
+      "url": "https://namu.wiki/w/까나리 액젓",
+      "note": "1박 2일에서는 복불복용으로도 많이 사용한다. (색깔이 커피와 비슷해 위장용으로 쓰이며 이를 '까나리카노'라 부른다)"
+     },
+     {
+      "claim": "최초의 원샷은 MC몽",
+      "where": "e",
+      "url": "https://namu.wiki/w/까나리 액젓",
+      "note": "최초의 원샷은 MC몽이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1박 2일 복불복의 커피색 액젓 음료",
+    "targetWhy": "1박 2일을 즐겨 본 관심층이 바로 안다 — 3",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 예능의 대표 벌칙 이름, 팬 세부",
+    "pairCheck": null,
+    "dbCheck": "까나리카노 new (1박 2일 활성 2건은 복불복·상근이 — 정답 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g005-M1-03",
+   "seed": {
+    "subject": "가족오락관",
+    "aspect": "대중",
+    "ref": "M1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1984년부터 2009년까지 KBS에서 방송된 예능으로, 허참이 첫 회부터 마지막 회까지 진행하며 점수를 공개하기 전 '몇 대 몇~!'을 외쳤습니다. 헤드폰을 쓴 채 소리 질러 단어를 전하는 '고요 속의 외침'이 대표 게임이던 이 프로그램은 무엇일까요?",
+    "answer": "가족오락관",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "25년 동안 허참과 함께 진행한 여성 MC는 모두 21명이었고, 그 가운데 11명이 KBS 아나운서 출신이었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "허참 '몇 대 몇~!', '고요 속의 외침'",
+     "difWhy": "장수 예능 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "누구나 아는 프로그램 이름",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "허참 '몇 대 몇~!', '고요 속의 외침'",
+     "difWhy": "장수 예능 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "누구나 아는 프로그램 이름"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "허참 '몇 대 몇~!' · '고요 속의 외침'을 빼면 'KBS 1984~2009 예능'만 남아 그것도 쉬운 단서이고, 남는 세부는 여성 MC 수(수치)뿐 — 대중 층 문항으로 그대로 둠"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "layer": "대중",
+    "genre": "예능",
+    "work": "가족오락관",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/가족오락관",
+     "https://namu.wiki/w/가족오락관"
+    ],
+    "facts": [
+     {
+      "claim": "1984.4.3~2009.4.18 KBS 방송, 허참이 첫 회부터 최종 회까지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/가족오락관",
+      "note": "1984년 4월 3일부터 2009년 4월 18일까지 KBS에서 방송된 예능 프로그램이다. / 남성 MC는 허참이 첫 회부터 최종 회까지"
+     },
+     {
+      "claim": "'몇 대 몇~!' 구호, 고요 속의 외침(헤드폰)",
+      "where": "q",
+      "url": "https://namu.wiki/w/가족오락관",
+      "note": "친숙한 구호인 \"가족오락관 최종점수, 몇 대 몇~!\"을 외치면서 / 소리가 들리지 않게 헤드폰을 쓰고서 소리를 지르며 단어 전달을 한다는 독특한 방식"
+     },
+     {
+      "claim": "여성 MC 21명, KBS 아나운서 출신 11명",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/가족오락관",
+      "note": "허참과 함께 진행한 여성 MC는 총 21명 … KBS 출신 여자 아나운서는 11명"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'고요 속의 외침'이 대표 게임",
+    "targetWhy": "방송에서 흔히 패러디되는 게임 — 2 (대중)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대중 몫 — 레전드 장수 예능 제목",
+    "pairCheck": null,
+    "dbCheck": "가족오락관 new",
+    "warn": [
+     "단정어 마지막",
+     "단정어 모두"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g005-M1-04",
+   "seed": {
+    "subject": "해피투게더",
+    "aspect": "팬 세부",
+    "ref": "M1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "KBS '해피투게더' 시즌 3에서 2012년 6월 28일 처음 선보인 코너로, 패널 7명 가운데 4명 이상이 인정해야 메뉴에 올랐고 1대 메뉴는 장동민의 '장스밥'이었습니다. 이 코너의 이름은 무엇일까요?",
+    "answer": "야간매점",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "8대 메뉴는 아이유가 만든 '아이유식'이었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "해피투게더 시즌 3 코너, 1대 메뉴 장스밥",
+     "difWhy": "'해피투게더 메뉴 코너' — 방송 흔히",
+     "wor": 2,
+     "worWhy": "예능 코너 이름 — 팬 세부",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "'해피투게더' 시즌 3, 스타가 직접 만든 요리 코너",
+     "difWhy": "인기 예능 코너 — 방송에서 흔히",
+     "wor": 2,
+     "worWhy": "팬 세부 — 예능 코너 이름"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "KBS '해피투게더' 시즌 3에서 2012년 6월 처음 선보인 코너입니다. 스타가 직접 만든 요리를 MC들이 시식하고, 패널 7명 가운데 4명 이상이 인정하면 메뉴로 올렸습니다. 이 코너의 이름은 무엇일까요?",
+     "beforeExplanation": "메뉴 목록의 맨 처음인 1대 메뉴는 '장스밥'이었습니다.",
+     "removedCue": "스타가 직접 만든 요리를 MC들이 시식하는 코너",
+     "addedCue": "1대 메뉴 장동민의 '장스밥'",
+     "why": "코너 정체(스타 요리 시식)를 빼고 팬 세부(1대 메뉴)로 바꿈 — '메뉴' 낱말은 남아 경계"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "해피투게더",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/해피투게더_(텔레비전_프로그램)"
+    ],
+    "facts": [
+     {
+      "claim": "야간매점 2012년 6월 28일 첫선(시즌 3), 스타 요리 시식, 패널 7명 중 4명 이상 인정 시 메뉴 등록",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/해피투게더_(텔레비전_프로그램)",
+      "note": "야간매점 (시즌 3) 2012년 6월 28일에 처음 선보였다 / 총 4명의 스타가 만든 요리를 MC들이 시식한 다음에 … 패널 7명 중 4명 이상의 인정을 받아야 메뉴에 오른다"
+     },
+     {
+      "claim": "1대 메뉴 장스밥",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/해피투게더_(텔레비전_프로그램)",
+      "note": "메뉴 등록 순위는 역대 1대(장스밥)부터 82대까지"
+     },
+     {
+      "claim": "2012년 6월 28일 첫선, 1대 메뉴 장스밥(장동민)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/해피투게더_(텔레비전_프로그램)",
+      "note": "2012년 6월 28일에 처음 선보인 코너이다. / 1대 - 장스밥(장동민) / 7명 중 4명 이상이 인정해야 메뉴에 올라가게 된다."
+     },
+     {
+      "claim": "8대 메뉴 아이유식(아이유)",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/해피투게더_(텔레비전_프로그램)",
+      "note": "8대 - 아이유식(아이유)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'해피투게더' 시즌 3, 메뉴에 올리는 코너",
+    "targetWhy": "1대 메뉴 장스밥은 예능 애호가 세부지만 '메뉴' 로 풀릴 여지 — 경계 3~4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "장수 예능의 인기 코너, 팬 세부",
+    "pairCheck": null,
+    "dbCheck": "야간매점 new (쟁반노래방 4188 과 다른 코너)",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

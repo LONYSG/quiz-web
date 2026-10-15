@@ -1,0 +1,209 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "physics/2",
+  "midKey": "physics",
+  "subName": "전기·자기",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "physics/2#g005-C2-05",
+   "seed": {
+    "subject": "라이덴병",
+    "aspect": null,
+    "ref": "C2-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프랑스의 장앙투안 놀레는 루이 15세 앞에서 이 장치의 전기를 근위병 180명에게 한꺼번에 흘려 보였고, 뒤에는 더 많은 카르투시오회 수도사들로 같은 실험을 했습니다. 1745년 독일 성직자 클라이스트도 따로 만들어 낸 이 장치는 무엇일까요?",
+    "answer": "라이덴병",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "축전기(커패시터)의 원형으로, 네덜란드의 뮈스헨브루크가 1746년 1월 레오뮈르에게 보낸 편지로 실험을 알렸습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1745년 독일 성직자 클라이스트도 따로 만든 장치",
+     "difWhy": "'클라이스트·놀레의 장치' — 대학 교양 과학사",
+     "wor": 4,
+     "worWhy": "축전기 원형 — 과학 교양",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "전기를 모아 두는 유리병 모양 장치",
+     "difWhy": "'전기 모으는 유리병' — 고교 물리",
+     "wor": 4,
+     "worWhy": "축전기 원형 — 과학사 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "프랑스의 장앙투안 놀레는 루이 15세 앞에서 이 장치에 모아 둔 전기를 근위병 180명에게 한꺼번에 흘려 보였고, 뒤에는 더 많은 카르투시오회 수도사들로 같은 실험을 했습니다. 1745년 독일 성직자 클라이스트도 따로 만들어 낸, 유리병 모양의 이 장치는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'전기를 모아 두는 유리병 모양' 장치",
+     "addedCue": "(장치 모양·기능 없이) 놀레의 근위병 180명 실험 · 클라이스트",
+     "why": "교과 정의(전기 모으는 유리병)를 빼고 과학사 일화 둘로 좁힘"
+    },
+    "generalHint": "벤저민 프랭클린은 이 장치 여러 개를 이어 충전하고, 1749년 편지에서 기록상 처음 '전기 배터리'라는 말을 썼다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Leyden_jar"
+    ],
+    "facts": [
+     {
+      "claim": "놀레가 루이 15세 앞에서 근위병 180명에게 방전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leyden_jar",
+      "note": "Nollet ... discharged a jar through 180 royal guardsmen (for King Louis XV)"
+     },
+     {
+      "claim": "뒤에 더 많은 카르투시오회 수도사로 실험",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leyden_jar",
+      "note": "In a second experiment he used a larger number of Carthusian monks"
+     },
+     {
+      "claim": "1745년 10월 11일 독일 성직자 클라이스트가 독립적으로 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leyden_jar",
+      "note": "a discovery made independently by German cleric Ewald Georg von Kleist on 11 October 1745"
+     },
+     {
+      "claim": "축전기의 원형",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Leyden_jar",
+      "note": "It was the original form of the capacitor (also called a condenser)"
+     },
+     {
+      "claim": "뮈스헨브루크가 1746년 1월 20일 레오뮈르에게 편지로 알림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Leyden_jar",
+      "note": "Musschenbroek communicated the experiment in a letter from 20 January 1746 to René Antoine Ferchault de Réaumur"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Leyden_jar"
+    ],
+    "hintNote": "In 1746–1748, Benjamin Franklin experimented with charging Leyden jars in series. He used the term \"electrical battery\" ... in a 1749 letter. This is the first recorded use of the term electrical battery.",
+    "easiestCue": "놀레가 근위병 180명에게 전기를 흘린 장치",
+    "targetWhy": "놀레 실험 · 클라이스트는 과학사 교양(대학) — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'전기를 모아 두는 유리병' 만으로 라이덴병을 아는 사람이 있음(옛 중학 과학 그림) — 3 으로 내려갈 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": [
+     "정답조각 라이"
+    ]
+   }
+  },
+  {
+   "seedId": "physics/2#g005-C2-08",
+   "seed": {
+    "subject": "와전류",
+    "aspect": null,
+    "ref": "C2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "강한 자석을 구리관 속에 떨어뜨리면 놀랄 만큼 천천히 내려옵니다. 일부 롤러코스터는 차량에 단 구리판이 강한 자석 사이를 지나가게 해 같은 원리로 속도를 줄입니다. 이때 금속 안에 생겨 움직임을 거스르는 전류를 무엇이라 할까요?",
+    "answer": "와전류",
+    "acceptedAnswers": [
+     "맴돌이 전류"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '와전류', 첫 문장 '와전류 또는 맴돌이 전류', '맴돌이 전류' 넘겨주기 확인",
+    "explanation": "1824년 프랑수아 아라고가 처음 관찰했고, 1855년 레옹 푸코가 자석 사이에서 구리 원판을 돌리는 실험으로 발견자로 꼽힙니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "금속 안에 생겨 움직임을 거스르는 전류",
+     "difWhy": "맴돌이 전류 — 고교 물리",
+     "wor": 4,
+     "worWhy": "물리 기본 어휘",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "금속 안에 생겨 움직임을 거스르는 전류",
+     "difWhy": "맴돌이 전류 — 고교 물리",
+     "wor": 4,
+     "worWhy": "물리 기본 어휘"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 정답이 유일하지 않다 — '금속 안에 생겨 움직임을 거스르는 전류'가 곧 정의이고, 이를 빼면 '유도 전류' 등 다른 답이 된다"
+    },
+    "generalHint": "인덕션 레인지도 바뀌는 자기장이 냄비 바닥에 이 전류를 크게 일으켜 열을 낸다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Eddy_current",
+     "https://ko.wikipedia.org/wiki/맴돌이_전류"
+    ],
+    "facts": [
+     {
+      "claim": "구리관 속 강한 자석이 아주 천천히 떨어짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eddy_current",
+      "note": "dropping a strong magnet down a tube of copper – the magnet falls at a dramatically slow pace"
+     },
+     {
+      "claim": "일부 롤러코스터 — 차량의 구리판이 강한 영구자석 사이를 지나며 감속",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eddy_current",
+      "note": "some roller coasters, where heavy copper plates extending from the car are moved between strong permanent magnets"
+     },
+     {
+      "claim": "아라고가 처음 관찰(1824)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Eddy_current",
+      "note": "The first person to observe eddy currents was François Arago ... In 1824 he observed what has been called rotatory magnetism."
+     },
+     {
+      "claim": "푸코가 발견자로 꼽힘, 1855 구리 원판 실험",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Eddy_current",
+      "note": "Léon Foucault is credited with having discovered eddy currents ... 1855 ... copper disc"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Induction_cooking"
+    ],
+    "hintNote": "the oscillating field induces large eddy currents in the pot.",
+    "easiestCue": "구리관 속 자석이 천천히 떨어지는 실험",
+    "targetWhy": "대표 응용(인덕션 레인지)과 '소용돌이' 이름 풀이는 뺐음 — 구리관 낙하 실험·롤러코스터 자기 브레이크는 과학 애호가 세부 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "고교 물리학 전자기 유도 단원에서 맴돌이 전류를 다루면 3 — '금속 안에 생겨 거스르는 전류' 가 교과 정의에 가까움",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": [
+     "정답조각 전류",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

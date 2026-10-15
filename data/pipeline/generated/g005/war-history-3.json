@@ -1,0 +1,111 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "war-history/3",
+  "midKey": "war-history",
+  "subName": "제2차 세계대전",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "war-history/3#g005-H2-13",
+   "seed": {
+    "subject": "드레스덴 폭격",
+    "aspect": null,
+    "ref": "H2-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "연합군의 공습 때 불길을 견디다 끝내 무너진 한 독일 도시의 성모 교회는 동독 시절 반세기 가까이 전쟁 기념물로 폐허 그대로 남았다가 2005년 다시 지어졌습니다. 꼭대기의 새 십자가는 이 공습에 참여한 영국 폭격기 승무원의 아들인 런던의 금세공인이 만들었는데, 이 공습은 무엇일까요?",
+    "answer": "드레스덴 폭격",
+    "acceptedAnswers": [
+     "드레스덴 공습"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '드레스덴 폭격' 문서 — 정보 상자에 '드레스덴 공습' 표기",
+    "explanation": "제2차 세계 대전 마지막 몇 달 사이에 미국과 영국이 작센주의 주도를 대규모로 폭격한 사건입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "동독 시절 폐허로 남았다 2005년 재건된 성모 교회의 도시 공습",
+     "difWhy": "성모 교회 도시 공습 — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 2차대전 대표 공습",
+     "acc": 3,
+     "accWhy": "전쟁·군사사 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "동독 시절 폐허로 남았다 2005년 재건된 성모 교회의 도시 공습",
+     "difWhy": "성모 교회 도시 공습 — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 2차대전 대표 공습"
+    },
+    "rewrite": null,
+    "generalHint": "커트 보니것은 미군 포로로 이 공습을 겪은 일을 소설 '제5도살장'에 담았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Frauenkirche,_Dresden",
+     "https://ko.wikipedia.org/wiki/드레스덴_폭격"
+    ],
+    "facts": [
+     {
+      "claim": "성모 교회(프라우엔키르헤) 돔이 공습 열기를 견디다 무너짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Frauenkirche,_Dresden",
+      "note": "The dome finally collapsed at 10 a.m. on 15 February and the building vanished from Dresden's skyline."
+     },
+     {
+      "claim": "동독 시절 반세기 가까이 전쟁 기념물로 폐허 보존",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Frauenkirche,_Dresden",
+      "note": "the remaining ruins were left for nearly half a century as a war memorial (under East German leadership)"
+     },
+     {
+      "claim": "2005년 재건 완료",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Frauenkirche,_Dresden",
+      "note": "The intensive efforts to rebuild this world-famous landmark were completed in 2005."
+     },
+     {
+      "claim": "새 보주와 십자가는 공습 승무원의 아들인 런던 금세공인 앨런 스미스 제작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Frauenkirche,_Dresden",
+      "note": "It was constructed by Alan Smith, a British goldsmith from London … whose father, Frank, was a member of one of the aircrews who took part in the bombing of Dresden."
+     },
+     {
+      "claim": "2차 대전 마지막 몇 달 미국·영국의 작센주 주도 대규모 폭격",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/드레스덴_폭격",
+      "note": "드레스덴 폭격은 제2차 세계 대전의 유럽 전선에서 마지막 몇 달 간 미국과 영국이 독일 작센주의 주도인 드레스덴 시를 대규모 폭격한 사건이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Slaughterhouse-Five"
+    ],
+    "hintNote": "Billy's survival of the Dresden firebombing as a prisoner of war — an experience that Vonnegut endured as an American serviceman.",
+    "easiestCue": "동독 시절 폐허로 남았다가 2005년 재건된 성모 교회",
+    "targetWhy": "'1945년 2월 · 연합군 최대 도시 폭격 · 보니것' 같은 대표 사실 없이 프라우엔키르헤 재건 세부만 — 유럽사·여행 애호가(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "드레스덴 폭격은 들어 본 이름, 단서는 교회 재건 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 폭격",
+     "단정어 마지막"
+    ]
+   }
+  }
+ ]
+}

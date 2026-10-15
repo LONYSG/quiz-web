@@ -1,0 +1,273 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "calendar/2",
+  "midKey": "calendar",
+  "subName": "국제 기념일",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "calendar/2#g005-L3-12",
+   "seed": {
+    "subject": "밸런타인데이",
+    "aspect": null,
+    "ref": "L3-12",
+    "pairedWith": 2770
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2770,
+    "question": "초서의 시 '새들의 의회'에는 모든 새가 짝을 고르러 그곳에 모여드는 날로 이날이 나옵니다. 1969년 가톨릭 교회가 성인 축일 달력을 고칠 때, 이날 기리던 성인의 축일은 로마 일반 전례력에서 빠졌습니다. 이날은 무엇일까요?",
+    "answer": "밸런타인데이",
+    "acceptedAnswers": [
+     "발렌타인데이"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '발렌타인데이', '밸런타인데이' 넘겨주기 확인(API)",
+    "explanation": "남아 있는 가장 오래된 이날의 글로는, 런던탑에 갇혀 있던 오를레앙 공작 샤를이 아내에게 써 보낸 15세기 론도가 꼽힙니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 새들이 짝을 고르러 모이는 날 + 성인의 축일",
+     "difWhy": "'짝 고르는 성인 축일' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "기념일 유래 이야깃거리",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "갇힌 공작이 아내에게 써 보낸, 이날을 위한 가장 오래된 글",
+     "difWhy": "'아내에게 보낸 이날의 연애편지' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "기념일 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "아쟁쿠르 전투에서 사로잡혀 런던탑에 갇혀 있던 오를레앙 공작 샤를이 아내에게 써 보낸 15세기 론도는, 이날을 위해 쓴 글 가운데 지금 남아 있는 가장 오래된 것으로 꼽힙니다. 초서의 시 '새들의 의회'에도 '이날이었으니'라는 구절이 나오는 이날은 무엇일까요?",
+     "beforeExplanation": "1847년 직후 미국 우스터의 에스더 하울랜드가 종이 레이스로 꾸민 카드를 처음으로 대량 생산해 팔았습니다.",
+     "removedCue": "런던탑에 갇힌 오를레앙 공작 샤를이 아내에게 보낸, 이날을 위한 가장 오래된 글",
+     "addedCue": "'새들의 의회' — 새들이 짝을 고르러 모이는 날 · 1969년 로마 일반 전례력에서 성인 축일이 빠짐",
+     "why": "유명 일화(가장 오래된 연애편지)를 해설로 옮기고 초서 시의 내용과 전례력 개정을 엮음"
+    },
+    "generalHint": "1847년 무렵 미국의 에스더 하울랜드가 종이 레이스로 꾸민 이날 카드를 처음 대량으로 만들어 팔았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Valentine%27s_Day"
+    ],
+    "facts": [
+     {
+      "claim": "남아 있는 가장 오래된 밸런타인은 오를레앙 공작 샤를의 15세기 론도",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+      "note": "The earliest surviving valentine is a 15th-century rondeau by Charles, Duke of Orléans, addressed to his wife."
+     },
+     {
+      "claim": "아쟁쿠르에서 사로잡혀 런던탑에 갇혀 있을 때 씀",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+      "note": "He wrote it while held in the Tower of London after being captured at the Battle of Agincourt."
+     },
+     {
+      "claim": "초서 '새들의 의회' — 모든 새가 짝을 고르러 오는 성 밸런타인의 날",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+      "note": "The first recorded association of Saint Valentine's Day with romantic love is believed to be in Chaucer's Parliament of Fowls (1382). ... \"For this was on seynt Valentynes day / Whan every foul cometh there to chese his make\""
+     },
+     {
+      "claim": "1969년 개정 때 성 밸런타인 축일(2월 14일)이 로마 일반 전례력에서 빠짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+      "note": "(1969 revision of the Roman Catholic Calendar of Saints) the feast day of Saint Valentine on February 14 was relegated from the General Roman Calendar"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Valentine%27s_Day"
+    ],
+    "hintNote": "the first mass-produced Valentines of embossed paper lace were produced and sold shortly after 1847 by Esther Howland",
+    "easiestCue": "초서 '새들의 의회'에서 새들이 짝을 고르는 날",
+    "targetWhy": "초서 구절 · 1969년 전례력 개정 모두 교양 애호가 수준 — 4 노림(성인 축일 단서로 추리 여지 있어 경계)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "갇힌 공작이 아내에게 쓴 글이라는 점에서 '연인의 날'로 추리할 여지가 있음",
+    "pairCheck": "1회차(#2770)는 성인 이름 유래·2월 14일·선물, 해설은 일본의 초콜릿 — 샤를의 론도·초서는 1회차에 없다",
+    "dbCheck": "pair-or-different — #2770 과 같은 답, (가) 2회차",
+    "warn": [
+     "단정어 가장 오래",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "calendar/2#g005-L3-13",
+   "seed": {
+    "subject": "어머니날",
+    "aspect": null,
+    "ref": "L3-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1908년 5월 10일 미국 웨스트버지니아주 그래프턴의 한 교회에서 열린 추모 예배가 이 기념일의 첫 공식 행사로 꼽힙니다. 이 예배를 연 여성은 뒷날 기념일이 상업화되자 '인쇄된 카드는 당신이 너무 게을러 직접 쓰지 않는다는 뜻일 뿐'이라며 맞섰는데, 미국의 이 기념일은 무엇일까요?",
+    "answer": "어머니날",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '어머니날' 문서 제목 확인(API) — 변형 없음",
+    "explanation": "자비스는 흰 카네이션의 흰빛이 어머니 사랑의 진실함과 순수함을 나타낸다며 이 꽃을 아꼈습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "인쇄된 카드에 맞선 창시자, 미국 기념일",
+     "difWhy": "'카드 보내는 기념일 기원' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "기념일 기원 이야깃거리",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "애나 자비스의 추모 예배가 첫 행사인 이날",
+     "difWhy": "'애나 자비스' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "기념일 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1908년 5월 10일 미국 웨스트버지니아주 그래프턴의 한 교회에서 애나 자비스가 연 추모 예배가 이날의 첫 공식 행사로 꼽힙니다. 뒷날 그는 이날이 상업화되자 '인쇄된 카드는 당신이 너무 게을러 직접 쓰지 않는다는 뜻일 뿐'이라며 맞섰습니다. 이날은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "애나 자비스(이름)",
+     "addedCue": "(뺌만) 그래프턴 교회 추모 예배 + 인쇄 카드 비판",
+     "why": "널리 알려진 창시자 이름을 빼고 첫 행사·상업화 비판 세부만 남김"
+    },
+    "generalHint": "1914년 윌슨 대통령은 이날 전쟁에서 아들을 잃은 이들을 기려 국기를 달자는 포고를 냈다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Anna_Jarvis"
+    ],
+    "facts": [
+     {
+      "claim": "1908년 5월 10일 그래프턴의 교회에서 첫 공식 행사, 자비스가 추모 예배",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anna_Jarvis",
+      "note": "The first official observance was held in Grafton, West Virginia, on May 10, 1908, at the Andrews church. Jarvis held a memorial ceremony to honor her mother and all mothers."
+     },
+     {
+      "claim": "상업화에 맞서 인쇄 카드를 비판",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anna_Jarvis",
+      "note": "Jarvis struggled against forces of commercialization ... \"A printed card means nothing except that you are too lazy to write\""
+     },
+     {
+      "claim": "흰 카네이션의 흰빛이 어머니 사랑의 진실·순수",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Anna_Jarvis",
+      "note": "Its whiteness is to symbolize the truth, purity and broad-charity of mother love."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mother%27s_Day_(United_States)"
+    ],
+    "hintNote": "declaring the first official Mother's Day ... to show the flag in honor of those mothers whose sons had died in war",
+    "easiestCue": "1908년 그래프턴 교회 추모 예배가 첫 행사인 기념일",
+    "targetWhy": "그래프턴 첫 행사·카드 비판은 세계 기념일 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "날 이름은 누구나 알고, 자비스의 생애는 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "calendar/2#g005-L3-14",
+   "seed": {
+    "subject": "세계 여성의 날",
+    "aspect": null,
+    "ref": "L3-14",
+    "pairedWith": 2767
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2767,
+    "question": "1917년 페트로그라드의 섬유 공장 노동자들이 시작한 시위가 퍼져 나가며 러시아 2월 혁명의 첫머리가 되었습니다. 1922년 레닌은 이 시위가 시작된 날짜를 한 국제 기념일로 정했습니다. 이 기념일은 무엇일까요?",
+    "answer": "세계 여성의 날",
+    "acceptedAnswers": [
+     "국제 여성의 날",
+     "여성의 날"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '국제 여성의 날', '세계 여성의 날' 넘겨주기 확인(API)",
+    "explanation": "1911년 첫 기념 행사에는 오스트리아-헝가리·덴마크·독일·스위스에서 100만 명이 넘게 참여했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "러시아 2월 혁명 시위 시작 날짜를 기념일로",
+     "difWhy": "3월 8일 기원 — 대학 교양(세계사)",
+     "wor": 4,
+     "worWhy": "교양 — 기념일 기원",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "러시아 2월 혁명 시위 시작 날짜를 기념일로",
+     "difWhy": "3월 8일 기원 — 대학 교양(세계사)",
+     "wor": 4,
+     "worWhy": "교양 — 기념일 기원"
+    },
+    "rewrite": null,
+    "generalHint": "유엔은 1975년부터 이 날을 기념했고, 1977년 유엔 총회는 회원국에 저마다 권리와 평화를 위한 날을 정하라고 권했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/International_Women%27s_Day"
+    ],
+    "facts": [
+     {
+      "claim": "1917년 페트로그라드 섬유 노동자(여성)들의 시위가 2월 혁명의 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Women%27s_Day",
+      "note": "On 8 March 1917, in Petrograd (23 February in the Julian calendar), women textile workers began a demonstration ... This marked the beginning of the February Revolution"
+     },
+     {
+      "claim": "1922년 레닌이 이 날을 기념일로 정함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Women%27s_Day",
+      "note": "Lenin declared 8 March as International Women's Day in 1922"
+     },
+     {
+      "claim": "1911년 첫 행사에 네 나라 100만 명 이상",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/International_Women%27s_Day",
+      "note": "first International Women's Day was marked by over a million people in Austria-Hungary, Denmark, Germany, and Switzerland."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/International_Women%27s_Day"
+    ],
+    "hintNote": "The United Nations began observing International Women's Day in 1975 ... In 1977, the UN General Assembly invited member states to proclaim any day of the year as United Nations Day for Women's Rights and International Peace",
+    "easiestCue": "2월 혁명의 첫머리가 된 페트로그라드 시위의 날짜를 레닌이 기념일로 정함",
+    "targetWhy": "3월 8일·'빵과 장미'·미국 여성 노동자(1회차 단서)와 '여성'이라는 낱말을 빼고 페트로그라드·레닌만 남김 — 러시아 혁명사 교양이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "기념일은 유명하고, 2월 혁명과의 연결은 세계사 애호가 세부",
+    "pairCheck": "1회차(#2767)는 미국 여성 노동자 시위·빵과 장미·3월 8일, 해설은 빵·장미의 뜻 — 페트로그라드·2월 혁명·레닌은 1회차에 없다",
+    "dbCheck": "pair-or-different — #2767 과 같은 답, (가) 2회차",
+    "warn": []
+   }
+  }
+ ]
+}

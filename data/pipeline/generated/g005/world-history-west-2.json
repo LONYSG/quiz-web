@@ -1,0 +1,116 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "world-history-west/2",
+  "midKey": "world-history-west",
+  "subName": "중세 유럽",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/2#g005-H2-04",
+   "seed": {
+    "subject": "성전 기사단",
+    "aspect": null,
+    "ref": "H2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1307년 10월, 이 기사단에 큰 빚을 지고 있던 프랑스 왕 필리프 4세는 새벽에 단원들을 한꺼번에 체포했습니다. 1314년 파리에서 화형당한 마지막 단장 자크 드 몰레가 불길 속에서 교황과 왕을 곧 신 앞에서 만나게 될 것이라 외쳤다는 전설이 전하는 이 기사단은?",
+    "answer": "성전 기사단",
+    "acceptedAnswers": [
+     "템플 기사단"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '성전기사단' 문서 첫 문단 — 다른 이름 '템플기사단'",
+    "explanation": "이름은 본부를 둔 예루살렘 성전산이 솔로몬 성전 터로 여겨진 데서 나왔고, 1312년 교황 클레멘스 5세가 수도회를 해산했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "자크 드 몰레 — 필리프 4세가 단원을 한꺼번에 체포한 기사단",
+     "difWhy": "필리프 4세의 기사단 탄압 — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 중세 기사단",
+     "acc": 4,
+     "accWhy": "서양사 — 고교 세계사 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "자크 드 몰레 — 필리프 4세가 단원을 한꺼번에 체포한 기사단",
+     "difWhy": "필리프 4세의 기사단 탄압 — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 중세 기사단"
+    },
+    "rewrite": null,
+    "generalHint": "이 기사단의 상징은 가난을 내세운 '말 한 마리에 함께 탄 두 기사' 그림이었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Knights_Templar",
+     "https://ko.wikipedia.org/wiki/성전_기사단"
+    ],
+    "facts": [
+     {
+      "claim": "필리프 4세가 기사단에 빚을 지고 있었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Knights_Templar",
+      "note": "Philip was already deeply in debt to the Templars from his war against England."
+     },
+     {
+      "claim": "1307년 10월 새벽 일제 체포",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Knights_Templar",
+      "note": "At dawn on Friday, 13 October 1307, Philip IV had Jacques de Molay and many other French Templars arrested (요지)"
+     },
+     {
+      "claim": "자크 드 몰레 1314년 파리 화형",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Knights_Templar",
+      "note": "burned at the stake in Paris in 1314 by order of King Philip IV"
+     },
+     {
+      "claim": "불길 속에서 교황과 왕이 곧 신 앞에서 만날 것이라 외쳤다는 전설",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Knights_Templar",
+      "note": "According to legend, he called out from the flames that both Pope Clement and King Philip would soon meet him before God."
+     },
+     {
+      "claim": "이름은 솔로몬 성전 터로 여겨진 성전산에서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Knights_Templar",
+      "note": "the Crusaders called the site the Temple of Solomon … from this location derived their name of Templar (사진 설명 요지)"
+     },
+     {
+      "claim": "1312년 클레멘스 5세가 해산",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Knights_Templar",
+      "note": "Under pressure from Philip, Pope Clement V disbanded the order in 1312."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Knights_Templar"
+    ],
+    "hintNote": "Their emblem was of two knights riding on a single horse, emphasizing the order's poverty.",
+    "easiestCue": "필리프 4세의 1307년 일제 체포",
+    "targetWhy": "대중 단서 '13일의 금요일'을 빼고 필리프 4세·드 몰레만 — 중세사 대학 교양·애호가(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "다빈치 코드 등 대중 소설로 아는 사람이 있어 3으로 읽힐 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (성전 기사단 · 템플 기사단 모두 활성 0)",
+    "warn": [
+     "정답조각 기사단"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,99 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "philosophy/1",
+  "midKey": "philosophy",
+  "subName": "고대 철학",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/1#g005-H2-20",
+   "seed": {
+    "subject": "아리스토텔레스",
+    "aspect": null,
+    "ref": "H2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기원전 322년 아테네에서 불경죄로 고발당한 이 철학자는 \"아테네 사람들이 철학에 두 번 죄짓게 두지 않겠다\"며 에우보이아섬의 칼키스로 떠났고, 그해 그곳에서 숨졌습니다. 이 철학자는 누구일까요?",
+    "answer": "아리스토텔레스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그가 세운 리케이온 학원은 뜰의 주랑(페리파토스)에서 이름을 따 '소요학파'라 불렸습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'아테네 사람들이 철학에 두 번 죄짓게 두지 않겠다'",
+     "difWhy": "소크라테스 처형 빗댄 말 — 대학 교양",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 철학자 일화",
+     "acc": 4,
+     "accWhy": "철학·사상 — 고교 윤리 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'아테네 사람들이 철학에 두 번 죄짓게 두지 않겠다'",
+     "difWhy": "소크라테스 처형 빗댄 말 — 대학 교양",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 철학자 일화"
+    },
+    "rewrite": null,
+    "generalHint": "이 철학자의 아버지 니코마코스는 마케도니아 왕 아민타스의 시의였다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Aristotle"
+    ],
+    "facts": [
+     {
+      "claim": "기원전 322년 불경죄로 고발, 칼키스로 피신",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aristotle",
+      "note": "In 322 BC, two men reportedly accused Aristotle of impiety, which led him to flee to his mother's family estate in Chalcis, Euboea (요지)"
+     },
+     {
+      "claim": "'철학에 두 번 죄짓게 두지 않겠다'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aristotle",
+      "note": "I will not allow the Athenians to sin twice against philosophy. (소크라테스 재판을 가리킴)"
+     },
+     {
+      "claim": "그해 칼키스에서 사망",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aristotle",
+      "note": "died in Chalcis, Euboea … of natural causes later that same year"
+     },
+     {
+      "claim": "리케이온, 주랑(peripatos)에서 소요학파 이름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Aristotle",
+      "note": "rented a building known as the Lyceum … The school took the name Peripatetic from the colonnade (peripatos) on the grounds (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Aristotle"
+    ],
+    "hintNote": "the son of Nicomachus, the personal physician of King Amyntas of Macedon",
+    "easiestCue": "'철학에 두 번 죄짓게 두지 않겠다' — 소크라테스 다음의 고발",
+    "targetWhy": "교과서 단서(플라톤의 제자 · 알렉산드로스의 스승 · 중용)를 빼고 말년 일화만 — 대학 교양 철학사(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'두 번째' 가 소크라테스를 가리켜 플라톤·아리스토텔레스로 좁혀지는 추리가 쉬울 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (중용 #1155 · 목적론 #3119 는 다른 답)",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,277 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "board-game/4",
+  "midKey": "board-game",
+  "subName": "보드게임",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "board-game/4#g005-L2-04",
+   "seed": {
+    "subject": "오셀로",
+    "aspect": null,
+    "ref": "L2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국의 루이스 워터먼과 존 몰렛은 둘 다 1883년에 한 판 게임을 만들었다고 주장하며 서로를 거짓말쟁이로 몰았습니다. 1971년 일본의 하세가와 고로는 이 게임을 다듬은 판으로 일본에서 특허를 받았는데, 그가 붙인 이름은 무엇일까요?",
+    "answer": "오셀로",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '오셀로' 문서 확인(API) — 질문이 하세가와가 붙인 이름을 물으므로 '리버시'는 넣지 않음(B2)",
+    "explanation": "하세가와는 셰익스피어의 희곡 '베니스의 무어인 오셀로'에서 이름을 땄다고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1971년 하세가와 고로가 다듬어 붙인 게임 이름",
+     "difWhy": "하세가와 고로 개량판 — 보드게임 애호가",
+     "wor": 3,
+     "worWhy": "보드게임 이야깃거리",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1971년 하세가와 고로가 다듬어 붙인 게임 이름",
+     "difWhy": "하세가와 고로 개량판 — 보드게임 애호가",
+     "wor": 3,
+     "worWhy": "보드게임 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "1973년 4월 말 일본의 쓰쿠다 오리지널이 하세가와의 허락을 받아 이 이름으로 내놓아 곧바로 크게 팔렸다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Reversi"
+    ],
+    "facts": [
+     {
+      "claim": "워터먼과 몰렛이 1883년 발명을 서로 주장, 서로 비난",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Reversi",
+      "note": "both claim to have invented the game of reversi in 1883 … each accused the other of dishonesty"
+     },
+     {
+      "claim": "1971년 하세가와 고로 일본 특허",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Reversi",
+      "note": "It was patented in Japan in 1971 by Goro Hasegawa."
+     },
+     {
+      "claim": "이름은 셰익스피어 희곡에서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Reversi",
+      "note": "as a reference to the Shakespearean play Othello, the Moor of Venice."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Reversi"
+    ],
+    "hintNote": "Tsukuda Original launched Othello in late April 1973 in Japan under Hasegawa's license ... led to an immediate commercial success.",
+    "easiestCue": "1971년 하세가와 고로가 특허를 낸 판 게임",
+    "targetWhy": "흑백 돌을 뒤집는 규칙(정의)을 빼고 리버시의 원조 다툼·일본 특허만 남김 — 보드게임 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "오셀로는 누구나 들어 봤고, 기원 단서는 애호가 영역",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "board-game/4#g005-L2-05",
+   "seed": {
+    "subject": "스크래블",
+    "aspect": null,
+    "ref": "L2-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1931년 미국 건축가 앨프리드 버츠는 자신이 만든 낱말 게임 '렉시코'를 바꿔 '크리스크로스워즈'라는 새 게임을 만들었습니다. 그는 뉴욕 타임스 같은 글에서 글자가 나오는 빈도를 손으로 세어 글자 조각의 개수를 정했다고 합니다. 이 게임이 뒤에 얻은 이름은?",
+    "answer": "스크래블",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Scrabble"
+    ],
+    "variantCheck": "ko.wikipedia '스크래블' 문서 제목(API) 확인 · 상표가 영어라 Scrabble 을 B10 으로",
+    "explanation": "게임판은 가로세로 15칸이며, 제조권은 제임스 브루노가 사들였습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "신문 글자 빈도로 조각 수를 정한 낱말 게임",
+     "difWhy": "'글자 조각 낱말 게임' — 보드게임 애호가",
+     "wor": 3,
+     "worWhy": "유명 게임 기원",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "15×15 판 낱말 게임",
+     "difWhy": "대표 낱말 보드게임 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 게임 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1931년 미국 건축가 앨프리드 버츠는 자신이 만든 낱말 게임 '렉시코'에 15×15 판을 더해 '크리스크로스워즈'라는 새 게임을 만들었습니다. 그는 뉴욕 타임스 같은 글에서 글자가 나오는 빈도를 손으로 세어 글자 조각의 개수를 정했다고 합니다. 이 게임이 뒤에 얻은 이름은?",
+     "beforeExplanation": "제조권은 제임스 브루노가 사들였고, 버츠는 한 벌 팔릴 때마다 로열티를 받기로 했습니다.",
+     "removedCue": "15×15 판 낱말 게임",
+     "addedCue": "(빼기만) 버츠 · 렉시코 · 글자 빈도로 조각 수 결정",
+     "why": "15×15 판 낱말 게임이 관심층 충분 단서라 해설로 내리고 발명 내력만 남김"
+    },
+    "generalHint": "영어판에서 가장 점수가 높은 글자 조각은 Q와 Z로 10점이고, 조각은 모두 100개다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Scrabble"
+    ],
+    "facts": [
+     {
+      "claim": "1931년 건축가 버츠가 발명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Scrabble",
+      "note": "American architect Alfred Mosher Butts invented the game in 1931."
+     },
+     {
+      "claim": "렉시코의 변형, 크리스크로스워즈에 15×15 판",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Scrabble",
+      "note": "created the game as a variation on an earlier word game he invented, called Lexiko. … The new game, which he called Criss-Crosswords, added the 15×15 gameboard and the crossword-style gameplay."
+     },
+     {
+      "claim": "렉시코의 변형, 크리스크로스워즈에 15×15 판",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Scrabble",
+      "note": "created the game as a variation on an earlier word game he invented, called Lexiko. … The new game, which he called Criss-Crosswords, added the 15×15 gameboard and the crossword-style gameplay."
+     },
+     {
+      "claim": "뉴욕 타임스 등에서 글자 빈도를 손으로 셈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Scrabble",
+      "note": "Alfred Butts manually tabulated the frequency of letters … performing a frequency analysis of letters from various sources, including The New York Times."
+     },
+     {
+      "claim": "브루노가 제조권을 사며 로열티",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Scrabble",
+      "note": "bought the rights to manufacture the game in exchange for granting Butts a royalty on every unit sold."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Scrabble_letter_distributions"
+    ],
+    "hintNote": "Q and Z: 10 points each / Total tiles: 100 / Blank tiles: 2",
+    "easiestCue": "글자 빈도를 세어 조각 수를 정한 버츠의 낱말 게임",
+    "targetWhy": "발명자와 조각 수 결정 일화는 보드게임 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'크리스크로스워즈'와 글자 빈도에서 낱말 판 게임을 추리할 수 있어 3 여지",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 스크"
+    ]
+   }
+  },
+  {
+   "seedId": "board-game/4#g005-L2-06",
+   "seed": {
+    "subject": "마작",
+    "aspect": null,
+    "ref": "L2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1920년 미국 아버크롬비 앤드 피치는 처음으로 이 놀이의 세트를 팔기 시작했습니다. 같은 해 조지프 배브콕은 이 놀이의 규칙을 미국인에게 맞게 줄인 책을 냈는데, 이 책은 '레드 북'으로 불렸습니다. 1920년대 미국에서 크게 유행한 이 놀이는?",
+    "answer": "마작",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "회사의 공동 소유주 에즈라 피치는 중국 마을마다 사람을 보내 찾을 수 있는 세트를 모두 사들이게 했다고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "엮음: 1920년대 미국 유행 + 규칙을 미국인에게 맞게 줄인 '레드 북'",
+     "difWhy": "'1920년대 미국 유행 놀이' — 놀이 애호가",
+     "wor": 3,
+     "worWhy": "놀이 전파 이야깃거리",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "엮음: 1920년대 미국 유행 + 규칙을 미국인에게 맞게 줄인 '레드 북'",
+     "difWhy": "'1920년대 미국 유행 놀이' — 놀이 애호가",
+     "wor": 3,
+     "worWhy": "놀이 전파 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "영화 '크레이지 리치 아시안'에서 주인공은 남자 친구의 어머니와 이것을 두며 결판을 낸다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mahjong"
+    ],
+    "facts": [
+     {
+      "claim": "1920년 아버크롬비 앤드 피치가 미국 첫 판매",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mahjong",
+      "note": "The first Mahjong sets sold in the U.S. were sold by Abercrombie & Fitch starting in 1920."
+     },
+     {
+      "claim": "같은 해 배브콕 'Rules of Mah-Jongg' = 레드 북, 미국인에 맞게 단순화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mahjong",
+      "note": "Also in 1920, Joseph Park Babcock published his book Rules of Mah-Jongg, also known as the \"red book\". … Its rules were simplified for American players"
+     },
+     {
+      "claim": "1920년대 유행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mahjong",
+      "note": "Later, when the 1920s fad died out, many of Babcock's simplifications were abandoned."
+     },
+     {
+      "claim": "에즈라 피치가 중국 마을에 사람을 보내 세트를 사들임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mahjong",
+      "note": "Ezra Fitch, sent emissaries to Chinese villages to buy every Mahjong set they could find."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Crazy_Rich_Asians_(film)"
+    ],
+    "hintNote": "Rachel invites Eleanor to a mahjong parlor ... she hands Eleanor the mahjong tile that lets her win",
+    "easiestCue": "1920년대 미국에서 크게 유행한 놀이(배브콕의 '레드 북')",
+    "targetWhy": "중국 기원·패 구성 같은 첫 줄 사실을 빼고 미국 유행사만 남김 — 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "마작은 누구나 들어 봤고, 미국 유행사는 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 처음",
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

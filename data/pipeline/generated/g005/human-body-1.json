@@ -1,0 +1,95 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "human-body/1",
+  "midKey": "human-body",
+  "subName": "뼈·근육",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/1#g005-C1-08",
+   "seed": {
+    "subject": "무릎뼈",
+    "aspect": null,
+    "ref": "C1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "힘줄 속에 박혀 자라는 '종자뼈' 가운데 사람 몸에서 가장 큰 뼈가 있습니다. 갓난아기 때는 말랑한 연골이었다가 세 살 무렵 뼈가 되기 시작해 사춘기 무렵 다 굳습니다. 이 뼈는 무엇일까요?",
+    "answer": "무릎뼈",
+    "acceptedAnswers": [
+     "슬개골"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "슬개골은 무릎뼈의 한자어 의학 용어로 함께 흔히 씀",
+    "explanation": "넙다리네갈래근 힘줄이 넙다리뼈를 당기는 지렛대 힘을 키워 주며, 양서류와 대부분의 파충류에는 이 뼈가 없습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "사람 몸에서 가장 큰 종자뼈",
+     "difWhy": "가장 큰 종자뼈 — 대학 교양 해부학",
+     "wor": 3,
+     "worWhy": "인체 이야깃거리",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "사람 몸에서 가장 큰 종자뼈",
+     "difWhy": "가장 큰 종자뼈 — 대학 교양 해부학",
+     "wor": 3,
+     "worWhy": "인체 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "이 뼈 바로 아래 힘줄을 반사 망치로 두드리는 검사는 척수의 L2~L4 마디를 살핀다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Patella"
+    ],
+    "facts": [
+     {
+      "claim": "사람 몸에서 가장 큰 종자뼈(힘줄·근육 속에 박힌 뼈)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Patella",
+      "note": "the largest sesamoid bone (embedded within a tendon or muscle)"
+     },
+     {
+      "claim": "태어날 때 연골이고 세 살 무렵 한 중심에서 뼈되기가 시작해 사춘기 무렵 끝난다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Patella",
+      "note": "Babies are born with a kneecap made of soft cartilage. Bone formation begins by a single centre at about age three, and it is complete around puberty."
+     },
+     {
+      "claim": "넙다리네갈래근 힘줄의 지렛대 힘을 키우고, 양서류·대부분 파충류에는 없다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Patella",
+      "note": "increases the leverage that the quadriceps tendon can exert on the femur / In amphibians and most reptiles, a patella is not present"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Patellar_reflex"
+    ],
+    "hintNote": "tests the L2, L3, and L4 segments of the spinal cord ... Striking of the patellar tendon with a reflex hammer just below the patella",
+    "easiestCue": "가장 큰 종자뼈",
+    "targetWhy": "'무릎을 덮는 뼈' 같은 위치 단서를 넣지 않음 — 종자뼈 · 뼈되기 시기는 해부학 교양, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 뼈의 몰랐던 성질",
+    "pairCheck": null,
+    "dbCheck": "무릎뼈·슬개골 new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,351 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "ball-sports/5",
+  "midKey": "ball-sports",
+  "subName": "탁구·배드민턴",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "ball-sports/5#g005-S2-17",
+   "seed": {
+    "subject": "박주봉",
+    "aspect": null,
+    "ref": "S2-17",
+    "pairedWith": 4273
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 4273,
+    "question": "한국 배드민턴 선수 출신의 이 지도자는 1997년 영국 대표팀 코치로 지도자 생활을 시작했고, 1999년부터 2002년까지 말레이시아 대표팀 코치를 지냈습니다. 2016년 리우 올림픽에서 그가 이끈 나라는 그 나라 처음으로 올림픽 여자 복식 금메달을 땄는데, 이 사람은 누구일까요?",
+    "answer": "박주봉",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그는 2004년 아테네 올림픽이 끝난 뒤 일본 국가대표팀 감독을 맡아 2024년까지 이끌었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "리우 올림픽 첫 여자 복식 금을 이끈 한국 배드민턴 출신 지도자",
+     "difWhy": "'해외 대표팀 이끈 한국 배드민턴 레전드' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 선수·지도자 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "일본 배드민턴 국가대표 감독을 맡은 한국 선수 출신",
+     "difWhy": "'일본 배드민턴 대표 한국인 감독' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "한국 배드민턴 선수 출신의 이 지도자는 2004년 아테네 올림픽이 끝난 뒤 일본 국가대표팀 감독을 맡아 2024년까지 이끌었습니다. 2016년 리우 올림픽에서는 일본의 첫 올림픽 여자 복식 금메달을 이끈 이 사람은 누구일까요?",
+     "beforeExplanation": "그는 1997년 영국 대표팀 코치로 지도자 생활을 시작했고, 1999년부터 2002년까지 말레이시아 대표팀 코치를 지냈습니다.",
+     "removedCue": "일본 배드민턴 국가대표 감독을 맡은 한국 선수 출신",
+     "addedCue": "영국·말레이시아 코치 경력 · (나라 이름 없이) 리우 여자 복식 첫 금",
+     "why": "'일본 대표팀 한국인 감독' 정체를 해설로 옮기고 코치 경력 세부로 바꿈"
+    },
+    "generalHint": "리우에서 그 금메달을 딴 짝은 다카하시 아야카와 마쓰토모 미사키다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/박주봉"
+    ],
+    "facts": [
+     {
+      "claim": "2004년 올림픽 뒤 일본 국가대표팀 감독",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/박주봉",
+      "note": "2004년 하계 올림픽을 마감한 후 일본 국가대표팀 감독을 맡았다."
+     },
+     {
+      "claim": "2024년까지 맡고 물러남",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/박주봉",
+      "note": "2024년까지 일본 국가대표팀을 맡고 감독직에서 물러났다."
+     },
+     {
+      "claim": "2016년 일본 여자 복식 금메달을 이끎(일본 여자 배드민턴 최초의 여자 복식 금)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/박주봉",
+      "note": "2016년 올림픽에서 일본 여자 복식 금메달을 이끌었다 — 문서는 이를 일본 여자 배드민턴 역사상 최초의 여자 복식 금메달이라고 설명"
+     },
+     {
+      "claim": "1997년 영국 코치, 1999~2002 말레이시아 코치",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/박주봉",
+      "note": "1997년에 영국 국가대표팀의 코치를 맡은 것을 시작으로 ... 1999년부터 말레이시아 국가대표팀을 맡아 2002년까지 코치로 활동했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Badminton_at_the_2016_Summer_Olympics_%E2%80%93_Women%27s_doubles"
+    ],
+    "hintNote": "Gold went to Japan's Misaki Matsutomo and Ayaka Takahashi ... It was Japan's first gold medal in Olympics badminton.",
+    "easiestCue": "영국·말레이시아 코치를 거친 한국 배드민턴 선수 출신 지도자",
+    "targetWhy": "코치 경력 · 리우 여자 복식은 배드민턴 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 선수의 몰랐던 지도자 경력",
+    "pairCheck": "1회차 #4273 은 1992 바르셀로나 김문수의 복식 파트너 — 2회차는 일본 감독 경력, 1회차 사실로는 못 푼다",
+    "dbCheck": "박주봉 — pair-or-different, #4273 과 (가) 2회차",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/5#g005-S2-18",
+   "seed": {
+    "subject": "셀룰로이드",
+    "aspect": null,
+    "ref": "S2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1901년 제임스 깁은 미국 여행에서 이 재료로 만든 장난감 공을 보고 탁구에 딱 맞는다고 여겼습니다. 국제탁구연맹이 2014년 7월 이후 대회부터 새 폴리 소재 공을 쓰기 전까지 탁구공을 만들던 이 재료는?",
+    "answer": "셀룰로이드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2000년 10월에는 공 지름도 38mm에서 40mm로 커졌는데, 공기 저항을 키워 경기를 느리게 하려는 것이었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "2014년 폴리 공 이전 탁구공 재료",
+     "difWhy": "'옛 탁구공 재료' — 탁구 애호가",
+     "wor": 3,
+     "worWhy": "생활 소재 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "2014년 폴리 공 이전 탁구공 재료",
+     "difWhy": "'옛 탁구공 재료' — 탁구 애호가",
+     "wor": 3,
+     "worWhy": "생활 소재 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "이 재료는 지금도 기타 피크·만년필 몸통·빗 같은 물건에 쓰인다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Table_tennis"
+    ],
+    "facts": [
+     {
+      "claim": "1901년 깁이 미국 여행에서 셀룰로이드 공을 보고 탁구에 알맞다 여김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Table_tennis",
+      "note": "James W. Gibb discovered novelty celluloid balls on a trip to the US in 1901 and found them ideal for the game."
+     },
+     {
+      "claim": "2014년 7월 이후 대회는 새 폴리 소재 공",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Table_tennis",
+      "note": "The ITTF states that all events after July 2014 are played with a new poly material ball. / balls are now made of a polymer instead of celluloid."
+     },
+     {
+      "claim": "2000년 10월 38mm → 40mm, 공기 저항을 키워 경기를 늦춤",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Table_tennis",
+      "note": "the older 38 mm balls were officially replaced by 40 mm balls in October 2000 ... increased the ball's air resistance and effectively slowed down the game."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Celluloid"
+    ],
+    "hintNote": "musical instruments, combs, office equipment, fountain pen bodies, and guitar picks",
+    "easiestCue": "2014년 무렵 폴리 공으로 바뀌기 전 탁구공의 재료",
+    "targetWhy": "탁구공 재료 교체는 탁구 애호가가 아는 사실 — '불에 잘 탄다' 같은 소재 정의는 뺐다 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "셀룰로이드 자체는 고교 화학·생활 어휘라, 공 재료를 짐작으로 맞히는 사람이 있을 수 있다",
+    "pairCheck": null,
+    "dbCheck": "셀룰로이드 — pair-or-different, #3735(상아 당구공 대체 · 영화 필름 초기 플라스틱)와 지식 다름(탁구공 재료)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/5#g005-S2-19",
+   "seed": {
+    "subject": "푸네",
+    "aspect": null,
+    "ref": "S2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "배드민턴은 19세기 중반 영국령 인도의 장교들 사이에서 발전했고, 초기에는 한 주둔지 도시의 이름으로 불리기도 했습니다. 1873년 이 경기의 첫 규칙이 만들어진 그 인도 도시는 오늘날 무엇이라 부를까요?",
+    "answer": "푸네",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '푸네' — 질문이 '오늘날' 이름을 물어 옛 이름 푸나는 넣지 않음(B2)",
+    "explanation": "1875년에는 고국으로 돌아온 장교들이 잉글랜드 포크스턴에 배드민턴 클럽을 열었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 5,
+     "easiestCue": "1873년 배드민턴 첫 규칙이 만들어진 인도 주둔지 도시",
+     "difWhy": "'배드민턴 기원 인도 도시' — 마니아도 헷갈림",
+     "wor": 3,
+     "worWhy": "종목 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 5,
+     "easiestCue": "1873년 배드민턴 첫 규칙이 만들어진 인도 주둔지 도시",
+     "difWhy": "'배드민턴 기원 인도 도시' — 마니아도 헷갈림",
+     "wor": 3,
+     "worWhy": "종목 기원 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "마하트마 간디가 1942년부터 1944년까지 갇혀 지낸 아가 칸 궁전이 이 도시에 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Badminton"
+    ],
+    "facts": [
+     {
+      "claim": "19세기 중반 영국령 인도 장교들 사이에서 발전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Badminton",
+      "note": "developed in the mid-19th century among the expatriate officers of British India as a variant of the earlier game of battledore and shuttlecock."
+     },
+     {
+      "claim": "초기에 주둔지 도시 푸나(푸네)의 이름으로 불림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Badminton",
+      "note": "Early on, the game was also known as Poona or Poonah after the garrison town of Poona (Pune)"
+     },
+     {
+      "claim": "1873년 그곳에서 첫 규칙",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Badminton",
+      "note": "where the first rules for the game were drawn up in 1873"
+     },
+     {
+      "claim": "1875년 포크스턴 클럽",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Badminton",
+      "note": "By 1875, officers returning home had started a badminton club in Folkestone."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Aga_Khan_Palace"
+    ],
+    "hintNote": "built by Sultan Muhammed Shah Aga Khan III in the city of Pune ... interned in the palace from 9 August 1942 to 6 May 1944",
+    "easiestCue": "배드민턴 첫 규칙이 만들어진 인도 주둔지 도시",
+    "targetWhy": "이름 유래(배드민턴 저택 — 활성 #2741)가 아닌 인도 기원 — 배드민턴사 애호가 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "푸네는 인도 대도시로 들어 봤을 법하지만, 배드민턴과의 연결은 깊다 — 나쁜 어려움 쪽 의심도 조금",
+    "pairCheck": null,
+    "dbCheck": "푸네 — new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/5#g005-S2-20",
+   "seed": {
+    "subject": "유승민",
+    "aspect": null,
+    "ref": "S2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본식 펜홀더 그립을 쓰던 이 한국 탁구 선수는 2016년 리우 올림픽 선수위원 투표에서 2위를 차지해, 문대성에 이어 한국인으로는 두 번째로 IOC 선수위원에 뽑혔습니다. 2019년 6월 대한탁구협회장이 된 이 사람은 누구일까요?",
+    "answer": "유승민",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2004년 아테네 결승에서 중국의 왕하오를 4-2로 꺾었는데, 한국의 올림픽 탁구 남자 단식 금메달은 1988년 서울 이후 16년 만이었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "문대성에 이어 IOC 선수위원이 된 탁구 선수",
+     "difWhy": "'탁구 출신 IOC 선수위원' — 뉴스에서 흔히",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "문대성에 이어 IOC 선수위원이 된 탁구 선수",
+     "difWhy": "'탁구 출신 IOC 선수위원' — 뉴스에서 흔히",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 남는 단서(2004 아테네 금·탁구협회장)도 뉴스 수준이고, 정체가 IOC 선수위원이라 빼면 유일성이 약해진다"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/유승민_(탁구_선수)"
+    ],
+    "facts": [
+     {
+      "claim": "그립 일본식 펜 홀더",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/유승민_(탁구_선수)",
+      "note": "(인포박스) 그립: 일본식 펜 홀더"
+     },
+     {
+      "claim": "리우 선수위원 투표 2위, 문대성에 이어 두 번째 IOC 선수위원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/유승민_(탁구_선수)",
+      "note": "리우 올림픽 선수위원 투표에서 2위를 차지해 대한민국에서 문대성에 이어 2번째로 국제올림픽위원회(IOC) 선수위원으로 선출됐다"
+     },
+     {
+      "claim": "2019년 6월 대한탁구협회장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/유승민_(탁구_선수)",
+      "note": "2019년 6월 대한탁구협회의 회장으로 선출되면서"
+     },
+     {
+      "claim": "2004 결승 왕하오 4-2, 1988 이후 16년 만의 남자 단식 금",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/유승민_(탁구_선수)",
+      "note": "중국의 왕하오를 세트 스코어 4-2로 꺾고 ... 한국의 올림픽 탁구 남자 단식 금메달은 1988년 서울 올림픽 이후 16년 만"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "2016년 IOC 선수위원에 뽑힌 한국 탁구 선수",
+    "targetWhy": "아테네 금메달(첫 줄)을 해설로 빼고 행정 경력만 — 올림픽 애호가 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "IOC 선수위원 당선은 당시 뉴스로 널리 보도돼 3 으로 볼 수 있다",
+    "pairCheck": null,
+    "dbCheck": "유승민 — new",
+    "warn": []
+   }
+  }
+ ]
+}

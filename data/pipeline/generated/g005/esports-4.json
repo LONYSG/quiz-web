@@ -1,0 +1,96 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "esports/4",
+  "midKey": "esports",
+  "subName": "e스포츠 대회·리그",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "esports/4#g005-M2-19",
+   "seed": {
+    "subject": "스타크래프트 — 곰TV MSL",
+    "aspect": "팬 세부",
+    "ref": "M2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2007년 곰TV MSL 결승에서 김택용은 당시 최고의 저그로 꼽히던 마재윤을 3:0으로 꺾고 우승했습니다. 경기가 열린 날짜를 따서 부르는 이 사건의 이름은 무엇일까요?",
+    "answer": "3.3 혁명",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '김택용' — '3.3혁명' 표기(띄어쓰기는 정규화로 같음)",
+    "explanation": "경기 전 김택용의 승리 확률은 2.69%로 점쳐졌고, 이 우승으로 '기적의 혁명가'라는 별명을 얻었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "2007 MSL 결승 김택용이 마재윤을 3:0으로 꺾은 사건",
+     "difWhy": "'김택용·마재윤 결승' — 스타 애호가",
+     "wor": 2,
+     "worWhy": "e스포츠 팬 용어",
+     "acc": 3,
+     "accWhy": "e스포츠·게임 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "2007 MSL 결승 김택용이 마재윤을 3:0으로 꺾은 사건",
+     "difWhy": "'김택용·마재윤 결승' — 스타 애호가",
+     "wor": 2,
+     "worWhy": "e스포츠 팬 용어"
+    },
+    "rewrite": null,
+    "generalHint": "이 결승의 승자가 보인 커세어 견제 중심의 대저그전 운영은 그의 아이디를 따 '비수류'라 불렸다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "게임",
+    "work": "스타크래프트 — 곰TV MSL",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/김택용"
+    ],
+    "facts": [
+     {
+      "claim": "곰TV MSL 결승, 최고의 저그 마재윤을 3:0",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김택용",
+      "note": "당시 최고의 저그였던 마재윤을 3:0으로 꺾고 우승한 사건 (2007년 3월 3일 곰TV MSL 결승)"
+     },
+     {
+      "claim": "3월 3일이라 3.3혁명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김택용",
+      "note": "3월 3일에 일어났다 하여 3.3혁명으로 불리며"
+     },
+     {
+      "claim": "승리 확률 2.69%, 기적의 혁명가",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/김택용",
+      "note": "김택용의 승리 확률은 2.69%로 책정 ... '기적의 혁명가'라는 별명"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/김택용"
+    ],
+    "hintNote": "더블 넥서스를 기반으로 한 견제와 운영인 '비수류(匕首流)'라 불린 그의 대저그전 플레이",
+    "easiestCue": "김택용이 마재윤을 3:0으로 꺾은 결승",
+    "targetWhy": "스타 리그 팬이면 아는 사건 이름 — 관심층~애호가, 경계 3",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "30대 스타 팬에게는 '아 그거' — 3 으로 내려갈 수 있음",
+    "pairCheck": null,
+    "dbCheck": "3.3 혁명 new · 이영호(4397)·홍진호(4103)와 다른 지식",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,201 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "football/4",
+  "midKey": "football",
+  "subName": "K리그·아시아",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/4#g005-S1-26",
+   "seed": {
+    "subject": "할렐루야",
+    "aspect": null,
+    "ref": "S1-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1980년 12월 20일 신동아그룹 회장의 주도로 창단식을 열어 '대한민국 프로축구단 제1호'가 되었습니다. 1983년 슈퍼리그(지금의 K리그)에 나가 원년 챔피언이 된 이 팀은 무엇일까요?",
+    "answer": "할렐루야",
+    "acceptedAnswers": [
+     "할렐루야 축구단"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '할렐루야 축구단' 문서 제목 확인(API)",
+    "explanation": "대한민국 최초의 기독교 선교 축구단으로, 1985년 아마추어로 돌아서며 본연의 목적인 선교 활동에 힘쓰겠다고 밝혔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'대한민국 프로축구단 제1호' 원년 챔피언",
+     "difWhy": "K리그 원년 우승팀 — 축구 애호가",
+     "wor": 2,
+     "worWhy": "기록 세부 — 원년 팀",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'대한민국 프로축구단 제1호' 원년 챔피언",
+     "difWhy": "K리그 원년 우승팀 — 축구 애호가",
+     "wor": 2,
+     "worWhy": "기록 세부 — 원년 팀"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/할렐루야_축구단"
+    ],
+    "facts": [
+     {
+      "claim": "1980년 12월 20일 창단, 프로축구단 제1호",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/할렐루야_축구단",
+      "note": "1980년 12월 20일 창단식을 거행하며 대한민국 프로축구단 제1호이다."
+     },
+     {
+      "claim": "신동아그룹 회장 주도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/할렐루야_축구단",
+      "note": "신동아그룹 회장에 의해 창단되었다"
+     },
+     {
+      "claim": "1983년 슈퍼리그 원년 챔피언",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/할렐루야_축구단",
+      "note": "1983년 슈퍼리그(현 K리그)에 참가해 원년 챔피언이 되었는데"
+     },
+     {
+      "claim": "최초 기독교 선교 축구단, 1985 아마추어 전환",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/할렐루야_축구단",
+      "note": "대한민국 최초의 기독교 선교 축구단 / 할렐루야 축구단 본연의 목적인 선교 활동에 중점을 두겠다"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1983년 슈퍼리그 원년 챔피언",
+    "targetWhy": "'선교 축구단'이라는 가장 쉬운 단서를 해설로 뺐다 — 한국 첫 프로 구단·원년 우승은 K리그 역사 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 봤을 팀, 단서는 K리그 원년 역사",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 최초"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (기록 세부 — 원년 팀) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "football/4#g005-S1-27",
+   "seed": {
+    "subject": "포항 스틸야드",
+    "aspect": null,
+    "ref": "S1-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1990년 11월 10일 개장 경기로 문을 연, 대한민국에서 처음으로 지어진 축구 전용 경기장입니다. 박태준 회장의 지시로 지어졌고 그라운드와 관중석 사이가 약 4m에 불과한 이 경기장은 어디일까요?",
+    "answer": "포항 스틸야드",
+    "acceptedAnswers": [
+     "스틸야드"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '포항스틸야드' 문서 · '포항 스틸야드' 넘겨주기 확인(API) — 띄어쓰기만 다른 꼴은 정규화로 같음",
+    "explanation": "'용광로'라는 별명으로도 불립니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "대한민국 첫 축구 전용 경기장, 박태준 지시",
+     "difWhy": "'첫 축구 전용 구장' — 축구 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "경기장 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "대한민국 첫 축구 전용 경기장, 박태준 지시",
+     "difWhy": "'첫 축구 전용 구장' — 축구 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "경기장 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "첫 축구 전용 구장 · 박태준 지시 · 별명 '용광로'가 모두 포항으로 바로 이어지는 쉬운 단서이고, 빼면 개장일·관중석 거리(수치)만 남아 정답이 하나로 좁혀지지 않음"
+    },
+    "generalHint": "이 경기장을 안방으로 쓰는 구단은 2009년 AFC 챔피언스리그에서 우승하고 그해 FIFA 클럽 월드컵 3위에 올랐다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/포항스틸야드"
+    ],
+    "facts": [
+     {
+      "claim": "1990년 11월 10일 개장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/포항스틸야드",
+      "note": "1990년 11월 10일 개장 경기와 함께 공식 개장(요약)"
+     },
+     {
+      "claim": "대한민국 최초 축구 전용 경기장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/포항스틸야드",
+      "note": "대한민국에서 처음으로 건립된 축구 전용 경기장"
+     },
+     {
+      "claim": "박태준 회장 지시",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/포항스틸야드",
+      "note": "포항제철 박태준 회장의 지시로 건립(요약)"
+     },
+     {
+      "claim": "그라운드-관중석 약 4m",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/포항스틸야드",
+      "note": "그라운드와 관중석 사이 약 4m(요약)"
+     },
+     {
+      "claim": "별명 용광로",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/포항스틸야드",
+      "note": "별칭 \"용광로\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/포항_스틸러스"
+    ],
+    "hintNote": "2009년 AFC 챔피언스리그 엘리트 우승 · 2009년 FIFA 클럽 월드컵 3위",
+    "easiestCue": "한국 최초의 축구 전용 경기장",
+    "targetWhy": "포항·제철 회사 이름을 질문에서 뺐다 — 첫 전용 구장·박태준 지시는 K리그 애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "K리그 대표 구장, 단서는 건립 역사",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

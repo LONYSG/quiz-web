@@ -1,0 +1,193 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "psychology/1",
+  "midKey": "psychology",
+  "subName": "심리 현상·효과",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "psychology/1#g005-H1-22",
+   "seed": {
+    "subject": "파파게노 효과",
+    "aspect": null,
+    "ref": "H1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "모차르트의 오페라 『마술피리』에서 새잡이는 짝을 잃었다고 절망해 목을 매려 하지만, 세 소년이 나타나 그를 말리고 마법의 종을 울려 보라고 일러 줍니다. 2010년 『영국 정신의학 저널』의 한 논문은 베르테르 효과와 함께 이 효과를 제목에 내걸었습니다. 자살 보도가 오히려 예방에 도움이 될 수 있다는, 이 새잡이의 이름을 딴 효과는?",
+    "answer": "파파게노 효과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "빈에서는 오스트리아 자살예방협회의 한 실무 모임이 언론 보도 지침을 만들었고, 언론과 자살 사건 보도를 삼가기로 합의했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "베르테르 효과와 함께… 자살 보도가 예방에 도움… 새잡이의 이름",
+     "difWhy": "마술피리 새잡이 파파게노 — 고교 음악·뉴스",
+     "wor": 4,
+     "worWhy": "시사 상식 — 자살 보도 효과",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "베르테르 효과와 함께… 자살 보도가 예방에 도움… 새잡이의 이름",
+     "difWhy": "마술피리 새잡이 파파게노 — 고교 음악·뉴스",
+     "wor": 4,
+     "worWhy": "시사 상식 — 자살 보도 효과"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "'마술피리 새잡이의 이름' 과 '베르테르 효과의 반대(자살 예방 보도)' 가 정답 이름 자체를 가리켜, 둘 중 하나라도 빼면 정답이 유일하지 않음 — 고치지 않음"
+    },
+    "generalHint": "1791년 첫 공연 때 이 새잡이 역은 대본을 쓴 에마누엘 시카네더가 직접 맡았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Papageno",
+     "https://en.wikipedia.org/wiki/Copycat_suicide"
+    ],
+    "facts": [
+     {
+      "claim": "새잡이 파파게노가 파파게나를 잃고 목을 매려 함, 세 소년이 말리고 마법의 종을 일러 줌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Papageno",
+      "note": "He describes his life as a bird-catcher … \"Papageno despairs at having lost Papagena and decides to hang himself.\" \"The three boys appear and stop him.\" … he \"can play his magic bells to summon Papagena.\""
+     },
+     {
+      "claim": "2010년 British Journal of Psychiatry 논문 \"Werther v. Papageno effects\", 보도의 예방 효과",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Copycat_suicide",
+      "note": "Niederkrotenthaler et al. (2010), \"Role of media reports in completed and prevented suicide: Werther v. Papageno effects,\" in British Journal of Psychiatry … \"those narratives might have a positive effect on prevention.\""
+     },
+     {
+      "claim": "마술피리의 자살을 생각하던 인물에서 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Copycat_suicide",
+      "note": "named after a lovelorn character from The Magic Flute … Papageno \"was contemplating suicide until other characters showed him a different way to resolve his problems.\""
+     },
+     {
+      "claim": "빈, 오스트리아 자살예방협회 실무 모임의 언론 지침, 보도 자제 합의",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Copycat_suicide",
+      "note": "in Vienna, \"a working group of the Austrian Association for Suicide Prevention developed media guidelines,\" which led to an agreement with the media to abstain from reporting on cases of suicide."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Papageno"
+    ],
+    "hintNote": "Schikaneder himself played Papageno at the 1791 premiere.",
+    "easiestCue": "『마술피리』에서 목을 매려다 세 소년에게 말려지는 새잡이의 이름을 딴 효과",
+    "targetWhy": "오페라 인물 이름을 알아야 풀림 — 오페라 애호가·대학 교양 심리학 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정답은 자살 예방 보도 기준에 흔히 나오는 말, 단서는 오페라 장면",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0 (베르테르 효과 3846 은 다른 지식)",
+    "warn": [
+     "정답조각 효과"
+    ]
+   }
+  },
+  {
+   "seedId": "psychology/1#g005-H1-23",
+   "seed": {
+    "subject": "스톡데일 패러독스",
+    "aspect": null,
+    "ref": "H1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "베트남 전쟁 때 '하노이 힐턴'이라 불린 호아로 수용소에 7년 반 동안 갇혔던 미 해군 장교는, 끝내 살아 나오지 못한 이들이 '크리스마스까지는 나갈 거야'라고 말하던 사람들이었다고 회고했습니다. 경영 저술가 짐 콜린스가 그와 나눈 이 대화를 전하며 그의 이름을 붙인 말은?",
+    "answer": "스톡데일 패러독스",
+    "acceptedAnswers": [
+     "스톡데일 역설"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "Stockdale Paradox — 한국 경영서·언론은 '스톡데일 패러독스'와 번역 '스톡데일 역설'을 함께 씀",
+    "explanation": "제임스 스톡데일은 1992년 미국 대선에서 무소속 로스 페로의 부통령 후보로 나서기도 했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "짐 콜린스가 그와 나눈 이 대화를 전하며 그의 이름을 붙인 말",
+     "difWhy": "짐 콜린스의 경영서 개념 — 대학 교양",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 경영서 개념",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "짐 콜린스가 그와 나눈 이 대화를 전하며 그의 이름을 붙인 말",
+     "difWhy": "짐 콜린스의 경영서 개념 — 대학 교양",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 경영서 개념"
+    },
+    "rewrite": null,
+    "generalHint": "그는 포로 시절 에픽테토스의 스토아 철학 덕분에 버틸 수 있었다고 말했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/James_Stockdale"
+    ],
+    "facts": [
+     {
+      "claim": "호아로 수용소(하노이 힐턴)에 7년 반 수감, 1965~1973",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Stockdale",
+      "note": "was held as a prisoner of war in the Hỏa Lò Prison (the \"Hanoi Hilton\") for the next 7+1⁄2 years … captured September 9, 1965 … released February 12, 1973"
+     },
+     {
+      "claim": "살아 나오지 못한 이들은 '크리스마스까지는 나갈 거야'라던 사람들",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Stockdale",
+      "note": "Asked which prisoners did not make it out, Stockdale replied: \"Oh, they were the ones who said, 'We're going to be out by Christmas'.\""
+     },
+     {
+      "claim": "콜린스가 대화를 전하며 Stockdale Paradox라 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Stockdale",
+      "note": "\"Collins called this the Stockdale Paradox.\" … James C. Collins … relating his conversation with Stockdale"
+     },
+     {
+      "claim": "1992년 페로의 부통령 후보",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/James_Stockdale",
+      "note": "\"Stockdale was a candidate for vice president of the United States in the 1992 presidential election.\" He ran on Ross Perot's independent ticket"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/James_Stockdale"
+    ],
+    "hintNote": "later credited Stoic philosophy with helping him cope as a prisoner of war ... Epictetus's The Enchiridion",
+    "easiestCue": "짐 콜린스가 하노이 힐턴 포로 장교의 이름을 붙인 말",
+    "targetWhy": "경영서(『좋은 기업을 넘어 위대한 기업으로』) 독자가 아는 일화 — 애호가 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "심리 현상이라기보다 경영·자기계발 용어라 소분류 경계. 대상의 유명함은 중간",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  }
+ ]
+}

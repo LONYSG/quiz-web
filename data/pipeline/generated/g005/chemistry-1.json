@@ -1,0 +1,101 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "chemistry/1",
+  "midKey": "chemistry",
+  "subName": "원소 기호",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/1#g005-C1-17",
+   "seed": {
+    "subject": "인",
+    "aspect": null,
+    "ref": "C1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1669년 함부르크의 연금술사 헤니히 브란트는 현자의 돌을 찾으려고 오줌을 끓이고 졸이다가, 어둠 속에서 빛나는 하얀 밀랍 같은 물질을 얻었습니다. 고대 이후 처음 새로 발견된 원소로 꼽히는 이 원소는 무엇일까요?",
+    "answer": "인",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 원소가 어둠 속에서 빛나는 것은 빛을 흡수했다 다시 내는 인광이 아니라 공기와의 화학 반응에서 나오는 화학 발광입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "브란트가 오줌을 졸여 얻은 어둠 속 빛나는 원소",
+     "difWhy": "'오줌에서 얻은 빛나는 원소' — 대학 교양 화학사",
+     "wor": 4,
+     "worWhy": "원소 발견사 교양",
+     "acc": 5,
+     "accWhy": "화학 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "브란트가 오줌을 졸여 얻은 어둠 속 빛나는 원소",
+     "difWhy": "'오줌에서 얻은 빛나는 원소' — 대학 교양 화학사",
+     "wor": 4,
+     "worWhy": "원소 발견사 교양"
+    },
+    "rewrite": null,
+    "generalHint": "오늘날 성냥갑 옆면의 긋는 면에는 이 원소의 붉은 동소체가 절반쯤 들어 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Phosphorus"
+    ],
+    "facts": [
+     {
+      "claim": "1669년 함부르크 연금술사 브란트가 현자의 돌을 찾다 오줌으로 실험해 발견했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Phosphorus",
+      "note": "The discovery is credited to the Hamburg alchemist Hennig Brand in 1669 / pursuing the philosopher's stone, experimented with urine"
+     },
+     {
+      "claim": "어둠 속에서 빛나는 하얀 밀랍 같은 물질",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Phosphorus",
+      "note": "a white, waxy substance that glowed in the dark"
+     },
+     {
+      "claim": "고대 이후 처음 발견된 원소",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Phosphorus",
+      "note": "the scientific community's first discovery of an element since antiquity"
+     },
+     {
+      "claim": "빛은 인광이 아니라 화학 반응 때문이다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Phosphorus",
+      "note": "glows due to a chemical reaction and not the progressive reemission of previously absorbed light (chemiluminescence, not phosphorescence)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Safety_match"
+    ],
+    "hintNote": "composed of 25% powdered glass or other abrasive material, 50% red phosphorus",
+    "easiestCue": "브란트가 오줌을 졸여 얻은, 어둠 속에서 빛나는 원소",
+    "targetWhy": "원소 기호 P · 성냥 · 비료 같은 교과 단서를 빼고 발견 일화만 둠 — 화학사 교양, 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'어둠 속에서 빛나는 원소' 만으로 인을 떠올리는 사람이 있어 3 일 수 있음 · 한 글자 정답",
+    "pairCheck": null,
+    "dbCheck": "인 pair-or-different — 활성 2460 은 공자의 덕목 '인(仁)' · 지식이 전혀 다름",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

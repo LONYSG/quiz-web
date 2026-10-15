@@ -1,0 +1,182 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "society/3",
+  "midKey": "society",
+  "subName": "인구·통계 개념",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "society/3#g005-H1-10",
+   "seed": {
+    "subject": "벤포드의 법칙",
+    "aspect": null,
+    "ref": "H1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1881년 사이먼 뉴컴은 로그표 책에서 1로 시작하는 앞쪽 쪽들이 뒤쪽보다 훨씬 많이 닳아 있는 것을 알아챘습니다. 1938년 한 물리학자는 20개 분야 2만여 개 자료로 같은 패턴을 확인했습니다. 그의 이름이 붙은, 실제 수치 자료에서 첫째 자리 숫자가 1인 경우가 약 30%에 이른다는 법칙은?",
+    "answer": "벤포드의 법칙",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "첫째 자리가 9일 확률은 약 5%에 그쳐, 회계 자료의 조작 여부를 가리는 데 쓰이기도 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "첫째 자리 숫자가 1인 경우가 약 30%",
+     "difWhy": "첫 자리 숫자 법칙 — 대학 교양(통계)",
+     "wor": 4,
+     "worWhy": "교양 — 통계 법칙",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "첫째 자리 숫자가 1인 경우가 약 30%",
+     "difWhy": "첫 자리 숫자 법칙 — 대학 교양(통계)",
+     "wor": 4,
+     "worWhy": "교양 — 통계 법칙"
+    },
+    "rewrite": null,
+    "generalHint": "그 물리학자 프랭크는 제너럴 일렉트릭에서 오래 일한 연구 물리학자이자 전기 기술자였다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Benford%27s_law",
+     "https://ko.wikipedia.org/wiki/벤포드의_법칙"
+    ],
+    "facts": [
+     {
+      "claim": "뉴컴이 1881년 로그표의 1로 시작하는 앞쪽이 더 닳은 것을 관찰",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Benford%27s_law",
+      "note": "Newcomb observed that the early pages of logarithm tables, the ones beginning with 1, were far more worn than the later pages. (1881)"
+     },
+     {
+      "claim": "벤포드(물리학자) 1938년, 20개 분야 20,229개 관측",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Benford%27s_law",
+      "note": "Benford tested the pattern on data from 20 domains. \"The total number of observations used in the paper was 20,229.\" / ko: 물리학자 프랭크 벤포드가 1938년 논문에서 이 법칙을 언급해 그의 이름을 땄습니다."
+     },
+     {
+      "claim": "첫째 자리 1이 약 30%",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/벤포드의_법칙",
+      "note": "첫째 자리가 1일 확률은 약 30%, 9일 확률은 약 5%입니다."
+     },
+     {
+      "claim": "9는 약 5%, 회계 거래 자료 적용(조작 탐지)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Benford%27s_law",
+      "note": "ko: 9일 확률은 약 5% / en: Benford's law is expected to apply to transaction-level data, such as disbursements and sales (fraud detection – accounting)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Frank_Benford"
+    ],
+    "hintNote": "was an American electrical engineer and physicist ... Benford worked for General Electric ... He was working as a research physicist when he made the rediscovery",
+    "easiestCue": "실제 수치 자료에서 첫째 자리가 1인 경우가 약 30%라는 법칙",
+    "targetWhy": "고교 통계 밖 — 대학 교양 통계·회계 감사 상식 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교양서·방송에 종종 나오는 이름, 뉴컴의 로그표 일화는 깊은 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": [
+     "정답조각 법칙"
+    ]
+   }
+  },
+  {
+   "seedId": "society/3#g005-H1-11",
+   "seed": {
+    "subject": "심슨의 역설",
+    "aspect": null,
+    "ref": "H1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1973년 가을 미국 UC 버클리 대학원 지원자 자료를 모두 합쳐 보면 남성 합격률은 44%, 여성은 35%였습니다. 그런데 학과별로 나눠 따져 보니 오히려 여성에게 조금 유리했는데, 여성이 합격률 낮은 학과에 더 많이 지원했기 때문이었습니다. 이처럼 자료를 합치면 나눠 볼 때의 경향이 뒤집히는 통계 현상을 한 통계학자의 이름을 따 무엇이라 할까요?",
+    "answer": "심슨의 역설",
+    "acceptedAnswers": [
+     "심슨 역설"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "'심슨의 역설'·'심슨 역설' — 정규화가 달라 둘 다(통계 교재에서 두 꼴 모두 씀)",
+    "explanation": "에드워드 심슨이 1951년 기술 논문에서 이 현상을 설명했지만, 칼 피어슨(1899)과 율(1903)이 그보다 앞서 비슷한 효과를 언급했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "자료를 합치면 나눠 볼 때의 경향이 뒤집히는 통계 현상",
+     "difWhy": "합치면 뒤집히는 통계 현상 — 대학 교양 통계",
+     "wor": 4,
+     "worWhy": "교양 — 통계 기본 개념",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "자료를 합치면 나눠 볼 때의 경향이 뒤집히는 통계 현상",
+     "difWhy": "합치면 뒤집히는 통계 현상 — 대학 교양 통계",
+     "wor": 4,
+     "worWhy": "교양 — 통계 기본 개념"
+    },
+    "rewrite": null,
+    "generalHint": "이 현상에 이름을 남긴 통계학자는 제2차 세계대전 때 블레칠리 파크에서 일본 해군 암호를 푸는 팀을 이끌었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Simpson%27s_paradox"
+    ],
+    "facts": [
+     {
+      "claim": "1973년 버클리 대학원 입학 자료, 남 44%·여 35%",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Simpson%27s_paradox",
+      "note": "Overall admission rates were 44% for men and 35% for women, out of 12,763 total applicants. (fall 1973)"
+     },
+     {
+      "claim": "여성이 경쟁 심한(합격률 낮은) 학과에 더 지원, 학과별로는 여성에 작지만 유의한 유리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Simpson%27s_paradox",
+      "note": "women applied more often to competitive departments with lower admission rates … The pooled, corrected data showed a \"small but statistically significant bias in favor of women\""
+     },
+     {
+      "claim": "심슨 1951년 처음 기술, 피어슨 1899·율 1903 언급",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Simpson%27s_paradox",
+      "note": "Edward H. Simpson first described the phenomenon in a 1951 technical paper. Karl Pearson (1899) and Udny Yule (1903) had mentioned similar effects earlier."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Edward_H._Simpson"
+    ],
+    "hintNote": "a cryptanalyst at Bletchley Park (1942–45) ... he was asked to lead the JN-25 team.",
+    "easiestCue": "자료를 합치면 부분의 경향이 뒤집히는 통계 현상",
+    "targetWhy": "고교 확률과 통계 밖 — 대학 교양 통계 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교양 통계서의 대표 역설, 버클리 사례는 교과 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

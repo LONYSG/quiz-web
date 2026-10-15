@@ -1,0 +1,96 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "theatre/4",
+  "midKey": "theatre",
+  "subName": "공연 용어·유명 극장",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "theatre/4#g005-A2-19",
+   "seed": {
+    "subject": "볼쇼이 극장",
+    "aspect": null,
+    "ref": "A2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1877년 3월 4일 차이콥스키의 발레 '백조의 호수'가 처음 무대에 오른 극장입니다. 신고전주의 정면 모습이 러시아 100루블 지폐에 실려 있습니다. 이 극장은 어디일까요?",
+    "answer": "볼쇼이 극장",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '볼쇼이 극장' 문서 제목 확인(API) — 변형 없음",
+    "explanation": "6년에 걸친 대규모 보수 끝에 2011년 10월 28일 다시 문을 열었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'백조의 호수' 초연 극장, 100루블 지폐",
+     "difWhy": "'백조의 호수 초연 극장' — 대학 교양",
+     "wor": 3,
+     "worWhy": "유명 극장 이름 맞히기",
+     "acc": 3,
+     "accWhy": "공연·뮤지컬 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'백조의 호수' 초연 극장, 100루블 지폐",
+     "difWhy": "'백조의 호수 초연 극장' — 대학 교양",
+     "wor": 3,
+     "worWhy": "유명 극장 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "모스크바 테아트랄나야 광장 1번지에 있으며, 지붕의 사두마차 조각은 페터 클로트가 만들었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bolshoi_Theatre"
+    ],
+    "facts": [
+     {
+      "claim": "백조의 호수가 1877년 3월 4일 이 극장에서 초연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bolshoi_Theatre",
+      "note": "Tchaikovsky's ballet Swan Lake premiered at the theatre on 4 March 1877."
+     },
+     {
+      "claim": "신고전주의 정면이 러시아 100루블 지폐에",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bolshoi_Theatre",
+      "note": "its iconic neoclassical façade is depicted on the Russian 100-ruble banknote"
+     },
+     {
+      "claim": "2011년 10월 28일 6년 보수 뒤 재개관",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bolshoi_Theatre",
+      "note": "On 28 October 2011, the Bolshoi re-opened after an extensive six-year renovation."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bolshoi_Theatre"
+    ],
+    "hintNote": "Teatralnaya Square 1, Tverskoy District, Moscow ... The quadriga was sculpted by Peter Clodt von Jürgensburg.",
+    "easiestCue": "'백조의 호수' 초연 극장",
+    "targetWhy": "도시 이름(모스크바) · 발레단 대표 이름 같은 쉬운 단서를 빼고 초연 무대 · 지폐 도안만 남김 — 발레 애호가 수준이라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'러시아 극장' 이면 볼쇼이·마린스키 둘로 좁아 찍을 여지 — 3 경계",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 이극장",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

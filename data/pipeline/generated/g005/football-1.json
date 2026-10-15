@@ -1,0 +1,435 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "football/1",
+  "midKey": "football",
+  "subName": "규칙",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/1#g005-S1-21",
+   "seed": {
+    "subject": "오프사이드",
+    "aspect": null,
+    "ref": "S1-21",
+    "pairedWith": 85
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 85,
+    "question": "1925년 6월 잉글랜드 축구협회는 스코틀랜드 축구협회가 1893년부터 내 온 이 규칙의 개정안을 마침내 받아들였습니다. 그러자 잉글랜드 풋볼 리그의 골은 같은 1,848경기에서 4,700골(1924-25)에서 6,373골(1925-26)로 늘었습니다. 이 규칙은 무엇일까요?",
+    "answer": "오프사이드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 개정은 WM 포메이션이 생겨나는 계기가 되었고, 짧은 패스 대신 긴 패스가 늘었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1925년 잉글랜드 FA가 받아들인 규칙 개정, 골 급증",
+     "difWhy": "1925년 개정·골 급증 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "축구 규칙 역사 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1925년 잉글랜드 FA가 받아들인 규칙 개정, 골 급증",
+     "difWhy": "1925년 개정·골 급증 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "축구 규칙 역사 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "뉴캐슬의 수비수 빌 매크래컨이 이 규칙을 이용한 수비를 워낙 잘 써서 규칙이 바뀌었다고 전한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Offside_(association_football)"
+    ],
+    "facts": [
+     {
+      "claim": "스코틀랜드 FA가 1893년부터 제안, 1925년 6월 FA 승인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Offside_(association_football)",
+      "note": "The Scottish FA had proposed this since 1893, and it was rejected several times before the Football Association approved it at its 8 June 1925 annual meeting.(요약)"
+     },
+     {
+      "claim": "1924-25 4,700골 / 1925-26 6,373골, 같은 1,848경기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Offside_(association_football)",
+      "note": "In the 1924–25 Football League, 4,700 goals were scored in 1,848 games. In 1925–26, the same number of games produced 6,373 goals."
+     },
+     {
+      "claim": "WM 포메이션 계기, 긴 패스 증가",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Offside_(association_football)",
+      "note": "The change also led to the development of the W-M formation ... \"short passing giv[ing] way to longer balls.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bill_McCracken"
+    ],
+    "hintNote": "So successful was McCracken's defensive ploy that the Offside Law was changed (three defenders → two) / He played for Newcastle United from 1904 to 1924",
+    "easiestCue": "1925년 고치자 리그 득점이 크게 늘어난 규칙",
+    "targetWhy": "규칙의 정의(상대 선수 수·위치)를 넣지 않았다 — 1925 개정과 득점 변화는 축구 역사 애호가 수준이라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'골을 늘린 규칙 개정'이면 가장 유명한 규칙으로 찍을 수 있다 — 범주 찍기 우려",
+    "pairCheck": "1회차 #85 는 정의(끝에서 두 번째 수비수보다 앞)만 — 2회차는 1925 개정 역사와 득점 변화로 1회차만 아는 사람은 새 사실 없이 확신 못 함",
+    "dbCheck": "pair-or-different — 활성 #85 와 같은 답, (가) 2회차",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/1#g005-S1-22",
+   "seed": {
+    "subject": "실버골",
+    "aspect": null,
+    "ref": "S1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "유럽축구연맹이 2002-03 시즌 도입한 연장전 방식으로, 골든골과 달리 골이 나도 경기가 바로 끝나지 않고 연장 전반 15분을 마쳤을 때 앞선 팀이 이깁니다. 유로 2004 준결승에서 그리스의 트라이아노스 델라스가 연장 전반 마지막 2초에 넣은 골로 체코를 꺾은 이 방식은 무엇일까요?",
+    "answer": "실버골",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '실버골' 문서 제목 확인(API)",
+    "explanation": "2004년 2월 국제축구평의회는 유로 2004를 끝으로 골든골과 함께 이 방식을 없애기로 했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "골든골과 달리 연장 전반 끝에 앞선 팀이 이김",
+     "difWhy": "UEFA 연장 방식 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 폐지된 규칙",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "골든골과 달리 연장 전반 끝에 앞선 팀이 이김",
+     "difWhy": "UEFA 연장 방식 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 폐지된 규칙"
+    },
+    "rewrite": null,
+    "generalHint": "2003년 UEFA컵 결승은 연장 전반에 골이 없어 이 방식이 쓰이지 않았고, 데를레이가 115분에 결승골을 넣었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Golden_goal"
+    ],
+    "facts": [
+     {
+      "claim": "UEFA 2002-03 시즌 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Golden_goal",
+      "note": "For the 2002–03 season, UEFA introduced a new rule, the silver goal, to decide a competitive match."
+     },
+     {
+      "claim": "연장 전반 15분 뒤 앞선 팀 승리, 골든골처럼 바로 끝나지 않음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Golden_goal",
+      "note": "If a team leads after the first fifteen-minute half of extra time, it is the winner ... no longer ends the instant a team scores like it did under golden goal."
+     },
+     {
+      "claim": "유로 2004 준결승 델라스, 연장 전반 마지막 2초, 체코",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Golden_goal",
+      "note": "Traianos Dellas scored for Greece after a corner kick in the last two seconds of the first period of extra time."
+     },
+     {
+      "claim": "2004년 2월 폐지 발표",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Golden_goal",
+      "note": "In February 2004, the IFAB announced that \"both the golden goal and silver goal methods would be removed\" after Euro 2004."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/2003_UEFA_Cup_final"
+    ],
+    "hintNote": "The first half of extra time arrived without a change in the score, so the silver goal rule did not apply. / Derlei reacted quickest ... in the 115th minute",
+    "easiestCue": "연장 전반이 끝났을 때 앞선 팀이 이기는 2002-03 UEFA 방식",
+    "targetWhy": "두 시즌만 쓰인 방식이라 정의 자체가 축구 애호가 수준 — 골든골(관심층)과 달리 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "답은 골든골과 짝으로 들어 봤을 말, 단서가 깊다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음 (골든골 #413 과 다른 지식)",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  },
+  {
+   "seedId": "football/1#g005-S1-23",
+   "seed": {
+    "subject": "페널티킥",
+    "aspect": null,
+    "ref": "S1-23",
+    "pairedWith": 962
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 962,
+    "question": "아일랜드 밀퍼드 클럽에서 오래 골키퍼로 뛴 윌리엄 매크럼이 1890년 고안했습니다. 그해 6월 국제축구평의회에 올라갔을 때는 '아일랜드 사람의 안'이라 불렸고, 1891년 6월 2일 글래스고에서 경기 규칙 13조로 채택된 이 킥은 무엇일까요?",
+    "answer": "페널티킥",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 안은 '죽음의 형벌(death penalty)'이라는 별명으로도 불렸습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1890년 매크럼이 고안한 '아일랜드 사람의 안' 킥",
+     "difWhy": "매크럼 1890 고안 킥 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "축구 규칙 역사 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1890년 매크럼이 고안한 '아일랜드 사람의 안' 킥",
+     "difWhy": "매크럼 1890 고안 킥 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "축구 규칙 역사 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "그해 9월 잉글랜드 리그 첫 이 킥은 울버햄프턴의 빌리 히스가 차 넣었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/William_McCrum"
+    ],
+    "facts": [
+     {
+      "claim": "밀퍼드 클럽 골키퍼 매크럼, 1890년 고안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_McCrum",
+      "note": "He played for many years as goalkeeper for Milford Football Club. ... the inventor in 1890 of the penalty kick in football."
+     },
+     {
+      "claim": "1890년 6월 IFAB 회의 제출",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_McCrum",
+      "note": "was submitted to the June 1890 meeting of the International Football Association Board"
+     },
+     {
+      "claim": "'Irishman's motion'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_McCrum",
+      "note": "The proposal was known as the \"Irishman's motion\" or the \"death penalty.\""
+     },
+     {
+      "claim": "1891년 6월 2일 글래스고 규칙 13조",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_McCrum",
+      "note": "was approved as number 13 in the Laws of the Game, on 2 June 1891 in Glasgow"
+     },
+     {
+      "claim": "death penalty 별명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/William_McCrum",
+      "note": "The proposal was known as the \"Irishman's motion\" or the \"death penalty.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Penalty_kick_(association_football)"
+    ],
+    "hintNote": "The first penalty kick in the Football League was awarded to Wolverhampton Wanderers ... taken and scored by Billy Heath (14 September 1891)",
+    "easiestCue": "아일랜드 골키퍼 윌리엄 매크럼이 고안한 킥",
+    "targetWhy": "11m·벌칙 구역 반칙 같은 정의를 뺐다 — 고안자·채택 역사는 축구 애호가 수준이라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'골키퍼가 고안한 킥' 에서 찍기 쉬운 편 — 지식은 깊다",
+    "pairCheck": "1회차 #962 는 정의(11m, 벌칙 구역 안 반칙) — 2회차는 고안자·채택 경위로 겹치지 않음",
+    "dbCheck": "pair-or-different — 활성 #962 와 같은 답, (가) 2회차",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/1#g005-S1-24",
+   "seed": {
+    "subject": "국제축구평의회",
+    "aspect": null,
+    "ref": "S1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1886년 6월 2일 런던에서 잉글랜드·스코틀랜드·웨일스·아일랜드의 네 축구협회가 같은 표를 갖고 처음 모였습니다. 1913년 FIFA가 다섯 번째 회원이 된 뒤로, 네 협회가 한 표씩, FIFA가 네 표를 갖고 여덟 표 가운데 여섯 표 이상을 얻어야 안건을 통과시켜 온 이 축구 규칙 기구는 무엇일까요?",
+    "answer": "국제축구평의회",
+    "acceptedAnswers": [
+     "IFAB"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '국제축구평의회' → '국제 축구 평의회' 넘겨주기 확인(API) — 한국 언론은 '국제축구평의회(IFAB)'로 함께 씀",
+    "explanation": "FIFA를 회원으로 받아들인 1913년 특별 회의는 웨일스의 렉섬에서 열렸습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "네 협회와 FIFA가 표를 나눈 축구 규칙 기구",
+     "difWhy": "IFAB 표결 구조 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 규칙 제정 기구",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "네 협회와 FIFA가 표를 나눈 축구 규칙 기구",
+     "difWhy": "IFAB 표결 구조 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 규칙 제정 기구"
+    },
+    "rewrite": null,
+    "generalHint": "이 기구는 2016년 3월 심판을 돕는 영상 기술의 실전 시험을 승인했고, 본부는 스위스 취리히에 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/International_Football_Association_Board"
+    ],
+    "facts": [
+     {
+      "claim": "1886년 6월 2일 런던 첫 회의, 네 협회 같은 표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Football_Association_Board",
+      "note": "The first meeting was held on 2 June 1886 in London. \"The FA, SFA, FAW and IFA each had equal voting rights.\""
+     },
+     {
+      "claim": "1913년 FIFA 다섯 번째 회원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Football_Association_Board",
+      "note": "making FIFA the fifth member of IFAB"
+     },
+     {
+      "claim": "네 협회 1표씩, FIFA 4표, 8표 중 6표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Football_Association_Board",
+      "note": "The associations of England, Northern Ireland, Scotland and Wales have one vote each and FIFA has four. ... at least six of the eight votes."
+     },
+     {
+      "claim": "1913년 렉섬 특별 회의",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/International_Football_Association_Board",
+      "note": "IFAB approved FIFA's membership at a special meeting in Wrexham on 25 January 1913"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/International_Football_Association_Board"
+    ],
+    "hintNote": "Football's lawmakers approve live trials for video technology to aid referees (5 March 2016) / Headquarters: Zürich, Switzerland",
+    "easiestCue": "축구 규칙을 정하는, FIFA 4표·영국 네 협회 1표씩의 기구",
+    "targetWhy": "기구 이름 자체가 축구 애호가 어휘 — 표결 구조·창립 역사는 대학 교양·애호가 수준이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'규칙은 누가 정하나' — 알게 되면 아 그렇구나",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 축구",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "football/1#g005-S1-25",
+   "seed": {
+    "subject": "코너킥",
+    "aspect": null,
+    "ref": "S1-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2025년 3월 국제축구평의회가 바꾼 규칙에 따라, 골키퍼가 손으로 잡은 공을 8초 넘게 들고 있으면 심판은 상대 팀에 이것을 줍니다. 그전에는 6초를 넘기면 간접 프리킥이었지만 거의 불리지 않았는데, 무엇을 줄까요?",
+    "answer": "코너킥",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 개정은 북아일랜드 벨파스트에서 열린 국제축구평의회 연례 회의에서 정해져, 다음 시즌부터 적용되었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "골키퍼 8초 넘기면 상대에 주는 것",
+     "difWhy": "2025 규칙 개정 — 축구 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 최신 규칙",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "골키퍼 8초 넘기면 상대에 주는 것",
+     "difWhy": "2025 규칙 개정 — 축구 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 최신 규칙"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "확인되는 깊은 세부가 없다 — 묻는 사실(골키퍼 8초 규칙의 벌칙) 자체가 단서이고, 개정 내용을 빼면 문제가 성립하지 않는다"
+    },
+    "generalHint": "이 킥이 아무도 건드리지 않고 곧장 골이 되면 '올림픽 골'이라 부른다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://www.nst.com.my/amp/sports/football/2025/03/1182378/goalkeeper-time-wasting-be-punished-corner-rule-change"
+    ],
+    "facts": [
+     {
+      "claim": "2025년 3월 개정 — 8초 넘기면 코너킥",
+      "where": "q",
+      "url": "https://www.nst.com.my/amp/sports/football/2025/03/1182378/goalkeeper-time-wasting-be-punished-corner-rule-change",
+      "note": "Goalkeepers who hold on to the ball beyond eight seconds will be punished by conceding a corner from next season ... the referee will award a corner kick to the opposing team"
+     },
+     {
+      "claim": "전에는 6초 넘기면 간접 프리킥, 거의 불리지 않음",
+      "where": "q",
+      "url": "https://www.nst.com.my/amp/sports/football/2025/03/1182378/goalkeeper-time-wasting-be-punished-corner-rule-change",
+      "note": "sanctioned with an indirect free-kick if they hold on for more than six seconds ... rarely enforced(요약)"
+     },
+     {
+      "claim": "벨파스트 IFAB 연례 회의",
+      "where": "e",
+      "url": "https://www.nst.com.my/amp/sports/football/2025/03/1182378/goalkeeper-time-wasting-be-punished-corner-rule-change",
+      "note": "following IFAB's annual meeting in Belfast"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Corner_kick"
+    ],
+    "hintNote": "A corner kick that scores without being touched by another player is called an Olimpico goal ... English speakers generally used the term Olympic goal.",
+    "easiestCue": "골키퍼 8초 규칙 위반 시 주어지는 것",
+    "targetWhy": "2025년 바뀐 새 규칙은 축구를 챙겨 보는 애호가가 안다 — 4. 알 가치는 규칙 상식 3",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "답이 흔한 낱말이라 찍기 쉽고, 규칙이 또 바뀔 수 있어 연도를 붙였다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

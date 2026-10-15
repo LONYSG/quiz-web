@@ -1,0 +1,209 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "comics/3",
+  "midKey": "comics",
+  "subName": "한국 만화·웹툰",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "comics/3#g005-M2-14",
+   "seed": {
+    "subject": "열혈강호",
+    "aspect": "팬 세부",
+    "ref": "M2-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 만화의 주인공은 사파의 지존 천마신군의 여섯째 제자로, 스승에게서 무림 8대 기보의 으뜸이라는 '화룡도'를 물려받습니다. 할아버지 검황을 찾으려고 남장을 하고 무림을 떠도는 담화린과 함께 길을 나서는 이 한국 무협 만화는 무엇일까요?",
+    "answer": "열혈강호",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1994년 대원씨아이의 청소년 만화 잡지 '영챔프' 창간호부터 연재를 시작했고, 2002년 오늘의 우리만화상을 받았습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "천마신군의 제자, '화룡도', 남장한 담화린",
+     "difWhy": "'화룡도·담화린' — 만화 관심층",
+     "wor": 3,
+     "worWhy": "대중적 만화 제목 맞히기",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'영챔프' 창간호부터 20년 넘은 무협 만화",
+     "difWhy": "'영챔프 장수 무협' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 만화 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1994년 대원씨아이의 청소년 만화 잡지 '영챔프' 창간호부터 연재를 시작해 20년 넘게 이어진 무협 만화입니다. 당시 숭실대 전자공학과 4학년이던 전극진이 글을, 20대의 양재현이 그림을 맡았습니다. 이 만화는 무엇일까요?",
+     "beforeExplanation": "주인공 한비광은 사파의 지존 천마신군의 여섯째 제자입니다.",
+     "removedCue": "'영챔프' 창간호부터 20년 넘게 이어진 무협 만화(+글·그림 작가 소개)",
+     "addedCue": "천마신군의 여섯째 제자·화룡도·남장한 담화린",
+     "why": "연재 잡지·장수 기록·작가는 관심층의 첫 줄 사실이라 해설로 옮기고, 작품 속 설정 세부로 바꿈 — 팬 세부로 층 바꿈"
+    },
+    "generalHint": "글은 전극진, 그림은 양재현이 맡은 작품이다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "웹툰·만화",
+    "work": "열혈강호",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/열혈강호"
+    ],
+    "facts": [
+     {
+      "claim": "1994년 영챔프 창간호부터 연재",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/열혈강호",
+      "note": "1994년 대원씨아이의 청소년 만화잡지 영챔프 창간호부터 첫 연재를 하였다."
+     },
+     {
+      "claim": "한비광은 천마신군의 여섯째 제자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/열혈강호",
+      "note": "사파의 지존 천마신군의 여섯째 제자."
+     },
+     {
+      "claim": "주인공은 천마신군에게서 화룡도를 물려받음, 화룡도는 무림 8대 기보의 으뜸",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/열혈강호",
+      "note": "한비광 — 사파의 지존 천마신군의 여섯째 제자 … 스승에게 화룡도를 물려받는다. 화룡도는 무림 8대 기보의 으뜸으로 꼽힌다"
+     },
+     {
+      "claim": "담화린은 검황의 손녀, 할아버지를 찾으려 남장하고 무림을 떠돎",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/열혈강호",
+      "note": "담화린 — 검황의 손녀. 할아버지를 찾으려고 남장을 하고 무림을 떠돌며, 복마화령검을 지니고 있다"
+     },
+     {
+      "claim": "2002년 오늘의 우리만화상 수상",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/열혈강호",
+      "note": "2002년 문화체육관광부의 오늘의 우리만화상을 받았다"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/열혈강호"
+    ],
+    "hintNote": "작화: 양재현 / 스토리 작가: 전극진",
+    "easiestCue": "천마신군의 여섯째 제자가 화룡도를 물려받는 무협 만화",
+    "targetWhy": "사부·보검·여주인공 설정은 그 만화를 읽은 애호가 수준 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1994 영챔프 무협' 만으로 관심층이 풀 수 있음",
+    "pairCheck": null,
+    "dbCheck": "열혈강호 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "comics/3#g005-M2-15",
+   "seed": {
+    "subject": "나 혼자만 레벨업",
+    "aspect": "팬 세부",
+    "ref": "M2-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주인공의 개미형 그림자 병사 '베르'는 소설 『개미』의 작가 베르나르 베르베르의 이름에서 따왔고, 기사형 그림자 병사 '이그리트'는 머리에 붉은 깃을 달고 있습니다. 2016년부터 2018년까지 카카오페이지에 연재된 웹소설이 원작인 이 작품은 무엇일까요?",
+    "answer": "나 혼자만 레벨업",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "주인공 성진우는 E급 최약체 헌터였다가 레벨 업이 가능한 유일무이한 능력을 얻어 다시 각성합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "2016~2018 카카오페이지 웹소설 원작",
+     "difWhy": "'카카오페이지 웹소설 원작' — 웹툰 관심층",
+     "wor": 3,
+     "worWhy": "유명 작품 제목 맞히기",
+     "acc": 4,
+     "accWhy": "만화·웹툰 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "추공 원작, 장성락 그림 웹툰",
+     "difWhy": "추공·장성락 — 웹툰 관심층",
+     "wor": 3,
+     "worWhy": "인기 작품 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "작가 추공이 2016년부터 2018년까지 카카오페이지에 연재한 현대 판타지 웹소설이 원작입니다. 이어 2018년부터 2021년까지 장성락(REDICE STUDIO)의 그림으로 웹툰이 연재되었습니다. 이 작품은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "원작자 추공 · 작화 장성락(REDICE STUDIO)",
+     "addedCue": "그림자 병사 베르(베르베르에서 딴 이름) · 이그리트",
+     "why": "작가 이름을 빼고 작품 속 세부 둘을 엮음"
+    },
+    "generalHint": "웹툰 그림은 장성락이 맡았고, 2024년 A-1 Pictures가 TV 애니메이션으로 만들었다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "웹툰·만화",
+    "work": "나 혼자만 레벨업",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/나_혼자만_레벨업"
+    ],
+    "facts": [
+     {
+      "claim": "웹소설 2016.7.25~2018.3.13 카카오페이지, 웹툰 2018.3.4~2021.12.29",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/나_혼자만_레벨업",
+      "note": "The novel ran on KakaoPage from July 25, 2016, to March 13, 2018. The webtoon followed ... from March 4, 2018, to December 29, 2021."
+     },
+     {
+      "claim": "성진우 E급 최약체에서 재각성",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/나_혼자만_레벨업",
+      "note": "원래는 E급의 최약체 헌터였으나 레벨 업이 가능한 유일무이한 능력을 얻고 재각성을 하여"
+     },
+     {
+      "claim": "베르는 개미형 그림자 병사, 이름은 베르나르 베르베르에서",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/나_혼자만_레벨업",
+      "note": "성진우의 개미형 그림자 병사이다. 이름은 소설 《개미》의 작가, 베르나르 베르베르의 이름에서 따온 것이다."
+     },
+     {
+      "claim": "이그리트는 기사형 그림자 병사, 붉은 깃",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/나_혼자만_레벨업",
+      "note": "성진우의 기사형 그림자 병사, 머리에 붉은 깃을 달고 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Solo_Leveling"
+    ],
+    "hintNote": "illustrated by Jang Sung-rak (aka Dubu) ... It is produced by A-1 Pictures ... airing from January 7 to March 31, 2024.",
+    "easiestCue": "그림자 병사 '베르'·'이그리트'가 나오는 작품",
+    "targetWhy": "캐릭터 이름 유래는 웹툰 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'추공' 하나로 웹소설 관심층은 바로 안다",
+    "pairCheck": null,
+    "dbCheck": "나 혼자만 레벨업 new",
+    "warn": [
+     "단정어 유일"
+    ]
+   }
+  }
+ ]
+}

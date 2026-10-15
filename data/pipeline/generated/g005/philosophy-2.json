@@ -1,0 +1,99 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "philosophy/2",
+  "midKey": "philosophy",
+  "subName": "근대 철학",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/2#g005-H2-19",
+   "seed": {
+    "subject": "홉스",
+    "aspect": null,
+    "ref": "H2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "스페인 무적함대가 쳐들어온다는 소식에 놀란 어머니가 그를 달을 채우지 못하고 낳았다고 하며, 그는 \"어머니는 나와 공포, 쌍둥이를 낳았다\"고 농담했습니다. 원을 정사각형으로 바꾸는 잘못된 증명을 두고 수학자 존 월리스와 25년 가까이 다툰 이 영국 철학자는 누구일까요?",
+    "answer": "홉스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그는 1647년 파리에서 망명 중이던 웨일스 공, 훗날의 찰스 2세에게 수학을 가르쳤습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "무적함대 소식에 '어머니는 나와 공포, 쌍둥이를 낳았다'",
+     "difWhy": "홉스 출생 일화 — 대학 교양",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 철학자 일화",
+     "acc": 4,
+     "accWhy": "철학·사상 — 고교 윤리 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "무적함대 소식에 '어머니는 나와 공포, 쌍둥이를 낳았다'",
+     "difWhy": "홉스 출생 일화 — 대학 교양",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 철학자 일화"
+    },
+    "rewrite": null,
+    "generalHint": "그는 젊어서 잠깐 프랜시스 베이컨의 비서로 일하며 그의 '수필' 몇 편을 라틴어로 옮겼다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Thomas_Hobbes"
+    ],
+    "facts": [
+     {
+      "claim": "무적함대 소식에 어머니가 조산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Hobbes",
+      "note": "Hobbes was born prematurely after his mother heard of the coming Spanish Armada invasion (요지)"
+     },
+     {
+      "claim": "'어머니는 나와 공포, 쌍둥이를 낳았다'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Hobbes",
+      "note": "my mother gave birth to twins: myself and fear."
+     },
+     {
+      "claim": "원의 정사각형화 잘못된 증명으로 월리스와 25년 가까이 다툼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Hobbes",
+      "note": "De Corpore (1655) included an erroneous proof of the squaring of the circle. Hobbes and Wallis then feuded for nearly 25 years (요지)"
+     },
+     {
+      "claim": "1647년 파리에서 웨일스 공 찰스의 수학 교사",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Hobbes",
+      "note": "In 1647, Hobbes became a mathematical instructor to the young Charles, Prince of Wales (after Charles arrived in Paris from Jersey)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Thomas_Hobbes"
+    ],
+    "hintNote": "briefly worked as Francis Bacon's amanuensis, translating several of his Essays into Latin",
+    "easiestCue": "'나와 공포, 쌍둥이' 농담",
+    "targetWhy": "교과서 단서(리바이어던 · 만인의 만인에 대한 투쟁 · 사회계약)를 모두 빼고 생애 일화만 — 대학 교양 철학사(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서 이름, 단서는 '공포'와 엮어 추리하는 몰랐던 이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (사회계약설 #1835 는 다른 답·다른 지식)",
+    "warn": []
+   }
+  }
+ ]
+}

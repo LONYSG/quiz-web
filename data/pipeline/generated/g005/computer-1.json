@@ -1,0 +1,102 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "computer/1",
+  "midKey": "computer",
+  "subName": "하드웨어",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "computer/1#g005-C2-20",
+   "seed": {
+    "subject": "플래시 메모리",
+    "aspect": null,
+    "ref": "C2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "도시바의 마스오카 후지오는 1980년 이 메모리를 개발했지만, 2002년 도시바 홍보부는 미국 잡지 포브스에 이것을 발명한 것은 인텔이라고 말하기도 했습니다. 마스오카는 2006년 발명 보상을 두고 낸 소송을 도시바와 8,700만 엔에 합의했습니다. 이 메모리는 무엇일까요?",
+    "answer": "플래시 메모리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이름은 동료 아리이즈미 쇼지가 붙였는데, 내용을 지우는 과정이 카메라 플래시를 떠올리게 했기 때문이라고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "도시바 마스오카 후지오가 1980년 개발한 메모리",
+     "difWhy": "도시바 마스오카 발명 — 전자 애호가",
+     "wor": 4,
+     "worWhy": "IT 기본 어휘",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "도시바 마스오카 후지오가 1980년 개발한 메모리",
+     "difWhy": "도시바 마스오카 발명 — 전자 애호가",
+     "wor": 4,
+     "worWhy": "IT 기본 어휘"
+    },
+    "rewrite": null,
+    "generalHint": "1988년 인텔이 이 메모리 가운데 NOR형 칩을 처음 상용 제품으로 내놓았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Flash_memory",
+     "https://en.wikipedia.org/wiki/Fujio_Masuoka"
+    ],
+    "facts": [
+     {
+      "claim": "마스오카가 1980년 도시바에서 개발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flash_memory",
+      "note": "Masuoka developed flash memory at Toshiba in 1980 (요지)"
+     },
+     {
+      "claim": "2002년 도시바 홍보부가 포브스에 인텔이 발명했다고 말함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fujio_Masuoka",
+      "note": "In 2002, Toshiba's press department told Forbes that it was Intel that invented flash memory."
+     },
+     {
+      "claim": "2006년 도시바와 8,700만 엔 합의",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fujio_Masuoka",
+      "note": "In 2006, he settled a lawsuit with Toshiba for ¥87m (about US$758,000)."
+     },
+     {
+      "claim": "동료 아리이즈미 쇼지가 카메라 플래시를 떠올려 이름 붙임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Flash_memory",
+      "note": "According to Toshiba, colleague Shōji Ariizumi named it flash because the erasure process of the memory contents reminded him of the flash of a camera."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Flash_memory"
+    ],
+    "hintNote": "Intel Corporation introduced the first commercial NOR type flash chip in 1988.",
+    "easiestCue": "도시바 마스오카 후지오가 1980년 개발한 메모리",
+    "targetWhy": "대표 단서(USB·SSD·전원 꺼져도 남음·NAND)는 뺐음 — 마스오카·도시바 소송은 IT 애호가 세부 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "플래시 메모리는 누구나 들어 봤고, 발명자와 회사의 다툼은 몰랐던 사실",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음 (C2-07 해설에 '플래시 메모리' 낱말 — 다른 정답)",
+    "warn": [
+     "정답조각 메모리"
+    ]
+   }
+  }
+ ]
+}

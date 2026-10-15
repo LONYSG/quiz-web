@@ -1,0 +1,374 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "ball-sports/1",
+  "midKey": "ball-sports",
+  "subName": "농구",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "ball-sports/1#g005-S2-01",
+   "seed": {
+    "subject": "코비 브라이언트",
+    "aspect": null,
+    "ref": "S2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 농구 선수는 여섯 살 때 NBA에서 은퇴한 아버지를 따라 이탈리아 리에티로 건너가 이탈리아어를 유창하게 익혔고, 그곳에서 축구도 하며 AC 밀란을 가장 좋아했습니다. 미들 네임 '빈(Bean)'은 아버지의 별명 '젤리빈'에서 왔는데, 이 선수는 누구일까요?",
+    "answer": "코비 브라이언트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이름은 아버지가 식당 메뉴판에서 본 일본산 고베 소고기에서 따왔다고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "미들 네임 '빈'이 아버지 별명 '젤리빈'에서 온 농구 선수",
+     "difWhy": "'미들 네임 빈' — NBA 애호가",
+     "wor": 3,
+     "worWhy": "누구나 아는 선수 이름 맞히기",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이름을 일본산 소고기에서 따온 농구 선수",
+     "difWhy": "'고베 소고기 이름' — 농구 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 농구 선수는 여섯 살 때 NBA에서 은퇴한 아버지를 따라 이탈리아 리에티로 건너가 자라며 이탈리아어를 유창하게 익혔습니다. 그의 이름은 아버지가 식당 메뉴판에서 본 일본산 소고기에서 따왔다고 합니다. 이 선수는 누구일까요?",
+     "beforeExplanation": "'블랙 맘바'라는 별명은 그가 득점을 쏟아 내던 2000년대 중반에 스스로 붙인 것입니다.",
+     "removedCue": "이름을 일본산 소고기(고베)에서 따옴",
+     "addedCue": "AC 밀란 팬 · 미들 네임 '빈'(아버지 별명 젤리빈)",
+     "why": "널리 알려진 이름 유래를 해설로 옮기고 이탈리아 성장기 세부를 엮음"
+    },
+    "generalHint": "그는 은퇴 뒤 자신이 쓴 글을 옮긴 단편 애니메이션으로 2018년 아카데미상을 받았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Kobe_Bryant"
+    ],
+    "facts": [
+     {
+      "claim": "여섯 살 때 아버지가 NBA에서 은퇴하고 가족을 이탈리아 리에티로 옮김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kobe_Bryant",
+      "note": "When Bryant was six years old, his father retired from the NBA and moved his family to Rieti, Italy."
+     },
+     {
+      "claim": "이탈리아어를 유창하게 익힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kobe_Bryant",
+      "note": "He became accustomed to his new lifestyle and learned to speak fluent Italian."
+     },
+     {
+      "claim": "이름은 아버지가 식당 메뉴에서 본 일본 고베 소고기에서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kobe_Bryant",
+      "note": "His father named him after the Kobe beef from Japan, which he saw on a restaurant menu"
+     },
+     {
+      "claim": "이탈리아에서 축구를 했고 AC 밀란이 가장 좋아하는 팀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kobe_Bryant",
+      "note": "He also played soccer while living in Italy, and A.C. Milan was his favorite team."
+     },
+     {
+      "claim": "미들 네임 Bean 은 아버지의 별명 Jellybean 에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kobe_Bryant",
+      "note": "(요지) his middle name Bean came from his father's nickname \"Jellybean\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dear_Basketball"
+    ],
+    "hintNote": "It won the Academy Award for Best Animated Short Film ... the first Oscar for any professional athlete",
+    "easiestCue": "이탈리아 리에티에서 자란 NBA 선수",
+    "targetWhy": "리에티 성장 · AC 밀란 · 젤리빈은 농구 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "고베규 유래는 한국 농구 팬 사이에 꽤 퍼진 이야기라 3 으로 볼 수도 있다",
+    "pairCheck": null,
+    "dbCheck": "코비 브라이언트 — new",
+    "warn": [
+     "정답조각 라이"
+    ]
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g005-S2-02",
+   "seed": {
+    "subject": "할렘 글로브트로터스",
+    "aspect": null,
+    "ref": "S2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1926년 시카고 사우스사이드에서 시작된 이 농구 팀은 이름에 다른 도시의 동네 이름을 달았습니다. 1948년에는 미니애폴리스 레이커스를 꺾어 화제가 되었는데, 이 팀은 무엇일까요?",
+    "answer": "할렘 글로브트로터스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "WebSearch — 국내 기사(뉴스와이어 등)가 '할렘 글로브트로터스' 로 표기",
+    "explanation": "팀 이름의 동네는 당시 미국 흑인 문화의 중심지로 여겨져 에이브 세이퍼스타인이 골랐습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "다른 도시 동네 이름을 단 시카고 농구 팀",
+     "difWhy": "'묘기 농구 팀' — 농구 관심층",
+     "wor": 3,
+     "worWhy": "유명 팀 이름 이야기",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'Sweet Georgia Brown'을 상징 곡으로 쓰는 농구 팀",
+     "difWhy": "'Sweet Georgia Brown 농구 팀' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 팀 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1926년 시카고 사우스사이드에서 시작된 이 농구 팀은 이름에 다른 도시의 동네 이름을 달았습니다. 브라더 본스가 휘파람으로 부른 'Sweet Georgia Brown'을 상징 곡으로 쓰고, 1948년 미니애폴리스 레이커스를 꺾어 화제가 된 이 팀은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "상징 곡 'Sweet Georgia Brown'",
+     "addedCue": "(빼기만) 시카고 출발 · 다른 도시 동네 이름 · 1948 레이커스 승리",
+     "why": "상징 곡이 관심층 충분 단서라 빼고 기원·명경기 세부로 좁힘"
+    },
+    "generalHint": "'워싱턴 제너럴스'는 이 팀의 단골 상대로, 2015년까지 1만 6천 번 넘게 졌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Harlem_Globetrotters"
+    ],
+    "facts": [
+     {
+      "claim": "1926년 시카고 사우스사이드에서 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Harlem_Globetrotters",
+      "note": "The Harlem Globetrotters originated in 1926 at the Giles American Legion Post #87, on the South Side of Chicago"
+     },
+     {
+      "claim": "1948년 미니애폴리스 레이커스를 꺾어 화제",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Harlem_Globetrotters",
+      "note": "the Globetrotters made headlines when they beat one of the best white basketball teams in the country, the Minneapolis Lakers (the 1948 Globetrotters–Lakers game)"
+     },
+     {
+      "claim": "세이퍼스타인이 흑인 문화 중심지라 할렘이라는 이름을 고름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Harlem_Globetrotters",
+      "note": "Saperstein selected the name Harlem because it was then considered the center of Black American culture"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Washington_Generals"
+    ],
+    "hintNote": "By 2015, the Generals had lost to the Globetrotters more than 16,000 times in their combined history.",
+    "easiestCue": "시카고에서 시작했는데 다른 도시 동네 이름을 단 농구 팀",
+    "targetWhy": "팀이 실은 시카고 출발이라는 것과 1948 레이커스전은 농구 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "팀 이름은 들어 봤을 법, 시카고 기원은 뜻밖",
+    "pairCheck": null,
+    "dbCheck": "할렘 글로브트로터스 — new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g005-S2-03",
+   "seed": {
+    "subject": "카림 압둘자바",
+    "aspect": null,
+    "ref": "S2-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "본명이 루 앨신더였던 이 농구 선수는, 코미디 영화 '에어플레인!'에서 자꾸 농구 선수로 오해받는 조종사 로저 머독을 연기했습니다. 이 선수는 누구일까요?",
+    "answer": "카림 압둘자바",
+    "acceptedAnswers": [
+     "압둘자바"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia — '카림 압둘자바' 는 '카림 압둘 자바' 문서로 넘겨줌(띄어쓰기만 다름). 한국 중계·기사는 성 '압둘자바' 로 흔히 부름",
+    "explanation": "대학 시절 그의 독주를 막으려고 대학 농구에서 덩크가 금지되자, 비판하던 이들은 이를 '앨신더 규칙'이라 불렀습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "본명이 루 앨신더였던 농구 선수",
+     "difWhy": "'본명 루 앨신더' — 농구 애호가",
+     "wor": 3,
+     "worWhy": "전설 선수 이름 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이소룡 '사망유희'에 나온 농구 선수",
+     "difWhy": "'사망유희 농구 선수' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "전설 선수 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "본명이 루 앨신더였던 이 농구 선수는 이소룡에게 절권도를 배웠고, 이소룡의 영화 '사망유희'에도 나왔습니다. 코미디 영화 '에어플레인!'에서는 자꾸 농구 선수로 오해받는 조종사 로저 머독을 연기한 이 선수는 누구일까요?",
+     "beforeExplanation": null,
+     "removedCue": "이소룡에게 절권도를 배우고 '사망유희'에 나옴",
+     "addedCue": "(새 단서 없음) 본명 루 앨신더 · '에어플레인!' 로저 머독 역만 남김",
+     "why": "'사망유희' 출연은 영화·무술 관심층에게 널리 알려진 대표 일화라 빼고, 본명과 코미디 영화 배역만으로 묻게 함"
+    },
+    "generalHint": "이소룡에게 절권도를 배웠고 이소룡의 영화 '사망유희'에도 출연했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar"
+    ],
+    "facts": [
+     {
+      "claim": "본명 루 앨신더",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar",
+      "note": "Abdul-Jabbar was known as Lew Alcindor when he played at Power Memorial (born Ferdinand Lewis Alcindor Jr.)"
+     },
+     {
+      "claim": "'에어플레인!'에서 압둘자바로 자꾸 오해받는 조종사 로저 머독 역",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar",
+      "note": "appeared in Airplane! as Roger Murdock, a pilot who is repeatedly mistaken for Abdul-Jabbar"
+     },
+     {
+      "claim": "그의 독주를 막으려 대학 농구에서 덩크 금지 — '앨신더 규칙'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar",
+      "note": "After the season, the dunk was banned in college basketball in an attempt to curtail his dominance; Critics called the rule the \"Alcindor Rule.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar"
+    ],
+    "hintNote": "trained in Jeet Kune Do under Bruce Lee and appeared in his film Game of Death (1972).",
+    "easiestCue": "본명이 루 앨신더인 농구 선수",
+    "targetWhy": "개명 전 본명·영화 배역은 NBA 애호가 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "NBA 레전드 이름, 이소룡 연결이 뜻밖",
+    "pairCheck": null,
+    "dbCheck": "카림 압둘자바 · 압둘자바 — new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g005-S2-04",
+   "seed": {
+    "subject": "제임스 네이스미스",
+    "aspect": null,
+    "ref": "S2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "캐나다 온타리오의 앨먼트에서 태어난 이 사람은 1898년 캔자스 대학의 첫 농구 감독이 되었지만, 이 대학 역대 감독 가운데 유일하게 진 경기가 이긴 경기보다 많았습니다. 1936년 베를린 올림픽에서는 북미의 세 팀에 메달을 건넨 이 사람은 누구일까요?",
+    "answer": "제임스 네이스미스",
+    "acceptedAnswers": [
+     "네이스미스"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '제임스 네이스미스' — 성만 부르는 일이 잦아 '네이스미스' 를 넣음",
+    "explanation": "그는 농구를 만든 지 7년 뒤인 1898년 덴버에서 의학 학위도 받았습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1898년 캔자스 대학의 첫 농구 감독",
+     "difWhy": "'캔자스 첫 농구 감독' — 농구 애호가",
+     "wor": 3,
+     "worWhy": "농구 창시자 일화",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1898년 캔자스 대학의 첫 농구 감독",
+     "difWhy": "'캔자스 첫 농구 감독' — 농구 애호가",
+     "wor": 3,
+     "worWhy": "농구 창시자 일화"
+    },
+    "rewrite": null,
+    "generalHint": "그가 쓴 농구 규칙 원본은 2010년 소더비 경매에서 433만 8,500달러에 팔린 뒤 캔자스 대학에 기증되었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/James_Naismith"
+    ],
+    "facts": [
+     {
+      "claim": "캐나다 앨먼트(지금의 온타리오 미시시피밀스) 출생",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Naismith",
+      "note": "Naismith was born on November 6, 1861, in Almonte, Canada West, Province of Canada (now part of Mississippi Mills, Ontario)"
+     },
+     {
+      "claim": "1898년 캔자스 대학 첫 농구 감독",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Naismith",
+      "note": "In 1898, Naismith became the first basketball coach of University of Kansas."
+     },
+     {
+      "claim": "캔자스 역사상 유일한 패배 기록 감독",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Naismith",
+      "note": "He compiled a record of 55–60 and is the only losing coach in Kansas history."
+     },
+     {
+      "claim": "1936 베를린에서 북미 세 팀에 메달을 건넴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Naismith",
+      "note": "There (1936 Berlin), Naismith handed out the medals to three North American teams."
+     },
+     {
+      "claim": "농구 발명 7년 뒤 1898년 덴버에서 의학 학위",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/James_Naismith",
+      "note": "Seven years after inventing basketball, Naismith received his medical degree in Denver in 1898."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/James_Naismith"
+    ],
+    "hintNote": "purchased the document for a record US$4,338,500 ... sold at Sotheby's in New York in December 2010 and then given to the University of Kansas.",
+    "easiestCue": "1936 베를린 올림픽에서 농구 메달을 건넨 사람(+ 캔자스 대학 첫 농구 감독)",
+    "targetWhy": "창시자라는 첫 줄 사실·복숭아 바구니를 빼고 감독 경력·올림픽 일화만 — 농구사 애호가 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "농구를 만든 사람이 감독으로는 졌다는 반전, 대상은 유명",
+    "pairCheck": null,
+    "dbCheck": "제임스 네이스미스 — new (활성 3432 · 4265 는 그의 이름을 질문에 쓰지만 정답은 복숭아 바구니 · 축구공 — 지식 다름)",
+    "warn": [
+     "단정어 유일"
+    ]
+   }
+  }
+ ]
+}

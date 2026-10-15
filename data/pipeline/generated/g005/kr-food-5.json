@@ -1,0 +1,357 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-food/5",
+  "midKey": "kr-food",
+  "subName": "떡·한과·전통 음료",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/5#g005-K3-07",
+   "seed": {
+    "subject": "엿",
+    "aspect": null,
+    "ref": "K3-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1964년 12월 서울 지역 중학교 입시 자연 과목 18번의 정답을 두고 '디아스타제'만 맞느냐, '무즙'도 맞느냐는 논란이 일었습니다. 무즙을 고른 학생의 학부모들은 무즙으로 직접 고아 만든 이것을 교육청에 들고 가 '먹어 보라'며 항의했습니다. 이것은 무엇일까요?",
+    "answer": "엿",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "교육 당국은 문제를 무효로 한다고 발표했다가, 디아스타제를 고른 쪽 학부모들이 반발하자 다시 디아스타제만 정답으로 인정했다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "무즙 파동 학부모가 들고 간 '먹어 보라'",
+     "difWhy": "'무즙 파동' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "사회사 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "무즙 파동 학부모가 들고 간 '먹어 보라'",
+     "difWhy": "'무즙 파동' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "사회사 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 정답이 유일하지 않다 — '무즙으로 고아 만든 것'이 곧 정체(엿)이고 무즙 파동 자체가 문제의 소재라 다른 세부로 바꿀 수 없다"
+    },
+    "generalHint": "한국에서는 흔히 '시험에 붙으라'는 뜻으로 수험생에게 이것을 선물한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/무즙_파동"
+    ],
+    "facts": [
+     {
+      "claim": "1964년 12월 서울 전기 중학교 입시 자연 18번, 디아스타제 정답 발표, 무즙도 정답이라는 반발",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무즙_파동",
+      "note": "(요지) 1964년 12월 7일 서울 지역 전기 중학교 입시 자연 과목 18번 … 공동출제위원회는 보기 1번 '디아스타제'를 정답으로 발표했으나 2번 '무즙'을 고른 학생들의 학부모들은 무즙도 정답이라고 반발했다."
+     },
+     {
+      "claim": "무즙으로 만든 엿을 교육청에 가져가 '이 엿을 먹어보라' 항의",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무즙_파동",
+      "note": "(요지) \"이 엿을 먹어보라\"는 구호와 함께 무즙으로 만든 엿을 교육청에 가져가 항의했다. 일부 학부모는 실제로 무즙으로 엿을 고아 보이기도 했다."
+     },
+     {
+      "claim": "무효화 발표 뒤 다시 디아스타제만 정답",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/무즙_파동",
+      "note": "(요지) 12월 9일에는 문제를 무효화한다고 발표했다가, 1번을 고른 학부모들이 반발하자 다시 디아스타제만 정답으로 인정한다고 바꾸었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": "웹 문서 문장 확인 못 함 — 널리 알려진 풍습(ko.wikipedia 엿 문서에는 해당 문장 없음)",
+    "easiestCue": "무즙으로 고아 만들어 '먹어 보라'고 들고 간 것",
+    "targetWhy": "무즙 파동은 현대사 애호가 세부 — '엿기름 대신 넣을 것' 같은 문제 원문(정답 조각)은 빼고, '고아 만든'·'먹어 보라'로 한 걸음 추리하게 했다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'먹어 보라' 항의에서 관용구 '엿 먹어라' 를 떠올리면 추리로 풀린다 — 3~4",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/5#g005-K3-08",
+   "seed": {
+    "subject": "오메기떡",
+    "aspect": null,
+    "ref": "K3-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "차조를 불려 간 가루로 반죽해 작은 도넛처럼 가운데가 움푹 들어간 타원형으로 빚어 익히고, 팥고물을 묻혀 먹던 떡입니다. 이 떡이 난 고장 사람들은 보통 떡을 간식보다 굿 행사 때 신에게 바치는 제물로 주로 썼다고 합니다. 이 떡은 무엇일까요?",
+    "answer": "오메기떡",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "본래 같은 이름의 전통술을 빚는 과정에서 생긴 부산물이었으며, 차조가 더는 대량으로 나지 않아 오늘날 가게에서 파는 것에는 대개 차조가 전혀 들어가지 않는다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 차조 가루 떡 + 굿 제물로 쓰던 고장",
+     "difWhy": "'차조 팥고물 떡' — 음식 관심층",
+     "wor": 3,
+     "worWhy": "향토 음식 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "제주 차조가 주재료인 떡",
+     "difWhy": "제주 명물 떡 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "한때 제주도에서 대량으로 나던 차조가 주재료인 떡입니다. 본래는 같은 이름이 붙은 제주 전통술을 빚는 과정에서 생겨난 부산물이었다고 합니다. 이 떡은 무엇일까요?",
+     "beforeExplanation": "익힌 반죽의 나머지를 다시 반죽해 효모와 섞어 발효시키면 술이 되며, 오늘날 상품으로 파는 것은 옛 모양과 이름을 빌린 새 브랜딩이라는 설명이 있다.",
+     "removedCue": "제주 · 같은 이름의 제주 전통술 부산물",
+     "addedCue": "도넛처럼 가운데가 움푹한 타원형 · 팥고물 · 굿 제물",
+     "why": "'제주 차조 떡'을 빼고 전통 모양·쓰임 세부를 엮음(술 부산물은 해설로)"
+    },
+    "generalHint": "이 떡이 난 고장은 우리나라에서 가장 큰 섬으로, 그 섬 특유의 떡으로 꼽힌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/오메기떡"
+    ],
+    "facts": [
+     {
+      "claim": "주재료는 한때 제주에서 대량 생산된 차조",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오메기떡",
+      "note": "전통적인 오메기떡과 오메기술의 주 재료는 한때 제주도에서 대량으로 생산되었던 차조이다."
+     },
+     {
+      "claim": "오메기술을 만드는 과정의 부산물",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/오메기떡",
+      "note": "전통적인 오메기떡은 오메기술을 만드는 과정에서 생겨난 부산물이다."
+     },
+     {
+      "claim": "반죽을 작은 도넛처럼 가운데가 움푹 들어간 타원형으로 빚어 익힘",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오메기떡",
+      "note": "그런 다음 반죽을 작은 도넛처럼 가운데가 움푹 들어간 작은 타원형 모양으로 말아서 완전히 익히도록 한다."
+     },
+     {
+      "claim": "익힌 차조 반죽을 팥고물에 말아 먹은 것이 원형",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오메기떡",
+      "note": "이렇게 익힌 차조 반죽을 아이들에게 간식으로 주기 전에 부모나 조부모님이 이 반죽을 팥고물(주로 토핑으로 사용하는 곡물)에 말아서 아이들이 혀를 데는 것을 방지했으며, 이것이 오메기떡의 원형이 되었다."
+     },
+     {
+      "claim": "제주인들은 떡을 굿 행사 때 신에게 바치는 제물로 주로 사용",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오메기떡",
+      "note": "또한 제주인들은 보통 떡을 안주용으로 사용하는 대신 굿 행사 때 신에게 바치는 제물로 주로 사용했다."
+     },
+     {
+      "claim": "오늘날 가게 오메기떡 대부분에 차조가 없음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/오메기떡",
+      "note": "차조가 더 이상 대량으로 생산되지 않기 때문에 오늘날 가게에서 파는 대부분의 오메기떡에는 차조가 전혀 들어가지 않는다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/오메기떡"
+    ],
+    "hintNote": "오메기떡은 대한민국에서 가장 큰 섬인 제주특별자치도 특유의 떡이다.",
+    "easiestCue": "차조 반죽을 도넛 모양으로 빚어 팥고물을 묻힌 떡",
+    "targetWhy": "전통 오메기떡의 모양·쓰임은 향토 음식 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'제주 떡' 하나로 찍는 사람이 있어 3 쪽 위험",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/5#g005-K3-09",
+   "seed": {
+    "subject": "숭늉",
+    "aspect": null,
+    "ref": "K3-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려 때 송나라 사람이 우리말을 적은 『계림유사』에는 '익은 물'을 '이근몰'이라 한다는 기록이 있어, 이 음료가 고려 초나 중엽에 이미 있었으리라 짐작합니다. 이 음료는 무엇일까요?",
+    "answer": "숭늉",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "본래 '숙냉(熟冷)'이라는 한자어가 변한 말로, 밥솥 바닥에 눌어붙은 누룽지에 물을 붓고 한소끔 끓여 만든다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 2,
+     "easiestCue": "'익은 물'이라 불린 음료",
+     "difWhy": "'익은 물' — 방송·생활",
+     "wor": 3,
+     "worWhy": "우리말 어원 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'익은 물' + 고유어처럼 보이지만 한자어가 변한 음료",
+     "difWhy": "숙냉→숭늉 어원 — 고교 국어",
+     "wor": 4,
+     "worWhy": "우리말 어원 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "고려 때 송나라 사람이 우리말을 적은 『계림유사』에는 '익은 물'을 '이근몰'이라 한다는 기록이 있어, 이 음료가 고려 초나 중엽에 이미 있었으리라 짐작합니다. 고유어처럼 보이지만 실은 한자어가 변한 말인 이 음료는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "고유어처럼 보이지만 한자어가 변한 음료",
+     "addedCue": "(뺌만) 『계림유사』 '이근몰' 기록만 남김",
+     "why": "국어 교과의 어원 단서(숙냉→숭늉)를 질문에서 빼 해설에만 둠"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/숭늉"
+    ],
+    "facts": [
+     {
+      "claim": "계림유사에 숙수를 이근몰(익은 물)이라 함, 고려 초·중엽 존재 추측",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/숭늉",
+      "note": "《계림유사》에는 \"숙수를 이근몰(泥根沒 : 익은 물)이라 한다.\" … 이를 근거로 고려 초나 중엽에 이미 존재했을 것으로 추측된다. (요지)"
+     },
+     {
+      "claim": "고유어처럼 보이나 한자어 숙냉이 변한 말",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/숭늉",
+      "note": "고유어처럼 보이나 실은 '숙냉(熟冷)'이라는 한자어가 변한 말이다."
+     },
+     {
+      "claim": "누룽지에 물을 붓고 끓인 음료",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/숭늉",
+      "note": "밥솥 바닥에 눌어붙은 누룽지에 물을 붓고 한 소끔 끓여 만든 음료이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "『계림유사』의 '익은 물=이근몰' 기록",
+    "targetWhy": "계림유사의 개별 어휘 기록은 국어사 애호·대학 교양 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'익은 물' 에서 숭늉을 떠올리는 한 걸음 추리가 가능 — 좋은 어려움에 가깝다",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/5#g005-K3-10",
+   "seed": {
+    "subject": "정과",
+    "aspect": null,
+    "ref": "K3-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "전과·밀전이라고도 불리며, 인삼·생강·연근·도라지·모과처럼 과일이나 뿌리식물을 설탕 등에 졸여 만드는 한과의 한 갈래입니다. 이 한과를 통틀어 무엇이라 할까요?",
+    "answer": "정과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "당과의 일종으로, 계피 음료로 알려진 수정과도 이 무리의 이름 목록에 함께 오른다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "전과·밀전이라고도 불리며 설탕에 졸여 만드는 한과",
+     "difWhy": "한과 갈래 이름 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 한과",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "전과·밀전이라고도 불리며 설탕에 졸여 만드는 한과",
+     "difWhy": "한과 갈래 이름 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 한과"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "확인되는 깊은 세부가 없다 — 문서가 정의·다른 이름·종류 목록뿐이라 더 깊은 단서를 넣을 수 없다"
+    },
+    "generalHint": "홍삼·당근·동아·유자·죽순으로도 만든다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/정과"
+    ],
+    "facts": [
+     {
+      "claim": "정과는 전과·밀전이라고도 하며 과일·뿌리식물을 설탕 등에 졸인 과자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/정과",
+      "note": "정과(正果)는 전과(煎果), 밀전(蜜煎)이라고도 불리며 과일이나 뿌리식물을 설탕 등에 졸여 만드는 한국의 과자로, 당과의 일종이다."
+     },
+     {
+      "claim": "종류: 인삼정과·생강정과·연근정과·도라지정과·모과정과·수정과 등",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/정과",
+      "note": "인삼정과, 당근정과, 동아정과, 생강정과, 연근정과, 모과정과, 유자정과, 죽순정과, 홍삼정과, 도라지정과, 수정과 (종류 목록)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/정과"
+    ],
+    "hintNote": "인삼, 홍삼, 도라지, 당근, 동아, 생강, 연근, 모과, 유자, 죽순 정과",
+    "easiestCue": "인삼·생강 등을 설탕에 졸인 한과의 이름",
+    "targetWhy": "'인삼정과' 를 먹어 본 사람이 아니면 갈래 이름은 애호가 영역 — 수정과 연결(정답 조각)은 해설로 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "정의 문장 단서이나 그 정의 자체가 교과서 밖 — 4 로 읽힐 것으로 본다",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

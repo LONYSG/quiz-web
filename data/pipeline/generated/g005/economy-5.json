@@ -1,0 +1,110 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "economy/5",
+  "midKey": "economy",
+  "subName": "경제사",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "economy/5#g005-H1-18",
+   "seed": {
+    "subject": "블랙 먼데이",
+    "aspect": null,
+    "ref": "H1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이날 세계 증시는 일본을 뺀 아시아에서 먼저 무너진 뒤 유럽과 미국을 거쳐 마지막으로 일본까지 폭락했습니다. 이튿날 아침 홍콩 증권거래소는 영업일 나흘 동안 문을 닫겠다고 발표했는데, 이 폭락을 흔히 무엇이라 부를까요?",
+    "answer": "블랙 먼데이",
+    "acceptedAnswers": [
+     "검은 월요일"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "en.wikipedia 문서 'Black Monday (1987)' — 한국 언론은 '블랙 먼데이'와 번역어 '검은 월요일'을 함께 씀",
+    "explanation": "1987년 10월 19일의 일로, 미국 다우 지수는 하루 만에 22.6% 떨어졌고 거래소들은 뒤에 서킷 브레이커를 만들었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "세계 증시 연쇄 폭락, 홍콩 증권거래소 나흘 휴장",
+     "difWhy": "'세계 증시 연쇄 폭락의 날' — 관심 있는 사람(경제)",
+     "wor": 4,
+     "worWhy": "시사 상식 — 1987 증시 폭락",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "다우 지수 하루 22.6% 하락, 역대 최대 하루 하락률",
+     "difWhy": "'역대 최대 하루 폭락' — 방송·뉴스",
+     "wor": 4,
+     "worWhy": "경제 시사 상식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이날 세계 증시는 일본을 뺀 아시아에서 먼저 무너진 뒤 유럽과 미국을 거쳐 마지막으로 일본까지 폭락했고, 가장 크게 떨어진 홍콩은 45.8% 내렸습니다. 미국 다우 지수는 하루 만에 508포인트, 22.6% 떨어져 역대 가장 큰 하루 하락률을 기록했습니다. 이 폭락을 흔히 무엇이라 부를까요?",
+     "beforeExplanation": "1987년 10월 19일의 일로, 이 뒤 거래소들은 값이 크게 떨어질 때 거래를 잠시 멈추는 서킷 브레이커를 만들었습니다.",
+     "removedCue": "다우 지수 하루 22.6% 하락 · 역대 최대 하루 하락률",
+     "addedCue": "홍콩 증권거래소 나흘 휴장 (남은 단서: 아시아→유럽→미국→일본 순)",
+     "why": "뉴스 단골 기록(22.6%)을 해설로 옮기고 홍콩 휴장 세부를 엮음"
+    },
+    "generalHint": "1929년 대공황의 문을 연 10월 28일 뉴욕 증시 폭락에도 같은 이름이 붙었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Black_Monday_(1987)"
+    ],
+    "facts": [
+     {
+      "claim": "일본 외 아시아 → 유럽 → 미국 → 일본 순으로 폭락",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Black_Monday_(1987)",
+      "note": "Stock markets crashed worldwide, first in Asian markets other than Japan, then Europe, then the US, and finally Japan."
+     },
+     {
+      "claim": "다우 508포인트(22.6%) 하락, 역대 최대 하루 하락률",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Black_Monday_(1987)",
+      "note": "the DJIA fell 508 points (22.6 percent) … \"the largest one-day percentage drop in the history of the DJIA.\""
+     },
+     {
+      "claim": "1987년 10월 19일 월요일, 이후 서킷 브레이커 도입",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Black_Monday_(1987)",
+      "note": "a global, severe and largely unexpected stock market crash on Monday, October 19, 1987. … regulators created \"trading curbs\" or \"circuit breakers,\" which allow exchanges to temporarily halt trading \"in instances of exceptionally large price decline.\""
+     },
+     {
+      "claim": "홍콩 거래소 영업일 나흘 휴장, 이튿날 아침 발표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Black_Monday_(1987)",
+      "note": "the exchange committees announced the closure the morning after the crash … for four working days (문서 요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Wall_Street_crash_of_1929"
+    ],
+    "hintNote": "October 28 (Black Monday) ... The Dow fell 38.33 points (12.82%) that day",
+    "easiestCue": "홍콩 증권거래소가 나흘 문을 닫은 세계 동시 폭락",
+    "targetWhy": "폭락 순서·홍콩 휴장은 경제사 애호가 세부 — 4 노림",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "증시 관심층은 '역대 최대 하루 폭락'만으로 떠올릴 수 있어 3 일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0 (블랙 먼데이 · 검은 월요일)",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  }
+ ]
+}

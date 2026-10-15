@@ -1,0 +1,97 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "politics/2",
+  "midKey": "politics",
+  "subName": "선거·의회",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "politics/2#g005-H1-03",
+   "seed": {
+    "subject": "애로의 불가능성 정리",
+    "aspect": null,
+    "ref": "H1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 경제학자는 1950년 논문과 1951년 책 『사회적 선택과 개인의 가치』에서, 고를 대안이 셋 이상이면 개인들의 선호 순위를 사회의 순위로 묶는 어떤 투표 방식도 '한 사람의 뜻이 늘 이기지 않는다' 같은 몇 가지 합리적 조건을 한꺼번에 만족할 수 없음을 보였습니다. 이 결과를 그의 이름을 따 무엇이라 할까요?",
+    "answer": "애로의 불가능성 정리",
+    "acceptedAnswers": [
+     "불가능성 정리",
+     "애로의 정리"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '애로의 불가능성 정리' — 짧은 꼴 '불가능성 정리'·'애로의 정리'는 같은 정리를 가리키는 흔한 줄임이라 B1",
+    "explanation": "세 유권자의 선호가 A>B>C, B>C>A, C>A>B 이면 다수결은 A>B, B>C, C>A 로 돌고 도는 순환을 만듭니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "어떤 투표 방식도 합리적 조건을 한꺼번에 만족할 수 없다는 결과",
+     "difWhy": "사회 선택 불가능 결과 — 대학 교양 경제",
+     "wor": 4,
+     "worWhy": "교양 — 사회과학 기본 개념",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "어떤 투표 방식도 합리적 조건을 한꺼번에 만족할 수 없다는 결과",
+     "difWhy": "사회 선택 불가능 결과 — 대학 교양 경제",
+     "wor": 4,
+     "worWhy": "교양 — 사회과학 기본 개념"
+    },
+    "rewrite": null,
+    "generalHint": "이 경제학자는 1972년 존 힉스와 함께 노벨 경제학상을 받았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/애로의_불가능성_정리",
+     "https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem"
+    ],
+    "facts": [
+     {
+      "claim": "1950년 논문과 1951년 저서 Social Choice and Individual Values 에서 제시",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/애로의_불가능성_정리",
+      "note": "이 결과는 케네스 애로가 1950년 논문과 1951년 저서 Social Choice and Individual Values에서 제시했습니다."
+     },
+     {
+      "claim": "대안이 3개 이상이면 비독재성 등 조건을 동시에 만족하는 사회 후생 함수가 없다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/애로의_불가능성_정리",
+      "note": "대안이 3개 이상일 때, 개인의 선호 순위를 사회의 선호 순위로 바꾸는 어떤 투표 제도(사회 후생 함수)도 다음 조건을 동시에 만족할 수 없습니다. … 비독재성: 한 개인이 사회 선호를 좌우할 수 없습니다. / en: \"There is no individual i whose preferences always prevail.\""
+     },
+     {
+      "claim": "A>B>C, B>C>A, C>A>B 순환 예",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/애로의_불가능성_정리",
+      "note": "세 유권자가 각각 A>B>C, B>C>A, C>A>B의 순서를 가지면, 다수결은 A>B, B>C, C>A라는 순환을 만듭니다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Kenneth_Arrow"
+    ],
+    "hintNote": "He was the joint winner of the Nobel Memorial Prize in Economics with John Hicks in 1972",
+    "easiestCue": "대안이 셋 이상이면 합리적 조건을 다 만족하는 투표 방식이 없다는 결과",
+    "targetWhy": "사회 선택 이론 — 고교 정치와 법 밖, 대학 교양 정치학·경제학 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "노벨상 수상자의 유명 정리, 내용 자체가 대학 교양",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  }
+ ]
+}

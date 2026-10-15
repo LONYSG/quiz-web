@@ -1,0 +1,284 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "architecture/4",
+  "midKey": "architecture",
+  "subName": "한국 건축",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "architecture/4#g005-A2-23",
+   "seed": {
+    "subject": "경회루",
+    "aspect": null,
+    "ref": "A2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 누각은 1층을 돌기둥 48개가 받치고, 2층 바닥은 높이가 다른 세 단으로 나뉘어 가장 높은 가운데 단이 임금의 자리였습니다. 1412년 4월 처음 지었을 때는 지금보다 작았고 지붕이 두 겹이었는데, 이 누각은 무엇일까요?",
+    "answer": "경회루",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '경회루' 문서 제목 확인(API) — 변형 없음",
+    "explanation": "불을 막는 상징으로 곁의 연못에 청동 용 두 마리를 넣었는데, 1997년 연못에서 그 가운데 한 마리만 발견되었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "2층 가운데 단이 임금의 자리인 누각, 1412년",
+     "difWhy": "'1412년 임금의 누각' — 관심 있는 사람(궁궐)",
+     "wor": 4,
+     "worWhy": "교양 — 경복궁 대표 건축",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "돌기둥 48개, 연못의 청동 용, 임금의 자리 누각",
+     "difWhy": "'경복궁 연못 누각' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "대표 궁궐 건축 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 누각은 1층을 돌기둥 48개가 받치고, 2층 바닥은 높이가 다른 세 단으로 나뉘어 가장 높은 가운데 단이 임금의 자리였습니다. 불을 막는 상징으로 곁의 연못에 넣었던 청동 용 두 마리 가운데 한 마리가 1997년 연못 바닥에서 발견되었습니다. 이 누각은 무엇일까요?",
+     "beforeExplanation": "처음 지은 것은 1412년 음력 4월로, 그때는 지금보다 작았고 지붕이 두 겹이었습니다.",
+     "removedCue": "연못의 청동 용(경복궁 연못 누각을 바로 떠올리게 함)",
+     "addedCue": "1412년 처음 지은 모습 — 지금보다 작고 지붕 두 겹",
+     "why": "연못 단서를 해설로 옮기고 건축 세부만으로 묻게 함"
+    },
+    "generalHint": "1412년 공사는 공조판서 박자청이 맡아 완성했고, 지금 건물은 1867년 고종 때 다시 지은 것이다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gyeonghoeru"
+    ],
+    "facts": [
+     {
+      "claim": "1층을 돌기둥 48개가 받침",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gyeonghoeru",
+      "note": "It is supported by 48 stone pillars on its first floor."
+     },
+     {
+      "claim": "2층은 높이가 다른 세 단, 가운데 가장 높은 단은 임금 자리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gyeonghoeru",
+      "note": "Its second floor is divided into three levels of differing heights. The highest level in the center was meant for the king."
+     },
+     {
+      "claim": "1412년 4월 첫 완공, 지금보다 작고 지붕 두 겹",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gyeonghoeru",
+      "note": "It was first completed in the 4th month of 1412. The original form was smaller than the current, although it had a two-story roof rather than the current single-story roof."
+     },
+     {
+      "claim": "화재를 막는 상징으로 연못에 청동 용 둘, 1997년 하나 발견",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gyeonghoeru",
+      "note": "Two bronze dragon statues were placed in the adjacent pond, as symbolic wardens against fire. In 1997, only one was discovered in the pond."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/경회루"
+    ],
+    "hintNote": "태종 12년(1412)에 연못을 넓히고 건물도 다시 크게 짓도록 명하여 공조판서 박자청(朴子靑)이 완성하였다. / 고종 4년(1867) 경복궁을 다시 지으면서 경회루도 다시 지었다.",
+    "easiestCue": "1층 돌기둥 48개, 2층 세 단의 임금 자리 누각",
+    "targetWhy": "기둥 수·세 단 바닥·1412년 첫 모습은 건축 애호가 세부 — 4 노림",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'궁궐 연못 누각' 으로 대표 답을 찍을 여지 — 3 경계",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "architecture/4#g005-A2-24",
+   "seed": {
+    "subject": "석조전",
+    "aspect": null,
+    "ref": "A2-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "상하이에서 활동하던 아일랜드 건축가 존 레지널드 하딩이 설계했고, 영국인 고문 브라운이 공사를 제안하고 공사비를 관리하고 댄 건물입니다. 1910년 완공되어 1919년 고종이 세상을 떠날 때까지 황실이 쓴 이 건물은 무엇일까요?",
+    "answer": "석조전",
+    "acceptedAnswers": [
+     "덕수궁 석조전"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '석조전' 문서 제목 확인, '덕수궁 석조전' 은 덕수궁 문서 절로 넘겨주기(API) — 궁 이름을 붙여 치는 경우가 흔해 넣음",
+    "explanation": "1933년에는 미술관으로 바뀌었고, 지금은 대한제국역사관으로 쓰입니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "1910년 완공되어 고종이 세상을 떠날 때까지 황실이 쓴 건물",
+     "difWhy": "'대한제국 서양식 궁궐 건물' — 고교 한국사",
+     "wor": 4,
+     "worWhy": "근대 건축 교양",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "대한제국 때 이오니아식 신고전주의 서양식 건물",
+     "difWhy": "대한제국 서양식 궁전 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "교양 — 근대 건축"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "대한제국 때 지은 이 서양식 건물은 상하이에서 활동하던 아일랜드 건축가 존 레지널드 하딩이 설계했고, 공사비는 영국인 브라운이 관리하고 댔습니다. 이오니아식 기둥을 세운 신고전주의 양식으로 1910년 무렵 완공되어, 1919년 고종이 세상을 떠날 때까지 황실이 썼습니다. 이 건물은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "대한제국 때 이오니아식 기둥 신고전주의 서양식 건물",
+     "addedCue": "(새로 넣지 않음) 하딩 설계 · 브라운 공사비",
+     "why": "고교 한국사의 '대한제국 서양식 건물' 꼴을 빼고 설계자·자금 내력으로 좁힘"
+    },
+    "generalHint": "6·25 전쟁 전에는 미소공동위원회가 이 건물에서 열렸다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Seokjojeon"
+    ],
+    "facts": [
+     {
+      "claim": "상하이에서 활동한 아일랜드 건축가 하딩이 설계",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Seokjojeon",
+      "note": "Seokjojeon was designed by a Shanghai-based Irish architect John Reginald Harding over a period of two years."
+     },
+     {
+      "claim": "영국인 고문 브라운이 공사를 제안하고 자금을 관리·제공",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Seokjojeon",
+      "note": "The construction of Seokjojeon was proposed in 1893 by Sir John McLeavy Brown, the British advisor in Korea and an accountant. ... All funding for the building was managed and provided by Brown"
+     },
+     {
+      "claim": "이오니아식 기둥, 신고전주의, 1910년 완공, 1919년 고종 사망까지 황실 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Seokjojeon",
+      "note": "The exterior of the building is neoclassical in style and has Ionic columns ... It was completed in 1910 as a residence for the Korean royal family ... The Korean royal family continued to live in and use the building until the 1919 death of Gojong"
+     },
+     {
+      "claim": "1933년 미술관, 지금 대한제국역사관",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Seokjojeon",
+      "note": "It was then made into the Seokjojeon Art Museum in 1933. ... now serves as the Daehan Empire History Museum."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/덕수궁_석조전"
+    ],
+    "hintNote": "6.25 전쟁 이전에는 미소공동위원회가 석조전에서 개최된 바 있으며",
+    "easiestCue": "하딩이 설계하고 1910년 완공돼 고종 때까지 황실이 쓴 건물",
+    "targetWhy": "설계자·자금 내력은 건축·근대사 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "대한제국 서양식 건물 = 석조전이 고교 한국사 사진 자료에 있어 3 으로 읽힐 수 있음",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "architecture/4#g005-A2-25",
+   "seed": {
+    "subject": "세운상가",
+    "aspect": null,
+    "ref": "A2-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1966년 서울 종로 3가와 퇴계로 3가 사이 판자촌을 밀어낸 자리에, 브루탈리즘 건물 여덟 동이 한 줄로 늘어선 상가가 들어섰습니다. 2006년 중구는 이 자리에 220층 초고층 빌딩을 세우자고 내놓았다가 도심 높이 제한 때문에 접었는데, 이 상가는 무엇일까요?",
+    "answer": "세운상가",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '세운상가' 문서 제목 확인(API) — 변형 없음",
+    "explanation": "건축가 김수근이 설계했으며, 한겨레 사설은 이 상가를 '독재 시절 마구잡이 재개발의 상징'이라 불렀습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "종로 3가와 퇴계로 3가 사이 일렬 상가",
+     "difWhy": "'종로~퇴계로 상가' — 서울 관심층",
+     "wor": 3,
+     "worWhy": "도시 건축 이야깃거리",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "김수근 설계, 여덟 동이 늘어선 서울 도심 상가",
+     "difWhy": "김수근 도심 상가 — 건축 관심층",
+     "wor": 3,
+     "worWhy": "근현대 건축 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1960년대 서울 도심의 판자촌을 밀어낸 자리에, 건축가 김수근이 설계한 브루탈리즘 건물 여덟 동이 한 줄로 늘어선 상가가 들어섰습니다. 가장 높은 동은 17층이었습니다. 이 상가는 무엇일까요?",
+     "beforeExplanation": "한겨레 사설은 이 상가를 '독재 시절 마구잡이 재개발의 상징'이라 불렀습니다.",
+     "removedCue": "건축가 김수근 설계",
+     "addedCue": "2006년 220층 빌딩 계획과 포기",
+     "why": "건축 관심층의 '김수근 상가' 단서를 해설로 옮기고 재개발 계획 세부를 넣음"
+    },
+    "generalHint": "1971년 한강맨션이 들어서기 전까지 이곳 위층 아파트에는 사회 저명인사들이 다투어 들어왔다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sewoon_Sangga"
+    ],
+    "facts": [
+     {
+      "claim": "종로 3가와 퇴계로 3가 사이, 브루탈리즘 건물 여덟 동이 한 줄, 가장 높은 동 17층, 김수근 설계, 1966년 판자촌을 밀고 지음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sewoon_Sangga",
+      "note": "a shopping area located between Jongno 3-ga and Toegyero 3-ga, Jongno-gu, Seoul. Consisting of eight Brutalist buildings in a row, the tallest of which reached 17 floors, it was designed by Kim Swoo-geun and built in 1966 on top of cleared slums"
+     },
+     {
+      "claim": "한겨레 사설: 독재 시절 무분별한 재개발의 상징",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sewoon_Sangga",
+      "note": "in what The Hankyoreh described in an editorial as \"a symbol of the indiscriminate redevelopment that occurred during the dictatorship years\""
+     },
+     {
+      "claim": "2006년 중구가 960m 220층 빌딩을 제안했으나 도심 높이 제한으로 포기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sewoon_Sangga",
+      "note": "In 2006, Jung-gu proposed a 960 m, 220-story skyscraper, Tour Financial Hub Center. It was abandoned because of height restrictions in central Seoul."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/세운상가"
+    ],
+    "hintNote": "사회 저명인사들이 다투어 입주해 있었고 / 세인들의 선망의 대상이 되었다 / (요약) 이 인기는 1971년 한강맨션이 들어서기 전까지",
+    "easiestCue": "종로 3가~퇴계로 3가 사이 여덟 동 상가",
+    "targetWhy": "위치로 아는 것은 서울 도시사 관심층, 220층 계획은 애호가 — 3~4 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "김수근이 설계한 상가라는 사실은 건축 관심층 너머의 세부, 다만 '서울 도심 일렬 상가' 로 찍을 여지",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": [
+     "정답조각 상가"
+    ]
+   }
+  }
+ ]
+}

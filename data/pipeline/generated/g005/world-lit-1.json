@@ -1,0 +1,105 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "world-lit/1",
+  "midKey": "world-lit",
+  "subName": "고전(고대~18세기)",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/1#g005-A2-01",
+   "seed": {
+    "subject": "캉디드",
+    "aspect": null,
+    "ref": "A2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 소설에는 1755년 리스본 대지진과 그 뒤에 재앙을 막겠다며 벌인 종교 재판 화형식이 나오고, 주인공의 가정교사 팡글로스가 그 와중에 목매달립니다. 작가는 '랄프 박사'라는 이름 뒤에 숨어 1759년 1월 여러 나라에서 동시에 이 책을 냈습니다. 이 소설은 무엇일까요?",
+    "answer": "캉디드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '캉디드' 문서 제목 확인(API) — '칸디드' 문서 없음, 변형 없음",
+    "explanation": "출간 직후 신성 모독과 선동을 이유로 곳곳에서 금서가 되었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "가정교사 팡글로스 + 리스본 대지진",
+     "difWhy": "볼테르 풍자소설 — 대학 교양(세계문학)",
+     "wor": 4,
+     "worWhy": "교양 — 세계문학 대표작",
+     "acc": 4,
+     "accWhy": "세계 문학 — 고교 문학 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "가정교사 팡글로스 + 리스본 대지진",
+     "difWhy": "볼테르 풍자소설 — 대학 교양(세계문학)",
+     "wor": 4,
+     "worWhy": "교양 — 세계문학 대표작"
+    },
+    "rewrite": null,
+    "generalHint": "1759년 초판 제목에는 '낙관주의'라는 부제가 붙었고, 소설은 '우리는 우리의 밭을 가꾸어야 한다'는 말로 끝난다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Candide"
+    ],
+    "facts": [
+     {
+      "claim": "1755년 리스본 대지진이 작품에 자주 나옴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Candide",
+      "note": "Several historical events inspired Voltaire to write Candide, most notably the publication of Leibniz's \"Monadology\", the Seven Years' War, and the 1755 Lisbon earthquake. Both of the latter catastrophes are frequently referred to in Candide."
+     },
+     {
+      "claim": "재앙을 막으려 벌인 종교 재판 화형식(auto-da-fé)에서 팡글로스가 목매달림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Candide",
+      "note": "an auto-da-fé set up to appease God and prevent another disaster ... Candide is flogged and sees Pangloss hanged"
+     },
+     {
+      "claim": "팡글로스는 주인공의 스승(가정교사)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Candide",
+      "note": "being indoctrinated with Leibnizian optimism by his mentor, Professor Pangloss"
+     },
+     {
+      "claim": "'랄프 박사' 필명, 1759년 1월 15일까지 다섯 나라에서 동시 출간",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Candide",
+      "note": "Voltaire published Candide simultaneously in five countries no later than 15 January 1759 ... signed \"Monsieur le docteur Ralph\""
+     },
+     {
+      "claim": "출간 직후 신성 모독·선동으로 널리 금서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Candide",
+      "note": "Immediately after its secretive publication, the book was widely banned on the grounds of blasphemy and sedition."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Candide"
+    ],
+    "hintNote": "The 1759 title page reads \"Candide, or Optimism, translated from the German of Dr. Ralph.\" / we must cultivate our garden",
+    "easiestCue": "가정교사 팡글로스가 나오는 소설",
+    "targetWhy": "작가 이름(볼테르) · '모든 것은 최선' · '밭을 가꾸어야' 결말 같은 교과 단서를 빼고 리스본 화형식 · 팡글로스 · 랄프 박사 필명만 남김 — 대학 교양 프랑스 문학이라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "작품은 고교 윤리·세계사에 나오는 이름, 단서는 줄거리 세부와 출간 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

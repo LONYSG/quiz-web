@@ -1,0 +1,114 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "fashion/2",
+  "midKey": "fashion",
+  "subName": "패션 브랜드·디자이너",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "fashion/2#g005-L2-29",
+   "seed": {
+    "subject": "프라다",
+    "aspect": null,
+    "ref": "L2-29",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1913년 밀라노에서 가죽 제품 가게로 출발한 한 형제의 회사는 1919년 이탈리아 왕실 공식 납품업체가 되어, 사보이 왕가의 문장과 매듭 끈 무늬를 로고에 넣었습니다. 창업자는 집안 여성들이 회사에 들어오지 못하게 했지만, 1978년에는 그의 손녀가 회사를 물려받았습니다. 이 브랜드는?",
+    "answer": "프라다",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Prada"
+    ],
+    "variantCheck": "상표가 로마자(Prada)라 B10 으로",
+    "explanation": "회사를 물려받은 이듬해인 1979년, 방수 나일론 '포코노'로 만든 배낭을 내놓았습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1913년 밀라노 가죽 가게, 손녀가 물려받음",
+     "difWhy": "'1913 밀라노 가죽 브랜드' — 패션 애호가",
+     "wor": 3,
+     "worWhy": "명품 브랜드 기원",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1979년 방수 나일론 배낭을 만든 밀라노 브랜드",
+     "difWhy": "나일론 배낭 명품 — 패션 관심층",
+     "wor": 3,
+     "worWhy": "브랜드 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1913년 밀라노에서 가죽 제품 가게로 출발한 한 형제의 회사는 1919년 이탈리아 왕실 공식 납품업체가 되어, 사보이 왕가의 문장과 매듭 끈 무늬를 로고에 넣었습니다. 창업자는 집안 여성들이 회사에 들어오지 못하게 했지만, 1978년 회사를 맡은 집안의 여성은 이듬해 방수 나일론으로 배낭을 만들었습니다. 이 브랜드는?",
+     "beforeExplanation": "창업자 마리오는 밀라노의 비토리오 에마누엘레 2세 갈레리아에 고급 매장을 열었습니다.",
+     "removedCue": "1979년 방수 나일론 배낭",
+     "addedCue": "(해설로 내림) 1978년 창업자의 손녀가 물려받음",
+     "why": "나일론 배낭이 패션 관심층 충분 단서라 해설로 내리고 왕실 납품 로고·창업 가풍으로 좁힘"
+    },
+    "generalHint": "회사를 물려받은 손녀는 정치학 박사 학위를 받았고, 마임 배우로 5년 동안 무대에 서기도 했다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Prada"
+    ],
+    "facts": [
+     {
+      "claim": "1913년 마리오·마르티노 형제의 밀라노 가죽 제품 가게",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Prada",
+      "note": "The company started in 1913 by Mario Prada and his brother Martino as Fratelli Prada, a leather goods shop in Milan."
+     },
+     {
+      "claim": "1919년 왕실 공식 납품업체, 사보이 문장·매듭 끈 로고",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Prada",
+      "note": "Prada was appointed Official Supplier to the Italian Royal Household (1919) … put the House of Savoy's coat of arms and knotted rope design into its logo"
+     },
+     {
+      "claim": "창업자가 여성 가족의 입사를 막음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Prada",
+      "note": "he prevented female family members from entering his company."
+     },
+     {
+      "claim": "1978년 미우차가 맡고 1979년 포코노 나일론 방수 배낭",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Prada",
+      "note": "Miuccia began making waterproof backpacks out of Pocono, a nylon fabric (first backpacks 1979; took over the company 1978)"
+     },
+     {
+      "claim": "1978년 회사를 물려받은 미우차는 창업자 마리오의 손녀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Prada",
+      "note": "Mario's granddaughter ... Miuccia inherited the company in 1978"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Miuccia_Prada"
+    ],
+    "hintNote": "In 1978, she subsequently obtained a PhD in political science ... Prada trained at the Teatro Piccolo to become a mime artist and performed for five years.",
+    "easiestCue": "1919년 이탈리아 왕실 납품업체가 되어 사보이 문장을 로고에 넣은 밀라노 브랜드",
+    "targetWhy": "로고의 왕실 문장 유래와 창업자의 여성 배제는 패션 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'밀라노 가죽 브랜드 + 나일론 배낭'은 패션 관심층이 떠올릴 수 있어 3 여지",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

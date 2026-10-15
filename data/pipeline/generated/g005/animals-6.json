@@ -1,0 +1,107 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "animals/6",
+  "midKey": "animals",
+  "subName": "동물의 습성·생태",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/6#g005-C1-26",
+   "seed": {
+    "subject": "흰개미",
+    "aspect": null,
+    "ref": "C1-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 곤충의 한 무리는 약 3,100만 년 전부터 둥지 안에서 균을 길러 왔다는 분자 증거가 있습니다. 계통으로는 나무를 먹는 바퀴 무리와 가장 가까운 이 곤충은 무엇일까요?",
+    "answer": "흰개미",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "짐바브웨 하라레의 이스트게이트 센터는 건축가 믹 피어스가 이 곤충의 둔덕 집을 본떠, 보통 건물의 10% 에너지로 실내를 식힙니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "나무를 먹는 바퀴 무리와 가장 가까운 곤충",
+     "difWhy": "'나무 먹는 바퀴와 가까운 곤충' — 고교 생명과학 수준 추론",
+     "wor": 4,
+     "worWhy": "교양 — 흰개미 계통·균 재배",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "둔덕 집을 쌓고 버섯을 기르는 곤충",
+     "difWhy": "'둔덕 집 짓는 곤충' — 중학 과학",
+     "wor": 4,
+     "worWhy": "생물 교양 — 생체모방"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1996년 문을 연 짐바브웨 하라레의 이스트게이트 센터는, 건축가 믹 피어스가 이 곤충이 쌓는 둔덕 집의 바람길을 본떠 보통 건물의 10% 에너지로 실내를 식힙니다. 이 곤충의 한 무리는 약 3,100만 년 전부터 둥지 안에서 버섯을 길러 왔습니다. 계통으로는 바퀴벌레에 가까운 이 곤충은 무엇일까요?",
+     "beforeExplanation": "흰개미가 기르는 버섯은 흰개미버섯속에 드는 전문화된 균으로, 흰개미의 똥을 먹이로 자랍니다.",
+     "removedCue": "이스트게이트 센터 — 둔덕 집의 바람길",
+     "addedCue": "(남은 깊은 단서) 3,100만 년 전부터 균 농사 · 나무 먹는 바퀴 무리와 자매",
+     "why": "유명한 생체모방 사례(둔덕 집)를 해설로 옮기고 진화·계통 세부로 엮음"
+    },
+    "generalHint": "이 곤충은 창자 속 세균과 편모충이 내주는 효소 덕분에 나무의 셀룰로스를 소화한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Termite",
+     "https://en.wikipedia.org/wiki/Eastgate_Centre,_Harare"
+    ],
+    "facts": [
+     {
+      "claim": "흰개미아과 무리는 약 3,100만 년 전부터 균을 길렀다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Termite",
+      "note": "Molecular evidence suggests that the family Macrotermitinae developed agriculture about 31 million years ago. / specialised fungi of genus Termitomyces"
+     },
+     {
+      "claim": "흰개미는 개미가 아니라 고도로 분화한 바퀴벌레 무리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Termite",
+      "note": "termites are highly derived cockroaches, not ants / sister group to wood-eating cockroaches of the genus Cryptocercus"
+     },
+     {
+      "claim": "믹 피어스가 설계해 1996년 문을 열었고 흰개미 둔덕의 설계를 본떴다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Eastgate_Centre,_Harare",
+      "note": "designed by Zimbabwean architect Mick Pearce / began opening its doors in 1996 / Pearce drew on the termite mound's design to keep interiors at a steady temperature"
+     },
+     {
+      "claim": "수동 냉방은 보통 냉방 건물 에너지의 10%만 쓴다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Eastgate_Centre,_Harare",
+      "note": "uses only 10% of the energy required by conventionally cooled building"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Termite"
+    ],
+    "hintNote": "This community provides the enzymes that digests the cellulose. (bacteria and flagellate protists)",
+    "easiestCue": "나무를 먹는 바퀴 무리와 가장 가까운 곤충",
+    "targetWhy": "균 농사 3,100만 년·바퀴 자매군은 대학 교양 생물 — 4 노림(바퀴 친척 상식이 퍼져 있으면 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'바퀴벌레에 가까운' 은 과학 상식 글에 꽤 나와 관심층이면 3",
+    "pairCheck": null,
+    "dbCheck": "흰개미 new",
+    "warn": []
+   }
+  }
+ ]
+}

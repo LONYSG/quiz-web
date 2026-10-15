@@ -1,0 +1,97 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "plants/2",
+  "midKey": "plants",
+  "subName": "꽃·꽃말",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "plants/2#g005-C1-12",
+   "seed": {
+    "subject": "수선화",
+    "aspect": null,
+    "ref": "C1-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국 웨일스의 나라꽃으로, 3월 1일 성 데이비드의 날과 이어져 있습니다. 웨일스 브레컨 근처에서는 알츠하이머 치매 치료제인 갈란타민을 얻으려고 이 꽃을 대규모로 기릅니다. 이 꽃은 무엇일까요?",
+    "answer": "수선화",
+    "acceptedAnswers": [
+     "나팔수선화"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "웨일스 상징 daffodil 의 국명이 나팔수선화(Narcissus pseudonarcissus 무리) — 더 정확한 이름이라 넣음",
+    "explanation": "수선화속 식물에서 처음 밝혀진 알칼로이드는 리코린으로, 잘못 먹으면 독이 될 수 있습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "웨일스의 나라꽃, 성 데이비드의 날",
+     "difWhy": "'웨일스 나라꽃' — 대학 교양 수준 세부",
+     "wor": 3,
+     "worWhy": "꽃 이야깃거리 — 나라꽃·갈란타민",
+     "acc": 5,
+     "accWhy": "식물 — 초등 과학·일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "웨일스의 나라꽃, 성 데이비드의 날",
+     "difWhy": "'웨일스 나라꽃' — 대학 교양 수준 세부",
+     "wor": 3,
+     "worWhy": "꽃 이야깃거리 — 나라꽃·갈란타민"
+    },
+    "rewrite": null,
+    "generalHint": "윌리엄 워즈워스는 영국 호수 지방 얼스워터 호숫가에 무리 지어 핀 이 꽃을 보고 시를 지었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Narcissus_(plant)"
+    ],
+    "facts": [
+     {
+      "claim": "수선화(daffodil)는 웨일스의 나라꽃이고 3월 1일 성 데이비드의 날과 이어진다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Narcissus_(plant)",
+      "note": "The daffodil is the national flower of Wales, associated with Saint David's Day (1 March)."
+     },
+     {
+      "claim": "웨일스 브레컨 근처에서 갈란타민을 얻으려고 상업 재배한다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Narcissus_(plant)",
+      "note": "Daffodils are grown commercially near Brecon in Powys, Wales, to produce galantamine. / production of galantamine for the treatment of Alzheimer's dementia"
+     },
+     {
+      "claim": "처음 밝혀진 알칼로이드는 리코린이고 먹으면 독이 될 수 있다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Narcissus_(plant)",
+      "note": "The first alkaloid to be identified was lycorine. / may be poisonous if accidentally ingested"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/I_Wandered_Lonely_as_a_Cloud"
+    ],
+    "hintNote": "The poem's flowers are daffodils ... The inspiration came from a walk near Glencoyne Bay on Ullswater, in England's Lake District.",
+    "easiestCue": "웨일스의 나라꽃",
+    "targetWhy": "나르키소스 신화(대표 일화)를 넣지 않음 — 웨일스 나라꽃 · 갈란타민 재배는 원예·약학 애호가, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "꽃은 누구나 알고, 웨일스·치매약 연결은 몰랐던 사실",
+    "pairCheck": null,
+    "dbCheck": "수선화·나팔수선화 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,106 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "world-history-west/1",
+  "midKey": "world-history-west",
+  "subName": "고대 그리스·로마",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/1#g005-H2-03",
+   "seed": {
+    "subject": "스파르타쿠스",
+    "aspect": null,
+    "ref": "H2-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기원전 73년 카푸아 근처 렌툴루스 바티아투스의 양성소에서 동료 약 70명과 함께 달아난 이 사람은, 플루타르코스가 '유목민 혈통의 트라키아인'이라 적은 인물입니다. 이 사람은 누구일까요?",
+    "answer": "스파르타쿠스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "기원전 71년 크라수스에게 진압된 뒤, 붙잡힌 6,000명이 아피아 가도를 따라 십자가에 매달렸습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "카푸아 근처 양성소에서 동료 약 70명과 함께 달아난",
+     "difWhy": "'카푸아 검투사 양성소 탈출' — 고교 세계사(로마 노예 반란)",
+     "wor": 4,
+     "worWhy": "교양 — 로마사 대표 노예 반란",
+     "acc": 4,
+     "accWhy": "서양사 — 고교 세계사 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "기원전 71년 크라수스에게 진압된 반란의 트라키아 출신 지도자",
+     "difWhy": "로마 노예 반란 지도자 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 유명 노예 반란"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "기원전 71년 크라수스에게 진압된 한 반란에서는 붙잡힌 6,000명이 아피아 가도를 따라 십자가에 매달렸습니다. 이 반란을 이끈 트라키아 출신 지도자는 누구일까요?",
+     "beforeExplanation": "그는 기원전 73년 카푸아 근처 렌툴루스 바티아투스의 검투사 양성소에서 동료 약 70명과 함께 달아나며 봉기를 시작했습니다.",
+     "removedCue": "기원전 71년 크라수스에게 진압된 반란 · 아피아 가도 십자가형",
+     "addedCue": "바티아투스의 양성소에서 달아남 · 플루타르코스의 '유목민 혈통 트라키아인'",
+     "why": "교과서 반란 줄거리를 해설로 옮기고 탈출 세부(양성소 주인 이름)로 묻게 함"
+    },
+    "generalHint": "카를 마르크스는 이 사람을 '고대 역사 전체에서 가장 멋진 사나이'라고 불렀다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Spartacus"
+    ],
+    "facts": [
+     {
+      "claim": "기원전 73년 카푸아 근처 바티아투스 양성소에서 약 70명과 탈출",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Spartacus",
+      "note": "His revolt began in 73 BC when, along with about 70 other gladiators, he escaped a gladiatorial school near Capua. / Spartacus was trained at the gladiatorial school (ludus) near Capua belonging to Lentulus Batiatus."
+     },
+     {
+      "claim": "트라키아 출신",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Spartacus",
+      "note": "Plutarch describes him as \"a Thracian of Nomadic stock.\""
+     },
+     {
+      "claim": "크라수스가 진압, 기원전 71년 패배",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Spartacus",
+      "note": "Ultimately, Marcus Licinius Crassus was tasked with suppressing the revolt. … Spartacus's forces were defeated in 71 BC."
+     },
+     {
+      "claim": "6,000명이 아피아 가도를 따라 십자가형",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Spartacus",
+      "note": "6,000 captured rebels were crucified along the Appian Way."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Spartacus"
+    ],
+    "hintNote": "Marx called Spartacus \"the most splendid fellow in the whole of ancient history.\"",
+    "easiestCue": "기원전 73년 카푸아 바티아투스 양성소에서 달아난 트라키아인",
+    "targetWhy": "바티아투스·플루타르코스 표현은 로마사 애호가 세부 — 4 노림",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'트라키아 출신 반란 지도자' 만으로 스파르타쿠스를 떠올리는 사람이 있을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

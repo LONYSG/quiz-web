@@ -1,0 +1,93 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "animals/3",
+  "midKey": "animals",
+  "subName": "어류·해양 생물",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/3#g005-C1-27",
+   "seed": {
+    "subject": "뱀장어",
+    "aspect": null,
+    "ref": "C1-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아리스토텔레스는 이 물고기가 짝짓기 없이 젖은 흙의 창자에서 생겨난다고 보았습니다. 1876년 오스트리아의 대학생이던 지그문트 프로이트는 이 물고기 수백 마리를 해부하며 수컷 생식 기관을 찾다가, 첫 주요 논문에서 실패를 털어놓아야 했습니다. 이 물고기는 무엇일까요?",
+    "answer": "뱀장어",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "장어는 붕장어·갯장어까지 아우르는 넓은 말이라 넣지 않음(B7)",
+    "explanation": "덴마크의 요하네스 슈미트는 1904년부터 탐사를 이끌며 가장 작은 새끼를 찾아, 유럽의 이 물고기가 사르가소해에서 알을 낳는다고 추론했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "프로이트가 수컷 생식 기관을 찾으려 해부한 물고기",
+     "difWhy": "프로이트 해부 물고기 — 과학사 애호가",
+     "wor": 3,
+     "worWhy": "과학사 이야깃거리",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "프로이트가 수컷 생식 기관을 찾으려 해부한 물고기",
+     "difWhy": "프로이트 해부 물고기 — 과학사 애호가",
+     "wor": 3,
+     "worWhy": "과학사 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "이 물고기의 새끼는 옆으로 납작하고 몸이 투명한 '렙토세팔루스' 시기를 거친다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Eel_life_history"
+    ],
+    "facts": [
+     {
+      "claim": "아리스토텔레스는 뱀장어가 짝짓기 없이 젖은 흙의 창자에서 생긴다고 보았다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eel_life_history",
+      "note": "believed eels arose from mud ... grew from the \"guts of wet soil\" rather than through sexual reproduction"
+     },
+     {
+      "claim": "1876년 오스트리아 대학생 프로이트가 수백 마리를 해부하며 수컷 생식 기관을 찾다 첫 주요 논문에서 실패를 인정했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eel_life_history",
+      "note": "While a young university student in Austria in 1876, he was assigned to search for the eels' male sex organs. After dissecting hundreds of eels, he had to admit failure in his first major paper."
+     },
+     {
+      "claim": "슈미트는 1904년부터 탐사를 이끌며 새끼 크기로 사르가소해 산란을 추론했다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Eel_life_history",
+      "note": "Danish professor Johannes Schmidt led expeditions from 1904 onward ... inferred from the size of leptocephali (larvae) that European eels spawn in the Sargasso Sea, and his 1922 expedition caught the smallest larvae ever seen there"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Leptocephalus"
+    ],
+    "hintNote": "the flat and transparent larva of eels and other members of the superorder Elopomorpha",
+    "easiestCue": "프로이트가 수백 마리를 해부한 물고기",
+    "targetWhy": "사르가소해 산란 · 강을 거슬러 오르는 생활사(교양 단서)를 해설로 돌림 — 프로이트 일화는 과학사 애호가, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "물고기는 누구나 알고, 프로이트 일화는 뜻밖의 연결",
+    "pairCheck": null,
+    "dbCheck": "뱀장어 new (장어는 활성 4461 풍천장어 — 다른 정답·다른 지식)",
+    "warn": []
+   }
+  }
+ ]
+}

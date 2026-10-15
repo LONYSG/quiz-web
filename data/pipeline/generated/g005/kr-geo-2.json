@@ -1,0 +1,481 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-geo/2",
+  "midKey": "kr-geo",
+  "subName": "산·강·호수",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-geo/2#g005-K2-12",
+   "seed": {
+    "subject": "주산지",
+    "aspect": null,
+    "ref": "K2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 숙종 때인 1720년 8월 공사를 시작해 이듬해 경종 원년 10월 완공된 경북 내륙의 저수지입니다. 입구 바위에는 1771년 세운 이진표의 공덕비가 있고, 준공 뒤 아무리 오랜 가뭄에도 바닥을 드러낸 적이 없다는 이 못의 이름은 무엇일까요?",
+    "answer": "주산지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "물속에 능수버들과 왕버들 고목 20여 그루가 자라며, 김기덕 감독의 영화 '봄, 여름, 가을, 겨울 그리고 봄'의 촬영지이기도 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "1721년 완공 경북 저수지, 이진표 공덕비",
+     "difWhy": "'이진표 공덕비 못' — 여행 애호가",
+     "wor": 3,
+     "worWhy": "명소 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "물속에 능수버들과 왕버들 고목이 자라는 경북 내륙 저수지",
+     "difWhy": "물속 왕버들 저수지 — 여행 관심층",
+     "wor": 3,
+     "worWhy": "이름난 명소 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "조선 숙종 때인 1720년 8월 공사를 시작해 이듬해 10월 완공된 경북 내륙의 저수지입니다. 물속에 능수버들과 왕버들 고목 20여 그루가 자라는 이 못의 이름은 무엇일까요?",
+     "beforeExplanation": "김기덕 감독의 영화 '봄, 여름, 가을, 겨울 그리고 봄'의 촬영지이기도 합니다.",
+     "removedCue": "물속에 능수버들·왕버들 고목이 자라는 저수지",
+     "addedCue": "이진표 공덕비 + 가뭄에도 마르지 않은 못",
+     "why": "사진으로 유명한 물속 왕버들 풍경을 해설로 옮기고 축조·공덕비 세부로 바꿈"
+    },
+    "generalHint": "이 못은 주왕산국립공원 안에 있으며, 2013년 명승으로 지정되었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/주산지"
+    ],
+    "facts": [
+     {
+      "claim": "1720년 8월 착공, 1721년 10월 완공",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주산지",
+      "note": "조선 숙종 46년(1720년) 8월에 착공하여 이듬해인 경종 원년(1721년) 10월에 준공하였다(문서 요지)"
+     },
+     {
+      "claim": "물속에 능수버들·왕버들 20여 그루",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/주산지",
+      "note": "호수에는 고목의 능수버들과 왕버들 20여 그루가 물 속에 자생하고 있다"
+     },
+     {
+      "claim": "청송군 주왕산면, 저수지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주산지",
+      "note": "경상북도 청송군 주왕산면 주산지리 … 제방 길이 63m, 관개 면적 13.7ha"
+     },
+     {
+      "claim": "영화 촬영지",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/주산지",
+      "note": "김기덕 감독의 영화 \"봄, 여름, 가을, 겨울 그리고 봄\"의 촬영지이기도 하다."
+     },
+     {
+      "claim": "입구 바위의 이진표 공덕비(1771)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주산지",
+      "note": "주산지 입구 바위에는 영조 47년(1771년) 월성 이씨 이진표(李震杓) 공 후손들과 조세만(趙世萬)이 세운 주산지 제언(堤堰)에 공이 큰 이진표 공의 공덕비가 있다."
+     },
+     {
+      "claim": "가뭄에도 마르지 않음, 경종 원년 준공",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주산지",
+      "note": "주산지는 조선 숙종(1720년) 8월에 착공하여 그 이듬해인 경종원년 10월에 준공하였다. / 준공 이후 아무리 오랜 가뭄에도 물이 말라 바닥을 드러낸 적이 없고"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/주산지"
+    ],
+    "hintNote": "주왕산국립공원에 자리 잡고 있다 ... 명승 제105호 ... 2013년 3월 21일 지정",
+    "easiestCue": "1720~1721년 축조된 경북 내륙 저수지",
+    "targetWhy": "축조 연대·공덕비는 여행·지리 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 명소, 단서는 세부",
+    "pairCheck": null,
+    "dbCheck": "주산지 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/2#g005-K2-13",
+   "seed": {
+    "subject": "의림지",
+    "aspect": null,
+    "ref": "K2-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "가야금의 우륵이 쌓았다는 설도 전하는 저수지입니다. 조선 세조 때 정인지가 둑을 고쳤고, 1972년 홍수로 서쪽 둑이 무너졌다가 복구된 이 저수지는 무엇일까요?",
+    "answer": "의림지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "김제 벽골제·밀양 수산제와 함께 삼한 시대의 3대 수리시설로 꼽힙니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "우륵이 쌓았다는 설이 전하는 저수지",
+     "difWhy": "'우륵 축조설·정인지 수축' — 한국사 애호가",
+     "wor": 4,
+     "worWhy": "교과서 수리시설",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'호서'의 '호'가 가리키는 저수지",
+     "difWhy": "'호서 지명 유래' — 고교 지리·한국사",
+     "wor": 4,
+     "worWhy": "지명 유래 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "충청도를 이르는 '호서'의 '호(湖)'가 이 저수지를 가리킨다고 합니다. 가야금의 우륵이 쌓았다는 설도 전하는 이 저수지는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'호서'의 '호(湖)'가 가리키는 저수지",
+     "addedCue": "세조 때 정인지의 둑 보수 · 1972년 홍수로 서쪽 둑 붕괴",
+     "why": "'호서' 지명 유래는 고교 지리·한국사 수준 단서라 빼고, 보수 내력 세부로 바꿈"
+    },
+    "generalHint": "충청도를 일컫는 '호서'라는 말의 '호'가 이 저수지를 가리킨다고 한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/의림지"
+    ],
+    "facts": [
+     {
+      "claim": "우륵 축조설",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/의림지",
+      "note": "의림지는 우륵이 축조했다는 설과 현감 박의림이 축조했다는 설도 있으나, 삼한시대의 저수지로 보는 것이 정설이다."
+     },
+     {
+      "claim": "삼한시대 3대 수리시설",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/의림지",
+      "note": "김제의 벽골제·밀양의 수산제(守山堤)와 함께 삼한시대의 3대 수리시설로"
+     },
+     {
+      "claim": "세조 3년 정인지가 둑을 고침",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/의림지",
+      "note": "조선 세종 때와 세조 3년에 정인지가 둑을 고쳤다 (요지)"
+     },
+     {
+      "claim": "1972년 홍수로 서쪽 둑이 무너졌으나 복구",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/의림지",
+      "note": "1972년 홍수로 서쪽 둑이 무너졌으나 복구되었다 (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/의림지"
+    ],
+    "hintNote": "호서 지방의 호(湖)가 이 의림지를 가리킨다.",
+    "easiestCue": "우륵이 쌓았다는 설이 전하는 저수지",
+    "targetWhy": "우륵 축조설·정인지 보수는 한국사·답사 애호가 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'충청도 저수지'에서 교과서의 의림지를 바로 떠올리면 3으로 읽힐 수 있음",
+    "pairCheck": null,
+    "dbCheck": "의림지 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/2#g005-K2-14",
+   "seed": {
+    "subject": "동강",
+    "aspect": null,
+    "ref": "K2-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조양강과 오대천이 만나는 곳에서 영월의 합수거리까지 65km를 흐르는 강입니다. 강가 백운산 기슭 절벽에는 1979년 천연기념물이 된 백룡동굴이 있는데, 이 강은 무엇일까요?",
+    "answer": "동강",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "영월읍 동쪽에서 흘러든다는 데서 붙은 이름이며, 2000년 댐 건설 계획이 백지화된 뒤 일대가 생태계보존지역으로 지정되었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "조양강·오대천 합류에서 영월 합수거리까지 흐르는 강",
+     "difWhy": "'영월로 흐르는 강·백룡동굴' — 지리 관심층",
+     "wor": 3,
+     "worWhy": "지리 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "영월 댐 계획 2000년 백지화된 강",
+     "difWhy": "동강댐 백지화 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 환경 시사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "강원 영월에서 이 강을 막는 댐을 짓는 계획이 있었으나 환경단체와 국민의 반대로 2000년 백지화되었습니다. 강가 백운산 기슭 절벽에는 1979년 천연기념물이 된 백룡동굴이 있습니다. 이 강은 무엇일까요?",
+     "beforeExplanation": "영월읍 동쪽에서 흘러든다는 데서 붙은 이름이며, 댐 계획이 백지화된 뒤 일대가 생태계보존지역으로 지정되었습니다.",
+     "removedCue": "영월 댐 계획 2000년 백지화된 강",
+     "addedCue": "조양강·오대천 합류점~영월 합수거리 65km 구간",
+     "why": "뉴스로 알려진 동강댐 백지화를 해설로 옮기고 하천 구간 세부로 바꿈"
+    },
+    "generalHint": "영월의 명승 어라연이 이 강에 있고, 여름이면 래프팅 물길로도 붐빈다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/동강",
+     "https://ko.wikipedia.org/wiki/백룡동굴"
+    ],
+    "facts": [
+     {
+      "claim": "2000년 댐 건설 백지화, 생태계보존지역 지정",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/동강",
+      "note": "환경단체와 국민들의 반대로 2000년 건설이 백지화되자, 환경부에서는 이 일대를 생태계보존지역으로 지정하였다."
+     },
+     {
+      "claim": "백룡동굴은 동강 옆 백운산 기슭 절벽의 석회암 동굴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/백룡동굴",
+      "note": "동강 옆의 백운산 기슭 절벽에 있는 석회암 동굴이다."
+     },
+     {
+      "claim": "1979년 천연기념물 지정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/백룡동굴",
+      "note": "1979년 2월 10일 대한민국의 천연기념물로 지정되었다."
+     },
+     {
+      "claim": "이름 유래",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/동강",
+      "note": "동강(東江)은 영월군 영월읍 동편에서 유입되기에 붙여진 명칭이며"
+     },
+     {
+      "claim": "조양강과 오대천이 만나는 곳에서 영월 합수거리(서강 합류)까지, 길이 65km",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동강",
+      "note": "(요지) 조양강과 오대천이 만나는 지점에서 영월 서강에 합쳐지는 지점(영월 합수거리)까지의 강이다. 법정하천명으로는 한강 본류의 일부이며, 길이는 65km이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동강"
+    ],
+    "hintNote": "문서에는 어라연이 없음 — 어라연(명승, 영월 거운리 일대 동강)은 널리 알려진 사실",
+    "easiestCue": "강가 절벽에 백룡동굴이 있는 강",
+    "targetWhy": "백룡동굴·조양강 합류 구간은 지리·여행 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "동강댐 백지화를 기억하는 관심층이 있어 3으로 읽힐 수 있음",
+    "pairCheck": null,
+    "dbCheck": "동강 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/2#g005-K2-15",
+   "seed": {
+    "subject": "무등산",
+    "aspect": null,
+    "ref": "K2-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려 시대에는 '서석산'이라 불린 산입니다. 1966년 공군 부대가 정상 부근에 들어서 통제되었던 이 산의 인왕봉과 지왕봉은, 45년 만인 2011년 5월에야 일반에 열렸습니다. 이 산은 무엇일까요?",
+    "answer": "무등산",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이름은 광주의 고유 지명 '무들' 또는 '무돌'에서 비롯했다고 합니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "고려 시대 '서석산', 인왕봉·지왕봉 2011년 개방",
+     "difWhy": "'서석산 옛 이름·정상 개방' — 지역 지리 애호가",
+     "wor": 3,
+     "worWhy": "명산 내력 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "서석대와 입석대",
+     "difWhy": "'서석대·입석대' — 고교 지리",
+     "wor": 4,
+     "worWhy": "국립공원·주상절리 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "고려 시대에는 '서석산'이라 불렸습니다. 정상 서쪽의 서석대와 산허리 남쪽의 입석대에는 수직 절리의 바위가 석책을 두른 듯 치솟아 있습니다. 이 산은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "정상 서쪽 서석대·산허리 남쪽 입석대(수직 절리)",
+     "addedCue": "1966년 공군 부대 주둔 · 2011년 인왕봉·지왕봉 45년 만의 개방",
+     "why": "서석대·입석대는 고교 지리·관광 수준의 대표 경관이라 빼고, 정상부 군부대와 개방의 내력으로 바꿈"
+    },
+    "generalHint": "산허리 남쪽에는 수십 개의 돌기둥이 둘러선 입석대가 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/무등산"
+    ],
+    "facts": [
+     {
+      "claim": "고려 시대 서석산",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무등산",
+      "note": "고려 시대에는 서석산이라 불렸고, 불교 전래 후 '무등(無等)'이라는 이름이 쓰이게 되었다(문서 요지)"
+     },
+     {
+      "claim": "이름이 무들·무돌에서 비롯",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/무등산",
+      "note": "원지명은 광주의 고유지명인 무들 또는 무돌에서 비롯한다."
+     },
+     {
+      "claim": "1966년 공군부대 주둔으로 정상 부근 통제",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무등산",
+      "note": "1966년 공군부대가 주둔해서 정상 부근이 군사시설 보호구역으로 통제되는 바람에"
+     },
+     {
+      "claim": "2011년 5월 인왕봉·지왕봉 개방, 45년 만",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무등산",
+      "note": "2011년 5월 14일 인왕봉과 지왕봉이 개방되었다 … 1966년 군부대 주둔 이후 45년 만에"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/무등산"
+    ],
+    "hintNote": "산허리 남쪽에는 입석대가 있고",
+    "easiestCue": "1966년 공군 부대가 정상 부근에 들어선 산(옛 이름 서석산)",
+    "targetWhy": "옛 이름 서석산·정상 군부대·2011 개방은 등산·지리 애호가 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "광주 시민·등산 관심층에게 입석대는 익숙할 수 있음",
+    "pairCheck": null,
+    "dbCheck": "무등산 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/2#g005-K2-16",
+   "seed": {
+    "subject": "마이산",
+    "aspect": null,
+    "ref": "K2-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "신라 때는 서다산, 고려 때는 용출산, 조선 초기에는 속금산이라 불렸습니다. 한 봉우리의 정남향에 있는 은수사 경내에 청실배나무가 자라는 전북의 산은 어디일까요?",
+    "answer": "마이산",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "약 1억 년 전 자갈이 쌓여 만든 역암으로 이루어졌으며, 태종 때부터 말의 귀를 닮았다 하여 지금 이름으로 불려 왔습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "속금산, 은수사 청실배나무",
+     "difWhy": "'은수사·속금산' — 지리 관심층",
+     "wor": 3,
+     "worWhy": "명산 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "역암으로 이루어진 전북의 산",
+     "difWhy": "'전북 역암 산' — 고교 지리·지구과학",
+     "wor": 3,
+     "worWhy": "지명·지형 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "신라 때는 서다산, 고려 때는 용출산, 조선 초기에는 속금산이라 불렸습니다. 약 1억 년 전 자갈이 쌓여 만들어진 역암으로 이루어진 전북의 산은 어디일까요?",
+     "beforeExplanation": "태종 때부터 말의 귀를 닮았다 하여 지금 이름으로 불려 왔습니다.",
+     "removedCue": "약 1억 년 전 역암으로 이루어진 전북의 산",
+     "addedCue": "은수사 경내의 청실배나무",
+     "why": "지리·지구과학 단서 역암을 해설로 옮기고 옛 이름·은수사 세부로 좁힘"
+    },
+    "generalHint": "봉우리 남쪽 급경사면에는 바위 속부터 풍화되어 움푹 팬 크고 작은 굴, 타포니 지형이 보인다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/마이산"
+    ],
+    "facts": [
+     {
+      "claim": "신라 서다산, 고려 용출산, 조선 초기 속금산",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마이산",
+      "note": "이 산은 신라 시대에는 서다산(西多山), 고려 시대에는 용출산(龍出山), 조선 초기에는 속금산(束金山)이라고 불렀으며, 태종 때부터 본격적으로 말의 귀를 닮았다 하여 마이산이라 불리어 왔다."
+     },
+     {
+      "claim": "약 1억 년 전 자갈이 쌓여 만든 역암",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/마이산",
+      "note": "마이산은 약 1억년 전 자갈이 쌓여 만든 역암으로 구성되며"
+     },
+     {
+      "claim": "전북 진안",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마이산",
+      "note": "전북특별자치도 진안군 진안읍에 있는 산이다."
+     },
+     {
+      "claim": "은수사 청실배나무는 숫마이산 정남향 은수사 경내",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마이산",
+      "note": "진안군청에서 동쪽으로 4 km, 마령면사무소로부터 3 km 떨어진 숫마이산의 정남향에 있는 은수사의 경내에 자리잡고 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/마이산"
+    ],
+    "hintNote": "남쪽에서 보면 봉우리 중턱 급경사면에 움푹 팬 크고 작은 굴들이 보이는데 ... 이는 타포니 지형이다.",
+    "easiestCue": "옛 이름 속금산 · 은수사 청실배나무",
+    "targetWhy": "옛 이름·은수사 나무는 답사 애호가 수준 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 산의 몰랐던 옛 이름",
+    "pairCheck": null,
+    "dbCheck": "마이산 new",
+    "warn": []
+   }
+  }
+ ]
+}

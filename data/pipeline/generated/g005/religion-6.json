@@ -1,0 +1,197 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "religion/6",
+  "midKey": "religion",
+  "subName": "종교 의식·상징",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "religion/6#g005-H1-26",
+   "seed": {
+    "subject": "만다라",
+    "aspect": null,
+    "ref": "H1-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'착푸르'라 부르는 가는 관과 깔때기로 몇 주에 걸쳐 짓고 나서, 의식을 치르며 허무는 것이 있습니다. 심리학자 융은 매일 아침 공책에 작은 원 그림으로 이것을 그리며 인격의 전체인 '자기'의 표현으로 보았는데, 이것은 무엇일까요?",
+    "answer": "만다라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "티베트 불교에서는 허문 모래를 단지에 담아 비단에 싸서 흐르는 물에 흘려보내며, 물질적 삶이 덧없다는 가르침을 나타냅니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "융이 매일 원 그림으로 그린 '자기'의 표현",
+     "difWhy": "'융의 원 그림' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 불교·심리학 상징",
+     "acc": 3,
+     "accWhy": "종교·경전 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "티베트 불교 승려들이 색 모래로 완성한 뒤 허무는 것",
+     "difWhy": "모래 만다라 — 고교 미술·윤리 수준",
+     "wor": 4,
+     "worWhy": "교양 — 불교 상징 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "티베트 불교 승려들은 '착푸르'라는 가는 관과 깔때기로 색 모래를 몇 주에 걸쳐 깔아 이것을 완성한 뒤, 의식을 치르며 허물어 모래를 비단에 싸서 흐르는 물에 흘려보냅니다. 심리학자 융이 매일 아침 공책에 작은 원 그림으로 그리며 인격의 전체인 '자기'의 표현으로 본 이것은?",
+     "beforeExplanation": "이름은 산스크리트어로 '원'을 뜻하며, 모래를 허무는 의식은 물질적 삶이 덧없다는 불교의 가르침을 나타냅니다.",
+     "removedCue": "티베트 불교 승려들이 색 모래로 완성한 뒤 허묾",
+     "addedCue": "(남은 깊은 단서) 도구 이름 착푸르 · 융의 원 그림",
+     "why": "모래 만다라 장면을 해설로 옮기고 도구 이름·융의 해석으로 엮음"
+    },
+    "generalHint": "칼라차크라를 그린 것에는 신 722명이 담기며, 빛깔은 석고·붉은 사암·숯 같은 것을 빻아 낸다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sand_mandala",
+     "https://en.wikipedia.org/wiki/Mandala"
+    ],
+    "facts": [
+     {
+      "claim": "모래 만다라는 몇 주에 걸쳐 만듦, 착푸르(관·깔때기·긁개)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sand_mandala",
+      "note": "\"Sand mandalas traditionally take several weeks to build.\" … applied using small tubes, funnels, and scrapers, called chak-pur."
+     },
+     {
+      "claim": "의식적으로 허물고 모래를 단지에 담아 비단에 싸 흐르는 물에 놓아 줌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sand_mandala",
+      "note": "\"The destruction of a sand mandala is highly ceremonial.\" … the sand is collected in a jar, wrapped in silk, and taken to flowing water, where it is released."
+     },
+     {
+      "claim": "융이 매일 아침 공책에 작은 원형 그림을 그림, 자기·인격의 전체",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mandala",
+      "note": "\"I sketched every morning in a notebook a small circular drawing\" … the mandala as \"the Self, the wholeness of the personality.\""
+     },
+     {
+      "claim": "의식적으로 허물고 모래를 단지에 담아 비단에 싸 흐르는 물에 놓아 줌",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sand_mandala",
+      "note": "\"The destruction of a sand mandala is highly ceremonial.\" … the sand is collected in a jar, wrapped in silk, and taken to flowing water, where it is released."
+     },
+     {
+      "claim": "산스크리트어로 원, 허무는 의식은 물질적 삶의 덧없음 상징",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mandala",
+      "note": "\"Mandala\" is Sanskrit for \"circle.\" / Sand_mandala: \"to symbolize Buddhist doctrinal belief in the transitory nature of material life.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sand_mandala"
+    ],
+    "hintNote": "The Kalachakra Mandala for instance, contains 722 deities. / crushed gypsum, yellow ocher, red sandstone, and charcoal",
+    "easiestCue": "융이 '자기'의 표현으로 본 원 그림",
+    "targetWhy": "융의 만다라 해석은 심리학 대학 교양 — 4 노림",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "모래 만다라 의식은 다큐멘터리로 접한 관심층이 있어 3 일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "religion/6#g005-H1-27",
+   "seed": {
+    "subject": "성배",
+    "aspect": null,
+    "ref": "H1-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1180~1191년 무렵 크레티앵 드 트루아가 끝맺지 못한 이야기에서, 젊은 기사 페르스발은 어부왕의 신비한 성에서 식사하다 행렬이 이것을 들고 지나가는 모습을 봅니다. 문학에 처음 등장한 이 물건은 뒤에 로베르 드 보롱의 작품에서 아리마대 요셉의 이야기와 이어졌는데, 무엇일까요?",
+    "answer": "성배",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "스페인 발렌시아 대성당의 마노 잔은 15세기에야 성배와 이어진 기록이 나오며, 그 전에는 베드로가 로마로 가져갔다는 전승이 있었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "뒤에 로베르 드 보롱의 작품에서 아리마대 요셉의 이야기와 이어진 물건",
+     "difWhy": "아리마대 요셉과 이어진 물건 — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 아서왕 전설 핵심",
+     "acc": 3,
+     "accWhy": "종교·경전 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "뒤에 로베르 드 보롱의 작품에서 아리마대 요셉의 이야기와 이어진 물건",
+     "difWhy": "아리마대 요셉과 이어진 물건 — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 아서왕 전설 핵심"
+    },
+    "rewrite": null,
+    "generalHint": "바그너의 마지막 작품 '파르지팔'에서는 몬살바트의 기사들이 이 물건을 지킨다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Holy_Grail"
+    ],
+    "facts": [
+     {
+      "claim": "크레티앵의 『페르스발, 그라알 이야기』에 처음 등장, 1180~1191년 무렵, 미완",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Holy_Grail",
+      "note": "\"The subject is first featured in Perceval, le Conte du Graal\" by Chrétien … \"dated sometime between 1180 and 1191.\" It is unfinished"
+     },
+     {
+      "claim": "어부왕의 성에서 식사하며 행렬 속 그라알을 봄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Holy_Grail",
+      "note": "Perceval dines in the \"magical castle of the Fisher King,\" where he sees the grail carried in a procession."
+     },
+     {
+      "claim": "로베르 드 보롱 『아리마대 요셉』이 최후의 만찬 잔·요셉과 연결",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Holy_Grail",
+      "note": "Robert's Joseph d'Arimathie (composed 1191–1202) tells of \"the story of Joseph of Arimathea acquiring the chalice of the Last Supper.\""
+     },
+     {
+      "claim": "발렌시아 성작은 마노 접시, 15세기부터 기록, 베드로 로마 전승",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Holy_Grail",
+      "note": "\"an agate dish with a mounting for use as a chalice.\" Its link to the Grail is documented only from the 15th century … Earlier traditions told a different story, with Saint Peter taking it to Rome."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Parsifal"
+    ],
+    "hintNote": "his last composition ... the bells that draw the knights to the Grail ceremony at Monsalvat",
+    "easiestCue": "아리마대 요셉 이야기와 이어진, 페르스발이 어부왕의 성에서 본 물건",
+    "targetWhy": "정의(최후의 만찬 잔)를 빼고 아서왕 문학의 첫 등장 경위만 남김 — 중세 문학 애호가 → 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "성배는 누구나 아는 대상, 처음 등장한 작품은 교과 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

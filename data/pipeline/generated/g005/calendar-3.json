@@ -1,0 +1,190 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "calendar/3",
+  "midKey": "calendar",
+  "subName": "달력·역법",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "calendar/3#g005-L3-15",
+   "seed": {
+    "subject": "그레고리력",
+    "aspect": null,
+    "ref": "L3-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "알로이시우스 릴리우스가 낸 안을 바탕으로 만들어진 달력입니다. 그리스는 1923년 유럽에서 가장 늦게 이 달력을 민간용으로 받아들였습니다. 이 달력은 무엇일까요?",
+    "answer": "그레고리력",
+    "acceptedAnswers": [
+     "그레고리오력"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '그레고리력', '그레고리오력' 넘겨주기 확인(API)",
+    "explanation": "1582년 2월 24일자 교황 칙서 '인테르 그라비시마스'로 시행되었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "알로이시우스 릴리우스 안을 바탕으로 한 달력",
+     "difWhy": "'릴리우스 달력' — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 역법 기본",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "영국이 1752년 들여오며 11일을 없앤 달력",
+     "difWhy": "'1752 영국 11일 삭제 달력' — 고교 세계사",
+     "wor": 5,
+     "worWhy": "교과 — 지금 쓰는 달력"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "알로이시우스 릴리우스가 낸 안을 바탕으로 만들어진 달력입니다. 영국과 그 식민지는 1752년 9월에야 이 달력을 들여오며 그달에서 11일을 없앴고, 그리스는 1923년 유럽에서 가장 늦게 민간용으로 받아들였습니다. 이 달력은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "영국이 1752년 들여오며 11일을 없앰",
+     "addedCue": "(새로 넣지 않음) 릴리우스 안 · 그리스 1923",
+     "why": "고교 세계사의 1752 영국 11일 삭제를 빼고 릴리우스·그리스 도입으로 좁힘"
+    },
+    "generalHint": "이 달력으로 바꾸면서 1582년 10월 4일 목요일 다음 날을 10월 15일 금요일로 삼았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gregorian_calendar"
+    ],
+    "facts": [
+     {
+      "claim": "릴리우스의 안이 바탕",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gregorian_calendar",
+      "note": "Lilius's proposal included reducing the number of leap years in four centuries from 100 to 97."
+     },
+     {
+      "claim": "그리스가 1923년 유럽에서 마지막으로 민간용 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gregorian_calendar",
+      "note": "Greece being the last European country to adopt the calendar (for civil use only) in 1923."
+     },
+     {
+      "claim": "1582년 2월 24일 칙서 인테르 그라비시마스",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gregorian_calendar",
+      "note": "It was instituted by the papal bull Inter gravissimas dated 24 February 1582 by Pope Gregory XIII."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gregorian_calendar"
+    ],
+    "hintNote": "Thursday 4 October 1582 was followed by Friday 15 October 1582.",
+    "easiestCue": "알로이시우스 릴리우스의 안이 바탕인 달력",
+    "targetWhy": "릴리우스는 역법 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'뒤늦게 들여온 달력'이라는 틀만으로 그레고리력을 떠올릴 사람이 있음",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "calendar/3#g005-L3-16",
+   "seed": {
+    "subject": "서머타임",
+    "aspect": null,
+    "ref": "L3-16",
+    "pairedWith": 834
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 834,
+    "question": "1895년 뉴질랜드의 곤충학자 조지 허드슨은 교대 근무를 마친 뒤 곤충을 채집할 시간을 더 얻으려고 이 제도를 제안했습니다. 1908년 5월 1일 캐나다 온타리오주의 포트아서와 포트윌리엄이 도시 단위로 세계에서 처음 시행한 이 제도는 무엇일까요?",
+    "answer": "서머타임",
+    "acceptedAnswers": [
+     "일광 절약 시간제"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '일광 절약 시간제', '서머타임' 넘겨주기 확인(API)",
+    "explanation": "1916년 4월 30일 독일 제국과 오스트리아-헝가리가 전쟁 중 석탄을 아끼려고 처음 나라 전체에 시행했습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "엮음: 시간을 더 얻으려 제안한 제도 + 도시 단위 시행",
+     "difWhy": "'일광 시간 제도' — 생활 관심층",
+     "wor": 3,
+     "worWhy": "제도 기원 이야깃거리",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "전쟁 중 석탄을 아끼려 낮 시간 활용 제도",
+     "difWhy": "일광 절약 시간제 — 방송·뉴스에서 흔히",
+     "wor": 4,
+     "worWhy": "교양 — 생활 제도"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1895년 뉴질랜드의 곤충학자 조지 허드슨은 교대 근무를 마친 뒤 곤충을 채집할 낮 시간을 아껴 이 제도를 제안했습니다. 1916년 4월 30일 독일 제국과 오스트리아-헝가리가 전쟁 중 석탄을 아끼려고 처음 나라 전체에 시행한 이 제도는 무엇일까요?",
+     "beforeExplanation": "도시 단위로는 1908년 5월 1일 캐나다 온타리오주의 포트아서와 포트윌리엄이 세계에서 처음 시행했습니다.",
+     "removedCue": "전쟁 중 석탄을 아끼려고 처음 나라 전체에 시행한 제도(1916 독일)",
+     "addedCue": "1908년 포트아서·포트윌리엄의 첫 도시 단위 시행",
+     "why": "뉴스·교양으로 흔한 독일 전시 시행을 해설로 옮기고 첫 시행 도시 세부로 바꿈"
+    },
+    "generalHint": "1784년 벤저민 프랭클린은 파리 사람들이 일찍 일어나면 양초를 아낀다는 풍자 편지를 썼지만, 시계를 바꾸자고 하지는 않았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Daylight_saving_time"
+    ],
+    "facts": [
+     {
+      "claim": "1895년 뉴질랜드 곤충학자 허드슨이 제안, 교대 근무 뒤 곤충 채집",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Daylight_saving_time",
+      "note": "Hudson, a New Zealand entomologist, is credited with the first modern DST proposal (1895). His shift-work job gave him spare time to collect insects and led him to value after-hours daylight."
+     },
+     {
+      "claim": "1916년 4월 30일 독일·오스트리아-헝가리가 석탄 절약으로 처음 전국 시행",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Daylight_saving_time",
+      "note": "The German Empire and Austria-Hungary were the first nations to adopt DST nationwide ... commencing on 30 April 1916, as a way to conserve coal during wartime."
+     },
+     {
+      "claim": "1908년 5월 1일 포트아서·포트윌리엄이 세계 첫 도시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Daylight_saving_time",
+      "note": "Port Arthur and Fort William, Ontario were the first cities in the world to enact DST, on 1 May 1908."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Daylight_saving_time"
+    ],
+    "hintNote": "if Parisians could only wake up earlier in the summer they would economize on candle and oil usage ... Franklin did not propose changing the clocks",
+    "easiestCue": "허드슨이 곤충 채집 시간을 위해 제안한 제도",
+    "targetWhy": "허드슨 제안·포트아서 첫 시행은 제도사 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "제도는 누구나 알고, 기원 세부는 애호가 수준",
+    "pairCheck": "1회차(#834)는 시계를 한 시간 앞당기는 정의·한국 1988년 중단, 해설은 에너지 효과 논란 — 허드슨·1916년 독일은 1회차에 없다",
+    "dbCheck": "pair-or-different — #834 와 같은 답, (가) 2회차",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

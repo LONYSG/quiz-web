@@ -1,0 +1,470 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "combat-athletics/4",
+  "midKey": "combat-athletics",
+  "subName": "수영·수상 종목",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "combat-athletics/4#g005-S3-01",
+   "seed": {
+    "subject": "돌핀킥",
+    "aspect": null,
+    "ref": "S3-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국의 데이비드 버코프는 배영 출발 뒤 물속에 오래 머물며 이 발차기로 나아가, 그 출발법에 '버코프 블래스트오프'라는 이름이 붙었습니다. 1988년 서울 올림픽 뒤 국제수영연맹은 물속으로 나아갈 수 있는 거리를 한동안 10m로 묶었는데, 이 발차기는 무엇일까요?",
+    "answer": "돌핀킥",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "물속 거리 한도는 1991년 출발과 턴 뒤 15m로 늘어났습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "배영 출발 뒤 물속에서 나아가는 이 발차기",
+     "difWhy": "'배영 출발 뒤 물속 발차기' — 수영 관심층",
+     "wor": 3,
+     "worWhy": "수영 기본 기술 이야깃거리",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "물고기를 흉내 낸 물속 발차기",
+     "difWhy": "'물고기 흉내 발차기' — 수영 관심층",
+     "wor": 4,
+     "worWhy": "수영 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "미국의 데이비드 버코프는 배영 출발 뒤 물속에 오래 머물며 이 발차기로 나아가, 그 출발법에 '버코프 블래스트오프'라는 이름이 붙었습니다. 1988년 서울 올림픽 뒤 국제수영연맹은 물속으로 나아갈 수 있는 거리를 한동안 10m로 묶었습니다. 1930년대 미국의 잭 시그가 물고기를 흉내 내어 선보였다는 이 발차기는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1930년대 잭 시그가 물고기를 흉내 낸 발차기",
+     "addedCue": "(남은 깊은 단서) 버코프 블래스트오프 · 서울 올림픽 뒤 10m 제한",
+     "why": "이름 뜻을 바로 일러 주는 물고기 흉내 단서를 뺌"
+    },
+    "generalHint": "1984년 LA 올림픽에서 일본의 스즈키 다이치는 이것으로 물속 25m를 나아갔고, 4년 뒤 서울에서 100m 배영 금메달을 땄다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/David_Berkoff"
+    ],
+    "facts": [
+     {
+      "claim": "버코프의 물속 출발이 '버코프 블래스트오프'로 불렸고 물결치는 돌핀킥을 썼다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/David_Berkoff",
+      "note": "the eponymous \"Berkoff Blastoff\" ... an undulating or wavelike aerodynamic dolphin kick to provide thrust and build speed"
+     },
+     {
+      "claim": "1988 서울 올림픽 뒤 FINA가 한동안 10m 한도를 두었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/David_Berkoff",
+      "note": "a limit of 10 meters was initially set for a few years by FINA officials (after the 1988 Games)"
+     },
+     {
+      "claim": "1991년 한도가 출발과 턴 뒤 15m로 늘었다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/David_Berkoff",
+      "note": "the distance limit increased to 15 meters at the start and after the turns (1991)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Daichi_Suzuki"
+    ],
+    "hintNote": "underwater dolphin kick ... Suzuki swam 25 meters underwater at the 1984 Los Angeles Olympics / won the gold medal in the 100-meter backstroke at the 1988 Seoul Olympics",
+    "easiestCue": "'버코프 블래스트오프'의 물속 발차기",
+    "targetWhy": "버코프·10m 규정은 수영 애호가 세부 — 4 노림",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "돌핀킥은 누구나 들어 본 말, 묻는 것은 규칙 변화의 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "돌핀킥 new (활성·초안 없음). 4339(평영 — 암브루스터 팔 동작)와 정답이 다르다",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "combat-athletics/4#g005-S3-02",
+   "seed": {
+    "subject": "아메리카스컵",
+    "aspect": null,
+    "ref": "S3-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1851년 영국 와이트섬을 한 바퀴 도는 요트 경주에서, 뉴욕 요트 클럽 회원들이 가진 스쿠너 한 척이 영국 왕립 요트 스쿼드론의 배 15척을 이겼습니다. 처음 'R.Y.S. 100파운드 컵'이라 불리던 트로피는 그 뒤 우승한 배의 이름을 따 새 이름을 얻었습니다. 이 트로피를 걸고 겨루는 요트 대회는 무엇일까요?",
+    "answer": "아메리카스컵",
+    "acceptedAnswers": [
+     "아메리카 컵"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '아메리카 컵', '아메리카스컵'은 넘겨주기 — 둘 다 넣음",
+    "explanation": "이 첫 경주는 빅토리아 여왕과 훗날의 에드워드 7세가 지켜봤습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "우승한 배의 이름을 따 새 이름을 얻은 요트 트로피",
+     "difWhy": "1851 와이트섬 경주 트로피 — 요트 애호가",
+     "wor": 3,
+     "worWhy": "스포츠 역사 이야깃거리",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "우승한 배의 이름을 따 새 이름을 얻은 요트 트로피",
+     "difWhy": "1851 와이트섬 경주 트로피 — 요트 애호가",
+     "wor": 3,
+     "worWhy": "스포츠 역사 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "1983년 오스트레일리아 2호가 이기기 전까지 이 트로피를 지킨 뉴욕 요트 클럽의 우승 행진은 132년이나 이어졌다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/America%27s_Cup",
+     "https://ko.wikipedia.org/wiki/아메리카스컵"
+    ],
+    "facts": [
+     {
+      "claim": "1851년 와이트섬 일주 경주",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/America%27s_Cup",
+      "note": "was first raced for on 22 August 1851 around the Isle of Wight off Southampton and Portsmouth in Hampshire, England"
+     },
+     {
+      "claim": "뉴욕 요트 클럽 회원 소유 스쿠너가 왕립 요트 스쿼드론 15척을 이겼다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/America%27s_Cup",
+      "note": "The winning yacht was a schooner called America, owned by a syndicate of members from the New York Yacht Club ... against 15 yachts of the Royal Yacht Squadron"
+     },
+     {
+      "claim": "처음 이름은 R.Y.S. £100 Cup, 지금 이름은 우승 요트에서 따왔다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/America%27s_Cup",
+      "note": "R.Y.S. £100 Cup ... Today, the trophy is officially known as the \"America's Cup\" after the 1851 winning yacht"
+     },
+     {
+      "claim": "빅토리아 여왕과 훗날의 에드워드 7세가 지켜봤다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/America%27s_Cup",
+      "note": "was witnessed by Queen Victoria and the future Edward VII"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/America%27s_Cup"
+    ],
+    "hintNote": "the NYYC's 132-year reign was the longest (in terms of time) winning streak in any sport. / the team behind Australia II won the 25th America's Cup",
+    "easiestCue": "1851년 와이트섬 경주에서 이긴 미국 배 이름을 딴 요트 트로피",
+    "targetWhy": "대회 이름은 들어 봤어도 이름의 유래(배 이름)는 요트·스포츠사 애호가가 안다 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'미국의 컵'이 아니라 배 이름이라는 뜻밖의 유래",
+    "pairCheck": null,
+    "dbCheck": "아메리카스컵 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "combat-athletics/4#g005-S3-03",
+   "seed": {
+    "subject": "아이언맨",
+    "aspect": null,
+    "ref": "S3-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1977년 하와이 오아후섬의 한 이어달리기 대회 시상식에서, 달리기 선수와 수영 선수 가운데 누가 더 체력이 좋은가 하는 오랜 논쟁이 벌어졌습니다. 해군 중령 존 콜린스는 섬에서 이미 열리던 장거리 대회 셋을 하나로 잇자고 하며, 맨 먼저 들어오는 사람을 부를 이름도 정했습니다. 그 이름을 그대로 딴 이 대회는 무엇일까요?",
+    "answer": "아이언맨",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1978년부터 1980년까지는 오아후섬에서 열렸고, 자전거 구간은 마라톤 출발점과 잇느라 3마일 줄였습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "맨 먼저 들어오는 사람을 부를 이름(철인 대회)",
+     "difWhy": "철인 3종 대회 이름 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대회 기원",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "맨 먼저 들어오는 사람을 부를 이름(철인 대회)",
+     "difWhy": "철인 3종 대회 이름 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대회 기원"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "정답이 대회·종목 이름 자체라 '섬의 장거리 대회 셋을 하나로'와 '맨 먼저 들어온 사람의 이름'을 빼면 무엇을 묻는지 유일하지 않고, 남기면 바로 풀림"
+    },
+    "generalHint": "1981년부터는 하와이 빅아일랜드로 옮겨 열렸고, 2023년부터 세계 선수권은 프랑스 니스와 번갈아 열린다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ironman_Triathlon",
+     "https://en.wikipedia.org/wiki/Ironman_World_Championship"
+    ],
+    "facts": [
+     {
+      "claim": "1977년 오아후 둘레 이어달리기 시상식에서 달리기·수영 선수 중 누가 더 체력이 좋은가 논쟁",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ironman_Triathlon",
+      "note": "arose during the awards ceremony for the 1977 Oʻahu Perimeter Relay ... had long been debating which athletes were more fit, runners or swimmers"
+     },
+     {
+      "claim": "해군 중령 존 콜린스가 섬의 기존 장거리 대회 셋을 합치자고 했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ironman_Triathlon",
+      "note": "Navy Commander John Collins proposed settling the debate with a race combining the island's three existing long-distance events"
+     },
+     {
+      "claim": "우승자를 Iron Man 이라 부르자고 했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ironman_Triathlon",
+      "note": "Whoever finishes first, we'll call him the Iron Man."
+     },
+     {
+      "claim": "1978~1980 오아후에서 열렸고 자전거 구간을 3마일 줄였다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ironman_World_Championship",
+      "note": "from 1978 through 1980 the race was held on Oahu ... The bike leg was shortened by 3 miles to connect it to the start of the marathon course"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ironman_World_Championship"
+    ],
+    "hintNote": "In 1981 the race was moved to the less urbanized Big Island. / Since 2023, the men's and women's Ironman World Championships have been split and alternated between Nice, France, and Kona, Hawaii.",
+    "easiestCue": "하와이에서 장거리 대회 셋을 이어 붙인 대회 + 우승자를 부를 이름",
+    "targetWhy": "질문에 수영·자전거·마라톤 구성과 '철인'을 쓰지 않았다 — 대회의 탄생 이야기는 애호가 수준",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'하와이 + 대회 셋을 이음'에서 철인 3종을 떠올리면 관심층도 닿을 수 있다",
+    "pairCheck": null,
+    "dbCheck": "아이언맨 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "combat-athletics/4#g005-S3-04",
+   "seed": {
+    "subject": "펠프스",
+    "aspect": null,
+    "ref": "S3-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 메릴랜드주 타우슨의 로저스 포지 동네에서 자란 이 수영 선수는, 누나들의 영향으로 일곱 살 때 수영을 시작했고 6학년 때 주의력결핍 과잉행동장애(ADHD) 진단을 받았습니다. 어머니가 중학교 교장인 이 선수는 누구일까요?",
+    "answer": "펠프스",
+    "acceptedAnswers": [
+     "마이클 펠프스"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '마이클 펠프스' — 한국 보도는 '펠프스'로 흔히 부름. 대표를 짧은 쪽(A3)으로, 전체 이름을 복수 정답으로",
+    "explanation": "그는 열한 살 때부터 북볼티모어 수영 클럽의 밥 보먼 코치에게 배웠습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "6학년 때 ADHD 진단을 받은 미국 수영 선수",
+     "difWhy": "'ADHD 진단 수영 선수' — 수영 애호가",
+     "wor": 3,
+     "worWhy": "누구나 아는 선수의 성장 일화",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "볼티모어 출신, 밥 보먼 코치에게 배운 수영 선수",
+     "difWhy": "볼티모어·보먼 — 수영 관심층",
+     "wor": 3,
+     "worWhy": "유명 인물 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "미국 메릴랜드주 볼티모어에서 태어난 이 수영 선수는 어린 시절 주의력결핍 과잉행동장애(ADHD) 진단을 받았습니다. 그는 열한 살 때부터 북볼티모어 수영 클럽의 밥 보먼 코치에게 배웠고, 다른 사람 밑에서는 헤엄치지 않겠다고 말하기도 했습니다. 이 선수는 누구일까요?",
+     "beforeExplanation": "그는 볼티모어 가까운 타우슨의 로저스 포지 동네에서 자랐습니다.",
+     "removedCue": "볼티모어 출신 · 밥 보먼 코치에게 배움 · 다른 코치 밑에선 안 헤엄침",
+     "addedCue": "로저스 포지 동네 · 누나들 영향으로 7살 시작 · 어머니 중학교 교장",
+     "why": "대표 정체(볼티모어 · 보먼)를 빼고 성장기 세부를 엮음"
+    },
+    "generalHint": "물담뱃대를 문 사진이 퍼진 뒤 그는 켈로그 후원을 잃고 미국수영연맹에서 석 달 출전 정지를 받았다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Michael_Phelps",
+     "https://ko.wikipedia.org/wiki/마이클_펠프스"
+    ],
+    "facts": [
+     {
+      "claim": "볼티모어 근처 타우슨의 로저스 포지 동네에서 자람",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michael_Phelps",
+      "note": "Phelps was born in Baltimore, Maryland, and raised in the Rodgers Forge neighborhood of nearby Towson."
+     },
+     {
+      "claim": "6학년 때 ADHD 진단",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michael_Phelps",
+      "note": "When Phelps was in the sixth grade, he was diagnosed with attention deficit hyperactivity disorder (ADHD)."
+     },
+     {
+      "claim": "11살 때부터 북볼티모어 수영 클럽의 밥 보먼에게 배웠다",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/마이클_펠프스",
+      "note": "북볼티모어 수영 클럽의 밥 보먼 코치와 11세 때 만나 그의 지도 아래 수영을 본격적으로 배우기 시작했다. (en: Phelps has trained under Bob Bowman since he was 11 years old.)"
+     },
+     {
+      "claim": "누나들의 영향으로 7살 때 수영 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michael_Phelps",
+      "note": "(요지) He began swimming at age seven, partly because of the influence of his sisters."
+     },
+     {
+      "claim": "어머니 데비 펠프스는 중학교 교장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michael_Phelps",
+      "note": "(요지) His mother, Debbie Phelps, is a middle school principal."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Michael_Phelps"
+    ],
+    "hintNote": "this resulted in the loss of Kellogg's as a sponsor, as well as a three-month suspension by USA Swimming.",
+    "easiestCue": "ADHD 진단을 받은 미국 수영 선수",
+    "targetWhy": "ADHD는 관심층도 아는 편이나 로저스 포지 · 어머니 교장과 엮어야 확정 — 4(경계)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "ADHD 일화가 방송에도 꽤 나와 관심층 3 으로 읽힐 수 있다",
+    "pairCheck": null,
+    "dbCheck": "펠프스 · 마이클 펠프스 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "combat-athletics/4#g005-S3-05",
+   "seed": {
+    "subject": "조오련",
+    "aspect": null,
+    "ref": "S3-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "전라남도 해남 출신의 이 수영 선수는 1970년과 1974년 아시안 게임에서 자유형 400m·1500m를 잇달아 우승했습니다. 2008년에는 독도 둘레를 33바퀴 헤엄쳐 도는 일도 해냈는데, 이 선수는 누구일까요?",
+    "answer": "조오련",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1980년 대한해협을 헤엄쳐 건넜고, '아시아의 물개'라는 별명으로 불렸습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "독도 둘레를 33바퀴 헤엄친 수영 선수",
+     "difWhy": "'독도 33바퀴 수영' — 스포츠 관심층",
+     "wor": 3,
+     "worWhy": "국민 스포츠 영웅 이야기",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "1980년 대한해협을 헤엄쳐 건넌 수영 선수",
+     "difWhy": "대한해협 횡단 수영 선수 — 방송·뉴스",
+     "wor": 3,
+     "worWhy": "유명 인물 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "전라남도 해남 출신의 이 수영 선수는 1980년 대한해협을 헤엄쳐 건넜고, 2002년에 다시 건넜습니다. 2008년에는 독도 둘레를 33바퀴 헤엄쳐 도는 일도 해냈습니다. 이 선수는 누구일까요?",
+     "beforeExplanation": "1970년과 1974년 아시안 게임에서 자유형 400m·1500m를 잇달아 우승해 '아시아의 물개'라는 별명을 얻었습니다.",
+     "removedCue": "1980년 대한해협 횡단",
+     "addedCue": "1970·1974 아시안 게임 자유형 400m·1500m 우승(해설에서 옮김)",
+     "why": "대한해협 횡단이 방송·뉴스 수준 충분 단서라 해설로 내리고 출신·아시안 게임·독도 일주를 엮음"
+    },
+    "generalHint": "차남 조성모도 수영 선수였고, 그는 2009년 8월 심장마비로 쓰러져 세상을 떠났다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/조오련"
+    ],
+    "facts": [
+     {
+      "claim": "전라남도 해남 출신",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/조오련",
+      "note": "전라남도 해남군 출신 (해남면 학동리 출생)"
+     },
+     {
+      "claim": "1980년 대한해협 횡단, 2002년 다시 횡단",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/조오련",
+      "note": "1980년 대한해협(48km) 13시간 16분 횡단 / 2002년 대한해협을 다시 횡단"
+     },
+     {
+      "claim": "2008년 독도 33바퀴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/조오련",
+      "note": "독도 33바퀴 헤엄쳐 돌기 프로젝트를 성공시켰다 (2008년)"
+     },
+     {
+      "claim": "1970·1974 아시안 게임 자유형 400m·1500m 금메달로 '아시아의 물개'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/조오련",
+      "note": "1970년 방콕 대회 자유형 400m와 1500m 금메달, 1974년 테헤란 대회 자유형 400m와 1500m 금메달 ... '아시아의 물개'란 별명을 얻었고"
+     },
+     {
+      "claim": "1970·1974 아시안 게임 자유형 400m·1500m 금메달로 '아시아의 물개'",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/조오련",
+      "note": "1970년 방콕 대회 자유형 400m와 1500m 금메달, 1974년 테헤란 대회 자유형 400m와 1500m 금메달 ... '아시아의 물개'란 별명을 얻었고"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/조오련"
+    ],
+    "hintNote": "슬하에는 장남인 조성웅과 차남이자 전 수영 선수인 조성모가 있다. / 2009년 8월 4일 … 심장마비로 갑작스럽게 쓰러진 후",
+    "easiestCue": "2008년 독도 둘레 33바퀴를 헤엄친 수영 선수",
+    "targetWhy": "독도 일주와 아시안 게임 2관왕 내력은 스포츠 관심층~애호가 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "중장년에게는 대한해협 횡단이 널리 알려진 뉴스라 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "조오련 new",
+    "warn": []
+   }
+  }
+ ]
+}

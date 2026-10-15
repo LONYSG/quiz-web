@@ -1,0 +1,108 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "philosophy/4",
+  "midKey": "philosophy",
+  "subName": "동양 사상",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/4#g005-H2-18",
+   "seed": {
+    "subject": "한비자",
+    "aspect": null,
+    "ref": "H2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "말을 더듬어 말로 따지는 데는 서툴렀지만 글을 잘 썼던 이 사상가의 글을 읽은 진나라 왕은 \"이 사람을 만나 사귈 수 있다면 죽어도 여한이 없겠다\"고 했습니다. 그러나 끝내 옛 동문 이사의 강요로 독을 마시고 죽은 이 사람은 누구일까요?",
+    "answer": "한비자",
+    "acceptedAnswers": [
+     "한비"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '한비' 문서 — '다른 이름으로는 한비자로도 불리나' · 대표는 한국에서 흔히 부르는 한비자",
+    "explanation": "그는 뒷날 진나라 승상이 되는 이사와 함께 순자 밑에서 배웠습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "옛 동문 이사의 강요로 독을 마시고 죽은 사상가",
+     "difWhy": "이사와 한비자 — 대학 교양 동양사",
+     "wor": 4,
+     "worWhy": "교양 — 법가 사상가",
+     "acc": 4,
+     "accWhy": "철학·사상 — 고교 윤리 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "옛 동문 이사의 강요로 독을 마시고 죽은 사상가",
+     "difWhy": "이사와 한비자 — 대학 교양 동양사",
+     "wor": 4,
+     "worWhy": "교양 — 법가 사상가"
+    },
+    "rewrite": null,
+    "generalHint": "그의 책에는 잠든 군주에게 옷을 덮어 준 신하와 옷 맡은 신하를 함께 벌한 이야기가 실려 있다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Han_Fei",
+     "https://ko.wikipedia.org/wiki/한비"
+    ],
+    "facts": [
+     {
+      "claim": "말을 더듬어 논쟁에 서툴렀지만 글을 잘 씀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Han_Fei",
+      "note": "He was born a stutterer and was not able to dispute well, but he was good at writing papers."
+     },
+     {
+      "claim": "진왕이 '만나 사귈 수 있다면 죽어도 여한이 없겠다'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Han_Fei",
+      "note": "King Ying Zheng of Qin … said, \"If I can meet and make friends with this person [Han Fei], I may die without regrets.\""
+     },
+     {
+      "claim": "이사가 독을 마시고 죽게 강요",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Han_Fei",
+      "note": "not before Li Si forced him to commit suicide by drinking poison."
+     },
+     {
+      "claim": "이사와 함께 순자 밑에서 배움",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Han_Fei",
+      "note": "studied together with future Qin chancellor Li Si under the Confucian philosopher Xun Kuang"
+     },
+     {
+      "claim": "호칭",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/한비",
+      "note": "한비는 《한비자》를 저술한 전국 시대 중국의 정치철학자 … 다른 이름으로는 한비자로도 불리나 한비자는 보통 그의 저서로만 불리고 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Han_Feizi"
+    ],
+    "hintNote": "(문서 요약) a ruler's attendant who covers a sleeping ruler with a robe and is executed for overstepping his office, while the keeper of the robe is executed for failing his duty",
+    "easiestCue": "동문 이사의 강요로 독을 마신 사상가",
+    "targetWhy": "교과서 단서(법가 집대성 · 순자의 제자 · 법·술·세)를 빼고 생애 일화만 — 대학 교양 중국 사상사(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서에 나오는 이름, 교과서 밖 일화",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (법가 #2466·#3800 은 다른 답·다른 지식 — 학파 정의)",
+    "warn": []
+   }
+  }
+ ]
+}

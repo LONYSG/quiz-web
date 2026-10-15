@@ -1,0 +1,101 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "esports/5",
+  "midKey": "esports",
+  "subName": "게임 용어",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "esports/5#g005-M2-17",
+   "seed": {
+    "subject": "그라디우스",
+    "aspect": "팬 세부",
+    "ref": "M2-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 일본 게임사의 하시모토 가즈히사는 '그라디우스'를 가정용 게임기로 옮기던 중, 테스트하며 끝까지 깨기가 너무 어렵자 무기를 한꺼번에 채워 주는 비밀 입력을 넣었습니다. 출시 전에 지워야 했지만 그대로 남은 이 입력은, 뒤에 그 회사의 여러 게임에 이어졌습니다. 이 입력을 무엇이라 부를까요?",
+    "answer": "코나미 커맨드",
+    "acceptedAnswers": [
+     "코나미 코드"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '코나미 커맨드' (영어 Konami Command, Konami Code) — '코드'는 영문 별칭의 직역",
+    "explanation": "양산을 앞두고서야 남은 것이 발견되었고, 지우면 새 버그가 생길까 봐 그대로 두었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "'그라디우스' 이식 중 넣은 무기 채우기 비밀 입력",
+     "difWhy": "그라디우스 비밀 입력 — 게임 애호가",
+     "wor": 2,
+     "worWhy": "게임 내부 명칭",
+     "acc": 3,
+     "accWhy": "e스포츠·게임 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'그라디우스' 이식 중 넣은 무기 채우기 비밀 입력",
+     "difWhy": "그라디우스 비밀 입력 — 게임 애호가",
+     "wor": 2,
+     "worWhy": "게임 내부 명칭"
+    },
+    "rewrite": null,
+    "generalHint": "패미컴판 '콘트라'에서는 이 입력을 넣으면 목숨이 30개로 늘었다.",
+    "generalHintVersion": "hint-v4",
+    "layer": "팬 세부",
+    "genre": "게임",
+    "work": "그라디우스",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Konami_Code",
+     "https://ko.wikipedia.org/wiki/코나미_커맨드"
+    ],
+    "facts": [
+     {
+      "claim": "하시모토가 그라디우스 NES 이식 중 너무 어려워 풀 파워업 치트를 넣음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Konami_Code",
+      "note": "Kazuhisa Hashimoto created the code while developing the NES port of Gradius. He found the game \"too difficult to play through during testing,\" so he added a cheat that grants \"a full set of power-ups.\""
+     },
+     {
+      "claim": "지울 예정이었으나 남음, 버그 우려로 유지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Konami_Code",
+      "note": "The code was supposed to be removed before release, but the oversight wasn't caught until the game was being readied for mass production. The developers kept it, since removing it could have introduced new bugs."
+     },
+     {
+      "claim": "코나미 게임들에 나타나는 치트 코드",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/코나미_커맨드",
+      "note": "코나미 커맨드는 코나미의 비디오 게임들에서 나타나는 치트 코드의 일종이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Konami_Code"
+    ],
+    "hintNote": "it provided the player 30 lives in Contra in the NES version",
+    "easiestCue": "그라디우스 이식 때 넣은 비밀 입력",
+    "targetWhy": "입력 순서(↑↑↓↓)를 빼 게임 애호가가 유래로만 닿게 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "게임 용어로 널리 쓰이는 이름, 유래는 깊다",
+    "pairCheck": null,
+    "dbCheck": "코나미 커맨드 new · 이스터 에그(4398)와 다른 지식",
+    "warn": [
+     "단정어 끝까지"
+    ]
+   }
+  }
+ ]
+}

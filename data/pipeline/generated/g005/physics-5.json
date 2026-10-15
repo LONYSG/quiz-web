@@ -1,0 +1,97 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "physics/5",
+  "midKey": "physics",
+  "subName": "현대 물리",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "physics/5#g005-C2-07",
+   "seed": {
+    "subject": "터널 효과",
+    "aspect": null,
+    "ref": "C2-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1928년 조지 가모프는 원자핵의 알파 붕괴를 이 양자 현상으로 설명했습니다. 1957년 에사키 레오나는 이 현상을 이용한 다이오드를 만들어 1973년 노벨 물리학상을 함께 받았습니다. 이 현상은 무엇일까요?",
+    "answer": "터널 효과",
+    "acceptedAnswers": [
+     "터널링",
+     "양자 터널링"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '터널 효과', 첫 문장 '터널 효과 또는 터널링', '양자 터널링' 넘겨주기 확인",
+    "explanation": "오늘날 플래시 메모리도 이 현상으로 플로팅 게이트에 데이터를 씁니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "가모프가 알파 붕괴를 설명한 양자 현상",
+     "difWhy": "'알파 붕괴·에사키 다이오드' — 대학 교양 물리",
+     "wor": 4,
+     "worWhy": "현대 물리 기본 어휘",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "가모프가 알파 붕괴를 설명한 양자 현상",
+     "difWhy": "'알파 붕괴·에사키 다이오드' — 대학 교양 물리",
+     "wor": 4,
+     "worWhy": "현대 물리 기본 어휘"
+    },
+    "rewrite": null,
+    "generalHint": "1986년 노벨 물리학상을 받은 비니히와 로러의 현미경도 이 현상을 이용한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Quantum_tunnelling",
+     "https://ko.wikipedia.org/wiki/양자_터널링"
+    ],
+    "facts": [
+     {
+      "claim": "1928 가모프가 알파 붕괴를 터널링으로 설명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Quantum_tunnelling",
+      "note": "(the tunnelling explanation for alpha decay was) developed in 1928 by George Gamow"
+     },
+     {
+      "claim": "1957 에사키가 터널 효과 기반 다이오드 개발, 1973 노벨 물리학상 공동 수상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Quantum_tunnelling",
+      "note": "In 1957, Leo Esaki developed a diode based on the tunnel effect ... Esaki, Giaever and Josephson shared the 1973 Nobel Prize in Physics for their works on quantum tunnelling in solids."
+     },
+     {
+      "claim": "플래시 메모리 플로팅 게이트를 프로그래밍하는 기본 기술",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Quantum_tunnelling",
+      "note": "Tunnelling is a fundamental technique used to program the floating gates of flash memory."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Scanning_tunneling_microscope"
+    ],
+    "hintNote": "Its development in 1981 earned its inventors, Gerd Binnig and Heinrich Rohrer, then at IBM Zürich, the Nobel Prize in Physics in 1986.",
+    "easiestCue": "알파 붕괴를 설명한 양자 현상(가모프 1928)",
+    "targetWhy": "교과 정의(에너지 장벽을 뚫고 지나감)·주사 터널링 현미경(이름에 정답)은 뺐음 — 알파 붕괴·에사키 다이오드·플래시 메모리 연결은 대학 교양 현대 물리 → 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'양자 현상' + 다이오드만으로 터널을 떠올리는 이공계 독자가 있어 3 일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 없음",
+    "warn": []
+   }
+  }
+ ]
+}

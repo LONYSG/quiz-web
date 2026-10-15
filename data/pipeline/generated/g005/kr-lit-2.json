@@ -1,0 +1,373 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "kr-lit/2",
+  "midKey": "kr-lit",
+  "subName": "고전 시가",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-lit/2#g005-K3-19",
+   "seed": {
+    "subject": "도산십이곡",
+    "aspect": null,
+    "ref": "K3-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 명종 때 지어져 『청구영언』에 전하는 연시조입니다. 선조 때 장경세는 이 작품을 본받아 '강호연군가' 전후 12곡을 지었는데, 이 연시조는 무엇일까요?",
+    "answer": "도산십이곡",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "지은이는 이황으로, 앞의 여섯 곡은 자연 속에서 느끼는 마음을, 뒤의 여섯 곡은 학문을 닦고 수양하는 마음을 노래했다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "엮음: 명종 때 연시조 + 장경세가 본받은 '강호연군가' 전후 12곡",
+     "difWhy": "'강호연군가가 본받은 작품' — 수능 심화 문학",
+     "wor": 4,
+     "worWhy": "고전 시가 대표작 교양",
+     "acc": 5,
+     "accWhy": "한국 문학 — 중고교 국어 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "앞 여섯 곡 자연, 뒤 여섯 곡 학문 수양 연시조",
+     "difWhy": "이황 연시조 — 고교 국어",
+     "wor": 5,
+     "worWhy": "교과서 — 고전 시가"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "조선 명종 때 지어진 연시조로, 앞의 여섯 곡은 자연 속에서 느끼는 마음을, 뒤의 여섯 곡은 학문을 닦고 수양하는 마음을 노래했습니다. 선조 때 장경세는 이 작품의 영향을 받아 '강호연군가' 전후 12곡을 지었습니다. 이 연시조는 무엇일까요?",
+     "beforeExplanation": "지은이는 이황으로, 전후 각 6곡 모두 12장으로 나뉜다.",
+     "removedCue": "앞 여섯 곡 자연 · 뒤 여섯 곡 학문 수양(작품 구성 정의)",
+     "addedCue": "『청구영언』 수록 · 장경세 강호연군가(본받은 작품)",
+     "why": "교과 구성 정의를 해설로 옮기고 수록 문헌 + 영향받은 작품으로 좁힘"
+    },
+    "generalHint": "지은이는 1568년 경연에서 선조에게 유학의 대강을 풀이하려고 '성학십도'를 지었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/도산십이곡"
+    ],
+    "facts": [
+     {
+      "claim": "명종 때 이황이 지은 연시조",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/도산십이곡",
+      "note": "조선 명종 때 이황이 지은 연시조이다."
+     },
+     {
+      "claim": "전후 각 6곡, 앞은 자연 속 심정, 뒤는 학문·수양 심경",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/도산십이곡",
+      "note": "(요지) 전후 각 6곡, 모두 12장으로 나뉜다. 앞부분은 자연에서 느끼는 심정을, 뒷부분은 학문을 닦고 수양하는 심경을 노래한다."
+     },
+     {
+      "claim": "선조 때 장경세가 영향받아 강호연군가 전후 12곡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/도산십이곡",
+      "note": "(요지) 이 작품의 영향으로 선조 40년에 장경세가 〈강호연군가〉 전후 12곡을 지었다."
+     },
+     {
+      "claim": "『청구영언』에 전함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/도산십이곡",
+      "note": "(요지) 〈청구영언〉에 전한다."
+     },
+     {
+      "claim": "명종 때 지은 연시조",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/도산십이곡",
+      "note": "조선 명종 때 이황이 지은 연시조이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/성학십도"
+    ],
+    "hintNote": "퇴계 이황이 1568년 선조원년에 경연에서 선조에게 유학의 대강을 해설하고",
+    "easiestCue": "장경세가 '강호연군가'로 본받은 명종 때 연시조",
+    "targetWhy": "장경세 강호연군가 · 청구영언 수록은 고전 시가 심화 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'12곡' 숫자가 제목을 가리키는 힌트가 된다 — 3~4",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-lit/2#g005-K3-20",
+   "seed": {
+    "subject": "어부사시사",
+    "aspect": null,
+    "ref": "K3-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 시인이 65세 때인 1651년 가을, 은거하던 섬에 머물며 자신을 한 직업인에 빗대어 지은 연시조입니다. 계절마다 10수씩 묶어 모두 40수로 이루어져 있습니다. 이 작품은 무엇일까요?",
+    "answer": "어부사시사",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "윤선도가 보길도 부용동에 은거하며 지었고, 이현보의 '어부가' 같은 어부장가의 전통 속에서 창작했음을 스스로 밝혔다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "섬 은거 중 어부에 빗댄 계절별 40수 연시조",
+     "difWhy": "'계절 40수 어부 연시조' — 고교 문학",
+     "wor": 5,
+     "worWhy": "국어 교과 — 고전 시가",
+     "acc": 5,
+     "accWhy": "한국 문학 — 중고교 국어 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "섬 은거 중 어부에 빗댄 계절별 40수 연시조",
+     "difWhy": "'계절 40수 어부 연시조' — 고교 문학",
+     "wor": 5,
+     "worWhy": "국어 교과 — 고전 시가"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "확인되는 깊은 세부가 없다 — '섬 은거 중 어부에 빗댄 계절별 40수'가 작품의 정의 자체이고 이를 빼면 유일하지 않다(문서의 남은 사실은 윤선도·보길도 등 더 쉬운 단서뿐)"
+    },
+    "generalHint": "초장과 중장, 중장과 종장 사이마다 따로 후렴이 끼어 있어 계절별 열 수를 하나로 잇는다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/어부사시사"
+    ],
+    "facts": [
+     {
+      "claim": "윤선도가 보길도에 머물며 65세 때인 1651년 가을 자신을 어부에 비겨 지음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/어부사시사",
+      "note": "보길도에 머물면서 65세 때인 1651년 가을에 자신을 어부에 비겨 창작한 작품이다."
+     },
+     {
+      "claim": "전체 40수, 계절별 10수",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/어부사시사",
+      "note": "〈어부사시사〉(漁父四時詞)는 전체 40수로 이뤄진 윤선도의 대표작 / 각 계절별로 묶인 10수의 작품들"
+     },
+     {
+      "claim": "보길도 부용동 은거, 이현보 어부가 전통",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/어부사시사",
+      "note": "보길도의 부용동에 은거 했는데 / 이현보(李賢輔)의 〈어부가〉(漁父歌) 등 〈어부장가〉(漁父長歌)의 전통 속에서 창작된 것임을 확인할 수 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/어부사시사"
+    ],
+    "hintNote": "후렴이 평시조의 초·중장 사이와 중·종장 사이에 각각 덧붙어 ... 계절별 10수씩의 작품들을 하나의 흐름으로 묶어",
+    "easiestCue": "계절마다 10수씩 40수인 연시조",
+    "targetWhy": "윤선도·보길도·'지국총'(교과서 단서)을 모두 뺐다 — 40수 구성·창작 연도는 수능 심화",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'계절별' 이 '사시' 를 가리키고 '직업인' 에서 어부를 추리할 수 있어 3~4",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-lit/2#g005-K3-21",
+   "seed": {
+    "subject": "고산구곡가",
+    "aspect": null,
+    "ref": "K3-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 중기의 한 학자가 해주 수양산 기슭에 은거할 때 지은 연시조입니다. 주자가 무이산 계곡의 경치를 노래한 시를 본떠, 은거지의 경치를 관암·화암 등으로 나누어 읊었습니다. 이 연시조는 무엇일까요?",
+    "answer": "고산구곡가",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "지은이는 율곡 이이로, '석담구곡가'라는 다른 이름으로도 불린다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "엮음: 해주 수양산 은거 조선 중기 학자 + 주자 무이산 시를 본뜬 연시조",
+     "difWhy": "'해주 은거 학자의 구곡가' — 수능 심화 문학",
+     "wor": 4,
+     "worWhy": "고전 시가 교양 작품",
+     "acc": 5,
+     "accWhy": "한국 문학 — 중고교 국어 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이이가 해주에 은거하며 지은 10수 연시조",
+     "difWhy": "율곡 연시조 — 고교 국어",
+     "wor": 4,
+     "worWhy": "교양 — 고전 시가"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이이가 해주 수양산 밑에 은거할 때 지은 10수의 연시조입니다. 주자가 무이산 계곡의 경치를 노래한 시를 본떠, 은거지의 경치를 관암·화암 등으로 나누어 읊었습니다. 이 연시조는 무엇일까요?",
+     "beforeExplanation": "'석담구곡가'라는 다른 이름으로도 불린다.",
+     "removedCue": "이이가 지은 10수 연시조(작가 이름)",
+     "addedCue": "(작가 이름 없이) 해주 수양산 은거지 · 관암·화암",
+     "why": "'율곡 연시조' 교과 단서를 빼고 은거지·구곡 지명으로 좁힘"
+    },
+    "generalHint": "모두 10수로, 첫 수가 서시이고 나머지 아홉 수가 굽이마다 하나씩 읊는다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/고산구곡가"
+    ],
+    "facts": [
+     {
+      "claim": "조선 중기 학자 이이가 해주 수양산 밑에 은거할 때 지은 연시조, 10수",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고산구곡가",
+      "note": "(요지) 이이(李珥)가 해주 수양산 밑 고산면에 은거했을 때 지은 연시조로, 모두 10수이다."
+     },
+     {
+      "claim": "주자의 무이구곡을 본떠 관암·화암 등 아홉 곳으로 나누어 읊음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고산구곡가",
+      "note": "(요지) 주자의 〈무이구곡(武夷九曲)〉을 본떠, 그곳 경치를 관암·화암 등 아홉 곳으로 나누어 읊은 작품이다."
+     },
+     {
+      "claim": "별칭 석담구곡가",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/고산구곡가",
+      "note": "별칭은 '석담구곡가(石潭九曲歌)'"
+     },
+     {
+      "claim": "지은이 이이",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/고산구곡가",
+      "note": "(요지) 조선 중기 학자 이이(李珥)가 지은 연시조로, 모두 10수로 이루어져 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/고산구곡가"
+    ],
+    "hintNote": "이이(李珥)가 지은 연시조로, 모두 10수 / 주자의 〈무이구곡〉을 본떠 그곳 경치를 9곡으로 나누어 읊은 작품",
+    "easiestCue": "해주 수양산 은거지의 경치를 무이구곡처럼 읊은 연시조",
+    "targetWhy": "해주 은거지 · 관암·화암 지명은 고전 시가 심화(수능 심화) — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'이이의 연시조' 하나로 닿는 수험생이 있다 — 3~4",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-lit/2#g005-K3-22",
+   "seed": {
+    "subject": "상춘곡",
+    "aspect": null,
+    "ref": "K3-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "단종이 폐위되자 벼슬을 그만두고 고향 전북 태인으로 돌아간 문인이, 만년에 그곳의 풍경을 옮긴 79구 4음보의 정형 가사입니다. 이 작품은 무엇일까요?",
+    "answer": "상춘곡",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "지은이는 정극인으로, 나옹 화상의 '서왕가'와 함께 최초의 가사 작품으로 여겨진다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "단종 폐위 뒤 태인으로 돌아간 문인의 가사",
+     "difWhy": "'정극인 태인 가사' — 고교 문학",
+     "wor": 5,
+     "worWhy": "고교 문학 교과 작품",
+     "acc": 5,
+     "accWhy": "한국 문학 — 중고교 국어 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "『불우헌집』에 실린 태인 풍경 가사",
+     "difWhy": "정극인 불우헌집 — 고교 문학",
+     "wor": 5,
+     "worWhy": "교과서 수록 가사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "단종이 폐위되자 벼슬을 그만두고 고향 전북 태인으로 돌아간 문인이, 만년에 그곳의 풍경을 79구로 옮긴 가사입니다. 그의 시문집 『불우헌집』에 실려 전하는 이 작품은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "『불우헌집』에 실린 태인 풍경 가사",
+     "addedCue": "79구 4음보 정형 가사(형식 세부)",
+     "why": "교과서에서 작품과 함께 외우는 문집 이름을 빼고 형식 세부만 남김"
+    },
+    "generalHint": "지은이의 시문집 『불우헌집』에 실려 전하며, '홍진에 묻힌 분네 이내 생애 어떠한고'로 시작한다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://ko.wikipedia.org/wiki/상춘곡"
+    ],
+    "facts": [
+     {
+      "claim": "정극인이 지은 79구 가사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/상춘곡",
+      "note": "정극인이 지은 79구 매행 4음보의 정형 가사"
+     },
+     {
+      "claim": "단종 폐위 이후 관직을 그만두고 고향 태인에서 생활, 만년에 그곳 봄 풍경을 옮김",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/상춘곡",
+      "note": "(요지) 단종 폐위 이후 관직을 그만두고 고향인 전북 태인에서 생활했으며, 만년에 그곳의 봄 풍경을 글로 옮겼다."
+     },
+     {
+      "claim": "서왕가와 함께 최초의 가사로 여겨짐",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/상춘곡",
+      "note": "(요지) 나옹 화상의 「서왕가」와 함께 최초의 가사 작품으로 여겨진다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/상춘곡"
+    ],
+    "hintNote": "정극인의 시문집 《불우헌집》에 실려 전해집니다. (첫 구절은 널리 알려진 본문)",
+    "easiestCue": "단종 폐위 뒤 태인으로 돌아간 문인의 가사",
+    "targetWhy": "지은이 이름 없이 낙향 경위·형식만 남아 고전 시가 교양 수준 — 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서 작품, 단서는 작가 생애·문집 세부",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 최초"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,202 @@
+{
+ "_meta": {
+  "round": "g005",
+  "subId": "economy/3",
+  "midKey": "economy",
+  "subName": "금융 상품·시장",
+  "questionPrompt": "deep-v4",
+  "scorePrompt": "score-v2",
+  "hintPrompt": "hint-v4",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "economy/3#g005-H1-16",
+   "seed": {
+    "subject": "블랙 스완",
+    "aspect": null,
+    "ref": "H1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "로마 시인 유베날리스는 풍자시 6편에서 '세상에 드문 새'를 이것에 빗댔고, 그래서 이 말은 오랫동안 '있을 수 없는 것'을 뜻했습니다. 1697년 블라밍이 이끈 네덜란드 탐험대가 오스트레일리아 서부에서 유럽인으로는 처음 이것을 보면서 뜻이 바뀐 이 말은 무엇일까요?",
+    "answer": "블랙 스완",
+    "acceptedAnswers": [
+     "흑고니"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '흑고니 이론'(블랙 스완 이론) — 흑고니",
+    "explanation": "나심 탈레브는 2001년 금융 사건을 다룬 책에서 이 말을 논했고, 2007년에는 아예 책 제목으로 삼았습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 3,
+     "easiestCue": "오스트레일리아 서부에서 유럽인 처음 보면서 뜻이 바뀐 '드문 새'",
+     "difWhy": "'호주에서 발견된 드문 새' 말 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "경제·시사 기본 어휘(블랙 스완)",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "나심 탈레브가 2007년 책 제목으로 삼은 이 말",
+     "difWhy": "탈레브의 책 제목 — 경제 교양 관심층",
+     "wor": 4,
+     "worWhy": "시사 상식 — 경제 용어"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1697년 블라밍이 이끈 네덜란드 탐험대가 오스트레일리아 서부에서 유럽인으로는 처음 이것을 보면서, 이 말은 '있을 수 없다고 여겼지만 뒤집힐 수 있는 일'을 가리키게 되었습니다. 나심 탈레브가 2001년 금융 사건을 다룬 책에서 논하고 2007년 책 제목으로 삼은 이 말은?",
+     "beforeExplanation": "가장 오래된 쓰임은 로마 시인 유베날리스의 풍자시 6편에 나오는 'rara avis in terris nigroque simillima cygno'라는 구절입니다.",
+     "removedCue": "나심 탈레브가 2007년 책 제목으로 삼은 말",
+     "addedCue": "유베날리스 풍자시 6편의 '드문 새' 비유",
+     "why": "시사·경제 교양 단서(탈레브 책)를 해설로 옮기고 어원사 두 세부를 엮음"
+    },
+    "generalHint": "이 새는 1870년부터 서오스트레일리아 깃발에 들어갔고, 그 주의 상징이자 공식 새가 되었다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Black_swan_theory"
+    ],
+    "facts": [
+     {
+      "claim": "1697년 블라밍 네덜란드 탐험대가 서오스트레일리아에서 유럽인 처음으로 흑고니를 봄, 뜻이 바뀜",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Black_swan_theory",
+      "note": "Willem de Vlamingh's Dutch expedition became \"the first Europeans to see black swans\" in Western Australia, which shifted the term toward meaning a supposed impossibility that could later be disproved."
+     },
+     {
+      "claim": "탈레브 2001 Fooled by Randomness(금융 사건), 2007 The Black Swan",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Black_swan_theory",
+      "note": "Taleb discussed black swan events in 2001's Fooled by Randomness, which \"concerned financial events.\" His 2007 book The Black Swan extended the idea \"outside financial markets.\""
+     },
+     {
+      "claim": "유베날리스 풍자시 6편",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Black_swan_theory",
+      "note": "The oldest known use is from the Roman poet Juvenal's Satire VI … \"rara avis in terris nigroque simillima cygno.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Black_swan"
+    ],
+    "hintNote": "featured prominently on the flag of Western Australia from 1870 ... it became the emblem and official bird of Western Australia.",
+    "easiestCue": "1697년 블라밍 탐험대가 오스트레일리아에서 처음 본 것",
+    "targetWhy": "유베날리스 · 블라밍은 어원·역사 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "탈레브의 책이 한국에서도 많이 읽혀 관심층이면 바로 떠올려 3 일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": [
+     "단정어 처음",
+     "단정어 가장 오래"
+    ]
+   }
+  },
+  {
+   "seedId": "economy/3#g005-H1-17",
+   "seed": {
+    "subject": "정크 본드",
+    "aspect": null,
+    "ref": "H1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1980년대 후반 투자은행 드렉셀 번햄 램버트에서 한 채권 부서를 이끈 마이클 밀컨은, 이 채권 시장을 키워 '이 채권의 왕'이라는 별명을 얻었습니다. 그는 1990년 증권·세금 위반 6건에 유죄를 인정해 22개월을 복역했고, 2020년 2월 트럼프 대통령에게 사면받았습니다. 밀컨의 별명에 들어간 이 채권은?",
+    "answer": "정크 본드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1989년 3월 연방 대배심은 밀컨을 공갈·우편 사기·증권 사기 등 98개 혐의로 기소했고, 처음 선고는 징역 10년이었습니다.",
+    "score": {
+     "version": "score-v2",
+     "dif": 4,
+     "easiestCue": "마이클 밀컨 '이 채권의 왕'",
+     "difWhy": "'밀컨의 채권' — 대학 교양 금융",
+     "wor": 4,
+     "worWhy": "교양 — 금융 기본 어휘",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "밀컨이 키운 고수익 채권",
+     "difWhy": "고수익 채권 별칭 — 경제 관심층",
+     "wor": 4,
+     "worWhy": "시사 상식 — 금융 용어"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1980년대 후반 투자은행 드렉셀 번햄 램버트에서 고수익 채권 부서를 이끈 마이클 밀컨은, 이 채권 시장을 키워 '이 채권의 왕'이라는 별명을 얻었습니다. 그는 1990년 증권·세금 위반 6건에 유죄를 인정해 22개월을 복역했고, 2020년 2월 트럼프 대통령에게 사면받았습니다. 밀컨의 별명에 들어간 이 채권은?",
+     "beforeExplanation": null,
+     "removedCue": "고수익 채권(부서) — 정답의 뜻풀이",
+     "addedCue": "(새로 넣지 않음) 밀컨 별명",
+     "why": "정답의 다른 이름인 '고수익 채권'을 빼 밀컨의 별명을 알아야 풀리게 함"
+    },
+    "generalHint": "투자 등급이었다가 신용 등급이 떨어져 이 채권 무리로 밀려난 것은 '타락한 천사'라 불린다.",
+    "generalHintVersion": "hint-v4",
+    "sources": [
+     "https://en.wikipedia.org/wiki/Michael_Milken"
+    ],
+    "facts": [
+     {
+      "claim": "고수익 채권 시장을 키워 Junk Bond King",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michael_Milken",
+      "note": "Milken is known for developing the high-yield bond market, which led to his reputation as the \"Junk Bond King.\""
+     },
+     {
+      "claim": "1980년대 후반 드렉셀 번햄 램버트 고수익 채권 부서장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michael_Milken",
+      "note": "He headed the high-yield bond department at \"Drexel Burnham Lambert\" in the late 1980s."
+     },
+     {
+      "claim": "1990년 4월 24일 6건 유죄 인정, 22개월 복역",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michael_Milken",
+      "note": "On April 24, 1990, he \"pleaded guilty to six counts of securities and tax violations.\" … he served 22 months."
+     },
+     {
+      "claim": "2020년 2월 트럼프 사면",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michael_Milken",
+      "note": "pardoned by President Donald Trump in February 2020."
+     },
+     {
+      "claim": "1989년 3월 98개 혐의 기소, 처음 10년 선고",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Michael_Milken",
+      "note": "A federal grand jury indicted him in March 1989 \"on 98 counts\" of racketeering, mail fraud, and securities fraud. … first sentenced to \"ten years in prison,\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/High-yield_debt"
+    ],
+    "hintNote": "the credit rating of the issuer had slipped ... These bonds are called \"fallen angels\".",
+    "easiestCue": "마이클 밀컨의 별명에 들어간 채권",
+    "targetWhy": "밀컨=정크 본드 왕은 금융사 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'고수익 채권'이 정의 쪽 단서라 관심층이 짐작할 수 있음(하이일드 채권으로 칠 수 있으나 '별명에 들어간'이 표현을 정함 — B2)",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 0",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}
