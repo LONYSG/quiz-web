@@ -715,8 +715,18 @@ async function ensureServer() {
     stdio: ['ignore', 'pipe', 'pipe'],
   });
   let out = '';
-  bootedServer.stdout.on('data', (c) => (out += c.toString()));
-  bootedServer.stderr.on('data', (c) => (out += c.toString()));
+  bootedServer.stdout.on('data', (c) => {
+    out += c.toString();
+    if (process.env.UICHECK_SERVER_LOG) process.stdout.write(`[srv] ${c}`);
+  });
+  bootedServer.stderr.on('data', (c) => {
+    out += c.toString();
+    if (process.env.UICHECK_SERVER_LOG) process.stdout.write(`[srv!] ${c}`);
+  });
+  bootedServer.on('exit', (code) => {
+    if (code !== null && code !== 0) console.log(`[ui-check] ★ 자기 서버가 꺼졌다 (code ${code}) — 마지막 출력:
+${out.slice(-1500)}`);
+  });
 
   for (let i = 0; i < 40; i += 1) {
     if (bootedServer.exitCode !== null) {
@@ -2111,6 +2121,284 @@ async function devicesFlow(browser) {
 }
 
 // -----------------------------------------------------------------------------
+// ★★★ R050 D·E — 미니게임 화면 (`npm run ui-check:minigame`, verify 에 포함)
+//   [1] /lab/minigame — 균형의수호자 물건 넷(정해진 시드) · 장면(가짜 보기)을 PC 1280 · 1920 · 모바일 390 · 폴드 접힘 · 파스텔/밤으로
+//   [2] 실제 연습 판 — 네 기기가 한 방에: H(PC 1280 파스텔) · N(PC 1920 밤) · G(모바일 390 터치) · F(폴드 접힘 344 터치)
+//       케이크: H Space · N Enter · G 톡 · F 안 누름 / 균형: H 방향키 · N 마우스 끌기 · G 손가락 끌기 · F 안 움직임 → 기록(DB)과 화면
+//   ★ 이 모드는 자기 서버의 미니게임 단계(판 진행 밖)를 2배로 늘린다 — 단계마다 네 기기 그림을 찍을 틈 (판 진행 시간은 그대로)
+// -----------------------------------------------------------------------------
+const MINIGAME_ONLY = args.includes('--minigame');
+if (MINIGAME_ONLY) {
+  process.env.SHOT_DIR ??= 'verify';
+  process.env.MINIGAME_PHASE_SCALE ??= '2';
+}
+async function setTheme(page, t) {
+  await page.evaluate(`document.documentElement.dataset.theme = '${t}'`);
+  await sleep(120);
+}
+async function waitPhase(page, phase, timeout = 30000) {
+  return page.waitFor(`document.querySelector('.mg-card')?.dataset.phase === '${phase}'`, timeout);
+}
+async function minigameFlow(browser) {
+  // ── [1] 그림 모음 · 장면 (MG_SKIP_LAB=1 이면 건너뛴다 — 실제 판만 다시 볼 때)
+  if (!process.env.MG_SKIP_LAB) await minigameLab(browser);
+  if (!process.env.MG_SKIP_LIVE) await minigameLive(browser);
+}
+/** ★ R050 F — /lab/sound — 후보 버튼 · 실제 파일 길이(브라우저가 읽은 duration) · 누르면 소리가 난다(오류 없음) */
+async function soundLab(L) {
+  await L.setViewport(1280, 900);
+  await L.goto(`${BASE}/lab/sound`);
+  await L.waitFor("document.querySelectorAll('.lab-sound-btn').length > 20", 8000);
+  await sleep(400);
+  await snap(L, '50-lab-sound-pc');
+  const n = await L.evaluate("document.querySelectorAll('.lab-sound-btn').length");
+  const kinds = await L.evaluate("JSON.stringify([...new Set([...document.querySelectorAll('.lab-sound-kind')].map((e) => e.innerText))])");
+  record('★★ F 들어 보기 페이지 — 후보 버튼 · 세 갈래(지금 · 만든 후보 · CC0)', n > 30 && kinds.includes('지금') && kinds.includes('만든 후보') && kinds.includes('CC0'), `${n} · ${kinds}`);
+  const durs = JSON.parse(
+    await L.evaluate(`(async () => {
+      const files = [...new Set([...document.querySelectorAll('.lab-sound-src')].map((e) => e.innerText))];
+      const out = {};
+      for (const f of files) {
+        out[f] = await new Promise((res) => { const a = new Audio('/sounds/kenney/' + f); a.addEventListener('loadedmetadata', () => res(Math.round(a.duration * 100) / 100)); a.addEventListener('error', () => res(-1)); });
+      }
+      return JSON.stringify(out);
+    })()`),
+  );
+  console.log(`[lab-sound] 파일 길이(초) ${JSON.stringify(durs)}`);
+  record('★ F CC0 파일이 모두 열린다 (길이 > 0)', Object.values(durs).every((d) => d > 0), JSON.stringify(durs));
+  // 몇 개 눌러 본다 (진짜 클릭) — 오류 없음
+  const errs = [];
+  L.onConsoleError = (m) => errs.push(m);
+  for (const id of ['jingle-now', 'jingle-b', 'k-nes00', 'cake-a', 'bgm-b']) {
+    await realClick(L, `.lab-sound-btn[data-cand="${id}"]`);
+    await sleep(250);
+  }
+  const log = await L.evaluate("JSON.stringify((window.__qwSoundLog ?? []).slice(-10).map((e) => e.id + ':' + e.played))");
+  record('★ F 눌러 보기 — 기존 소리는 소리 기록에 남는다(울림) · 페이지 오류 없음', log.includes('mg-jingle:true'), log);
+}
+async function minigameLab(browser) {
+  const L = await newPage(browser, 'M-lab');
+  await L.setViewport(1280, 900);
+  await signUp(L, 'ml', '그림점검');
+  await L.goto(`${BASE}/lab/minigame`);
+  await L.waitFor("document.querySelectorAll('.lab-item').length >= 4", 8000);
+  await sleep(500);
+  const kinds = await L.evaluate("[...document.querySelectorAll('.lab-item[data-kind]')].map((e) => e.dataset.kind).join(',')");
+  record('★★ E 그림 모음 — 물건 넷(스테이크 · 피자 · 케이크 · 도넛)', kinds === 'steak,pizza,cake,donut', kinds);
+  await snap(L, '30-balance-items-pc-pastel');
+  await setTheme(L, 'night');
+  await snap(L, '31-balance-items-pc-night');
+  await setTheme(L, 'pastel');
+  await touchDevice(L, 390, 1100);
+  await L.evaluate("window.dispatchEvent(new Event('resize'))");
+  await sleep(300);
+  await snap(L, '32-balance-items-m390');
+  await touchDevice(L, 1280, 900, false);
+  await soundLab(L);
+  // 장면 — 키 × 단계
+  const scenes = [
+    ['cake', 'intro'], ['cake', 'rules'], ['cake', 'play'], ['cake', 'roundResult'], ['cake', 'final'],
+    ['balance', 'rules'], ['balance', 'play'], ['balance', 'roundResult'], ['balance', 'final'], ['balance', 'outro'],
+  ];
+  for (const [k, ph] of scenes) {
+    await L.goto(`${BASE}/lab/minigame?scene=1&key=${k}&phase=${ph}&seed=2024`);
+    await L.waitFor(`document.querySelector('.mg-card')?.dataset.phase === '${ph}'`, 6000);
+    await sleep(ph === 'roundResult' ? 1600 : 500);
+    await L.setViewport(1280, 720);
+    await sleep(150);
+    await snap(L, `33-scene-${k}-${ph}-pc`);
+  }
+  // 장면 — 크기 · 테마 (균형 판 진행 · 케이크 판 진행 · 균형 판 결과)
+  for (const [k, ph] of [['balance', 'play'], ['cake', 'play'], ['balance', 'roundResult']]) {
+    await L.goto(`${BASE}/lab/minigame?scene=1&key=${k}&phase=${ph}&seed=2024`);
+    await L.waitFor(`document.querySelector('.mg-card')?.dataset.phase === '${ph}'`, 6000);
+    await sleep(ph === 'roundResult' ? 1600 : 500);
+    await setTheme(L, 'night');
+    await L.setViewport(1920, 1080);
+    await sleep(200);
+    await snap(L, `34-scene-${k}-${ph}-pc1920-night`);
+    await setTheme(L, 'pastel');
+    await touchDevice(L, 390, 844);
+    await L.evaluate("window.dispatchEvent(new Event('resize'))");
+    await sleep(300);
+    await snap(L, `34-scene-${k}-${ph}-m390`);
+    await touchDevice(L, 344, 882);
+    await L.evaluate("window.dispatchEvent(new Event('resize'))");
+    await sleep(300);
+    const over = await L.evaluate('document.documentElement.scrollWidth - innerWidth');
+    await snap(L, `34-scene-${k}-${ph}-fold`);
+    record(`★ E 장면 ${k}/${ph} — 폴드 접힘(344) 가로 넘침 없음`, over <= 1, String(over));
+    await touchDevice(L, 1280, 720, false);
+    await L.evaluate("window.dispatchEvent(new Event('resize'))");
+  }
+
+}
+async function minigameLive(browser) {
+  // ── [2] 실제 연습 판 — 네 기기
+  const H = await newPage(browser, 'M-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'mh', '미니방장');
+  const roomId = await createRoom(H, 'R050 미니게임');
+  const N = await newPage(browser, 'M-pc1920', true);
+  await N.setViewport(1920, 1080);
+  await signUp(N, 'mn', '큰화면');
+  await setTheme(N, 'night');
+  const G = await newPage(browser, 'M-m390', true);
+  await signUp(G, 'mg', '폰손님');
+  await touchDevice(G, 390, 844);
+  const F = await newPage(browser, 'M-fold', true);
+  await signUp(F, 'mf', '폴드손님');
+  await touchDevice(F, 344, 882);
+  for (const p of [N, G, F]) {
+    await p.goto(`${BASE}/r/${roomId}`);
+    await p.waitFor("document.querySelector('.stage') !== null", 8000);
+  }
+  await setTheme(N, 'night');
+  await sleep(600);
+  // 설정 줄 — 미니게임 포함 체크
+  await realClick(H, '.mg-check input');
+  await H.waitFor("document.querySelector('.mg-check input')?.checked === true && document.querySelectorAll('.mg-set-row [data-minigame]').length === 2", 4000);
+  await sleep(300);
+  await snap(H, '40-lobby-minigame-setting-pc');
+  record('★★ D 로비 설정 — "미니게임 포함" 체크 → 손님 화면에도 "포함"', await G.waitFor("[...document.querySelectorAll('.mg-set-row .chip')].some((c) => c.innerText === '포함')", 4000));
+  const fit = await H.evaluate("document.documentElement.scrollHeight <= innerHeight + 1");
+  record('★★ D 로비 PC 1280×720 — 미니게임 줄이 생겨도 한 화면(스크롤 없음)', fit);
+  await snap(G, '40-lobby-minigame-setting-m390');
+  // 골라 하기 팝업
+  await realClick(H, '#minigame-pick-btn');
+  await H.waitFor("document.querySelector('.mg-pick-pop') !== null", 3000);
+  await snap(H, '41-lobby-minigame-pick-pc');
+  record('★ D 골라 하기 — 손님에게는 버튼이 없다', await G.evaluate("document.querySelector('#minigame-pick-btn') === null"));
+
+  // 케이크
+  await realClick(H, '.mg-pick-item[data-key="cake"]');
+  const pages = [
+    ['pc', H],
+    ['pc1920-night', N],
+    ['m390', G],
+    ['fold', F],
+  ];
+  const snapAll = async (name) => {
+    for (const [n, p] of pages) await snap(p, `42-cake-${name}-${n}`);
+  };
+  await waitPhase(H, 'intro', 8000);
+  await sleep(700);
+  await snapAll('intro');
+  await waitPhase(H, 'rules', 10000);
+  await sleep(500);
+  await snapAll('rules');
+  record('★ E 규칙 안내 — PC 는 Space · Enter / 모바일은 톡', (await H.evaluate("document.querySelector('.mg-rules-ctrl')?.innerText ?? ''")).includes('Space') && (await G.evaluate("document.querySelector('.mg-rules-ctrl')?.innerText ?? ''")).includes('톡'));
+  // 1판 — 10초 · 5초 뒤 가림
+  await waitPhase(H, 'play', 20000);
+  const t0 = Date.now();
+  await sleep(2000);
+  await snapAll('play-visible');
+  record('★★ E 케이크 — 처음엔 숫자가 보인다', (await H.evaluate("document.querySelector('.cake-count')?.dataset.hidden")) === '0');
+  await sleep(Math.max(0, 6400 - (Date.now() - t0)));
+  await snapAll('play-hidden');
+  record('★★★ E 케이크 — 5초 지나면 숫자가 가려진다', (await H.evaluate("document.querySelector('.cake-count')?.dataset.hidden")) === '1' && (await G.evaluate("document.querySelector('.cake-count')?.dataset.hidden")) === '1');
+  // 누르기 — H 10.0초 Space · N 9.6초 Enter · G 10.4초 톡 · F 없음
+  const pressAt = async (ms, fn) => {
+    const wait = ms - (Date.now() - t0);
+    if (wait > 0) await sleep(wait);
+    await fn();
+  };
+  await pressAt(9600, () => N.key('Enter', { code: 'Enter', vk: 13 }));
+  await pressAt(10000, () => H.key(' ', { code: 'Space', vk: 32 }));
+  await pressAt(10400, async () => {
+    const r = JSON.parse(await G.evaluate("JSON.stringify(document.querySelector('.cake-stage').getBoundingClientRect())"));
+    await G.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: r.x + r.width / 2, y: r.y + r.height / 2 }] });
+    await G.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  });
+  await sleep(300);
+  await snap(H, '42-cake-pressed-pc');
+  await waitPhase(H, 'roundResult', 8000);
+  await sleep(900);
+  await snapAll('roundResult');
+  const res1 = await H.evaluate("JSON.stringify([...document.querySelectorAll('.mg-table li')].map((l) => l.innerText.replace(/\\s+/g, ' ')))");
+  record('★★ E 케이크 판 결과 — 4명 · 안 누른 사람 꼴찌 "안 누름"', JSON.parse(res1).length === 4 && JSON.parse(res1)[3].includes('안 누름'), res1);
+  // 나머지 판은 넘긴다(방장 그만하기 전에 최종 화면을 보려면 끝까지) — 2~4판은 아무도 안 누른다
+  await waitPhase(H, 'final', 120000);
+  await sleep(800);
+  await snapAll('final');
+  record('★★ E 최종 결과 — 연습이라 보상 칸 "연습"', (await H.evaluate("[...document.querySelectorAll('.mg-final .mg-reward')].every((e) => e.innerText === '연습')")) === true);
+  await waitPhase(H, 'outro', 30000);
+  await sleep(300);
+  await snap(H, '42-cake-outro-pc');
+  await H.waitFor("document.querySelector('.mg-card') === null && document.querySelector('.lobby-card') !== null", 15000);
+  record('★★ D 연습이 끝나면 로비로 (모두)', await G.waitFor("document.querySelector('.lobby-card') !== null", 5000));
+  const cakeDb = await withPg(async (c) =>
+    (
+      await c.query(
+        `SELECT a.login_id, r.submitted, r.error FROM minigame_results r JOIN accounts a ON a.id = r.account_id
+          WHERE r.run_id = (SELECT max(id) FROM minigame_runs WHERE room_id = $1 AND minigame_key = 'cake') AND r.round_index = 0 ORDER BY a.login_id`,
+        [roomId],
+      )
+    ).rows,
+  );
+  const errOf = (s) => cakeDb.find((r) => r.login_id.endsWith(`_${s}`))?.error;
+  record('★★★ E 케이크 진짜 입력 — Space(10.0초) · Enter(9.6초) · 톡(10.4초) 오차가 누른 때와 맞다(±0.15초) · 안 누른 사람 미제출',
+    Math.abs(errOf('mh')) < 0.15 && Math.abs(errOf('mn') + 0.4) < 0.15 && Math.abs(errOf('mg') - 0.4) < 0.15 && cakeDb.find((r) => r.login_id.endsWith('_mf'))?.submitted === false,
+    JSON.stringify(cakeDb));
+
+  // 균형
+  await realClick(H, '#minigame-pick-btn');
+  await H.waitFor("document.querySelector('.mg-pick-pop') !== null", 3000);
+  await realClick(H, '.mg-pick-item[data-key="balance"]');
+  const snapB = async (name) => {
+    for (const [n, p] of pages) await snap(p, `43-balance-${name}-${n}`);
+  };
+  await waitPhase(H, 'rules', 12000);
+  await sleep(400);
+  await snapB('rules');
+  await waitPhase(H, 'play', 20000);
+  await sleep(500);
+  await snapB('play-start');
+  const startH = JSON.parse(await H.evaluate("JSON.stringify([...document.querySelectorAll('.balance-handle')].map((g) => g.getAttribute('transform')))"));
+  // H — 방향키: → 꾹(자동 반복) · ↓ 로 아래 점 · ← 몇 번
+  for (let i = 0; i < 12; i += 1) await H.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39, autoRepeat: i > 0 });
+  await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39 });
+  await H.key('ArrowDown', { code: 'ArrowDown', vk: 40 });
+  for (let i = 0; i < 6; i += 1) await H.key('ArrowLeft', { code: 'ArrowLeft', vk: 37 });
+  await sleep(200);
+  const afterH = JSON.parse(await H.evaluate("JSON.stringify([...document.querySelectorAll('.balance-handle')].map((g) => g.getAttribute('transform')))"));
+  record('★★ E 균형 PC — → 꾹 누르면 위 점이 오른쪽으로 · ↓ 뒤 ← 는 아래 점이 왼쪽으로', afterH[0] !== startH[0] && afterH[1] !== startH[1], `${JSON.stringify(startH)} → ${JSON.stringify(afterH)}`);
+  // N — 마우스로 위 점을 가운데로
+  const nr = JSON.parse(await N.evaluate("JSON.stringify((() => { const s = document.querySelector('.balance-svg').getBoundingClientRect(); const h = document.querySelector('.balance-handle .balance-handle-dot').getBoundingClientRect(); return { sx: s.x, sw: s.width, hx: h.x + h.width / 2, hy: h.y + h.height / 2 }; })())"));
+  await N.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: nr.hx, y: nr.hy, button: 'left', clickCount: 1 });
+  for (let i = 1; i <= 8; i += 1) await N.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: nr.hx + ((nr.sx + nr.sw * 0.5 - nr.hx) * i) / 8, y: nr.hy, button: 'left', buttons: 1 });
+  await N.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: nr.sx + nr.sw * 0.5, y: nr.hy, button: 'left', clickCount: 1 });
+  // G — 손가락으로 아래 점을 가운데로
+  const gr = JSON.parse(await G.evaluate("JSON.stringify((() => { const s = document.querySelector('.balance-svg').getBoundingClientRect(); const hs = document.querySelectorAll('.balance-handle .balance-handle-dot'); const h = hs[1].getBoundingClientRect(); return { sx: s.x, sw: s.width, hx: h.x + h.width / 2, hy: h.y + h.height / 2 }; })())"));
+  await G.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: gr.hx, y: gr.hy }] });
+  for (let i = 1; i <= 8; i += 1) await G.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: gr.hx + ((gr.sx + gr.sw * 0.5 - gr.hx) * i) / 8, y: gr.hy }] });
+  await G.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await sleep(300);
+  await snapB('play-moved');
+  await waitPhase(H, 'roundResult', 15000);
+  await sleep(1700);
+  await snapB('roundResult');
+  const thumbs = await H.evaluate("document.querySelectorAll('.mg-thumb').length");
+  record('★★ E 균형 판 결과 — 칼 · 두 조각 · "a : b" · 넷의 자른 선 그림', thumbs === 4 && /\d+(\.\d+)? : \d+/.test(await H.evaluate("document.querySelector('.balance-split')?.innerText ?? ''")), `${thumbs} · ${await H.evaluate("document.querySelector('.balance-split')?.innerText ?? ''")}`);
+  const balDb = await withPg(async (c) =>
+    (
+      await c.query(
+        `SELECT a.login_id, r.submitted, r.input FROM minigame_results r JOIN accounts a ON a.id = r.account_id
+          WHERE r.run_id = (SELECT max(id) FROM minigame_runs WHERE room_id = $1 AND minigame_key = 'balance') AND r.round_index = 0 ORDER BY a.login_id`,
+        [roomId],
+      )
+    ).rows,
+  );
+  const inp = (s) => balDb.find((r) => r.login_id.endsWith(`_${s}`))?.input;
+  record('★★★ E 균형 진짜 입력 — 마우스(위 점) · 손가락(아래 점)을 가운데(≈50)로 옮긴 값이 기록된다', Math.abs((inp('mn')?.top ?? 0) - 50) < 3 && Math.abs((inp('mg')?.bottom ?? 0) - 50) < 3, JSON.stringify(balDb.map((r) => [r.login_id, r.input])));
+  // 끝까지 (2 · 3판은 아무도 안 움직인다 — 시작 점 그대로가 마지막 값)
+  await waitPhase(H, 'final', 90000);
+  await sleep(800);
+  await snapB('final');
+  await H.waitFor("document.querySelector('.lobby-card') !== null", 40000);
+}
+
+// -----------------------------------------------------------------------------
 // ★★★ R046 — 나가기 · 끊김 · 옮기기: 사람 동작을 **진짜 클릭**으로 (`npm run ui-check:leave`, verify 에 포함)
 //   ★ 이 모드는 자기 서버를 띄울 때 끊김 60초 → 5초 · 방장 이전 30초 → 2초로 줄인다 (값만 다르고 경로는 같다)
 // -----------------------------------------------------------------------------
@@ -3318,6 +3606,10 @@ try {
   }
   if (DEVICES_ONLY) {
     await devicesFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (MINIGAME_ONLY) {
+    await minigameFlow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (LEAVE_ONLY) {

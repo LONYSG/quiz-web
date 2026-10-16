@@ -32,6 +32,7 @@ import { startFromCountdown } from './game/start.js';
 import { advanceAfterResolved, checkQuestionTimeout, pushHintIfDue } from './game/question.js';
 import { checkAbandon, idleDeleteApplies, pauseIfNoActive } from './game/pause.js';
 import { emitRoom } from './rooms/emit.js';
+import { checkMinigame } from './minigame/engine.js';
 import { activeCount, allRooms, expireAway, nextHostCandidate } from './rooms/registry.js';
 import { transferHost } from './rooms/host.js';
 import { destroyRoom } from './rooms/lifecycle.js';
@@ -94,6 +95,8 @@ function tick(): void {
       pushHintIfDue(room, now);
       checkQuestionTimeout(room, now);
       advanceAfterResolved(room, now);
+      // ★★ R050 — 미니게임 진행 (상태 MINIGAME 에서만)
+      checkMinigame(room, now);
       checkHostTransfer(room, now);
       checkDisconnectDisplay(room, now);
       checkAway(room, now);

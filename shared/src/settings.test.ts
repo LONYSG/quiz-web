@@ -75,6 +75,9 @@ describe('validateRoomSettings — 형식 방어', () => {
       'countdownSec',
       // ★ R025 — 난이도가 알려진 필드에 더해졌다
       'difficulties',
+      // ★ R050 — 미니게임 포함 · 넣을 미니게임
+      'minigameKeys',
+      'minigames',
       'questionCount',
       'startMode',
       // ★ R034 — 분야

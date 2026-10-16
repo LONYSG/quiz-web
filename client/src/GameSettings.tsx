@@ -16,6 +16,10 @@ import type { Socket } from 'socket.io-client';
 import {
   DIFFICULTY_TIERS,
   GAME_TOPICS,
+  MINIGAMES,
+  MINIGAME_KEYS,
+  minigameSlots,
+  type MinigameKey,
   RULES,
   validateRoomSettings,
   type DifficultyTier,
@@ -208,6 +212,58 @@ export default function GameSettings({
               </span>
             );
           })}
+        </div>
+      </div>
+
+      {/* ★★★ R050 — 미니게임 포함 (기본 꺼짐 · 10문제마다 · 5~9문제는 가운데 한 번 · 마지막 문제 뒤에는 없음 — D-234) */}
+      <div className="set-row mg-set-row">
+        <span className="set-label">미니게임</span>
+        <div className="preset-row">
+          {editable ? (
+            <label className="mg-check">
+              <input
+                type="checkbox"
+                checked={shown.minigames === true}
+                onChange={(e) => push({ ...draft, minigames: e.target.checked, minigameKeys: draft.minigameKeys ?? [...MINIGAME_KEYS] })}
+              />
+              포함
+            </label>
+          ) : (
+            <span className={shown.minigames ? 'chip on' : 'chip'}>{shown.minigames ? '포함' : '안 함'}</span>
+          )}
+          {shown.minigames &&
+            MINIGAMES.map((m) => {
+              const keys = shown.minigameKeys ?? [...MINIGAME_KEYS];
+              const on = keys.includes(m.key);
+              return editable ? (
+                <button
+                  key={m.key}
+                  type="button"
+                  data-minigame={m.key}
+                  aria-pressed={on}
+                  className={on ? 'preset active' : 'preset'}
+                  onClick={() => {
+                    if (on && keys.length === 1) return; // 마지막 하나는 끌 수 없다
+                    const next: MinigameKey[] = on ? keys.filter((k) => k !== m.key) : MINIGAME_KEYS.filter((k) => k === m.key || keys.includes(k));
+                    push({ ...draft, minigames: true, minigameKeys: next });
+                  }}
+                >
+                  {m.name}
+                </button>
+              ) : (
+                <span key={m.key} className={on ? 'chip on' : 'chip'}>
+                  {m.name}
+                </span>
+              );
+            })}
+          {shown.minigames && (
+            <span className="dim mg-set-note">
+              {(() => {
+                const n = minigameSlots(Number.isFinite(shown.questionCount) ? shown.questionCount : 0).length;
+                return n === 0 ? '문제 5개 이상부터 나와요' : `이번 판 ${n}번`;
+              })()}
+            </span>
+          )}
         </div>
       </div>
 

@@ -16,6 +16,7 @@ import { randomInt } from 'node:crypto';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import { getPool } from '../db/pool.js';
 import { config } from '../config.js';
+import { POINTS_SQL, pointsFromRow } from '../db/points.js';
 import { emojiName, ensureCatalog, getThemes, specialIdsOfTheme, ownedEmojiIds } from './emojiRoutes.js';
 
 export const shopRouter = Router();
@@ -30,12 +31,8 @@ shopRouter.get('/', async (req, res) => {
   }
   await ensureCatalog();
   const owned = await ownedEmojiIds(session.accountId);
-  const bal = await getPool().query<{ earned: string; spent: string }>(
-    `SELECT (SELECT count(*) FROM answer_events WHERE account_id = $1 AND accepted)::text AS earned,
-            (SELECT coalesce(sum(amount), 0) FROM point_spends WHERE account_id = $1)::text AS spent`,
-    [session.accountId],
-  );
-  const balance = Number(bal.rows[0]?.earned ?? 0) - Number(bal.rows[0]?.spent ?? 0);
+  const bal = await getPool().query<{ correct: string; rewards: string; spent: string }>(POINTS_SQL, [session.accountId]);
+  const balance = pointsFromRow(bal.rows[0]).balance;
   const themes = getThemes()
     .filter((t) => t.active)
     .map((t) => {
@@ -66,12 +63,9 @@ shopRouter.post('/draw', async (req, res) => {
     await client.query('BEGIN');
     // ★ 같은 계정의 동시 뽑기를 직렬로 — 계정 행 잠금
     await client.query(`SELECT id FROM accounts WHERE id = $1 FOR UPDATE`, [session.accountId]);
-    const bal = await client.query<{ earned: string; spent: string }>(
-      `SELECT (SELECT count(*) FROM answer_events WHERE account_id = $1 AND accepted)::text AS earned,
-              (SELECT coalesce(sum(amount), 0) FROM point_spends WHERE account_id = $1)::text AS spent`,
-      [session.accountId],
-    );
-    const balance = Number(bal.rows[0]?.earned ?? 0) - Number(bal.rows[0]?.spent ?? 0);
+    // ★ R050 — 포인트 식은 db/points.ts 한 곳 (맞힌 문제 + 미니게임 보상 − 쓴 것)
+    const bal = await client.query<{ correct: string; rewards: string; spent: string }>(POINTS_SQL, [session.accountId]);
+    const balance = pointsFromRow(bal.rows[0]).balance;
     const ownedRows = await client.query<{ emoji_id: number }>(`SELECT emoji_id FROM account_emojis WHERE account_id = $1`, [session.accountId]);
     const owned = new Set(ownedRows.rows.map((r) => r.emoji_id));
     const pool = all.filter((id) => !owned.has(id));

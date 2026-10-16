@@ -28,7 +28,7 @@
 // =============================================================================
 
 import { onSignedIn, onSignedOut } from './prefsSync.js';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, lazy, Suspense } from 'react';
 import { io, type Socket } from 'socket.io-client';
 import AuthScreen from './AuthScreen.js';
 import Avatar from './Avatar.js';
@@ -49,6 +49,9 @@ import FriendList from './FriendList.js';
 import InviteToast from './InviteToast.js';
 import ProfilePanel from './ProfilePanel.js';
 import ShopPanel from './ShopPanel.js';
+// ★ R050 — /lab 화면은 따로 받는다 (첫 화면 묶음에 넣지 않는다)
+const LabMinigame = lazy(() => import('./lab/LabMinigame.js'));
+const LabSound = lazy(() => import('./lab/LabSound.js'));
 import { useServerClock } from './useServerClock.js';
 import { isMobileUi, uiMode } from './uiMode.js';
 
@@ -365,6 +368,19 @@ export default function App() {
             <Icon icon={LoaderCircle} className="spin" />
             <p>방에 들어가는 중…</p>
           </div>
+        ),
+        foot: null,
+      };
+    }
+
+    // ★★ R050 — /lab/… (로그인한 사람만 · 화면 점검 · 소리 들어 보기). 방에 있으면 방 화면이 먼저다
+    if (!room.snapshot && window.location.pathname.startsWith('/lab/')) {
+      return {
+        narrow: false,
+        body: (
+          <Suspense fallback={<p className="note">불러오는 중…</p>}>
+            {window.location.pathname.startsWith('/lab/sound') ? <LabSound /> : <LabMinigame myAccountId={account.accountId} />}
+          </Suspense>
         ),
         foot: null,
       };

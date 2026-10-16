@@ -113,7 +113,14 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
             <p className="profile-points" aria-live="polite">
               <span className="dim">포인트</span>{' '}
               <strong className="mono">{points ? points.balance.toLocaleString('ko-KR') : '—'}</strong>
-              {points && points.spent > 0 && <span className="dim profile-points-sub"> · 맞힌 문제 {points.earned.toLocaleString('ko-KR')} − 쓴 포인트 {points.spent.toLocaleString('ko-KR')}</span>}
+              {points && (points.spent > 0 || (points.rewards ?? 0) > 0) && (
+                <span className="dim profile-points-sub">
+                  {' '}
+                  · 맞힌 문제 {(points.correct ?? points.earned).toLocaleString('ko-KR')}
+                  {(points.rewards ?? 0) > 0 && <> + 미니게임 {(points.rewards ?? 0).toLocaleString('ko-KR')}</>}
+                  {points.spent > 0 && <> − 쓴 포인트 {points.spent.toLocaleString('ko-KR')}</>}
+                </span>
+              )}
             </p>
             {/* ★★ R039 — 프로필 사진: 누르면 사진 고르기 → 원형 편집기 */}
             <div className="profile-row">

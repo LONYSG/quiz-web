@@ -60,6 +60,10 @@ export interface RoomSettings {
    * ★ 출제할 분야 묶음 (R034). 출제 가능 수·출제 풀·다시 하기가 난이도와 함께 이 값을 따른다.
    */
   topics: import('@quiz/shared').GameTopic[];
+  /** ★★ R050 — 미니게임 포함 (기본 꺼짐) */
+  minigames: boolean;
+  /** ★ R050 — 넣을 미니게임 (기본 전부) */
+  minigameKeys: import('@quiz/shared').MinigameKey[];
 }
 
 /**
@@ -122,6 +126,10 @@ export interface ActiveGame {
    *   다음 문제 선정이 "이미 보여 준 글에 정답이 들어 있는 후보" 를 같은 단계 안에서 뒤로 미룬다.
    */
   shownNorm: string;
+  /** ★★ R050 — 미니게임: 한 바퀴 섞어 둔 차례 · 바로 앞 키 · 이미 연 자리(문제 번호) */
+  minigameBag: import('@quiz/shared').MinigameKey[];
+  lastMinigameKey: import('@quiz/shared').MinigameKey | null;
+  minigameDoneAt: number[];
   /** 정답 공개 뒤 5초 대기 구간의 정보. QUESTION_RESOLVED 에서만 값이 있다 */
   resolution: Resolution | null;
   /**
@@ -371,6 +379,9 @@ export interface Room {
 
   /** 진행 중인 게임. LOBBY 에서는 null 이다 */
   game: ActiveGame | null;
+
+  /** ★★ R050 — 진행 중인 미니게임 (상태 MINIGAME 에서만). 퀴즈 판 중간이면 game 도 있고, 연습이면 game 은 null */
+  minigame: import('../minigame/engine.js').MinigameRun | null;
 
   /** 진행 중인 문제. ★ QUESTION_ACTIVE / QUESTION_RESOLVED 에서 값이 있다 */
   currentQuestion: CurrentQuestion | null;

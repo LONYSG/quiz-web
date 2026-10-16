@@ -287,7 +287,17 @@ export type SfxId =
   | 'skip'
   | 'result'
   | 'pause'
-  | 'resume';
+  | 'resume'
+  // ★★★ R050 — 미니게임 (D-236 · Web Audio 로 직접 만든 소리 — 무료 소스 후보는 /lab/sound 에서 찬종이 고른다)
+  | 'mg-jingle'
+  | 'mg-ready'
+  | 'mg-go'
+  | 'mg-round'
+  | 'mg-final'
+  | 'mg-return'
+  | 'mg-tap'
+  | 'mg-move'
+  | 'mg-cut';
 
 /** ★ 효과음을 낸다. 꺼져 있거나 아직 잠겨 있으면 아무것도 하지 않는다 */
 /**
@@ -361,7 +371,66 @@ export function sfx(id: SfxId): void {
       playNote(d, mtof(67), t, 0.12, PLUCK);
       playNote(d, mtof(72), t + 0.1, 0.18, PLUCK);
       break;
+    // ── ★★★ R050 미니게임
+    case 'mg-jingle': // 깜짝 이벤트! — 북 굴림 + 올라가는 팡파레
+      for (let i = 0; i < 10; i += 1) playNote(d, mtof(48 + (i % 2)), t + i * 0.045, 0.05, { ...SQUARE, gain: 0.05 + i * 0.006, decay: 0.05 });
+      [67, 71, 74, 79].forEach((m, i) => playNote(d, mtof(m), t + 0.5 + i * 0.09, 0.16, { ...BRASS, gain: 0.08 }));
+      for (const m of [79, 83, 86]) playNote(d, mtof(m), t + 0.9, 0.7, { ...BRASS, gain: 0.07, decay: 0.7 });
+      [91, 95, 98].forEach((m, i) => playNote(d, mtof(m), t + 0.95 + i * 0.06, 0.25, { ...BELL, gain: 0.08 }));
+      break;
+    case 'mg-ready': // 준비 — 짧은 두 음
+      playNote(d, mtof(72), t, 0.08, PLUCK);
+      playNote(d, mtof(72), t + 0.25, 0.08, PLUCK);
+      break;
+    case 'mg-go': // 시작!
+      playNote(d, mtof(84), t, 0.22, { ...SQUARE, gain: 0.1, decay: 0.22 });
+      playNote(d, mtof(79), t, 0.22, { ...BELL, gain: 0.1 });
+      break;
+    case 'mg-round': // 판 결과 — 위로 똑 떨어지는 세 음
+      [76, 79, 84].forEach((m, i) => playNote(d, mtof(m), t + i * 0.07, 0.14, { ...BELL, gain: 0.14 }));
+      break;
+    case 'mg-final': // 최종 결과 — 짧은 빵빠레
+      playCorrect(d, t);
+      [84, 88, 91, 96].forEach((m, i) => playNote(d, mtof(m), t + 0.9 + i * 0.06, 0.2, { ...BELL, gain: 0.1 }));
+      break;
+    case 'mg-return': // 퀴즈로 돌아간다 — 내려오는 쓸기
+      playNote(d, mtof(84), t, 0.35, { ...SOFT, gain: 0.16 }, mtof(67));
+      playNote(d, mtof(72), t + 0.3, 0.2, PLUCK);
+      break;
+    case 'mg-tap': // 눌렀다 (케이크 — 내 화면에서만)
+      playNote(d, mtof(88), t, 0.06, { ...PLUCK, gain: 0.18 });
+      break;
+    case 'mg-move': // 점 옮김 (균형 — 작게)
+      playNote(d, mtof(96), t, 0.02, { ...SQUARE, gain: 0.025, decay: 0.03 });
+      break;
+    case 'mg-cut': // 칼이 지나간다 — 쉬익 + 똑
+      playNote(d, mtof(100), t, 0.25, { ...SOFT, gain: 0.08 }, mtof(76));
+      playNote(d, mtof(60), t + 0.24, 0.12, { ...PLUCK, gain: 0.2 });
+      break;
   }
+}
+
+/**
+ * ★★★ R050 — 케이크 기다리기의 리듬 (찬종: "단순히 띡 띡 띡 소리만 나는게 아니라 하나의 리듬처럼").
+ *   1초(화면 기준)마다 한 박 · 4박 중 넷째 박 강세 · 음 높이가 박마다 바뀐다(솔-라-시-도↑) · 박 사이 반 박에 작은 "칫"(하이햇 느낌).
+ *   ★ 0초에는 아무 소리도 안 난다(정답 소리 금지) — 부르는 쪽이 0 박을 부르지 않는다. 가려진 뒤에도 부르지 않는다.
+ *   ★ 효과음 음량을 따른다. beat = 남은 초(정수), beatSec = 실제 한 박 길이(2배속이면 0.5초)
+ */
+export function cakeBeat(beat: number, beatSec: number): void {
+  if (!prefs.sfxOn || !ctx || ctx.state !== 'running' || !sfxGain) {
+    logSound('cake-beat', false, !prefs.sfxOn ? 'off' : !ctx ? 'no-ctx' : `ctx-${ctx.state}`);
+    return;
+  }
+  logSound('cake-beat', true);
+  const t = ctx.currentTime + 0.005;
+  const d = sfxGain;
+  const pos = beat % 4; // 4 → 0 이 넷째 박(강세)
+  const notes = [84, 79, 81, 83]; // 강세(도↑) · 솔 · 라 · 시
+  const accent = pos === 0;
+  playNote(d, mtof(notes[pos]!), t, accent ? 0.18 : 0.09, accent ? { ...BELL, gain: 0.24 } : { ...PLUCK, gain: 0.17 });
+  if (accent) playNote(d, mtof(60), t, 0.12, { type: 'triangle', gain: 0.22, attack: 0.002, decay: 0.12 });
+  // 반 박 뒤 작은 칫
+  playNote(d, mtof(104), t + beatSec / 2, 0.02, { ...SQUARE, gain: 0.02, decay: 0.025 });
 }
 
 const BRASS: Voice = { type: 'sawtooth', gain: 0.09, attack: 0.02, decay: 0.3, partials: [[1, 1], [1.004, 0.7]] };
@@ -524,11 +593,44 @@ const TRACKS: Record<BgmId, Track> = {
 let timer: ReturnType<typeof setInterval> | null = null;
 let nextTime = 0;
 let stepIdx = 0;
-let playing: BgmId | null = null;
+let playing: string | null = null;
+
+/**
+ * ★★★ R050 — 미니게임 BGM (찬종: "미니게임 등장/진행/종료 등 … 브금이나 효과음도 같이 바뀌면 좋을듯. 깜짝 이벤트 발생 이라는 느낌으로.")
+ *   빠른 게임쇼 꼴 · 사각파 · 150bpm. 미니게임 동안만(배경음악이 켜져 있을 때) · 'quiet' 은 케이크 판처럼 소리를 들어야 할 때 끈다.
+ */
+const MINIGAME_TRACK: Track = {
+  bpm: 150,
+  lead: { ...SQUARE, gain: 0.06, decay: 0.08 },
+  bass: { type: 'triangle', gain: 0.2, attack: 0.002, decay: 0.1 },
+  steps: parse(
+    'G5 . G5 A5 B5 . G5 . E5 . G5 . D5 . . . ' +
+      'C5 . E5 G5 C6 . B5 . A5 . G5 . E5 . . . ' +
+      'F5 . F5 G5 A5 . F5 . D5 . F5 . C5 . . . ' +
+      'D5 . E5 F#5 G5 . A5 . B5 . A5 . G5 . . .',
+    'G2 . D3 . G2 . D3 . C3 . G2 . C3 . G2 . ' +
+      'C3 . G2 . C3 . G2 . A2 . E3 . A2 . E3 . ' +
+      'F2 . C3 . F2 . C3 . D3 . A2 . D3 . A2 . ' +
+      'D3 . A2 . D3 . A2 . G2 . D3 . G2 . . .',
+  ),
+};
+export type MusicMode = 'normal' | 'minigame' | 'quiet';
+let musicMode: MusicMode = 'normal';
+/** 미니게임이 부른다 — 바뀔 때만 다시 튼다 */
+export function setMusicMode(mode: MusicMode): void {
+  if (musicMode === mode) return;
+  musicMode = mode;
+  logSound(`music:${mode}`, true);
+  stopBgm();
+  if (prefs.bgmOn) startBgm();
+}
+function trackOf(id: string): Track {
+  return id === 'minigame' ? MINIGAME_TRACK : TRACKS[id as BgmId] ?? TRACKS.bounce;
+}
 
 function scheduler(): void {
   if (!ctx || !bgmGain || !playing) return;
-  const tr = TRACKS[playing];
+  const tr = trackOf(playing);
   const stepDur = 60 / tr.bpm / 4;
   // ★ R041 — 탭이 가려져 타이머가 늦게 돌면(브라우저가 1초에 한 번으로 줄인다) 밀린 음을 한꺼번에 울리지 않는다 → 지금으로 건너뛴다
   if (nextTime < ctx.currentTime - 0.1) nextTime = ctx.currentTime + 0.05;
@@ -544,10 +646,12 @@ function scheduler(): void {
 
 export function startBgm(): void {
   if (!ctx || ctx.state !== 'running' || !prefs.bgmOn) return;
-  if (playing === prefs.bgm && timer) return;
-  logSound(`bgm:${prefs.bgm}`, true);
+  if (musicMode === 'quiet') return;
+  const want = musicMode === 'minigame' ? 'minigame' : prefs.bgm;
+  if (playing === want && timer) return;
+  logSound(`bgm:${want}`, true);
   stopBgm();
-  playing = prefs.bgm;
+  playing = want;
   stepIdx = 0;
   nextTime = ctx.currentTime + 0.1;
   timer = setInterval(scheduler, 60);
@@ -563,4 +667,41 @@ export function stopBgm(): void {
 function restartBgm(): void {
   stopBgm();
   startBgm();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ R050 F — 소리 실험실 (/lab/sound) — 후보를 들어 보는 곳. 게임 소리에는 쓰지 않는다
+// ─────────────────────────────────────────────────────────────────────────────
+export interface LabSynth {
+  ctx: AudioContext;
+  out: AudioNode;
+  /** 지금(조금 뒤) */
+  t: number;
+  note: (freq: number, start: number, dur: number, v: { type: OscillatorType; gain: number; attack: number; decay: number; partials?: [number, number][] }, glideTo?: number) => void;
+  mtof: (m: number) => number;
+  V: { BELL: Voice; PLUCK: Voice; SQUARE: Voice; SOFT: Voice; BRASS: Voice };
+}
+/** 후보 하나를 낸다 (효과음 음량을 따른다 · 꺼져 있어도 들려준다 — 고르는 곳이라) */
+export function labPlay(fn: (s: LabSynth) => void): boolean {
+  const c = ensureCtx();
+  if (!c || !sfxGain) return false;
+  if (c.state !== 'running') void c.resume();
+  const lab = c.createGain();
+  lab.gain.value = Math.max(0.15, prefs.sfxVol);
+  lab.connect(c.destination);
+  fn({ ctx: c, out: lab, t: c.currentTime + 0.03, note: (f, s, d, v, g) => playNote(lab, f, s, d, v, g), mtof, V: { BELL, PLUCK, SQUARE, SOFT, BRASS } });
+  return true;
+}
+/** 기존 효과음을 그대로 (꺼져 있어도) */
+export function labSfx(id: SfxId): void {
+  const c = ensureCtx();
+  if (c && c.state !== 'running') void c.resume();
+  const was = prefs.sfxOn;
+  prefs.sfxOn = true;
+  sfx(id);
+  prefs.sfxOn = was;
+}
+/** 효과음 음량 (파일 후보의 볼륨) */
+export function labVolume(): number {
+  return Math.max(0.15, prefs.sfxVol);
 }

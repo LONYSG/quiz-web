@@ -19,6 +19,7 @@
 import { RULES, skipThreshold } from '@quiz/shared';
 import type { QuestionResolution, RoomState } from '@quiz/shared';
 import { activeCount, deviceOf } from './registry.js';
+import { minigameView } from '../minigame/engine.js';
 import type { CurrentQuestion, ExperienceRate, GameResultData, Player, Room } from './types.js';
 
 export type SnapshotReason = 'join' | 'reconnect' | 'resync';
@@ -95,6 +96,8 @@ export interface RoomSnapshot {
    *   ★★ D-030 교훈 — 화면에 아무 표시가 없으면 "멈췄다" 와 "고장났다" 가 구분되지 않는다.
    */
   paused: PausedView | null;
+  /** ★ R050 */
+  minigame: import('../minigame/engine.js').MinigameView | null;
 }
 
 export interface PausedView {
@@ -290,6 +293,8 @@ export function buildSnapshot(
     skip: buildSkipView(room, viewerAccountId),
     result: room.state === 'GAME_RESULT' ? room.result : null,
     paused: buildPausedView(room, viewerAccountId),
+    // ★★ R050 — 미니게임 (상태 MINIGAME 에서만 — 재접속 · 중간 입장도 같은 화면)
+    minigame: minigameView(room, viewerAccountId),
   };
 }
 

@@ -35,3 +35,6 @@ export type {
   GameTopicInfo,
 } from './settings.js';
 export * from './protocol.js';
+// ★★★ R050 — 미니게임
+export * from './minigame.js';
+export * from './balance.js';

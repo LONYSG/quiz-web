@@ -32,6 +32,8 @@ import { NICKNAME_LIMIT_HINT, nicknameFits, validateRoomSettings } from '@quiz/s
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
 import { insertGame, insertGamePlayers } from '../db/games.js';
+import { setGamePlayerDevices } from '../db/minigames.js';
+import { deviceOf } from '../rooms/registry.js';
 import { emitRoom } from '../rooms/emit.js';
 import { activeCount } from '../rooms/registry.js';
 import { participantIds } from '../lobby/info.js';
@@ -237,6 +239,10 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
       plannedQuestionCount: availableAtStart,
     });
     await insertGamePlayers(gameId, roster);
+    // ★ R050 — 참가자의 기기 종류 (🖥/📱 — 기록만)
+    void setGamePlayerDevices(gameId, roster.map((r) => ({ accountId: r.accountId, device: deviceOf(r.accountId) }))).catch((err) =>
+      console.error('[game] 기기 종류 기록 실패:', (err as Error).message),
+    );
   } catch (err) {
     // ★★ Phase 2 에서는 기록만 남기고 게임을 시작했다 (옛 임시 코드 표식 03).
     //   ★ Phase 3 에서는 시작하지 않는다. 근거는 이 파일 헤더에 있다.
@@ -295,6 +301,9 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     usedQuestionIds: new Set(),
     usedAnswerNorms: new Set(),
     shownNorm: '',
+    minigameBag: [],
+    lastMinigameKey: null,
+    minigameDoneAt: [],
     resolution: null,
     endedQuestionCount: 0,
     stage3Count: 0,

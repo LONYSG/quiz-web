@@ -16,6 +16,7 @@ import type { GameEndReason } from '@quiz/shared';
 import { endGame } from '../db/games.js';
 import { closeRoom } from '../db/rooms.js';
 import { getRoom, unregisterRoom } from './registry.js';
+import { abandonMinigame } from '../minigame/engine.js';
 
 /**
  * 방에 진행 중인 게임이 있으면 종료로 기록한다.
@@ -48,6 +49,9 @@ export function closeOpenGame(roomId: string, reason: GameEndReason): void {
  * ★ DB 쓰기가 실패해도 부팅 정리 절차가 다음 기동에서 닫는다. 데이터는 사라지지 않는다.
  */
 export function destroyRoom(roomId: string, reason: GameEndReason, why: string): void {
+  // ★ R050 — 미니게임 중이면 그 판도 닫는다 (보상 없음)
+  const r = getRoom(roomId);
+  if (r?.minigame) abandonMinigame(r);
   closeOpenGame(roomId, reason);
   unregisterRoom(roomId);
   void closeRoom(roomId).catch((err) =>

@@ -102,6 +102,18 @@ export const config = {
      *   ★ 실제 서버에서는 두지 않는다 — .env 에 넣지 말 것.
      */
     shopPriceOverride: Number(process.env.SHOP_PRICE_OVERRIDE ?? 0) > 0 ? Number(process.env.SHOP_PRICE_OVERRIDE) : 0,
+    /**
+     * ★ R050 — 정답 공개 대기(기본 8초 · RULES). **검사용** — 봇 minigame 이 200문제 판을 빨리 넘기려고 줄인다. 실제 서버에 두지 않는다
+     */
+    resolvedWaitMs: positiveInt('RESOLVED_WAIT_MS', RULES.RESOLVED_WAIT_MS),
+    /**
+     * ★ R050 — 미니게임의 "판 진행 외" 단계(깜짝 연출 · 규칙 · 준비 · 판 결과 · 최종 · 복귀) 길이 배율. **검사용**(0 < x ≤ 5 · 기본 1).
+     *   봇은 줄이고(0.05) 화면 검사는 늘린다(그림을 여러 크기로 찍을 틈). ★ 판 진행(play) 시간은 바꾸지 않는다 — 케이크 타이밍 · 균형 10초는 그대로다
+     */
+    minigamePhaseScale: (() => {
+      const v = Number(process.env.MINIGAME_PHASE_SCALE ?? 1);
+      return Number.isFinite(v) && v > 0 && v <= 5 ? v : 1;
+    })(),
     /** ★ R046 — 끊긴 사람이 빠지기까지 (기본 60초). 테스트에서 줄인다 */
     disconnectRemoveMs: positiveInt('DISCONNECT_REMOVE_MS', RULES.DISCONNECT_REMOVE_MS),
     /** ★ 방장 이전 유예 (Q-29 · 기본 30초). 테스트에서 줄인다 */

@@ -12,6 +12,7 @@
 import type { DifficultyTier, GameTopic } from '@quiz/shared';
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
+import type { MinigameKey, MinigamePhase } from '@quiz/shared';
 
 export interface PlayerView {
   accountId: string;
@@ -57,6 +58,47 @@ export interface RoomSettings {
   difficulties: DifficultyTier[];
   /** ★ R034 — 출제할 분야 (복수 선택) */
   topics: GameTopic[];
+  /** ★★ R050 — 미니게임 포함 (기본 꺼짐) · 넣을 미니게임 */
+  minigames?: boolean;
+  minigameKeys?: MinigameKey[];
+}
+
+/** ★★★ R050 — 미니게임 화면 상태 (서버 minigame/engine.ts MinigameView 와 같은 꼴) */
+export interface MinigameParticipantView {
+  accountId: string;
+  nickname: string;
+  colorIndex: number;
+  device: 'pc' | 'mobile' | null;
+}
+export interface MinigameRoundRow {
+  accountId: string;
+  submitted: boolean;
+  value: number | null;
+  error: number | null;
+  rank: number;
+  points: number;
+  extra: Record<string, unknown> | null;
+}
+export interface MinigameView {
+  token: string;
+  key: MinigameKey;
+  practice: boolean;
+  phase: MinigamePhase;
+  phaseStartedAt: number;
+  phaseEndsAt: number;
+  roundIndex: number;
+  roundCount: number;
+  round: { params: Record<string, unknown>; playMs: number; private: Record<string, unknown> | null } | null;
+  participants: MinigameParticipantView[];
+  submittedCount: number;
+  selfSubmitted: boolean;
+  spectating: boolean;
+  roundResults: { roundIndex: number; decimals: number; rows: MinigameRoundRow[] }[];
+  totals: { accountId: string; total: number }[];
+  final: { accountId: string; rank: number; total: number; reward: number }[] | null;
+  afterQuestionIndex: number | null;
+  /** 화면 전용 — 이 보기를 받은 기기 시각(performance.now). 스냅샷(재접속)이면 없다 */
+  receivedAt?: number;
 }
 
 /** 진행 중인 문제. ★ 정답은 들어 있지 않다 (QUESTION_ACTIVE 중) */
@@ -200,6 +242,8 @@ export interface RoomSnapshot {
   result: GameResultView | null;
   /** ★ Phase 5 */
   paused: PausedView | null;
+  /** ★★ R050 — 미니게임 (상태 MINIGAME 에서만) */
+  minigame?: MinigameView | null;
 }
 
 export interface SocketErrorPayload {
@@ -436,6 +480,7 @@ export function useRoom(socket: Socket | null): RoomHook {
                 hasGeneralHint: p.hasGeneralHint,
               },
               resolution: null,
+              minigame: null,
               // ★★ R034 — 기준 인원은 바로 뒤따르는 skip.voteUpdated 가 채운다 (서버가 문제 시작 때 보낸다).
               //   ★ 옛 코드는 여기서 직전 값을 이어받았는데, 정답 공개 때 null 로 지워져 있어서
               //     **기준 인원이 늘 null** 이었다 → 투표 버튼·Alt+S 가 꺼져 있었다 (스킵이 "아예 안 되던" 원인)
@@ -553,6 +598,7 @@ export function useRoom(socket: Socket | null): RoomHook {
           ? {
               ...prev,
               room: { ...prev.room, state: 'GAME_RESULT' },
+              minigame: null,
               question: null,
               resolution: null,
               skip: null,
@@ -592,6 +638,25 @@ export function useRoom(socket: Socket | null): RoomHook {
               result: null,
               paused: null,
               countdown: null,
+              minigame: null,
+            }
+          : prev,
+      );
+    };
+
+    // ── ★★★ R050 — 미니게임 (단계가 바뀔 때마다 · 누가 제출할 때마다 전체 보기가 온다)
+    const onMinigameState = (p: { state: string; minigame: MinigameView | null }) => {
+      // ★ 받은 순간(기기 시계 · performance.now) — 케이크 기다리기는 "시작 신호를 받은 때" 부터 잰다 (네트워크 지연이 잰 시간에 끼지 않게)
+      const receivedAt = performance.now();
+      setSnapshot((prev) => (prev ? { ...prev, room: { ...prev.room, state: p.state }, minigame: p.minigame ? { ...p.minigame, receivedAt } : null } : prev));
+    };
+    const onMinigameEnded = (p: { state: string; practice: boolean; settingsLocked?: boolean }) => {
+      setSnapshot((prev) =>
+        prev
+          ? {
+              ...prev,
+              room: { ...prev.room, state: p.state, settingsLocked: p.settingsLocked ?? prev.room.settingsLocked },
+              minigame: null,
             }
           : prev,
       );
@@ -684,6 +749,8 @@ export function useRoom(socket: Socket | null): RoomHook {
     socket.on('game.result', onGameResult);
     socket.on('game.returnedToLobby', onReturnedToLobby);
     socket.on('chat.throttled', onThrottled);
+    socket.on('minigame.state', onMinigameState);
+    socket.on('minigame.ended', onMinigameEnded);
     socket.on('game.paused', onPaused);
     socket.on('game.pauseStatus', onPauseStatus);
     socket.on('game.resumed', onResumed);
@@ -724,6 +791,8 @@ export function useRoom(socket: Socket | null): RoomHook {
       socket.off('game.result', onGameResult);
       socket.off('game.returnedToLobby', onReturnedToLobby);
       socket.off('chat.throttled', onThrottled);
+      socket.off('minigame.state', onMinigameState);
+      socket.off('minigame.ended', onMinigameEnded);
       socket.off('game.paused', onPaused);
       socket.off('game.pauseStatus', onPauseStatus);
       socket.off('game.resumed', onResumed);

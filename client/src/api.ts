@@ -76,6 +76,9 @@ export async function fetchMe(): Promise<MeResponse | null> {
 /** ★ R048 — 포인트 = 맞힌 문제 수 − 쓴 포인트 (D-229) */
 export interface PointBalance {
   earned: number;
+  /** ★ R050 — 번 것의 두 갈래 (맞힌 문제 · 미니게임 보상) */
+  correct?: number;
+  rewards?: number;
   spent: number;
   balance: number;
 }
@@ -83,7 +86,7 @@ export async function fetchPoints(): Promise<PointBalance | null> {
   const res = await fetch('/api/me/points', { credentials: 'same-origin' });
   if (!res.ok) return null;
   const json = (await res.json()) as { ok: true } & PointBalance;
-  return { earned: json.earned, spent: json.spent, balance: json.balance };
+  return { earned: json.earned, correct: json.correct, rewards: json.rewards, spent: json.spent, balance: json.balance };
 }
 
 // ── ★★ R049 — 이모티콘샵 · 뽑기 (D-231)

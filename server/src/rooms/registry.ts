@@ -20,7 +20,7 @@
 // =============================================================================
 
 import { randomBytes, randomInt } from 'node:crypto';
-import { DEFAULT_DIFFICULTIES, DEFAULT_TOPICS, RULES } from '@quiz/shared';
+import { DEFAULT_DIFFICULTIES, DEFAULT_TOPICS, MINIGAME_KEYS, RULES } from '@quiz/shared';
 import type { ChatEntry, Player, Room, RoomSettings } from './types.js';
 
 const rooms = new Map<string, Room>();
@@ -53,6 +53,9 @@ export const DEFAULT_SETTINGS: RoomSettings = {
   difficulties: [...DEFAULT_DIFFICULTIES],
   // ★ R034 — 분야 전체 (shared/settings.ts DEFAULT_TOPICS)
   topics: [...DEFAULT_TOPICS],
+  // ★★ R050 — 미니게임 포함은 기본 꺼짐 · 넣을 미니게임은 전부 (D-234)
+  minigames: false,
+  minigameKeys: [...MINIGAME_KEYS],
 };
 
 /**
@@ -144,6 +147,7 @@ export function createRoomObject(
     departedScores: new Map(),
     awayTickAt: null,
     game: null,
+    minigame: null,
     currentQuestion: null,
     result: null,
     paused: null,

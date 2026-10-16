@@ -4435,7 +4435,7 @@ button.primary.tone-warn {
   color: var(--text-dim);
 }
 .shop-theme.done .shop-theme-owned {
-  color: var(--good);
+  color: var(--ok);
 }
 /* 27칸 격자 — 가진 것은 그림, 못 가진 것은 흐린 물음표 */
 .shop-grid {
@@ -4730,4 +4730,677 @@ button.primary.tone-warn {
 .people-badges .device-icon {
   margin-left: 0;
   font-size: 0.8rem;
+}
+
+/* =============================================================================
+   ★★★ R050 — 미니게임 (MinigameStage · CakeWait · BalanceGuard · MinigamePicker · 설정 줄)
+   ============================================================================= */
+.mg-card {
+  position: relative;
+  overflow: hidden;
+}
+/* 위쪽 무지개 띠 (문제 카드의 띠와 같은 자리) */
+.mg-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--p1, #ff7aa2), var(--accent), var(--p4, #ffc14d));
+}
+.mg-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.mg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+.mg-name {
+  font-size: 1rem;
+  font-weight: 900;
+}
+.mg-round,
+.mg-left {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text-dim);
+}
+.mg-spacer {
+  flex: 1;
+}
+.mg-practice {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+/* 깜짝 이벤트 */
+.mg-intro {
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  padding: 18px 0 22px;
+  text-align: center;
+}
+.mg-intro-pop {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--accent);
+  animation: mg-wiggle 600ms var(--ease-pop) 2;
+}
+.mg-intro-name {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--p1, #ff7aa2), var(--accent), var(--p4, #ffc14d));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: mg-zoom 700ms var(--ease-pop);
+}
+.mg-phase-intro {
+  animation: mg-flash 900ms ease-out;
+}
+@keyframes mg-zoom {
+  0% { transform: scale(0.3) rotate(-8deg); opacity: 0; }
+  60% { transform: scale(1.15) rotate(3deg); opacity: 1; }
+  100% { transform: none; }
+}
+@keyframes mg-wiggle {
+  0%, 100% { transform: none; }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+@keyframes mg-flash {
+  0% { box-shadow: 0 0 0 0 var(--accent); }
+  40% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--accent) 30%, transparent); }
+  100% { box-shadow: var(--shadow); }
+}
+/* 규칙 안내 */
+.mg-rules {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 4px 0 8px;
+}
+.mg-rules-art {
+  flex: 0 0 auto;
+  width: 150px;
+}
+.mg-rules-art svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.mg-rules-text {
+  min-width: 0;
+}
+.mg-rules-line {
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+.mg-rules-ctrl {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+}
+.mg-rules-note {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+}
+/* 준비 */
+.mg-ready {
+  display: grid;
+  place-items: center;
+  padding: 22px 0;
+  gap: 2px;
+}
+.mg-ready-n {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent);
+  animation: mg-zoom 500ms var(--ease-pop);
+}
+.mg-ready-desc {
+  margin: 0;
+  font-weight: 800;
+}
+.mg-ready-go {
+  margin: 4px 0 0;
+  color: var(--text-dim);
+  font-weight: 800;
+}
+.mg-submitted {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 0.8rem;
+}
+/* 순위표 (판 · 최종) */
+.mg-table {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.mg-table li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-size: 0.92rem;
+}
+.mg-table li.me {
+  outline: 2px solid var(--accent);
+}
+.mg-table li[data-rank='1'] {
+  background: linear-gradient(90deg, color-mix(in srgb, #ffd54a 35%, var(--surface-2)), var(--surface-2));
+}
+.mg-rank {
+  flex: 0 0 2.6em;
+  font-weight: 900;
+  color: var(--text-dim);
+}
+.mg-nick {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 800;
+}
+.mg-value,
+.mg-total {
+  font-weight: 900;
+}
+.mg-points {
+  flex: 0 0 2.4em;
+  text-align: right;
+  font-weight: 800;
+  color: var(--accent);
+}
+.mg-reward {
+  flex: 0 0 3em;
+  text-align: right;
+  font-weight: 900;
+  color: var(--text-dim);
+}
+.mg-reward.on {
+  color: var(--ok);
+  font-size: 1.05rem;
+}
+.mg-final-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+.mg-final-note {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+}
+.mg-outro {
+  display: grid;
+  place-items: center;
+  padding: 26px 0;
+}
+.mg-outro-line {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 900;
+  animation: mg-zoom 500ms var(--ease-pop);
+}
+.mg-result {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+.mg-result .mg-thumbs {
+  grid-column: 1 / -1;
+}
+/* ── 케이크 기다리기 */
+.cake-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 24px;
+  padding: 8px 0 4px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+.cake-count {
+  font-size: clamp(3rem, 9vw, 5.4rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--text);
+  min-width: 4.2ch;
+  text-align: right;
+  transition: opacity 60ms linear;
+}
+.cake-unit {
+  font-size: 0.35em;
+  margin-left: 0.15em;
+  color: var(--text-dim);
+}
+.cake-hidden-note {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translateX(-120%);
+  margin: 0;
+  font-weight: 900;
+  color: var(--text-dim);
+  animation: mg-breathe 1.6s ease-in-out infinite;
+}
+@keyframes mg-breathe {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.9; }
+}
+.cake-help {
+  grid-column: 1 / -1;
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+  color: var(--text-dim);
+}
+.cake-stage.pressed .cake-help {
+  color: var(--accent);
+}
+.cake-art {
+  width: clamp(130px, 18vw, 190px);
+  height: auto;
+}
+.cake-art.small {
+  width: 150px;
+}
+.cake-art .cake-item {
+  transform-origin: 80px 96px;
+  transition: transform 400ms var(--ease-pop);
+  transform: scale(0.82) translateY(4px);
+  opacity: 0.85;
+}
+.cake-art.open .cake-item {
+  transform: scale(1.05) translateY(-2px);
+  opacity: 1;
+}
+.cake-art .cake-door {
+  transition: opacity 300ms;
+}
+.cake-art.open .cake-door {
+  opacity: 0.55;
+}
+.cake-art .cake-steam {
+  opacity: 0;
+}
+.cake-art.open .cake-steam {
+  opacity: 1;
+  animation: mg-steam 1.4s ease-in-out infinite;
+}
+@keyframes mg-steam {
+  0% { transform: translateY(2px); opacity: 0.2; }
+  50% { opacity: 0.85; }
+  100% { transform: translateY(-4px); opacity: 0; }
+}
+.mg-cake-result {
+  display: grid;
+  place-items: center;
+  gap: 4px;
+}
+.mg-cake-mine {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+.mg-cake-mine.perfect {
+  color: var(--ok);
+}
+.mg-perfect {
+  margin-left: 0.4em;
+  animation: mg-wiggle 500ms var(--ease-pop) 3;
+  display: inline-block;
+}
+/* ── 균형의수호자 */
+.balance-stage {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.balance-timer {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.balance-timer-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--p1, #ff7aa2));
+  transform-origin: left center;
+}
+.balance-title {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.balance-svg {
+  width: min(100%, 46vh, 400px);
+  aspect-ratio: 1;
+  height: auto;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  background: radial-gradient(circle at 50% 55%, color-mix(in srgb, var(--surface-2) 70%, #fff), var(--surface-2));
+  border-radius: 18px;
+  cursor: ew-resize;
+}
+.balance-svg.result {
+  width: min(100%, 220px);
+  cursor: default;
+}
+.balance-rail {
+  stroke: var(--text-dim);
+  stroke-width: 0.5;
+  stroke-dasharray: 1.5 1.5;
+  opacity: 0.7;
+}
+.balance-cut {
+  stroke: var(--accent);
+  stroke-width: 0.7;
+  stroke-dasharray: 2.2 1.4;
+  opacity: 0.95;
+}
+.balance-cut.thumb {
+  stroke-dasharray: none;
+  stroke-width: 1.4;
+  stroke: #fff;
+  filter: drop-shadow(0 0 1px #000);
+}
+.balance-handle-hit {
+  fill: transparent;
+}
+.balance-handle-dot {
+  fill: #fff;
+  stroke: var(--accent);
+  stroke-width: 1.1;
+}
+.balance-handle.active .balance-handle-dot {
+  fill: var(--accent);
+  stroke: #fff;
+}
+.balance-handle-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 0.5;
+  opacity: 0.6;
+  animation: mg-breathe 1.2s ease-in-out infinite;
+}
+.balance-help {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-weight: 700;
+  text-align: center;
+}
+.balance-cutshow {
+  display: grid;
+  justify-items: center;
+}
+.cut-piece {
+  animation: mg-split 900ms var(--ease-pop) 450ms both;
+}
+@keyframes mg-split {
+  from { transform: none; }
+  to { transform: translate(var(--px), var(--py)); }
+}
+.balance-knife {
+  stroke: #fff;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  filter: drop-shadow(0 0 1.5px #000);
+  animation: mg-knife 450ms ease-in forwards, mg-fade 400ms ease-out 900ms forwards;
+}
+@keyframes mg-knife {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes mg-fade {
+  to { opacity: 0; }
+}
+.balance-split {
+  margin: 4px 0 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+  animation: mg-zoom 500ms var(--ease-pop) 900ms both;
+}
+.mg-thumbs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.mg-thumb {
+  margin: 0;
+  width: 92px;
+  text-align: center;
+}
+.mg-thumb svg {
+  width: 92px;
+  height: 92px;
+  background: var(--surface-2);
+  border-radius: 10px;
+}
+.mg-thumb figcaption {
+  display: grid;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+.mg-thumb figcaption .nick {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* ── 로비 — 설정 줄 · 골라 하기 */
+.mg-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.mg-check input {
+  width: 1.1em;
+  height: 1.1em;
+  accent-color: var(--accent);
+  margin: 0;
+}
+.mg-set-note {
+  font-size: 0.78rem;
+  align-self: center;
+}
+.mg-pick {
+  position: relative;
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+}
+.mg-pick-pop {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 60;
+  width: min(360px, calc(100vw - 32px));
+  box-sizing: border-box;
+  padding: 12px 14px 14px;
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-pop);
+  text-align: left;
+  animation: pop-in 140ms var(--ease-pop);
+}
+.mg-pick-pop .pop-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+.mg-pick-note {
+  margin: 0 0 8px;
+  font-size: 0.8rem;
+}
+.mg-pick-list {
+  display: grid;
+  gap: 6px;
+}
+.mg-pick-item {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: left;
+  border-radius: 12px;
+  background: var(--surface-2);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.mg-pick-meta {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 800;
+}
+:where(.ui-mobile) .mg-pick-pop {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+  z-index: 80;
+}
+:where(.ui-mobile) .mg-result {
+  grid-template-columns: minmax(0, 1fr);
+}
+:where(.ui-mobile) .mg-rules {
+  flex-direction: column;
+  text-align: center;
+}
+:where(.ui-mobile) .cake-stage {
+  grid-template-columns: auto;
+  justify-items: center;
+}
+:where(.ui-mobile) .balance-svg {
+  width: min(100%, 92vw, 420px);
+}
+:where(.ui-mobile) .cake-hidden-note {
+  position: static;
+  transform: none;
+}
+
+/* ── ★ R050 — /lab 화면 (점검용) */
+.lab-page {
+  padding: 16px;
+}
+.lab-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 12px 0;
+}
+.lab-item {
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+}
+.lab-item .balance-svg {
+  width: 300px;
+  cursor: default;
+}
+.lab-item.small .balance-svg,
+.lab-item.small .cake-art {
+  width: 160px;
+}
+.lab-scene {
+  padding: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+/* ★ R050 검수 — 폴드 접힘(344)에서 "45.6 : 54.2" 가 두 줄로 꺾였다 → 값은 한 줄 · 아주 좁은 화면은 줄 간격을 줄인다 */
+.mg-value,
+.mg-total,
+.mg-reward,
+.mg-points {
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .mg-table li {
+    gap: 6px;
+    padding: 4px 8px;
+    font-size: 0.82rem;
+  }
+  .mg-rank {
+    flex-basis: 2.2em;
+  }
+}
+.lab-sound-slot h2 {
+  margin: 14px 0 6px;
+  font-size: 1rem;
+}
+.lab-sound-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.lab-sound-btn {
+  display: grid;
+  gap: 2px;
+  min-width: 150px;
+  margin: 0;
+  padding: 8px 12px;
+  text-align: left;
+  border-radius: 12px;
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+}
+.lab-sound-btn.on {
+  outline: 2px solid var(--accent);
+}
+.lab-sound-kind {
+  font-size: 0.7rem;
+  font-weight: 900;
+  color: var(--text-dim);
+}
+.lab-sound-btn.kind-now .lab-sound-kind {
+  color: var(--accent);
+}
+.lab-sound-btn.kind-cc0 .lab-sound-kind {
+  color: var(--ok);
+}
+.lab-sound-label {
+  font-weight: 800;
+}
+.lab-sound-src {
+  font-size: 0.7rem;
+  color: var(--text-dim);
 }

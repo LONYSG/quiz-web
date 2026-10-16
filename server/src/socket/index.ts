@@ -16,7 +16,7 @@
 
 import { randomUUID } from 'node:crypto';
 import type { Server, Socket } from 'socket.io';
-import { maskAnswers, NICKNAME_LIMIT_HINT, nicknameFits, RULES, validateRoomSettings } from '@quiz/shared';
+import { isMinigameKey, maskAnswers, NICKNAME_LIMIT_HINT, nicknameFits, RULES, validateRoomSettings, type MinigameKey } from '@quiz/shared';
 import { closeRoom, findRoom, insertRoom, openRoomsHostedBy, updateRoomHost } from '../db/rooms.js';
 import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
 import { loadExperienced } from '../db/questionPool.js';
@@ -34,6 +34,7 @@ import {
   resolveQuestionSync,
 } from '../game/question.js';
 import { broadcastPauseStatus, pauseIfNoActive, resumeGame } from '../game/pause.js';
+import { startPractice, stopMinigame, submitMinigame } from '../minigame/engine.js';
 import { config } from '../config.js';
 import { refreshLobbyInfo } from '../lobby/info.js';
 import { destroyRoom } from '../rooms/lifecycle.js';
@@ -620,6 +621,9 @@ function registerRoomHandlers(socket: Socket): void {
       const valid = validateRoomSettings({
         difficulties: room.settings.difficulties,
         topics: room.settings.topics,
+        // ★ R050 — 미니게임도 보낸 것만 바꾼다
+        minigames: room.settings.minigames,
+        minigameKeys: room.settings.minigameKeys,
         ...payload,
       });
       if (!valid.ok) {
@@ -795,9 +799,16 @@ function registerRoomHandlers(socket: Socket): void {
     {
       requireHost: true,
       // ★ PAUSED 에서도 강제 종료할 수 있다 (T13 / 04-PROTOCOL 3장)
-      allowedStates: ['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'PAUSED'],
+      allowedStates: ['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'PAUSED', 'MINIGAME'],
     },
     ({ socket: s, room }) => {
+      // ★★ R050 — 미니게임 중: 연습이면 로비로 · 퀴즈 판이면 미니게임을 닫고(보상 없음 — final 전이면) 게임을 끝낸다
+      if (room.state === 'MINIGAME') {
+        const kind = stopMinigame(room);
+        if (kind === 'practice' || !room.game) return;
+        finishGame(room, 'force_ended', '방장이 게임을 강제 종료했습니다.');
+        return;
+      }
       if (!room.game) {
         sendError(s, 'INVALID_STATE', '진행 중인 게임이 없습니다.');
         return;
@@ -817,6 +828,48 @@ function registerRoomHandlers(socket: Socket): void {
       room.paused = null;
       if (lastDone) finishGame(room, 'completed', null);
       else finishGame(room, 'force_ended', '방장이 게임을 강제 종료했습니다.');
+    },
+  );
+
+  // ── ★★★ R050 — 미니게임 입력 (참가자만 · 판 진행 중만 · 판 표(token) · 판 번호가 맞아야)
+  onRoom<{ token: string; roundIndex: number; input: unknown }>(
+    socket,
+    'minigame.submit',
+    {
+      allowedStates: ['MINIGAME'],
+      parse: (raw) => {
+        const obj = parseObject(raw);
+        if (!obj) return null;
+        const token = parseString(obj.token, 1, 32);
+        if (token === null || typeof obj.roundIndex !== 'number' || !Number.isInteger(obj.roundIndex)) return null;
+        return { token, roundIndex: obj.roundIndex, input: obj.input };
+      },
+    },
+    ({ socket: s, room, session, payload }) => {
+      const r = submitMinigame(room, session.accountId, payload);
+      if (r === 'bad_input') sendError(s, 'BAD_REQUEST', '입력이 올바르지 않습니다.');
+    },
+  );
+
+  // ── ★★★ R050 — 로비 "미니게임 골라 하기" (방장 · 로비에서만 · 방 사람 전원 참가 · 연습 — 점수 · 포인트 없음)
+  onRoom<{ key: string }>(
+    socket,
+    'minigame.practice',
+    {
+      requireHost: true,
+      allowedStates: ['LOBBY'],
+      parse: (raw) => {
+        const obj = parseObject(raw);
+        if (!obj || !isMinigameKey(obj.key)) return null;
+        return { key: obj.key as string };
+      },
+    },
+    ({ socket: s, room, payload }) => {
+      if (room.settingsLocked || room.game) {
+        sendError(s, 'INVALID_STATE', '지금은 미니게임을 시작할 수 없습니다.');
+        return;
+      }
+      if (!startPractice(room, payload.key as MinigameKey)) sendError(s, 'INVALID_STATE', '미니게임을 시작하지 못했습니다.');
     },
   );
 
@@ -1182,7 +1235,7 @@ function attachToRoom(
 
 /** 게임이 진행 중인 상태 (카운트다운 · 문제 · 정답 공개 · 일시정지) */
 function isInGame(room: Room): boolean {
-  return room.state === 'COUNTDOWN' || room.state === 'QUESTION_ACTIVE' || room.state === 'QUESTION_RESOLVED' || room.state === 'PAUSED';
+  return room.state === 'COUNTDOWN' || room.state === 'QUESTION_ACTIVE' || room.state === 'QUESTION_RESOLVED' || room.state === 'PAUSED' || room.state === 'MINIGAME';
 }
 
 /** 빠지는 까닭 — 자의(left) · 타의 끊김 60초(timeout) · 강퇴(kick) · 차단(ban) */

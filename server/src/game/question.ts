@@ -33,6 +33,8 @@
 import { RULES, computeRanking, generateHint, normalizeAnswer, skipThreshold } from '@quiz/shared';
 import type { GameEndReason, QuestionResolution } from '@quiz/shared';
 import { endGame } from '../db/games.js';
+import { config } from '../config.js';
+import { runBeforeNextQuestion } from './hooks.js';
 import {
   finalizeScores,
   insertAnswerEvent,
@@ -343,7 +345,8 @@ export function resolveQuestionSync(
 
   // ── 상태 전이. ★★ R034 (Q-17 개정) — 마지막 문제도 5초를 기다린 뒤 결과로 간다 (T10).
   //   ★ 결과로 넘기는 일은 advanceAfterResolved 가 한다 (다음 문제 대신 finishGame)
-  const nextAt = now + RULES.RESOLVED_WAIT_MS;
+  // ★ R050 — 검사용으로 줄일 수 있다(config.tuning.resolvedWaitMs — 기본은 RULES 8초)
+  const nextAt = now + config.tuning.resolvedWaitMs;
   game.resolution = {
     epoch: current.epoch,
     reason,
@@ -467,6 +470,9 @@ export function advanceAfterResolved(room: Room, now: number): void {
     finishGame(room, 'completed', null);
     return;
   }
+
+  // ★★ R050 — 미니게임 자리면 미니게임 먼저 (마지막 문제 뒤에는 없다 — 위에서 이미 결과로 갔다)
+  if (runBeforeNextQuestion(room)) return;
 
   if (beginQuestion(room)) return;
 

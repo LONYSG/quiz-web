@@ -11,6 +11,7 @@
 // =============================================================================
 
 import { RULES } from './protocol.js';
+import { MINIGAME_KEYS, isMinigameKey, type MinigameKey } from './minigame.js';
 
 export type StartMode = 'instant' | 'countdown';
 
@@ -120,13 +121,17 @@ export interface RoomSettingsInput {
   difficulties: DifficultyTier[];
   /** ★ R034. 정규화된 순서(GAME_TOPICS 순)로 저장된다. 중복 없음, 최소 1개 */
   topics: GameTopic[];
+  /** ★★ R050 — 미니게임 포함 (기본 꺼짐 · 다시 하기 이어받음 — D-234) */
+  minigames: boolean;
+  /** ★ R050 — 넣을 미니게임 (기본 전부 · 확장성 — 정규화된 순서 · 최소 1개) */
+  minigameKeys: MinigameKey[];
 }
 
 export type SettingsValidation =
   | { ok: true; settings: RoomSettingsInput }
   | {
       ok: false;
-      field: 'questionCount' | 'startMode' | 'countdownSec' | 'difficulties' | 'topics';
+      field: 'questionCount' | 'startMode' | 'countdownSec' | 'difficulties' | 'topics' | 'minigames';
       message: string;
     };
 
@@ -220,6 +225,21 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
     }
   }
 
+  // ── ★★ R050 — 미니게임 (없으면 기본: 꺼짐 · 전부)
+  if (raw.minigames !== undefined && typeof raw.minigames !== 'boolean') {
+    return { ok: false, field: 'minigames', message: '미니게임 설정 형식이 올바르지 않습니다.' };
+  }
+  let minigameKeys: MinigameKey[] = [...MINIGAME_KEYS];
+  if (raw.minigameKeys !== undefined) {
+    if (!Array.isArray(raw.minigameKeys) || !(raw.minigameKeys as unknown[]).every(isMinigameKey)) {
+      return { ok: false, field: 'minigames', message: '알 수 없는 미니게임이 있습니다.' };
+    }
+    minigameKeys = MINIGAME_KEYS.filter((k) => (raw.minigameKeys as unknown[]).includes(k));
+    if (minigameKeys.length === 0) {
+      return { ok: false, field: 'minigames', message: '미니게임은 하나 이상 골라야 합니다.' };
+    }
+  }
+
   return {
     ok: true,
     settings: {
@@ -228,6 +248,8 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
       countdownSec: RULES.START_COUNTDOWN_SEC,
       difficulties,
       topics,
+      minigames: raw.minigames === true,
+      minigameKeys,
     },
   };
 }

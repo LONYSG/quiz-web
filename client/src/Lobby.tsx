@@ -45,6 +45,8 @@ import type { ChatView, RoomSnapshot } from './useRoom.js';
 import { BellButton, FriendsButton } from './SocialPopups.js';
 import ProfilePanel from './ProfilePanel.js';
 import ShopPanel from './ShopPanel.js';
+import MinigameStage from './minigame/MinigameStage.js';
+import MinigamePicker from './minigame/MinigamePicker.js';
 import type { Social } from './useSocial.js';
 import { isMobileUi } from './uiMode.js';
 
@@ -804,9 +806,13 @@ export default function Lobby({
                       isHost={snapshot.me.isHost}
                     />
                   ) : snapshot.me.isHost ? (
-                    <button type="button" className="primary big-btn" onClick={() => socket.emit('game.start', {})}>
-                      게임 시작
-                    </button>
+                    <>
+                      <button type="button" className="primary big-btn" onClick={() => socket.emit('game.start', {})}>
+                        게임 시작
+                      </button>
+                      {/* ★★ R050 — 로비 "미니게임 골라 하기" (연습 판) */}
+                      {state === 'LOBBY' && <MinigamePicker socket={socket} />}
+                    </>
                   ) : (
                     <p className="note">방장이 게임을 시작할 때까지 기다려 주세요.</p>
                   )}
@@ -814,8 +820,20 @@ export default function Lobby({
               </section>
             )}
 
+            {/* ── ★★★ R050 — 미니게임 (퀴즈 판 중간 · 로비 연습) */}
+            {snapshot.minigame && (
+              <MinigameStage
+                socket={socket}
+                view={snapshot.minigame}
+                players={snapshot.players}
+                myAccountId={snapshot.me.accountId}
+                isHost={snapshot.me.isHost}
+                serverNow={serverNow}
+              />
+            )}
+
             {/* ── ★★ 문제 화면 (카드 하나) */}
-            {snapshot.question && !snapshot.result && !snapshot.paused && (
+            {snapshot.question && !snapshot.result && !snapshot.paused && !snapshot.minigame && (
               <Question
                 socket={socket}
                 question={snapshot.question}
@@ -848,7 +866,7 @@ export default function Lobby({
             )}
 
             {/* ★ 게임이 시작됐는데 문제가 아직 없는 짧은 순간 — 빈 화면을 보여주지 않는다 */}
-            {snapshot.game && !snapshot.question && !snapshot.result && !snapshot.paused && (
+            {snapshot.game && !snapshot.question && !snapshot.result && !snapshot.paused && !snapshot.minigame && (
               <section className="card">
                 <p className="big dim">문제를 준비하고 있습니다…</p>
               </section>
@@ -976,6 +994,8 @@ function stateLabel(state: string): string {
       return '일시정지';
     case 'GAME_RESULT':
       return '결과';
+    case 'MINIGAME':
+      return '미니게임';
     default:
       return state;
   }

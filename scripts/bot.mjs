@@ -108,6 +108,8 @@ const SCENARIO_ENV = {
   leavematrix: { DISCONNECT_REMOVE_MS: '3000', HOST_TRANSFER_GRACE_MS: '1500' },
   // ★ R049 — 뽑기 값 10 (bot_01 이 27번 · bot_06(19) 동시 두 번). 기본 서버에서 돌리면 한 번만 뽑는다
   shop: { SHOP_PRICE_OVERRIDE: '10' },
+  // ★ R050 — 정답 공개 대기 200ms · 미니게임 판 진행 밖 단계 ×0.05 (판 진행 시간은 그대로)
+  minigame: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -287,6 +289,24 @@ class Bot {
       s.on('chat.message', (m) =>
         this.events.push({ type: 'chat', text: m.text, masked: m.masked === true, accountId: m.accountId, emojiId: m.emojiId ?? null, special: m.special === true }),
       );
+
+      // ── ★★★ R050 — 미니게임 (보기 전체가 온다 · 받은 순간을 함께 적는다 — 케이크 타이밍 검사)
+      s.on('minigame.state', (p) => {
+        const mg = p.minigame;
+        this.events.push({ type: 'minigame.state', phase: mg?.phase ?? null, roundIndex: mg?.roundIndex ?? null, token: mg?.token ?? null, at: Date.now() });
+        if (this.snapshot) {
+          this.snapshot.room.state = p.state;
+          this.snapshot.minigame = mg;
+        }
+        this.onMinigame?.(mg, performance.now());
+      });
+      s.on('minigame.ended', (p) => {
+        this.events.push({ type: 'minigame.ended', state: p.state, practice: p.practice, at: Date.now() });
+        if (this.snapshot) {
+          this.snapshot.room.state = p.state;
+          this.snapshot.minigame = null;
+        }
+      });
 
       // ── Phase 2 이벤트
       s.on('lobby.settingsUpdated', (p) => {
@@ -5504,7 +5524,7 @@ async function scenarioPoints() {
   const sql = async () =>
     withDb(async (c) => {
       const r = await c.query(
-        `SELECT (SELECT count(*) FROM answer_events WHERE account_id = $1 AND accepted)::int earned,
+        `SELECT ((SELECT count(*) FROM answer_events WHERE account_id = $1 AND accepted) + (SELECT coalesce(sum(amount), 0) FROM minigame_rewards WHERE account_id = $1))::int earned,
                 (SELECT coalesce(sum(amount), 0) FROM point_spends WHERE account_id = $1)::int spent`,
         [aId],
       );
@@ -5512,7 +5532,7 @@ async function scenarioPoints() {
     });
   const p0 = await api();
   const s0 = await sql();
-  expect('★ API earned = SQL 로 센 accepted 수', p0.earned, s0.earned);
+  expect('★ API earned = SQL(accepted 수 + 미니게임 보상 — R050)', p0.earned, s0.earned);
   expect('★ API spent = SQL point_spends 합', p0.spent, s0.spent);
   expect('★ balance = earned − spent', p0.balance, p0.earned - p0.spent);
   expect('★ 로그인 없이 401', (await fetch(`${BASE}/api/me/points`)).status, 401);
@@ -5560,7 +5580,7 @@ async function scenarioShop() {
     withDb(async (c) => {
       const r = await c.query(
         `SELECT a.id::text AS id,
-                (SELECT count(*) FROM answer_events e WHERE e.account_id = a.id AND e.accepted)::int AS earned,
+                ((SELECT count(*) FROM answer_events e WHERE e.account_id = a.id AND e.accepted) + (SELECT coalesce(sum(amount), 0) FROM minigame_rewards r WHERE r.account_id = a.id))::int AS earned,
                 (SELECT coalesce(sum(amount), 0) FROM point_spends p WHERE p.account_id = a.id)::int AS spent,
                 (SELECT count(*) FROM account_emojis ae WHERE ae.account_id = a.id)::int AS owned
            FROM accounts a WHERE a.login_id = $1`,
@@ -5842,6 +5862,339 @@ async function scenarioLeak() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ minigame — R050 D·E 미니게임 틀 · 케이크 기다리기 · 균형의수호자 (D-234 · D-235)
+//   자기 서버(SCENARIO_ENV): 정답 공개 대기 200ms · 판 진행 밖 단계 ×0.05 (판 진행 시간은 그대로)
+//   [1] 등장 자리 · 횟수 — 문제 수 4 · 5 · 9 · 10 · 11 · 20 · 200 (마지막 뒤 없음 · 상한 10)
+//   [2] 보상 — 참가 2 · 3 · 5명 (균형 · 순위를 정해 둔 자르기) · 판 점수에 + · 포인트 = 맞힌 수 + 보상 − 쓴 것(API = SQL) · 보상 중복 넣기 → 0행
+//   [3] 연습 판(로비) — 로비로 돌아감 · 보상 0행 · practice=true · 기록 행 수 = 판 × 참가자 · 끊긴 사람 꼴찌 · 중간 입장 구경
+//   [4] 케이크 입력 — 정확히 0초 · 일찍 · 늦게 · 미제출 · ★ 지연 0 · 150 · 400ms 기기도 오차가 지연만큼 밀리지 않는다 · 미리 계산한 값 거부
+//   [5] 일시정지 미룸 — 미니게임 중 전원 끊김 → 미니게임은 끝까지 · 끝난 뒤 다음 문제에서 PAUSED
+//   [6] 다시 하기 — 미니게임 설정 이어받음
+// -----------------------------------------------------------------------------
+async function mgShared() {
+  return import(new URL('../shared/dist/index.js', import.meta.url).href);
+}
+/** 균형 — 이 물건을 세로선으로 정확히 반으로 가르는 x (넓이는 x 에 따라 늘 늘어난다 → 이분 탐색) */
+function balanceHalfX(sh, kind, seed) {
+  const item = sh.balanceItem(kind, seed);
+  let lo = 2;
+  let hi = 98;
+  for (let i = 0; i < 60; i += 1) {
+    const mid = (lo + hi) / 2;
+    const s = sh.balanceSplit(item, { top: mid, bottom: mid });
+    if (s.aPct > 50) hi = mid;
+    else lo = mid;
+  }
+  return (lo + hi) / 2;
+}
+/** 봇마다 판 진행 때 무엇을 할지 — policy(bot, mg, recvPerf) → { delayMs, input } | null(안 함) */
+function driveMinigame(bot, policy) {
+  bot.__mgDone = new Set();
+  bot.onMinigame = (mg, recv) => {
+    if (!mg || mg.phase !== 'play' || mg.spectating) return;
+    const k = `${mg.token}:${mg.roundIndex}`;
+    if (bot.__mgDone.has(k)) return;
+    bot.__mgDone.add(k);
+    const act = policy(bot, mg, recv);
+    if (!act) return;
+    setTimeout(() => {
+      if (!bot.socket?.connected) return;
+      bot.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: typeof act.input === 'function' ? act.input() : act.input });
+    }, act.delayMs ?? 0);
+  };
+}
+/** 퀴즈 판 하나 — 문제는 방장이 곧바로 넘긴다. 결과까지 */
+async function playQuickGame(host, others, n, keys, timeoutMs) {
+  const from = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: n, minigames: true, minigameKeys: keys });
+  await host.waitFor(() => host.since(from, 'lobby.settingsUpdated').some((e) => e.settings?.minigames === true && e.settings?.questionCount === n), 4000, '설정');
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작');
+  const gameId = host.since(g, 'game.started')[0].gameId;
+  let skipped = 0;
+  const until = Date.now() + timeoutMs;
+  while (Date.now() < until) {
+    if (host.since(g, 'game.result').length > 0) break;
+    const q = host.snapshot?.question;
+    if (host.snapshot?.room.state === 'QUESTION_ACTIVE' && q && q.index > skipped) {
+      skipped = q.index;
+      host.forceSkip(q.epoch);
+    }
+    await sleep(25);
+  }
+  if (host.since(g, 'game.result').length === 0) throw new Error(`${n}문제 판이 ${timeoutMs}ms 안에 끝나지 않았다`);
+  for (const o of others) await o.waitFor(() => o.snapshot?.room.state === 'GAME_RESULT', 5000, '결과');
+  return gameId;
+}
+async function backToLobby(host, others) {
+  const f = host.mark();
+  host.socket.emit('game.toLobby', {});
+  await host.waitFor(() => host.snapshot?.room.state === 'LOBBY' || host.since(f, 'room.state').length > 0, 5000, '로비');
+  await sleep(200);
+}
+async function runsOfGame(gameId) {
+  return withDb(async (c) => (await c.query(`SELECT id::text, minigame_key, after_question_index, practice, end_reason FROM minigame_runs WHERE game_id = $1 ORDER BY minigame_runs.id`, [gameId])).rows);
+}
+
+async function scenarioMinigame() {
+  log('시나리오 minigame — ★★★ 미니게임 틀 · 케이크 기다리기 · 균형의수호자 (R050)');
+  const sh = await mgShared();
+  const bots = await makeBots(6);
+  const [host] = bots;
+  for (const b of bots) await b.connect();
+  host.createRoom('R050 미니게임');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  const roomId = host.snapshot.room.id;
+  const balancePolicy = (rankOrder) => (bot, mg) => {
+    const p = mg.round.params;
+    const x = balanceHalfX(sh, p.kind, p.itemSeed);
+    const off = (rankOrder.get(bot.loginId) ?? 5) * 2.5;
+    return { delayMs: 30, input: { top: x + off, bottom: x + off, final: true } };
+  };
+
+  // ── [1] 등장 자리 · 횟수 (방장 혼자 · 균형 — 곧바로 확정해 판을 일찍 끝낸다)
+  log('\n[1] ★★ 등장 자리 · 횟수 — 문제 수 4 · 5 · 9 · 10 · 11 · 20 · 200');
+  driveMinigame(host, balancePolicy(new Map([[host.loginId, 0]])));
+  for (const n of [4, 5, 9, 10, 11, 20, 200]) {
+    const gameId = await playQuickGame(host, [], n, ['balance'], n * 2500 + 60000);
+    const runs = await runsOfGame(gameId);
+    const got = runs.map((r) => r.after_question_index);
+    expect(`★★ ${n}문제 — 미니게임 자리 ${JSON.stringify(sh.minigameSlots(n))}`, got, sh.minigameSlots(n));
+    expectTrue(`★ ${n}문제 — 마지막 문제 뒤에는 없다`, !got.includes(n));
+    expectTrue(`★ ${n}문제 — 판이 모두 끝까지(completed)`, runs.every((r) => r.end_reason === 'completed'), JSON.stringify(runs.map((r) => r.end_reason)));
+    await backToLobby(host, []);
+  }
+
+  // ── [2] 보상 — 2 · 3 · 5명
+  log('\n[2] ★★★ 보상 — 참가 2 · 3 · 5명 (판 점수 · 포인트 · 중복 없음)');
+  for (const k of [2, 3, 5]) {
+    const members = bots.slice(0, k);
+    for (const b of members.slice(1)) {
+      if (!b.snapshot || b.snapshot.room.id !== roomId) {
+        b.join(roomId);
+        await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
+      }
+    }
+    // 방 인원을 정확히 k 로
+    for (const b of bots.slice(k)) {
+      if (b.snapshot?.room?.id === roomId) {
+        b.leave();
+        await b.waitFor(() => b.since(0, 'room.left').length > 0 || true, 1000);
+        b.snapshot = null;
+      }
+    }
+    await sleep(400);
+    const order = new Map(members.map((b, i) => [b.loginId, i]));
+    for (const b of members) driveMinigame(b, balancePolicy(order));
+    const before = await withDb(async (c) =>
+      (await c.query(`SELECT a.login_id, coalesce((SELECT sum(amount) FROM minigame_rewards r WHERE r.account_id = a.id), 0)::int AS rw FROM accounts a WHERE a.login_id = ANY($1)`, [members.map((b) => b.loginId)])).rows,
+    );
+    const gameId = await playQuickGame(host, members.slice(1), 5, ['balance'], 90000);
+    const runs = await runsOfGame(gameId);
+    expect(`★ ${k}명 — 미니게임 1번 (5문제 → 3번째 뒤)`, runs.map((r) => r.after_question_index), [3]);
+    const rewards = await withDb(async (c) =>
+      (await c.query(`SELECT a.login_id, r.amount, r.rank FROM minigame_rewards r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = $1 ORDER BY r.rank`, [runs[0].id])).rows,
+    );
+    const want = members.map((_, i) => sh.minigameReward(i + 1, k)).filter((x) => x > 0);
+    expect(`★★★ ${k}명 — 보상 ${JSON.stringify(want)} (1위부터)`, rewards.map((r) => r.amount), want);
+    expect(`★★ ${k}명 — 보상 받은 사람 = 정해 둔 순위대로`, rewards.map((r) => r.login_id), members.slice(0, want.length).map((b) => b.loginId));
+    const result = host.snapshot.result;
+    const scoreOf = (b) => result.ranking.find((r) => r.accountId === b.snapshot.me.accountId)?.score;
+    expect(`★★ ${k}명 — 판 점수에도 들어간다 (문제는 모두 넘겼다 → 점수 = 보상)`, members.map(scoreOf), members.map((_, i) => sh.minigameReward(i + 1, k)));
+    const after = await withDb(async (c) =>
+      (await c.query(`SELECT a.login_id, coalesce((SELECT sum(amount) FROM minigame_rewards r WHERE r.account_id = a.id), 0)::int AS rw FROM accounts a WHERE a.login_id = ANY($1)`, [members.map((b) => b.loginId)])).rows,
+    );
+    const delta = members.map((b) => (after.find((r) => r.login_id === b.loginId)?.rw ?? 0) - (before.find((r) => r.login_id === b.loginId)?.rw ?? 0));
+    expect(`★ ${k}명 — 계정 보상 합이 이번 보상만큼 늘었다`, delta, members.map((_, i) => sh.minigameReward(i + 1, k)));
+    // 중복 넣기 → 0행 (UNIQUE)
+    const dup = await withDb(async (c) =>
+      (await c.query(`INSERT INTO minigame_rewards (run_id, account_id, amount, rank) SELECT run_id, account_id, amount, rank FROM minigame_rewards WHERE run_id = $1 ON CONFLICT (run_id, account_id) DO NOTHING`, [runs[0].id])).rowCount,
+    );
+    expect(`★★ ${k}명 — 같은 판 보상을 다시 넣으면 0행 (두 번 지급 안 됨)`, dup, 0);
+    // 기록 행 수 = 판 × 참가자
+    const rows = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_results WHERE run_id = $1`, [runs[0].id])).rows[0].n);
+    expect(`★ ${k}명 — 결과 기록 행 = 3판 × ${k}명`, rows, 3 * k);
+    await backToLobby(host, members.slice(1));
+  }
+  // 포인트 API = SQL (맞힌 수 + 보상 − 쓴 것)
+  const api = await (await fetch(`${BASE}/api/me/points`, { headers: { cookie: host.cookie } })).json();
+  const sql = await withDb(async (c) =>
+    (
+      await c.query(
+        `SELECT (SELECT count(*) FROM answer_events WHERE account_id = a.id AND accepted)::int AS c, (SELECT coalesce(sum(amount),0) FROM minigame_rewards WHERE account_id = a.id)::int AS r, (SELECT coalesce(sum(amount),0) FROM point_spends WHERE account_id = a.id)::int AS s FROM accounts a WHERE a.login_id = $1`,
+        [host.loginId],
+      )
+    ).rows[0],
+  );
+  expect('★★ 포인트 API = SQL (맞힌 수 + 미니게임 보상 − 쓴 것)', [api.correct, api.rewards, api.spent, api.balance], [sql.c, sql.r, sql.s, sql.c + sql.r - sql.s]);
+
+  // ── [3] 연습 판 · 끊김 · 중간 입장
+  log('\n[3] ★★ 연습 판(로비) — 로비로 · 보상 없음 · 끊긴 사람 꼴찌 · 중간 입장 구경');
+  const [, b2, b3, b4] = bots;
+  for (const b of [b2, b3]) {
+    if (b.snapshot?.room?.id !== roomId) {
+      if (!b.socket?.connected) await b.connect();
+      b.join(roomId);
+      await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
+    }
+  }
+  // 방에는 셋만 (host · b2 · b3) — 나머지는 내보낸다
+  for (const b of bots.slice(3)) {
+    if (b.snapshot?.room?.id === roomId) {
+      b.leave();
+      await sleep(200);
+      b.snapshot = null;
+    }
+  }
+  await sleep(300);
+  const order3 = new Map([host, b2, b3].map((b, i) => [b.loginId, i]));
+  for (const b of [host, b2, b3]) driveMinigame(b, balancePolicy(order3));
+  // b3 는 1판 '준비' 때 끊긴다
+  const b3Policy = b3.onMinigame;
+  b3.onMinigame = (mg, recv) => {
+    if (mg?.phase === 'ready' && mg.roundIndex === 1 && b3.socket?.connected) b3.disconnect();
+    b3Policy(mg, recv);
+  };
+  const pf = host.mark();
+  host.socket.emit('minigame.practice', { key: 'balance' });
+  await host.waitFor(() => host.snapshot?.room.state === 'MINIGAME', 5000, '연습 시작');
+  // 중간 입장 — b4 가 들어온다 → 구경
+  if (!b4.socket?.connected) await b4.connect();
+  b4.snapshot = null;
+  b4.join(roomId);
+  await b4.waitFor(() => b4.snapshot?.room.id === roomId, 6000, 'b4 입장');
+  expectTrue('★★ 중간 입장 — 미니게임 보기에 spectating=true', b4.snapshot.minigame?.spectating === true, JSON.stringify(b4.snapshot.minigame?.spectating));
+  b4.socket.emit('minigame.submit', { token: b4.snapshot.minigame?.token, roundIndex: b4.snapshot.minigame?.roundIndex ?? 0, input: { top: 50, bottom: 50, final: true } });
+  await host.waitFor(() => host.since(pf, 'minigame.ended').length > 0, 60000, '연습 끝');
+  expect('★★ 연습이 끝나면 로비로', host.snapshot.room.state, 'LOBBY');
+  const pr = await withDb(async (c) => (await c.query(`SELECT id::text, practice, game_id FROM minigame_runs WHERE room_id = $1 AND practice ORDER BY id DESC LIMIT 1`, [roomId])).rows[0]);
+  expectTrue('★ 연습 판 기록 — practice=true · 게임 없음', pr?.practice === true && pr.game_id === null);
+  const prw = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_rewards WHERE run_id = $1`, [pr.id])).rows[0].n);
+  expect('★★ 연습 판 — 보상 0행 (포인트 없음)', prw, 0);
+  const pres = await withDb(async (c) => (await c.query(`SELECT a.login_id, r.round_index, r.submitted, r.rank FROM minigame_results r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = $1 ORDER BY r.round_index, r.rank`, [pr.id])).rows);
+  expect('★ 연습 판 기록 행 = 3판 × 3명 (중간 입장은 없다)', pres.length, 9);
+  const b3rows = pres.filter((r) => r.login_id === b3.loginId);
+  expectTrue('★★ 끊긴 사람 — 끊긴 뒤 판(2 · 3판)은 미제출 · 꼴찌', b3rows.filter((r) => r.round_index >= 1).every((r) => r.submitted === false && r.rank === 3), JSON.stringify(b3rows));
+  expectTrue('★ 중간 입장 사람의 입력은 기록에 없다', !pres.some((r) => r.login_id === b4.loginId));
+  await b3.connect();
+  await sleep(300);
+
+  // ── [4] 케이크 입력 · 타이밍 공정성 (연습 판 · 진짜 시간)
+  log('\n[4] ★★★ 케이크 — 정확 · 일찍 · 늦게 · 미제출 · 지연 0/150/400ms');
+  const cakeBots = [host, b2, b3, b4, bots[4], bots[5]];
+  for (const b of cakeBots) {
+    if (!b.socket?.connected) await b.connect();
+    if (b.snapshot?.room?.id !== roomId) {
+      b.join(roomId);
+      await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
+    }
+  }
+  await sleep(400);
+  // 지연: 받기 지연(기기가 늦게 받음) = 보내기 지연. 기기는 자기가 받은 순간부터 목표 ms 뒤에 누른다
+  const plan = new Map([
+    [host.loginId, { lag: 0, off: 0 }],
+    [b2.loginId, { lag: 0, off: -300 }],
+    [b3.loginId, { lag: 0, off: 500 }],
+    [b4.loginId, { lag: 0, off: null }],
+    [bots[4].loginId, { lag: 150, off: 0 }],
+    [bots[5].loginId, { lag: 400, off: 0 }],
+  ]);
+  for (const b of cakeBots) {
+    const pl = plan.get(b.loginId);
+    driveMinigame(b, (bot, mg) => {
+      if (pl.off === null) return null;
+      const target = Number(mg.round.params.targetMs);
+      const elapsed = target + pl.off;
+      // 받기 지연(lag) 뒤에 재기 시작 → elapsed 뒤에 누름 → 보내기 지연(lag)
+      return { delayMs: pl.lag + elapsed + pl.lag, input: { elapsedMs: elapsed } };
+    });
+  }
+  // 미리 계산해 보내기 — 판이 막 시작했는데 "10초 뒤에 눌렀다" (거부되어야 한다)
+  const cheat = bots[5];
+  const pf2 = host.mark();
+  host.socket.emit('minigame.practice', { key: 'cake' });
+  await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 15000, '케이크 1판');
+  const cm = cheat.mark();
+  cheat.socket.emit('minigame.submit', { token: host.snapshot.minigame.token, roundIndex: 0, input: { elapsedMs: 9990 } });
+  await sleep(300);
+  expect('★★ 미리 계산한 값(실제로 흐른 시간보다 긴 값) → 거부', cheat.since(cm, 'error')[0]?.code ?? null, 'BAD_REQUEST');
+  await host.waitFor(() => host.since(pf2, 'minigame.ended').length > 0, 120000, '케이크 끝');
+  const cr = await withDb(async (c) => (await c.query(`SELECT id::text FROM minigame_runs WHERE room_id = $1 AND minigame_key = 'cake' ORDER BY id DESC LIMIT 1`, [roomId])).rows[0]);
+  const cres = await withDb(async (c) => (await c.query(`SELECT a.login_id, r.round_index, r.submitted, r.error, r.rank FROM minigame_results r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = $1 ORDER BY r.round_index, a.login_id`, [cr.id])).rows);
+  const errs = (id) => cres.filter((r) => r.login_id === id).map((r) => r.error);
+  log(`  오차(초) — 정확 ${JSON.stringify(errs(host.loginId))} · 지연150 ${JSON.stringify(errs(bots[4].loginId))} · 지연400 ${JSON.stringify(errs(bots[5].loginId))}`);
+  expect('★ 케이크 기록 행 = 4판 × 6명', cres.length, 24);
+  expectTrue('★★ 정확히 0초 — 오차 |e| < 0.03초 (4판 모두)', errs(host.loginId).every((e) => e !== null && Math.abs(e) < 0.03), JSON.stringify(errs(host.loginId)));
+  expectTrue('★★ 일찍 0.3초 — 오차 ≈ −0.300', errs(b2.loginId).every((e) => e !== null && Math.abs(e + 0.3) < 0.03), JSON.stringify(errs(b2.loginId)));
+  expectTrue('★★ 늦게 0.5초 — 오차 ≈ +0.500', errs(b3.loginId).every((e) => e !== null && Math.abs(e - 0.5) < 0.03), JSON.stringify(errs(b3.loginId)));
+  expectTrue('★★ 미제출 — 4판 모두 꼴찌 · 미제출', cres.filter((r) => r.login_id === b4.loginId).every((r) => !r.submitted && r.rank === 6));
+  expectTrue('★★★ 지연 150ms 기기 — 오차가 지연만큼 밀리지 않는다 (|e| < 0.03)', errs(bots[4].loginId).every((e) => e !== null && Math.abs(e) < 0.03), JSON.stringify(errs(bots[4].loginId)));
+  expectTrue('★★★ 지연 400ms 기기 — 오차가 지연만큼 밀리지 않는다 (|e| < 0.03)', errs(bots[5].loginId).every((e) => e !== null && Math.abs(e) < 0.03), JSON.stringify(errs(bots[5].loginId)));
+
+  // ── [5] 일시정지 미룸 — 퀴즈 판 미니게임 중 전원 끊김
+  log('\n[5] ★★ 일시정지 미룸 — 미니게임 중 모두 끊김 → 끝까지 → 다음 문제에서 PAUSED');
+  for (const b of cakeBots.slice(1)) {
+    b.leave();
+    await sleep(100);
+  }
+  await sleep(400);
+  driveMinigame(host, () => null); // 아무것도 안 함 — 판이 시간대로 간다
+  const s5 = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigames: true, minigameKeys: ['balance'] });
+  await host.waitFor(() => host.since(s5, 'lobby.settingsUpdated').length > 0, 4000, '설정');
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(s5, 'game.started').length > 0, 12000, '게임 시작');
+  const gid5 = host.since(s5, 'game.started')[0].gameId;
+  let sk = 0;
+  while (host.snapshot.room.state !== 'MINIGAME') {
+    const q = host.snapshot.question;
+    if (host.snapshot.room.state === 'QUESTION_ACTIVE' && q && q.index > sk) {
+      sk = q.index;
+      host.forceSkip(q.epoch);
+    }
+    await sleep(25);
+  }
+  host.disconnect(); // ★ 방에 접속자가 0명
+  await sleep(200);
+  // 미니게임은 끝까지 간다 (균형 3판 × 10초)
+  const done = await (async () => {
+    for (let i = 0; i < 120; i += 1) {
+      const r = await withDb(async (c) => (await c.query(`SELECT end_reason FROM minigame_runs WHERE game_id = $1 ORDER BY id DESC LIMIT 1`, [gid5])).rows[0]);
+      if (r?.end_reason) return r.end_reason;
+      await sleep(500);
+    }
+    return null;
+  })();
+  expect('★★ 전원 끊김에도 미니게임은 끝까지 (completed — 일시정지로 끊기지 않음)', done, 'completed');
+  await sleep(600);
+  host.snapshot = null;
+  await host.connect();
+  await host.waitFor(() => host.snapshot !== null, 6000, '재접속');
+  expect('★★ 끝난 뒤 다음 문제에서 일시정지 (PAUSED · 4번째 문제에서 멈춤)', [host.snapshot.room.state, host.snapshot.paused?.pausedFrom, host.snapshot.question?.index], ['PAUSED', 'QUESTION_ACTIVE', 4]);
+  const r5 = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_results r JOIN minigame_runs m ON m.id = r.run_id WHERE m.game_id = $1`, [gid5])).rows[0].n);
+  expect('★ 그 판도 기록 = 3판 × 1명 (미제출)', r5, 3);
+  host.forceEnd();
+  await host.waitFor(() => host.snapshot?.room.state === 'GAME_RESULT', 6000, '종료');
+
+  // ── [6] 다시 하기 — 설정 이어받음
+  log('\n[6] ★ 다시 하기 — 미니게임 설정 이어받음');
+  const a6 = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(a6, 'game.countdownStarted').length > 0, 8000, '다시 하기');
+  expect('★ 다시 하기 — 미니게임 포함 · 목록 그대로', [host.snapshot.room.settings.minigames, host.snapshot.room.settings.minigameKeys], [true, ['balance']]);
+  host.socket.emit('game.cancelCountdown', {});
+  await sleep(300);
+
+  for (const b of bots) {
+    b.leave();
+    await sleep(50);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -6036,6 +6389,7 @@ const SCENARIOS = {
   shop: scenarioShop,
   // ★★★ R050
   leak: scenarioLeak,
+  minigame: scenarioMinigame,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };
