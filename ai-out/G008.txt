@@ -1,0 +1,129 @@
+===========================================
+ROUND: G008
+DATE: 2026-10-17
+TASK: A. V010 반영 — 기존 활성 상 608 의 난이도를 blind 값으로(CV-18 a) + 풀 실측 · B. 기존 활성 힌트 2(C69 ②) · C~G. 미니게임 데이터 1차(docs/18 형식) → VERIFY V011 묶음. 적재하지 않는다
+STATUS: 완료
+===========================================
+
+[cmd 창 요약]
+1. V010 반영: 기존 활성 상 608(난이도 바뀜 412) → 상 892 → 505 · 50문제 상만 17 → 10판 · 중+상 57 · 전체 102 · 백업 backups/quizweb-20261017-021125.dump.
+2. 기존 힌트 2(#4268 빌리 진 킹 · #641 스코티시 폴드) 새로 씀 · 대상 밖 행 해시 같음 · hint-check-active 막힘 0.
+3. 미니게임 1차 642 후보: price 100 · worldprice 3품목(문항 172) · photo 120 · estimate 100 · which 150 · g008-check 642/642 막힘 0.
+4. 그림 508장(git 밖 · backups/minigame-2026-10-17.zip) · 사진 맞혀 보기 119/120 · GEN 직접 본 것 30 항목(33장) · DB 적재 0.
+5. VERIFY 묶음 audit/g008-verify-targets.json · 보고서 ai-out/G008.txt.
+
+0. 찬종이 볼 것
+- A 풀 실측 (`measure-pool-exhaust` · 50문제 · 전원 처음 · 4명 — 5·6명도 같음)
+  | 경우 | G007 (풀) | G008 (풀) |
+  |---|---|---|
+  | 상만 | 17 (892) | **10** (505) |
+  | 중+상 | 58 (2,907) | **57** (2,891) |
+  | 전체 | 102 (5,113) | **102** (5,113) |
+  | 미디어 상 | 2 (125) | **1** (83) |
+  | korea 상 | 1 (76) | **1** (57) |
+  | 묶음별 상 | sports 1 · life 2 · arts 3 · science 3 · history 3 | sports 1 (64) · life 1 (68) · arts 1 (90) · science 1 (75) · history 1 (68) |
+  · ★ "상만" 판은 10판이다(V010 추정과 같음). 묶음 하나만 고르면 상은 모두 1판 — 상 풀을 늘리는 생성이 다시 필요하다(설계 판단 몫).
+- 게임별 후보 수 (status candidate · verified 0 · loaded 0)
+  | 게임 | 항목 | 그림 | 배분 |
+  |---|---|---|---|
+  | price 얼마게요 | 100 | 100 | category 10개 각 10 · bucket <1만 20 · 1~10만 28 · 10~100만 27 · 100만+ 25 · 의외로 비쌈 16 · 의외로 쌈 14 |
+  | worldprice 빅맥지수 | 172 (품목 3) | 3 | 빅맥 54개국(이코노미스트 2026-07) · 아이폰 17 256GB 38개국 · 넷플릭스 스탠다드 194개국 → 문항 빅맥 53 · 아이폰 37 · 넷플릭스 82 |
+  | photo 사진 이름 | 120 | 120 | everyday 32 · food 14 · animal 14 · person 18 · place 20 · object 14 · logo 8 · 난이도 1 61 · 2 41 · 3 18 |
+  | estimate 얼마나 될까 | 100 | 91 | kind 11개 각 9~10 |
+  | which 어느 쪽? | 150 | 194 장 | bigger 100 · earlier 50 · 그림 있는 항목 bigger 54 · earlier 47 |
+  · 빅맥지수 — 한국 빅맥 5,700원 · 최저 인도네시아 3,177원 · 최고 우루과이 11,890원 / 아이폰 — 한국 145만 원 · 최저 캐나다 122만 · 최고 튀르키예 269만 / 넷플릭스 — 한국 13,500원 · 최저 파키스탄 3,849원 · 최고 스위스 37,023원.
+- 그림 예 5장 (이 PC — git 에는 없다)
+  · price: `assets/minigame/price/price-0082.jpg`(토블론 100g 3,990원) · `assets/minigame/price/price-0037.jpg`(지샥 GA-2100 118,500원)
+  · photo: `assets/minigame/photo/photo-0084.jpg`(시드니 오페라 하우스) · `assets/minigame/photo/photo-0056.jpg`(코주부원숭이)
+  · worldprice: `assets/minigame/worldprice/bigmac.jpg`
+- 못 한 것
+  · price 1만 원 미만 20(목표 25) — 싼 상품은 판매처 사이 가격이 1.5배 넘게 벌어지는 일이 많아 58건을 버렸다.
+  · price 37건은 가격 출처 2곳이 같은 다나와 페이지(최저가 · 판매처 한 곳) — "출처 2곳 이상" 의 뜻(판매처 둘)은 지키지만 문서는 하나다. 자동차 4종(현대 · 제네시스 · KGM · 테슬라)은 공식 가격표를 열지 못해 가격 사이트 · 기사로. 사치품은 다나와 새 상품 중앙값이라 병행수입 시세(매장 정가와 다를 수 있음).
+  · worldprice 환율 — ECB 표에 없는 통화는 공개 환율 API(같은 날) — 공신력이 낮다.
+
+★ 원칙 메모
+- DB 쓰기: A(608 행의 difficulty_score · difficulty · score_version · scored_at · difficulty_why) · B(2 행의 general_hint · general_hint_version)만 — 백업 1회 뒤. 대상 밖 questions(4,585행 — MAIN ui-check 가 잠깐 쓰는 #1~3 은 뺌) md5 · question_answers md5 · 대상 행의 쓰지 않는 칸 md5 가 반영 전후 같다. 미니게임은 파일만 — DB 에 항목 표 없음(MAIN R050 의 minigame_* 표는 있고 minigame_item_experiences 0행). 새 퀴즈 생성 0 · server/ client/ shared/ migrations/ 0.
+- 키: `.env` 의 NAVER_* 는 쓰지 않았다(네이버 쇼핑 API 종료 · 블로그/뉴스/이미지 검색은 필요 없었다). 키 값은 코드·문서·보고서에 없다.
+- 웹: WebSearch 14회(price 12 · estimate 1 · which 1) / 200 · WebFetch 와 위키백과·공용 API 가 주 수단. 하위 에이전트 10(힌트 1 · worldprice 1 · price 2 · photo 2 · 사진 맞혀 보기 1 · estimate 1 · which 2) — 한 번에 2 · 에이전트마다 임시 폴더 tmp/g008/work-* · 띄우기 전 남는 메모리 6.7 GB · 429 없음.
+- 그림: 하위 에이전트가 그림마다 Read 로 열어 기록(imageCheck) · GEN 이 무작위 30 항목(그림 33장 — price 6 · worldprice 3 · photo 12 · estimate 6 · which 3)을 직접 열어 봄 → 대상이 다르거나 정답 글자 · 가격 숫자가 보이는 것 0. 걸리는 점 3(0030 로보락의 기능 문구 · 만델라 사진 배경의 다른 사람 · 서울월드컵경기장 사진의 관중) — C70.
+- 자기 검토는 판정이 아니다 — 미니게임 642 는 모두 candidate. V011 이 재검증한다.
+- (7) 브리핑의 사실 확인
+  · 활성 5,113 · 상 892 · V010 items 608(최종 2 16 · 3 371 · 4 221) — 맞음. current.dif 와 DB 일치 608/608.
+  · score_version 열 값 꼴: score-v1 4,143 · score-v2 970 → 이번 값은 `score-v3-blind`. difficulty 열은 자동이 아니다(트리거 · 생성 열 없음) → easy/medium/hard 를 같이 바꿨다.
+  · hint-v5 가 지금 판 — 맞음. `.gitignore` 에 assets/minigame 없었음 → 한 줄 더함.
+  · ★ 다른 점: 활성 힌트는 2,921 이 아니라 **2,924** 다 — 3 은 MAIN 의 화면 검사(ui-check)가 #1~3 에 넣어 둔 시험 힌트(general_hint_version 'ui-check')다. GEN 몫이 아니라 손대지 않았고 해시 비교에서 그 3 행을 뺐다.
+- 동시 라운드(MAIN R050 · VERIFY V011): 같은 작업 폴더에 MAIN 의 미커밋 server/ client/ 파일이 있다 — 내 파일만 `git add` · 커밋 전마다 `git fetch` 로 원격이 앞서 있지 않음을 확인하고 push(앞선 적 없음 · rebase 할 일 없었다 · force 없음). V011 이 13 머리를 먼저 고쳐 내 "마지막 갱신" 줄을 그 앞에 붙였다. 05 는 Track D 행 · 그 아래 줄 · Track E 행 신설, 06 맨 위, 07 DG-033~035, 13 CV-18~19 끝 · C69 끝 · C70, README G 표만.
+
+목차
+1. A V010 반영
+2. B 기존 힌트 2
+3. C 소재 · 배분
+4. D 수집
+5. E VERIFY 묶음
+6. GEN 판단 목록
+7. 새로 생긴 결정 필요 항목
+고친 문서
+
+=====================================================================
+1. A V010 반영
+=====================================================================
+- `scripts/g008-apply-v010.mjs`(멱등 · 확인 → --apply · 한 트랜잭션): 608 id 가 V010 targets 와 같은지 · 활성인지 · DB difficulty_score = current.dif 인지 확인 → 608/608 일치 · 건너뜀 0. 쓴 칸: difficulty_score = V010 최종 dif · difficulty(1~2 easy · 3 medium · 4~5 hard) · score_version `score-v3-blind` · scored_at now() · difficulty_why "V010 blind: <difWhy> (가장 쉬운 단서: <easiestCue>)". 난이도가 바뀐 것 412(4→3 370 · 4→2 16 · 5→3 1 · 5→4 25) · 같은 196 은 칸만. 재실행 할 일 0. `data/pipeline/audit/g008-v010-apply.json`(before/after).
+- 뒤: 상 892 → **505**(기존 221 + g003 110 + g005 174) · 활성 5,113 · 힌트 2,924 · hint-check-active 막힘 0. 실측은 0절.
+
+=====================================================================
+2. B 기존 힌트 2
+=====================================================================
+- `scripts/g008-apply-hints.mjs`(hint-v5 · 같은 정답 2회차 문항을 sameAnswerActive 로 넣어 그 질문의 사실을 피함):
+  · #4268 빌리 진 킹 → "그의 남동생은 1972~1981년 샌프란시스코 자이언츠에서 뛴 메이저리그 구원 투수였다." (en.wikipedia Randy Moffitt)
+  · #641 스코티시 폴드 → "미국의 고양이 등록 단체 CFA는 1978년 이 품종에 챔피언십 지위를 주었다." (en.wikipedia Scottish Fold) — 에이전트 보고: 사실은 맞지만 도와주는 힘이 약하다(다른 후보가 이름 조각 · 대표 생김새 · 2회차 사실에 걸렸다).
+- `data/pipeline/audit/g008-fixes.json` · checkHint 막힘 0 · 경고 0.
+
+=====================================================================
+3. C 소재 · 배분
+=====================================================================
+- 하위 에이전트마다 게임 · id 범위 · category 를 나눠 겹치지 않게(price 1: 식품 · 생활 · 가전 · 패션 · 뷰티 / price 2: 취미 · 자동차 · 사치품 · 해외 · 기타 / photo 1: everyday · food · animal / photo 2: person · place · object · logo / which 1: bigger / which 2: earlier). 게임 안 같은 대상 · 같은 짝은 g008-check 가 막는다(0). 퀴즈 활성 정답과는 겹쳐도 된다(브리핑).
+- 버린 소재 (하위 에이전트 기록 · 사유는 기록 문장으로 묶음)
+  | 게임 | 버림 | 사유 |
+  |---|---|---|
+  | price | 73 | 가격 분산 1.5 초과 58 · 출처 없음(판매처 1곳 · 공식가 미확인) 4 · 그 밖(그림 워터마크 · 할인 딱지 · 구성 다름 · 해외직구) 11 |
+  | worldprice | 4(나라 묶음) | 아이폰 판매 페이지 404 7개국 · 넷플릭스 요금표 없음 4개국 · 해외 영토·무인 지역 51 |
+  | photo | 16 + 맞혀 보기 1 | 유일성 없음 3(펀칭 볼 · 실핀 · 듀공) · 라이선스 3(GFDL 만 · 'Attribution' 만 · 초상 저작물) · 한국 표기 근거 없음 3 · 글자 노출 · 겹침 · 그림 교체 7 / 맞혀 보기에서 못 맞힌 photo-0008 윷 → 줄자 |
+  | estimate | 15 | 출처 없음 6 · 곧 바뀜 1 · 문서 안 값 엇갈림 2 · 유일성 1 · 다른 문항과 겹침 4 · 단위 감 잡기 어려움 1 |
+  | which | 29 | 근소(1.3배 · 5년 미만) 17 · 출처 없음 · 값 엇갈림 4 · 그 밖(시가총액은 매일 바뀜 · dubious 표시 · 지도는 면적 단서) 8 |
+
+=====================================================================
+4. D 수집
+=====================================================================
+- 공통 도구(커밋): `scripts/g008-img.mjs`(받기 → sharp 로 긴 변 ≤1024px · ≤500KB · 메타데이터 제거 · 위키미디어는 Special:FilePath 주소) · `scripts/g008-check.mjs`(docs/18 v1 칸 전부 · 모르는 칸 · 숫자형 · 날짜 · id 꼴·유일 · status · 그림 파일 존재·크기·칸 일치 · photo 자유 라이선스·공용 출처 · price 출처 2 · 1.5 · bucket · worldprice shownCc · which 1.3 · 5년 · answer · margin · 정답 글자가 그림 파일 이름에 없음) · `scripts/g008-check-part.mjs` · `scripts/g008-build.mjs`(중간 파일 → `data/minigame/<game>/items.json` · worldprice 문항 · VERIFY 묶음).
+- 결과: `node scripts/g008-check.mjs` → price 100 · worldprice 172 · photo 120 · estimate 100 · which 150 = **642 / 642 막힘 0 · 경고 0**. 그림 파일 508(price 100 · worldprice 3 · photo 120 · estimate 91 · which 194). 출처: price 382(priceSources 포함) · photo 120 · estimate 103 · which 218 · worldprice 품목 rows 마다 source.
+- price: priceKind 전부 median(다나와 새 상품 판매처 최대 10곳 + 에누리 최저가의 중앙값 · 10원 반올림) — 1.5 규칙은 기록한 출처가 아니라 다나와 판매처 목록 전체에 적용(에이전트 보고). 그림은 다나와 · 공식몰(기아 · 벤츠 · 쉐보레 · 현대차그룹 · 에르메스 · 이케아) · 위키미디어(차 5).
+- worldprice: 이코노미스트 big-mac-full-index.csv 최신 회차(2026-07-01) 전 나라 · 애플 각국 스토어(iPhone 17 256GB — 기본형 18 은 아직 없음 · 미국·캐나다는 세전) · 넷플릭스 헬프 페이지 나라별 · 환율 ECB 2026-10-16(fxAsOf).
+- photo: 위키미디어 공용만(Public domain 27+ · CC BY-SA · CC BY · CC0) · 그림을 본 다른 에이전트가 정답을 모른 채 맞혀 보기 — 120 중 119 맞힘 · one 114 · several 5(크루통 · 의사봉 · 빵끈 · 애글릿 · 피자 세이버 — 다른 이름 후보가 있음, 변형 검토 몫) · unknown 1(윷 → 바꿈) · 이름 글자 보임 1(간디 사진의 흐린 서명 — 읽기 어려움).
+- estimate · which: 값은 위키백과 · NASA · AnAge 등 문서 문장 · 범위 값은 중앙값 + note · 바뀌는 값은 asOf.
+
+=====================================================================
+5. E VERIFY 묶음
+=====================================================================
+- `data/pipeline/audit/g008-verify-targets.json` — 게임별 { count · sample(무작위 표본 id) · items(항목 전문 + verifySample) } · worldprice 는 products 요약까지. 표본: price 30 · worldprice 10 · photo 40 · estimate 30 · which 40(시드 고정). 그림은 `assets/minigame/`(이 PC) — 같은 PC 에서 VERIFY 가 연다.
+- 먼저 볼 것은 13 C70 ①.
+
+=====================================================================
+6. GEN 판단 목록 (되돌리기 쉽다)
+=====================================================================
+1. score_version 값 `score-v3-blind` · 같은 196 행도 칸(score_version · difficulty_why)을 갱신(DG-033).
+2. 15 §5-1 각주 뒤 CRITERIA 동기화 · 프롬프트 버전 그대로(DG-034).
+3. worldprice 넷플릭스 문항에서 미국 달러 일괄 요금 111곳을 뺌 · 빅맥 `cc: "EU"` 그대로 · ECB 밖 환율은 공개 API(DG-035).
+4. 사진 맞혀 보기로 못 맞힌 1 을 바꿈 · 그림 손질 4 를 받음(DG-035).
+5. 하위 에이전트 몫을 category 로 나눠 겹침을 막음 · 중간 파일 → g008-build 로 정본.
+6. 임시 도구 `scripts/_g008-*.mjs` · `tmp/g008/` 는 커밋하지 않았다(G005 도구 `scripts/_g005-*` 도 그대로 둠).
+
+=====================================================================
+7. 새로 생긴 결정 필요 항목
+=====================================================================
+- 없음(Q 를 올리지 않았다). 13 C70 에 후보로: worldprice `cc: "EU"` 를 MAIN 이 허용할지 · price 1만 원 미만 보충 여부.
+
+고친 문서
+- docs/15-QUALITY-STANDARD.md (§5-1 각주 · 마지막 갱신) · pipeline/prompts/score-v3.md · question-v3.md · question-v4.md (CRITERIA 동기화) · .gitignore · assets/minigame/README.md
+- docs/05-STATUS.md (Track D 행 · 그 아래 줄 · Track E 행 신설) · docs/06-WORKLOG.md (맨 위 G008 블록) · docs/07-DECISIONS.md (DG-033~035) · docs/13-PENDING-CHECKS.md (CV-18~19 끝 · C69 끝 · C70 · 마지막 갱신) · ai-out/README.md (G 표) · ai-out/G008.txt
+- 데이터: data/minigame/{price,worldprice,photo,estimate,which}/items.json · worldprice/products.json · data/pipeline/audit/g008-verify-targets.json · g008-v010-apply.json · g008-fixes.json
+- 도구: scripts/g008-apply-v010.mjs · g008-apply-hints.mjs · g008-img.mjs · g008-check.mjs · g008-check-part.mjs · g008-build.mjs

@@ -8,6 +8,22 @@
 
 ---
 
+## 2026-10-17 — V010 반영(상 892 → 505) · 기존 힌트 2 · 미니게임 데이터 1차 642 (G008, GEN)
+
+**무엇을 / 왜** — 설계 판단 CV-18 (a)(V010 blind 값 그대로) · CV-19(상 = 4)를 시행하고, docs/18 형식으로 미니게임 다섯 개의 1차 데이터를 모았다(찬종: "gen은 데이터 수집 및 생성 담당"). 보고서 `ai-out/G008.txt`.
+
+- [x] A V010 반영 — 백업 `backups/quizweb-20261017-021125.dump` → `scripts/g008-apply-v010.mjs` 608행(난이도 바뀜 412) · 대상 밖 해시 같음 · 풀 실측
+- [x] B 기존 힌트 2 — `scripts/g008-apply-hints.mjs` #4268 · #641 (hint-v5)
+- [x] C~D 미니게임 — 소재 배분 · 수집(하위 에이전트 9 + 사진 맞혀 보기 1) · `g008-img` · `g008-check` 642/642 · `g008-build`
+- [x] E VERIFY 묶음 `audit/g008-verify-targets.json`(표본 표시)
+- [x] F 백업 `backups/minigame-2026-10-17.zip` · README · .gitignore · 문서
+- [x] G 끝 점검 — 활성 5,113 · 미니게임 적재 0 · criteria-sync --check
+
+**검증** — A·B 대상 밖 questions md5 · question_answers md5 · 대상 행의 쓰지 않는 칸 md5 반영 전후 같음 · hint-check-active 막힘 0 · g008-check 642/642 막힘 0 · 사진 맞혀 보기 119/120(못 맞힌 1 은 바꿈) · GEN 이 그림 30 항목(33장)을 직접 봄
+**남은 것** — V011 미니게임 재검증 → G009 적재(R052 표) · C70
+
+---
+
 ## 2026-10-17 — V009 반영 · G005 483 적재 · 풀 실측 · score-v3 · deep-v5 (G007, GEN)
 
 **무엇을 / 왜** — V009(G005 493 판정 · blind 재채점)와 설계 판단 CV-14~17 을 반영해 적재하고, V009 6절을 다음 생성 규칙으로 되돌려 줬다. 보고서 `ai-out/G007.txt`.
