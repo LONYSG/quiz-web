@@ -166,6 +166,8 @@ quiz-web/
 │       ├─ ranking.ts      순위 계산 / 스킵 임계값
 │       ├─ mask.ts         정답 마스킹 (Phase 6에서 구현)
 │       ├─ settings.ts     게임 설정 검증 / 경험률 표기  ★ 서버·클라이언트 공용 (D-026)
+│       ├─ minigame.ts     ★ R050 미니게임 공통 규칙 (등장 자리 · 판 순위 · 보상 · 소수 자리 · 케이크 판 구성)
+│       ├─ balance.ts      ★ R050 균형의수호자 물건 모양(시드) · 넓이 나누기 — 서버 채점과 화면 그림이 같은 함수
 │       └─ protocol.ts     Socket 이벤트 타입과 게임 규칙 상수
 ├─ server/                 게임 서버
 │   └─ src/
@@ -174,7 +176,8 @@ quiz-web/
 │       ├─ socket/         인바운드 이벤트 (guard.ts 가 검사 순서를 강제한다)
 │       ├─ rooms/          메모리 방 모델 / 레지스트리 / 스냅샷 / 브로드캐스트 / 생명주기
 │       ├─ lobby/          로비 정보 갱신 (경험률·출제 가능 수). ★ DB 조회 지점이 여기 하나다
-│       ├─ game/           게임 시작·카운트다운 (T01~T04). Phase 3의 문제 진행이 여기 붙는다
+│       ├─ game/           게임 시작·카운트다운 (T01~T04). Phase 3의 문제 진행이 여기 붙는다 · hooks.ts(★ R050 미니게임 갈림길)
+│       ├─ minigame/       ★ R050 미니게임 — engine.ts(진행 · 순위 · 보상 · 기록) · defs.ts(미니게임 하나 = 플러그인 하나)
 │       ├─ auth/           비밀번호 / 세션
 │       ├─ http/           인증 REST 라우트
 │       └─ db/
@@ -276,6 +279,7 @@ npm run db:reset          # ★ 모든 데이터 삭제 후 재적용. 개발용
 | `NODE_ENV` | | `development` / `production` |
 | `PUBLIC_BASE_URL` | | **선택.** 서버가 직접 링크를 만들어야 할 때만. 없어도 정상 동작한다 |
 | `GEMINI_API_KEY` | | 파이프라인 전용. 게임 서버는 쓰지 않는다 |
+| `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE` | | ★ R050 **검사용** — 봇 · 화면 검사가 자기 서버에서만 쓴다(정답 공개 대기 · 미니게임 단계 길이 배율). 실제 서버 .env 에 두지 않는다 |
 
 > 초대 링크는 기본적으로 **방장 브라우저의 `window.location.origin`** 으로 만든다.
 > 터널 URL이 바뀌어도 방장 브라우저는 이미 새 URL에 있으므로 항상 올바른 값을 얻는다.

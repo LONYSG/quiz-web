@@ -953,3 +953,19 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `chat.message` | `special?: true` — 특별 이모티콘 줄. 스냅샷의 채팅 기록 · 재접속에도 같은 칸 |
 | 설정값 (서버 env) | `SHOP_PRICE_OVERRIDE`(검사용 · 0 = DB 의 `emoji_themes.price` — 실제 서버 .env 에 두지 않는다. 봇 shop 이 자기 서버에서 10 으로) |
 | RULES (shared) | `SPECIAL_FLOAT_MS` 3000 · `SPECIAL_FLOAT_MAX` 3 · `SPECIAL_FLOAT_PX` 96 — 화면(떠 있는 큰 반응)만 쓴다 |
+
+## ★ R050 — 바뀐 것 (D-232 ~ D-235)
+
+| 항목 | 내용 |
+|------|------|
+| 상태 `MINIGAME` (새) | 퀴즈 판: `QUESTION_RESOLVED`(정답 공개 8초 끝) → **MINIGAME** → 다음 문제(`QUESTION_ACTIVE`) 또는 결과. 로비 연습: `LOBBY` → MINIGAME → `LOBBY`. ★ 일시정지 대상 아님(pausableFrom 에 없다) — 모두 끊겨도 끝까지, 끝난 뒤 다음 문제가 시작되자마자 PAUSED |
+| `minigame.state` (S→C · 새) | `{ state, minigame }` — 단계가 바뀔 때 · 누가 확정할 때마다 **보기 전체**(사람마다 — 균형의 시작 점 · 구경 여부 · 내 제출 여부가 다르다). 보기: token · key · practice · phase(intro · rules · ready · play · roundResult · final · outro) · phaseStartedAt · phaseEndsAt · roundIndex · roundCount · round(params · playMs · private) · participants(기기 포함) · submittedCount · selfSubmitted · spectating · roundResults(판마다 decimals · rows) · totals · final(rank · total · reward) · afterQuestionIndex. 스냅샷 `minigame` 같은 꼴(재접속 · 중간 입장) |
+| `minigame.ended` (S→C · 새) | `{ state, practice, settingsLocked? }` — 퀴즈면 곧이어 `question.started` 또는 `game.result` |
+| `minigame.submit` (C→S · 새) | `{ token, roundIndex, input }` — 참가자만 · play 단계만 · token · 판 번호가 맞아야. 케이크 `input = { elapsedMs }`(기기에서 잰 ms — 서버는 음수 · 판 길이 넘음 · **실제 흐른 시간 + 250ms 보다 긴 값**을 BAD_REQUEST) · 균형 `input = { top, bottom, final, elapsedMs }`(0~100 · 움직이는 동안 0.25초마다 임시 · 마감 때 확정 · 서버가 넓이를 다시 잰다) |
+| `minigame.practice` (C→S · 새) | `{ key }` — 방장 · LOBBY · 설정 잠기지 않았을 때. 방 사람 전원이 연습 판 |
+| `host.forceEnd` | MINIGAME 에서도 — 연습이면 로비로 · 퀴즈 판이면 미니게임을 닫고(최종 결과 전이면 보상 없음) 게임 강제 종료 |
+| `client.device` (C→S · 새) | `{ kind: 'pc' \| 'mobile' }` — 접속할 때마다 · 판정이 바뀔 때마다. 방에 있으면 `room.playersUpdated`. `PlayerView.device` 추가(아직 모르면 null) |
+| 설정 | `minigames: boolean`(기본 false) · `minigameKeys: ('cake' \| 'balance')[]`(기본 전부 · 최소 1) — `lobby.updateSettings` 는 보낸 필드만 바꾼다 · 다시 하기 이어받음 |
+| `GET /api/me/points` | `{ ok, earned, correct, rewards, spent, balance }` — earned = correct(맞힌 수) + rewards(미니게임 보상). 샵 잔액도 같은 식 |
+| 출제 선정 | `selectNextQuestion` 에 `shownNorm`(이 판에서 보여 준 질문 · 일반 힌트 · 해설의 정규화) — 흘림 후보를 같은 단계 안에서 뒤로 (C66 · D-233) |
+| 설정값 (서버 env · 검사용) | `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE`(0~5 · 판 진행 시간은 바꾸지 않는다) — 실제 서버에 두지 않는다 |

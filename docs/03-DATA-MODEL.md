@@ -312,3 +312,16 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 
 - 원본 그림: `assets/emoji/<key>/` (git 에는 폴더·README 만 — `.gitignore` `assets/emoji/*/` · 정본은 DB). 가져오기 `node scripts/emoji-import.mjs --theme <key> --name <이름> --price <포인트>`.
 - 마이그레이션 전 백업: `backups/quizweb-20261014-110042.dump` · 적재 전 `backups/quizweb-20261014-110443.dump`.
+
+## ★★★ 미니게임 기록 · 보상 · 기기 종류 (R050 / 0017 — D-232 · D-234)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `minigame_runs` | id · game_id(null = 로비 연습) · room_id · minigame_key · practice · after_question_index · seed · started_at · ended_at · end_reason(completed · force_ended · abandoned · server_restart) | 미니게임 한 판. 서버가 재시작되면 끝나지 않은 판을 server_restart 로 닫는다(부팅 정리) |
+| `minigame_players` | (run_id, account_id) PK · device('pc' · 'mobile') · color_index · final_rank · total_points · reward | 그 판의 참가자(시작 때 방에 있던 사람) |
+| `minigame_rounds` | (run_id, round_index) PK · item_key · params jsonb · seed · started_at | 판 안의 라운드(공개 설정) |
+| `minigame_results` | (run_id, round_index, account_id) PK · submitted · input jsonb · value · error · elapsed_ms · rank · points | 참가자별 라운드 결과 — **행 수 = 라운드 × 참가자**(미제출도 행이 있다) |
+| `minigame_rewards` | id · run_id · account_id · amount(>0) · rank · created_at · **UNIQUE(run_id, account_id)** | ★★ 보상 — 같은 판 결과가 두 번 지급되지 않는다(재접속 · 서버 재시작 · 중복 이벤트). 연습 판은 넣지 않는다 |
+| `minigame_item_experiences` | (account_id, minigame_key, item_key) PK · run_id · created_at | 퀴즈류 미니게임(R052~)의 경험. 지금 두 게임은 쓰지 않는다 |
+| `game_players.device` | text | 게임 시작 때 참가자의 기기 종류(🖥/📱 — 클라이언트가 알린 값 · 판정에 쓰지 않는다) |
+| ★ 포인트 (개정) | — | **번 것 = answer_events.accepted 수 + minigame_rewards 합** · 잔액 = 번 것 − point_spends 합. 식은 server/src/db/points.ts `POINTS_SQL` 한 곳(샵 잔액 · 뽑기 트랜잭션 · /api/me/points). ★ `game_players.final_score` 는 이제 맞힌 수 + 보상이다(R050 전에는 맞힌 수) |

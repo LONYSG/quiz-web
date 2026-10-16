@@ -214,6 +214,24 @@ DELETE FROM point_spends WHERE reason = 'gacha' AND account_id IN (SELECT id FRO
 ```
 - 뽑기 값은 `emoji_themes.price`(서버 재시작 없이 다음 뽑기부터 — 서버가 테마를 메모리에 두므로 **재시작이 필요하다** · 확인: `GET /api/shop` 의 price). 검사용 `SHOP_PRICE_OVERRIDE` 는 실제 서버에 두지 않는다.
 
+### ★ 미니게임 기록 보기 · 보상 되돌리기 (R050)
+```sql
+-- 최근 미니게임 판 (연습 포함)
+SELECT id, game_id, minigame_key, practice, after_question_index, started_at, ended_at, end_reason FROM minigame_runs ORDER BY id DESC LIMIT 30;
+-- 한 판의 참가자 · 최종 순위 · 보상 · 기기
+SELECT a.login_id, p.device, p.final_rank, p.total_points, p.reward FROM minigame_players p JOIN accounts a ON a.id = p.account_id WHERE p.run_id = 123 ORDER BY p.final_rank;
+-- 한 판의 라운드별 결과 (입력 원값 · 값 · 오차 · 순위)
+SELECT r.round_index, a.login_id, r.submitted, r.input, r.value, r.error, r.elapsed_ms, r.rank, r.points FROM minigame_results r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = 123 ORDER BY r.round_index, r.rank;
+-- 계정별 미니게임 보상 합 (포인트에 들어간다)
+SELECT a.login_id, sum(w.amount) FROM minigame_rewards w JOIN accounts a ON a.id = w.account_id GROUP BY a.login_id ORDER BY 2 DESC;
+-- ★ 보상 되돌리기 (한 판 · 한 계정) — 포인트에서 빠진다. 그 게임의 판 점수(game_players.final_score)는 따로 고치지 않는다(기록)
+DELETE FROM minigame_rewards WHERE run_id = 123 AND account_id = (SELECT id FROM accounts WHERE login_id = '…');
+-- 검사 계정(봇 · uic) 의 미니게임 보상 비우기 (찬종 계정은 건드리지 않는다)
+DELETE FROM minigame_rewards WHERE account_id IN (SELECT id FROM accounts WHERE login_id LIKE 'bot\_%');
+```
+- 포인트 = 맞힌 수 + `minigame_rewards` 합 − `point_spends` 합 (server/src/db/points.ts `POINTS_SQL`).
+- 기록은 지우지 않는 것이 원칙이다(docs/17 3절) — 위 DELETE 는 잘못 지급된 보상을 바로잡을 때만.
+
 ## 4. 서버가 켜진 상태에서 바꾸면 — 언제 반영되나
 
 | 바꾼 것 | 바로 반영 | 반영 안 되는 곳 |
