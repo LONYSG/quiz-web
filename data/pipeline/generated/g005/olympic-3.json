@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "가명으로 '스포츠 송가'를 내 문학 부문 금메달",
-     "difWhy": "올림픽 예술 경연 일화 — 스포츠 애호가",
+     "easiestCue": "1912년 '조르주 오로드와 마르틴 에슈바흐'라는 가명으로 '스포츠 송가'를 내 문학 부문 금메달을 받은 사람",
+     "difWhy": "V009 blind: 묻는 사실: 쿠베르탱의 예술 경연 금메달 — 올림픽 애호가 (경계 3)",
      "wor": 3,
      "worWhy": "이야깃거리 — 근대 올림픽 창시자",
      "acc": 4,
@@ -117,9 +121,9 @@
     "explanation": "레옹 드 룬덴이 21마리를 맞혀 이 경기 1위에 올랐습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "1900년 파리 올림픽 살아 있는 새 사격",
-     "difWhy": "올림픽 생조 사격 — 스포츠 애호가",
+     "dif": 3,
+     "easiestCue": "살아 있는 새를 표적으로 쏜 종목이 있었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 1900 올림픽 비둘기 사격 — 단서가 곧 대상 (경계 2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 올림픽 기벽",
      "acc": 4,
@@ -133,8 +137,8 @@
      "worWhy": "이야깃거리 — 올림픽 기벽"
     },
     "rewrite": null,
-    "generalHint": "제1차 세계대전 베르됭에서 소식을 나른 '셰르 아미'라는 이 새는 프랑스 무공 십자훈장을 받았다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "참가자는 표적 새를 두 마리 놓치면 탈락했고, 상금은 최대 2만 프랑이었다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Shooting_at_the_1900_Summer_Olympics"
     ],
@@ -167,7 +171,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Cher_Ami"
+     "https://en.wikipedia.org/wiki/Shooting_at_the_1900_Summer_Olympics"
     ],
     "hintNote": "a male homing pigeon known for his military service during World War I / The pigeon was awarded the Croix de Guerre Medal ... for delivering messages at Verdun",
     "easiestCue": "1900 파리 올림픽 사격에서 살아 있는 채로 쏜 새",
@@ -203,9 +207,9 @@
     "explanation": "하르텔은 1956년 대회에서도 은메달을 땄는데, 오스트레일리아의 말 검역 규정 탓에 그해 이 종목은 멜버른이 아닌 스톡홀름에서 따로 열렸습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 1,
-     "easiestCue": "암말 '주빌리'를 타고 은메달",
-     "difWhy": "'말을 타고 메달' — 누구나 일상",
+     "dif": 2,
+     "easiestCue": "암말 '주빌리'를 타고 개인 은메달을 땄는데",
+     "difWhy": "V009 blind: 묻는 사실: 승마 — 말을 타는 종목이라는 일상 단서 (경계 3)",
      "wor": 3,
      "worWhy": "감동 일화 이야깃거리",
      "acc": 4,
@@ -296,9 +300,9 @@
     "explanation": "이 일로 스웨덴 팀은 단체전 동메달을 돌려주어야 했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "긴장을 풀려고 두 잔 마신 술로 올림픽 첫 약물 실격",
-     "difWhy": "'첫 도핑 실격 술' — 올림픽 애호가",
+     "dif": 3,
+     "easiestCue": "권총 사격을 앞두고 긴장을 풀려고 이 술을 두 잔 마셨습니다",
+     "difWhy": "V009 blind: 묻는 사실: 릴리엔발의 맥주 두 잔 도핑 실격 — 올림픽 일화, 술 종류는 추측도 가능(경계 2)",
      "wor": 3,
      "worWhy": "올림픽 도핑 일화",
      "acc": 4,
@@ -312,8 +316,8 @@
      "worWhy": "올림픽 도핑 일화"
     },
     "rewrite": null,
-    "generalHint": "1516년 바이에른 전역에 이 술은 물·보리·홉만으로 빚으라는 법이 시행되었다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "그가 실격된 것은 국제올림픽위원회가 도핑 규정을 들인 1967년의 이듬해였다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Hans-Gunnar_Liljenwall"
     ],
@@ -346,7 +350,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Reinheitsgebot"
+     "https://en.wikipedia.org/wiki/Hans-Gunnar_Liljenwall"
     ],
     "hintNote": "the Munich law was adopted across the entirety of Bavaria on 23 April 1516 / the only ingredients that could be used in the production of beer were water, barley and hops.",
     "easiestCue": "올림픽 첫 도핑 실격 선수가 사격 전 마신 술",
@@ -379,8 +383,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "1900년 파리 올림픽 단 한 번, 영국 클럽 대 파리 영국인 팀",
-     "difWhy": "1900년 올림픽 단발 종목 — 올림픽 애호가",
+     "easiestCue": "1900년 파리 올림픽에서 단 한 번 정식 종목으로 치러진 이 경기에서는, 영국 대표로 나선 순회 클럽",
+     "difWhy": "V009 blind: 묻는 사실: 1900 올림픽 크리켓 단 한 번 — 올림픽사 애호가(경계 3)",
      "wor": 3,
      "worWhy": "올림픽 종목 역사 이야깃거리",
      "acc": 4,
@@ -394,8 +398,8 @@
      "worWhy": "올림픽 종목 역사 이야깃거리"
     },
     "rewrite": null,
-    "generalHint": "이 종목의 국가 대항 정식 경기는 닷새까지 이어지기도 하며, 1877년 멜버른에서 처음 열렸다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "당시 양 팀 선수들은 자신들이 올림픽 경기를 치르는 줄 몰랐다고 한다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Cricket_at_the_1900_Summer_Olympics"
     ],
@@ -434,7 +438,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Test_cricket"
+     "https://en.wikipedia.org/wiki/Cricket_at_the_1900_Summer_Olympics"
     ],
     "hintNote": "compete over a match that can last up to five days / The first such match took place at the Melbourne Cricket Ground (MCG) in March 1877.",
     "easiestCue": "1900 파리 올림픽에서 단 한 번 열린, 영국 팀끼리 겨룬 종목",

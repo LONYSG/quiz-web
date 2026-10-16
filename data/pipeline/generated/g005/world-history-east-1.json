@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "explanation": "그는 690년 스스로 주(周)라는 나라를 세워 당나라의 맥을 잠시 끊었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "건릉 앞 글자 없는 비석 '무자비' / 새 한자를 만든 인물",
-     "difWhy": "무자비·측천문자 — 대학 교양 동양사",
+     "dif": 3,
+     "easiestCue": "자기 이름에 쓸 글자를 비롯해 새 한자를 만들어 쓰게 한 이 인물",
+     "difWhy": "V009 blind: 묻는 사실: 측천무후의 글자 없는 비석·측천문자 — 고교 세계사(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 중국 유일 여황제",
      "acc": 4,
@@ -118,9 +122,9 @@
     "explanation": "이화원의 돌배는 그가 해군 예산을 빼돌렸다는 믿음의 상징이 되었지만, 중국 역사학자들의 연구는 그가 해군 쇠퇴의 원인은 아니었다고 봅니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "1908년 광서제가 숨진 직후 뒤따라 세상을 떠난 인물",
-     "difWhy": "광서제·서태후 사망 — 수능 동아시아사 심화",
+     "dif": 3,
+     "easiestCue": "공친왕과 손잡고 신유정변을 일으켜 권력을 잡은 이 인물은 1908년 광서제가 숨진 직후",
+     "difWhy": "V009 blind: 묻는 사실: 서태후의 정변·광서제 독살 의혹 — 고교 세계사 (경계 4)",
      "wor": 4,
      "worWhy": "교양 — 청말 권력자",
      "acc": 4,

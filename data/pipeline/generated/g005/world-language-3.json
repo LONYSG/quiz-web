@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "란다 알파벳 / 디에고 데 란다가 책을 없앤 문자",
-     "difWhy": "란다·크노로조프 해독 — 대학 교양 고고학",
+     "easiestCue": "1950년대 소련의 언어학자 유리 크노로조프는 스페인 성직자 디에고 데 란다가 적어 둔 이른바 '란다 알파벳'이 사실은 음절 기호라고 주장했습니다",
+     "difWhy": "V009 blind: 묻는 사실: 마야 문자 해독의 계기 — 대학 교양(경계 3)",
      "wor": 4,
      "worWhy": "교양 — 고대 문자 해독",
      "acc": 3,

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "explanation": "여기서 자라는 림프구는 기관 이름의 영어 첫 글자를 따 T세포라 부르게 되었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "떼어 내면 림프구가 크게 모자라게 되는 기관",
-     "difWhy": "'림프구 성숙 기관' — 고교 생명과학",
+     "dif": 4,
+     "easiestCue": "1961년 자크 밀러는 태어난 지 하루 된 생쥐에게서 이 기관을 떼어 내면 림프구가 크게 모자라게 된다는 것을 보였습니다",
+     "difWhy": "V009 blind: 묻는 사실: 가슴샘의 면역 기능 발견과 어원 — 대학 교양 생리(경계 3)",
      "wor": 4,
      "worWhy": "면역 기관 — 과학 교양",
      "acc": 5,

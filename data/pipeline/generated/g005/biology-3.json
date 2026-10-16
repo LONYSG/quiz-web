@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "털이 1제곱센티미터에 15만 가닥까지 나 있어, 동물 가운데 가장 빽빽한 털을 지녔습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "앞다리 밑 피부 주머니에 조개 깰 돌까지 넣고 다니는 동물",
-     "difWhy": "'돌로 조개 깨는 바다 동물' — 중학 수준 상식",
+     "dif": 3,
+     "easiestCue": "때로는 조개를 깰 돌까지 넣고 다니는 이 동물",
+     "difWhy": "V009 blind: 묻는 사실: 돌을 도구로 쓰는 해달 — 방송·관심(경계 4)",
      "wor": 3,
      "worWhy": "동물 생태 이야깃거리",
      "acc": 5,
@@ -56,8 +60,8 @@
      "addedCue": "지방층 없이 털로 체온 유지 · 앞다리 밑 피부 주머니에 먹이와 돌",
      "why": "켈프 숲 핵심종은 고교 생명과학 대표 사례라 빼고, 몸의 구조 세부로 바꿈"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "쉬거나 먹을 때 바다로 떠내려가지 않으려고 켈프를 몸에 감기도 한다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Sea_otter"
     ],
@@ -94,8 +98,10 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sea_otter"
+    ],
     "hintNote": null,
     "easiestCue": "앞다리 밑 피부 주머니에 조개 깰 돌을 넣고 다니는 바다 포유류",
     "targetWhy": "지방층 없음·피부 주머니는 동물 애호가가 아는 세부(돌 쓰기 자체는 유명하나 주머니는 한 층 깊음) → 경계 4",

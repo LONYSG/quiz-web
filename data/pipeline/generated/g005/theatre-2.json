@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "1978년 웨스트엔드 초연에서 일레인 페이지가 주인공",
-     "difWhy": "'일레인 페이지 주연 웨스트엔드 초연' — 뮤지컬 애호가",
+     "easiestCue": "앨범에서 주인공을 부른 줄리 코빙턴이 무대 배역을 사양하자, 1978년 런던 웨스트엔드 초연에서는 여러 지원자 가운데 뽑힌 일레인 페이지가 주인공을 맡았습니다",
+     "difWhy": "V009 blind: 묻는 사실: 에비타 초연 캐스팅 일화 — 뮤지컬 애호가 (경계 3)",
      "wor": 3,
      "worWhy": "대중적 뮤지컬 제목 맞히기",
      "acc": 3,
@@ -130,9 +134,9 @@
     "explanation": "1980년 프랑스어 콘셉트 앨범으로 먼저 나왔고, 그해 9월 파리의 '팔레 데 스포르'에서 처음 공연되었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "1985년 런던 바비컨 영어판, 트레버 넌·존 케어드 연출",
-     "difWhy": "'1985 런던 초연 뮤지컬' — 뮤지컬 관심층",
+     "dif": 4,
+     "easiestCue": "1985년 10월 런던 바비컨 센터에서 이 뮤지컬의 영어판이 처음 올랐을 때, 첫 평은 대체로 혹평이었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 영어판 초연 경위 — 뮤지컬 애호가 (경계 3)",
      "wor": 3,
      "worWhy": "유명 작품 제목",
      "acc": 3,

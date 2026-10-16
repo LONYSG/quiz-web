@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -30,12 +34,12 @@
     "acceptedAnswers": [],
     "originalTitleVariants": [],
     "variantCheck": null,
-    "explanation": "에세이의 첫 문장은 '일은 그것을 마치는 데 주어진 시간을 채우도록 늘어난다'로, 오늘날 이 법칙은 흔히 이 문장으로 알려져 있습니다.",
+    "explanation": "에세이는 '일은 그것을 마치는 데 주어진 시간을 채우도록 늘어난다'는 관찰로 시작하며, 오늘날 이 법칙은 흔히 이 문장으로 알려져 있습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "식민지가 줄어도 조직은 커졌다는 풍자 법칙",
-     "difWhy": "'관료 조직 팽창 법칙' — 대학 교양",
+     "dif": 3,
+     "easiestCue": "관료 조직이 일의 양과 상관없이 불어난다는 이 법칙",
+     "difWhy": "V009 blind: 묻는 사실: 파킨슨의 법칙 — 경영학 교양, 질문 끝의 정의가 곧 단서 (경계 2)",
      "wor": 4,
      "worWhy": "교양 — 경영 기본 어휘",
      "acc": 4,

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "그가 펴낸 신문 '하츠비'는 예루살렘 초정통파의 반발로 한 해 동안 문을 닫기도 했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "엮음: 1881년 '제1차 알리야' 이주 + 근대 모국어 부활",
-     "difWhy": "히브리어 부활·알리야 — 대학 교양",
+     "dif": 3,
+     "easiestCue": "그의 아들은 근대에 이 언어를 모국어로 쓴 첫 사람이 되었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 히브리어 부활 — 세계사 교양 (경계 4)",
      "wor": 4,
      "worWhy": "교양 — 히브리어 부활",
      "acc": 3,
@@ -49,8 +53,8 @@
      "worWhy": "교양 — 히브리어 부활"
     },
     "rewrite": null,
-    "generalHint": "이 언어는 오른쪽에서 왼쪽으로 쓰며, 22자 알파벳은 '알레프'로 시작한다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "벤예후다는 새 낱말을 만들어 보급할 '언어 위원회' 설립에 큰 몫을 했고, 이 위원회는 훗날 학술원이 되었다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Eliezer_Ben-Yehuda"
     ],
@@ -89,7 +93,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Hebrew_alphabet"
+     "https://en.wikipedia.org/wiki/Eliezer_Ben-Yehuda"
     ],
     "hintNote": "Hebrew is written from right to left. / The Hebrew alphabet has 22 letters. (Alef first)",
     "easiestCue": "근대에 처음으로 모국어 화자가 생긴 언어(제1차 알리야)",

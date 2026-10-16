@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -37,8 +41,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "'니코틴산'과 '비타민'을 합쳐 지은 이름",
-     "difWhy": "펠라그라 비타민 — 대학 교양(영양학)",
+     "easiestCue": "니코틴과 헷갈리지 않도록 '니코틴산'과 '비타민'을 합쳐 이름을 지은 이 비타민",
+     "difWhy": "V009 blind: 묻는 사실: 펠라그라 · 나이아신 이름 유래 — 대학 영양/교양 (경계 3)",
      "wor": 4,
      "worWhy": "교양 — 비타민 상식",
      "acc": 4,

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -28,7 +32,6 @@
     "question": "한 경제학자는 1950년 논문과 1951년 책 『사회적 선택과 개인의 가치』에서, 고를 대안이 셋 이상이면 개인들의 선호 순위를 사회의 순위로 묶는 어떤 투표 방식도 '한 사람의 뜻이 늘 이기지 않는다' 같은 몇 가지 합리적 조건을 한꺼번에 만족할 수 없음을 보였습니다. 이 결과를 그의 이름을 따 무엇이라 할까요?",
     "answer": "애로의 불가능성 정리",
     "acceptedAnswers": [
-     "불가능성 정리",
      "애로의 정리"
     ],
     "originalTitleVariants": [],
@@ -37,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "어떤 투표 방식도 합리적 조건을 한꺼번에 만족할 수 없다는 결과",
-     "difWhy": "사회 선택 불가능 결과 — 대학 교양 경제",
+     "easiestCue": "고를 대안이 셋 이상이면 개인들의 선호 순위를 사회의 순위로 묶는 어떤 투표 방식도 '한 사람의 뜻이 늘 이기지 않는다' 같은 몇 가지 합리적 조건을 한꺼번에 만족할 수 없음",
+     "difWhy": "V009 blind: 묻는 사실: 애로의 불가능성 정리 — 대학 경제학·정치학 (경계 3)",
      "wor": 4,
      "worWhy": "교양 — 사회과학 기본 개념",
      "acc": 4,

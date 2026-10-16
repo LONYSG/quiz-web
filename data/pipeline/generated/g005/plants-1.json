@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,9 +40,9 @@
     "explanation": "우리나라 거리에 자라는 이 나무들은 일본이 1940년대에 중국에서 들여온 것이 1956년 다시 들어온 것이고, 포항에서는 화석도 나왔습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "낙우송처럼 가을에 잎이 지는 바늘잎나무, 잎이 마주남",
-     "difWhy": "'낙엽 침엽수·마주나기' — 대학 교양 식물학",
+     "dif": 3,
+     "easiestCue": "낙우송처럼 가을에 잎이 지는 바늘잎나무로, 잎이 줄기에 마주나는 이 나무",
+     "difWhy": "V009 blind: 묻는 사실: 메타세쿼이아 — 가로수로 흔한 나무의 특징 (경계 4)",
      "wor": 3,
      "worWhy": "가로수 내력 이야깃거리",
      "acc": 5,
@@ -59,8 +63,8 @@
      "addedCue": "낙우송처럼 잎이 지는 바늘잎나무인데 잎이 마주남",
      "why": "'살아 있는 화석' 발견 일화는 교과·관심층의 첫 줄 사실이라 빼고, 낙엽 침엽수 가운데 잎차례로 가르는 식물 세부로 바꿈"
     },
-    "generalHint": "중국 후베이성 모다오 마을에서 채집한 살아 있는 나무가 1946년 바로 그 화석 속으로 밝혀졌다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "중국 식물학자들이 1948년 살아 있는 나무에 학명을 붙여 발표했다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Metasequoia_glyptostroboides",
      "https://ko.wikipedia.org/wiki/메타세쿼이아"
@@ -94,7 +98,8 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Metasequoia_glyptostroboides"
+     "https://en.wikipedia.org/wiki/Metasequoia_glyptostroboides",
+     "https://en.wikipedia.org/wiki/Hu_Xiansu"
     ],
     "hintNote": "Wang Zhan collected samples from a tree in Moudao village, Lichuan County, Hubei / made the pivotal connection between Miki's fossil genus and the living samples in 1946",
     "easiestCue": "낙우송처럼 낙엽이 지고 잎이 마주나는 바늘잎나무",
@@ -129,8 +134,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "헨리 포드가 브라질 아마존에 세운 '포르들란지아'에서 기르려 한 나무",
-     "difWhy": "'포르들란지아·위컴 씨앗' — 대학 교양 경제사",
+     "easiestCue": "1870년대 영국의 헨리 위컴은 아마존에서 이 나무의 씨앗 약 7만 개를 몰래 빼내 런던 큐 식물원으로 보냈습니다",
+     "difWhy": "V009 blind: 묻는 사실: 위컴 씨앗 밀반출·포드랜디아 — 세계사 교양 밖 일화(경계 3)",
      "wor": 3,
      "worWhy": "식민지 작물 이전 이야깃거리",
      "acc": 5,
@@ -151,8 +156,8 @@
      "addedCue": "헨리 포드가 1928년 아마존에 세운 공장 도시 포르들란지아",
      "why": "말레이반도 플랜테이션은 고교 세계사·지리 교과 사실이라 빼고, 포드의 실패한 아마존 도시라는 역사 세부로 바꿈"
     },
-    "generalHint": "이 나무에서 얻는 물질에 황을 섞어 뜨거운 난로 위에서 굳히는 법을 1839년 굿이어가 찾아냈다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "농장에서 25~30년쯤 지나 베어낸 이 나무는 요즘 가구를 만드는 목재로도 쓰인다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Hevea_brasiliensis",
      "https://en.wikipedia.org/wiki/Fordl%C3%A2ndia"
@@ -186,7 +191,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Charles_Goodyear"
+     "https://en.wikipedia.org/wiki/Hevea_brasiliensis"
     ],
     "hintNote": "combining rubber and sulfur over a hot stove caused the rubber to become rigid ... discovered in 1839",
     "easiestCue": "위컴이 아마존에서 씨앗을 몰래 빼내 큐 식물원으로 보낸 나무",

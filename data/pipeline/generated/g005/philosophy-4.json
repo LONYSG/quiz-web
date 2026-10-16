@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "explanation": "그는 뒷날 진나라 승상이 되는 이사와 함께 순자 밑에서 배웠습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "옛 동문 이사의 강요로 독을 마시고 죽은 사상가",
-     "difWhy": "이사와 한비자 — 대학 교양 동양사",
+     "dif": 3,
+     "easiestCue": "진나라 왕은 \"이 사람을 만나 사귈 수 있다면 죽어도 여한이 없겠다\"고 했습니다. 그러나 끝내 옛 동문 이사의 강요로 독을 마시고 죽은",
+     "difWhy": "V009 blind: 묻는 사실: 한비의 최후(진시황 · 이사) — 고교 윤리/세계사 법가(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 법가 사상가",
      "acc": 4,

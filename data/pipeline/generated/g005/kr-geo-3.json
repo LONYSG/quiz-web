@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "조선 말기 남종화의 대가 소치 허련이 말년에 머물며 창작하던 운림산방이 이 섬에 있습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "벽파항이 있고 첨찰산 쌍계사 상록수림이 있는 섬",
-     "difWhy": "'벽파항·첨찰산' — 지리·여행 애호가",
+     "dif": 3,
+     "easiestCue": "일본으로 가던 중국 사절과 상선은 이 섬의 벽파항에 머물며 바람을 기다렸습니다",
+     "difWhy": "V009 blind: 묻는 사실: 진도 — 지리 관심층, 벽파항(명량 벽파진) (경계 4)",
      "wor": 3,
      "worWhy": "섬의 역사 항로 이야깃거리",
      "acc": 5,
@@ -56,8 +60,8 @@
      "addedCue": "벽파항(일본행 배의 기착지) · 첨찰산 쌍계사 상록수림",
      "why": "대표 명소(운림산방)를 해설로 옮기고 벽파항 역사 + 첨찰산 상록수림으로 좁힘"
     },
-    "generalHint": "물살 소리가 바다가 우는 것 같다는 울돌목이 이 섬과 해남 사이에 있다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "1409년 이웃한 해남과 합쳐져 해진군이 되었다가 1437년 다시 나뉘었다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/운림산방",
      "https://ko.wikipedia.org/wiki/진도_(섬)"
@@ -91,7 +95,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://ko.wikipedia.org/wiki/명량_해협"
+     "https://ko.wikipedia.org/wiki/진도군"
     ],
     "hintNote": "전라남도 해남군 문내면 학동리의 화원반도와 진도군 군내면 녹진리 사이의 있는 해협 / 바다가 우는 것 같다고 하여 울돌목이라고도 불린다",
     "easiestCue": "첨찰산 쌍계사 상록수림이 있는 섬",
@@ -123,9 +127,9 @@
     "explanation": "임권택 감독의 영화 '서편제'가 이곳에서 촬영되면서 관광 명소로 주목받기 시작했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "엮음: 완도의 섬 + 구들장 논",
-     "difWhy": "구들장 논·농업유산 1호 — 여행 애호가",
+     "dif": 3,
+     "easiestCue": "돌이 많고 물이 쉽게 빠지는 비탈에서 쌀을 더 얻으려고 자연환경을 재배치해 만든 '구들장 논'이 이 섬에 있습니다",
+     "difWhy": "V009 blind: 묻는 사실: 청산도 — 관심 있는 사람 (경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 섬 명소",
      "acc": 5,
@@ -206,8 +210,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "곶이 17세기에 분리된 섬, 궁궐 재목 소나무",
-     "difWhy": "'곶이던 서해 섬' — 지리 관심층",
+     "easiestCue": "조선 시대에 이 섬의 소나무는 궁궐과 함선을 만드는 재목으로 중요하게 관리되었는데, 서해의 이 섬",
+     "difWhy": "V009 blind: 묻는 사실: 안면도 소나무와 곶에서 섬이 된 지리 — 고교 지리/관심층(경계 4)",
      "wor": 3,
      "worWhy": "지형 이야깃거리",
      "acc": 5,
@@ -228,8 +232,8 @@
      "addedCue": "조선 시대 궁궐·함선 재목 소나무(해설에서 옮김)",
      "why": "게국지가 여행·음식 관심층 충분 단서라 해설로 내리고 지형 내력과 소나무 재목을 엮음"
     },
-    "generalHint": "꽃지 해변 앞바다에 나란히 선 할미·할아비 바위가 이 섬의 이름난 경치다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "1970년 대한민국에서 세 번째로 놓인 연륙교 덕에 이 섬은 자동차로 육지와 이어진다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/안면도"
     ],
@@ -254,7 +258,7 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": "knowledge",
+    "hintBasis": "web",
     "hintSources": [
      "https://ko.wikipedia.org/wiki/안면도"
     ],
@@ -289,8 +293,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "도초도와 다리로 이어진 신안군의 섬",
-     "difWhy": "'도초도와 이어진 섬' — 지리·여행 애호가",
+     "easiestCue": "이웃한 도초도와 다리로 이어진 전라남도 신안군의 이 섬",
+     "difWhy": "V009 blind: 묻는 사실: 비금도 염전 역사·도초도 연륙 — 지역 애호가(경계 3)",
      "wor": 3,
      "worWhy": "호남 첫 염전 섬 이야깃거리",
      "acc": 5,
@@ -381,8 +385,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "1875년 일본 운요호의 포격을 받은 인천의 섬",
-     "difWhy": "'운요호 포격' — 고교 한국사",
+     "easiestCue": "1875년 일본 운요호의 포격으로 이 섬의 수군진에 있던 조선군 수십 명이 전사하고 주변이 약탈당했는데, 인천의 이 섬",
+     "difWhy": "V009 blind: 묻는 사실: 영종도 — 인천 섬과 운요호 사건 연결, 고교 한국사(경계 4)",
      "wor": 4,
      "worWhy": "개항 사건 무대 — 교양",
      "acc": 5,
@@ -403,8 +407,8 @@
      "addedCue": "1875년 운요호 포격으로 수군진 조선군 수십 명 전사",
      "why": "공항 간척(뉴스 상식)을 해설로 옮기고 옛 이름 + 운요호 사건의 두 번째 줄 사실로 좁힘"
     },
-    "generalHint": "2009년 10월 개통한 인천대교로 송도와 곧장 이어진다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "고려 때 송나라 사신을 맞이하던 객관 '경원정'이 이 섬에 있었다고 한다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/영종도"
     ],
@@ -437,7 +441,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Incheon_Bridge"
+     "https://ko.wikipedia.org/wiki/영종도"
     ],
     "hintNote": "At its opening in October 2009 ... the second bridge connection between Yeongjong Island and the mainland of Incheon ... direct access between Songdo and Incheon International Airport",
     "easiestCue": "운요호 포격을 받은 인천의 섬",
@@ -470,8 +474,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "세 섬 '삼도', 1905년 남해 첫 등대",
-     "difWhy": "'삼산도·첫 등대' — 지리 관심층",
+     "easiestCue": "고도·서도·동도 세 섬으로 이루어져 '삼도' 또는 '삼산도'라고도 불렸고",
+     "difWhy": "V009 blind: 묻는 사실: 거문도의 지형·옛 이름 — 관심 있는 사람(경계 4)",
      "wor": 3,
      "worWhy": "섬 이야깃거리",
      "acc": 5,

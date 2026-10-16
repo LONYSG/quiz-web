@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "김광석이 1,000회 공연한 대학로 소극장",
-     "difWhy": "김광석 공연장 — 관심 있는 사람",
+     "easiestCue": "김광석은 이곳에서 1,000회 라이브 공연을 열었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 김광석 1000회 공연의 소극장 학전 — 관심 있는 사람(경계 2)",
      "wor": 3,
      "worWhy": "이야깃거리 — 문화 공간",
      "acc": 5,
@@ -119,9 +123,9 @@
     "explanation": "당시 무한궤도는 신해철이 리더·보컬·기타를 맡았고, 정석원은 이듬해 데뷔 앨범을 준비하며 세 번째 키보디스트로 합류했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "1988 대학가요제 무한궤도 대상곡",
-     "difWhy": "'무한궤도 대학가요제 대상곡' — 가요 관심 있는 사람",
+     "dif": 2,
+     "easiestCue": "1988년 12월 24일 잠실 체조경기장에서 열린 MBC 대학가요제에서 무한궤도가 대상을 받은 곡",
+     "difWhy": "V009 blind: 묻는 사실: 무한궤도 대학가요제 대상곡 — 방송에서 흔히(경계 3)",
      "wor": 3,
      "worWhy": "유명 곡 제목 맞히기",
      "acc": 5,
@@ -199,9 +203,9 @@
     "explanation": "그는 그 무대 다음 날인 1995년 11월 20일, 23세의 나이로 서울 홍은동의 호텔에서 숨진 채 발견되었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "김성재 첫 솔로 음반이자 유작의 타이틀곡",
-     "difWhy": "'김성재 유작 솔로곡' — 관심 있는 사람",
+     "dif": 4,
+     "easiestCue": "그의 첫 솔로 음반이자 유작이 된 이 음반의 타이틀곡",
+     "difWhy": "V009 blind: 묻는 사실: 김성재 첫 솔로 타이틀곡 — 팬 세부(경계 3)",
      "wor": 3,
      "worWhy": "90년대 가요사 이야깃거리",
      "acc": 5,

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "explanation": "화산 폭발 지수(VEI) 7로, 확인된 VEI 7 분화 가운데 가장 최근의 것입니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "1816 '여름 없는 해'를 낳은 인도네시아 화산",
-     "difWhy": "'여름 없는 해 화산' — 대학 교양 지구과학",
+     "dif": 3,
+     "easiestCue": "이 분화의 화산재로 기온이 내려가 이듬해 1816년은 북미와 유럽에서 '여름 없는 해'로 불렸습니다",
+     "difWhy": "V009 blind: 묻는 사실: 탐보라 분화와 여름 없는 해 — 고교 지구과학·세계사, 관심층 (경계 4)",
      "wor": 4,
      "worWhy": "교양 — 화산과 기후",
      "acc": 5,

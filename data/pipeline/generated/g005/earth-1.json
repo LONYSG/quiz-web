@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "잭 힐스 44억 년, 지구에서 가장 오래된 광물",
-     "difWhy": "잭 힐스 최고령 광물 — 대학 교양 지질",
+     "easiestCue": "오스트레일리아 잭 힐스에서 나온 이 광물 알갱이들은 우라늄-납 연대가 약 44억 년으로 측정되어",
+     "difWhy": "V009 blind: 묻는 사실: 지르콘의 연대측정 특성 — 대학 교양(지구과학)·애호가 (경계 3)",
      "wor": 3,
      "worWhy": "지구사 이야깃거리",
      "acc": 5,

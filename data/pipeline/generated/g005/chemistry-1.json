@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "이 원소가 어둠 속에서 빛나는 것은 빛을 흡수했다 다시 내는 인광이 아니라 공기와의 화학 반응에서 나오는 화학 발광입니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "브란트가 오줌을 졸여 얻은 어둠 속 빛나는 원소",
-     "difWhy": "'오줌에서 얻은 빛나는 원소' — 대학 교양 화학사",
+     "dif": 3,
+     "easiestCue": "고대 이후 처음 새로 발견된 원소로 꼽히는 이 원소",
+     "difWhy": "V009 blind: 묻는 사실: 인 발견(브란트·오줌) — 고교 화학 상식(경계 4)",
      "wor": 4,
      "worWhy": "원소 발견사 교양",
      "acc": 5,
@@ -49,8 +53,8 @@
      "worWhy": "원소 발견사 교양"
     },
     "rewrite": null,
-    "generalHint": "오늘날 성냥갑 옆면의 긋는 면에는 이 원소의 붉은 동소체가 절반쯤 들어 있다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "1680년 영국의 로버트 보일도 이 원소를 만들어 제조법을 발표했다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Phosphorus"
     ],
@@ -83,7 +87,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Safety_match"
+     "https://en.wikipedia.org/wiki/Phosphorus"
     ],
     "hintNote": "composed of 25% powdered glass or other abrasive material, 50% red phosphorus",
     "easiestCue": "브란트가 오줌을 졸여 얻은, 어둠 속에서 빛나는 원소",

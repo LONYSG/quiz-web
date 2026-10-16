@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "1935년 동아일보 창간 15주년 기념 장편 소설 공모에서 1등으로 당선되어 이듬해 2월까지 연재되었다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "청석골과 한곡리가 두 젊은이의 활동 무대인 장편",
-     "difWhy": "'청석골·한곡리' — 수능 심화 문학",
+     "dif": 3,
+     "easiestCue": "작가가 손수 지은 당진의 집 필경사에서 2년 동안 칩거하며 쓴 장편 소설",
+     "difWhy": "V009 blind: 묻는 사실: 상록수의 집필 배경 — 고교 국어 (경계 4)",
      "wor": 4,
      "worWhy": "근대 소설 대표작 교양",
      "acc": 5,
@@ -123,8 +127,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "「광화사」와 함께 탐미주의 대표작",
-     "difWhy": "'광화사와 짝' — 고교 문학",
+     "easiestCue": "「광화사」와 함께 작가의 탐미주의 경향을 대표하는 작품으로 꼽힙니다",
+     "difWhy": "V009 blind: 묻는 사실: 김동인의 광염 소나타 — 고교 문학, 관심층 (경계 4)",
      "wor": 4,
      "worWhy": "근대 문학 교양",
      "acc": 5,
@@ -206,8 +210,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "광인 김창억이 나오는 처녀작",
-     "difWhy": "'김창억·개벽 연재' — 고교 문학",
+     "easiestCue": "1921년 8월부터 10월까지 『개벽』 14~16호에 연재된 단편입니다 … 광인 김창억이 부주인공으로 나오는 작가의 처녀작",
+     "difWhy": "V009 blind: 묻는 사실: 표본실의 청개구리 — 고교 국어 (경계 4)",
      "wor": 4,
      "worWhy": "근대 문학 교양",
      "acc": 5,

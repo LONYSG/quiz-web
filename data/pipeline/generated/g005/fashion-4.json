@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "월리스 캐러더스가 처음 합성한 소재",
-     "difWhy": "'캐러더스 합성 섬유' — 고교 화학",
+     "easiestCue": "달에 처음 꽂힌 성조기도 이 소재로 만든 것이었는데",
+     "difWhy": "V009 blind: 묻는 사실: 나일론 — 고교 화학 · 달 깃발 일화(경계 2)",
      "wor": 4,
      "worWhy": "과학 교양 — 합성 섬유",
      "acc": 4,
@@ -56,8 +60,8 @@
      "addedCue": "1935년 2월 28일 캐러더스가 처음 합성한 소재",
      "why": "쉬운 생활 단서(칫솔)를 해설로 옮기고 합성 화학자 캐러더스로 바꿈"
     },
-    "generalHint": "제2차 세계대전 동안에는 생산량 거의 모두가 낙하산과 낙하산 줄을 만드는 데 돌려졌다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "처음 합성한 화학자는 이 소재가 세상에 공개되기 16개월 전에 세상을 떠났다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Nylon"
     ],
@@ -123,8 +127,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "70%가 공기인 미세 구멍 구조 소재의 상표",
-     "difWhy": "'방수 투습 막 상표' — 아웃도어 관심층",
+     "easiestCue": "가열한 플라스틱 PTFE를 … 갑자기 세게 잡아당겼다가 … 70%가 공기인 미세한 구멍 구조",
+     "difWhy": "V009 blind: 묻는 사실: 고어텍스 발견 경위 — 등산·의류 관심층(경계 4)",
      "wor": 3,
      "worWhy": "생활 소재 기원",
      "acc": 4,
@@ -210,8 +214,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "카슈미르 숄 무늬를 흉내 낸 스코틀랜드 도시 이름의 무늬",
-     "difWhy": "'카슈미르 숄 무늬' — 패션 관심 있는 사람",
+     "easiestCue": "스코틀랜드의 한 도시였습니다 ... 그 도시 이름이 붙은 이 무늬",
+     "difWhy": "V009 blind: 묻는 사실: 페이즐리 무늬의 이름 유래 — 패션 상식(경계 4)",
      "wor": 3,
      "worWhy": "무늬 이름 유래 이야깃거리",
      "acc": 4,

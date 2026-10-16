@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "대우전자 '○○○○가 바로 핵심 기술입니다'",
-     "difWhy": "대우전자 광고 구호 — 관심층(옛 광고)",
+     "easiestCue": "'○○○○가 바로 핵심 기술입니다'라는 슬로건으로도 알려졌습니다",
+     "difWhy": "V009 blind: 묻는 사실: 대우전자 탱크주의 슬로건 — 방송·광고에서 흔히(경계 4)",
      "wor": 3,
      "worWhy": "광고 문화 이야깃거리",
      "acc": 5,
@@ -125,8 +129,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "1994년 모토로라를 겨냥해 만든 한국 휴대전화 브랜드",
-     "difWhy": "'94년 모토로라 겨냥 국산 폰' — 관심 있는 사람",
+     "easiestCue": "1994년 10월부터 쓰이기 시작해, 당시 국내 선두였던 모토로라를 겨냥해 만든 이 브랜드",
+     "difWhy": "V009 blind: 묻는 사실: 애니콜 — 국민 브랜드 (경계 2)",
      "wor": 3,
      "worWhy": "추억의 브랜드 이야깃거리",
      "acc": 5,
@@ -208,19 +212,19 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "1976년부터 쓰여 온 한 아이스크림 CM송에는 '12시에 만나요'라는 가사가 나옵니다. 1971년 2월 해태가 내놓은 이 아이스크림 콘은 무엇일까요?",
+    "question": "1976년부터 쓰여 온 한 아이스크림 CM송에는 '12시에 만나요'라는 가사가 나옵니다. 해태가 내놓은 이 아이스크림 콘은 무엇일까요?",
     "answer": "부라보콘",
     "acceptedAnswers": [
      "브라보콘"
     ],
     "originalTitleVariants": [],
     "variantCheck": "나무위키 '부라보콘' — 지금 표기법으로는 '브라보콘'이 맞다는 설명, 실제로 흔히 침",
-    "explanation": "가사 속 '12시'는 1960년대 은어로 '데이트'를 뜻했다는 설명이 있습니다.",
+    "explanation": "작사·작곡가 강근식은 가장 많이 먹는 시간이 오후 1시지만 1시보다 12시가 더 재미있게 들려 '12시'로 했다고 밝혔습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 1,
-     "easiestCue": "'12시에 만나요'라는 가사의 아이스크림 CM송",
-     "difWhy": "'12시에 만나요 CM송' — 누구나 일상",
+     "dif": 2,
+     "easiestCue": "'12시에 만나요'라는 가사가 나옵니다",
+     "difWhy": "V009 blind: 묻는 사실: 부라보콘 CM송 — 누구나 아는 광고 (경계 3)",
      "wor": 3,
      "worWhy": "국민 CM송 이야깃거리",
      "acc": 5,

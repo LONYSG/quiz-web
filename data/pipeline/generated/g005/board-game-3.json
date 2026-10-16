@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -103,7 +107,8 @@
     "warn": [
      "단정어 처음",
      "단정어 처음"
-    ]
+    ],
+    "discarded": "V009 drop — 2회차 질문이 '점술을 위해 따로 만든 첫 덱을 내놓은 이 카드' 라 범주 단서(점술 카드)만으로 타로가 풀림 — 제블랭·에테이야 새 사실이 꾸밈에 그침(3-3, CV-10)."
    }
   }
  ]

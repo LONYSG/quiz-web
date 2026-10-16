@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "책을 드릴 때 이름 아래 쓰는 '받아 간직하라'",
-     "difWhy": "증정 한자말 — 관심 있는 사람",
+     "easiestCue": "상대편의 이름 아래에 '받아 간직하여 주십시오'라는 뜻으로 써 넣는 두 글자 한자말",
+     "difWhy": "V009 blind: 묻는 사실: 혜존의 사전 뜻풀이 — 낱말 뜻 맞히기(경계 2)",
      "wor": 4,
      "worWhy": "분야 기본 어휘 — 한자말",
      "acc": 5,
@@ -111,8 +115,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "상대를 아주 높이는, 현대 입말에서 거의 안 쓰는 상대 높임 등급",
-     "difWhy": "'상대 높임법 최고 등급' — 고교 국어 문법",
+     "easiestCue": "상대 높임법 가운데, 상대편을 아주 높이는 종결형이면서도 현대 국어의 입말에서는 거의 쓰지 않는 등급",
+     "difWhy": "V009 blind: 묻는 사실: 하소서체 사전 뜻풀이 — 국어 문법 심화이나 단서가 사전 문장 그대로(경계 4)",
      "wor": 4,
      "worWhy": "국어 문법 기본 어휘",
      "acc": 5,
@@ -133,8 +137,8 @@
      "addedCue": null,
      "why": "정의 문장이 유일한 큰 단서 — 빼면 예시 '가사이다' 하나만 남아 다른 높임 등급(하오체 등)과 갈리지 않고, 확인되는 깊은 세부가 없음"
     },
-    "generalHint": "평서형 '-나이다'도 이 등급의 끝맺음으로, 지금은 사극이나 성경, 신에게 드리는 기도에서 주로 들을 수 있다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "김소월의 시 「진달래꽃」 3연은 이 등급의 끝맺음으로 맺는다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=하소서체"
     ],
@@ -155,9 +159,11 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://kimchi-reader.app/grammar/verb_나이다"
+     "https://ko.wikisource.org/wiki/진달래꽃_(시집)/진달래꽃",
+     "https://stdict.korean.go.kr/search/searchResult.do?pageSize=10&searchKeyword=하소서체",
+     "https://namu.wiki/w/하소서체"
     ],
-    "hintNote": "V+나이다 grammar under a 하소서체 heading ... appears in period dramas, traditional literature, the bible, prayers to God (출처 약함 — 문법 학습 사이트)",
+    "hintNote": "위키문헌 「진달래꽃」 3연: \"가시는거름거름 / 노힌그ᄭᅩᆺ츨 / 삽분히즈려밟고 가시옵소서\" / 표준국어대사전 '하소서체': \"… ‘하시옵소서’, ‘가사이다’ 따위이다.\" / 나무위키: \"근현대 문학 작품 중 하소서체가 쓰인 대표적인 작품으로는 김소월의 시 진달래꽃이 있다.\"",
     "easiestCue": "입말에서 사라진 '아주 높임' 등급",
     "targetWhy": "고교 문법은 하십시오·하오·하게·해라 넷을 주로 다루고 하소서체는 국어학 교양 쪽 — 4, 고교 문법 보충으로 보면 3",
     "selfJudge": "경계",
@@ -188,8 +194,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "'미시오', '당기시오'에 남은 상대 높임법 등급",
-     "difWhy": "상대 높임법 등급 — 고교 국어 문법",
+     "easiestCue": "출입문에 붙은 '미시오', '당기시오' 같은 안내문에는 오늘날 입말에서 거의 쓰지 않는 상대 높임법 등급이 남아 있습니다",
+     "difWhy": "V009 blind: 묻는 사실: 하오체 — 고교 국어 문법(경계 4)",
      "wor": 5,
      "worWhy": "교과서 — 국어 문법",
      "acc": 5,
@@ -229,7 +235,9 @@
       "note": "하오체는 한국어에서 상대편을 보통으로 높이는 종결형 상대 높임법 중 하나이다. … 디시인사이드 등의 인터넷 커뮤니티에서 '자신을 낮추지 않으면서 상대방을 높이는' 뜻으로 사용되기도 했다."
      }
     ],
-    "knowledgeClaims": [],
+    "knowledgeClaims": [
+     "옛 어른들이 부부 사이에 서로를 대접하며 '여보, 진지 드셨소?'처럼 쓰던 말투도 하오체다"
+    ],
     "hintBasis": "knowledge",
     "hintSources": [
      "https://ko.wikipedia.org/wiki/높임말"

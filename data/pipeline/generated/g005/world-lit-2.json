@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "작가가 버린 처음 결말은 1937년 조지 버나드 쇼가 낸 리미티드 에디션스 클럽 판에 실렸습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "결혼식 날 버림받고 낡은 웨딩드레스를 입은 채 사는 노처녀",
-     "difWhy": "미스 해비셤 묘사 — 대학 교양 세계문학",
+     "dif": 3,
+     "easiestCue": "결혼식 날 버림받은 뒤 낡은 웨딩드레스를 입은 채 다 허물어진 저택에 틀어박혀 사는 부유한 노처녀",
+     "difWhy": "V009 blind: 묻는 사실: 디킨스 위대한 유산(미스 해비셤) — 관심 있는 사람이 아는 세계문학(경계 4)",
      "wor": 3,
      "worWhy": "고전 명작 제목 맞히기",
      "acc": 4,
@@ -117,9 +121,9 @@
     "explanation": "인쇄소에 넘긴 타자 원고의 제목은 '언데드(The Un-Dead)'였는데, 출간 직전에 지금 제목으로 바뀌었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "엮음: 1897년 + 편지·일기·신문 기사를 엮은 소설",
-     "difWhy": "1897년 서간체 고전 소설 — 대학 교양(세계문학)",
+     "dif": 3,
+     "easiestCue": "편지와 일기, 신문 기사를 엮어 이야기를 이어 가는 1897년의 이 소설",
+     "difWhy": "V009 blind: 묻는 사실: 드라큘라의 형식·줄거리 — 관심 있는 사람(경계 4)",
      "wor": 3,
      "worWhy": "누구나 아는 작품 제목 맞히기",
      "acc": 4,

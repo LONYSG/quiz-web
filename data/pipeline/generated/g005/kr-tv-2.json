@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -25,19 +29,23 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "1993~1994년 '일요일 일요일 밤에'의 한 코너에서 이휘재는 이야기마다 두 갈래 선택의 기로에 섰습니다. 둘 가운데 하나를 고를 때 그가 외치던 유행어는 무엇일까요?",
+    "question": "1990년대 '일요일 일요일 밤에'의 한 코너에서 이휘재는 이야기마다 두 갈래 선택의 기로에 섰습니다. 둘 가운데 하나를 고를 때 그가 외치던 유행어는 무엇일까요?",
     "answer": "그래 결심했어",
     "acceptedAnswers": [
-     "그래! 결심했어!"
+     "그래! 결심했어!",
+     "그래, 결심했어",
+     "그래 결심했어!",
+     "그래! 결심했어",
+     "그래, 결심했어!"
     ],
     "originalTitleVariants": [],
     "variantCheck": "나무위키 'TV인생극장' 표기 '그래! 결심했어!' — 구두점이 판정에 남으므로 함께 넣음",
-    "explanation": "이 코너는 1997년 이휘재가 군 복무를 마치고 돌아온 뒤 1년여 동안 다시 방송되었습니다.",
+    "explanation": "이 코너는 이휘재의 군 입대와 함께 종영했습니다.",
     "score": {
      "version": "score-v2",
      "dif": 2,
-     "easiestCue": "이휘재가 두 갈래 선택에서 외치던 유행어",
-     "difWhy": "'이휘재 인생극장 유행어' — 방송에서 흔히",
+     "easiestCue": "이휘재는 이야기마다 두 갈래 선택의 기로에 섰습니다. 둘 가운데 하나를 고를 때 그가 외치던 유행어",
+     "difWhy": "V009 blind: 묻는 사실: 이휘재 TV 인생극장의 '그래 결심했어' — 방송에서 흔히(경계 3)",
      "wor": 3,
      "worWhy": "국민 유행어 이야깃거리",
      "acc": 5,
@@ -80,7 +88,9 @@
       "note": "1997년 이휘재가 군 복무를 마치고 일요일 일요일 밤에에 복귀한 뒤 약 1년여 동안 재방영"
      }
     ],
-    "knowledgeClaims": [],
+    "knowledgeClaims": [
+     "인생극장은 이야기마다 이휘재가 두 갈래 선택의 기로에 서서 하나를 고르는 형식이었다"
+    ],
     "hintBasis": null,
     "hintSources": [],
     "hintNote": null,
@@ -115,9 +125,9 @@
     "explanation": "본래는 자기 내면을 성찰하는 불교 수련법을 가리키는 말이고, 남의 마음을 읽는 능력은 불교에서 '타심통'이라 부릅니다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "'태조 왕건' 궁예의 속마음 꿰뚫어 보는 능력",
-     "difWhy": "'궁예 밈' — 방송에서 흔히",
+     "dif": 1,
+     "easiestCue": "드라마 '태조 왕건'의 궁예는 남의 속마음을 꿰뚫어 본다며 신하들을 몰아세웠고, 이 장면은 유행어와 밈이 됐습니다",
+     "difWhy": "V009 blind: 묻는 사실: 궁예의 관심법 — 누구나 아는 밈(경계 2)",
      "wor": 3,
      "worWhy": "유명 유행어 이야깃거리",
      "acc": 5,

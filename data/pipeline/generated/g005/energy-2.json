@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "순수요를 그린 그래프가 어떤 동물 윤곽을 닮았다",
-     "difWhy": "순수요 곡선 이름 — 대학 교양 에너지",
+     "easiestCue": "2012년 캘리포니아 독립계통운영기관(CAISO)이 이 그래프를 어떤 동물의 윤곽을 닮았다며 이름 붙였습니다",
+     "difWhy": "V009 blind: 묻는 사실: 덕 커브 — 에너지 분야 용어, 대학 교양 (경계 3)",
      "wor": 4,
      "worWhy": "에너지 분야 기본 어휘",
      "acc": 4,
@@ -117,8 +121,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "CaTiO3와 같은 꼴의 결정 구조를 묶어 부르는 이름",
-     "difWhy": "'CaTiO3 결정 구조' — 대학 교양 재료",
+     "easiestCue": "이 광물(CaTiO3)과 같은 꼴의 결정 구조를 지닌 화합물들도 이 광물의 이름으로 묶어 부릅니다",
+     "difWhy": "V009 blind: 묻는 사실: 페로브스카이트 광물 · 구조 총칭 — 대학 교양(결정학) · 태양 전지 뉴스 (경계 3)",
      "wor": 4,
      "worWhy": "신소재 시사 어휘",
      "acc": 4,

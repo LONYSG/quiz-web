@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "2010년 베를린 가전 박람회에서 선보인 조리 기구",
-     "difWhy": "'2010 등장 조리 가전' — 생활 관심층",
+     "easiestCue": "2006년 네덜란드의 기술자 프레드 판데르바이가 발명한 조리 기구가 있습니다",
+     "difWhy": "V009 blind: 묻는 사실: 에어프라이어의 발명 일화 — 관심 있는 사람(경계 4)",
      "wor": 3,
      "worWhy": "생활 가전 기원",
      "acc": 4,

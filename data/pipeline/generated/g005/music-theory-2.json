@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "글린카는 오페라 '루슬란과 류드밀라' 서곡 끝에서 불길한 분위기를 그리는 데 이 음계를 썼다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "서로 다른 것이 두 가지뿐인 여섯 음짜리 음계",
-     "difWhy": "여섯 음 음계 정의 — 대학 교양 음악이론",
+     "dif": 3,
+     "easiestCue": "평균율에서 서로 다른 것이 단 두 가지뿐인 여섯 음짜리 음계",
+     "difWhy": "V009 blind: 묻는 사실: 온음음계 — 고교 음악/관심 있는 사람 (경계 4)",
      "wor": 4,
      "worWhy": "음악 기본 어휘",
      "acc": 4,

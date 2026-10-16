@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "이 전투로 미군의 '고딕 서펜트 작전'은 막을 내렸고, 1995년 초까지 유엔군도 모두 소말리아에서 물러났습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "1993년 10월 아프리카 도시, 미군 헬기 격추·18명 사망 전투",
-     "difWhy": "블랙호크 다운 사건 — 대학 교양·영화 관심층",
+     "dif": 3,
+     "easiestCue": "미군 18명이 숨진 이 전투 / 조종사 마이클 듀란트가 포로로 붙잡혔습니다",
+     "difWhy": "V009 blind: 묻는 사실: 모가디슈 전투(블랙 호크 다운) — 관심 있는 사람이 아는 현대 전쟁사(경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 현대 전투",
      "acc": 3,
@@ -49,8 +53,8 @@
      "worWhy": "이야깃거리 — 현대 전투"
     },
     "rewrite": null,
-    "generalHint": "2001년 리들리 스콧은 이때 블랙 호크 헬기 두 대가 격추된 일을 전쟁 영화로 그렸다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "이 작전에는 델타포스와 제75 레인저 연대 병력, 해군 실(SEAL)도 함께 참가했다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Battle_of_Mogadishu_(1993)",
      "https://ko.wikipedia.org/wiki/모가디슈_전투_(1993년)"
@@ -90,7 +94,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Black_Hawk_Down_(film)"
+     "https://en.wikipedia.org/wiki/Battle_of_Mogadishu_(1993)"
     ],
     "hintNote": "Ridley Scott ... 2001 ... about two Black Hawk helicopters shot down during the Battle of Mogadishu.",
     "easiestCue": "1993년 아프리카 도시에서 미군 헬기가 격추돼 18명 사망",

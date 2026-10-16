@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "'탄츠테아터 부퍼탈' 안무가",
-     "difWhy": "'탄츠테아터 부퍼탈' — 무용 애호가",
+     "easiestCue": "무용수 대부분이 눈을 감은 채 퍼셀의 아리아에 맞춰 탁자와 의자에 부딪히는 '카페 뮐러'(1978)를 만든 이 안무가",
+     "difWhy": "V009 blind: 묻는 사실: 피나 바우슈의 부퍼탈 탄츠테아터·카페 뮐러 — 무용·공연 애호가(경계 3)",
      "wor": 3,
      "worWhy": "현대 무용 대표 인물",
      "acc": 3,
@@ -120,8 +124,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "1892 마린스키, '이올란타'와 함께 초연된 발레",
-     "difWhy": "'이올란타와 같이 초연' — 대학 교양 음악",
+     "easiestCue": "작곡가의 마지막 오페라 '이올란타'와 함께 한 무대에 초연된 발레",
+     "difWhy": "V009 blind: 묻는 사실: 호두까기 인형의 이올란타 이중 초연·초연 비판 — 애호가(경계 3)",
      "wor": 3,
      "worWhy": "누구나 아는 작품 제목",
      "acc": 3,

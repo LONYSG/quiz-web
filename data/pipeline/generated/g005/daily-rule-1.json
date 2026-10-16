@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "방어막마다 결함이 있어도, 그 결함들이 한 줄로 겹칠 때에만 사고로 이어진다고 설명한다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "심리학자 제임스 리즌이 정리한 사고 모형",
-     "difWhy": "'제임스 리즌의 사고 모형' — 안전관리 대학 교양 수준",
+     "dif": 3,
+     "easiestCue": "2020년 코로나19 때는 뉴질랜드에서 방역 대책을 설명하는 데도 쓰였는데, 이 사고 모형",
+     "difWhy": "V009 blind: 묻는 사실: 제임스 리즌의 스위스 치즈 모델(코로나 방역 설명) — 시사·안전 교양(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 안전·위험관리 기본 개념",
      "acc": 5,
@@ -56,8 +60,8 @@
      "addedCue": "(남은 깊은 단서) 제임스 리즌 1990 · 뉴질랜드 코로나 방역 설명",
      "why": "이름과 구조를 바로 일러 주는 꾸밈말을 빼고 제안자 세부로 풀게"
     },
-    "generalHint": "항공·의료 안전 교육에서 흔히 쓰는 이 모형은 구멍 난 얇은 조각 여러 장을 나란히 세운 그림으로 그린다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "약국의 투약 안전이나 소방대원 훈련 같은 분야에도 쓰이는 모형이다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Swiss_cheese_model",
      "https://ko.wikipedia.org/wiki/스위스_치즈_모델"
@@ -117,15 +121,19 @@
     "pairedWith": null,
     "question": "1979년 일본 디자이너 오타 유키오가 디자인한 표지가 1982년부터 일본에서 쓰였고, 1987년에는 ISO 국제 표준이 되었습니다. 이 표지는 무엇을 알리는 표지일까요?",
     "answer": "비상구",
-    "acceptedAnswers": [],
+    "acceptedAnswers": [
+     "피난구",
+     "비상출구",
+     "비상 출구"
+    ],
     "originalTitleVariants": [],
     "variantCheck": null,
     "explanation": "한국·중국·유럽 연합·일본 등 대부분 지역에서 이 표지는 초록을 쓴다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "1987년 ISO 국제 표준이 된 일본 디자인 표지",
-     "difWhy": "'국제 표준 표지' — 일상·방송",
+     "dif": 4,
+     "easiestCue": "1979년 일본 디자이너 오타 유키오가 디자인한 표지가 1982년부터 일본에서 쓰였고, 1987년에는 ISO 국제 표준이 되었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 비상구 픽토그램의 디자이너·연혁 — 디자인 애호가(경계 3)",
      "wor": 3,
      "worWhy": "생활 기호 기원",
      "acc": 5,
@@ -146,8 +154,8 @@
      "addedCue": "(새 단서 없음 — 디자이너·연도로)",
      "why": "일상에서 누구나 아는 그림 단서를 빼 디자이너·표준화 세부만 남김"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "비슷하게 달리는 사람을 그린 더 오래된 표지는 소련이 디자인했다고 한다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Exit_sign"
     ],
@@ -172,8 +180,10 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Exit_sign"
+    ],
     "hintNote": null,
     "easiestCue": "오타 유키오가 디자인해 1987년 ISO 표준이 된 표지",
     "targetWhy": "오타 유키오와 이 표지의 연결은 디자인 애호가 세부, 4",
@@ -209,8 +219,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "엮음: 사출 좌석 개발자 + 자동차 회사에 낸 장치",
-     "difWhy": "'볼보에 낸 안전장치' — 자동차 관심층",
+     "easiestCue": "1959년 그는 한 자동차 회사에 이 장치의 새 설계를 내놓았고, 그 설계는 1968년 누구나 쓸 수 있게 공개되었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 볼린의 3점식 안전띠 — 상식 트리비아(경계 4)",
      "wor": 3,
      "worWhy": "안전장치 기원",
      "acc": 5,

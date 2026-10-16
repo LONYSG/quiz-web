@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "2층 가운데 단이 임금의 자리인 누각, 1412년",
-     "difWhy": "'1412년 임금의 누각' — 관심 있는 사람(궁궐)",
+     "easiestCue": "1층을 돌기둥 48개가 받치고, 2층 바닥은 높이가 다른 세 단으로 나뉘어 가장 높은 가운데 단이 임금의 자리",
+     "difWhy": "V009 blind: 묻는 사실: 경회루 구조 — 관심 있는 사람 (경계 4)",
      "wor": 4,
      "worWhy": "교양 — 경복궁 대표 건축",
      "acc": 3,
@@ -126,9 +130,9 @@
     "explanation": "1933년에는 미술관으로 바뀌었고, 지금은 대한제국역사관으로 쓰입니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "1910년 완공되어 고종이 세상을 떠날 때까지 황실이 쓴 건물",
-     "difWhy": "'대한제국 서양식 궁궐 건물' — 고교 한국사",
+     "dif": 4,
+     "easiestCue": "상하이에서 활동하던 아일랜드 건축가 존 레지널드 하딩이 설계했고, 영국인 고문 브라운이 공사를 제안하고 공사비를 관리하고 댄 건물",
+     "difWhy": "V009 blind: 묻는 사실: 석조전의 설계자·공사비 관리자 — 교과 밖 세부(경계 3)",
      "wor": 4,
      "worWhy": "근대 건축 교양",
      "acc": 3,
@@ -149,8 +153,8 @@
      "addedCue": "(새로 넣지 않음) 하딩 설계 · 브라운 공사비",
      "why": "고교 한국사의 '대한제국 서양식 건물' 꼴을 빼고 설계자·자금 내력으로 좁힘"
     },
-    "generalHint": "6·25 전쟁 전에는 미소공동위원회가 이 건물에서 열렸다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "1919년 고종이 세상을 떠난 뒤에는 일본 요인을 맞는 호텔 겸 연회장으로도 쓰였다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Seokjojeon"
     ],
@@ -183,7 +187,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://ko.wikipedia.org/wiki/덕수궁_석조전"
+     "https://en.wikipedia.org/wiki/Seokjojeon"
     ],
     "hintNote": "6.25 전쟁 이전에는 미소공동위원회가 석조전에서 개최된 바 있으며",
     "easiestCue": "하딩이 설계하고 1910년 완공돼 고종 때까지 황실이 쓴 건물",
@@ -216,8 +220,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "종로 3가와 퇴계로 3가 사이 일렬 상가",
-     "difWhy": "'종로~퇴계로 상가' — 서울 관심층",
+     "easiestCue": "1966년 서울 종로 3가와 퇴계로 3가 사이 판자촌을 밀어낸 자리에 … 늘어선 상가",
+     "difWhy": "V009 blind: 묻는 사실: 세운상가 위치·역사 — 서울 시민 상식(경계 4)",
      "wor": 3,
      "worWhy": "도시 건축 이야깃거리",
      "acc": 3,

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "그는 피렌체를 다스리던 시기에 사치품과 그림·책을 모아 태우는 '허영의 소각'을 벌였습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "피렌체에서 설교하다 파문당하고 시뇨리아 광장에서 처형된 도미니코회 수사",
-     "difWhy": "피렌체 수사 처형 — 대학 교양 세계사",
+     "dif": 3,
+     "easiestCue": "피렌체 시뇨리아 광장에서 교수형을 당한 뒤 시신이 불태워진 이 사람",
+     "difWhy": "V009 blind: 묻는 사실: 사보나롤라의 최후 — 고교 세계사",
      "wor": 3,
      "worWhy": "이야깃거리 — 르네상스 인물",
      "acc": 4,

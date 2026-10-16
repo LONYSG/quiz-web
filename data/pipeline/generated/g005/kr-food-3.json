@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "'떠넌죽'이라고도 부른 밀가루 음식",
-     "difWhy": "'떠 넣는 밀가루 죽' 사투리 — 관심 있는 사람",
+     "easiestCue": "'뜨데기', '떠넌죽', '다부렁죽'이라고도 불러 온 밀가루 음식입니다. 표준어로는",
+     "difWhy": "V009 blind: 묻는 사실: 수제비의 지역 방언 이름 — 관심 있는 사람(경계 2, 낱말 맞히기)",
      "wor": 3,
      "worWhy": "음식 방언 이야깃거리",
      "acc": 5,

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -27,15 +31,17 @@
     "pairedWith": null,
     "question": "1973년 고생물학자 리 밴 베일런은 한 무리가 멸종할 확률이 그 무리가 얼마나 오래 살아왔는지와 상관없이 거의 일정하다는 '멸종의 법칙'을 설명하려고 이 가설을 내놓았습니다. 그는 이 논문을 자신이 만든 학술지 '진화 이론'에 실었습니다. 루이스 캐럴 소설 속 인물에서 이름을 딴 이 가설은 무엇일까요?",
     "answer": "붉은 여왕 가설",
-    "acceptedAnswers": [],
+    "acceptedAnswers": [
+     "붉은 여왕 효과"
+    ],
     "originalTitleVariants": [],
     "variantCheck": null,
     "explanation": "다른 학술지가 실어 주겠다고 했지만 게재료를 내야 해서 그가 논문을 거두어들였다고 합니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "루이스 캐럴 인물에서 이름 딴 진화 가설",
-     "difWhy": "공진화 가설 — 대학 교양(생물)",
+     "dif": 3,
+     "easiestCue": "루이스 캐럴 소설 속 인물에서 이름을 딴 이 가설",
+     "difWhy": "V009 blind: 묻는 사실: 붉은 여왕 가설 — 고교 생명과학 진화 개념, 이름만으로 추정 가능(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 진화 개념",
      "acc": 5,

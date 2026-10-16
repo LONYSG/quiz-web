@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "래퍼 자신은 이 생각을 처음 낸 사람이 아니라며 이븐 할둔, 케인스, 애덤 스미스를 앞선 예로 들었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "포드 증세 반대 냅킨에 그린 곡선",
-     "difWhy": "감세 논리 곡선 — 대학 교양(경제)",
+     "dif": 3,
+     "easiestCue": "한 경제학자가 포드 대통령의 증세에 반대하며 … 냅킨에 곡선 하나를 그렸다고 전합니다",
+     "difWhy": "V009 blind: 묻는 사실: 냅킨에서 나온 래퍼 곡선 일화 — 고교 경제(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 경제 개념",
      "acc": 4,
@@ -118,9 +122,9 @@
     "explanation": "1960년 새뮤얼슨과 솔로가 이 연구를 바탕으로 물가 상승률과 실업률 사이의 관계를 분명히 이어 놓았습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "엮음: 뉴질랜드 출신 경제학자 + 이름 붙은 곡선",
-     "difWhy": "'뉴질랜드 경제학자 곡선' — 대학 교양 경제",
+     "dif": 3,
+     "easiestCue": "런던 정치경제대학 학생이던 1949년 색깔 물로 영국 경제의 돈 흐름을 보여 주는 기계 'MONIAC'을 만든 그의 이름이 붙은 곡선",
+     "difWhy": "V009 blind: 묻는 사실: 필립스 곡선 이름의 주인(필립스) — 경제 교양, 인물 일화는 쉬운 단서 아님(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 경제 기본 개념",
      "acc": 4,

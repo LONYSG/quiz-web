@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "퍼들법으로 만든 탄소 0.05% 미만, 슬래그 섞인 쇠",
-     "difWhy": "'퍼들법·탄소 극소 쇠' — 대학 교양 재료",
+     "easiestCue": "파리 에펠탑의 쇠뼈대 7,300톤은 흔히 떠올리는 강철이 아닌 이 쇠로 지어졌습니다",
+     "difWhy": "V009 blind: 묻는 사실: 연철(퍼들 철)의 성질과 에펠탑 재료 — 재료공학 교양(경계 3)",
      "wor": 3,
      "worWhy": "에펠탑 재료 이야깃거리",
      "acc": 2,
@@ -114,6 +118,8 @@
     "acceptedAnswers": [
      "스테인리스",
      "스테인리스 스틸",
+     "스테인레스",
+     "스테인레스 스틸",
      "스텐레스",
      "스텐"
     ],
@@ -123,8 +129,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "1913년 셰필드 해리 브리얼리가 총열 마모 문제로 만든 합금",
-     "difWhy": "'브리얼리·셰필드 1913' — 대학 교양 재료사",
+     "easiestCue": "총열 안쪽이 높은 열에 쉽게 닳는 문제를 풀려고 여러 강철을 시험하다 이 합금을 처음 만들었다고 전합니다",
+     "difWhy": "V009 blind: 묻는 사실: 브리얼리·브라운 퍼스 연구소의 스테인리스 발명 일화 — 애호가(경계 3)",
      "wor": 3,
      "worWhy": "생활 재료 발명 이야깃거리",
      "acc": 2,
@@ -145,8 +151,8 @@
      "addedCue": "(새 단서 없음) 브리얼리·브라운 퍼스 연구소·총열 마모 문제만 남김",
      "why": "'크롬 넣은 강·부엌 칼' 은 중학 과학 수준 정의 단서라 빼고, 발명 경위 세부만으로 묻게 함 — 칼붙이 이야기는 해설로"
     },
-    "generalHint": "흔히 '18/8'이라 부르는 304 등급이 이 합금 가운데 가장 널리 쓰인다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "그는 열두 살에 학교를 그만두고 제철소 실험실에서 일하며 저녁 수업으로 제강을 배웠다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Harry_Brearley"
     ],
@@ -185,7 +191,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Stainless_steel"
+     "https://en.wikipedia.org/wiki/Harry_Brearley"
     ],
     "hintNote": "that became known as 18/8 or AISI type 304 ... Type 304 is the most common grade of stainless steel with 18% chromium",
     "easiestCue": "1913년 해리 브리얼리가 총열 마모 문제를 풀다 얻은 합금",

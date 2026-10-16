@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "1975년 퍼시픽리그가 받아들인 자리",
-     "difWhy": "'퍼시픽리그가 도입한 자리' — 야구 관심층",
+     "easiestCue": "일본에서는 1975년 퍼시픽리그가 이를 받아들였는데, 이 자리는 무엇일까요?",
+     "difWhy": "V009 blind: 묻는 사실: 지명타자의 기원·일본 도입 — 야구 관심층 (경계 4)",
      "wor": 3,
      "worWhy": "야구 기본 규칙 이야깃거리",
      "acc": 4,
@@ -56,8 +60,8 @@
      "addedCue": "일본 퍼시픽리그의 1975년 도입",
      "why": "널리 알려진 첫 지명타자 일화를 해설로 옮기고 도입사 세부로 엮음"
     },
-    "generalHint": "내셔널리그는 반세기 가까이 받아들이지 않다가 2022년 시즌부터 이 제도를 함께 쓰기 시작했다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "이 자리에서 가장 많은 경기를 뛴 선수로는 2014년 프랭크 토머스가 처음 명예의 전당에 올랐다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Designated_hitter"
     ],
@@ -123,8 +127,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "공식 높이를 15인치에서 10인치로 낮춘 것",
-     "difWhy": "'투수 쪽 높이 낮춤' — 야구 관심층",
+     "easiestCue": "그 뒤 메이저리그가 공식 높이를 15인치에서 10인치로 낮춘 것은 무엇일까요",
+     "difWhy": "V009 blind: 묻는 사실: 1968 뒤 낮아진 마운드 높이 — 야구 기본 용어, 높이 단서가 곧 대상 (경계 2)",
      "wor": 3,
      "worWhy": "규칙 변화 이야깃거리",
      "acc": 4,
@@ -145,8 +149,8 @@
      "addedCue": null,
      "why": "'마운드'는 기본 용어라 높이·위치 같은 단서는 모두 정의에 가깝고, 그것을 빼면 정답이 유일하지 않거나 수치(알 가치 1)로 감 — 고치지 않음"
     },
-    "generalHint": "그 위에 놓인 투수판의 앞 가장자리는 홈 플레이트 뒤 꼭짓점에서 60피트 6인치 떨어져 있다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "투수판에서 홈 플레이트 뒤 꼭짓점까지 60피트 6인치라는 거리는 1893년 규칙 제정자들이 정한 것이다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Pitcher%27s_mound"
     ],

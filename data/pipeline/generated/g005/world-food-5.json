@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "엮음: 고대 로마 몸값의 향신료 + 이집트 미라 콧구멍",
-     "difWhy": "'고대의 귀한 향신료' — 고교 세계사",
+     "easiestCue": "5세기 서고트족의 왕 알라리크가 로마에 요구한 몸값에는 이 향신료 3,000파운드가 들어 있었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 몸값에 든 후추 — 세계사 일화/상식 (경계 4)",
      "wor": 3,
      "worWhy": "향신료 역사 이야깃거리",
      "acc": 4,
@@ -58,8 +62,8 @@
      "addedCue": null,
      "why": "어떤 깊은 단서를 써도 '고대부터 귀했던 향신료' 라는 짐작으로 후추가 먼저 나와, 쉬운 단서를 빼도 같은 짐작으로 풀림 — 고치지 않음"
     },
-    "generalHint": "이 향신료의 매운맛은 주로 열매와 씨에 든 피페린이라는 성분에서 나온다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "1495년 스웨덴 앞바다에 가라앉은 덴마크 왕 한스의 기함 그립스훈덴 난파선에서 이 향신료가 2,000알 넘게 건져졌다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Black_pepper"
     ],
@@ -86,9 +90,10 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Black_pepper"
+     "https://en.wikipedia.org/wiki/Black_pepper",
+     "https://en.wikipedia.org/wiki/Gribshunden"
     ],
-    "hintNote": "Pepper gets its spicy heat mostly from piperine derived from both the outer fruit and the seed.",
+    "hintNote": "Black pepper: \"Archaeologists recovered more than 2,000 peppercorns from the Gribshunden wreck, which sank in 1495\" / Gribshunden: flagship of \"Hans (John), King of Denmark\" · \"Gribshunden sank in 1495 after an explosion while in the Baltic Sea off the coast of Ronneby in southeastern Sweden.\"",
     "easiestCue": "알라리크가 로마에 요구한 몸값 3,000파운드의 향신료",
     "targetWhy": "'대항해 시대의 금값 향신료'·'인도 말라바르' 같은 교과 단서를 빼고 알라리크 몸값·람세스 미라만 남김 — 세계사 애호가 세부라 4",
     "selfJudge": "좋은 어려움",
@@ -119,8 +124,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "리슐리외 공작의 승리를 기려 이름 붙었다는 소스",
-     "difWhy": "'마옹 승전 소스' — 음식 애호가",
+     "easiestCue": "1756년 4월 리슐리외 공작이 쳐들어가 영국에 이긴 일을 기려 이름이 붙었다는 설이 흔한 소스",
+     "difWhy": "V009 blind: 묻는 사실: 마요네즈 이름의 유래설 — 교과 밖 세부 (경계 3)",
      "wor": 3,
      "worWhy": "일상 소스 이름 유래",
      "acc": 4,

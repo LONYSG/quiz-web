@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "엮음: 1999년 일본 + 176개짜리 그림 문자 묶음",
-     "difWhy": "'1999 일본 176개 묶음' — IT 관심층",
+     "easiestCue": "1999년 일본의 구리타 시게타카는 하나마다 한 가지 색만 쓴 176개짜리 묶음을 디자인했습니다",
+     "difWhy": "V009 blind: 묻는 사실: 이모지 — 상식 (경계 2)",
      "wor": 3,
      "worWhy": "생활 기호 기원 이야기",
      "acc": 5,
@@ -56,8 +60,8 @@
      "addedCue": "하나마다 한 가지 색만 쓴 176개",
      "why": "휴대전화 i-모드 맥락이 충분 단서라 해설로 내리고 디자이너·MoMA 소장으로 좁힘"
     },
-    "generalHint": "2015년 옥스퍼드 사전은 이것 가운데 '기쁨의 눈물을 흘리는 얼굴'을 올해의 단어로 골랐다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "구리타는 만화의 도상 관습과 한자, 도로 표지, 일기예보 기호에서 영감을 얻어 그렸다고 한다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Emoji"
     ],
@@ -96,7 +100,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Face_with_Tears_of_Joy_emoji"
+     "https://en.wikipedia.org/wiki/Emoji"
     ],
     "hintNote": "Face with Tears of Joy was chosen as the Word of the Year by Oxford Dictionaries in 2015.",
     "easiestCue": "구리타 시게타카가 1999년 디자인한 176개 묶음 · MoMA 소장",
@@ -131,8 +135,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "1751년 꽃의 암수 표시에 ♂·♀를 처음 쓴 학자",
-     "difWhy": "18세기 식물 분류학자 — 고교 생물",
+     "easiestCue": "1751년 꽃이 수꽃인지 암꽃인지를 표시하려고 이 기호를 생물학에 처음 쓴 학자",
+     "difWhy": "V009 blind: 묻는 사실: 성별 기호의 린네 사용 — 고교 생물 (경계 4)",
      "wor": 3,
      "worWhy": "기호 기원 이야깃거리",
      "acc": 5,

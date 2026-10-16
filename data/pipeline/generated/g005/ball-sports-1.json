@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "이름은 아버지가 식당 메뉴판에서 본 일본산 고베 소고기에서 따왔다고 합니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "미들 네임 '빈'이 아버지 별명 '젤리빈'에서 온 농구 선수",
-     "difWhy": "'미들 네임 빈' — NBA 애호가",
+     "dif": 3,
+     "easiestCue": "이 농구 선수는 여섯 살 때 NBA에서 은퇴한 아버지를 따라 이탈리아 리에티로 건너가 이탈리아어를 유창하게 익혔고",
+     "difWhy": "V009 blind: 묻는 사실: 코비의 이탈리아 유년기 — 관심 있는 사람",
      "wor": 3,
      "worWhy": "누구나 아는 선수 이름 맞히기",
      "acc": 4,
@@ -56,8 +60,8 @@
      "addedCue": "AC 밀란 팬 · 미들 네임 '빈'(아버지 별명 젤리빈)",
      "why": "널리 알려진 이름 유래를 해설로 옮기고 이탈리아 성장기 세부를 엮음"
     },
-    "generalHint": "그는 은퇴 뒤 자신이 쓴 글을 옮긴 단편 애니메이션으로 2018년 아카데미상을 받았다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "그는 고교 시절 2,883점을 넣어 윌트 체임벌린을 넘고 펜실베이니아 남동부 고교 역대 최다 득점자가 되었다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Kobe_Bryant"
     ],
@@ -96,9 +100,9 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Dear_Basketball"
+     "https://en.wikipedia.org/wiki/Kobe_Bryant"
     ],
-    "hintNote": "It won the Academy Award for Best Animated Short Film ... the first Oscar for any professional athlete",
+    "hintNote": "\"He finished his high-school career as Southeastern Pennsylvania's all-time leading scorer at 2,883 points,\" … \"surpassing both Wilt Chamberlain and Lionel Simmons.\"",
     "easiestCue": "이탈리아 리에티에서 자란 NBA 선수",
     "targetWhy": "리에티 성장 · AC 밀란 · 젤리빈은 농구 애호가 세부 — 4",
     "selfJudge": "경계",
@@ -130,9 +134,9 @@
     "explanation": "팀 이름의 동네는 당시 미국 흑인 문화의 중심지로 여겨져 에이브 세이퍼스타인이 골랐습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "다른 도시 동네 이름을 단 시카고 농구 팀",
-     "difWhy": "'묘기 농구 팀' — 농구 관심층",
+     "dif": 4,
+     "easiestCue": "1926년 시카고 사우스사이드에서 시작된 이 농구 팀은 이름에 다른 도시의 동네 이름을 달았습니다",
+     "difWhy": "V009 blind: 묻는 사실: 할렘 글로브트로터스 — 농구 애호가 (경계 3)",
      "wor": 3,
      "worWhy": "유명 팀 이름 이야기",
      "acc": 4,
@@ -216,8 +220,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "본명이 루 앨신더였던 농구 선수",
-     "difWhy": "'본명 루 앨신더' — 농구 애호가",
+     "easiestCue": "코미디 영화 '에어플레인!'에서 자꾸 농구 선수로 오해받는 조종사 로저 머독을 연기했습니다",
+     "difWhy": "V009 blind: 묻는 사실: 압둘자바의 본명·에어플레인! 출연 — NBA 팬 (경계 3)",
      "wor": 3,
      "worWhy": "전설 선수 이름 이야깃거리",
      "acc": 4,
@@ -238,8 +242,8 @@
      "addedCue": "(새 단서 없음) 본명 루 앨신더 · '에어플레인!' 로저 머독 역만 남김",
      "why": "'사망유희' 출연은 영화·무술 관심층에게 널리 알려진 대표 일화라 빼고, 본명과 코미디 영화 배역만으로 묻게 함"
     },
-    "generalHint": "이소룡에게 절권도를 배웠고 이소룡의 영화 '사망유희'에도 출연했다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "UCLA 시절 세 시즌 연속으로 전국 대학 농구 챔피언에 올랐다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar"
     ],
@@ -300,9 +304,9 @@
     "explanation": "그는 농구를 만든 지 7년 뒤인 1898년 덴버에서 의학 학위도 받았습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "1898년 캔자스 대학의 첫 농구 감독",
-     "difWhy": "'캔자스 첫 농구 감독' — 농구 애호가",
+     "dif": 3,
+     "easiestCue": "1898년 캔자스 대학의 첫 농구 감독이 되었지만, 이 대학 역대 감독 가운데 유일하게 진 경기가 이긴 경기보다 많았습니다",
+     "difWhy": "V009 blind: 묻는 사실: 네이스미스의 캔자스 감독 이력 — 농구 창시자 인물 상식 (경계 4)",
      "wor": 3,
      "worWhy": "농구 창시자 일화",
      "acc": 4,
@@ -316,8 +320,8 @@
      "worWhy": "농구 창시자 일화"
     },
     "rewrite": null,
-    "generalHint": "그가 쓴 농구 규칙 원본은 2010년 소더비 경매에서 433만 8,500달러에 팔린 뒤 캔자스 대학에 기증되었다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "그는 1890년 몬트리올의 장로교 대학에서 신학 졸업장을 받았고, 맥길 대학의 첫 체육부장을 지냈다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/James_Naismith"
     ],

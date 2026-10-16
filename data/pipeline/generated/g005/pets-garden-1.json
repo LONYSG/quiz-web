@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "네덜란드 오라녜 가문을 상징하는 개",
-     "difWhy": "'오라녜 가문의 개' — 애견 애호가",
+     "easiestCue": "1572년 '퐁페이'라는 이 품종의 개가 오라녜 공의 목숨을 구했다고 전하며, 그 뒤 네덜란드 오라녜 가문을 상징하는 개가 되었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 퍼그의 오라녜 가문 일화 — 견종 애호가(경계 3)",
      "wor": 3,
      "worWhy": "품종 역사 이야깃거리",
      "acc": 4,
@@ -109,9 +113,9 @@
     "explanation": "1998년 국제애견연맹(FCI)은 이 품종을 독일 스피츠의 한 갈래로 분류했다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "빅토리아 여왕이 작은 개체를 아껴 몸집이 절반으로 줄었다",
-     "difWhy": "'빅토리아 여왕의 소형견' — 애견 애호가",
+     "dif": 3,
+     "easiestCue": "1912년 타이타닉호가 가라앉을 때 살아남은 개는 세 마리뿐이었는데, 그 가운데 두 마리가 이 품종이었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 타이타닉 생존견 포메라니안 — 반려견 관심층(경계 4)",
      "wor": 3,
      "worWhy": "품종 역사 이야깃거리",
      "acc": 4,
@@ -194,9 +198,9 @@
     "explanation": "릴레이에서 가장 긴 구간(약 420km)은 발토가 아니라 세팔라와 선도견 토고의 팀이 달렸다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "알래스카 놈 썰매 릴레이 선도견 '발토'",
-     "difWhy": "'알래스카 썰매 선도견' — 방송·뉴스",
+     "dif": 3,
+     "easiestCue": "1925년 겨울 알래스카 놈에 디프테리아 항독소를 나른 릴레이에서, 마지막 구간을 이끈 선도견 '발토'",
+     "difWhy": "V009 blind: 묻는 사실: 발토의 품종 — 관심 있는 사람이 아는 썰매 개 일화(경계 2)",
      "wor": 3,
      "worWhy": "유명 개 일화 이야깃거리",
      "acc": 4,
@@ -217,8 +221,8 @@
      "addedCue": null,
      "why": "범주 단서(알래스카 썰매 개)만으로 풀리는 꼴 — 발토 단서를 빼거나 바꿔도 '썰매 개 품종' 이라는 범주가 남아 허스키로 바로 이어짐, 다른 깊은 각도가 없음"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "놈 골드러시 때 러시아 모피 상인 윌리엄 구사크가 놈에 들여온 썰매개 품종이다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/1925_serum_run_to_Nome",
      "https://en.wikipedia.org/wiki/Balto_(dog)"
@@ -262,9 +266,11 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Siberian_Husky"
+    ],
+    "hintNote": "\"William Goosak, a Russian fur trader, introduced them to Nome, Alaska, during the Nome Gold Rush.\"",
     "easiestCue": "1925년 놈 혈청 릴레이의 선도견 발토",
     "targetWhy": "발토의 실제 품종은 애호가 세부(애니 '발토'는 늑대개로 그려 헷갈림), 4",
     "selfJudge": "좋은 어려움",

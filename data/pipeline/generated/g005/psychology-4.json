@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -28,17 +32,16 @@
     "question": "1817년 이탈리아 피렌체의 산타크로체 성당을 찾은 한 프랑스 작가는 여행기에 '가슴이 두근거렸다… 넘어질까 두려워하며 걸었다'고 적었습니다. 1989년 이탈리아 정신과 의사 그라치엘라 마게리니가 관광객에게서 비슷한 사례 백여 건을 보고 이 작가의 이름을 붙인 증상은?",
     "answer": "스탕달 증후군",
     "acceptedAnswers": [
-     "스탕달 신드롬",
-     "피렌체 증후군"
+     "스탕달 신드롬"
     ],
     "originalTitleVariants": [],
     "variantCheck": "en.wikipedia 'Stendhal syndrome' — 다른 이름 Florence syndrome(피렌체 증후군). '스탕달 신드롬'은 한국 언론·방송에서 흔히 쓰는 꼴(증후군=신드롬)",
     "explanation": "피렌체의 산타 마리아 누오바 병원 직원들은 유명한 미술품을 보고 어지럼증이나 방향 감각 상실을 겪는 관광객에 익숙하다고 합니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "엮음: 1817년 프랑스 작가 + 피렌체 미술품 앞 두근거림",
-     "difWhy": "스탕달의 피렌체 일화 — 대학 교양",
+     "dif": 3,
+     "easiestCue": "1989년 이탈리아 정신과 의사 그라치엘라 마게리니가 관광객에게서 비슷한 사례 백여 건을 보고 이 작가의 이름을 붙인 증상",
+     "difWhy": "V009 blind: 묻는 사실: 스탕달 증후군 — 심리 교양, 관심 있는 사람 (경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 미술 관광 증상",
      "acc": 3,
@@ -120,9 +123,9 @@
     "explanation": "걸은 이 병을 처음에 '아펩시아 히스테리카'라 불렀다가 '아노렉시아 히스테리카'를 거쳐 지금의 이름으로 바꾸었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "캐런 카펜터가 32세로 숨지면서 이 병은 세계적인 관심",
-     "difWhy": "캐런 카펜터 사인 — 대학 교양 심화",
+     "dif": 3,
+     "easiestCue": "미국 남매 듀오 카펜터스의 캐런 카펜터가 32세로 숨지면서 이 병은 세계적인 관심을 모았습니다",
+     "difWhy": "V009 blind: 묻는 사실: 캐런 카펜터의 사인 거식증 — 대중 상식(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 섭식 장애 기본 어휘",
      "acc": 3,
@@ -136,8 +139,8 @@
      "worWhy": "교양 — 섭식 장애 기본 어휘"
     },
     "rewrite": null,
-    "generalHint": "2006년 브라질 모델 아나 카롤리나 헤스통이 이 병 등으로 21세에 숨지자 조르조 아르마니는 체질량 지수가 낮은 모델을 쓰지 않았다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "가장 이른 의학적 기술은 1689년 영국 의사 리처드 모턴이 남긴 것으로 흔히 꼽힌다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Karen_Carpenter",
      "https://en.wikipedia.org/wiki/William_Gull",
@@ -178,7 +181,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Ana_Carolina_Reston"
+     "https://en.wikipedia.org/wiki/Anorexia_nervosa"
     ],
     "hintNote": "Reston died on November 15, 2006 ... at the age of 21 ... kidney failure linked to anorexia and bulimia ... As a result of Reston's death, Giorgio Armani stopped using models with low body mass indexes.",
     "easiestCue": "캐런 카펜터의 죽음으로 세계적 관심을 모은 섭식 장애",

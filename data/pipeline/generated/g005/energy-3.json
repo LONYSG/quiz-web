@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "부시 대통령의 2003년 연두교서 속 '아프리카 우라늄' 문장은 뒤에 백악관이 '이 열여섯 단어는 들어가지 말았어야 했다'고 인정했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "우라늄을 캔 뒤 농축 전 단계 정광, 이름과 달리 갈색",
-     "difWhy": "'우라늄 정광 이름' — 대학 교양·시사 심화",
+     "dif": 3,
+     "easiestCue": "우라늄을 캔 뒤 핵연료로 만들거나 농축하기 전 단계의 가루입니다",
+     "difWhy": "V009 blind: 묻는 사실: 옐로케이크 사건·정광 — 시사 상식 (경계 4)",
      "wor": 3,
      "worWhy": "이라크전 일화",
      "acc": 4,

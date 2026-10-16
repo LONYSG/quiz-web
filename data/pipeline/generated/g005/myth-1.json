@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "그는 재주 많은 조카를 시기해 죽이려 했는데, 아테나가 그 조카를 구해 자고새로 바꾸었다고 전합니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "나선 조개껍데기에 실을 꿰는 수수께끼를 개미로 푼 장인",
-     "difWhy": "다이달로스 개미 일화 — 신화 애호·교양",
+     "dif": 3,
+     "easiestCue": "크레타의 왕비 파시파에를 위해 진짜 소가죽을 씌운 속 빈 나무 암소를 만든 장인",
+     "difWhy": "V009 blind: 묻는 사실: 다이달로스의 파시파에 암소·코칼로스 일화 — 관심 있는 사람 (경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 신화 장인",
      "acc": 3,
@@ -49,8 +53,8 @@
      "worWhy": "이야깃거리 — 신화 장인"
     },
     "rewrite": null,
-    "generalHint": "그 나무 암소 덕에 태어난 괴물을 가두려고 크레타에 지은 미궁도 이 장인의 작품이다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "도끼·톱·아교 같은 목공 연장을 발명했다는 이야기가 전한다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Daedalus"
     ],
@@ -112,8 +116,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "찢겨 죽은 뒤 머리가 노래 부르며 강을 따라 흘러간",
-     "difWhy": "'노래하는 머리' — 신화 관심 있는 사람",
+     "easiestCue": "아르고호 원정에 함께한 이 인물은 뒷날 여인들에게 갈가리 찢겨 죽었지만",
+     "difWhy": "V009 blind: 묻는 사실: 오르페우스의 최후 — 그리스 신화 관심층 (경계 4)",
      "wor": 3,
      "worWhy": "유명 신화 인물 이름 맞히기",
      "acc": 3,

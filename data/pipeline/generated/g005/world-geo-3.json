@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "꼭대기의 빙원은 20세기에만 80% 넘게 줄었고, 21세기 중반이면 모두 사라질 것으로 예측됩니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "엮음: 독일 황제 이름 딴 꼭대기 + 1964년 새 나라 '우후루 봉'",
-     "difWhy": "독일령 동아프리카의 산 — 대학 교양",
+     "dif": 3,
+     "easiestCue": "1964년 새 나라가 생긴 뒤 '우후루 봉'으로 이름이 바뀐 이 산",
+     "difWhy": "V009 blind: 묻는 사실: 우후루 봉 · 아프리카 최고봉 킬리만자로 — 중학/고교 지리",
      "wor": 3,
      "worWhy": "이야깃거리 — 봉우리 개명 일화",
      "acc": 4,
@@ -49,8 +53,8 @@
      "worWhy": "이야깃거리 — 봉우리 개명 일화"
     },
     "rewrite": null,
-    "generalHint": "헤밍웨이가 1936년 발표한 단편 제목에는 이 산의 '눈'이 들어간다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "이 산은 키보·마웬지·시라라는 세 개의 화산체로 이루어진 휴화산이다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Kilimanjaro"
     ],
@@ -77,7 +81,8 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/The_Snows_of_Kilimanjaro_(short_story)"
+     "https://en.wikipedia.org/wiki/Mount_Kilimanjaro",
+     "https://en.wikipedia.org/wiki/Kilimanjaro"
     ],
     "hintNote": "a short story by American author Ernest Hemingway first published in August 1936",
     "easiestCue": "정상 이름 '우후루 봉'",
@@ -112,9 +117,9 @@
     "explanation": "작가 모파상은 파리에서 이것이 보이지 않는 유일한 곳이라며 날마다 그 안의 식당에서 점심을 먹었다고 전합니다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "엮음: 예술가들이 건설에 항의한 + 파리의 건축물",
-     "difWhy": "'예술가들이 반대한 파리 건축물' — 방송에서 흔히",
+     "dif": 3,
+     "easiestCue": "1887년 신문 '르 탕'에는 이것의 건설에 맞서는 예술가들의 항의문이 실렸습니다",
+     "difWhy": "V009 blind: 묻는 사실: 에펠탑 건설 반대 항의문·1909 철거 위기 — 관심 있는 사람 (경계 4)",
      "wor": 3,
      "worWhy": "유명 랜드마크 일화 이야깃거리",
      "acc": 4,
@@ -135,8 +140,8 @@
      "addedCue": "1887년 '르 탕' 예술가 항의문 (남은 단서: 1909년 철거 예정·무선 전신)",
      "why": "유명 일화를 해설로 옮기고 건설 반대·보존 경위 세부로 엮음"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "이 탑에는 프랑스 과학자·기술자·수학자 72명의 이름이 새겨져 있다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Eiffel_Tower"
     ],
@@ -161,8 +166,10 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Eiffel_Tower"
+    ],
     "hintNote": null,
     "easiestCue": "1909년 헐릴 뻔했다가 무선 전신 덕에 남은 파리 건축물",
     "targetWhy": "철거 예정·무선 전신 보존은 관심층~애호가 세부 — 4 노림(경계 3)",

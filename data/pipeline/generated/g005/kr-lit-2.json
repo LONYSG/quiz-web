@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "지은이는 이황으로, 앞의 여섯 곡은 자연 속에서 느끼는 마음을, 뒤의 여섯 곡은 학문을 닦고 수양하는 마음을 노래했다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "엮음: 명종 때 연시조 + 장경세가 본받은 '강호연군가' 전후 12곡",
-     "difWhy": "'강호연군가가 본받은 작품' — 수능 심화 문학",
+     "dif": 3,
+     "easiestCue": "조선 명종 때 지어져 『청구영언』에 전하는 연시조입니다",
+     "difWhy": "V009 blind: 묻는 사실: 도산십이곡 — 고교 국어 고전 시가 (경계 4)",
      "wor": 4,
      "worWhy": "고전 시가 대표작 교양",
      "acc": 5,
@@ -131,8 +135,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "섬 은거 중 어부에 빗댄 계절별 40수 연시조",
-     "difWhy": "'계절 40수 어부 연시조' — 고교 문학",
+     "easiestCue": "한 시인이 65세 때인 1651년 가을, 은거하던 섬에 머물며 자신을 한 직업인에 빗대어 지은 연시조입니다",
+     "difWhy": "V009 blind: 묻는 사실: 어부사시사 — 고교 국어 (경계 4)",
      "wor": 5,
      "worWhy": "국어 교과 — 고전 시가",
      "acc": 5,
@@ -215,9 +219,9 @@
     "explanation": "지은이는 율곡 이이로, '석담구곡가'라는 다른 이름으로도 불린다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "엮음: 해주 수양산 은거 조선 중기 학자 + 주자 무이산 시를 본뜬 연시조",
-     "difWhy": "'해주 은거 학자의 구곡가' — 수능 심화 문학",
+     "dif": 3,
+     "easiestCue": "주자가 무이산 계곡의 경치를 노래한 시를 본떠, 은거지의 경치를 관암·화암 등으로 나누어 읊었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 고산구곡가 — 고교 국어 교과 고전 시가(경계 4)",
      "wor": 4,
      "worWhy": "고전 시가 교양 작품",
      "acc": 5,
@@ -238,8 +242,8 @@
      "addedCue": "(작가 이름 없이) 해주 수양산 은거지 · 관암·화암",
      "why": "'율곡 연시조' 교과 단서를 빼고 은거지·구곡 지명으로 좁힘"
     },
-    "generalHint": "모두 10수로, 첫 수가 서시이고 나머지 아홉 수가 굽이마다 하나씩 읊는다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "지은이는 과거에서 아홉 차례 장원급제해 '구도장원공'이라는 별칭을 얻었다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/고산구곡가"
     ],
@@ -272,7 +276,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://ko.wikipedia.org/wiki/고산구곡가"
+     "https://ko.wikipedia.org/wiki/이이"
     ],
     "hintNote": "이이(李珥)가 지은 연시조로, 모두 10수 / 주자의 〈무이구곡〉을 본떠 그곳 경치를 9곡으로 나누어 읊은 작품",
     "easiestCue": "해주 수양산 은거지의 경치를 무이구곡처럼 읊은 연시조",
@@ -305,8 +309,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "단종 폐위 뒤 태인으로 돌아간 문인의 가사",
-     "difWhy": "'정극인 태인 가사' — 고교 문학",
+     "easiestCue": "고향 전북 태인으로 돌아간 문인이, 만년에 그곳의 풍경을 옮긴 79구 4음보의 정형 가사",
+     "difWhy": "V009 blind: 묻는 사실: 정극인의 상춘곡 형식·창작 배경 — 고교 국문학(경계 4)",
      "wor": 5,
      "worWhy": "고교 문학 교과 작품",
      "acc": 5,
@@ -327,8 +331,8 @@
      "addedCue": "79구 4음보 정형 가사(형식 세부)",
      "why": "교과서에서 작품과 함께 외우는 문집 이름을 빼고 형식 세부만 남김"
     },
-    "generalHint": "지은이의 시문집 『불우헌집』에 실려 전하며, '홍진에 묻힌 분네 이내 생애 어떠한고'로 시작한다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "작가는 성종 때인 1472년 후진 양성의 공로로 3품 교관에 올랐다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/상춘곡"
     ],
@@ -353,9 +357,9 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": "knowledge",
+    "hintBasis": "web",
     "hintSources": [
-     "https://ko.wikipedia.org/wiki/상춘곡"
+     "https://ko.wikipedia.org/wiki/정극인"
     ],
     "hintNote": "정극인의 시문집 《불우헌집》에 실려 전해집니다. (첫 구절은 널리 알려진 본문)",
     "easiestCue": "단종 폐위 뒤 태인으로 돌아간 문인의 가사",

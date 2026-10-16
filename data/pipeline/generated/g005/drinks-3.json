@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "가톨릭 수도회 이름을 딴, 공식 로고를 붙이는 맥주 갈래",
-     "difWhy": "수도회 맥주 갈래 — 맥주 애호가",
+     "easiestCue": "국제 협회가 정한 기준을 지킨 양조장만 공식 로고를 붙일 수 있는, 이 가톨릭 수도회의 이름을 딴 맥주의 갈래",
+     "difWhy": "V009 blind: 묻는 사실: 트라피스트 맥주의 ITA 기준 — 맥주 애호가(경계 3)",
      "wor": 3,
      "worWhy": "맥주 이야깃거리",
      "acc": 4,
@@ -124,8 +128,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "보헤미아 도시의 독일어 이름을 딴 미국 맥주, 100건 넘는 소송",
-     "difWhy": "'부드바르 상표 소송' — 맥주 애호가",
+     "easiestCue": "체코어를 쓰는 그 도시 시민들이 세운 국영 양조장과 1907년부터 세계 곳곳에서 100건 넘는 소송을 벌여 온 이 맥주",
+     "difWhy": "V009 blind: 묻는 사실: 버드와이저와 부드바르 상표 분쟁 — 맥주 애호가(경계 3)",
      "wor": 3,
      "worWhy": "유명 맥주 이름 유래",
      "acc": 4,
@@ -146,8 +150,8 @@
      "addedCue": "(새로 넣지 않음) 보헤미아 도시 독일어 이름 · 체코 양조장 소송",
      "why": "회사 이름을 빼 도시 이름(부드바이스)과 상표 분쟁을 알아야 풀리게 함"
     },
-    "generalHint": "보헤미아 맥주가 16세기부터 듣던 '왕들의 맥주'라는 말을 뒤집어 '맥주의 왕'이라는 구호로 삼았다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "체코 양조장은 2013년 1월 기준 124건의 소송 가운데 89건을 이겼다고 밝혔다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Budweiser_trademark_dispute"
     ],
@@ -180,7 +184,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Budweiser"
+     "https://en.wikipedia.org/wiki/Budweiser_trademark_dispute"
     ],
     "hintNote": "called 'The Beer of Kings' since the 16th century ... Adolphus Busch adapted that phrase into 'The King of Beers'",
     "easiestCue": "체코 국영 양조장과 100건 넘는 상표 소송을 벌인 맥주",

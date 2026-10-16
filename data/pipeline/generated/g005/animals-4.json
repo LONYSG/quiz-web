@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "explanation": "아프리카의 다른 종은 달빛의 편광 무늬로 방향을 잡는데, 달빛 편광으로 길을 찾는다고 처음 알려진 동물입니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "은하수로 길을 찾는다고 알려진 유일한 곤충",
-     "difWhy": "은하수로 방향 잡는 곤충 — 대학 교양·과학 뉴스",
+     "dif": 3,
+     "easiestCue": "아프리카의 밤에 활동하는 이 곤충의 한 종은 밝은 별 무리가 보이면 은하수를 보고 방향을 잡는다",
+     "difWhy": "V009 blind: 묻는 사실: 쇠똥구리의 은하수 길 찾기 — 관심 있는 사람이 아는 곤충 상식(경계 4)",
      "wor": 3,
      "worWhy": "동물 행동 이야깃거리",
      "acc": 5,
@@ -51,8 +55,8 @@
      "worWhy": "동물 행동 이야깃거리"
     },
     "rewrite": null,
-    "generalHint": "1965년부터 호주는 소의 배설물이 목초지에 몇 달씩 남아 파리가 꾀자 이 곤충을 외국에서 들여오는 사업을 벌였다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "이 무리 가운데 어떤 수컷은 자기 몸무게의 1,100배가 넘는 무게를 끌 수 있다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Dung_beetle"
     ],
@@ -79,7 +83,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Australian_Dung_Beetle_Project"
+     "https://en.wikipedia.org/wiki/Dung_beetle"
     ],
     "hintNote": "Australian Dung Beetle Project (1965–1985) ... to control the polluting effects of cattle dung ... conceived and led by George Bornemissza",
     "easiestCue": "은하수를 보고 방향을 잡는 곤충",

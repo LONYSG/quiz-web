@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -32,12 +36,12 @@
     ],
     "originalTitleVariants": [],
     "variantCheck": "국민보건서비스 — 한국 언론에서 쓰는 번역 이름(National Health Service). 질문이 표현을 정하지 않으므로 둘 다 인정(B1)",
-    "explanation": "1948년 7월 5일 보건장관 어나이린 베번이 출범시켰고, 치과·안과 진료를 빼면 영국 거주자는 비용을 내지 않습니다.",
+    "explanation": "1948년 7월 5일 보건장관 어나이린 베번이 출범시켰고, 처음 세운 원칙은 포괄적이고 보편적이며 진료받는 시점에 무료라는 것이었습니다.",
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "엮음: 영국의 공공 제도 + 런던 올림픽 개막식",
-     "difWhy": "'영국 공공의료' — 고교 사회",
+     "easiestCue": "이 제도는 2012년 런던 올림픽 개막식에서 대니 보일 감독이 큰 무대로 다루기도 했습니다",
+     "difWhy": "V009 blind: 묻는 사실: NHS 출범 병원·올림픽 개막식 — 관심 있는 사람(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 복지 제도 기본",
      "acc": 4,
@@ -132,9 +136,9 @@
     "explanation": "암으로 죽어 가던 폴란드 출신 유대인 난민 데이비드 타스마는 손더스에게 500파운드를 남기며, 그 돈이 '당신 집의 창문'이 되기를 바랐습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "엮음: 시슬리 손더스 '총체적 고통' + 세인트 크리스토퍼",
-     "difWhy": "'손더스 총체적 고통' — 대학 교양(복지·간호)",
+     "dif": 3,
+     "easiestCue": "시슬리 손더스는 … 1967년 런던 남부에 세운 세인트 크리스토퍼는 이런 시설로는 세계 처음으로 그 목적에 맞춰 지은 곳",
+     "difWhy": "V009 blind: 묻는 사실: 호스피스 운동의 시작 — 고교 교양 (경계 4)",
      "wor": 4,
      "worWhy": "사회 교양 — 기본 어휘",
      "acc": 4,

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "당면이 들어간 요즘 모양은 1919년 황해도 사리원에 당면 공장이 생기면서 시작되었다고 한다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "광해군 때 이충은 궁중 잔치에 이 음식을 바쳐",
-     "difWhy": "'잡채판서 이충' 일화 — 관심 있는 사람",
+     "dif": 4,
+     "easiestCue": "조선 광해군 때 이충은 궁중 잔치에 이 음식을 바쳐 임금의 사랑을 받았습니다",
+     "difWhy": "V009 blind: 묻는 사실: 이충 일화의 잡채 — 음식 유래 애호가 (경계 3: 잡채는 흔한 음식)",
      "wor": 3,
      "worWhy": "이야깃거리 — 음식 일화",
      "acc": 5,
@@ -124,8 +128,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "'알밥젓', 일본 매운 젓갈의 원형",
-     "difWhy": "'알밥젓·일본 매운 젓갈' — 음식 관심층",
+     "easiestCue": "일본에서 이 젓갈에서 비롯된 매운 젓갈을 파는 가장 오래된 회사를 세웠다고 합니다",
+     "difWhy": "V009 blind: 묻는 사실: 명란젓 — 일상·관심 있는 사람 (경계 2~3)",
      "wor": 3,
      "worWhy": "음식 전파 이야깃거리",
      "acc": 5,
@@ -216,8 +220,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "무학대사 간월암 진상 충청도 젓갈",
-     "difWhy": "서산 굴젓 — 관심 있는 사람",
+     "easiestCue": "무학대사가 간월암에서 수행하다가 태조에게 진상했다는 이야기가 전하는 충청도 지방의 젓갈입니다",
+     "difWhy": "V009 blind: 묻는 사실: 어리굴젓의 무학대사 일화 — 한국 음식 관심층 (경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 향토 음식",
      "acc": 5,
@@ -238,8 +242,8 @@
      "addedCue": null,
      "why": "무학대사 간월암 진상 이야기가 문서에 있는 유일한 유래 단서 — 빼면 남는 것은 '생굴 젓갈·충청도'뿐이라 더 쉬워짐"
     },
-    "generalHint": "이 젓갈의 재료는 영양이 풍부해 '바다의 우유'라고도 불린다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "옛 조리서 『시의전서』에 이 젓갈을 담그는 법이 실려 있다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/어리굴젓"
     ],
@@ -266,7 +270,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://ko.wikipedia.org/wiki/굴"
+     "https://ko.wikipedia.org/wiki/어리굴젓"
     ],
     "hintNote": "굴은 영양가가 풍부해 '바다의 우유'라고도 불린다.",
     "easiestCue": "무학대사·간월암 진상 이야기가 전하는 충청도 젓갈",
@@ -298,9 +302,9 @@
     "explanation": "조선 시대에는 쇠고기를 저며 두드려 간장 양념해 숯불에 굽는 궁중식 너비아니로 이어졌다고 본다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "맥적→설야멱으로 이어진 오늘날의 고기 요리",
-     "difWhy": "맥적·설야멱 계보 — 고교 한국사 교양",
+     "dif": 4,
+     "easiestCue": "고구려의 고기구이 '맥적'은 불교의 영향으로 잊혔다가, 고려 말 몽골의 영향으로 고기를 다시 먹게 되면서 '설야멱'으로 되살아났다",
+     "difWhy": "V009 blind: 묻는 사실: 불고기 계보(맥적·설야멱) — 한식 애호가 (경계 3)",
      "wor": 4,
      "worWhy": "음식 역사 교양",
      "acc": 5,
@@ -378,8 +382,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "피란한 선조에게 쑤어 올린 음식, 궁에 돌아와서도 상에 올리게 함",
-     "difWhy": "'선조 피란 수라상 묵' — 관심 있는 사람",
+     "easiestCue": "임진왜란 때 북쪽으로 피란한 선조에게, 먹을 것이 모자라자 마을 사람들이 이것을 쑤어 수라상에 올렸다고 전합니다",
+     "difWhy": "V009 blind: 묻는 사실: 선조 피란과 도토리묵(상수리 유래 일화) — 대중 일화(경계 2)",
      "wor": 3,
      "worWhy": "음식 유래 이야깃거리",
      "acc": 5,
@@ -400,8 +404,8 @@
      "addedCue": null,
      "why": "질문 전체가 '선조 피란 수라상' 한 일화라 빼면 단서가 남지 않고, 해설의 '상수리' 유래도 도토리로 바로 이어짐 — 확인되는 다른 깊은 세부가 없음"
     },
-    "generalHint": "재료 가루를 많은 물에 풀고 물을 여러 번 갈아 떫은 탄닌을 우려낸 뒤 앙금으로 쑨다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "『동의보감』에는 식후에 대변을 자주 보거나 소변이 잦은 사람이 이것을 먹으면 도움이 된다고 적혀 있다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/도토리묵"
     ],

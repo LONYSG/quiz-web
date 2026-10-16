@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -27,17 +31,15 @@
     "pairedWith": null,
     "question": "1923년 9월 빈에서 열린 닷새간의 국제 회의 끝에 출범한 이 기구는, 1938년 오스트리아 병합 뒤 나치 독일의 손에 넘어가 본부가 베를린으로 옮겨지기도 했습니다. 이 국제기구를 흔히 무엇이라 부를까요?",
     "answer": "인터폴",
-    "acceptedAnswers": [
-     "국제형사경찰기구"
-    ],
+    "acceptedAnswers": [],
     "originalTitleVariants": [],
     "variantCheck": "ko.wikipedia '인터폴' → 문서 제목 '국제형사경찰기구'로 넘겨짐 (정식 한국어 이름)",
     "explanation": "체포 권한을 가진 요원을 두지 않으며, 본부는 파리와 생클루를 거쳐 1989년 프랑스 리옹으로 옮겨 왔습니다.",
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "1923년 빈 회의로 출범, 나치가 베를린으로 옮긴 기구",
-     "difWhy": "'1923 빈 출범 기구' — 대학 교양",
+     "easiestCue": "1923년 9월 빈에서 열린 닷새간의 국제 회의 끝에 출범한 이 기구는, 1938년 오스트리아 병합 뒤 나치 독일의 손에 넘어가",
+     "difWhy": "V009 blind: 묻는 사실: 인터폴 출범 · 나치 장악 세부 — 대학 교양 (경계 3)",
      "wor": 4,
      "worWhy": "시사 상식 — 국제기구",
      "acc": 4,
@@ -58,8 +60,8 @@
      "addedCue": "(새로 넣지 않음) 1923 빈 출범 · 1938 나치 장악",
      "why": "'체포권 없는 국제 경찰' 단서를 해설로 옮기고 설립·나치 시기 내력으로 좁힘(해설의 정답 되풀이도 뺌)"
     },
-    "generalHint": "이 기구가 내는 수배서는 여러 빛깔로 나뉘며, 그 가운데 '적색'은 범죄인 인도를 위한 체포 요청이다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "1956년 새 헌장을 채택해 지금의 이름을 쓰기 시작했고, 헌장 3조는 정치·군사·종교·인종 성격의 활동을 엄격히 금지한다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Interpol"
     ],
@@ -92,7 +94,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Interpol_notice"
+     "https://en.wikipedia.org/wiki/Interpol"
     ],
     "hintNote": "seven of which are colour-coded by their function / Red Notice: To seek the location/arrest of a person wanted ... with a view to extradition",
     "easiestCue": "1923년 빈에서 출범해 1938년 나치에 넘어간 국제기구",
@@ -127,8 +129,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "덴마크 부결 뒤 에든버러 합의로 받아들인 조약",
-     "difWhy": "'덴마크 부결·에든버러 합의' — 대학 교양 국제정치",
+     "easiestCue": "덴마크 국민은 한 조약을 국민투표에서 50.7%의 반대로 부결시켰습니다. 그 뒤 덴마크는 에든버러 합의로 네 분야에서 빠질 수 있는 예외를 얻어",
+     "difWhy": "V009 blind: 묻는 사실: 덴마크 국민투표와 에든버러 합의 — 유럽 통합사 심화, 쉬운 단서 없음(경계 3)",
      "wor": 4,
      "worWhy": "EU 기초 조약 — 시사 교양",
      "acc": 4,

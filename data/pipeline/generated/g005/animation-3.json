@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "마을이 어느 주에 있는지 끝내 밝히지 않는 것이 작품의 단골 농담입니다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "'심슨 가족'의 마을 이름",
-     "difWhy": "'심슨 가족 마을' — 방송에서 흔히",
+     "dif": 3,
+     "easiestCue": "그 이름을 '심슨 가족'의 마을 이름으로 가져왔습니다",
+     "difWhy": "V009 blind: 묻는 사실: 심슨 가족의 마을 스프링필드 이름 유래 — 관심 있는 사람이 아는 애니(경계 2)",
      "wor": 3,
      "worWhy": "대중 작품 설정 이야깃거리",
      "acc": 4,
@@ -56,8 +60,8 @@
      "addedCue": null,
      "why": "'심슨 가족의 마을 이름' 이 묻는 대상 자체라 빼면 대상이 사라짐 — 고치지 않음"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "마을을 세운 인물은 사실 신분을 숨긴 해적이었다는 설정이 있다.",
+    "generalHintVersion": "hint-v5",
     "layer": "팬 세부",
     "genre": "애니",
     "work": "심슨 가족",
@@ -85,8 +89,10 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Springfield_(The_Simpsons)"
+    ],
     "hintNote": null,
     "easiestCue": "심슨 가족이 사는 마을",
     "targetWhy": "심슨 팬이면 아는 마을 — 관심층 3, 이름 유래는 애호가",
@@ -117,9 +123,9 @@
     "explanation": "악당 조직 M.A.D.의 계획을 실제로 막아 내는 것은 주인공이 아니라 그의 조카 페니와 개 브레인입니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "1983년 DIC, 주인공 목소리 돈 애덤스",
-     "difWhy": "'DIC·돈 애덤스 1983 애니' — 애니 애호가",
+     "dif": 3,
+     "easiestCue": "주인공의 차림과 덜렁대는 성격은 '핑크 팬더'의 클루조 경감을 닮았다는 평을 듣습니다",
+     "difWhy": "V009 blind: 묻는 사실: 형사 가제트의 성우·모델 — 방송에서 흔히(경계 4)",
      "wor": 3,
      "worWhy": "대중적 애니 제목 맞히기",
      "acc": 4,

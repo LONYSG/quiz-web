@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 2,
-     "easiestCue": "신호등 '가도 좋다' 불빛을 초록이 아닌 다른 색 이름으로 부른다",
-     "difWhy": "초록불을 다른 색으로 부름 — 일상(한국도 파란불)",
+     "easiestCue": "일본에서는 신호등의 '가도 좋다' 불빛을 말로는 초록이 아닌 다른 색 이름으로 부릅니다",
+     "difWhy": "V009 blind: 묻는 사실: 일본 신호등 초록을 파랑(아오)이라 부름 — 한국도 파란불이라 일상 지식(경계 3)",
      "wor": 3,
      "worWhy": "언어·문화 이야깃거리",
      "acc": 5,
@@ -124,8 +128,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "1967년 '다겐 H'에 좌측→우측 통행으로 바꾼 나라",
-     "difWhy": "'다겐 H 통행 전환' — 애호가",
+     "easiestCue": "1967년 9월 3일 새벽 '다겐 H'에 자동차 통행을 왼쪽에서 오른쪽으로 바꾼 이 나라",
+     "difWhy": "V009 blind: 묻는 사실: 스웨덴 통행 방향 전환 — 상식 트리비아(경계 3)",
      "wor": 3,
      "worWhy": "교통 제도 이야깃거리",
      "acc": 5,
@@ -139,8 +143,8 @@
      "worWhy": "교통 제도 이야깃거리"
     },
     "rewrite": null,
-    "generalHint": "질문 속 이웃 나라에는 이 나라와 땅으로 맞닿은 노르웨이와 핀란드가 들어 있다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "전환을 앞두고 약 35만 개의 도로 표지판을 떼어 내거나 바꿔야 했다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Dagen_H"
     ],

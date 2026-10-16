@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "explanation": "결승이 끝난 뒤 독일의 멀리뛰기 선수 루츠 롱과 함께 사진을 찍고 팔짱을 낀 채 탈의실로 걸어갔습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "'J. C.'를 잘못 알아들어 굳은 이름, 말과 달리기 시합",
-     "difWhy": "'J.C.→이름·말과 경주' — 육상 애호가",
+     "dif": 3,
+     "easiestCue": "어릴 적 'J. C.'라고 말한 것을 새 선생님이 남부 억양 때문에 다르게 알아들은 데서 굳어졌습니다",
+     "difWhy": "V009 blind: 묻는 사실: 제시 오언스의 이름 유래 — 육상 대중 인물 (경계 2)",
      "wor": 3,
      "worWhy": "전설적 선수 일화",
      "acc": 4,
@@ -58,8 +62,8 @@
      "addedCue": "'J. C.'가 이름이 된 경위 + 말과의 달리기 시합",
      "why": "베를린 올림픽 대표 일화(루츠 롱)를 해설로 옮기고 이름 유래·은퇴 뒤 세부로 바꿈"
     },
-    "generalHint": "1935년 5월 미시간주 앤아버 대회에서 그는 45분 사이에 세계 기록 5개를 세우고 1개는 타이를 이뤘다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "1976년 대통령 자유 훈장을 받았고, 1990년에는 사후에 의회 금메달도 받았다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Luz_Long",
      "https://en.wikipedia.org/wiki/Jesse_Owens"
@@ -121,9 +125,9 @@
     "explanation": "1989년 11월 27일 밤 헝가리와 오스트리아를 거쳐 미국으로 망명했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "벨라 카롤리가 뽑은 체조 선수, 바트 코너와 결혼",
-     "difWhy": "'카롤리 제자·코너와 결혼' — 체조 애호가",
+     "dif": 3,
+     "easiestCue": "1996년 부쿠레슈티에서 미국 체조 선수 출신 바트 코너와 결혼한 이 선수",
+     "difWhy": "V009 blind: 묻는 사실: 나디아 코마네치 — 스포츠 상식 (경계 4)",
      "wor": 3,
      "worWhy": "전설적 선수 이야기",
      "acc": 4,
@@ -225,9 +229,9 @@
     "explanation": "어린 시절 그는 축구도 즐겨 레알 마드리드와 맨체스터 유나이티드를 좋아했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "자메이카 출신 단거리 육상 선수",
-     "difWhy": "'자메이카 단거리 선수' — 방송·뉴스",
+     "dif": 3,
+     "easiestCue": "이 육상 선수가 처음 빠진 운동은 크리켓이었고, … 윌리엄 니브 기념 고등학교 시절 크리켓 코치가 그의 빠른 발을 눈여겨보고 육상을 권한",
+     "difWhy": "V009 blind: 묻는 사실: 우사인 볼트의 어린 시절 — 세계적 스타, 자메이카 단거리가 곧 단서(경계 2)",
      "wor": 3,
      "worWhy": "유명 선수 유년 이야기",
      "acc": 4,
@@ -248,8 +252,8 @@
      "addedCue": "고향 셔우드 콘텐트 · 고교 크리켓 코치가 육상을 권함",
      "why": "뉴스로 흔한 계주 금 박탈을 빼고 어린 시절 세부 둘을 엮음"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "그는 2002년 자국 킹스턴에서 열린 세계주니어선수권 200m에서 우승해 역대 최연소 세계주니어 금메달리스트가 되었다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Usain_Bolt"
     ],
@@ -280,9 +284,11 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Usain_Bolt"
+    ],
+    "hintNote": "\"were held in front of a home crowd in Kingston, Jamaica.\" · \"He won the 200 m in a time of 20.61 s\" · \"Bolt's 200 m win made him the youngest world-junior gold medallist ever.\"",
     "easiestCue": "크리켓 코치가 빠른 발을 보고 육상을 권한 자메이카 선수",
     "targetWhy": "성장기 일화는 육상 애호가 수준 — 4(자메이카 스타라 짐작될 여지는 남음)",
     "selfJudge": "경계",
@@ -314,9 +320,9 @@
     "explanation": "이 영화의 가장 큰 혁신으로는 수중 카메라를 쓴 것이 꼽힙니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "올림픽 기록영화 '올림피아'의 감독",
-     "difWhy": "'올림피아' 감독 — 대학 교양·영화 애호가",
+     "dif": 3,
+     "easiestCue": "올림픽 기록영화 '올림피아'는 1938년 4월 20일 아돌프 히틀러의 49번째 생일에 개봉했습니다. 이 영화를 각본·연출·제작한 감독",
+     "difWhy": "V009 blind: 묻는 사실: '올림피아'의 감독 리펜슈탈 — 영화사 교양(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 나치 선전 영화사",
      "acc": 4,

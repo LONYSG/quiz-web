@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "1913년 밀라노 가죽 가게, 손녀가 물려받음",
-     "difWhy": "'1913 밀라노 가죽 브랜드' — 패션 애호가",
+     "easiestCue": "1919년 이탈리아 왕실 공식 납품업체가 되어, 사보이 왕가의 문장과 매듭 끈 무늬를 로고에 넣었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 프라다의 초기 역사·로고 — 애호가 (경계 3)",
      "wor": 3,
      "worWhy": "명품 브랜드 기원",
      "acc": 4,

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -28,7 +32,9 @@
     "question": "1982년 프로야구 원년, 이 구단은 여섯 구단 가운데 가장 적은 15명의 선수로 출발했습니다. 그해 한 선수는 투수와 타자를 함께 맡아 10승과 타점왕을 함께 거두기도 했습니다. 이 구단은 어디일까요?",
     "answer": "해태 타이거즈",
     "acceptedAnswers": [
-     "해태"
+     "해태",
+     "KIA 타이거즈",
+     "기아 타이거즈"
     ],
     "originalTitleVariants": [],
     "variantCheck": null,
@@ -36,8 +42,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "원년 가장 적은 15명으로 출발, 투수·타자 겸업 10승·타점왕",
-     "difWhy": "원년 15명·김성한 — KBO 애호가",
+     "easiestCue": "그해 한 선수는 투수와 타자를 함께 맡아 10승과 타점왕을 함께 거두기도 했습니다",
+     "difWhy": "V009 blind: 묻는 사실: 원년 해태 · 김성한 투타 겸업 — KBO 애호가 (경계 3)",
      "wor": 3,
      "worWhy": "프로야구 원년 이야깃거리",
      "acc": 4,
@@ -103,7 +109,7 @@
     "ok": true,
     "mode": "나",
     "pairedWith": null,
-    "question": "KBO 리그 최초의 영구 결번은 1986년 세상을 떠난 포수 김영신의 54번으로, 그가 뛰던 구단이 정했습니다. 이 구단은 1982년부터 1984년까지 대전을 연고로 했다가 1985년 서울로 옮겼습니다. 이 구단의 창단 때 이름은 무엇일까요?",
+    "question": "1986년 세상을 떠난 포수 김영신의 등번호 54번을 영구 결번으로 정한 구단입니다. 이 구단은 1982년부터 1984년까지 대전을 연고로 했다가 1985년 서울로 옮겼습니다. 이 구단의 창단 때 이름은 무엇일까요?",
     "answer": "OB 베어스",
     "acceptedAnswers": [
      "OB"
@@ -113,9 +119,9 @@
     "explanation": "1999년 구단 이름이 두산 베어스로 바뀌었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "1982~84 대전 연고, 1985년 서울로 옮긴 구단의 창단 이름",
-     "difWhy": "대전→서울 이전 구단 — KBO 애호가",
+     "dif": 3,
+     "easiestCue": "이 구단은 1982년부터 1984년까지 대전을 연고로 했다가 1985년 서울로 옮겼습니다",
+     "difWhy": "V009 blind: 묻는 사실: OB 베어스의 대전 연고 시절 — 프로야구 팬이 아는 상식(경계 4)",
      "wor": 3,
      "worWhy": "프로야구 원년 이야깃거리",
      "acc": 4,
@@ -129,8 +135,8 @@
      "worWhy": "프로야구 원년 이야깃거리"
     },
     "rewrite": null,
-    "generalHint": "창단 첫해 한국시리즈에서 삼성 라이온즈를 4승 1무 1패로 꺾고 원년 우승을 차지했다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "창단 감독은 김영덕이었고, 첫 경기는 MBC 청룡을 상대로 치렀다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/김영신_(야구_선수)",
      "https://ko.wikipedia.org/wiki/두산_베어스"
@@ -158,6 +164,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
+     "https://ko.wikipedia.org/wiki/김영신_(야구인)",
      "https://ko.wikipedia.org/wiki/두산_베어스"
     ],
     "hintNote": "1982년 한국시리즈에서 삼성 라이온즈를 4승 1무 1패로 꺾고 원년우승을 차지한다.",
@@ -193,8 +200,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "2008년 3월 발파로 철거된 야구장",
-     "difWhy": "'2008년 철거된 서울 야구장' — 야구 관심층",
+     "easiestCue": "갓 출범한 한국 프로야구의 첫 시즌 개막전이 이 야구장에서 열려 … 2008년 3월 발파로 완전히 철거된",
+     "difWhy": "V009 blind: 묻는 사실: 프로야구 개막전 구장 동대문야구장 — 야구 관심층(경계 2)",
      "wor": 3,
      "worWhy": "프로야구 출범 이야깃거리",
      "acc": 4,
@@ -289,9 +296,9 @@
     "explanation": "부상을 끊임없이 이겨 내고 재기해 '불사조'라는 별명을 얻었고, 등번호 21번은 2002년 두산 베어스의 영구 결번이 되었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "엮음: 밀워키 마이너 계약 + 광고 촬영 중 아킬레스건 부상",
-     "difWhy": "'밀워키 마이너·아킬레스' — 야구 애호가",
+     "dif": 3,
+     "easiestCue": "1988년에는 광고 촬영 중 아킬레스건이 끊어지기도 한 이 투수",
+     "difWhy": "V009 blind: 묻는 사실: 박철순의 미국 마이너 진출과 부상 — 관심 있는 야구 팬(경계 4)",
      "wor": 3,
      "worWhy": "레전드 선수 이름 맞히기",
      "acc": 4,
@@ -305,8 +312,8 @@
      "worWhy": "레전드 선수 이름 맞히기"
     },
     "rewrite": null,
-    "generalHint": "그는 프로야구 원년인 1982년에 22연승을 거두며 정규 시즌 MVP에 올랐다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "연세대 법학과에 입학했고, 1982년 OB 베어스에 1순위로 입단했다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/박철순"
     ],
@@ -371,9 +378,9 @@
     "explanation": "2012년 3월 31일 은퇴를 선언했고, '바람의 아들'이라는 별명으로 불렸습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "1998~2001년 주니치 드래건스, 팔꿈치 골절",
-     "difWhy": "'주니치 1998~2001' — 야구 애호가",
+     "dif": 3,
+     "easiestCue": "광주제일고와 건국대를 나온 이 선수",
+     "difWhy": "V009 blind: 묻는 사실: 이종범의 주니치 시절 일화 — 관심 있는 사람",
      "wor": 3,
      "worWhy": "유명 선수 이름 맞히기",
      "acc": 4,
@@ -387,8 +394,8 @@
      "worWhy": "유명 선수 이름 맞히기"
     },
     "rewrite": null,
-    "generalHint": "그는 1994년 한 시즌 도루 84개로 역대 시즌 최다 기록을 세웠다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "그는 해태에 입단한 1993년에 한국시리즈 MVP를 받았다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/이종범"
     ],

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,9 +40,9 @@
     "explanation": "에리크 로메르의 1986년 영화에서는 주인공이 마지막 장면에서 이 현상을 직접 봅니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "쥘 베른 1882년 소설 + 일몰 순간 초록빛",
-     "difWhy": "녹색 광선 현상 — 대학 교양(대기광학)",
+     "dif": 3,
+     "easiestCue": "쥘 베른의 1882년 소설로 널리 알려졌고, 영화 캐리비안의 해적: 세상의 끝에서는 죽은 영혼이 돌아왔다는 신호로 나옵니다",
+     "difWhy": "V009 blind: 묻는 사실: 녹색 섬광 — 대중 단서 (경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 대기 현상",
      "acc": 5,

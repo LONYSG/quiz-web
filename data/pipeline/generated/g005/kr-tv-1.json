@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "'삼바의 매력' 은상 · 'My Way' 금상 무한도전 가요제",
-     "difWhy": "'삼바의 매력·My Way 가요제' — 무한도전 애호가",
+     "easiestCue": "'무한도전' 가요제에서 유재석은 '삼바의 매력'으로 은상을, 정준하는 'My Way'로 금상을 받았습니다",
+     "difWhy": "V009 blind: 묻는 사실: 강변북로 가요제의 수상 — 애호가 (calib 4)",
      "wor": 2,
      "worWhy": "레전드 예능의 팬 세부(가요제 이름)",
      "acc": 5,
@@ -116,9 +120,9 @@
     "explanation": "방송에서 이 음료를 처음 한 번에 들이켠 사람은 MC몽이었다고 전합니다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "'1박 2일' 복불복 액젓 커피 벌칙",
-     "difWhy": "'1박 2일 액젓 벌칙' — 방송에서 흔히",
+     "dif": 3,
+     "easiestCue": "색이 커피와 비슷하다고 해서 커피 이름을 붙여 부른 이 벌칙 음료",
+     "difWhy": "V009 blind: 묻는 사실: 1박 2일의 까나리카노 — 국민 밈, 단서가 곧 대상 (경계 2)",
      "wor": 2,
      "worWhy": "예능 팬 용어",
      "acc": 5,
@@ -139,8 +143,8 @@
      "addedCue": null,
      "why": "묻는 것 자체가 '1박 2일' 액젓 벌칙의 이름이라 그 단서를 빼면 대상을 가리킬 수 없음 — 국민 밈에 가까운 팬 세부(층 표시 문제)"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "시즌 4 초반에는 딘딘이 한 잔을 모두 마시고 1,000원을 받아 화제가 됐다.",
+    "generalHintVersion": "hint-v5",
     "layer": "팬 세부",
     "genre": "예능",
     "work": "1박 2일",
@@ -161,8 +165,12 @@
       "note": "최초의 원샷은 MC몽이다."
      }
     ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
+    "knowledgeClaims": [
+     "1박 2일 복불복의 액젓 벌칙 음료를 커피 색에 빗대 '까나리카노'라 부름",
+     "방송에서 처음 한 번에 들이켠 사람은 MC몽",
+     "시즌 4 초반 딘딘이 한 잔을 모두 마시고 1,000원을 받음"
+    ],
+    "hintBasis": "knowledge",
     "hintSources": [],
     "hintNote": null,
     "easiestCue": "1박 2일 복불복의 커피색 액젓 음료",
@@ -195,8 +203,8 @@
     "score": {
      "version": "score-v2",
      "dif": 2,
-     "easiestCue": "허참 '몇 대 몇~!', '고요 속의 외침'",
-     "difWhy": "장수 예능 — 방송에서 흔히",
+     "easiestCue": "허참이 첫 회부터 마지막 회까지 진행하며 점수를 공개하기 전 '몇 대 몇~!'을 외쳤습니다",
+     "difWhy": "V009 blind: 묻는 사실: 가족오락관 — 방송에서 흔히 (허참 · 몇 대 몇)",
      "wor": 3,
      "worWhy": "누구나 아는 프로그램 이름",
      "acc": 5,
@@ -246,7 +254,9 @@
       "note": "허참과 함께 진행한 여성 MC는 총 21명 … KBS 출신 여자 아나운서는 11명"
      }
     ],
-    "knowledgeClaims": [],
+    "knowledgeClaims": [
+     "'고요 속의 외침'은 소리 질러 단어를 전하는 게임이며 이 프로그램의 대표 게임이었다"
+    ],
     "hintBasis": null,
     "hintSources": [],
     "hintNote": null,
@@ -282,9 +292,9 @@
     "explanation": "8대 메뉴는 아이유가 만든 '아이유식'이었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "해피투게더 시즌 3 코너, 1대 메뉴 장스밥",
-     "difWhy": "'해피투게더 메뉴 코너' — 방송 흔히",
+     "dif": 4,
+     "easiestCue": "2012년 6월 28일 처음 선보인 코너로, 패널 7명 가운데 4명 이상이 인정해야 메뉴에 올랐고 1대 메뉴는 장동민의 '장스밥'",
+     "difWhy": "V009 blind: 묻는 사실: 해피투게더 야간매점의 규칙·1대 메뉴 — 예능 팬 세부, 쉬운 단서 없음(경계 3)",
      "wor": 2,
      "worWhy": "예능 코너 이름 — 팬 세부",
      "acc": 5,
@@ -305,8 +315,8 @@
      "addedCue": "1대 메뉴 장동민의 '장스밥'",
      "why": "코너 정체(스타 요리 시식)를 빼고 팬 세부(1대 메뉴)로 바꿈 — '메뉴' 낱말은 남아 경계"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "역대 메뉴 순위는 82대까지 이어졌고, 마지막은 레이먼 킴의 '촉촉하지우'였다.",
+    "generalHintVersion": "hint-v5",
     "layer": "팬 세부",
     "genre": "예능",
     "work": "해피투게더",
@@ -340,8 +350,10 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/해피투게더_(텔레비전_프로그램)"
+    ],
     "hintNote": null,
     "easiestCue": "'해피투게더' 시즌 3, 메뉴에 올리는 코너",
     "targetWhy": "1대 메뉴 장스밥은 예능 애호가 세부지만 '메뉴' 로 풀릴 여지 — 경계 3~4",

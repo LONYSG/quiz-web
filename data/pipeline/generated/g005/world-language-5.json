@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -95,7 +99,8 @@
     "selfJudgeWhy": "'느낌을 가리키는 프랑스어'라는 범주로 데자뷔를 찍을 여지가 있음 — 범주 단서 2회차 의심",
     "pairCheck": "1회차(#4004)는 정의와 '이미 보았다' 뜻, 해설은 자메뷔 — 부아라크·측두엽 뇌전증은 1회차에 없다",
     "dbCheck": "pair-or-different — #4004 와 같은 답, (가) 2회차",
-    "warn": []
+    "warn": [],
+    "discarded": "V009 drop — 2회차 질문이 '프랑스어로 된 한 느낌' 이라는 범주 단서만으로도 1회차 정답 데자뷔로 풀려 새 사실(1876 부아라크·측두엽 뇌전증)이 꾸밈에 그침 → 3-3·CV-10 drop"
    }
   },
   {
@@ -118,9 +123,9 @@
     "explanation": "괴테는 몸의 눈이 아니라 마음의 눈으로 자기 모습이 자기를 향해 다가오는 것을 보았다고 썼습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 5,
-     "easiestCue": "장 파울이 1796년 '지벤케스'에서 처음 지어 쓴 독일어 낱말",
-     "difWhy": "'장 파울 지벤케스 조어' — 독문학 전공",
+     "dif": 4,
+     "easiestCue": "독일 작가 장 파울이 1796년 소설 지벤케스에서 두 인물 지벤케스와 라이프게버를 가리키려고 처음 지어 쓴 것으로 알려진 독일어 낱말",
+     "difWhy": "V009 blind: 묻는 사실: 도플갱어 어원(장 파울) — 대학 교양 (경계 3)",
      "wor": 4,
      "worWhy": "교양 어휘 유래",
      "acc": 3,
@@ -141,8 +146,8 @@
      "addedCue": "장 파울이 지벤케스와 라이프게버 두 인물을 가리키려고 지은 낱말",
      "why": "'자기의 ○○를 만났다' 는 낱말 뜻을 풀어 주는 일상 수준 단서라 빼고, 낱말의 기원 세부만으로 묻게 함"
     },
-    "generalHint": "에드거 앨런 포의 단편 '윌리엄 윌슨'에서 주인공은 이름·생김새·생일까지 같은 학교 친구에게 시달린다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "프로이트는 논문 「두려운 낯섦」(1919)에서 이 말이 가리키는 존재를 어린 시절 자기애에서 비롯한 관념으로 풀이했다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Doppelg%C3%A4nger"
     ],
@@ -169,7 +174,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/William_Wilson_(short_story)"
+     "https://en.wikipedia.org/wiki/Doppelg%C3%A4nger"
     ],
     "hintNote": "with the same name and roughly the same appearance ... even born on the same date ... The tale features a doppelgänger.",
     "easiestCue": "장 파울 '지벤케스'에서 처음 쓰인 독일어 낱말",
@@ -201,9 +206,9 @@
     "explanation": "이 조치는 1년 동안만이었고, 이듬해 로잔 회의에서 영국과 프랑스가 독일의 배상 의무를 사실상 거두어들였습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "후버 대통령 이름 뒤에 붙은 배상금 조치 외래어",
-     "difWhy": "후버 모라토리엄 — 대학 교양(세계사)",
+     "dif": 3,
+     "easiestCue": "1931년 6월 20일 미국의 후버 대통령은 … 독일이 갚아야 하던 배상금을 두고 한 가지 조치를 제안했습니다 … 이 외래어",
+     "difWhy": "V009 blind: 묻는 사실: 후버 모라토리엄 — 고교 세계사 대공황과 경제 상식어(경계 4)",
      "wor": 4,
      "worWhy": "시사 상식 — 경제 외래어",
      "acc": 3,

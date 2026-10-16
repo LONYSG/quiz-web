@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "정작 악보에 적힌 빠르기말은 '라르게토'이며, 본래 소프라노 카스트라토가 부르도록 쓰인 곡이다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "'헨델의 ○○○'로 불리는 '옴브라 마이 푸'",
-     "difWhy": "'헨델의 라르고' — 대학 교양 음악",
+     "dif": 3,
+     "easiestCue": "이 아리아는 흔히 '헨델의 ○○○'라는 이름으로 불리는데",
+     "difWhy": "V009 blind: 묻는 사실: 헨델의 라르고라는 별칭 — 고교 음악 감상곡(경계 4)",
      "wor": 3,
      "worWhy": "유명 곡 별칭 이야깃거리",
      "acc": 4,

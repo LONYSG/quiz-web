@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "'월레스와 그로밋' 양 떼의 막내 어린 양",
-     "difWhy": "'월레스와 그로밋의 어린 양' — 애니 관심층",
+     "easiestCue": "월레스와 그로밋의 세 번째 단편 'A Close Shave'에서, 양 떼의 막내인 이 어린 양",
+     "difWhy": "V009 blind: 묻는 사실: 월레스와 그로밋 세 번째 단편의 어린 양 숀 — 대중 애니 캐릭터(경계 4)",
      "wor": 3,
      "worWhy": "유명 캐릭터 이름 맞히기",
      "acc": 4,
@@ -58,8 +62,8 @@
      "addedCue": "'A Close Shave' 속 양 떼의 막내·자기 털 스웨터·개 사료 위기",
      "why": "TV 시리즈 주인공이라는 방송 수준 단서를 빼고, 첫 등장 단편의 줄거리 세부만으로 묻게 함"
     },
-    "generalHint": "이 양은 2007년 3월 영국 CBBC에서 시작한 스핀오프 시리즈의 주인공이 되었다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "대사가 없는 이 양의 소리는 배우 저스틴 플레처가 맡는다.",
+    "generalHintVersion": "hint-v5",
     "layer": "팬 세부",
     "genre": "애니",
     "work": "월레스와 그로밋 · 숀더쉽",

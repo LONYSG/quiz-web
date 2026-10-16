@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "납치된 아이 이름을 붙인 긴급 경보, 한국 2007년 시행",
-     "difWhy": "'아이 이름 붙인 실종 경보' — 관심 있는 사람",
+     "easiestCue": "이 일을 계기로 그 아이 이름을 붙인 긴급 경보 체계가 생겼고",
+     "difWhy": "V009 blind: 묻는 사실: 앰버 경고 — 뉴스·재난 문자로 접하는 상식(경계 2)",
      "wor": 4,
      "worWhy": "시사 상식 — 실종 아동 경보 제도",
      "acc": 5,

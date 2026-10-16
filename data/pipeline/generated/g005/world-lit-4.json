@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "바보 광대는 원전인 옛 극에 없던 인물로, 셰익스피어가 새로 만들어 넣었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "바보 광대가 나오는 셰익스피어 비극",
-     "difWhy": "'바보 광대 나오는 비극' — 대학 교양 문학",
+     "dif": 3,
+     "easiestCue": "바보 광대를 아예 빼고 주인공들이 살아남는 행복한 결말을 붙였습니다",
+     "difWhy": "V009 blind: 묻는 사실: 리어왕의 테이트 개작 — 고교 국어·세계문학 (경계 4)",
      "wor": 4,
      "worWhy": "교양 — 4대 비극",
      "acc": 4,
@@ -49,8 +53,8 @@
      "worWhy": "교양 — 4대 비극"
     },
     "rewrite": null,
-    "generalHint": "테이트의 판에서 주인공은 왕관을 되찾고, 막내딸 코딜리아는 에드거와 맺어진다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "원작이 처음 상연된 기록은 1606년 12월 26일, 제임스 1세 앞에서 열린 궁정 공연이다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/King_Lear"
     ],
@@ -77,7 +81,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/The_History_of_King_Lear"
+     "https://en.wikipedia.org/wiki/King_Lear"
     ],
     "hintNote": "Lear recovers his crown ... \"Cordelia shall be Queen.\" He then gives Cordelia to Edgar",
     "easiestCue": "바보 광대가 나오는 셰익스피어 비극",
@@ -109,9 +113,9 @@
     "explanation": "열두 편으로 시작한 시집은 시인이 세상을 떠난 1892년의 '임종판'에서 400편 가까이로 불어났습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "에머슨 편지 + 1855년 미국 시인의 시집",
-     "difWhy": "휘트먼 대표 시집 — 대학 교양(미국 문학)",
+     "dif": 3,
+     "easiestCue": "1855년 7월 4일, 한 미국 시인이 활자 조판까지 상당 부분 직접 하며 이 시집을 펴냈습니다",
+     "difWhy": "V009 blind: 묻는 사실: 휘트먼 『풀잎』 초판 — 세계문학 관심층 (경계 4)",
      "wor": 4,
      "worWhy": "교양 — 세계문학 대표작",
      "acc": 4,

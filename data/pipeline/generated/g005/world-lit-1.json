@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "출간 직후 신성 모독과 선동을 이유로 곳곳에서 금서가 되었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "가정교사 팡글로스 + 리스본 대지진",
-     "difWhy": "볼테르 풍자소설 — 대학 교양(세계문학)",
+     "dif": 3,
+     "easiestCue": "주인공의 가정교사 팡글로스가 그 와중에 목매달립니다",
+     "difWhy": "V009 blind: 묻는 사실: 캉디드의 팡글로스·리스본 지진 — 관심 있는 사람(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 세계문학 대표작",
      "acc": 4,
@@ -49,8 +53,8 @@
      "worWhy": "교양 — 세계문학 대표작"
     },
     "rewrite": null,
-    "generalHint": "1759년 초판 제목에는 '낙관주의'라는 부제가 붙었고, 소설은 '우리는 우리의 밭을 가꾸어야 한다'는 말로 끝난다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "초판 표지에는 '낙관주의'라는 부제가 붙었고, 결말에서 주인공은 '우리는 우리의 밭을 가꾸어야 한다'고 말한다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Candide"
     ],
@@ -88,9 +92,7 @@
     ],
     "knowledgeClaims": [],
     "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Candide"
-    ],
+    "hintSources": [],
     "hintNote": "The 1759 title page reads \"Candide, or Optimism, translated from the German of Dr. Ralph.\" / we must cultivate our garden",
     "easiestCue": "가정교사 팡글로스가 나오는 소설",
     "targetWhy": "작가 이름(볼테르) · '모든 것은 최선' · '밭을 가꾸어야' 결말 같은 교과 단서를 빼고 리스본 화형식 · 팡글로스 · 랄프 박사 필명만 남김 — 대학 교양 프랑스 문학이라 4",

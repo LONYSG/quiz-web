@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "explanation": "수선화속 식물에서 처음 밝혀진 알칼로이드는 리코린으로, 잘못 먹으면 독이 될 수 있습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "웨일스의 나라꽃, 성 데이비드의 날",
-     "difWhy": "'웨일스 나라꽃' — 대학 교양 수준 세부",
+     "dif": 3,
+     "easiestCue": "영국 웨일스의 나라꽃으로, 3월 1일 성 데이비드의 날과 이어져 있습니다",
+     "difWhy": "V009 blind: 묻는 사실: 웨일스 나라꽃 수선화 — 관심 있는 사람 (경계 4)",
      "wor": 3,
      "worWhy": "꽃 이야깃거리 — 나라꽃·갈란타민",
      "acc": 5,
@@ -51,8 +55,8 @@
      "worWhy": "꽃 이야깃거리 — 나라꽃·갈란타민"
     },
     "rewrite": null,
-    "generalHint": "윌리엄 워즈워스는 영국 호수 지방 얼스워터 호숫가에 무리 지어 핀 이 꽃을 보고 시를 지었다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "학명은 그리스어로 '마비'를 뜻하는 낱말과 이어진다는 설이 있다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Narcissus_(plant)"
     ],
@@ -79,7 +83,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/I_Wandered_Lonely_as_a_Cloud"
+     "https://en.wikipedia.org/wiki/Narcissus_(plant)"
     ],
     "hintNote": "The poem's flowers are daffodils ... The inspiration came from a walk near Glencoyne Bay on Ullswater, in England's Lake District.",
     "easiestCue": "웨일스의 나라꽃",

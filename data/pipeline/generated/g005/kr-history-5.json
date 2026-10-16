@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "1979년 성산대로를 낼 때 70m쯤 옮겨진 서울 건축물",
-     "difWhy": "'심의석 감독·성산대로 이전' — 한국사 애호가",
+     "easiestCue": "조선인 기술자 심의석이 공사를 감독한 이 건축물은, 1979년 성산대로를 낼 때 해체되어 원래 자리에서 70m쯤 옮겨졌습니다",
+     "difWhy": "V009 blind: 묻는 사실: 독립문의 감독자·1979 이전 — 건축물 이름은 교과서에 흔하나 단서는 교과 밖 세부(경계 3)",
      "wor": 4,
      "worWhy": "한국사 대표 건축물",
      "acc": 5,
@@ -118,9 +122,9 @@
     "explanation": "1897년 고종은 이곳에서 천지에 제사를 올린 뒤 황제에 즉위했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "남별궁 터의 3층 단, 철도호텔 짓느라 헐림",
-     "difWhy": "'남별궁 터·철도호텔' — 대학 교양 한국사",
+     "dif": 3,
+     "easiestCue": "중국 사신이 머물던 남별궁 터에 쌓은 3층 화강암 단으로, 일제강점기 초에 총독부 철도호텔을 짓는다며 헐렸습니다",
+     "difWhy": "V009 blind: 묻는 사실: 환구단 터의 철도호텔·돌북 — 고교 한국사 대한제국(경계 4)",
      "wor": 4,
      "worWhy": "대한제국 상징 유적",
      "acc": 5,
@@ -208,8 +212,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "외국 해군 철수 요구, 숨진 수병 무덤이 그곳에 남은 일",
-     "difWhy": "'묄렌도르프·수병 무덤' — 수능 심화 한국사",
+     "easiestCue": "그 해군이 머무는 동안 숨진 수병의 무덤이 지금도 그곳에 남아 있는데",
+     "difWhy": "V009 blind: 묻는 사실: 거문도 사건의 청 군함 철수 요구와 수병 무덤 — 한국사 심화(경계 3)",
      "wor": 5,
      "worWhy": "한국사 교과 — 거문도 사건",
      "acc": 5,

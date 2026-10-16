@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -27,7 +31,9 @@
     "pairedWith": null,
     "question": "1931년 모노타입의 미술 자문 스탠리 모리슨은 옛 서체 '플랑탱'을 바탕으로 획의 대비를 키운 새 세리프 서체를 기획했고, 레터링 화가 빅터 라든트가 글자를 그렸습니다. 이 서체는 무엇일까요?",
     "answer": "타임스 뉴 로먼",
-    "acceptedAnswers": [],
+    "acceptedAnswers": [
+     "타임스 뉴 로만"
+    ],
     "originalTitleVariants": [
      "Times New Roman"
     ],
@@ -35,9 +41,9 @@
     "explanation": "원래 영국의 한 일간지 본문용으로 만들어져 1932년 10월 3일 지면에 처음 쓰였고, 그 신문은 40년 동안 이 서체를 그대로 썼습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 5,
-     "easiestCue": "스탠리 모리슨이 '플랑탱'을 바탕으로 기획, 빅터 라든트가 그림",
-     "difWhy": "'모리슨·플랑탱·라든트' — 타이포그래피 전공",
+     "dif": 4,
+     "easiestCue": "스탠리 모리슨은 옛 서체 '플랑탱'을 바탕으로 획의 대비를 키운 새 세리프 서체를 기획했고, 레터링 화가 빅터 라든트가 글자를 그렸습니다",
+     "difWhy": "V009 blind: 묻는 사실: 모리슨·라든트의 서체 — 타이포그래피 애호가 (경계 5)",
      "wor": 3,
      "worWhy": "익숙한 서체 유래 이야깃거리",
      "acc": 3,

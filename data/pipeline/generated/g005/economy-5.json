@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "explanation": "1987년 10월 19일의 일로, 미국 다우 지수는 하루 만에 22.6% 떨어졌고 거래소들은 뒤에 서킷 브레이커를 만들었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "세계 증시 연쇄 폭락, 홍콩 증권거래소 나흘 휴장",
-     "difWhy": "'세계 증시 연쇄 폭락의 날' — 관심 있는 사람(경제)",
+     "dif": 4,
+     "easiestCue": "이튿날 아침 홍콩 증권거래소는 영업일 나흘 동안 문을 닫겠다고 발표했는데",
+     "difWhy": "V009 blind: 묻는 사실: 1987 블랙 먼데이의 전파 순서·홍콩 휴장 — 경제사 교양 (calib 4)",
      "wor": 4,
      "worWhy": "시사 상식 — 1987 증시 폭락",
      "acc": 4,

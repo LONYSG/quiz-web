@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "explanation": "제2차 세계 대전 마지막 몇 달 사이에 미국과 영국이 작센주의 주도를 대규모로 폭격한 사건입니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "동독 시절 폐허로 남았다 2005년 재건된 성모 교회의 도시 공습",
-     "difWhy": "성모 교회 도시 공습 — 대학 교양",
+     "dif": 3,
+     "easiestCue": "동독 시절 반세기 가까이 전쟁 기념물로 폐허 그대로 남았다가 2005년 다시 지어졌습니다",
+     "difWhy": "V009 blind: 묻는 사실: 드레스덴 프라우엔키르헤의 폐허·재건 — 관심 있는 사람(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 2차대전 대표 공습",
      "acc": 3,

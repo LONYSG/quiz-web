@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "여러 언론은 미국과 이스라엘이 '올림픽 게임 작전'으로 함께 만든 사이버 무기라고 보도했지만, 두 정부 모두 공식 인정하지 않았습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "이란 나탄즈 농축 시설의 원심분리기를 망가뜨린 웜",
-     "difWhy": "'나탄즈 원심분리기 웜' — 대학 교양 정보보안",
+     "dif": 3,
+     "easiestCue": "이란 나탄즈 농축 시설의 원심분리기를 망가뜨린 것으로 알려졌습니다",
+     "difWhy": "V009 blind: 묻는 사실: 이란 원심분리기 공격 웜 스턱스넷 — 뉴스·IT 관심층(경계 4)",
      "wor": 4,
      "worWhy": "시사 교양 — 대표 사이버 무기",
      "acc": 5,

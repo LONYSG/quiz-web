@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "그가 세운 리케이온 학원은 뜰의 주랑(페리파토스)에서 이름을 따 '소요학파'라 불렸습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "'아테네 사람들이 철학에 두 번 죄짓게 두지 않겠다'",
-     "difWhy": "소크라테스 처형 빗댄 말 — 대학 교양",
+     "dif": 3,
+     "easiestCue": "'아테네 사람들이 철학에 두 번 죄짓게 두지 않겠다'며 에우보이아섬의 칼키스로 떠났고",
+     "difWhy": "V009 blind: 묻는 사실: 아리스토텔레스의 아테네 탈출 일화 — 고교 윤리/서양사 상식(경계 4)",
      "wor": 3,
      "worWhy": "이야깃거리 — 유명 철학자 일화",
      "acc": 4,

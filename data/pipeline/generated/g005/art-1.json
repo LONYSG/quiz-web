@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "노란 옷 부관 곁에 허리에 죽은 닭을 찬 소녀",
-     "difWhy": "'죽은 닭 찬 소녀' — 미술 애호가",
+     "easiestCue": "노란 옷에 흰 띠를 두른 부관 곁에서 허리에 죽은 닭을 찬 소녀가 빛을 받고 서 있는 이 그림",
+     "difWhy": "V009 blind: 묻는 사실: 야경 속 부관 · 닭 든 소녀 세부 — 교과 밖 작품 세부, 애호가(경계 3)",
      "wor": 4,
      "worWhy": "렘브란트 대표작 — 미술 교양",
      "acc": 4,

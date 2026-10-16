@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -37,8 +41,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "사회학자 로버트 머턴이 이름 붙인 개념",
-     "difWhy": "'머턴의 개념' — 대학 교양 사회학",
+     "easiestCue": "철학자 칼 포퍼가 '오이디푸스 효과'라고 부른 현상과 같은 갈래로, 사회학자 로버트 머턴이 이름 붙인 개념",
+     "difWhy": "V009 blind: 묻는 사실: 머턴의 자기실현적 예언과 포퍼의 오이디푸스 효과 연결 — 사회학 교양(경계 3)",
      "wor": 4,
      "worWhy": "교양 — 사회학 기본 어휘",
      "acc": 4,

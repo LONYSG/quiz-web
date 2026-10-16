@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -35,9 +39,9 @@
     "explanation": "이름은 본부를 둔 예루살렘 성전산이 솔로몬 성전 터로 여겨진 데서 나왔고, 1312년 교황 클레멘스 5세가 수도회를 해산했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "자크 드 몰레 — 필리프 4세가 단원을 한꺼번에 체포한 기사단",
-     "difWhy": "필리프 4세의 기사단 탄압 — 대학 교양",
+     "dif": 3,
+     "easiestCue": "1307년 10월 ... 새벽에 단원들을 한꺼번에 체포했습니다 / 마지막 단장 자크 드 몰레",
+     "difWhy": "V009 blind: 묻는 사실: 성전 기사단 체포·몰레 화형 — 고교 세계사/대중 교양(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 중세 기사단",
      "acc": 4,

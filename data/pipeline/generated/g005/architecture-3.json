@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -37,9 +41,9 @@
     "explanation": "1238년 그라나다 나스르 왕조의 첫 군주 무함마드 1세가 짓기 시작했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "1832년 워싱턴 어빙이 펴낸 이야기책",
-     "difWhy": "어빙의 '알함브라 이야기' — 대학 교양",
+     "dif": 3,
+     "easiestCue": "1492년 이후 페르디난드와 이사벨의 왕실이 들어서, 콜럼버스가 항해에 왕실의 승인을 받은 곳입니다",
+     "difWhy": "V009 blind: 묻는 사실: 그라나다 함락 뒤 왕실 · 알함브라 — 고교 세계사/상식 (경계 4)",
      "wor": 4,
      "worWhy": "교양 — 세계 유명 건축물",
      "acc": 3,
@@ -122,8 +126,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "첨탑이 원래 비행선 계류탑으로 계획된 건물",
-     "difWhy": "'비행선 계류탑 첨탑' — 건축 관심층",
+     "easiestCue": "이 건물의 꼭대기 첨탑은 원래 비행선을 매어 두는 계류탑으로 계획되었지만",
+     "difWhy": "V009 blind: 묻는 사실: 엠파이어 스테이트의 계류탑 계획 — 관심 있는 사람 (경계 4)",
      "wor": 3,
      "worWhy": "유명 건물 이야깃거리",
      "acc": 3,
@@ -205,8 +209,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "엮음: 사막 식물 꽃 모양 + 초고층 건물",
-     "difWhy": "'사막 초고층·타워팰리스' — 관심 있는 사람",
+     "easiestCue": "스트라발라의 말에 따르면 이 건물은 서울의 73층 주거용 건물 '타워팰리스 3차'를 바탕으로 설계되었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 부르즈 할리파-타워팰리스 3차 설계 일화 — 한국에서 널리 도는 상식 (경계 4)",
      "wor": 3,
      "worWhy": "세계 최고층 건물 이야기",
      "acc": 3,
@@ -227,8 +231,8 @@
      "addedCue": "(뺌만) 타워팰리스 3차 바탕 + 히메노칼리스 꽃",
      "why": "뉴스로 흔한 '삼성물산 시공'을 빼 설계 세부만 남김"
     },
-    "generalHint": "'미션 임파서블: 고스트 프로토콜'에서 톰 크루즈는 여러 줄에 묶인 채 이 건물 바깥 유리벽을 타는 장면을 찍었다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "2011년 알랭 로베르가 안전 밧줄과 하네스를 착용한 채 이 건물 외벽을 올랐다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Burj_Khalifa"
     ],
@@ -255,7 +259,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Mission:_Impossible_%E2%80%93_Ghost_Protocol"
+     "https://en.wikipedia.org/wiki/Burj_Khalifa"
     ],
     "hintNote": "he was securely attached to the Burj Khalifa at all times by multiple cables",
     "easiestCue": "히메노칼리스 꽃 모양을 본뜬 초고층 건물",

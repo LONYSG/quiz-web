@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "도는 원통에 바람을 쏘아 보인 효과",
-     "difWhy": "'회전 원통 바람 효과' — 대학 교양 물리",
+     "easiestCue": "1852년 빠르게 도는 놋쇠 원통에 바람을 쏘아 이 원리를 보인 독일 물리학자의 이름을 딴, 이 배가 이용한 효과",
+     "difWhy": "V009 blind: 묻는 사실: 플레트너 로터선과 마그누스 효과 — 대학 교양 물리(경계 3)",
      "wor": 4,
      "worWhy": "물리 기본 어휘 — 회전 공 휨",
      "acc": 5,
@@ -49,8 +53,8 @@
      "worWhy": "물리 기본 어휘 — 회전 공 휨"
     },
     "rewrite": null,
-    "generalHint": "야구 커브볼이 아래로 떨어지고 탁구공이 회전으로 크게 휘는 것도 이 효과로 설명한다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "1742년 영국의 벤저민 로빈스는 머스킷 총알이 회전 때문에 휘어 나가는 이유를 밝혔다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Rotor_ship",
      "https://en.wikipedia.org/wiki/Magnus_effect"

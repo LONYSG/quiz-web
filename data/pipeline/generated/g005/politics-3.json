@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -37,9 +41,9 @@
     "explanation": "이 기준은 1969년 브랜든버그 대 오하이오 판결에서 '즉각적인 불법 행동을 부추기는가'를 묻는 기준으로 바뀌었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "'극장에서 거짓으로 불이야' 홈스 판결의 표현 처벌 기준",
-     "difWhy": "'홈스 표현 자유 기준' — 대학 교양 법학",
+     "dif": 3,
+     "easiestCue": "극장에서 거짓으로 불이야 하고 외쳐 공황을 일으키는 사람까지 보호하지는 않는다",
+     "difWhy": "V009 blind: 묻는 사실: 솅크 판결의 명백·현존 위험 기준 — 고교 정치와 법 심화(경계 4)",
      "wor": 4,
      "worWhy": "법 교양 기본 개념",
      "acc": 4,

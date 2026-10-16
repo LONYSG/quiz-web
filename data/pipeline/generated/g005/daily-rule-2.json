@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -27,17 +31,15 @@
     "pairedWith": null,
     "question": "1998년 미국에서 저작권 보호 기간을 늘린 법은 '미키 마우스 보호법'이라는 비아냥을 들었습니다. 그 미키가 나온 1928년 단편 '증기선 윌리'는 결국 2024년 1월 1일 미국에서 이것이 되었습니다. 이것을 영어에서 온 말로 무엇이라 할까요?",
     "answer": "퍼블릭 도메인",
-    "acceptedAnswers": [
-     "자유 이용 저작물"
-    ],
+    "acceptedAnswers": [],
     "originalTitleVariants": [],
     "variantCheck": "ko.wikipedia 문서 제목 '퍼블릭 도메인' · 첫 문장 '또는 자유 이용 저작물'",
     "explanation": "저작권이 끝났거나 저작자가 권리를 포기한 저작물을 가리킨다.",
     "score": {
      "version": "score-v2",
      "dif": 2,
-     "easiestCue": "저작권이 끝난 '증기선 윌리'가 된 것, 영어에서 온 말",
-     "difWhy": "'미키 저작권 만료' — 방송·뉴스",
+     "easiestCue": "그 미키가 나온 1928년 단편 '증기선 윌리'는 결국 2024년 1월 1일 미국에서 이것이 되었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 퍼블릭 도메인 — 뉴스에서 흔히 (경계 3)",
      "wor": 4,
      "worWhy": "시사 기본 어휘",
      "acc": 5,
@@ -119,9 +121,9 @@
     "explanation": "1997년 헌법재판소의 헌법불합치 결정을 거쳐 2005년 민법 개정으로 폐지되었고, 지금은 8촌 이내 혈족 사이의 혼인을 금지한다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "'혼인에 관한 특례법'으로 사실혼 부부 구제한 규정",
-     "difWhy": "'혼인 특례법·사실혼' — 방송·뉴스",
+     "dif": 3,
+     "easiestCue": "1978년·1988년·1996년에는 한 해씩 '혼인에 관한 특례법'을 시행해, 이 규정 때문에 사실혼으로 살던 부부들이 혼인신고를 할 수 있게 구제했습니다",
+     "difWhy": "V009 blind: 묻는 사실: 동성동본 금혼 규정 — 고교 사회 (경계 4)",
      "wor": 4,
      "worWhy": "시사 상식 — 민법 변천",
      "acc": 5,
@@ -142,8 +144,8 @@
      "addedCue": "특례법으로 사실혼 부부 혼인신고 구제(1978·1988·1996)",
      "why": "뉴스로 흔한 폐지 경위를 해설로 옮기고 특례법 세부를 중심으로"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "이 규정을 중국은 1931년에, 북한은 1948년에 없앴다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/동성동본_금혼"
     ],
@@ -192,8 +194,11 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동성동본",
+     "https://ko.wikipedia.org/wiki/동성혼"
+    ],
     "hintNote": null,
     "easiestCue": "1978·1988·1996년 특례법으로 혼인신고 길을 열어 준 혼인 규정",
     "targetWhy": "특례법 연도는 사회·법 관심층이 아는 세부 — 3~4 경계",

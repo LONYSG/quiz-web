@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "알로이시우스 릴리우스 안을 바탕으로 한 달력",
-     "difWhy": "'릴리우스 달력' — 대학 교양",
+     "easiestCue": "알로이시우스 릴리우스가 낸 안을 바탕으로 만들어진 달력입니다",
+     "difWhy": "V009 blind: 묻는 사실: 릴리우스 안과 그리스 1923 도입의 그레고리력 — 역법 교양 (경계 3)",
      "wor": 4,
      "worWhy": "교양 — 역법 기본",
      "acc": 5,
@@ -58,8 +62,8 @@
      "addedCue": "(새로 넣지 않음) 릴리우스 안 · 그리스 1923",
      "why": "고교 세계사의 1752 영국 11일 삭제를 빼고 릴리우스·그리스 도입으로 좁힘"
     },
-    "generalHint": "이 달력으로 바꾸면서 1582년 10월 4일 목요일 다음 날을 10월 15일 금요일로 삼았다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "러시아는 1918년에야 이 달력으로 바꾸었다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Gregorian_calendar"
     ],
@@ -120,9 +124,9 @@
     "explanation": "1916년 4월 30일 독일 제국과 오스트리아-헝가리가 전쟁 중 석탄을 아끼려고 처음 나라 전체에 시행했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "엮음: 시간을 더 얻으려 제안한 제도 + 도시 단위 시행",
-     "difWhy": "'일광 시간 제도' — 생활 관심층",
+     "dif": 4,
+     "easiestCue": "1895년 뉴질랜드의 곤충학자 조지 허드슨은 교대 근무를 마친 뒤 곤충을 채집할 시간을 더 얻으려고",
+     "difWhy": "V009 blind: 묻는 사실: 서머타임의 제안자·첫 시행 도시 — 경제·생활 교양 (calib 4)",
      "wor": 3,
      "worWhy": "제도 기원 이야깃거리",
      "acc": 5,

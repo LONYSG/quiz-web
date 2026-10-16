@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "잭슨 대통령 집권 초기에는 919명의 공무원이 해임되었는데, 전체 정부 직위의 10%에 가까운 수였습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "'승자에게 전리품이 돌아간다'에서 이름이 온 관행",
-     "difWhy": "'spoils system' — 대학 교양 행정학",
+     "dif": 3,
+     "easiestCue": "뉴욕주 상원의원 윌리엄 마시의 '승자에게 전리품이 돌아간다'는 말에서 영어 이름이 온 관행",
+     "difWhy": "V009 blind: 묻는 사실: 엽관제(spoils system) — 고교 정치와 법/세계사",
      "wor": 4,
      "worWhy": "정치 기본 어휘",
      "acc": 4,
@@ -49,8 +53,8 @@
      "worWhy": "정치 기본 어휘"
     },
     "rewrite": null,
-    "generalHint": "가필드를 쏜 찰스 기토는 선거 때 지지 연설문을 돌린 공으로 빈이나 파리의 영사 자리를 받아야 한다고 믿었다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "펜들턴법에 서명한 체스터 아서 대통령은 뉴욕 세관장 시절 인사 개혁을 내건 헤이스 대통령에게 1878년 해임됐다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Spoils_system",
      "https://ko.wikipedia.org/wiki/엽관제"
@@ -84,7 +88,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Charles_J._Guiteau"
+     "https://en.wikipedia.org/wiki/Chester_A._Arthur"
     ],
     "hintNote": "insisted that he should be awarded a consulship for his supposedly vital assistance ... first asked for the consulship in Vienna, then ... Paris.",
     "easiestCue": "'승자에게 전리품이 돌아간다'는 말에서 영어 이름이 온 관행",
@@ -118,7 +122,7 @@
      "version": "score-v2",
      "dif": 4,
      "easiestCue": "큰 조직은 끝내 소수가 지배하게 된다는 명제",
-     "difWhy": "조직의 소수 지배 명제 — 대학 교양 정치학",
+     "difWhy": "V009 blind: 묻는 사실: 미헬스의 과두제 철칙 — 대학 교양(사회학) (경계 3)",
      "wor": 4,
      "worWhy": "교양 — 정치학 기본 개념",
      "acc": 4,

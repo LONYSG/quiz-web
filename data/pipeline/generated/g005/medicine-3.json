@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "상한 음식 중독의 독이 사시 주사 치료제가 됨",
-     "difWhy": "'식중독 독소의 치료제' — 생활 관심층",
+     "easiestCue": "1977년 미국 안과의사 앨런 스콧이 사시 환자의 눈 근육에 주사하면서 실제 치료제가 된 이 물질",
+     "difWhy": "V009 blind: 묻는 사실: 보툴리눔 독소(보톡스) — 일반 상식 수준 단서 (경계 4)",
      "wor": 4,
      "worWhy": "교양 — 의약품",
      "acc": 4,
@@ -58,8 +62,8 @@
      "addedCue": "(새로 넣지 않음) 케르너 · 스콧 사시 치료",
      "why": "이름 어원과 이어지는 '소시지'를 빼 케르너·스콧 내력으로 좁힘"
     },
-    "generalHint": "클로스트리듐 속 세균이 만드는 신경 독 단백질로, 기록된 천연 물질 가운데 가장 치명적이라고 꼽힌다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "1895년 벨기에 한 마을의 장례식 뒤 집단 중독이 일어나자 판 에르멩헴이 병을 일으키는 것은 세균 자체가 아니라 그 독이라고 밝혔다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Botulinum_toxin"
     ],

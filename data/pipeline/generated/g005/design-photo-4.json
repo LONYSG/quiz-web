@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "엮음: 이탈리아 + 스쿠터",
-     "difWhy": "'이탈리아 스쿠터' — 탈것·디자인 관심층",
+     "easiestCue": "이탈리아의 항공 기술자 코라디노 다스카니오가 설계를 맡은 스쿠터",
+     "difWhy": "V009 blind: 묻는 사실: 베스파 설계 일화 — 관심 있는 사람 (경계 4)",
      "wor": 3,
      "worWhy": "유명 스쿠터 탄생 이야기",
      "acc": 3,
@@ -58,8 +62,8 @@
      "addedCue": "(빼기만) 설계자 다스카니오와 체인 없는 구동 구조로 좁힘",
      "why": "'항공기 회사의 1946 스쿠터' 맥락이 관심층 충분 단서라 빼고 설계자·구조 세부만 남김"
     },
-    "generalHint": "영화 '로마의 휴일'에서 오드리 헵번은 그레고리 펙이 모는 이 스쿠터 뒤에 옆으로 걸터앉아 탄다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "1946년 4월, 이 스쿠터를 만든 회사가 피렌체에서 특허를 냈다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Vespa"
     ],

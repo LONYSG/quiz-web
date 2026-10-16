@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "2016년 드라마 태백부대 모우루중대 파병지",
-     "difWhy": "'태양의 후예 가상 국가' — 드라마 관심층",
+     "easiestCue": "태백부대 모우루중대 대원들은 유럽 발칸 반도에 있다고 설정된 가상 국가에 파병됩니다",
+     "difWhy": "V009 blind: 묻는 사실: 태양의 후예의 가상국 우르크 — 시청자 상식(경계 2)",
      "wor": 2,
      "worWhy": "유명 드라마 설정 — 팬 세부",
      "acc": 5,
@@ -120,8 +124,8 @@
     "score": {
      "version": "score-v2",
      "dif": 2,
-     "easiestCue": "'전원일기' 김 회장 가족이 사는 마을",
-     "difWhy": "전원일기 마을 — 방송",
+     "easiestCue": "드라마 '전원일기'에서, 최불암이 연기한 김 회장 가족과 일용엄니가 사는 마을",
+     "difWhy": "V009 blind: 묻는 사실: 전원일기의 배경 마을 양촌리 — 방송에서 흔히(경계 3)",
      "wor": 2,
      "worWhy": "유명 드라마 설정",
      "acc": 5,
@@ -203,9 +207,9 @@
     "explanation": "드라마는 1999년 11월 29일부터 2000년 6월 27일까지 MBC 월화 드라마로 방송되었습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 2,
-     "easiestCue": "드라마 '허준'에서 허준의 스승, 시신 해부 유언",
-     "difWhy": "'허준 스승 시신 해부' — 방송에서 흔히",
+     "dif": 3,
+     "easiestCue": "이순재가 연기한 이 스승의 이름은 무엇일까요",
+     "difWhy": "V009 blind: 묻는 사실: 허준의 스승 유의태 — 방송에서 흔히(경계 4)",
      "wor": 2,
      "worWhy": "레전드 드라마 주요 인물 — 팬 세부",
      "acc": 5,
@@ -226,8 +230,8 @@
      "addedCue": null,
      "why": "쉬운 단서를 빼면 정답이 유일하지 않다 — 정체가 곧 \"드라마 허준의 스승\"이라 해부 유언을 빼도 방송 수준 단서가 남는다"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "이 스승 역에는 김무생이 물망에 올랐으나 재벌 이미지 때문에 캐스팅되지 않았다고 한다.",
+    "generalHintVersion": "hint-v5",
     "layer": "팬 세부",
     "genre": "드라마",
     "work": "허준 (1999)",
@@ -255,8 +259,10 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/허준_(드라마)"
+    ],
     "hintNote": null,
     "easiestCue": "드라마 허준의 스승(이순재 역) 이름",
     "targetWhy": "국민 사극을 본 관심층이 안다 — 3",

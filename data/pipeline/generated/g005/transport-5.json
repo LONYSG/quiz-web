@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "도로를 새로 놓으면 도리어 흐름이 막힐 수 있다는 역설",
-     "difWhy": "도로 추가 역설 — 대학 교양 수학·교통",
+     "easiestCue": "1968년 이를 지적한 독일 수학자의 이름을 따 무엇이라 할까요",
+     "difWhy": "V009 blind: 묻는 사실: 브라에스의 역설 이름 — 대학 교양(게임이론·교통)(경계 3)",
      "wor": 4,
      "worWhy": "교양 — 이름난 역설",
      "acc": 4,

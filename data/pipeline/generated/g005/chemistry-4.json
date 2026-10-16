@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "슈탈이 '기름진 흙'에 붙인 새 이름",
-     "difWhy": "'슈탈의 연소 물질 이름' — 대학 교양 과학사",
+     "easiestCue": "독일 화학자 슈탈은 스승 베허가 '기름진 흙'이라 부른 것에 새 이름을 붙여 널리 퍼뜨렸습니다",
+     "difWhy": "V009 blind: 묻는 사실: 슈탈의 개명 · 플로지스톤 — 화학사 (경계 3: 연소설은 교과)",
      "wor": 4,
      "worWhy": "교양 — 과학사 대표 폐기 학설",
      "acc": 5,
@@ -56,8 +60,8 @@
      "addedCue": "(남은 깊은 단서) 베허의 '기름진 흙'을 슈탈이 새로 이름 붙임",
      "why": "고교 화학의 연소설 논쟁 단서를 빼고 학설 이름의 유래 세부만 남김"
     },
-    "generalHint": "쇠붙이를 태우면 이것이 빠져나간다고 했는데, 오히려 무게가 늘어나는 것이 이 학설의 골칫거리였다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "이름은 '불에 타오른다'는 뜻의 고대 그리스어에서 왔다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Phlogiston_theory"
     ],

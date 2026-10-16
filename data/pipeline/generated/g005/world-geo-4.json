@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "1704년 에스파냐 왕위 계승 전쟁 중 영국이 점령한 영국령",
-     "difWhy": "'에스파냐 왕위 계승 전쟁 영국령' — 관심 있는 사람",
+     "easiestCue": "1704년 에스파냐 왕위 계승 전쟁 중 영국·네덜란드 연합군이 점령한 이 영국령",
+     "difWhy": "V009 blind: 묻는 사실: 지브롤터 — 고교 세계사 (경계 4)",
      "wor": 4,
      "worWhy": "교양 — 영국령 지브롤터",
      "acc": 4,
@@ -56,8 +60,8 @@
      "addedCue": "큰길 이름 윈스턴 처칠 애비뉴 (남은 단서: 활주로 횡단 · 1704년 점령)",
      "why": "교과서 조약 단서를 해설로 옮기고 도로·점령 세부로 엮음"
     },
-    "generalHint": "이곳의 바위는 옛날 '헤라클레스의 기둥' 둘 가운데 북쪽 기둥으로 여겨졌다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "2002년 주민투표에서 약 99%가 스페인과의 공동 주권안을 거부했다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Gibraltar_International_Airport",
      "https://en.wikipedia.org/wiki/Gibraltar"
@@ -91,7 +95,7 @@
     "knowledgeClaims": [],
     "hintBasis": "web",
     "hintSources": [
-     "https://en.wikipedia.org/wiki/Rock_of_Gibraltar"
+     "https://en.wikipedia.org/wiki/Gibraltar"
     ],
     "hintNote": "The Rock of Gibraltar, the northern of the two historic Pillars of Hercules",
     "easiestCue": "큰길이 활주로를 가로지르던 영국령",

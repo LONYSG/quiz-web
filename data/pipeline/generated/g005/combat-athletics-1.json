@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "1967년 이름 정해진, 영춘권 중심선 이론을 받아들인 무술",
-     "difWhy": "영춘권 계승 1967 무술 — 무술 애호가",
+     "easiestCue": "이 무술은 영춘권의 중심선 이론을 받아들였습니다",
+     "difWhy": "V009 blind: 묻는 사실: 절권도의 이름·철학 — 무술 애호가(경계 3)",
      "wor": 3,
      "worWhy": "무술 이야깃거리",
      "acc": 4,
@@ -123,9 +127,9 @@
     "explanation": "'콘데 코마'는 스페인어·포르투갈어로 '싸움 백작'이라는 뜻입니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "일본 유도가 마에다의 가르침이 바탕이 되어 발전한 무술",
-     "difWhy": "'유도가에게서 발전한 무술' — 격투기 관심층",
+     "dif": 4,
+     "easiestCue": "마에다의 가르침이 바탕이 되어 발전한 이 무술은 무엇일까요?",
+     "difWhy": "V009 blind: 묻는 사실: 마에다와 브라질리언 주짓수 — 격투기 애호가 (경계 3)",
      "wor": 3,
      "worWhy": "유명 무술 기원 이야깃거리",
      "acc": 4,

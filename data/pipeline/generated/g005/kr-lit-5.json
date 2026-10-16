@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -33,9 +37,9 @@
     "explanation": "지은이 김수영은 1968년 6월 술자리를 마치고 귀가하던 길에 좌석버스에 치여 세상을 떠났다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "유고작이자 대표작, 시비가 도봉서원 터로 옮겨짐",
-     "difWhy": "'시인 이름 없는 유고작' — 대학 교양 문학",
+     "dif": 3,
+     "easiestCue": "그의 유고작이자 대표작인 이 시의 구절이 새겨졌습니다",
+     "difWhy": "V009 blind: 묻는 사실: 김수영의 풀 — 고교 국어(경계 4)",
      "wor": 4,
      "worWhy": "교과서 시인 대표작",
      "acc": 5,
@@ -118,8 +122,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "윤동주가 일본 유학 중이던 1942년에 쓴 시",
-     "difWhy": "윤동주 유학 중 1942년 시 — 고교 문학",
+     "easiestCue": "윤동주가 일본 유학 중이던 1942년에 쓴 시로, 그가 세상을 떠난 뒤인 1947년 2월 13일 경향신문을 통해 유고로 공개되었습니다",
+     "difWhy": "V009 blind: 묻는 사실: 쉽게 씌어진 시 — 고교 국어 (윤동주 대표 시)",
      "wor": 5,
      "worWhy": "교과서 수록 시",
      "acc": 5,
@@ -140,8 +144,8 @@
      "addedCue": null,
      "why": "쉬운 단서(일본 유학 중 1942년)를 빼면 1947년 경향신문 유고 하나만 남는데 그 유일성이 문서로 확인되지 않고, 문서의 다른 세부는 교과서 대표 구절(육첩방·밤비)뿐"
     },
-    "generalHint": "이 시는 '창밖에 밤비가 속살거려 육첩방은 남의 나라'라는 구절로 시작한다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "이 시는 8연이 1연을 되풀이하는 구성이 특징이다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/쉽게_씌어진_시"
     ],
@@ -166,7 +170,7 @@
      }
     ],
     "knowledgeClaims": [],
-    "hintBasis": "knowledge",
+    "hintBasis": "web",
     "hintSources": [
      "https://ko.wikipedia.org/wiki/쉽게_씌어진_시"
     ],

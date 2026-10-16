@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "볼로냐 넵투누스 분수에서 딴 로고, 모데나로 옮긴 회사",
-     "difWhy": "넵투누스 삼지창 로고 — 자동차 애호가",
+     "easiestCue": "뒤에 본사를 모데나로 옮긴 이 자동차 회사",
+     "difWhy": "V009 blind: 묻는 사실: 마세라티의 설립지·로고 유래 — 애호가(경계 3)",
      "wor": 3,
      "worWhy": "브랜드 이야깃거리",
      "acc": 4,

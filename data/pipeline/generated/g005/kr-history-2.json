@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "엮음: 왕위를 빼앗으려던 고려 권신 + 딸이 왕비",
-     "difWhy": "'고려 외척 권신의 왕위 찬탈' — 고교 한국사",
+     "easiestCue": "고려의 한 권신은 왕위를 빼앗으려고 왕에게 독이 든 떡을 올렸으나",
+     "difWhy": "V009 blind: 묻는 사실: 이자겸의 독살 시도 — 고교 한국사",
      "wor": 5,
      "worWhy": "한국사 교과 사건",
      "acc": 5,
@@ -111,8 +115,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "승병·피란민이 몽골군을 물리친 싸움, 부곡이 군현으로 승격",
-     "difWhy": "'승병이 몽골군 격퇴·부곡 승격' — 고교 한국사",
+     "easiestCue": "고려 때 승병 100여 명과 피란민 1,000여 명이 나서 몽골군을 물리친 싸움입니다",
+     "difWhy": "V009 blind: 묻는 사실: 처인성 전투 — 고교 한국사",
      "wor": 5,
      "worWhy": "고교 한국사 대몽 항쟁",
      "acc": 5,
@@ -195,8 +199,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "1380년 남원 운봉에서 왜구가 크게 무너진 싸움",
-     "difWhy": "'1380 남원 운봉 왜구 격파' — 고교 한국사",
+     "easiestCue": "1380년 9월 왜구는 남원 인월역에 머물며 장차 북쪽으로 올라가겠다고 큰소리쳐",
+     "difWhy": "V009 blind: 묻는 사실: 1380 황산대첩 — 고교 한국사 (경계 4)",
      "wor": 4,
      "worWhy": "한국사 주요 전투",
      "acc": 5,
@@ -217,8 +221,8 @@
      "addedCue": "(새 단서 없음) 인월역 주둔·운봉·정산봉 지명만 남김",
      "why": "아지발도는 이성계 대첩으로 바로 이어지는 교과서 단서라 빼고, 싸움 경과의 지명 세부만으로 묻게 함"
     },
-    "generalHint": "이 싸움에서 크게 무너진 왜구의 두목은 아지발도라 불렸다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "이 싸움에서 왜구는 처음에 우리 군의 열 배였으나 70여 명만 살아남아 지리산으로 달아났고, 말 1,600여 필이 노획되었다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://ko.wikipedia.org/wiki/황산대첩"
     ],
@@ -283,9 +287,9 @@
     "explanation": "예종 4년(1109년) 고려 조정은 윤관 등의 반대에도 이 성들을 여진족에게 돌려주기로 했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "공험진 선춘령 '고려지경' 비, 고려가 쌓은 성들",
-     "difWhy": "'윤관 공험진 성들' — 고교 한국사",
+     "dif": 4,
+     "easiestCue": "『세종실록』 지리지는 고려가 공험진의 선춘령에 '고려지경'이라 새긴 비를 세웠다고 적었고, 조선은 4군 6진을 개척할 때 이 비를 찾게 했습니다",
+     "difWhy": "V009 blind: 묻는 사실: 선춘령비 단서로 본 동북 9성 — 교과서 밖 비석·실록 세부 (경계 3)",
      "wor": 5,
      "worWhy": "교과서 고려 대외 관계",
      "acc": 5,

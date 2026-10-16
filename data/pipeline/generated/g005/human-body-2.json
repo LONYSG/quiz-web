@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "네 가지 체액 가운데 검은 담즙을 담는 장기",
-     "difWhy": "'검은 담즙의 장기' — 대학 교양 의학사",
+     "easiestCue": "옛 서양 의학에서 네 가지 체액 가운데 검은 담즙을 담는 곳으로 여겨져 우울과 이어진 이 장기",
+     "difWhy": "V009 blind: 묻는 사실: 비장과 4체액설의 검은 담즙 — 의학사 교양(경계 3)",
      "wor": 4,
      "worWhy": "교양 — 비장·4체액설·잠수 적응",
      "acc": 5,
@@ -58,8 +62,8 @@
      "addedCue": "4체액설의 검은 담즙·우울과 이어진 장기",
      "why": "고교 생명과학 기능 단서를 해설로 옮기고 의학사 세부와 엮음"
     },
-    "generalHint": "이 장기의 붉은 속질에서는 대식세포가 낡거나 망가진 적혈구를 걸러 없앤다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "사람 열 명 가운데 한 명쯤은 이 장기와 같은 조직이 1cm 안팎의 작은 덩이로 하나 더 붙어 있다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Bajau_people",
      "https://en.wikipedia.org/wiki/Spleen"
@@ -122,8 +126,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "엮음: 말피기 + 개구리 허파를 확대해 본 혈관",
-     "difWhy": "'말피기가 확대해 본 혈관' — 고교 생명과학",
+     "easiestCue": "마르첼로 말피기는 양 같은 큰 짐승은 너무 커서 대신 개구리의 허파를 확대해 들여다보다가 이 혈관을 관찰했습니다",
+     "difWhy": "V009 blind: 묻는 사실: 말피기의 모세혈관 관찰 — 고교 생물",
      "wor": 4,
      "worWhy": "과학사 교양 — 기본 혈관",
      "acc": 5,
@@ -144,8 +148,8 @@
      "addedCue": "(새 단서 없음 — 말피기·개구리 허파로)",
      "why": "고교 생명과학의 순환설 연결을 빼 말피기 관찰 세부만 남김"
     },
-    "generalHint": "이 발견은 윌리엄 하비가 찾지 못한, 동맥과 정맥을 잇는 고리를 채워 그의 혈액 순환설을 뒷받침했다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "말피기는 1691년 교황 인노첸시오 12세의 부름을 받아 로마로 가서 교황의 주치의가 되었다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Marcello_Malpighi"
     ],

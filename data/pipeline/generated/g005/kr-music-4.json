@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -34,8 +38,8 @@
     "score": {
      "version": "score-v2",
      "dif": 3,
-     "easiestCue": "원더걸스 원년 멤버 탈퇴, 빈자리를 유빈이 채움",
-     "difWhy": "원더걸스 초기 멤버 교체 — K팝 관심층",
+     "easiestCue": "그 빈자리는 9월 오디션으로 뽑힌 유빈이 채웠습니다. 이때 탈퇴한 멤버",
+     "difWhy": "V009 blind: 묻는 사실: 원더걸스 초기 탈퇴 멤버 — 가요 관심자 (경계 4)",
      "wor": 2,
      "worWhy": "팬 세부 — 그룹 멤버 교체",
      "acc": 5,
@@ -181,7 +185,8 @@
     "selfJudgeWhy": "레전드 그룹, 데뷔곡은 팬이 '아 그거'",
     "pairCheck": null,
     "dbCheck": "Hug · 허그 new (카시오페아 4527 과 정답 다름)",
-    "warn": []
+    "warn": [],
+    "discarded": "V009 drop — 그룹 이름이 없어 팬 지식뿐이고, 답이 데뷔 싱글(Hug)이라 MD10 의 \"무게가 크지 않은 작품의 세부(데뷔곡)\"에 해당 — 알 가치 2 로 출제 불가"
    }
   }
  ]

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,9 +40,9 @@
     "explanation": "이 이름은 정파 스스로 붙인 것이 아니라 산악파가 붙인 것으로, 대표 논객들이 지롱드 출신 의원이었던 데서 나왔습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 4,
-     "easiestCue": "롤랑 부인 — '자유여, 너의 이름으로…' 부부가 이끈 정파",
-     "difWhy": "롤랑 부인의 정파 — 수능 세계사 심화",
+     "dif": 3,
+     "easiestCue": "프랑스 혁명기의 롤랑 부인은 단두대에 오르며 \"자유여, 너의 이름으로 얼마나 많은 죄가 저질러지는가!\"라고 외쳤다고 전하고",
+     "difWhy": "V009 blind: 묻는 사실: 지롱드파 — 고교 세계사 (경계 4)",
      "wor": 4,
      "worWhy": "교양 — 프랑스 혁명 정파",
      "acc": 4,
@@ -91,7 +95,9 @@
       "note": "지롱드(프랑스어: Girondins)는 프랑스 혁명 중 프랑스 정치 파벌의 하나이다 … '지롱드파의 여왕'이라는 별명을 가진 마담 롤랑"
      }
     ],
-    "knowledgeClaims": [],
+    "knowledgeClaims": [
+     "'지롱드파'라는 이름은 정파 스스로가 아니라 산악파가 붙였다"
+    ],
     "hintBasis": "web",
     "hintSources": [
      "https://en.wikipedia.org/wiki/Girondins"
@@ -126,9 +132,9 @@
     "explanation": "제임스 2세는 달아나다 켄트에서 한 번 붙잡혔지만, 그해 12월 23일 끝내 프랑스로 망명했습니다.",
     "score": {
      "version": "score-v2",
-     "dif": 3,
-     "easiestCue": "프로테스탄트 군대 상륙에 잉글랜드 왕이 국새를 버리고 달아난",
-     "difWhy": "'신교도 군대 상륙·왕 도주' — 고교 세계사",
+     "dif": 4,
+     "easiestCue": "'프로테스탄트 바람'이라 불린 바람을 타고 건너온 군대가 잉글랜드 남서부 토베이에 상륙하자, 왕은 국새를 템스강에 던져 버렸습니다",
+     "difWhy": "V009 blind: 묻는 사실: 명예혁명의 프로테스탄트 바람·토베이 상륙·국새 일화 — 교과서 밖 세부(경계 3)",
      "wor": 4,
      "worWhy": "교양 — 영국 대표 혁명",
      "acc": 4,

@@ -10,7 +10,11 @@
   "generator": "claude-opus-5-5",
   "questionGenerator": "claude-opus-5-5",
   "stage": "deep",
-  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)"
+  "note": "G005 — 상(4~5) 생성 2차(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V009 판정 뒤 G006 이 적재한다 (data/pipeline/audit/g005-verify-targets.json)",
+  "g007": {
+   "at": "2026-10-16",
+   "note": "V009 판정 반영 (scripts/g007-apply-g005.mjs · data/pipeline/audit/g007-fixes.json) — 난이도는 V009 blind"
+  }
  },
  "items": [
   {
@@ -36,8 +40,8 @@
     "score": {
      "version": "score-v2",
      "dif": 4,
-     "easiestCue": "케틀레 '평균인' 연구 / 앤설 키스가 붙인 지표 이름",
-     "difWhy": "케틀레·앤설 키스 — 대학 교양 의학사",
+     "easiestCue": "벨기에의 통계학자 케틀레는 1830년에서 1850년 사이 '평균인'을 연구하며 이 지표의 바탕을 만들었습니다",
+     "difWhy": "V009 blind: 묻는 사실: BMI 의 기원(케틀레 · 키스 1972) — 대학 교양(경계 3)",
      "wor": 4,
      "worWhy": "건강 기본 어휘",
      "acc": 4,
@@ -51,8 +55,8 @@
      "worWhy": "건강 기본 어휘"
     },
     "rewrite": null,
-    "generalHint": "키스는 1972년 '만성 질환 저널'에 실은 논문에서 이것이 몸무게와 키로 만든 다른 비만 척도 못지않다고 했다.",
-    "generalHintVersion": "hint-v4",
+    "generalHint": "케틀레는 이 연구를 '사회 물리학'이라 불렀다.",
+    "generalHintVersion": "hint-v5",
     "sources": [
      "https://en.wikipedia.org/wiki/Body_mass_index"
     ],
