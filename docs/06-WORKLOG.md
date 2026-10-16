@@ -70,7 +70,7 @@
 ## 2026-10-17 — 미니게임 1차(틀 · 케이크 기다리기 · 균형의수호자 · 골라 하기) · 복사 막기 · PC/모바일 판정 · 태블릿/폴드 · 출제 규칙 · 소리 샘플 (R050, MAIN) — ★ 진행 기록
 
 - [x] **A 복사 막기 + PC/모바일 판정** — `client/src/noCopy.ts`(질문 · 힌트 `.no-copy` — CSS user-select/touch-callout none + copy·cut·contextmenu·dragstart·selectstart 막기 + 전체 선택 복사 때 그 부분만 뺌) · `client/src/uiMode.ts`(PC = hover:hover+pointer:fine AND 폭 ≥1000 · html.ui-pc/ui-mobile · 바뀌면 다시) · styles.css 의 폭 media 29블록을 `:where(.ui-mobile|.ui-pc)` 로(우선순위 그대로) · `client.device` → 참여자 칸 🖥/📱 · 모바일 명단 · ui-check:copy 15/15(고치기 전 빌드 5/15 — 10 FAIL 확인)
-- [ ] **B 태블릿 · 폴드**
+- [x] **B 태블릿 · 폴드** — ui-check:devices 9/9(폴드 접힘 344×882 · 펼침 673×841 · iPad mini/Air/Pro · 갤럭시 탭 — 세로·가로 12 크기 × 방 목록 · 로비 · 게임(힌트) · 정답 공개 · 결과 · 샵 · 프로필 · ☰ — 터치 흉내) · 전부 모바일 UI · 가로 넘침 0 · 잘림 0 · 그림 74장(docs/design/r050/20-dev-*) 직접 봄 — **깨진 곳 없음**(고친 것 없음). 초성 글자가 위로 떠 보이는 것은 R040 PC 그림과 같다(글꼴 — 기기 문제 아님)
 - [ ] **C 출제 규칙(서로의 정답 흘림)**
 - [ ] **D 미니게임 틀(0017 · 상태 · 등장 · 점수 · 포인트 · 연출 · 골라 하기)**
 - [ ] **E 케이크 기다리기 · 균형의수호자**
