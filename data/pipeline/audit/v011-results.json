@@ -1,0 +1,2192 @@
+{
+ "round": "V011",
+ "date": "2026-10-17",
+ "model": "claude-sonnet-5-5 (VERIFY · 판정자 하위 에이전트도 같은 모델)",
+ "web": {
+  "note": "판정자 q1 은 WebFetch 도구 대신 node 로 문서를 약 90회 열고(자기 보고) WebSearch 4회, 판정자 q2 는 WebFetch 37회·WebSearch 3회, VERIFY 직접 WebFetch 6회·WebSearch 0회",
+  "webSearch": 7,
+  "webFetchTool": 43,
+  "nodeFetch": 90,
+  "limitWebSearch": 30,
+  "r429": 0
+ },
+ "counts": {
+  "activeDb": 5113,
+  "g005InDb": 483,
+  "g007Gen": 24,
+  "g007GenFields": {
+   "hint": 19,
+   "question": 2,
+   "explanation": 3
+  },
+  "g007GenRefs": 22,
+  "knowledge": 5,
+  "cv20": 13,
+  "pairs": 25,
+  "pairedDropped": 9
+ },
+ "stats": {
+  "g007Gen": {
+   "ok": 24,
+   "fix": 0,
+   "afterVsBefore": {
+    "better": 22,
+    "same": 2
+   }
+  },
+  "knowledge": {
+   "total": 5,
+   "closedTrue": [
+    "H2-01",
+    "M1-03",
+    "M1-05"
+   ],
+   "partial": [
+    "K4-07",
+    "M1-02"
+   ],
+   "unverifiedClaims": 3,
+   "trueClaims": 6
+  },
+  "cv20": {
+   "ok": 6,
+   "fix": 7,
+   "fixIds": [
+    1783,
+    2187,
+    2262,
+    2412,
+    2887,
+    3072,
+    3680
+   ],
+   "okIds": [
+    2574,
+    2910,
+    3466,
+    3555,
+    3609,
+    3934
+   ]
+  },
+  "pairs": {
+   "ok": 20,
+   "fix": 5,
+   "judgeFix": 7,
+   "fixSides": {
+    "2회차 해설": 1,
+    "2회차 힌트": 2,
+    "1회차 힌트(#2106)": 1,
+    "1회차 힌트(#99)": 1
+   },
+   "threeThreeProblem": 0
+  }
+ },
+ "targets": {
+  "frozenAt": "2026-10-16T17:04:15.757Z",
+  "ga": [
+   {
+    "key": "S2-01:hint",
+    "id": 4742
+   },
+   {
+    "key": "S1-10:hint",
+    "id": 4765
+   },
+   {
+    "key": "S1-19:hint",
+    "id": 4774
+   },
+   {
+    "key": "C1-22:hint",
+    "id": 4783
+   },
+   {
+    "key": "L2-03:hint",
+    "id": 4786
+   },
+   {
+    "key": "S1-35:hint",
+    "id": 4910
+   },
+   {
+    "key": "K2-06:hint",
+    "id": 4940
+   },
+   {
+    "key": "K2-10:hint",
+    "id": 4955
+   },
+   {
+    "key": "K1-17:question",
+    "id": 4973
+   },
+   {
+    "key": "K1-17:explanation",
+    "id": 4973
+   },
+   {
+    "key": "K4-02:hint",
+    "id": 4987
+   },
+   {
+    "key": "K4-06:hint",
+    "id": 4995
+   },
+   {
+    "key": "K4-24:hint",
+    "id": 5027
+   },
+   {
+    "key": "K4-26:hint",
+    "id": 5029
+   },
+   {
+    "key": "K4-19:hint",
+    "id": 5032
+   },
+   {
+    "key": "K4-27:hint",
+    "id": 5039
+   },
+   {
+    "key": "K4-28:hint",
+    "id": 5040
+   },
+   {
+    "key": "M1-09:question",
+    "id": 5050
+   },
+   {
+    "key": "M1-09:explanation",
+    "id": 5050
+   },
+   {
+    "key": "S2-24:hint",
+    "id": 5074
+   },
+   {
+    "key": "L1-07:hint",
+    "id": 5090
+   },
+   {
+    "key": "L1-19:explanation",
+    "id": 5140
+   },
+   {
+    "key": "L3-07:hint",
+    "id": 5172
+   },
+   {
+    "key": "L3-29:hint",
+    "id": 5187
+   }
+  ],
+  "knowledge": [
+   {
+    "ref": "K4-07",
+    "id": 4996
+   },
+   {
+    "ref": "M1-02",
+    "id": 5043
+   },
+   {
+    "ref": "M1-03",
+    "id": 5044
+   },
+   {
+    "ref": "M1-05",
+    "id": 5046
+   },
+   {
+    "ref": "H2-01",
+    "id": 5184
+   }
+  ],
+  "cv20": [
+   1783,
+   2187,
+   2262,
+   2412,
+   2574,
+   2887,
+   2910,
+   3072,
+   3466,
+   3555,
+   3609,
+   3680,
+   3934
+  ],
+  "pairs": [
+   {
+    "ref": "K3-13",
+    "id": 4920,
+    "pairedId": 997
+   },
+   {
+    "ref": "L2-08",
+    "id": 4790,
+    "pairedId": 520
+   },
+   {
+    "ref": "A1-18",
+    "id": 4814,
+    "pairedId": 302
+   },
+   {
+    "ref": "A2-17",
+    "id": 5154,
+    "pairedId": 2535
+   },
+   {
+    "ref": "S2-07",
+    "id": 4748,
+    "pairedId": 4268
+   },
+   {
+    "ref": "S2-17",
+    "id": 4756,
+    "pairedId": 4273
+   },
+   {
+    "ref": "S3-07",
+    "id": 4825,
+    "pairedId": 478
+   },
+   {
+    "ref": "L1-08",
+    "id": 5091,
+    "pairedId": 641
+   },
+   {
+    "ref": "L1-24",
+    "id": 4848,
+    "pairedId": 903
+   },
+   {
+    "ref": "L3-14",
+    "id": 4805,
+    "pairedId": 2767
+   },
+   {
+    "ref": "A1-14",
+    "id": 5066,
+    "pairedId": 1133
+   },
+   {
+    "ref": "H2-07",
+    "id": 5176,
+    "pairedId": 295
+   },
+   {
+    "ref": "L3-16",
+    "id": 4807,
+    "pairedId": 834
+   },
+   {
+    "ref": "S1-05",
+    "id": 4760,
+    "pairedId": 791
+   },
+   {
+    "ref": "S1-13",
+    "id": 4768,
+    "pairedId": 2106
+   },
+   {
+    "ref": "S1-21",
+    "id": 4897,
+    "pairedId": 85
+   },
+   {
+    "ref": "S2-21",
+    "id": 5080,
+    "pairedId": 476
+   },
+   {
+    "ref": "L1-03",
+    "id": 5097,
+    "pairedId": 3092
+   },
+   {
+    "ref": "L3-17",
+    "id": 4861,
+    "pairedId": 99
+   },
+   {
+    "ref": "S1-14",
+    "id": 4769,
+    "pairedId": 2107
+   },
+   {
+    "ref": "S3-12",
+    "id": 4834,
+    "pairedId": 1144
+   },
+   {
+    "ref": "A2-15",
+    "id": 5152,
+    "pairedId": 160
+   },
+   {
+    "ref": "K3-12",
+    "id": 4919,
+    "pairedId": 993
+   },
+   {
+    "ref": "S1-15",
+    "id": 4770,
+    "pairedId": 3437
+   },
+   {
+    "ref": "S1-23",
+    "id": 4899,
+    "pairedId": 962
+   }
+  ]
+ },
+ "g007Gen": {
+  "S2-01:hint": {
+   "ref": "S2-01",
+   "field": "hint",
+   "id": 4742,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "문서 일치(2,883점·체임벌린 추월·펜실베이니아 남동부 역대 최다). 질문 없이 코비라 답할 사람은 드묾 — 이전 힌트(대표 사건)보다 한 걸음 안쪽 사실.",
+   "afterVsBefore": "better — 이전(은퇴 뒤 아카데미상)은 대표 사건이라 famous-one, 지금은 고교 시절 두 번째 줄 사실",
+   "alone": "고교 때 2,883점·체임벌린을 넘은 농구 선수 → 질문 없이는 거의 못 맞힘(NBA 열성 팬 일부)",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "고교 시절 2,883점으로 윌트 체임벌린을 넘고 펜실베이니아 남동부 고교 역대 최다 득점자",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Kobe_Bryant",
+     "proposal": false
+    }
+   ],
+   "note": "문서: «finished his high-school career as Southeastern Pennsylvania's all-time leading scorer at 2,883 points, surpassing both Wilt Chamberlain and Lionel Simmons» — 체임벌린만 적은 것은 생략일 뿐 어긋나지 않음. H2/H10/H3/H4 없음, 질문 미국·이탈리아·아버지 은퇴와 겹치지 않음. 같은 정답 활성 문항 없음."
+  },
+  "S1-10:hint": {
+   "ref": "S1-10",
+   "field": "hint",
+   "id": 4765,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "문서 일치(연세대 법학과 입학·1982 OB 1순위 입단). 질문의 마이너·아킬레스건·해설의 불사조·영구결번과 겹치지 않고 질문 없이 박철순이 바로 나오지 않음.",
+   "afterVsBefore": "better — 이전(원년 22연승·MVP)은 대표 업적, 지금은 입학·입단 이력",
+   "alone": "연세대 법대·OB 1순위 입단 투수 → 질문 없이는 소수 팬만",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "연세대 법학과에 입학",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/박철순",
+     "proposal": false
+    },
+    {
+     "claim": "1982년 OB 베어스에 1순위로 입단",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/박철순",
+     "proposal": false
+    }
+   ],
+   "note": "문서: «1975년 1월 연세대학교 법학과에 입학…» / «서울 드래프트 … 1순위(전체 3순위)로 OB 베어스와 계약… 입단». 두 사건 사이 마이너 경력을 뺀 문장이지만 '입학했고 … 입단했다'로 순서만 적어 어긋나지 않음. 1순위는 서울 드래프트 기준(전체 3순위)이라는 한정이 빠졌으나 오해를 낳지 않음."
+  },
+  "S1-19:hint": {
+   "ref": "S1-19",
+   "field": "hint",
+   "id": 4774,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "국민영예상 사양 2001·2004·2019 — People's Honour Award 문서의 '사양한 사람' 표와 일치. 질문(타법·감독)·해설(이름 유니폼)과 겹치지 않음.",
+   "afterVsBefore": "better — 이전(210안타 최초 200안타)은 대표 기록, 지금은 두 번째 줄 사실",
+   "alone": "일본 정부 국민영예상을 세 번 사양 → 야구·스포츠 팬 일부가 이치로를 떠올릴 수 있으나 바로 말하는 사람은 드묾(후쿠모토·오타니도 사양 기록)",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "일본 정부 국민영예상을 2001년, 2004년, 2019년 세 차례 사양",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/People%27s_Honour_Award",
+     "proposal": false
+    }
+   ],
+   "note": "문서 'Known to have declined the honor: … Ichiro Suzuki (2001, 2004, 2019)'. 같은 문서에 후쿠모토(1983)·코세키(1989)·오타니(2021)도 있어 이 문장만으로 한 사람이 정해지지는 않음 — 대표 사건급은 아님."
+  },
+  "C1-22:hint": {
+   "ref": "C1-22",
+   "field": "hint",
+   "id": 4783,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "스베르들롭스크 유출(1979.4, 적어도 68명 사망, 당국은 상한 고기 탓) 문서 일치. 질문의 그뤼나드·해설의 다크 하베스트와 다른 사실이고 대표 사건(2001 편지)을 벗어남.",
+   "afterVsBefore": "better — 이전(2001 탄저균 편지)은 대표 사건 famous-one",
+   "alone": "1979 소련 군 시설 포자 유출 68명 사망·상한 고기 → 세균 이름은 질문 없이도 아는 사람은 일부(탄저 사건 아는 사람)",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "1979년 4월 스베르들롭스크 근처 군 연구 시설에서 포자 누출, 적어도 68명 사망",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Sverdlovsk_anthrax_leak",
+     "proposal": false
+    },
+    {
+     "claim": "당국은 상한(오염된) 고기 탓이라고 주장",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Sverdlovsk_anthrax_leak",
+     "proposal": false
+    }
+   ],
+   "note": "문서는 'is reported to have started … at least 68 people'·'Soviet authorities … tainted meat'. 힌트 '새어 나가'는 문서의 'reported' 수준을 단정으로 옮긴 정도라 허용 범위."
+  },
+  "L2-03:hint": {
+   "ref": "L2-03",
+   "field": "hint",
+   "id": 4786,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "패왕전 16연패(제13기 1977 ~ 제28기 1993) ko 위키 조훈현 문서와 일치. 질문·해설(이창호 내제자)과 겹치지 않음.",
+   "afterVsBefore": "better — 이전(2016 비례대표 국회의원)은 대표 사건",
+   "alone": "패왕전 16연패 → 바둑 팬이 아니면 모름",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "1977년 제13기부터 1993년 제28기까지 패왕전 타이틀 16연패",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/조훈현",
+     "proposal": false
+    }
+   ],
+   "note": "문서: «패왕전 16연패(1977년 13기 ~ 1993년 28기)». '내리 지켰다'는 연패 표현의 풀이로 같은 뜻."
+  },
+  "S1-35:hint": {
+   "ref": "S1-35",
+   "field": "hint",
+   "id": 4910,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "왓킨스 타워(에펠탑을 넘으려 한 계획, 첫 단만 완공, 1907 철거) 문서와 일치하고 그 자리에 옛 웸블리가 섰음도 위키로 확인. 대표 정체(2007 아치)를 벗어나 두 번째 줄 사실.",
+   "afterVsBefore": "better — 이전(2007 신축 133m 아치)은 대표 정체",
+   "alone": "에펠탑보다 높게 계획됐다가 첫 단만 짓고 멈춘 탑이 있던 자리 → 런던 웸블리를 아는 사람만 연결",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "에펠탑을 능가하도록 계획된 왓킨스 타워(런던 웸블리 공원)",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Watkin%27s_Tower",
+     "proposal": false
+    },
+    {
+     "claim": "첫 단(first stage)만 완공되고 공사가 멈춤",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Watkin%27s_Tower",
+     "proposal": false
+    },
+    {
+     "claim": "그 자리에 웸블리 경기장이 들어섬(탑 터의 기초가 경기장 부지에서 발굴)",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Wembley_Stadium",
+     "proposal": false
+    }
+   ],
+   "note": "Watkin's Tower: «designed to surpass the height of the Eiffel Tower»·«In September 1895 the first stage of the tower was completed». Wembley Stadium 문서: «the concrete foundations of Watkin's Tower». 질문 지시어 '이 경기장'과 맞고 '이 자리'가 가리키는 대상이 분명."
+  },
+  "K2-06:hint": {
+   "ref": "K2-06",
+   "field": "hint",
+   "id": 4940,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "일월산 1,219m·영양군 소재 ko 위키 일월산 문서와 일치(영양군 문서의 1,211m와 달라 GEN이 고친 것). 질문의 두들마을·조지훈문학관과 다른 사실이고 '고추' 대표 정체를 뺌.",
+   "afterVsBefore": "better — 이전은 문서와 높이가 다르고 고추·잎담배 대표 특산",
+   "alone": "해발 1,219m 일월산이 있는 군 → 질문 없이 영양군을 바로 말하는 사람은 드묾",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "영양군에 해발 1,219m의 일월산이 솟아 있음",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/일월산",
+     "proposal": false
+    }
+   ],
+   "note": "ko 일월산: «경상북도 영양군의 청기면과 일월면의 경계에 있는 높이 1,219m의 산». ko 영양군 문서 본문은 1211m라 문서끼리 엇갈리나 산 문서(1,219m)가 본 항목. 청기면·일월면 경계라 '이 군에는'은 맞음."
+  },
+  "K2-10:hint": {
+   "ref": "K2-10",
+   "field": "hint",
+   "id": 4955,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1408 경상도 감영 설치·1601 대구 이전 ko 위키 상주시 문서와 일치. 질문(사벌주·십이목·사벌국면)·해설(삼백·자전거)과 다른 사실.",
+   "afterVsBefore": "better — 이전(임진왜란 초 순변사 이일 패전)보다 질문과 겹침이 없고 문서로 확인됨",
+   "alone": "1408 경상도 감영이 설치됐다가 1601 대구로 이전 → 경상도 지명 유래를 아는 사람이 상주를 떠올릴 수는 있으나 바로는 아님",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "조선 태종 8년(1408) 경상도 감영이 상주에 설치",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/상주시",
+     "proposal": false
+    },
+    {
+     "claim": "1601년(선조 34) 경상감영을 대구로 이전",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/상주시",
+     "proposal": false
+    }
+   ],
+   "note": "문서: «조선 태종 8년(1408년) 경상도 감영을 상주목에 두었다 … 1601년(선조 34년) 경상감영을 대구도호부로 이전하였다»."
+  },
+  "K1-17:question": {
+   "ref": "K1-17",
+   "field": "question",
+   "id": 4973,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "'1895년 땅속에 묻혔다가'는 서울시 미디어허브(고종이 땅속에 묻게 함)·영문 위키(buried)와 맞음. 다만 ko 위키는 같은 해 '강물에 수장'이라 적어 문서끼리 엇갈림 — 땅속 쪽이 공식 자료.",
+   "afterVsBefore": "better — 서울시 공식 자료와 맞고 ko 위키 '수장' 표기와 어긋나는 점만 남음",
+   "alone": null,
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "1895년 땅속에 묻혔다가 1913년 다시 세워짐",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://mediahub.seoul.go.kr/archives/1120135",
+     "proposal": false
+    },
+    {
+     "claim": "비문은 이경석이 짓고 글씨는 오준이 씀",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/삼전도비",
+     "proposal": false
+    }
+   ],
+   "note": "미디어허브: «1895년(고종32) 고종은 삼전도비를 땅속에 묻게 했으나 일제는 1913년 다시 삼전도비를 세웠고». en 위키 Samjeondo Monument: «1895 … The monument was buried». ko 위키: «1895년 … 강물에 수장 시켰다». 문서가 갈려 Q3(확신 없는 서술) 위험이 조금 있으나 공식 기관 문서가 있어 ok. 원하면 '1895년 …' 절을 빼고 '1913년 일제가 다시 세운'만 두어도 이경석·오준으로 정답은 하나."
+  },
+  "K1-17:explanation": {
+   "ref": "K1-17",
+   "field": "explanation",
+   "id": 4973,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2007.2 붉은 페인트 훼손(철거 370)·7.15 복구·습포제와 유기용제로 페인트를 녹여 없앰 — ko 위키 삼전도비와 일치.",
+   "afterVsBefore": "better — 복원 방식을 문서의 습포제·유기용제 방식으로 구체화",
+   "alone": null,
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "2007년 2월 한 남성이 붉은 페인트로 글씨를 적음",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/삼전도비",
+     "proposal": false
+    },
+    {
+     "claim": "그해 7월까지 습포제·유기용제로 페인트를 녹여 복원",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/삼전도비",
+     "proposal": false
+    }
+   ],
+   "note": "문서: «2007년 2월에는 30대 남성이 삼전도비에 붉은 페인트를 사용해 '철거 370'이라고 적어» / «7월 15일 삼전도비는 본래의 모습을 되찾았다» / «습포제와 유기용제를 혼합한 팩으로 페인트를 녹여 없애는 방법». E2 정답만 알려 주는 문장 아님."
+  },
+  "K4-02:hint": {
+   "ref": "K4-02",
+   "field": "hint",
+   "id": 4987,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "우리말샘 개차반 용례(황석영 「몰개월의 새」 — '갈매기 집 앤데 … 개차반이라')와 일치. 질문의 풀이를 되풀이하지 않고 정답 글자도 없음. 도움은 약하나 세기만으로 fix 사유는 아님.",
+   "afterVsBefore": "better — 이전('술만 마시면 이것이 된다')은 뜻풀이·질문 되풀이",
+   "alone": "황석영 소설 속 인물이 '갈매기 집' 미자를 두고 쓰는 말 → 질문 없이는 못 맞힘",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "황석영 「몰개월의 새」에서 한 인물이 '갈매기 집' 아가씨 미자를 두고 개차반이라 함",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://opendict.korean.go.kr/dictionary/view?sense_no=339560&viewType=confirm",
+     "proposal": false
+    }
+   ],
+   "note": "우리말샘 용례: «미자로구먼. 얘는 갈매기 집 앤데, 술만 먹으면 개차반이라 아예 내놨지, 누구하고 또 싸웠을 거요.≪황석영, 몰개월의 새≫». 책 원문이 아니라 사전 용례 인용이라는 한계가 있으나 문서 문장과 일치. 이 말 자체를 뜻하는 정보는 없어 '엮어서 푸는' 길은 약함(weak)."
+  },
+  "K4-06:hint": {
+   "ref": "K4-06",
+   "field": "hint",
+   "id": 4995,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "「진달래꽃」 셋째 덩이가 '즈려밟고 가시옵소서'로 끝나고 -옵소서는 표준국어대사전이 하소서체('하시옵소서' 따위)로 든 꼴 — 문서 일치. 해설의 '하시옵소서'와는 다른 사실.",
+   "afterVsBefore": "better — 이전(-나이다·사극·성경 기도)은 질문의 '현대 입말에서 거의 쓰지 않는' 되풀이에 가까움",
+   "alone": "진달래꽃 3연이 쓰는 높임 등급 → 질문 없이는 하소서체를 바로 말하기 어려움",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "「진달래꽃」 3연이 '가시옵소서'로 끝남",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikisource.org/wiki/진달래꽃_(시집)/진달래꽃",
+     "proposal": false
+    },
+    {
+     "claim": "-옵소서 꼴('하시옵소서')은 하소서체",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=하소서체",
+     "proposal": false
+    }
+   ],
+   "note": "위키문헌 원문은 4덩이(보내드리오리다 / 뿌리오리다 / 사뿐히 즈려밟고 가시옵소서 / 흘리오리다) — 셋째가 가시옵소서. 표준국어대사전 하소서체: «‘하시옵소서’, ‘가사이다’ 따위». 해설의 '하시옵소서'와 같은 어미 형태지만 힌트가 쓰는 사실은 '진달래꽃 3연'이라 H4 같은 사실은 아님."
+  },
+  "K4-24:hint": {
+   "ref": "K4-24",
+   "field": "hint",
+   "id": 5027,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2026 삼복(초복 7.15·중복 7.25·말복 8.14) 월복 기사와 '달력 구분만으로 폭염이 더 길다 판단 못 한다'는 반론 기사 모두 문서와 일치. 답을 주는 힌트는 아니나(weak) 틀린 사실·글자 노출 없음.",
+   "afterVsBefore": "same — 이전(2024 초·중·말복 날짜)도 답으로 가는 길이 약했음",
+   "alone": "올해(2026)가 이런 해라는 언론 보도 → 질문 없이는 월복을 말할 수 없음",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "2026년 중복과 말복 사이가 20일인 월복이라 늦더위가 길 수 있다는 보도",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://v.daum.net/v/20260714181209205",
+     "proposal": false
+    },
+    {
+     "claim": "월복이라는 달력 구분만으로 폭염이 더 길다 판단할 수 없다는 반론",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://www.vegannews.co.kr/news/article.html?no=384522",
+     "proposal": false
+    }
+   ],
+   "note": "다음 기사: «올해 삼복 기간의 독특한 점은 중복과 말복 사이가 20일 간격으로 벌어지는 '월복' 현상 … 늦더위가 더 길게 이어질 가능성이 높아»; 비건뉴스: «월복이라는 달력상 구분만으로 폭염이 더 오래 이어진다고 판단할 수는 없다». '올해'는 2026을 문장 앞에서 못박아 시제 문제는 없음. 해설(하지·경일 규칙)과 다른 사실."
+  },
+  "K4-26:hint": {
+   "ref": "K4-26",
+   "field": "hint",
+   "id": 5029,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "한국민족문화대백과 머슴날: 경남 의령·양산에서 머슴날이 성인식 의미, 당년 20세 청년이 동네 어른·일꾼들에게 한턱 — 문서 일치. 이전(궁중 잔치·자 나누기)은 다른 날 이름 쪽으로 샐 수 있었음.",
+   "afterVsBefore": "better — 이전은 같은 날 궁중 행사(중화절 쪽 이름 유도)였고 지금은 머슴날의 지방 풍속",
+   "alone": "경남 의령·양산에서 이날 스무 살 청년이 한턱 내는 성인식 → 질문 없이는 못 맞힘",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "경남 의령·양산에서 머슴날이 성인식의 의미를 지니고 당년 스무 살 청년이 동네 어른들에게 한턱 냄",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://encykorea.aks.ac.kr/Article/E0018101",
+     "proposal": false
+    }
+   ],
+   "note": "문서: «경상남도 의령이나 양산에서는 머슴날이 성인식(成人式)의 의미를 지니기도 한다 … 당년 20세가 되는 청년은 머슴날에 동네 어른들과 일꾼들에게 술과 음식을 한턱 낸다». 질문의 '술과 음식을 내놓아 위로'(머슴에게)와 방향이 다른 사실이라 H3 겹침 아님. 정답·변형(노비일·일꾼날) 글자 없음."
+  },
+  "K4-19:hint": {
+   "ref": "K4-19",
+   "field": "hint",
+   "id": 5032,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "대구 방짜유기박물관이 1930년대 평북 정주군 납청마을 유기공방을 실물 크기 인물모형으로 연출했다는 교총(한국교육신문) 기사와 일치. 질문의 합금·조직 제작 설명과 다른 사실이고 정답 글자(방짜·유기) 없음.",
+   "afterVsBefore": "better — 이전(징·꽹과리·두께)은 질문 맥락 되풀이이고 불확실",
+   "alone": "대구 박물관의 납청마을 공방 모형 → 방짜유기박물관을 아는 사람만 연결, 질문 없이는 드묾",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "대구의 박물관이 1930년대 평안북도 정주군 납청마을 유기공방을 실물크기 인물모형으로 재현",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://hangyo.com/news/article.html?no=61248",
+     "proposal": false
+    }
+   ],
+   "note": "문서: «1930년대 평안북도 정주군 납청마을 유기공방의 모습을 실물크기 인물모형과 작동모형으로 연출했고». 힌트의 '이 그릇 공방'은 문서의 '유기공방'을 정답 글자 없이 가리킴. 박물관 이름은 쓰지 않아 H2 통과. 같은 정답 활성 문항 없음."
+  },
+  "K4-27:hint": {
+   "ref": "K4-27",
+   "field": "hint",
+   "id": 5039,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1776 풍산 홍씨와 혼인(ko 위키)·9명 자녀 중 6명 요절(이투데이) 모두 문서 일치. 1776 혼인 + 75세 사망 → 60주년로 이어지는 도와주기 길. 정답 글자('혼') 없음.",
+   "afterVsBefore": "better — 이전은 문서에 없는 '열다섯 살' 혼인 서술 등으로 문서와 어긋난 제안, 지금은 문서 연도만",
+   "alone": "다산이 1776 혼인, 아홉 자녀 중 여섯을 잃음 → 질문 없이는 잔치 이름이 안 나옴",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "다산은 1776년 풍산 홍씨와 혼인",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/정약용",
+     "proposal": false
+    },
+    {
+     "claim": "아홉 자녀 가운데 여섯을 일찍 잃음",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://www.etoday.co.kr/news/view/2446897",
+     "proposal": false
+    }
+   ],
+   "note": "ko 위키: «1776년 4월 10일(음력 2월 22일)에 … 풍산 홍씨와 혼인»; 이투데이: «9명의 자녀를 낳았으나 6명이 요절하고 슬하에는 두 아들과 딸 하나». ko 위키 인포박스는 '슬하 6남 3녀'로 9명과 맞음. 힌트에 '혼인'의 '혼'을 피해 '아내로 맞았고'로 씀(H2 통과)."
+  },
+  "K4-28:hint": {
+   "ref": "K4-28",
+   "field": "hint",
+   "id": 5040,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "『초사』 17편 중 《초혼》이 구말에 '사(些)'를 두는 편이라는 ko 위키 초사와 일치. 의식과 같은 이름이라 H10 위반 아님. 대중가요 제목 같은 대표 사례가 아니라 분야 지식을 한 번 거쳐야 해 도와주기.",
+   "afterVsBefore": "better — 이전(김소월 시 「초혼」 — 정답 이름을 제목으로 가리킴)은 famous-one",
+   "alone": "초사 가운데 구말에 '사(些)'를 붙이는 편의 이름 → 한문·문학에 밝은 사람만, 질문 없이는 일반 성인은 못 맞힘",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "『초사』에 실린 작품이 17편",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/초사",
+     "proposal": false
+    },
+    {
+     "claim": "그중 《초혼》은 구 끝마다 '사(些)'자를 둠",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/초사",
+     "proposal": false
+    }
+   ],
+   "note": "ko 위키 초사: «《초혼》에서는 ‘사(些)’자, 《대초》에서는 ‘지(只)’자를 구말에 두고 있다» + 수록 작품 목록 17편(이소~구사). 정답 글자 '초혼'은 힌트에 없음(편명을 가리키는 '같은 이름'). 질문 끝에 '이 의식'이 정답이라 편명=정답 해석은 정확."
+  },
+  "M1-09:question": {
+   "ref": "M1-09",
+   "field": "question",
+   "id": 5050,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "'1976년부터 쓰인 CM송 + 12시에 만나요 + 해태'가 부라보콘 하나로 정해지고 모두 문서(디투데이: 1976 광고에서 처음 공개)와 일치. 출시 연월(문서끼리 1970/1971)을 질문에서 빼 Q3 위험 해소.",
+   "afterVsBefore": "better — 문서끼리 엇갈린 출시 연월을 뺐고 가사·CM송 연도·회사로 유일성 유지",
+   "alone": null,
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "1976년 광고에서 처음 공개된 '12시에 만나요' CM송",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ditoday.com/이게-광고였다고-모두-부라보콘-혼내주러-갑시다/",
+     "proposal": false
+    },
+    {
+     "claim": "해태의 아이스크림 콘",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ditoday.com/이게-광고였다고-모두-부라보콘-혼내주러-갑시다/",
+     "proposal": false
+    }
+   ],
+   "note": "디투데이: «'12시에 만나요~'로 시작하는 CM송 … 1976년 … 광고에서 처음 공개된 이후 30년 넘게 쓰인» / «(12시에 만나요 부라보콘♬ 둘이서 만나요 부라보콘♬ 살짝쿵 데이트 해태 부라보콘♬)». 같은 가사 다른 제품은 없어 유일. '해태'는 지금은 소유가 바뀌었을 수 있으나 '내놓은'이라 과거형이라 시간 단정 아님."
+  },
+  "M1-09:explanation": {
+   "ref": "M1-09",
+   "field": "explanation",
+   "id": 5050,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "작곡가 강근식의 '1시보다 12시가 더 재미있게 들려 12시로 했다' 발언은 디투데이 문서와 일치하고, 문서와 어긋난 '12시=데이트 은어' 풀이를 걷어냄. 정답만 알려 주는 문장 아님(E2 통과).",
+   "afterVsBefore": "better — 출처가 엇갈린 은어 설을 작곡가 직접 발언으로 교체",
+   "alone": null,
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "작사·작곡가 강근식이 가장 많이 먹는 시간이 오후 1시지만 1시보다 12시가 더 재미있어 12시로 했다고 답함",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ditoday.com/이게-광고였다고-모두-부라보콘-혼내주러-갑시다/",
+     "proposal": false
+    }
+   ],
+   "note": "디투데이(여담): «이 CM송을 작사ㆍ작곡한 강근식은 … '사람들이 부라보콘을 가장 많이 소비하는 시간이 오후 1시라고 한다. 그런데 1시보다는 12시가 훨씬 재미있게 다가가는 것 같아 12시라고 했다'고 답했다고». 인터뷰 원문이 아니라 매체의 전언('답했다고')이므로 해설의 '밝혔습니다'는 약간 단정이나 허용 범위."
+  },
+  "S2-24:hint": {
+   "ref": "S2-24",
+   "field": "hint",
+   "id": 5074,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2002 킹스턴 세계주니어선수권 200m 우승·역대 최연소 세계주니어 금메달리스트 — 영문 위키 Usain Bolt와 일치. 질문의 크리켓·고교 일화와 다른 사실. 대표 사건(올림픽·세계기록)이 아님.",
+   "afterVsBefore": "better — 힌트가 없던 문항에 문서로 닫은 두 번째 줄 사실이 생김",
+   "alone": "2002 세계주니어 200m 최연소 금메달 → 육상 팬이 아니면 질문 없이 볼트를 바로 말하기 어려움",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "2002년 킹스턴(자메이카) 세계주니어선수권 200m 우승",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Usain_Bolt",
+     "proposal": false
+    },
+    {
+     "claim": "역대 최연소 세계주니어 금메달리스트",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Usain_Bolt",
+     "proposal": false
+    }
+   ],
+   "note": "문서: «Bolt's 200 m win made him the youngest world-junior gold medallist ever» + «2002 World Junior Championships in Kingston». 킹스턴이 자메이카 수도라 '자국'이 맞음. 정답 글자 '볼트' 없음, 해설(레알·맨유)과 겹침 없음."
+  },
+  "L1-07:hint": {
+   "ref": "L1-07",
+   "field": "hint",
+   "id": 5090,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "러시아 모피 상인 윌리엄 구사크(문서 표기 Goosak)가 놈 골드러시 때 시베리안 허스키를 썰매개로 들여왔다 — 영문 위키와 일치. 정답 글자 없고 '러시아 상인'이 시베리아로 이어지는 도와주기. 발토 일화와는 다른 사실.",
+   "afterVsBefore": "better — 힌트가 없던 문항에 문서로 닫은 두 번째 줄 사실이 생김",
+   "alone": "놈 골드러시 때 러시아 모피 상인이 들여온 썰매개 품종 → 개 애호가는 허스키를 말할 수 있으나 일반 성인은 질문 없이는 드묾",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "러시아 모피 상인 윌리엄 구사크(Goosak)가 놈 골드러시 때 놈에 들여옴",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Siberian_Husky",
+     "proposal": false
+    }
+   ],
+   "note": "문서: «William Goosak, a Russian fur trader, introduced them to Nome, Alaska, during the Nome Gold Rush, initially as sled dogs». 표기 '구사크'는 Goosak의 음차로 허용. 질문의 '놈'과 겹치나 새 사실을 더한 수준(H3 경미). 같은 정답 활성 문항 없음."
+  },
+  "L1-19:explanation": {
+   "ref": "L1-19",
+   "field": "explanation",
+   "id": 5140,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "사자를 '경계와 방어'로 푸는 풀이는 Billiken 문서(el león representa la vigilancia y la defensa de la nación)와 일치하고 '풀이된다'로 한정. 다만 영문 위키는 '용기(courage)'라 적어 풀이가 갈림 — 한정 어미 덕에 허용.",
+   "afterVsBefore": "same — 이전(용기)도 영문 위키에 근거가 있었고 지금은 다른 문서의 풀이로 바뀜. 풀이가 갈리는 사안이라 '풀이된다' 한정이 있는 지금 쪽이 단정 위험은 같거나 낮음",
+   "alone": null,
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "뒷면 사자는 나라를 지키는 경계와 방어를 나타냄",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://billiken.lat/el-mundo/bandera-de-paraguay-dos-lados/",
+     "proposal": false
+    },
+    {
+     "claim": "(참고) 뒷면 사자는 용기를 상징",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Flag_of_Paraguay",
+     "proposal": false
+    }
+   ],
+   "note": "Billiken: «El león representa la vigilancia y la defensa de la nación»; en 위키: «a yellow lion … (symbolising courage)». es 위키는 뒷면 사자 사실만 있고 상징 풀이는 없음. 두 풀이가 문서마다 달라 'X로 풀이된다'는 문장은 허용, 단정이면 fix였을 것. 원하면 '경계와 방어(또는 용기)를 나타낸다고 풀이된다'로 둘을 함께 적는 방법도 가능."
+  },
+  "L3-07:hint": {
+   "ref": "L3-07",
+   "field": "hint",
+   "id": 5172,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1495 그립스훈덴(덴마크 왕 한스의 기함, 스웨덴 앞바다 발트해 침몰)에서 후추 2,000알 넘게 회수 — Black pepper·Gribshunden 문서와 일치. 정체(피페린)를 벗어난 두 번째 줄 사실.",
+   "afterVsBefore": "better — 이전(매운맛 피페린 성분)은 정체·성분 설명이라 famous-one",
+   "alone": "난파선에서 2,000알 넘게 건진 향신료 → '알'이라 후추를 떠올릴 사람은 있으나 정향 등 다른 향신료도 후보라 바로 단정되지는 않음",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "1495년 덴마크 왕 한스의 기함 그립스훈덴이 스웨덴 앞 발트해에서 침몰",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Gribshunden",
+     "proposal": false
+    },
+    {
+     "claim": "난파선에서 후추 2,000알 넘게 회수",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Black_pepper",
+     "proposal": false
+    }
+   ],
+   "note": "Black pepper: «In 2021, archaeologists recovered more than 2,000 peppercorns from the wreck» ; Gribshunden: «Sank in 1495 after an explosion … off the coast of Ronneby in southeastern Sweden». 알갱이 단위 표현이 '이 향신료'를 좁히는 정도라 H9 경계선이나 떠먹여 주기까지는 아님."
+  },
+  "L3-29:hint": {
+   "ref": "L3-29",
+   "field": "hint",
+   "id": 5187,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "'hippos(말)가 든 이름은 귀족 배경을 뜻하곤 했다' — 영문 위키 Xanthippe의 «a compound of hippos, 'horse', which often indicated a noble background»와 일치. '이 뿌리가'로 써서 정답 낱말 '말'을 피함(H2 통과). 질문의 세 인물 이름 사실과 다름.",
+   "afterVsBefore": "better — 이전(히포드로모스 경주로)은 같은 뿌리를 다시 보이는 꼴이라 정답 쪽 뜻풀이에 가까웠음",
+   "alone": "이름에 들어가면 귀족 집안을 뜻한 그리스어 뿌리 → 질문 없이는 못 맞힘",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "facts": [
+    {
+     "claim": "hippos(말)가 이름에 들어가면 고대 그리스에서 귀족 배경을 나타내곤 했다",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Xanthippe",
+     "proposal": false
+    }
+   ],
+   "note": "문서의 'often indicated'를 '뜻하곤 했다'로 옮겨 단정 아님. 같은 정답 활성 #14(포르쉐 로고 동물)의 질문·해설과 같은 사실 아님(H12 통과). 참고: #14의 DB 해설 칸에 'Q-37에 따라 힌트를 만들지 않아야 한다'는 작업 메모가 들어가 있음 — 현행 기준 H7(두 글자 이하도 비우지 않는다)과 어긋나는 낡은 메모로 보이며 해설 정리가 필요할 수 있음."
+  }
+ },
+ "knowledge": {
+  "K4-07:knowledge": {
+   "ref": "K4-07",
+   "id": 4996,
+   "verdict": "ok",
+   "reason": "부부 사이 하오체 사용은 나무위키 '하오체'(위계 등급)로 상위계층 부부에 한해 확인, '-소'(드셨소) 의문형이 하오체 어미임도 확인. 다만 '옛 어른들이 부부 사이에 서로를' 일반 서술과 예문 '여보, 진지 드셨소?'는 문서에 없고 중간계층은 아내→남편 하오체, 남편→아내 하게체라 일반화는 안 닫힘.",
+   "facts": [
+    {
+     "claim": "옛 어른들이 부부 사이에 서로를 대접하며 '여보, 진지 드셨소?'처럼 쓰던 말투도 하오체다",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null,
+     "proposal": false
+    },
+    {
+     "claim": "상위계층은 부부간 하오체를 썼다(중간계층은 아내→남편 하오체, 남편→아내 하게체)",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://namu.wiki/w/하오체",
+     "proposal": false
+    },
+    {
+     "claim": "의문형 '-소'는 하오체 어미(드셨소?)",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://namu.wiki/w/하오체",
+     "proposal": false
+    }
+   ],
+   "tried": "ko.wikipedia 한국어의_높임말·하오체(문서 없음), stdict 하오체, namu.wiki/w/하오체(위계 등급·어미 절), WebSearch 없음(예산 아낌)",
+   "note": "하오체가 부부 사이에서 쓰였다는 부분은 문서에 근거가 있어 힌트가 틀린 것은 아님. 다만 '서로를' 대칭은 상위계층 한정 — 안전하게 하려면 '신분이 높은 집안의 부부가 서로 쓰던 말투도' 처럼 한정. 예문은 -소 어미 확인으로 하오체임은 맞음. 문장 자체는 unverified 로 남김."
+  },
+  "M1-02:knowledge": {
+   "ref": "M1-02",
+   "id": 5043,
+   "verdict": "ok",
+   "reason": "세 주장 중 딘딘 사례(시즌4 첫 회 까나리카노 한 잔을 모두 마시고 1000원)는 텐아시아 기사로 닫음(true). '커피 색에 빗대 까나리카노'와 'MC몽이 처음 원샷'은 G005가 쓴 나무위키 외 다른 문서를 못 찾음 — 후자는 텐아시아 2009 기사가 'MC몽은 등장부터 까나리 액젓을 원샷'이라고만 적어 '처음' 단정은 못 닫음.",
+   "facts": [
+    {
+     "claim": "시즌 4 초반(첫 회) 딘딘이 까나리카노 한 잔을 모두 마시고 1,000원을 받음",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://www.tenasia.co.kr/article/2019120802874",
+     "proposal": false
+    },
+    {
+     "claim": "1박 2일 복불복의 액젓 벌칙 음료를 커피 색에 빗대 '까나리카노'라 부름",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null,
+     "proposal": false
+    },
+    {
+     "claim": "방송에서 처음 한 번에 들이켠 사람은 MC몽",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null,
+     "proposal": false
+    }
+   ],
+   "tried": "tenasia 2019-12-08 시즌4 첫 회 기사(딘딘 1000원 확인) · tenasia 2009 MC몽 기사(등장부터 까나리 액젓 원샷) · weekly.khan 19398 · insight 490955(김종민 18년간 안 마심) · namu.wiki/w/까나리카노→1박 2일 문서(딘딘 3잔 언급만) · WebSearch 2회",
+   "note": "namu 까나리 액젓은 '커피처럼 위장한 까나리 액젓을 아메리카노에 빗대 까나리카노'(G005가 쓴 문서)라 하나 같은 사이트 한 곳. '까나리카노' 명칭의 '커피 색' 근거는 다른 문서에서 못 찾음. 해설의 MC몽 '처음 … 전합니다'는 이미 '전한다' 한정이라 문장 수정까지는 불필요(권고 수준)."
+  },
+  "M1-03:knowledge": {
+   "ref": "M1-03",
+   "id": 5044,
+   "verdict": "ok",
+   "reason": "'고요 속의 외침'이 큰 소리가 나는 헤드폰을 쓰고 두 글자 이상 단어를 전달하는 게임이며 가족오락관의 전설적인 대표 게임이라는 나무위키 하위 문서(가족오락관/역대 게임/고요 속의 외침)로 닫음.",
+   "facts": [
+    {
+     "claim": "'고요 속의 외침'은 소리 질러 단어를 전하는 게임이며 가족오락관의 대표 게임",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://namu.wiki/w/가족오락관/역대 게임/고요 속의 외침",
+     "proposal": false
+    }
+   ],
+   "tried": "ko.wikipedia 가족오락관(해당 게임 언급 없음) · ko.wikipedia 고요_속의_외침(없음) · namu.wiki/w/고요 속의 외침(가수 알이에프 노래, 본 게임은 하위 문서 안내) · namu.wiki/w/가족오락관/역대 게임/고요 속의 외침",
+   "note": "문서: «…가족오락관의 양대 산맥이었던 전설적인 대표 게임 … 아주 시끄러운 소리가 나는 헤드폰을 쓰고 옆 사람이 말한 두 글자 이상의 단어를 전달하는 게임이다. 1995년부터 2009년 종영일까지». 질문의 '소리 질러 단어를 전하는'은 이 규칙의 요약으로 맞음."
+  },
+  "M1-05:knowledge": {
+   "ref": "M1-05",
+   "id": 5046,
+   "verdict": "ok",
+   "reason": "iMBC 'M타임머신': «'인생극장'은 주인공이 사소한 상황에서 할 수 있는 두 가지 선택 중 하나를 고름으로써 …» 및 일밤 코너 이휘재 '그래, 결심했어' — 닫음.",
+   "facts": [
+    {
+     "claim": "인생극장은 이야기마다 이휘재가 두 갈래 선택의 기로에 서서 하나를 고르는 형식",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://enews.imbc.com/News/ViewAmp/235746",
+     "proposal": false
+    }
+   ],
+   "tried": "ko.wikipedia 일요일_일요일_밤에(유행어·코너명만) · ko.wikipedia 이휘재 · enews.imbc.com 235746(닫음) · imaeil 2013(이휘재의 인생극장, 두 선택) · WebSearch 1회",
+   "note": "iMBC(2018-06-12): «영화 '슬라이딩 도어즈'를 연상시키는 '인생극장'은 주인공이 사소한 상황에서 할 수 있는 두 가지 선택 중 하나를 고름으로써 어떤 일…»; ko 위키 일밤: «이휘재의 “그래, 결심했어”라는 유행어로 유명한 〈TV 인생극장〉». 질문의 '이야기마다 이휘재가'는 주연이 이휘재였던 점이 위키로 확인됨."
+  },
+  "H2-01:knowledge": {
+   "ref": "H2-01",
+   "id": 5184,
+   "verdict": "ok",
+   "reason": "ko 위키 지롱드파: «“Girondins”는 본래 산악파가 자파(自派)의 반대파를 지칭하기 위해 사용했으며» — 해설의 '정파 스스로가 아니라 산악파가 붙임'으로 닫음.",
+   "facts": [
+    {
+     "claim": "'지롱드파'라는 이름은 정파 스스로가 아니라 산악파가 붙였다",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/지롱드파",
+     "proposal": false
+    }
+   ],
+   "tried": "ko.wikipedia 지롱드파(닫음) · britannica Girondin(403) · fr.wikipedia Girondins(동음이의 문서)",
+   "note": "ko 위키 명칭 절은 '통일적이지는 않으나 산악파에 반대한다는 공통점…'으로 이어짐. 해설의 '대표 논객들이 지롱드 출신 의원'은 이번 확인 범위 밖(G005가 en 위키 Girondins로 닫음)."
+  }
+ },
+ "cv20": {
+  "1783": {
+   "id": 1783,
+   "verdict": "fix",
+   "categories": [
+    "expose",
+    "readable"
+   ],
+   "reason": "질문이 정답을 풀어 쓴 꼴 — '임의의 각을 셋으로 나누는' = 각의 삼등분(영문 위키 정의 'an angle equal to one third of a given arbitrary angle'와 같은 말). 질문을 읽는 순간 답이 정의 문장이라 3-1/Q2 취지에 어긋남. 다른 답은 사실상 없음(변형 표기뿐).",
+   "proposal": {
+    "hint": null,
+    "question": "원적문제, 입방배적문제와 함께 고대 그리스의 3대 작도 문제로 꼽힙니다. 눈금 없는 자와 컴퍼스만으로는 할 수 없다는 것이 19세기에 증명된, 나머지 하나는 무엇일까요?",
+    "explanation": null,
+    "variants": [
+     "각의 3등분",
+     "각의 삼등분 문제",
+     "삼등분각 문제"
+    ]
+   },
+   "otherAnswers": [
+    "각의 3등분",
+    "각의 삼등분 문제"
+   ],
+   "facts": [
+    {
+     "claim": "각의 삼등분은 눈금 없는 자와 컴퍼스만으로 불가능함이 1837년 완첼이 증명",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Angle_trisection",
+     "proposal": false
+    },
+    {
+     "claim": "원적문제는 1882년 린데만이 증명, 입방배적은 1837년 완첼 — 셋 모두 19세기 증명",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Straightedge_and_compass_construction",
+     "proposal": true
+    }
+   ],
+   "note": "제안은 3대 문제 중 앞의 둘을 단서로 주고 나머지를 묻는 꼴이라 정답 낱말·정의가 질문에 없음(Q2 통과), 3대 작도 문제 = 원적·입방배적·각의 삼등분이라 유일. 대안(한정어 쪽): '60도 각에서 20도를 만들려는 고대 그리스의 작도 문제'(영문 위키 Angle trisection: 20° 작도 불가 → 60° 삼등분 불가)도 가능하나 정답을 에둘러 풀어 쓰는 느낌이 남아 위 안을 우선. 변형(표기)은 B2 이름 요구가 아니라 문제 이름이라 '3등분' 표기를 함께 받는 쪽이 억울함이 적음.",
+   "tried": null
+  },
+  "2187": {
+   "id": 2187,
+   "verdict": "fix",
+   "categories": [
+    "not-unique",
+    "scope"
+   ],
+   "reason": "열린 질문: 점프 이름이 여럿인 이유로 '회전수'(더블·트리플·쿼드)와 '엣지(날)'도 실제로 성립. ko 위키는 6가지 점프(토룹·살코·룹·플립·럿츠·악셀)를 '도약 방법'으로 구분한다고 하지만 질문은 6가지로 한정하지도, 회전수를 배제하지도 않음. 한정어를 질문에 더하는 쪽을 권함.",
+   "proposal": {
+    "hint": null,
+    "question": "피겨스케이팅에는 토룹, 살코, 룹, 플립, 럿츠, 악셀처럼 이름이 다른 점프가 여섯 가지 있습니다. 회전수가 아니라, 이 점프들의 이름을 가르는 것은 무엇일까요?",
+    "explanation": null,
+    "variants": [
+     "도약 방식",
+     "점프하는 방법",
+     "도약 형태"
+    ]
+   },
+   "otherAnswers": [
+    "회전수",
+    "엣지(날)",
+    "날의 방향",
+    "도약 형태"
+   ],
+   "facts": [
+    {
+     "claim": "ISU가 점프로 인정하는 것은 토룹·살코·룹·플립·럿츠·악셀 6가지, 도약 방법에 따라 엣지 점프와 토 점프로 구분",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/피겨_스케이팅_점프",
+     "proposal": true
+    }
+   ],
+   "note": "한정어(회전수가 아니라, 여섯 가지 이름) 쪽이 낫다 — 변형만 늘리면 '회전수' 같은 다른 개념까지 받게 되어 정답이 흐려짐. 해설 '어느 발로 어느 날을 써서 뛰는지'는 문서(도약 방법: 날 vs 발가락)와 맞음.",
+   "tried": null
+  },
+  "2262": {
+   "id": 2262,
+   "verdict": "fix",
+   "categories": [
+    "not-unique",
+    "variants"
+   ],
+   "reason": "영문 위키 Emission factor/Carbon intensity: «carbon intensity of electricity measures the amount of greenhouse gases emitted per unit of electricity produced» 이고 emission factor 와 carbon intensity 는 서로 바꿔 쓰이는 용어 — 질문의 정의에 '탄소 집약도'(carbon intensity), '배출 원단위' 도 그대로 들어맞음. 한정어로 가르기 어려워 변형 추가를 권함.",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": [
+     "탄소 집약도",
+     "탄소집약도",
+     "배출 원단위",
+     "전력 배출계수",
+     "온실가스 배출계수"
+    ]
+   },
+   "otherAnswers": [
+    "탄소 집약도",
+    "배출 원단위",
+    "전력 배출계수",
+    "온실가스 배출 계수"
+   ],
+   "facts": [
+    {
+     "claim": "전기 단위량당 온실가스 배출을 나타내는 값은 carbon intensity / emission factor 로 혼용",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Emission_factor",
+     "proposal": true
+    }
+   ],
+   "note": "기존 변형 '탄소 배출량'은 '양' 자체라 단위량당 '값'과 다른 개념인데 정답으로 받고 있음 — 빼는 편이 질문('발전 방식마다 다른 같은 양당 값')에 맞음. 정답은 '탄소 배출 계수'로 두고 위 변형을 추가하면 억울함이 사라짐.",
+   "tried": null
+  },
+  "2412": {
+   "id": 2412,
+   "verdict": "fix",
+   "categories": [
+    "variants"
+   ],
+   "reason": "ko 위키: «터널굴착기(tunnel boring machine, TBM) 또는 터널 전단면 굴착기» — 같은 장비의 영어 풀이 이름 '터널 보링 머신'(TBM의 약자 풀이)을 치는 사람이 억울. 쉴드 머신/쉴드 TBM 은 연약지반용 하위 유형이고 질문이 '암반'이라 정답에서는 뺌(B7).",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": [
+     "터널 보링 머신",
+     "터널 전단면 굴착기"
+    ]
+   },
+   "otherAnswers": [
+    "터널 보링 머신",
+    "터널 전단면 굴착기"
+   ],
+   "facts": [
+    {
+     "claim": "터널굴착기(TBM)는 수평으로 터널을 굴착하는 기계, 발파 공법보다 진동·소음이 적음",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/터널_굴착기",
+     "proposal": false
+    }
+   ],
+   "note": "쉴드 머신: en 위키 TBM 문서에서 Shield 는 TBM 의 유형(single/double shield, EPB 등)이라 질문 조건('기계가 앞면을 갉아 파며')은 채우지만 B7(좁은 하위 개념)이라 변형에 넣지 않는 쪽을 권함. 해설 '진동과 소음이 적어 도심에서 유리'는 문서와 맞음.",
+   "tried": null
+  },
+  "2574": {
+   "id": 2574,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "질문 조건은 '심사위원이 스스로 빠지는 것'이라 법원·위원회 용어 중 회피에 해당. 제척(법으로 당연 배제)은 이미 변형에 있고 기피는 당사자의 신청이라 질문 조건(스스로 빠짐)을 채우지 못함.",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "otherAnswers": [
+    "제척(이미 변형)",
+    "기피(당사자 신청이라 불일치)"
+   ],
+   "facts": [
+    {
+     "claim": "제척·기피·회피는 법원 직원 등의 직무 배제를 가르는 별개 개념(회피=스스로 물러남)",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null,
+     "proposal": false
+    }
+   ],
+   "note": "사전에서 법률 용례를 못 열어 '회피=스스로 물러남'은 문서로 닫지 못함(unverified) — 판정은 개념 구분의 일반 정의에 기댄 것이라 확신이 아주 높지는 않음. 질문 조건만으로는 기피가 해당되지 않는다는 점은 기피 정의('꺼리거나 싫어하여 피함', 표준국어대사전)로도 확인.",
+   "tried": "stdict 회피·제척·기피(법률 뜻풀이 없음) · ko.wikipedia 제척(민사소송법상 제척·기피·회피 항목 안내만 확인)"
+  },
+  "2887": {
+   "id": 2887,
+   "verdict": "fix",
+   "categories": [
+    "not-unique",
+    "variants"
+   ],
+   "reason": "영문 위키 Reserves-to-production ratio: «R/P is the remaining amount of a non-renewable resource, expressed in time» — 질문의 정의 문장 그대로이고 교과서·자원 분야에서 R/P(비)가 흔히 병용됨. 한국 입력은 '가채연수' 외 'R/P'·'채굴 가능 연수'가 실제로 나올 수 있어 변형 추가를 권함(한정어로는 가르기 어려움).",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": [
+     "R/P",
+     "R/P 비",
+     "R/P 비율",
+     "채굴 가능 연수"
+    ]
+   },
+   "otherAnswers": [
+    "R/P",
+    "R/P 비",
+    "채굴 가능 연수",
+    "매장량 대비 생산량 비"
+   ],
+   "facts": [
+    {
+     "claim": "매장량(reserves)을 연 생산량으로 나눈 값이 남은 채굴 가능 연수를 뜻하는 R/P",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Reserves-to-production_ratio",
+     "proposal": true
+    }
+   ],
+   "note": "'가채연수' 표기 자체는 ko 위키·나무위키에 문서가 없어 문서 대조로는 확인 못 함(교과서 용어라는 점은 지식). 변형의 슬래시(R/P)는 A5(특수문자 금지)와 충돌 가능하므로 'RP'·'R/P' 중 게이트가 허용하는 쪽만 넣을 것 — 못 넣으면 '채굴 가능 연수'만이라도 추가.",
+   "tried": null
+  },
+  "2910": {
+   "id": 2910,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2004년 스카이 프로리그 결승(2004-07-17)이 광안리에서 열리고 광안리 대첩·'10만 신화'가 붙은 곳 — ko 위키 광안리 대첩과 일치. 해운대 등은 2004 결승·10만 단서를 못 채움. 질문이 '전해져'로 한정.",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "otherAnswers": [],
+   "facts": [
+    {
+     "claim": "2004년 프로리그 결승이 광안리 해수욕장에서 열리고 10만 관중 신화로 불림",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/광안리_대첩",
+     "proposal": false
+    }
+   ],
+   "note": "ko 위키 광안리 대첩: «1차 광안리 대첩(2004년 7월 17일) … 스카이 프로리그 2004 1라운드 결승전» ; 광안리해수욕장 문서: «스타크래프트 프로리그의 결승전이 일 년에 한 차례씩 열리는 까닭에 E-스포츠의 성지». 2004 당일 관중이 정확히 10만인지는 문서마다 추산이라 질문의 '전해져'가 필요한 한정으로 작동.",
+   "tried": null
+  },
+  "3072": {
+   "id": 3072,
+   "verdict": "fix",
+   "categories": [
+    "not-unique",
+    "variants"
+   ],
+   "reason": "영문 위키: «The Dreaming or Dreamtime is commonly used as a term …» — 질문의 '영어로 흔히'에 'the Dreaming'(드리밍)도 그대로 해당. 한국어 입력 '드리밍/더 드리밍' 이 변형에 없음. 한정어 대신 변형 추가를 권함.",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": [
+     "드리밍",
+     "더 드리밍"
+    ]
+   },
+   "otherAnswers": [
+    "드리밍",
+    "더 드리밍"
+   ],
+   "facts": [
+    {
+     "claim": "창조의 시간은 영어로 Dreaming 또는 Dreamtime 으로 흔히 불림",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Dreaming_(Australian_Aboriginal_art)",
+     "proposal": true
+    }
+   ],
+   "note": "영문 표기 'Dreamtime/Dreaming' 자체는 B4(영문 원어는 넣지 않음)에 따라 변형에서 제외 — 한글 음차만 추가. 해설의 '과거에 끝난 일이 아니라 지금도 이어지는 시간'은 문서의 timeless time·perpetual creating 과 맞음.",
+   "tried": null
+  },
+  "3466": {
+   "id": 3466,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "영문 위키 Zara: «initially called it 'Zorba' after the classic 1964 film Zorba the Greek, but after learning there was a bar with the same name two blocks away, rearranged the letters to read 'Zara'» — 질문과 일치하고 '전하는'으로 한정. '이미 만들어 둔 간판 글자'는 위키에 없는 세부지만 한정어 안에 있음.",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "otherAnswers": [],
+   "facts": [
+    {
+     "claim": "처음 이름은 영화 '그리스인 조르바'에서 딴 Zorba 였으나 근처 같은 이름 술집 때문에 글자를 재배열해 Zara",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Zara_(retailer)",
+     "proposal": false
+    },
+    {
+     "claim": "인디텍스 1975년 라코루냐 중심가에 첫 매장",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Zara_(retailer)",
+     "proposal": false
+    },
+    {
+     "claim": "이미 만들어 둔 간판 글자를 맞춰 이름을 지었다",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null,
+     "proposal": false
+    }
+   ],
+   "note": "'간판 글자' 세부는 위키가 'rearranged the letters'로만 적음 — 질문이 '전하는'이라 감수 가능하나 확신 없는 서술을 빼는 Q3 취지로는 '글자를 다시 맞춰'만 남겨도 정답은 하나. 동일 정답 활성 #2763(패스트 패션 브랜드)과 질문 사실이 다름.",
+   "tried": null
+  },
+  "3555": {
+   "id": 3555,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "닌텐도 첫 가정용 게임기는 컬러 TV 게임(1977)이 먼저이나 질문이 '카트리지를 꽂는'·'두 번째 컨트롤러에 마이크'로 한정 — 영문 위키 NES: «The second controller also included a microphone». 조건을 모두 채우는 다른 기기 없음.",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "otherAnswers": [],
+   "facts": [
+    {
+     "claim": "패미컴 두 번째 컨트롤러에 마이크가 달려 있음",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Nintendo_Entertainment_System",
+     "proposal": false
+    }
+   ],
+   "note": "해설의 북미판 NES(회색 상자, 비디오 기기 같은 모양)는 ko 위키 NES 항목의 외형 설명과 맞음. 참고: 같은 기기의 북미 이름 'NES' 는 변형에 없음 — 질문이 '패미컴'을 요구하는 이름 질문은 아니므로 선택 사항.",
+   "tried": null
+  },
+  "3609": {
+   "id": 3609,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "영문 위키 FDR: 1921년 8월 캄포벨로 섬에서 병이 나 폴리오 진단으로 허리 아래가 영구 마비, 2003년 연구가 길랭-바레 증후군을 지지하나 역사학자들은 최초 진단대로 기술 — 질문의 '알려진 병'이 그 선을 정확히 한정(소아마비 유지). 서른아홉 살은 1882년생·1921년 발병과 맞음.",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "otherAnswers": [
+    "길랭-바레 증후군(후대 견해 — '알려진' 한정으로 배제)"
+   ],
+   "facts": [
+    {
+     "claim": "1921년 8월 발병, 폴리오 진단 후 허리 아래 영구 마비(2003 연구는 길랭-바레 지지)",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt",
+     "proposal": false
+    }
+   ],
+   "note": "해설의 '10센트 동전(March of Dimes)'은 이번에 문서를 열지 않음(범위 밖). 같은 정답 활성 #988 질문(소크 백신)과 사실이 다름. 참고: '폴리오'(예방접종 명칭으로 흔한 입력)가 변형에 없음 — 선택 사항.",
+   "tried": null
+  },
+  "3680": {
+   "id": 3680,
+   "verdict": "fix",
+   "categories": [
+    "fact-error",
+    "assertive"
+   ],
+   "reason": "질문의 '고구마 밭'은 문서마다 다름 — 위키문헌 원문은 «중국인의 채마 밭에 감자(고구마)며 배추를 도둑질», ko 위키는 '감자, 고구마를 서리', 나무위키는 '고구마밭'. 원문에 '고구마 밭'은 없고 '채마 밭'이므로 질문의 단정이 어긋남. 해설의 '평안도 말' 한정도 문서에서 못 찾음(나무위키: 사투리 가운데 감자가 고구마를 뜻하는 경우가 많다).",
+   "proposal": {
+    "hint": null,
+    "question": "주인공이 결국 중국인 왕 서방의 손에 죽고, 남편은 돈을 받고 그 죽음을 병으로 덮어 버리는 단편 소설은?",
+    "explanation": "김동인의 작품으로, 원문에 도둑질하는 작물이 '감자(고구마)'로 적혀 있어 제목의 감자가 고구마를 가리킨다는 풀이가 있습니다.",
+    "variants": null
+   },
+   "otherAnswers": [],
+   "facts": [
+    {
+     "claim": "왕 서방 밭에서 훔친 것이 '고구마 밭'",
+     "where": "q",
+     "result": "false",
+     "basis": "web",
+     "source": "https://ko.wikisource.org/wiki/%EA%B0%90%EC%9E%90",
+     "proposal": false
+    },
+    {
+     "claim": "원문: 칠성문 밖 중국인의 채마 밭에 감자(고구마)며 배추를 도둑질",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikisource.org/wiki/%EA%B0%90%EC%9E%90",
+     "proposal": true
+    },
+    {
+     "claim": "남편이 돈(십 원 지폐)을 받고 한방 의사와 함께 죽음을 병으로 덮음",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikisource.org/wiki/%EA%B0%90%EC%9E%90",
+     "proposal": false
+    },
+    {
+     "claim": "제목 '감자'는 평안도 말로 고구마를 가리킨다고 풀이",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null,
+     "proposal": false
+    }
+   ],
+   "note": "질문은 정답(감자)과 겹치는 '감자' 글자를 쓰지 않아야 하므로 작물을 빼는 쪽이 안전(왕 서방의 손에 죽고 + 병으로 덮음 + 남편이 돈을 받음으로 정답은 하나). 해설은 원문 표기(감자(고구마))와 '풀이가 있습니다' 한정으로 바꾸면 V010 지적('학계 해석이라 단정 곤란')도 해소. 원문의 괄호 병기가 작가 표기인지 위키문헌 편집자 표기인지는 이번에 못 가림 — 해설은 '위키문헌 수록 원문'이라 쓰는 것이 정확.",
+   "tried": "ko.wikisource 감자(원문) · ko.wikipedia 감자_(소설) · namu.wiki 감자(소설) · hangyo 67950 · WebSearch 1회(평안도 사투리 근거 못 찾음)"
+  },
+  "3934": {
+   "id": 3934,
+   "verdict": "ok",
+   "categories": [],
+   "reason": "영문 위키 Poutine: 1950년대 말 센트르뒤퀘벡 지역 식당들이 원조를 주장하고, 1957년 'ça va faire une maudite poutine!'(엉망진창이 되겠군) 일화·'pouding'은 이상한 조합을 뜻하는 속어 — 질문의 '프랑스어 속어에서 이름이 왔다는 설'·'1950년대 시골 식당에서 처음'과 일치하고 '설/흔한' 한정이 있음. 같은 조건을 채우는 다른 음식은 찾지 못함.",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "otherAnswers": [],
+   "facts": [
+    {
+     "claim": "1950년대 말 퀘벡 센트르뒤퀘벡 지역 식당에서 처음 나왔다는 설(원조 다툼 있음)",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Poutine",
+     "proposal": false
+    },
+    {
+     "claim": "이름은 '엉망(mess)'을 뜻하는 퀘벡 속어에서 왔다는 설",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Poutine",
+     "proposal": false
+    }
+   ],
+   "note": "질문에 지역이 안 나와 '1950년대 시골 식당 + 엉망진창 속어' 조합이 유일 단서이나 이 조합을 채우는 다른 음식을 찾지 못함 — 동음이의(러시아 대통령 푸틴)는 음식으로 한정돼 충돌 없음. 해설의 '씹을 때 뽀드득' 세부는 이번에 문서를 열지 않음(범위 밖). 참고: 한글 표기 '푸탱'을 치는 사람을 위한 변형은 선택 사항. 동일 정답 활성 #3296 질문(퀘벡 음식 구성)과 사실이 다름.",
+   "tried": null
+  }
+ },
+ "pairs": {
+  "4920↔997": {
+   "ref": "K3-13",
+   "id": 4920,
+   "pairedId": 997,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 '며칠 만에 띄운 냄새 강한 발효 식품'(정의), 2회차는 1715 산림경제 기록명·충청도 퉁퉁장(새 사실). 정의 문장 없음, '장' 범주만으로는 안 풀림",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(고초균 효소·소화율) ↔ 1회차 해설(실 같은 점성) 다른 사실. 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치. 새 사실이 단서.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4790↔520": {
+   "ref": "L2-08",
+   "id": 4790,
+   "pairedId": 520,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 정사각형 일곱 조각 놀이(정의), 2회차는 1815~16 미국 선장·로이드 위작·1910 머리 편지(새 사실). 정의 문장 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(1942 볼록 13가지) ↔ 1회차 Q/E(탱그램 이름·전래) 다름. 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치. '항구에서' 한 낱말만 문서 직접 확인 못 함(영어 위키에는 Canton 언급 없음, 검색 요약은 Canton).",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4814↔302": {
+   "ref": "A1-18",
+   "id": 4814,
+   "pairedId": 302,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 비발디 계절 협주곡집, 2회차는 1725 암스테르담 르 센 출판·12곡 중 네 곡(새 사실). 작곡가 이름도 질문에 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(붉은 사제 별명) ↔ 1회차 Q/E(계절 묘사 협주곡) 다른 사실. 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치. 붉은 머리 '집안 내력'은 문서가 완곡('would have referred … a family trait')해 힌트의 '~다고 한다'가 맞음.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "5154↔2535": {
+   "ref": "A2-17",
+   "id": 5154,
+   "pairedId": 2535,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 연말 크리스마스 발레(정의), 2회차는 1892 마린스키 이올란타 동시 초연·비판(새 사실). 정의 문장 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(호프만 1816→뒤마 판본) ↔ 1회차 Q/E(크리스마스·연말 수입) 다름. 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4748↔4268": {
+   "ref": "S2-07",
+   "id": 4748,
+   "pairedId": 4268,
+   "verdict": "ok",
+   "judgeVerdict": "fix",
+   "threeThree": "ok — 1회차는 1973 성 대결, 2회차는 센터·컵 이름 변경(1회차 Q/E에 없는 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "same",
+    "근거": "1회차 #4268 힌트 '2006년 US 오픈 경기장 단지에, 2020년 페드컵에 그녀의 이름이 붙었다' = 2회차 질문의 2006 센터·2020 컵 개명 그대로. 1회차 힌트를 본 사람에게 2회차 질문이 공짜"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "판정자 fix(1회차 힌트 #4268 이 2회차 질문과 같은 사실) — 그러나 #4268 은 G008 이 이미 고쳐 DB 힌트가 \"남동생이 자이언츠 구원 투수\" 로 바뀌어 겹침이 사라졌다(DB 직접 읽음). 대상 밖이라 참고만",
+   "note": "DB #4268 현재 힌트: 그의 남동생은 1972~1981년 샌프란시스코 자이언츠에서 뛴 메이저리그 구원 투수였다.",
+   "verifyOverride": true
+  },
+  "4756↔4273": {
+   "ref": "S2-17",
+   "id": 4756,
+   "pairedId": 4273,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 1992 바르셀로나 남복 금(김문수와), 2회차는 코치 이력·리우 일본 여복 금(새 사실). 정의 문장 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(리우 금메달 짝) ↔ 1회차 Q/E(바르셀로나·애틀랜타 혼복 은). 1회차 힌트(그랑프리 47승·명예의 전당) ↔ 2회차 Q/E(코치 이력·일본 감독) 다름"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치. 2회차 질문에 일본이 직접 나오지 않아 코치 이력 새 사실이 필요.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4825↔478": {
+   "ref": "S3-07",
+   "id": 4825,
+   "pairedId": 478,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 1936 베를린 마라톤·일장기 말소(정의), 2회차는 투구 발굴·반환 경위(새 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(투구 소재 확인·반환 요구 무산) ↔ 1회차 Q/E(우승·일장기·성화). 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "질문·해설 문서와 일치. 힌트의 '1975' 연도만 문서에서 못 찾음(ko 위키는 '앨범을 정리하다 알게 되어' 만, 연도 없음).",
+   "note": null,
+   "verifyOverride": false
+  },
+  "5091↔641": {
+   "ref": "L1-08",
+   "id": 5091,
+   "pairedId": 641,
+   "verdict": "ok",
+   "judgeVerdict": "fix",
+   "threeThree": "ok — 1회차는 접힌 귀·연골 유전자 문제, 2회차는 1961 수지·로스 부부·1966 개명(1회차 Q/E에 없음)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "same",
+    "근거": "1회차 #641 힌트 '1961년 …농장에서 발견한 흰 고양이 수지가 시조' = 2회차 질문의 1961 수지 발견 그대로. 1회차 힌트를 본 사람에게 2회차 질문이 공짜"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "판정자 fix(1회차 힌트 #641 이 2회차 질문과 같은 사실) — #641 은 G008 이 이미 고쳐 DB 힌트가 \"CFA 1978 챔피언십 지위\" 로 바뀌어 겹침이 사라졌다(DB 직접 읽음). 대상 밖이라 참고만",
+   "note": "DB #641 현재 힌트: 미국의 고양이 등록 단체 CFA는 1978년 이 품종에 챔피언십 지위를 주었다.",
+   "verifyOverride": true
+  },
+  "4848↔903": {
+   "ref": "L1-24",
+   "id": 4848,
+   "pairedId": 903,
+   "verdict": "fix",
+   "judgeVerdict": "fix",
+   "threeThree": "ok — 1회차는 한국 과태료·뒷좌석 착용, 2회차는 볼린의 설계·특허 역사(새 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(볼린 명예의 전당) ↔ 1회차 Q/E 무관. 1회차 힌트 비어 있음"
+   },
+   "fixSide": "2회차 해설",
+   "proposal": {
+    "hint": null,
+    "question": null,
+    "explanation": "그 자동차 회사는 볼보로, 볼린은 1959년 이 발명을 특허로 출원해 1962년에 첫 특허를 받았다.",
+    "variants": null
+   },
+   "reason": "2회차 해설 '1959년 첫 특허를 받았다'는 특허 문서와 어긋남 — 1959.8.17 출원, 1962.7.10 등록. 질문·힌트는 문서와 일치.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4805↔2767": {
+   "ref": "L3-14",
+   "id": 4805,
+   "pairedId": 2767,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 빵과 장미·3월 8일(정의), 2회차는 1917 페트로그라드·1922 레닌(새 사실). 정의 문장 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(유엔 1975·1977) ↔ 1회차 Q/E(빵과 장미 해석). 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치. 레닌 1922는 문서가 'declared 8 March as IWD'로 적어 질문의 '기념일로 정했다'와 맞음.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "5066↔1133": {
+   "ref": "A1-14",
+   "id": 5066,
+   "pairedId": 1133,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 U자 관을 밀고 당기는 금관악기(정의), 2회차는 색벗·모차르트 투바 미룸(새 사실). 정의 문장 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(베토벤 5번 ↔ 에게르트) ↔ 1회차 Q/E(슬라이드·글리산도) 다름. 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "5176↔295": {
+   "ref": "H2-07",
+   "id": 5176,
+   "pairedId": 295,
+   "verdict": "fix",
+   "judgeVerdict": "fix",
+   "threeThree": "ok — 1회차는 샹드마르스 1889 철탑(정의), 2회차는 1887 항의문·1909 철거 위기(새 사실). 정의 문장 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(72명 이름) ↔ 1회차 Q/E(샹드마르스·1889·상징). 1회차 힌트 비어 있음"
+   },
+   "fixSide": "2회차 힌트",
+   "proposal": {
+    "hint": "이 건축물에는 프랑스 과학자·기술자·수학자 72명의 이름이 새겨져 있다.",
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "reason": "2회차 힌트 '이 탑'은 정답 '에펠탑'의 마지막 낱말 '탑'을 보여 줌(H2 한 글자 조각 — 기계는 못 막음). 2회차 질문은 '건축물'로만 적었으므로 '탑'은 질문에 없는 단서. '이 건축물'로 교체(chk 통과).",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4807↔834": {
+   "ref": "L3-16",
+   "id": 4807,
+   "pairedId": 834,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 시계를 한 시간 앞당기는 제도(정의), 2회차는 1895 허드슨 제안 동기·1908 포트아서 첫 시행(새 사실). '퇴근 뒤 채집 시간'이 정의에 가깝지만 시계 조정이 질문에 없어 새 사실이 필요",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(프랭클린 1784 풍자) ↔ 1회차 Q/E(한 시간 앞당김·에너지 논란). 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치(1908-05-01).",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4760↔791": {
+   "ref": "S1-05",
+   "id": 4760,
+   "pairedId": 791,
+   "verdict": "fix",
+   "judgeVerdict": "fix",
+   "threeThree": "ok — 1회차는 투수 대신 타석만 서는 자리(정의), 2회차는 1906 코니 맥·일본 1975(새 사실). 정의 문장 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(토머스 명예의 전당) ↔ 1회차 Q/E 다름. 1회차 힌트(한국 1982·오타니) ↔ 2회차 Q/E(맥 1906·일본 1975·블롬버그 1973) 다른 사실"
+   },
+   "fixSide": "2회차 힌트",
+   "proposal": {
+    "hint": "2014년 프랭크 토머스는 다른 어느 자리보다 이 역할로 더 많은 경기를 뛴 선수로는 처음 명예의 전당에 올랐다.",
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "reason": "2회차 힌트 '이 자리에서 가장 많은 경기를 뛴 선수로는 토머스가 처음…'은 토머스가 최다 경기 보유자인 것처럼 읽혀 문서와 어긋남(문서: 'first Hall of Famer who played the majority of his games at DH'). 문구 교체(chk 통과). / VERIFY: 판정자 제안 \"경기의 과반\" 은 en 위키 Frank Thomas 문서의 \"more games as a DH than in any other position\" 과 달라 문서 문구로 교체(chk 통과)",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4768↔2106": {
+   "ref": "S1-13",
+   "id": 4768,
+   "pairedId": 2106,
+   "verdict": "fix",
+   "judgeVerdict": "fix",
+   "threeThree": "ok — 1회차는 1947 첫 흑인 메이저리거·42번(정의), 2회차는 UCLA 네 종목·1944 군사 재판·1946 몬트리올(새 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "same",
+    "근거": "1회차 #2106 힌트 '대학 시절에는 네 종목에서 활약했다' = 2회차 질문의 첫 단서(UCLA 네 종목 레터). 1회차 힌트를 본 사람에게 2회차 단서가 겹침"
+   },
+   "fixSide": "1회차 힌트(#2106)",
+   "proposal": {
+    "hint": "브루클린 다저스에서 뛰며 첫해 신인왕을 받았고, 1949년에는 타격왕과 내셔널리그 최우수선수(MVP)에 올랐다.",
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "reason": "1회차 힌트 둘째 절이 2회차 질문 첫 단서와 같은 사실 — 1949 MVP·타격왕으로 교체(chk 통과). 2회차 힌트(형 맥 0.4초)는 1회차와 겹치지 않음.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4897↔85": {
+   "ref": "S1-21",
+   "id": 4897,
+   "pairedId": 85,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 위치 규정 정의, 2회차는 1925 개정·골 통계(새 사실). 정의 문장 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(맥크래컨 수비) ↔ 1회차 Q/E(규정 정의·관여 조건). 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "5080↔476": {
+   "ref": "S2-21",
+   "id": 5080,
+   "pairedId": 476,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 IOC 창설 프랑스 교육자(정의), 2회차는 1912 예술 경연 가명 금메달(새 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(근대5종 창시) ↔ 1회차 Q/E/H(IOC 창설·체육 교육·남작·심장 올림피아) 다름"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "5097↔3092": {
+   "ref": "L1-03",
+   "id": 5097,
+   "pairedId": 3092,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 줄무늬 칼날 잎·밤에 기공(생리), 2회차는 2017 학명 이동·활시위 섬유(새 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(NASA 1989 공기정화) ↔ 1회차 Q/E(밤 기공·건조 지역). 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치. 'NASA 목록'은 문서가 1989 NASA 보고서(실내 식물 공기 오염 제거 연구)로 적어 큰 틀은 맞음.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4861↔99": {
+   "ref": "L3-17",
+   "id": 4861,
+   "pairedId": 99,
+   "verdict": "fix",
+   "judgeVerdict": "fix",
+   "threeThree": "ok — 1회차는 주니퍼 베리 무색 증류주(정의), 2회차는 1688 정부 장려·1751 호가스(새 사실). 정의 문장 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "same",
+    "근거": "1회차 #99 힌트의 '영국에서 크게 유행했으며'는 2회차 질문 '정부 장려로 이 술이 잉글랜드에 널리 퍼졌다'와 같은 사실(진 열풍의 영국 확산)"
+   },
+   "fixSide": "1회차 힌트(#99)",
+   "proposal": {
+    "hint": "17세기 네덜란드에서 약용 술로 시작했으며, 칵테일 마티니의 기본 술이다.",
+    "question": null,
+    "explanation": null,
+    "variants": null
+   },
+   "reason": "1회차 힌트의 영국 유행 절이 2회차 질문 배경과 겹침 — 그 절만 뺌(chk 통과). 남은 문장은 기존 힌트 그대로.",
+   "note": "1회차 힌트의 '17세기 네덜란드 약용 술'은 이 조각에서 문서로 열지 않음(기존 문구 그대로 둠).",
+   "verifyOverride": false
+  },
+  "4769↔2107": {
+   "ref": "S1-14",
+   "id": 4769,
+   "pairedId": 2107,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 투수→타자 홈런 시대, 2회차는 세인트메리·마티아스 수사·1914 던 계약(새 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(1935 보스턴·감독직 못 얻음) ↔ 1회차 Q/E(투수→타자·번트와 도루). 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치. 별명 유래는 문서도 '정설 없음'이라 해설의 '~많습니다'가 맞음.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4834↔1144": {
+   "ref": "S3-12",
+   "id": 4834,
+   "pairedId": 1144,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 스키+사격 번갈아 하는 종목(정의), 2회차는 1948 연맹 정비·1960 정식(새 사실). 정의 문장 없음",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(비에른달렌 14개) ↔ 1회차 Q/E(스키·사격·심박). 1회차 힌트(이름 어원) ↔ 2회차 Q/E(연맹·밀리터리 패트롤) 다름"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "5152↔160": {
+   "ref": "A2-15",
+   "id": 5152,
+   "pairedId": 160,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 장발장 소설(정의), 2회차는 영어판 뮤지컬 1985 바비컨·혹평·가사·연출(새 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(쇤베르크·부블리) ↔ 1회차 Q/E(위고·장발장 줄거리) 다름. 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4919↔993": {
+   "ref": "K3-12",
+   "id": 4919,
+   "pairedId": 993,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 결대로 찢은 소고기·고춧가루 국(정의), 2회차는 1920년대 대구탕반·최남선·별건곤(새 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(소면·칼국수 사리 변형) ↔ 1회차 Q/E(찢은 소고기·개장국 대체). 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4770↔3437": {
+   "ref": "S1-15",
+   "id": 4770,
+   "pairedId": 3437,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 ALS·은퇴(정의), 2회차는 컬럼비아·1925 핍 대신 1루수(새 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(등번호 4 결번) ↔ 1회차 Q/E(ALS·1939 은퇴 연설) 다른 사실. 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치.",
+   "note": null,
+   "verifyOverride": false
+  },
+  "4899↔962": {
+   "ref": "S1-23",
+   "id": 4899,
+   "pairedId": 962,
+   "verdict": "ok",
+   "judgeVerdict": "ok",
+   "threeThree": "ok — 1회차는 11미터 킥(정의), 2회차는 매크럼 1890 고안·1891 채택(새 사실)",
+   "h12": {
+    "secondToFirst": "ok",
+    "firstToSecond": "ok",
+    "근거": "2회차 힌트(1891.9 빌리 히스 첫 리그 득점) ↔ 1회차 Q/E(11m=12야드). 1회차 힌트 비어 있음"
+   },
+   "fixSide": null,
+   "proposal": null,
+   "reason": "문서와 일치.",
+   "note": null,
+   "verifyOverride": false
+  }
+ },
+ "flipped": [
+  {
+   "key": "S2-07",
+   "from": "fix",
+   "to": "ok",
+   "why": "판정자 fix(1회차 힌트 #4268 이 2회차 질문과 같은 사실) — 그러나 #4268 은 G008 이 이미 고쳐 DB 힌트가 \"남동생이 자이언츠 구원 투수\" 로 바뀌어 겹침이 사라졌다(DB 직접 읽음). 대상 밖이라 참고만"
+  },
+  {
+   "key": "L1-08",
+   "from": "fix",
+   "to": "ok",
+   "why": "판정자 fix(1회차 힌트 #641 이 2회차 질문과 같은 사실) — #641 은 G008 이 이미 고쳐 DB 힌트가 \"CFA 1978 챔피언십 지위\" 로 바뀌어 겹침이 사라졌다(DB 직접 읽음). 대상 밖이라 참고만"
+  }
+ ]
+}

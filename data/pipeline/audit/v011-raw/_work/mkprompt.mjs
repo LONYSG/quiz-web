@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+const W = 'C:/work/quiz-web/data/pipeline/audit/v011-raw';
+const spec = { q1: ['(가) G007 GEN 문구 24 + (가-2) 지식 근거 5 + (나) CV-20 13 = 42건', '(가) · (가-2) · (나) 절'], q2: ['(다) 2회차 25 ↔ 1회차 양방향', '(다) 절'] };
+for (const [k, [what, sec]] of Object.entries(spec)) {
+  const n = JSON.parse(fs.readFileSync(`${W}/_work/${k}.refs.json`, 'utf8')).length;
+  fs.writeFileSync(`${W}/_work/${k}.prompt.txt`, `너는 V011 판정자다 (VERIFY 세션의 하위 에이전트). 이미 DB 에 들어 있는 활성 문구를 **판정만** 한다 — DB 쓰기 · 파일 수정(아래 출력 파일 외) · 서버 기동 · 빌드 · 규칙/프롬프트/코드 수정은 금지다. 찬종에게 묻지 않는다. 모든 응답은 한국어.
+
+## 이 조각: ${k} — ${what} (${n}항목)
+## 읽을 것 (이 순서)
+1. \`${W}/RUBRIC.md\` — 판정 기준 전체(${sec} · 결과 형식 · 보정 표본 6). 이 파일이 기준이다.
+2. \`C:/work/quiz-web/docs/15-QUALITY-STANDARD.md\` — §3-1 §3-2 §3-3 §4-1(H0~H12) §2 B2.
+3. 입력: \`${W}/_work/${k}.txt\` (\`###\` 로 시작하는 블록이 한 항목). 순서 목록은 \`${W}/_work/${k}.refs.json\`.
+
+## 일하는 방법
+- 입력 순서대로 항목마다 한 객체(RUBRIC 결과 형식, key 는 refs.json 의 값 그대로). **빠뜨리거나 순서를 바꾸지 않는다.** ${k === 'q1' ? '(가-2) 지식 근거 5 는 verdict 대신 claims 결과(true/false/unverified + source)와 tried 를 적는다.' : '(다) 항목은 결과 형식 대신 RUBRIC (다) 절의 필드(verdict · threeThree · h12 · fixSide · proposal · reason)를 쓴다.'}
+- **10건마다 저장**: \`${W}/${k}.pNN.json\` (NN=01,02,…) — 그 10건만 담은 JSON 배열(Write 도구). 이미 있는 pNN 은 건너뛰고 이어서 한다. 끝에 \`node -e\` 로 모두 합쳐 개수와 key 순서를 refs.json 과 대조하고 \`${W}/${k}.out.json\` 에 쓴다.
+- ★★ **사실은 문서를 직접 열어 대조한다 — 지식(내 기억)으로 true 를 달면 무효다. 문서를 못 열었거나 문서에 그 문장이 없으면 \`unverified\`(basis 는 web 일 때만 true/false; 못 열었으면 "none").** 숫자·연도·직함·단정어는 문서 문장과 글자 대조. 위키백과는 ko/en 을 직접(\`https://ko.wikipedia.org/wiki/<제목>\`), 나무위키는 403 이 잦다. WebSearch 는 이 조각에서 **15회 이내**(문서 제목을 찾을 때만).
+- 제안 힌트는 쓰기 전 \`node ${W}/_work/chk.mjs <ref> "문구"\` 로 기계 검사(막힘 0). 새 사실은 url 을 열어 확인.
+- 429(사용량 한도)가 나면 멈추고 저장된 곳까지 보고한다 — 모델을 바꾸지 않는다.
+
+## 마지막 보고 (6줄 이내)
+verdict 별 개수 · fix 의 key 와 사유 · (가) better/same/worse 개수 · 지식 근거 5 중 닫은 것 · WebFetch/WebSearch 횟수 · 못 연 문서.
+`);
+}
+console.log('ok');
