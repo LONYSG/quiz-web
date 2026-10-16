@@ -1,0 +1,12 @@
+import { createRequire } from 'node:module';
+const require = createRequire('C:/work/quiz-web/package.json');
+const pg = require('pg'); process.loadEnvFile('C:/work/quiz-web/.env');
+const c = new pg.Client({ connectionString: process.env.DATABASE_URL }); await c.connect();
+const cols = (await c.query(`select column_name from information_schema.columns where table_name='questions' order by ordinal_position`)).rows.map((r) => r.column_name);
+console.log(cols.join(','));
+const cc = (await c.query(`select column_name from information_schema.columns where table_name='categories' order by ordinal_position`)).rows.map((r) => r.column_name); console.log('categories:', cc.join(','));
+const src = (await c.query(`select source_id, coalesce(substring(source_ref from '#([a-z0-9]+)-'),'(none)') tag, count(*)::int n from questions where is_active and difficulty_score>=4 group by 1,2 order by n desc`)).rows; console.log(JSON.stringify(src));
+const tot = (await c.query(`select count(*)::int n, count(*) filter (where difficulty_score>=4)::int top from questions where is_active`)).rows[0]; console.log(tot);
+const sr = (await c.query(`select source_ref from questions where is_active and difficulty_score>=4 limit 8`)).rows.map((r) => r.source_ref); console.log(sr);
+const s2 = (await c.query(`select id, name from sources`)).rows; console.log(JSON.stringify(s2).slice(0, 600));
+await c.end();
