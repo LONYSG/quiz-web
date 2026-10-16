@@ -19,6 +19,7 @@ import type { PlayerView } from './useRoom.js';
 import Icon from './Icon.js';
 import { Crown } from 'lucide-react';
 import PopupClose from './PopupClose.js';
+import DeviceIcon from './DeviceIcon.js';
 
 interface Props {
   players: PlayerView[];
@@ -70,6 +71,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
                 <span className="people-name">
                   <FitText text={p.nickname} className="nick" style={{ color: `var(--p${p.colorIndex})` }} minPx={12} />
                   <span className="people-badges">
+                    <DeviceIcon device={p.device} />
                     {p.isHost && (
                       <span className="host-mark" title="방장">
                         <Icon icon={Crown} fill="currentColor" />

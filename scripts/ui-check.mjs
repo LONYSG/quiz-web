@@ -1865,6 +1865,252 @@ async function shopFlow(browser) {
 }
 
 // -----------------------------------------------------------------------------
+// ★★★ R050 A — 질문 · 힌트 복사 막기 + PC/모바일 판정 · 🖥/📱 (`npm run ui-check:copy`, verify 에 포함)
+// ★★★ R050 B — 태블릿 · 폴드 (`npm run ui-check:devices`, verify 에 포함) — 새 판정으로 모바일 UI 가 되는가 · 깨진 곳
+//   터치 흉내: Emulation.setTouchEmulationEnabled → (pointer: coarse)(hover: none) — 실측(R050): 기본 헤드리스는 fine/hover 다
+// -----------------------------------------------------------------------------
+const COPY_ONLY = args.includes('--copy');
+if (COPY_ONLY) process.env.SHOT_DIR ??= 'verify';
+const DEVICES_ONLY = args.includes('--devices');
+if (DEVICES_ONLY) process.env.SHOT_DIR ??= 'verify';
+async function touchDevice(page, w, h, on = true) {
+  await page.send('Emulation.setTouchEmulationEnabled', on ? { enabled: true, maxTouchPoints: 5 } : { enabled: false });
+  await page.send('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: 1, mobile: on });
+  await sleep(350);
+}
+const uiClass = (page) => page.evaluate("document.documentElement.classList.contains('ui-mobile') ? 'mobile' : document.documentElement.classList.contains('ui-pc') ? 'pc' : '?'");
+async function answerCurrent(page, sender = page) {
+  const text = await page.evaluate("document.querySelector('.q-text')?.dataset.text ?? ''");
+  const ans = await withPg(async (c) =>
+    (await c.query(`SELECT qa.answer_text FROM question_answers qa JOIN questions q ON q.id = qa.question_id WHERE q.question_text = $1 ORDER BY qa.is_primary DESC, qa.id LIMIT 1`, [text])).rows[0]?.answer_text ?? '',
+  );
+  await sender.setInput('.chat-card input', ans);
+  await sender.click('전송');
+  return ans;
+}
+/** 마우스로 끌어 고르기 (진짜 입력) — 고른 글 */
+async function dragSelect(page, selector) {
+  const r = JSON.parse(await page.evaluate(`JSON.stringify((() => { const el = document.querySelector(${JSON.stringify(selector)}); if (!el) return null; el.scrollIntoView({ block: 'center' }); const b = el.getBoundingClientRect(); return { x0: b.left + 4, x1: b.right - 4, y: b.top + Math.min(b.height / 2, 14) }; })())`));
+  if (!r) return null;
+  await page.evaluate('document.getSelection()?.removeAllRanges()');
+  await page.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: r.x0, y: r.y, button: 'left', clickCount: 1 });
+  for (let i = 1; i <= 6; i += 1) await page.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: r.x0 + ((r.x1 - r.x0) * i) / 6, y: r.y, button: 'left', buttons: 1 });
+  await page.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: r.x1, y: r.y, button: 'left', clickCount: 1 });
+  await sleep(120);
+  return page.evaluate("document.getSelection()?.toString() ?? ''");
+}
+/** 진짜 오른쪽 클릭 — 기본 메뉴가 막혔나 */
+async function rightClickBlocked(page, selector) {
+  await page.evaluate("window.__ctx = null; window.addEventListener('contextmenu', (e) => { window.__ctx = e.defaultPrevented; }, { once: true })");
+  const p = JSON.parse(await page.evaluate(`JSON.stringify((() => { const b = document.querySelector(${JSON.stringify(selector)})?.getBoundingClientRect(); return b ? { x: b.left + b.width / 2, y: b.top + Math.min(b.height / 2, 12) } : null; })())`));
+  if (!p) return null;
+  await page.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: p.x, y: p.y, button: 'right', clickCount: 1 });
+  await page.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: p.x, y: p.y, button: 'right', clickCount: 1 });
+  await sleep(150);
+  return page.evaluate('window.__ctx');
+}
+/** 복사 명령(Ctrl+C 와 같은 copy 이벤트) — 클립보드에 들어갈 글 (막혔으면 '') */
+async function copiedText(page) {
+  return page.evaluate(`(() => { let out = null; const on = (e) => { out = e.defaultPrevented ? (e.clipboardData?.getData('text/plain') ?? '') : (document.getSelection()?.toString() ?? ''); }; window.addEventListener('copy', on, { once: true }); document.execCommand('copy'); return out ?? ''; })()`);
+}
+async function copyFlow(browser) {
+  const H = await newPage(browser, 'C-host');
+  await H.setViewport(1280, 720);
+  await signUp(H, 'ch', '복사방장');
+  const roomId = await createRoom(H, 'R050 복사 막기');
+  const G = await newPage(browser, 'C-guest', true);
+  await signUp(G, 'cg', '폰손님');
+  await touchDevice(G, 390, 844);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000);
+  await sleep(800);
+  // ── ★ 판정: PC 창 = ui-pc · 터치 390 = ui-mobile
+  record('★★ A 판정 — PC 1280(마우스 · 키보드) = PC UI', (await uiClass(H)) === 'pc');
+  record('★★ A 판정 — 터치 390 = 모바일 UI', (await uiClass(G)) === 'mobile');
+  // ── 🖥/📱 — 방장 화면 참여자 칸 · 손님(모바일) 명단
+  await H.waitFor("document.querySelectorAll('.seat-card .device-icon').length >= 2", 5000);
+  const hostIcons = await H.evaluate("JSON.stringify([...document.querySelectorAll('.seat-card')].map((s) => [s.querySelector('.seat-nick')?.innerText ?? '', s.querySelector('.device-icon')?.dataset.device ?? '']).filter((x) => x[0]))");
+  record('★★ A 참여자 칸 — 방장 🖥 · 손님 📱', hostIcons.includes('"복사방장","pc"') && hostIcons.includes('"폰손님","mobile"'), hostIcons);
+  await snap(H, '10-device-icons-seats-pc');
+  await realClick(G, '#people-btn');
+  await G.waitFor("document.querySelector('.people-row .device-icon') !== null", 4000);
+  const gIcons = await G.evaluate("JSON.stringify([...document.querySelectorAll('.people-row')].map((r) => [r.querySelector('.nick')?.innerText ?? '', r.querySelector('.device-icon')?.dataset.device ?? '']))");
+  record('★★ A 모바일 명단 — 방장 🖥 · 나 📱', gIcons.includes('"복사방장","pc"') && gIcons.includes('"폰손님","mobile"'), gIcons);
+  await snap(G, '11-device-icons-people-m390');
+  await closeTop(G);
+  // ── 판정이 바뀌면 다시 알린다 — 손님 창을 PC 로(터치 끔 · 1280) → 방장 화면 🖥
+  await touchDevice(G, 1280, 720, false);
+  await G.evaluate("window.dispatchEvent(new Event('resize'))");
+  const flipped = await H.waitFor("[...document.querySelectorAll('.seat-card')].some((s) => s.querySelector('.seat-nick')?.innerText === '폰손님' && s.querySelector('.device-icon')?.dataset.device === 'pc')", 5000);
+  record('★ A 입력 장치 · 창 크기가 바뀌면 다시 판정 · 다시 알림 (📱 → 🖥)', flipped && (await uiClass(G)) === 'pc');
+  await touchDevice(G, 390, 844);
+  await G.evaluate("window.dispatchEvent(new Event('resize'))");
+  await sleep(500);
+
+  // ── 게임 — 질문 · 힌트가 보이는 동안
+  await setQuestionCount(H, 2);
+  await sleep(500);
+  await H.click('게임 시작');
+  await H.waitFor("document.querySelector('.q-text') !== null && document.querySelector('.reveal') === null", 15000);
+  // 힌트 칸(잠긴 칸 · 열린 칸 어느 쪽이든 — 막는 것은 칸 전체)
+  await H.waitFor("document.querySelector('.q-hints') !== null", 5000);
+  await sleep(300);
+  const qText = await H.evaluate("document.querySelector('.q-text')?.dataset.text ?? ''");
+  // PC — 끌어 고르기
+  const selQ = await dragSelect(H, '.q-text');
+  record('★★★ A PC — 질문을 마우스로 끌어도 고를 수 없다', selQ !== null && selQ.trim() === '', JSON.stringify(selQ).slice(0, 60));
+  const selH = await dragSelect(H, '.q-hints');
+  record('★★★ A PC — 힌트도 고를 수 없다', selH !== null && selH.trim() === '', JSON.stringify(selH).slice(0, 60));
+  record('★★ A PC — 질문 위 오른쪽 클릭 메뉴가 막힌다', (await rightClickBlocked(H, '.q-text')) === true);
+  // 전체 선택(Ctrl+A) → 복사: 질문 · 힌트만 빠진다
+  await H.evaluate("document.getSelection().selectAllChildren(document.body)");
+  const all = await copiedText(H);
+  const hintText = await H.evaluate("document.querySelector('.q-hints')?.innerText ?? ''");
+  record('★★★ A 전체 선택 → 복사 — 질문 · 힌트 글은 빠지고 나머지는 복사된다', all.length > 0 && !all.includes(qText.slice(0, 12)) && (hintText === '' || !all.includes(hintText.replace(/\s+/g, ' ').slice(0, 6))) && all.includes('복사방장'), `${all.length}자`);
+  await H.evaluate('document.getSelection()?.removeAllRanges()');
+  // 채팅은 된다
+  await H.setInput('.chat-card input', '채팅은 복사돼요 12345');
+  await H.click('전송');
+  await H.waitFor("[...document.querySelectorAll('.chat-line')].some((l) => l.innerText.includes('채팅은 복사돼요'))", 4000);
+  const lastLine = "[...document.querySelectorAll('.chat-line')].filter((l) => l.innerText.includes('채팅은 복사돼요')).pop()";
+  await H.evaluate(`${lastLine}?.querySelector('.chat-text, span:last-child')?.setAttribute('data-copytest', '1')`);
+  const selC = await dragSelect(H, '[data-copytest="1"]');
+  record('★★ A PC — 채팅은 고를 수 있다', (selC ?? '').includes('복사'), JSON.stringify(selC).slice(0, 40));
+  const cc = await copiedText(H);
+  record('★★ A PC — 채팅은 복사된다', cc.includes('복사'), JSON.stringify(cc).slice(0, 40));
+  record('★ A PC — 채팅 위 오른쪽 클릭은 그대로', (await rightClickBlocked(H, '[data-copytest="1"]')) === false);
+  // 모바일 — CSS(꾹 누름 메뉴 · 선택 핸들 없음) + 꾹 누름 흉내
+  const mStyle = await G.evaluate("JSON.stringify(['.q-text', '.q-hints', '.chat-card input'].map((s) => { const el = document.querySelector(s); if (!el) return null; const cs = getComputedStyle(el); return [cs.userSelect || cs.webkitUserSelect, cs.webkitTouchCallout ?? '']; }))");
+  const ms = JSON.parse(mStyle);
+  record('★★★ A 모바일 — 질문 · 힌트 = 선택 안 됨 · 꾹 누름 메뉴 없음(user-select · touch-callout none)', ms[0]?.[0] === 'none' && ms[1]?.[0] === 'none' && (ms[0]?.[1] === 'none' || ms[0]?.[1] === ''), mStyle);
+  const tp = JSON.parse(await G.evaluate("JSON.stringify((() => { const el = document.querySelector('.q-text'); el.scrollIntoView({ block: 'center' }); const b = el.getBoundingClientRect(); return { x: b.left + b.width / 2, y: b.top + 10 }; })())"));
+  await G.evaluate("window.__ctx = null; window.addEventListener('contextmenu', (e) => { window.__ctx = e.defaultPrevented; }, { once: true })");
+  await G.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: tp.x, y: tp.y }] });
+  await sleep(900);
+  await G.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await sleep(200);
+  const longSel = await G.evaluate("document.getSelection()?.toString() ?? ''");
+  const longCtx = await G.evaluate('window.__ctx');
+  record('★★ A 모바일 — 질문을 꾹 눌러도 글이 골라지지 않는다(메뉴가 뜨면 막힘)', longSel.trim() === '' && longCtx !== false, `sel="${longSel.slice(0, 20)}" ctx=${longCtx}`);
+  await snap(G, '12-copy-question-m390');
+  await snap(H, '13-copy-question-pc');
+  // 정답 공개 화면 — 해설은 복사돼도 된다(지금처럼)
+  await answerCurrent(H);
+  await H.waitFor("document.querySelector('.reveal') !== null", 6000);
+  await sleep(300);
+  const ex = await H.evaluate("getComputedStyle(document.querySelector('.reveal-explain') ?? document.body).userSelect");
+  record('★ A 정답 공개 · 해설은 막지 않는다', ex !== 'none', ex);
+  await H.click('강제 종료').catch(() => undefined);
+}
+
+const DEVICE_SIZES = [
+  { n: 'fold-folded', w: 344, h: 882 },
+  { n: 'fold-open', w: 673, h: 841 },
+  { n: 'ipad-mini', w: 744, h: 1133 },
+  { n: 'ipad-air', w: 820, h: 1180 },
+  { n: 'tab', w: 800, h: 1280 },
+  { n: 'ipad-pro', w: 1024, h: 1366 },
+];
+const DEVICE_VIEWS = DEVICE_SIZES.flatMap((d) => [
+  { n: `${d.n}-portrait`, w: d.w, h: d.h },
+  { n: `${d.n}-landscape`, w: d.h, h: d.w },
+]);
+/** 깨짐 잣대 — 가로 넘침 · 화면 밖으로 잘린 칸/버튼 · 모바일 UI 인가 */
+async function deviceMeasure(page) {
+  return JSON.parse(await page.evaluate(`JSON.stringify((() => {
+    const W = innerWidth;
+    const over = document.documentElement.scrollWidth - W;
+    const cut = [];
+    for (const el of document.querySelectorAll('.card, .room-head, button, input, .shop-pop, .rename-pop, .seat, .chat-card, .q-text, .reveal')) {
+      if (el.offsetParent === null && getComputedStyle(el).position !== 'fixed') continue;
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) continue;
+      if (el.closest('.emoji-grid, .chat-log, .shop-grid, .settings .chips, .friend-list')) continue;
+      if (r.left < -1 || r.right > W + 1) cut.push((el.className || el.tagName).toString().slice(0, 30) + '@' + Math.round(r.left) + '..' + Math.round(r.right));
+    }
+    const ui = document.documentElement.classList.contains('ui-mobile') ? 'mobile' : 'pc';
+    const menu = Boolean(document.querySelector('#menu-btn') && document.querySelector('#menu-btn').offsetParent !== null);
+    const seatsShown = [...document.querySelectorAll('.seats')].some((s) => s.offsetParent !== null && s.getBoundingClientRect().width > 0);
+    return { ui, over, cut: cut.slice(0, 6), menu, seatsShown };
+  })())`));
+}
+async function shootDevices(page, screen, views = DEVICE_VIEWS, fast = false) {
+  const bad = [];
+  for (const v of views) {
+    await touchDevice(page, v.w, v.h);
+    await page.evaluate("window.dispatchEvent(new Event('resize'))");
+    await sleep(fast ? 220 : 380);
+    await page.evaluate('window.scrollTo(0, 0)');
+    const m = await deviceMeasure(page);
+    await snap(page, `20-dev-${screen}-${v.n}`);
+    const room = await page.evaluate("document.querySelector('.room') !== null");
+    const ok = m.ui === 'mobile' && m.over <= 1 && m.cut.length === 0 && (!room || (m.menu && !m.seatsShown));
+    if (!ok) bad.push(`${v.n}: ${JSON.stringify(m)}`);
+  }
+  record(`★★ B ${screen} — 12 크기(폴드 · iPad · 탭 세로/가로) 모두 모바일 UI · 가로 넘침 0 · 잘림 0${screen === 'home' || screen === 'shop-home' ? '' : ' · ☰ 있음 · 참여자 칸 숨김'}`, bad.length === 0, bad.join(' | ').slice(0, 600));
+}
+async function devicesFlow(browser) {
+  const H = await newPage(browser, 'D-host');
+  await H.setViewport(1280, 720);
+  await signUp(H, 'dh', '태블릿방장');
+  const T = await newPage(browser, 'D-tab', true);
+  await signUp(T, 'dt', '태블릿손님');
+  // 방 목록 화면 · 샵(방 밖) · 프로필(방 밖)
+  await shootDevices(T, 'home');
+  await touchDevice(T, 1366, 1024);
+  await realClick(T, '#shop-btn');
+  await T.waitFor("document.querySelector('.shop-pop') !== null", 5000);
+  await shootDevices(T, 'shop-home', DEVICE_VIEWS.filter((v) => ['fold-folded-portrait', 'fold-open-portrait', 'ipad-pro-landscape', 'tab-landscape', 'ipad-mini-portrait'].includes(v.n)));
+  await closeTop(T);
+  await realClick(T, '#rename-btn');
+  await T.waitFor("document.querySelector('.rename-pop') !== null", 5000);
+  await shootDevices(T, 'profile-home', DEVICE_VIEWS.filter((v) => ['fold-folded-portrait', 'ipad-pro-landscape', 'tab-landscape'].includes(v.n)));
+  await closeTop(T);
+  // 로비
+  const roomId = await createRoom(H, 'R050 태블릿 · 폴드');
+  await T.goto(`${BASE}/r/${roomId}`);
+  await T.waitFor("document.querySelector('.stage') !== null", 8000);
+  await sleep(600);
+  await shootDevices(T, 'lobby');
+  // 모바일 ☰ → 이모티콘샵 · 프로필 (로비)
+  await touchDevice(T, 1366, 1024);
+  await realClick(T, '#menu-btn');
+  await sleep(250);
+  await snap(T, '21-dev-menu-ipad-pro-landscape');
+  await realClick(T, '.menu-item', '프로필');
+  await T.waitFor("document.querySelector('.rename-pop') !== null", 4000);
+  await snap(T, '21-dev-profile-ipad-pro-landscape');
+  await closeTop(T);
+  // 게임 — 힌트가 다 보이는 때 · 정답 공개 · 결과
+  await setQuestionCount(H, 3);
+  await sleep(500);
+  await H.click('게임 시작');
+  await H.waitFor("document.querySelector('.q-text') !== null && document.querySelector('.reveal') === null", 15000);
+  await H.waitFor("document.querySelectorAll('.q-hint.open').length >= 2", 30000);
+  await shootDevices(T, 'game', DEVICE_VIEWS, true);
+  await answerCurrent(H);
+  await H.waitFor("document.querySelector('.reveal') !== null", 6000);
+  await shootDevices(T, 'reveal', DEVICE_VIEWS.slice(0, 6), true);
+  await H.waitFor("document.querySelector('.q-text') !== null && document.querySelector('.reveal') === null", 15000);
+  await answerCurrent(H);
+  await H.waitFor("document.querySelector('.reveal') !== null", 6000);
+  await shootDevices(T, 'reveal2', DEVICE_VIEWS.slice(6), true);
+  await H.waitFor("document.querySelector('.q-text') !== null && document.querySelector('.reveal') === null", 15000);
+  await answerCurrent(H);
+  await T.waitFor("document.querySelector('.result-card, .game-result') !== null", 20000);
+  await sleep(400);
+  await shootDevices(T, 'result');
+  // 게임 중 샵 (모바일 ☰)
+  await touchDevice(T, 1180, 820);
+  await realClick(T, '#menu-btn');
+  await sleep(250);
+  await realClick(T, '.menu-item', '이모티콘샵');
+  await T.waitFor("document.querySelector('.shop-pop') !== null", 4000);
+  await shootDevices(T, 'shop-room', DEVICE_VIEWS.filter((v) => ['fold-folded-portrait', 'fold-open-landscape', 'ipad-air-landscape', 'ipad-pro-landscape'].includes(v.n)));
+  await closeTop(T);
+}
+
+// -----------------------------------------------------------------------------
 // ★★★ R046 — 나가기 · 끊김 · 옮기기: 사람 동작을 **진짜 클릭**으로 (`npm run ui-check:leave`, verify 에 포함)
 //   ★ 이 모드는 자기 서버를 띄울 때 끊김 60초 → 5초 · 방장 이전 30초 → 2초로 줄인다 (값만 다르고 경로는 같다)
 // -----------------------------------------------------------------------------
@@ -3064,6 +3310,14 @@ try {
   }
   if (SHOP_ONLY) {
     await shopFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (COPY_ONLY) {
+    await copyFlow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (DEVICES_ONLY) {
+    await devicesFlow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (LEAVE_ONLY) {

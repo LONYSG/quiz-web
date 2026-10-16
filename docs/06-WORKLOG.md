@@ -67,6 +67,18 @@
 
 ---
 
+## 2026-10-17 — 미니게임 1차(틀 · 케이크 기다리기 · 균형의수호자 · 골라 하기) · 복사 막기 · PC/모바일 판정 · 태블릿/폴드 · 출제 규칙 · 소리 샘플 (R050, MAIN) — ★ 진행 기록
+
+- [x] **A 복사 막기 + PC/모바일 판정** — `client/src/noCopy.ts`(질문 · 힌트 `.no-copy` — CSS user-select/touch-callout none + copy·cut·contextmenu·dragstart·selectstart 막기 + 전체 선택 복사 때 그 부분만 뺌) · `client/src/uiMode.ts`(PC = hover:hover+pointer:fine AND 폭 ≥1000 · html.ui-pc/ui-mobile · 바뀌면 다시) · styles.css 의 폭 media 29블록을 `:where(.ui-mobile|.ui-pc)` 로(우선순위 그대로) · `client.device` → 참여자 칸 🖥/📱 · 모바일 명단 · ui-check:copy 15/15(고치기 전 빌드 5/15 — 10 FAIL 확인)
+- [ ] **B 태블릿 · 폴드**
+- [ ] **C 출제 규칙(서로의 정답 흘림)**
+- [ ] **D 미니게임 틀(0017 · 상태 · 등장 · 점수 · 포인트 · 연출 · 골라 하기)**
+- [ ] **E 케이크 기다리기 · 균형의수호자**
+- [ ] **F 소리 샘플 · 들어 보기 페이지**
+- [ ] **G 문서 · 끝 점검 · 보고서**
+
+---
+
 ## 2026-10-14 — 이모티콘샵 · 뽑기(갓챠) · 특별 이모티콘 보내기·표시 (R049, MAIN) — ★ 진행 기록
 
 - [x] **A 서버** — `GET /api/shop`(잔액 · 테마별 가격·total·owned) · `POST /api/shop/draw`(한 트랜잭션 · 계정 행 FOR UPDATE · 미보유 중 무작위 · 부족 409 insufficient · 완성 409 complete · 없는 테마 404 · 401) · `/api/emoji` 메타 전원 + `ownedSpecial` + `themes` · 특별 도배 따로(10초 3회 · 10초 잠금 · `chat.throttled{kind:'special'}`) · 채팅 항목 `special`(스냅샷 포함) · `SHOP_PRICE_OVERRIDE`(검사용) · 봇 shop 28/28(자기 서버 3005 · 값 10 · bot_01 27번 중복 0 · 28번째 409 · bot_06 동시 2 → 200+409 · 잔액 19→9)

@@ -18,7 +18,7 @@
 
 import { RULES, skipThreshold } from '@quiz/shared';
 import type { QuestionResolution, RoomState } from '@quiz/shared';
-import { activeCount } from './registry.js';
+import { activeCount, deviceOf } from './registry.js';
 import type { CurrentQuestion, ExperienceRate, GameResultData, Player, Room } from './types.js';
 
 export type SnapshotReason = 'join' | 'reconnect' | 'resync';
@@ -34,6 +34,8 @@ export interface PlayerView {
   score: number;
   /** ★ R039 — 프로필 사진 버전. null 이면 이름 첫 글자 */
   avatarV: number | null;
+  /** ★ R050 — 기기 종류 (🖥 pc / 📱 mobile). 아직 안 알렸으면 null */
+  device: 'pc' | 'mobile' | null;
 }
 
 export interface RoomSnapshot {
@@ -193,6 +195,7 @@ export function toPlayerView(room: Room, player: Player, now = Date.now()): Play
     joinOrder: player.joinOrder,
     score: player.score,
     avatarV: player.avatarV,
+    device: deviceOf(player.accountId),
   };
 }
 

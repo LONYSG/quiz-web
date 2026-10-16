@@ -50,6 +50,7 @@ import InviteToast from './InviteToast.js';
 import ProfilePanel from './ProfilePanel.js';
 import ShopPanel from './ShopPanel.js';
 import { useServerClock } from './useServerClock.js';
+import { isMobileUi, uiMode } from './uiMode.js';
 
 /** 경로에서 초대받은 방 ID를 뽑는다. /r/<roomId> */
 function roomIdFromPath(): string | null {
@@ -142,6 +143,10 @@ export default function App() {
     // ★ 접속 주소를 하드코딩하지 않는다. 같은 오리진에 붙는다.
     const s = io({ transports: ['websocket', 'polling'] });
     setSocket(s);
+    // ★★ R050 — 기기 종류를 알린다 (접속할 때마다 · 판정이 바뀔 때마다) — 참여자 칸 🖥/📱 · 기록 (D-232)
+    const sendDevice = () => s.emit('client.device', { kind: uiMode() });
+    s.on('connect', sendDevice);
+    window.addEventListener('qw:ui-mode', sendDevice);
     // ★★ R041 — 페이지를 떠나면(다른 주소 · 뒤로 가기 · 탭 닫기) 소켓을 **직접** 닫는다.
     //   원인 (ui-check 실측): 브라우저가 떠난 페이지를 뒤로 가기 캐시(bfcache)에 얼려 두면 소켓이 열린 채 남아
     //   서버가 "아직 접속 중" 으로 봤다 → 모두 떠나도 일시정지가 안 되고, 접속 종료 표시가 늦었다(하트비트 시간까지).
@@ -155,6 +160,7 @@ export default function App() {
     return () => {
       window.removeEventListener('pagehide', onHide);
       window.removeEventListener('pageshow', onShow);
+      window.removeEventListener('qw:ui-mode', sendDevice);
       s.close();
     };
   }, [account?.accountId, mustChange]);
@@ -480,7 +486,7 @@ export default function App() {
           {/* ★★ R043 C-2 — 방 목록 화면의 친구 목록 (크게). 방에 있는 친구는 [들어가기] */}
           <section className="card home-friends">
             <h2>친구</h2>
-            <FriendList social={social} mode="home" onJoin={joinOther} pageSize={window.matchMedia('(max-width: 999px)').matches ? 5 : 6} />
+            <FriendList social={social} mode="home" onJoin={joinOther} pageSize={isMobileUi() ? 5 : 6} />
           </section>
           </div>
         </>

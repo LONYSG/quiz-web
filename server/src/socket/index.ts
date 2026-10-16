@@ -63,6 +63,7 @@ import {
   removePlayer,
   unregisterRoom,
   onAwayExpired,
+  setDevice,
 } from '../rooms/registry.js';
 import { transferHost } from '../rooms/host.js';
 import { initFriends, onAccountOffline, onAccountOnline, registerFriendHandlers } from '../social/friends.js';
@@ -243,6 +244,25 @@ function registerCommonHandlers(socket: Socket): void {
 
 // -----------------------------------------------------------------------------
 function registerRoomHandlers(socket: Socket): void {
+  // ── ★★ R050 (D-232) — 기기 종류 알림 ('pc' = 넓은 화면 + 키보드 환경 · 'mobile'). 방이 없어도 받는다.
+  //   방에 있으면 참여자 표시(🖥/📱)를 바로 고친다. 판정 · 점수에는 쓰지 않는다
+  on<{ kind: 'pc' | 'mobile' }>(
+    socket,
+    'client.device',
+    {
+      parse: (raw) => {
+        const obj = parseObject(raw);
+        if (!obj || (obj.kind !== 'pc' && obj.kind !== 'mobile')) return null;
+        return { kind: obj.kind };
+      },
+    },
+    ({ session, payload }) => {
+      if (!setDevice(session.accountId, payload.kind)) return;
+      const room = getRoomOfAccount(session.accountId);
+      if (room?.players.has(session.accountId)) broadcastPlayers(room);
+    },
+  );
+
   // ── 방 생성
   on<{ title: string }>(
     socket,

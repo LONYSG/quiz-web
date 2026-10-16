@@ -23,6 +23,8 @@ export interface PlayerView {
   score: number;
   /** ★ R039 — 프로필 사진 버전. null 이면 이름 첫 글자 */
   avatarV?: number | null;
+  /** ★ R050 — 기기 종류 (🖥 pc / 📱 mobile). 아직 모르면 null */
+  device?: 'pc' | 'mobile' | null;
 }
 
 export interface ChatView {

@@ -57,7 +57,7 @@ export default function QuestionText({ text }: { text: string }) {
   return (
     <div
       ref={boxRef}
-      className="q-text"
+      className="q-text no-copy"
       data-text={text}
       data-wrap={fit.wrap ? '1' : '0'}
       style={{ ['--q-px' as string]: `${fit.px}px` }}

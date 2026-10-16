@@ -22,8 +22,9 @@ import PopupClose from './PopupClose.js';
 import { usePopup } from './popup.js';
 import { useDismiss } from './useDismiss.js';
 import type { NotificationView, Social } from './useSocial.js';
+import { isMobileUi } from './uiMode.js';
 
-const isMobile = () => window.matchMedia('(max-width: 999px)').matches;
+const isMobile = () => isMobileUi();
 
 /** 친구 버튼 + 창 (방 안). 모바일에서는 버튼을 숨기고 ☰ 의 "친구" 가 같은 창을 연다 */
 export function FriendsButton({ social, inRoom, onJoin }: { social: Social; inRoom: Set<string>; onJoin: (roomId: string) => void }) {

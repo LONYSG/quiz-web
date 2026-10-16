@@ -243,7 +243,7 @@ export default function Question({
           ★★ R040 — 일반 힌트가 없는 문제는 **처음부터** "없음" (서버가 문제 시작 때 있음/없음 여부만 보낸다).
             옛 R039 는 30초에 화면 시계로 "없음" 으로 바꿨다 → 힌트가 있는 문제도 서버 push 가 오기 전 잠깐 "없음" 이 떴다 */}
       {active && (
-        <div className="q-hints">
+        <div className="q-hints no-copy">
           {question.generalHint ? (
             <p key="g-open" className="q-hint q-hint-general open">
               <span className="hint-label">힌트</span> <span>{question.generalHint}</span>

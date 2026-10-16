@@ -2098,55 +2098,55 @@ button.skip-btn.voted {
 }
 
 /* ── 좁은 화면 (1000px 미만 — 모바일) — 한 열로 쌓고 **화면 스크롤 하나만**. 칸 안 스크롤은 없다 */
-@media (max-width: 999px) {
-  .wrap:has(.room) {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .wrap:has(.room){
     /* ★ 화면 스크롤이 있으므로 토스트 완충을 크게 (D-032) */
     padding-bottom: 160px;
   }
-  .room-head {
+  :where(.ui-mobile) .room-head{
     height: auto;
     flex-wrap: wrap;
   }
-  .room-tools {
+  :where(.ui-mobile) .room-tools{
     flex-wrap: wrap;
   }
-  .stage {
+  :where(.ui-mobile) .stage{
     display: flex;
     flex-direction: column;
     height: auto;
   }
-  .seats {
+  :where(.ui-mobile) .seats{
     grid-template-rows: none;
     grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
   }
-  .seat-card {
+  :where(.ui-mobile) .seat-card{
     min-height: 92px;
   }
-  .seat-card.empty {
+  :where(.ui-mobile) .seat-card.empty{
     display: none;
   }
-  .seats-right {
+  :where(.ui-mobile) .seats-right{
     order: 1;
   }
-  .center {
+  :where(.ui-mobile) .center{
     order: 2;
   }
-  .lobby-card {
+  :where(.ui-mobile) .lobby-card{
     grid-template-columns: minmax(0, 1fr);
   }
-  .set-row {
+  :where(.ui-mobile) .set-row{
     flex-wrap: wrap;
   }
-  .avail-line {
+  :where(.ui-mobile) .avail-line{
     margin-left: 0 !important;
   }
-  .room .ranking.two {
+  :where(.ui-mobile) .room .ranking.two{
     grid-template-columns: minmax(0, 1fr);
     grid-auto-flow: row;
     grid-template-rows: none;
   }
   /* ★★ 모바일 채팅은 스크롤하지 않는다 — 최근 메시지만 보이고 위쪽(오래된 것)은 잘린다 */
-  .room .chat-log {
+  :where(.ui-mobile) .room .chat-log{
     height: 200px;
     flex: 0 0 auto;
     overflow: hidden;
@@ -2154,18 +2154,18 @@ button.skip-btn.voted {
     flex-direction: column;
     justify-content: flex-end;
   }
-  .chat-down {
+  :where(.ui-mobile) .chat-down{
     display: none;
   }
-}
+
 
 /* ★ R035 — 넓은 화면의 방에서는 아래 여백을 없앴으므로 토스트를 입력 줄 위로 띄운다.
    ★ 채팅 입력창(= 답안 입력)을 가리지 않는다 (D-032 겹침 검사가 그대로 잰다) */
-@media (min-width: 1000px) {
-  body:has(.room) .toast-layer {
+/* ★ R050 — 옛 @media (min-width: 1000px) → PC UI (html.ui-pc · uiMode.ts) */
+  :where(.ui-pc) body:has(.room) .toast-layer{
     bottom: 84px;
   }
-}
+
 
 /* =============================================================================
    ★★★ R038 — 플레이 피드백 (참여자 칸 글자 · 시간 막대 · 세레머니 · 뒷북 · 모바일)
@@ -2296,46 +2296,46 @@ button {
 }
 
 /* ── ★★★ 모바일 (1000px 미만) — 참여자 칸을 숨기고 **문제와 채팅에 집중**. 세레머니·뒷북은 그대로 보인다 */
-@media (max-width: 999px) {
-  .seats {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .seats{
     display: none;
   }
   /* ★ 문제가 잘리지 않게 — 좁은 화면은 어절 단위로 줄을 바꾼다 (한 줄 맞춤은 넓은 화면에서만) */
-  .q-line {
+  :where(.ui-mobile) .q-line{
     white-space: normal;
     word-break: keep-all;
     overflow-wrap: anywhere;
   }
-  .reveal.has-winner {
+  :where(.ui-mobile) .reveal.has-winner{
     grid-template-columns: minmax(0, 1fr);
   }
-  .ceremony-msg {
+  :where(.ui-mobile) .ceremony-msg{
     font-size: 1.15rem;
   }
-  .ceremony-msg:last-child {
+  :where(.ui-mobile) .ceremony-msg:last-child{
     font-size: 1.3rem;
   }
-  .ceremony-msgs {
+  :where(.ui-mobile) .ceremony-msgs{
     max-height: 7.5em;
   }
-  .q-head {
+  :where(.ui-mobile) .q-head{
     flex-wrap: wrap;
   }
-  .action-bar {
+  :where(.ui-mobile) .action-bar{
     gap: 6px;
   }
-  button.skip-btn {
+  :where(.ui-mobile) button.skip-btn{
     padding: 8px 14px;
     font-size: 0.98rem;
   }
-}
+
 
 /* ★ R038 — 모바일 전용 접속 종료자 내보내기 줄 (넓은 화면에서는 참여자 칸에 있으므로 숨긴다) */
 .mobile-kick {
   display: none;
 }
-@media (max-width: 999px) {
-  .mobile-kick {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .mobile-kick{
     display: flex;
     flex-wrap: wrap;
     gap: 6px 12px;
@@ -2345,10 +2345,10 @@ button {
     background: var(--bad-soft);
     font-size: 0.85rem;
   }
-  .mobile-kick button {
+  :where(.ui-mobile) .mobile-kick button{
     margin-top: 0;
   }
-}
+
 
 
 /* =============================================================================
@@ -2388,71 +2388,71 @@ body {
 }
 
 /* ── ★★★ 모바일 정비 (R039 A-3) — 미니멀: 아이콘만 · 작은 버튼 · 빈 공간 없음 */
-@media (max-width: 999px) {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
   /* 아래 여백(토스트 완충 160px)이 키보드와 함께 큰 빈 공간을 만들었다 → 없앤다. 토스트는 위로 */
-  .wrap:has(.room) {
+  :where(.ui-mobile) .wrap:has(.room){
     padding: 8px 10px 10px;
   }
-  body:has(.room) .toast-layer {
+  :where(.ui-mobile) body:has(.room) .toast-layer{
     top: 8px;
     bottom: auto;
   }
   /* 상단 바 — 아이콘만 */
-  .room-head .lbl {
+  :where(.ui-mobile) .room-head .lbl{
     display: none;
   }
-  .room-head {
+  :where(.ui-mobile) .room-head{
     flex-wrap: nowrap;
     margin-bottom: 6px;
   }
-  .room-title h1 {
+  :where(.ui-mobile) .room-title h1{
     font-size: 1rem;
   }
-  .room-count {
+  :where(.ui-mobile) .room-count{
     display: none;
   }
-  .room-tools {
+  :where(.ui-mobile) .room-tools{
     gap: 4px;
   }
-  .room-tools button.tiny,
-  .room-tools .icon-btn {
+  :where(.ui-mobile) .room-tools button.tiny,
+  :where(.ui-mobile) .room-tools .icon-btn{
     min-width: 32px;
     padding: 4px 8px;
   }
   /* 단축키 안내·단축키 모음 — 모바일에는 키보드 단축키가 없다 */
-  .keybar,
-  kbd {
+  :where(.ui-mobile) .keybar,
+  :where(.ui-mobile) kbd{
     display: none !important;
   }
   /* ★ 채팅 — 로그가 칸 폭을 다 쓰게 (옛 결함: 내용 폭으로 쪼그라들고 긴 글은 오른쪽으로 넘쳤다) */
-  .room .chat-log {
+  :where(.ui-mobile) .room .chat-log{
     flex: 1 1 auto;
     width: 100%;
     min-width: 0;
     height: 180px;
   }
-  .chat-line {
+  :where(.ui-mobile) .chat-line{
     overflow-wrap: anywhere;
   }
-  .chat-input-row button {
+  :where(.ui-mobile) .chat-input-row button{
     padding: 8px 14px;
   }
   /* 결과 · 확인창 버튼 — 작게, 화면 안에 */
-  .next-row {
+  :where(.ui-mobile) .next-row{
     flex-wrap: wrap;
   }
-  .next-row button,
-  .start-area .big-btn {
+  :where(.ui-mobile) .next-row button,
+  :where(.ui-mobile) .start-area .big-btn{
     padding: 9px 18px;
     font-size: 1rem;
   }
-  .room .confirm .big {
+  :where(.ui-mobile) .room .confirm .big{
     font-size: 1rem;
   }
-  .room .card {
+  :where(.ui-mobile) .room .card{
     padding: 10px 12px;
   }
-}
+
 
 /* ── ★ R039 B — 로그인 안내 (회원가입 먼저) */
 .join-hint {
@@ -2558,44 +2558,44 @@ body {
   padding: 2px 8px;
   margin-bottom: 2px;
 }
-@media (max-width: 999px) {
-  .room .chat-line {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .room .chat-line{
     font-size: 0.98rem;
   }
-  .ceremony-msg,
-  .ceremony-msg:last-child {
+  :where(.ui-mobile) .ceremony-msg,
+  :where(.ui-mobile) .ceremony-msg:last-child{
     font-size: 1.3rem;
   }
-}
+
 
 /* ── ★ R039 (스크린샷 검수) — 모바일: 채팅이 남는 높이를 채운다 (화면 아래가 비지 않게). 넘치면 화면 스크롤 하나 */
-@media (max-width: 999px) {
-  .room {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .room{
     display: flex;
     flex-direction: column;
     min-height: calc(100dvh - 18px);
   }
-  .room .stage {
+  :where(.ui-mobile) .room .stage{
     flex: 1 1 auto;
   }
-  .room .center {
+  :where(.ui-mobile) .room .center{
     flex: 1 1 auto;
   }
   /* ★ 기준 높이 0 에서 자란다 — 대화가 길어도 칸이 내용만큼 늘어나지 않는다 (위쪽 옛 메시지는 잘린다) */
-  .room .chat-card {
+  :where(.ui-mobile) .room .chat-card{
     flex: 1 1 0;
     min-height: 240px;
   }
-  .room .chat-wrap {
+  :where(.ui-mobile) .room .chat-wrap{
     flex: 1 1 0;
     min-height: 0;
   }
-  .room .chat-log {
+  :where(.ui-mobile) .room .chat-log{
     flex: 1 1 0;
     height: auto;
     min-height: 0;
   }
-}
+
 .skip-icons i {
   width: 19px;
   height: 19px;
@@ -2885,14 +2885,14 @@ img.emoji {
 .emoji-cell:hover {
   background: var(--surface-2);
 }
-@media (max-width: 999px) {
-  .emoji-key {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .emoji-key{
     display: none;
   }
-  .emoji-slot {
+  :where(.ui-mobile) .emoji-slot{
     padding-bottom: 4px;
   }
-}
+
 
 /* ── R039 E 검수 — 모바일 고르기 창이 오른쪽으로 넘침 (버튼 기본 최소 폭·안쪽 여백이 칸을 밀었다) */
 .emoji-slots {
@@ -2907,17 +2907,17 @@ img.emoji {
 .emoji-pop button.emoji-cell {
   padding: 3px;
 }
-@media (max-width: 999px) {
-  .emoji-pop {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .emoji-pop{
     width: calc(100vw - 40px);
   }
-  .emoji-slots {
+  :where(.ui-mobile) .emoji-slots{
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
-  .emoji-pop button.emoji-slot {
+  :where(.ui-mobile) .emoji-pop button.emoji-slot{
     padding: 4px 0;
   }
-}
+
 /* ── R039 E 검수 — 점수 칸의 "1위" 가 닉네임과 겹침 → 순위는 점수 아래 작은 줄로 */
 .seat-score {
   display: flex;
@@ -2945,11 +2945,11 @@ img.emoji {
   padding: 4px 12px;
   white-space: nowrap;
 }
-@media (max-width: 999px) {
-  .emoji-pop {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .emoji-pop{
     width: calc(100vw - 40px);
   }
-}
+
 /* ── R039 E 검수 — 문제 수 입력칸만 브라우저 기본 검은 네모였다 */
 .count-input {
   border: var(--bw) solid var(--border);
@@ -3148,15 +3148,15 @@ button.skip-btn {
   line-height: 1;
 }
 
-@media (max-width: 999px) {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
   /* B-1 — 모바일은 번호를 숨긴다 (단축키 없음) */
-  .emoji-key {
+  :where(.ui-mobile) .emoji-key{
     display: none;
   }
   /* C-1 — 상단 메뉴 창은 버튼 위치가 아니라 **화면 가운데** */
-  .rename-pop,
-  .prefs.gear .prefs-pop,
-  .infotip-pop {
+  :where(.ui-mobile) .rename-pop,
+  :where(.ui-mobile) .prefs.gear .prefs-pop,
+  :where(.ui-mobile) .infotip-pop{
     position: fixed;
     inset: 0;
     margin: auto;
@@ -3166,36 +3166,36 @@ button.skip-btn {
     overflow-y: auto;
     z-index: 80;
   }
-}
+
 
 /* C-4 — 모바일 맞춤 글자 (Lobby 가 --qs 를 0.75~1 로 정한다). 스크롤 대신 글자를 줄인다 */
-@media (max-width: 999px) {
-  .room .q-text {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .room .q-text{
     font-size: calc(var(--q-px, 19px) * var(--qs, 1));
   }
-  .room .reveal-answer {
+  :where(.ui-mobile) .room .reveal-answer{
     font-size: calc(1.05rem * var(--qs, 1));
   }
-  .room .reveal-answer strong {
+  :where(.ui-mobile) .room .reveal-answer strong{
     font-size: calc(1.25rem * var(--qs, 1));
   }
-  .room .reveal-explain {
+  :where(.ui-mobile) .room .reveal-explain{
     font-size: calc(1.05rem * var(--qs, 1));
   }
-  .room .ceremony-msg,
-  .room .ceremony-msg:last-child {
+  :where(.ui-mobile) .room .ceremony-msg,
+  :where(.ui-mobile) .room .ceremony-msg:last-child{
     font-size: calc(1.3rem * var(--qs, 1));
   }
-  .room.squeeze .chat-card {
+  :where(.ui-mobile) .room.squeeze .chat-card{
     min-height: 150px;
   }
-}
+
 /* ★ R040 검수 — 모바일 ⓘ 안내 창: 문장 속 단축키 글자까지 숨어 "이모티콘은 또는" 처럼 문장이 깨졌다 → 안내 창 안에서는 보인다 */
-@media (max-width: 999px) {
-  .infotip-pop kbd {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .infotip-pop kbd{
     display: inline-block !important;
   }
-}
+
 /* ★ R040 검수 — 결과 순위(360): 접속 종료 배지가 있는 줄에서 닉네임·점수가 두 줄로 꺾였다
    → 순위·배지·점수는 줄지 않고 꺾이지 않는다 / 닉네임이 남는 폭을 쓰고 넘치면 글자를 줄인다 (FitText) */
 .ranking li .rank,
@@ -3215,11 +3215,11 @@ button.skip-btn {
    ★ 화면보다 **덜** 커진다 — 큰 화면은 글자도 커지고 자리도 남는다. 폭·높이 중 작은 쪽을 따라 한 화면 게이트를 지킨다.
    ★ 모바일 배치(1000px 미만)는 그대로 16px.
    ============================================================================= */
-@media (min-width: 1000px) {
-  html {
+/* ★ R050 — 옛 @media (min-width: 1000px) → PC UI (html.ui-pc · uiMode.ts) */
+  html:where(.ui-pc){
     font-size: clamp(15px, calc(8px + min(0.625vw, 1.1112vh)), 24px);
   }
-}
+
 body {
   font-size: 0.9375rem;
 }
@@ -3332,12 +3332,12 @@ button.primary.danger {
   font-weight: 900;
   color: var(--text-dim);
 }
-@media (max-width: 999px) {
-  .people-btn {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .people-btn{
     display: inline-flex;
     align-items: center;
   }
-}
+
 .people-modal {
   width: min(380px, calc(100vw - 24px));
   box-sizing: border-box;
@@ -3461,14 +3461,14 @@ button.people-row.pickable:focus-visible {
   margin: 8px 0 0;
   font-size: 0.7rem;
 }
-@media (max-width: 999px) {
-  .pc-only {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .pc-only{
     display: none;
   }
-  .infotip-pop {
+  :where(.ui-mobile) .infotip-pop{
     position: fixed;
   }
-}
+
 /* ★ R041 E-1 검수 — "⚙ 설정" 이 다른 상단 버튼보다 크게 보였다(icon-btn 1rem) → 같은 크기 */
 .room-tools .prefs-toggle.icon-btn {
   font-size: 0.78rem;
@@ -3561,29 +3561,29 @@ button.people-row.pickable:focus-visible {
 }
 
 /* ★★★ R042 B — 모바일 상단 = [방 제목] [👥 인원] [☰] (건우 확정) */
-@media (max-width: 999px) {
-  .room-tools > .invite > #invite-btn,
-  .room-tools > .rename > #rename-btn,
-  .room-tools > .prefs > .prefs-toggle,
-  .room-tools > .infotip > .infotip-btn,
-  .room-tools > button[aria-label='나가기'] {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .room-tools > .invite > #invite-btn,
+  :where(.ui-mobile) .room-tools > .rename > #rename-btn,
+  :where(.ui-mobile) .room-tools > .prefs > .prefs-toggle,
+  :where(.ui-mobile) .room-tools > .infotip > .infotip-btn,
+  :where(.ui-mobile) .room-tools > button[aria-label='나가기']{
     display: none !important;
   }
-  .menu-btn {
+  :where(.ui-mobile) .menu-btn{
     display: inline-flex !important;
   }
-  .room-tools > button {
+  :where(.ui-mobile) .room-tools > button{
     font-size: 0.95rem;
     padding: 0 0.7em;
   }
-  .room-tools .people-count {
+  :where(.ui-mobile) .room-tools .people-count{
     font-size: 0.75rem;
   }
   /* ★ 제목 — 자리가 넓어졌다. 그래도 길면 두 줄까지, 그 너머만 줄임 (판단) */
-  .room-title {
+  :where(.ui-mobile) .room-title{
     flex: 1 1 auto;
   }
-  .room-title h1 {
+  :where(.ui-mobile) .room-title h1{
     white-space: normal;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -3592,7 +3592,7 @@ button.people-row.pickable:focus-visible {
     word-break: keep-all;
     overflow-wrap: anywhere;
   }
-}
+
 .menu-modal {
   width: min(320px, calc(100vw - 32px));
   box-sizing: border-box;
@@ -3643,25 +3643,25 @@ button.people-row.pickable:focus-visible {
 }
 
 /* ★★ R042 F-2 — 모바일 로비: 문제 수 · 난이도 · 분야 모두 같은 방식 (라벨 위 · 고르기 아래) */
-@media (max-width: 999px) {
-  .settings .set-row {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .settings .set-row{
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
   }
-  .settings .set-label {
+  :where(.ui-mobile) .settings .set-label{
     flex: 0 0 auto;
   }
-  .avail-line {
+  :where(.ui-mobile) .avail-line{
     margin: -2px 0 0 !important;
   }
-}
+
 /* ★ R042 검수 — PC 에 👥 가 보였다(새 상단 버튼 규칙이 숨김을 덮음) → 넓은 화면에서는 숨긴다 */
-@media (min-width: 1000px) {
-  .room-tools > .people-btn {
+/* ★ R050 — 옛 @media (min-width: 1000px) → PC UI (html.ui-pc · uiMode.ts) */
+  :where(.ui-pc) .room-tools > .people-btn{
     display: none !important;
   }
-}
+
 /* ★ R042 검수 — 문제 수 입력칸 글자가 옆 버튼보다 작았다(브라우저 기본 13.3px 고정) → 버튼과 같은 결로 */
 .count-input {
   font-size: 0.85rem;
@@ -3688,13 +3688,13 @@ button.people-row.pickable:focus-visible {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--explain-lines);
 }
-@media (max-width: 999px) {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
   /* 모바일은 R040 맞춤 글자(--qs)와 곱한다 */
-  .room .reveal .reveal-explain {
+  :where(.ui-mobile) .room .reveal .reveal-explain{
     font-size: calc(1.05rem * var(--qs, 1) * var(--ex, 1));
     max-height: calc(1.05rem * var(--qs, 1) * 1.55 * var(--explain-lines));
   }
-}
+
 
 /* =============================================================================
    ★★★ R043 — 공통 부품 (재사용: 팝업 머리 줄 · ✕ · 로딩 버튼 · 확인 버튼 색)
@@ -3856,8 +3856,8 @@ button.primary.tone-warn {
   padding: 6px 14px;
   font-size: 0.85rem;
 }
-@media (max-width: 999px) {
-  .invite-pop {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .invite-pop{
     position: fixed;
     inset: 0;
     margin: auto;
@@ -3865,7 +3865,7 @@ button.primary.tone-warn {
     height: fit-content;
     z-index: 80;
   }
-}
+
 /* 새 비밀번호 화면 */
 .password-change form {
   display: grid;
@@ -3894,11 +3894,11 @@ button.primary.tone-warn {
 .mobile-only {
   display: none;
 }
-@media (max-width: 999px) {
-  .mobile-only {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .mobile-only{
     display: block;
   }
-}
+
 .info-list li .ico {
   color: var(--accent);
 }
@@ -3980,12 +3980,12 @@ button.primary.tone-warn {
   animation: pop-in 140ms var(--ease-pop);
   text-align: left;
 }
-@media (max-width: 999px) {
-  .room-tools > .social > #friends-btn,
-  .room-tools > .social > #bell-btn {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) .room-tools > .social > #friends-btn,
+  :where(.ui-mobile) .room-tools > .social > #bell-btn{
     display: none !important;
   }
-  .social-pop {
+  :where(.ui-mobile) .social-pop{
     position: fixed;
     inset: 0;
     margin: auto;
@@ -3993,7 +3993,7 @@ button.primary.tone-warn {
     height: fit-content;
     z-index: 80;
   }
-}
+
 .friend-list {
   display: flex;
   flex-direction: column;
@@ -4093,23 +4093,23 @@ button.primary.tone-warn {
 .home-friends h2 {
   margin-bottom: 8px;
 }
-@media (min-width: 1000px) {
-  .wrap.narrow.home-wide {
+/* ★ R050 — 옛 @media (min-width: 1000px) → PC UI (html.ui-pc · uiMode.ts) */
+  :where(.ui-pc) .wrap.narrow.home-wide{
     max-width: 920px;
   }
-  .home-grid {
+  :where(.ui-pc) .home-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     align-items: start;
   }
-  .home-grid .card {
+  :where(.ui-pc) .home-grid .card{
     margin-bottom: 12px;
   }
-  .home-grid .home-friends {
+  :where(.ui-pc) .home-grid .home-friends{
     margin-bottom: 0;
   }
-}
+
 /* ★ R043 검수 — 친구 아이디 칸: 제출 버튼 공통 규칙(form button 100%)이 버튼을 키워 입력칸이 쪼그라들었다 */
 .friend-add > button[type='submit'] {
   width: auto;
@@ -4121,11 +4121,11 @@ button.primary.tone-warn {
   justify-content: center;
 }
 /* ★ R043 검수 — QHD 에서 친구 · 알림 창이 px 고정이라 글자만 커져 비좁았다 → 글자와 함께 커지게 (1280 에서 약 360px) */
-@media (min-width: 1000px) {
-  .social-pop {
+/* ★ R050 — 옛 @media (min-width: 1000px) → PC UI (html.ui-pc · uiMode.ts) */
+  :where(.ui-pc) .social-pop{
     width: 24rem;
   }
-}
+
 /* ★★ R043 D 검수 — ✕ 자리가 창마다 2~3px 달랐다(창 안쪽 여백 12/14px · 머리줄 높이 차이) → 모든 창에서 오른쪽 위 같은 자리에 고정 */
 .modal,
 .people-modal,
@@ -4204,21 +4204,21 @@ button.primary.tone-warn {
   font-weight: 800;
 }
 /* ★★ R044 C-4 — 안내 창: 한 항목 한 줄. PC 는 창 폭을 가장 긴 줄에 맞춘다(옛 440px 고정 — 큰 화면에서 글자만 커져 꺾였다) */
-@media (min-width: 1000px) {
-  .infotip-pop {
+/* ★ R050 — 옛 @media (min-width: 1000px) → PC UI (html.ui-pc · uiMode.ts) */
+  :where(.ui-pc) .infotip-pop{
     width: max-content;
     max-width: calc(100vw - 32px);
   }
-  .infotip-pop .info-list li {
+  :where(.ui-pc) .infotip-pop .info-list li{
     white-space: nowrap;
   }
-}
+
 /* ★ R044 C-3 (건우: "문제 수와 '낼 수 있는 문제' 는 같은 분류 — 더 붙어야") — 이 줄만 위로 붙인다 (설정 칸 줄 간격 8px → 3px). 다른 간격은 그대로 */
-@media (min-width: 1000px) {
-  .settings .avail-line {
+/* ★ R050 — 옛 @media (min-width: 1000px) → PC UI (html.ui-pc · uiMode.ts) */
+  :where(.ui-pc) .settings .avail-line{
     margin-top: -5px !important;
   }
-}
+
 /* ★ R044 C-2 — 튀어 오를 때(1.3배)도 위 글자로 번지지 않게: 위쪽 가운데를 기준으로 커진다 (아래 빈 자리 쪽으로) */
 .seat-emoji-pop {
   transform-origin: 50% 0;
@@ -4244,11 +4244,11 @@ button.primary.tone-warn {
   margin: 3px 0 -3px;
 }
 /* ★ R044 A-5 검수 — 모바일 방 안: 초대 토스트가 상단 바(☰ · 👥 · 제목)를 덮었다(저절로 사라지지 않아 계속 막는다) → 상단 바 바로 아래 */
-@media (max-width: 999px) {
-  body:has(.room) .toast-layer.invite-layer {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
+  :where(.ui-mobile) body:has(.room) .toast-layer.invite-layer{
     top: 52px;
   }
-}
+
 
 /* =============================================================================
    ★★★ R045 A — 이모티콘은 어떤 글자도 가리지 않는다 (건우: "아직도 경험 수를 가린다. 흰색 박스가 침범한다")
@@ -4683,12 +4683,12 @@ button.primary.tone-warn {
   0%, 80% { opacity: 1; }
   100% { opacity: 0; }
 }
-@media (max-width: 999px) {
+/* ★ R050 — 옛 @media (max-width: 999px) → 모바일 UI (html.ui-mobile · uiMode.ts) */
   /* 모바일: 🎁 는 ☰ 안 · 샵 창은 화면 가운데 (다른 상단 창과 같은 규칙) */
-  .room-tools > .shop > #shop-btn {
+  :where(.ui-mobile) .room-tools > .shop > #shop-btn{
     display: none !important;
   }
-  .shop-pop {
+  :where(.ui-mobile) .shop-pop{
     position: fixed;
     inset: 0;
     margin: auto;
@@ -4697,11 +4697,37 @@ button.primary.tone-warn {
     max-height: calc(100dvh - 24px);
     z-index: 80;
   }
-  .special-float-pic {
+  :where(.ui-mobile) .special-float-pic{
     width: 80px;
     height: 80px;
   }
-  .special-layer {
+  :where(.ui-mobile) .special-layer{
     gap: 8px;
   }
+
+
+/* =============================================================================
+   ★★★ R050 — 질문 · 힌트 복사 막기 (noCopy.ts) · 기기 표시 🖥/📱 (DeviceIcon · uiMode.ts)
+   ============================================================================= */
+.no-copy,
+.no-copy * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+.device-icon {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: 0.25em;
+  font-size: 0.72em;
+  color: var(--text-dim);
+  opacity: 0.85;
+}
+.seat-top .device-icon {
+  font-size: 0.8rem;
+}
+.people-badges .device-icon {
+  margin-left: 0;
+  font-size: 0.8rem;
 }

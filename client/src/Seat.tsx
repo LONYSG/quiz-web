@@ -20,6 +20,7 @@ import FitText from './FitText.js';
 import type { PlayerView } from './useRoom.js';
 import Icon from './Icon.js';
 import { Crown } from 'lucide-react';
+import DeviceIcon from './DeviceIcon.js';
 
 interface Props {
   player: PlayerView | null;
@@ -104,6 +105,7 @@ export default function Seat({
         <Avatar nickname={player.nickname} colorIndex={player.colorIndex} accountId={player.accountId} avatarV={player.avatarV} />
         {/* ★★ R040 — "…" 없이: 자리보다 길면 글자를 줄인다 (R041 한도 10칸 — 1536×864 에서 한글 10자 실측) */}
         <FitText text={player.nickname} className="nick seat-nick" style={{ color: `var(--p${player.colorIndex})` }} minPx={14} />
+        <DeviceIcon device={player.device} />
       </div>
       {hasBadges && (
         <div className="seat-badges">

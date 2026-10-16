@@ -46,6 +46,7 @@ import { BellButton, FriendsButton } from './SocialPopups.js';
 import ProfilePanel from './ProfilePanel.js';
 import ShopPanel from './ShopPanel.js';
 import type { Social } from './useSocial.js';
+import { isMobileUi } from './uiMode.js';
 
 interface Props {
   socket: Socket;
@@ -282,7 +283,7 @@ export default function Lobby({
     prevStateRef.current = state;
     if (prev === state) return;
     if (!KEYBOARD_DROP_STATES.has(state)) return;
-    if (!window.matchMedia('(max-width: 999px)').matches) return;
+    if (!isMobileUi()) return;
     const a = document.activeElement as HTMLElement | null;
     if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA')) {
       a.blur();
@@ -508,7 +509,7 @@ export default function Lobby({
       const se = document.scrollingElement ?? document.documentElement;
       room.style.removeProperty('--qs');
       room.classList.remove('squeeze');
-      if (!window.matchMedia('(max-width: 999px)').matches) {
+      if (!isMobileUi()) {
         room.dataset.qs = '1';
         return;
       }

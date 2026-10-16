@@ -28,6 +28,22 @@ const rooms = new Map<string, Room>();
 /** 계정별로 지금 어느 방에 있는지. 한 사람이 두 방에 동시에 있을 수 없다 */
 const accountRoom = new Map<string, string>();
 
+/**
+ * ★★ R050 (D-232) — 계정별 기기 종류 (클라이언트가 알린다 — 'pc' = 넓은 화면 + 키보드 환경 · 'mobile' = 그 밖).
+ *   ★ 화면 표시(참여자 칸 🖥/📱)와 기록(game_players.device · minigame_players.device)에 쓴다. 판정에는 쓰지 않는다.
+ *   ★ 방과 따로 둔다 — 방에 들어오기 전(방 목록 화면)에 알려도 남는다. 서버가 재시작되면 다시 알린다(접속 때 보낸다).
+ */
+export type DeviceKind = 'pc' | 'mobile';
+const deviceOfAccount = new Map<string, DeviceKind>();
+export function setDevice(accountId: string, kind: DeviceKind): boolean {
+  const before = deviceOfAccount.get(accountId);
+  deviceOfAccount.set(accountId, kind);
+  return before !== kind;
+}
+export function deviceOf(accountId: string): DeviceKind | null {
+  return deviceOfAccount.get(accountId) ?? null;
+}
+
 export const DEFAULT_SETTINGS: RoomSettings = {
   questionCount: 20,
   // ★ R033 (Q-11 개정) — 항상 5초 카운트다운. 값은 validateRoomSettings 가 다시 맞춘다
