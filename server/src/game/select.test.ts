@@ -334,3 +334,69 @@ describe('remainingQuestionCount — 조기 종료 판정 (Q-22)', () => {
     expect(n).toBe(1);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ R050 (C66 · D-233) — 서로의 정답 흘림: 이미 보여 준 글에 정답이 들어 있는 후보는 같은 단계 안에서 뒤로
+// ─────────────────────────────────────────────────────────────────────────────
+describe('R050 — 정답 흘림 (shownNorm)', () => {
+  it('★ 1단계 안에서 흘림 없는 후보를 먼저 고른다', () => {
+    const r = selectNextQuestion(
+      input({ pool: [q('1', ['훈민정음']), q('2', ['안도라'])], shownNorm: '세종대왕이창제한문자는무엇인가훈민정음해례본' }),
+    );
+    expect(r?.question.id).toBe('2');
+    expect(r?.stage).toBe(1);
+  });
+
+  it('★ 흘림 있는 후보만 남으면 그것을 낸다 (조기 종료를 늘리지 않는다)', () => {
+    const r = selectNextQuestion(input({ pool: [q('1', ['훈민정음'])], shownNorm: '훈민정음' }));
+    expect(r?.question.id).toBe('1');
+    expect(r?.stage).toBe(1);
+  });
+
+  it('★ 단계 순서가 먼저다 — 1단계의 흘림 후보가 2단계의 깨끗한 후보보다 앞선다', () => {
+    const r = selectNextQuestion(
+      input({
+        pool: [q('1', ['훈민정음']), q('2', ['안도라'])],
+        experienced: new Map([
+          ['A', new Set(['2'])],
+          ['B', new Set<string>()],
+        ]),
+        shownNorm: '훈민정음',
+      }),
+    );
+    expect(r?.question.id).toBe('1');
+    expect(r?.stage).toBe(1);
+  });
+
+  it('★ 복수 정답 중 하나만 들어 있어도 흘림이다', () => {
+    const r = selectNextQuestion(
+      input({ pool: [q('1', ['알렉산더플레밍', '플레밍']), q('2', ['페니실린'])], shownNorm: '플레밍이발견한항생물질' }),
+    );
+    expect(r?.question.id).toBe('2');
+  });
+
+  it('★ 2글자 이하 정답은 흘림으로 보지 않는다 (우연 포함)', () => {
+    const r = selectNextQuestion(input({ pool: [q('1', ['밤']), q('2', ['안도라'])], shownNorm: '밤하늘' }));
+    expect(r?.question.id).toBe('1');
+  });
+
+  it('★ shownNorm 이 없으면 규칙이 꺼진다 (옛 호출)', () => {
+    const r = selectNextQuestion(input({ pool: [q('1', ['훈민정음']), q('2', ['안도라'])] }));
+    expect(r?.question.id).toBe('1');
+  });
+
+  it('★ 2 · 3단계 안에서도 같다', () => {
+    const exp = new Map([
+      ['A', new Set(['1', '2'])],
+      ['B', new Set<string>()],
+    ]);
+    const r2 = selectNextQuestion(input({ pool: [q('1', ['훈민정음']), q('2', ['안도라'])], experienced: exp, shownNorm: '훈민정음' }));
+    expect(r2?.question.id).toBe('2');
+    expect(r2?.stage).toBe(2);
+    const r3 = selectNextQuestion(
+      input({ pool: [q('1', ['훈민정음']), q('2', ['안도라'])], experienced: exp, usedAnswerNorms: new Set(['훈민정음', '안도라']), shownNorm: '훈민정음' }),
+    );
+    expect(r3?.question.id).toBe('2');
+    expect(r3?.stage).toBe(3);
+  });
+});

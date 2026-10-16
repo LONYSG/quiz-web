@@ -117,6 +117,11 @@ export interface ActiveGame {
    *     근거: 판정이 answer_norm 전체로 이루어지므로 중복 기준도 같아야 한다.
    */
   usedAnswerNorms: Set<string>;
+  /**
+   * ★★ R050 (C66 · D-233) — 이 판에서 보여 준 문제들의 질문 · 일반 힌트 · 해설을 정규화해 이은 글.
+   *   다음 문제 선정이 "이미 보여 준 글에 정답이 들어 있는 후보" 를 같은 단계 안에서 뒤로 미룬다.
+   */
+  shownNorm: string;
   /** 정답 공개 뒤 5초 대기 구간의 정보. QUESTION_RESOLVED 에서만 값이 있다 */
   resolution: Resolution | null;
   /**

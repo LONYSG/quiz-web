@@ -5678,6 +5678,170 @@ async function scenarioShop() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ leak — R050 C 출제 규칙: 서로의 정답 흘림 (C66 · CV-13 · D-233)
+//   [1] 기계 대조 — 활성 풀 전체로 판을 흉내 낸다(server/dist 의 selectNextQuestion 그대로 · 시드 여러 개 · 200문제).
+//       규칙을 켜면 "앞에서 보여 준 글에 정답이 들어 있는 문제" 가 0 이어야 한다(깨끗한 후보가 남아 있는 한) · V008 4-5 의 64쌍 같은 판 연속 출제 0.
+//       규칙을 끈 값(옛 선정)도 함께 센다 — 규칙이 무엇을 막았는지.
+//   [2] 실제 판 — 새 봇 계정의 출제 풀을 3문제(쌍 A·B + 상관없는 F)로 줄이고(경험 기록) 2문제 판을 여러 번:
+//       첫 문제가 다른 쪽 정답을 흘리면 둘째는 반드시 F.
+//   ★ 활성 문제 수는 그때그때 DB 에서 읽는다 (G007 이 도중에 적재한다).
+// -----------------------------------------------------------------------------
+const V008_PAIRS = [
+  [1, 188], [5, 3308], [8, 191], [107, 194], [133, 4668], [143, 2489], [143, 2882], [230, 1813], [230, 3765], [250, 3279], [257, 2041], [265, 2138],
+  [272, 2605], [306, 2915], [315, 3730], [325, 2334], [325, 3632], [383, 2448], [383, 3751], [386, 2543], [424, 1852], [482, 863], [487, 3983], [655, 656],
+  [656, 3867], [743, 4247], [1210, 1880], [1226, 3853], [1327, 3150], [1378, 3243], [1414, 2065], [1427, 3315], [1499, 4702], [1502, 2829], [1629, 4392], [1633, 3455],
+  [1668, 3891], [1678, 4320], [1758, 3821], [1788, 3144], [1880, 3956], [1957, 3824], [2042, 2570], [2065, 3380], [2067, 2706], [2295, 3515], [2300, 4321], [2543, 4658],
+  [2739, 2741], [2811, 3348], [2815, 3519], [3315, 3318], [3315, 3973], [3332, 3960], [3387, 4237], [3413, 4626], [3455, 3555], [3460, 4013], [3554, 4392], [3597, 4304],
+  [3755, 4010], [3886, 4245], [4030, 4060], [4431, 4541],
+];
+async function loadPoolForSim() {
+  return withDb(async (c) => {
+    const r = await c.query(
+      `SELECT q.id::text AS id, q.question_text AS text, q.general_hint, q.explanation,
+              array_agg(a.answer_norm) AS norms
+         FROM questions q JOIN question_answers a ON a.question_id = q.id
+        WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
+        GROUP BY q.id`,
+    );
+    return r.rows.map((x) => ({ id: x.id, text: x.text, generalHint: x.general_hint, explanation: x.explanation, answersNorm: x.norms }));
+  });
+}
+function seeded(seed) {
+  let s = seed >>> 0;
+  return () => {
+    s = (s * 1664525 + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+}
+async function scenarioLeak() {
+  log('시나리오 leak — ★★★ 출제 규칙: 서로의 정답 흘림 (R050 C)');
+  const selMod = await import(new URL('../server/dist/game/select.js', import.meta.url).href);
+  const { normalizeAnswer } = await import(new URL('../shared/dist/index.js', import.meta.url).href);
+  const pool = await loadPoolForSim();
+  log(`  (활성 풀 ${pool.length}건 — 지금 DB 값)`);
+  const byId = new Map(pool.map((q) => [q.id, q]));
+  const shownOf = (q) => `\n${normalizeAnswer(q.text)}\n${normalizeAnswer(q.generalHint ?? '')}\n${normalizeAnswer(q.explanation ?? '')}`;
+
+  log('\n[1] ★ 기계 대조 — 시드 8 × 200문제 · 규칙 켬/끔');
+  const pairSet = new Set(V008_PAIRS.flatMap(([a, b]) => [`${a}>${b}`, `${b}>${a}`]));
+  const simulate = (useRule, seed) => {
+    const random = seeded(seed);
+    const used = new Set();
+    const usedNorms = new Set();
+    let shown = '';
+    let leaks = 0;
+    let leaksWithClean = 0;
+    let pairHits = 0;
+    const order = [];
+    for (let i = 0; i < 200; i += 1) {
+      const pick = selMod.selectNextQuestion({
+        pool,
+        usedQuestionIds: used,
+        usedAnswerNorms: usedNorms,
+        participantIds: ['sim'],
+        experienced: new Map([['sim', new Set()]]),
+        random,
+        shownNorm: useRule ? shown : undefined,
+      });
+      if (!pick) break;
+      const q = pick.question;
+      if (selMod.answerLeaked(q, shown)) {
+        leaks += 1;
+        // 깨끗한 후보가 같은 단계에 남아 있었나 (규칙을 켰을 때는 0 이어야 한다)
+        const clean = pool.some((p) => !used.has(p.id) && p.id !== q.id && !selMod.answerLeaked(p, shown) && ![...p.answersNorm].some((n) => usedNorms.has(n)));
+        if (clean) leaksWithClean += 1;
+      }
+      for (const prev of order) if (pairSet.has(`${prev}>${q.id}`) && selMod.answerLeaked(q, shownOf(byId.get(prev)))) pairHits += 1;
+      order.push(q.id);
+      used.add(q.id);
+      for (const n of q.answersNorm) usedNorms.add(n);
+      shown += shownOf(q);
+    }
+    return { n: order.length, leaks, leaksWithClean, pairHits };
+  };
+  let on = { n: 0, leaks: 0, leaksWithClean: 0, pairHits: 0 };
+  let off = { n: 0, leaks: 0, leaksWithClean: 0, pairHits: 0 };
+  for (let seed = 1; seed <= 8; seed += 1) {
+    await sleep(50); // ★ 자기 서버의 출력 관을 비울 틈 (흉내가 길다)
+    const a = simulate(true, seed * 7919);
+    const b = simulate(false, seed * 7919);
+    for (const k of Object.keys(on)) {
+      on[k] += a[k];
+      off[k] += b[k];
+    }
+  }
+  log(`  규칙 켬: ${JSON.stringify(on)} · 끔(옛 선정): ${JSON.stringify(off)}`);
+  expect('★★★ 규칙 켬 — 깨끗한 후보가 있는데 흘림 문제를 낸 수 = 0', on.leaksWithClean, 0);
+  expect('★★ 규칙 켬 — V008 64쌍 같은 판 흘림 순서 출제 = 0', on.pairHits, 0);
+  expect('★ 판마다 200문제를 다 냈다 (조기 종료를 늘리지 않는다)', on.n, 8 * 200);
+  expectTrue('★ (참고) 규칙을 끄면 흘림이 생긴다 — 규칙이 실제로 막는 것', off.leaks > 0, `${off.leaks}건`);
+  // 64쌍 중 실제로 한쪽 글에 다른 쪽 정답이 들어 있는 방향
+  const directed = [];
+  for (const [a, b] of V008_PAIRS) {
+    const qa = byId.get(String(a));
+    const qb = byId.get(String(b));
+    if (!qa || !qb) continue;
+    if (selMod.answerLeaked(qb, shownOf(qa))) directed.push([qa, qb]);
+    if (selMod.answerLeaked(qa, shownOf(qb))) directed.push([qb, qa]);
+  }
+  log(`  V008 64쌍 중 활성 · 흘림 방향 ${directed.length}개 (A 의 글에 B 의 정답)`);
+  expectTrue('★ V008 쌍이 기계 검사에 잡힌다 (흘림 방향 ≥ 30)', directed.length >= 30, String(directed.length));
+
+  log('\n[2] ★★ 실제 판 — 풀을 3문제(A · B · F)로 줄이고 2문제 판 × 4');
+  // 서로를 흘리는 쌍 하나 + 상관없는 F
+  const [qa, qb] = directed.find(([x, y]) => x.id === '1' || y.id === '1') ?? directed[0];
+  const filler = pool.find((p) => p.id !== qa.id && p.id !== qb.id && !selMod.answerLeaked(p, shownOf(qa) + shownOf(qb)) && !selMod.answerLeaked(qa, shownOf(p)) && !selMod.answerLeaked(qb, shownOf(p)) && p.answersNorm.every((n) => n.length >= 3));
+  log(`  A #${qa.id} · B #${qb.id} (A 의 글에 B 의 정답) · F #${filler.id}`);
+  const bot = new Bot(`lk${Date.now().toString(36).slice(-4)}`);
+  await bot.auth();
+  const accountId = await withDb(async (c) => (await c.query('SELECT id FROM accounts WHERE login_id = $1', [bot.loginId])).rows[0].id);
+  const keep = [qa.id, qb.id, filler.id];
+  let ok = 0;
+  let firstA = 0;
+  for (let run = 1; run <= 4; run += 1) {
+    await withDb(async (c) => {
+      await c.query('DELETE FROM question_experiences WHERE account_id = $1', [accountId]);
+      await c.query(
+        `INSERT INTO question_experiences (account_id, question_id)
+         SELECT $1, q.id FROM questions q WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer' AND NOT (q.id = ANY($2::bigint[]))
+         ON CONFLICT DO NOTHING`,
+        [accountId, keep],
+      );
+    });
+    bot.snapshot = null;
+    await bot.connect();
+    bot.createRoom(`R050 leak ${run}`);
+    await bot.waitFor(() => bot.snapshot !== null, 6000, '방');
+    await startGame(bot, [], 2);
+    const first = await withDb(async (c) => (await c.query('SELECT id::text FROM questions WHERE question_text = $1', [bot.snapshot.question.text])).rows[0]?.id);
+    // 첫 문제를 넘긴다(시간을 아낀다 — 방장 강제 스킵)
+    let f = bot.mark();
+    bot.forceSkip();
+    await bot.waitFor(() => bot.since(f, 'question.resolved').length > 0, 6000, '넘김');
+    await bot.waitQuestion(2, 15000);
+    const second = await withDb(async (c) => (await c.query('SELECT id::text FROM questions WHERE question_text = $1', [bot.snapshot.question.text])).rows[0]?.id);
+    log(`  판 ${run}: ${first} → ${second}`);
+    if (first === qa.id) {
+      firstA += 1;
+      if (second === filler.id) ok += 1;
+    } else if (first === qb.id && selMod.answerLeaked(qa, shownOf(qb))) {
+      if (second === filler.id) ok += 1;
+    } else ok += 1; // F 가 먼저면 둘째는 무엇이든 된다
+    f = bot.mark();
+    bot.forceEnd();
+    await bot.waitFor(() => bot.since(f, 'game.result').length > 0, 6000, '끝');
+    bot.leave();
+    await sleep(300);
+    bot.disconnect();
+    await sleep(300);
+  }
+  expect('★★★ 실제 판 — 흘리는 문제 다음에는 흘린 정답의 문제가 아니라 F', ok, 4);
+  log(`  (A 가 먼저 나온 판 ${firstA}번)`);
+  await withDb(async (c) => c.query('DELETE FROM question_experiences WHERE account_id = $1', [accountId]));
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -5870,6 +6034,8 @@ const SCENARIOS = {
   points: scenarioPoints,
   // ★★★ R049
   shop: scenarioShop,
+  // ★★★ R050
+  leak: scenarioLeak,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

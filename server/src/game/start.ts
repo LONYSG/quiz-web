@@ -294,6 +294,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     experienced,
     usedQuestionIds: new Set(),
     usedAnswerNorms: new Set(),
+    shownNorm: '',
     resolution: null,
     endedQuestionCount: 0,
     stage3Count: 0,

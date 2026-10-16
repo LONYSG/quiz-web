@@ -31,6 +31,24 @@ export interface SelectInput {
   experienced: ReadonlyMap<string, ReadonlySet<string>>;
   /** 0~1 난수. 테스트에서 고정할 수 있게 주입받는다 */
   random?: () => number;
+  /**
+   * ★★ R050 (C66 · D-233) — 이 판에서 이미 보여 준 문제들의 질문 · 힌트 · 해설을 정답 판정과 같은 함수(normalizeAnswer)로 이은 글.
+   *   후보의 정답(정규화 · 길이 3 이상) 중 하나라도 여기 들어 있으면 그 후보는 **같은 단계 안에서 뒤로** 미룬다.
+   *   없으면(옛 호출) 규칙이 꺼진다.
+   */
+  shownNorm?: string;
+}
+
+/** ★ R050 — 정답 흘림 검사에 쓰는 정답의 최소 길이 (정규화 뒤). 2글자 이하는 우연히 겹치기 쉽다 */
+export const LEAK_MIN_ANSWER_LENGTH = 3;
+
+/** ★ R050 — 이 후보의 정답이 이미 보여 준 글에 들어 있는가 (서로의 정답 흘림 — C66) */
+export function answerLeaked(q: Pick<PoolQuestion, 'answersNorm'>, shownNorm: string | undefined): boolean {
+  if (!shownNorm) return false;
+  for (const norm of q.answersNorm) {
+    if (norm.length >= LEAK_MIN_ANSWER_LENGTH && shownNorm.includes(norm)) return true;
+  }
+  return false;
 }
 
 export interface SelectResult {
@@ -111,9 +129,13 @@ export function selectNextQuestion(input: SelectInput): SelectResult | null {
 
   // ★ 한 번의 순회로 세 후보 집합을 동시에 만든다.
   //   ★ 세 번 순회하면 수천 건에서 낭비다. 조건은 서로 배타적이지 않으므로 함께 담는다.
+  // ★ R050 — 단계마다 "흘림 없는" 후보(s1 …)와 "흘림 있는" 후보(l1 …)를 따로 담는다. 흘림 없는 쪽을 먼저 쓴다
   const s1: { q: PoolQuestion; weight: number; un: number }[] = [];
   const s2: { q: PoolQuestion; weight: number; un: number }[] = [];
   const s3: { q: PoolQuestion; weight: number; un: number }[] = [];
+  const l1: { q: PoolQuestion; weight: number; un: number }[] = [];
+  const l2: { q: PoolQuestion; weight: number; un: number }[] = [];
+  const l3: { q: PoolQuestion; weight: number; un: number }[] = [];
 
   for (const q of pool) {
     if (usedQuestionIds.has(q.id)) continue;
@@ -123,11 +145,12 @@ export function selectNextQuestion(input: SelectInput): SelectResult | null {
     if (un === 0) continue;
 
     const collides = answerCollides(q, usedAnswerNorms);
+    const leaked = answerLeaked(q, input.shownNorm);
     const entry = { q, weight: un, un };
-    s3.push(entry);
+    (leaked ? l3 : s3).push(entry);
     if (collides) continue;
-    s2.push(entry);
-    if (un === participantIds.length) s1.push(entry);
+    (leaked ? l2 : s2).push(entry);
+    if (un === participantIds.length) (leaked ? l1 : s1).push(entry);
   }
 
   const finish = (
@@ -146,17 +169,21 @@ export function selectNextQuestion(input: SelectInput): SelectResult | null {
     };
   };
 
+  // ★★ R050 — 각 단계 안에서 "흘림 없는 후보" 를 먼저, 없을 때만 흘림 있는 후보 (조기 종료를 늘리지 않는다 — 단계 순서는 그대로)
   // 1단계 — 전원 미경험. ★ 균등 무작위다 (전원 미경험이므로 가중치가 모두 같다)
-  if (s1.length > 0) {
-    return finish(s1[Math.floor(random() * s1.length)]!, 1);
+  const one = s1.length > 0 ? s1 : l1;
+  if (one.length > 0) {
+    return finish(one[Math.floor(random() * one.length)]!, 1);
   }
   // 2단계 — 1명 이상 미경험 + 정답 미사용
-  if (s2.length > 0) {
-    return finish(weightedPick(s2, random), 2);
+  const two = s2.length > 0 ? s2 : l2;
+  if (two.length > 0) {
+    return finish(weightedPick(two, random), 2);
   }
   // ★ 3단계 — 정답 중복을 허용한다 (Q-76)
-  if (s3.length > 0) {
-    return finish(weightedPick(s3, random), 3);
+  const three = s3.length > 0 ? s3 : l3;
+  if (three.length > 0) {
+    return finish(weightedPick(three, random), 3);
   }
   return null;
 }

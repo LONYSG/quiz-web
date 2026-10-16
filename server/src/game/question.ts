@@ -30,7 +30,7 @@
 //   (3) DB 쓰기는 전부 void 로 띄운다. 실패해도 게임은 진행된다.
 // =============================================================================
 
-import { RULES, computeRanking, generateHint, skipThreshold } from '@quiz/shared';
+import { RULES, computeRanking, generateHint, normalizeAnswer, skipThreshold } from '@quiz/shared';
 import type { GameEndReason, QuestionResolution } from '@quiz/shared';
 import { endGame } from '../db/games.js';
 import {
@@ -91,6 +91,7 @@ export function beginQuestion(room: Room): boolean {
     usedAnswerNorms: game.usedAnswerNorms,
     participantIds,
     experienced: game.experienced,
+    shownNorm: game.shownNorm,
   });
   if (!picked) return false;
 
@@ -103,6 +104,12 @@ export function beginQuestion(room: Room): boolean {
   // ── 2. ★ 이 문제의 정답 전부를 "이미 쓴 정답" 에 합친다 (Q-76 / D-054).
   //   ★ 대표 정답만 넣지 않는다. 판정이 answer_norm 전체로 이루어지므로 기준을 같게 한다.
   for (const norm of q.answersNorm) game.usedAnswerNorms.add(norm);
+  // ★★ R050 — 이 문제가 보여 줄 글(질문 · 일반 힌트 · 해설)을 쌓는다. 다음 선정의 "정답 흘림" 검사에 쓴다 (C66)
+  //   ★ 힌트 · 해설은 아직 안 보였지만 이 문제가 끝나기 전에 보인다 — 미리 넣어도 다음 선정 때는 이미 보인 뒤다
+  game.shownNorm += `
+${normalizeAnswer(q.text)}
+${normalizeAnswer(q.generalHint ?? '')}
+${normalizeAnswer(q.explanation ?? '')}`;
   if (picked.stage === 3) game.stage3Count += 1;
 
   const now = Date.now();
