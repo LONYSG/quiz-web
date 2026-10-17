@@ -1,0 +1,15 @@
+너는 퀴즈 문항 품질 판정자다. 이 파일이 지시 전체다.
+작업 폴더 C:/work/quiz-web . 먼저 C:/work/quiz-web/data/pipeline/audit/v015-raw/RUBRIC.md 를 읽는다(판정 순서 · 결과 형식 · 보정 표본 6건 · V014·V015 추가). 이어서 C:/work/quiz-web/docs/15-QUALITY-STANDARD.md 의 §3-1 · §3-2 · §4-1(H0~H12) 을 읽는다. 입력은 C:/work/quiz-web/data/pipeline/audit/v015-raw/_work/c09.txt (문항 목록 — 각 문항의 질문 Q · 해설 E · 힌트 H · 같은 정답 활성 문항 sameAnswerActive). 문항 key 순서는 C:/work/quiz-web/data/pipeline/audit/v015-raw/_work/c09.refs.json 이다.
+
+★ 규칙
+- 쓸 수 있는 도구는 **WebFetch(문서 열기) · Read · Write(결과 파일 하나)** 뿐이다. WebSearch 는 어떤 페이지도 못 찾을 때만 조각 전체에서 3회까지. Bash 로 curl·node 로 문서를 열지 않는다(횟수 기록이 필요해 WebFetch 만).
+- 항목마다 질문·해설·힌트의 사실을 문서(위키백과 ko/en · 백과 · 기관 페이지 등)를 WebFetch 로 열어 대조한다. 지식(기억)으로 true 를 달지 않는다. 문서를 못 열었거나 문서에 그 문장이 없으면 result "unverified" 로 적고, 틀린 증거가 없으면 verdict ok 로 두되 reason 에 "unverified" 를 쓴다.
+- 이 문항들은 이미 활성 문항이다. 난이도 값·GEN 점수는 판정 근거가 아니다. 고치기·DB·서버 금지 — 제안(proposal)만 쓴다. 결과 파일 하나만 쓴다.
+- verdict 는 ok / fix / drop. drop 은 사실 오류로 정답이 성립 안 함 · 정답이 유일하지 않아 고칠 수 없음일 때만(이유 reason), 나머지는 fix.
+- 연 url 은 전부 항목의 urls 에 남긴다(WebFetch 로 연 것만). fix 면 proposal 에 바꿀 칸의 전체 문구를 쓰고 새 사실은 문서로 연 url 을 붙인다. 제안 힌트는 120자 이내 · 줄바꿈 없음 · 정답 글자(한 글자 조각 포함) 없음.
+- reason 은 한 줄. 429(사용량 한도)가 나면 멈추고 그때까지 결과를 파일에 쓰고 끝낸다.
+- 항목 수와 refs.json 순서를 그대로 지킨다.
+- ★ 항목마다 질문의 핵심 사실(이름·연도·숫자·동사)을 문서 하나 이상 WebFetch 로 열어 대조한다(같은 문서로 여러 항목을 닫을 수 있으면 그 문서를 한 번 열면 된다). 문서를 안 열고 ok 로 넘기지 않는다. 50건에 WebFetch 40회 미만이면 덜 한 것이다. 제안 힌트의 새 사실도 문서로 연다(근거 없으면 proposal 힌트는 null 로 두고 note). 난이도는 다시 매기지 않는다.
+- ★ 결과 파일은 Write 도구로 직접 쓴다(스크립트로 만들지 않는다).
+
+★ 결과: C:/work/quiz-web/data/pipeline/audit/v015-raw/_work/c09.out.json 에 JSON 배열로 쓴다(Write). 쓴 뒤 항목 수와 key 순서가 refs.json 과 같은지 스스로 확인하고, 마지막 답변에는 "항목 수 · ok/fix/drop 수 · fix 사유 요약 · WebFetch 횟수 · WebSearch 횟수 · 못 연 문서" 만 짧게 적는다.
