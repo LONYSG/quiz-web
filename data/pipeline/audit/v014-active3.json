@@ -1,18 +1,29 @@
 {
+ "flipped": [
+  {
+   "id": "4272",
+   "from": "ok",
+   "to": "fix",
+   "categories": [
+    "h-error"
+   ],
+   "why": "힌트 '동쪽에서 가운데로' 와 문서(밀랴츠카강은 서쪽으로 흐른다)의 방향이 어긋남 — 판정자 note 에 있었으나 ok 로 둔 것을 뒤집음"
+  }
+ ],
  "partial": true,
- "done": 1500,
+ "done": 1600,
  "round": "V014",
  "part": "활성 난이도 3 나머지 전수 (V013 표본 300 제외)",
  "date": "2026-10-17",
  "model": "claude-sonnet-5-5 (VERIFY · 판정자도 같은 모델)",
  "counts": {
-  "done": 1500,
+  "done": 1600,
   "total": 2086,
-  "ok": 1022,
-  "fix": 478,
+  "ok": 1117,
+  "fix": 483,
   "drop": 0,
-  "fixPct": 31.9,
-  "unverified": 784,
+  "fixPct": 30.2,
+  "unverified": 848,
   "byGroup": {
    "manual": {
     "n": 10,
@@ -40,28 +51,33 @@
     "pct": 24.3
    },
    "g001": {
-    "n": 22,
-    "fix": 6,
-    "pct": 27.3
+    "n": 101,
+    "fix": 10,
+    "pct": 9.9
+   },
+   "g003": {
+    "n": 21,
+    "fix": 1,
+    "pct": 4.8
    }
   },
   "categories": {
    "explanation": 40,
    "not-unique": 34,
-   "h-error": 37,
-   "h-letters": 99,
-   "variants": 109,
+   "h-error": 39,
+   "h-letters": 101,
+   "variants": 110,
    "assertive": 45,
    "h-famous": 40,
    "expose": 11,
-   "h-weak": 66,
+   "h-weak": 67,
    "fact-error": 12,
-   "h-pair-same": 87,
+   "h-pair-same": 88,
    "other": 5,
    "scope": 6,
    "readable": 1
   },
-  "pieces": 30
+  "pieces": 32
  },
  "items": {
   "8": {
@@ -79470,6 +79486,4727 @@
    "note": "근거 있는 두 번째 줄 사실 중 질문·해설과 겹치지 않는 것을 못 찾아 제안 힌트는 null",
    "piece": "b30",
    "unverified": false
+  },
+  "4066": {
+   "id": "4066",
+   "answer": "알프레드",
+   "source": "comics/2#g001-comics-18",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "unverified: 힌트의 이름 어원(요정+조언)은 문서에 없음; 질문·해설(1943 등장·비글→페니워스)은 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1943 첫 등장, 성 비글→페니워스, 웨인가 집사",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Alfred_Pennyworth"
+    },
+    {
+     "claim": "Alfred = 고대 영어 요정+조언",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Alfred_Pennyworth"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4067": {
+   "id": "4067",
+   "answer": "매그니토",
+   "source": "comics/2#g001-comics-19",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "홀로코스트·자기장·프로페서 X 관계·1963 창간호 미군 기지 공격 모두 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "아우슈비츠 생존, 자기장·금속, 1963 X-Men #1 미군 기지 공격",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Magneto_(Marvel_Comics)"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Magneto_(Marvel_Comics)"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4068": {
+   "id": "4068",
+   "answer": "이끼",
+   "source": "comics/3#g001-comics-01",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "연재(2007 만끽→다음)·2010 영화 확인; 감독·배우는 해당 문서에 없어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2007 유료웹진 만끽 연재 후 다음으로",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/이끼_(만화)"
+    },
+    {
+     "claim": "강우석 감독·정재영·박해일 배역",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/이끼_(만화)"
+   ],
+   "note": "문서 표기는 주인공 '류해국', 해설은 '유해국' - 영화 배역 표기라 사실 오류 증거는 아님",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4071": {
+   "id": "4071",
+   "answer": "강풀",
+   "source": "comics/3#g001-comics-04",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "네 작품·2024 백상 TV 극본상(무빙)·영화 바보 원작 모두 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "순정만화·아파트·이웃사람·26년 / 무빙 2024 백상 극본상 / 바보 2008",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/강풀"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/강풀"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4072": {
+   "id": "4072",
+   "answer": "유미의 세포들",
+   "source": "comics/3#g001-comics-05",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2015~2020 네이버 연재·구웅(전 남친·게임 사업)·2021 드라마 확인; 힌트의 '달콤한 인생'은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "이동건 2015.4~2020.11 네이버, 구웅 전 남친 게임 사업, 2021 드라마",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/유미의_세포들"
+    },
+    {
+     "claim": "이동건 전작 달콤한 인생",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/유미의_세포들"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4074": {
+   "id": "4074",
+   "answer": "밤",
+   "source": "comics/3#g001-comics-20",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "SIU 네이버·스물다섯 번째 밤·쿤/라크·2020 애니 확인; 라헬·'빛이 들지 않는 곳' 힌트는 문서에 없어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "SIU 네이버, 소녀를 쫓아 탑에 들어온 소년, 쿤·라크, 2020 애니",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/신의_탑"
+    },
+    {
+     "claim": "탑 전 오랫동안 빛이 들지 않는 곳에서 홀로",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/신의_탑"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4077": {
+   "id": "4077",
+   "answer": "유정",
+   "source": "comics/3#g001-comics-23",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "순끼·경영학과 4학년·회장 아버지·박해진 확인; 연도(2016/2018)는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "유정: 경영학과 4학년, 회장 아버지, 겉모습 완벽, 박해진이 드라마·영화에서 연기",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/치즈_인_더_트랩"
+    },
+    {
+     "claim": "2016 드라마·2018 영화",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/치즈_인_더_트랩"
+   ],
+   "note": "힌트에 '유정' 글자 없음",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4082": {
+   "id": "4082",
+   "answer": "야가미 이오리",
+   "source": "esports/1#g001-game-25",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "쿄 숙적 가문·자줏빛 불꽃·KOF 95 첫 등장 확인; 힌트 곡옥(야사카니노마가타마) 연결은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "쿠사나기 숙적, 자줏빛 불꽃, KOF 95 첫 등장",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Iori_Yagami"
+    },
+    {
+     "claim": "가문과 곡옥(신기) 연결",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Iori_Yagami"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4084": {
+   "id": "4084",
+   "answer": "마스터 소드",
+   "source": "esports/2#g001-game-21",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "받침돌·1991 신들의 트라이포스(링크 투 더 패스트)·힘을 잃고 회복 줄거리 모두 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1991 A Link to the Past 첫 등장, 받침돌, 악을 물리치는 검, 힘을 잃었다 회복",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Master_Sword"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Master_Sword"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4085": {
+   "id": "4085",
+   "answer": "세피로스",
+   "source": "esports/2#g001-game-22",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "에어리스 살해·마사무네 도공 유래·카발라 세피로트 유래 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "에어리스를 죽임, 마사무네 도공 이름, 카발라 생명의 나무 열 속성",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Sephiroth_(Final_Fantasy)"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Sephiroth_(Final_Fantasy)"
+   ],
+   "note": "힌트에 '세피로스'와 같은 글자 조각 있음('세피로트' 아님) - 정답 글자 직접 노출은 아니라 ok",
+   "piece": "b31",
+   "unverified": false
+  },
+  "4086": {
+   "id": "4086",
+   "answer": "레온",
+   "source": "esports/2#g001-game-23",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "RE2 공동 주인공·신참 경찰·첫 출근 지각·RE4 2005 대통령 딸 구출 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "클레어와 공동 주인공, 라쿤 시티 신참 경찰, 첫 출근 지각, RE4 2005",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Leon_S._Kennedy"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Leon_S._Kennedy"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4087": {
+   "id": "4087",
+   "answer": "화살",
+   "source": "esports/2#g001-game-24",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "대사·2011 밈 확인; 힌트의 2007 소설 연도·유사 대목은 문서에 없어 unverified(소문과 개발자 부인은 확인)",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "경비병 대사, 2011 출시 후 밈",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Arrow_in_the_knee"
+    },
+    {
+     "claim": "바람의 이름 2007 유사 대목·작가 부인",
+     "where": "h",
+     "result": "unverified",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Arrow_in_the_knee"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Arrow_in_the_knee"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4090": {
+   "id": "4090",
+   "answer": "오버워치",
+   "source": "esports/3#g001-game-08",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "타이탄 개발진·2016·팀 FPS·TGA 2016 올해의 게임·2022.10 서버 종료 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "타이탄 취소 후 개발진, 2016 출시, 팀 FPS, TGA 2016 GOTY, 2022.10 종료",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Overwatch_(video_game)"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Overwatch_(video_game)"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4091": {
+   "id": "4091",
+   "answer": "로스트 템플",
+   "source": "esports/3#g001-game-09",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "4인용 정글·신전 흔적·기본 맵·테란맵·128x128·언덕 본진·섬 멀티 확인; '프로 리그 초창기'는 문서에 표현 없어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "4인용 정글, 중앙 신전 폐허, 기본 맵, 테란맵, 128x128, 본진 4곳 언덕, 양 끝 섬 멀티",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://namu.wiki/w/잃어버린%20사원"
+    },
+    {
+     "claim": "프로 리그 초창기에 많이 쓰임",
+     "where": "e",
+     "result": "unverified",
+     "basis": "web",
+     "source": "https://namu.wiki/w/잃어버린%20사원"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://namu.wiki/w/Lost%20Temple",
+    "https://namu.wiki/w/잃어버린%20사원",
+    "https://ko.wikipedia.org/wiki/잃어버린_사원"
+   ],
+   "note": "Lost Temple 첫 페이지는 반지의 제왕 온라인 항목이라 사용 안 함; 해설을 '초창기 대회에서'로 바꾸는 편이 문서와 더 맞음(선택)",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4092": {
+   "id": "4092",
+   "answer": "군주",
+   "source": "esports/3#g001-game-11",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "unverified: 리니지 군주·혈맹 유일 클래스·원작 만화 줄거리 모두 열린 문서에 없음(1998 엔씨 서비스·신일숙 원작만 확인)",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1998 엔씨소프트 리니지, 신일숙 만화 원작",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/리니지_(비디오_게임)"
+    },
+    {
+     "claim": "군주만 혈맹 결성 가능",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    },
+    {
+     "claim": "리니지2에 군주 전용 클래스 없음",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/리니지_(비디오_게임)"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4093": {
+   "id": "4093",
+   "answer": "자쿰",
+   "source": "esports/3#g001-game-12",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "힌트의 쿠란 자쿰 나무 유래는 문서로 확인; 엘나스 폐광·2004 패치·최초 레이드 보스는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "자쿰 이름 = 쿠란 자쿰 나무 모티브",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://namu.wiki/w/자쿰"
+    },
+    {
+     "claim": "엘나스 폐광·팔 여러 개 석상·2004 최초 레이드 보스",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://namu.wiki/w/자쿰"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4094": {
+   "id": "4094",
+   "answer": "귀검사",
+   "source": "esports/3#g001-game-13",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "남귀검사 전직 5종(웨펀마스터·소울브링어·버서커·아수라·검귀) 확인; 귀수 설정·여귀검사 전직 5종은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "남귀검사 직업 웨펀마스터·소울브링어·버서커·아수라·검귀",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/던전_앤_파이터"
+    },
+    {
+     "claim": "귀수 붉게 뒤틀린 팔 설정",
+     "where": "q",
+     "result": "unverified",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/던전_앤_파이터"
+    },
+    {
+     "claim": "여귀검사 전직 5종이 이름·싸움 방식 다름",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/던전_앤_파이터"
+   ],
+   "note": "문서는 남귀검사 4종을 '각성 추가'로 표기",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4095": {
+   "id": "4095",
+   "answer": "바늘",
+   "source": "esports/3#g001-game-14",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "바늘 Ctrl 탈출·산소통 시간 연장·다트 원거리 캐시 확인; '슬롯에 넣어 쓴다'는 다트 항목에 없어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "바늘: 슬롯 장착 후 Ctrl로 물풍선 탈출",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://namu.wiki/w/크레이지%20아케이드/아이템"
+    },
+    {
+     "claim": "산소통은 터질 때까지 시간 연장",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://namu.wiki/w/크레이지%20아케이드/아이템"
+    },
+    {
+     "claim": "다트는 슬롯 방식 캐시 아이템",
+     "where": "h",
+     "result": "unverified",
+     "basis": "web",
+     "source": "https://namu.wiki/w/크레이지%20아케이드/아이템"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://namu.wiki/w/크레이지%20아케이드/아이템"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4097": {
+   "id": "4097",
+   "answer": "아서스",
+   "source": "esports/3#g001-game-16",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "서리한·부왕 살해·리치 왕·확장팩 보스·2009 크리스티 골든 소설 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "서리한 획득 후 부왕 테레나스 살해, 리치 왕, WotLK 레이드 보스, 2009 골든 소설",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Arthas_Menethil"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Arthas_Menethil"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4098": {
+   "id": "4098",
+   "answer": "카오스",
+   "source": "esports/3#g001-game-17",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "unverified: 카오스 맵 관련 문서(namu·ko 위키)가 열리지 않아 질문·해설·힌트 모두 대조 못 함",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "도타 국내 개조 AOS 카오스, 센티널·스컬지, 2011 카오스 온라인",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [],
+   "note": "namu.wiki/w/카오스%20(워크래프트%203), ko.wikipedia 카오스 문서 404",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4100": {
+   "id": "4100",
+   "answer": "내셔 남작",
+   "source": "esports/3#g001-game-19",
+   "group": "g001",
+   "verdict": "fix",
+   "categories": [
+    "h-letters"
+   ],
+   "reason": "힌트 '귀족 작위 하나'는 정답 조각 '남작/바론'을 번역으로 건네는 꼴(H2 V014 규칙, '작' 글자 겹침)",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "소환사의 협곡 최강 중립 몬스터, 버프, Nashor=Roshan 뒤집음",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": false,
+    "issue": "귀족 작위(남작)라는 번역 단서가 정답 조각; 새 힌트 사실은 문서로 못 열어 제안 보류"
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [],
+   "note": "leagueoflegends.fandom(402)·ko 위키(404) 열리지 않음. 정답 조각 없는 새 힌트는 문서 확인 후 작성 필요",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4104": {
+   "id": "4104",
+   "answer": "이강인",
+   "source": "football/2#g001-football-22",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2019 U-20 준우승·골든볼·한국 남자 최초·18세·인천 출생·마라도나 팬 아버지 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "골든볼, 한국 남자 최초, 18세, 인천, 아버지 태권도장·마라도나 팬",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/이강인"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/이강인"
+   ],
+   "note": "문서 표현은 '태권도장 운영'",
+   "piece": "b31",
+   "unverified": false
+  },
+  "4105": {
+   "id": "4105",
+   "answer": "퍼거슨",
+   "source": "football/3#g001-football-01",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1999 기사 작위·애버딘 1983 컵위너스컵·글래스고 공구 견습공·숍 스튜어드 확인; '헤어드라이어' 별명은 열린 범위에서 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1999 기사 작위, 애버딘 1983 컵위너스컵",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Alex_Ferguson"
+    },
+    {
+     "claim": "헤어드라이어 별명",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Alex_Ferguson"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4106": {
+   "id": "4106",
+   "answer": "무리뉴",
+   "source": "football/3#g001-football-02",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2004 포르투 우승 후 첼시·스페셜 원 발언·2010 인테르 이탈리아 최초 트레블·아버지 GK 1경기 확인",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "포르투 2004 우승→첼시, 'special one', 인테르 2010 트레블, 아버지 펠릭스 GK 대표 1경기",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_Mourinho"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Jos%C3%A9_Mourinho"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4107": {
+   "id": "4107",
+   "answer": "호날두",
+   "source": "football/3#g001-football-03",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2003.8 스포르팅 3-1 맨유·18세 영입·2008 발롱도르(베스트 이후)·레이건 유래 이름 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2003.8 3-1, 18세 영입, 2008 발롱도르, 레이건에서 따온 이름",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4108": {
+   "id": "4108",
+   "answer": "이스탄불의 기적",
+   "source": "football/3#g001-football-05",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "전반 0-3·6분 3골·승부차기·두덱이 셰브첸코 킥 막음·제라드 헤딩 첫 골·이스탄불 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "0-3, 후반 6분 3골, 승부차기, 두덱 셰브첸코, 제라드 헤딩, 이스탄불",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4110": {
+   "id": "4110",
+   "answer": "푸스카스상",
+   "source": "football/3#g001-football-09",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "푸스카스상 2009 첫 시상·레알 마드리드 푸스카스 확인; 손흥민 수상은 문서(2020 상 페이지 404)로 못 열어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "푸스카스상 2009 첫 시상, 레알 마드리드 골잡이",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/FIFA_Puskás_Award"
+    },
+    {
+     "claim": "손흥민 번리전 골로 한국 선수 최초 수상",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/FIFA_Puskás_Award"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4113": {
+   "id": "4113",
+   "answer": "티키타카",
+   "source": "football/3#g001-football-12",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "안드레스 몬테스 등 중계진 확산·클레멘테 비꼼은 '가능성'으로 문서에 있어 '전한다' 한정과 맞음; 2000년대 후반 바르사·스페인 확인",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "스페인 중계진이 쓰며 확산",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Tiki-taka"
+    },
+    {
+     "claim": "스페인 감독이 비꼬는 뜻으로 쓰던 말에서 비롯",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Tiki-taka"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/티키타카",
+    "https://en.wikipedia.org/wiki/Tiki-taka"
+   ],
+   "note": "문서상 클레멘테 기원은 'may have originated' 수준이라 '전한다'가 적절",
+   "piece": "b31",
+   "unverified": false
+  },
+  "4114": {
+   "id": "4114",
+   "answer": "솔샤르",
+   "source": "football/3#g001-football-13",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1999 결승 추가시간 결승골·동안의 암살자·노팅엄전 12분 4골·몰데 리그 우승 확인",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1999 결승 결승골, Baby-faced Assassin, 노팅엄 12분 4골, 몰데 첫 리그 우승",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Ole_Gunnar_Solskj%C3%A6r"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Ole_Gunnar_Solskj%C3%A6r"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4115": {
+   "id": "4115",
+   "answer": "과르디올라",
+   "source": "football/3#g001-football-14",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2008 B팀→1군·첫 시즌 트레블·2009 6관왕·크루이프 드림팀 1992·알아흘리→도라도스 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2008 승격, 트레블, 2009 6관왕, 드림팀, 알아흘리·도라도스",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Pep_Guardiola"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Pep_Guardiola"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4118": {
+   "id": "4118",
+   "answer": "벵거",
+   "source": "football/3#g001-football-18",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2003-04 무패 우승·'교수'·나고야 그램퍼스·스트라스부르·경제학 학위 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "무패 우승, Le Professeur, 나고야, 스트라스부르 출생, 경제학 학위",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Arsène_Wenger"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Arsène_Wenger"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4119": {
+   "id": "4119",
+   "answer": "드록바",
+   "source": "football/3#g001-football-19",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2012 결승 0-1 후 88분 헤더 동점·결승 승부차기 킥·마르세유 한 시즌 후 첼시 확인; 경기장(알리안츠 아레나)은 문서에 없어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "헤더 동점골과 승부차기 성공, 마르세유 1시즌 후 첼시, 프랑스 올해의 선수",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Didier_Drogba"
+    },
+    {
+     "claim": "결승 장소 알리안츠 아레나",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Didier_Drogba"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4120": {
+   "id": "4120",
+   "answer": "클롭",
+   "source": "football/3#g001-football-24",
+   "group": "g001",
+   "verdict": "fix",
+   "categories": [
+    "h-error"
+   ],
+   "reason": "힌트 '프로 경력은 마인츠 한 팀뿐'은 문서(infobox)에 포르투하임·프랑크푸르트 II 등 다른 팀이 있어 틀림",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "도르트문트 2010-11·2011-12 분데스리가, 2015 리버풀, 헤비메탈 축구, 2019-20 30년 만의 우승",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klopp"
+    },
+    {
+     "claim": "선수 시절 프로 경력은 마인츠 한 팀뿐",
+     "where": "h",
+     "result": "false",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klopp"
+    },
+    {
+     "claim": "2001 은퇴 후 곧바로 마인츠 감독",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klopp"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": false,
+    "issue": "'한 팀뿐'은 사실 오류(마인츠 1990-2001이 주 경력일 뿐)"
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": "선수 시절 대부분을 마인츠에서 보냈고, 2001년 은퇴하자마자 바로 그 팀 감독이 되었다.",
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klopp"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4124": {
+   "id": "4124",
+   "answer": "바조",
+   "source": "football/5#g001-football-16",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1994 결승 승부차기 크로스바 위·신성한 꽁지머리·1993 발롱도르·불교·브레시아 2004 은퇴·10번 영구결번 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1994 결승 마지막 키커 실축, Divine Ponytail, 1993 발롱도르, 불교, 브레시아 2004, 10번 영구 결번",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Roberto_Baggio"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Roberto_Baggio"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4125": {
+   "id": "4125",
+   "answer": "카카",
+   "source": "football/5#g001-football-20",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2007 밀란 발롱도르·2009 레알 이적·부상·동생이 발음 못해 생긴 이름(Digao) 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2007 발롱도르, 2009 레알, 부상, 어린 동생이 Ricardo 발음 못해 Caca",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Kak%C3%A1"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Kak%C3%A1"
+   ],
+   "note": "2017까지 메시·호날두만 수상은 문서에서 FIFA 올해의 선수 언급만 확인(발롱도르 2008~2017 수상자 별도 문서 미확인)",
+   "piece": "b31",
+   "unverified": false
+  },
+  "4126": {
+   "id": "4126",
+   "answer": "산시로",
+   "source": "football/5#g001-football-21",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "밀란·인터 공동 홈구장·1980 메아차 명명·두 구단 선수 확인; 힌트의 성 시로(파비아 첫 주교)는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "밀란·인터 공동 홈구장, 1980 주세페 메아차 명명, 두 구단 활약",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/San_Siro"
+    },
+    {
+     "claim": "산시로 동네 이름은 파비아 첫 주교 성인에서 유래",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/San_Siro"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4129": {
+   "id": "4129",
+   "answer": "쿨",
+   "source": "kr-music/2#g001-kpop-01",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "운명(1997)·애상(1998)·해석남녀(2000) 1위·1994 4인조 데뷔·1995 유리 합류 문서와 일치; 3.5집 50만 장은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1위곡 연도, 1994 데뷔 4인조, 1995 유리 합류",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/쿨_(음악_그룹)"
+    },
+    {
+     "claim": "3.5집 50만 장 이상",
+     "where": "h",
+     "result": "unverified",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/쿨_(음악_그룹)"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/쿨_(음악_그룹)"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4131": {
+   "id": "4131",
+   "answer": "크라잉넛",
+   "source": "kr-music/2#g001-kpop-07",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "드럭 1995·펑크 록·두 곡·오 필승 코리아(붉은 악마 음반 '꿈은 이루어진다') 확인, 기타·드럼 이상면·이상혁 쌍둥이 같은 생일 확인; '홍대 앞' 위치는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "드럭 1995, 펑크 록, 밤이 깊었네·룩셈부르크, 오 필승 코리아",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/크라잉넛"
+    },
+    {
+     "claim": "기타 이상면·드럼 이상혁 쌍둥이, 1976.3.6 생",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/크라잉넛"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/크라잉넛"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4132": {
+   "id": "4132",
+   "answer": "교실 이데아",
+   "source": "kr-music/2#g001-kpop-10",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1994 역재생 소문·MBC 보도·평론가 '한국어처럼 들리는 잡음' 확인; 힌트 '같은 앨범' 연결(3집)은 열린 문서에서 unverified(4집에는 발해를 꿈꾸며 없음 확인)",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1994 역재생 '피가 모자라' 소문, 평론가 결론 잡음",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/교실_이데아"
+    },
+    {
+     "claim": "발해를 꿈꾸며와 같은 앨범",
+     "where": "h",
+     "result": "unverified",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/서태지와_아이들_4집"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/교실_이데아",
+    "https://ko.wikipedia.org/wiki/서태지와_아이들_4집"
+   ],
+   "note": "4집(1995) 목록에 발해를 꿈꾸며 없음 - 3집 수록 가능성이 높으나 문서 미확인",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4133": {
+   "id": "4133",
+   "answer": "전람회",
+   "source": "kr-music/2#g001-kpop-13",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "김동률·서동욱·1993 MBC 대학가요제 꿈속에서 대상·3집 졸업과 해체·기억의 습작 문서와 일치; 건축학개론 장면은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "김동률·서동욱, 1993 대상 꿈속에서, 3집 졸업 1997 해체, 기억의 습작",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/전람회_(음악_그룹)"
+    },
+    {
+     "claim": "건축학개론 옥상 이어폰 장면",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/전람회_(음악_그룹)"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4134": {
+   "id": "4134",
+   "answer": "To Heaven",
+   "source": "kr-music/2#g001-kpop-16",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1998.9 데뷔 앨범 To Heaven·얼굴 없는 가수·작곡 이경섭 확인; 이병헌·김하늘 뮤비는 열린 문서에 없어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1998 데뷔, 뮤직비디오만 공개한 얼굴 없는 가수",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/조성모"
+    },
+    {
+     "claim": "작곡 이경섭",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/To_Heaven"
+    },
+    {
+     "claim": "뮤직비디오 이병헌·김하늘 출연",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/To_Heaven",
+    "https://ko.wikipedia.org/wiki/조성모"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4135": {
+   "id": "4135",
+   "answer": "태평소",
+   "source": "kr-music/2#g001-new-10",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "unverified: 하여가의 태평소·김덕수 참여 문서 못 염. 종묘제례악 편성에 태평소 있음은 확인, '가락을 이끈다'는 문서에 없음",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "하여가에 태평소, 김덕수 연주",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    },
+    {
+     "claim": "종묘제례악 편성에 태평소 포함",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/종묘제례악"
+    },
+    {
+     "claim": "종묘제례악에서 태평소가 가락을 이끈다",
+     "where": "h",
+     "result": "unverified",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/종묘제례악"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/종묘제례악",
+    "https://ko.wikipedia.org/wiki/태평소"
+   ],
+   "note": "'가락을 이끈다'는 약한 단정 - 종묘제례악 선율은 피리 중심일 가능성이 있어 확인 필요(문서 근거 없음)",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4136": {
+   "id": "4136",
+   "answer": "버즈",
+   "source": "kr-music/3#g001-kpop-03",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "unverified: 버즈 문서가 열리지 않아(404) 2014 4집·히트곡·보컬 예능 출연 모두 대조 못 함",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2003 데뷔, 2014 4집 Memorize, 가시, 보컬 종편 예능",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [],
+   "note": "ko.wikipedia 버즈_(음악_그룹)·버즈_(밴드) 404",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4137": {
+   "id": "4137",
+   "answer": "에픽하이",
+   "source": "kr-music/3#g001-kpop-06",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2003 데뷔 3인조·4집 Fan(2007)·5집 One(2008)·3집 Fly(2005)·2012 YG 계약(타블로는 2011) 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "3인조 2003, 4집 Fan, 5집 One, 3집 Swan Songs Fly 2005, 멤버 2012 YG 계약",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/에픽하이"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/에픽하이"
+   ],
+   "note": "타블로 개인은 2011.9 계약 - 힌트 '2012년'은 그룹 기준(투컷·미쓰라 2012)이라 단정이 약간 느슨",
+   "piece": "b31",
+   "unverified": false
+  },
+  "4138": {
+   "id": "4138",
+   "answer": "다이나믹 듀오",
+   "source": "kr-music/3#g001-kpop-08",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "Taxi Driver 2004·아메바컬쳐 2006.8.18 설립·CB Mass 문서와 일치; 쇼미더머니6 프로듀서 팀은 심사위원 겸 프로듀서로 확인",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2004.5 1집 Taxi Driver, CB Mass 전력",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/다이나믹_듀오"
+    },
+    {
+     "claim": "아메바컬쳐 2006년 설립",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/아메바컬쳐"
+    },
+    {
+     "claim": "쇼미더머니 6 프로듀서",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/다이나믹_듀오"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/다이나믹_듀오",
+    "https://ko.wikipedia.org/wiki/아메바컬쳐"
+   ],
+   "note": "다이나믹 듀오 문서 요약은 아메바컬쳐 설립을 2007로 읽었으나 아메바컬쳐 문서는 2006.8.18로 명시 - 후자 채택",
+   "piece": "b31",
+   "unverified": false
+  },
+  "4140": {
+   "id": "4140",
+   "answer": "싸구려 커피",
+   "source": "kr-music/3#g001-kpop-14",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2008 붕가붕가레코드·수공업 소형음반 1만 장 확인; 정규 1집 시기·'올해의 음악인' 수상은 해당 문서에 없어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2008 붕가붕가레코드 발매, 수공업 소형음반 1만 장 이상",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/싸구려_커피"
+    },
+    {
+     "claim": "이듬해 정규 1집 별일 없이 산다, 한국대중음악상 올해의 음악인",
+     "where": "e",
+     "result": "unverified",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/싸구려_커피"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/싸구려_커피"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4143": {
+   "id": "4143",
+   "answer": "노홍철",
+   "source": "kr-music/3#g001-new-08",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "엘리베이터 싸이 위 노홍철 골반춤·주차장 노란 양복 유재석 대결·2012 무한도전 고정 멤버 문서와 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "엘리베이터 노홍철, 주차장 노란 양복 유재석 댄스 대결",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Gangnam_Style"
+    },
+    {
+     "claim": "노홍철 2012 당시 무한도전 고정",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/노홍철"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Gangnam_Style",
+    "https://ko.wikipedia.org/wiki/강남스타일",
+    "https://ko.wikipedia.org/wiki/노홍철"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": false
+  },
+  "4145": {
+   "id": "4145",
+   "answer": "소원",
+   "source": "kr-music/4#g001-kpop-09",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "unverified: 소녀시대 문서에 팬클럽 소원(SONE) 의미·써니 수상 소감 일화 없음; 2007 9인조 SM 데뷔만 확인",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2007 9인조 SM 데뷔",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/소녀시대"
+    },
+    {
+     "claim": "팬클럽 소원/SONE 및 One 의미, 써니 소감 실수",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/소녀시대"
+   ],
+   "note": "힌트가 '순수' 일화로 정답(소원)과 발음이 비슷한 낱말을 쓰지 않아 H2 아님",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4146": {
+   "id": "4146",
+   "answer": "Bo Peep Bo Peep",
+   "source": "kr-music/4#g001-kpop-12",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2009.11 정규 1집·고양이 애교춤 확인; 힌트 5회 1위는 뮤직뱅크 2회+인기가요 뮤티즌송 3주로 맞춰지나 문서가 '1위'로 명시 안 함(unverified)",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2009.11 정규 1집 수록, 고양이춤",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/Bo_Peep_Bo_Peep"
+    },
+    {
+     "claim": "2010.1 뮤직뱅크·인기가요 합계 5회 1위",
+     "where": "h",
+     "result": "unverified",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/Bo_Peep_Bo_Peep"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/Bo_Peep_Bo_Peep"
+   ],
+   "note": null,
+   "piece": "b31",
+   "unverified": true
+  },
+  "4148": {
+   "id": "4148",
+   "answer": "롤리팝",
+   "source": "kr-music/4#g001-kpop-18",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2009.3 LG 휴대전화 광고곡·2NE1+빅뱅·휴대전화 모델 Lollipop 확인; 2NE1 정식 데뷔곡 Fire 2009.5 발매 예정 확인",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2009.3 LG 광고곡, 2NE1 비공식 데뷔, 정식 데뷔곡 Fire 5월",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Lollipop_(Big_Bang_and_2NE1_song)"
+    },
+    {
+     "claim": "곡명이 휴대전화 모델명에서 유래",
+     "where": "h",
+     "result": "unverified",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Lollipop_(Big_Bang_and_2NE1_song)"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Lollipop_(Big_Bang_and_2NE1_song)"
+   ],
+   "note": "힌트가 '롤리팝' 정답 글자 없이 '모델 이름'이라 H2 아님; 휴대전화 이름 Lollipop은 사진 설명으로만 확인",
+   "piece": "b31",
+   "unverified": true
+  },
+  "4158": {
+   "id": "4158",
+   "answer": "정청",
+   "source": "kr-screen/2#g001-movie-09",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "unverified: 정청(황정민)·여수 화교는 문서 일치, 전무 직함·브라더·드루와·중국어는 문서에 없음",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "황정민 정청 = 골드문 실질 2인자, 이자성과 여수에서 만난 화교",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/신세계_(영화)"
+    },
+    {
+     "claim": "전무 직함·브라더 호칭·드루와 대사·중국어 유창",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/신세계_(영화)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4161": {
+   "id": "4161",
+   "answer": "동수",
+   "source": "kr-screen/2#g001-movie-12",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "동수 역(장동건)·장의사 아들·준석과 다른 조직·하와이 대사 문서 일치; 친구들이 성 빼고 부른다는 힌트는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "장동건 한동수, 장의사 아들, 상대 조직, 하와이 대사",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/친구_(2001년_영화)"
+    },
+    {
+     "claim": "친구들이 성을 빼고 부름",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/친구_(2001년_영화)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4162": {
+   "id": "4162",
+   "answer": "군만두",
+   "source": "kr-screen/2#g001-movie-13",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "unverified: 올드보이 15년 감금은 문서 확인, 군만두·청룡 단서는 문서에 없음(ko 문서 404, en 문서에 없음)",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "오대수 15년 감금",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Oldboy_(2003_film)"
+    },
+    {
+     "claim": "매일 군만두, 청룡 이름 단서",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/올드보이_(영화)",
+    "https://ko.wikipedia.org/wiki/올드보이"
+   ],
+   "note": "ko 올드보이 문서 URL 두 개 모두 내용 요약에 군만두 없음",
+   "piece": "b32",
+   "unverified": true
+  },
+  "4163": {
+   "id": "4163",
+   "answer": "소미",
+   "source": "kr-screen/2#g001-movie-14",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "전당포 태식·옆집 소녀 소미·엄마와 함께 납치·아내 잃은 전직 특수요원 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "원빈 차태식 전당포, 옆집 소녀 정소미, 엄마 마약 연루로 모녀 납치, 아내 사망 전직 특수요원",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/아저씨_(영화)"
+    },
+    {
+     "claim": "김새론 아역",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/아저씨_(영화)"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/아저씨_(영화)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4164": {
+   "id": "4164",
+   "answer": "수원왕갈비통닭",
+   "source": "kr-screen/2#g001-movie-15",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "unverified: 극한직업 치킨집 잠복은 문서 확인, 간판 메뉴명·대사·절대미각 형사는 문서에 없음",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "마약반이 치킨집 인수해 잠복, 형사 요리 솜씨로 대박",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/극한직업"
+    },
+    {
+     "claim": "수원왕갈비통닭·고반장 대사",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/극한직업"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4165": {
+   "id": "4165",
+   "answer": "장첸",
+   "source": "kr-screen/2#g001-new-01",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "윤계상 장첸·조선족 조직 두목·가리봉동 문서 일치; 옌볜 사투리 두 달·왕건이파 힌트는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "윤계상 장첸, 가리봉동, 실제 조선족 범죄 사건 바탕",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/The_Outlaws_(2017_film)"
+    },
+    {
+     "claim": "옌볜 사투리 두 달, 왕건이파·흑사파, 2편 장이수 흉내",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/범죄도시_(2017년_영화)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4167": {
+   "id": "4167",
+   "answer": "여명의 눈동자",
+   "source": "kr-screen/3#g001-drama-02",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1991 MBC·주연 셋·김종학 연출·송지나 극본·김성종 원작·최고 58.4%·위안부 4·3 최초·철조망 키스 모두 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "주연·연출·극본·원작·1991 MBC",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/여명의_눈동자"
+    },
+    {
+     "claim": "최고 58.4% · 위안부/4·3 첫 다룸 · 철조망 키스",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/여명의_눈동자"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/여명의_눈동자"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4170": {
+   "id": "4170",
+   "answer": "쓰레기",
+   "source": "kr-screen/3#g001-drama-05",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "정우 김재준 의대생·별명 쓰레기·나정 오빠 친구·남편 결말 문서 일치; 수건 일화는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "김재준 연세대 의대, 별명 쓰레기, 오빠 절친, 나정과 결혼",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/응답하라_1994"
+    },
+    {
+     "claim": "발 닦은 수건으로 얼굴을 닦음",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/응답하라_1994"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4171": {
+   "id": "4171",
+   "answer": "무전기",
+   "source": "kr-screen/3#g001-drama-06",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "시그널 무전기로 연결된 박해영·이재한, 김은희 극본, 실제 사건 모티프 문서 일치; 쓰레기 더미 힌트는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "무전기로 박해영·이재한 연결, 김은희 극본, 실제 사건 모티프",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/시그널_(드라마)"
+    },
+    {
+     "claim": "쓰레기 더미에서 무전기를 주움",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/시그널_(드라마)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4179": {
+   "id": "4179",
+   "answer": "대발이",
+   "source": "kr-screen/3#g001-drama-15",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1991 MBC·최민수·가부장 집안·민주적 집안 며느리·1997 CCTV 문서 일치; 대발 이름은 문서에 없어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1991 MBC 사랑이 뭐길래, 최민수 출연, 가부장적 이씨 집안과 민주적 박씨 집안",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/사랑이_뭐길래"
+    },
+    {
+     "claim": "1997 CCTV 방영·중국 첫 히트 한국 드라마",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/사랑이_뭐길래"
+    },
+    {
+     "claim": "극 중 이름 대발",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/사랑이_뭐길래"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4180": {
+   "id": "4180",
+   "answer": "한상궁",
+   "source": "kr-screen/3#g001-new-03",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "unverified: 대장금 문서에 한상궁·양미경·제주 관비 일화 없음",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "양미경 한상궁, 장금 어머니 친구, 제주 관비 길에 사망, 수라간 경합",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/대장금"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4189": {
+   "id": "4189",
+   "answer": "당연하지",
+   "source": "kr-tv/1#g001-variety-16",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "X맨의 대표 게임 당연하지·김종국·윤은혜 고정 출연 문서 일치; 이지현 별명·귀 막은 장면은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "SBS X맨의 대표 게임 당연하지",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/X맨"
+    },
+    {
+     "claim": "이지현 퀸 오브 당연하지, 김종국이 윤은혜 귀를 막고 외침",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/X맨"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4190": {
+   "id": "4190",
+   "answer": "아담 커플",
+   "source": "kr-tv/1#g001-variety-17",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "조권·가인 2009~2011 우결 아담 커플, 2010 MBC 베스트커플상 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "2009~2011 우결 조권·가인 아담 커플",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/조권"
+    },
+    {
+     "claim": "2010 MBC 연예대상 베스트커플상",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/조권"
+    },
+    {
+     "claim": "앤디·솔비 쌍추 커플",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/조권",
+    "https://ko.wikipedia.org/wiki/우리_결혼했어요"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4191": {
+   "id": "4191",
+   "answer": "양심 냉장고",
+   "source": "kr-tv/1#g001-variety-18",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "WebSearch로 1996년 이경규가 간다·첫 회 장애인 부부 확인; 아무도 없는 한밤·냉장고 선물 세부는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "양심냉장고 1996 일밤 이경규가 간다, 첫 회 장애인 부부",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://www.dailian.co.kr/news/view/905486/"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/일요일_일요일_밤에"
+   ],
+   "note": "WebSearch 1회 사용(결과 요약으로만 확인). 힌트는 질문 되풀이에 가까워 약함",
+   "piece": "b32",
+   "unverified": true
+  },
+  "4192": {
+   "id": "4192",
+   "answer": "짐꾼",
+   "source": "kr-tv/1#g001-variety-20",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2013 tvN 꽃보다 할배 이서진 짐꾼, 네 배우, 시리즈 첫 편 문서 일치; 누나 이승기 힌트는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "이서진 짐꾼, 이순재·신구·박근형·백일섭, 2013",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/꽃보다_할배"
+    },
+    {
+     "claim": "꽃보다 누나에서 이승기가 이어받음",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/꽃보다_할배"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4194": {
+   "id": "4194",
+   "answer": "여러분",
+   "source": "kr-tv/1#g001-variety-22",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "여러분 1979 서울국제가요제 대상 문서 일치; 영어 가사 먼저라는 힌트·임재범 1위는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "윤복희 여러분 1979 서울국제가요제 대상, 임재범 커버",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/여러분_(노래)"
+    },
+    {
+     "claim": "처음엔 영어 가사로 만들어 한국어 가사를 붙임(문서는 영어·한국어 혼합이라고만)",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    },
+    {
+     "claim": "나는 가수다 청중평가 1위",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/여러분_(노래)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4195": {
+   "id": "4195",
+   "answer": "냉면",
+   "source": "kr-tv/1#g001-new-04",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "2009 올림픽대로 듀엣가요제 냉면·명카드라이브·이트라이브 작곡·세뇨리따 문서 일치; 지니 2015 집계는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "냉면: 명카드라이브(박명수·제시카), 이트라이브 작곡, 발매 직후 실시간 1위",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/명카드라이브"
+    },
+    {
+     "claim": "세뇨리따 수록",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/명카드라이브"
+    },
+    {
+     "claim": "지니 2015 스트리밍 1위",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/명카드라이브"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4196": {
+   "id": "4196",
+   "answer": "거성",
+   "source": "kr-tv/1#g001-new-05",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "박명수 별명 거성(巨星)·호통 개그·2인자 문서 일치; G PARK=Great star는 문서에 없어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "별명 거성(巨星), 2인자, 호통 개그",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/박명수"
+    },
+    {
+     "claim": "G PARK의 G = Great star 본인 설명",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/박명수"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4205": {
+   "id": "4205",
+   "answer": "잘 자요",
+   "source": "kr-tv/4#g001-variety-23",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "푸른 밤 성시경 2005~2008 MBC FM4U 문서 일치; 끝인사 잘 자요·후임 일화는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "성시경 푸른 밤 DJ 2005~2008, 후임 알렉스",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/푸른_밤"
+    },
+    {
+     "claim": "끝인사 잘 자요, FM 음악도시 2011~2014, 후임 DJ 일화",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/성시경",
+    "https://ko.wikipedia.org/wiki/푸른_밤"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4209": {
+   "id": "4209",
+   "answer": "모피어스",
+   "source": "world-cinema/2#g001-movie-17",
+   "group": "g001",
+   "verdict": "fix",
+   "categories": [
+    "h-letters",
+    "h-pair-same"
+   ],
+   "reason": "힌트의 모르핀은 모피어스와 같은 어원(꿈의 신)이라 해설 사실과 같고 이름 조각(모르~)을 건네는 꼴",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "로렌스 피시번이 모피어스, 빨간 약·파란 약 선택",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Morpheus_(The_Matrix)"
+    },
+    {
+     "claim": "이름이 그리스 신화 꿈의 신에서 옴",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Morpheus_(The_Matrix)"
+    },
+    {
+     "claim": "모르핀이 같은 어원",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": false,
+    "issue": "H4 해설과 같은 사실(꿈의 신 어원) · H2 모르핀 ↔ 모피어스 이름 조각"
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": "이 인물이 선장으로 이끄는 반란군의 호버크래프트 이름은 성경 속 바빌론 왕의 이름에서 따왔다.",
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Morpheus_(The_Matrix)",
+    "https://en.wikipedia.org/wiki/Nebuchadnezzar_(The_Matrix)"
+   ],
+   "note": "제안 힌트는 네부카드네자르호 문서(선장 모피어스, 성경 느부갓네살 2세에서 따온 이름)로 확인. 다만 이 문서는 출처 보강 필요 표시",
+   "piece": "b32",
+   "unverified": true
+  },
+  "4212": {
+   "id": "4212",
+   "answer": "T-1000",
+   "source": "world-cinema/2#g001-movie-20",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "T2 액체 금속 로버트 패트릭 T-1000, 제철소 쇳물 소멸 문서 일치; T-800 대비 어림수 힌트 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "T-1000 액체 금속, 로버트 패트릭, 쇳물에 녹아 소멸",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/T-1000"
+    },
+    {
+     "claim": "슈워제네거 구형은 T-800",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/T-1000"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/T-1000"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4216": {
+   "id": "4216",
+   "answer": "러브레터",
+   "source": "world-cinema/3#g001-movie-06",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "러브레터 1995·오타루·나카야마 미호 1인 2역·이와이 슌지 데뷔작·1999 정식 개봉 전 복제판 문서 일치; 4월 이야기 등 힌트는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1995 일본 영화, 오타루, 나카야마 미호 2역, 이와이 슌지 장편 데뷔",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Love_Letter_(1995_film)"
+    },
+    {
+     "claim": "한국 1999 정식 개봉 전 불법 복제로 인기",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Love_Letter_(1995_film)"
+    },
+    {
+     "claim": "4월 이야기·하나와 앨리스 연출",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Love_Letter_(1995_film)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4217": {
+   "id": "4217",
+   "answer": "마틸다",
+   "source": "world-cinema/3#g001-movie-22",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "레옹 1994·열두 살 마틸다·부패 마약단속국 요원·포트먼 데뷔·화분 심기 문서 일치; 이름 어원 힌트는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "마틸다 12세, DEA 요원에게 가족 잃음, 포트먼 데뷔, 화분 심음",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Léon:_The_Professional"
+    },
+    {
+     "claim": "마틸다 = 힘+싸움 게르만어",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Léon:_The_Professional"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4218": {
+   "id": "4218",
+   "answer": "해리 하트",
+   "source": "world-cinema/3#g001-movie-25",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "콜린 퍼스 해리 하트=갤러해드, 에그시 영입, 교회 난투 뒤 발렌타인 총격 문서 일치; 매너 대사·국내 개봉 연도는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "콜린 퍼스 해리 하트 코드명 갤러해드, 에그시 영입",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Kingsman:_The_Secret_Service"
+    },
+    {
+     "claim": "교회 난투 뒤 발렌타인에게 총 맞음",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Kingsman:_The_Secret_Service"
+    },
+    {
+     "claim": "매너가 사람을 만든다 대사, 2015 국내 개봉",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Kingsman:_The_Secret_Service"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4221": {
+   "id": "4221",
+   "answer": "셜록",
+   "source": "world-cinema/7#g001-drama-18",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "BBC 셜록 2010·마틴 프리먼 왓슨·221B 외관 노스 가워 스트리트 문서 일치; 첫 회 제목·마이크로프트 출연은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "BBC 2010, 마틴 프리먼 왓슨, 게이티스 공동 제작",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Sherlock_(TV_series)"
+    },
+    {
+     "claim": "221B 외관은 노스 가워 스트리트 촬영",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Sherlock_(TV_series)"
+    },
+    {
+     "claim": "첫 회 A Study in Pink, 게이티스 마이크로프트 출연",
+     "where": "q",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Sherlock_(TV_series)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4224": {
+   "id": "4224",
+   "answer": "피벗",
+   "source": "world-cinema/7#g001-drama-21",
+   "group": "g001",
+   "verdict": "fix",
+   "categories": [
+    "h-weak",
+    "variants"
+   ],
+   "reason": "힌트가 질문(로스·레이철·챈들러가 소파를 옮김)을 되풀이하고 새 정보가 약함 · 피벗/피봇 표기 변형 없음",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "로스가 새 소파를 레이철과 계단으로 옮기다 걸림, 소파가 반으로 잘림, 적립금 4달러, Pivot! 외침",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/The_One_with_the_Cop"
+    },
+    {
+     "claim": "배달료를 아끼려고 직접 듦",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": false,
+    "issue": "H3 질문 되풀이 · H9 힌트만 보고 정답을 말하기 어려움"
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": "이 장면은 한 수학자가 피타고라스 정리로 소파가 실제로는 계단을 통과할 수 있었다고 보여 줄 만큼 유명해졌다.",
+    "variants": [
+     "피봇",
+     "Pivot"
+    ]
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/The_One_with_the_Cop"
+   ],
+   "note": "문서에는 레이철만 언급(챈들러는 질문에 있으나 문서에 없음). 제안 힌트의 새 사실은 위 문서(Zunckel 일화)로 확인",
+   "piece": "b32",
+   "unverified": true
+  },
+  "4225": {
+   "id": "4225",
+   "answer": "호도르",
+   "source": "world-cinema/7#g001-drama-22",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "호도르가 브랜을 업고 다니며 이름 한 마디만 말함 문서 일치; The Door 사연·배우 키·DJ 활동은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "호도르가 브랜을 업고 이름만 말함",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Hodor"
+    },
+    {
+     "claim": "시즌 6 The Door·Hold the door, 배우 208cm·DJ",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Hodor"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4226": {
+   "id": "4226",
+   "answer": "바징가",
+   "source": "world-cinema/7#g001-drama-23",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "바징가 셰던 유행어·워너 브라더스 상표·짐 파슨스 에미상 4회 문서 일치; 엥겔 작가실 유래는 문서에 없어 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "Bazinga 워너 브라더스 등록 상표, 파슨스 에미 4회",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Bazinga"
+    },
+    {
+     "claim": "스티븐 엥겔 작가실 장난에서 유래",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Bazinga",
+    "https://en.wikipedia.org/wiki/Sheldon_Cooper"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4227": {
+   "id": "4227",
+   "answer": "테디",
+   "source": "world-cinema/7#g001-drama-24",
+   "group": "g001",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "곰 인형 테디: 단추 눈·소시지 팔다리·크리스마스 선물·깨우지 않음·초록 미니·둘째 편 빛줄기 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "단추 눈·소시지 팔다리",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Teddy_(Mr._Bean)"
+    },
+    {
+     "claim": "크리스마스 선물·깨우지 않으려 조심",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Teddy_(Mr._Bean)"
+    },
+    {
+     "claim": "연두색 미니·둘째 편 빛줄기",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Teddy_(Mr._Bean)"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Teddy_(Mr._Bean)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4230": {
+   "id": "4230",
+   "answer": "폰 브라운",
+   "source": "aerospace/3#g003-C2-25",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "페네뮌데 V-2·페이퍼클립·새턴 V·SS 소령(Sturmbannführer)·1960 마셜 센터 첫 소장 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "페네뮌데 V-2, 페이퍼클립, 새턴 V 설계 책임",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Wernher_von_Braun"
+    },
+    {
+     "claim": "SS 소령(Sturmbannführer)·평가 논란",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Wernher_von_Braun"
+    },
+    {
+     "claim": "1960 마셜 우주 비행 센터 첫 소장",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Wernher_von_Braun"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Wernher_von_Braun"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4235": {
+   "id": "4235",
+   "answer": "시드니",
+   "source": "animation/2#g003-M1-06",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "니모가 시드니 치과 수족관, 마스크 주소 단서 문서 일치; 같은 정답 #863과 힌트·해설 다른 사실; 크러시 해류는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "니모는 시드니 치과 수족관, 마스크 주소를 도리가 읽음",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Finding_Nemo"
+    },
+    {
+     "claim": "동오스트레일리아 해류·크러시",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Finding_Nemo"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4236": {
+   "id": "4236",
+   "answer": "빙봉",
+   "source": "animation/2#g003-P3-07",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "빙봉: 기억 폐기장 수레에서 스스로 뛰어내림·잠재의식 감옥·기쁨이와 슬픔이가 구함·리처드 카인드 풀이 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "폐기장 수레에서 뛰어내려 기쁨이를 보냄",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Inside_Out_(2015_film)"
+    },
+    {
+     "claim": "드림 프로덕션 난입으로 감옥, 기쁨·슬픔이 구출",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Inside_Out_(2015_film)"
+    },
+    {
+     "claim": "리처드 카인드: 어린 시절이 바래 가는 것",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Inside_Out_(2015_film)"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Bing_Bong",
+    "https://en.wikipedia.org/wiki/Inside_Out_(2015_film)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4237": {
+   "id": "4237",
+   "answer": "맷 그레이닝",
+   "source": "animation/3#g003-M1-01",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "맷 그레이닝: 브룩스 사무실 로비 스케치·가족 이름·Bart=brat 철자 바꿈·Life in Hell·퓨처라마 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "로비에서 스케치, 부모·여동생 이름, Bart anagram of brat",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Matt_Groening"
+    },
+    {
+     "claim": "Life in Hell, 퓨처라마",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Matt_Groening"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Matt_Groening"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4238": {
+   "id": "4238",
+   "answer": "애크미",
+   "source": "animation/3#g003-M1-02",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "ACME: 코요테 주문·척 존스 전화번호부 맨 앞이라 고른 이유·로저 래빗 마빈 애크미 사망 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "코요테가 주문하는 가상 회사 Acme",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Acme_Corporation"
+    },
+    {
+     "claim": "척 존스: 전화번호부 맨 앞이라 최고라는 뜻",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Acme_Corporation"
+    },
+    {
+     "claim": "로저 래빗 사장 마빈 애크미 살인",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Acme_Corporation"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Acme_Corporation"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4239": {
+   "id": "4239",
+   "answer": "아즈라엘",
+   "source": "animation/4#g003-M1-03",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "아즈라엘: 가가멜의 말 못 하지만 영리한 갈색 고양이·델포르트가 죽음의 천사 이름 제안·젊음의 샘 에피소드 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "가가멜의 갈색 고양이, 말 못 함, 영리",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Gargamel"
+    },
+    {
+     "claim": "이브 델포르트가 죽음의 천사에서 이름 제안",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Gargamel"
+    },
+    {
+     "claim": "샘에 빠져 가가멜 아이·고양이 새끼",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Gargamel"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Azrael_(The_Smurfs)",
+    "https://en.wikipedia.org/wiki/Gargamel"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4240": {
+   "id": "4240",
+   "answer": "스너프킨",
+   "source": "animation/4#g003-M1-04",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "스너프킨: 가장 친한 친구·하모니카·봄여름만 머물고 남쪽으로·부모 요크사르와 밈블·미이 배다른 남매·아토스 비르타넨 모델 문서 일치; 약혼은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "무민 가장 친한 친구, 텐트·하모니카·초록 모자, 겨울에 남쪽으로",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Snufkin"
+    },
+    {
+     "claim": "밈블과 요크사르의 아들, 미이의 배다른 형제",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Snufkin"
+    },
+    {
+     "claim": "아토스 비르타넨과 한때 약혼",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Snufkin"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4243": {
+   "id": "4243",
+   "answer": "프랭크 게리",
+   "source": "architecture/2#g003-A2-16",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "빌바오 구겐하임 1997·티타늄 약 3만 3천 장·빌바오 효과·CATIA·골드버거 인용·토론토 출생·춤추는 집·디즈니 홀 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1997 개관, 티타늄 약 33,000장, 빌바오 효과",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Guggenheim_Museum_Bilbao"
+    },
+    {
+     "claim": "CATIA·골드버거 발언",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Guggenheim_Museum_Bilbao"
+    },
+    {
+     "claim": "토론토 출생, 춤추는 집, 월트 디즈니 콘서트홀",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Frank_Gehry"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Guggenheim_Museum_Bilbao",
+    "https://en.wikipedia.org/wiki/Frank_Gehry"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4244": {
+   "id": "4244",
+   "answer": "판테온",
+   "source": "architecture/3#g003-A2-10",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "판테온: 오큘러스 약 9m·철근 없는 콘크리트 돔 최대·라파엘로 무덤·아그리파 글귀·하드리아누스 재건·609 보니파시오 4세·비토리오 에마누엘레 2세 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "오큘러스 약 9.1m, 최대 무철근 콘크리트 돔, 라파엘로 무덤",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Pantheon,_Rome"
+    },
+    {
+     "claim": "아그리파 글귀, 하드리아누스 재건",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Pantheon,_Rome"
+    },
+    {
+     "claim": "609 보니파시오 4세, 비토리오 에마누엘레 2세 묘",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Pantheon,_Rome"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Pantheon,_Rome"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4246": {
+   "id": "4246",
+   "answer": "퐁피두 센터",
+   "source": "architecture/3#g003-A2-12",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "퐁피두 센터 1977·피아노와 로저스·색 구분(녹 배관, 청 공조, 황 전기, 적 동선·안전)·퐁피두 대통령 이름·IRCAM 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1977 개관, 피아노·로저스, 색 구분",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Centre_Pompidou"
+    },
+    {
+     "claim": "빨강은 동선·안전",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Centre_Pompidou"
+    },
+    {
+     "claim": "퐁피두 대통령에게서 이름, IRCAM 입주",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Centre_Pompidou"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Centre_Pompidou"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4249": {
+   "id": "4249",
+   "answer": "팔작지붕",
+   "source": "architecture/4#g003-A2-14",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "팔작지붕 정의(맞배 위+우진각 아래, 까치박공)·예시 건물 넷·홍련암 문서 일치; 권위 건물에 가장 흔히 썼다는 힌트는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "위 맞배 + 아래 우진각, 까치박공",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/팔작지붕"
+    },
+    {
+     "claim": "근정전·경회루·무량수전·오죽헌·홍련암 예시",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/팔작지붕"
+    },
+    {
+     "claim": "권위 있는 건물에 가장 흔히 씀",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/팔작지붕",
+    "https://ko.wikipedia.org/wiki/맞배지붕"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4251": {
+   "id": "4251",
+   "answer": "풀밭 위의 점심",
+   "source": "art/1#g003-A1-09",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "마네 풀밭 위의 점심: 1863 낙선전·라이몬디 판화 영향·처음 제목 목욕·빅토린 뫼랑 문서 일치; 모네 같은 제목은 문서 일부만 확인",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1863 살롱 낙선, 낙선전 소동, 벗은 여인과 옷 입은 두 남자",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Le_Déjeuner_sur_l'herbe"
+    },
+    {
+     "claim": "라이몬디 판화 파리스의 심판에서 배치, 처음 제목 Le Bain",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Le_Déjeuner_sur_l'herbe"
+    },
+    {
+     "claim": "모델 빅토린 뫼랑, 모네가 영향받아 그림",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Le_Déjeuner_sur_l'herbe"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Le_Déjeuner_sur_l'herbe"
+   ],
+   "note": "문서는 모네가 영감을 받은 화가로만 적음; 같은 제목 작품은 unverified",
+   "piece": "b32",
+   "unverified": true
+  },
+  "4252": {
+   "id": "4252",
+   "answer": "라오콘",
+   "source": "art/2#g003-A1-10",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "라오콘: 1506 포도밭·미켈란젤로 호출·율리우스 2세 구입·1905 폴라크 오른팔·1957 설치·플리니우스 로도스 세 조각가 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1506 로마 포도밭 발굴, 미켈란젤로, 율리우스 2세 구입",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Laocoön_and_His_Sons"
+    },
+    {
+     "claim": "1905 폴라크 오른팔 발견, 1957 부착",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Laocoön_and_His_Sons"
+    },
+    {
+     "claim": "플리니우스: 로도스 세 조각가",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Laocoön_and_His_Sons"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Laocoön_and_His_Sons"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4256": {
+   "id": "4256",
+   "answer": "책가도",
+   "source": "art/3#g003-P4-11",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "책가도: 정조 시기 책 중심 정물화·청나라 다보격 닮은 책장·서양 원근법과 음영·19세기 민화로 퍼지며 추상적 문서 일치; 이응록 병풍 힌트는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "정조 때 유행, 청 다보격 닮은 책장, 서양 원근법·음영",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Chaekgeori"
+    },
+    {
+     "claim": "19세기 민화로 퍼지며 더 추상적",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Chaekgeori"
+    },
+    {
+     "claim": "1860~70년대 이응록 병풍",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Chaekgeori"
+   ],
+   "note": "문서는 책장 그림=책가도(문방도 별칭), 넓은 갈래=책거리로 구분; 변형 책거리·문방도는 이미 있음",
+   "piece": "b32",
+   "unverified": true
+  },
+  "4257": {
+   "id": "4257",
+   "answer": "미래주의",
+   "source": "art/4#g003-A1-06",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "미래주의: 1909 마리네티·밀라노에서 시작·속도와 기계 찬양·박물관 거부 문서 일치; 위생 구절·르 피가로·20센트 동전은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1909 마리네티, 이탈리아, 속도·자동차·비행기 찬양",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Futurism"
+    },
+    {
+     "claim": "세계의 유일한 위생, 르 피가로 프랑스어 게재, 20센트 유로 동전",
+     "where": "e",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Futurism"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4261": {
+   "id": "4261",
+   "answer": "데네브",
+   "source": "astronomy/2#g003-C2-13",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "데네브: 여름의 대삼각형·암탉의 꼬리·9800년경 북극성 근처·거리 1,400~2,600광년·칠석 오작교 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "여름 대삼각형, 칠석 오작교 별",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Deneb"
+    },
+    {
+     "claim": "암탉의 꼬리, 세차로 9800년경 북극 근처",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Deneb"
+    },
+    {
+     "claim": "푸른빛 초거성, 거리 1,400~2,600광년",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Deneb"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Deneb"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4265": {
+   "id": "4265",
+   "answer": "축구공",
+   "source": "ball-sports/1#g003-S2-08",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1891년 12월 스프링필드 YMCA·축구공·13개 규칙 문서 일치; 복숭아 바구니·갈색 농구공은 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1891년 12월 스프링필드 첫 경기, 축구공 사용",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/James_Naismith"
+    },
+    {
+     "claim": "기본 규칙 13개",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/James_Naismith"
+    },
+    {
+     "claim": "복숭아 바구니 골대 · 전용 공 처음 갈색",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/James_Naismith"
+   ],
+   "note": "문서에 YMCA 체육관 명시는 'Springfield YMCA' 학교로 확인",
+   "piece": "b32",
+   "unverified": true
+  },
+  "4267": {
+   "id": "4267",
+   "answer": "골든 슬램",
+   "source": "ball-sports/3#g003-S2-09",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "1988 그라프 4대 메이저+서울 올림픽 금 골든 슬램, 첫 테니스 선수 문서 일치; 올림픽 복귀 연표는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1988 그라프 4대 메이저와 서울 올림픽 금, 골든 슬램",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Steffi_Graf"
+    },
+    {
+     "claim": "첫 테니스 선수로 골든 슬램",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Steffi_Graf"
+    },
+    {
+     "claim": "테니스 1928~1984 올림픽 메달 종목 제외",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Steffi_Graf"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4269": {
+   "id": "4269",
+   "answer": "멀리건",
+   "source": "ball-sports/4#g003-P4-19",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "멀리건: 정식 규칙에는 없는 친선 재타·1920s 몬트리올 캐나다 골퍼 설·뉴저지 라커룸 직원 설·MTG·아침 식사 공(첫 티샷) 문서 일치; 뉴저지 설 연대 1930년대는 unverified",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "몬트리올 컨트리클럽 1920년대 캐나다 골퍼 Mulligan 설",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Mulligan_(games)"
+    },
+    {
+     "claim": "뉴저지 라커룸 직원 설, MTG 규칙 이름",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Mulligan_(games)"
+    },
+    {
+     "claim": "첫 티샷만 봐주는 것 = breakfast ball",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Mulligan_(games)"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Mulligan_(games)"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": true
+  },
+  "4270": {
+   "id": "4270",
+   "answer": "세인트앤드루스",
+   "source": "ball-sports/4#g003-S2-04",
+   "group": "g003",
+   "verdict": "ok",
+   "categories": [],
+   "reason": "올드 코스 1764년 22홀→18홀·디 오픈 30회(2022까지)·세인트앤드루스 대학 스코틀랜드 최고(最古)·윌리엄 왕세자 문서 일치",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1764 22홀을 18홀로 줄임",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Old_Course_at_St_Andrews"
+    },
+    {
+     "claim": "디 오픈 30회, 2022까지",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Old_Course_at_St_Andrews"
+    },
+    {
+     "claim": "스코틀랜드 최고(最古) 대학, 윌리엄 왕세자 졸업",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/University_of_St_Andrews"
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://en.wikipedia.org/wiki/Old_Course_at_St_Andrews",
+    "https://en.wikipedia.org/wiki/University_of_St_Andrews"
+   ],
+   "note": null,
+   "piece": "b32",
+   "unverified": false
+  },
+  "4272": {
+   "id": "4272",
+   "answer": "사라예보",
+   "source": "ball-sports/5#g003-S2-11",
+   "group": "g003",
+   "verdict": "fix",
+   "categories": [
+    "h-error"
+   ],
+   "reason": "1973 사라예보 세계탁구선수권 단체전 우승(이에리사·정현숙·김순옥·박미라) 문서 일치; 밀랴츠카강·바슈차르시야 일부 unverified; 같은 정답 #3270과 다른 사실",
+   "uniqueness": {
+    "unique": true,
+    "otherAnswers": []
+   },
+   "facts": [
+    {
+     "claim": "1973 사라예보 단체전 우승, 구기 종목 첫 세계 제패",
+     "where": "q",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/이에리사"
+    },
+    {
+     "claim": "김순옥·박미라 함께, 현재 보스니아 헤르체고비나",
+     "where": "e",
+     "result": "true",
+     "basis": "web",
+     "source": "https://ko.wikipedia.org/wiki/이에리사"
+    },
+    {
+     "claim": "밀랴츠카강이 도시를 흐름",
+     "where": "h",
+     "result": "true",
+     "basis": "web",
+     "source": "https://en.wikipedia.org/wiki/Sarajevo"
+    },
+    {
+     "claim": "15세기 옛 시장 바슈차르시야",
+     "where": "h",
+     "result": "unverified",
+     "basis": "none",
+     "source": null
+    }
+   ],
+   "readable": true,
+   "hint": {
+    "ok": true,
+    "issue": null
+   },
+   "proposal": {
+    "question": null,
+    "explanation": null,
+    "hint": null,
+    "variants": null
+   },
+   "urls": [
+    "https://ko.wikipedia.org/wiki/이에리사",
+    "https://en.wikipedia.org/wiki/Sarajevo"
+   ],
+   "note": "문서에는 밀랴츠카강이 서쪽으로 흐른다고 적혀 '동쪽에서 가운데로'와 방향 표현이 문서와 정확히 같지는 않음",
+   "piece": "b32",
+   "unverified": true,
+   "verifyFlip": true
   }
  }
 }
