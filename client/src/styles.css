@@ -6138,6 +6138,16 @@ button.primary.tone-warn {
   user-select: none;
   -webkit-user-select: none;
 }
+/* ★ R053 그림에서 — 폴드 접힘(344) 7×7 칸이 31px(손가락에 작다) → 모바일은 카드 여백까지 넓히고 칸 사이를 좁힌다 */
+:where(.ui-mobile) .oddone-stage .oddone-grid {
+  width: calc(100% + 24px);
+  margin: 0 -12px;
+  gap: 2px;
+}
+:where(.ui-mobile) .oddone-stage .oddone-cell {
+  padding: 7%;
+  border-radius: 8px;
+}
 .oddone-grid.small {
   width: min(100%, 200px);
   gap: 2px;

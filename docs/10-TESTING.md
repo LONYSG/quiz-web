@@ -1074,6 +1074,23 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 34. ★★★ R053 — ui-check 경량 묶음 · 미니게임 3차 넷
+
+```bash
+node scripts/ui-check-bundles.mjs --list                          묶음 33 (본편 --layout · --behavior / sound · social · profile · emoji · leave · spam · shop · copy · devices / 미니게임 라운드 · 게임별)
+node scripts/ui-check-bundles.mjs                                 ★ 끝 점검 ui-check — 묶음별 · 묶음 사이 남는 메모리 1.5GB(60초 × 10) · 못 돌리면 적고 다음 묶음
+node scripts/ui-check-bundles.mjs mg-r052-lab mg-r052-price …     고른 묶음만 · --retry 4 --retry-gap-min 30(못 돌린 묶음 다시) · --out 표.json
+PORT=3010 npm run bot -- mgminority  --url http://localhost:3010  ★★★ (9) 5명 연습: 소수파 1점 · 바꾸기 = 마지막 선택 · 모두 같은 수 0 · 안 고름 0 / 3명 퀴즈 판 보상 +3 / 2명 → 자리에서 빠짐 · 연습은 됨
+PORT=3010 npm run bot -- mgtwothirds --url http://localhost:3010  ★★ (5) 30 · 60 · 90 · 0 → 평균 45 · 목표 30 · 값 · 순위 · 미입력 · 101 거부
+PORT=3010 npm run bot -- mgoddone    --url http://localhost:3010  ★★★ (9) 800ms · 틀림 1번 + 2초 = 2900 · 지연 150 · 틀림만 · 미입력 · 미리 계산 거부 · 알림
+PORT=3010 npm run bot -- mggauge     --url http://localhost:3010  ★★★ (7) 정중앙 0 · 지연 150/400 같은 값 · 서버 값 = 기록 ms 로 다시 계산 · 0.1 주기 늦게 40% · 미제출 · 미리 계산 거부
+```
+★ 묶음 하나 = 프로세스 하나 = Chrome 하나 — 끝나면 메모리를 돌려준다. ui-check 안에서는 `Page.close()` 가 탭을 닫고 미니게임 흐름 사이 `closeAllTabs`.
+★ 환경 탓 실패(Chrome 을 밖에서 끔 · WSL 재시작으로 DB 가 잠깐 내려감 — browser disconnected · Target closed · ECONNREFUSED …)는 결함이 아니다 — 실행기가 60초 뒤 그 묶음만 한 번 더(FAIL-ENV).
+★ R053 실측(남는 메모리 · 묶음 시작 → 끝): 퀴즈류 묶음 하나 100~170초 · 1.4~1.8GB 에서 돌았다(3GB 기준이던 R050~R052 는 못 돌렸다).
+
+---
+
 ## 33. ★★★ R052 — 퀴즈류 미니게임 다섯
 
 ```bash
