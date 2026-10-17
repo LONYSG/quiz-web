@@ -1074,6 +1074,19 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 35. ★★★ R054 — 전적 · 업적 · 풍선 불기 · 연타 10초
+
+```bash
+PORT=3011 npm run bot -- mgballoon    --url http://localhost:3011  ★★★ 5명: 미리 계산 거부 · 판 진행 중 터짐 값 숨김 · 서버 재계산(1초 → 110%) · 지연 150 같은 값 · 같은 판 같은 터짐 값(넘으면 0) · 안 함 0점
+PORT=3011 npm run bot -- mgtap        --url http://localhost:3011  ★★★ 초당 20 넘으면 거부 · 횟수 많은 순 · 거부 · 안 한 사람 0점
+PORT=3011 npm run bot -- achievements --url http://localhost:3011  ★★★ 첫 정답 · 연속 3 표 · achievement.earned 본인 · 채팅 한 줄 · 두 번 안 줌 · /api/me/stats = answer_events · final_rank 1 · /api/me/points
+node scripts/ui-check-bundles.mjs mg-r054-lab mg-r054-balloon mg-r054-tap r054-stats   그림 docs/design/r054/90~93
+node scripts/achievements-backfill.mjs --login lonysg              소급 dry-run(--apply 전 db:backup)
+```
+★ R054 끝 점검: 위 봇 3 · 묶음 4 모두 **못 돌림 — 메모리**(2026-10-18 00:57~04:50 · 남는 메모리 34~700MB · 커밋 27.4/28.6GB). vitest 496 · typecheck 는 통과. 다른 세션이 쉴 때 위 명령으로.
+
+---
+
 ## 34. ★★★ R053 — ui-check 경량 묶음 · 미니게임 3차 넷
 
 ```bash
