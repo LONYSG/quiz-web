@@ -198,6 +198,13 @@ class Cdp {
 
 /** 페이지 하나. 브라우저 컨텍스트가 다르면 쿠키가 분리된다(시크릿 창과 같다) */
 class Page extends Cdp {
+  /** ★ R053 ⓪ — 연결만 끊지 않고 **탭을 닫는다**(메모리를 돌려준다). 옛 close() 는 웹소켓만 닫아 탭이 남았다 */
+  close() {
+    super.close();
+    const b = globalThis.__uicBrowser;
+    if (b && this.targetId) void b.send('Target.closeTarget', { targetId: this.targetId }).catch(() => {});
+  }
+
   /** 페이지 안에서 쓸 라벨 추출 함수. <kbd> 배지를 뺀 버튼 이름을 돌려준다 */
   static LABEL_FN = `const labelOf = (el) => [...el.childNodes]
         .filter(n => !(n.nodeType === 1 && n.tagName === 'KBD'))
@@ -2781,15 +2788,189 @@ async function r052Flow(browser) {
   for (const k of R052_GAMES) await r052Live(browser, k);
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R053 — 미니게임 3차 화면 점검 (MG_R053=minority,twothirds,oddone,gauge · MG_SKIP_R053)
+//   [1] 실험실 장면 — 규칙 · 진행 · 판 결과 · 최종 · 다른 하나 4×4/7×7 · 게이지 가림 (PC 1280 · 390 · 폴드 344)
+//   [2] 연습 판 — H(PC 1280 · 키보드/마우스) · G(390 터치)
+// -----------------------------------------------------------------------------
+const R053_GAMES = (process.env.MG_R053 ?? 'minority,twothirds,oddone,gauge').split(',').filter(Boolean);
+async function r053Lab(browser) {
+  const L = await newPage(browser, 'M4-lab');
+  await L.setViewport(1280, 720);
+  await signUp(L, 'm4l', '그림점검넷');
+  const num = { minority: 80, twothirds: 81, oddone: 82, gauge: 83 };
+  const scenes = [];
+  for (const k of R053_GAMES) for (const ph of ['rules', 'play', 'roundResult', 'final']) scenes.push([k, ph, '', '']);
+  if (R053_GAMES.includes('oddone')) scenes.push(['oddone', 'play', '&size=7', '7x7']);
+  if (R053_GAMES.includes('gauge')) scenes.push(['gauge', 'play', '&state=hidden&at=480', 'hidden']);
+  for (const [k, ph, extra, tag] of scenes) {
+    const name = `${num[k]}-scene-${k}-${ph}${tag ? `-${tag}` : ''}`;
+    for (const [dev, w, h, touch] of [['pc', 1280, 720, false], ['m390', 390, 844, true], ['fold', 344, 882, true]]) {
+      if (dev === 'fold' && ph !== 'play' && ph !== 'roundResult') continue;
+      if (touch) await touchDevice(L, w, h);
+      else {
+        await touchDevice(L, w, h, false);
+        await L.setViewport(w, h);
+      }
+      await L.goto(`${BASE}/lab/minigame?scene=1&key=${k}&phase=${ph}&seed=2024${extra}`);
+      await L.waitFor(`document.querySelector('.mg-card')?.dataset.phase === '${ph}'`, 6000);
+      await sleep(450);
+      await snap(L, `${name}-${dev}`);
+      if (dev === 'fold') {
+        const over = await L.evaluate('document.documentElement.scrollWidth - innerWidth');
+        record(`★ R053 장면 ${k}/${ph}${tag ? `/${tag}` : ''} — 폴드(344) 가로 넘침 없음`, over <= 1, String(over));
+        if (k === 'oddone' && tag === '7x7') {
+          const cw = await L.evaluate("Math.round(document.querySelector('.oddone-cell')?.getBoundingClientRect().width ?? 0)");
+          record('★★ C 7×7 폴드 접힘 — 칸 폭이 손가락에 맞는가(≥ 36px)', cw >= 36, `${cw}px`);
+        }
+      }
+    }
+  }
+  if (R053_GAMES.includes('gauge')) {
+    await touchDevice(L, 1280, 720, false);
+    await L.setViewport(1280, 720);
+    await L.goto(`${BASE}/lab/minigame?scene=1&key=gauge&phase=play&seed=2024&state=hidden&at=480`);
+    await L.waitFor("document.querySelector('.gauge-mask') !== null", 5000);
+    record('★★ D 게이지 4~5판 — 가운데 30% 가림', (await L.evaluate("Math.round(parseFloat(document.querySelector('.gauge-mask').style.width))")) === 30);
+  }
+  await touchDevice(L, 1280, 720, false);
+  await L.close?.();
+}
+async function r053Live(browser, key) {
+  const { H, G, roomId } = await r051Room(browser, `n${key.slice(0, 3)}`);
+  const num = { minority: 80, twothirds: 81, oddone: 82, gauge: 83 }[key];
+  await r051Start(H, key);
+  await waitPhase(H, 'rules', 12000);
+  await sleep(400);
+  await snap(H, `${num}-live-${key}-rules-pc`);
+  await snap(G, `${num}-live-${key}-rules-m390`);
+  const rounds = { minority: 5, twothirds: 3, oddone: 5, gauge: 5 }[key];
+  for (let i = 0; i < rounds; i += 1) {
+    await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'play'", 30000);
+    await sleep(300);
+    if (key === 'minority') {
+      await H.key('3', { code: 'Digit3', vk: 51, text: true });
+      const c = await rectOf(G, '.minority-card[data-n="2"]');
+      await trustedTap(G, c.x + c.w / 2, c.y + c.h / 2);
+      await sleep(200);
+      if (i === 0) {
+        record('★★ A 소수파 — PC 3 키 · 모바일 톡으로 고름', (await H.evaluate("document.querySelector('.minority-card.picked')?.dataset.n")) === '3' && (await G.evaluate("document.querySelector('.minority-card.picked')?.dataset.n")) === '2');
+        await snap(H, `${num}-live-minority-picked-pc`);
+        await snap(G, `${num}-live-minority-picked-m390`);
+      }
+    } else if (key === 'twothirds') {
+      await H.evaluate("document.querySelector('.quiz-num-input')?.focus()");
+      await H.send('Input.insertText', { text: String(40 + i) });
+      if (i === 0) await snap(H, `${num}-live-twothirds-typed-pc`);
+      await H.key('Enter');
+      const gi = await rectOf(G, '.quiz-num-input');
+      await trustedTap(G, gi.x + gi.w / 2, gi.y + gi.h / 2);
+      await G.send('Input.insertText', { text: String(20 + i) });
+      const ok = await rectOf(G, '.quiz-num-ok');
+      if (ok) await trustedTap(G, ok.x + ok.w / 2, ok.y + ok.h / 2);
+    } else if (key === 'oddone') {
+      const cells = JSON.parse(await H.evaluate(`JSON.stringify((() => { const cs = [...document.querySelectorAll('.oddone-cell')]; const srcs = cs.map((c) => c.querySelector('img')?.getAttribute('src')); const cnt = {}; for (const s of srcs) cnt[s] = (cnt[s] ?? 0) + 1; const odd = srcs.findIndex((s) => cnt[s] === 1); return { odd, n: cs.length }; })())`));
+      const cell = async (page, idx) => rectOf(page, `.oddone-cell[data-i="${idx}"]`);
+      // H — 한 번 틀리고 맞힘 · G — 바로 맞힘(톡)
+      const w = await cell(H, cells.odd === 0 ? 1 : 0);
+      await trustedClick(H, w.x + w.w / 2, w.y + w.h / 2);
+      await sleep(250);
+      if (i === 0) {
+        record('★★ C 틀림 → +2초 안내', (await H.evaluate("document.querySelector('.quiz-num-help')?.innerText ?? ''")).includes('+2초'));
+        await snap(H, `${num}-live-oddone-wrong-pc`);
+      }
+      const r = await cell(H, cells.odd);
+      await trustedClick(H, r.x + r.w / 2, r.y + r.h / 2);
+      const g = await cell(G, cells.odd);
+      if (g) await trustedTap(G, g.x + g.w / 2, g.y + g.h / 2);
+      await sleep(250);
+      if (i === 0 || i === 4) {
+        await snap(H, `${num}-live-oddone-r${i + 1}-pc`);
+        await snap(G, `${num}-live-oddone-r${i + 1}-m390`);
+      }
+    } else {
+      // 게이지 — 가운데 근처에 올 때 Space (H) · G 는 톡
+      let pressed = false;
+      for (let t = 0; t < 80 && !pressed; t += 1) {
+        const left = await H.evaluate("parseFloat(document.querySelector('.gauge-marker')?.style.left ?? '0')");
+        if (Math.abs(left - 50) < 8) {
+          await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: ' ', code: 'Space', windowsVirtualKeyCode: 32, text: ' ' });
+          await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: ' ', code: 'Space', windowsVirtualKeyCode: 32 });
+          pressed = true;
+        } else await sleep(15);
+      }
+      const tr = await rectOf(G, '.gauge-track');
+      await trustedTap(G, tr.x + tr.w / 2, tr.y + tr.h / 2);
+      await sleep(200);
+      if (i === 0 || i === 3) {
+        await snap(H, `${num}-live-gauge-r${i + 1}-pc`);
+        await snap(G, `${num}-live-gauge-r${i + 1}-m390`);
+      }
+    }
+    await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'roundResult'", 20000);
+    if (i === 0) {
+      await sleep(500);
+      await snap(H, `${num}-live-${key}-result-pc`);
+      await snap(G, `${num}-live-${key}-result-m390`);
+    }
+  }
+  await waitPhase(H, 'final', 30000);
+  await sleep(600);
+  await snap(H, `${num}-live-${key}-final-pc`);
+  const db = await withPg(async (c) =>
+    (await c.query(`SELECT a.login_id, r.round_index, r.submitted, r.value, r.points, r.input FROM minigame_results r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = (SELECT max(id) FROM minigame_runs WHERE room_id = $1) ORDER BY r.round_index`, [roomId])).rows,
+  );
+  const h = db.filter((r) => /h$/.test(r.login_id));
+  const g = db.filter((r) => /g$/.test(r.login_id));
+  const ok =
+    key === 'minority'
+      ? h.every((r) => r.input?.pick === 3) && g.every((r) => r.input?.pick === 2) && h.every((r) => r.points === 1) && g.every((r) => r.points === 1)
+      : key === 'twothirds'
+        ? h.every((r, i) => r.input?.value === 40 + i) && g.every((r, i) => r.input?.value === 20 + i)
+        : key === 'oddone'
+          ? h.every((r) => r.submitted && r.input?.wrong === 1 && r.value >= 2000) && g.filter((r) => r.submitted).length >= 3
+          : h.every((r) => r.submitted && r.value < 25) && g.every((r) => r.submitted);
+  record(`★★★ ${key} 실제 판 기록(DB) — 입력 · 값`, ok, JSON.stringify([h.map((r) => r.value), g.map((r) => r.value)]));
+  await H.waitFor("document.querySelector('.lobby-card') !== null", 40000);
+  await H.close?.();
+  await G.close?.();
+}
+async function r053Flow(browser) {
+  if (!process.env.MG_SKIP_LAB) await r053Lab(browser);
+  if (process.env.MG_SKIP_LIVE) return;
+  for (const k of R053_GAMES) {
+    await closeAllTabs(browser);
+    await r053Live(browser, k);
+  }
+}
+
+/** ★ R053 ⓪ — 열린 탭을 모두 닫는다(묶음 사이 · 탭 ≤3 유지) */
+async function closeAllTabs(browser) {
+  const { targetInfos } = await browser.send('Target.getTargets');
+  for (const t of targetInfos.filter((x) => x.type === 'page')) await browser.send('Target.closeTarget', { targetId: t.targetId }).catch(() => {});
+  await sleep(300);
+}
+
 async function minigameFlow(browser) {
   // ── [1] 그림 모음 · 장면 (MG_SKIP_LAB=1 이면 건너뛴다 — 실제 판만 다시 볼 때)
   // ★ R051 — MG_SKIP_R050=1 이면 R050 두 게임을 건너뛰고 · 넷(번개손 · 타자 · 원 · 각도)만 (MG_GAMES 로 더 좁힌다)
   if (!process.env.MG_SKIP_R050) {
     if (!process.env.MG_SKIP_LAB) await minigameLab(browser);
+    await closeAllTabs(browser);
     if (!process.env.MG_SKIP_LIVE) await minigameLive(browser);
   }
-  if (!process.env.MG_SKIP_R051) await r051Flow(browser);
-  if (!process.env.MG_SKIP_R052) await r052Flow(browser);
+  if (!process.env.MG_SKIP_R051) {
+    await closeAllTabs(browser);
+    await r051Flow(browser);
+  }
+  if (!process.env.MG_SKIP_R052) {
+    await closeAllTabs(browser);
+    await r052Flow(browser);
+  }
+  if (!process.env.MG_SKIP_R053) {
+    await closeAllTabs(browser);
+    await r053Flow(browser);
+  }
 }
 /** ★ R050 F — /lab/sound — 후보 버튼 · 실제 파일 길이(브라우저가 읽은 duration) · 누르면 소리가 난다(오류 없음) */
 async function soundLab(L) {
@@ -4230,6 +4411,7 @@ try {
   const launched = await launchBrowser();
   browserProc = launched.proc;
   browser = launched.browser;
+  globalThis.__uicBrowser = browser;
   // ★★ R028 — 테스트용 일반 힌트는 **브라우저가 뜬 뒤에** 넣는다.
   //   ★ 브라우저를 못 띄우면 skip() 이 process.exit 으로 끝나 되돌릴 기회가 없다 (R028 실측으로 남았다)
   const uiHints = await setUiHints();
