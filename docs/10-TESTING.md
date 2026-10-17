@@ -1074,6 +1074,19 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 33. ★★★ R052 — 퀴즈류 미니게임 다섯
+
+```bash
+node scripts/minigame-load.mjs                                  ★ dry-run 표(게임별 verified · 형식 거부 · 그림 없음) — DB 를 쓰지 않는다
+PORT=3009 npm run bot -- mgquiz --url http://localhost:3009     ★★★ (53) 자기 서버 · 봇 계정 경험을 비우고 시작 · MGQ=common,price,worldprice,photo,estimate,which 로 고른다
+                                                                  [B 15] 경험 15행 · 두 번째 판 겹침 0 · 이미 본 사람 0점 · "이미 본 문항" · 모자람 → 케이크 · 퀴즈류만이면 없음 · 연습 더미 · 기록 0
+                                                                  [숫자 셋] |ln| 값 · 순위 · 미입력 · 정답 숨김 · 빅맥 표 · EU · 1년 / [사진] 빠른 순 · 변형 · 공백 · 시도 수 · 알림 / [어느 쪽] 맞힘 1점 · 동점 시간 합
+SHOT_DIR=r052 MG_SKIP_R050=1 MG_SKIP_R051=1 node scripts/ui-check.mjs --minigame   ★★ 퀴즈류 장면(더미 · 실제 그림 zoom/mosaic) · 실제 5문제 판(두 사람이 3문제를 맞혀 넘김) — MG_QUIZ 로 고른다
+```
+★ R052 끝에 ui-check 는 메모리로 못 돌렸다(1.02~1.46GB) — 첫 실행 결과는 다음 라운드에 적는다.
+
+---
+
 ## 32. ★★★ R051 — 미니게임 2차 (번개손 · 타자 · 완벽한 원 · 각도) · 균형 물건 손질
 
 ```bash
