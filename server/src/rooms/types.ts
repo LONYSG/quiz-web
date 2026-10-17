@@ -130,6 +130,11 @@ export interface ActiveGame {
   minigameBag: import('@quiz/shared').MinigameKey[];
   lastMinigameKey: import('@quiz/shared').MinigameKey | null;
   minigameDoneAt: number[];
+  /**
+   * ★★★ R052 — 퀴즈류 미니게임 문항(적재본)과 참가자 경험("키|문항 id"). 게임 시작 때 한 번 읽는다(퀴즈 풀과 같은 꼴).
+   *   미니게임 포함이 꺼졌거나 퀴즈류를 고르지 않았으면 null — 그때는 피지컬만 나온다.
+   */
+  minigameQuiz: { data: import('../db/minigameItems.js').QuizData; experienced: Map<string, Set<string>> } | null;
   /** 정답 공개 뒤 5초 대기 구간의 정보. QUESTION_RESOLVED 에서만 값이 있다 */
   resolution: Resolution | null;
   /**

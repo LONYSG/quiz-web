@@ -110,7 +110,7 @@ export interface MinigameView {
   phaseEndsAt: number;
   roundIndex: number;
   roundCount: number;
-  round: { params: Record<string, unknown>; playMs: number; private: Record<string, unknown> | null } | null;
+  round: { params: Record<string, unknown>; playMs: number; private: Record<string, unknown> | null; reveal?: Record<string, unknown> | null; itemId?: string | null } | null;
   participants: MinigameParticipant[];
   submittedCount: number;
   selfSubmitted: boolean;
@@ -141,7 +141,14 @@ export function minigameView(room: Room, viewerAccountId: string): MinigameView 
     roundCount: run.rounds.length,
     round:
       inRound && spec
-        ? { params: spec.params, playMs: spec.playMs, private: participating && def.privateFor ? def.privateFor(spec, viewerAccountId, run.roundIndex) : null }
+        ? {
+            params: spec.params,
+            playMs: spec.playMs,
+            private: privateOf(def, spec, viewerAccountId, run.roundIndex, participating),
+            // ★ R052 — 정답 · 값은 정답 공개 때만 (판 진행 중에는 보내지 않는다)
+            reveal: run.phase === 'roundResult' ? (spec.reveal ?? null) : null,
+            itemId: spec.itemId ?? null,
+          }
         : null,
     participants: run.participants,
     submittedCount: subs ? [...subs.values()].filter((s) => !s.provisional).length : 0,
@@ -152,6 +159,14 @@ export function minigameView(room: Room, viewerAccountId: string): MinigameView 
     final: run.final,
     afterQuestionIndex: run.afterQuestionIndex,
   };
+}
+
+/** 사람마다 다른 공개 값 + ★ R052 퀴즈류 "이미 본 문항" */
+function privateOf(def: (typeof MINIGAME_DEFS)[MinigameKey], spec: RoundSpec, accountId: string, roundIndex: number, participating: boolean): Record<string, unknown> | null {
+  if (!participating) return null;
+  const base = def.privateFor ? def.privateFor(spec, accountId, roundIndex) : null;
+  if (spec.experiencedBy?.includes(accountId)) return { ...(base ?? {}), experienced: true };
+  return base;
 }
 
 function broadcast(room: Room): void {
@@ -193,7 +208,17 @@ export function startMinigame(room: Room, key: MinigameKey, opts: { practice: bo
   const participants: MinigameParticipant[] = [...room.players.values()]
     .sort((a, b) => a.joinOrder - b.joinOrder)
     .map((p) => ({ accountId: p.accountId, nickname: p.nickname, colorIndex: p.colorIndex, device: deviceOf(p.accountId) }));
-  const rounds = def.buildRounds(seed);
+  // ★ R052 — 퀴즈류는 문항 · 경험이 필요하다(게임 시작 때 올려 둔 것). 모자라면 null → 시작하지 않는다(부르는 쪽이 다른 것을 고른다)
+  const rounds = def.buildRounds(seed, {
+    practice: opts.practice,
+    participants: participants.map((p) => p.accountId),
+    quiz: opts.practice ? null : (room.game?.minigameQuiz ?? null),
+    now,
+  });
+  if (!rounds || rounds.length === 0) {
+    console.log(`[minigame] ${room.id} ${def.info.name} 건너뜀 — 낼 수 있는 문항이 모자라다`);
+    return false;
+  }
   const gameId = room.game?.gameId ?? null;
   const dbId = insertRun({ gameId: opts.practice ? null : gameId, roomId: room.id, key, practice: opts.practice, afterQuestionIndex: opts.afterQuestionIndex, seed })
     .then(async (id) => {
@@ -251,9 +276,21 @@ function maybeStartQuizMinigame(room: Room): boolean {
   if (!minigameSlots(game.totalQuestions).includes(idx)) return false;
   if (game.minigameDoneAt.includes(idx)) return false;
   game.minigameDoneAt.push(idx);
-  const key = pickMinigameKey(room);
-  if (!key) return false;
-  return startMinigame(room, key, { practice: false, afterQuestionIndex: idx });
+  // ★ R052 — 고른 것이 문항 모자람으로 안 되면 다른 것을(퀴즈류가 다 안 되면 피지컬만 남는다)
+  const tried = new Set<MinigameKey>();
+  for (let i = 0; i < room.settings.minigameKeys.length + 1; i += 1) {
+    const key = pickMinigameKey(room);
+    if (!key || tried.has(key)) {
+      const rest = room.settings.minigameKeys.filter((k) => !tried.has(k) && MINIGAME_DEFS[k]);
+      if (rest.length === 0) return false;
+      if (startMinigame(room, rest[0]!, { practice: false, afterQuestionIndex: idx })) return true;
+      tried.add(rest[0]!);
+      continue;
+    }
+    tried.add(key);
+    if (startMinigame(room, key, { practice: false, afterQuestionIndex: idx })) return true;
+  }
+  return false;
 }
 
 setBeforeNextQuestion(maybeStartQuizMinigame);
@@ -263,7 +300,12 @@ setBeforeNextQuestion(maybeStartQuizMinigame);
 // ─────────────────────────────────────────────────────────────────────────────
 export type SubmitResult = 'ok' | 'not_now' | 'not_participant' | 'already' | 'bad_input' | 'stale';
 
-export function submitMinigame(room: Room, accountId: string, payload: { token: string; roundIndex: number; input: unknown }): SubmitResult {
+export function submitMinigame(
+  room: Room,
+  accountId: string,
+  payload: { token: string; roundIndex: number; input: unknown },
+  onFeedback?: (f: Record<string, unknown>) => void,
+): SubmitResult {
   const run = room.minigame;
   if (!run || room.state !== 'MINIGAME') return 'not_now';
   if (payload.token !== run.token || payload.roundIndex !== run.roundIndex) return 'stale';
@@ -273,9 +315,10 @@ export function submitMinigame(room: Room, accountId: string, payload: { token: 
   const prev = subs.get(accountId);
   if (prev && !prev.provisional) return 'already';
   const spec = run.rounds[run.roundIndex]!;
-  const parsed = MINIGAME_DEFS[run.key].parseInput(payload.input, spec, { serverElapsedMs: Date.now() - run.phaseStartedAt });
+  const parsed = MINIGAME_DEFS[run.key].parseInput(payload.input, spec, { serverElapsedMs: Date.now() - run.phaseStartedAt, prev });
   if (!parsed) return 'bad_input';
   subs.set(accountId, parsed);
+  if (parsed.feedback) onFeedback?.(parsed.feedback);
   if (!parsed.provisional) {
     // 제출 수만 알린다 (값은 판이 끝나야 공개)
     broadcast(room);
@@ -315,13 +358,13 @@ export function checkMinigame(room: Room, now: number): void {
         break;
       }
       run.roundIndex += 1;
-      setPhase(run, 'ready', now, T(MINIGAME_TIMING.READY_MS));
+      setPhase(run, 'ready', now, T(run.rounds[run.roundIndex]!.readyMs ?? MINIGAME_TIMING.READY_MS));
       break;
     case 'ready': {
       const spec = run.rounds[run.roundIndex]!;
       setPhase(run, 'play', now, spec.playMs + MINIGAME_TIMING.LATENCY_GRACE_MS);
       const idx = run.roundIndex;
-      fire('라운드', run.dbId.then((id) => (id ? insertRound(id, idx, spec.itemKey, spec.params, spec.seed) : undefined)));
+      fire('라운드', run.dbId.then((id) => (id ? insertRound(id, idx, spec.itemKey, spec.params, spec.seed, spec.itemId ?? null) : undefined)));
       break;
     }
     case 'play':
@@ -342,13 +385,29 @@ function endRound(room: Room, run: MinigameRun, now: number): void {
   const def = MINIGAME_DEFS[run.key];
   const subs = run.submissions[run.roundIndex]!;
   // ★ 미제출 = 그 판 꼴찌(0점). 균형은 움직이던 마지막 값(provisional)을 확정으로 쓴다
+  // ★ R052 — 이 문항을 이미 본 사람은 순위 · 점수에서 뺀다(0점 · "이미 본 문항")
+  const spec = run.rounds[run.roundIndex]!;
+  const seen = new Set(spec.experiencedBy ?? []);
   const ranked = rankRound(
-    run.participants.map((p) => ({ accountId: p.accountId, value: subs.get(p.accountId)?.value ?? null })),
+    run.participants.map((p) => ({ accountId: p.accountId, value: seen.has(p.accountId) ? null : (subs.get(p.accountId)?.value ?? null) })),
     def.info.better,
   );
+  const correctMode = def.info.scoring === 'correct';
   const rows: RoundResultRow[] = ranked.map((r) => {
     const s = subs.get(r.accountId);
-    return { accountId: r.accountId, submitted: s ? (s.submitted ?? true) : false, value: r.value, error: s?.error ?? null, rank: r.rank, points: r.points, extra: s?.extra ?? null };
+    const exp = seen.has(r.accountId);
+    // 맞히기 방식(어느 쪽?) — 맞히면 1점 · 순위는 빠른 순 표시만
+    const points = exp ? 0 : correctMode ? (r.value !== null ? 1 : 0) : r.points;
+    const value = exp ? (s?.value ?? null) : r.value;
+    return {
+      accountId: r.accountId,
+      submitted: s ? (s.submitted ?? true) : false,
+      value,
+      error: s?.error ?? null,
+      rank: r.rank,
+      points,
+      extra: exp ? { ...(s?.extra ?? {}), experienced: true } : (s?.extra ?? null),
+    };
   });
   // ★ 소수 자리 — 게임이 정한 고정 자리(번개손 ms 정수) 또는 1·2위가 갈리는 자리. 타자 미완(진행률 순위 값)은 빼고 잰다
   const decimals = decimalsFor(def.info, rows.filter((r) => r.value !== null && r.extra?.unfinished !== true).map((r) => r.value as number));
@@ -370,25 +429,34 @@ function endRound(room: Room, run: MinigameRun, now: number): void {
         : undefined,
     ),
   );
-  // ★ 퀴즈류(R052~) — 판이 공개되는 순간 접속 중인 참가자에게 경험 기록
+  // ★ 퀴즈류(R052) — 정답이 공개되는 순간 접속 중인 참가자에게 경험 기록(01 12장) · 이 게임 메모리에도(다음 미니게임 선정)
   if (def.info.kind === 'quiz' && !run.practice) {
     const witnesses = run.participants.filter((p) => room.players.get(p.accountId)?.connected).map((p) => p.accountId);
     const itemKey = run.rounds[idx]!.itemKey;
+    const mq = room.game?.minigameQuiz;
+    if (mq) for (const a of witnesses) {
+      let set = mq.experienced.get(a);
+      if (!set) mq.experienced.set(a, (set = new Set()));
+      set.add(`${run.key}|${itemKey}`);
+    }
     fire('미니게임 경험', run.dbId.then((id) => (id ? recordItemExperiences(witnesses, run.key, itemKey, id) : undefined)));
   }
-  setPhase(run, 'roundResult', now, T(MINIGAME_TIMING.ROUND_RESULT_MS));
+  setPhase(run, 'roundResult', now, T(spec.resultMs ?? MINIGAME_TIMING.ROUND_RESULT_MS));
   broadcast(room);
 }
 
 function enterFinal(room: Room, run: MinigameRun, now: number): void {
   const lastRows = run.roundResults[run.roundResults.length - 1]?.rows ?? [];
-  const final = rankFinal(
-    run.participants.map((p) => ({
-      accountId: p.accountId,
-      total: run.totals.get(p.accountId) ?? 0,
-      lastRoundRank: lastRows.find((r) => r.accountId === p.accountId)?.rank ?? 99,
-    })),
-  );
+  const correctMode = MINIGAME_DEFS[run.key].info.scoring === 'correct';
+  // ★ 동점 가르기 — 기본은 마지막 판 순위 · 맞히기 방식(어느 쪽?)은 맞힌 문항의 시간 합(작은 쪽)
+  const tie = (accountId: string): number =>
+    correctMode
+      ? run.roundResults.reduce((sum, rr) => {
+          const r = rr.rows.find((x) => x.accountId === accountId);
+          return sum + (r && r.points > 0 && r.value !== null ? r.value : 0);
+        }, 0)
+      : (lastRows.find((r) => r.accountId === accountId)?.rank ?? 99);
+  const final = rankFinal(run.participants.map((p) => ({ accountId: p.accountId, total: run.totals.get(p.accountId) ?? 0, lastRoundRank: tie(p.accountId) })));
   const n = run.participants.length;
   run.final = final.map((f) => ({ accountId: f.accountId, rank: f.rank, total: f.total, reward: run.practice ? 0 : minigameReward(f.rank, n) }));
   // ★★ 보상 — 한 번만. 연습은 없음

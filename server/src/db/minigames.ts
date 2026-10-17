@@ -39,11 +39,11 @@ export async function insertRunPlayers(
   );
 }
 
-export async function insertRound(runId: string, roundIndex: number, itemKey: string, params: unknown, seed: number): Promise<void> {
+export async function insertRound(runId: string, roundIndex: number, itemKey: string, params: unknown, seed: number, itemId: string | null = null): Promise<void> {
   await query(
-    `INSERT INTO minigame_rounds (run_id, round_index, item_key, params, seed) VALUES ($1, $2, $3, $4::jsonb, $5)
+    `INSERT INTO minigame_rounds (run_id, round_index, item_key, params, seed, item_id) VALUES ($1, $2, $3, $4::jsonb, $5, $6)
      ON CONFLICT DO NOTHING`,
-    [runId, roundIndex, itemKey, JSON.stringify(params), seed],
+    [runId, roundIndex, itemKey, JSON.stringify(params), seed, itemId],
   );
 }
 

@@ -115,6 +115,7 @@ const SCENARIO_ENV = {
   mgtyping: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   mgcircle: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   mgangle: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  mgquiz: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -6597,6 +6598,254 @@ async function scenarioMgAngle() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R052 — 퀴즈류 미니게임 봇 (D-239) — `npm run bot -- mgquiz` (MGQ=common,price,worldprice,photo,estimate,which 로 고른다)
+//   자기 서버(SCENARIO_ENV): 정답 공개 대기 200ms · 판 진행 밖 단계 ×0.05
+//   ★ 시작할 때 봇 계정의 퀴즈류 경험(minigame_item_experiences)을 비운다(봇 계정만 — 몇 번 돌려도 같다)
+//   [B] 공통: 경험 기록(공개 순간 · 문항 × 참가자) · 두 번째 판에 같은 문항 안 나옴 · 일부가 본 문항 = 그 사람 0점 · "이미 본 문항" · 모자라면 건너뜀 → 다른 미니게임 · 연습 = 더미 · 기록 없음
+//   [C~G] 게임마다 입력 · 점수 식 · 순위 · 미입력 · 정답은 공개 때만
+// -----------------------------------------------------------------------------
+async function mgqAnswer(itemId) {
+  return withDb(async (c) => (await c.query(`SELECT game, payload FROM minigame_items WHERE item_id = $1`, [itemId])).rows[0]);
+}
+async function mgqProduct(pid) {
+  return withDb(async (c) => (await c.query(`SELECT payload FROM minigame_products WHERE product_id = $1`, [pid])).rows[0]?.payload);
+}
+/** 퀴즈류 판의 정답 숫자 (price · worldprice · estimate) */
+async function mgqNumber(key, itemId) {
+  const it = await mgqAnswer(itemId);
+  if (key === 'price') return it.payload.priceKrw;
+  if (key === 'estimate') return it.payload.value;
+  const pr = await mgqProduct(it.payload.productId);
+  return pr.rows.find((r) => r.cc === it.payload.targetCc).krw;
+}
+async function mgqRun(gameId) {
+  return withDb(async (c) => (await c.query(`SELECT id::text, minigame_key FROM minigame_runs WHERE game_id = $1 ORDER BY id`, [gameId])).rows);
+}
+async function mgqRows(runId) {
+  return withDb(async (c) =>
+    (await c.query(
+      `SELECT a.login_id, r.round_index, r.submitted, r.input, r.value, r.rank, r.points FROM minigame_results r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = $1 ORDER BY r.round_index, a.login_id`,
+      [runId],
+    )).rows,
+  );
+}
+async function mgqRounds(runId) {
+  return withDb(async (c) => (await c.query(`SELECT round_index, item_key, item_id, params FROM minigame_rounds WHERE run_id = $1 ORDER BY round_index`, [runId])).rows);
+}
+async function mgqExp(loginIds, key) {
+  return withDb(async (c) =>
+    (await c.query(
+      `SELECT a.login_id, e.item_key FROM minigame_item_experiences e JOIN accounts a ON a.id = e.account_id WHERE a.login_id = ANY($1) AND e.minigame_key = $2`,
+      [loginIds, key],
+    )).rows,
+  );
+}
+/** 봇마다 정책 — 퀴즈류 판(play)마다 한 번: policy(bot, mg) → Promise<{ delayMs, input } | null> */
+function driveQuiz(bot, policy) {
+  bot.__mgDone = new Set();
+  bot.__mgViews = [];
+  bot.onMinigame = (mg) => {
+    if (!mg) return;
+    bot.__mgViews.push({ phase: mg.phase, roundIndex: mg.roundIndex, private: mg.round?.private ?? null, reveal: mg.round?.reveal ?? null, itemId: mg.round?.itemId ?? null, params: mg.round?.params ?? null });
+    if (mg.phase !== 'play' || mg.spectating) return;
+    const k = `${mg.token}:${mg.roundIndex}`;
+    if (bot.__mgDone.has(k)) return;
+    bot.__mgDone.add(k);
+    void Promise.resolve(policy(bot, mg)).then((acts) => {
+      for (const act of [].concat(acts ?? [])) {
+        if (!act) continue;
+        setTimeout(() => bot.socket?.connected && bot.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: act.input }), act.delayMs ?? 0);
+      }
+    });
+  };
+}
+
+async function scenarioMgQuiz() {
+  log('시나리오 mgquiz — ★★★ 퀴즈류 미니게임 (R052 · 얼마게요 · 빅맥지수 · 사진 · 얼마나 · 어느 쪽)');
+  const PARTS = (process.env.MGQ ?? 'common,price,worldprice,photo,estimate,which').split(',');
+  const sh = await mgShared();
+  const bots = await makeBots(4);
+  const [b1, b2, b3, b4] = bots;
+  const ids = bots.map((b) => b.loginId);
+  const cleared = await withDb(async (c) => (await c.query(`DELETE FROM minigame_item_experiences WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [ids])).rowCount);
+  log(`  봇 경험 비움 ${cleared}행`);
+  const counts = await withDb(async (c) => (await c.query(`SELECT game, count(*)::int n FROM minigame_items WHERE active GROUP BY game ORDER BY game`)).rows);
+  log(`  활성 문항 ${counts.map((r) => `${r.game} ${r.n}`).join(' · ')}`);
+  for (const b of bots) await b.connect();
+  b1.createRoom('R052 퀴즈류');
+  await b1.waitFor(() => b1.snapshot !== null, 6000, '방');
+  const roomId = b1.snapshot.room.id;
+  for (const b of [b2, b3]) {
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
+  }
+  await sleep(300);
+  const three = [b1, b2, b3];
+
+  // ── [B] 공통
+  if (PARTS.includes('common')) {
+    log('\n[B] ★★★ 출제 공통 — 경험 · 두 번째 판 · 이미 본 문항 · 모자라면 건너뜀 · 연습');
+    for (const b of three) driveQuiz(b, async (bot, mg) => ({ delayMs: 50, input: { value: 10000 } }));
+    const g1 = await playQuickGame(b1, [b2, b3], 5, ['price'], 120000);
+    const r1 = (await mgqRun(g1))[0];
+    expect('★ 5문제 판 — 얼마게요 1번', r1?.minigame_key, 'price');
+    const rd1 = await mgqRounds(r1.id);
+    expect('★★ 문항 5 · item_id 기록', rd1.filter((r) => r.item_id).length, 5);
+    expectTrue('★★ 정답(priceKrw)은 판 진행 공개 값(params)에 없다', rd1.every((r) => r.params.priceKrw === undefined && JSON.stringify(r.params).indexOf('priceKrw') < 0));
+    const e1 = await mgqExp(ids, 'price');
+    expect('★★★ 경험 기록 = 문항 5 × 참가 3', e1.length, 15);
+    const items1 = new Set(rd1.map((r) => r.item_id));
+    await backToLobby(b1, [b2, b3]);
+    const g2 = await playQuickGame(b1, [b2, b3], 5, ['price'], 120000);
+    const rd2 = await mgqRounds((await mgqRun(g2))[0].id);
+    expectTrue('★★★ 두 번째 판 — 같은 문항이 다시 나오지 않는다', rd2.every((r) => !items1.has(r.item_id)), JSON.stringify(rd2.map((r) => r.item_id)));
+    await backToLobby(b1, [b2, b3]);
+    // 일부만 본 문항 — b1 에게 얼마게요 문항 전부를 본 것으로 넣는다 → 모든 문항이 2단계(b1 만 봄) → b1 은 매 문항 0점 · "이미 본 문항"
+    await withDb((c) => c.query(`INSERT INTO minigame_item_experiences (account_id, minigame_key, item_key) SELECT a.id, 'price', i.item_id FROM accounts a, minigame_items i WHERE a.login_id = $1 AND i.game = 'price' ON CONFLICT DO NOTHING`, [b1.loginId]));
+    for (const b of three) driveQuiz(b, async (bot, mg) => ({ delayMs: 50, input: { value: (await mgqNumber('price', mg.round.itemId)) * (bot === b1 ? 1 : 1.3) } }));
+    const g3 = await playQuickGame(b1, [b2, b3], 5, ['price'], 120000);
+    const run3 = (await mgqRun(g3))[0];
+    const rows3 = await mgqRows(run3.id);
+    expectTrue('★★★ 이미 본 사람(b1) — 정답을 맞혀도 매 문항 0점', rows3.filter((r) => r.login_id === b1.loginId).every((r) => r.points === 0), JSON.stringify(rows3.filter((r) => r.login_id === b1.loginId).map((r) => r.points)));
+    expectTrue('★★ 보지 않은 사람(b2 · b3)은 점수(같은 값 · 공동 1위 3점)', rows3.filter((r) => r.login_id !== b1.loginId).every((r) => r.points === 3), JSON.stringify(rows3.map((r) => [r.login_id.slice(-2), r.points])));
+    expectTrue('★★ 화면 보기 — b1 에게만 "이미 본 문항"(private.experienced)', b1.__mgViews.some((v) => v.phase === 'play' && v.private?.experienced === true) && !b2.__mgViews.some((v) => v.private?.experienced), '');
+    await backToLobby(b1, [b2, b3]);
+    // 모자라면 건너뜀 — 얼마나 될까 문항을 셋 빼고 모두 본 것으로(세 명 모두) → 5 모자람 → 케이크로
+    await withDb((c) =>
+      c.query(
+        `INSERT INTO minigame_item_experiences (account_id, minigame_key, item_key) SELECT a.id, 'estimate', i.item_id FROM accounts a, (SELECT item_id FROM minigame_items WHERE game='estimate' AND active ORDER BY item_id OFFSET 3) i WHERE a.login_id = ANY($1) ON CONFLICT DO NOTHING`,
+        [three.map((b) => b.loginId)],
+      ),
+    );
+    for (const b of three) driveQuiz(b, () => null);
+    const g4 = await playQuickGame(b1, [b2, b3], 5, ['estimate', 'cake'], 150000);
+    expect('★★★ 문항 모자람 — 얼마나 될까를 건너뛰고 케이크', (await mgqRun(g4)).map((r) => r.minigame_key), ['cake']);
+    await backToLobby(b1, [b2, b3]);
+    const g5 = await playQuickGame(b1, [b2, b3], 5, ['estimate'], 120000);
+    expect('★★ 퀴즈류만 골랐는데 모두 모자라면 — 미니게임 없이 다음 문제', (await mgqRun(g5)).length, 0);
+    await backToLobby(b1, [b2, b3]);
+    // 연습 — 더미 · 기록 없음
+    const before = (await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_item_experiences`)).rows[0].n));
+    for (const b of three) driveQuiz(b, () => ({ delayMs: 30, input: { value: 12345 } }));
+    const pid = await mgPractice(b1, roomId, 'price', 60000);
+    const prd = await mgqRounds(pid);
+    expect('★★ 연습 = 더미 3문항(누가 봐도 가짜 · DB 문항 아님)', prd.map((r) => r.item_key), ['dummy-price-1', 'dummy-price-2', 'dummy-price-3']);
+    expectTrue('★ 연습 — item_id 없음 · params.dummy', prd.every((r) => r.item_id === null && r.params.dummy === true));
+    expect('★★ 연습 — 경험 기록 0', (await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_item_experiences`)).rows[0].n)) - before, 0);
+    const prr = await mgqRows(pid);
+    expectTrue('★ 연습 — 더미 정답(12,345원)을 맞히면 오차 0', prr.filter((r) => r.round_index === 0).every((r) => Math.abs(r.value) < 1e-9));
+    await withDb((c) => c.query(`DELETE FROM minigame_item_experiences WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [ids]));
+  }
+
+  /** 숫자 셋 — 정확 · ×1.2 · ×0.5 · 미입력 → 순위 1 · 2 · 3 · 0점 */
+  const numberGame = async (key) => {
+    log(`\n[${key}] ★★★ 숫자 맞히기 — 정확 · ×1.2 · ×0.5 · b4 미입력(4명)`);
+    if (b4.snapshot?.room?.id !== roomId) {
+      b4.join(roomId);
+      await b4.waitFor(() => b4.snapshot?.room.id === roomId, 6000, 'b4 입장');
+    }
+    const mult = new Map([[b1.loginId, 1], [b2.loginId, 1.2], [b3.loginId, 0.5]]);
+    const seenParams = [];
+    for (const b of [b1, b2, b3, b4]) {
+      driveQuiz(b, async (bot, mg) => {
+        if (bot === b1) seenParams.push(mg.round.params);
+        if (bot === b4) return null;
+        return { delayMs: 40, input: { value: (await mgqNumber(key, mg.round.itemId)) * mult.get(bot.loginId) } };
+      });
+    }
+    const gid = await playQuickGame(b1, [b2, b3, b4], 5, [key], 150000);
+    const run = (await mgqRun(gid))[0];
+    expect(`★ ${key} — 미니게임 한 번`, run?.minigame_key, key);
+    const rows = await mgqRows(run.id);
+    expect('★ 기록 = 문항 5 × 4명', rows.length, 20);
+    const of = (b) => rows.filter((r) => r.login_id === b.loginId);
+    expectTrue('★★★ 점수 식 — 값 = |ln(입력/정답)| (정확 0 · ×1.2 0.182 · ×0.5 0.693)', of(b1).every((r) => Math.abs(r.value) < 1e-9) && of(b2).every((r) => Math.abs(r.value - Math.log(1.2)) < 1e-6) && of(b3).every((r) => Math.abs(r.value - Math.log(2)) < 1e-6), JSON.stringify([of(b2)[0]?.value, of(b3)[0]?.value]));
+    expectTrue('★★ 순위 1 · 2 · 3 · 판 점수 4 · 3 · 2', [b1, b2, b3].every((b, i) => of(b).every((r) => r.rank === i + 1 && r.points === 4 - i)));
+    expectTrue('★★ 미입력 — 0점 · submitted=false', of(b4).every((r) => !r.submitted && r.points === 0));
+    expectTrue('★★ 입력 원값 기록(value)', of(b2).every((r) => typeof r.input?.value === 'number'));
+    const secret = key === 'price' ? 'priceKrw' : key === 'estimate' ? '"value"' : 'targetKrw';
+    expectTrue(`★★ 정답(${secret})은 진행 중 보기(params)에 없다`, seenParams.length === 5 && seenParams.every((p) => JSON.stringify(p).indexOf(secret) < 0));
+    const rv = b1.__mgViews.filter((v) => v.phase === 'roundResult' && v.reveal).map((v) => v.reveal);
+    expectTrue('★★ 정답 공개 때 reveal 이 온다', rv.length >= 5);
+    if (key === 'worldprice') {
+      const r0 = rv[0];
+      expectTrue('★★ 빅맥 — 전체 순위 표(krw 오름차순 · 50행 안팎) · 환율 기준일', Array.isArray(r0.rows) && r0.rows.length >= 30 && r0.rows.every((x, i) => i === 0 || r0.rows[i - 1].krw <= x.krw) && typeof r0.fxAsOf === 'string', `${r0.rows?.length}`);
+      expectTrue('★★ 빅맥 — EU 는 "유로 지역" · 목표 나라로 나오지 않는다', rv.every((x) => !x.rows.some((y) => y.cc === 'EU' && y.countryKo !== '유로 지역')) && seenParams.every((p) => p.target.cc !== 'EU'));
+      expectTrue('★ 빅맥 — 보여 준 나라 3곳(한국 포함 · 목표 제외)', seenParams.every((p) => p.shown.length === 3 && p.shown.some((x) => x.cc === 'KR') && !p.shown.some((x) => x.cc === p.target.cc)));
+    }
+    if (key === 'price') {
+      const picked = (await mgqRounds(run.id)).map((r) => r.item_id);
+      const ages = await withDb(async (c) => (await c.query(`SELECT max(now()::date - (payload->>'priceAsOf')::date)::int d FROM minigame_items WHERE item_id = ANY($1)`, [picked])).rows[0].d);
+      expectTrue('★ 얼마게요 — 1년 넘은 가격은 내지 않는다(고른 문항 기준일 ≤ 365일)', ages !== null && ages <= 365, String(ages));
+    }
+    await backToLobby(b1, [b2, b3, b4]);
+  };
+  for (const k of ['price', 'worldprice', 'estimate']) if (PARTS.includes(k)) await numberGame(k);
+
+  if (PARTS.includes('photo')) {
+    log('\n[photo] ★★★ 사진 — b1 틀림 → 맞힘(1초) · b2 바로 맞힘(0.5초) · b3 틀림만 · b4 안 침');
+    const fb = new Map(bots.map((b) => [b.loginId, []]));
+    for (const b of bots) b.socket.on('minigame.feedback', (f) => fb.get(b.loginId).push(f));
+    for (const b of [b1, b2, b3, b4]) {
+      driveQuiz(b, async (bot, mg) => {
+        if (bot === b4) return null;
+        const ans = (await mgqAnswer(mg.round.itemId)).payload;
+        const variant = ans.altAnswers?.[0] ?? ans.answer;
+        if (bot === b1) return [{ delayMs: 300, input: { text: '전혀아닌답', elapsedMs: 300 } }, { delayMs: 1000, input: { text: ` ${ans.answer} `, elapsedMs: 1000 } }];
+        if (bot === b2) return { delayMs: 500, input: { text: variant, elapsedMs: 500 } };
+        return [{ delayMs: 300, input: { text: '모르겠다', elapsedMs: 300 } }, { delayMs: 600, input: { text: '정말모름', elapsedMs: 600 } }];
+      });
+    }
+    const gid = await playQuickGame(b1, [b2, b3, b4], 5, ['photo'], 200000);
+    const run = (await mgqRun(gid))[0];
+    const rows = await mgqRows(run.id);
+    const of = (b) => rows.filter((r) => r.login_id === b.loginId);
+    expectTrue('★★★ 빨리 맞힌 순 — b2(0.5초) 1위 · b1(1초) 2위', of(b2).every((r) => r.rank === 1 && r.value === 500) && of(b1).every((r) => r.rank === 2 && r.value === 1000), JSON.stringify([of(b1).map((r) => r.value), of(b2).map((r) => r.value)]));
+    expectTrue('★★ 변형 정답(altAnswers) · 앞뒤 공백도 정답(퀴즈와 같은 정규화)', of(b2).every((r) => r.submitted) && of(b1).every((r) => r.submitted));
+    expectTrue('★★ 못 맞힌 사람 0점(b3 틀림만 · b4 안 침)', of(b3).every((r) => r.points === 0 && !r.submitted) && of(b4).every((r) => r.points === 0));
+    expectTrue('★ 틀린 시도 수 기록(b1 2번째에 맞힘 · b3 2번)', of(b1).every((r) => r.input?.tries === 2) && of(b3).every((r) => r.input?.tries === 2), JSON.stringify([of(b1)[0]?.input, of(b3)[0]?.input]));
+    const f1 = fb.get(b1.loginId);
+    expectTrue('★★ 입력한 사람에게만 맞음/틀림 알림(b1: 틀림 → 맞음 × 5)', f1.filter((f) => f.correct === false).length === 5 && f1.filter((f) => f.correct === true).length === 5 && fb.get(b4.loginId).length === 0, JSON.stringify(f1.slice(0, 2)));
+    const rv = b1.__mgViews.filter((v) => v.phase === 'roundResult' && v.reveal).map((v) => v.reveal);
+    expectTrue('★★ 정답은 공개 때만 · 출처(attribution)', b1.__mgViews.filter((v) => v.phase === 'play').every((v) => !JSON.stringify(v.params ?? {}).includes('"answer"')) && rv.every((x) => x.answer && x.attribution));
+    await backToLobby(b1, [b2, b3, b4]);
+  }
+
+  if (PARTS.includes('which')) {
+    log('\n[which] ★★★ 어느 쪽? 10문항 — b1 모두 맞힘(빠름) · b2 모두 맞힘(느림) · b3 모두 틀림 · b4 안 고름');
+    for (const b of [b1, b2, b3, b4]) {
+      driveQuiz(b, async (bot, mg) => {
+        if (bot === b4) return null;
+        const ans = (await mgqAnswer(mg.round.itemId)).payload.answer;
+        const choice = bot === b3 ? (ans === 'a' ? 'b' : 'a') : ans;
+        const ms = bot === b1 ? 400 : 900;
+        return { delayMs: ms, input: { choice, elapsedMs: ms } };
+      });
+    }
+    const gid = await playQuickGame(b1, [b2, b3, b4], 5, ['which'], 200000);
+    const run = (await mgqRun(gid))[0];
+    const rows = await mgqRows(run.id);
+    expect('★ 기록 = 10문항 × 4명', rows.length, 40);
+    const of = (b) => rows.filter((r) => r.login_id === b.loginId);
+    expectTrue('★★★ 맞히면 1점 · 틀림 · 안 고름 0점', of(b1).every((r) => r.points === 1) && of(b2).every((r) => r.points === 1) && of(b3).every((r) => r.points === 0 && r.submitted) && of(b4).every((r) => r.points === 0 && !r.submitted));
+    const fin = await withDb(async (c) =>
+      (await c.query(`SELECT a.login_id, p.final_rank FROM minigame_players p JOIN accounts a ON a.id = p.account_id WHERE p.run_id = $1 ORDER BY p.final_rank, a.login_id`, [run.id])).rows,
+    );
+    expect('★★★ 최종 — 맞힌 수 같으면(10 · 10) 맞힌 시간 합 작은 b1 이 1위 · b3 · b4 공동', fin.map((r) => [r.login_id.slice(-2), r.final_rank]), [[b1.loginId.slice(-2), 1], [b2.loginId.slice(-2), 2], [b3.loginId.slice(-2), 3], [b4.loginId.slice(-2), 3]]);
+    await backToLobby(b1, [b2, b3, b4]);
+  }
+
+  // 단위처럼 — 공유 함수
+  expectTrue('★ ratioError — 2배 = ½배 · 0 은 Infinity', Math.abs(sh.ratioError(200, 100) - sh.ratioError(50, 100)) < 1e-12 && sh.ratioError(0, 100) === Infinity);
+  for (const b of bots) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -6797,6 +7046,8 @@ const SCENARIOS = {
   mgtyping: scenarioMgTyping,
   mgcircle: scenarioMgCircle,
   mgangle: scenarioMgAngle,
+  // ★★★ R052 — 퀴즈류
+  mgquiz: scenarioMgQuiz,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

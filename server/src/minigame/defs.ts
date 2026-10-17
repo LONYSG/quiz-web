@@ -42,13 +42,37 @@ import {
   type MinigameInfo,
   type MinigameKey,
   type ReactionFake,
+  QUIZ_DUMMY,
+  QUIZ_MINIGAME_KEYS,
+  QUIZ_PRACTICE_ITEMS,
+  QUIZ_SPEC,
+  PHOTO_REVEAL_MS,
+  countryLabel,
+  normalizeAnswer,
+  pctOff,
+  pickQuizItems,
+  priceFresh,
+  ratioError,
+  type QuizMinigameKey,
 } from '@quiz/shared';
+import type { QuizData, QuizItem } from '../db/minigameItems.js';
 
 export interface RoundSpec {
-  /** 항목 · 패턴 키 (기록 · 퀴즈류의 경험 기록에 쓴다) */
+  /** 항목 · 패턴 키 (기록 · 퀴즈류의 경험 기록에 쓴다 — 퀴즈류는 문항 id) */
   itemKey: string;
+  /** ★ R052 — 퀴즈류 문항 id (minigame_rounds.item_id) */
+  itemId?: string;
   /** 모두에게 공개하는 판 설정 (화면이 그린다) */
   params: Record<string, unknown>;
+  /** ★ R052 — 정답 공개(roundResult) 때만 화면에 보내는 것 (가격 · 정답 · 값 · 표) */
+  reveal?: Record<string, unknown>;
+  /** ★ R052 — 서버만 아는 것(정답). 화면에 보내지 않는다 */
+  secret?: Record<string, unknown>;
+  /** ★ R052 — 이 문항을 이미 본 참가자(점수 0 · "이미 본 문항") */
+  experiencedBy?: string[];
+  /** ★ R052 — 준비 · 결과 단계 길이(없으면 공통 1.5초 · 4초) */
+  readyMs?: number;
+  resultMs?: number;
   /** 판 길이(ms) — 이 시간이 지나면(+ 지연 여유) 마감 */
   playMs: number;
   /** 이 판의 시드 */
@@ -68,20 +92,32 @@ export interface ParsedInput {
   elapsedMs: number | null;
   /** 화면에 보여 줄 덧붙임 (균형 = 자른 선). ★ extra.unfinished = true 면 표 소수 자리 계산에서 뺀다(타자 미완) */
   extra?: Record<string, unknown>;
+  /** ★ R052 — 입력한 사람에게만 바로 알려 줄 것(사진 — 맞음/틀림) */
+  feedback?: Record<string, unknown>;
+}
+
+/** ★ R052 — 판 만들기에 필요한 것 (퀴즈류는 문항 · 경험이 있어야 한다) */
+export interface BuildCtx {
+  practice: boolean;
+  /** 참가자 계정 */
+  participants: string[];
+  /** 게임에 올려 둔 퀴즈류 문항 · 경험(연습 · 미니게임 포함이 꺼진 게임이면 null) */
+  quiz: { data: QuizData; experienced: Map<string, Set<string>> } | null;
+  now: number;
 }
 
 export interface MinigameDef {
   key: MinigameKey;
   info: MinigameInfo;
-  /** 판 구성 (시드로 — 같은 시드면 같은 판) */
-  buildRounds(seed: number): RoundSpec[];
+  /** 판 구성 (시드로 — 같은 시드면 같은 판). ★ R052: null = 이 미니게임을 지금 낼 수 없다(퀴즈류 문항 모자람) → 엔진이 다른 것을 고른다 */
+  buildRounds(seed: number, ctx: BuildCtx): RoundSpec[] | null;
   /** 사람마다 다른 공개 값 (균형 = 시작 점). 없으면 null */
   privateFor?(spec: RoundSpec, accountId: string, roundIndex: number): Record<string, unknown> | null;
   /**
    * ★ 입력 검사 · 판정 값 계산 (서버). 이상한 값이면 null(받지 않음).
    *   provisional = true 면 "아직 확정 아님"(균형 — 움직이는 동안 보내는 값 · 마감 때 마지막 것을 쓴다)
    */
-  parseInput(raw: unknown, spec: RoundSpec, ctx: { serverElapsedMs: number }): (ParsedInput & { provisional: boolean }) | null;
+  parseInput(raw: unknown, spec: RoundSpec, ctx: { serverElapsedMs: number; prev?: ParsedInput & { provisional: boolean } }): (ParsedInput & { provisional: boolean }) | null;
 }
 
 /** ★ 케이크 — 기기 시간이 서버에서 흐른 시간보다 이만큼까지는 길어도 받는다 (시계 잡음) */
@@ -97,7 +133,7 @@ const num = (v: unknown): number | null => (typeof v === 'number' && Number.isFi
 const cake: MinigameDef = {
   key: 'cake',
   info: minigameInfo('cake'),
-  buildRounds(seed) {
+  buildRounds(seed, _ctx) {
     return CAKE_ROUNDS.map((r, i) => ({
       itemKey: `cake-${r.durationSec}s-x${r.speed}`,
       params: { durationSec: r.durationSec, speed: r.speed, hideAfterSec: r.hideAfterSec, targetMs: cakeTargetMs(r), lateMs: CAKE_LATE_MS, rhythmSeed: (seed + i * 101) % 1000 },
@@ -124,7 +160,7 @@ const cake: MinigameDef = {
 const balance: MinigameDef = {
   key: 'balance',
   info: minigameInfo('balance'),
-  buildRounds(seed) {
+  buildRounds(seed, _ctx) {
     const kinds = balanceRoundKinds(seed);
     return kinds.map((kind, i) => {
       const s = (seed * 31 + i * 7919) >>> 0;
@@ -171,7 +207,7 @@ function deviceElapsed(obj: Record<string, unknown> | null, spec: RoundSpec, ctx
 const reaction: MinigameDef = {
   key: 'reaction',
   info: minigameInfo('reaction'),
-  buildRounds(seed) {
+  buildRounds(seed, _ctx) {
     return reactionRounds(seed).map((r, i) => ({
       itemKey: `reaction-${r.quickdraw ? 'qd' : 'pure'}-${i + 1}`,
       params: { quickdraw: r.quickdraw, signalMs: r.signalMs, fakes: r.fakes, windowMs: reactionPlayMs(r) - r.signalMs },
@@ -199,7 +235,7 @@ const reaction: MinigameDef = {
 const typing: MinigameDef = {
   key: 'typing',
   info: minigameInfo('typing'),
-  buildRounds(seed) {
+  buildRounds(seed, _ctx) {
     return typingRounds(seed).map((r, i) => ({
       itemKey: `typing-${r.lang}-${r.size}-${r.index}`,
       params: { lang: r.lang, size: r.size, text: r.text },
@@ -239,7 +275,7 @@ const typing: MinigameDef = {
 const circle: MinigameDef = {
   key: 'circle',
   info: minigameInfo('circle'),
-  buildRounds(seed) {
+  buildRounds(seed, _ctx) {
     return [0, 1, 2].map((i) => ({ itemKey: `circle-${i + 1}`, params: { playMs: CIRCLE_PLAY_MS }, playMs: CIRCLE_PLAY_MS, seed: seed + i }));
   },
   parseInput(raw, spec, ctx) {
@@ -267,7 +303,7 @@ const circle: MinigameDef = {
 const angle: MinigameDef = {
   key: 'angle',
   info: minigameInfo('angle'),
-  buildRounds(seed) {
+  buildRounds(seed, _ctx) {
     return angleTargets(seed).map((t, i) => ({ itemKey: `angle-${t}`, params: { target: t }, playMs: ANGLE_PLAY_MS, seed: seed + i }));
   },
   privateFor(spec, accountId, roundIndex) {
@@ -290,4 +326,246 @@ const angle: MinigameDef = {
   },
 };
 
-export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { cake, balance, reaction, typing, circle, angle };
+export const MINIGAME_DEFS_PHYSICAL = { cake, balance, reaction, typing, circle, angle };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★★ R052 — 퀴즈류 다섯 (얼마게요 · 빅맥지수 · 사진 이름 맞히기 · 얼마나 될까 · 어느 쪽?)
+//   문항 = 판 하나. 선정은 pickQuizItems(01 12장 3단계 · 모두 본 문항 제외 · 모자라면 null → 건너뜀).
+//   정답은 secret(서버만) · 공개 때 reveal. 연습은 더미(QUIZ_DUMMY — DB 를 보지 않는다).
+// ─────────────────────────────────────────────────────────────────────────────
+export function isQuizMinigameKey(k: string): k is QuizMinigameKey {
+  return (QUIZ_MINIGAME_KEYS as readonly string[]).includes(k);
+}
+
+/** 문항 고르기 — 적재본에서 3단계 선정 */
+function pickFor(key: QuizMinigameKey, seed: number, ctx: BuildCtx, filter: (it: QuizItem) => boolean = () => true) {
+  if (!ctx.quiz) return null;
+  const exp = ctx.quiz.experienced;
+  const pool = ctx.quiz.data.items[key].filter(filter);
+  return pickQuizItems(pool, ctx.participants, (a, id) => exp.get(a)?.has(`${key}|${id}`) ?? false, QUIZ_SPEC[key].items, seed);
+}
+
+function quizSpec(key: QuizMinigameKey, i: number, seed: number, base: Omit<RoundSpec, 'playMs' | 'seed' | 'readyMs' | 'resultMs'>): RoundSpec {
+  const q = QUIZ_SPEC[key];
+  return { ...base, playMs: q.playMs, seed: seed + i, readyMs: q.readyMs, resultMs: q.revealMs };
+}
+
+/** 숫자 맞히기(얼마게요 · 빅맥 · 얼마나) 입력 — { value, elapsedMs } · 한 번만 */
+function parseNumber(raw: unknown, spec: RoundSpec): (ParsedInput & { provisional: boolean }) | null {
+  const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
+  const v = num(obj?.value);
+  if (v === null || !(v > 0) || v > 1e15) return null;
+  const answer = Number(spec.secret?.answer);
+  const err = ratioError(v, answer);
+  if (!Number.isFinite(err)) return null;
+  return {
+    input: { value: v, elapsedMs: num(obj?.elapsedMs) },
+    value: err,
+    error: pctOff(v, answer),
+    elapsedMs: num(obj?.elapsedMs),
+    extra: { guess: v, pct: Math.round(pctOff(v, answer) * 100) / 100 },
+    provisional: false,
+  };
+}
+
+const price: MinigameDef = {
+  key: 'price',
+  info: minigameInfo('price'),
+  buildRounds(seed, ctx) {
+    if (ctx.practice) {
+      return QUIZ_DUMMY.price.slice(0, QUIZ_PRACTICE_ITEMS).map((d, i) =>
+        quizSpec('price', i, seed, { itemKey: d.id, params: { name: d.name, brand: d.brand, category: d.category, imageId: null, dummy: true }, reveal: { priceKrw: d.priceKrw, note: d.note }, secret: { answer: d.priceKrw } }),
+      );
+    }
+    const pick = pickFor('price', seed, ctx, (it) => priceFresh(String(it.payload.priceAsOf), ctx.now));
+    if (!pick) return null;
+    return pick.items.map((it, i) => {
+      const p = it.payload;
+      return quizSpec('price', i, seed, {
+        itemKey: it.id,
+        itemId: it.id,
+        params: { name: p.name, brand: p.brand, category: p.category, imageId: it.imageIds[0] ?? null },
+        reveal: { priceKrw: p.priceKrw, note: p.note, priceAsOf: p.priceAsOf, attribution: it.attribution },
+        secret: { answer: p.priceKrw },
+        experiencedBy: pick.experiencedBy.get(it.id),
+      });
+    });
+  },
+  parseInput: (raw, spec) => parseNumber(raw, spec),
+};
+
+type WpRow = { cc: string; countryKo: string; localPrice: number; currency: string; krw: number };
+const worldprice: MinigameDef = {
+  key: 'worldprice',
+  info: minigameInfo('worldprice'),
+  buildRounds(seed, ctx) {
+    const make = (
+      i: number,
+      id: string,
+      prod: { nameKo?: unknown; unit?: unknown; rows: readonly WpRow[]; fxAsOf?: unknown; asOf?: unknown },
+      imageId: string | null,
+      targetCc: string,
+      shownCc: readonly string[],
+      real: boolean,
+    ): RoundSpec => {
+      const rows = prod.rows.map((r) => ({ cc: r.cc, countryKo: countryLabel(r.cc, r.countryKo), localPrice: r.localPrice, currency: r.currency, krw: r.krw }));
+      const target = rows.find((r) => r.cc === targetCc)!;
+      const shown = shownCc.map((c) => rows.find((r) => r.cc === c)).filter(Boolean);
+      const sorted = [...rows].sort((a, b) => a.krw - b.krw);
+      return quizSpec('worldprice', i, seed, {
+        itemKey: id,
+        itemId: real ? id : undefined,
+        params: { nameKo: prod.nameKo, unit: prod.unit, imageId, target: { cc: target.cc, countryKo: target.countryKo }, shown, fxAsOf: prod.fxAsOf, dummy: !real },
+        reveal: { targetKrw: target.krw, targetLocal: target.localPrice, currency: target.currency, rows: sorted, fxAsOf: prod.fxAsOf, asOf: prod.asOf ?? null },
+        secret: { answer: target.krw },
+      });
+    };
+    if (ctx.practice) {
+      const d = QUIZ_DUMMY.worldprice[0]!;
+      const plan: [string, string[]][] = [
+        [d.targetCc, [...d.shownCc]],
+        ['XD', ['KR', 'XA', 'XB']],
+        ['XC', ['KR', 'XA', 'XD']],
+      ];
+      return plan.slice(0, QUIZ_PRACTICE_ITEMS).map(([t, shownCc], i) => make(i, `${d.id}-${i + 1}`, d, null, t, shownCc, false));
+    }
+    const prods = ctx.quiz?.data.products;
+    if (!prods) return null;
+    const pick = pickFor('worldprice', seed, ctx, (it) => prods.has(String(it.payload.productId)) && it.payload.targetCc !== 'EU');
+    if (!pick) return null;
+    return pick.items.map((it, i) => {
+      const pr = prods.get(String(it.payload.productId))!;
+      const sp = make(i, it.id, pr.payload, pr.imageId, String(it.payload.targetCc), it.payload.shownCc as string[], true);
+      return { ...sp, experiencedBy: pick.experiencedBy.get(it.id) };
+    });
+  },
+  parseInput: (raw, spec) => parseNumber(raw, spec),
+};
+
+const DUMMY_SHAPE: Record<string, string> = { 'dummy-photo-1': 'circle', 'dummy-photo-2': 'triangle', 'dummy-photo-3': 'square' };
+const answersOf = (a: string, alt: readonly string[]) => [...new Set([a, ...alt].map((x) => normalizeAnswer(x)).filter(Boolean))];
+const photo: MinigameDef = {
+  key: 'photo',
+  info: minigameInfo('photo'),
+  buildRounds(seed, ctx) {
+    if (ctx.practice) {
+      return QUIZ_DUMMY.photo.slice(0, QUIZ_PRACTICE_ITEMS).map((d, i) =>
+        quizSpec('photo', i, seed, {
+          itemKey: d.id,
+          params: { imageId: null, dummyShape: DUMMY_SHAPE[d.id], revealMode: d.revealMode, revealMs: PHOTO_REVEAL_MS, dummy: true },
+          reveal: { answer: d.answer, explanation: d.explanation, attribution: null },
+          secret: { answers: answersOf(d.answer, d.altAnswers) },
+        }),
+      );
+    }
+    const pick = pickFor('photo', seed, ctx);
+    if (!pick) return null;
+    return pick.items.map((it, i) => {
+      const p = it.payload;
+      return quizSpec('photo', i, seed, {
+        itemKey: it.id,
+        itemId: it.id,
+        params: { imageId: it.imageIds[0] ?? null, revealMode: p.revealMode, category: p.category, revealMs: PHOTO_REVEAL_MS },
+        reveal: { answer: p.answer, explanation: p.explanation, attribution: it.attribution },
+        secret: { answers: answersOf(String(p.answer), (p.altAnswers as string[]) ?? []) },
+        experiencedBy: pick.experiencedBy.get(it.id),
+      });
+    });
+  },
+  parseInput(raw, spec, ctx) {
+    const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
+    const text = typeof obj?.text === 'string' ? obj.text.slice(0, 60) : null;
+    if (text === null || !text.trim()) return null;
+    const elapsed = deviceElapsed(obj, spec, ctx);
+    if (elapsed === null) return null;
+    const tries = Number(ctx.prev?.extra?.tries ?? 0) + 1;
+    const ok = ((spec.secret?.answers as string[]) ?? []).includes(normalizeAnswer(text));
+    if (ok) {
+      return {
+        input: { text, elapsedMs: Math.round(elapsed), tries },
+        value: Math.round(elapsed),
+        error: null,
+        elapsedMs: elapsed,
+        extra: { timeSec: Math.round(elapsed / 100) / 10, tries },
+        provisional: false,
+        feedback: { correct: true, timeMs: Math.round(elapsed) },
+      };
+    }
+    // 틀림 — 다시 칠 수 있다(임시 기록 · 시도 수만 쌓는다)
+    return { input: { lastWrong: text, tries }, value: null, error: null, elapsedMs: null, submitted: false, extra: { tries }, provisional: true, feedback: { correct: false, text } };
+  },
+};
+
+const estimate: MinigameDef = {
+  key: 'estimate',
+  info: minigameInfo('estimate'),
+  buildRounds(seed, ctx) {
+    if (ctx.practice) {
+      return QUIZ_DUMMY.estimate.slice(0, QUIZ_PRACTICE_ITEMS).map((d, i) =>
+        quizSpec('estimate', i, seed, {
+          itemKey: d.id,
+          params: { question: d.question, unit: d.unit, kind: 'other', imageId: null, displayDecimals: d.displayDecimals, dummy: true },
+          reveal: { value: d.value, unit: d.unit, displayDecimals: d.displayDecimals, note: d.note, explanation: d.explanation, attribution: null },
+          secret: { answer: d.value },
+        }),
+      );
+    }
+    const pick = pickFor('estimate', seed, ctx);
+    if (!pick) return null;
+    return pick.items.map((it, i) => {
+      const p = it.payload;
+      return quizSpec('estimate', i, seed, {
+        itemKey: it.id,
+        itemId: it.id,
+        params: { question: p.question, unit: p.unit, kind: p.kind, imageId: it.imageIds[0] ?? null, displayDecimals: p.displayDecimals },
+        reveal: { value: p.value, unit: p.unit, displayDecimals: p.displayDecimals, note: p.note ?? null, explanation: p.explanation, attribution: it.attribution },
+        secret: { answer: p.value },
+        experiencedBy: pick.experiencedBy.get(it.id),
+      });
+    });
+  },
+  parseInput: (raw, spec) => parseNumber(raw, spec),
+};
+
+const which: MinigameDef = {
+  key: 'which',
+  info: minigameInfo('which'),
+  buildRounds(seed, ctx) {
+    if (ctx.practice) {
+      return QUIZ_DUMMY.which.slice(0, QUIZ_PRACTICE_ITEMS).map((d, i) =>
+        quizSpec('which', i, seed, {
+          itemKey: d.id,
+          params: { stem: d.stem, kind: d.kind, unit: d.unit, a: { label: d.a.label, imageId: null }, b: { label: d.b.label, imageId: null }, dummy: true },
+          reveal: { answer: d.answer, a: d.a.value, b: d.b.value, unit: d.unit, margin: null },
+          secret: { answer: d.answer },
+        }),
+      );
+    }
+    const pick = pickFor('which', seed, ctx);
+    if (!pick) return null;
+    return pick.items.map((it, i) => {
+      const p = it.payload as Record<string, unknown> & { a: { label: string; value: number }; b: { label: string; value: number } };
+      const imgA = it.imageIds.find((x) => x.endsWith('-a')) ?? null;
+      const imgB = it.imageIds.find((x) => x.endsWith('-b')) ?? null;
+      return quizSpec('which', i, seed, {
+        itemKey: it.id,
+        itemId: it.id,
+        params: { stem: p.stem, kind: p.kind, unit: p.unit, a: { label: p.a.label, imageId: imgA }, b: { label: p.b.label, imageId: imgB } },
+        reveal: { answer: p.answer, a: p.a.value, b: p.b.value, unit: p.unit, margin: p.margin, note: p.note ?? null, attribution: it.attribution },
+        secret: { answer: p.answer },
+        experiencedBy: pick.experiencedBy.get(it.id),
+      });
+    });
+  },
+  parseInput(raw, spec, ctx) {
+    const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
+    const choice = obj?.choice;
+    if (choice !== 'a' && choice !== 'b') return null;
+    const elapsed = deviceElapsed(obj, spec, ctx);
+    if (elapsed === null) return null;
+    const correct = choice === spec.secret?.answer;
+    return { input: { choice, elapsedMs: Math.round(elapsed) }, value: correct ? Math.round(elapsed) : null, error: null, elapsedMs: elapsed, extra: { choice, correct }, provisional: false };
+  },
+};
+
+export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, price, worldprice, photo, estimate, which };

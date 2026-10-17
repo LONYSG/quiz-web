@@ -34,6 +34,7 @@ import {
   resolveQuestionSync,
 } from '../game/question.js';
 import { broadcastPauseStatus, pauseIfNoActive, resumeGame } from '../game/pause.js';
+import { loadAllItemExperiences } from '../db/minigameItems.js';
 import { startPractice, stopMinigame, submitMinigame } from '../minigame/engine.js';
 import { config } from '../config.js';
 import { refreshLobbyInfo } from '../lobby/info.js';
@@ -846,7 +847,8 @@ function registerRoomHandlers(socket: Socket): void {
       },
     },
     ({ socket: s, room, session, payload }) => {
-      const r = submitMinigame(room, session.accountId, payload);
+      // ★ R052 — 입력한 사람에게만 바로 알릴 것(사진 — 맞음/틀림)
+      const r = submitMinigame(room, session.accountId, payload, (f) => s.emit('minigame.feedback', { token: payload.token, roundIndex: payload.roundIndex, ...f }));
       if (r === 'bad_input') sendError(s, 'BAD_REQUEST', '입력이 올바르지 않습니다.');
     },
   );
@@ -1097,6 +1099,12 @@ async function onMidgameJoin(
     }
     const loaded = await loadExperienced([player.accountId]);
     const set = loaded.get(player.accountId) ?? new Set<string>();
+    // ★ R052 — 퀴즈류 미니게임 경험도 (다음 미니게임 문항 선정에 쓴다)
+    const mq = game.minigameQuiz;
+    if (mq && !mq.experienced.has(player.accountId)) {
+      const mexp = await loadAllItemExperiences([player.accountId]);
+      if (room.game === game) mq.experienced.set(player.accountId, mexp.get(player.accountId) ?? new Set());
+    }
     // ★ await 뒤 재확인. 그 사이 게임이 끝났거나 사람이 나갔을 수 있다
     if (room.game !== game) return;
     if (!room.players.has(player.accountId)) return;

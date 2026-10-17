@@ -11,7 +11,7 @@
 // =============================================================================
 
 /** 미니게임 키. ★ 새 미니게임은 여기에 키를 더하고 server/src/minigame/ 에 모듈 하나 · client 에 화면 하나 */
-export type MinigameKey = 'cake' | 'balance' | 'reaction' | 'typing' | 'circle' | 'angle';
+export type MinigameKey = 'cake' | 'balance' | 'reaction' | 'typing' | 'circle' | 'angle' | 'price' | 'worldprice' | 'photo' | 'estimate' | 'which';
 
 export interface MinigameInfo {
   key: MinigameKey;
@@ -32,6 +32,8 @@ export interface MinigameInfo {
   better: 'low' | 'high';
   /** 표시 단위 */
   unit: '초' | '%' | 'ms' | '°';
+  /** ★ R052 — 판 점수 방식: 'rank'(판 순위 점수 — 기본) · 'correct'(맞히면 1점 · 최종 동점은 맞힌 문항 시간 합이 작은 쪽 — 어느 쪽?) */
+  scoring?: 'rank' | 'correct';
   /**
    * ★ R051 — 표의 소수 자리. 없으면 소수 표시 규칙(decimalsForRanking — 1위와 2위가 갈리는 자리 · 최대 maxDecimals).
    *   번개손은 ms 정수(0) 고정.
@@ -117,6 +119,73 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     better: 'low',
     unit: '°',
     maxDecimals: 2,
+  },
+  // ★★★ R052 — 퀴즈류 다섯 (🧠 경험 시스템 대상 · 문항 = 판 · 데이터는 DB minigame_items — 연습은 더미)
+  {
+    key: 'price',
+    name: '얼마게요',
+    oneLine: '상품 가격(원)을 맞혀 보세요! 가장 가까운 사람이 1등',
+    controlsPc: '숫자 입력 → Enter',
+    controlsMobile: '숫자 입력 → 확인',
+    kind: 'quiz',
+    rounds: 5,
+    estSec: 110,
+    better: 'low',
+    unit: '%',
+    fixedDecimals: 1,
+  },
+  {
+    key: 'worldprice',
+    name: '빅맥지수',
+    oneLine: '한국 · 다른 나라 값을 보고, 그 나라에서는 원화로 얼마일지 맞혀 보세요!',
+    controlsPc: '숫자 입력 → Enter',
+    controlsMobile: '숫자 입력 → 확인',
+    kind: 'quiz',
+    rounds: 5,
+    estSec: 120,
+    better: 'low',
+    unit: '%',
+    fixedDecimals: 1,
+  },
+  {
+    key: 'photo',
+    name: '사진 이름 맞히기',
+    oneLine: '조금씩 드러나는 사진 — 이름을 먼저 맞히는 사람이 이겨요! 여러 번 쳐도 돼요',
+    controlsPc: '이름 입력 → Enter (틀려도 다시)',
+    controlsMobile: '이름 입력 → 확인 (틀려도 다시)',
+    kind: 'quiz',
+    rounds: 5,
+    estSec: 120,
+    better: 'low',
+    unit: '초',
+    fixedDecimals: 1,
+  },
+  {
+    key: 'estimate',
+    name: '얼마나 될까',
+    oneLine: '무게 · 길이 · 인구 … 숫자를 어림해 보세요! 가장 가까운 사람이 1등',
+    controlsPc: '숫자 입력 → Enter',
+    controlsMobile: '숫자 입력 → 확인',
+    kind: 'quiz',
+    rounds: 5,
+    estSec: 110,
+    better: 'low',
+    unit: '%',
+    fixedDecimals: 1,
+  },
+  {
+    key: 'which',
+    name: '어느 쪽?',
+    oneLine: '둘 중 더 큰 것 · 더 먼저인 것 — 10문항 연속! 많이 맞히고, 같으면 빠른 사람',
+    controlsPc: '← A · → B (또는 클릭)',
+    controlsMobile: '왼쪽 · 오른쪽 톡',
+    kind: 'quiz',
+    rounds: 10,
+    estSec: 100,
+    better: 'low',
+    unit: 'ms',
+    fixedDecimals: 0,
+    scoring: 'correct',
   },
 ];
 

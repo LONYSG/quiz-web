@@ -31,6 +31,8 @@
 import { NICKNAME_LIMIT_HINT, nicknameFits, validateRoomSettings } from '@quiz/shared';
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
+import { loadAllItemExperiences, loadQuizData } from '../db/minigameItems.js';
+import { isQuizMinigameKey } from '../minigame/defs.js';
 import { insertGame, insertGamePlayers } from '../db/games.js';
 import { setGamePlayerDevices } from '../db/minigames.js';
 import { deviceOf } from '../rooms/registry.js';
@@ -254,10 +256,15 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   //   ★ 이것이 정답 판정 블록에서 await 가 필요 없어지는 근거다.
   let pool;
   let experienced;
+  let minigameQuiz;
   try {
-    [pool, experienced] = await Promise.all([
+    [pool, experienced, minigameQuiz] = await Promise.all([
       loadQuestionPool(settings),
       loadExperienced(participantIds(room)),
+      // ★ R052 — 퀴즈류 미니게임 문항 · 경험 (켜져 있고 퀴즈류를 골랐을 때만)
+      settings.minigames && settings.minigameKeys.some((k) => isQuizMinigameKey(k))
+        ? Promise.all([loadQuizData(), loadAllItemExperiences(participantIds(room))]).then(([data, exp]) => ({ data, experienced: exp }))
+        : Promise.resolve(null),
     ]);
   } catch (err) {
     console.error(`[game] ★★ ${room.id} 출제 풀 로드 실패 — 게임을 시작하지 않는다:`, (err as Error).message);
@@ -304,6 +311,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     minigameBag: [],
     lastMinigameKey: null,
     minigameDoneAt: [],
+    minigameQuiz: minigameQuiz ?? null,
     resolution: null,
     endedQuestionCount: 0,
     stage3Count: 0,

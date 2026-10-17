@@ -44,3 +44,5 @@ export * from './minigame/typing.js';
 export * from './minigame/typing-sentences.js';
 export * from './minigame/circle.js';
 export * from './minigame/angle.js';
+// ★★★ R052 — 퀴즈류 미니게임
+export * from './minigame/quiz.js';
