@@ -11,7 +11,23 @@
 // =============================================================================
 
 /** 미니게임 키. ★ 새 미니게임은 여기에 키를 더하고 server/src/minigame/ 에 모듈 하나 · client 에 화면 하나 */
-export type MinigameKey = 'cake' | 'balance' | 'reaction' | 'typing' | 'circle' | 'angle' | 'price' | 'worldprice' | 'photo' | 'estimate' | 'which';
+export type MinigameKey =
+  | 'cake'
+  | 'balance'
+  | 'reaction'
+  | 'typing'
+  | 'circle'
+  | 'angle'
+  | 'price'
+  | 'worldprice'
+  | 'photo'
+  | 'estimate'
+  | 'which'
+  // ★ R053
+  | 'minority'
+  | 'twothirds'
+  | 'oddone'
+  | 'gauge';
 
 export interface MinigameInfo {
   key: MinigameKey;
@@ -34,6 +50,10 @@ export interface MinigameInfo {
   unit: '초' | '%' | 'ms' | '°';
   /** ★ R052 — 판 점수 방식: 'rank'(판 순위 점수 — 기본) · 'correct'(맞히면 1점 · 최종 동점은 맞힌 문항 시간 합이 작은 쪽 — 어느 쪽?) */
   scoring?: 'rank' | 'correct';
+  /** ★ R053 — 최종 동점 가르기: 'lastRank'(마지막 판 순위 — rank 기본) · 'timeSum'(맞힌 문항 시간 합 — correct 기본) */
+  tiebreak?: 'lastRank' | 'timeSum';
+  /** ★ R053 — 퀴즈 판 자리에서 뽑히는 최소 참가자 수(골라 하기는 된다 · 안내만). 없으면 1 */
+  minPlayers?: number;
   /**
    * ★ R051 — 표의 소수 자리. 없으면 소수 표시 규칙(decimalsForRanking — 1위와 2위가 갈리는 자리 · 최대 maxDecimals).
    *   번개손은 ms 정수(0) 고정.
@@ -186,6 +206,60 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     unit: 'ms',
     fixedDecimals: 0,
     scoring: 'correct',
+  },
+  // ★★★ R053 — 미니게임 3차 (데이터 없는 🟢 넷 — 심리전 2 · 관찰 1 · 타이밍 1)
+  {
+    key: 'minority',
+    name: '소수파 게임',
+    oneLine: '1~5 중 하나를 고르세요! 가장 적게 고른 숫자를 고른 사람이 이겨요',
+    controlsPc: '1 ~ 5 키 또는 클릭 (바꿔도 돼요 — 마지막 선택)',
+    controlsMobile: '숫자 카드를 톡 (바꿔도 돼요 — 마지막 선택)',
+    kind: 'physical',
+    rounds: 5,
+    estSec: 80,
+    better: 'high',
+    unit: '%',
+    fixedDecimals: 0,
+    scoring: 'correct',
+    tiebreak: 'lastRank',
+    minPlayers: 3,
+  },
+  {
+    key: 'twothirds',
+    name: '평균의 2/3',
+    oneLine: '0~100 숫자를 내세요! 모두의 평균 × 2/3 에 가장 가까운 사람이 1등',
+    controlsPc: '숫자 입력 → Enter',
+    controlsMobile: '숫자 입력 → 확인',
+    kind: 'physical',
+    rounds: 3,
+    estSec: 60,
+    better: 'low',
+    unit: '%',
+  },
+  {
+    key: 'oddone',
+    name: '다른 하나 찾기',
+    oneLine: '하나만 다른 그림을 빨리 찾아 누르세요! 틀리면 +2초',
+    controlsPc: '마우스로 클릭',
+    controlsMobile: '손가락으로 톡',
+    kind: 'physical',
+    rounds: 5,
+    estSec: 90,
+    better: 'low',
+    unit: '초',
+  },
+  {
+    key: 'gauge',
+    name: '게이지 정중앙',
+    oneLine: '왔다 갔다 하는 표시를 정가운데에서 멈추세요! 4판부터는 가운데가 가려져요',
+    controlsPc: 'Space 또는 Enter — 한 번만',
+    controlsMobile: '화면을 톡 — 한 번만',
+    kind: 'physical',
+    rounds: 5,
+    estSec: 70,
+    better: 'low',
+    unit: '%',
+    maxDecimals: 2,
   },
 ];
 

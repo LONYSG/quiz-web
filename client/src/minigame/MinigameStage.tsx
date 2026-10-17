@@ -18,7 +18,7 @@ import {
   minigameInfo,
   type BalanceKind,
 } from '@quiz/shared';
-import { BookOpenCheck, Gamepad2, Globe2, ImageIcon, Keyboard, PartyPopper, Ruler, Scale, Tag, Trophy, Zap } from 'lucide-react';
+import { BookOpenCheck, Crosshair, Gamepad2, Globe2, Hash, ImageIcon, Keyboard, PartyPopper, Ruler, Scale, ScanSearch, Tag, Trophy, Users, Zap } from 'lucide-react';
 import Icon from '../Icon.js';
 import Avatar from '../Avatar.js';
 import DeviceIcon from '../DeviceIcon.js';
@@ -37,6 +37,7 @@ import QuizNumber from './QuizNumber.js';
 import QuizReveal, { WhichSummary, quizValueText } from './QuizReveal.js';
 import { preloadQuizImages } from './QuizParts.js';
 import WhichPick from './WhichPick.js';
+import { GaugeStop, MinorityPick, OddOneGrid, TwoThirdsInput, twemoji } from './R053Games.js';
 
 /** ★ 판 진행 화면 — 미니게임 키 → 컴포넌트 */
 const PLAY = {
@@ -52,10 +53,16 @@ const PLAY = {
   photo: PhotoGuess,
   estimate: QuizNumber,
   which: WhichPick,
+  // ★ R053 — 미니게임 3차
+  minority: MinorityPick,
+  twothirds: TwoThirdsInput,
+  oddone: OddOneGrid,
+  gauge: GaugeStop,
 } as const;
+const R053_KEYS = new Set(['minority', 'twothirds', 'oddone', 'gauge']);
 const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which']);
 /** 진행 중 "n / m명 …" 의 말 */
-const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름' };
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', minority: '고름', twothirds: '냄', oddone: '찾음', gauge: '멈춤' };
 
 interface Props {
   socket: Socket;
@@ -91,7 +98,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         // ★ R052 — 퀴즈류는 다음 문항 그림을 미리 받는다
         if (QUIZ_KEYS.has(view.key)) preloadQuizImages(view);
         // ★ 케이크는 리듬을 들어야 한다 — 판 동안 배경음악을 끈다
-        if (view.key === 'cake' || view.key === 'reaction') setMusicMode('quiet');
+        if (view.key === 'cake' || view.key === 'reaction' || view.key === 'gauge') setMusicMode('quiet');
         sfx('mg-ready');
         break;
       case 'play':
@@ -268,6 +275,14 @@ function readyDesc(view: MinigameView): string {
       return '어림해 보세요';
     case 'which':
       return '';
+    case 'minority':
+      return '남들이 안 고를 숫자는?';
+    case 'twothirds':
+      return '평균 × 2/3 — 남들은 몇을 낼까?';
+    case 'oddone':
+      return `${String(p.size ?? '')} × ${String(p.size ?? '')} 격자`;
+    case 'gauge':
+      return p.hidden ? '가운데가 가려져요 — 감으로!' : `왕복 ${(Number(p.periodMs ?? 0) / 1000).toFixed(1)}초`;
   }
 }
 
@@ -317,6 +332,17 @@ function RulesArt({ k }: { k: MinigameView['key'] }) {
           <span className="quiz-rules-tag">
             <Icon icon={BookOpenCheck} /> 퀴즈류
           </span>
+        </div>
+      );
+    }
+    case 'minority':
+    case 'twothirds':
+    case 'oddone':
+    case 'gauge': {
+      const I = { minority: Users, twothirds: Hash, oddone: ScanSearch, gauge: Crosshair }[k];
+      return (
+        <div className="mg-rules-icon" aria-hidden="true">
+          <Icon icon={I} className="mg-rules-big" />
         </div>
       );
     }
@@ -370,6 +396,11 @@ function RoundResult({
   const valueText = (r: MinigameRoundRow) => {
     // ★ R052 — 퀴즈류는 입력 값 · % · 시간 · 맞음/틀림
     if (QUIZ_KEYS.has(view.key)) return quizValueText(view, r);
+    // ★ R053
+    if (view.key === 'minority') return r.extra?.pick ? `${String(r.extra.pick)} ${r.extra.win ? '· 소수파!' : ''}` : '안 고름';
+    if (view.key === 'twothirds') return r.extra?.pick !== undefined && r.value !== null ? `${String(r.extra.pick)} (차이 ${formatMinigameValue(r.value, d)})` : '안 냄';
+    if (view.key === 'oddone') return r.value !== null && r.submitted ? `${(r.value / 1000).toFixed(2)}초${r.extra?.wrong ? ` (+${Number(r.extra.wrong) * 2})` : ''}` : r.extra?.wrong ? `못 찾음 (${String(r.extra.wrong)}번 틀림)` : '못 찾음';
+    if (view.key === 'gauge') return r.value !== null ? `${formatMinigameValue(r.value, d)}%` : '안 누름';
     // ★ R051 — 번개손 실격 · 타자 미완은 값 대신 이유 (submitted 가 false 여도 진행률은 보인다)
     if (view.key === 'reaction' && r.extra?.foul) return r.extra.foul === 'fake' ? `속음(${fakeName(String(r.extra.fakeKind))})` : '성급!';
     if (view.key === 'typing' && r.extra?.unfinished) return `미완 ${formatMinigameValue(Number(r.extra.pct ?? 0), 0)}%`;
@@ -393,9 +424,11 @@ function RoundResult({
     }
   };
   return (
-    <div className="mg-result">
+    <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) ? ' wide' : ''}`}>
       {QUIZ_KEYS.has(view.key) ? (
         <QuizReveal view={view} mine={view.spectating ? undefined : mine} />
+      ) : R053_KEYS.has(view.key) ? (
+        <R053Result view={view} mine={view.spectating ? undefined : mine} decimals={d} />
       ) : view.key === 'reaction' || view.key === 'typing' || view.key === 'circle' || view.key === 'angle' ? (
         <R051Result view={view} mine={view.spectating ? undefined : mine} first={result.rows[0]} decimals={d} />
       ) : view.key === 'balance' ? (
@@ -645,5 +678,70 @@ function R051Thumb({ view, row, name, decimals }: { view: MinigameView; row: Min
         <span className="mono">{row.value !== null ? `${formatMinigameValue(row.value, decimals)}${view.key === 'circle' ? '%' : '°'}` : '—'}</span>
       </figcaption>
     </figure>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★★ R053 — 판 결과 (소수파 막대 · 2/3 평균/목표 · 다른 하나 정답 칸 · 게이지 내 위치)
+// ─────────────────────────────────────────────────────────────────────────────
+function R053Result({ view, mine, decimals }: { view: MinigameView; mine: MinigameRoundRow | undefined; decimals: number }) {
+  const rv = view.round?.reveal ?? {};
+  const p = view.round?.params ?? {};
+  if (view.key === 'minority') {
+    const counts = (rv.counts as Record<string, number> | undefined) ?? {};
+    const minority = (rv.minority as number[] | undefined) ?? [];
+    const max = Math.max(1, ...Object.values(counts));
+    return (
+      <div className="mg-r051-result minority-result">
+        <div className="minority-bars" aria-label="숫자마다 고른 사람 수">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <div key={n} className={`minority-bar${minority.includes(n) ? ' win' : ''}${mine?.extra?.pick === n ? ' mine' : ''}`} data-n={n}>
+              <span className="minority-count mono">{counts[n] ?? 0}</span>
+              <span className="minority-fill" style={{ height: `${((counts[n] ?? 0) / max) * 100}%` }} />
+              <span className="minority-n mono">{n}</span>
+            </div>
+          ))}
+        </div>
+        <p className="dim">{minority.length ? `소수파: ${minority.join(' · ')}` : '모두 같은 숫자 — 이번 판은 모두 0점'}</p>
+      </div>
+    );
+  }
+  if (view.key === 'twothirds') {
+    return (
+      <div className="mg-r051-result">
+        <p className="mg-r051-big mono">{rv.target !== null && rv.target !== undefined ? formatMinigameValue(Number(rv.target), Math.max(1, decimals)) : '—'}</p>
+        <p className="dim">
+          목표(평균 {rv.mean !== null && rv.mean !== undefined ? formatMinigameValue(Number(rv.mean), Math.max(1, decimals)) : '—'} × 2/3){mine?.extra?.pick !== undefined ? ` · 나 ${String(mine.extra.pick)}` : ''}
+        </p>
+      </div>
+    );
+  }
+  if (view.key === 'oddone') {
+    const size = Number(p.size ?? 4);
+    const oddIndex = Number(p.oddIndex ?? 0);
+    return (
+      <div className="mg-r051-result oddone-result">
+        <div className="oddone-grid small" style={{ gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))` }} aria-hidden="true">
+          {Array.from({ length: size * size }, (_, i) => (
+            <span key={i} className={`oddone-cell${i === oddIndex ? ' found' : ''}`}>
+              <img src={twemoji(i === oddIndex ? String(p.odd) : String(p.base))} alt="" />
+            </span>
+          ))}
+        </div>
+        <p className="mg-r051-big mono">{mine?.value !== null && mine?.value !== undefined && mine.submitted ? `${(mine.value / 1000).toFixed(2)}초` : '—'}</p>
+      </div>
+    );
+  }
+  // gauge
+  const pos = Number(mine?.extra?.pos ?? NaN);
+  return (
+    <div className="mg-r051-result gauge-result">
+      <div className="gauge-track">
+        <span className="gauge-center" aria-hidden="true" />
+        {Number.isFinite(pos) && <span className="gauge-marker" style={{ left: `${pos * 100}%` }} aria-hidden="true" />}
+      </div>
+      <p className="mg-r051-big mono">{mine?.value !== null && mine?.value !== undefined ? `${formatMinigameValue(mine.value, decimals)}%` : '안 누름'}</p>
+      <p className="dim">가운데에서 떨어진 거리</p>
+    </div>
   );
 }

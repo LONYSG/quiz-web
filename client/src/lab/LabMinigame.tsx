@@ -47,7 +47,7 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
     { top: 52, bottom: 41 },
     null,
   ];
-  const quiz = r052Scene(key, phase);
+  const quiz = r052Scene(key, phase) ?? r053Scene(key);
   const rows = quiz
     ? quiz.rows
     : key === 'reaction' || key === 'typing' || key === 'circle' || key === 'angle'
@@ -125,7 +125,9 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
     afterQuestionIndex: 10,
     receivedAt: performance.now() - (phase === 'play' ? playAgo : 0),
     lab:
-      key === 'photo' && phase === 'play'
+      key === 'gauge' && phase === 'play'
+        ? { elapsedMs: Number(new URLSearchParams(window.location.search).get('at') ?? 700) }
+        : key === 'photo' && phase === 'play'
         ? { elapsedMs: Number(new URLSearchParams(window.location.search).get('at') ?? 2000) }
         : key === 'reaction' && phase === 'play'
         ? { elapsedMs: playAgo }
@@ -245,6 +247,43 @@ function r052Scene(key: MinigameKey, phase: MinigamePhase) {
     params: { stem: d.stem, kind: d.kind, unit: d.unit, a: { label: d.a.label, imageId: image }, b: { label: d.b.label, imageId: null }, dummy: true },
     reveal: { answer: d.answer, a: d.a.value, b: d.b.value, unit: d.unit, margin: 2.33 },
     rows: [row('lab1', 1, 1, { choice: 'a', correct: true }, 820), row('lab3', 2, 1, { choice: 'a', correct: true }, 1410), row('lab2', 3, 0, { choice: 'b', correct: false }, null), row('lab4', 3, 0, null, null, false)],
+  };
+}
+
+/** ★★★ R053 — 미니게임 3차 장면 (?state=hidden 게이지 가림 · ?size= 다른 하나 격자) */
+function r053Scene(key: MinigameKey) {
+  if (!['minority', 'twothirds', 'oddone', 'gauge'].includes(key)) return null;
+  const q = new URLSearchParams(window.location.search);
+  const row = (id: string, rank: number, points: number, extra: Record<string, unknown> | null, value: number | null, submitted = true) => ({ accountId: id, submitted, value, error: null, rank, points, extra });
+  if (key === 'minority')
+    return {
+      playMs: 8000,
+      params: { choices: [1, 2, 3, 4, 5] },
+      reveal: { counts: { 1: 0, 2: 2, 3: 1, 4: 1, 5: 0 }, minority: [3, 4] },
+      rows: [row('lab1', 1, 1, { pick: 3, win: true }, 1), row('lab3', 1, 1, { pick: 4, win: true }, 1), row('lab2', 3, 0, { pick: 2, win: false }, null), row('lab4', 3, 0, { pick: 2, win: false }, null)],
+    };
+  if (key === 'twothirds')
+    return {
+      playMs: 10000,
+      params: { min: 0, max: 100 },
+      reveal: { mean: 41.25, target: 27.5, n: 4 },
+      rows: [row('lab1', 1, 4, { pick: 27, target: 27.5 }, 0.5), row('lab3', 2, 3, { pick: 33, target: 27.5 }, 5.5), row('lab2', 3, 2, { pick: 50, target: 27.5 }, 22.5), row('lab4', 4, 1, { pick: 55, target: 27.5 }, 27.5)],
+    };
+  if (key === 'oddone') {
+    const size = Number(q.get('size') ?? 4);
+    return {
+      playMs: 10000,
+      params: { size, base: size >= 6 ? '1f600' : '1f436', odd: size >= 6 ? '1f603' : '1f431', oddIndex: Math.floor((size * size) / 2) + 1, penaltyMs: 2000 },
+      reveal: null,
+      rows: [row('lab3', 1, 4, { wrong: 0, timeMs: 1840 }, 1840), row('lab1', 2, 3, { wrong: 1, timeMs: 4210 }, 4210), row('lab2', 3, 0, { wrong: 2 }, null, false), row('lab4', 3, 0, null, null, false)],
+    };
+  }
+  const hidden = q.get('state') === 'hidden';
+  return {
+    playMs: 10000,
+    params: { periodMs: hidden ? 900 : 2000, phase0: 0, hidden, hidePct: 30 },
+    reveal: null,
+    rows: [row('lab1', 1, 4, { pos: 0.503 }, 0.62), row('lab3', 2, 3, { pos: 0.46 }, 8), row('lab2', 3, 2, { pos: 0.8 }, 60), row('lab4', 4, 0, null, null, false)],
   };
 }
 

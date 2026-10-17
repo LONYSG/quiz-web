@@ -131,7 +131,9 @@ function runOne(b) {
       clearTimeout(timer);
       const m = [...out.matchAll(/\[결과\] (\d+)\/(\d+)/g)].pop();
       const fails = [...out.matchAll(/^\s*FAIL\s+(.+)$/gm)].map((x) => x[1].trim()).slice(0, 8);
-      resolve({ code, ok: m ? Number(m[1]) : null, total: m ? Number(m[2]) : null, fails });
+      // ★ 환경 탓(결함 아님 — 찬종 2026-10-17): Chrome 을 밖에서 끔(browser disconnected · Target closed) · WSL 재시작으로 DB 가 잠깐 내려감(연결 오류)
+      const env = code !== 0 && /browser disconnected|Target closed|WebSocket is not open|socket hang up|ECONNREFUSED|ECONNRESET|Connection terminated|terminating connection|57P01|the database system is (starting|shutting)/i.test(out);
+      resolve({ code, ok: m ? Number(m[1]) : null, total: m ? Number(m[2]) : null, fails, env });
     });
   });
 }
@@ -154,9 +156,14 @@ async function pass(list) {
     }
     const t0 = Date.now();
     console.log(`[bundles] ${hhmm()} ▶ ${b.id} (남는 ${mb(g.free)}MB)`);
-    const r = await runOne(b);
+    let r = await runOne(b);
+    if (r.env) {
+      console.log(`[bundles] ${hhmm()} ${b.id} — 환경 탓 실패(Chrome 끊김 · DB 연결) — 60초 뒤 이 묶음만 다시`);
+      await sleep(60_000);
+      r = await runOne(b);
+    }
     const endFree = freeBytes();
-    const row = { id: b.id, stage: b.stage, status: r.code === 0 ? 'PASS' : 'FAIL', ok: r.ok, total: r.total, sec: Math.round((Date.now() - t0) / 1000), startFreeMb: mb(g.free), endFreeMb: mb(endFree), waitedMin: g.waited, fails: r.fails, at: hhmm() };
+    const row = { id: b.id, stage: b.stage, status: r.code === 0 ? 'PASS' : r.env ? 'FAIL-ENV' : 'FAIL', ok: r.ok, total: r.total, sec: Math.round((Date.now() - t0) / 1000), startFreeMb: mb(g.free), endFreeMb: mb(endFree), waitedMin: g.waited, fails: r.fails, at: hhmm() };
     rows.push(row);
     console.log(`[bundles] ${hhmm()} ■ ${b.id} ${row.status} ${r.ok ?? '?'}/${r.total ?? '?'} · ${row.sec}s · 남는 ${row.startFreeMb}→${row.endFreeMb}MB`);
   }

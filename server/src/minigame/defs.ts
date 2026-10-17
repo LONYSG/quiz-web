@@ -54,6 +54,18 @@ import {
   priceFresh,
   ratioError,
   type QuizMinigameKey,
+  MINORITY_PLAY_MS,
+  ODDONE_PENALTY_MS,
+  ODDONE_PLAY_MS,
+  GAUGE_HIDE_PCT,
+  GAUGE_PLAY_MS,
+  TWOTHIRDS_PLAY_MS,
+  gaugeOffPct,
+  gaugePos,
+  gaugeRounds,
+  minorityResult,
+  oddoneRounds,
+  twoThirdsTarget,
 } from '@quiz/shared';
 import type { QuizData, QuizItem } from '../db/minigameItems.js';
 
@@ -113,6 +125,13 @@ export interface MinigameDef {
   buildRounds(seed: number, ctx: BuildCtx): RoundSpec[] | null;
   /** 사람마다 다른 공개 값 (균형 = 시작 점). 없으면 null */
   privateFor?(spec: RoundSpec, accountId: string, roundIndex: number): Record<string, unknown> | null;
+  /**
+   * ★ R053 — 판 끝 정산(모두의 입력을 봐야 값이 정해질 때 — 소수파 · 평균의 2/3). 계정 → 값 · 덧붙임, 공개 값.
+   */
+  finalizeRound?(spec: RoundSpec, subs: ReadonlyMap<string, ParsedInput & { provisional: boolean }>): {
+    values: Map<string, { value: number | null; error?: number | null; extra?: Record<string, unknown> }>;
+    reveal?: Record<string, unknown>;
+  };
   /**
    * ★ 입력 검사 · 판정 값 계산 (서버). 이상한 값이면 null(받지 않음).
    *   provisional = true 면 "아직 확정 아님"(균형 — 움직이는 동안 보내는 값 · 마감 때 마지막 것을 쓴다)
@@ -568,4 +587,102 @@ const which: MinigameDef = {
   },
 };
 
-export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, price, worldprice, photo, estimate, which };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★★ R053 — 미니게임 3차 (소수파 · 평균의 2/3 · 다른 하나 찾기 · 게이지)
+// ─────────────────────────────────────────────────────────────────────────────
+
+// 소수파 — 1~5 · 8초 동안 바꿀 수 있다(임시) · 마감 때 마지막 선택 · 판 끝 정산: 가장 적게 고른 수(0명 제외)를 고른 사람 = 1(이김)
+const minority: MinigameDef = {
+  key: 'minority',
+  info: minigameInfo('minority'),
+  buildRounds(seed) {
+    return [0, 1, 2, 3, 4].map((i) => ({ itemKey: `minority-${i + 1}`, params: { choices: [1, 2, 3, 4, 5] }, playMs: MINORITY_PLAY_MS, seed: seed + i }));
+  },
+  parseInput(raw) {
+    const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
+    const pick = num(obj?.pick);
+    if (pick === null || !Number.isInteger(pick) || pick < 1 || pick > 5) return null;
+    return { input: { pick }, value: null, error: null, elapsedMs: num(obj?.elapsedMs), extra: { pick }, provisional: true };
+  },
+  finalizeRound(_spec, subs) {
+    const picks = [...subs.entries()].map(([a, s]) => [a, Number(s.extra?.pick)] as const);
+    const r = minorityResult(picks.map(([, p]) => p));
+    const values = new Map(picks.map(([a, p]) => [a, { value: r.minority.includes(p) ? 1 : null, extra: { pick: p, win: r.minority.includes(p) } }]));
+    return { values, reveal: { counts: r.counts, minority: r.minority } };
+  },
+};
+
+// 평균의 2/3 — 0~100 정수 한 번 · 판 끝 정산: 목표 = 평균 × 2/3(낸 사람만) · 값 = |입력 − 목표|
+const twothirds: MinigameDef = {
+  key: 'twothirds',
+  info: minigameInfo('twothirds'),
+  buildRounds(seed) {
+    return [0, 1, 2].map((i) => ({ itemKey: `twothirds-${i + 1}`, params: { min: 0, max: 100 }, playMs: TWOTHIRDS_PLAY_MS, seed: seed + i }));
+  },
+  parseInput(raw) {
+    const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
+    const v = num(obj?.value);
+    if (v === null || !Number.isInteger(v) || v < 0 || v > 100) return null;
+    return { input: { value: v }, value: 0, error: null, elapsedMs: num(obj?.elapsedMs), extra: { pick: v }, provisional: false };
+  },
+  finalizeRound(_spec, subs) {
+    const picks = [...subs.entries()].map(([a, s]) => [a, Number(s.extra?.pick)] as const);
+    const t = twoThirdsTarget(picks.map(([, p]) => p));
+    const values = new Map(picks.map(([a, p]) => [a, { value: t ? Math.abs(p - t.target) : null, error: t ? p - t.target : null, extra: { pick: p, target: t?.target ?? null } }]));
+    return { values, reveal: t ? { mean: t.mean, target: t.target, n: picks.length } : { mean: null, target: null, n: 0 } };
+  },
+};
+
+// 다른 하나 찾기 — 격자는 서버 시드 · 누른 칸 + 기기 ms · 틀리면 +2초 벌점(임시 · 계속) · 맞으면 확정(값 = ms + 벌점)
+const oddone: MinigameDef = {
+  key: 'oddone',
+  info: minigameInfo('oddone'),
+  buildRounds(seed) {
+    return oddoneRounds(seed).map((r, i) => ({
+      itemKey: `oddone-${r.size}-${r.pair.base}-${r.pair.odd}`,
+      params: { size: r.size, base: r.pair.base, odd: r.pair.odd, oddIndex: r.oddIndex, penaltyMs: ODDONE_PENALTY_MS },
+      secret: { oddIndex: r.oddIndex },
+      playMs: ODDONE_PLAY_MS,
+      seed: seed + i,
+    }));
+  },
+  parseInput(raw, spec, ctx) {
+    const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
+    const index = num(obj?.index);
+    const size = Number(spec.params.size);
+    if (index === null || !Number.isInteger(index) || index < 0 || index >= size * size) return null;
+    const elapsed = deviceElapsed(obj, spec, ctx);
+    if (elapsed === null) return null;
+    const wrong = Number(ctx.prev?.extra?.wrong ?? 0);
+    if (index === Number(spec.secret?.oddIndex)) {
+      const ms = Math.round(elapsed + wrong * ODDONE_PENALTY_MS);
+      return { input: { index, elapsedMs: Math.round(elapsed), wrong }, value: ms, error: null, elapsedMs: elapsed, extra: { wrong, timeMs: ms }, provisional: false, feedback: { correct: true, timeMs: ms } };
+    }
+    return { input: { lastWrong: index, wrong: wrong + 1 }, value: null, error: null, elapsedMs: null, submitted: false, extra: { wrong: wrong + 1 }, provisional: true, feedback: { correct: false, index, wrong: wrong + 1 } };
+  },
+};
+
+// 게이지 — 누른 순간(판 시작부터 기기 ms) 하나 · 서버가 위치를 다시 계산(클라이언트 위치 값은 보지 않는다)
+const gauge: MinigameDef = {
+  key: 'gauge',
+  info: minigameInfo('gauge'),
+  buildRounds(seed) {
+    return gaugeRounds(seed).map((r, i) => ({
+      itemKey: `gauge-${r.periodMs}${r.hidden ? '-hidden' : ''}`,
+      params: { periodMs: r.periodMs, phase0: r.phase0, hidden: r.hidden, hidePct: GAUGE_HIDE_PCT },
+      playMs: GAUGE_PLAY_MS,
+      seed: seed + i,
+    }));
+  },
+  parseInput(raw, spec, ctx) {
+    const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
+    const elapsed = deviceElapsed(obj, spec, ctx);
+    if (elapsed === null) return null;
+    const pos = gaugePos({ periodMs: Number(spec.params.periodMs), phase0: Number(spec.params.phase0) }, elapsed);
+    const off = gaugeOffPct(pos);
+    return { input: { elapsedMs: Math.round(elapsed * 10) / 10 }, value: off, error: (pos - 0.5) * 200, elapsedMs: elapsed, extra: { pos: Math.round(pos * 10000) / 10000 }, provisional: false };
+  },
+};
+
+export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, price, worldprice, photo, estimate, which, minority, twothirds, oddone, gauge };

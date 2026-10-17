@@ -44,12 +44,12 @@ export function formatInt(n: number): string {
   return Math.round(n).toLocaleString('ko-KR');
 }
 
-/** 숫자 입력 글 → 숫자 (쉼표 · 공백 · 단위 글자 무시 · 소수 허용). 안 되면 null */
-export function parseNumberInput(s: string): number | null {
+/** 숫자 입력 글 → 숫자 (쉼표 · 공백 · 단위 글자 무시 · 소수 허용). 안 되면 null. allowZero — 0 도 받는다(평균의 2/3) */
+export function parseNumberInput(s: string, allowZero = false): number | null {
   const t = s.replace(/[,\s]/g, '').replace(/[^\d.]/g, '');
   if (!t || (t.match(/\./g)?.length ?? 0) > 1) return null;
   const v = Number(t);
-  return Number.isFinite(v) && v > 0 ? v : null;
+  return Number.isFinite(v) && (v > 0 || (allowZero && v === 0)) ? v : null;
 }
 
 /** 입력칸 표시 — 정수 부분에 쉼표 (소수점 뒤는 그대로) */

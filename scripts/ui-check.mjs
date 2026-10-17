@@ -2665,13 +2665,16 @@ async function onlyMinigame(H, key) {
     await H.evaluate(`document.querySelector('.mg-set-row [data-minigame="${key}"]')?.click()`);
     await sleep(300);
   }
-  for (let i = 0; i < 12; i += 1) {
+  // ★ R053 — 미니게임이 15개가 되어 12번으로는 모자랐다(다른 게임이 뽑혔다) → 켜진 것이 하나 남을 때까지
+  for (let i = 0; i < 40; i += 1) {
     const other = await H.evaluate(`[...document.querySelectorAll('.mg-set-row [data-minigame][aria-pressed="true"]')].map((b) => b.dataset.minigame).find((k) => k !== '${key}') ?? null`);
     if (!other) break;
     await H.evaluate(`document.querySelector('.mg-set-row [data-minigame="${other}"]')?.click()`);
     await sleep(250);
   }
   await setQuestionCount(H, 5);
+  const on = await H.evaluate("[...document.querySelectorAll('.mg-set-row [data-minigame][aria-pressed=\"true\"]')].map((b) => b.dataset.minigame).join(',')");
+  record(`★ 설정 — 미니게임 '${key}' 하나만 켬`, on === key, on);
 }
 /** 퀴즈 판 시작 → 3문제를 두 사람이 맞혀 넘긴다 → 미니게임 시작(intro)까지 */
 async function toMinigame(H, G) {
@@ -2711,7 +2714,8 @@ async function r052Live(browser, key) {
     if (i === 0) {
       await snap(H, `${num}-live-${key}-play-pc`);
       await snap(G, `${num}-live-${key}-play-m390`);
-      const imgOk = await H.evaluate("[...document.querySelectorAll('img.quiz-img')].every((x) => x.naturalWidth > 0)");
+      // ★ 어느 쪽?은 그림 없는 문항(null)도 있다 — 그때는 그림이 0장이어도 된다
+    const imgOk = await H.evaluate(`(() => { const xs = [...document.querySelectorAll('img.quiz-img')]; return (xs.length > 0 || '${key}' === 'which') && xs.every((x) => x.naturalWidth > 0); })()`);
       record(`★★ ${key} 진행 — 그림이 실제로 보인다(naturalWidth > 0)`, imgOk === true);
     }
     if (key === 'price' || key === 'worldprice' || key === 'estimate') {
@@ -2777,6 +2781,8 @@ async function r052Live(browser, key) {
   const gPts = db.filter((r) => /g$/.test(r.login_id)).reduce((s, r) => s + r.points, 0);
   const exp = await withPg(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_item_experiences e JOIN accounts a ON a.id = e.account_id WHERE e.minigame_key = $2 AND a.login_id LIKE $1`, [`%_q${key.slice(0, 2)}%`, key])).rows[0].n);
   record(`★★★ ${key} 기록 — 문항 × 2명 · 경험 ${items * 2}행 · 점수(H ${hPts} · G ${gPts})`, db.length === items * 2 && exp === items * 2, `${db.length} · ${exp}`);
+  const gSub = db.filter((r) => /g$/.test(r.login_id) && r.input).length;
+  record(`★★ ${key} 모바일(G)도 입력이 서버에 닿았다`, gSub >= Math.min(3, items), String(gSub));
   if (key === 'which') record('★★ G 어느 쪽 최종 — 문항별 정리 표', (await H.evaluate("document.querySelectorAll('.which-summary tbody tr').length")) === 2);
   await H.waitFor("document.querySelector('.mg-card') === null", 30000);
   await H.close?.();

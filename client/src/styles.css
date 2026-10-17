@@ -5693,6 +5693,8 @@ button.primary.tone-warn {
    ============================================================================= */
 .quiz-stage {
   display: grid;
+  /* ★ R053 ⓪ 그림에서 — 칸이 입력칸 기본 폭만큼 넓어져 모바일에서 확인 버튼이 화면 밖으로 밀렸다 */
+  grid-template-columns: minmax(0, 1fr);
   gap: 10px;
   padding: 4px 0;
 }
@@ -5780,6 +5782,7 @@ button.primary.tone-warn {
 }
 .quiz-num {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 4px;
 }
 .quiz-num-row {
@@ -5804,6 +5807,25 @@ button.primary.tone-warn {
 }
 .quiz-num-ok {
   min-width: 72px;
+}
+/* ★ R053 ⓪ 그림에서 — 입력칸이 작고 확인 버튼이 길게 늘어났다 */
+.quiz-num-row .quiz-num-input {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  margin-top: 0;
+}
+.quiz-num-row .quiz-num-ok {
+  flex: 0 0 auto;
+  width: auto;
+}
+/* ★ R053 ⓪ 그림에서 — 정답 공개가 PC 의 왼쪽 220px 칸에 갇혀 글이 세로로 찌그러졌다 → 한 줄 전체 */
+.mg-result.wide {
+  grid-template-columns: minmax(0, 1fr);
+}
+.mg-rules-art .quiz-rules-tag svg {
+  width: 1em;
+  height: 1em;
 }
 .quiz-num-help {
   margin: 0;
@@ -6048,6 +6070,150 @@ button.primary.tone-warn {
 }
 :where(.ui-mobile) .which-label {
   font-size: 0.92rem;
+}
+
+/* =============================================================================
+   ★★★ R053 — 미니게임 3차 (소수파 · 평균의 2/3 · 다른 하나 찾기 · 게이지)
+   ============================================================================= */
+.minority-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+.minority-card {
+  aspect-ratio: 3 / 4;
+  max-height: 140px;
+  border-radius: 14px;
+  border: 3px solid transparent;
+  background: var(--surface-2);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 900;
+  color: var(--text);
+  cursor: pointer;
+}
+.minority-card.picked {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 18%, var(--surface-2));
+  color: var(--accent);
+}
+.minority-bars {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  align-items: end;
+  height: 150px;
+  width: 100%;
+  max-width: 320px;
+}
+.minority-bar {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  justify-items: center;
+}
+.minority-fill {
+  align-self: end;
+  width: 70%;
+  min-height: 3px;
+  border-radius: 6px 6px 0 0;
+  background: var(--border);
+}
+.minority-bar.win .minority-fill {
+  background: var(--ok);
+}
+.minority-bar.mine .minority-n {
+  color: var(--accent);
+  text-decoration: underline 2px;
+}
+.minority-count,
+.minority-n {
+  font-weight: 900;
+}
+.oddone-grid {
+  display: grid;
+  gap: 4px;
+  width: min(100%, 56vh, 460px);
+  margin: 0 auto;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.oddone-grid.small {
+  width: min(100%, 200px);
+  gap: 2px;
+}
+.oddone-cell {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 10%;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: var(--surface-2);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.oddone-cell img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.oddone-cell.wrong {
+  border-color: var(--bad);
+  animation: rx-blink 150ms steps(2) 3;
+}
+.oddone-cell.found {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+.gauge-stage {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.gauge-track {
+  position: relative;
+  height: 64px;
+  margin: 18px 4% 6px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--bad-soft), var(--ok-soft) 50%, var(--bad-soft));
+  border: 2px solid var(--border);
+}
+.gauge-center {
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  bottom: -10px;
+  width: 3px;
+  transform: translateX(-50%);
+  background: var(--ok);
+  border-radius: 2px;
+}
+.gauge-mask {
+  position: absolute;
+  top: -12px;
+  bottom: -12px;
+  background: var(--surface);
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  z-index: 2;
+}
+.gauge-marker {
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  width: 10px;
+  transform: translateX(-50%);
+  border-radius: 6px;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--surface);
+  z-index: 1;
+}
+.gauge-result .gauge-track {
+  width: 100%;
+  max-width: 320px;
+  height: 36px;
 }
 
 /* ── ★ R050 — /lab 화면 (점검용) */

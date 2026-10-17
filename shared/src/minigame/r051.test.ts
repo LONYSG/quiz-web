@@ -24,7 +24,7 @@ describe('★★ Q-110 (가) 확정 — 10문제 판은 5번째 뒤 1회 · 혼�
 
 describe('★★ 미니게임 목록 — 피지컬 여섯 · 판 수 3~5', () => {
   it('키 여섯 + 퀴즈류 다섯(R052)', () =>
-    expect(MINIGAMES.map((m) => m.key)).toEqual(['cake', 'balance', 'reaction', 'typing', 'circle', 'angle', 'price', 'worldprice', 'photo', 'estimate', 'which']));
+    expect(MINIGAMES.map((m) => m.key)).toEqual(['cake', 'balance', 'reaction', 'typing', 'circle', 'angle', 'price', 'worldprice', 'photo', 'estimate', 'which', 'minority', 'twothirds', 'oddone', 'gauge']));
   it('피지컬 판 수 3~5 · 예상 1~2분', () => {
     for (const m of MINIGAMES.filter((x) => x.kind === 'physical')) {
       expect(m.rounds).toBeGreaterThanOrEqual(3);

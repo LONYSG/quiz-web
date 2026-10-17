@@ -954,6 +954,16 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 설정값 (서버 env) | `SHOP_PRICE_OVERRIDE`(검사용 · 0 = DB 의 `emoji_themes.price` — 실제 서버 .env 에 두지 않는다. 봇 shop 이 자기 서버에서 10 으로) |
 | RULES (shared) | `SPECIAL_FLOAT_MS` 3000 · `SPECIAL_FLOAT_MAX` 3 · `SPECIAL_FLOAT_PX` 96 — 화면(떠 있는 큰 반응)만 쓴다 |
 
+## ★ R053 — 바뀐 것 (D-240 · D-241)
+
+| 항목 | 내용 |
+|------|------|
+| 미니게임 키 | + `'minority' \| 'twothirds' \| 'oddone' \| 'gauge'` |
+| `minigame.submit` 소수파 | `{ pick: 1~5 }` 임시(바꿀 수 있다 · 마감 때 마지막) · 공개 reveal `{ counts, minority[] }` |
+| `minigame.submit` 2/3 | `{ value: 0~100 정수 }` 한 번 · reveal `{ mean, target, n }` |
+| `minigame.submit` 다른 하나 | `{ index, elapsedMs }` — 틀리면 임시(+2초 · `minigame.feedback { correct:false, index, wrong }`) · 맞으면 확정 · params `{ size, base, odd, oddIndex, penaltyMs }`(Twemoji 코드) |
+| `minigame.submit` 게이지 | `{ elapsedMs }` 한 번 — 서버가 params `{ periodMs, phase0, hidden, hidePct }` 로 위치를 다시 계산 |
+
 ## ★ R052 — 바뀐 것 (D-239)
 
 | 항목 | 내용 |

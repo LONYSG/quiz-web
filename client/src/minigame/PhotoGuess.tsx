@@ -129,6 +129,7 @@ export default function PhotoGuess({ socket, view, serverNow, mobile }: Props) {
           <input
             ref={ref}
             className="quiz-num-input"
+            size={8}
             value={text}
             autoComplete="off"
             enterKeyHint="send"

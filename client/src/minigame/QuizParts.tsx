@@ -59,6 +59,8 @@ export function NumberInput({
   allowDecimal,
   t0,
   placeholder,
+  allowZero = false,
+  max,
 }: {
   view: MinigameView;
   socket: { emit: (ev: string, p: unknown) => void };
@@ -66,6 +68,9 @@ export function NumberInput({
   allowDecimal: boolean;
   t0: number | null;
   placeholder: string;
+  /** ★ R053 — 0 도 받는다 · 최댓값(평균의 2/3 — 0~100) */
+  allowZero?: boolean;
+  max?: number;
 }) {
   const key = `${view.token}:${view.roundIndex}`;
   const [text, setText] = useState('');
@@ -78,7 +83,8 @@ export function NumberInput({
     if (canPlay) window.setTimeout(() => ref.current?.focus({ preventScroll: true }), 30);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, canPlay]);
-  const value = parseNumberInput(text);
+  const raw = parseNumberInput(text, allowZero);
+  const value = raw !== null && (max === undefined || raw <= max) ? raw : null;
   const submit = () => {
     if (!canPlay || mine || value === null) return;
     setSent({ key, value });
@@ -97,6 +103,7 @@ export function NumberInput({
         <input
           ref={ref}
           className="quiz-num-input mono"
+          size={8}
           inputMode={allowDecimal ? 'decimal' : 'numeric'}
           autoComplete="off"
           enterKeyHint="done"

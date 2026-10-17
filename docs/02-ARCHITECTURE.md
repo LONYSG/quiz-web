@@ -168,7 +168,7 @@ quiz-web/
 │       ├─ settings.ts     게임 설정 검증 / 경험률 표기  ★ 서버·클라이언트 공용 (D-026)
 │       ├─ minigame.ts     ★ R050 미니게임 공통 규칙 (등장 자리 · 판 순위 · 보상 · 소수 자리 · 케이크 판 구성)
 │       ├─ balance.ts      ★ R050 균형의수호자 물건 모양(시드) · 넓이 나누기 — 서버 채점과 화면 그림이 같은 함수 (★ R051 딸기 케이크 = 위에서 본 부채꼴)
-│       ├─ minigame/       ★ R051 미니게임 2차 순수 함수 — reaction.ts(판 구성 · 판정) · typing.ts + typing-sentences.ts(문장 80 · 출처) · circle.ts(원 맞춤 · 원다움) · angle.ts(목표 · 시작 각) · ★ R052 quiz.ts(퀴즈류 — 비율 오차 · 숫자 입력 · 3단계 선정 · 연습 더미)
+│       ├─ minigame/       ★ R051 미니게임 2차 순수 함수 — reaction.ts(판 구성 · 판정) · typing.ts + typing-sentences.ts(문장 80 · 출처) · circle.ts(원 맞춤 · 원다움) · angle.ts(목표 · 시작 각) · ★ R052 quiz.ts(퀴즈류 — 비율 오차 · 숫자 입력 · 3단계 선정 · 연습 더미) · ★ R053 r053.ts(소수파 · 2/3 · 다른 하나 판 · 게이지 위치) · oddone-pairs.ts(Twemoji 쌍 27)
 │       └─ protocol.ts     Socket 이벤트 타입과 게임 규칙 상수
 ├─ server/                 게임 서버
 │   └─ src/

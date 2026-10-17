@@ -203,6 +203,11 @@ export function pickMinigameKey(room: Room): MinigameKey | null {
 export function startMinigame(room: Room, key: MinigameKey, opts: { practice: boolean; afterQuestionIndex: number | null }): boolean {
   const def = MINIGAME_DEFS[key];
   if (!def || room.players.size === 0) return false;
+  // ★ R053 — 최소 인원(소수파 3명) — 퀴즈 판 자리에서는 뽑지 않는다(골라 하기 연습은 된다)
+  if (!opts.practice && room.players.size < (def.info.minPlayers ?? 1)) {
+    console.log(`[minigame] ${room.id} ${def.info.name} 건너뜀 — ${def.info.minPlayers}명부터`);
+    return false;
+  }
   const now = Date.now();
   const seed = randomInt(1, 2 ** 31 - 1);
   const participants: MinigameParticipant[] = [...room.players.values()]
@@ -388,6 +393,15 @@ function endRound(room: Room, run: MinigameRun, now: number): void {
   // ★ R052 — 이 문항을 이미 본 사람은 순위 · 점수에서 뺀다(0점 · "이미 본 문항")
   const spec = run.rounds[run.roundIndex]!;
   const seen = new Set(spec.experiencedBy ?? []);
+  // ★ R053 — 모두의 입력을 봐야 값이 정해지는 게임(소수파 · 평균의 2/3)은 판 끝에 정산한다 · 공개 값(reveal)도 여기서
+  if (def.finalizeRound) {
+    const fin = def.finalizeRound(spec, subs);
+    for (const [a, v] of fin.values) {
+      const prev = subs.get(a);
+      if (prev) subs.set(a, { ...prev, value: v.value, error: v.error ?? prev.error, extra: { ...(prev.extra ?? {}), ...(v.extra ?? {}) } });
+    }
+    if (fin.reveal) spec.reveal = fin.reveal;
+  }
   const ranked = rankRound(
     run.participants.map((p) => ({ accountId: p.accountId, value: seen.has(p.accountId) ? null : (subs.get(p.accountId)?.value ?? null) })),
     def.info.better,
@@ -447,10 +461,11 @@ function endRound(room: Room, run: MinigameRun, now: number): void {
 
 function enterFinal(room: Room, run: MinigameRun, now: number): void {
   const lastRows = run.roundResults[run.roundResults.length - 1]?.rows ?? [];
-  const correctMode = MINIGAME_DEFS[run.key].info.scoring === 'correct';
-  // ★ 동점 가르기 — 기본은 마지막 판 순위 · 맞히기 방식(어느 쪽?)은 맞힌 문항의 시간 합(작은 쪽)
+  const info = MINIGAME_DEFS[run.key].info;
+  // ★ 동점 가르기 — 기본은 마지막 판 순위 · 맞히기 방식(어느 쪽?)은 맞힌 문항의 시간 합(작은 쪽) · R053 소수파는 마지막 판 순위(tiebreak)
+  const timeSum = (info.tiebreak ?? (info.scoring === 'correct' ? 'timeSum' : 'lastRank')) === 'timeSum';
   const tie = (accountId: string): number =>
-    correctMode
+    timeSum
       ? run.roundResults.reduce((sum, rr) => {
           const r = rr.rows.find((x) => x.accountId === accountId);
           return sum + (r && r.points > 0 && r.value !== null ? r.value : 0);
