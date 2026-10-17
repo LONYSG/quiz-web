@@ -9,7 +9,7 @@
 // =============================================================================
 
 import { useCallback, useEffect, useState } from 'react';
-import { Camera, Pencil } from 'lucide-react';
+import { BarChart3, Camera, Pencil } from 'lucide-react';
 import { NICKNAME_LIMIT_HINT, NICKNAME_TOO_LONG_MESSAGE, RULES, nicknameFits } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import BusyButton from './BusyButton.js';
@@ -17,6 +17,7 @@ import ConfirmModal from './ConfirmModal.js';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import ProfileEditor from './ProfileEditor.js';
+import StatsModal from './StatsModal.js';
 import { changeNickname, deleteAvatar, errorMessage, fetchPoints, uploadAvatar, type PointBalance } from './api.js';
 import { usePopup } from './popup.js';
 import { useDismiss } from './useDismiss.js';
@@ -52,6 +53,8 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
 
   // ★ R048 C — 포인트 (맞힌 문제 수 − 쓴 포인트). 창을 열 때마다 새로 읽는다 (게임 중에도 열린다 — D-217)
   const [points, setPoints] = useState<PointBalance | null>(null);
+  // ★ R054 — 전적 · 업적 창
+  const [statsOpen, setStatsOpen] = useState(false);
   useEffect(() => {
     if (!open) return undefined;
     let alive = true;
@@ -109,6 +112,10 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
                 <span>{NICKNAME_LIMIT_HINT}</span>
               </p>
             )}
+            {/* ★ R054 — 전적 · 업적 (읽기만 · 표시만) */}
+            <button type="button" className="ghost tiny stats-open" onClick={() => setStatsOpen(true)}>
+              <Icon icon={BarChart3} /> 전적 · 업적
+            </button>
             {/* ★ R048 C — 포인트 한 줄 (찬종: "여태 맞힌 문제수 = 1 point") */}
             <p className="profile-points" aria-live="polite">
               <span className="dim">포인트</span>{' '}
@@ -202,6 +209,7 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
         />
       )}
 
+      {statsOpen && <StatsModal onClose={() => setStatsOpen(false)} />}
       {/* ★ R043 A-6 — 사진 지우기도 확인 */}
       {photoDelOpen && (
         <ConfirmModal

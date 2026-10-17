@@ -41,6 +41,7 @@ import type { Player, Room } from '../rooms/types.js';
 import { beginQuestion, broadcastPlayers, finishGame } from '../game/question.js';
 import { setBeforeNextQuestion } from '../game/hooks.js';
 import { MINIGAME_DEFS, type ParsedInput, type RoundSpec } from './defs.js';
+import { checkAchievements } from '../achievements.js';
 
 export interface MinigameParticipant {
   accountId: string;
@@ -504,7 +505,10 @@ function enterFinal(room: Room, run: MinigameRun, now: number): void {
 function exitMinigame(room: Room, run: MinigameRun, reason: 'completed' | 'force_ended' | 'abandoned'): void {
   run.endReason = reason;
   const finals = run.final ?? [];
-  fire('판 끝', run.dbId.then((id) => (id ? finishRun(id, reason, finals) : undefined)));
+  const done = run.dbId.then((id) => (id ? finishRun(id, reason, finals) : undefined));
+  fire('판 끝', done);
+  // ★ R054 — 업적(미니게임 1위 · 기록) — 연습 아님 · 끝까지 간 판 · 최종 순위가 DB 에 들어간 뒤
+  if (reason === 'completed' && !run.practice) void done.then(() => checkAchievements(room, run.participants.map((p) => p.accountId), 300)).catch(() => undefined);
   room.minigame = null;
   console.log(`[minigame] ${room.id} 끝 (${reason})`);
   if (reason === 'abandoned') return;

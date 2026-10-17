@@ -47,6 +47,7 @@ import { useSocial } from './useSocial.js';
 import FriendList from './FriendList.js';
 // import { BellButton } from './SocialPopups.js'; // ★ R044 A-3 — 알림 끔 (D-214)
 import InviteToast from './InviteToast.js';
+import AchievementToast from './AchievementToast.js';
 import ProfilePanel from './ProfilePanel.js';
 import ShopPanel from './ShopPanel.js';
 // ★ R050 — /lab 화면은 따로 받는다 (첫 화면 묶음에 넣지 않는다)
@@ -538,6 +539,8 @@ export default function App() {
       {socket && account && !mustChange && !(pendingRoomId && !room.snapshot) && (
         <InviteToast social={social} show={!inGameRef.current} onAccept={joinOther} />
       )}
+      {/* ★ R054 — 업적 토스트 */}
+      {socket && account && <AchievementToast socket={socket} />}
       {view.body}
       {switchOpen && switchTo && (
         <ConfirmModal

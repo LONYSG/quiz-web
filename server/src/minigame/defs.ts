@@ -66,6 +66,11 @@ import {
   minorityResult,
   oddoneRounds,
   twoThirdsTarget,
+  BALLOON_PLAY_MS,
+  TAP_MAX_PER_SEC,
+  TAP_PLAY_MS,
+  balloonBursts,
+  balloonSize,
 } from '@quiz/shared';
 import type { QuizData, QuizItem } from '../db/minigameItems.js';
 
@@ -685,4 +690,59 @@ const gauge: MinigameDef = {
   },
 };
 
-export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, price, worldprice, photo, estimate, which, minority, twothirds, oddone, gauge };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★★ R054 — 풍선 불기 · 연타 10초
+// ─────────────────────────────────────────────────────────────────────────────
+
+// 풍선 — 누른 시각 · 뗀 시각(판 시작부터 기기 ms) · 서버가 크기를 다시 계산 · 터지는 크기는 판마다 서버 시드(모두 같은 값 · 공개는 판 결과 때만)
+const balloon: MinigameDef = {
+  key: 'balloon',
+  info: minigameInfo('balloon'),
+  buildRounds(seed) {
+    return balloonBursts(seed).map((burst, i) => ({
+      itemKey: `balloon-${i + 1}`,
+      params: { growPerSec: 10, startPct: 100 },
+      secret: { burst },
+      reveal: { burst },
+      playMs: BALLOON_PLAY_MS,
+      seed: seed + i,
+    }));
+  },
+  parseInput(raw, spec, ctx) {
+    const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
+    const start = num(obj?.startMs);
+    const end = num(obj?.endMs);
+    if (start === null || end === null || start < 0 || end < start || end > spec.playMs + 200) return null;
+    if (end > ctx.serverElapsedMs + CAKE_EARLY_TOLERANCE_MS) return null;
+    const size = Math.round(balloonSize(end - start) * 10) / 10;
+    const popped = size >= Number(spec.secret?.burst);
+    return {
+      input: { startMs: Math.round(start), endMs: Math.round(end), size, popped },
+      value: popped ? 0 : size,
+      error: null,
+      elapsedMs: end,
+      extra: { size, popped },
+      provisional: false,
+    };
+  },
+};
+
+// 연타 — 지금 횟수(임시 0.25초마다) · 마감 때 마지막 · 초당 20 넘으면 거부(기기 시간 무관 — 서버에서 흐른 시간으로)
+const tap: MinigameDef = {
+  key: 'tap',
+  info: minigameInfo('tap'),
+  buildRounds(seed) {
+    return [0, 1, 2].map((i) => ({ itemKey: `tap-${i + 1}`, params: { maxPerSec: TAP_MAX_PER_SEC }, playMs: TAP_PLAY_MS, seed: seed + i }));
+  },
+  parseInput(raw, _spec, ctx) {
+    const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
+    const c = num(obj?.count);
+    if (c === null || !Number.isInteger(c) || c < 0) return null;
+    const limit = Math.ceil((Math.min(ctx.serverElapsedMs, TAP_PLAY_MS + 1500) / 1000) * TAP_MAX_PER_SEC) + 2;
+    if (c > limit) return null;
+    return { input: { count: c }, value: c, error: null, elapsedMs: num(obj?.elapsedMs), extra: { count: c }, provisional: obj?.final !== true };
+  },
+};
+
+export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, price, worldprice, photo, estimate, which, minority, twothirds, oddone, gauge, balloon, tap };

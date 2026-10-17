@@ -27,7 +27,10 @@ export type MinigameKey =
   | 'minority'
   | 'twothirds'
   | 'oddone'
-  | 'gauge';
+  | 'gauge'
+  // ★ R054
+  | 'balloon'
+  | 'tap';
 
 export interface MinigameInfo {
   key: MinigameKey;
@@ -260,6 +263,33 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     better: 'low',
     unit: '%',
     maxDecimals: 2,
+  },
+  // ★★★ R054 — 미니게임 4차 (데이터 없는 🟢 둘 — 심리전 · 반응)
+  {
+    key: 'balloon',
+    name: '풍선 불기',
+    oneLine: '누르고 있으면 풍선이 커져요 — 터지기 직전에 떼세요! 터지면 0점',
+    controlsPc: 'Space 를 누르고 있다가 떼기',
+    controlsMobile: '화면을 누르고 있다가 떼기',
+    kind: 'physical',
+    rounds: 3,
+    estSec: 60,
+    better: 'high',
+    unit: '%',
+    maxDecimals: 1,
+  },
+  {
+    key: 'tap',
+    name: '연타 10초',
+    oneLine: '10초 동안 최대한 많이 누르세요! 꾹 누르기는 안 세요',
+    controlsPc: 'Space 연타',
+    controlsMobile: '큰 버튼 연타',
+    kind: 'physical',
+    rounds: 3,
+    estSec: 45,
+    better: 'high',
+    unit: '%',
+    fixedDecimals: 0,
   },
 ];
 

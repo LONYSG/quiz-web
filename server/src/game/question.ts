@@ -30,6 +30,7 @@
 //   (3) DB 쓰기는 전부 void 로 띄운다. 실패해도 게임은 진행된다.
 // =============================================================================
 
+import { checkAchievements } from '../achievements.js';
 import { RULES, computeRanking, generateHint, normalizeAnswer, skipThreshold } from '@quiz/shared';
 import type { GameEndReason, QuestionResolution } from '@quiz/shared';
 import { endGame } from '../db/games.js';
@@ -398,6 +399,8 @@ export function resolveQuestionSync(
         gameId: game.gameId,
       }),
     );
+    // ★ R054 — 업적(첫 정답 · 연속 정답 · 분야) — 맞힌 사람만 · DB 기록이 들어간 뒤 판정
+    if (reason === 'correct' && winnerAccountId) checkAchievements(room, [winnerAccountId]);
   }
 
   return true;

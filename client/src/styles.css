@@ -6226,6 +6226,218 @@ button.primary.tone-warn {
   height: 36px;
 }
 
+/* =============================================================================
+   ★★ R054 — 전적 · 업적 창 · 업적 토스트 · 풍선 · 연타
+   ============================================================================= */
+.stats-open {
+  margin: 4px 0 6px;
+}
+.stats-modal {
+  position: relative;
+  width: min(560px, calc(100vw - 24px));
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 12px 14px 14px;
+}
+.stats-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 4px 0 10px;
+}
+.stats-sec {
+  margin-bottom: 12px;
+}
+.stats-sec h3 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+.stats-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 0 0 6px;
+  font-size: 0.88rem;
+}
+.stats-bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 3px;
+}
+.stats-bars li {
+  display: grid;
+  grid-template-columns: 7.5em minmax(0, 1fr) 3em;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.82rem;
+}
+.stats-bar {
+  height: 10px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.stats-bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+.stats-mg {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+.stats-mg th,
+.stats-mg td {
+  padding: 2px 6px;
+  text-align: right;
+}
+.stats-mg td:first-child,
+.stats-mg th:first-child {
+  text-align: left;
+}
+.stats-mg tr.none {
+  color: var(--text-dim);
+}
+.stats-recent {
+  margin: 0;
+  padding-left: 1.1em;
+  font-size: 0.78rem;
+}
+.ach-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 6px;
+}
+.ach {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  opacity: 0.55;
+  filter: grayscale(1);
+}
+.ach.on {
+  opacity: 1;
+  filter: none;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface-2));
+}
+.ach-medal {
+  font-size: 1.4rem;
+}
+.ach-text {
+  display: grid;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+.ach-toast-layer {
+  position: fixed;
+  top: 12px;
+  left: 0;
+  right: 0;
+  z-index: 120;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+.ach-toast {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 99px;
+  background: var(--surface);
+  border: var(--bw) solid var(--accent);
+  box-shadow: var(--shadow-pop);
+  font-size: 0.9rem;
+  animation: pop-in 180ms var(--ease-pop);
+}
+.ach-toast-medal {
+  font-size: 1.3rem;
+}
+.balloon-stage {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.balloon-box {
+  display: grid;
+  place-items: center;
+  height: min(42vh, 300px);
+}
+.balloon-box.small {
+  height: 150px;
+}
+.balloon-art {
+  height: 100%;
+  width: auto;
+  overflow: visible;
+}
+.balloon-body {
+  fill: #ef476f;
+}
+.balloon-shine {
+  fill: #fff;
+  opacity: 0.35;
+}
+.balloon-knot {
+  fill: #c9184a;
+}
+.balloon-string {
+  fill: none;
+  stroke: var(--text-dim);
+  stroke-width: 3;
+}
+.balloon-art.popped line {
+  stroke: #ef476f;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.balloon-art.popped text {
+  font-size: 34px;
+  font-weight: 900;
+  fill: var(--bad);
+}
+.balloon-pct {
+  margin: 0;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+.tap-count {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(3rem, 9vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+}
+.tap-btn {
+  justify-self: center;
+  width: min(100%, 320px);
+  height: 120px;
+  border-radius: 24px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 0;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.tap-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
 /* ── ★ R050 — /lab 화면 (점검용) */
 .lab-page {
   padding: 16px;

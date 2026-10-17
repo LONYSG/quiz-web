@@ -18,7 +18,7 @@ import {
   minigameInfo,
   type BalanceKind,
 } from '@quiz/shared';
-import { BookOpenCheck, Crosshair, Gamepad2, Globe2, Hash, ImageIcon, Keyboard, PartyPopper, Ruler, Scale, ScanSearch, Tag, Trophy, Users, Zap } from 'lucide-react';
+import { BookOpenCheck, Crosshair, Gamepad2, Hand, Globe2, Hash, ImageIcon, Keyboard, PartyPopper, Ruler, Scale, ScanSearch, Tag, Trophy, Users, Zap } from 'lucide-react';
 import Icon from '../Icon.js';
 import Avatar from '../Avatar.js';
 import DeviceIcon from '../DeviceIcon.js';
@@ -38,6 +38,7 @@ import QuizReveal, { WhichSummary, quizValueText } from './QuizReveal.js';
 import { preloadQuizImages } from './QuizParts.js';
 import WhichPick from './WhichPick.js';
 import { GaugeStop, MinorityPick, OddOneGrid, TwoThirdsInput, twemoji } from './R053Games.js';
+import { BalloonArt, BalloonBlow, TapRush } from './R054Games.js';
 
 /** ★ 판 진행 화면 — 미니게임 키 → 컴포넌트 */
 const PLAY = {
@@ -58,11 +59,14 @@ const PLAY = {
   twothirds: TwoThirdsInput,
   oddone: OddOneGrid,
   gauge: GaugeStop,
+  // ★ R054
+  balloon: BalloonBlow,
+  tap: TapRush,
 } as const;
-const R053_KEYS = new Set(['minority', 'twothirds', 'oddone', 'gauge']);
+const R053_KEYS = new Set(['minority', 'twothirds', 'oddone', 'gauge', 'balloon', 'tap']);
 const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which']);
 /** 진행 중 "n / m명 …" 의 말 */
-const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', minority: '고름', twothirds: '냄', oddone: '찾음', gauge: '멈춤' };
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', minority: '고름', twothirds: '냄', oddone: '찾음', gauge: '멈춤', balloon: '뗌', tap: '끝' };
 
 interface Props {
   socket: Socket;
@@ -283,6 +287,10 @@ function readyDesc(view: MinigameView): string {
       return `${String(p.size ?? '')} × ${String(p.size ?? '')} 격자`;
     case 'gauge':
       return p.hidden ? '가운데가 가려져요 — 감으로!' : `왕복 ${(Number(p.periodMs ?? 0) / 1000).toFixed(1)}초`;
+    case 'balloon':
+      return '이번 풍선은 언제 터질까?';
+    case 'tap':
+      return '10초 — 최대한 많이!';
   }
 }
 
@@ -338,8 +346,11 @@ function RulesArt({ k }: { k: MinigameView['key'] }) {
     case 'minority':
     case 'twothirds':
     case 'oddone':
+    case 'balloon':
+      return <BalloonArt pct={180} />;
+    case 'tap':
     case 'gauge': {
-      const I = { minority: Users, twothirds: Hash, oddone: ScanSearch, gauge: Crosshair }[k];
+      const I = { minority: Users, twothirds: Hash, oddone: ScanSearch, gauge: Crosshair, tap: Hand }[k];
       return (
         <div className="mg-rules-icon" aria-hidden="true">
           <Icon icon={I} className="mg-rules-big" />
@@ -401,6 +412,8 @@ function RoundResult({
     if (view.key === 'twothirds') return r.extra?.pick !== undefined && r.value !== null ? `${String(r.extra.pick)} (차이 ${formatMinigameValue(r.value, d)})` : '안 냄';
     if (view.key === 'oddone') return r.value !== null && r.submitted ? `${(r.value / 1000).toFixed(2)}초${r.extra?.wrong ? ` (+${Number(r.extra.wrong) * 2})` : ''}` : r.extra?.wrong ? `못 찾음 (${String(r.extra.wrong)}번 틀림)` : '못 찾음';
     if (view.key === 'gauge') return r.value !== null ? `${formatMinigameValue(r.value, d)}%` : '안 누름';
+    if (view.key === 'balloon') return r.extra?.popped ? `펑! (${formatMinigameValue(Number(r.extra.size ?? 0), 1)}%)` : r.value !== null && r.submitted ? `${formatMinigameValue(r.value, 1)}%` : '안 붊';
+    if (view.key === 'tap') return r.value !== null ? `${r.value}번` : '안 누름';
     // ★ R051 — 번개손 실격 · 타자 미완은 값 대신 이유 (submitted 가 false 여도 진행률은 보인다)
     if (view.key === 'reaction' && r.extra?.foul) return r.extra.foul === 'fake' ? `속음(${fakeName(String(r.extra.fakeKind))})` : '성급!';
     if (view.key === 'typing' && r.extra?.unfinished) return `미완 ${formatMinigameValue(Number(r.extra.pct ?? 0), 0)}%`;
@@ -729,6 +742,26 @@ function R053Result({ view, mine, decimals }: { view: MinigameView; mine: Miniga
           ))}
         </div>
         <p className="mg-r051-big mono">{mine?.value !== null && mine?.value !== undefined && mine.submitted ? `${(mine.value / 1000).toFixed(2)}초` : '—'}</p>
+      </div>
+    );
+  }
+  if (view.key === 'balloon') {
+    const popped = mine?.extra?.popped === true;
+    return (
+      <div className="mg-r051-result balloon-result">
+        <div className="balloon-box small">
+          <BalloonArt pct={Number(mine?.extra?.size ?? 100)} popped={popped} />
+        </div>
+        <p className="mg-r051-big mono">{mine && mine.submitted ? (popped ? '펑!' : `${formatMinigameValue(Number(mine.value ?? 0), 1)}%`) : '—'}</p>
+        <p className="dim">이번 풍선은 {rv.burst !== undefined ? `${formatMinigameValue(Number(rv.burst), 1)}%` : '?'} 에서 터져요</p>
+      </div>
+    );
+  }
+  if (view.key === 'tap') {
+    return (
+      <div className="mg-r051-result">
+        <p className="mg-r051-big mono">{mine?.value !== null && mine?.value !== undefined ? `${mine.value}번` : '—'}</p>
+        <p className="dim">10초 동안 누른 횟수</p>
       </div>
     );
   }

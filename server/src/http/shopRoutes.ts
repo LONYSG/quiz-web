@@ -17,6 +17,7 @@ import { readSessionToken, resolveSession } from '../auth/session.js';
 import { getPool } from '../db/pool.js';
 import { config } from '../config.js';
 import { POINTS_SQL, pointsFromRow } from '../db/points.js';
+import { checkAchievements } from '../achievements.js';
 import { emojiName, ensureCatalog, getThemes, specialIdsOfTheme, ownedEmojiIds } from './emojiRoutes.js';
 
 export const shopRouter = Router();
@@ -93,6 +94,8 @@ shopRouter.post('/draw', async (req, res) => {
       price,
     });
     console.log(`[shop] 뽑기 #${session.accountId} ${theme.key} → ${picked} (${price}P · 남은 ${balance - price})`);
+    // ★ R054 — 테마 완성 업적(방 밖일 수 있어 알림 없이 기록만 — 프로필에 보인다)
+    checkAchievements(null, [session.accountId], 0);
   } catch (err) {
     await client.query('ROLLBACK').catch(() => undefined);
     console.error('[shop] 뽑기 실패:', (err as Error).message);

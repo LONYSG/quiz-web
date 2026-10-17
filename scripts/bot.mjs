@@ -120,6 +120,9 @@ const SCENARIO_ENV = {
   mgtwothirds: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   mgoddone: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   mggauge: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  mgballoon: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  mgtap: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  achievements: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -7050,6 +7053,151 @@ async function scenarioMgGauge() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R054 — 전적 · 업적 · 풍선 · 연타 봇 (D-242 ~ D-244)
+// -----------------------------------------------------------------------------
+async function apiGet(path, cookie) {
+  const r = await fetch(`${BASE}${path}`, { headers: { cookie } });
+  return { status: r.status, json: r.status === 200 ? await r.json() : null };
+}
+
+async function scenarioMgBalloon() {
+  log('시나리오 mgballoon — ★★★ 풍선 불기 (R054)');
+  const sh = await mgShared();
+  const { bots, host, roomId } = await mgRoom(5, 'R054 풍선');
+  const [b1, b2, b3, b4, b5] = bots;
+  // b1 1초(110%) · b2 지연 150 · 1초 · b3 9.5초(195% — 대개 터짐 판 있음) · b4 안 함 · b5 미리 계산
+  const plan = new Map([[b1.loginId, { lag: 0, hold: 1000 }], [b2.loginId, { lag: 150, hold: 1000 }], [b3.loginId, { lag: 0, hold: 9500 }], [b4.loginId, null], [b5.loginId, null]]);
+  for (const b of bots) {
+    const pl = plan.get(b.loginId);
+    driveMinigame(b, () => (pl ? { delayMs: pl.lag + 200 + pl.hold + pl.lag, input: { startMs: 200, endMs: 200 + pl.hold, size: 299 } } : null));
+  }
+  let pre = null;
+  const runId = await mgPractice(host, roomId, 'balloon', 120000, async () => {
+    await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 15000, '1판');
+    const m = b5.mark();
+    b5.socket.emit('minigame.submit', { token: host.snapshot.minigame.token, roundIndex: 0, input: { startMs: 0, endMs: 8000 } });
+    await sleep(250);
+    pre = b5.since(m, 'error')[0]?.code ?? null;
+  });
+  expect('★★ 미리 계산(흐른 시간보다 긴 뗀 시각) → 거부', pre, 'BAD_REQUEST');
+  const rows = await mgRows(runId);
+  const rounds = await mgRounds(runId);
+  expect('★ 기록 = 3판 × 5명', rows.length, 15);
+  expectTrue('★★ 터지는 크기는 판 진행 중 공개 값에 없다(burst 숨김)', rounds.every((r) => r.params.burst === undefined));
+  const bursts = sh.balloonBursts(Number((await withDb(async (c) => (await c.query(`SELECT seed FROM minigame_runs WHERE id = $1`, [runId])).rows[0].seed))));
+  const of = (b) => rows.filter((r) => r.login_id === b.loginId);
+  expectTrue('★★★ 서버 재계산 — 1초 → 110%(클라이언트 size 칸 무시)', of(b1).every((r, i) => (110 >= bursts[i] ? r.value === 0 : Math.abs(r.value - 110) < 1e-6)), JSON.stringify(of(b1).map((r) => r.value)));
+  expectTrue('★★★ 지연 150 기기 — 같은 값', of(b2).every((r, i) => r.value === of(b1)[i].value));
+  expectTrue('★★★ 같은 판은 모두 같은 터짐 값 — 9.5초(195%)는 터짐 값보다 크면 0', of(b3).every((r, i) => (195 >= bursts[i] ? r.value === 0 && r.input?.popped !== false : Math.abs(r.value - 195) < 1e-6)), JSON.stringify([bursts, of(b3).map((r) => r.value)]));
+  expectTrue('★★ 안 함 → 0점 · 미제출', of(b4).every((r) => !r.submitted && r.points === 0));
+  for (const b of bots) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
+async function scenarioMgTap() {
+  log('시나리오 mgtap — ★★★ 연타 10초 (R054)');
+  const { bots, host, roomId } = await mgRoom(4, 'R054 연타');
+  const [b1, b2, b3, b4] = bots;
+  for (const b of bots) {
+    b.__mgDone = new Set();
+    b.onMinigame = (mg) => {
+      if (!mg || mg.phase !== 'play' || mg.spectating) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (b.__mgDone.has(k)) return;
+      b.__mgDone.add(k);
+      const send = (input, at) => setTimeout(() => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input }), at);
+      if (b === b1) {
+        send({ count: 30, final: false }, 2000);
+        send({ count: 70, final: true }, 10100);
+      }
+      if (b === b2) send({ count: 50, final: true }, 10100);
+      if (b === b3) send({ count: 999, final: true }, 10100); // 초당 20 넘음 → 거부 · 앞의 임시 값도 없음
+    };
+  }
+  const m3 = b3.mark();
+  const runId = await mgPractice(host, roomId, 'tap', 120000);
+  expect('★★ 초당 20 넘는 횟수 → 거부', b3.since(m3, 'error')[0]?.code ?? null, 'BAD_REQUEST');
+  const rows = await mgRows(runId);
+  const of = (b) => rows.filter((r) => r.login_id === b.loginId);
+  expectTrue('★★★ 횟수 많은 순 — b1 70 1위 · b2 50 2위', of(b1).every((r) => r.value === 70 && r.rank === 1) && of(b2).every((r) => r.value === 50 && r.rank === 2), JSON.stringify(rows.map((r) => [r.login_id.slice(-2), r.value, r.rank])));
+  expectTrue('★★ 거부된 b3 · 안 한 b4 → 0점', of(b3).every((r) => r.points === 0) && of(b4).every((r) => r.points === 0));
+  for (const b of bots) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
+async function scenarioAchievements() {
+  log('시나리오 achievements — ★★★ 업적 · 전적 (R054)');
+  const [host, guest] = await makeBots(2);
+  await withDb((c) => c.query(`DELETE FROM achievements WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[host.loginId, guest.loginId]]));
+  // 봇의 옛 기록이 다시 판정되므로 "새로 얻은 것" 은 봇마다 다르다 — 이번 판에서 받은 알림이 표에 있는지만 본다
+  await host.connect();
+  await guest.connect();
+  host.createRoom('R054 업적');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  guest.join(host.snapshot.room.id);
+  await guest.waitFor(() => guest.snapshot?.room.id === host.snapshot.room.id, 6000, '입장');
+  const toasts = [];
+  host.socket.on('achievement.earned', (p) => toasts.push(p));
+  const h0 = host.mark();
+  // 3문제 판 — 방장이 모두 맞힌다
+  host.socket.emit('lobby.updateSettings', { questionCount: 3, minigames: false });
+  await sleep(400);
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작');
+  for (let i = 0; i < 3; i += 1) {
+    await host.waitFor(() => host.snapshot?.room.state === 'QUESTION_ACTIVE' && host.snapshot.question?.index === i + 1, 30000, `문제 ${i + 1}`);
+    const q = host.snapshot.question;
+    const [ans] = await answersForText(q.text);
+    host.chat(ans);
+    await host.waitFor(() => host.snapshot?.room.state !== 'QUESTION_ACTIVE' || host.snapshot.question?.index !== i + 1, 30000, '맞힘');
+  }
+  await host.waitFor(() => host.snapshot?.room.state === 'GAME_RESULT', 60000, '결과');
+  await sleep(2500);
+  const rows = await withDb(async (c) => (await c.query(`SELECT key FROM achievements a JOIN accounts x ON x.id = a.account_id WHERE x.login_id = $1 ORDER BY key`, [host.loginId])).rows.map((r) => r.key));
+  log(`  방장 업적 ${rows.join(' · ')} · 알림 ${toasts.map((t) => t.key).join(' · ')}`);
+  expectTrue('★★★ 첫 정답 · 연속 정답 3 — 표에 있다', rows.includes('first-correct') && rows.includes('streak-3'), rows.join(','));
+  expectTrue('★★ 알림(achievement.earned)이 본인에게 — 표에 있는 키만', toasts.length > 0 && toasts.every((t) => rows.includes(t.key) && typeof t.name === 'string'));
+  const sys = host.since(h0, 'chat').filter((m) => m.accountId === '' && /🏅/.test(m.text ?? ''));
+  expectTrue('★★ 방 채팅에 작은 한 줄(🏅 닉네임 — 업적)', sys.length === toasts.length, `${sys.length} / ${toasts.length}`);
+  // 두 번 안 준다 — 같은 판을 다시 해도 알림 0
+  const n0 = toasts.length;
+  await backToLobby(host, [guest]);
+  const g2 = await playQuickGame(host, [guest], 5, ['cake'], 120000).catch(() => null);
+  void g2;
+  await sleep(2500);
+  const again = toasts.slice(n0).filter((t) => ['first-correct', 'streak-3'].includes(t.key));
+  expect('★★ 같은 업적은 두 번 안 준다', again.length, 0);
+  // 전적 — 숫자가 표와 같은가
+  const st = await apiGet('/api/me/stats', host.cookie);
+  expect('★ /api/me/stats 200', st.status, 200);
+  const db = await withDb(async (c) => (await c.query(
+    `SELECT (SELECT count(*) FROM answer_events e JOIN accounts a ON a.id = e.account_id WHERE a.login_id = $1 AND e.accepted)::int correct,
+            (SELECT count(*) FROM minigame_players p JOIN minigame_runs r ON r.id = p.run_id JOIN accounts a ON a.id = p.account_id WHERE a.login_id = $1 AND NOT r.practice AND p.final_rank = 1 AND (SELECT count(*) FROM minigame_players x WHERE x.run_id = r.id) >= 2)::int wins`,
+    [host.loginId],
+  )).rows[0]);
+  expect('★★★ 전적 맞힌 수 = answer_events.accepted(포인트 원천)', st.json?.quiz.correct, db.correct);
+  expect('★★★ 전적 미니게임 1위 합 = minigame_players final_rank 1(2명 이상 · 연습 제외)', st.json?.minigames.reduce((s, m) => s + m.wins, 0), db.wins);
+  const pts = await apiGet('/api/me/points', host.cookie);
+  expect('★★ 전적 포인트 = /api/me/points', st.json?.points.balance, pts.json?.balance);
+  expectTrue('★ 업적 목록도 온다', Array.isArray(st.json?.achievements) && st.json.achievements.some((a) => a.key === 'first-correct'));
+  for (const b of [host, guest]) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -7257,6 +7405,10 @@ const SCENARIOS = {
   mgtwothirds: scenarioMgTwoThirds,
   mgoddone: scenarioMgOddOne,
   mggauge: scenarioMgGauge,
+  // ★★★ R054 — 전적 · 업적 · 풍선 · 연타
+  mgballoon: scenarioMgBalloon,
+  mgtap: scenarioMgTap,
+  achievements: scenarioAchievements,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };
