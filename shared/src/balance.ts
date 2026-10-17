@@ -91,6 +91,17 @@ function blob(rnd: () => number, cx: number, cy: number, rx: number, ry: number,
  *   스테이크: 고르지 않은 덩어리 + 한쪽 꼬리(립아이) · 피자 조각: 뾰족한 끝 + 크러스트 호(울퉁불퉁) · 딸기 케이크: 옆에서 본 조각(크림 물결 + 딸기 봉우리)
  *   도넛: 살짝 찌그러진 고리 + **가운데에서 벗어난 구멍**(3판째 꼬기 — 반으로 나누기가 까다롭다)
  */
+/** 모서리 깎기 (닫힌 다각형 · 한 번에 점 2배) — 둥근 모서리 */
+function chaikin(pts: readonly Pt[]): Pt[] {
+  const out: Pt[] = [];
+  for (let i = 0; i < pts.length; i += 1) {
+    const p = pts[i]!;
+    const q = pts[(i + 1) % pts.length]!;
+    out.push({ x: p.x * 0.75 + q.x * 0.25, y: p.y * 0.75 + q.y * 0.25 }, { x: p.x * 0.25 + q.x * 0.75, y: p.y * 0.25 + q.y * 0.75 });
+  }
+  return out;
+}
+
 export function balanceItem(kind: BalanceKind, seed: number): BalanceItem {
   const rnd = seededRandom(seed * 2654435761 + kind.length * 97);
   let outer: Pt[] = [];
@@ -127,30 +138,22 @@ export function balanceItem(kind: BalanceKind, seed: number): BalanceItem {
     outer = [tip, ...left, ...arc, ...right.reverse()];
     outer = rotate(outer, 50, 55, (rnd() - 0.5) * 0.6);
   } else if (kind === 'cake') {
-    const x0 = 16;
-    const x1 = 84;
-    const yb = 82;
-    const yt = 44 + rnd() * 4;
-    const slant = (rnd() - 0.5) * 6;
-    const berryX = 30 + rnd() * 40;
-    const berryR = 8 + rnd() * 2.5;
-    const top: Pt[] = [];
-    const N = 60;
-    for (let i = 0; i <= N; i += 1) {
-      const x = x1 - ((x1 - x0) * i) / N;
-      let y = yt + 1.6 * Math.sin(i * 0.75) + slant * (i / N - 0.5);
-      const d = Math.abs(x - berryX);
-      if (d < berryR) y -= Math.sqrt(berryR * berryR - d * d) * 1.25;
-      top.push({ x, y });
+    // ★ R051 E — 옆 단면 → **위에서 본 조각**(부채꼴 · 둥근 모서리). 피자보다 넓고 짧은 부채꼴(70~82°)
+    //   (설계 소견: "딸기 케이크는 옆 단면이라 위의 딸기가 어색하다"). 둥근 모서리 = 모서리 깎기(Chaikin) 3번 — 넓이 계산도 이 외곽 그대로
+    const span = (70 + rnd() * 12) * (Math.PI / 180);
+    const tip = { x: 50, y: 86 };
+    const R = 66 + rnd() * 4;
+    const start = -Math.PI / 2 - span / 2;
+    const raw: Pt[] = [tip];
+    const sideN = 10;
+    for (let i = 1; i < sideN; i += 1) raw.push({ x: tip.x + Math.cos(start) * R * (i / sideN), y: tip.y + Math.sin(start) * R * (i / sideN) });
+    const arcN = 40;
+    for (let i = 0; i <= arcN; i += 1) {
+      const a = start + (span * i) / arcN;
+      raw.push({ x: tip.x + Math.cos(a) * R, y: tip.y + Math.sin(a) * R });
     }
-    const rightSide: Pt[] = [];
-    const leftSide: Pt[] = [];
-    for (let i = 1; i < 8; i += 1) {
-      const f = i / 8;
-      rightSide.push({ x: x1 + (rnd() - 0.5) * 0.9, y: yb - (yb - yt) * f });
-      leftSide.push({ x: x0 + (rnd() - 0.5) * 0.9, y: yt + (yb - yt) * f });
-    }
-    outer = [{ x: x0 + 1.5, y: yb }, { x: x1 - 1.5, y: yb }, ...rightSide, ...top, ...leftSide];
+    for (let i = sideN - 1; i >= 1; i -= 1) raw.push({ x: tip.x + Math.cos(start + span) * R * (i / sideN), y: tip.y + Math.sin(start + span) * R * (i / sideN) });
+    outer = rotate(chaikin(chaikin(chaikin(raw))), 50, 55, (rnd() - 0.5) * 0.7);
   } else {
     outer = blob(rnd, 50, 50, 36, 33, 120, 0.9);
     const off = 5 + rnd() * 5;

@@ -6,6 +6,9 @@
 // ★ 테두리는 **서버가 넓이를 재는 그 다각형**(shared balanceItem)이다 — 그림이 다르면 공정하지 않다. 장식(마블링 · 토핑 · 스프링클)은
 //   그 안쪽에만(clipPath) 그린다. 장식은 시드로 정해져 모두에게 같은 그림이다.
 // ★ SVG 하나 · 그라데이션 · 질감 · 그림자. 외부 그림 · 라이브러리 없음(번들 0).
+// ★ R051 E (설계 소견 — "스테이크는 어두운 통짜 덩어리라 초콜릿 · 통나무로 보이고, 딸기 케이크는 옆 단면이라 위의 딸기가 어색하다"):
+//   스테이크 — 밝은 갈색~적갈색 · 한쪽 연노랑 지방 띠 · 그릴 자국 한 방향 4~5줄 굵게 · 윤기 2 · 마블링 뺌 · 후추 · 로즈마리 작게
+//   딸기 케이크 — 위에서 본 부채꼴 조각(둥근 모서리 — 외곽은 shared 와 같다) · 크림 윗면 · 테두리 띠(스펀지 · 크림 줄) · 통딸기 2~3
 // =============================================================================
 
 import { useId, useMemo } from 'react';
@@ -84,10 +87,20 @@ export default function BalanceArt({ item, small = false }: Props) {
         <filter id={id('blur05')} x="-10%" y="-10%" width="120%" height="120%">
           <feGaussianBlur stdDeviation="0.5" />
         </filter>
-        <radialGradient id={id('steak')} cx="45%" cy="40%" r="70%">
-          <stop offset="0%" stopColor="#9a3c27" />
-          <stop offset="55%" stopColor="#7a2c1b" />
-          <stop offset="100%" stopColor="#4c170c" />
+        {/* ★ R051 E — 구운 겉면: 밝은 갈색(가운데) → 적갈색(가장자리). 옛 그림은 너무 어두워 초콜릿 · 통나무로 보였다 */}
+        <radialGradient id={id('steak')} cx="42%" cy="38%" r="72%">
+          <stop offset="0%" stopColor="#c98a52" />
+          <stop offset="45%" stopColor="#b0643a" />
+          <stop offset="80%" stopColor="#8f4127" />
+          <stop offset="100%" stopColor="#6e2c19" />
+        </radialGradient>
+        <linearGradient id={id('fat')} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#fbf0c6" />
+          <stop offset="100%" stopColor="#ecd48f" />
+        </linearGradient>
+        <radialGradient id={id('cream')} cx="45%" cy="40%" r="75%">
+          <stop offset="0%" stopColor="#fffdf8" />
+          <stop offset="100%" stopColor="#f8ead5" />
         </radialGradient>
         <linearGradient id={id('crust')} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#e9b56a" />
@@ -128,33 +141,35 @@ export default function BalanceArt({ item, small = false }: Props) {
         <>
           <path d={d} fill={`url(#${id('steak')})`} fillRule="evenodd" />
           <g clipPath={`url(#${id('clip')})`}>
-            {/* 지방 테두리 — 테두리의 한 구간 */}
-            <path d={d} fill="none" stroke="#efd2a4" strokeWidth={4.4} pathLength={100} strokeDasharray={`${deco.fatLen} ${100 - deco.fatLen}`} strokeDashoffset={deco.fatAt} opacity={0.92} />
-            <path d={d} fill="none" stroke="#c99a62" strokeWidth={1.4} pathLength={100} strokeDasharray={`${deco.fatLen} ${100 - deco.fatLen}`} strokeDashoffset={deco.fatAt} opacity={0.6} />
-            {/* 마블링 */}
-            {deco.marble.map((m, i) => (
-              <path key={i} d={m} fill="none" stroke="#f6dccd" strokeWidth={0.45 + (i % 3) * 0.18} strokeLinecap="round" opacity={0.42} />
-            ))}
-            {/* 그릴 자국 (탄 자국 + 가장자리 갈색) */}
+            {/* 지방 띠 — 한쪽 가장자리를 따라 연노랑 (안쪽 경계는 살짝 붉게) */}
+            <path d={d} fill="none" stroke={`url(#${id('fat')})`} strokeWidth={9} pathLength={100} strokeDasharray={`${deco.fatLen} ${100 - deco.fatLen}`} strokeDashoffset={deco.fatAt} strokeLinecap="round" />
+            <path d={d} fill="none" stroke="#d99a6a" strokeWidth={9.6} pathLength={100} strokeDasharray={`${deco.fatLen} ${100 - deco.fatLen}`} strokeDashoffset={deco.fatAt} strokeLinecap="round" opacity={0.35} filter={`url(#${id('blur05')})`} />
+            <path d={d} fill="none" stroke={`url(#${id('fat')})`} strokeWidth={8} pathLength={100} strokeDasharray={`${deco.fatLen} ${100 - deco.fatLen}`} strokeDashoffset={deco.fatAt} strokeLinecap="round" />
+            {/* 그릴 자국 — 한 방향 4~5줄 · 굵게 · 교차 없음 (가장자리는 갈색으로 번짐) */}
             {deco.grill.map((g, i) => (
               <g key={i}>
-                <line x1={g.x1} y1={g.y1} x2={g.x2} y2={g.y2} stroke="#8a4a22" strokeWidth={4.6} strokeLinecap="round" opacity={0.35} />
-                <line x1={g.x1} y1={g.y1} x2={g.x2} y2={g.y2} stroke="#2a0d05" strokeWidth={2.4} strokeLinecap="round" opacity={0.78} />
+                <line x1={g.x1} y1={g.y1} x2={g.x2} y2={g.y2} stroke="#7a3a1c" strokeWidth={6.4} strokeLinecap="round" opacity={0.35} filter={`url(#${id('blur05')})`} />
+                <line x1={g.x1} y1={g.y1} x2={g.x2} y2={g.y2} stroke="#3d1a0b" strokeWidth={3.4} strokeLinecap="round" opacity={0.85} />
               </g>
             ))}
-            {/* 가장자리 그을림 */}
-            <path d={d} fill="none" stroke="#2c0f06" strokeWidth={2.6} opacity={0.55} filter={`url(#${id('blur05')})`} />
-            {/* 통후추 */}
+            {/* 가장자리 — 살짝 진하게 (탄 느낌은 약하게) */}
+            <path d={d} fill="none" stroke="#5a2414" strokeWidth={2.2} opacity={0.4} filter={`url(#${id('blur05')})`} />
+            {/* 통후추 (작게) */}
             {deco.pepper.map((p, i) => (
-              <circle key={i} cx={p.x} cy={p.y} r={0.55 + (i % 3) * 0.2} fill={i % 2 ? '#1c1410' : '#3a2a20'} />
+              <circle key={i} cx={p.x} cy={p.y} r={0.42 + (i % 3) * 0.14} fill={i % 2 ? '#22170f' : '#3a2a20'} />
             ))}
-            {/* 윤기 */}
-            {!small && <ellipse cx={deco.steakShine.x} cy={deco.steakShine.y} rx={14} ry={5} fill="#fff" opacity={0.16} transform={`rotate(-22 ${deco.steakShine.x} ${deco.steakShine.y})`} filter={`url(#${id('soft')})`} />}
+            {/* 윤기 하이라이트 1~2 */}
+            {!small && (
+              <>
+                <ellipse cx={deco.steakShine.x} cy={deco.steakShine.y} rx={11} ry={3.2} fill="#fff" opacity={0.34} transform={`rotate(-24 ${deco.steakShine.x} ${deco.steakShine.y})`} filter={`url(#${id('soft')})`} />
+                <ellipse cx={deco.steakShine.x + 14} cy={deco.steakShine.y + 14} rx={5} ry={1.6} fill="#fff" opacity={0.26} transform={`rotate(-24 ${deco.steakShine.x + 14} ${deco.steakShine.y + 14})`} filter={`url(#${id('blur05')})`} />
+              </>
+            )}
           </g>
-          {/* 로즈마리 */}
+          {/* 로즈마리 (작게) */}
           {!small &&
             deco.herb.map((h, i) => (
-              <g key={i} transform={`translate(${h.x} ${h.y}) rotate(${h.r})`}>
+              <g key={i} transform={`translate(${h.x} ${h.y}) rotate(${h.r}) scale(0.72)`}>
                 <line x1={0} y1={0} x2={11} y2={0} stroke="#3f6b2a" strokeWidth={0.6} />
                 {[1.5, 3.5, 5.5, 7.5, 9.5].map((x) => (
                   <g key={x}>
@@ -164,7 +179,7 @@ export default function BalanceArt({ item, small = false }: Props) {
                 ))}
               </g>
             ))}
-          <path d={d} fill="none" stroke="#3a1208" strokeWidth={0.5} fillRule="evenodd" />
+          <path d={d} fill="none" stroke="#5a2414" strokeWidth={0.5} fillRule="evenodd" />
         </>
       )}
 
@@ -211,43 +226,48 @@ export default function BalanceArt({ item, small = false }: Props) {
 
       {item.kind === 'cake' && (
         <>
-          <path d={d} fill={`url(#${id('sponge')})`} />
+          {/* ★ R051 E — 위에서 본 조각: 생크림 윗면 + 바깥 테두리 띠(스펀지 · 크림 줄) + 통딸기 2~3 */}
+          <path d={d} fill={`url(#${id('cream')})`} />
           <g clipPath={`url(#${id('clip')})`}>
-            {/* 크림 층 · 딸기 단면 */}
-            {deco.layers.map((y, i) => (
-              <rect key={i} x={0} y={y} width={100} height={3.6} fill="#fffaf2" />
-            ))}
-            {deco.slices.map((s, i) => (
-              <g key={i}>
-                <ellipse cx={s.x} cy={s.y} rx={3.4} ry={2.1} fill={`url(#${id('berry')})`} />
-                <ellipse cx={s.x} cy={s.y} rx={1.7} ry={0.9} fill="#ffd0d8" opacity={0.75} />
-              </g>
-            ))}
-            {/* 스펀지 구멍 질감 */}
+            {/* 테두리 띠 — 바깥부터 스펀지 · 크림 · 스펀지 · 크림(윗면) */}
+            <path d={d} fill="none" stroke="#efc57a" strokeWidth={11} />
+            <path d={d} fill="none" stroke="#fffaf0" strokeWidth={7.4} />
+            <path d={d} fill="none" stroke="#f3d08e" strokeWidth={4.6} />
+            <path d={d} fill="none" stroke="#e7b768" strokeWidth={1.4} opacity={0.8} />
+            {/* 스펀지 구멍 (띠 위에만 · 작게) */}
             {deco.pores.map((p, i) => (
-              <circle key={i} cx={p.x} cy={p.y} r={0.35 + (i % 3) * 0.15} fill="#d9b06a" opacity={0.55} />
+              <circle key={i} cx={p.x} cy={p.y} r={0.3 + (i % 3) * 0.12} fill="#c99a52" opacity={0.6} />
             ))}
-            {/* 맨 위 생크림 */}
-            <rect x={0} y={0} width={100} height={deco.creamTop} fill="#fffdf8" />
-            <rect x={0} y={deco.creamTop - 1.6} width={100} height={1.6} fill="#f3e6d6" opacity={0.8} />
-            {/* 딸기 (위 봉우리) */}
-            <path d={deco.berryPath} fill={`url(#${id('berry')})`} />
-            {deco.seeds.map((p, i) => (
-              <ellipse key={i} cx={p.x} cy={p.y} rx={0.32} ry={0.5} fill="#ffe69a" />
-            ))}
-            {!small && <ellipse cx={deco.berryHi.x} cy={deco.berryHi.y} rx={2.2} ry={1.1} fill="#fff" opacity={0.45} />}
-            {/* 딸기를 받치는 생크림 한 덩이 (딸기 밑의 평평한 선을 덮는다) */}
-            <rect x={deco.dollop.x - deco.dollop.r * 1.3} y={deco.dollop.y} width={deco.dollop.r * 2.6} height={Math.max(0, deco.creamTop - deco.dollop.y)} fill="#fffdf8" />
-            <ellipse cx={deco.dollop.x} cy={deco.dollop.y} rx={deco.dollop.r} ry={deco.dollop.r * 0.24} fill="#fffdf8" />
-            <ellipse cx={deco.dollop.x - deco.dollop.r * 0.2} cy={deco.dollop.y - deco.dollop.r * 0.08} rx={deco.dollop.r * 0.45} ry={deco.dollop.r * 0.12} fill="#ffffff" />
-          </g>
-          {/* 꼭지 */}
-          <g transform={`translate(${deco.leaf.x} ${deco.leaf.y})`}>
-            {[-40, -10, 20, 50].map((r) => (
-              <ellipse key={r} cx={0} cy={-1.2} rx={1} ry={2.4} fill="#3f8f3a" transform={`rotate(${r})`} />
+            {/* 윗면 크림 결 — 부드러운 짜기 무늬 */}
+            {deco.swirls.map((w, i) => (
+              <path key={i} d={w} fill="none" stroke="#efe2cf" strokeWidth={0.9} strokeLinecap="round" opacity={0.9} />
             ))}
           </g>
-          <path d={d} fill="none" stroke="#e2bc7b" strokeWidth={0.5} />
+          {/* 생크림 꽃 짜기 — 둥근 테두리를 따라 */}
+          {deco.rosettes.map((r, i) => (
+            <g key={i} transform={`translate(${r.x} ${r.y}) rotate(${r.r})`}>
+              {!small && <ellipse cx={0.6} cy={1.4} rx={5} ry={4.4} fill="#000" opacity={0.08} filter={`url(#${id('blur05')})`} />}
+              <circle r={4.6} fill="#fffefb" stroke="#eadcc6" strokeWidth={0.5} />
+              <path d="M-3,0 C-3,-2.6 2.4,-3.2 2.8,-0.4 C3,2 -0.6,2.6 -1.2,0.4 C-1.6,-1 0.6,-1.4 0.8,-0.2" fill="none" stroke="#e6d6bf" strokeWidth={0.7} strokeLinecap="round" />
+            </g>
+          ))}
+          {/* 통딸기 — 꽃 짜기 위에 누운 딸기(끝 쪽을 향해) · 꼭지 */}
+          {deco.berries.map((b, i) => (
+            <g key={i} transform={`translate(${b.x} ${b.y}) rotate(${b.r}) scale(1.08)`}>
+              {!small && <ellipse cx={1} cy={2.4} rx={6.4} ry={7} fill="#7a1020" opacity={0.18} filter={`url(#${id('blur05')})`} />}
+              <path d="M0,-6.4 C5.4,-6.6 7.4,-1.4 5.6,2.6 C4,5.8 1.4,7.6 0,8.2 C-1.4,7.6 -4,5.8 -5.6,2.6 C-7.4,-1.4 -5.4,-6.6 0,-6.4Z" fill={`url(#${id('berry')})`} />
+              {[
+                [-2.6, -2], [0.2, -2.8], [2.8, -1.6], [-3.4, 1.2], [-0.6, 0.6], [2.4, 1.4], [-1.6, 3.8], [1.4, 4.2], [0, 6.2],
+              ].map(([x, y], k) => (
+                <ellipse key={k} cx={x} cy={y} rx={0.32} ry={0.55} fill="#ffe69a" />
+              ))}
+              {!small && <ellipse cx={-2.4} cy={-2.6} rx={1.8} ry={0.9} fill="#fff" opacity={0.5} transform="rotate(-30 -2.4 -2.6)" />}
+              {[-60, -25, 10, 45, 80].map((r) => (
+                <ellipse key={r} cx={0} cy={-6.6} rx={0.9} ry={2.6} fill="#3f8f3a" transform={`rotate(${r} 0 -5.4)`} />
+              ))}
+            </g>
+          ))}
+          <path d={d} fill="none" stroke="#d9a75c" strokeWidth={0.5} />
         </>
       )}
 
@@ -276,7 +296,6 @@ export default function BalanceArt({ item, small = false }: Props) {
 interface Deco {
   fatLen: number;
   fatAt: number;
-  marble: string[];
   grill: { x1: number; y1: number; x2: number; y2: number }[];
   pepper: Pt[];
   herb: { x: number; y: number; r: number }[];
@@ -287,15 +306,10 @@ interface Deco {
   pep: Pt[];
   basil: Pt[];
   crustSpots: Pt[];
-  layers: number[];
-  slices: Pt[];
   pores: Pt[];
-  creamTop: number;
-  berryPath: string;
-  seeds: Pt[];
-  berryHi: Pt;
-  leaf: Pt;
-  dollop: { x: number; y: number; r: number };
+  berries: { x: number; y: number; r: number }[];
+  rosettes: { x: number; y: number; r: number }[];
+  swirls: string[];
   icing: string;
   sprinkles: { x: number; y: number; r: number; c: string }[];
   donutShine: string;
@@ -311,7 +325,6 @@ function decorate(item: BalanceItem) {
   const out: Deco = {
     fatLen: 0,
     fatAt: 0,
-    marble: [],
     grill: [],
     pepper: [],
     herb: [],
@@ -322,53 +335,33 @@ function decorate(item: BalanceItem) {
     pep: [],
     basil: [],
     crustSpots: [],
-    layers: [],
-    slices: [],
     pores: [],
-    creamTop: 0,
-    berryPath: '',
-    seeds: [],
-    berryHi: c,
-    leaf: c,
-    dollop: { x: c.x, y: c.y, r: 0 },
+    berries: [],
+    rosettes: [],
+    swirls: [],
     icing: '',
     sprinkles: [],
     donutShine: '',
   };
 
   if (item.kind === 'steak') {
-    out.fatLen = 22 + rnd() * 14;
+    // ★ R051 E — 마블링(익지 않은 고기 무늬)을 뺐다 · 지방 띠는 한쪽 가장자리에 넓게 · 그릴 자국 4~5줄(한 방향)
+    out.fatLen = 26 + rnd() * 10;
     out.fatAt = rnd() * 100;
-    for (let i = 0; i < 14; i += 1) {
-      const x = b.x0 + rnd() * (b.x1 - b.x0);
-      const y = b.y0 + rnd() * (b.y1 - b.y0);
-      const ang = rnd() * Math.PI;
-      const len = 6 + rnd() * 16;
-      let path = `M${x.toFixed(2)},${y.toFixed(2)}`;
-      let px = x;
-      let py = y;
-      for (let k = 0; k < 4; k += 1) {
-        const a = ang + (rnd() - 0.5) * 1.4;
-        const nx = px + Math.cos(a) * (len / 4);
-        const ny = py + Math.sin(a) * (len / 4);
-        path += `Q${(px + nx) / 2 + (rnd() - 0.5) * 3},${(py + ny) / 2 + (rnd() - 0.5) * 3} ${nx.toFixed(2)},${ny.toFixed(2)}`;
-        px = nx;
-        py = ny;
-      }
-      out.marble.push(path);
-    }
-    const ang = (-35 + rnd() * 20) * (Math.PI / 180);
+    const ang = (-32 + rnd() * 16) * (Math.PI / 180);
     const dx = Math.cos(ang);
     const dy = Math.sin(ang);
-    const gap = 12;
-    for (let k = -2; k <= 2; k += 1) {
-      const ox = c.x - dy * gap * k;
-      const oy = c.y + dx * gap * k;
+    const gap = 11.5;
+    const n = rnd() < 0.5 ? 4 : 5;
+    for (let k = 0; k < n; k += 1) {
+      const o = (k - (n - 1) / 2) * gap;
+      const ox = c.x - dy * o;
+      const oy = c.y + dx * o;
       out.grill.push({ x1: ox - dx * 60, y1: oy - dy * 60, x2: ox + dx * 60, y2: oy + dy * 60 });
     }
-    out.pepper = scatter(rnd, item.outer, [], 16, 3, 3.5);
-    out.herb = [{ x: b.x1 - 18 - rnd() * 8, y: b.y0 + 4 + rnd() * 6, r: -20 + rnd() * 40 }];
-    out.steakShine = { x: c.x - 8, y: c.y - 8 };
+    out.pepper = scatter(rnd, item.outer, [], 12, 4, 4.5);
+    out.herb = [{ x: b.x1 - 16 - rnd() * 8, y: b.y0 + 5 + rnd() * 5, r: -20 + rnd() * 40 }];
+    out.steakShine = { x: c.x - 9, y: c.y - 9 };
   } else if (item.kind === 'pizza') {
     // 끝(꼭짓점) = 가장 아래쪽에 가까운 첫 점 (balanceItem 이 끝을 첫 점으로 만든다)
     out.tip = item.outer[0]!;
@@ -380,26 +373,31 @@ function decorate(item: BalanceItem) {
     const crustBand = item.outer.filter((p) => !inside(cheese, p.x, p.y));
     out.crustSpots = crustBand.filter((_, i) => i % 4 === 0).map((p) => ({ x: p.x + (out.tip.x - p.x) * 0.04, y: p.y + (out.tip.y - p.y) * 0.04 }));
   } else if (item.kind === 'cake') {
-    // 맨 위 크림 = 다각형 윗부분(딸기 봉우리 밑까지) · 층은 그 아래 두 줄
-    const top = item.outer.filter((p) => p.y < b.y0 + (b.y1 - b.y0) * 0.55);
-    const baseTop = top.length ? [...top].sort((a, z) => z.y - a.y)[Math.floor(top.length * 0.15)]!.y : b.y0 + 10;
-    out.creamTop = baseTop + 5;
-    const h = b.y1 - out.creamTop;
-    out.layers = [out.creamTop + h * 0.33, out.creamTop + h * 0.66];
-    for (const ly of [out.creamTop + h * 0.33]) {
-      for (let x = b.x0 + 5 + rnd() * 4; x < b.x1 - 4; x += 10 + rnd() * 3) out.slices.push({ x, y: ly + 1.8 });
+    // ★ R051 E — 위에서 본 조각. 둥근 쪽(끝에서 먼 쪽) 테두리를 따라 생크림 꽃 짜기 5개 · 그 위에 통딸기 2~3(끝 쪽을 향해 누움)
+    const tipP = [...item.outer].sort((a, z) => z.y - a.y)[0]!;
+    const R = Math.max(...item.outer.map((p) => Math.hypot(p.x - tipP.x, p.y - tipP.y)));
+    const rim = shrink(item.outer, 0.84, tipP).map((p) => ({ x: p.x, y: p.y })).filter((p) => Math.hypot(p.x - tipP.x, p.y - tipP.y) > R * 0.8);
+    rim.sort((a, z) => Math.atan2(a.y - tipP.y, a.x - tipP.x) - Math.atan2(z.y - tipP.y, z.x - tipP.x));
+    const nR = 5;
+    for (let q = 0; q < nR && rim.length > 0; q += 1) {
+      const p = rim[Math.round(((rim.length - 1) * (q + 0.5)) / nR)]!;
+      out.rosettes.push({ x: p.x, y: p.y, r: rnd() * 360 });
     }
-    out.pores = scatter(rnd, item.outer, [], 40, 1.2, 2.2).filter((p) => p.y > out.creamTop + 2 && !out.layers.some((ly) => Math.abs(p.y - ly - 1.8) < 2.6));
-    // 딸기 봉우리 = 가장 위 점 근처
-    const peak = [...item.outer].sort((a, z) => a.y - z.y)[0]!;
-    const r = Math.max(6, (out.creamTop - peak.y) * 0.95);
-    const bx = peak.x;
-    const by = peak.y + r * 0.95;
-    out.berryPath = `M${bx - r * 0.95},${by} C${bx - r},${by - r * 0.9} ${bx - r * 0.4},${peak.y - 0.6} ${bx},${peak.y - 0.4} C${bx + r * 0.4},${peak.y - 0.6} ${bx + r},${by - r * 0.9} ${bx + r * 0.95},${by} Q${bx},${by + r * 0.35} ${bx - r * 0.95},${by}Z`;
-    for (let i = 0; i < 12; i += 1) out.seeds.push({ x: bx + (rnd() - 0.5) * r * 1.4, y: by - rnd() * r * 0.9 });
-    out.berryHi = { x: bx - r * 0.35, y: by - r * 0.55 };
-    out.leaf = { x: bx, y: peak.y + 0.4 };
-    out.dollop = { x: bx, y: out.creamTop - r * 0.26, r: r * 0.95 };
+    const k = rnd() < 0.5 ? 2 : 3;
+    const pick = k === 3 ? [0, 2, 4] : [1, 3];
+    out.berries = pick
+      .map((q) => out.rosettes[q])
+      .filter((p): p is { x: number; y: number; r: number } => Boolean(p))
+      .map((p) => ({ x: p.x + (tipP.x - p.x) * 0.1, y: p.y + (tipP.y - p.y) * 0.1, r: (Math.atan2(tipP.y - p.y, tipP.x - p.x) * 180) / Math.PI - 90 + (rnd() - 0.5) * 30 }));
+    const band = scatter(rnd, item.outer, [], 120, 0, 1.6);
+    const core = shrink(item.outer, 0.86);
+    out.pores = band.filter((p) => !inside(core, p.x, p.y));
+    const mid = shrink(item.outer, 0.6);
+    for (let w = 0; w < 4; w += 1) {
+      const p = scatter(rnd, mid, [], 1, 0, 1)[0] ?? c;
+      const r0 = 2.2 + rnd() * 1.6;
+      out.swirls.push(`M${(p.x - r0).toFixed(2)},${p.y.toFixed(2)} q${r0},${-r0 * 1.2} ${r0 * 2},0 q${-r0 * 0.6},${r0 * 0.8} ${-r0 * 1.2},0`);
+    }
   } else {
     // 도넛 — 아이싱은 바깥보다 조금 작은 물결 고리 · 구멍 둘레는 넓게
     const hole = item.holes[0] ?? [];

@@ -12,6 +12,7 @@ import {
 import { TYPING_EN, TYPING_KO_LONG, TYPING_KO_SHORT } from './typing-sentences.js';
 import { typingComplete, typingCorrectPrefix, typingLength, typingMarks, typingProgress, typingRounds } from './typing.js';
 import { CIRCLE_MIN_POINTS, circlePointsProblem, circleScore, fitCircle } from './circle.js';
+import { balanceItem, balanceSplit, polygonArea } from '../balance.js';
 import { angleError, angleOfPoint, angleStart, angleTargets } from './angle.js';
 
 const SEEDS = Array.from({ length: 300 }, (_, i) => (i * 2654435761 + 17) >>> 0);
@@ -219,5 +220,33 @@ describe('★★★ 각도 맞추기 — 목표 · 시작 · 각 계산', () => 
     expect(angleError(40.5, 37)).toBeCloseTo(3.5, 9);
     expect(angleError(33, 37)).toBe(4);
     expect(angleError(190, 170)).toBe(10);
+  });
+});
+
+describe('★★ R051 E — 딸기 케이크 = 위에서 본 부채꼴 조각 (넓이 다각형 = 새 외곽)', () => {
+  it('둥근 모서리 — 이웃 변 사이 꺾임이 모두 40° 미만 · 볼록', () => {
+    for (const seed of [1, 77, 2024, 99999]) {
+      const o = balanceItem('cake', seed).outer;
+      let sign = 0;
+      for (let i = 0; i < o.length; i += 1) {
+        const a = o[(i + o.length - 1) % o.length]!;
+        const b = o[i]!;
+        const c = o[(i + 1) % o.length]!;
+        const t1 = Math.atan2(b.y - a.y, b.x - a.x);
+        const t2 = Math.atan2(c.y - b.y, c.x - b.x);
+        let turn = ((t2 - t1 + 3 * Math.PI) % (2 * Math.PI)) - Math.PI;
+        expect(Math.abs(turn)).toBeLessThan((40 * Math.PI) / 180);
+        if (Math.abs(turn) > 1e-9) {
+          if (sign === 0) sign = Math.sign(turn);
+          expect(Math.sign(turn)).toBe(sign);
+        }
+      }
+    }
+  });
+  it('세로로 가른 두 쪽 합 = 100 · 넓이 > 0', () => {
+    const it2 = balanceItem('cake', 77);
+    expect(polygonArea(it2.outer)).toBeGreaterThan(500);
+    const s2 = balanceSplit(it2, { top: 50, bottom: 50 });
+    expect(s2.aPct + s2.bPct).toBeCloseTo(100, 9);
   });
 });
