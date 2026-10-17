@@ -5,7 +5,7 @@
  "items": [
   {
    "id": "estimate-0001",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "weight",
    "question": "다 자란 수컷 아프리카코끼리(사바나코끼리) 한 마리의 평균 몸무게는?",
@@ -35,11 +35,20 @@
     "동물",
     "포유류"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "6000은 ADW 범위 4500~6100 안 · 위키 평균 6.0t(최적 조건) 일치, 중앙값 대비 차이는 큼(note 있음)",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0002",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "weight",
    "question": "지금까지 기록된 가장 큰 대왕고래(흰긴수염고래)의 몸무게는 대략 몇 톤일까?",
@@ -69,7 +78,16 @@
     "동물",
     "바다"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 기록 최대 190t·최대 200t와 일치(질문이 '기록된 최대'); NOAA 150t는 참고로 낮음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0003",
@@ -102,11 +120,26 @@
     "동물",
     "포유류"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "fix",
+    "reason": "ko 위키 수컷 1,300~1,700kg(중앙 1500)와 -20% 차이 — 중앙값+note로 교체 제안",
+    "proposal": {
+     "value": 1500,
+     "unit": "kg",
+     "note": "수컷 일반적으로 1,300~1,700kg(중앙값)",
+     "url": "https://ko.wikipedia.org/wiki/기린",
+     "explanation": "기린 수컷은 보통 1.3~1.7톤(약 1.5톤)이고 암컷은 그보다 200~400kg 가볍다."
+    },
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0004",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "weight",
    "question": "다 자란 수컷 북극곰 한 마리의 몸무게는?",
@@ -136,11 +169,20 @@
     "동물",
     "포유류"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ADW 수컷 300~800kg, 중앙값 550 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0005",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "weight",
    "question": "에펠탑 철골 구조(연철)의 무게는 몇 톤일까?",
@@ -169,11 +211,20 @@
     "건축",
     "프랑스"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 철골 7,300t 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0006",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "weight",
    "question": "다 자란 수컷 하마 한 마리의 평균 몸무게는?",
@@ -202,11 +253,20 @@
     "동물",
     "포유류"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 수컷 평균 1,480kg 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0007",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "weight",
    "question": "성인 사람의 뇌 무게는 평균 몇 kg일까?",
@@ -236,11 +296,20 @@
     "인체",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 평균 1.2~1.4kg 중앙값 일치(다른 문서 1.4~1.6은 참고)",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0008",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "weight",
    "question": "자유의 여신상(받침대 제외) 전체 무게는 몇 톤일까?",
@@ -269,11 +338,20 @@
     "건축",
     "미국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 225t와 -9.3%로 간신히 통과, NPS 합산은 더 커서 note 권장",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0009",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "weight",
    "question": "타조알 한 개의 평균 무게는?",
@@ -302,11 +380,20 @@
     "동물",
     "새"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ADW 약 3lb=1.36kg, 차이 3%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0010",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "weight",
    "question": "정규 축구공(5호) 한 개의 무게는?",
@@ -336,11 +423,20 @@
     "스포츠",
     "물건"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "IFAB 규정 410~450g, 중앙값 430 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0011",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "height",
    "question": "에베레스트산의 높이(2020년 측정)는?",
@@ -369,11 +465,20 @@
     "산",
     "자연"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 8,848.86m 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0012",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "height",
    "question": "제주도 한라산의 해발 높이는?",
@@ -402,11 +507,20 @@
     "산",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "en 위키 1,947m 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0013",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "height",
    "question": "서울 롯데월드타워의 높이는?",
@@ -435,11 +549,20 @@
     "건축",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "en 위키 555m 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0014",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "height",
    "question": "두바이 부르즈 할리파(세계에서 가장 높은 건물)의 높이(첨탑 포함)는?",
@@ -468,11 +591,20 @@
     "건축",
     "중동"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 829.8m, 828m와 0.2% 차이",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0015",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "height",
    "question": "파리 에펠탑의 높이(안테나 포함)는?",
@@ -501,11 +633,20 @@
     "건축",
     "프랑스"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "simple 위키 330m 일치, ko 위키 324m와 1.9% 차이",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0016",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "height",
    "question": "다 자란 기린의 키는?",
@@ -535,11 +676,20 @@
     "동물",
     "포유류"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 수컷 4.8~5.5m 중앙 5.15와 3% 차이",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0017",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "height",
    "question": "세계에서 가장 높은 폭포인 베네수엘라 앙헬 폭포의 높이는?",
@@ -568,11 +718,20 @@
     "자연",
     "폭포"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 979m 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0018",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "height",
    "question": "이집트 기자의 쿠푸왕 대피라미드가 처음 지어졌을 때의 높이는?",
@@ -601,11 +760,20 @@
     "건축",
     "역사"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 원래 높이 146.8m, 0.1% 차이",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0019",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "height",
    "question": "세계에서 가장 키가 큰 나무(미국 캘리포니아의 레드우드 하이페리온)의 높이는?",
@@ -627,11 +795,19 @@
     "자연",
     "식물"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 115.92m와 0.3% 차이 · 2026년 측정 자체는 unverified",
+    "proposal": null,
+    "checked": [
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0020",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "length",
    "question": "한강 본류의 총길이는?",
@@ -660,11 +836,20 @@
     "강",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "en 위키 508km 대비 -2.8%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0021",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "length",
    "question": "아프리카 나일강의 길이(2009년 위성 측정)는?",
@@ -694,11 +879,20 @@
     "강",
     "아프리카"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified: 7,088km(2009) 문서 미확인, 전통값 6,650과 6.6% 차이이고 note 있음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0022",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "length",
    "question": "샌프란시스코 금문교의 총길이는?",
@@ -727,11 +921,20 @@
     "다리",
     "미국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 2,737m 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0023",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "length",
    "question": "인천국제공항과 송도를 잇는 인천대교의 총길이는?",
@@ -760,11 +963,20 @@
     "다리",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "en 위키 21.38km 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0024",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "length",
    "question": "지금까지 확인된 가장 큰 대왕고래의 몸길이는?",
@@ -794,11 +1006,20 @@
     "동물",
     "바다"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 29.9~30.5m 중앙값 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0025",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "length",
    "question": "사람 소장(작은창자)의 길이는?",
@@ -819,11 +1040,19 @@
     "인체",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "ko 위키 약 7m 대비 -7.1%(10% 안)",
+    "proposal": null,
+    "checked": [
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0026",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "length",
    "question": "프랑스 바게트 빵 한 개의 보통 길이는?",
@@ -852,11 +1081,20 @@
     "음식",
     "프랑스"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 67~68cm 와 -3.7%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0027",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "length",
    "question": "기린 목의 최대 길이는?",
@@ -885,11 +1123,20 @@
     "동물",
     "포유류"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 최대 2.4m 를 독립 문서로 못 확인, 틀린 증거는 없음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0028",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "length",
    "question": "서울과 부산을 잇는 경부고속도로의 총길이는?",
@@ -918,11 +1165,20 @@
     "도로",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 416km 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0029",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "distance",
    "question": "지구에서 달까지의 평균 거리는?",
@@ -951,11 +1207,20 @@
     "우주",
     "달"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "NASA 0.3844×10^6 km 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0030",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "distance",
    "question": "지구에서 태양까지의 평균 거리(1천문단위)는?",
@@ -984,11 +1249,20 @@
     "우주",
     "태양"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "NASA 149.6×10^6 km 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0031",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "distance",
    "question": "지구 적도 둘레는?",
@@ -1022,11 +1296,20 @@
     "지구",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "적도 반지름 6378.137km 에서 둘레 40075 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0032",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "distance",
    "question": "국제우주정거장(ISS)은 지표면에서 대략 몇 km 높이에서 돌고 있을까?",
@@ -1056,11 +1339,20 @@
     "우주",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 본문 400km 일치, 범위 note 있음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0033",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "distance",
    "question": "아이슬란드·그린란드에서 번식하는 북극제비갈매기가 한 해 동안 왕복 이동하는 평균 거리는?",
@@ -1089,11 +1381,20 @@
     "동물",
     "새"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 독립 출처로 평균 70,900 확인 못 함, 틀린 증거 없음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0034",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "distance",
    "question": "울릉도에서 독도까지의 거리는?",
@@ -1122,11 +1423,20 @@
     "섬",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 87.4km 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0035",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "distance",
    "question": "부산시청에서 서울까지의 직선거리는?",
@@ -1155,11 +1465,20 @@
     "도시",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 314km 와 +3.5%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0036",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "distance",
    "question": "부산시청에서 일본 쓰시마섬까지의 직선거리는?",
@@ -1180,11 +1499,19 @@
     "섬",
     "일본"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 49.5~50km 일치",
+    "proposal": null,
+    "checked": [
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0037",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "distance",
    "question": "영국과 프랑스 사이 도버 해협의 가장 좁은 폭은?",
@@ -1213,11 +1540,20 @@
     "바다",
     "유럽"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 33.3km 와 -0.3%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0038",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "population",
    "question": "대한민국 인구(2025년 추계)는?",
@@ -1246,11 +1582,20 @@
     "한국",
     "인구"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 51,667,029 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0039",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "population",
    "question": "서울특별시 인구(2026년 1분기)는?",
@@ -1279,11 +1624,20 @@
     "도시",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 9.31M(2025.10) 와 +2.9%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0040",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "population",
    "question": "제주특별자치도 인구(2025년)는?",
@@ -1312,11 +1666,20 @@
     "한국",
     "섬"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 670,858(2020) 와 -1.2%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0041",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "population",
    "question": "인도 인구(2026년 추정)는?",
@@ -1345,11 +1708,20 @@
     "나라",
     "아시아"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 1.4766B 와 +0.2%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0042",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "population",
    "question": "아이슬란드 인구(2026년 인구조사)는?",
@@ -1378,11 +1750,20 @@
     "나라",
     "유럽"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 402,329 와 -2.0%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0043",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "population",
    "question": "세계에서 가장 작은 나라 바티칸 시국의 인구(2024년 추정)는?",
@@ -1411,11 +1792,20 @@
     "나라",
     "유럽"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 출처마다 882/506 엇갈림(정의 차), 위키 인포박스 882 유지",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0044",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "population",
    "question": "몽골 인구(2025년 추정)는?",
@@ -1444,11 +1834,20 @@
     "나라",
     "아시아"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 3,517,100 와 +2.1%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0045",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "population",
    "question": "캐나다 인구(2026년 2분기 추정)는?",
@@ -1477,11 +1876,20 @@
     "나라",
     "북미"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 40.47M 과 +3.3%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0046",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "population",
    "question": "세계 인구(2026년)는 대략 몇 명일까?",
@@ -1502,11 +1910,19 @@
     "세계",
     "인구"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 8.30B 일치",
+    "proposal": null,
+    "checked": [
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0047",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "year",
    "question": "세종대왕이 훈민정음을 반포한 해는?",
@@ -1535,11 +1951,20 @@
     "역사",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 1446 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0048",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "year",
    "question": "첫 아이폰이 미국에서 출시된 해는?",
@@ -1568,11 +1993,20 @@
     "기술",
     "발명"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "애플 공식 2007 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0049",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "year",
    "question": "서울~부산 경부고속도로가 완공(전 구간 개통)된 해는?",
@@ -1601,11 +2035,20 @@
     "역사",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 1970 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0050",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "year",
    "question": "타이타닉호가 첫 항해에서 침몰한 해는?",
@@ -1634,11 +2077,20 @@
     "역사",
     "배"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "다른 문서 1912 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0051",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "year",
    "question": "라이트 형제가 동력 비행기로 첫 비행에 성공한 해는?",
@@ -1667,11 +2119,20 @@
     "역사",
     "발명"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "1903-12-17 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0052",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "year",
    "question": "샌프란시스코 금문교가 개통한 해는?",
@@ -1700,11 +2161,20 @@
     "다리",
     "미국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "1937-05-27 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0053",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "year",
    "question": "로마 콜로세움이 완공된 해(서기)는?",
@@ -1733,11 +2203,20 @@
     "역사",
     "건축"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "80년 개관 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0054",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "year",
    "question": "조선의 법궁 경복궁이 처음 지어진(창건) 해는?",
@@ -1766,11 +2245,20 @@
     "역사",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "1395 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0055",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "year",
    "question": "서울 지하철 1호선(서울역~청량리)이 처음 개통한 해는?",
@@ -1799,11 +2287,20 @@
     "역사",
     "교통"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "1974-08-15 서울역~청량리 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0056",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "speed",
    "question": "치타가 달릴 수 있는 최고 속도(믿을 만한 측정 기록)는?",
@@ -1833,11 +2330,20 @@
     "동물",
     "포유류"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "104 km/h 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0057",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "speed",
    "question": "사냥할 때 급강하하는 매(송골매)의 최고 기록 속도는?",
@@ -1867,11 +2373,20 @@
     "동물",
     "새"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "389 vs ko 363 ±10% 안 · 출처 엇갈림은 note 에 있음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0058",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "speed",
    "question": "KTX(KTX-산천)의 영업 최고 속도는?",
@@ -1900,11 +2415,20 @@
     "교통",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "305 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0059",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "speed",
    "question": "20℃ 공기 속에서 소리가 1초에 가는 거리(소리의 속도)는?",
@@ -1933,11 +2457,20 @@
     "과학",
     "소리"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "343 m/s 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0060",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "speed",
    "question": "우사인 볼트가 100m 세계기록(9초58)을 세울 때 낸 최고 속도는?",
@@ -1966,11 +2499,20 @@
     "스포츠",
     "인물"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 다른 문서에 값 없음 · 틀린 증거 없음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0061",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "speed",
    "question": "초음속 여객기 콩코드의 순항 속도는?",
@@ -1999,11 +2541,20 @@
     "교통",
     "비행기"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 다른 문서 못 염",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0062",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "speed",
    "question": "지구가 자전할 때 적도 위의 땅이 움직이는 속도는?",
@@ -2024,11 +2575,19 @@
     "지구",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "계산값 1,674 와 일치",
+    "proposal": null,
+    "checked": [
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0063",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "speed",
    "question": "중국 상하이 자기부상열차의 최고 운행 속도는?",
@@ -2058,11 +2617,20 @@
     "교통",
     "중국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "431 vs 430 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0064",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "speed",
    "question": "국제우주정거장(ISS)이 지구를 도는 평균 속도는?",
@@ -2091,11 +2659,20 @@
     "우주",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "28,000 vs 약 28,968 ±10% 안",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0065",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "count",
    "question": "성인 사람 몸의 뼈는 몇 개일까?",
@@ -2124,11 +2701,20 @@
     "인체",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "206 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0066",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "count",
    "question": "일반 피아노의 건반은 모두 몇 개일까?",
@@ -2157,11 +2743,20 @@
     "음악",
     "물건"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "88 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0067",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "count",
    "question": "바둑판(19줄×19줄)에서 돌을 놓을 수 있는 점(교차점)은 몇 개일까?",
@@ -2190,11 +2785,20 @@
     "놀이",
     "물건"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "361 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0068",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "count",
    "question": "유엔(UN) 회원국은 모두 몇 나라일까?",
@@ -2223,7 +2827,16 @@
     "세계",
     "나라"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "193 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0069",
@@ -2256,11 +2869,26 @@
     "인체",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "fix",
+    "reason": "값 ok · 그림이 틀니 모형이라 대상 아님",
+    "proposal": {
+     "image": "자연 치아 전체(치열 모형 · 해부도)로 교체",
+     "value": 32,
+     "unit": "개",
+     "note": "사랑니 포함 32 · 제외 28",
+     "url": "https://ko.wikipedia.org/wiki/치아"
+    },
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0070",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "count",
    "question": "토성의 위성(궤도가 확인된 것)은 몇 개일까?",
@@ -2289,11 +2917,20 @@
     "우주",
     "행성"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "293 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0071",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "count",
    "question": "문어의 심장은 몇 개일까?",
@@ -2322,11 +2959,20 @@
     "동물",
     "바다"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "3 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0072",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "count",
    "question": "런던 빅벤 시계탑(엘리자베스 타워)의 바닥에서 종루까지 계단은 몇 개일까?",
@@ -2355,11 +3001,20 @@
     "건축",
     "영국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 계단 수 다른 문서 못 염",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0073",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "count",
    "question": "검은 머리인 사람의 머리카락은 평균 몇 가닥일까?",
@@ -2380,11 +3035,19 @@
     "인체",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "10만 일치(범위 아닌 평균치 · 해설에 있음)",
+    "proposal": null,
+    "checked": [
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0074",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "calorie",
    "question": "생 바나나 100g의 열량은?",
@@ -2413,11 +3076,20 @@
     "음식",
     "과일"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "89 kcal 일치 · kJ 환산 맞음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0075",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "calorie",
    "question": "생 아보카도 100g의 열량은?",
@@ -2446,11 +3118,20 @@
     "음식",
     "과일"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "160 kcal 일치 · kJ 환산 맞음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0076",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "calorie",
    "question": "삶은 달걀 100g의 열량은?",
@@ -2479,11 +3160,20 @@
     "음식",
     "달걀"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 100g 값 문서 못 염, 틀린 증거 없음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0077",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "calorie",
    "question": "지은 흰쌀밥 100g의 열량은?",
@@ -2512,11 +3202,20 @@
     "음식",
     "곡물"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 열량 문서 못 염, 틀린 증거 없음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0078",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "calorie",
    "question": "꿀 100g의 열량은?",
@@ -2545,11 +3244,20 @@
     "음식",
     "단것"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "304 kcal 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0079",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "calorie",
    "question": "올리브유 100g의 열량은?",
@@ -2578,11 +3286,20 @@
     "음식",
     "기름"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 100g 값 문서 못 염, 틀린 증거 없음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0080",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "calorie",
    "question": "밀크초콜릿 100g의 열량은?",
@@ -2611,11 +3328,20 @@
     "음식",
     "단것"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "529 vs 535, 1.1%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0081",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "calorie",
    "question": "미국 맥도날드 빅맥 한 개의 열량은?",
@@ -2644,11 +3370,20 @@
     "음식",
     "패스트푸드"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 미국 값 확인 못 함(582 가까움), 틀린 증거 없음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0082",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "calorie",
    "question": "수박(과육) 100g의 열량은?",
@@ -2677,11 +3412,20 @@
     "음식",
     "과일"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "30 kcal 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0083",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "price",
    "question": "2026년 한국의 최저임금(시급)은?",
@@ -2707,11 +3451,19 @@
     "한국",
     "경제"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "10,320원 일치",
+    "proposal": null,
+    "checked": [
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0084",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "price",
    "question": "수도권 지하철 어른 기본운임(교통카드, 10km 이하)은?",
@@ -2740,11 +3492,20 @@
     "교통",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "1,550원 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0085",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "price",
    "question": "서울 시내버스(간선·지선) 어른 요금(교통카드)은?",
@@ -2773,7 +3534,16 @@
     "교통",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "1,500원 일치(표 기준일 2023-08)",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0086",
@@ -2806,11 +3576,28 @@
     "교통",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "fix",
+    "reason": "2025-12-18 에 5,500→2,000원 인하, 값 낡음",
+    "proposal": {
+     "value": 2000,
+     "unit": "원",
+     "asOf": "2025-12-18",
+     "note": "2025-12-18 부터 소형차 2,000원(종전 5,500원)",
+     "explanation": "2025년 12월 18일 5,500원에서 2,000원으로 내렸다.",
+     "url": "https://namu.wiki/w/인천대교",
+     "caveat": "한 곳만 열었으므로 공식(인천대교㈜) 또는 뉴스로 재확인 뒤 반영, 안 되면 drop"
+    },
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0087",
-   "status": "candidate",
+   "status": "rejected",
    "createdRound": "G008",
    "kind": "price",
    "question": "서울 롯데월드타워를 짓는 데 든 총공사비는?",
@@ -2839,11 +3626,20 @@
     "건축",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "drop",
+    "reason": "출처마다 3.8조/4.3조로 엇갈려 하나로 못 정함",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0088",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "price",
    "question": "서울 청계천 복원 공사(2003~2005년, 약 5.84km)에 든 비용은?",
@@ -2872,11 +3668,20 @@
     "도시",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "3,800억 vs 3,867억, 1.7%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0089",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "price",
    "question": "한국 첫 돔 야구장인 서울 고척스카이돔의 건설비는?",
@@ -2905,11 +3710,20 @@
     "건축",
     "스포츠"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "1,946억 일치(en 위키만 다름)",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0090",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "price",
    "question": "서울 동대문디자인플라자(DDP)의 건축비는?",
@@ -2938,11 +3752,20 @@
     "건축",
     "한국"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 원화 값 다른 문서 못 염, 틀린 증거 없음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0091",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "price",
    "question": "2002 월드컵 개막전이 열린 서울월드컵경기장의 건설비는?",
@@ -2971,11 +3794,20 @@
     "건축",
     "스포츠"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "2,060억 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0092",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "other",
    "question": "바다에서 가장 깊은 곳인 마리아나 해구 챌린저 해연의 깊이는?",
@@ -3009,11 +3841,20 @@
     "바다",
     "자연"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "10,935m 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0093",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "other",
    "question": "갈라파고스땅거북이 사육 상태에서 산 최장 수명은?",
@@ -3042,11 +3883,20 @@
     "동물",
     "파충류"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "177년 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0094",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "other",
    "question": "성인 몸무게에서 물이 차지하는 비율은 대략 몇 %일까?",
@@ -3067,11 +3917,19 @@
     "인체",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "60% 일치(범위 상단)",
+    "proposal": null,
+    "checked": [
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0095",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "other",
    "question": "태양에서 나온 빛이 지구에 닿기까지 걸리는 시간은 몇 초일까?",
@@ -3100,11 +3958,20 @@
     "우주",
     "태양"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 시간 문서 못 염, 틀린 증거 없음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0096",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "other",
    "question": "지구의 나이는 약 몇 억 년일까?",
@@ -3133,11 +4000,20 @@
     "지구",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "45억 vs 45.4억, 0.9%",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0097",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "other",
    "question": "세계에서 가장 깊은 호수인 러시아 바이칼호의 최대 깊이는?",
@@ -3166,11 +4042,20 @@
     "호수",
     "자연"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 같은 문서만 열림, 틀린 증거 없음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0098",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "other",
    "question": "아프리카코끼리의 임신 기간은 몇 개월일까?",
@@ -3199,11 +4084,20 @@
     "동물",
     "포유류"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "22개월 일치",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0099",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "other",
    "question": "집고양이는 하루 평균 몇 시간을 잘까?",
@@ -3233,11 +4127,20 @@
     "동물",
     "반려동물"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 범위 값(12~16), 나무위키는 상단 16 으로 차이 있음",
+    "proposal": null,
+    "checked": [
+     "image",
+     "value"
+    ]
+   }
   },
   {
    "id": "estimate-0100",
-   "status": "candidate",
+   "status": "verified",
    "createdRound": "G008",
    "kind": "other",
    "question": "사람은 1분에 평균 몇 번 눈을 깜빡일까(실험실 측정)?",
@@ -3258,7 +4161,15 @@
     "인체",
     "과학"
    ],
-   "verify": null
+   "verify": {
+    "round": "V012",
+    "verdict": "ok",
+    "reason": "unverified — 다른 문서에서 값 못 읽음, 틀린 증거 없음",
+    "proposal": null,
+    "checked": [
+     "value"
+    ]
+   }
   }
  ]
 }

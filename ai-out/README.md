@@ -36,6 +36,7 @@
 | V009.txt | ★ G005 상 생성 2차 493 (C67, 적재 전): ok 299 · fix 184 · drop 10 · blind 재채점 상 307(62%) → 175(35.5%) · 2차 채점자 상 30% · rewrite 227 질문 문제 4 · 힌트 fix 138(famous-one 115) · 변형 fix 28 · 2회차 drop 9 · 사실 틀림 무작위 0 → `audit/v009-results.json` · `v009-raw/`. G007 이 반영·적재 · Sonnet 5.5 · CV-14~17 |
 | V010.txt | ★ 기존 활성 상(4~5) 608 blind 재채점 (G003 110 은 V007 이 이미 같은 읽기) + G006 GEN 힌트 14: 상 유지 221(36.3%) · 3 이하 387 · 5 → 4 25 · 상만 판 14 → 6판(G005 포함 10) · 2차 채점자 120 상/상 아님 일치 92 · 힌트 14 ok → `audit/v010-results.json` · `v010-raw/`. 반영은 다음 GEN · Sonnet 5.5 · CV-18~20 |
 | V011.txt | G007 GEN 문구 24 + 지식 근거 5 · CV-20 note 13 · 2회차 25쌍 판정: GEN 문구 24 전부 ok(worse 0) · 지식 근거 3 닫음 · CV-20 fix 7 · ok 6 · 2회차 fix 5(범주 단서 0 · H12 5) → `audit/v011-results.json` · `v011-raw/`. 반영은 G009 · Sonnet 5.5 · CV-21~24 |
+| V012.txt | G008 미니게임 1차 642 전수 재검증(그림 508 · 값 642): ok 573 · fix 63 · drop 6(status verified 573 · candidate 63 · rejected 6) · photo fix 28.3% · worldprice 286 나라 행 전부 ok · g008-check 규칙 CV-28 → `audit/v012-minigame.json` · `v012-raw/` · items.json verify·status. 반영은 G010 · Sonnet 5.5 · CV-25~30 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 
