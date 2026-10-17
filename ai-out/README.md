@@ -38,6 +38,7 @@
 | V011.txt | G007 GEN 문구 24 + 지식 근거 5 · CV-20 note 13 · 2회차 25쌍 판정: GEN 문구 24 전부 ok(worse 0) · 지식 근거 3 닫음 · CV-20 fix 7 · ok 6 · 2회차 fix 5(범주 단서 0 · H12 5) → `audit/v011-results.json` · `v011-raw/`. 반영은 G009 · Sonnet 5.5 · CV-21~24 |
 | V012.txt | G008 미니게임 1차 642 전수 재검증(그림 508 · 값 642): ok 573 · fix 63 · drop 6(status verified 573 · candidate 63 · rejected 6) · photo fix 28.3% · worldprice 286 나라 행 전부 ok · g008-check 규칙 CV-28 → `audit/v012-minigame.json` · `v012-raw/` · items.json verify·status. 반영은 G010 · Sonnet 5.5 · CV-25~30 |
 | V013.txt | G009 묶음이 아직 없어 (나) 기존 활성 난이도 3 표본 300(시드 20261017) 품질 점검: ok 240 · fix 60(20%) — 힌트 35 · 변형 누락 16 · 단정 13 · 사실 틀림 5 · 옛 라운드 27% vs 최근 5~11% → `audit/v013-active3.json` · `v013-results.json` · `v013-raw/`. g009a·g009b 미판정 · 반영은 G011 · Sonnet 5.5 · CV-31~33 |
+| V014.txt | 활성 난이도 3 나머지 2,086 전수(ok 1,560 · fix 526 = 25.2% · 전체 2,386 중 fix 586 = 24.6% · legacy# 35% vs 최근 8~10%) + 중간에 올라온 g009a 464 전수(ok 351 · fix 109 · drop 4 · blind 재채점 4 이상 191 = 41% ← GEN 54% · 독립 채점자 100건 23%) → `audit/v014-active3.json` · `v014-results.json` · `v014-raw/` · g009b 미판정 · 반영은 G011 · Sonnet 5.5 · CV-34~38 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 
