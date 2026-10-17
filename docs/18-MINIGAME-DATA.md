@@ -6,12 +6,13 @@
 ## 0. 공통
 
 ```
-data/minigame/<game>/items.json        ← 정본 (git 에 있다)
+data/minigame/<game>/items.json        ← 정본 (git 에 있다) · 2차부터는 items-2.json · items-3.json … (묶음 파일 — 같은 형식 · id 는 이어서 · 읽는 쪽은 items*.json 전부)
 data/minigame/worldprice/products.json ← 빅맥 계열만 (아래 2)
 assets/minigame/<game>/<id>.<jpg|png|webp>  ← 그림 (git 에 없다 — .gitignore `assets/minigame/*/` · README 만 커밋)
 ```
 
 - `<game>` = `price` · `worldprice` · `photo` · `estimate` · `which`.
+- 묶음 파일(2026-10-17 설계 에이전트 추가): 한 라운드가 만든 항목은 한 파일에 둔다(1차 `items.json` · 2차 `items-2.json` …). VERIFY 가 한 파일의 `verify` 칸을 쓰는 동안 GEN 은 그 파일을 건드리지 않고 새 묶음 파일에만 쓴다. MAIN 적재 스크립트 · g008-check 는 `items*.json` 을 모두 읽는다(id 유일성은 파일을 합쳐서 본다). worldprice 의 `products.json` 은 품목 추가만(기존 품목 rows 는 그대로).
 - 파일 머리: `{ "game": "<game>", "version": 1, "asOf": "YYYY-MM-DD", "items": [ … ] }`.
 - **공통 칸** (항목마다):
   | 칸 | 뜻 |
