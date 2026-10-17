@@ -231,6 +231,22 @@ DELETE FROM minigame_rewards WHERE account_id IN (SELECT id FROM accounts WHERE 
 ```
 - 포인트 = 맞힌 수 + `minigame_rewards` 합 − `point_spends` 합 (server/src/db/points.ts `POINTS_SQL`).
 
+### ★★ 업적 · 전적 (R054)
+```bash
+node scripts/achievements-backfill.mjs --login lonysg      # dry-run — 키별 얻은 계정 · 새로 · 한 계정 목록
+npm run db:backup && node scripts/achievements-backfill.mjs --apply   # 소급(멱등 — 다시 돌려도 0)
+```
+```sql
+-- 한 계정의 업적
+SELECT key, earned_at, value, backfilled FROM achievements WHERE account_id = (SELECT id FROM accounts WHERE login_id = 'lonysg') ORDER BY earned_at;
+-- 키별 얻은 사람 수
+SELECT key, count(*) FROM achievements GROUP BY key ORDER BY 2 DESC;
+-- ★ 업적 지우기(잘못 준 것) — 다음 판정 때 조건을 만족하면 다시 생긴다(기록이 그대로이므로)
+DELETE FROM achievements WHERE account_id = (SELECT id FROM accounts WHERE login_id = '…') AND key = 'streak-3';
+-- 검사 계정 업적 비우기(봇 achievements 는 스스로 비우고 시작) — 찬종 계정은 건드리지 않는다
+DELETE FROM achievements WHERE account_id IN (SELECT id FROM accounts WHERE login_id LIKE 'bot\_%' OR login_id LIKE 'uic%');
+```
+
 ### ★★★ 퀴즈류 미니게임 항목 · 그림 · 경험 (R052)
 ```bash
 node scripts/minigame-load.mjs             # dry-run — 게임별 verified · 형식 거부 · 그림 없음 표 (DB 를 쓰지 않는다)

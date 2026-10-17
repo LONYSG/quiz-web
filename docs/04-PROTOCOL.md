@@ -954,6 +954,16 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 설정값 (서버 env) | `SHOP_PRICE_OVERRIDE`(검사용 · 0 = DB 의 `emoji_themes.price` — 실제 서버 .env 에 두지 않는다. 봇 shop 이 자기 서버에서 10 으로) |
 | RULES (shared) | `SPECIAL_FLOAT_MS` 3000 · `SPECIAL_FLOAT_MAX` 3 · `SPECIAL_FLOAT_PX` 96 — 화면(떠 있는 큰 반응)만 쓴다 |
 
+## ★ R054 — 바뀐 것 (D-242 ~ D-244)
+
+| 항목 | 내용 |
+|------|------|
+| `GET /api/me/stats` | `{ ok, quiz{games, correct, byTopic[], byTier[], avgResponseMs}, minigames[{key, name, runs, wins, best, unit, better, accuracy}], points{correct, rewards, spent, balance, recent[]}, achievements[{key, earnedAt}] }` — 로그인 · no-store |
+| `achievement.earned` (S→C · 새 · 본인에게) | `{ key, name, desc }` — 방 채팅에는 시스템 한 줄 "🏅 닉네임 — 업적" |
+| 미니게임 키 | + `'balloon' \| 'tap'` |
+| `minigame.submit` 풍선 | `{ startMs, endMs }` 한 번 — 서버가 크기를 다시 계산 · reveal `{ burst }`(판 결과 때만) |
+| `minigame.submit` 연타 | `{ count, final }` — 0.25초마다 임시 · 마감 때 마지막 · 초당 20 넘으면 BAD_REQUEST |
+
 ## ★ R053 — 바뀐 것 (D-240 · D-241)
 
 | 항목 | 내용 |

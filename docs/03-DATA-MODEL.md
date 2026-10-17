@@ -336,3 +336,10 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 | `minigame_rounds.item_id` | text | 퀴즈류 라운드의 문항 id(피지컬은 NULL) |
 
 - 출제: 게임 시작 때 `minigame_items`(active) · `minigame_products` 를 메모리로(60초 캐시) · 참가자 경험을 함께 읽는다(퀴즈 풀과 같은 꼴 — D-054). 얼마게요는 `priceAsOf` 1년 지난 항목을 내지 않는다.
+
+## ★★ 업적 (R054 / 0019 — D-243)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `achievements` | (account_id, key) PK · earned_at · value · game_id · run_id · backfilled | 표시만(포인트 없음). 판정은 기존 표(server/src/db/achievementsSql.ts) — 이 표는 "언제 얻었나". 소급 scripts/achievements-backfill.mjs(멱등) |
+- 전적(GET /api/me/stats)은 새 표 없이 기존 표에서 읽는다(D-242).

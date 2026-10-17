@@ -29,7 +29,7 @@ const WAIT_MS = Number(process.env.UICHECK_MEM_WAIT_MS ?? 60_000);
 const WAIT_TIMES = Number(process.env.UICHECK_MEM_WAIT_TIMES ?? 10);
 const TIMEOUT_MS = Number(process.env.UICHECK_BUNDLE_TIMEOUT_MS ?? 30 * 60_000);
 
-const MG = (o) => ({ MG_SKIP_R050: '1', MG_SKIP_R051: '1', MG_SKIP_R052: '1', MG_SKIP_R053: '1', ...o });
+const MG = (o) => ({ MG_SKIP_R050: '1', MG_SKIP_R051: '1', MG_SKIP_R052: '1', MG_SKIP_R053: '1', MG_SKIP_R054: '1', ...o });
 /** ★ 묶음 — 단계(끝 점검의 11 단계) → 묶음들. 미니게임은 라운드 · 게임별로 쪼갠다 */
 export const BUNDLES = [
   { id: 'main-layout', stage: 'ui-check', args: ['--layout'] },
@@ -51,6 +51,10 @@ export const BUNDLES = [
   ...['price', 'worldprice', 'photo', 'estimate', 'which'].map((g) => ({ id: `mg-r052-${g}`, stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R052: '', MG_SKIP_LAB: '1', MG_QUIZ: g, SHOT_DIR: 'r052' }) })),
   { id: 'mg-r053-lab', stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R053: '', MG_SKIP_LIVE: '1', SHOT_DIR: 'r053' }) },
   ...['minority', 'twothirds', 'oddone', 'gauge'].map((g) => ({ id: `mg-r053-${g}`, stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R053: '', MG_SKIP_LAB: '1', MG_R053: g, SHOT_DIR: 'r053' }) })),
+  // ★ R054
+  { id: 'mg-r054-lab', stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R054: '', MG_SKIP_LIVE: '1', SHOT_DIR: 'r054' }) },
+  ...['balloon', 'tap'].map((g) => ({ id: `mg-r054-${g}`, stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R054: '', MG_SKIP_LAB: '1', MG_R054: g, SHOT_DIR: 'r054' }) })),
+  { id: 'r054-stats', stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', UICHECK_STATS: '1', SHOT_DIR: 'r054' }) },
 ];
 
 if (flag('--list')) {

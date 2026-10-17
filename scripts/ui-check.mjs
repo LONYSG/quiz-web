@@ -2950,6 +2950,152 @@ async function r053Flow(browser) {
   }
 }
 
+// -----------------------------------------------------------------------------
+// ★★ R054 — 전적 · 업적 창 · 업적 토스트 · 풍선 · 연타 (MG_R054=balloon,tap · MG_SKIP_R054 · UICHECK_STATS)
+// -----------------------------------------------------------------------------
+const R054_GAMES = (process.env.MG_R054 ?? 'balloon,tap').split(',').filter(Boolean);
+async function r054Lab(browser) {
+  const L = await newPage(browser, 'M5-lab');
+  await L.setViewport(1280, 720);
+  await signUp(L, 'm5l', '그림점검다섯');
+  const num = { balloon: 90, tap: 91 };
+  const scenes = [];
+  for (const k of R054_GAMES) for (const ph of ['rules', 'play', 'roundResult', 'final']) scenes.push([k, ph, '', '']);
+  if (R054_GAMES.includes('balloon')) scenes.push(['balloon', 'roundResult', '&state=popped', 'popped']);
+  for (const [k, ph, extra, tag] of scenes) {
+    const name = `${num[k]}-scene-${k}-${ph}${tag ? `-${tag}` : ''}`;
+    for (const [dev, w, h, touch] of [['pc', 1280, 720, false], ['m390', 390, 844, true]]) {
+      if (touch) await touchDevice(L, w, h);
+      else {
+        await touchDevice(L, w, h, false);
+        await L.setViewport(w, h);
+      }
+      await L.goto(`${BASE}/lab/minigame?scene=1&key=${k}&phase=${ph}&seed=2024${extra}`);
+      await L.waitFor(`document.querySelector('.mg-card')?.dataset.phase === '${ph}'`, 6000);
+      await sleep(450);
+      await snap(L, `${name}-${dev}`);
+      if (touch && ph === 'play') {
+        const over = await L.evaluate('document.documentElement.scrollWidth - innerWidth');
+        record(`★ R054 장면 ${k}/${ph} — 390 가로 넘침 없음`, over <= 1, String(over));
+      }
+    }
+  }
+  await touchDevice(L, 1280, 720, false);
+  await L.close?.();
+}
+async function r054Live(browser, key) {
+  const { H, G, roomId } = await r051Room(browser, `x${key.slice(0, 3)}`);
+  const num = { balloon: 90, tap: 91 }[key];
+  await r051Start(H, key);
+  for (let i = 0; i < 3; i += 1) {
+    await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'play'", 30000);
+    await sleep(300);
+    if (key === 'balloon') {
+      await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: ' ', code: 'Space', windowsVirtualKeyCode: 32, text: ' ' });
+      const gr = await rectOf(G, '.balloon-box');
+      await G.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: gr.x + gr.w / 2, y: gr.y + gr.h / 2 }] });
+      await sleep(1200);
+      if (i === 0) {
+        await snap(H, `${num}-live-balloon-holding-pc`);
+        await snap(G, `${num}-live-balloon-holding-m390`);
+      }
+      await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: ' ', code: 'Space', windowsVirtualKeyCode: 32 });
+      await sleep(600);
+      await G.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+    } else {
+      for (let t = 0; t < 20; t += 1) {
+        await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: ' ', code: 'Space', windowsVirtualKeyCode: 32, text: ' ' });
+        await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: ' ', code: 'Space', windowsVirtualKeyCode: 32 });
+        await sleep(30);
+      }
+      // 꾹 누름(자동 반복 5번) — 한 번만 센다
+      await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: ' ', code: 'Space', windowsVirtualKeyCode: 32, text: ' ' });
+      for (let t = 0; t < 5; t += 1) await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: ' ', code: 'Space', windowsVirtualKeyCode: 32, text: ' ', autoRepeat: true });
+      await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: ' ', code: 'Space', windowsVirtualKeyCode: 32 });
+      const b = await rectOf(G, '.tap-btn');
+      for (let t = 0; t < 15; t += 1) await trustedTap(G, b.x + b.w / 2, b.y + b.h / 2);
+      if (i === 0) {
+        record('★★ D 연타 — PC 20번 + 꾹 누름 1번 = 21', (await H.evaluate("document.querySelector('.tap-count')?.dataset.count")) === '21', await H.evaluate("document.querySelector('.tap-count')?.dataset.count"));
+        await snap(H, `${num}-live-tap-pc`);
+        await snap(G, `${num}-live-tap-m390`);
+      }
+    }
+    await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'roundResult'", 20000);
+    if (i === 0) {
+      await sleep(500);
+      await snap(H, `${num}-live-${key}-result-pc`);
+      await snap(G, `${num}-live-${key}-result-m390`);
+    }
+  }
+  await waitPhase(H, 'final', 30000);
+  const db = await withPg(async (c) =>
+    (await c.query(`SELECT a.login_id, r.round_index, r.submitted, r.value, r.input FROM minigame_results r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = (SELECT max(id) FROM minigame_runs WHERE room_id = $1) ORDER BY r.round_index`, [roomId])).rows,
+  );
+  const h = db.filter((r) => /h$/.test(r.login_id));
+  const g = db.filter((r) => /g$/.test(r.login_id));
+  const ok = key === 'balloon' ? h.every((r) => r.submitted && r.input?.size > 105 && r.input?.size < 125) && g.every((r) => r.submitted) : h.every((r) => r.value === 21) && g.every((r) => r.value >= 10);
+  record(`★★★ ${key} 실제 판 기록(DB)`, ok, JSON.stringify([h.map((r) => r.input), g.map((r) => r.value)]));
+  await H.waitFor("document.querySelector('.lobby-card') !== null", 40000);
+  await H.close?.();
+  await G.close?.();
+}
+/** 전적 · 업적 창 — bot_01(기록이 많다)로 · 숫자를 DB 와 대조 · 업적 토스트(새 계정 첫 정답) */
+async function r054Stats(browser) {
+  const P = await newPage(browser, 'S-bot01', true);
+  await P.setViewport(1280, 720);
+  await loginAs(P, 'bot_01', 'bot1234');
+  await P.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.includes('프로필'))?.click()");
+  await P.waitFor("document.querySelector('.stats-open') !== null", 5000);
+  await realClick(P, '.stats-open');
+  await P.waitFor("document.querySelector('.stats-body')?.dataset.loaded === '1'", 8000);
+  await sleep(400);
+  await snap(P, '92-stats-pc');
+  const shown = JSON.parse(await P.evaluate("JSON.stringify({ correct: document.querySelector('[data-stat=correct]')?.innerText, balance: document.querySelector('[data-stat=balance]')?.innerText })"));
+  const db = await withPg(async (c) => (await c.query(`SELECT (SELECT count(*) FROM answer_events e JOIN accounts a ON a.id = e.account_id WHERE a.login_id = 'bot_01' AND e.accepted)::int c`)).rows[0].c);
+  const api = await P.evaluate("fetch('/api/me/points').then((r) => r.json()).then((j) => String(j.balance))");
+  record('★★★ A 전적 — 맞힌 수 = DB · 포인트 = /api/me/points', Number(shown.correct) === db && shown.balance === api, `${JSON.stringify(shown)} · DB ${db} · API ${api}`);
+  await realClick(P, '.stats-tabs [data-tab="ach"]');
+  await P.waitFor("document.querySelector('.ach-list')?.dataset.loaded === '1'", 5000);
+  await sleep(300);
+  await snap(P, '92-achievements-pc');
+  const on = await P.evaluate("document.querySelectorAll('.ach.on').length");
+  const dbOn = await withPg(async (c) => (await c.query(`SELECT count(*)::int n FROM achievements a JOIN accounts x ON x.id = a.account_id WHERE x.login_id = 'bot_01'`)).rows[0].n);
+  record('★★ B 업적 칸 — 밝은 것 = 표의 행 수', on === dbOn, `${on} / ${dbOn}`);
+  await P.evaluate("document.documentElement.dataset.theme = 'night'");
+  await sleep(200);
+  await snap(P, '92-achievements-pc-night');
+  await touchDevice(P, 390, 844);
+  await P.evaluate("window.dispatchEvent(new Event('resize'))");
+  await sleep(300);
+  await snap(P, '92-achievements-m390-night');
+  await realClick(P, '.stats-tabs [data-tab="stats"]');
+  await sleep(300);
+  await P.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  await snap(P, '92-stats-m390');
+  await P.close?.();
+  // 업적 토스트 — 새 계정이 첫 문제를 맞힌다
+  const H = await newPage(browser, 'S-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'ach', '업적방장');
+  await createRoom(H, 'R054 업적');
+  await setQuestionCount(H, 5);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await H.waitFor("document.querySelector('.question-card .q-text') !== null", 30000);
+  await answerCurrent(H, H);
+  const got = await H.waitFor("document.querySelector('.ach-toast') !== null", 8000);
+  await snap(H, '93-achievement-toast-pc');
+  record('★★★ B 업적 토스트 — 첫 정답 → "🏅 업적 — 첫 정답" · 채팅 한 줄', got && (await H.evaluate("(document.querySelector('.ach-toast')?.innerText ?? '').includes('첫 정답')")) && (await H.evaluate("(document.querySelector('.chat-log')?.innerText ?? '').includes('🏅')")));
+  await H.close?.();
+}
+async function r054Flow(browser) {
+  if (!process.env.MG_SKIP_LAB) await r054Lab(browser);
+  if (process.env.MG_SKIP_LIVE) return;
+  for (const k of R054_GAMES) {
+    await closeAllTabs(browser);
+    await r054Live(browser, k);
+  }
+}
+
 /** ★ R053 ⓪ — 열린 탭을 모두 닫는다(묶음 사이 · 탭 ≤3 유지) */
 async function closeAllTabs(browser) {
   const { targetInfos } = await browser.send('Target.getTargets');
@@ -2976,6 +3122,14 @@ async function minigameFlow(browser) {
   if (!process.env.MG_SKIP_R053) {
     await closeAllTabs(browser);
     await r053Flow(browser);
+  }
+  if (!process.env.MG_SKIP_R054) {
+    await closeAllTabs(browser);
+    await r054Flow(browser);
+  }
+  if (process.env.UICHECK_STATS) {
+    await closeAllTabs(browser);
+    await r054Stats(browser);
   }
 }
 /** ★ R050 F — /lab/sound — 후보 버튼 · 실제 파일 길이(브라우저가 읽은 duration) · 누르면 소리가 난다(오류 없음) */

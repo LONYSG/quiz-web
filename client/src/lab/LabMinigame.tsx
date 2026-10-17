@@ -47,7 +47,7 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
     { top: 52, bottom: 41 },
     null,
   ];
-  const quiz = r052Scene(key, phase) ?? r053Scene(key);
+  const quiz = r052Scene(key, phase) ?? r053Scene(key) ?? r054Scene(key);
   const rows = quiz
     ? quiz.rows
     : key === 'reaction' || key === 'typing' || key === 'circle' || key === 'angle'
@@ -125,7 +125,9 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
     afterQuestionIndex: 10,
     receivedAt: performance.now() - (phase === 'play' ? playAgo : 0),
     lab:
-      key === 'gauge' && phase === 'play'
+      key === 'balloon' && phase === 'play'
+        ? { elapsedMs: Number(new URLSearchParams(window.location.search).get('at') ?? 6500) }
+        : key === 'gauge' && phase === 'play'
         ? { elapsedMs: Number(new URLSearchParams(window.location.search).get('at') ?? 700) }
         : key === 'photo' && phase === 'play'
         ? { elapsedMs: Number(new URLSearchParams(window.location.search).get('at') ?? 2000) }
@@ -247,6 +249,28 @@ function r052Scene(key: MinigameKey, phase: MinigamePhase) {
     params: { stem: d.stem, kind: d.kind, unit: d.unit, a: { label: d.a.label, imageId: image }, b: { label: d.b.label, imageId: null }, dummy: true },
     reveal: { answer: d.answer, a: d.a.value, b: d.b.value, unit: d.unit, margin: 2.33 },
     rows: [row('lab1', 1, 1, { choice: 'a', correct: true }, 820), row('lab3', 2, 1, { choice: 'a', correct: true }, 1410), row('lab2', 3, 0, { choice: 'b', correct: false }, null), row('lab4', 3, 0, null, null, false)],
+  };
+}
+
+/** ★★ R054 — 풍선 · 연타 장면 (?state=popped 풍선 터짐) */
+function r054Scene(key: MinigameKey) {
+  if (key !== 'balloon' && key !== 'tap') return null;
+  const popped = new URLSearchParams(window.location.search).get('state') === 'popped';
+  const row = (id: string, rank: number, points: number, extra: Record<string, unknown> | null, value: number | null, submitted = true) => ({ accountId: id, submitted, value, error: null, rank, points, extra });
+  if (key === 'balloon')
+    return {
+      playMs: 10000,
+      params: { growPerSec: 10, startPct: 100 },
+      reveal: { burst: 172.4 },
+      rows: popped
+        ? [row('lab3', 1, 4, { size: 168.2, popped: false }, 168.2), row('lab2', 2, 3, { size: 151, popped: false }, 151), row('lab1', 3, 0, { size: 181.5, popped: true }, 0), row('lab4', 3, 0, null, null, false)]
+        : [row('lab1', 1, 4, { size: 168.2, popped: false }, 168.2), row('lab3', 2, 3, { size: 151, popped: false }, 151), row('lab2', 3, 0, { size: 181.5, popped: true }, 0), row('lab4', 3, 0, null, null, false)],
+    };
+  return {
+    playMs: 10000,
+    params: { maxPerSec: 20 },
+    reveal: null,
+    rows: [row('lab1', 1, 4, { count: 71 }, 71), row('lab3', 2, 3, { count: 64 }, 64), row('lab2', 3, 2, { count: 52 }, 52), row('lab4', 4, 0, null, null, false)],
   };
 }
 
