@@ -1,27 +1,27 @@
-[VERIFY V013]  (이 파일이 지시 전체다 — docs/16 2장. V012 를 끝낸 같은 창에서 이어서 한다. 다 읽고 시작한다)
-TASK: **G009 생성분 판정**(g009a · g009b — 있는 것부터 · V009 꼴: 전수 판정 · blind 재채점 · 고침 효과 · 2회차 ↔ 1회차 질문·해설·**힌트** 대조 · 힌트 H0~H12). 묶음이 아직 없으면 (나) 기존 활성 난이도 3 표본 300 품질 점검. 반영은 G011
+[VERIFY V015]  (이 파일이 지시 전체다 — docs/16 2장. V014 를 끝낸 같은 창에서 이어서 한다. 다 읽고 시작한다)
+TASK: **우선순위 차례로** — ① origin/main 에 **g009a · g009b** 묶음이 있고 아직 판정 안 한 것이 있으면 그 전수 판정(archive/V013.md 의 (가) A~F) ② `data/minigame/*/items-2.json`(G010 2차)이 있으면 **미니게임 2차 전수 재검증**(archive/V012.md 꼴 — 그림 전수 · 값 전수 · verify·status 칸을 items-2.json 에 직접) ③ 그 뒤 **활성 난이도 4 전부(503 + 난이도 5 의 2) 전수** → ④ **활성 난이도 2 전수(1,465)** — ③④ 는 V014 기준 그대로 · 조각마다 ①② 가 새로 나타났는지 다시 본다(나타나면 끼어들어 먼저). 반영은 G011~
 실행 모델: Sonnet 5.5 (같은 창 — 바꾸지 않는다)
 
-■ 고정 규칙: docs/16 그대로 (3장 · 4장 · 5-3 · 교훈 A~G · 1장 — 13-PENDING 은 V012 가 쓴 다음 CV- 부터 · README V 표 · 조각 `audit/v013-raw/`).
-■ ★★ 동시 라운드 — GEN(G009 → G010 미니게임 2차 · questions 는 G009 A 12행만 — 이미 끝났을 것) · MAIN(R051 → R052 — questions 안 건드림)이 같이 돈다. VERIFY 몫: V013.txt · audit/v013-* · 13 CV 행 · README V 표. git: 내 파일만 · fetch · rebase · force 금지. 판정자 **한 번에 1개**.
-■ 토큰: 넉넉하다 — g009a · g009b 전수(각 ~490) · 표본으로 줄이지 않는다.
+■ 고정 규칙: docs/16 그대로 (13-PENDING 은 V014 가 쓴 다음 CV- 부터 · README V 표 · 조각 `audit/v015-raw/`). 동시 라운드(GEN · MAIN) · git · 판정자 ≤1 · 메모리 규칙은 V014 와 같다.
+■ 토큰: 넉넉하다 — 전수 · 줄이지 않는다. ④ 가 너무 길면 조각 10개마다 중간 커밋(V014 F 꼴)을 하고 끝까지 간다.
 
 ■ 먼저 읽기
-- docs/16 · ai-out/verify.md(0 · 3 · 7-1) · **ai-out/V009.txt 전체**(G005 판정 꼴 — 2절 종류별 · 2-8 2회차 · 6절 · 7절 자기 점검) · ai-out/V010.txt 2절(blind 재채점 방법 · 보정 표본) · ai-out/G009.txt(0 · 3~7절) · 13 C71
-- docs/15 전체(G009 판 — §3-3 에 "1회차 힌트도 대조" 한 줄이 새로 있다 · §4-1 H2 "이 탑" 예) · pipeline/prompts/score-v3.md(blind 채점 — 질문·정답만 · GEN 점수 안 보고) · deep-v5 · hint-v5
-- data/pipeline/audit/g009a-verify-targets.json · g009b-verify-targets.json(없으면 `git pull` 뒤 다시 — 둘 다 없으면 (나)) · scripts/hint-check.mjs · hint-input.mjs(읽기 전용)
+- ai-out/V014.txt(0절 — g009 묶음 판정 여부 · 난이도 3 집계 · 반복 유형) · `ai-out/briefs/archive/V013.md`(① 의 할 일) · `archive/V012.md`(② 의 할 일 · C70 ① 항목 · 판정 칸 규칙) · ai-out/V012.txt 6절(2차에서 반복되면 안 되는 유형 — attribution 손질 표시 · 라이선스 칸 · 영문 변형 · 별칭) · ai-out/G010.txt(있으면 — 0절 수 · 그림 수 · 버린 소재) · docs/18 전체(0절 묶음 파일 규칙 — `items-2.json` 의 verify·status 는 2차 행에만 쓴다 · 1차 items.json 은 건드리지 않는다)
+- docs/15 · score-v3 · hint-v5 · scripts/hint-check.mjs · g008-check.mjs(읽기만 — G010 이 items*.json 을 읽게 고쳤을 것)
 
 ■ 찬종의 말 · 확정
-- "퀄리티 있는 문제 수 늘리는게 우선이야." · 설계 판단: 상 = 4(5 는 목표 아님) · blind 재채점 값이 최종 난이도(CV-14 선례) · drop 은 사실 오류 · 정답 비유일 · 범주 단서 2회차 · 마이너 대상에만.
+- "퀄리티 있는 문제 수 늘리는게 우선이야." · 설계 판단: 상 = 4 · blind 재채점 값이 최종 난이도 · ③ 난이도 4 는 V009/V010 때 blind 를 이미 거쳤으니 **blind 재채점은 하지 않는다**(힌트 · 변형 · 단정 · 사실 · 유일성만) · 미니게임 2차의 EU 목표 불허 · 영문 변형 금지 · photo 의 라이선스 칸은 공용 페이지와 같아야.
 
-■ 대상 — g009a(게이트 통과분 전부) · g009b(같음 — 묶음이 늦게 오면 a 를 끝내고 push 한 뒤 `git pull` 로 b 를 집는다 · 30분 × 4 까지 기다리고 없으면 보고서에 "b 미판정" 으로 끝낸다).
-■ 기준 — V009 와 같다: 질문 3-1 · 3-2(유일성 · 사실은 문서) · 2회차 3-3(1회차 질문·해설·**힌트** 전부와 대조 — V011 S1-13 · L3-17 꼴) · 힌트 H0~H12(hint-v5 · "이 탑" 꼴 한 글자 조각은 사람이 본다) · blind 재채점(score-v3 · 판정자는 GEN 점수 · difWhy 를 보지 않는다 · 보정 표본 12 로 edge 를 잰다 · 두 번째 채점자 100 으로 일치율) · 고침 효과(rewrite 전/후 중 어느 쪽이 더 낫나 · 고친 뒤 사실이 틀어지지 않았나) · 낱말 뜻·정의 꼴 비율 세기.
-■ 할 일 — A. 전수 verdict(ok/fix/drop · categories · reason · proposal · 사실 url) B. blind 재채점 전수 + 보정 12 + r2 100 C. 2회차 전부 양방향 D. 힌트 전부 E. 직접 재독(fix · drop 전부 · ok 10%) F. 묶음별 집계(상 유지율 · fix · drop · "들어가면" 상 N판 추정).
-   (나) 묶음이 없을 때만: 활성 difficulty_score 3 에서 무작위 300(시드 고정 · 라운드 섞어) — 정답 유일성 · 질문 사실 · 힌트 H12 · 3-1 읽기 좋음 → fix 제안 · `audit/v013-active3.json`.
-■ 웹·토큰 예산: WebSearch **100회 이내** · WebFetch 주 수단(판정자도 WebFetch 만 · url 을 JSON 에) · 판정자 ≤1.
-■ 산출물: `ai-out/V013.txt`(0~7절) · `audit/v013-results.json`(V009 꼴 — items[ref] · blind · pairs · flipped · counts 묶음별) · `v013-raw/` · 13 CV- · README V 표.
-■ 하지 말 것: DB 쓰기 · 문항 고치기(제안만) · 미니게임 판정(V012 가 했다 · 2차는 V014) · 규칙/프롬프트/코드 수정 · Q · 서버 · 다른 세션 몫.
-■ 커밋: 위 파일만 · 끝줄 `Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>`.
-■ 확인할 것 (원칙 7): 묶음 수(a · b) · 게이트 통과 수 = 묶음 수 · 활성 5,113(G009 A 는 행 수를 바꾸지 않는다) — 다르면 0절에.
-■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄에 "V013 끝 — 다음 브리핑 대기".
+■ 할 일
+① g009a/b — archive/V013.md A~F 그대로 → `audit/v015-results.json`(V009 꼴 · 이미 V014 가 a 를 했으면 b 만 — 0절에 어느 묶음을 했는지).
+② 미니게임 2차 — archive/V012.md 와 같다: `audit/g010-verify-targets.json` 전수 · 그림 전수 Read · 값 전수(worldprice 새 품목 2 의 나라 행 전부 · 환율) · 판정 칸(verify · status) 을 **items-2.json** 과 `products.json` 의 **새 품목 rows** 에만 직접 씀(기존 rows · items.json 불변 — 기계로 확인) → `audit/v015-minigame.json` · 게임별 fix 율 · 반복 유형.
+③ 난이도 4·5 (505) — V014 기준 · 조각 50 → `audit/v015-active4.json`(505 모두 키로).
+④ 난이도 2 (1,465) — 같은 기준 · 조각 50 · 중간 커밋 → `audit/v015-active2.json`.
+- 조각 사이 `git fetch` → ①② 재확인. 집계: 난이도별 fix 율 · 출처 라운드별 · 유형별 · "활성 전체 fix 추정" 한 줄.
+■ 웹·토큰 예산: WebSearch **200회 이내** · WebFetch 주 수단 · 판정자 ≤1.
+■ 산출물: `ai-out/V015.txt`(0절 — ①②③④ 중 한 것 · 안 한 것과 이유) · 위 JSON 들 · `v015-raw/` · 13 CV- · README V 표.
+■ 하지 말 것: DB 쓰기 · 문항 고치기 · items.json(1차) 쓰기 · 규칙/프롬프트/코드 수정 · Q · 서버 · 다른 세션 몫.
+■ 커밋: 위 파일 + items-2.json · products.json 새 rows(② 때만) · 끝줄 `Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>`.
+■ 확인할 것 (원칙 7): 난이도 4 = 503 · 5 = 2 · 2 = 1,465(시작 때 DB — G011 이 적재했으면 늘어 있다 → 그때 값으로 · 0절에) · items-2.json 유무 · g009 묶음 유무 — 다르면 0절에.
+■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄에 "V015 끝 — 다음 브리핑 대기".
 ■ 답변: 한국어 · 터미널 5줄 이내.

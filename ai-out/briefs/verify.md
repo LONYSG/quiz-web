@@ -1,47 +1,26 @@
-[VERIFY V012]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다)
-TASK: G008 미니게임 데이터 1차 **642 전수 재검증**(docs/18 6절) — 그림 508 전수(그 대상인가 · 정답 글자 노출) · 값도 **642 전수**(표본이 아니다 — 찬종 2026-10-17 "작업을 최대한 많이") 웹 문서로 다시 열기 · `verify` 칸과 `status` 를 채운다. 반영(fix 적용 · DB 적재)은 G010 · R052 뒤
-실행 모델: **Sonnet 5.5** (`claude --model claude-sonnet-5-5`)
+[VERIFY V014]  (이 파일이 지시 전체다 — docs/16 2장. V013 을 끝낸 같은 창에서 이어서 한다. 다 읽고 시작한다)
+TASK: **활성 난이도 3 나머지 전수 판정**(2,386 − V013 표본 300 = **2,086** · V013 (나) 기준 그대로 · 조각 50) — 단 **조각 하나 끝날 때마다 origin/main 에 `g009a`/`g009b` 묶음이 올라왔는지 보고, 올라왔으면 그 묶음 전수 판정을 먼저**(V013 브리핑의 (가) 꼴) 하고 나머지 조각을 이어서 한다. 반영은 G011
+실행 모델: Sonnet 5.5 (같은 창 — 바꾸지 않는다)
 
-■ 고정 규칙: docs/16-ROUND-PROTOCOL.md 그대로 (3장 · 4장 · 5-3 · 교훈 A~G · 1장 — 13-PENDING 은 **CV-25** 부터 · README V 표에 V012 · 조각 data/pipeline/audit/v012-raw/).
-■ ★★ 동시 라운드 — GEN G009(V011 반영으로 questions 몇 행을 고치고 퀴즈 500 을 생성 — **data/minigame 은 건드리지 않는다**) · MAIN R051(미니게임 2차 · 미커밋 server/ client/ 파일 있음)이 같이 돈다.
-  VERIFY 몫: ai-out/V012.txt · data/pipeline/audit/v012-* · **data/minigame/*/items.json 의 `verify` 칸과 `status` 만**(다른 칸·값·순서는 글자 하나도 바꾸지 않는다 — 바꾼 뒤 `node scripts/g008-check.mjs` 가 642/642 막힘 0 이어야 한다) · 13 **CV 행(CV-25~ 추가만)** · README **V 표**. 그 밖은 건드리지 않는다. git: 내 파일만 add · `git fetch` 로 원격 확인 · 앞서 있으면 내 커밋을 `git rebase origin/main` · force 금지.
-  ★ 메모리: 판정자 **한 번에 1개**(GEN 2 · MAIN 1) · 띄우기 전 남는 메모리 1.5GB 미만이면 2분 × 10 대기 · 429 면 모델 유지.
-■ 토큰: 넉넉하다(찬종: 이번 주는 토큰을 다 써야 한다) — 아끼려고 표본으로 줄이지 않는다. 그림은 Read 로 한 장씩 보되 판정은 한 줄(ok / 대상 다름 / 글자 노출 / 흐림·워터마크) · 보고서 3절은 fix·drop 만 · 항목 전문은 JSON.
+■ 고정 규칙: docs/16 그대로 (3장 · 4장 · 5-3 · 교훈 A~G · 1장 — 13-PENDING 은 V013 이 쓴 다음 **CV-34** 부터 · README V 표 · 조각 `audit/v014-raw/`).
+■ ★★ 동시 라운드 — GEN(G009 생성 1,000 → G010 미니게임 2차 — questions 는 G009 A 12행뿐 · 이미 끝났다) · MAIN(R053 → R054 — questions 안 건드림)이 같이 돈다. VERIFY 몫: V014.txt · audit/v014-* · 13 CV 행 · README V 표. git: 내 파일만 · fetch · rebase · force 금지. 판정자 **한 번에 1개** · 띄우기 전 남는 메모리 1.5GB(모자라면 2분 × 10 · 그래도 모자라면 1개는 띄운다 — 판정자 하나는 가볍다).
+■ 토큰: 넉넉하다 — 2,086 **전수** · 표본으로 줄이지 않는다. g009 묶음도 전수.
 
 ■ 먼저 읽기
-- docs/16 · **docs/18-MINIGAME-DATA.md 전체**(0 공통 칸 · 1~5 게임 규칙 · 6 재검증 기준) · docs/17 1-1 · ai-out/G008.txt(0 · 3 · 4 · 5절 — 버린 소재 · 자기 검토 · 걸리는 점 3) · 13 C70 ①
-- data/pipeline/audit/g008-verify-targets.json(games[<game>] — count · sample(표본 id) · items(전문 + verifySample)) · data/minigame/<game>/items.json · worldprice/products.json · scripts/g008-check.mjs(읽기 전용 — 기계 규칙이 무엇을 이미 막는지) · assets/minigame/README.md
-- docs/15 §2 B2(사진 정답 표기) · §3-2(정답 유일성)
+- docs/16 · **ai-out/V013.txt 전체**(이번 기준의 본보기 — 2절 종류 · 3절 fix 꼴 · 6절 반복 유형 ①②③ · CV-32 · CV-33) · ai-out/verify.md 는 이 파일 · `ai-out/briefs/archive/V013.md`(g009 묶음 판정 (가) 의 할 일 A~F · 기준 — 묶음이 올라오면 그대로 따른다) · V009.txt 2절·6절·7절(묶음 판정 꼴) · V010.txt 2절(blind 재채점)
+- docs/15 전체 · pipeline/prompts/score-v3.md · hint-v5 · deep-v5 · scripts/hint-check.mjs(읽기 전용)
+- `data/pipeline/audit/v013-active3.json`(표본 300 의 id — **이번 대상에서 뺀다**) · v013-raw/ 의 판정자 지시(같은 기준 파일을 쓴다 — 바꾸지 않는다 · 보정 표본은 V013 의 6건 그대로 다시 한 번)
 
 ■ 찬종의 말 · 확정
-- (2026-10-15) "verify는 gen이 수집한 상품 정보 같은걸 다시 웹에 검색을 하든지 해서 적절한 이미지를 가져왔는지, 가격이나 수치 등이 비정상적이지 않고 합리적이며 일반적이고 표준에 가까운지 등 재검증." · (얼마게요) "판매자에 따라 가격이 천차만별이 아니고 적당히 형성된 가격" · (사진) "실루엣 같은건 누끼를 깔끔하게" — 실루엣은 안 쓴다 · (저작권) "공개 저장소에 넣지마. 상업 이용 안할거니까 그냥 다운 및 표시는 해도 됨"(그림은 git 밖 — 커밋하지 않는다).
-- 설계 판단(2026-10-17): worldprice `cc: "EU"`(유로 지역 한 줄)는 **순위 표시에는 허용 · 목표(targetCc)로는 불허** → EU 가 targetCc 인 문항 1 은 drop · shownCc 에 든 3 은 ok(R052 가 "유로 지역" 으로 표시). price 1만 원 미만 20 은 보충하지 않는다.
+- "퀄리티 있는 문제 수 늘리는게 우선이야." · 설계 판단: CV-32 → **(b) 나머지 2,086 전수**(찬종 "작업 최대한 많이 · 토큰 빨리") · CV-33 → H2 "번역·한자 뜻풀이로 정답 조각" 꼴은 **이번 판정에서 fix 로 센다**(15 에 넣는 것은 G011 — 판정 기준으로는 지금부터) · drop 은 사실 오류 · 정답 비유일 · 범주 단서 2회차 · 마이너 대상에만 · 같은 정답 활성 쌍의 "같은 사실 다른 문장"(H12) 은 fix.
 
-■ 대상 (확인 대상 — 판정 전에 파일과 다시 맞춘다)
-- 642 = price 100 · worldprice 172(품목 3 — 빅맥 54개국 · 아이폰 38 · 넷플릭스 194) · photo 120 · estimate 100 · which 150 · 전부 status candidate · verify null · 그림 508장(`assets/minigame/` — 없으면 `backups/minigame-2026-10-17.zip` 을 같은 자리에 푼다 · zip 은 git 밖).
-- 값 재확인은 **전수**: price 100(항목마다 다른 판매처 1곳 새로) · worldprice 나라 **전부**(빅맥 54 · 아이폰 38 · 넷플릭스 194 — 현지가 페이지 다시 열기 · 환율은 통화마다 한 번) · photo 120(라이선스 공용 페이지 · 한국 표기) · estimate 100 · which 150(값 300). verifySample 표시는 무시한다(전수라 의미 없음).
-- ★ 그 가운데 **먼저 · 더 깊게 여는 것**(C70 ① · G008 자기 검토) — price: 출처 2곳이 같은 다나와 페이지인 37 중 표본 밖 **10**(다른 판매처 1곳을 새로 연다) · 자동차 4종 · 사치품 전부(병행수입 시세 — 매장 정가와 비교해 1.5 안인가) / photo: 손질 4장(CC BY-SA 고친 사실이 `attribution` 에 있는가) · 한국 표기 근거 약한 7(라바콘 · 빵끈 · 집게핀 · 피자 세이버 · 케이블 타이 · 도어 클로저 · 수평계) · several 5(크루통 · 의사봉 · 빵끈 · 애글릿 · 피자 세이버 — 다른 이름 후보를 altAnswers 에 넣을지) · 만델라(배경 인물) · 서울월드컵경기장(관중) · 간디(서명) / estimate: 열량 7(kJ → kcal 환산) · 그린란드상어 392년 / worldprice: ECB 밖 환율 전부(공개 API 값을 다른 환율 표로 ±3%) · 빅맥 EU 행 / price-0030 로보락(그림의 기능 문구가 정답 단서인가).
-
-■ 기준 — docs/18 6절 그대로. 새 기준 없음.
-- 그림(**전수 508**): ① 그 대상이 맞는가 ② 정답 글자·가격 숫자·상표 로고가 보이는가(price 는 상표 로고 허용 — 정답이 가격이다 · photo·which·estimate 는 정답 낱말이 보이면 fix) ③ 흐림·워터마크·캡션 ④ photo 는 사진만 보고 답이 하나인가(비슷한 것이 둘 이상 떠오르면 fix — altAnswers 로 받을 수 있으면 fix · 못 받으면 drop) ⑤ 한국 표기(15 B2 — 한국에서 실제로 치는 표기만 · 영문 원어는 넣지 않는다).
-- 값(전수): price 다른 판매처 1곳 ±30% · 중고/부속품/구성 다름 아님 · priceAsOf 1년 안 / worldprice 현지가·환율 ±10% / estimate 표준 출처 ±10% · 범위 값은 note 에 범위 / which 두 값 ±10%(연도는 정확히) · margin 규칙(bigger 1.3 · earlier 5년) · 정답 방향.
-- verdict: **ok · fix(proposal 에 바꿀 칸과 값 · 근거 url) · drop(이유)**. 난이도(photo difficulty 1~3)는 120 전부 다시 매겨 proposal 에.
-- 교훈 F — 섞은 6건(price 2 · photo 2 · estimate 1 · which 1)으로 RUBRIC 고정(짧게).
-
-■ 할 일 (항목마다 "다 됐다" 의 기준)
-A. 그림 전수 508 — 판정자가 Read 로 열어 한 줄씩(`v012-raw/images.json` — file · verdict · note). 다 됐다 = 508 전수 · 대상 다름 · 글자 노출 · photo 유일성 의심 수.
-B. 값 — 642 전수(worldprice 는 나라 286 행). 다 됐다 = 건마다 다시 연 url · 다시 읽은 값 · 차이 % · verdict · 게임별 ok/fix/drop 표.
-C. `verify` 칸 · `status` 채우기(VERIFY 가 직접 — 스크립트로 · 판정 파일에서 넣는다 · 642 전부):
-   - `verify = {round:"V012", verdict, reason, proposal, checked:["image", "value", …]}` · status = ok → `verified` · drop → `rejected` · fix → `candidate` 그대로(G010 이 proposal 을 적용하고 verified 로).
-   - worldprice 는 products.json 의 rows 가 값 정본 — 나라별 판정은 `v012-minigame.json` 의 `worldprice` 에(products.json 은 건드리지 않는다) · items.json 의 verify 칸은 그 문항의 targetCc · shownCc 나라가 모두 ok 면 ok · 하나라도 fix/drop 이면 그 verdict.
-   다 됐다 = `node scripts/g008-check.mjs` 642/642 막힘 0 · status 집계(verified · candidate · rejected) 게임별 표.
-D. 사실 — 제안의 새 값 전부 문서 url 로. E. 직접 재독 — fix · drop 전부 + ok 10%.
-
-■ 웹·토큰 예산: WebSearch **80회 이내** · WebFetch 주 수단(값 재확인 ~900회 예상 — 조각은 게임별 · 100건 안팎씩) · 판정자 **한 번에 1개** · 그림 Read 508.
-■ 산출물: `ai-out/V012.txt`(0~7절 — 0절에 게임별 표: 표본 ok/fix/drop · 그림 전수 결과 · status 집계 · "G010 이 반영하면 남는 수") · `data/pipeline/audit/v012-minigame.json`(round · date · model · web · counts · `images`(file 키) · `items`(id 키 — verdict · reason · proposal · checked · urls) · `worldprice`(productId/cc 키) · `flipped`) · `v012-raw/` · items.json 의 verify·status · 13 CV-25~(먼저: EU targetCc drop · several 5 의 altAnswers 제안 · 게임별 fix 비율이 20% 를 넘으면 그 원인 유형) · README V 표.
-■ 하지 말 것: DB 쓰기 · items.json 의 verify·status 밖 칸 수정 · 그림 파일 수정·삭제·커밋 · 항목 추가 · 규칙/프롬프트/코드 수정 · Q 올리기 · 서버 기동·빌드 · 퀴즈 문항 판정(G009 몫 아님 — 다음 V013) · 다른 세션 몫 문서.
-■ 커밋: 위 파일만(items.json 포함 — 그림은 빼고). 끝줄 `Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>`.
-■ 확인할 것 (원칙 7): 642 · 게임별 수 · 그림 508 · 전부 candidate/verify null · g008-check 642/642 — 다르면 0절에.
-■ 지난 피드백 (V011): 잘한 것 — 대상을 시작 때 DB 에서 떠 파일로 고정한 것 · G008 이 이미 고친 #4268 · #641 을 DB 로 확인해 판정자 fix 를 ok 로 뒤집은 것 · #3680 을 원문(위키문헌)까지 열어 "고구마 밭" 단정을 잡은 것 · 제안 문구를 chk 로 통과시킨 것. 고칠 것 — 판정자 q1 이 WebFetch 대신 node 로 문서를 열어 횟수가 자기 보고뿐이었다 → 이번엔 판정자에게 **WebFetch 만** 쓰게 하고 url 을 결과 JSON 에 남긴다.
-■ ★ 이어서: 이 라운드의 보고서 · 커밋 · push 가 끝나면 **같은 창에서** `ai-out/briefs/verify-next.md` 를 읽고 그 라운드(V013)를 바로 시작한다 — 찬종에게 묻지 않는다(찬종 2026-10-17: "검사는 몰아서 한번에 … 작업을 최대한 많이"). 그 파일이 없거나 첫 줄이 "보류" 면 멈춘다.
+■ 대상 — `SELECT id … FROM questions WHERE is_active AND difficulty_score = 3` (읽기 전용 · 2,386 이어야 한다) 에서 `v013-active3.json` 의 300 을 뺀 **2,086** · id 오름차순 · 50건 조각 → 약 42조각 · 항목마다 질문 · 정답 · 변형(question_answers) · 해설 · 힌트(general_hint) · 분류 · 같은 정답 활성 쌍(V013 꼴) 을 입력에.
+■ 기준 — V013 (나) 와 같다: 정답 유일성(3-2) · 질문·해설 사실(문서 — WebFetch · 못 열면 unverified) · 힌트 H0~H12(hint-v5 · H2 번역·한자 뜻풀이 꼴 포함 · H12 같은 정답 쌍 같은 사실) · 변형 누락(한국어 문서가 같은 말로 소개하는 별칭·표기 — B2) · 단정(시간·학설) · 해설(E2 되풀이) · 3-1 읽기 좋음 → ok/fix/drop · proposal 전체 문구 · url.
+■ 할 일 — A. 조각 42 전수 verdict(ok/fix/drop · categories · reason · proposal · url) B. 보정 표본 6(V013 과 같은 것)으로 첫 조각 전 기준 맞춤 C. 직접 재독(fix · drop 전부 · ok 10%) D. 집계 — 출처 라운드별 fix 율(V013 2절 꼴) · 유형별 · CV-32 (b) 의 답이 되게 "난이도 3 전체(V013 300 + 이번 2,086) fix N건" E. **조각마다** `git fetch origin` 뒤 `git ls-tree --name-only origin/main data/pipeline/audit/ | grep -E 'g009[ab]-verify-targets'` — 나타나면 자기 커밋을 push 한 뒤 `git pull --rebase` 로 받고 **그 묶음 전수 판정(archive/V013.md 의 A~F 그대로 — blind 재채점 전수 · 보정 12 · r2 100 · 2회차 양방향 · 힌트 전수 · 고침 효과 · 묶음별 집계)** 을 먼저 끝내고 `audit/v014-results.json`(V009 꼴) 에 쓴 뒤 나머지 조각으로 돌아온다(b 가 a 뒤에 오면 같은 방법) F. **중간 커밋** — 조각 10개(500건)마다 `audit/v014-active3.json` 을 `{"partial": true, "done": N}` 머리와 함께 커밋 · push(G011 이 일찍 집을 수 있게) · 끝나면 partial 을 뗀다.
+■ 웹·토큰 예산: WebSearch **150회 이내** · WebFetch 주 수단(판정자도 WebFetch 만 · url 을 JSON 에) · 판정자 ≤1.
+■ 산출물: `ai-out/V014.txt`(0~7절 — 0절에 g009 묶음 판정 여부 · 2,086 집계 · 난이도 3 전체 fix 율) · `audit/v014-active3.json`(2,086 모두 키로 한 번씩 — V013 꼴) · `audit/v014-results.json`(g009 묶음을 판정했을 때만 — V009 꼴 · 안 했으면 만들지 않는다) · `v014-raw/` · 13 CV-34~ · README V 표.
+■ 하지 말 것: DB 쓰기 · 문항 고치기(제안만) · 미니게임 판정(2차 items-2.json 은 V015) · 규칙/프롬프트/코드 수정 · Q · 서버 · 다른 세션 몫.
+■ 커밋: 위 파일만 · 끝줄 `Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>`.
+■ 확인할 것 (원칙 7): 활성 5,113 · 난이도 3 = 2,386 · v013-active3.json 키 수 300 · 시작 시점 origin/main 에 g009a 묶음 없음(있으면 E 를 먼저) — 다르면 0절에.
+■ ★ 이어서: 보고서 · 커밋 · push 뒤 같은 창에서 **`ai-out/briefs/verify-next.md`** 를 읽고 V015 를 바로 시작한다(찬종에게 묻지 않는다 · 파일이 없거나 첫 줄이 "보류" 면 멈춘다).
 ■ 답변: 한국어 · 터미널 5줄 이내.
