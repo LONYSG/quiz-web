@@ -12,6 +12,7 @@ import {
   BALANCE_BOTTOM_Y,
   BALANCE_TOP_Y,
   TYPING_KO_SHORT,
+  QUIZ_DUMMY,
   balanceItem,
   balanceSplit,
   circleScore,
@@ -46,8 +47,10 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
     { top: 52, bottom: 41 },
     null,
   ];
-  const rows =
-    key === 'reaction' || key === 'typing' || key === 'circle' || key === 'angle'
+  const quiz = r052Scene(key, phase);
+  const rows = quiz
+    ? quiz.rows
+    : key === 'reaction' || key === 'typing' || key === 'circle' || key === 'angle'
       ? r051Rows(key)
       : key === 'cake'
       ? [
@@ -64,7 +67,7 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
           })
           .sort((a, b) => (b.value ?? -1) - (a.value ?? -1))
           .map((r, i) => ({ ...r, rank: r.submitted ? i + 1 : 4, points: r.submitted ? 4 - i : 0 }));
-  const decimals = key === 'reaction' ? 0 : key === 'cake' ? 2 : (() => {
+  const decimals = quiz ? 1 : key === 'reaction' ? 0 : key === 'cake' ? 2 : (() => {
     const v = rows.filter((r) => r.value !== null).map((r) => r.value as number);
     for (let d = 1; d <= 3; d += 1) if (v.length < 2 || v[0]!.toFixed(d) !== v[1]!.toFixed(d)) return d;
     return 3;
@@ -72,8 +75,9 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
   // ★ R051 — 장면 상태 (?state= — 번개손 wait/fake-color/fake-text/go · 타자 typed 글 · 원 · 각도는 기본)
   const sceneState = new URLSearchParams(window.location.search).get('state') ?? '';
   const playAgo = key === 'reaction' ? ({ wait: 600, 'fake-color': 1300, 'fake-text': 1300, go: 3050 } as Record<string, number>)[sceneState] ?? 600 : 2300;
-  const roundParams =
-    key === 'reaction'
+  const roundParams = quiz
+    ? quiz.params
+    : key === 'reaction'
       ? { quickdraw: true, signalMs: 3000, windowMs: 2000, fakes: [{ atMs: 1200, kind: sceneState === 'fake-text' ? 'text' : 'color' }] }
       : key === 'typing'
         ? { lang: 'ko', size: 'short', text: TYPING_KO_SHORT[0] }
@@ -92,14 +96,16 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
     phaseStartedAt: now,
     phaseEndsAt: now + 99_000,
     roundIndex: phase === 'intro' || phase === 'rules' ? -1 : 0,
-    roundCount: minigameInfo(key).rounds,
+    roundCount: quiz ? 5 : minigameInfo(key).rounds,
     round:
       phase === 'intro' || phase === 'rules' || phase === 'final' || phase === 'outro'
         ? null
         : {
             params: roundParams,
-            playMs: key === 'cake' ? 13000 : key === 'reaction' ? 5000 : key === 'typing' ? 30000 : key === 'circle' ? 8000 : 10000,
-            private: key === 'balance' ? { start: { top: 31, bottom: 70 } } : key === 'angle' ? { start: 58 } : null,
+            playMs: quiz ? quiz.playMs : key === 'cake' ? 13000 : key === 'reaction' ? 5000 : key === 'typing' ? 30000 : key === 'circle' ? 8000 : 10000,
+            private: key === 'balance' ? { start: { top: 31, bottom: 70 } } : key === 'angle' ? { start: 58 } : quiz && sceneState === 'seen' ? { experienced: true } : null,
+            reveal: phase === 'roundResult' && quiz ? quiz.reveal : null,
+            itemId: null,
           },
     participants: PEOPLE,
     submittedCount: 1,
@@ -119,7 +125,9 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
     afterQuestionIndex: 10,
     receivedAt: performance.now() - (phase === 'play' ? playAgo : 0),
     lab:
-      key === 'reaction' && phase === 'play'
+      key === 'photo' && phase === 'play'
+        ? { elapsedMs: Number(new URLSearchParams(window.location.search).get('at') ?? 2000) }
+        : key === 'reaction' && phase === 'play'
         ? { elapsedMs: playAgo }
         : key === 'typing' && sceneState === 'typed'
           ? { typed: `${[...TYPING_KO_SHORT[0]!].slice(0, 6).join('')}리 ㄱ`, composing: true }
@@ -179,6 +187,65 @@ function r051Rows(key: 'reaction' | 'typing' | 'circle' | 'angle') {
     base('lab2', 6, 3, 2, { deg: 43, target: 37 }, 6),
     base('lab4', 21, 4, 1, { deg: 58, target: 37 }, 21),
   ];
+}
+
+/**
+ * ★★★ R052 — 퀴즈류 장면(더미 문항 · ?image=<그림 id> 를 주면 실제 그림 · ?mode=zoom|mosaic|plain · ?at=ms 사진 드러남 시각 · ?state=seen 이미 본 문항)
+ */
+function r052Scene(key: MinigameKey, phase: MinigamePhase) {
+  if (!['price', 'worldprice', 'photo', 'estimate', 'which'].includes(key)) return null;
+  const q = new URLSearchParams(window.location.search);
+  const image = q.get('image');
+  const row = (id: string, rank: number, points: number, extra: Record<string, unknown> | null, value: number | null, submitted = true) => ({ accountId: id, submitted, value, error: null, rank, points, extra });
+  if (key === 'price') {
+    const d = QUIZ_DUMMY.price[0];
+    return {
+      playMs: 12000,
+      params: { name: d.name, brand: d.brand, category: d.category, imageId: image, dummy: !image },
+      reveal: { priceKrw: d.priceKrw, note: d.note, attribution: image ? '(그림 출처)' : null },
+      rows: [
+        row('lab1', 1, 4, { guess: 12000, pct: -2.79 }, 0.028),
+        row('lab3', 2, 3, { guess: 15000, pct: 21.51 }, 0.195),
+        row('lab2', 3, 2, { guess: 5000, pct: -59.5 }, 0.904),
+        row('lab4', 4, 0, null, null, false),
+      ],
+    };
+  }
+  if (key === 'worldprice') {
+    const d = QUIZ_DUMMY.worldprice[0];
+    const rows = [...d.rows].sort((a, b) => a.krw - b.krw);
+    return {
+      playMs: 12000,
+      params: { nameKo: d.nameKo, unit: d.unit, imageId: image, target: { cc: 'XB', countryKo: '나나라(연습)' }, shown: d.rows.filter((r) => ['KR', 'XA', 'XC'].includes(r.cc)), fxAsOf: d.fxAsOf, dummy: !image },
+      reveal: { targetKrw: 8000, targetLocal: 8, currency: 'XBB', rows, fxAsOf: d.fxAsOf },
+      rows: [row('lab1', 1, 4, { guess: 7500, pct: -6.25 }, 0.065), row('lab3', 2, 3, { guess: 10000, pct: 25 }, 0.223), row('lab2', 3, 2, { guess: 4000, pct: -50 }, 0.693), row('lab4', 4, 0, null, null, false)],
+    };
+  }
+  if (key === 'photo') {
+    const mode = q.get('mode') ?? 'zoom';
+    return {
+      playMs: 20000,
+      params: { imageId: image, dummyShape: 'circle', revealMode: mode, revealMs: 15000, dummy: !image },
+      reveal: { answer: image ? '(정답)' : '동그라미', explanation: '연습용 설명이에요.', attribution: image ? '(그림 출처)' : null },
+      rows: [row('lab3', 1, 4, { timeSec: 3.2, tries: 1 }, 3200), row('lab1', 2, 3, { timeSec: 6.9, tries: 3 }, 6900), row('lab2', 3, 0, { tries: 2 }, null, false), row('lab4', 3, 0, null, null, false)],
+    };
+  }
+  if (key === 'estimate') {
+    const d = QUIZ_DUMMY.estimate[0];
+    return {
+      playMs: 12000,
+      params: { question: d.question, unit: d.unit, kind: 'weight', imageId: image, displayDecimals: 0, dummy: !image },
+      reveal: { value: d.value, unit: d.unit, displayDecimals: 0, note: '40~45kg', explanation: d.explanation },
+      rows: [row('lab1', 1, 4, { guess: 40, pct: -4.76 }, 0.049), row('lab2', 2, 3, { guess: 60, pct: 42.86 }, 0.357), row('lab3', 3, 2, { guess: 10, pct: -76.19 }, 1.435), row('lab4', 4, 0, null, null, false)],
+    };
+  }
+  const d = QUIZ_DUMMY.which[0];
+  return {
+    playMs: 6000,
+    params: { stem: d.stem, kind: d.kind, unit: d.unit, a: { label: d.a.label, imageId: image }, b: { label: d.b.label, imageId: null }, dummy: true },
+    reveal: { answer: d.answer, a: d.a.value, b: d.b.value, unit: d.unit, margin: 2.33 },
+    rows: [row('lab1', 1, 1, { choice: 'a', correct: true }, 820), row('lab3', 2, 1, { choice: 'a', correct: true }, 1410), row('lab2', 3, 0, { choice: 'b', correct: false }, null), row('lab4', 3, 0, null, null, false)],
+  };
 }
 
 export default function LabMinigame({ myAccountId }: { myAccountId: string }) {

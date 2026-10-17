@@ -18,7 +18,7 @@ import {
   minigameInfo,
   type BalanceKind,
 } from '@quiz/shared';
-import { Gamepad2, Keyboard, PartyPopper, Trophy, Zap } from 'lucide-react';
+import { BookOpenCheck, Gamepad2, Globe2, ImageIcon, Keyboard, PartyPopper, Ruler, Scale, Tag, Trophy, Zap } from 'lucide-react';
 import Icon from '../Icon.js';
 import Avatar from '../Avatar.js';
 import DeviceIcon from '../DeviceIcon.js';
@@ -32,11 +32,30 @@ import AngleMatch, { ANGLE_VX, ANGLE_VY, rayEnd } from './AngleMatch.js';
 import CircleDraw from './CircleDraw.js';
 import ReactionTap, { fakeName } from './ReactionTap.js';
 import TypingRace from './TypingRace.js';
+import PhotoGuess from './PhotoGuess.js';
+import QuizNumber from './QuizNumber.js';
+import QuizReveal, { WhichSummary, quizValueText } from './QuizReveal.js';
+import { preloadQuizImages } from './QuizParts.js';
+import WhichPick from './WhichPick.js';
 
 /** ★ 판 진행 화면 — 미니게임 키 → 컴포넌트 */
-const PLAY = { cake: CakeWait, balance: BalanceGuard, reaction: ReactionTap, typing: TypingRace, circle: CircleDraw, angle: AngleMatch } as const;
+const PLAY = {
+  cake: CakeWait,
+  balance: BalanceGuard,
+  reaction: ReactionTap,
+  typing: TypingRace,
+  circle: CircleDraw,
+  angle: AngleMatch,
+  // ★ R052 — 퀴즈류 다섯
+  price: QuizNumber,
+  worldprice: QuizNumber,
+  photo: PhotoGuess,
+  estimate: QuizNumber,
+  which: WhichPick,
+} as const;
+const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which']);
 /** 진행 중 "n / m명 …" 의 말 */
-const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정' };
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름' };
 
 interface Props {
   socket: Socket;
@@ -69,6 +88,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         sfx('mg-jingle');
         break;
       case 'ready':
+        // ★ R052 — 퀴즈류는 다음 문항 그림을 미리 받는다
+        if (QUIZ_KEYS.has(view.key)) preloadQuizImages(view);
         // ★ 케이크는 리듬을 들어야 한다 — 판 동안 배경음악을 끈다
         if (view.key === 'cake' || view.key === 'reaction') setMusicMode('quiet');
         sfx('mg-ready');
@@ -82,7 +103,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
       case 'roundResult':
         setMusicMode('minigame');
         if (view.key === 'balance') sfx('mg-cut');
-        else sfx('mg-round');
+        else if (view.key !== 'which') sfx('mg-round');
         break;
       case 'final':
         sfx('mg-final');
@@ -147,6 +168,11 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
             {view.key === 'cake' && <p className="dim mg-rules-note">블루투스 이어폰은 소리가 늦게 들려요 — 화면 숫자를 믿으세요</p>}
             {view.key === 'reaction' && <p className="dim mg-rules-note">진짜 신호는 초록 화면 — 소리를 꺼도 초록만 보면 돼요 · 노란 화면 · 글자 · 소리만은 가짜</p>}
             {view.key === 'typing' && <p className="dim mg-rules-note">한글 짧은 문장 · 영어 · 한글 긴 문장 — 30초 안에 못 치면 친 만큼(%)으로</p>}
+            {QUIZ_KEYS.has(view.key) && (
+              <p className="dim mg-rules-note">
+                {view.practice ? '연습 판은 가짜 문항이에요(실제 문항을 미리 보지 않게)' : '한 번 본 문항은 다시 나오지 않아요 · 이미 본 사람은 그 문항 점수가 없어요'}
+              </p>
+            )}
             <p className="dim mg-rules-note">
               {view.roundCount}판 · 판마다 순위 점수 · {view.practice ? '연습이라 보상 없음' : '최종 1~3위에게 보너스 점수(포인트도)'}
             </p>
@@ -196,6 +222,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
               );
             })}
           </ol>
+          {view.key === 'which' && <WhichSummary view={view} nameOf={nameOf} />}
           <p className="dim mg-final-note">{view.practice ? '연습 판이라 점수 · 포인트에 들어가지 않아요' : '보너스는 퀴즈 점수와 포인트에 함께 들어가요'}</p>
         </div>
       )}
@@ -231,6 +258,16 @@ function readyDesc(view: MinigameView): string {
       return '한 번에 · 동그랗게 · 크게';
     case 'angle':
       return '눈금 없이 — 감으로!';
+    case 'price':
+      return '얼마일까?';
+    case 'worldprice':
+      return `${String((p.target as { countryKo?: string } | undefined)?.countryKo ?? '')}에서는?`;
+    case 'photo':
+      return p.revealMode === 'zoom' ? '확대 → 점점 멀어져요' : p.revealMode === 'mosaic' ? '모자이크가 점점 풀려요' : '사진을 보고!';
+    case 'estimate':
+      return '어림해 보세요';
+    case 'which':
+      return '';
   }
 }
 
@@ -268,6 +305,21 @@ function RulesArt({ k }: { k: MinigameView['key'] }) {
           <path d="M50 14 C72 13 86 30 85 51 C84 72 70 86 49 85 C28 84 15 70 15 50 C15 31 30 17 46 15" className="circle-ink" />
         </svg>
       );
+    case 'price':
+    case 'worldprice':
+    case 'photo':
+    case 'estimate':
+    case 'which': {
+      const I = { price: Tag, worldprice: Globe2, photo: ImageIcon, estimate: Ruler, which: Scale }[k];
+      return (
+        <div className="mg-rules-icon" aria-hidden="true">
+          <Icon icon={I} className="mg-rules-big" />
+          <span className="quiz-rules-tag">
+            <Icon icon={BookOpenCheck} /> 퀴즈류
+          </span>
+        </div>
+      );
+    }
     case 'angle': {
       const e = rayEnd(37);
       const b = rayEnd(0);
@@ -316,6 +368,8 @@ function RoundResult({
   const d = result.decimals;
   const mine = result.rows.find((r) => r.accountId === myAccountId);
   const valueText = (r: MinigameRoundRow) => {
+    // ★ R052 — 퀴즈류는 입력 값 · % · 시간 · 맞음/틀림
+    if (QUIZ_KEYS.has(view.key)) return quizValueText(view, r);
     // ★ R051 — 번개손 실격 · 타자 미완은 값 대신 이유 (submitted 가 false 여도 진행률은 보인다)
     if (view.key === 'reaction' && r.extra?.foul) return r.extra.foul === 'fake' ? `속음(${fakeName(String(r.extra.fakeKind))})` : '성급!';
     if (view.key === 'typing' && r.extra?.unfinished) return `미완 ${formatMinigameValue(Number(r.extra.pct ?? 0), 0)}%`;
@@ -340,7 +394,9 @@ function RoundResult({
   };
   return (
     <div className="mg-result">
-      {view.key === 'reaction' || view.key === 'typing' || view.key === 'circle' || view.key === 'angle' ? (
+      {QUIZ_KEYS.has(view.key) ? (
+        <QuizReveal view={view} mine={view.spectating ? undefined : mine} />
+      ) : view.key === 'reaction' || view.key === 'typing' || view.key === 'circle' || view.key === 'angle' ? (
         <R051Result view={view} mine={view.spectating ? undefined : mine} first={result.rows[0]} decimals={d} />
       ) : view.key === 'balance' ? (
         <BalanceCutShow view={view} row={mine ?? result.rows[0]} decimals={d} />
@@ -372,7 +428,10 @@ function RoundResult({
               <span className="nick mg-nick" style={{ color: `var(--p${p?.colorIndex ?? 0})` }}>
                 {p?.nickname ?? '나간 사람'}
               </span>
-              <span className="mg-value mono">{valueText(r)}</span>
+              <span className="mg-value mono">
+                {valueText(r)}
+                {r.extra?.experienced ? <span className="quiz-seen-tag"> · 이미 본 문항</span> : null}
+              </span>
               <span className="mg-points mono">+{r.points}</span>
             </li>
           );

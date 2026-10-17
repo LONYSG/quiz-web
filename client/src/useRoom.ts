@@ -88,7 +88,7 @@ export interface MinigameView {
   phaseEndsAt: number;
   roundIndex: number;
   roundCount: number;
-  round: { params: Record<string, unknown>; playMs: number; private: Record<string, unknown> | null } | null;
+  round: { params: Record<string, unknown>; playMs: number; private: Record<string, unknown> | null; reveal?: Record<string, unknown> | null; itemId?: string | null } | null;
   participants: MinigameParticipantView[];
   submittedCount: number;
   selfSubmitted: boolean;

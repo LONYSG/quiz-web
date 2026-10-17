@@ -2131,6 +2131,8 @@ const MINIGAME_ONLY = args.includes('--minigame');
 if (MINIGAME_ONLY) {
   process.env.SHOT_DIR ??= 'verify';
   process.env.MINIGAME_PHASE_SCALE ??= '2';
+  // ★ R052 — 퀴즈 판 3문제를 빨리 넘기려고 정답 공개 대기를 줄인다(퀴즈류 미니게임은 5문제 판 3번째 뒤)
+  process.env.RESOLVED_WAIT_MS ??= '1500';
 }
 async function setTheme(page, t) {
   await page.evaluate(`document.documentElement.dataset.theme = '${t}'`);
@@ -2557,6 +2559,228 @@ async function r051Flow(browser) {
   if (R051_GAMES.includes('angle')) await r051Angle(browser);
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R052 — 퀴즈류 다섯 화면 점검 (ui-check:minigame 에 이어서 · MG_QUIZ=price,worldprice,photo,estimate,which · MG_SKIP_R052)
+//   [1] 실험실 장면(더미 · 실제 그림 id) — 규칙 · 진행 · 정답 공개 · 최종 · 사진 zoom/mosaic(실제 그림) · 빅맥 전체 순위 표
+//   [2] 실제 퀴즈 판 — H(PC 1280) · G(390 터치): 5문제 판 · 미니게임 하나만 켬 · 두 사람이 3문제를 맞혀 넘김 → 미니게임
+//       숫자: H 키보드(정답 × 1.1) · G 톡 입력(정답 × 0.8) / 사진: H 틀림 → 맞힘 · G 맞힘 / 어느 쪽: H ← → · G 톡
+// -----------------------------------------------------------------------------
+const R052_GAMES = (process.env.MG_QUIZ ?? 'price,worldprice,photo,estimate,which').split(',').filter(Boolean);
+async function quizRoundItem(roomId) {
+  return withPg(async (c) =>
+    (
+      await c.query(
+        `SELECT r.item_id, i.payload, i.game FROM minigame_rounds r JOIN minigame_items i ON i.item_id = r.item_id
+          WHERE r.run_id = (SELECT max(id) FROM minigame_runs WHERE room_id = $1) ORDER BY r.round_index DESC LIMIT 1`,
+        [roomId],
+      )
+    ).rows[0] ?? null,
+  );
+}
+async function quizAnswerNumber(row) {
+  if (!row) return null;
+  if (row.game === 'price') return row.payload.priceKrw;
+  if (row.game === 'estimate') return row.payload.value;
+  const pr = await withPg(async (c) => (await c.query(`SELECT payload FROM minigame_products WHERE product_id = $1`, [row.payload.productId])).rows[0]?.payload);
+  return pr?.rows.find((x) => x.cc === row.payload.targetCc)?.krw ?? null;
+}
+async function r052Lab(browser) {
+  const L = await newPage(browser, 'M3-lab');
+  await L.setViewport(1280, 720);
+  await signUp(L, 'm3l', '그림점검셋');
+  const imgs = await withPg(async (c) =>
+    Object.fromEntries(
+      (
+        await c.query(
+          `SELECT DISTINCT ON (k) k, image_id FROM (
+             SELECT CASE WHEN payload->>'revealMode' = 'zoom' THEN 'zoom' WHEN payload->>'revealMode' = 'mosaic' THEN 'mosaic' ELSE game END k, image_ids[1] image_id, item_id
+               FROM minigame_items WHERE active AND cardinality(image_ids) > 0) x ORDER BY k, item_id`,
+        )
+      ).rows.map((r) => [r.k, r.image_id]),
+    ),
+  );
+  console.log(`[r052-lab] 실제 그림 ${JSON.stringify(imgs)}`);
+  const scenes = [];
+  for (const k of R052_GAMES) for (const ph of ['rules', 'play', 'roundResult', 'final']) scenes.push([k, ph, '']);
+  if (R052_GAMES.includes('photo')) scenes.push(['photo', 'play', `&image=${imgs.zoom}&mode=zoom&at=2500`, 'zoom-real-2s'], ['photo', 'play', `&image=${imgs.zoom}&mode=zoom&at=11000`, 'zoom-real-11s'], ['photo', 'play', `&image=${imgs.mosaic}&mode=mosaic&at=2500`, 'mosaic-real-2s'], ['photo', 'play', `&image=${imgs.mosaic}&mode=mosaic&at=11000`, 'mosaic-real-11s']);
+  if (R052_GAMES.includes('price')) scenes.push(['price', 'play', `&image=${imgs.price}&state=seen`, 'real-seen']);
+  const num = { price: 70, worldprice: 71, photo: 72, estimate: 73, which: 74 };
+  for (const [k, ph, extra, tag] of scenes) {
+    const name = `${num[k]}-scene-${k}-${ph}${tag ? `-${tag}` : ''}`;
+    for (const [dev, w, h, touch] of [['pc', 1280, 720, false], ['m390', 390, 844, true]]) {
+      if (touch) await touchDevice(L, w, h);
+      else {
+        await touchDevice(L, w, h, false);
+        await L.setViewport(w, h);
+      }
+      await L.goto(`${BASE}/lab/minigame?scene=1&key=${k}&phase=${ph}&seed=2024${extra}`);
+      await L.waitFor(`document.querySelector('.mg-card')?.dataset.phase === '${ph}'`, 6000);
+      await L.waitFor("[...document.querySelectorAll('img.quiz-img')].every((i) => i.complete)", 5000);
+      await sleep(ph === 'roundResult' ? 700 : 450);
+      await snap(L, `${name}-${dev}`);
+      if (touch && (ph === 'play' || ph === 'roundResult')) {
+        await touchDevice(L, 344, 882);
+        await L.evaluate("window.dispatchEvent(new Event('resize'))");
+        await sleep(250);
+        const over = await L.evaluate('document.documentElement.scrollWidth - innerWidth');
+        record(`★ R052 장면 ${k}/${ph}${tag ? `/${tag}` : ''} — 폴드 접힘(344) 가로 넘침 없음`, over <= 1, String(over));
+      }
+    }
+    if (tag && tag.startsWith('zoom') || tag?.startsWith('mosaic')) {
+      const ok = await L.evaluate(tag.startsWith('zoom') ? "Boolean(document.querySelector('.photo-zoom img.quiz-img')?.naturalWidth)" : "Boolean(document.querySelector('canvas.photo-canvas') || document.querySelector('.photo-zoom img.quiz-img')?.naturalWidth)");
+      record(`★★ E 사진 ${tag} — 실제 그림(DB bytea)이 /api/minigame/image 로 보인다`, ok === true);
+    }
+  }
+  // 빅맥 전체 순위 표 · 주요국 · 이미 본 문항
+  if (R052_GAMES.includes('worldprice')) {
+    await touchDevice(L, 1280, 720, false);
+    await L.setViewport(1280, 720);
+    await L.goto(`${BASE}/lab/minigame?scene=1&key=worldprice&phase=roundResult&seed=2024`);
+    await L.waitFor("document.querySelectorAll('.wp-table li').length > 3", 5000);
+    record('★★ D 빅맥 정답 공개 — 전체 순위 표 · 목표국 강조 · 한국 강조 · 최저/최고', (await L.evaluate("[document.querySelectorAll('.wp-table li').length, document.querySelectorAll('.wp-table li.target').length, document.querySelectorAll('.wp-table li.kr').length, Boolean(document.querySelector('.wp-minmax'))].join()")) === '5,1,1,true');
+  }
+  if (R052_GAMES.includes('price')) {
+    await L.goto(`${BASE}/lab/minigame?scene=1&key=price&phase=play&seed=2024&state=seen`);
+    await L.waitFor("document.querySelector('.quiz-seen') !== null", 5000);
+    record('★★ B "이미 본 문항" 표시', (await L.evaluate("document.querySelector('.quiz-seen')?.innerText ?? ''")).includes('이미 본 문항'));
+  }
+  await touchDevice(L, 1280, 720, false);
+  await L.close?.();
+}
+
+/** 로비 설정 — 미니게임 하나만 · 문제 5 */
+async function onlyMinigame(H, key) {
+  if (!(await H.evaluate("document.querySelector('.mg-check input')?.checked === true"))) {
+    await realClick(H, '.mg-check input');
+    await H.waitFor("document.querySelectorAll('.mg-set-row [data-minigame]').length > 0", 4000);
+  }
+  if ((await H.evaluate(`document.querySelector('.mg-set-row [data-minigame="${key}"]')?.getAttribute('aria-pressed')`)) !== 'true') {
+    await H.evaluate(`document.querySelector('.mg-set-row [data-minigame="${key}"]')?.click()`);
+    await sleep(300);
+  }
+  for (let i = 0; i < 12; i += 1) {
+    const other = await H.evaluate(`[...document.querySelectorAll('.mg-set-row [data-minigame][aria-pressed="true"]')].map((b) => b.dataset.minigame).find((k) => k !== '${key}') ?? null`);
+    if (!other) break;
+    await H.evaluate(`document.querySelector('.mg-set-row [data-minigame="${other}"]')?.click()`);
+    await sleep(250);
+  }
+  await setQuestionCount(H, 5);
+}
+/** 퀴즈 판 시작 → 3문제를 두 사람이 맞혀 넘긴다 → 미니게임 시작(intro)까지 */
+async function toMinigame(H, G) {
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  for (let q = 0; q < 3; q += 1) {
+    await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.mg-card') === null", 30000);
+    const before = await H.evaluate("document.querySelector('.question-card .q-text')?.dataset.text ?? ''");
+    await answerCurrent(H, H);
+    await answerCurrent(H, G);
+    await H.waitFor(`document.querySelector('.mg-card') !== null || (document.querySelector('.question-card .q-text')?.dataset.text ?? '') !== ${JSON.stringify(before)}`, 30000);
+  }
+  return waitPhase(H, 'intro', 30000);
+}
+async function typeNumber(page, value, viaTap) {
+  const s = String(Math.round(value));
+  if (viaTap) {
+    const r = await rectOf(page, '.quiz-num-input');
+    await trustedTap(page, r.x + r.w / 2, r.y + r.h / 2);
+  } else await page.evaluate("document.querySelector('.quiz-num-input')?.focus()");
+  await page.send('Input.insertText', { text: s });
+  await sleep(150);
+}
+async function r052Live(browser, key) {
+  const { H, G, roomId } = await r051Room(browser, `q${key.slice(0, 2)}`);
+  await onlyMinigame(H, key);
+  await sleep(300);
+  if (!(await toMinigame(H, G))) throw new Error(`${key} 미니게임이 시작되지 않았다`);
+  const num = { price: 70, worldprice: 71, photo: 72, estimate: 73, which: 74 }[key];
+  await sleep(500);
+  await snap(H, `${num}-live-${key}-intro-pc`);
+  const items = key === 'which' ? 10 : 5;
+  for (let i = 0; i < items; i += 1) {
+    await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'play'", 30000);
+    await H.waitFor("[...document.querySelectorAll('img.quiz-img')].every((x) => x.complete)", 4000);
+    await sleep(300);
+    const row = await quizRoundItem(roomId);
+    if (i === 0) {
+      await snap(H, `${num}-live-${key}-play-pc`);
+      await snap(G, `${num}-live-${key}-play-m390`);
+      const imgOk = await H.evaluate("[...document.querySelectorAll('img.quiz-img')].every((x) => x.naturalWidth > 0)");
+      record(`★★ ${key} 진행 — 그림이 실제로 보인다(naturalWidth > 0)`, imgOk === true);
+    }
+    if (key === 'price' || key === 'worldprice' || key === 'estimate') {
+      const ans = await quizAnswerNumber(row);
+      await typeNumber(H, ans * 1.1, false);
+      if (i === 0) {
+        record(`★★ ${key} 숫자 입력 — 쉼표 자동`, (await H.evaluate("document.querySelector('.quiz-num-input')?.value ?? ''")).includes(',') || ans * 1.1 < 1000);
+        await snap(H, `${num}-live-${key}-typed-pc`);
+      }
+      await H.key('Enter');
+      await typeNumber(G, ans * 0.8, true);
+      const ok = await rectOf(G, '.quiz-num-ok');
+      if (ok) await trustedTap(G, ok.x + ok.w / 2, ok.y + ok.h / 2);
+    } else if (key === 'photo') {
+      if (i === 0) {
+        await sleep(2200);
+        await snap(H, `${num}-live-photo-reveal-${row?.payload.revealMode}-pc`);
+      }
+      await H.evaluate("document.querySelector('.quiz-num-input')?.focus()");
+      await H.send('Input.insertText', { text: '전혀아닌답' });
+      await H.key('Enter');
+      await H.waitFor("document.querySelector('.quiz-num-help')?.dataset.feedback === 'wrong'", 3000);
+      if (i === 0) {
+        record('★★ E 사진 틀림 → "아니에요. 다시!"', (await H.evaluate("document.querySelector('.quiz-num-help')?.innerText ?? ''")).includes('아니에요'));
+        await snap(H, `${num}-live-photo-wrong-pc`);
+      }
+      await H.send('Input.insertText', { text: row.payload.answer });
+      await H.key('Enter');
+      await H.waitFor("document.querySelector('.quiz-num-help')?.dataset.feedback === 'correct'", 3000);
+      if (i === 0) {
+        record('★★★ E 사진 맞힘 → "정답! N.N초"', (await H.evaluate("document.querySelector('.quiz-num-help')?.innerText ?? ''")).includes('정답'));
+        await snap(H, `${num}-live-photo-correct-pc`);
+      }
+      const gi = await rectOf(G, '.quiz-num-input');
+      await trustedTap(G, gi.x + gi.w / 2, gi.y + gi.h / 2);
+      await G.send('Input.insertText', { text: row.payload.answer });
+      const ok = await rectOf(G, '.quiz-num-ok');
+      if (ok) await trustedTap(G, ok.x + ok.w / 2, ok.y + ok.h / 2);
+    } else {
+      const ans = row.payload.answer;
+      await H.key(ans === 'a' ? 'ArrowLeft' : 'ArrowRight', { code: ans === 'a' ? 'ArrowLeft' : 'ArrowRight', vk: ans === 'a' ? 37 : 39 });
+      const other = ans === 'a' ? 'b' : 'a';
+      const c = await rectOf(G, `.which-card[data-side="${i % 2 ? ans : other}"]`);
+      if (c) await trustedTap(G, c.x + c.w / 2, c.y + c.h / 2);
+      if (i === 0) await snap(H, `${num}-live-which-picked-pc`);
+    }
+    await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'roundResult'", 20000);
+    if (i === 0) {
+      await sleep(500);
+      await snap(H, `${num}-live-${key}-result-pc`);
+      await snap(G, `${num}-live-${key}-result-m390`);
+      record(`★★ ${key} 정답 공개 — 정답 영역 · 표`, (await H.evaluate("document.querySelector('.quiz-reveal') !== null && document.querySelectorAll('.mg-table li').length === 2")) === true);
+    }
+  }
+  await waitPhase(H, 'final', 30000);
+  await sleep(600);
+  await snap(H, `${num}-live-${key}-final-pc`);
+  await snap(G, `${num}-live-${key}-final-m390`);
+  const db = await withPg(async (c) =>
+    (await c.query(`SELECT a.login_id, r.round_index, r.points, r.input FROM minigame_results r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = (SELECT max(id) FROM minigame_runs WHERE room_id = $1) ORDER BY r.round_index`, [roomId])).rows,
+  );
+  const hPts = db.filter((r) => /h$/.test(r.login_id)).reduce((s, r) => s + r.points, 0);
+  const gPts = db.filter((r) => /g$/.test(r.login_id)).reduce((s, r) => s + r.points, 0);
+  const exp = await withPg(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_item_experiences e JOIN accounts a ON a.id = e.account_id WHERE e.minigame_key = $2 AND a.login_id LIKE $1`, [`%_q${key.slice(0, 2)}%`, key])).rows[0].n);
+  record(`★★★ ${key} 기록 — 문항 × 2명 · 경험 ${items * 2}행 · 점수(H ${hPts} · G ${gPts})`, db.length === items * 2 && exp === items * 2, `${db.length} · ${exp}`);
+  if (key === 'which') record('★★ G 어느 쪽 최종 — 문항별 정리 표', (await H.evaluate("document.querySelectorAll('.which-summary tbody tr').length")) === 2);
+  await H.waitFor("document.querySelector('.mg-card') === null", 30000);
+  await H.close?.();
+  await G.close?.();
+}
+async function r052Flow(browser) {
+  if (!process.env.MG_SKIP_LAB) await r052Lab(browser);
+  if (process.env.MG_SKIP_LIVE) return;
+  for (const k of R052_GAMES) await r052Live(browser, k);
+}
+
 async function minigameFlow(browser) {
   // ── [1] 그림 모음 · 장면 (MG_SKIP_LAB=1 이면 건너뛴다 — 실제 판만 다시 볼 때)
   // ★ R051 — MG_SKIP_R050=1 이면 R050 두 게임을 건너뛰고 · 넷(번개손 · 타자 · 원 · 각도)만 (MG_GAMES 로 더 좁힌다)
@@ -2565,6 +2789,7 @@ async function minigameFlow(browser) {
     if (!process.env.MG_SKIP_LIVE) await minigameLive(browser);
   }
   if (!process.env.MG_SKIP_R051) await r051Flow(browser);
+  if (!process.env.MG_SKIP_R052) await r052Flow(browser);
 }
 /** ★ R050 F — /lab/sound — 후보 버튼 · 실제 파일 길이(브라우저가 읽은 duration) · 누르면 소리가 난다(오류 없음) */
 async function soundLab(L) {

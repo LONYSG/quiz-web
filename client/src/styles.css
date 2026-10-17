@@ -5688,6 +5688,368 @@ button.primary.tone-warn {
   padding: 10px 12px;
 }
 
+/* =============================================================================
+   ★★★ R052 — 퀴즈류 미니게임 (QuizNumber · PhotoGuess · WhichPick · QuizReveal)
+   ============================================================================= */
+.quiz-stage {
+  display: grid;
+  gap: 10px;
+  padding: 4px 0;
+}
+.quiz-q {
+  display: grid;
+  grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+.quiz-q-text p {
+  margin: 0 0 4px;
+}
+.quiz-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  background: var(--surface-2);
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.quiz-pic {
+  max-height: 240px;
+}
+.quiz-pic.small {
+  max-height: 150px;
+}
+.quiz-img.dummy {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  border: 2px dashed var(--border);
+}
+.quiz-img.dummy svg {
+  width: 58%;
+  height: auto;
+  fill: color-mix(in srgb, var(--accent) 35%, transparent);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+.quiz-dummy-ico {
+  font-size: 3.4rem;
+  color: var(--accent);
+}
+.quiz-dummy-tag {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-dim);
+}
+.quiz-brand {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.quiz-name {
+  font-size: clamp(1.1rem, 2.3vw, 1.35rem);
+  font-weight: 900;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.quiz-ask {
+  font-weight: 800;
+  color: var(--accent);
+}
+.quiz-seen {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  justify-self: start;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+.quiz-seen-tag {
+  color: var(--text-dim);
+  font-size: 0.78em;
+}
+.quiz-num {
+  display: grid;
+  gap: 4px;
+}
+.quiz-num-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.quiz-num-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  font-weight: 800;
+  padding: 10px 14px;
+  text-align: right;
+}
+.photo-stage .quiz-num-input {
+  text-align: left;
+}
+.quiz-num-unit {
+  font-weight: 900;
+  color: var(--text-dim);
+}
+.quiz-num-ok {
+  min-width: 72px;
+}
+.quiz-num-help {
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.quiz-num-help.ok {
+  color: var(--ok);
+}
+.quiz-num-help.bad {
+  color: var(--bad);
+}
+.quiz-rules-tag {
+  display: inline-flex;
+  gap: 0.3em;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+/* 빅맥 — 보여 준 나라 */
+.wp-shown {
+  list-style: none;
+  margin: 6px 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.wp-shown li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-weight: 800;
+}
+/* 사진 */
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--surface-2);
+  max-height: 46vh;
+  display: grid;
+  place-items: center;
+}
+.photo-zoom {
+  width: 100%;
+  transition: transform 120ms linear;
+}
+.photo-img {
+  max-height: 46vh;
+  margin: 0 auto;
+}
+.photo-canvas {
+  max-height: 46vh;
+  width: auto;
+  max-width: 100%;
+  image-rendering: pixelated;
+}
+/* 어느 쪽 */
+.which-stem {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+  font-weight: 900;
+}
+.which-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: stretch;
+}
+.which-vs {
+  align-self: center;
+  font-weight: 900;
+  color: var(--text-dim);
+}
+.which-card {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding: 10px;
+  border-radius: 16px;
+  background: var(--surface-2);
+  border: 3px solid transparent;
+  text-align: center;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.which-card:disabled {
+  cursor: default;
+}
+.which-card.picked {
+  border-color: var(--accent);
+}
+.which-card.other {
+  opacity: 0.55;
+}
+.which-card.answer {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+.which-img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.which-label {
+  font-weight: 900;
+  font-size: 1.05rem;
+  word-break: keep-all;
+}
+.which-key {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-weight: 900;
+  color: var(--text-dim);
+}
+.which-value {
+  font-weight: 900;
+}
+.which-check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: var(--ok);
+  font-size: 1.4rem;
+}
+.which-summary {
+  overflow-x: auto;
+  margin-top: 8px;
+}
+.which-summary table {
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.which-summary th,
+.which-summary td {
+  padding: 3px 6px;
+  text-align: center;
+}
+.which-summary td.nick {
+  text-align: left;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.which-summary .ok {
+  color: var(--ok);
+}
+.which-summary .bad {
+  color: var(--bad);
+}
+/* 정답 공개 */
+.quiz-reveal {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+.quiz-reveal p {
+  margin: 0 0 4px;
+}
+.quiz-answer {
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+  font-weight: 900;
+  color: var(--ok);
+  line-height: 1.15;
+}
+.quiz-note {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.quiz-attr {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  word-break: break-all;
+}
+.which-reveal {
+  grid-template-columns: minmax(0, 1fr);
+}
+.wp-reveal {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.wp-minmax {
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+.wp-table {
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  max-height: 260px;
+  overflow-y: auto;
+  border-radius: 12px;
+  background: var(--surface-2);
+  font-size: 0.82rem;
+}
+.wp-table li {
+  display: grid;
+  grid-template-columns: 2.4em minmax(0, 1fr) auto;
+  gap: 6px;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+.wp-table li.major {
+  font-weight: 800;
+}
+.wp-table li.major .wp-country::after {
+  content: ' ★';
+  color: var(--accent);
+  font-size: 0.8em;
+}
+.wp-table li.kr {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+.wp-table li.target {
+  background: var(--ok-soft);
+  color: var(--ok);
+  font-weight: 900;
+}
+.wp-table li.eu .wp-country {
+  font-style: italic;
+}
+.wp-rank {
+  color: var(--text-dim);
+}
+:where(.ui-mobile) .quiz-q,
+:where(.ui-mobile) .quiz-reveal,
+:where(.ui-mobile) .wp-reveal {
+  grid-template-columns: minmax(0, 1fr);
+}
+:where(.ui-mobile) .quiz-pic {
+  max-height: 180px;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+:where(.ui-mobile) .which-label {
+  font-size: 0.92rem;
+}
+
 /* ── ★ R050 — /lab 화면 (점검용) */
 .lab-page {
   padding: 16px;
