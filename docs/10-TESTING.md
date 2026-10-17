@@ -1074,6 +1074,26 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 32. ★★★ R051 — 미니게임 2차 (번개손 · 타자 · 완벽한 원 · 각도) · 균형 물건 손질
+
+```bash
+PORT=3008 npm run bot -- mgreaction --url http://localhost:3008   ★★★ (18) 자기 서버(RESOLVED_WAIT_MS 200 · MINIGAME_PHASE_SCALE 0.05) — 6명 연습 판: 정확 · 지연 150 · 400ms(반응 250ms 그대로)
+                                                                    · 성급(200ms) · 가짜에 누름(퀵드로우 3판 실격) · 미제출 · 미리 계산 BAD_REQUEST · 판 구성(순수 2 · 퀵드로우 3 · 가짜 세 종류) · ms 정수 · 순위 · 기록 값 = reactionJudge
+                                                                    + 퀴즈 판 5문제 3명(200 · 280 · 360ms) — 5판 순위 · 보상 +3 · +1
+PORT=3008 npm run bot -- mgtyping --url http://localhost:3008     ★★★ (16) 정확(글자 × 120ms) · 지연 150 · 오타 뒤 고침(틀린 완성 BAD_REQUEST × 3 → 고친 완성) · NFD 조합형 · 미완 60/30%(submitted=false · 5 · 6위)
+                                                                    · 미리 계산 · 글자당 40ms 미만 · 진행 글 0% 오류 없음 · 판 구성(한글 짧은 · 영어 · 한글 긴 · 겹침 0)
+PORT=3008 npm run bot -- mgcircle --url http://localhost:3008     ★★★ (13) 정원 ≥ 99 · 타원 40~90 · 반원 < 40 · 작은 원 0 · 흔들린 원 + 조작값(score:100) 무시 · 점 부족 · 시각 거꾸로 · 미리 계산 · 칸 밖 BAD_REQUEST · 서버 값 = 기록 점 재계산
+PORT=3008 npm run bot -- mgangle --url http://localhost:3008      ★★★ (11) 정확 0 · 3.5° · 미확정 = 마감 때 그때 각(제출로 셈) · 지연 400 · 범위 밖 · 목표(15~165 · 5의 배수 아님 · 서로 15°) · 순위
+npm run ui-check:minigame                                           ★★ R050 두 게임 + R051 넷(MG_SKIP_R050 · MG_SKIP_R051 · MG_GAMES=reaction,typing,circle,angle 로 고른다)
+                                                                    — 장면(/lab/minigame ?scene&state — 번개손 대기 · 가짜 색 · 가짜 글자 · 초록 · 타자 친 글 · 원 · 각도 · PC/390/폴드 넘침)
+                                                                    — 실제 연습 판 H(PC 1280) · G(390 터치): 번개손 초록 뒤 Space · 모바일 성급 · 가짜 화면 / 타자 복사 · 끌기 · 오른쪽 클릭 · 붙여넣기 · 끌어 놓기 · insertFromPaste 막힘
+                                                                    · 틀린 글자 빨강 · 조합 중(imeSetComposition) · 390×470 키보드 · 미완 % / 원 마우스 · 손가락(스크롤 없음) · 반원 덜 닫힘 · 서버 값 = 재계산 / 각도 끌기 · ← → 0.5° · Enter · 확정 버튼 · 미확정
+```
+★ 개발 중 게임마다 바로(R050 피드백): 번개손 14 · 타자 15 · 원 7 · 각도 6 + 장면. 그림은 SHOT_DIR=r051(60 번개손 · 61 타자 · 62 원 · 63 각도 · 30 균형 전/후).
+★ 처음 돌렸을 때 FAIL 은 대부분 **검사 쪽** — 둘 다 제출하면 판이 바로 끝나 화면이 판 결과로 바뀐 뒤에 읽음(번개손 · 타자 · 원 · 각도) → 완성 화면 또는 판 결과를 받도록. 화면 쪽은 셋 고침: 첫 글자부터 틀린 진행 글을 서버가 거부해 오류 알림 · React onBeforeInput 이 진짜 beforeinput 이 아님 · 골라 하기 팝업이 여섯 개가 되며 PC 720 높이 밖.
+
+---
+
 ## 31. ★★★ R050 — 미니게임 · 복사 막기 · PC/모바일 · 태블릿/폴드 · 정답 흘림
 
 ```bash

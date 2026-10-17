@@ -954,6 +954,18 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 설정값 (서버 env) | `SHOP_PRICE_OVERRIDE`(검사용 · 0 = DB 의 `emoji_themes.price` — 실제 서버 .env 에 두지 않는다. 봇 shop 이 자기 서버에서 10 으로) |
 | RULES (shared) | `SPECIAL_FLOAT_MS` 3000 · `SPECIAL_FLOAT_MAX` 3 · `SPECIAL_FLOAT_PX` 96 — 화면(떠 있는 큰 반응)만 쓴다 |
 
+## ★ R051 — 바뀐 것 (D-237 · D-238)
+
+| 항목 | 내용 |
+|------|------|
+| 미니게임 키 | `'cake' \| 'balance' \| 'reaction' \| 'typing' \| 'circle' \| 'angle'` — 설정 `minigameKeys` 기본 여섯 전부 |
+| `minigame.submit` 번개손 | `input = { elapsedMs }` — 판 시작부터 누른 순간(기기 ms). 서버가 판 구성(signalMs · fakes)으로 성급 · 속음 · 반응 ms 판정 · 흐른 시간 + 250ms 상한. params = `{ quickdraw, signalMs, fakes[{ atMs, kind: 'color'\|'sound'\|'text' }], windowMs }` |
+| `minigame.submit` 타자 | 치는 동안 `{ text, final: false }`(0.4초마다 · 0% 도 받음) · 완성 `{ text, elapsedMs, final: true }` — 문장과 같아야(NFC) · 글자당 40ms 보다 빠르면 BAD_REQUEST. params = `{ lang, size, text }` |
+| `minigame.submit` 원 | `{ points: [x, y, t][] }` — 칸 0~1 · t 기기 ms · 20~1200개 · t 줄지 않음 · 8초(+0.2) 안 · 마지막 t ≤ 흐른 시간 + 250ms. 점수는 서버가 다시 계산(다른 칸은 무시) |
+| `minigame.submit` 각도 | `{ deg, final, elapsedMs }` — 0~180 · 움직이는 동안 0.25초마다 임시 · 확정 · 마감 때 마지막 임시. params = `{ target }` · private = `{ start }` |
+| 판 결과 행 | `value` 가 null 일 수 있다(번개손 실격) · `submitted` false + `extra.unfinished`(타자 미완 — 진행률 순위) · `decimals` 는 게임별(번개손 0 · 각도 최대 2) · extra: 번개손 `{ reactMs, foul, fakeKind }` · 타자 `{ timeSec, pct }` · 원 `{ stroke(64점), cx, cy, r, coverageDeg, flaw }` · 각도 `{ deg, target }` |
+| 테이블 | 0018 없음 — 0017 의 minigame_* 표 그대로(키는 글자 · CHECK 없음) |
+
 ## ★ R050 — 바뀐 것 (D-232 ~ D-235)
 
 | 항목 | 내용 |
