@@ -2436,10 +2436,13 @@ async function r051Circle(browser) {
   const hs = await H.evaluate("document.querySelector('.circle-score')?.innerText ?? ''");
   record('★★ C 원 PC — 마우스로 그리고 떼면 바로 "NN.N%" · 맞춘 원(점선)', /\d+\.\d%/.test(hs) && (await H.evaluate("document.querySelector('.circle-pad .circle-fit') !== null")), hs);
   await snap(H, '62-live-circle-done-pc');
+  // ★ 스크롤될 수 있는 상태에서 잰다(문서가 화면보다 길다 — 아래 여백을 잠깐 붙임)
+  await G.evaluate("document.body.style.paddingBottom = '900px'");
   const y0 = await G.evaluate('scrollY');
   await drawCircle(G, 'touch', 'circle', '62-live-circle-drawing-m390');
   const y1 = await G.evaluate('scrollY');
-  record('★★★ C 원 모바일 — 손가락으로 그리는 동안 화면이 스크롤되지 않는다 · 그림이 됨', y0 === y1 && (await G.evaluate("document.querySelector('.circle-stage')?.dataset.done")) === '1', `${y0}→${y1}`);
+  await G.evaluate("document.body.style.paddingBottom = ''");
+  record('★★★ C 원 모바일 — 손가락으로 그리는 동안 화면이 스크롤되지 않는다 · 그림이 됨', y0 === y1 && (await G.evaluate("document.querySelector('.circle-stage')?.dataset.done === '1' || document.querySelector('.mg-card')?.dataset.phase === 'roundResult'")) === true, `${y0}→${y1}`);
   await snap(G, '62-live-circle-done-m390');
   await waitPhase(H, 'roundResult', 20000);
   await sleep(700);
