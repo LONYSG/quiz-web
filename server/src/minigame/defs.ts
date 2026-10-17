@@ -221,11 +221,11 @@ const typing: MinigameDef = {
       const sec = elapsed / 1000;
       return { input: { text: typingNorm(text), elapsedMs: Math.round(elapsed) }, value: sec, error: sec, elapsedMs: elapsed, extra: { timeSec: sec, pct: 100 }, provisional: false };
     }
+    // ★ 진행 글(임시) — 0% (빈칸 · 첫 글자부터 틀림)도 받는다(거부하면 화면에 오류 알림이 뜬다 · R051 그림에서 찾음). 0% 는 값 없음 = 미제출과 같은 꼴찌
     const pct = typingProgress(target, text) * 100;
-    if (pct <= 0) return null;
     return {
       input: { text: typingNorm(text) },
-      value: TYPING_UNFINISHED_BASE + (100 - pct),
+      value: pct > 0 ? TYPING_UNFINISHED_BASE + (100 - pct) : null,
       error: null,
       elapsedMs: null,
       submitted: false,

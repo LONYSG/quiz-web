@@ -2365,7 +2365,8 @@ async function r051Typing(browser) {
   await snap(G, '61-live-typing-kbd-m390x470');
   for (const ch of [...target]) await G.send('Input.insertText', { text: ch });
   await sleep(300);
-  record('★★ B 모바일도 다 치면 끝', (await G.evaluate("document.querySelector('.typing-stage')?.dataset.done")) === '1');
+  // ★ 둘 다 끝내면 판이 바로 끝난다 — 완성 화면 또는 판 결과
+  record('★★ B 모바일도 다 치면 끝', (await G.evaluate("document.querySelector('.typing-stage')?.dataset.done === '1' || document.querySelector('.mg-card')?.dataset.phase === 'roundResult'")) === true);
   await touchDevice(G, 390, 844);
   await waitPhase(H, 'roundResult', 40000);
   await sleep(600);

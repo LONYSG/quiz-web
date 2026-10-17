@@ -6403,6 +6403,7 @@ async function scenarioMgTyping() {
   log('\n[1] ★★★ 연습 판 — 정확 · 지연 150 · 오타 뒤 고침 · 조합형(NFD) · 미완 60% · 30%');
   let pre = null;
   let fast = null;
+  let zero = 'unset';
   const runId = await mgPractice(host, roomId, 'typing', 200000, async () => {
     await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 15000, '1판');
     const mg = host.snapshot.minigame;
@@ -6415,7 +6416,13 @@ async function scenarioMgTyping() {
     b5.socket.emit('minigame.submit', { token: mg.token, roundIndex: 0, input: { text: mg.round.params.text, elapsedMs: 200, final: true } });
     await sleep(250);
     fast = b5.since(m5, 'error')[0]?.code ?? null;
+    // 진행 글 0% (첫 글자부터 틀림) — 오류 없이 받는다
+    const m4 = b4.mark();
+    b4.socket.emit('minigame.submit', { token: mg.token, roundIndex: 0, input: { text: 'X', final: false } });
+    await sleep(250);
+    zero = b4.since(m4, 'error')[0]?.code ?? null;
   });
+  expect('★★ 진행 글 0%(첫 글자부터 틀림) → 오류 없이 받음 (R051 그림에서 찾은 알림)', zero, null);
   expect('★★ 미리 계산한 값(흐른 시간보다 긴 값) → 거부', pre, 'BAD_REQUEST');
   expect('★★ 사람 손 밖 속도(붙여넣기 흉내 — 글자당 40ms 미만) → 거부', fast, 'BAD_REQUEST');
   expect('★★ 틀린 글로 완성 보내기 → 거부 (3판 모두)', [...errs.values()], ['BAD_REQUEST', 'BAD_REQUEST', 'BAD_REQUEST']);

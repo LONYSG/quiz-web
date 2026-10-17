@@ -90,6 +90,20 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
     setBlocked((n) => n + 1);
   };
 
+  // ★ 붙여넣기 · 끌어 놓기의 beforeinput(insertFromPaste …) — React 의 onBeforeInput 은 진짜 beforeinput 이 아니라 직접 건다
+  useEffect(() => {
+    const el = inputRef.current;
+    if (!el) return undefined;
+    const on = (e: InputEvent) => {
+      if (e.inputType === 'insertFromPaste' || e.inputType === 'insertFromDrop' || e.inputType === 'insertFromPasteAsQuotation') {
+        e.preventDefault();
+        setBlocked((n) => n + 1);
+      }
+    };
+    el.addEventListener('beforeinput', on);
+    return () => el.removeEventListener('beforeinput', on);
+  }, []);
+
   const marks = typingMarks(target, text, composing ? 1 : 0);
   const chars = [...target.normalize('NFC')];
   const pct = Math.round(typingProgress(target, text) * 100);
@@ -130,10 +144,6 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
         onPaste={block}
         onDrop={block}
         onDragOver={(e) => e.preventDefault()}
-        onBeforeInput={(e) => {
-          const t = (e.nativeEvent as InputEvent).inputType;
-          if (t === 'insertFromPaste' || t === 'insertFromDrop' || t === 'insertFromPasteAsQuotation') block(e);
-        }}
         onFocus={() => {
           if (mobile) window.setTimeout(() => inputRef.current?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 300);
         }}
