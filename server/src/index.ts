@@ -17,6 +17,7 @@ import { closePool, getDbActiveMs } from './db/pool.js';
 import { emojiRouter, loadEmojiCatalog } from './http/emojiRoutes.js';
 import { avatarRouter } from './http/avatarRoutes.js';
 import { meRouter } from './http/meRoutes.js';
+import { minigameRouter } from './http/minigameRoutes.js';
 import { shopRouter } from './http/shopRoutes.js';
 import { authRouter } from './http/authRoutes.js';
 import { registerSocketHandlers } from './socket/index.js';
@@ -114,6 +115,8 @@ async function main(): Promise<void> {
   app.use('/api/me', meRouter);
   // ★ R049 — 이모티콘샵 · 뽑기 (D-231)
   app.use('/api/shop', shopRouter);
+  // ★ R052 — 퀴즈류 미니게임 그림 (DB bytea · 로그인만)
+  app.use('/api/minigame', minigameRouter);
   // ★ R039 — 이모티콘 목록 · 직접 등록 그림 / 표준 그림(Twemoji SVG)은 파일로 낸다
   app.use('/api/emoji', emojiRouter);
   app.use('/emoji', express.static(TWEMOJI_DIR, { maxAge: '365d', immutable: true }));
