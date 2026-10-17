@@ -230,6 +230,29 @@ DELETE FROM minigame_rewards WHERE run_id = 123 AND account_id = (SELECT id FROM
 DELETE FROM minigame_rewards WHERE account_id IN (SELECT id FROM accounts WHERE login_id LIKE 'bot\_%');
 ```
 - 포인트 = 맞힌 수 + `minigame_rewards` 합 − `point_spends` 합 (server/src/db/points.ts `POINTS_SQL`).
+
+### ★★★ 퀴즈류 미니게임 항목 · 그림 · 경험 (R052)
+```bash
+node scripts/minigame-load.mjs             # dry-run — 게임별 verified · 형식 거부 · 그림 없음 표 (DB 를 쓰지 않는다)
+npm run db:backup && node scripts/minigame-load.mjs --apply   # 적재(verified 만 · 같은 id 갱신 · 그림 bytea)
+```
+```sql
+-- 게임별 활성 문항 · 그림 용량
+SELECT game, count(*) FILTER (WHERE active) active, count(*) total FROM minigame_items GROUP BY game ORDER BY game;
+SELECT count(*), pg_size_pretty(sum(bytes)) FROM minigame_images;
+-- 한 문항 보기 (payload = 파일 항목 그대로)
+SELECT item_id, game, payload, image_ids, attribution FROM minigame_items WHERE item_id = 'price-0001';
+-- ★ 문항 쉬게 하기 / 되살리기 (지우지 않는다 — 다음 적재가 파일 기준으로 다시 정한다)
+UPDATE minigame_items SET active = false WHERE item_id = 'price-0001';
+UPDATE minigame_items SET active = true  WHERE item_id = 'price-0001';
+-- 그림 교체 — 파일(assets/minigame/…)을 바꾸고 다시 적재하는 것이 정석. 급하면 그림 행만 지우면 그 그림은 404(화면은 빈 칸)
+DELETE FROM minigame_images WHERE image_id = 'price-0001';
+-- 경험 보기 (계정 · 게임별)
+SELECT a.login_id, e.minigame_key, count(*) FROM minigame_item_experiences e JOIN accounts a ON a.id = e.account_id GROUP BY 1, 2 ORDER BY 1, 2;
+-- ★ 경험 지우기 — 검사 계정만(봇 mgquiz 는 시작할 때 봇 계정 것을 스스로 비운다). 찬종 계정은 건드리지 않는다
+DELETE FROM minigame_item_experiences WHERE account_id IN (SELECT id FROM accounts WHERE login_id LIKE 'bot\_%' OR login_id LIKE 'uic%');
+```
+- 문항 · 그림은 DB 가 정본이 됐다(파일은 찬종 PC · git 밖 그림) — `npm run db:backup` 에 들어간다.
 - 기록은 지우지 않는 것이 원칙이다(docs/17 3절) — 위 DELETE 는 잘못 지급된 보상을 바로잡을 때만.
 
 ## 4. 서버가 켜진 상태에서 바꾸면 — 언제 반영되나

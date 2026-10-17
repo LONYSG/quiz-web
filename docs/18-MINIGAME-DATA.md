@@ -102,3 +102,19 @@ assets/minigame/<game>/<id>.<jpg|png|webp>  ← 그림 (git 에 없다 — .giti
 - `photo`: 사진만 보고 답이 하나인가 · 한국 표기 · 공인 여부.
 - `estimate` · `which`: 값을 표준 출처로 다시 열어 ±10%(연도는 정확히) · `margin` 규칙.
 - 결과는 `verify` 칸 + `data/pipeline/audit/vNNN-minigame.json`.
+
+## 7. 적재 (R052 신설 · MAIN — 0~6절 형식은 그대로)
+
+| 단계 | 누가 | 무엇 |
+|---|---|---|
+| `candidate` | GEN | 파일에 쓴다 |
+| `verified` / `rejected` | VERIFY | `verify` 칸 · status |
+| **적재** | MAIN(또는 G010 이 같은 스크립트로) | `node scripts/minigame-load.mjs`(dry-run) → `npm run db:backup` → `--apply` — **status `verified`(또는 이미 `loaded`) 만** DB 에 넣는다 |
+| `loaded` | G010 | `node scripts/minigame-load.mjs --mark` — 적재된 항목의 파일 status 를 `loaded` 로(★ MAIN 은 파일을 쓰지 않는다) |
+
+- 스크립트: `data/minigame/<game>/items*.json`(묶음 파일 전부) + `worldprice/products.json` 을 읽고 **형식 검사**(0~5절 — 모르는 칸 · 빠진 칸 · 숫자형 · 날짜 · id 꼴 · 게임별 규칙 · 그림 파일 이름 · 500KB)를 한 뒤 넣는다. 걸린 항목은 넣지 않고 목록으로(형식 거부). 그림 파일이 없으면 그 항목은 건너뛴다(그림 없음 목록).
+- DB 표(03 · 0018): `minigame_items`(payload = 파일 항목 그대로에서 `verify` 칸만 뺀 것 · image_ids · as_of · tags) · `minigame_images`(그림 bytea — 파일 이름이 그림 id) · `minigame_products`(빅맥 계열 품목). **같은 id 는 갱신**(멱등 — 두 번 돌려도 같다). 파일에서 빠졌거나 verified 가 아니게 된 항목은 `active=false`(지우지 않는다 — 경험 기록이 남아 있다).
+- 그림은 적재 뒤 **DB 가 정본**(백업 포함). 서빙 `GET /api/minigame/image/:imageId`(로그인 · 캐시).
+- 출제 규칙(MAIN · 01 16-1): 얼마게요는 `priceAsOf` 가 1년 지나면 내지 않는다 · 빅맥지수는 `targetCc: "EU"` 를 내지 않고 표에는 "유로 지역" 한 줄 · 경험은 문항 `id` 로(01 12장).
+- R052 첫 적재(2026-10-17 · V012 뒤): price 93 · worldprice 171 · photo 86 · estimate 96 · which 127 = **573** · 그림 447장 41.6MB · 형식 거부 0 · 그림 없음 0. candidate 63 · rejected 6 은 넣지 않았다.
+

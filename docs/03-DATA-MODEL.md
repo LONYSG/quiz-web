@@ -322,6 +322,17 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 | `minigame_rounds` | (run_id, round_index) PK · item_key · params jsonb · seed · started_at | 판 안의 라운드(공개 설정) |
 | `minigame_results` | (run_id, round_index, account_id) PK · submitted · input jsonb · value · error · elapsed_ms · rank · points | 참가자별 라운드 결과 — **행 수 = 라운드 × 참가자**(미제출도 행이 있다) |
 | `minigame_rewards` | id · run_id · account_id · amount(>0) · rank · created_at · **UNIQUE(run_id, account_id)** | ★★ 보상 — 같은 판 결과가 두 번 지급되지 않는다(재접속 · 서버 재시작 · 중복 이벤트). 연습 판은 넣지 않는다 |
-| `minigame_item_experiences` | (account_id, minigame_key, item_key) PK · run_id · created_at | 퀴즈류 미니게임(R052~)의 경험. 지금 두 게임은 쓰지 않는다 |
+| `minigame_item_experiences` | (account_id, minigame_key, item_key) PK · run_id · created_at | 퀴즈류 미니게임(R052)의 경험 — item_key = 문항 id(price-0001 …). 정답 공개 순간 접속 중 참가자에게 · 연습 판은 넣지 않는다 |
 | `game_players.device` | text | 게임 시작 때 참가자의 기기 종류(🖥/📱 — 클라이언트가 알린 값 · 판정에 쓰지 않는다) |
 | ★ 포인트 (개정) | — | **번 것 = answer_events.accepted 수 + minigame_rewards 합** · 잔액 = 번 것 − point_spends 합. 식은 server/src/db/points.ts `POINTS_SQL` 한 곳(샵 잔액 · 뽑기 트랜잭션 · /api/me/points). ★ `game_players.final_score` 는 이제 맞힌 수 + 보상이다(R050 전에는 맞힌 수) |
+
+## ★★★ 퀴즈류 미니게임 항목 · 그림 · 품목 (R052 / 0018 — D-239)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `minigame_items` | item_id PK(`<game>-NNNN`) · game · status('loaded') · payload jsonb(파일 항목 그대로 — verify 칸 뺌) · image_ids text[] · attribution · as_of date · tags text[] · source_file · loaded_at · active | **적재본** — 정본은 파일(data/minigame/ · docs/18). scripts/minigame-load.mjs 가 status verified 만 넣는다(같은 id 는 갱신). 파일에서 빠지거나 verified 가 아니게 되면 active=false(지우지 않는다 — 경험 기록이 남아 있다) |
+| `minigame_images` | image_id PK(파일 이름 — price-0001 · which-0001-a · bigmac …) · mime · width · height · bytes · data **bytea** · license · attribution · source_url · loaded_at | ★ 그림의 정본(백업 포함). '어느 쪽?' 은 a · b 두 장이라 항목 표와 나눴다. 서빙 GET /api/minigame/image/:imageId(로그인 · private 캐시 하루) |
+| `minigame_products` | product_id PK(bigmac · iphone · netflix) · payload jsonb(나라 행 rows · 환율 기준일 · 출처) · image_id · as_of · fx_as_of · loaded_at | 빅맥 계열 품목 |
+| `minigame_rounds.item_id` | text | 퀴즈류 라운드의 문항 id(피지컬은 NULL) |
+
+- 출제: 게임 시작 때 `minigame_items`(active) · `minigame_products` 를 메모리로(60초 캐시) · 참가자 경험을 함께 읽는다(퀴즈 풀과 같은 꼴 — D-054). 얼마게요는 `priceAsOf` 1년 지난 항목을 내지 않는다.

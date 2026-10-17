@@ -954,6 +954,19 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 설정값 (서버 env) | `SHOP_PRICE_OVERRIDE`(검사용 · 0 = DB 의 `emoji_themes.price` — 실제 서버 .env 에 두지 않는다. 봇 shop 이 자기 서버에서 10 으로) |
 | RULES (shared) | `SPECIAL_FLOAT_MS` 3000 · `SPECIAL_FLOAT_MAX` 3 · `SPECIAL_FLOAT_PX` 96 — 화면(떠 있는 큰 반응)만 쓴다 |
 
+## ★ R052 — 바뀐 것 (D-239)
+
+| 항목 | 내용 |
+|------|------|
+| 미니게임 키 | + `'price' \| 'worldprice' \| 'photo' \| 'estimate' \| 'which'`(퀴즈류) — 설정 `minigameKeys` 기본 열하나 전부 |
+| 보기 `round` | + `reveal`(정답 공개 roundResult 때만 — 가격 · 정답 · 값 · 빅맥 전체 rows) · `itemId` · `private.experienced`(이미 본 문항 — 그 문항 점수 0) · 판 결과 행 `extra.experienced` |
+| `minigame.submit` 숫자 셋 | `{ value, elapsedMs }` — value > 0 · 한 번(얼마게요 · 빅맥 · 얼마나). params: 얼마게요 `{ name, brand, category, imageId }` · 빅맥 `{ nameKo, unit, imageId, target{cc, countryKo}, shown[3 rows], fxAsOf }` · 얼마나 `{ question, unit, kind, imageId, displayDecimals }` |
+| `minigame.submit` 사진 | `{ text, elapsedMs }` 여러 번 — 맞으면 확정 · 틀리면 임시(시도 수) · params `{ imageId, revealMode, category, revealMs }` |
+| `minigame.feedback` (S→C · 새 · 친 사람에게만) | `{ token, roundIndex, correct, timeMs? , text? }` — 사진의 맞음/틀림 |
+| `minigame.submit` 어느 쪽 | `{ choice: 'a'\|'b', elapsedMs }` 한 번 · params `{ stem, kind, unit, a{label, imageId}, b{label, imageId} }` |
+| `GET /api/minigame/image/:imageId` | 퀴즈류 그림(DB bytea · 로그인 · `Cache-Control: private, max-age=86400`) · 없으면 404 · 로그인 아니면 401 |
+| 연습(`minigame.practice`) 퀴즈류 | 더미 3문항 · params.dummy = true · 그림 없음(imageId null) |
+
 ## ★ R051 — 바뀐 것 (D-237 · D-238)
 
 | 항목 | 내용 |
