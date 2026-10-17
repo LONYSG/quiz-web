@@ -1,0 +1,216 @@
+{
+ "round": "G009",
+ "note": "A — V011 반영(CV-21~24 · #14 해설). 되돌리기는 rows[].before (question_answers 는 after 행 지우기 · before 행 되살리기) · note \"not-applied\" 는 넣지 않은 변형",
+ "hintWarn": [
+  {
+   "id": 4848,
+   "warn": [
+    {
+     "kind": "explain",
+     "shared": [
+      "볼린은1",
+      "린은19"
+     ]
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rows": [
+  {
+   "ref": "CV-20 #1783",
+   "id": 1783,
+   "field": "question_text",
+   "before": "임의의 각을 셋으로 나누는 고대 그리스의 작도 문제는 무엇일까요? 눈금 없는 자와 컴퍼스만으로는 할 수 없다는 것이 19세기에 증명되었습니다.",
+   "after": "원적문제, 입방배적문제와 함께 고대 그리스의 3대 작도 문제로 꼽힙니다. 눈금 없는 자와 컴퍼스만으로는 할 수 없다는 것이 19세기에 증명된, 나머지 하나는 무엇일까요?",
+   "why": "CV-21 — V011 fix [expose · readable]: 질문이 정답의 정의 문장 → 3대 작도 문제 중 나머지 하나를 묻는 꼴",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Angle_trisection",
+    "https://en.wikipedia.org/wiki/Straightedge_and_compass_construction"
+   ],
+   "note": null
+  },
+  {
+   "ref": "CV-20 #1783",
+   "id": 1783,
+   "field": "general_hint",
+   "before": "원적 문제·배적 문제와 함께 고대 그리스의 3대 작도 문제로 꼽힌다.",
+   "after": "자와 컴퍼스 대신 종이접기를 쓰면 쉽게 해낼 수 있고, 60도 각으로 하면 20도가 나와야 한다.",
+   "why": "GEN 판단 — 새 질문(3대 작도 문제 중 나머지)이 옛 힌트와 같은 사실(checkHint question 87%) · 15 §4-1 H4 각주 \"질문의 단서를 바꾸면 해설·힌트를 새 질문과 이어 읽는다\" → hint-v5 로 새로 씀",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Angle_trisection"
+   ],
+   "note": "en 위키: \"can easily be accomplished by the operations of paper folding\" · \"an angle of measure 60° cannot be trisected\" · \"impossible to construct a 20° angle\"",
+   "version": "hint-v5"
+  },
+  {
+   "ref": "CV-20 #2187",
+   "id": 2187,
+   "field": "question_text",
+   "before": "피겨스케이팅의 점프 이름이 여럿인 것은, 무엇이 서로 다르기 때문입니까?",
+   "after": "피겨스케이팅에는 토룹, 살코, 룹, 플립, 럿츠, 악셀처럼 이름이 다른 점프가 여섯 가지 있습니다. 회전수가 아니라, 이 점프들의 이름을 가르는 것은 무엇일까요?",
+   "why": "CV-21 — V011 fix [not-unique · scope]: 회전수도 답이 됨 → \"여섯 가지 · 회전수가 아니라\" 한정",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/피겨_스케이팅_점프"
+   ],
+   "note": null
+  },
+  {
+   "ref": "CV-20 #3680",
+   "id": 3680,
+   "field": "question_text",
+   "before": "주인공이 결국 고구마 밭 주인 왕 서방의 손에 죽고, 남편은 돈을 받고 그 죽음을 병으로 덮어 버리는 단편 소설은?",
+   "after": "주인공이 결국 중국인 왕 서방의 손에 죽고, 남편은 돈을 받고 그 죽음을 병으로 덮어 버리는 단편 소설은?",
+   "why": "CV-21 — V011 fix [fact-error]: 원문은 \"채마 밭에 감자(고구마)\" — \"고구마 밭\" 단정을 뺌",
+   "sources": [
+    "https://ko.wikisource.org/wiki/%EA%B0%90%EC%9E%90",
+    "https://ko.wikisource.org/wiki/%EA%B0%90%EC%9E%90",
+    "https://ko.wikisource.org/wiki/%EA%B0%90%EC%9E%90"
+   ],
+   "note": null
+  },
+  {
+   "ref": "CV-20 #3680",
+   "id": 3680,
+   "field": "explanation",
+   "before": "김동인의 작품으로, 제목은 평안도 말로 '고구마'를 가리킨다고 풀이됩니다.",
+   "after": "김동인의 작품으로, 원문에 도둑질하는 작물이 '감자(고구마)'로 적혀 있어 제목의 감자가 고구마를 가리킨다는 풀이가 있습니다.",
+   "why": "CV-21 — V011 fix [assertive]: \"평안도 말\" 근거 없음 → 원문 표기 \"감자(고구마)\" + \"풀이가 있습니다\" 한정",
+   "sources": [
+    "https://ko.wikisource.org/wiki/%EA%B0%90%EC%9E%90",
+    "https://ko.wikisource.org/wiki/%EA%B0%90%EC%9E%90",
+    "https://ko.wikisource.org/wiki/%EA%B0%90%EC%9E%90"
+   ],
+   "note": null
+  },
+  {
+   "ref": "CV-22 K1-17",
+   "id": 4973,
+   "field": "question_text",
+   "before": "비문은 이경석이 짓고 글씨는 오준이 썼습니다. 1895년 땅속에 묻혔다가 1913년 다시 세워진 이 비는 흔히 무엇이라 부를까요?",
+   "after": "비문은 이경석이 짓고 글씨는 오준이 썼습니다. 1895년 자취를 감췄다가 1913년 다시 세워진 이 비는 흔히 무엇이라 부를까요?",
+   "why": "CV-22 — 1895년 처리가 문서마다 \"땅속에 묻음\"(서울시 미디어허브 · 경향 · en 위키) / \"강물에 수장(전해진다)\"(ko 위키)로 엇갈림 → 어느 쪽도 단정하지 않는 \"자취를 감췄다가\"",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/삼전도비",
+    "https://en.wikipedia.org/wiki/Samjeondo_Monument"
+   ],
+   "note": null
+  },
+  {
+   "ref": "CV-24 L1-24",
+   "id": 4848,
+   "field": "explanation",
+   "before": "그 자동차 회사는 볼보로, 볼린은 1959년 이 발명으로 첫 특허를 받았다.",
+   "after": "그 자동차 회사는 볼보로, 볼린은 1959년 이 발명을 특허로 출원해 1962년에 첫 특허를 받았다.",
+   "why": "CV-24 — 특허는 1959.8 출원 · 1962.7 등록(V011 3-B)",
+   "sources": [
+    "v011-results pairs[\"4848↔903\"]"
+   ],
+   "note": null
+  },
+  {
+   "ref": "CV-24 H2-07",
+   "id": 5176,
+   "field": "general_hint",
+   "before": "이 탑에는 프랑스 과학자·기술자·수학자 72명의 이름이 새겨져 있다.",
+   "after": "이 건축물에는 프랑스 과학자·기술자·수학자 72명의 이름이 새겨져 있다.",
+   "why": "CV-24 — '이 탑'이 정답 끝 낱말 한 글자 조각(H2) → '이 건축물'",
+   "sources": [
+    "v011-results pairs[\"5176↔295\"]"
+   ],
+   "note": null,
+   "version": "hint-v5"
+  },
+  {
+   "ref": "CV-24 S1-05",
+   "id": 4760,
+   "field": "general_hint",
+   "before": "이 자리에서 가장 많은 경기를 뛴 선수로는 2014년 프랭크 토머스가 처음 명예의 전당에 올랐다.",
+   "after": "2014년 프랭크 토머스는 다른 어느 자리보다 이 역할로 더 많은 경기를 뛴 선수로는 처음 명예의 전당에 올랐다.",
+   "why": "CV-24 — 최다 경기 보유자로 읽힘 → 문서 문구(\"다른 어느 자리보다 더 많은 경기\")",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Frank_Thomas_(designated_hitter)"
+   ],
+   "note": null,
+   "version": "hint-v5"
+  },
+  {
+   "ref": "CV-24 S1-13",
+   "id": 2106,
+   "field": "general_hint",
+   "before": "브루클린 다저스에서 뛰며 첫해 신인왕을 받았고, 대학 시절에는 네 종목에서 활약했다.",
+   "after": "브루클린 다저스에서 뛰며 첫해 신인왕을 받았고, 1949년에는 타격왕과 내셔널리그 최우수선수(MVP)에 올랐다.",
+   "why": "CV-24 — 1회차 힌트 둘째 절이 2회차(#4768) 질문 첫 단서와 같은 사실(H12) → 1949 타격왕 · MVP",
+   "sources": [
+    "v011-results pairs[\"4768↔2106\"]"
+   ],
+   "note": null,
+   "version": "hint-v5"
+  },
+  {
+   "ref": "CV-24 L3-17",
+   "id": 99,
+   "field": "general_hint",
+   "before": "17세기 네덜란드에서 약용 술로 시작해 영국에서 크게 유행했으며, 칵테일 마티니의 기본 술이다.",
+   "after": "17세기 네덜란드에서 약용 술로 시작했으며, 칵테일 마티니의 기본 술이다.",
+   "why": "CV-24 — 1회차 힌트의 영국 유행 절이 2회차(#4861) 질문 배경과 같은 사실(H12) → 그 절만 뺌",
+   "sources": [
+    "v011-results pairs[\"4861↔99\"]"
+   ],
+   "note": null,
+   "version": "hint-v5"
+  },
+  {
+   "ref": "V011 4절 #14",
+   "id": 14,
+   "field": "explanation",
+   "before": "★ 1글자 정답. Q-37에 따라 힌트를 만들지 않아야 한다.",
+   "after": "포르쉐 로고는 옛 뷔르템베르크 자유인민국의 문장을 바탕으로 하고, 가운데에는 회사가 자리한 슈투트가르트의 문장이 들어 있습니다.",
+   "why": "V011 4절 — 해설 칸이 낡은 작업 메모뿐(H7 과 어긋남) → 15 §4 E1~E4 에 맞는 한 줄을 새로 씀(힌트의 \"도시 이름 유래\" 와 다른 사실 — H4)",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Porsche"
+   ],
+   "note": "en 위키 Porsche 로고 단락: \"stems from the coat of arms of the Free People's State of Württemberg\" · \"The arms of Stuttgart appear in the middle of the logo as an inescutcheon\""
+  },
+  {
+   "ref": "CV-20 #2262",
+   "id": 2262,
+   "field": "question_answers",
+   "before": null,
+   "after": null,
+   "why": "넣지 않음: 탄소집약도 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다",
+   "sources": [],
+   "note": "not-applied"
+  },
+  {
+   "ref": "CV-20 #2887",
+   "id": 2887,
+   "field": "question_answers",
+   "before": null,
+   "after": null,
+   "why": "넣지 않음: R/P — 15 A5 — 특수문자",
+   "sources": [],
+   "note": "not-applied"
+  },
+  {
+   "ref": "CV-20 #2887",
+   "id": 2887,
+   "field": "question_answers",
+   "before": null,
+   "after": null,
+   "why": "넣지 않음: R/P 비 — 15 A5 — 특수문자",
+   "sources": [],
+   "note": "not-applied"
+  },
+  {
+   "ref": "CV-20 #2887",
+   "id": 2887,
+   "field": "question_answers",
+   "before": null,
+   "after": null,
+   "why": "넣지 않음: R/P 비율 — 15 A5 — 특수문자",
+   "sources": [],
+   "note": "not-applied"
+  }
+ ]
+}
