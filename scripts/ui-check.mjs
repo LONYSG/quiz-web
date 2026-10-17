@@ -2212,8 +2212,11 @@ async function r051Room(browser, label) {
 async function r051Start(H, key) {
   await realClick(H, '#minigame-pick-btn');
   await H.waitFor("document.querySelector('.mg-pick-pop') !== null", 3000);
-  await realClick(H, `.mg-pick-item[data-key="${key}"]`);
-  await waitPhase(H, 'intro', 8000);
+  await H.evaluate(`document.querySelector('.mg-pick-item[data-key="${key}"]')?.scrollIntoView({ block: 'center' })`);
+  await sleep(150);
+  const c = await realClick(H, `.mg-pick-item[data-key="${key}"]`);
+  record(`★ R051 골라 하기 — "${key}" 항목이 화면 안에서 눌린다`, c.hit === true, JSON.stringify(c));
+  if (!(await waitPhase(H, 'intro', 8000))) throw new Error(`${key} 연습이 시작되지 않았다`);
 }
 async function r051Db(roomId, key) {
   return withPg(async (c) =>
@@ -2495,6 +2498,14 @@ async function r051Angle(browser) {
   await snap(H, '63-live-angle-start-pc');
   await snap(G, '63-live-angle-start-m390');
   const target = Number((await H.evaluate("document.querySelector('.angle-target')?.innerText ?? ''")).replace(/[^\d]/g, ''));
+  // ★ 판은 10초 — 모바일을 먼저 끝낸다
+  // G — 손가락으로 끌고 확정 버튼
+  await dragAngle(G, target + 8, 'touch');
+  await snap(G, '63-live-angle-drag-m390');
+  const ok = await rectOf(G, '.angle-ok');
+  await trustedTap(G, ok.x + ok.w / 2, ok.y + ok.h / 2);
+  await sleep(300);
+  record('★★ D 모바일 — 손가락 끌기 · 확정 버튼', (await G.evaluate("document.querySelector('.angle-stage')?.dataset.done")) === '1');
   await dragAngle(H, target + 3, 'mouse');
   const a1 = await shownAngle(H);
   await H.key('ArrowRight', { code: 'ArrowRight', vk: 39 });
@@ -2512,14 +2523,8 @@ async function r051Angle(browser) {
   await snap(H, '63-live-angle-aim-pc');
   await H.key('Enter');
   await sleep(200);
-  record('★★ D Enter 확정', (await H.evaluate("document.querySelector('.angle-stage')?.dataset.done")) === '1');
-  // G — 손가락으로 끌고 확정 버튼
-  await dragAngle(G, target + 8, 'touch');
-  await snap(G, '63-live-angle-drag-m390');
-  const ok = await rectOf(G, '.angle-ok');
-  await trustedTap(G, ok.x + ok.w / 2, ok.y + ok.h / 2);
-  await sleep(300);
-  record('★★ D 모바일 — 손가락 끌기 · 확정 버튼', (await G.evaluate("document.querySelector('.angle-stage')?.dataset.done")) === '1');
+  // ★ 모바일이 먼저 확정했으니 판이 바로 끝날 수 있다 — 확정 화면 또는 판 결과
+  record('★★ D Enter 확정', (await H.evaluate("document.querySelector('.angle-stage')?.dataset.done === '1' || document.querySelector('.mg-card')?.dataset.phase === 'roundResult'")) === true);
   await waitPhase(H, 'roundResult', 20000);
   await sleep(700);
   await snap(H, '63-live-angle-result1-pc');

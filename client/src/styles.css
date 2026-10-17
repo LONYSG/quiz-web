@@ -5261,6 +5261,9 @@ button.primary.tone-warn {
   box-shadow: var(--shadow-pop);
   text-align: left;
   animation: pop-in 140ms var(--ease-pop);
+  /* ★ R051 — 여섯 개가 되며 PC 1280×720 에서 아래가 잘렸다 → 화면 안에서 스크롤 */
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
 }
 .mg-pick-pop .pop-title {
   display: inline-flex;
