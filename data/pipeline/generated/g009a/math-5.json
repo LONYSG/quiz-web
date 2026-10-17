@@ -1,0 +1,135 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "math/5",
+  "midKey": "math",
+  "subName": "단위·측정",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "math/5#g009a-C2-10",
+   "seed": {
+    "subject": "화씨",
+    "aspect": null,
+    "ref": "C2-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1724년 제안된 이 온도 눈금은 얼음과 물에 염화암모늄을 섞은 것을 0으로 잡고, 올레 뢰머의 눈금을 바탕으로 그 값에 4를 곱해 분수를 없앴습니다. 단치히에서 태어나 주로 네덜란드에서 살며 처음으로 쓸 만한 수은 유리 온도계를 만든 사람이 제안한 이 눈금은 무엇일까요?",
+    "answer": "화씨",
+    "acceptedAnswers": [
+     "화씨온도"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "'화씨온도' 는 표준 국어 표기(띄어 쓰면 정규화로 같아짐) — 같은 대상의 흔한 이름",
+    "explanation": "소금 없는 얼음물과 96으로 정한 사람의 체온을 다른 기준점으로 삼았는데, 체온 기준은 뒤에 98.6°로 고쳐졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1724년 제안된 이 온도 눈금",
+     "difWhy": "'파렌하이트 눈금' — 고교 과학",
+     "wor": 4,
+     "worWhy": "온도 단위 — 과학 기본 어휘",
+     "acc": 5,
+     "accWhy": "수학 — 초중 교과 과목"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "엮음: 사람 체온을 96으로 정한 온도 눈금",
+     "difWhy": "섭씨 아닌 온도 눈금 — 중학 과학 (경계 3)",
+     "wor": 4,
+     "worWhy": "교양 — 단위 기본"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1724년 제안된 이 온도 눈금은 얼음과 물에 염화암모늄을 섞은 것을 0으로 잡고, 소금 없는 얼음물과 96으로 정한 사람의 체온을 다른 기준점으로 삼았습니다. 올레 뢰머의 눈금을 바탕으로 그 값에 4를 곱해 분수를 없앤 이 눈금은 무엇일까요?",
+     "beforeExplanation": "염화암모늄 혼합물은 실제로는 오늘날 눈금으로 4°F 가까이에서 안정되고, 체온 기준은 뒤에 98.6°F 로 고쳐졌습니다.",
+     "removedCue": "96으로 정한 사람의 체온을 다른 기준점으로",
+     "addedCue": "단치히 태생 · 네덜란드에서 산 수은 유리 온도계 제작자",
+     "why": "체온 96 이라는 널리 알려진 기준점을 해설로 옮기고 만든 사람의 이력으로"
+    },
+    "generalHint": "1859년 제안된 랭킨 온도는 절대영도를 0으로 잡되, 눈금 한 칸의 크기는 이 눈금과 같게 했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Fahrenheit",
+     "https://en.wikipedia.org/wiki/Daniel_Gabriel_Fahrenheit"
+    ],
+    "facts": [
+     {
+      "claim": "1724년 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fahrenheit",
+      "note": "proposed his temperature scale in 1724"
+     },
+     {
+      "claim": "얼음·물·염화암모늄 혼합물을 0°F 기준",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fahrenheit",
+      "note": "placing a thermometer in \"a mixture of ice, water, and salis Armoniaci\" (zero point, 0)"
+     },
+     {
+      "claim": "소금 없는 얼음물이 둘째 기준점, 체온이 96",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fahrenheit",
+      "note": "a second point for ice and water \"without the aforementioned salts\" ... a third point was approximately the human body's temperature (96)"
+     },
+     {
+      "claim": "뢰머 눈금에 4를 곱해 분수 제거",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fahrenheit",
+      "note": "his scale was built on the work of Ole Rømer ... multiplied Rømer's values by 4 in order to eliminate fractions"
+     },
+     {
+      "claim": "혼합물은 약 4°F, 체온은 98.6°F 로 수정",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fahrenheit",
+      "note": "the ammonium chloride mix actually stabilizes near 4 °F on the final scale ... later revised to the modern 98.6 °F"
+     },
+     {
+      "claim": "파렌하이트는 단치히 태생",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Daniel_Gabriel_Fahrenheit",
+      "note": "Fahrenheit was born in Danzig (Gdańsk), then in the Polish–Lithuanian Commonwealth."
+     },
+     {
+      "claim": "삶의 대부분을 네덜란드 공화국에서 보냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Daniel_Gabriel_Fahrenheit",
+      "note": "spent much of his life in the Dutch Republic"
+     },
+     {
+      "claim": "처음으로 쓸 만한 수은 유리 온도계를 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Daniel_Gabriel_Fahrenheit",
+      "note": "producing the first successful mercury-in-glass thermometers"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Rankine_scale"
+    ],
+    "hintNote": "proposed it in 1859 ... a temperature difference of one Rankine degree is defined as equal to one Fahrenheit degree",
+    "easiestCue": "처음으로 쓸 만한 수은 유리 온도계를 만든 사람이 제안한 눈금",
+    "targetWhy": "수은 온도계 발명자 = 파렌하이트 는 과학사 교양, 염화암모늄·뢰머×4 는 그보다 깊음 — 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 단위, 몰랐던 정의 사연",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

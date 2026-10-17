@@ -1,0 +1,305 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "popular-music/3",
+  "midKey": "popular-music",
+  "subName": "2000년대 이후",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "popular-music/3#g009a-M2-04",
+   "seed": {
+    "subject": "메탈리카 대 냅스터",
+    "aspect": "대중",
+    "ref": "M2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2000년 한 미국 밴드는 영화 '미션 임파서블 2' 사운드트랙에 실릴 곡 'I Disappear'의 데모가 라디오에서 흘러나오는 것을 알고 출처를 쫓았습니다. 그해 4월 13일 밴드는 이 회사를 고소하면서 USC·예일·인디애나 대학도 함께 소송에 올렸는데, 이 서비스는 무엇일까요?",
+    "answer": "냅스터",
+    "acceptedAnswers": [
+     "Napster"
+    ],
+    "originalTitleVariants": [
+     "Napster"
+    ],
+    "variantCheck": "상표가 영어인 서비스(B10) — ko.wikipedia '냅스터' 문서 존재 확인",
+    "explanation": "2001년 7월 12일 메탈리카·닥터 드레와 합의하면서, 공유를 원치 않는 음악가의 곡을 막기로 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "'I Disappear' 데모가 라디오에 … 대학들도 소송에 올린 서비스",
+     "difWhy": "메탈리카의 파일 공유 소송 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "음악·IT 사의 이야깃거리",
+     "acc": 3,
+     "accWhy": "팝·록 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "2000년 메탈리카가 고소한 파일 공유 서비스",
+     "difWhy": "냅스터 소송 — 음악·IT 관심층",
+     "wor": 3,
+     "worWhy": "인터넷 역사 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2000년 메탈리카는 영화 '미션 임파서블 2' 사운드트랙에 실릴 곡 'I Disappear'의 데모가 라디오에서 흘러나오는 것을 알게 되었습니다. 출처를 쫓던 밴드는 그해 4월 13일 한 파일 공유 서비스를 고소했는데, 이 서비스는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "2000년 메탈리카가 고소한 파일 공유 서비스",
+     "addedCue": "함께 피고가 된 USC·예일·인디애나 대학",
+     "why": "'메탈리카가 고소한 파일 공유 서비스' 가 대표 사건 — 밴드·서비스 성격을 감추고 소송 세부로"
+    },
+    "generalHint": "공동 창업자 숀 파커는 뒤에 페이스북의 초대 사장을 지냈다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "대중",
+    "genre": "팝",
+    "work": "메탈리카 대 냅스터",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Metallica_v._Napster,_Inc."
+    ],
+    "facts": [
+     {
+      "claim": "I Disappear 데모 · 미션 임파서블 2 · 라디오",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Metallica_v._Napster,_Inc.",
+      "note": "Metallica discovered that a demo of \"I Disappear\", a song set to be released with the Mission: Impossible II soundtrack, was being played on the radio."
+     },
+     {
+      "claim": "2000년 4월 13일 고소",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Metallica_v._Napster,_Inc.",
+      "note": "On April 13, 2000, Metallica filed a lawsuit against the file sharing company Napster."
+     },
+     {
+      "claim": "2001년 7월 12일 합의 · 원치 않는 음악가 곡 차단",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Metallica_v._Napster,_Inc.",
+      "note": "On July 12, 2001, Napster reached a settlement with Metallica and Dr. Dre ... required Napster to block music from artists who did not want their work shared."
+     },
+     {
+      "claim": "소송에 USC·예일·인디애나 대학도 포함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Metallica_v._Napster,_Inc.",
+      "note": "The lawsuit also named several universities, including the University of Southern California, Yale University, and Indiana University."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sean_Parker"
+    ],
+    "hintNote": "most notable for co-founding the file-sharing computer service Napster, and was the first president of the social networking website Facebook.",
+    "easiestCue": "'I Disappear' 데모 유출로 2000년 고소당한 서비스",
+    "targetWhy": "곡 이름·피고 대학으로 사건을 떠올려야 — 음악·IT 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "음악 산업사의 대표 사건, 공정한 단서",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "popular-music/3#g009a-M2-05",
+   "seed": {
+    "subject": "Rehab",
+    "aspect": "팬 세부",
+    "ref": "M2-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2008년 그래미상에서 올해의 레코드와 올해의 노래를 함께 받은 곡은, 프로듀서 마크 론슨이 함께 길을 걷던 한 영국 가수에게 들은 말을 노래로 만들자고 해서 나왔습니다. 이 가수는 누구일까요?",
+    "answer": "에이미 와인하우스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "곡은 매니지먼트가 권한 재활원행을 그녀가 거절한 이야기를 담았고, 두 번째이자 마지막 정규 앨범 'Back to Black'의 첫 싱글이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "마크 론슨이 함께 길을 걷던 한 영국 가수에게 들은 말을 노래로",
+     "difWhy": "'2008 그래미 · 론슨과 걷던 가수' — 관심층",
+     "wor": 3,
+     "worWhy": "유명 가수 이름 맞히기",
+     "acc": 3,
+     "accWhy": "팝·록 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "재활원에 가라는 매니지먼트의 권유를 거절했던 이야기",
+     "difWhy": "'Rehab · 마크 론슨' — 팝 관심층",
+     "wor": 3,
+     "worWhy": "누구나 아는 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "프로듀서 마크 론슨은 함께 길을 걷던 한 가수가 재활원에 가라는 매니지먼트의 권유를 거절했던 이야기를 하자, 그 말을 노래로 만들자고 했습니다. 이렇게 나온 곡으로 2008년 그래미상 올해의 레코드와 올해의 노래를 받은 영국 가수는 누구일까요?",
+     "beforeExplanation": "이 곡은 그녀의 두 번째이자 마지막 정규 앨범 'Back to Black'의 첫 싱글이었습니다.",
+     "removedCue": "재활원에 가라는 매니지먼트의 권유를 거절했던 이야기",
+     "addedCue": "(새 단서 없음) 그래미 두 부문 · 론슨과 길에서 나온 곡만 남김",
+     "why": "곡 제목(Rehab)을 곧 알려 주는 재활원 이야기를 해설로 옮김"
+    },
+    "generalHint": "그해 그래미 때 비자 승인이 제때 나지 않아, 런던 리버사이드 스튜디오에서 새벽 3시에 위성으로 공연했다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "팬 세부",
+    "genre": "팝",
+    "work": "Rehab",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Rehab_(Amy_Winehouse_song)"
+    ],
+    "facts": [
+     {
+      "claim": "론슨과 함께 걷다가 · 노래로 만들자고 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rehab_(Amy_Winehouse_song)",
+      "note": "Ronson recalled: \"I was walking down the street with Amy.\" ... after Ronson heard the line, he suggested they turn it into a song."
+     },
+     {
+      "claim": "매니지먼트의 재활원 권유를 거절",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rehab_(Amy_Winehouse_song)",
+      "note": "The song addresses Winehouse's refusal to attend a rehab centre after her management team encouraged her to go."
+     },
+     {
+      "claim": "2008년 그래미 올해의 레코드 · 올해의 노래",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rehab_(Amy_Winehouse_song)",
+      "note": "won three Grammy Awards: Record of the Year, Song of the Year and Best Female Pop Vocal Performance (10 February 2008)"
+     },
+     {
+      "claim": "두 번째이자 마지막 정규 앨범 Back to Black 의 첫 싱글",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rehab_(Amy_Winehouse_song)",
+      "note": "released from her second and final studio album Back to Black (2006) ... the album's lead single"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Amy_Winehouse"
+    ],
+    "hintNote": "she could not be at the ceremony in Los Angeles as her visa approval had not been processed in time ... by satellite from Riverside Studios, at 3 a.m. UK time",
+    "easiestCue": "2008년 그래미 올해의 레코드·올해의 노래를 함께 받은 영국 가수의 곡",
+    "targetWhy": "그래미 수상곡 · 마크 론슨 일화는 팝 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "재활원 거절이 곧 곡 내용이라 곡을 아는 관심층은 풀 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  },
+  {
+   "seedId": "popular-music/3#g009a-M2-06",
+   "seed": {
+    "subject": "브루노 마스",
+    "aspect": "대중",
+    "ref": "M2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "호놀룰루에서 태어난 이 가수는 두 살 때 아버지가 한 유명 프로레슬러를 닮았다며 붙여 준 별명을 예명의 앞부분으로 삼았습니다. 네 살 무렵부터 가족 밴드와 무대에 서며 엘비스 프레슬리 흉내로 하와이에서 이름을 알린 이 가수는 누구일까요?",
+    "answer": "브루노 마스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그는 1992년 영화 '허니문 인 베가스'에 잠깐 얼굴을 비치기도 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "아버지가 한 유명 프로레슬러를 닮았다며 붙여 준 별명",
+     "difWhy": "예명 유래 — 팝 애호가",
+     "wor": 3,
+     "worWhy": "유명 가수 이름 맞히기",
+     "acc": 3,
+     "accWhy": "팝·록 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "본명이 피터 진 에르난데스인 이 가수",
+     "difWhy": "'본명 피터 진 에르난데스' — 팝 관심층",
+     "wor": 3,
+     "worWhy": "유명 가수 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "호놀룰루에서 태어난 이 가수는 두 살 때 아버지가 한 유명 프로레슬러를 닮았다며 붙여 준 별명을 예명의 앞부분으로 삼았습니다. 어린 시절 가족 밴드와 무대에 서며 엘비스 프레슬리 흉내로 하와이에서 이름을 알린, 본명이 피터 진 에르난데스인 이 가수는 누구일까요?",
+     "beforeExplanation": null,
+     "removedCue": "본명이 피터 진 에르난데스",
+     "addedCue": "없음 — 레슬러 별명 · 어린 시절 엘비스 흉내로 좁힘",
+     "why": "본명(정답 직결)을 빼고 어린 시절 세부만 남김"
+    },
+    "generalHint": "작곡·프로듀싱 팀 '스미징턴스'를 함께 세웠고, B.o.B의 'Nothin' on You'에 피처링하며 이름을 알렸다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "대중",
+    "genre": "팝",
+    "work": "브루노 마스",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bruno_Mars"
+    ],
+    "facts": [
+     {
+      "claim": "호놀룰루 출생",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bruno_Mars",
+      "note": "Peter Gene Hernandez (born October 8, 1985) ... in Honolulu"
+     },
+     {
+      "claim": "두 살 때 아버지가 프로레슬러 닮았다며 별명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bruno_Mars",
+      "note": "At the age of two, he was nicknamed \"Bruno\" by his father, who thought he resembled professional wrestler Bruno Sammartino."
+     },
+     {
+      "claim": "엘비스 흉내로 하와이에서 알려짐 · 가족 밴드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bruno_Mars",
+      "note": "became known in Hawaii for his onstage impersonation of Elvis Presley (performing with his family's band from about age four)"
+     },
+     {
+      "claim": "1992 허니문 인 베가스 카메오",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bruno_Mars",
+      "note": "He had a cameo role in the 1992 film Honeymoon in Vegas."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bruno_Mars"
+    ],
+    "hintNote": "co-founder of the production team the Smeezingtons. He rose to fame as a recording artist after featuring on the US number-one single \"Nothin' on You\" (2009) by B.o.B.",
+    "easiestCue": "두 살 때 아버지가 한 유명 프로레슬러를 닮았다며 붙여 준 별명을 예명의 앞부분으로",
+    "targetWhy": "예명의 유래 — 팝 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "하와이 출신 · 엘비스 흉내는 팬 사이에 알려진 이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

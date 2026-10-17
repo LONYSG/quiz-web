@@ -1,0 +1,104 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "design-photo/1",
+  "midKey": "design-photo",
+  "subName": "사진 기술·용어",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/1#g009a-A1-17",
+   "seed": {
+    "subject": "니콘",
+    "aspect": null,
+    "ref": "A1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 사진기자 데이비드 더글러스 덩컨은 1950년 7월부터 이듬해 1월까지 한국 전쟁을 취재하며 라이카 레인지파인더에 한 일본 회사의 렌즈를 끼워 썼고, 그 날카로운 사진 덕에 이 회사 렌즈가 널리 알려졌습니다. 1988년 회사 이름을 자기 카메라 상표와 같은 이름으로 바꾼 이 회사는 어디일까요?",
+    "answer": "니콘",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Nikon"
+    ],
+    "variantCheck": "상표가 영문 Nikon — B10",
+    "explanation": "1946년 정한 이 이름은 원래 소형 카메라 상표로만 쓰려던 것인데, 자이스의 '이콘'과 닮았다며 상표 침해 항의를 받기도 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1988년 회사 이름을 자기 카메라 상표와 같은 이름으로",
+     "difWhy": "일본광학 개명 — 카메라 애호가",
+     "wor": 3,
+     "worWhy": "유명 브랜드 이야깃거리",
+     "acc": 3,
+     "accWhy": "사진·디자인 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1959년 일안 반사식 카메라 'F'를 낸 일본 회사",
+     "difWhy": "니콘 F — 카메라 관심층",
+     "wor": 3,
+     "worWhy": "유명 브랜드 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "미국 사진기자 데이비드 더글러스 덩컨은 1950년 7월부터 이듬해 1월까지 한국 전쟁을 취재하며 라이카 레인지파인더에 이 일본 회사의 렌즈를 끼워 썼고, 그 날카로운 사진 덕에 이 회사 렌즈가 널리 알려졌습니다. 이 회사가 1959년 내놓은 일안 반사식 카메라 'F'는 큰 성공을 거두었습니다. 이 회사는 어디일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1959년 내놓은 일안 반사식 카메라 'F'",
+     "addedCue": "1988년에야 회사 이름을 카메라 상표와 같게 바꿈",
+     "why": "대표 제품 이름을 빼고 사명 변경 세부로 바꿈"
+    },
+    "generalHint": "1917년 일본의 이름난 광학 회사 세 곳이 합쳐 세워졌고, 제2차 세계대전 때는 쌍안경·폭격 조준기·잠망경을 만들었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "사진",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Nikon"
+    ],
+    "facts": [
+     {
+      "claim": "덩컨이 1950년 7월~1951년 1월 한국 전쟁 취재, 라이카 레인지파인더에 니콘 광학을 끼움, 니콘 렌즈를 알림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nikon",
+      "note": "Nikon lenses were popularized by the American photojournalist David Douglas Duncan ... covered the Korean War from July 1950 to January 1951 ... fitted Nikon optics to his Leica rangefinders ... high contrast negatives with very sharp resolution at the centre field"
+     },
+     {
+      "claim": "1946년부터의 이름, 소형 카메라 라인용, 자이스 Ikon 상표 항의",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Nikon",
+      "note": "The name Nikon, which dates from 1946, was originally intended only for its small-camera line ... Zeiss complained that Nikon violated its trademarked camera (Ikon)"
+     },
+     {
+      "claim": "1988년 회사 이름을 니콘 주식회사로 바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nikon",
+      "note": "changed its corporate name to Nikon Corporation in 1988"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Nikon"
+    ],
+    "hintNote": "established on 25 July 1917 when three leading optical manufacturers merged ... binoculars, lenses, bomb sights, and periscopes",
+    "easiestCue": "한국 전쟁을 취재하며 라이카 레인지파인더에 한 일본 회사의 렌즈를 끼워 썼고",
+    "targetWhy": "덩컨과 니코르 렌즈 일화 — 카메라 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 브랜드의 취미층 세부 + 한국 전쟁 연결",
+    "pairCheck": null,
+    "dbCheck": "니콘 new",
+    "warn": []
+   }
+  }
+ ]
+}

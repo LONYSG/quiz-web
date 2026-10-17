@@ -1,0 +1,315 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "calendar/2",
+  "midKey": "calendar",
+  "subName": "국제 기념일",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "calendar/2#g009a-L2-29",
+   "seed": {
+    "subject": "파이 데이",
+    "aspect": null,
+    "ref": "L2-29",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1988년 샌프란시스코의 과학관 익스플로라토리움 직원 래리 쇼가 사람들과 둥근 공간을 돌며 행진한 것이, 이 기념일의 알려진 첫 대규모 행사로 꼽힙니다. 2009년 3월 미국 하원이 구속력 없는 결의로 인정한 이 기념일은 무엇일까요?",
+    "answer": "파이 데이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "프린스턴에서는 같은 날 태어난 아인슈타인의 생일과 함께 기리며, 2019년 유네스코는 이날을 '국제 수학의 날'로 정했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 과학관 직원이 둥근 공간을 돌며 행진 + 기념일",
+     "difWhy": "원주율 기념일 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "기념일 이야깃거리",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "같은 날 태어난 아인슈타인의 생일과 함께 기리는 이 기념일",
+     "difWhy": "'아인슈타인 생일과 같은 날' — 관심 있는 사람 (경계 2)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 이색 기념일"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1988년 미국 샌프란시스코의 과학관 익스플로라토리움에서 래리 쇼가 직원·관람객과 함께 둥근 공간을 돌며 행진한 것이, 이 기념일의 알려진 첫 대규모 행사로 꼽힙니다. 프린스턴에서는 같은 날 태어난 아인슈타인의 생일과 함께 기리는 이 기념일은 무엇일까요?",
+     "beforeExplanation": "2019년 유네스코는 이날을 '국제 수학의 날'로 정했습니다.",
+     "removedCue": "같은 날 태어난 아인슈타인의 생일과 함께 기리는",
+     "addedCue": "2009년 미국 하원의 비구속 결의",
+     "why": "아인슈타인 생일이라는 흔한 단서를 해설로 내리고 하원 결의 세부로"
+    },
+    "generalHint": "MIT는 2012년부터 이날 오후 6시 28분에 합격 결과를 공개하며, 그 시각을 '타우 타임'이라 부른다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pi_Day"
+    ],
+    "facts": [
+     {
+      "claim": "1988 래리 쇼 · 익스플로라토리움 · 둥근 공간 행진",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pi_Day",
+      "note": "In 1988, the earliest known official or large-scale celebration of Pi Day was organized by Larry Shaw … with staff and public marching around one of its circular spaces, then consuming fruit pies"
+     },
+     {
+      "claim": "프린스턴 — 아인슈타인 생일과 함께",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pi_Day",
+      "note": "combined celebration of Pi Day and Albert Einstein's birthday, which is also March 14 (Princeton, New Jersey)"
+     },
+     {
+      "claim": "2019 유네스코 국제 수학의 날",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pi_Day",
+      "note": "UNESCO's 40th General Conference designated Pi Day as the International Day of Mathematics in November 2019."
+     },
+     {
+      "claim": "2009.3.12 미 하원 비구속 결의",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pi_Day",
+      "note": "On March 12, 2009, the U.S. House of Representatives passed a non-binding resolution"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pi_Day"
+    ],
+    "hintNote": "Starting in 2012, MIT has announced it will post those decisions (privately) online on Pi Day at exactly 6:28 pm … MIT calls this \"Tau Time.\"",
+    "easiestCue": "1988년 익스플로라토리움 래리 쇼가 시작한 기념일",
+    "targetWhy": "래리 쇼·하원 결의는 과학 교양 애호가 세부 — 4 경계",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "기념일 이름은 흔함, 단서는 교과 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "calendar/2#g009a-L2-30",
+   "seed": {
+    "subject": "세계 에이즈의 날",
+    "aspect": null,
+    "ref": "L2-30",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "샌프란시스코 텔레비전 기자 출신 제임스 번은 동료 토머스 네터와 함께 한 국제 기념일을 처음 떠올렸고, 미국 선거가 충분히 지난 뒤이면서 크리스마스 휴가 전이라 서방 언론에 크게 다뤄지기 좋다며 날짜를 골랐습니다. 조너선 만이 승인해 1988년 처음 치러진 이 기념일은 무엇일까요?",
+    "answer": "세계 에이즈의 날",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "해마다 12월 1일에 지키며, 빨간 리본이 감염인과 함께한다는 세계 공통 상징입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "미국 선거가 충분히 지난 뒤이면서 크리스마스 휴가 전",
+     "difWhy": "'12월 1일 기념일 유래' — 애호가 (경계 3)",
+     "wor": 4,
+     "worWhy": "국제 기념일 — 교양",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 세계보건기구 + 미국 선거 지나고 크리스마스 전 날짜",
+     "difWhy": "WHO 12월 기념일 — 관심층",
+     "wor": 3,
+     "worWhy": "기념일 날짜 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "세계보건기구 제네바 본부에서 일하던 홍보 담당 제임스 번과 토머스 네터가 처음 떠올린 국제 기념일이 있습니다. 텔레비전 기자 출신인 번은 미국 선거가 충분히 지난 뒤이면서 크리스마스 휴가 전이라 서방 언론에 크게 다뤄지기 좋다며 날짜를 골랐는데, 이 기념일은 무엇일까요?",
+     "beforeExplanation": "1988년부터 해마다 12월 1일에 지키며, 빨간 리본이 감염인과 함께한다는 세계 공통 상징입니다.",
+     "removedCue": "세계보건기구 제네바 본부에서 일하던 홍보 담당",
+     "addedCue": "조너선 만의 승인 · 1988년 첫 기념",
+     "why": "기구 이름을 빼고 승인한 사람 · 첫해로"
+    },
+    "generalHint": "2007년부터 미국 백악관은 이날 북쪽 현관에 높이 8.5m의 리본을 걸어 왔다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/World_AIDS_Day"
+    ],
+    "facts": [
+     {
+      "claim": "번 · 네터가 처음 착상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/World_AIDS_Day",
+      "note": "James W. Bunn and Thomas Netter, two public information officers for the Global Programme on AIDS at the World Health Organization in Geneva"
+     },
+     {
+      "claim": "번은 샌프란시스코 TV 기자 출신",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/World_AIDS_Day",
+      "note": "a former television broadcast journalist from San Francisco"
+     },
+     {
+      "claim": "번은 TV 기자 출신 · 미국 선거 뒤·크리스마스 전이라 날짜 선택",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/World_AIDS_Day",
+      "note": "Bunn, a former TV journalist, recommended the date … sufficiently long following the US elections but before the Christmas holidays"
+     },
+     {
+      "claim": "조너선 만 승인 · 첫 기념 1988년 12월 1일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/World_AIDS_Day",
+      "note": "Jonathan Mann ... liked the concept, approved it, and agreed with the recommendation that the first observance should be 1 December 1988"
+     },
+     {
+      "claim": "1988년부터 12월 1일 · 빨간 리본",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/World_AIDS_Day",
+      "note": "observed on 1 December every year since 1988 … the red ribbon … the global symbol for solidarity with HIV-positive people and those living with AIDS"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/World_AIDS_Day"
+    ],
+    "hintNote": "Beginning in 2007, the White House marked the day with a 28 foot (8.5 m) AIDS Ribbon on the building's North Portico",
+    "easiestCue": "미국 선거 뒤 · 크리스마스 전으로 고른 날짜의 국제 기념일",
+    "targetWhy": "번 · 네터 · 조너선 만은 보건사 애호가 — 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "기념일 이름은 흔함, 날짜 사연은 뜻밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 세계",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "calendar/2#g009a-L2-31",
+   "seed": {
+    "subject": "밸런타인데이",
+    "aspect": null,
+    "ref": "L2-31",
+    "pairedWith": 2770
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2770,
+    "question": "1382년 무렵 초서가 쓴 '새들의 의회'는 이날 새들이 모여 짝을 고르는 꿈 이야기로, 비슷한 무렵 사보이의 오통 드 그랑송도 이날 새들의 짝짓기를 시로 썼습니다. 아쟁쿠르 전투에서 붙잡혀 런던탑에 갇힌 오를레앙 공작 샤를이 아내에게 쓴 시가 이날 보낸 글 가운데 남은 가장 오래된 것으로 꼽히는데, 이날은 무엇일까요?",
+    "answer": "밸런타인데이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1847년 직후 미국 매사추세츠주 우스터의 에스더 하울랜드가 종이 레이스를 돋을새김한 카드를 처음 대량으로 만들어 팔았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "'새들의 의회'는 이날 새들이 모여 짝을 고르는 꿈 이야기",
+     "difWhy": "'새들이 짝을 고르는 날' — 관심층",
+     "wor": 3,
+     "worWhy": "기념일 기원 이야깃거리",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "이날과 낭만적 사랑을 이은 첫 기록",
+     "difWhy": "'낭만적 사랑의 날' — 방송·일상에서 흔히 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기념일 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1382년 무렵 초서가 쓴 시 '새들의 의회'는 이날과 낭만적 사랑을 이은 첫 기록으로 꼽힙니다. 아쟁쿠르 전투에서 붙잡혀 런던탑에 갇혀 있던 오를레앙 공작 샤를이 아내에게 쓴 시는 이날 보낸 글 가운데 남은 가장 오래된 것으로 꼽히는데, 이날은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "이날과 낭만적 사랑을 이은 첫 기록",
+     "addedCue": "새들이 짝을 고르는 꿈 · 오통 드 그랑송",
+     "why": "'낭만적 사랑의 날' 이 곧 정답 — 사랑을 말하지 않고 중세 시 세부로"
+    },
+    "generalHint": "미국 축하카드협회는 이날 미국에서만 해마다 약 1억 9천만 장의 카드가 오간다고 어림한다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Valentine%27s_Day"
+    ],
+    "facts": [
+     {
+      "claim": "1382 초서 '새들의 의회' — 새들이 짝을 고르는 꿈 이야기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+      "note": "The first recorded association of Valentine's Day with romantic love is in Parlement of Foules (1382) by Geoffrey Chaucer."
+     },
+     {
+      "claim": "오를레앙 공작 샤를 — 아쟁쿠르 뒤 런던탑, 아내에게 쓴 15세기 론도가 가장 오래된 발렌타인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+      "note": "The earliest surviving valentine is a 15th-century rondeau written by Charles, Duke of Orléans to his wife … the duke was being held in the Tower of London following his capture at the Battle of Agincourt, 1415."
+     },
+     {
+      "claim": "에스더 하울랜드 — 1847년 직후 종이 레이스 카드 대량 생산",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+      "note": "the first mass-produced Valentines of embossed paper lace were produced and sold shortly after 1847 by Esther Howland of Worcester, Massachusetts"
+     },
+     {
+      "claim": "새들이 짝을 고르는 의회를 그린 꿈 이야기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+      "note": "a dream vision portraying a parliament for birds to choose their mates"
+     },
+     {
+      "claim": "사보이의 오통 드 그랑송도 같은 무렵 이날 새 짝짓기 시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+      "note": "Otton de Grandson from Savoy … wrote poems about birds mating on St. Valentine's Day around the same years as Chaucer (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Valentine%27s_Day"
+    ],
+    "hintNote": "The U.S. Greeting Card Association estimates that approximately 190 million valentines are sent each year in the US.",
+    "easiestCue": "오를레앙 공작 샤를이 런던탑에서 아내에게 쓴 시 — 남은 가장 오래된 이날의 글",
+    "targetWhy": "중세 문학 속 기원 — 문학·역사 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 날, 기록의 시작은 대학 교양",
+    "pairCheck": "1회차 2770 q(3세기 로마 성인·2월 14일·연인 선물) · e(일본에서 퍼진 초콜릿) · h(없음) 와 겹치지 않음 — '짝을 고르는 날' 같은 정의 단서도 쓰지 않음",
+    "dbCheck": "pair-or-different 2770 — (가) 2회차",
+    "warn": [
+     "단정어 가장 오래",
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 2770,
+     "question": "3세기 로마의 한 성인 이름에서 유래했다고 전하는, 2월 14일 연인끼리 선물을 주고받는 날은?",
+     "explanation": "초콜릿을 주는 풍습은 일본에서 퍼졌습니다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,983 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "olympic/1",
+  "midKey": "olympic",
+  "subName": "하계 올림픽",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "olympic/1#g009a-S3-01",
+   "seed": {
+    "subject": "검은 9월",
+    "aspect": null,
+    "ref": "S3-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 하계 올림픽 기간에 이 무장 단체 대원 여덟 명은, 몰래 숙소로 들어가던 선수들의 도움을 받아 2m 높이의 철망 울타리를 넘은 뒤 코놀리 거리 31번지 건물로 들어갔습니다. 이들은 작전 이름을 1948년 주민이 쫓겨난 두 팔레스타인 마을에서 따 '이크리트와 비림'이라 했는데, 이 단체는 무엇일까요?",
+    "answer": "검은 9월",
+    "acceptedAnswers": [
+     "검은 9월단"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '검은 9월' · '검은 9월단' 문서가 모두 있음(curl 로 문서 제목 확인)",
+    "explanation": "이 사건으로 대회 경기가 34시간 멈췄는데, 근대 올림픽에서 처음 있는 일이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 하계 올림픽 + 팔레스타인 무장 단체",
+     "difWhy": "'뮌헨 올림픽 무장 단체' — 대학 교양 세계사",
+     "wor": 4,
+     "worWhy": "현대사 교양 사건",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "엮음: 하계 올림픽 + 팔레스타인 무장 단체",
+     "difWhy": "'뮌헨 올림픽 무장 단체' — 대학 교양 세계사",
+     "wor": 4,
+     "worWhy": "현대사 교양 사건"
+    },
+    "rewrite": null,
+    "generalHint": "이 단체는 1971년 요르단 총리 와스피 탈을 암살하기도 했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Munich_massacre"
+    ],
+    "facts": [
+     {
+      "claim": "대원 여덟 명, 몰래 들어가던 선수들의 도움으로 2m 철망 울타리를 넘음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Munich_massacre",
+      "note": "scaled a 2-metre (6+1⁄2 ft) chain-link fence ... with the assistance of unsuspecting athletes (who were also sneaking in) · eight members of Black September"
+     },
+     {
+      "claim": "코놀리 거리 31번지 건물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Munich_massacre",
+      "note": "the two-story apartment building at Connollystraße 31"
+     },
+     {
+      "claim": "작전 이름 '이크리트와 비림' — 1948년 주민이 쫓겨난 두 팔레스타인 기독교 마을",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Munich_massacre",
+      "note": "Their commander, Luttif Afif, named the operation \"Iqrit and Biram,\" after two Palestinian Christian villages whose residents were expelled in 1948."
+     },
+     {
+      "claim": "경기 34시간 중단 — 근대 올림픽 처음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Munich_massacre",
+      "note": "competition was suspended for 34 hours, ... a first in modern Olympic history"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Black_September"
+    ],
+    "hintNote": "The Palestinian Black September Organization was founded after the conflict … their most notable attack was the assassination of Jordanian prime minister Wasfi Tal in 1971",
+    "easiestCue": "코놀리 거리 31번지 건물로 들어갔습니다",
+    "targetWhy": "뮌헨 사건은 알아도 숙소 주소·작전 이름은 올림픽사 애호가 영역 — '1972 뮌헨'을 질문에서 뺐다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'팔레스타인 무장 단체 + 올림픽' 으로 추리하면 3 이 될 수 있다(경계)",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/1#g009a-S3-02",
+   "seed": {
+    "subject": "농구",
+    "aspect": null,
+    "ref": "S3-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1972년 뮌헨 대회 이 종목 남자 결승에서 진 미국 선수들은 만장일치로 은메달을 받지 않기로 했고, 그 메달은 스위스 로잔의 금고에 보관되어 왔습니다. 선수 케니 데이비스는 아내와 자손도 그 메달을 받지 말라는 조항을 유언장에 넣었다는데, 이 종목은 무엇일까요?",
+    "answer": "농구",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 결승의 마지막 3초는 석연치 않은 규칙 해석 속에 세 번이나 치러졌고, 소련이 51-50으로 이겼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1972년 뮌헨 결승 은메달 거부",
+     "difWhy": "'뮌헨 결승 논란 종목' — 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1972년 뮌헨 결승 은메달 거부",
+     "difWhy": "'뮌헨 결승 논란 종목' — 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "1936년 베를린 대회 때 처음 정식 종목이 되었는데, 결승은 빗속 흙 테니스 코트에서 치러 드리블조차 어려웠다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/1972_Olympic_men's_basketball_final"
+    ],
+    "facts": [
+     {
+      "claim": "미국 선수들이 만장일치로 은메달 거부 · 1972년 뮌헨 대회 결승 — 문서 제목 1972 Olympic men's basketball final",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1972_Olympic_men's_basketball_final",
+      "note": "voting unanimously to refuse their silver medals"
+     },
+     {
+      "claim": "은메달은 로잔의 금고에 보관",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1972_Olympic_men's_basketball_final",
+      "note": "The silver medals are still kept in a vault in Lausanne, Switzerland."
+     },
+     {
+      "claim": "케니 데이비스 유언장 조항",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1972_Olympic_men's_basketball_final",
+      "note": "Davis reportedly had a clause added to his will forbidding his wife, children or descendants from ever accepting the silver medal"
+     },
+     {
+      "claim": "마지막 3초를 세 번 치름 · 소련 51-50",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1972_Olympic_men's_basketball_final",
+      "note": "The final three seconds of the game were played three times under questionable rule interpretations · Soviet Union 51, United States 50"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Basketball_at_the_1936_Summer_Olympics"
+    ],
+    "hintNote": "the first appearance of the sport of basketball as an official Olympic medal event / Lawn and dirt tennis courts were used / The final was played in driving rain ... impossible to dribble.",
+    "easiestCue": "1972년 뮌헨 대회 이 종목 남자 결승에서 진 미국 선수들은 만장일치로 은메달을 받지 않기로 했고",
+    "targetWhy": "1972 농구 결승의 은메달 거부·유언장 일화는 농구·올림픽 애호가 영역",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'미국이 결승에서 진 팀 종목' 으로 농구를 짐작할 수 있다",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different — 활성 1456(농구 창시·복숭아 바구니) 과 지식이 다름",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/1#g009a-S3-03",
+   "seed": {
+    "subject": "럭비",
+    "aspect": null,
+    "ref": "S3-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1924년 파리 대회 이 종목 결승에서 미국이 개최국 프랑스를 17-3으로 이기자, 프랑스 관중은 미국 선수들에게 병과 돌을 던졌고 시상식의 미국 국가는 야유에 묻혔습니다. 이 대회를 끝으로 2016년까지 하계 올림픽에서 치러지지 않은 이 종목은 무엇일까요?",
+    "answer": "럭비",
+    "acceptedAnswers": [
+     "럭비 유니언"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "en 문서 제목 'Rugby union at the 1924 Summer Olympics' — 한국에서는 '럭비'로 부르고 '럭비 유니언'도 쓰는 표기(ko.wikipedia '럭비 유니언' 문서)",
+    "explanation": "관중석에서는 미국인 관중 기디언 넬슨이 지팡이에 얼굴을 맞아 정신을 잃기도 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1924년 파리 대회를 끝으로 2016년까지 하계 올림픽에서 치러지지 않은 종목",
+     "difWhy": "2016 복귀 종목 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 종목사 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1924년 파리 대회를 끝으로 2016년까지 하계 올림픽에서 치러지지 않은 종목",
+     "difWhy": "2016 복귀 종목 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 종목사 — 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "이 대회의 이 종목에는 프랑스·미국·루마니아 세 나라만 나왔다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Rugby_union_at_the_1924_Summer_Olympics"
+    ],
+    "facts": [
+     {
+      "claim": "결승에서 미국이 프랑스를 17-3으로 이김 · 1924년 대회 — 문서 제목 Rugby union at the 1924 Summer Olympics",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rugby_union_at_the_1924_Summer_Olympics",
+      "note": "The United States beat France 17–3 in the final ... in an upset in front of a partisan crowd."
+     },
+     {
+      "claim": "프랑스 관중이 병과 돌을 던짐 · 미국 국가가 야유에 묻힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rugby_union_at_the_1924_Summer_Olympics",
+      "note": "threw bottles and rocks onto the field and at American players and officials · The Star-Spangled Banner was drowned out by the booing and hissing of French fans"
+     },
+     {
+      "claim": "이 대회가 2016년 7인제 도입 전 마지막 하계 올림픽 럭비",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rugby_union_at_the_1924_Summer_Olympics",
+      "note": "the last time rugby was played at a Summer Olympics until rugby sevens was introduced in 2016"
+     },
+     {
+      "claim": "기디언 넬슨이 지팡이에 맞아 정신을 잃음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rugby_union_at_the_1924_Summer_Olympics",
+      "note": "U.S. spectator Gideon Nelson was knocked unconscious after being hit in the face by a walking stick"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Rugby_union_at_the_1924_Summer_Olympics"
+    ],
+    "hintNote": "Romania and the USA were expected to provide only token opposition ... Romania ... finished third with 3 points, behind the USA (54) and France (62).",
+    "easiestCue": "이 대회를 끝으로 2016년까지 하계 올림픽에서 치러지지 않은 이 종목",
+    "targetWhy": "1924 럭비 결승 난동은 올림픽사 애호가 영역 · 2016년 복귀는 7인제를 아는 관심층에게 단서가 될 수 있다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'2016년 복귀' 가 관심층 단서(경계 3)",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/1#g009a-S3-04",
+   "seed": {
+    "subject": "에릭 리들",
+    "aspect": null,
+    "ref": "S3-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 톈진에서 스코틀랜드인 선교사 부모 사이에 태어난 이 선수는 1922~1923년 스코틀랜드 럭비 국가대표로 일곱 경기를 뛰었고, 1945년 산둥의 일본군 민간인 수용소에서 숨졌습니다. 1924년 파리 대회 남자 400m에서 우승한 이 선수는 누구일까요?",
+    "answer": "에릭 리들",
+    "acceptedAnswers": [
+     "리들"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '에릭 리들' 문서 제목 확인 · 성만 쳐도 같은 인물로 부름",
+    "explanation": "그의 올림픽 이야기는 아카데미상을 받은 1981년 영화 '불의 전차'로 만들어졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1924년 파리 남자 400m 우승",
+     "difWhy": "'리들 400m' — 애호가 (경계 5)",
+     "wor": 3,
+     "worWhy": "이야깃거리 인물",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1924년 파리 남자 400m 우승",
+     "difWhy": "'리들 400m' — 애호가 (경계 5)",
+     "wor": 3,
+     "worWhy": "이야깃거리 인물"
+    },
+    "rewrite": null,
+    "generalHint": "같은 대회 200m에서는 동메달을 땄는데, 이때 팀 동료 해럴드 에이브러햄스는 6위였다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Eric_Liddell"
+    ],
+    "facts": [
+     {
+      "claim": "톈진에서 스코틀랜드인 선교사 부모 사이에 태어남 · 1922~1923년(문서 1922–23)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eric_Liddell",
+      "note": "Born in Tianjin, China to Scottish missionary parents on 16 January 1902"
+     },
+     {
+      "claim": "스코틀랜드 럭비 국가대표 7경기(1922~23)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eric_Liddell",
+      "note": "Played wing-threequarter for Scotland, with 7 international appearances in 1922–23"
+     },
+     {
+      "claim": "1945년 산둥 일본군 민간인 수용소에서 사망",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eric_Liddell",
+      "note": "Died on 21 February 1945 at a Japanese civilian internment camp in Shandong"
+     },
+     {
+      "claim": "1924 파리 400m 우승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eric_Liddell",
+      "note": "Won the 400 metres at the Paris Olympics"
+     },
+     {
+      "claim": "1981년 아카데미상 영화 '불의 전차'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Eric_Liddell",
+      "note": "The 1981 Oscar-winning film Chariots of Fire depicts his Olympic story"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Eric_Liddell"
+    ],
+    "hintNote": "won the bronze medal in the 200 m ... beating British rival and teammate Harold Abrahams, who finished in sixth place.",
+    "easiestCue": "1924년 파리 대회 남자 400m에서 우승한 이 선수",
+    "targetWhy": "'일요일 경기 거부' 일화(대표 일화)를 빼고 출생지·럭비·수용소·400m 만 둠 — 영화 팬·올림픽 애호가 영역",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "영화 '불의 전차' 로 이름은 들어 봤을 법하고 단서는 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/1#g009a-S3-05",
+   "seed": {
+    "subject": "포환던지기",
+    "aspect": null,
+    "ref": "S3-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2004년 8월 18일 아테네 대회의 이 육상 투척 종목 남자 경기는, 아테네 경기장이 아니라 그리스 올림피아의 고대 경기장에서 치러졌습니다. 이 종목은 무엇일까요?",
+    "answer": "포환던지기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "처음에는 원반던지기를 그곳에서 치르려 했지만, 경기장이 좁아 관중이 위험할 수 있다는 이유로 바뀌었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "2004 아테네 대회 고대 올림피아 경기장에서 치른 투척 종목",
+     "difWhy": "올림피아 개최 종목 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "2004 아테네 대회 고대 올림피아 경기장에서 치른 투척 종목",
+     "difWhy": "올림피아 개최 종목 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "이 종목은 고대 올림픽에서는 한 번도 치러진 적이 없었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Athletics_at_the_2004_Summer_Olympics_–_Men's_shot_put"
+    ],
+    "facts": [
+     {
+      "claim": "2004년 8월 18일 고대 올림피아 경기장에서 남자 포환던지기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Athletics_at_the_2004_Summer_Olympics_–_Men's_shot_put",
+      "note": "held on August 18, 2004, at the Ancient Olympia Stadium in Olympia, Greece"
+     },
+     {
+      "claim": "원반던지기가 원래 계획됐으나 좁아서 관중 위험",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Athletics_at_the_2004_Summer_Olympics_–_Men's_shot_put",
+      "note": "the discus was originally planned for this venue, but the field was too small and would have posed a danger to spectators"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Athletics_at_the_2004_Summer_Olympics_–_Men's_shot_put"
+    ],
+    "hintNote": "The shot put was chosen instead, even though the event was never contested at the Ancient Olympic Games.",
+    "easiestCue": "그리스 올림피아의 고대 경기장에서 치러졌습니다",
+    "targetWhy": "2004 올림피아 포환던지기는 올림픽사 애호가가 아는 뒷이야기",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "투척 넷 중 고르는 추리 여지가 있으나 단서는 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/1#g009a-S3-06",
+   "seed": {
+    "subject": "아이웨이웨이",
+    "aspect": null,
+    "ref": "S3-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "헤르초크 & 드뫼롱이 중국 도자기 연구에서 출발해 설계한 2008년 베이징 대회 주경기장에는, 한 중국 미술가가 예술 고문으로 참여했습니다. 뒤에 반올림픽 견해를 밝히며 이 일에서 거리를 두고 '이미 잊었다'고 말한 그는 누구일까요?",
+    "answer": "아이웨이웨이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '아이웨이웨이' 문서 제목('아이 웨이웨이' 는 넘겨주기 — 띄어쓰기만 달라 정규화로 같음)",
+    "explanation": "이 경기장에 쓰인 강철 12만 1천 톤은 모두 중국에서 만든 것이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "베이징 대회 주경기장 … 중국 미술가가 예술 고문",
+     "difWhy": "'새둥지 예술 고문' — 미술 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "유명 미술가 이름",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "새 둥지 예술 고문 중국 미술가, 올림픽 비판",
+     "difWhy": "'베이징 올림픽 비판 미술가' — 관심층 (경계 4)",
+     "wor": 3,
+     "worWhy": "유명 인물 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "스위스의 헤르초크 & 드뫼롱이 설계한 2008년 베이징 대회 주경기장 '새 둥지'에는 이 중국 미술가가 예술 고문으로 참여했습니다. 뒤에 올림픽을 비판하며 이 경기장을 두고 \"이미 잊었다\"고 말한 그는 누구일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'새 둥지' 별명 + 예술 고문 중국 미술가",
+     "addedCue": "중국 도자기 연구에서 출발한 설계",
+     "why": "경기장 별명 '새 둥지'를 빼고 설계 출발점 세부로 바꿈"
+    },
+    "generalHint": "2011년 아무 혐의 없이 81일 동안 구금되었고, 런던 테이트 모던에서 '해바라기 씨' 전시를 열었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Beijing_National_Stadium"
+    ],
+    "facts": [
+     {
+      "claim": "헤르초크 & 드뫼롱 설계 · 2008년 베이징 대회 주경기장(Beijing National Stadium)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beijing_National_Stadium",
+      "note": "The design came from the Swiss firm Herzog & de Meuron, working with China Architectural Design & Research Group"
+     },
+     {
+      "claim": "아이웨이웨이가 예술 고문",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beijing_National_Stadium",
+      "note": "artistic consultant on the project"
+     },
+     {
+      "claim": "반올림픽 견해, '이미 잊었다'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beijing_National_Stadium",
+      "note": "Ai voiced anti-Olympics views and distanced himself from the stadium, saying \"I've already forgotten about it.\""
+     },
+     {
+      "claim": "강철 12만 1천 톤 모두 중국산",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Beijing_National_Stadium",
+      "note": "All 121,000 tons of steel were made in China."
+     },
+     {
+      "claim": "설계는 중국 도자기 연구에서 출발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beijing_National_Stadium",
+      "note": "The design, which originated from the study of Chinese ceramics"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ai_Weiwei"
+    ],
+    "hintNote": "detained for 81 days without charge / Tate Modern in London, home to Ai's Sunflower Seeds exhibition",
+    "easiestCue": "베이징 올림픽 주경기장의 예술 고문이었다가 올림픽을 비판한 중국 미술가",
+    "targetWhy": "설계 협업 세부 — 미술·올림픽 애호가 4(경계 3)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'올림픽 비판 중국 미술가' 로 관심층이 떠올릴 수 있다(경계 3)",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/1#g009a-S3-07",
+   "seed": {
+    "subject": "아이스하키",
+    "aspect": null,
+    "ref": "S3-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1920년 4월 안트베르펜 하계 대회에서 치러진 이 종목의 순위는 베리발 방식으로 가렸습니다. 이때 금메달을 딴 캐나다 대표는 아이슬란드계 캐나다인 선수들로 꾸려 1911년 창단한 클럽 팀 위니펙 팰컨스였는데, 이 종목은 무엇일까요?",
+    "answer": "아이스하키",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "올림픽에서 처음 치른 이 종목 경기였고, 이때는 한 팀에 일곱 명씩 뛰었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 위니펙 팰컨스 + 캐나다 대표 금메달",
+     "difWhy": "캐나다 겨울 종목 — 스포츠 관심층",
+     "wor": 2,
+     "worWhy": "올림픽 편성 세부",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "엮음: '얼음 궁전' + 한 팀 일곱 명",
+     "difWhy": "얼음 위 팀 종목 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "올림픽 종목 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 종목은 1920년 4월, 안트베르펜 하계 대회 때 '안트베르펜 얼음 궁전'에서 처음 올림픽 경기로 치러졌습니다. 이때는 한 팀에 일곱 명씩 뛰었고 순위는 베리발 방식으로 가렸는데, 이 종목은 무엇일까요?",
+     "beforeExplanation": "캐나다는 클럽 팀 위니펙 팰컨스가 대표로 나가 금메달을 땄습니다.",
+     "removedCue": "'안트베르펜 얼음 궁전' · 한 팀에 일곱 명",
+     "addedCue": "아이슬란드계 클럽 팀 위니펙 팰컨스의 금메달",
+     "why": "얼음 궁전 · 인원 단서를 빼고 우승 팀 세부로"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ice_hockey_at_the_1920_Summer_Olympics",
+     "https://en.wikipedia.org/wiki/Winnipeg_Falcons"
+    ],
+    "facts": [
+     {
+      "claim": "1920년 4월 23~29일 경기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ice_hockey_at_the_1920_Summer_Olympics",
+      "note": "The matches were played between April 23 and April 29, 1920."
+     },
+     {
+      "claim": "한 팀 일곱 명 · 베리발 방식",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ice_hockey_at_the_1920_Summer_Olympics",
+      "note": "All games were played with seven players per side. · The tournament format used the Bergvall system."
+     },
+     {
+      "claim": "위니펙 팰컨스가 캐나다 대표로 금",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ice_hockey_at_the_1920_Summer_Olympics",
+      "note": "Canada, represented by the Winnipeg Falcons, won the gold medal."
+     },
+     {
+      "claim": "위니펙 팰컨스 — 1911년 창단, 거의 아이슬란드계 캐나다인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Winnipeg_Falcons",
+      "note": "The Winnipeg Falcons hockey team was founded in 1911 with a roster made almost entirely of Icelandic Canadian players."
+     },
+     {
+      "claim": "올림픽 첫 아이스하키",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ice_hockey_at_the_1920_Summer_Olympics",
+      "note": "This was the first ice hockey tournament at an Olympic Games."
+     },
+     {
+      "claim": "한 팀 일곱 명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ice_hockey_at_the_1920_Summer_Olympics",
+      "note": "All games were played with seven players per side. · The tournament format used the Bergvall system."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "금메달 캐나다 대표 위니펙 팰컨스",
+    "targetWhy": "위니펙 팰컨스 · 베리발 방식은 스포츠 역사 애호가 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'얼음 + 팀 일곱 명' 으로 추리 여지",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 처음"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (올림픽 편성 세부) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "olympic/1#g009a-S3-08",
+   "seed": {
+    "subject": "스트리크닌",
+    "aspect": null,
+    "ref": "S3-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1904년 세인트루이스 대회 남자 마라톤에서 우승한 미국의 토머스 힉스는, 달리는 도중 이 물질을 브랜디와 달걀흰자에 섞어 여러 번 받아 마셨습니다. 1818년 프랑스 화학자 펠티에와 카방투가 '성 이그나티우스 콩'에서 처음 찾아낸 이 물질은 무엇일까요?",
+    "answer": "스트리크닌",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '스트리크닌' 문서 제목",
+    "explanation": "이 경주에서는 프레드 로즈가 도중에 자동차를 타고 가다 다시 뛰어들었다가, 관중의 항의로 실격되기도 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "펠티에와 카방투가 '성 이그나티우스 콩'에서 처음 찾아낸 이 물질",
+     "difWhy": "'성 이그나티우스 콩 알칼로이드' — 대학 교양",
+     "wor": 3,
+     "worWhy": "1904 마라톤 일화",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "흔히 쥐약으로 쓰이던 물질",
+     "difWhy": "'쥐약 독물' — 관심층 (경계 4)",
+     "wor": 3,
+     "worWhy": "올림픽 일화 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1904년 세인트루이스 대회 남자 마라톤에서 우승한 미국의 토머스 힉스는, 달리는 도중 이 물질을 브랜디와 달걀흰자에 섞어 여러 번 받아 마셨습니다. 흔히 쥐약으로 쓰이던 이 물질은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "흔히 쥐약으로 쓰이던 이 물질",
+     "addedCue": "1818년 펠티에·카방투가 '성 이그나티우스 콩'에서 처음 찾아냄",
+     "why": "쥐약이라는 첫 줄 쓰임을 빼고 발견사 세부로"
+    },
+    "generalHint": "애거사 크리스티의 추리 소설에서 살인 도구로 쓰였고, 1954년 우드워드 연구진이 처음으로 전합성에 성공했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Athletics_at_the_1904_Summer_Olympics_–_Men's_marathon",
+     "https://en.wikipedia.org/wiki/Strychnine"
+    ],
+    "facts": [
+     {
+      "claim": "힉스가 브랜디·달걀흰자에 섞은 스트리크닌을 여러 번 받음 · 1904년 세인트루이스 대회",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Athletics_at_the_1904_Summer_Olympics_–_Men's_marathon",
+      "note": "He received several doses of strychnine mixed with brandy and egg white ... a common rat poison"
+     },
+     {
+      "claim": "프레드 로즈 자동차 탑승 뒤 복귀, 항의로 실격",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Athletics_at_the_1904_Summer_Olympics_–_Men's_marathon",
+      "note": "He dropped out after nine miles and rode in a car back toward the stadium. He later rejoined the race, and was disqualified after the spectators' complaints."
+     },
+     {
+      "claim": "1818년 프랑스 화학자 카방투·펠티에가 성 이그나티우스 콩에서 처음 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Strychnine",
+      "note": "Strychnine was first discovered by French chemists Joseph Bienaimé Caventou and Pierre-Joseph Pelletier in 1818 in the Saint-Ignatius' bean."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Strychnine"
+    ],
+    "hintNote": "Strychnine has been used as a plot device in the author Agatha Christie's murder mysteries. / The first total synthesis of strychnine was reported by the research group of R. B. Woodward in 1954.",
+    "easiestCue": "1904년 세인트루이스 마라톤 우승자 힉스가 브랜디에 섞어 마신 물질",
+    "targetWhy": "1904 마라톤 도핑 일화와 알칼로이드 발견사는 올림픽·화학사 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'쥐약 + 각성' 으로 스트리크닌을 떠올리는 교양층이 있다(경계 3)",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/1#g009a-S3-09",
+   "seed": {
+    "subject": "복권",
+    "aspect": null,
+    "ref": "S3-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1947년 대한올림픽위원회는 런던 올림픽 참가 경비를 마련하려고 '올림픽 후원권'을 액면가 100원에 140만 장 발행했습니다. 이 후원권은 우리나라 최초의 무엇으로 꼽힐까요?",
+    "answer": "복권",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1등 당첨금은 100만 원이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "'올림픽 후원권'이 우리나라 최초의 무엇",
+     "difWhy": "액면가 발행 후원권 = 복권 — 방송·뉴스",
+     "wor": 3,
+     "worWhy": "최초 복권 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "'올림픽 후원권'이 우리나라 최초의 무엇",
+     "difWhy": "액면가 발행 후원권 = 복권 — 방송·뉴스",
+     "wor": 3,
+     "worWhy": "최초 복권 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 유일하지 않음 — 정답이 범주어(복권)라 '후원권 발행' 서술 자체가 곧 정의"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://www.seoul.co.kr/news/editOpinion/weft-column/2014/03/07/20140307031009",
+     "https://kyeonggi.com/article/201208120467549"
+    ],
+    "facts": [
+     {
+      "claim": "1947년 대한올림픽위원회 발행 올림픽 후원권 = 우리나라 최초의 복권, 런던 올림픽 참가 경비",
+      "where": "q",
+      "url": "https://www.seoul.co.kr/news/editOpinion/weft-column/2014/03/07/20140307031009",
+      "note": "1947년 대한올림픽위원회가 발행한 올림픽 후원권은 우리나라 최초의 복권 … 런던 올림픽 참가경비를 마련하기 위해서였다."
+     },
+     {
+      "claim": "액면가 100원, 140만 장, 1등 100만 원",
+      "where": "q",
+      "url": "https://www.seoul.co.kr/news/editOpinion/weft-column/2014/03/07/20140307031009",
+      "note": "액면가 100원으로 140만장이 발행됐고, 1등 당첨금은 100만원이었다."
+     },
+     {
+      "claim": "한국 복권의 효시가 된 올림픽 후원권(올림픽 참가비)",
+      "where": "q",
+      "url": "https://kyeonggi.com/article/201208120467549",
+      "note": "올림픽 참가비를 마련하기 위해 한국 복권의 효시가 된 올림픽 후원권을 발매했다고 한다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'올림픽 후원권'을 액면가 100원에 140만 장 발행했습니다",
+    "targetWhy": "한국 첫 복권이 올림픽 후원권이라는 사실은 체육사·생활사 애호가 영역",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'후원권을 대량 발행' 에서 복권을 추리할 수 있다(경계 3) · 서울신문 원문은 '제16회' 로 적었으나 회차는 질문에서 뺐다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 최초"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/1#g009a-S3-10",
+   "seed": {
+    "subject": "테니스",
+    "aspect": null,
+    "ref": "S3-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 종목은 1924년 파리 대회를 끝으로, 국제 연맹과 IOC가 아마추어 선수의 자격을 두고 다투면서 올림픽에서 빠졌습니다. 그 뒤 1968년과 1984년 대회에서 시범 종목으로 치러지다 정식 메달 종목으로 돌아온 이 종목은 무엇일까요?",
+    "answer": "테니스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "정식 종목으로 돌아온 1988년 서울 대회에서 슈테피 그라프는 여자 단식 금메달을 따, 한 해에 4대 메이저 대회와 올림픽을 모두 휩쓴 첫 '골든 슬램'을 이뤘습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1924년 파리 대회를 끝으로 … 1968년과 1984년 시범 종목",
+     "difWhy": "'올림픽 테니스 복귀' — 스포츠 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 종목 역사 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1988년 서울 대회에서 정식 메달 종목으로 돌아온 이 종목",
+     "difWhy": "'서울 올림픽에서 복귀한 종목' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 올림픽 종목사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 종목은 1924년 파리 대회를 끝으로, 국제 연맹과 IOC가 아마추어 선수의 자격을 두고 다투면서 올림픽에서 빠졌습니다. 그 뒤 1988년 서울 대회에서 정식 메달 종목으로 돌아온 이 종목은 무엇일까요?",
+     "beforeExplanation": "이 종목은 그 사이 1968년과 1984년 대회에서 시범 종목으로 치러졌습니다.",
+     "removedCue": "1988년 서울 대회에서 정식 메달 종목으로 돌아온",
+     "addedCue": "1968년과 1984년 대회에서 시범 종목으로 치러짐",
+     "why": "'서울 올림픽 복귀 종목' 을 빼고 시범 종목 연도 세부로 바꿈"
+    },
+    "generalHint": "1924년 파리 대회 이 종목 여자 단식 금메달은 미국의 헬렌 윌스가 땄다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tennis_at_the_Summer_Olympics",
+     "https://en.wikipedia.org/wiki/Steffi_Graf"
+    ],
+    "facts": [
+     {
+      "claim": "1924년 뒤 ILTF와 IOC의 아마추어 자격 분쟁으로 빠짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tennis_at_the_Summer_Olympics",
+      "note": "Tennis was dropped after 1924 because of disputes between the International Lawn Tennis Federation and the International Olympic Committee (over the definition of amateur players)"
+     },
+     {
+      "claim": "1988년 정식 메달 종목으로 복귀",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tennis_at_the_Summer_Olympics",
+      "note": "returned as a full medal sport at the 1988 Summer Olympics"
+     },
+     {
+      "claim": "1968·1984 시범 종목",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tennis_at_the_Summer_Olympics",
+      "note": "Tennis returned as a demonstration sport in 1968 and 1984."
+     },
+     {
+      "claim": "그라프 1988 골든 슬램(4대 메이저 + 올림픽 금)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Steffi_Graf",
+      "note": "becoming the first tennis player to achieve the Golden Slam by winning all four major titles and the Olympic gold medal in the same calendar year (1988)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tennis_at_the_1924_Summer_Olympics"
+    ],
+    "hintNote": "Women's singles gold: Helen Wills (United States)",
+    "easiestCue": "1924년 파리 대회를 끝으로, 국제 연맹과 IOC가 아마추어 선수의 자격을 두고 다투면서 올림픽에서 빠졌습니다",
+    "targetWhy": "올림픽 종목 제외·복귀 경위 — 올림픽 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "서울 올림픽을 기억하는 관심층이 떠올릴 수 있다(경계 3)",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/1#g009a-S3-11",
+   "seed": {
+    "subject": "콧수염",
+    "aspect": null,
+    "ref": "S3-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1972년 뮌헨 대회 수영 스타 마크 스피츠는 한 러시아 코치에게, 이것이 입에서 물을 밀어내고 엉덩이를 띄워 몸을 총알 모양으로 만들어 준 덕분에 빨리 헤엄칠 수 있었다고 농담했습니다. 이것은 무엇일까요?",
+    "answer": "콧수염",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그는 1년 동안 이것을 깎겠다고 말한 끝에 마침내 깎았다고 전합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "마크 스피츠는 ... 이것이 입에서 물을 밀어내고",
+     "difWhy": "'마크 스피츠의 농담' — 수영 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 선수 일화",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "마크 스피츠는 ... 이것이 입에서 물을 밀어내고",
+     "difWhy": "'마크 스피츠의 농담' — 수영 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 선수 일화"
+    },
+    "rewrite": null,
+    "generalHint": "그는 대학 시절 한 코치가 '넌 못 기른다'고 해서 이것을 길렀다고 말했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mark_Spitz"
+    ],
+    "facts": [
+     {
+      "claim": "러시아 코치에게 한 콧수염 농담 — 입에서 물을 밀어내고 엉덩이를 띄워 총알 모양 · 1972년 뮌헨 대회(스피츠 금 일곱 개 대회)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mark_Spitz",
+      "note": "a Russian coach ... \"it deflects water away from my mouth, allows my rear end to rise and make me bullet-shaped in the water, and that's what had allowed me to swim so great.\""
+     },
+     {
+      "claim": "1년 동안 말한 끝에 깎음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mark_Spitz",
+      "note": "after talking about shaving off his moustache for a year, he finally did."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mark_Spitz"
+    ],
+    "hintNote": "I grew the moustache because a coach in college said I couldn't grow one.",
+    "easiestCue": "이것이 입에서 물을 밀어내고",
+    "targetWhy": "스피츠의 콧수염 농담은 수영·올림픽 애호가가 아는 일화",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "스피츠 사진을 아는 사람은 '입 근처' 로 바로 떠올린다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  }
+ ]
+}

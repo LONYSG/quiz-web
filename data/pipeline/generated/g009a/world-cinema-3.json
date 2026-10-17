@@ -1,0 +1,107 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "world-cinema/3",
+  "midKey": "world-cinema",
+  "subName": "유럽·아시아 영화",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/3#g009a-M2-31",
+   "seed": {
+    "subject": "패왕별희",
+    "aspect": "팬 세부",
+    "ref": "M2-31",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1993년 칸 영화제에서 제인 캠피언의 '피아노'와 황금종려상을 나눠 받아, 중국어 영화로는 처음 이 상을 받은 영화입니다. 이벽화(릴리언 리)의 같은 이름 소설이 원작인 이 영화는 무엇일까요?",
+    "answer": "패왕별희",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "중국에서는 1993년 상하이에서 잠깐 상영된 뒤 그해 8월 상영이 금지되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1993년 칸 … '피아노'와 황금종려상을 나눠 받아, 중국어 영화로는 처음",
+     "difWhy": "칸 첫 중국어 황금종려상 — 영화 관심층",
+     "wor": 3,
+     "worWhy": "대중적 명작 영화 제목",
+     "acc": 4,
+     "accWhy": "세계 영화 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "천카이거 감독이 경극 배우들의 삶을 그린 중국 영화",
+     "difWhy": "천카이거 경극 영화 — 영화 관심층",
+     "wor": 3,
+     "worWhy": "유명 영화 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "천카이거 감독이 경극 배우들의 삶을 그린 한 중국 영화는 1993년 칸 영화제에서 제인 캠피언의 '피아노'와 황금종려상을 나눠 받았습니다. 중국어 영화로는 처음 이 상을 받은 이 영화는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "천카이거 감독이 경극 배우들의 삶을 그린 중국 영화",
+     "addedCue": "이벽화(릴리언 리)의 소설 원작",
+     "why": "감독·경극이라는 대표 소개를 빼고 원작자 세부로"
+    },
+    "generalHint": "골든글로브 외국어 영화상과 영국 아카데미 비영어 영화상도 받았으며, 이야기는 1924년 베이징에서 버려진 소년으로 시작한다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "팬 세부",
+    "genre": "영화",
+    "work": "패왕별희",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)"
+    ],
+    "facts": [
+     {
+      "claim": "1993 칸 피아노와 황금종려상 공동 · 중국어 영화 첫 수상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+      "note": "shared the Palme d'Or with Jane Campion's The Piano from New Zealand ... Farewell My Concubine was the first, and as of 2026, remained the only, Chinese-language film to win the Palme d'Or."
+     },
+     {
+      "claim": "1993 상하이 상영 뒤 8월 금지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+      "note": "subsequently banned in August (after its brief Shanghai run in 1993)"
+     },
+     {
+      "claim": "이벽화(Lilian Lee)의 같은 이름 소설이 원작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+      "note": "Based on the novel of the same name by Lilian Lee / (ko.wikipedia) 이벽화의 소설 … 을 원작으로"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)"
+    ],
+    "hintNote": "Golden Globe for Best Foreign Language Film / BAFTA Best Film Not in the English Language / In 1924 Peking, a young boy by the name of Douzi is abandoned",
+    "easiestCue": "1993년 칸에서 '피아노'와 황금종려상을 나눠 받은 중국어 영화",
+    "targetWhy": "칸 공동 수상 · 원작자 이벽화는 영화 애호가 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'경극 배우 영화' 하면 떠올리는 관심층이 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,296 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "society/1",
+  "midKey": "society",
+  "subName": "교육 제도",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "society/1#g009a-H2-01",
+   "seed": {
+    "subject": "SAT",
+    "aspect": null,
+    "ref": "H2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제1차 세계대전 때 로버트 여키스와 함께 미 육군 신병들에게 지능검사를 실시했던 심리학자 칼 브리검은, 1930년 논문에서 이민자 집단의 지능에 관한 자신의 앞선 결론이 근거가 없었다고 스스로 물렸습니다. 그가 1926년 칼리지 보드를 위해 만든 시험은 무엇일까요?",
+    "answer": "SAT",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1923년 『미국인의 지능 연구』에서 그는 미국 태생 백인의 지능이 가장 높다고 결론짓고 이민 제한을 주장했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "그가 1926년 칼리지 보드를 위해 만든 시험",
+     "difWhy": "'칼리지 보드 시험' — 관심층",
+     "wor": 3,
+     "worWhy": "시험 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "오늘날까지 이어지는 미국 대학 입학 시험",
+     "difWhy": "미국 대입 시험 이름 — 뉴스에서 흔히",
+     "wor": 3,
+     "worWhy": "유명 시험의 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "제1차 세계대전 때 로버트 여키스와 함께 미 육군 신병들에게 지능검사를 실시했던 심리학자 칼 브리검은, 1926년 칼리지 보드를 위해 새 시험을 만들었습니다. 오늘날까지 이어지는 이 미국 대학 입학 시험은 무엇일까요?",
+     "beforeExplanation": "브리검은 1930년 논문에서 이민자 집단의 지능에 관한 자신의 앞선 결론이 근거가 없었다고 스스로 물렸습니다.",
+     "removedCue": "오늘날까지 이어지는 이 미국 대학 입학 시험",
+     "addedCue": "브리검의 1930년 자기 결론 철회",
+     "why": "범주(미국 대입 시험)를 묻는 문장에서 빼고 만든 사람의 뒷이야기로"
+    },
+    "generalHint": "2024년 3월 미국에서 종이 시험을 끝내고 디지털 방식으로 바뀌었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Carl_Brigham"
+    ],
+    "facts": [
+     {
+      "claim": "브리검은 여키스와 함께 미 육군 신병에게 지능검사를 실시했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carl_Brigham",
+      "note": "worked with Robert Yerkes to administer the army mental tests to US Army recruits."
+     },
+     {
+      "claim": "1930년 논문에서 앞선 결론을 근거 없다고 철회했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carl_Brigham",
+      "note": "In his 1930 paper, \"Intelligence Tests of Immigrant Groups,\" Brigham disavowed his 1923 conclusions ... conclusions were \"without foundation\""
+     },
+     {
+      "claim": "1926년 브리검이 칼리지 보드를 위해 SAT를 만들었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carl_Brigham",
+      "note": "In 1926, Brigham created the SAT for College Board."
+     },
+     {
+      "claim": "1923년 『미국인의 지능 연구』 — 이민 제한 주장",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Carl_Brigham",
+      "note": "published his influential book, A Study of American Intelligence ... concluded that native-born (Caucasian) Americans had the highest intelligence (and argued for tighter immigration controls)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/SAT"
+    ],
+    "hintNote": "The December 2023 SAT was the last SAT test offered on paper. The switch to the digital format occurred on March 9, 2024, in the U.S.",
+    "easiestCue": "1926년 칼리지 보드를 위해 만든 시험",
+    "targetWhy": "칼리지 보드 · 브리검은 교육 제도 관심층~애호가 — 경계 3",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "정답은 누구나 아는 시험이고 단서는 교과서 밖이지만, '칼리지 보드' 를 아는 사람에겐 바로 풀린다",
+    "pairCheck": null,
+    "dbCheck": "answercheck SAT — new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "society/1#g009a-H2-02",
+   "seed": {
+    "subject": "바칼로레아",
+    "aspect": null,
+    "ref": "H2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1861년 8월 37세의 쥘리빅투아르 도비에는 여성으로는 처음 이 시험에 합격했고, 1871년 리옹에서 학사 학위를 받아 프랑스 대학을 졸업한 첫 여성이 되었습니다. 1808년 3월 17일 이후 오늘날의 꼴로 이어져 온 이 졸업 시험은 무엇일까요?",
+    "answer": "바칼로레아",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "철학 시험은 계열과 상관없이 모든 응시생이 반드시 치러야 해서 해마다 그 문제가 화제가 됩니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1808년 3월 17일 이후 오늘날의 꼴로 이어져 온 이 졸업 시험",
+     "difWhy": "프랑스 대입 졸업 시험 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교육 제도 교양",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "나폴레옹의 시행으로 오늘날의 꼴을 갖춘 이 졸업 시험",
+     "difWhy": "프랑스 대입 졸업 시험 — 관심층 (경계 2)",
+     "wor": 4,
+     "worWhy": "교육 제도 교양 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1808년 3월 17일 나폴레옹의 시행으로 오늘날의 꼴을 갖춘 이 졸업 시험에, 1861년 8월 37세의 쥘리빅투아르 도비에가 여성으로는 처음 합격했습니다. 이 시험은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "나폴레옹의 시행으로 오늘날의 꼴을 갖춘 졸업 시험",
+     "addedCue": "1871년 리옹 학사 — 프랑스 대학 첫 여성 졸업자",
+     "why": "나폴레옹이라는 대표 인물을 빼고 도비에의 이력 세부를 더함"
+    },
+    "generalHint": "20점 만점에 10점이면 붙고, 18점 이상이면 '심사위원 축하'라는 가장 높은 등급을 받는다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Baccalauréat",
+     "https://en.wikipedia.org/wiki/Julie-Victoire_Daubié",
+     "https://en.wikipedia.org/wiki/Julie-Victoire_Daubi%C3%A9"
+    ],
+    "facts": [
+     {
+      "claim": "1808년 3월 17일 (나폴레옹의) 시행 이후 지금의 졸업 시험 꼴로 이어져 왔다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Baccalauréat",
+      "note": "in its present form as a school-leaving examination since Emperor Napoleon Bonaparte's implementation on 17 March 1808."
+     },
+     {
+      "claim": "1861년 8월 37세의 도비에가 여성으로 처음 바칼로레아에 합격했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Julie-Victoire_Daubié",
+      "note": "She was 37 years old when she became the first female baccalaureate in France, in August 1861."
+     },
+     {
+      "claim": "철학 시험은 계열과 상관없이 모두 치른다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Baccalauréat",
+      "note": "the bac de philo, for example, is the philosophy exam, which all students must take, regardless of their field of study."
+     },
+     {
+      "claim": "1871년 리옹에서 학사(licence) — 프랑스 대학을 졸업한 첫 여성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Julie-Victoire_Daubi%C3%A9",
+      "note": "(요지) She was the first woman to graduate from a French university, earning a licentiate degree in Lyon in 1871."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Baccalauréat"
+    ],
+    "hintNote": "The pass mark is 10 out of 20. ... The top tier, at 18 and above, is called \"félicitations du jury.\"",
+    "easiestCue": "1861년 도비에가 여성으로 처음 합격한 프랑스의 졸업 시험",
+    "targetWhy": "도비에 · 1808년 법령은 교육사 애호가 — 경계 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "나폴레옹에서 프랑스를 떠올리면 '프랑스 졸업 시험 = 바칼로레아' 는 뉴스 수준이라 3 으로 볼 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 바칼로레아 — new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "society/1#g009a-H2-03",
+   "seed": {
+    "subject": "가오카오",
+    "aspect": null,
+    "ref": "H2-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1952년 8월 15일부터 사흘 동안 처음 치러진 이 나라의 전국 대학 입학 시험은 1966년 7월 공식 폐지됐다가 1977년 말에야 다시 치러졌습니다. 이 시험은 무엇일까요?",
+    "answer": "가오카오",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "다시 열린 1977년 시험에는 570만 명이 응시해 27만 명만 합격했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1966년 7월 공식 폐지됐다가 1977년 말에야 다시 치러졌습니다",
+     "difWhy": "'문혁기 폐지된 입시' — 고교 세계사·뉴스",
+     "wor": 4,
+     "worWhy": "시사 상식 — 중국 대입",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1966년 7월 공식 폐지됐다가 1977년 말에야 다시 치러졌습니다",
+     "difWhy": "'문혁기 폐지된 입시' — 고교 세계사·뉴스",
+     "wor": 4,
+     "worWhy": "시사 상식 — 중국 대입"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 유일하지 않음 — 나라를 밝히면 '중국 대입 시험' 범주 단서로 풀리고, 밝히지 않으면 1952년 첫 시험만으로는 대상이 흐려짐"
+    },
+    "generalHint": "2020년에는 코로나19로 한 달 미뤄져 7월 7~8일에 치러졌다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gaokao"
+    ],
+    "facts": [
+     {
+      "claim": "첫 시험은 1952년 8월 15~17일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gaokao",
+      "note": "The first Gaokao was held on 15–17 August 1952."
+     },
+     {
+      "claim": "1966년 7월 공식 폐지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gaokao",
+      "note": "the Gaokao was officially canceled (July 1966)"
+     },
+     {
+      "claim": "1977년 말 다시 치러졌다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gaokao",
+      "note": "The first such examination after the Cultural Revolution took place in late 1977."
+     },
+     {
+      "claim": "1977년 570만 명 응시, 27만 명 합격",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gaokao",
+      "note": "table lists 5,700,000 examinees for 1977, with 270,000 accepted."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gaokao"
+    ],
+    "hintNote": "the 2020 Gaokao would be postponed by one month, moving the national dates to 7–8 July",
+    "easiestCue": "1966년 7월 공식 폐지됐다가 1977년 말에야 다시 치러졌습니다",
+    "targetWhy": "1966~77 공백을 문화대혁명과 잇고(고교 세계사) 그 나라 입시 이름을 아는 두 걸음 — 나라 이름을 질문에 두지 않았다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "문화대혁명 연결은 고교 수준이고 '가오카오' 는 뉴스에 나오는 이름이라 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 가오카오 — new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

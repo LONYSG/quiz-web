@@ -1,0 +1,306 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "brands/3",
+  "midKey": "brands",
+  "subName": "상표가 된 상품명",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "brands/3#g009a-L2-38",
+   "seed": {
+    "subject": "포클레인",
+    "aspect": null,
+    "ref": "L2-38",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1927년 프랑스 르플레시벨빌에서 기술자 조르주 바타유가 세운 회사는 1951년 유압으로 움직이는 건설 기계 'TU'를 내놓았고, 혁신적인 유압 모터로 프랑스와 세계 시장을 이끌었습니다. 1977년 경기 침체 속에 지분 40%를 미국 케이스에 넘긴 이 회사는 어디일까요?",
+    "answer": "포클레인",
+    "acceptedAnswers": [
+     "포크레인"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '굴착기' — '프랑스의 상표에서 온 포클레인' · '포크레인' 은 국내 업체·상품 페이지 실사용 표기(WebSearch)",
+    "explanation": "한국에서는 이 회사 이름이 굴착기를 가리키는 일반명사처럼 쓰입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1951년 유압으로 움직이는 건설 기계 'TU'",
+     "difWhy": "굴착기 상표가 된 회사 — 애호가",
+     "wor": 4,
+     "worWhy": "상표가 된 말 — 생활 어휘",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "한국에서 그 기계를 가리키는 일반명사",
+     "difWhy": "'굴삭기 일반명사' — 일상",
+     "wor": 3,
+     "worWhy": "상표가 된 말 이야기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1927년 프랑스 르플레시벨빌에서 기술자 조르주 바타유가 세운 회사는 1951년 유압으로 움직이는 건설 기계 'TU'를 내놓았습니다. 1977년 경기 침체 속에 지분 40%를 미국 케이스에 넘긴 이 회사의 이름은 한국에서 그 기계를 가리키는 일반명사처럼 쓰이는데, 무엇일까요?",
+     "beforeExplanation": "바타유 집안은 유압 부문을 남겨, 그 회사는 지금도 반경 피스톤 유압 모터를 만듭니다.",
+     "removedCue": "이 회사의 이름은 한국에서 그 기계를 가리키는 일반명사처럼 쓰임",
+     "addedCue": "혁신적 유압 모터로 세계 시장을 이끎",
+     "why": "정답에 곧바로 닿는 '한국 일반명사' 서술을 해설로 옮김"
+    },
+    "generalHint": "1987년 케이스는 이 회사 지분 98.7%를 쥐었고, 창업 가문에는 유압 부문만 남았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Poclain",
+     "https://ko.wikipedia.org/wiki/굴착기"
+    ],
+    "facts": [
+     {
+      "claim": "1927 조르주 바타유 · 르플레시벨빌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Poclain",
+      "note": "founded in France in 1927 by engineer Georges Bataille … operated out of Le Plessis-Belleville"
+     },
+     {
+      "claim": "1951 유압 굴착기 TU",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Poclain",
+      "note": "a hydraulic excavator, the TU, in 1951"
+     },
+     {
+      "claim": "1977 경기 침체 속 지분 40% 케이스에",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Poclain",
+      "note": "Poclain sold 40% of the company to Case of America in 1977 during a recession"
+     },
+     {
+      "claim": "한국에서 일반명사화",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/굴착기",
+      "note": "프랑스의 상표에서 온 포클레인이라는 말도 일반명사화되어 널리 쓰인다."
+     },
+     {
+      "claim": "혁신적 유압 모터로 프랑스·세계 시장을 이끎",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Poclain",
+      "note": "was a leader on the French and world market thanks to a revolutionary hydraulic motor"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Poclain"
+    ],
+    "hintNote": "By 1987 Case had 98.7% control, leaving the family with the hydraulics company.",
+    "easiestCue": "1951년 유압 건설 기계 'TU'를 내놓은 프랑스 회사",
+    "targetWhy": "굴착기 상표 이름의 프랑스 회사 내력은 건설·자동차 애호가 — 경계 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'유압 건설 기계 + 한국 일반명사' 에서 바로 떠올릴 사람이 많을 수 있음(3)",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "brands/3#g009a-L2-39",
+   "seed": {
+    "subject": "써모스",
+    "aspect": null,
+    "ref": "L2-39",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1904년 독일의 라인홀트 부르거가 자기 특허에 등록한 이 상표는, 1989년 일본 회사 닛폰 산소가 그 운영 회사들을 사들였습니다. 1962년 미국 법원은 경쟁사 알라딘 인더스트리가 이 이름을 소문자로 써도 된다고 판결했는데, 이 상표는 무엇일까요?",
+    "answer": "써모스",
+    "acceptedAnswers": [
+     "Thermos"
+    ],
+    "originalTitleVariants": [
+     "Thermos"
+    ],
+    "variantCheck": "영어 상표 B10 — 한국어 '서모스' 표기는 확인 못 해 넣지 않음",
+    "explanation": "바탕이 된 진공 단열 플라스크는 1892년 제임스 듀어가 액화 기체를 담으려고 발명했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1962년 미국 법원은 … 이 이름을 소문자로 써도 된다",
+     "difWhy": "'보온병 상표 보통명사화' — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "상표가 된 상품명 이야깃거리",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1904년 라인홀트 부르거가 등록한 상표 … 일반명사가 된 (병)",
+     "difWhy": "보온병 상표의 보통명사화 — 관심층",
+     "wor": 3,
+     "worWhy": "상표가 된 상품명 — 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1904년 독일의 라인홀트 부르거가 등록한 이 상표를 두고, 미국에서는 알라딘 인더스트리가 소문자로 이 이름을 붙인 병을 팔겠다고 나서 소송이 벌어졌습니다. 법원은 이 이름이 일반명사가 되었다고 보아 알라딘은 소문자로, 상표 주인은 대문자로 쓰게 했는데, 이 상표는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "일반명사가 된 이름을 붙인 병 — 알라딘이 이 이름의 병을 팔겠다고 나섬",
+     "addedCue": "1989년 닛폰 산소의 인수",
+     "why": "'병' 과 '일반명사' 가 보온병을 바로 가리킴 — 빼고 회사 소유 이력으로"
+    },
+    "generalHint": "1955년 이 회사는 '리틀 브라운 저그' 보온 물통을 만들던 헴프 앤드 컴퍼니를 사들였다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "캠핑",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Thermos_L.L.C."
+    ],
+    "facts": [
+     {
+      "claim": "1904년 부르거 상표 등록",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thermos_L.L.C.",
+      "note": "(Reinhold) Burger registered the Thermos trademark in 1904"
+     },
+     {
+      "claim": "일반명사 판결 · 소문자/대문자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thermos_L.L.C.",
+      "note": "Judge Robert Anderson ruled that thermos was a generic term … to mark its bottles with a lowercase 'thermos' … the Thermos company retained the uppercase usage"
+     },
+     {
+      "claim": "1892 듀어 — 액화 기체용 진공 플라스크",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Thermos_L.L.C.",
+      "note": "(James Dewar, 1892) invented the vacuum-insulated flask, a scientific vessel for storing liquefied gases"
+     },
+     {
+      "claim": "닛폰 산소가 1989년 운영 회사들을 인수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thermos_L.L.C.",
+      "note": "Nippon Sanso K.K. had developed the world's first stainless steel vacuum bottle in 1978 and acquired the Thermos operating companies in 1989 (요지)"
+     },
+     {
+      "claim": "1962년 앤더슨 판사 — thermos 는 일반명사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thermos_L.L.C.",
+      "note": "In 1962, Judge Robert Anderson ruled that thermos was a generic term."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Thermos_LLC"
+    ],
+    "hintNote": "In 1955, the Thermos company, then named the American Thermos Bottle Company, acquired control of Hemp and Company, Inc., of Macomb, Illinois, manufacturers of the Little Brown Jug and other insulated jugs",
+    "easiestCue": "1962년 알라딘이 소문자로 쓸 수 있게 된 상표",
+    "targetWhy": "상표 보통명사화 판결·소유 이력 — 상표·생활 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "캠핑·주방에서 흔한 상표, 판결 이야기는 뜻밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "brands/3#g009a-L2-40",
+   "seed": {
+    "subject": "지프",
+    "aspect": null,
+    "ref": "L2-40",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1943년 2월 이 이름으로 상표를 출원한 윌리스오버랜드는 첫 시제품을 만든 아메리칸 밴텀 등의 반대에 부딪혀, 1950년 6월에야 등록 상표로 인정받았습니다. 아이슬란드에서는 이 이름에서 온 '예피'가 모든 SUV를 가리키는데, 이 이름은 무엇일까요?",
+    "answer": "지프",
+    "acceptedAnswers": [
+     "Jeep"
+    ],
+    "originalTitleVariants": [
+     "Jeep"
+    ],
+    "variantCheck": "영어 상표 B10",
+    "explanation": "흔히 '범용'을 뜻하는 'GP'가 뭉개져 불린 데서 왔다고 하지만, 그 무렵 'GP'라고 쓴 기록은 없다고 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "아이슬란드에서는 이 이름에서 온 '예피'가 모든 SUV를 가리키는데",
+     "difWhy": "'윌리스오버랜드 상표 · 예피' — 자동차 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 상표가 된 이름",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "아이슬란드에서는 이 이름에서 온 '예피'가 모든 SUV를 가리키는데",
+     "difWhy": "'윌리스오버랜드 상표 · 예피' — 자동차 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 상표가 된 이름"
+    },
+    "rewrite": null,
+    "generalHint": "제2차 세계대전 동안 윌리스는 이 차를 36만 3천 대, 포드는 28만 대쯤 만들었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "자동차",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Jeep"
+    ],
+    "facts": [
+     {
+      "claim": "1943년 2월 출원 · 1950년 6월 등록",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jeep",
+      "note": "was eventually granted the name \"Jeep\" as a registered trademark in June 1950 … had first filed in February 1943"
+     },
+     {
+      "claim": "첫 시제품을 만든 아메리칸 밴텀 등의 반대",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jeep",
+      "note": "opposition, mainly from American Bantam, the creator of the first Jeep prototype, and also from Minneapolis-Moline"
+     },
+     {
+      "claim": "아이슬란드 jeppi — 모든 SUV",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jeep",
+      "note": "in Iceland, \"jeppi,\" derived from Jeep, is used for any SUV"
+     },
+     {
+      "claim": "GP 설 — 당대 기록 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jeep",
+      "note": "\"GP\" was slurred into \"jeep\" … there are no contemporaneous uses of 'GP' before later attempts to create a backronym"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Willys_MB"
+    ],
+    "hintNote": "During World War II, Willys produced 363,000 Jeeps, and Ford produced some 280,000.",
+    "easiestCue": "1943년 2월 이 이름으로 상표를 출원한 윌리스오버랜드는",
+    "targetWhy": "'윌리스 지프' 를 아는 자동차 애호가 단서 — 2차 대전 군용차 정의는 뺌",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 이름, 상표 분쟁은 애호가 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

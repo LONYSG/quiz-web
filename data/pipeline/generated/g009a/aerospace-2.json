@@ -1,0 +1,120 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "aerospace/2",
+  "midKey": "aerospace",
+  "subName": "항공사·공항",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/2#g009a-C2-20",
+   "seed": {
+    "subject": "팬암",
+    "aspect": null,
+    "ref": "C2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1964년 8월 이 항공사는 게르하르트 피스토어를 앞으로 있을 달 여행의 첫 승객으로 예약받았고, 대기 명단 '퍼스트 문 플라이츠 클럽'에는 약 9만 3천 명이 뒤따랐습니다. 1968년 스탠리 큐브릭의 영화 '2001: 스페이스 오디세이'에 이 회사의 우주 여객선이 나오는, 1991년 파산한 미국 항공사는 어디일까요?",
+    "answer": "팬암",
+    "acceptedAnswers": [
+     "팬아메리칸 월드 항공",
+     "팬 아메리칸 항공",
+     "Pan Am"
+    ],
+    "originalTitleVariants": [
+     "Pan Am"
+    ],
+    "variantCheck": "ko.wikipedia 문서 제목 '팬아메리칸 월드 항공' · 첫 문장 '팬 암(영어: Pan Am)이라는 약칭' · 본문 '팬암' — 상표가 영어(B10)",
+    "explanation": "이 항공사는 보잉 747의 출시 고객으로 1966년 4월 25대를 주문했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'2001: 스페이스 오디세이'에 이 회사의 우주 여객선이 나오는, 1991년 파산한 미국 항공사",
+     "difWhy": "'2001 우주 여객선 · 1991 파산' — 영화·항공 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 전설적 항공사",
+     "acc": 3,
+     "accWhy": "항공·우주 기술 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'2001: 스페이스 오디세이'에 이 회사의 우주 여객선이 나오는, 1991년 파산한 미국 항공사",
+     "difWhy": "'2001 우주 여객선 · 1991 파산' — 영화·항공 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 전설적 항공사"
+    },
+    "rewrite": null,
+    "generalHint": "1947년 6월 세계에서 처음으로 정기 세계 일주 항공편을 띄웠다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pan_Am",
+     "https://ko.wikipedia.org/wiki/팬아메리칸_항공"
+    ],
+    "facts": [
+     {
+      "claim": "1964년 8월 피스토어를 달 여행 첫 승객으로 예약",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pan_Am",
+      "note": "(August 1964) accepted the reservation of Gerhard Pistor as the first passenger for future flights to the Moon"
+     },
+     {
+      "claim": "약 9만 3천 명 First Moon Flights Club",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pan_Am",
+      "note": "About 93,000 people followed on the Pan Am waiting list, called \"First Moon Flights Club\""
+     },
+     {
+      "claim": "1968년 2001 스페이스 오디세이 출연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pan_Am",
+      "note": "had a prominent role in Stanley Kubrick's 1968 film 2001: A Space Odyssey ... the 2001 Pan Am Space Clipper"
+     },
+     {
+      "claim": "1991년 파산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pan_Am",
+      "note": "gradually sold off its assets before declaring bankruptcy in 1991"
+     },
+     {
+      "claim": "747 출시 고객, 1966년 4월 25대 주문",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pan_Am",
+      "note": "Pan Am was a Boeing 747 launch customer, placing a $525 million order for 25 aircraft in April 1966"
+     },
+     {
+      "claim": "한국어 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/팬아메리칸_항공",
+      "note": "팬 아메리칸 월드 항공(영어: Pan American World Airways)은 ... 팬 암(영어: Pan Am)이라는 약칭으로 알려져 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pan_Am"
+    ],
+    "hintNote": "In June 1947, Pan Am started the first scheduled round-the-world airline flight.",
+    "easiestCue": "'2001: 스페이스 오디세이'에 이 회사의 우주 여객선이 나오는",
+    "targetWhy": "달 여행 예약 클럽·큐브릭 영화 속 우주선은 항공·영화 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "전설적 항공사의 뜻밖의 우주 연결",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

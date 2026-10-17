@@ -1,0 +1,929 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "kr-history/2",
+  "midKey": "kr-history",
+  "subName": "고려",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/2#g009a-K1-01",
+   "seed": {
+    "subject": "쌍성총관부",
+    "aspect": null,
+    "ref": "K1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1258년 고려 사람 조휘와 탁청은 동북면병마사 신집평 등을 죽이고 몽골에 투항했습니다. 그 뒤 몽골이 세운 이 통치 기구의 우두머리 자리는 조휘의 아들 조양기, 손자 조림, 증손 조소생이 대를 이어 맡았는데, 이 기구는 무엇일까요?",
+    "answer": "쌍성총관부",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1356년 유인우가 공격할 때 조돈과 이자춘·이성계 부자가 안에서 성문을 열어 주어 함락되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1258년 조휘와 탁청이 ... 몽골에 투항 ... 몽골이 세운 이 통치 기구",
+     "difWhy": "'조휘·탁청 투항 뒤 세운 기구' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 원 간섭기",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "몽골이 화주에 둔 통치 기구",
+     "difWhy": "'철령 이북 몽골 기구' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 역사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1258년 고려 사람 조휘와 탁청은 동북면병마사 신집평 등을 죽이고, 철령 이북의 땅을 바치며 몽골에 투항했습니다. 그 뒤 몽골이 화주에 둔 이 통치 기구의 우두머리 자리는 조휘의 아들·손자·증손이 대를 이어 맡았는데, 이 기구는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "몽골이 화주에 둔 · 철령 이북의 땅",
+     "addedCue": "총관을 이은 조양기·조림·조소생",
+     "why": "교과서 단서인 화주·철령 이북을 빼고 투항자·세습 가계로만"
+    },
+    "generalHint": "몽골은 1270년 서경에도 동녕부를 두고 최탄을 그 우두머리로 삼았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/쌍성총관부"
+    ],
+    "facts": [
+     {
+      "claim": "1258년 원이 화주에 설치한 통치 기구",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍성총관부",
+      "note": "1258년(고종 45년)에 원나라가 화주(和州)에 설치한 통치기구이다."
+     },
+     {
+      "claim": "조휘·탁청이 신집평 등을 죽이고 철령 이북 땅을 바치며 몽골에 투항",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍성총관부",
+      "note": "고려 사람 조휘와 탁청 등이 동북면병마사 신집평 등을 죽이고, 철령 이북의 땅을 바치며 몽골에 투항했다. 초대 총관은 조휘, 천호는 탁청."
+     },
+     {
+      "claim": "1356년 유인우 공격, 조돈과 이자춘·이성계가 내통해 성문을 엶",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/쌍성총관부",
+      "note": "공민왕 5년(1356년) 유인우가 동북병마사로서 탈환에 나섰다. 조돈(趙暾)과 이자춘과 그의 아들 이성계가 내부에서 고려군과 내통하여 쌍성총관부의 성문을 열었다."
+     },
+     {
+      "claim": "총관 세습 — 조양기·조림·조소생",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍성총관부",
+      "note": "쌍성총관은 한양 조씨 집안이 세습하여 조휘의 아들 조양기, 손자 조림, 증손 조소생이 이어받았고"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동녕부"
+    ],
+    "hintNote": "서경에 동녕부를 설치한 후, 최탄을 동녕부 총관(摠管)에 임명하였다.",
+    "easiestCue": "조휘·탁청이 신집평을 죽이고 몽골에 투항해 생긴 기구",
+    "targetWhy": "조휘·탁청·조소생 이름은 수능 심화·한국사 애호가 수준 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 교과서에 흔하고 단서는 설치 경위 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g009a-K1-02",
+   "seed": {
+    "subject": "홍건적",
+    "aspect": null,
+    "ref": "K1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려 공민왕 때 총병관 정세운은 이 세력을 물리치는 데 공을 세웠지만, 이를 시기하던 김용의 음모로 1362년 안우 등에게 죽임을 당했습니다. 정세운이 물리친 이 세력은 무엇일까요?",
+    "answer": "홍건적",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "안동의 놋다리밟기는 이 난리로 공민왕이 노국공주와 함께 안동으로 피란했을 때 부녀자들이 사람 다리를 놓아 준 이야기에서 비롯했다고 전합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "총병관 정세운은 이 세력을 물리치는 데",
+     "difWhy": "'공민왕 때 홍건적 격퇴' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과 한국사",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "안동 놋다리밟기, 고려 왕이 왕비와 안동으로 피란",
+     "difWhy": "공민왕 안동 피란 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "고려 말 침입 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "안동의 놋다리밟기는 고려의 왕이 왕비와 함께 개경을 떠나 이 지방으로 피란했을 때, 부녀자들이 허리를 굽혀 사람 다리를 놓아 왕비가 시내를 건너게 했다는 이야기에서 비롯했다고 전합니다. 이때 왕을 피란길에 오르게 한 침입 세력은 무엇일까요?",
+     "beforeExplanation": "고려의 궁궐 터 만월대도 1362년 이 난리로 불타 버렸습니다.",
+     "removedCue": "안동 놋다리밟기 · 고려 왕이 왕비와 안동으로 피란",
+     "addedCue": "총병관 정세운이 물리쳤으나 김용의 음모로 안우 등에게 살해",
+     "why": "공민왕 안동 피란(고교 한국사)을 해설로 옮기고 정세운 피살 뒷이야기로 바꿈"
+    },
+    "generalHint": "이 무리 출신인 주원장은 1368년 난징에서 황제로 즉위해 명나라를 세웠다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/놋다리밟기",
+     "https://ko.wikipedia.org/wiki/정세운_(고려)"
+    ],
+    "facts": [
+     {
+      "claim": "놋다리밟기 유래 — 공민왕이 노국공주와 개경을 떠나 안동으로 피란, 부녀자들이 사람 다리를 놓아 공주가 시내를 건너게 함",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/놋다리밟기",
+      "note": "고려 공민왕 때 홍건적이 침입하자 왕은 노국공주와 함께 개경을 떠나 안동 지방으로 피란하였다. 이때 안동의 부녀자들이 사람 다리를 놓아 공주가 시내를 건너게 했다고 전한다."
+     },
+     {
+      "claim": "정세운은 총병관에 임명되어 홍건적을 물리치는 데 공을 세웠으나 김용의 음모로 죽임을 당함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/정세운_(고려)",
+      "note": "총병관(摠兵官)에 임명되어 홍건적을 물리치는 데 공을 세웠으나 … 이를 시기하던 김용(金鏞)의 음모로 죽임을 당했다"
+     },
+     {
+      "claim": "안우 등에게 살해, 1362년 사망",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/정세운_(고려)",
+      "note": "정세운(鄭世雲, ？ ~ 1362년)은 고려의 무관이다. / 안우 등에게 살해된 바가 되었다"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/홍건적의_난"
+    ],
+    "hintNote": "1368년 난징에서 황제로 즉위하여 명나라를 건국하고",
+    "easiestCue": "정세운이 물리친 세력 · 김용의 음모로 안우 등에게 피살",
+    "targetWhy": "정세운·김용·안우 얽힘은 교과서 밖 고려사 세부 — 한국사 애호가 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정답은 교과서, 단서는 민속놀이 유래 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g009a-K1-03",
+   "seed": {
+    "subject": "진포 대첩",
+    "aspect": null,
+    "ref": "K1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려 우왕 때 왜선 약 500척이 몰려오자 조정은 그 5분의 1에 지나지 않는 군함 100척을 내주었고, 도원수 심덕부와 해도원수 나세가 이 수군을 이끌었습니다. 이 싸움은 무엇일까요?",
+    "answer": "진포 대첩",
+    "acceptedAnswers": [
+     "진포 해전"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '진포_대첩' 주소로 연 문서가 '진포 해전' 이름으로 내용을 다룸 — 두 이름 모두 쓰임",
+    "explanation": "부원수 최무선이 만든 화포로 왜선을 불태웠는데, 한국사에서 처음 기록된 해상 화약 무기 사용으로 꼽힙니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "고려 우왕 때 왜선 약 500척이 몰려오자",
+     "difWhy": "'우왕 때 왜선 500척' — 수능 심화 한국사 (경계 3)",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 왜구 격퇴",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "우왕 때 금강 어귀에 정박한 왜선들을 불태운 싸움",
+     "difWhy": "금강 어귀 왜구 격퇴 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "고려 말 왜구 격퇴 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "우왕 때 조정은 왜선의 5분의 1에 지나지 않는 군함 100척을 내주었습니다. 도원수 심덕부와 해도원수 나세가 이끈 고려 수군이 금강 어귀에 정박해 있던 왜선들을 불태운 이 싸움은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "금강 어귀에 정박해 있던 왜선들을 불태운 이 싸움",
+     "addedCue": "왜선 약 500척 대 군함 100척의 규모 대비",
+     "why": "'금강 어귀 왜선 화공' 이 곧 진포 — 장소를 빼 우왕 때 다른 해전(관음포)과 지휘관 이름으로 갈라야 하게"
+    },
+    "generalHint": "이 싸움에서 살아남은 왜구는 내륙으로 달아나 노략질하다가, 황산에서 이성계의 군대에 무너졌다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/진포_대첩"
+    ],
+    "facts": [
+     {
+      "claim": "우왕 6년(1380) 8월, 군함 100척, 왜선 약 500척의 5분의 1 수준",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/진포_대첩",
+      "note": "고려 우왕 6년(1380년) 8월. 조정은 군함 100척을 내주었다. 왜구의 해적선은 약 500척 … 고려 군함은 그 규모의 5분의 1 수준이었다."
+     },
+     {
+      "claim": "도원수 심덕부, 해도원수 나세, 부원수 최무선",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/진포_대첩",
+      "note": "도원수 심덕부, 해도원수 나세, 부원수 최무선이 지휘했다."
+     },
+     {
+      "claim": "금강 어귀에 정박한 왜선들을 화포로 불태움 · 처음 기록된 해상 화약 무기 사용",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/진포_대첩",
+      "note": "최무선이 개발한 화포로 금강 어귀에 정박해 있던 왜선들을 불태웠다. 한국사에서 처음 기록된 해상 화약 무기 사용이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/진포_해전"
+    ],
+    "hintNote": "살아남은 왜구는 내륙으로 도주하여 전라도·경상도를 약탈하였고, 이후 황산대첩에서 이성계의 군대에 의해 섬멸되었다.",
+    "easiestCue": "도원수 심덕부·해도원수 나세가 이끈 수군",
+    "targetWhy": "지휘관 이름으로 진포와 관음포를 갈라야 — 한국사 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "금강 어귀 왜선 소각이 진포로 이어질 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/2#g009a-K1-04",
+   "seed": {
+    "subject": "제왕운기",
+    "aspect": null,
+    "ref": "K1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "강원도 삼척 두타산 아래 천은사에서 지어졌다고 알려진 이 책은, 단군 이야기를 『삼국유사』가 인용한 '고기'와 다른 계통인 '본기'를 끌어와 적었습니다. 대조영이 나라를 세운 해를 684년으로 적은 이 책은 무엇일까요?",
+    "answer": "제왕운기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "발해를 우리 역사로 인식한 첫 역사서로 평가받으며, 고려 초부터 충렬왕 때까지는 오언시로 읊었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "단군 이야기를 … '본기'를 끌어와 적었습니다",
+     "difWhy": "'단군 기록 고려 사서' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 사서",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "상권에 중국의 역사를, 하권에 우리 역사를 담았습니다",
+     "difWhy": "상권 중국·하권 우리 역사 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 사서"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "강원도 삼척 두타산 아래 천은사에서 지어졌다고 알려진 이 책은, 상권에 반고부터 금나라까지 중국의 역사를, 하권에 우리 역사를 담았습니다. 대조영이 나라를 세운 해를 684년으로 적은 이 책은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "상권 중국 역사 · 하권 우리 역사",
+     "addedCue": "단군 서술의 '본기' 인용(삼국유사 '고기'와 다른 계통)",
+     "why": "고교 교과서의 상·하권 구성을 빼고 단군 기록의 출처 세부로"
+    },
+    "generalHint": "충렬왕 13년인 1287년에 지어졌다고 하나, 처음 펴낸 때를 1296년으로 보는 견해도 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/제왕운기"
+    ],
+    "facts": [
+     {
+      "claim": "삼척 두타산 아래 천은사에서 저술된 것으로 알려짐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제왕운기",
+      "note": "강원도 삼척 두타산 아래의 천은사에서 저술된 것으로 알려져 있다."
+     },
+     {
+      "claim": "대조영의 건국 연도를 684년으로 기술",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제왕운기",
+      "note": "대조영의 건국 연도를 684년으로 기술한 점은 학계에서 698년을 통설로 보는 것과 차이가 있다."
+     },
+     {
+      "claim": "발해를 한국사로 인식한 최초의 역사서로 평가",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/제왕운기",
+      "note": "발해를 한국사로 인식한 최초의 역사서로 평가된다."
+     },
+     {
+      "claim": "단군 서술은 본기 인용 — 삼국유사의 고기와 다른 계통",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제왕운기",
+      "note": "본기(本紀)에 이르기를, 상제(上帝) 환인(桓因)에게 서자(庶子)가 있는데 환웅(桓雄)이라 하였다. — 이 본기는 《삼국유사》가 인용한 고기와 다른 계통으로 여겨진다(요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/제왕운기"
+    ],
+    "hintNote": "충렬왕 13년(1287년) 한국과 중국의 역사를 시로 쓴 역사책이다. … 초간 간행 시점에 대해서 … 1296년으로 충렬왕 22년에 해당한다.",
+    "easiestCue": "삼척 천은사에서 지었다는 책 · 대조영 건국 684년",
+    "targetWhy": "천은사·684년·본기 인용은 수능 심화·한국사 애호가 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서 이름, 교과 밖 세부 단서",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g009a-K1-05",
+   "seed": {
+    "subject": "기황후",
+    "aspect": null,
+    "ref": "K1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "몽골식 이름이 '울제이 쿠툭'인 이 인물은 휘정원을 자정원으로 고쳐 심복 고용보를 초대 자정원사로 앉혔습니다. 고려 출신 환관 박불화를 추밀원 동지추밀원사로 만들어 군사권을 쥐게 한 이 인물은 흔히 무엇이라 부를까요?",
+    "answer": "기황후",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "공민왕이 오빠 기철 일족을 없애자 원 혜종을 움직여 덕흥군을 고려 왕으로 세우고 고려를 치게 했지만 실패했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 고려 출신 + 몽골식 이름 + 박불화를 추밀원에",
+     "difWhy": "원나라 고려 출신 황후 — 사극으로 관심층",
+     "wor": 4,
+     "worWhy": "고려·원 관계 교양",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "원나라 궁녀가 된 ... 아들은 뒷날 북원의 황제",
+     "difWhy": "'원 황후가 된 고려 궁녀' — 드라마·방송 (경계 3)",
+     "wor": 4,
+     "worWhy": "교양 — 원 간섭기 인물"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "고려 출신 환관 고용보의 추천으로 원나라 궁녀가 된 이 인물은, 뒤에 자정원을 세워 고려 출신 환관과 관료를 중심으로 한 '자정원당'을 키웠습니다. 아들은 뒷날 북원의 황제 소종이 되었는데, 이 인물은 흔히 무엇이라 부를까요?",
+     "beforeExplanation": null,
+     "removedCue": "원나라 궁녀가 됨 · 아들이 북원 황제 소종",
+     "addedCue": "몽골식 이름 울제이 쿠툭 · 자정원 개편 · 박불화 동지추밀원사",
+     "why": "드라마로 알려진 신분 상승 줄거리를 빼고 이름·기구·측근 세부로"
+    },
+    "generalHint": "『원사』는 이 인물이 맛있는 음식이 생기면 먼저 칭기즈 칸을 모신 태묘에 바친 뒤에야 먹었다고 적었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/기황후"
+    ],
+    "facts": [
+     {
+      "claim": "기철 일족 제거에 맞서 덕흥군을 세우고 고려 침공을 꾀했으나 실패",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/기황후",
+      "note": "공민왕이 친원파인 오빠 기철 일족을 제거하자, 혜종을 움직여 덕흥군을 고려 왕으로 세우고 고려를 침공하게 했으나 실패했다."
+     },
+     {
+      "claim": "몽골식 이름 울제이 쿠툭",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기황후",
+      "note": "몽골식 이름은 울제이 쿠툭"
+     },
+     {
+      "claim": "휘정원을 자정원으로 개편, 고용보를 초대 자정원사로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기황후",
+      "note": "휘정원을 자정원(資政院)으로 개편해 심복인 고용보를 초대 자정원사(資政院使)에 임명한 뒤"
+     },
+     {
+      "claim": "박불화를 동지추밀원사로 삼아 군사 통솔",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기황후",
+      "note": "고려 출신 환관 박불화(朴不花)를 군사 통솔의 최고책임자인 추밀원 동지추밀원사(同知樞密院事)로 만들어"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/기황후"
+    ],
+    "hintNote": "『원사』는 그녀가 맛있는 음식이 생기면 \"먼저 칭기즈 칸을 모신 태묘(太廟)에 바친 후에야 자신이 먹었다고\" 기록했다",
+    "easiestCue": "고려 출신 환관 박불화·고용보를 심복으로 둔 인물",
+    "targetWhy": "자정원·박불화는 고려사 심화(대학 교양) — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "드라마로 이름은 유명, 단서는 원 궁정 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g009a-K1-06",
+   "seed": {
+    "subject": "삼별초",
+    "aspect": null,
+    "ref": "K1-06",
+    "pairedWith": 1712
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1712,
+    "question": "일본에 전해진 「고려첩장 불심조조」는 1271년에 받은 고려 문서가 1268년 국서와 달리 몽골 연호를 쓰지 않고 몽골을 깎아내리며 기병을 청했다고 정리한 메모입니다. 연구자들은 이 문서를 보낸 쪽을, 왕족 왕온을 왕으로 추대한 이 세력으로 봅니다. 이 세력은 무엇일까요?",
+    "answer": "삼별초",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1273년 제주에 진압군 1만여 명이 상륙하면서 무너졌고, 지휘자 김통정은 산중에서 자결했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "왕족 왕온을 왕으로 추대한 세력",
+     "difWhy": "승화후 온 추대 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "대몽 항쟁 교양",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "왕족 왕온을 왕으로 추대한 세력",
+     "difWhy": "승화후 온 추대 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "대몽 항쟁 교양"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "1271년 몽골에 맞선 고려 세력이라는 문서의 성격 자체가 고교 한국사로 삼별초를 가리킴 — 왕온 대신 넣을 수 있는 확인된 세부(배중손·진도·김통정)는 모두 1회차 #1712 의 진도·제주 사실이나 해설과 겹치거나 더 쉬움"
+    },
+    "generalHint": "신의군의 우두머리였던 배중손이 이 세력을 총지휘했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/삼별초"
+    ],
+    "facts": [
+     {
+      "claim": "고려첩장 불심조조 — 1268년 국서와 달리 1271년 문서는 몽골 연호를 쓰지 않고 몽골을 깎아내리며 기병을 요청",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼별초",
+      "note": "일본 측이 고려로부터 받은 문서 중 앞서 받은 국서와 내용이 다른 부분을 정리한 메모. 1268년 국서는 몽골의 덕을 높였지만 1271년 문서는 몽골을 깎아내린다. 1268년 국서가 쓴 몽골 연호를 1271년 문서는 쓰지 않는다. 기병을 요청하고 …"
+     },
+     {
+      "claim": "연구자들은 진도 삼별초 정부가 보낸 문서일 가능성이 높다고 봄",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼별초",
+      "note": "연구자들은 몽골에 대항하기 위해 일본과 공동 대응을 바라던 진도 삼별초 정부가 보낸 문서일 가능성이 높다고 본다."
+     },
+     {
+      "claim": "왕족 왕온을 추대",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼별초",
+      "note": "삼별초는 왕족인 왕온을 추대하여 왕으로 삼고, 강화도의 거의 모든 재산과 사람들을 태운 대선단을 이끌고 진도로 이동했다."
+     },
+     {
+      "claim": "1273년 진압군 1만여 명 상륙, 김통정 자결",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/삼별초",
+      "note": "1273년 진압군 1만여 명이 상륙하면서 무너졌다. 김통정은 산중에서 자결했고, 4년에 걸친 항전이 끝났다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/삼별초"
+    ],
+    "hintNote": "배중손은 전 신의군의 우두머리로 삼별초에서도 지휘자를 맡아 삼별초를 총지휘했다.",
+    "easiestCue": "왕족 왕온을 왕으로 추대한 이 세력",
+    "targetWhy": "강화→진도→제주 이동(1회차·교과서)을 쓰지 않고 일본 외교 문서·왕온 추대만 — 대학 교양 (경계 3: 왕온 추대)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "같은 대상의 덜 알려진 외교 세부",
+    "pairCheck": "1회차 #1712 질문(강화도→진도→제주 이동)·해설(최씨 무신정권 사병)·힌트(없음)와 겹치지 않음 — 2회차는 일본에 보낸 문서와 왕온 추대, 질문에 진도·제주를 쓰지 않음",
+    "dbCheck": "answercheck pair-or-different — #1712 와 같은 답, (가) 2회차로 다른 지식",
+    "warn": [],
+    "first": {
+     "id": 1712,
+     "question": "고려 정부가 몽골과 강화한 뒤에도 항복하지 않고 강화도에서 진도로, 다시 제주로 옮겨 가며 싸운 군대는?",
+     "explanation": "본래 최씨 무신정권의 사병에서 출발한 부대였습니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "kr-history/2#g009a-K1-07",
+   "seed": {
+    "subject": "노국대장공주",
+    "aspect": null,
+    "ref": "K1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "본명이 보르지긴 부다시리인 이 인물은 1365년 난산 끝에 세상을 떠나, 황해북도 개풍군 해선리 현정릉 안의 정릉에 모셔졌습니다. 이 인물은 흔히 무엇이라 부를까요?",
+    "answer": "노국대장공주",
+    "acceptedAnswers": [
+     "노국공주"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '노국공주' → '노국대장공주' 넘겨주기 확인",
+    "explanation": "원나라 위왕의 딸로, 남편은 호화로운 영전을 짓게 하고 초상화를 벽에 걸어 밤낮으로 바라보며 그리워했다고 전합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 1365년 난산 끝에 세상을 떠나 + 정릉(현정릉)",
+     "difWhy": "'공민왕 왕비 난산 사망' — 고교 한국사 (경계 4)",
+     "wor": 4,
+     "worWhy": "공민왕 왕비 — 한국사 교양",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "원나라 위왕의 딸, 남편이 초상화를 보며 그리워함",
+     "difWhy": "공민왕 왕비 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "고려 말 인물 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "원나라 위왕의 딸로, 본명은 보르지긴 부다시리입니다. 1365년 난산 끝에 세상을 떠나자 남편은 호화로운 영전을 짓게 하고, 초상화를 벽에 걸어 밤낮으로 바라보며 그리워했다고 전합니다. 이 인물은 흔히 무엇이라 부를까요?",
+     "beforeExplanation": "능은 황해북도 개풍군 해선리 현정릉 안의 정릉입니다.",
+     "removedCue": "원나라 위왕의 딸 · 남편이 초상화를 보며 그리워함",
+     "addedCue": "능이 현정릉 안의 정릉 (해설에서 질문으로)",
+     "why": "공민왕 왕비 일화(고교 한국사)를 해설로 옮기고 본명·능 세부로 바꿈"
+    },
+    "generalHint": "그녀가 세상을 떠난 뒤 공민왕은 정치권을 신돈에게 넘겼다고 전한다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/노국대장공주"
+    ],
+    "facts": [
+     {
+      "claim": "본명 보르지긴 부다시리 (해설: 원 위왕의 딸)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/노국대장공주",
+      "note": "본명은 보르지긴 부다시리(孛兒只斤 寶塔實里). 원 위왕 베이르 테뮈르의 딸이다."
+     },
+     {
+      "claim": "1365년 난산으로 사망",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/노국대장공주",
+      "note": "1365년 3월 8일 … 난산으로 아들을 유산하고 세상을 떠났다."
+     },
+     {
+      "claim": "공민왕이 호화로운 영전을 짓게 하고 초상화를 벽에 걸어 밤낮으로 바라봄",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/노국대장공주",
+      "note": "공민왕은 그녀의 영정을 모시기 위해 호화로운 영전을 짓도록 했다. 초상화를 벽에 걸고 밤낮으로 바라보며 그리워했다고 전해진다."
+     },
+     {
+      "claim": "능은 개풍군 해선리 현정릉 안의 정릉",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/노국대장공주",
+      "note": "황해북도 개풍군 해선리의 현정릉 안에 있는 정릉(定陵)에 모셔져 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/노국대장공주"
+    ],
+    "hintNote": "정치권을 신돈(辛旽)에게 양도했다",
+    "easiestCue": "본명 보르지긴 부다시리 · 현정릉 안 정릉",
+    "targetWhy": "몽골식 본명과 능 이름은 고려사 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "공민왕 부부 일화를 떠올리면 바로 풀림",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (노국공주도 new)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g009a-K1-08",
+   "seed": {
+    "subject": "망이·망소이의 난",
+    "aspect": null,
+    "ref": "K1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고려 명종 때 한 봉기군은 스스로 '산행병마사'라 일컬었고, 다시 일어났을 때는 가야사와 홍경원을 불태우고 아주와 청주목까지 공격했습니다. 이 봉기는 무엇일까요?",
+    "answer": "망이·망소이의 난",
+    "acceptedAnswers": [
+     "망이망소이의 난"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '망이·망소이의 난' — 15 A6 가운뎃점 정답은 마침표 표기를, 가운뎃점을 칠 수 없는 사람을 위해 붙여 쓴 꼴을 넣음",
+    "explanation": "봉기가 시작된 곳은 지금의 대전 서구 탄방동으로 추정되며, 그곳에 기념탑이 세워져 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "스스로 '산행병마사'라 일컬었고",
+     "difWhy": "'산행병마사 칭호' — 수능 심화 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 봉기",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "소(所) 주민 봉기에 그 소를 충순현으로 올려 달램",
+     "difWhy": "명학소 봉기 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 지식 — 고려 무신정권기 봉기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "명종 때 한 소(所)의 주민들이 들고일어나 아주와 청주목까지 공격할 만큼 세력이 커지자, 조정은 그 소를 충순현으로 올려 주며 달랬습니다. 그러나 봉기가 이어지자 충순현을 도로 소로 낮췄는데, 이 봉기는 무엇일까요?",
+     "beforeExplanation": "농민과 천민들이 1176년부터 이듬해까지 약 1년 반 동안 벌인 봉기로, 지도부는 투항한 뒤 청주옥에 갇혔습니다.",
+     "removedCue": "소(所)의 주민들이 들고일어나자 그 소를 충순현으로 올려 달램",
+     "addedCue": "'산행병마사' 자칭 · 가야사·홍경원 방화",
+     "why": "'소 주민 봉기 · 충순현 승격' 은 고교 한국사 — 빼고 봉기군의 자칭·재봉기 행적으로"
+    },
+    "generalHint": "1176년부터 이듬해까지 약 1년 반 동안 공주 일대를 중심으로 이어진 농민·천민의 봉기다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/망이·망소이의_난"
+    ],
+    "facts": [
+     {
+      "claim": "반군이 아주와 청주목을 공격",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/망이·망소이의_난",
+      "note": "이후 반군은 아주와 청주목을 공격했다."
+     },
+     {
+      "claim": "반군이 스스로 산행병마사라 칭함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/망이·망소이의_난",
+      "note": "반군은 스스로를 '산행병마사(山行兵馬使)'라 칭하고 공주를 함락했다 (요지)"
+     },
+     {
+      "claim": "재봉기 때 가야사·홍경원을 불태움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/망이·망소이의_난",
+      "note": "같은 해 2월 반군이 다시 일어났다. 가야사와 홍경원을 불태웠다 (요지)"
+     },
+     {
+      "claim": "명학소 위치는 대전 서구 탄방동 추정, 기념탑",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/망이·망소이의_난",
+      "note": "명학소의 위치는 현재 대전 서구 탄방동(당시 공주군 유성현)으로 추정되며, 그곳에 기념탑이 세워져 있다 (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/망이·망소이의_난"
+    ],
+    "hintNote": "1176년(명종 6)부터 이듬해까지 약 1년 반에 걸쳐서 충청도 공주(公州) 명학소(鳴鶴所)를 중심으로 일어난 농민과 천민들의 난이다.",
+    "easiestCue": "명종 때 아주와 청주목까지 공격한 봉기",
+    "targetWhy": "봉기 경과 세부 — 한국사 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "충순현 승격을 아는 수험생은 바로 앎",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/2#g009a-K1-09",
+   "seed": {
+    "subject": "고려도경",
+    "aspect": null,
+    "ref": "K1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "글과 그림이 함께 있던 이 40권짜리 책은 1126년 정강의 변을 거치며 완전판이 사라져, 1167년 지은이의 조카가 다시 펴냈을 때는 글만 남았습니다. 정식 이름 앞머리에 송 휘종의 연호가 붙은 이 책은 흔히 무엇이라 부를까요?",
+    "answer": "고려도경",
+    "acceptedAnswers": [
+     "선화봉사고려도경"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 고려도경 — 정식 이름 '선화봉사고려도경', 줄여서 '고려도경'",
+    "explanation": "송나라 사신 서긍이 1123년 고려를 다녀간 뒤 이듬해인 1124년에 완성한 책입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 정식 이름 앞머리에 송 휘종의 연호 + 고려 40권짜리 글·그림 책",
+     "difWhy": "송 사신 기록의 서지 사정 — 대학 교양 한국사",
+     "wor": 4,
+     "worWhy": "고려 사회를 전하는 기본 사료",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "개경을 다녀간 송나라 사신이 1124년 완성한 이 책",
+     "difWhy": "'송 사신의 고려 견문록' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 고려 사료"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "개경을 다녀간 송나라 사신이 1124년 완성한 이 책은 본래 글과 그림이 함께 있었습니다. 1126년 정강의 변을 거치며 완전판이 사라져, 1167년 지은이의 조카가 다시 펴냈을 때는 글만 남았는데, 이 책은 흔히 무엇이라 부를까요?",
+     "beforeExplanation": "정식 이름 『선화봉사고려도경』의 '선화'는 송 휘종의 연호이고, 모두 40권입니다.",
+     "removedCue": "개경을 다녀간 송나라 사신이 1124년 완성",
+     "addedCue": "정식 이름 앞머리의 휘종 연호 · 40권",
+     "why": "교과서 정의(송 사신의 고려 견문록)를 해설로 옮기고 판본사·이름 세부로"
+    },
+    "generalHint": "이 책은 그 나라 사람들이 아침에 일어나면 먼저 목욕을 하고, 여름에는 하루 두 번 씻는다고 적었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/고려도경"
+    ],
+    "facts": [
+     {
+      "claim": "송나라 사신 서긍이 1123년 고려 방문, 1124년 8월 완성",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/고려도경",
+      "note": "송나라 사신 서긍(徐兢)이 1123년(선화 5년)에 고려를 방문했고, 이듬해인 1124년 8월 6일에 책을 완성했다."
+     },
+     {
+      "claim": "원래 글과 그림, 1126년 정강의 변으로 완전판 소실, 1167년 조카 서천이 재간행할 때 글만 남음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고려도경",
+      "note": "원래 글과 그림이 함께 있었지만, 1126년 정강의 변을 거치며 완전판이 소실되었다. 1167년 서긍의 조카 서천이 다시 간행했을 때는 그림이 없고 글만 남아 있었다."
+     },
+     {
+      "claim": "정식 이름 선화봉사고려도경, '선화'는 송 휘종 연호, 전 40권",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고려도경",
+      "note": "《선화봉사고려도경(宣和奉使高麗圖經)》이며, 줄여서 《고려도경》이라고 한다. 이름의 '선화'는 송 휘종의 연호이다. 전 40권."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/고려도경"
+    ],
+    "hintNote": "아침에 일어나면 먼저 목욕을 하고 문을 나서며 ... 여름에는 하루 두 번 목욕",
+    "easiestCue": "정강의 변으로 그림이 사라지고 글만 남은 책",
+    "targetWhy": "판본 소실·재간행 경위는 대학 교양 한국사 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "송 사신의 개경 견문 기록이라는 정체만으로 고교 수준에서 풀릴 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/2#g009a-K1-10",
+   "seed": {
+    "subject": "강조의 정변",
+    "aspect": null,
+    "ref": "K1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1009년 궁궐 수비를 맡은 도순검사는 왕이 죽었다는 소문을 듣고 군사 5,000명을 이끌고 개경으로 향하다가, 평산에서 왕이 아직 살아 있음을 알고 잠시 망설였습니다. 끝내 개경에 들어가 왕을 물러나게 하고, 귀양 가던 옛 왕을 적성현에서 죽인 이 사건은 무엇일까요?",
+    "answer": "강조의 정변",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "거란은 이 사건을 구실로 1010년 제2차 고려-거란 전쟁을 일으켰습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "끝내 개경에 들어가 왕을 물러나게 하고, 귀양 가던 옛 왕을 적성현에서 죽인 이 사건",
+     "difWhy": "'1009년 도순검사의 폐위 정변' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 거란 2차 침입 구실",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "천추태후와 김치양 … 왕을 물러나게 하고 대량원군을 세운 사건",
+     "difWhy": "김치양·대량원군 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "거란 2차 침입 배경 — 한국사 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "고려의 한 왕이 후사 없이 병석에 눕자, 천추태후와 김치양은 둘 사이에서 난 아들을 후계로 세우려 했습니다. 이때 군사 5,000명을 이끌고 개경으로 향한 도순검사는 왕을 물러나게 하고 대량원군을 왕으로 세웠는데, 이 사건은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "천추태후와 김치양 · 대량원군 옹립",
+     "addedCue": "평산에서 망설임 · 적성현에서 옛 왕 살해",
+     "why": "교과서 인물(천추태후·김치양·대량원군)을 빼고 정변 경과 세부로"
+    },
+    "generalHint": "이 일을 벌인 장수는 이듬해 통주에서 거란군에 사로잡혔고, 요 성종의 신하가 되라는 제안을 끝까지 거부하다 처형되었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/강조의_정변"
+    ],
+    "facts": [
+     {
+      "claim": "도순검사 강조가 군사 5,000명을 이끌고 개경으로, 목종에게 퇴위 강요, 대량원군 옹립",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강조의_정변",
+      "note": "강조는 군사 5,000명을 이끌고 개경으로 향했다. … 그는 목종에게 퇴위를 강요하고 대량원군을 왕으로 세웠다."
+     },
+     {
+      "claim": "거란이 이 사건을 구실로 1010년 제2차 고려-거란 전쟁",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/강조의_정변",
+      "note": "거란은 이 사건을 구실로 1010년 제2차 고려-거란 전쟁을 일으켰다."
+     },
+     {
+      "claim": "1009년 1월 궁궐 수비, 사망 소문, 평산에서 망설임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강조의_정변",
+      "note": "1009년 1월 목종은 도순검사 강조에게 궁궐 수비를 맡겼고, 목종이 죽었다는 소문에 5,000명을 이끌고 개경으로 향했다가 평산에서 살아 있음을 알고 잠시 망설였다(요지)"
+     },
+     {
+      "claim": "적성현에서 목종 살해",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강조의_정변",
+      "note": "충주로 추방되던 중 강조는 불안을 느껴 적성현에서 목종을 살해했다(요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/강조"
+    ],
+    "hintNote": "강조는 30만의 군사를 이끌고 통주(지금의 평안북도 선천군)에서 거란군에 맞서 싸웠으나 패배하고 … 사로잡혀 포로가 되었다. 요 성종은 … 신하가 될 것을 제안했으나 … 강조는 … 끝까지 복종을 거부하다 처형되었다.",
+    "easiestCue": "군사 5,000명으로 개경에 들어가 왕을 물러나게 한 도순검사의 사건",
+    "targetWhy": "평산·적성현 경과는 수능 심화·고려사 애호가 — 4 경계",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서 사건명, 궁정 내막 단서",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

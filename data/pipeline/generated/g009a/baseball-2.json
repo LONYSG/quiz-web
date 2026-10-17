@@ -1,0 +1,729 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "baseball/2",
+  "midKey": "baseball",
+  "subName": "KBO",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "baseball/2#g009a-S1-09",
+   "seed": {
+    "subject": "빙그레 이글스",
+    "aspect": null,
+    "ref": "S1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1985년 1월 15일 한 그룹이 창단 준비 위원회를 꾸리고 다음 날 KBO 승인을 받았으며, 배성서 감독이 초대 감독으로 취임했습니다. 첫해 후기 리그에는 삼미 슈퍼스타즈 해체로 트레이드된 장명부가 힘을 보탰는데, 이 구단의 창단 때 이름은 무엇일까요?",
+    "answer": "빙그레 이글스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 빙그레 이글스 — 질문이 창단 때 이름을 물어 한화 이글스는 넣지 않음(B2)",
+    "explanation": "1993년 시즌 뒤 모그룹 이름을 팀 이름으로 쓰기로 해 구단명이 바뀌었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1985년 … 한 그룹이 창단 / 배성서 초대 감독",
+     "difWhy": "한화 전신 창단 이름 — 야구 관심층",
+     "wor": 2,
+     "worWhy": "구단 옛 이름 — 팬 세부",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "KBO의 제7구단 … 대전 한밭에서 창단식",
+     "difWhy": "대전 7구단 창단명 — 야구 관심층",
+     "wor": 3,
+     "worWhy": "구단 전신 이름 — 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1985년 1월 한 그룹이 창단 준비 위원회를 꾸린 다음 날 KBO의 제7구단으로 승인받았습니다. 1986년 3월 대전 한밭과 청주에서 잇달아 창단식을 열었고, 첫해 후기 리그에는 삼미 해체로 트레이드된 장명부가 힘을 보탰습니다. 이 구단의 창단 때 이름은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "KBO의 제7구단 · 대전 한밭과 청주에서 창단식",
+     "addedCue": "초대 감독 배성서",
+     "why": "'대전 제7구단' 은 야구 관심층이면 바로 풀림 — 빼고 초대 감독을 더함"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/빙그레_이글스"
+    ],
+    "facts": [
+     {
+      "claim": "1985년 1월 15일 준비위 · 다음 날 제7구단 승인",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/빙그레_이글스",
+      "note": "1985년 한국 프로 야구 리그 참가를 희망한 한화그룹에서 1월 15일 창단 준비 위원회를 발족시킨다. 다음 날인 1월 16일 한국야구위원회로부터 제 7구단으로 승인받게 되고 3월 11일 연고지를 대전으로 삼은 빙그레 이글스 야구단이 설립되고"
+     },
+     {
+      "claim": "후기 리그 삼미 해체로 트레이드된 장명부",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/빙그레_이글스",
+      "note": "전기 리그는 7위로 마감했으나 후기 리그엔 삼미 슈퍼스타즈의 해체로 트레이드 된 장명부와 이상군의 활약으로 6위를 한다."
+     },
+     {
+      "claim": "시즌 후 11월 1일 모그룹명으로 구단명 변경",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/빙그레_이글스",
+      "note": "시즌 후 그 해 11월 1일 모그룹명을 팀명으로 쓰기로 하고 한화 이글스로 구단명을 바꾸었다."
+     },
+     {
+      "claim": "초대 감독 배성서 취임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/빙그레_이글스",
+      "note": "3월 11일 연고지를 대전으로 삼은 빙그레 이글스 야구단이 설립되고 감독으로 배성서 감독이 취임한다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "삼미 해체로 트레이드된 장명부가 첫해 힘을 보탠 구단",
+    "targetWhy": "창단 초기 선수단 세부 — 야구 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'대전' 이 소재지 단서라 한화 계보를 아는 팬에게는 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "정답조각 레이"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (구단 옛 이름 — 팬 세부) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "baseball/2#g009a-S1-10",
+   "seed": {
+    "subject": "쌍방울 레이더스",
+    "aspect": null,
+    "ref": "S1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1990년 3월 창단해 그해 5월 2군 리그에서 출발했고, 1991년부터 1군에 나선 KBO 제8구단입니다. 재정난이 깊어지자 박경완과 조규제를 현대 유니콘스로 보내는 등 '선수 팔기'를 이어 가다 2000년 1월 7일 해체를 선언한 이 구단은 어디일까요?",
+    "answer": "쌍방울 레이더스",
+    "acceptedAnswers": [
+     "쌍방울"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 쌍방울 레이더스 — 흔히 모기업명만으로 부름",
+    "explanation": "SK그룹은 이 구단을 인수하지 않고 새 구단을 창단하는 방식으로 프로야구에 들어왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "박경완·조규제를 현대에 보낸 KBO 제8구단",
+     "difWhy": "'선수 팔기' 구단 — 야구 애호가 (경계 3)",
+     "wor": 2,
+     "worWhy": "KBO 구단사 팬 세부",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "박경완·조규제를 현대에 보낸 KBO 제8구단",
+     "difWhy": "'선수 팔기' 구단 — 야구 애호가 (경계 3)",
+     "wor": 2,
+     "worWhy": "KBO 구단사 팬 세부"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/쌍방울_레이더스"
+    ],
+    "facts": [
+     {
+      "claim": "1990년 3월 31일 창단 · 5월 11일 2군 리그 시작",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍방울_레이더스",
+      "note": "1990년 3월 31일에 구단이 창단된 후, 1990년 5월 11일 프로 2군 리그(현 KBO 퓨처스리그)에서 시작하였다."
+     },
+     {
+      "claim": "1991년 1군 참가 · 제8구단",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍방울_레이더스",
+      "note": "1991년 시즌부터는 1군 정규리그에 참가 (제8구단, 전주 연고)"
+     },
+     {
+      "claim": "재정난 선수 팔기 · 박경완·조규제 현대로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍방울_레이더스",
+      "note": "재정난으로 주축 선수를 내보내는 '선수 팔기' 작업 — 박경완과 조규제는 현대 유니콘스로"
+     },
+     {
+      "claim": "2000년 1월 7일 해체 선언",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍방울_레이더스",
+      "note": "결국, 쌍방울은 얼마 못 가 2000년 1월 7일 해체를 선언하고"
+     },
+     {
+      "claim": "SK는 인수 대신 새 구단 창단",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/쌍방울_레이더스",
+      "note": "SK그룹은 인수 대신 새 구단을 창단하는 방식으로 프로야구에 참여했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "박경완과 조규제를 현대 유니콘스로 보내는 등 선수 팔기를 이어 가다",
+    "targetWhy": "쌍방울의 선수 매각과 해체 경위는 KBO 애호가 영역",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "구단 이름은 팬이면 들어 본 말, 단서는 해체 경위 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [],
+    "discarded": "선별 게이트 — 알 가치 2 (KBO 구단사 팬 세부) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "baseball/2#g009a-S1-11",
+   "seed": {
+    "subject": "현대 유니콘스",
+    "aspect": null,
+    "ref": "S1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1995년 9월 인천의 한 구단을 인수해 1996년 3월부터 새 이름을 썼습니다. 2000년 시즌부터 서울로 연고를 옮길 계획이었으나 모기업의 재정난으로 수원을 임시 연고지로 썼고, 끝내 서울 이전을 마치지 못한 채 2007년 말 해체된 이 구단은 어디일까요?",
+    "answer": "현대 유니콘스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 현대 유니콘스",
+    "explanation": "센테니얼 인베스트먼트가 해체 후 재창단 방식으로 인수해 우리 히어로즈를 세우면서 서울 연고권도 그쪽으로 넘어갔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "수원을 임시 연고로 쓰다 2007년 말 해체된 구단",
+     "difWhy": "수원 시절 현대 — 야구 관심층",
+     "wor": 2,
+     "worWhy": "KBO 구단사 팬 세부",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "수원을 임시 연고로 쓰다 2007년 말 해체된 구단",
+     "difWhy": "수원 시절 현대 — 야구 관심층",
+     "wor": 2,
+     "worWhy": "KBO 구단사 팬 세부"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서(수원 임시 연고·2007 해체)를 빼면 남는 단서(1995 인천 구단 인수)도 같은 관심층 단계이고, 더 깊은 세부는 인수 금액 같은 수치(알 가치 1)뿐"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/현대_유니콘스"
+    ],
+    "facts": [
+     {
+      "claim": "1995년 9월 21일 인수 · 1996년 3월 11일부터 명칭 사용",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/현대_유니콘스",
+      "note": "현대그룹이 태평양 돌핀스를 1995년 9월 21일 450억 원에 인수한 후 1996년 3월 11일부터 유니콘스라는 명칭을 사용하기 시작했다."
+     },
+     {
+      "claim": "2000년 서울 이전 계획 · 재정난으로 수원 임시 연고",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/현대_유니콘스",
+      "note": "2000년 시즌부터 연고지를 서울특별시로 이전할 계획이었으나, 구단의 모기업인 현대그룹의 재정난으로 인해 수원시를 임시 연고지로 썼고"
+     },
+     {
+      "claim": "서울 이전 완료 전 2007년 말 해체",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/현대_유니콘스",
+      "note": "결국에는 구단이 상당히 심한 재정난을 겪으면서 서울특별시로의 연고 이전이 완료되기 전인 2007년 말, 결국 팀이 해체되었다."
+     },
+     {
+      "claim": "센테니얼 인수 · 우리 히어로즈 · 서울 연고권",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/현대_유니콘스",
+      "note": "센테니얼 인베스트먼트가 현대 유니콘스를 해체 후 재창단 방식으로 인수, 현대 유니콘스를 모태로 우리 히어로즈로 재창단하면서 서울 연고권은 히어로즈로 넘어갔다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "모기업의 재정난으로 수원을 임시 연고지로 썼고",
+    "targetWhy": "수원 임시 연고와 서울 이전 무산은 KBO 애호가 영역",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'수원 연고 구단' 은 KBO 팬이면 바로 떠올릴 수 있어 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [],
+    "discarded": "선별 게이트 — 알 가치 2 (KBO 구단사 팬 세부) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "baseball/2#g009a-S1-12",
+   "seed": {
+    "subject": "최동원",
+    "aspect": null,
+    "ref": "S1-12",
+    "pairedWith": 4277
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 4277,
+    "question": "1981년 캐나다에서 열린 인터콘티넨털컵에서 최우수 투수상을 받은 뒤 토론토 블루제이스와 5년 계약을 맺었지만, 메이저리그 대신 1983년 국내 프로야구에 들어왔습니다. 은퇴 뒤인 1991년에는 부산 서구에서 광역의원 선거에 나섰다가 낙선한 이 투수는 누구일까요?",
+    "answer": "최동원",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "아버지는 한국 전쟁 때 한쪽 다리를 잃어 의족을 했지만 아들의 야구를 아낌없이 뒷바라지했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "토론토 블루제이스와 5년 계약을 맺었지만 ... 1983년 국내 프로야구에 들어왔습니다",
+     "difWhy": "'토론토 계약 · 광역의원 낙선' — 야구 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 전설 투수의 일화",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "토론토 블루제이스와 5년 계약을 맺었지만 ... 1983년 국내 프로야구에 들어왔습니다",
+     "difWhy": "'토론토 계약 · 광역의원 낙선' — 야구 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 전설 투수의 일화"
+    },
+    "rewrite": null,
+    "generalHint": "1984년 정규 시즌에 27승, 탈삼진 223개를 기록하며 MVP에 올랐다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/최동원"
+    ],
+    "facts": [
+     {
+      "claim": "1981 인터콘티넨털컵 최우수투수상 뒤 토론토와 5년 계약 · 1983 롯데 입단",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/최동원",
+      "note": "1981년 캐나다 인터콘티넨털컵에서 최우수투수상을 받은 뒤 토론토 블루제이스와 5년 계약을 맺었다. 그러나 메이저리그 대신 1983년 새로 출범한 롯데 자이언츠에 입단했다."
+     },
+     {
+      "claim": "1991년 부산 서구 광역의원 출마 낙선",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/최동원",
+      "note": "1991년 민주당 간판으로 부산 서구 광역의원에 출마했으나 낙선했다."
+     },
+     {
+      "claim": "아버지 — 한국전쟁 때 한쪽 다리를 잃어 의족, 아낌없이 지원",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/최동원",
+      "note": "아버지는 한국전쟁 때 한쪽 다리를 잃어 의족을 착용했던 최윤식이다. 그는 아들이 야구를 하도록 아낌없이 지원했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/최동원"
+    ],
+    "hintNote": "1984년 … MVP, 골든글러브, 평균자책점·탈삼진 1위 … 27승, 탈삼진 223개, 완투 14경기",
+    "easiestCue": "토론토 블루제이스와 5년 계약을 맺었지만, 메이저리그 대신 1983년 국내 프로야구에 들어왔습니다",
+    "targetWhy": "토론토 계약 일화와 정치 출마는 KBO 애호가 영역 (1회차는 1984 KS 4승 · 선수협)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 인물의 교과·방송 밖 이력",
+    "pairCheck": "1회차 #4277 질문(1984 KS 4승 · 1988 선수협·삼성 트레이드 · 무쇠팔) · 해설(11번 영구 결번) · 힌트(없음)과 겹치지 않음 — 토론토 계약 · 1991 출마 · 아버지는 새 사실",
+    "dbCheck": "pair-or-different — 활성 #4277 1건, (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 4277,
+     "question": "1984년 한국시리즈에서 혼자 4승을 거두며 롯데 자이언츠의 창단 첫 우승을 이끌었습니다. 1988년에는 선수협의회 결성을 주도하다 그해 삼성으로 트레이드된 '무쇠팔' 투수는 누구일까요?",
+     "explanation": "롯데는 2011년 그가 세상을 떠난 뒤 등번호 11번을 구단 처음으로 영구 결번했습니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "baseball/2#g009a-S1-13",
+   "seed": {
+    "subject": "선동열",
+    "aspect": null,
+    "ref": "S1-13",
+    "pairedWith": 4279
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 4279,
+    "question": "고려대 경영학과에 81학번으로 들어간 이 투수는, 1981년 미국에서 열린 세계 청소년 야구 선수권에서 방어율왕과 MVP를 차지했습니다. 이듬해 한국이 우승한 세계 야구 선수권에서도 MVP와 다승왕에 오른 이 사람은 누구일까요?",
+    "answer": "선동열",
+    "acceptedAnswers": [
+     "선동렬"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 선동열 · OSEN 칼럼 '선동렬vs선동열' 등 두 표기 혼용 확인 (WebSearch 1회)",
+    "explanation": "뒤에 KIA 감독을 맡았을 때는 자신의 영구 결번 18번이 아닌 90번을 달았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "세계 청소년 야구 선수권 … 이듬해 세계 야구 선수권 MVP",
+     "difWhy": "'82 세계선수권 MVP 투수' — 야구 관심층",
+     "wor": 3,
+     "worWhy": "레전드 선수 이름",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "프로 시절 달았던 18번은 1996년 영구 결번 … 감독으로 맡았을 때는 90번",
+     "difWhy": "해태 18번 영구결번 — 방송·뉴스에서 흔히 (경계 3)",
+     "wor": 3,
+     "worWhy": "야구 레전드 인물 — 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1981년 미국에서 열린 세계 청소년 야구 선수권 대회에서 MVP를 받았습니다. 프로 시절 달았던 18번은 1996년 영구 결번이 되었는데, 뒤에 그 구단의 후신을 감독으로 맡았을 때는 18번 대신 90번을 단 이 사람은 누구일까요?",
+     "beforeExplanation": "일본 주니치 드래건스 시절에는 20번을 달았습니다.",
+     "removedCue": "18번 1996년 영구 결번 · 감독 때 90번",
+     "addedCue": "고려대 81학번 · 1982 세계 야구 선수권 MVP·다승왕",
+     "why": "뉴스에 흔한 영구 결번 이야기를 해설로 내리고 아마추어 시절 세부로 — 1회차(해태·주니치·삼성 우승·최동원 15회)와 겹치지 않음"
+    },
+    "generalHint": "2017년 7월 대한민국 야구 국가대표팀 전임 감독으로 선임되었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/선동열"
+    ],
+    "facts": [
+     {
+      "claim": "1981 미국 세계 청소년 야구 선수권 MVP",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/선동열",
+      "note": "1981년 미국에서 열린 세계 청소년 야구 선수권 대회에 출전해 금메달 — 방어율왕과 MVP를 받았다."
+     },
+     {
+      "claim": "KIA 감독 때 18번이 아닌 90번",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/선동열",
+      "note": "KIA 감독 시절에도 영구 결번인 18번이 아닌 90번을 달았다."
+     },
+     {
+      "claim": "고려대 경영학과 81학번",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/선동열",
+      "note": "고려대 경영학과(81학번)에 진학(요지)"
+     },
+     {
+      "claim": "1981 세계청소년 방어율왕·MVP",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/선동열",
+      "note": "1981년 미국 세계 청소년 야구 선수권에서 방어율왕과 MVP(요지)"
+     },
+     {
+      "claim": "1982 세계야구선수권 우승 기여, MVP·다승왕",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/선동열",
+      "note": "1982년 야구 월드컵 대한민국 우승에 기여, MVP와 다승왕(요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/선동열"
+    ],
+    "hintNote": "2017년 7월 대한민국 야구 국가대표팀의 전임 감독으로 선임됐다.",
+    "easiestCue": "1981 세계 청소년·1982 세계 선수권 MVP 투수",
+    "targetWhy": "아마추어 국제 대회 이력은 야구 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 인물의 등번호 뒷이야기",
+    "pairCheck": "1회차 #4279 질문(해태 → 1996 주니치 · 삼성 감독 2005·2006 우승) · 해설(1987 최동원과 15회 2-2) · 힌트(없음)과 겹치지 않음 — 청소년 대회 MVP · 18번 결번 · KIA 감독 90번은 새 사실",
+    "dbCheck": "pair-or-different — 활성 #4279 1건, (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 4279,
+     "question": "해태 타이거즈에서 뛰다 1996년 일본 주니치 드래건스로 건너갔습니다. 은퇴 뒤에는 삼성 라이온즈 감독으로 2005년과 2006년 한국시리즈를 잇달아 우승한 투수 출신 감독은 누구일까요?",
+     "explanation": "1987년 5월 16일 롯데 최동원과 맞붙어 둘 다 15회까지 던지며 2-2로 비긴 경기는 영화 '퍼펙트 게임'의 소재가 되었습니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "baseball/2#g009a-S1-14",
+   "seed": {
+    "subject": "태평양 돌핀스",
+    "aspect": null,
+    "ref": "S1-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1989년 새로 온 김성근 감독 아래 정규 시즌 3위에 올라, 인천 연고 팀으로는 처음 포스트시즌에 나섰습니다. 1994년에는 한국시리즈까지 올랐지만 LG 트윈스에 4전 전패로 진 이 구단은 어디일까요?",
+    "answer": "태평양 돌핀스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 태평양 돌핀스",
+    "explanation": "투수진이 뛰어나 '투수 왕국'으로 불렸지만, 팀 타율이 낮아 '물방망이 타선'이라는 평도 들었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1994년 한국시리즈 LG에 4전 전패한 인천 구단",
+     "difWhy": "옛 인천 연고 구단 — 야구 애호가",
+     "wor": 2,
+     "worWhy": "KBO 구단사 팬 세부",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1994년 한국시리즈 LG에 4전 전패한 인천 구단",
+     "difWhy": "옛 인천 연고 구단 — 야구 애호가",
+     "wor": 2,
+     "worWhy": "KBO 구단사 팬 세부"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/태평양_돌핀스"
+    ],
+    "facts": [
+     {
+      "claim": "1989년 김성근 감독 · 정규시즌 3위 · 인천 연고팀 첫 포스트시즌",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/태평양_돌핀스",
+      "note": "1989년 새로 부임한 김성근 감독 아래 투수진이 활약해 정규시즌 3위를 기록했다. 이는 인천 연고팀 최초의 포스트시즌 진출이었다."
+     },
+     {
+      "claim": "1994년 한국시리즈 LG에 4전 전패",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/태평양_돌핀스",
+      "note": "플레이오프에서 한화를 꺾고 한국시리즈에 올라 LG 트윈스와 맞붙었으나, 4전 전패로 패하고 준우승에 그치고 말았다."
+     },
+     {
+      "claim": "'투수 왕국' · '물방망이 타선'",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/태평양_돌핀스",
+      "note": "태평양 시절 투수진이 뛰어나 '투수 왕국'이라는 별칭이 붙었다. 반면 타선은 팀 타율이 낮아 '물방망이 타선'이라는 평가를 받았다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1989년 새로 온 김성근 감독 아래 정규 시즌 3위에 올라, 인천 연고 팀으로는 처음 포스트시즌에 나섰습니다",
+    "targetWhy": "인천 구단 계보 중 1989년·1994년 시기의 이름은 KBO 애호가 영역",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'인천 연고 · 1994 KS 준우승' 으로 계보를 아는 팬은 바로 — 4 와 3 사이",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 처음"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (KBO 구단사 팬 세부) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "baseball/2#g009a-S1-15",
+   "seed": {
+    "subject": "롯데 자이언츠",
+    "aspect": null,
+    "ref": "S1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1975년 5월 서울에서 실업 야구단으로 창단할 때부터, 앞으로의 프로 구단을 내다보고 지금의 이름을 썼습니다. 1982년 3월 28일 첫 프로 경기에서 해태 타이거즈를 14-2로 꺾은 이 구단은 어디일까요?",
+    "answer": "롯데 자이언츠",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 롯데 자이언츠",
+    "explanation": "구덕야구장을 거쳐 1986년부터 사직야구장을 홈으로 썼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1975년 실업 야구단 창단 때부터 프로 구단을 내다보고 지금의 이름",
+     "difWhy": "실업팀 시절부터 같은 이름 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "원년 구단 내력 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1975년 실업 야구단 창단 때부터 프로 구단을 내다보고 지금의 이름",
+     "difWhy": "실업팀 시절부터 같은 이름 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "원년 구단 내력 — 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "프로 원년에는 최동원 등 국가대표 세 명이 세계 야구 선수권 출전으로 입단을 1년 미뤄 꼴찌권에 머물렀다는 분석이 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/롯데_자이언츠"
+    ],
+    "facts": [
+     {
+      "claim": "1975년 5월 6일 서울에서 실업팀 창단",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/롯데_자이언츠",
+      "note": "1975년 5월 6일 서울에서 창단되어 실업야구연맹에 10번째로 가입했다. 창단 감독은 김동엽."
+     },
+     {
+      "claim": "미래의 프로야구단을 지향해 이 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/롯데_자이언츠",
+      "note": "미래의 프로야구단을 지향하여 롯데 자이언츠라는 구단명을 사용하였다."
+     },
+     {
+      "claim": "1982년 3월 28일 첫 프로 경기 해태에 14-2",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/롯데_자이언츠",
+      "note": "첫 프로 경기는 3월 28일 구덕야구장에서 해태 타이거즈를 상대로 치러졌고 14-2로 이겼다."
+     },
+     {
+      "claim": "구덕(1982~1985) → 1986년부터 사직",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/롯데_자이언츠",
+      "note": "구덕야구장(1982~1985년)을 거쳐 1986년부터 사직야구장을 사용하고 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/롯데_자이언츠"
+    ],
+    "hintNote": "프로 원년 롯데 자이언츠의 부진은 최동원, 유두열, 심재원 국가대표 주전 3명이 세계 야구 선수권 대회 참가로 롯데 입단을 1년 미루었기 때문이라는 분석이 있다.",
+    "easiestCue": "1975년 5월 서울에서 실업 야구단으로 창단할 때부터, 앞으로의 프로 구단을 내다보고 지금의 이름을 썼습니다",
+    "targetWhy": "원년 구단의 실업팀 시절 이름 유래는 KBO 애호가 영역 — 대표 사실(1984 우승 · 부산 갈매기)은 넣지 않았다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 구단의 덜 알려진 출발",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/2#g009a-S1-16",
+   "seed": {
+    "subject": "청보 핀토스",
+    "aspect": null,
+    "ref": "S1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1985년 5월 1일 인천의 한 프로야구 구단을 인수한 그룹은 마스코트로 판다를 생각했지만, OB 베어스와 겹친다며 접었습니다. 그해 후기 리그부터 새 이름으로 나섰고 허구연이 감독을 맡기도 한 이 구단은 어디일까요?",
+    "answer": "청보 핀토스",
+    "acceptedAnswers": [
+     "청보"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 청보 핀토스 — 흔히 모기업명만으로 부름",
+    "explanation": "풍한그룹과 계열사 청보식품이 함께 돈을 대 인수했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1985년 인천 구단 인수, 허구연 감독",
+     "difWhy": "삼미 뒤 인천 구단 — 야구 애호가 (경계 5)",
+     "wor": 2,
+     "worWhy": "KBO 옛 구단 팬 세부",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1985년 인천 구단 인수, 허구연 감독",
+     "difWhy": "삼미 뒤 인천 구단 — 야구 애호가 (경계 5)",
+     "wor": 2,
+     "worWhy": "KBO 옛 구단 팬 세부"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/청보_핀토스"
+    ],
+    "facts": [
+     {
+      "claim": "1985년 5월 1일 삼미 인수 · 후기 리그부터 새 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/청보_핀토스",
+      "note": "풍한그룹이 1985년 5월 1일에 삼미 슈퍼스타즈를 인수하여 같은 해 6월 29일부터 청보 핀토스로 — 1985년 후기 리그부터 이 이름으로 참가했다."
+     },
+     {
+      "claim": "판다는 OB 베어스와 겹쳐 제외",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/청보_핀토스",
+      "note": "마스코트로 판다가 거론됐지만 OB 베어스와 겹친다는 이유로 제외됐다."
+     },
+     {
+      "claim": "허구연 감독(1985~1986)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/청보_핀토스",
+      "note": "청보 핀토스 시기 감독: 김진영(1985년), 허구연(1985~1986년), 강태정"
+     },
+     {
+      "claim": "풍한그룹과 청보식품 공동 출자",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/청보_핀토스",
+      "note": "풍한그룹과 계열사 청보식품이 공동 출자했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "허구연이 감독을 맡기도 한 이 구단",
+    "targetWhy": "삼미 이후 인천 구단의 이름과 허구연 감독 시절은 KBO 애호가 영역",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "구단 자체가 3년만 있었던 이름이라 마이너에 가깝다는 의심 — 원년 팬은 안다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [],
+    "discarded": "선별 게이트 — 알 가치 2 (KBO 옛 구단 팬 세부) · sports 는 3 이상"
+   }
+  }
+ ]
+}

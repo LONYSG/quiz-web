@@ -1,0 +1,119 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "material/4",
+  "midKey": "material",
+  "subName": "토목 구조물",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "material/4#g009a-C2-13",
+   "seed": {
+    "subject": "금문교",
+    "aspect": null,
+    "ref": "C2-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1846년 탐험가 존 C. 프리몬트는 비잔티움의 항구가 '크리소케라스'라 불린 것과 같은 까닭으로 한 해협에 이름을 붙였습니다. 미국 해군은 이 해협에 놓인 다리를 지나가는 배들이 잘 알아보도록 검정과 노랑 줄무늬로 칠하자고 했는데, 이 다리는 무엇일까요?",
+    "answer": "금문교",
+    "acceptedAnswers": [
+     "골든게이트교",
+     "골든 게이트 브리지"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '골든게이트교' · 첫 문장 '골든게이트 교 또는 금문교' · 본문 '골든 게이트 브리지'",
+    "explanation": "자문 건축가 어빙 모로는 주변 경관과 어울리고 안개 속에서도 잘 보이는 '인터내셔널 오렌지'라는 주홍빛 오렌지를 골랐습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'크리소케라스'라 불린 것과 같은 까닭으로 한 해협에",
+     "difWhy": "'골든 혼 = 골든 게이트' — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "유명 다리 이름 유래",
+     "acc": 2,
+     "accWhy": "재료·건설 기술 — 애호가 영역"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "주변 경관과 어울리고 안개 속에서도 잘 보이는 색을 골랐습니다 (해협에 놓인 다리)",
+     "difWhy": "안개 속 붉은 다리 — 방송·뉴스에서 흔히 (경계 3)",
+     "wor": 3,
+     "worWhy": "유명 다리 색·이름 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "미국 해군은 지나가는 배들이 잘 알아보도록 이 다리를 검정과 노랑 줄무늬로 칠하자고 했지만, 자문 건축가 어빙 모로는 주변 경관과 어울리고 안개 속에서도 잘 보이는 색을 골랐습니다. 1846년 탐험가 존 C. 프리몬트가 비잔티움의 항구에 빗대어 이름 붙인 해협에 놓인 이 다리는 무엇일까요?",
+     "beforeExplanation": "모로가 고른 색은 '인터내셔널 오렌지'라 불리는 주홍빛 오렌지입니다.",
+     "removedCue": "주변 경관과 어울리고 안개 속에서 잘 보이는 색",
+     "addedCue": "비잔티움 항구 '크리소케라스'에 빗댄 해협 이름",
+     "why": "안개 속 붉은 다리라는 방송 단서를 해설로 옮기고 이름 유래 세부로"
+    },
+    "generalHint": "공사 중 떨어졌다가 안전망 덕에 살아난 사람들은 '지옥 가는 길 반쯤 클럽'을 꾸렸다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Golden_Gate_Bridge",
+     "https://en.wikipedia.org/wiki/Golden_Gate",
+     "https://ko.wikipedia.org/wiki/금문교"
+    ],
+    "facts": [
+     {
+      "claim": "해군이 검정·노랑 줄무늬 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Golden_Gate_Bridge",
+      "note": "the US Navy's suggestion that it be painted with black and yellow stripes to ensure visibility by passing ships"
+     },
+     {
+      "claim": "어빙 모로가 주변과 어울리고 안개 속 잘 보이는 색 선택",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Golden_Gate_Bridge",
+      "note": "The color was selected by consulting architect Irving Morrow because it complements the natural surroundings and enhances the bridge's visibility in fog."
+     },
+     {
+      "claim": "1846년 프리몬트가 비잔티움 항구에 빗대어 해협 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Golden_Gate",
+      "note": "On July 1, 1846 ... \"To this Gate I gave the name of 'Chrysopylae', or 'Golden Gate'; for the same reasons that the harbor of Byzantium was called Chrysoceras, or Golden Horn.\" (John C. Frémont)"
+     },
+     {
+      "claim": "색 이름 인터내셔널 오렌지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Golden_Gate_Bridge",
+      "note": "officially an orange vermilion called international orange"
+     },
+     {
+      "claim": "한국어 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/금문교",
+      "note": "골든게이트 교(Golden Gate Bridge) 또는 금문교(金門橋)는 미국 캘리포니아주 골든게이트 해협에 위치한 현수교이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Half_Way_to_Hell_Club"
+    ],
+    "hintNote": "The club was an exclusive group formed by men who fell from the bridge during its construction in 1936 and 1937 and were saved by safety nets.",
+    "easiestCue": "프리몬트가 비잔티움 항구 이름에 빗대어 이름 붙인 해협의 다리",
+    "targetWhy": "크리소케라스(금각만) 유래는 대학 교양 지리·역사 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'안개 속 다리' 가 연상될 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

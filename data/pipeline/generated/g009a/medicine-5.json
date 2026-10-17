@@ -1,0 +1,119 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "medicine/5",
+  "midKey": "medicine",
+  "subName": "응급처치",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/5#g009a-C1-22",
+   "seed": {
+    "subject": "하임리히법",
+    "aspect": null,
+    "ref": "C1-22",
+    "pairedWith": 169
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 169,
+    "question": "1974년 6월 의학 잡지 '이머전시 메디신'에 가벼운 글로 처음 소개된 응급처치법입니다. 고안자는 말라리아에 일부러 감염시켜 암이나 HIV를 치료하자는 요법을 내세워 비판을 받았고, 2016년 5월에는 노인 주거 단지의 이웃 패티 리스를 이 방법으로 구했다고 주장했습니다. 이 응급처치법은?",
+    "answer": "하임리히법",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "고안자의 아들 피터는 아버지가 내세운 두 번의 '구조'가 모두 거짓이라고 주장했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 1974년 의학 잡지에 소개된 응급처치법 + 고안자의 말라리아 요법",
+     "difWhy": "'1974 소개 · 고안자 논란' — 대학 교양 (경계 3)",
+     "wor": 4,
+     "worWhy": "생활 응급처치 교양",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "식당 질식(Cafe Coronary) 응급처치법",
+     "difWhy": "'질식 응급처치' — 방송·뉴스 (경계 2)",
+     "wor": 4,
+     "worWhy": "응급처치 기본 상식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1974년 6월 의학 잡지 '이머전시 메디신'에 'Pop Goes the Cafe Coronary'라는 가벼운 글로 처음 소개된 응급처치법입니다. 고안자는 2016년 5월 노인 주거 단지의 이웃 패티 리스를 이 방법으로 처음 실제로 구했다고 주장했습니다. 이 응급처치법은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "글 제목 'Pop Goes the Cafe Coronary'(식당 질식)",
+     "addedCue": "고안자의 말라리아 요법 주장",
+     "why": "질식을 드러내는 글 제목을 빼고 고안자의 다른 행적으로 — 1회차(정의)와 겹치지 않음"
+    },
+    "generalHint": "적십자 등은 등 두드리기 다섯 번과 이 방법 다섯 번을 번갈아 되풀이하라고 권한다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Henry_Heimlich"
+    ],
+    "facts": [
+     {
+      "claim": "1974년 6월 1일 Emergency Medicine 에 'Pop Goes the Cafe Coronary' 로 처음 발표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Henry_Heimlich",
+      "note": "On June 1, 1974, Heimlich first published his views ... in Emergency Medicine ... an informal article, \"Pop Goes the Cafe Coronary\"."
+     },
+     {
+      "claim": "2016년 5월 23일 노인 주거 단지 이웃 패티 리스를 처음 구했다고 주장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Henry_Heimlich",
+      "note": "Heimlich claimed to have used his namesake maneuver to rescue a choking victim for the first time on May 23, 2016, ... a fellow resident of his senior living community, Patty Ris."
+     },
+     {
+      "claim": "아들 피터가 두 구조 모두 거짓이라 주장",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Henry_Heimlich",
+      "note": "Peter M. Heimlich said, \"Both 'rescues' were bogus.\""
+     },
+     {
+      "claim": "말라리아 요법 — 암·HIV 를 말라리아 감염으로 치료하자고 주장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Henry_Heimlich",
+      "note": "promoted treating diseases such as cancer and HIV by infecting people with malaria … attracted criticism as both 'scientifically unsound and dangerous.' (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Abdominal_thrusts"
+    ],
+    "hintNote": "The Red Cross, NHS, European Resuscitation Council, and Mayo Clinic recommend a repeating cycle of five back slaps and five abdominal thrusts.",
+    "easiestCue": "1974년 '이머전시 메디신'에 처음 소개된 응급처치법",
+    "targetWhy": "고안자 행적(말라리아 요법·패티 리스)은 의학 교양 깊은 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "2016년 기사는 해외 토픽으로 났지만, 'Cafe Coronary' 에서 질식을 떠올리면 풀린다",
+    "pairCheck": "1회차(#169)는 기도 폐쇄·복부 밀쳐 올리기 정의 — 발표 잡지·2016 일화는 1회차 질문·해설·힌트(없음)에 없음",
+    "dbCheck": "answercheck pair-or-different — #169 와 지식이 다른 2회차",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음",
+     "단정어 모두"
+    ],
+    "first": {
+     "id": 169,
+     "question": "기도가 폐쇄되어 숨을 쉬지 못하는 환자에게 뒤에서 감싸 안고 복부 윗부분을 밀쳐 올려 이물질을 빼내는 응급처치법은?",
+     "explanation": "기도 폐쇄 환자의 복부를 강하게 압박해 이물질을 배출시키는 응급처치법은 하임리히법이다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  }
+ ]
+}

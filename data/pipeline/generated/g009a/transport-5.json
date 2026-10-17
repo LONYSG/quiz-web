@@ -1,0 +1,217 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "transport/5",
+  "midKey": "transport",
+  "subName": "도로·교통 체계",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "transport/5#g009a-C2-05",
+   "seed": {
+    "subject": "신호등",
+    "aspect": null,
+    "ref": "C2-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "철도 회사에서 일하던 존 피크 나이트가 고안한 이 장치는 1868년 12월 9일 런던 웨스트민스터 다리 근처에 섰습니다. 그러나 이듬해 1월 2일 가스가 새어 등이 터지면서 다루던 경찰관이 크게 다쳤고, 장치는 철거되었습니다. 이 장치는 무엇일까요?",
+    "answer": "신호등",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "전기로 켜는 신호등은 1912년 미국 솔트레이크시티의 경찰관 레스터 와이어가 만들었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1868년 12월 9일 런던 웨스트민스터 다리 근처에 섰습니다 ... 다루던 경찰관",
+     "difWhy": "'경찰관이 다루던 거리 장치' — 관심층",
+     "wor": 3,
+     "worWhy": "생활 발명 이야깃거리",
+     "acc": 4,
+     "accWhy": "자동차·교통 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "엮음: 경찰관이 팔을 올리고 내렸고 밤에는 가스등 + 이 교통 장치",
+     "difWhy": "'밤에 등 켜는 교통 장치' — 누구나 일상에서",
+     "wor": 3,
+     "worWhy": "첫 신호등 폭발 사고 — 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1868년 12월 9일 런던 웨스트민스터 다리 근처에, 철도 회사에서 일하던 존 피크 나이트가 고안한 이 장치가 섰습니다. 경찰관이 팔을 올리고 내렸고 밤에는 가스등을 켰는데, 이듬해 가스가 새어 등이 터지면서 다루던 경찰관이 크게 다쳤습니다. 이 교통 장치는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "경찰관이 팔을 올리고 내렸고 밤에는 가스등 + 이 교통 장치",
+     "addedCue": "1869년 1월 2일 폭발 뒤 철거 (묻는 문장에서 '교통' 범주를 뺌)",
+     "why": "세마포어 팔·'교통 장치' 범주(일상)를 빼고 고안자·사고 세부만 남김"
+    },
+    "generalHint": "한국에서는 1940년 처음 등장했는데, 둥근 등이 아니라 기차역 승강장 입구에서 기차를 이끌던 날개 모양 장치였다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/John_Peake_Knight",
+     "https://en.wikipedia.org/wiki/Traffic_light"
+    ],
+    "facts": [
+     {
+      "claim": "1868년 12월 9일 웨스트민스터 다리 근처 설치",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Peake_Knight",
+      "note": "installed on 9 December 1868 in London near Westminster Bridge"
+     },
+     {
+      "claim": "나이트는 철도 일을 하다 사우스이스턴 철도 감독관",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Peake_Knight",
+      "note": "He left school at the age of 12 to work in the parcel room of Derby railway station ... later joined the South Eastern Railway, where he became a Superintendent."
+     },
+     {
+      "claim": "밤에는 가스등, 가스가 새어 폭발해 경찰관이 크게 다침",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Peake_Knight",
+      "note": "red and green gas-powered lamps at night ... A gas leak caused one of the lights to explode, badly injuring the policeman operating it."
+     },
+     {
+      "claim": "이듬해(1869년 1월 2일) 폭발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Traffic_light",
+      "note": "exploded on 2 January 1869 and was taken down"
+     },
+     {
+      "claim": "1912년 레스터 와이어의 첫 전기 신호등",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Traffic_light",
+      "note": "In 1912, the first electric traffic light was developed by Lester Wire, a policeman in Salt Lake City, Utah."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/신호등"
+    ],
+    "hintNote": "한국에 교통신호기가 처음 등장한 것은 일제강점기였던 1940년으로 오늘날과 같은 둥근 점등이 아니라 기차역 플랫폼 입구에서 기차의 홈인(Home-in)을 유도하던 날개식 신호기였다.",
+    "easiestCue": "1868년 웨스트민스터 다리 근처에 선 존 피크 나이트의 장치",
+    "targetWhy": "최초 신호등의 고안자·사고는 교양 세부 — 관심층~애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "범주 단서로 추리될 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck pair-or-different — 3574(축구 카드가 신호등에서 착안)와 지식 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "transport/5#g009a-C2-06",
+   "seed": {
+    "subject": "루트 66",
+    "aspect": null,
+    "ref": "C2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1926년 11월 11일 지정된 이 미국 국도는 처음에 60번을 받으려 했지만 켄터키주 관리들이 반대하자, 오클라호마의 기술자 존 M. 페이지가 아직 주인이 없던 다른 번호를 찾아 붙였습니다. 시카고에서 출발하던 이 도로는 1985년 미국 국도 체계에서 공식으로 빠졌는데, 무엇일까요?",
+    "answer": "루트 66",
+    "acceptedAnswers": [
+     "66번 국도",
+     "국도 제66호선"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '국도 제66호선 (미국)'(en 문서 langlink) · '루트 66' 은 한국 언론 표기(WebSearch — koreadaily)",
+    "explanation": "존 스타인벡은 '분노의 포도'에서 이 도로를 '어머니의 길'이라 불렀습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "시카고에서 출발하던 이 도로는 1985년 미국 국도 체계에서 공식으로 빠졌는데",
+     "difWhy": "'시카고 출발 · 폐지된 미국 국도' — 관심층",
+     "wor": 3,
+     "worWhy": "유명 도로 이름 맞히기",
+     "acc": 4,
+     "accWhy": "자동차·교통 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "스타인벡이 '어머니의 길'이라 부른 시카고 출발 국도",
+     "difWhy": "루트 66 — 관심 있는 사람 (경계 2)",
+     "wor": 3,
+     "worWhy": "유명 도로 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1926년 11월 11일 지정된 이 미국 국도는 처음에 60번을 받으려 했지만 켄터키주 관리들이 반대하자, 오클라호마의 기술자 존 M. 페이지가 아직 주인이 없던 다른 번호를 찾아 붙였습니다. 존 스타인벡이 '분노의 포도'에서 '어머니의 길'이라 부른, 시카고에서 출발하던 이 도로는 무엇일까요?",
+     "beforeExplanation": "이 도로는 1985년 미국 국도 체계에서 공식으로 빠졌습니다.",
+     "removedCue": "존 스타인벡이 '분노의 포도'에서 '어머니의 길'이라 부른",
+     "addedCue": "1985년 국도 체계에서 빠짐",
+     "why": "유명한 문학 별칭을 해설로 옮기고 번호 · 폐지 세부로"
+    },
+    "generalHint": "1946년 바비 트루프가 펜실베이니아에서 캘리포니아로 차를 몰고 가다 착상한 노래를 냇 킹 콜 트리오가 처음 녹음했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/U.S._Route_66"
+    ],
+    "facts": [
+     {
+      "claim": "1926년 11월 11일 지정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/U.S._Route_66",
+      "note": "Established on November 11, 1926, with signage erected the following year"
+     },
+     {
+      "claim": "60번을 원했으나 켄터키 반대, 존 M. 페이지가 비어 있던 66을 찾음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/U.S._Route_66",
+      "note": "officials in Kentucky successfully argued that US 60 should instead follow an east–west corridor through their state. Oklahoma engineer John M. Page then identified 66 as an unassigned number."
+     },
+     {
+      "claim": "시카고에서 출발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/U.S._Route_66",
+      "note": "The highway ran from Chicago, Illinois ... before terminating in Santa Monica, California"
+     },
+     {
+      "claim": "1985년 국도 체계에서 제외",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/U.S._Route_66",
+      "note": "The highway was officially removed from the United States Highway System in 1985."
+     },
+     {
+      "claim": "스타인벡 분노의 포도 'Mother Road'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/U.S._Route_66",
+      "note": "In The Grapes of Wrath, the highway was called \"The Mother Road\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/(Get_Your_Kicks_on)_Route_66"
+    ],
+    "hintNote": "composed in 1946 by American songwriter Bobby Troup / got the idea for the song on a cross-country drive from Pennsylvania to California / The King Cole Trio ... first recorded the song in 1946",
+    "easiestCue": "60번 대신 다른 번호가 붙은 시카고 출발 국도",
+    "targetWhy": "번호 다툼 · 1985 폐지는 미국 여행 애호가 — 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 도로의 이름(번호) 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck — 활성 0건 · 초안은 이 문항 자신(C2-06)뿐 → 사실상 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

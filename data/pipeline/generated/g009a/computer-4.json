@@ -1,0 +1,117 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "computer/4",
+  "midKey": "computer",
+  "subName": "네트워크·인터넷",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "computer/4#g009a-C2-15",
+   "seed": {
+    "subject": "위키",
+    "aspect": null,
+    "ref": "C2-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1995년 3월 25일 프로그래머 워드 커닝엄은 소프트웨어 설계 패턴을 다루던 '포틀랜드 패턴 저장소'에 딸린 웹사이트를 열었습니다. 처음엔 '퀵웹'이라 부르려다 호놀룰루 공항 터미널 사이를 오가는 셔틀버스 이름을 따 사이트 이름을 지었는데, 그 버스 이름에 두 번 겹쳐 들어간 하와이어 낱말은 무엇일까요?",
+    "answer": "위키",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그 하와이어 낱말은 '빠르다'는 뜻이며, 커닝엄의 사이트는 2015년 읽기 전용이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 커닝엄의 웹사이트 + 두 번 겹친 하와이어 낱말",
+     "difWhy": "커닝엄 위키위키 — 인터넷 관심층",
+     "wor": 3,
+     "worWhy": "웹 용어 기원 이야깃거리",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 커닝엄의 웹사이트 + 두 번 겹친 하와이어 낱말",
+     "difWhy": "커닝엄 위키위키 — 인터넷 관심층",
+     "wor": 3,
+     "worWhy": "웹 용어 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "정답이 하와이어 낱말 '위키' 자체라, 어떤 단서를 남겨도 '웹사이트 이름이 된 하와이어 낱말'만으로 풀림 — 쉬운 단서를 빼면 묻는 대상이 사라짐"
+    },
+    "generalHint": "이 사이트에서는 대문자로 시작하는 낱말을 붙여 쓰면 그 이름의 쪽으로 가는 링크가 생겼다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": true,
+    "sources": [
+     "https://en.wikipedia.org/wiki/WikiWikiWeb"
+    ],
+    "facts": [
+     {
+      "claim": "1995년 3월 25일 워드 커닝엄이 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/WikiWikiWeb",
+      "note": "It was launched on 25 March 1995 by programmer Ward Cunningham."
+     },
+     {
+      "claim": "포틀랜드 패턴 저장소에 딸린 사이트",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/WikiWikiWeb",
+      "note": "Cunningham devised the site as accompanying the Portland Pattern Repository website."
+     },
+     {
+      "claim": "처음엔 퀵웹",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/WikiWikiWeb",
+      "note": "He initially thought about calling it \"QuickWeb\"."
+     },
+     {
+      "claim": "호놀룰루 공항 터미널 사이 셔틀버스 위키위키 셔틀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/WikiWikiWeb",
+      "note": "a Honolulu airport employee ... suggested he ride the Wiki Wiki Shuttle, a shuttle bus line that runs between the airport's terminals."
+     },
+     {
+      "claim": "wiki 는 하와이어로 quick, 2015 읽기 전용",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/WikiWikiWeb",
+      "note": "a Hawaiian language word for \"quick\" ... went read-only in 2015"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/WikiWikiWeb"
+    ],
+    "hintNote": "Hyperlinks between pages on WikiWikiWeb are created by joining capitalized words together, a technique referred to as camel case.",
+    "easiestCue": "호놀룰루 공항 터미널 사이를 오가는 셔틀버스 이름을 따 사이트 이름을 지었는데",
+    "targetWhy": "위키 이름의 공항 셔틀 유래는 인터넷 애호가 세부 — '누구나 고치는 사이트' 정의를 빼 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 말의 뜻밖의 유래",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음",
+     "낱말뜻꼴"
+    ]
+   }
+  }
+ ]
+}

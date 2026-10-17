@@ -1,0 +1,411 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "world-food/1",
+  "midKey": "world-food",
+  "subName": "아시아 음식",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-food/1#g009a-L1-15",
+   "seed": {
+    "subject": "팟타이",
+    "aspect": null,
+    "ref": "L1-15",
+    "pairedWith": 87
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 87,
+    "question": "1939년 나라의 공식 영어 이름을 바꾼 총리의 정부는, 전쟁과 홍수로 쌀이 모자라자 쌀 대신 국수를 먹자고 권했습니다. 역사학자 마크 파둥팟이 오래된 전통이 아니라 1930년대에 만들어졌다고 말하는, 이 무렵 퍼진 국수 요리는 무엇일까요?",
+    "answer": "팟타이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "처음에는 '꾸어이띠어우 팟타이'라고 불리다가 줄어서 지금의 이름이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 1939년 나라 공식 영어 이름을 바꾼 총리 + 쌀 대신 국수",
+     "difWhy": "피분 정권의 국수 장려 — 음식 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "대중 음식의 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 쌀 대신 국수 권장 + 피분송크람 볶음국수",
+     "difWhy": "'태국 국가 볶음국수' — 관심층 (경계 4)",
+     "wor": 3,
+     "worWhy": "음식 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "전쟁과 홍수로 쌀이 모자라자 플랙 피분송크람 총리의 정부는 쌀 대신 국수를 먹자고 권했습니다. 역사학자 마크 파둥팟은 이 요리가 오래된 전통이 아니라 1930년대 나라 만들기 분위기 속에서 만들어졌고, 이름도 민족주의를 북돋우는 데 쓰였다고 말하는데, 이 볶음국수는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "피분송크람 정부 + '볶음국수' + 이름이 민족주의를 북돋움",
+     "addedCue": "1939년 나라의 공식 영어 이름을 바꾼 총리",
+     "why": "총리 이름·'볶음국수'·이름 단서를 빼고 국호 변경으로 나라를 돌려 말함 (1회차 재료·소스 설명과 겹치지 않음)"
+    },
+    "generalHint": "태국 정부는 적어도 2001년부터 이 요리를 '소프트 파워'로 삼고, 해외 태국 식당 3,000곳을 목표로 회사를 세웠다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pad_thai",
+     "https://en.wikipedia.org/wiki/Plaek_Phibunsongkhram"
+    ],
+    "facts": [
+     {
+      "claim": "전쟁과 홍수로 쌀 부족",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pad_thai",
+      "note": "Thailand suffered a rice shortage due to the war and floods."
+     },
+     {
+      "claim": "피분송크람 정부가 국수 소비를 권장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pad_thai",
+      "note": "the Thai government under Prime Minister Plaek Phibunsongkhram promoted consumption of noodles instead."
+     },
+     {
+      "claim": "파둥팟 — 1930년대에 만들어짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pad_thai",
+      "note": "The dish was created because Thailand was focused on nation-building. / as a way to galvanize nationalism / It was actually created in the 1930s in Thailand."
+     },
+     {
+      "claim": "원래 이름 kuai tiao pad thai 에서 줄어듦",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pad_thai",
+      "note": "Pad thai was originally called kuai tiao pad thai, but this was later shortened to simply pad thai."
+     },
+     {
+      "claim": "피분송크람이 1939년 나라의 공식 영어 이름을 Siam 에서 Thailand 로 바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Plaek_Phibunsongkhram",
+      "note": "On 24 June 1939, Phibun changed the country's official English name from \"Siam\" to \"Thailand\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pad_thai"
+    ],
+    "hintNote": "At least as early as 2001, the Thai government used pad thai as a form of 'soft power.' ... the Global Thai Restaurant Company, Ltd., in an effort to establish at least 3,000 Thai restaurants worldwide.",
+    "easiestCue": "1939년 국호를 바꾼 정부가 쌀 대신 권한 국수",
+    "targetWhy": "시암→태국 국호 변경과 국수 권장의 연결은 대학 교양·음식사 애호가 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 요리의 정치적 탄생 배경",
+    "pairCheck": "1회차 질문(쌀국수·계란·두부·숙주·타마린드)·해설(대표 볶음 쌀국수)·힌트 없음 — 탄생 배경·이름 유래만 씀, 범주 단서 '볶음국수' 는 묻는 문장의 종류 표시뿐",
+    "dbCheck": "pair-or-different 87 — (가) 2회차, 지식 다름",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 87,
+     "question": "쌀국수에 계란, 두부, 숙주 등을 넣고 타마린드 소스로 볶아 땅콩가루와 라임을 곁들여 먹는 태국의 대표 볶음국수 요리는?",
+     "explanation": "팟타이는 태국의 대표적인 볶음 쌀국수 요리이다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "world-food/1#g009a-L1-16",
+   "seed": {
+    "subject": "반미",
+    "aspect": null,
+    "ref": "L1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1958년 '호아 마'는 고기를 넣은 이 음식을 판 첫 가게들 가운데 하나로 꼽히며, 이 음식에는 프랑스 요리에서 온 파테를 곁들이기도 합니다. 2011년 3월 24일 옥스퍼드 영어 사전에 이름이 오른 이 음식은 무엇일까요?",
+    "answer": "반미",
+    "acceptedAnswers": [
+     "바인미"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '반미' 동음이의 문서에 '바인 미 — 베트남의 빵, 또는 그 빵으로 만든 샌드위치' 로 실림",
+    "explanation": "바탕이 된 바게트는 19세기 중반 응우옌 왕조 때 프랑스인들이 베트남에 들여왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "프랑스 요리에서 온 파테를 곁들이기도",
+     "difWhy": "'파테 곁들인 베트남 빵' — 음식 관심층",
+     "wor": 3,
+     "worWhy": "세계 음식 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1958년 사이공의 가게 '호아 마'는 고기를 넣은 이 음식을 판",
+     "difWhy": "'사이공 · 고기 넣은 음식' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 세계 음식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1958년 사이공의 가게 '호아 마'는 고기를 넣은 이 음식을 판 첫 가게들 가운데 하나로 꼽힙니다. 2011년 3월 24일 옥스퍼드 영어 사전에 이름이 오른 이 음식은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "사이공의 가게",
+     "addedCue": "프랑스 요리에서 온 파테",
+     "why": "도시 이름(사이공)을 빼고 속재료 세부로"
+    },
+    "generalHint": "미국에서는 1980년대부터 레반바와 아들들이 푸드트럭과 '리스 샌드위치' 체인으로 이 음식을 널리 알렸다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/B%C3%A1nh_m%C3%AC"
+    ],
+    "facts": [
+     {
+      "claim": "1958년 호아 마가 고기 넣은 반미를 판 첫 가게들 가운데 하나",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/B%C3%A1nh_m%C3%AC",
+      "note": "In 1958, Hòa Mã became one of the first shops to sell bánh mì thịt."
+     },
+     {
+      "claim": "프랑스 요리의 파테",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/B%C3%A1nh_m%C3%AC",
+      "note": "condiments from French cuisine such as pâté"
+     },
+     {
+      "claim": "2011년 3월 24일 옥스퍼드 영어 사전 등재",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/B%C3%A1nh_m%C3%AC",
+      "note": "The word bánh mì was added to the Oxford English Dictionary on 24 March 2011."
+     },
+     {
+      "claim": "바게트는 19세기 중반 응우옌 왕조 때 프랑스인이 들여옴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/B%C3%A1nh_m%C3%AC",
+      "note": "The baguette was introduced to Vietnam by the French in the mid-19th century, during the Nguyễn dynasty"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/B%C3%A1nh_m%C3%AC"
+    ],
+    "hintNote": "In the U.S., Lê Văn Bá and his sons are credited with popularizing the sandwich through food trucks and their chain, Lee's Sandwiches, starting in the 1980s.",
+    "easiestCue": "2011년 옥스퍼드 영어 사전에 오른 음식 + 파테",
+    "targetWhy": "호아 마 · OED 등재는 음식 애호가 — 경계 3",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'사이공 + 고기를 넣은' 에서 대표 음식을 추리할 여지",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-food/1#g009a-L1-17",
+   "seed": {
+    "subject": "돈가스",
+    "aspect": null,
+    "ref": "L1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "궁내성 대선부에서 일했다고 전하는 요리사 시마다 신지로는 1929년 도쿄 오카치마치의 양식당 '폰치켄'에서 오늘날 이 요리의 조리법을 만든 사람으로 흔히 꼽힙니다. 정작 그는 자기 요리를 이 이름으로 부르는 것을 싫어했다고 아들이 전하는데, 이 요리는 무엇일까요?",
+    "answer": "돈가스",
+    "acceptedAnswers": [
+     "돈까스",
+     "돈카츠"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "표준국어대사전 표기 '돈가스'(지식) · 한국 식당 표기 '돈까스' · 일본어 음 '돈카츠' 가 모두 흔함 — ko.wikipedia 확인은 못 함",
+    "explanation": "1899년 도쿄 긴자의 양식당 렌가테이는 돼지고기 튀김에 데친 채소 대신 날양배추 채를 곁들여 냈습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1929년 도쿄 오카치마치의 양식당 '폰치켄'에서 오늘날 이 요리의 조리법",
+     "difWhy": "'폰치켄 · 시마다 신지로' — 음식 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "흔한 음식 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 1929년 도쿄 양식당 '폰치켄' + 이 일본 요리",
+     "difWhy": "도쿄 양식당 원조 일본 요리 — 관심층",
+     "wor": 3,
+     "worWhy": "흔한 음식의 기원 — 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1929년 도쿄 오카치마치의 양식당 '폰치켄'에서 일한 요리사 시마다 신지로는 오늘날 이 요리의 조리법을 만든 사람으로 흔히 꼽힙니다. 정작 그는 이 요리를 부르는 이름을 싫어했다는 이야기도 전하는데, 이 일본 요리는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'이 일본 요리' — 도쿄 양식당 원조 일본 요리라는 범주",
+     "addedCue": "궁내성 대선부 출신이라는 시마다의 이력 · 아들의 증언",
+     "why": "'일본 요리' 범주 낱말을 빼고 요리사 이력 세부를 더함"
+    },
+    "generalHint": "이것을 빵에 끼운 샌드위치는 '이센'이라는 가게에서 나왔다고 하며, 게이샤가 립스틱이 지워지지 않게 작게 만들었다고 전한다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://ja.wikipedia.org/wiki/とんかつ"
+    ],
+    "facts": [
+     {
+      "claim": "1929년 오카치마치 폰치켄, 시마다 신지로가 오늘날 조리법의 고안자로 흔히 꼽힘",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/とんかつ",
+      "note": "1929年に御徒町の洋食店「ポンチ軒」が「とんかつ」を発売 / ポンチ軒のコックだった島田信二郎は、現在の豚カツに近い調理法の考案者とされることが多い"
+     },
+     {
+      "claim": "시마다가 '돈카츠' 라는 이름을 싫어했다는 이야기 — 아들 시마다 다다히코의 증언",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/とんかつ",
+      "note": "島田が「とんかつ」という呼び方を嫌っていたという話も併記"
+     },
+     {
+      "claim": "1899년 긴자 렌가테이 — 데친 채소 대신 날양배추 채",
+      "where": "e",
+      "url": "https://ja.wikipedia.org/wiki/とんかつ",
+      "note": "1899年に銀座の洋食店「煉瓦亭」で「ポークカツレツ」…豚肉をディープ・フライで揚げる / 温野菜の代わりに「生キャベツの千切りを添えて提供した」"
+     },
+     {
+      "claim": "시마다는 궁내성 대선부에 있다가 폰치켄의 요리사가 됨",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/とんかつ",
+      "note": "(각주 5 — 富田仁『舶来事物起原事典』) 宮内省大膳部にいた島田信二郎が、上野のぽんち軒という西洋料理店のコックになり、 / (각주 7은 '大膳職' 으로 적음)"
+     },
+     {
+      "claim": "아들의 증언",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/とんかつ",
+      "note": "息子の島田忠彦によると、島田信二郎は『とんかつ』という呼び方を嫌っていたという。"
+     }
+    ],
+    "knowledgeClaims": [
+     "변형 표기 '돈가스' 표준어 — 지식"
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tonkatsu"
+    ],
+    "hintNote": "The sandwich is said to be originated from the Isen, a tonkatsu restaurant ... local geishas to enjoy it without wearing off their lipstick",
+    "easiestCue": "1929년 도쿄 오카치마치의 양식당 '폰치켄'에서 오늘날 조리법을 만든 요리",
+    "targetWhy": "폰치켄 · 시마다 신지로는 일본 음식사 애호가 — 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 먹는 음식의 원조 이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "지식근거 1"
+    ]
+   }
+  },
+  {
+   "seedId": "world-food/1#g009a-L1-18",
+   "seed": {
+    "subject": "칠리 크랩",
+    "aspect": null,
+    "ref": "L1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1956년 체얌티안과 남편 림춘응은 칼랑강 가에서 손수레를 끌며 이 요리를 팔기 시작했고, 1963년에는 어퍼 이스트 코스트 로드에 해산물 식당 '팜비치'를 열었습니다. 흔히 튀기거나 찐 만터우로 소스를 떠 먹는 이 요리는 무엇일까요?",
+    "answer": "칠리 크랩",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "뒤에 요리사 후이콕와이가 레몬즙·식초·삼발·토마토 페이스트·달걀흰자를 넣은 소스를 만들었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 팜비치 해산물 식당 + 만터우로 소스",
+     "difWhy": "'싱가포르 게 요리' — 음식 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "음식 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "엮음: 팜비치 해산물 식당 + 만터우로 소스",
+     "difWhy": "'싱가포르 게 요리' — 음식 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "음식 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "CNN Go가 꼽은 '세계에서 가장 맛있는 음식 50' 가운데 35위에 올랐고, 검은 후추를 쓴 변형 요리도 함께 이름났다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chilli_crab"
+    ],
+    "facts": [
+     {
+      "claim": "체얌티안이 남편 림춘응이 잡은 게로 시험",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chilli_crab",
+      "note": "Cher Yam Tian experimented with stir-frying crabs caught by her husband, Lim Choon Ngee"
+     },
+     {
+      "claim": "1956년 칼랑강 가 손수레",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chilli_crab",
+      "note": "(in 1956) they started selling the dish from a pushcart along the Kallang River"
+     },
+     {
+      "claim": "1963년 어퍼 이스트 코스트 로드 팜비치 시푸드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chilli_crab",
+      "note": "they opened Palm Beach Seafood along Upper East Coast Road in 1963."
+     },
+     {
+      "claim": "튀기거나 찐 만터우로 소스를 떠 먹음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chilli_crab",
+      "note": "It is usually served with a side of either fried or steamed mantou buns, which are used to scoop up the sauce."
+     },
+     {
+      "claim": "후이콕와이의 소스(레몬즙·식초·삼발·토마토 페이스트·달걀흰자)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chilli_crab",
+      "note": "Hooi Kok Wai's sauce included lemon juice, vinegar, sambal, tomato paste, and egg whites."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Chilli_crab"
+    ],
+    "hintNote": "CNN Go listed chilli crab as one of the \"world's 50 most delicious foods\", at Number 35. / Variation: Black pepper crab",
+    "easiestCue": "흔히 튀기거나 찐 만터우로 소스를 떠 먹는 이 요리",
+    "targetWhy": "'게'·'싱가포르' 를 빼서 정의가 없다 — 칼랑강·만터우로 싱가포르 요리를 아는 여행·음식 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "싱가포르 대표 요리, 원조 부부 이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

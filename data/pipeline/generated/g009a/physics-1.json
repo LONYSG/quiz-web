@@ -1,0 +1,117 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "physics/1",
+  "midKey": "physics",
+  "subName": "역학·운동",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "physics/1#g009a-C2-25",
+   "seed": {
+    "subject": "뉴턴의 요람",
+    "aspect": null,
+    "ref": "C2-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "17세기 프랑스 물리학자 에듬 마리오트가 처음 시연했고 하위헌스도 진자로 충돌을 연구했던 장치입니다. 1967년 초 영국 배우 사이먼 프레블이 오늘날의 이름을 붙인 나무 제품이 런던 해러즈에서 처음 팔렸는데, 이 장치는 무엇일까요?",
+    "answer": "뉴턴의 요람",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "뒤에 영화감독 리처드 롱크레인이 만든 크롬 디자인이 카너비 거리의 상점 '기어'에서 크게 팔렸습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "진자로 충돌 … 오늘날의 이름을 붙인 나무 제품",
+     "difWhy": "'충돌 진자 장난감' — 대학 교양 (경계 3)",
+     "wor": 3,
+     "worWhy": "유명 물리 장난감 — 이야깃거리",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "운동량과 에너지의 보존을 보여 주는 이 장치",
+     "difWhy": "쇠구슬 충돌 장치 이름 — 고교 물리",
+     "wor": 3,
+     "worWhy": "흔한 장치 이름 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "17세기 프랑스 물리학자 에듬 마리오트가 처음 시연했고 하위헌스도 진자로 충돌을 연구했던 이 장치는, 1967년 초 영국 배우 사이먼 프레블이 오늘날의 이름을 붙인 나무 제품으로 런던 해러즈에서 처음 팔렸습니다. 운동량과 에너지의 보존을 보여 주는 이 장치는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "운동량과 에너지의 보존을 보여 주는 이 장치",
+     "addedCue": "(더하지 않음 — 마리오트·하위헌스·프레블 세 단서가 이미 엮임)",
+     "why": "고교 물리 정의 문장을 뺌"
+    },
+    "generalHint": "미국 TV 프로그램 '미스버스터즈'가 세계에서 가장 큰 것을 만들었지만, 부딪칠 때 에너지를 너무 잃어 제대로 움직이지 않았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Newton%27s_cradle",
+     "https://ko.wikipedia.org/wiki/뉴턴의_요람"
+    ],
+    "facts": [
+     {
+      "claim": "17세기 마리오트가 처음 시연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Newton%27s_cradle",
+      "note": "was first demonstrated by the French physicist Edme Mariotte in the 17th century"
+     },
+     {
+      "claim": "하위헌스가 진자로 충돌 연구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Newton%27s_cradle",
+      "note": "Christiaan Huygens used pendulums to study collisions."
+     },
+     {
+      "claim": "1967년 초 사이먼 프레블이 이름 붙임, 나무 제품, 해러즈에서 처음 판매",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Newton%27s_cradle",
+      "note": "in early 1967, an English actor, Simon Prebble, coined the name Newton's cradle for the wooden version manufactured by his company ... they were first sold by Harrods of London"
+     },
+     {
+      "claim": "롱크레인의 크롬 디자인, 카너비 거리 기어",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Newton%27s_cradle",
+      "note": "sculptor and film director Richard Loncraine ... a successful chrome design for the Gear store on Carnaby Street"
+     },
+     {
+      "claim": "한국어 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/뉴턴의_요람",
+      "note": "뉴턴의 요람(Newton's cradle)은 두 개의 줄에 연결한 같은 질량의 쇠공 여러 개를 연이어 닿아 있는 진자이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Newton's_cradle"
+    ],
+    "hintNote": "The largest cradle device in the world was designed by MythBusters ... did not function efficiently",
+    "easiestCue": "1967년 사이먼 프레블이 이름을 붙여 해러즈에서 판 장치",
+    "targetWhy": "마리오트 시연·프레블 작명은 물리 교양 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "물리 교구 범주로 추리될 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

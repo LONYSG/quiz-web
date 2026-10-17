@@ -1,0 +1,106 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "economy/4",
+  "midKey": "economy",
+  "subName": "기업·경영 용어",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "economy/4#g009a-H2-22",
+   "seed": {
+    "subject": "과학적 관리법",
+    "aspect": null,
+    "ref": "H2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1881년 클래런스 클라크와 함께 제1회 전미 테니스 선수권 복식에서 우승한 한 미국 기술자는, 1911년 펴낸 책 제목에 자기 경영 방식의 이름을 넣었습니다. 1910년 변호사 루이스 브랜다이스가 철도 운임 인상이 필요 없다고 주장하며 널리 알린 이 경영 방식은?",
+    "answer": "과학적 관리법",
+    "acceptedAnswers": [
+     "테일러리즘",
+     "테일러 시스템"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia \"과학적 관리법\" 첫 문장 \"…테일러의 이름을 따 테일러리즘(Taylorism)이라고 불리며\" · 본문 \"테일러 시스템\" — 같은 대상의 다른 한국어 이름",
+    "explanation": "베들레헴 철강에서 '슈미트'라는 노동자가 선철을 나른 유명한 이야기는 그가 적어도 세 번 고쳐 쓴 것입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1911년 책 제목에 넣은 자기 경영 방식 이름",
+     "difWhy": "테일러 이름 없이 일화뿐 — 대학 교양 경영",
+     "wor": 4,
+     "worWhy": "교양 — 경영 기본 개념",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1911년 책 제목에 넣은 자기 경영 방식 이름",
+     "difWhy": "테일러 이름 없이 일화뿐 — 대학 교양 경영",
+     "wor": 4,
+     "worWhy": "교양 — 경영 기본 개념"
+    },
+    "rewrite": null,
+    "generalHint": "이 방식을 세운 기술자는 1900년 하계 올림픽 골프에서 4위를 했고, 레닌도 이 방식에 크게 감명받았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Frederick_Winslow_Taylor",
+     "https://en.wikipedia.org/wiki/Scientific_management",
+     "https://ko.wikipedia.org/wiki/과학적_관리법"
+    ],
+    "facts": [
+     {
+      "claim": "1881년 클래런스 클라크와 첫 US 내셔널 복식 우승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Frederick_Winslow_Taylor",
+      "note": "He and Clarence Clark won the inaugural United States National tennis doubles championship at Newport Casino in 1881"
+     },
+     {
+      "claim": "1911년 책 제목에 그 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Scientific_management",
+      "note": "Taylor adopted the term in the title of his influential 1911 monograph, The Principles of Scientific Management."
+     },
+     {
+      "claim": "1910년 브랜다이스가 철도 운임 인상 반대 주장에서 널리 알림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Scientific_management",
+      "note": "came to national attention in 1910 when attorney Louis Brandeis ... argue that a railroad rate increase was unnecessary, claiming \"scientific management would overcome railroad inefficiencies.\""
+     },
+     {
+      "claim": "슈미트 선철 이야기를 적어도 세 번 고쳐 씀",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Frederick_Winslow_Taylor",
+      "note": "revised his famous tale of Schmidt carrying pig iron at Bethlehem Steel at least three times."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Frederick_Winslow_Taylor"
+    ],
+    "hintNote": "In the 1900 Summer Olympics, Taylor finished fourth in golf. / Vladimir Lenin was very impressed by Taylorism",
+    "easiestCue": "1911년 펴낸 책 제목에 자기 경영 방식의 이름을 넣었습니다",
+    "targetWhy": "테일러 이름 · 시간 동작 연구 정의를 빼고 테니스 우승 · 브랜다이스만 — 1911년 경영서를 아는 경영학 교양(경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "고교 교과의 개념을 인물의 뜻밖의 이력으로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 과학적 관리법 — new",
+    "warn": []
+   }
+  }
+ ]
+}

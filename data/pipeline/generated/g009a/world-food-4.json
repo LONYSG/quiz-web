@@ -1,0 +1,401 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "world-food/4",
+  "midKey": "world-food",
+  "subName": "조리법·조리 도구",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-food/4#g009a-L1-23",
+   "seed": {
+    "subject": "더치 오븐",
+    "aspect": null,
+    "ref": "L1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1707년 에이브러햄 다비는 철을 모래 거푸집에 부어 만드는 공법으로 특허를 받아 이 냄비를 만들었습니다. 1804년부터 1806년까지 북서부를 탐사한 루이스와 클라크 탐험대의 짐에도 들어 있었던 이 두꺼운 냄비는 무엇일까요?",
+    "answer": "더치 오븐",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "텍사스주는 이 냄비를 공식 '주의 요리 냄비'로 정했고, 유타주와 아칸소주도 주의 공식 상징으로 올려 두었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "철을 모래 거푸집에 부어 ... 두꺼운 냄비",
+     "difWhy": "'무쇠 주물 두꺼운 냄비' — 캠핑 관심층",
+     "wor": 3,
+     "worWhy": "조리 도구 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "텍사스주가 공식 '주의 요리 냄비'로 정한 이 무쇠 냄비",
+     "difWhy": "'무쇠 냄비 · 루이스와 클라크' — 캠핑 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 조리 도구"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1707년 에이브러햄 다비는 철을 모래 거푸집에 부어 만드는 공법으로 특허를 받아 이 냄비를 만들었습니다. 루이스와 클라크 탐험대의 짐에도 들어 있었고, 텍사스주가 공식 '주의 요리 냄비'로 정한 이 무쇠 냄비는 무엇일까요?",
+     "beforeExplanation": "숯을 올려 둘 수 있게 턱을 낸 납작한 뚜껑은 폴 리비어가 고안했다는 이야기가 있지만 확실하지 않습니다.",
+     "removedCue": "텍사스주 공식 '주의 요리 냄비' · 무쇠 냄비",
+     "addedCue": "루이스와 클라크 탐험 연대(1804~1806)",
+     "why": "주 상징과 '무쇠 냄비' 표현을 빼고 다비 특허·탐험대 단서만 남김"
+    },
+    "generalHint": "19세기 미국 서부 소몰이를 따라간 척왜건에도 실렸고, 일본의 데쓰나베와 닮은 냄비로 꼽힌다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "캠핑",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dutch_oven"
+    ],
+    "facts": [
+     {
+      "claim": "1707년 다비가 모래 주조 특허(네덜란드 공정에서 옴)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dutch_oven",
+      "note": "In 1707 he obtained a patent for the process of casting iron in sand, which derived from the Dutch process."
+     },
+     {
+      "claim": "루이스와 클라크 탐험대 장비",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dutch_oven",
+      "note": "A Dutch oven was among the gear Lewis and Clark carried when they explored the great American Northwest."
+     },
+     {
+      "claim": "텍사스 공식 주 요리 냄비",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dutch_oven",
+      "note": "The Dutch oven is also the official state cooking pot of Texas."
+     },
+     {
+      "claim": "루이스와 클라크 1804~1806 탐험",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dutch_oven",
+      "note": "A Dutch oven was among the gear Lewis and Clark carried (1804–1806 exploration of the Northwest — 요지)"
+     },
+     {
+      "claim": "유타·아칸소도 공식 주 상징",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dutch_oven",
+      "note": "Utah and Arkansas also list it as an official state symbol (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dutch_oven"
+    ],
+    "hintNote": "Chuckwagons accompanying western cattle drives also carried Dutch ovens / similar to both the Japanese tetsunabe and the sač",
+    "easiestCue": "루이스와 클라크 탐험대가 가져간 냄비",
+    "targetWhy": "다비 특허·탐험대 장비는 캠핑·요리사 애호가 세부 — 4 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'무쇠 냄비' 에서 캠퍼는 바로 떠올릴 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-food/4#g009a-L1-24",
+   "seed": {
+    "subject": "테플론",
+    "aspect": null,
+    "ref": "L1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프랑스 기술자 마르크 그레구아르는 낚싯대가 틀에서 잘 빠지도록 이 물질을 쓰다가, 아내 콜레트의 부탁을 받고 알루미늄을 염산으로 처리해 생긴 작은 구멍에 이 물질을 붙이는 방법을 찾았습니다. 1956년 그가 세운 회사의 이름도 이 물질과 알루미늄을 줄여 합친 것인데, 이 물질의 상표 이름은 무엇일까요?",
+    "answer": "테플론",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그 회사는 1961년 프랑스 뤼미이로 자리를 옮겼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "회사의 이름도 이 물질과 알루미늄을 줄여 합친 것",
+     "difWhy": "'테팔 = 테플론+알루미늄' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "코팅 팬·테팔 유래 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "음식이 들러붙지 않는 냄비에 입힌 물질",
+     "difWhy": "'코팅 프라이팬' — 일상",
+     "wor": 3,
+     "worWhy": "생활 상표 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "유리섬유로 된 접이식 낚싯대를 만든 프랑스 기술자 마르크 그레구아르는, 아내 콜레트가 음식이 들러붙지 않는 냄비를 만들어 달라고 하자 이 물질을 알루미늄 팬에 입혔습니다. 1956년 그가 세운 회사의 이름도 이 물질과 알루미늄을 줄여 합친 것인데, 이 물질의 상표 이름은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "음식이 들러붙지 않는 냄비를 만들어 달라 (코팅 프라이팬 — 1회차 정의와도 겹침)",
+     "addedCue": "낚싯대 틀 빼기에 먼저 씀 · 알루미늄 염산 처리로 붙임",
+     "why": "들러붙지 않는 냄비(1회차 정의)를 빼고 발명 경위 세부로 바꿈"
+    },
+    "generalHint": "미국 하원의원 퍼트리샤 슈로더는 추문에도 인기가 꺾이지 않던 레이건을 이 상표에 빗댄 별명으로 불렀다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://fr.wikipedia.org/wiki/Tefal"
+    ],
+    "facts": [
+     {
+      "claim": "아내 콜레트의 부탁",
+      "where": "q",
+      "url": "https://fr.wikipedia.org/wiki/Tefal",
+      "note": "Lorsque sa femme Colette lui demande de lui fabriquer une casserole anti-adhésive"
+     },
+     {
+      "claim": "1956년 회사 설립, 이름은 téflon + aluminium",
+      "where": "q",
+      "url": "https://fr.wikipedia.org/wiki/Tefal",
+      "note": "L'entreprise Tefal S.A. est créée en 1956 à Sarcelles / contraction de « téflon » et « aluminium »"
+     },
+     {
+      "claim": "1961년 뤼미이로 이전",
+      "where": "e",
+      "url": "https://fr.wikipedia.org/wiki/Tefal",
+      "note": "En 1961, Tefal s'installe à Rumilly"
+     },
+     {
+      "claim": "낚싯대가 틀에서 잘 빠지도록 테플론 사용",
+      "where": "q",
+      "url": "https://fr.wikipedia.org/wiki/Tefal",
+      "note": "il a l'idée d'utiliser du téflon disponible à l'ONERA pour que la canne se démoule mieux"
+     },
+     {
+      "claim": "알루미늄을 염산 처리해 생긴 작은 구멍에 테플론을 붙임",
+      "where": "q",
+      "url": "https://fr.wikipedia.org/wiki/Tefal",
+      "note": "le traitement de l'aluminium à l'acide chlorhydrique provoque de petits trous dans lesquels se fixe le téflon"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pat_Schroeder"
+    ],
+    "hintNote": "She coined the phrase \"Teflon President\" to describe Ronald Reagan and his popularity even amid scandal.",
+    "easiestCue": "1956년 그가 세운 회사의 이름도 이 물질과 알루미늄을 줄여 합친 것",
+    "targetWhy": "테팔 이름의 유래 — 주방용품 애호가 (경계 3)",
+    "selfJudge": "나쁜 어려움 의심",
+    "selfJudgeWhy": "들러붙지 않는 팬 코팅이라는 정의가 질문의 이야기 속에 살아 있다 — 채점에서 3 이하 가능",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different 3022(플라스틱·신소재 — 1938 발견·맨해튼 계획 힌트) — 그레구아르·테팔 일화로 지식 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-food/4#g009a-L1-25",
+   "seed": {
+    "subject": "수비드",
+    "aspect": null,
+    "ref": "L1-25",
+    "pairedWith": 201
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 201,
+    "question": "1960년대 중반 미국과 프랑스의 엔지니어들이 산업용 식품 보존법으로 개발했고, 1974년 요리사 조르주 프랄뤼가 프랑스 레스토랑 트루아그로를 위해 받아들인 조리법입니다. 미국 철도 회사 암트랙도 아셀라 등 열차 식사에 쓰는 이 조리법은 무엇일까요?",
+    "answer": "수비드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "프랄뤼는 이렇게 익힌 푸아그라가 본래의 모습을 지킨다는 것을 알아냈고, 낮은 온도로 익히는 방법 자체는 1799년 럼퍼드 백작 벤저민 톰프슨이 처음 기록했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1974년 요리사 조르주 프랄뤼가 ... 트루아그로를 위해 받아들인 조리법",
+     "difWhy": "'산업용 보존법 · 트루아그로' — 요리 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "조리법 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "푸아그라를 본래 모습대로 익히는 조리법",
+     "difWhy": "진공 저온 조리 — 요리 관심층",
+     "wor": 3,
+     "worWhy": "조리법 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1974년 프랑스 요리사 조르주 프랄뤼는 레스토랑 트루아그로를 위해 이 조리법을 받아들였고, 이렇게 익힌 푸아그라가 본래의 모습을 잘 지킨다는 것을 알아냈습니다. 이 조리법은 무엇일까요?",
+     "beforeExplanation": "낮은 온도로 익히는 방법 자체는 1799년 럼퍼드 백작 벤저민 톰프슨이 처음 기록했습니다.",
+     "removedCue": "프랄뤼가 익힌 푸아그라가 본래의 모습을 지킴",
+     "addedCue": "1960년대 산업용 보존법 기원 · 암트랙 열차 식사",
+     "why": "결과(푸아그라) 서술을 해설로 내리고 기원·쓰임 사례로 — 1회차 질문·해설·힌트(진공 팩·스테이크·막대 온도 조절기)와 겹치지 않음"
+    },
+    "generalHint": "브뤼노 구소는 음식마다 익히는 시간과 온도의 기준을 세우고, 일류 요리사들에게 이 방법을 가르쳐 이름났다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sous_vide"
+    ],
+    "facts": [
+     {
+      "claim": "1974년 프랄뤼가 트루아그로를 위해 채택, 푸아그라가 본래 모습 유지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sous_vide",
+      "note": "The method was adopted by Georges Pralus, a French chef, in 1974 for the Restaurant Troisgros. (He found that foie gras cooked this way) kept its original appearance."
+     },
+     {
+      "claim": "저온 조리는 1799년 럼퍼드 백작이 처음 기록",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sous_vide",
+      "note": "Low-temperature cooking was first described by Benjamin Thompson, Count Rumford in 1799."
+     },
+     {
+      "claim": "1960년대 중반 미·프랑스 엔지니어의 산업용 보존법",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sous_vide",
+      "note": "developed by American and French engineers in the mid-1960s as an industrial food preservation method"
+     },
+     {
+      "claim": "암트랙 열차 식사(아셀라)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sous_vide",
+      "note": "Amtrak also uses this method for meals served on their trains, including the Acela."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sous_vide"
+    ],
+    "hintNote": "He developed the parameters of cooking times and temperatures for various foods. ... he became well known for training top chefs in the method.",
+    "easiestCue": "1974년 프랄뤼가 트루아그로를 위해 받아들인 조리법",
+    "targetWhy": "프랄뤼·암트랙 사례는 요리 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "스테이크로 유명한 조리법의 레스토랑 출발점",
+    "pairCheck": "1회차 질문(진공 팩·저온 물속 정의)·해설(프랑스어 '진공')·힌트(스테이크·막대 기구)와 겹치지 않음 — 프랄뤼·트루아그로만",
+    "dbCheck": "pair-or-different 201 — (가) 2회차, 지식 다름",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 201,
+     "question": "재료를 진공 비닐 팩에 밀봉한 후 일정한 온도의 물속에서 장시간 저온으로 익혀내는 프랑스식 조리법은 무엇인가?",
+     "explanation": "수비드는 프랑스어로 '진공 상태'를 뜻하며, 저온 진공 조리법을 의미합니다.",
+     "hint": "스테이크를 고르게 익히는 데 즐겨 쓰며, 막대 모양 온도 조절 기구를 냄비에 꽂아 쓰기도 한다.",
+     "difficulty": 3
+    }
+   }
+  },
+  {
+   "seedId": "world-food/4#g009a-L1-26",
+   "seed": {
+    "subject": "분자 요리",
+    "aspect": null,
+    "ref": "L1-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "헝가리 출신 니컬러스 쿠르티와 프랑스의 에르베 티스가 1988년 이 분야를 가리키는 영어 이름을 지었습니다. 1992년부터 이탈리아 에리체에서 그 이름을 내건 워크숍이 열린 이 요리 분야는 무엇일까요?",
+    "answer": "분자 요리",
+    "acceptedAnswers": [
+     "분자 요리학",
+     "분자 미식학"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia — 문서 제목 '분자 미식학', '분자요리' 에서 넘어옴, 첫 문장 '분자 요리학 … 또는 분자 미식학'",
+    "explanation": "엘불리의 페란 아드리아는 자기 요리를 이 이름보다 '해체주의'라는 말로 부르기를 더 좋아했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "니컬러스 쿠르티와 에르베 티스가 1988년 이 분야를 가리키는 영어 이름",
+     "difWhy": "'쿠르티·티스 · 에리체 워크숍' — 요리 애호가",
+     "wor": 3,
+     "worWhy": "요리 분야 이름 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 물리학자·물리화학자가 이름 지은 + 요리 분야",
+     "difWhy": "과학으로 하는 요리 분야 — 관심층",
+     "wor": 3,
+     "worWhy": "요리 사조 이름"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "헝가리 출신 물리학자 니컬러스 쿠르티는 런던 왕립학회에서 '부엌의 물리학자'라는 제목으로 발표했고, 1988년 프랑스 물리화학자 에르베 티스와 함께 이 분야를 가리키는 영어 이름을 지었습니다. 1992년부터 이탈리아 에리체에서 이름을 내건 워크숍도 열린 이 요리 분야는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'부엌의 물리학자' 발표 · 물리학자/물리화학자라는 직업 표시",
+     "addedCue": "(새 단서 없음) 쿠르티·티스 이름 + 에리체 워크숍만 남김",
+     "why": "과학+요리라는 범주 단서를 빼고 인명·워크숍 세부만으로 좁힘"
+    },
+    "generalHint": "쿠르티는 전자레인지로 언 머랭 껍질 속에 뜨거운 술을 담은 '거꾸로 된 베이크드 알래스카'를 만들어 보였다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Molecular_gastronomy"
+    ],
+    "facts": [
+     {
+      "claim": "1988년 쿠르티와 티스가 용어를 지음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Molecular_gastronomy",
+      "note": "The term \"molecular and physical gastronomy\" was coined in 1988 by Hungarian physicist Nicholas Kurti (and French physical chemist Hervé This)"
+     },
+     {
+      "claim": "1992년 에리체 워크숍 제목",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Molecular_gastronomy",
+      "note": "In 1992, it became the title for a set of workshops held in Erice, Italy"
+     },
+     {
+      "claim": "아드리아는 '해체주의' 라는 말을 선호",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Molecular_gastronomy",
+      "note": "Ferran Adrià of El Bulli, prefers the term 'deconstructivist' to describe his style of cooking."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Nicholas_Kurti"
+    ],
+    "hintNote": "using the recently invented microwave oven to make a \"reverse Baked Alaska\" ... a \"Frozen Florida\" (hot liquor inside a frozen meringue shell)",
+    "easiestCue": "에르베 티스가 1988년 이름을 지은 요리 분야",
+    "targetWhy": "티스·쿠르티를 아는 것은 요리 애호가 수준 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "물리학자·요리에서 추리로 닿을 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 요리"
+    ]
+   }
+  }
+ ]
+}

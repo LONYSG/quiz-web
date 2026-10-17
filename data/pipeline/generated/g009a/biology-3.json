@@ -1,0 +1,209 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "biology/3",
+  "midKey": "biology",
+  "subName": "생태계",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "biology/3#g009a-C1-03",
+   "seed": {
+    "subject": "비버",
+    "aspect": null,
+    "ref": "C1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1940년대 남아메리카 끝 티에라델푸에고에 사업을 하려고 들여왔다가, 사업이 실패하자 25쌍이 야생에 풀려난 동물입니다. 천적이 없어 50년쯤 만에 10만 마리 안팎으로 불어난 이 동물을, 초기 프랑스계 캐나다 가톨릭 신자들은 사순절에도 먹을 수 있는 '네 발 달린 물고기'라 불렀습니다. 이 동물은 무엇일까요?",
+    "answer": "비버",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "생식기 근처의 샘에서 나오는 기름진 물질 '카스토리움'을 털에 발라 물이 스미지 않게 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "사순절에도 먹을 수 있는 '네 발 달린 물고기'라 불렀습니다",
+     "difWhy": "'티에라델푸에고 외래종 · 네 발 물고기' — 대학 교양 (경계 3)",
+     "wor": 3,
+     "worWhy": "외래종 생태 이야깃거리",
+     "acc": 5,
+     "accWhy": "생물 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 모피 사업 + 사순절의 '네 발 달린 물고기'",
+     "difWhy": "모피 동물·물고기 취급 — 관심층 생물 (경계 4)",
+     "wor": 3,
+     "worWhy": "외래종·사순절 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1940년대 남아메리카 끝 티에라델푸에고에 모피 사업을 하려고 들여왔다가, 사업이 실패하자 25쌍이 야생에 풀려난 동물입니다. 초기 프랑스계 캐나다 가톨릭 신자들은 이 동물을 사순절에도 먹을 수 있는 '네 발 달린 물고기'라 불렀습니다. 이 동물은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'모피 사업' — 물가 모피 동물이라는 범주",
+     "addedCue": "천적 없이 50년쯤 만에 10만 마리 안팎",
+     "why": "모피 동물 범주를 빼고 침입종 번식 세부를 더함"
+    },
+    "generalHint": "앞니 법랑질이 철 화합물 때문에 주황빛이나 적갈색을 띤다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/North_American_beaver"
+    ],
+    "facts": [
+     {
+      "claim": "1940년대 티에라델푸에고에 (모피) 사업용으로 들여옴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/North_American_beaver",
+      "note": "In the 1940s, beavers were brought to Tierra del Fuego in southern Chile and Argentina for commercial fur production"
+     },
+     {
+      "claim": "사업 실패 뒤 25쌍 방사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/North_American_beaver",
+      "note": "Although the fur enterprise failed, 25 mating pairs of beavers were released into the wild."
+     },
+     {
+      "claim": "프랑스계 캐나다 가톨릭 신자의 '네 발 달린 물고기'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/North_American_beaver",
+      "note": "Early French Canadian Catholics called beaver a \"four-legged fish\" that could be eaten at Lent."
+     },
+     {
+      "claim": "카스토리움으로 털 방수",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/North_American_beaver",
+      "note": "Scent glands near the genitals secrete an oily substance known as castoreum, which the beaver uses to waterproof its fur."
+     },
+     {
+      "claim": "천적이 없어 50년쯤 만에 약 10만 마리로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/North_American_beaver",
+      "note": "(요지) With no natural predators, they spread … reaching about 100,000 animals within roughly 50 years."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Beaver"
+    ],
+    "hintNote": "colored orange or reddish-brown by iron compounds",
+    "easiestCue": "사순절에도 먹을 수 있는 '네 발 달린 물고기'",
+    "targetWhy": "티에라델푸에고 침입 · 사순절 일화는 생태·음식사 애호가 — 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대상은 누구나 알고, 두 단서 모두 교과서 밖이며 '모피'에서 추리할 길이 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "biology/3#g009a-C1-04",
+   "seed": {
+    "subject": "지렁이",
+    "aspect": null,
+    "ref": "C1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 동물 가운데 서유럽 원산인 한 종은 땅 위에서 짝짓기를 하면서도 저마다 몸을 굴에 걸쳐 둔 채로 있습니다. 이 종은 미국 중북부에서 토착 풀과 나무가 다시 자라는 것을 줄이는 침입종으로 여겨지는데, 이 동물은 무엇일까요?",
+    "answer": "지렁이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1881년 10월에 나온 찰스 다윈의 마지막 과학책은 이 동물이 흙을 만드는 일을 다루었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "토착 풀과 나무가 다시 자라는 것을 줄이는 침입종",
+     "difWhy": "'북미 침입 지렁이' — 대학 생태 교양",
+     "wor": 4,
+     "worWhy": "생태 교양 — 의외의 침입종",
+     "acc": 5,
+     "accWhy": "생물 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "찰스 다윈의 마지막 과학책은 이 동물이 흙을 만드는 일을 다루었습니다",
+     "difWhy": "'흙을 만드는 동물' — 초·중 과학 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 다윈 마지막 책"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1881년 10월에 나온 찰스 다윈의 마지막 과학책은 이 동물이 흙을 만드는 일을 다루었습니다. 이 동물 가운데 서유럽 원산인 한 종은 미국 중북부에서 숲 바닥의 낙엽을 흙 속으로 끌어내려 토착 풀과 나무의 재생을 줄이는 침입종으로 여겨집니다. 이 동물은 무엇일까요?",
+     "beforeExplanation": "다윈의 그 책은 나오고 처음 몇 주 만에 수천 부가 팔렸습니다.",
+     "removedCue": "찰스 다윈의 마지막 과학책은 이 동물이 흙을 만드는 일을 다루었습니다 (· 낙엽을 흙 속으로 끌어내려)",
+     "addedCue": "굴에 몸을 걸친 채 땅 위에서 짝짓기",
+     "why": "다윈의 책 · 낙엽 끌어내리기(흙 만드는 동물의 정의)를 빼고 생태 세부로"
+    },
+    "generalHint": "영국 체셔의 윌러스턴에서는 1980년부터 이 동물을 땅 위로 불러내는 세계 대회가 해마다 열린다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "원예",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lumbricus_terrestris",
+     "https://en.wikipedia.org/wiki/The_Formation_of_Vegetable_Mould_through_the_Action_of_Worms"
+    ],
+    "facts": [
+     {
+      "claim": "Lumbricus terrestris 는 서유럽 원산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lumbricus_terrestris",
+      "note": "thought to be native to Western Europe, now widely distributed around the world."
+     },
+     {
+      "claim": "땅 위에서 짝짓기 · 굴에 몸을 걸쳐 둠",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lumbricus_terrestris",
+      "note": "Copulation occurs on the soil surface, but partners remain anchored in their burrow."
+     },
+     {
+      "claim": "미국 중북부의 침입종, 낙엽을 흙으로 끌어내림, 토착 풀·나무 재생 감소",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lumbricus_terrestris",
+      "note": "It is considered invasive in the north central United States ... can lead to reductions in native herbaceous and tree regrowth."
+     },
+     {
+      "claim": "1881년 10월 출간, 다윈의 마지막 과학책",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Formation_of_Vegetable_Mould_through_the_Action_of_Worms",
+      "note": "Publication date: October 1881. It was his last scientific book, and was published shortly before his death"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Worm_charming"
+    ],
+    "hintNote": "The World Worm Charming Championships started in 1980 and is now an annual event, held in June.",
+    "easiestCue": "서유럽 원산 · 미국 중북부의 침입종",
+    "targetWhy": "짝짓기 습성 · 북미 침입종은 생물 애호가 세부 — 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 동물의 뜻밖의 연결(다윈 · 침입종) 둘",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 마지막",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

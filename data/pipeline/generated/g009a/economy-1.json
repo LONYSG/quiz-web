@@ -1,0 +1,190 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "economy/1",
+  "midKey": "economy",
+  "subName": "경제 개념·지표",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "economy/1#g009a-H2-19",
+   "seed": {
+    "subject": "빅맥 지수",
+    "aspect": null,
+    "ref": "H2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1986년 9월 영국 주간지 기자 팸 우달이 반쯤 농담 삼아 처음 실은 지표입니다. 이 잡지는 때로 재료를 스타벅스 커피 한 잔으로 바꾼 '톨 라테 지수'를 내기도 했는데, 원래의 이 지표는 무엇일까요?",
+    "answer": "빅맥 지수",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "같은 물건 꾸러미의 값이 나라마다 같아지도록 환율이 정해진다는 구매력 평가 이론에 바탕을 둡니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "재료를 스타벅스 커피 한 잔으로 바꾼 '톨 라테 지수'",
+     "difWhy": "'이코노미스트 물가 지수' — 고교 경제",
+     "wor": 4,
+     "worWhy": "경제 시사 지표",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이코노미스트가 해마다 발표한 지표",
+     "difWhy": "'이코노미스트 지수' — 고교 경제",
+     "wor": 4,
+     "worWhy": "경제 교양 지표"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1986년 9월 영국 주간지 『이코노미스트』의 팸 우달은 반쯤 농담 삼아 이 지표를 처음 실었고, 잡지는 그 뒤 해마다 이를 발표해 왔습니다. 처음부터 엄밀한 환율 도구로 만든 것은 아니었던 이 지표는?",
+     "beforeExplanation": null,
+     "removedCue": "『이코노미스트』 … 잡지는 그 뒤 해마다 이를 발표해 왔습니다 (· 엄밀한 환율 도구가 아님)",
+     "addedCue": "변형 '톨 라테 지수'",
+     "why": "잡지 이름 · 해마다 발표를 빼고 변형 지수 세부로"
+    },
+    "generalHint": "힌두교도가 많은 인도에서는 이것 대신 닭고기 '마하라자 맥'으로 값을 견준다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Big_Mac_Index"
+    ],
+    "facts": [
+     {
+      "claim": "1986년 9월 이코노미스트에 팸 우달이 처음 실음, 해마다 발표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Big_Mac_Index",
+      "note": "introduced in The Economist in September 1986 by Pam Woodall, and the magazine has published it annually since."
+     },
+     {
+      "claim": "반쯤 농담, 엄밀한 환율 도구로 의도하지 않음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Big_Mac_Index",
+      "note": "semi-humorous illustration of PPP. Its creators never intended it as a rigorous exchange-rate tool"
+     },
+     {
+      "claim": "변형 — 톨 라테 지수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Big_Mac_Index",
+      "note": "sometimes produces variants on the theme ... a \"Tall Latte index,\" which replaced the Big Mac with a cup of Starbucks coffee"
+     },
+     {
+      "claim": "구매력 평가 이론 바탕",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Big_Mac_Index",
+      "note": "the exchange rate between two currencies should equalize the prices charged for an identical basket of goods."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Big_Mac_Index"
+    ],
+    "hintNote": "In India – which is a predominantly Hindu country – beef burgers are not available at any McDonald's outlets. The Chicken Maharaja Mac serves as a substitute for the Big Mac.",
+    "easiestCue": "재료를 스타벅스 커피로 바꾼 '톨 라테 지수'의 원판",
+    "targetWhy": "팸 우달 · 톨 라테 지수는 경제 애호가 — 경계 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'이코노미스트가 만든 환율 지표' 는 경제 뉴스 독자에게 쉬워 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 빅맥 지수 — new",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "economy/1#g009a-H2-20",
+   "seed": {
+    "subject": "비교우위",
+    "aspect": null,
+    "ref": "H2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "수학자 스타니스와프 울람은 폴 새뮤얼슨에게 '사회과학에서 참이면서 사소하지 않은 명제를 하나만 대 보라'고 놀렸고, 새뮤얼슨은 1969년 연설에서 한 무역 이론으로 답했습니다. 1815년 로버트 토런스의 곡물 무역 논문에도 일찍 등장하는 이 무역 이론은?",
+    "answer": "비교우위",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "새뮤얼슨은 한 나라가 모든 상품에서 더 생산적이거나 덜 생산적이어도 교역이 서로에게 이익이 된다는 증명이라고 설명했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "울람이 새뮤얼슨에게 '참이면서 사소하지 않은 명제'를 대 보라고 놀림",
+     "difWhy": "울람·새뮤얼슨 일화 — 대학 교양 경제",
+     "wor": 4,
+     "worWhy": "교양 — 경제 기본 개념의 일화",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "울람이 새뮤얼슨에게 '참이면서 사소하지 않은 명제'를 대 보라고 놀림",
+     "difWhy": "울람·새뮤얼슨 일화 — 대학 교양 경제",
+     "wor": 4,
+     "worWhy": "교양 — 경제 기본 개념의 일화"
+    },
+    "rewrite": null,
+    "generalHint": "새뮤얼슨은 수많은 똑똑한 사람이 설명을 듣고도 깨닫거나 믿지 못했다는 점이 이 이론이 사소하지 않다는 증거라고 했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://conversableeconomist.com/2025/08/13/what-economic-ideas-are-true-and-nontrivial/",
+     "https://en.wikipedia.org/wiki/Comparative_advantage"
+    ],
+    "facts": [
+     {
+      "claim": "울람의 도전과 새뮤얼슨의 답(1969 연설)",
+      "where": "q",
+      "url": "https://conversableeconomist.com/2025/08/13/what-economic-ideas-are-true-and-nontrivial/",
+      "note": "\"Name me one proposition in all of the social sciences which is both true and non-trivial.\" ... \"The Ricardian theory of comparative advantage\" (1969 address, \"The Way of the Economist\")"
+     },
+     {
+      "claim": "1815년 토런스 논문에서 일찍 쓰임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Comparative_advantage",
+      "note": "A very early use of the term comparative advantage appears in An Essay on the External Corn Trade by Robert Torrens in 1815."
+     },
+     {
+      "claim": "모든 상품에서 더/덜 생산적이어도 교역이 서로 이익",
+      "where": "e",
+      "url": "https://conversableeconomist.com/2025/08/13/what-economic-ideas-are-true-and-nontrivial/",
+      "note": "the demonstration that trade is mutually profitable even when one country is absolutely more – or less – productive in terms of every commodity."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Paul_Samuelson"
+    ],
+    "hintNote": "its nontriviality is shown by \"the thousands of important and intelligent men\" who never grasped it or believed it once explained",
+    "easiestCue": "새뮤얼슨은 1969년 연설에서 한 무역 이론으로 답했습니다",
+    "targetWhy": "리카도 · 포도주와 모직물 같은 교과서 단서를 빼고 울람-새뮤얼슨 일화 · 토런스만 — 경제학 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "고교 경제 개념의 교과서 밖 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck 비교우위 — new",
+    "warn": []
+   }
+  }
+ ]
+}

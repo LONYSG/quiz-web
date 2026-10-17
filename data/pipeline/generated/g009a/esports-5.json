@@ -1,0 +1,301 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "esports/5",
+  "midKey": "esports",
+  "subName": "게임 용어",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "esports/5#g009a-M2-16",
+   "seed": {
+    "subject": "스타크래프트",
+    "aspect": "대중",
+    "ref": "M2-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2012년 4월 구글 검색창에 이 게임 용어를 치면 알파벳 O 무리가 몰려나와 검색 결과를 공격했고, 이용자는 O를 눌러 없애며 결과를 지켜야 했습니다. 검색창에 친 이 말은 무엇일까요?",
+    "answer": "저그 러시",
+    "acceptedAnswers": [
+     "저그 러쉬"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "외래어 표기 '러시/러쉬' 두 가지가 흔하다 — 국립국어원 표기는 '러시', 게임 커뮤니티는 '러쉬'도 흔히 씀 (검색으로는 확인 못 함 — 검증 때 볼 것)",
+    "explanation": "스타크래프트 시리즈의 한 종족과 짝지어진 러시 전술에서 나온 말로, 뒤에는 상대를 빠르게 압도하는 공격을 넓게 이르는 말이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "이 게임 용어 … 알파벳 O 무리가 몰려나와",
+     "difWhy": "'스타크 러시 용어' — 게임 관심층",
+     "wor": 2,
+     "worWhy": "게임 용어 — 팬 세부",
+     "acc": 3,
+     "accWhy": "e스포츠·게임 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "스타크래프트 종족 이름이 들어간 게임 용어",
+     "difWhy": "'저그 러시' — 방송·일상",
+     "wor": 2,
+     "worWhy": "게임 용어 세부"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2012년 4월 구글 검색창에 이 말을 치면 알파벳 o 무리가 몰려나와 검색 결과를 공격하는 숨은 장난이 나왔습니다. 스타크래프트의 한 종족 이름이 들어간 이 게임 용어는 무엇일까요?",
+     "beforeExplanation": "러시 전술은 스타크래프트 시리즈에서 특히 저그와 짝지어졌고, 이용자는 o 글자를 눌러 없애며 검색 결과를 지켰습니다.",
+     "removedCue": "스타크래프트의 한 종족 이름이 들어간 게임 용어",
+     "addedCue": "(더하지 않음 — 구글 이스터 에그 세부만)",
+     "why": "종족 이름이 들어간다는 서술(정답 조각 힌트)을 빼고 이스터 에그 세부로"
+    },
+    "generalHint": "잡지 PC 게이머는 이 전술을, 실패하면 공격한 쪽에 더 강한 유닛을 막을 자원이 남지 않는 승부수로 설명했다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "대중",
+    "genre": "게임",
+    "work": "스타크래프트",
+    "hobby": null,
+    "defForm": true,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Zerg_rush"
+    ],
+    "facts": [
+     {
+      "claim": "2012년 4월 구글 이스터 에그 · o 글자가 검색 결과 공격",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zerg_rush",
+      "note": "In April 2012, Google introduced an interactive Easter egg triggered by searching for \"Zerg rush\" ... letter O characters attacked the displayed search results while users attempted to destroy them by clicking"
+     },
+     {
+      "claim": "러시 전술이 저그와 짝",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Zerg_rush",
+      "note": "Rush tactics became particularly associated with the Zerg in the StarCraft series"
+     },
+     {
+      "claim": "상대를 빠르게 압도하는 공격을 넓게 이르는 말이 됨",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Zerg_rush",
+      "note": "became a broader term for attacks based on quickly overwhelming an opponent"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Rush_(video_games)"
+    ],
+    "hintNote": "PC Gamer described the Zergling rush as an aggressive commitment whose failure may leave the attacker without sufficient resources to resist more advanced units.",
+    "easiestCue": "구글 검색창에 치면 O 무리가 몰려나와 결과를 공격하는 게임 용어",
+    "targetWhy": "2012 구글 이스터 에그는 게임·인터넷 애호가 세부 — 경계 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "묻는 문장만으로도 게이머는 짐작 — 대중 층으로 표시",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "낱말뜻꼴"
+    ]
+   }
+  },
+  {
+   "seedId": "esports/5#g009a-M2-17",
+   "seed": {
+    "subject": "스타크래프트",
+    "aspect": "대중",
+    "ref": "M2-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "블리자드 '스타크래프트' 싱글플레이의 한 치트키는, 1996년 영화 '제리 맥과이어'에서 미식축구 선수 로드 티드웰과 에이전트 제리가 전화로 거듭 외치는 대사와 같은 문장입니다. 티드웰을 맡은 쿠바 구딩 주니어는 이 역으로 아카데미 남우조연상을 받았는데, 이 치트키는 무엇일까요?",
+    "answer": "쇼 미 더 머니",
+    "acceptedAnswers": [
+     "show me the money"
+    ],
+    "originalTitleVariants": [
+     "show me the money"
+    ],
+    "variantCheck": "실제 입력 문장이 영문이라 영문도 받는다(B10 에 준함 — 게이트가 빼면 검증 때 판단) · 한글 '쇼미더머니' 는 띄어쓰기만 다름",
+    "explanation": "입력하면 미네랄과 가스가 1만씩 들어왔고, 같은 방식으로 'power overwhelming'을 치면 유닛이 무적이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "블리자드 '스타크래프트' 싱글플레이의 한 치트키",
+     "difWhy": "'스타 치트키 · 제리 맥과이어' — 방송·일상",
+     "wor": 3,
+     "worWhy": "유명 대사·치트키 이야깃거리",
+     "acc": 3,
+     "accWhy": "e스포츠·게임 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "이 문장을 입력하면 미네랄과 가스가 1만씩",
+     "difWhy": "'스타 치트키 미네랄·가스 1만' — 방송·일상",
+     "wor": 3,
+     "worWhy": "누구나 아는 게임 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "블리자드의 '스타크래프트' 싱글플레이에서 이 문장을 입력하면 미네랄과 가스가 1만씩 들어옵니다. 1996년 영화 '제리 맥과이어'의 유명한 대사와 같은 문장인 이 치트키는 무엇일까요?",
+     "beforeExplanation": "같은 방식으로 'power overwhelming'을 치면 유닛이 무적이 되었습니다.",
+     "removedCue": "이 문장을 입력하면 미네랄과 가스가 1만씩 들어옵니다",
+     "addedCue": "제리 맥과이어 속 로드 티드웰·제리의 전화 장면 · 쿠바 구딩 주니어 남우조연상",
+     "why": "치트키 효과(방송·일상)를 해설로 옮기고, 영화 쪽 장면 세부로 문장을 특정"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "layer": "대중",
+    "genre": "게임",
+    "work": "스타크래프트",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://www.supercheats.com/pc/starcraft.htm",
+     "https://en.wikipedia.org/wiki/Show_Me_the_Money",
+     "https://en.wikipedia.org/wiki/Jerry_Maguire"
+    ],
+    "facts": [
+     {
+      "claim": "show me the money = 미네랄·가스 1만",
+      "where": "e",
+      "url": "https://www.supercheats.com/pc/starcraft.htm",
+      "note": "show me the money — 10,000 minerals and gas (WebSearch 결과 요약: 'gives an immediate 10,000 minerals and gas')"
+     },
+     {
+      "claim": "제리 맥과이어(1996)의 유명한 대사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Show_Me_the_Money",
+      "note": "\"Show me the money\", a well-known phrase uttered by characters in the 1996 film Jerry Maguire"
+     },
+     {
+      "claim": "power overwhelming = 무적",
+      "where": "e",
+      "url": "https://www.supercheats.com/pc/starcraft.htm",
+      "note": "Power overwhelming — invulnerability (WebSearch 결과 요약: 'basically GOD-mode')"
+     },
+     {
+      "claim": "대사는 로드 티드웰과 제리 맥과이어의 전화 통화에서 거듭 외쳐짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jerry_Maguire",
+      "note": "\"Show me the money!\" is shouted repeatedly in a phone exchange between Rod Tidwell and Jerry Maguire."
+     },
+     {
+      "claim": "쿠바 구딩 주니어는 로드 티드웰 역으로 아카데미 남우조연상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jerry_Maguire",
+      "note": "Cuba Gooding Jr. won the Academy Award for Best Supporting Actor for playing Rod Tidwell, the Arizona Cardinals player who stays with Maguire."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'제리 맥과이어'에서 전화로 거듭 외치는 대사와 같은 스타크래프트 치트키",
+    "targetWhy": "영화 명대사와 게임 치트키를 엮어야 풀림 — 영화·게임 관심층~애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "치트 출처는 WebSearch 요약(치트 사이트) — 위키 문서가 없어 출처 무게가 약하다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (쇼미더머니 · 쇼 미 더 머니)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "esports/5#g009a-M2-18",
+   "seed": {
+    "subject": "모탈 컴뱃",
+    "aspect": "팬 세부",
+    "ref": "M2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미드웨이가 1992년 내놓은 대전 격투 게임에서는 아나운서가 'Finish Him!'이라고 외치면, 이긴 쪽이 쓰러진 상대에게 잔혹한 마무리 기술을 쓸 수 있었습니다. 이 표현이 큰 논란을 불러 미국 게임 등급 기구 ESRB가 생기는 데 한몫했는데, 이 마무리 기술의 이름은 무엇일까요?",
+    "answer": "페이탈리티",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "에드 분은 이 기술이 어지러워진 상대를 한 대 공짜로 때리는 데서 출발해 금세 끔찍한 것으로 바뀌었다고 말했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'Finish Him!' 뒤 마무리 기술",
+     "difWhy": "'모탈 컴뱃 마무리' — 게임 애호가",
+     "wor": 2,
+     "worWhy": "게임 내부 명칭",
+     "acc": 3,
+     "accWhy": "e스포츠·게임 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'Finish Him!' 뒤 마무리 기술",
+     "difWhy": "'모탈 컴뱃 마무리' — 게임 애호가",
+     "wor": 2,
+     "worWhy": "게임 내부 명칭"
+    },
+    "rewrite": null,
+    "generalHint": "세가 제네시스판에서는 'ABACABB'라는 치트 코드를 넣어야 피와 함께 이 기술이 오락실판 그대로 나왔다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "팬 세부",
+    "genre": "게임",
+    "work": "모탈 컴뱃",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Fatality_(Mortal_Kombat)",
+     "https://en.wikipedia.org/wiki/Mortal_Kombat_(1992_video_game)"
+    ],
+    "facts": [
+     {
+      "claim": "1992 미드웨이 모탈 컴뱃",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mortal_Kombat_(1992_video_game)",
+      "note": "Mortal Kombat is a 1992 fighting game developed and published by Midway for arcades."
+     },
+     {
+      "claim": "Finish Him 외침 · 쓰러진 상대에게 마무리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fatality_(Mortal_Kombat)",
+      "note": "the victor of the match inflicts a brutally murderous finishing move onto their defeated opponent ... prompted by the announcer saying \"Finish Him\" or \"Finish Her.\""
+     },
+     {
+      "claim": "논란 · ESRB 설립에 기여",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fatality_(Mortal_Kombat)",
+      "note": "was highly controversial and contributed to the formation of the Entertainment Software Rating Board."
+     },
+     {
+      "claim": "에드 분의 말",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fatality_(Mortal_Kombat)",
+      "note": "Ed Boon said the concept began as a \"free hit\" on a dizzied opponent that \"quickly evolved into something nasty.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mortal_Kombat_(1992_video_game)"
+    ],
+    "hintNote": "On the Genesis version, the blood and uncensored Fatalities were available via a cheat code, spelled out \"ABACABB\"",
+    "easiestCue": "아나운서가 'Finish Him!'이라고 외치면",
+    "targetWhy": "모탈 컴뱃의 시스템 이름 — 격투 게임 애호가 (4 예상)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "게임 시스템(MD2 허용), 한국 오락실 세대도 들어 본 말",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

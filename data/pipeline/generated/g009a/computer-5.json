@@ -1,0 +1,130 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "computer/5",
+  "midKey": "computer",
+  "subName": "정보 보안",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "computer/5#g009a-C2-16",
+   "seed": {
+    "subject": "캡차",
+    "aspect": null,
+    "ref": "C2-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 보안 장치는 흔히 '거꾸로 된 튜링 테스트'라고도 불립니다. 2003년 루이스 폰 안, 마누엘 블룸, 니컬러스 호퍼, 존 랭퍼드가 지금의 이름을 지었고, 검색 엔진 알타비스타는 일찍이 이것으로 가짜 계정 가입을 막았는데, 이 장치는 무엇일까요?",
+    "answer": "캡차",
+    "acceptedAnswers": [
+     "CAPTCHA"
+    ],
+    "originalTitleVariants": [
+     "CAPTCHA"
+    ],
+    "variantCheck": "ko.wikipedia 문서 제목 'CAPTCHA' · 첫 문장 괄호 '캡차' — 원래 이름이 영어(B10)",
+    "explanation": "카네기 멜런의 루이스 폰 안 등이 만든 변형판 '리캡차'는 컴퓨터가 읽지 못한 옛 책과 뉴욕 타임스 기록 보관물의 낱말을 사람들이 대신 읽게 했고, 2009년 9월 구글이 사들였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "검색 엔진 알타비스타는 일찍이 이것으로 가짜 계정 가입을 막았는데",
+     "difWhy": "'가짜 계정 가입 막는 보안 장치' — 일상",
+     "wor": 4,
+     "worWhy": "정보 보안 기본 어휘",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "두 낱말을 보여 주어 사람들이 대신 읽게",
+     "difWhy": "'로그인 문자 입력 보안' — 일상",
+     "wor": 4,
+     "worWhy": "정보 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "카네기 멜런 대학에서 루이스 폰 안 등이 만든 한 변형판은 두 낱말을 보여 주어, 하나는 답을 아는 대조용으로 쓰고 다른 하나로는 컴퓨터가 읽지 못한 옛 책과 뉴욕 타임스 기록 보관물의 낱말을 사람들이 대신 읽게 했습니다. 2009년 9월 구글이 사들인 이 변형판의 바탕이 된 보안 장치는 무엇일까요?",
+     "beforeExplanation": "2012년부터는 구글 스트리트 뷰에서 찍은 사진도 문제로 쓰이기 시작했습니다.",
+     "removedCue": "두 낱말을 보여 주어 사람들이 대신 읽게 함(리캡차 방식)",
+     "addedCue": "거꾸로 된 튜링 테스트 · 2003년 이름 지은 네 사람 · 알타비스타",
+     "why": "일상에서 보는 글자 입력 방식을 해설로 옮기고 이름·초기 사용 세부로 바꿈"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/ReCAPTCHA",
+     "https://ko.wikipedia.org/wiki/CAPTCHA",
+     "https://en.wikipedia.org/wiki/CAPTCHA"
+    ],
+    "facts": [
+     {
+      "claim": "카네기 멜런, 루이스 폰 안",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/ReCAPTCHA",
+      "note": "The reCAPTCHA program originated with Guatemalan computer scientist Luis von Ahn ... developed at Carnegie Mellon University"
+     },
+     {
+      "claim": "책과 뉴욕 타임스 기록 디지털화",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/ReCAPTCHA",
+      "note": "The system helped to digitize the archives of The New York Times ... the digitization of books"
+     },
+     {
+      "claim": "2009년 9월 구글 인수",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/ReCAPTCHA",
+      "note": "It was acquired by Google in September 2009."
+     },
+     {
+      "claim": "한국어 표기 캡차",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/CAPTCHA",
+      "note": "CAPTCHA(Completely Automated Public Turing test to tell Computers and Humans Apart, 완전 자동화된 사람과 컴퓨터 판별, 캡차)"
+     },
+     {
+      "claim": "거꾸로 된 튜링 테스트로도 불림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/CAPTCHA",
+      "note": "CAPTCHAs are sometimes described as reverse Turing tests."
+     },
+     {
+      "claim": "2003년 폰 안·블룸·호퍼·랭퍼드가 이름을 지음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/CAPTCHA",
+      "note": "The term was coined in 2003 by Luis von Ahn, Manuel Blum, Nicholas J. Hopper, and John Langford."
+     },
+     {
+      "claim": "알타비스타가 가짜 계정 가입을 막으려 초기 방식을 씀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/CAPTCHA",
+      "note": "AltaVista implemented an early CAPTCHA scheme to protect against fraudulent account registrations."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'거꾸로 된 튜링 테스트'라 불리는 보안 장치",
+    "targetWhy": "역 튜링 테스트·작명자는 컴퓨터 교양 — 대학 교양 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'낱말을 읽게 하는 보안 장치' 로 추리될 여지",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

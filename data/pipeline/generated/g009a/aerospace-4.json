@@ -1,0 +1,117 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "aerospace/4",
+  "midKey": "aerospace",
+  "subName": "유인 우주 탐사",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/4#g009a-C2-22",
+   "seed": {
+    "subject": "버즈 올드린",
+    "aspect": null,
+    "ref": "C2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 우주 비행사의 어머니는 결혼 전 성이 '문(Moon)'이었고, 그는 MIT 박사 논문에서 유인 궤도 랑데부의 유도 기법을 다뤄 동료 비행사들에게 '랑데부 박사'라는 별명을 얻었습니다. 2002년 일흔두 살의 나이로, 달 착륙이 조작이라 우기던 바트 시브럴의 턱을 주먹으로 친 이 사람은 누구일까요?",
+    "answer": "버즈 올드린",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "'버즈'라는 별명은 누나가 '브러더'를 '버저'로 잘못 부른 데서 나왔고, 1988년 그의 법적 이름이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "달 착륙이 조작이라 우기던 바트 시브럴의 턱을 주먹으로",
+     "difWhy": "'음모론자 폭행 일화' — 우주 관심층",
+     "wor": 3,
+     "worWhy": "유명 인물 이야깃거리",
+     "acc": 3,
+     "accWhy": "항공·우주 기술 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "아폴로 11호 때 달에서 성찬식",
+     "difWhy": "'아폴로 11호 두 번째 사람' — 관심층",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 우주 비행사의 어머니는 결혼 전 성이 '문(Moon)'이었고, 그는 아폴로 11호 때 달에서 성찬식을 치러 달에서 처음으로 음식과 음료를 먹은 사람이 되었습니다. 2002년 일흔두 살의 나이로, 달 착륙이 조작이라 우기던 바트 시브럴의 턱을 주먹으로 친 이 사람은 누구일까요?",
+     "beforeExplanation": null,
+     "removedCue": "아폴로 11호 때 달에서 성찬식을 치러 달에서 처음 먹고 마신 사람",
+     "addedCue": "MIT 박사 논문(유인 궤도 랑데부)과 '랑데부 박사' 별명",
+     "why": "'아폴로 11호'가 곧 두 사람으로 좁히는 쉬운 단서 — 빼고 학위 논문 별명으로 바꿈"
+    },
+    "generalHint": "제미니 12호 선외 활동을 앞두고 물속 훈련이라는 새 방식이 들어왔는데, 흔히 그 공을 이 사람에게 돌린다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Buzz_Aldrin",
+     "https://ko.wikipedia.org/wiki/버즈_올드린"
+    ],
+    "facts": [
+     {
+      "claim": "어머니 결혼 전 성 Moon",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buzz_Aldrin",
+      "note": "his mother, Marion Aldrin (née Moon)"
+     },
+     {
+      "claim": "2002년 72세에 시브럴 턱을 침",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buzz_Aldrin",
+      "note": "(2002) the 72-year-old Aldrin punched Sibrel in the jaw, an act caught on camera by Sibrel's film crew."
+     },
+     {
+      "claim": "별명 유래와 1988 법적 이름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Buzz_Aldrin",
+      "note": "arose as a result of Fay's mispronouncing \"brother\" as \"buzzer\", which was then shortened to \"Buzz\" ... became his legal first name in 1988"
+     },
+     {
+      "claim": "한국어 표기",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/버즈_올드린",
+      "note": "버즈 올드린(영어: Buzz Aldrin, 1930년 1월 20일 ~)은 미국의 우주 비행사로"
+     },
+     {
+      "claim": "MIT 박사 논문 — 유인 궤도 랑데부 유도 기법, 'Dr. Rendezvous' 별명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buzz_Aldrin",
+      "note": "His doctoral thesis was Line-of-Sight Guidance Techniques for Manned Orbital Rendezvous, … earned him the nickname 'Dr. Rendezvous' from fellow astronauts."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gemini_12"
+    ],
+    "hintNote": "a new technique—underwater training—was introduced, which would become a staple of future space-walk simulation ... credit[] the spacewalk innovations, including the underwater training, to Aldrin himself",
+    "easiestCue": "2002년 72세에 달 착륙 음모론자 바트 시브럴의 턱을 친 우주 비행사",
+    "targetWhy": "아폴로 11호를 말하지 않고 시브럴 사건·랑데부 박사·어머니 성 — 우주 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 인물의 교과서 밖 일화",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

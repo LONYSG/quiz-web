@@ -1,0 +1,107 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "computer/2",
+  "midKey": "computer",
+  "subName": "소프트웨어·운영체제",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "computer/2#g009a-C2-14",
+   "seed": {
+    "subject": "유닉스",
+    "aspect": null,
+    "ref": "C2-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1969년 벨 연구소가 운영체제 개발 사업 멀틱스에서 손을 떼자, 켄 톰프슨은 자기가 만든 게임 '스페이스 트래블'을 다시 짜 넣으려고 잘 쓰이지 않던 PDP-7 컴퓨터를 붙잡았습니다. 여기서 출발해, 브라이언 커니핸이 이름을 자기가 지었다고 말하는 이 운영체제는 무엇일까요?",
+    "answer": "유닉스",
+    "acceptedAnswers": [
+     "UNIX"
+    ],
+    "originalTitleVariants": [
+     "UNIX"
+    ],
+    "variantCheck": "원래 이름·상표가 영어(UNIX) — B10",
+    "explanation": "이 운영체제는 1970년 PDP-11에서 처음 공식 이름을 달고 돌아갔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "벨 연구소가 ... 멀틱스에서 손을 떼자, 켄 톰프슨은",
+     "difWhy": "'벨 연구소 · 켄 톰프슨 운영체제' — 대학 교양 컴퓨터 (경계 3)",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 운영체제",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "벨 연구소가 ... 멀틱스에서 손을 떼자, 켄 톰프슨은",
+     "difWhy": "'벨 연구소 · 켄 톰프슨 운영체제' — 대학 교양 컴퓨터 (경계 3)",
+     "wor": 4,
+     "worWhy": "분야 기본 어휘 — 운영체제"
+    },
+    "rewrite": null,
+    "generalHint": "1973년 버전 4에서 핵심을 C 언어로 다시 썼고, 지금 그 상표는 표준 단체 오픈 그룹이 갖고 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/History_of_Unix"
+    ],
+    "facts": [
+     {
+      "claim": "벨 연구소가 멀틱스에서 철수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/History_of_Unix",
+      "note": "Bell Labs management ultimately withdrew from the project (Multics, 1969)."
+     },
+     {
+      "claim": "톰프슨이 스페이스 트래블을 PDP-7로 다시 짬",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/History_of_Unix",
+      "note": "In 1969, Thompson had also written a video game, Space Travel ... found a little-used PDP-7 ... he began to rewrite the game for this machine."
+     },
+     {
+      "claim": "커니핸이 이름을 지었다고 주장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/History_of_Unix",
+      "note": "Brian Kernighan claims the coining for himself"
+     },
+     {
+      "claim": "1970년 PDP-11에서 공식 이름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/History_of_Unix",
+      "note": "For the first time in 1970, the Unix operating system was officially named and ran on the PDP-11."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Unix"
+    ],
+    "hintNote": "in 1973, Version 4 Unix was rewritten in C / The present owner of the trademark UNIX is The Open Group",
+    "easiestCue": "켄 톰프슨 … 여기서 출발해 … 이 운영체제",
+    "targetWhy": "멀틱스 철수·스페이스 트래블 일화는 IT 애호가 세부 — 톰프슨 이름이 단서라 4(경계)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 OS의 탄생 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,223 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "war-history/5",
+  "midKey": "war-history",
+  "subName": "무기·군사 용어",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "war-history/5#g009a-H1-18",
+   "seed": {
+    "subject": "AK-47",
+    "aspect": null,
+    "ref": "H1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1941년 브랸스크 전투에서 어깨를 다쳐 회복하던 한 소련 병사는, 병원 옆 침대의 병사가 독일군에 견줘 소총이 모자란 까닭을 묻자 무기 설계를 시작했다고 회고했습니다. 그가 설계해 1949년 소련군에 정식으로 채택된 이 소총은 무엇일까요?",
+    "answer": "AK-47",
+    "acceptedAnswers": [
+     "AK47",
+     "칼라시니코프"
+    ],
+    "originalTitleVariants": [
+     "AK-47"
+    ],
+    "variantCheck": "ko.wikipedia 문서 제목 'AK-47' · '칼라시니코프' 문서 확인 — 하이픈 없이 치는 경우 포함",
+    "explanation": "이름의 숫자는 처음 만든 해인 1947년에서 왔고, 모잠비크 국기에는 대검을 꽂은 이 소총이 그려져 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1949년 소련군에 정식으로 채택된 이 소총",
+     "difWhy": "'1949 소련 채택 소총' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 소총 탄생 일화",
+     "acc": 3,
+     "accWhy": "전쟁·군사사 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "모잠비크 국기에 그려진 소총",
+     "difWhy": "'국기 속 소총' — 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1941년 브랸스크 전투에서 어깨를 다쳐 회복하던 한 소련 병사가 무기 설계를 시작했고, 그가 설계한 소총은 뒷날 대검을 꽂은 모습으로 모잠비크 국기에 그려졌습니다. 현대식 화기가 들어간 유일한 국기에 그려진 이 소총은 무엇일까요?",
+     "beforeExplanation": "칼라시니코프는 병원 옆 침대의 병사가 '왜 우리는 두세 명에 소총 한 자루뿐인데 독일군은 자동화기를 갖고 있느냐'고 물은 일이 계기였다고 회고했습니다.",
+     "removedCue": "모잠비크 국기에 그려진 소총 · 현대식 화기가 들어간 유일한 국기",
+     "addedCue": "옆 침대 병사의 물음 · 1949년 채택",
+     "why": "잡학으로 흔한 모잠비크 국기를 해설로 옮기고 설계 계기 일화로 바꿈"
+    },
+    "generalHint": "설계자는 숨지기 반년 전 키릴 총대주교에게 자기 총이 앗아 간 목숨에 대한 '영혼의 고통'을 편지로 털어놓았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/AK-47",
+     "https://en.wikipedia.org/wiki/Flag_of_Mozambique"
+    ],
+    "facts": [
+     {
+      "claim": "1941년 브랸스크 전투 어깨 부상 회복 중 설계 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/AK-47",
+      "note": "began his career as a weapon designer in 1941 while recuperating from a shoulder wound that he received during the Battle of Bryansk."
+     },
+     {
+      "claim": "모잠비크 국기의 대검 꽂은 AK-47",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Flag_of_Mozambique",
+      "note": "is generally understood to be an AK-47 with a bayonet attached."
+     },
+     {
+      "claim": "옆 침대 병사의 물음이 계기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/AK-47",
+      "note": "Why do our soldiers have only one rifle for two or three of our men when the Germans have automatics? ... So I designed one."
+     },
+     {
+      "claim": "1949년 초 소련군에 정식 채택",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/AK-47",
+      "note": "In early 1949, the AK was officially accepted by the Soviet Armed Forces."
+     },
+     {
+      "claim": "이름의 47은 처음 만든 해 1947",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/AK-47",
+      "note": "it carried the year of its first manufacture, 1947"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mikhail_Kalashnikov"
+    ],
+    "hintNote": "Kalashnikov wrote the letter six months before he died ... He described feeling \"spiritual pain\"",
+    "easiestCue": "브랸스크 전투 부상병이 설계해 1949년 채택된 소총",
+    "targetWhy": "칼라시니코프 설계 계기는 군사 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 소총, 단서는 국기와 설계 계기",
+    "pairCheck": null,
+    "dbCheck": "answercheck AK-47 new",
+    "warn": [
+     "단정어 유일"
+    ]
+   }
+  },
+  {
+   "seedId": "war-history/5#g009a-H1-19",
+   "seed": {
+    "subject": "개틀링 건",
+    "aspect": null,
+    "ref": "H1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1850년 오하이오 의과대학을 나왔지만 의사로 일하지는 않은 미국 발명가가 씨앗 파종기를 바탕으로 만든 무기입니다. 남북전쟁 때 북군 지휘관들이 사비로 12정을 사서 피터즈버그 포위전에 썼지만 미 육군은 1866년에야 받아들였는데, 그의 이름이 붙은 이 무기는 무엇일까요?",
+    "answer": "개틀링 건",
+    "acceptedAnswers": [
+     "개틀링",
+     "개틀링 기관총"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '개틀링 건' · '개틀링' 확인 — '개틀링 기관총'은 문서 제목은 아니나 질문이 '이름이 붙은 무기'를 물어 같은 종류(B2)",
+    "explanation": "손잡이를 돌리면 가운데 축을 둘러싼 총열 여섯 개가 돌아가며 차례로 쏘는 방식입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "남북전쟁 때 ... 그의 이름이 붙은 이 무기",
+     "difWhy": "'남북전쟁 · 발명가 이름 무기' — 관심층",
+     "wor": 3,
+     "worWhy": "무기 이름 이야깃거리",
+     "acc": 3,
+     "accWhy": "전쟁·군사사 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "파종기를 바탕으로 1862년 특허, 발명가 이름이 붙은 무기",
+     "difWhy": "개틀링 건 — 군사 관심층",
+     "wor": 3,
+     "worWhy": "무기 발명 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1850년 오하이오 의과대학을 나왔지만 의사로 일하지는 않은 미국 발명가가, 자신이 만든 씨앗 파종기를 바탕으로 1862년 특허를 받은 무기가 있습니다. 그는 이 무기가 큰 군대의 필요를 크게 없애 줄 것이라 썼는데, 그의 이름이 붙은 이 무기는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1862년 특허 · 큰 군대의 필요를 없애 줄 것",
+     "addedCue": "북군 지휘관 사비 12정 · 피터즈버그 포위전 · 1866년 채택",
+     "why": "유명한 특허 연도·발명 동기를 빼고 남북전쟁 도입 세부로 바꿈"
+    },
+    "generalHint": "발명가는 뒤에 M1893형을 전기 모터와 벨트로 돌려 보았고, 시험에서 1분에 최대 1,500발을 쏘았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Richard_Jordan_Gatling",
+     "https://en.wikipedia.org/wiki/Gatling_gun"
+    ],
+    "facts": [
+     {
+      "claim": "1850년 오하이오 의과대학 졸업, 개업하지 않음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Richard_Jordan_Gatling",
+      "note": "He graduated from the Ohio Medical College in 1850 with an MD. (He never practiced.)"
+     },
+     {
+      "claim": "씨앗 파종기를 바탕으로 함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Richard_Jordan_Gatling",
+      "note": "The gun was based on Gatling's seed planter."
+     },
+     {
+      "claim": "손잡이 회전, 총열 여섯 개",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gatling_gun",
+      "note": "The Gatling gun is operated by a hand-crank mechanism, with six barrels revolving around a central shaft"
+     },
+     {
+      "claim": "북군 지휘관들이 개인적으로 12정 구입, 피터즈버그 포위전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gatling_gun",
+      "note": "Twelve of the guns were purchased personally by Union commanders and used ... at the Siege of Petersburg"
+     },
+     {
+      "claim": "미 육군은 1866년에야 채택",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gatling_gun",
+      "note": "The gun was not accepted by the American Army until 1866"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gatling_gun"
+    ],
+    "hintNote": "Dr. Gatling later used examples of the M1893 powered by electric motor and belt to drive the crank. Tests demonstrated the electric Gatling could fire bursts of up to 1,500 rpm.",
+    "easiestCue": "오하이오 의대 출신 발명가가 파종기를 바탕으로 만든 무기",
+    "targetWhy": "발명가 이력·도입 경위는 군사사 애호가 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 영화·게임으로 유명, 단서는 발명가 이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck 개틀링 new",
+    "warn": []
+   }
+  }
+ ]
+}

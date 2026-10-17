@@ -1,0 +1,748 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "baseball/1",
+  "midKey": "baseball",
+  "subName": "규칙",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "baseball/1#g009a-S1-01",
+   "seed": {
+    "subject": "포수 마스크",
+    "aspect": null,
+    "ref": "S1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "하버드 야구팀을 이끌던 프레드 세이어는 1876년 겨울 동네 양철공을 찾아가 '새장' 같은 이것을 만들게 했고, 1878년 2월 12일 이것으로 특허를 받았습니다. 이 야구 장비는 무엇일까요?",
+    "answer": "포수 마스크",
+    "acceptedAnswers": [
+     "마스크"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "질문이 '장비'를 물어 맥락상 '마스크'만 쳐도 같은 대상 — en.wikipedia 'Catcher's mask' 문서 제목 직역",
+    "explanation": "팀의 포수 짐 타잉이 경기 중 공에 머리를 자주 맞자 만든 것입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "'새장' 같은 이것 ... 이 야구 장비",
+     "difWhy": "'새장 같은 야구 장비' — 방송·일상",
+     "wor": 3,
+     "worWhy": "장비 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "홈 뒤에서 공을 받다 머리를 자주 맞자 ... 이것을 만들게 했습니다",
+     "difWhy": "'포수 머리 보호 장비' — 일상·방송 (경계 1)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 장비 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "하버드 야구팀을 이끌던 프레드 세이어는 팀 동료 짐 타잉이 홈 뒤에서 공을 받다 머리를 자주 맞자, 1876년 겨울 동네 양철공을 찾아가 이것을 만들게 했습니다. 이 장비는 무엇일까요?",
+     "beforeExplanation": "세이어는 1878년 2월 12일 이 마스크로 특허를 받았습니다.",
+     "removedCue": "홈 뒤에서 공을 받다 머리를 자주 맞음",
+     "addedCue": "'새장' 같은 모양 · 1878년 특허",
+     "why": "쓰임을 바로 알려 주는 부상 일화를 해설로 옮김"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Fred_Thayer"
+    ],
+    "facts": [
+     {
+      "claim": "세이어는 하버드 야구팀 감독",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fred_Thayer",
+      "note": "Thayer entered Harvard College in 1875 ... managed Harvard's baseball teams from 1876 to 1878."
+     },
+     {
+      "claim": "1876년 겨울 양철공에게 새장 같은 마스크 제작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fred_Thayer",
+      "note": "Thayer went to a local tinsmith to construct a \"bird cage\" like mask (winter of 1876)"
+     },
+     {
+      "claim": "1878년 2월 12일 특허",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fred_Thayer",
+      "note": "On February 12, 1878, Thayer received a patent for the mask."
+     },
+     {
+      "claim": "포수 짐 타잉이 공에 머리를 자주 맞음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fred_Thayer",
+      "note": "Thayer's catcher, Jim Tyng, was frequently being hit in the head with the ball during games."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "프레드 세이어가 양철공에게 만들게 한 야구 장비",
+    "targetWhy": "세이어의 발명은 야구 역사 애호가 세부 — 4(새장 모양에서 추론 여지 · 경계)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'홈 뒤에서 공을 받다 머리를 맞음' 에서 추리 여지가 있어 경계 3",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/1#g009a-S1-02",
+   "seed": {
+    "subject": "글러브",
+    "aspect": null,
+    "ref": "S1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "확인된 첫 사례는 1875년 세인트루이스의 찰리 웨이트가 낀 살색의 한 쌍이었습니다. 처음에 회의적이던 앨버트 스폴딩이 뒤에 내야수들도 쓰도록 이끌었고, 그는 오늘날까지 이것을 만드는 스포츠용품 회사를 세웠는데, 이 야구 장비는 무엇일까요?",
+    "answer": "글러브",
+    "acceptedAnswers": [
+     "야구 글러브"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "en.wikipedia 'Baseball glove' 직역 — '장갑'은 넓은 말(B7)이라 뺌",
+    "explanation": "1920년 세인트루이스 카디널스 투수 빌 도크가 엄지와 검지 사이에 그물을 달자는 안을 내, 그 설계가 표준이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "찰리 웨이트가 낀 살색의 한 쌍 ... 이 야구 장비",
+     "difWhy": "'손에 끼는 야구 장비' — 방송·일상",
+     "wor": 3,
+     "worWhy": "장비 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "포수가 다친 왼손 때문에 처음 썼다는 장비",
+     "difWhy": "손에 끼는 야구 장비 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "장비 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1870년 신시내티 레드스타킹스의 포수 더그 앨리슨이 다친 왼손 때문에 처음 썼다고도 전합니다. 확인된 첫 사례는 1875년 세인트루이스의 찰리 웨이트가 낀 살색의 이것이었고, 처음에 회의적이던 앨버트 스폴딩이 뒤에 내야수들에게 퍼뜨렸습니다. 이 장비는 무엇일까요?",
+     "beforeExplanation": "초기 글러브는 맨손처럼 공을 다루려고 손가락 끝을 잘라 낸 가죽 장갑이었다고 합니다.",
+     "removedCue": "포수 더그 앨리슨이 다친 왼손 때문에 처음 썼다",
+     "addedCue": "스폴딩이 세운 회사가 오늘날까지 만든다",
+     "why": "다친 손에 낀 장비(방송·일상)를 빼고 첫 확인 사례·스폴딩 세부만 남김"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Baseball_glove"
+    ],
+    "facts": [
+     {
+      "claim": "1875년 찰리 웨이트 살색 장갑 — 첫 확인 사례",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Baseball_glove",
+      "note": "Charlie Waitt ... in 1875 donned a pair of flesh-colored gloves (first confirmed case)."
+     },
+     {
+      "claim": "스폴딩은 처음 회의적이었으나 내야수들에게 퍼뜨림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Baseball_glove",
+      "note": "Albert Spalding, originally skeptical of glove use, influenced more infielders to begin using gloves."
+     },
+     {
+      "claim": "1875년 찰리 웨이트(Waitt) 살색 — 첫 확인 사례",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Baseball_glove",
+      "note": "The first confirmed glove use was by Charlie Waitt ... donned a pair of flesh-colored gloves."
+     },
+     {
+      "claim": "스폴딩은 오늘날까지 글러브를 만드는 회사를 세움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Baseball_glove",
+      "note": "Spalding later founded the sporting goods company that still makes baseball gloves today."
+     },
+     {
+      "claim": "1920년 빌 도크의 그물 설계가 표준",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Baseball_glove",
+      "note": "In 1920, Bill Doak, a pitcher for the St. Louis Cardinals, suggested that a web be placed between the first finger and the thumb ... His design became the standard."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1875년 찰리 웨이트가 낀 살색의 한 쌍",
+    "targetWhy": "초기 야구 장비사 — 야구 애호가 4(경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'왼손' · '내야수' 에서 장비 범위가 좁아져 추리로 닿을 수 있음 — 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/1#g009a-S1-03",
+   "seed": {
+    "subject": "희생 플라이",
+    "aspect": null,
+    "ref": "S1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1908년 처음 생겼다가 1931년 없어졌고, 1939년 되살아났다가 이듬해 다시 사라진 뒤 1954년에야 자리 잡은 야구 기록 규정이 있습니다. 1941년 테드 윌리엄스가 4할을 넘긴 해에는 이 규정이 없었는데, 무엇일까요?",
+    "answer": "희생 플라이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "로버트 크리머는 이 규정이 있었다면 그해 윌리엄스의 타율이 .419였을 것이라고 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1941년 테드 윌리엄스가 4할을 넘긴 해에는 이 규정이 없었는데",
+     "difWhy": "희생 플라이 규정 변천 — 야구 애호가 (경계 5)",
+     "wor": 3,
+     "worWhy": "4할 타자와 규정 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1941년 테드 윌리엄스가 4할을 넘긴 해에는 이 규정이 없었는데",
+     "difWhy": "희생 플라이 규정 변천 — 야구 애호가 (경계 5)",
+     "wor": 3,
+     "worWhy": "4할 타자와 규정 — 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "다저스의 길 호지스가 한 시즌 19개, 에디 머리가 통산 128개로 이 기록의 메이저리그 최다를 갖고 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sacrifice_fly"
+    ],
+    "facts": [
+     {
+      "claim": "1908년 도입 · 1931년 폐지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sacrifice_fly",
+      "note": "The sacrifice fly as a statistical category was instituted in 1908, only to be discontinued in 1931."
+     },
+     {
+      "claim": "1939년 재도입 · 1940년 폐지 · 1954년 최종 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sacrifice_fly",
+      "note": "The rule was again adopted in 1939, only to be eliminated again in 1940, before being adopted for the last time in 1954."
+     },
+     {
+      "claim": "1941년 윌리엄스 .406 — 그해 규정 없음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sacrifice_fly",
+      "note": "For some baseball fans, it is significant that the sacrifice-fly rule was eliminated in 1940 ... He got six hits, finishing with an official .406 average"
+     },
+     {
+      "claim": "크리머 — 규정이 있었다면 .419",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sacrifice_fly",
+      "note": "Per Robert Creamer, ... his final average in 1941 would have been .419."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sacrifice_fly"
+    ],
+    "hintNote": "Gil Hodges of the Dodgers holds the record for most sacrifice flies in one season with 19, in 1954. / Eddie Murray holds the MLB record for most sacrifice flies in a career with 128.",
+    "easiestCue": "1941년 테드 윌리엄스가 4할을 넘긴 해에는 이 규정이 없었는데",
+    "targetWhy": "희생 플라이 규정의 폐지·부활 역사와 윌리엄스 4할의 연결은 MLB 애호가 영역",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정의 문장 없이 규정 역사로만 묻는다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/1#g009a-S1-04",
+   "seed": {
+    "subject": "파인 타르",
+    "aspect": null,
+    "ref": "S1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1983년 7월 24일 양키 스타디움에서 9회 초 역전 2점 홈런이 나오자, 양키스 감독 빌리 마틴이 타자의 방망이를 검사해 달라고 했습니다. 주심은 이 물질이 손잡이 끝에서 18인치를 넘게 칠해졌다며 홈런을 취소했는데, 이 물질은 무엇일까요?",
+    "answer": "파인 타르",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "en.wikipedia 'Pine Tar Incident' — 한국에서도 '파인 타르'(띄어쓰기 무관)",
+    "explanation": "아메리칸리그 회장 리 맥페일이 로열스의 항의를 받아들여 홈런을 되살렸고, 8월 18일 이어 치른 경기는 로열스의 5-4 승리로 끝났습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "이 물질이 손잡이 끝에서 18인치를 넘게 칠해졌다며 홈런을 취소",
+     "difWhy": "조지 브렛 파인 타르 사건 — MLB 애호가",
+     "wor": 2,
+     "worWhy": "야구 용품·판정 세부 — 팬 영역",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "이 물질이 손잡이 끝에서 18인치를 넘게 칠해졌다며 홈런을 취소",
+     "difWhy": "조지 브렛 파인 타르 사건 — MLB 애호가",
+     "wor": 2,
+     "worWhy": "야구 용품·판정 세부 — 팬 영역"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pine_Tar_Incident"
+    ],
+    "facts": [
+     {
+      "claim": "1983년 7월 24일 양키 스타디움, 9회 초 2점 홈런",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pine_Tar_Incident",
+      "note": "July 24, 1983, at Yankee Stadium ... George Brett hit a two-run home run off Rich \"Goose\" Gossage in the top of the ninth, which gave the Royals a 5–4 lead."
+     },
+     {
+      "claim": "빌리 마틴이 방망이 검사 요구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pine_Tar_Incident",
+      "note": "Yankees manager Billy Martin asked the umpires to inspect Brett's bat for excessive pine tar."
+     },
+     {
+      "claim": "18인치 규정 · 주심이 아웃 선언",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pine_Tar_Incident",
+      "note": "a bat may not be covered by such a substance more than 18 inches from the tip of the handle. Home plate umpire Tim McClelland ruled Brett out"
+     },
+     {
+      "claim": "맥페일이 항의 인정 · 8월 18일 재개 5-4",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pine_Tar_Incident",
+      "note": "AL president Lee MacPhail upheld the Royals' protest, reinstated the home run ... The Royals won 5–4 when it resumed on August 18."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "주심은 이 물질이 손잡이 끝에서 18인치를 넘게 칠해졌다며 홈런을 취소했는데",
+    "targetWhy": "'파인 타르 사건' 은 MLB 애호가가 아는 일화 — 방송·교과에는 없다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대상(파인 타르)은 야구팬이 들어 본 말, 단서는 사건 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [],
+    "discarded": "선별 게이트 — 알 가치 2 (야구 용품·판정 세부 — 팬 영역) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "baseball/1#g009a-S1-05",
+   "seed": {
+    "subject": "버스터 포지",
+    "aspect": null,
+    "ref": "S1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2011년 5월 25일 플로리다 말린스전에서 홈으로 들어오던 스콧 커즌스와 부딪쳐 종아리뼈가 부러지고 발목 인대가 찢어진 샌프란시스코 자이언츠의 포수가 있습니다. 메이저리그가 2014년 시즌부터 쓴 홈 충돌 규칙 7.13에 별칭으로 이름이 붙은 이 선수는 누구일까요?",
+    "answer": "버스터 포지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 버스터 포지",
+    "explanation": "이 규칙은 주자가 포수와 부딪치려고 홈으로 가는 곧은 길에서 벗어나는 것을 막습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "홈 충돌 규칙에 별칭으로 이름이 붙은 포수",
+     "difWhy": "'포지 룰' — 야구 애호가",
+     "wor": 2,
+     "worWhy": "규칙 별칭 세부",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "홈 충돌 규칙에 별칭으로 이름이 붙은 포수",
+     "difWhy": "'포지 룰' — 야구 애호가",
+     "wor": 2,
+     "worWhy": "규칙 별칭 세부"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Buster_Posey",
+     "https://ko.wikipedia.org/wiki/버스터_포지"
+    ],
+    "facts": [
+     {
+      "claim": "2011년 5월 25일 말린스전 커즌스와 충돌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buster_Posey",
+      "note": "On May 25, 2011, Posey was injured during a collision with Scott Cousins at home plate (game against the Florida Marlins)."
+     },
+     {
+      "claim": "종아리뼈 골절 · 발목 인대 파열",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buster_Posey",
+      "note": "Posey suffered a fractured fibula and torn ligaments in his ankle, requiring season-ending surgery."
+     },
+     {
+      "claim": "규칙 7.13 · 비공식 별칭 버스터 포지 룰 · 2014 시즌부터",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buster_Posey",
+      "note": "The collision led Major League Baseball to adopt rule 7.13, informally known as the \"Buster Posey Rule\" (took effect prior to the 2014 season)."
+     },
+     {
+      "claim": "주자가 포수와 부딪치려고 곧은 길을 벗어나지 못함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Buster_Posey",
+      "note": "the rule bars a runner from deviating from the direct path to the plate to make contact with the catcher."
+     },
+     {
+      "claim": "커즌스와 충돌로 시즌아웃 (한국어 문서)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/버스터_포지",
+      "note": "2011년 경기 도중 홈으로 들어오는 스캇 커진스를 막다가 충돌로 인한 부상으로 시즌아웃 되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "메이저리그가 2014년 시즌부터 쓴 홈 충돌 규칙 7.13에 별칭으로 이름이 붙은 이 선수",
+    "targetWhy": "'버스터 포지 룰' 은 MLB 애호가가 아는 규칙 별칭 — 일반 방송에는 드묾",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "규칙 탄생 사연으로 유명 포수를 묻는다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [],
+    "discarded": "선별 게이트 — 알 가치 2 (규칙 별칭 세부) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "baseball/1#g009a-S1-06",
+   "seed": {
+    "subject": "진흙",
+    "aspect": null,
+    "ref": "S1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "메이저리그에서는 새 공의 광택을 없애려고 한때 담뱃물이나 구두약까지 썼지만 가죽이 상하거나 색이 변하곤 했습니다. 1938년 필라델피아 애슬레틱스의 3루 코치 레나 블랙번이 심판의 불평을 듣고 더 나은 것을 찾아 나섰고, 지금은 각 팀이 시즌마다 10파운드씩 받는 이것은 무엇일까요?",
+    "answer": "진흙",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "지금도 델라웨어강의 뉴저지 쪽에서 떠 오며, 경기 전 심판이나 클럽하우스 직원이 새 공에 손으로 문지릅니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "레나 블랙번이 심판의 불평을 듣고 더 나은 것을 찾아 나섰고",
+     "difWhy": "'블랙번 · 공 광택 없애는 것' — 야구 애호가",
+     "wor": 3,
+     "worWhy": "야구 공 관리 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "경기 전 심판이나 클럽하우스 직원이 새 공에 손으로 문지르는 이것",
+     "difWhy": "'새 공에 문지르는 것' — 야구 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 야구 관습"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1938년 필라델피아 애슬레틱스의 3루 코치 레나 블랙번은 심판의 불평을 듣고, 새 공의 광택을 없앨 더 나은 재료를 찾아 나섰습니다. 지금도 델라웨어강의 뉴저지 쪽에서 떠 오고, 경기 전 심판이나 클럽하우스 직원이 새 공에 손으로 문지르는 이것은 무엇일까요?",
+     "beforeExplanation": "메이저리그 각 팀은 시즌이 시작될 때 이것을 10파운드씩 받습니다.",
+     "removedCue": "델라웨어강에서 떠 와 새 공에 손으로 문지르는 이것",
+     "addedCue": "예전엔 담뱃물·구두약까지 썼다 · 각 팀 시즌마다 10파운드",
+     "why": "문지르는 장면(관심층이 바로 앎)을 해설로 옮기고 이전 재료 · 배급량 세부로"
+    },
+    "generalHint": "블랙번은 이것을 찾아낸 뒤 자기 이름을 붙인 회사를 세워 팔았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud"
+    ],
+    "facts": [
+     {
+      "claim": "1938년 애슬레틱스 3루 코치 블랙번, 심판 불평 뒤 더 나은 진흙을 찾음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud",
+      "note": "In 1938, while he was third-base coach for the Philadelphia Athletics, an umpire complained about the ball preparation method then in use, so Blackburne set out to find better mud."
+     },
+     {
+      "claim": "델라웨어강 뉴저지 쪽에서 채취",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud",
+      "note": "The mud comes from the New Jersey side of the Delaware River ... \"near\" Palmyra, New Jersey."
+     },
+     {
+      "claim": "경기 전 심판·클럽하우스 직원이 손으로 문지름 · 광택 제거",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud",
+      "note": "MLB Rule 4.01(c) requires baseballs to be \"properly rubbed so that the gloss is removed.\" Before MLB and MiLB games, an umpire or clubhouse attendant hand-rubs six dozen or more balls with mud."
+     },
+     {
+      "claim": "각 팀 시즌마다 10파운드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud",
+      "note": "Each MLB team receives 10 pounds of mud at the start of each season."
+     },
+     {
+      "claim": "예전에는 담뱃물·구두약 등도 썼으나 가죽을 상하게 하거나 색을 바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud",
+      "note": "(요지) Other alternatives included \"tobacco juice,\" \"shoe polish,\" and \"soil from under stadium bleachers,\" which removed the sheen but could also damage or discolor the leather."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Baseball_rubbing_mud"
+    ],
+    "hintNote": "Later that decade, Blackburne discovered a suitable rubbing mud … and founded the company that he used to sell it – Lena Blackburne Baseball Rubbing Mud.",
+    "easiestCue": "1938년 레나 블랙번이 새 공의 광택을 없앨 더 나은 것을 찾아 나섬",
+    "targetWhy": "러빙 머드의 내력은 야구 애호가 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'강에서 떠 와 문지르는 것' 에서 추리로 닿을 수 있다 — 답이 쉬운 일반어",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/1#g009a-S1-07",
+   "seed": {
+    "subject": "투수판",
+    "aspect": null,
+    "ref": "S1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1893년 메이저리그는 공을 던지는 선수가 서던 '박스'를 없애고 이것을 두었는데, 이때 던지는 선수가 발끝을 대야 하는 자리는 꼭 5피트 뒤로 물러났습니다. 이렇게 정해진 홈까지의 어중간한 거리가 측량 실수로 생겼다는 이야기가 돌지만 규칙을 만든 이들이 일부러 정한 것인데, 이것은 무엇일까요?",
+    "answer": "투수판",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "'투구판' 표기는 확인 못 해 넣지 않음",
+    "explanation": "흰 고무판으로, 앞뒤 6인치에 가로 2피트입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "공을 던지는 선수가 서던 '박스'를 없애고 이것을 두었는데",
+     "difWhy": "'던지는 선수가 발을 대는 자리' — 관심층 (경계 2)",
+     "wor": 3,
+     "worWhy": "규칙 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "투구 거리 60피트 6인치를 만든, 박스 대신 둔 것",
+     "difWhy": "투수가 밟는 판 — 야구 관심층",
+     "wor": 3,
+     "worWhy": "어중간한 거리 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1893년 메이저리그는 공을 던지는 선수가 서던 '박스'를 없애고 이것을 두었고, 그 결과 홈까지의 투구 거리가 60피트 6인치라는 어중간한 숫자가 되었습니다. 흔히 측량 실수로 생긴 숫자라는 이야기가 돌지만 규칙을 만든 이들이 일부러 정한 것인데, 이것은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "투구 거리 60피트 6인치라는 어중간한 숫자",
+     "addedCue": "투수가 발끝을 대는 자리가 꼭 5피트 뒤로",
+     "why": "야구 관심층이 바로 아는 60피트 6인치를 빼고 1893년 변경의 실제 폭으로"
+    },
+    "generalHint": "1903년부터 1968년까지는 이것의 윗면을 홈 플레이트보다 15인치까지 높일 수 있었고, 지금은 10인치로 줄었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pitcher%27s_mound"
+    ],
+    "facts": [
+     {
+      "claim": "1893년 박스를 이것(투수판)으로 바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pitcher%27s_mound",
+      "note": "In 1893, the box was replaced by the pitcher's plate ... resulting in the seemingly peculiar pitching distance of 60.5 feet (18.44 m)."
+     },
+     {
+      "claim": "측량 실수라는 속설은 틀림 — 일부러 정함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pitcher%27s_mound",
+      "note": "The 60-foot-6-inch distance was not due to a clerical or surveying error as popular myth has it. Rule makers set it intentionally in 1893."
+     },
+     {
+      "claim": "흰 고무판 · 6인치 × 2피트",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pitcher%27s_mound",
+      "note": "Atop the mound is a white rubber slab, called the pitcher's plate or pitcher's rubber. It measures 6 inches front-to-back and 2 feet across."
+     },
+     {
+      "claim": "1893년 변경으로 투수가 발을 대는 자리가 꼭 5피트 뒤로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pitcher%27s_mound",
+      "note": "In 1893, the box was replaced by the pitcher's plate … Exactly 5 feet was added to the point the pitcher had to toe"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pitcher%27s_mound"
+    ],
+    "hintNote": "The top of the rubber can be no higher than 10 inches above home plate. The limit was 15 inches from 1903 through 1968.",
+    "easiestCue": "1893년 '박스'를 없애고 둔 것",
+    "targetWhy": "1893 규칙 변경 · 거리 속설의 정정은 야구 애호가 — 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정의(마운드 위 고무판)는 해설로 뺐다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/1#g009a-S1-08",
+   "seed": {
+    "subject": "헬멧",
+    "aspect": null,
+    "ref": "S1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1908년 로저 브레스너핸이 가죽으로 만든 것은 귀마개에 가까웠습니다. 1953년 피츠버그 파이리츠는 찰리 뮤즈가 광부의 안전모를 본떠 만든 것을 선수들에게 쓰게 했고, 1979년 보스턴의 밥 몽고메리가 이것 없이 타석에 선 마지막 메이저리그 선수가 되었습니다. 이것은 무엇일까요?",
+    "answer": "헬멧",
+    "acceptedAnswers": [
+     "타격 헬멧"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "en.wikipedia 'Batting helmet' 직역 — 같은 대상",
+    "explanation": "1983년부터는 새로 들어오는 선수에게 귀 덮개가 하나 이상 달린 것을 쓰게 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "찰리 뮤즈가 광부의 안전모를 본떠 만든 것",
+     "difWhy": "타자 보호 장구 — 일상에서 (경계 1)",
+     "wor": 2,
+     "worWhy": "장비 도입 세부",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "모든 타자에게 이것을 반드시 쓰게 했지만",
+     "difWhy": "'타자가 반드시 쓰는 것' — 일상·방송",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 장비 의무화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1908년 로저 브레스너핸이 가죽으로 만든 것은 귀마개에 가까웠습니다. 메이저리그는 1970년 12월에야 모든 타자에게 이것을 반드시 쓰게 했지만 기존 선수에게는 고를 권리를 남겨 두어, 1979년 보스턴의 밥 몽고메리가 이것 없이 타석에 선 마지막 선수가 되었습니다. 이것은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "메이저리그는 1970년 12월에야 모든 타자에게 이것을 반드시 쓰게 했지만",
+     "addedCue": "1953년 파이리츠 · 찰리 뮤즈가 광부 안전모를 본뜸",
+     "why": "'모든 타자가 반드시 쓰는 것' 은 일상 수준 — 빼고 구단 도입사로"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Batting_helmet"
+    ],
+    "facts": [
+     {
+      "claim": "1908년 브레스너핸 가죽 헬멧 — 귀마개에 가까움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Batting_helmet",
+      "note": "Roger Bresnahan developed a leather batting helmet in 1908. These were not so much helmets as protective earmuffs."
+     },
+     {
+      "claim": "1979년 보스턴 몽고메리가 마지막",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Batting_helmet",
+      "note": "The last Major League player to bat helmetless was Bob Montgomery, who last played for the Boston Red Sox in 1979."
+     },
+     {
+      "claim": "1983년 신인 귀 덮개 의무",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Batting_helmet",
+      "note": "In 1983, it was made mandatory for new players to use a helmet with at least one earflap."
+     },
+     {
+      "claim": "1953년 파이리츠 의무화 · 찰리 뮤즈가 광부 안전모를 본떠 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Batting_helmet",
+      "note": "The Pirates required helmets in 1953; the helmet was created by Charlie Muse based on the hard hats used by miners (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "밥 몽고메리가 이것 없이 타석에 선 마지막 선수",
+    "targetWhy": "장비 도입의 뒷이야기 — 야구 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'귀마개 · 타석에서 쓰는 것' 으로 추리 가능 — 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 마지막"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (장비 도입 세부) · sports 는 3 이상"
+   }
+  }
+ ]
+}

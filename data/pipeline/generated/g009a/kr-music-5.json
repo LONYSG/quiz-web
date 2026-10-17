@@ -1,0 +1,395 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "kr-music/5",
+  "midKey": "kr-music",
+  "subName": "트로트·포크",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-music/5#g009a-M1-21",
+   "seed": {
+    "subject": "쌍쌍파티",
+    "aspect": "팬 세부",
+    "ref": "M1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1980년 대학 음악 그룹의 보컬로 MBC 강변가요제에 나가 입상한 이 가수는, 1988년 조용필과 위대한 탄생 출신 기타리스트 임동신과 결혼했습니다. 작곡가 정종택의 권유로 녹음한 메들리 음반으로 전국에 이름을 알린 이 가수는 누구일까요?",
+    "answer": "주현미",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1984년 약사 면허를 따 서울 필동에 약국을 열었고, 그 무렵 녹음한 메들리 음반이 '쌍쌍파티'입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "정종택의 권유로 녹음한 메들리 음반으로 전국에 이름을",
+     "difWhy": "쌍쌍파티 메들리 — 가요 관심층",
+     "wor": 3,
+     "worWhy": "대중 가수 이름 맞히기",
+     "acc": 5,
+     "accWhy": "한국 가요 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "1984년 약사 면허를 따 서울 필동에 약국을 열었습니다",
+     "difWhy": "'약사 출신 가수 · 쌍쌍파티' — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "누구나 아는 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1980년 중앙대 약대 음악 그룹의 보컬로 MBC 강변가요제에 나가 입상했고, 1984년 약사 면허를 따 서울 필동에 약국을 열었습니다. 작곡가 정종택의 권유로 녹음한 메들리 음반 '쌍쌍파티'로 전국에 이름을 알린 이 가수는 누구일까요?",
+     "beforeExplanation": "그는 1985년 '비내리는 영동교'로 정식 데뷔했고, 조용필과 위대한 탄생 출신 기타리스트 임동신과 1988년 결혼했습니다.",
+     "removedCue": "1984년 약사 면허 · 필동 약국 · '약대' 그룹 · '쌍쌍파티' 이름",
+     "addedCue": "남편이 위대한 탄생 출신 기타리스트 임동신 (1988년 결혼)",
+     "why": "방송에 흔한 '약사 출신 가수'·쌍쌍파티를 해설로 옮기고 결혼 상대 세부로 바꿈"
+    },
+    "generalHint": "아버지 주금부는 한국과 중국을 오가며 한약재 사업을 한 한의사였고, 이 가수는 1989년에야 대한민국 국적을 얻었다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "팬 세부",
+    "genre": "가요",
+    "work": "쌍쌍파티",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/주현미"
+    ],
+    "facts": [
+     {
+      "claim": "1980년 중앙대 약대 음악 그룹 보컬로 강변가요제 입상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주현미",
+      "note": "1980년 중앙대학교에 다닐 무렵 MBC 강변가요제에 약대 음악 그룹의 보컬로 출전해 입상했다."
+     },
+     {
+      "claim": "1984년 약사 면허, 필동 한울약국 개업",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/주현미",
+      "note": "1984년, 약대를 졸업하고 약사면허증을 취득하였으며 서울 중구 필동에서 한울약국을 개업했다."
+     },
+     {
+      "claim": "정종택 권유 메들리 음반(쌍쌍파티)으로 전국적으로 알려짐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주현미",
+      "note": "약사로 일하던 중 작곡가 정종택의 권유로 메들리 음반 《쌍쌍파티》를 녹음했고 1984년에 발매되었다. 이 음반의 히트로 전국적으로 알려졌다."
+     },
+     {
+      "claim": "남편 임동신(조용필과 위대한 탄생 출신 기타리스트), 1988년 결혼",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주현미",
+      "note": "정식 가수 데뷔는 1985년이며 1집 타이틀곡이 〈비내리는 영동교〉. 배우자는 《조용필과 위대한 탄생》의 락 보컬 출신의 기타리스트 임동신이다. 1988년 2월 14일 결혼."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/주현미"
+    ],
+    "hintNote": "아버지 주금부는 한의사(중의사)였기 때문에 중국과 한국을 오가며 한약재 사업을 하였고 / 1989년에야 비로소 중화민국에서 대한민국으로 국적을 변경하였다.",
+    "easiestCue": "1988년 위대한 탄생 출신 기타리스트 임동신과 결혼한 가수",
+    "targetWhy": "남편 임동신 · 강변가요제 입상은 트로트 팬 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'약사 출신 가수'가 방송에서 자주 소개돼 3일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-music/5#g009a-M1-22",
+   "seed": {
+    "subject": "뽕짝 메들리",
+    "aspect": "팬 세부",
+    "ref": "M1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1990년대 중반 일본에서 '뽕짝의 제왕'을 내걸고 뽕짝 붐을 일으켰고, 살충제 브랜드 긴초(KINCHO)의 광고에도 나왔습니다. 1996년 덴키 그루브와 함께 음반 '열려라! 뽕짝!'을 낸 이 가수는 누구일까요?",
+    "answer": "이박사",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1978년부터 11년 동안 관광버스 안내원으로 일하며 노래 솜씨로 지금의 이름이 된 별명을 얻었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1996년 덴키 그루브와 함께 음반 '열려라! 뽕짝!'을 낸 이 가수",
+     "difWhy": "'일본 뽕짝 붐 · 열려라 뽕짝' — 관심층",
+     "wor": 3,
+     "worWhy": "가수 일화 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 가요 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "관광버스 안내원 … 일본에서 뽕짝 붐을 일으킨 가수",
+     "difWhy": "관광버스 메들리 가수 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "독특한 가수 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1978년부터 1989년까지 11년 동안 관광버스 안내원으로 일하며 특유의 노래 솜씨로 지금의 이름이 된 별명을 얻었습니다. 1990년대 중반 일본에서 활동하며 뽕짝 붐을 일으키고, 1996년 덴키 그루브와 함께 음반도 낸 이 가수는 누구일까요?",
+     "beforeExplanation": "본명은 이용석이고, 국내에서는 '테크노 뽕짝'의 제일인자로 알려졌습니다.",
+     "removedCue": "11년 동안 관광버스 안내원으로 일하며 얻은 별명",
+     "addedCue": "'뽕짝의 제왕' 캐치프레이즈 · 긴초 광고",
+     "why": "관광버스 메들리 가수는 관심층 첫 줄 사실 — 해설로 옮기고 일본 활동 세부로"
+    },
+    "generalHint": "1996년 일본에서 싱글 'YOUNGMAN'과 앨범 '뽕짝 대백과사전'을 냈다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "팬 세부",
+    "genre": "가요",
+    "work": "뽕짝 메들리",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이박사"
+    ],
+    "facts": [
+     {
+      "claim": "1978~1989년 11년 관광버스 안내원, 노래솜씨로 별명",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이박사",
+      "note": "그는 1978년부터 1989년까지 11년의 관광버스 안내원 생활을 하는 동안 특유의 노래솜씨로 이박사란 별명을 얻었다."
+     },
+     {
+      "claim": "1990년대 중반 일본 활동, 뽕짝 붐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이박사",
+      "note": "1990년대 중반 일본에서 활동하며 뽕짝 붐을 일으켰으며"
+     },
+     {
+      "claim": "1996년 덴키 그루브와 음반",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이박사",
+      "note": "이박사 vs 덴키 그루브의 \"열려라! 뽕짝!\" (1996년 5월 2일)"
+     },
+     {
+      "claim": "일본 캐치프레이즈 '뽕짝의 제왕', 긴초 CM 출연",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이박사",
+      "note": "일본에서 뽕짝 붐을 일으켰고, 캐치프레이즈는 '뽕짝의 제왕'이었다. 살충제 브랜드 긴초(KINCHO)의 CM에 출연했다 (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이박사"
+    ],
+    "hintNote": "1996년 싱글 \"YOUNGMAN\"과 앨범 \"뽕짝 대백과사전\" 등을 발표했습니다.",
+    "easiestCue": "1996년 덴키 그루브와 음반을 낸 한국 뽕짝 가수",
+    "targetWhy": "일본 활동 세부 — 가요 팬 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 봤을 법, 단서는 이력 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-music/5#g009a-M1-23",
+   "seed": {
+    "subject": "가시나무",
+    "aspect": "팬 세부",
+    "ref": "M1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1988년 4월 나온 한 그룹의 3집 타이틀곡으로, 종교적인 참회의 서정을 담았다고 소개됩니다. 노래 처음과 끝에 나오는 음절은 웨일스 자장가 'Suo Gân'에서 가져왔는데, 이 노래는 무엇일까요?",
+    "answer": "가시나무",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "시인과 촌장의 하덕규가 작사·작곡했고, 여러 가수가 다시 불렀는데 그중 2000년 조성모의 리메이크가 특히 큰 인기를 끌었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "웨일스 자장가 'Suo Gân'에서 가져왔는데",
+     "difWhy": "'1988 3집 · Suo Gân' — 가요 애호가",
+     "wor": 3,
+     "worWhy": "유명 곡 제목 맞히기",
+     "acc": 5,
+     "accWhy": "한국 가요 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "시인과 촌장 '숲' 타이틀곡, 하덕규 작사·작곡",
+     "difWhy": "'하덕규 대표곡' — 관심층",
+     "wor": 3,
+     "worWhy": "유명 곡 제목"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1988년 4월 나온 시인과 촌장의 3집 '숲'의 타이틀곡으로, 하덕규가 작사·작곡했습니다. 노래 처음과 끝에 나오는 음절은 웨일스 자장가 'Suo Gân'에서 가져왔는데, 이 노래는 무엇일까요?",
+     "beforeExplanation": "유리상자·이은미·자우림 등이 여러 차례 다시 불렀고, 그중 2000년 조성모의 리메이크가 특히 큰 인기를 끌었습니다.",
+     "removedCue": "시인과 촌장 '숲' 타이틀곡, 하덕규 작사·작곡",
+     "addedCue": "종교적 참회의 서정 · 'Suo Gân' 음절",
+     "why": "가수·작곡자 이름을 해설로 내리고 곡의 성격·음절 출처로 묻게"
+    },
+    "generalHint": "1997년 유리상자가, 2011년 자우림이 '나는 가수다'에서 이 노래를 다시 불렀다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "팬 세부",
+    "genre": "가요",
+    "work": "가시나무",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/가시나무_(노래)"
+    ],
+    "facts": [
+     {
+      "claim": "1988년 4월 시인과 촌장 3집 숲의 타이틀곡, 하덕규 작사·작곡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/가시나무_(노래)",
+      "note": "가시나무는 1988년 4월 발매된 시인과 촌장의 3집 『숲』의 타이틀 곡이다. 하덕규가 작사·작곡했다."
+     },
+     {
+      "claim": "처음과 끝 음절은 웨일스 자장가 Suo Gân에서",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/가시나무_(노래)",
+      "note": "노래의 처음과 끝에 나오는 음절은 웨일즈 자장가 Suo Gân에서 가져왔다."
+     },
+     {
+      "claim": "리메이크 — 유리상자(1997)·이은미(2000)·조성모(2000)·자우림(2011), 조성모 버전 특히 인기",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/가시나무_(노래)",
+      "note": "여러 차례 다시 불렸으며, 그중 조성모 버전이 특히 인기를 끌었다. 유리상자(1997) · 이은미(2000) · 조성모(2000) · 자우림(2011)"
+     },
+     {
+      "claim": "종교적인 참회의 서정을 담은 곡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/가시나무_(노래)",
+      "note": "종교적인 참회의 서정을 담고 있다(문서 요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/가시나무_(노래)"
+    ],
+    "hintNote": "유리상자 (1997, 『순애보』) ... 자우림 (2011, 「나는 가수다」 경연)",
+    "easiestCue": "처음과 끝 음절을 웨일스 자장가 'Suo Gân'에서 가져온 1988년 곡",
+    "targetWhy": "Suo Gân 음절은 가요 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "그룹 이름이 대표곡을 부를 수 있다 — '풍경' 등 다른 곡과 갈리게 3집·Suo Gân 세부를 둠",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-music/5#g009a-M1-24",
+   "seed": {
+    "subject": "이등병의 편지",
+    "aspect": "팬 세부",
+    "ref": "M1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "김현성이 작사·작곡한 이 포크 노래는 한겨레신문 노래 공모에 당선되어, 1990년 음반 '겨레의 노래'에 전인권의 목소리로 실렸습니다. 이 노래는 무엇일까요?",
+    "answer": "이등병의 편지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "너무 우울하다는 이유로 한때 방송 금지곡이 되었고, 1993년 김광석의 '다시 부르기 1집'에 실리며 널리 알려졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1990년 음반 '겨레의 노래'에 전인권의 목소리로",
+     "difWhy": "군 입대 포크곡 — 가요 관심층",
+     "wor": 3,
+     "worWhy": "대중적 노래 제목",
+     "acc": 5,
+     "accWhy": "한국 가요 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "너무 우울하다는 이유로 방송 금지된 포크 노래(전인권)",
+     "difWhy": "군대 노래 금지곡 — 가요 관심층",
+     "wor": 3,
+     "worWhy": "유명 노래 사연 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "김현성이 작사·작곡한 이 포크 노래는 한겨레신문 노래 공모에 당선되어 1990년 음반 '겨레의 노래'에 전인권의 목소리로 실렸습니다. 너무 우울하다는 이유로 한때 방송 금지곡이 되기도 한 이 노래는 무엇일까요?",
+     "beforeExplanation": "1993년 김광석의 리메이크 음반 '다시 부르기 1집'에 실리며 널리 알려졌고, 2000년 영화 '공동경비구역 JSA'의 OST에도 들어갔습니다.",
+     "removedCue": "너무 우울하다는 이유로 한때 방송 금지곡",
+     "addedCue": "(더하지 않음 — 작곡자·공모·첫 가수 세 단서가 이미 엮임)",
+     "why": "금지곡 일화를 해설로 내림"
+    },
+    "generalHint": "2000년 영화 '공동경비구역 JSA'의 OST에도 실렸다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "팬 세부",
+    "genre": "가요",
+    "work": "이등병의 편지",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이등병의_편지"
+    ],
+    "facts": [
+     {
+      "claim": "작사·작곡 김현성, 포크 팝",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이등병의_편지",
+      "note": "작사·작곡: 가수 김현성. 장르: 포크 팝"
+     },
+     {
+      "claim": "한겨레신문 노래 공모 당선, 1990년 겨레의 노래 수록, 전인권이 부름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이등병의_편지",
+      "note": "한겨레신문 노래 공모에 당선되어 1990년 《겨레의 노래》에 수록되었고, 전인권이 불렀다."
+     },
+     {
+      "claim": "너무 우울하다는 이유로 한때 방송 금지곡",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이등병의_편지",
+      "note": "너무 우울하다는 이유로 한때 방송 금지곡이 되기도 했다."
+     },
+     {
+      "claim": "1993 김광석 다시 부르기 1집, 2000 JSA OST",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이등병의_편지",
+      "note": "1993년 김광석의 리메이크 음반 《다시 부르기 1집》에 수록되면서 널리 알려졌다. 2000년 영화 《공동경비구역 JSA》의 OST에 수록되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이등병의_편지"
+    ],
+    "hintNote": "2000년 영화 《공동경비구역 JSA》의 OST로 수록되었으며",
+    "easiestCue": "한겨레 노래 공모 당선 · 전인권이 처음 부른 김현성 곡",
+    "targetWhy": "김광석 이전 원곡 이력은 가요 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "레전드 곡, 쉬운 단서(김광석·군대)는 뺐다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

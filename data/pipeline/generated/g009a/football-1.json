@@ -1,0 +1,488 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "football/1",
+  "midKey": "football",
+  "subName": "규칙",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/1#g009a-S1-17",
+   "seed": {
+    "subject": "골망",
+    "aspect": null,
+    "ref": "S1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "리버풀의 기술자 존 브로디는 머지 터널과 영국 첫 순환 도로 제안으로 이름을 남겼고, 조립식 콘크리트 주택 기술에도 앞장섰습니다. 그가 1889년 발명해 가장 자랑스러워한 축구 장비는 무엇일까요?",
+    "answer": "골망",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "'골네트' 표기는 검색으로 확인 못 해 넣지 않음 (WebSearch 1회)",
+    "explanation": "공이 골문을 지나갔는지를 두고 벌어지던 다툼을 가리는 데 큰 도움이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "그가 1889년 발명해 가장 자랑스러워한 축구 장비",
+     "difWhy": "'1889년 발명 축구 장비' — 관심층",
+     "wor": 3,
+     "worWhy": "장비 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "공이 골문을 지나갔는지 다툼을 가리는 축구 장비",
+     "difWhy": "골 판정 돕는 장비 — 축구 방송 시청자",
+     "wor": 3,
+     "worWhy": "장비 발명 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "리버풀의 기술자 존 브로디는 뒤에 머지 터널 공사로 이름을 남겼지만, 자신이 가장 자랑스러워한 발명은 따로 있었습니다. 공이 골문을 지나갔는지를 두고 벌어지던 다툼을 가리는 데 큰 도움이 된 이 축구 장비는 무엇일까요?",
+     "beforeExplanation": "브로디는 리버풀 시 기술자로 일하며 영국 첫 순환 도로도 제안했습니다.",
+     "removedCue": "공이 골문을 지나갔는지를 두고 벌어지던 다툼을 가리는 데 큰 도움",
+     "addedCue": "1889년 발명 · 순환 도로 · 조립식 주택",
+     "why": "장비의 쓰임(정의)을 해설로 옮기고 발명가 이력으로"
+    },
+    "generalHint": "이것은 1891년 1월 10일 노팅엄의 북부 대 남부 대표 선발전에서 처음 쓰였고, 에버턴의 프레드 기어리가 첫 골을 넣었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/John_Alexander_Brodie",
+     "https://en.wikipedia.org/wiki/Goal_(association_football)"
+    ],
+    "facts": [
+     {
+      "claim": "1889년 발명 · 가장 자랑스러운 발명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Alexander_Brodie",
+      "note": "he invented the goal net for use in football matches ... he said that this was the invention of which he was the most proud (he invented the football goal net in 1889)"
+     },
+     {
+      "claim": "머지 터널",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Alexander_Brodie",
+      "note": "Brodie's greatest engineering achievement was the Mersey Tunnel (completed in 1934, with Sir Basil Mott)."
+     },
+     {
+      "claim": "시 기술자 · 영국 첫 순환 도로 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Alexander_Brodie",
+      "note": "He returned to Liverpool in 1898 in the city engineer role and proposed ... the UK's first ring road"
+     },
+     {
+      "claim": "조립식 주택 기술",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Alexander_Brodie",
+      "note": "at the forefront of pre-fabricated housing technology"
+     },
+     {
+      "claim": "골 여부 다툼에 도움",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Goal_(association_football)",
+      "note": "Football nets were invented by Liverpool engineer John Brodie ... were a necessary help for discussions about whether or not a goal had been scored."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://leicestershirefootballarchive.com/?p=6167"
+    ],
+    "hintNote": "were first deployed for a high-profile fixture on 10 January 1891 ... Fittingly, Fred Geary scored the first goal",
+    "easiestCue": "존 브로디가 1889년 발명한 축구 장비",
+    "targetWhy": "브로디의 골망 발명은 축구 역사 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "마지막 문장의 기능 설명만으로 추리로 닿을 수 있음 — 3 일 수 있다. 발명 연도는 문서마다 1889/1891 로 달라 뺐다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/1#g009a-S1-18",
+   "seed": {
+    "subject": "정강이 보호대",
+    "aspect": null,
+    "ref": "S1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1874년 노팅엄 포리스트의 새뮤얼 웰러 위도슨은 크리켓에서 쓰던 것을 잘라 스타킹 위에 끈으로 묶고 경기에 나섰습니다. 처음에는 다른 선수들에게 놀림을 받았다는 이 축구 장비는 무엇일까요?",
+    "answer": "정강이 보호대",
+    "acceptedAnswers": [
+     "신가드"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 정강이 보호대(shin guard) · 국내 축구 용품 글에서 '신가드' 표기 확인 (WebSearch 1회)",
+    "explanation": "위도슨은 노팅엄셔 크리켓 팀에서도 뛴 선수였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "엮음: 크리켓에서 쓰던 것을 스타킹 위에 묶음 + 축구 장비",
+     "difWhy": "정강이에 대는 축구 장비 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "장비 기원 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "엮음: 크리켓에서 쓰던 것을 스타킹 위에 묶음 + 축구 장비",
+     "difWhy": "정강이에 대는 축구 장비 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "장비 기원 — 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 유일하지 않음 — '축구 장비'와 '스타킹 위에 묶음' 어느 쪽을 남겨도 정강이 보호대 직결, 빼면 대상이 흐려짐"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Shin_guard"
+    ],
+    "facts": [
+     {
+      "claim": "1874년 위도슨 · 노팅엄 포리스트",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shin_guard",
+      "note": "Sam Weller Widdowson is credited for bringing shin guards to the sport in 1874. He played football for Nottingham Forest"
+     },
+     {
+      "claim": "크리켓 패드를 잘라 스타킹 위에 묶음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shin_guard",
+      "note": "He reportedly cut down cricket shin pads and strapped them over his stockings."
+     },
+     {
+      "claim": "처음엔 놀림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shin_guard",
+      "note": "Other players ridiculed him initially, but shin guards eventually caught on"
+     },
+     {
+      "claim": "노팅엄셔 크리켓 선수",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Shin_guard",
+      "note": "He played football for Nottingham Forest and cricket for Nottinghamshire"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "크리켓에서 쓰던 것을 잘라 스타킹 위에 끈으로 묶고",
+    "targetWhy": "정강이 보호대의 기원 인물은 축구사 애호가 영역",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'스타킹 위' 로 위치가 드러나 추리 가능 — 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "football/1#g009a-S1-19",
+   "seed": {
+    "subject": "동전 던지기",
+    "aspect": null,
+    "ref": "S1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1968년 6월 5일 나폴리에서 열린 유럽선수권 준결승 이탈리아와 소련의 경기는 연장전까지 0-0이었습니다. 아직 승부차기가 규칙에 없던 때라 이 방법으로 결승 진출 팀을 가렸는데, 무엇일까요?",
+    "answer": "동전 던지기",
+    "acceptedAnswers": [
+     "코인 토스",
+     "추첨"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "en.wikipedia 'UEFA Euro 1968' 은 coin toss, 'Penalty shoot-out' 문서는 같은 일을 'drew lots' 로 적어 '추첨' 도 맞음",
+    "explanation": "이탈리아는 결승에서도 유고슬라비아와 1-1로 비겼고, 재경기에서 2-0으로 이겨 우승했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 아직 승부차기가 규칙에 없던 때 + 이 방법으로 결승 진출 팀을 가렸는데",
+     "difWhy": "승부차기 이전 동전 던지기 — 관심층",
+     "wor": 3,
+     "worWhy": "축구 규칙 역사 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 아직 승부차기가 규칙에 없던 때 + 이 방법으로 결승 진출 팀을 가렸는데",
+     "difWhy": "승부차기 이전 동전 던지기 — 관심층",
+     "wor": 3,
+     "worWhy": "축구 규칙 역사 — 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 정답이 유일하지 않음 — '승부차기가 없던 때'를 빼면 결승처럼 재경기도 답이 되고, 더 깊은 세부(누가 맞혔나)는 문서에서 확인 못 함"
+    },
+    "generalHint": "미국 NFL은 지금도 플레이오프 진출 팀과 시드를 정하는 동률 해소에 이 방법을 둔다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/UEFA_Euro_1968",
+     "https://en.wikipedia.org/wiki/Penalty_shoot-out_(association_football)"
+    ],
+    "facts": [
+     {
+      "claim": "1968년 6월 5일 나폴리 준결승 이탈리아-소련 0-0 (연장)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/UEFA_Euro_1968",
+      "note": "5 June 1968, Stadio San Paolo, Naples — 0–0 after extra time. A coin toss was used in the semi-final between Italy and the Soviet Union. Italy won on coin toss."
+     },
+     {
+      "claim": "1970년 전에는 규칙에 승부를 가리는 방법이 없었음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Penalty_shoot-out_(association_football)",
+      "note": "Before 1970, the laws did not provide a method for breaking ties ... they drew lots, as in Italy's win over the USSR in the 1968 European Championship semi-final."
+     },
+     {
+      "claim": "결승 1-1 · 재경기 2-0",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/UEFA_Euro_1968",
+      "note": "The original final on 8 June ended 1–1 after extra time. Italy won the replay 2–0 on 10 June 1968."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Coin_flipping"
+    ],
+    "hintNote": "The National Football League also has a coin toss for tie-breaking among teams for playoff berths and seeding.",
+    "easiestCue": "아직 승부차기가 규칙에 없던 때라 이 방법으로 결승 진출 팀을 가렸는데",
+    "targetWhy": "유로 1968 동전 던지기 준결승은 축구사 애호가 영역",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "답이 일반어라 추측으로도 닿을 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/1#g009a-S1-20",
+   "seed": {
+    "subject": "선수 교체",
+    "aspect": null,
+    "ref": "S1-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1885년 11월 FA컵 재경기의 로크우드 브러더스 경기가 이것이 기록에 남은 첫 공식 경기 사례로 꼽히고, 그보다 앞선 1850년대 이튼 칼리지에서는 이렇게 나서는 사람을 'emergencies'라 불렀습니다. 1958년에야 국제축구평의회가 경기 규칙에 넣은 이것은 무엇일까요?",
+    "answer": "선수 교체",
+    "acceptedAnswers": [
+     "교체"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "en.wikipedia 'Substitute' — 한국어로 '교체' 만 쳐도 같은 개념",
+    "explanation": "월드컵에서는 1970년 대회부터 허용되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1958년에야 국제축구평의회가 경기 규칙에 넣은 이것",
+     "difWhy": "'교체 규칙 도입 연도' — 축구 애호가",
+     "wor": 3,
+     "worWhy": "규칙 역사 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "나타나지 않은 골키퍼 자리를 앨프 퓨가 메웠고 ... 경기 규칙에 넣은 이것",
+     "difWhy": "'빈자리를 메우는 규칙' — 일상·방송 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 규칙 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1885년 FA컵 재경기에서 로크우드 브러더스의 F. 브리어스가 다리가 부러진 것이 기록에 남은 첫 공식 경기 사례이고, 1889년 웨일스와 스코틀랜드의 경기에서는 나타나지 않은 골키퍼 자리를 앨프 퓨가 메웠습니다. 1958년에야 국제축구평의회가 경기 규칙에 넣은 이것은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1889년 웨일스와 스코틀랜드의 경기에서는 나타나지 않은 골키퍼 자리를 앨프 퓨가 메웠습니다 (· 브리어스 다리 골절)",
+     "addedCue": "1850년대 이튼 칼리지의 'emergencies' 라는 이름",
+     "why": "빈자리를 메운 일화(정의에 가까운 장면)를 빼고 이튼의 옛 호칭 세부로 바꿈"
+    },
+    "generalHint": "1965년 8월 21일 키스 피콕은 다친 골키퍼 믹 로즈 대신 들어가, 잉글랜드 풋볼 리그에서 이렇게 나선 첫 사람이 되었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Substitute_(association_football)"
+    ],
+    "facts": [
+     {
+      "claim": "1885년 11월 7일 FA컵 재경기 브리어스 골절 — 가장 이른 공식 경기 사례",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Substitute_(association_football)",
+      "note": "The earliest known competitive use was an FA Cup replay on 7 November 1885, after a broken leg for Lockwood Brothers midfielder F. Brears."
+     },
+     {
+      "claim": "1850년대 이튼 칼리지에서는 이렇게 나서는 선수를 emergencies 라 불렀다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Substitute_(association_football)",
+      "note": "The substitution of absent players happened as early as the 1850s. (Eton College — the term was \"emergencies\")"
+     },
+     {
+      "claim": "1958년 IFAB 경기 규칙에 추가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Substitute_(association_football)",
+      "note": "The International Football Association Board first added Substitution to the Laws of the Game in 1958."
+     },
+     {
+      "claim": "월드컵은 1970년부터",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Substitute_(association_football)",
+      "note": "World Cup substitutes weren't allowed until the 1970 tournament"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Keith_Peacock"
+    ],
+    "hintNote": "On 21 August 1965, Peacock became the first substitute in Football League history. ... came on about 11 minutes in for the injured goalkeeper Mick Rose.",
+    "easiestCue": "1958년에야 국제축구평의회가 경기 규칙에 넣은 이것 + 이튼의 'emergencies'",
+    "targetWhy": "옛 호칭 'emergencies' · 1885 첫 공식 사례는 축구사 애호가 세부 — 개념 자체가 쉬워 경계 3",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'골키퍼 자리를 메웠다' 에서 추리 가능 — 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/1#g009a-S1-21",
+   "seed": {
+    "subject": "승부차기",
+    "aspect": null,
+    "ref": "S1-21",
+    "pairedWith": 416
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 416,
+    "question": "독일 심판 카를 발트는 1960년대 초부터 이 방식을 비공식으로 썼다고 하며, 1970년 5월 그의 제안으로 바이에른 축구협회 규정에 들어갔습니다. 이스라엘의 요세프 다간도 창안자로 꼽히는 이 방식을 국제축구평의회는 1970년 6월 27일 채택했는데, 무엇일까요?",
+    "answer": "승부차기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "월드컵 본선의 첫 승부차기는 1982년 준결승 서독과 프랑스의 경기였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "국제축구평의회가 1970년 채택한 방식(심판 발트 제안)",
+     "difWhy": "승부 가리는 방식 기원 — 축구 관심층",
+     "wor": 3,
+     "worWhy": "규칙 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "국제축구평의회가 1970년 채택한 방식(심판 발트 제안)",
+     "difWhy": "승부 가리는 방식 기원 — 축구 관심층",
+     "wor": 3,
+     "worWhy": "규칙 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 유일하지 않음 — 방식 이름을 묻는 이상 '무승부 승자를 가리는 방식' 한정이 곧 정의"
+    },
+    "generalHint": "2017년 3월 국제축구평의회는 테니스 타이브레이크의 서브 차례처럼 'ABBA' 순서로 차는 시험을 허락했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Penalty_shoot-out_(association_football)"
+    ],
+    "facts": [
+     {
+      "claim": "창안자는 불확실 — 다간과 발트",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Penalty_shoot-out_(association_football)",
+      "note": "the inventor of the modern shoot-out is uncertain. Israeli Yosef Dagan and German referee Karl Wald are both credited with originating it in the 1960s."
+     },
+     {
+      "claim": "발트 1960년대 초 비공식 사용 · 1970년 5월 바이에른 협회 규정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Penalty_shoot-out_(association_football)",
+      "note": "Wald reportedly used shoot-outs unofficially from the early 1960s, and the Bavarian FA added them to its rulebook in May 1970 on his proposal."
+     },
+     {
+      "claim": "IFAB 1970년 6월 27일 채택",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Penalty_shoot-out_(association_football)",
+      "note": "The International Football Association Board (IFAB) adopted the shoot-out at its annual general meeting on 27 June 1970."
+     },
+     {
+      "claim": "월드컵 본선 첫 승부차기 1982 서독-프랑스 준결승",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Penalty_shoot-out_(association_football)",
+      "note": "the first in a World Cup match was the 1982 West Germany versus France semi-final, and that this was the first shoot-out in the finals tournament."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Penalty_shoot-out_(association_football)"
+    ],
+    "hintNote": "sanctioned in March 2017 to test a different sequence of taking penalties, known as \"ABBA\" ... mirrors the serving sequence in a tennis tiebreak",
+    "easiestCue": "국제축구평의회는 1970년 6월 27일 채택했는데",
+    "targetWhy": "승부차기의 창안 경위(발트·다간)는 축구 규칙 애호가 영역 — 1회차는 정의를 물었다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정의 문장(번갈아 페널티킥)을 넣지 않았다",
+    "pairCheck": "1회차 #416 질문(연장 동점 → 번갈아 페널티킥 · 재경기 대신) · 해설(서든데스) · 힌트(없음)과 겹치지 않음 — 창안자·채택일은 새 사실, 정의 문장 없음",
+    "dbCheck": "pair-or-different — 활성 #416 1건, (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 416,
+     "question": "월드컵 토너먼트에서 연장전까지 동점일 때 양 팀이 번갈아 페널티킥을 차서 가리는 방식을 무엇이라 하나요? 예전에 날을 잡아 다시 경기를 하던 것을 대신하게 되었습니다.",
+     "explanation": "다섯 명씩 차고도 같으면 한 명씩 번갈아 차는 서든데스로 이어집니다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  }
+ ]
+}

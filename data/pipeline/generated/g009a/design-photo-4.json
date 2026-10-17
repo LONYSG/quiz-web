@@ -1,0 +1,112 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "design-photo/4",
+  "midKey": "design-photo",
+  "subName": "산업 디자인",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/4#g009a-A1-19",
+   "seed": {
+    "subject": "아이팟",
+    "aspect": null,
+    "ref": "A1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프리랜서 카피라이터 비니 치에코는 이 제품의 시제품을 보고 영화 '2001 스페이스 오디세이'의 한 대사를 떠올려 이름을 지었습니다. 개발을 이끈 토니 파델은 필립스에서 PDA를 만들다 나와 2001년 외부 계약자로 합류했는데, 이 제품은 무엇일까요?",
+    "answer": "아이팟",
+    "acceptedAnswers": [
+     "iPod"
+    ],
+    "originalTitleVariants": [
+     "iPod"
+    ],
+    "variantCheck": "상표가 영문 iPod — B10",
+    "explanation": "도시바의 1.8인치 하드 디스크를 담아 1년이 채 안 되는 개발 끝에 2001년 10월 23일 공개되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "개발을 이끈 토니 파델",
+     "difWhy": "'토니 파델 = 아이팟' — IT 관심층",
+     "wor": 3,
+     "worWhy": "유명 제품 이름 유래",
+     "acc": 3,
+     "accWhy": "사진·디자인 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "도시바 1.8인치 하드, 2001년 10월 23일 공개",
+     "difWhy": "'2001 애플 음악 기기' — 관심층",
+     "wor": 3,
+     "worWhy": "유명 제품 이름 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "프리랜서 카피라이터 비니 치에코는 이 제품의 시제품을 보고 영화 '2001 스페이스 오디세이'의 한 대사를 떠올려 이름을 지었습니다. 도시바의 1.8인치 하드 디스크를 담아 1년이 채 안 되는 개발 끝에 2001년 10월 23일 공개된 이 제품은 무엇일까요?",
+     "beforeExplanation": "개발을 이끈 토니 파델은 필립스에서 PDA를 만들다 나와 2001년 외부 계약자로 애플에 합류했습니다.",
+     "removedCue": "도시바 1.8인치 하드 · 2001년 10월 23일 공개",
+     "addedCue": "토니 파델의 합류 경위(해설에서 질문으로)",
+     "why": "공개일·부품 사양을 해설로 내리고 개발 책임자 이력으로"
+    },
+    "generalHint": "이 제품군은 2022년 5월 10일 마지막으로 남아 있던 터치 모델을 끝으로 단종되었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/IPod"
+    ],
+    "facts": [
+     {
+      "claim": "비니 치에코가 시제품을 보고 2001 스페이스 오디세이 대사를 떠올려 이름 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/IPod",
+      "note": "The name iPod was proposed by Vinnie Chieco, a freelance copywriter ... saw a prototype ... recalled the line \"Open the pod bay doors, Hal\" from 2001: A Space Odyssey"
+     },
+     {
+      "claim": "도시바 1.8인치 하드 디스크",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/IPod",
+      "note": "Rubinstein had already discovered the Toshiba hard disk drive ... 45.7 mm (1.8 in) hard drives"
+     },
+     {
+      "claim": "1년 안 되어 개발, 2001년 10월 23일 공개",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/IPod",
+      "note": "was developed in less than one year and unveiled on October 23, 2001"
+     },
+     {
+      "claim": "토니 파델은 필립스 Velo·Nino PDA 개발 뒤 2001년 외부 계약자로 합류",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/IPod",
+      "note": "Fadell had previously developed the Philips Velo and Nino PDA ... Apple hired him in 2001 as an independent contractor"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/IPod"
+    ],
+    "hintNote": "On May 10, 2022, Apple discontinued the iPod Touch, the last remaining product in the iPod line.",
+    "easiestCue": "토니 파델이 개발을 이끈 제품",
+    "targetWhy": "치에코 작명·파델 합류는 디자인·IT 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "공개일·도시바 하드가 IT 관심층에겐 쉬운 단서일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "아이팟 new",
+    "warn": []
+   }
+  }
+ ]
+}

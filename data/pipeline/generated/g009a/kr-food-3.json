@@ -1,0 +1,489 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "kr-food/3",
+  "midKey": "kr-food",
+  "subName": "분식·길거리 음식",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/3#g009a-K2-29",
+   "seed": {
+    "subject": "빈대떡",
+    "aspect": null,
+    "ref": "K2-29",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "『역어유해』의 '빙쟈'가 이름의 어원으로 꼽히고, 조선 궁중 기록 『영접도감의궤』(1634)의 녹두병이 원형으로 여겨지는 음식입니다. 광복 직후 가장 흔한 길거리 음식이었다는 이 음식은 무엇일까요?",
+    "answer": "빈대떡",
+    "acceptedAnswers": [
+     "녹두전",
+     "녹두부침개",
+     "녹두지짐"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '빈대떡' — '녹두부침개, 녹두전, 녹두지짐이라고도 부른다' (질문의 '녹두병' 단서로 같은 음식을 이 이름으로 칠 수 있어 넣음)",
+    "explanation": "평안도의 것은 서울 것보다 크기가 세 배쯤 된다고 하며, 빈대가 많던 정동 일대의 떡 장수에서 이름이 왔다는 설도 전합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "녹두병이 원형으로 여겨지는 음식",
+     "difWhy": "녹두 부침개 — 일상 음식 (경계 3)",
+     "wor": 3,
+     "worWhy": "흔한 음식 어원 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "평안도의 것이 서울 것보다 세 배 크다는 음식",
+     "difWhy": "평안도 녹두 지짐 — 방송·일상",
+     "wor": 3,
+     "worWhy": "음식 옛 기록 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1670년 조리서 『음식디미방』에는 '빈쟈법'이라는 이름으로 이 음식 만드는 법이 실려 있습니다. 평안도의 것은 서울 것보다 크기가 세 배, 두께가 두 배나 된다고 하는 이 음식은 무엇일까요?",
+     "beforeExplanation": "이름 유래로는 가난한 사람의 떡이라는 '빈자떡' 설, 빈대가 많아 '빈대골'로 불린 정동의 떡 장수에서 왔다는 설 등이 전합니다.",
+     "removedCue": "평안도의 것은 서울 것보다 세 배 · 음식디미방 '빈쟈법'",
+     "addedCue": "역어유해 '빙쟈' 어원 · 영접도감의궤 녹두병 · 광복 직후 길거리 음식",
+     "why": "방송에 흔한 평안도 크기 이야기를 해설로 내리고 문헌 어원·원형 세부로"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/빈대떡"
+    ],
+    "facts": [
+     {
+      "claim": "평안도 빈대떡 — 서울 것보다 크기 3배, 두께 2배",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/빈대떡",
+      "note": "특히, 평안도의 빈대떡은 그곳 명물 음식의 하나로 지금 서울의 빈대떡에 비하여 크기가 3배나 되고 두께도 2배가 된다."
+     },
+     {
+      "claim": "빈자떡 설 · 정동 빈대골 설",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/빈대떡",
+      "note": "가난한 사람을 위한 먹음직스러운 독립된 요리가 되어 빈자(貧者)떡이 되었다는 설 / 정동(貞洞)을 빈대가 많다고 하여 빈대골이라 하였는데 이곳에는 빈자떡 장수가 많아 빈대떡이 되었다는 설"
+     },
+     {
+      "claim": "역어유해의 빙쟈가 어원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/빈대떡",
+      "note": "《역어유해》의 '빙쟈'가 어원으로 꼽힌다(요지)"
+     },
+     {
+      "claim": "영접도감의궤(1634) 녹두병이 원형",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/빈대떡",
+      "note": "조선 중기 궁중 기록인 《영접도감의궤》(1634)의 녹두병이 원형으로 여겨진다(요지)"
+     },
+     {
+      "claim": "광복 직후 가장 흔한 길거리 음식",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/빈대떡",
+      "note": "광복 직후 가장 흔한 길거리 음식이었다(요지)"
+     },
+     {
+      "claim": "다른 이름 — 녹두부침개·녹두전·녹두지짐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/빈대떡",
+      "note": "녹두부침개, 녹두전, 녹두지짐이라고도 부른다(요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "『영접도감의궤』의 녹두병이 원형인 음식",
+    "targetWhy": "역어유해·영접도감의궤 기록은 음식사 애호가 세부 — 4 경계(녹두병→녹두전 연상)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'빈쟈' 소리에서 정답을 짐작할 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 빈대떡 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/3#g009a-K2-30",
+   "seed": {
+    "subject": "김밥",
+    "aspect": null,
+    "ref": "K2-30",
+    "pairedWith": 1680
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1680,
+    "question": "이 음식 이름은 1925년과 1935년의 신문 기사에 나타났다고 알려져 있습니다. 1819년 김매순이 쓴 『열양세시기』의 '복쌈'을 그 앞선 형태로 보기도 하는 이 음식은 무엇일까요?",
+    "answer": "김밥",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "광복 뒤 일제 잔재를 지우고 우리말을 다듬으려는 움직임 속에 이 이름이 두루 쓰는 말로 굳어졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "『열양세시기』의 '복쌈'을 그 앞선 형태로",
+     "difWhy": "복쌈 기원설 — 음식사 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "흔한 음식 기원 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "광복 뒤 일본색을 지우려는 움직임 속에 두루 쓰는 이름으로 굳어졌습니다",
+     "difWhy": "'일본색 지운 이름 · 복쌈' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 흔한 음식 이름 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 음식 이름은 1935년 신문에 처음 나타났다고 알려져 있고, 광복 뒤 일본색을 지우려는 움직임 속에 두루 쓰는 이름으로 굳어졌습니다. 1819년 조선 책에 실린 '복쌈'을 그 앞선 형태로 보기도 하는 이 음식은 무엇일까요?",
+     "beforeExplanation": "일본의 마키즈시가 일제강점기에 들어와 이어졌다는 설과, 밥을 김에 싸 먹던 오랜 전통에서 나왔다는 설이 함께 전합니다.",
+     "removedCue": "광복 뒤 일본색을 지우려는 움직임 속에 두루 쓰는 이름으로 굳어졌습니다",
+     "addedCue": "김매순 『열양세시기』 · 1925년 기사",
+     "why": "'일본색 지운 이름' 이 곧 김밥(노리마키) — 해설로 옮기고 문헌 세부를 더함"
+    },
+    "generalHint": "밥이 바깥으로 나오고 김과 속 재료가 안쪽으로 들어가게 만 종류도 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gimbap"
+    ],
+    "facts": [
+     {
+      "claim": "1935년 신문에 이 이름이 처음 등장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gimbap",
+      "note": "This theory is supported by a newspaper from 1935, in which the term gimbap first appeared in Korea."
+     },
+     {
+      "claim": "일본색 제거 노력 속 보편 용어로",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gimbap",
+      "note": "(번역 요지) 두 낱말(김밥·노리마키)이 섞여 쓰이다가, 일제 잔재를 지우려는 노력 속에 gimbap 이 universal term 이 되었다."
+     },
+     {
+      "claim": "1819년 조선 책의 복쌈 — 앞선 형태",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gimbap",
+      "note": "(번역 요지) 1819년 조선 책에 기록된 bokssam 은 밥과 소를 김에 싼 것으로, 직접 같은 음식은 아니나 앞선 형태로 든다."
+     },
+     {
+      "claim": "1925년과 1935년 신문 기사에 이름이 나타남",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gimbap",
+      "note": "the term appeared in a 1925 and a 1935 Korean newspaper article (요지)"
+     },
+     {
+      "claim": "김매순의 『열양세시기』 복쌈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gimbap",
+      "note": "The Yŏryang Sesigi, a Joseon-era book by Kim Mae-sun, describes rice and filling rolled in gim as bokssam (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/김밥"
+    ],
+    "hintNote": "일반 김밥과 달리 김과 속 재료가 안쪽으로 들어가고, 밥이 바깥으로 나와 전체를 감싸는 형태의 김밥.",
+    "easiestCue": "『열양세시기』의 '복쌈' 을 앞선 형태로 보는 음식",
+    "targetWhy": "음식 이름의 문헌사 — 음식 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 음식의 이름 내력",
+    "pairCheck": "1회차 #1680 질문(밥·재료·김으로 말기, 식초 없음) · 해설(참기름·소금) · 힌트(없음)와 겹치지 않음 — 이번 단서는 이름 첫 등장 · 광복 뒤 용어 · 복쌈",
+    "dbCheck": "answercheck 김밥 pair-or-different — #1680 의 2회차(가)",
+    "warn": [],
+    "first": {
+     "id": 1680,
+     "question": "밥에 여러 재료를 넣고 김으로 말아 썰어 먹는 음식으로, 일본의 비슷한 음식과 달리 밥에 식초를 넣지 않는 것은?",
+     "explanation": "참기름과 소금으로 밥을 간하는 것이 차이로 꼽힙니다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "kr-food/3#g009a-K2-31",
+   "seed": {
+    "subject": "계란빵",
+    "aspect": null,
+    "ref": "K2-31",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "인천 인하대학교 후문 쪽 가게가 원조로 알려진 길거리 간식입니다. 밀가루·베이킹파우더·우유·버터·설탕에 바닐라 추출물까지 넣은 반죽에, 잘게 썬 파슬리나 치즈·깍둑 썬 햄을 얹기도 하는 이 간식은 무엇일까요?",
+    "answer": "계란빵",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "'달걀빵' 표기는 확인 출처가 없어 넣지 않았다 — VERIFY 판단 필요",
+    "explanation": "반죽 위 홈마다 달걀을 하나씩 통째로 깨 넣고 노릇해질 때까지 굽습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "인천 인하대학교 후문 쪽 가게가 원조",
+     "difWhy": "길거리 간식 원조 가게 — 음식 애호가 (경계 3)",
+     "wor": 2,
+     "worWhy": "간식 원조 세부",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "타원형 홈 틀에 단 반죽, 길거리 간식",
+     "difWhy": "'홈 틀 길거리 빵' — 일상",
+     "wor": 3,
+     "worWhy": "간식 원조 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "인천 인하대학교 후문의 한 가게가 원조로 알려진 길거리 간식입니다. 수십 개의 타원형 홈이 있는 틀에 단 반죽을 붓고, 다진 파슬리나 치즈·햄을 얹어 굽기도 하는 이 간식은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "수십 개의 타원형 홈이 있는 틀에 단 반죽을 붓고",
+     "addedCue": "반죽 재료(바닐라 추출물)",
+     "why": "틀 모양 묘사(정의에 가까움)를 빼고 원조 가게 · 반죽 재료로"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/계란빵",
+     "https://en.wikipedia.org/wiki/Gyeran-ppang"
+    ],
+    "facts": [
+     {
+      "claim": "인하대 후문 계란빵집이 원조(연도는 문서 안에서 1983·1984로 엇갈림 — 질문에 연도를 쓰지 않음)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/계란빵",
+      "note": "(요지) 1983년 인하대학교 후문 쪽 계란빵집이 원조로 알려져 있다. / en.wikipedia: first made at the back gate of Inha University in 1984."
+     },
+     {
+      "claim": "반죽 재료",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/계란빵",
+      "note": "반죽은 대개 밀가루, 베이킹 파우더, 우유, 달걀, 버터, 설탕, 소금, 바닐라 추출물을 배합하여 만든다."
+     },
+     {
+      "claim": "토핑",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/계란빵",
+      "note": "일반적인 토핑은 잘게 썬 파슬리, 치즈, 깍뚝 썬 햄이다."
+     },
+     {
+      "claim": "홈마다 달걀을 통째로 깨 넣고 노릇하게 굽는다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gyeran-ppang",
+      "note": "A whole egg is cracked onto the batter in each slot / cooked until they reach a golden color"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "인천 인하대학교 후문 쪽 가게가 원조",
+    "targetWhy": "인하대 후문 원조는 길거리 음식 애호가 세부 — 경계 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "타원형 틀 묘사로 붕어빵·호두과자와 갈리지만 짐작이 쉬울 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 계란빵·달걀빵 new",
+    "warn": [],
+    "discarded": "선별 게이트 — 알 가치 2 (간식 원조 세부) · korea 는 3 이상"
+   }
+  },
+  {
+   "seedId": "kr-food/3#g009a-K2-32",
+   "seed": {
+    "subject": "번데기",
+    "aspect": null,
+    "ref": "K2-32",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국전쟁 뒤 정부가 생사(生絲)를 수출 산업으로 크게 키우면서, 그 부산물이 길거리 간식으로 널리 퍼졌습니다. 경제 성장으로 고기를 흔히 먹기 전인 1970년대까지 값싼 단백질 공급원이었다는 이 간식은 무엇일까요?",
+    "answer": "번데기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "말린 무게의 55~60%가 단백질이라 쇠고기나 생선에 견줄 만한 단백질원으로 꼽힙니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 1,
+     "easiestCue": "생사(生絲)의 부산물이 길거리 간식",
+     "difWhy": "누에 번데기 간식 — 누구나 일상에서",
+     "wor": 3,
+     "worWhy": "간식 유래 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "생사(生絲)의 부산물이 길거리 간식",
+     "difWhy": "누에 번데기 간식 — 누구나 일상에서",
+     "wor": 3,
+     "worWhy": "간식 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "범주 단서(생사 부산물 · 1970년대 값싼 단백질 길거리 간식)가 곧 정답 — 빼면 묻는 대상이 흐려지고 확인되는 깊은 세부가 없음"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Beondegi"
+    ],
+    "facts": [
+     {
+      "claim": "한국전쟁 뒤 생사 수출 산업 장려 — 부산물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beondegi",
+      "note": "the government heavily promoted raw silk production as an export industry (한국전쟁 뒤 널리 먹기 시작 — 번역 요지)"
+     },
+     {
+      "claim": "1970년대까지 값싼 단백질 공급원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beondegi",
+      "note": "provided a cheap source of protein before economic growth allowed broader access to meat supply (by the 1970s)"
+     },
+     {
+      "claim": "단백질 55~60%, 쇠고기·생선에 견줄 단백질원",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Beondegi",
+      "note": "containing approximately 55–60% protein by dry weight / a high-quality protein source comparable to beef or fish"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "정부가 생사(生絲)를 수출 산업으로 크게 키우면서, 그 부산물이 길거리 간식으로",
+    "targetWhy": "'누에' · '종이컵에 이쑤시개'(일상 단서)를 뺐다. 생사 산업 → 누에 → 번데기로 한 번 생각해야 해 4(경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "생사에서 누에를 떠올리면 바로 풀린다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 번데기 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/3#g009a-K2-33",
+   "seed": {
+    "subject": "쥐포",
+    "aspect": null,
+    "ref": "K2-33",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1960년대 남해안에서 한 물고기가 대량으로 잡히자 어포로 만들어 먹기 시작했다고 합니다. 부산에서 시작해 남해안의 다른 항구들로 퍼진 것으로 추정되며, 말려서 구워 먹는 이 길거리 먹을거리는 무엇일까요?",
+    "answer": "쥐포",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "원료는 쥐치이며, 삼천포와 여수 같은 곳으로 전해진 것으로 추정됩니다. 한국에서 널리 먹기 시작한 것은 1960년대 말부터입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "엮음: 물고기 어포 + 말려서 구워 먹는 길거리 먹을거리",
+     "difWhy": "구워 먹는 어포 간식 — 일상 가까이",
+     "wor": 3,
+     "worWhy": "흔한 간식 기원",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "엮음: 물고기 어포 + 말려서 구워 먹는 길거리 먹을거리",
+     "difWhy": "구워 먹는 어포 간식 — 일상 가까이",
+     "wor": 3,
+     "worWhy": "흔한 간식 기원"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "범주 단서(물고기 어포를 말려 구운 길거리 먹을거리)가 곧 정답 — 빼면 묻는 대상이 흐려지고, 문서에 확인되는 더 깊은 세부(원료 쥐치는 정답 조각)가 없음"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "낚시",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/쥐포"
+    ],
+    "facts": [
+     {
+      "claim": "남해안에서 쥐치가 대량으로 잡혀 어포 도입",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쥐포",
+      "note": "(요지) 남해안에서 쥐치가 대량으로 잡히면서 어포를 도입해 쥐포를 만들었다."
+     },
+     {
+      "claim": "1960년대 부산에서 시작, 삼천포·여수 등지로 전해진 것으로 추정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쥐포",
+      "note": "(요지) 쥐치포는 1960년대 부산에서 시작되어 삼천포와 여수 등지로 전해진 것으로 추정된다."
+     },
+     {
+      "claim": "말리고 구워서 만든다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쥐포",
+      "note": "쥐치를 말리고 구워서 만든다."
+     },
+     {
+      "claim": "먹기 시작한 것은 1960년대 말부터",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/쥐포",
+      "note": "한국에서 쥐포를 먹기 시작한 것은 1960년대 말부터이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1960년대 남해안에서 한 물고기가 대량으로 잡히자 어포로 만들어 먹기 시작했다",
+    "targetWhy": "'삼천포'(쥐포의 쉬운 소재지)와 물고기 이름을 뺐다. 쥐포의 시작 시기·경로는 애호가 세부 — 4(경계 3: '구워 먹는 어포 간식'에서 짐작 가능)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'말려 구워 먹는 어포 간식'이 사실상 범위를 크게 좁힌다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 쥐포 new",
+    "warn": []
+   }
+  }
+ ]
+}

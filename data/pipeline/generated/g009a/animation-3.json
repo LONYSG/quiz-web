@@ -1,0 +1,223 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "animation/3",
+  "midKey": "animation",
+  "subName": "서양 TV 애니메이션",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animation/3#g009a-M2-27",
+   "seed": {
+    "subject": "릭 앤 모티",
+    "aspect": "팬 세부",
+    "ref": "M2-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "댄 하먼은 자기가 만든 NBC 시트콤에서 잠시 해고된 뒤 어덜트 스윔의 제안을 받고 저스틴 로일랜드에게 연락했고, 로일랜드는 단편 영화제 '채널 101'에 냈던 단편의 두 인물을 이름만 바꿔 쓰자고 했습니다. 하먼의 사무실에서 첫 초고를 여섯 시간 만에 쓴 이 TV 애니메이션은?",
+    "answer": "릭 앤 모티",
+    "acceptedAnswers": [
+     "Rick and Morty"
+    ],
+    "originalTitleVariants": [
+     "Rick and Morty"
+    ],
+    "variantCheck": "원제 영문(B10) — ko.wikipedia 문서 제목 '릭 앤 모티'",
+    "explanation": "출발점이 된 단편은 '백 투 더 퓨처'의 브라운 박사와 마티를 패러디한 것이었고, 로일랜드는 처음 두 주인공의 목소리를 혼자 다 맡았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "댄 하먼 … 저스틴 로일랜드",
+     "difWhy": "'댄 하먼·로일랜드 공동 창작' — 애니 애호가",
+     "wor": 3,
+     "worWhy": "유명 애니 제목 맞히기",
+     "acc": 4,
+     "accWhy": "애니메이션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'백 투 더 퓨처'의 브라운 박사와 마티를 패러디 … 어덜트 스윔",
+     "difWhy": "백투더퓨처 패러디 애니 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 애니 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "저스틴 로일랜드는 댄 하먼이 함께 세운 단편 영화제 '채널 101'에, '백 투 더 퓨처'의 브라운 박사와 마티를 패러디한 애니메이션 단편을 냈습니다. 이 단편에서 출발해 2013년 12월 어덜트 스윔에서 첫 시즌을 시작한 TV 애니메이션은 무엇일까요?",
+     "beforeExplanation": "로일랜드는 처음 두 주인공의 목소리를 혼자 다 맡았습니다.",
+     "removedCue": "'백 투 더 퓨처' 브라운 박사·마티 패러디 · 2013년 12월 어덜트 스윔 첫 시즌",
+     "addedCue": "하먼의 시트콤 해고 뒤 제안 · 여섯 시간 초고",
+     "why": "유명한 백투더퓨처 패러디 기원을 해설로 내리고 제작 뒷이야기로"
+    },
+    "generalHint": "2018년 주인공 과학자가 오이 피클로 변하는 에피소드로 에미상 애니메이션 프로그램상을 받았다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "팬 세부",
+    "genre": "애니",
+    "work": "릭 앤 모티",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Rick_and_Morty"
+    ],
+    "facts": [
+     {
+      "claim": "채널 101 · 하먼이 공동 설립",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rick_and_Morty",
+      "note": "The Real Animated Adventures of Doc and Mharti, which Roiland made for Channel 101 ... a short film festival Harmon co-founded"
+     },
+     {
+      "claim": "브라운 박사 · 마티 패러디",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rick_and_Morty",
+      "note": "an animated short starring parodies of Doc Brown and Marty McFly"
+     },
+     {
+      "claim": "로일랜드가 두 주인공 목소리",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rick_and_Morty",
+      "note": "Roiland initially voiced the eponymous characters."
+     },
+     {
+      "claim": "하먼이 Community 에서 잠시 해고 뒤 어덜트 스윔 접촉, 로일랜드가 Doc·Mharti 를 이름 바꿔 쓰자 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rick_and_Morty",
+      "note": "Harmon was briefly fired from Community … Roiland proposed using the Doc and Mharti characters, renamed Rick and Morty (요지)"
+     },
+     {
+      "claim": "첫 초고 여섯 시간",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rick_and_Morty",
+      "note": "The first draft was completed in six hours (Paramount lot, Harmon's office)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Rick_and_Morty"
+    ],
+    "hintNote": "The show won the Primetime Emmy for Outstanding Animated Program in 2018 for \"Pickle Rick\"",
+    "easiestCue": "댄 하먼·저스틴 로일랜드가 만든 어덜트 스윔 애니메이션",
+    "targetWhy": "제작진 이름과 제작 뒷이야기는 미국 애니 팬 세부 — 4 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "작품을 본 사람은 '박사+손자' 구도로 짐작",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "animation/3#g009a-M2-28",
+   "seed": {
+    "subject": "트랜스포머",
+    "aspect": "대중",
+    "ref": "M2-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주인공 진영의 지도자가 극 중에서 죽자 시청자 반발이 거셌고, 그는 시즌 3 마지막 회에서 되살아났습니다. 일본 도에이가 첫 두 시즌 애니메이션을 맡아 1984년 9월 미국에서 방영을 시작한 이 TV 애니메이션은 무엇일까요?",
+    "answer": "트랜스포머",
+    "acceptedAnswers": [
+     "Transformers"
+    ],
+    "originalTitleVariants": [
+     "Transformers"
+    ],
+    "variantCheck": "원제 영문(B10, 원제 The Transformers) — ko.wikipedia '트랜스포머 (애니메이션)'",
+    "explanation": "1983년 도쿄 장난감 박람회에서 눈에 띈 다카라의 '다이아클론'과 '마이크로체인지' 장난감이 해즈브로의 한 장난감 줄로 합쳐진 데서 출발했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "주인공 진영의 지도자가 극 중에서 죽자 … 시즌 3 마지막 회에서 되살아났습니다",
+     "difWhy": "옵티머스 죽음 일화 — 애니 관심층",
+     "wor": 3,
+     "worWhy": "대중적 작품 제목",
+     "acc": 4,
+     "accWhy": "애니메이션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "다이아클론·마이크로체인지가 합쳐진 해즈브로 장난감",
+     "difWhy": "'변신 로봇 장난감 애니' — 관심층",
+     "wor": 3,
+     "worWhy": "유명 작품 제목"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1983년 도쿄 장난감 박람회에서 눈에 띈 다카라의 '다이아클론'과 '마이크로체인지' 장난감은 해즈브로의 한 장난감 줄로 합쳐졌습니다. 일본 도에이가 첫 두 시즌 애니메이션을 맡아 1984년 9월 미국에서 방영을 시작한 이 TV 애니메이션은 무엇일까요?",
+     "beforeExplanation": "1986년 극장판에서 옵티머스 프라임이 죽자 시청자 반발이 거셌고, 그는 시즌 3 마지막 회에서 되살아났습니다.",
+     "removedCue": "다이아클론·마이크로체인지 장난감이 해즈브로 한 줄로 합쳐짐",
+     "addedCue": "지도자의 죽음에 시청자 반발 · 시즌 3 마지막 회 부활",
+     "why": "장난감 기원(변신 로봇 장난감)을 해설로, 해설의 방영 뒷이야기를 질문으로 맞바꿈"
+    },
+    "generalHint": "1986년 극장판에서 행성을 삼키는 악역의 목소리는 오슨 웰스가 맡은 마지막 영화 배역이었다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "대중",
+    "genre": "애니",
+    "work": "트랜스포머",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/The_Transformers_(TV_series)"
+    ],
+    "facts": [
+     {
+      "claim": "1983 도쿄 장난감 박람회 · 다이아클론 · 마이크로체인지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Transformers_(TV_series)",
+      "note": "Diaclone and MicroChange toys were subsequently discovered at the 1983 Tokyo Toy Fair ... later combined into one line for Hasbro's markets"
+     },
+     {
+      "claim": "도에이가 첫 두 시즌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Transformers_(TV_series)",
+      "note": "Toei co-produced the show as the main animation studio for its first two seasons."
+     },
+     {
+      "claim": "1984년 9월 미국 첫 방영",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Transformers_(TV_series)",
+      "note": "The show originally aired from September 17, 1984, to November 11, 1987, in syndication."
+     },
+     {
+      "claim": "옵티머스 프라임 죽음 반발 · 시즌 3 마지막 회 부활",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Transformers_(TV_series)",
+      "note": "The death of Optimus Prime proved a controversial move and did not sit well with the viewing audience ... led Hasbro to revive him in the season three finale."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Transformers:_The_Movie"
+    ],
+    "hintNote": "the final film featuring Orson Welles … He recorded Unicron's voice on October 5, 1985, and died five days later.",
+    "easiestCue": "일본 도에이가 첫 두 시즌 애니메이션을 맡아 1984년 9월 미국에서 방영을 시작",
+    "targetWhy": "옵티머스 프라임의 죽음·부활과 도에이 제작 — 애니 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "MD11 — 덜 뻔하지만 공정한 단서(만든 곳)",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  }
+ ]
+}

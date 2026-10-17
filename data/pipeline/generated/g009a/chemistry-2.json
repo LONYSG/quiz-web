@@ -1,0 +1,105 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "chemistry/2",
+  "midKey": "chemistry",
+  "subName": "주기율표",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/2#g009a-C1-24",
+   "seed": {
+    "subject": "게르마늄",
+    "aspect": null,
+    "ref": "C1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "멘델레예프가 1869년 있으리라 내다본 원소 가운데 하나로, 1886년 프라이베르크 대학의 클레멘스 빙클러가 광물 아기로다이트에서 은·황과 함께 찾아냈습니다. 빙클러는 처음에 이 원소를 '넵투늄'이라 부르려 했지만 이미 쓰인 이름이라 그만두었습니다. 이 원소는 무엇일까요?",
+    "answer": "게르마늄",
+    "acceptedAnswers": [
+     "저마늄"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia — '게르마늄' 이 '저마늄' 문서로 넘겨주기(API 조회, 대한화학회 표기 저마늄)",
+    "explanation": "1948년 이 원소로 만든 트랜지스터가 나오면서 고체 전자 공학의 수많은 쓰임이 열렸습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "빙클러가 아기로다이트에서 찾아낸 원소",
+     "difWhy": "게르마늄 발견사 — 대학 교양 화학",
+     "wor": 3,
+     "worWhy": "원소 이름 이야깃거리",
+     "acc": 5,
+     "accWhy": "화학 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "빙클러가 아기로다이트에서 찾아낸 원소",
+     "difWhy": "게르마늄 발견사 — 대학 교양 화학",
+     "wor": 3,
+     "worWhy": "원소 이름 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "적외선을 잘 통과시켜 열화상 카메라의 앞쪽 렌즈와 광섬유 코어의 첨가제로 쓰인다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Germanium"
+    ],
+    "facts": [
+     {
+      "claim": "멘델레예프가 1869년 예언(에카규소)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Germanium",
+      "note": "Mendeleev called it ekasilicon (Es), and he estimated its atomic weight to be 70 (later 72). (요지: 1869년 예언)"
+     },
+     {
+      "claim": "1886년 프라이베르크 대학 빙클러가 아기로다이트에서 은·황과 함께 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Germanium",
+      "note": "Clemens Winkler at Freiberg University found the new element, along with silver and sulfur, in the mineral argyrodite. (1886년 2월 6일)"
+     },
+     {
+      "claim": "처음 '넵투늄'으로 하려다 이미 쓰인 이름이라 포기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Germanium",
+      "note": "he decided that he would name his element neptunium ... (the name was already claimed)"
+     },
+     {
+      "claim": "1948년 게르마늄 트랜지스터",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Germanium",
+      "note": "The development of the germanium transistor in 1948 opened the door to countless applications of solid state electronics."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Germanium"
+    ],
+    "hintNote": "Because germanium is transparent in the infrared wavelengths … It is especially used as the front optic in thermal imaging cameras … useful for … the core part of optical fibers.",
+    "easiestCue": "멘델레예프가 1869년 있으리라 내다본 원소 가운데 하나로, 1886년 … 클레멘스 빙클러가 광물 아기로다이트에서",
+    "targetWhy": "'에카규소' 교과 단서를 빼서 예언 원소 셋(Ga · Sc · Ge) 중 빙클러·넵투늄으로만 갈린다 — 화학사 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국에서 이름이 흔한 원소, 단서는 발견·이름 붙이기 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

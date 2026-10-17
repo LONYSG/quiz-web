@@ -1,0 +1,105 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "medicine/4",
+  "midKey": "medicine",
+  "subName": "영양·비타민",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/4#g009a-C1-21",
+   "seed": {
+    "subject": "비타민 B12",
+    "aspect": null,
+    "ref": "C1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1955년 도러시 호지킨은 X선 결정 자료로 이 비타민의 구조를 밝혔고, 1972년에는 우드워드와 에셴모저가 실험실 합성에 성공했습니다. 일부 고세균과 세균만이 만들어 낼 수 있는 이 비타민은 무엇일까요?",
+    "answer": "비타민 B12",
+    "acceptedAnswers": [
+     "코발라민"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia — '코발라민' 이 '비타민 B12' 문서로 넘겨주기(API 조회)",
+    "explanation": "분자 한가운데에 코발트 이온이 자리 잡고 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "일부 고세균과 세균만 만들 수 있는 비타민",
+     "difWhy": "호지킨·B12 합성 — 대학 교양 생화학",
+     "wor": 4,
+     "worWhy": "교양 — 영양 기본 상식",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "일부 고세균과 세균만 만들 수 있는 비타민",
+     "difWhy": "호지킨·B12 합성 — 대학 교양 생화학",
+     "wor": 4,
+     "worWhy": "교양 — 영양 기본 상식"
+    },
+    "rewrite": null,
+    "generalHint": "모든 비타민 가운데 화학적으로 가장 복잡하며, 식물은 다른 효소 경로를 써서 이 비타민 없이 살아간다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Vitamin_B12"
+    ],
+    "facts": [
+     {
+      "claim": "호지킨이 결정 자료로 구조 결정, 1955년 발표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vitamin_B12",
+      "note": "determined by Dorothy Hodgkin based on crystallographic data and published in 1955"
+     },
+     {
+      "claim": "1972년 우드워드·에셴모저 실험실 합성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vitamin_B12",
+      "note": "was achieved by Robert Burns Woodward and Albert Eschenmoser in 1972."
+     },
+     {
+      "claim": "일부 고세균과 세균만 합성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vitamin_B12",
+      "note": "Vitamin B12 is synthesized exclusively by certain archaea and bacteria."
+     },
+     {
+      "claim": "중심 금속 이온은 코발트",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Vitamin_B12",
+      "note": "The central metal ion is cobalt."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Vitamin_B12"
+    ],
+    "hintNote": "Vitamin B12 is the most chemically complex of all vitamins / Animals require B12 but plants do not, relying instead on alternative enzymatic pathways.",
+    "easiestCue": "일부 고세균과 세균만이 만들어 낼 수 있는 이 비타민",
+    "targetWhy": "'악성 빈혈' 같은 대표 결핍증을 빼고 구조 결정·합성·미생물 합성만 — 대학 교양 생화학",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'세균만 만든다' 는 채식 관심층이 아는 사실이라 3 으로 볼 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 비타,타민"
+    ]
+   }
+  }
+ ]
+}

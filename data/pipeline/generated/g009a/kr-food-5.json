@@ -1,0 +1,454 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "kr-food/5",
+  "midKey": "kr-food",
+  "subName": "떡·한과·전통 음료",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/5#g009a-K2-34",
+   "seed": {
+    "subject": "수정과",
+    "aspect": null,
+    "ref": "K2-34",
+    "pairedWith": 2322
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2322,
+    "question": "1921년 『해동죽지』는 고려 때 궁녀들이 설날에 이 음료를 만들었다고 적었습니다. 옛날에는 '백제호'라고도 불렀다는 이 음료는 무엇일까요?",
+    "answer": "수정과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1849년 『동국세시기』에도 실려 있고, 본래는 꿀로 단맛을 냈다가 나중에 설탕으로 바뀌었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "옛날에는 '백제호'라고도 불렀다는 이 음료 / 『해동죽지』 고려 궁녀 설날",
+     "difWhy": "백제호·해동죽지 — 전통음식 애호가",
+     "wor": 3,
+     "worWhy": "흔한 음료의 옛 이름 — 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "옛날에는 '백제호'라고도 불렀다는 이 음료 / 『해동죽지』 고려 궁녀 설날",
+     "difWhy": "백제호·해동죽지 — 전통음식 애호가",
+     "wor": 3,
+     "worWhy": "흔한 음료의 옛 이름 — 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "1765년 『수작의궤』에도 이름이 보이는 이 음료는 초기에는 배와 유자를 넣어 만들었다고 한다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sujeonggwa"
+    ],
+    "facts": [
+     {
+      "claim": "해동죽지(1921) — 고려 때 궁녀들이 설날에 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sujeonggwa",
+      "note": "(번역 요지) Per Haedongjukji (1921), palace women prepared it on New Year's Day during the Goryeo era."
+     },
+     {
+      "claim": "옛 이름 백제호",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sujeonggwa",
+      "note": "Its former name was baekjeho (백제호), literally meaning 'white milky beverage.'"
+     },
+     {
+      "claim": "1849년 동국세시기에 실림 · 꿀에서 설탕으로",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sujeonggwa",
+      "note": "The earliest mention of sujeonggwa dates back to 1849 in the book Dongguksesigi. / (요지) Honey was the original sweetener, and sugar later replaced it. / ★ ko 위키는 1765년 『수작의궤』에 처음 나온다고 적음 — 처음은 단정하지 않음(GEN)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/수정과"
+    ],
+    "hintNote": "1765년 『수작의궤』에 처음 등장했고 … 처음에는 배와 유자를 넣어 만들었으며, 이후 곶감을 불린 물에 생강과 잣을 넣는 방식으로 바뀌었다",
+    "easiestCue": "옛날에는 '백제호'라고도 불렀다는 이 음료",
+    "targetWhy": "생강·계피·곶감(1회차의 정의 — 범주 단서)을 넣지 않았다. 해동죽지 · 옛 이름은 전통 음식 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 음료의 옛 기록과 옛 이름. 단 '백제호'는 영문 문서만 확인 — VERIFY 가 한글 출처로 다시 볼 것",
+    "pairCheck": "1회차 #2322 질문(생강·계피·곶감) · 해설(잣) · 힌트(없음)와 겹치지 않음 — 이번 단서는 해동죽지 기록 · 옛 이름",
+    "dbCheck": "answercheck 수정과 pair-or-different — #2322 의 2회차(가)",
+    "warn": [],
+    "first": {
+     "id": 2322,
+     "question": "생강과 계피를 달여 식힌 뒤 곶감을 띄워 내는 전통 음료는?",
+     "explanation": "잣을 몇 알 띄워 내기도 합니다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "kr-food/5#g009a-K2-35",
+   "seed": {
+    "subject": "쌍화탕",
+    "aspect": null,
+    "ref": "K2-35",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "황기건중탕에서 교이(엿)를 빼고 사물탕을 합친 처방으로, 기혈이 손상된 데다 피로가 겹칠 때 쓴다고 합니다. 중국 송나라 때 진사문 등이 엮은 『태평혜민화제국방』에서 기원을 찾을 수 있는 이 처방은 무엇일까요?",
+    "answer": "쌍화탕",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "질문이 '이 탕'을 물어 쌍화차는 넣지 않음(B2)",
+    "explanation": "백작약을 가장 많이 넣고 숙지황·천궁·당귀·황기 등을 더해 달이며, 차로 마시기도 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 5,
+     "easiestCue": "황기건중탕에서 교이(엿)를 빼고 사물탕을 합친 처방",
+     "difWhy": "'황기건중탕 + 사물탕 처방' — 한의 전공",
+     "wor": 3,
+     "worWhy": "흔한 음료의 처방 유래",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "백작약을 가장 많이 넣고 숙지황·천궁·당귀·황기를 더해 달이며 차로도 마시는 이 탕",
+     "difWhy": "작약·숙지황·당귀 차로 마시는 탕 — 관심층",
+     "wor": 3,
+     "worWhy": "흔한 탕의 기원·처방 — 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "중국 송나라 때 왕명을 받아 엮은 『태평혜민화제국방』에서 기원을 찾을 수 있는 처방입니다. 백작약을 가장 많이 넣고 숙지황·천궁·당귀·황기를 더해 달이며 차로도 마시는 이 탕은 무엇일까요?",
+     "beforeExplanation": "황기건중탕에서 교이를 빼고 사물탕을 합친 처방이라고 설명됩니다.",
+     "removedCue": "백작약을 가장 많이 넣고 숙지황·천궁·당귀·황기를 더해 달이며 차로도 마시는 이 탕",
+     "addedCue": "황기건중탕에서 교이를 빼고 사물탕을 합친 구성 · 기혈 손상과 피로",
+     "why": "약재 목록·차로 마심 은 생활 관심층이 바로 앎 — 해설로 옮기고 처방 구성 원리로"
+    },
+    "generalHint": "큰 병을 앓고 난 뒤 쇠약해 기가 모자라고 땀이 날 때에도 효험이 있다고 한다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/쌍화탕"
+    ],
+    "facts": [
+     {
+      "claim": "송대 태평혜민화제국방에서 기원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍화탕",
+      "note": "중국 송대에 진사문 등이 왕명을 받아 편찬한 태평혜민화제국방이란 책에서 기원을 알 수 있고"
+     },
+     {
+      "claim": "구성 — 백작약 8~10g, 숙지황·천궁·당귀·황기 각 4g 등",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/쌍화탕",
+      "note": "(요지) 백작약 8~10g, 숙지황·천궁·당귀·황기 각 4g, 계피·감초 각 3g, 생강·대추 4g"
+     },
+     {
+      "claim": "차로도 먹음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/쌍화탕",
+      "note": "차로 먹는 경우도 있으며"
+     },
+     {
+      "claim": "황기건중탕에서 교이를 빼고 사물탕 합방",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍화탕",
+      "note": "(요지) 쌍화탕은 황기건중탕에서 교이를 뺀 것에 사물탕을 합방한 처방이다."
+     },
+     {
+      "claim": "기혈이 손상되고 피로가 겹칠 때",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍화탕",
+      "note": "기혈이 손상되고 성교 후 피로가 겹칠 때, 또는 큰 병을 앓은 뒤 쇠약하고 기가 모자라며 땀이 나는 경우에 효과가 있다 (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/쌍화탕"
+    ],
+    "hintNote": "또는 큰 병을 앓고 난 뒤에 쇠약하고 기가 모자라며 땀이 나는 경우에 효험이 있다.",
+    "easiestCue": "황기건중탕 + 사물탕 합방 처방",
+    "targetWhy": "처방 구성 원리 — 한방·건강 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "약재 이름이 낯설어 '전문 용어' 쪽으로 기울 수 있다(나쁜 어려움 의심). 정답 자체는 누구나 안다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 쌍화탕·쌍화차 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/5#g009a-K2-36",
+   "seed": {
+    "subject": "호박엿",
+    "aspect": null,
+    "ref": "K2-36",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "엿기름과 함께 후박나무 껍데기를 고아 만든다고 소개되는 엿이 있습니다. 이름만 들으면 다른 식물로 만든 것 같은 이 엿은 무엇일까요?",
+    "answer": "호박엿",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "울릉도의 것이 특히 유명합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "이름만 들으면 다른 식물로 만든 것 같은 엿",
+     "difWhy": "'호박 아닌 호박엿' — 방송 이야깃거리",
+     "wor": 3,
+     "worWhy": "이름 유래 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "이름만 들으면 다른 식물로 만든 것 같은 엿",
+     "difWhy": "'호박 아닌 호박엿' — 방송 이야깃거리",
+     "wor": 3,
+     "worWhy": "이름 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "확인되는 깊은 세부 없음 — 문서(호박엿 토막글)에 후박나무 껍데기 · 울릉도 말고 세부가 없고, 후박 이야기 자체가 방송 이야깃거리"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/호박엿"
+    ],
+    "facts": [
+     {
+      "claim": "후박나무 껍데기를 고아 만든 엿 · 주재료 엿기름과 후박나무 껍데기",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/호박엿",
+      "note": "호박엿은 후박나무의 껍데기를 고아 만든 엿이다. / (정보 상자) 주요 재료: 엿기름, 후박나무의 껍데기"
+     },
+     {
+      "claim": "울릉도 호박엿이 유명",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/호박엿",
+      "note": "울릉도 호박엿이 유명하다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "엿기름과 함께 후박나무 껍데기를 고아 만든다고 소개되는 엿",
+    "targetWhy": "'울릉도'(바로 풀리는 소재지)를 해설로 옮겼다. 후박나무 재료는 음식 애호가 세부 — 4(경계 3: '후박'과 소리가 닮아 짐작 가능)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'이름만 들으면 다른 식물' 문장이 추리를 돕는다 — 질문이 짧다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 호박엿 new (#4931 엿과 정답·지식 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/5#g009a-K2-37",
+   "seed": {
+    "subject": "화전",
+    "aspect": null,
+    "ref": "K2-37",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 시대 궁녀들은 봄이면 중전을 모시고 비원에 나가 이 떡을 부쳐 먹으며 봄을 즐겼다고 합니다. 재료가 없는 철에는 미나리 잎이나 쑥·대추·석이로 모양을 내 만들기도 했다는 이 떡은 무엇일까요?",
+    "answer": "화전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "통영 지방에서는 반죽을 크게 만들고 꽃을 넉넉히 올려 부쳐 먹습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "봄에 꽃으로 모양 내 부쳐 먹는 떡",
+     "difWhy": "진달래 화전 — 방송·일상",
+     "wor": 3,
+     "worWhy": "전통 떡 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "봄에 꽃으로 모양 내 부쳐 먹는 떡",
+     "difWhy": "진달래 화전 — 방송·일상",
+     "wor": 3,
+     "worWhy": "전통 떡 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 정답이 유일하지 않음 — 정답 이름이 '꽃을 지진 떡'이라 꽃을 말하면 바로 풀리고, 꽃을 빼면 다른 떡과 갈리지 않음"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/화전_(음식)"
+    ],
+    "facts": [
+     {
+      "claim": "조선 궁녀들이 중전을 모시고 비원에서 화전을 부쳐 먹음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/화전_(음식)",
+      "note": "(요지) 조선시대에는 궁녀들이 중전을 모시고 비원에 나가 화전을 부쳐 먹으며 봄을 즐겼다."
+     },
+     {
+      "claim": "꽃이 없으면 미나리 잎·쑥·대추·석이로 꽃 모양",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/화전_(음식)",
+      "note": "(요지) 꽃이 없으면 미나리 잎, 쑥, 대추, 석이 등으로 꽃 모양을 냈다."
+     },
+     {
+      "claim": "통영 — 반죽 크게, 꽃 넉넉히",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/화전_(음식)",
+      "note": "(요지) 통영 지방에서는 반죽을 크게 만들고 꽃을 넉넉히 올려 부쳐 먹는다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "재료가 없는 철에는 미나리 잎이나 쑥·대추·석이로 모양을 내 만들기도 했다는",
+    "targetWhy": "진달래 · 삼짇날 · 화전놀이(교과서·일상 단서)를 뺐다. 궁중 비원 일화와 꽃 대신 쓴 재료는 전통 음식 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'재료가 없는 철'이 꽃을 가리켜 한 번 생각하면 닿는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 화전 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/5#g009a-K2-38",
+   "seed": {
+    "subject": "개피떡",
+    "aspect": null,
+    "ref": "K2-38",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "껍질로 싸서 만드는 떡이라는 뜻의 '갑피병'·'가피떡'이라는 이름이 바뀌어 지금 이름이 되었다고 합니다. 떡마다 참기름을 발라 서로 달라붙지 않게 하는 이 떡은 무엇일까요?",
+    "answer": "개피떡",
+    "acceptedAnswers": [
+     "바람떡"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '개피떡' 문서 — '바람떡이라고도 한다'(같은 떡의 흔한 다른 이름, B1)",
+    "explanation": "찹쌀가루를 쪄 절구에 찧은 반죽에 껍질 벗긴 팥으로 만든 흰 팥소를 넣어 빚습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "'갑피병'·'가피떡'이라는 이름이 바뀌어 지금 이름",
+     "difWhy": "가피떡→개피떡 — 관심층",
+     "wor": 3,
+     "worWhy": "떡 이름 유래 — 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'갑피병'·'가피떡'이라는 이름이 바뀌어 지금 이름",
+     "difWhy": "가피떡→개피떡 — 관심층",
+     "wor": 3,
+     "worWhy": "떡 이름 유래 — 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "ko.wikipedia '개피떡' 은 토막글이라 이름 유래 외에 확인되는 깊은 세부가 없음 — 유래를 빼면 '참기름 바른 떡' 만 남아 정답이 유일하지 않음"
+    },
+    "generalHint": "보통 반달 모양으로 빚어 낸다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/개피떡"
+    ],
+    "facts": [
+     {
+      "claim": "갑피병·가피떡에서 개피떡으로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/개피떡",
+      "note": "(요지) 껍질로 싸서 만드는 떡이라는 뜻에서 갑피병(甲皮餠), 가피떡(加皮餠)이라고 부르던 것이 개피떡으로 바뀌었다."
+     },
+     {
+      "claim": "떡마다 참기름을 발라 달라붙지 않게",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/개피떡",
+      "note": "(요지) 떡마다 참기름을 발라 달라붙지 않게 한다."
+     },
+     {
+      "claim": "바람떡이라고도 함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/개피떡",
+      "note": "(요지) 개피떡은 콩고물이나 팥소를 넣고 반달 모양으로 빚은 떡으로, 바람떡이라고도 한다."
+     },
+     {
+      "claim": "찹쌀가루를 쪄 절구에 찧고 거피팥소",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/개피떡",
+      "note": "(요지) 찹쌀가루를 쪄서 절구에 찧어 반죽한 뒤 … 거피팥소(흰 팥소)를 넣고 밀봉한다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/개피떡"
+    ],
+    "hintNote": "콩고물 소를 넣고 반달 모양으로 빚은 떡이다.",
+    "easiestCue": "'갑피병'·'가피떡'이라는 이름이 바뀌어 지금 이름이 되었다",
+    "targetWhy": "'바람떡'(일상 별칭) · 반달 모양 정의를 뺐다. 옛 이름에서의 변화는 전통 음식 애호가 세부 — 4(경계 3: '가피'에서 소리로 짐작 가능)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이름 유래형이라 낱말 뜻 꼴에 가깝다 — 소리 실마리가 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 개피떡·바람떡 — 아래 실행 결과",
+    "warn": [
+     "정답조각 피떡"
+    ]
+   }
+  }
+ ]
+}

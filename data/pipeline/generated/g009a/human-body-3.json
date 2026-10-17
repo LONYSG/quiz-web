@@ -1,0 +1,114 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "human-body/3",
+  "midKey": "human-body",
+  "subName": "감각기관",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/3#g009a-C1-18",
+   "seed": {
+    "subject": "귀지",
+    "aspect": null,
+    "ref": "C1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "왁스 먹인 실이 흔하기 전에는, 바느질하는 사람이 자기의 이것을 발라 자른 실 끝이 풀리지 않게 했다고 합니다. ABCC11 유전자의 염기 하나 차이로 두 형으로 갈리는 사람의 이 분비물은 무엇일까요?",
+    "answer": "귀지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "젖은 형이 우성으로 겨드랑이 냄새가 나는 체질과 이어지고, 동아시아 사람에게는 회색에 잘 부서지는 마른 형이 흔합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "ABCC11 유전자의 염기 하나 차이로 두 형으로 갈리는 사람의 이 분비물",
+     "difWhy": "마른·젖은 두 형의 분비물 — 관심 있는 사람 (경계 2)",
+     "wor": 3,
+     "worWhy": "몸에 관한 이야깃거리",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "겨드랑이 냄새 나는 체질과 이어진 분비물",
+     "difWhy": "'귀지 형과 체취' — 관심층 상식",
+     "wor": 3,
+     "worWhy": "몸 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "사람의 이 분비물은 ABCC11 유전자의 염기 하나 차이로 두 가지 형으로 갈립니다. 그 가운데 우성인 형은 겨드랑이 냄새가 나는 체질과 이어져 있는데, 이 분비물은 무엇일까요?",
+     "beforeExplanation": "젖은 형이 우성, 회색에 잘 부서지는 마른 형이 열성이며 동아시아 사람에게 마른 형이 흔합니다.",
+     "removedCue": "우성 형이 겨드랑이 냄새 체질과 이어짐",
+     "addedCue": "재봉사가 실 끝 풀림을 막는 데 썼다는 옛 쓰임",
+     "why": "체취 상식을 해설로 옮기고 옛 생활 쓰임 세부로"
+    },
+    "generalHint": "중세 유럽에서는 채색 필사본에 쓸 안료를 만들 때 이것을 쓰기도 했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Earwax"
+    ],
+    "facts": [
+     {
+      "claim": "유전으로 정해지는 두 형, 젖은 형 우성 · 마른 형 열성",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Earwax",
+      "note": "There are two genetically-determined types of earwax: the wet type, which is dominant, and the dry type, which is recessive."
+     },
+     {
+      "claim": "ABCC11 유전자의 염기 하나 차이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Earwax",
+      "note": "This distinction is caused by a single base change (ABCC11 유전자 — 같은 단락)"
+     },
+     {
+      "claim": "젖은 형은 겨드랑이 냄새와 이어짐",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Earwax",
+      "note": "Wet-type earwax is associated with armpit odor, which is increased by sweat production."
+     },
+     {
+      "claim": "동아시아인은 마른 형(회색, 잘 부서짐)이 많음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Earwax",
+      "note": "East Asians ... are more likely to have the dry type of earwax (gray and flaky)"
+     },
+     {
+      "claim": "왁스 실이 흔하기 전 재봉사가 귀지로 실 끝 풀림을 막음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Earwax",
+      "note": "(before waxed thread was common) a seamstress would use her own earwax to stop the cut ends of threads from fraying."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Earwax"
+    ],
+    "hintNote": "Earwax was once used in medieval European pigment-making for illuminated manuscripts.",
+    "easiestCue": "ABCC11 유전자로 두 형으로 갈리는 분비물",
+    "targetWhy": "ABCC11·재봉 쓰임은 대학 교양 생물·생활사 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'두 가지 형으로 갈리는 분비물' 에서 귀지 유형을 떠올리는 관심층이 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

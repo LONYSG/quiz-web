@@ -1,0 +1,213 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "invention/3",
+  "midKey": "invention",
+  "subName": "물리·화학 분야 발견",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "invention/3#g009a-C2-18",
+   "seed": {
+    "subject": "아르곤",
+    "aspect": null,
+    "ref": "C2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "레일리 경은 화합물에서 얻은 질소가 공기에서 얻은 질소보다 0.5% 가볍다는 데 주목했고, 1894년 윌리엄 램지와 함께 그 까닭이 된 원소를 처음 따로 얻었습니다. 1957년 이전까지 원소 기호가 알파벳 한 글자였던 이 원소는 무엇일까요?",
+    "answer": "아르곤",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1785년 헨리 캐번디시도 공기 속에 이런 기체가 있으리라 짐작했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "화합물에서 얻은 질소가 공기에서 얻은 질소보다 0.5% 가볍다",
+     "difWhy": "'레일리·램지 발견' — 대학 교양 화학",
+     "wor": 4,
+     "worWhy": "비활성 기체 — 과학 교양",
+     "acc": 4,
+     "accWhy": "발명·발견 — 교과 과학사·교양"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "공기에서 산소·이산화탄소·물·질소를 걷어 낸 뒤 남은 기체",
+     "difWhy": "'공기에서 질소·산소 빼고 남은 기체' — 중학 과학 (경계 3)",
+     "wor": 4,
+     "worWhy": "교양 — 비활성 기체 발견"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "레일리 경은 화합물에서 얻은 질소가 공기에서 얻은 질소보다 0.5% 가볍다는 데 주목했고, 1894년 윌리엄 램지와 함께 깨끗한 공기에서 산소·이산화탄소·물·질소를 걷어 낸 뒤 남은 기체를 처음 따로 얻었습니다. 1785년 헨리 캐번디시도 공기 속에 있으리라 짐작했던 이 원소는 무엇일까요?",
+     "beforeExplanation": "1957년 이전까지 이 원소의 기호는 'A' 한 글자였습니다.",
+     "removedCue": "깨끗한 공기에서 산소·이산화탄소·물·질소를 걷어 낸 뒤 남은 기체",
+     "addedCue": "1957년 이전 원소 기호가 'A' 한 글자",
+     "why": "공기 성분 단서(중학)를 빼고 옛 원소 기호 세부로"
+    },
+    "generalHint": "칼륨-40이 붕괴해 생기는 이 원소를 재어 암석의 나이를 셈하는 연대 측정법이 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Argon"
+    ],
+    "facts": [
+     {
+      "claim": "화합물 질소가 공기 질소보다 0.5% 가벼움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Argon",
+      "note": "nitrogen produced from chemical compounds was 0.5% lighter than nitrogen from the atmosphere"
+     },
+     {
+      "claim": "1894년 레일리·램지가 공기에서 처음 분리, 산소·CO2·물·질소 제거",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Argon",
+      "note": "Argon was first isolated from air in 1894 by Lord Rayleigh and Sir William Ramsay at University College London ... removed oxygen, carbon dioxide, water, and nitrogen from a sample of clean air"
+     },
+     {
+      "claim": "1957년 이전 기호 A",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Argon",
+      "note": "Prior to 1957, the symbol for argon was \"A\"."
+     },
+     {
+      "claim": "1785년 캐번디시가 짐작",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Argon",
+      "note": "An unreactive gas was suspected to be a component of air by Henry Cavendish in 1785."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/K%E2%80%93Ar_dating"
+    ],
+    "hintNote": "Potassium–argon dating … is a radiometric dating method used in geochronology and archaeology. It is based on the measurement of the product of the radioactive decay of potassium-40 (40K) into argon (Ar).",
+    "easiestCue": "1894년 레일리 · 램지가 처음 따로 얻은 원소",
+    "targetWhy": "레일리 · 램지 발견 · 옛 기호 A 는 대학 교양 화학사 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 원소의 발견 경위",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "invention/3#g009a-C2-19",
+   "seed": {
+    "subject": "네온",
+    "aspect": null,
+    "ref": "C2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1898년 램지와 트래버스는 공기를 액체가 되도록 식혔다가 데우며 끓어 나오는 기체를 모았는데, 5월 말부터 여섯 주 동안 크립톤에 이어 두 번째로 찾아낸 것이 이 기체였습니다. 관에서 쏟아진 빛을 두고 트래버스는 결코 잊지 못할 광경이라고 적었는데, 이 원소는 무엇일까요?",
+    "answer": "네온",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1910년 12월 조르주 클로드가 이 기체를 봉한 관으로 오늘날과 같은 조명을 선보였고, 이름은 램지의 아들이 제안한 라틴어 '노붐'(새로운)의 그리스어 짝말에서 왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "관에서 쏟아진 빛을 두고 … 결코 잊지 못할 광경",
+     "difWhy": "관 속에서 빛나는 비활성 기체 — 고교 화학 (경계 4)",
+     "wor": 3,
+     "worWhy": "원소 발견 일화",
+     "acc": 4,
+     "accWhy": "발명·발견 — 교과 과학사·교양"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "진홍빛 기체를 봉한 관으로 조명",
+     "difWhy": "'관 조명 기체' — 중학 과학",
+     "wor": 4,
+     "worWhy": "원소 기본 상식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1898년 램지와 트래버스는 공기를 액체가 되도록 식혔다가 데우면서 나오는 기체를 모았는데, 관에서 쏟아진 진홍빛을 두고 트래버스는 결코 잊지 못할 광경이라고 적었습니다. 1910년 12월 조르주 클로드가 이 기체를 봉한 관으로 오늘날과 같은 조명을 선보인, 이 원소는 무엇일까요?",
+     "beforeExplanation": "이름은 램지의 아들이 제안한 라틴어 '노붐'(새로운)의 그리스어 짝말에서 왔습니다.",
+     "removedCue": "진홍빛 기체를 봉한 관으로 오늘날과 같은 조명(조르주 클로드)",
+     "addedCue": "1898년 5월 말부터 여섯 주 동안 크립톤 다음으로 찾은 기체",
+     "why": "간판 조명(중학 과학)과 진홍빛을 빼고 발견 순서 세부로 바꿈"
+    },
+    "generalHint": "질량으로 따지면 우주에서 수소·헬륨·산소·탄소 다음으로 다섯째로 많은 원소다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Neon"
+    ],
+    "facts": [
+     {
+      "claim": "1898년 램지·트래버스, 공기를 액체로 식힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neon",
+      "note": "Neon was discovered in 1898 by the British chemists Sir William Ramsay and Morris Travers ... Ramsay chilled a sample of air until it became a liquid, then warmed the liquid and captured the gases as they boiled off."
+     },
+     {
+      "claim": "트래버스의 진홍빛 기록",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neon",
+      "note": "the blaze of crimson light from the tube told its own story and was a sight to dwell upon and never forget"
+     },
+     {
+      "claim": "1910년 12월 클로드의 네온 조명 시연",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Neon",
+      "note": "In December 1910 Claude demonstrated modern neon lighting based on a sealed tube of neon."
+     },
+     {
+      "claim": "램지 아들이 제안한 novum 의 그리스어 짝",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Neon",
+      "note": "the Greek analogue of the Latin novum ('new') suggested by Ramsay's son"
+     },
+     {
+      "claim": "5월 말부터 여섯 주 동안, 크립톤 다음으로 찾은 기체",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neon",
+      "note": "in a six-week period beginning at the end of May 1898. The first remaining gas to be identified was krypton; the next, after krypton had been removed, was a gas which gave a brilliant red light"
+     },
+     {
+      "claim": "액체 공기를 데우며 끓어 나오는 기체를 모음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neon",
+      "note": "Neon was discovered when Ramsay chilled a sample of air until it became a liquid, then warmed the liquid and captured the gases as they boiled off."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Neon"
+    ],
+    "hintNote": "it is the fifth most abundant chemical element in the universe by mass, after hydrogen, helium, oxygen, and carbon",
+    "easiestCue": "램지·트래버스가 크립톤 다음으로 찾은 기체",
+    "targetWhy": "발견 순서는 화학사 대학 교양 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'진홍빛 관 조명' 이 네온사인을 연상시킬 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

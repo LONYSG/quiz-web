@@ -1,0 +1,109 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "psychology/2",
+  "midKey": "psychology",
+  "subName": "발달·성격 이론",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "psychology/2#g009a-H2-23",
+   "seed": {
+    "subject": "MBTI",
+    "aspect": null,
+    "ref": "H2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 성격 검사를 다듬은 사람은 잡지 '매클루어스'가 연 추리소설 공모에 첫 소설로 당선된 작가이기도 했고, 필라델피아 큰 은행의 인사 책임자 에드워드 헤이 밑에서 검사 만드는 법을 배웠습니다. 1962년 미국 교육평가원(ETS)에서 첫 매뉴얼이 나온 이 검사는?",
+    "answer": "MBTI",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "스위스 정신의학자 카를 융이 1921년 내놓은 심리 유형 이론에 바탕을 둡니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1962년 미국 교육평가원(ETS)에서 첫 매뉴얼이 나온 이 검사",
+     "difWhy": "성격 검사 개발 내력 — 심리 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "흔한 검사의 기원",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "어머니와 딸이 함께 만든 이 성격 검사",
+     "difWhy": "'모녀가 만든 성격 검사' — 방송·뉴스에서 흔히 (경계 3)",
+     "wor": 4,
+     "worWhy": "시사 상식 — 유행 성격 검사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "제2차 세계대전 무렵 어머니와 딸이 함께 만든 이 성격 검사는, 딸이 필라델피아 큰 은행의 인사 책임자 에드워드 헤이 밑에서 검사 만드는 법을 배워 다듬었습니다. 1962년 미국 교육평가원(ETS)에서 첫 매뉴얼이 나온 이 검사는?",
+     "beforeExplanation": null,
+     "removedCue": "어머니와 딸이 함께 만든 이 성격 검사",
+     "addedCue": "검사를 다듬은 사람이 '매클루어스' 추리소설 공모 당선 작가",
+     "why": "방송에 흔한 '모녀가 만든 검사'를 빼고 만든 이의 추리소설가 이력으로"
+    },
+    "generalHint": "1975년부터는 컨설팅 사이콜로지스트 프레스(CPP)가 이 검사를 펴내게 되었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator",
+     "https://en.wikipedia.org/wiki/Isabel_Briggs_Myers"
+    ],
+    "facts": [
+     {
+      "claim": "딸이 필라델피아 은행 인사 책임자 헤이에게 검사 제작을 배움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator",
+      "note": "apprenticed herself to Edward N. Hay (1891–1958), the head personnel officer for a large Philadelphia bank ... learned rudimentary test construction, scoring, validation, and statistical methods"
+     },
+     {
+      "claim": "1962년 ETS 에서 첫 매뉴얼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator",
+      "note": "[U]nder these auspices (Educational Testing Service), the first MBTI 'manual' was published, in 1962."
+     },
+     {
+      "claim": "1921년 융의 심리 유형 이론 바탕",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator",
+      "note": "based on the theory of psychological types proposed by Swiss psychiatrist Carl Jung in 1921"
+     },
+     {
+      "claim": "이저벨 마이어스의 첫 추리소설 Murder Yet to Come 이 McClure's 공모에 당선",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Isabel_Briggs_Myers",
+      "note": "Her novel won the contest — a mystery-writing competition run jointly by McClure's magazine and Frederick A. Stokes Company (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Myers–Briggs_Type_Indicator"
+    ],
+    "hintNote": "The publication of the MBTI was transferred to Consulting Psychologists Press in 1975",
+    "easiestCue": "에드워드 헤이 밑에서 검사 제작을 배운 사람 · 1962 ETS 매뉴얼",
+    "targetWhy": "추리소설 공모·헤이·ETS 는 심리학 교양 깊은 쪽 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "MBTI 유행으로 '모녀가 만들었다' 가 방송에 나온 적이 있어 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck MBTI — new",
+    "warn": []
+   }
+  }
+ ]
+}

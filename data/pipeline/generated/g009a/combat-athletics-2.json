@@ -1,0 +1,674 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "combat-athletics/2",
+  "midKey": "combat-athletics",
+  "subName": "태권도·유도·씨름",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "combat-athletics/2#g009a-S3-23",
+   "seed": {
+    "subject": "창코나베",
+    "aspect": null,
+    "ref": "S3-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 일본 냄비 요리는 대회 기간에는 닭고기만 넣는데, 선수는 네 발로 엎드리지 말고 닭처럼 늘 두 발로 서 있어야 한다는 뜻이 담겨 있습니다. 은퇴한 선수가 차린 전문 식당 가운데 첫 곳은 1937년 도쿄 료고쿠에서 문을 열었는데, 이 요리는 무엇일까요?",
+    "answer": "창코나베",
+    "acceptedAnswers": [
+     "잔코나베",
+     "창코"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '창코' 동음이의 문서가 '잔코나베' 로 적음 · en 'Chankonabe — also known as chanko' · 한국 매체 표기 '창코나베'(검색 확인은 못 함 — 흔한 음차라 대표로 둠)",
+    "explanation": "국물은 다시마 육수나 닭 육수에 사케나 미림으로 맛을 내고, 무와 청경채 같은 채소를 넣습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "선수는 네 발로 엎드리지 말고 … 은퇴한 선수가 차린",
+     "difWhy": "'스모 선수 냄비 요리' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "스모 음식 이야깃거리",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "스모 대회 기간에 내는 이 냄비 요리",
+     "difWhy": "'스모 선수의 냄비 요리' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 스모 문화 음식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "스모 대회 기간에 내는 이 냄비 요리에는 닭고기만 넣는데, 씨름꾼은 네 발로 엎드리지 않고 닭처럼 늘 두 발로 서 있어야 한다는 뜻이 담겨 있습니다. 은퇴한 스모 선수가 차린 식당에서도 흔히 파는 이 요리는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "스모 대회 기간에 내는 이 냄비 요리",
+     "addedCue": "1937년 료고쿠의 첫 전문 식당",
+     "why": "'스모 선수의 냄비 요리' 가 곧 정답 — 스모를 감추고 두 발 규칙·료고쿠로 스모를 추론하게"
+    },
+    "generalHint": "이 요리는 서열대로 내어, 선배와 손님이 먼저 고르고 막내는 남은 것을 먹는다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chankonabe"
+    ],
+    "facts": [
+     {
+      "claim": "대회 기간 창코나베는 닭고기만",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chankonabe",
+      "note": "Chankonabe served during sumo tournaments is made exclusively with chicken."
+     },
+     {
+      "claim": "닭처럼 두 발로 — 네 발이 아니라",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chankonabe",
+      "note": "a wrestler should always be on two legs like a chicken, and not on all fours."
+     },
+     {
+      "claim": "은퇴한 스모 선수의 식당",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chankonabe",
+      "note": "often served in restaurants operated by retired sumo wrestlers who specialize in the dish."
+     },
+     {
+      "claim": "국물·재료",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chankonabe",
+      "note": "The dish contains a dashi or chicken broth soup base with sake or mirin to add flavor ... vegetables such as daikon and bok choy"
+     },
+     {
+      "claim": "은퇴 선수 식당의 첫 곳 — 1937년 료고쿠",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chankonabe",
+      "note": "The first of these, Kawasaki Chanko, was started in 1937 in the Ryōgoku district of Tokyo."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Chankonabe"
+    ],
+    "hintNote": "Chankonabe is traditionally served according to seniority, with the senior wrestlers and any guests of the sumo stable receiving first choice, and the junior wrestlers getting whatever is left.",
+    "easiestCue": "대회 기간 닭고기만 넣는 이유(두 발로 서야 함)",
+    "targetWhy": "스모 규칙과 음식 풍습을 엮어야 — 스포츠·일본 문화 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'스모 선수의 냄비 요리' 가 곧 정의라 이름을 아는 사람에게는 3",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "combat-athletics/2#g009a-S3-24",
+   "seed": {
+    "subject": "헤이싱크",
+    "aspect": null,
+    "ref": "S3-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "키 198cm의 이 네덜란드 유도 선수는 1986년 마스트리흐트에서 열린 국제유도연맹 회의에서, 한 선수에게 파란 유도복을 입히자고 처음 제안했습니다. 1973년부터 자이언트 바바의 전일본 프로레슬링에서도 뛴 이 선수는 누구일까요?",
+    "answer": "헤이싱크",
+    "acceptedAnswers": [
+     "안톤 헤이싱크",
+     "헤싱크"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '안톤 헤이싱크' 문서 제목 · '헤싱크' 는 한국 매체의 옛 표기(문서로 확인 못 함 — 빼도 됨)",
+    "explanation": "그는 1964년 도쿄 대회 무제한급 결승에서 일본의 가미나가 아키오를 꺾었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "한 선수에게 파란 유도복을 입히자고 처음 제안한 네덜란드 유도 선수",
+     "difWhy": "헤이싱크 — 유도 애호가",
+     "wor": 3,
+     "worWhy": "유도 전설 인물 이야깃거리",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "한 선수에게 파란 유도복을 입히자고 처음 제안한 네덜란드 유도 선수",
+     "difWhy": "헤이싱크 — 유도 애호가",
+     "wor": 3,
+     "worWhy": "유도 전설 인물 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "1987년 IOC 위원이 되어 2010년 세상을 떠날 때까지 IOC에서 일했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Anton_Geesink",
+     "https://en.wikipedia.org/wiki/Judo",
+     "https://ko.wikipedia.org/wiki/안톤_헤이싱크"
+    ],
+    "facts": [
+     {
+      "claim": "키 1.98m",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anton_Geesink",
+      "note": "The infobox lists 1.98 m (6 ft 6 in)."
+     },
+     {
+      "claim": "1986 마스트리흐트 IJF 회의에서 파란 유도복 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Judo",
+      "note": "The modern use of the blue judogi for high level competition was first suggested by Anton Geesink at a 1986 IJF meeting in Maastricht"
+     },
+     {
+      "claim": "1973년부터 자이언트 바바의 전일본 프로레슬링",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anton_Geesink",
+      "note": "In October 1973, All Japan Pro Wrestling owner Giant Baba recruited him, and he worked for the promotion as a part-timer until February 1978."
+     },
+     {
+      "claim": "1964 무제한급 결승에서 가미나가 격파",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Anton_Geesink",
+      "note": "won the final of the open weight division, defeating Akio Kaminaga in front of his home crowd"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Anton_Geesink"
+    ],
+    "hintNote": "In 1987, Geesink became … a member of the International Olympic Committee (IOC). … Geesink continued working for IOC until his death in 2010.",
+    "easiestCue": "한 선수에게 파란 유도복을 입히자고 처음 제안했습니다",
+    "targetWhy": "대표 사실(1964 도쿄 금)은 해설로 빼고 청색 유도복·프로레슬링만 — 유도 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "헤이싱크는 유도 관심층 밖에서는 낯설 수 있다(마이너 의심)",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "combat-athletics/2#g009a-S3-25",
+   "seed": {
+    "subject": "가노 지고로",
+    "aspect": null,
+    "ref": "S3-25",
+    "pairedWith": 868
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 868,
+    "question": "1940년 도쿄 올림픽 유치에 대변인으로 앞장섰던 이 사람은 1938년 바다 위를 여행하던 중 숨졌는데, 공식 사인은 폐렴이었습니다. 이 일본 사람은 누구일까요?",
+    "answer": "가노 지고로",
+    "acceptedAnswers": [
+     "가노"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '가노 지고로' 문서 제목 · 성만으로도 흔히 부름",
+    "explanation": "그의 사인을 식중독으로 적은 기록도 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1940년 도쿄 올림픽 유치 대변인, 1938년 바다 위에서 숨진 일본 사람",
+     "difWhy": "도쿄 유치·선상 사망 — 유도 애호가 (경계 5)",
+     "wor": 3,
+     "worWhy": "유도 창시자 인물",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1940년 도쿄 올림픽 유치 대변인, 1938년 바다 위에서 숨진 일본 사람",
+     "difWhy": "도쿄 유치·선상 사망 — 유도 애호가 (경계 5)",
+     "wor": 3,
+     "worWhy": "유도 창시자 인물"
+    },
+    "rewrite": null,
+    "generalHint": "1912년 스톡홀름 올림픽에 일본의 공식 대표로 갔고, 같은 해 일본 아마추어 체육 단체를 세우는 데 힘을 보탰다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Kanō_Jigorō"
+    ],
+    "facts": [
+     {
+      "claim": "1940 도쿄 올림픽 유치의 대변인 · 1938년 사망 — 문서: 1860–1938",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kanō_Jigorō",
+      "note": "as a leading spokesman for Japan's bid for the 1940 Olympic Games"
+     },
+     {
+      "claim": "IOC 위원으로서의 항해 중 바다에서 사망",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kanō_Jigorō",
+      "note": "died at sea, during a voyage that he made as member of the IOC"
+     },
+     {
+      "claim": "공식 사인 폐렴 · 다른 기록 식중독",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kanō_Jigorō",
+      "note": "The cause of death was officially listed as pneumonia, though other sources list food poisoning as the cause of death."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Kanō_Jigorō"
+    ],
+    "hintNote": "the official representative of Japan to the Olympics in Stockholm in 1912 ... In 1912, Kanō helped found the Japan Amateur Athletic Association",
+    "easiestCue": "1940년 도쿄 올림픽 유치에 대변인으로 앞장섰던 이 사람",
+    "targetWhy": "유도 창시자가 1940 올림픽 유치를 이끌다 바다에서 숨진 사실은 올림픽·유도 애호가 영역",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "소분류(유도)를 알고 보면 추리 여지가 있으나 단서는 교과서 밖",
+    "pairCheck": "1회차 868 q(유술 정리·유도 창시) · e(교육자 · 아시아 최초 IOC 위원) · h(고도칸) — 2회차는 1940 유치·1938 해상 사망·폐렴만 써 겹치지 않음('IOC 위원' 은 질문에 쓰지 않음)",
+    "dbCheck": "pair-or-different — 활성 868 의 2회차",
+    "warn": [],
+    "first": {
+     "id": 868,
+     "question": "여러 유파로 흩어져 있던 유술을 정리해 근대 경기로 다듬어 유도를 세운 일본 사람은?",
+     "explanation": "교육자이기도 했고 아시아 최초의 IOC 위원이었습니다.",
+     "hint": "그가 도쿄에 세운 도장의 이름은 '고도칸(강도관)'이다.",
+     "difficulty": 3
+    }
+   }
+  },
+  {
+   "seedId": "combat-athletics/2#g009a-S3-26",
+   "seed": {
+    "subject": "청도관",
+    "aspect": null,
+    "ref": "S3-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본 주오 대학에서 후나코시 기친에게 가라테를 배운 이원국은 1944년 무렵 이 도장을 세웠고, 그의 첫 제자 가운데 한 명인 엄운규가 뒤에 이곳을 이끌었습니다. 태권도의 뿌리가 된 여러 '관' 가운데 하나인 이 도장은 무엇일까요?",
+    "answer": "청도관",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이원국은 서울 안국동에서 택견도 익혔다고 전합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "이원국은 1944년 무렵 이 도장을 세웠고 ... 엄운규",
+     "difWhy": "'이원국 · 엄운규 도장' — 태권도 애호가",
+     "wor": 2,
+     "worWhy": "팬 세부 — 태권도 관 이름",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "이원국은 1944년 무렵 이 도장을 세웠고 ... 엄운규",
+     "difWhy": "'이원국 · 엄운규 도장' — 태권도 애호가",
+     "wor": 2,
+     "worWhy": "팬 세부 — 태권도 관 이름"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chung_Do_Kwan",
+     "https://ko.wikipedia.org/wiki/청도관"
+    ],
+    "facts": [
+     {
+      "claim": "이원국이 1944년 무렵 창설",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chung_Do_Kwan",
+      "note": "created by Won Kuk Lee in 1944 (c. 1944)"
+     },
+     {
+      "claim": "주오 대학에서 후나코시 기친에게 배움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chung_Do_Kwan",
+      "note": "Lee trained under Gichin Funakoshi at Chuo University in Japan"
+     },
+     {
+      "claim": "엄운규 — 첫 제자 가운데 하나, 뒤에 청도관 관장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chung_Do_Kwan",
+      "note": "Uhm Woon Kyu ... one of Lee's original and first students and later head of the Chung Do Kwan"
+     },
+     {
+      "claim": "당수도를 가르치는 9개 관 중 하나, 뒤에 태권도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/청도관",
+      "note": "청도관은 1944년 이원국이 창시한 것으로 당수도를 가르치는 9개 관중 첫 관이다. 나중에 학교는 태권도로 알려지게 된 것을 가르치기 시작했다."
+     },
+     {
+      "claim": "안국동에서 택견을 익힘",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chung_Do_Kwan",
+      "note": "An Gup Dong, where Lee studied Taekkyon"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "태권도의 뿌리가 된 여러 '관' 가운데 하나인 이 도장",
+    "targetWhy": "태권도 수련자·애호가가 아는 관 이름 — '첫 관' 여부는 문서끼리 엇갈려 쓰지 않았다",
+    "selfJudge": "나쁜 어려움 의심",
+    "selfJudgeWhy": "청도관은 태권도 밖에서는 마이너할 수 있고, '관' 이름 중 찍기 여지도 있다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [],
+    "discarded": "선별 게이트 — 알 가치 2 (팬 세부 — 태권도 관 이름) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "combat-athletics/2#g009a-S3-27",
+   "seed": {
+    "subject": "상투",
+    "aspect": null,
+    "ref": "S3-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "은퇴하는 스모 선수의 의식 '단파쓰시키'에서는 손님들이 금도금 가위로 이것을 몇 가닥씩 자르고, 마지막 남은 머리카락은 그 선수의 스승이 자릅니다. 상위 선수들은 은행잎을 닮은 모양으로 매는 이것은 무엇일까요?",
+    "answer": "상투",
+    "acceptedAnswers": [
+     "촌마게"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '촌마게' 문서 제목 · 질문이 묻는 것은 머리 모양 자체라 우리말 '상투' 를 대표로",
+    "explanation": "료고쿠 국기관에서 이 의식을 치르려면 세키토리로 30개 대회 이상을 뛰어야 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "상위 선수들은 은행잎을 닮은 모양으로 매는 이것",
+     "difWhy": "'은퇴식에 자르는 스모 머리' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 스모 의례",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "상위 선수들은 은행잎을 닮은 모양으로 매는 이것",
+     "difWhy": "'은퇴식에 자르는 스모 머리' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 스모 의례"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서(스모 은퇴식에 자르는 머리)가 문항의 축 — 은행잎 모양을 빼도 '은퇴식에 손님들이 가위로 자르는 이것'이 같은 단계로 남고, 문서에 확인되는 더 깊은 세부(단발령 예외 등)는 확인 실패"
+    },
+    "generalHint": "본디 싸움터에서 사무라이의 투구를 머리 위에 단단히 고정하려고 머리카락을 쓰던 방법이었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Danpatsu-shiki"
+    ],
+    "facts": [
+     {
+      "claim": "은퇴할 때 단파쓰시키에서 촌마게를 자름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Danpatsu-shiki",
+      "note": "symbolically marks the end of his career by cutting his chonmage topknot"
+     },
+     {
+      "claim": "손님들이 금도금 가위로 몇 가닥씩",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Danpatsu-shiki",
+      "note": "follow in succession to cut only a few strands of his hair with gold-plated scissors"
+     },
+     {
+      "claim": "마지막은 스승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Danpatsu-shiki",
+      "note": "the last hairs holding the topknot together are cut by the retiring wrestler's master"
+     },
+     {
+      "claim": "상위 선수는 은행잎 모양 오이초마게",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Danpatsu-shiki",
+      "note": "Top-division wrestlers wear a more elaborate version, the ōichōmage, which resembles a ginkgo leaf."
+     },
+     {
+      "claim": "국기관 개최 조건 세키토리 30대회",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Danpatsu-shiki",
+      "note": "must have served at least thirty tournaments as a sekitori"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Chonmage"
+    ],
+    "hintNote": "It was originally a method of using hair to hold a samurai kabuto helmet steady atop the head in battle.",
+    "easiestCue": "손님들이 금도금 가위로 이것을 몇 가닥씩 자르고",
+    "targetWhy": "스모 은퇴 의식의 세부는 스모 애호가 영역",
+    "selfJudge": "나쁜 어려움 의심",
+    "selfJudgeWhy": "'가위 · 머리카락' 이 나와 상투를 추리하기 쉽다(경계 3)",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  },
+  {
+   "seedId": "combat-athletics/2#g009a-S3-28",
+   "seed": {
+    "subject": "유효",
+    "aspect": null,
+    "ref": "S3-28",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "유도에서 예전에는 상대를 옆으로 눕히듯 던지면 이 점수를 주었고, 누르기는 10초를 넘기면 이 점수였습니다. 2017년 국제 규칙이 바뀌면서 따로 주지 않고 절반 안에 합쳐 매기게 된 이 점수는 무엇일까요?",
+    "answer": "유효",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "같은 해 절반 두 번을 한판으로 치던 규칙도 없앴다가, 2018년 되살렸습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "2017년 … 절반 안에 합쳐 매기게 된 이 점수",
+     "difWhy": "한판·절반 아래 점수 — 유도 관심층",
+     "wor": 3,
+     "worWhy": "종목 기본 어휘의 변화",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'효과'보다 한 단계 위였던 유도 점수",
+     "difWhy": "유도 점수 체계 — 유도 관심층",
+     "wor": 2,
+     "worWhy": "경기 점수 세부"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "유도에서 2017년 국제 규칙이 바뀌면서 이 점수는 따로 주지 않고 절반 안에 합쳐 매기게 되었습니다. 이보다 한 단계 아래였던 '효과'는 그 전에 이미 없어졌는데, 이 점수는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'효과'보다 한 단계 위였던 점수",
+     "addedCue": "옆으로 눕히는 던지기 · 누르기 10초 기준",
+     "why": "점수 서열 단서를 빼고 옛 판정 기준 세부로"
+    },
+    "generalHint": "옛 규칙에서 누르기로 절반을 얻으려면 15초를 넘겨야 했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Judo"
+    ],
+    "facts": [
+     {
+      "claim": "2017년부터 유효를 절반에 포함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Judo",
+      "note": "There will only be ippon and waza-ari scores given during a match with yuko scores now included within waza-ari."
+     },
+     {
+      "claim": "절반 합쳐 한판 규칙 2017 폐지, 2018 부활",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Judo",
+      "note": "This rule (waza-ari awasete ippon) was cancelled in 2017, but it was resumed in 2018."
+     },
+     {
+      "claim": "예전에는 상대를 옆으로 떨어뜨리는 던지기에 유효",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Judo",
+      "note": "Formerly, a throw that places the opponent onto his side scores a yuko (有効)."
+     },
+     {
+      "claim": "예전 누르기 10초 넘으면 유효",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Judo",
+      "note": "(formerly waza-ari was awarded for holds of longer than 15 seconds and yuko for holds of longer than 10 seconds)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Judo"
+    ],
+    "hintNote": "formerly waza-ari was awarded for holds of longer than 15 seconds and yuko for holds of longer than 10 seconds",
+    "easiestCue": "2017년 절반에 합쳐진 유도 점수",
+    "targetWhy": "옛 판정 기준·2017 개정은 유도 애호가가 아는 규칙 뒷이야기 — 4(경계)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "유도 중계를 본 사람은 점수 이름 넷 중에서 고를 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "combat-athletics/2#g009a-S3-29",
+   "seed": {
+    "subject": "각저총",
+    "aspect": null,
+    "ref": "S3-29",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 지린성 지안시에 있는 이 고구려 무덤의 주인공은 환도를 차고 하인·말·활과 함께 그려져 지체 높은 무인으로 짐작됩니다. 벽화 속 한 장면의 두 인물 가운데 하나는 서아시아 계통으로 그려져 있고, 1938년 조사 때 그 장면 때문에 지금 이름이 붙었는데, 이 무덤은 무엇일까요?",
+    "answer": "각저총",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 무덤은 2004년 유네스코 세계 문화유산에 올랐습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "그 장면 때문에 지금 이름이 붙었는데",
+     "difWhy": "'씨름 그림 고분' — 고교 한국사",
+     "wor": 4,
+     "worWhy": "고구려 고분 — 한국사 교양",
+     "acc": 4,
+     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "지안시 고구려 무덤 벽화의 맞붙은 두 사람",
+     "difWhy": "씨름 벽화 각저총 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "고구려 벽화 교양"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "중국 지린성 지안시에 있는 이 고구려 무덤의 벽화에는 맞붙은 두 사람 가운데 한 명이 서아시아 계통의 인물로 그려져 있습니다. 1938년 조사 때 이 벽화가 발견되어 이름이 붙은 이 무덤은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "맞붙은 두 사람(씨름 장면)",
+     "addedCue": "환도를 찬 무인 주인공",
+     "why": "고교 교과의 '씨름 벽화' 를 바로 드러내지 않고 주인공 묘사 세부를 더함"
+    },
+    "generalHint": "5세기 초 무렵 만들어진 것으로 보이며, 이웃한 무용총과 나란히 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/각저총"
+    ],
+    "facts": [
+     {
+      "claim": "지린성 지안시의 고구려 고분",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/각저총",
+      "note": "각저총(角抵塚)은 중화인민공화국 길림성 지안시 여산(如山)에 있는 고구려의 고분이다."
+     },
+     {
+      "claim": "씨름도 두 인물 중 하나는 서아시아 계통",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/각저총",
+      "note": "씨름도의 두 인물 중 한 명은 전형적인 고구려인이고, 다른 한 명은 서아시아 계통의 인물인 점이 흥미롭다."
+     },
+     {
+      "claim": "1938년 조사 때 씨름 벽화가 발견되어 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/각저총",
+      "note": "1938년 조사 당시 씨름을 하는 벽화가 발견되어 각저총이라는 이름이 붙었습니다."
+     },
+     {
+      "claim": "2004년 유네스코 세계문화유산",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/각저총",
+      "note": "2004년 유네스코 세계문화유산에 등재되었습니다."
+     },
+     {
+      "claim": "주인공이 환도를 차고 하인·말·활과 함께 — 지체 높은 무인",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/각저총",
+      "note": "벽화에 그려진 주인공이 환도를 차고 있는 모습과 시중드는 하인, 말, 활 등을 보면 지체 높은 무인이었다고 짐작할 수 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/각저총"
+    ],
+    "hintNote": "각저총과 인근의 무용총은 생활풍습 묘사가 전면에 등장한 안악 3호분 보다도 늦은 시기에 제작되어 5세기 초로 추정된다.",
+    "easiestCue": "두 인물 가운데 하나가 서아시아 계통으로 그려진 장면 때문에 이름이 붙은 지안 고구려 무덤",
+    "targetWhy": "씨름도의 서아시아 인물 · 주인공 무인 묘사는 고구려 고분 애호가 — 경계 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'맞붙은 두 사람 + 고구려 무덤' 은 고교 한국사의 각저총 씨름도로 바로 이어질 수 있다(경계 3)",
+    "pairCheck": null,
+    "dbCheck": "new — 활성·초안 0",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,198 @@
+{
+ "_meta": {
+  "round": "g009a",
+  "subId": "plants/2",
+  "midKey": "plants",
+  "subName": "꽃·꽃말",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009a(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "plants/2#g009a-C1-13",
+   "seed": {
+    "subject": "붓꽃",
+    "aspect": null,
+    "ref": "C1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "향수에서 향을 붙잡아 두는 '오리스 뿌리'는 이 꽃 무리의 뿌리로, 쓰임에 따라 다섯 해 넘게 말려야 제비꽃을 닮은 향이 납니다. 이 무리의 한 종은 여러 세기 동안 이탈리아 피렌체의 상징으로 도시 문장에도 들어 있는데, 이 꽃은 무엇일까요?",
+    "answer": "붓꽃",
+    "acceptedAnswers": [
+     "아이리스"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '붓꽃' · '아이리스' 둘 다 있음(API 조회) — 한국에서 꽃 이름으로 '아이리스' 도 흔히 씀",
+    "explanation": "피렌체 문장은 처음엔 붉은 바탕에 흰 꽃이었는데, 13세기 후반 정치 변화 뒤 색이 뒤바뀌어 흰 바탕에 붉은 꽃이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "이탈리아 피렌체의 상징으로 도시 문장에도",
+     "difWhy": "'피렌체 문장 꽃' — 꽃 애호가",
+     "wor": 3,
+     "worWhy": "꽃 상징 이야깃거리",
+     "acc": 5,
+     "accWhy": "식물 — 초등 과학·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "고흐가 생레미 요양원에서 그린 꽃 그림, 1987년 최고가",
+     "difWhy": "고흐 '붓꽃' — 미술 관심층",
+     "wor": 3,
+     "worWhy": "명화·향료 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "빈센트 반 고흐가 1889년 5월 생레미의 요양원에 스스로 들어간 뒤 그린 이 꽃 그림은, 1987년 그때까지 가장 비싸게 팔린 그림이 되었습니다. 향수에서 향을 붙잡아 두는 '오리스 뿌리'도 이 꽃 무리의 뿌리로, 다섯 해 넘게 말려야 제비꽃을 닮은 향이 납니다. 이 꽃은 무엇일까요?",
+     "beforeExplanation": "그 그림은 1990년부터 미국 로스앤젤레스의 게티 미술관이 소장하고 있습니다.",
+     "removedCue": "고흐가 생레미 요양원에서 그린 꽃 그림, 1987년 최고가",
+     "addedCue": "여러 세기 동안 피렌체의 상징 · 도시 문장의 꽃",
+     "why": "고흐 대표작 일화를 빼고 향료 · 피렌체 문장 세부를 엮게"
+    },
+    "generalHint": "프랑스 왕실 문장의 '플뢰르 드 리스'는 백합이 아니라 노란 꽃이 피는 이 무리의 야생종을 본뜬 것이라는 견해도 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "원예",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Orris_root",
+     "https://en.wikipedia.org/wiki/Iris_florentina"
+    ],
+    "facts": [
+     {
+      "claim": "오리스 뿌리는 붓꽃(Iris germanica · Iris pallida) 뿌리, 향수 고정제",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Orris_root",
+      "note": "is the root of Iris germanica and Iris pallida ... used mainly as a fixative and base note in perfumery."
+     },
+     {
+      "claim": "다섯 해 넘게 말림, 제비꽃 향",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Orris_root",
+      "note": "which can take five years or more depending on the use ... the scent is reminiscent of the smell of violets"
+     },
+     {
+      "claim": "이 무리의 한 종(Iris florentina)이 여러 세기 동안 피렌체의 상징 · 도시 문장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Iris_florentina",
+      "note": "was the symbol of the city of Florence for centuries (and appears on the city's coat of arms)"
+     },
+     {
+      "claim": "13세기 후반 색이 뒤바뀌어 흰 바탕에 붉은 꽃",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Iris_florentina",
+      "note": "(요지) 성 레파라타가 흰 꽃을 그린 핏빛 깃발을 들고 나타났다는 전설 — 13세기 후반 정치 변화 뒤 색이 뒤바뀌어 흰 바탕에 붉은 꽃(giglio)이 피렌체의 상징이 됨"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Fleur-de-lis"
+    ],
+    "hintNote": "One species of wild iris, the Iris pseudacorus, yellow flag in English, is yellow and grows in marshes ... as a stylized yellow flag.",
+    "easiestCue": "피렌체 문장에 들어 있는 꽃",
+    "targetWhy": "피렌체 문장의 꽃(흔히 백합으로 앎)이 사실 이 무리라는 것 · 오리스 뿌리는 원예·향수 애호가 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1987년 최고가' 그림을 아는 미술 관심층에게는 풀린다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "plants/2#g009a-C1-14",
+   "seed": {
+    "subject": "제비꽃",
+    "aspect": null,
+    "ref": "C1-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "나폴레옹은 엘바섬으로 쫓겨날 때 친구들에게 이 꽃이 필 무렵 돌아오겠다고 말했다고 전하며, 지지자들은 그를 이 꽃 이름을 붙인 '상병'이라 부르며 건배했습니다. 이 꽃의 향 성분 이오논은 사람이 그 향을 맡는 능력을 잠깐 꺼 버려, 향이 났다 안 났다 하는 '밀당하는 향'으로 불립니다. 이 꽃은 무엇일까요?",
+    "answer": "제비꽃",
+    "acceptedAnswers": [
+     "바이올렛"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '바이올렛' 있음(API 조회) — 향수·꽃집에서 이 꽃을 '바이올렛' 으로 흔히 부름",
+    "explanation": "나폴레옹 지지자들은 '제비꽃을 좋아하나요?' 하고 물어, '그럼요'가 아니라 '그렇다면…'으로 받는 사람을 같은 편으로 알아봤다고 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "나폴레옹 … 이 꽃이 필 무렵 돌아오겠다 / 이오논 '밀당하는 향'",
+     "difWhy": "나폴레옹 상징 꽃 — 애호가",
+     "wor": 3,
+     "worWhy": "꽃 일화 — 이야깃거리",
+     "acc": 5,
+     "accWhy": "식물 — 초등 과학·일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "나폴레옹 … 이 꽃이 필 무렵 돌아오겠다 / 이오논 '밀당하는 향'",
+     "difWhy": "나폴레옹 상징 꽃 — 애호가",
+     "wor": 3,
+     "worWhy": "꽃 일화 — 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "프랑스 툴루즈에서는 이 꽃을 설탕에 절인 과자를 지금도 상품으로 만든다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "원예",
+    "defForm": false,
+    "sources": [
+     "https://words.fromoldbooks.org/Brewer-DictionaryOfPhraseAndFable/v/violet-2.html",
+     "https://en.wikipedia.org/wiki/Viola_(plant)"
+    ],
+    "facts": [
+     {
+      "claim": "엘바 유배 때 제비꽃과 함께 돌아오겠다고 말함",
+      "where": "q",
+      "url": "https://words.fromoldbooks.org/Brewer-DictionaryOfPhraseAndFable/v/violet-2.html",
+      "note": "When Bonaparte was banished to Elba he told his friends he would return with the violets"
+     },
+     {
+      "claim": "지지자들의 건배 'Corporal Violet'",
+      "where": "q",
+      "url": "https://words.fromoldbooks.org/Brewer-DictionaryOfPhraseAndFable/v/violet-2.html",
+      "note": "(요지) \"Corporal Violet\" was a popular toast among his followers."
+     },
+     {
+      "claim": "이오논이 향을 맡는 능력을 꺼 버림, '밀당하는(flirty)' 향",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Viola_(plant)",
+      "note": "Violet is known to have a 'flirty' scent as its fragrance comes and goes. Ionone is present in the flowers, which turns off the ability for humans to smell the fragrant compound"
+     },
+     {
+      "claim": "'제비꽃을 좋아하나요?' 암호 — 'Oui' 는 남, 'Eh bien' 은 같은 편",
+      "where": "e",
+      "url": "https://words.fromoldbooks.org/Brewer-DictionaryOfPhraseAndFable/v/violet-2.html",
+      "note": "(요지) A passphrase of \"Do you like violets?\" identified sympathizers: a reply of \"Oui\" marked an outsider, while \"Eh bien\" marked an adherent."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Viola_(plant)"
+    ],
+    "hintNote": "Candied violets are still made commercially in Toulouse, France, where they are known as violettes de Toulouse.",
+    "easiestCue": "나폴레옹은 엘바섬으로 쫓겨날 때 친구들에게 이 꽃이 필 무렵 돌아오겠다고 말했다고 전하며",
+    "targetWhy": "흔한 봄꽃의 꽃말 뒷이야기(나폴레옹)와 향 화학(이오논) — 역사·향수 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대상은 누구나 아는 꽃, 단서 둘 다 교과서 밖이고 뜻밖의 연결",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}
