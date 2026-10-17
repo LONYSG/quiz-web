@@ -2139,10 +2139,423 @@ async function setTheme(page, t) {
 async function waitPhase(page, phase, timeout = 30000) {
   return page.waitFor(`document.querySelector('.mg-card')?.dataset.phase === '${phase}'`, timeout);
 }
+// -----------------------------------------------------------------------------
+// ★★★ R051 — 미니게임 2차 화면 점검 (ui-check:minigame 에 이어서 · MG_GAMES=reaction,typing,circle,angle 로 고를 수 있다)
+//   [1] /lab/minigame 장면 — 네 게임 × 단계 (PC 1280 · 모바일 390 · 폴드 344 넘침)
+//   [2] 실제 연습 판 — H(PC 1280 · 키보드 · 마우스) · G(모바일 390 · 터치) 두 기기
+//       번개손: H 초록 뒤 Space · G 1판 성급 → 실격 화면 / 타자: 복사 · 붙여넣기 · 끌어 놓기 막힘 · 틀린 글자 빨강 · 조합 중 글자 · 모바일 키보드 올린 390×470
+//       원: 마우스 · 손가락으로 그림(손가락은 화면이 스크롤되지 않는다) · 서버 값 = 점으로 다시 계산 / 각도: 끌기 · ← → 0.5° · Enter 확정 · 미확정 = 그때 각
+// -----------------------------------------------------------------------------
+const R051_GAMES = (process.env.MG_GAMES ?? 'reaction,typing,circle,angle').split(',').filter(Boolean);
+async function sharedDist() {
+  return import(new URL('../shared/dist/index.js', import.meta.url).href);
+}
+async function spaceKey(page) {
+  await page.send('Input.dispatchKeyEvent', { type: 'keyDown', key: ' ', code: 'Space', windowsVirtualKeyCode: 32, nativeVirtualKeyCode: 32, text: ' ' });
+  await page.send('Input.dispatchKeyEvent', { type: 'keyUp', key: ' ', code: 'Space', windowsVirtualKeyCode: 32, nativeVirtualKeyCode: 32 });
+}
+async function r051Lab(browser) {
+  const L = await newPage(browser, 'M2-lab');
+  await L.setViewport(1280, 720);
+  await signUp(L, 'm2l', '그림점검둘');
+  const scenes = [];
+  if (R051_GAMES.includes('reaction'))
+    scenes.push(['reaction', 'rules', ''], ['reaction', 'play', 'wait'], ['reaction', 'play', 'fake-color'], ['reaction', 'play', 'fake-text'], ['reaction', 'play', 'go'], ['reaction', 'roundResult', ''], ['reaction', 'final', '']);
+  if (R051_GAMES.includes('typing')) scenes.push(['typing', 'rules', ''], ['typing', 'play', 'typed'], ['typing', 'roundResult', '']);
+  if (R051_GAMES.includes('circle')) scenes.push(['circle', 'rules', ''], ['circle', 'play', ''], ['circle', 'roundResult', '']);
+  if (R051_GAMES.includes('angle')) scenes.push(['angle', 'rules', ''], ['angle', 'play', ''], ['angle', 'roundResult', '']);
+  const num = { reaction: 60, typing: 61, circle: 62, angle: 63 };
+  for (const [k, ph, st] of scenes) {
+    const name = `${num[k]}-scene-${k}-${ph}${st ? `-${st}` : ''}`;
+    for (const [dev, w, h, touch] of [['pc', 1280, 720, false], ['m390', 390, 844, true]]) {
+      if (touch) await touchDevice(L, w, h);
+      else {
+        await touchDevice(L, w, h, false);
+        await L.setViewport(w, h);
+      }
+      await L.goto(`${BASE}/lab/minigame?scene=1&key=${k}&phase=${ph}&seed=2024${st ? `&state=${st}` : ''}`);
+      await L.waitFor(`document.querySelector('.mg-card')?.dataset.phase === '${ph}'`, 6000);
+      await sleep(ph === 'roundResult' ? 900 : 350);
+      await snap(L, `${name}-${dev}`);
+      if (touch && (ph === 'play' || ph === 'roundResult')) {
+        await touchDevice(L, 344, 882);
+        await L.evaluate("window.dispatchEvent(new Event('resize'))");
+        await sleep(250);
+        const over = await L.evaluate('document.documentElement.scrollWidth - innerWidth');
+        record(`★ R051 장면 ${k}/${ph}${st ? `/${st}` : ''} — 폴드 접힘(344) 가로 넘침 없음`, over <= 1, String(over));
+        if (k !== 'reaction' || st === 'go') await snap(L, `${name}-fold`);
+      }
+    }
+    if (k === 'reaction' && ph === 'play') {
+      const s = await L.evaluate("document.querySelector('.reaction-stage')?.dataset.state ?? ''");
+      record(`★★ A 번개손 장면 — ${st} 화면`, s === st, s);
+    }
+  }
+  await touchDevice(L, 1280, 720, false);
+  await L.setViewport(1280, 720);
+  await L.close?.();
+}
+
+async function r051Room(browser, label) {
+  const H = await newPage(browser, `M2-${label}-host`, true);
+  await H.setViewport(1280, 720);
+  await signUp(H, `${label}h`, `${label}방장`);
+  const roomId = await createRoom(H, `R051 ${label}`);
+  const G = await newPage(browser, `M2-${label}-m390`, true);
+  await signUp(G, `${label}g`, `${label}폰`);
+  await touchDevice(G, 390, 844);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000);
+  await sleep(500);
+  return { H, G, roomId };
+}
+async function r051Start(H, key) {
+  await realClick(H, '#minigame-pick-btn');
+  await H.waitFor("document.querySelector('.mg-pick-pop') !== null", 3000);
+  await realClick(H, `.mg-pick-item[data-key="${key}"]`);
+  await waitPhase(H, 'intro', 8000);
+}
+async function r051Db(roomId, key) {
+  return withPg(async (c) =>
+    (
+      await c.query(
+        `SELECT a.login_id, r.round_index, r.submitted, r.input, r.value, r.error FROM minigame_results r JOIN accounts a ON a.id = r.account_id
+          WHERE r.run_id = (SELECT max(id) FROM minigame_runs WHERE room_id = $1 AND minigame_key = $2) ORDER BY r.round_index, a.login_id`,
+        [roomId, key],
+      )
+    ).rows,
+  );
+}
+const stateOf = (p) => p.evaluate("document.querySelector('.reaction-stage')?.dataset.state ?? ''");
+
+async function r051Reaction(browser) {
+  const { H, G, roomId } = await r051Room(browser, 'rx');
+  await r051Start(H, 'reaction');
+  await waitPhase(H, 'rules', 12000);
+  await sleep(400);
+  await snap(H, '60-live-reaction-rules-pc');
+  await snap(G, '60-live-reaction-rules-m390');
+  record('★ A 번개손 규칙 — 초록 = 진짜 · 소리를 꺼도 된다는 안내', (await H.evaluate("document.querySelector('.mg-rules')?.innerText ?? ''")).includes('초록'));
+  let sawFake = new Set();
+  for (let round = 0; round < 5; round += 1) {
+    await H.waitFor(`document.querySelector('.mg-card')?.dataset.phase === 'play' && document.querySelector('.reaction-stage') !== null`, 30000);
+    if (round === 0) {
+      await sleep(300);
+      await snap(H, '60-live-reaction-wait-pc');
+      // G — 초록 전에 톡 (성급)
+      const r = await rectOf(G, '.rx-panel');
+      await trustedTap(G, r.x + r.w / 2, r.y + r.h / 2);
+      await sleep(300);
+      record('★★★ A 번개손 모바일 — 초록 전에 톡 → "성급!" 실격 화면', (await stateOf(G)) === 'foul' && (await G.evaluate("document.querySelector('.rx-big')?.innerText ?? ''")).includes('성급'), await stateOf(G));
+      await snap(G, '60-live-reaction-foul-m390');
+    }
+    // H — 화면을 지켜보다가(가짜는 기록) 초록이면 0.15초 뒤 Space
+    const until = Date.now() + 9000;
+    let go = false;
+    while (Date.now() < until) {
+      const s = await stateOf(H);
+      if (s === 'fake-color' || s === 'fake-text') {
+        if (!sawFake.has(s)) {
+          sawFake.add(s);
+          await snap(H, `60-live-reaction-${s}-pc`);
+        }
+      }
+      if (s === 'go') {
+        go = true;
+        break;
+      }
+      await sleep(40);
+    }
+    if (round === 0) await snap(H, '60-live-reaction-go-pc');
+    await sleep(150);
+    if (go) await spaceKey(H);
+    // ★ 둘 다 누르면 판이 바로 끝난다 — 내 화면 판정은 누른 직후에 읽는다
+    const myBig = await H.evaluate("document.querySelector('.rx-big')?.innerText ?? document.querySelector('.mg-r051-big')?.innerText ?? ''");
+    if (round === 0) await snap(H, '60-live-reaction-done-pc');
+    if (round >= 1) {
+      // G — 초록이면 톡
+      const s = await stateOf(G);
+      if (s === 'go') {
+        const r = await rectOf(G, '.rx-panel');
+        await trustedTap(G, r.x + r.w / 2, r.y + r.h / 2);
+      }
+    }
+    await sleep(250);
+    if (round === 0) {
+      record('★★ A 번개손 PC — 초록 뒤 Space → "NNNms" 내 화면', /^\d+ms$/.test(myBig.trim()), myBig);
+    }
+    await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'roundResult'", 12000);
+    if (round === 0 || round === 2) {
+      await sleep(500);
+      await snap(H, `60-live-reaction-result${round + 1}-pc`);
+      await snap(G, `60-live-reaction-result${round + 1}-m390`);
+    }
+  }
+  record('★ A 번개손 — 퀵드로우 판에서 가짜 화면(색 또는 글자)을 한 번 이상 보았다', sawFake.size >= 1, [...sawFake].join(','));
+  await waitPhase(H, 'final', 30000);
+  await sleep(700);
+  await snap(H, '60-live-reaction-final-pc');
+  await snap(G, '60-live-reaction-final-m390');
+  const db = await r051Db(roomId, 'reaction');
+  const hv = db.filter((r) => r.login_id.endsWith('_rxh'));
+  const gv = db.filter((r) => r.login_id.endsWith('_rxg'));
+  record('★★★ A 번개손 기록 — PC 5판 값(100~600ms) · 모바일 1판 실격', hv.length === 5 && hv.every((r) => r.value !== null && r.value >= 100 && r.value < 600) && gv[0]?.submitted === true && gv[0]?.value === null, JSON.stringify([hv.map((r) => r.value), gv.map((r) => r.value)]));
+  await H.waitFor("document.querySelector('.lobby-card') !== null", 40000);
+  await H.close?.();
+  await G.close?.();
+}
+
+async function r051Typing(browser) {
+  const { H, G, roomId } = await r051Room(browser, 'tp');
+  await r051Start(H, 'typing');
+  await waitPhase(H, 'play', 30000);
+  await sleep(400);
+  const target = await H.evaluate("document.querySelector('.typing-target')?.innerText ?? ''");
+  record('★★ B 타자 PC — 입력칸에 바로 포커스', await H.evaluate("document.activeElement?.classList.contains('typing-input') === true"));
+  // 복사 막기 — 끌어 고르기 · 복사 명령
+  const sel = await dragSelect(H, '.typing-target');
+  const copied = await copiedText(H);
+  record('★★★ B 제시 문장 — 끌어 고르기 · 복사 막힘', (sel ?? '').trim() === '' && copied === '', `${JSON.stringify(sel)} · ${JSON.stringify(copied)}`);
+  record('★ B 제시 문장 — 오른쪽 클릭 메뉴 막힘', (await rightClickBlocked(H, '.typing-target')) === true);
+  await H.evaluate("document.querySelector('.typing-input').focus()");
+  // 붙여넣기 · 끌어 놓기 · beforeinput(insertFromPaste)
+  const pasteBlocked = await H.evaluate(`(() => {
+    const el = document.querySelector('.typing-input');
+    const dt = new DataTransfer(); dt.setData('text/plain', ${JSON.stringify(target)});
+    const p = new ClipboardEvent('paste', { clipboardData: dt, bubbles: true, cancelable: true });
+    el.dispatchEvent(p);
+    const d = new DragEvent('drop', { dataTransfer: dt, bubbles: true, cancelable: true });
+    el.dispatchEvent(d);
+    const b = new InputEvent('beforeinput', { inputType: 'insertFromPaste', data: ${JSON.stringify(target)}, bubbles: true, cancelable: true });
+    el.dispatchEvent(b);
+    return JSON.stringify([p.defaultPrevented, d.defaultPrevented, b.defaultPrevented, el.value]);
+  })()`);
+  record('★★★ B 입력칸 — 붙여넣기 · 끌어 놓기 · insertFromPaste 모두 막힘 · 값 그대로', pasteBlocked === JSON.stringify([true, true, true, '']), pasteBlocked);
+  await sleep(200);
+  record('★ B 붙여넣기를 막으면 안내 글', (await H.evaluate("document.querySelector('.typing-help')?.innerText ?? ''")).includes('붙여넣기'));
+  // 틀린 글자 → 빨강
+  await H.send('Input.insertText', { text: 'X' });
+  await sleep(200);
+  record('★★ B 틀린 글자 → 빨강 · 입력칸 빨간 테두리', (await H.evaluate("document.querySelectorAll('.typing-target .tc.bad').length")) === 1 && (await H.evaluate("document.querySelector('.typing-input').classList.contains('bad')")));
+  await snap(H, '61-live-typing-bad-pc');
+  await H.key('Backspace', { code: 'Backspace', vk: 8 });
+  await sleep(150);
+  // 조합 중 글자 (한글 판 — 첫 글자의 초성만 조합 중)
+  await H.send('Input.imeSetComposition', { text: 'ㄱ', selectionStart: 1, selectionEnd: 1 });
+  await sleep(200);
+  const comp = await H.evaluate("JSON.stringify([document.querySelectorAll('.typing-target .tc.composing').length, document.querySelectorAll('.typing-target .tc.bad').length])");
+  record('★★ B 한글 조합 중 글자는 빨강이 아니다(조합 중 표시)', comp === JSON.stringify([1, 0]) || target.startsWith('ㄱ'), comp);
+  await snap(H, '61-live-typing-composing-pc');
+  await H.send('Input.insertText', { text: target.slice(0, 6) });
+  await sleep(150);
+  await H.send('Input.insertText', { text: target.slice(6) });
+  await sleep(300);
+  record('★★★ B 다 맞게 치면 바로 끝 — "N.NN초"', (await H.evaluate("document.querySelector('.typing-stage')?.dataset.done")) === '1', await H.evaluate("document.querySelector('.typing-help')?.innerText ?? ''"));
+  await snap(H, '61-live-typing-done-pc');
+  // G — 모바일: 입력칸을 눌러(키보드) 390×470 에서도 문장이 보인다
+  const gi = await rectOf(G, '.typing-input');
+  await trustedTap(G, gi.x + gi.w / 2, gi.y + gi.h / 2);
+  await sleep(200);
+  await G.send('Emulation.setDeviceMetricsOverride', { width: 390, height: 470, deviceScaleFactor: 1, mobile: true });
+  await G.evaluate("window.dispatchEvent(new Event('resize')); document.querySelector('.typing-input')?.scrollIntoView({ block: 'center' })");
+  await sleep(700);
+  const vis = JSON.parse(await G.evaluate(`JSON.stringify((() => { const t = document.querySelector('.typing-target').getBoundingClientRect(); const i = document.querySelector('.typing-input').getBoundingClientRect(); return { t: [Math.round(t.top), Math.round(t.bottom)], i: [Math.round(i.top), Math.round(i.bottom)], h: innerHeight, focus: document.activeElement?.className ?? '' }; })())`));
+  record('★★★ B 모바일 키보드 올린 390×470 — 제시 문장과 입력칸이 함께 보인다', vis.t[0] >= 0 && vis.t[1] <= vis.h && vis.i[0] >= 0 && vis.i[1] <= vis.h, JSON.stringify(vis));
+  record('★ B 모바일 입력칸 — 자동 대문자 · 자동 고침 · 맞춤법 끔', (await G.evaluate("(() => { const e = document.querySelector('.typing-input'); return [e.getAttribute('autocapitalize'), e.getAttribute('autocorrect'), e.getAttribute('spellcheck')].join(','); })()")) === 'off,off,false');
+  await snap(G, '61-live-typing-kbd-m390x470');
+  for (const ch of [...target]) await G.send('Input.insertText', { text: ch });
+  await sleep(300);
+  record('★★ B 모바일도 다 치면 끝', (await G.evaluate("document.querySelector('.typing-stage')?.dataset.done")) === '1');
+  await touchDevice(G, 390, 844);
+  await waitPhase(H, 'roundResult', 40000);
+  await sleep(600);
+  await snap(H, '61-live-typing-result1-pc');
+  await snap(G, '61-live-typing-result1-m390');
+  // 2판(영어) — H 반만 치고 둔다 → 미완 %
+  await waitPhase(H, 'play', 30000);
+  await sleep(400);
+  const t2 = await H.evaluate("document.querySelector('.typing-target')?.innerText ?? ''");
+  await H.evaluate("document.querySelector('.typing-input').focus()");
+  await H.send('Input.insertText', { text: t2.slice(0, Math.floor(t2.length / 2)) });
+  await sleep(300);
+  await snap(H, '61-live-typing-en-half-pc');
+  await waitPhase(H, 'roundResult', 45000);
+  await sleep(600);
+  await snap(H, '61-live-typing-result2-pc');
+  record('★★ B 미완 — 판 결과에 "미완 N%"', (await H.evaluate("document.querySelector('.mg-table')?.innerText ?? ''")).includes('미완'));
+  const db = await r051Db(roomId, 'typing');
+  const h0 = db.find((r) => r.login_id.endsWith('_tph') && r.round_index === 0);
+  const g0 = db.find((r) => r.login_id.endsWith('_tpg') && r.round_index === 0);
+  const h1 = db.find((r) => r.login_id.endsWith('_tph') && r.round_index === 1);
+  record('★★★ B 기록 — 1판 PC · 모바일 완성(초) · 2판 PC 미완(submitted=false · 값 1000+)', h0?.submitted && h0.value > 0 && h0.value < 30 && g0?.submitted && h1 && !h1.submitted && h1.value > 1000, JSON.stringify([h0?.value, g0?.value, h1?.value]));
+  await waitPhase(H, 'final', 60000);
+  await H.waitFor("document.querySelector('.lobby-card') !== null", 40000);
+  await H.close?.();
+  await G.close?.();
+}
+
+/** 원 그리기 — kind: 'mouse' | 'touch' · shape: 'circle' | 'half' */
+async function drawCircle(page, kind, shape = 'circle', snapName = null) {
+  const r = await rectOf(page, '.circle-pad');
+  const cx = r.x + r.w / 2;
+  const cy = r.y + r.h / 2;
+  const rad = r.w * 0.36;
+  const to = shape === 'half' ? 180 : 368;
+  const steps = 60;
+  const at = (i) => {
+    const d = (to * i) / steps;
+    const a = (d * Math.PI) / 180;
+    const wob = 1 + 0.025 * Math.sin(d / 20);
+    return { x: cx + Math.cos(a) * rad * wob, y: cy + Math.sin(a) * rad * wob };
+  };
+  const p0 = at(0);
+  if (kind === 'mouse') await page.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: p0.x, y: p0.y, button: 'left', clickCount: 1 });
+  else await page.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: p0.x, y: p0.y }] });
+  for (let i = 1; i <= steps; i += 1) {
+    const p = at(i);
+    if (kind === 'mouse') await page.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: p.x, y: p.y, button: 'left', buttons: 1 });
+    else await page.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: p.x, y: p.y }] });
+    if (i === Math.floor(steps * 0.6) && snapName) await snap(page, snapName);
+    await sleep(12);
+  }
+  const pe = at(steps);
+  if (kind === 'mouse') await page.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: pe.x, y: pe.y, button: 'left', clickCount: 1 });
+  else await page.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await sleep(300);
+}
+
+async function r051Circle(browser) {
+  const sh = await sharedDist();
+  const { H, G, roomId } = await r051Room(browser, 'cr');
+  await r051Start(H, 'circle');
+  await waitPhase(H, 'play', 30000);
+  await sleep(400);
+  await snap(H, '62-live-circle-empty-pc');
+  await drawCircle(H, 'mouse', 'circle', '62-live-circle-drawing-pc');
+  const hs = await H.evaluate("document.querySelector('.circle-score')?.innerText ?? ''");
+  record('★★ C 원 PC — 마우스로 그리고 떼면 바로 "NN.N%" · 맞춘 원(점선)', /\d+\.\d%/.test(hs) && (await H.evaluate("document.querySelector('.circle-pad .circle-fit') !== null")), hs);
+  await snap(H, '62-live-circle-done-pc');
+  const y0 = await G.evaluate('scrollY');
+  await drawCircle(G, 'touch', 'circle', '62-live-circle-drawing-m390');
+  const y1 = await G.evaluate('scrollY');
+  record('★★★ C 원 모바일 — 손가락으로 그리는 동안 화면이 스크롤되지 않는다 · 그림이 됨', y0 === y1 && (await G.evaluate("document.querySelector('.circle-stage')?.dataset.done")) === '1', `${y0}→${y1}`);
+  await snap(G, '62-live-circle-done-m390');
+  await waitPhase(H, 'roundResult', 20000);
+  await sleep(700);
+  await snap(H, '62-live-circle-result1-pc');
+  await snap(G, '62-live-circle-result1-m390');
+  record('★★ C 판 결과 — 내 선 + 맞춘 원 겹쳐 · 둘의 그림', (await H.evaluate("document.querySelector('.circle-result .circle-ink') !== null && document.querySelector('.circle-result .circle-fit') !== null")) && (await H.evaluate("document.querySelectorAll('.mg-thumb-circle').length")) === 2);
+  // 2판 — 반원 (덜 닫힘)
+  await waitPhase(H, 'play', 30000);
+  await sleep(400);
+  await drawCircle(H, 'mouse', 'half');
+  record('★★ C 반원 → "덜 닫혔어요"', (await H.evaluate("document.querySelector('.circle-help')?.innerText ?? ''")).includes('덜 닫혔'));
+  await snap(H, '62-live-circle-half-pc');
+  await waitPhase(H, 'final', 60000);
+  const db = await r051Db(roomId, 'circle');
+  const same = db.filter((r) => r.submitted).every((r) => Math.abs(sh.circleScore(r.input.points.map(([x, y]) => ({ x, y }))).score - r.value) < 0.01);
+  const h0 = db.find((r) => r.login_id.endsWith('_crh') && r.round_index === 0);
+  record('★★★ C 서버 값 = 기록된 점으로 다시 계산한 값 · PC 1판 80% 이상', same && h0?.value >= 80, JSON.stringify(db.map((r) => [r.login_id.slice(-3), r.round_index, r.value])));
+  await H.waitFor("document.querySelector('.lobby-card') !== null", 40000);
+  await H.close?.();
+  await G.close?.();
+}
+
+/** 지금 각(화면의 손잡이 위치로) */
+async function shownAngle(page) {
+  return page.evaluate(`(() => { const t = document.querySelector('.angle-pad .angle-handle')?.getAttribute('transform') ?? ''; const m = t.match(/translate\\(([-\\d.]+) ([-\\d.]+)\\)/); if (!m) return null; return Math.atan2(108 - Number(m[2]), Number(m[1]) - 100) * 180 / Math.PI; })()`);
+}
+async function dragAngle(page, deg, kind) {
+  const r = await rectOf(page, '.angle-pad');
+  const toScr = (d) => ({ x: r.x + ((100 + Math.cos((d * Math.PI) / 180) * 70) / 200) * r.w, y: r.y + ((108 - Math.sin((d * Math.PI) / 180) * 70) / 120) * r.h });
+  const s = toScr(90);
+  const e = toScr(deg);
+  if (kind === 'mouse') await page.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: s.x, y: s.y, button: 'left', clickCount: 1 });
+  else await page.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: s.x, y: s.y }] });
+  for (let i = 1; i <= 10; i += 1) {
+    const p = { x: s.x + ((e.x - s.x) * i) / 10, y: s.y + ((e.y - s.y) * i) / 10 };
+    if (kind === 'mouse') await page.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: p.x, y: p.y, button: 'left', buttons: 1 });
+    else await page.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [p] });
+    await sleep(15);
+  }
+  if (kind === 'mouse') await page.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: e.x, y: e.y, button: 'left', clickCount: 1 });
+  else await page.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await sleep(250);
+}
+
+async function r051Angle(browser) {
+  const { H, G, roomId } = await r051Room(browser, 'ag');
+  await r051Start(H, 'angle');
+  await waitPhase(H, 'play', 30000);
+  await sleep(400);
+  await snap(H, '63-live-angle-start-pc');
+  await snap(G, '63-live-angle-start-m390');
+  const target = Number((await H.evaluate("document.querySelector('.angle-target')?.innerText ?? ''")).replace(/[^\d]/g, ''));
+  await dragAngle(H, target + 3, 'mouse');
+  const a1 = await shownAngle(H);
+  await H.key('ArrowRight', { code: 'ArrowRight', vk: 39 });
+  const a2 = await shownAngle(H);
+  await H.key('ArrowLeft', { code: 'ArrowLeft', vk: 37 });
+  await H.key('ArrowLeft', { code: 'ArrowLeft', vk: 37 });
+  const a3 = await shownAngle(H);
+  record('★★ D 각도 PC — 마우스 끌기 · → 는 −0.5° · ← 는 +0.5°', Math.abs(a1 - (target + 3)) < 1.5 && Math.abs(a2 - (a1 - 0.5)) < 0.05 && Math.abs(a3 - (a2 + 1)) < 0.05, JSON.stringify([target, a1, a2, a3]));
+  // 목표 쪽으로 ← → 다듬기 (0.5° 씩)
+  let cur = a3;
+  for (let i = 0; i < 20 && Math.abs(cur - target) > 0.3; i += 1) {
+    await H.key(cur > target ? 'ArrowRight' : 'ArrowLeft', { code: cur > target ? 'ArrowRight' : 'ArrowLeft', vk: cur > target ? 39 : 37 });
+    cur = await shownAngle(H);
+  }
+  await snap(H, '63-live-angle-aim-pc');
+  await H.key('Enter');
+  await sleep(200);
+  record('★★ D Enter 확정', (await H.evaluate("document.querySelector('.angle-stage')?.dataset.done")) === '1');
+  // G — 손가락으로 끌고 확정 버튼
+  await dragAngle(G, target + 8, 'touch');
+  await snap(G, '63-live-angle-drag-m390');
+  const ok = await rectOf(G, '.angle-ok');
+  await trustedTap(G, ok.x + ok.w / 2, ok.y + ok.h / 2);
+  await sleep(300);
+  record('★★ D 모바일 — 손가락 끌기 · 확정 버튼', (await G.evaluate("document.querySelector('.angle-stage')?.dataset.done")) === '1');
+  await waitPhase(H, 'roundResult', 20000);
+  await sleep(700);
+  await snap(H, '63-live-angle-result1-pc');
+  await snap(G, '63-live-angle-result1-m390');
+  record('★★ D 판 결과 — 내 각 · 목표 각(점선) 겹쳐 · 둘의 그림', (await H.evaluate("document.querySelector('.angle-result .angle-ray.target') !== null && document.querySelector('.angle-result .angle-ray.mine') !== null")) && (await H.evaluate("document.querySelectorAll('.mg-thumb-angle').length")) === 2);
+  // 2판 — H 는 끌기만(확정 안 함) → 마감 때 그때 각
+  await waitPhase(H, 'play', 30000);
+  await sleep(300);
+  const t2 = Number((await H.evaluate("document.querySelector('.angle-target')?.innerText ?? ''")).replace(/[^\d]/g, ''));
+  await dragAngle(H, t2 - 6, 'mouse');
+  const left = await shownAngle(H);
+  await waitPhase(H, 'roundResult', 20000);
+  const db = await r051Db(roomId, 'angle');
+  const h0 = db.find((r) => r.login_id.endsWith('_agh') && r.round_index === 0);
+  const g0 = db.find((r) => r.login_id.endsWith('_agg') && r.round_index === 0);
+  const h1 = db.find((r) => r.login_id.endsWith('_agh') && r.round_index === 1);
+  record('★★★ D 기록 — PC 1판 오차 < 0.5 · 모바일 ≈ 8 · 2판 미확정 = 그때 각', h0?.value < 0.5 && Math.abs((g0?.value ?? 0) - 8) < 1.5 && h1?.submitted && Math.abs(h1.input.deg - left) < 0.6, JSON.stringify([h0?.value, g0?.value, h1?.input, left]));
+  await waitPhase(H, 'final', 60000);
+  await H.waitFor("document.querySelector('.lobby-card') !== null", 40000);
+  await H.close?.();
+  await G.close?.();
+}
+
+async function r051Flow(browser) {
+  if (!process.env.MG_SKIP_LAB) await r051Lab(browser);
+  if (process.env.MG_SKIP_LIVE) return;
+  if (R051_GAMES.includes('reaction')) await r051Reaction(browser);
+  if (R051_GAMES.includes('typing')) await r051Typing(browser);
+  if (R051_GAMES.includes('circle')) await r051Circle(browser);
+  if (R051_GAMES.includes('angle')) await r051Angle(browser);
+}
+
 async function minigameFlow(browser) {
   // ── [1] 그림 모음 · 장면 (MG_SKIP_LAB=1 이면 건너뛴다 — 실제 판만 다시 볼 때)
-  if (!process.env.MG_SKIP_LAB) await minigameLab(browser);
-  if (!process.env.MG_SKIP_LIVE) await minigameLive(browser);
+  // ★ R051 — MG_SKIP_R050=1 이면 R050 두 게임을 건너뛰고 · 넷(번개손 · 타자 · 원 · 각도)만 (MG_GAMES 로 더 좁힌다)
+  if (!process.env.MG_SKIP_R050) {
+    if (!process.env.MG_SKIP_LAB) await minigameLab(browser);
+    if (!process.env.MG_SKIP_LIVE) await minigameLive(browser);
+  }
+  if (!process.env.MG_SKIP_R051) await r051Flow(browser);
 }
 /** ★ R050 F — /lab/sound — 후보 버튼 · 실제 파일 길이(브라우저가 읽은 duration) · 누르면 소리가 난다(오류 없음) */
 async function soundLab(L) {
@@ -2257,7 +2670,7 @@ async function minigameLive(browser) {
   await sleep(600);
   // 설정 줄 — 미니게임 포함 체크
   await realClick(H, '.mg-check input');
-  await H.waitFor("document.querySelector('.mg-check input')?.checked === true && document.querySelectorAll('.mg-set-row [data-minigame]').length === 2", 4000);
+  await H.waitFor("document.querySelector('.mg-check input')?.checked === true && document.querySelectorAll('.mg-set-row [data-minigame]').length === 6", 4000);
   await sleep(300);
   await snap(H, '40-lobby-minigame-setting-pc');
   record('★★ D 로비 설정 — "미니게임 포함" 체크 → 손님 화면에도 "포함"', await G.waitFor("[...document.querySelectorAll('.mg-set-row .chip')].some((c) => c.innerText === '포함')", 4000));

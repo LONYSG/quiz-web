@@ -11,7 +11,7 @@
 // =============================================================================
 
 /** 미니게임 키. ★ 새 미니게임은 여기에 키를 더하고 server/src/minigame/ 에 모듈 하나 · client 에 화면 하나 */
-export type MinigameKey = 'cake' | 'balance';
+export type MinigameKey = 'cake' | 'balance' | 'reaction' | 'typing' | 'circle' | 'angle';
 
 export interface MinigameInfo {
   key: MinigameKey;
@@ -31,7 +31,14 @@ export interface MinigameInfo {
   /** 값이 작을수록 좋은가(케이크 — 오차) · 클수록 좋은가(균형 — 작은 쪽 %) */
   better: 'low' | 'high';
   /** 표시 단위 */
-  unit: '초' | '%';
+  unit: '초' | '%' | 'ms' | '°';
+  /**
+   * ★ R051 — 표의 소수 자리. 없으면 소수 표시 규칙(decimalsForRanking — 1위와 2위가 갈리는 자리 · 최대 maxDecimals).
+   *   번개손은 ms 정수(0) 고정.
+   */
+  fixedDecimals?: number;
+  /** 소수 표시 규칙의 최대 자리 (없으면 3 · 각도 2) */
+  maxDecimals?: number;
 }
 
 /** ★ 순서가 표시 순서다 */
@@ -60,6 +67,57 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     better: 'high',
     unit: '%',
   },
+  // ★★★ R051 — 미니게임 2차 (피지컬류 넷 · 예상 시간은 안내 3 + 규칙 5 + 판마다(준비 1.5 + 진행 + 결과 4) + 최종 6 + 돌아감 2)
+  {
+    key: 'reaction',
+    name: '번개손',
+    oneLine: '화면이 초록으로 바뀌는 순간 누르세요! 3판째부터는 가짜 신호도 — 먼저 누르면 실격',
+    controlsPc: 'Space 또는 Enter — 한 번만',
+    controlsMobile: '화면을 톡 — 한 번만',
+    kind: 'physical',
+    rounds: 5,
+    estSec: 70,
+    better: 'low',
+    unit: 'ms',
+    fixedDecimals: 0,
+  },
+  {
+    key: 'typing',
+    name: '타자',
+    oneLine: '보이는 문장을 똑같이 빨리 치세요! 띄어쓰기 · 마침표까지 — 틀린 글자는 지워야 해요',
+    controlsPc: '키보드로 입력 — 다 맞게 치면 바로 끝',
+    controlsMobile: '입력칸을 눌러 키보드로 — 다 맞게 치면 바로 끝',
+    kind: 'physical',
+    rounds: 3,
+    estSec: 100,
+    better: 'low',
+    unit: '초',
+  },
+  {
+    key: 'circle',
+    name: '완벽한 원',
+    oneLine: '한 번에 원을 그리세요! 손을 떼면 끝 — 얼마나 동그란지 % 로',
+    controlsPc: '마우스를 누른 채 그리고 떼기',
+    controlsMobile: '손가락으로 그리고 떼기',
+    kind: 'physical',
+    rounds: 3,
+    estSec: 60,
+    better: 'high',
+    unit: '%',
+  },
+  {
+    key: 'angle',
+    name: '각도 맞추기',
+    oneLine: '눈금 없이 제시된 각도를 만드세요! 10초',
+    controlsPc: '← → 0.5°씩 (꾹 누르면 빨라져요) · 마우스로 끌어도 돼요 · Space / Enter 확정',
+    controlsMobile: '선 끝을 손가락으로 끌고 확정 버튼',
+    kind: 'physical',
+    rounds: 3,
+    estSec: 60,
+    better: 'low',
+    unit: '°',
+    maxDecimals: 2,
+  },
 ];
 
 export const MINIGAME_KEYS: readonly MinigameKey[] = MINIGAMES.map((m) => m.key);
@@ -74,6 +132,7 @@ export function isMinigameKey(v: unknown): v is MinigameKey {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 등장 (찬종 확정 + 설계 판단 — D-234)
+//   ★ Q-110 (가) 확정(찬종 2026-10-17 · R051): 10문제 판은 가운데(5번째 뒤) 1회 · 혼자(참가 1명)는 보상 0 — 아래 두 판단이 그대로 상수가 됐다.
 //   켜면 **10문제마다**(10 · 20 · 30 … 번째 문제의 정답 공개 뒤) 1회 · **마지막 문제 뒤에는 없음** · 한 판 상한 10회.
 //   문제 수 5~9 는 가운데(ceil(N/2) 번째 뒤) 1회 · 4 이하 없음.
 //   ★ 판단(브리핑의 빈틈): 10문제 판은 "10번째 = 마지막" 이라 위 규칙으로는 0회가 된다(9문제 판은 1회인데).
@@ -180,16 +239,22 @@ export function fixedRound(v: number, d: number): string {
   return (Math.round((Math.abs(v) + 1e-9) * k) / k).toFixed(d);
 }
 
-/** values = 순위 순(1위 먼저)의 값. 미제출(null)은 빼고 준다 */
-export function decimalsForRanking(values: readonly number[]): number {
+/** values = 순위 순(1위 먼저)의 값. 미제출(null)은 빼고 준다. max = 최대 자리(R051 — 각도 2) */
+export function decimalsForRanking(values: readonly number[], max: number = DECIMALS_MAX): number {
   if (values.length < 2) return DECIMALS_MIN;
   const a = values[0]!;
   const b = values[1]!;
   if (Math.abs(a - b) < 1e-9) return DECIMALS_MIN;
-  for (let d = DECIMALS_MIN; d <= DECIMALS_MAX; d += 1) {
+  for (let d = DECIMALS_MIN; d <= max; d += 1) {
     if (fixedRound(a, d) !== fixedRound(b, d) || Math.sign(a) !== Math.sign(b)) return d;
   }
-  return DECIMALS_MAX;
+  return max;
+}
+
+/** ★ R051 — 이 미니게임의 표 소수 자리 (고정 자리가 있으면 그것 · 아니면 소수 표시 규칙) */
+export function decimalsFor(info: Pick<MinigameInfo, 'fixedDecimals' | 'maxDecimals'>, values: readonly number[]): number {
+  if (info.fixedDecimals !== undefined) return info.fixedDecimals;
+  return decimalsForRanking(values, info.maxDecimals ?? DECIMALS_MAX);
 }
 
 /** 값을 d 자리로 (부호 있는 값은 sign=true 면 +/− 를 붙인다) */

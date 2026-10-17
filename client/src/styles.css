@@ -5318,6 +5318,373 @@ button.primary.tone-warn {
   transform: none;
 }
 
+/* =============================================================================
+   ★★★ R051 — 미니게임 2차 (ReactionTap · TypingRace · CircleDraw · AngleMatch)
+   ============================================================================= */
+/* ── 번개손 — 진짜 신호는 초록(색만으로도 알 수 있게) · 가짜 색은 노랑 */
+.reaction-stage {
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  padding: 4px 0;
+}
+.rx-panel {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 6px;
+  min-height: clamp(220px, 34vh, 340px);
+  border-radius: 18px;
+  background: #d9363e;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+  transition: background-color 40ms linear;
+}
+.rx-big {
+  margin: 0;
+  font-size: clamp(2.4rem, 7vw, 4.4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.rx-sub {
+  margin: 0;
+  font-weight: 800;
+  font-size: 0.95rem;
+  opacity: 0.92;
+}
+.rx-zap {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+}
+.rx-go .rx-panel {
+  background: #14a85a;
+  box-shadow: 0 0 0 6px color-mix(in srgb, #14a85a 35%, transparent);
+}
+.rx-fake-color .rx-panel {
+  background: #f2b705;
+  color: #3a2a00;
+}
+.rx-fake-text .rx-big {
+  animation: rx-blink 150ms steps(2) infinite;
+}
+@keyframes rx-blink {
+  50% { opacity: 0.25; }
+}
+.rx-done .rx-panel {
+  background: var(--surface-2);
+  color: var(--text);
+}
+.rx-done .rx-big {
+  color: var(--ok);
+}
+.rx-foul .rx-panel {
+  background: var(--bad-soft);
+  color: var(--bad);
+}
+.rx-over .rx-panel {
+  background: var(--surface-2);
+  color: var(--text-dim);
+}
+.mg-rules-icon {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+.mg-rules-big {
+  font-size: 3rem;
+  color: var(--accent);
+}
+.mg-rules-art svg.mg-rules-big {
+  width: 3rem;
+  height: 3rem;
+}
+.rx-demo {
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.rx-demo span {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 64px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 900;
+  font-size: 0.85rem;
+}
+.mg-rules-art .rx-demo svg {
+  /* .mg-rules-art svg(100%) 를 덮는다 — 번개 아이콘은 글자 크기 */
+  width: 1.15em;
+  height: 1.15em;
+  display: inline-block;
+}
+.rx-demo-green {
+  gap: 2px;
+}
+.rx-demo-red {
+  background: #d9363e;
+}
+.rx-demo-green {
+  background: #14a85a;
+}
+/* ── 타자 */
+.typing-stage {
+  display: grid;
+  gap: 10px;
+  padding: 4px 0;
+}
+.typing-bar,
+.circle-bar {
+  height: 6px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.typing-bar span,
+.circle-bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+}
+.typing-target {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1.5;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.typing-target.small {
+  font-size: 1rem;
+  padding: 10px 12px;
+}
+.typing-target .tc.ok {
+  color: var(--ok);
+}
+.typing-target .tc.bad {
+  color: #fff;
+  background: var(--bad);
+  border-radius: 3px;
+}
+.typing-target .tc.bad.sp {
+  /* 틀린 띄어쓰기도 보이게 */
+  outline: 2px solid var(--bad);
+}
+.typing-target .tc.composing {
+  color: var(--text);
+  text-decoration: underline 2px var(--text-dim);
+}
+.typing-target .tc.todo {
+  color: var(--text-dim);
+}
+.typing-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  font-weight: 700;
+  padding: 12px 14px;
+}
+.typing-input.bad {
+  border-color: var(--bad);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--bad) 22%, transparent);
+}
+.typing-help {
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+  color: var(--text-dim);
+}
+.typing-stage.done .typing-help {
+  color: var(--ok);
+}
+.typing-warn {
+  color: var(--bad);
+}
+.typing-demo {
+  font-weight: 900;
+  font-size: 0.95rem;
+}
+.typing-demo .tc.ok {
+  color: var(--ok);
+}
+.typing-demo .tc.bad {
+  color: #fff;
+  background: var(--bad);
+  border-radius: 3px;
+}
+.typing-demo .tc.todo {
+  color: var(--text-dim);
+}
+/* ── 완벽한 원 */
+.circle-stage,
+.angle-stage {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  padding: 4px 0;
+}
+.circle-stage .circle-bar,
+.angle-stage .circle-bar {
+  width: 100%;
+}
+.circle-pad {
+  width: min(100%, 52vh, 420px);
+  aspect-ratio: 1;
+  background: var(--surface-2);
+  border-radius: 18px;
+  touch-action: none;
+  cursor: crosshair;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.circle-pad.result {
+  width: 100%;
+  max-width: 220px;
+  cursor: default;
+}
+.circle-dot {
+  fill: var(--text-dim);
+  opacity: 0.4;
+}
+.circle-ink {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.circle-ink.thumb {
+  stroke-width: 2.6;
+}
+.circle-fit {
+  fill: none;
+  stroke: var(--ok);
+  stroke-width: 0.9;
+  stroke-dasharray: 2.4 2;
+  opacity: 0.9;
+}
+.circle-help,
+.angle-help {
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+  color: var(--text-dim);
+}
+.circle-score {
+  font-size: 1.4rem;
+  color: var(--ok);
+}
+/* ── 각도 맞추기 */
+.angle-target {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1;
+}
+.angle-deg {
+  color: var(--accent);
+}
+.angle-pad {
+  width: min(100%, 560px);
+  aspect-ratio: 200 / 120;
+  background: var(--surface-2);
+  border-radius: 18px;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.angle-pad.result {
+  max-width: 300px;
+  cursor: default;
+}
+.angle-ray {
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.angle-ray.base {
+  stroke: var(--text);
+}
+.angle-ray.mine {
+  stroke: var(--accent);
+}
+.angle-ray.target {
+  stroke: var(--ok);
+  stroke-dasharray: 6 4;
+}
+.angle-ray.thumb {
+  stroke-width: 5;
+}
+.angle-vertex {
+  fill: var(--text);
+}
+.angle-handle-hit {
+  fill: transparent;
+}
+.angle-handle-dot {
+  fill: var(--accent);
+  stroke: var(--surface);
+  stroke-width: 1.6;
+}
+.angle-rules-num {
+  font-size: 30px;
+  font-weight: 900;
+  fill: var(--text);
+}
+.angle-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.angle-ok {
+  min-width: 96px;
+}
+/* ── 판 결과 (넷 공통) */
+.mg-r051-result {
+  display: grid;
+  gap: 4px;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.mg-r051-result p {
+  margin: 0;
+}
+.mg-r051-big {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 900;
+  line-height: 1.1;
+}
+.rx-result .mg-r051-big {
+  color: var(--ok);
+}
+.rx-result.foul .mg-r051-big {
+  color: var(--bad);
+}
+.mg-thumb-angle svg {
+  height: auto;
+  aspect-ratio: 200 / 120;
+}
+:where(.ui-mobile) .rx-panel {
+  min-height: 46vh;
+}
+:where(.ui-mobile) .circle-pad {
+  width: min(100%, 92vw, 420px);
+}
+:where(.ui-mobile) .typing-target {
+  font-size: 1.15rem;
+  padding: 10px 12px;
+}
+
 /* ── ★ R050 — /lab 화면 (점검용) */
 .lab-page {
   padding: 16px;

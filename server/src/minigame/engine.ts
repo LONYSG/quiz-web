@@ -18,7 +18,7 @@ import { randomInt } from 'node:crypto';
 import { config } from '../config.js';
 import {
   MINIGAME_TIMING,
-  decimalsForRanking,
+  decimalsFor,
   minigameReward,
   minigameSlots,
   rankFinal,
@@ -348,9 +348,10 @@ function endRound(room: Room, run: MinigameRun, now: number): void {
   );
   const rows: RoundResultRow[] = ranked.map((r) => {
     const s = subs.get(r.accountId);
-    return { accountId: r.accountId, submitted: Boolean(s), value: r.value, error: s?.error ?? null, rank: r.rank, points: r.points, extra: s?.extra ?? null };
+    return { accountId: r.accountId, submitted: s ? (s.submitted ?? true) : false, value: r.value, error: s?.error ?? null, rank: r.rank, points: r.points, extra: s?.extra ?? null };
   });
-  const decimals = decimalsForRanking(rows.filter((r) => r.value !== null).map((r) => r.value as number));
+  // ★ 소수 자리 — 게임이 정한 고정 자리(번개손 ms 정수) 또는 1·2위가 갈리는 자리. 타자 미완(진행률 순위 값)은 빼고 잰다
+  const decimals = decimalsFor(def.info, rows.filter((r) => r.value !== null && r.extra?.unfinished !== true).map((r) => r.value as number));
   run.roundResults.push({ roundIndex: run.roundIndex, decimals, rows });
   for (const r of rows) run.totals.set(r.accountId, (run.totals.get(r.accountId) ?? 0) + r.points);
   const idx = run.roundIndex;

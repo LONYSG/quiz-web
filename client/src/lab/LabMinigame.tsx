@@ -8,7 +8,19 @@
 
 import { useMemo, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { BALANCE_BOTTOM_Y, BALANCE_TOP_Y, balanceItem, balanceSplit, type BalanceKind, type MinigameKey, type MinigamePhase } from '@quiz/shared';
+import {
+  BALANCE_BOTTOM_Y,
+  BALANCE_TOP_Y,
+  TYPING_KO_SHORT,
+  balanceItem,
+  balanceSplit,
+  circleScore,
+  circleThumb,
+  minigameInfo,
+  type BalanceKind,
+  type MinigameKey,
+  type MinigamePhase,
+} from '@quiz/shared';
 import BalanceArt from '../minigame/BalanceArt.js';
 import { CakeArt } from '../minigame/CakeWait.js';
 import MinigameStage from '../minigame/MinigameStage.js';
@@ -35,7 +47,9 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
     null,
   ];
   const rows =
-    key === 'cake'
+    key === 'reaction' || key === 'typing' || key === 'circle' || key === 'angle'
+      ? r051Rows(key)
+      : key === 'cake'
       ? [
           { accountId: 'lab1', submitted: true, value: 0.012, error: -0.012, rank: 1, points: 4, extra: null },
           { accountId: 'lab3', submitted: true, value: 0.031, error: 0.031, rank: 2, points: 3, extra: null },
@@ -50,13 +64,24 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
           })
           .sort((a, b) => (b.value ?? -1) - (a.value ?? -1))
           .map((r, i) => ({ ...r, rank: r.submitted ? i + 1 : 4, points: r.submitted ? 4 - i : 0 }));
-  const decimals = key === 'cake' ? 2 : (() => {
+  const decimals = key === 'reaction' ? 0 : key === 'cake' ? 2 : (() => {
     const v = rows.filter((r) => r.value !== null).map((r) => r.value as number);
     for (let d = 1; d <= 3; d += 1) if (v.length < 2 || v[0]!.toFixed(d) !== v[1]!.toFixed(d)) return d;
     return 3;
   })();
+  // ★ R051 — 장면 상태 (?state= — 번개손 wait/fake-color/fake-text/go · 타자 typed 글 · 원 · 각도는 기본)
+  const sceneState = new URLSearchParams(window.location.search).get('state') ?? '';
+  const playAgo = key === 'reaction' ? ({ wait: 600, 'fake-color': 1300, 'fake-text': 1300, go: 3050 } as Record<string, number>)[sceneState] ?? 600 : 2300;
   const roundParams =
-    key === 'cake'
+    key === 'reaction'
+      ? { quickdraw: true, signalMs: 3000, windowMs: 2000, fakes: [{ atMs: 1200, kind: sceneState === 'fake-text' ? 'text' : 'color' }] }
+      : key === 'typing'
+        ? { lang: 'ko', size: 'short', text: TYPING_KO_SHORT[0] }
+        : key === 'circle'
+          ? { playMs: 8000 }
+          : key === 'angle'
+            ? { target: 37 }
+            : key === 'cake'
       ? { durationSec: 10, speed: 1, hideAfterSec: 5, targetMs: 10000, lateMs: 3000, rhythmSeed: 1 }
       : { kind, itemSeed: seed, label: item.label };
   return {
@@ -67,8 +92,15 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
     phaseStartedAt: now,
     phaseEndsAt: now + 99_000,
     roundIndex: phase === 'intro' || phase === 'rules' ? -1 : 0,
-    roundCount: key === 'cake' ? 4 : 3,
-    round: phase === 'intro' || phase === 'rules' || phase === 'final' || phase === 'outro' ? null : { params: roundParams, playMs: key === 'cake' ? 13000 : 10000, private: key === 'balance' ? { start: { top: 31, bottom: 70 } } : null },
+    roundCount: minigameInfo(key).rounds,
+    round:
+      phase === 'intro' || phase === 'rules' || phase === 'final' || phase === 'outro'
+        ? null
+        : {
+            params: roundParams,
+            playMs: key === 'cake' ? 13000 : key === 'reaction' ? 5000 : key === 'typing' ? 30000 : key === 'circle' ? 8000 : 10000,
+            private: key === 'balance' ? { start: { top: 31, bottom: 70 } } : key === 'angle' ? { start: 58 } : null,
+          },
     participants: PEOPLE,
     submittedCount: 1,
     selfSubmitted: false,
@@ -85,8 +117,68 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
           ]
         : null,
     afterQuestionIndex: 10,
-    receivedAt: performance.now() - (phase === 'play' ? 2300 : 0),
+    receivedAt: performance.now() - (phase === 'play' ? playAgo : 0),
+    lab:
+      key === 'reaction' && phase === 'play'
+        ? { elapsedMs: playAgo }
+        : key === 'typing' && sceneState === 'typed'
+          ? { typed: `${[...TYPING_KO_SHORT[0]!].slice(0, 6).join('')}리 ㄱ`, composing: true }
+          : undefined,
   };
+}
+
+/** ★ R051 — 손으로 그린 듯한 원(흔들림) · 반원 */
+function wobblyCircle(cx: number, cy: number, r: number, wob: number, from = 0, to = 360) {
+  const pts: { x: number; y: number }[] = [];
+  for (let d = from; d <= to; d += 4) {
+    const a = (d * Math.PI) / 180;
+    const rr = r * (1 + wob * Math.sin(d / 23) + wob * 0.6 * Math.cos(d / 9));
+    pts.push({ x: cx + Math.cos(a) * rr, y: cy + Math.sin(a) * rr });
+  }
+  return pts;
+}
+
+function r051Rows(key: 'reaction' | 'typing' | 'circle' | 'angle') {
+  const base = (id: string, value: number | null, rank: number, points: number, extra: Record<string, unknown> | null, error: number | null = null, submitted = true) => ({
+    accountId: id,
+    submitted,
+    value,
+    error,
+    rank,
+    points,
+    extra,
+  });
+  if (key === 'reaction')
+    return [
+      base('lab1', 231, 1, 4, { reactMs: 231, foul: null, fakeKind: null }, 231),
+      base('lab3', 268, 2, 3, { reactMs: 268, foul: null, fakeKind: null }, 268),
+      base('lab2', null, 3, 0, { reactMs: null, foul: 'fake', fakeKind: 'color' }),
+      base('lab4', null, 3, 0, { reactMs: null, foul: 'early', fakeKind: null }),
+    ];
+  if (key === 'typing')
+    return [
+      base('lab1', 6.482, 1, 4, { timeSec: 6.482, pct: 100 }, 6.482),
+      base('lab3', 7.915, 2, 3, { timeSec: 7.915, pct: 100 }, 7.915),
+      base('lab2', 1031.6, 3, 2, { unfinished: true, pct: 68.4 }, null, false),
+      base('lab4', null, 4, 0, null, null, false),
+    ];
+  if (key === 'circle') {
+    const shapes = [wobblyCircle(0.5, 0.5, 0.33, 0.02), wobblyCircle(0.48, 0.52, 0.3, 0.06), wobblyCircle(0.5, 0.5, 0.3, 0.03, 20, 250), null];
+    const rows = shapes.map((pts, i) => {
+      if (!pts) return base(`lab${i + 1}`, null, 4, 0, null, null, false);
+      const f = circleScore(pts);
+      return base(`lab${i + 1}`, f.score, 0, 0, { stroke: circleThumb(pts), cx: f.cx, cy: f.cy, r: f.r, coverageDeg: Math.round(f.coverageDeg), flaw: f.flaw }, f.dev);
+    });
+    return rows
+      .sort((a, b) => (b.value ?? -1) - (a.value ?? -1))
+      .map((r, i) => ({ ...r, rank: r.value !== null ? i + 1 : 4, points: r.value !== null ? 4 - i : 0 }));
+  }
+  return [
+    base('lab1', 0.5, 1, 4, { deg: 37.5, target: 37 }, 0.5),
+    base('lab3', 2.5, 2, 3, { deg: 34.5, target: 37 }, -2.5),
+    base('lab2', 6, 3, 2, { deg: 43, target: 37 }, 6),
+    base('lab4', 21, 4, 1, { deg: 58, target: 37 }, 21),
+  ];
 }
 
 export default function LabMinigame({ myAccountId }: { myAccountId: string }) {

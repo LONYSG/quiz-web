@@ -38,3 +38,9 @@ export * from './protocol.js';
 // ★★★ R050 — 미니게임
 export * from './minigame.js';
 export * from './balance.js';
+// ★★★ R051 — 미니게임 2차 (번개손 · 타자 · 완벽한 원 · 각도 맞추기)
+export * from './minigame/reaction.js';
+export * from './minigame/typing.js';
+export * from './minigame/typing-sentences.js';
+export * from './minigame/circle.js';
+export * from './minigame/angle.js';

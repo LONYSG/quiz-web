@@ -1,5 +1,6 @@
 // =============================================================================
-// ★★★ 미니게임 화면 (R050 · D-234) — 단계마다 한 장면. 미니게임별 화면(케이크 · 균형)은 play 단계에만 끼운다
+// ★★★ 미니게임 화면 (R050 · D-234) — 단계마다 한 장면. 미니게임별 화면은 play 단계에만 끼운다
+//   R050 케이크 · 균형 / ★ R051 번개손 · 타자 · 완벽한 원 · 각도 (PLAY 표 — 새 게임은 한 줄 + 규칙 그림 · 판 결과 값 글 하나)
 //
 //   intro(깜짝 이벤트! 징글 · BGM 바뀜) → rules(그림 + 한 줄 + 조작법 PC/모바일 따로) → ready(n판) → play → roundResult(판 순위) → … →
 //   final(최종 순위 · 받은 점수) → outro(퀴즈로 / 로비로 · BGM 원래대로)
@@ -17,7 +18,7 @@ import {
   minigameInfo,
   type BalanceKind,
 } from '@quiz/shared';
-import { Gamepad2, PartyPopper, Trophy } from 'lucide-react';
+import { Gamepad2, Keyboard, PartyPopper, Trophy, Zap } from 'lucide-react';
 import Icon from '../Icon.js';
 import Avatar from '../Avatar.js';
 import DeviceIcon from '../DeviceIcon.js';
@@ -27,6 +28,15 @@ import type { MinigameRoundRow, MinigameView, PlayerView } from '../useRoom.js';
 import BalanceArt, { pathOf } from './BalanceArt.js';
 import BalanceGuard from './BalanceGuard.js';
 import CakeWait, { CakeArt } from './CakeWait.js';
+import AngleMatch, { ANGLE_VX, ANGLE_VY, rayEnd } from './AngleMatch.js';
+import CircleDraw from './CircleDraw.js';
+import ReactionTap, { fakeName } from './ReactionTap.js';
+import TypingRace from './TypingRace.js';
+
+/** ★ 판 진행 화면 — 미니게임 키 → 컴포넌트 */
+const PLAY = { cake: CakeWait, balance: BalanceGuard, reaction: ReactionTap, typing: TypingRace, circle: CircleDraw, angle: AngleMatch } as const;
+/** 진행 중 "n / m명 …" 의 말 */
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정' };
 
 interface Props {
   socket: Socket;
@@ -60,13 +70,14 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         break;
       case 'ready':
         // ★ 케이크는 리듬을 들어야 한다 — 판 동안 배경음악을 끈다
-        if (view.key === 'cake') setMusicMode('quiet');
+        if (view.key === 'cake' || view.key === 'reaction') setMusicMode('quiet');
         sfx('mg-ready');
         break;
       case 'play':
-        sfx('mg-go');
+        // ★ 번개손은 "시작" 소리를 내지 않는다(신호 소리와 헷갈린다) · 타자는 자기 입력칸에 포커스를 둔다
+        if (view.key !== 'reaction') sfx('mg-go');
         // 모바일 키보드 내림 · PC 채팅 입력에서 손 떼기 (Space · 방향키가 미니게임으로)
-        (document.activeElement as HTMLElement | null)?.blur?.();
+        if (view.key !== 'typing') (document.activeElement as HTMLElement | null)?.blur?.();
         break;
       case 'roundResult':
         setMusicMode('minigame');
@@ -125,13 +136,17 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
 
       {view.phase === 'rules' && (
         <div className="mg-rules">
-          <div className="mg-rules-art">{view.key === 'cake' ? <CakeArt open={false} small /> : <RulesBalanceArt />}</div>
+          <div className="mg-rules-art">
+            <RulesArt k={view.key} />
+          </div>
           <div className="mg-rules-text">
             <p className="mg-rules-line">{info.oneLine}</p>
             <p className="mg-rules-ctrl">
               <span className="hint-label">{mobile ? '모바일' : 'PC'}</span> {mobile ? info.controlsMobile : info.controlsPc}
             </p>
             {view.key === 'cake' && <p className="dim mg-rules-note">블루투스 이어폰은 소리가 늦게 들려요 — 화면 숫자를 믿으세요</p>}
+            {view.key === 'reaction' && <p className="dim mg-rules-note">진짜 신호는 초록 화면 — 소리를 꺼도 초록만 보면 돼요 · 노란 화면 · 글자 · 소리만은 가짜</p>}
+            {view.key === 'typing' && <p className="dim mg-rules-note">한글 짧은 문장 · 영어 · 한글 긴 문장 — 30초 안에 못 치면 친 만큼(%)으로</p>}
             <p className="dim mg-rules-note">
               {view.roundCount}판 · 판마다 순위 점수 · {view.practice ? '연습이라 보상 없음' : '최종 1~3위에게 보너스 점수(포인트도)'}
             </p>
@@ -147,16 +162,11 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         </div>
       )}
 
-      {view.phase === 'play' &&
-        (view.key === 'cake' ? (
-          <CakeWait socket={socket} view={view} serverNow={serverNow} mobile={mobile} />
-        ) : (
-          <BalanceGuard socket={socket} view={view} serverNow={serverNow} mobile={mobile} />
-        ))}
+      {view.phase === 'play' && <PlayView socket={socket} view={view} serverNow={serverNow} mobile={mobile} />}
 
       {view.phase === 'play' && !view.spectating && (
         <p className="mg-submitted dim">
-          {view.submittedCount} / {view.participants.length}명 {view.key === 'cake' ? '누름' : '확정'}
+          {view.submittedCount} / {view.participants.length}명 {SUBMIT_WORD[view.key]}
         </p>
       )}
 
@@ -199,13 +209,80 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
   );
 }
 
+function PlayView(props: { socket: Socket; view: MinigameView; serverNow: () => number; mobile: boolean }) {
+  const C = PLAY[props.view.key];
+  return <C {...props} />;
+}
+
 function readyDesc(view: MinigameView): string {
   const p = view.round?.params ?? {};
-  if (view.key === 'cake') {
-    const sp = Number(p.speed ?? 1);
-    return `${p.durationSec}초${sp !== 1 ? ` · ${sp}배속` : ''} · ${p.hideAfterSec}초 뒤 가려져요`;
+  switch (view.key) {
+    case 'cake': {
+      const sp = Number(p.speed ?? 1);
+      return `${p.durationSec}초${sp !== 1 ? ` · ${sp}배속` : ''} · ${p.hideAfterSec}초 뒤 가려져요`;
+    }
+    case 'balance':
+      return `${String(p.label ?? '')} — 정확히 반으로!`;
+    case 'reaction':
+      return p.quickdraw ? '퀵드로우 — 가짜 신호를 조심하세요!' : '초록이 되면 바로!';
+    case 'typing':
+      return p.lang === 'en' ? '영어 문장' : p.size === 'long' ? '한글 긴 문장' : '한글 짧은 문장';
+    case 'circle':
+      return '한 번에 · 동그랗게 · 크게';
+    case 'angle':
+      return '눈금 없이 — 감으로!';
   }
-  return `${String(p.label ?? '')} — 정확히 반으로!`;
+}
+
+/** 규칙 안내 그림 */
+function RulesArt({ k }: { k: MinigameView['key'] }) {
+  switch (k) {
+    case 'cake':
+      return <CakeArt open={false} small />;
+    case 'balance':
+      return <RulesBalanceArt />;
+    case 'reaction':
+      return (
+        <div className="mg-rules-icon rx-demo" aria-hidden="true">
+          <span className="rx-demo-red">준비…</span>
+          <span className="rx-demo-green">
+            <Icon icon={Zap} /> 지금!
+          </span>
+        </div>
+      );
+    case 'typing':
+      return (
+        <div className="mg-rules-icon" aria-hidden="true">
+          <Icon icon={Keyboard} className="mg-rules-big" />
+          <span className="typing-demo">
+            <span className="tc ok">가는 말</span>
+            <span className="tc bad">이</span>
+            <span className="tc todo"> 고와야</span>
+          </span>
+        </div>
+      );
+    case 'circle':
+      return (
+        <svg viewBox="0 0 100 100" className="mg-rules-svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="34" className="circle-fit" />
+          <path d="M50 14 C72 13 86 30 85 51 C84 72 70 86 49 85 C28 84 15 70 15 50 C15 31 30 17 46 15" className="circle-ink" />
+        </svg>
+      );
+    case 'angle': {
+      const e = rayEnd(37);
+      const b = rayEnd(0);
+      return (
+        <svg viewBox="0 0 200 120" className="mg-rules-svg angle-rules" aria-hidden="true">
+          <line x1={ANGLE_VX} y1={ANGLE_VY} x2={b.x} y2={b.y} className="angle-ray base" />
+          <line x1={ANGLE_VX} y1={ANGLE_VY} x2={e.x} y2={e.y} className="angle-ray mine" />
+          <circle cx={e.x} cy={e.y} r={4.2} className="angle-handle-dot" />
+          <text x="40" y="40" className="angle-rules-num">
+            37°
+          </text>
+        </svg>
+      );
+    }
+  }
 }
 
 function RulesBalanceArt() {
@@ -239,18 +316,33 @@ function RoundResult({
   const d = result.decimals;
   const mine = result.rows.find((r) => r.accountId === myAccountId);
   const valueText = (r: MinigameRoundRow) => {
-    if (!r.submitted || r.value === null) return view.key === 'cake' ? '안 누름' : '—';
-    if (view.key === 'cake') {
-      const e = r.error ?? 0;
-      return `${formatMinigameValue(e, d, true)}초`;
+    // ★ R051 — 번개손 실격 · 타자 미완은 값 대신 이유 (submitted 가 false 여도 진행률은 보인다)
+    if (view.key === 'reaction' && r.extra?.foul) return r.extra.foul === 'fake' ? `속음(${fakeName(String(r.extra.fakeKind))})` : '성급!';
+    if (view.key === 'typing' && r.extra?.unfinished) return `미완 ${formatMinigameValue(Number(r.extra.pct ?? 0), 0)}%`;
+    if (!r.submitted || r.value === null) return view.key === 'cake' || view.key === 'reaction' ? '안 누름' : view.key === 'typing' ? '못 침' : '—';
+    switch (view.key) {
+      case 'cake':
+        return `${formatMinigameValue(r.error ?? 0, d, true)}초`;
+      case 'balance': {
+        const a = Number(r.extra?.aPct ?? r.value);
+        const b = 100 - a;
+        return `${formatMinigameValue(Math.min(a, b), d)} : ${formatMinigameValue(Math.max(a, b), d)}`;
+      }
+      case 'reaction':
+        return `${formatMinigameValue(r.value, d)}ms`;
+      case 'typing':
+        return `${formatMinigameValue(r.value, d)}초`;
+      case 'circle':
+        return `${formatMinigameValue(r.value, d)}%`;
+      case 'angle':
+        return `${formatMinigameValue(r.value, d)}° 차이`;
     }
-    const a = Number(r.extra?.aPct ?? r.value);
-    const b = 100 - a;
-    return `${formatMinigameValue(Math.min(a, b), d)} : ${formatMinigameValue(Math.max(a, b), d)}`;
   };
   return (
     <div className="mg-result">
-      {view.key === 'balance' ? (
+      {view.key === 'reaction' || view.key === 'typing' || view.key === 'circle' || view.key === 'angle' ? (
+        <R051Result view={view} mine={view.spectating ? undefined : mine} first={result.rows[0]} decimals={d} />
+      ) : view.key === 'balance' ? (
         <BalanceCutShow view={view} row={mine ?? result.rows[0]} decimals={d} />
       ) : (
         <div className="mg-cake-result">
@@ -286,6 +378,13 @@ function RoundResult({
           );
         })}
       </ol>
+      {(view.key === 'circle' || view.key === 'angle') && (
+        <div className="mg-thumbs" aria-label="모두의 결과">
+          {result.rows.map((r) => (
+            <R051Thumb key={r.accountId} view={view} row={r} name={nameOf(r.accountId)} decimals={d} />
+          ))}
+        </div>
+      )}
       {view.key === 'balance' && (
         <div className="mg-thumbs" aria-label="누가 어떻게 잘랐나">
           {result.rows.map((r) => (
@@ -369,6 +468,122 @@ function CutThumb({ view, row, name, decimals }: { view: MinigameView; row: Mini
           {name?.nickname ?? '?'}
         </span>
         <span className="mono">{row.value !== null ? `${formatMinigameValue(row.value, decimals)}%` : '—'}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★★ R051 — 판 결과 (번개손 · 타자 · 완벽한 원 · 각도) — 내 결과 크게(구경이면 1위) + 그림
+// ─────────────────────────────────────────────────────────────────────────────
+function R051Result({ view, mine, first, decimals }: { view: MinigameView; mine: MinigameRoundRow | undefined; first: MinigameRoundRow | undefined; decimals: number }) {
+  const row = mine ?? first;
+  const p = view.round?.params ?? {};
+  const who = mine ? '나' : '1위';
+  if (view.key === 'reaction') {
+    const foul = row?.extra?.foul;
+    return (
+      <div className={`mg-r051-result rx-result${foul ? ' foul' : ''}`}>
+        <p className="mg-r051-big mono">
+          {!row || (!row.submitted && !foul) ? '안 누름' : foul ? (foul === 'fake' ? '속았다!' : '성급!') : `${row.value}ms`}
+        </p>
+        <p className="dim">
+          {who} · {p.quickdraw ? `퀵드로우 — 가짜 신호 ${(p.fakes as unknown[] | undefined)?.length ?? 0}번` : '순수 반응'}
+        </p>
+      </div>
+    );
+  }
+  if (view.key === 'typing') {
+    const unfinished = row?.extra?.unfinished === true;
+    return (
+      <div className="mg-r051-result typing-result">
+        <p className="typing-target small no-copy" lang={p.lang === 'en' ? 'en' : 'ko'}>
+          {String(p.text ?? '')}
+        </p>
+        <p className="mg-r051-big mono">
+          {!row || row.value === null ? '못 침' : unfinished ? `미완 ${Math.round(Number(row.extra?.pct ?? 0))}%` : `${formatMinigameValue(row.value, Math.max(2, decimals))}초`}
+        </p>
+        <p className="dim">{who}</p>
+      </div>
+    );
+  }
+  if (view.key === 'circle') {
+    const stroke = (row?.extra?.stroke as [number, number][] | undefined) ?? [];
+    const cx = Number(row?.extra?.cx ?? 0.5);
+    const cy = Number(row?.extra?.cy ?? 0.5);
+    const r = Number(row?.extra?.r ?? 0);
+    const flaw = row?.extra?.flaw;
+    return (
+      <div className="mg-r051-result circle-result">
+        <svg viewBox="0 0 100 100" className="circle-pad result" aria-hidden="true">
+          {r > 0 && r < 1.5 && <circle cx={cx * 100} cy={cy * 100} r={r * 100} className="circle-fit" />}
+          {stroke.length > 1 && <path d={stroke.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x * 100} ${y * 100}`).join(' ')} className="circle-ink" />}
+        </svg>
+        <div>
+          <p className="mg-r051-big mono">{row?.value !== null && row?.value !== undefined ? `${formatMinigameValue(row.value, decimals)}%` : '안 그림'}</p>
+          <p className="dim">
+            {who}
+            {flaw === 'open' ? ' · 덜 닫힘' : flaw === 'small' ? ' · 너무 작음' : flaw === 'line' ? ' · 원이 아님' : ''}
+          </p>
+        </div>
+      </div>
+    );
+  }
+  // angle
+  const target = Number(p.target ?? row?.extra?.target ?? 45);
+  const deg = Number(row?.extra?.deg ?? NaN);
+  const t = rayEnd(target);
+  const b = rayEnd(0);
+  const m = Number.isFinite(deg) ? rayEnd(deg) : null;
+  return (
+    <div className="mg-r051-result angle-result">
+      <svg viewBox="0 0 200 120" className="angle-pad result" aria-hidden="true">
+        <line x1={ANGLE_VX} y1={ANGLE_VY} x2={b.x} y2={b.y} className="angle-ray base" />
+        <line x1={ANGLE_VX} y1={ANGLE_VY} x2={t.x} y2={t.y} className="angle-ray target" />
+        {m && <line x1={ANGLE_VX} y1={ANGLE_VY} x2={m.x} y2={m.y} className="angle-ray mine" />}
+        <circle cx={ANGLE_VX} cy={ANGLE_VY} r={2.6} className="angle-vertex" />
+      </svg>
+      <div>
+        <p className="mg-r051-big mono">{m ? `${formatMinigameValue(deg, Math.max(1, decimals))}°` : '—'}</p>
+        <p className="dim">
+          {who} · 목표 {target}° {row?.value !== null && row?.value !== undefined ? `· ${formatMinigameValue(row.value, decimals)}° 차이` : ''}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function R051Thumb({ view, row, name, decimals }: { view: MinigameView; row: MinigameRoundRow; name: { nickname: string; colorIndex: number } | undefined; decimals: number }) {
+  let art: React.ReactNode = null;
+  if (view.key === 'circle') {
+    const stroke = (row.extra?.stroke as [number, number][] | undefined) ?? [];
+    art = (
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        {stroke.length > 1 && <path d={stroke.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x * 100} ${y * 100}`).join(' ')} className="circle-ink thumb" />}
+      </svg>
+    );
+  } else {
+    const target = Number(view.round?.params?.target ?? 45);
+    const deg = Number(row.extra?.deg ?? NaN);
+    const t = rayEnd(target);
+    const b = rayEnd(0);
+    const m = Number.isFinite(deg) ? rayEnd(deg) : null;
+    art = (
+      <svg viewBox="0 0 200 120" aria-hidden="true">
+        <line x1={ANGLE_VX} y1={ANGLE_VY} x2={b.x} y2={b.y} className="angle-ray base" />
+        <line x1={ANGLE_VX} y1={ANGLE_VY} x2={t.x} y2={t.y} className="angle-ray target" />
+        {m && <line x1={ANGLE_VX} y1={ANGLE_VY} x2={m.x} y2={m.y} className="angle-ray mine thumb" />}
+      </svg>
+    );
+  }
+  return (
+    <figure className={`mg-thumb mg-thumb-${view.key}`}>
+      {art}
+      <figcaption>
+        <span className="nick" style={{ color: `var(--p${name?.colorIndex ?? 0})` }}>
+          {name?.nickname ?? '?'}
+        </span>
+        <span className="mono">{row.value !== null ? `${formatMinigameValue(row.value, decimals)}${view.key === 'circle' ? '%' : '°'}` : '—'}</span>
       </figcaption>
     </figure>
   );

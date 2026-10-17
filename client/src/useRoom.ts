@@ -99,6 +99,8 @@ export interface MinigameView {
   afterQuestionIndex: number | null;
   /** 화면 전용 — 이 보기를 받은 기기 시각(performance.now). 스냅샷(재접속)이면 없다 */
   receivedAt?: number;
+  /** ★ R051 — /lab/minigame 장면 전용(서버는 보내지 않는다): 멈춘 판 시간 · 미리 친 글 */
+  lab?: { elapsedMs?: number; typed?: string; composing?: boolean };
 }
 
 /** 진행 중인 문제. ★ 정답은 들어 있지 않다 (QUESTION_ACTIVE 중) */

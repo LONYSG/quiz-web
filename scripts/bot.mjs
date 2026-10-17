@@ -110,6 +110,11 @@ const SCENARIO_ENV = {
   shop: { SHOP_PRICE_OVERRIDE: '10' },
   // ★ R050 — 정답 공개 대기 200ms · 미니게임 판 진행 밖 단계 ×0.05 (판 진행 시간은 그대로)
   minigame: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  // ★ R051 — 미니게임 2차 (같은 값)
+  mgreaction: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  mgtyping: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  mgcircle: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  mgangle: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -6195,6 +6200,396 @@ async function scenarioMinigame() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R051 — 미니게임 2차 봇 (D-237) — 게임마다 시나리오 하나 (mgreaction · mgtyping · mgcircle · mgangle)
+//   자기 서버(SCENARIO_ENV): 정답 공개 대기 200ms · 판 진행 밖 단계 ×0.05 (판 진행 시간은 그대로)
+//   ★ 지연 흉내: 받기 지연 L(기기가 늦게 받음) → 기기 시간으로 잰 값 → 보내기 지연 L. 기기가 보내는 값에는 L 이 끼지 않는다.
+// -----------------------------------------------------------------------------
+/** 방 하나에 n 봇 — 방장 = 첫 봇 */
+async function mgRoom(n, title) {
+  const bots = await makeBots(n);
+  const [host] = bots;
+  for (const b of bots) await b.connect();
+  host.createRoom(title);
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  const roomId = host.snapshot.room.id;
+  for (const b of bots.slice(1)) {
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
+  }
+  await sleep(300);
+  return { bots, host, roomId };
+}
+/** 연습 판 하나 — 끝날 때까지 · 판 id */
+async function mgPractice(host, roomId, key, timeoutMs, during) {
+  const pf = host.mark();
+  host.socket.emit('minigame.practice', { key });
+  await host.waitFor(() => host.snapshot?.room.state === 'MINIGAME', 5000, `${key} 연습 시작`);
+  if (during) await during();
+  await host.waitFor(() => host.since(pf, 'minigame.ended').length > 0, timeoutMs, `${key} 연습 끝`);
+  const run = await withDb(async (c) => (await c.query(`SELECT id::text FROM minigame_runs WHERE room_id = $1 AND minigame_key = $2 ORDER BY id DESC LIMIT 1`, [roomId, key])).rows[0]);
+  return run.id;
+}
+async function mgRows(runId) {
+  return withDb(async (c) =>
+    (await c.query(
+      `SELECT a.login_id, r.round_index, r.submitted, r.input, r.value, r.error, r.elapsed_ms, r.rank, r.points
+         FROM minigame_results r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = $1 ORDER BY r.round_index, r.rank, a.login_id`,
+      [runId],
+    )).rows,
+  );
+}
+async function mgRounds(runId) {
+  return withDb(async (c) => (await c.query(`SELECT round_index, item_key, params FROM minigame_rounds WHERE run_id = $1 ORDER BY round_index`, [runId])).rows);
+}
+/** 판 진행 신호를 받은 뒤 — 받기 지연 lag + 기기 시간 ms + 보내기 지연 lag 뒤에 보낸다 */
+function lagSend(bot, mg, lag, deviceMs, input) {
+  return { delayMs: lag + deviceMs + lag, input };
+}
+/** 퀴즈 판(5문제 · 3번째 뒤 미니게임 하나) — 보상 확인 */
+async function mgRewardGame(host, others, key) {
+  const members = [host, ...others];
+  const gameId = await playQuickGame(host, others, 5, [key], 150000);
+  const runs = await runsOfGame(gameId);
+  expect(`★ ${key} 퀴즈 판 — 미니게임 1번 (5문제 → 3번째 뒤)`, runs.map((r) => [r.minigame_key, r.after_question_index]), [[key, 3]]);
+  const rw = await withDb(async (c) =>
+    (await c.query(`SELECT a.login_id, r.amount, r.rank FROM minigame_rewards r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = $1 ORDER BY r.rank`, [runs[0].id])).rows,
+  );
+  const want = members.map((_, i) => ({ id: members[i].loginId, amount: [3, 1, 0][i] ?? 0 })).filter((x) => x.amount > 0);
+  expect(`★★ ${key} 보상 — 3명: 1위 +3 · 2위 +1 (순서대로)`, rw.map((r) => [r.login_id, r.amount]), want.map((w) => [w.id, w.amount]));
+  await backToLobby(host, others);
+  return runs[0].id;
+}
+
+async function scenarioMgReaction() {
+  log('시나리오 mgreaction — ★★★ 번개손 (R051 · 반응속도 + 퀵드로우)');
+  const sh = await mgShared();
+  const { bots, host, roomId } = await mgRoom(6, 'R051 번개손');
+  const [b1, b2, b3, b4, b5, b6] = bots;
+  const REACT = 250;
+  // b1 정확 · b2 지연 150 · b3 지연 400 · b4 성급(200ms 에) · b5 가짜에 누름(가짜 있는 판) · b6 안 누름(첫 판에 미리 계산한 값)
+  const plan = new Map([
+    [b1.loginId, { lag: 0, kind: 'exact' }],
+    [b2.loginId, { lag: 150, kind: 'exact' }],
+    [b3.loginId, { lag: 400, kind: 'exact' }],
+    [b4.loginId, { lag: 0, kind: 'early' }],
+    [b5.loginId, { lag: 0, kind: 'fake' }],
+    [b6.loginId, { lag: 0, kind: 'none' }],
+  ]);
+  for (const b of bots) {
+    const pl = plan.get(b.loginId);
+    driveMinigame(b, (bot, mg) => {
+      const p = mg.round.params;
+      if (pl.kind === 'none') return null;
+      if (pl.kind === 'early') return lagSend(bot, mg, pl.lag, 200, { elapsedMs: 200 });
+      if (pl.kind === 'fake' && p.fakes.length > 0) return lagSend(bot, mg, pl.lag, p.fakes[0].atMs + 200, { elapsedMs: p.fakes[0].atMs + 200 });
+      const at = p.signalMs + (pl.kind === 'fake' ? 400 : REACT);
+      return lagSend(bot, mg, pl.lag, at, { elapsedMs: at });
+    });
+  }
+  log('\n[1] ★★★ 연습 판 — 정확 · 지연 0/150/400 · 성급 · 가짜 신호 · 미제출 · 미리 계산한 값');
+  let cheatCode = null;
+  const runId = await mgPractice(host, roomId, 'reaction', 120000, async () => {
+    await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 15000, '1판');
+    const m = b6.mark();
+    const p = host.snapshot.minigame.round.params;
+    b6.socket.emit('minigame.submit', { token: host.snapshot.minigame.token, roundIndex: 0, input: { elapsedMs: p.signalMs + 220 } });
+    await sleep(300);
+    cheatCode = b6.since(m, 'error')[0]?.code ?? null;
+  });
+  expect('★★ 미리 계산한 값(신호 + 220ms 를 판 시작 직후에) → 거부', cheatCode, 'BAD_REQUEST');
+  const rows = await mgRows(runId);
+  const rounds = await mgRounds(runId);
+  expect('★ 기록 행 = 5판 × 6명', rows.length, 30);
+  expect('★ 판 구성 — 순수 2 · 퀵드로우 3', rounds.map((r) => r.params.quickdraw), [false, false, true, true, true]);
+  expectTrue('★★ 퀵드로우 판마다 가짜 1~2 · 1~2판은 0', rounds.every((r) => (r.params.quickdraw ? r.params.fakes.length >= 1 && r.params.fakes.length <= 2 : r.params.fakes.length === 0)));
+  expectTrue('★★ 가짜 세 종류(색 · 소리 · 글자)가 모두 나온다', new Set(rounds.flatMap((r) => r.params.fakes.map((f) => f.kind))).size === 3, JSON.stringify(rounds.map((r) => r.params.fakes)));
+  expectTrue('★ 진짜 신호 1.5~5초 · 가짜는 신호보다 0.7초 이상 앞', rounds.every((r) => r.params.signalMs >= 1500 && r.params.signalMs <= 5000 && r.params.fakes.every((f) => f.atMs <= r.params.signalMs - 700)));
+  const of = (id) => rows.filter((r) => r.login_id === id);
+  const vals = (id) => of(id).map((r) => r.value);
+  log(`  반응 ms — 정확 ${JSON.stringify(vals(b1.loginId))} · 지연150 ${JSON.stringify(vals(b2.loginId))} · 지연400 ${JSON.stringify(vals(b3.loginId))}`);
+  const near = (v) => v !== null && Math.abs(v - REACT) <= 30;
+  expectTrue('★★★ 정확 — 반응 ≈ 250ms (±30 · 5판)', vals(b1.loginId).every(near), JSON.stringify(vals(b1.loginId)));
+  expectTrue('★★★ 지연 150ms 기기 — 반응 ≈ 250ms (지연이 끼지 않는다)', vals(b2.loginId).every(near), JSON.stringify(vals(b2.loginId)));
+  expectTrue('★★★ 지연 400ms 기기 — 반응 ≈ 250ms (지연이 끼지 않는다)', vals(b3.loginId).every(near), JSON.stringify(vals(b3.loginId)));
+  expectTrue('★★ 표 값은 ms 정수', rows.filter((r) => r.value !== null).every((r) => Number.isInteger(r.value)));
+  const early = of(b4.loginId);
+  const lastRank = (i) => rows.filter((r) => r.round_index === i && r.value !== null).length + 1;
+  expectTrue('★★ 성급 — 5판 모두 실격(값 없음 · 0점 · 꼴찌 공동) · 제출은 됨', early.every((r) => r.submitted && r.value === null && r.points === 0 && r.rank === lastRank(r.round_index)), JSON.stringify(early.map((r) => [r.rank, r.points])));
+  const fk = of(b5.loginId);
+  expectTrue('★★ 가짜에 누름 — 퀵드로우 3판 실격 · 순수 2판은 값(≈400ms)', fk.slice(2).every((r) => r.value === null && r.points === 0) && fk.slice(0, 2).every((r) => Math.abs(r.value - 400) <= 30), JSON.stringify(fk.map((r) => r.value)));
+  const none = of(b6.loginId);
+  expectTrue('★★ 미제출 — 5판 모두 submitted=false · 0점', none.every((r) => !r.submitted && r.points === 0), JSON.stringify(none.map((r) => [r.submitted, r.rank])));
+  // 순위 — 판마다 값 작은 순 · 판 점수 = 6 − 순위 + 1
+  const okRank = [0, 1, 2, 3, 4].every((i) => {
+    const rr = rows.filter((r) => r.round_index === i && r.value !== null).sort((a, b) => a.value - b.value);
+    return rr.every((r, k) => r.rank <= k + 1 && r.points === 6 - r.rank + 1);
+  });
+  expectTrue('★★ 판 순위 = 반응 ms 작은 순 · 판 점수 = 참가 − 순위 + 1', okRank);
+  // 판정 함수 = 서버 판정
+  const judgeSame = rows.filter((r) => r.input?.elapsedMs !== undefined).every((r) => {
+    const rd = rounds[r.round_index].params;
+    const j = sh.reactionJudge({ signalMs: rd.signalMs, fakes: rd.fakes }, Number(r.input.elapsedMs));
+    return j.reactMs === r.value;
+  });
+  expectTrue('★ 기록의 값 = 공유 판정 함수(reactionJudge)로 다시 계산한 값', judgeSame);
+
+  log('\n[2] ★★★ 퀴즈 판 — 5판 최종 순위 · 보상 (3명 · 200/280/360ms)');
+  for (const b of bots.slice(3)) {
+    b.leave();
+    await sleep(150);
+    b.snapshot = null;
+  }
+  await sleep(300);
+  [b1, b2, b3].forEach((b, i) => driveMinigame(b, (bot, mg) => ({ delayMs: mg.round.params.signalMs + 200 + i * 80, input: { elapsedMs: mg.round.params.signalMs + 200 + i * 80 } })));
+  const rid = await mgRewardGame(host, [b2, b3], 'reaction');
+  const rr = await mgRows(rid);
+  expectTrue('★★ 5판 모두 순위 200 < 280 < 360ms (1 · 2 · 3위)', [0, 1, 2, 3, 4].every((i) => JSON.stringify(rr.filter((r) => r.round_index === i).map((r) => r.login_id)) === JSON.stringify([b1, b2, b3].map((b) => b.loginId))));
+  for (const b of bots) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
+async function scenarioMgTyping() {
+  log('시나리오 mgtyping — ★★★ 타자 (R051 · 정확히 빨리 · 붙여넣기 · 조합)');
+  const sh = await mgShared();
+  const { bots, host, roomId } = await mgRoom(6, 'R051 타자');
+  const [b1, b2, b3, b4, b5, b6] = bots;
+  const per = 120; // 글자당 ms
+  const len = (t) => [...t.normalize('NFC')].length;
+  const plan = new Map([
+    [b1.loginId, 'exact'],
+    [b2.loginId, 'lag150'],
+    [b3.loginId, 'fix'],
+    [b4.loginId, 'nfd'],
+    [b5.loginId, 'part60'],
+    [b6.loginId, 'part30'],
+  ]);
+  const errs = new Map();
+  for (const b of bots) {
+    const kind = plan.get(b.loginId);
+    b.__mgDone = new Set();
+    b.onMinigame = (mg) => {
+      if (!mg || mg.phase !== 'play' || mg.spectating) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (b.__mgDone.has(k)) return;
+      b.__mgDone.add(k);
+      const text = mg.round.params.text;
+      const ms = len(text) * per;
+      const send = (input, at) => setTimeout(() => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input }), at);
+      const chars = [...text];
+      if (kind === 'exact') send({ text, elapsedMs: ms, final: true }, ms);
+      else if (kind === 'lag150') send({ text, elapsedMs: ms, final: true }, 150 + ms + 150);
+      else if (kind === 'nfd') send({ text: text.normalize('NFD'), elapsedMs: ms, final: true }, ms);
+      else if (kind === 'fix') {
+        // 오타(마지막 글자 틀림) — 진행 글 · 틀린 채 완성 보내기(거부) · 고쳐서 완성
+        const wrong = chars.slice(0, -1).join('') + (chars[chars.length - 1] === '.' ? ',' : '.');
+        send({ text: chars.slice(0, 5).join(''), final: false }, 400);
+        send({ text: wrong, elapsedMs: ms, final: true }, ms);
+        setTimeout(() => {
+          const m = b.mark();
+          setTimeout(() => errs.set(`${mg.roundIndex}`, b.since(m, 'error')[0]?.code ?? null), 250);
+        }, ms - 5);
+        send({ text, elapsedMs: ms + 900, final: true }, ms + 900);
+      } else {
+        const pct = kind === 'part60' ? 0.6 : 0.3;
+        send({ text: chars.slice(0, Math.round(chars.length * pct)).join(''), final: false }, 600);
+      }
+    };
+  }
+  log('\n[1] ★★★ 연습 판 — 정확 · 지연 150 · 오타 뒤 고침 · 조합형(NFD) · 미완 60% · 30%');
+  let pre = null;
+  let fast = null;
+  const runId = await mgPractice(host, roomId, 'typing', 200000, async () => {
+    await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 15000, '1판');
+    const mg = host.snapshot.minigame;
+    // 미리 계산한 값 (판 시작 직후 "9초 걸림") · 너무 빠름(붙여넣기 — 글자당 40ms 미만)
+    const m6 = b6.mark();
+    b6.socket.emit('minigame.submit', { token: mg.token, roundIndex: 0, input: { text: mg.round.params.text, elapsedMs: 9000, final: true } });
+    await sleep(350);
+    pre = b6.since(m6, 'error')[0]?.code ?? null;
+    const m5 = b5.mark();
+    b5.socket.emit('minigame.submit', { token: mg.token, roundIndex: 0, input: { text: mg.round.params.text, elapsedMs: 200, final: true } });
+    await sleep(250);
+    fast = b5.since(m5, 'error')[0]?.code ?? null;
+  });
+  expect('★★ 미리 계산한 값(흐른 시간보다 긴 값) → 거부', pre, 'BAD_REQUEST');
+  expect('★★ 사람 손 밖 속도(붙여넣기 흉내 — 글자당 40ms 미만) → 거부', fast, 'BAD_REQUEST');
+  expect('★★ 틀린 글로 완성 보내기 → 거부 (3판 모두)', [...errs.values()], ['BAD_REQUEST', 'BAD_REQUEST', 'BAD_REQUEST']);
+  const rows = await mgRows(runId);
+  const rounds = await mgRounds(runId);
+  expect('★ 기록 행 = 3판 × 6명', rows.length, 18);
+  const texts = rounds.map((r) => r.params.text);
+  expect('★★ 판 구성 — 한글 짧은 것 · 영어 · 한글 긴 것', rounds.map((r) => `${r.params.lang}-${r.params.size}`), ['ko-short', 'en-short', 'ko-long']);
+  expect('★★ 한 판 안 문장 겹침 0', new Set(texts).size, 3);
+  expectTrue('★ 문장 길이 15~40자', texts.every((t) => len(t) >= 15 && len(t) <= 40), JSON.stringify(texts));
+  const of = (id) => rows.filter((r) => r.login_id === id);
+  const want = texts.map((t) => (len(t) * per) / 1000);
+  const close = (a, b) => a !== null && Math.abs(a - b) < 0.002;
+  expectTrue('★★★ 정확 입력 — 시간 = 기기 시간(글자 × 120ms)', of(b1.loginId).every((r, i) => close(r.value, want[i])), JSON.stringify(of(b1.loginId).map((r) => r.value)));
+  expectTrue('★★★ 지연 150ms 기기 — 시간에 지연이 끼지 않는다', of(b2.loginId).every((r, i) => close(r.value, want[i])), JSON.stringify(of(b2.loginId).map((r) => r.value)));
+  expectTrue('★★ 오타 뒤 고침 — 고친 완성으로 기록(+0.9초)', of(b3.loginId).every((r, i) => close(r.value, want[i] + 0.9)), JSON.stringify(of(b3.loginId).map((r) => r.value)));
+  expectTrue('★★ 한글 조합형(NFD)으로 와도 같은 글로 본다(NFC)', of(b4.loginId).every((r, i) => close(r.value, want[i]) && r.input.text === texts[i]), JSON.stringify(of(b4.loginId).map((r) => r.value)));
+  const p60 = of(b5.loginId);
+  const p30 = of(b6.loginId);
+  expectTrue('★★ 미완 — submitted=false · 끝낸 사람(4명) 아래 · 60% 가 30% 보다 앞', p60.every((r, i) => !r.submitted && r.rank === 5 && p30[i].rank === 6), JSON.stringify([p60.map((r) => r.rank), p30.map((r) => r.rank)]));
+  expectTrue('★ 미완 진행 글은 기록에 남는다', p60.every((r) => typeof r.input?.text === 'string' && r.input.text.length > 0));
+  expectTrue('★ 미완도 순위 점수는 받는다(진행률 순위 — 판단)', p60.every((r) => r.points === 2) && p30.every((r) => r.points === 1));
+  const units = sh.typingRounds(12345).map((r) => r.text);
+  expectTrue('★ 공유 판 구성 함수 — 시드가 같으면 같은 문장', JSON.stringify(units) === JSON.stringify(sh.typingRounds(12345).map((r) => r.text)));
+  for (const b of bots) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
+/** 원 점 — 중심 (cx, cy) · 반지름 r · 흔들림 wob · 각 from~to(°) · 걸린 시간 durMs · 시작 t0 */
+function circlePts({ cx = 0.5, cy = 0.5, r = 0.35, rx = null, ry = null, wob = 0, from = 0, to = 360, n = 120, durMs = 1500, t0 = 300 }) {
+  const out = [];
+  for (let i = 0; i < n; i += 1) {
+    const d = from + ((to - from) * i) / (n - 1);
+    const a = (d * Math.PI) / 180;
+    const k = 1 + wob * Math.sin(d / 17);
+    out.push([cx + Math.cos(a) * (rx ?? r) * k, cy + Math.sin(a) * (ry ?? r) * k, Math.round(t0 + (durMs * i) / (n - 1))]);
+  }
+  return out;
+}
+
+async function scenarioMgCircle() {
+  log('시나리오 mgcircle — ★★★ 완벽한 원 (R051 · 서버 재계산)');
+  const sh = await mgShared();
+  const { bots, host, roomId } = await mgRoom(6, 'R051 원');
+  const [b1, b2, b3, b4, b5, b6] = bots;
+  const shapes = new Map([
+    [b1.loginId, circlePts({})],
+    [b2.loginId, circlePts({ rx: 0.38, ry: 0.28 })],
+    [b3.loginId, circlePts({ from: 0, to: 180 })],
+    [b4.loginId, circlePts({ r: 0.05 })],
+    [b5.loginId, circlePts({ wob: 0.05 })],
+  ]);
+  for (const b of bots.slice(0, 5)) {
+    const pts = shapes.get(b.loginId);
+    // b5 는 "score: 100" 칸을 덧붙인다(조작값 — 서버는 보지 않는다)
+    driveMinigame(b, () => ({ delayMs: 1900, input: b === b5 ? { points: pts, score: 100, value: 100 } : { points: pts } }));
+  }
+  log('\n[1] ★★★ 연습 판 — 정원 · 타원 · 반원 · 작은 원 · 흔들린 원(+조작값) · 점 부족 · 시각 거꾸로 · 미리 계산');
+  const codes = {};
+  const runId = await mgPractice(host, roomId, 'circle', 120000, async () => {
+    await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 15000, '1판');
+    const mg = host.snapshot.minigame;
+    const tryOne = async (name, input) => {
+      const m = b6.mark();
+      b6.socket.emit('minigame.submit', { token: mg.token, roundIndex: 0, input });
+      await sleep(250);
+      codes[name] = b6.since(m, 'error')[0]?.code ?? null;
+    };
+    await tryOne('few', { points: circlePts({ n: 10, t0: 0, durMs: 50 }) });
+    const back = circlePts({ t0: 0, durMs: 100 });
+    back[5][2] = 0;
+    back[6][2] = 50;
+    back[7][2] = 10;
+    await tryOne('backward', { points: back });
+    await tryOne('future', { points: circlePts({ t0: 2000, durMs: 3000 }) });
+    await tryOne('outside', { points: circlePts({ cx: 1.4 }) });
+  });
+  expect('★★ 점 부족(10개) → 거부', codes.few, 'BAD_REQUEST');
+  expect('★★ 시각이 거꾸로 → 거부', codes.backward, 'BAD_REQUEST');
+  expect('★★ 아직 오지 않은 시각(미리 계산) → 거부', codes.future, 'BAD_REQUEST');
+  expect('★ 캔버스 밖 점 → 거부', codes.outside, 'BAD_REQUEST');
+  const rows = await mgRows(runId);
+  expect('★ 기록 행 = 3판 × 6명', rows.length, 18);
+  const of = (id) => rows.filter((r) => r.login_id === id);
+  const score = (id) => of(id).map((r) => r.value);
+  log(`  원다움 — 정원 ${score(b1.loginId)[0]} · 타원 ${score(b2.loginId)[0]} · 반원 ${score(b3.loginId)[0]} · 작은 원 ${score(b4.loginId)[0]} · 흔들림 ${score(b5.loginId)[0]}`);
+  expectTrue('★★★ 정원 → 99% 이상', score(b1.loginId).every((v) => v >= 99), JSON.stringify(score(b1.loginId)));
+  expectTrue('★★ 타원(0.38 × 0.28) → 정원보다 낮다 (40~90%)', score(b2.loginId).every((v) => v > 40 && v < 90), JSON.stringify(score(b2.loginId)));
+  expectTrue('★★ 반원 → "덜 닫힘" 감점 (40% 미만)', score(b3.loginId).every((v) => v < 40), JSON.stringify(score(b3.loginId)));
+  expectTrue('★★ 작은 원(지름 10%) → 0', score(b4.loginId).every((v) => v === 0), JSON.stringify(score(b4.loginId)));
+  expectTrue('★★★ 조작값(score: 100) 무시 — 흔들린 원은 100 이 아니다', score(b5.loginId).every((v) => v < 99), JSON.stringify(score(b5.loginId)));
+  const same = rows.filter((r) => r.submitted).every((r) => {
+    const pts = r.input.points.map(([x, y]) => ({ x, y }));
+    return Math.abs(sh.circleScore(pts).score - r.value) < 0.01;
+  });
+  expectTrue('★★★ 서버 값 = 보낸 점(기록 원값)으로 다시 계산한 값', same);
+  expectTrue('★ 미제출(b6 — 거부만 됨) — 3판 submitted=false', of(b6.loginId).every((r) => !r.submitted));
+  expectTrue('★★ 판 순위 = % 큰 순', [0, 1, 2].every((i) => {
+    const rr = rows.filter((r) => r.round_index === i && r.value !== null).sort((a, b) => b.value - a.value);
+    return rr.every((r, k) => r.rank <= k + 1);
+  }));
+  for (const b of bots) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
+async function scenarioMgAngle() {
+  log('시나리오 mgangle — ★★★ 각도 맞추기 (R051)');
+  const sh = await mgShared();
+  const { bots, host, roomId } = await mgRoom(5, 'R051 각도');
+  const [b1, b2, b3, b4, b5] = bots;
+  const plan = new Map([
+    [b1.loginId, { off: 0, final: true }],
+    [b2.loginId, { off: 3.5, final: true }],
+    [b3.loginId, { off: -7, final: false }],
+    [b4.loginId, { off: 12.25, final: true, lag: 400 }],
+    [b5.loginId, null],
+  ]);
+  for (const b of bots) {
+    const pl = plan.get(b.loginId);
+    b.__mgDone = new Set();
+    b.onMinigame = (mg) => {
+      if (!pl || !mg || mg.phase !== 'play' || mg.spectating) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (b.__mgDone.has(k)) return;
+      b.__mgDone.add(k);
+      const t = mg.round.params.target;
+      const send = (input, at) => setTimeout(() => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input }), at);
+      send({ deg: mg.round.private.start, final: false }, 100);
+      send({ deg: t + pl.off + 5, final: false }, 600);
+      send({ deg: t + pl.off, final: pl.final }, (pl.lag ?? 0) * 2 + 1200);
+    };
+  }
+  log('\n[1] ★★★ 연습 판 — 정확 · 3.5° · 미확정(마지막 −7°) · 지연 400 · 안 움직임 · 범위 밖');
+  let bad = null;
+  const runId = await mgPractice(host, roomId, 'angle', 120000, async () => {
+    await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 15000, '1판');
+    const m = b5.mark();
+    b5.socket.emit('minigame.submit', { token: host.snapshot.minigame.token, roundIndex: 0, input: { deg: 200, final: true } });
+    await sleep(250);
+    bad = b5.since(m, 'error')[0]?.code ?? null;
+  });
+  expect('★ 범위 밖 각(200°) → 거부', bad, 'BAD_REQUEST');
+  const rows = await mgRows(runId);
+  const rounds = await mgRounds(runId);
+  expect('★ 기록 행 = 3판 × 5명', rows.length, 15);
+  const targets = rounds.map((r) => r.params.target);
+  expectTrue('★★ 목표 각 — 15~165 · 5의 배수 아님 · 한 판 안 서로 다름', targets.every((t) => t >= 15 && t <= 165 && t % 5 !== 0) && new Set(targets).size === 3, JSON.stringify(targets));
+  const of = (id) => rows.filter((r) => r.login_id === id);
+  const v = (id) => of(id).map((r) => r.value);
+  expectTrue('★★★ 정확 → 오차 0', v(b1.loginId).every((x) => Math.abs(x) < 1e-6), JSON.stringify(v(b1.loginId)));
+  expectTrue('★★ 3.5° 틀림 → 오차 3.5', v(b2.loginId).every((x) => Math.abs(x - 3.5) < 1e-6), JSON.stringify(v(b2.loginId)));
+  expectTrue('★★★ 미확정 → 마감 때 그때 각(−7°) → 오차 7 · 제출로 셈', of(b3.loginId).every((r) => r.submitted && Math.abs(r.value - 7) < 1e-6), JSON.stringify(v(b3.loginId)));
+  expectTrue('★★ 지연 400 기기 → 오차 12.25 그대로', v(b4.loginId).every((x) => Math.abs(x - 12.25) < 1e-6), JSON.stringify(v(b4.loginId)));
+  expectTrue('★ 안 움직임(거부만 됨) → 미제출', of(b5.loginId).every((r) => !r.submitted && r.points === 0));
+  expectTrue('★★ 판 순위 = 오차 작은 순 (1 · 2 · 3 · 4)', [0, 1, 2].every((i) => JSON.stringify(rows.filter((r) => r.round_index === i).map((r) => r.login_id)) === JSON.stringify([b1, b2, b3, b4, b5].map((b) => b.loginId))));
+  expectTrue('★ 기록 오차(부호) = 내 각 − 목표', of(b3.loginId).every((r) => Math.abs(r.error + 7) < 1e-6));
+  const t100 = Array.from({ length: 200 }, (_, i) => sh.angleTargets(i * 7919 + 1));
+  expectTrue('★ 공유 함수 — 시드 200개: 5의 배수 0 · 서로 15° 이상', t100.every((ts) => ts.length === 3 && ts.every((t) => t % 5 !== 0) && ts.every((a, i) => ts.every((b, j) => i === j || Math.abs(a - b) >= 15))));
+  for (const b of bots) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -6390,6 +6785,11 @@ const SCENARIOS = {
   // ★★★ R050
   leak: scenarioLeak,
   minigame: scenarioMinigame,
+  // ★★★ R051 — 미니게임 2차
+  mgreaction: scenarioMgReaction,
+  mgtyping: scenarioMgTyping,
+  mgcircle: scenarioMgCircle,
+  mgangle: scenarioMgAngle,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

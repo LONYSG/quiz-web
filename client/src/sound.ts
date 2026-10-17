@@ -297,7 +297,11 @@ export type SfxId =
   | 'mg-return'
   | 'mg-tap'
   | 'mg-move'
-  | 'mg-cut';
+  | 'mg-cut'
+  // ★★★ R051 — 번개손 진짜 신호(가짜 "소리만" 도 같은 소리) · 실격 부저 · 다 맞게 침(타자) · 확정(각도)
+  | 'mg-signal'
+  | 'mg-foul'
+  | 'mg-done';
 
 /** ★ 효과음을 낸다. 꺼져 있거나 아직 잠겨 있으면 아무것도 하지 않는다 */
 /**
@@ -406,6 +410,18 @@ export function sfx(id: SfxId): void {
     case 'mg-cut': // 칼이 지나간다 — 쉬익 + 똑
       playNote(d, mtof(100), t, 0.25, { ...SOFT, gain: 0.08 }, mtof(76));
       playNote(d, mtof(60), t + 0.24, 0.12, { ...PLUCK, gain: 0.2 });
+      break;
+    case 'mg-signal': // ★ 번개손 "지금!" — 짧고 날카로운 두 겹 삑 (가짜 "소리만" 도 이 소리)
+      playNote(d, mtof(93), t, 0.12, { ...SQUARE, gain: 0.12, decay: 0.12 });
+      playNote(d, mtof(100), t, 0.12, { ...BELL, gain: 0.16, decay: 0.2 });
+      break;
+    case 'mg-foul': // 실격 — 낮은 부저 두 번
+      playNote(d, mtof(45), t, 0.14, { ...SQUARE, gain: 0.09, decay: 0.14 });
+      playNote(d, mtof(44), t + 0.17, 0.2, { ...SQUARE, gain: 0.09, decay: 0.2 });
+      break;
+    case 'mg-done': // 다 맞게 쳤다 · 확정 — 위로 두 음
+      playNote(d, mtof(84), t, 0.07, { ...PLUCK, gain: 0.2 });
+      playNote(d, mtof(91), t + 0.07, 0.12, { ...BELL, gain: 0.14 });
       break;
   }
 }
