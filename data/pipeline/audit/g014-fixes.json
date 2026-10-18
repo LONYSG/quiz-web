@@ -7512,6 +7512,1457 @@
      "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
     }
    ]
+  },
+  "d": {
+   "counts": {
+    "decisions": 90,
+    "todo": 0,
+    "deactivate": 0,
+    "done": 103,
+    "skipped": 0,
+    "rows": 103,
+    "notTaken": 1
+   },
+   "skipped": [],
+   "rows": [
+    {
+     "id": 8,
+     "field": "explanation",
+     "before": "숫자 정답 테스트용. 힌트는 자릿수만 노출한다.",
+     "after": "프랑스 혁명은 1789년에 시작되었고, 같은 해 7월 14일 바스티유 감옥 습격이 일어났다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/프랑스_혁명"
+     ]
+    },
+    {
+     "id": 13,
+     "field": "explanation",
+     "before": "2글자 정답. Q-43 마스킹 임계값 테스트용.",
+     "after": "스택은 가장 나중에 넣은 요소가 가장 먼저 나오는 후입선출(LIFO) 구조이고, 큐는 먼저 넣은 요소가 먼저 나오는 선입선출(FIFO) 구조다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/스택"
+     ]
+    },
+    {
+     "id": 127,
+     "field": "question_text",
+     "before": "경기 침체를 뜻하는 '스태그네이션(Stagnation)'과 물가 상승을 뜻하는 '인플레이션(Inflation)'의 합성어로, 경기 침체 속에서 물가가 계속 상승하는 경제 현상은?",
+     "after": "경기가 침체되는 가운데에도 물가가 계속 오르는 경제 현상을 무엇이라 할까요?",
+     "why": "V014 fix 제안 반영 (expose)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/스태그플레이션"
+     ]
+    },
+    {
+     "id": 209,
+     "field": "explanation",
+     "before": "주세페 베르디가 작곡한 4막의 오페라로, 카이로의 오페라 극장 개관을 기념하여 제작되었다.",
+     "after": "주세페 베르디가 작곡한 4막의 오페라로, 카이로의 헤디브 오페라 극장의 위촉을 받아 1871년 12월 그곳에서 초연되었다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/아이다_(오페라)",
+      "https://en.wikipedia.org/wiki/Aida"
+     ]
+    },
+    {
+     "id": 212,
+     "field": "explanation",
+     "before": "홉은 맥주의 거품 형성을 돕고 특유의 향미와 쓴맛미를 부여하는 핵심 원료다.",
+     "after": "홉은 맥주에 특유의 향과 쓴맛을 더하고 보존성을 높여 주는 핵심 원료다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/홉_(식물)",
+      "https://en.wikipedia.org/wiki/Humulus_lupulus"
+     ]
+    },
+    {
+     "id": 261,
+     "field": "general_hint",
+     "before": "뿌리를 볶아 커피 대신 차로 마시기도 하며, 토종과 서양종은 꽃받침이 젖혀졌는지로 가른다.",
+     "after": "뿌리를 볶아 커피 대신 차로 마시기도 하며, 토종과 서양종은 총포 조각이 젖혀졌는지로 가른다.",
+     "why": "V014 fix 제안 반영 (fact-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Dandelion",
+      "https://ko.wikipedia.org/wiki/민들레"
+     ]
+    },
+    {
+     "id": 279,
+     "field": "question_text",
+     "before": "고대 로마에서 시민권을 가진 남성들이 겉에 둘러 입던 통옷 형태의 대표적 의복은?",
+     "after": "고대 로마에서 시민권을 가진 남성들이 튜닉 위에 둘러 입던 대표적인 겉옷은?",
+     "why": "사실 확인 partial — 길이 수치를 문서대로",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/토가"
+     ]
+    },
+    {
+     "id": 279,
+     "field": "explanation",
+     "before": "토가는 고대 로마 남성 시민들이 착용하던 대표적인 서양 복식사의 의복이다.",
+     "after": "길이가 대략 3.7~6미터에 이르는 반원형 옷감을 어깨와 몸 주변으로 걸쳐 입었습니다.",
+     "why": "사실 확인 partial — 길이 수치를 문서대로",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/토가"
+     ]
+    },
+    {
+     "id": 300,
+     "field": "question_text",
+     "before": "로마 제국 정치가 율리우스 카이사르가 본토로 진격하며 '주사위는 던져졌다'라는 말을 남기고 건넌 강은?",
+     "after": "로마 공화정 말기의 정치가 율리우스 카이사르가 본토로 진격하며 '주사위는 던져졌다'라는 말을 남기고 건넌 강은?",
+     "why": "V014 fix 제안 반영 (fact-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Rubicon"
+     ]
+    },
+    {
+     "id": 343,
+     "field": "question_text",
+     "before": "달은 지구를 한 바퀴 도는 동안 스스로도 꼭 한 바퀴 돌기 때문에 지구에서는 늘 같은 면만 보입니다. 공전 주기와 자전 주기가 같아진 이런 상태를 무엇이라 하나요?",
+     "after": "달은 지구를 한 바퀴 도는 동안 스스로도 꼭 한 바퀴 돌기 때문에 지구에서는 늘 같은 면만 보입니다. 이렇게 한 천체가 다른 천체에 늘 같은 면을 향하는 상태를 무엇이라 하나요?",
+     "why": "V014 fix 제안 반영 (expose)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/조석_고정"
+     ]
+    },
+    {
+     "id": 412,
+     "field": "question_text",
+     "before": "1950년 브라질 대회 마지막 경기에서 개최국 브라질은 비기기만 해도 우승이었으나 안방의 20만 관중 앞에서 지고 말았습니다. 이때 브라질을 꺾고 우승한 나라는?",
+     "after": "1950년 브라질 대회 마지막 경기에서 개최국 브라질은 비기기만 해도 우승이었으나 안방의 17만 명이 넘는 관중 앞에서 지고 말았습니다. 이때 브라질을 꺾고 우승한 나라는?",
+     "why": "V014 fix 제안 반영 (assertive,fact-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/1950_FIFA_World_Cup_final_round"
+     ]
+    },
+    {
+     "id": 468,
+     "field": "question_text",
+     "before": "신들을 속여 죽음을 피하려 한 죄로, 산꼭대기까지 바위를 밀어 올리면 다시 굴러떨어지는 일을 영원히 되풀이하게 된 인물은?",
+     "after": "저승에서 큰 바위를 산꼭대기까지 밀어 올리면 다시 굴러떨어지는 일을 영원히 되풀이한다고 전해지며, 죽음의 신 타나토스를 붙잡아 묶어 둔 적이 있다는 이야기로도 알려진 인물은?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/시시포스"
+     ]
+    },
+    {
+     "id": 554,
+     "field": "explanation",
+     "before": "경찰청과 교육부, 여성가족부가 함께 운영하며 문자 신고도 받습니다.",
+     "after": "경찰청을 비롯한 관계 부처가 함께 운영하며 문자 신고도 받습니다.",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/학교폭력",
+      "https://ko.wikipedia.org/wiki/경찰청",
+      "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/news/promotion/1308864_1118.html"
+     ]
+    },
+    {
+     "id": 573,
+     "field": "explanation",
+     "before": "배출권 거래 같은 시장 제도를 국제 기후 협약에 처음 들여온 것은 이 의정서의 성과로 꼽힙니다.",
+     "after": "배출권 거래 같은 시장 제도를 국제 기후 협약에 도입한 것은 이 의정서의 성과로 꼽힙니다.",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Kyoto_Protocol"
+     ]
+    },
+    {
+     "id": 573,
+     "field": "general_hint",
+     "before": "2005년 발효됐고 미국은 끝내 비준하지 않았으며, 2015년 파리 협정이 그 뒤를 이었다.",
+     "after": "2005년 발효됐고 미국은 끝내 비준하지 않았으며, 2015년 파리 협정이 새 틀로 채택되었다.",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Kyoto_Protocol"
+     ]
+    },
+    {
+     "id": 575,
+     "field": "explanation",
+     "before": "워싱턴 협약, 줄여서 사이테스라고 합니다. 상아와 호랑이 가죽 거래를 막는 근거가 됩니다.",
+     "after": "공식 영문 이름의 머리글자를 따 사이테스(CITES)라고도 부릅니다. 부속서 I~III으로 보호 정도를 나누어 거래를 규제합니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/CITES"
+     ]
+    },
+    {
+     "id": 577,
+     "field": "explanation",
+     "before": "피해를 되풀이하지 말자는 뜻에서 사건이 일어난 지명을 협약 이름으로 삼았습니다.",
+     "after": "협약은 2013년 일본 구마모토에서 채택되어 2017년에 발효되었습니다. 수은이 든 여러 제품의 제조와 수출입을 2020년까지 금지하도록 정했습니다.",
+     "why": "사실 확인 partial — 단계 감축이 아니라 2020년까지 금지",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Minamata_disease",
+      "https://en.wikipedia.org/wiki/Minamata_Convention_on_Mercury"
+     ]
+    },
+    {
+     "id": 619,
+     "field": "explanation",
+     "before": "'신들의 운명' 이라는 뜻이며, 끝이 곧 새로운 시작이라는 점이 다른 종말 신화와 다릅니다.",
+     "after": "'신들의 최후 운명'이라는 뜻으로 풀이되며, 세계가 바다에 잠긴 뒤 다시 푸르게 솟아오른다고 전합니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Ragnar%C3%B6k"
+     ]
+    },
+    {
+     "id": 631,
+     "field": "question_text",
+     "before": "올림픽 개회식에서 선수단이 입장할 때, 근대 올림픽의 뿌리가 된 나라라는 이유로 늘 맨 앞에 서는 나라는?",
+     "after": "올림픽 개회식에서 선수단이 입장할 때, 고대 올림픽이 열린 나라라는 이유로 1928년 대회부터 맨 앞에 서 온 나라는?",
+     "why": "질문 제안(\"1928년부터 고대 올림픽이 열린 나라라는\")은 연도가 \"열린\" 에 걸려 읽혀 어순만 고쳐 받음",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Parade_of_Nations",
+      "https://en.wikipedia.org/wiki/Flag_of_Greece"
+     ]
+    },
+    {
+     "id": 709,
+     "field": "explanation",
+     "before": "아마추어 낙하산 경력이 선발의 배경이었습니다. 다음 여성 비행은 20년 뒤에야 있었습니다.",
+     "after": "아마추어 낙하산 경력이 선발의 배경이었습니다. 다음 여성 비행은 1982년, 19년 뒤였습니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Valentina_Tereshkova"
+     ]
+    },
+    {
+     "id": 744,
+     "field": "question_text",
+     "before": "곧게 세운 기둥이 가운데가 홀쭉해 보이는 착시를 막으려고 일부러 가운데를 불룩하게 만든 수법을 무엇이라 합니까?",
+     "after": "곧게 세운 기둥이 가운데가 홀쭉해 보이는 착시를 막으려고 일부러 가운데를 불룩하게 만들었다고 설명하는 수법을 무엇이라 합니까?",
+     "why": "V013 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Entasis"
+     ]
+    },
+    {
+     "id": 744,
+     "field": "explanation",
+     "before": "그리스 신전에서 시작됐고 우리 전통 건축의 배흘림기둥도 같은 원리입니다.",
+     "after": "그리스 신전에서 비롯된 수법으로 알려져 있고, 우리 전통 건축의 배흘림기둥에도 비슷한 설명이 따릅니다.",
+     "why": "V013 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Entasis"
+     ]
+    },
+    {
+     "id": 750,
+     "field": "explanation",
+     "before": "뒤샹의 '샘'이 대표적입니다. 이름 자체가 뜻 없는 소리에서 골랐다고 전해집니다.",
+     "after": "뒤샹의 '샘'이 대표적입니다. 이름은 사전을 펼쳐 우연히 짚은 프랑스어 낱말에서 땄다는 이야기가 흔히 전하지만 정확한 유래는 분명하지 않습니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Dada"
+     ]
+    },
+    {
+     "id": 861,
+     "field": "explanation",
+     "before": "여성의 무대 출연을 막던 관습과 맞물려 성행했고 19세기에 금지되었습니다.",
+     "after": "교회가 여성의 합창단 참여를 막던 관습과 맞물려 성행했고, 나폴레옹의 이탈리아 점령 뒤 거세가 금지되기 시작해 1903년 교회가 공식적으로 금지했습니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/카스트라토"
+     ]
+    },
+    {
+     "id": 1161,
+     "field": "explanation",
+     "before": "무한급수 개념이 세워진 뒤에야 제대로 답할 수 있게 된 문제였습니다.",
+     "after": "무한급수와 극한 개념으로 수학적으로는 설명되지만, 무한한 단계를 끝내는 일을 어떻게 이해할지는 지금도 논쟁이 남아 있습니다.",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/제논의_역설"
+     ]
+    },
+    {
+     "id": 1215,
+     "field": "explanation",
+     "before": "그래서 도움을 청할 때는 '거기 파란 옷 입은 분'처럼 한 사람을 지목하라고 합니다.",
+     "after": "도움을 청할 때는 '거기 파란 옷 입은 분'처럼 한 사람을 지목하라고 권합니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/방관자_효과"
+     ]
+    },
+    {
+     "id": 1234,
+     "field": "question_text",
+     "before": "1947년 한 목동이 사막의 동굴에서 발견한 고대 두루마리 뭉치로, 가장 오래된 구약 사본이 포함되어 성경 연구를 크게 바꿔 놓은 것은?",
+     "after": "1940년대 한 베두인 목동이 사해 근처 동굴에서 처음 찾아냈다고 전하는 고대 두루마리 뭉치로, 가장 오래된 구약 사본이 포함되어 성경 연구를 크게 바꿔 놓은 것은?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/사해_문서"
+     ]
+    },
+    {
+     "id": 1234,
+     "field": "explanation",
+     "before": "그전까지 알려진 사본보다 천 년이나 앞선 것이었습니다.",
+     "after": "그전까지 알려진 사본보다 천 년가량 앞선 것으로 평가됩니다.",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/사해_문서"
+     ]
+    },
+    {
+     "id": 1272,
+     "field": "general_hint",
+     "before": "작전명은 '다이나모'였고, 프랑스 북부 해안의 항구 도시에서 이루어졌다.",
+     "after": "1940년 5월 26일부터 6월 4일까지 이어졌고, 벨기에군도 구출 대상에 들어 있었다.",
+     "why": "V014 fix 제안 반영 (other)",
+     "sources": []
+    },
+    {
+     "id": 1316,
+     "field": "question_text",
+     "before": "고추를 말려 빻은 붉은 가루지만 매운맛이 거의 없어 색과 향을 내는 데 쓰이며, 헝가리 요리의 기본이 되는 것은?",
+     "after": "고추를 말려 빻은 붉은 가루로, 대체로 맵지 않아 색과 향을 내는 데 쓰이며, 헝가리 요리의 기본이 되는 것은?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Paprika"
+     ]
+    },
+    {
+     "id": 1325,
+     "field": "explanation",
+     "before": "카스피해와 맞닿아 있지만 그것은 바다가 아니라 호수로 봅니다.",
+     "after": "카스피해와 맞닿아 있지만, 카스피해는 바다와 호수의 성격을 함께 지녀 흔히 내륙국으로 분류합니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/카자흐스탄",
+      "https://en.wikipedia.org/wiki/Caspian_Sea"
+     ]
+    },
+    {
+     "id": 1343,
+     "field": "question_text",
+     "before": "사고팔 수 없고 재산을 가질 수도 있었지만 땅을 떠날 자유만은 없었던 중세 유럽의 신분은?",
+     "after": "원칙적으로 사고팔 수 없고 재산을 가질 수도 있었지만 땅을 떠날 자유만은 없었던 중세 유럽의 신분은?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/농노"
+     ]
+    },
+    {
+     "id": 1365,
+     "field": "explanation",
+     "before": "'가'를 ㄱ과 ㅏ로 쪼갤 수 없이 한 글자로 익혀야 합니다.",
+     "after": "일본 가나의 'か'는 k와 a로 쪼개 적을 수 없어 한 글자를 한 음절로 통째로 익혀야 합니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/음절_문자"
+     ]
+    },
+    {
+     "id": 1441,
+     "field": "question_text",
+     "before": "도자기의 포장지로 유럽에 흘러 들어가 인상주의 화가들에게 큰 영향을 준 일본의 목판화는?",
+     "after": "도자기의 포장지로 쓰이다 유럽에 알려졌다고 전해지며 인상주의 화가들에게 큰 영향을 준 일본의 목판화는?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/우키요에"
+     ]
+    },
+    {
+     "id": 1487,
+     "field": "question_text",
+     "before": "고래의 몸속에 쓰이지 않는 골반과 다리뼈가 남아 있는 것처럼, 기능을 잃고 흔적만 남은 기관을 무엇이라 합니까?",
+     "after": "고래의 몸속에 쓰이지 않는 골반과 다리뼈가 남아 있는 것처럼, 조상에게는 쓸모가 있었지만 지금은 기능이 거의 없어진 기관을 무엇이라 합니까?",
+     "why": "V014 fix 제안 반영 (expose)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/흔적_기관"
+     ]
+    },
+    {
+     "id": 1534,
+     "field": "question_text",
+     "before": "마라톤의 거리가 42.195킬로미터라는 어중간한 값이 된 것은, 어느 도시의 1908년 올림픽에서 왕실의 요청으로 출발선을 궁전 앞으로 옮겼기 때문입니다. 그 도시는?",
+     "after": "마라톤의 거리가 42.195킬로미터라는 어중간한 값이 된 것은, 어느 도시의 1908년 올림픽에서 윈저 성을 출발해 경기장 로열 박스 앞에서 끝나도록 코스를 짰기 때문입니다. 그 도시는?",
+     "why": "사실 확인 partial — \"왕실 요청\" 은 문서에 없어 문서의 코스 서술로",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Marathon",
+      "https://en.wikipedia.org/wiki/1908_Summer_Olympics"
+     ]
+    },
+    {
+     "id": 1534,
+     "field": "general_hint",
+     "before": "그해 대회는 본래 로마에서 열릴 예정이었으나 베수비오 화산 분화로 이 도시가 넘겨받았다.",
+     "after": "그해 대회는 본래 로마에서 열릴 예정이었으나 베수비오 화산 분화 뒤 복구비가 필요해져 이 도시가 넘겨받았다고 전한다.",
+     "why": "사실 확인 partial — \"왕실 요청\" 은 문서에 없어 문서의 코스 서술로",
+     "sources": [
+      "https://en.wikipedia.org/wiki/1908_Summer_Olympics"
+     ]
+    },
+    {
+     "id": 1640,
+     "field": "explanation",
+     "before": "수천 마리에서 겨우 옷 한 벌 분량을 얻었다고 전합니다.",
+     "after": "한 연구에서는 고둥 약 1만 2천 마리에서 옷 한 벌의 가장자리를 물들일 염료(약 1.4g)밖에 얻지 못했다고 합니다.",
+     "why": "사실 확인 partial — 원문 수치 1만 2천",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/티리언_퍼플"
+     ]
+    },
+    {
+     "id": 1640,
+     "field": "question_answers",
+     "before": null,
+     "after": "자주",
+     "why": "사실 확인 partial — 원문 수치 1만 2천",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/티리언_퍼플"
+     ]
+    },
+    {
+     "id": 1640,
+     "field": "question_answers",
+     "before": null,
+     "after": "티리언 퍼플",
+     "why": "사실 확인 partial — 원문 수치 1만 2천",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/티리언_퍼플"
+     ]
+    },
+    {
+     "id": 1649,
+     "field": "question_text",
+     "before": "같은 도시나 가까운 지역을 연고로 하는 두 팀의 맞대결을, 영국의 한 지명에서 따와 무엇이라 부릅니까?",
+     "after": "같은 도시나 가까운 지역을 연고로 하는 두 팀의 맞대결을, 영국의 한 도시 이름과 같은 말로 무엇이라 부릅니까?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Local_derby"
+     ]
+    },
+    {
+     "id": 1655,
+     "field": "explanation",
+     "before": "구단이 팬의 반대만으로 계획을 접은 드문 사례로 꼽힙니다.",
+     "after": "팬들의 시위에 영국 정부와 UEFA의 반대가 겹치면서, 발표 사흘 만에 창립 구단 열두 곳 가운데 아홉 곳이 빠져나갔습니다.",
+     "why": "V013 fix 제안 반영 (assertive,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/European_Super_League"
+     ]
+    },
+    {
+     "id": 1760,
+     "field": "general_hint",
+     "before": "불교에서는 같은 날을 우란분절이라 하여 조상의 넋을 기린다.",
+     "after": "이 무렵 벌초와 성묘를 하는 풍습이 있었고, 제주에서는 이날 바다에 나가 일하기도 했다.",
+     "why": "V014 fix 제안 반영 (other)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/백중"
+     ]
+    },
+    {
+     "id": 1784,
+     "field": "question_text",
+     "before": "'직선 밖의 한 점을 지나 그 직선과 평행한 직선은 오직 하나뿐이다' 라는 유클리드의 다섯째 명제를 무엇이라 합니까?",
+     "after": "'직선 밖의 한 점을 지나 그 직선과 평행한 직선은 오직 하나뿐이다' 라는 명제와 같은 뜻이라고 알려진, 유클리드 『원론』의 다섯째 공준을 무엇이라 합니까?",
+     "why": "V013 fix 제안 반영 (assertive,scope)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/평행선_공준"
+     ]
+    },
+    {
+     "id": 1888,
+     "field": "explanation",
+     "before": "약 3분의 1이 적어도 한 번은 다수를 따라갔습니다.",
+     "after": "전체 응답의 약 3분의 1에서 다수를 따랐고, 참가자의 약 4분의 3은 적어도 한 번은 틀린 답을 말했습니다.",
+     "why": "V013 fix 제안 반영 (explanation,fact-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Asch_conformity_experiments"
+     ]
+    },
+    {
+     "id": 1951,
+     "field": "question_text",
+     "before": "적을 무너뜨리기보다 소모시켜 '피를 말리는 것' 을 목표로 삼아 열 달 넘게 이어진 1916년 프랑스의 전투는?",
+     "after": "적을 무너뜨리기보다 소모시켜 '피를 말리는 것' 을 목표로 삼아 열 달 가까이 이어진 1916년 프랑스의 전투는?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/베르됭_전투"
+     ]
+    },
+    {
+     "id": 1954,
+     "field": "explanation",
+     "before": "지휘부가 강하게 막아 이듬해부터는 되풀이되지 않았습니다.",
+     "after": "이듬해에도 몇몇 부대가 휴전했지만, 지휘관들의 강한 금지 명령 등으로 1914년만큼 널리 퍼지지는 않았습니다.",
+     "why": "사실 확인 partial — 금지 명령은 이유의 일부",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/크리스마스_휴전"
+     ]
+    },
+    {
+     "id": 1965,
+     "field": "explanation",
+     "before": "문화체육관광부 장관을 지내기도 했습니다.",
+     "after": "2003년부터 2004년까지 문화관광부 장관을 지내기도 했습니다.",
+     "why": "V013 fix 제안 반영 (explanation,fact-error)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/이창동"
+     ]
+    },
+    {
+     "id": 1991,
+     "field": "question_text",
+     "before": "에도 막부가 외국과의 왕래를 막으면서도 나가사키 한 곳만 열어 두었던 대외 정책을 무엇이라 합니까?",
+     "after": "에도 막부는 기독교를 금하고 외국과의 왕래를 엄격히 통제했습니다. 이때 네덜란드와는 나가사키의 정해진 곳에서만 교역을 허락했던 이 대외 정책을 무엇이라 합니까?",
+     "why": "V014 fix 제안 반영 (fact-error,assertive,explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/쇄국",
+      "https://ko.wikipedia.org/wiki/데지마"
+     ]
+    },
+    {
+     "id": 1991,
+     "field": "explanation",
+     "before": "완전한 봉쇄가 아니라 창구를 하나로 좁혀 통제한 것에 가깝습니다.",
+     "after": "완전한 단절이 아니라 나가사키·쓰시마·사쓰마·에조의 네 창구를 통해 제한적으로 교류하며 국가가 통제한 것에 가깝습니다.",
+     "why": "V014 fix 제안 반영 (fact-error,assertive,explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/쇄국",
+      "https://ko.wikipedia.org/wiki/데지마"
+     ]
+    },
+    {
+     "id": 2066,
+     "field": "question_text",
+     "before": "달에 걸터앉아 낚시하는 소년이 로고인, 디즈니 출신들이 세운 애니메이션 스튜디오는?",
+     "after": "달에 걸터앉아 낚시하는 소년이 로고인 미국 애니메이션 스튜디오는?",
+     "why": "V013 fix 제안 반영 (fact-error,assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/드림웍스_애니메이션"
+     ]
+    },
+    {
+     "id": 2157,
+     "field": "question_text",
+     "before": "염소계 표백제를 산성 세제와 함께 쓰면 안 되는 것은, 둘이 만나 무엇이 생기기 때문입니까?",
+     "after": "락스 같은 표백제를 산성 세제와 함께 쓰면 안 되는 것은, 둘이 만나 무엇이 생기기 때문입니까?",
+     "why": "V014 fix 제안 반영 (expose)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Chlorine"
+     ]
+    },
+    {
+     "id": 2170,
+     "field": "general_hint",
+     "before": "하이든이 바이올린 둘·비올라·첼로로 이루는 사중주를 오늘날의 꼴로 발전시켜, 흔히 그 '아버지'로 불린다.",
+     "after": "오랫동안 아마추어들이 집에서 즐겨 '친구들의 음악'이라고도 불렸다.",
+     "why": "V014 fix 제안 반영 (other)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Chamber_music"
+     ]
+    },
+    {
+     "id": 2226,
+     "field": "explanation",
+     "before": "효모의 존재가 알려지기 전에 만들어져 뒤에 효모가 더해졌습니다.",
+     "after": "1516년 원문에는 효모가 적혀 있지 않았고, 1993년 법은 하면발효 맥주에 효모를 허용합니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Reinheitsgebot"
+     ]
+    },
+    {
+     "id": 2252,
+     "field": "question_text",
+     "before": "불황에는 정부가 지출을 늘려 수요를 만들어야 한다고 주장해 뉴딜의 이론적 바탕이 된 경제학자는?",
+     "after": "불황에는 정부가 지출을 늘려 수요를 만들어야 한다고 주장했고, 1934년 루스벨트 대통령에게 편지와 면담으로 이를 권하기도 한 영국 경제학자는?",
+     "why": "사실 확인 partial — 1939년 전 뉴딜 영향은 미미했다는 것이 문서 합의라 문서의 1934년 서신 · 면담으로",
+     "sources": [
+      "https://en.wikipedia.org/wiki/John_Maynard_Keynes"
+     ]
+    },
+    {
+     "id": 2254,
+     "field": "general_hint",
+     "before": "1845년 프로이센 국적을 잃은 뒤 평생 국적 없이 지냈다.",
+     "after": "1845년 프로이센 국적을 잃은 뒤로는 어느 나라 국적도 없이 지냈다.",
+     "why": "제안 힌트의 \"인포박스 기준으로\" 를 빼고 사실 확인 대로 \"잃은\" 으로",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/카를_마르크스"
+     ],
+     "gen": true
+    },
+    {
+     "id": 2313,
+     "field": "question_text",
+     "before": "여덟 칸에 재료를 담고 가운데 밀전병에 싸 먹도록 아홉 칸으로 나눈 그릇에 차리는 음식은?",
+     "after": "찬합에 둘레로 여덟 가지 재료를 담고 가운데 놓인 밀전병에 싸서 먹는 한국 고유의 음식은?",
+     "why": "V014 fix 제안 반영 (expose)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/구절판"
+     ]
+    },
+    {
+     "id": 2357,
+     "field": "general_hint",
+     "before": "이성계 세력이 1391년 공양왕 때 시행했으며, 지급 대상 토지는 경기 지역으로 한정했습니다.",
+     "after": "1391년 공양왕 때 신진 사대부의 경제 기반을 마련하려 시행했으며, 땅은 주로 경기 지방에 집중해 지급했습니다.",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/과전법"
+     ]
+    },
+    {
+     "id": 2551,
+     "field": "question_text",
+     "before": "잉글랜드가 즐겨 쓴 긴 활은 기사의 갑옷을 뚫을 만큼 강해 중세의 전술을 바꿔 놓았습니다. 이 무기를 무엇이라 합니까?",
+     "after": "잉글랜드가 즐겨 쓴 긴 활은 기사의 갑옷에도 큰 위협이 될 만큼 강해 중세의 전술을 바꿔 놓았다고 평가됩니다. 이 무기를 무엇이라 합니까?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/English_longbow"
+     ]
+    },
+    {
+     "id": 2569,
+     "field": "question_text",
+     "before": "외신기자협회가 주며, 같은 작품상을 드라마와 뮤지컬·코미디로 나누어 시상하는 것이 특징인 상은?",
+     "after": "2023년까지 할리우드 외신기자협회가 주었고, 같은 작품상을 드라마와 뮤지컬·코미디로 나누어 시상하는 것이 특징인 상은?",
+     "why": "V013 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/골든_글로브_시상식"
+     ]
+    },
+    {
+     "id": 2580,
+     "field": "general_hint",
+     "before": "1968년 일본의 한 식품 회사가 이것으로 세계 최초의 상업용 레토르트 파우치 식품을 내놓았다.",
+     "after": "1960년대 후반 일본의 한 식품 회사가 이것으로 세계 최초의 상업용 레토르트 파우치 식품을 내놓았다.",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Japanese_curry"
+     ]
+    },
+    {
+     "id": 2607,
+     "field": "explanation",
+     "before": "가장 좁은 곳의 폭이 15킬로미터 남짓입니다.",
+     "after": "가장 좁은 곳의 폭이 14킬로미터 남짓입니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Strait_of_Gibraltar"
+     ]
+    },
+    {
+     "id": 2671,
+     "field": "question_text",
+     "before": "2010년 발사되어 적도 상공의 정지궤도에서 한반도의 날씨와 바다를 지켜보는 우리나라의 위성은?",
+     "after": "2010년 발사되어 적도 상공의 정지궤도에서 한반도의 날씨와 바다를 관측한 우리나라 최초의 정지궤도 복합위성은?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/천리안_위성",
+      "https://ko.wikipedia.org/wiki/천리안_2A호"
+     ]
+    },
+    {
+     "id": 2689,
+     "field": "question_text",
+     "before": "해마다 수백만 마리가 비와 풀을 따라 아프리카 세렝게티와 마사이마라 사이를 이동하는, 소처럼 생긴 영양은?",
+     "after": "해마다 백만 마리가 넘는 무리가 비와 풀을 따라 아프리카 세렝게티와 마사이마라 사이를 이동하는, 소처럼 생긴 영양은?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Serengeti",
+      "https://en.wikipedia.org/wiki/Wildebeest"
+     ]
+    },
+    {
+     "id": 2695,
+     "field": "explanation",
+     "before": "괴물의 가면을 벗기면 늘 사람이었다는 결말이 반복됩니다.",
+     "after": "괴물의 가면을 벗기면 대개 사람이었다는 결말이 반복됩니다.",
+     "why": "V014 fix 제안 반영 (assertive,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Scooby-Doo"
+     ]
+    },
+    {
+     "id": 2733,
+     "field": "explanation",
+     "before": "이 규칙 때문에 모든 선수가 앞줄과 뒷줄을 번갈아 맡게 됩니다.",
+     "after": "이 규칙 때문에 리베로를 뺀 선수들이 앞줄과 뒷줄을 번갈아 맡게 됩니다.",
+     "why": "V014 fix 제안 반영 (assertive,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Volleyball_rules"
+     ]
+    },
+    {
+     "id": 2756,
+     "field": "explanation",
+     "before": "잎을 떨구는 것은 겨울에 물이 빠져나가는 것을 막으려는 적응입니다.",
+     "after": "잎을 떨구는 것은 겨울에 물이 빠져나가는 것을 줄이려는 적응이라고 설명합니다.",
+     "why": "V014 fix 제안 반영 (assertive,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Abscission"
+     ]
+    },
+    {
+     "id": 2771,
+     "field": "question_text",
+     "before": "1945년 국제연합 헌장이 발효된 것을 기념하는 10월 24일은?",
+     "after": "뉴욕에 본부를 둔 국제기구가 1945년 10월 24일 헌장이 발효되며 출범한 것을 기념하는 날은?",
+     "why": "질문 제안의 \"세계 최대의\" 는 단정이라 판정자 note 대로 뺌",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/유엔의_날",
+      "https://en.wikipedia.org/wiki/United_Nations_Day"
+     ]
+    },
+    {
+     "id": 2814,
+     "field": "explanation",
+     "before": "한 번에 한 장만 만들 수 있고 복제가 불가능했습니다.",
+     "after": "원판 한 장이 곧 완성된 사진이라 같은 상은 하나뿐이었고, 복제하려면 원판을 다시 촬영하거나 석판 · 판화로 옮겨야 했습니다.",
+     "why": "사실 확인 partial — 복제 길을 문서대로",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Daguerreotype"
+     ]
+    },
+    {
+     "id": 2825,
+     "field": "question_text",
+     "before": "빨간 점 모양의 상을 주는 독일의 국제 디자인 공모전으로, iF 디자인상과 함께 세계적인 디자인상으로 꼽히는 것은?",
+     "after": "독일의 국제 디자인 공모전으로, 제품 디자인 · 브랜드와 커뮤니케이션 디자인 · 디자인 콘셉트 세 부문으로 나눠 시상합니다. iF 디자인상과 함께 세계적인 디자인상으로 꼽히는 이 상은?",
+     "why": "V014 fix 제안 반영 (expose,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Red_Dot_Award",
+      "https://en.wikipedia.org/wiki/IF_Design_Award"
+     ]
+    },
+    {
+     "id": 2825,
+     "field": "explanation",
+     "before": "제품·브랜드·콘셉트 부문 등으로 나뉩니다.",
+     "after": "상징인 붉은 점은 1991년 오틀 아이허가 디자인했고, 갤러리에서 팔린 작품에 붙이는 붉은 점을 떠올리게 합니다.",
+     "why": "V014 fix 제안 반영 (expose,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Red_Dot_Award",
+      "https://en.wikipedia.org/wiki/IF_Design_Award"
+     ]
+    },
+    {
+     "id": 3029,
+     "field": "question_text",
+     "before": "부피의 90% 이상이 공기로 이루어져 가장 가벼운 고체로 불리며, 뛰어난 단열성 때문에 우주 탐사선에도 쓰인 소재는?",
+     "after": "부피의 90% 이상이 공기로 이루어져 한때 가장 가벼운 고체로 기록되었고, 뛰어난 단열성 때문에 우주 탐사선에도 쓰인 소재는?",
+     "why": "V013 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Aerogel"
+     ]
+    },
+    {
+     "id": 3043,
+     "field": "question_text",
+     "before": "지금 쓰는 0~9 숫자는 아라비아 숫자라 불리지만, 실제로 처음 만들어진 곳은 어느 나라일까요?",
+     "after": "지금 쓰는 0~9 숫자는 아라비아 숫자라 불리지만, 0을 포함한 자리값 십진법이 비롯된 곳은 어느 나라일까요?",
+     "why": "V014 fix 제안 반영 (assertive,fact-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Arabic_numerals",
+      "https://en.wikipedia.org/wiki/Brahmagupta"
+     ]
+    },
+    {
+     "id": 3321,
+     "field": "explanation",
+     "before": "\"말라카\" 로도 널리 적어 두 표기를 모두 인정합니다.",
+     "after": "믈라카는 인도·중동에서 온 배와 동쪽에서 온 배가 짐을 바꿔 싣던 환적 항구였고, 이슬람 학문이 퍼져 나가는 거점이기도 했습니다. '말라카' 로도 적습니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Malacca_Sultanate",
+      "https://en.wikipedia.org/wiki/Malacca_City"
+     ]
+    },
+    {
+     "id": 3432,
+     "field": "explanation",
+     "before": "처음에는 바구니 바닥이 막혀 있어 골이 들어갈 때마다 사다리 등을 써서 공을 꺼내야 했다.",
+     "after": "처음에는 바구니 바닥이 막혀 있어 골이 들어갈 때마다 공을 꺼내야 했고, 번거로워 곧 바닥을 뚫어 긴 막대로 밀어 냈다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/농구",
+      "https://en.wikipedia.org/wiki/Basketball"
+     ]
+    },
+    {
+     "id": 3439,
+     "field": "question_text",
+     "before": "화석으로만 알려져 공룡과 함께 멸종한 줄 알았다가, 1938년 남아프리카 앞바다에서 산 채로 잡혀 '살아 있는 화석'이 된 물고기는 무엇일까요?",
+     "after": "화석으로만 알려져 약 7천 5백만 년 전에 멸종한 줄 알았다가, 1938년 남아프리카 앞바다에서 산 채로 잡혀 '살아 있는 화석'이 된 물고기는 무엇일까요?",
+     "why": "사실 확인 partial — 문서 수치 7천 5백만 년",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/실러캔스"
+     ]
+    },
+    {
+     "id": 3497,
+     "field": "explanation",
+     "before": "지금도 올림픽에서 쓰는 컬링 스톤 대부분은 스코틀랜드 앞바다 작은 섬 에일사 크레이그의 화강암으로 만든다.",
+     "after": "컬링 스톤에 쓰는 화강암은 스코틀랜드 앞바다 작은 섬 에일사 크레이그와 웨일스의 트레포르 채석장이 두 주요 산지로 꼽힌다.",
+     "why": "V014 fix 제안 반영 (assertive,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Curling"
+     ]
+    },
+    {
+     "id": 3536,
+     "field": "question_text",
+     "before": "쌀알이 술 위에 뜬 모습을 개미에 빗대 '뜰 부(浮)'와 '개미 의(蟻)' 자를 써서 부의주라고도 부르는 술은?",
+     "after": "한자로 '뜰 부(浮)'와 '개미 의(蟻)'를 쓴 부의주라는 다른 이름도 있는 우리 전통 술은?",
+     "why": "V014 fix 제안 반영 (other)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/동동주"
+     ]
+    },
+    {
+     "id": 3581,
+     "field": "question_text",
+     "before": "포유류에게만 있고 새나 파충류에게는 없는, 돔 모양의 근육은?",
+     "after": "흔히 포유류의 특징으로 꼽히며 새에게는 없는, 돔 모양의 근육은?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Thoracic_diaphragm"
+     ]
+    },
+    {
+     "id": 3590,
+     "field": "question_text",
+     "before": "영국 생리학자 셰링턴이 '함께 붙잡다'라는 뜻의 그리스어에서 따와 붙인 신경 용어는?",
+     "after": "영국 생리학자 셰링턴이 1897년 도입한, '함께 붙잡다'라는 뜻의 그리스어에서 온 신경 용어는?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Synapse"
+     ]
+    },
+    {
+     "id": 3604,
+     "field": "explanation",
+     "before": "아내 마리안이 실험 기록과 삽화를 맡고 영어 논문을 번역하며 연구를 함께 이끌었습니다.",
+     "after": "아내 마리안이 영어 논문을 번역하고 실험 기구의 삽화를 그리며 연구를 도왔습니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Antoine_Lavoisier"
+     ]
+    },
+    {
+     "id": 3611,
+     "field": "question_text",
+     "before": "조선 임금이 동대문 밖 제단에서 농사의 신에게 제사를 지낸 뒤 백성과 나눠 먹은 국에서 이름이 왔다는 설이 있는 음식은?",
+     "after": "13세기 몽골이 고려를 침공할 때 전해졌다는 설과 함께, 몽골어로 '고기 삶은 물'을 뜻하는 말에서 이름이 왔다는 설이 있는 한국의 국 음식은?",
+     "why": "질문 제안(몽골어 유래 설)을 받으면서 해설의 몽골어 설이 질문과 겹쳐 GEN 이 해설을 다른 설로 바꿈(판정자 note 권고)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/설렁탕"
+     ]
+    },
+    {
+     "id": 3611,
+     "field": "explanation",
+     "before": "그 제단 이름 '선농단'의 소리가 바뀌었다는 설과 함께, 고기 삶은 물을 뜻하는 몽골어 '슐렌'에서 왔다는 설도 있습니다.",
+     "after": "조선 임금이 선농단에서 제사를 지낸 뒤 백성과 나눠 먹은 국에서 이름이 왔다는 설도 함께 전합니다.",
+     "why": "질문 제안(몽골어 유래 설)을 받으면서 해설의 몽골어 설이 질문과 겹쳐 GEN 이 해설을 다른 설로 바꿈(판정자 note 권고)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/설렁탕"
+     ]
+    },
+    {
+     "id": 3872,
+     "field": "question_text",
+     "before": "그리스어 이름이 '예수 그리스도, 하느님의 아들, 구원자'의 머리글자를 모은 말과 같아서, 초기 기독교인들이 박해 속에 신앙의 표시로 몰래 그려 쓴 동물은?",
+     "after": "그리스어 이름이 '예수 그리스도, 하느님의 아들, 구원자'의 머리글자를 모은 말과 같아서, 초기 기독교의 상징이 되었고 박해 속에 신자끼리 알아보는 표시로 쓰였다고도 전해지는 동물은?",
+     "why": "사실 확인 partial — \"대부분의 학자\" 판단은 문서에 없음",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Ichthys"
+     ]
+    },
+    {
+     "id": 3872,
+     "field": "explanation",
+     "before": "이 상징을 그리스어로 익투스(ΙΧΘΥΣ)라 부르며, 오늘날 자동차 뒤에 붙이는 물고기 모양 스티커도 같은 상징이다.",
+     "after": "이 상징을 그리스어로 익투스(ΙΧΘΥΣ)라 부르며, 오늘날 자동차 뒤에 붙이는 물고기 모양 스티커도 같은 상징이다. 박해 때 비밀 표시로 썼다는 이야기는 기록이 없다는 점에 기댄 추측이라는 지적이 있다.",
+     "why": "사실 확인 partial — \"대부분의 학자\" 판단은 문서에 없음",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Ichthys"
+     ]
+    },
+    {
+     "id": 3890,
+     "field": "explanation",
+     "before": "문양의 노란 바탕은 창업자의 고향 모데나를 상징하는 색입니다.",
+     "after": "로고 속 말 문양의 노란 바탕은 창업자의 고향 모데나를 상징하는 색입니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Ferrari"
+     ]
+    },
+    {
+     "id": 3911,
+     "field": "explanation",
+     "before": "이 노래는 꿈에서 깨어날 때를 알리는 신호로 쓰이며, 한스 짐머는 이 노래를 느리게 늘인 소리를 바탕으로 영화의 웅장한 금관 음악을 만들었다고 밝혔습니다.",
+     "after": "이 노래는 꿈에서 깨어날 때를 알리는 신호로 쓰이며, 한스 짐머는 이 노래의 요소를 영화 음악에 녹여 넣었습니다. 웅장한 금관 소리는 노래를 느리게 늘인 것과 닮았다는 평이 있습니다.",
+     "why": "V014 fix 제안 반영 (explanation,assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Inception",
+      "https://en.wikipedia.org/wiki/Inception_(soundtrack)"
+     ]
+    },
+    {
+     "id": 3912,
+     "field": "explanation",
+     "before": "홍콩 출신으로, 중국어 본명 우위썬을 한국식 한자음으로 읽은 이름입니다.",
+     "after": "광저우에서 태어나 홍콩에서 자란 감독으로, 중국어 본명 우위썬을 한국식 한자음으로 읽은 이름입니다.",
+     "why": "V014 fix 제안 반영 (fact-error,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Mission:_Impossible_2",
+      "https://en.wikipedia.org/wiki/John_Woo"
+     ]
+    },
+    {
+     "id": 3966,
+     "field": "explanation",
+     "before": "그는 이듬해 다시 와 조약을 맺었고, 그의 형 올리버도 미영 전쟁에서 이름을 떨친 해군 장교였습니다.",
+     "after": "1853년 일본에 와 개항을 요구한 뒤 이듬해 다시 와 조약을 맺었고, 그의 형 올리버도 미영 전쟁에서 이름을 떨친 해군 장교였습니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Matthew_C._Perry",
+      "https://en.wikipedia.org/wiki/Oliver_Hazard_Perry"
+     ]
+    },
+    {
+     "id": 3995,
+     "field": "question_text",
+     "before": "젊은 시절 남아메리카 브라질과 우루과이의 전쟁에서도 싸워 '두 세계의 영웅'이라 불린 이탈리아 사람은?",
+     "after": "젊은 시절 남아메리카로 건너가 브라질 남부의 분리 반란과 우루과이 내전에서도 싸워 '두 세계의 영웅'이라 불린 이탈리아 사람은?",
+     "why": "V013 fix 제안 반영 (fact-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Giuseppe_Garibaldi"
+     ]
+    },
+    {
+     "id": 4009,
+     "field": "explanation",
+     "before": "주인공은 실제로 스코틀랜드를 다스린 왕입니다.",
+     "after": "실제 맥베스는 재위 중 1054년에 노섬브리아 백작 시워드가 이끈 잉글랜드군의 침공을 받기도 했습니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Macbeth,_King_of_Scotland"
+     ]
+    },
+    {
+     "id": 4015,
+     "field": "explanation",
+     "before": "프루스트의 장편입니다.",
+     "after": "프루스트가 1922년 세상을 떠난 뒤 나머지 권은 동생 로베르가 편집을 맡아 펴냈습니다.",
+     "why": "V014 fix 제안 반영 (explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/In_Search_of_Lost_Time"
+     ]
+    },
+    {
+     "id": 4350,
+     "field": "question_text",
+     "before": "웹툰 '이태원 클라쓰'의 박새로이는 요식 대기업 장가의 회장 장대희와 맞서 자기 사업을 키워 갑니다. 그는 교도소에서 나온 뒤 이태원에 작은 가게를 엽니다. 박새로이가 이태원에 연 이 가게의 이름은 무엇일까요?",
+     "after": "JTBC 드라마 '이태원 클라쓰'의 박새로이는 요식 대기업 장가의 회장 장대희와 맞서 자기 사업을 키워 갑니다. 그는 교도소에서 나온 뒤 이태원에 작은 가게를 엽니다. 박새로이가 이태원에 연 이 가게의 이름은 무엇일까요?",
+     "why": "V014 fix 제안 반영 (fact-error,scope)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/이태원_클라쓰",
+      "https://en.wikipedia.org/wiki/Itaewon_Class"
+     ]
+    },
+    {
+     "id": 4350,
+     "field": "explanation",
+     "before": "광진 작가가 2017년부터 다음 웹툰에 연재했고, 2020년 JTBC 드라마로 만들어졌습니다.",
+     "after": "광진 작가가 2017년부터 다음 웹툰에 연재했고, 2020년 JTBC 드라마로 만들어졌습니다. 가게 이름은 드라마에서는 '단밤'이고, 원작 웹툰에서는 '꿀밤'입니다.",
+     "why": "V014 fix 제안 반영 (fact-error,scope)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/이태원_클라쓰",
+      "https://en.wikipedia.org/wiki/Itaewon_Class"
+     ]
+    },
+    {
+     "id": 4467,
+     "field": "explanation",
+     "before": "진품은 유물 보존 처리 도중 불에 타 없어졌고, 지금 전하는 것은 복제품이다.",
+     "after": "진품은 유물 보존 처리 도중 불에 타 없어졌다고 전하며, 지금 볼 수 있는 것은 복제품이다.",
+     "why": "V013 fix 제안 반영 (assertive,explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/주령구"
+     ]
+    },
+    {
+     "id": 4553,
+     "field": "explanation",
+     "before": "정재형은 이 가요제 출연을 계기로 방송 활동의 폭을 크게 넓혔습니다.",
+     "after": "2011년 6월 11일부터 7월 2일까지 네 차례에 걸쳐 방송된 가요제입니다.",
+     "why": "V013 fix 제안 반영 (explanation,assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/서해안고속도로_가요제",
+      "https://ko.wikipedia.org/wiki/무한도전_가요제"
+     ]
+    },
+    {
+     "id": 4686,
+     "field": "general_hint",
+     "before": "이 일대 바닷가에 살던 친초로 문화 사람들은 공들인 미라 만들기로 이름나다.",
+     "after": "이 일대 바닷가에 살던 친초로 문화 사람들은 공들인 미라 만들기로 이름났다.",
+     "why": "V014 fix 제안 반영 (other)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Atacama_Desert"
+     ]
+    },
+    {
+     "id": 4693,
+     "field": "question_text",
+     "before": "기원전 477년 페르시아의 재침공에 대비한다는 명분으로, 아테네를 맹주로 에게해의 폴리스들이 해상 동맹을 맺었습니다. 원래 공동 금고를 두었던 섬의 이름에서 이름을 딴 이 동맹은?",
+     "after": "기원전 5세기 초, 페르시아의 재침공에 대비한다는 명분으로 아테네를 맹주로 에게해의 폴리스들이 해상 동맹을 맺었습니다. 원래 공동 금고를 두었던 섬의 이름에서 이름을 딴 이 동맹은?",
+     "why": "V014 fix 제안 반영 (assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Delian_League",
+      "https://en.wikipedia.org/wiki/Delos"
+     ]
+    },
+    {
+     "id": 4697,
+     "field": "question_text",
+     "before": "19세기 말 프랑스를 둘로 가른 한 간첩 누명 사건을 계기로, 유대계 언론인 테오도르 헤르츨은 시오니즘 운동에 본격적으로 나섰습니다. 1894년 독일 간첩 혐의로 악마섬에 유배되었다가 1906년 무죄가 확정된, 유대계 포병 장교의 이름이 붙은 이 사건은?",
+     "after": "19세기 말 프랑스를 둘로 가른 한 간첩 누명 사건은, 유대계 언론인 테오도르 헤르츨이 시오니즘으로 나아가는 계기가 되었다고 흔히 말합니다. 1894년 독일 간첩 혐의로 악마섬에 유배되었다가 1906년 무죄가 확정된, 유대계 포병 장교의 이름이 붙은 이 사건은?",
+     "why": "사실 확인 partial — 인과 단정을 문서대로",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Dreyfus_affair",
+      "https://en.wikipedia.org/wiki/Theodor_Herzl"
+     ]
+    },
+    {
+     "id": 4697,
+     "field": "explanation",
+     "before": "가톨릭교회가 진실을 외면하고 반유대주의 선동에 가담했다는 비판이 커지면서, 1905년 프랑스 정교분리법 제정으로 이어졌습니다.",
+     "after": "사건은 프랑스를 반교권 공화파와 가톨릭 중심의 반대파로 갈라, 뒤이은 1905년 정교분리를 둘러싼 싸움의 배경이 되었습니다.",
+     "why": "사실 확인 partial — 인과 단정을 문서대로",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Dreyfus_affair",
+      "https://en.wikipedia.org/wiki/Theodor_Herzl"
+     ]
+    },
+    {
+     "id": 4721,
+     "field": "explanation",
+     "before": "마을이 어느 주에 있는지 끝내 밝히지 않는 것이 작품의 단골 농담입니다.",
+     "after": "마을이 어느 주에 있는지 오랫동안 분명히 밝히지 않은 것이 작품의 단골 농담입니다.",
+     "why": "V014 fix 제안 반영 (explanation,assertive)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Springfield_(The_Simpsons)"
+     ]
+    },
+    {
+     "id": 4786,
+     "field": "general_hint",
+     "before": "그는 1977년 제13기부터 1993년 제28기까지 패왕전 타이틀을 16번 내리 지켰다.",
+     "after": "그는 1977년부터 패왕전 타이틀을 16번 내리 지켰다.",
+     "why": "V014 fix 제안 반영 (fact-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Cho_Hun-hyun"
+     ]
+    },
+    {
+     "id": 5170,
+     "field": "question_text",
+     "before": "라데츠키 원수가 1857년 이탈리아에서 이 요리의 조리법을 들여왔다는 이야기가 퍼져 있지만, 언어학자 하인츠디터 폴은 이를 지어낸 이야기로 봅니다. 그 나라의 법은 헷갈리지 않도록 이 이름의 요리를 반드시 송아지고기로 만들게 정해 두었습니다. 이 요리는 무엇일까요?",
+     "after": "라데츠키 원수가 1857년 이탈리아에서 이 요리의 조리법을 들여왔다는 이야기가 퍼져 있지만, 언어학자 하인츠디터 폴은 이를 지어낸 이야기로 봅니다. 오스트리아의 법은 헷갈리지 않도록 이 이름의 요리를 반드시 송아지고기로 만들게 정해 두었습니다. 이 요리는 무엇일까요?",
+     "why": "V013 fix 제안 반영 (readable)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Wiener_Schnitzel"
+     ]
+    }
+   ],
+   "notTaken": [
+    {
+     "id": 1991,
+     "field": "variants",
+     "proposal": [
+      "쇄국 정책"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    }
+   ]
+  },
+  "e": {
+   "counts": {
+    "decisions": 21,
+    "todo": 0,
+    "deactivate": 0,
+    "done": 32,
+    "skipped": 0,
+    "rows": 32,
+    "notTaken": 2
+   },
+   "skipped": [],
+   "rows": [
+    {
+     "id": 383,
+     "field": "question_text",
+     "before": "또렷한 선율과 화성 진행 대신 음색과 분위기를 앞세워, 당대 회화의 인상주의에 빗대어 이야기되곤 하는 프랑스 작곡가는?",
+     "after": "〈목신의 오후에의 전주곡〉을 쓴 프랑스 작곡가입니다. 또렷한 선율과 화성 진행 대신 음색과 분위기를 앞세워, 당대 회화의 인상주의에 빗대어 이야기되곤 합니다. 이 작곡가는 누구일까요?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Claude_Debussy",
+      "https://en.wikipedia.org/wiki/Maurice_Ravel",
+      "https://en.wikipedia.org/wiki/Prelude_to_the_Afternoon_of_a_Faun"
+     ]
+    },
+    {
+     "id": 639,
+     "field": "question_text",
+     "before": "잿빛 털끝만 빛깔이 옅어 빛을 받으면 은빛으로 반짝이고, 초록빛 눈을 가진 것으로 알려진 고양이 품종은?",
+     "after": "잿빛 털끝만 빛깔이 옅어 빛을 받으면 은빛으로 반짝이고 초록빛 눈을 가진 고양이 품종 가운데, 영국에서 1912년에야 따로 심사 부문이 생긴 쪽은?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Russian_Blue"
+     ]
+    },
+    {
+     "id": 639,
+     "field": "general_hint",
+     "before": "1912년에야 따로 심사 부문이 생겼고, 그전에는 다른 푸른 털 고양이들과 한데 겨루었다.",
+     "after": "1872년 런던 크리스털 팰리스 고양이 대회에 출품된 기록이 가장 이른 것으로 남아 있다.",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Russian_Blue"
+     ]
+    },
+    {
+     "id": 680,
+     "field": "question_text",
+     "before": "지붕이 없는 원형 구조에 서서 보는 싸구려 관객석을 둔 16세기 런던의 극장으로, 셰익스피어의 극단이 쓰던 곳은?",
+     "after": "지붕이 없는 원형 구조에 서서 보는 싸구려 관객석을 둔, 1599년 템스강 남쪽 서더크에 세워진 셰익스피어 극단의 극장은?",
+     "why": "제안 힌트(1613년 화재)와 GEN 첫 안(1642 폐쇄 · 1644~45 철거)이 모두 같은 정답 #5605 질문 · 해설과 같은 사실(H12)이라 지분 사실로 다시 씀",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Globe_Theatre",
+      "https://en.wikipedia.org/wiki/The_Theatre,_Shoreditch"
+     ]
+    },
+    {
+     "id": 680,
+     "field": "explanation",
+     "before": "화재로 불탔다가 20세기에 옛 모습대로 다시 지어져 지금도 공연을 올립니다.",
+     "after": "1997년 근처에 옛 모습대로 다시 지어져 지금도 공연을 올리고 있습니다.",
+     "why": "제안 힌트(1613년 화재)와 GEN 첫 안(1642 폐쇄 · 1644~45 철거)이 모두 같은 정답 #5605 질문 · 해설과 같은 사실(H12)이라 지분 사실로 다시 씀",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Globe_Theatre",
+      "https://en.wikipedia.org/wiki/The_Theatre,_Shoreditch"
+     ]
+    },
+    {
+     "id": 680,
+     "field": "general_hint",
+     "before": "런던 템스강 남쪽 기슭의 서더크에 있었다.",
+     "after": "셰익스피어도 이 극장 건물의 지분을 나눠 가진 사람 가운데 하나였다.",
+     "why": "제안 힌트(1613년 화재)와 GEN 첫 안(1642 폐쇄 · 1644~45 철거)이 모두 같은 정답 #5605 질문 · 해설과 같은 사실(H12)이라 지분 사실로 다시 씀",
+     "sources": [],
+     "gen": true
+    },
+    {
+     "id": 797,
+     "field": "question_text",
+     "before": "DNA에서 유전 정보를 이루는 네 가지 기본 단위로, 서로 정해진 짝끼리만 마주 보며 결합하는 것을 무엇이라 합니까?",
+     "after": "DNA의 뼈대(당·인산)에 붙어 유전 정보를 담는 네 가지 단위로, 서로 정해진 짝끼리만 마주 보며 결합하는 것을 무엇이라 합니까?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/DNA"
+     ]
+    },
+    {
+     "id": 808,
+     "field": "question_text",
+     "before": "바둑에서 차이가 너무 커서 끝까지 두고 계산하지도 않은 채 한쪽이 돌을 거두며 끝나는 승부를 무엇이라 합니까?",
+     "after": "바둑에서 차이가 너무 커서 끝까지 두고 계산하지도 않은 채 한쪽이 돌을 거두며 끝났을 때, 이긴 쪽 기준으로 이 승부를 무엇이라 합니까?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/불계승",
+      "https://ko.wikipedia.org/wiki/바둑_용어"
+     ]
+    },
+    {
+     "id": 1158,
+     "field": "question_text",
+     "before": "물질이 더는 쪼갤 수 없는 알갱이로 이루어져 있다고 보고, 그 알갱이에 '나눌 수 없는 것'이라는 이름을 붙인 고대 그리스 철학자는?",
+     "after": "만물이 더는 쪼갤 수 없는 알갱이인 원자와 텅 빈 공간으로 이루어졌다고 설명해, 스승에게서 이어받은 원자론을 크게 발전시킨 고대 그리스 철학자는?",
+     "why": "질문 제안의 \"스승 레우키포스에게 배운 뒤\" 는 같은 정답 #3789 힌트(레우키포스의 제자)와 같은 사실(H12)이라 스승 이름을 뺌 — 레우키포스는 \"스승\" 한정어로 여전히 갈림",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/데모크리토스"
+     ]
+    },
+    {
+     "id": 1573,
+     "field": "question_text",
+     "before": "어두운 방의 벽에 작은 구멍을 뚫으면 바깥 풍경이 반대편 벽에 거꾸로 맺힙니다. 이 현상을 이용한 장치로, 사진의 원리가 된 것을 무엇이라 합니까?",
+     "after": "어두운 방의 벽에 작은 구멍을 뚫으면 바깥 풍경이 반대편 벽에 거꾸로 맺힙니다. 이 현상을 이용한 장치로, 사진의 원리가 된 것을 라틴어 이름으로 무엇이라 합니까?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Camera_obscura"
+     ]
+    },
+    {
+     "id": 1622,
+     "field": "question_text",
+     "before": "빛이 금속이나 반도체에 닿으면 전자가 튀어나오거나 움직여 전류가 생기는 현상으로, 태양전지의 바탕이 되는 것은?",
+     "after": "금속 표면에 빛을 쬐면 전자가 밖으로 튀어나오는 현상을 무엇이라 합니까?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/광전_효과"
+     ]
+    },
+    {
+     "id": 1775,
+     "field": "question_text",
+     "before": "삼각형 세 각의 합이 180도가 되는 것은 평평한 면 위에서일 뿐이고, 지구본 같은 곡면에서는 그보다 커집니다. 이런 기하를 통틀어 무엇이라 합니까?",
+     "after": "유클리드가 세운 기하는 평행선 공리를 바탕으로 합니다. 이 공리가 성립하지 않는 공간을 다뤄, 삼각형 세 각의 합이 180도가 아닐 수 있는 기하를 통틀어 무엇이라 합니까?",
+     "why": "사실 확인 partial — \"쓰지 않고\" 는 절대기하와 헷갈려 \"성립하지 않는\" 으로",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/비유클리드_기하학"
+     ]
+    },
+    {
+     "id": 1945,
+     "field": "question_text",
+     "before": "타이어 표면에 파인 홈을 무엇이라 합니까? 빗길에서 물을 밀어내 노면에 닿게 해 주며, 닳으면 미끄러지기 쉬워집니다.",
+     "after": "타이어가 노면에 닿는 바깥 고무 면에 홈과 무늬를 새겨 놓은 부분을 무엇이라 합니까? 빗길에서 물을 밀어내 노면에 닿게 해 주며, 닳으면 미끄러지기 쉬워집니다.",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Tread",
+      "https://en.wikipedia.org/wiki/Aquaplaning"
+     ]
+    },
+    {
+     "id": 1945,
+     "field": "question_answers",
+     "before": null,
+     "after": "트레드 패턴",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Tread",
+      "https://en.wikipedia.org/wiki/Aquaplaning"
+     ]
+    },
+    {
+     "id": 2013,
+     "field": "question_text",
+     "before": "나라로부터 무역 독점권을 받고 군대 보유와 조약 체결까지 할 수 있었던, 주식회사의 초기 형태로 꼽히는 회사는?",
+     "after": "대항해 시대에 유럽 여러 나라는 아시아 무역을 독점하려고 회사를 세웠습니다. 나라로부터 무역 독점권을 받고 군대 보유와 조약 체결까지 할 수 있었던, 주식회사의 초기 형태로 꼽히는 이 회사는 무엇입니까?",
+     "why": "질문 · 변형(네덜란드 · 영국 동인도회사) 제안 반영 — 새 변형 때문에 지금 힌트의 \"영국의 것\" 이 hint-check 막힘이라 나라 이름만 뺌",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/동인도_회사"
+     ]
+    },
+    {
+     "id": 2013,
+     "field": "general_hint",
+     "before": "영국의 것은 1600년 엘리자베스 1세의 특허장으로 세워졌고, 향신료 무역이 주된 목적이었다.",
+     "after": "그 가운데 한 나라의 것은 1600년 엘리자베스 1세의 특허장으로 세워졌고, 향신료 무역이 주된 목적이었다.",
+     "why": "질문 · 변형(네덜란드 · 영국 동인도회사) 제안 반영 — 새 변형 때문에 지금 힌트의 \"영국의 것\" 이 hint-check 막힘이라 나라 이름만 뺌",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 2013,
+     "field": "question_answers",
+     "before": null,
+     "after": "네덜란드 동인도회사",
+     "why": "질문 · 변형(네덜란드 · 영국 동인도회사) 제안 반영 — 새 변형 때문에 지금 힌트의 \"영국의 것\" 이 hint-check 막힘이라 나라 이름만 뺌",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/동인도_회사"
+     ]
+    },
+    {
+     "id": 2013,
+     "field": "question_answers",
+     "before": null,
+     "after": "영국 동인도회사",
+     "why": "질문 · 변형(네덜란드 · 영국 동인도회사) 제안 반영 — 새 변형 때문에 지금 힌트의 \"영국의 것\" 이 hint-check 막힘이라 나라 이름만 뺌",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/동인도_회사"
+     ]
+    },
+    {
+     "id": 2128,
+     "field": "question_text",
+     "before": "항생제가 세균에는 듣고 바이러스에는 듣지 않는 것은, 항생제가 무엇을 표적으로 삼기 때문입니까?",
+     "after": "페니실린 같은 항생제가 세균에는 듣고 바이러스에는 듣지 않는 것은, 항생제가 세균의 어떤 구조를 표적으로 삼기 때문입니까?",
+     "why": "질문 제안(페니실린 · 세균의 어떤 구조) 반영 · 지금 힌트(페니실린이 바깥 껍질을 막음)는 새 질문과 합치면 답 그대로라 비움(제안 힌트 없음)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Penicillin"
+     ]
+    },
+    {
+     "id": 2128,
+     "field": "general_hint",
+     "before": "페니실린은 사람 몸에는 없는 미생물의 바깥 껍질을 만들지 못하게 막아서 듣는다.",
+     "after": null,
+     "why": "질문 제안(페니실린 · 세균의 어떤 구조) 반영 · 지금 힌트(페니실린이 바깥 껍질을 막음)는 새 질문과 합치면 답 그대로라 비움(제안 힌트 없음)",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 2150,
+     "field": "question_text",
+     "before": "약제사가 만든 시럽을 약국에서 팔던 데서 출발한 미국의 음료 회사는?",
+     "after": "1886년 미국 애틀랜타의 약제사가 만든 시럽을 약국에서 팔던 데서 출발한 음료 회사는?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Coca-Cola",
+      "https://en.wikipedia.org/wiki/Pepsi",
+      "https://en.wikipedia.org/wiki/Dr_Pepper"
+     ]
+    },
+    {
+     "id": 2205,
+     "field": "question_text",
+     "before": "소스 코드를 공개해 누구나 보고 고쳐 배포할 수 있게 하는 개발·배포 방식을 무엇이라 합니까?",
+     "after": "소스 코드를 공개해 누구나 보고 고쳐 배포할 수 있게 하는 개발·배포 방식에, 기업이 받아들이기 쉽도록 1998년에 새로 붙인 이름은 무엇입니까?",
+     "why": "질문 제안(1998년 새 이름) 반영 · 지금 힌트는 새 질문 되풀이가 되어 비움(제안 힌트 없음)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Open-source_software"
+     ]
+    },
+    {
+     "id": 2205,
+     "field": "general_hint",
+     "before": "'자유 소프트웨어'라는 이름이 처음 접하는 사람에게 헷갈리고 업계의 관심을 막는다는 지적에 따라 1998년에 제안된 이름이다.",
+     "after": null,
+     "why": "질문 제안(1998년 새 이름) 반영 · 지금 힌트는 새 질문 되풀이가 되어 비움(제안 힌트 없음)",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 2264,
+     "field": "question_text",
+     "before": "하부 리그 팀도 참가할 수 있어 약팀이 강팀을 꺾는 이변이 자주 나오는, 잉글랜드의 오래된 컵 대회는?",
+     "after": "하부 리그 팀도 참가할 수 있어 약팀이 강팀을 꺾는 이변이 자주 나옵니다. 잉글랜드에서 세계에서 가장 오래된 축구 대회로 꼽히는 이 컵 대회는 무엇일까요?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/FA컵",
+      "https://en.wikipedia.org/wiki/FA_Cup"
+     ]
+    },
+    {
+     "id": 2370,
+     "field": "question_text",
+     "before": "밖에서는 자기 쪽을 낮추는 것이 원칙이지만, 남에게 말할 때도 높여 부르는 것이 허용되는 대상은 누구입니까?",
+     "after": "밖에서는 자기 쪽을 낮추는 것이 원칙이지만, 남에게 말할 때도 높여 부르는 것이 허용되는 대상이 있습니다. 집안 어른 가운데 나와 가장 가까운 두 분은 누구일까요?",
+     "why": "질문 제안(가장 가까운 두 분) 반영 · 지금 힌트는 새 질문 되풀이가 되어 비움(제안 힌트 없음)",
+     "sources": []
+    },
+    {
+     "id": 2370,
+     "field": "general_hint",
+     "before": "집안 어른 가운데 나와 가장 가까운 사람들로, 압존법 이야기에서도 자주 등장합니다.",
+     "after": null,
+     "why": "질문 제안(가장 가까운 두 분) 반영 · 지금 힌트는 새 질문 되풀이가 되어 비움(제안 힌트 없음)",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 2557,
+     "field": "question_text",
+     "before": "명중률이 낮아 병사들이 줄지어 서서 한꺼번에 쏘는 방식이 필요했던 근세의 총은?",
+     "after": "17~18세기 유럽 보병의 주력 총기로, 명중률이 낮아 병사들이 줄지어 서서 한꺼번에 쏘는 방식이 필요했던 이 총은?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Musket"
+     ]
+    },
+    {
+     "id": 2557,
+     "field": "question_answers",
+     "before": null,
+     "after": "머스켓",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Musket"
+     ]
+    },
+    {
+     "id": 2590,
+     "field": "question_text",
+     "before": "고기용 도마와 채소용 도마를 따로 쓰는 것은 무엇을 막기 위해서입니까?",
+     "after": "고기용 도마와 채소용 도마를 따로 쓰는 것은, 한 식재료의 세균이 다른 식재료로 옮겨 가는 일을 막기 위해서입니다. 이 현상을 무엇이라 합니까?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Cross-contamination",
+      "https://en.wikipedia.org/wiki/Food_safety"
+     ]
+    },
+    {
+     "id": 3105,
+     "field": "question_text",
+     "before": "롤스가 공정한 원칙을 끌어내려고, 자신이 사회에서 어떤 처지에 놓일지 모르는 상태에서 규칙을 정하게 한 사고실험의 장치는?",
+     "after": "롤스가 공정한 원칙을 끌어내려고, 자신의 사회적 지위·성별·인종 같은 정보를 모두 가려 규칙을 정하게 한 사고실험의 장치는?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Original_position"
+     ]
+    },
+    {
+     "id": 3364,
+     "field": "question_text",
+     "before": "신경세포의 3분의 2가량이 머리가 아니라 다리에 있어, 다리 하나하나가 어느 정도 따로 판단해 움직인다고 알려진 바다 동물은?",
+     "after": "신경세포의 3분의 2가량이 머리가 아니라 다리에 있어, 다리 하나하나가 어느 정도 따로 판단해 움직인다고 알려진 바다 동물이 있습니다. 그중 큰 것은 다리 길이가 4미터를 넘기도 하는데, 이 동물은 무엇일까요?",
+     "why": "V014 fix 제안 반영 (not-unique)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/문어",
+      "https://en.wikipedia.org/wiki/Octopus"
+     ]
+    },
+    {
+     "id": 3409,
+     "field": "question_text",
+     "before": "일본에서 돌아온 덕혜옹주가 말년을 보내다 세상을 떠난 낙선재가 있는 궁궐은?",
+     "after": "일본에서 돌아온 덕혜옹주가 말년을 보내다 세상을 떠난 낙선재는 창경궁에 이어져 있지만, 오늘날 문화재 구역으로는 이 궁궐에 들어 있습니다. 이 궁궐은 어디일까요?",
+     "why": "V014 fix 제안 반영 (not-unique,scope)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/덕혜옹주",
+      "https://ko.wikipedia.org/wiki/창덕궁"
+     ]
+    }
+   ],
+   "notTaken": [
+    {
+     "id": 1775,
+     "field": "variants",
+     "proposal": [
+      "비유클리드기하학"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 2013,
+     "field": "variants",
+     "proposal": [
+      "동인도 회사"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    }
+   ]
   }
+ },
+ "totals": {
+  "rows": 774,
+  "notTaken": 138,
+  "byField": {
+   "general_hint": 362,
+   "explanation": 66,
+   "question_text": 85,
+   "question_answers": 261
+  },
+  "hintCleared": 31,
+  "questions": 556
  }
 }
