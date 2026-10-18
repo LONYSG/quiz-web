@@ -36,10 +36,10 @@
     "variantCheck": "ko.wikipedia '평균으로의 회귀' 문서 첫 문장 — '평균을 향한 회귀, 평균회귀, 회귀효과라고도 한다' 확인",
     "explanation": "1933년 통계학 교수 호러스 시크리스트는 기업 이익률이 평균으로 모이는 것을 보고 『사업에서 평범함의 승리』라는 책을 냈지만, 이는 이 현상을 잘못 읽은 대표적 예로 꼽힙니다.",
     "score": {
-     "version": "score-v3",
+     "version": "score-v3-blind",
      "dif": 4,
-     "easiestCue": "1886년 부모와 자녀의 키를 다룬 논문",
-     "difWhy": "골턴의 키 연구 — 대학 교양 통계",
+     "easiestCue": "그는 1886년 부모와 자녀의 키를 다룬 논문으로 이 현상을 널리 알렸는데, 이 통계 현상은 무엇일까요",
+     "difWhy": "V016 blind: 묻는 사실: 골턴의 키 논문과 평균으로의 회귀 — 대학 교양 통계(경계 3)",
      "wor": 4,
      "worWhy": "통계 기본 개념",
      "acc": 4,
@@ -95,7 +95,40 @@
     "dbCheck": "answercheck new — 활성·초안 0",
     "warn": [
      "정답조각 으로"
-    ]
+    ],
+    "g012Before": {
+     "question": "한 영국 학자는 스위트피 씨앗 연구와, 구슬이 핀 사이로 떨어지게 만든 장치로 이 현상의 실마리를 잡았습니다. 그는 1886년 부모와 자녀의 키를 다룬 논문으로 이 현상을 널리 알렸는데, 이 통계 현상은 무엇일까요?",
+     "explanation": "1933년 통계학 교수 호러스 시크리스트는 기업 이익률이 평균으로 모이는 것을 보고 『사업에서 평범함의 승리』라는 책을 냈지만, 이는 이 현상을 잘못 읽은 대표적 예로 꼽힙니다.",
+     "generalHint": "그 학자는 찰스 다윈과 사촌뻘인 친척이었다.",
+     "generalHintVersion": "hint-v5",
+     "hintSources": [
+      "https://en.wikipedia.org/wiki/Francis_Galton"
+     ],
+     "hintNote": "He was Charles Darwin's half-cousin.",
+     "acceptedAnswers": [
+      "평균 회귀",
+      "평균을 향한 회귀",
+      "회귀 효과"
+     ],
+     "originalTitleVariants": [],
+     "layer": null,
+     "score": {
+      "version": "score-v3",
+      "dif": 4,
+      "easiestCue": "1886년 부모와 자녀의 키를 다룬 논문",
+      "difWhy": "골턴의 키 연구 — 대학 교양 통계",
+      "wor": 4,
+      "worWhy": "통계 기본 개념",
+      "acc": 4,
+      "accWhy": "사회 제도 — 고교 사회 교과"
+     },
+     "discarded": null
+    },
+    "g012": {
+     "round": "G012",
+     "v016": "ok",
+     "blindDif": 4
+    }
    }
   },
   {
@@ -120,10 +153,10 @@
     "variantCheck": "ko.wikipedia 문서 제목 '스튜던트 t 분포'(띄어쓰기만 다름) 확인 — 질문이 '필명에서 이름이 온' 을 요구하므로 일반어 't분포' 는 넣지 않음(B2)",
     "explanation": "고셋은 1937년 9월 기네스 전체의 수석 양조사로 올랐고, 그해 10월 세상을 떠났습니다.",
     "score": {
-     "version": "score-v3",
+     "version": "score-v3-blind",
      "dif": 4,
-     "easiestCue": "기네스 양조장 고셋의 필명에서 온 확률 분포",
-     "difWhy": "'고셋 필명 분포' — 대학 교양 통계",
+     "easiestCue": "회사가 연구원 논문에 맥주·회사 이름·실명을 밝히지 못하게 하자 필명으로 논문을 실었습니다",
+     "difWhy": "V016 blind: 묻는 사실: 고셋의 필명 스튜던트에서 온 t분포 이름 — 대학 통계 교양 (경계 3)",
      "wor": 4,
      "worWhy": "통계 기본 어휘",
      "acc": 4,
@@ -137,7 +170,7 @@
      "worWhy": "통계 기본 어휘"
     },
     "rewrite": null,
-    "generalHint": "자유도가 커질수록 평균 0, 분산 1인 정규분포에 가까워진다.",
+    "generalHint": "그가 이 분포를 소개한 논문은 학술지 《바이오메트리카》에 실렸고 제목은 「평균의 확률오차」였다.",
     "generalHintVersion": "hint-v5",
     "hobby": null,
     "defForm": false,
@@ -176,7 +209,7 @@
     "hintSources": [
      "https://en.wikipedia.org/wiki/Student%27s_t-distribution"
     ],
-    "hintNote": "As the number of degrees of freedom grows, the t distribution approaches the normal distribution with mean 0 and variance 1.",
+    "hintNote": "1908 Biometrika 논문 제목 'The probable error of a mean'(한국어 번역은 '평균의 확률오차'로 옮김)",
     "easiestCue": "기네스 양조장에서 일한 윌리엄 고셋은 … 필명으로 논문을 실었습니다",
     "targetWhy": "고교 통계에 t분포 유래는 없음 — 기네스·고셋 일화는 대학 통계 교양의 이야깃거리(4)",
     "selfJudge": "좋은 어려움",
@@ -185,7 +218,39 @@
     "dbCheck": "answercheck new — 활성·초안 0",
     "warn": [
      "정답조각 분포"
-    ]
+    ],
+    "g012Before": {
+     "question": "아일랜드 더블린의 기네스 양조장에서 일한 윌리엄 고셋은, 회사가 연구원 논문에 맥주·회사 이름·실명을 밝히지 못하게 하자 필명으로 논문을 실었습니다. 보리 품종을 적은 표본으로 시험하던 그가 1908년 소개한 확률 분포로, 그 필명에서 이름이 온 것은 무엇일까요?",
+     "explanation": "고셋은 1937년 9월 기네스 전체의 수석 양조사로 올랐고, 그해 10월 세상을 떠났습니다.",
+     "generalHint": "자유도가 커질수록 평균 0, 분산 1인 정규분포에 가까워진다.",
+     "generalHintVersion": "hint-v5",
+     "hintSources": [
+      "https://en.wikipedia.org/wiki/Student%27s_t-distribution"
+     ],
+     "hintNote": "As the number of degrees of freedom grows, the t distribution approaches the normal distribution with mean 0 and variance 1.",
+     "acceptedAnswers": [
+      "스튜던트 분포",
+      "스튜던트의 t분포"
+     ],
+     "originalTitleVariants": [],
+     "layer": null,
+     "score": {
+      "version": "score-v3",
+      "dif": 4,
+      "easiestCue": "기네스 양조장 고셋의 필명에서 온 확률 분포",
+      "difWhy": "'고셋 필명 분포' — 대학 교양 통계",
+      "wor": 4,
+      "worWhy": "통계 기본 어휘",
+      "acc": 4,
+      "accWhy": "사회 제도 — 고교 사회 교과"
+     },
+     "discarded": null
+    },
+    "g012": {
+     "round": "G012",
+     "v016": "fix",
+     "blindDif": 4
+    }
    }
   },
   {
@@ -209,10 +274,10 @@
     "variantCheck": "한국에서 '핼리 혜성' · '에드먼드 핼리' 로 부름(ko.wikipedia 문서 제목 '에드먼드 핼리') — 성만 · 풀네임 둘 다",
     "explanation": "그는 1691년 잠수종을 만들어 템스강 18m 깊이에서 한 시간 반 넘게 머물기도 했습니다.",
     "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "뉴턴의 『프린키피아』를 자기 돈으로 펴내기도 한 이 과학자",
-     "difWhy": "'프린키피아를 펴낸 이' — 대학 교양 과학사 (경계 3)",
+     "version": "score-v3-blind",
+     "dif": 3,
+     "easiestCue": "1687년 뉴턴의 『프린키피아』를 자기 돈으로 펴내기도 한 이 과학자",
+     "difWhy": "V016 blind: 묻는 사실: 핼리의 프린키피아 출간 후원 — 고교 과학·상식(경계 4)",
      "wor": 4,
      "worWhy": "교양 — 과학사 주요 인물 일화",
      "acc": 4,
@@ -271,7 +336,38 @@
     "selfJudgeWhy": "프린키피아 출판 일화는 과학사 애호가에게는 꽤 알려져 있음",
     "pairCheck": null,
     "dbCheck": "answercheck new — 활성·초안 0",
-    "warn": []
+    "warn": [],
+    "g012Before": {
+     "question": "1693년 한 영국 과학자는 브레슬라우의 사망 통계로 나이별 사망을 분석한 생명표를 내놓아, 영국 정부가 사는 사람의 나이에 맞춰 종신연금 값을 매길 수 있게 했습니다. 1687년 뉴턴의 『프린키피아』를 자기 돈으로 펴내기도 한 이 과학자는 누구일까요?",
+     "explanation": "그는 1691년 잠수종을 만들어 템스강 18m 깊이에서 한 시간 반 넘게 머물기도 했습니다.",
+     "generalHint": "1676년 남대서양 세인트헬레나섬에 관측소를 세우고 남쪽 하늘의 별을 목록으로 만들었다.",
+     "generalHintVersion": "hint-v5",
+     "hintSources": [
+      "https://en.wikipedia.org/wiki/Edmond_Halley"
+     ],
+     "hintNote": "From an observatory he constructed on Saint Helena in 1676–77, Halley catalogued the southern celestial hemisphere",
+     "acceptedAnswers": [
+      "에드먼드 핼리"
+     ],
+     "originalTitleVariants": [],
+     "layer": null,
+     "score": {
+      "version": "score-v3",
+      "dif": 4,
+      "easiestCue": "뉴턴의 『프린키피아』를 자기 돈으로 펴내기도 한 이 과학자",
+      "difWhy": "'프린키피아를 펴낸 이' — 대학 교양 과학사 (경계 3)",
+      "wor": 4,
+      "worWhy": "교양 — 과학사 주요 인물 일화",
+      "acc": 4,
+      "accWhy": "사회 제도 — 고교 사회 교과"
+     },
+     "discarded": null
+    },
+    "g012": {
+     "round": "G012",
+     "v016": "ok",
+     "blindDif": 3
+    }
    }
   }
  ]
