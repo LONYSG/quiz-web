@@ -6377,10 +6377,15 @@ button.primary.tone-warn {
 .balloon-box.small {
   height: 150px;
 }
+/* ★ R055 그림에서 — PC 에서 height:100% 가 안 먹고 폭(칸 전체)을 따라가 풍선이 칸을 넘치고 글자를 덮었다 → 크기를 직접 */
 .balloon-art {
-  height: 100%;
-  width: auto;
+  height: min(42vh, 300px);
+  width: min(42vh, 300px);
   overflow: visible;
+}
+.balloon-box.small .balloon-art {
+  height: 150px;
+  width: 150px;
 }
 .balloon-body {
   fill: #ef476f;

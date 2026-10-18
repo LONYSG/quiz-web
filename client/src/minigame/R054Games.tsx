@@ -38,9 +38,6 @@ export function BalloonArt({ pct, popped = false }: { pct: number; popped?: bool
         {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
           <line key={a} x1={100 + Math.cos((a * Math.PI) / 180) * 20} y1={100 + Math.sin((a * Math.PI) / 180) * 20} x2={100 + Math.cos((a * Math.PI) / 180) * 60} y2={100 + Math.sin((a * Math.PI) / 180) * 60} />
         ))}
-        <text x="100" y="110" textAnchor="middle">
-          펑!
-        </text>
       </svg>
     );
   return (

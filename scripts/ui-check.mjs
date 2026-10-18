@@ -2998,6 +2998,15 @@ async function r054Live(browser, key) {
       if (i === 0) {
         await snap(H, `${num}-live-balloon-holding-pc`);
         await snap(G, `${num}-live-balloon-holding-m390`);
+        // ★ R055 — PC 에서 풍선이 칸을 넘쳐 % 글자를 덮던 결함: 풍선 몸통이 상자 안 · 글자 위에
+        for (const [P, nm] of [[H, 'PC'], [G, 'm390']]) {
+          const fit = JSON.parse(
+            await P.evaluate(
+              "(() => { const b = document.querySelector('.balloon-body')?.getBoundingClientRect(); const box = document.querySelector('.balloon-box')?.getBoundingClientRect(); const t = document.querySelector('.balloon-pct')?.getBoundingClientRect(); return JSON.stringify(b && box && t ? { bw: Math.round(b.width), boxW: Math.round(box.width), inBox: b.top >= box.top - 1 && b.bottom <= box.bottom + 1, aboveText: b.bottom <= t.top + 1 } : null); })()",
+            ),
+          );
+          record(`★★ ${nm} 풍선이 상자 안 · % 글자를 덮지 않음`, !!fit && fit.inBox && fit.aboveText, JSON.stringify(fit));
+        }
       }
       await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: ' ', code: 'Space', windowsVirtualKeyCode: 32 });
       await sleep(600);
@@ -3071,6 +3080,7 @@ async function r054Stats(browser) {
   await realClick(P, '.stats-tabs [data-tab="stats"]');
   await sleep(300);
   await P.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  await sleep(600); // ★ R055 — 테마 바꾼 직후에 찍으면 색 넘어가는 중간이 찍힌다
   await snap(P, '92-stats-m390');
   await P.close?.();
   // 업적 토스트 — 새 계정이 첫 문제를 맞힌다

@@ -61,11 +61,13 @@ if (flag('--list')) {
   for (const b of BUNDLES) console.log(`${b.id.padEnd(18)} ${b.stage.padEnd(9)} ${b.args.join(' ')} ${JSON.stringify(b.env ?? {})}`);
   process.exit(0);
 }
-const pick = argv.filter((a) => !a.startsWith('--') && !/^\d+$/.test(a) && a !== optv('--out', '\0'));
+const pick = argv.filter((a) => !a.startsWith('--') && !/^\d+$/.test(a) && a !== optv('--out', '\0') && a !== optv('--shot-dir', '\0'));
 const chosen = pick.length ? BUNDLES.filter((b) => pick.includes(b.id) || pick.includes(b.stage)) : BUNDLES;
 const RETRY = Number(optv('--retry', 0));
 const RETRY_GAP = Number(optv('--retry-gap-min', 30)) * 60_000;
 const OUT = optv('--out', null);
+// ★ R055 — 옛 라운드 그림을 덮지 않게 그림 폴더를 강제(예: --shot-dir verify) · 없으면 묶음 값 → verify
+const SHOT_FORCE = optv('--shot-dir', null);
 
 const mb = (b) => Math.round(b / 1048576);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -119,6 +121,7 @@ function runOne(b) {
   return new Promise((resolve) => {
     const env = { ...process.env, ...(b.env ?? {}) };
     for (const [k, v] of Object.entries(env)) if (v === '') delete env[k];
+    if (SHOT_FORCE) env.SHOT_DIR = SHOT_FORCE;
     env.SHOT_DIR ??= 'verify';
     const proc = spawn(process.execPath, [path.join(ROOT, 'scripts/ui-check.mjs'), ...b.args], { cwd: ROOT, env });
     let out = '';
