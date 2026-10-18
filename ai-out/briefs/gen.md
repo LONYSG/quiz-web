@@ -1,57 +1,30 @@
-[GEN G009]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다)
-TASK: A. V011 반영(CV-21~24 · 활성 12행 안팎 고침 · DB 쓰기) · B. 15 §3-3 · §4-1 한 줄씩(2회차 ↔ 1회차 힌트 대조 · 한 글자 조각) · C. **상 생성 3차 1,000 = 두 묶음(g009a · g009b 각 500)**(G005 흐름 — 생성 → 채점 → 한 번 고침 → 힌트 → 게이트 → VERIFY 묶음 · 묶음마다 push 해서 V013 이 먼저 집는다) · D. 작업 폴더 정리. 생성분은 **적재하지 않는다**(V013 뒤 G010). 미니게임 데이터는 손대지 않는다(V012 가 verify 칸을 쓰는 중)
-실행 모델: Opus 5.5 (`claude --model claude-opus-5-5`)
+[GEN G011]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 이번 라운드는 짧다 — g009a 하나만 · 끝나면 멈춘다)
+TASK: **g009a 464 → V014 판정 반영 → 적재 → 상 풀 실측**(CV-34 (a)) + 15 §4-1 H9 한 줄(CV-37) + CV-38 닫기. **기존 활성 fix 955(V013~V015) · g009b · 미니게임은 이번에 하지 않는다**(다음 라운드)
+실행 모델: Opus 5.5 (바꾸지 않는다)
 
-■ 고정 규칙: docs/16-ROUND-PROTOCOL.md 그대로 (3장 · 4장 · 5-2 · 1장 번호 — 다음 DG-036 · C71 · Q 는 올리지 않는다).
-■ ★★ 동시 라운드 — VERIFY V012(미니게임 642 재검증 — `data/minigame/*/items.json` 의 verify·status 칸을 쓴다 · DB 읽기만) · MAIN R051(미니게임 2차 · 미커밋 server/ client/ 파일 있음 · questions 는 안 건드림)이 같이 돈다 (docs/16 6장).
-- GEN 몫: pipeline/ · scripts/g009-* · data/pipeline/(audit 의 v012-* 제외) · 15 · 05 Track D 행과 그 아래 줄 · 06(맨 위 새 블록) · 07 DG- · 13 **C 행 + CV-21~24 끝 표시** · README **G 표**. ★ `data/minigame/` · `assets/minigame/` 은 이번엔 **읽기도 쓰기도 하지 않는다**.
-- git: G008 방식 그대로 — 내 파일만 `git add` · `git fetch` 로 원격 확인 · 앞서 있으면 내 커밋을 `git rebase origin/main` · force 금지. V012 가 items.json 을 커밋해도 내 쪽과 겹치지 않는다.
-- ★ 메모리: 하위 에이전트 **한 번에 2개 이내**(VERIFY 1 · MAIN 1 — MAIN 은 이번에 헤드리스 Chrome 검사를 많이 돌린다) · 띄우기 전 남는 메모리 1.5GB 미만이면 2분 × 10 대기 · 429 면 모델을 바꾸지 않고 재설정 뒤 이어서 · 에이전트마다 임시 폴더 `tmp/g009/work-*`.
-■ 토큰: 하위 에이전트는 생성 · 채점 · 힌트 · 사실 확인에만 · 보고서는 바뀐 것과 표만(항목 전문은 JSON).
+■ 고정 규칙: docs/16 그대로 (번호 — G010 이 쓴 다음 **DG-041** · **C73** 부터 · Q 는 올리지 않는다). 하위 에이전트 **0~1**(사실 확인 조각 하나만 · 메모리 1.5GB) · 429 면 같은 모델로 이어서.
+■ ★★ 동시 라운드 — VERIFY(V016: g009b 판정 — audit/v016-* · 13 CV-35 · CV-43~ · README V 표)가 같이 돈다. MAIN 은 쉬고 있다(R055 는 G011 뒤). GEN 몫: questions · question_answers · pipeline · 15 · prompts · `scripts/g011-*` · audit/g011-* · 05 Track D · 06 · 07 DG- · 13 CV-34 · CV-37 · CV-38 처리 표시 + C73 · README G 표. git: 내 파일만 · fetch → rebase → push.
+■ 토큰: 넉넉하다 — fix 109 는 전부 읽고 판단한다(기계 일괄 적용 아님).
 
 ■ 먼저 읽기
-- docs/16 · ai-out/gen.md(3 · 4-1) · **ai-out/V011.txt 전체**(3절 fix 12 · 4절 경계 · 6절 반복 오류) · **ai-out/V010.txt 6절**(다음 생성을 위한 제안 — 낱말 뜻·정의 꼴 · 취미 세부) · ai-out/G008.txt 0 · 1절 · ai-out/G005.txt(1~5절 — 흐름 · 소재 배분 · 고침 효과) · ai-out/V009.txt 6절
-- docs/15 전체(G008 판 — §5-1 상 = 4 각주 · §3-2 · §3-3 · §4-1 H0~H12 · §2 B2 · §7-1) · pipeline/prompts/deep-v5.md · media-v3.md · score-v3.md · hint-v5.md · seed-v3.md · seed-r2-v2.md
-- data/pipeline/audit/v011-results.json(`cv20`[id].proposal · `pairs`["id↔id"].proposal · `g007Gen`(ref → id)) · scripts/g006-apply-hints.mjs · g008-apply-hints.mjs(반영 꼴) · scripts/g005-build.mjs · pipeline-load.mjs(`--gate-only`) · hint-check-active.mjs · measure-pool-exhaust.mjs · scripts/criteria-sync.mjs
-- (G005 작업 꼴) tmp/g005/ 의 GEN-INSTRUCTIONS · SUPPLEMENT · SCORE-INSTRUCTIONS · HINT-INSTRUCTIONS 가 남아 있으면 본으로.
+- **ai-out/V014.txt 3절·4절·6절**(g009a: ok 351 · fix 109 · drop 4 · blind 분포 · "판정자 지식 기반 제안(문서 미확인)" 목록 · 사실 확인이 갈린 것) · `audit/v014-results.json`(items[ref].verdict · categories · proposal · blind · pairs) · 13 **CV-34 · CV-37 · CV-38**
+- ai-out/G009.txt(0절 표 · 6절 게이트 · 7절 묶음 · 8절) · `audit/g009a-verify-targets.json` · `samples/g009-deep.json` · scripts/g009-build.mjs · pipeline-load.mjs(`--round g009a --dry-run` / 적재) · scripts/g008-apply-v010.mjs · g009-apply-v011.mjs(반영 스크립트 꼴 — 멱등 · before 보존) · measure-pool-exhaust.mjs · docs/15 §4-1 H9 · §3-3 · hint-v5
 
 ■ 찬종의 말 · 확정
-- (2026-10-13) "퀄리티 있는 문제 수 늘리는게 우선이야." · (2026-10-14) "gen과 main이 각각 개별적으로 작업이 가능하다면 진행해."
-- G008 실측(V010 반영 뒤): 50문제 **상만 10판**(풀 505) · 중+상 57 · 전체 102 · korea 상 1판(57) · 묶음 하나만 고르면 상은 전부 1판 → 상 풀 회복이 1순위.
-- 설계 판단(2026-10-17 · 되돌리기 쉽다):
-  · **CV-21 → 판정자 기본값 그대로**: 질문을 고치는 쪽 #1783 · #2187 · #3680(질문+해설) · 변형 추가 쪽 #2262(+5 · 기존 변형 "탄소 배출량" 제거) · #2412(+2) · #2887(+4 — 슬래시 "R/P" 는 A5 게이트가 막으면 빼고 "채굴 가능 연수" 는 꼭) · #3072(+2 한글 음차만). 문구는 v011-results cv20[id].proposal.
-  · **CV-22 → K1-17(#4973) 만 중립으로**: 질문의 "1895년 땅속에 묻혔다가" 를 "1895년 자취를 감췄다가" 꼴(묻힘/수장 어느 쪽도 단정하지 않음)로 · 유일성·길이는 그대로. L1-19 파라과이 해설은 "풀이된다" 한정이 있으니 그대로.
-  · **CV-23 → 그대로**(K4-07 · M1-02 — 틀린 증거 없음 · "지식 근거" 표시 유지).
-  · **CV-24 → 5 전부 반영**: #4848 해설 · #5176 힌트 · #4760 힌트 · #2106 힌트(1회차) · #99 힌트(1회차) — pairs[…].proposal 그대로(chk 통과분).
-  · V011 4절의 **#14 해설**(낡은 작업 메모 "Q-37에 따라 힌트를 만들지 않아야 한다")은 지운다 — 해설이 그 메모뿐이면 15 §4 E1~E4 에 맞는 한 줄을 새로 쓴다(사실은 문서로).
+- "퀄리티 있는 문제 수 늘리는게 우선이야." · 설계 판단(2026-10-18): **CV-34 (a)** — fix 109 는 제안을 읽고 반영(VERIFY 제안 속 새 사실은 한 번 더 웹 확인 — 16 5-2) · drop 4 제외 · 격리 36 제외(파일엔 남김) · **난이도 = V014 blind 재채점 값**(CV-14 선례 · 4 이상 191) · `score_version` 에 blind 표시(score-v3-blind 꼴 — V010 반영 때와 같이) · 적재 뒤 활성 ≈ 5,113 + 460 안팎. **CV-37**: 15 §4-1 H9 에 "대표 쓰임 · 대표 일화 · 상징 동상은 정체로 센다(예: 두려움 없는 소녀 · K-Ar 연대 측정)" 한 줄 → criteria-sync → hint-v5 SYNC(버전 그대로 · 예시 추가 — G009 B 꼴). **CV-38**: #4339 · #4365 · #3980 · S3-42 · K3-11 · M1-22 를 문서로 열어 닫는다(#3980 은 한정어로 못 닫으면 비활성).
 
-■ 대상·목표 (확인 대상 — 설계 에이전트가 G008 보고서에서 센 값 · 작업 전 DB 와 다시 맞춘다)
-- 활성 5,113 · 상(4) 505 · 힌트 2,924(그중 3 은 MAIN ui-check 시험 힌트 #1~3 — 손대지 않고 해시 비교에서 뺀다) · 묶음별 상: korea 57 · sports 64 · life 68 · history 68 · science 75 · media 83 · arts 90 · G008 백업 quizweb-20261017-021125.
-- 생성 **1,000 이내 — g009a 500 · g009b 500**(찬종 2026-10-17: "작업을 최대한 많이 … 토큰을 최대한 빨리 써야해") · 묶음마다 배분: **korea 120 · sports 100 · life 80 · media 60 · history 50 · science 50 · arts 40**. 소분류는 활성 상이 적은 쪽부터(G005 1절 표 갱신) · g009b 는 g009a 와 소분류를 겹치지 않게(a 가 못 채운 소분류 우선) · 전역 대조는 활성 + g009a 초안까지.
-- ★ 목표: GEN 채점(score-v3) 상 **55% 이상**(G005 는 62% → V009 blind 35%였다 — blind 로 **상 175 안팎**이 목표). korea 상이 blind 뒤에도 40 이상 더해지게(57 → 100 안팎 → korea 상만으로 두 판).
+■ 할 일 (항목마다 "다 됐다" · 단계마다 커밋)
+A. 반영 — `scripts/g011-apply-v014.mjs`: g009a 파일(generated/g009a)에 fix 109 적용(질문 · 해설 · 힌트 · 변형 — 힌트는 hint-check 통과 · 2회차 fix 12 는 1회차와 다시 대조) · drop 4 제거 · blind 난이도 덮어쓰기 · `audit/g011-fixes.json`(rows[].before · after · 받지 않은 제안은 사유). 받지 않은 것 · 지식 기반 제안을 문서로 연 결과를 보고서 표로.
+B. 적재 — `npm run db:backup` → `pipeline-load --round g009a --gate-only` 통과 수 = 적재 대상 수 → 적재 → 활성 수 · 상 수 · 묶음별 상 · 힌트 수 전/후 표 · 대상 밖 해시 같음.
+C. 실측 — `measure-pool-exhaust.mjs`(상만 · 중+상 · 전체 · korea 상 · media 상) 전/후 → "상만 10판 → N판".
+D. 15 H9 한 줄(CV-37) + criteria-sync --check · CV-38 6건 닫기(고친 것은 A 스크립트에 함께 · 되돌리기 before).
+E. 문서 — 05 Track D(활성 · 상 · 판) · 06 · 07 DG-041~ · 13(CV-34 · CV-37 · CV-38 끝 · C71 "a 적재 · b V016 대기" · **C73** = V016 뒤 할 일 메모) · README G 표 · `ai-out/G011.txt`(0절: 전/후 표 · 받지 않은 제안 · 못 한 것).
 
-■ 기준 — 새 기준 없음. G005 흐름 ①~⑥ 그대로(생성 직후 채점 → 3 이하 한 번 고침 → 다시 채점 · 사실은 문서 · 질문 숫자·연도·동사 글자 대조 · hint-v5 · 변형은 검색 확인 · B2). 프롬프트는 deep-v5 · media-v3 · score-v3 · hint-v5.
-- ★ 이번에 더하는 것(V010 6절 · V011 6절):
-  ① **낱말 뜻·정의 꼴**("~을 뜻하는 말은?" · "~을 이르는 낱말은?")은 묶음마다 **10% 이하** — 상은 "들으면 아는 대상의 교과서 밖 세부" 로.
-  ② 취미 영역 세부를 늘린다(life: 낚시 · 등산 · 캠핑 · 자동차 · 요리 · 원예 · 반려동물 · 보드게임 · DIY · 사진 / sports: 규칙 · 기록 · 장비 · 구단 역사) — 마이너 대상이 아니라 "관심층은 아는" 세부(deep-v5 경고 그대로).
-  ③ **2회차를 쓸 때 1회차의 힌트까지 같이 대조**(H12 양방향 — hint-input 의 sameAnswerActive 에 1회차 힌트를 넣는다) · 2회차 힌트에 정답의 끝 낱말 한 글자 조각("이 탑" ↔ 에펠탑)이 나오지 않게 사람이 본다(기계 H2 는 못 막는다).
-- 같은 정답이 활성에 2건 이상이면 쓰지 않는다 · 2회차 (가)는 §3-3. 자기 검토는 판정이 아니다 — 최종 난이도는 V013 blind.
-
-■ 할 일 (항목마다 "다 됐다" 의 기준 · A → E · 단계마다 커밋)
-A. **V011 반영** — `npm run db:backup` → `scripts/g009-apply-v011.mjs`(멱등 · 파일 단계 검사 · 대상 행의 지금 값이 V011 before 와 같은 행만 · 다르면 건너뛰고 목록) → 질문 3(#1783 #2187 #3680 + #4973 K1-17) · 해설 2(#3680 · #4848) + #14 · 변형(#1783 +3 · #2187 +3 · #2262 +5/−1 · #2412 +2 · #2887 · #3072 +2 — 게이트 question-checks 통과분만 · 막힌 것은 사유) · 힌트 4(#5176 #4760 #2106 #99 — checkHint 막힘 0). 다 됐다 = `data/pipeline/audit/g009-fixes.json`(ref · id · field · before · after · why · sources) · 대상 밖 questions(#1~3 제외) · question_answers md5 가 반영 전후 같음 · hint-check-active 막힘 0 · 활성 5,113 그대로.
-B. **15 · 프롬프트 한 줄씩** — §3-3 SYNC 구간에 "2회차를 쓸 때 1회차 **힌트**도 같이 대조한다(H12 양방향 — V011 S1-13 · L3-17)" · §4-1 H2 에 예 "이 탑 ↔ 에펠탑(정답 끝 낱말 한 글자)" · deep-v5 SYNC · `criteria-sync --check` 통과 · DG-036. 다 됐다 = 15 머리글 · 프롬프트 버전은 올리지 않는다(deep-v5 그대로 · 예시 추가).
-C. **생성 3차 — g009a 먼저 끝까지(게이트 · `audit/g009a-verify-targets.json` · 커밋 · push) → g009b 같은 흐름** — 소재(배분 표 · 전역 대조 활성 5,113 + 이번 초안 · 버린 소재 수와 사유) → 생성 → 중앙 기계 검사 → 사실 → 채점 → 고침 한 번 → 다시 채점 → 힌트 → checkHint · hint-check 경고 읽기 → 게이트 `data/pipeline/generated/g009a/` · `g009b/` → `pipeline-load --round g009a --gate-only`(b 도) 전량 통과 · 같은 정답 누적 3건 이상 0(a+b 합쳐서).
-   다 됐다 = 묶음별 표: 생성 · 탈락(사유별) · 1차 채점 상 · 고침 수 · 고친 뒤 상 · 최종 상 비율 · 낱말 뜻 꼴 비율 · 2회차 수 · 알 가치 · 접근성 2 수 · 힌트 수 · hintBasis · "들어가면" 풀 추정(상 · 중+상 · 전체 · korea 상 — blind 35% 가정으로도).
-D. **작업 폴더 정리** — 미추적 임시 도구 `scripts/_g005-*` · `_g006-*` · `_g007-*` · `_g008-*`(22개)를 `tmp/gen-tools/` 로 옮긴다(커밋하지 않는다 · 지우지 않는다) → `git status` 에 GEN 미추적 파일 0. 이번 라운드의 임시 도구도 처음부터 `tmp/g009/` 에.
-E. **VERIFY 묶음 · 문서** — `data/pipeline/audit/g009a-verify-targets.json` · `g009b-verify-targets.json`(G005 꼴 + rewrite · score1 · score · 2회차는 1회차 id·힌트 포함) · samples/g009-deep.json · 05 Track D · 06 · 07 DG-036~ · 13 CV-21~24 끝 표시 · C71(V013 대기 — 표본 · 먼저 볼 것) · README G 표 · `ai-out/G009.txt`.
-
-■ DB 쓰기: **A 만 허용**(백업 1회 뒤 · 위 행만). 생성분 적재 금지 · 난이도 변경 금지 · 미니게임 표 금지.
-■ 웹·토큰 예산: WebSearch **300회 이내** · WebFetch 주 수단 · 하위 에이전트 **한 번에 2개 이내** · 생성 1,000 이내. 토큰은 넉넉하다 — 아끼려고 건수를 줄이지 않는다.
-■ 하지 말 것: 적재 · 기존 활성의 A 밖 수정 · 15 규칙 문구 변경(B 의 두 줄과 예시만) · 새 Q · 마이너 대상으로 어렵게 · 두 번 이상 고치기 · server/ client/ shared/ · data/minigame · assets/minigame · VERIFY·MAIN 몫 문서.
-■ 확인할 것 (원칙 7): 활성 5,113 · 상 505 · 묶음별 상(위) · 힌트 2,924(ui-check 3 포함) · 풀 실측(상 10 · 중+상 57 · 전체 102) · deep-v5 · media-v3 · score-v3 · hint-v5 가 지금 판 · v011-results 의 fix 12 — 다르면 0절에.
-■ 끝 점검: 게이트 N/N · 활성 5,113 그대로 · 해시 대조 · 결과 파일 개수 = 보고서 건수 · criteria-sync --check 통과 · `git status` 미추적 GEN 파일 0.
-■ 보고 항목: cmd 창 → 0 찬종이 볼 것(A 반영 12행 표 · 묶음별 건수 흐름 표 · 상 비율 · 낱말 뜻 꼴 비율 · "들어가면" 상 N판) → 원칙 메모(7 · 동시 라운드) → 1 A → 2 B → 3 소재 → 4 생성·검사·사실 → 5 채점·고침·힌트 → 6 게이트 → 7 VERIFY 묶음·측정 → 8 GEN 판단 → 9 새 결정 필요 → 고친 문서.
+■ DB 쓰기: **허용**(백업 뒤 · questions · question_answers · g009a 적재). 미니게임 표 금지.
+■ 웹·토큰 예산: WebSearch **40회 이내** · WebFetch 주 수단 · 하위 에이전트 ≤1.
+■ 하지 말 것: g009b(V016 판정 전) · 기존 활성 fix 955 반영(G012) · 미니게임 1차 fix 63 · 2차 적재(V017 뒤) · 생성 · server/ client/ shared/ · 13 A · README R/V.
+■ 확인할 것 (원칙 7): 활성 5,113 · 상 503(난이도 4) + 2(5) · g009a 묶음 464 · v014-results.json 의 g009a 항목 464(ok 351 · fix 109 · drop 4) · 마지막 DG-040 · C72 — 다르면 0절에.
+■ 보고 항목: cmd 창 → 0 찬종이 볼 것(전/후 표 · 상 N판) → 원칙 메모 → A~E → GEN 판단 → 새 결정 필요 → 고친 문서.
 ■ 커밋: 단계마다 · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` · 내 파일만 add · fetch → rebase → push.
-■ 지난 피드백 (G008): 잘한 것 — 대상 밖 4,585행 · 변형 표 md5 로 "바꾸지 않았다" 를 증명한 것 · ui-check 시험 힌트 3 을 알아채고 뺀 것 · 사진을 정답 모르는 에이전트에게 맞혀 보게 한 것 · 1.5 규칙을 판매처 목록 전체에 적용한 것 · EU 행을 지우지 않고 결정 후보로 남긴 것. 고칠 것 — 임시 도구 미추적 파일 22개가 작업 폴더에 쌓여 MAIN 의 rebase 를 막았다 → D.
-■ ★ 이어서: 이 라운드의 보고서 · 커밋 · push 가 끝나면 **같은 창에서** `ai-out/briefs/gen-next.md` 를 읽고 그 라운드(G010)를 바로 시작한다 — 찬종에게 묻지 않는다(찬종 2026-10-17: "검사는 몰아서 한번에 … 작업을 최대한 많이"). 그 파일이 없거나 첫 줄이 "보류" 면 멈춘다.
+■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄에 "G011 끝 — 다음 브리핑 대기".
 ■ 답변: 한국어 · 터미널 5줄 이내.
