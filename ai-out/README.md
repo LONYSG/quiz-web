@@ -41,6 +41,7 @@
 | V014.txt | 활성 난이도 3 나머지 2,086 전수(ok 1,560 · fix 526 = 25.2% · 전체 2,386 중 fix 586 = 24.6% · legacy# 35% vs 최근 8~10%) + 중간에 올라온 g009a 464 전수(ok 351 · fix 109 · drop 4 · blind 재채점 4 이상 191 = 41% ← GEN 54% · 독립 채점자 100건 23%) → `audit/v014-active3.json` · `v014-results.json` · `v014-raw/` · g009b 미판정 · 반영은 G011 · Sonnet 5.5 · CV-34~38 |
 | V015.txt | ① g009b · ② 미니게임 2차 items-2.json 은 대상 없어 안 함 · ③ 활성 난이도 4·5 505 전수(ok 379 · fix 126 = 25.0% · legacy# 61%) · ④ 난이도 2 1,465 전수(ok 1,222 · fix 243 = 16.6%) → 활성 2·3·4·5 = 4,356 중 fix 955(21.9%) · 난이도 1(757) 미판정 → `audit/v015-active4.json` · `v015-active2.json` · `v015-raw/` · 반영은 G011 · Sonnet 5.5 · CV-39~42 |
 | V016.txt | g009b 485 전수 판정(ok 366 · fix 109 · drop 10 · blind 재채점 4 이상 256 = 53% ← GEN 61% · 독립 채점자 100건 48% · 힌트 fix 81 · 2회차 69 중 24) vs g009a(41%) → `audit/v016-results.json` · `v016-raw/` · 반영은 G012 · Sonnet 5.5 · CV-35 끝 · CV-43~46 |
+| V017.txt | 미니게임 2차 533 전수(ok 503 · fix 29 · drop 1 = fix 율 5.4% ← 1차 9.8%) · 그림 503 전수(문제 13) · photo 맞혀 보기 97/100 · 새 품목 나라 행 85 중 46 은 사이트 요청 제한으로 현지가 미재독 → `audit/v017-minigame.json` · `v017-raw/` · items-2.json verify·status · products.json 새 품목 rows verify · 반영은 GEN · Sonnet 5.5 · CV-47~51 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 

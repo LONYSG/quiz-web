@@ -1,0 +1,91 @@
+===========================================
+ROUND: V017
+DATE: 2026-10-19
+TASK: 미니게임 데이터 2차 533 전수 재검증(C72 · items-2.json + 새 품목 휘발유·콜라). 반영·적재는 GEN
+STATUS: 완료 — 단 worldprice 새 품목 나라 행 85 중 46 은 사이트 요청 제한(429)으로 현지가를 다시 읽지 못했다(unverified)
+===========================================
+
+[cmd 창 요약]
+1. 533 전수: ok 503 · fix 29 · drop 1 (1차 V012 642: ok 573 · fix 63 · drop 6) — fix 율 5.4% (1차 9.8%). 게임별 fix: price 1 · worldprice 0 · photo 20(20%) · estimate 6 · which 2 + drop 1.
+2. 그림 503 전수: 문제 13(wrong-target 2 · 흐림·워터마크·글자 10 · multi-answer 1) — 1차 15. photo 정답 모르는 판정자 맞혀 보기 97/100(못 맞힌 3: photo-0207 약과→다식 · photo-0141 떡살→다식판 · photo-0213 토코투칸→큰부리새).
+3. ★ worldprice 새 품목: 휘발유 42행(GlobalPetrolPrices 가 HTTP 429 → 이 사이트로 현지가를 다시 읽은 행 약 9, Trading Economics 다른 표로 ±10% 안에 든 행 25, 대만 1은 검색 요약, unverified 9) · 콜라 43행(Numbeo 429 → 6행만 다시 읽음, 37 unverified). 환율은 통화 전부 ±3%. 값이 틀렸다는 증거는 없다.
+4. estimate 외화 6(0185~0190)은 fix(원화 환산 제안 · 원래 통화는 note) — drop 아님. DB 쓰기 0 · 사용량 한도 1회(멈췄다 이어서). 1차 items.json · 1차 품목 · 그림 불변(기계 확인) · g008-check 1,175 막힘 0.
+5. 새 결정 CV-47~ (13번) · C72 처리 표시. 결과: ai-out/V017.txt · audit/v017-minigame.json · v017-raw/ · items-2.json · products.json(새 품목 rows verify)
+
+0. 웹 검색·조회 (맨 앞) · 게임별 표 · 1차와 비교
+- 판정자 21조각(한 번에 1개 · 휘발유는 3번): WebFetch 약 915회 · WebSearch 4회(한도 80 이내) · VERIFY 직접 0회. 사이트 요청 제한 429: GlobalPetrolPrices(휘발유) · Numbeo(콜라). 사용량 한도 1회(wp-gasoline 3차 직후) — 모델 유지.
+- 원칙 7: 2차 533(price 100 · worldprice 83 · photo 100 · estimate 100 · which 150) ✔ · 그림 503 ✔(items 501 + 품목 2) · 새 품목 2(휘발유 42 · 콜라 43) ✔ · 전부 candidate/verify null ✔ · g008-check 시작·끝 모두 1,175 막힘 0 ✔.
+
+| 게임 | n | ok | fix | drop | fix 율 | 1차 fix 율 |
+|---|---|---|---|---|---|---|
+| price | 100 | 99 | 1 | 0 | 1% | 6% |
+| worldprice | 83 | 83 | 0 | 0 | 0% | 0% |
+| photo | 100 | 80 | 20 | 0 | 20% | 28.3% |
+| estimate | 100 | 94 | 6 | 0 | 6% | 3% |
+| which | 150 | 147 | 2 | 1 | 1.3% | 13.3% |
+| 합 | 533 | 503 | 29 | 1 | 5.4% | 9.8% |
+- status 집계(items-2.json): price verified 99/candidate 1 · worldprice verified 83 · photo verified 80/candidate 20 · estimate verified 94/candidate 6 · which verified 147/rejected 1/candidate 2. G012 가 fix 를 적용하면 rejected 1 을 빼고 verified 503+29=532.
+- unverified(값을 문서로 못 닫은 ok): price 18 · photo 18 · estimate 9 · which 24 · worldprice 나라 행 46/85(휘발유 9 · 콜라 37).
+
+1. 건수·빠진 것
+- 533 전수(조각 21 · 출력 수·key 순서 입력과 기계 대조 불일치 0 — 휘발유·콜라는 행 키 대조). 그림 503 전수 Read(판정자). 나라 행 85 전수 판정했으나 현지가를 원 사이트로 다시 읽은 것은 휘발유 약 9(+ 다른 표 25) · 콜라 6. 환율: 통화 전부 open.er-api 등 다른 표로 ±3%(휘발유 최대 1.8% · 콜라 최대 0.4%).
+- 직접 재독: 이번에도 VERIFY 가 문서를 직접 열지 못했다(WebFetch 0). 한 일: ① fix·drop 30건 reason·proposal 전부 읽음 ② 정답 모르는 판정자 맞혀 보기 결과로 photo-0207(약과→"다식") · 0141(떡살→"다식판") 2건을 ok → fix(multi-answer)로 뒤집음 ③ 판정자가 images 를 경로 문자열로 적은 휘발유 그림은 VERIFY 가 판정자 보고를 옮겨 images 503 을 채움 ④ ok 10%는 reason 훑음. 못 한 것: 위 unverified.
+
+2. 종류별
+- photo fix 20: 문서 근거 없는 변형 제거 9 · 문서로 닫히는 별칭 추가 5 · 라이선스·손질 표시 4 · 그림 문제 3(0140 일본 키 · 0214 서명 글자 · 0213 multi-answer) · 맞혀 보기 multi-answer 2(0207 · 0141). 난이도 재매김: {"1":28,"2":47,"3":25} (GEN {"1":24,"2":46,"3":30}) 같은 것 89/100.
+- price: 1건(0144 러블리↔병 "LOVE ME"). 편의점 정가(1만 원 미만 40)는 온라인 최저가와 -30% 넘게 달라 unverified(ok) 가 많다 — 틀린 증거 아님. 세븐일레븐 ajax url 은 상품 페이지가 안 열려 다른 판매처 정가로 닫음.
+- estimate: 외화 6 → 원화 환산 제안(예: 0185 7,200,000달러 → 9,672,408,000원 · 현재 환율 단순 곱 · 원래 통화는 note). 나머지 94 ok. 열량(kJ→kcal) · 0192 태양 표면 K→℃ · 0104 lb→kg 환산 통과.
+- which: 값은 거의 다 ok. 0178 drop(홍금강앵무 수명 75년 vs 기록 33년 → 정답 방향 흔들림 + 그림 워터마크). 0190 · 0199 는 값 ok · 그림 워터마크라 fix. 인구 8건은 재독 문서가 2026 추정이라 2023-07-01 값을 못 열어 unverified.
+- 1차 반복 유형(V012 6절 a~d)이 2차에서: 라이선스·손질 표시 누락 4(1차 13+4) · 근거 없는 변형 제거 9(1차 11) · 변형 추가 5(1차 9) — 1차보다 줄었으나 근거 없는 변형 제거는 거의 그대로(GEN 이 한국어 표기를 문서로 못 닫고 변형에 넣는 습관 반복).
+
+3. fix · drop 만 (ok 는 JSON 에만 — 항목 전문은 audit/v017-minigame.json items[id])
+- estimate-0185 [fix] 외화 금액 — 원 단위 정수 규칙에 맞게 원화 환산 ⇒ {"value":9672408000,"unit":"원","note":"원래 7,200,000달러(1867). 환산 기준: 2026-10 평균 환율 1달러 = 1,343.39원(x-rates 월평균, 부분월) 곱셈. 당시 가치가 아닌 현재 환율 단순 환산","url":"https://www.x-rates.com/average/?from=USD&to=KRW&a
+- estimate-0186 [fix] 외화 금액 — 원화 환산 필요 ⇒ {"value":20150850000,"unit":"원","note":"원래 15,000,000달러(1803). 환산 기준: 2026-10 평균 1달러 = 1,343.39원(x-rates) 단순 곱","url":"https://www.x-rates.com/average/?from=USD&to=KRW&amount=1&year=2026"}
+- estimate-0187 [fix] 외화 금액 — 원화 환산 필요 ⇒ {"value":804691,"unit":"원","note":"원래 599달러(2007 미국 출시 · 2년 약정). 환산 기준: 2026-10 평균 1달러 = 1,343.39원(x-rates) 단순 곱","url":"https://www.x-rates.com/average/?from=USD&to=KRW&amount=1&year=2026"}
+- estimate-0188 [fix] 외화 금액 — 원화 환산 필요 ⇒ {"value":604928517000,"unit":"원","note":"원래 450,300,000달러(2017 크리스티 · 수수료 포함). 환산 기준: 2026-10 평균 1달러 = 1,343.39원(x-rates) 단순 곱","url":"https://www.x-rates.com/average/?from=USD&to=KRW&amount=1&year=20
+- estimate-0189 [fix] 외화 금액 — 원화 환산 필요 ⇒ {"value":203516550000,"unit":"원","note":"원래 135,000,000유로(2022-05 경매). 환산 기준: 2026-10 평균 1유로 = 1,507.53원(x-rates) 단순 곱","url":"https://www.x-rates.com/average/?from=EUR&to=KRW&amount=1&year=2026"}
+- estimate-0190 [fix] 외화 금액 — 원화 환산 필요 ⇒ {"value":134339000000,"unit":"원","note":"원래 100,000,000달러(1962 보험 평가액). 환산 기준: 2026-10 평균 1달러 = 1,343.39원(x-rates) 단순 곱","url":"https://www.x-rates.com/average/?from=USD&to=KRW&amount=1&year=2026"}
+- photo-0140 [fix] 일본 키 사진이라 한국 키가 아님 · 삼태기·소쿠리로도 답 가능 ⇒ {"image":"한국 키(키질하는 한국 전통 키) 사진으로 교체"}
+- photo-0141 [fix] 떡살 하나 ⇒ VERIFY 뒤집음: 정답 모르는 판정자가 "다식판"(maybe)으로 답함(정답 떡살) — 비슷한 도구가 둘 이상 떠오름(multi-answer). 그림 교체 또는 altAnswers 불가 여부 확인
+- photo-0152 [fix] 변형에 문서로 닫히는 '앵금' 추가 ⇒ {"altAnswers":["깡깡이","앵금"]}
+- photo-0170 [fix] 변형에 문서로 닫히는 '시트로엔' 추가 ⇒ {"altAnswers":["시트로엔"]}
+- photo-0172 [fix] 변형 '파리 개선문'·'프랑스 개선문' 문서 근거 없음 → altAnswers 에서 빼기 제안(그림·라이선스는 ok) ⇒ {"altAnswers":["에투알 개선문"],"note":"'파리 개선문'·'프랑스 개선문' 제거(근거 없음)"}
+- photo-0174 [fix] 변형 '타워 브릿지' 문서 근거 없음 → 빼기 제안 ⇒ {"altAnswers":[],"note":"'타워 브릿지' 제거"}
+- photo-0175 [fix] 변형 '브란덴부르크 개선문' 근거 없음 → 빼고 문서로 닫힌 '브란덴부르크문' 추가 제안 ⇒ {"altAnswers":["브란덴부르크문"],"note":"'브란덴부르크 개선문' 제거"}
+- photo-0176 [fix] 변형 '버즈 칼리파'·'버즈 두바이' 문서 근거 없음 → 빼기 제안 ⇒ {"altAnswers":["부르즈 칼리파","부르즈 두바이"],"note":"'버즈 칼리파'·'버즈 두바이' 제거"}
+- photo-0177 [fix] image 칸 라이선스가 Public domain 인데 공용은 CC BY-SA 3.0 → 교체 ⇒ {"license":"CC BY-SA 3.0","attribution":"Diliff / Wikimedia Commons (cropped, contrast adjusted)"}
+- photo-0185 [fix] attribution 에 (edited) 표시 없음 · 변형 '아야 소피아 성당' 근거 없음 → '아야 소피아 대성당' 으로 교체 제안 ⇒ {"attribution":"Arild Vågen / Wikimedia Commons (edited)","altAnswers":["하기아 소피아","하기아 소피아 대성당","아야 소피아 대성당"]}
+- photo-0188 [fix] 변형 '빈센트 반 고호' 문서 근거 없음 → 빼기 제안 ⇒ {"altAnswers":["빈센트 반 고흐"],"note":"'빈센트 반 고호' 제거('반고흐' 는 띄어쓰기 무시 규칙이 있으면 불필요)"}
+- photo-0191 [fix] 변형 '토마스 에디슨' 문서 근거 없음 → 빼기 제안 ⇒ {"altAnswers":["토머스 에디슨"],"note":"'토마스 에디슨' 제거"}
+- photo-0193 [fix] 변형 '마크 트와인' 문서 근거 없음 → 빼기 제안 ⇒ {"altAnswers":[],"note":"'마크 트와인' 제거"}
+- photo-0194 [fix] 변형 '프로이드'·'지그문트 프로이드' 문서 근거 없음 → 빼기 제안 ⇒ {"altAnswers":["지그문트 프로이트"],"note":"'프로이드'·'지그문트 프로이드' 제거"}
+- photo-0207 [fix] 이상 없음 ⇒ VERIFY 뒤집음: 정답 모르는 판정자가 사진만 보고 "다식"을 confident 로 답함(정답 약과) — 사진만으로 하나가 아님(multi-answer). altAnswers 로 받을 수 없는 별개 음식이라 그림 교체 또는 질문 단서 필요 — G 가 
+- photo-0210 [fix] 문서로 닫히는 별칭 빨간 무를 altAnswers 로 제안 ⇒ {"altAnswers":["빨간 무"]}
+- photo-0213 [fix] 변형 왕부리새는 과 이름이라 근거 부족 · 제거 제안 ⇒ {"altAnswers":["토코투칸"],"note":"왕부리새 삭제 · 투칸 문서 근거 없어 추가 안 함(unverified)"}
+- photo-0214 [fix] 사진 서명 글자 노출 · 위쪽 서명 부분 자르거나 이미지 교체(image 교체) ⇒ {"image":"우상단 서명 부분을 잘라내거나 다른 사진으로 교체"}
+- photo-0215 [fix] CC BY 자름 표시 누락 · attribution 에 (cropped) 추가 ⇒ {"attribution":"birdphotos.com / Wikimedia Commons (cropped)"}
+- photo-0220 [fix] 문서로 닫히는 별칭 안진복·골복짱이 altAnswers 추가 제안 · 몰라몰라는 학명 옮김이라 실제 별칭인지 약함 ⇒ {"altAnswers":["안진복","골복짱이"],"note":"몰라몰라는 학명 음역 — 유지 여부 판단 필요"}
+- price-0144 [fix] 그림 병 표기 LOVE ME 와 이름 러블리 불일치 — 향 이름 확인 후 이름 또는 그림 교체(가격은 unverified) ⇒ {"field":"name 또는 image","action":"CU 상품 페이지 원문으로 향 이름을 다시 확인해 이름(러브미/러블리)과 그림을 맞춘다 · 못 맞추면 drop","evidence":"https://cu.bgfretail.com/product/view.do?category=product&gdIdx=1256 · 그림 병 표기"}
+- which-0178 [drop] 다른 문서가 B 를 75년으로 적어 정답 방향이 흔들림 + A 그림 워터마크
+- which-0190 [fix] 값은 맞음 · 그림 B 에 저작자 워터마크 글자(오른쪽 아래) ⇒ {"image_b":"워터마크가 없는 엘브루스 사진으로 교체하거나 오른쪽 아래 글자 부분을 잘라 낸다(attribution 에 자름 표시)","a.value":8848.86,"b.value":5642,"answer":"a","margin":1.57,"asOf":null,"url":"https://en.wikipedia.org/wiki/Mount_Elbrus
+- which-0199 [fix] 값은 맞음 · 그림 A 에 사진가 워터마크 ⇒ {"image_a":"워터마크 없는 티그리스 사진으로 교체하거나 워터마크 부분 잘라 냄(attribution 에 자름 표시)","a.value":1950,"b.value":1233,"answer":"a","margin":1.58,"asOf":null,"url":"https://en.wikipedia.org/wiki/Tigris"}
+
+- 그림 문제 13 (파일 · 판정): price/price-0144.jpg wrong-target · photo/photo-0140.jpg wrong-target · photo/photo-0213.jpg multi-answer · photo/photo-0214.jpg blur-watermark · which/which-0178-a.jpg blur-watermark · which/which-0190-b.jpg blur-watermark · which/which-0199-a.jpg blur-watermark · which/which-0272-b.jpg text-visible · which/which-0278-a.jpg text-visible · which/which-0279-b.jpg text-visible · which/which-0286-a.jpg text-visible · which/which-0292-b.jpg text-visible · which/which-0300-b.jpg text-visible
+
+4. 경계·미확인
+- 휘발유: GPP 값 vs Trading Economics 큰 차이 — 말레이시아 GPP 4.67 MYR(비보조 가능성)↔TE 1.99(보조 RON95) · 인도네시아 +90% · 베트남 +40% · 필리핀 +54% · 노르웨이 +55%(TE 는 월 단위 값·유종 다를 수 있음). 기록값은 GPP 와 같다. 미국 1.23 USD/L(갤런 4.66달러)은 낮아 보이나 GPP 값.
+- 콜라: Numbeo 사용자 입력 통계 — 6행(EG NG IN LY ID CN)만 다시 읽어 0% 차이. 나머지 37행은 사이트 제한으로 미확인(틀린 증거 없음). products note 의 "사용자 입력 통계" 표시는 있다.
+- 판정자가 지식으로 쓴 부분 없음을 확인하지 못함(자기 보고) — which-0178 수리부엉이 68년은 못 읽음.
+- photo-0166 인스타그램 로고(공용 PD + 상표 경고, 저자란 불일치) · 0189 테슬라(Corbis 표기) · 0195 엘리자베스 2세(CC BY 2.0 병기)는 ok 이나 확인 권장.
+
+5. 누적·중복
+- 1차(642) + 2차(533) = 1,175건. fix 합 92 · drop 합 7. 같은 대상 겹침은 g008-check 로 막힘 0(1차·2차 합쳐 검사).
+
+6. 반복 오류 유형
+① 한국어 변형(별칭·표기)을 문서 근거 없이 넣음(photo 10) — 1차와 같은 습관. ② 그림에 저작자·워터마크 글자(which 3 · photo 1) 와 이름 표기 글자(which 6 — 정답 단서는 아님). ③ 편의점/온라인 가격 차이로 price 검증이 unverified 에 몰림. ④ 외화 금액 estimate(역사 금액) 규칙 충돌 6. ⑤ 무료 통계 사이트(GPP · Numbeo)가 연속 요청에 429 — 다음에는 데이터 수집 때 값 원문을 note 에 더 남겨 재독이 쉽게.
+
+7. 자기 점검
+- 판정자 한 번에 1개. 휘발유는 3번 돌렸다(1·2차: 429 로 3행만 → 3차: 15행 중 6행 GPP 재독). 콜라는 1번(6행). 모두 최종 파일에 unverified 로 정직하게 남겼다. VERIFY 직접 문서 열기 0.
+- 맞혀 보기 판정자가 정답 파일을 안 열었다는 것은 자기 보고(97/100 이 높다 — 쉬운 일상 사물이 많음). 보정 표본은 V012 6건을 지시에 재사용했다(2차 항목 id 로 만든 보정은 아님).
+- 새로 생긴 결정 필요 항목: CV-47 estimate 외화 6 처리(원화 환산 vs rejected — DG-040) · CV-48 worldprice 새 품목 미확인 46행 재독 · CV-49 photo 근거 없는 변형 제거 기준 · CV-50 which 그림 9(워터마크 3 + 글자 6) 교체 · CV-51 photo 맞혀 보기 못 맞힌 3건 처리.
+- 고친 문서: docs/13-PENDING-CHECKS.md(C72 처리 · CV-47~51) · ai-out/README.md(V 표) · data/minigame/*/items-2.json(verify·status) · products.json(새 품목 rows verify). 규칙·프롬프트·코드·그림·1차 파일은 고치지 않았다.

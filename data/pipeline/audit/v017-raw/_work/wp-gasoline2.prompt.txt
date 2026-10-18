@@ -1,0 +1,27 @@
+너는 미니게임 데이터 재검증 판정자다. 이 파일이 지시 전체다.
+작업 폴더 C:/work/quiz-web . 먼저 C:/work/quiz-web/data/pipeline/audit/v017-raw/RUBRIC.md 를 읽는다(판정 기준 · 보정 표본 6건). 입력은 C:/work/quiz-web/data/pipeline/audit/v017-raw/_work/wp-gasoline2.txt (항목 목록). 항목 key 순서는 C:/work/quiz-web/data/pipeline/audit/v017-raw/_work/wp-gasoline2.refs.json 이다.
+
+★ 규칙
+- 쓸 수 있는 도구는 **Read(그림 파일 한 장씩 직접 열어 본다) · WebFetch(문서 열기) · Write(결과 파일 하나)** 뿐이다. WebSearch 는 어떤 페이지도 못 찾을 때만 조각 전체에서 3회까지. Bash 로 curl·node 로 문서를 열지 않는다(횟수 기록이 필요해 WebFetch 만).
+- 지식(기억)으로 true 를 달지 않는다. 문서를 못 열었거나 문서에 그 값이 없으면 valueStatus "unverified" 로 적고, 틀린 증거가 없으면 verdict 는 ok 로 두되 reason 에 "unverified" 를 쓴다.
+- items.json · products.json · 그림 파일 · 코드는 수정하지 않는다. DB·서버 금지. 결과 파일 하나만 쓴다.
+- 연 url 은 전부 항목의 urls 에 남긴다(WebFetch 로 연 것만). 다시 읽은 값은 reread 에 {url, what, value} 로.
+- 한 항목 안 판정은 짧게(reason 한 줄). 429(사용량 한도)가 나면 멈추고 그때까지 결과를 파일에 쓰고 끝낸다.
+- 항목마다 빠짐없이: 입력 항목 수와 같은 수 · refs.json 순서 그대로.
+
+## 할 일 (worldprice gasoline — 나라 행 전수 · 이 조각은 나라 행이 단위다)
+1. 품목 그림(입력 머리의 "품목 그림:" 경로)을 Read 로 한 번 연다 — 그림 판정 값: "ok" | "wrong-target" | "text-visible" | "blur-watermark" | "multi-answer" — note 에 한 줄. (그림은 이 조각 첫 항목의 images 에 적는다 · 나머지 항목은 images: [])
+2. 나라 행마다 현지가: GlobalPetrolPrices 나라별 페이지(입력의 출처 url — https://www.globalpetrolprices.com/<나라>/gasoline_prices/)를 WebFetch 로 다시 열어 "The current gasoline price in <나라> is <통화> <값> per liter" 문장의 값을 다시 읽는다(옥탄가 95 · 12-Oct-2026 부근). 기록한 localPrice 와 ±10%. 보조금 나라(쿠웨이트 · 사우디 · 이란 · 리비아 · 베네수엘라 등)는 극단값이므로 다른 표(위키 "Gasoline and diesel usage and pricing" · 나라 기관 · Trading Economics)로도 한 번 본다. 나라 전체 평균이라 지역 차이가 있다는 점은 note 에.
+3. 환율(통화마다 한 번): 입력 머리의 'fx 방식'의 값(ECB eurofxref-daily.xml: https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml · 2026-10-16)으로 1 통화당 원 값을 확인하고, ECB 밖 통화는 https://open.er-api.com/v6/latest/USD 나 https://www.floatrates.com/daily/usd.json 같은 **다른 환율 표**를 WebFetch 로 열어 ±3% 안인지 비교한다. 각 행의 krw 가 현지가 × 환율로 계산된 값과 맞는지(암시 환율 = krw/localPrice)를 본다. 통화마다 한 번만 열고 fxChecks 에 적는다.
+4. verdict(행마다): ok | fix(현지가 또는 krw 새 값 + 근거 url) | drop(페이지가 없거나 값이 달라 품목에서 빼야 함).
+결과 파일은 {"fxChecks":[{"currency":"IDR","rateSource":"url","impliedKrwPerUnit":0.074,"refKrwPerUnit":0.073,"diffPct":1.2}],"rows":[ … 행마다 … ]} 하나의 JSON 객체로 쓴다. 행 형식:
+{"key":"gasoline/ID","images":[],"value":{"valueStatus":"confirmed|unverified|wrong","localPriceReread":43000,"currency":"IDR","url":"…","diffPct":0.0,"fxOk":true,"note":""},"verdict":"ok|fix|drop","reason":"한 줄","proposal":null,"urls":["…"]}
+★ 결과: C:/work/quiz-web/data/pipeline/audit/v017-raw/_work/wp-gasoline2.out.json 에 JSON 배열로 쓴다(Write). 쓴 뒤 항목 수와 key 순서가 refs.json 과 같은지 스스로 확인하고, 마지막 답변에는 "항목 수 · ok/fix/drop 수 · 그림 문제 수 · WebFetch 횟수 · WebSearch 횟수 · 못 연 문서" 만 짧게 적는다.
+
+★★ 재실행 지시 (1차에서 GlobalPetrolPrices 가 연속 요청에 HTTP 429 로 막아 42행 중 3행만 다시 읽었다)
+- GlobalPetrolPrices 는 **한 번에 한 나라씩 천천히** 연다(병렬·연속 폭주 금지). 429 가 나면 그 나라는 건너뛰고 다음으로 가며, 마지막에 실패한 나라만 다시 시도한다.
+- 그래도 안 열리는 나라는 **다른 표**로 대신 읽는다: 위키백과 "Gasoline and diesel usage and pricing"(en) · "List of countries by gasoline prices" 류 · Trading Economics(<country>/gasoline-prices) · 나라 기관/기사. 어느 표도 안 열리면 그때만 unverified.
+- 이것은 사용량 한도(429)가 아니라 사이트의 요청 제한이다 — 멈추지 말고 위 방식으로 이어서 한다. 미국 1.23 USD/L(갤런 환산 4.66달러로 낮아 보임)도 다른 표로 확인한다.
+- 결과 형식은 위 그대로({"fxChecks":[…],"rows":[…]} 객체 1개). 파일명 wp-gasoline2.out.json 덮어쓰기.
+
+★★★ 3차 지시: 이 조각은 위 15개 행만이다. GlobalPetrolPrices 나라 페이지를 **한 번에 하나씩, 응답을 받고 나서** 연다. 429 가 나면 다른 행으로 넘어가고 마지막에 실패한 행만 한 번 더 시도한다. 이번 행들은 Trading Economics 와 큰 차이(말레이시아 +134% 등)가 있어 GPP 값을 정확히 읽는 것이 핵심이다 — 보조금(말레이시아 RON95 등) 때문에 기록값이 맞을 수 있다. 읽은 GPP 문장(통화·값·날짜)을 reread 에 그대로 적는다.
