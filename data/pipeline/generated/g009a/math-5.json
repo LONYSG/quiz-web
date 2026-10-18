@@ -34,10 +34,10 @@
     "variantCheck": "'화씨온도' 는 표준 국어 표기(띄어 쓰면 정규화로 같아짐) — 같은 대상의 흔한 이름",
     "explanation": "소금 없는 얼음물과 96으로 정한 사람의 체온을 다른 기준점으로 삼았는데, 체온 기준은 뒤에 98.6°로 고쳐졌습니다.",
     "score": {
-     "version": "score-v3",
+     "version": "score-v3-blind",
      "dif": 3,
-     "easiestCue": "1724년 제안된 이 온도 눈금",
-     "difWhy": "'파렌하이트 눈금' — 고교 과학",
+     "easiestCue": "단치히에서 태어나 주로 네덜란드에서 살며 처음으로 쓸 만한 수은 유리 온도계를 만든 사람이 제안한 이 눈금",
+     "difWhy": "V014 blind: 묻는 사실: 파렌하이트와 화씨 — 고교 물리·교양 상식, 수은 온도계 제작자가 곧 화씨 제안자(경계 4)",
      "wor": 4,
      "worWhy": "온도 단위 — 과학 기본 어휘",
      "acc": 5,
@@ -128,7 +128,37 @@
     "selfJudgeWhy": "누구나 아는 단위, 몰랐던 정의 사연",
     "pairCheck": null,
     "dbCheck": "answercheck new",
-    "warn": []
+    "warn": [],
+    "g011Before": {
+     "question": "1724년 제안된 이 온도 눈금은 얼음과 물에 염화암모늄을 섞은 것을 0으로 잡고, 올레 뢰머의 눈금을 바탕으로 그 값에 4를 곱해 분수를 없앴습니다. 단치히에서 태어나 주로 네덜란드에서 살며 처음으로 쓸 만한 수은 유리 온도계를 만든 사람이 제안한 이 눈금은 무엇일까요?",
+     "explanation": "소금 없는 얼음물과 96으로 정한 사람의 체온을 다른 기준점으로 삼았는데, 체온 기준은 뒤에 98.6°로 고쳐졌습니다.",
+     "generalHint": "1859년 제안된 랭킨 온도는 절대영도를 0으로 잡되, 눈금 한 칸의 크기는 이 눈금과 같게 했다.",
+     "generalHintVersion": "hint-v5",
+     "hintSources": [
+      "https://en.wikipedia.org/wiki/Rankine_scale"
+     ],
+     "hintNote": "proposed it in 1859 ... a temperature difference of one Rankine degree is defined as equal to one Fahrenheit degree",
+     "acceptedAnswers": [
+      "화씨온도"
+     ],
+     "layer": null,
+     "score": {
+      "version": "score-v3",
+      "dif": 3,
+      "easiestCue": "1724년 제안된 이 온도 눈금",
+      "difWhy": "'파렌하이트 눈금' — 고교 과학",
+      "wor": 4,
+      "worWhy": "온도 단위 — 과학 기본 어휘",
+      "acc": 5,
+      "accWhy": "수학 — 초중 교과 과목"
+     },
+     "discarded": null
+    },
+    "g011": {
+     "round": "G011",
+     "v014": "ok",
+     "blindDif": 3
+    }
    }
   }
  ]

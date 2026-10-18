@@ -28,7 +28,8 @@
     "question": "이 보안 장치는 흔히 '거꾸로 된 튜링 테스트'라고도 불립니다. 2003년 루이스 폰 안, 마누엘 블룸, 니컬러스 호퍼, 존 랭퍼드가 지금의 이름을 지었고, 검색 엔진 알타비스타는 일찍이 이것으로 가짜 계정 가입을 막았는데, 이 장치는 무엇일까요?",
     "answer": "캡차",
     "acceptedAnswers": [
-     "CAPTCHA"
+     "CAPTCHA",
+     "캡챠"
     ],
     "originalTitleVariants": [
      "CAPTCHA"
@@ -36,10 +37,10 @@
     "variantCheck": "ko.wikipedia 문서 제목 'CAPTCHA' · 첫 문장 괄호 '캡차' — 원래 이름이 영어(B10)",
     "explanation": "카네기 멜런의 루이스 폰 안 등이 만든 변형판 '리캡차'는 컴퓨터가 읽지 못한 옛 책과 뉴욕 타임스 기록 보관물의 낱말을 사람들이 대신 읽게 했고, 2009년 9월 구글이 사들였습니다.",
     "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "검색 엔진 알타비스타는 일찍이 이것으로 가짜 계정 가입을 막았는데",
-     "difWhy": "'가짜 계정 가입 막는 보안 장치' — 일상",
+     "version": "score-v3-blind",
+     "dif": 3,
+     "easiestCue": "검색 엔진 알타비스타는 일찍이 이것으로 가짜 계정 가입을 막았는데, 이 장치는 무엇일까요?",
+     "difWhy": "V014 blind: 묻는 사실: 가짜 계정 가입을 막는 보안 장치(거꾸로 된 튜링 테스트) — 일상에서 접함·고교 정보(경계 2)",
      "wor": 4,
      "worWhy": "정보 보안 기본 어휘",
      "acc": 5,
@@ -60,8 +61,8 @@
      "addedCue": "거꾸로 된 튜링 테스트 · 2003년 이름 지은 네 사람 · 알타비스타",
      "why": "일상에서 보는 글자 입력 방식을 해설로 옮기고 이름·초기 사용 세부로 바꿈"
     },
-    "generalHint": null,
-    "generalHintVersion": null,
+    "generalHint": "흔히 쓰는 꼴은 1997년 서로 따로 일하던 두 연구진이 거의 같은 때 고안했다고 한다.",
+    "generalHintVersion": "hint-v5",
     "hobby": null,
     "defForm": false,
     "sources": [
@@ -115,15 +116,45 @@
     ],
     "knowledgeClaims": [],
     "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/CAPTCHA"
+    ],
+    "hintNote": "first invented in 1997 by two groups working in parallel",
     "easiestCue": "'거꾸로 된 튜링 테스트'라 불리는 보안 장치",
     "targetWhy": "역 튜링 테스트·작명자는 컴퓨터 교양 — 대학 교양 4",
     "selfJudge": "경계",
     "selfJudgeWhy": "'낱말을 읽게 하는 보안 장치' 로 추리될 여지",
     "pairCheck": null,
     "dbCheck": "answercheck new",
-    "warn": []
+    "warn": [],
+    "g011Before": {
+     "question": "이 보안 장치는 흔히 '거꾸로 된 튜링 테스트'라고도 불립니다. 2003년 루이스 폰 안, 마누엘 블룸, 니컬러스 호퍼, 존 랭퍼드가 지금의 이름을 지었고, 검색 엔진 알타비스타는 일찍이 이것으로 가짜 계정 가입을 막았는데, 이 장치는 무엇일까요?",
+     "explanation": "카네기 멜런의 루이스 폰 안 등이 만든 변형판 '리캡차'는 컴퓨터가 읽지 못한 옛 책과 뉴욕 타임스 기록 보관물의 낱말을 사람들이 대신 읽게 했고, 2009년 9월 구글이 사들였습니다.",
+     "generalHint": null,
+     "generalHintVersion": null,
+     "hintSources": [],
+     "hintNote": null,
+     "acceptedAnswers": [
+      "CAPTCHA"
+     ],
+     "layer": null,
+     "score": {
+      "version": "score-v3",
+      "dif": 2,
+      "easiestCue": "검색 엔진 알타비스타는 일찍이 이것으로 가짜 계정 가입을 막았는데",
+      "difWhy": "'가짜 계정 가입 막는 보안 장치' — 일상",
+      "wor": 4,
+      "worWhy": "정보 보안 기본 어휘",
+      "acc": 5,
+      "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+     },
+     "discarded": null
+    },
+    "g011": {
+     "round": "G011",
+     "v014": "fix",
+     "blindDif": 3
+    }
    }
   }
  ]

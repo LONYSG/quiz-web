@@ -34,10 +34,10 @@
     "variantCheck": "인명 — 성만·풀네임 둘 다 씀(A3)",
     "explanation": "그는 1903년 노벨 화학상을 받아 스웨덴의 첫 노벨상 수상자가 되었습니다.",
     "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1896년 이산화탄소 온난화 첫 어림 스웨덴 과학자",
-     "difWhy": "'온실효과 첫 계산' — 대학 교양",
+     "version": "score-v3-blind",
+     "dif": 3,
+     "easiestCue": "1896년 논문 '공기 중 탄산이 지표 온도에 미치는 영향에 관하여'에서 물리화학의 기본 원리로 이산화탄소가 늘면 지표가 얼마나 데워질지 처음 어림한 스웨덴 과학자",
+     "difWhy": "V014 blind: 묻는 사실: 온실효과를 처음 계산한 아레니우스 — 고교 화학·지구과학(경계 4)",
      "wor": 4,
      "worWhy": "과학사 교양 인물",
      "acc": 5,
@@ -51,7 +51,7 @@
      "worWhy": "과학사 교양 인물"
     },
     "rewrite": null,
-    "generalHint": "1905년 스톡홀름에 노벨 물리화학 연구소가 세워지자 소장을 맡아 1927년 은퇴할 때까지 이끌었다.",
+    "generalHint": "1905년 스톡홀름에 노벨 연구소가 세워지자 소장을 맡았다.",
     "generalHintVersion": "hint-v5",
     "hobby": null,
     "defForm": false,
@@ -95,7 +95,7 @@
     "hintSources": [
      "https://en.wikipedia.org/wiki/Svante_Arrhenius"
     ],
-    "hintNote": "In 1905, upon the founding of the Nobel Institute for Physical Research at Stockholm, he was appointed rector of the institute, the position where he remained until retirement in 1927.",
+    "hintNote": "1905 스톡홀름 노벨 연구소 창설과 함께 소장(rector)에 임명",
     "easiestCue": "1896년 … 이산화탄소가 늘면 지표가 얼마나 데워질지 처음 어림한 스웨덴 과학자",
     "targetWhy": "고교 화학의 산·염기 정의(첫 줄)를 빼고 기후 계산·툰베리 연결만 — 대학 교양 4",
     "selfJudge": "좋은 어려움",
@@ -104,7 +104,37 @@
     "dbCheck": "answercheck new",
     "warn": [
      "단정어 처음"
-    ]
+    ],
+    "g011Before": {
+     "question": "1896년 논문 '공기 중 탄산이 지표 온도에 미치는 영향에 관하여'에서 물리화학의 기본 원리로 이산화탄소가 늘면 지표가 얼마나 데워질지 처음 어림한 스웨덴 과학자가 있습니다. 1908년 책에서 그는 오히려 '더 고르고 좋은 기후'와 '훨씬 풍성한 수확'을 기대했는데, 그레타 툰베리의 아버지 스반테는 먼 친척인 그의 이름을 물려받았습니다. 이 과학자는 누구일까요?",
+     "explanation": "그는 1903년 노벨 화학상을 받아 스웨덴의 첫 노벨상 수상자가 되었습니다.",
+     "generalHint": "1905년 스톡홀름에 노벨 물리화학 연구소가 세워지자 소장을 맡아 1927년 은퇴할 때까지 이끌었다.",
+     "generalHintVersion": "hint-v5",
+     "hintSources": [
+      "https://en.wikipedia.org/wiki/Svante_Arrhenius"
+     ],
+     "hintNote": "In 1905, upon the founding of the Nobel Institute for Physical Research at Stockholm, he was appointed rector of the institute, the position where he remained until retirement in 1927.",
+     "acceptedAnswers": [
+      "스반테 아레니우스"
+     ],
+     "layer": null,
+     "score": {
+      "version": "score-v3",
+      "dif": 4,
+      "easiestCue": "1896년 이산화탄소 온난화 첫 어림 스웨덴 과학자",
+      "difWhy": "'온실효과 첫 계산' — 대학 교양",
+      "wor": 4,
+      "worWhy": "과학사 교양 인물",
+      "acc": 5,
+      "accWhy": "지구과학·기상 — 중학 과학 교과"
+     },
+     "discarded": null
+    },
+    "g011": {
+     "round": "G011",
+     "v014": "fix",
+     "blindDif": 3
+    }
    }
   }
  ]
