@@ -2715,7 +2715,8 @@ async function r052Live(browser, key) {
       await snap(H, `${num}-live-${key}-play-pc`);
       await snap(G, `${num}-live-${key}-play-m390`);
       // ★ 어느 쪽?은 그림 없는 문항(null)도 있다 — 그때는 그림이 0장이어도 된다
-    const imgOk = await H.evaluate(`(() => { const xs = [...document.querySelectorAll('img.quiz-img')]; return (xs.length > 0 || '${key}' === 'which') && xs.every((x) => x.naturalWidth > 0); })()`);
+      // ★ R055 — 사진은 판마다 확대/모자이크가 뽑힌다: 모자이크는 <canvas> 라 img 가 0장이었다(검사 결함 — R053 은 확대가 뽑혀 통과)
+    const imgOk = await H.evaluate(`(() => { const xs = [...document.querySelectorAll('img.quiz-img')]; const cv = [...document.querySelectorAll('canvas.photo-canvas')].filter((c) => c.width > 0 && c.height > 0); return (xs.length + cv.length > 0 || '${key}' === 'which') && xs.every((x) => x.naturalWidth > 0); })()`);
       record(`★★ ${key} 진행 — 그림이 실제로 보인다(naturalWidth > 0)`, imgOk === true);
     }
     if (key === 'price' || key === 'worldprice' || key === 'estimate') {

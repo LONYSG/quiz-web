@@ -48,7 +48,7 @@ import ShopPanel from './ShopPanel.js';
 import MinigameStage from './minigame/MinigameStage.js';
 import MinigamePicker from './minigame/MinigamePicker.js';
 import type { Social } from './useSocial.js';
-import { isMobileUi } from './uiMode.js';
+import { isMobileUi, useUiMode } from './uiMode.js';
 
 interface Props {
   socket: Socket;
@@ -497,6 +497,8 @@ export default function Lobby({
    */
   const roomRef = useRef<HTMLDivElement>(null);
   const ceremonyCount = ceremony.length;
+  // ★ R055 — PC ↔ 모바일이 바뀌면 화면 부품이 다시 그려진 **뒤에** 다시 잰다(전에는 resize 순간 — 아직 PC 배치일 때 — 재고 끝나 360 폭에서 81px 넘쳤다)
+  const uiModeNow = useUiMode();
   /** 키보드가 없을 때의 화면 높이 — 안드로이드는 키보드가 올라오면 innerHeight 가 줄어든다 */
   const fullHeight = useRef(0);
   useLayoutEffect(() => {
@@ -542,6 +544,7 @@ export default function Lobby({
     snapshot.resolution?.epoch,
     snapshot.resolution?.late.length,
     ceremonyCount,
+    uiModeNow,
   ]);
 
 
