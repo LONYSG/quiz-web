@@ -47,6 +47,7 @@
 
 | 파일 | 주요 내용 |
 |------|-----------|
+| G009.txt | ★ V011 반영 28행(활성 5,113 · 상 505 그대로) · 15 §3-3 · §4-1 한 줄씩 · ★ **상 생성 3차 1,000 → 게이트 949(g009a 464 · g009b 485) · GEN 채점 상 547(58%)** · korea 상 +114 · 낱말 뜻 꼴 1% · 힌트 876 · 같은 정답 누적 3 이상 0 · 적재 안 함 → `audit/g009a-verify-targets.json` · `g009b-verify-targets.json` · `samples/g009-deep.json` · C71 |
 | G008.txt | ★ V010 반영 — **상 892 → 505**(50문제 상만 10판) · 기존 힌트 2 · ★ **미니게임 데이터 1차 642**(price 100 · worldprice 172 · photo 120 · estimate 100 · which 150 · 그림 508 git 밖) → `data/minigame/` · `audit/g008-verify-targets.json` |
 | G007.txt | ★ V009 반영 → **G005 483 적재 — 활성 4,630 → 5,113** (상 718 → 892 · 힌트 2,921) · 풀 실측 50문제 상 17 · 중+상 58 · 전체 102판 · korea 상 1판 · score-v3 · deep-v5 · hint-v5 예시 → `audit/g007-fixes.json` · `samples/g007-load.json` |
 | G006.txt | ★ V008 반영 — **기존 활성 힌트 243행 고침** (제안 그대로 229 · 고쳐 받음 4 · 받지 않고 새로 씀 6 · 제안 없던 2 · 목록 밖 2) · 제안 사실 41 다시 열어 틀림 2 · hint-v5 · 15 §4-1 예시(CV-11 · CV-12) · 활성 4,630 그대로 → `audit/g006-fixes.json` |
