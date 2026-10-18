@@ -1,0 +1,728 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "baseball/4",
+  "midKey": "baseball",
+  "subName": "야구 용어·전술",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "baseball/4#g009b-S1-09",
+   "seed": {
+    "subject": "낫아웃",
+    "aspect": null,
+    "ref": "S1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1845년 니커보커 규칙에 이미 들어 있던, 야구에서 가장 오래된 규칙 가운데 하나입니다. 1796년 독일의 한 책에도 아이들 공놀이 규칙으로 비슷한 것이 실려 있었는데, 포수가 타자 바로 뒤로 다가앉게 되면서 본래의 목적은 잊히고 흔적처럼 남은 이 규칙은 무엇일까요?",
+    "answer": "낫아웃",
+    "acceptedAnswers": [
+     "스트라이크아웃 낫아웃",
+     "스트라이크 낫아웃"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '스트라이크아웃 낫아웃', 첫 문단 '간단히 낫아웃' · '낫 아웃'은 넘겨주기(띄어쓰기는 정규화로 같음)",
+    "explanation": "1루가 비어 있거나 2아웃일 때 포수가 세 번째 스트라이크를 잡지 못하면 타자가 1루로 달릴 수 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "포수가 타자 바로 뒤로 다가앉게 되면서 … 흔적처럼 남은 이 규칙",
+     "difWhy": "흔적처럼 남은 포구 규칙 — 야구 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "규칙 유래 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "포수가 타자 바로 뒤로 다가앉게 되면서 … 흔적처럼 남은 이 규칙",
+     "difWhy": "흔적처럼 남은 포구 규칙 — 야구 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "규칙 유래 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "메이저리그에서 한 이닝에 삼진이 네 개 나온 일이 여러 번 있는 것은 이 규칙 덕분이다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Uncaught_third_strike",
+     "https://ko.wikipedia.org/wiki/스트라이크아웃_낫아웃"
+    ],
+    "facts": [
+     {
+      "claim": "1845 니커보커 규칙에 성문화된 가장 오래된 규칙 가운데 하나",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Uncaught_third_strike",
+      "note": "The uncaught third strike rule is one of the oldest in baseball, being codified in the Knickerbocker Rules of 1845."
+     },
+     {
+      "claim": "1796년 독일 책에 비슷한 아이들 놀이 규칙",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Uncaught_third_strike",
+      "note": "(요지) a German book from 1796 describes a similar rule, where an inept batter who failed to hit the softly-tossed ball on three swings would be given a chance to run the bases"
+     },
+     {
+      "claim": "포수가 뒤로 다가오며 흔적 규칙이 됨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Uncaught_third_strike",
+      "note": "(catchers moved behind the plate) Thus the rule became mostly vestigial and its original children's-game purpose forgotten."
+     },
+     {
+      "claim": "1루가 비거나 2아웃일 때",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Uncaught_third_strike",
+      "note": "On an uncaught third strike with (1) no runner on first base, or (2) with two outs regardless of runners on base."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Uncaught_third_strike"
+    ],
+    "hintNote": "Numerous pitchers have recorded four strikeouts in an inning in an official MLB game",
+    "easiestCue": "포수가 타자 바로 뒤로 다가앉게 되면서 본래의 목적은 잊히고 흔적처럼 남은 이 규칙",
+    "targetWhy": "'세 번째 스트라이크를 놓치면 달린다'는 정의를 질문에서 뺐다 — 규칙의 기원은 야구 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 들어 본 규칙, 묻는 것은 아이들 놀이에서 온 기원",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 가장 오래"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/4#g009b-S1-10",
+   "seed": {
+    "subject": "홀드",
+    "aspect": null,
+    "ref": "S1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1986년 존 듀언과 마이크 오도널이 만든 이 투수 기록은 메이저리그에서는 공식 기록으로 인정받지 못했습니다. 일본 퍼시픽 리그는 1996년부터 이 기록을 공식 기록으로 삼았는데, 이 기록은 무엇일까요?",
+    "answer": "홀드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "KBO 리그는 2000년부터, 일본 센트럴 리그는 2005년부터 이 기록을 공식 기록으로 받아들였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "MLB 공식 기록이 아닌 1986년 생긴 투수 기록",
+     "difWhy": "홀드 기원·공식화 — 야구 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 야구 기록 용어 기원",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "KBO 리그는 2000년부터 공식 기록으로 삼은 이 기록",
+     "difWhy": "중간 계투 투수 기록 — 야구 관심층",
+     "wor": 3,
+     "worWhy": "야구 기록 이름 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1986년 존 듀언과 마이크 오도널이 만든 이 투수 기록은 메이저리그에서는 공식 기록으로 인정받지 못했습니다. 일본 퍼시픽 리그는 1996년부터, KBO 리그는 2000년부터 공식 기록으로 삼은 이 기록은 무엇일까요?",
+     "beforeExplanation": "일본 센트럴 리그는 그보다 늦은 2005년부터 이 기록을 받아들였습니다.",
+     "removedCue": "KBO 리그 2000년 공식 기록(한국 야구팬이 바로 아는 단서)",
+     "addedCue": "없음 — 고안자 · MLB 비공식 · 퍼시픽 리그 1996",
+     "why": "KBO 단서를 해설로 돌려 고안 뒷이야기·일본 도입으로"
+    },
+    "generalHint": "한 경기에서 같은 팀 투수 여럿이 함께 이 기록을 받을 수 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hold_(baseball)",
+     "https://ko.wikipedia.org/wiki/홀드_(야구)"
+    ],
+    "facts": [
+     {
+      "claim": "1986년 존 듀언·마이크 오도널이 고안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hold_(baseball)",
+      "note": "The hold was invented in 1986 by John Dewan and Mike O'Donnell."
+     },
+     {
+      "claim": "MLB 공식 기록 아님",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hold_(baseball)",
+      "note": "The hold is not an official Major League Baseball statistic."
+     },
+     {
+      "claim": "KBO 2000년, 퍼시픽 리그 1996년, 센트럴 리그 2005년",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/홀드_(야구)",
+      "note": "대한민국은 2000년부터 공식기록으로 인정하였다. … 일본 프로 야구는 1996년부터 퍼시픽 리그에서, 2005년부터 센트럴 리그에서 채용되었으며"
+     },
+     {
+      "claim": "KBO 2000년 · 센트럴 리그 2005년",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/홀드_(야구)",
+      "note": "대한민국은 2000년부터 공식기록으로 인정하였다. … 2005년부터 센트럴 리그에서 채용되었으며"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hold_(baseball)"
+    ],
+    "hintNote": "more than one pitcher per team can earn a hold for a game",
+    "easiestCue": "일본 퍼시픽 리그는 1996년부터 이 기록을 공식 기록으로",
+    "targetWhy": "고안자·MLB 비공식은 야구 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "KBO 팬이 매일 보는 기록인데 MLB 비공식이라는 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (활성 2098 해설의 테니스 '홀드'는 정답 아님)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/4#g009b-S1-11",
+   "seed": {
+    "subject": "커브",
+    "aspect": null,
+    "ref": "S1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1949년 시코르스키 항공사의 기술자 랄프 라이트풋은 풍동 실험으로 이 공의 움직임이 착시가 아님을 보였습니다. 그 전에는 착시라는 말도 돌아, 디지 딘은 '60피트 떨어진 나무 뒤에 서 봐라, 착시로 혼내 주겠다'고 농담했다는데, 이 구종은 무엇일까요?",
+    "answer": "커브",
+    "acceptedAnswers": [
+     "커브볼"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '커브 (야구)' · '커브볼'은 국내 중계에서 흔히 쓰는 꼴",
+    "explanation": "1860~70년대의 투수 캔디 커밍스가 이 공을 처음 만든 사람으로 널리 꼽힙니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "이 공의 움직임이 착시가 아님을 보였습니다",
+     "difWhy": "휘는 공 착시 논쟁 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "구종 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "이 공이 실제로 휜다",
+     "difWhy": "'휘는 공' — 야구 방송·뉴스에서 흔히",
+     "wor": 3,
+     "worWhy": "야구 상식 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1949년 시코르스키 항공사의 기술자 랄프 라이트풋은 풍동 실험으로 이 공이 실제로 휜다는 것을 보였습니다. 그 전에는 착시라는 말도 돌아, 디지 딘은 '60피트 떨어진 나무 뒤에 서 봐라, 착시로 혼내 주겠다'고 농담했다는데, 이 구종은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "이 공이 실제로 휜다",
+     "addedCue": "'움직임이 착시가 아님' — 휜다는 말을 빼고 착시 논쟁만 남김",
+     "why": "'휘는 공' 이 곧 이름이라 빼고, 착시 논쟁·풍동 실험 세부로 묻는다"
+    },
+    "generalHint": "던지려면 팔을 비틀어야 해 팔꿈치 인대를 다치기 쉬운 고급 구종으로 여겨진다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Curveball"
+    ],
+    "facts": [
+     {
+      "claim": "1949년 시코르스키 기술자 라이트풋이 풍동 실험으로 이 공이 실제로 휜다(착시가 아님)는 것을 보임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Curveball",
+      "note": "In 1949, Ralph Lightfoot, an aeronautical engineer at Sikorsky Aircraft, used wind tunnel tests to prove that a curveball curves."
+     },
+     {
+      "claim": "디지 딘의 착시 농담",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Curveball",
+      "note": "Stand behind a tree 60 feet away, and I will whomp you with an optical illusion!"
+     },
+     {
+      "claim": "캔디 커밍스가 창안자로 널리 꼽힘",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Curveball",
+      "note": "Candy Cummings, a star pitcher in the 1860s and 1870s, is widely credited with inventing the curveball."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Curveball"
+    ],
+    "hintNote": "Due to the unnatural motion required to throw it, the curveball is considered a more advanced pitch and poses inherent risk of injury to a pitcher's elbow and shoulder.",
+    "easiestCue": "구종의 움직임이 착시냐 아니냐를 두고 논쟁(디지 딘 농담)",
+    "targetWhy": "커브 착시 논쟁·라이트풋 풍동 실험은 야구 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "가장 흔한 변화구, 묻는 것은 착시 논쟁의 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/4#g009b-S1-12",
+   "seed": {
+    "subject": "멘도사 라인",
+    "aspect": null,
+    "ref": "S1-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1979년 타격이 좀처럼 살아나지 않던 멕시코 치와와 출신 유격수를 팀 동료 톰 파치오렉과 브루스 보치가 놀리며 쓴 말이 시작이었습니다. 같은 말로 놀림을 받은 조지 브렛이 ESPN의 크리스 버먼에게 전하면서 널리 퍼진 이 야구 은어는 무엇일까요?",
+    "answer": "멘도사 라인",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "타율 2할 선을 가리키는 말인데, 정작 이름의 주인은 통산 타율 0.215로 선수 생활을 마쳤습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 5,
+     "easiestCue": "치와와 출신 유격수 … 파치오렉과 보치가 놀리며 쓴 말",
+     "difWhy": "'멕시코 유격수 놀림말' — 마니아도 헷갈림 (경계 4)",
+     "wor": 2,
+     "worWhy": "야구 팬 은어",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 5,
+     "easiestCue": "치와와 출신 유격수 … 파치오렉과 보치가 놀리며 쓴 말",
+     "difWhy": "'멕시코 유격수 놀림말' — 마니아도 헷갈림 (경계 4)",
+     "wor": 2,
+     "worWhy": "야구 팬 은어"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mendoza_Line"
+    ],
+    "facts": [
+     {
+      "claim": "멕시코 치와와 출신 유격수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mendoza_Line",
+      "note": "Mendoza was a lightly used shortstop from Chihuahua, Mexico."
+     },
+     {
+      "claim": "1979년 팀 동료 파치오렉·보치가 놀림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mendoza_Line",
+      "note": "(1979) teammates began to chide him … (Paciorek and Bochte) used it to make fun of me."
+     },
+     {
+      "claim": "브렛이 놀림 받고 버먼에게 전해 퍼짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mendoza_Line",
+      "note": "(요지) Brett's teammates told him \"you're going to sink down below the Mendoza Line\" … Brett mentioned the term to Chris Berman of ESPN, which helped it spread."
+     },
+     {
+      "claim": ".200 타율 · 통산 .215",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mendoza_Line",
+      "note": "baseball jargon for a .200 batting average … Mendoza finished his career with a .215 batting average."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1979년 타격이 좀처럼 살아나지 않던 멕시코 치와와 출신 유격수를 팀 동료 … 놀리며 쓴 말",
+    "targetWhy": "'타율 2할'이라는 정의를 질문에서 뺐다 — 말의 유래는 야구 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "중계에서 듣는 은어, 묻는 것은 이름이 붙은 사연",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [],
+    "discarded": "선별 게이트 — 알 가치 2 (야구 팬 은어) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "baseball/4#g009b-S1-13",
+   "seed": {
+    "subject": "스크루볼",
+    "aspect": null,
+    "ref": "S1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1900~1916년 뉴욕 자이언츠에서 뛴 크리스티 매튜슨이 던질 때는 '페이드어웨이'라 불렸고, 칼 허블은 이 공의 '왕'으로 불렸습니다. 팔에 무리를 준다는 믿음 탓에 드물어졌고, 정기적으로 던진 마지막 선발 투수로 페르난도 발렌수엘라가 꼽히는 이 구종은 무엇일까요?",
+    "answer": "스크루볼",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "21세기 들어 이 공이 드물어진 데에는 다른 느린 변화구들이 그 자리를 대신한 탓도 있다고 설명됩니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "칼 허블은 이 공의 '왕'",
+     "difWhy": "페이드어웨이·발렌수엘라 — 야구 애호가",
+     "wor": 2,
+     "worWhy": "구종 이름 — 팬 세부",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "칼 허블은 이 공의 '왕'",
+     "difWhy": "페이드어웨이·발렌수엘라 — 야구 애호가",
+     "wor": 2,
+     "worWhy": "구종 이름 — 팬 세부"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Screwball"
+    ],
+    "facts": [
+     {
+      "claim": "매튜슨(1900~1916 자이언츠) 때 '페이드어웨이'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Screwball",
+      "note": "(요지) Christy Mathewson, who pitched for the New York Giants from 1900 to 1916 … the pitch was then known as the \"fadeaway.\""
+     },
+     {
+      "claim": "칼 허블은 'scroogie king'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Screwball",
+      "note": "(요지) Carl Hubbell … known as the \"scroogie king.\""
+     },
+     {
+      "claim": "정기적으로 쓴 마지막 선발은 발렌수엘라",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Screwball",
+      "note": "The last starting pitcher to regularly use a screwball was Fernando Valenzuela"
+     },
+     {
+      "claim": "팔에 무리라는 믿음 · 다른 느린 공으로 대체",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Screwball",
+      "note": "(요지) its scarcity … tied to \"a belief that it was hard on the arm,\" along with its replacement by other off-speed pitches."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "정기적으로 던진 마지막 선발 투수로 페르난도 발렌수엘라가 꼽히는",
+    "targetWhy": "'반대 방향으로 휜다'는 정의를 뺐다 — 페이드어웨이·허블·발렌수엘라는 MLB 역사 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "구종 이름은 들어 봤을 법하나 소재가 옛 MLB 쪽이라 관심층 밖일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 마지막"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (구종 이름 — 팬 세부) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "baseball/4#g009b-S1-14",
+   "seed": {
+    "subject": "노히트 노런",
+    "aspect": null,
+    "ref": "S1-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1970년 6월 12일 독 엘리스는 더블헤더 첫 경기에서 샌디에이고 파드리스를 상대로 볼넷을 8개나 내주고도 2-0 승리와 함께 이것을 해냈습니다. 그는 1984년에야 그날 LSD에 취한 채 던졌다고 털어놓았는데, 그가 해낸 이것은 무엇일까요?",
+    "answer": "노히트 노런",
+    "acceptedAnswers": [
+     "노히터"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '노히트 노런' · '노히터'는 국내 MLB 중계·기사에서 흔히 쓰는 꼴",
+    "explanation": "1973년 8월에는 경기 전 불펜에서 머리에 헤어롤을 만 채 몸을 푸는 그의 사진이 돌기도 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "볼넷 8개를 내주고도 2-0 승리와 함께 해낸 것",
+     "difWhy": "'안타 없이 이긴 기록' — 야구 관심층",
+     "wor": 3,
+     "worWhy": "야구 용어 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "볼넷 8개를 내주고도 2-0 승리와 함께 해낸 것",
+     "difWhy": "'안타 없이 이긴 기록' — 야구 관심층",
+     "wor": 3,
+     "worWhy": "야구 용어 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "정답이 '안타 없이 이긴 기록' 자체라, 볼넷 8개·2-0 승리 같은 단서를 빼면 완봉승·퍼펙트 게임과 갈리지 않고 남기면 그 단서로 풀림 — 쉬운 단서를 빼면 정답이 유일하지 않음"
+    },
+    "generalHint": "한국 프로야구에서 처음 이것을 해낸 투수는 1984년 5월 5일 삼미전에 선발로 나선 방수원이다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dock_Ellis"
+    ],
+    "facts": [
+     {
+      "claim": "1970년 6월 12일, 더블헤더 1차전에서 파드리스 상대 2-0 노히터",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dock_Ellis",
+      "note": "Ellis no-hit the San Diego Padres, 2–0, in the first game of a twi-night doubleheader (June 12, 1970)"
+     },
+     {
+      "claim": "볼넷 8개",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dock_Ellis",
+      "note": "Ellis walked eight batters … and struck out six"
+     },
+     {
+      "claim": "1984년 LSD 고백",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dock_Ellis",
+      "note": "In 1984, he publicly announced that he had pitched his no-hitter under the influence of LSD."
+     },
+     {
+      "claim": "1973년 8월 헤어롤 사진",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dock_Ellis",
+      "note": "In August 1973, pictures circulated of Ellis wearing hair curlers in the bullpen during pregame warmups."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/방수원"
+    ],
+    "hintNote": "1984년 5월 5일 … 광주 삼미전에서 우연히 그에게 선발 등판을 지시해서, KBO 리그 사상 첫 노히트 노런을 기록하게 되었고",
+    "easiestCue": "그는 1984년에야 그날 LSD에 취한 채 던졌다고 털어놓았는데",
+    "targetWhy": "'안타 하나 없이' 같은 정의를 뺐다 — 볼넷 8개가 퍼펙트게임을 가르고, LSD 일화는 MLB 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 대기록, 묻는 것은 '이거 알아?' 할 일화",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (활성 783 퍼펙트게임과 정답 다름 — 볼넷 8개로 가름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/4#g009b-S1-15",
+   "seed": {
+    "subject": "포크볼",
+    "aspect": null,
+    "ref": "S1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제1차 세계대전 직후 조 부시가 처음 던졌다고 전하는 구종으로, 움직임이 침을 바르는 스핏볼과 닮아 '드라이 스피터(dry spitter)'라고도 불렸습니다. 샌디 코팩스가 팔 부상으로 잃은 구속을 메우려고 선수 생활 끝 무렵 익히기도 한 이 구종은 무엇일까요?",
+    "answer": "포크볼",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "일본 투수들은 쥐는 법과 상관없이 느리고 크게 떨어지는 쪽을 이 이름으로, 빠르고 날카롭게 떨어지는 쪽을 스플릿 핑거 패스트볼로 불렀습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'드라이 스피터(dry spitter)'라고도 불렸습니다",
+     "difWhy": "드라이 스피터·조 부시 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "구종 유래 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "느리고 크게 떨어지는 쪽을 이 이름으로, 빠르고 날카롭게 떨어지는 쪽을 스플릿 핑거 패스트볼로",
+     "difWhy": "스플리터와 짝인 구종 — 야구 관심층",
+     "wor": 3,
+     "worWhy": "야구 구종 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "제1차 세계대전 직후 조 부시가 처음 던졌다고 전하고, 구원 투수 로이 페이스가 널리 화제로 만든 구종입니다. 일본 투수들은 쥐는 법과 상관없이 느리고 크게 떨어지는 쪽을 이 이름으로, 빠르고 날카롭게 떨어지는 쪽을 스플릿 핑거 패스트볼로 불렀는데, 이 구종은 무엇일까요?",
+     "beforeExplanation": "스플리터보다 공을 두 손가락 사이에 더 깊이 끼워 쥐며, 조금 더 느리게 굴러떨어지듯 들어갑니다.",
+     "removedCue": "일본의 '느린 쪽=이 이름, 빠른 쪽=스플릿 핑거' 구분 · 로이 페이스",
+     "addedCue": "드라이 스피터 별명 · 코팩스의 말년 습득",
+     "why": "스플리터와 짝짓는 야구 관심층 단서를 해설로 옮기고 별명·투수 일화로 바꿈"
+    },
+    "generalHint": "메이저리그에서 21년을 뛴 구원 투수 린디 맥대니얼도 이 구종으로 이름났다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Forkball"
+    ],
+    "facts": [
+     {
+      "claim": "조 부시가 1차 대전 직후 창안으로 꼽힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Forkball",
+      "note": "(Joe Bush) is credited with the invention of the forkball, shortly following World War I."
+     },
+     {
+      "claim": "일본에서 그립과 상관없이 느린 것=포크볼, 빠른 것=스플릿 핑거",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Forkball",
+      "note": "(요지) Japanese pitchers such as Nomo used slower, bigger-breaking pitches called forkballs and faster, sharper-dropping pitches called split-finger fastballs, regardless of grip."
+     },
+     {
+      "claim": "움직임이 스핏볼과 닮아 'dry spitter' 라고도 불림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Forkball",
+      "note": "The pitch is often called the \"dry spitter\" because its movement resembles a spitball. (WebFetch 요지)"
+     },
+     {
+      "claim": "코팩스가 팔 부상으로 잃은 구속을 메우려 선수 생활 후반 익힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Forkball",
+      "note": "Sandy Koufax adopted the forkball late in his career to offset lost velocity from arm injuries and to replace his changeup. (WebFetch 요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Forkball"
+    ],
+    "hintNote": "Roy Face and Lindy McDaniel were relief pitchers who pitched for 16 and 21 years, respectively, in the Major Leagues and were forkballers.",
+    "easiestCue": "조 부시가 처음 던졌다고 전하는 '드라이 스피터'",
+    "targetWhy": "dry spitter 별명·코팩스 말년 습득은 야구 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "스플리터와 대비하는 문장이 관심층에게 범주 단서가 될 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/4#g009b-S1-16",
+   "seed": {
+    "subject": "불펜",
+    "aspect": null,
+    "ref": "S1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "19세기 후반 야구장에서는 늦게 온 관중을 파울 지역의 입석 구역에 몰아넣었는데, 그 구역에 붙은 이름이 그 자리에서 구원 투수들이 몸을 풀기 시작한 뒤에도 그대로 남았습니다. 1877년 신시내티의 한 신문이 '세 명에 25센트짜리 손님들'이 있던 곳으로 처음 기록한 이 이름은 무엇일까요?",
+    "answer": "불펜",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 말이 야구에서 널리 쓰이게 된 것은 20세기에 들어선 직후였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "구원 투수들이 몸을 풀기 시작한 … 이 이름",
+     "difWhy": "구원 투수 대기 구역 — 중계에서 흔히",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 불펜 어원",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "구원 투수들이 몸을 풀기 시작한 … 이 이름",
+     "difWhy": "구원 투수 대기 구역 — 중계에서 흔히",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 불펜 어원"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "'구원 투수들이 몸을 푸는 곳' 을 빼면 '늦게 온 관중의 싼 입석 이름' 만 남아 블리처 등 다른 관중석 이름과 갈리지 않음 — 정의를 대신할 세부가 이름 풀이(소 우리)뿐이라 쓸 수 없음"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bullpen"
+    ],
+    "facts": [
+     {
+      "claim": "19세기 후반 늦게 온 관중을 파울 지역 입석에 가둠, 이름이 남아 구원 투수 연습장이 됨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bullpen",
+      "note": "Previously, in the late 19th century latecomers to ball games were cordoned off into standing-room areas in foul territory. … this area became known as the \"bullpen\" (the name stayed when relief pitchers began warming up there)"
+     },
+     {
+      "claim": "1877년 신시내티 인콰이어러 첫 기록, 'three for a quarter crowd'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bullpen",
+      "note": "the earliest recorded use of \"bullpen\" in relation to baseball is in a Cincinnati Enquirer article (May 7, 1877): \"The bull-pen at the Cincinnati grounds with its 'three for a quarter crowd' has lost its usefulness.\""
+     },
+     {
+      "claim": "20세기 들어 널리 쓰임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bullpen",
+      "note": "The term first appeared in wide use shortly after the turn of the 20th century"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "그 구역에 붙은 이름이 그 자리에서 구원 투수들이 몸을 풀기 시작한 뒤에도 그대로 남았습니다",
+    "targetWhy": "'소 떼처럼'(이름 뜻풀이)을 뺐다 — 구원 투수 연습장이라는 쓰임이 남지만 묻는 것은 이름의 기원(애호가)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'구원 투수가 몸 푸는 자리'가 관심층에겐 정의처럼 읽혀 3 이 될 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음",
+     "숫자대조 25"
+    ]
+   }
+  }
+ ]
+}

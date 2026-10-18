@@ -1,0 +1,412 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "fashion/2",
+  "midKey": "fashion",
+  "subName": "패션 브랜드·디자이너",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "fashion/2#g009b-L2-21",
+   "seed": {
+    "subject": "버버리",
+    "aspect": null,
+    "ref": "L2-21",
+    "pairedWith": 161
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 161,
+    "question": "1911년 남극점에 처음 닿은 아문센 탐험대의 옷을 이 영국 회사가 댔고, 1914년 남극 대륙 횡단에 나선 섀클턴 탐험대도 이 회사의 옷을 입었습니다. 1924년 에베레스트에 도전한 조지 맬러리가 입은 재킷도 이 회사 것이었는데, 이 회사는 어디일까요?",
+    "answer": "버버리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1879년 실을 짜기 전에 방수 처리해 튼튼하면서도 바람이 통하는 원단 '개버딘'을 내놓았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "아문센 탐험대의 옷을 이 영국 회사가 댔고",
+     "difWhy": "탐험대 옷 영국 회사 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "브랜드 일화 이야깃거리",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "원단 '개버딘'을 내놓은 영국 회사",
+     "difWhy": "개버딘·트렌치코트 영국 회사 — 관심층",
+     "wor": 3,
+     "worWhy": "유명 브랜드 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1879년 실을 짜기 전에 방수 처리해 튼튼하면서도 바람이 통하는 원단 '개버딘'을 내놓은 영국 회사입니다. 1911년 남극점에 처음 닿은 아문센의 옷을 댔고 1924년 에베레스트에 도전한 조지 맬러리도 이 회사의 개버딘 재킷을 입었는데, 이 회사는 어디일까요?",
+     "beforeExplanation": "1914년 남극 대륙 횡단에 나선 어니스트 섀클턴 탐험대의 옷도 이 회사가 댔습니다.",
+     "removedCue": "원단 '개버딘'을 내놓은 영국 회사",
+     "addedCue": "섀클턴 탐험대 옷(해설에서 질문으로 옮김) — 탐험가 셋을 엮음",
+     "why": "개버딘은 이 회사의 대표 사실이라 해설로 돌리고 탐험대 납품 이력만으로 묻는다"
+    },
+    "generalHint": "1901년 만든 말 탄 기사 로고에는 '앞으로'라는 뜻의 라틴어 'Prorsum'이 들어 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "등산",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Burberry"
+    ],
+    "facts": [
+     {
+      "claim": "1879년 짜기 전 방수 처리한 통기성 원단 개버딘",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Burberry",
+      "note": "In 1879, Burberry introduced gabardine to his brand, a hardwearing, water-resistant yet breathable fabric, in which the yarn is waterproofed before weaving."
+     },
+     {
+      "claim": "1911년 남극점에 처음 닿은 아문센의 옷",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Burberry",
+      "note": "In 1911, the company became the outfitters for Roald Amundsen, the first man to reach the South Pole, and Ernest Shackleton, who led a 1914 expedition to cross Antarctica."
+     },
+     {
+      "claim": "1924년 맬러리의 에베레스트 도전에 개버딘 재킷",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Burberry",
+      "note": "A Burberry gabardine jacket was worn by George Mallory on his attempt on Mount Everest in 1924."
+     },
+     {
+      "claim": "1914 섀클턴 탐험대",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Burberry",
+      "note": "and Ernest Shackleton, who led a 1914 expedition to cross Antarctica."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Burberry"
+    ],
+    "hintNote": "In 1901, the Burberry Equestrian Knight logo was developed containing the Latin word \"Prorsum\", meaning \"forwards\", and it was registered as a trademark in 1909.",
+    "easiestCue": "1911년 남극점에 처음 닿은 아문센 탐험대의 옷을 이 영국 회사가 댔다",
+    "targetWhy": "극지·산악 탐험 납품 이력은 패션 애호가 세부 — 체크무늬·트렌치코트·개버딘은 없다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 브랜드, 탐험 장비였던 과거",
+    "pairCheck": "1회차 Q(노바 체크·트렌치코트)·E(토머스 버버리·체크)·H(없음)와 겹치지 않음",
+    "dbCheck": "answercheck pair-or-different — 활성 161 과 같은 답, 다른 사실(2회차)",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 161,
+     "question": "특유의 베이지색 체크무늬(노바 체크)와 트렌치코트로 유명한 영국의 대표적인 명품 패션 브랜드는?",
+     "explanation": "토머스 버버리가 설립하였으며 트렌치코트와 고유의 체크 패턴으로 유명한 브랜드는 버버리다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "fashion/2#g009b-L2-22",
+   "seed": {
+    "subject": "몽클레르",
+    "aspect": null,
+    "ref": "L2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1952년 프랑스 그르노블 근처 산골 마을에서 누빔 침낭과 텐트를 만들며 출발한 회사입니다. 1954년 공장 노동자용으로 처음 만든 다운 재킷이 그해 이탈리아 K2 원정대의 장비로 뽑혔고, 산악인 리오넬 테레이의 이름을 붙인 제품군도 낸 이 브랜드는 무엇일까요?",
+    "answer": "몽클레르",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "회사 이름은 창업지인 마을 모네스티에드클레르몽을 줄인 말입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1952년 프랑스 그르노블 근처 산골 마을에서 누빔 침낭과 텐트",
+     "difWhy": "그르노블 출신 다운 브랜드 — 패션 애호가",
+     "wor": 3,
+     "worWhy": "유명 브랜드 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1952년 프랑스 그르노블 근처 산골 마을에서 누빔 침낭과 텐트",
+     "difWhy": "그르노블 출신 다운 브랜드 — 패션 애호가",
+     "wor": 3,
+     "worWhy": "유명 브랜드 기원 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "2020년 12월 이탈리아 브랜드 스톤 아일랜드를 사들였다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "등산",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Moncler"
+    ],
+    "facts": [
+     {
+      "claim": "1952년 그르노블 근처 산골 마을에서 창업",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Moncler",
+      "note": "Founded in 1952 by René Ramillon and André Vincent, the name is an abbreviation of Monestier-de-Clermont, a village in the mountains near Grenoble, France."
+     },
+     {
+      "claim": "처음엔 누빔 침낭·텐트",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Moncler",
+      "note": "In the beginning, Moncler produced padded sleeping bags, a single model of lined hooded cape, and tents"
+     },
+     {
+      "claim": "1954년 노동자용 다운 재킷, K2 원정대",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Moncler",
+      "note": "The first Moncler down jackets were made in 1954 for the company's own workers ... In 1954, Moncler quilted jackets were chosen to equip the Italian expedition to K2"
+     },
+     {
+      "claim": "'몽클레르 푸르 리오넬 테레이'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Moncler",
+      "note": "The result saw the specialist range \"Moncler pour Lionel Terray\"."
+     },
+     {
+      "claim": "이름은 모네스티에드클레르몽의 줄임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Moncler",
+      "note": "the name is an abbreviation of Monestier-de-Clermont"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Moncler"
+    ],
+    "hintNote": "(Financial Times, 17 December 2020) \"Remo Ruffini shows Moncler is more than just puff with €1bn Stone Island deal\"",
+    "easiestCue": "1954년 … 다운 재킷이 그해 이탈리아 K2 원정대의 장비로 뽑혔고",
+    "targetWhy": "명품 패딩이 산악 장비에서 출발한 사연은 아웃도어 애호가 세부 — 마을 이름(정답 조각)은 해설로 돌렸다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국에서도 유명한 브랜드, 등반 장비였던 출발",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "fashion/2#g009b-L2-23",
+   "seed": {
+    "subject": "파타고니아",
+    "aspect": null,
+    "ref": "L2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1957년부터 손수 두드려 만든 암벽 등반 장비를 팔던 한 등반가가 1973년 캘리포니아 벤투라에서 연 의류 회사로, 첫 매장 이름은 '그레이트 퍼시픽 아이언 웍스'였습니다. 창업자는 스코틀랜드 럭비 셔츠의 깃이 등반 슬링에 목이 쓸리지 않게 막아 준다며 입고 올랐는데, 이 브랜드는 무엇일까요?",
+    "answer": "파타고니아",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 회사는 1985년부터 매출의 1%를 환경 단체에 내 왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1973년 벤투라의 의류 회사, '그레이트 퍼시픽 아이언 웍스'",
+     "difWhy": "'벤투라 등반 의류 회사' — 아웃도어 애호가",
+     "wor": 3,
+     "worWhy": "유명 브랜드 유래",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1973년 벤투라의 의류 회사, '그레이트 퍼시픽 아이언 웍스'",
+     "difWhy": "'벤투라 등반 의류 회사' — 아웃도어 애호가",
+     "wor": 3,
+     "worWhy": "유명 브랜드 유래"
+    },
+    "rewrite": null,
+    "generalHint": "2022년 창업자는 의결권 주식을 신탁에, 나머지 주식을 기후 대응 비영리 단체에 넘겼다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "등산",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Patagonia,_Inc."
+    ],
+    "facts": [
+     {
+      "claim": "1957년부터 손으로 만든 등반 장비 판매",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Patagonia,_Inc.",
+      "note": "Yvon Chouinard, an accomplished rock climber and big wall climber, began selling hand-forged rock-climbing equipment in 1957 through his company Chouinard Equipment."
+     },
+     {
+      "claim": "1973년 벤투라, 첫 매장 그레이트 퍼시픽 아이언 웍스",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Patagonia,_Inc.",
+      "note": "It was founded by Yvon Chouinard in 1973 and is based in Ventura, California. ... Great Pacific Iron Works, Patagonia's first store, opened in 1973"
+     },
+     {
+      "claim": "스코틀랜드 럭비 셔츠 깃이 슬링으로부터 목 보호",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Patagonia,_Inc.",
+      "note": "In 1970, Chouinard obtained rugby shirts from Scotland that he wore while climbing because the collar kept the climbing sling from hurting his neck."
+     },
+     {
+      "claim": "1985년부터 매출 1% 환경 단체",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Patagonia,_Inc.",
+      "note": "Since 1985, Patagonia has committed 1% of its total sales to environmental groups"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Patagonia,_Inc."
+    ],
+    "hintNote": "Chouinard transferred ownership of Patagonia to the Patagonia Purpose Trust / All nonvoting stock was transferred to Holdfast Collective / profits used to address climate change",
+    "easiestCue": "1957년부터 손수 두드려 만든 암벽 등반 장비를 팔던 한 등반가가 1973년 … 연 의류 회사",
+    "targetWhy": "창업 전의 등반 장비 대장간·럭비 셔츠는 아웃도어 애호가 세부 — 뉴스에 난 창업자 이름·회사 기부는 넣지 않았다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 아웃도어 브랜드, 등반가의 손에서 나온 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 초안 g009a L2-25(플리스)에 이름이 단서로 나오나 정답이 다름",
+    "warn": [
+     "정답조각 니아"
+    ]
+   }
+  },
+  {
+   "seedId": "fashion/2#g009b-L2-24",
+   "seed": {
+    "subject": "푸마",
+    "aspect": null,
+    "ref": "L2-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1970년 월드컵 8강 페루전 직전, 펠레는 주심에게 신발 끈을 묶겠다며 경기 시작을 잠시 늦췄습니다. 이렇게 끈을 묶는 대가로 펠레에게 12만 달러를 건넨 독일 브랜드로, 창업자가 처음에는 회사 이름을 '루다'로 등록했다가 바꿨는데, 이 브랜드는 무엇일까요?",
+    "answer": "푸마",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "창업자 루돌프와 동생 아돌프는 1948년 갈라서기 전, 1936년 베를린 올림픽에 스파이크를 가방 가득 들고 가 제시 오언스에게 신겼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "끈을 묶는 대가로 펠레에게 12만 달러를 건넨 독일 브랜드",
+     "difWhy": "펠레 신발 끈 마케팅 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "브랜드 일화 이야깃거리",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "사이가 틀어진 형제 … 형 루돌프가 세운 신발 회사",
+     "difWhy": "'아디다스 형의 회사' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 브랜드 형제 다툼"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1948년 사이가 틀어진 형제가 갈라선 뒤 형 루돌프가 세운 신발 회사는 처음 자기 이름을 줄인 '루다'로 등록했다가 이름을 바꿨습니다. 동생의 회사와 같은 바이에른 소도시 헤르초겐아우라흐에 본사를 둔 이 브랜드는 무엇일까요?",
+     "beforeExplanation": "형제는 1936년 베를린 올림픽에 스파이크를 가방 가득 들고 가 제시 오언스에게 신겼고, 오언스는 금메달 넷을 땄습니다.",
+     "removedCue": "1948년 사이가 틀어진 형제 … 형 루돌프가 세운 신발 회사 · 동생 회사와 같은 헤르초겐아우라흐",
+     "addedCue": "1970년 월드컵 펠레의 신발 끈 묶기(12만 달러)",
+     "why": "다슬러 형제 이야기는 '아디다스 형의 회사' 로 바로 풀려 빼고 펠레 신발 끈 일화로 바꿈"
+    },
+    "generalHint": "1958년부터 신발 옆에 '폼스트라이프'라는 곡선 띠를 넣었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Puma_(brand)"
+    ],
+    "facts": [
+     {
+      "claim": "1948년 형제가 갈라섬",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Puma_(brand)",
+      "note": "The relationship between the two brothers deteriorated until they agreed to split in 1948, forming two separate entities, Adidas and Puma."
+     },
+     {
+      "claim": "루돌프가 형(동생 아돌프)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Puma_(brand)",
+      "note": "In July 1924, Rudolf and his younger brother, Adolf, founded a shoe factory."
+     },
+     {
+      "claim": "처음 '루다'로 등록했다가 바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Puma_(brand)",
+      "note": "Rudolf originally registered the newly established company as Ruda (derived from Rudolf Dassler, as Adidas was based on Adi Dassler), but later changed the name to Puma."
+     },
+     {
+      "claim": "독일 기업(본사 헤르초겐아우라흐)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Puma_(brand)",
+      "note": "Puma SE is a German athletic apparel and footwear corporation headquartered in Herzogenaurach, Bavaria, Germany."
+     },
+     {
+      "claim": "1936 베를린 올림픽 오언스",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Puma_(brand)",
+      "note": "The brothers drove from Bavaria to the 1936 Summer Olympics in Berlin with a suitcase full of spikes and persuaded United States sprinter Jesse Owens to use them ... Owens won four gold medals."
+     },
+     {
+      "claim": "브라질-페루 8강전 직전 끈을 묶는 대가로 펠레에게 12만 달러",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Puma_(brand)",
+      "note": "Puma paid him $120,000 ($2.85 million in 2022) to tie his laces prior to Brazil's quarter-final game against Peru"
+     },
+     {
+      "claim": "1970년 월드컵 무렵의 일(펠레 협정은 대회 몇 달 전)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Puma_(brand)",
+      "note": "A few months before the 1970 FIFA World Cup ... (Puma) paid him $120,000 ... to tie his laces prior to Brazil's quarter-final game against Peru"
+     },
+     {
+      "claim": "펠레가 경기 시작 직전 신발 끈을 묶겠다며 주심을 멈춰 세움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Puma_(brand)",
+      "note": "Pelé stopped the referee from starting the game with a last-second request to tie his shoelaces"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Puma_(brand)"
+    ],
+    "hintNote": "the distinctive 'Formstrip' which was introduced in 1958.",
+    "easiestCue": "펠레에게 끈 묶는 대가로 12만 달러를 준 독일 브랜드",
+    "targetWhy": "펠레 신발 끈 마케팅은 축구·스포츠 마케팅 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "다슬러 형제 이야기를 아는 사람에게는 둘 중 하나 고르기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 2916(아디다스 이름 유래)과 정답이 다름",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

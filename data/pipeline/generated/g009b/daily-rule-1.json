@@ -1,0 +1,386 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "daily-rule/1",
+  "midKey": "daily-rule",
+  "subName": "재난·안전 수칙",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "daily-rule/1#g009b-L1-31",
+   "seed": {
+    "subject": "소화기",
+    "aspect": null,
+    "ref": "L1-31",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기록이 남은 가장 오래된 이 장비는 1723년 영국에서 앰브로즈 고드프리가 특허를 낸 것으로 알려져 있습니다. 1816년에는 조지 윌리엄 맨비 대위가 구리 통에 탄산칼륨 용액 13.6리터를 담은 이 장비를 막사 관리 위원들 앞에서 시연했는데, 이 장비는 무엇일까요?",
+    "answer": "소화기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1866년 프랑스의 프랑수아 카를리에는 소다와 산을 섞어 쓰는 소다·산식으로 특허를 냈습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "구리 통에 탄산칼륨 용액 13.6리터를 담은 이 장비",
+     "difWhy": "초기 소화 장비 — 안전 애호가",
+     "wor": 3,
+     "worWhy": "생활 장비 유래 — 이야깃거리",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "압축 공기와 함께 용액을 담은 휴대용 가압식 장비",
+     "difWhy": "'휴대용 가압 소방 장비' — 일상 (경계 2)",
+     "wor": 3,
+     "worWhy": "생활 장비 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1816년 영국의 조지 윌리엄 맨비 대위가 막사 관리 위원들 앞에서 시연한 이 장비는, 구리 통에 탄산칼륨 용액 13.6리터를 압축 공기와 함께 담은 휴대용 가압식이었습니다. 기록이 남은 가장 오래된 것은 1723년 영국에서 앰브로즈 고드프리가 특허를 낸 것이라는 이 장비는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "압축 공기와 함께 담은 휴대용 가압식(장비의 작동 방식)",
+     "addedCue": "작동 방식을 빼고 고드프리 특허·맨비 시연만 남김",
+     "why": "'휴대용 가압식' 이 일상 소화기를 바로 떠올리게 해 뺀다"
+    },
+    "generalHint": "고드프리의 장비는 통 속 화약에 도화선으로 불을 붙여 터뜨려 액체를 흩뿌리는 방식이었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Fire_extinguisher"
+    ],
+    "facts": [
+     {
+      "claim": "1816년 막사 관리 위원들 앞에서 시연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fire_extinguisher",
+      "note": "demonstrated in 1816 to the 'Commissioners for the affairs of Barracks'"
+     },
+     {
+      "claim": "구리 통, 탄산칼륨 용액 13.6리터, 압축 공기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fire_extinguisher",
+      "note": "it consisted of a copper vessel of 3 gallons (13.6 liters) of pearl ash (potassium carbonate) solution contained within compressed air."
+     },
+     {
+      "claim": "기록상 첫 소화기 — 1723년 고드프리 특허",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fire_extinguisher",
+      "note": "The first fire extinguisher of which there is any record was patented in England in 1723 by Ambrose Godfrey"
+     },
+     {
+      "claim": "1866년 카를리에 산·알칼리식 특허",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fire_extinguisher",
+      "note": "The soda-acid extinguisher was first patented in 1866 by Francois Carlier of France"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Fire_extinguisher"
+    ],
+    "hintNote": "It consisted of a cask of fire-extinguishing liquid containing a pewter chamber of gunpowder. This was connected with a system of fuses which were ignited, exploding the gunpowder and scattering the solution.",
+    "easiestCue": "1816년 맨비 대위가 구리 통에 탄산칼륨 용액 13.6리터를 담은 이 장비를 시연",
+    "targetWhy": "고드프리 특허·맨비 시연은 발명사 애호가 세부 — 탄산칼륨 용액이 약한 실마리 (경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'용액을 압축 공기와 함께 담은 휴대용 가압식' 으로 쓰임을 짐작할 수 있어 3 경계",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 897(안전핀)은 정답이 달라 지식도 다름",
+    "warn": [
+     "단정어 가장 오래"
+    ]
+   }
+  },
+  {
+   "seedId": "daily-rule/1#g009b-L1-32",
+   "seed": {
+    "subject": "횡단보도",
+    "aspect": null,
+    "ref": "L1-32",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1934년 영국 교통부 장관 레슬리 호어벨리샤가 도입한, 흑백 기둥 위에서 노란 공이 깜빡이는 '벨리샤 비컨'이 양쪽에 서 있는 시설입니다. 1951년 10월 31일 슬라우 하이 스트리트에 지금의 영국식 모습으로 처음 생긴 이 시설은 무엇일까요?",
+    "answer": "횡단보도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "비틀스 앨범 '애비 로드' 표지에 나온 뒤 그 길의 이 시설은 관광 명소가 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "흑백 기둥 위 노란 공 '벨리샤 비컨'이 서 있는 시설",
+     "difWhy": "'영국 길거리 시설' — 관심층",
+     "wor": 3,
+     "worWhy": "생활 시설 유래 이야깃거리",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "흑백 기둥 위 노란 공 '벨리샤 비컨'이 서 있는 시설",
+     "difWhy": "'영국 길거리 시설' — 관심층",
+     "wor": 3,
+     "worWhy": "생활 시설 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "정답(횡단보도)이 일상 낱말이라 벨리샤 비컨을 빼면 시설을 가리킬 단서가 흑백 무늬·얼룩말 같은 더 쉬운 것뿐이고, 확인한 문서의 다른 세부(1,000곳 시험 · 캘러헌 일화)도 정답을 흐리거나 더 쉽게 한다"
+    },
+    "generalHint": "영국에는 신호 방식에 따라 펠리컨·퍼핀·투칸처럼 새 이름이 붙은 이 시설의 갈래들이 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Zebra_crossing"
+    ],
+    "facts": [
+     {
+      "claim": "벨리샤 비컨 — 흑백 기둥 위 깜빡이는 노란 공, 양쪽에 섬",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zebra_crossing",
+      "note": "flashing amber globes on black and white posts on each side of the road"
+     },
+     {
+      "claim": "교통부 장관 호어벨리샤가 1934년 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zebra_crossing",
+      "note": "(Hore-Belisha, the Minister of Transport,) who introduced them in 1934."
+     },
+     {
+      "claim": "첫 얼룩말 건널목 — 1951년 10월 31일 슬라우 하이 스트리트",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zebra_crossing",
+      "note": "The first zebra crossing was introduced on Slough High Street in the United Kingdom on 31 October 1951."
+     },
+     {
+      "claim": "애비 로드 표지로 관광 명소",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Zebra_crossing",
+      "note": "A zebra crossing appears on the cover of The Beatles' Abbey Road album. / The cover made the crossing a tourist attraction."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pelican_crossing"
+    ],
+    "hintNote": "being replaced with puffin crossings ... See also: Pedestrian crossings in the United Kingdom, Pegasus crossing, Toucan crossing",
+    "easiestCue": "흑백 기둥 위에서 노란 공이 깜빡이는 '벨리샤 비컨'이 양쪽에 서 있는 시설",
+    "targetWhy": "줄무늬·애비 로드(누구나 아는 단서)는 질문에서 뺐다 — 벨리샤 비컨과 슬라우 첫 설치는 영국 교통사 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "대상은 일상 시설이라 답은 쉽게 나올 수 있는 범주 — 단서가 영국 세부뿐이라 4 를 노림",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "daily-rule/1#g009b-L1-33",
+   "seed": {
+    "subject": "국가지점번호",
+    "aspect": null,
+    "ref": "L1-33",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2013년 도입되어 경찰·소방 등 기관마다 달랐던 위치 표시 체계를 하나로 맞춘 번호입니다. 도로명주소법에 근거해 전 국토를 가로세로 10미터 격자로 나누고 한글 2자와 숫자 8자리로 적는데, 주소가 없는 등산로와 해안가에 판으로 세워 두는 이 번호는 무엇일까요?",
+    "answer": "국가지점번호",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2022년 2월 행정안전부는 번호판의 위치와 번호를 인터넷·모바일 지도 서비스로 공개한다고 밝혔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "10미터 격자, 한글 2자와 숫자 8자리 번호판",
+     "difWhy": "'등산로 위치 번호' — 안전 애호가",
+     "wor": 2,
+     "worWhy": "제도 세부 명칭",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "10미터 격자, 한글 2자와 숫자 8자리 번호판",
+     "difWhy": "'등산로 위치 번호' — 안전 애호가",
+     "wor": 2,
+     "worWhy": "제도 세부 명칭"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "등산",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/%EA%B5%AD%EA%B0%80%EC%A7%80%EC%A0%90%EB%B2%88%ED%98%B8",
+     "https://www.khan.co.kr/article/202202271200031"
+    ],
+    "facts": [
+     {
+      "claim": "도로명주소법에 법적 근거",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EA%B5%AD%EA%B0%80%EC%A7%80%EC%A0%90%EB%B2%88%ED%98%B8",
+      "note": "국가지점번호는 도로명주소법에 법적 근거를 두고 있다."
+     },
+     {
+      "claim": "한글 2자 + 숫자 8자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EA%B5%AD%EA%B0%80%EC%A7%80%EC%A0%90%EB%B2%88%ED%98%B8",
+      "note": "한글 문자 2개, 아라비아 숫자 8개를 조합하여 나타내며, 전국을 하나의 좌표체계로 표현한다."
+     },
+     {
+      "claim": "가로세로 10미터 격자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EA%B5%AD%EA%B0%80%EC%A7%80%EC%A0%90%EB%B2%88%ED%98%B8",
+      "note": "가로와 세로의 길이가 각각 10미터인 격자를 기본단위로 하여 국가지점번호를 부여하도록 하고 있다."
+     },
+     {
+      "claim": "2013년 도입, 기관별 위치 체계 통일 · 등산로·해안가 등 주소 없는 곳에 설치",
+      "where": "q",
+      "url": "https://www.khan.co.kr/article/202202271200031",
+      "note": "국가지점번호는 전 국토를 10×10m의 격자형으로 구획한 지점마다 부여한 위치 표시 번호다. 지난 2013년 도입됐다. (경찰·소방 등 기관별 위치표시 체계를 통일) 등산로 및 해안가 등 주소가 부여되지 않은 사고다발 지역을 중심으로 … 설치돼 있다."
+     },
+     {
+      "claim": "2022년 2월 행안부가 위치·번호를 지도 서비스로 공개",
+      "where": "e",
+      "url": "https://www.khan.co.kr/article/202202271200031",
+      "note": "행정안전부는 긴급상황 시 신속한 신고와 구급·구조활동이 가능하도록 국가지점번호판의 위치와 해당 국가지점번호를 인터넷과 모바일 지도 서비스를 통해 공개한다고 27일 밝혔다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "주소가 없는 등산로와 해안가에 판으로 세워 두는 이 번호",
+    "targetWhy": "등산로 표지판을 눈여겨본 등산객(관심층~애호가)이 아는 세부 — 격자·자릿수·근거법은 교과 밖",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "제도 설명 꼴이라 정의형에 가깝다 — 등산 관심층이면 3",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 번호"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (제도 세부 명칭) · life 는 3 이상"
+   }
+  },
+  {
+   "seedId": "daily-rule/1#g009b-L1-34",
+   "seed": {
+    "subject": "구명조끼",
+    "aspect": null,
+    "ref": "L1-34",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제2차 세계 대전 때 영국 공군 승무원들은 이것을 부풀린 모습이 배우 메이 웨스트의 가슴 같다며 그 이름으로 불렀습니다. 1854년에는 영국 RNLI의 존 로스 워드 대위가 구조선 선원들을 위해 갈색 코르크로 이것을 만들었는데, 이것은 무엇일까요?",
+    "answer": "구명조끼",
+    "acceptedAnswers": [
+     "구명동의"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '구명조끼'·'구명동의' 둘 다 '개인구명동의' 로 넘겨짐 확인",
+    "explanation": "공기를 넣어 부풀리는 방식은 1928년 피터 마커스가 발명했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "구조선 선원들을 위해 갈색 코르크로 이것을 만들었는데",
+     "difWhy": "구조 선원용 코르크 장비 — 일상 추론",
+     "wor": 3,
+     "worWhy": "생활용품 유래 이야깃거리",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "물에 뜨도록 … 이 안전 장비",
+     "difWhy": "물에 뜨는 안전 장비 — 일상에서",
+     "wor": 3,
+     "worWhy": "별명 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1854년 영국 RNLI의 존 로스 워드 대위는 구조선 선원들이 비바람을 막으면서 물에 뜨도록 갈색 코르크로 이것을 만들었습니다. 제2차 세계 대전 때 영국 공군 승무원들은 부풀린 모습이 배우 메이 웨스트의 가슴 같다며 그 이름으로 불렀다는 이 안전 장비는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "물에 뜨도록 … 이 안전 장비 (물에 뜨는 안전 장비 = 정의)",
+     "addedCue": "(뺌) 메이 웨스트 별명 + 1854 RNLI 코르크 제품",
+     "why": "'물에 뜨도록 만든 안전 장비' 가 일상 정의라 빼고 별명·초기 제품으로만 묻게 함"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "낚시",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Personal_flotation_device"
+    ],
+    "facts": [
+     {
+      "claim": "1854년 워드 대위가 구명정 선원용 갈색 코르크 조끼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Personal_flotation_device",
+      "note": "He created a brown cork vest in 1854 to be worn by lifeboat crews for both weather protection and buoyancy. (Captain John Ross Ward, RNLI)"
+     },
+     {
+      "claim": "1928년 피터 마커스가 부풀리는 방식 발명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Personal_flotation_device",
+      "note": "(the inflatable life preserver was) invented in 1928 by Peter Markus"
+     },
+     {
+      "claim": "메이 웨스트 별명 — 부풀리면 배우처럼 가슴이 커 보여서 · 영국 공군 승무원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Personal_flotation_device",
+      "note": "The nickname originated because someone wearing the inflated life preserver often appeared to be as large-breasted as the actress Mae West. / (RAF aircrew) who were issued inflatable Mae Wests as part of their flight gear."
+     },
+     {
+      "claim": "첫 부풀리는 구명 장비의 흔한 별명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Personal_flotation_device",
+      "note": "The Mae West was a common nickname for the first inflatable life preserver"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "구조선 선원들을 위해 갈색 코르크로 이것을 만들었는데",
+    "targetWhy": "메이 웨스트 별명·워드 대위의 코르크는 해양 애호가 세부 — '뜬다'·'안전 장비' 없음 (경계)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "물에 뜨는 장비라는 범주에서 구명조끼를 쉽게 고를 수 있어 3 으로 내려갈 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 901(구명환)은 다른 장비",
+    "warn": []
+   }
+  }
+ ]
+}

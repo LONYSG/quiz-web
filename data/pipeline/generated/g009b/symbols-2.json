@@ -1,0 +1,219 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "symbols/2",
+  "midKey": "symbols",
+  "subName": "교통 표지",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "symbols/2#g009b-L2-19",
+   "seed": {
+    "subject": "정지",
+    "aspect": null,
+    "ref": "L2-19",
+    "pairedWith": 666
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 666,
+    "question": "1914년 미국 디트로이트의 경찰관 해럴드 잭슨이 처음 만들었다는 이 교통 표지는, 처음에는 가로세로 61cm 판에 흰 바탕과 검은 글자를 썼습니다. 이듬해인 1915년 미시간주 전체로 퍼진 이 표지는 무엇일까요?",
+    "answer": "정지",
+    "acceptedAnswers": [
+     "정지 표지",
+     "정지 표지판"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "질문이 '이 표지'를 물어 '정지 표지(판)'으로 치는 사람이 있음 — 1회차와 같은 대표 정답 유지",
+    "explanation": "1924년부터 1954년까지는 잘 바래지 않는 빨간 재료가 없어 노란 바탕에 빨강이나 검정 글자를 썼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "디트로이트의 경찰관 해럴드 잭슨이 처음 만들었다는 이 교통 표지",
+     "difWhy": "첫 표지 흰 바탕 61cm — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "생활 표지 유래 이야깃거리",
+     "acc": 5,
+     "accWhy": "기호·표지 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "이 교통 표지 … 잘 바래지 않는 빨간 재료가 없었기 때문",
+     "difWhy": "빨간 교통 표지 — 누구나 일상에서",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 노란 정지 표지"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1914년 미국 디트로이트의 경찰관 해럴드 잭슨이 처음 만들었다는 이 교통 표지는, 1924년부터 1954년까지 노란 바탕에 빨강이나 검정 글자로 쓰였습니다. 잘 바래지 않는 빨간 재료가 없었기 때문인데, 이 표지는 무엇일까요?",
+     "beforeExplanation": "이 표지는 이듬해인 1915년 미시간주 전체로 퍼졌습니다.",
+     "removedCue": "잘 바래지 않는 빨간 재료가 없어 노란 바탕을 씀(빨간 표지 암시)",
+     "addedCue": "첫 표지는 61cm 흰 바탕·검은 글자",
+     "why": "빨간 표지를 바로 떠올리게 하는 문장을 해설로 옮기고 첫 모양 세부로 바꿈"
+    },
+    "generalHint": "일본에서는 이 표지를 거꾸로 선 빨간 삼각형 모양으로 쓴다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "자동차",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Stop_sign"
+    ],
+    "facts": [
+     {
+      "claim": "1914년 디트로이트 경찰 해럴드 잭슨이 처음 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stop_sign",
+      "note": "The first stop sign was created in 1914 by Detroit police sergeant Harold \"Harry\" Jackson"
+     },
+     {
+      "claim": "1924~1954 노란 바탕에 빨강·검정 글자",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Stop_sign",
+      "note": "From 1924 to 1954, stop signs bore a red or black stop legend on a yellow field."
+     },
+     {
+      "claim": "바래지 않는 빨간 재료가 없어서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Stop_sign",
+      "note": "Yellow was chosen because fade-resistant red materials were not available."
+     },
+     {
+      "claim": "1915년 미시간 전체",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stop_sign",
+      "note": "The next year, 1915, stop signs were adopted across Michigan."
+     },
+     {
+      "claim": "첫 표지는 흰 바탕에 검은 글자, 24×24인치(61cm)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stop_sign",
+      "note": "The first signs had black lettering on a white background and were 24 by 24 inches (61 cm × 61 cm)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Stop_sign"
+    ],
+    "hintNote": "Some countries may also use other types, such as Japan's inverted red triangle stop sign.",
+    "easiestCue": "1914년 디트로이트 경찰관 해럴드 잭슨이 처음 만든 교통 표지",
+    "targetWhy": "잭슨·첫 표지의 흰 바탕은 교통 상식 밖 세부 (경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 표지, 지금과 다른 옛 모습",
+    "pairCheck": "1회차 Q(유일한 팔각형·모양으로 알아봄)·E(뒤에서 봐도 윤곽)·H(없음)와 겹치지 않음 — 모양은 쓰지 않음",
+    "dbCheck": "answercheck pair-or-different — 활성 666 과 같은 답, 다른 사실(2회차)",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 666,
+     "question": "교통 표지판은 대부분 원이나 삼각형, 사각형인데 딱 하나만 팔각형입니다. 눈이 쌓이거나 글씨가 지워져도 모양만으로 알아보게 하려고 그렇게 만든 이 표지는?",
+     "explanation": "뒤에서 봐도 팔각형 윤곽만으로 무슨 표지인지 알 수 있다는 점이 설계의 핵심입니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "symbols/2#g009b-L2-20",
+   "seed": {
+    "subject": "오키나와",
+    "aspect": null,
+    "ref": "L2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1945년 6월 24일부터 오른쪽 통행을 하던 이 일본의 현은, 한 나라의 통행 방향을 하나로 하도록 한 제네바 도로 교통 협약에 따라 1978년 7월 30일 왼쪽 통행으로 돌아갔습니다. 전날 밤 10시부터 여덟 시간 동안 차를 막고 표지판을 바꾼 이 현은 어디일까요?",
+    "answer": "오키나와",
+    "acceptedAnswers": [
+     "오키나와현"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '오키나와현' 확인",
+    "explanation": "이날은 날짜 숫자를 따 '나나산마루(730)'라 부르며, 하루 교통 정리를 위해 다른 지역에서 경찰 지원 인력을 모았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1945년부터 오른쪽 통행을 하던 일본의 현",
+     "difWhy": "'미군 통치 일본 현' — 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 통행 방향 변경",
+     "acc": 5,
+     "accWhy": "기호·표지 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1945년부터 오른쪽 통행을 하던 일본의 현",
+     "difWhy": "'미군 통치 일본 현' — 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 통행 방향 변경"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서(1945년부터 오른쪽 통행을 하던 일본의 현)가 묻는 사실 자체 — 통행 방향을 바꾼 일본의 현이라는 사실을 빼면 정답이 하나로 좁혀지지 않음"
+    },
+    "generalHint": "일본 정부는 이 전환에 약 1억 5천만 달러를 들였고, 버스 1,000대와 택시 5,000대를 바꿨다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "자동차",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/730_(transport)"
+    ],
+    "facts": [
+     {
+      "claim": "1945년 6월 24일 오른쪽 통행으로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/730_(transport)",
+      "note": "on June 24, 1945, was made to drive on the right."
+     },
+     {
+      "claim": "제네바 협약 9조에 따라 1978년 7월 30일 왼쪽으로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/730_(transport)",
+      "note": "in accordance with Article 9 of the Geneva Convention on Road Traffic that restricts each country to having only one traffic direction, all the traffic in the prefecture was changed back to driving on the left on July 30, 1978."
+     },
+     {
+      "claim": "전날 밤 10시(22:00)부터 여덟 시간 통행 금지, 그사이 표지 교체",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/730_(transport)",
+      "note": "All traffic, except emergency vehicles, was banned from 22:00 July 29, 1978. Eight hours after, at 06:00 July 30, traffic resumed ... Traffic signs were changed within these eight hours."
+     },
+     {
+      "claim": "730 나나산마루, 다른 지역 경찰 지원",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/730_(transport)",
+      "note": "730 (nana-san-maru) is a reference to July 30, 1978 ... reinforcements were assembled from other parts of Japan."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/730_(transport)"
+    ],
+    "hintNote": "The Japanese government spent some $150 million to cover the prefecture's conversion costs ... replacing 1,000 buses and 5,000 taxis",
+    "easiestCue": "1945년 6월 24일부터 오른쪽 통행을 하던 이 일본의 현",
+    "targetWhy": "통행 방향을 되돌린 '730'은 교통·자동차 애호가 세부 — 미군 통치·반환 같은 교과서 사실은 넣지 않았다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 지명, 묻는 것은 통행 방향을 바꾼 날의 이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

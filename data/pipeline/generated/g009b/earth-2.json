@@ -1,0 +1,114 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "earth/2",
+  "midKey": "earth",
+  "subName": "화산·지진",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "earth/2#g009b-C2-24",
+   "seed": {
+    "subject": "모호로비치치 불연속면",
+    "aspect": null,
+    "ref": "C2-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1909년 크로아티아의 한 지진학자는 자그레브 근처에서 일어난 지진 기록을 살피다, 진원이 얕은 지진의 지진계 기록에 P파와 S파가 두 벌씩 찍힌 것을 발견했습니다. 한 벌은 지표 가까이 곧장 왔고, 다른 한 벌은 깊은 곳의 빠른 층에서 꺾여 온 것이었습니다. 그가 찾아낸 이 경계면은 무엇일까요?",
+    "answer": "모호로비치치 불연속면",
+    "acceptedAnswers": [
+     "모호면"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '모호면' → '모호로비치치 불연속면' 넘겨주기 확인",
+    "explanation": "그는 이 경계가 땅속 약 54킬로미터 깊이에 있다고 어림했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "크로아티아 지진학자가 찾은 깊은 곳 빠른 층 경계면",
+     "difWhy": "'지각-맨틀 경계 발견' — 중학 과학 (경계 3)",
+     "wor": 5,
+     "worWhy": "과학 교과 개념",
+     "acc": 5,
+     "accWhy": "지구과학·기상 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "크로아티아 지진학자가 찾은 깊은 곳 빠른 층 경계면",
+     "difWhy": "'지각-맨틀 경계 발견' — 중학 과학 (경계 3)",
+     "wor": 5,
+     "worWhy": "과학 교과 개념"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "발견 경위(두 벌의 지진파 · 깊은 빠른 층) 자체가 중학 과학의 지각·맨틀 경계 설명이고, 크로아티아를 빼도 그대로 풀림 — 정의를 대신할 확인 가능한 깊은 세부 없음"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mohorovi%C4%8Di%C4%87_discontinuity"
+    ],
+    "facts": [
+     {
+      "claim": "크로아티아 지진학자 안드리야 모호로비치치",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mohorovi%C4%8Di%C4%87_discontinuity",
+      "note": "Croatian seismologist Andrija Mohorovičić is credited with discovering and defining the Moho."
+     },
+     {
+      "claim": "1909년 자그레브 근처 지진 자료",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mohorovi%C4%8Di%C4%87_discontinuity",
+      "note": "In 1909, he was examining data from a local earthquake in Zagreb"
+     },
+     {
+      "claim": "얕은 지진 기록에 P파·S파 두 벌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mohorovi%C4%8Di%C4%87_discontinuity",
+      "note": "seismograms from shallow-focus earthquakes had two sets of P-waves and S-waves"
+     },
+     {
+      "claim": "한 벌은 지표 가까이 직접, 한 벌은 빠른 층에서 꺾임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mohorovi%C4%8Di%C4%87_discontinuity",
+      "note": "(요지) One wave set took a direct route near the surface, while the other was bent by a high-velocity layer."
+     },
+     {
+      "claim": "약 54km 로 어림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mohorovi%C4%8Di%C4%87_discontinuity",
+      "note": "(요지) which he estimated at about 54 km"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "깊은 곳의 빠른 층에서 꺾여 온 것이었습니다 (지진파로 찾은 경계면)",
+    "targetWhy": "정답 이름은 고교 지구과학이지만 '지각–맨틀 경계' 정의는 뺐다 — 발견 경위(1909 자그레브·두 벌의 파)는 대학 교양 지구과학",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'지진파로 찾은 경계면' 으로 고교 지구과학 지식에서 추리할 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,217 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "aerospace/5",
+  "midKey": "aerospace",
+  "subName": "인공위성·탐사선",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/5#g009b-C2-21",
+   "seed": {
+    "subject": "제임스 웹 우주망원경",
+    "aspect": null,
+    "ref": "C2-21",
+    "pairedWith": 1452
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1452,
+    "question": "1996년 설계를 시작할 때는 '차세대 우주 망원경'이라 불렸던 우주 망원경입니다. 개발 중 검토에서는 발사와 전개 과정에 하나만 잘못돼도 임무 전체가 실패하는 지점이 344곳으로 꼽혔습니다. 이 망원경은 무엇일까요?",
+    "answer": "제임스 웹 우주망원경",
+    "acceptedAnswers": [
+     "제임스 웹 망원경",
+     "웹 망원경"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '제임스 웹 우주망원경', '제임스 웹 망원경'·'웹 망원경' 넘겨주기 확인",
+    "explanation": "2002년에 미국 항공우주국(NASA)의 두 번째 행정관 이름을 따 지금 이름이 붙었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "'차세대 우주 망원경'이라 불린 우주 망원경",
+     "difWhy": "허블 후속 망원경 — 과학 뉴스·관심층 (경계 2)",
+     "wor": 4,
+     "worWhy": "교양·시사 — 최신 우주 망원경",
+     "acc": 3,
+     "accWhy": "항공·우주 기술 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1961~1968년 미국 항공우주국(NASA)을 이끈 행정가의 이름",
+     "difWhy": "NASA 행정가 이름 망원경 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "최근 과학 뉴스 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 우주 망원경은 1961~1968년 미국 항공우주국(NASA)을 이끈 행정가의 이름을 땄습니다. 개발 중 검토에서는 발사와 전개 과정에 하나만 잘못돼도 임무 전체가 실패하는 지점이 344곳으로 꼽혔습니다. 이 망원경은 무엇일까요?",
+     "beforeExplanation": "2021년 12월 25일 프랑스령 기아나 쿠루에서 아리안 5 로켓에 실려 발사되었습니다.",
+     "removedCue": "1961~1968년 NASA를 이끈 행정가의 이름을 땄다",
+     "addedCue": "옛 이름 '차세대 우주 망원경'(1996)",
+     "why": "행정가 이름 유래는 정답 이름을 풀어 주는 단서라 해설로 돌리고 옛 이름으로 묻는다"
+    },
+    "generalHint": "유럽우주국은 이 망원경에 근적외선 분광기 NIRSpec 장비와 발사 로켓을 대 주었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/James_Webb_Space_Telescope"
+    ],
+    "facts": [
+     {
+      "claim": "1961~1968 NASA 행정관 제임스 웹의 이름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/James_Webb_Space_Telescope",
+      "note": "The telescope is named after James E. Webb, who was the administrator of NASA from 1961 to 1968"
+     },
+     {
+      "claim": "발사·전개의 단일 실패 지점 344곳",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Webb_Space_Telescope",
+      "note": "The review identified that Webb launch and deployment had 344 potential single-point failures"
+     },
+     {
+      "claim": "1996년 설계 시작 때 이름은 Next Generation Space Telescope",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Webb_Space_Telescope",
+      "note": "Initial designs for the telescope, then named the Next Generation Space Telescope, began in 1996."
+     },
+     {
+      "claim": "2002년 NASA 두 번째 행정관 이름으로 바뀜",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/James_Webb_Space_Telescope",
+      "note": "In 2002, the project was renamed after NASA's second administrator"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/James_Webb_Space_Telescope"
+    ],
+    "hintNote": "ESA provided the NIRSpec instrument, the Optical Bench Assembly of the MIRI instrument, an Ariane 5 ECA launcher",
+    "easiestCue": "1996년 설계를 시작할 때는 '차세대 우주 망원경'이라 불렸다",
+    "targetWhy": "옛 이름 NGST·단일 실패 지점 344곳은 우주 애호가 세부 (경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "뉴스로 유명한 망원경, 이름 주인과 위험 요소는 교과서 밖",
+    "pairCheck": "1회차 1452 질문(적외선·2021 발사·태양 반대쪽 먼 지점)과 해설·힌트에 없는 사실만 씀 — 연도 2021 은 해설에만",
+    "dbCheck": "pair-or-different — 활성 1452 의 2회차",
+    "warn": [
+     "정답조각 우주망원경"
+    ],
+    "first": {
+     "id": 1452,
+     "question": "적외선으로 초기 우주의 빛을 잡아내려 2021년에 발사되어, 태양 반대쪽 먼 지점에서 관측하는 우주망원경은?",
+     "explanation": "적외선을 보려면 망원경 자체가 차가워야 해서 커다란 차폐막으로 햇빛을 가립니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "aerospace/5#g009b-C2-22",
+   "seed": {
+    "subject": "우리별 1호",
+    "aspect": null,
+    "ref": "C2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1992년 8월 10일 남아메리카 프랑스령 기아나의 쿠루에서 아리안 로켓에 실려, 미국 항공우주국의 해양 관측 위성 토펙스/포세이돈과 함께 우주로 올라간 위성입니다. 아마추어 무선 위성 이름으로는 'KO-23'이라 불린 이 위성은 무엇일까요?",
+    "answer": "우리별 1호",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '우리별 1호'",
+    "explanation": "한국과학기술원(KAIST) 인공위성연구센터가 영국 서리 대학교와 함께 개발했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 1992년 8월 … 위성 + 'KO-23'",
+     "difWhy": "한국 첫 인공위성 발사 경위 — 대학 교양 (경계 3)",
+     "wor": 4,
+     "worWhy": "한국 우주개발 교양 상식",
+     "acc": 3,
+     "accWhy": "항공·우주 기술 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1992년 영국 서리 대학교와 함께 개발한 한국 위성",
+     "difWhy": "'1992 첫 한국 위성' — 관심 있는 사람·고교 과학",
+     "wor": 4,
+     "worWhy": "교양 — 한국 우주개발 시작"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1992년 8월 10일, 이 위성은 남아메리카 프랑스령 기아나의 쿠루에서 아리안 로켓에 실려, 미국 항공우주국의 해양 관측 위성 토펙스/포세이돈과 함께 우주로 올라갔습니다. 영국 서리 대학교와 함께 개발한 이 한국 위성은 무엇일까요?",
+     "beforeExplanation": "개발을 맡은 곳은 한국과학기술원(KAIST) 인공위성연구센터였습니다.",
+     "removedCue": "영국 서리 대학교와 함께 개발한 한국 위성",
+     "addedCue": "아마추어 무선 위성 이름 KO-23",
+     "why": "교과서에 나오는 '1992 한국 위성' 을 감추고 발사 동반 위성·무선 명칭 세부로 바꿈"
+    },
+    "generalHint": "무게 48.5㎏, 길이 67㎝ 남짓한 초소형 과학위성이다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Kitsat-1"
+    ],
+    "facts": [
+     {
+      "claim": "1992년 8월 10일 쿠루 기아나 우주센터에서 발사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kitsat-1",
+      "note": "KITSAT-1 was launched from Centre Spatial Guyanais (CSG) on 10 August 1992."
+     },
+     {
+      "claim": "아리안 42P, NASA 토펙스/포세이돈과 함께",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kitsat-1",
+      "note": "an Ariane 42P H-10 launch vehicle (요지: flown with NASA's TOPEX/Poseidon and France's S80/T satellite)"
+     },
+     {
+      "claim": "서리 대학교와 공동 개발",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kitsat-1",
+      "note": "Developed through a collaborative program between SaTReC and the University of Surrey, United Kingdom."
+     },
+     {
+      "claim": "KAIST 인공위성연구센터가 개발",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kitsat-1",
+      "note": "(요지) It identifies SaTReC, the KAIST Satellite Technology Research Center, as the developer."
+     },
+     {
+      "claim": "OSCAR 명칭 KITSAT-OSCAR-23(KO-23)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kitsat-1",
+      "note": "KITSAT-OSCAR-23 (KO-23)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/우리별_1호"
+    ],
+    "hintNote": "우리별 1호는 무게 48.5 kg, 크기 35.2 X 35.6 X 67cm의 초소형 과학위성이다.",
+    "easiestCue": "토펙스/포세이돈과 함께 1992년 쿠루에서 올라간 위성",
+    "targetWhy": "발사 동반 위성·KO-23 은 우주·아마추어 무선 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1992 + 한국 위성' 으로 첫 위성을 추리할 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

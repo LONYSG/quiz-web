@@ -1,0 +1,125 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "computer/1",
+  "midKey": "computer",
+  "subName": "하드웨어",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "computer/1#g009b-C2-14",
+   "seed": {
+    "subject": "하드 디스크",
+    "aspect": null,
+    "ref": "C2-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1956년 9월 IBM이 발표한 '305 RAMAC' 에 처음 달려 나온 이 저장 장치는 영숫자 500만 자를 담았고 무게가 1톤이 넘었습니다. 한 달 사용료가 3,200달러였던 이 저장 장치는 무엇일까요?",
+    "answer": "하드 디스크",
+    "acceptedAnswers": [
+     "하드 디스크 드라이브",
+     "HDD"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '하드 디스크' → '하드 디스크 드라이브' 넘겨주기 · 'HDD' 는 한국에서 흔히 치는 약칭(A4)",
+    "explanation": "RAMAC 은 'Random Access Method of Accounting and Control', 곧 회계·관리를 위한 임의 접근 방식의 줄임말입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "IBM 305 RAMAC에 처음 달린 1톤 넘는 저장 장치",
+     "difWhy": "RAMAC 첫 저장 장치 — 대학 교양 컴퓨터사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 첫 HDD 규모",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "지름 24인치 원판 50장으로 영숫자 500만 자를 담았고",
+     "difWhy": "원판 저장 장치 — 컴퓨터 관심층",
+     "wor": 3,
+     "worWhy": "첫 하드 디스크 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1956년 9월 IBM이 발표한 '305 RAMAC' 에 처음 달려 나온 이 저장 장치는, 지름 24인치 원판 50장으로 영숫자 500만 자를 담았고 무게가 1톤이 넘었습니다. 한 달 사용료는 3,200달러였습니다. 이 저장 장치는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "지름 24인치 원판 50장",
+     "addedCue": "없음 — RAMAC · 500만 자 · 1톤 · 임대료 세부만 남김",
+     "why": "'원판' 이 곧 디스크라 빼고 RAMAC 세부로만 묻는다"
+    },
+    "generalHint": "1980년 시게이트가 내놓은 ST-506은 처음으로 5.25인치 크기로 나온 이 장치였다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/IBM_305_RAMAC"
+    ],
+    "facts": [
+     {
+      "claim": "1956년 9월 14일 발표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/IBM_305_RAMAC",
+      "note": "(문서 제목 IBM 305 RAMAC) The system was publicly announced on September 14, 1956"
+     },
+     {
+      "claim": "움직이는 헤드 하드 디스크를 쓴 첫 상업용 컴퓨터",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/IBM_305_RAMAC",
+      "note": "the first commercial computer that used a moving-head hard disk drive"
+     },
+     {
+      "claim": "영숫자 500만 자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/IBM_305_RAMAC",
+      "note": "stored 5 million alphanumeric characters"
+     },
+     {
+      "claim": "1톤 넘음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/IBM_305_RAMAC",
+      "note": "It weighed over a ton."
+     },
+     {
+      "claim": "월 3,200달러 임대",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/IBM_305_RAMAC",
+      "note": "leased for US$3,200 (equivalent to $36,700 in 2025) per month"
+     },
+     {
+      "claim": "RAMAC 뜻",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/IBM_305_RAMAC",
+      "note": "Random Access Method of Accounting and Control"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/ST-506/ST-412"
+    ],
+    "hintNote": "early hard disk drives introduced by Seagate in 1980 and 1981 … Introduced in 1980, the ST-506 was the first 5.25-inch",
+    "easiestCue": "'305 RAMAC' 에 처음 달려 나온 저장 장치",
+    "targetWhy": "RAMAC 이 첫 하드 디스크를 달았다는 것은 컴퓨터사 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'원판에 자료 저장' 으로 추리 가능 — 플로피·광디스크와 1956년으로 갈림",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

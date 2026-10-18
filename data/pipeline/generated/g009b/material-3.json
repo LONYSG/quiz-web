@@ -1,0 +1,195 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "material/3",
+  "midKey": "material",
+  "subName": "건설 공법",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "material/3#g009b-C2-12",
+   "seed": {
+    "subject": "철근 콘크리트",
+    "aspect": null,
+    "ref": "C2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프랑스의 정원사 조제프 모니에는 화분 재료가 마음에 들지 않아 새 재료를 궁리했습니다. 1867년 원예용 통으로 첫 특허를 받고 그해 파리 박람회에 내놓은 이 건축 재료는 무엇일까요?",
+    "answer": "철근 콘크리트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '철근콘크리트' → '철근 콘크리트' (띄어쓰기만 다름 — 변형 불필요)",
+    "explanation": "박람회에서 그의 통과 수조를 눈여겨본 사람 가운데에는 프랑수아 엔비크도 있었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "정원사 조제프 모니에 … 화분 재료",
+     "difWhy": "모니에 철근 콘크리트 — 대학 교양 (경계 3)",
+     "wor": 3,
+     "worWhy": "건축 재료 발명 일화",
+     "acc": 2,
+     "accWhy": "재료·건설 기술 — 애호가 영역"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "콘크리트 … 속에 쇠 그물을 묻어 보았습니다",
+     "difWhy": "쇠를 넣은 콘크리트 — 일상에서",
+     "wor": 4,
+     "worWhy": "건설 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "프랑스의 정원사 조제프 모니에는 화분 재료가 마음에 들지 않아 콘크리트 화분을 만들다가, 더 튼튼하게 하려고 속에 쇠 그물을 묻어 보았습니다. 1867년 원예용 통으로 첫 특허를 받고 그해 파리 박람회에 내놓은 이 재료는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "콘크리트 … 속에 쇠 그물을 묻어 보았습니다(재료의 정의)",
+     "addedCue": "(뺌만) 모니에의 1867년 특허·파리 박람회",
+     "why": "'콘크리트에 쇠 그물' 은 정의 그 자체라 빼고 발명자 세부로 묻는다"
+    },
+    "generalHint": "모니에보다 앞서 조제프루이 랑보는 같은 방식으로 만든 배를 1855년 파리 만국박람회에 내놓았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "원예",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Joseph_Monier"
+    ],
+    "facts": [
+     {
+      "claim": "정원사로서 화분 재료에 만족하지 못함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Joseph_Monier",
+      "note": "As a gardener, Monier was not satisfied with the materials available for making flowerpots."
+     },
+     {
+      "claim": "1867년 7월 16일 원예용 철근 통으로 첫 특허",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Joseph_Monier",
+      "note": "He obtained his first patent on 16 July 1867, on iron-reinforced troughs for horticulture."
+     },
+     {
+      "claim": "1867년 파리 박람회 출품",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Joseph_Monier",
+      "note": "Monier exhibited his invention at the Paris Exposition of 1867."
+     },
+     {
+      "claim": "엔비크가 박람회에서 봄",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Joseph_Monier",
+      "note": "(요지) François Hennébique saw his reinforced concrete tubs and tanks there."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Joseph-Louis_Lambot"
+    ],
+    "hintNote": "This boat was patented on 30 January 1855 and presented at the 1855 World's Fair in Paris (Exposition Universelle - 1855).",
+    "easiestCue": "정원사 조제프 모니에가 1867년 특허를 받은 건축 재료",
+    "targetWhy": "모니에의 화분 발명은 건축·재료사 교양 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "쇠 그물+콘크리트가 정의 단서가 됨 — 정원사 일화의 재미로 남김",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different — 활성 2410(압축·인장 정의)과 지식이 다름(발명 경위)",
+    "warn": [
+     "정답조각 콘크리트"
+    ]
+   }
+  },
+  {
+   "seedId": "material/3#g009b-C2-13",
+   "seed": {
+    "subject": "리벳",
+    "aspect": null,
+    "ref": "C2-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "옛 철골 공사에서는 이 부품을 박는 데 보통 네 사람이 한 조를 이뤘습니다. 불에 달군 것을 집게로 꺼내 던지면, 받는 사람이 바닥에 재를 깐 가죽이나 나무 양동이로 받아 냈는데, 이 부품은 무엇일까요?",
+    "answer": "리벳",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "오늘날에는 청바지를 튼튼하게 보강하는 데에도 쓰입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "불에 달군 것을 집게로 꺼내 던지면, 받는 사람이 … 양동이로 받아 냈는데",
+     "difWhy": "달군 철골 부품 던져 받기 — 고교 기술 (경계 2)",
+     "wor": 3,
+     "worWhy": "옛 공법 이야깃거리",
+     "acc": 2,
+     "accWhy": "재료·건설 기술 — 애호가 영역"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "에펠탑과 시드니 하버 브리지의 철골도 대개 이것으로 이어 붙였습니다",
+     "difWhy": "철골 잇는 부품 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "건설 부품 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "옛 철골 공사에서는 이 부품을 박는 데 보통 네 사람이 한 조를 이뤘습니다. 불에 달군 것을 집게로 꺼내 던지면, 받는 사람이 바닥에 재를 깐 가죽이나 나무 양동이로 받아 냈습니다. 에펠탑과 시드니 하버 브리지의 철골도 대개 이것으로 이어 붙였습니다. 이 부품은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "에펠탑과 시드니 하버 브리지의 철골도 대개 이것으로 이어 붙였습니다 (대표 사례)",
+     "addedCue": "(뺌) 네 사람 한 조 · 달군 것을 던져 양동이로 받는 작업",
+     "why": "에펠탑 철골 접합은 흔히 아는 대표 사례라 빼고 옛 작업 방식만 남김"
+    },
+    "generalHint": "타이타닉호 선체는 300만 개가 넘는 쇠·강철 이 부품으로 이어 붙였고, 그 무게만 1,200톤이 넘었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Rivet"
+    ],
+    "facts": [
+     {
+      "claim": "보통 네 사람(달구는 사람·받는 사람·잡는 사람·두드리는 사람)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rivet",
+      "note": "it normally takes four skilled workers to install rivets (warmer, catcher, holder, basher)"
+     },
+     {
+      "claim": "집게로 꺼내 던지고, 재를 깐 가죽·나무 양동이로 받음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rivet",
+      "note": "used tongs to remove individual rivets and throw them to a catcher ... a leather or wooden bucket with an ash-lined bottom"
+     },
+     {
+      "claim": "청바지 보강",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rivet",
+      "note": "to reinforce jeans"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Titanic"
+    ],
+    "hintNote": "the hull was held together with over three million iron and steel rivets, which by themselves weighed over 1,200 tonnes.",
+    "easiestCue": "불에 달군 것을 집게로 꺼내 던지면, 받는 사람이 … 양동이로 받아 냈는데",
+    "targetWhy": "리벳 작업조의 던지고 받기는 건설·공학 애호가 세부 — 대표 건축물·청바지 없음 (경계)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 부품, 옛 작업 방식은 들으면 '아 그거' 하는 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

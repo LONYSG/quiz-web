@@ -1,0 +1,952 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "kr-history/5",
+  "midKey": "kr-history",
+  "subName": "개항기·일제강점기",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/5#g009b-K1-21",
+   "seed": {
+    "subject": "제너럴셔먼호 사건",
+    "aspect": null,
+    "ref": "K1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "톈진에 기반을 둔 영국의 메도즈 상사는 조선과 통상을 꾀하며 이 배를 띄웠고, 배는 강을 거슬러 오르다 양각도 서쪽 모래톱에 걸렸습니다. 북한은 1986년 그 강가에 이 배의 격침비를 세웠는데, 이 배를 둘러싼 사건은 무엇일까요?",
+    "answer": "제너럴셔먼호 사건",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "평안도 관찰사 박규수는 대동강 물에 기름을 풀어 불을 붙이고 화공선을 띄워 이 배를 불태워 가라앉혔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 조선과 통상을 꾀하며 이 배 + 강을 거슬러 오르다 양각도 모래톱",
+     "difWhy": "대동강 통상 요구 선박 — 고교 한국사 (경계 4)",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 신미양요 배경",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "토머스가 통역으로 탔던 이 배를 둘러싼 사건",
+     "difWhy": "토머스 탄 배 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 사건"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "영국의 메도즈 상사는 조선과 통상을 꾀하며 이 배를 띄웠고, 한 해 전 조선에 몰래 들어와 조선어를 배운 런던 선교회 선교사 로버트 토머스를 통역으로 태웠습니다. 토머스가 통역으로 탔던 이 배를 둘러싼 사건은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "토머스가 통역으로 탔던 이 배(토머스 일화)",
+     "addedCue": "양각도 서쪽 모래톱 좌초 · 북한의 1986년 격침비",
+     "why": "토머스 통역은 교과서 일화라 빼고 좌초 지점·격침비 세부로 바꿈"
+    },
+    "generalHint": "배에는 미국인 선주 프레스턴과 광저우 출신 환전상도 타고 있었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/제너럴셔먼호_사건"
+    ],
+    "facts": [
+     {
+      "claim": "톈진의 영국 메도즈 상사가 조선 통상을 추진(이 배를 띄움)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제너럴셔먼호_사건",
+      "note": "텐진에 기반을 두고 있던 영국의 메도즈 상사는 조선과 통상을 추진한다는 계획을 세웠다. / 통역으로는 런던 선교회 소속의 개신교 선교사 로버트 저메인 토머스과 계약을 맺고 승선시켰다."
+     },
+     {
+      "claim": "박규수가 기름을 풀어 불 붙이고 화공선으로 격침",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/제너럴셔먼호_사건",
+      "note": "박규수는 … 대동강 물에 식용유를 풀고 불을 붙였고 화공선을 띄워 공격하며 결국 제너럴셔먼호를 불태워 격침시켰다."
+     },
+     {
+      "claim": "배가 대동강을 거슬러 오르다 양각도 서쪽 모래톱에 좌초",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제너럴셔먼호_사건",
+      "note": "(요지) 조선 관리들은 통상을 거절하고 퇴거를 요구했지만 배는 대동강을 거슬러 올라갔고, 양각도 서쪽 모래톱에 좌초하자 충돌이 벌어졌다."
+     },
+     {
+      "claim": "북한은 1986년 대동강변에 격침비를 세움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제너럴셔먼호_사건",
+      "note": "(요지) 북한은 1986년 대동강변에 격침비를 세우고 이 사건을 기념하고 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/General_Sherman_incident"
+    ],
+    "hintNote": "Also on board were a money changer from Guangzhou, Welsh missionary Robert Jermain Thomas and Preston.",
+    "easiestCue": "북한이 1986년 강가에 세운 이 배의 격침비",
+    "targetWhy": "좌초 지점(양각도)·격침비는 교과서 밖 세부 — 한국사 심화(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "개신교 순교사를 아는 사람에게는 공정한 단서",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 사건"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/5#g009b-K1-22",
+   "seed": {
+    "subject": "을미사변",
+    "aspect": null,
+    "ref": "K1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 사건에 가담한 우범선은 일본으로 망명했다가 1903년 고영근에게 암살되었습니다. 일본은 사건 관련자 48명을 히로시마 재판소에 넘겼지만 증거가 불확실하다는 이유로 모두 풀어 주었는데, 이 사건은 무엇일까요?",
+    "answer": "을미사변",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1895년 10월 8일 일본 공사 미우라 고로의 지휘 아래 경복궁 건청궁 곤녕합 일대에서 명성황후가 시해되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "관련자 48명을 히로시마 재판소에 넘겼지만 … 풀어 주었는데",
+     "difWhy": "을미사변 재판 — 수능 심화·한능검 (경계 3)",
+     "wor": 5,
+     "worWhy": "한국사 교과",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "훈련대 대대장 우범선이 가담한 사건 / 맏아들 식물학·농학",
+     "difWhy": "'훈련대·우장춘 아버지 가담 사건' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 을미사변"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 사건에 가담한 훈련대 대대장 우범선은 일본으로 망명했다가 1903년 고영근에게 암살되었습니다. 그의 맏아들은 광복 뒤 한국으로 건너와 이 나라의 식물학과 농학을 이끌었는데, 우범선이 가담한 이 사건은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "훈련대 대대장 · 맏아들이 식물학·농학을 이끔(우장춘)",
+     "addedCue": "히로시마 재판소 48명 회부·증거 불확실 석방",
+     "why": "고교 한국사의 훈련대와 우장춘 연결을 빼고 사건 뒤처리 세부로 바꿈"
+    },
+    "generalHint": "궁내부 대신 이경직은 두 팔을 벌려 막아서다가 권총을 맞고 쓰러졌다고 한다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/우장춘",
+     "https://ko.wikipedia.org/wiki/을미사변"
+    ],
+    "facts": [
+     {
+      "claim": "우범선은 훈련대대장으로 명성황후 살해에 가담, 일본 망명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우장춘",
+      "note": "그의 아버지 우범선은 조선에서 훈련대대장을 역임하던 중 일본인 자객들과 함께 공모하여 명성황후를 살해했으며, 그 이후 일본으로 망명하였다."
+     },
+     {
+      "claim": "1903년 고영근에게 암살",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우장춘",
+      "note": "우범선은 1903년 고영근에게 암살되었으며"
+     },
+     {
+      "claim": "1895.10.8 미우라 고로 지휘, 건청궁 곤녕합",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/을미사변",
+      "note": "을미사변(乙未事變, …)은 1895년 10월 8일 조선 주재 일본 공사 미우라 고로(三浦梧樓)의 지휘 아래 … 경복궁(景福宮)에 난입하여 건청궁(乾淸宮) 곤녕합 일대에서 명성황후 민씨(明成皇后閔氏)를 칼로 찔러 시해한 사건이다."
+     },
+     {
+      "claim": "관련자 48명을 히로시마 재판소에 회부, 증거 불확실로 모두 석방",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/을미사변",
+      "note": "관련자 48명을 소환하여 히로시마 재판소에 회부했다. … 예심 판사 요시오카는 증거가 불확실하다는 이유로 이들을 모두 석방했다. (WebFetch 요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/을미사변"
+    ],
+    "hintNote": "궁내부 대신 이경직이 두 팔을 벌려 황후 앞(또는 황후가 있는 방문 앞)을 가로막고 나서다가 권총을 맞고 쓰러졌으며",
+    "easiestCue": "우범선이 가담한 사건 / 관련자 48명 히로시마 재판소 석방",
+    "targetWhy": "히로시마 재판·고영근 암살은 한국사 심화(대학 교양) 세부 (경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "몰랐던 연결(우장춘의 아버지)을 알게 되는 문제",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/5#g009b-K1-23",
+   "seed": {
+    "subject": "경인선",
+    "aspect": null,
+    "ref": "K1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 철도는 1897년 3월 22일 우각현에서 기공식과 함께 공사를 시작했고, 개통 당시에는 모가형 증기 기관차가 달려 1시간 40분이 걸렸습니다. 이 철도는 무엇일까요?",
+    "answer": "경인선",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1899년 9월 18일 일부 구간이 먼저 개통되어 대한민국에서 공식 기록상 최초의 철도가 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1897년 3월 22일 우각현에서 기공식과 함께 공사를 시작했고",
+     "difWhy": "우각현 기공·모가형 기관차 — 한능검 심화 (경계 3)",
+     "wor": 5,
+     "worWhy": "고교 한국사 최초 철도",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "제임스 모스가 1896년 부설권을 얻은 철도",
+     "difWhy": "'모스 부설권 철도' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 최초 철도"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "미국인 제임스 모스는 아관파천 50일 만인 1896년 3월 이 철도의 부설권을 얻어, 이듬해 3월 22일 우각현에서 기공식을 열었습니다. 그러나 자금난에 빠져 부설권은 일본 쪽으로 넘어갔는데, 이 철도는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "제임스 모스가 1896년 부설권을 얻은 철도 · 일본 쪽 인수",
+     "addedCue": "모가형 증기 기관차·1시간 40분 (우각현 기공식은 남김)",
+     "why": "모스 부설권·일본 인수는 고교 한국사라 빼고 기공 장소·기관차 세부로 묻는다"
+    },
+    "generalHint": "1900년 7월 8일 노선이 노량진에서 경성역까지 늘어났다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/경인선"
+    ],
+    "facts": [
+     {
+      "claim": "1897년 3월 22일 우각현 기공식",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경인선",
+      "note": "모스는 1897년 3월 22일 오전 9시 경인가도상의 우각현(牛角峴, 지금의 도원역 부근)에서 기공식과 함께 공사를 시작하였다."
+     },
+     {
+      "claim": "1899년 9월 18일 일부 개통, 공식 기록상 최초의 철도",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/경인선",
+      "note": "대한민국에서 공식적인 기록상 최초의 철도로, 1897년 3월 22일에 일본의 지원을 받아 기공하여 1899년 9월 18일에 일부 구간이 개통되었다."
+     },
+     {
+      "claim": "개통 당시 모가형 증기 기관차 운행, 1시간 40분 소요",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경인선",
+      "note": "모가형 증기 기관차가 운행되어 1시간 40분이 소요되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/경인선"
+    ],
+    "hintNote": "1900년 7월 8일에는 노선이 노량진역에서 경성역까지 연장되었으며",
+    "easiestCue": "1897년 우각현에서 기공한 철도",
+    "targetWhy": "우각현 기공식·모가형 기관차는 철도사 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'1896~97년 착공 철도'는 사실상 하나지만 그 연결이 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 최초"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/5#g009b-K1-24",
+   "seed": {
+    "subject": "전차",
+    "aspect": null,
+    "ref": "K1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "콜브란과 보스트윅은 황제가 홍릉에 행차할 때마다 많은 신하가 따라가야 해 드는 낭비와 불편을 이것으로 덜 수 있다고 설득해 허가를 얻었다고 합니다. 처음에는 교토에서 일해 본 일본인을 운전수로 뽑았지만, 개통 열흘째 아이가 치여 숨진 사고 뒤 그들이 모두 떠나자 미국인 운전수 8명을 급히 데려온 이 교통수단은 무엇일까요?",
+    "answer": "전차",
+    "acceptedAnswers": [
+     "노면전차",
+     "서울전차"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '서울전차' 첫 문장 '서울 시내에서 운행하던 노면전차를 통칭하는 표현'",
+    "explanation": "1899년 5월 20일 개통식을 열었는데, 아시아에서는 교토에 이어 두 번째였고 수도에 놓인 것으로는 처음이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 콜브란·보스트윅 + 개통 열흘째 아이 치인 사고",
+     "difWhy": "한성전기 교통수단 — 고교 한국사 (경계 4)",
+     "wor": 4,
+     "worWhy": "교양 — 근대 문물 도입",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "한성전기회사 … 서대문에서 청량리까지 놓인 교통수단",
+     "difWhy": "'한성전기 서대문~청량리' — 고교 한국사",
+     "wor": 4,
+     "worWhy": "교양 — 근대 문물 도입"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "한성전기회사를 세운 콜브란과 보스트윅은, 황제가 홍릉에 행차할 때마다 많은 신하가 따라가야 해 드는 낭비와 불편을 이것으로 덜 수 있다고 설득해 허가를 얻었다고 합니다. 서대문에서 종로·동대문을 거쳐 청량리까지 놓인 이 교통수단은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "한성전기회사를 세운 · 서대문에서 종로·동대문을 거쳐 청량리까지 놓인",
+     "addedCue": "일본인 운전수 철수와 미국인 운전수 8명",
+     "why": "한성전기회사·서대문~청량리 노선은 고교 한국사 문장이라 빼고 개통 직후 운영 뒷이야기로 바꿈"
+    },
+    "generalHint": "이 교통수단은 1968년까지 한국 수도의 시내를 달렸다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/서울전차"
+    ],
+    "facts": [
+     {
+      "claim": "콜브란·보스트위크의 한성전기회사, 홍릉 행차 재정 낭비를 전차로 해결한다며 허가",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/서울전차",
+      "note": "한성전기회사(漢城電氣會社)를 개업한 콜브란(H. Collbran)과 보스트위크(H.R. Bostwick)가 … / 콜브란 등은 고종황제의 홍릉 행차시에 신하를 다수 동행해야 함으로 인한 재정 낭비와 불편함을 전차로 해결할 수 있다고 설득하여 그 허가를 얻고, 황실의 투자까지 받았다고 한다."
+     },
+     {
+      "claim": "1899.5.20 개통, 아시아 교토 다음 두 번째, 수도 최초",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/서울전차",
+      "note": "1899년 5월 20일(음력 4월 초11일)에 개통식을 가지고 운행을 개시하였다. / 서울전차의 개통은 당시 아시아 지역에서는 교토에 이은 두 번째였으며, 수도에 부설된 것으로는 최초의 것이었다."
+     },
+     {
+      "claim": "운전수는 교토시전 일본인 경력자 중 선발",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/서울전차",
+      "note": "당시 운전수는 교토시전의 일본인 경력자 중에서 선발하였으며, 차장은 한국인을 채용하였다."
+     },
+     {
+      "claim": "개통 10일째 종로2가에서 5살 아이 사망",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/서울전차",
+      "note": "그러나 개통 후 10일째 되는 날 종로2가에서 5살 어린아이가 전차에 치어 죽는 일이 벌어졌다."
+     },
+     {
+      "claim": "일본인 종업원 전원 철수, 미국인 운전수 8명 모집해 재개",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/서울전차",
+      "note": "그러나 협상은 난항을 겪어, 일본인 종업원은 전원 철수하였으며, 이로 인해 5개월간 운휴하게 되었다. 이에 한성전기회사측은 미국인 운전수 8명과 기계공 2명을 급거 모집하여 동년 9월 말 경에 운행을 재개하였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/서울전차"
+    ],
+    "hintNote": "서울전차(서울電車)는 1899년부터 1968년까지 서울 시내에서 운행하던 노면전차를 통칭하는 표현이다.",
+    "easiestCue": "황제의 홍릉 행차 낭비를 덜 수 있다고 설득해 허가를 얻은 교통수단",
+    "targetWhy": "허가 경위·운전수 철수와 미국인 운전수는 교과서 밖 근대사 애호가 세부 — 회사·노선 없음",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'개항기 서울 교통수단'이면 전차를 짐작할 수 있음 — 경계 3",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/5#g009b-K1-25",
+   "seed": {
+    "subject": "경성제국대학",
+    "aspect": null,
+    "ref": "K1-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "법문학부와 의학부 두 학부로 문을 연 이 학교는, 합격생이 학부로 가려면 먼저 예과에서 2년(1934년 이후로는 3년)을 공부해야 했습니다. 청량리역 근처에 남아 있던 그 예과 본관은 2015년 4월 철거되었는데, 이 학교는 무엇일까요?",
+    "answer": "경성제국대학",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "민립대학 설립 운동을 막으려고 1924년 일본 제국의 여섯 번째 제국대학으로 세워졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "법문학부와 의학부 두 학부로 문을 연 … 예과",
+     "difWhy": "경성제대 학제 세부 — 수능 심화 (경계 3)",
+     "wor": 4,
+     "worWhy": "식민지 교육 교양",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 예과·학부 + 서울대학교 박물관에 기증",
+     "difWhy": "'일제강점기 예과 대학' — 고교 한국사",
+     "wor": 4,
+     "worWhy": "교양 — 식민지 교육 기관"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "합격생이 학부로 가려면 먼저 예과에서 2년(1934년 이후로는 3년)을 공부해야 했던 학교입니다. 청량리역 근처에 남아 있던 그 예과 본관은 2015년 4월 철거되었고, 잔해 일부는 2021년 서울대학교 박물관에 기증되었습니다. 이 학교는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "잔해 일부를 2021년 서울대학교 박물관에 기증(서울대의 전신을 바로 가리킴)",
+     "addedCue": "설립 당시 법문학부·의학부 두 학부",
+     "why": "서울대 박물관 기증이 서울대의 전신이라는 교과서 사실로 이어져 빼고 학부 구성으로 바꾼다"
+    },
+    "generalHint": "예과에서 학부로 올라갈 때는 따로 시험을 치르지 않았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/경성제국대학"
+    ],
+    "facts": [
+     {
+      "claim": "예과 2년(1934년 이후 3년)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경성제국대학",
+      "note": "합격생들은 학부에 진학하기 위해서 대학예과(大學豫科)에서 2년(1934년 이후부터는 3년)간 공부해야 했다."
+     },
+     {
+      "claim": "청량리역 인근 예과 본관 2015년 4월 철거, 2021년 서울대 박물관 기증",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경성제국대학",
+      "note": "예과 교사는 현재 동대문구 청량리역 인근에 있었고, 청량리 미주 상가 뒤 편에 본관 건물이 남아있었으나 2015년 4월 철거되었다. / 철거당시 예과 건물 잔해의 일부분은 개인이 보관하였는데, 2021년 서울대학교 박물관에 기증되었다."
+     },
+     {
+      "claim": "1924년 6번째 제국대학, 민립대학설립운동 저지",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/경성제국대학",
+      "note": "일제강점기 때 민간인들의 민립대학설립운동을 막으려고 1924년에 일본 제국의 6번째 제국대학으로 설립되었다."
+     },
+     {
+      "claim": "설립 당시 법문학부와 의학부",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경성제국대학",
+      "note": "경성제국대학의 학부는 설립당시에는 법문학부와 의학부로 구성되어 있었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/경성제국대학"
+    ],
+    "hintNote": "고등학교에서 제국대학 학부에 입학할 때는 선발고사를 거쳐서 입학한 반면, 예과에서 본과(학부)로 진학할 때는 별도의 시험을 거치지 않았다.",
+    "easiestCue": "합격생이 학부로 가려면 먼저 예과에서 2년(1934년 이후 3년)을 공부",
+    "targetWhy": "예과 제도·법문학부 구성은 근대 교육사 대학 교양 세부 (경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'서울대 박물관'에서 서울대의 전신을 떠올리는 추리로 닿을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 대학"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/5#g009b-K1-26",
+   "seed": {
+    "subject": "일장기 말소 사건",
+    "aspect": null,
+    "ref": "K1-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "여운형이 사장이던 조선중앙일보는 기자 유해붕과 함께 이 일을 했는데, 사진 전송과 인쇄 상태가 좋지 않아 처음에는 들키지 않았습니다. 이 신문은 그 뒤 휴간에 들어갔다가 이듬해 11월 발행 허가가 효력을 잃어 폐간되었는데, 이 사건은 무엇일까요?",
+    "answer": "일장기 말소 사건",
+    "acceptedAnswers": [
+     "일장기 말소"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "질문이 사건을 묻지만 \"일장기 말소\"만 쳐도 같은 대상 — B1",
+    "explanation": "같은 날 동아일보에서도 이길용 기자가 사진을 흐리게 처리해 달라고 부탁했고, 동아일보는 8월 29일 자부터 무기 정간을 당했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 여운형의 조선중앙일보 + 사진 전송·인쇄 상태 탓에 처음엔 안 들킴",
+     "difWhy": "조선중앙일보 쪽 경위 — 고교 한국사 밖 세부 (경계 3)",
+     "wor": 4,
+     "worWhy": "교양 — 교과 사건의 다른 신문 경위",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1936년 8월 13일 자 … 조선중앙일보 … 이 일",
+     "difWhy": "'1936년 8월 신문 사건' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 일장기 말소"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "여운형이 사장이던 조선중앙일보는 1936년 8월 13일 자 조간 4면에서 기자 유해붕과 함께 이 일을 했습니다. 이 신문은 그 뒤 휴간에 들어갔다가 이듬해 11월 발행 허가가 효력을 잃어 폐간되었는데, 이 사건은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1936년 8월 13일 자 조간 4면",
+     "addedCue": "사진 전송·인쇄 상태 때문에 처음에 들키지 않음",
+     "why": "날짜가 손기정 우승 보도로 바로 이어져 빼고, 조선중앙일보 쪽 경위 세부로 바꿈"
+    },
+    "generalHint": "이 일로 동아일보 사회부장이던 현진건이 1년 동안 옥살이를 했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/일장기_말소_사건"
+    ],
+    "facts": [
+     {
+      "claim": "여운형 사장·유해붕 기자, 1936년 8월 13일 조간 4면",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/일장기_말소_사건",
+      "note": "당시 조선중앙일보 사장이었던 여운형과 기자 유해붕은 1936년 8월 13일 발행한 조선중앙일보 조간 4면에서 … 일장기 마크를 지운채로 기사를 내보낸다."
+     },
+     {
+      "claim": "휴간 뒤 1937년 11월 5일 발행 허가 효력 상실로 폐간",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/일장기_말소_사건",
+      "note": "조선중앙일보는 이후 휴간에 들어갔으며, … 1937년 11월 5일 발행 허가의 효력이 상실되어 폐간되었다."
+     },
+     {
+      "claim": "동아일보 이길용 기자, 8월 29일자부터 무기 정간",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/일장기_말소_사건",
+      "note": "같은 날 여운형, 유해붕과 친밀한 관계였던 동아일보 기자 이길용은 조사부 이상범 화백에게 사진을 흐리게 처리해달라고 부탁해 일장기를 지운채로 기사를 내보낸다. / 이후 동아일보는 일제에 의해 8월 29일자부터 무기 정간 처분을 당하면서"
+     },
+     {
+      "claim": "사진 전송·인쇄 품질이 나빠 처음에는 적발되지 않음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/일장기_말소_사건",
+      "note": "사진 전송과 인쇄 상태가 좋지 않아 처음에는 발각되지 않았다. (WebFetch 요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/손기정"
+    ],
+    "hintNote": "이 사건으로 동아일보 사회부장이었던 현진건이 1년 간 감옥에서 복역하는 등 언론 종사자들이 탄압을 당했으며",
+    "easiestCue": "여운형이 사장이던 조선중앙일보의 폐간으로 이어진 사건",
+    "targetWhy": "조선중앙일보 쪽 경위(유해붕·폐간)는 한국사 심화 세부 — 교과서는 동아일보만 다룸 (경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1936년 8월 신문'에서 베를린 올림픽을 떠올리면 교과서 지식으로 닿음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 사건"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/5#g009b-K1-27",
+   "seed": {
+    "subject": "중명전",
+    "aspect": null,
+    "ref": "K1-27",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "처음에는 황실 도서관인 서양식 1층 건물 수옥헌으로 지어졌다가, 1901년 화재로 모두 탄 뒤 사바틴의 설계로 2층 벽돌 건물로 다시 지어졌습니다. 1904년 경운궁 대화재로 고종이 거처를 이곳으로 옮기면서 이름이 바뀐 이 전각은 무엇일까요?",
+    "answer": "중명전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1905년 11월 17일 을사조약이 이곳에서 체결되었고, 처음 건물은 미국 군사고문 윌리엄 다이의 아들 다이가 설계했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1904년 경운궁 대화재로 고종이 거처를 이곳으로 옮기면서",
+     "difWhy": "수옥헌·경운궁 대화재 — 한능검 심화·대학 교양",
+     "wor": 4,
+     "worWhy": "한국사 교양 — 을사늑약 현장 전각",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1904년 경운궁 대화재로 고종이 거처를 이곳으로 옮기면서",
+     "difWhy": "수옥헌·경운궁 대화재 — 한능검 심화·대학 교양",
+     "wor": 4,
+     "worWhy": "한국사 교양 — 을사늑약 현장 전각"
+    },
+    "rewrite": null,
+    "generalHint": "1907년 이준 등을 헤이그 특사로 보낸 곳도 이 전각이다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/중명전"
+    ],
+    "facts": [
+     {
+      "claim": "수옥헌, 황실 도서관, 서양식 1층",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/중명전",
+      "note": "현재의 중명전 자리에 서양식 전각 수옥헌(漱玉軒)을 지어 황실 도서관으로 삼았다. 1899년 준공된 옛 전각은 서양식 1층 건물이었으며"
+     },
+     {
+      "claim": "1901년 화재 전소 뒤 사바틴 설계 2층 벽돌 재건",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/중명전",
+      "note": "1901년 화재로 수옥헌이 전소되자 독립문, 정관헌 등을 설계한 러시아 건축가 아파나시 세레딘사바틴(A. I. Sabatin)의 설계로 2층 벽돌 건물로 재건되었다."
+     },
+     {
+      "claim": "1904년 4월 경운궁 대화재 뒤 고종 거처, 중명전으로 개칭",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/중명전",
+      "note": "1904년 4월 14일 경운궁 대화재가 일어나자 고종 황제가 거처를 수옥헌으로 옮기고 이름을 중명전으로 바꾸어 편전으로 사용하였다."
+     },
+     {
+      "claim": "1905.11.17 을사조약 체결, 다이 설계",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/중명전",
+      "note": "1905년 11월 17일, 중명전에서 을사조약이 체결되었다. / 한성부 건축기사로 초빙된 다이(J.H. Dye)가 설계하였다. 그는 당시 미국 군사고문으로 서울에 와 있던 윌리엄 다이(William McEntyre Dye)의 아들이었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/중명전"
+    ],
+    "hintNote": "이후 고종이 〈을사늑약〉의 부당함을 국제 사회에 알리고자 1907년 4월 20일 헤이그 특사로 이준 등을 파견한 곳도 중명전이다.",
+    "easiestCue": "1904년 경운궁 대화재로 고종이 거처를 이곳으로 옮기면서 이름이 바뀐 이 전각",
+    "targetWhy": "교과서 단서(을사늑약 체결 장소)를 뺐음 — 수옥헌·사바틴 재건·1904 이름 변경은 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "을사늑약으로 이름은 알려진 전각의 건물 이력",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음,모두",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/5#g009b-K1-28",
+   "seed": {
+    "subject": "헤이그 특사",
+    "aspect": null,
+    "ref": "K1-28",
+    "pairedWith": 1007
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1007,
+    "question": "김구는 한 동지와 함께 상동감리교회의 전덕기 목사를 찾아가 이 파견의 이동 경로와 경비 마련을 비밀리에 계획했습니다. 그 뒤 미국 언론인 윌리엄 스테드의 주선으로 국제주의재단 집회에서 일행 가운데 한 사람이 프랑스어로 연설했는데, 이 일행을 흔히 누구라고 부를까요?",
+    "answer": "헤이그 특사",
+    "acceptedAnswers": [
+     "헤이그 밀사"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '헤이그 밀사' → '헤이그 특사 사건' 넘겨주기(API redirects 확인)",
+    "explanation": "통역관 이위종은 프랑스어·영어·러시아어에 능했고, 정사 이상설은 블라디보스토크에서 이준과 만나 합류했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 이 파견 + 국제주의재단 집회에서 … 프랑스어로 연설",
+     "difWhy": "1907 만국평화회의 특사 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "1907년 … 대한제국의 호소 … 이준",
+     "difWhy": "이준·1907 파견 — 중학 역사",
+     "wor": 5,
+     "worWhy": "한국사 교과"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이준과 김구는 상동감리교회의 전덕기 목사를 찾아가 이 파견의 이동 경로와 경비 마련을 비밀리에 계획했습니다. 그 뒤 미국 언론인 윌리엄 스테드의 주선으로, 1907년 7월 8일 국제주의재단 집회에서 이들 가운데 한 사람이 프랑스어로 '대한제국의 호소'를 연설했습니다. 이 일행을 흔히 누구라고 부를까요?",
+     "beforeExplanation": null,
+     "removedCue": "1907년 … '대한제국의 호소' … 이준(연도·강연 제목·대표 인물)",
+     "addedCue": "(뺌만) 김구·전덕기 비밀 계획 · 스테드 주선 집회 연설",
+     "why": "1907년·이준·'대한제국의 호소' 는 중학 역사로 바로 풀려 빼고 준비·연설 경위 세부만 남김"
+    },
+    "generalHint": "이들은 회의를 주재한 러시아 수석 대표 넬리도프 백작을 찾아갔지만 면회를 거절당했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/헤이그_특사"
+    ],
+    "facts": [
+     {
+      "claim": "이준과 김구가 상동감리교회 전덕기 목사와 비밀 계획",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/헤이그_특사",
+      "note": "이준과 김구는 상동감리교회의 전덕기 목사를 찾아가 비밀리에 헤이그 특사 파견의 계획을 세우고, 특사의 이동 경로와 이동 경비와 활동 자금 마련을 시작하였다."
+     },
+     {
+      "claim": "스테드 주선으로 국제주의재단 집회 연설 기회",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/헤이그_특사",
+      "note": "7월 8일 그의 주선으로 한국 대표들은 평화회의를 계기로 개최된 <국제주의재단>(Foundation for Internationalism) 집회에서 연설을 할 수 있는 기회를 얻게 되었다."
+     },
+     {
+      "claim": "일행 중 이위종이 프랑스어로 강연",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/헤이그_특사",
+      "note": "이위종은 유창한 프랑스어, 영어, 러시아어 실력으로 대한제국의 비통한 실정을 호소하는 《대한제국의 호소》(A plea for Korea)라는 제목의 이위종의 프랑스어 강연"
+     },
+     {
+      "claim": "이상설은 블라디보스토크에서 이준과 합류",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/헤이그_특사",
+      "note": "이후 이준은 블라디보스토크에서 전 의정부 참찬 이상설을 만나"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/헤이그_특사_사건"
+    ],
+    "hintNote": "다음 날인 6월 29일 밀사는 회의를 주재한 러시아 제국 수석 대표 넬리도프 백작(Aleksandr I.Nelidov)을 방문하지만, 면회를 거절당한다.",
+    "easiestCue": "상동감리교회 전덕기 목사와 비밀리에 계획한 파견",
+    "targetWhy": "상동교회 계획·스테드 주선 연설은 교과서 밖 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1907년 + 이준'이 교과서 연결이라 이준 이름이 쉬운 쪽 단서일 수 있음(경계 3)",
+    "pairCheck": "1회차 #1007 q 1907 만국평화회의 회의장에 들어가지 못한 세 사람 · e 고종 강제 퇴위 · h 없음 — 상동교회 계획·스테드 주선 연설은 겹치지 않음",
+    "dbCheck": "pair-or-different — 활성 #1007 1건, 같은 답 2회차 (ban 표시는 이 초안 자신을 센 것 — 다른 job 초안 0)",
+    "warn": [],
+    "first": {
+     "id": 1007,
+     "question": "1907년 고종이 을사늑약의 부당함을 알리려 네덜란드에서 열린 만국평화회의에 보냈으나 회의장에 들어가지 못한 세 사람을 무엇이라 부릅니까?",
+     "explanation": "이 일을 빌미로 일본은 고종을 강제로 물러나게 했습니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "kr-history/5#g009b-K1-29",
+   "seed": {
+    "subject": "원산 총파업",
+    "aspect": null,
+    "ref": "K1-29",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일제 강점기 한 항구 도시의 노동자들이 일손을 놓자, 마침 그 항구에 정박해 있던 일본 선원들은 상업회의소가 요청한 대체 노동을 거부하고 함께 일을 멈추기도 했습니다. 상업회의소가 앞장서 폭력배를 대거 들인 어용 노조 '함남노동회'를 세워 맞선, 석 달 넘게 이어진 이 일은 무엇일까요?",
+    "answer": "원산 총파업",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1929년 1월 13일부터 4월 6일까지 이어졌고, 조선총독부의 대대적인 검속도 파업이 끝난 까닭이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "상업회의소가 … 어용 노조 '함남노동회' … 석 달 넘게",
+     "difWhy": "1929 원산 노동 쟁의 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "문평 라이징선 제유회사에서 일본인 감독이 휘두른 폭력",
+     "difWhy": "라이징선 발단 파업 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "영국계 회사인 문평 라이징선 제유회사에서 일본인 감독이 휘두른 폭력이 발단이 되어, 그 지역 노동자 대부분이 참여하는 대규모 파업으로 커졌습니다. 노동연합회와 상업회의소가 정면으로 맞섰고, 석 달 넘게 이어지다 지도부가 바뀌고 노동자들이 갈라지며 일단락된 이 일은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "라이징선 제유회사 일본인 감독의 폭력(교과서 발단) · 노동연합회 대 상업회의소",
+     "addedCue": "일본 선원의 대체 노동 거부 · 어용 노조 함남노동회",
+     "why": "교과서가 적는 발단을 빼고 교과서 밖 경과 세부 둘로"
+    },
+    "generalHint": "중국과 프랑스, 러시아 블라디보스토크의 노동자들이 이 일에 연대 전문을 보내왔다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/원산_총파업"
+    ],
+    "facts": [
+     {
+      "claim": "3개월 넘게, 지도부 교체·노동자 분열·검속으로 일단락",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/원산_총파업",
+      "note": "3개월을 넘게 지속되던 파업은 지도부가 교체되고 파업에 참여한 노동자가 분열되는 가운데 조선총독부의 대대적인 검속마저 강화되면서 일단락 되었다."
+     },
+     {
+      "claim": "1929년 1월 13일~4월 6일",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/원산_총파업",
+      "note": "원산 총파업(元山 總罷業)은 1929년 1월 13일부터 4월 6일까지 원산시에서 있었던 총파업이다."
+     },
+     {
+      "claim": "정박한 일본 선원들이 원산상의의 대체 노동 요청을 거부하고 연대 파업",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/원산_총파업",
+      "note": "때마침 원산에 정박한 일본 선원들은 원산상의가 요청한 대체 노동을 거부하였고 연대 파업을 벌이기도 하였다."
+     },
+     {
+      "claim": "상의가 주도해 세운 함남노동회는 폭력배가 대거 투입된 어용노조",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/원산_총파업",
+      "note": "2월 19일 상의가 주도하여 설립된 함남노동회는 폭력배가 대거 투입된 어용노조로 파업파괴자였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/원산_총파업"
+    ],
+    "hintNote": "국내 각지에서 신간회를 비롯한 여러 단체가 후원 물자를 보내며 연대하였고, 중국과 프랑스, 러시아 블라디보스토크의 노동자들이 연대 전문을 보내왔다.",
+    "easiestCue": "어용 노조 '함남노동회'",
+    "targetWhy": "일본 선원 연대·함남노동회는 한국 근대사 애호가 세부(경계 3)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서 사건의 발단 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 파업"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/5#g009b-K1-30",
+   "seed": {
+    "subject": "암태도 소작 쟁의",
+    "aspect": null,
+    "ref": "K1-30",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1924년 4월 섬의 농민들은 지주 아버지의 송덕비를 부쉈고, 7월에는 600명이 목포의 법원 앞에서 단식 투쟁을 벌였습니다. 그해 8월 목포경찰서장실에서 지주가 농민 단체에 2,000원을 기부하고 부서진 비석은 그 단체가 복구한다는 중재안으로 끝난 이 일은 무엇일까요?",
+    "answer": "암태도 소작 쟁의",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1923년 8월부터 1924년 8월까지 이어졌고, 그 섬은 당시 전라남도 무안군에 속했습니다(오늘날 신안군).",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 1924년 섬의 농민 + 목포 법원 앞 단식 투쟁",
+     "difWhy": "섬·목포 소작 쟁의 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "교과서 — 일제강점기 농민 운동",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "지주 문재철, 서태석의 소작인회",
+     "difWhy": "'1920년대 섬 소작 쟁의' — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 사건"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "지주 문재철이 소작료를 7~8할까지 끌어올리자, 서태석이 이끈 소작인회는 4할 이하로 내리라고 요구하며 추수 거부와 소작료 불납으로 맞섰습니다. 1924년 4월에는 성난 소작농들이 지주 아버지의 송덕비를 부수기도 한 이 일은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "지주 문재철 · 서태석의 소작인회 · 소작료 7~8할 → 4할 요구(교과서 서술)",
+     "addedCue": "600명 목포 법원 앞 단식 · 2,000원 기부·비석 복구 중재안",
+     "why": "교과서 서술(인물·소작료 비율)을 빼고 쟁의 경과·결말 세부로"
+    },
+    "generalHint": "농민들은 섬 밖에 호소하려 1924년 4월 전조선노동대회에 대표를 보내기도 했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/암태도_소작쟁의"
+    ],
+    "facts": [
+     {
+      "claim": "1924년 4월 22일 송덕비 파괴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/암태도_소작쟁의",
+      "note": "분개한 소작농들이 4월 22일 송덕비를 파괴했다. / 문재철 아버지 송덕비를 파괴하기로 결의했다."
+     },
+     {
+      "claim": "1923.8~1924.8, 무안군 암태면(오늘날 신안군)",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/암태도_소작쟁의",
+      "note": "암태도 소작쟁의(巖泰島小作爭議)는 1923년 8월부터 1924년 8월 사이에 전라남도 무안군 암태면(오늘날의 신안군 암태면)에서 일어난 소작쟁의이다."
+     },
+     {
+      "claim": "7월 8일부터 600명이 법원 앞 단식투쟁(목포)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/암태도_소작쟁의",
+      "note": "7월 8일부터는 600 명이 법원 앞에서 단식투쟁을 전개했다. (앞서 6월 4~8일 소작농 400여 명이 목포경찰서와 목포법원 앞에서 시위농성)"
+     },
+     {
+      "claim": "8월 30일 목포경찰서장실 중재 — 소작료 4할, 지주가 소작인회에 2,000원 기부, 비석은 소작인회가 복구",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/암태도_소작쟁의",
+      "note": "(문서 요지) 8월 30일 목포경찰서장실에서 중재안 합의 — 소작료 4할, 지주가 소작인회에 2,000원 기부, 파손된 비석은 소작인회가 복구"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/암태도_소작쟁의"
+    ],
+    "hintNote": "지주와의 싸움으로만 문제를 해결할 수 없다고 판단한 소작인회는 섬 밖의 언론, 노동단체에 호소하였고 1924년 4월 15일 전조선노동대회에 대표를 파견하기도 했다.",
+    "easiestCue": "600명이 목포의 법원 앞에서 단식 투쟁",
+    "targetWhy": "목포 단식·중재안 조건은 한국 근대사 애호가 세부(경계 3)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'소작료'에서 소작 쟁의는 알지만 어느 것인지는 세부가 필요",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 소작"
+    ]
+   }
+  }
+ ]
+}

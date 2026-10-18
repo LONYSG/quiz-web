@@ -1,0 +1,898 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "ball-sports/1",
+  "midKey": "ball-sports",
+  "subName": "농구",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "ball-sports/1#g009b-S2-01",
+   "seed": {
+    "subject": "점프볼",
+    "aspect": null,
+    "ref": "S2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제임스 네이스미스가 처음 만든 농구 규칙에서는 골이 들어갈 때마다 이것으로 경기를 다시 열었습니다. 1937년 미국 대학 농구(NCAA)가 이 규칙을 처음 바꿔 골을 내준 팀에게 공을 주게 했는데, 이것은 무엇일까요?",
+    "answer": "점프볼",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "미국 남자 대학 농구는 1981-82 시즌부터 이런 상황에서 두 팀에 번갈아 공을 주는 '교대 소유 화살표' 규칙을 썼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "골이 들어갈 때마다 이것으로 경기를 다시 열었습니다",
+     "difWhy": "경기 재개 방식 — 농구 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "규칙 변천 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "매 쿼터를 시작할 때 … 이것으로 경기를 다시 열었습니다",
+     "difWhy": "경기 시작 점프볼 — 방송에서 흔히 (경계 3)",
+     "wor": 3,
+     "worWhy": "농구 규칙 변천 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "제임스 네이스미스가 처음 만든 농구 규칙에서는 매 쿼터를 시작할 때뿐 아니라 골이 들어갈 때마다 이것으로 경기를 다시 열었습니다. 1937년 미국 대학 농구(NCAA)가 이 규칙을 처음 바꿔 골을 내준 팀에게 공을 주게 했는데, 이것은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "매 쿼터를 시작할 때뿐 아니라 (경기 시작 = 중계에서 흔히 보는 장면)",
+     "addedCue": "(뺌) 골마다 다시 열던 첫 규칙 + 1937 NCAA 변경",
+     "why": "'쿼터 시작' 이 중계에서 늘 보는 장면이라 빼고 득점 뒤 재개라는 옛 규칙만 남김"
+    },
+    "generalHint": "NBA는 1975년부터 2~4쿼터를 시작할 때 공 소유를 이것으로 정하지 않았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Jump_ball"
+    ],
+    "facts": [
+     {
+      "claim": "네이스미스의 첫 규칙은 매 쿼터 시작과 골이 들어갈 때마다 점프볼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jump_ball",
+      "note": "James Naismith's original rules for basketball included a jump ball to begin every quarter, and after every basket scored."
+     },
+     {
+      "claim": "1937년 NCAA가 처음 바꿔 골을 내준 팀에 공을 줌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jump_ball",
+      "note": "The NCAA first changed these rules in 1937, awarding possession after baskets to the scored-upon team."
+     },
+     {
+      "claim": "1981-82 시즌 남자 대학 농구 교대 소유 화살표",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jump_ball",
+      "note": "The alternating possession arrow rule went into effect in men's college basketball beginning with the 1981-82 season."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jump_ball"
+    ],
+    "hintNote": "The NBA stopped using jump balls for 2nd-4th quarter possession in 1975",
+    "easiestCue": "골이 들어갈 때마다 이것으로 경기를 다시 열었습니다",
+    "targetWhy": "골마다 재개하던 초기 규칙·1937 변경은 농구 애호가 세부 (경계 3)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "점프볼은 누구나 아는 이름, 골마다 점프볼을 했다는 규칙 역사는 '이거 알아?' 거리",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g009b-S2-02",
+   "seed": {
+    "subject": "3점슛",
+    "aspect": null,
+    "ref": "S2-02",
+    "pairedWith": 1458
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1458,
+    "question": "에이브 세이퍼스타인이 1961년 새로 만든 아메리칸 바스켓볼 리그(ABL)는 이 슛을 처음 리그 규칙으로 들인 리그가 되었습니다. 그는 \"우리에게는 무기가 있어야 한다\"고 말했는데, 이 슛은 무엇일까요?",
+    "answer": "3점슛",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '3점 슛' → '3점슛' 넘겨주기(띄어쓰기만 달라 정규화로 같음)",
+    "explanation": "NBA는 1979년 6월 이 슛을 우선 한 해 시험으로 들였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1961년 새로 만든 아메리칸 바스켓볼 리그(ABL)는 이 슛을 처음 리그 규칙으로",
+     "difWhy": "ABL 최초 도입 — 농구 애호가",
+     "wor": 3,
+     "worWhy": "규칙 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "NBA는 1979년 6월 이 슛을 우선 한 해 시험으로 들였는데",
+     "difWhy": "'NBA 1979 시험 도입 슛' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 규칙 도입사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "에이브 세이퍼스타인이 1961년 새로 만든 아메리칸 바스켓볼 리그(ABL)는 이 슛을 처음 리그 규칙으로 들인 리그가 되었고, 그는 \"우리에게는 무기가 있어야 한다\"고 말했습니다. NBA는 1979년 6월 이 슛을 우선 한 해 시험으로 들였는데, 이 슛은 무엇일까요?",
+     "beforeExplanation": "NBA 첫 번째 이 슛은 1979년 10월 12일 보스턴 셀틱스의 크리스 포드가 넣은 것으로 꼽힙니다.",
+     "removedCue": "NBA 1979년 6월 한 해 시험 도입",
+     "addedCue": "없음 — ABL·세이퍼스타인과 그의 말",
+     "why": "NBA 도입 연도를 해설로 돌려 ABL 뒷이야기로만"
+    },
+    "generalHint": "국제농구연맹(FIBA)은 1984년에야 6.25m 거리로 이 슛을 규칙에 넣었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Three-point_field_goal"
+    ],
+    "facts": [
+     {
+      "claim": "1961년 세이퍼스타인의 ABL이 처음 리그 규칙으로 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Three-point_field_goal",
+      "note": "Abe Saperstein's new American Basketball League ... became the first basketball league to institute the rule in 1961."
+     },
+     {
+      "claim": "세이퍼스타인의 말 '무기가 있어야 한다'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Three-point_field_goal",
+      "note": "Saperstein said, \"We must have a weapon,\" ... \"this is ours.\""
+     },
+     {
+      "claim": "NBA 1979년 6월 한 해 시험으로 도입",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Three-point_field_goal",
+      "note": "the NBA ... adopted the three-point line (initially on a one-year trial) in June 1979"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Three-point_field_goal"
+    ],
+    "hintNote": "FIBA introduced the three-point line in 1984, at 6.25 m (20 ft 6 in).",
+    "easiestCue": "세이퍼스타인이 1961년 새로 만든 ABL 은 이 슛을 처음 리그 규칙으로",
+    "targetWhy": "ABL·세이퍼스타인은 농구 애호가가 아는 규칙 탄생 사연",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'새 리그의 무기·1979 NBA 시험 도입'으로 규칙 변화를 떠올리면 추리로도 닿을 수 있음",
+    "pairCheck": "1회차 질문(먼 거리 득점·뒤에 도입)·해설(바깥 전술)과 겹치지 않음 — ABL 1961·세이퍼스타인 말·NBA 1979 시험 도입만 씀, 1회차 힌트 없음",
+    "dbCheck": "pair-or-different — 활성 1458 과 같은 답, (가) 2회차로 지식이 다름",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 1458,
+     "question": "농구에서 먼 거리에서 넣으면 점수를 더 주는 규칙은 무엇일까요? 처음부터 있던 규칙이 아니라 뒤에 도입되어 경기 양상을 크게 바꿨습니다.",
+     "explanation": "키 큰 선수의 골밑 싸움 위주이던 경기에 바깥에서 던지는 전술을 끌어들였습니다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g009b-S2-03",
+   "seed": {
+    "subject": "앨리웁",
+    "aspect": null,
+    "ref": "S2-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 농구 플레이의 이름은 1950년대 미식축구 샌프란시스코 49ers에서 먼저 쓰였습니다. 쿼터백 Y. A. 티틀이 높이 띄워 던지면 와이드 리시버 R. C. 오언스가 받던 패스를 가리킨 말이 뒤에 농구로 건너왔는데, 이 플레이는 무엇일까요?",
+    "answer": "앨리웁",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 없음 — 한국 중계·기사 표기 '앨리웁'(띄어쓰기 '앨리 웁'은 정규화로 같음)",
+    "explanation": "이 말은 곡예사가 뛰어오르기 직전에 외치던 프랑스어 '알레 오프(allez hop)'에서 왔다고 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "쿼터백이 높이 띄워 던지면 와이드 리시버가 받던 패스",
+     "difWhy": "49ers 유래 용어 — 농구 애호가",
+     "wor": 3,
+     "worWhy": "농구 용어 유래 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "쿼터백이 높이 띄워 던지면 와이드 리시버가 받던 패스",
+     "difWhy": "49ers 유래 용어 — 농구 애호가",
+     "wor": 3,
+     "worWhy": "농구 용어 유래 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "1950년대 중반 샌프란시스코 대학의 K. C. 존스와 빌 러셀이 이 플레이를 함께 했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Alley-oop_(basketball)"
+    ],
+    "facts": [
+     {
+      "claim": "1950년대 49ers에서 티틀→오언스의 높은 패스를 가리키며 처음 쓰임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alley-oop_(basketball)",
+      "note": "first appeared in the 1950s by the San Francisco 49ers of the NFL ... to describe a high arcing pass from quarterback Y. A. Tittle to wide receiver R.C. Owens."
+     },
+     {
+      "claim": "뒤에 농구에서 더 널리 알려짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alley-oop_(basketball)",
+      "note": "later became better known from its use in basketball."
+     },
+     {
+      "claim": "프랑스어 allez hop 에서 옴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Alley-oop_(basketball)",
+      "note": "derived from the French term allez hop!, the cry of a circus acrobat about to leap."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Alley-oop_(basketball)"
+    ],
+    "hintNote": "K.C. Jones and Bill Russell worked together on the play at the University of San Francisco in the mid-1950s.",
+    "easiestCue": "쿼터백 Y. A. 티틀이 높이 띄워 던지면 와이드 리시버 R. C. 오언스가 받던 패스",
+    "targetWhy": "기술 이름이 미식축구에서 왔다는 뒷이야기 — 농구·미식축구 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 플레이 이름의 뜻밖의 출처",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g009b-S2-04",
+   "seed": {
+    "subject": "식스맨",
+    "aspect": null,
+    "ref": "S2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "보스턴 셀틱스의 레드 아워바크 감독은 밥 쿠지·빌 샤먼 뒤에 서던 가드 프랭크 램지에게 이 역할을 맡겼습니다. 2022~23 시즌부터 NBA가 이 역할을 한 해 동안 가장 잘 해낸 선수에게 주는 트로피에는 램지의 뒤를 이은 존 하블리첵의 이름이 붙었는데, 이 역할은 무엇일까요?",
+    "answer": "식스맨",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '식스맨'",
+    "explanation": "1965년 무렵에는 필라델피아의 빌리 커닝햄도 이 역할을 맡는 등 다른 팀으로 퍼졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "밥 쿠지·빌 샤먼 뒤에 서던 가드 … 이 역할",
+     "difWhy": "벤치 첫 교체 역할 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "농구 용어 유래 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "주전 뒤에 서던 가드를 이 역할로 … 아워바크가 처음 만든",
+     "difWhy": "벤치 첫 교체 역할 — 농구 관심층",
+     "wor": 3,
+     "worWhy": "농구 용어 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "보스턴 셀틱스의 레드 아워바크 감독은 밥 쿠지·빌 샤먼 뒤에 서던 가드 프랭크 램지를 이 역할로 썼고, 램지의 뒤를 이은 존 하블리첵은 이 역할을 크게 바꿔 놓았다는 평을 받습니다. 아워바크가 처음 만든 것으로 알려진 이 역할은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "아워바크가 처음 만든 것으로 알려진 이 역할 · 하블리첵이 이 역할을 크게 바꿔 놓았다는 평",
+     "addedCue": "2022~23 시즌부터의 존 하블리첵 트로피",
+     "why": "'아워바크가 만든 벤치 첫 교체 역할'은 농구 관심층의 첫 줄 사실이라 빼고 상 트로피 이름의 유래로 바꿈"
+    },
+    "generalHint": "하블리첵의 이름을 단 그 트로피는 2023년 보스턴의 맬컴 브록던에게 돌아갔다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sixth_man",
+     "https://en.wikipedia.org/wiki/NBA_Sixth_Man_of_the_Year_Award"
+    ],
+    "facts": [
+     {
+      "claim": "쿠지·샤먼 뒤의 가드 프랭크 램지를 처음 씀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sixth_man",
+      "note": "He first used guard Frank Ramsey, who played behind the Hall-of-Fame duo of Bob Cousy and Bill Sharman."
+     },
+     {
+      "claim": "하블리첵이 램지를 이어 역할을 바꿔 놓음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sixth_man",
+      "note": "John Havlicek, who succeeded Ramsey and revolutionized the role during his 16-year career."
+     },
+     {
+      "claim": "1965년 무렵 빌리 커닝햄이 식서스에서 이 역할",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sixth_man",
+      "note": "by 1965, Billy Cunningham had taken on the role for the Sixers"
+     },
+     {
+      "claim": "2022~23 시즌부터 수상자는 존 하블리첵 트로피를 받음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/NBA_Sixth_Man_of_the_Year_Award",
+      "note": "Since the 2022–23 NBA season, winners receive the John Havlicek Trophy, named after the eight-time NBA champion."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/2022–23_NBA_season",
+     "https://en.wikipedia.org/wiki/Malcolm_Brogdon"
+    ],
+    "hintNote": "Sixth Man of the Year trophies were then renamed in honor of … John Havlicek / Brogdon was the 2023 NBA Sixth Man of the Year. … accept a bench role as the Celtics' sixth man.",
+    "easiestCue": "NBA 트로피에 존 하블리첵의 이름이 붙은 역할",
+    "targetWhy": "하블리첵 트로피·램지 기용은 NBA 애호가 세부 — '처음 만든 역할' 문장 없음 (경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "식스맨은 들어 본 말, 그 기원(아워바크·램지)은 교과·방송 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g009b-S2-05",
+   "seed": {
+    "subject": "골텐딩",
+    "aspect": null,
+    "ref": "S2-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 반칙은 사람의 몸으로는 할 수 없는 일이라 여겨져 한동안 규칙에서 다루지도 않았습니다. 1944년 미국 대학 농구(NCAA)가 키 208cm 센터 조지 마이칸이 높이 뛰는 것을 보고 새로 금지한 이 반칙은 무엇일까요?",
+    "answer": "골텐딩",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 없음 — 한국 농구 중계·규칙 해설 표기 '골텐딩'",
+    "explanation": "NBA에서는 날아가던 공이 림 높이보다 위에서 백보드에 닿은 뒤 건드려도 이 반칙이 됩니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "조지 마이칸이 높이 뛰는 것을 보고 새로 금지한 이 반칙",
+     "difWhy": "마이칸 규칙 — 농구 애호가",
+     "wor": 3,
+     "worWhy": "농구 기본 규칙 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "조지 마이칸이 높이 뛰는 것을 보고 새로 금지한 이 반칙",
+     "difWhy": "마이칸 규칙 — 농구 애호가",
+     "wor": 3,
+     "worWhy": "농구 기본 규칙 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "NCAA에 이어 프로 리그 NBL도 뒤따라 이 반칙을 금지했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Goaltending"
+    ],
+    "facts": [
+     {
+      "claim": "1944년 NCAA가 금지 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Goaltending",
+      "note": "The prohibition against goaltending was adopted by the NCAA in 1944"
+     },
+     {
+      "claim": "조지 마이칸 때문 — 6피트 10인치(약 208cm) 센터",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Goaltending",
+      "note": "specifically because of George Mikan, the 6-foot-10 center whose high jumping made the rule necessary"
+     },
+     {
+      "claim": "그 전에는 신체적으로 불가능하다고 여겨 다루지 않음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Goaltending",
+      "note": "was not addressed because it was thought physically impossible."
+     },
+     {
+      "claim": "NBA는 림 높이 위에서 백보드에 닿은 공을 건드리면 골텐딩",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Goaltending",
+      "note": "the NBA calls goaltending when the ball has touched the backboard above the rim's height during its flight"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Goaltending_(basketball)"
+    ],
+    "hintNote": "The prohibition against goaltending was adopted by the NCAA in 1944 (and later by the NBL) specifically because of George Mikan.",
+    "easiestCue": "1944년 미국 대학 농구(NCAA)가 키 208cm 센터 조지 마이칸이 높이 뛰는 것을 보고 새로 금지한",
+    "targetWhy": "규칙이 한 선수 때문에 생긴 사연 — 농구 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "반칙 이름은 농구팬에게 익숙, 탄생 사연은 깊은 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g009b-S2-06",
+   "seed": {
+    "subject": "드리블",
+    "aspect": null,
+    "ref": "S2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제임스 네이스미스가 처음 만든 농구에는 팀원에게 튀겨 주는 바운드 패스 말고는 이 동작이 없었고, 공은 주로 패스로 옮겼습니다. 겉에 끈이 달리고 모양이 고르지 않은 초기 공 때문에 한동안 어려웠다가 1896년 무렵 흔해진 이 동작은 무엇일까요?",
+    "answer": "드리블",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1898년 무렵에는 두 번 이어 하는 것을 막는 규칙도 생겼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 1,
+     "easiestCue": "공은 주로 패스로 옮겼습니다 … 이 동작",
+     "difWhy": "농구 공 튀기며 옮기기 — 일상",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 초기 농구",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "공은 주로 패스로 옮겼습니다 … 이 동작",
+     "difWhy": "농구 공 튀기며 옮기기 — 일상",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 초기 농구"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "정답이 농구의 기본 동작이라, 초기 공의 끈·모양이나 '두 번 이어 하기 금지' 등 남는 단서마다 일상 지식으로 바로 추론되고 빼면 덩크·점프슛 등과 갈리지 않음 — 확인되는 깊은 세부로 바꿀 수 없음"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Basketball"
+    ],
+    "facts": [
+     {
+      "claim": "원래 경기에는 바운드 패스 말고 드리블이 없었고 패스가 주된 이동 수단",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Basketball",
+      "note": "Dribbling was not part of the original game except for the \"bounce pass\" to teammates."
+     },
+     {
+      "claim": "초기 공의 고르지 않은 모양과 끈 때문에 드리블이 어려움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Basketball",
+      "note": "Dribbling was eventually introduced but limited by the asymmetric shape of early balls. ... These laces could cause bounce passes and dribbling to be unpredictable."
+     },
+     {
+      "claim": "1896년 무렵 흔해짐, 1898년 무렵 더블 드리블 금지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Basketball",
+      "note": "Dribbling was common by 1896, with a rule against the double dribble by 1898."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "팀원에게 튀겨 주는 바운드 패스 말고는 이 동작이 없었고, 공은 주로 패스로 옮겼습니다",
+    "targetWhy": "초기 농구에 드리블이 없었다는 사실 — 농구 역사 애호가(추리로 닿을 여지 있음)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'패스로만 옮겼다'에서 빠진 동작을 추리할 수 있어 3 이 될 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (활성 더블 드리블 1461 은 다른 답·다른 지식)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g009b-S2-07",
+   "seed": {
+    "subject": "테니스 코트",
+    "aspect": null,
+    "ref": "S2-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "농구가 처음 올림픽 정식 메달 종목이 된 1936년 베를린 대회에서는 경기가 실내 체육관이 아니라 잔디와 흙으로 된 이곳에서 열렸습니다. 결승은 쏟아지는 비 속에 치러져 코트가 진창이 됐는데, 원래 다른 구기 종목을 위한 이곳은 어디였을까요?",
+    "answer": "테니스 코트",
+    "acceptedAnswers": [
+     "테니스장"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "'테니스장'은 표준국어대사전 일반어로 같은 대상의 흔한 다른 이름(B1)",
+    "explanation": "진창이 된 결승에서 미국이 캐나다를 19-8로 이겼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 1936 베를린 농구 + 잔디와 흙 + 다른 구기 종목용",
+     "difWhy": "'베를린 농구 경기장' — 스포츠 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 진흙 결승 일화",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "엮음: 1936 베를린 농구 + 잔디와 흙 + 다른 구기 종목용",
+     "difWhy": "'베를린 농구 경기장' — 스포츠 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 진흙 결승 일화"
+    },
+    "rewrite": null,
+    "generalHint": "이곳은 본래 바닥 한가운데에 낮은 네트를 가로질러 치고 쓰는 곳이다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Basketball_at_the_1936_Summer_Olympics"
+    ],
+    "facts": [
+     {
+      "claim": "1936년이 농구의 첫 올림픽 정식 메달 종목",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Basketball_at_the_1936_Summer_Olympics",
+      "note": "was the first appearance of the sport of basketball as an official Olympic medal event."
+     },
+     {
+      "claim": "잔디와 흙 테니스 코트에서 경기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Basketball_at_the_1936_Summer_Olympics",
+      "note": "Lawn and dirt tennis courts were used for the competition"
+     },
+     {
+      "claim": "결승은 폭우 속에 진창",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Basketball_at_the_1936_Summer_Olympics",
+      "note": "The final was played in driving rain, turning the court into a quagmire."
+     },
+     {
+      "claim": "미국이 캐나다를 19-8로 이김",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Basketball_at_the_1936_Summer_Olympics",
+      "note": "The United States beat Canada 19–8 in the gold medal game."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": "(일반 지식 — 경기장 구조) Lawn and dirt tennis courts were used for the competition (en.wikipedia Basketball at the 1936 Summer Olympics, 질문 사실 확인용)",
+    "easiestCue": "잔디와 흙으로 된 이곳 … 원래 다른 구기 종목을 위한 이곳",
+    "targetWhy": "첫 올림픽 농구의 경기장 사정 — 올림픽·농구 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'잔디와 흙의 다른 구기 경기장'에서 테니스를 추리할 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 코트",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g009b-S2-08",
+   "seed": {
+    "subject": "백보드",
+    "aspect": null,
+    "ref": "S2-08",
+    "pairedWith": 1464
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1464,
+    "question": "1979년 NBA의 대릴 도킨스는 덩크로 이것을 두 번이나 산산조각 냈습니다. 그 뒤 NBA는 이것을 깨뜨리는 것을 막는 규칙을 만들었는데, 이것은 무엇일까요?",
+    "answer": "백보드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "힘을 받으면 젖혀졌다 돌아오는 림이 특허를 받아 나오면서 이런 일이 크게 줄었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "덩크로 이것을 두 번이나 산산조각",
+     "difWhy": "덩크로 깨지는 농구 장비 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 규칙 탄생",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "덩크로 이것을 두 번이나 산산조각",
+     "difWhy": "덩크로 깨지는 농구 장비 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 규칙 탄생"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "덩크로 깨진다는 것이 이 장비의 대표 사실이라 빼면 남는 단서가 없고, 다른 파손 일화(척 코너스)도 같은 '깨짐' 단서 — 1회차 기원과 겹치지 않는 깊은 세부를 찾지 못함"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Slam_dunk"
+    ],
+    "facts": [
+     {
+      "claim": "1979년 도킨스가 덩크로 두 번 백보드를 깨뜨림 → 백보드 파손 금지 규칙",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Slam_dunk",
+      "note": "in 1979, Darryl Dawkins twice shattered NBA backboards with dunks, which led to a rule against breaking the backboard (요지)"
+     },
+     {
+      "claim": "꺾이는 림 특허로 백보드 파손이 크게 줄어듦",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Slam_dunk",
+      "note": "making dunking safe for the first time by significantly reducing the shattering of backboards."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "덩크로 이것을 두 번이나 산산조각 냈습니다",
+    "targetWhy": "도킨스의 백보드 파손 일화 — 관심층~애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "덩크로 깨지는 물건을 추리하기 쉬워 3 일 가능성 큼",
+    "pairCheck": "1회차 질문(관중 방해 막으려 세움)·해설(전술의 일부)과 겹치지 않음 — 1979 도킨스·파손 금지 규칙만, 1회차 힌트 없음",
+    "dbCheck": "pair-or-different — 활성 1464 와 같은 답, (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 1464,
+     "question": "본래 관중이 공을 건드리는 것을 막으려 세웠다가 지금은 슛을 맞혀 넣는 도구가 된, 림 뒤의 판을 무엇이라 합니까?",
+     "explanation": "방해를 막으려던 장치가 전술의 일부가 된 사례입니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g009b-S2-09",
+   "seed": {
+    "subject": "덩크",
+    "aspect": null,
+    "ref": "S2-09",
+    "pairedWith": 1463
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1463,
+    "question": "1936년 뉴욕 매디슨 스퀘어 가든에서 맥퍼슨 글로브 리파이너스의 조 포튼베리가 이 슛을 선보였습니다. 1976년 ABA 올스타전 하프타임에는 이 슛만으로 겨루는 대회가 처음 열렸는데, 이 슛은 무엇일까요?",
+    "answer": "덩크",
+    "acceptedAnswers": [
+     "덩크슛",
+     "슬램 덩크"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '덩크' · 한국 중계에서 '덩크슛'·'슬램 덩크'도 같은 슛으로 흔히 씀(B1)",
+    "explanation": "그해 3월 뉴욕 타임스의 아서 데일리는 포튼베리의 모습을 '카페테리아 손님이 롤빵을 커피에 적시는 것 같다'고 썼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1976년 ABA 올스타전 하프타임에는 이 슛만으로 겨루는 대회가 처음 열렸는데",
+     "difWhy": "올스타 슛 콘테스트 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "슛 이름 유래 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "'카페테리아 손님이 롤빵을 커피에 적시는 것 같다'",
+     "difWhy": "빵을 커피에 적시는 슛 — 방송·일상 어휘",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 덩크 어원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1936년 뉴욕 매디슨 스퀘어 가든에서 맥퍼슨 글로브 리파이너스의 조 포튼베리가 이 슛을 선보였습니다. 그해 3월 뉴욕 타임스의 아서 데일리는 그 모습을 '카페테리아 손님이 롤빵을 커피에 적시는 것 같다'고 썼는데, 이 슛은 무엇일까요?",
+     "beforeExplanation": "'슬램 덩크'라는 이름은 LA 레이커스 중계 아나운서 칩 헌이 만들었습니다.",
+     "removedCue": "'카페테리아 손님이 롤빵을 커피에 적시는 것 같다'",
+     "addedCue": "1976 ABA 올스타전 하프타임 첫 대회",
+     "why": "롤빵을 커피에 '적신다' 가 낱말 뜻 그대로라 해설로 옮기고 대회의 시작으로 바꿨다"
+    },
+    "generalHint": "1984년 NBA가 처음 연 이 슛 대회에서는 래리 낸스가 우승했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Slam_dunk"
+    ],
+    "facts": [
+     {
+      "claim": "1936년 매디슨 스퀘어 가든에서 맥퍼슨 글로브 리파이너스의 포튼베리가 덩크",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Slam_dunk",
+      "note": "Joe Fortenberry, playing for the McPherson Globe Refiners, dunked the ball in 1936 in Madison Square Garden."
+     },
+     {
+      "claim": "뉴욕 타임스 아서 데일리가 1936년 3월 기사로 남김",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Slam_dunk",
+      "note": "The feat was immortalized by Arthur Daley, Pulitzer Prize winning sports writer for The New York Times, in an article in March 1936"
+     },
+     {
+      "claim": "카페테리아 손님이 롤빵을 커피에 적시는 것 같다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Slam_dunk",
+      "note": "pitched the ball downward into the hoop, much like a cafeteria customer dunking a roll in coffee."
+     },
+     {
+      "claim": "첫 슬램 덩크 콘테스트는 1976 ABA 올스타전 하프타임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Slam_dunk",
+      "note": "The first incarnation of the NBA Slam Dunk Contest was held during the half-time of the 1976 ABA All-Star Game."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Larry_Nance"
+    ],
+    "hintNote": "A talent that earned him the first NBA Slam Dunk Contest championship in 1984",
+    "easiestCue": "1976년 ABA 올스타전 하프타임에 이 슛만으로 겨룬 대회",
+    "targetWhy": "첫 덩크 콘테스트·포튼베리는 농구 애호가 세부, 경계 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "비유가 영어 낱말 뜻을 거쳐 답을 가리켜 3 이 될 수 있음",
+    "pairCheck": "1회차 질문(림 위 내리꽂는 슛·1960년대 말 대학 금지)·해설(특정 선수 견제)과 겹치지 않음 — 1936 포튼베리·데일리 비유만, 1회차 힌트 없음",
+    "dbCheck": "pair-or-different — 활성 1463 과 같은 답, (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 1463,
+     "question": "림 위에서 공을 직접 내리꽂는 슛으로, 1960년대 말 미국 대학 농구에서 한동안 금지되기도 했던 것은?",
+     "explanation": "특정 선수를 견제하려는 규정이었다는 해석이 널리 퍼져 있습니다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g009b-S2-10",
+   "seed": {
+    "subject": "트리플 더블",
+    "aspect": null,
+    "ref": "S2-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 농구 기록을 가리키는 말은 LA 레이커스 홍보 책임자 브루스 졸레시가 매직 존슨의 다재다능함을 알리려고 만들었다는 설과, 필라델피아 76ers의 하비 폴랙이 만들었다는 설이 엇갈립니다. 이 말은 무엇일까요?",
+    "answer": "트리플 더블",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 없음 — 한국 중계 표기 '트리플 더블'('트리플더블'은 정규화로 같음)",
+    "explanation": "1961–62 시즌 오스카 로버트슨은 NBA에서 처음으로 한 시즌 평균으로 이 기록을 냈습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "매직 존슨의 다재다능함을 알리려고 … 이 농구 기록",
+     "difWhy": "다재다능 기록 용어 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "농구 기본 어휘",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "오스카 로버트슨은 … 처음으로 한 시즌 평균 이것을 기록",
+     "difWhy": "시즌 평균 대기록 이름 — 농구 관심층",
+     "wor": 3,
+     "worWhy": "농구 기본 용어 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1961–62 시즌 오스카 로버트슨은 NBA에서 처음으로 한 시즌 평균 이것을 기록한 선수가 되었습니다. 이 말은 LA 레이커스 홍보 책임자 브루스 졸레시가 만들었다는 설과 필라델피아 76ers의 하비 폴랙이 만들었다는 설이 엇갈리는데, 이 기록은 무엇일까요?",
+     "beforeExplanation": "졸레시가 만들었다는 쪽에서는 매직 존슨의 다재다능함을 알리려고 지은 말이라고 설명합니다.",
+     "removedCue": "오스카 로버트슨의 한 시즌 평균 기록",
+     "addedCue": "(해설에서 옮김) 졸레시설 — 매직 존슨 홍보",
+     "why": "농구 관심층의 대표 기록을 해설로 옮기고 용어 기원 두 설만 남김"
+    },
+    "generalHint": "1968년 3월 윌트 체임벌린은 한 경기에서 53점·32리바운드·14어시스트를 올렸다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Triple-double"
+    ],
+    "facts": [
+     {
+      "claim": "로버트슨이 1961–62 시즌 처음으로 시즌 평균 트리플 더블",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Triple-double",
+      "note": "was the first player to average a triple-double, achieving the feat in the 1961–1962 season."
+     },
+     {
+      "claim": "용어 기원은 졸레시설과 폴랙설이 엇갈림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Triple-double",
+      "note": "the origin is unclear ... coined in the NBA by former Los Angeles Lakers public relations director Bruce Jolesch ... Other sources credit Philadelphia 76ers media relations director Harvey Pollack (요지)"
+     },
+     {
+      "claim": "졸레시설 — 매직 존슨의 다재다능함을 보여 주려고",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Triple-double",
+      "note": "to highlight Magic Johnson's versatility (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Double-double"
+    ],
+    "hintNote": "Wilt Chamberlain recorded … on March 18, 1968 … with the official box score showing 53 points, 32 rebounds, and 14 assists",
+    "easiestCue": "졸레시가 매직 존슨의 다재다능함을 알리려 만들었다는 농구 기록 용어",
+    "targetWhy": "용어 기원 두 설은 농구 애호가 세부 (경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "기록 성격이 있으나 묻는 것은 누구나 아는 용어, 단서는 용어 기원 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,285 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "transport/2",
+  "midKey": "transport",
+  "subName": "자동차 브랜드·역사",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "transport/2#g009b-C2-01",
+   "seed": {
+    "subject": "시트로엥",
+    "aspect": null,
+    "ref": "C2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 프랑스 기술자는 어머니의 고향 폴란드에 갔다가, 한 목수가 물고기 뼈 모양으로 이가 난 톱니바퀴를 만드는 것을 보고 그 특허를 헐값에 샀습니다. 그가 이 톱니바퀴 사업으로 번 돈으로 세운 자동차 회사의 로고는 바로 이 톱니 무늬에서 왔다고 전합니다. 이 자동차 회사는 어디일까요?",
+    "answer": "시트로엥",
+    "acceptedAnswers": [
+     "시트로앵"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '시트로앵' → '시트로엥' 넘겨주기 확인",
+    "explanation": "회사는 1919년 6월 4일에 문을 열었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "물고기 뼈 모양으로 이가 난 톱니바퀴 … 로고는 이 톱니 무늬에서",
+     "difWhy": "헤링본 기어 로고 — 자동차 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 로고 유래",
+     "acc": 4,
+     "accWhy": "자동차·교통 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "물고기 뼈 모양으로 이가 난 톱니바퀴 … 로고는 이 톱니 무늬에서",
+     "difWhy": "헤링본 기어 로고 — 자동차 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 로고 유래"
+    },
+    "rewrite": null,
+    "generalHint": "1934년 앞바퀴굴림 차 '트락시옹 아방'을 내놓은 해에 회사가 어려워져 타이어 회사 미쉐린이 대주주가 되었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "자동차",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Citro%C3%ABn",
+     "https://en.wikipedia.org/wiki/Andr%C3%A9_Citro%C3%ABn"
+    ],
+    "facts": [
+     {
+      "claim": "어머니의 고향 폴란드를 찾았다가 물고기 뼈 모양 톱니를 만드는 목수를 보고 특허를 헐값에 삼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Citro%C3%ABn",
+      "note": "André Citroën graduated from the École Polytechnique in 1900 and visited his mother's homeland, Poland, shortly after she died. During that holiday, he saw a carpenter working on a set of gears with a fishbone structure that were less noisy and more efficient. Citroën bought the patent for very little money, leading to the invention of double helical gears."
+     },
+     {
+      "claim": "톱니바퀴 사업에 유산을 투자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Citro%C3%ABn",
+      "note": "he and his partners invested a significant portion of his inheritance in founding \"Citroën, Hinstin et Cie,\" a gear manufacturing business specializing in V-shaped helical gears"
+     },
+     {
+      "claim": "로고가 이 톱니 무늬에서 왔다고 전함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Andr%C3%A9_Citro%C3%ABn",
+      "note": "The gears' pattern was reputed to inspire the double-chevron marque of the Citroën brand."
+     },
+     {
+      "claim": "1919년 6월 4일 설립",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Citro%C3%ABn",
+      "note": "(요지) The company was founded on 4 June 1919 by André Citroën."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Citroën"
+    ],
+    "hintNote": "In 1934, the firm established its reputation … with the Traction Avant. In December 1934, despite the assistance of the Michelin company, Citroën … Within the month, Michelin, already the car manufacturer's largest creditor, became its principal shareholder.",
+    "easiestCue": "로고는 바로 이 톱니 무늬에서 왔다고 전합니다",
+    "targetWhy": "더블 셰브론 로고가 헤링본 톱니에서 왔다는 것은 자동차 애호가 세부 — 로고 모양 자체는 질문에 없다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 브랜드, 창업자의 톱니 사업과 로고 유래는 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "transport/2#g009b-C2-02",
+   "seed": {
+    "subject": "재규어",
+    "aspect": null,
+    "ref": "C2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1922년 영국 블랙풀에서 오토바이 애호가 둘이 오토바이 옆에 붙이는 사이드카를 만드는 회사를 세웠습니다. 이 회사는 승용차 차체를 거쳐 자동차를 만들게 되었고, 1945년 주주들이 'S. S.'라는 옛 이름을 버리고 새 이름을 달았습니다. 이 영국 자동차 회사는 어디일까요?",
+    "answer": "재규어",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "창업자 윌리엄 라이언스는 새 이름이 옛 이름 'S. S.' 와 달리 외국의 비슷한 이름과 헷갈릴 수 없다는 점을 이유로 들었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'S. S.'라는 옛 이름을 버리고 새 이름",
+     "difWhy": "SS 재규어 개명 — 자동차 애호가",
+     "wor": 3,
+     "worWhy": "자동차 브랜드 유래",
+     "acc": 4,
+     "accWhy": "자동차·교통 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "엮음: 영국 자동차 회사 + 동물 이름",
+     "difWhy": "'동물 이름 영국 차' — 방송·일상 (경계 3)",
+     "wor": 3,
+     "worWhy": "유명 자동차 브랜드 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1922년 영국 블랙풀에서 오토바이 애호가 둘이 오토바이 옆에 붙이는 사이드카를 만드는 회사를 세웠습니다. 이 회사는 승용차 차체를 거쳐 자동차를 만들게 되었고, 1945년 주주들이 회사 이름을 바꾸면서 동물 이름을 달았습니다. 이 영국 자동차 회사는 어디일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1945년 … 회사 이름을 바꾸면서 동물 이름을 달았습니다",
+     "addedCue": "옛 이름 'S. S.' 를 버림",
+     "why": "'영국 차 + 동물 이름' 은 일상 수준이라 빼고 옛 이름 S. S. 로 바꿈"
+    },
+    "generalHint": "이 회사의 경주차는 1951년과 1953년, 1955~1957년 르망 24시간 경주에서 우승했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "자동차",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Jaguar_Cars"
+    ],
+    "facts": [
+     {
+      "claim": "1922년 오토바이 애호가 둘이 세움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jaguar_Cars",
+      "note": "founded in 1922 by two motorcycle enthusiasts (William Lyons and William Walmsley)"
+     },
+     {
+      "claim": "1922년부터 블랙풀에 있던 스왈로 사이드카 회사, 사이드카를 만들다 승용차 차체로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jaguar_Cars",
+      "note": "From 1922 the Swallow Sidecar company (SSC) was located in Blackpool. ... originally making motorcycle sidecars before it began building bodies for passenger cars (요지)"
+     },
+     {
+      "claim": "1945년 주주들이 재규어 카스로 이름을 바꿈(옛 이름 S. S.)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jaguar_Cars",
+      "note": "(요지) In 1945, shareholders agreed to rename the company Jaguar Cars Limited."
+     },
+     {
+      "claim": "라이언스가 든 이유",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jaguar_Cars",
+      "note": "Unlike S. S. the name Jaguar is distinctive and cannot be connected or confused with any similar foreign name."
+     },
+     {
+      "claim": "옛 이름은 S. S.",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jaguar_Cars",
+      "note": "Unlike S. S. the name Jaguar is distinctive and cannot be connected or confused with any similar foreign name."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jaguar_Cars"
+    ],
+    "hintNote": "Victories came in 1951 and 1953 with the C-Type, then in 1955, 1956 and 1957 with the D-Type.",
+    "easiestCue": "스왈로 사이드카에서 시작해 옛 이름 S. S. 를 버린 영국 자동차 회사",
+    "targetWhy": "사이드카 회사·SS 이름은 자동차 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 브랜드, 출발과 개명 사연은 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "transport/2#g009b-C2-03",
+   "seed": {
+    "subject": "부가티",
+    "aspect": null,
+    "ref": "C2-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1927년부터 만든 이 회사의 '타입 41' 은 흔히 '루아얄' 이라 불렸고, 라디에이터 마개에는 창업자의 형제인 조각가 렘브란트가 만든 코끼리 조각이 올라갔습니다. 이 자동차 회사는 어디일까요?",
+    "answer": "부가티",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "왕족에게 팔려고 25대를 계획했지만, 1929~1933년에 만든 여섯 대 가운데 왕족에게 팔린 차는 한 대도 없었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'타입 41' 루아얄 … 창업자 형제 조각가 렘브란트의 코끼리",
+     "difWhy": "'루아얄·렘브란트' — 자동차 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 명차 브랜드",
+     "acc": 4,
+     "accWhy": "자동차·교통 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'타입 41' 루아얄 … 창업자 형제 조각가 렘브란트의 코끼리",
+     "difWhy": "'루아얄·렘브란트' — 자동차 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 명차 브랜드"
+    },
+    "rewrite": null,
+    "generalHint": "창업자의 아버지 카를로는 아르누보 가구와 악기를 만든 이탈리아 디자이너였다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "자동차",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bugatti_Royale"
+    ],
+    "facts": [
+     {
+      "claim": "타입 41, 흔히 루아얄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bugatti_Royale",
+      "note": "The Bugatti Type 41, better known as the Royale"
+     },
+     {
+      "claim": "1927~1933년 제작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bugatti_Royale",
+      "note": "built by Bugatti from 1927 to 1933"
+     },
+     {
+      "claim": "라디에이터 마개는 에토레의 형제 렘브란트 부가티의 코끼리 조각",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bugatti_Royale",
+      "note": "The radiator cap was a posed elephant, a sculpture by Ettore's brother Rembrandt Bugatti."
+     },
+     {
+      "claim": "왕족용 25대 계획, 여섯 대 제작, 왕족에게 팔린 것 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bugatti_Royale",
+      "note": "planned to build twenty-five of these cars and sell them to royalty ... Six Royales were built between 1929 and 1933 ... Intended for royalty, none was eventually sold to any royals."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Carlo_Bugatti"
+    ],
+    "hintNote": "Carlo Bugatti (1856–1940) was an Italian decorator, designer and manufacturer of Art Nouveau furniture, models of jewelry, and musical instruments.",
+    "easiestCue": "'타입 41' 은 흔히 '루아얄' 이라 불렸고",
+    "targetWhy": "루아얄·코끼리 마스코트는 클래식카 애호가 세부 — 브랜드 대표 상징(EB 로고·현대 하이퍼카)은 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "루아얄을 아는 자동차 팬에겐 바로 풀림 — 애호가 수준이라 4로 봄",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

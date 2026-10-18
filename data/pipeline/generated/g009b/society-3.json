@@ -1,0 +1,278 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "society/3",
+  "midKey": "society",
+  "subName": "인구·통계 개념",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "society/3#g009b-H2-01",
+   "seed": {
+    "subject": "평균으로의 회귀",
+    "aspect": null,
+    "ref": "H2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 영국 학자는 스위트피 씨앗 연구와, 구슬이 핀 사이로 떨어지게 만든 장치로 이 현상의 실마리를 잡았습니다. 그는 1886년 부모와 자녀의 키를 다룬 논문으로 이 현상을 널리 알렸는데, 이 통계 현상은 무엇일까요?",
+    "answer": "평균으로의 회귀",
+    "acceptedAnswers": [
+     "평균 회귀",
+     "평균을 향한 회귀",
+     "회귀 효과"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '평균으로의 회귀' 문서 첫 문장 — '평균을 향한 회귀, 평균회귀, 회귀효과라고도 한다' 확인",
+    "explanation": "1933년 통계학 교수 호러스 시크리스트는 기업 이익률이 평균으로 모이는 것을 보고 『사업에서 평범함의 승리』라는 책을 냈지만, 이는 이 현상을 잘못 읽은 대표적 예로 꼽힙니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1886년 부모와 자녀의 키를 다룬 논문",
+     "difWhy": "골턴의 키 연구 — 대학 교양 통계",
+     "wor": 4,
+     "worWhy": "통계 기본 개념",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1886년 부모와 자녀의 키를 다룬 논문",
+     "difWhy": "골턴의 키 연구 — 대학 교양 통계",
+     "wor": 4,
+     "worWhy": "통계 기본 개념"
+    },
+    "rewrite": null,
+    "generalHint": "그 학자는 찰스 다윈과 사촌뻘인 친척이었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Francis_Galton",
+     "https://en.wikipedia.org/wiki/Regression_toward_the_mean"
+    ],
+    "facts": [
+     {
+      "claim": "골턴의 회귀 법칙은 골턴 보드(퀸컹스)와 스위트피 연구에서 통찰을 얻음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Francis_Galton",
+      "note": "Galton's development of the law of regression to the mean, or reversion, was due to insights from the Galton board (\"bean machine\" or \"quincunx\") and his studies of sweet peas."
+     },
+     {
+      "claim": "1886년 부모-자녀 키 논문으로 널리 알림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Regression_toward_the_mean",
+      "note": "The concept of regression comes from genetics and was popularized by Sir Francis Galton during the late 19th century with the publication of Regression towards mediocrity in hereditary stature. / Francis Galton (1886). \"Regression towards mediocrity in hereditary stature\""
+     },
+     {
+      "claim": "1933년 시크리스트의 책 — 이익률이 평균으로 모인다는 잘못된 해석",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Regression_toward_the_mean",
+      "note": "An extreme example is Horace Secrist's 1933 book The Triumph of Mediocrity in Business, in which the statistics professor collected mountains of data to prove that the profit rates of competitive businesses tend toward the average over time."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Francis_Galton"
+    ],
+    "hintNote": "He was Charles Darwin's half-cousin.",
+    "easiestCue": "1886년 부모와 자녀의 키를 다룬 논문으로 이 현상을 널리 알렸는데",
+    "targetWhy": "고교 교과는 회귀를 다루지 않음 — 골턴의 키 자료 · 스위트피 · 퀸컹스는 대학 통계 교양(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정의 문장 없이 발견 경위로만 묻고, 정답은 통계를 배운 사람이면 들어 본 이름",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 0",
+    "warn": [
+     "정답조각 으로"
+    ]
+   }
+  },
+  {
+   "seedId": "society/3#g009b-H2-02",
+   "seed": {
+    "subject": "스튜던트 t분포",
+    "aspect": null,
+    "ref": "H2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아일랜드 더블린의 기네스 양조장에서 일한 윌리엄 고셋은, 회사가 연구원 논문에 맥주·회사 이름·실명을 밝히지 못하게 하자 필명으로 논문을 실었습니다. 보리 품종을 적은 표본으로 시험하던 그가 1908년 소개한 확률 분포로, 그 필명에서 이름이 온 것은 무엇일까요?",
+    "answer": "스튜던트 t분포",
+    "acceptedAnswers": [
+     "스튜던트 분포",
+     "스튜던트의 t분포"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '스튜던트 t 분포'(띄어쓰기만 다름) 확인 — 질문이 '필명에서 이름이 온' 을 요구하므로 일반어 't분포' 는 넣지 않음(B2)",
+    "explanation": "고셋은 1937년 9월 기네스 전체의 수석 양조사로 올랐고, 그해 10월 세상을 떠났습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "기네스 양조장 고셋의 필명에서 온 확률 분포",
+     "difWhy": "'고셋 필명 분포' — 대학 교양 통계",
+     "wor": 4,
+     "worWhy": "통계 기본 어휘",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "기네스 양조장 고셋의 필명에서 온 확률 분포",
+     "difWhy": "'고셋 필명 분포' — 대학 교양 통계",
+     "wor": 4,
+     "worWhy": "통계 기본 어휘"
+    },
+    "rewrite": null,
+    "generalHint": "자유도가 커질수록 평균 0, 분산 1인 정규분포에 가까워진다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/William_Sealy_Gosset",
+     "https://ko.wikipedia.org/wiki/스튜던트_t_분포"
+    ],
+    "facts": [
+     {
+      "claim": "고셋은 더블린 기네스 양조장에서 일함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_Sealy_Gosset",
+      "note": "Upon graduating in 1899, he joined the brewery of Arthur Guinness & Son in Dublin, Ireland; he spent the rest of his 38-year career at Guinness."
+     },
+     {
+      "claim": "기네스가 연구원 논문에 맥주·기네스·실명을 쓰지 못하게 해 필명 Student 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_Sealy_Gosset",
+      "note": "it was decided that future publications by Guinness researchers must not mention beer, Guinness, or the author's true name. / Gosset published most of his 21 academic papers, including The probable error of a mean, in Pearson's journal Biometrika under the pseudonym Student."
+     },
+     {
+      "claim": "보리 품종 소표본 시험 · 1908년",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/스튜던트_t_분포",
+      "note": "1908년에 윌리엄 고셋이 \"스튜던트\"(영어: Student, ‘학생’)라는 필명으로 1908년 재발견하였다. 고셋은 기네스 양조 공장에서 일했고, 맥주에 사용되는 보리의 질을 시험하기 위해 이 분포를 도입하였고"
+     },
+     {
+      "claim": "1937년 9월 기네스 전체 수석 양조사 승진 · 1937년 10월 16일 사망",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/William_Sealy_Gosset",
+      "note": "In September 1937, Gosset was promoted to Head Brewer of all Guinness. / William Sealy Gosset (13 June 1876 – 16 October 1937)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Student%27s_t-distribution"
+    ],
+    "hintNote": "As the number of degrees of freedom grows, the t distribution approaches the normal distribution with mean 0 and variance 1.",
+    "easiestCue": "기네스 양조장에서 일한 윌리엄 고셋은 … 필명으로 논문을 실었습니다",
+    "targetWhy": "고교 통계에 t분포 유래는 없음 — 기네스·고셋 일화는 대학 통계 교양의 이야깃거리(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정답 이름은 통계 수업에서 흔하고 단서는 유래 일화",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 0",
+    "warn": [
+     "정답조각 분포"
+    ]
+   }
+  },
+  {
+   "seedId": "society/3#g009b-H2-03",
+   "seed": {
+    "subject": "핼리",
+    "aspect": null,
+    "ref": "H2-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1693년 한 영국 과학자는 브레슬라우의 사망 통계로 나이별 사망을 분석한 생명표를 내놓아, 영국 정부가 사는 사람의 나이에 맞춰 종신연금 값을 매길 수 있게 했습니다. 1687년 뉴턴의 『프린키피아』를 자기 돈으로 펴내기도 한 이 과학자는 누구일까요?",
+    "answer": "핼리",
+    "acceptedAnswers": [
+     "에드먼드 핼리"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "한국에서 '핼리 혜성' · '에드먼드 핼리' 로 부름(ko.wikipedia 문서 제목 '에드먼드 핼리') — 성만 · 풀네임 둘 다",
+    "explanation": "그는 1691년 잠수종을 만들어 템스강 18m 깊이에서 한 시간 반 넘게 머물기도 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "뉴턴의 『프린키피아』를 자기 돈으로 펴내기도 한 이 과학자",
+     "difWhy": "'프린키피아를 펴낸 이' — 대학 교양 과학사 (경계 3)",
+     "wor": 4,
+     "worWhy": "교양 — 과학사 주요 인물 일화",
+     "acc": 4,
+     "accWhy": "사회 제도 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "뉴턴의 『프린키피아』를 자기 돈으로 펴내기도 한 이 과학자",
+     "difWhy": "'프린키피아를 펴낸 이' — 대학 교양 과학사 (경계 3)",
+     "wor": 4,
+     "worWhy": "교양 — 과학사 주요 인물 일화"
+    },
+    "rewrite": null,
+    "generalHint": "1676년 남대서양 세인트헬레나섬에 관측소를 세우고 남쪽 하늘의 별을 목록으로 만들었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Edmond_Halley"
+    ],
+    "facts": [
+     {
+      "claim": "1693년 브레슬라우 통계로 연령별 사망 분석 · 종신연금 값 책정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Edmond_Halley",
+      "note": "In 1693 Halley published an article on life annuities, which featured an analysis of age-at-death on the basis of the Breslau statistics Caspar Neumann had been able to provide. This article allowed the British government to sell life annuities at an appropriate price based on the age of the purchaser."
+     },
+     {
+      "claim": "생명표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Edmond_Halley",
+      "note": "The construction of the life-table for Breslau, which followed more primitive work by John Graunt, is now seen as a major event in the history of demography."
+     },
+     {
+      "claim": "1687년 프린키피아를 핼리 비용으로 출판",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Edmond_Halley",
+      "note": "Newton, who instead went on to expand it into his Philosophiæ Naturalis Principia Mathematica published at Halley's expense in 1687."
+     },
+     {
+      "claim": "1691년 잠수종 · 템스강 18m · 한 시간 반 넘게",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Edmond_Halley",
+      "note": "In 1691, Halley built a diving bell ... dived to 60 feet (18 m) in the River Thames, and remained there for over an hour and a half (WebFetch 요지 인용)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Edmond_Halley"
+    ],
+    "hintNote": "From an observatory he constructed on Saint Helena in 1676–77, Halley catalogued the southern celestial hemisphere",
+    "easiestCue": "1687년 뉴턴의 『프린키피아』를 자기 돈으로 펴내기도 한",
+    "targetWhy": "혜성(교과서 첫 줄 사실)은 뺐음 — 프린키피아 출판 비용 · 브레슬라우 생명표는 과학사·인구학 교양(4, 경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "프린키피아 출판 일화는 과학사 애호가에게는 꽤 알려져 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 0",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,563 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "world-food/5",
+  "midKey": "world-food",
+  "subName": "향신료·재료",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-food/5#g009b-L1-21",
+   "seed": {
+    "subject": "팔각",
+    "aspect": null,
+    "ref": "L1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 향신료는 화학 물질 시킴산의 주된 공급원이어서, 제약 회사 로슈는 2012년 이전 한때 전 세계 연간 수확량의 90%까지 썼습니다. 이탈리아 리큐어 갈리아노의 독특한 맛을 내는 데에도 쓰이는 이 향신료는 무엇일까요?",
+    "answer": "팔각",
+    "acceptedAnswers": [
+     "스타 아니스",
+     "팔각회향"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '팔각' · 넘겨주기 '스타 아니스'·'팔각회향' 확인",
+    "explanation": "생김이 비슷한 일본 붓순나무 열매는 독이 강해 먹을 수 없고, 일본에서는 향으로 태워 왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "시킴산의 주된 공급원 … 로슈",
+     "difWhy": "타미플루 원료 향신료 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "향신료 의약 쓰임 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이 원료로 만드는 독감약 타미플루",
+     "difWhy": "타미플루 원료 향신료 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "의약 원료 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 향신료는 화학 물질 시킴산의 주된 공급원이어서, 제약 회사 로슈는 2012년 이전 한때 전 세계 연간 수확량의 90%까지 사들였습니다. 2009년 신종 플루가 번질 때는 이 원료로 만드는 독감약 타미플루가 모자라 새 생산 방법까지 동원되었는데, 이 향신료는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "이 원료로 만드는 독감약 타미플루",
+     "addedCue": "이탈리아 리큐어 갈리아노",
+     "why": "타미플루 원료가 뉴스 단서라 빼고 리큐어 쓰임으로"
+    },
+    "generalHint": "베트남 쌀국수 퍼의 국물을 내는 주요 재료이기도 하다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Illicium_verum"
+    ],
+    "facts": [
+     {
+      "claim": "시킴산의 주된 공급원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Illicium_verum",
+      "note": "Star anise is the major source of the chemical compound shikimic acid"
+     },
+     {
+      "claim": "로슈가 2012년 이전 세계 연간 수확량의 90%까지 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Illicium_verum",
+      "note": "Roche Pharmaceuticals used up to 90% of the world's annual star anise crop (before 2012)"
+     },
+     {
+      "claim": "일본 붓순나무는 독성, 향으로 태움",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Illicium_verum",
+      "note": "(Japanese star anise) is highly toxic and inedible; in Japan, it has instead been burned as incense."
+     },
+     {
+      "claim": "갈리아노 리큐어 맛에 쓰임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Illicium_verum",
+      "note": "Star anise is distinctive in the production of the liqueur Galliano."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Illicium_verum"
+    ],
+    "hintNote": "It is also a major ingredient in the making of phở, a Vietnamese noodle soup.",
+    "easiestCue": "로슈가 연간 수확량의 90%까지 썼다",
+    "targetWhy": "시킴산·로슈·갈리아노는 요리·약학 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "2009년 무렵 보도를 기억하는 사람에게는 3",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (스타 아니스·팔각회향 포함)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-food/5#g009b-L1-22",
+   "seed": {
+    "subject": "우스터 소스",
+    "aspect": null,
+    "ref": "L1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 소스를 처음 만든 이들은 너무 독해 먹을 수 없다며 통째로 지하실에 버렸는데, 오래 발효된 뒤에 보니 맛이 부드러워져 있었다는 이야기가 전합니다. 회사는 벵골 총독을 지낸 샌디스 경이 인도에서 맛본 소스라고 내세웠지만 샌디스 남작 가운데 벵골 총독을 지낸 사람은 없었는데, 이 소스는 무엇일까요?",
+    "answer": "우스터 소스",
+    "acceptedAnswers": [
+     "우스터셔 소스"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '우스터셔 소스' · 넘겨주기 '우스터 소스'·'우스터소스' 확인",
+    "explanation": "약사 존 윌리 리와 윌리엄 헨리 페린스가 처음 만들어 1837년 상품으로 내놓았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "벵골 총독을 지낸 샌디스 경이 인도에서 맛본 소스",
+     "difWhy": "리 앤 페린스 유래 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "유명 소스 유래 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "리와 페린스 … 처음으로 그 지방 이름을 단 소스",
+     "difWhy": "'리앤페린스 소스' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 소스 탄생 일화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "약사 존 윌리 리와 윌리엄 헨리 페린스가 처음 만든 이 소스는 너무 독해 먹을 수 없다며 통째로 지하실에 버려졌는데, 오래 발효된 뒤에 보니 맛이 부드러워져 있었다는 이야기가 전합니다. 1837년 상품으로 나와 처음으로 그 지방 이름을 단 이 소스는 무엇일까요?",
+     "beforeExplanation": "회사는 벵골 총독을 지낸 샌디스 경이 인도에서 맛본 소스라고 내세웠지만, 샌디스 남작 가운데 벵골 총독을 지낸 사람은 없었습니다.",
+     "removedCue": "리와 페린스 … 처음으로 그 지방 이름을 단 소스",
+     "addedCue": "샌디스 경 이야기와 반박(해설에서 질문으로)",
+     "why": "'리앤페린스' 상표와 지명 단서를 해설로 돌리고 기원 전설과 그 반박으로 묻는다"
+    },
+    "generalHint": "미국판은 영국판의 맥아 식초 대신 증류 식초를 쓰고, 당밀과 멸치도 넣는다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Worcestershire_sauce"
+    ],
+    "facts": [
+     {
+      "claim": "약사 리와 페린스가 발명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Worcestershire_sauce",
+      "note": "invented by the pharmacists John Wheeley Lea and William Henry Perrins"
+     },
+     {
+      "claim": "너무 독해 통을 지하실에 버림 → 오래 발효돼 부드러워짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Worcestershire_sauce",
+      "note": "the resulting product was so strong that it was considered inedible and the barrel was abandoned in the basement ... the long-fermented sauce had mellowed and become palatable."
+     },
+     {
+      "claim": "1837년 상품화, 그 이름을 단 첫 소스",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Worcestershire_sauce",
+      "note": "The Lea & Perrins brand was commercialised in 1837 and was the first sauce to bear the Worcestershire name."
+     },
+     {
+      "claim": "샌디스 경 이야기와 반박",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Worcestershire_sauce",
+      "note": "The company has also claimed that (Lord Sandys, ex-Governor of Bengal, encountered the sauce in India) ... neither Marcus Lord Sandys nor any Baron Sandys was ever a Governor of Bengal"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Worcestershire_sauce"
+    ],
+    "hintNote": "The US formula lists distilled white vinegar, molasses, sugar, water, salt, onions, anchovies / replaces the malt vinegar used by the UK and Canadian versions with spirit vinegar.",
+    "easiestCue": "통째로 지하실에 버렸는데 오래 발효된 뒤 맛이 부드러워졌다는 이야기",
+    "targetWhy": "지하실 전설·샌디스 경 반박은 음식사 애호가 세부 (경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 소스, 단서는 만든 사람과 숙성 일화",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (우스터셔 소스 포함)",
+    "warn": [
+     "정답조각 소스",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "world-food/5#g009b-L1-23",
+   "seed": {
+    "subject": "타바스코",
+    "aspect": null,
+    "ref": "L1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 핫소스를 만드는 회사는 고추를 딸 때 일꾼들이 고추를 작은 빨간 막대 '르 프티 바통 루주'에 대어 보고 그 색과 맞는 것만 소스에 쓰게 합니다. 처음에는 뉴올리언스의 유리 업자에게서 쓰지 않은 향수병을 얻어 소스를 담았다고 하는데, 이 핫소스는 무엇일까요?",
+    "answer": "타바스코",
+    "acceptedAnswers": [
+     "타바스코 소스",
+     "Tabasco"
+    ],
+    "originalTitleVariants": [
+     "Tabasco"
+    ],
+    "variantCheck": "ko.wikipedia 문서 '타바스코 소스' 확인 · 상표가 영어(TABASCO)라 B10 으로 Tabasco",
+    "explanation": "고추를 수확한 날 으깨 소금과 함께 위스키를 담았던 흰 참나무통에 넣고 최대 3년까지 숙성합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "뉴올리언스의 유리 업자에게서 … 향수병을 얻어 소스를 담았다",
+     "difWhy": "루이지애나 핫소스 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 소스 유래 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "고추를 위스키통에 숙성하는 핫소스(뉴올리언스)",
+     "difWhy": "'루이지애나 핫소스' — 음식 관심층",
+     "wor": 3,
+     "worWhy": "유명 소스 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "회사의 공식 역사로는 1868년 에드먼드 매킬레니가 처음 만들었다고 하며, 처음에는 뉴올리언스의 유리 업자에게서 쓰지 않은 향수병을 얻어 담았습니다. 수확한 날 고추를 으깨 소금과 함께 위스키를 담았던 흰 참나무통에 넣고 최대 3년까지 숙성하는 이 핫소스는 무엇일까요?",
+     "beforeExplanation": "오랫동안 회사가 있는 루이지애나 에이버리섬의 암염 돔에서 캔 소금을 썼습니다.",
+     "removedCue": "수확한 날 고추를 으깨 위스키 통에 최대 3년 숙성 · 1868년 매킬레니",
+     "addedCue": "고추 색을 맞춰 보는 빨간 막대 '르 프티 바통 루주'",
+     "why": "위스키통 숙성과 창업자 이름은 이 소스의 첫 줄 사실이라 빼고(숙성은 해설로) 수확 관행 세부로 묻는다"
+    },
+    "generalHint": "만드는 회사는 미군 전투식량 'C-레이션'으로 해 먹는 요리책을 펴내 이 소스 작은 병에 감아 보냈다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tabasco_sauce"
+    ],
+    "facts": [
+     {
+      "claim": "뉴올리언스 유리 업자에게서 쓰지 않은 향수병",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tabasco_sauce",
+      "note": "initially obtained unused cologne bottles from a New Orleans glass supplier"
+     },
+     {
+      "claim": "수확한 날 으깸, 위스키 통이던 흰 참나무통에 소금과 함께, 최대 3년 숙성",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tabasco_sauce",
+      "note": "Peppers are ground into a mash on the day of harvest ... placed along with salt in white oak barrels previously used for whiskey ... After aging for up to three years, the mash is strained"
+     },
+     {
+      "claim": "따는 사람이 고추를 작은 빨간 막대에 대어 익은 정도를 봄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tabasco_sauce",
+      "note": "To ensure ripeness, pickers compare peppers to a little red stick (le petit bâton rouge); peppers that match the color of the stick are then introduced into the sauce production process."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tabasco_sauce"
+    ],
+    "hintNote": "McIlhenny issued The Charlie Ration Cookbook. (Charlie ration or \"C-rats\" was the name for the field meal then given to troops.) This cookbook came wrapped around a two-ounce bottle of Tabasco sauce",
+    "easiestCue": "뉴올리언스의 유리 업자에게서 쓰지 않은 향수병을 얻어 소스를 담았다",
+    "targetWhy": "빨간 막대·향수병 일화는 소스 애호가 세부 — 뉴올리언스는 유리 업자 위치로만 나온다 (경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "식탁에서 흔한 핫소스, 몰랐던 숙성 과정",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (타바스코 소스 포함)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "world-food/5#g009b-L1-24",
+   "seed": {
+    "subject": "마가린",
+    "aspect": null,
+    "ref": "L1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "나폴레옹 3세가 군대와 서민을 위해 쇠기름으로 값싼 대용 식품을 만들라는 과제를 내건 뒤, 1869년 이폴리트 메주무리에가 이 식품을 발명해 특허를 냈습니다. 훗날 미국의 몇몇 주는 이 식품에 분홍색 물감을 넣도록 하는 법까지 만들었는데, 이 식품은 무엇일까요?",
+    "answer": "마가린",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "미국에서는 노란 물감을 넣지 못하게 막는 주가 많았고, 마지막까지 버틴 위스콘신주가 1967년에야 그 제한을 풀었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "나폴레옹 3세가 군대와 서민을 위해 쇠기름으로 값싼 대용 식품을 만들라는 과제",
+     "difWhy": "나폴레옹 3세 버터 대용품 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "식품 발명 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "버터 대용품",
+     "difWhy": "'버터 대용품' — 일상",
+     "wor": 3,
+     "worWhy": "식품 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "나폴레옹 3세가 군대와 서민을 위해 쇠기름으로 버터 대용품을 만들라는 과제를 내건 뒤, 1869년 이폴리트 메주무리에가 이 식품을 발명해 특허를 냈습니다. 훗날 미국의 몇몇 주는 이 식품에 분홍색 물감을 넣도록 하는 법까지 만들었는데, 이 식품은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'버터 대용품'(정의)",
+     "addedCue": "무엇의 대용인지 밝히지 않고 나폴레옹 3세 과제 · 메주무리에 · 분홍 물감 법만",
+     "why": "정의 낱말 \"버터 대용품\" 을 빼 유래·법 뒷이야기 둘로 풀게 함"
+    },
+    "generalHint": "처음 이름은 올리브기름을 뜻하는 라틴어와 광택을 빗댄 '진주'라는 그리스어를 합친 말이었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Margarine"
+    ],
+    "facts": [
+     {
+      "claim": "나폴레옹 3세가 군대와 하층민을 위한 쇠기름 버터 대용품 과제",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Margarine",
+      "note": "issued a challenge to create a butter-substitute from beef tallow for the armed forces and lower classes"
+     },
+     {
+      "claim": "1869년 메주무리에가 발명해 특허, 이름은 올레오마가린",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Margarine",
+      "note": "Hippolyte Mège-Mouriès invented margarine in 1869 / Mège-Mouriès patented the product, which he named \"oleomargarine\""
+     },
+     {
+      "claim": "몇몇 주가 분홍 색소를 넣게 하는 법",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Margarine",
+      "note": "In several states, legislatures enacted laws to require margarine manufacturers to add pink colorings"
+     },
+     {
+      "claim": "색소 금지 — 위스콘신이 1967년 마지막으로 폐지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Margarine",
+      "note": "Bans on adding color became commonplace in the United States, Canada, and Denmark ... The final hold out was Wisconsin, which finally repealed its restrictions in 1967."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Margarine"
+    ],
+    "hintNote": "The spread was originally named oleomargarine from Latin for oleum (olive oil) and Greek margarite (\"pearl\", indicating luster).",
+    "easiestCue": "미국의 몇몇 주는 이 식품에 분홍색 물감을 넣도록 하는 법",
+    "targetWhy": "나폴레옹 3세 과제·분홍 물감 법은 교과서 밖 음식사 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "버터 대용품이라는 말만으로 마가린을 떠올리는 사람이 많아 3 으로 내려갈 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  },
+  {
+   "seedId": "world-food/5#g009b-L1-25",
+   "seed": {
+    "subject": "디종 머스터드",
+    "aspect": null,
+    "ref": "L1-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1856년 장 네종이 식초 대신 덜 익은 포도즙인 베르쥐를 넣으면서 지금 모습이 되었다는 겨자입니다. 이름과 달리 지리적 표시 보호를 받지 않아 특정 산지와 묶여 있지 않은 이 겨자는 무엇일까요?",
+    "answer": "디종 머스터드",
+    "acceptedAnswers": [
+     "디종 머스타드"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '디종 머스터드' · '머스타드'가 '머스터드'로 넘겨짐(흔한 표기) 확인",
+    "explanation": "미국에서 팔리는 그레이 푸퐁 상표도 1866년 같은 도시에서 시작되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "이름과 달리 지리적 표시 보호를 받지 않아 특정 산지와 묶여 있지 않은 이 겨자",
+     "difWhy": "지명 붙은 겨자 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "식재료 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "그 도시가 이름에 든 프랑스 겨자",
+     "difWhy": "'프랑스 도시 겨자' — 음식 관심층",
+     "wor": 3,
+     "worWhy": "식재료 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1856년 프랑스의 한 도시에서 장 네종이 식초 대신 덜 익은 포도즙인 베르쥐를 넣으면서 지금 모습이 되었다는 겨자입니다. 이름에 그 도시가 들어 있지만 지리적 표시 보호를 받지 않아 특정 산지와 묶여 있지 않은 이 겨자는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "프랑스의 한 도시 · 이름에 그 도시가 들어 있음",
+     "addedCue": "없음 — 장 네종의 베르쥐 · 지리적 표시 없음",
+     "why": "\"프랑스 도시 겨자\" 를 빼고 제법 뒷이야기로"
+    },
+    "generalHint": "이 겨자에 쓰는 씨의 80%는 캐나다, 주로 앨버타와 서스캐처원에서 들여온다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dijon_mustard"
+    ],
+    "facts": [
+     {
+      "claim": "1856년 디종의 장 네종이 식초를 베르쥐로 바꾸며 지금 꼴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dijon_mustard",
+      "note": "it assumed its current form in 1856 when Jean Naigeon of Dijon replaced the vinegar (with verjuice)"
+     },
+     {
+      "claim": "지리적 표시 보호 없음, 특정 테루아와 무관",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dijon_mustard",
+      "note": "Dijon mustard does not have a protected geographical indication ... has no link to a specific terroir"
+     },
+     {
+      "claim": "그레이 푸퐁은 1866년 디종에서 시작",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dijon_mustard",
+      "note": "The Grey Poupon mustard brand available in the United States originated in Dijon in 1866."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dijon_mustard"
+    ],
+    "hintNote": "80% of the seed is imported from Canada, mainly from Alberta and Saskatchewan",
+    "easiestCue": "장 네종이 식초 대신 덜 익은 포도즙인 베르쥐를 넣으면서",
+    "targetWhy": "베르쥐 제법은 요리 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'프랑스 겨자' 만으로 디종을 떠올리는 사람이 꽤 있어 3 일 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-food/5#g009b-L1-26",
+   "seed": {
+    "subject": "정향",
+    "aspect": null,
+    "ref": "L1-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "시리아 테르카의 불탄 집터에서 기원전 1720년 무렵의 이것이 나왔다는 발굴 기록이 있습니다. 인도네시아에서는 담배에 섞어 크레텍이라는 담배를 만들고, 기름 속 유제놀이 치통을 누그러뜨려 치과 응급 처치에도 쓰는 이 향신료는 무엇일까요?",
+    "answer": "정향",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "식민지 시대 전에는 몰루카 제도의 몇몇 섬에서만 자랐고, 1770년 피에르 푸아브르의 지시로 모종이 일드프랑스(모리셔스)로 옮겨졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "크레텍 담배 … 유제놀이 치통을 누그러뜨리는 향신료",
+     "difWhy": "'크레텍·유제놀' — 요리 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향신료 쓰임",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "크레텍 담배 … 유제놀이 치통을 누그러뜨리는 향신료",
+     "difWhy": "'크레텍·유제놀' — 요리 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향신료 쓰임"
+    },
+    "rewrite": null,
+    "generalHint": "한나라 관리 예법서에는 신하가 황제에게 아뢰기 전 이것을 물어 입 냄새를 없애라는 규칙이 있었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Clove"
+    ],
+    "facts": [
+     {
+      "claim": "부첼라티가 테르카의 불탄 집에서 기원전 1720년 정향 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Clove",
+      "note": "found cloves in Terqa, Syria, in a burned-down house which was dated to 1720 BC."
+     },
+     {
+      "claim": "인도네시아 크레텍 담배",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Clove",
+      "note": "The spice is used in a type of cigarette called kretek in Indonesia."
+     },
+     {
+      "claim": "유제놀 정향유가 치통에 효과, 치과 응급에 주로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Clove",
+      "note": "There is evidence that clove oil containing eugenol is effective for toothache pain ... (used mainly) for dental emergencies"
+     },
+     {
+      "claim": "몰루카 몇몇 섬에서만 자람 · 1770년 푸아브르 지시로 일드프랑스로",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Clove",
+      "note": "only grew on a few islands in the Moluccas / (seedlings, under the instruction of Pierre Poivre, 1770) brought to the Isle de France"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Clove"
+    ],
+    "hintNote": "the book the Han Guan Yi (Etiquettes of the Officialdom of the Han Dynasty, dating to around 200 BC). The book states a rule that ministers should suck cloves to sweeten their breath before speaking to the emperor.",
+    "easiestCue": "기름 속 유제놀이 치통을 누그러뜨려 치과 응급 처치에도 쓰는",
+    "targetWhy": "치과 냄새로 아는 사람은 관심층 — 크레텍·테르카 발굴은 애호가 세부, 수정과·통후추 꼴 같은 대표 생김은 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "치과 쓰임은 관심층이 알 수 있어 3 경계",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,201 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "medicine/2",
+  "midKey": "medicine",
+  "subName": "증상·진단",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "medicine/2#g009b-C1-21",
+   "seed": {
+    "subject": "혈압계",
+    "aspect": null,
+    "ref": "C1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1881년 오스트리아의 리터 폰 바슈가 고안했고, 1896년 이탈리아의 시피오네 리바로치가 쓰기 쉬운 형태로 내놓은 의료 기구입니다. 1901년 신경외과 의사 하비 쿠싱이 리바로치의 기구를 미국에 가져와 손보고 널리 퍼뜨렸는데, 이 기구는 무엇일까요?",
+    "answer": "혈압계",
+    "acceptedAnswers": [
+     "혈압 측정기"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '혈압계' 문서 첫 문장 '혈압을 측정하는 장치' — 같은 기구의 흔한 다른 이름",
+    "explanation": "1905년 러시아 의사 니콜라이 코롯코프가 '코롯코프 소리'를 찾아내면서 이 기구로 확장기 값도 재게 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "하비 쿠싱이 리바로치의 기구를 미국에 가져와",
+     "difWhy": "리바로치 기구 — 의학사 대학 교양",
+     "wor": 3,
+     "worWhy": "의료 기구 이야깃거리",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "하비 쿠싱이 리바로치의 기구를 미국에 가져와",
+     "difWhy": "리바로치 기구 — 의학사 대학 교양",
+     "wor": 3,
+     "worWhy": "의료 기구 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "스티븐 헤일스는 1733년 책에 동맥에 가는 관을 꽂아 피가 솟는 높이를 잰 실험을 적었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sphygmomanometer",
+     "https://ko.wikipedia.org/wiki/혈압계"
+    ],
+    "facts": [
+     {
+      "claim": "1881년 폰 바슈가 고안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sphygmomanometer",
+      "note": "In 1881 Samuel Siegfried Karl Ritter von Basch devised the sphygmomanometer."
+     },
+     {
+      "claim": "1896년 리바로치가 쓰기 쉬운 형태",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sphygmomanometer",
+      "note": "Scipione Riva-Rocci introduced a more easily-usable version in 1896."
+     },
+     {
+      "claim": "1901년 쿠싱이 미국에 가져와 손보고 보급",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sphygmomanometer",
+      "note": "In 1901, pioneering neurosurgeon Dr. Harvey Cushing brought an example of Riva-Rocci's device to the US, modernized and popularized it within the medical community."
+     },
+     {
+      "claim": "1905년 코롯코프 소리로 확장기 측정",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sphygmomanometer",
+      "note": "Further improvement came in 1905 when Russian physician Nikolai Korotkov included diastolic blood pressure measurement following his discovery of \"Korotkoff sounds\"."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Stephen_Hales"
+    ],
+    "hintNote": "inserting fine tubes into arteries and measuring the height to which the column of blood rose — Haemastaticks (1733) 'force of the blood'",
+    "easiestCue": "1896년 이탈리아의 시피오네 리바로치가 쓰기 쉬운 형태로 내놓은 의료 기구",
+    "targetWhy": "리바로치·쿠싱의 보급사는 의학사 애호가 세부 — 팔에 감는 띠·수축기/확장기(누구나 아는 쓰임)는 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "연대·인명만 있어 모르면 손을 못 대지만, 대상은 누구나 아는 기구",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "medicine/2#g009b-C1-22",
+   "seed": {
+    "subject": "청진기",
+    "aspect": null,
+    "ref": "C1-22",
+    "pairedWith": 2427
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2427,
+    "question": "이 기구를 만든 프랑스 의사는 나무 피리를 손수 깎는 솜씨가 있었고, 그 솜씨가 이 기구의 발명으로 이어졌습니다. 그는 죽음을 앞두고 자기 것을 조카에게 '내 생애 가장 큰 유산'이라며 물려주었는데, 그 조카가 바로 이것으로 그의 병을 진단했다고 전하는 이 기구는 무엇일까요?",
+    "answer": "청진기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "두 귀로 듣는 지금 모양은 1851년 아일랜드 의사 아서 리어드가 내놓았고, 이듬해 뉴욕의 조지 캐먼이 상품으로 다듬었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "그 조카가 바로 이것으로 그의 병을 진단했다고 전하는 이 기구",
+     "difWhy": "피리 모양 진단 기구 — 중학 수준 추론",
+     "wor": 3,
+     "worWhy": "발명 일화 이야깃거리",
+     "acc": 4,
+     "accWhy": "의학·건강 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이 기구를 그저 '원통'이라고 불렀습니다 … 결핵을 진단",
+     "difWhy": "라에네크 원통 — 의학사 관심층 (경계 2)",
+     "wor": 3,
+     "worWhy": "발명 일화 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 기구를 만든 프랑스 의사는 나무 피리를 손수 깎을 줄 알았고, 이 기구를 그저 '원통'이라고 불렀습니다. 그는 죽음을 앞두고 자기 것을 조카에게 '내 생애 가장 큰 유산'이라며 물려주었는데, 그 조카가 바로 이 기구로 그의 결핵을 진단했다고 전합니다. 이 기구는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'원통'이라고 불렀다 · 결핵 진단",
+     "addedCue": "없음 — 피리 솜씨·조카 유산 일화만",
+     "why": "원통·결핵(가슴 소리)이 쉬운 단서라 뺌"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/René_Laennec",
+     "https://en.wikipedia.org/wiki/Stethoscope"
+    ],
+    "facts": [
+     {
+      "claim": "나무 피리를 깎는 솜씨가 발명으로 이어짐(1816, 네케르 병원)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/René_Laennec",
+      "note": "His skill at carving his own wooden flutes led him to invent the stethoscope in 1816, while working at the Hôpital Necker."
+     },
+     {
+      "claim": "조카에게 생애 가장 큰 유산으로 물려줌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/René_Laennec",
+      "note": "Laennec often referred to the stethoscope as \"the cylinder\", and as he neared death only a few years later, he bequeathed his own stethoscope to his nephew, referring to it as \"the greatest legacy of my life\"."
+     },
+     {
+      "claim": "조카가 그 기구로 그의 병(결핵)을 진단했다고 전함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/René_Laennec",
+      "note": "Coincidentally, his nephew, Mériadec Laennec, is said to have diagnosed tuberculosis in Laennec using Laennec's stethoscope."
+     },
+     {
+      "claim": "1851년 리어드 양이형, 이듬해 캐먼 상품화",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Stethoscope",
+      "note": "In 1851, Irish physician Arthur Leared invented a binaural stethoscope. The following year, George Philip Cammann, a physician practicing in New York City, perfected for commercial production the design of a stethoscope that featured a plug for each ear."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "나무 피리 솜씨 · 조카에게 물려준 유산",
+    "targetWhy": "라에네크의 피리·조카 일화는 의학사 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 기구, 묻는 것은 발명자의 최후 일화",
+    "pairCheck": "1회차 2427 q(몸에 귀를 대지 않고 소리를 듣는 도구) · e(둘둘 만 종이)와 겹치지 않음 — 나무 피리·원통·조카 진단은 새 사실",
+    "dbCheck": "answercheck pair-or-different — 활성 2427, (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 2427,
+     "question": "환자 몸에 직접 귀를 대지 않고 속의 소리를 듣기 위해 고안된, 의사를 상징하는 도구는?",
+     "explanation": "처음에는 둘둘 만 종이에서 시작했다고 전합니다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  }
+ ]
+}

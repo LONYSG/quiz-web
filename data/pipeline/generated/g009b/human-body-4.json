@@ -1,0 +1,106 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "human-body/4",
+  "midKey": "human-body",
+  "subName": "신경·뇌",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/4#g009b-C1-19",
+   "seed": {
+    "subject": "편도체",
+    "aspect": null,
+    "ref": "C1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1994년 처음 보고된 미국 여성 환자 S.M.은 우르바흐-비테병 때문에 어린 시절부터 뇌 양쪽의 이 부위가 완전히 망가졌습니다. 그는 낯선 사람과 코가 닿을 만큼 가까이 서도 거의 불편해하지 않았는데, 이 뇌 부위는 무엇일까요?",
+    "answer": "편도체",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 부위는 1822년 독일 해부학자 카를 프리드리히 부르다흐가 처음 찾아 이름을 붙였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "우르바흐-비테병 … 낯선 사람과 코가 닿을 만큼 가까이 서도 거의 불편해하지 않았는데",
+     "difWhy": "S.M. 환자 사례(공포 결여) — 대학 교양 심리",
+     "wor": 4,
+     "worWhy": "교양 — 뇌 부위 기본 어휘",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "뱀과 거미를 만지거나 유령의 집을 걸을 때도 호기심만 보였고",
+     "difWhy": "공포를 못 느낌 → 공포 담당 부위 — 고교 생명과학·교양",
+     "wor": 4,
+     "worWhy": "교양 — 뇌 부위와 공포 기능"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1994년 처음 보고된 미국 여성 환자 S.M.은 우르바흐-비테병 때문에 어린 시절부터 뇌 양쪽의 이 부위가 완전히 망가졌습니다. 그는 뱀과 거미를 만지거나 유령의 집을 걸을 때도 호기심만 보였고, 낯선 사람과 코가 닿을 만큼 가까이 서도 거의 불편해하지 않았습니다. 이 뇌 부위는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "뱀과 거미를 만지거나 유령의 집을 걸을 때도 호기심만 보였고(공포 없음)",
+     "addedCue": "(뺌만) 개인 공간 감각 없음 · 우르바흐-비테병",
+     "why": "'공포를 못 느낌 → 공포 담당 부위' 는 고교 생명과학이라 빼고 개인 공간 세부만 남김"
+    },
+    "generalHint": "이 부위의 부피는 남성이 평균 10.6% 크지만, 뇌 전체 크기를 감안하면 남녀 차이가 거의 없다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/S.M._(patient)",
+     "https://en.wikipedia.org/wiki/Amygdala"
+    ],
+    "facts": [
+     {
+      "claim": "1994년 처음 보고, 우르바흐-비테병으로 어린 시절 후반부터 양쪽 편도체 완전 파괴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/S.M._(patient)",
+      "note": "First described by scientists in 1994, she has had exclusive and complete bilateral amygdala destruction since late childhood as a consequence of Urbach–Wiethe disease."
+     },
+     {
+      "claim": "낯선 사람과 코가 닿을 만큼 가까이 서도 불편 없음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/S.M._(patient)",
+      "note": "S.M. shows a lack of a sense of personal space, and experiences virtually no discomfort standing extremely close to strangers, even nose-to-nose with direct eye contact."
+     },
+     {
+      "claim": "1822년 부르다흐가 처음 확인·명명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Amygdala",
+      "note": "The amygdala was first identified and named by Karl Friedrich Burdach in 1822."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Amygdala"
+    ],
+    "hintNote": "When controlling for total brain volume or intracranial volume, there is no significant difference in the average size of the amygdala between men and women. Raw amygdala volumes are, on average, 10.6% larger in men",
+    "easiestCue": "S.M. 환자 — 우르바흐-비테병으로 양쪽이 망가진 뇌 부위, 낯선 사람과 코가 닿아도 불편 없음",
+    "targetWhy": "S.M. 사례·개인 공간은 신경과학 교양 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "두려움이 없다는 묘사에서 '공포 = 편도체'(방송 상식)로 풀 사람이 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,316 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "world-history-west/5",
+  "midKey": "world-history-west",
+  "subName": "20세기 서양",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/5#g009b-H1-12",
+   "seed": {
+    "subject": "베를린 장벽",
+    "aspect": null,
+    "ref": "H1-12",
+    "pairedWith": 299
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 299,
+    "question": "하랄트 예거는 몰려든 군중의 압박에 밀려 상부 명령 없이 보른홀머 거리 국경 검문소를 열었습니다. 그는 앞서 상관에게서 사람들을 돌려보내되 '도발자'들은 다시 돌아올 수 없다는 사실을 알리지 않은 채 내보내라는 지시를 받았는데, 그가 연 검문소가 속해 있던 이 구조물은 무엇일까요?",
+    "answer": "베를린 장벽",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그날 저녁 공산당 대변인 귄터 샤보프스키가 기자회견에서 새 출국 규정이 '제가 아는 한 지금 즉시, 지체 없이' 시행된다고 잘못 답한 것이 계기였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "상부 명령 없이 보른홀머 거리 국경 검문소를 열었습니다",
+     "difWhy": "1989 검문소 개방 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "냉전 종식 교양",
+     "acc": 4,
+     "accWhy": "서양사 — 고교 세계사 교과"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "새 출국 규정이 '지금 즉시' — 그날 밤 열린 것",
+     "difWhy": "'1989 그날 밤 열린 것' — 중학 역사·뉴스",
+     "wor": 5,
+     "worWhy": "세계사 교과 사건"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "공산당 대변인 귄터 샤보프스키는 기자회견 끝에 건네받은 쪽지를 읽다가, 새 출국 규정이 언제부터냐는 질문에 몇 초 머뭇거린 뒤 '제가 아는 한 지금 즉시, 지체 없이'라고 답했습니다. 이 말실수가 계기가 되어 그날 밤 열린 것은 무엇일까요?",
+     "beforeExplanation": "샤보프스키는 회견 직전 크렌츠에게서 이 문서를 받았고, 시행 시각이 늦춰졌다는 사실은 전달받지 못했습니다.",
+     "removedCue": "샤보프스키의 '지금 즉시, 지체 없이' 말실수",
+     "addedCue": "하랄트 예거의 보른홀머 거리 검문소 개방",
+     "why": "샤보프스키 말실수는 뉴스 단서라 해설로 옮기고 검문소 책임자의 경위로 바꿨다"
+    },
+    "generalHint": "1962년 이것을 넘으려다 총에 맞은 10대 벽돌공 페터 페히터는 한 시간쯤 피를 흘리다 숨졌다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Berlin_Wall",
+     "https://en.wikipedia.org/wiki/G%C3%BCnter_Schabowski",
+     "https://en.wikipedia.org/wiki/Harald_J%C3%A4ger"
+    ],
+    "facts": [
+     {
+      "claim": "몇 초 머뭇거린 뒤 '제가 아는 한 지금 즉시, 지체 없이'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Berlin_Wall",
+      "note": "After a few seconds' hesitation, Schabowski replied, \"As far as I know, it takes effect immediately, without delay\"."
+     },
+     {
+      "claim": "말실수가 장벽의 즉시 개방으로 받아들여짐",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/G%C3%BCnter_Schabowski",
+      "note": "He gained worldwide fame in November 1989 when he improvised a slightly mistaken answer to a press conference question about the future of the Berlin Wall, that seemed to announce the Wall's immediate end and raised popular expectations much more rapidly than the government planned."
+     },
+     {
+      "claim": "예거가 군중 압박 속 명령 없이 보른홀머 거리 검문소를 엶",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Harald_J%C3%A4ger",
+      "note": "he opened the Bornholmer Straße border crossing of the Berlin Wall, under pressure from a large crowd of protesters and without orders to do so."
+     },
+     {
+      "claim": "상관 지시 — 사람들을 돌려보내되 도발자는 돌아올 수 없음을 알리지 말고 내보내라",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Harald_J%C3%A4ger",
+      "note": "Jäger called his superior Rudi Ziegenhorn and other border crossing officers along the Wall, who told him to turn people away from the Bornholmer Straße border crossing, but allow through the \"provocateurs\"—but without telling them that they could never return."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Killing_of_Peter_Fechter"
+    ],
+    "hintNote": "18 year old German bricklayer killed crossing the Berlin wall in 1962 … he bled to death after approximately one hour.",
+    "easiestCue": "보른홀머 거리 국경 검문소를 군중 앞에서 연 예거",
+    "targetWhy": "예거·보른홀머 거리는 현대사 애호가 세부, 경계 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'출국 규정 · 그날 밤 열린 것' 에서 장벽을 짐작할 여지가 있음 — 날짜·나라 이름을 뺐다",
+    "pairCheck": "1회차(299) 질문 '1989년 철거 · 분단의 상징' · 해설 '1961년 동독 건설 · 1989년 11월 9일 붕괴' · 힌트 없음 — 2회차는 샤보프스키 기자회견 말실수로, 날짜·건설·분단 상징을 쓰지 않음",
+    "dbCheck": "answercheck pair-or-different — 활성 299(1회차, 난이도 2), 묻는 지식이 다름((가) 2회차)",
+    "warn": [],
+    "first": {
+     "id": 299,
+     "question": "1989년 철거되어 동독과 서독 분단의 상징이 끝났음을 알린 베를린 시내의 대표적 구조물은?",
+     "explanation": "1961년 동독이 건설했던 베를린 장벽은 1989년 11월 9일 실질적으로 무너지며 냉전 해체의 상징이 되었습니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "world-history-west/5#g009b-H1-13",
+   "seed": {
+    "subject": "프라하의 봄",
+    "aspect": null,
+    "ref": "H1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 개혁 운동을 이끈 지도자는 물러난 뒤 튀르키예 주재 대사로 보내지는 '외교 유배'를 당했다가 몇 달 만에 소환되었습니다. 결국 브라티슬라바의 국영 산림 기관에서 사무직으로 일하게 된 그가 공산당을 이끌며 벌인 개혁 운동은 무엇일까요?",
+    "answer": "프라하의 봄",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '프라하의 봄' 확인",
+    "explanation": "1969년 1월 카렐 대학교 학생 얀 팔라흐는 이 운동을 끝낸 바르샤바 조약군의 침공에 항의해 스무 살의 나이로 몸에 불을 붙였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 공산당을 이끌며 벌인 개혁 운동 + 브라티슬라바",
+     "difWhy": "체코슬로바키아 공산당 개혁 — 고교 세계사 (경계 4)",
+     "wor": 5,
+     "worWhy": "교과서 — 냉전기 동유럽",
+     "acc": 4,
+     "accWhy": "서양사 — 고교 세계사 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1968년의 개혁 운동(브라티슬라바)",
+     "difWhy": "'1968 체코 개혁 운동' — 고교 세계사",
+     "wor": 5,
+     "worWhy": "세계사 교과 사건"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 개혁 운동을 이끈 지도자는 물러난 뒤 튀르키예 주재 대사로 보내지는 '외교 유배'를 당했다가 몇 달 만에 소환되었습니다. 결국 브라티슬라바의 국영 산림 기관에서 사무직으로 일하게 된 그가 이끈 1968년의 개혁 운동은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1968년의 개혁 운동 (1968 체코 개혁 = 고교 세계사)",
+     "addedCue": "(연도 뺌) 튀르키예 외교 유배 · 브라티슬라바 산림 기관 사무직",
+     "why": "'1968년 개혁 운동' 이 고교 세계사 첫 줄이라 연도를 빼고 지도자의 몰락 세부로만 묻게 함"
+    },
+    "generalHint": "이 운동을 끝낸 침공 작전의 암호명은 '다뉴브 작전'이었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Alexander_Dub%C4%8Dek",
+     "https://en.wikipedia.org/wiki/Jan_Palach"
+    ],
+    "facts": [
+     {
+      "claim": "둡체크가 튀르키예로 외교 유배",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alexander_Dub%C4%8Dek",
+      "note": "Instead, Dubček was sent into diplomatic exile to Turkey."
+     },
+     {
+      "claim": "같은 해 6월 대사직에서 해임·소환",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alexander_Dub%C4%8Dek",
+      "note": "However, in June of that same year, Dubček was dismissed from his ambassadorial post and recalled from Turkey after being suspended from the party pending an investigation by hard-liners."
+     },
+     {
+      "claim": "브라티슬라바 국영 산림 기관의 사무직",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alexander_Dub%C4%8Dek",
+      "note": "This was refused, but he was eventually given a clerical job with the state forestry agency in Bratislava."
+     },
+     {
+      "claim": "얀 팔라흐 — 카렐 대학교 학생, 1969년 스무 살에 침공에 항의해 분신",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jan_Palach",
+      "note": "His self-immolation in 1969 at the age of 20 was a political protest against the Warsaw Pact invasion of Czechoslovakia in 1968 which brought an end to the Prague Spring."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Warsaw_Pact_invasion_of_Czechoslovakia"
+    ],
+    "hintNote": "About 250,000 Warsaw Pact troops … participated in the overnight operation, which was code-named Operation Danube.",
+    "easiestCue": "브라티슬라바의 국영 산림 기관에서 사무직으로 일하게 된 그",
+    "targetWhy": "둡체크의 외교 유배·산림 기관 좌천은 현대사 애호가 세부 — 연도·나라 이름·탱크 없음",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1968년 개혁 운동' 만으로 짐작할 수 있는 사람이 있음(68운동과는 '지도자 · 대사' 로 갈림) — 연도를 빼면 유일성이 약해져 남겼다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 0",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-history-west/5#g009b-H1-14",
+   "seed": {
+    "subject": "워터게이트 사건",
+    "aspect": null,
+    "ref": "H1-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 신문 기자는 비밀 정보원을 만나고 싶을 때 고층 아파트 발코니에 작은 빨간 깃발을 꽂은 화분을 옮겨 두었고, 정보원은 기자가 받아 보는 '뉴욕 타임스' 20쪽에 시계 바늘을 그려 만날 시각을 알렸습니다. 둘은 버지니아주 로슬린의 한 지하 주차장 맨 아래층에서 만났는데, 이 정보원이 도운 취재가 파헤친 사건은 무엇일까요?",
+    "answer": "워터게이트 사건",
+    "acceptedAnswers": [
+     "워터게이트"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia — '워터게이트' 가 '워터게이트 사건' 으로 넘겨주기 확인",
+    "explanation": "정보원의 별명은 편집국장 하워드 사이먼스가 1972년의 한 성인 영화 제목에서 따왔고, 2005년 당시 FBI 2인자였던 마크 펠트가 자신이 그 정보원이었다고 밝혔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "버지니아주 로슬린 지하 주차장에서 만난 비밀 정보원",
+     "difWhy": "딥 스로트 일화 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 대표 정치 스캔들",
+     "acc": 4,
+     "accWhy": "서양사 — 고교 세계사 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'워싱턴 포스트' … 마크 펠트가 자신이 그 정보원",
+     "difWhy": "딥 스로트·워싱턴 포스트 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "현대사 교양 사건"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "'워싱턴 포스트'의 편집국장 하워드 사이먼스는 한 기자의 비밀 정보원에게 1972년의 한 성인 영화 제목에서 따온 별명을 붙였습니다. 2005년 당시 FBI 2인자였던 마크 펠트가 자신이 그 정보원이었다고 밝혔는데, 이 정보원이 도운 취재가 파헤친 사건은 무엇일까요?",
+     "beforeExplanation": "펠트가 워싱턴 포스트의 밥 우드워드를 만나던 한 주차장 앞에는 이 일을 알리는 안내 표지가 세워져 있습니다.",
+     "removedCue": "'워싱턴 포스트' … 마크 펠트가 자신이 그 정보원 (딥 스로트 — 대표 일화)",
+     "addedCue": "화분 깃발 신호 · 뉴욕 타임스 20쪽 시계 · 로슬린 지하 주차장",
+     "why": "워싱턴 포스트·펠트·딥 스로트 별명이 대표 일화라 해설로 옮기고, 접선 방식 세부로 묻게 함"
+    },
+    "generalHint": "펜타곤 문서 유출 직후 꾸려진 백악관 비밀 조사반은 '배관공들'이라 불렸다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Deep_Throat_(Watergate)"
+    ],
+    "facts": [
+     {
+      "claim": "편집국장 하워드 사이먼스가 1972년 성인 영화 제목에서 따온 별명을 붙임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Deep_Throat_(Watergate)",
+      "note": "... Washington Post managing editor Howard Simons dubbed him \"Deep Throat\" in an allusion to the 1972 adult film of the same name."
+     },
+     {
+      "claim": "2005년 펠트가 자신이 정보원이었다고 밝힘",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Deep_Throat_(Watergate)",
+      "note": "In 2005, 31 years after Nixon's resignation and 11 years after Nixon's death, Felt revealed through an attorney that he was Deep Throat."
+     },
+     {
+      "claim": "펠트는 FBI 2인자 · 주차장에서 우드워드를 만남(안내 표지)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Deep_Throat_(Watergate)",
+      "note": "The marker reads: \"Mark Felt, second in command at the FBI, met Washington Post reporter Bob Woodward here in this parking garage to discuss the Watergate scandal."
+     },
+     {
+      "claim": "발코니의 빨간 깃발 화분으로 만남 요청",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Deep_Throat_(Watergate)",
+      "note": "a flowerpot with a small red flag on the balcony of his high-rise apartment"
+     },
+     {
+      "claim": "뉴욕 타임스 20쪽에 쪽 번호 동그라미·시계 바늘로 시각",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Deep_Throat_(Watergate)",
+      "note": "make special marks on page 20 of Woodward's copy of The New York Times … a circled page number and clock hands showing the hour"
+     },
+     {
+      "claim": "로슬린 키 브리지 건너 지하 주차장 맨 아래층",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Deep_Throat_(Watergate)",
+      "note": "on the bottom level of an underground garage just over the Key Bridge in Rosslyn, Virginia"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/White_House_Plumbers"
+    ],
+    "hintNote": "The White House Plumbers, sometimes simply called the Plumbers ... was a covert White House Special Investigations Unit, established within a week of the publication of the Pentagon Papers in June 1971",
+    "easiestCue": "버지니아주 로슬린의 한 지하 주차장 맨 아래층에서 만났는데",
+    "targetWhy": "접선 신호·장소는 현대사·영화 애호가 세부 — 신문 이름·정보원 별명·닉슨 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정답은 누구나 아는 사건, 단서는 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 워터게이트 사건 · 워터게이트 0",
+    "warn": [
+     "정답조각 사건"
+    ]
+   }
+  }
+ ]
+}

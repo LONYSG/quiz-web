@@ -1,0 +1,111 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "invention/2",
+  "midKey": "invention",
+  "subName": "20세기 이후 발명",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "invention/2#g009b-C2-17",
+   "seed": {
+    "subject": "뽁뽁이",
+    "aspect": null,
+    "ref": "C2-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "두 발명가 앨프리드 필딩과 마르크 샤반은 입체 무늬가 있는 플라스틱 벽지를 만들려다 실패했지만, 만든 것에 뜻밖의 다른 쓸모가 있다는 것을 알았습니다. 이것은 새로 나온 IBM 1401 컴퓨터를 고객에게 보낼 때 쓰이면서 널리 퍼졌는데, 그 고객 대부분은 이것을 처음 보았다고 합니다. 이것은 무엇일까요?",
+    "answer": "뽁뽁이",
+    "acceptedAnswers": [
+     "에어캡",
+     "버블랩"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '뽁뽁이', '에어캡'·'버블랩' 은 넘겨주기 — 셋 다 같은 대상의 흔한 한국어 이름",
+    "explanation": "필딩은 1960년 이 포장재를 만드는 회사 실드에어를 함께 세웠습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "입체 무늬 플라스틱 벽지를 만들려다 실패, 다른 쓸모",
+     "difWhy": "원래 벽지였던 포장재 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 발명 뒷이야기",
+     "acc": 4,
+     "accWhy": "발명·발견 — 교과 과학사·교양"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "입체 무늬가 있는 플라스틱 … 포장재",
+     "difWhy": "기포 포장재 — 누구나 일상에서",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 벽지 실패작"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "두 발명가 앨프리드 필딩과 마르크 샤반은 입체 무늬가 있는 플라스틱 벽지를 만들려다 실패했지만, 만든 것이 포장재로 쓸 만하다는 것을 알았습니다. 이것은 새로 나온 IBM 1401 컴퓨터를 고객에게 보내는 데 쓰이면서 널리 퍼졌습니다. 이 포장재는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "포장재(정답의 범주)",
+     "addedCue": "(범주를 감춤) 고객 대부분이 처음 보았다는 IBM 1401 배송",
+     "why": "'포장재' 가 곧 정답의 정의라 감추고 발명·확산 일화만 남김"
+    },
+    "generalHint": "1월 마지막 월요일의 '감사의 날'은 한 라디오 방송국이 이것을 터뜨리는 소리를 내보낸 데서 생겼다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bubble_wrap"
+    ],
+    "facts": [
+     {
+      "claim": "필딩과 샤반이 입체 플라스틱 벽지를 만들려 함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bubble_wrap",
+      "note": "two inventors named Alfred Fielding and Marc Chavannes ... were attempting to create a three-dimensional plastic wallpaper"
+     },
+     {
+      "claim": "실패했지만 포장재로 쓸 수 있음을 앎",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bubble_wrap",
+      "note": "was a failure ... found that what they made could be used as packing material"
+     },
+     {
+      "claim": "1960년 필딩이 실드에어 공동 설립",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bubble_wrap",
+      "note": "Sealed Air was co-founded by Fielding in 1960."
+     },
+     {
+      "claim": "IBM 1401 배송에 쓰였고 고객 대부분은 이 포장재를 처음 봄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bubble_wrap",
+      "note": "the shipping of the new IBM 1401 computers to customers, most of whom had never seen this packing material before."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bubble_wrap"
+    ],
+    "hintNote": "The last Monday of January was designated as Bubble Wrap Appreciation Day after a radio station in Bloomington, Indiana received a shipment of microphones wrapped in bubble wrap and broadcast the sound of their wrappings being popped.",
+    "easiestCue": "입체 무늬 플라스틱 벽지를 만들려다 실패한 발명",
+    "targetWhy": "필딩·샤반·IBM 1401 배송은 발명사 교양 세부 (경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'플라스틱 포장재' 범주만으로 떠올릴 사람이 있음 — 벽지 실패담은 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (뽁뽁이·에어캡)",
+    "warn": []
+   }
+  }
+ ]
+}

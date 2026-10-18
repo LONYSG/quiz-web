@@ -1,0 +1,290 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "brands/4",
+  "midKey": "brands",
+  "subName": "기업 국적",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "brands/4#g009b-L2-38",
+   "seed": {
+    "subject": "테팔",
+    "aspect": null,
+    "ref": "L2-38",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프랑스 항공 연구소의 기술자 마르크 그레구아르는 유리섬유로 된 접이식 낚싯대를 다듬으면서, 낚싯대가 틀에서 잘 빠지도록 미끄러운 합성수지를 쓰고 있었습니다. 그가 1956년 사르셀에서 함께 세운 이 브랜드는 무엇일까요?",
+    "answer": "테팔",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "아내 콜레트가 눌어붙지 않는 냄비를 부탁하자 그 수지를 프라이팬에 입혀 본 것이 시작이었고, 여러 제조사에 팔려다 받아들여지지 않아 직접 만들기로 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 미끄러운 합성수지 + 1956년 함께 세운 브랜드",
+     "difWhy": "테플론 낚싯대→프라이팬 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "브랜드 탄생 이야깃거리",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "눌어붙지 않는 냄비 … 이 조리 기구 브랜드",
+     "difWhy": "프랑스 코팅 프라이팬 — 일상·광고",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 브랜드 탄생"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "프랑스 항공 연구소의 기술자 마르크 그레구아르는 유리섬유 낚싯대가 틀에서 잘 빠지도록 미끄러운 합성수지를 쓰고 있었습니다. 아내 콜레트가 눌어붙지 않는 냄비를 부탁하자 프라이팬에 그 수지를 입혔고, 1956년 직접 브랜드를 세웠는데, 이 조리 기구 브랜드는 무엇일까요?",
+     "beforeExplanation": "그는 여러 제조사에 발명을 팔려 했지만, 프라이팬은 한 번 사면 대물림하는 물건이라는 이유로 받아들여지지 않아 직접 만들기로 했습니다.",
+     "removedCue": "아내 콜레트가 눌어붙지 않는 냄비를 부탁하자 프라이팬에 그 수지를 입혔고 · 이 조리 기구 브랜드",
+     "addedCue": "(새 단서 없음 — 낚싯대 이야기·1956 사르셀 창업만 남기고 냄비 이야기는 해설로)",
+     "why": "'프랑스 코팅 프라이팬 브랜드'는 일상·광고로 바로 풀려 조리 기구라는 말을 빼고 낚싯대 개발 뒷이야기로 좁힘"
+    },
+    "generalHint": "1968년 프랑스의 SEB 그룹에 인수되었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "낚시",
+    "defForm": false,
+    "sources": [
+     "https://fr.wikipedia.org/wiki/Tefal"
+    ],
+    "facts": [
+     {
+      "claim": "그레구아르는 ONERA(항공 연구소) 기술자, 1956년 창업",
+      "where": "q",
+      "url": "https://fr.wikipedia.org/wiki/Tefal",
+      "note": "est créée en 1956 à Sarcelles, dans le Val-d'Oise, par deux ingénieurs, Marc Grégoire, ingénieur à l'Office national d'études et de recherches aérospatiales (ONERA)"
+     },
+     {
+      "claim": "유리섬유 낚싯대 틀에서 빠지게 테플론 사용",
+      "where": "q",
+      "url": "https://fr.wikipedia.org/wiki/Tefal",
+      "note": "Marc Grégoire travaille à perfectionner ses cannes à pêche, inventant la canne à pêche télescopique en Matériau composite (fibre de verre). Le matériau composite adhérant au démoulage, il a l'idée d'utiliser du téflon disponible à l'ONERA pour que la canne se démoule mieux."
+     },
+     {
+      "claim": "아내 콜레트의 부탁으로 프라이팬에 입힘",
+      "where": "e",
+      "url": "https://fr.wikipedia.org/wiki/Tefal",
+      "note": "Lorsque sa femme Colette lui demande de lui fabriquer une casserole anti-adhésive, Marc Grégoire descend au magasin le plus proche où il ne trouve qu'une poêle."
+     },
+     {
+      "claim": "1956년 직접 브랜드 설립",
+      "where": "q",
+      "url": "https://fr.wikipedia.org/wiki/Tefal",
+      "note": "Marc Grégoire décide alors de produire ses poêles antiadhésives lui-même : il crée la marque Tefal en 1956"
+     },
+     {
+      "claim": "제조사들이 거절 — 프라이팬은 대물림하는 물건",
+      "where": "e",
+      "url": "https://fr.wikipedia.org/wiki/Tefal",
+      "note": "Marc Grégoire essaye ensuite de vendre son invention à différents producteurs, sans succès : la poêle à frire est considérée comme un bien d'équipement, acheté lorsqu'un foyer est fondé, puis passé de génération en génération"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tefal"
+    ],
+    "hintNote": "owned by Groupe SEB (a global manufacturer of cookware) since 1968.",
+    "easiestCue": "낚싯대가 틀에서 잘 빠지도록 미끄러운 합성수지를 쓰던 기술자가 1956년 세운 브랜드",
+    "targetWhy": "창업자의 낚싯대 개발 사연은 생활·낚시 애호가가 '아 그거' 하는 세부 — 조리 기구·코팅 팬이라는 말 없음 (경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 프라이팬 브랜드, 낚시 장비에서 나온 뜻밖의 출발",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "brands/4#g009b-L2-39",
+   "seed": {
+    "subject": "아식스",
+    "aspect": null,
+    "ref": "L2-39",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1949년 고베에서 세워진 한 운동화 회사는 1977년 GTO, 젤렌크와 합쳐 새 이름의 회사가 되었습니다. 회사 이름이 한 라틴어 경구의 머리글자에서 왔다는 이 일본 스포츠 브랜드는 무엇일까요?",
+    "answer": "아식스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그 경구는 '건전한 몸에 건전한 정신'이라는 뜻의 'anima sana in corpore sano'입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "회사 이름이 한 라틴어 경구의 머리글자에서 왔다",
+     "difWhy": "아식스 이름 유래 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 브랜드 이름 유래",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1949년 고베에서 오니쓰카 기하치로가 세운 운동화 회사",
+     "difWhy": "'오니쓰카(타이거)' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 브랜드 이름 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1949년 고베에서 오니쓰카 기하치로가 세운 운동화 회사는 1977년 GTO, 젤렌크와 합쳐 새 이름의 회사가 되었습니다. 회사 이름이 한 라틴어 경구의 머리글자에서 왔다는 이 일본 스포츠 브랜드는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "오니쓰카 기하치로가 세운 (오니쓰카 타이거 — 관심층에게 바로)",
+     "addedCue": "(뺌) 1977 3사 합병 + 라틴어 경구 머리글자",
+     "why": "창업자 이름이 그대로 옛 브랜드 이름이라 빼고 합병·이름 유래로 묻게 함"
+    },
+    "generalHint": "2016년 2월 달리기 기록 앱 '런키퍼'를 운영하던 회사를 사들였다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/ASICS"
+    ],
+    "facts": [
+     {
+      "claim": "1949년 고베 오니쓰카 기하치로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/ASICS",
+      "note": "The company traces its origins to a sporting-shoe business established by Kihachiro Onitsuka in Kobe in 1949."
+     },
+     {
+      "claim": "1977년 GTO·젤렌크와 합병",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/ASICS",
+      "note": "Onitsuka Co., Ltd. merged with GTO Co., Ltd. and Jelenk Co., Ltd. in 1977 to form ASICS Corporation."
+     },
+     {
+      "claim": "이름은 라틴어 경구의 머리글자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/ASICS",
+      "note": "The name is an acronym of the Latin phrase anima sana in corpore sano, which the company renders as \"a sound mind in a sound body\"."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Asics"
+    ],
+    "hintNote": "In February 2016, Asics acquired Fitness Keeper, Inc., operator of the fitness-tracking app Runkeeper",
+    "easiestCue": "회사 이름이 한 라틴어 경구의 머리글자에서 왔다는",
+    "targetWhy": "3사 합병·경구 머리글자는 운동화 애호가 세부 — 창업자·옛 브랜드 이름 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 브랜드, 이름과 뿌리의 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 3571(나이키)은 오니쓰카 타이거를 단서로 쓰지만 정답이 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "brands/4#g009b-L2-40",
+   "seed": {
+    "subject": "빅토리녹스",
+    "aspect": null,
+    "ref": "L2-40",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1884년 스위스 이바흐에서 카를 엘제너가 연 작업장에서 출발한 회사로, 1909년부터 스위스 국장을 회사 로고로 썼습니다. 2005년 4월 오랜 경쟁사 벵거를 사들인 이 회사는 어디일까요?",
+    "answer": "빅토리녹스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "회사 이름은 1909년 세상을 떠난 창업자의 어머니 빅토리아의 이름에, 스테인리스강을 가리키는 프랑스어 줄임말 'inox'를 붙인 것입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "2005년 4월 오랜 경쟁사 벵거를 사들인",
+     "difWhy": "스위스 칼 회사 벵거 인수 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "브랜드 이야깃거리",
+     "acc": 5,
+     "accWhy": "브랜드·기업 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "스위스군 칼, 경쟁사 벵거",
+     "difWhy": "'스위스 아미 나이프 회사' — 관심층",
+     "wor": 3,
+     "worWhy": "유명 브랜드 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1884년 스위스 이바흐에서 칼 장인 카를 엘제너가 연 작업장에서 출발한 회사입니다. 1897년 특허를 낸 '장교·스포츠 칼'로 이름났고, 1908년부터 2005년까지 경쟁사 벵거와 스위스군 납품을 나눠 맡았던 이 회사는 어디일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'장교·스포츠 칼' 특허 · '스위스군 납품을 벵거와 나눔'",
+     "addedCue": "1909년 스위스 국장 로고 · 2005년 벵거 인수",
+     "why": "스위스군 칼이 곧 답이라 빼고 회사 연혁 세부로"
+    },
+    "generalHint": "창업자는 1891년 스위스 칼 제조업자들의 협회를 함께 세우기도 했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "캠핑",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Victorinox"
+    ],
+    "facts": [
+     {
+      "claim": "1884년 이바흐, 카를 엘제너의 작업장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Victorinox",
+      "note": "The company was founded in 1884 as Messerfabrik Carl Elsener, the workshop of Karl Elsener in Ibach."
+     },
+     {
+      "claim": "이름은 빅토리아 + inox",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Victorinox",
+      "note": "Upon the death of his mother in 1909, Elsener named the brand \"Victoria\" in her honor. In 1921, the company changed its trade name to the present \"Victorinox\", a portmanteau of \"Victoria\" and \"inox\", an abbreviation for acier inoxydable"
+     },
+     {
+      "claim": "1909년 스위스 국장을 회사 로고로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Victorinox",
+      "note": "In 1909 ... the Swiss coat of arms was introduced as the company logo."
+     },
+     {
+      "claim": "2005년 4월 26일 벵거 인수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Victorinox",
+      "note": "On 26 April 2005, Victorinox acquired Wenger, the other official supplier of the Swiss Army knife."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Victorinox"
+    ],
+    "hintNote": "Elsener co-founded the association in 1891, 'Schweizerischer Messerschmiedverband', an association of Swiss knife manufacturers.",
+    "easiestCue": "2005년 4월 오랜 경쟁사 벵거를 사들인",
+    "targetWhy": "벵거를 아는 사람은 칼 애호가 — 엘제너·이바흐와 엮어야 풀림(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'스위스군 칼'에서 브랜드 이름을 떠올리는 캠퍼가 꽤 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

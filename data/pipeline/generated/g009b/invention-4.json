@@ -1,0 +1,194 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "invention/4",
+  "midKey": "invention",
+  "subName": "의학·생명 분야 발견",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "invention/4#g009b-C2-18",
+   "seed": {
+    "subject": "아스피린",
+    "aspect": null,
+    "ref": "C2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1944년 테레지엔슈타트 강제 수용소에 갇힌 화학자 아르투어 아이헨그륀은 그곳에서 IG 파르벤에 편지를 보내 이 약을 만든 공이 자신에게 있다고 주장했습니다. 1918~1921년 사이 미국 등에서 상표권을 잃어 누구나 쓰는 이름이 된 이 약은 무엇일까요?",
+    "answer": "아스피린",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "흔히 1897년 펠릭스 호프만이 순수하고 안정된 꼴로 처음 만들어 냈다고 알려져 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "상표권을 잃어 누구나 쓰는 이름이 된 이 약",
+     "difWhy": "일반명화된 바이엘 약 — 관심 있는 사람 (경계 4)",
+     "wor": 3,
+     "worWhy": "약 이름 이야깃거리",
+     "acc": 4,
+     "accWhy": "발명·발견 — 교과 과학사·교양"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1897년 펠릭스 호프만이 순수하고 안정된 꼴로 만든 약",
+     "difWhy": "'호프만 1897 합성 약' — 고교 화학",
+     "wor": 4,
+     "worWhy": "교양 — 대표 의약품 역사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1897년 펠릭스 호프만이 순수하고 안정된 꼴로 처음 만들어 낸 것으로 알려진 이 약은, 1918~1921년 사이 미국 등에서 상표권을 잃어 누구나 쓰는 이름이 되었습니다. 이 약은 무엇일까요?",
+     "beforeExplanation": "이름은 아세틸의 'a' 에 메도스위트(조팝나무 무리 풀)를 가리키는 독일어 낱말에서 딴 'spir', 약 이름에 흔히 붙던 '-in' 을 합친 것입니다.",
+     "removedCue": "1897년 펠릭스 호프만이 순수하고 안정된 꼴로 처음 만듦",
+     "addedCue": "아이헨그륀의 수용소 편지(공을 둘러싼 다툼)",
+     "why": "호프만 1897 합성은 고교 화학 단서라 해설로 돌리고 발명 공로 다툼으로 묻는다"
+    },
+    "generalHint": "1982년 영국 약리학자 존 베인은 이 약과 프로스타글란딘의 관계를 밝힌 연구로 노벨상을 받았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Aspirin",
+     "https://en.wikipedia.org/wiki/Arthur_Eichengrün"
+    ],
+    "facts": [
+     {
+      "claim": "호프만이 1897년 순수·안정 꼴로 처음 만듦(아이헨그륀과 함께였을 수도)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Aspirin",
+      "note": "(Hoffmann, possibly with Arthur Eichengrün) was the first to produce acetylsalicylic acid in a pure, stable form (1897, 요지)"
+     },
+     {
+      "claim": "1918~1921년 미국 등에서 상표권 상실",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aspirin",
+      "note": "Bayer lost its trademark for aspirin in the United States and some other countries in actions taken between 1918 and 1921."
+     },
+     {
+      "claim": "아이헨그륀 테레지엔슈타트 수감, 1944년 IG 파르벤에 편지로 공 주장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Arthur_Eichengrün",
+      "note": "was imprisoned in the Theresienstadt concentration camp … From the camp, he wrote a 1944 letter to IG Farben claiming credit for aspirin (본문 요지)."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/John_Vane"
+    ],
+    "hintNote": "the publication with Priscilla Piper of the relationship between aspirin and the prostaglandins that earned him the Nobel Prize in Physiology or Medicine in 1982.",
+    "easiestCue": "1918~1921년 사이 미국 등에서 상표권을 잃어 누구나 쓰는 이름이 된 약",
+    "targetWhy": "아이헨그륀 일화·상표권 상실은 약학사 애호가 세부 (경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 약, 발명자·상표 이야기는 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different — 활성 2435(버드나무 껍질·혈전 예방)와 지식이 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "invention/4#g009b-C2-19",
+   "seed": {
+    "subject": "페니실린",
+    "aspect": null,
+    "ref": "C2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 일리노이주 피오리아의 북부 지역 연구소는 이 약을 더 많이 만들어 낼 표본을 찾았는데, 가장 좋은 것은 1943년 피오리아의 과일 시장에서 팔린 칸탈루프 멜론에서 나왔습니다. 옥수수 산업의 부산물인 옥수수 침지액을 배양액에 넣자 생산량도 크게 늘었습니다. 이 약은 무엇일까요?",
+    "answer": "페니실린",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "카네기 연구소는 이 곰팡이에 엑스선을 쬐어, 멜론 균주보다 두 배를 만드는 돌연변이 균주를 얻었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "칸탈루프 멜론 … 옥수수 침지액을 배양액에",
+     "difWhy": "페니실린 대량 생산 — 대학 교양 (경계 3)",
+     "wor": 3,
+     "worWhy": "항생제 생산 일화",
+     "acc": 4,
+     "accWhy": "발명·발견 — 교과 과학사·교양"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "이 약을 더 많이 만들어 줄 곰팡이",
+     "difWhy": "'곰팡이에서 얻는 약' — 중학 과학",
+     "wor": 4,
+     "worWhy": "교양 — 항생제 역사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "미국 일리노이주 피오리아의 북부 지역 연구소는 이 약을 더 많이 만들어 줄 곰팡이를 찾았는데, 가장 좋은 표본은 1943년 피오리아의 과일 시장에서 팔린 칸탈루프 멜론에서 나왔습니다. 옥수수 산업의 부산물인 옥수수 침지액을 배양액에 넣자 생산량도 크게 늘었습니다. 이 약은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "이 약을 더 많이 만들어 줄 곰팡이",
+     "addedCue": "(곰팡이를 '표본'으로) 피오리아 연구소 · 칸탈루프 멜론 · 옥수수 침지액",
+     "why": "'곰팡이에서 얻는 약' 이 중학 과학 정의라 곰팡이를 빼고 대량 생산 뒷이야기만 남김"
+    },
+    "generalHint": "오스트레일리아 출신 병리학자 하워드 플로리는 이 약의 연구로 1945년 노벨상을 나눠 받았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/History_of_penicillin"
+    ],
+    "facts": [
+     {
+      "claim": "피오리아 북부 지역 연구소(NRRL)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/History_of_penicillin",
+      "note": "Northern Regional Research Laboratory (NRRL) in Peoria, Illinois"
+     },
+     {
+      "claim": "가장 좋은 표본은 1943년 피오리아 과일 시장 칸탈루프",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/History_of_penicillin",
+      "note": "The best sample, however, was from a cantaloupe sold in a Peoria fruit market in 1943."
+     },
+     {
+      "claim": "옥수수 침지액을 넣자 크게 증가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/History_of_penicillin",
+      "note": "An even larger increase occurred when Moyer added corn steep liquor (요지: a corn-industry byproduct)"
+     },
+     {
+      "claim": "엑스선 돌연변이 X-1612 는 NRRL 1951 의 두 배",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/History_of_penicillin",
+      "note": "Researchers at the Carnegie Institution produced a mutant, X-1612, through X-ray treatment ... 300 milligrams of penicillin per litre of mould culture, twice as much as NRRL 1951 (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Howard_Florey"
+    ],
+    "hintNote": "was an Australian pharmacologist and pathologist who shared the Nobel Prize in Physiology or Medicine in 1945 with Ernst Chain and Sir Alexander Fleming \"for the discovery of penicillin",
+    "easiestCue": "1943년 피오리아의 과일 시장에서 팔린 칸탈루프 멜론에서 나왔습니다",
+    "targetWhy": "피오리아 멜론 균주·옥수수 침지액은 과학사 교양 — '곰팡이'·발견자 없음",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'곰팡이에서 얻는 약' 이 교과서 단서 — 플레밍은 뺐지만 곰팡이는 뺄 수 없었음",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different — 활성 194(플레밍 발견)와 지식이 다름(대량 생산 균주)",
+    "warn": []
+   }
+  }
+ ]
+}

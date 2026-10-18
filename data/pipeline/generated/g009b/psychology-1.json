@@ -1,0 +1,113 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "psychology/1",
+  "midKey": "psychology",
+  "subName": "심리 현상·효과",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "psychology/1#g009b-H2-23",
+   "seed": {
+    "subject": "바넘 효과",
+    "aspect": null,
+    "ref": "H2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1948년 한 심리학자가 학생 39명에게 성격 검사를 하고 일주일 뒤 저마다의 결과라며 짧은 성격 묘사를 나눠 주자, 학생들은 0점에서 5점 사이로 평균 4.30점을 매기며 잘 맞는다고 했습니다. 1956년 심리학자 폴 밀이 한 흥행사의 이름을 따 부른, 이 실험이 보여 준 효과는 무엇일까요?",
+    "answer": "바넘 효과",
+    "acceptedAnswers": [
+     "포러 효과"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '바넘 효과' 문서가 '포러 효과(Forer effect)' 로도 설명 — 질문에 포러 이름을 쓰지 않았으므로 다른 이름으로 넣음",
+    "explanation": "학생들이 받은 글은 모두 똑같았고, 가판대의 점성술 책에서 따온 것이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "짧은 성격 묘사를 나눠 주자 … 잘 맞는다고 했습니다 … 한 흥행사의 이름을 따",
+     "difWhy": "같은 성격 묘사 실험 — 고교 교양 심리",
+     "wor": 4,
+     "worWhy": "교양 — 심리 기본 어휘",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "그 글은 모두 똑같았고 … 점성술 책에서 따온",
+     "difWhy": "누구에게나 맞는 성격 묘사 — 방송에서 흔히",
+     "wor": 4,
+     "worWhy": "교양 — 심리 효과 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1948년 한 심리학자는 학생 39명에게 성격 검사를 하고, 일주일 뒤 저마다의 결과라며 짧은 성격 묘사를 나눠 주었습니다. 학생들은 잘 맞는다고 높은 점수를 매겼지만, 그 글은 모두 똑같았고 가판대의 점성술 책에서 따온 것이었습니다. 1956년 심리학자 폴 밀이 한 흥행사의 이름을 따 부른 이 효과는?",
+     "beforeExplanation": "실험을 한 버트럼 포러는 1949년 이 현상을 '개인적 타당화의 오류'라고 불렀습니다.",
+     "removedCue": "그 글은 모두 똑같았고 점성술 책에서 따온 것(효과의 정의)",
+     "addedCue": "학생들이 매긴 평균 4.30점 — 정의는 해설로",
+     "why": "모두 같은 글이었다는 반전이 효과의 정의라 해설로 돌린다"
+    },
+    "generalHint": "그 흥행사는 1875년 미국 코네티컷주 브리지포트의 시장으로 뽑히기도 했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Barnum_effect"
+    ],
+    "facts": [
+     {
+      "claim": "1948년 포러가 학생 39명에게 검사 · 일주일 뒤 개인별이라며 묘사 제공",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Barnum_effect",
+      "note": "In 1948, in what has been described as a \"classic experiment\", psychologist Forer gave a psychology test – his \"Diagnostic Interest Blank\" – to 39 of his psychology students ... One week later Forer gave each student a purportedly individualized vignette and asked each of them to rate it on how well it applied."
+     },
+     {
+      "claim": "모두 같은 글 · 가판대 점성술 책",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Barnum_effect",
+      "note": "Only after the ratings were turned in, it was revealed that all students had received an identical vignette assembled by Forer from a newsstand astrology book."
+     },
+     {
+      "claim": "1956년 밀이 흥행사 바넘의 이름으로 명명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Barnum_effect",
+      "note": "Meehl coined the term \"Barnum effect\" in 1956 in his essay \"Wanted – A Good Cookbook\", because he relates the vague personality descriptions used in certain \"pseudo-successful\" psychological tests to those given by showman P. T. Barnum"
+     },
+     {
+      "claim": "평균 4.30점(0~5)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Barnum_effect",
+      "note": "On average, the students rated its accuracy as 4.30 on a scale of 0 (very poor) to 5 (excellent)."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/P._T._Barnum"
+    ],
+    "hintNote": "He was elected in 1875 as mayor of Bridgeport, Connecticut.",
+    "easiestCue": "1956년 심리학자 폴 밀이 한 흥행사의 이름을 따 부른 효과",
+    "targetWhy": "흥행사 이름 유래는 심리학 관심층도 아는 편 (경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "실험 이야기가 곧 효과의 내용이라 '점성술 = 바넘 효과' 연상이 쉬운 사람이 있음. 평균 점수는 ko(4.26)·en(4.30) 이 엇갈려 쓰지 않음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 0",
+    "warn": [
+     "정답조각 효과",
+     "단정어 모두"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,198 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "human-body/2",
+  "midKey": "human-body",
+  "subName": "장기·순환",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/2#g009b-C1-17",
+   "seed": {
+    "subject": "적혈구",
+    "aspect": null,
+    "ref": "C1-17",
+    "pairedWith": 1667
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1667,
+    "question": "척추동물 가운데 이 세포가 없는 것으로 알려진 것은 남극 바다에 사는 '크로커다일 아이스피시' 무리뿐입니다. 낙타와 라마의 이 세포는 작고 몹시 길쭉한 타원형인데, 이 세포는 무엇일까요?",
+    "answer": "적혈구",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1658년 네덜란드의 얀 스바메르담이 초기 현미경으로 개구리의 피를 들여다보다 이 세포를 처음 기록했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "이 세포가 없는 것 … 크로커다일 아이스피시",
+     "difWhy": "적혈구 없는 어류 — 대학 교양 생물 (경계 3)",
+     "wor": 4,
+     "worWhy": "혈액 세포 교양",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "개구리의 피를 들여다보다 처음 기록한 세포, 낙타의 타원형 이 세포",
+     "difWhy": "'피 속 세포' — 중학 과학",
+     "wor": 4,
+     "worWhy": "교양 — 혈구 기본"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1658년 네덜란드의 젊은 생물학자 얀 스바메르담은 초기 현미경으로 개구리의 피를 들여다보다 이 세포를 처음 기록했습니다. 낙타와 라마의 이 세포는 작고 몹시 길쭉한 타원형입니다. 이 세포는 무엇일까요?",
+     "beforeExplanation": "스바메르담의 기록을 몰랐던 레이우엔훅은 1674년 이 세포를 더 자세히 적으며 '고운 모래알보다 2만 5천 배 작다'고 크기를 어림했습니다.",
+     "removedCue": "개구리의 피를 들여다보다 처음 기록한 세포",
+     "addedCue": "크로커다일 아이스피시에게만 없는 세포",
+     "why": "'피 속 세포' 단서를 해설로 옮기고 이 세포가 없는 물고기 세부로 바꿈"
+    },
+    "generalHint": "어른 몸에서는 1초에 약 240만 개씩 새로 만들어진다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Red_blood_cell"
+    ],
+    "facts": [
+     {
+      "claim": "1658년 스바메르담이 개구리 피에서 처음 기술",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Red_blood_cell",
+      "note": "The first person to describe red blood cells was the young Dutch biologist Jan Swammerdam, who had used an early microscope in 1658 to study the blood of a frog."
+     },
+     {
+      "claim": "낙타·라마는 작고 몹시 타원형",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Red_blood_cell",
+      "note": "small and highly ovaloid cells in llamas and camels (family Camelidae)"
+     },
+     {
+      "claim": "이 세포가 없는 척추동물은 크로커다일 아이스피시뿐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Red_blood_cell",
+      "note": "The only known vertebrates without red blood cells are the crocodile icefish"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Red_blood_cell"
+    ],
+    "hintNote": "Approximately 2.4 million new erythrocytes are produced per second in human adults.",
+    "easiestCue": "척추동물 가운데 크로커다일 아이스피시에게만 없는 세포",
+    "targetWhy": "아이스피시·낙타 타원형은 생물 교양(대학) 세부 — 1회차의 골수·120일·핵 없음 쓰지 않음",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'피 속 세포'에서 적혈구를 찍을 수 있음 — 백혈구와 가르려면 지식이 필요",
+    "pairCheck": "1회차 1667 q(골수·120일·비장·산소) · e(핵 없음·수리 못 함)와 겹치지 않음 — 첫 관찰·낙타 모양은 새 사실",
+    "dbCheck": "answercheck pair-or-different — 활성 1667, (가) 2회차",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 1667,
+     "question": "골수에서 만들어져 약 120일 동안 온몸을 돌다가 비장에서 걸러져 사라지는, 산소를 나르는 혈액 세포는?",
+     "explanation": "핵이 없어 산소를 실을 공간이 더 넓고, 대신 스스로 수리하지 못해 수명이 정해져 있습니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "human-body/2#g009b-C1-18",
+   "seed": {
+    "subject": "췌장",
+    "aspect": null,
+    "ref": "C1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이탈리아 파도바에서 일한 독일 해부학자 요한 게오르크 비르숭은 살인죄로 교수형을 당한 남자를 해부하다 이 기관의 관을 찾아냈습니다. 그는 논문을 내는 대신 구리판에 새긴 그림을 찍어 유럽의 이름난 해부학자들에게 보냈는데, 이 기관은 무엇일까요?",
+    "answer": "췌장",
+    "acceptedAnswers": [
+     "이자"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '이자 (해부학)' 문서 첫 문장 '이자 또는 췌장'",
+    "explanation": "비르숭은 1643년 8월 저녁 파도바의 학료 앞에서 괴한들의 총에 맞아 숨졌는데, 직업상의 경쟁이 까닭이었다고 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 5,
+     "easiestCue": "비르숭이 찾아낸 이 기관의 관",
+     "difWhy": "'비르숭관' — 의학 전공 해부학 (경계 4)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 해부학 발견 일화",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 5,
+     "easiestCue": "비르숭이 찾아낸 이 기관의 관",
+     "difWhy": "'비르숭관' — 의학 전공 해부학 (경계 4)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 해부학 발견 일화"
+    },
+    "rewrite": null,
+    "generalHint": "어떤 사람에게는 이 기관에 이탈리아 해부학자 산토리니의 이름이 붙은 덧관이 하나 더 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Johann_Georg_Wirsung",
+     "https://ko.wikipedia.org/wiki/이자_(해부학)"
+    ],
+    "facts": [
+     {
+      "claim": "파도바에서 오래 일한 독일 해부학자, 사람의 췌관 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Johann_Georg_Wirsung",
+      "note": "was a German anatomist who was a long-time prosector in Padua. He is credited with discovering the pancreatic duct in humans."
+     },
+     {
+      "claim": "살인죄로 교수형 당한 남자 해부 중 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Johann_Georg_Wirsung",
+      "note": "He is remembered for the discovery of the pancreatic duct (\"duct of Wirsung\") during the dissection of a man who had been recently hanged for murder."
+     },
+     {
+      "claim": "논문 대신 구리판 그림을 찍어 해부학자들에게 보냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Johann_Georg_Wirsung",
+      "note": "Instead of publishing the results of his discovery, he engraved a sketch of the duct on a copper plate, from which he made several imprints, and subsequently had them delivered to leading anatomists throughout Europe."
+     },
+     {
+      "claim": "1643년 8월 22일 저녁 총에 맞아 숨짐, 경쟁 때문",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Johann_Georg_Wirsung",
+      "note": "He was assassinated due to a professional rivalry by another physician. ... On the evening of 22 August 1643, Wirsung was talking to his friends at the entrance of his room at Pratense College when he was attacked by three assailants. One was a Flemish doctor Jacobus Cambier who shot him."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pancreatic_duct"
+    ],
+    "hintNote": "However, some have an additional accessory pancreatic duct, also called the Duct of Santorini.",
+    "easiestCue": "요한 게오르크 비르숭은 … 이 기관의 관을 찾아냈습니다",
+    "targetWhy": "비르숭관은 의학 전공 어휘, 발견 일화는 의학사 애호가 세부 — 인슐린·소화 효소·당뇨(교과서 기능)는 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'관이 있는 기관'은 여럿이라 비르숭을 알아야 풀림 — 의학 쪽 사람에겐 쉬움",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (위는 Wii 와 정답 겹침 ban, 심장은 수술·시술 소재라 경계 밖이어서 버림)",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,967 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "olympic/3",
+  "midKey": "olympic",
+  "subName": "종목·규정",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "olympic/3#g009b-S3-12",
+   "seed": {
+    "subject": "에페",
+    "aspect": null,
+    "ref": "S3-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "펜싱 세 종목 가운데 이 종목은 1933년 가장 먼저 옆 심판 대신 로랑파강 전기 채점기를 들였습니다. 세 종목의 칼 가운데 가장 크고 무거우며, 손을 지키는 종 모양 막이도 큰 이 종목은 무엇일까요?",
+    "answer": "에페",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "결투를 '첫 피'를 볼 때까지만 하던 19세기에 생긴 무기라, 온몸이 유효 부위입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "펜싱 세 종목 칼 가운데 가장 크고 무거운 종목",
+     "difWhy": "가장 무거운 펜싱 칼 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 종목 구분",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "공격권 규칙이 없고 동시 찌르기도 인정하는 종목",
+     "difWhy": "'공격권 없는 펜싱' — 펜싱 관심층",
+     "wor": 3,
+     "worWhy": "종목 규칙 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "펜싱 세 종목 가운데 이 종목은 1933년 가장 먼저 옆 심판 대신 로랑파강 전기 채점기를 들였습니다. 공격권 규칙이 없고, 두 선수의 찌르기가 40밀리초 안에 함께 닿는 '동시 찌르기'도 인정하는 이 종목은?",
+     "beforeExplanation": null,
+     "removedCue": "공격권 규칙이 없고, 두 선수의 찌르기가 40밀리초 안에 함께 닿는 '동시 찌르기'도 인정하는",
+     "addedCue": "가장 크고 무거운 칼 · 큰 종 모양 막이",
+     "why": "공격권 없음·동시 찌르기는 펜싱 관심층이 종목을 가르는 첫 규칙이라 빼고 장비 세부로 바꿈"
+    },
+    "generalHint": "근대 5종 경기의 펜싱은 한 번 찌르면 끝나는 이 칼의 경기로 치른다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Fencing",
+     "https://en.wikipedia.org/wiki/%C3%89p%C3%A9e"
+    ],
+    "facts": [
+     {
+      "claim": "1933년 에페부터 로랑파강 전기 채점기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fencing",
+      "note": "Starting with épée in 1933, side judges were replaced by the Laurent-Pagan electrical scoring apparatus"
+     },
+     {
+      "claim": "플뢰레 1956, 사브르 1988",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fencing",
+      "note": "Foil was automated in 1956 ... sabre in 1988"
+     },
+     {
+      "claim": "19세기 첫 피 결투에서 발달, 온몸이 유효 부위",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/%C3%89p%C3%A9e",
+      "note": "developed in the 19th century when, under pressure from the authorities, duels were more frequently fought until 'first blood' only / the entire body is the valid target area"
+     },
+     {
+      "claim": "세 무기 중 가장 크고 무거움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/%C3%89p%C3%A9e",
+      "note": "is the largest and heaviest of the three weapons used in the sport of fencing."
+     },
+     {
+      "claim": "팔을 지키는 큰 종 모양 막이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/%C3%89p%C3%A9e",
+      "note": "The épée also has a larger bell guard designed to protect the user’s arm. / This is frequently called a bell guard. / As the hand is a valid target in competitive fencing, the guard is much larger and more protective than that of a foil"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Modern_pentathlon"
+    ],
+    "hintNote": "fencing (one-touch épée followed by direct elimination) / Bouts use an electric épée with the target being the whole body",
+    "easiestCue": "펜싱 세 종목의 칼 가운데 가장 크고 무거운 종목",
+    "targetWhy": "1933 전기 채점기 도입 순서·칼의 무게와 막이는 펜싱 애호가 세부 (경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "올림픽 중계로 이름은 익숙, 묻는 것은 규칙의 갈래",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 224(사브르) 질문에 에페가 나오지만 지식이 다름",
+    "warn": [
+     "단정어 가장 먼저"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/3#g009b-S3-13",
+   "seed": {
+    "subject": "경륜",
+    "aspect": null,
+    "ref": "S3-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1948년 무렵 도박 경주로 출발한 이 트랙 사이클 종목은, 2000년 시드니 대회에서 남자부, 2012년 런던 대회에서 여자부가 올림픽에 들어왔습니다. 돈이 걸린 경주가 열리는 본고장에서는 누구도 장비로 이득을 보지 못하게 자전거와 부품이 'NJS' 기준을 따라야 하는데, 이 종목은 무엇일까요?",
+    "answer": "경륜",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "en 'Keirin' 의 ko 연결 문서 제목 '경륜'",
+    "explanation": "한국에서는 1994년 10월 잠실 올림픽벨로드롬에서 처음 사업이 시작되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "도박 경주로 출발한 트랙 사이클 종목",
+     "difWhy": "돈 거는 자전거 경주 — 방송·일상 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 종목 기원",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "일본 기타큐슈에서 시작된 트랙 사이클 종목 … 페이서",
+     "difWhy": "'일본발 페이서 트랙 사이클' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 경륜의 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1948년 무렵 일본 기타큐슈에서 시작된 이 트랙 사이클 종목에서는, 오토바이나 '데르니'라는 페이서가 앞에서 속도를 끌어올리다 빠지면 선수들이 남은 거리를 겨룹니다. 2000년 시드니 대회부터 올림픽 종목이 된 이 경기는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "일본 기타큐슈에서 시작 · 페이서가 속도를 끌다 빠짐(종목 정의)",
+     "addedCue": "2012 런던 여자부 · NJS 장비 기준",
+     "why": "기원지와 경기 방식(정의)을 빼고 올림픽 편입·장비 규정 세부로 바꿈"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Keirin",
+     "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%A5%9C"
+    ],
+    "facts": [
+     {
+      "claim": "2000년 시드니 올림픽 데뷔",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Keirin",
+      "note": "Keirin made its debut at the 2000 Summer Olympics in Sydney."
+     },
+     {
+      "claim": "한국 경륜 1994년 10월 잠실 시작",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%A5%9C",
+      "note": "1994년 10월 15일 잠실 올림픽벨로드롬에서 사업을 시작"
+     },
+     {
+      "claim": "1948년 무렵 주로 도박 형태로 개발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Keirin",
+      "note": "(origin) 1948 in Kitakyushu, Fukuoka, Japan ... developed around 1948 mainly as a form of gambling (WebFetch 요지)"
+     },
+     {
+      "claim": "여자부는 2012 런던 올림픽에 추가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Keirin",
+      "note": "The women's event was added for the 2012 Summer Olympics in London."
+     },
+     {
+      "claim": "파리뮤추얼 도박 때문에 NJS 가 엄격한 장비 기준을 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Keirin",
+      "note": "As a result of the parimutuel gambling that surrounds keirin racing in Japan, (the NJS developed strict equipment standards to prevent any rider from gaining an unfair advantage)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "2000년 남자부·2012년 여자부가 올림픽에 들어온 트랙 사이클 종목",
+    "targetWhy": "NJS 장비 기준은 사이클 애호가 세부 — 페이서 정의·기타큐슈 없음 (경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이름은 한국인에게 익숙(경륜장), 기원지 일본·페이서는 관심층~애호가 사이",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/3#g009b-S3-14",
+   "seed": {
+    "subject": "크로케",
+    "aspect": null,
+    "ref": "S3-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1900년 파리 대회의 이 종목에는 남자 일곱 명과 여자 세 명이 나섰는데, 열 명 모두 프랑스 선수였고 표를 사서 들어온 관중은 단 한 명뿐이었습니다. 1904년 대회에서는 단단하고 매끄러운 바닥에서 치르는 미국식 변형 경기가 이 종목 대신 열렸는데, 이 종목은 무엇일까요?",
+    "answer": "크로케",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "en 'Croquet' 의 ko 연결 문서 제목 '크로케' — '크로켓'은 음식 이름과 겹쳐 넣지 않음",
+    "explanation": "15세기 프랑스에서 시작해 17세기에 영국으로 건너간 것으로 소개됩니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1904년 단단하고 매끄러운 바닥의 미국식 변형 경기로 대체",
+     "difWhy": "1900 파리 종목·로크 — 올림픽 애호가 (경계 5)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 사라진 올림픽 종목",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "게이트볼의 뿌리가 된 종목",
+     "difWhy": "'게이트볼의 뿌리' — 관심층",
+     "wor": 3,
+     "worWhy": "종목 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1900년 파리 대회의 이 종목에는 남자 일곱 명과 여자 세 명이 나섰는데, 열 명 모두 프랑스 선수였고 표를 사서 들어온 관중은 단 한 명뿐이었습니다. 한국에서 널리 즐기는 게이트볼의 뿌리가 된 이 종목은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "게이트볼의 뿌리가 된 종목",
+     "addedCue": "1904년 대회에서 미국식 변형(로크)이 대신 열림",
+     "why": "게이트볼 연결이 관심층 단서라 빼고 올림픽 뒷이야기로"
+    },
+    "generalHint": "윔블던 테니스 대회를 여는 런던의 클럽은 1868년 처음 세워질 때 이 종목의 클럽이었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Croquet_at_the_1900_Summer_Olympics",
+     "https://ko.wikipedia.org/wiki/%ED%81%AC%EB%A1%9C%EC%BC%80",
+     "https://en.wikipedia.org/wiki/Roque"
+    ],
+    "facts": [
+     {
+      "claim": "1900년 파리 대회 크로케에 남자 7명·여자 3명 참가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Croquet_at_the_1900_Summer_Olympics",
+      "note": "Seven men and three women participated."
+     },
+     {
+      "claim": "10명 모두 프랑스",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Croquet_at_the_1900_Summer_Olympics",
+      "note": "France, which supplied all 10 competitors"
+     },
+     {
+      "claim": "유료 관중 1명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Croquet_at_the_1900_Summer_Olympics",
+      "note": "Only one paying spectator attended the event"
+     },
+     {
+      "claim": "15세기 프랑스 → 17세기 영국",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/%ED%81%AC%EB%A1%9C%EC%BC%80",
+      "note": "15세기 프랑스에서 시작되어 17세기 영국으로 전해졌다 (문서 요지)"
+     },
+     {
+      "claim": "미국식 변형 로크가 1904년 대회에서 이 종목을 대신함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Roque",
+      "note": "Roque is an American variant of croquet played on a hard, smooth surface. ... It was an Olympic sport in the 1904 Summer Games, replacing croquet from the previous games."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/All_England_Lawn_Tennis_and_Croquet_Club"
+    ],
+    "hintNote": "established 1868 … as the All England Croquet Club, and held its first croquet competition in 1870.",
+    "easiestCue": "1900년 파리 대회 · 유료 관중 한 명",
+    "targetWhy": "1900년 올림픽 크로케의 관중 일화와 로크 대체는 올림픽 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "크로케는 이름은 들어 봤을 법하나 덜 친숙 — 게이트볼 연결이 '아 그거'를 만든다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/3#g009b-S3-15",
+   "seed": {
+    "subject": "골프",
+    "aspect": null,
+    "ref": "S3-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1900년 파리 대회 이 종목 여자 경기에서 우승한 마거릿 애벗은 올림픽 경기에서 우승한 첫 미국 여성이 되었지만, 1955년 세상을 떠날 때까지 그 우승이 올림픽이었다는 것을 몰랐습니다. 같은 경기에 나선 어머니 메리는 공동 7위였고, 우승 상품이 도자기 그릇이었던 이 종목은?",
+    "answer": "골프",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "애벗의 이야기는 플로리다 대학교의 폴라 웰치 교수가 그의 삶을 조사하면서 알려졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 1900 파리 여자 경기 + 어머니와 함께 출전·도자기 그릇",
+     "difWhy": "첫 미국 여성 우승 종목 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 모르고 딴 금메달",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "엮음: 1900 파리 여자 경기 + 어머니와 함께 출전·도자기 그릇",
+     "difWhy": "첫 미국 여성 우승 종목 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 모르고 딴 금메달"
+    },
+    "rewrite": null,
+    "generalHint": "2016년 리우데자네이루 대회에서 1904년 대회 뒤 처음으로 다시 올림픽에 돌아왔다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Margaret_Abbott"
+    ],
+    "facts": [
+     {
+      "claim": "1900년 여자 골프 우승, 첫 미국 여성 올림픽 우승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Margaret_Abbott",
+      "note": "She was the first American woman to win an Olympic event: the women's golf tournament at the 1900 Summer Olympics."
+     },
+     {
+      "claim": "1955년 숨질 때까지 몰랐다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Margaret_Abbott",
+      "note": "Abbott died at the age of 76 in 1955, never realizing that she won an Olympic event."
+     },
+     {
+      "claim": "어머니 메리 공동 7위",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Margaret_Abbott",
+      "note": "Mary Abbott also participated in the event and tied for seventh place with a score of 65."
+     },
+     {
+      "claim": "상품은 도자기 그릇",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Margaret_Abbott",
+      "note": "Abbott received a porcelain bowl as a prize."
+     },
+     {
+      "claim": "폴라 웰치 교수가 조사",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Margaret_Abbott",
+      "note": "She was not well known until Paula Welch, a professor at the University of Florida, researched her life."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Golf_at_the_2016_Summer_Olympics"
+    ],
+    "hintNote": "The 2016 Summer Olympics was the first time golf had been played at the Olympics since the 1904 Summer Olympics",
+    "easiestCue": "1900년 파리 대회 이 종목 여자 경기에서 우승한 마거릿 애벗은 올림픽 경기에서 우승한 첫 미국 여성",
+    "targetWhy": "애벗의 사연은 올림픽사 애호가 일화 — 2016 리우 복귀(활성 4583)·박인비는 뺐다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 종목, 묻는 것은 초기 올림픽의 뜻밖의 사연",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 4583 은 정답 박인비(골프 112년 만 복귀), 지식이 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/3#g009b-S3-16",
+   "seed": {
+    "subject": "경보",
+    "aspect": null,
+    "ref": "S3-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 육상 종목의 남자 50km 경기는 2020년 도쿄 대회를 끝으로 올림픽에서 사라졌고, 2024년 대회에는 남녀가 한 팀을 이루는 마라톤 거리 혼성 계주가 새로 열렸습니다. 세 번째 위반이 나오면 주심이 빨간 패들을 들어 선수를 코스에서 내보내는 이 종목은 무엇일까요?",
+    "answer": "경보",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "규칙은 뒷발이 앞발보다 먼저 떨어지는 '접촉 상실'과 '땅에 닿은 다리는 몸이 지나갈 때까지 곧게 펴야 한다' 두 가지뿐입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "세 번째 위반이면 빨간 패들로 코스에서 내보내는 육상 종목",
+     "difWhy": "경보 실격 규정 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 종목 규정",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "뒷발 끝이 앞발 뒤꿈치가 닿기 전에 떨어지는 '접촉 상실'",
+     "difWhy": "접촉 상실 반칙 종목 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "종목 규칙 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 육상 종목의 남자 50km 경기는 2020년 도쿄 대회를 끝으로 올림픽에서 사라졌고, 2024년 대회에는 남녀가 한 팀을 이루는 마라톤 거리 혼성 계주가 새로 열렸습니다. 뒷발 끝이 앞발 뒤꿈치가 닿기 전에 떨어지는 '접촉 상실'을 심판이 잡아내는 이 종목은?",
+     "beforeExplanation": "규칙은 접촉 상실과 '땅에 닿은 다리는 몸이 지나갈 때까지 곧게 펴야 한다' 두 가지뿐이며, 심판 세 명이 레드카드를 내면 실격됩니다.",
+     "removedCue": "뒷발 끝이 앞발 뒤꿈치가 닿기 전에 떨어지는 '접촉 상실'",
+     "addedCue": "세 번째 위반이면 주심이 빨간 패들로 코스에서 내보냄",
+     "why": "방송에서 흔히 듣는 접촉 상실 반칙을 해설로 옮기고 판정 절차 세부로 바꿈"
+    },
+    "generalHint": "이 종목만 따로 겨루는 세계 대회는 1961년 처음 열렸다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Racewalking"
+    ],
+    "facts": [
+     {
+      "claim": "남자 50km는 도쿄 대회 뒤 폐지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Racewalking",
+      "note": "was discontinued after the 2020 Summer Olympics (men's 50 km race walk)"
+     },
+     {
+      "claim": "혼성 계주 2024년 데뷔",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Racewalking",
+      "note": "marathon race walk mixed relay ... debuted at the 2024 Summer Olympics"
+     },
+     {
+      "claim": "접촉 상실 규칙",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Racewalking",
+      "note": "Violation of this rule is known as loss of contact. (the back toe leaving the ground before the front heel touches down)"
+     },
+     {
+      "claim": "규칙 둘·다리 펴기·레드카드 셋이면 실격",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Racewalking",
+      "note": "only two rules that govern race walking / the supporting leg must straighten from the point of contact with the ground / Three judges submitting 'red cards' for violations results in disqualification"
+     },
+     {
+      "claim": "세 번째 위반이면 주심이 빨간 패들을 보여 코스에서 내보냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Racewalking",
+      "note": "If the third violation is received, the chief judge removes the competitor from the course by showing a red paddle."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Racewalking"
+    ],
+    "hintNote": "The IAAF World Race Walking Cup, first held in 1961, is a stand-alone global competition for the discipline",
+    "easiestCue": "남자 50km 경기가 도쿄 대회를 끝으로 사라진 육상 종목",
+    "targetWhy": "50km 폐지·혼성 계주·빨간 패들 판정은 육상 애호가 세부 (경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "접촉 상실 문장이 걷기 동작을 비춰 관심층이 추측할 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/3#g009b-S3-17",
+   "seed": {
+    "subject": "요트",
+    "aspect": null,
+    "ref": "S3-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1988년 서울 대회 이 종목 핀급 경기에서 2위로 달리던 캐나다의 로런스 르뮤는, 다른 급 경기에 나섰다가 물에 빠진 싱가포르 선수 두 명을 구하려고 항로를 벗어났습니다. 22위로 들어왔지만 국제 연맹이 2위 순위를 되돌려 준 이 종목은 무엇일까요?",
+    "answer": "요트",
+    "acceptedAnswers": [
+     "세일링"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "같은 종목의 다른 한국어 이름 — 1988년 당시 '요트', 지금 올림픽 표기 '세일링'(국내 중계)",
+    "explanation": "흔히 쿠베르탱 메달을 받았다고 전하지만, 그 메달은 1997년에 처음 주어졌고 IOC는 그가 받지 않았다고 밝혔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "핀급 경기 … 물에 빠진 싱가포르 선수 두 명을 구하려고 항로를 벗어났습니다",
+     "difWhy": "핀급·항로 — 올림픽 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "스포츠맨십 일화 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "핀급 경기 … 거센 바람에 배가 뒤집힌",
+     "difWhy": "바람에 뒤집히는 배 종목 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 스포츠맨십 일화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1988년 서울 대회 이 종목 핀급 경기에서 2위로 달리던 캐나다의 로런스 르뮤는, 거센 바람에 배가 뒤집힌 싱가포르 선수 두 명을 구하려고 항로를 벗어났습니다. 22위로 들어왔지만 국제 연맹이 2위 순위를 되돌려 준 이 종목은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "거센 바람에 배가 뒤집힌(바람으로 가는 배 종목을 바로 가리킴)",
+     "addedCue": "바람·배 뒤집힘을 빼고 핀급 · 물에 빠진 선수 구조만 남김",
+     "why": "'바람에 뒤집힌 배' 가 종목을 바로 알려 뺀다"
+    },
+    "generalHint": "1988년 대회에서 이 종목은 서울 앞바다 조건이 맞지 않아 부산 앞바다에서 치러졌다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lawrence_Lemieux"
+    ],
+    "facts": [
+     {
+      "claim": "1988년 서울 대회 핀급 경기에서 2위로 달리다 이탈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lawrence_Lemieux",
+      "note": "was in second place in that race (Finn class)"
+     },
+     {
+      "claim": "뒤집힌 싱가포르 470급 선수 둘 구조",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lawrence_Lemieux",
+      "note": "Lemieux spotted the turtled Singaporean boat and deviated from his course to assist in rescuing Chan and Siew (capsized in strong winds)"
+     },
+     {
+      "claim": "22위로 들어왔으나 국제요트경기연맹이 2위로 되돌림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lawrence_Lemieux",
+      "note": "He later finished 22nd, but the International Yacht Racing Union reinstated his second-place finish."
+     },
+     {
+      "claim": "쿠베르탱 메달은 1997년 처음, IOC는 그가 받지 않았다고 함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lawrence_Lemieux",
+      "note": "the medal was first awarded in 1997 ... The International Olympic Committee has said he did not receive it."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sailing_at_the_1988_Summer_Olympics"
+    ],
+    "hintNote": "Since the sailing conditions of the coast near Seoul are not very suitable for Olympic sailing Busan was chosen for the 1988 Sailing event.",
+    "easiestCue": "이 종목 핀급 경기에서 2위로 달리던 르뮤가 항로를 벗어나 선수를 구했다",
+    "targetWhy": "'핀급' 이 요트 등급임은 스포츠 애호가 세부 (경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 종목, 묻는 것은 서울 올림픽의 덜 알려진 미담",
+    "pairCheck": null,
+    "dbCheck": "answercheck new(요트·세일링 둘 다)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/3#g009b-S3-18",
+   "seed": {
+    "subject": "사격",
+    "aspect": null,
+    "ref": "S3-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "헝가리의 터카치 카로이는 1938년 군사 훈련 중 불량 수류탄이 터져 오른손을 크게 다치자, 왼손으로 바꿔 선수 생활을 이었습니다. 1948년 런던 대회에서 서른여덟 살에 세계 챔피언을 꺾고 금메달을 땄고 1952년 헬싱키에서도 같은 세부 종목을 우승한, 이 종목은?",
+    "answer": "사격",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1948년 그가 꺾은 우승 후보는 당시 세계 챔피언이던 아르헨티나의 카를로스 엔리케 디아스 사엔스 발리엔테였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "오른손을 다쳐 왼손으로 바꿔 금메달",
+     "difWhy": "'터카치 왼손 사격' — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 유명 일화",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "오른손을 다쳐 왼손으로 바꿔 금메달",
+     "difWhy": "'터카치 왼손 사격' — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 유명 일화"
+    },
+    "rewrite": null,
+    "generalHint": "올림픽 최고령 금메달·메달 기록을 지닌 스웨덴의 오스카르 스완은 아들 알프레드와 함께 이 종목 단체전에 나섰다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/K%C3%A1roly_Tak%C3%A1cs"
+    ],
+    "facts": [
+     {
+      "claim": "1938년 훈련 중 불량 수류탄으로 오른손 부상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/K%C3%A1roly_Tak%C3%A1cs",
+      "note": "During army training in 1938, his right hand was badly injured when a faulty grenade exploded."
+     },
+     {
+      "claim": "왼손으로 바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/K%C3%A1roly_Tak%C3%A1cs",
+      "note": "switched to shooting with his left hand"
+     },
+     {
+      "claim": "1948년 런던 38살 금메달",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/K%C3%A1roly_Tak%C3%A1cs",
+      "note": "surprised the world by winning the gold medal (1948 Summer Olympics in London, aged 38)"
+     },
+     {
+      "claim": "1952년 같은 종목 두 번째 금메달",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/K%C3%A1roly_Tak%C3%A1cs",
+      "note": "won a second gold medal in the same event (1952 Summer Olympics in Helsinki)"
+     },
+     {
+      "claim": "1948년 세계 챔피언 디아스 사엔스 발리엔테를 꺾음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/K%C3%A1roly_Tak%C3%A1cs",
+      "note": "beat the favourite, Carlos Enrique Díaz Sáenz Valiente, who was the reigning world champion"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Oscar_Swahn"
+    ],
+    "hintNote": "Oscar Gomer Swahn … was a Swedish shooter … / Swahn holds records as the oldest Olympian at the time of competition, the oldest person to win gold, and the oldest athlete to win an Olympic medal. / he competed alongside his son, Alfred Swahn.",
+    "easiestCue": "1938년 군사 훈련 중 불량 수류탄이 터져 오른손을 크게 다치자, 왼손으로 바꿔 선수 생활을 이었습니다",
+    "targetWhy": "터카치의 사연은 올림픽 애호가 일화 — '손을 쓰는 종목' 추측은 가능하나 확정하려면 일화를 알아야 한다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "정답 종목은 쉽고 일화는 깊다 — 손·수류탄에서 사격을 짐작할 사람이 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/3#g009b-S3-19",
+   "seed": {
+    "subject": "라크로스",
+    "aspect": null,
+    "ref": "S3-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1904년 대회에서 처음 올림픽에 들어온 이 종목에는 선수 모두가 모호크족인 캐나다 팀이 나섰습니다. 준결승에서 브루클린 크레센츠가 경기에 늦게 도착해 실격되었고, 결승에서 위니펙 섐록스가 이긴 이 종목은 무엇일까요?",
+    "answer": "라크로스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "en 'Lacrosse' 의 ko 연결 문서 제목 '라크로스'",
+    "explanation": "그 뒤 1928·1932·1948년에는 시범 종목으로 치러졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 선수 모두가 모호크족인 캐나다 팀 + 올림픽 종목",
+     "difWhy": "북미 원주민 기원 구기 — 스포츠 관심층 (경계 4)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 옛 올림픽 종목",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 선수 모두가 모호크족인 캐나다 팀 + 올림픽 종목",
+     "difWhy": "북미 원주민 기원 구기 — 스포츠 관심층 (경계 4)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 옛 올림픽 종목"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "모호크족(북미 원주민 기원)을 빼면 1904년 대회 팀 이름·지각 실격 같은 기록 세부만 남아 알 가치가 떨어지고(기록), 원주민 단서를 대신할 깊은 세부를 찾지 못함"
+    },
+    "generalHint": "캐나다는 1994년 법으로 이 종목을 나라의 여름 국기로, 아이스하키를 겨울 국기로 정했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lacrosse_at_the_1904_Summer_Olympics"
+    ],
+    "facts": [
+     {
+      "claim": "1904년 올림픽 첫 라크로스",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lacrosse_at_the_1904_Summer_Olympics",
+      "note": "the first time that lacrosse had been featured at the Olympic Games"
+     },
+     {
+      "claim": "캐나다 팀 하나는 모두 모호크족",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lacrosse_at_the_1904_Summer_Olympics",
+      "note": "One of the Canadian teams consisted entirely of Mohawk nation players."
+     },
+     {
+      "claim": "브루클린 크레센츠 지각 실격",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lacrosse_at_the_1904_Summer_Olympics",
+      "note": "Brooklyn Crescents were disqualified after arriving too late for the match."
+     },
+     {
+      "claim": "위니펙 섐록스 우승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lacrosse_at_the_1904_Summer_Olympics",
+      "note": "The victorious Shamrock Lacrosse Team is more commonly known as the Winnipeg Shamrocks. (beat St. Louis AAA 8–2 in the final)"
+     },
+     {
+      "claim": "1928·1932·1948 시범 종목",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lacrosse_at_the_1904_Summer_Olympics",
+      "note": "(navigation template) demonstration events in 1928, 1932, and 1948"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Lacrosse_in_Canada"
+    ],
+    "hintNote": "In 1994 Parliament passed the National Sports of Canada Act which declared lacrosse to be \"Canada's National Summer Sport\", with ice hockey as \"Canada's National Winter Sport\".",
+    "easiestCue": "선수 모두가 모호크족인 캐나다 팀이 나섰습니다",
+    "targetWhy": "1904 대회 라크로스 출전 팀은 올림픽사 애호가 세부 — 그물 달린 막대라는 정의는 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "라크로스는 이름은 들어 봤을 법, 원주민 기원을 아는 사람은 모호크족에서 추측 가능",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음,모두"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/3#g009b-S3-20",
+   "seed": {
+    "subject": "허들",
+    "aspect": null,
+    "ref": "S3-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1932년 대회 400m 경기에서 밥 티스달은 세계 기록에 해당하는 기록으로 우승하고도, 경기 중 이것 하나를 쓰러뜨려 그 기록을 인정받지 못했습니다. 1935년 부딪히면 선수 쪽 길을 비키며 앞으로 넘어지는 L자 모양으로 바뀐 이 육상 기구는?",
+    "answer": "허들",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "지금은 일부러 넘어뜨리거나 손으로 밀지만 않으면 쓰러뜨려도 벌칙이 없습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "경기 중 이것 하나를 쓰러뜨려 … L자 모양으로 바뀐 이 육상 기구",
+     "difWhy": "쓰러뜨리는 육상 기구 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기구 모양 변화",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "경기 중 이것 하나를 쓰러뜨려 … L자 모양으로 바뀐 이 육상 기구",
+     "difWhy": "쓰러뜨리는 육상 기구 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기구 모양 변화"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "정답이 '경기 중 쓰러뜨리는 육상 기구' 그 자체라, 티스달 일화·L자 개량 어느 쪽도 '쓰러뜨림'이 들어가면 바로 풀리고 빼면 묻는 대상이 흐려짐 — 범주 단서를 뺄 수 없음"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hurdling"
+    ],
+    "facts": [
+     {
+      "claim": "티스달은 1932년 400m 허들을 세계 기록 시간으로 우승했으나 허들을 쓰러뜨려 기록 불인정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hurdling",
+      "note": "Bob Tisdall won the 1932 Olympic 400m hurdles in world-record time but was not credited with the record after knocking over a hurdle"
+     },
+     {
+      "claim": "1935년 L자 허들",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hurdling",
+      "note": "an L-shaped hurdle was developed that would tip down to clear the athlete's path (1935)"
+     },
+     {
+      "claim": "고의가 아니면 쓰러뜨려도 벌칙 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hurdling",
+      "note": "provided this is not judged deliberate (deliberate contact, or pushing a hurdle with the hands, can still lead to disqualification)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1935년 부딪히면 선수 쪽 길을 비키며 앞으로 넘어지는 L자 모양으로 바뀐 이 육상 기구",
+    "targetWhy": "티스달 기록 불인정·1935 L자 허들은 육상 애호가 세부 — '넘어 달리는 장애물'이라는 정의는 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'쓰러뜨린다·육상 기구'에서 관심층이 추측할 여지가 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — g009a S3-32(장애물 경주)와 정답·지식 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/3#g009b-S3-21",
+   "seed": {
+    "subject": "헤드기어",
+    "aspect": null,
+    "ref": "S3-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2013년 국제복싱협회는 이 장비가 오히려 부상 위험을 키운다는 연구를 근거로, 19~40세 남자 엘리트 경기에서 쓰지 않기로 했습니다. 2016년 대회에서 올림픽에 처음 적용되었고, 여자와 주니어 남자는 계속 써야 하는 이 장비는 무엇일까요?",
+    "answer": "헤드기어",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "시야를 가려 오히려 머리를 맞기 쉽게 하고, 선수들이 더 세게 치거나 머리를 들이받게 만든다는 지적도 있었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "부상 위험을 키운다는 연구로 엘리트 남자 경기에서 뺀 복싱 장비",
+     "difWhy": "아마복싱 헤드기어 폐지 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 역설적 안전 장비",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "뇌진탕과 머리 부상의 위험을 키운다 … 이 장비",
+     "difWhy": "복싱 머리 보호 장비 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "규정 변화 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2013년 국제복싱협회는 이 장비가 오히려 뇌진탕과 머리 부상의 위험을 키운다는 연구를 근거로, 19~40세 남자 엘리트 경기에서 쓰지 않기로 했습니다. 2016년 대회에서 올림픽에 처음 적용되었고, 여자와 주니어 남자는 계속 써야 하는 이 장비는?",
+     "beforeExplanation": null,
+     "removedCue": "뇌진탕과 머리 부상의 위험(장비의 부위가 드러남)",
+     "addedCue": "(뺌만) '부상 위험' 으로 줄여 부위를 숨김",
+     "why": "'뇌진탕·머리' 가 머리 보호 장비로 바로 이어져 부위를 뺌"
+    },
+    "generalHint": "남자 아마추어 복싱에서 1982년부터 써 오던 보호 장비였다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Headgear_(martial_arts)"
+    ],
+    "facts": [
+     {
+      "claim": "2013년 3월 발표, 19~40세 남자 시니어 경기에서 폐지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Headgear_(martial_arts)",
+      "note": "In March 2013, the association announced that it would end the use of headgear in senior men's boxing (19–40 years old)."
+     },
+     {
+      "claim": "근거: 장비가 부상(뇌진탕·머리 부상) 위험을 키운다는 연구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Headgear_(martial_arts)",
+      "note": "headgear actually increased the risk of concussions and head injuries"
+     },
+     {
+      "claim": "2016년 올림픽에 처음 적용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Headgear_(martial_arts)",
+      "note": "was implemented in June 2013, and was adopted at the Olympics for the first time in 2016"
+     },
+     {
+      "claim": "여자·주니어 남자는 의무",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Headgear_(martial_arts)",
+      "note": "mandatory for women and junior men"
+     },
+     {
+      "claim": "시야 방해·더 센 펀치·박치기 유발",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Headgear_(martial_arts)",
+      "note": "(요지) headgear encouraged riskier behavior, such as harder punches and headbutts, and obstructed vision, making heads easier to hit"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Amateur_boxing"
+    ],
+    "hintNote": "In March 2016, protective headgear that had been in use since 1982 was removed from men's competition",
+    "easiestCue": "2016년부터 올림픽 남자 복싱에서 빠진 장비",
+    "targetWhy": "AIBA 2013 결정·2016 적용은 복싱 애호가 세부 (경계 3~4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'뇌진탕·머리 부상'이 장비의 쓰임을 비춰 추측할 수 있다 — 대신 알 가치는 높다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

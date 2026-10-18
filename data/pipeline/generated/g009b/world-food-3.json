@@ -1,0 +1,556 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "world-food/3",
+  "midKey": "world-food",
+  "subName": "아메리카 음식",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-food/3#g009b-L1-15",
+   "seed": {
+    "subject": "초콜릿 칩 쿠키",
+    "aspect": null,
+    "ref": "L1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1938년 미국 매사추세츠주 휘트먼에서 여관 겸 식당을 하던 루스 웨이크필드의 요리책에 처음 실린 과자입니다. 한 식품 회사가 포장지에 조리법을 싣는 대가로 웨이크필드는 1달러를 약속받았다고 하고, 1997년 매사추세츠주는 이 과자를 주 공식 과자로 정했는데, 이 과자는 무엇일까요?",
+    "answer": "초콜릿 칩 쿠키",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "웨이크필드는 네슬레의 세미스위트 초콜릿 바를 얼음송곳으로 부숴 반죽에 넣었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "루스 웨이크필드의 요리책에 처음 실린 과자",
+     "difWhy": "톨하우스 웨이크필드 — 음식 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "과자 유래 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 1,
+     "easiestCue": "네슬레의 세미스위트 바를 부숴 넣은 과자",
+     "difWhy": "'초콜릿 바 부숴 넣은 과자' — 누구나 일상에서",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 과자 탄생 일화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1938년 미국 매사추세츠주 휘트먼에서 여관 겸 식당을 하던 루스 웨이크필드의 요리책에 처음 실린 과자입니다. 네슬레의 세미스위트 바를 얼음송곳으로 부숴 넣었고, 네슬레가 포장지에 조리법을 싣는 대가로 웨이크필드는 1달러를 약속받았다고 하는데, 이 과자는 무엇일까요?",
+     "beforeExplanation": "실수로 우연히 만들었다는 옛이야기가 흔하지만, 요즘 음식 작가들은 가정학을 배운 그가 일부러 만들었다고 봅니다.",
+     "removedCue": "네슬레의 세미스위트 바를 얼음송곳으로 부숴 넣음",
+     "addedCue": "1997년 매사추세츠주 공식 과자",
+     "why": "초콜릿 재료가 곧 정답이라 해설로 옮기고 주 공식 과자 지정을 더함"
+    },
+    "generalHint": "제2차 세계대전 때 웨이크필드의 여관이 군인들에게 이 과자를 부쳐 주었고, 전국에서 온 군인들이 먹으며 동부 밖으로도 인기가 퍼졌다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chocolate_chip_cookie"
+    ],
+    "facts": [
+     {
+      "claim": "웨이크필드가 매사추세츠주 휘트먼의 톨하우스 여관을 운영",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chocolate_chip_cookie",
+      "note": "owned and ran the Toll House Inn ... a hotel and restaurant in Whitman, Massachusetts."
+     },
+     {
+      "claim": "1938년판 요리책에 처음 실림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chocolate_chip_cookie",
+      "note": "The Toll House cookies were first published in Wakefield's 1938 edition of Toll House Tried and True Recipes."
+     },
+     {
+      "claim": "네슬레 세미스위트 바를 얼음송곳으로 부숨",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chocolate_chip_cookie",
+      "note": "breaking up a Nestlé semi-sweet chocolate bar with an ice pick"
+     },
+     {
+      "claim": "포장에 조리법을 싣는 대가로 1달러를 약속받음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chocolate_chip_cookie",
+      "note": "(Wakefield's agreement with Nestlé to feature the recipe on packaging) was promised a dollar"
+     },
+     {
+      "claim": "1997년 매사추세츠주 공식 과자 지정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chocolate_chip_cookie",
+      "note": "the chocolate chip cookie was designated as the Official State Cookie in 1997."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Chocolate_chip_cookie"
+    ],
+    "hintNote": "The Toll House Inn began sending cookies to stationed soldiers ... As they were served to soldiers from across the US, their popularity extended beyond the eastern states.",
+    "easiestCue": "1938년 루스 웨이크필드의 요리책에 처음 실린 과자",
+    "targetWhy": "웨이크필드·1달러 거래·주 공식 과자는 요리 애호가 세부 (경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'초콜릿 바를 부숴 넣은 과자'는 범주가 넓지만 초콜릿 칩 쿠키로 곧 좁혀질 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "world-food/3#g009b-L1-16",
+   "seed": {
+    "subject": "브라우니",
+    "aspect": null,
+    "ref": "L1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "시카고 파머 하우스 호텔 주인의 아내 버사 파머가 1893년 세계 콜럼버스 박람회에 오는 여성들에게 낼 디저트를 주문해 생겼다는 이야기가 있습니다. 케이크 한 조각보다 작고 도시락 상자에서 꺼내 먹기 쉬워야 했다는데, 살구 글레이즈를 발랐다고 전하는 이 디저트는 무엇일까요?",
+    "answer": "브라우니",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1896년판 패니 파머 요리책에서는 같은 이름이 초콜릿 없이 당밀을 넣은 과자를 가리켰습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "케이크 한 조각보다 작고 도시락 상자에서 꺼내 먹기 쉬워야",
+     "difWhy": "1893 파머 하우스 디저트 — 음식 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "유명 디저트 유래",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "호두를 넣고 … 이 초콜릿 디저트",
+     "difWhy": "호두 초콜릿 디저트 — 일상·방송",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 디저트 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "시카고 파머 하우스 호텔 주인의 아내 버사 파머가 1893년 세계 콜럼버스 박람회에 오는 여성들에게 낼 디저트를 주문해 생겼다는 이야기가 있습니다. 호두를 넣고 살구 글레이즈를 발랐다고 전하는 이 초콜릿 디저트는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "호두를 넣고 … 이 초콜릿 디저트",
+     "addedCue": "케이크보다 작고 도시락에서 꺼내 먹기 쉬운 디저트 주문(박람회 기원 전설의 세부)",
+     "why": "'호두 초콜릿 디저트' 가 정의처럼 바로 풀려 재료·범주를 빼고 기원 전설의 주문 조건을 넣음"
+    },
+    "generalHint": "1899년 시카고의 한 요리책에는 이 이름 뒤에 '케이크'를 붙인, 부풀리지 않은 초콜릿 케이크 조리법이 실렸다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chocolate_brownie"
+    ],
+    "facts": [
+     {
+      "claim": "버사 파머 — 남편이 파머 하우스 호텔 소유",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chocolate_brownie",
+      "note": "a prominent Chicago socialite whose husband owned the Palmer House Hotel"
+     },
+     {
+      "claim": "1893년 콜럼버스 박람회에 온 여성들을 위한 디저트 주문(전설로 소개)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chocolate_brownie",
+      "note": "In 1893, Palmer asked a pastry chef for a dessert suitable for ladies attending the Chicago World's Columbian Exposition."
+     },
+     {
+      "claim": "호두와 살구 글레이즈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chocolate_brownie",
+      "note": "made of chocolate with walnuts and an apricot glaze"
+     },
+     {
+      "claim": "1896년판 레시피는 당밀과 견과, 초콜릿 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chocolate_brownie",
+      "note": "(the 1896 edition) molasses and a nut at their center, but no chocolate ... 'brownie' (was then used for) a molasses cake"
+     },
+     {
+      "claim": "케이크 한 조각보다 작고 도시락 상자에서 쉽게 먹을 수 있는 디저트를 주문",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chocolate_brownie",
+      "note": "She requested a dessert that would be smaller than a piece of cake, and easily eaten from boxed lunches."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Chocolate_brownie"
+    ],
+    "hintNote": "In 1899, a recipe for an unleavened chocolate cake was published in a Chicago cookbook under the name \"Brownie cake\".",
+    "easiestCue": "버사 파머가 1893년 세계 콜럼버스 박람회에 오는 여성들에게 낼 디저트를 주문해 생겼다는 이야기",
+    "targetWhy": "파머 하우스 기원 전설은 요리 애호가 세부 — 초콜릿·호두·네모 과자 같은 정의 없음",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'초콜릿 디저트' 범주에서 박람회 일화를 모르면 찍기가 된다 — 그래도 대상은 누구나 안다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-food/3#g009b-L1-17",
+   "seed": {
+    "subject": "버펄로 윙",
+    "aspect": null,
+    "ref": "L1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1964년 한 바의 공동 주인 테레사 벨리시모가 처음 만들었다고 알려진 요리로, 아들 도미닉은 어머니의 생각이었다고 했고 남편 프랭크는 잘못 배달된 재료로 뭔가 만들어 보라고 자기가 부탁했다고 말합니다. 그 도시는 1977년 프랭크 벨리시모를 기리는 포고문을 내고 7월 29일을 이 요리의 날로 정했는데, 이 요리는 무엇일까요?",
+    "answer": "버펄로 윙",
+    "acceptedAnswers": [
+     "버팔로 윙"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 '버펄로 윙' · 넘겨주기 '버팔로 윙' 확인",
+    "explanation": "식초를 바탕으로 한 카옌 고추 핫소스에 녹인 버터를 섞어 버무리고, 셀러리 막대와 블루치즈 소스를 곁들여 냅니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "테레사 벨리시모가 처음 만들었다",
+     "difWhy": "앵커 바 기원 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "유명 음식 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "테레사 벨리시모가 처음 만들었다",
+     "difWhy": "앵커 바 기원 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "유명 음식 기원 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "그때만 해도 이 재료는 값싸고 인기가 없어 흔히 버리거나 국물용으로 썼다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Buffalo_wing"
+    ],
+    "facts": [
+     {
+      "claim": "1964년 앵커 바에서 테레사 벨리시모가 처음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buffalo_wing",
+      "note": "Buffalo wings were first prepared in 1964 at the Anchor Bar in Buffalo, New York ... by Teressa Bellissimo, who owned the bar with her husband Frank."
+     },
+     {
+      "claim": "도미닉 — 어머니의 생각 / 프랭크 — 잘못 배달된 재료로 부탁",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buffalo_wing",
+      "note": "He stated his mother came up with the idea of chicken wings / (Frank says that, after a mistaken delivery of wings,) he asked Teressa to do something with them"
+     },
+     {
+      "claim": "1977년 시가 프랭크를 기리는 포고문, 7월 29일을 치킨 윙 데이로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buffalo_wing",
+      "note": "the city of Buffalo issued an official proclamation celebrating Anchor Bar co-owner Frank Bellissimo ... declared July 29, 1977, to be Chicken Wing Day."
+     },
+     {
+      "claim": "소스와 곁들이",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Buffalo_wing",
+      "note": "a sauce consisting of a vinegar-based cayenne pepper hot sauce and melted butter / Traditionally, Buffalo wings are served with small sticks of celery (blue cheese dip on the side)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Buffalo_wing"
+    ],
+    "hintNote": "inexpensive and undesirable, and normally thrown away or reserved for stock or soup.",
+    "easiestCue": "1964년 한 바의 공동 주인 테레사 벨리시모가 처음 만들었다고 알려진 요리",
+    "targetWhy": "도시 이름(정답 조각)과 소스·셀러리(대표 생김)는 뺐다 — 원조 가게 가족의 엇갈린 증언은 음식 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국에서도 흔한 술안주, 묻는 것은 원조 이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (버팔로 윙 포함)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-food/3#g009b-L1-18",
+   "seed": {
+    "subject": "콥 샐러드",
+    "aspect": null,
+    "ref": "L1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "할리우드의 '브라운 더비' 식당 주인이 한밤중까지 끼니를 거르다 주방에 남은 재료를 섞어 만들었다는 전설이 있는 샐러드입니다. 막 치과 치료를 받아 잘 씹지 못하던 극장주 시드 그로먼을 위해 재료를 잘게 썰었다는 이야기도 전하는데, 이 샐러드는 무엇일까요?",
+    "answer": "콥 샐러드",
+    "acceptedAnswers": [
+     "코브 샐러드"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목이 '코브 샐러드' — 한국 식당 표기 '콥 샐러드'를 대표로 두고 문서 표기를 변형으로",
+    "explanation": "로메인 상추에 토마토·베이컨·닭가슴살·삶은 달걀·아보카도·차이브·블루치즈를 잘게 썰어 올립니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "할리우드 '브라운 더비' 식당 주인이 남은 재료를 섞어 만든 샐러드",
+     "difWhy": "'브라운 더비 샐러드' — 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 요리 이름 유래",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "할리우드 '브라운 더비' 식당 주인이 남은 재료를 섞어 만든 샐러드",
+     "difWhy": "'브라운 더비 샐러드' — 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 요리 이름 유래"
+    },
+    "rewrite": null,
+    "generalHint": "주인이 아니라 그 식당의 주방장이 만들어 주인 이름을 붙였다는 이야기도 전한다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cobb_salad"
+    ],
+    "facts": [
+     {
+      "claim": "브라운 더비에서 생겨 대표 요리가 됨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cobb_salad",
+      "note": "it came about in 1937 at the Hollywood Brown Derby restaurant, where it became a signature dish."
+     },
+     {
+      "claim": "주인 코브가 자정 무렵 남은 재료를 섞음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cobb_salad",
+      "note": "The legend is that Cobb had not eaten until near midnight, and so he mixed together leftovers he found in the kitchen"
+     },
+     {
+      "claim": "치과 치료를 받은 그로먼을 위해 잘게 썲",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cobb_salad",
+      "note": "Robert Cobb prepared it for showman and theater owner Sid Grauman. / It was finely chopped, because Grauman had just had dental work done, and couldn't chew well."
+     },
+     {
+      "claim": "재료",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cobb_salad",
+      "note": "chopped salad greens (authentically romaine lettuce) ... tomato, bacon, chicken breast, hard-boiled eggs, avocado, chives, blue cheese"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cobb_salad"
+    ],
+    "hintNote": "Stories vary whether the salad was invented by Cobb or by his chef, Paul J. Posti. Yet another version ... Robert Kreis, executive chef at the restaurant, created the salad in 1929 ... and named it in honor of Cobb.",
+    "easiestCue": "할리우드의 '브라운 더비' 식당 주인이 한밤중까지 끼니를 거르다 주방에 남은 재료를 섞어 만들었다는 전설",
+    "targetWhy": "정답 이름이 된 주인 이름은 쓰지 않았다 — 원조 식당·그로먼 일화는 음식 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "카페 메뉴로 흔한 샐러드, 이름의 유래가 숨은 단서",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (코브 샐러드 포함)",
+    "warn": [
+     "정답조각 샐러드"
+    ]
+   }
+  },
+  {
+   "seedId": "world-food/3#g009b-L1-19",
+   "seed": {
+    "subject": "검보",
+    "aspect": null,
+    "ref": "L1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1803년 루이지애나의 프랑스 지사 피에르 클레망 드 로사가 연 연회에는 이 요리가 24가지나 나왔다고 합니다. 고기를 먹지 않는 사순절에는 채소만 넣은 종류를 끓였고, 말린 사사프라스 잎 가루인 필레로 걸쭉하게 하기도 하는 이 요리는 무엇일까요?",
+    "answer": "검보",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "루이지애나주 법은 이 요리를 주의 공식 요리로 정해 두었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "말린 사사프라스 잎 가루인 필레로 걸쭉하게",
+     "difWhy": "필레·루이지애나 요리 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "세계 음식 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "말린 사사프라스 잎 가루인 필레로 걸쭉하게",
+     "difWhy": "필레·루이지애나 요리 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "세계 음식 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "이름은 오크라를 가리키던 서아프리카나 중앙아프리카 말에서 왔다고 보는 견해가 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gumbo"
+    ],
+    "facts": [
+     {
+      "claim": "1803년 로사의 연회에 24가지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gumbo",
+      "note": "hosted a soirée in which 24 different gumbos were prepared (Pierre Clement de Laussat, 1803)"
+     },
+     {
+      "claim": "사순절의 고기 없는 검보",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gumbo",
+      "note": "When Catholics were expected to abstain from eating meat during Lent ... a meatless variety of gumbo, known as gumbo z'herbes"
+     },
+     {
+      "claim": "필레 = 말린 사사프라스 잎 가루",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gumbo",
+      "note": "dried and ground sassafras leaves / Ground sassafras leaf, known as filé"
+     },
+     {
+      "claim": "루이지애나 공식 요리",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gumbo",
+      "note": "Gumbo is the official cuisine of the state of Louisiana. / The official state cuisine shall be gumbo."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gumbo"
+    ],
+    "hintNote": "The dish was likely named after one of its two main ingredients, okra or filé. One origin is the Bambara language of West Africa in which gombo means okra. The other origin is the system of Bantu languages ...",
+    "easiestCue": "말린 사사프라스 잎 가루인 필레로 걸쭉하게 하기도 하는",
+    "targetWhy": "오크라(이름 유래·대표 재료)는 뺐다 — 필레·사순절 종류·1803 연회는 미국 남부 요리 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 봤을 루이지애나 요리, 단서는 재료와 기록",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-food/3#g009b-L1-20",
+   "seed": {
+    "subject": "칠리 콘 카르네",
+    "aspect": null,
+    "ref": "L1-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "19세기 텍사스 샌안토니오의 광장에서는 이 요리를 싸게 파는 여성 노점상들이 '퀸'이라 불리며 이름났고, 1893년 시카고 콜럼버스 박람회에 나온 샌안토니오 노점도 이 요리를 널리 알렸습니다. 이 요리는 무엇일까요?",
+    "answer": "칠리 콘 카르네",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '칠리 콘 카르네'·'칠리콘카르네' 가 '칠리 (요리)' 로 넘겨짐 — 문서 제목 '칠리'를 변형으로",
+    "explanation": "1977년 텍사스주 의회 결의로 주 공식 요리가 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "텍사스 샌안토니오의 광장 … 여성 노점상들이 '퀸'",
+     "difWhy": "칠리 퀸 노점 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "텍스멕스 대표 요리 유래",
+     "acc": 4,
+     "accWhy": "세계 음식 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "텍사스주 의회 결의로 주 공식 요리가 된",
+     "difWhy": "텍사스 대표 요리 — 음식 관심층 (경계 4)",
+     "wor": 3,
+     "worWhy": "세계 음식 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "19세기 텍사스 샌안토니오의 광장에서는 이 요리를 싸게 파는 여성 노점상들이 '퀸'이라 불리며 이름났고, 1893년 시카고 콜럼버스 박람회에 나온 샌안토니오 노점도 이 요리를 널리 알렸습니다. 1977년 텍사스주 의회 결의로 주 공식 요리가 된 이 요리는 무엇일까요?",
+     "beforeExplanation": "콩을 넣어야 하느냐를 두고 요리사들 사이에 오래 다툼이 이어져 왔습니다.",
+     "removedCue": "1977년 텍사스주 의회 결의로 주 공식 요리가 된",
+     "addedCue": "공식 요리 문장을 해설로 돌리고 칠리 퀸 · 박람회 노점만 남김",
+     "why": "텍사스 공식 요리는 텍사스 대표 요리로 바로 이어져 뺀다"
+    },
+    "generalHint": "텍사스 테를링구아에서는 1967년 시작된 이 요리의 세계 선수권 경연이 11월에 열린다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chili_con_carne"
+    ],
+    "facts": [
+     {
+      "claim": "샌안토니오 '칠리 퀸'들이 싼 값에 팔아 유명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chili_con_carne",
+      "note": "\"chili queens\" were particularly famous in previous decades for selling their inexpensive chili-flavored beef stew"
+     },
+     {
+      "claim": "1893년 콜럼버스 박람회의 샌안토니오 칠리 스탠드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chili_con_carne",
+      "note": "The San Antonio Chili Stand, in operation at the 1893 Columbian Exposition in Chicago (helped popularize chili)"
+     },
+     {
+      "claim": "텍사스 공식 요리 — 1977년 하원 공동 결의",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chili_con_carne",
+      "note": "Chili con carne is the official dish of the U.S. state of Texas. (designated by a 1977 House Concurrent Resolution)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Terlingua,_Texas"
+    ],
+    "hintNote": "On the first Saturday of November, over 10,000 \"chiliheads\" convene in Terlingua for two annual chili cookoffs … World Chili Championship (established 1967).",
+    "easiestCue": "샌안토니오 광장의 여성 노점상들이 '퀸'이라 불리며 이름났다",
+    "targetWhy": "칠리 퀸 이야기는 미국 음식사 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "텍사스 공식 요리를 바비큐로 잘못 칠 사람도 있지만 노점·박람회 단서가 가른다 — 3 으로 볼 수도",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (칠리 포함)",
+    "warn": []
+   }
+  }
+ ]
+}

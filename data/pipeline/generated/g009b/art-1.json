@@ -1,0 +1,289 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "art/1",
+  "midKey": "art",
+  "subName": "서양 회화",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "art/1#g009b-A2-16",
+   "seed": {
+    "subject": "아비뇽의 처녀들",
+    "aspect": null,
+    "ref": "A2-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1916년 시인 앙드레 살몽이 꾸린 전시에서 처음 공개된 피카소의 이 그림은, 살몽이 추문을 덜려고 지금의 제목으로 바꿔 붙였고 피카소는 이 제목을 끝내 좋아하지 않았습니다. 제목 속 지명이 바르셀로나의 한 거리 이름과 이어지는 이 그림은 무엇일까요?",
+    "answer": "아비뇽의 처녀들",
+    "acceptedAnswers": [
+     "아비뇽의 아가씨들"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '아비뇽의 아가씨들' → '아비뇽의 처녀들' 넘겨주기 확인",
+    "explanation": "1924년 디자이너 자크 두세에게 팔리기 전까지 이 그림은 둘둘 말린 채 피카소 곁에 있었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "제목 속 지명이 바르셀로나 거리와 이어지는 피카소 그림",
+     "difWhy": "피카소 제목 지명 그림 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 미술사 대표작",
+     "acc": 4,
+     "accWhy": "미술 — 중고교 미술 교과·교양"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "피카소는 이 그림을 늘 '내 사창가'라고",
+     "difWhy": "피카소 대표작 — 고교 미술",
+     "wor": 4,
+     "worWhy": "미술 교양 — 입체주의 출발점"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "피카소는 이 그림을 늘 '내 사창가'라고 불렀지만, 1916년 처음 공개될 때 전시를 꾸린 시인 앙드레 살몽이 추문을 덜려고 지금의 제목으로 바꿔 붙였습니다. 피카소는 이 제목을 끝내 좋아하지 않았다는데, 제목 속 지명이 바르셀로나의 한 거리 이름과 이어지는 이 그림은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "피카소가 늘 '내 사창가'라고 부름",
+     "addedCue": "없음 — 살몽의 제목 변경 · 바르셀로나 거리 두 단서로 좁힘",
+     "why": "대표 일화(사창가)를 빼고 제목의 뒷이야기만"
+    },
+    "generalHint": "피카소는 이 그림을 몽마르트르의 낡은 작업실 건물 '바토라부아르'에서 그렸다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Les_Demoiselles_d'Avignon"
+    ],
+    "facts": [
+     {
+      "claim": "1916년 살몽이 꾸린 전시에서 첫 공개, 추문을 덜려고 제목 변경",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Les_Demoiselles_d'Avignon",
+      "note": "it was seen publicly for the first time at the Salon d'Antin in July 1916, at an exhibition organized by the poet André Salmon. ... retitled it Les Demoiselles d'Avignon so as to lessen its scandalous impact on the public."
+     },
+     {
+      "claim": "바르셀로나 거리 Carrer d'Avinyó",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Les_Demoiselles_d'Avignon",
+      "note": "it portrays five nude female prostitutes in a brothel on Carrer d'Avinyó, a street in Barcelona, Spain."
+     },
+     {
+      "claim": "1924 두세에게 팔릴 때까지 말린 채 보관",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Les_Demoiselles_d'Avignon",
+      "note": "Afterwards, the painting was rolled up and remained with Picasso until 1924 when ... he sold it to designer Jacques Doucet (1853–1929)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Les_Demoiselles_d'Avignon"
+    ],
+    "hintNote": "Painted in Picasso's studio in the Bateau-Lavoir in Montmartre, Paris",
+    "easiestCue": "제목 속 지명이 바르셀로나의 한 거리 이름과 이어지는",
+    "targetWhy": "살몽의 개제·아비뇨 거리는 미술 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서에 나오는 그림, 제목의 뒷이야기로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "art/1#g009b-A2-17",
+   "seed": {
+    "subject": "절규",
+    "aspect": null,
+    "ref": "A2-17",
+    "pairedWith": 83
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 83,
+    "question": "이 그림을 그릴 무렵 화가의 누이 라우라는 그림의 배경이 된 에케베르그 언덕 기슭의 정신 병원에 있었습니다. 노르웨이 국립 미술관이 가진 판의 왼쪽 위 구석에는 '미친 사람만이 그릴 수 있었다!'라는 작은 연필 글씨가 있는데, 적외선 사진으로 필체를 살핀 끝에 화가 자신이 쓴 것으로 밝혀졌습니다. 이 그림은 무엇일까요?",
+    "answer": "절규",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "노르웨이어 제목은 '스크리크'이고, 처음 전시될 때 붙은 독일어 제목은 '자연의 절규'였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "노르웨이 국립 미술관 · '미친 사람만이 그릴 수 있었다!'",
+     "difWhy": "노르웨이 대표 명화 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "누구나 아는 그림 제목 맞히기",
+     "acc": 4,
+     "accWhy": "미술 — 중고교 미술 교과·교양"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "오슬로 피오르 … 1893년에 그린 첫 판",
+     "difWhy": "'1893 오슬로 피오르 그림' — 중학 미술",
+     "wor": 4,
+     "worWhy": "교양 — 대표 명화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 그림의 배경은 오슬로 피오르를 내려다보는 에케베르그 언덕의 길이고, 그림을 그릴 무렵 화가의 누이 라우라는 그 언덕 기슭의 정신 병원에 있었습니다. 1893년에 그린 첫 판의 왼쪽 위 구석에는 '미친 사람만이 그릴 수 있었다!'라는 연필 글씨가 희미하게 남아 있는데, 이 그림은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "오슬로 피오르를 내려다보는 · 1893년에 그린 첫 판",
+     "addedCue": "적외선 사진·필체 조사로 화가 자신의 글씨로 밝혀짐",
+     "why": "1893년은 1회차 해설과 겹치고 오슬로 피오르가 쉬운 단서라 빼고 연필 글씨의 뒷이야기로 바꿨다"
+    },
+    "generalHint": "2012년 파스텔로 그린 판 하나가 소더비 경매에서 약 1억 2천만 달러에 팔렸다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/The_Scream"
+    ],
+    "facts": [
+     {
+      "claim": "누이 라우라가 에케베르그 기슭 정신 병원 환자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Scream",
+      "note": "At the time of painting the work, Munch's manic depressive sister Laura Catherine was a patient at the mental asylum at the foot of Ekeberg."
+     },
+     {
+      "claim": "노르웨이어 Skrik, 독일어 첫 전시 제목 Der Schrei der Natur",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Scream",
+      "note": "The Norwegian name of the piece is Skrik ('Scream'), and the German title under which it was first exhibited is Der Schrei der Natur ('The Scream of Nature')."
+     },
+     {
+      "claim": "국립 미술관 판 왼쪽 위 작은 연필 글씨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Scream",
+      "note": "The version held by the National Museum of Norway has a pencil inscription, in small lettering, in the upper left corner, saying \"Kan kun være malet af en gal Mand!\" (\"could only have been painted by a madman!\")."
+     },
+     {
+      "claim": "적외선 사진 뒤 필체 조사로 뭉크가 쓴 것으로 밝혀짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Scream",
+      "note": "Following infrared photography, the study of the handwriting now shows that the comment was added by Munch."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Scream"
+    ],
+    "hintNote": "sold at Sotheby's in New York for a record price of nearly US$120 million at auction on 2 May 2012.",
+    "easiestCue": "'미친 사람만이 그릴 수 있었다!' 연필 글씨",
+    "targetWhy": "누이의 병원·연필 글씨 조사는 미술 애호가 세부, 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "국민 명화, 그림 뒷이야기로만 묻는다",
+    "pairCheck": "1회차 83 질문(뭉크·붉은 노을·다리 위 귀 막은 인물)·해설(1893 표현주의 대표작)과 겹치지 않음 — 1893 은 해설에 있으나 단서는 연필 글씨·장소, 1회차 힌트 없음",
+    "dbCheck": "answercheck pair-or-different — 83 과 같은 답, (가) 2회차",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 83,
+     "question": "노르웨이의 화가 에드바르 뭉크가 붉은 노을 아래 다리 위에서 귀를 막고 비명을 지르는 인물을 묘사한 대표적인 회화 작품은?",
+     "explanation": "뭉크가 1893년에 발표한 표현주의 대표작이다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "art/1#g009b-A2-18",
+   "seed": {
+    "subject": "모나리자",
+    "aspect": null,
+    "ref": "A2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1956년 12월 30일 루브르에서 한 볼리비아인이 이 그림에 돌을 던져, 유리 상자가 깨지고 왼쪽 팔꿈치 근처 물감이 조금 떨어져 나갔습니다. 1974년 4월 도쿄 국립박물관 전시 때는 한 여성이 장애인 출입 문제에 항의하며 이 그림에 붉은 페인트를 뿌렸는데, 이 그림은 무엇일까요?",
+    "answer": "모나리자",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '모나 리자' → '모나리자' 넘겨주기(띄어쓰기만 다름)",
+    "explanation": "레오나르도의 조수 살라이가 1524년 죽을 때 남긴 문서에는 '라 조콘다'라는 이름의 초상화가 적혀 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "루브르에서 … 이 그림에 돌을 던져, 유리 상자가 깨지고",
+     "difWhy": "루브르 유리 상자 속 그림 — 방송·뉴스에서 흔히",
+     "wor": 3,
+     "worWhy": "유명 그림 이름 맞히기 — 테러 일화",
+     "acc": 4,
+     "accWhy": "미술 — 중고교 미술 교과·교양"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "프랑수아 1세가 얻고 나폴레옹 침실에 있던 그림",
+     "difWhy": "'프랑수아 1세 소장 명화' — 미술 관심층",
+     "wor": 3,
+     "worWhy": "유명 그림 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "프랑스 왕 프랑수아 1세가 손에 넣은 뒤 퐁텐블로 궁에 있던 이 그림은 루이 14세가 베르사유 궁으로 옮겼고, 혁명 뒤에는 잠시 튀일리 궁의 나폴레옹 침실에 있었습니다. 1939년 8월에는 앙부아즈 성, 샹보르 성을 거쳐 몽토방의 앵그르 미술관까지 옮겨 다니며 나치의 약탈을 피했는데, 이 그림은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "프랑수아 1세가 얻고 나폴레옹 침실에 있던 그림 · 1939년 피난 경로",
+     "addedCue": "1956년 돌 던지기 · 1974년 도쿄 붉은 페인트",
+     "why": "미술 관심층의 소장 내력을 빼고 훼손 사건 세부 둘을 엮음"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mona_Lisa"
+    ],
+    "facts": [
+     {
+      "claim": "살라이 문서의 라 조콘다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mona_Lisa",
+      "note": "Leonardo's assistant Salaì, at his death in 1524, owned a portrait which in his personal papers was named la Gioconda, a painting bequeathed to him by Leonardo."
+     },
+     {
+      "claim": "1956년 12월 30일 우고 웅가사 비예가스가 돌을 던져 유리가 깨지고 왼쪽 팔꿈치 근처 안료가 떨어짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mona_Lisa",
+      "note": "On 30 December 1956, Bolivian Ugo Ungaza Villegas threw a rock at the Mona Lisa while it was on display at the Louvre. He did so with such force that it shattered the glass case and dislodged a speck of pigment near the left elbow."
+     },
+     {
+      "claim": "1974년 4월 21일 도쿄 국립박물관 전시 중 장애인 접근 문제 항의로 붉은 페인트",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mona_Lisa",
+      "note": "On 21 April 1974, while the painting was on display at the Tokyo National Museum, a woman sprayed it with red paint as a protest against that museum's failure to provide access for disabled people."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1974년 도쿄 국립박물관 전시 때 붉은 페인트를 맞은 그림",
+    "targetWhy": "1956·1974 훼손 사건은 미술 애호가 세부 — 1911 도난 같은 유명 일화 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "세상에서 가장 유명한 그림, 단서는 교과서 밖 이력",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

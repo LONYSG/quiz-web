@@ -1,0 +1,216 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "computer/3",
+  "midKey": "computer",
+  "subName": "프로그래밍 용어",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "computer/3#g009b-C2-15",
+   "seed": {
+    "subject": "자바",
+    "aspect": null,
+    "ref": "C2-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1991년 6월에 시작된 한 프로그래밍 언어 프로젝트는, 처음에는 설계자의 사무실 밖에 서 있던 나무의 이름을 따서 불렸습니다. 뒤에 '그린'이라는 이름을 거쳐 지금의 이름이 된 이 언어는 무엇일까요?",
+    "answer": "자바",
+    "acceptedAnswers": [
+     "Java"
+    ],
+    "originalTitleVariants": [
+     "Java"
+    ],
+    "variantCheck": "ko.wikipedia '자바 (프로그래밍 언어)' — 원 상표가 영어(B10)라 'Java' 추가",
+    "explanation": "처음 이름은 참나무를 뜻하는 '오크(Oak)'였고, 지금 이름은 인도네시아에서 나는 커피에서 따왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "설계자의 사무실 밖에 서 있던 나무의 이름을 따서 … '그린'이라는 이름을 거쳐",
+     "difWhy": "Oak·Green 옛 이름 — 개발 애호가",
+     "wor": 3,
+     "worWhy": "유명 언어 이름 유래 이야깃거리",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "처음에는 '오크(Oak)'라 불린 언어",
+     "difWhy": "'Oak → 언어 이름' — IT 관심층",
+     "wor": 3,
+     "worWhy": "프로그래밍 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1991년 6월에 시작된 한 프로그래밍 언어 프로젝트는, 처음에는 설계자의 사무실 밖에 서 있던 참나무를 따서 '오크(Oak)' 라 불렸습니다. 뒤에 '그린' 이라는 이름을 거쳐 지금의 이름이 된 이 언어는 무엇일까요?",
+     "beforeExplanation": "지금의 이름은 인도네시아에서 나는 커피 품종에서 따왔습니다.",
+     "removedCue": "처음 이름 '오크(Oak)'",
+     "addedCue": "(이름을 감춤) 사무실 밖 나무 이름 + 그린 프로젝트",
+     "why": "IT 관심층이 아는 'Oak' 를 해설로 옮기고 나무에서 땄다는 사연과 '그린'만 남김"
+    },
+    "generalHint": "선 마이크로시스템스가 1996년 첫 공개판인 1.0을 내놓았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Java_(programming_language)"
+    ],
+    "facts": [
+     {
+      "claim": "1991년 6월 프로젝트 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Java_(programming_language)",
+      "note": "James Gosling, Mike Sheridan, and Patrick Naughton initiated the Java language project in June 1991."
+     },
+     {
+      "claim": "처음 이름 Oak — 고슬링 사무실 밖 참나무",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Java_(programming_language)",
+      "note": "The language was initially called Oak after an oak tree that stood outside Gosling's office."
+     },
+     {
+      "claim": "Green 을 거쳐 Java 로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Java_(programming_language)",
+      "note": "Later the project went by the name Green and was finally renamed Java, from Java coffee, a type of coffee from Indonesia."
+     },
+     {
+      "claim": "인도네시아 커피에서 이름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Java_(programming_language)",
+      "note": "renamed Java, from Java coffee, a type of coffee from Indonesia"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Java_(programming_language)"
+    ],
+    "hintNote": "Sun Microsystems released the first public implementation as Java 1.0 in 1996.",
+    "easiestCue": "'그린'이라는 이름을 거친 1991년 프로그래밍 언어 프로젝트",
+    "targetWhy": "Green 프로젝트·이름 내력은 개발자 교양 세부 — Oak·커피 단서 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 들어 본 언어, 옛 이름 일화",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "computer/3#g009b-C2-16",
+   "seed": {
+    "subject": "쿠키",
+    "aspect": null,
+    "ref": "C2-16",
+    "pairedWith": 393
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 393,
+    "question": "1994년 6월 넷스케이프에서 일하던 루 몬툴리는 이것을 웹 통신에 쓰자는 생각을 했고, 1994년 10월 13일 나온 '모자이크 넷스케이프' 0.9 베타가 이것을 지원했습니다. 대중은 1996년 2월 12일 파이낸셜 타임스 기사로 이것을 알게 되었다는데, 이것은 무엇일까요?",
+    "answer": "쿠키",
+    "acceptedAnswers": [
+     "HTTP 쿠키"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 'HTTP 쿠키'",
+    "explanation": "이름은 유닉스 프로그래머들이 쓰던 말 '매직 쿠키' 에서 왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "넷스케이프에서 일하던 루 몬툴리는 이것을 웹 통신에",
+     "difWhy": "쿠키 고안 경위 — 대학 교양(인터넷사)",
+     "wor": 4,
+     "worWhy": "웹 기본 어휘",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "웹사이트를 찾은 사람이 전에도 왔던 사람인지 가려내는 것",
+     "difWhy": "'재방문 식별 웹 기술' — 일상·뉴스",
+     "wor": 4,
+     "worWhy": "교양 — 웹 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1994년 6월 넷스케이프에서 일하던 루 몬툴리는 이것을 웹 통신에 쓰자는 생각을 했습니다. 연구실 밖에서 처음 쓰인 곳은, 넷스케이프 웹사이트를 찾은 사람이 전에도 왔던 사람인지 가려내는 일이었습니다. 이것은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "웹사이트를 찾은 사람이 전에도 왔던 사람인지 가려냄(기능)",
+     "addedCue": "모자이크 넷스케이프 0.9 베타 지원 · 1996년 파이낸셜 타임스 기사",
+     "why": "재방문 식별은 기능 그 자체라 빼고 도입 역사 세부로 바꿈"
+    },
+    "generalHint": "1997년 2월 IETF 작업 그룹이 만든 이것의 규격이 RFC 2109로 펴내졌다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/HTTP_cookie"
+    ],
+    "facts": [
+     {
+      "claim": "1994년 6월 몬툴리가 웹 통신에 쓰자는 생각, 당시 넷스케이프",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/HTTP_cookie",
+      "note": "had the idea of using them in web communications in June 1994 (요지: Montulli, then working at Netscape)"
+     },
+     {
+      "claim": "매직 쿠키에서 유래",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/HTTP_cookie",
+      "note": "It was derived from the term magic cookie"
+     },
+     {
+      "claim": "1994년 10월 13일 Mosaic Netscape 0.9beta 가 지원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/HTTP_cookie",
+      "note": "Version 0.9beta of Mosaic Netscape, released on 13 October 1994, supported cookies."
+     },
+     {
+      "claim": "1996년 2월 12일 파이낸셜 타임스 기사로 대중이 알게 됨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/HTTP_cookie",
+      "note": "The public learned about cookies after the Financial Times published an article about them on 12 February 1996."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/HTTP_cookie"
+    ],
+    "hintNote": "The specification produced by the group was eventually published as RFC 2109 in February 1997.",
+    "easiestCue": "루 몬툴리가 1994년 웹 통신에 쓰자고 한 것",
+    "targetWhy": "몬툴리·넷스케이프 0.9 베타·FT 기사는 웹 기술사 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'재방문 확인' 이 기능 단서라 관심층이 풀 수 있음",
+    "pairCheck": "1회차 393 질문(로그인 상태·장바구니 기억)·해설(광고 추적·동의 규제)·힌트(없음)와 같은 사실을 쓰지 않음 — 장바구니(MCI) 사연은 일부러 뺐다",
+    "dbCheck": "pair-or-different — 활성 393 의 2회차",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 393,
+     "question": "웹사이트가 로그인 상태나 장바구니 내용을 기억하려고 이용자의 브라우저에 저장해 두는 작은 데이터 조각을 무엇이라 하나요?",
+     "explanation": "광고 추적에도 쓰이기 때문에 여러 나라에서 저장 전에 동의를 받도록 규제하고 있습니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  }
+ ]
+}

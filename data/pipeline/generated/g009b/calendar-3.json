@@ -1,0 +1,297 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "calendar/3",
+  "midKey": "calendar",
+  "subName": "달력·역법",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "calendar/3#g009b-L2-32",
+   "seed": {
+    "subject": "사모아",
+    "aspect": null,
+    "ref": "L2-32",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1892년 이 나라는 주된 무역 상대인 미국에 맞추려고 7월 4일 월요일을 두 번 보내, 그해 미국 독립 기념일을 두 번 쇠었습니다. 2009년 9월 7일에는 백 년 넘게 지켜 온 우측 통행을 좌측 통행으로 바꾼 이 태평양 나라는 어디일까요?",
+    "answer": "사모아",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2011년에는 반대로 12월 30일 금요일을 건너뛰어, 12월 29일 목요일 다음 날이 곧바로 31일 토요일이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "2009년 9월 7일에는 백 년 넘게 지켜 온 우측 통행을 좌측 통행으로 바꾼",
+     "difWhy": "좌측통행 전환·7월 4일 두 번 — 애호가",
+     "wor": 3,
+     "worWhy": "날짜선 나라 이야깃거리",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "2011년에는 … 12월 29일 목요일 다음 날을 곧바로 31일",
+     "difWhy": "날짜변경선 하루 건너뛴 나라 — 관심층",
+     "wor": 3,
+     "worWhy": "날짜변경선 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1892년 이 나라는 주된 무역 상대인 미국에 맞추려고 7월 4일 월요일을 두 번 보내, 그해 미국 독립 기념일을 두 번 쇠었습니다. 119년 뒤인 2011년에는 반대로 12월 29일 목요일 다음 날을 곧바로 31일 토요일로 넘긴 이 나라는 어디일까요?",
+     "beforeExplanation": "정부는 건너뛴 금요일에 일하기로 되어 있던 직장인이 하루 치 급여를 그대로 받도록 정했습니다.",
+     "removedCue": "2011년 12월 29일 목요일 다음 날을 곧바로 31일로 넘겼다(날짜변경선 뉴스)",
+     "addedCue": "2009년 9월 7일 우측 통행 → 좌측 통행",
+     "why": "2011년 날짜 건너뛰기는 뉴스로 흔한 단서라 해설로 돌리고 통행 방향 변경으로 묻는다"
+    },
+    "generalHint": "1962년 태평양의 작은 섬나라 가운데 처음으로 뉴질랜드에서 독립했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Time_in_Samoa",
+     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic"
+    ],
+    "facts": [
+     {
+      "claim": "1892년 7월 4일 월요일을 되풀이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Time_in_Samoa",
+      "note": "To execute the change, a royal proclamation dictated that the island would repeat Monday, 4 July 1892."
+     },
+     {
+      "claim": "주 무역 상대 미국 · 독립 기념일을 두 번",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Time_in_Samoa",
+      "note": "Repeating the same day allowed Samoa to celebrate American Independence Day twice in one year as a flattering diplomatic gesture to their primary trade partner."
+     },
+     {
+      "claim": "119년 뒤 2011년 12월 30일 금요일을 건너뜀",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Time_in_Samoa",
+      "note": "For 119 years (running from Monday, 4 July 1892, until Thursday, 29 December 2011) ... completely skipping Friday, 30 December 2011, and jumping straight into Saturday, 31 December 2011."
+     },
+     {
+      "claim": "2009년 9월 7일 우측→좌측 통행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+      "note": "Samoa had been RHT for more than a century, but switched to LHT in 2009. … At 05:50 local time, Monday 7 September, a radio announcement halted traffic."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Samoa"
+    ],
+    "hintNote": "granted the country independence as the Independent State of Western Samoa (1 January 1962) / the first small-island country in the Pacific to become independent.",
+    "easiestCue": "1892년 7월 4일 월요일을 두 번 보내 미국 독립 기념일을 두 번 쇠었다",
+    "targetWhy": "1892년 날짜 조정·2009년 통행 방향 변경은 지리·역법 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 아는 나라, 하루를 두 번 보내고 하루를 없앤 이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 835(날짜변경선)와 정답이 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "calendar/3#g009b-L2-33",
+   "seed": {
+    "subject": "소련",
+    "aspect": null,
+    "ref": "L2-33",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1929년 여름 이 나라는 공장과 관청에 닷새짜리 '연속 근무 주'를 들여, 노동자마다 쉬는 날을 달리 정해 공장이 날마다 돌게 했습니다. 1931년 모두가 함께 쉬는 엿새짜리 주로 바꿨다가 1940년 6월 27일에야 이레짜리 주로 돌아온 이 나라는 어디일까요?",
+    "answer": "소련",
+    "acceptedAnswers": [
+     "소비에트 연방"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '소비에트 연방' → '소련' 넘겨주기 확인",
+    "explanation": "닷새짜리 주의 날마다 다섯 가지 색이나 로마 숫자 I~V를 붙여 구별했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "닷새짜리 '연속 근무 주'",
+     "difWhy": "소련 연속 근무 주 — 대학 교양 세계사",
+     "wor": 3,
+     "worWhy": "역법 실험 이야깃거리",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "닷새짜리 '연속 근무 주'",
+     "difWhy": "소련 연속 근무 주 — 대학 교양 세계사",
+     "wor": 3,
+     "worWhy": "역법 실험 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "1929년 5월 경제학자 유리 라린이 처음 이 제도를 내놓았을 때는 대회 의장이 마지막 연설에서 언급조차 하지 않았다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Soviet_calendar"
+    ],
+    "facts": [
+     {
+      "claim": "1929년 여름 공장·관청·상업에 닷새 연속 근무 주",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Soviet_calendar",
+      "note": "During the summer of 1929, five-day continuous work weeks were implemented in factories, government offices, and commercial enterprises, but not collective farms."
+     },
+     {
+      "claim": "노동자마다 쉬는 날을 정해 공장이 날마다 돌게",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Soviet_calendar",
+      "note": "One of the five days was randomly assigned to each worker as their day of rest; the purpose of this system was to allow factories to operate every day"
+     },
+     {
+      "claim": "1931년 함께 쉬는 엿새 주",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Soviet_calendar",
+      "note": "During the summer of 1931, six-day interrupted work weeks were implemented for most workers, with a common day of rest for all workers"
+     },
+     {
+      "claim": "1940년 6월 27일 이레 주로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Soviet_calendar",
+      "note": "the traditional interrupted seven-day week with Sunday as the common day of rest was reintroduced on 27 June 1940."
+     },
+     {
+      "claim": "다섯 색 또는 로마 숫자",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Soviet_calendar",
+      "note": "Each day of the five-day week was labeled by either one of five colors or a Roman numeral from I to V."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Soviet_calendar"
+    ],
+    "hintNote": "During the second half of May 1929, Yuri Larin proposed a continuous production week ... but so little attention was paid to his suggestion that the president of the Congress did not even mention it in his final speech.",
+    "easiestCue": "1929년 여름 이 나라는 … 닷새짜리 '연속 근무 주'를 들여",
+    "targetWhy": "소련의 닷새·엿새 주는 역법 애호가·대학 교양 세부 — 혁명·5개년 계획 같은 교과서 단서는 넣지 않았다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 나라, 달력을 뜯어고친 실험",
+    "pairCheck": null,
+    "dbCheck": "answercheck pair-or-different — 활성 2630(연방 해체)과 정답만 같고 지식이 다름",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  },
+  {
+   "seedId": "calendar/3#g009b-L2-34",
+   "seed": {
+    "subject": "서기",
+    "aspect": null,
+    "ref": "L2-34",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "525년 로마에서 동로마 출신 수도사 디오니시우스 엑시구우스는 부활절 날짜 표를 만들면서 새 햇수 세기를 썼습니다. 그의 저작을 알던 앵글로색슨 역사가 베다가 731년에 완성한 『잉글랜드 교회사』에서 이 햇수 세기를 쓰면서 퍼져 나간 이 기년법은 무엇일까요?",
+    "answer": "서기",
+    "acceptedAnswers": [
+     "기원후",
+     "서력기원"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '서력기원' → '서력 기원' 넘겨주기 확인 · 기원후는 같은 기년의 흔한 한국어 이름",
+    "explanation": "그는 그해가 '주 그리스도 강생 이후 525년'이라고만 했을 뿐, 탄생한 해를 따로 밝히지는 않았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "디오니시우스 엑시구우스가 부활절 표에 쓴 햇수 세기",
+     "difWhy": "디오니시우스·베다 — 대학 교양 역법사",
+     "wor": 4,
+     "worWhy": "교양 — 서기의 기원",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "디오클레티아누스 기년 대신 새 햇수 세기(그리스도 기준)",
+     "difWhy": "'그리스도 기준 햇수 세기' — 중학 역사",
+     "wor": 5,
+     "worWhy": "교과 — 기년법"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "525년 로마에서 동로마 출신 수도사 디오니시우스 엑시구우스는 부활절 날짜 표를 만들면서, 그리스도교도를 박해한 디오클레티아누스 황제의 기년 대신 새 햇수 세기를 썼습니다. 9세기에 들어서야 널리 쓰인 이 기년법은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "그리스도교도를 박해한 디오클레티아누스 황제의 기년 대신 · 9세기에 널리",
+     "addedCue": "베다의 『잉글랜드 교회사』(731)",
+     "why": "박해 황제 대비가 '그리스도 기준 햇수' 로 바로 이어져 빼고 보급 경위로 바꿨다"
+    },
+    "generalHint": "0년이 없어서, 새 세기가 '00년'과 '01년' 가운데 언제 시작하느냐를 두고 흔히 말이 엇갈린다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Anno_Domini"
+    ],
+    "facts": [
+     {
+      "claim": "525년 로마, 동로마 수도사 디오니시우스 엑시구우스가 고안, 9세기에야 널리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anno_Domini",
+      "note": "The system was devised in 525, in Rome, by the Eastern Roman monk Dionysius Exiguus, but was not widely used until the 9th century."
+     },
+     {
+      "claim": "부활절 표에 쓰려고 고안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anno_Domini",
+      "note": "devised in 525 by Dionysius Exiguus to enumerate years in his Easter table ... His system was to replace the Diocletian era that had been used in older Easter tables, as he did not wish to continue the memory of a tyrant who persecuted Christians."
+     },
+     {
+      "claim": "강생 525년이라고만, 탄생 해는 밝히지 않음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Anno_Domini",
+      "note": "Dionysius stated that the \"present year\" was \"the consulship of Probus Junior\", which was 525 years \"since the incarnation of our Lord Jesus Christ\". Thus, Dionysius implied that Jesus' incarnation occurred 525 years earlier, without stating the specific year"
+     },
+     {
+      "claim": "베다가 731년 완성한 『잉글랜드 교회사』에서 사용 · 보급",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anno_Domini",
+      "note": "Popularization: The Anglo-Saxon historian Bede, who was familiar with the work of Dionysius Exiguus, used anno Domini dating in his Ecclesiastical History of the English People, which he completed in AD 731."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Anno_Domini"
+    ],
+    "hintNote": "There is no year zero; the year AD 1 immediately follows the year 1 BC. / == No year zero: start and end of a century ==",
+    "easiestCue": "수도사가 부활절 날짜 표를 만들며 쓴 새 햇수 세기",
+    "targetWhy": "부활절 표 → 기독교 기년 추론이 남아 경계 3",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 쓰는 기년법, 그 출발을 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (서기 · 기원후)",
+    "warn": []
+   }
+  }
+ ]
+}

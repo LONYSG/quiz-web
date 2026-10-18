@@ -1,0 +1,295 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "art/4",
+  "midKey": "art",
+  "subName": "미술 사조",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "art/4#g009b-A2-19",
+   "seed": {
+    "subject": "아르누보",
+    "aspect": null,
+    "ref": "A2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이탈리아에서는 이 양식을 런던 리버티 상회를 세운 아서 라센비 리버티의 이름을 따 '리버티 양식'이라 불렀습니다. 지금의 이름은 1895년 화상 지크프리트 빙이 파리에 연 화랑을 통해 널리 퍼졌는데, 이 양식은 무엇일까요?",
+    "answer": "아르누보",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '아르 누보' → '아르누보' 넘겨주기(띄어쓰기만 다름)",
+    "explanation": "벨기에 건축가 빅토르 오르타가 1893년 브뤼셀에 완성한 타셀 저택이 이 양식의 이정표로 꼽힙니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "이탈리아의 '리버티 양식' · 지크프리트 빙의 화랑",
+     "difWhy": "리버티 양식·빙 — 미술 애호가",
+     "wor": 4,
+     "worWhy": "교양 — 미술 사조 기본",
+     "acc": 4,
+     "accWhy": "미술 — 중고교 미술 교과·교양"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'채찍 양식', 1895년 빙의 파리 화랑",
+     "difWhy": "'곡선 장식 양식' — 고교 미술",
+     "wor": 4,
+     "worWhy": "교양 — 미술 양식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "벨기에에서는 이 양식을 깎아내리던 사람들이 '채찍 양식', '뱀장어 양식', '국수 양식'이라고 비꼬아 불렀습니다. 지금의 이름은 1895년 화상 지크프리트 빙이 파리에 연 화랑을 통해 널리 퍼졌는데, 이 양식은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'채찍 양식'·'뱀장어 양식'·'국수 양식'(곡선 단서)",
+     "addedCue": "이탈리아의 '리버티 양식' 이름 유래",
+     "why": "채찍 곡선이 곧 양식의 특징이라 빼고 나라별 이름 유래로"
+    },
+    "generalHint": "낭시파에서 유리 꽃병과 등을 만든 에밀 갈레도 이 흐름의 작가로 꼽힌다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Art_Nouveau"
+    ],
+    "facts": [
+     {
+      "claim": "1895년 빙이 파리에 연 화랑으로 이름이 퍼짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Art_Nouveau",
+      "note": "The name was popularized by the Maison de l'Art Nouveau ('House of the New Art'), an art gallery opened in Paris in 1895 by the Franco-German art dealer Siegfried Bing."
+     },
+     {
+      "claim": "오르타의 타셀 저택 1893 완성, 이정표",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Art_Nouveau",
+      "note": "Victor Horta, whose Hôtel Tassel was completed in 1893. ... his Hôtel Tassel (1892–1893) in Brussels is one of the style's landmarks."
+     },
+     {
+      "claim": "이탈리아에서는 리버티 상회 창립자 이름을 딴 스틸레 리버티",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Art_Nouveau",
+      "note": "In Italy it was often called stile Liberty ('Liberty style'), after Arthur Lasenby Liberty, the founder of London's Liberty & Co"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Art_Nouveau"
+    ],
+    "hintNote": "The major artists working there (École de Nancy) included the glass vase and lamp creators Émile Gallé",
+    "easiestCue": "1895년 빙이 파리에 연 화랑",
+    "targetWhy": "리버티 양식 이름 유래·빙의 화랑은 미술사 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 누구나 들어 봄, 단서는 이름의 유래와 별명",
+    "pairCheck": null,
+    "dbCheck": "answercheck pair-or-different — 활성 740(건축 양식: 식물 곡선·새로운 미술·지하철·무하)과 지식이 다름(별칭·빙의 화랑)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "art/4#g009b-A2-20",
+   "seed": {
+    "subject": "빈 분리파",
+    "aspect": null,
+    "ref": "A2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "요제프 마리아 올브리히가 설계한 둥근 지붕의 전시관은 이 모임의 상징이 되었고, 한 전시에서는 막스 클링거의 베토벤 조각상을 가운데 두고 그 둘레에 벽화 띠를 둘렀습니다. 기관지 이름이 '베르 사크룸'이었던 이 미술가 모임은 무엇일까요?",
+    "answer": "빈 분리파",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '빈 분리파' 문서 제목 확인('분리파'는 뮌헨·베를린도 포함하는 넓은 말이라 넣지 않음)",
+    "explanation": "1905년에는 미트케 화랑을 사들이자는 제안을 둘러싼 다툼 끝에 클림트와 호프만 등이 모임을 떠났습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "기관지 이름이 '베르 사크룸'인 미술가 모임",
+     "difWhy": "올브리히 전시관·베르 사크룸 — 미술 애호가",
+     "wor": 4,
+     "worWhy": "교양 — 미술 사조 기본",
+     "acc": 4,
+     "accWhy": "미술 — 중고교 미술 교과·교양"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1897년 오스트리아에서 결성된 미술가 모임",
+     "difWhy": "'1897 빈 미술 모임' — 고교 미술",
+     "wor": 4,
+     "worWhy": "교양 — 미술 사조"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "요제프 마리아 올브리히가 설계한 둥근 지붕의 전시관은 이 모임의 상징이 되었고, 한 전시에서는 막스 클링거의 베토벤 조각상을 가운데 두고 그 둘레에 벽화 띠를 둘렀습니다. 기관지 이름이 '성스러운 봄'이라는 뜻의 '베르 사크룸'이었던, 1897년 오스트리아에서 결성된 이 미술가 모임은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1897년 오스트리아에서 결성된 미술가 모임",
+     "addedCue": "없음 — '성스러운 봄' 뜻풀이도 뺌",
+     "why": "결성 연도·나라가 교과서 단서라 뺌"
+    },
+    "generalHint": "전시관 입구 위에는 '시대에는 그 예술을, 예술에는 그 자유를'이라는 표어가 적혀 있다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Vienna_Secession"
+    ],
+    "facts": [
+     {
+      "claim": "올브리히 설계 둥근 지붕 전시관이 운동의 상징",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vienna_Secession",
+      "note": "The architect was Joseph Maria Olbrich, a student of Otto Wagner; and his domed gallery building, with a sculptural frieze over the entrance, in the centre of Vienna, became the symbol of the movement."
+     },
+     {
+      "claim": "클링거 베토벤상을 가운데, 둘레에 베토벤 프리즈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vienna_Secession",
+      "note": "A statue of Beethoven by Max Klinger stood at the centre, with Klimt's Beethoven Frieze mounted around it."
+     },
+     {
+      "claim": "기관지 Ver Sacrum ('Sacred Spring')",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vienna_Secession",
+      "note": "Their official magazine was called Ver Sacrum ('Sacred Spring'), which published highly stylised and influential works of graphic art."
+     },
+     {
+      "claim": "1905년 미트케 화랑 인수 문제로 클림트·호프만 등 탈퇴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Vienna_Secession",
+      "note": "This dispute came to a head in 1905 when Galerie Miethke's artistic consultant ... Carl Moll, proposed that the Secession purchase the Gallery ... On 14 June 1905, Klimt, Hoffmann, Moser and a group of other artists resigned from the Secession."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Secession_Building"
+    ],
+    "hintNote": "The motto of the Secessionist movement is written above the entrance of the pavilion: \"To every age its art, to every art its freedom\"",
+    "easiestCue": "기관지 '베르 사크룸'",
+    "targetWhy": "올브리히 전시관·베르 사크룸은 미술사 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "클림트로 유명한 모임, 클림트 없이 세부로 묻는다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "art/4#g009b-A2-21",
+   "seed": {
+    "subject": "미래주의",
+    "aspect": null,
+    "ref": "A2-21",
+    "pairedWith": 4257
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 4257,
+    "question": "화가 루이지 루솔로는 1913년 선언 '소음의 예술'을 썼고, 소음을 내는 장치 '인토나루모리'를 직접 만들어 소음 관현악단을 꾸렸습니다. 1921년 동생 안토니오가 만든 음반이 그 소음 음악을 담은 당대 녹음으로는 유일하게 남은, 루솔로가 속했던 예술 운동은 무엇일까요?",
+    "answer": "미래주의",
+    "acceptedAnswers": [
+     "미래파"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '미래파' → '미래주의' 넘겨주기 확인",
+    "explanation": "루솔로는 그 선언에서 산업 혁명이 현대인에게 더 복잡한 소리를 즐길 힘을 주었다고 썼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "루솔로는 1913년 선언 '소음의 예술'을 썼고",
+     "difWhy": "'소음의 예술' 루솔로 — 대학 교양 미술사",
+     "wor": 4,
+     "worWhy": "교양 — 미술 사조 기본 어휘",
+     "acc": 4,
+     "accWhy": "미술 — 중고교 미술 교과·교양"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 1913년 '소음의 예술' + 이탈리아의 예술 운동",
+     "difWhy": "'산업·소음 찬미 이탈리아 운동' — 고교 미술 (경계 4)",
+     "wor": 4,
+     "worWhy": "교양 — 20세기 미술 사조"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "화가 루이지 루솔로는 1913년 선언 '소음의 예술'에서 산업 혁명이 현대인에게 더 복잡한 소리를 즐길 힘을 주었다고 썼고, 소음을 내는 장치 '인토나루모리'를 직접 만들어 소음 관현악단을 꾸렸습니다. 루솔로가 속했던 이탈리아의 예술 운동은 무엇일까요?",
+     "beforeExplanation": "1921년 동생 안토니오 루솔로가 만든 음반이 당시 루솔로의 소음 음악을 담은 녹음으로는 유일하게 남아 있습니다.",
+     "removedCue": "'이탈리아의' · 산업 혁명이 복잡한 소리를 즐길 힘을 줬다(기계 찬미로 이어짐)",
+     "addedCue": "1921 동생 안토니오의 음반(유일한 당대 녹음)",
+     "why": "\"산업·소음 찬미 이탈리아 운동\" 으로 엮이던 낱말을 빼고 루솔로 개인 세부로"
+    },
+    "generalHint": "러시아에서는 1912년 마야콥스키 등이 선언 '대중의 취향에 따귀를'을 펴내며 이 운동에 나섰다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Luigi_Russolo"
+    ],
+    "facts": [
+     {
+      "claim": "루솔로는 이탈리아 미래주의 화가, 1913 소음의 예술 선언",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Luigi_Russolo",
+      "note": "Luigi Carlo Filippo Russolo (30 April 1885 – 4 February 1947) was an Italian Futurist painter, composer, builder of experimental musical instruments, and the author of the manifesto The Art of Noises (1913)."
+     },
+     {
+      "claim": "산업 혁명이 더 복잡한 소리를 즐길 힘을 줌",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Luigi_Russolo",
+      "note": "His 1913 manifesto, L'Arte dei Rumori (The Art of Noises), stated that the industrial revolution had given modern men a greater capacity to appreciate more complex sounds."
+     },
+     {
+      "claim": "인토나루모리 제작, 소음 관현악단",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Luigi_Russolo",
+      "note": "Russolo designed and constructed a number of noise-generating devices called Intonarumori, and assembled a noise orchestra to perform with them."
+     },
+     {
+      "claim": "1921 안토니오 루솔로 음반이 유일한 당대 녹음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Luigi_Russolo",
+      "note": "Antonio Russolo, another Italian Futurist composer and Luigi's brother, produced a recording ... The phonograph recording, made in 1921 ... It is the only surviving contemporaneous sound recording of Luigi Russolo's noise music."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Russian_Futurism"
+    ],
+    "hintNote": "in 1912 … the literary group \"Hylea\" … issued the book and the manifesto A Slap in the Face of Public Taste. The book included texts and poems of … Vladimir Mayakovsky",
+    "easiestCue": "소음을 내는 장치 '인토나루모리'를 직접 만들어 소음 관현악단",
+    "targetWhy": "루솔로·인토나루모리는 대학 교양 미술사/음악사",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "교과서 사조, 단서는 음악으로 번진 갈래",
+    "pairCheck": "1회차 4257 질문(1909 마리네티 선언·속도·전쟁 위생)·해설(보초니 20센트 동전)·힌트(박물관 파괴·르 피가로)와 겹치지 않음 — 루솔로·소음의 예술은 새 사실",
+    "dbCheck": "answercheck pair-or-different — 4257 과 같은 답, (가) 2회차 / 미래파 new",
+    "warn": [
+     "단정어 유일"
+    ],
+    "first": {
+     "id": 4257,
+     "question": "1909년 시인 마리네티의 선언으로 이탈리아에서 시작된 예술 운동입니다. 속도와 기계, 자동차와 비행기를 찬양하고 전쟁을 '세계의 유일한 위생'이라 부른 이 운동은 무엇일까요?",
+     "explanation": "보초니의 조각 '공간 속 연속성의 독특한 형태'는 이탈리아 20센트 유로 동전에 새겨져 있습니다.",
+     "hint": "선언문은 박물관과 도서관 같은 문화 기관을 부수자고까지 외쳤고, 파리 신문 '르 피가로'에 프랑스어로 실려 널리 퍼졌다.",
+     "difficulty": 3
+    }
+   }
+  }
+ ]
+}

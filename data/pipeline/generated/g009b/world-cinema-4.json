@@ -1,0 +1,113 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "world-cinema/4",
+  "midKey": "world-cinema",
+  "subName": "감독",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/4#g009b-M2-31",
+   "seed": {
+    "subject": "팀 버튼",
+    "aspect": "팬 세부",
+    "ref": "M2-31",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "칼아츠에서 캐릭터 애니메이션을 공부한 이 감독은 디즈니에서 '토드와 코퍼'·'트론' 등의 작업에 참여했지만, 그의 콘셉트 아트는 완성작에 쓰이지 않았습니다. 1982년 스톱모션 단편 '빈센트'에서 우상으로 삼은 배우 빈센트 프라이스에게 내레이션을 맡긴 이 감독은 누구일까요?",
+    "answer": "팀 버튼",
+    "acceptedAnswers": [
+     "팀 버턴"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '팀 버튼' · 국립국어원식 '팀 버턴' 넘겨주기 확인",
+    "explanation": "1984년 차에 치인 개를 되살리려는 소년의 흑백 실사 단편을 만든 뒤 디즈니에서 해고되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1982년 스톱모션 단편 '빈센트'에서 … 빈센트 프라이스에게 내레이션",
+     "difWhy": "단편 '빈센트' — 영화 애호가",
+     "wor": 3,
+     "worWhy": "유명 감독 이름 맞히기",
+     "acc": 4,
+     "accWhy": "세계 영화 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "차에 치인 개를 되살리려는 소년의 흑백 실사 단편 뒤 디즈니 해고",
+     "difWhy": "'프랑켄위니 감독' — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 감독 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "칼아츠에서 캐릭터 애니메이션을 공부한 이 감독은 디즈니에서 '토드와 코퍼'·'트론' 등의 작업에 참여했지만, 그의 콘셉트 아트는 완성작에 쓰이지 않았습니다. 1984년 차에 치인 개를 되살리려는 소년의 흑백 실사 단편을 만든 뒤 디즈니에서 해고된 이 감독은 누구일까요?",
+     "beforeExplanation": "1982년 스톱모션 단편 '빈센트'에서는 그가 우상으로 삼은 배우 빈센트 프라이스가 직접 내레이션을 맡았습니다.",
+     "removedCue": "차에 치인 개를 되살리려는 소년의 단편(프랑켄위니) 뒤 디즈니 해고",
+     "addedCue": "단편 '빈센트'와 빈센트 프라이스 내레이션(해설에서 옮김)",
+     "why": "프랑켄위니가 대표작급 단서라 해설로"
+    },
+    "generalHint": "1985년 첫 장편은 코미디언 폴 루벤스가 만든 캐릭터 피위 허먼이 나오는 코미디였다.",
+    "generalHintVersion": "hint-v5",
+    "layer": "팬 세부",
+    "genre": "영화",
+    "work": "팀 버튼",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tim_Burton"
+    ],
+    "facts": [
+     {
+      "claim": "칼아츠에서 1979년까지 캐릭터 애니메이션 공부",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tim_Burton",
+      "note": "Burton attended the California Institute of the Arts, \"studying character animation until 1979.\""
+     },
+     {
+      "claim": "디즈니에서 토드와 코퍼·트론·블랙 콜드런 작업, 콘셉트 아트가 완성작에 쓰이지 않음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tim_Burton",
+      "note": "Burton worked on The Fox and the Hound, Tron, and The Black Cauldron. \"His concept art never made it into the finished films.\""
+     },
+     {
+      "claim": "1984년 흑백 실사 단편 프랑켄위니(차에 치인 개를 되살리려는 소년) 뒤 디즈니 해고",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tim_Burton",
+      "note": "(요지) The black-and-white live-action short follows a boy trying to revive his dog after a car hits it. Afterward, Disney fired Burton, reportedly because … \"too dark and scary for children.\""
+     },
+     {
+      "claim": "빈센트(1982) 빈센트 프라이스 내레이션",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tim_Burton",
+      "note": "(요지) This six-minute stop-motion short shows a boy who imagines he is his hero Vincent Price, with \"Price himself providing narration.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tim_Burton"
+    ],
+    "hintNote": "Burton made his directorial debut with the comedy film Pee-wee's Big Adventure (1985)",
+    "easiestCue": "단편 '빈센트' · 빈센트 프라이스",
+    "targetWhy": "디즈니 시절·빈센트 단편은 영화 팬 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "세계적 감독의 데뷔 전 이력",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

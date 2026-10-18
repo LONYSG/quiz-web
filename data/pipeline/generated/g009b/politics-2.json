@@ -1,0 +1,289 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "politics/2",
+  "midKey": "politics",
+  "subName": "선거·의회",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "politics/2#g009b-H2-06",
+   "seed": {
+    "subject": "비밀선거",
+    "aspect": null,
+    "ref": "H2-06",
+    "pairedWith": 2491
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2491,
+    "question": "영국은 1872년 투표법으로 이 방식을 널리 도입했고, 그 뒤 유권자에게 술과 음식을 대접하며 표를 얻는 일이 사실상 어려워졌습니다. 미국에서는 이 방식을 '오스트레일리아식 투표'라 불렀고 1888년 매사추세츠주가 주 전체에 처음 도입했는데, 이 투표 방식은 무엇일까요?",
+    "answer": "비밀선거",
+    "acceptedAnswers": [
+     "비밀 투표",
+     "무기명 투표"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '비밀 선거' 첫 문장 — '비밀 선거 또는 비밀/무기명 투표' 확인",
+    "explanation": "미국에서는 1950년 사우스캐롤라이나주가 이 방식을 받아들이면서 모든 주가 오스트레일리아식 투표로 바뀌었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "유권자에게 술과 음식을 대접하며 표를 얻는 일이 사실상 어려워졌습니다",
+     "difWhy": "매표 방지 투표 방식 — 고교 정치",
+     "wor": 4,
+     "worWhy": "교양 — 선거 원칙 어휘",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "이 원칙을 담은 투표 방식 … 이 선거 원칙",
+     "difWhy": "선거 4원칙 가운데 하나 — 중학 사회",
+     "wor": 4,
+     "worWhy": "교양 — 선거 원칙 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "영국은 1872년 투표법으로 이 원칙을 널리 도입했고, 그 뒤 유권자에게 술과 음식을 대접하는 선거 운동이 사실상 어려워졌습니다. 미국에서는 이 원칙을 담은 투표 방식을 '오스트레일리아식 투표'라 불렀고, 1888년 매사추세츠주가 주 전체에 처음 도입했습니다. 이 선거 원칙은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'이 선거 원칙'(선거 4원칙 범주)",
+     "addedCue": "없음 — 묻는 말을 투표 방식으로 바꿈",
+     "why": "4원칙 가운데 하나라는 범주가 곧 답이라 범주어를 뺌"
+    },
+    "generalHint": "영국에서는 이 방식이 들어오면서 공개 연단에서 후보를 내세우고 뽑던 '허스팅스' 제도가 사라졌다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Secret_ballot"
+    ],
+    "facts": [
+     {
+      "claim": "1872년 투표법으로 비밀투표가 일반화 · 향응(treating) 사실상 불가능",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Secret_ballot",
+      "note": "the secret ballot was eventually extended generally in the Ballot Act 1872, substantially reducing the cost of campaigning (as treating was no longer realistically possible)"
+     },
+     {
+      "claim": "미국 '오스트레일리아식 투표' · 1888년 매사추세츠가 첫 주 전체 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Secret_ballot",
+      "note": "Massachusetts adopted the first state-wide Australian ballot, written by reformer Richard Henry Dana III, in 1888."
+     },
+     {
+      "claim": "1950년 사우스캐롤라이나로 전국 전환 완료",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Secret_ballot",
+      "note": "When South Carolina followed suit in 1950, this completed the nationwide switch to Australian ballots."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ballot_Act_1872"
+    ],
+    "hintNote": "The act abolished the traditional hustings system of nomination and election in Britain.",
+    "easiestCue": "'오스트레일리아식 투표'",
+    "targetWhy": "1872 투표법·향응·오스트레일리아식 투표는 정치사 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "정답이 4원칙 중 하나라 찍기 여지가 있음 — 단서 자체는 교과 밖. 첫 도입지는 태즈메이니아/빅토리아로 문서가 엇갈려 쓰지 않음",
+    "pairCheck": "1회차 2491 은 4원칙 정의(누가 어디 투표했는지 모르게) · 해설은 압력 — 2회차는 영국 투표법·미국 명칭·매사추세츠 도입으로 겹치지 않음(1회차 힌트 없음)",
+    "dbCheck": "answercheck pair-or-different — 활성 2491(같은 답 1회차, (가) 짝)",
+    "warn": [
+     "정답조각 선거",
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 2491,
+     "question": "민주 선거가 갖춰야 할 네 가지 원칙은 보통·평등·직접과 또 하나입니다. 누가 어디에 투표했는지 알 수 없게 하는 그 원칙은?",
+     "explanation": "누구에게 투표했는지 드러나면 압력을 받을 수 있기 때문입니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "politics/2#g009b-H2-07",
+   "seed": {
+    "subject": "뉴질랜드",
+    "aspect": null,
+    "ref": "H2-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "케이트 셰퍼드가 이끈 운동이 결실을 본 해, 엘리자베스 예이츠는 오네훙가의 시장이 되어 대영 제국에서 처음으로 이 자리에 오른 여성이 되었습니다. 이 나라는 어디일까요?",
+    "answer": "뉴질랜드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 나라 여성들은 1893년 11월 28일 선거에서 처음으로 투표했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 케이트 셰퍼드가 이끈 운동 + 대영 제국 첫 여성 시장",
+     "difWhy": "세계 첫 여성 참정권국 — 대학 교양 (경계 3)",
+     "wor": 4,
+     "worWhy": "여성 참정권 교양",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1893년 여성 참정권 청원에 3만 2천 명 서명",
+     "difWhy": "'최초 여성 참정권 나라' — 고교 사회",
+     "wor": 4,
+     "worWhy": "교양 — 참정권 역사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1893년 이 나라에서는 케이트 셰퍼드 등이 이끈 청원에 거의 3만 2천 명이 서명했고, 그해 9월 19일 총독 글래스고 경이 선거법 개정에 재가했습니다. 같은 해 엘리자베스 예이츠는 오네훙가의 시장이 되어 대영 제국에서 처음으로 이 자리에 오른 여성이 되었습니다. 이 나라는 어디일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1893년 · 청원 3만 2천 명 서명 · 9월 19일 재가(최초 여성 참정권 연도)",
+     "addedCue": "없음 — 케이트 셰퍼드 · 오네훙가 시장 엘리자베스 예이츠",
+     "why": "교과서의 \"1893 첫 여성 참정권\" 단서를 빼고 인물 세부로"
+    },
+    "generalHint": "이 나라 첫 여성 국회의원 엘리자베스 매콤스는 1933년 남편이 세상을 떠난 뒤 치러진 보궐선거에서 뽑혔다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_New_Zealand"
+    ],
+    "facts": [
+     {
+      "claim": "케이트 셰퍼드가 이끈 운동",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_New_Zealand",
+      "note": "after years of effort by women's suffrage campaigners, led by Kate Sheppard, New Zealand became the first nation in the world in which all women had the right to vote in parliamentary elections."
+     },
+     {
+      "claim": "1893년 엘리자베스 예이츠 오네훙가 시장 — 대영 제국 첫 여성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_New_Zealand",
+      "note": "Also in 1893, Elizabeth Yates became mayor of Onehunga, the first time such a post had been held by a woman anywhere in the British Empire."
+     },
+     {
+      "claim": "1893년 11월 28일 첫 투표",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_New_Zealand",
+      "note": "Women voted for the first time in the election held on 28 November 1893"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Elizabeth_McCombs"
+    ],
+    "hintNote": "in 1933 became the first woman elected to the New Zealand Parliament. ... On the death in August 1933 of McCombs' husband James ... When the 1933 by-election was held on 13 September, McCombs won resoundingly",
+    "easiestCue": "오네훙가의 시장이 되어 대영 제국에서 처음으로 이 자리에 오른 여성",
+    "targetWhy": "케이트 셰퍼드·예이츠는 세계사 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "1893년 + 여성 청원에서 '첫 여성 참정권 나라' 상식으로 닿는 사람이 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 0",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "politics/2#g009b-H2-08",
+   "seed": {
+    "subject": "아이슬란드",
+    "aspect": null,
+    "ref": "H2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 나라의 의회는 930년 무렵 들판에서 야외 집회로 처음 열렸고, 1262년 노르웨이와 통합된 뒤에도 그곳에서 회의를 이어 가다 1800년에 끊겼습니다. 1845년 왕의 명령으로 되살아나 수도로 옮겨진 이 의회를 가진 나라는 어디일까요?",
+    "answer": "아이슬란드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "되살아난 뒤 1874년부터 양원으로 운영되던 이 의회는 1991년 다시 단원제로 돌아갔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "930년 무렵 들판의 야외 집회로 처음 열린 의회",
+     "difWhy": "'930년 야외 의회' — 대학 교양 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 가장 오래된 의회",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "930년 무렵 들판의 야외 집회로 처음 열린 의회",
+     "difWhy": "'930년 야외 의회' — 대학 교양 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 가장 오래된 의회"
+    },
+    "rewrite": null,
+    "generalHint": "1944년 6월 17일 공화국 수립도 이 의회가 옛 들판에서 연 회의에서 이루어졌다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Althing"
+    ],
+    "facts": [
+     {
+      "claim": "930년 싱벨리르에서 처음 열림 · 야외 집회",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Althing",
+      "note": "The original Althing was founded in 930 at Þingvellir ('thing fields' or 'assembly fields') / Its establishment as an outdoor assembly or thing held on the plains of Þingvellir ... from about 930"
+     },
+     {
+      "claim": "1262년 노르웨이와 통합 뒤에도 1800년까지 싱벨리르에서 회의 · 1800년 중단",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Althing",
+      "note": "Even after Iceland's union with Norway in 1262, the Althing still held its sessions at Þingvellir until 1800, when it was discontinued."
+     },
+     {
+      "claim": "1845년 왕령으로 부활 · 레이캬비크로 이전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Althing",
+      "note": "It was restored in 1845 by royal decree and moved to Reykjavík."
+     },
+     {
+      "claim": "1874년 이후 양원 · 1991년 단원제 복귀",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Althing",
+      "note": "after 1874 operated in two chambers ... until 1991, when Althing became once again unicameral."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Althing"
+    ],
+    "hintNote": "the Republic of Iceland established, at a session of the Althing held at Þingvellir on 17 June 1944.",
+    "easiestCue": "이 나라의 의회는 930년 무렵 들판에서 야외 집회로 처음 열렸고",
+    "targetWhy": "'가장 오래된 의회' 상식과 지명(싱벨리르)은 뺐음 — 930년 야외 집회 · 1800년 중단 · 1845년 부활은 역사·여행 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "나라는 누구나 알고 의회 연혁은 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안 0",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

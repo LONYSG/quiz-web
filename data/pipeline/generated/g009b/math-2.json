@@ -1,0 +1,112 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "math/2",
+  "midKey": "math",
+  "subName": "도형·기하",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "math/2#g009b-C2-07",
+   "seed": {
+    "subject": "클라인 병",
+    "aspect": null,
+    "ref": "C2-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1882년 한 수학자가 처음 설명한 이 곡면은 3차원 공간에서는 제 몸을 뚫고 지나가게 하지 않고는 만들 수 없습니다. 런던 과학 박물관은 이 곡면을 손으로 불어 만든 여러 모양의 유리 모형을 모아 전시하는데, 이 곡면은 무엇일까요?",
+    "answer": "클라인 병",
+    "acceptedAnswers": [
+     "클라인의 병"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '클라인의 병' → '클라인 병' 넘겨주기 확인",
+    "explanation": "4차원 공간에서는 스스로를 뚫지 않고도 만들 수 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "3차원 공간에서는 제 몸을 뚫고 지나가게 하지 않고는 만들 수 없습니다",
+     "difWhy": "자기교차 곡면 클라인 병 — 대학 교양 (경계 3)",
+     "wor": 3,
+     "worWhy": "유명 기하 도형 — 이야깃거리",
+     "acc": 5,
+     "accWhy": "수학 — 초중 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "뫼비우스의 띠 두 개를 가장자리끼리 이어 붙여",
+     "difWhy": "뫼비우스 띠 두 개 곡면 — 수학 관심층",
+     "wor": 4,
+     "worWhy": "교양 수학 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1882년 한 수학자가 처음 설명한 이 곡면은, 뫼비우스의 띠 두 개를 가장자리끼리 이어 붙여 만들 수 있습니다. 다만 3차원 공간에서는 곡면이 제 몸을 뚫고 지나가게 하지 않고는 만들 수 없습니다. 이 곡면은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "뫼비우스의 띠 두 개를 가장자리끼리 이어 붙여",
+     "addedCue": "런던 과학 박물관의 손으로 분 유리 모형",
+     "why": "뫼비우스 띠 두 개 결합은 대표 설명이라 빼고 실물 모형 전시로 바꿨다"
+    },
+    "generalHint": "이름을 남긴 수학자는 1872년 '에를랑겐 프로그램'으로 기하학을 변환군의 불변량 연구로 정리했다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Klein_bottle"
+    ],
+    "facts": [
+     {
+      "claim": "1882년 펠릭스 클라인이 처음 설명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Klein_bottle",
+      "note": "The Klein bottle was first described in 1882 by the mathematician Felix Klein."
+     },
+     {
+      "claim": "3차원에서는 스스로 교차하지 않고 만들 수 없음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Klein_bottle",
+      "note": "cannot be done without allowing the surface to intersect itself"
+     },
+     {
+      "claim": "4차원에는 자기 교차 없이 묻힘",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Klein_bottle",
+      "note": "(요지) the Klein bottle can be embedded in four-dimensional space, which avoids the self-intersection"
+     },
+     {
+      "claim": "런던 과학 박물관의 손으로 분 유리 모형 컬렉션",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Klein_bottle",
+      "note": "The Science Museum in London has a collection of hand-blown glass Klein bottles on display, exhibiting many variations on this topological theme."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Felix_Klein"
+    ],
+    "hintNote": "Erlangen program (1872), launched by Klein's inaugural lecture at Erlangen — geometry as the study of properties invariant under a group of transformations.",
+    "easiestCue": "3차원에서는 제 몸을 뚫어야만 만들 수 있는 곡면",
+    "targetWhy": "자기 교차·유리 모형은 위상수학 교양 세부, 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 본 도형, 만드는 법·성질은 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

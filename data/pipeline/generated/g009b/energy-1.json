@@ -1,0 +1,119 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "energy/1",
+  "midKey": "energy",
+  "subName": "발전 방식",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "energy/1#g009b-C2-23",
+   "seed": {
+    "subject": "지열 발전",
+    "aspect": null,
+    "ref": "C2-23",
+    "pairedWith": 1619
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1619,
+    "question": "이탈리아 토스카나의 라르데렐로는 본래 진흙 속 붕산을 뽑아내던 곳이었는데, 1904년 7월 4일 피에로 지노리 콘티 왕자가 이곳에서 이 방식의 발전기를 처음 시험해 전구 몇 개를 밝혔습니다. 이 발전 방식은 무엇일까요?",
+    "answer": "지열 발전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '지열발전' → '지열 발전' (띄어쓰기만 다름)",
+    "explanation": "1911년에는 '악마의 골짜기' 라 불리던 곳에 이 방식의 발전소가 세계에서 처음 세워졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "라르데렐로 … 진흙 속 붕산 … 이 방식의 발전기를 처음 시험",
+     "difWhy": "첫 지열 발전 장소 — 대학 교양",
+     "wor": 4,
+     "worWhy": "발전 방식 교양",
+     "acc": 4,
+     "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "땅에서 뿜어 나오는 증기 … 이 방식의 발전기",
+     "difWhy": "'땅속 증기 발전' — 중학 과학",
+     "wor": 4,
+     "worWhy": "교양 — 발전 방식 기본"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "본래 땅에서 뿜어 나오는 증기로 진흙 속 붕산을 뽑아내던 이탈리아 라르데렐로에서, 1904년 7월 4일 피에로 지노리 콘티 왕자가 이 방식의 발전기를 처음 시험해 전구 몇 개를 밝혔습니다. 이 발전 방식은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "땅에서 뿜어 나오는 증기로(발전 원리를 그대로 말함)",
+     "addedCue": "증기 언급을 빼고 라르데렐로 · 붕산 · 지노리 콘티 왕자만 남김",
+     "why": "'땅속 증기' 가 발전 방식의 정의라 빼고 장소·인물 세부로만 묻는다"
+    },
+    "generalHint": "미국 캘리포니아의 '더 가이저스'에는 이런 발전소 18곳이 모여 세계 최대 단지를 이룬다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Larderello"
+    ],
+    "facts": [
+     {
+      "claim": "1904년 7월 4일 지노리 콘티 왕자가 라르데렐로에서 첫 지열 발전기 시험",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Larderello",
+      "note": "Prince Piero Ginori Conti tested the first geothermal power generator on 4 July 1904, at the Larderello dry steam field in Italy."
+     },
+     {
+      "claim": "전구를 밝힘(개수는 문서 안에서 4·5로 엇갈려 쓰지 않음)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Larderello",
+      "note": "It was a small generator that lit four light bulbs. (다른 곳은 five — 개수 단정하지 않음)"
+     },
+     {
+      "claim": "증기로 진흙에서 붕산을 뽑아냄(라르데렐)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Larderello",
+      "note": "invented a way of extracting boric acid from the mud by using steam to heat cauldrons to separate the two"
+     },
+     {
+      "claim": "1911년 '악마의 골짜기' 에 세계 첫 지열 발전소",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Larderello",
+      "note": "In 1911, the world's first geothermal power plant was built in the Valle del Diavolo (\"Devil's Valley\")"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Geysers"
+    ],
+    "hintNote": "The Geysers is the world's largest developed geothermal field, containing a complex of 18 geothermal power plants",
+    "easiestCue": "1904년 7월 4일 피에로 지노리 콘티 왕자가 라르데렐로에서 이 방식의 발전기를 처음 시험",
+    "targetWhy": "라르데렐로·지노리 콘티는 에너지사 대학 교양 — 땅속 증기·아이슬란드 단서 없음",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'땅에서 뿜는 증기' 가 거의 정의 — 뺄 수 없어 경계 3·4",
+    "pairCheck": "1회차 1619 질문(땅속 증기·열수로 터빈, 아이슬란드)·해설(날씨 무관·지질 한정)과 다른 사실(첫 시험지·연도) — 단 '땅의 증기' 는 정의와 겹쳐 범주 단서 위험",
+    "dbCheck": "pair-or-different — 활성 1619 의 2회차",
+    "warn": [
+     "정답조각 발전",
+     "단정어 처음",
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 1619,
+     "question": "땅속의 뜨거운 증기나 열수를 끌어올려 터빈을 돌리는 발전 방식은 무엇일까요? 아이슬란드는 이 방식으로 전력과 난방을 크게 해결합니다.",
+     "explanation": "날씨와 관계없이 꾸준히 만들 수 있지만 지질 조건이 맞는 곳이 한정돼 있습니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  }
+ ]
+}

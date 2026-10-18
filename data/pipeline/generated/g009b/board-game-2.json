@@ -1,0 +1,548 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "board-game/2",
+  "midKey": "board-game",
+  "subName": "체스",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "board-game/2#g009b-L2-01",
+   "seed": {
+    "subject": "비숍",
+    "aspect": null,
+    "ref": "L2-01",
+    "pairedWith": 356
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 356,
+    "question": "이 체스 기물을 독일어로는 '달리는 사람'이라는 뜻의 '로이퍼', 이탈리아어로는 '기수(旗手)'라는 뜻의 '알피에레', 프랑스어로는 '광대'라는 뜻의 '푸'라고 부릅니다. 이 기물은 무엇일까요?",
+    "answer": "비숍",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 기물의 옛 이름은 샤트랑의 '코끼리' 알필로, 대각선으로 두 칸씩 뛰어 판 위에서 여덟 칸만 밟을 수 있었고 알필끼리는 서로 공격할 수도 없었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "프랑스어로는 '광대'라는 뜻의 '푸'라고 부릅니다",
+     "difWhy": "각국 기물 이름 — 체스 애호가",
+     "wor": 3,
+     "worWhy": "기물 이름 어원 이야깃거리",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 체스 기물 + '코끼리'라는 뜻(장기 상에 대응)",
+     "difWhy": "코끼리·광대 이름의 기물 — 체스 관심층 (경계 4)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기물 이름의 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "체스의 옛 형태인 샤트랑에서 이 기물은 '코끼리'라는 뜻의 '알필'이었고, 스페인어에는 지금도 그 이름이 남아 있습니다. 러시아어로는 코끼리라는 뜻의 '슬론', 프랑스어로는 광대라는 뜻의 '푸'라 부르는 이 체스 기물은 무엇일까요?",
+     "beforeExplanation": "샤트랑의 알필은 대각선으로 두 칸씩 뛰어 판 위에서 여덟 칸만 밟을 수 있었고, 알필끼리는 서로 공격할 수도 없었습니다.",
+     "removedCue": "'코끼리'라는 뜻의 '알필' · 러시아어 '슬론'(코끼리 — 장기 상과 바로 대응)",
+     "addedCue": "독일어 로이퍼(달리는 사람) · 이탈리아어 알피에레(기수) · 프랑스어 푸(광대)",
+     "why": "'코끼리' 가 장기 상 → 대각선 기물로 바로 이어져 빼고 세 나라말 이름의 뜻을 엮음"
+    },
+    "generalHint": "이탈리아어로 '작은 옆구리'라는 '피앙케토'는 이 기물을 b열이나 g열 둘째 줄로 내보내는 전개다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "보드게임",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bishop_(chess)"
+    ],
+    "facts": [
+     {
+      "claim": "알필은 여덟 칸만 밟고 서로 공격 못 함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bishop_(chess)",
+      "note": "As a consequence, each alfil was restricted to eight squares, and no alfil could attack another."
+     },
+     {
+      "claim": "독일어 Läufer(달리는 사람) · 이탈리아어 alfiere(기수)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bishop_(chess)",
+      "note": "the Germanic names, apart from Icelandic, directly translate to English as \"runner\" or \"messenger\" … Italian (alfiere) [ensign]"
+     },
+     {
+      "claim": "프랑스어 fou(광대)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bishop_(chess)",
+      "note": "was known as the aufin in French and progressively evolved into its current word, fou [jester]"
+     },
+     {
+      "claim": "샤트랑의 전신 알필(코끼리) — 해설 보강",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bishop_(chess)",
+      "note": "Italian (alfiere) and Spanish (alfil) [derive from alfil] … still known as \"elephant\" (e.g. Russian slon)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Fianchetto"
+    ],
+    "hintNote": "the fianchetto (Italian: [fjaŋˈketto] \"little flank\") is a pattern of development wherein a bishop is developed to the second rank of the adjacent b- or g-file",
+    "easiestCue": "프랑스어로는 '광대'라는 뜻의 '푸'",
+    "targetWhy": "나라마다 다른 기물 이름의 뜻은 체스 애호가 세부 — 움직임·성직자 이름 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 기물, 묻는 것은 '코끼리·광대'라는 이름의 뒷이야기",
+    "pairCheck": "1회차 Q(대각선·처음 칸 색)·E(두 비숍으로 모든 칸)·H(가톨릭 성직자 이름) 어느 것도 쓰지 않음 — 샤트랑 알필·각국 이름만",
+    "dbCheck": "answercheck pair-or-different — 활성 356 과 같은 답, 다른 사실(2회차)",
+    "warn": [],
+    "first": {
+     "id": 356,
+     "question": "체스에서 대각선으로만 움직이기 때문에, 처음 놓인 칸의 색을 게임이 끝날 때까지 한 번도 벗어나지 못하는 기물은?",
+     "explanation": "두 개를 다 지키면 모든 칸을 노릴 수 있지만, 하나만 남으면 절반의 칸에는 손을 댈 수 없습니다.",
+     "hint": "이름은 가톨릭 성직자 계급에서 왔으며, 처음에는 나이트와 킹·퀸 사이에 놓인다.",
+     "difficulty": 3
+    }
+   }
+  },
+  {
+   "seedId": "board-game/2#g009b-L2-02",
+   "seed": {
+    "subject": "앙파상",
+    "aspect": null,
+    "ref": "L2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이탈리아에는 오랫동안 이 규칙이 없었고, 그렇게 두는 방식을 '파사르 바탈리아'라 불렀습니다. 1881년 밀라노 대회를 앞둔 1880년에야 이탈리아도 받아들인, 16세기 스페인 체스 명인 루이 로페스의 책에도 나오는 이 체스의 잡기 규칙은 무엇일까요?",
+    "answer": "앙파상",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "폰이 첫 수에 두 칸 나아가는 규칙은 13~16세기 사이 게임을 빠르게 하려고 생겼는데, 이 규칙도 그때 함께 생겼거나 그보다 뒤에 생겼을 수 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "이 체스의 잡기 규칙",
+     "difWhy": "체스 특수 잡기 규칙 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "체스 규칙 유래",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이 폰의 특수 규칙",
+     "difWhy": "폰 특수 규칙 — 체스 관심층 (경계 4)",
+     "wor": 3,
+     "worWhy": "체스 규칙 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이탈리아에는 오랫동안 이 규칙이 없었고, 그렇게 두는 방식을 '파사르 바탈리아'라 불렀습니다. 1881년 밀라노 대회를 앞둔 1880년에야 이탈리아도 받아들인, 16세기 스페인 체스 명인 루이 로페스의 책에도 나오는 이 폰의 특수 규칙은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "이 폰의 특수 규칙 (폰 특수 규칙 셋 중 하나로 좁혀짐)",
+     "addedCue": "(범주를 '잡기 규칙'으로) 파사르 바탈리아 · 1880 이탈리아 수용 · 루이 로페스",
+     "why": "'폰의 특수 규칙' 이 체스 관심층에게 곧 정답 범주라 '잡기 규칙' 으로 바꾸고 이탈리아 뒷이야기로 묻게 함"
+    },
+    "generalHint": "19세기 체스계에서는 이 잡기를 반드시 해야 하는지, 써도 그만인 '특권'인지를 두고 논쟁이 있었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "보드게임",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/En_passant"
+    ],
+    "facts": [
+     {
+      "claim": "이탈리아에는 이 규칙이 없었고 passar battaglia 라 했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/En_passant",
+      "note": "In some parts of Europe, particularly in Italy, there was no such rule; this was known as passar battaglia."
+     },
+     {
+      "claim": "1880년 1881 밀라노 대회를 앞두고 받아들임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/En_passant",
+      "note": "In 1880, Italy adopted the rules used by the rest of the world, including the en passant capture, in preparation for the 1881 Milan tournament."
+     },
+     {
+      "claim": "16세기 루이 로페스의 책에 나옴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/En_passant",
+      "note": "references to en passant captures appear in the books by the 16th-century Spanish chess master Ruy López de Segura."
+     },
+     {
+      "claim": "두 칸 전진은 13~16세기에 생겼고 앙파상은 그때나 그 뒤",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/En_passant",
+      "note": "The two-square advance was introduced later, between the 13th and 16th centuries, to speed up games. The en passant capture may have been introduced at that time, or it may have come later"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/En_passant"
+    ],
+    "hintNote": "Chess players debated this point in the 19th century, with some arguing that the right to capture en passant is a \"privilege\" that one cannot be compelled to exercise.",
+    "easiestCue": "그렇게 두는 방식을 '파사르 바탈리아'라 불렀습니다",
+    "targetWhy": "이탈리아의 파사르 바탈리아는 체스 애호가 세부 — 폰·두 칸 전진 같은 규칙 설명 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "체스 두는 사람은 이름을 아는 규칙, 묻는 것은 규칙이 지역마다 달랐던 역사",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "board-game/2#g009b-L2-03",
+   "seed": {
+    "subject": "보비 피셔",
+    "aspect": null,
+    "ref": "L2-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1988년 이 체스 세계 챔피언은 수를 하나 둘 때마다 정해진 시간을 더해 주는 대국 시계로 미국 특허를 출원했습니다. 1996년 부에노스아이레스에서는 기물의 첫 배치를 무작위로 섞는 변형 체스도 내놓았는데, 이 사람은 누구일까요?",
+    "answer": "보비 피셔",
+    "acceptedAnswers": [
+     "바비 피셔"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '바비 피셔' → '보비 피셔' 넘겨주기 확인",
+    "explanation": "그의 특허 방식으로 만든 시계는 1992년 보리스 스파스키와의 재대결에 쓰였고, 이런 시계는 곧 주요 대회의 표준이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "기물의 첫 배치를 무작위로 섞는 변형 체스",
+     "difWhy": "피셔 랜덤·피셔 시계 — 체스 애호가",
+     "wor": 3,
+     "worWhy": "유명 체스 인물 이야깃거리",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "기물의 첫 배치를 무작위로 섞는 변형 체스",
+     "difWhy": "피셔 랜덤·피셔 시계 — 체스 애호가",
+     "wor": 3,
+     "worWhy": "유명 체스 인물 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "열다섯 번째 생일을 두 달 앞두고 역대 최연소 미국 챔피언이 되었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "보드게임",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bobby_Fischer"
+    ],
+    "facts": [
+     {
+      "claim": "1988년 수마다 시간을 더하는 시계로 특허 출원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bobby_Fischer",
+      "note": "In 1988, Fischer filed for U.S. patent 4,884,255 for a new type of chess clock, which gave each player a fixed period at the start of the game and then added a small increment after each completed move."
+     },
+     {
+      "claim": "1996년 부에노스아이레스에서 배치를 섞는 변형 체스 발표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bobby_Fischer",
+      "note": "on June 19, 1996, in Buenos Aires, Argentina, Fischer announced and advocated a variant of chess called Fischerandom (later also known as Chess960)."
+     },
+     {
+      "claim": "1992 스파스키 재대결에 쓰였고 곧 표준이 됨",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bobby_Fischer",
+      "note": "An example of Fischer's patented clock was made for, and used in, the 1992 rematch between Fischer and Spassky. Clocks based on the \"Fischer clock\" soon became standard in major chess tournaments."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bobby_Fischer"
+    ],
+    "hintNote": "Still two months shy of his 15th birthday, Fischer became the youngest ever US Champion.",
+    "easiestCue": "기물의 첫 배치를 무작위로 섞는 변형 체스도 내놓았는데",
+    "targetWhy": "피셔 랜덤(체스960)·피셔 방식 시계는 체스 애호가가 아는 세부 — 1972 스파스키전 같은 대표 사건은 넣지 않았다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름 있는 챔피언, 묻는 것은 그가 남긴 규칙·장비",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (보비 피셔 · 바비 피셔)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "board-game/2#g009b-L2-04",
+   "seed": {
+    "subject": "스테일메이트",
+    "aspect": null,
+    "ref": "L2-04",
+    "pairedWith": 347
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 347,
+    "question": "1600년 무렵부터 1800년 무렵까지 잉글랜드에서는 체스판에서 이 상황을 만든 쪽이 오히려 지는 것으로 쳤습니다. 스페인에서는 1600년 무렵까지 이를 판돈의 절반만 따는 못한 승리로 다뤘는데, 이 체스의 상황은 무엇일까요?",
+    "answer": "스테일메이트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "영어 이름은 중세 영어 stale에 체크메이트를 가리키는 mate를 합친 말입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "이 상황을 만든 쪽이 오히려 지는 것으로 침(잉글랜드)",
+     "difWhy": "'스테일메이트 옛 규칙' — 체스 애호가",
+     "wor": 3,
+     "worWhy": "체스 용어 이야깃거리",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "이 상황을 만든 쪽이 오히려 지는 것으로 침(잉글랜드)",
+     "difWhy": "'스테일메이트 옛 규칙' — 체스 애호가",
+     "wor": 3,
+     "worWhy": "체스 용어 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "10세기 아라비아에서는 이 상황을 만든 쪽이 이긴 것으로 쳤다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "보드게임",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Stalemate"
+    ],
+    "facts": [
+     {
+      "claim": "1600~1800년 무렵 잉글랜드에서는 만든 쪽의 패배",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stalemate",
+      "note": "From about 1600 to 1800, the rule in England was that stalemate was a loss for the player administering it"
+     },
+     {
+      "claim": "판돈 절반만 따는 못한 승리, 스페인에서 1600년까지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stalemate",
+      "note": "1497), however, treated stalemate as an inferior form of victory; it won only half the stake in games played for money, and this continued to be the case in Spain as late as 1600."
+     },
+     {
+      "claim": "이름은 stale + mate",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Stalemate",
+      "note": "It is a compounding of Middle English stale and mate (meaning checkmate)."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Stalemate"
+    ],
+    "hintNote": "A win for the stalemating player in 10th century Arabia and parts of medieval Europe.",
+    "easiestCue": "잉글랜드에서는 체스판에서 이 상황을 만든 쪽이 오히려 지는 것으로 쳤습니다",
+    "targetWhy": "무승부 규칙이 굳기 전의 지역 규칙사는 체스 애호가 세부 — 1회차의 정의(공격받지 않는데 둘 수가 없음)·무승부는 뺐다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "아는 용어, 묻는 것은 규칙이 시대마다 달랐다는 사실",
+    "pairCheck": "1회차 Q(정의·무승부)·E(앞선 쪽이 막으면 비김)·H(정치 교착 비유)와 겹치지 않음 — 잉글랜드·스페인 옛 규칙만",
+    "dbCheck": "answercheck pair-or-different — 활성 347 과 같은 답, 다른 사실(2회차)",
+    "warn": [],
+    "first": {
+     "id": 347,
+     "question": "체스에서 킹이 공격받고 있지는 않은데 어느 기물도 합법적으로 움직일 수 없어, 지고 있던 쪽도 무승부가 되는 상황을 무엇이라 하나요?",
+     "explanation": "크게 앞선 쪽이 상대의 움직일 자리를 다 막아 버리면 오히려 비기게 되므로, 끝내기에서 특히 조심해야 합니다.",
+     "hint": "영어에서 정치나 협상의 막다른 교착 상태를 비유할 때도 쓰는 말이다.",
+     "difficulty": 3
+    }
+   }
+  },
+  {
+   "seedId": "board-game/2#g009b-L2-05",
+   "seed": {
+    "subject": "폰",
+    "aspect": null,
+    "ref": "L2-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "18세기 프랑스의 작곡가이자 당대 최고의 체스 기사로 꼽히던 필리도르는 1749년 책 '체스 분석'을 펴냈습니다. 그가 '체스의 영혼'이라 부른 말로 유명한 이 체스 기물은 무엇일까요?",
+    "answer": "폰",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "필리도르는 오페라 코미크를 20편 넘게 쓰며 한때 프랑스의 주요 오페라 작곡가로 꼽혔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "필리도르가 '체스의 영혼'이라 부른 기물",
+     "difWhy": "'체스의 영혼' — 체스 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 체스 명언",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "필리도르가 '체스의 영혼'이라 부른 기물",
+     "difWhy": "'체스의 영혼' — 체스 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 체스 명언"
+    },
+    "rewrite": null,
+    "generalHint": "앙파상으로 잡거나 잡힐 수 있는 기물은 이것뿐이다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "보드게임",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Fran%C3%A7ois-Andr%C3%A9_Danican_Philidor"
+    ],
+    "facts": [
+     {
+      "claim": "필리도르(1726~1795, 18세기)는 프랑스 작곡가이자 체스 명인, 당대 최고의 기사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fran%C3%A7ois-Andr%C3%A9_Danican_Philidor",
+      "note": "François-André Danican Philidor (7 September 1726 – 31 August 1795) ... was a French composer and chess master. He is widely regarded as the best chess player of his age"
+     },
+     {
+      "claim": "1749년 '체스 분석' 출간",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fran%C3%A7ois-Andr%C3%A9_Danican_Philidor",
+      "note": "In 1749, Philidor published his famous book Analyse du jeu des Échecs."
+     },
+     {
+      "claim": "'폰은 체스의 영혼'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fran%C3%A7ois-Andr%C3%A9_Danican_Philidor",
+      "note": "his most famous advice was the saying \"The pawns are the soul of chess.\""
+     },
+     {
+      "claim": "오페라 코미크 20편 넘게, 주요 오페라 작곡가",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fran%C3%A7ois-Andr%C3%A9_Danican_Philidor",
+      "note": "For a time Philidor was among the main opera composers in France, and during his musical career produced more than 20 opéra comiques"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/En_passant"
+    ],
+    "hintNote": "Only pawns may capture or be captured en passant.",
+    "easiestCue": "그가 '체스의 영혼'이라 부른 말로 유명한 이 체스 기물",
+    "targetWhy": "필리도르의 명언은 체스 애호가가 아는 말 — 폰의 움직임·승진 같은 정의는 넣지 않았다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "기물이 여섯뿐이라 찍기 여지가 있으나, 명언을 모르면 고르기 어렵다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "board-game/2#g009b-L2-06",
+   "seed": {
+    "subject": "카스파로프",
+    "aspect": null,
+    "ref": "L2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1999년 75개국이 넘는 나라의 5만 명 넘는 사람이 인터넷 투표로 흑의 수를 정한 '세계 팀'이 한 체스 기사와 맞섰습니다. 넉 달 동안 이어진 이 대국을 62수 만에 이긴 백 쪽의 기사는 누구일까요?",
+    "answer": "카스파로프",
+    "acceptedAnswers": [
+     "가리 카스파로프"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '가리 카스파로프' 확인",
+    "explanation": "3년 전 같은 투표 방식으로 열린 대국에서는 아나톨리 카르포프가 투표자들을 쉽게 이겼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1999년 '세계 팀'과 맞선 체스 기사",
+     "difWhy": "'1999 세계 대 체스 챔피언' — 체스 관심층",
+     "wor": 3,
+     "worWhy": "유명 체스 기사 이름",
+     "acc": 4,
+     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1999년 '세계 팀'과 맞선 체스 기사",
+     "difWhy": "'1999 세계 대 체스 챔피언' — 체스 관심층",
+     "wor": 3,
+     "worWhy": "유명 체스 기사 이름"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "질문이 \"세계 팀\" 대국 자체라, 연도·투표 단서를 줄여도 \"1999년 무렵 최강 체스 기사\" 찍기로 풀리고 다른 깊은 세부로 바꾸면 대상(대국)이 흐려짐"
+    },
+    "generalHint": "1999년 그가 기록한 레이팅 2851은 2013년 마그누스 칼센이 넘어설 때까지 최고였다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "보드게임",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Kasparov_versus_the_World"
+    ],
+    "facts": [
+     {
+      "claim": "1999년 인터넷 투표로 흑의 수를 정한 세계 팀과 대국",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kasparov_versus_the_World",
+      "note": "Kasparov versus the World was a game of chess played in 1999 over the Internet. It was a consultation game, in which a World Team of thousands decided each move for the black pieces by plurality vote, while Garry Kasparov conducted the white pieces by himself."
+     },
+     {
+      "claim": "75개국 5만 명 넘게 참가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kasparov_versus_the_World",
+      "note": "More than 50,000 people from over 75 countries participated in the game."
+     },
+     {
+      "claim": "넉 달 62수 만에 카스파로프 승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kasparov_versus_the_World",
+      "note": "After 62 moves played over four months, Kasparov won the game."
+     },
+     {
+      "claim": "1996년 카르포프가 투표자들을 쉽게 이김",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kasparov_versus_the_World",
+      "note": "in 1996, Anatoly Karpov easily defeated the voters against him in such a match."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Garry_Kasparov"
+    ],
+    "hintNote": "His peak FIDE chess rating of 2851, achieved in 1999, was the highest recorded until being surpassed by Magnus Carlsen in 2013.",
+    "easiestCue": "1999년 … 인터넷 투표로 흑의 수를 정한 '세계 팀'",
+    "targetWhy": "'카스파로프 대 세계'는 체스 애호가가 아는 일화 — 딥 블루와의 대결 같은 대표 사건은 넣지 않았다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 유명, 묻는 것은 덜 알려진 인터넷 대국",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (카스파로프 · 가리 카스파로프) — 활성 352 딥 블루 질문에 이름이 나오나 정답·지식이 다름",
+    "warn": []
+   }
+  }
+ ]
+}

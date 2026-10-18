@@ -1,0 +1,383 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "ball-sports/2",
+  "midKey": "ball-sports",
+  "subName": "배구",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "ball-sports/2#g009b-S2-11",
+   "seed": {
+    "subject": "좌식 배구",
+    "aspect": null,
+    "ref": "S2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1956년 네덜란드 스포츠 위원회가 만든 이 종목은 일반 배구와 달리 상대 서브를 블로킹해도 됩니다. 이 종목은 무엇일까요?",
+    "answer": "좌식 배구",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '좌식 배구'('좌식배구' 넘겨주기 — 정규화로 같음)",
+    "explanation": "재활 운동으로 고안되었고, 독일에서 네트 없이 앉아서 하던 공놀이 '지츠발'과 배구를 합친 것입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1956년 네덜란드 스포츠 위원회가 만든 … 상대 서브를 블로킹해도 됩니다",
+     "difWhy": "네덜란드 기원·서브 블로킹 — 애호가",
+     "wor": 3,
+     "worWhy": "패럴림픽 종목 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "재활 운동으로 만든 … 지츠발과 배구를 합친",
+     "difWhy": "앉아서 하는 배구 — 패럴림픽 관심층",
+     "wor": 3,
+     "worWhy": "장애인 스포츠 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1956년 네덜란드 스포츠 위원회가 재활 운동으로 만든 이 종목은, 독일에서 네트 없이 하던 공놀이 '지츠발'과 배구를 합친 것입니다. 일반 배구와 달리 상대 서브를 블로킹해도 되는 이 종목은 무엇일까요?",
+     "beforeExplanation": "1980년 패럴림픽 정식 메달 종목이 되었고, 여자부는 2004년 대회에 더해졌습니다.",
+     "removedCue": "재활 운동으로 만든 … 지츠발과 배구를 합친 (재활·앉은 공놀이 = 정의)",
+     "addedCue": "(재활·지츠발을 해설로) 1956 네덜란드 고안 + 서브 블로킹 허용",
+     "why": "재활·'지츠발(앉은 공)' 이 곧 정답 정의라 해설로 옮기고 규칙 차이로 묻게 함"
+    },
+    "generalHint": "1976년 패럴림픽에서 시범 종목으로 처음 선보인 뒤 1980년 정식 메달 종목이 되었다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sitting_volleyball"
+    ],
+    "facts": [
+     {
+      "claim": "1956년 네덜란드 스포츠 위원회가 재활 운동으로 고안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sitting_volleyball",
+      "note": "invented in the Netherlands by the Dutch Sport Committee in 1956 (as a rehabilitation activity)"
+     },
+     {
+      "claim": "배구와 독일의 네트 없는 앉은 공놀이 지츠발을 합침",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sitting_volleyball",
+      "note": "It combined volleyball with sitzball, a German seated game played without a net (요지)"
+     },
+     {
+      "claim": "서브 블로킹 허용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sitting_volleyball",
+      "note": "Blocking the serve is also permitted (요지)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sitting_volleyball"
+    ],
+    "hintNote": "Sitting volleyball first appeared in the 1976 Summer Paralympics as a demonstration sport ... both standing and sitting volleyball became officially included as medal sports in the 1980 Summer Paralympics.",
+    "easiestCue": "일반 배구와 달리 상대 서브를 블로킹해도 됩니다",
+    "targetWhy": "서브 블로킹 허용은 배구 애호가 규칙 세부 — 앉음·장애·패럴림픽 없음 (경계 — 단서가 둘로 줄어 짧음)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "종목 이름은 패럴림픽 중계로 들어 봄, 기원과 서브 블로킹 규칙은 깊은 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 배구"
+    ]
+   }
+  },
+  {
+   "seedId": "ball-sports/2#g009b-S2-12",
+   "seed": {
+    "subject": "비치발리볼",
+    "aspect": null,
+    "ref": "S2-12",
+    "pairedWith": 2737
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2737,
+    "question": "실내 배구와 달리 이 종목에서는 블로킹에 닿은 것도 팀의 세 번 터치에 들어갑니다. 또 손을 편 채 손가락으로 공을 살짝 밀어 넘기는 공격이 반칙이라 선수들은 손가락 마디로 찔러 넘기는 '포키'를 치는데, 이 종목은 무엇일까요?",
+    "answer": "비치발리볼",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '비치발리볼'('비치 발리볼' 넘겨주기 — 정규화로 같음)",
+    "explanation": "1930년 산타모니카에서 여섯 명이 다 모이지 않아 넷이서 친 경기가 2인제 경기의 시작으로 전합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "실내 배구와 달리 이 종목에서는",
+     "difWhy": "실내가 아닌 배구 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "종목 규칙 차이 — 이야깃거리",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "2인제 경기에서는",
+     "difWhy": "2인제 배구 — 방송에서 흔히 (경계 3)",
+     "wor": 3,
+     "worWhy": "종목 규칙 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "실내 배구와 달리 이 종목에서는 블로킹에 닿은 것도 팀의 세 번 터치에 들어갑니다. 또 2인제 경기에서는 손을 편 채 공을 살짝 밀어 넘기는 팁이 반칙이라 손가락 마디로 찔러 넘기는 '포키'를 치는데, 이 종목은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "2인제 경기에서는 (두 명 = 1회차 정의)",
+     "addedCue": "(뺌) 블로킹 터치 셈 + 손 편 팁 반칙·포키",
+     "why": "'2인제' 가 1회차 정의(두 명이 겨루는 배구)라 빼고 규칙 차이 둘로만 묻게 함"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Beach_volleyball"
+    ],
+    "facts": [
+     {
+      "claim": "블로킹 터치도 세 번의 터치에 포함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beach_volleyball",
+      "note": "Unlike indoor volleyball, a touch off the block counts as one of the three allowed touches."
+     },
+     {
+      "claim": "1930년 넷만 모여 2인제 첫 경기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Beach_volleyball",
+      "note": "the two-man game, which was first played in 1930 when only four people were available for a six-player match (요지 — Santa Monica)"
+     },
+     {
+      "claim": "손가락으로 방향을 주는 손 편 팁·딩크 공격은 반칙",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beach_volleyball",
+      "note": "Attack-hits using an 'open-handed tip or dink' directing the ball with the fingers are illegal."
+     },
+     {
+      "claim": "대신 손가락 마디로 침(포키)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Beach_volleyball",
+      "note": "Players may instead use their knuckles to attack the ball. (called a \"pokey\" shot)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "블로킹에 닿은 것도 팀의 세 번 터치에 들어갑니다",
+    "targetWhy": "블로킹 셈·포키는 배구 애호가 규칙 세부 — 모래·두 명·올림픽 없음",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'2인제'·'실내 배구와 달리'로 비치발리볼을 추리할 여지가 있음",
+    "pairCheck": "1회차 질문(모래·두 명·1996 애틀랜타)·해설(체력 소모)과 겹치지 않음 — 블로킹 터치·팁 금지·포키만, 1회차 힌트 없음",
+    "dbCheck": "pair-or-different — 활성 2737 과 같은 답, (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 2737,
+     "question": "모래 위에서 한 팀 두 명이 겨루는 배구 종목으로, 1996년 애틀랜타 올림픽에서 정식 종목이 된 것은?",
+     "explanation": "두 명이 코트 전체를 맡아야 해서 체력 소모가 큽니다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "ball-sports/2#g009b-S2-13",
+   "seed": {
+    "subject": "리베로",
+    "aspect": null,
+    "ref": "S2-13",
+    "pairedWith": 122
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 122,
+    "question": "배구에서 이 선수가 3m 선 앞에서 손가락으로 공을 올려 주면 동료가 그 공을 네트보다 높은 곳에서 때릴 수 없습니다. 국제배구연맹 규칙으로 팀마다 이 선수를 두 명까지 정할 수 있지만 코트에는 한 번에 한 명만 서는데, 이 포지션은 무엇일까요?",
+    "answer": "리베로",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 선수가 뒷줄 선수와 바꿔 드나드는 것은 세트마다 정해진 교체 횟수에 세지 않습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "팀마다 이 선수를 두 명까지 정할 수 있지만 코트에는 한 번에 한 명만 서는데",
+     "difWhy": "수비 전문 포지션 규칙 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "배구 기본 어휘",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "뒷줄 선수와 바꿔 드나드는 것은 교체 횟수에 세지 않고",
+     "difWhy": "'교체 횟수 안 세는 뒷줄 선수' — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "배구 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "배구에서 이 선수가 뒷줄 선수와 바꿔 드나드는 것은 세트마다 정해진 교체 횟수에 세지 않고, 이 선수는 자기가 대신 들어간 선수하고만 다시 바뀝니다. 이 선수가 3m 선 앞에서 손가락으로 공을 올려 주면 동료가 그 공을 네트보다 높은 곳에서 때릴 수 없는데, 이 선수는 누구일까요?",
+     "beforeExplanation": "국제배구연맹 규칙으로 팀마다 이 선수를 두 명까지 정할 수 있지만, 코트에는 한 번에 한 명만 섭니다.",
+     "removedCue": "교체 횟수에 세지 않는 뒷줄 교대 · 자기가 대신한 선수하고만 바뀜",
+     "addedCue": "두 명까지 지정하되 코트엔 한 명",
+     "why": "널리 알려진 교대 규칙을 해설로 돌리고 토스 제한·지정 인원 세부로"
+    },
+    "generalHint": "이 선수는 블로킹을 하거나 네트보다 높은 공을 공격할 수 없다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Volleyball_positions"
+    ],
+    "facts": [
+     {
+      "claim": "리베로 교체는 세트당 교체 한도에 세지 않음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Volleyball_positions",
+      "note": "This replacement does not count against the substitution limit each team is allowed per set."
+     },
+     {
+      "claim": "3m 선 앞에서 오버핸드 세트하면 네트 위 공격 불가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Volleyball_positions",
+      "note": "To make an overhand set, the libero must be standing behind (and not stepping on) the 3-meter line. Otherwise, the ball can't be attacked above the net in front of that line (요지)"
+     },
+     {
+      "claim": "FIVB 규칙 리베로 두 명 지정, 코트엔 한 명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Volleyball_positions",
+      "note": "Under FIVB rules, each team can designate two liberos at the beginning of play ... Only one of whom can be on the court at any time."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Libero_(volleyball)"
+    ],
+    "hintNote": "The libero cannot block or attack the ball when it is entirely above net height.",
+    "easiestCue": "3m 선 앞에서 손가락으로 공을 올려 주면 동료가 네트보다 높은 곳에서 때릴 수 없다",
+    "targetWhy": "리베로 토스 제한·2명 지정은 배구 애호가 규칙 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "배구 중계를 자주 보는 사람은 '교체 횟수에 안 세는 선수'로 바로 앎(3 가능)",
+    "pairCheck": "1회차 질문(다른 색 유니폼·서브 공격 없이 수비 전담)·해설(1998 FIVB 도입)과 겹치지 않음 — 교체 규칙·3m 선 세트 제한만, 1회차 힌트 없음",
+    "dbCheck": "pair-or-different — 활성 122 와 같은 답, (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 122,
+     "question": "6인제 배구 경기에서 다른 팀원과 다른 색상의 유니폼을 입고 서브나 공격 없이 수비만을 전담하는 전문 수비 포지션은?",
+     "explanation": "리베로는 1998년 국제배구연맹에 의해 도입된 특수 수비수 포지션이다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "ball-sports/2#g009b-S2-15",
+   "seed": {
+    "subject": "로테이션",
+    "aspect": null,
+    "ref": "S2-15",
+    "pairedWith": 2733
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2733,
+    "question": "광둥성 타이산 출신이 많던 미국 차이나타운의 중국계 노동자들은 1930년대 후반 9인제 배구로 서로 이어졌습니다. 이 9인제 배구에서는 일반 배구와 달리 선수들이 이것을 하지 않는데, 이 규칙은 무엇일까요?",
+    "answer": "로테이션",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "9인제에서는 공이 네트에 닿으면 그 팀에 터치를 한 번 더 줍니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "9인제 배구에서는 일반 배구와 달리 선수들이 이것을 하지 않는데",
+     "difWhy": "'9인제는 이것을 안 한다' — 배구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 9인제와 6인제 차이",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "9인제 배구에서는 일반 배구와 달리 선수들이 이것을 하지 않는데",
+     "difWhy": "'9인제는 이것을 안 한다' — 배구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 9인제와 6인제 차이"
+    },
+    "rewrite": null,
+    "generalHint": "9인제에서는 이것을 하지 않는 덕에 선수마다 한 자리를 전문으로 맡아 경기가 더 빠르고 어지럽다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Nine-man"
+    ],
+    "facts": [
+     {
+      "claim": "선수 대부분 타이산(광둥) 출신 중국계 이민자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nine-man",
+      "note": "predominantly hailed from Toisan (Taishan) in Guangdong, China (요지)"
+     },
+     {
+      "claim": "1930년대 후반 차이나타운 노동자들을 잇는 수단",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nine-man",
+      "note": "In the late 1930s ... the sport was used as a means to socially connect the laborers in Chinatowns across the United States."
+     },
+     {
+      "claim": "9인제는 로테이션을 하지 않음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nine-man",
+      "note": "Players in 9-man do not rotate as in traditional volleyball."
+     },
+     {
+      "claim": "네트에 닿으면 터치 하나 더",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Nine-man",
+      "note": "A team is awarded an additional touch if the ball contacts the net during a volley."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/9-man"
+    ],
+    "hintNote": "The players do not rotate, which allows for specialization, and leading to a faster, more chaotic game.",
+    "easiestCue": "9인제 배구에서는 일반 배구와 달리 선수들이 이것을 하지 않는데",
+    "targetWhy": "9인제 배구의 규칙 차이 — 배구 애호가(일반 배구 규칙에서 추리 가능)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "일반 배구 규칙 가운데 고르는 추리가 가능해 3 일 수 있음",
+    "pairCheck": "1회차 질문(서브권 되찾으면 시계 방향 이동)·해설(앞뒷줄 번갈아)·힌트(포지션 폴트·리베로)와 겹치지 않음 — 9인제·차이나타운만",
+    "dbCheck": "pair-or-different — 활성 2733 과 같은 답, (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 2733,
+     "question": "배구에서 서브권을 되찾은 팀의 선수들이 시계 방향으로 한 자리씩 옮기는 규칙은?",
+     "explanation": "이 규칙 때문에 모든 선수가 앞줄과 뒷줄을 번갈아 맡게 됩니다.",
+     "hint": "이 순서를 어기면 '포지션 폴트'로 상대에게 점수를 내주며, 수비 전문 선수인 리베로는 뒷줄에서만 뛴다.",
+     "difficulty": 3
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+{
+ "_meta": {
+  "round": "g009b",
+  "subId": "physics/3",
+  "midKey": "physics",
+  "subName": "빛·소리·파동",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v5",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G009 — 상(4) 생성 3차 g009b(생성 직후 채점 · 3 이하 한 번 고침). 적재하지 않았다 — V013 판정 뒤 G010 이 적재한다 (data/pipeline/audit/g009b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "physics/3#g009b-C2-25",
+   "seed": {
+    "subject": "도플러 효과",
+    "aspect": null,
+    "ref": "C2-25",
+    "pairedWith": 2472
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2472,
+    "question": "1845년 네덜란드의 바위스 발롯은 위트레흐트–암스테르담 선을 달리는 기차에 음악가들을 태우고 정해진 음을 연주하게 하여 이 현상을 소리에서 확인했습니다. 프랑스에서는 1848년 같은 현상을 전자기파에서 따로 밝혀낸 피조의 이름을 덧붙여 부르기도 하는 이 현상은 무엇일까요?",
+    "answer": "도플러 효과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "바위스 발롯은 북반구에서 바람을 등지고 서면 왼쪽이 저기압이라는 '바위스 발롯의 법칙' 으로도 이름을 남겼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "기차에 음악가들을 태우고 정해진 음을 연주하게 하여 이 현상을 소리에서 확인",
+     "difWhy": "움직이는 음원 소리 현상 — 고교 물리",
+     "wor": 5,
+     "worWhy": "교과 물리 현상",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "달리는 기차에서 연주한 음으로 확인한 현상",
+     "difWhy": "'움직이는 음원 음높이' — 고교 물리",
+     "wor": 5,
+     "worWhy": "과학 교과 개념"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1845년 네덜란드의 바위스 발롯은 위트레흐트–암스테르담 선을 달리는 기차에 음악가들을 태우고 정해진 음을 연주하게 하는 실험을 했습니다. 그가 이 실험으로 소리에서 확인한 현상은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "'그가 이 실험으로 소리에서 확인한 현상' 만 묻던 꼴",
+     "addedCue": "피조 · 프랑스의 '도플러-피조 효과' 이름",
+     "why": "실험 묘사만으로 고교 물리 현상이 풀려, 피조 이름 단서를 더해 실험 묘사에 기대는 몫을 줄였다(기차 실험 자체는 대상이라 남김)"
+    },
+    "generalHint": "해먼드 오르간에 흔히 붙여 쓰는 레슬리 스피커는 모터로 나팔을 빙글빙글 돌려 이 현상을 소리에 이용한다.",
+    "generalHintVersion": "hint-v5",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/C._H._D._Buys_Ballot",
+     "https://en.wikipedia.org/wiki/Doppler_effect"
+    ],
+    "facts": [
+     {
+      "claim": "1845년 기차 위 음악가들의 정해진 음으로 소리의 도플러 효과 검증, 위트레흐트–암스테르담 선",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/C._H._D._Buys_Ballot",
+      "note": "tested the Doppler effect for sound waves in 1845 by using a group of musicians playing a calibrated note on a train in the Utrecht-Amsterdam line"
+     },
+     {
+      "claim": "바위스 발롯의 법칙",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/C._H._D._Buys_Ballot",
+      "note": "the atmospheric pressure is low to the left, high to the right (for an observer in the Northern Hemisphere with their back to the wind, 요지)"
+     },
+     {
+      "claim": "피조가 1848년 전자기파에서 따로 발견 · 프랑스에서는 도플러-피조 효과로도 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Doppler_effect",
+      "note": "Hippolyte Fizeau independently discovered the same phenomenon on electromagnetic waves in 1848. In France, the effect is sometimes called \"effet Doppler-Fizeau\" but that name was not adopted by the rest of the world"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Doppler_effect"
+    ],
+    "hintNote": "The Leslie speaker, most commonly associated with and predominantly used with the famous Hammond organ, takes advantage of the Doppler effect by using an electric motor to rotate an acoustic horn around a loudspeaker",
+    "easiestCue": "달리는 기차 위 음악가들의 음으로 확인한 현상",
+    "targetWhy": "기차 실험이 남아 고교 물리로 풀릴 수 있음 — 경계 3",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "실험 묘사가 현상 정의에 가까워 고교 물리로 풀릴 수 있음",
+    "pairCheck": "1회차 2472 질문(구급차 사이렌)·해설(별빛·우주 팽창)·힌트(1842 오스트리아 물리학자)와 겹치는 사실 없음",
+    "dbCheck": "pair-or-different — 활성 2472 의 2회차",
+    "warn": [],
+    "first": {
+     "id": 2472,
+     "question": "구급차가 다가올 때와 멀어질 때 사이렌 소리의 높이가 다르게 들리는 현상을 무엇이라 합니까?",
+     "explanation": "별빛에도 같은 원리를 적용해 우주가 팽창한다는 근거로 씁니다.",
+     "hint": "1842년 이 현상을 처음 설명한 오스트리아 물리학자의 이름이 붙었습니다.",
+     "difficulty": 3
+    }
+   }
+  }
+ ]
+}
