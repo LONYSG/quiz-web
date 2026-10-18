@@ -1074,6 +1074,25 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 36. ★★ R055 — 못 돌린 검사 전부 (검사 라운드)
+
+```bash
+node scripts/ui-check-bundles.mjs <묶음…> --shot-dir verify --retry 4 --retry-gap-min 30   ★ --shot-dir: 옛 라운드 그림(r051 …)을 덮지 않게 그림 폴더를 강제
+SHOT_DIR=verify-long node scripts/ui-check.mjs --long                                         가장 긴 문제 셋을 크기 8 에서 찍고 잰다(재현용)
+```
+| 묶음 (R055 · 2026-10-18 23:52 ~ 10-19 02:24) | 결과 | 초 | 남는 MB(시작→끝) |
+|---|---|---|---|
+| mg-r054-lab · mg-r054-balloon · mg-r054-tap · r054-stats | 2/2 · 4/4(고친 뒤) · 3/3 · 3/3 | 46 · 83 · 105 · 18 | 6354~4592 |
+| sound · social · profile · emoji · leave · spam · shop · copy · devices | 5 · 118 · 24 · 16 · 28 · 19 · 32 · 15 · 9 — 전부 통과 | 20~143 | 7028~6439 |
+| mg-r050-lab · mg-r051-lab · reaction · typing · circle · angle | 7 · 15 · 6 · 14 · 6 · 6 — 전부 통과 | 53~142 | 6449~6190 |
+| mg-r052 다섯 + lab · mg-r053 넷 + lab | photo 6/7(검사 결함 — 고침 · 재실행 못 함) · 나머지 10 통과 | 78~146 | 5319~4815 |
+| main-layout | 128/129 — 360 정답 공개 아주 긴 문항(13 A79 · 결정 대기) | 84~90 | 6372 · 4573 |
+| main-behavior | 1회 30분 시간 초과(일시정지 뒤 멈춤 — 재현 안 됨) → 다시 326/327(같은 A79 한 건) | 224 | 4534 |
+| mg-r050-live | 12/13 — 케이크 Enter 입력 오차 0.61초(±0.15) · ★ 재실행 못 함(셸이 메모리로 회수) | 253 | 6407 |
+★ 봇 54 전부 통과(00:55~01:55) · typecheck · vitest 496 · smoke 12. 못 돌림 — 메모리 0(이번 밤은 남는 4.5~7GB).
+
+---
+
 ## 35. ★★★ R054 — 전적 · 업적 · 풍선 불기 · 연타 10초
 
 ```bash
