@@ -1,0 +1,83 @@
+===========================================
+ROUND: G010
+DATE: 2026-10-18
+TASK: 미니게임 데이터 2차(docs/18 형식 · 묶음 파일 items-2.json) — price 100 · worldprice 품목 +2 · photo 100 · estimate 100 · which 150 → 그림 git 밖 · zip · VERIFY 묶음. 적재 · items.json(1차) 수정 · questions 쓰기는 하지 않는다
+STATUS: 완료
+===========================================
+
+[cmd 창 요약]
+1. 2차 533: price 100 · worldprice 83(새 품목 2 — 휘발유 42국 · 콜라 43국) · photo 100 · estimate 100 · which 150 — data/minigame/*/items-2.json.
+2. 그림 503장(git 밖 · backups/minigame-2026-10-18-2.zip — 1차와 합쳐 1,011장) · 맞혀 보기 99/100(1 교체) · GEN 30항목 그림 문제 0.
+3. g008-check 1차+2차 1,175 막힘 0(묶음 파일 · CV-28 규칙) · 1차 items.json · 1차 품목 3 글자 그대로.
+4. 스타벅스 라테는 15국을 못 구해 휘발유 1L 로 대체 · 콜라는 Numbeo 식당 값(코카·펩시)이라 이름 "콜라".
+5. VERIFY 묶음 audit/g010-verify-targets.json(전수) · C72 · 결정 후보 1(estimate 외화 6).
+
+0. 찬종이 볼 것
+- 게임별 수 (status candidate · verify null · createdRound G010)
+  | 게임 | 2차 | 배분 | 그림 | 1차 + 2차 |
+  |---|---|---|---|---|
+  | price 얼마게요 | 100 | <1만 40 · 1~10만 25 · 10~100만 20 · 100만+ 15 · official 60 / median 40 · category 식품 20 · 생활 15 · 취미 12 · 뷰티 11 · 기타 11 · 해외 10 · 가전 9 · 패션 6 · 자동차 4 · 사치품 2 | 100 | 200 |
+  | worldprice 빅맥지수 | 83 (품목 2) | 휘발유 1L 42국(문항 41) · 콜라 0.33L 43국(문항 42) | 품목 2 | 품목 5 · 문항 255 |
+  | photo 사진 이름 | 100 | everyday 25 · object 20 · place 15 · person 15 · food 10 · animal 10 · logo 5 · 난이도 1 24 · 2 46 · 3 30(1차는 1 이 61/120) | 100 | 220 |
+  | estimate 얼마나 될까 | 100 | kind 11개 각 8~10 | 79 | 200 |
+  | which 어느 쪽? | 150 | bigger 90 · earlier 60 · 그림 짝 111(74%) | 222 | 300 |
+  · 휘발유 — 최저 쿠웨이트 471원 · 최고 홍콩 5,898원 · 한국 1,857원 / 콜라(식당 0.33L) — 최저 이집트 448원 · 최고 스위스 7,146원 · 한국 2,174원.
+- 그림 예 5장 (이 PC — git 에는 없다)
+  · price: `assets/minigame/price/price-0103.jpg`(해태 홈런볼) · `assets/minigame/price/price-0199.jpg`(까르띠에 LOVE 링)
+  · photo: `assets/minigame/photo/photo-0162.jpg`(테레민) · `assets/minigame/photo/photo-0180.jpg`(마리나 베이 샌즈)
+  · worldprice: `assets/minigame/worldprice/gasoline.jpg`
+- 버린 소재 (하위 에이전트 기록)
+  | 게임 | 버림 | 사유 |
+  |---|---|---|
+  | price | 53 | 가격 분산 1.5 초과 · 판매처마다 정가 다름 27 · 포장 배지("1위" · "No.1")·여러 개 든 상자·그림 불일치·작은 그림 11 · 출처 없음(공식몰 막힘 · 두 번째 출처 없음) 6 · 그 밖(구형 · 트림 모호 · 병행수입 · 같은 브랜드·균형) 9 |
+  | worldprice | 3 | 스타벅스 라테(15국 못 구함 → 휘발유) · 리비아 휘발유 · 0.2L 콜라 그림 |
+  | photo | 25 + 맞혀 보기 1 | 유일성 없음 4 · 알맞은 그림 없음 6 · 몫 상한 4 · 라이선스(KOGL · GFDL)로 그림 교체 4 · 글자 · 서명 · 캡션 · 어두움 등으로 그림 교체 7 / 맞혀 보기에서 못 맞힌 0127 윷 → 손톱깎이 |
+  | estimate | 23 + 그림만 뺀 4 | 곧 바뀜 5 · 출처 엇갈림(조사 값 섞임 포함) 5 · 범위 넓음 1 · 열 수 있는 출처 없음 11 · 낯선 단위 1 / 그림만 뺌 4(500원 동전 · 마라톤 · 베를린 장벽 · 광년) |
+  | which | 23 | 근소 6 · 출처·기준 다름 2 · 출처 없음 3 · 변동 값 · 기준 여럿 등 5 · 소재 교체 4 · 그림만 버림 3 |
+- 못 한 것
+  · 스타벅스 카페라테 — 15국 이상 지금 현지 통화 가격 없음 → 브리핑 대체 규칙대로 휘발유 1L.
+  · 코카콜라 — 각국 마트 공식몰 같은 규격 정가로 15국을 못 채움 → Numbeo(사용자 입력 통계 · 코카콜라 또는 펩시 · 식당 0.33L). 품목 이름을 "콜라"로(GEN 판단).
+  · price 취미·문구 <1만 은 0(두 판매처 정가가 같으면서 그림 문제가 없는 것을 못 찾음).
+  · estimate 6건은 달러·유로 단위(역사 금액) — docs/18 §0 "통화는 원 단위 정수" 와 어긋날 수 있다 → 9절.
+
+★ 원칙 메모
+- 원칙 7(브리핑 사실 확인): 1차 642 · 그림 508 — 맞다(V012 시점 그대로). docs/18 0절에 묶음 파일 규칙 — 있다(9 · 15줄). V012.txt — 있다(2026-10-17 · 573 ok · fix 63 · drop 6 · CV-25~30). ★ 다른 점: 브리핑은 "V014 묶음 · V013 이 g009a/b 를 판정" 이라 했지만 실제로는 V013 은 활성 표본, V014 가 g009a 판정, V015 가 활성 전수에 쓰였다 — 이 2차 묶음은 "다음 V" 로 C72 에 적었다. 1차는 R052 가 verified 573 을 이미 적재했다(docs/18 7절).
+- 동시 라운드: items.json(1차)은 읽기만(빌드 전후 md5 같음) · products.json 은 끝에 품목 2만 더함(git diff 더하기 769 · 지움 0 · 1차 품목 3 해시 같음) · assets 는 새 그림만(1차 508 그대로) · MAIN · VERIFY 파일 0 · DB 쓰기 0 · server/ client/ shared/ 0.
+- 메모리 · 중단: 시작 때 남는 메모리 0.11GB → 하위 에이전트 1개씩. 찬종 요청으로 재부팅 전 안전 중단(price-2 저장 0 → 재개 뒤 처음부터) → 재부팅 뒤 6.85GB 로 2개씩. 429 없음 · 모델 그대로.
+- 웹: WebSearch 22회(price 4 · worldprice 3 · estimate 15) / 300 · 나머지는 위키백과 · 공용 API · 편의점 · 다나와 페이지를 작은 스크립트로 연 것과 WebFetch. 하위 에이전트 10(수집 9 · 맞혀 보기 1).
+- 키: .env 의 NAVER_* 는 쓰지 않았다. 키 값은 어디에도 없다.
+
+A. 도구 (fd24d81 · e9f4e04)
+- g008-check: items*.json 묶음 파일 전부 · id 유일 · 같은 대상(이름 정규화) 겹침을 파일을 합쳐 막힘 · --part 는 정본과도 대조(하위 에이전트가 1차와 겹치는 것을 그 자리에서 막힘) · --products · status ∈ candidate·verified·rejected·loaded · verify null 또는 {round,…}(CV-28). → 1차 642 막힘 0 · 1차+2차 1,175 막힘 0.
+- g008-build --round g010: items-2.json · products.json 새 품목만 더함(1차 품목이 바뀌면 멈춤) · worldprice 문항 새 품목만(KR · EU 목표 제외) · g010-verify-targets 전수. G008 모드는 items.json 에 verify 가 있으면 멈춤.
+- ★ C 커밋(e9f4e04) 메시지의 "2차 573" 은 잘못 센 값이다 — 맞는 값은 533(100 + 83 + 100 + 100 + 150 · 1차 verified 573 과 헷갈림). 이 보고서 · 문서는 533.
+- ★ A 커밋의 묶음 파일 정규식에서 역슬래시가 Git Bash 로 빠져 items-2 를 읽지 못했다 — C 에서 찾아 바로잡음(그래서 A 시점의 "1차 642 막힘 0" 은 맞지만 2차 겹침 대조는 C 커밋부터 유효 — 하위 에이전트 --part 검사는 정본 items.json 만 대조했고, 2차끼리 겹침은 C 의 전체 검사가 1,175 막힘 0 으로 확인).
+
+B. 수집
+- 지시 tmp/g010/MG-INSTRUCTIONS.md(G008 지시 + ★V012 반복 오류 피하기 — 라이선스 칸은 공용 페이지 값 그대로 · 손질 표시 · 영문 변형 금지 · 한국어 별칭은 문서 근거 · 같은 출처·같은 기준 연도 · 매출류 금지 · kcal 출처만 · 범위 넓은 값 · 곧 바뀌는 값 금지 · 같은 상품 두 문항 금지).
+- 몫: price-1(<1만 40 · 1~10만 10) · price-2(1~10만 15 · 10~100만 20 · 100만+ 15) · worldprice · photo-1(everyday · object · logo) · photo-2(place · person · food · animal) · estimate-1 · estimate-2(kind 로 나눔) · which-1(bigger) · which-2(earlier).
+- 맞혀 보기: 정답을 모르는 에이전트가 100장을 그림만 보고 — 맞힘 99 · one 77 · several 22 · unknown 1(0127 옛 돌윷 → 손톱깎이로 교체) · 글자 보임 11(이름은 경회루 현판 한자 작게 1 · 나머지 10 은 정답이 아닌 제조사 상표).
+- GEN 직접: 무작위 30항목(price 7 · photo 10 · estimate 7 · which 6 — 그림 31장)을 모아 보기로 봄 → 대상 다름 · 정답 글자 · 가격 숫자 0. 그 밖에 price-0141 · photo-0127(교체 후) · photo-0179 를 따로 열어 봄.
+
+C. 빌드
+- items-2.json 다섯(533) · products.json(품목 5) · `node scripts/g008-check.mjs` → price 100+100 · worldprice 172+83 · photo 120+100 · estimate 100+100 · which 150+150 = 1,175 막힘 0 · 경고 0.
+- zip `backups/minigame-2026-10-18-2.zip`(96MB · assets/minigame 전체 1,011장 + README).
+
+D. VERIFY 묶음 · 문서
+- `data/pipeline/audit/g010-verify-targets.json` — 게임별 { count · items(전문) } · worldprice 는 products(새 품목 전문). 표본 표시 없음(전수).
+- `data/pipeline/audit/g010-gen-fixes.json`(GEN 수정 4). 먼저 볼 것은 13 C72.
+
+GEN 판단 (DG-039 · DG-040)
+1. 스타벅스 라테 → 휘발유 1L(브리핑 대체 규칙).
+2. 콜라 품목 이름 "코카콜라" → "콜라"(Numbeo 값이 코카·펩시 식당 가격) · productId 는 cocacola 그대로.
+3. photo-0127 윷 → 손톱깎이(맞혀 보기 실패 · 알아보기 쉬운 윷 그림은 한글 글자).
+4. which-0254 그림 둘 다 뺌(GFDL 만).
+5. estimate 외화 6 은 그대로 두고 결정 후보로.
+6. 하위 에이전트 몫을 category · kind 로 나눔 · 임시 도구는 tmp/g010/ 에(커밋 안 함).
+
+새 결정 필요
+- (C72 ⑥) estimate 외화 6(0185~0190): docs/18 §0 "통화는 원 단위 정수" 의 예외로 둘지(역사 금액 · unit 달러/유로 표시) 아니면 rejected 로 뺄지 — 설계 판단. Q 는 올리지 않았다.
+
+고친 문서
+- docs/05-STATUS.md(Track E 행 · 머리 줄) · docs/06-WORKLOG.md(맨 위 G010) · docs/07-DECISIONS.md(DG-039 · DG-040) · docs/13-PENDING-CHECKS.md(C72 · 머리글) · ai-out/README.md(G 표) · ai-out/G010.txt
+- 데이터 · 도구: data/minigame/{price,worldprice,photo,estimate,which}/items-2.json · worldprice/products.json(품목 추가만) · data/pipeline/audit/g010-verify-targets.json · g010-gen-fixes.json · scripts/g008-check.mjs · g008-build.mjs

@@ -10,6 +10,20 @@
 
 ---
 
+## DG-040. 미니게임 2차의 개별 처리 (G010 · 기술 판단)
+
+- **스타벅스 라테 → 휘발유 1L**(브리핑 대체 규칙): 각국 공식 사이트 대부분이 가격을 싣지 않고 비교 통계는 2019 · 달러 환산뿐이라 15곳 이상 지금 현지 통화 값을 못 구함 → GlobalPetrolPrices 2026-10-12 · 42국 · 같은 날 ECB.
+- **콜라**: 공식몰 정가로 15곳을 못 채워 Numbeo "Soft Drink (Coca-Cola or Pepsi, 0.33 L bottle)" 식당 가격 43국 — 품목 note · sources 에 "사용자 입력 통계" · **nameKo 를 "코카콜라" → "콜라"**(펩시가 섞인 값이라 단정하지 않음 · productId `cocacola` 는 설계 판단 이름 그대로) · 아르헨티나는 Numbeo 가 USD 로 보여 주어 currency USD. 가격 모은 날(일요일 2026-10-18)의 앞 영업일 2026-10-16 ECB.
+- **photo-0127**: 맞혀 보기에서 못 맞힌 옛 돌윷 → 알아보기 쉬운 윷 그림은 윷가락·판에 한글 글자 → 손톱깎이(공용 Nagelschaar.jpg · CC BY-SA 3.0)로 대상 교체(1차 photo-0008 과 같은 처리).
+- **which-0254**: 모노폴리 그림이 GFDL 1.2 만 → 짝 그림 둘 다 null(한쪽만 남기지 않음 · G008 도 GFDL 만인 그림은 버림).
+- **estimate 외화 6**(0185~0190 — 알래스카 매입가 · 루이지애나 · 첫 아이폰 · 살바토르 문디 · 300 SLR · 모나리자 보험가): 역사 금액이라 원 환산이 뜻이 없어 달러·유로 그대로 둠 — docs/18 §0 "통화는 원 단위 정수" 와 어긋날 수 있어 C72 에 결정 후보로 올림.
+- 되돌리기: `data/minigame/*/items-2.json` 을 지우고 `products.json` 의 끝 품목 2를 빼면 된다(DB 에 없다) · `audit/g010-gen-fixes.json`.
+
+## DG-039. g008-check · g008-build 를 묶음 파일로 (G010 · CV-28 · docs/18 0절)
+
+- check: `data/minigame/<game>/items*.json`(번호 순) 전부 — id 유일 · 같은 대상(이름 정규화) 겹침을 파일을 합쳐 **막힘**(G008 은 경고) · `--part` 는 정본과도 대조 · `--products` 로 새 품목 파일 · status ∈ candidate·verified·rejected·loaded · verify 는 null 또는 {round,…}(CV-28) → V012 가 채운 1차 642 막힘 0.
+- build: `--round g010` → items-2.json · products.json 끝에 새 품목만(1차 품목이 바뀌면 멈춤) · worldprice 문항은 새 품목만 · 목표 KR·EU 제외(CV-25) · g010-verify-targets 전수. G008 모드는 items.json 에 verify 가 있으면 멈춤(V012 칸을 지우지 않게).
+
 ## DG-038. 상 생성 3차의 개별 처리 — 두 묶음 · 도구 · GEN 수정 7 (G009 · 기술 판단)
 
 - **두 묶음 나눔**: 소분류를 (활성 상 적은 순)으로 세워 앞 절반은 g009a, 나머지는 g009b · b 는 a 가 못 채운 소분류(kr-language/5 높임말·어법 · ball-sports/2 배구)를 더함 · b 의 전역 대조(answercheck · central)는 활성 + a 초안까지.

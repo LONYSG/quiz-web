@@ -1,0 +1,38 @@
+{
+ "round": "G010",
+ "note": "GEN 판단 수정 — 하위 에이전트 출력 뒤 GEN 이 고친 것(빌드 전 중간 파일)",
+ "count": 4,
+ "fixes": [
+  {
+   "ref": "worldprice products cocacola",
+   "field": "nameKo",
+   "before": "코카콜라",
+   "after": "콜라",
+   "why": "GEN 판단 — 출처(Numbeo)가 \"Coca-Cola or Pepsi 0.33L 식당 가격\"이라 코카콜라로 단정하지 않음 · productId 는 설계 판단 이름 그대로"
+  },
+  {
+   "ref": "worldprice products",
+   "field": "productId",
+   "before": "starbucks-latte",
+   "after": "gasoline",
+   "why": "브리핑 대체 규칙 — 스타벅스 라테는 15곳 이상 지금 현지 통화 가격을 구할 수 없음(공식 사이트 대부분 가격 없음 · 비교 통계는 2019/달러 환산뿐) → 휘발유 1L(GlobalPetrolPrices)"
+  },
+  {
+   "ref": "which-0254",
+   "field": "a.image · b.image",
+   "before": {
+    "a": "CC BY-SA 4.0",
+    "b": "GFDL 1.2"
+   },
+   "after": null,
+   "why": "GEN 판단 — b 그림(모노폴리)이 GFDL 1.2 만 — docs/18 §0 그림 규칙(CC0 · CC BY · CC BY-SA · PD · product-page) 밖 · G008 도 GFDL 만인 그림은 버림 → 둘 다 그림 없이(짝 그림 한쪽만 남기지 않음)"
+  },
+  {
+   "ref": "photo-0127",
+   "field": "항목 전체",
+   "before": "윷",
+   "after": "손톱깎이",
+   "why": "GEN 판단 — 정답 모르는 맞혀 보기에서 못 맞힘(unknown · 갈돌 추정 — 박물관 옛 돌윷) · 알아보기 쉬운 윷 그림(Yut-nori.jpg)은 윷가락·판에 한글 글자 → 1차 photo-0008 과 같은 처리로 다른 대상(손톱깎이 · ko 위키 · 공용 Nagelschaar.jpg CC BY-SA 3.0 — GEN 이 그림을 직접 봄)"
+  }
+ ]
+}
