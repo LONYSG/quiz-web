@@ -8,6 +8,21 @@
 
 ---
 
+## 2026-10-19 — 기존 활성 난이도 4·5 V015 fix 126 반영 · 15 §3-2 한 줄 · H2-21 · C2-18 (G013, GEN)
+
+**무엇을 / 왜** — CV-39(설계 판단 "4·5 부터"): 상 풀의 기존 활성 505 를 V015 가 전수 판정한 fix 126 을 DB 활성 행에 반영했다(밤샘 사슬 2/4). 보고서 `ai-out/G013.txt`.
+
+- [x] A 반영 — 백업 `backups/quizweb-20261019-003140.dump` → `scripts/g013-apply-v015a.mjs`(멱등 · before 대조 · 반영 뒤 모습으로 checkAnswerSet · blankCheck · checkHint) · `audit/g013-decisions.json` · `audit/g013-fixes.json`(rows 206 · notTaken 58) · 제안 속 새 사실 · 변형 121건을 하위 에이전트 1이 다시 엶(true 190 · partial 18 · false 1 · unverified 50)
+- [x] B 15 §3-2 "한정어인가 변형인가"(CV-41) · criteria-sync(QFACT) · C73 ② H2-21(#5330) · C2-18(#5365) 힌트 새로 씀
+- [x] C 실측 — 활성 6,046 → 6,044 · 상 952 → 950 · 상만 19 · 중+상 76 · 전체 120 그대로
+- [x] D 문서
+
+**검증** — 대상 밖 questions(id>3 · 대상 128 제외) · question_answers md5 · 대상 행의 쓰지 않은 칸(난이도 · score_version · display_answer · category) md5 반영 전후 같음 · hint-check-active 3,835 막힘 0 · 다시 돌리면 할 일 0.
+**어떤 문제** — 확인 모드를 다시 돌리면 이미 넣은 변형 행이 기록에서 빠지던 것을 결정 파일에 반영 전 변형을 넣어 바로잡음.
+**남은 것** — 난이도 3 · 2 fix(G014 · G015) · C75
+
+---
+
 ## 2026-10-19 — V016 판정 반영 → g009b 475 적재 · 상만 13 → 19판 · 15 두 줄 (G012, GEN)
 
 **무엇을 / 왜** — CV-44 (a)(설계 판단): g009b 485 의 V016 판정(ok 366 · fix 109 · drop 10)을 반영하고 적재해 상 풀을 늘렸다(밤샘 사슬 1/4). 보고서 `ai-out/G012.txt`.
