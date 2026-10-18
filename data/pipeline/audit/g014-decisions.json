@@ -418,11 +418,12 @@
      "고딕 건축"
     ]
    },
-   "why": "V014 fix 제안 반영 (h-error)",
-   "general_hint": "1530년대 조르조 바사리가 북유럽 중세 건축을 야만적이라 낮춰 부른 말에서 이름이 왔다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(1530년대 → 『미술가 열전』 · 북유럽 → 독일)",
+   "general_hint": "16세기 바사리가 『미술가 열전』에서 이 건축을 야만적인 독일 풍이라 낮춰 부른 데서 이름이 왔다.",
    "hintSources": [
     "https://ko.wikipedia.org/wiki/고딕_건축"
    ],
+   "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/고딕_건축"
    ],
@@ -1328,11 +1329,12 @@
     "general_hint": "경찰 신고 번호처럼 1로 시작해 2로 끝나는 세 자리 번호다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-weak)",
-   "general_hint": "실종 아동 가족의 상담과 지원은 보건복지부가 위탁한 실종아동전문기관이 따로 맡는다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(기관 이름이 바뀜)",
+   "general_hint": "실종 아동 가족의 상담과 지원은 보건복지부가 위탁해 아동권리보장원이 운영하는 실종아동전문센터가 따로 맡는다.",
    "hintSources": [
     "https://ko.wikipedia.org/wiki/실종아동전문기관"
    ],
+   "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/경찰청",
     "https://ko.wikipedia.org/wiki/실종아동전문기관"
@@ -1771,13 +1773,21 @@
     "variants": []
    },
    "why": "V014 fix 제안 반영 (not-unique,variants,explanation,h-weak)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "다 같이"
+     ],
+     "why": "다 같이 — 한국어 공식 번역 · 언론 용례 0건(사실 확인 unverified) · 뜻풀이 바꿔 말하기"
+    }
+   ],
    "explanation": "2021년 IOC가 세 낱말 표어 뒤에 새 낱말을 덧붙였습니다. 경쟁만이 아니라 연대를 담으려는 뜻이었습니다.",
    "general_hint": "라틴어 원문에서는 표어 끝에 줄표를 긋고 Communiter 를 덧붙였다.",
    "hintSources": [],
    "add": [
     "다함께",
     "함께",
-    "다 같이",
     "다같이"
    ],
    "sources": [
@@ -2308,11 +2318,12 @@
     "general_hint": "아랍어로 '등대'를 뜻하는 말에서 왔다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-error)",
-   "general_hint": "이름은 본래 '등불을 올려 두는 대'를 뜻하던 아랍어 낱말에서 왔고, 뒤에 '등대'의 뜻도 얻었다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(뜻을 \"뒤에\" 얻었다는 순서는 문서에 없음)",
+   "general_hint": "이름은 본래 등불 받침대를 뜻하던 아랍어 낱말에서 왔으며, 이 말은 등대를 가리키기도 했다.",
    "hintSources": [
     "https://en.wikipedia.org/wiki/Minaret"
    ],
+   "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Minaret"
    ],
@@ -2543,9 +2554,10 @@
     "general_hint": "세계가 새 세기의 시작이라며 성대하게 축하했던 해와는 다르다.",
     "variants": []
    },
-   "why": "V013 fix 제안 반영 (h-weak)",
-   "general_hint": "지금 쓰는 연도 세기 방식은 525년 로마의 수도사 디오니시우스 엑시구우스가 만들었다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(로마 출신처럼 읽히지 않게)",
+   "general_hint": "지금 쓰는 연도 세기 방식은 525년 로마에서 수도사 디오니시우스 엑시구우스가 만들었다.",
    "hintSources": [],
+   "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Anno_Domini"
    ],
@@ -2814,12 +2826,20 @@
     "variants": []
    },
    "why": "V014 fix 제안 반영 (h-letters,variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "디노미네이션"
+     ],
+     "why": "디노미네이션 — 액면 단위 자체를 가리키는 다른 말(사실 확인 partial · 15 §3-2 다른 대상)"
+    }
+   ],
    "general_hint": "한국은 환을 원으로 바꾸면서 단위를 십분의 일로 낮춘 적이 있고, 요즘도 천분의 일로 낮추는 안이 거론된다.",
    "hintSources": [
     "https://en.wikipedia.org/wiki/Redenomination"
    ],
    "add": [
-    "디노미네이션",
     "화폐단위 변경"
    ],
    "sources": [
@@ -3304,6 +3324,16 @@
    "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/연날리기"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "연날리기는 정월 초하루부터 대보름까지, 이름까지 합치면 100여 종",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/연날리기",
+     "quote": "흔히 정월 초하루부터 대보름까지 날리며 ... 명칭으로만 본다면 100여 종이 된다.",
+     "note": "같은 문서가 대보름에 '송액' 글을 써 연실을 끊어 날려 보낸다고 적음(현재 해설 '송액영복'도 닫힘)"
+    }
    ]
   },
   "1095": {
@@ -3327,6 +3357,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/안동차전놀이"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "한쪽 편 대장은 부사, 맞선 편 대장은 영장",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/안동차전놀이",
+     "quote": "동부의 대장을 부사(府使), 서부의 대장을 영장(營將)이라고 하며",
+     "note": ""
+    }
    ]
   },
   "1099": {
@@ -3386,6 +3426,16 @@
    "hintSources": [],
    "sources": [
     "https://en.wikipedia.org/wiki/Galvanization"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "녹인 금속에 담그는 것이 가장 흔하고 전기를 쓰는 방법도 있다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Galvanization",
+     "quote": "The most common method is hot-dip galvanizing, in which the parts are coated by submerging them in a bath of hot, molten zinc.",
+     "note": "전기도금(electrogalvanizing)은 같은 문서 다른 방법 목록에 있음"
+    }
    ]
   },
   "1108": {
@@ -3428,6 +3478,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/완전수"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "짝수 완전수는 모두 2^(p-1)(2^p-1) 꼴, 2^p-1 이 소수일 때 — 에우클레이데스와 오일러",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/완전수",
+     "quote": "에우클레이데스는 또한 ... 이것은 오늘날 메르센 소수라고 불린다. 2천 년 후, 레온하르트 오일러는 모든 짝수 완전수가 이 형태임을 증명했다.",
+     "note": ""
+    }
    ]
   },
   "1135": {
@@ -3464,11 +3524,22 @@
     "general_hint": "재즈의 찰리 파커와 존 콜트레인이 이 악기의 이름난 연주자다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-famous)",
-   "general_hint": "발명가는 1846년 이 악기를 군악대용과 오케스트라용 두 계열로 나누어 특허를 받았다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(군악대용 · 오케스트라용 용도는 문서에 없음)",
+   "general_hint": "발명가는 1846년 음높이가 다른 두 계열, 모두 열네 가지 악기로 특허를 받았다.",
    "hintSources": [],
+   "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/색소폰"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1846년 군악대용과 오케스트라용 두 계열로 나누어 특허",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Saxophone",
+     "quote": "patented on 28 June 1846 ... The patent encompassed 14 versions of the fundamental design, split into two categories of seven instruments each ... the series pitched in F and C ... the series pitched in E♭ and B♭",
+     "note": "1846 특허 · 두 계열은 맞으나 문서는 '군악대용 · 오케스트라용' 용도를 적지 않음 — '1846년 음높이가 다른 두 계열, 모두 열네 가지 악기로 특허를 받았다'로"
+    }
    ]
   },
   "1144": {
@@ -3491,6 +3562,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/바이애슬론",
     "https://en.wikipedia.org/wiki/Biathlon"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "개인 경기 엎드려·서서 번갈아 네 차례, 빗나간 표적마다 벌칙",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Biathlon",
+     "quote": "four bouts or shooting stages ... in the order of prone, standing, prone, standing, totaling 20 targets ... must hit the five targets or receive a penalty for each missed target",
+     "note": ""
+    }
    ]
   },
   "1149": {
@@ -3512,6 +3593,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/아이스_댄스"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1952년 세계 선수권 공식 종목, 1976년 동계 올림픽 메달 종목",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Ice_dance",
+     "quote": "It joined the World Figure Skating Championships in 1952, and became a Winter Olympic Games medal sport in 1976.",
+     "note": ""
+    }
    ]
   },
   "1158": {
@@ -3600,6 +3691,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/구심력"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "속도 방향과 수직으로 작용해 속력은 그대로 두고 방향만 바꾼다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Centripetal_force",
+     "quote": "The direction of the centripetal force is always orthogonal to the motion of the body ... a body moves with uniform speed along a circular path",
+     "note": "등속 원운동 기준 — 일반 원리"
+    }
    ]
   },
   "1175": {
@@ -3619,6 +3720,16 @@
    "hintSources": [],
    "sources": [
     "https://ko.wikipedia.org/wiki/종단_속도"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "낙하산 펴기 전 몸을 펼친 스카이다이버가 시속 200km 안팎",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Terminal_velocity",
+     "quote": "the terminal speed of a skydiver in a belly-to-earth (i.e., face down) free fall position is about 55 m/s",
+     "note": "55 m/s ≈ 시속 198km — '200km 안팎' 같은 뜻(판정자 unverified 닫힘)"
+    }
    ]
   },
   "1180": {
@@ -3633,13 +3744,24 @@
     "general_hint": "특히 비쌌던 줄무늬 꽃잎은 뒷날 바이러스 감염 때문에 생긴 무늬로 밝혀졌다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-pair-same)",
-   "general_hint": "숙련 장인의 연소득이 약 300플로린이던 때, 가장 아름답다는 구근은 1,000플로린을 넘겨 3,000플로린 이상에 팔리기도 했다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(3,000플로린 이상은 문서에 없음)",
+   "general_hint": "숙련 장인의 한 해 벌이가 150~350플로린이던 때, 가장 귀한 구근은 그 열 배가 넘는 값에 팔렸다.",
    "hintSources": [
     "https://ko.wikipedia.org/wiki/튤립_파동"
    ],
+   "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/튤립_파동"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "숙련 장인 연소득 약 300플로린, 구근은 1,000플로린을 넘겨 3,000플로린 이상",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Tulip_mania",
+     "quote": "certain tulip bulbs sold for more than 10 times the annual income of a skilled artisan ... a skilled labourer might earn ƒ150–350 a year",
+     "note": "ko 튤립파동: '구근은 적어도 1000 플로린'. '3,000플로린 이상'은 문서 문장 없음(ko 문서의 3000은 채무자 수). '숙련 장인 연소득이 150~350플로린이던 때, 가장 귀한 구근은 그 10배가 넘는 값에 팔렸다'로"
+    }
    ]
   },
   "1194": {
@@ -3699,6 +3821,40 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Ex_post_facto_law",
     "https://ko.wikipedia.org/wiki/죄형법정주의"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "형법 제1조에도 같은 내용, 보안처분 적용은 학설이 갈린다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/죄형법정주의",
+     "quote": "소급효 금지의 원칙은 대한민국 형법 제 1조에 명시되어 있다. ... 보안처분의 경우, 적용이 된다는 의견과 적용이 되지 않는다는 두 가지 의견으로 나뉘어 있다.",
+     "note": "문서는 '적용되지 않는다는 것이 다수설'이라고도 적음"
+    },
+    {
+     "what": "variant",
+     "text": "소급입법 금지의 원칙",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/죄형법정주의",
+     "quote": "소급효금지의 원칙",
+     "note": "정답 + '의 원칙' 꼴 — 같은 대상"
+    },
+    {
+     "what": "variant",
+     "text": "소급효 금지",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/죄형법정주의",
+     "quote": "소급효 금지의 원칙은 대한민국 형법 제 1조에 명시되어 있다.",
+     "note": "'소급효금지의 원칙' 넘겨주기 있음(→ 소급효)"
+    },
+    {
+     "what": "variant",
+     "text": "형벌불소급",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?title=형벌불소급의_원칙&redirect=no",
+     "quote": "넘겨주기 형벌불소급의 원칙 → 법률 불소급의 원칙",
+     "note": "형사 영역의 같은 원칙"
+    }
    ]
   },
   "1196": {
@@ -3723,6 +3879,24 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/일사부재리"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "독일 기본법 제103조 제3항, 일본 헌법 제39조",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/일사부재리",
+     "quote": "독일에서는 독일연방공화국 기본법에 의해 일사부재리 원칙이 보장되고 있다. 103조 3항 ... 일본헌법에서는 ... 39조",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "일사부재리의 원칙",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?title=일사부재리의_원칙&redirect=no",
+     "quote": "넘겨주기 일사부재리의 원칙 → 일사부재리",
+     "note": ""
+    }
    ]
   },
   "1212": {
@@ -3746,6 +3920,24 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/27_클럽"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "악마와 거래했다는 속설",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/27_클럽",
+     "quote": "이들은 악마와 계약해 실력을 얻는 대신 27세에 죽었다는 괴담도 있다.",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "27세 클럽",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/wiki/27_클럽",
+     "quote": "27 클럽(영어: 27 Club)은 27세에 사망한 대중음악 음악가들을 부르는 말이다.",
+     "note": "ko 위키 넘겨주기 없음 · 사용례 찾지 않음(검색 한도)"
+    }
    ]
   },
   "1215": {
@@ -3789,6 +3981,32 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/앵커링_효과"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "협상에서 처음 나온 조건에 얽매임, 행태재무학의 경험 의존적 오류",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/앵커링",
+     "quote": "협상 테이블에서 처음 언급된 조건에 얽매여 크게 벗어나지 못하는 효과 ... 행태 재무학에서 말하는 투자자의 비합리적인 행태 중 경험 의존적 오류(Heuristic-Bias)의 일종",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "앵커링",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/앵커링",
+     "quote": "앵커링(anchoring, 정박 효과)이란 행동경제학의 용어로서",
+     "note": "ko 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "닻 내림 효과",
+     "result": "true",
+     "source": "https://brunch.co.kr/@dr-goo/5",
+     "quote": "닻내림 효과 또는 정박 효과",
+     "note": "ko 위키 넘겨주기는 없으나 국내 글에서 앵커링의 번역어로 쓰임"
+    }
    ]
   },
   "1218": {
@@ -3886,6 +4104,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Feeding_the_multitude"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "요한복음은 한 소년에게서 나왔다고 전한다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Feeding_the_multitude",
+     "quote": "the Gospel of John reports that Jesus used five loaves and two fish supplied by a boy",
+     "note": ""
+    }
    ]
   },
   "1232": {
@@ -3955,6 +4183,32 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/부양비"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "2019년 유엔 전망, 한국 2060년 100명을 넘어 세계 최고",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/부양비",
+     "quote": "2019년 유엔은 한국이 2060년에 103.4명으로 전 세계에서 부양비가 가장 높은 국가가 되며",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "총부양비",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/부양비",
+     "quote": "총 부양비 = (유소년인구+고령인구)/생산가능인구(15~64)×100",
+     "note": "같은 지표"
+    },
+    {
+     "what": "variant",
+     "text": "부양비율",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=부양비율&redirects=1",
+     "quote": "",
+     "note": "ko 위키 넘겨주기 없음 · 문서 안에 이 표기 없음"
+    }
    ]
   },
   "1240": {
@@ -3991,18 +4245,58 @@
     "general_hint": "'덤으로 얹어 주는 것'을 뜻하는 영어 낱말이 이름 뒤에 붙는다.",
     "variants": []
    },
-   "why": "제안 힌트가 hint-check 막힘(새 변형 \"인구 배당 효과\" 의 \"효과\") — 낱말만 바꿈",
-   "general_hint": "블룸과 윌리엄슨은 1998년 연구에서 동아시아 고속 성장의 4분의 1에서 5분의 2를 이 시기 덕분으로 설명했다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"4분의 1~5분의 2\" 는 문서에 없음)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "인구 배당"
+     ],
+     "why": "인구 배당 · 인구 배당 효과 — 한국어 표제어 · 용례 못 찾음(사실 확인 unverified · 직역)"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "인구 배당 효과"
+     ],
+     "why": "인구 배당 · 인구 배당 효과 — 한국어 표제어 · 용례 못 찾음(사실 확인 unverified · 직역)"
+    }
+   ],
+   "general_hint": "블룸과 윌리엄슨은 1998년 연구에서 동아시아 고속 성장의 상당 부분을 이 시기의 효과로 설명했다.",
    "hintSources": [],
    "add": [
-    "인구 배당",
     "인구배당",
-    "인구 배당 효과",
     "인구보너스"
    ],
    "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Demographic_dividend"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "블룸과 윌리엄슨 1998년, 동아시아 고속 성장의 4분의 1에서 5분의 2",
+     "result": "partial",
+     "source": "https://www.nber.org/digest/jul98/demographic-transitions-and-economic-miracles-emerging-asia",
+     "quote": "one-third to one-half of the growth experienced in East Asia between 1965 and 1990 could be attributable to ... this 'demographic gift'",
+     "note": "논문 초록(ideas.repec)은 '상당 부분 기여'로만 적고, NBER 요약은 3분의 1~2분의 1. '4분의 1~5분의 2'는 연 문서에서 확인 못 함 → '블룸과 윌리엄슨은 1998년 연구에서 동아시아 고속 성장의 상당 부분을 이 시기의 효과로 설명했다'로"
+    },
+    {
+     "what": "variant",
+     "text": "인구 배당",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=인구 배당|인구배당&redirects=1",
+     "quote": "",
+     "note": "ko 위키 표제어 · 넘겨주기 없음, 검색에서 국내 사용례 못 찾음(demographic dividend 직역)"
+    },
+    {
+     "what": "variant",
+     "text": "인구 배당 효과",
+     "result": "unverified",
+     "source": "",
+     "quote": "",
+     "note": "위와 같음"
+    }
    ]
   },
   "1245": {
@@ -4019,19 +4313,53 @@
     "variants": []
    },
    "why": "제안 힌트가 hint-check 막힘(정답 조각 \"표본\") — 문구만 바꾸고 부트스트랩(어려운 말)을 뺌",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "오차범위"
+     ],
+     "why": "오차범위 — 허용 오차(margin of error)라는 다른 대상(사실 확인 false · 15 §3-2)"
+    }
+   ],
    "general_hint": "조사할 사람 수를 크게 늘리면 줄일 수 있지만, 모집단의 참값을 모르니 정확히 재지는 못하고 추정만 한다.",
    "hintSources": [
     "https://ko.wikipedia.org/wiki/표본오차"
    ],
    "add": [
     "표본 오차",
-    "오차범위",
     "오차 범위",
     "표집오차"
    ],
    "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/표본오차"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "표본을 크게 하면 줄지만 모집단 값을 몰라 정확히 재지 못하고 부트스트랩 등으로 추정",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Sampling_error",
+     "quote": "exact measurement of the sampling errors will usually not be possible; however they can often be estimated, either by general methods such as bootstrapping",
+     "note": "ko 표본 오차: '더 큰 표본을 취함으로써 줄일 수 있다'"
+    },
+    {
+     "what": "variant",
+     "text": "오차범위",
+     "result": "false",
+     "source": "https://ko.wikipedia.org/wiki/허용_오차",
+     "quote": "허용 오차(margin of error) 또는 오차 범위는 설문 조사 등의 결과에서 랜덤 샘플링 오차의 양을 나타내는 통계학 용어다.",
+     "note": "오차범위는 넘겨주기로 '허용 오차'(margin of error) 문서 — 표본오차의 크기를 나타내는 다른 용어(§3-2 다른 대상)"
+    },
+    {
+     "what": "variant",
+     "text": "표집오차",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=표집오차|표집 오차&redirects=1",
+     "quote": "",
+     "note": "ko 위키 넘겨주기 없음(문서 별칭은 샘플링 오류 · 샘플링 에러 · 표본 추출상의 오류)"
+    }
    ]
   },
   "1250": {
@@ -4077,6 +4405,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/세차_운동"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "히파르코스가 기원전 2세기에 옛 관측과 자신의 관측을 견주어 알아냄",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/세차_운동",
+     "quote": "그리스의 히파르코스는 기원전 120년에 이전 천문학자들의 관측과 자신의 관측을 종합하여 세차운동을 발견하였다.",
+     "note": ""
+    }
    ]
   },
   "1261": {
@@ -4118,6 +4456,16 @@
    "hintSources": [],
    "sources": [
     "https://ko.wikipedia.org/wiki/스위치백"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "경사는 이기지만 속도를 늦춰야 하고 사고 위험",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/스위치백",
+     "quote": "경사를 극복할 수 있지만, 서행 운전을 해야 하며, 위험이 뒤따른다는 단점이 있다.",
+     "note": ""
+    }
    ]
   },
   "1268": {
@@ -4132,11 +4480,22 @@
     "general_hint": "'길고 크다'는 뜻의 한자어가 앞에 붙는다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-letters)",
-   "general_hint": "이음매가 적어 선로가 튼튼하고 정비에 드는 수고가 덜하다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"선로가 튼튼하다\" 는 문서에 없음)",
+   "general_hint": "이음매가 없어 놓는 값은 더 들지만 정비에 드는 비용이 훨씬 적다.",
    "hintSources": [],
+   "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Continuous_welded_rail"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "이음매가 적어 선로가 튼튼하고 정비에 드는 수고가 덜하다",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Railway_track",
+     "quote": "Welded rails are more expensive to lay than jointed tracks, but have much lower maintenance costs.",
+     "note": "정비 부담이 덜하다는 것은 문서와 같음. '선로가 튼튼하다'는 연 문서(en Railway track · ko 선로)에 없음 → '이음매가 없어 놓는 값은 더 들지만 정비에 드는 비용이 훨씬 적다'로"
+    }
    ]
   },
   "1271": {
@@ -4201,6 +4560,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/맨해튼_계획"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "공병대 지구대에 주둔지 이름을 붙이던 관례, 본부 사무소는 뉴욕 브로드웨이",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/맨해튼_계획",
+     "quote": "공병사령부의 지구대는 통상 주둔지의 지명을 따는 것이 관례였기 때문에 ... 뉴욕 브로드웨이에 있는 타워 270에 공식적인 본부 사무소를 개설하였다.",
+     "note": ""
+    }
    ]
   },
   "1286": {
@@ -4223,6 +4592,24 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Psycho_shower_scene",
     "https://en.wikipedia.org/wiki/Psycho_(1960_film)"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "히치콕은 카메라 위치를 70번 바꿔 가며 45초 분량으로 찍었다고 말한 것으로 알려져",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Psycho_shower_scene",
+     "quote": "telling director François Truffaut that \"there were seventy camera setups for forty-five seconds of footage\"",
+     "note": "다른 인터뷰에서는 '78조각'이라고도 함"
+    },
+    {
+     "what": "hint",
+     "text": "모텔과 집 외관 세트가 유니버설 스튜디오 야외 촬영장에 남아 관광 코스",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Psycho_(1960_film)",
+     "quote": "The original exteriors of the Bates Motel and Bates house ... are still standing at the Universal Studios backlot ... and are a regular attraction on the studio's tour.",
+     "note": ""
+    }
    ]
   },
   "1296": {
@@ -4243,6 +4630,16 @@
    "hintSources": [],
    "sources": [
     "https://ko.wikipedia.org/wiki/롱_테이크"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "필름 통 길이 때문에 어렵던 것이 디지털 영상으로 크게 늘었다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Long_take",
+     "quote": "The length of a long take was originally limited to how much film the magazine of a motion picture camera could hold, but the advent of digital video has considerably lengthened the maximum potential length of a take.",
+     "note": ""
+    }
    ]
   },
   "1297": {
@@ -4284,6 +4681,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/점프_컷",
     "https://en.wikipedia.org/wiki/Jump_cut"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "연속 편집 규칙을 어기는 것으로 분류, 창의적 목적으로 쓰이기도",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Jump_cut",
+     "quote": "jump cuts are considered a violation of classical continuity editing ... but are sometimes nonetheless used for creative purposes.",
+     "note": ""
+    }
    ]
   },
   "1304": {
@@ -4312,6 +4719,32 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/프레임_레이트"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "비디오 게임은 대개 30에서 144 사이",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/프레임_레이트",
+     "quote": "비디오 게임은 대개 초당 30에서 144 프레임을 사용한다.",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "fps",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/FPS",
+     "quote": "초당 프레임 수(frames per second)",
+     "note": "FPS 동음이의 문서의 한 뜻(1인칭 슈팅 게임과 겹침) — 질문 맥락상 같은 대상"
+    },
+    {
+     "what": "variant",
+     "text": "초당 프레임 수",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?title=초당_프레임_수&redirect=no",
+     "quote": "넘겨주기 초당 프레임 수 → 프레임 레이트",
+     "note": ""
+    }
    ]
   },
   "1316": {
@@ -4371,6 +4804,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/라파스"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1548년 알론소 데 멘도사 선장이 세운 도시",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/라파스",
+     "quote": "1548년 에스파냐의 알론소 데 멘도사 선장이 건설했다.",
+     "note": ""
+    }
    ]
   },
   "1325": {
@@ -4411,6 +4854,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/대운하_(중국)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "공사에 8년, 전체 길이 2,700킬로미터쯤",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/대운하",
+     "quote": "모두 8년의 시간이 소요되었으며 대운하의 전체 길이는 2,700km 정도였다.",
+     "note": ""
+    }
    ]
   },
   "1343": {
@@ -4450,6 +4903,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/삼포제"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "11세기 무렵부터 퍼짐, 한 밭에는 완두콩 · 렌즈콩 같은 콩류",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/삼포제",
+     "quote": "이후 11세기 무렵 중세 유럽에서도 채택되었다. ... 두 번째 밭에는 완두콩, 렌즈콩, 콩과 같은 다른 작물을 심었으며",
+     "note": ""
+    }
    ]
   },
   "1346": {
@@ -4477,6 +4940,24 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Magna_Carta"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "제61조, 귀족 25명 위원회, 40일 안에 바로잡지 않으면 성과 땅 압류",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Magna_Carta",
+     "quote": "If John did not conform to the charter within 40 days of being notified of a transgression by the council, the 25 barons were empowered by clause 61 to seize John's castles and lands",
+     "note": "'제61조'는 뒷날 역사가가 붙인 번호(문서: later labelled \"clause 61\")"
+    },
+    {
+     "what": "variant",
+     "text": "대헌장",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?title=대헌장&redirect=no",
+     "quote": "넘겨주기 대헌장 → 마그나 카르타",
+     "note": ""
+    }
    ]
   },
   "1347": {
@@ -4512,14 +4993,32 @@
     "general_hint": "1370년 슈트랄준트 조약으로 덴마크를 꺾고 발트해 무역에서 큰 힘을 얻었다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (explanation,h-error)",
-   "explanation": "회원 도시들이 각자 군함을 갖추고 필요하면 상선까지 전투에 돌려, 사실상 하나의 세력처럼 움직였습니다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(군함은 \"몇몇 도시\")",
+   "explanation": "여러 회원 도시가 군함을 갖추고 필요하면 상선까지 전투에 돌려, 사실상 하나의 세력처럼 움직였습니다.",
    "general_hint": "1370년 슈트랄준트 조약으로 덴마크 왕에게서 세금 면제와 외레순 해협 요새에 대한 영향력을 얻어 냈다.",
    "hintSources": [
     "https://en.wikipedia.org/wiki/Hanseatic_League"
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Hanseatic_League"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "회원 도시들이 각자 군함을 갖추고 필요하면 상선까지 전투에 돌려",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Hanseatic_League",
+     "quote": "Several Hanseatic cities maintained their warships and in times of need, repurposed merchant ships.",
+     "note": "문서는 '몇몇 도시'(several). '회원 도시들이'는 전체로 읽힘 → '여러 회원 도시가 군함을 갖추고 필요하면 상선까지 전투에 돌려'로"
+    },
+    {
+     "what": "hint",
+     "text": "1370년 슈트랄준트 조약으로 덴마크 왕에게서 세금 면제와 외레순 해협 요새 영향력",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Hanseatic_League",
+     "quote": "forced Valdemar IV, King of Denmark ... to grant tax exemptions and influence over Øresund fortresses for 15 years in the peace treaty",
+     "note": "문서는 '15년 동안'으로 기한을 둠(1385년 반환)"
+    }
    ]
   },
   "1351": {
@@ -4563,13 +5062,24 @@
     "general_hint": "무신론적인 이성 숭배에 반대해 '최고 존재'를 기리는 새 종교를 세우고 큰 축제를 열었다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-pair-same)",
-   "general_hint": "무신론자였던 급진파 에베르와 갈등을 빚은 것으로 알려져 있다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"무신론자\" 단정은 문서에 없음)",
+   "general_hint": "급진적인 탈그리스도교화를 주장한 에베르와 갈등을 빚었다.",
    "hintSources": [
     "https://ko.wikipedia.org/wiki/막시밀리앵_로베스피에르"
    ],
+   "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/막시밀리앵_로베스피에르"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "무신론자였던 급진파 에베르와 갈등",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Jacques_Hébert",
+     "quote": "Hébert advocated for a programme of radical dechristianization, which brought him into conflict with Maximilien Robespierre",
+     "note": "갈등은 닫힘(ko 로베스피에르 문서도 에베르파와의 대립 서술). '무신론자'라는 단정은 연 문서에 없음 → '급진적인 탈그리스도교화를 주장한 에베르와 갈등을 빚었다'로"
+    }
    ]
   },
   "1360": {
@@ -4592,6 +5102,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/차티스트_운동"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1838년 시작, 1848년 프랑스 2월 혁명을 고비로 급격히 쇠퇴",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/차티스트_운동",
+     "quote": "1838년에서 1848년에 걸쳐 ... 그 최고조였던 2월 혁명을 고비로 하여 급격히 쇠퇴해지고 말았다.",
+     "note": ""
+    }
    ]
   },
   "1365": {
@@ -4631,6 +5151,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/세일즈맨의_죽음"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1949년 발표, 퓰리처상과 토니상 모두",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Death_of_a_Salesman",
+     "quote": "It won the 1949 Pulitzer Prize for Drama and Tony Award for Best Play.",
+     "note": ""
+    }
    ]
   },
   "1384": {
@@ -4653,6 +5183,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/소네트",
     "https://ko.wikipedia.org/wiki/프란체스코_페트라르카"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "페트라르카가 라우라를 기리는 시집으로 이 형식을 유럽 표준형으로 퍼뜨림",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/프란체스코_페트라르카",
+     "quote": "그가 사용한 이 형식은 유럽 제국(諸國)에 있어서 표준형이 되었다.",
+     "note": "같은 문서: 라우라 생전 소네트 225편 · 사후 90편"
+    }
    ]
   },
   "1419": {
@@ -4676,6 +5216,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/픽사_애니메이션_스튜디오"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "스티브 잡스가 픽사를 인수한 뒤, 그래픽 컴퓨터를 알리려 만든 룩소 주니어",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Luxo_Jr.",
+     "quote": "was spun out as a corporation in February 1986 with investment by Steve Jobs ... produced by Pixar employee John Lasseter as a demonstration of the Pixar Image Computer's capabilities.",
+     "note": "'주목받은 것이 시작'은 문서의 'breakthrough' · 아카데미 후보 서술과 어긋나지 않음"
+    }
    ]
   },
   "1441": {
@@ -4716,6 +5266,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/낙관"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "원나라 이전 중국 회화에서는 거의 하지 않았고, 화면을 해치지 않으려 바위 틈에 숨겨 적음",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/낙관",
+     "quote": "중국회화에서는 원 이전은 거의 낙관을 하지 않았으며, 이따금 낙관할 때에는 화면을 손상시키지 않도록 돌 틈새 등에 숨겨 썼다.",
+     "note": ""
+    }
    ]
   },
   "1448": {
@@ -4731,15 +5291,34 @@
     "general_hint": "이름 뒤 글자가 '구름'을 뜻하는 한자이며, 늙은 별이 바깥층을 내뿜어 만든 것도 같은 이름으로 부른다.",
     "variants": []
    },
-   "why": "질문 제안(오리온자리)을 받으면서 해설의 오리온 문장이 질문과 겹쳐 GEN 이 해설을 다시 씀(판정자 note 권고)",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"고리 모양\" 은 일부에만 맞음)",
    "question_text": "별과 별 사이에 가스와 먼지가 모여 밤하늘에서 흐릿한 구름처럼 보이는 천체로, 오리온자리의 것은 별이 태어나는 곳으로 유명한 것은?",
-   "general_hint": "태양 같은 작은 별이 수명을 다하며 바깥층을 내뿜어 만든 고리 모양 천체도 같은 이름으로 불린다.",
+   "general_hint": "태양 같은 작은 별이 수명을 다하며 바깥층을 내뿜어 만든 천체도 같은 이름으로 불린다.",
    "hintSources": [
     "https://ko.wikipedia.org/wiki/성운"
    ],
    "explanation": "그 안의 가스와 먼지가 중력으로 뭉치면서 새 별이 태어나, \"별의 요람\" 이라고도 부릅니다.",
+   "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/성운"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "별과 별 사이 가스와 먼지가 모여 흐릿한 구름처럼 보이는 천체, 오리온자리의 것은 별이 태어나는 곳",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Orion_Nebula",
+     "quote": "is the closest region of massive star formation to Earth.",
+     "note": "ko 성운: '성간 물질과 수소로 이루어진 구름'"
+    },
+    {
+     "what": "hint",
+     "text": "태양 같은 작은 별이 수명을 다하며 바깥층을 내뿜어 만든 고리 모양 천체",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/성운",
+     "quote": "행성상 성운은 지구의 태양과 같은 낮은 질량의 별들의 일생의 최종단계이다.",
+     "note": "en Planetary nebula: 'a star's outer layers being thrown into space at the end of its life'. '고리 모양'은 일부(고리 성운 등)에만 맞음 → '고리 모양' 을 빼고 '바깥층을 내뿜어 만든 천체'로"
+    }
    ]
   },
   "1449": {
@@ -4761,6 +5340,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/암흑_물질"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "보통 물질의 다섯 배쯤, 우주 전체 에너지의 4분의 1 남짓",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/암흑_물질",
+     "quote": "우주의 총 질량-에너지 함량은 5%의 일반 물질과 에너지, 26.8%의 암흑 물질, 그리고 ... 68.2%를 포함한다.",
+     "note": ""
+    }
    ]
   },
   "1453": {
@@ -4782,6 +5371,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/국부_은하군"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "삼각형자리의 소용돌이와 대 · 소 마젤란 구름도 식구",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Local_Group",
+     "quote": "The Triangulum Galaxy (M33) is the third-largest member of the Local Group ... and is the third spiral galaxy. ... Large Magellanic Cloud, Small Magellanic Cloud",
+     "note": ""
+    }
    ]
   },
   "1454": {
@@ -4803,6 +5402,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/중력_렌즈"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1936년 아인슈타인이 이론적으로 계산, 1937년 츠비키는 은하단도 이런 역할을 한다고 주장",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/중력렌즈",
+     "quote": "1936년에 아인슈타인에 의해 정량화되었으며 ... 프리츠 츠비키(Fritz Zwicky)는 1937년 은하무리가 중력렌즈의 역할을 한다고 주장하였다.",
+     "note": "처음 언급은 1924년 흐볼손"
+    }
    ]
   },
   "1455": {
@@ -4817,11 +5426,22 @@
     "general_hint": "이름이 붙은 물리학자는 1942년 시카고에서 세계 최초의 원자로를 가동한 이탈리아 출신 과학자다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-famous)",
-   "general_hint": "1975년 마이클 하트가 이 물음을 본격적으로 연구했고, 치올코프스키도 비슷한 문제를 먼저 제기했다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(치올코프스키는 암시뿐)",
+   "general_hint": "1975년 마이클 하트가 이 물음을 본격적으로 연구했고, 치올코프스키도 앞서 미공개 원고에서 비슷한 물음을 암시한 바 있다.",
    "hintSources": [],
+   "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/페르미_역설"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1975년 마이클 하트가 본격 연구, 치올코프스키도 비슷한 문제를 먼저 제기",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/페르미_역설",
+     "quote": "페르미 이전에 콘스탄틴 치올코프스키가 1933년에 발표한 미공개 원고에서 암묵적으로 언급한 바 있다. 1975년에는 마이클 하트가 이 문제에 대한 연구를 시작하였으며",
+     "note": "하트는 닫힘. 치올코프스키는 '미공개 원고에서 암묵적으로 언급' — '제기했다'보다 약함 → '치올코프스키도 앞서 미공개 원고에서 비슷한 물음을 암시한 바 있다'로"
+    }
    ]
   },
   "1479": {
@@ -4843,6 +5463,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/자연선택"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1858년 다윈과 월리스가 함께 제기",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/자연선택",
+     "quote": "자연선택은 찰스 다윈과 알프레드 러셀 월리스가 1858년 처음으로 각각 동시에 제기하였다.",
+     "note": "문서는 '각각 동시에' — '함께'는 공동 발표(1858 린네 학회)로 읽혀 어긋나지 않음"
+    }
    ]
   },
   "1487": {
@@ -4882,6 +5512,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/고세균"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "이산화탄소와 수소로 메테인을 만드는 무리가 여기에 든다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/고세균",
+     "quote": "메테인 세균은 CO2와 H2를 메테인 가스(CH4)로 전환할 수 있다.",
+     "note": "칼 워즈 · 리보솜 RNA 부분은 현재 힌트에 이미 있음"
+    }
    ]
   },
   "1510": {
@@ -4948,6 +5588,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/니호늄",
     "https://ko.wikipedia.org/wiki/국제순수응용화학연합"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "2015년 12월 113 · 115 · 117 · 118번 원소 발견을 한꺼번에 공식 인정, 연구소에 명명권",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/니호늄",
+     "quote": "2015년 12월, 국제순수·응용화학연합에서 모스코븀, 테네신, 오가네손과 함께 발견을 공식적으로 인정하였다. 이에 따라 일본 이화학연구소가 발견자로 인정되어 명명권을 얻게 되었다.",
+     "note": ""
+    }
    ]
   },
   "1527": {
@@ -4973,6 +5623,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/레퀴엠",
     "https://en.wikipedia.org/wiki/War_Requiem"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "브리튼, 1962년 새 코번트리 대성당 봉헌, 라틴어 전례문 사이에 영시",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/War_Requiem",
+     "quote": "completed in January 1962. The War Requiem was performed for the consecration of the new Coventry Cathedral ... The traditional Latin texts are interspersed ... with extra-liturgical poems by Wilfred Owen",
+     "note": ""
+    }
    ]
   },
   "1534": {
@@ -5041,6 +5701,24 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Golden_hour_(photography)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "길이는 계절과 위도에 따라 달라짐",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Golden_hour_(photography)",
+     "quote": "the effect has no clearly defined duration and varies according to season and latitude.",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "매직아워",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/매직_아워",
+     "quote": "매직 아워(영어: magic hour)는 ... 골든 아워(golden hour)라고도 한다.",
+     "note": "en 문서도 'also sometimes called the magic hour'"
+    }
    ]
   },
   "1581": {
@@ -5066,6 +5744,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/탄닌"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "먹히지 않으려 만드는 방어 물질, 밤과 도토리에 많음",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/탄닌",
+     "quote": "식물체 내에서 미생물, 곤충, 포유동물 등에 대한 방어기능을 갖는다. 탄닌류는 감, 밤, 도토리, 차 등에 많이 함유되어 있으며",
+     "note": ""
+    }
    ]
   },
   "1585": {
@@ -5197,26 +5885,56 @@
     "general_hint": "땅속에서 뜨거운 물을 이따금 뿜어 올리는 온천 이름에도 같은 한자어가 들어간다.",
     "variants": []
    },
-   "why": "제안 힌트 \"가장 널리 쓰이는\" 은 단정이 세어 \"대표적\" 으로 낮춤",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(양수발전은 저장 방식 가운데 가장 흔함)",
    "notTaken": [
     {
      "field": "variants",
      "proposal": [
       "변동성"
      ],
-     "why": "변동성 — 더 넓은 말(variability · 15 B7) — 질문의 \"필요할 때 만들 수 없는\" 성질과 같은 대상이 아님"
+     "why": "변동성 — 더 넓은 말(15 B7 · 사실 확인 false) / 간헐적 특성 — 표제어 · 용례 못 찾은 서술구(사실 확인 unverified)"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "간헐적 특성"
+     ],
+     "why": "변동성 — 더 넓은 말(15 B7 · 사실 확인 false) / 간헐적 특성 — 표제어 · 용례 못 찾은 서술구(사실 확인 unverified)"
     }
    ],
-   "general_hint": "남는 때의 전기로 물을 높은 곳에 퍼 올려 두었다가 쓰는 양수발전이 대표적인 대응책으로 꼽힌다.",
+   "general_hint": "전기 저장 방식 가운데서는 양수발전이 가장 널리 쓰인다.",
    "hintSources": [
     "https://en.wikipedia.org/wiki/Variable_renewable_energy"
-   ],
-   "add": [
-    "간헐적 특성"
    ],
    "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Variable_renewable_energy"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "양수발전이 가장 널리 쓰이는 대응책",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Variable_renewable_energy",
+     "quote": "Pumped storage hydropower is the most prevalent existing technology used",
+     "note": "문서는 저장 기술 가운데 가장 흔하다는 것. 대응책 전체(연계 · 예비 발전 · 과잉 설비 등) 가운데 가장 널리라고는 하지 않음 → '전기 저장 방식 가운데서는 양수발전이 가장 널리 쓰인다'로"
+    },
+    {
+     "what": "variant",
+     "text": "간헐적 특성",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=간헐적 특성&redirects=1",
+     "quote": "",
+     "note": "표제어 · 넘겨주기 없음 — 서술구라 통용 표기 근거 못 찾음"
+    },
+    {
+     "what": "variant",
+     "text": "변동성",
+     "result": "false",
+     "source": "https://ko.wikipedia.org/wiki/변동성",
+     "quote": "변동성(영어: volatility)은 금융에서 시간에 따른 일련의 거래 가격의 변동 정도이며",
+     "note": "더 넓은 일반어(15 B7) — ko 표제어는 금융 변동성. en VRE 문서도 variability 를 간헐 전원의 '특성 하나'로만 듦"
+    }
    ]
   },
   "1621": {
@@ -5300,8 +6018,8 @@
      "패밀리 컴퓨터"
     ]
    },
-   "why": "V014 fix 제안 반영 (h-weak,variants)",
-   "general_hint": "2003년 9월까지 만들어졌고 전 세계에서 6,000만 대 넘게 팔렸다고 한다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"넘게\" 는 문서보다 셈)",
+   "general_hint": "2003년 9월까지 만들어졌고 전 세계에서 약 6,000만 대가 팔렸다고 한다.",
    "hintSources": [
     "https://ko.wikipedia.org/wiki/패밀리_컴퓨터"
    ],
@@ -5309,8 +6027,27 @@
     "패밀리컴퓨터",
     "패미콤"
    ],
+   "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/패밀리_컴퓨터"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "2003년 9월까지 생산, 전 세계 6,000만 대 넘게",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/패밀리컴퓨터",
+     "quote": "2003년 9월에는 부품 수급 등의 어려움으로 생산이 종료되었다. ... 닌텐도에 따르면 전 세계에서 약 6,000만대가 판매되었다.",
+     "note": "생산 종료는 닫힘. 문서는 '약 6,000만 대'(NES 포함) — '넘게'는 문서보다 셈 → '전 세계에서 약 6,000만 대가 팔렸다'로"
+    },
+    {
+     "what": "variant",
+     "text": "패미콤",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?title=패미콤&redirect=no",
+     "quote": "넘겨주기 패미콤 → 패밀리컴퓨터",
+     "note": ""
+    }
    ]
   },
   "1640": {
@@ -5360,6 +6097,24 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/승강제"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "한국은 2026년부터 K리그2와 K3리그 사이에도 처음 둔다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/승강제",
+     "quote": "K리그2: 2026년부터 K리그2와 K3리그 간 승강제가 처음으로 도입됩니다.",
+     "note": "시간 의존 — 판정자 note 대로 시행 뒤 '두었다'로"
+    },
+    {
+     "what": "variant",
+     "text": "승강 제도",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/승강제",
+     "quote": "",
+     "note": "정답의 풀어 쓴 꼴(승강+제도). 주의: ko 위키 '승강 제도'는 불교 '승관 제도'로 넘겨주기 돼 있어 근거로 쓰지 않음"
+    }
    ]
   },
   "1649": {
@@ -5442,6 +6197,16 @@
    "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/방적기"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "제임스 하그리브스가 1764년에 개발했다고 전한다",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Spinning_jenny",
+     "quote": "It was invented in 1764–1765 by James Hargreaves",
+     "note": "ko 방적기 토막 문서는 '방적기'를 하그리브스가 1764년 개발했다고 적지만, 하그리브스가 만든 것은 방적기 가운데 '제니'(현재 힌트에도 있음). 방적기 전체의 발명자로 읽힘 → '영국의 제임스 하그리브스가 1764년 무렵 만든 제니가 대표적인 초기 기계다'로"
+    }
    ]
   },
   "1670": {
@@ -5485,6 +6250,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Elisha_Otis"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "버몬트 출생, 1861년 마흔아홉에 디프테리아로 사망",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Elisha_Otis",
+     "quote": "Otis was born on August 3, 1811, in Halifax, Vermont ... Otis contracted diphtheria and died on April 8, 1861; he was 49 years old.",
+     "note": ""
+    }
    ]
   },
   "1687": {
@@ -5550,6 +6325,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/백제_금동_대향로"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "받침은 연꽃을 문 용, 뚜껑 산봉우리에 신선으로 보이는 사람들과 여러 동물",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/백제_금동대향로",
+     "quote": "발가락이 네 개 있는 용이 위의 연꽃을 물고 ... 이 산에는 말을 타고 사냥하는 사람, 신선으로 보이는 사람들, 호랑이, 사자, 원숭이 ... 등 많은 동물들이 장식되어 있다.",
+     "note": ""
+    }
    ]
   },
   "1716": {
@@ -5571,6 +6356,24 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/만적의_난"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1198년 개경 북산에서 땔나무를 하던 노비들이 모여 모의",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/만적의_난",
+     "quote": "만적은 사노비로서 여섯 명의 노예와 함께 개경의 북산에 가서 나무를 하다가 공사노비들을 모아 놓고 난을 일으킬 것을 모의하였다.",
+     "note": ""
+    },
+    {
+     "what": "hint",
+     "text": "누런 종이 수천 장에 정(丁)자를 새겨 표식",
+     "result": "true",
+     "source": "https://www.dailian.co.kr/news/view/1624640/",
+     "quote": "흥국사에 모여서 누런 종이 수천 장에 '丁'자를 적어서 옷의 앞뒤로 붙여서 같은 편을 확인한 후에",
+     "note": "ko 위키 본문에는 이 대목 없음 — 언론 연재로 닫음(고려사 최충헌전 '黃紙數千 皆鈒丁字爲識')"
+    }
    ]
   },
   "1718": {
@@ -5592,6 +6395,24 @@
    "hintSources": [],
    "sources": [
     "https://ko.wikipedia.org/wiki/벽란도"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "'코리아' 라는 이름이 서방에 알려지는 데 영향을 준 것으로 추측",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/벽란도",
+     "quote": "한국이 '고려'(코리아)라는 이름으로 서양에 알려진 것도 이 시기에 벽란도를 드나든 아라비아나 페르시아(이란)의 상인들을 통해 전파된 것으로 추측되고 있다.",
+     "note": ""
+    },
+    {
+     "what": "hint",
+     "text": "신라 말기부터 이 근처는 해상 세력의 근거지",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/벽란도",
+     "quote": "예성강 하구는 신라 말기부터 해상 세력의 근거지로 기능했으며",
+     "note": ""
+    }
    ]
   },
   "1721": {
@@ -5613,6 +6434,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/경천사_십층석탑"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "서울 원각사지 탑 같은 뒷 시대 탑에 영향",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/개성_경천사지_십층석탑",
+     "quote": "이러한 양식은 이후 조선시대에 이르러 서울 원각사지 십층석탑(국보 제2호)에 영향을 주기도 하였다.",
+     "note": ""
+    }
    ]
   },
   "1723": {
@@ -5654,6 +6485,16 @@
    "hintGen": true,
    "sources": [
     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=낭패"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "앞다리가 짧은 짐승과 뒷다리가 짧은 짐승",
+     "result": "true",
+     "source": "https://en.wiktionary.org/wiki/狽",
+     "quote": "狽 (mythology) a legendary wolf-like animal with short forelegs",
+     "note": "'없는' → '짧은'이 전설 서술과 맞음"
+    }
    ]
   },
   "1738": {
@@ -5675,6 +6516,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/태평천하"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "작가는 전북 군산에서 나고 자라 익숙한 전라도 방언을 살려 씀",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/태평천하",
+     "quote": "전라북도 군산시에서 나고자란 덕분에 익숙한 전라도 방언을 쓴 맛깔나는 문장",
+     "note": "출생지는 당시 옥구군 임피면(현 군산시)"
+    }
    ]
   },
   "1741": {
@@ -5696,6 +6547,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/벙어리_삼룡이"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1925년 7월 '여명' 창간호, 1929년 나운규 영화화",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/벙어리_삼룡이",
+     "quote": "1925년 7월 《여명(黎明)》 창간호에 처음 발표되었다. 나운규 감독이 1929년에 영화화했고",
+     "note": ""
+    }
    ]
   },
   "1744": {
@@ -5715,6 +6576,16 @@
    "hintSources": [],
    "sources": [
     "https://ko.wikipedia.org/wiki/백치_아다다"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1935년 5월 '조선문단' 발표, 배경은 평안도 신천 지방",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/백치_아다다",
+     "quote": "계용묵이 1935년 5월 〈조선문단〉에 발표한 소설이다. 작가의 고향과 가까운 곳에 있는 신미도를 중심으로 한 평안도 신천 지방에서 벌어지는",
+     "note": ""
+    }
    ]
   },
   "1749": {
@@ -5738,6 +6609,24 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/룰라_(음악_그룹)"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "뒤에 표절 시비로 이미지가 크게 떨어진",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/룰라_(음악_그룹)",
+     "quote": "정규 3집 앨범의 타이틀곡 《천상유애》가 표절시비에 휘말리며 한순간에 이미지가 추락, 침체기를 맞았다.",
+     "note": "'활동 중단'을 뺀 것이 문서와 맞음(4집으로 명성 회복)"
+    },
+    {
+     "what": "hint",
+     "text": "4집 'All System Go' 의 '3!4!' 가 1996년 TV가요20 1위 세 번",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/룰라_(음악_그룹)",
+     "quote": "1996년 (총 3회) 3! 4! — 8월 18일 · 8월 25일 · 9월 1일 SBS 《TV가요20》 1위 (3주 연속)",
+     "note": "가요 프로그램 1위 표(위키 원문)"
+    }
    ]
   },
   "1760": {
@@ -5879,6 +6768,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/비감염성_질환",
     "https://en.wikipedia.org/wiki/Noncommunicable_disease"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "뇌졸중과 알츠하이머도 이 무리에 든다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Non-communicable_disease",
+     "quote": "NCDs include Parkinson's disease, autoimmune diseases, strokes, heart diseases, cancers, diabetes, ... Alzheimer's disease",
+     "note": ""
+    }
    ]
   },
   "1803": {
@@ -5899,6 +6798,16 @@
    "hintSources": [],
    "sources": [
     "https://ko.wikipedia.org/wiki/평균율"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "건반 악기와 프렛 악기는 이 방식에 가깝게 맞춤",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/평균율",
+     "quote": "관악기나 건반 악기, 프렛 악기에서도 정확한 평균율에 맞춰 조율하는 것은 기술적으로 어려우므로 그에 근사한 조율을 사용한다.",
+     "note": ""
+    }
    ]
   },
   "1811": {
@@ -5925,6 +6834,32 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Maat"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "심장이 이것보다 가볍거나 균형이 맞으면 낙원 '아루'로",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Maat",
+     "quote": "If the heart was found to be lighter or equal in weight to the feather of Maat, the deceased had led a virtuous life and would go on to Aaru.",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "마아트의 깃털",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Maat",
+     "quote": "the feather of Maat",
+     "note": "같은 대상을 더 좁혀 부른 것(해설에도 '마아트의 깃털'). ko 위키 넘겨주기는 없음"
+    },
+    {
+     "what": "variant",
+     "text": "마아트 깃털",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Maat",
+     "quote": "the feather of Maat",
+     "note": "위와 같음(조사 뺀 꼴)"
+    }
    ]
   },
   "1813": {
@@ -5946,6 +6881,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Isis"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "그리스 지배기에 세라피스와 함께 섬김, 그리스 신도는 뱃길을 지키는 신으로",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Isis",
+     "quote": "In the Hellenistic period ... Isis was worshipped by Greeks and Egyptians, along with a new god, Serapis. Isis's Greek devotees ascribed to her traits ... such as the invention of marriage and the protection of ships at sea.",
+     "note": ""
+    }
    ]
   },
   "1822": {
@@ -5961,13 +6906,24 @@
     "general_hint": "여러 나라가 함께 겨룬 양치기 개 경연으로 기록된 첫 대회는 1873년 웨일스의 발라에서 열렸다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-error,h-weak)",
-   "general_hint": "기록상 첫 양치기 개 시합은 1873년 웨일스 발라에서 열렸고, 이 품종은 그런 시합에서 두각을 나타내 왔다.",
+   "why": "사실 확인 — 첫 시합은 1867년 뉴질랜드라 판정자 제안(기록상 첫 시합)이 틀리고 지금 힌트 문구(여러 나라가 겨룬 첫 대회)가 맞음 · 품종 연결만 문서대로 더함",
+   "general_hint": "여러 나라가 함께 겨룬 기록상 첫 양치기 개 시합은 1873년 웨일스 발라에서 열렸고, 이 품종은 그런 시합에서 좋은 성적을 내 왔다.",
    "hintSources": [
     "https://en.wikipedia.org/wiki/Border_Collie"
    ],
+   "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Border_Collie"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "기록상 첫 양치기 개 시합은 1873년 웨일스 발라",
+     "result": "false",
+     "source": "https://en.wikipedia.org/wiki/Sheepdog_trial",
+     "quote": "The first dog trials were held in Wānaka, New Zealand, in 1867 ... The first recorded trials involving more than one country were held in 1873 in Bala, Wales.",
+     "note": "첫 시합은 1867년 뉴질랜드. 1873 발라는 '여러 나라가 겨룬 첫 기록' — 현재 힌트 문구가 맞음(판정자 newFacts 의 false 는 오판). 뒤 절 '이 품종은 그런 시합에서 두각'은 en Border Collie 'It competes with success in sheepdog trials.'로 닫힘 → '여러 나라가 함께 겨룬 기록상 첫 양치기 개 시합은 1873년 웨일스 발라에서 열렸고, 이 품종은 그런 시합에서 좋은 성적을 내 왔다'로"
+    }
    ]
   },
   "1823": {
@@ -5989,6 +6945,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Dachshund"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "표준 · 미니어처 · 카니헨(토끼) 셋, 카니헨은 주로 FCI에서만 인정",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Dachshund",
+     "quote": "Dachshunds come in three sizes: standard, miniature, and kaninchen (German for \"rabbit\"). ... the rabbit size is not recognized by clubs in the United States and the United Kingdom. The rabbit size is recognized by the Fédération Cynologique Internationale",
+     "note": ""
+    }
    ]
   },
   "1824": {
@@ -6003,13 +6969,24 @@
     "general_hint": "19세기에 눈사태로 개체 수가 줄자 뉴펀들랜드와 교배해 오늘날의 큰 몸집과 긴 털을 갖게 됐다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-error)",
-   "general_hint": "1816~1818년 혹독한 겨울의 눈사태로 번식견이 많이 죽자 뉴펀들랜드와 교배했고, 이때 긴 털을 얻었다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(교배는 1850년대 · 긴 털은 문서에 없음)",
+   "general_hint": "1816~1818년 혹독한 겨울의 눈사태로 번식견이 많이 죽었고, 1850년대에는 뉴펀들랜드와 교배했다.",
    "hintSources": [
     "https://en.wikipedia.org/wiki/St._Bernard_(dog)"
    ],
+   "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/St._Bernard_(dog)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1816~1818년 눈사태로 번식견이 많이 죽자 뉴펀들랜드와 교배, 이때 긴 털",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/St._Bernard_(dog_breed)",
+     "quote": "Severe winters from 1816 to 1818 led to increased numbers of avalanches, killing many of the dogs used for breeding ... Bernards were crossed with Newfoundlands brought from the Colony of Newfoundland in the 1850s",
+     "note": "눈사태 · 번식견 죽음은 닫힘. 교배는 1850년대로 '죽자 곧' 이어진 것처럼 읽힘, '긴 털을 얻었다'는 연 문서에 없음 → '1816~1818년 혹독한 겨울의 눈사태로 번식견이 많이 죽었고, 1850년대에는 뉴펀들랜드와 교배했다'로"
+    }
    ]
   },
   "1826": {
@@ -6035,6 +7012,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Inbreeding"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "BBC 다큐 '순종견 폭로'가 순종견 건강 피해를 고발",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Inbreeding",
+     "quote": "The BBC produced two documentaries on dog inbreeding titled Pedigree Dogs Exposed and Pedigree Dogs Exposed: Three Years On that document the negative health consequences of excessive inbreeding.",
+     "note": ""
+    }
    ]
   },
   "1829": {
@@ -6084,6 +7071,32 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Empiricism"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "버클리는 존재하는 것은 지각되는 것, 흄은 귀납의 정당성을 의심",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/George_Berkeley",
+     "quote": "esse is percipi (to be is to be perceived)",
+     "note": "흄: en Problem of induction 'David Hume, who first formulated the problem in 1739, argued that there is no non-circular way to justify inductive inferences'"
+    },
+    {
+     "what": "variant",
+     "text": "경험주의",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?title=경험주의&redirect=no",
+     "quote": "넘겨주기 경험주의 → 경험론",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "영국 경험론",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/경험론",
+     "quote": "=== 영국 경험론 === 영국 경험론은 ... 17세기 초기 근대 철학과 근대 과학에서 파생되었다.",
+     "note": "로크 · 버클리 · 흄의 흐름을 가리키는 이름(해설에도 있음) — 질문 대상과 같음"
+    }
    ]
   },
   "1831": {
@@ -6149,6 +7162,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/이마누엘_칸트",
     "https://ko.wikipedia.org/wiki/순수이성비판"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "코페르니쿠스적 전회",
+     "result": "true",
+     "source": "https://weekly.khan.co.kr/article/201107191753361",
+     "quote": "이러한 사고방식의 전회는 코페르니쿠스의 공적에 비유했기 때문에, 코페르니쿠스적 전회라고 불리어진다.",
+     "note": "ko 위키 넘겨주기는 없으나 국내 철학 해설 · 언론에서 같은 개념으로 널리 쓰임"
+    }
    ]
   },
   "1835": {
@@ -6192,6 +7215,16 @@
    "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/공리주의"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "마르크스는 목표는 인정했지만 자본주의 원칙을 절대화한다고 비판",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/공리주의",
+     "quote": "카를 마르크스는 최대 다수의 최대 행복이라는 공리주의적 인간관 관점을 지지했지만 ... '공리주의'는 최대 다수의 행복을 주장하면서, 자본주의 법칙을 절대화하는 결함을 갖고 있다고 판단했다.",
+     "note": ""
+    }
    ]
   },
   "1859": {
@@ -6211,6 +7244,16 @@
    "hintSources": [],
    "sources": [
     "https://ko.wikipedia.org/wiki/뿌리혹박테리아"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1888년 베이어링크가 가려낸 세균, 산소를 좋아해 땅 윗부분에 몰림",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/뿌리혹박테리아",
+     "quote": "1888년 네덜란드의 M. 바이에링크가 이 균을 순수하게 분리하였을 당시에는 ... 호기성이므로 토양 표층부에 많고",
+     "note": "문서 표기는 '바이에링크'"
+    }
    ]
   },
   "1862": {
@@ -6231,6 +7274,16 @@
    "hintSources": [],
    "sources": [
     "https://ko.wikipedia.org/wiki/세쿼이아"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "한 해 최대 1.8미터, 수명 2,500~3,000년",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/세쿼이아",
+     "quote": "수령은 2500~3000년 정도이며 ... 여름에 많은 성장을 하며 최대 매년 1.8m식 자라고",
+     "note": ""
+    }
    ]
   },
   "1874": {
@@ -6274,6 +7327,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/그런지",
     "https://en.wikipedia.org/wiki/Grunge"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "서브 팝이 이 소리를 알리는 데 앞장서고 그 이름을 홍보에 활용",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Grunge",
+     "quote": "The early grunge movement revolved around Seattle's independent record label Sub Pop ... Sub Pop marketed the style shrewdly, encouraging media outlets to describe the Seattle sound as \"grunge\"",
+     "note": ""
+    }
    ]
   },
   "1888": {
@@ -6309,14 +7372,25 @@
     "general_hint": "앞을 보지 못하는 상태에 빗댄 이름으로, 참가자만 모르게 하는 방식보다 한 단계 더 나아간 것이다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-letters)",
-   "general_hint": "'동물 자기' 치료 주장을 시험한 1784년 프랑스 왕립위원회의 실험이 이 설계의 가장 오래된 원형으로 꼽힌다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(이중맹검의 원형이라고는 하지 않음)",
+   "general_hint": "1784년 프랑스 왕립위원회가 '동물 자기' 치료 주장을 시험한 실험이 처음 알려진 눈가림 실험으로 꼽힌다.",
    "hintSources": [
     "https://en.wikipedia.org/wiki/Blinded_experiment"
    ],
+   "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/이중맹검법",
     "https://en.wikipedia.org/wiki/Blinded_experiment"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1784년 프랑스 왕립위원회의 '동물 자기' 실험이 이 설계의 가장 오래된 원형",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Blinded_experiment",
+     "quote": "The first known blind experiment was conducted by the French Royal Commission on Animal Magnetism in 1784",
+     "note": "문서는 '처음 알려진 맹검(눈가림) 실험' — 이중맹검의 원형이라고는 하지 않음 → '1784년 프랑스 왕립위원회가 \"동물 자기\" 치료 주장을 시험한 실험이 처음 알려진 눈가림 실험으로 꼽힌다'로"
+    }
    ]
   },
   "1896": {
@@ -6366,6 +7440,32 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/수인",
     "https://en.wikipedia.org/wiki/Mudra"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "마왕의 도전에 맞서 오른손으로 땅을 짚은 모양, 대지가 증인",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Mudra",
+     "quote": "The bhūmisparśa (\"earth witness\") mudrā ... his right hand touching the earth. In the legend, Buddha was challenged by the evil one, Mara",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "인상",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/인상_(종교)",
+     "quote": "인상(印相, 산스크리트어: 무드라)이란 ... 인계(印契), 수인(手印), 인(印)이라고도 한다.",
+     "note": "같은 대상. 단 '인상'은 人相 · 引上 과 동음이의"
+    },
+    {
+     "what": "variant",
+     "text": "무드라",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?title=무드라&redirect=no",
+     "quote": "넘겨주기 무드라 → 인상 (종교)",
+     "note": ""
+    }
    ]
   },
   "1907": {
@@ -6387,6 +7487,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/일주문"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "인도 건축의 토라나에서 유래한 것으로 추정",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/일주문",
+     "quote": "인도의 토라나에서 유래한 것으로 추정된다.",
+     "note": ""
+    }
    ]
   },
   "1934": {
@@ -6408,6 +7518,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/West_Side_Story"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "무대 초연 732회, 토니상 후보 여섯 가운데 둘",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/West_Side_Story",
+     "quote": "It ran for 732 performances before going on tour. The production was nominated for six Tony Awards, winning two.",
+     "note": ""
+    }
    ]
   },
   "1942": {
@@ -6429,6 +7549,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/크럼플_존"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "벨라 바레니가 단단한 승객실과 앞뒤로 찌그러지는 부분으로 나누는 특허",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/크럼플_존",
+     "quote": "1952년에 승인된 메르세데스-벤츠 특허 번호 854157은 ... 그는 차체를 세 부분으로 나누었는데, 변형되지 않는 견고한 승객실과 전면 및 후면의 크럼플 존이 그것이다.",
+     "note": ""
+    }
    ]
   },
   "1943": {
@@ -6455,6 +7585,24 @@
    "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Braking_distance"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "도로 설계에서는 반응이 느린 운전자까지 감안해 2.5초",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Braking_distance",
+     "quote": "a road alignment visibility standard ... typically slippery conditions (deceleration 0.35g) and a slow responding driver (2.5 seconds).",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "반응거리",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=반응거리|반응 거리&redirects=1",
+     "quote": "The other component is the reaction distance",
+     "note": "en 'reaction distance' 직역. ko 위키 표제어 · 넘겨주기 없음, 국내 사용례는 찾지 않음(검색 한도)"
+    }
    ]
   },
   "1945": {
@@ -6518,6 +7666,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/삼국_동맹",
     "https://en.wikipedia.org/wiki/Triple_Alliance_(1882)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "이탈리아는 1914년 중립 선언, 1915년 반대편으로 참전",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Triple_Alliance_(1882)",
+     "quote": "When the Austro-Hungarian Empire decided to start a war in August 1914 ... Italy proclaimed its neutrality ... Italy sided with the Triple Entente and declared war on Austria-Hungary.",
+     "note": "같은 문서: 동맹은 1915년 만료"
+    }
    ]
   },
   "1954": {
@@ -6561,6 +7719,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Manfred_von_Richthofen"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "포커 Dr.I 로 거둔 승리는 80기 가운데 19기뿐",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Manfred_von_Richthofen",
+     "quote": "Only 19 of his 80 kills were made in this type of aircraft, despite the popular link between Richthofen and the Fokker Dr.I.",
+     "note": ""
+    }
    ]
   },
   "1963": {
@@ -6575,13 +7743,24 @@
     "general_hint": "트뤼포의 '400번의 구타' 가 이 흐름의 출발점으로 꼽힌다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-error)",
-   "general_hint": "1954년 트뤼포가 문학 각색 중심의 안전한 영화를 비판한 글이 이 흐름의 출발로 꼽힌다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"출발로 꼽힌다\" 는 문서에 없음)",
+   "general_hint": "1954년 트뤼포가 문학 각색에 기댄 안전한 영화를 비판한 선언문 같은 글을 썼고, 이 흐름은 그를 비롯한 젊은 영화인들이 이끌었다.",
    "hintSources": [
     "https://ko.wikipedia.org/wiki/누벨_바그"
    ],
+   "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/누벨_바그"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1954년 트뤼포가 문학 각색 중심의 안전한 영화를 비판한 글이 이 흐름의 출발로 꼽힌다",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/누벨_바그",
+     "quote": "1954년 일종의 선언문 같은 에세이 <프랑스 영화의 특정 경향>에서 문학 작품들을 각색하여 상상력 없는 영화를 만들어 내는, 안전함을 꾀하는 시조를 비난했던 프랑수아 트뤼포를 비롯한 젊은 영화인들이 주축이 돼 펼쳐졌으며",
+     "note": "1954년 글 · 비판 내용은 닫힘. 문서는 '선언문 같은 에세이'라 할 뿐 '출발로 꼽힌다'고는 하지 않음 → '1954년 트뤼포가 문학 각색에 기댄 안전한 영화를 비판한 선언문 같은 글을 썼고, 이 흐름은 그를 비롯한 젊은 영화인들이 이끌었다'로"
+    }
    ]
   },
   "1965": {
@@ -6672,6 +7851,16 @@
    "hintSources": [],
    "sources": [
     "https://ko.wikipedia.org/wiki/데지마"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "넓이 약 1.3헥타르, 일본 관리 외에는 출입 엄격히 제한",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/데지마",
+     "quote": "부채꼴 모양 섬으로, 전체 넓이는 약 1.3ha정도다. ... 원칙적으로 공무상 출입이 허용된 일본 관리 이외 출입을 금지했고",
+     "note": ""
+    }
    ]
   },
   "1993": {
@@ -6694,6 +7883,16 @@
    "hintGen": true,
    "sources": [
     "https://ko.wikipedia.org/wiki/매슈_C._페리"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "이듬해인 1854년에는 일본에 이어 류큐 왕국과도 조약",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/매슈_페리_(군인)",
+     "quote": "3월 31일에 요코하마에서 가나가와 조약을 조인했다. 또 그 후, 나하에 기항하여, 7월 11일에는 류큐 왕국과도 미류수호조약을 체결했다.",
+     "note": "질문의 1853년 기준 '이듬해'라 맞음(가나가와 조약 1854.3 → 류큐 1854.7, '일본에 이어'도 맞음)"
+    }
    ]
   },
   "1997": {
@@ -6715,6 +7914,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/다이묘"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "9,999석 이하 막부 직속 무사는 하타모토",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/다이묘",
+     "quote": "다이묘의 기준은 석고를 1만 석 이상 보유해야 얻어지는 계급이었으며 9,999 석 이하의 경우 하타모토라는, 다이묘보다 낮은 계급이 부여되었다.",
+     "note": ""
+    }
    ]
   },
   "1998": {
@@ -6820,6 +8029,24 @@
    ],
    "sources": [
     "https://en.wiktionary.org/wiki/-cide"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "프랑스어를 거쳐 들어온 라틴어계 어미, '죽이는 일'과 '죽이는 것' 두 뜻",
+     "result": "true",
+     "source": "https://en.wiktionary.org/wiki/-cide",
+     "quote": "From Middle French -cide, from Latin -cīdium (\"killing\") ... From Middle French -cide, from Latin -cīda (\"cutter, killer\")",
+     "note": "'죽이는 것'은 killer(죽이는 자 · 것)"
+    },
+    {
+     "what": "variant",
+     "text": "-사이드",
+     "result": "true",
+     "source": "https://en.wiktionary.org/wiki/-cide",
+     "quote": "-cide",
+     "note": "접미사 표기(붙임표) — 같은 대상"
+    }
    ]
   },
   "2022": {
@@ -6873,6 +8100,24 @@
    "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/List_of_Latin_abbreviations"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "e.g",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/List_of_Latin_abbreviations",
+     "quote": "",
+     "note": "마침표 하나 뺀 입력 꼴 — 새 사실 없음"
+    },
+    {
+     "what": "variant",
+     "text": "eg.",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/List_of_Latin_abbreviations",
+     "quote": "",
+     "note": "위와 같음"
+    }
    ]
   },
   "2035": {
@@ -6894,6 +8139,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/홍루몽"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "80회본과 120회본, 뒷부분은 작가 사후 다른 사람이 보충한 것으로 추정",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/홍루몽",
+     "quote": "80회본과 120회본이 전할 만큼 ... 80회 이후는 ... 보충이 되지 않은 상태에서 작자인 조설근이 사망했고, 그 후 30년 후에 약 40회가 첨삭되어 ... 120회본이 세상에 나온 것으로 추측하고 있다.",
+     "note": "같은 문서: '고악의 후속편'"
+    }
    ]
   },
   "2048": {
@@ -6960,6 +8215,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/필로티"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1층 기둥에 하중이 몰려 좌우 진동에 약함, 2017년 포항 지진 뒤 기둥 기준",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/필로티",
+     "quote": "후자는 1층의 기둥이 건물 전체를 떠받치는 구조여서 지진이 발생할 때 좌우 진동에 취약하다. 한국의 경우 ... 2017년 포항 지진을 계기로 ... 필로티 기둥의 내력을 확보하게 하는 건축 기준이 마련되었다.",
+     "note": "문서는 '분리형'(1층에만 기둥) 필로티에 한정 — 한국 소규모 필로티 대다수가 분리형"
+    }
    ]
   },
   "2081": {
@@ -7013,6 +8278,16 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Tennis_scoring_system",
     "https://en.wikipedia.org/wiki/Glossary_of_tennis_terms"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1970년 US 오픈이 도입했을 때는 9점 방식",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Tennis_scoring_system",
+     "quote": "In 1970, the US Open introduced the nine-point tiebreaker rule for all sets that reach 6–6 ... This type of tiebreaker had its Grand Slam debut at the 1970 US Open",
+     "note": ""
+    }
    ]
   },
   "2099": {
@@ -7035,6 +8310,16 @@
    "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Hawk-Eye"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "2000년 로크 마너 리서치 기술진이 개발, 2001년 크리켓 중계에서 처음",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Hawk-Eye",
+     "quote": "Hawk-Eye was developed in 2000 by engineers at Roke Manor Research Limited ... first implemented in 2001 for television broadcasts, where it was used to analyze leg before wicket decisions in cricket.",
+     "note": ""
+    }
    ]
   },
   "2109": {
@@ -7054,6 +8339,16 @@
    "hintSources": [],
    "sources": [
     "https://en.wikipedia.org/wiki/Curse_of_the_Bambino"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "마지막 우승은 1918년, 가뭄은 80년 넘게",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Curse_of_the_Bambino",
+     "quote": "derived from the 86-year championship drought of the Boston Red Sox between 1918 and 2004.",
+     "note": ""
+    }
    ]
   },
   "2115": {
@@ -7144,6 +8439,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Host_(biology)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "성체로 번식하는 쪽은 종숙주, 유충 시기를 보내는 쪽은 중간숙주",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Host_(biology)",
+     "quote": "Definitive or primary host – an organism in which the parasite reaches the adult stage and reproduces sexually ... Secondary or intermediate host – an organism that harbors the sexually immature parasite",
+     "note": ""
+    }
    ]
   },
   "2131": {
@@ -7167,6 +8472,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Zoonosis"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "사람에게서 동물로 옮겨 가는 경우는 '역'을 붙여 부름",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Zoonosis",
+     "quote": "When humans infect non-humans, it is called reverse zoonosis or anthroponosis.",
+     "note": ""
+    }
    ]
   },
   "2142": {
@@ -7184,13 +8499,29 @@
     ]
    },
    "why": "제안 힌트 없음 — 지금 힌트의 \"포커에서 쓰는 영어 낱말\" 이 떠먹여 주기라 동음 낱말(bluff = 절벽 · 사전)만 남겨 GEN 이 씀 · 변형 허세 받음",
-   "add": [
-    "허세"
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "허세"
+     ],
+     "why": "허세 — 더 넓은 일반어(사실 확인 false · 15 B7)"
+    }
    ],
    "general_hint": "깎아지른 '절벽'을 뜻하는 영어 낱말과 철자가 같다.",
    "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Bluff_(poker)"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "허세",
+     "result": "false",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=허세|블러프&redirects=1",
+     "quote": "블러프(Bluff)는 다음을 가리킨다. 블러프 (퀸즐랜드) ...",
+     "note": "'허세'는 실속 없이 기세만 부리는 태도를 뜻하는 일반어 — 포커 전략 이름보다 넓은 말(15 B7). ko 위키에 넘겨주기 · 근거 없음"
+    }
    ]
   },
   "2148": {
@@ -7205,14 +8536,25 @@
     "general_hint": "1938년 대구에서 상회로 문을 열었고, 뒤에 설탕·모직 공장을 거쳐 전자로 나아갔다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-famous)",
-   "general_hint": "한국 전쟁 중에는 부산에서 설탕 공장을 세웠고, 1954년에는 대구에 모직 공장을 지었다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(제일제당은 1953년 8월 — 정전 뒤)",
+   "general_hint": "한국 전쟁 뒤 1953년 부산에 설탕 공장을 세웠고, 1954년에는 대구에 모직 공장을 지었다.",
    "hintSources": [
     "https://ko.wikipedia.org/wiki/삼성"
    ],
+   "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Samsung",
     "https://ko.wikipedia.org/wiki/삼성"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "한국 전쟁 중에는 부산에서 설탕 공장, 1954년 대구에 모직 공장",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Samsung",
+     "quote": "When the Korean War broke out, he was forced to leave Seoul. He started a sugar refinery in Pusan named Cheil Jedang. In 1954, Lee founded Cheil Mojik ... built the first plant in Chimsan-dong, Taegu.",
+     "note": "모직 1954 대구는 닫힘. 제일제당 시작은 1953년 8월 1일(ko CJ제일제당)로 정전(1953.7.27) 뒤 — '전쟁 중'은 어긋남 → '한국 전쟁 뒤 1953년 부산에 설탕 공장을 세웠고, 1954년에는 대구에 모직 공장을 지었다'로"
+    }
    ]
   },
   "2150": {
@@ -7256,6 +8598,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/3M"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "광산은 미네소타주 투하버스, 본사는 같은 주 메이플우드",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/3M",
+     "quote": "Five businessmen founded the Minnesota Mining and Manufacturing Company as a mining venture in Two Harbors, Minnesota ... its current headquarters at 3M Center in Maplewood, Minnesota",
+     "note": ""
+    }
    ]
   },
   "2157": {
@@ -7342,6 +8694,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Greco-Roman_wrestling"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "나폴레옹 군대의 병사 장 엑스브라야가 만들었다고 전해짐",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Greco-Roman_wrestling",
+     "quote": "According to United World Wrestling, a Napoleonic soldier named Jean Exbrayat first developed the style.",
+     "note": ""
+    }
    ]
   },
   "2187": {
@@ -7393,6 +8755,16 @@
    "hintSources": [],
    "sources": [
     "https://en.wikipedia.org/wiki/Winter_Olympic_Games"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "분리는 1986년 IOC 총회에서 결정, 처음 다른 해에 열린 대회는 릴레함메르",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Winter_Olympic_Games",
+     "quote": "A decision to change this was made in 1986, when during the 91st International Olympic Committee session ... The 1994 Winter Olympics, held in Lillehammer, Norway, were the first Winter Games to be held in a different year from the Summer Games.",
+     "note": ""
+    }
    ]
   },
   "2205": {
@@ -7442,6 +8814,32 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Lossless_compression"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "어떤 알고리즘도 모든 입력을 줄일 수 없고, 무작위에 가까운 자료는 대개 줄지 않음",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Lossless_compression",
+     "quote": "no lossless compression algorithm can shrink the size of all possible data ... cannot shrink the size of random data that contain no redundancy.",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "비손실 압축",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/비손실_압축",
+     "quote": "넘겨주기 무손실 압축 → 비손실 압축 (ko 표제어)",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "가역 압축",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?title=가역_압축&redirect=no",
+     "quote": "넘겨주기 가역 압축 → 비손실 압축",
+     "note": ""
+    }
    ]
   },
   "2217": {
@@ -7465,6 +8863,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/점유이탈물횡령죄"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "고속버스 승객이 두고 내린 물건을 다른 승객이 가져간 일을 절도가 아닌 이 죄로",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/점유이탈물횡령죄",
+     "quote": "그 사이에 다른 승객이 유실물을 발견하고 이를 가져갔다면 절도에 해당하지 아니하고 점유이탈물횡령에 해당한다.",
+     "note": "문서는 '판례'로 적음(대법원 92도3170 으로 알려진 판결)"
+    }
    ]
   },
   "2224": {
@@ -7557,6 +8965,16 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Beer_glassware",
     "https://en.wikipedia.org/wiki/Beer_head"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "스니프터처럼 입구가 오므라든 잔은 맥주의 무엇이 모이도록",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Beer_glassware",
+     "quote": "a snifter is ideal for capturing the volatiles of aromatic beers ... The shape helps trap the volatiles, while allowing swirling to agitate them and produce an intense aroma.",
+     "note": "정답 '향'과 맞음"
+    }
    ]
   },
   "2240": {
@@ -7602,6 +9020,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/지질_시대"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "중생대와 신생대 경계에서 새를 제외한 모든 공룡이 사라짐",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Cretaceous–Paleogene_extinction_event",
+     "quote": "The event caused the extinction of all the non-avian dinosaurs",
+     "note": "ko 지질 시대: '백악기와 팔레오세는 공룡 멸종의 이전과 이후를 기준으로 나뉜다'"
+    }
    ]
   },
   "2251": {
@@ -7625,6 +9053,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/초인플레이션"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "월 50% 넘던 상태가 끝난 뒤 그 아래로 1년 이상 머물러야 끝난 것으로",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/초인플레이션",
+     "quote": "케건은 ... 월별 인플레이션율이 50% 미만으로 떨어지고 적어도 1년 동안 그 상태를 유지하면 끝나는 것으로 정의했다.",
+     "note": ""
+    }
    ]
   },
   "2252": {
@@ -7692,6 +9130,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/기저부하"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "이 수요를 넘어 오르내리는 몫은 빠르게 바꿀 수 있는 발전소나 저장 장치가 맡음",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/기저부하",
+     "quote": "하루 종일 변동하는 나머지 수요는 첨두부하라고 부르며 부하추종발전소, 첨두부하발전소, 에너지 저장장치같이 신속하게 공급을 증감할 수 있는 급전 가능 발전소로 대응할 수 있다.",
+     "note": ""
+    }
    ]
   },
   "2263": {
@@ -7715,6 +9163,16 @@
    "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/The_Football_Association"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "가장 먼저 만들어진 협회라서 이름에 'English' 같은 국가명을 붙이지 않는다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/The_Football_Association",
+     "quote": "As the first football association, it does not use the national name \"English\" in its title.",
+     "note": ""
+    }
    ]
   },
   "2264": {
@@ -7751,8 +9209,8 @@
     "general_hint": "빈트 서프와 밥 칸이 만든 TCP/IP 규약이 이 통신망의 공통 언어입니다.",
     "variants": []
    },
-   "why": "질문 제안(군사 연구망에서 출발)을 받으면서 해설(아르파넷에서 비롯)이 질문과 겹쳐 GEN 이 해설을 다시 씀 · 힌트 제안 받음",
-   "question_text": "중앙이 끊겨도 우회해 통신이 이어지도록 분산 구조를 노렸다고 전하는 군사 연구망에서 출발한 통신망은?",
+   "why": "사실 확인 — 제안 질문의 \"분산 구조를 노렸다\" 는 문서가 널리 퍼진 오해로 적어 뺌 · 해설은 GEN 이 TCP/IP 전환으로 다시 씀",
+   "question_text": "여러 연구 기관의 컴퓨터를 패킷 교환으로 이은 미국 국방부의 연구망 아르파넷에서 출발한 통신망은?",
    "general_hint": "출발은 1969년 컴퓨터 두 대를 잇는 일이었다고 한다.",
    "hintSources": [
     "https://en.wikipedia.org/wiki/Internet"
@@ -7760,6 +9218,24 @@
    "explanation": "1983년 그 연구망이 통신 규약을 TCP/IP 로 바꾼 날을 이 통신망의 출발점으로 보기도 합니다.",
    "sources": [
     "https://en.wikipedia.org/wiki/Internet"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "중앙이 끊겨도 우회해 통신이 이어지도록 분산 구조를 노렸다고 전하는 군사 연구망",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/ARPANET",
+     "quote": "The ARPANET was not started to create a Command and Control System that would survive a nuclear attack, as many now claim.",
+     "note": "'전하는'으로 눅였지만 문서는 이를 널리 퍼진 오해로 적음(생존성 연구는 RAND 의 폴 배런). en Internet: '아르파넷은 점차 분산형 통신망으로 발전' → '여러 연구 기관의 컴퓨터를 패킷 교환으로 이은 미국 국방부의 연구망 아르파넷에서 출발한 통신망은?' 식으로 '노렸다' 를 빼는 쪽"
+    },
+    {
+     "what": "hint",
+     "text": "1969년 컴퓨터 두 대를 잇는 일로 출발",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Internet",
+     "quote": "ARPANET development began with two network nodes which were interconnected between the University of California, Los Angeles and the Stanford Research Institute on 29 October 1969.",
+     "note": "문서는 '두 노드'(UCLA · SRI)"
+    }
    ]
   },
   "2313": {
@@ -7804,6 +9280,24 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/유과"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "제사상 열매 대신 모양을 본떠 만든 데서 비롯, 고려시대 이후 불교 영향으로 널리 퍼짐",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/유과",
+     "quote": "유과는 제사에 과일 대신으로 밀가루와 꿀을 반죽하여 과일 모양으로 만들어졌으며, 기름에 지진 가과(假果: 가짜열매)라 불렸다. 유과는 고려시대 이후 불교의 영향으로 널리 보급되었으여",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "강정",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/강정",
+     "quote": "강정은 찹쌀가루 등을 반죽해 말린 뒤 튀겨 만드는 한국의 한과이다. 속이 비어 있는 ... 콩·견과류·씨앗 ... 등을 묻혀 완성한다.",
+     "note": "ko 유과 문서의 '종류' 첫 항목(더 좁은 말) — 질문 서술이 강정 정의와 그대로 맞아 받을 만함(기존 변형 '산자'와 같은 처리). 넓은 말은 아님"
+    }
    ]
   },
   "2327": {
@@ -7825,6 +9319,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Jirisan"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "백두대간이 남쪽 끝에서 마무리되는 곳, 최고봉은 천왕봉",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Baekdu-daegan",
+     "quote": "from Baekdu Mountain in the north to Jirisan, or Hallasan on Jeju Island in the south.",
+     "note": "en Jirisan: 'The highest peak of the mountain, Cheonwangbong'. 남쪽 끝을 한라산으로 보는 서술도 함께 있음(문서 'or Hallasan') — 걱정되면 '백두대간의 남쪽 끝으로 꼽히는 곳'으로"
+    }
    ]
   },
   "2334": {
@@ -7846,6 +9350,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/우포늪"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1933년 천연기념물 지정, 1973년 해지, 2011년 제524호 재지정",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/우포늪",
+     "quote": "1933년에 천연기념물로 지정되었다. 그러나 1973년 7월 19일 ... 해지되었다. ... 2011년 1월 13일 ... 천연기념물 제524호로 재지정했다.",
+     "note": ""
+    }
    ]
   },
   "2346": {
@@ -7870,6 +9384,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/조차",
     "https://ko.wikipedia.org/wiki/조석"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "가장 큰 때를 사리, 가장 작은 때를 조금",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/조석",
+     "quote": "달이 그믐이나 보름 직후 조차가 가장 클 때를 사리, 상현이나 하현 직후 조차가 가장 작을 때를 조금이라고 한다.",
+     "note": ""
+    }
    ]
   },
   "2357": {
@@ -7952,6 +9476,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/사씨남정기"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "한림학사 유연수 집안에 악인 동청이 끼어들고, 권선징악으로 맺음",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/사씨남정기",
+     "quote": "유연수 : 한림학사로 ... 동청 : 교씨의 사통남으로 교씨와 모의해 유연수 집안의 재물을 탈취하고, 유연수를 유배시킨다. ... === 권선징악 ===",
+     "note": ""
+    }
    ]
   },
   "2380": {
@@ -7973,6 +9507,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/박씨전"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "인조에게 칭송받고 충렬정경부인에 봉해짐",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/박씨전",
+     "quote": "이로 인해 인조로부터 칭송을 받으며 충렬정경부인에 봉해진다.",
+     "note": ""
+    }
    ]
   },
   "2402": {
@@ -7996,6 +9540,16 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/삼우제"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "날을 갑 · 병 · 무 · 경 · 임이 든 강일로 가려 잡음",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/삼우제",
+     "quote": "3번째인 삼우제는 재우제 뒤의 강일(剛日, 육갑의 십간 중에서 갑(甲)·병(丙)·무(戊)·경(庚)·임(壬)이 들어간 날)에 지낸다.",
+     "note": "참고: 현재 힌트 '이튿날의 재우'는 문서('초우제 뒤의 유일')와 어긋남"
+    }
    ]
   },
   "2412": {
@@ -8021,6 +9575,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Tunnel_boring_machine"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "영어권에서는 두더지라는 별명",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Tunnel_boring_machine",
+     "quote": "A tunnel boring machine (TBM), also known as a \"mole\"",
+     "note": ""
+    }
    ]
   },
   "2422": {
@@ -8069,6 +9633,16 @@
    "hintSources": [],
    "sources": [
     "https://en.wikipedia.org/wiki/Didgeridoo"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "끊김 없이 낮은 울림을 내야 하는 오스트레일리아 원주민 관악기를 불 때 쓰는 기술",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Circular_breathing",
+     "quote": "It is used extensively in playing ... the Australian didgeridoo",
+     "note": "새 사실 없음 — 현재 힌트 앞 절을 다듬고 이름 풀이를 뺌. '낮은 울림'은 디저리두의 지속음(drone)으로 무리 없음"
+    }
    ]
   },
   "2450": {
@@ -8114,6 +9688,16 @@
     "https://ko.wikipedia.org/wiki/겸애",
     "https://ko.wikipedia.org/wiki/맹자",
     "https://ko.wikipedia.org/wiki/묵자"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "하늘의 뜻에 맞는 일, 그렇게 하면 세상이 평화로워진다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/묵자",
+     "quote": "사람들이 평등하게 서로 사랑하고 남에게 이롭게 하면 하늘의 뜻과 일치하여 평화롭게 된다는 겸애를 주장했다.",
+     "note": ""
+    }
    ]
   },
   "2466": {
@@ -8133,6 +9717,16 @@
    "hintSources": [],
    "sources": [
     "https://ko.wikipedia.org/wiki/법가"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "법에 더해 술(행하는 수단)과 세(신하를 다루는 힘)를 함께 중시",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/법가",
+     "quote": "법(法)은 군주가 정하는 규범을 뜻하며 술(術)은 법을 행하는 수단을 뜻한다. 또한, 세(勢)는 군주가 신하를 관리하고 주도권을 잡는 방법론을 말한다.",
+     "note": ""
+    }
    ]
   },
   "2481": {
@@ -8207,6 +9801,24 @@
    ],
    "sources": [
     "https://ko.wikipedia.org/wiki/펑크_록"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "1970년대 중반부터 퍼진",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/펑크_록",
+     "quote": "펑크 록(punk rock)은 약 1970년대 중반에 시작된 록 음악의 하위 장르이다.",
+     "note": ""
+    },
+    {
+     "what": "hint",
+     "text": "단순한 곡 구조, 보통 3분이 채 안 되는 짧은 노래",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/펑크_록",
+     "quote": "펑크 록은 단순한 곡 구조와 짧은 노래를 중요하게 여긴다. 곡은 대부분 길이가 3분을 넘지 않으며",
+     "note": ""
+    }
    ]
   },
   "2510": {
@@ -8240,7 +9852,25 @@
    ],
    "general_hint": "1990년대 코스타와 매크레이가 이 모형으로 성격을 재는 검사 NEO-PI-R 을 내놓았다.",
    "hintGen": true,
-   "sources": []
+   "sources": [],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "오션 모형",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=오션 모형|OCEAN 모형&redirects=1",
+     "quote": "",
+     "note": "영문 약칭 OCEAN 은 국내 글에서도 쓰이나 한글 '오션 모형' 표기 근거는 못 찾음. ko '빅 파이브'는 동음이의 문서(성격 모형 항목 없음)"
+    },
+    {
+     "what": "variant",
+     "text": "성격 5요인 모형",
+     "result": "true",
+     "source": "https://www.koreadaily.com/article/20240430140241389",
+     "quote": "성격 5요인 모형(Big Five, OCEAN) — 개방성, 성실성, 외향성, 우호성, 신경성",
+     "note": "국내 칼럼 · 자료에서 같은 대상의 이름으로 쓰임(검색 요약 근거, 기사 원문은 열지 않음)"
+    }
+   ]
   },
   "2516": {
    "part": "b",
@@ -8256,14 +9886,24 @@
      "카바 신전"
     ]
    },
-   "why": "제안 힌트의 \"하지 때\" 교체 날짜는 근래 바뀌어(이슬람력 새해) 시간 의존이라 날짜를 뺌",
-   "general_hint": "건물을 덮는 검은 천은 키스와라 부르며, 해마다 새것으로 바꿔 입힌다.",
+   "why": "제안 힌트의 \"하지\" 는 夏至로 읽혀 대순례로 고침(사실 확인)",
+   "general_hint": "건물을 덮는 검은 천은 키스와라 부르며, 해마다 대순례(하즈) 무렵 새것으로 바꿔 입힌다.",
    "hintSources": [
     "https://en.wikipedia.org/wiki/Kaaba"
    ],
    "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Kaaba"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "덮는 검은 천은 해마다 하지 때 새것으로",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Kaaba",
+     "quote": "Kiswa is a black silk and gold curtain which is replaced annually during the Hajj pilgrimage.",
+     "note": "사실은 닫힘(en Kiswah: 'draping date has changed over the years'). 다만 '하지'는 夏至로 읽힘 → '해마다 대순례(하즈) 기간에 새것으로 바꿔 입힌다'로"
+    }
    ]
   },
   "2521": {
@@ -8287,6 +9927,16 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Adhan",
     "https://en.wikipedia.org/wiki/Minaret"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "초기 메디나에서는 무함마드의 집 문간이나 지붕에서 외쳤고, 첨탑은 훨씬 뒤",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Minaret",
+     "quote": "The early Muslim community of Medina gave the call to prayer from the doorway or roof of the house of Muhammad ... and this continued ... during the period of the four Rashidun Caliphs (632–661).",
+     "note": ""
+    }
    ]
   },
   "2522": {
@@ -8308,6 +9958,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Sharia"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "신이 정한 불변의 법, 학자들의 해석 학문은 피크",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Sharia",
+     "quote": "sharīʿah refers to immutable, intangible divine law, in contrast to fiqh (Islamic jurisprudence), which refers to its interpretations by Islamic scholars.",
+     "note": ""
+    }
    ]
   },
   "2523": {
@@ -8328,6 +9988,16 @@
    "sources": [
     "https://ko.wikipedia.org/wiki/이맘",
     "https://en.wikipedia.org/wiki/Imam"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "금요일 합동 예배 앞의 설교(후트바)를 겸해 맡기도",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/이맘",
+     "quote": "예배에 앞서 후트바로 불리는 설교를 하티브가 실시하는데, 이맘이 하티브를 겸하는 경우도 있다.",
+     "note": ""
+    }
    ]
   },
   "2532": {
@@ -8353,6 +10023,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Traffic_light"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "캐나다 동부 일부 지역 신호등, 빨강 네모 · 호박색 마름모 · 초록 동그라미",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Traffic_light",
+     "quote": "In the Canadian province of Quebec and the Maritime provinces, lights are often arranged horizontally, with some signals having aspects in different shapes: red is a square ... amber is a diamond, and green is a circle.",
+     "note": ""
+    }
    ]
   },
   "2537": {
@@ -8367,14 +10047,25 @@
     "general_hint": "3막에서 흑조 오딜이 선보이는 기술로 유명하며, 프랑스어 발레 용어다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-weak)",
-   "general_hint": "1893년 피에리나 레냐니가 서른두 번 도는 이 기술을 처음 공개 무대에서 선보였다고 전하며, 1895년 초연 때 오데트·오딜을 맡았다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(1895년은 초연이 아니라 프티파 · 이바노프 판)",
+   "general_hint": "1893년 피에리나 레냐니가 「신데렐라」에서 처음 32회전을 선보였다고 전하며, 1895년 프티파 · 이바노프 판에서 오데트 · 오딜을 처음 맡았다.",
    "hintSources": [
     "https://en.wikipedia.org/wiki/Swan_Lake"
    ],
+   "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Fouett%C3%A9",
     "https://en.wikipedia.org/wiki/Swan_Lake"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1893년 레냐니가 32회전을 처음 공개 무대에서 선보였다고 전하며, 1895년 초연 때 오데트 · 오딜",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Pierina_Legnani",
+     "quote": "She is widely reputed to be the first ballerina to perform 32 fouettés en tournant in the coda of ... Cinderella. ... originated numerous roles, including: Cinderella in 1893, Swan Lake in 1895",
+     "note": "1893 32회전은 닫힘('신데렐라'에서). '1895년 초연'은 백조의 호수 초연(1877)으로 읽힘 — 1895년은 프티파 · 이바노프 판 → '1893년 「신데렐라」에서 처음 32회전을 선보였다고 전하며, 1895년 프티파 · 이바노프 판 「백조의 호수」에서 오데트 · 오딜을 처음 맡았다'로"
+    }
    ]
   },
   "2540": {
@@ -8389,12 +10080,23 @@
     "general_hint": "요리 용어 '소테'·'퓌레'나 펜싱 심판이 외치는 구령 '알레'도 모두 같은 언어에서 왔다.",
     "variants": []
    },
-   "why": "V014 fix 제안 반영 (h-famous)",
-   "general_hint": "왕립 무용 아카데미 원장 피에르 보샹이 고안한 무용 기보법을 라울 푀이예가 다듬어 퍼뜨렸다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(보샹은 고안자로 보이는 인물)",
+   "general_hint": "보샹이 고안한 것으로 보이는 무용 기보법을 1700년 라울 푀이예가 책으로 펴내 퍼뜨렸다.",
    "hintSources": [],
+   "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Ballet_terminology",
     "https://en.wikipedia.org/wiki/Acad%C3%A9mie_Royale_de_Danse"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "왕립 무용 아카데미 원장 피에르 보샹이 고안한 기보법을 라울 푀이예가 다듬어 퍼뜨림",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Pierre_Beauchamp",
+     "quote": "the probable inventor of Beauchamp–Feuillet notation. ... He was made director of the Académie Royale de Danse in 1671 ... The codification method was printed in 1700 by Raoul-Auger Feuillet",
+     "note": "원장(1671)은 닫힘. 보샹은 '고안자로 보이는'(probable) 인물, 푀이예는 1700년에 인쇄 · 출판 → '보샹이 고안한 것으로 보이는 무용 기보법을 1700년 라울 푀이예가 책으로 펴내 퍼뜨렸다'로"
+    }
    ]
   },
   "2543": {
@@ -8416,6 +10118,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/The_Rite_of_Spring"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "니진스키 안무는 오랫동안 다시 오르지 못하다가 1987년 조프리 발레단이 복원",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/The_Rite_of_Spring",
+     "quote": "On 30 September 1987, the Joffrey Ballet performed in Los Angeles The Rite based on a reconstruction of Nijinsky's 1913 choreography, until then thought lost beyond recall.",
+     "note": ""
+    }
    ]
   },
   "2551": {
@@ -8567,11 +10279,22 @@
      "회계법인(감사 법인)"
     ]
    },
-   "why": "V014 fix 제안 반영 (h-famous)",
-   "general_hint": "1941년 한 신문이 시상식 전에 결과를 먼저 보도한 일이 있었고, 이후 수상자를 봉투에 넣어 현장에서 여는 방식이 되었다.",
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(먼저 보도는 1940년)",
+   "general_hint": "1940년 한 신문이 시상식 전에 결과를 먼저 보도하자, 이듬해부터 수상자를 봉인한 봉투에 넣어 현장에서 여는 방식이 되었다.",
    "hintSources": [],
+   "hintGen": true,
    "sources": [
     "https://en.wikipedia.org/wiki/Academy_Awards"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1941년 한 신문이 시상식 전에 결과를 먼저 보도, 이후 봉투 방식",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Academy_Awards",
+     "quote": "In 1940, the Los Angeles Times announced the winners before the ceremony began. As a result, in 1941 the Academy started using a sealed envelope",
+     "note": "먼저 보도는 1940년, 봉투는 1941년부터 → '1940년 한 신문이 시상식 전에 결과를 먼저 보도하자, 이듬해부터 수상자를 봉인한 봉투에 넣어 현장에서 여는 방식이 되었다'로"
+    }
    ]
   },
   "2580": {
@@ -8618,6 +10341,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Seasoning_(cookware)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "중국식 웍은 약 450도에서 하면 표면에 자철석(Fe3O4) 입자가 생김",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Seasoning_(cookware)",
+     "quote": "Some Chinese cookware is seasoned at a much higher temperature than conventional seasoning at 450 °C. ... This transport of oxygen encourages the formation of Fe3O4 nanoballs.",
+     "note": "문서는 '검은'이라는 색은 적지 않음(자철석은 검은 광물이라 무리 없음) · '생긴다고 한다' 한정 유지"
+    }
    ]
   },
   "2590": {
@@ -8660,6 +10393,16 @@
    ],
    "sources": [
     "https://www.ricardocuisine.com/en/articles/techniques/1995-why-you-should-let-meat-rest-after-cooking"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "작은 고기는 10분쯤, 큰 덩어리 20분쯤, 호일을 느슨하게 덮음",
+     "result": "true",
+     "source": "https://www.ricardocuisine.com/en/articles/techniques/1995-why-you-should-let-meat-rest-after-cooking",
+     "quote": "smaller cuts like pork chops or chicken thighs don't need more than 10 minutes ... For bigger cuts and roasts, 20 minutes should be enough ... loosely cover the cooked meat with a piece of aluminum foil to help retain its heat.",
+     "note": "문서는 작은 고기 '10분 넘게는 필요 없다' — '10분쯤'과 같은 뜻으로 읽힘"
+    }
    ]
   },
   "2595": {
@@ -8721,6 +10464,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Hijra_(Islam)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "아부 바크르와 함께 동굴에 사흘 숨었다가 메디나에",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Hijrah",
+     "quote": "Muhammad then went with Abu Bakr to a cave in Mount Thawr ... and hid there. ... After three days in hiding, they set out for Medina",
+     "note": ""
+    }
    ]
   },
   "2611": {
@@ -8770,6 +10523,24 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "거의 1,500년 이어진 로마 제국이 사실상 막을 내렸다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
+     "quote": "marking the effective end of the Roman Empire, a state which began in roughly 27 BC and had lasted nearly 1,500 years.",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "중세 시대",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?title=중세_시대&redirect=no",
+     "quote": "넘겨주기 중세 시대 → 중세",
+     "note": ""
+    }
    ]
   },
   "2619": {
@@ -8791,6 +10562,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Ibn_Battuta"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "델리 술탄 무함마드 빈 투글루크 밑에서 재판관",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Ibn_Battuta",
+     "quote": "he made his way to Delhi and became acquainted with the sultan, Muhammad bin Tughluq. ... Ibn Battuta was appointed a qadi (judge) by the sultan.",
+     "note": ""
+    }
    ]
   },
   "2627": {
@@ -8814,6 +10595,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/May_68"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "약 천만 명이 참여한 총파업, 이듬해 드골 사임",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/May_68",
+     "quote": "About 10 million workers, or two-thirds of the labor force, walked off the job in the largest general strike in French history ... he resigned the following year.",
+     "note": "문서는 '노동자' 약 1천만 명"
+    }
    ]
   },
   "2628": {
@@ -8835,6 +10626,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/Suffragette"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "단식 투쟁에는 강제 급식, 1913년 '고양이와 쥐 법'",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Prisoners_(Temporary_Discharge_for_Ill-Health)_Act_1913",
+     "quote": "commonly referred to as the Cat and Mouse Act, was an act passed by the Parliament of the United Kingdom ... in 1913. The hunger strikers were force-fed by the prison staff",
+     "note": ""
+    }
    ]
   },
   "2643": {
@@ -8856,6 +10657,16 @@
    ],
    "sources": [
     "https://en.wikipedia.org/wiki/The_Metamorphosis"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1933년 뮤어 부부의 영어 번역, '거대한 곤충'으로 옮김",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/The_Metamorphosis",
+     "quote": "In their 1933 translation of the story – the first into English – Willa Muir and Edwin Muir rendered it as \"... transformed in his bed into a gigantic insect\".",
+     "note": "문서는 이를 첫 영어 번역이라 적음"
+    }
    ]
   },
   "2649": {

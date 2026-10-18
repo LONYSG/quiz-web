@@ -1,0 +1,2179 @@
+{
+ "round": "G014",
+ "note": "V013 · V014 판정(활성 난이도 3 fix 586) 반영 — part 마다 누적. 되돌리기는 rows[].before (question_answers 는 after 행 지우기 · is_active 는 true 로 · general_hint 를 되살릴 때 version 은 이전 값) · notTaken 은 받지 않은 제안과 사유 · gen 은 GEN 이 쓴(또는 비운) 힌트",
+ "parts": {
+  "b-4": {
+   "counts": {
+    "decisions": 66,
+    "todo": 54,
+    "deactivate": 0,
+    "done": 0,
+    "skipped": 0,
+    "rows": 59,
+    "notTaken": 10
+   },
+   "skipped": [],
+   "rows": [
+    {
+     "id": 3821,
+     "field": "general_hint",
+     "before": "삼짇날 무렵 꽃잎을 따서 찹쌀 반죽에 얹어 지지는 화전에 즐겨 올리던 꽃이다.",
+     "after": "중국 연변 조선족 자치주를 상징하는 꽃(주화)이기도 하다.",
+     "why": "V014 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/진달래"
+     ]
+    },
+    {
+     "id": 3849,
+     "field": "general_hint",
+     "before": "대학생들을 무작위로 간수와 수감자 역에 나눈 연구로, 연구가 열린 미국 서부 대학의 이름이 붙었다.",
+     "after": "참가자 중 수감자 역을 맡은 이들을 지역 경찰이 모의 체포하는 것으로 시작됐다.",
+     "why": "V014 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Stanford_prison_experiment"
+     ]
+    },
+    {
+     "id": 3866,
+     "field": "general_hint",
+     "before": "이름은 이집트에 내린 마지막 재앙이 어린양의 피를 바른 집들을 건너뛰어 지나갔다는 이야기에서 왔다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(이름 유래 · 넘어감)는 한자 뜻풀이이자 같은 정답 #3198 질문과 같은 사실이라 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 3876,
+     "field": "general_hint",
+     "before": "유럽 평의회에는 1964년에 가입했지만 유엔에는 2002년에야 가입했다.",
+     "after": "유럽 평의회에는 1963년에 가입했지만 유엔에는 2002년에야 가입했다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Member_states_of_the_Council_of_Europe",
+      "https://en.wikipedia.org/wiki/Switzerland"
+     ]
+    },
+    {
+     "id": 3899,
+     "field": "general_hint",
+     "before": "타자기처럼 생겼고, 안의 회전자가 돌며 누른 글자를 다른 글자로 바꿔 치는 기계다.",
+     "after": "반사판 때문에 어떤 글자도 자기 자신으로 바뀌지 않는다는 약점이 있었고, 해독에 이용되었다.",
+     "why": "V014 fix 제안 반영 (h-pair-same,h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Enigma_machine"
+     ]
+    },
+    {
+     "id": 3926,
+     "field": "general_hint",
+     "before": "주재료는 '밭에서 나는 고기'라 불리는 곡물이다.",
+     "after": "일본에는 나라 시대에 불교 승려들을 통해 전해졌다고 한다.",
+     "why": "V013 fix 제안 반영 (h-pair-same,explanation)",
+     "sources": []
+    },
+    {
+     "id": 3927,
+     "field": "general_hint",
+     "before": "얇은 반죽의 화덕 피자이며, 2017년 나폴리 피자 굽는 기술이 유네스코 무형유산에 올랐다.",
+     "after": "나폴리 피자 장인이 반죽을 빚어 장작 화덕에 굽는 기술은 2017년 유네스코 무형유산에 올랐다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://ich.unesco.org/en/RL/art-of-neapolitan-pizzaiuolo-00722"
+     ]
+    },
+    {
+     "id": 3930,
+     "field": "explanation",
+     "before": "밀가루와 물만으로 오래 기른 발효종이 효모와 함께 이 유산균을 품어 시큼한 맛을 냅니다.",
+     "after": "밀가루와 물을 섞어 오래 기른 발효종이 효모와 함께 이 유산균을 품어 시큼한 맛을 냅니다.",
+     "why": "V014 fix 제안 반영 (h-pair-same,h-error,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Sourdough",
+      "https://en.wikipedia.org/wiki/Fructilactobacillus_sanfranciscensis"
+     ]
+    },
+    {
+     "id": 3930,
+     "field": "general_hint",
+     "before": "빵집마다 대를 이어 기르는 발효종이 있어, 1849년 골드러시 때 만든 것을 지금도 쓴다고 내세우는 가게도 있다.",
+     "after": "이 유산균은 효모가 못 먹는 맥아당을 먹고 포도당을 내놓아 효모와 한 반죽에서 경쟁하지 않고 함께 산다.",
+     "why": "V014 fix 제안 반영 (h-pair-same,h-error,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Sourdough"
+     ]
+    },
+    {
+     "id": 3938,
+     "field": "general_hint",
+     "before": "열을 가하면 향이 쉽게 날아가서, 익히지 않은 채 얇게 저며 버터 파스타나 달걀 요리 위에 올린다.",
+     "after": "고대 그리스·로마 사람들은 이것이 번개와 천둥, 비가 땅에 닿아 생긴다고 여겼다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Truffle"
+     ]
+    },
+    {
+     "id": 3949,
+     "field": "general_hint",
+     "before": "이곳에서 길들인 낙타의 흔적은 3세기부터 보이고, 정기 교역로는 7~8세기 서아프리카에 이슬람이 퍼지기 시작하며 생겼다.",
+     "after": "이곳을 건너는 낙타 대상 교역은 7~8세기 북아프리카가 이슬람 세력에 들어가며 활발해졌다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Sahara"
+     ]
+    },
+    {
+     "id": 3951,
+     "field": "general_hint",
+     "before": "호숫가 절벽 위에는 헤롯 대왕이 세운 요새가 있었고, 첫 유대-로마 전쟁 때 시카리라 불린 반란군이 그곳을 차지했다.",
+     "after": "호숫가 절벽 위의 요새는 헤롯 대왕 때 크게 다듬어졌고, 첫 유대-로마 전쟁 때 시카리라 불린 반란군이 그곳을 차지했다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Masada"
+     ]
+    },
+    {
+     "id": 3957,
+     "field": "general_hint",
+     "before": "미시간 호 남서쪽 기슭에 자리해, 오대호와 미시시피 강 수계를 잇는 길목으로 일찍 커진 도시다.",
+     "after": "1893년 이곳에서 열린 세계 박람회에서 세계 첫 대관람차가 돌았다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Chicago"
+     ]
+    },
+    {
+     "id": 3983,
+     "field": "general_hint",
+     "before": "둘 다 호민관이 되어 땅을 가난한 시민에게 나눠 주려는 개혁을 벌이다 반대파에게 죽임을 당했다.",
+     "after": "첫째는 서른 살쯤, 둘째는 서른세 살에 숨졌고 시신이 테베레강 유역에 버려져 무덤도 동상도 남지 않았다.",
+     "why": "V013 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/그라쿠스_형제"
+     ]
+    },
+    {
+     "id": 3996,
+     "field": "general_hint",
+     "before": "1685년 낭트 칙령을 폐지해 많은 위그노가 나라를 떠났다.",
+     "after": "재상 마자랭이 세상을 떠나자 재상을 두지 않고 직접 나라를 다스리기로 했다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Louis_XIV"
+     ]
+    },
+    {
+     "id": 3998,
+     "field": "general_hint",
+     "before": "제안자는 전쟁 중 미국 육군 참모총장을 지냈고 뒤에 국무장관이 된 사람이다.",
+     "after": "제안자는 몇 해 뒤 미국의 국방장관을 지내기도 했다.",
+     "why": "V014 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/George_Marshall"
+     ]
+    },
+    {
+     "id": 4019,
+     "field": "general_hint",
+     "before": "작가는 옥스퍼드의 언어학 교수였으며, 요정들이 쓰는 가상 언어까지 지어냈다.",
+     "after": "낭독 자리에서 휴고 다이슨이 큰 소리로 불평했다고 한다.",
+     "why": "V014 fix 제안 반영 (h-pair-same)",
+     "sources": []
+    },
+    {
+     "id": 4039,
+     "field": "general_hint",
+     "before": "한국 개봉판에서도 우리말로 옮기지 않고 일본어 이름 네 글자를 그대로 불렀다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(\"일본어 이름 네 글자\")는 꼴만 건네(H7) 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4040,
+     "field": "general_hint",
+     "before": "튀르키예어로 '평화'를 뜻하는 낱말과 소리가 닮았다는 설이 팬들 사이에 돌지만, 공식적으로 밝혀진 어원은 없다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(튀르키예어 소리 설)는 문서 미확인 소문이자 소리 조각이라 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4042,
+     "field": "general_hint",
+     "before": "이 팀 이름의 한자는 히에이산 기슭 히요시 신사에서 모시던 산의 신을 일컫는 말과 같다.",
+     "after": "종료 직전 서태웅의 패스를 받은 강백호의 버저비터로 승부가 갈렸다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Hiyoshi_Taisha"
+     ]
+    },
+    {
+     "id": 4048,
+     "field": "general_hint",
+     "before": "영어 세 글자 이름이며, 극 중 검은 바탕에 해골이 그려진 티셔츠를 입고 나온다.",
+     "after": "극 중 해골이 그려진 티셔츠를 입고 나온다.",
+     "why": "제안 힌트의 \"검은 바탕\" 은 문서로 못 닫아 판정자 note 대로 뺌",
+     "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Toy_Story_characters"
+     ],
+     "gen": true
+    },
+    {
+     "id": 4055,
+     "field": "general_hint",
+     "before": "아버지가 아닌 어머니의 성을 물려받았고, 이름은 알파벳 세 글자짜리 영어 낱말이다.",
+     "after": "아버지가 아닌 어머니 쪽 성을 물려받았다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Portgas_D._Ace"
+     ]
+    },
+    {
+     "id": 4063,
+     "field": "general_hint",
+     "before": "영화에서는 호주 출신 배우 한 사람이 2000년 첫 '엑스맨' 실사 영화부터 2024년까지 열 편에서 이 역을 맡았다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(휴 잭맨 배역)는 떠먹여 주기(H9)라 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4069,
+     "field": "question_text",
+     "before": "작가 Hun이 다음에 연재한 웹툰입니다. 북한의 비밀 남파 특수부대 '5446 부대' 출신 간첩들이 남한에서 신분을 숨기고 살아갑니다. 이 웹툰은 무엇일까요?",
+     "after": "북한의 비밀 남파 특수부대 '5446 부대' 출신 간첩들이 남한에서 신분을 숨기고 살아가는 이야기입니다. 2010년 7월부터 다음 만화속세상에 연재된 Hun(최종훈) 작가의 웹툰은 무엇일까요?",
+     "why": "V013 fix 제안 반영 (readable,h-famous)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/은밀하게_위대하게"
+     ]
+    },
+    {
+     "id": 4069,
+     "field": "general_hint",
+     "before": "주인공 원류환은 북한 최정예 요원이지만, 남한에서는 '방동구'라는 이름으로 산다.",
+     "after": "이 웹툰은 2011년 대한민국 콘텐츠 대상 만화 부문에서 장관상을 받았다.",
+     "why": "V013 fix 제안 반영 (readable,h-famous)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/은밀하게_위대하게"
+     ]
+    },
+    {
+     "id": 4100,
+     "field": "general_hint",
+     "before": "이 몬스터의 이름에는 유럽 귀족 작위 하나가 붙어 있다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(귀족 작위)는 정답 조각 번역이라 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4120,
+     "field": "general_hint",
+     "before": "선수 시절 프로 경력은 마인츠 한 팀뿐이었고, 2001년 은퇴하자마자 바로 그 팀 감독이 되었다.",
+     "after": "선수 시절 대부분을 마인츠에서 보냈고, 2001년 은퇴하자마자 바로 그 팀 감독이 되었다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klopp"
+     ]
+    },
+    {
+     "id": 4209,
+     "field": "general_hint",
+     "before": "아편에서 뽑은 진통제 모르핀의 이름도 이 인물 이름과 같은 데서 따왔다.",
+     "after": "이 인물이 선장으로 이끄는 반란군의 호버크래프트 이름은 성경 속 바빌론 왕의 이름에서 따왔다.",
+     "why": "V014 fix 제안 반영 (h-letters,h-pair-same)",
+     "sources": []
+    },
+    {
+     "id": 4224,
+     "field": "general_hint",
+     "before": "로스는 배달료를 아끼려고 레이철·챈들러와 셋이서 소파를 직접 들고 올라간다.",
+     "after": "이 장면은 한 수학자가 피타고라스 정리로 소파가 실제로는 계단을 통과할 수 있었다고 보여 줄 만큼 유명해졌다.",
+     "why": "V014 fix 제안 반영 (h-weak,variants)",
+     "sources": []
+    },
+    {
+     "id": 4224,
+     "field": "question_answers",
+     "before": null,
+     "after": "피봇",
+     "why": "V014 fix 제안 반영 (h-weak,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/The_One_with_the_Cop"
+     ]
+    },
+    {
+     "id": 4272,
+     "field": "general_hint",
+     "before": "도시 동쪽에서 가운데로 밀랴츠카강이 흐르고, 15세기에 생긴 옛 시장 거리 바슈차르시야가 중심이다.",
+     "after": "밀랴츠카강이 도시를 가로질러 서쪽으로 흐르고, 15세기에 생긴 옛 시장 거리 바슈차르시야가 있다.",
+     "why": "제안 힌트 없음 — 지금 힌트의 강 흐름 방향(\"동쪽에서 가운데로\")이 문서(서쪽으로 흐름)와 달라 GEN 이 문서 문장대로 고침",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4369,
+     "field": "general_hint",
+     "before": "그 도시의 체코식 이름은 '플젠'이며, 첫 맥주는 1842년 10월 5일에 빚어졌다.",
+     "after": "이 갈래의 첫 맥주는 1842년 10월 5일에 빚어졌고, 1853년 프라하 술집 35곳, 1856년 빈, 1862년 파리로 퍼져 나갔다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Pilsner"
+     ]
+    },
+    {
+     "id": 4484,
+     "field": "general_hint",
+     "before": "자유당 의원 가운데 김두한만 개헌안 발의 서명을 거부했고, 처음 부결을 선포한 사람은 국회부의장 최순주였다.",
+     "after": "처음 부결을 선포한 사람은 국회부의장 최순주였고, 무소속이던 김두한은 개헌 공고 서명을 거부했다고 전한다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/김두한",
+      "https://ko.wikipedia.org/wiki/사사오입_개헌"
+     ]
+    },
+    {
+     "id": 4500,
+     "field": "general_hint",
+     "before": "같은 낱말이 낯선 사람과 맞서 싸울 때 상대를 낮잡아 부르는 말로도 쓰인다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(싸울 때 낮잡는 말)는 질문 없이도 답이 떠오르고 해설과 같은 꼴이라 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4523,
+     "field": "general_hint",
+     "before": "3집 뒤 공백기에 한 멤버는 김동률과 '카니발'을 결성했고, 다른 멤버는 독집 '열외'를 냈다.",
+     "after": "한 멤버는 김동률과 함께 프로젝트 그룹 '카니발'을 결성해 활동한 적이 있다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/카니발_(음악_그룹)"
+     ]
+    },
+    {
+     "id": 4543,
+     "field": "general_hint",
+     "before": "찬밥을 쓰면서도 밥알마다 국물이 배어 퍼지지도 딱딱하지도 않게 되고, 먹기 알맞은 온도로 맞춰진다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트는 질문 조건 되풀이(H3)라 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4572,
+     "field": "general_hint",
+     "before": "D.S.는 이탈리아어 두 낱말을 줄인 말로, 그 뒷 낱말이 곧 이 표시의 이름이다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(D.S. 의 뒷 낱말 = 이 이름)는 떠먹여 주기라 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4610,
+     "field": "general_hint",
+     "before": "결혼식을 올린다는 뜻의 '화촉을 밝힌다'에서 화촉이 이 나무의 껍질을 가리킨다는 풀이가 전한다.",
+     "after": "핀란드는 이 나무를 나라를 상징하는 나무로 삼고 있다.",
+     "why": "제안 힌트 없음 — 지금 힌트(화촉 = 樺燭 풀이)는 사전 풀이(華燭)와 달라 GEN 이 다른 사실로 씀",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4673,
+     "field": "general_hint",
+     "before": "상하이에서 태어나 다섯 살 무렵 홍콩으로 왔고, 1997년 '해피 투게더'로 칸 영화제 감독상을 받았다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(상하이 출생 · 칸 감독상)는 대표 정체라 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4683,
+     "field": "general_hint",
+     "before": "그 탐험가는 마젤란 원정대에 이어 두 번째로 세계 일주를 마쳤고, 1588년 스페인 무적함대와의 싸움에서 부사령관을 맡았다.",
+     "after": "그의 기함은 원래 '펠리컨'이라 불렸다가 항해 도중 후원자 가문의 문장에 맞춰 이름을 바꾸었다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Francis_Drake"
+     ]
+    },
+    {
+     "id": 4694,
+     "field": "question_text",
+     "before": "1122년 신성 로마 황제 하인리히 5세와 교황 갈리스토 2세는, 황제가 반지와 지팡이로 성직자를 서임하는 권리를 내려놓고 교회령 같은 세속 권리만 홀로 수여하기로 타협했습니다. 1076년부터 이어진 서임권 투쟁을 일단 매듭지은, 독일 도시 이름이 붙은 이 협약은?",
+     "after": "1122년 신성 로마 황제 하인리히 5세와 교황 갈리스토 2세는, 황제가 반지와 지팡이로 성직자를 서임하는 권리를 내려놓고 교회령 같은 세속 권리만 홀로 수여하기로 타협했습니다. 11세기 후반부터 이어진 서임권 투쟁을 일단 매듭지은, 독일 도시 이름이 붙은 이 협약은?",
+     "why": "V014 fix 제안 반영 (assertive,h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Concordat_of_Worms",
+      "https://en.wikipedia.org/wiki/Worms,_Germany"
+     ]
+    },
+    {
+     "id": 4694,
+     "field": "general_hint",
+     "before": "이 도시는 1521년 루터가 황제 앞에서 주장을 거둘 수 없다고 버틴 제국 의회가 열린 곳이기도 하다.",
+     "after": "이 도시는 5세기 초 부르군트 왕국의 수도였고, 『니벨룽겐의 노래』 앞부분의 무대로 전한다.",
+     "why": "V014 fix 제안 반영 (assertive,h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Worms,_Germany"
+     ]
+    },
+    {
+     "id": 4724,
+     "field": "general_hint",
+     "before": "워싱턴 어빙은 1829년 이 궁전 안의 방에서 석 달쯤 묵으며 그 이야기책을 썼다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(어빙이 궁전에 묵으며 씀)는 질문 되풀이 · 연도 단정이 약해 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4725,
+     "field": "general_hint",
+     "before": "1945년 7월 짙은 안개 속에서 B-25 폭격기가 이 건물 78~80층 사이 북쪽 벽에 부딪혔다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(1945 B-25 충돌)는 대표 사건이고 층수도 문서와 달라 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4747,
+     "field": "general_hint",
+     "before": "해마다 150개가 넘는 나라가 겨뤄, 세계에서 가장 큰 연례 단체 스포츠 대회로 꼽힌다.",
+     "after": "우승 트로피는 은으로 만든 커다란 펀치볼(화채 그릇) 모양이다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Davis_Cup"
+     ]
+    },
+    {
+     "id": 4814,
+     "field": "general_hint",
+     "before": "작곡가는 집안 내력인 붉은 머리 때문에 '붉은 사제'라는 별명으로 불렸다고 한다.",
+     "after": "이 곡들은 작곡가가 만토바 궁정 악장으로 일하던 1718~1723년께 쓴 것으로 여겨진다.",
+     "why": "V014 fix 제안 반영 (h-pair-same,h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Antonio_Vivaldi",
+      "https://en.wikipedia.org/wiki/The_Four_Seasons_(Vivaldi)"
+     ]
+    },
+    {
+     "id": 4901,
+     "field": "explanation",
+     "before": "이 개정은 북아일랜드 벨파스트에서 열린 국제축구평의회 연례 회의에서 정해져, 다음 시즌부터 적용되었습니다.",
+     "after": "이 개정은 2025년 3월 1일 북아일랜드에서 열린 국제축구평의회 연례 회의에서 정해졌다.",
+     "why": "V014 fix 제안 반영 (h-letters,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Goalkeeper_(association_football)",
+      "https://en.wikipedia.org/wiki/Corner_kick",
+      "https://en.wikipedia.org/wiki/International_Football_Association_Board"
+     ]
+    },
+    {
+     "id": 4901,
+     "field": "general_hint",
+     "before": "이 킥을 받는 선수는 오프사이드가 되지 않는다는 규칙은 1883년에 법에 들어갔다.",
+     "after": "이 상황에서 공을 받는 선수는 오프사이드가 되지 않는다는 규칙은 1883년에 법에 들어갔다.",
+     "why": "V014 fix 제안 반영 (h-letters,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Corner_kick"
+     ]
+    },
+    {
+     "id": 4936,
+     "field": "general_hint",
+     "before": "흔히 '제2석굴암'이라 불리는 팔공산 북쪽 기슭의 국보 삼존 석굴이 이 군에 있다.",
+     "after": "한때 '제2석굴암'으로 불린 팔공산 북쪽 기슭의 국보 삼존 석굴이 이 군에 있다.",
+     "why": "V014 fix 제안 반영 (h-error,assertive)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/군위군"
+     ]
+    },
+    {
+     "id": 4949,
+     "field": "general_hint",
+     "before": "2007년 12월 국제슬로시티연맹이 이 섬을 슬로시티로 지정했다.",
+     "after": "1608년 사람이 처음 들어와 살기 시작했다고 하며, 1681년에는 수군 진영이 설치되었다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/슬로시티",
+      "https://ko.wikipedia.org/wiki/청산도"
+     ]
+    },
+    {
+     "id": 4958,
+     "field": "general_hint",
+     "before": "문무왕은 죽은 뒤 나라를 지키는 용이 되겠다고 유언했고, 화장한 뒤 동해 대왕암에 안장되었다고 한다.",
+     "after": "금당 터 기단 동서쪽에 태극·삼각 무늬를 새긴 돌막대가 있어, 천문 관측이나 조석 예측에 쓰였다는 설명이 있다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/감은사"
+     ]
+    },
+    {
+     "id": 4995,
+     "field": "general_hint",
+     "before": "김소월의 시 「진달래꽃」 3연은 이 등급의 끝맺음으로 맺는다.",
+     "after": null,
+     "why": "제안 힌트 없음 — 지금 힌트(진달래꽃 3연)는 해설과 같은 사실 · 문서 미확인이라 비움",
+     "sources": null,
+     "gen": true
+    },
+    {
+     "id": 4998,
+     "field": "general_hint",
+     "before": "주인공은 도술로 탐관오리를 꾸짖고 빈민을 돕다가, 임금의 회유로 조정에 들어가 벼슬을 하기도 한다.",
+     "after": "소설의 모델이 된 실존 인물은 송도(개성) 출신으로 추정되고, 중종·명종 때 환술로 이름이 났다고 한다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/전우치전",
+      "https://ko.wikipedia.org/wiki/전우치"
+     ]
+    },
+    {
+     "id": 5013,
+     "field": "general_hint",
+     "before": "가수 김민기가 대표를 맡은 이곳은 2004년부터 해마다 어린이 무대 시리즈를 올렸다.",
+     "after": "소극장은 '블루'로 불렸고, 곁에 있던 '그린' 소극장은 2013년 건물주의 용도 변경으로 문을 닫았다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/학전"
+     ]
+    },
+    {
+     "id": 5016,
+     "field": "general_hint",
+     "before": "멤버는 신연아·이지영·이영현·박민혜 네 사람이다.",
+     "after": "데뷔 후 YG 엔터테인먼트에서 3집까지 낸 뒤 소속사를 옮겨 4집 'Blossom'을 냈다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/빅마마"
+     ]
+    },
+    {
+     "id": 5043,
+     "field": "general_hint",
+     "before": "시즌 4 초반에는 딘딘이 한 잔을 모두 마시고 1,000원을 받아 화제가 됐다.",
+     "after": "시즌 4 첫 방송에서 딘딘은 이 음료 네 잔을 마셔 8,000원을 얻었고, 그 돈은 렌트비에 보태졌다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://www.tenasia.co.kr/article/2019120802874"
+     ]
+    },
+    {
+     "id": 5081,
+     "field": "general_hint",
+     "before": "참가자는 표적 새를 두 마리 놓치면 탈락했고, 상금은 최대 2만 프랑이었다.",
+     "after": "참가자는 표적 새를 두 마리 놓치면 탈락했고, 우승 상금은 5,000프랑이었다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/L%C3%A9on_de_Lunden"
+     ]
+    },
+    {
+     "id": 5150,
+     "field": "general_hint",
+     "before": "그 여성의 이름은 이즈모노 오쿠니로 전한다.",
+     "after": "이 전통 연극이 시작된 때는 에도 시대 초인 1603년으로 본다.",
+     "why": "V013 fix 제안 반영 (h-famous,h-weak)",
+     "sources": []
+    },
+    {
+     "id": 5171,
+     "field": "general_hint",
+     "before": "그 회사가 낸 첫 모델은 음식 바로 위에 달린 열선의 복사열로 익히는 방식이었다.",
+     "after": "이 기구는 열선에서 나오는 복사열에 더해, 뜨거운 바람을 음식 위에서 아래로 불어 주는 방식으로 시작했다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Air_fryer"
+     ]
+    }
+   ],
+   "notTaken": [
+    {
+     "id": 3809,
+     "field": "hint",
+     "proposal": "페르시아 정원에서는 10세기부터 재배됐고, 오스만 제국에서는 한 시대의 이름이 될 만큼 사랑받았다.",
+     "why": "같은 정답 쌍(h-pair-same)은 한쪽만 고친다 — #1180 의 바이러스 줄무늬를 다른 사실로 바꿈"
+    },
+    {
+     "id": 3862,
+     "field": "hint",
+     "proposal": "전통 이론에서는 의례를 다루는 부분과 사람 사이의 거래·관계를 다루는 부분, 크게 두 갈래로 나눈다.",
+     "why": "같은 정답 쌍(h-pair-same)은 한쪽만 고친다 — #2522 의 네 법학파 힌트를 바꿈"
+    },
+    {
+     "id": 3883,
+     "field": "hint",
+     "proposal": "1957년 초연은 732회 공연되었고, 토니상은 안무 부문 등 두 개를 받았다.",
+     "why": "같은 정답 쌍(h-pair-same)은 한쪽만 고친다 — #1934 의 로빈스 구상 힌트를 공연 기록으로 바꿈"
+    },
+    {
+     "id": 3907,
+     "field": "hint",
+     "proposal": "1998년 구스 반 산트 감독이 거의 장면 그대로 컬러로 다시 만든 같은 제목의 영화도 있다.",
+     "why": "같은 정답 쌍(h-pair-same)은 한쪽만 고친다 — #1286 의 노먼 베이츠 힌트를 모텔 세트 사실로 바꿈"
+    },
+    {
+     "id": 3974,
+     "field": "hint",
+     "proposal": "정권의 공식 국호는 '민주 캄푸치아'였다.",
+     "why": "같은 정답 쌍(h-pair-same)은 한쪽만 고친다 — #3322 의 이름 풀이 힌트를 바꿈(이쪽 제안 \"민주 캄푸치아\" 는 같은 대상의 다른 이름이라 H10 이기도 함)"
+    },
+    {
+     "id": 3978,
+     "field": "hint",
+     "proposal": "여행기에서 힌두쿠시라는 산 이름이 '힌두인을 죽이는 곳'이라는 뜻이라고 적었다.",
+     "why": "같은 정답 쌍(h-pair-same)은 한쪽만 고친다 — #2619 의 탕헤르 · 원나라 힌트를 바꿈"
+    },
+    {
+     "id": 3993,
+     "field": "hint",
+     "proposal": "법관 자리를 맡았다가 사형 선고를 내리기 싫어 곧 그만두었다.",
+     "why": "같은 정답 쌍(h-pair-same)은 한쪽만 고친다 — #1356 의 최고 존재 힌트를 바꿈"
+    },
+    {
+     "id": 4016,
+     "field": "hint",
+     "proposal": "여동생 그레테는 바이올린을 켜며 음악 공부를 꿈꾸는 인물이다.",
+     "why": "같은 정답 쌍(h-pair-same)은 한쪽만 고친다 — 사과 장면은 #4016 에 두고 작가 정체까지 겹친 #2643 을 고침"
+    },
+    {
+     "id": 4025,
+     "field": "hint",
+     "proposal": "이 작품은 1923년에 나온 단편집 『외침』에 실려 있다.",
+     "why": "같은 정답 쌍(h-pair-same)은 한쪽만 고친다 — #3333 의 연재 기간 힌트를 바꿈"
+    },
+    {
+     "id": 4224,
+     "field": "variants",
+     "proposal": [
+      "Pivot"
+     ],
+     "why": "넣지 않음 — 게이트 latin — 영문 원어 표기 — 프롬프트가 금지한다"
+    }
+   ]
+  },
+  "b-1": {
+   "counts": {
+    "decisions": 100,
+    "todo": 0,
+    "deactivate": 0,
+    "done": 138,
+    "skipped": 0,
+    "rows": 138,
+    "notTaken": 19
+   },
+   "skipped": [],
+   "rows": [
+    {
+     "id": 39,
+     "field": "question_text",
+     "before": "베토벤이 청력을 잃은 뒤에도 작곡한 것으로 유명한 교향곡 번호는?",
+     "after": "베토벤이 청력을 완전히 잃은 뒤 완성한 마지막 교향곡은 몇 번일까요?",
+     "why": "V014 fix 제안 반영 (not-unique,h-error)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/교향곡_9번_(베토벤)"
+     ]
+    },
+    {
+     "id": 39,
+     "field": "general_hint",
+     "before": "마지막 악장의 한 선율이 유럽연합의 공식 노래로 쓰인다.",
+     "after": "마지막 악장의 한 선율이 유럽 평의회의 상징가 '유럽가'로 채택되었다.",
+     "why": "V014 fix 제안 반영 (not-unique,h-error)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/교향곡_9번_(베토벤)"
+     ]
+    },
+    {
+     "id": 39,
+     "field": "question_answers",
+     "before": null,
+     "after": "아홉 번",
+     "why": "V014 fix 제안 반영 (not-unique,h-error)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/교향곡_9번_(베토벤)"
+     ]
+    },
+    {
+     "id": 40,
+     "field": "question_text",
+     "before": "음악에서 두 부분을 이어주는 전환 구간을 부르는 말은?",
+     "after": "대중가요에서 앞부분과 대비되는 가락으로 분위기를 바꾼 뒤 처음 가락이나 후렴으로 돌아가도록 이어 주는 구간을 무엇이라 할까요?",
+     "why": "V014 fix 제안 반영 (not-unique,h-letters,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Bridge_(music)"
+     ]
+    },
+    {
+     "id": 40,
+     "field": "general_hint",
+     "before": "대중가요에서는 주로 두 번째 후렴 뒤에 한 번 나와 분위기를 바꾸며, 이름은 토목 구조물에서 빌려 왔다.",
+     "after": "32마디 AABA 형식의 노래에서는 세 번째 여덟 마디 대목이 이 구간이다.",
+     "why": "V014 fix 제안 반영 (not-unique,h-letters,variants)",
+     "sources": []
+    },
+    {
+     "id": 40,
+     "field": "question_answers",
+     "before": null,
+     "after": "브릿지",
+     "why": "V014 fix 제안 반영 (not-unique,h-letters,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Bridge_(music)"
+     ]
+    },
+    {
+     "id": 45,
+     "field": "general_hint",
+     "before": "로마법을 집대성한 법전 편찬을 이끌었고 황후 테오도라를 둔 6세기 황제다.",
+     "after": "재위 중 일어난 니카 반란으로 도시 곳곳이 불탄 뒤, 대대적인 재건 사업을 벌인 황제다.",
+     "why": "V013 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Justinian_I"
+     ]
+    },
+    {
+     "id": 78,
+     "field": "general_hint",
+     "before": "라틴어로 '세 남자'를 뜻하는 말에서 온 이름이며, 카이사르가 죽은 뒤 같은 짜임이 한 번 더 꾸려졌다.",
+     "after": "카이사르가 죽은 뒤 안토니우스, 옥타비아누스, 레피두스가 이번에는 공식 협약으로 같은 짜임을 되풀이했다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/삼두_정치"
+     ]
+    },
+    {
+     "id": 105,
+     "field": "explanation",
+     "before": "린네가 체계화한 생물 학명 표기법은 속명과 종소명을 사용하는 이명법이다.",
+     "after": "사람의 학명 Homo sapiens 는 속명 Homo 와 종소명 sapiens 로 이루어집니다.",
+     "why": "V013 fix 제안 반영 (h-letters,explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/이명법"
+     ]
+    },
+    {
+     "id": 105,
+     "field": "general_hint",
+     "before": "사람의 학명 'Homo sapiens'가 그 예이고, 이름의 첫 글자는 숫자를 뜻하는 한자다.",
+     "after": "린네보다 앞서 가스파르 보앵이 1622년에 린네가 나중에 채택한 속명을 많이 도입했다.",
+     "why": "V013 fix 제안 반영 (h-letters,explanation)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/이명법"
+     ]
+    },
+    {
+     "id": 118,
+     "field": "question_text",
+     "before": "1908년 헨리 포드가 개발하여 컨베이어 벨트 조립 라인 방식을 통해 대량 생산된 최초의 대중차 모델명은?",
+     "after": "1908년 헨리 포드가 내놓았고, 1913년부터 이동식 조립 라인에서 대량 생산되어 자동차 대중화를 이끈 것으로 평가받는 차종의 이름은?",
+     "why": "V014 fix 제안 반영 (assertive,h-famous)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/포드_모델_T",
+      "https://en.wikipedia.org/wiki/Ford_Model_T"
+     ]
+    },
+    {
+     "id": 118,
+     "field": "general_hint",
+     "before": "'검은색이기만 하면 어떤 색이든 고를 수 있다'는 포드의 농담으로 유명하며, 앞선 차종에는 A·N·S 같은 글자가 붙었다.",
+     "after": "1927년 생산을 마칠 때까지 1,500만 대 넘게 팔렸으며, 앞선 차종에는 A부터 S까지 글자가 붙었다.",
+     "why": "V014 fix 제안 반영 (assertive,h-famous)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/포드_모델_T",
+      "https://en.wikipedia.org/wiki/Ford_Model_T"
+     ]
+    },
+    {
+     "id": 174,
+     "field": "general_hint",
+     "before": "르네상스 시대 사람들이 로마를 무너뜨린 게르만 부족의 이름을 빌려 '야만스럽다'는 뜻으로 낮춰 부른 데서 이름이 왔다.",
+     "after": "16세기 바사리가 『미술가 열전』에서 이 건축을 야만적인 독일 풍이라 낮춰 부른 데서 이름이 왔다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(1530년대 → 『미술가 열전』 · 북유럽 → 독일)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/고딕_건축"
+     ],
+     "gen": true
+    },
+    {
+     "id": 186,
+     "field": "general_hint",
+     "before": "이름은 독일어로 '짓다'와 '집'을 합친 말이며, 1933년 나치의 압박으로 문을 닫았다.",
+     "after": "1925년 데사우로, 1932년 베를린으로 옮겼고 마지막 교장은 건축가 미스 반 데어 로에였다.",
+     "why": "V013 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Bauhaus"
+     ]
+    },
+    {
+     "id": 192,
+     "field": "general_hint",
+     "before": "벽 너머 보이지 않는 곳의 소리가 들리는 까닭도 이것이며, CD 뒷면의 무지갯빛도 이와 관련 있다.",
+     "after": "17세기 이탈리아의 그리말디가 이 현상을 정밀하게 관찰하고, '조각조각 갈라지다'를 뜻하는 라틴어에서 이름을 따 붙였다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Diffraction"
+     ]
+    },
+    {
+     "id": 270,
+     "field": "general_hint",
+     "before": "그리스어로 '법·규범'을 뜻하는 말에 부정의 접두사가 붙은 낱말에서 왔다.",
+     "after": "1938년 미국 사회학자 머튼이 이 개념을 일탈 이론으로 이어 발전시켰다.",
+     "why": "V014 fix 제안 반영 (h-letters,h-weak)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Anomie"
+     ]
+    },
+    {
+     "id": 296,
+     "field": "general_hint",
+     "before": "이름은 '부지런히 나라를 다스리라'는 뜻으로 정도전이 지었으며, 앞뜰에는 품계석이 늘어서 있다.",
+     "after": "앞뜰에는 품계석이 늘어서 있고, 임진왜란 때 불탄 뒤 1860년대에 다시 세워졌다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/근정전"
+     ]
+    },
+    {
+     "id": 330,
+     "field": "general_hint",
+     "before": "프랑스 옛 100프랑 지폐에 이 그림과 들라크루아의 얼굴이 함께 실렸고, 지금은 루브르 박물관에 걸려 있다.",
+     "after": "2013년 루브르 랑스 분관에 걸려 있을 때 한 관람객이 그림에 마커로 글자를 써 훼손했다.",
+     "why": "제안 힌트(1831 정부 매입 · 전시에서 내림)가 같은 정답 #3413 힌트와 같은 사실(H12) — GEN 이 다른 사실로 씀",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Liberty_Leading_the_People"
+     ],
+     "gen": true
+    },
+    {
+     "id": 339,
+     "field": "general_hint",
+     "before": "지구의 달보다 크고 행성인 수성보다도 크다.",
+     "after": "지름은 지구의 달보다 크고 행성인 수성보다도 크다.",
+     "why": "V014 fix 제안 반영 (assertive,h-error)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Titan_(moon)"
+     ]
+    },
+    {
+     "id": 349,
+     "field": "general_hint",
+     "before": "그 기물 하나가 룩과 비숍의 움직임을 합친 것이라, 다른 것을 고를 까닭이 거의 없다.",
+     "after": "처음 있던 하나에 폰 여덟 개가 모두 이것으로 바뀌면, 한 편이 이론상 아홉 개까지 가질 수 있다.",
+     "why": "제안 힌트의 \"처음 하나에\" 가 읽히지 않아 문구만 고침",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Promotion_(chess)"
+     ],
+     "gen": true
+    },
+    {
+     "id": 361,
+     "field": "general_hint",
+     "before": "한자 이름은 '더위가 머물러 그친다'는 뜻이며, 입추 바로 다음에 온다.",
+     "after": "스물네 절기 가운데 열네 번째이며, 입추 바로 다음에 온다.",
+     "why": "V014 fix 제안 반영 (h-letters,h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/24절기",
+      "https://ko.wikipedia.org/wiki/처서"
+     ]
+    },
+    {
+     "id": 382,
+     "field": "general_hint",
+     "before": "바이에른 왕 루트비히 2세의 후원을 받았고, 두 번째 아내 코지마는 리스트의 딸이자 지휘자 한스 폰 뷜로의 전 부인이었다.",
+     "after": "두 번째 아내 코지마는 리스트의 딸이자 지휘자 한스 폰 뷜로의 전 부인이었다.",
+     "why": "V014 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Richard_Wagner"
+     ]
+    },
+    {
+     "id": 387,
+     "field": "general_hint",
+     "before": "미국 국방부 산하 고등연구계획국의 영문 약칭에 '망'을 덧붙인 이름이다.",
+     "after": "1969년 10월 29일 첫 전송에서 'login'을 치던 중 두 글자 'lo'만 가고 시스템이 멈췄다.",
+     "why": "V013 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/알파넷"
+     ]
+    },
+    {
+     "id": 387,
+     "field": "question_answers",
+     "before": null,
+     "after": "알파넷",
+     "why": "V013 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/알파넷"
+     ]
+    },
+    {
+     "id": 398,
+     "field": "general_hint",
+     "before": "1985년 아키스와 블루머는 대학 극장 시즌권을 정가에 산 사람이 할인가에 산 사람보다 공연을 더 자주 보러 온다는 실험으로 이 비용이 행동을 좌우함을 보였다.",
+     "after": "1985년 아키스와 블루머는 대학 극장 시즌권을 정가에 산 사람이 할인가에 산 사람보다 공연을 더 자주 보러 온다는 실험으로, 이미 낸 돈이 이후 행동을 좌우함을 보였다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": []
+    },
+    {
+     "id": 433,
+     "field": "general_hint",
+     "before": "제자가 이 그림을 들고 청나라에 가서 문인들의 감상 글을 받아 뒤에 이어 붙였다.",
+     "after": "그 제자는 통역을 맡은 역관으로, 청나라 베이징에서 귀한 책들을 구해 보내 주었다.",
+     "why": "V014 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/세한도"
+     ]
+    },
+    {
+     "id": 441,
+     "field": "general_hint",
+     "before": "제목은 '어린아이를 깨우치는 글자 모음'이라는 뜻이다.",
+     "after": "받침을 여덟 소리로만 적게 했고, 생활 주변의 사물을 다룬 낱말을 실어 배우기 쉽게 했다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": []
+    },
+    {
+     "id": 451,
+     "field": "general_hint",
+     "before": "제목의 첫 글자는 검은 새를 뜻하는 한자다.",
+     "after": "작가가 폐병을 앓던 처지와 1930년대 식민지의 불안이 시에 겹쳐 읽힌다는 해석이 있다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/오감도"
+     ]
+    },
+    {
+     "id": 503,
+     "field": "general_hint",
+     "before": "쿡 선장이 통가 섬에 머물며 처음 적었다고 전하며, 영어에서는 '금지하다'라는 동사로도 쓴다.",
+     "after": "오세아니아 여러 언어에 같은 뿌리의 낱말이 퍼져 있어, 통가어뿐 아니라 피지어 등에서도 비슷하게 쓰인다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": []
+    },
+    {
+     "id": 514,
+     "field": "general_hint",
+     "before": "제목은 주인공인 늙은 흑인 노예와 그가 사는 집을 가리키며, 1852년 책으로 나왔다.",
+     "after": "처음에는 1851년 신문에 연재되었고, 이듬해 책으로 묶여 나왔다.",
+     "why": "V014 fix 제안 반영 (h-error,h-weak)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Uncle_Tom%27s_Cabin"
+     ]
+    },
+    {
+     "id": 535,
+     "field": "general_hint",
+     "before": "만화 작업실에서 커터 칼로 오려 붙이던 재료로, 일본 만화계에서 널리 쓰였다.",
+     "after": "빗금을 촘촘히 긋는 해칭 대신 쓰는 방법으로, 옷·구름·감정 같은 분위기를 표현할 때도 쓰였다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": []
+    },
+    {
+     "id": 555,
+     "field": "general_hint",
+     "before": "경찰 신고 번호처럼 1로 시작해 2로 끝나는 세 자리 번호다.",
+     "after": "실종 아동 가족의 상담과 지원은 보건복지부가 위탁해 아동권리보장원이 운영하는 실종아동전문센터가 따로 맡는다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(기관 이름이 바뀜)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/실종아동전문기관"
+     ],
+     "gen": true
+    },
+    {
+     "id": 556,
+     "field": "general_hint",
+     "before": "1로 시작하는 네 자리 번호로, 뒤의 두 자리가 같은 숫자다.",
+     "after": "9세부터 24세까지의 청소년과 그 보호자가 대상이며, 365일 24시간 운영된다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": []
+    },
+    {
+     "id": 557,
+     "field": "general_hint",
+     "before": "1로 시작하는 세 자리 번호로, 끝자리가 한 자리 수 가운데 가장 큰 수다.",
+     "after": "상담 내용은 관할 시군구로 이어지며, 시군구청이나 주민센터에서도 같은 지원 요청을 할 수 있다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": []
+    },
+    {
+     "id": 558,
+     "field": "general_hint",
+     "before": "1로 시작하는 세 자리 번호로, 끝자리가 0이다.",
+     "after": "국민콜이라는 이름으로도 불리며, 센터는 경기도 과천 정부청사 안에 있다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": []
+    },
+    {
+     "id": 560,
+     "field": "explanation",
+     "before": "다이얼 맨 끝에 있어 앞을 볼 수 없는 상황에서도 찾기 쉽다는 점이 고려됐습니다.",
+     "after": "1935년 런던 윔폴 스트리트 화재에서 신고가 늦어진 일이 도입의 계기가 되었다고 전합니다.",
+     "why": "V014 fix 제안 반영 (h-weak,explanation)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/999_(emergency_telephone_number)"
+     ]
+    },
+    {
+     "id": 560,
+     "field": "general_hint",
+     "before": "세 자리가 모두 같은 숫자로 이루어진 번호다.",
+     "after": "처음에는 런던 옥스퍼드 서커스에서 반지름 약 12마일 안에서만 쓸 수 있었다.",
+     "why": "V014 fix 제안 반영 (h-weak,explanation)",
+     "sources": []
+    },
+    {
+     "id": 561,
+     "field": "general_hint",
+     "before": "1로 시작하는 세 자리 번호로, 가운데 숫자도 1이다.",
+     "after": "기관의 대표 번호와는 따로 두었고, 사이버 침해 사고를 받는 KrCERT/CC 쪽 상담으로 이어지는 번호다.",
+     "why": "V013 fix 제안 반영 (h-letters,h-weak)",
+     "sources": []
+    },
+    {
+     "id": 579,
+     "field": "general_hint",
+     "before": "물속 플랑크톤이 지나치게 불어나는 원인이어서, 합성세제에서 인산염을 빼는 계기가 된 현상이다.",
+     "after": "합성세제에서 인산염을 빼게 된 계기가 된 현상이다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Eutrophication"
+     ]
+    },
+    {
+     "id": 604,
+     "field": "general_hint",
+     "before": "가정과 결론만 맞바꾼 것은 '역', 둘을 부정만 한 것은 '이'라 부르며, 이것은 그 두 가지를 함께 한 것이다.",
+     "after": "원래 명제의 역과 이는 서로 이것의 관계여서 참거짓이 늘 같다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Contraposition"
+     ]
+    },
+    {
+     "id": 606,
+     "field": "general_hint",
+     "before": "집합으로 보면 p의 진리집합이 q의 진리집합에 포함될 때 성립하는 관계이며, 반대 방향도 함께 성립하면 두 명제는 '동치'라 부른다.",
+     "after": "'사람이면 포유류이다'가 참일 때, 포유류가 사람의 이것에 해당한다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Necessity_and_sufficiency"
+     ]
+    },
+    {
+     "id": 629,
+     "field": "explanation",
+     "before": "백 년 넘게 세 낱말이던 표어에 처음으로 더해진 말로, 경쟁만이 아니라 연대를 담으려는 뜻이었습니다.",
+     "after": "2021년 IOC가 세 낱말 표어 뒤에 새 낱말을 덧붙였습니다. 경쟁만이 아니라 연대를 담으려는 뜻이었습니다.",
+     "why": "V014 fix 제안 반영 (not-unique,variants,explanation,h-weak)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Olympic_motto"
+     ]
+    },
+    {
+     "id": 629,
+     "field": "general_hint",
+     "before": "'같이'·'더불어'와 뜻이 비슷한 세 글자 우리말이다.",
+     "after": "라틴어 원문에서는 표어 끝에 줄표를 긋고 Communiter 를 덧붙였다.",
+     "why": "V014 fix 제안 반영 (not-unique,variants,explanation,h-weak)",
+     "sources": []
+    },
+    {
+     "id": 629,
+     "field": "question_answers",
+     "before": null,
+     "after": "함께",
+     "why": "V014 fix 제안 반영 (not-unique,variants,explanation,h-weak)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Olympic_motto"
+     ]
+    },
+    {
+     "id": 629,
+     "field": "question_answers",
+     "before": null,
+     "after": "다같이",
+     "why": "V014 fix 제안 반영 (not-unique,variants,explanation,h-weak)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Olympic_motto"
+     ]
+    },
+    {
+     "id": 634,
+     "field": "general_hint",
+     "before": "이름 뒤 두 글자는 싸움을 잠시 멈춘다는 뜻의 낱말이다.",
+     "after": "현대판은 1992년 IOC가 되살렸고, 개막 일주일 전부터 패럴림픽 폐막 일주일 뒤까지 이어진다.",
+     "why": "제안 힌트가 hint-check 막힘(국제올림픽위원회 속 정답 조각 \"올림픽\") — IOC 로 바꿈",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Olympic_Truce"
+     ],
+     "gen": true
+    },
+    {
+     "id": 638,
+     "field": "general_hint",
+     "before": "원산지로 알려진 지역의 옛 이름을 땄으며, 은빛 털을 가진 개체는 친칠라라고 따로 부르기도 한다.",
+     "after": "은빛 털의 개체는 친칠라라고 따로 부르며, 1882년 영국에서 태어난 실버 램킨이 그 계통의 시조로 꼽힌다.",
+     "why": "V014 fix 제안 반영 (not-unique,h-pair-same)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Persian_cat"
+     ]
+    },
+    {
+     "id": 650,
+     "field": "general_hint",
+     "before": "꽃 이름이 이야기 속 인물과 그가 먹던 것을 그대로 이어 붙인 꼴이다.",
+     "after": "반기생성 한해살이풀로, 7~8월에 붉은 꽃이 핀다.",
+     "why": "V014 fix 제안 반영 (h-letters,variants)",
+     "sources": []
+    },
+    {
+     "id": 650,
+     "field": "question_answers",
+     "before": null,
+     "after": "며느리밥풀",
+     "why": "V014 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/꽃며느리밥풀"
+     ]
+    },
+    {
+     "id": 650,
+     "field": "question_answers",
+     "before": null,
+     "after": "꽃며느리밥풀",
+     "why": "V014 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/꽃며느리밥풀"
+     ]
+    },
+    {
+     "id": 655,
+     "field": "general_hint",
+     "before": "선한 신 아후라 마즈다를 섬기며, 일본 자동차 회사 마쓰다의 이름이 그 신에서 왔다고 회사가 밝힌다.",
+     "after": "선한 신이 악의 영 앙그라 마이뉴를 끝내 이긴다고 가르치는 종교다.",
+     "why": "V014 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Ahura_Mazda"
+     ]
+    },
+    {
+     "id": 676,
+     "field": "general_hint",
+     "before": "이름 뒷부분은 영어로 '구덩이'를 뜻하는 낱말이다.",
+     "after": "바그너가 바이로이트 축제극장에서 지붕으로 덮어 객석에서 연주자가 전혀 안 보이게 만든 공간이 특히 유명하다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": []
+    },
+    {
+     "id": 685,
+     "field": "general_hint",
+     "before": "배와 항해에 쓰는 한자 용어로, 영어로는 드래프트라 한다.",
+     "after": "배 옆구리에 칠한 '플림솔 선'은 짐을 실어도 되는 법적 한계를 나타내며, 1876년 영국의 플림솔 이름이 붙었다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": []
+    },
+    {
+     "id": 689,
+     "field": "general_hint",
+     "before": "운하 이름과 '최대'를 뜻하는 영어 낱말을 합친 말이다.",
+     "after": "1914년 문을 연 이 운하 갑문의 한 칸은 너비 약 33.5미터, 길이 약 320미터이다.",
+     "why": "V013 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Panamax"
+     ]
+    },
+    {
+     "id": 700,
+     "field": "general_hint",
+     "before": "2013년 미국 지방 정부로는 사상 가장 큰 규모의 파산을 신청했다.",
+     "after": "도시 남서쪽 땅속 약 335m 아래에 갱도가 160km 넘게 뻗은 거대한 소금 광산이 있다.",
+     "why": "V014 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Detroit"
+     ]
+    },
+    {
+     "id": 703,
+     "field": "general_hint",
+     "before": "짜오프라야강을 끼고 있으며, 수상 시장과 왕궁 사원으로 이름난 도시다.",
+     "after": "1782년 라마 1세가 강 서쪽의 톤부리에서 강 동쪽 섬으로 도읍을 옮기며 지금 왕조의 수도로 삼았다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Bangkok"
+     ]
+    },
+    {
+     "id": 713,
+     "field": "general_hint",
+     "before": "이름은 러시아어로 '연합'을 뜻한다.",
+     "after": "첫 유인 비행이던 1967년, 조종사 블라디미르 코마로프가 돌아오다 낙하산이 펴지지 않아 숨졌다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": []
+    },
+    {
+     "id": 745,
+     "field": "general_hint",
+     "before": "아랍어로 '등대'를 뜻하는 말에서 왔다.",
+     "after": "이름은 본래 등불 받침대를 뜻하던 아랍어 낱말에서 왔으며, 이 말은 등대를 가리키기도 했다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(뜻을 \"뒤에\" 얻었다는 순서는 문서에 없음)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Minaret"
+     ],
+     "gen": true
+    },
+    {
+     "id": 771,
+     "field": "general_hint",
+     "before": "날개를 편 길이가 3m를 넘기도 하며, 바람만 타고 몇 시간이고 바다 위를 나는 새다.",
+     "after": "이 새의 이름은 포르투갈어 낱말을 거쳐 영어에 들어왔는데, 샌프란시스코만의 유명한 감옥섬 이름과 뿌리가 같다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Albatross"
+     ]
+    },
+    {
+     "id": 804,
+     "field": "general_hint",
+     "before": "세균 유전체에서 짧은 서열이 일정한 간격으로 되풀이되는 구간을 가리키던 영어 머리글자에서 온 이름이다.",
+     "after": "샤르팡티에와 다우드나라는 두 여성 과학자가 이 기술을 도구로 발전시켰다.",
+     "why": "V014 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/CRISPR"
+     ]
+    },
+    {
+     "id": 804,
+     "field": "question_answers",
+     "before": null,
+     "after": "크리스퍼 카스9",
+     "why": "V014 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/CRISPR"
+     ]
+    },
+    {
+     "id": 804,
+     "field": "question_answers",
+     "before": null,
+     "after": "CRISPR",
+     "why": "V014 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/CRISPR"
+     ]
+    },
+    {
+     "id": 836,
+     "field": "general_hint",
+     "before": "세계가 새 세기의 시작이라며 성대하게 축하했던 해와는 다르다.",
+     "after": "지금 쓰는 연도 세기 방식은 525년 로마에서 수도사 디오니시우스 엑시구우스가 만들었다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(로마 출신처럼 읽히지 않게)",
+     "sources": [],
+     "gen": true
+    },
+    {
+     "id": 907,
+     "field": "general_hint",
+     "before": "라틴어로 '튼튼한'을 뜻하는 말에서 온 이름이며, 베트남이 가장 많이 생산한다.",
+     "after": "세계에서 이 품종을 가장 많이 수출하는 나라는 베트남이고, 학명은 코페아 카네포라이다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Coffea_canephora"
+     ]
+    },
+    {
+     "id": 908,
+     "field": "general_hint",
+     "before": "미국 중서부의 'Corn Belt'처럼 작물 이름 뒤에 '띠'를 뜻하는 영어를 붙인 말이다.",
+     "after": "아라비카는 15~24도, 로부스타는 24~30도쯤의 기온에서 잘 자란다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Bean_belt"
+     ]
+    },
+    {
+     "id": 932,
+     "field": "general_hint",
+     "before": "당시 미국 대통령의 이름 뒤에 '충격'을 뜻하는 영어를 붙인 말이다.",
+     "after": "1971년 8월 15일 금 태환 중단과 함께 90일 임금·물가 동결, 수입품 10% 추가 관세도 한꺼번에 발표했다.",
+     "why": "V014 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Nixon_shock"
+     ]
+    },
+    {
+     "id": 932,
+     "field": "question_answers",
+     "before": null,
+     "after": "닉슨 충격",
+     "why": "V014 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Nixon_shock"
+     ]
+    },
+    {
+     "id": 936,
+     "field": "general_hint",
+     "before": "'다시'를 뜻하는 영어 접두어와 화폐의 '액면'을 뜻하는 낱말을 이었고, 우리나라는 1962년 10환을 1원으로 바꾼 적이 있다.",
+     "after": "한국은 환을 원으로 바꾸면서 단위를 십분의 일로 낮춘 적이 있고, 요즘도 천분의 일로 낮추는 안이 거론된다.",
+     "why": "V014 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Redenomination"
+     ]
+    },
+    {
+     "id": 936,
+     "field": "question_answers",
+     "before": null,
+     "after": "화폐단위 변경",
+     "why": "V014 fix 제안 반영 (h-letters,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Redenomination"
+     ]
+    },
+    {
+     "id": 979,
+     "field": "general_hint",
+     "before": "이름 뒷글자는 '들보'를 뜻하는 한자로, 두 반구를 가로질러 잇는 모양에서 왔다.",
+     "after": "태반이 있는 포유류에만 발달하고, 캥거루 같은 유대류에는 없는 구조다.",
+     "why": "V013 fix 제안 반영 (variants,h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/뇌량",
+      "https://en.wikipedia.org/wiki/Corpus_callosum"
+     ]
+    },
+    {
+     "id": 979,
+     "field": "question_answers",
+     "before": null,
+     "after": "뇌들보",
+     "why": "V013 fix 제안 반영 (variants,h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/뇌량",
+      "https://en.wikipedia.org/wiki/Corpus_callosum"
+     ]
+    },
+    {
+     "id": 1003,
+     "field": "explanation",
+     "before": "유생들이 고기를 먹고 싶을 때 제사를 핑계 삼았다는 이야기가 전합니다.",
+     "after": "음식이 귀하던 시절, 제사 음식을 제사 없이도 즐기려고 차려 먹었다는 설이 전합니다.",
+     "why": "해설 제안이 판정자 메모 문장이라 메모가 가리킨 문서 설명으로 GEN 이 씀",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/헛제삿밥"
+     ]
+    },
+    {
+     "id": 1003,
+     "field": "general_hint",
+     "before": "이름 맨 앞 한 글자가 '가짜·보람 없음'을 뜻한다.",
+     "after": "대구에서는 돔배기를, 진주에서는 유과와 감주를 곁들이는 비슷한 음식이 따로 전한다.",
+     "why": "해설 제안이 판정자 메모 문장이라 메모가 가리킨 문서 설명으로 GEN 이 씀",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/헛제삿밥"
+     ]
+    },
+    {
+     "id": 1049,
+     "field": "general_hint",
+     "before": "제나라 환공을 패자로 만든 재상과, 그를 환공에게 추천한 친구의 이야기다.",
+     "after": "한 사람이 젊어서 장사 이익을 더 많이 가져가도 다른 사람은 그를 탐욕스럽다 하지 않았다는 일화가 전한다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/관중"
+     ]
+    },
+    {
+     "id": 1052,
+     "field": "general_hint",
+     "before": "노래가 불린 김해의 봉우리 이름이 곧 제목이며, 신라의 '해가'가 이 노래와 비슷한 꼴이다.",
+     "after": "서기 42년에 만들어졌다고 전하며, 문헌으로 확인되는 한국 최초의 민요로 소개된다.",
+     "why": "V014 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/구지가"
+     ]
+    },
+    {
+     "id": 1054,
+     "field": "general_hint",
+     "before": "지은이는 경덕왕 때 하늘에 해가 둘 나타나 열흘이 지나도록 사라지지 않자 왕의 청으로 '도솔가'를 지어 부른 승려다.",
+     "after": "열 줄로 짜인 10구체이며, 앞의 네 줄에서 먼저 죽음에 대한 슬픔과 비애를 드러낸다.",
+     "why": "V014 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/제망매가"
+     ]
+    },
+    {
+     "id": 1061,
+     "field": "general_hint",
+     "before": "제목은 질문 속 '규방'의 첫 글자에 '원망'을 뜻하는 한자를 이은 꼴이다.",
+     "after": "선조 때 지어진 것으로 보는 작품이다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/규원가"
+     ]
+    },
+    {
+     "id": 1065,
+     "field": "general_hint",
+     "before": "한산도가 노랫말을 썼고, 음반이 100만 장 넘게 팔린 것으로 추정되는데 한국 음반으로는 처음이었다고 전한다.",
+     "after": "2006년 MBC 설문에서 국민 애창곡 2위에 뽑혔고, 지구레코드에서 음반을 냈다.",
+     "why": "V013 fix 제안 반영 (h-pair-same)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/동백_아가씨"
+     ]
+    },
+    {
+     "id": 1074,
+     "field": "general_hint",
+     "before": "용산에 있던 그 교차로의 지명은 지금 지하철역 이름으로 남아 있다.",
+     "after": "1971년 신장염이 재발해 만 29세에 세상을 떠난 배호의 노래다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/배호",
+      "https://ko.wikipedia.org/wiki/삼각지역"
+     ]
+    },
+    {
+     "id": 1090,
+     "field": "general_hint",
+     "before": "'나쁜 운을 미리 막는다'는 뜻의 낱말이 이름 앞에 붙는다.",
+     "after": null,
+     "why": "제안 힌트(연날리기 기간 · 연 종류 100여 종)는 정답으로 이끌지 못하는 일반 사실(H8) · 문서로 닫히는 두 번째 줄 사실을 못 찾아 힌트를 비움(난이도 3 은 H0 필수 아님)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/연날리기"
+     ],
+     "gen": true
+    },
+    {
+     "id": 1095,
+     "field": "general_hint",
+     "before": "한자로 '수레'와 '전투'를 뜻하는 이름이며, 국가무형문화유산이다.",
+     "after": "한쪽 편 대장은 부사, 맞선 편 대장은 영장으로 불렀다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/안동차전놀이"
+     ]
+    },
+    {
+     "id": 1105,
+     "field": "general_hint",
+     "before": "철 대신 먼저 녹아 주는 그 금속은 건전지 음극이나 영양제에도 들어간다.",
+     "after": "철판에 입히는 방법으로는 녹인 금속에 담그는 것이 가장 흔하고, 전기를 쓰는 방법도 있다.",
+     "why": "V013 fix 제안 반영 (h-weak)",
+     "sources": []
+    },
+    {
+     "id": 1118,
+     "field": "general_hint",
+     "before": "약수 합이 자신보다 작으면 '부족수', 크면 '과잉수'라 부르고, 꼭 같으면 이것이다.",
+     "after": "짝수인 것은 모두 2^(p-1)(2^p-1) 꼴이며 2^p-1 이 소수일 때만 나온다는 것을 에우클레이데스와 오일러가 보였다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/완전수"
+     ]
+    },
+    {
+     "id": 1138,
+     "field": "general_hint",
+     "before": "재즈의 찰리 파커와 존 콜트레인이 이 악기의 이름난 연주자다.",
+     "after": "발명가는 1846년 음높이가 다른 두 계열, 모두 열네 가지 악기로 특허를 받았다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(군악대용 · 오케스트라용 용도는 문서에 없음)",
+     "sources": [],
+     "gen": true
+    },
+    {
+     "id": 1144,
+     "field": "general_hint",
+     "before": "'둘'을 뜻하는 라틴어 접두어와 '경기'를 뜻하는 그리스어를 이어 지은 이름이다.",
+     "after": "개인 경기에서는 엎드려 쏘기와 서서 쏘기를 번갈아 네 차례 사격하며, 빗나간 표적마다 벌칙이 붙는다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Biathlon"
+     ]
+    },
+    {
+     "id": 1149,
+     "field": "general_hint",
+     "before": "무도회장 춤을 빙판으로 옮겨 온 데서 출발했으며, 1976년 올림픽 정식 종목이 되었다.",
+     "after": "1952년 세계 선수권 대회에 공식 종목으로 더해졌고, 1976년 동계 올림픽에서 메달 종목이 되었다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/아이스_댄스"
+     ]
+    },
+    {
+     "id": 1171,
+     "field": "general_hint",
+     "before": "줄에 매단 돌을 돌릴 때 줄이 돌을 당기는 힘이나, 행성을 붙잡는 태양의 중력이 이 구실을 한다.",
+     "after": "이 힘은 속도의 방향과 수직으로 작용해서, 물체의 속력은 그대로 두고 움직이는 방향만 바꾼다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/구심력"
+     ]
+    },
+    {
+     "id": 1175,
+     "field": "general_hint",
+     "before": "이름 앞 두 글자는 '맨 끝'을 뜻하는 한자어이고, 스카이다이버가 낙하산을 펴기 전 시속 200km 안팎에서 더는 빨라지지 않는 것이 그 예다.",
+     "after": "낙하산을 펴기 전 스카이다이버가 몸을 펼치고 떨어질 때 시속 200km 안팎에서 더는 빨라지지 않는 것이 그 예다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": []
+    },
+    {
+     "id": 1180,
+     "field": "general_hint",
+     "before": "특히 비쌌던 줄무늬 꽃잎은 뒷날 바이러스 감염 때문에 생긴 무늬로 밝혀졌다.",
+     "after": "숙련 장인의 한 해 벌이가 150~350플로린이던 때, 가장 귀한 구근은 그 열 배가 넘는 값에 팔렸다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(3,000플로린 이상은 문서에 없음)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/튤립_파동"
+     ],
+     "gen": true
+    },
+    {
+     "id": 1195,
+     "field": "general_hint",
+     "before": "영미법에서 말하는 'ex post facto law'를 막는 원칙이다.",
+     "after": "대한민국 형법 제1조에도 같은 내용이 적혀 있으며, 보안처분에까지 적용되는지는 학설이 갈린다.",
+     "why": "V014 fix 제안 반영 (variants,h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Ex_post_facto_law"
+     ]
+    },
+    {
+     "id": 1195,
+     "field": "question_answers",
+     "before": null,
+     "after": "소급입법 금지의 원칙",
+     "why": "V014 fix 제안 반영 (variants,h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Ex_post_facto_law",
+      "https://ko.wikipedia.org/wiki/죄형법정주의"
+     ]
+    },
+    {
+     "id": 1195,
+     "field": "question_answers",
+     "before": null,
+     "after": "소급효 금지",
+     "why": "V014 fix 제안 반영 (variants,h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Ex_post_facto_law",
+      "https://ko.wikipedia.org/wiki/죄형법정주의"
+     ]
+    },
+    {
+     "id": 1195,
+     "field": "question_answers",
+     "before": null,
+     "after": "형벌불소급",
+     "why": "V014 fix 제안 반영 (variants,h-letters)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Ex_post_facto_law",
+      "https://ko.wikipedia.org/wiki/죄형법정주의"
+     ]
+    },
+    {
+     "id": 1196,
+     "field": "general_hint",
+     "before": "우리 헌법 제13조 제1항의 '동일한 범죄에 대하여 거듭 처벌받지 아니한다'는 구절이 이 원칙이다.",
+     "after": "독일은 기본법 제103조 제3항에, 일본은 헌법 제39조에 같은 원칙을 두고 있다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/일사부재리"
+     ]
+    },
+    {
+     "id": 1196,
+     "field": "question_answers",
+     "before": null,
+     "after": "일사부재리의 원칙",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/일사부재리"
+     ]
+    },
+    {
+     "id": 1212,
+     "field": "general_hint",
+     "before": "이름 앞 숫자는 세상을 떠난 나이이고, 뒤는 '모임'을 뜻하는 영어다.",
+     "after": "이 나이에 요절한 이유를 두고 악마와 거래했다는 속설까지 따라붙은 이름이다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": []
+    },
+    {
+     "id": 1212,
+     "field": "question_answers",
+     "before": null,
+     "after": "27세 클럽",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/27_클럽"
+     ]
+    },
+    {
+     "id": 1217,
+     "field": "general_hint",
+     "before": "트버스키와 카너먼은 돌림판에서 나온 무작위 숫자가 유엔 속 아프리카 국가 수 추정을 끌어당기는 실험으로 보였다.",
+     "after": "협상에서는 처음 나온 조건에 얽매이는 쪽으로, 행태재무학에서는 투자자의 경험 의존적 오류의 하나로 다룬다.",
+     "why": "V014 fix 제안 반영 (h-weak,variants)",
+     "sources": []
+    },
+    {
+     "id": 1217,
+     "field": "question_answers",
+     "before": null,
+     "after": "앵커링",
+     "why": "V014 fix 제안 반영 (h-weak,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/앵커링_효과"
+     ]
+    },
+    {
+     "id": 1217,
+     "field": "question_answers",
+     "before": null,
+     "after": "닻 내림 효과",
+     "why": "V014 fix 제안 반영 (h-weak,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/앵커링_효과"
+     ]
+    },
+    {
+     "id": 1229,
+     "field": "general_hint",
+     "before": "남은 조각을 거두니 열두 바구니였다고 한다.",
+     "after": "요한복음은 이 음식이 한 소년에게서 나왔다고 전한다.",
+     "why": "V013 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Feeding_the_multitude"
+     ]
+    },
+    {
+     "id": 1239,
+     "field": "general_hint",
+     "before": "생산 연령 인구 100명당 몇 명을 짊어지는지로 나타내며, 노년 쪽만 떼어 따로 보기도 한다.",
+     "after": "2019년 유엔 전망에서는 한국이 2060년에 이 값이 100명을 넘어 세계에서 가장 높아질 것으로 내다봤다.",
+     "why": "V014 fix 제안 반영 (h-weak,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/부양비"
+     ]
+    },
+    {
+     "id": 1239,
+     "field": "question_answers",
+     "before": null,
+     "after": "총부양비",
+     "why": "V014 fix 제안 반영 (h-weak,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/부양비"
+     ]
+    },
+    {
+     "id": 1239,
+     "field": "question_answers",
+     "before": null,
+     "after": "부양비율",
+     "why": "V014 fix 제안 반영 (h-weak,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/부양비"
+     ]
+    },
+    {
+     "id": 1244,
+     "field": "general_hint",
+     "before": "'덤으로 얹어 주는 것'을 뜻하는 영어 낱말이 이름 뒤에 붙는다.",
+     "after": "블룸과 윌리엄슨은 1998년 연구에서 동아시아 고속 성장의 상당 부분을 이 시기의 효과로 설명했다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"4분의 1~5분의 2\" 는 문서에 없음)",
+     "sources": [],
+     "gen": true
+    },
+    {
+     "id": 1244,
+     "field": "question_answers",
+     "before": null,
+     "after": "인구배당",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"4분의 1~5분의 2\" 는 문서에 없음)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Demographic_dividend"
+     ]
+    },
+    {
+     "id": 1245,
+     "field": "general_hint",
+     "before": "흔히 '95% 신뢰수준에서 ±3.1%포인트'처럼 조사 결과와 함께 적힌다.",
+     "after": "조사할 사람 수를 크게 늘리면 줄일 수 있지만, 모집단의 참값을 모르니 정확히 재지는 못하고 추정만 한다.",
+     "why": "제안 힌트가 hint-check 막힘(정답 조각 \"표본\") — 문구만 바꾸고 부트스트랩(어려운 말)을 뺌",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/표본오차"
+     ],
+     "gen": true
+    },
+    {
+     "id": 1245,
+     "field": "question_answers",
+     "before": null,
+     "after": "오차 범위",
+     "why": "제안 힌트가 hint-check 막힘(정답 조각 \"표본\") — 문구만 바꾸고 부트스트랩(어려운 말)을 뺌",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/표본오차"
+     ]
+    },
+    {
+     "id": 1245,
+     "field": "question_answers",
+     "before": null,
+     "after": "표집오차",
+     "why": "제안 힌트가 hint-check 막힘(정답 조각 \"표본\") — 문구만 바꾸고 부트스트랩(어려운 말)을 뺌",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/표본오차"
+     ]
+    },
+    {
+     "id": 1251,
+     "field": "general_hint",
+     "before": "이름 앞 두 글자는 '해마다 생기는 차이'를 뜻하는 한자어다.",
+     "after": "그리스의 히파르코스가 기원전 2세기에 옛 관측 기록과 자신의 관측을 견주어 알아냈다고 전해진다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/세차_운동"
+     ]
+    },
+    {
+     "id": 1265,
+     "field": "general_hint",
+     "before": "이름은 영어 두 낱말을 합친 것으로, 뒷 낱말은 '뒤로'를 뜻한다.",
+     "after": "경사를 이겨 낼 수는 있지만, 속도를 늦춰야 하고 사고 위험이 따른다는 단점이 있다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": []
+    },
+    {
+     "id": 1268,
+     "field": "general_hint",
+     "before": "'길고 크다'는 뜻의 한자어가 앞에 붙는다.",
+     "after": "이음매가 없어 놓는 값은 더 들지만 정비에 드는 비용이 훨씬 적다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"선로가 튼튼하다\" 는 문서에 없음)",
+     "sources": [],
+     "gen": true
+    },
+    {
+     "id": 1279,
+     "field": "general_hint",
+     "before": "이름은 육군 공병대의 첫 사무소가 있던 곳에서 따왔고, 핵심 연구소는 뉴멕시코의 로스앨러모스에 있었다.",
+     "after": "이름은 미 육군 공병대가 지구대에 주둔지 이름을 붙이던 관례에서 나왔고, 본부 사무소는 뉴욕 브로드웨이에 있었다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/맨해튼_계획"
+     ]
+    },
+    {
+     "id": 1286,
+     "field": "explanation",
+     "before": "45초 남짓한 장면에 70번이 넘는 컷이 들어갔다고 알려져 있습니다.",
+     "after": "히치콕은 이 장면을 카메라 위치를 70번 바꿔 가며 45초 분량으로 찍었다고 말한 것으로 알려져 있습니다.",
+     "why": "V014 fix 제안 반영 (explanation,h-pair-same)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Psycho_shower_scene",
+      "https://en.wikipedia.org/wiki/Psycho_(1960_film)"
+     ]
+    },
+    {
+     "id": 1286,
+     "field": "general_hint",
+     "before": "외딴 모텔을 운영하는 노먼 베이츠가 등장하는 작품이다.",
+     "after": "영화 속 모텔과 집의 외관 세트는 유니버설 스튜디오 야외 촬영장에 지금도 남아 관광 코스가 되었다.",
+     "why": "V014 fix 제안 반영 (explanation,h-pair-same)",
+     "sources": []
+    },
+    {
+     "id": 1296,
+     "field": "general_hint",
+     "before": "'버드맨'이나 '1917'처럼 영화 전체를 한 번에 찍은 것처럼 보이게 만든 작품도 있다.",
+     "after": "필름 통 길이 때문에 길게 찍기 어렵던 것이, 디지털 영상이 나오며 한 번에 찍을 수 있는 시간이 크게 늘었다.",
+     "why": "V013 fix 제안 반영 (h-error,variants)",
+     "sources": []
+    },
+    {
+     "id": 1299,
+     "field": "general_hint",
+     "before": "이름은 영어 두 낱말을 붙인 것으로, 앞 낱말은 뛰어오르는 동작을 뜻한다.",
+     "after": "고전 영화가 지켜 온 연속 편집의 규칙을 일부러 어기는 것으로 분류되며, 창의적인 목적으로 쓰이기도 한다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": []
+    },
+    {
+     "id": 1304,
+     "field": "general_hint",
+     "before": "우리나라 TV 방송은 대개 30에 가까운 값을 쓰고, 게임에서는 오래전부터 60을 매끄러운 화면의 최소치로 여겨 왔다.",
+     "after": "우리나라 TV 방송은 대개 30에 가까운 값을 쓰고, 비디오 게임은 대개 30에서 144 사이의 값을 쓴다.",
+     "why": "V014 fix 제안 반영 (h-error,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/프레임_레이트"
+     ]
+    },
+    {
+     "id": 1304,
+     "field": "question_answers",
+     "before": null,
+     "after": "fps",
+     "why": "V014 fix 제안 반영 (h-error,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/프레임_레이트"
+     ]
+    },
+    {
+     "id": 1304,
+     "field": "question_answers",
+     "before": null,
+     "after": "초당 프레임 수",
+     "why": "V014 fix 제안 반영 (h-error,variants)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/프레임_레이트"
+     ]
+    },
+    {
+     "id": 1321,
+     "field": "general_hint",
+     "before": "도시 이름은 에스파냐어로 '평화' 를 뜻한다.",
+     "after": "1548년 에스파냐의 알론소 데 멘도사 선장이 세운 도시다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/라파스"
+     ]
+    },
+    {
+     "id": 1334,
+     "field": "general_hint",
+     "before": "지금은 베이징과 항저우를 잇는 물길로 남아 세계유산에 올라 있다.",
+     "after": "공사에 8년이 걸렸고 전체 길이가 2,700킬로미터쯤 되었다.",
+     "why": "V014 fix 제안 반영 (h-famous)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/대운하_(중국)"
+     ]
+    },
+    {
+     "id": 1344,
+     "field": "general_hint",
+     "before": "한 조각에는 가을 밀, 다른 조각에는 봄 귀리나 콩을 심고 나머지는 쉬게 했다.",
+     "after": "중세 유럽에서는 11세기 무렵부터 퍼지기 시작했고, 한 밭에는 완두콩과 렌즈콩 같은 콩류를 심었다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/삼포제"
+     ]
+    },
+    {
+     "id": 1346,
+     "field": "general_hint",
+     "before": "라틴어로 쓰였고, 이 문서를 받아들인 왕은 '실지왕'으로 불린 존이다.",
+     "after": "제61조에 귀족 25명의 위원회를 두어, 왕이 40일 안에 위반을 바로잡지 않으면 성과 땅을 압류할 수 있게 했다.",
+     "why": "V014 fix 제안 반영 (h-pair-same,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Magna_Carta"
+     ]
+    },
+    {
+     "id": 1346,
+     "field": "question_answers",
+     "before": null,
+     "after": "대헌장",
+     "why": "V014 fix 제안 반영 (h-pair-same,variants)",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Magna_Carta"
+     ]
+    },
+    {
+     "id": 1348,
+     "field": "explanation",
+     "before": "자체 함대까지 갖추어 사실상 하나의 세력처럼 움직였습니다.",
+     "after": "여러 회원 도시가 군함을 갖추고 필요하면 상선까지 전투에 돌려, 사실상 하나의 세력처럼 움직였습니다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(군함은 \"몇몇 도시\")",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Hanseatic_League"
+     ]
+    },
+    {
+     "id": 1348,
+     "field": "general_hint",
+     "before": "1370년 슈트랄준트 조약으로 덴마크를 꺾고 발트해 무역에서 큰 힘을 얻었다.",
+     "after": "1370년 슈트랄준트 조약으로 덴마크 왕에게서 세금 면제와 외레순 해협 요새에 대한 영향력을 얻어 냈다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(군함은 \"몇몇 도시\")",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Hanseatic_League"
+     ]
+    },
+    {
+     "id": 1356,
+     "field": "general_hint",
+     "before": "무신론적인 이성 숭배에 반대해 '최고 존재'를 기리는 새 종교를 세우고 큰 축제를 열었다.",
+     "after": "급진적인 탈그리스도교화를 주장한 에베르와 갈등을 빚었다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"무신론자\" 단정은 문서에 없음)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/막시밀리앵_로베스피에르"
+     ],
+     "gen": true
+    },
+    {
+     "id": 1360,
+     "field": "general_hint",
+     "before": "요구는 남성 보통선거·비밀투표 등 여섯 가지였고, 운동 이름은 그 문서를 가리키는 영어에서 왔다.",
+     "after": "1838년에 시작되어 1848년 프랑스 2월 혁명을 고비로 급격히 쇠퇴했다.",
+     "why": "V014 fix 제안 반영 (h-letters,h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/차티스트_운동"
+     ]
+    },
+    {
+     "id": 1381,
+     "field": "general_hint",
+     "before": "1949년 브로드웨이에서 초연돼 퓰리처상을 받았으며, 제목에 주인공의 직업이 들어 있다.",
+     "after": "1949년에 발표되어 퓰리처상과 토니상을 모두 받았다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/세일즈맨의_죽음"
+     ]
+    },
+    {
+     "id": 1384,
+     "field": "general_hint",
+     "before": "페트라르카가 연인 라우라에게 바친 시들로 이 형식이 유럽에 널리 퍼졌다.",
+     "after": "페트라르카가 라우라를 기리는 시집으로 이 형식을 유럽 여러 나라의 표준형으로 퍼뜨렸다.",
+     "why": "V014 fix 제안 반영 (h-error)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/프란체스코_페트라르카"
+     ]
+    },
+    {
+     "id": 1419,
+     "field": "general_hint",
+     "before": "탁상 스탠드 둘이 공을 갖고 노는 '룩소 주니어'처럼 몇 분 남짓한 길이다.",
+     "after": "스티브 잡스가 픽사를 인수한 뒤, 그래픽 컴퓨터를 알리려 만든 '룩소 주니어'가 주목받은 것이 시작이었다.",
+     "why": "V014 fix 제안 반영 (h-weak)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/픽사_애니메이션_스튜디오"
+     ]
+    },
+    {
+     "id": 1442,
+     "field": "general_hint",
+     "before": "'완성'을 뜻하는 한자로 시작하는 한자어로, 서예 작품 끝에도 똑같이 한다.",
+     "after": "원나라 이전 중국 회화에서는 이것을 거의 하지 않았으며, 할 때도 화면을 해치지 않으려고 바위 틈에 숨겨 적었다.",
+     "why": "V014 fix 제안 반영 (h-letters,h-error)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/낙관"
+     ]
+    },
+    {
+     "id": 1448,
+     "field": "question_text",
+     "before": "가스와 먼지가 모여 있는 구름으로, 그 안에서 중력으로 뭉쳐 별이 태어나는 곳은?",
+     "after": "별과 별 사이에 가스와 먼지가 모여 밤하늘에서 흐릿한 구름처럼 보이는 천체로, 오리온자리의 것은 별이 태어나는 곳으로 유명한 것은?",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"고리 모양\" 은 일부에만 맞음)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/성운"
+     ]
+    },
+    {
+     "id": 1448,
+     "field": "explanation",
+     "before": "오리온자리의 허리띠 아래에 보이는 흐릿한 부분이 대표적입니다.",
+     "after": "그 안의 가스와 먼지가 중력으로 뭉치면서 새 별이 태어나, \"별의 요람\" 이라고도 부릅니다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"고리 모양\" 은 일부에만 맞음)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/성운"
+     ]
+    },
+    {
+     "id": 1448,
+     "field": "general_hint",
+     "before": "이름 뒤 글자가 '구름'을 뜻하는 한자이며, 늙은 별이 바깥층을 내뿜어 만든 것도 같은 이름으로 부른다.",
+     "after": "태양 같은 작은 별이 수명을 다하며 바깥층을 내뿜어 만든 천체도 같은 이름으로 불린다.",
+     "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(\"고리 모양\" 은 일부에만 맞음)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/성운"
+     ],
+     "gen": true
+    },
+    {
+     "id": 1449,
+     "field": "general_hint",
+     "before": "원자로 된 보통의 것보다 대략 다섯 배쯤 많다고 추정되며, 이름에 '어둡다'는 뜻이 들어 있다.",
+     "after": "원자로 된 보통의 것보다 대략 다섯 배쯤 많고, 우주 전체 에너지의 4분의 1 남짓을 차지한다고 추정된다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/암흑_물질"
+     ]
+    },
+    {
+     "id": 1453,
+     "field": "general_hint",
+     "before": "이름 앞 두 글자는 '전체 가운데 한 부분'을 뜻하는 한자어이며, 삼각형자리 은하도 이 무리의 큰 식구다.",
+     "after": "삼각형자리의 소용돌이와 대·소 마젤란 구름도 이 무리의 식구다.",
+     "why": "V014 fix 제안 반영 (h-letters)",
+     "sources": [
+      "https://ko.wikipedia.org/wiki/국부_은하군"
+     ]
+    }
+   ],
+   "notTaken": [
+    {
+     "id": 39,
+     "field": "variants",
+     "proposal": [
+      "구번"
+     ],
+     "why": "구번 — 한국어 용례 0건(번호를 이렇게 쓰지 않음)"
+    },
+    {
+     "id": 629,
+     "field": "variants",
+     "proposal": [
+      "다 같이"
+     ],
+     "why": "다 같이 — 한국어 공식 번역 · 언론 용례 0건(사실 확인 unverified) · 뜻풀이 바꿔 말하기"
+    },
+    {
+     "id": 629,
+     "field": "variants",
+     "proposal": [
+      "다함께"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 804,
+     "field": "variants",
+     "proposal": [
+      "유전자 가위"
+     ],
+     "why": "유전자 가위 — 더 넓은 말(ZFN · TALEN 도 유전자 가위) · 15 B7"
+    },
+    {
+     "id": 804,
+     "field": "variants",
+     "proposal": [
+      "CRISPR-Cas9"
+     ],
+     "why": "넣지 않음 — 15 A5 — 특수문자"
+    },
+    {
+     "id": 932,
+     "field": "variants",
+     "proposal": [
+      "닉슨쇼크"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 936,
+     "field": "variants",
+     "proposal": [
+      "디노미네이션"
+     ],
+     "why": "디노미네이션 — 액면 단위 자체를 가리키는 다른 말(사실 확인 partial · 15 §3-2 다른 대상)"
+    },
+    {
+     "id": 1195,
+     "field": "variants",
+     "proposal": [
+      "소급입법금지"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 1212,
+     "field": "variants",
+     "proposal": [
+      "27클럽"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 1217,
+     "field": "variants",
+     "proposal": [
+      "닻내림 효과"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 1244,
+     "field": "variants",
+     "proposal": [
+      "인구 배당"
+     ],
+     "why": "인구 배당 · 인구 배당 효과 — 한국어 표제어 · 용례 못 찾음(사실 확인 unverified · 직역)"
+    },
+    {
+     "id": 1244,
+     "field": "variants",
+     "proposal": [
+      "인구 배당 효과"
+     ],
+     "why": "인구 배당 · 인구 배당 효과 — 한국어 표제어 · 용례 못 찾음(사실 확인 unverified · 직역)"
+    },
+    {
+     "id": 1244,
+     "field": "variants",
+     "proposal": [
+      "인구보너스"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 1245,
+     "field": "variants",
+     "proposal": [
+      "오차범위"
+     ],
+     "why": "오차범위 — 허용 오차(margin of error)라는 다른 대상(사실 확인 false · 15 §3-2)"
+    },
+    {
+     "id": 1245,
+     "field": "variants",
+     "proposal": [
+      "표본 오차"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 1304,
+     "field": "variants",
+     "proposal": [
+      "프레임레이트"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 1304,
+     "field": "variants",
+     "proposal": [
+      "FPS"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 1346,
+     "field": "variants",
+     "proposal": [
+      "마그나카르타"
+     ],
+     "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+    },
+    {
+     "id": 1346,
+     "field": "variants",
+     "proposal": [
+      "Magna Carta"
+     ],
+     "why": "넣지 않음 — 게이트 latin — 영문 원어 표기 — 프롬프트가 금지한다"
+    }
+   ]
+  }
+ }
+}
