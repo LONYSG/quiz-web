@@ -47,6 +47,7 @@
 
 | 파일 | 주요 내용 |
 |------|-----------|
+| G011.txt | ★ **V014 판정 반영 → g009a 459 적재 — 활성 5,113 → 5,571 · 상 505 → 696 · 50문제 상만 10 → 13판**(중+상 66 · 전체 111) · fix 108 반영(받지 않은 제안 9 · 새 사실 106건 다시 엶) · drop 4 · 새 힌트 28 · 난이도 V014 blind · 15 H9 한 줄(CV-37) · CV-38(#3980 비활성) · C73 |
 | G010.txt | ★ **미니게임 데이터 2차 533 — `items-2.json`**(price 100 · worldprice 새 품목 2 — 휘발유 42국(스타벅스 대체) · 콜라 43국(Numbeo) · 문항 83 · photo 100(맞혀 보기 99/100) · estimate 100 · which 150) · 그림 503 git 밖(`backups/minigame-2026-10-18-2.zip`) · g008-check 1차+2차 1,175 막힘 0(CV-28) · 1차 그대로 · `audit/g010-verify-targets.json`(전수) · C72 |
 | G009.txt | ★ V011 반영 28행(활성 5,113 · 상 505 그대로) · 15 §3-3 · §4-1 한 줄씩 · ★ **상 생성 3차 1,000 → 게이트 949(g009a 464 · g009b 485) · GEN 채점 상 547(58%)** · korea 상 +114 · 낱말 뜻 꼴 1% · 힌트 876 · 같은 정답 누적 3 이상 0 · 적재 안 함 → `audit/g009a-verify-targets.json` · `g009b-verify-targets.json` · `samples/g009-deep.json` · C71 |
 | G008.txt | ★ V010 반영 — **상 892 → 505**(50문제 상만 10판) · 기존 힌트 2 · ★ **미니게임 데이터 1차 642**(price 100 · worldprice 172 · photo 120 · estimate 100 · which 150 · 그림 508 git 밖) → `data/minigame/` · `audit/g008-verify-targets.json` |
