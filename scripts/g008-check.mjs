@@ -23,7 +23,7 @@ const ARGS = process.argv.slice(2).filter((a, i, all) => !a.startsWith('--') && 
 const GAMES = PART ? [path.basename(PART).split('-')[0]] : ARGS.length ? ARGS : ['price', 'worldprice', 'photo', 'estimate', 'which'];
 const STATUS = ['candidate', 'verified', 'rejected', 'loaded'];
 // 묶음 파일 — items.json · items-2.json · items-3.json … (번호 순)
-const bundleFiles = (g) => { const d = path.join(ROOT, `data/minigame/${g}`); return existsSync(d) ? readdirSync(d).filter((f) => /^items(-d+)?.json$/.test(f)).sort((a, b) => (Number(a.match(/-(d+)/)?.[1] ?? 1)) - (Number(b.match(/-(d+)/)?.[1] ?? 1))).map((f) => path.join(d, f)) : []; };
+const bundleFiles = (g) => { const d = path.join(ROOT, `data/minigame/${g}`); return existsSync(d) ? readdirSync(d).filter((f) => /^items(-\d+)?\.json$/.test(f)).sort((a, b) => (Number(a.match(/-(\d+)/)?.[1] ?? 1)) - (Number(b.match(/-(\d+)/)?.[1] ?? 1))).map((f) => path.join(d, f)) : []; };
 const readDoc = (p, g) => { const raw = JSON.parse(readFileSync(p, 'utf8')); return Array.isArray(raw) ? { game: g, version: 1, asOf: '2026-10-17', items: raw } : raw; };
 const COMMON = ['id', 'status', 'createdRound', 'sources', 'image', 'tags', 'verify'];
 const FIELDS = {
