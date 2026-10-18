@@ -8,6 +8,7 @@
 //   사용  node scripts/g014-apply-active3.mjs --part b [--batch 1] [--apply]   (part: b · c · d · e · all — all 은 확인만 · batch k = part 안 id 순 k 번째 100건)
 //   ★ 기본은 확인만(--apply) · part 하나를 한 트랜잭션으로 · 대상 행의 지금 값이 before 와 같을 때만 쓴다(after 와 같으면 이미 됨 — 멱등 · 다르면 건너뛰고 목록)
 //   ★ 반영 뒤 모습으로 검사: checkAnswerSet(막힘 0 · 정규화 중복 · 게이트가 떨어뜨리는 변형은 넣지 않음) · blankCheck · checkHint(막힘 0) · 힌트 120자
+//   ★ revise[col] = 앞 묶음에서 이미 쓴 값 — 사실 확인 7조각(GEN 문장)으로 다시 고친 칸은 그 값에서 새 값으로 바꾼다(rows[].before 는 처음 값 그대로)
 //   ★ 쓰는 칸: question_text · explanation · general_hint(+version hint-v5 · 비우면 둘 다 null) · question_answers 비대표 행 넣기 · is_active=false + inactive_reason("<V013|V014> <id> — 사유")
 // =============================================================================
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
@@ -60,8 +61,8 @@ try {
       if (d[col] === undefined) continue;
       rows.push({ id, field: col, before: d.before[col], after: d[col], why: d.why, sources: col === 'general_hint' ? (d.hintSources ?? null) : (d.sources ?? null), ...(col === 'general_hint' && d.hintGen ? { gen: true } : {}) });
       if (cur[col] === d[col]) { done++; after[col] = d[col]; continue; }
-      if (cur[col] !== d.before[col]) { skipped.push(`${id} ${col}: DB 값이 before 와 다름 — 건너뜀`); continue; }
-      after[col] = d[col]; t.push({ col, before: d.before[col], after: d[col] });
+      if (cur[col] !== d.before[col] && cur[col] !== d.revise?.[col]) { skipped.push(`${id} ${col}: DB 값이 before 와 다름 — 건너뜀`); continue; }
+      after[col] = d[col]; t.push({ col, before: cur[col], after: d[col] });
     }
     // 변형 — 넣기만 (A5 · 정규화 중복 · 게이트가 떨어뜨리는 것은 넣지 않음)
     const add = []; const dropped = [];
