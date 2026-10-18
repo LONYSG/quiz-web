@@ -7,12 +7,63 @@
 //   ★ worldprice items 는 여기서 만든다: (품목 × KR 제외 나라) — netflix 는 자국 통화 요금이 있는 나라 + 미국만(같은 USD 요금 나라는 뺀다 · DG-035)
 //     shownCc = KR + 목표 제외 2곳(시드 고정 무작위)
 //   ★ 멱등: 같은 입력이면 같은 출력
+//   (G010) --round g010 → 입력 tmp/g010/out · 출력 data/minigame/<game>/items-2.json(묶음 파일 — docs/18 0절) ·
+//          worldprice-products.json 의 새 품목만 products.json 끝에 더한다(기존 품목은 글자 하나도 바꾸지 않는다 — 바뀌면 멈춘다) ·
+//          worldprice 문항은 새 품목만 · id 는 1차 다음 번호부터 · data/pipeline/audit/g010-verify-targets.json(전수 — 표본 표시 없음)
 // =============================================================================
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const ROUND = process.argv.includes('--round') ? process.argv[process.argv.indexOf('--round') + 1] : 'g008';
+if (!['g008', 'g010'].includes(ROUND)) { console.error('--round g008 | g010'); process.exit(1); }
+if (ROUND === 'g010') { buildG010(); process.exit(0); }
+function buildG010() {
+  const OUT2 = path.join(ROOT, 'tmp/g010/out'); const AS2 = '2026-10-18'; const J2 = (q) => JSON.parse(readFileSync(q, 'utf8'));
+  const w2 = (q, o) => { mkdirSync(path.dirname(q), { recursive: true }); writeFileSync(q, JSON.stringify(o, null, 1) + '\n'); };
+  const res2 = {};
+  for (const g of ['price', 'photo', 'estimate', 'which']) {
+    const parts = readdirSync(OUT2).filter((f) => new RegExp(`^${g}-\\d+\\.json$`).test(f)).sort();
+    const items = parts.flatMap((f) => { const x = J2(path.join(OUT2, f)); return Array.isArray(x) ? x : x.items; }).sort((x, y) => x.id.localeCompare(y.id));
+    if (!items.length) continue;
+    w2(path.join(ROOT, `data/minigame/${g}/items-2.json`), { game: g, version: 1, asOf: AS2, items });
+    res2[g] = items;
+  }
+  const np = path.join(OUT2, 'worldprice-products.json');
+  if (existsSync(np)) {
+    const pfile = path.join(ROOT, 'data/minigame/worldprice/products.json');
+    const old = J2(pfile); const add = J2(np).products; const addIds = new Set(add.map((x) => x.productId));
+    const FIRST = ['bigmac', 'iphone', 'netflix'];
+    if (add.some((x) => FIRST.includes(x.productId))) throw new Error('★ 1차 품목 id 를 새 품목으로 쓸 수 없다');
+    const before = JSON.stringify(old.products.filter((x) => FIRST.includes(x.productId)));
+    const merged = { ...old, products: [...old.products.filter((x) => !addIds.has(x.productId)), ...add] };
+    if (JSON.stringify(merged.products.filter((x) => FIRST.includes(x.productId))) !== before) throw new Error('★ 1차 품목이 바뀐다 — 멈춤');
+    w2(pfile, merged);
+    // 문항 — 새 품목만 · id 는 1차 items.json 의 가장 큰 번호 다음부터(멱등) · 목표 나라는 KR · EU 제외(CV-25)
+    let n = Math.max(...J2(path.join(ROOT, 'data/minigame/worldprice/items.json')).items.map((x) => Number(x.id.slice(-4))));
+    let sd = 20261018; const r2 = () => ((sd = (sd * 1103515245 + 12345) % 2147483648) / 2147483648);
+    const items = [];
+    for (const pr of add) for (const r of pr.rows.filter((x) => x.cc !== 'KR' && x.cc !== 'EU')) {
+      const others = pr.rows.filter((x) => x.cc !== 'KR' && x.cc !== r.cc).map((x) => [r2(), x.cc]).sort((u, v) => u[0] - v[0]).slice(0, 2).map((x) => x[1]);
+      items.push({ id: `worldprice-${String(++n).padStart(4, '0')}`, productId: pr.productId, targetCc: r.cc, shownCc: ['KR', ...others],
+        status: 'candidate', createdRound: 'G010', sources: [{ url: r.source, note: `${r.countryKo} ${pr.nameKo} ${r.localPrice} ${r.currency} (${pr.asOf}) · 환율 ${pr.fxAsOf}`, fetchedAt: AS2 }],
+        image: null, tags: [pr.productId, r.countryKo], verify: null });
+    }
+    w2(path.join(ROOT, 'data/minigame/worldprice/items-2.json'), { game: 'worldprice', version: 1, asOf: AS2, items });
+    res2.worldprice = items;
+  }
+  const targets = {};
+  for (const [g, items] of Object.entries(res2)) targets[g] = { count: items.length, items };
+  if (existsSync(np)) targets.worldprice.products = J2(np).products;
+  w2(path.join(ROOT, 'data/pipeline/audit/g010-verify-targets.json'), { round: 'G010', note: '다음 V(V014 자리) 미니게임 2차 재검증 대상 — docs/18 6장 · 전수(표본 표시 없음) · 묶음 파일 items-2.json · worldprice 는 새 품목(products 전문 포함) · 그림은 assets/minigame/ (git 밖 — backups/minigame-2026-10-<날짜>-2.zip)', games: targets });
+  console.log(Object.entries(res2).map(([g, x]) => `${g} ${x.length}`).join(' · '));
+}
+// ★ (G010) 1차는 VERIFY 가 verify·status 를 채웠다 — G008 모드를 다시 돌리면 그 칸이 지워지므로 막는다
+for (const g of ['price', 'photo', 'estimate', 'which', 'worldprice']) {
+  const f = path.join(ROOT, `data/minigame/${g}/items.json`);
+  if (existsSync(f) && JSON.parse(readFileSync(f, 'utf8')).items.some((x) => x.verify !== null)) { console.error(`★ ${g}/items.json 에 verify 가 있다 — G008 모드로 다시 만들지 않는다(--round g010)`); process.exit(1); }
+}
 const OUT = path.join(ROOT, 'tmp/g008/out');
 const AS_OF = '2026-10-17';
 const J = (p) => JSON.parse(readFileSync(p, 'utf8'));

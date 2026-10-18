@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 // =============================================================================
 // G008 — 미니게임 데이터 기계 검사 (docs/18 형식 v1)
-//   node scripts/g008-check.mjs [game ...]     (없으면 다섯 게임 전부)
+//   node scripts/g008-check.mjs [game ...]     (없으면 다섯 게임 전부 · data/minigame/<game>/items*.json 묶음 파일 전부 — docs/18 0절)
+//   node scripts/g008-check.mjs --part <중간 파일> [--products <품목 파일>]   (하위 에이전트 중간 파일 — 정본 items*.json 과 합쳐 id · 같은 대상 겹침도 본다)
+//   (G010) status ∈ candidate · verified · rejected · loaded · verify 는 null 또는 {round, …}(CV-28) · 같은 대상 겹침은 파일을 합쳐 막힘
 //   막힘: 칸 빠짐 · 모르는 칸 · 숫자형 · 날짜 꼴 · id 꼴·유일 · status · 그림 파일 존재 · ≤1024px · ≤500KB ·
 //         게임별 규칙(price 출처 2 · 1.5 · bucket · category / worldprice shownCc · rows / photo category · revealMode · 라이선스 /
 //         estimate kind · 질문 '이것' / which margin 1.3 · 5년 · answer 맞음) · 정답 글자가 그림 파일 이름에 없음
-//   경고: 같은 대상 중복(이름 정규화) · 같은 브랜드 3 넘음 · 균형
+//   경고: 같은 브랜드 3 넘음 · 균형
 // =============================================================================
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
@@ -16,7 +18,13 @@ import { normalizeAnswer } from '../shared/dist/index.js';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // --part <파일>: 하위 에이전트의 중간 파일(항목 배열 · 이름이 <game>-<part>.json)을 검사한다
 const PART = process.argv.includes('--part') ? process.argv[process.argv.indexOf('--part') + 1] : null;
-const GAMES = PART ? [path.basename(PART).split('-')[0]] : process.argv.slice(2).length ? process.argv.slice(2) : ['price', 'worldprice', 'photo', 'estimate', 'which'];
+const EXTRA_PRODUCTS = process.argv.includes('--products') ? process.argv[process.argv.indexOf('--products') + 1] : null;
+const ARGS = process.argv.slice(2).filter((a, i, all) => !a.startsWith('--') && !['--part', '--products'].includes(all[i - 1]));
+const GAMES = PART ? [path.basename(PART).split('-')[0]] : ARGS.length ? ARGS : ['price', 'worldprice', 'photo', 'estimate', 'which'];
+const STATUS = ['candidate', 'verified', 'rejected', 'loaded'];
+// 묶음 파일 — items.json · items-2.json · items-3.json … (번호 순)
+const bundleFiles = (g) => { const d = path.join(ROOT, `data/minigame/${g}`); return existsSync(d) ? readdirSync(d).filter((f) => /^items(-d+)?.json$/.test(f)).sort((a, b) => (Number(a.match(/-(d+)/)?.[1] ?? 1)) - (Number(b.match(/-(d+)/)?.[1] ?? 1))).map((f) => path.join(d, f)) : []; };
+const readDoc = (p, g) => { const raw = JSON.parse(readFileSync(p, 'utf8')); return Array.isArray(raw) ? { game: g, version: 1, asOf: '2026-10-17', items: raw } : raw; };
 const COMMON = ['id', 'status', 'createdRound', 'sources', 'image', 'tags', 'verify'];
 const FIELDS = {
   price: ['name', 'brand', 'category', 'priceKrw', 'priceKind', 'priceAsOf', 'priceSources', 'bucket', 'note'],
@@ -51,18 +59,20 @@ async function checkImage(g, id, img, need, answers = []) {
   if (!img.attribution) B(g, id, 'attribution 빈 칸');
 }
 for (const g of GAMES) {
-  const p = PART ? path.resolve(PART) : path.join(ROOT, `data/minigame/${g}/items.json`);
-  if (!existsSync(p)) { console.log(`(${g} 파일 없음)`); continue; }
-  const raw = JSON.parse(readFileSync(p, 'utf8'));
-  const doc = Array.isArray(raw) ? { game: g, version: 1, asOf: '2026-10-17', items: raw } : raw;
-  if (doc.game !== g || doc.version !== 1 || !DATE.test(doc.asOf ?? '')) B(g, '-', '파일 머리(game · version · asOf)');
+  // 정본 묶음 파일 전부 + (--part 면) 중간 파일 — id 유일 · 같은 대상 겹침은 합쳐서 본다. --part 일 때 정본 항목은 겹침 대조에만 쓴다(검사 대상은 중간 파일)
+  const docs = bundleFiles(g).map((p) => ({ p, doc: readDoc(p, g), main: !PART }));
+  if (PART) docs.push({ p: path.resolve(PART), doc: readDoc(path.resolve(PART), g), main: true });
+  if (!docs.length) { console.log(`(${g} 파일 없음)`); continue; }
+  for (const { p, doc } of docs) if (doc.game !== g || doc.version !== 1 || !DATE.test(doc.asOf ?? '')) B(g, path.basename(p), '파일 머리(game · version · asOf)');
   const seen = new Set(); const names = new Map(); const brands = {};
+  const dup = (k, id, what) => { if (names.has(k) && names.get(k) !== id) B(g, id, `${what} ${names.get(k)}`); else names.set(k, id); };
   let products = null;
   if (g === 'worldprice') {
     const pp = existsSync(path.join(ROOT, 'data/minigame/worldprice/products.json')) ? path.join(ROOT, 'data/minigame/worldprice/products.json') : path.join(ROOT, 'tmp/g008/out/worldprice-products.json');
     if (!existsSync(pp)) B(g, '-', 'products.json 없음');
     else {
       products = new Map(JSON.parse(readFileSync(pp, 'utf8')).products.map((x) => [x.productId, x]));
+      if (EXTRA_PRODUCTS) for (const x of JSON.parse(readFileSync(path.resolve(EXTRA_PRODUCTS), 'utf8')).products) { if (products.has(x.productId)) B(g, x.productId, '품목 productId 가 이미 products.json 에'); products.set(x.productId, x); }
       for (const [pid, x] of products) {
         for (const k of ['productId', 'nameKo', 'unit', 'image', 'asOf', 'fxAsOf', 'fxSource', 'rows', 'sources', 'note']) if (x[k] === undefined) B(g, pid, `product.${k} 없음`);
         if (!DATE.test(x.asOf ?? '') || !DATE.test(x.fxAsOf ?? '')) B(g, pid, '날짜 꼴');
@@ -77,14 +87,25 @@ for (const g of GAMES) {
       }
     }
   }
-  for (const it of doc.items) {
-    total++; const id = it.id;
+  for (const { doc, main } of docs) for (const it of doc.items) {
+    const id = it.id;
+    if (!main) { // --part: 정본 항목은 id · 같은 대상 대조용으로만 등록
+      seen.add(id); const key0 = (s) => normalizeAnswer(String(s ?? ''));
+      if (g === 'price') names.set(key0(it.name), id);
+      if (g === 'worldprice') names.set(`${it.productId}|${it.targetCc}`, id);
+      if (g === 'photo') for (const a of [it.answer, ...(it.altAnswers ?? [])]) names.set(key0(a), id);
+      if (g === 'estimate') names.set(key0(it.question), id);
+      if (g === 'which') names.set([key0(it.a?.label), key0(it.b?.label)].sort().join('|') + '|' + key0(it.stem), id);
+      continue;
+    }
+    total++;
     if (!new RegExp(`^${g}-\\d{4}$`).test(id ?? '')) B(g, id, 'id 꼴');
     if (seen.has(id)) B(g, id, 'id 중복'); seen.add(id);
     for (const k of [...COMMON, ...FIELDS[g]]) if (it[k] === undefined) B(g, id, `칸 없음 ${k}`);
     for (const k of Object.keys(it)) if (![...COMMON, ...FIELDS[g], ...OPTIONAL[g]].includes(k)) B(g, id, `모르는 칸 ${k}`);
-    if (it.status !== 'candidate') B(g, id, `status ${it.status}`);
-    if (it.verify !== null) B(g, id, 'verify 는 null');
+    if (!STATUS.includes(it.status)) B(g, id, `status ${it.status}`);
+    if (it.verify !== null && (typeof it.verify !== 'object' || Array.isArray(it.verify) || typeof it.verify.round !== 'string')) B(g, id, 'verify 는 null 또는 {round, …}');
+    if (!/^G\d{3}$/.test(it.createdRound ?? '')) B(g, id, 'createdRound');
     if (!Array.isArray(it.tags)) B(g, id, 'tags 배열');
     if (!Array.isArray(it.sources) || (g !== 'worldprice' && !it.sources.length)) B(g, id, 'sources');
     for (const s of it.sources ?? []) if (!s.url || !s.fetchedAt || !DATE.test(s.fetchedAt)) B(g, id, 'sources 칸(url · note · fetchedAt)');
@@ -101,14 +122,14 @@ for (const g of GAMES) {
       for (const s of it.priceSources ?? []) if (!s.url || !s.seller || !DATE.test(s.fetchedAt ?? '')) B(g, id, 'priceSources 칸');
       brands[it.brand] = (brands[it.brand] ?? 0) + 1;
       await checkImage(g, id, it.image, true, [it.name]);
-      const k = key(it.name); if (names.has(k)) W(g, id, `같은 대상 ${names.get(k)}`); names.set(k, id);
+      dup(key(it.name), id, '같은 대상');
     }
     if (g === 'worldprice') {
       const pr = products?.get(it.productId); if (!pr) { B(g, id, `productId ${it.productId}`); continue; }
       const ccs = new Set(pr.rows.map((r) => r.cc));
       if (it.targetCc === 'KR' || !ccs.has(it.targetCc)) B(g, id, `targetCc ${it.targetCc}`);
       if (!Array.isArray(it.shownCc) || it.shownCc.length !== 3 || !it.shownCc.includes('KR') || it.shownCc.includes(it.targetCc) || it.shownCc.some((c) => !ccs.has(c)) || new Set(it.shownCc).size !== 3) B(g, id, `shownCc ${JSON.stringify(it.shownCc)}`);
-      const k = `${it.productId}|${it.targetCc}`; if (names.has(k)) B(g, id, `(품목, 나라) 중복 ${names.get(k)}`); names.set(k, id);
+      dup(`${it.productId}|${it.targetCc}`, id, '(품목, 나라) 중복');
       if (it.image !== null) await checkImage(g, id, it.image, false);
     }
     if (g === 'photo') {
@@ -117,7 +138,7 @@ for (const g of GAMES) {
       if (!Number.isInteger(it.difficulty) || it.difficulty < 1 || it.difficulty > 3) B(g, id, 'difficulty 1~3');
       if (!Array.isArray(it.altAnswers)) B(g, id, 'altAnswers 배열');
       await checkImage(g, id, it.image, true, [it.answer, ...(it.altAnswers ?? [])]);
-      for (const a of [it.answer, ...(it.altAnswers ?? [])]) { const k = key(a); if (names.has(k)) W(g, id, `같은 정답 ${names.get(k)} '${a}'`); names.set(k, id); }
+      for (const a of [it.answer, ...(it.altAnswers ?? [])]) dup(key(a), id, `같은 정답 '${a}'`);
     }
     if (g === 'estimate') {
       if (!EST_KIND.includes(it.kind)) B(g, id, `kind ${it.kind}`);
@@ -126,7 +147,7 @@ for (const g of GAMES) {
       if (it.asOf !== null && !DATE.test(it.asOf)) B(g, id, 'asOf 날짜 또는 null');
       if (/이것|이거/.test(it.question ?? '')) B(g, id, "질문에 '이것'");
       if (it.image !== null) await checkImage(g, id, it.image, false);
-      const k = key(it.question); if (names.has(k)) W(g, id, `같은 질문 ${names.get(k)}`); names.set(k, id);
+      dup(key(it.question), id, '같은 질문');
     }
     if (g === 'which') {
       if (!['bigger', 'earlier'].includes(it.kind)) B(g, id, `kind ${it.kind}`);
@@ -139,11 +160,11 @@ for (const g of GAMES) {
         if (it.kind === 'earlier' && m < 5) B(g, id, `연 차이 ${m} < 5`);
         if (typeof it.margin !== 'number' || Math.abs(it.margin - m) > (it.kind === 'bigger' ? 0.01 : 0)) B(g, id, `margin ${it.margin} ≠ ${it.kind === 'bigger' ? m.toFixed(2) : m}`);
       }
-      const k = [key(it.a?.label), key(it.b?.label)].sort().join('|') + '|' + key(it.stem); if (names.has(k)) B(g, id, `같은 짝 ${names.get(k)}`); names.set(k, id);
+      dup([key(it.a?.label), key(it.b?.label)].sort().join('|') + '|' + key(it.stem), id, '같은 짝');
     }
   }
   if (g === 'price') for (const [b, n] of Object.entries(brands)) if (n > 3) W(g, '-', `같은 브랜드 ${b} ${n}개(3 이하)`);
-  console.log(`[g008-check] ${g} ${doc.items.length}건`);
+  console.log(`[g008-check] ${g} ${docs.filter((d) => d.main).map((d) => `${path.basename(d.p)} ${d.doc.items.length}`).join(' · ')}건`);
 }
 console.log(`[g008-check] 합 ${total}건 · 막힘 ${block} · 경고 ${warnN}`);
 process.exit(block ? 1 : 0);
