@@ -1,0 +1,4741 @@
+{
+ "round": "G013",
+ "note": "GEN 이 V015 활성 난이도 4·5 fix 126 을 다 읽고 정한 반영 값 + C73 ② H2-21 · C2-18 힌트 — scripts/g013-apply-v015a.mjs 의 입력. before 는 결정 때 DB 값 · factcheck 는 제안 속 새 사실 · 변형을 하위 에이전트가 문서로 다시 연 결과 · 받지 않은 제안은 notTaken",
+ "items": {
+  "73": {
+   "before": {
+    "question_text": "찰나의 순간을 포착하는 '결정적 순간'이라는 사진 미학 개념을 제시한 프랑스의 보도 사진가는?",
+    "explanation": "앙리 카르티에 브레송은 매그넘 포토스의 창립자 중 한 명이자 현대 사진의 거장이다.",
+    "general_hint": "성의 앞부분이 프랑스 명품 보석 브랜드 이름과 같고, 라이카 소형 카메라를 즐겨 썼다.",
+    "variants": [
+     "카르티에 브레송",
+     "앙리 카르티에-브레송",
+     "카르티에-브레송",
+     "브레송"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "35mm 라이카 레인지파인더에 50mm 표준 렌즈를 거의 늘 끼워 쓴 사진가다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Henri_Cartier-Bresson"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Henri_Cartier-Bresson",
+    "https://en.wikipedia.org/wiki/Magnum_Photos"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "35mm 라이카 레인지파인더에 50mm 표준 렌즈",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Henri_Cartier-Bresson",
+     "quote": "Cartier-Bresson almost always used a Leica 35 mm rangefinder camera fitted with a normal 50 mm lens"
+    }
+   ]
+  },
+  "171": {
+   "before": {
+    "question_text": "훈민정음 창제 당시의 초성 17자 중 현대 한국어 표준어 자모 체계에서 사라진 'ㆆ'의 명칭은?",
+    "explanation": "훈민정음의 사라진 글자 중 ㆆ의 이름은 '여린히읗'이다.",
+    "general_hint": "목구멍에서 나는 소리를 적던 글자로, 모양은 ㅎ에서 맨 위 짧은 획을 뺀 꼴이다.",
+    "variants": [
+     "여린히읃"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "된이응"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/여린히읗"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "된이응",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EB%90%9C%EC%9D%B4%EC%9D%91&redirects=1&format=json",
+     "quote": "ko 위키 넘겨주기 된이응 → ㆆ"
+    }
+   ]
+  },
+  "304": {
+   "before": {
+    "question_text": "프랑스 보르도에서 카베르네 소비뇽과 섞어 쓰는 적포도 품종으로, 생테밀리옹·포므롤 와인의 중심이 되는 것은?",
+    "explanation": "메를로(Merlot)는 부드러운 탄닌과 풍부한 과일향을 가진 대표적인 적포도 품종입니다.",
+    "general_hint": "보르도 우안의 포므롤에서 나는 명품 와인 페트뤼스의 주된 품종이다.",
+    "variants": [
+     "멜롯"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-weak)",
+   "notTaken": [],
+   "general_hint": "껍질이 얇고 일찍 익으며, DNA 분석으로 카베르네 프랑의 자손임이 밝혀졌다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Merlot"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Merlot",
+    "https://en.wikipedia.org/wiki/Saint-%C3%89milion_wine"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "껍질이 얇고 일찍 익으며, DNA 분석으로 카베르네 프랑의 자손",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Merlot",
+     "quote": "Merlot is an offspring of Cabernet Franc … with a thinner skin … The vine tends to bud early",
+     "note": "문서는 'bud early' · 'easy ripening ability' — 일찍 익는다는 뜻과 맞음"
+    }
+   ]
+  },
+  "321": {
+   "before": {
+    "question_text": "우리나라에서 부엉이와 올빼미를 겉모습으로 가를 때는 머리 위에 솟은 깃털 다발이 있는지를 봅니다. 귀처럼 보이지만 귀가 아닌 이 깃털 다발을 무엇이라 하나요?",
+    "explanation": "소리를 듣는 기관이 아니라 위장과 신호에 쓰이는 깃털이며, 실제 귓구멍은 얼굴 옆에 있습니다.",
+    "general_hint": "새의 몸 부위를 가리키는 순우리말 두 낱말을 합친 이름이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters,variants)",
+   "notTaken": [],
+   "general_hint": "이름에 부엉이가 들어가도 솔부엉이와 쇠부엉이에게는 이것이 없다.",
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/부엉이"
+   ],
+   "add": [
+    "우각"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/올빼미과",
+    "https://ko.wikipedia.org/wiki/부엉이",
+    "https://en.wikipedia.org/wiki/Ear_tuft"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "솔부엉이와 쇠부엉이에게는 이것이 없다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%B6%80%EC%97%89%EC%9D%B4",
+     "quote": "솔부엉이와 쇠부엉이는 귀깃이 없기 때문에"
+    },
+    {
+     "what": "variant",
+     "text": "우각",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%B6%80%EC%97%89%EC%9D%B4",
+     "quote": "귀깃(우각)의 차이로 올빼미와 구분한다고도 하지만",
+     "note": "넘겨주기 우각 → 귀깃도 있음"
+    }
+   ]
+  },
+  "326": {
+   "before": {
+    "question_text": "앵무새나 구관조가 사람 말소리를 흉내 낼 수 있는 것은 새에게만 있는 발성 기관 덕분입니다. 목이 아니라 기관지가 둘로 갈라지는 자리에 있는 이 기관의 이름은?",
+    "explanation": "좌우 기관지에서 서로 다른 소리를 동시에 낼 수 있어, 한 마리가 이중창처럼 우는 새도 있습니다.",
+    "general_hint": "우리말 이름의 첫 글자는 새가 '우는' 데서 왔다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters,variants)",
+   "notTaken": [],
+   "general_hint": "아메리카독수리류처럼 이 기관이 아예 없는 새도 있다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Syrinx_(bird_anatomy)"
+   ],
+   "add": [
+    "명관"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Syrinx_(bird_anatomy)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "아메리카독수리류처럼 이 기관이 아예 없는 새도 있다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Syrinx_(bird_anatomy)",
+     "quote": "Some species of birds, such as New World vultures, lack a syrinx"
+    },
+    {
+     "what": "variant",
+     "text": "명관",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%B0%B8%EC%83%88%EB%AA%A9",
+     "quote": "발성기관인 명관(울음관)이 발달되어 있으며",
+     "note": "ko 명관 표제는 동음이의 문서라 근거 아님 — 참새목 본문 용례로 닫힘"
+    }
+   ]
+  },
+  "408": {
+   "before": {
+    "question_text": "초대 월드컵 우승 트로피는 규정에 따라 세 번째 우승을 이룬 나라가 영구히 갖게 되어 1970년 브라질이 가져갔습니다. 그러나 뒤에 도난당해 지금까지 되찾지 못했습니다. 이 트로피의 이름은?",
+    "explanation": "국제축구연맹 회장이었던 쥘 리메의 이름을 딴 것으로, 1983년 브라질에서 도난당했습니다.",
+    "general_hint": "1966년 잉글랜드 대회를 앞두고 사라졌을 때 피클스라는 개가 찾아낸 일도 있다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "쥘 리메 컵",
+    "쥘리메 컵",
+    "줄리메컵",
+    "쥘리메컵"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jules_Rimet_Trophy"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "쥘 리메 컵",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%A5%98%20%EB%A6%AC%EB%A9%94%20%EC%BB%B5&redirects=1&format=json",
+     "quote": "넘겨주기 → FIFA 월드컵 트로피"
+    },
+    {
+     "what": "variant",
+     "text": "쥘리메 컵",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%A5%98%EB%A6%AC%EB%A9%94%20%EC%BB%B5&redirects=1&format=json",
+     "quote": "넘겨주기 → FIFA 월드컵 트로피"
+    },
+    {
+     "what": "variant",
+     "text": "줄리메컵",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%A4%84%EB%A6%AC%EB%A9%94%EC%BB%B5&redirects=1&format=json",
+     "quote": "넘겨주기 있음",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복"
+    },
+    {
+     "what": "variant",
+     "text": "쥘리메컵",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%A5%98%EB%A6%AC%EB%A9%94%EC%BB%B5&redirects=1&format=json",
+     "quote": "넘겨주기 있음",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복('쥘리메 컵' 과 같은 값)"
+    }
+   ]
+  },
+  "439": {
+   "before": {
+    "question_text": "'커피숍'을 '커피숖'으로 적지 않는 것은 외래어 표기법이 받침에 쓸 수 있는 글자를 한정해 두었기 때문입니다. 그 글자는 모두 몇 개인가요?",
+    "explanation": "ㄱ, ㄴ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ 만 쓸 수 있어서 '로봇', '케이크'처럼 적습니다.",
+    "general_hint": "한 자리 수로, 받침을 발음할 때 나는 대표 소리의 수와 같다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-weak)",
+   "notTaken": [],
+   "general_hint": "표준 발음법에서 받침소리로 내세우는 대표음의 수와 같지만, 그중 ㄷ 자리에는 ㅅ이 들어간다.",
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/표준_발음법"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/외래어_표기법",
+    "https://ko.wikipedia.org/wiki/표준_발음법"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "외래어 표기법 받침 글자 수 = 표준 발음법 대표음 수, ㄷ 자리에 ㅅ",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%99%B8%EB%9E%98%EC%96%B4_%ED%91%9C%EA%B8%B0%EB%B2%95",
+     "quote": "받침에는 ‘ㄱ, ㄴ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ’ 만을 쓴다.",
+     "note": "표준 발음법 제8항(받침소리로는 ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅇ 7개)은 국립국어원 해설(https://www.korean.go.kr/nkview/nknews/200106/35_6.html) 검색 결과로 확인 — 두 목록 차이는 ㄷ↔ㅅ 하나"
+    }
+   ]
+  },
+  "537": {
+   "before": {
+    "question_text": "인물의 비례를 일부러 무너뜨려 머리를 크게 그리거나 형태를 단순하게 줄여 감정을 도드라지게 하는 표현 기법을 무엇이라 하는가?",
+    "explanation": "프랑스어에서 온 말로, 원래는 미술에서 형태를 변형하는 일 전반을 가리켰습니다.",
+    "general_hint": "캐릭터를 두세 등신으로 그리는 'SD 캐릭터'가 대표적인 예다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "디포르메"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/데포르메",
+    "https://en.wikipedia.org/wiki/Chibi_(style)"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "디포르메",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EB%94%94%ED%8F%AC%EB%A5%B4%EB%A9%94%22&fulltext=1",
+     "quote": "ko 위키 표제 없음 · 본문 4건(게임 문서)",
+     "note": "일본어 デフォルメ 의 흔한 한국어 표기는 데포르메. 디포르메는 사용례가 드묾 — 넣어도 해는 적으나 근거 약함"
+    }
+   ]
+  },
+  "538": {
+   "before": {
+    "question_text": "만화를 부르는 말은 지역마다 다릅니다. 큰 판형과 컬러 인쇄, 한 권 완결을 특징으로 하는 프랑스·벨기에권 만화를 가리키는 말은?",
+    "explanation": "'그려진 띠' 라는 뜻이며, 탱탱과 스머프가 이 전통에서 나왔습니다.",
+    "general_hint": "앙굴렘 국제 만화 축제가 이 만화 문화의 중심 무대이며, 이름은 프랑스어다.",
+    "variants": []
+   },
+   "why": "V015 fix(assertive · variants) 질문 제안을 고쳐 받음 — \"컬러로 인쇄한\" 은 문서로 못 닫아 뺌 · BD 는 B2 로 뺌",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "BD"
+     ],
+     "why": "15 B2 — 영문 약칭(상표 · 작품명 아님)"
+    }
+   ],
+   "question_text": "만화를 부르는 말은 지역마다 다릅니다. 큰 판형의 앨범으로 묶어 내는 것이 전통인 프랑스·벨기에권 만화를 가리키는 말은?",
+   "add": [
+    "방드 데시네",
+    "베데"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Franco-Belgian_comics"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "큰 판형 · 앨범으로 묶어 내는 전통",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Bande_dessin%C3%A9e",
+     "quote": "the European albums are rather large (roughly A4 standard) … introducing something new in the Belgian comic world: the comic album"
+    },
+    {
+     "what": "question",
+     "text": "컬러로 인쇄한",
+     "result": "unverified",
+     "source": "https://en.wikipedia.org/wiki/Bande_dessin%C3%A9e",
+     "note": "연 문서에서 컬러 인쇄 문장을 찾지 못함(틀린 증거는 없음) — 빼도 문항은 닫힘"
+    },
+    {
+     "what": "variant",
+     "text": "방드 데시네",
+     "result": "true",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복"
+    },
+    {
+     "what": "variant",
+     "text": "BD",
+     "result": "false",
+     "source": "https://en.wikipedia.org/wiki/Bande_dessin%C3%A9e",
+     "quote": "the \"BD\" abbreviation was also in use",
+     "note": "영문 약어 — 15 B2(영문은 상표·작품명만)에 맞지 않음. 받지 않기를 권함"
+    },
+    {
+     "what": "variant",
+     "text": "베데",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%9D%BC%EB%B3%B8_%EB%A7%8C%ED%99%94",
+     "quote": "코믹스(미국 만화)나 베데(프랑스 만화)등과 구분되는"
+    }
+   ]
+  },
+  "541": {
+   "before": {
+    "question_text": "'쾅', '두근두근'처럼 소리나 움직임을 나타내는 말을 글자 모양 자체로 그려 그림의 일부로 삼는 표현을 무엇이라 하는가?",
+    "explanation": "의성어·의태어를 뜻하는 말이며, 일본 만화에서는 글자 자체를 작화의 한 요소로 다룹니다.",
+    "general_hint": "그리스어로 '이름'과 '만들다'를 합친 말에서 왔다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (not-unique,variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "오노마토페아"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "question_text": "'쾅', '두근두근'처럼 소리나 움직임을 흉내 내는 말을, 만화에서 글자 모양 자체로 그려 그림의 일부로 삼는 표현을 가리키는 외래어 이름은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/오노마토페",
+    "https://en.wikipedia.org/wiki/Onomatopoeia"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "외래어 이름 한정",
+     "result": "true",
+     "note": "새 사실 없음 — 한정어만 더함"
+    },
+    {
+     "what": "variant",
+     "text": "오노마토페아",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EC%98%A4%EB%85%B8%EB%A7%88%ED%86%A0%ED%8E%98%EC%95%84%22&fulltext=1",
+     "quote": "ko 위키 사용례 0건",
+     "note": "그리스어 onomatopoiia 음역으로 보이나 한국어 사용례 확인 못 함(영어식은 오노마토피아가 흔함)"
+    }
+   ]
+  },
+  "563": {
+   "before": {
+    "question_text": "'AV' 처럼 글자 조합에 따라 생기는 빈틈을 눈에 고르게 보이도록, 글자 짝마다 사이 간격을 따로 조절하는 작업을 무엇이라 하는가?",
+    "explanation": "글자 전체의 간격을 한꺼번에 조절하는 자간과 달리, 특정 짝만 손보는 것이 다릅니다.",
+    "general_hint": "영어 이름 그대로 부르는 타이포그래피 용어로, 트래킹과 짝지어 자주 쓰인다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-weak)",
+   "notTaken": [],
+   "general_hint": "금속 활자 시대에는 'VA' 같은 글자 짝의 간격을 손보는 일이 품이 많이 들어 일부 짝에만 적용했다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Kerning"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kerning"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "금속 활자 시대에는 VA 같은 짝 간격 손보기가 품이 많이 들어 일부 짝에만",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Kerning",
+     "quote": "In metal typesetting, kerning was labor-intensive and expensive … only employed on letter combinations that needed it the most, such as VA or AV."
+    }
+   ]
+  },
+  "584": {
+   "before": {
+    "question_text": "1990년 노동 현장을 다룬 독립영화가 대학가에서 상영되자 공권력이 이를 막으려 하면서 사회적 사건이 되었습니다. 상영 자체가 논란이 된 이 작품은?",
+    "explanation": "헬기까지 동원한 단속에도 전국에서 상영이 이어져, 검열에 맞선 상징적인 사례로 기록됐습니다.",
+    "general_hint": "장산곶매가 만든 작품으로, 금속 공장 노동자들이 노조를 세우는 과정을 그렸다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-weak)",
+   "notTaken": [],
+   "general_hint": "삽입곡으로 안치환의 '철의 노동자'가 쓰였다.",
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/파업전야"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/파업전야",
+    "https://ko.wikipedia.org/wiki/장산곶매"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "삽입곡 안치환 철의 노동자",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%97%85%EC%A0%84%EC%95%BC",
+     "quote": "안치환의 〈철의 노동자〉가 삽입곡으로 쓰였다."
+    }
+   ]
+  },
+  "588": {
+   "before": {
+    "question_text": "변영주 감독이 일본군 위안부 피해 생존자들의 일상을 여러 해에 걸쳐 따라가며 기록해, 한국 독립 다큐멘터리로는 처음 정식으로 극장에서 개봉한 연작은?",
+    "explanation": "피해자를 대상으로 두지 않고 함께 지내며 찍었다는 점에서 다큐멘터리 제작 방식에도 영향을 주었습니다.",
+    "general_hint": "첫 편 뒤로 2편, 그리고 '숨결'이라는 부제의 3편까지 모두 세 편이 나왔다.",
+    "variants": []
+   },
+   "why": "V015 fix(assertive) 질문 제안을 고쳐 받음 — 사실 확인: 문서의 \"최초\" 는 극장 개봉에 붙음",
+   "notTaken": [
+    {
+     "field": "question_text",
+     "proposal": "변영주 감독이 일본군 위안부 피해 생존자들의 일상을 여러 해에 걸쳐 따라가며 기록해, 1996년 극장 개봉으로 한국 다큐멘터리 가운데 처음 약 3만 명의 관객을 모은 연작은?",
+     "why": "\"처음 약 3만 명을 모은\" 으로 읽혀 문서보다 셈(사실 확인 partial)"
+    }
+   ],
+   "question_text": "변영주 감독이 일본군 위안부 피해 생존자들의 일상을 여러 해에 걸쳐 따라가며 기록해, 한국 다큐멘터리로는 처음 1996년 일반 극장에서 개봉해 3만여 명이 본 연작은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/낮은_목소리"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "1996년 극장 개봉으로 한국 다큐멘터리 가운데 처음 약 3만 명",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/%EB%82%AE%EC%9D%80_%EB%AA%A9%EC%86%8C%EB%A6%AC",
+     "quote": "한국 다큐멘터리영화로는 최초로 1996년 4월 일반영화관에서 개봉돼 3만여명의 관객을 모았다.",
+     "note": "문서의 '최초'는 극장 개봉에 붙음 — 제안 문장은 '처음 3만 명을 모은'으로 읽혀 세다. 고칠 말: '한국 다큐멘터리로는 처음 1996년 일반 극장에서 개봉해 3만여 명이 본 연작은?' (1편 1995년작 · 2편 1996 · 3편 1999 — 변영주 문서)"
+    }
+   ]
+  },
+  "593": {
+   "before": {
+    "question_text": "1954년 문을 열어 한국에서 국영이 아닌 민간이 세운 첫 라디오 방송이 된 곳은?",
+    "explanation": "종교 방송으로 출발했지만 뉴스와 시사 프로그램으로도 자리를 잡았습니다.",
+    "general_hint": "영문 약칭 세 글자로 더 널리 불리며, 미국의 한 방송사와 약칭이 같다.",
+    "variants": [
+     "CBS"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "방송 법인의 이사들은 여러 개신교 교단이 추천해 정해진다.",
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/기독교방송"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/기독교방송"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "방송 법인의 이사들은 여러 개신교 교단이 추천",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/CBS_(%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EB%B0%A9%EC%86%A1%EC%82%AC)",
+     "quote": "재단 이사회는 한국 교회를 대표하는 기독교 교단에서 파송된 20명의 이사와 2명의 감사로",
+     "note": "문서 말은 '파송' — '추천해 정해진다'와 뜻이 같음"
+    }
+   ]
+  },
+  "624": {
+   "before": {
+    "question_text": "세상의 모든 것에게 발드르를 해치지 않겠다는 맹세를 받았지만 너무 어리다는 이유로 딱 하나가 빠졌고, 로키가 바로 그것으로 그를 죽게 만들었습니다. 그 식물은?",
+    "explanation": "유럽에서 겨우살이 아래에서 입을 맞추는 풍습이 이 이야기와 이어져 설명되기도 합니다.",
+    "general_hint": "열매의 끈적한 과육을 먹은 새가 다른 나무 가지에 씨를 붙여 퍼뜨린다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "미슬토"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Baldr",
+    "https://en.wikipedia.org/wiki/Mistletoe"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "미슬토",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%AF%B8%EC%8A%AC%ED%86%A0",
+     "quote": "겨우살이 또는 겨우살이류: 성탄 장식에 쓰이는 덩굴식물",
+     "note": "ko 미슬토 동음이의 문서 첫 줄"
+    }
+   ]
+  },
+  "627": {
+   "before": {
+    "question_text": "바다 밑에서 세계를 빙 둘러싸고 제 꼬리를 물고 있다는 거대한 뱀으로, 종말의 날 토르와 맞붙어 서로를 죽인다고 전해지는 것은?",
+    "explanation": "로키의 자식으로, 토르가 낚시로 끌어올리려다 실패했다는 이야기도 있습니다.",
+    "general_hint": "형제로 늑대 펜리르와 저승의 여왕 헬이 있다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "요르문간드르"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "add": [
+    "미드가르드 뱀",
+    "세계뱀"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/J%C3%B6rmungandr"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "요르문간드르",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EC%9A%94%EB%A5%B4%EB%AC%B8%EA%B0%84%EB%93%9C%EB%A5%B4%22&fulltext=1",
+     "quote": "ko 위키 사용례 0건",
+     "note": "고대 노르드어 Jörmungandr 음역으로 쓰일 수 있으나 근거 못 찾음"
+    },
+    {
+     "what": "variant",
+     "text": "미드가르드 뱀",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EB%AF%B8%EB%93%9C%EA%B0%80%EB%A5%B4%EB%93%9C%20%EB%B1%80&redirects=1&format=json",
+     "quote": "넘겨주기 → 요르문간드"
+    },
+    {
+     "what": "variant",
+     "text": "세계뱀",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%86%A0%EB%A5%B4",
+     "quote": "〈토르와 세계뱀〉 … 세계뱀과 싸우는 토르"
+    }
+   ]
+  },
+  "675": {
+   "before": {
+    "question_text": "무대에 서지 않으면서도 주연과 똑같이 대사와 동선을 익혀 두었다가, 사고가 생기면 대신 오르는 배우를 무엇이라 하는가?",
+    "explanation": "무대는 되돌릴 수 없기 때문에, 장기 공연에서는 이 자리를 반드시 둡니다.",
+    "general_hint": "영어에서 온 말로, 누군가의 밑에서 배역을 익혀 둔다는 뜻이 담겨 있다.",
+    "variants": []
+   },
+   "why": "V015 fix(not-unique · explanation · h-letters) — CV-41 새 줄대로 다른 대상(스탠바이 — 무대에 서지 않고 대기)은 변형이 아니라 질문 한정어로 가름(문서: understudy 는 다른 역을 맡으며 대기) · 해설 · 힌트 제안 반영",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "스탠바이"
+     ],
+     "why": "CV-41 — 스탠바이는 다른 대상(정기 출연 없이 대기) → 변형이 아니라 질문에 한정어"
+    },
+    {
+     "field": "question_text",
+     "proposal": "주연 배우에게 사고가 생기면 대신 무대에 오르려고, 주연과 똑같이 대사와 동선을 익혀 두는 배우를 무엇이라 하는가?",
+     "why": "제안 질문은 스탠바이와 갈리지 않음 → '평소에는 다른 배역으로 무대에 서면서' 한정어를 더해 고쳐 받음"
+    },
+    {
+     "field": "explanation",
+     "proposal": "무대는 되돌릴 수 없기 때문에, 장기 공연에서는 이 역할을 맡을 배우를 따로 두는 경우가 많습니다.",
+     "why": "\"장기 공연에서는 … 많다\" 는 문서로 못 닫음(사실 확인 unverified)"
+    }
+   ],
+   "question_text": "평소에는 다른 배역으로 무대에 서면서, 주연 배우에게 사고가 생기면 대신 오르려고 주연의 대사와 동선까지 익혀 두는 배우를 무엇이라 하는가?",
+   "explanation": "공연은 되돌릴 수 없어서, 주연에게 일이 생겨도 막이 오르도록 이런 배우를 미리 정해 둡니다.",
+   "general_hint": "여러 조연·앙상블 역을 두루 대신하는 배우와는 구별되는 말이다.",
+   "hintSources": [],
+   "add": [
+    "커버"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Understudy"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "주연에게 사고가 생기면 대신 오르려고 대사·동선을 익혀 두는 배우",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Understudy",
+     "quote": "an understudy … is a performer who learns the lines and blocking or choreography of a regular actor",
+     "note": "'무대에 서지 않으면서'를 뺀 것이 문서(다른 역을 맡으며 대기)와 맞음"
+    },
+    {
+     "what": "explanation",
+     "text": "장기 공연에서는 이 역할을 맡을 배우를 따로 두는 경우가 많다",
+     "result": "unverified",
+     "source": "https://en.wikipedia.org/wiki/Understudy",
+     "note": "문서에 장기 공연 문장 없음 — 빼거나 '무대는 되돌릴 수 없기 때문입니다'까지만"
+    },
+    {
+     "what": "hint",
+     "text": "여러 조연·앙상블 역을 두루 대신하는 배우와는 구별",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Understudy",
+     "quote": "the term swing is often used for a member of the company who understudies several chorus, dance or other (usually smaller) roles"
+    },
+    {
+     "what": "variant",
+     "text": "커버",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Understudy",
+     "quote": "an understudy, referred to in opera as cover or covering",
+     "note": "오페라 용어 — 일반 낱말이라 오답 겹침은 낮음"
+    },
+    {
+     "what": "variant",
+     "text": "스탠바이",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Understudy",
+     "quote": "Performers who are only committed to covering a part and do not regularly appear in the show are often referred to as standbys",
+     "note": "문서는 standby 를 understudy 와 다른 직함으로 구분 — 질문 뜻(대신 오르는 배우)에는 맞으나 같은 말은 아님. 받을지는 설계 판단"
+    }
+   ]
+  },
+  "677": {
+   "before": {
+    "question_text": "관객이 한 방향에서만 보도록 무대 앞을 액자 틀처럼 둘러 만든 극장 형식을 무엇이라 하는가?",
+    "explanation": "틀 뒤에 장치를 감출 수 있어 무대 전환이 쉽다는 장점이 있습니다.",
+    "general_hint": "고대 그리스 극장에서 무대 건물 '스케네'의 앞쪽을 가리키던 말에서 왔다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "프로시니움",
+    "프로시니엄 극장",
+    "프로시니엄 무대"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Proscenium"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "프로시니움",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%98%81%ED%99%94%EC%9D%98%EC%A0%84%EB%8B%B9",
+     "quote": "841석 프로시니움 무대"
+    },
+    {
+     "what": "variant",
+     "text": "프로시니엄 극장",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%ED%94%84%EB%A1%9C%EC%8B%9C%EB%8B%88%EC%97%84%20%EA%B7%B9%EC%9E%A5%22&fulltext=1",
+     "quote": "ko 위키 0건",
+     "note": "서술형 확장 — 뜻은 맞음"
+    },
+    {
+     "what": "variant",
+     "text": "프로시니엄 무대",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%AC%B4%EB%8C%80",
+     "quote": "서구에서 가장 흔한 형태는 프로시니엄 무대이다."
+    }
+   ]
+  },
+  "686": {
+   "before": {
+    "question_text": "짐을 지나치게 실어 배가 가라앉는 일을 막으려고 선체 옆면에 새겨 둔, 여기까지만 잠기게 하라는 한계 표시를 무엇이라 하는가?",
+    "explanation": "제도를 만든 영국 의원의 이름을 따 플림솔 마크라고도 하며, 바닷물과 민물, 계절에 따라 눈금이 여럿입니다.",
+    "general_hint": "선체 옆면의 원 안에 가로줄을 그은 모양으로 그려진다.",
+    "variants": [
+     "플림솔 마크"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (variants,h-weak)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "플림솔 라인"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "general_hint": "1876년 영국 상선법으로 총톤수 80톤을 넘는 배에 의무화되었다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Plimsoll_line"
+   ],
+   "add": [
+    "플림솔선"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Load_line",
+    "https://en.wikipedia.org/wiki/Plimsoll_line"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1876년 영국 상선법으로 총톤수 80톤을 넘는 배에 의무화",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Load_line_(watercraft)",
+     "quote": "the Merchant Shipping Act 1876 … making the load line mark compulsory for all ships over 80 GRT"
+    },
+    {
+     "what": "variant",
+     "text": "플림솔선",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%9D%98%EC%88%98%EC%84%A0",
+     "quote": "국제 만재선, 플림솔선 및 흘수선(선박 중앙에 위치)으로도 알려진 특수 표시"
+    },
+    {
+     "what": "variant",
+     "text": "플림솔 라인",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%ED%94%8C%EB%A6%BC%EC%86%94%20%EB%9D%BC%EC%9D%B8%22&fulltext=1",
+     "quote": "ko 위키 0건",
+     "note": "영어 Plimsoll line 음역 — 사용례 못 찾음"
+    }
+   ]
+  },
+  "699": {
+   "before": {
+    "question_text": "비가 잦아 한 해 내내 숲이 푸르게 유지된다 하여 '에메랄드 도시' 라는 별칭이 붙은, 미국 서북부의 항구 도시는?",
+    "explanation": "도시 이름은 이 지역에 살던 원주민 부족장의 이름에서 왔습니다.",
+    "general_hint": "1962년 세계 박람회를 열었고, 그때 세운 전망탑이 지금도 도시의 상징이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-famous)",
+   "notTaken": [],
+   "general_hint": "이곳 이름을 지을 때 앞장선 사람은 의사 데이비드 메이너드였다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Seattle"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Seattle"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "이름을 지을 때 앞장선 사람은 의사 데이비드 메이너드",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Seattle",
+     "quote": "David Swinson \"Doc\" Maynard … was the primary advocate to name the settlement after Chief Seattle"
+    }
+   ]
+  },
+  "741": {
+   "before": {
+    "question_text": "장식을 걷어 내고 철과 유리, 콘크리트의 구조를 그대로 드러내 세계 어느 도시에서나 비슷한 상자형 건물을 낳은 20세기 중반 건축의 흐름이 있습니다. 1932년 뉴욕 현대미술관의 건축 전시에서 이름이 굳어진 이 양식은?",
+    "explanation": "'형태는 기능을 따른다'는 말로 요약되곤 합니다.",
+    "general_hint": "그 전시를 함께 꾸민 필립 존슨은 뒷날 이 양식으로 직접 건물을 짓는 건축가가 되었다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "국제 양식",
+    "인터내셔널 스타일",
+    "국제주의 건축"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/International_Style_(architecture)"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "국제 양식",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EA%B5%AD%EC%A0%9C_%EC%96%91%EC%8B%9D",
+     "quote": "ko 위키 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "인터내셔널 스타일",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%9D%B8%ED%84%B0%EB%82%B4%EC%85%94%EB%84%90%20%EC%8A%A4%ED%83%80%EC%9D%BC&redirects=1&format=json",
+     "quote": "넘겨주기 → 국제 양식"
+    },
+    {
+     "what": "variant",
+     "text": "국제주의 건축",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EA%B5%AD%EC%A0%9C%EC%A3%BC%EC%9D%98%20%EA%B1%B4%EC%B6%95%22&fulltext=1",
+     "quote": "ko 위키 0건",
+     "note": "서술형 — 뜻은 맞음"
+    }
+   ]
+  },
+  "743": {
+   "before": {
+    "question_text": "한쪽 끝만 고정하고 반대쪽은 받치는 것 없이 허공으로 내민 구조로, 라이트의 낙수장이 이를 극적으로 보여 줍니다. 이 구조는?",
+    "explanation": "다이빙대나 발코니도 같은 원리입니다.",
+    "general_hint": "건축뿐 아니라 항공기의 날개 구조를 가리킬 때도 쓰는 말이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "켄틸레버"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "add": [
+    "캔틸레버 구조",
+    "외팔보"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cantilever"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "캔틸레버 구조",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EC%BA%94%ED%8B%B8%EB%A0%88%EB%B2%84%20%EA%B5%AC%EC%A1%B0%22&fulltext=1",
+     "quote": "ko 위키 0건",
+     "note": "서술형 확장 — 뜻은 맞음"
+    },
+    {
+     "what": "variant",
+     "text": "외팔보",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%99%B8%ED%8C%94%EB%B3%B4",
+     "quote": "외팔보 또는 캔틸레버(cantilever)는 한쪽 끝은 고정되고 다른쪽 끝은 자유로운 들보이다."
+    },
+    {
+     "what": "variant",
+     "text": "켄틸레버",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EC%BC%84%ED%8B%B8%EB%A0%88%EB%B2%84%22&fulltext=1",
+     "quote": "ko 위키 1건(우한장강대교)",
+     "note": "오기 표기 — 받을지는 설계 판단"
+    }
+   ]
+  },
+  "859": {
+   "before": {
+    "question_text": "네 편의 악극이 이어져 나흘에 걸쳐 공연되는 바그너의 대작으로, 이것을 올리려고 바이로이트에 전용 극장을 지었습니다. 이 작품은?",
+    "explanation": "북유럽 신화를 바탕으로 했고 완성까지 26년이 걸렸습니다.",
+    "general_hint": "바그너가 대본까지 직접 썼고, 마지막 편 끝에서 신들의 성 발할라가 불길에 휩싸인다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants,h-pair-same)",
+   "notTaken": [],
+   "general_hint": "마지막 편 끝에서 신들의 성 발할라가 불길에 휩싸인다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Der_Ring_des_Nibelungen"
+   ],
+   "add": [
+    "니벨룽겐의 반지",
+    "반지 4부작"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Der_Ring_des_Nibelungen"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "마지막 편 끝에서 발할라가 불길에 휩싸인다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Der_Ring_des_Nibelungen",
+     "quote": "In the process, the gods and Valhalla are destroyed by fire."
+    },
+    {
+     "what": "variant",
+     "text": "니벨룽겐의 반지",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EB%8B%88%EB%B2%A8%EB%A3%BD%EA%B2%90%EC%9D%98%20%EB%B0%98%EC%A7%80&redirects=1&format=json",
+     "quote": "넘겨주기 → 니벨룽의 반지"
+    },
+    {
+     "what": "variant",
+     "text": "반지 4부작",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EB%B0%98%EC%A7%80%204%EB%B6%80%EC%9E%91%22&fulltext=1",
+     "quote": "ko 위키 1건",
+     "note": "서술형 — 뜻은 맞음"
+    }
+   ]
+  },
+  "933": {
+   "before": {
+    "question_text": "화폐의 액면가와 그것을 만드는 데 든 비용의 차이에서 발행자가 얻는 이익을 무엇이라 합니까?",
+    "explanation": "중세 영주가 주화를 찍어 얻던 이익에서 온 말입니다.",
+    "general_hint": "기축 통화를 찍는 나라가 특히 크게 누리는 이익으로 자주 거론된다.",
+    "variants": [
+     "화폐주조차익"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "화폐주조세",
+    "주조차익"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Seigniorage"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "화폐주조세",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%99%94%ED%8F%90%EC%A3%BC%EC%A1%B0%EC%84%B8",
+     "quote": "화폐주조세(seigniorage, 세뇨리지)는",
+     "note": "같은 문서가 '거시경제학에서 화폐주조세는 인플레이션 조세로 취급된다'고 적음 — #940 과 경계 주의"
+    },
+    {
+     "what": "variant",
+     "text": "주조차익",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%8A%A4%ED%85%8C%EC%9D%B4%EB%B8%94%EC%BD%94%EC%9D%B8",
+     "quote": "주조차익(시뇨리지) 배분"
+    }
+   ]
+  },
+  "940": {
+   "before": {
+    "question_text": "정부가 돈을 더 찍어 물가가 오르면 현금을 가진 사람의 실질 가치가 줄어들어 사실상 세금을 걷은 것과 같아집니다. 이를 무엇이라 합니까?",
+    "explanation": "국회를 거치지 않고 부담을 옮긴다는 점에서 '보이지 않는 세금'이라고도 합니다.",
+    "general_hint": "물가 상승을 뜻하는 외래어가 이름 앞에 붙는다.",
+    "variants": []
+   },
+   "why": "V015 fix(not-unique · h-letters · variants)",
+   "notTaken": [],
+   "question_text": "정부가 돈을 더 찍어 물가가 오르면, 현금을 가진 사람의 실질 가치가 줄어듭니다. 발행으로 정부가 얻는 이익이 아니라, 이 가치 하락이 마치 세금처럼 국민에게 부담을 지운다고 보는 개념을 무엇이라 합니까?",
+   "add": [
+    "인플레이션세",
+    "인플레이션 세금"
+   ],
+   "deactivate": "질문 개념(인플레이션 조세)을 문서로 닫지 못하고(en 위키 Inflation tax 는 시뇨리지로 넘겨지며 이 개념을 서술하지 않음) 같은 무리 #933 시뇨리지와 정답이 갈림 — 브리핑: 못 닫으면 비활성",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Seigniorage"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "현금 가치 하락이 세금처럼 국민에게 부담을 지운다는 개념",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%94%8C%EB%A0%88%EC%9D%B4%EC%85%98%EC%84%B8",
+     "quote": "인플레이션세(Inflation Tax)란 인플레이션이 곧 국민이 부담해야 하는 세금과도 같은 작용을 한다는 뜻이다."
+    },
+    {
+     "what": "question",
+     "text": "발행으로 정부가 얻는 이익이 아니라",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/%ED%99%94%ED%8F%90%EC%A3%BC%EC%A1%B0%EC%84%B8",
+     "quote": "거시경제학에서 화폐주조세는 인플레이션 조세로 취급된다.",
+     "note": "문서는 두 개념을 한 몸으로도 다룸 — '아니라'로 가르는 것은 문서보다 셈. 고칠 말: '정부가 얻는 이익 쪽이 아니라 국민이 지는 부담 쪽에서 본 개념'처럼 관점 구분임을 밝힘(#933 과 함께 볼 것)"
+    },
+    {
+     "what": "variant",
+     "text": "인플레이션세",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%94%8C%EB%A0%88%EC%9D%B4%EC%85%98%EC%84%B8",
+     "quote": "ko 위키 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "인플레이션 세금",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EC%9D%B8%ED%94%8C%EB%A0%88%EC%9D%B4%EC%85%98%20%EC%84%B8%EA%B8%88%22&fulltext=1",
+     "quote": "ko 위키 2건(무관 문서)",
+     "note": "서술형 — 뜻은 맞음"
+    }
+   ]
+  },
+  "989": {
+   "before": {
+    "question_text": "1951년 한 여성 환자에게서 떼어 낸 뒤 실험실에서 끝없이 증식해 지금도 세계 곳곳의 연구에 쓰이는 세포주는?",
+    "explanation": "본인과 가족의 동의 없이 쓰인 일이 뒷날 연구 윤리 논쟁을 일으켰습니다.",
+    "general_hint": "환자 헨리에타 랙스의 이름과 성에서 첫 두 글자씩 따 붙였다.",
+    "variants": []
+   },
+   "why": "V015 fix(h-letters · variants) 힌트 제안을 고쳐 받음 — 폴리오 백신 시험은 같은 정답 활성 #5712(g009b 2회차) 질문과 같은 사실(H12)이라 뺌",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "HeLa",
+      "HeLa 세포"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    },
+    {
+     "field": "general_hint",
+     "proposal": "폴리오 백신 시험과 HPV가 자궁경부암의 원인임을 밝히는 연구에 쓰였다.",
+     "why": "폴리오 백신 시험 = #5712 질문의 사실(H12)"
+    }
+   ],
+   "general_hint": "HPV가 자궁경부암의 원인임을 밝히는 연구에 쓰였다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/HeLa"
+   ],
+   "add": [
+    "헬라세포",
+    "헬라",
+    "헬라 세포주"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/HeLa"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "폴리오 백신 시험과 HPV-자궁경부암 연구에 쓰였다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/HeLa",
+     "quote": "HeLa cells were used by Jonas Salk to test the first polio vaccine … instrumental in the recognition of human papillomavirus infection as a precursor to cervical cancer."
+    },
+    {
+     "what": "variant",
+     "text": "헬라세포",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%ED%97%AC%EB%9D%BC%EC%84%B8%ED%8F%AC&redirects=1&format=json",
+     "quote": "넘겨주기 → 헬라 세포",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복"
+    },
+    {
+     "what": "variant",
+     "text": "헬라",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%97%AC%EB%9D%BC",
+     "quote": "ko 헬라 는 동음이의 문서",
+     "note": "세포주 약칭으로 통하나 단독 낱말 — 질문이 세포주로 좁혀 있어 오답 겹침 낮음(판단)"
+    },
+    {
+     "what": "variant",
+     "text": "HeLa",
+     "result": "unverified",
+     "note": "영문 표기 — 세포주 고유 이름이지만 상표·작품명은 아님(15 B2). 받지 않는 쪽 권함"
+    },
+    {
+     "what": "variant",
+     "text": "HeLa 세포",
+     "result": "unverified",
+     "note": "영문 섞인 표기 — 위와 같은 판단"
+    },
+    {
+     "what": "variant",
+     "text": "헬라 세포주",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%ED%97%AC%EB%9D%BC%20%EC%84%B8%ED%8F%AC%EC%A3%BC%22&fulltext=1",
+     "quote": "ko 위키 1건(헬라 세포 문서)"
+    }
+   ]
+  },
+  "990": {
+   "before": {
+    "question_text": "시신을 다룬 뒤 손을 소독하게 하자 산모의 사망률이 크게 떨어졌음을 보였으나, 당대에는 받아들여지지 않고 조롱만 받은 의사는?",
+    "explanation": "세균의 존재가 알려지기 전이라 설명할 근거가 없었던 것이 배척의 한 이유였습니다.",
+    "general_hint": "헝가리 출신으로 빈 종합병원 산과에서 일했다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "이그나즈 제멜바이스",
+    "이그나츠 제멜바이스",
+    "젬멜바이스"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ignaz_Semmelweis"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "이그나즈 제멜바이스",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%82%B0%EC%9A%95%EC%97%B4",
+     "quote": "이그나즈 제멜바이스(1818~1865)"
+    },
+    {
+     "what": "variant",
+     "text": "이그나츠 제멜바이스",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EA%B7%B8%EB%82%98%EC%B8%A0_%EC%A0%9C%EB%A9%9C%EB%B0%94%EC%9D%B4%EC%8A%A4",
+     "quote": "ko 위키 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "젬멜바이스",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%A0%AC%EB%A9%9C%EB%B0%94%EC%9D%B4%EC%8A%A4&redirects=1&format=json",
+     "quote": "넘겨주기 → 이그나츠 제멜바이스"
+    }
+   ]
+  },
+  "1035": {
+   "before": {
+    "question_text": "'오로지'라는 뜻과 '겨우'라는 뜻으로 문맥에 따라 갈려 쓰이는 순우리말 부사는?",
+    "explanation": "두 뜻이 거의 반대여서 문맥을 보지 않으면 헷갈립니다.",
+    "general_hint": "한자 '聊(료)'의 뜻풀이로 쓰이는 네 글자 순우리말이다.",
+    "variants": []
+   },
+   "why": "V015 fix(explanation · h-letters)",
+   "notTaken": [],
+   "explanation": "표준국어대사전은 '겨우'를 강조하는 말로 풀이하며, 오로지 · 좀 부족하나마 같은 뜻으로도 쓰입니다. 문맥을 보지 않으면 헷갈리기 쉽습니다.",
+   "deactivate": "질문의 두 뜻은 우리말샘으로 닫히지만(겨우 · 오로지를 강조) 질문 · 해설과 다른 두 번째 줄 힌트 사실을 문서에서 찾지 못해 난이도 4 의 H0 을 채울 수 없음(V015 도 제안 힌트 없음) — G011 K1-41 과 같은 처리",
+   "sources": [
+    "https://opendict.korean.go.kr/search/searchResult?query=애오라지"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "표준국어대사전은 '겨우'를 강조하는 말로 풀이, 오로지 · 좀 부족하나마 같은 뜻으로도",
+     "result": "partial",
+     "source": "https://opendict.korean.go.kr/search/searchResult?query=애오라지",
+     "quote": "「001」 ‘겨우’를 강조하여 이르는 말. 「002」 ‘오로지’를 강조하여 이르는 말.",
+     "note": "표준국어대사전 검색도 「1」 ‘겨우’를 강조하여 이르는 말. '좀 부족하나마'는 사전에 없음 — 고칠 말: '…'겨우'를 강조하는 말과 '오로지'를 강조하는 말, 두 뜻으로 풀이합니다.'"
+    }
+   ]
+  },
+  "1036": {
+   "before": {
+    "question_text": "좋은 일이 잇달아 거듭 생기는 모양을 나타내는 순우리말 부사는?",
+    "explanation": "'경사가 곰비임비 겹쳤다'처럼 씁니다.",
+    "general_hint": "'차곡차곡'처럼 두 마디가 짝을 이룬 네 글자 부사다.",
+    "variants": []
+   },
+   "why": "V015 fix(not-unique · explanation · h-weak) — 질문 제안 반영 · 해설은 사전 문구 그대로(사실 확인 partial) · 힌트는 GEN 새 힌트(국립국어원 자료의 『적도』 용례)",
+   "notTaken": [
+    {
+     "field": "explanation",
+     "proposal": "표준국어대사전은 '물건이 거듭 쌓이거나 일이 계속 일어나는 모양'이라고 풀이합니다.",
+     "why": "따옴표 안 인용이 사전 문구와 다름 → 사전 문구 그대로"
+    }
+   ],
+   "question_text": "일이 잇달아 거듭 일어나거나 물건이 겹겹이 쌓이는 모양을 가리키는 순우리말 부사로, '경사가 ○○○○ 겹쳤다'처럼 쓰는 것은?",
+   "explanation": "표준국어대사전은 '물건이 거듭 쌓이거나 일이 계속 일어남을 나타내는 말'이라고 풀이합니다.",
+   "general_hint": "현진건은 소설 『적도』에서 인물이 술을 거푸 들이켜는 모습을 이 말로 그렸다.",
+   "hintSources": [
+    "https://www.korean.go.kr/nkview/nknews/200304/57_12.html"
+   ],
+   "sources": [
+    "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=곰비임비"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "일이 잇달아 거듭 일어나거나 물건이 겹겹이 쌓이는 모양",
+     "result": "true",
+     "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=곰비임비",
+     "quote": "곰비-임비 「부사」 물건이 거듭 쌓이거나 일이 계속 일어남을 나타내는 말."
+    },
+    {
+     "what": "question",
+     "text": "'경사가 ○○○○ 겹쳤다' 용례",
+     "result": "unverified",
+     "source": "https://opendict.korean.go.kr/search/searchResult?query=곰비임비",
+     "note": "사전 검색 결과에 용례 문장 없음 — 틀린 증거는 없으나 사전 용례가 아님"
+    },
+    {
+     "what": "explanation",
+     "text": "'물건이 거듭 쌓이거나 일이 계속 일어나는 모양'이라고 풀이",
+     "result": "partial",
+     "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=곰비임비",
+     "quote": "물건이 거듭 쌓이거나 일이 계속 일어남을 나타내는 말.",
+     "note": "따옴표 안 인용이 사전 문구와 다름 — 사전 문구 그대로 '…일이 계속 일어남을 나타내는 말'로"
+    }
+   ]
+  },
+  "1073": {
+   "before": {
+    "question_text": "1974년 음반에 실려 한국 포크 록의 시작으로 이야기되는 한대수의 노래는?",
+    "explanation": "목마름을 반복해 외치는 가사가 검열의 대상이 되기도 했습니다.",
+    "general_hint": "같은 음반에 '행복의 나라로'가 함께 실려 있다.",
+    "variants": []
+   },
+   "why": "V015 fix(not-unique · variants) — 질문 · 변형 제안 반영 · 해설은 문서 문장대로(제안의 \"자주\" 근거 없음)",
+   "notTaken": [
+    {
+     "field": "explanation",
+     "proposal": "한대수는 둘째 음반이 내용 때문에 수거 명령을 받는 등 당국의 검열을 자주 겪었습니다.",
+     "why": "\"자주\" 는 문서에 없음(수거 명령 한 번) — 사실 확인 partial"
+    }
+   ],
+   "question_text": "1974년 음반에 실려 한국 포크 록의 시작으로 이야기되는 한대수의 노래 가운데, 제목이 갈증을 호소하는 말인 곡은?",
+   "explanation": "한대수의 둘째 음반(1975)은 체제 전복을 꾀하는 곡이라는 이유로 수거 명령을 받았습니다.",
+   "add": [
+    "물좀주소"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/한대수_(가수)"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "1974 음반 · 한국 포크 록의 시작 · 제목이 갈증 호소",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%95%9C%EB%8C%80%EC%88%98_(%EA%B0%80%EC%88%98)",
+     "quote": "이 음반에 실렸던 〈물 좀 주소〉, 〈행복의 나라로〉 등은 음악계에서 한국 포크 록의 새 장을 연 곡들로 평가받고 있다.",
+     "note": "같은 음반 두 곡을 제목 뜻으로 가름 — 새 사실 없음"
+    },
+    {
+     "what": "explanation",
+     "text": "둘째 음반이 내용 때문에 수거 명령을 받는 등 당국의 검열을 자주 겪었다",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/%ED%95%9C%EB%8C%80%EC%88%98_(%EA%B0%80%EC%88%98)",
+     "quote": "1975년 2집이 나왔지만 체제 전복을 꾀하는 곡들이라는 이유로 앨범을 수거하라는 문공부의 명령을 받았다.",
+     "note": "'자주'는 문서에 없음(한 번의 수거 명령만) — 고칠 말: '한대수의 둘째 음반(1975)은 체제 전복을 꾀하는 곡이라는 이유로 수거 명령을 받았습니다.'"
+    },
+    {
+     "what": "variant",
+     "text": "물좀주소",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EB%AC%BC%EC%A2%80%EC%A3%BC%EC%86%8C&redirects=1&format=json",
+     "quote": "넘겨주기 → 물 좀 주소",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복"
+    }
+   ]
+  },
+  "1120": {
+   "before": {
+    "question_text": "충분히 복잡한 수학 체계 안에는 참이지만 그 체계 안에서는 증명할 수 없는 명제가 반드시 있다는 괴델의 결과는?",
+    "explanation": "수학 전체를 몇 개의 공리에서 빠짐없이 이끌어 내려던 시도에 제동을 걸었습니다.",
+    "general_hint": "1931년 발표되었으며, 흔히 제1·제2의 두 가지 결과로 나누어 부른다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "괴델의 불완전성 정리",
+    "불완전성 원리",
+    "괴델의 불완전성 원리"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "괴델의 불완전성 정리",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EA%B4%B4%EB%8D%B8%EC%9D%98_%EB%B6%88%EC%99%84%EC%A0%84%EC%84%B1_%EC%A0%95%EB%A6%AC",
+     "quote": "ko 위키 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "불완전성 원리",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%BD%9C%EB%AA%A8%EA%B3%A0%EB%A1%9C%ED%94%84_%EB%B3%B5%EC%9E%A1%EB%8F%84",
+     "quote": "차이틴의 불완전성 원리(Chaitin's incompleteness theorem)",
+     "note": "'정리'를 '원리'로 부르는 용례가 ko 위키에 4건 — 비공식이나 받아도 해 없음"
+    },
+    {
+     "what": "variant",
+     "text": "괴델의 불완전성 원리",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EA%B4%B4%EB%8D%B8%EC%9D%98%20%EB%B6%88%EC%99%84%EC%A0%84%EC%84%B1%20%EC%9B%90%EB%A6%AC%22&fulltext=1",
+     "quote": "ko 위키 2건(감각질 · 논리사)"
+    }
+   ]
+  },
+  "1220": {
+   "before": {
+    "question_text": "끝내지 못한 일이 다 끝낸 일보다 기억에 더 오래 남는다는 현상으로, 한 심리학자의 이름이 붙은 것은?",
+    "explanation": "드라마가 결정적인 장면에서 끝나는 것도 이 효과를 노린 것입니다.",
+    "general_hint": "쿠르트 레빈의 제자였던 소련 여성 심리학자의 이름이 붙었다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (assertive,h-weak,variants)",
+   "notTaken": [],
+   "question_text": "끝내지 못한 일이 다 끝낸 일보다 기억에 더 잘 남는다고 알려진 효과로, 한 심리학자의 이름이 붙은 것은?",
+   "explanation": "드라마가 결정적인 장면에서 끝나는 것도 이 효과를 노린 것이라는 설명이 있습니다. 다만 이후 연구에서는 효과가 재현되지 않았다는 보고도 있습니다.",
+   "general_hint": "심리학자 쿠르트 레빈이 계산이 안 끝난 주문만 기억하는 웨이터를 눈여겨본 일이 연구의 계기가 되었다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Zeigarnik_effect"
+   ],
+   "add": [
+    "자이가르니크 효과",
+    "제이가르닉 효과"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Zeigarnik_effect"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "기억에 더 잘 남는다고 알려진 효과",
+     "result": "true",
+     "note": "새 사실 없음 — 단정만 낮춤"
+    },
+    {
+     "what": "explanation",
+     "text": "드라마가 결정적 장면에서 끝나는 것도 이 효과를 노린 것이라는 설명 · 재현되지 않았다는 보고",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Zeigarnik_effect",
+     "quote": "the cliffhanger relies on the Zeigarnik effect … Several studies … which attempted to replicate Zeigarnik's experiment failed to find any significant differences"
+    },
+    {
+     "what": "hint",
+     "text": "쿠르트 레빈이 계산 안 끝난 주문만 기억하는 웨이터를 눈여겨봄",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Zeigarnik_effect",
+     "quote": "Kurt Lewin noticed that a waiter had better recollections of still unpaid orders."
+    },
+    {
+     "what": "variant",
+     "text": "자이가르니크 효과",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%9E%90%EC%9D%B4%EA%B0%80%EB%A5%B4%EB%8B%88%ED%81%AC%20%ED%9A%A8%EA%B3%BC&redirects=1&format=json",
+     "quote": "넘겨주기 → 자이가르닉 효과"
+    },
+    {
+     "what": "variant",
+     "text": "제이가르닉 효과",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%A0%9C%EC%9D%B4%EA%B0%80%EB%A5%B4%EB%8B%89%20%ED%9A%A8%EA%B3%BC&redirects=1&format=json",
+     "quote": "넘겨주기 → 자이가르닉 효과"
+    }
+   ]
+  },
+  "1294": {
+   "before": {
+    "question_text": "1930년대부터 30여 년간 할리우드 영화사들이 스스로 지킨 자율 검열 규정으로, 키스 장면의 길이까지 정해 두었던 것은?",
+    "explanation": "정부 규제를 피하려 업계가 먼저 만든 규정이었고 1968년 등급제로 바뀌었습니다.",
+    "general_hint": "규정의 이름은 당시 미국 영화 제작자 협회를 이끈 전직 체신부 장관의 성에서 따왔다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "헤이즈 코드",
+    "헤이스 규약",
+    "헤이스 규정"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hays_Code"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "헤이즈 코드",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%ED%97%A4%EC%9D%B4%EC%A6%88%20%EC%BD%94%EB%93%9C&redirects=1&format=json",
+     "quote": "넘겨주기 → 헤이스 코드"
+    },
+    {
+     "what": "variant",
+     "text": "헤이스 규약",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%ED%97%A4%EC%9D%B4%EC%8A%A4%20%EA%B7%9C%EC%95%BD&redirects=1&format=json",
+     "quote": "넘겨주기 → 헤이스 코드"
+    },
+    {
+     "what": "variant",
+     "text": "헤이스 규정",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%ED%97%A4%EC%9D%B4%EC%8A%A4%20%EA%B7%9C%EC%A0%95%22&fulltext=1",
+     "quote": "ko 위키 0건",
+     "note": "서술형 — 뜻은 맞음"
+    }
+   ]
+  },
+  "1300": {
+   "before": {
+    "question_text": "카메라를 앞뒤로 움직이면서 렌즈의 초점거리를 반대 방향으로 바꿔, 인물의 크기는 그대로인데 배경만 밀려나거나 다가오게 만드는 기법은?",
+    "explanation": "히치콕의 '현기증'에서 쓰여 '현기증 효과'라고도 부릅니다.",
+    "general_hint": "이름 앞부분은 카메라를 싣고 레일 위를 움직이는 수레를 가리키는 촬영 용어다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters,variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "현기증 효과",
+      "버티고 효과",
+      "히치콕 줌"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "general_hint": "영화 '죠스'에서 브로디 서장이 해변에 상어가 있음을 깨닫는 장면에 쓰여 유명해졌다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Dolly_zoom"
+   ],
+   "add": [
+    "달리줌",
+    "달리 줌 효과"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Dolly_zoom"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "죠스에서 브로디 서장이 해변의 상어를 깨닫는 장면",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Dolly_zoom",
+     "quote": "Jaws (1975) uses a dolly zoom to focus on Martin Brody's realization that there is a shark on the beach."
+    },
+    {
+     "what": "variant",
+     "text": "달리줌",
+     "result": "true",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복"
+    },
+    {
+     "what": "variant",
+     "text": "달리 줌 효과",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EB%8B%AC%EB%A6%AC%20%EC%A4%8C%20%ED%9A%A8%EA%B3%BC%22&fulltext=1",
+     "quote": "ko 위키 0건",
+     "note": "서술형 — 뜻은 맞음"
+    },
+    {
+     "what": "variant",
+     "text": "현기증 효과",
+     "result": "unverified",
+     "source": "https://en.wikipedia.org/wiki/Dolly_zoom",
+     "quote": "also known as a Hitchcock shot, Vertigo shot, Jaws effect",
+     "note": "영문 별칭(Vertigo shot) 직역 — 한국어 사용례 0건"
+    },
+    {
+     "what": "variant",
+     "text": "버티고 효과",
+     "result": "unverified",
+     "source": "https://en.wikipedia.org/wiki/Dolly_zoom",
+     "quote": "Vertigo shot",
+     "note": "영문 별칭 음역 — 한국어 사용례 0건"
+    },
+    {
+     "what": "variant",
+     "text": "히치콕 줌",
+     "result": "unverified",
+     "source": "https://en.wikipedia.org/wiki/Dolly_zoom",
+     "quote": "Hitchcock shot",
+     "note": "영문 별칭 변형 — 한국어 사용례 0건"
+    }
+   ]
+  },
+  "1366": {
+   "before": {
+    "question_text": "자음만 적고 모음은 읽는 사람이 문맥으로 채워 넣는 문자 체계로, 아랍 문자와 히브리 문자가 여기에 속합니다. 이런 체계를 무엇이라 합니까?",
+    "explanation": "초보자나 경전에는 모음을 점으로 따로 찍어 주기도 합니다.",
+    "general_hint": "이름은 아랍 문자의 첫 네 글자 이름을 이어 붙여 만든 말이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "압자드",
+    "자음 문자",
+    "자음문자"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Abjad"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "압자드",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%95%95%EC%9E%90%EB%93%9C&redirects=1&format=json",
+     "quote": "넘겨주기 → 아브자드"
+    },
+    {
+     "what": "variant",
+     "text": "자음 문자",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%9E%90%EC%9D%8C%20%EB%AC%B8%EC%9E%90&redirects=1&format=json",
+     "quote": "넘겨주기 → 아브자드"
+    },
+    {
+     "what": "variant",
+     "text": "자음문자",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%9E%90%EC%9D%8C%EB%AC%B8%EC%9E%90&redirects=1&format=json",
+     "quote": "넘겨주기 → 아브자드",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복"
+    }
+   ]
+  },
+  "1394": {
+   "before": {
+    "question_text": "비행기 안의 기압은 지상과 같게 맞추지 않고 해발 2000미터쯤의 수준으로 낮게 유지합니다. 그렇게 하는 가장 큰 이유는 무엇을 줄이기 위해서입니까?",
+    "explanation": "안팎의 압력 차가 클수록 동체가 받는 힘이 커지기 때문입니다. 귀가 먹먹해지는 것도 이 때문입니다.",
+    "general_hint": "비행기가 뜨고 내릴 때마다 겉껍데기가 풍선처럼 부풀었다 줄었다를 되풀이하는 일과 관련 있다.",
+    "variants": [
+     "동체 피로"
+    ]
+   },
+   "why": "V015 fix(not-unique · assertive · h-weak) 질문 · 해설 · 힌트 · 변형 제안 반영 — 맨 '하중' · '응력' 은 넓어(B7) 뺌",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "하중",
+      "응력"
+     ],
+     "why": "B7 — 동체에 한정하지 않은 물리 일반어라 넓음('동체 하중' 은 받음)"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "기체 피로"
+     ],
+     "why": "피로는 반복 가압이 쌓인 결과라 압력 차가 주는 하중과 다른 말(사실 확인 partial) — 지금 변형 \"동체 피로\" 는 그대로 둠"
+    }
+   ],
+   "question_text": "비행기 안의 기압은 지상과 같게 맞추지 않고 해발 2000미터쯤의 수준으로 낮게 유지합니다. 동체 안팎의 압력 차를 줄여 동체가 받는 무엇을 덜기 위해서입니까?",
+   "explanation": "안팎의 압력 차가 클수록 동체가 받는 힘이 커지기 때문입니다. 귀가 먹먹해지는 것은 고도 자체보다 기압이 바뀌는 속도와 관련이 있습니다.",
+   "general_hint": "알로하 항공 243편 사고가 이 문제의 위험을 보여 준 사례로 꼽힌다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Cabin_pressurization"
+   ],
+   "add": [
+    "동체 하중",
+    "동체 부담"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cabin_pressurization"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "동체 안팎의 압력 차를 줄여 동체가 받는 무엇을 덜기 위해",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Cabin_pressurization",
+     "quote": "without exceeding the maximum pressure differential limit on the fuselage … aircraft skin stresses caused from pressurization"
+    },
+    {
+     "what": "explanation",
+     "text": "귀가 먹먹해지는 것은 기압이 바뀌는 속도와 관련",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Cabin_pressurization",
+     "quote": "The rate of change of cabin altitude strongly affects comfort as humans are sensitive to pressure changes in the inner ear"
+    },
+    {
+     "what": "hint",
+     "text": "알로하 항공 243편 사고",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Cabin_pressurization",
+     "quote": "The Aloha Airlines Flight 243 incident in 1988 … suffered catastrophic cabin failure mid-flight"
+    },
+    {
+     "what": "variant",
+     "text": "동체 하중",
+     "result": "unverified",
+     "note": "서술형 — 사용례 0건이나 뜻은 맞음"
+    },
+    {
+     "what": "variant",
+     "text": "동체 부담",
+     "result": "unverified",
+     "note": "서술형 — 사용례 0건이나 뜻은 맞음"
+    },
+    {
+     "what": "variant",
+     "text": "기체 피로",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Cabin_pressurization",
+     "quote": "a combination of progressive metal fatigue and aircraft skin stresses caused from pressurization",
+     "note": "피로는 반복 가압이 쌓인 결과 — 압력 차가 동체에 주는 힘(하중·응력)과는 다른 말. 받을지는 설계 판단"
+    },
+    {
+     "what": "variant",
+     "text": "하중",
+     "result": "true",
+     "note": "질문이 '동체가 받는 무엇'이라 낱말 하나로도 맞음(판단)"
+    },
+    {
+     "what": "variant",
+     "text": "응력",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Cabin_pressurization",
+     "quote": "aircraft skin stresses caused from pressurization",
+     "note": "판단 — 뜻 맞음"
+    }
+   ]
+  },
+  "1420": {
+   "before": {
+    "question_text": "'인어공주' 부터 '라이온 킹' 까지 이어진 1990년대 디즈니의 흥행과 평가 회복기를 무엇이라 부릅니까?",
+    "explanation": "브로드웨이 뮤지컬의 작법을 끌어들인 것이 성공의 열쇠로 꼽힙니다.",
+    "general_hint": "이름은 14~16세기 유럽에서 고전 문화가 되살아난 시대를 가리키는 말을 빌렸다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (fact-error,h-letters,variants)",
+   "notTaken": [],
+   "question_text": "'인어공주'(1989)부터 '타잔'(1999)까지, 뮤지컬 방식으로 흥행과 평가를 되찾은 디즈니 애니메이션의 시기를 무엇이라 부릅니까?",
+   "general_hint": "제작사는 이 시기를 공식적으로 정의하지 않아 끝나는 때에 의견이 갈린다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Disney_Renaissance"
+   ],
+   "add": [
+    "디즈니 르네상스 시대"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Disney_Renaissance"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "인어공주(1989)부터 타잔(1999)까지 · 뮤지컬 방식",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Disney_Renaissance",
+     "quote": "The Disney Renaissance was a period from 1989 to 1999 … The films were mostly musical adaptations of well-known stories",
+     "note": "문서는 'mostly' — '뮤지컬 방식으로'는 대체로 맞음"
+    },
+    {
+     "what": "hint",
+     "text": "공식적으로 정의하지 않아 끝나는 때에 의견이 갈린다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Disney_Renaissance",
+     "quote": "Due to Disney never acknowledging an official timeline of films for their Renaissance, it is debated what film should be considered the end of the era."
+    },
+    {
+     "what": "variant",
+     "text": "디즈니 르네상스 시대",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EB%94%94%EC%A6%88%EB%8B%88%20%EB%A5%B4%EB%84%A4%EC%83%81%EC%8A%A4%20%EC%8B%9C%EB%8C%80%22&fulltext=1",
+     "quote": "ko 위키 1건(겨울왕국)"
+    }
+   ]
+  },
+  "1429": {
+   "before": {
+    "question_text": "로마의 원형 경기장은 지금의 이름과 달리 본래 그것을 지은 황제 가문의 이름으로 불렸습니다. 그 본래 이름은?",
+    "explanation": "지금의 이름은 옆에 서 있던 네로의 거대한 상에서 왔다는 설명이 유력합니다.",
+    "general_hint": "공사를 시작한 베스파시아누스와 완공한 아들 티투스가 속한 왕조의 이름이 붙었다.",
+    "variants": []
+   },
+   "why": "V015 fix(fact-error · variants) 반영 — 제안 변형 가운데 오기 '플라비아누스' 는 뺌",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "플라비아누스 원형극장"
+     ],
+     "why": "황제 가문 이름은 플라비우스 — 철자가 틀린 표기"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "플라비우스 암피테아트룸"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "question_text": "로마의 원형 경기장은 지금 '콜로세움'이라는 이름으로 더 널리 불리지만, 그것을 지은 황제 가문의 이름을 붙여 부르기도 합니다. 그 이름은?",
+   "general_hint": "베스파시아누스의 아들이 완공한 뒤 도미티아누스가 지하 시설과 위층 관람석을 덧붙였다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Colosseum"
+   ],
+   "add": [
+    "플라비우스 원형경기장"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Colosseum"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "콜로세움으로 더 널리 불리지만 황제 가문 이름을 붙여 부르기도",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Colosseum",
+     "quote": "the amphitheatre was named the Flavian Amphitheatre … by later classicists and archaeologists",
+     "note": "문서: 고대에 쓰였다는 증거는 없음 — 제안이 '본래 이름'을 뺀 것이 맞음"
+    },
+    {
+     "what": "hint",
+     "text": "베스파시아누스의 아들이 완공 · 도미티아누스가 지하 시설과 위층 관람석을 덧붙임",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Colosseum",
+     "quote": "completed in AD 80 under his successor and heir, Titus … Further modifications were made during the reign of Domitian"
+    },
+    {
+     "what": "variant",
+     "text": "플라비우스 원형경기장",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%BD%9C%EB%A1%9C%EC%84%B8%EC%9B%80",
+     "quote": "콜로세움의 본 이름은 플라비우스 원형 경기장이다.",
+     "note": "문서 표기(원형 경기장)와 정규화 값이 같음"
+    },
+    {
+     "what": "variant",
+     "text": "플라비우스 암피테아트룸",
+     "result": "unverified",
+     "note": "라틴어 Amphitheatrum Flavium 음역 — ko 사용례 0건"
+    },
+    {
+     "what": "variant",
+     "text": "플라비아누스 원형극장",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%ED%94%8C%EB%9D%BC%EB%B9%84%EC%95%84%EB%88%84%EC%8A%A4%20%EC%9B%90%ED%98%95%EA%B7%B9%EC%9E%A5%22&fulltext=1",
+     "quote": "ko 위키 1건",
+     "note": "플라비우스의 오기로 보임 — 받을지는 설계 판단"
+    }
+   ]
+  },
+  "1550": {
+   "before": {
+    "question_text": "1950년대에 만화가 청소년에게 해롭다는 비판이 거세지자 미국 만화 업계가 규제를 피하려 스스로 만든 심의 제도는?",
+    "explanation": "범죄와 공포 소재가 막히면서 히어로물로 쏠리는 결과를 낳았습니다.",
+    "general_hint": "심사를 통과한 만화 표지 구석에는 우표 모양의 인증 마크가 찍혔다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "코믹 코드"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "add": [
+    "코믹스 코드 당국",
+    "코믹스 규약"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Comics_Code_Authority"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "코믹스 코드 당국",
+     "result": "unverified",
+     "note": "Comics Code Authority 직역 — ko 사용례 0건(ko 코믹스 코드 문서 없음)"
+    },
+    {
+     "what": "variant",
+     "text": "코믹 코드",
+     "result": "unverified",
+     "note": "ko 사용례 0건"
+    },
+    {
+     "what": "variant",
+     "text": "코믹스 규약",
+     "result": "unverified",
+     "note": "ko 사용례 0건 — 서술형"
+    }
+   ]
+  },
+  "1570": {
+   "before": {
+    "question_text": "조리개·셔터스피드·감도 셋이 함께 사진의 밝기를 정하며 하나를 바꾸면 다른 것을 조절해야 하는 관계를, 도형에 빗대어 무엇이라 부릅니까?",
+    "explanation": "같은 밝기를 여러 조합으로 만들 수 있고, 그 선택이 사진의 성격을 바꿉니다.",
+    "general_hint": "도형 이름 앞에는 빛을 필름이나 센서에 받아들이는 일을 가리키는 사진 용어가 붙는다.",
+    "variants": [
+     "노출 삼각형"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "노출 트라이앵글"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "general_hint": "조리개를 세 단계 열면 셔터 속도를 약 여덟 배 빠르게 해야 같은 밝기가 유지된다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Exposure_(photography)"
+   ],
+   "add": [
+    "노출 삼각"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Exposure_(photography)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "조리개 세 단계 열면 셔터 속도 약 여덟 배 빠르게",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Exposure_(photography)",
+     "quote": "As f/5.6 is 3 stops \"faster\" than f/16 … a new shutter speed of (1/125)/(2·2·2) = 1/1000 s is needed."
+    },
+    {
+     "what": "variant",
+     "text": "노출 삼각",
+     "result": "unverified",
+     "note": "ko 사용례 0건 — 줄임 표기"
+    },
+    {
+     "what": "variant",
+     "text": "노출 트라이앵글",
+     "result": "unverified",
+     "note": "ko 사용례 0건 — exposure triangle 음역"
+    }
+   ]
+  },
+  "1589": {
+   "before": {
+    "question_text": "19세기에 아메리카에서 건너온 진딧물로 유럽의 포도나무가 거의 전멸했고, 결국 아메리카 뿌리에 접붙이는 것으로 해결했습니다. 이 해충은?",
+    "explanation": "지금 유럽의 포도나무도 대부분 아메리카 뿌리 위에 접붙인 것입니다.",
+    "general_hint": "잎과 뿌리에 혹을 만드는 작은 곤충으로, 이름은 그리스어 '잎' 과 '마른' 을 합쳤다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "포도뿌리진딧물",
+    "포도뿌리혹벌레",
+    "포도나무뿌리진딧물",
+    "포도 필록세라"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Grape_phylloxera"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "포도뿌리진딧물",
+     "result": "unverified",
+     "note": "ko 위키 0건"
+    },
+    {
+     "what": "variant",
+     "text": "포도뿌리혹벌레",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%ED%8F%AC%EB%8F%84%EB%BF%8C%EB%A6%AC%ED%98%B9%EB%B2%8C%EB%A0%88%22&fulltext=1",
+     "quote": "ko 위키 1건(자원곤충학 역사)"
+    },
+    {
+     "what": "variant",
+     "text": "포도나무뿌리진딧물",
+     "result": "unverified",
+     "note": "ko 위키 0건"
+    },
+    {
+     "what": "variant",
+     "text": "포도 필록세라",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%94%84%EB%9E%91%EC%8A%A4_%ED%8F%AC%EB%8F%84_%EB%8C%80%EC%97%AD%EB%B3%91",
+     "quote": "일반적으로 포도 필록세라라고 알려진",
+     "note": "제안 목록에 정답 '필록세라'가 빠져 있음 — 남겨야 함"
+    }
+   ]
+  },
+  "1639": {
+   "before": {
+    "question_text": "천연 염료를 얻기 어려워 오랫동안 값이 비쌌고, 그래서 성모의 옷 색으로 쓰일 만큼 귀하게 여겨진 색은?",
+    "explanation": "광물에서 갈아 만든 안료가 금값에 가까웠습니다.",
+    "general_hint": "피카소가 1900년대 초 이 색을 주로 써서 그린 시기가 따로 이름 붙어 있다.",
+    "variants": [
+     "파란색",
+     "청색"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (fact-error,explanation)",
+   "notTaken": [],
+   "question_text": "광물을 갈아 만드는 천연 안료를 얻기 어려워 오랫동안 값이 비쌌고, 그래서 성모의 옷 색으로 쓰일 만큼 귀하게 여겨진 색은?",
+   "explanation": "청금석으로 만든 울트라마린은 한때 금에 맞먹는 값이었습니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ultramarine",
+    "https://en.wikipedia.org/wiki/Picasso%27s_Blue_Period"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "광물을 갈아 만드는 천연 안료",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Ultramarine",
+     "quote": "lapis lazuli had been used as a pigment … by the simple expedient of grinding down the best available grade of the mineral"
+    },
+    {
+     "what": "explanation",
+     "text": "청금석 울트라마린은 한때 금에 맞먹는 값",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Ultramarine",
+     "quote": "at times valued as highly as gold in Europe"
+    }
+   ]
+  },
+  "1652": {
+   "before": {
+    "question_text": "구단이 벌어들인 수입을 넘어서는 돈을 쓰지 못하도록 유럽축구연맹이 도입한 규정을 무엇이라 합니까?",
+    "explanation": "부유한 구단주의 돈으로 성적을 사는 것을 막고 구단의 파산을 예방하려는 취지입니다.",
+    "general_hint": "이름은 반칙 없이 정정당당히 겨루자는 스포츠 용어를 돈 문제에 빌려 온 것이다.",
+    "variants": [
+     "FFP"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "2009년 9월에 합의되어 2011-12 시즌부터 시행되기 시작했고, 이후 약 5년에 걸쳐 단계적으로 적용됐다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/UEFA_Financial_Fair_Play_Regulations"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/UEFA_Financial_Fair_Play_Regulations"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "2009년 9월 합의 · 2011-12 시즌 시행 · 약 5년에 걸쳐 단계 적용",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/UEFA_Financial_Fair_Play_Regulations",
+     "quote": "agreed to in September 2009 … Implementation … at the outset of the 2011–12 football season … a phased implementation over five years"
+    }
+   ]
+  },
+  "1807": {
+   "before": {
+    "question_text": "조성을 버리고 한 옥타브의 열두 음을 모두 한 번씩 쓴 뒤에야 같은 음을 다시 쓰도록 규칙을 정한 20세기의 작곡 기법은?",
+    "explanation": "쇤베르크가 만들었고, 어느 음도 중심이 되지 않게 하려는 시도였습니다.",
+    "general_hint": "음들을 한 줄로 늘어놓은 순서를 '음렬' 이라 부르며, 뒤에 음렬주의로 이어졌다.",
+    "variants": [
+     "십이음 기법"
+    ]
+   },
+   "why": "V015 fix(assertive · variants · explanation) 질문 · 해설 · 변형 제안 반영 — 변형 \"12음 음렬 기법\" 은 뺌",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "12음 음렬 기법"
+     ],
+     "why": "지금 힌트가 \"음렬\" 을 써서 변형으로 넣으면 힌트가 정답 조각이 됨(checkHint 막힘 · H2)"
+    }
+   ],
+   "question_text": "조성의 중심을 없애려고 한 옥타브의 열두 음을 똑같은 비중으로 다루도록 규칙을 정한 20세기의 작곡 기법은?",
+   "explanation": "쇤베르크가 1923년 무렵 체계화했고, 비슷한 방법을 하우어도 1919년에 발표했습니다.",
+   "add": [
+    "12음주의",
+    "십이음주의"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Twelve-tone_technique"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "열두 음을 똑같은 비중으로",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Twelve-tone_technique",
+     "quote": "All 12 notes are thus given more or less equal importance, and the music avoids being in a key."
+    },
+    {
+     "what": "explanation",
+     "text": "쇤베르크 1923 무렵 체계화 · 하우어도 1919 발표",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Twelve-tone_technique",
+     "quote": "first devised by … Hauer, who published his \"law of the twelve tones\" in 1919. In 1923, Arnold Schoenberg … developed his own, better-known version",
+     "note": "문서는 하우어를 '먼저'로 적음 — '비슷한 방법을 하우어도'는 뜻이 어긋나지 않음"
+    },
+    {
+     "what": "variant",
+     "text": "12음주의",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/12%EC%9D%8C%EC%A3%BC%EC%9D%98",
+     "quote": "ko 위키 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "십이음주의",
+     "result": "unverified",
+     "note": "ko 위키 0건 — 숫자를 한글로 쓴 표기"
+    },
+    {
+     "what": "variant",
+     "text": "12음 음렬 기법",
+     "result": "unverified",
+     "note": "ko 위키 0건 — 서술형"
+    },
+    {
+     "what": "variant",
+     "text": "(빠진 표기) 12음 기법",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/12%EC%9D%8C%EC%A3%BC%EC%9D%98",
+     "quote": "이를 ‘12음기법’이라 불렀다 … 이 12음 기법은",
+     "note": "제안 목록에서 '12음 기법' · '십이음 기법'이 빠짐 — 정답이자 문서 본문 표기라 남겨야 함"
+    }
+   ]
+  },
+  "1890": {
+   "before": {
+    "question_text": "지렛대를 누르면 먹이가 나오도록 만든 상자로, 행동의 결과가 그 행동의 빈도를 바꾼다는 것을 보이려 고안된 장치는?",
+    "explanation": "보상이 매번이 아니라 가끔 나올 때 행동이 더 끈질기게 유지된다는 것도 여기서 밝혀졌습니다.",
+    "general_hint": "조작적 조건형성을 연구한 하버드의 행동주의 심리학자 이름이 붙어 있다.",
+    "variants": []
+   },
+   "why": "V015 fix(variants) 반영 — 스키너 박스 표기만 받음",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "조작적 조건형성 상자",
+      "조작적 조건 형성 상자",
+      "조작적 조건화 상자"
+     ],
+     "why": "지금 힌트가 \"조작적 조건형성\" 을 써서 변형으로 넣으면 힌트가 정답 조각이 됨(checkHint 막힘 · H2) · 설명형 이름"
+    }
+   ],
+   "add": [
+    "스키너 박스",
+    "스키너박스"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Operant_conditioning_chamber"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "스키너 박스",
+     "result": "true",
+     "source": "https://www.happycampus.com/aiWrite/topicWiki/116977",
+     "quote": "교육심리 학습 자료에서 '스키너 박스'로 널리 씀(WebSearch)"
+    },
+    {
+     "what": "variant",
+     "text": "스키너박스",
+     "result": "true",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복"
+    },
+    {
+     "what": "variant",
+     "text": "조작적 조건형성 상자",
+     "result": "unverified",
+     "note": "서술형 — ko 위키 0건"
+    },
+    {
+     "what": "variant",
+     "text": "조작적 조건 형성 상자",
+     "result": "unverified",
+     "note": "위와 정규화 결과가 같음(중복)"
+    },
+    {
+     "what": "variant",
+     "text": "조작적 조건화 상자",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EC%A1%B0%EC%9E%91%EC%A0%81%20%EC%A1%B0%EA%B1%B4%ED%99%94%20%EC%83%81%EC%9E%90%22&fulltext=1",
+     "quote": "ko 위키 1건(비교 인지)",
+     "note": "제안 목록에서 정답 '스키너 상자'가 빠짐 — 남겨야 함"
+    }
+   ]
+  },
+  "2031": {
+   "before": {
+    "question_text": "그리스 비극에서 주인공을 파멸로 이끄는 성격적 결함을 무엇이라 합니까? 햄릿의 우유부단함이 그 예로 자주 꼽힙니다.",
+    "explanation": "아리스토텔레스가 '시학' 에서 쓴 말로, 본래는 '과녁을 빗나감' 을 뜻합니다.",
+    "general_hint": "그리스어 낱말을 그대로 쓰는 비극 이론의 용어로, 카타르시스·페리페테이아와 함께 자주 나온다.",
+    "variants": [
+     "비극적 결함"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (assertive)",
+   "notTaken": [],
+   "question_text": "그리스 비극에서 주인공을 파멸로 이끄는 것으로, 흔히 성격적 결함으로 풀이되는 요소를 무엇이라 합니까? 햄릿의 우유부단함이 그 예로 자주 꼽힙니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hamartia"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "흔히 성격적 결함으로 풀이되는 요소",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Hamartia",
+     "quote": "sometimes translated into English as a tragic flaw … other critics … say that it refers only to a tragic but random accident or mistake",
+     "note": "제안이 단정을 낮춘 것이 문서와 맞음"
+    }
+   ]
+  },
+  "2067": {
+   "before": {
+    "question_text": "점토 인형을 한 컷씩 움직여 촬영하는 방식으로 '월레스와 그로밋' 을 만든 영국의 스튜디오는?",
+    "explanation": "손자국이 남을 만큼 손으로 만지며 찍습니다.",
+    "general_hint": "영국 브리스톨에 본사가 있으며, '치킨 런'과 '숀더쉽'도 이곳 작품이다.",
+    "variants": [
+     "아드만 스튜디오"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "아드만 애니메이션스"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "add": [
+    "아드만 애니메이션"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aardman_Animations"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "아드만 애니메이션",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%95%84%EB%93%9C%EB%A7%8C%20%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98&redirects=1&format=json",
+     "quote": "넘겨주기 → 아드먼 애니메이션"
+    },
+    {
+     "what": "variant",
+     "text": "아드만 애니메이션스",
+     "result": "unverified",
+     "note": "ko 위키 0건 — 영문 Aardman Animations 음역"
+    }
+   ]
+  },
+  "2072": {
+   "before": {
+    "question_text": "'집은 살기 위한 기계' 라고 말하며 근대 건축 5원칙을 내놓은 건축가는?",
+    "explanation": "여러 나라에 흩어진 작품이 함께 세계유산에 올랐습니다.",
+    "general_hint": "스위스에서 태어나 프랑스에서 활동했으며, 파리 근교의 사보아 저택이 대표작이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same)",
+   "notTaken": [],
+   "general_hint": "정식 건축 교육을 받지 않은 채 화가와 저술가로도 활동했고, 1923년 『건축을 향하여』를 펴냈다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Le_Corbusier"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Le_Corbusier"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "정식 건축 교육 없이 화가·저술가로도 활동 · 1923 건축을 향하여",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Le_Corbusier",
+     "quote": "Le Corbusier lacked formal training as an architect … In 1923, he … published his first and most influential book, Towards an Architecture",
+     "note": "첫 문장: architectural designer, painter, urban planner and writer"
+    }
+   ]
+  },
+  "2086": {
+   "before": {
+    "question_text": "한쪽 다리에 무게를 싣고 다른 쪽을 편하게 두어 몸이 자연스러운 S자를 이루게 하는 조각의 자세를 무엇이라 합니까?",
+    "explanation": "고대 그리스가 찾아낸 뒤 르네상스가 되살린 표현입니다.",
+    "general_hint": "'반대로 놓다'라는 뜻의 이탈리아어에서 온 말이며, 미켈란젤로의 다비드상이 대표적인 예다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "기원전 480년경에 만들어진 '크리티오스의 소년' 상이 이 자세를 쓴 가장 오래된 그리스 조각으로 알려져 있다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Contrapposto"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Contrapposto"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "기원전 480년경 크리티오스의 소년이 가장 오래된 예",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Contrapposto",
+     "quote": "The first known statue to use contrapposto is Kritios Boy, c. 480 BCE"
+    }
+   ]
+  },
+  "2112": {
+   "before": {
+    "question_text": "타율과 타점 같은 전통 지표 대신 통계 분석으로 선수의 가치를 다시 재려 한 접근을 무엇이라 합니까?",
+    "explanation": "적은 예산의 구단이 이를 활용한 이야기가 책과 영화로 알려졌습니다.",
+    "general_hint": "빌 제임스가 널리 알렸으며, 이름 앞부분은 미국야구연구협회의 영어 약칭을 소리 나는 대로 읽은 것이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "빌 제임스가 1977년부터 『베이스볼 앱스트랙트』를 펴내며 이 분야의 문을 연 것으로 알려져 있다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Sabermetrics"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Sabermetrics"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "빌 제임스가 1977년부터 베이스볼 앱스트랙트",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Sabermetrics",
+     "quote": "began to achieve legitimacy in 1977 when Bill James began releasing Baseball Abstracts"
+    }
+   ]
+  },
+  "2186": {
+   "before": {
+    "question_text": "뒤꿈치가 날에서 떨어지도록 만들어 밀어 내는 힘을 더 오래 쓸 수 있게 해, 기록을 크게 앞당긴 스케이트는?",
+    "explanation": "장비 하나가 기록을 바꾼 대표적인 사례로 꼽힙니다.",
+    "general_hint": "날이 떨어졌다 붙을 때 나는 '딸깍' 소리를 뜻하는 네덜란드어에서 이름이 왔다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "1996-97 시즌 네덜란드 여자 대표팀이 쓰면서 널리 퍼졌고, 1998 나가노 올림픽에서도 세계 기록이 이어졌다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Clap_skate"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Clap_skate"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1996-97 네덜란드 여자 대표팀 · 1998 나가노 세계 기록",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Clap_skate",
+     "quote": "In the 1996/1997 season, the Dutch women's team started using the skates with great success … including the 1998 Winter Olympics in Nagano"
+    }
+   ]
+  },
+  "2206": {
+   "before": {
+    "question_text": "고쳐서 배포하면 그 결과물도 같은 조건으로 공개해야 한다는 조항이 있어 '전염성' 이 있다고 불리는 라이선스는?",
+    "explanation": "자유를 지키기 위해 조건을 물려주는 구조입니다.",
+    "general_hint": "리처드 스톨먼과 자유 소프트웨어 재단이 만들었고, 리눅스 커널이 이것의 2판을 따른다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (not-unique,scope)",
+   "notTaken": [],
+   "question_text": "고쳐서 배포하면 그 결과물도 같은 조건으로 공개해야 한다는 조항 때문에 '전염성' 이 있다고 불리며, 리눅스 커널이 따르는 라이선스는?",
+   "general_hint": "1989년에 처음 나왔고 2판은 1991년, 3판은 2007년에 나왔다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/GNU_General_Public_License"
+   ],
+   "add": [
+    "GNU GPL",
+    "GPLv2",
+    "GNU 일반 공중 사용 허가서"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/GNU_General_Public_License"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "리눅스 커널이 따르는 라이선스",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/GNU_General_Public_License",
+     "quote": "projects such as the Linux kernel are licensed under GPLv2 only"
+    },
+    {
+     "what": "hint",
+     "text": "1989 첫판 · 2판 1991 · 3판 2007",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/GNU_General_Public_License",
+     "quote": "Version 1 … released on 25 February 1989 … GPLv2, was released in 1991 … In 2007, the third version"
+    },
+    {
+     "what": "variant",
+     "text": "GNU GPL",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=GNU%20GPL&redirects=1&format=json",
+     "quote": "넘겨주기 → GNU 일반 공중 사용 허가서"
+    },
+    {
+     "what": "variant",
+     "text": "GPLv2",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=GPLv2&redirects=1&format=json",
+     "quote": "넘겨주기 → GNU 일반 공중 사용 허가서"
+    },
+    {
+     "what": "variant",
+     "text": "GNU 일반 공중 사용 허가서",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/GNU_%EC%9D%BC%EB%B0%98_%EA%B3%B5%EC%A4%91_%EC%82%AC%EC%9A%A9_%ED%97%88%EA%B0%80%EC%84%9C",
+     "quote": "ko 위키 표제어",
+     "note": "제안 목록에서 정답 'GPL'이 빠짐 — 남겨야 함"
+    }
+   ]
+  },
+  "2221": {
+   "before": {
+    "question_text": "자기를 지키려 한 행동이라도 정도가 지나치면 인정되지 않습니다. 이때 요구되는 요건을 무엇이라 합니까?",
+    "explanation": "지나치면 과잉방위로 따로 다뤄집니다.",
+    "general_hint": "형법 제21조 정당방위 조문의 끝부분에 나오는 요건으로, 행위가 사회 통념상 알맞은지를 본다.",
+    "variants": [
+     "상당한 이유"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (scope,variants)",
+   "notTaken": [],
+   "question_text": "정당방위는 자기를 지키려는 행동이라도 정도가 지나치면 인정되지 않습니다. 이때 방위 행위에 요구되는 법적 요건을 무엇이라 합니까?",
+   "add": [
+    "방위행위의 상당성",
+    "방위의 상당성",
+    "행위의 상당성"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/정당방위"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "정당방위 · 방위 행위에 요구되는 법적 요건",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%A0%95%EB%8B%B9%EB%B0%A9%EC%9C%84",
+     "quote": "정당방위란 \"자기 또는 타인의 법익에 대한 현재의 위법한 침해를 방위하기 위한 상당한 이유 있는 행위\"이다."
+    },
+    {
+     "what": "variant",
+     "text": "방위행위의 상당성",
+     "result": "unverified",
+     "note": "ko 위키 0건 — 서술형(판례 '상당성을 결여' 표현은 있음)"
+    },
+    {
+     "what": "variant",
+     "text": "방위의 상당성",
+     "result": "unverified",
+     "note": "ko 위키 0건 — 서술형"
+    },
+    {
+     "what": "variant",
+     "text": "행위의 상당성",
+     "result": "unverified",
+     "note": "ko 위키 0건 — 서술형. 제안 목록에서 정답 '상당성'이 빠짐 — 남겨야 함"
+    }
+   ]
+  },
+  "2446": {
+   "before": {
+    "question_text": "나무 상자 위에 앉아 앞판을 손으로 두드려 연주하는, 페루에서 시작된 타악기는?",
+    "explanation": "드럼 세트를 대신해 거리 공연에 많이 쓰입니다.",
+    "general_hint": "스페인어로 '상자'를 뜻하는 말에서 온 이름이며, 플라멩코에도 쓰인다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters,h-weak)",
+   "notTaken": [],
+   "general_hint": "플라멩코 기타리스트 파코 데 루시아가 1977년 스페인에 들여오면서 플라멩코 연주에도 쓰이기 시작했다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Cajón"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cajón"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "파코 데 루시아가 1977년 스페인에 들여와 플라멩코에도",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Caj%C3%B3n",
+     "quote": "After a short 1977 visit … Paco de Lucía brought a cajón to Spain to use it in his own music",
+     "note": "문서는 플라멩코에 처음 들인 이를 페페 에바노로 보는 설도 함께 둠 — 힌트는 단정하지 않아 통과"
+    }
+   ]
+  },
+  "2517": {
+   "before": {
+    "question_text": "무슬림이 어디에 있든 기도할 때 향하는 방향을 무엇이라 합니까?",
+    "explanation": "모스크 벽의 움푹 들어간 자리가 그 방향을 가리킵니다.",
+    "general_hint": "아랍어에서 온 말로, 메카의 카바를 향한 쪽을 뜻한다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-weak)",
+   "notTaken": [],
+   "general_hint": "초기 무슬림은 처음에 예루살렘 쪽을 향해 기도하다가 서기 623년경 메카로 방향을 바꾸었다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Qibla"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Qibla"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "처음에 예루살렘 쪽 · 623년경 메카로",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Qibla",
+     "quote": "these verses were revealed … in the second Hijri year (623 CE) … had prayed towards Jerusalem as the qibla"
+    }
+   ]
+  },
+  "2658": {
+   "before": {
+    "question_text": "활주로 끝에 적힌 '09' '27' 같은 숫자는 그 활주로가 향하는 무엇을 10으로 나눈 값입니까?",
+    "explanation": "같은 활주로라도 양 끝의 번호는 18 차이가 납니다.",
+    "general_hint": "번호 36은 북쪽을 향한다는 뜻이다.",
+    "variants": [
+     "방위각"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "자방위"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "add": [
+    "방향",
+    "자북 방위",
+    "자기 방위",
+    "방위 각도"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Runway"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "방향",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Runway",
+     "quote": "generally the magnetic azimuth of the runway's heading in decadegrees",
+     "note": "판단 — 질문 '향하는 무엇'에 맞는 일반 낱말. 넓지만 오답과 겹치지 않음"
+    },
+    {
+     "what": "variant",
+     "text": "자방위",
+     "result": "unverified",
+     "note": "ko 위키 0건"
+    },
+    {
+     "what": "variant",
+     "text": "자북 방위",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EC%9E%90%EB%B6%81%20%EB%B0%A9%EC%9C%84%22&fulltext=1",
+     "quote": "ko 위키 1건(항공 사고 문서)"
+    },
+    {
+     "what": "variant",
+     "text": "자기 방위",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%99%9C%EC%A3%BC%EB%A1%9C",
+     "quote": "활주로가 향하는 자기(磁氣) 방위를 10으로 나눈 수",
+     "note": "동음 '자기방위(self-defense)'와 글자가 같음 — 답으로는 문제 없음"
+    },
+    {
+     "what": "variant",
+     "text": "방위 각도",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EB%B0%A9%EC%9C%84%20%EA%B0%81%EB%8F%84%22&fulltext=1",
+     "quote": "ko 위키 2건",
+     "note": "서술형. 제안 목록에서 정답 '방위'가 빠짐 — 남겨야 함"
+    }
+   ]
+  },
+  "2675": {
+   "before": {
+    "question_text": "도마뱀이 위험할 때 꼬리를 스스로 끊고 달아나는 것처럼, 몸 일부를 스스로 떼어 내는 행동을 무엇이라 합니까?",
+    "explanation": "끊긴 꼬리는 한동안 꿈틀거려 천적의 눈을 끕니다.",
+    "general_hint": "게가 위험할 때 집게다리를 떼어 내는 것도 같은 무리에 드는 행동이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-weak,variants)",
+   "notTaken": [],
+   "general_hint": "해삼이 위험할 때 내장을 몸 밖으로 내보내는 것도 같은 무리에 드는 행동이다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Autotomy"
+   ],
+   "add": [
+    "자기 절단",
+    "자기절단",
+    "자절 현상"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Autotomy"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "해삼이 내장을 몸 밖으로 내보내는 것도 같은 무리",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Autotomy",
+     "quote": "Evisceration, the ejection of the internal organs of sea cucumbers when stressed, is also a form of autotomy"
+    },
+    {
+     "what": "variant",
+     "text": "자기절단",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%9E%90%EC%A0%88",
+     "quote": "자절(Autotomy …) 혹은 자기절단(self-amputation)은"
+    },
+    {
+     "what": "variant",
+     "text": "자기 절단",
+     "result": "true",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복('자기절단'과 같은 값)"
+    },
+    {
+     "what": "variant",
+     "text": "자절 현상",
+     "result": "unverified",
+     "note": "ko 위키 0건 — 서술형. 제안 목록에서 정답 '자절'이 빠짐 — 남겨야 함"
+    }
+   ]
+  },
+  "2676": {
+   "before": {
+    "question_text": "뱀이 혀를 날름거려 공기 중의 냄새 분자를 모은 뒤 입천장의 어떤 기관에 대어 냄새를 느낄까요?",
+    "explanation": "혀가 두 갈래인 것은 냄새가 오는 방향을 가리는 데 도움이 된다는 설명이 있습니다.",
+    "general_hint": "처음 자세히 기술한 덴마크 해부학자의 이름을 땄으며, 고양이가 입을 벌리는 플레멘 반응과도 관련된다.",
+    "variants": [
+     "서비기관"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "야곱슨 기관",
+      "제이콥슨 기관"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "add": [
+    "서골비기관",
+    "서골비 기관",
+    "보습코 기관",
+    "야콥슨기관"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Vomeronasal_organ"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "서골비기관",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%B3%B4%EC%8A%B5%EC%BD%94_%EA%B8%B0%EA%B4%80",
+     "quote": "보습코 기관 또는 서골비기관 또는 보습코 연골 기관 또는 야콥슨 기관"
+    },
+    {
+     "what": "variant",
+     "text": "서골비 기관",
+     "result": "true",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복"
+    },
+    {
+     "what": "variant",
+     "text": "보습코 기관",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%B3%B4%EC%8A%B5%EC%BD%94_%EA%B8%B0%EA%B4%80",
+     "quote": "ko 위키 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "야곱슨 기관",
+     "result": "unverified",
+     "note": "ko 위키 0건"
+    },
+    {
+     "what": "variant",
+     "text": "제이콥슨 기관",
+     "result": "unverified",
+     "note": "ko 위키 0건 — 영어식 읽기"
+    },
+    {
+     "what": "variant",
+     "text": "야콥슨기관",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%95%BC%EC%BD%A5%EC%8A%A8%EA%B8%B0%EA%B4%80&redirects=1&format=json",
+     "quote": "넘겨주기 → 보습코 기관",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복. 제안 목록에서 정답 '야콥슨 기관'이 빠짐 — 남겨야 함"
+    }
+   ]
+  },
+  "2714": {
+   "before": {
+    "question_text": "한옥 사랑채 등에서 기둥을 세워 바닥을 한층 높이 띄워 경치를 내려다볼 수 있게 만든 마루는?",
+    "explanation": "누각처럼 높다는 뜻에서 이름이 왔습니다.",
+    "general_hint": "대청마루·툇마루와 한 무리인 이름으로, 여름에 바람이 잘 통해 시원하게 쓰였다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-weak)",
+   "notTaken": [],
+   "general_hint": "집주인인 남자가 학문을 하거나 쉬고 손님을 맞이하는 공간으로 쓰였다.",
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/누마루"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/마루_(건축)",
+    "https://ko.wikipedia.org/wiki/누마루"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "남자 주인이 학문 · 휴식 · 손님 맞이",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%88%84%EB%A7%88%EB%A3%A8",
+     "quote": "집 안의 남자 주인이 학문을 하거나 휴식을 취하고, 손님을 상대하던 장소로 이용했다."
+    }
+   ]
+  },
+  "2815": {
+   "before": {
+    "question_text": "1947년 로버트 카파와 앙리 카르티에 브레송 등이 세운 보도사진가 협동조합으로, 사진가가 자기 사진의 저작권을 갖도록 한 곳은?",
+    "explanation": "이름은 큰 샴페인 병에서 따왔다는 이야기가 전합니다.",
+    "general_hint": "이름은 라틴어로 '크다'는 뜻의 낱말에서 왔다.",
+    "variants": [
+     "매그넘 포토스"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "회원이 후보 · 준회원 · 정회원 세 단계를 거쳐 올라가는 방식으로 운영되고, 사진가들이 협동조합의 주인이다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Magnum_Photos"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Magnum_Photos"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "후보 · 준회원 · 정회원 세 단계, 사진가들이 주인",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Magnum_Photos",
+     "quote": "invited to become a 'Nominee Member' … 'Associate Membership' … full membership … Magnum is owned by its photographers"
+    }
+   ]
+  },
+  "2827": {
+   "before": {
+    "question_text": "어둠 속에서 만져도, 깨진 조각만 봐도 알아볼 수 있게 하라는 요구로 1915년 만들어진, 잘록한 곡선의 콜라 병 디자인은?",
+    "explanation": "카카오 열매의 모양에서 착안했다는 이야기가 전합니다.",
+    "general_hint": "'윤곽선'을 뜻하는 영어 낱말이 이름에 붙었으며, 인디애나주의 루트 유리 회사가 디자인했다.",
+    "variants": [
+     "컨투어 보틀"
+    ]
+   },
+   "why": "V015 fix(h-letters · variants) 힌트 제안을 고쳐 받음 — \"이끌어\" 는 문서에 없음(사실 확인 partial)",
+   "notTaken": [
+    {
+     "field": "general_hint",
+     "proposal": "인디애나주 테러호트의 루트 유리 회사에서 얼 딘이 이끌어 디자인했고, 그해 11월 특허를 받았다.",
+     "why": "\"얼 딘이 이끌어\" 는 문서에 없음 → \"얼 딘 등이\""
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "코카콜라 컨투어 보틀",
+      "컨투어 바틀"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "general_hint": "인디애나주 테러호트의 루트 유리 회사 직원 얼 딘 등이 디자인했고, 그해 11월 특허를 받았다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Coca-Cola"
+   ],
+   "add": [
+    "코카콜라 컨투어 병"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Coca-Cola_Contour_bottle",
+    "https://en.wikipedia.org/wiki/Coca-Cola_bottle"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "테러호트 루트 유리 회사 · 그해 11월 특허",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Coca-Cola",
+     "quote": "the Root Glass Company of Terre Haute, Indiana … a design patent was issued on the bottle in November 1915."
+    },
+    {
+     "what": "hint",
+     "text": "얼 딘이 이끌어 디자인",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Coca-Cola",
+     "quote": "turned the project over to members of his supervisory staff, including company auditor T. Clyde Edwards, plant superintendent Alexander Samuelsson, and Earl R. Dean, bottle designer",
+     "note": "문서는 루트가 직원 셋에게 맡겼고 딘은 '병 디자이너'로 스케치를 그림 — '이끌어'는 문서에 없음. 고칠 말: '얼 딘 등이 디자인했고'"
+    },
+    {
+     "what": "variant",
+     "text": "코카콜라 컨투어 병",
+     "result": "unverified",
+     "note": "ko 위키 0건 — 서술형"
+    },
+    {
+     "what": "variant",
+     "text": "코카콜라 컨투어 보틀",
+     "result": "unverified",
+     "note": "ko 위키 0건"
+    },
+    {
+     "what": "variant",
+     "text": "컨투어 바틀",
+     "result": "unverified",
+     "note": "ko 위키 0건"
+    }
+   ]
+  },
+  "2840": {
+   "before": {
+    "question_text": "위스키를 참나무통에서 숙성하는 동안 해마다 조금씩 증발해 사라지는 몫을 '천사가 가져간다' 는 뜻으로 무엇이라 합니까?",
+    "explanation": "스코틀랜드에서는 한 해에 2% 안팎이 줄어든다고 합니다.",
+    "general_hint": "영어 표현을 그대로 옮겨 적은 이름으로, 같은 제목의 2012년 켄 로치 영화도 있다.",
+    "variants": [
+     "천사의 몫"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (expose)",
+   "notTaken": [],
+   "question_text": "위스키를 참나무통에서 숙성하는 동안 해마다 조금씩 증발해 사라지는 양을 가리키는 말은 무엇입니까?",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Angel%27s_share",
+    "https://en.wikipedia.org/wiki/The_Angels%27_Share_(film)"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "증발해 사라지는 양을 가리키는 말",
+     "result": "true",
+     "note": "새 사실 없음 — 정답 뜻풀이 문구만 뺌"
+    }
+   ]
+  },
+  "2887": {
+   "before": {
+    "question_text": "지금까지 확인된 매장량을 한 해 생산량으로 나누어, 이대로 쓰면 앞으로 몇 해를 더 캘 수 있는지 나타낸 값은?",
+    "explanation": "새 매장지가 발견되거나 기술이 발전하면 이 값은 늘어납니다.",
+    "general_hint": "'캘 수 있다'는 뜻의 한자어에 '해의 수'를 붙인 용어다.",
+    "variants": [
+     "채굴 가능 연수"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-letters,variants)",
+   "notTaken": [],
+   "general_hint": "2015년 BP 자료로 계산하면 석유는 약 51년, 천연가스는 약 53년, 석탄은 약 114년으로 석탄이 가장 길다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Reserves-to-production_ratio"
+   ],
+   "add": [
+    "가채년수",
+    "가채 연수",
+    "R/P 비율",
+    "R/P비",
+    "매장량 생산량 비율"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Reserves-to-production_ratio"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "2015 BP 자료 석유 약 51년 · 천연가스 약 53년 · 석탄 약 114년",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Reserves-to-production_ratio",
+     "quote": "table from the data of the year 2015 by BP statistical review: Oil 51 · Coal 114 · Natural gas 53"
+    },
+    {
+     "what": "variant",
+     "text": "가채년수",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EA%B0%80%EC%B1%84%EB%85%84%EC%88%98%22&fulltext=1",
+     "quote": "ko 위키 2건(석유 산업 · 대한민국의 자원)"
+    },
+    {
+     "what": "variant",
+     "text": "가채 연수",
+     "result": "true",
+     "note": "정답 '가채연수'와 정규화 값이 같음(중복). 제안 목록에서 '가채연수' · '채굴 가능 연수'가 빠짐 — 정답은 남겨야 하고 '채굴 가능 연수' 제거 사유 확인 필요"
+    },
+    {
+     "what": "variant",
+     "text": "R/P 비율",
+     "result": "unverified",
+     "note": "영문 약어 섞임 — ko 0건, 15 B2 판단 필요"
+    },
+    {
+     "what": "variant",
+     "text": "R/P비",
+     "result": "unverified",
+     "note": "영문 약어 섞임 — ko 0건"
+    },
+    {
+     "what": "variant",
+     "text": "매장량 생산량 비율",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%EB%A7%A4%EC%9E%A5%EB%9F%89%20%EC%83%9D%EC%82%B0%EB%9F%89%20%EB%B9%84%EC%9C%A8%22&fulltext=1",
+     "quote": "ko 위키 1건(허버트 피크 이론)"
+    }
+   ]
+  },
+  "2893": {
+   "before": {
+    "question_text": "1983년 질 낮은 게임이 쏟아져 북미 가정용 게임 시장이 무너진 사건으로, 팔리지 않은 게임을 사막에 묻었다는 이야기로 유명한 것은?",
+    "explanation": "이 사건 뒤 닌텐도는 게임 품질 심사를 엄격히 했습니다.",
+    "general_hint": "당시 시장을 이끈 가정용 게임기 '2600'을 만든 미국 회사 이름이 붙었고, 주로 일본에서 이렇게 부른다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (not-unique,h-pair-same)",
+   "notTaken": [],
+   "question_text": "1983년 질 낮은 게임이 쏟아져 북미 가정용 게임 시장이 무너진 사건입니다. 팔리지 않은 게임을 사막에 묻었다는 이야기로 유명한 이 사건을 일본에서는 무엇이라 부릅니까?",
+   "general_hint": "2014년 뉴멕시코 매립지를 발굴해 보니 카트리지가 약 72만 8천 개로, 떠도는 이야기보다 훨씬 적었다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Video_game_crash_of_1983"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Video_game_crash_of_1983"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "이 사건을 일본에서는 무엇이라 부릅니까",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Video_game_crash_of_1983",
+     "quote": "it still came as a surprise there and created repercussions that changed that industry, and thus became known as the \"Atari shock\"."
+    },
+    {
+     "what": "hint",
+     "text": "2014년 뉴멕시코 매립지 발굴 · 약 72만 8천 개",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Video_game_crash_of_1983",
+     "quote": "clarified that only about 728,000 cartridges had been buried in 1982"
+    }
+   ]
+  },
+  "2946": {
+   "before": {
+    "question_text": "돼지고기와 뼈를 삶은 국물에 해초 모자반을 넣고 걸쭉하게 끓이는 제주의 향토 음식은?",
+    "explanation": "제주말로 모자반을 \"몸\" 이라 부릅니다. 잔치 때 끓이던 음식입니다.",
+    "general_hint": "제주 향토 음식으로, 고기국수·접짝뼈국과 함께 제주의 돼지 국물 음식으로 꼽힌다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-weak)",
+   "notTaken": [],
+   "general_hint": "바닷가 마을에서 주로 만들었고, 내륙에서는 같은 국물로 고사릿국이나 어린 무국을 끓였다고 한다.",
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/몸국"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/몸국"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "바닷가 마을에서 주로 · 내륙은 고사릿국 · 어린 무국",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%AA%B8%EA%B5%AD",
+     "quote": "몸국은 주로 바닷가 마을에서 만들어졌으며, 내륙 지역에서는 이 국물로 고사릿국이나 어린 무, 결구가 되지 않은 배추를 넣은 국 등을"
+    }
+   ]
+  },
+  "2990": {
+   "before": {
+    "question_text": "1961년 신상옥이 만들어 크게 흥행한 춘향전 영화의 제목은? 같은 해 홍성기의 '춘향전' 과 맞붙은 것으로 유명합니다.",
+    "explanation": "최은희가 춘향을 맡았고, 경쟁작에는 김지미가 나왔습니다.",
+    "general_hint": "제목은 주인공 이름 앞에 그의 성(姓)을 붙인 꼴이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters,h-famous)",
+   "notTaken": [],
+   "general_hint": "관객 36만 명을 모았고, 이 흥행으로 감독의 영화사 신필름이 큰 영화사로 자랐다.",
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/성춘향_(1961년_영화)"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/성춘향_(1961년_영화)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "관객 36만 명 · 신필름이 큰 영화사로",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%84%B1%EC%B6%98%ED%96%A5_(1961%EB%85%84_%EC%98%81%ED%99%94)",
+     "quote": "관객 36만 명이라는 흥행상 대성공을 거두어 신상옥이 창설한 신필름을 대형 메이커로 올려놓는"
+    }
+   ]
+  },
+  "3034": {
+   "before": {
+    "question_text": "콘크리트 기둥이나 벽을 공장에서 미리 만들어 와서 현장에서 짜 맞추는 공법을 무엇이라 합니까?",
+    "explanation": "\"미리 부어 만든다\" 는 뜻의 영어에서 온 말입니다.",
+    "general_hint": "현장에서 거푸집에 바로 붓는 '현장 타설'과 반대되는 방식으로, 영어 머리글자 두 개로 줄여 부르기도 한다.",
+    "variants": [
+     "프리캐스트 콘크리트",
+     "PC 공법"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "같은 거푸집을 여러 번 되풀이해 쓸 수 있고, 지상에서 만들어 작업이 안전해진다는 장점이 꼽힌다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Precast_concrete"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/프리캐스트_콘크리트",
+    "https://en.wikipedia.org/wiki/Precast_concrete"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "같은 거푸집 되풀이 · 지상에서 만들어 안전",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Precast_concrete",
+     "quote": "The forms used in a precast plant can be reused hundreds to thousands of times … can be performed on ground level, which maximizes safety"
+    }
+   ]
+  },
+  "3065": {
+   "before": {
+    "question_text": "금속 건반 아래 울림관 속에서 모터로 작은 판을 돌려 소리를 물결치듯 떨게 만드는 건반 타악기는?",
+    "explanation": "재즈에서 많이 쓰입니다.",
+    "general_hint": "이름은 음을 물결치듯 떠는 연주법을 가리키는 이탈리아어 음악 용어에서 왔고, 실로폰·마림바와 한 무리다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "미국 악기 회사의 영업 책임자 조지 웨이가 이름을 붙였다고 한다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Vibraphone"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Vibraphone"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "미국 악기 회사의 영업 책임자 조지 웨이가 이름",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Vibraphone",
+     "quote": "After sales manager George H. Way termed this instrument the \"vibraphone\", it was marketed by Leedy starting in 1924."
+    }
+   ]
+  },
+  "3072": {
+   "before": {
+    "question_text": "오스트레일리아 원주민 신화에서 조상의 영혼들이 땅과 생명을 빚었다는 창조의 시간을 영어로 흔히 무엇이라 합니까?",
+    "explanation": "과거에 끝난 일이 아니라 지금도 이어지는 시간으로 여긴다는 설명이 있습니다.",
+    "general_hint": "영어 이름에는 잠잘 때 보는 것을 뜻하는 낱말이 들어 있다.",
+    "variants": [
+     "드리밍",
+     "더 드리밍"
+    ]
+   },
+   "why": "V015 fix(h-letters) 힌트 제안을 고쳐 받음 — 널리 퍼뜨린 이는 엘킨, 길런 · 스펜서는 처음 쓴 사람(사실 확인 partial)",
+   "notTaken": [
+    {
+     "field": "general_hint",
+     "proposal": "19세기 말~20세기 초 스펜서와 길런이라는 학자들이 퍼뜨린 영어 표현인데, 번역이 알맞지 않다는 반론도 있다.",
+     "why": "\"스펜서와 길런이 퍼뜨린\" 은 문서와 어긋남"
+    }
+   ],
+   "general_hint": "1896년 무렵 길런과 스펜서가 처음 쓴 영어 표현인데, 번역이 알맞지 않다는 반론도 있다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/The_Dreaming"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Dreaming_(Australian_Aboriginal)",
+    "https://en.wikipedia.org/wiki/Dreamtime"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "19세기 말~20세기 초 스펜서와 길런이 퍼뜨린 영어 표현 · 번역 반론",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/The_Dreaming",
+     "quote": "originally used by Francis Gillen, adopted by his colleague Walter Baldwin Spencer, and thereafter popularised by A. P. Elkin … Gillen first used the terms … in 1896",
+     "note": "문서상 널리 퍼뜨린 이는 엘킨 — 스펜서·길런은 처음 쓴 사람. 고칠 말: '1896년 무렵 길런과 스펜서가 처음 쓴 영어 표현인데, 번역이 알맞지 않다는 반론도 있다.'(반론은 Strehlow 1908 — 문서 확인)"
+    }
+   ]
+  },
+  "3106": {
+   "before": {
+    "question_text": "후설이 시작한 철학 방법으로, 대상에 대한 선입견과 판단을 괄호 치고 의식에 나타나는 경험 자체를 기술하려 한 것은?",
+    "explanation": "하이데거와 사르트르 등에게 이어졌습니다.",
+    "general_hint": "'나타나는 것'을 뜻하는 그리스어에서 이름이 왔고, '사태 그 자체로!'가 구호였다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters,h-weak)",
+   "notTaken": [],
+   "general_hint": "철학을 엄밀한 학문으로 세우려 한 후설이 내건 구호는 '사태 그 자체로!'였다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Phenomenology_(philosophy)",
+    "https://ko.wikipedia.org/wiki/현상학"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/현상학",
+    "https://en.wikipedia.org/wiki/Phenomenology_(philosophy)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "후설의 구호 '사태 그 자체로!' · 엄밀한 학문",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%98%84%EC%83%81%ED%95%99",
+     "quote": "그는 '사상 자체에로(zu den Sachen selbst!)'라는 것을 모토로 한다. 그에 의하면 철학은 엄밀학, 보편학이어야 한다",
+     "note": "문서 번역은 '사상 자체에로' — '사태 그 자체로'도 같은 독일어의 흔한 번역"
+    }
+   ]
+  },
+  "3193": {
+   "before": {
+    "question_text": "힌두교에서 끝없이 이어지는 윤회에서 벗어나 해탈하는 것을 산스크리트어로 무엇이라 합니까?",
+    "explanation": "업(카르마)을 끊어 내야 이를 수 있다고 봅니다.",
+    "general_hint": "불교의 열반과 비슷한 개념으로, 힌두교 인생의 네 목표 가운데 마지막 것이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "모크샤"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Moksha"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "모크샤",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EB%AA%A8%ED%81%AC%EC%83%A4&redirects=1&format=json",
+     "quote": "넘겨주기 → 해탈"
+    }
+   ]
+  },
+  "3241": {
+   "before": {
+    "question_text": "배우가 인물의 감정과 상황을 실제로 겪듯 내면에서부터 연기해야 한다고 한 러시아의 연출가는 누구일까요? 그의 연기론은 미국의 메소드 연기로 이어졌습니다.",
+    "explanation": "모스크바 예술극장에서 체호프의 희곡을 올리며 방법을 다듬었습니다.",
+    "general_hint": "대표 저서로 '배우 수업'이 있고, 그의 연기 이론은 흔히 그의 이름에 '시스템'을 붙여 부른다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "스타니슬라프스키",
+    "스타니슬라브스키",
+    "콘스탄틴 스타니슬랍스키"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Konstantin_Stanislavski"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "스타니슬라프스키",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%8A%A4%ED%83%80%EB%8B%88%EC%8A%AC%EB%9D%BC%ED%94%84%EC%8A%A4%ED%82%A4&redirects=1&format=json",
+     "quote": "넘겨주기 → 콘스탄틴 스타니슬랍스키"
+    },
+    {
+     "what": "variant",
+     "text": "스타니슬라브스키",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EC%8A%A4%ED%83%80%EB%8B%88%EC%8A%AC%EB%9D%BC%EB%B8%8C%EC%8A%A4%ED%82%A4&redirects=1&format=json",
+     "quote": "넘겨주기 → 콘스탄틴 스타니슬랍스키"
+    },
+    {
+     "what": "variant",
+     "text": "콘스탄틴 스타니슬랍스키",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%BD%98%EC%8A%A4%ED%83%84%ED%8B%B4_%EC%8A%A4%ED%83%80%EB%8B%88%EC%8A%AC%EB%9E%8D%EC%8A%A4%ED%82%A4",
+     "quote": "ko 위키 표제어"
+    }
+   ]
+  },
+  "3329": {
+   "before": {
+    "question_text": "스위스의 네 공용어 가운데 독일어·프랑스어·이탈리아어를 뺀, 라틴어에서 갈라져 나온 소수 언어는?",
+    "explanation": "동부 그라우뷘덴주 일부에서 쓰이며, 인구의 1% 가 안 되는 사람이 씁니다.",
+    "general_hint": "1938년 국민투표로 스위스의 국어로 인정되었고, 1996년에는 부분 공용어가 되었다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "로만슈어",
+    "로만시어"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Romansh_language"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "로만슈어",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%A1%9C%EB%A7%8C%EC%8A%88%EC%96%B4",
+     "quote": "ko 위키 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "로만시어",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/w/api.php?action=query&titles=%EB%A1%9C%EB%A7%8C%EC%8B%9C%EC%96%B4&redirects=1&format=json",
+     "quote": "넘겨주기 → 로만슈어"
+    }
+   ]
+  },
+  "3397": {
+   "before": {
+    "question_text": "인도가 독립한 뒤 새로 세운 펀자브주의 주도 찬디가르의 도시 계획을 맡은 건축가는?",
+    "explanation": "스위스 태생으로 본명은 샤를에두아르 잔레이며, 지금 이름은 스스로 지은 필명입니다.",
+    "general_hint": "건물을 기둥 위에 띄운 프랑스 푸아시의 주택 '빌라 사보아'를 설계했다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same,h-famous)",
+   "notTaken": [],
+   "general_hint": "1928년 근대 건축 국제회의 CIAM 을 공동으로 세운 이들 가운데 한 명이다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Le_Corbusier"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Le_Corbusier"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1928년 CIAM 공동 설립",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Le_Corbusier",
+     "quote": "was a founding member of the Congrès International d'Architecture Moderne … The first meeting … 26–28 June 1928"
+    }
+   ]
+  },
+  "3400": {
+   "before": {
+    "question_text": "1988년 서울 올림픽의 메인 무대였던 잠실 종합운동장 주경기장을 설계한 건축가는?",
+    "explanation": "고문 장소로 쓰인 남영동 대공분실 건물도 그의 설계여서 평가를 두고 논쟁이 이어집니다.",
+    "general_hint": "서울 원서동에 담쟁이 덮인 벽돌 사옥을 짓고, 같은 이름의 건축 잡지 '공간'을 펴냈다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same,h-famous)",
+   "notTaken": [],
+   "general_hint": "1959년 국회의사당 설계 공모에서 1등을 했지만 1961년 군사 정변 뒤 설계가 보류되었다.",
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/김수근_(건축가)"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/김수근",
+    "https://ko.wikipedia.org/wiki/김수근_(건축가)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1959 국회의사당 설계 공모 1등 · 1961 정변 뒤 보류",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%88%98%EA%B7%BC_(%EA%B1%B4%EC%B6%95%EA%B0%80)",
+     "quote": "1959년에 남산에 건립하려던 한국 국회의사당 건축 설계안 현상 모집에 일등으로 당선되었으나, 1961년 5.16 쿠데타의 발발로 설계안은 백지화되었다.",
+     "note": "문서 말은 '백지화' — '보류'보다 셈. '무산되었다'로 써도 됨(사소)"
+    }
+   ]
+  },
+  "3413": {
+   "before": {
+    "question_text": "영국 밴드 콜드플레이의 앨범 'Viva la Vida or Death and All His Friends'의 표지로 쓰인 그림은?",
+    "explanation": "그림 속 두 손에 권총을 든 소년이 '레 미제라블'의 가브로슈에게 영감을 주었다는 이야기가 전합니다.",
+    "general_hint": "1990년대까지 쓰인 프랑스 100프랑 지폐에 화가의 얼굴과 함께 이 그림이 실렸다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same)",
+   "notTaken": [],
+   "general_hint": "1831년 정부가 사들였지만 이듬해 6월 봉기 뒤 '너무 혁명적'이라 하여 한동안 다락에 감춰졌다고 전한다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Liberty_Leading_the_People"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Liberty_Leading_the_People"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1831 정부 매입 · 이듬해 6월 봉기 뒤 너무 혁명적이라 다락에 감춰졌다고 전함",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Liberty_Leading_the_People",
+     "quote": "The French government bought the painting in 1831 … Champfleury wrote … that it had been \"hidden in an attic for being too revolutionary.\""
+    }
+   ]
+  },
+  "3433": {
+   "before": {
+    "question_text": "프랑스 오픈 테니스 대회가 열리는 경기장 '롤랑가로스'는 사람 이름을 딴 것입니다. 이 이름의 주인공 롤랑 가로스는 어떤 직업을 가진 사람이었을까요?",
+    "explanation": "그는 1913년 처음으로 지중해를 무착륙으로 건넜고, 1차 세계 대전에 참전했다가 1918년 전사했다.",
+    "general_hint": "이 경기장 이름의 주인공은 기관총 탄환이 프로펠러를 맞히지 않게 하는 장치를 다는 데에도 관여했다.",
+    "variants": [
+     "조종사",
+     "파일럿"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-weak)",
+   "notTaken": [],
+   "general_hint": "그는 인도양의 프랑스령 레위니옹 섬에서 태어났다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Roland_Garros_(aviator)"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Roland_Garros_(aviator)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "레위니옹 섬에서 태어남",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Roland_Garros_(aviator)",
+     "quote": "Born in Saint-Denis, Réunion"
+    }
+   ]
+  },
+  "3447": {
+   "before": {
+    "question_text": "영국에서 카드에 세금을 매기던 시절 납세 표시를 찍었던 데서, 지금도 에이스 가운데 유독 크고 화려하게 그려지는 카드의 무늬는 무엇일까요?",
+    "explanation": "이 무늬를 늘 으뜸패로 삼는 '스페이드'라는 이름의 카드 게임도 있습니다.",
+    "general_hint": "이 무늬의 이름은 '칼'을 뜻하는 이탈리아어 낱말에서 왔다고 풀이된다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same,h-error)",
+   "notTaken": [],
+   "general_hint": "1888년부터 이 카드 한가운데에는 영국 카드 제작 조합 회장의 초상을 넣은 판이 있다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Ace_of_spades"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ace_of_spades"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1888년부터 카드 제작 조합 회장 초상",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Ace_of_spades",
+     "quote": "since 1888, a portrait of the Master has appeared at the centre of the ace of spades."
+    }
+   ]
+  },
+  "3448": {
+   "before": {
+    "question_text": "19세기 미국에서 '유커'라는 카드 게임의 가장 센 으뜸패로 쓰려고 만들어졌다고 알려진 카드는 무엇일까요?",
+    "explanation": "이름도 이 게임 이름을 독일계 이민자들이 부르던 발음에서 왔다는 설이 있습니다.",
+    "general_hint": "유커에서는 으뜸패 무늬의 잭 두 장보다도 높은 자리에 놓였다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-weak)",
+   "notTaken": [],
+   "general_hint": "한 벌에 보통 두 장이 들어 있고, 독일식 카드 한 벌에는 세 장이 들어가기도 한다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Joker_(playing_card)"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Joker_(playing_card)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "보통 두 장 · 독일식은 세 장",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Joker_(playing_card)",
+     "quote": "There are usually two Jokers per deck … Since the 1950s, German and Austrian packs have included three Jokers"
+    }
+   ]
+  },
+  "3516": {
+   "before": {
+    "question_text": "식당 메뉴마다 스팸이 들어가고 손님들의 '스팸' 노래가 대화를 덮어 버리는 장면으로, 광고 메일을 '스팸'이라 부르게 만든 영국 코미디는 무엇일까요?",
+    "explanation": "프로그래밍 언어 파이썬의 이름도 개발자 귀도 반 로섬이 이 코미디를 좋아해 붙인 것이다.",
+    "general_hint": "1969년 영국 BBC에서 시작한 스케치 코미디 쇼로, 여섯 명의 출연진이 직접 각본을 쓰고 연기했다.",
+    "variants": [
+     "몬티 파이썬"
+    ]
+   },
+   "why": "V015 fix(h-weak) · 제안 힌트 없음 → GEN 새 힌트(판정자 note — 스팸 스케치 방송일 1970-12-15)",
+   "notTaken": [],
+   "general_hint": "스팸 장면은 1970년 12월 15일 처음 방송되었다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Spam_(Monty_Python_sketch)"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Spam_(Monty_Python)"
+   ]
+  },
+  "3524": {
+   "before": {
+    "question_text": "18세기 초 베를린에서 붉은 안료를 만들려다 우연히 얻은 최초의 근대 합성 안료로, 호쿠사이의 「가나가와 해변의 높은 파도」에도 쓰인 파란색은?",
+    "explanation": "철과 시안화물이 결합한 화합물로, 오늘날에는 몸에 들어간 방사성 세슘이나 탈륨을 빼내는 해독제로도 쓰인다.",
+    "general_hint": "색 이름 앞부분은 18세기 베를린을 수도로 삼은 북독일 왕국을 가리킨다.",
+    "variants": [
+     "프로이센 블루"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "도면을 복사하던 '청사진'의 푸른색에도 이 안료가 쓰였다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Prussian_blue"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Prussian_blue"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "청사진의 푸른색",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Prussian_blue",
+     "quote": "it is the traditional \"blue\" in technical blueprints"
+    }
+   ]
+  },
+  "3561": {
+   "before": {
+    "question_text": "영화 'E.T.'를 바탕으로 몇 주 만에 급히 만든 게임의 대실패가 상징처럼 꼽히는, 1980년대 초 북미 게임 시장 붕괴를 일본에서는 무엇이라 부를까요?",
+    "explanation": "북미에서는 흔히 '1983년 비디오 게임 붕괴'라 부릅니다.",
+    "general_hint": "그 게임을 낸 미국 회사의 이름 뒤에 '충격'을 뜻하는 영어 외래어를 붙인 말이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters,h-pair-same)",
+   "notTaken": [],
+   "general_hint": "일본에서는 이 사태가 뜻밖이었고 자국 게임 산업을 바꿔 놓았다고 해서 붙은 이름이다.",
+   "hintSources": [],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Video_game_crash_of_1983",
+    "https://en.wikipedia.org/wiki/E.T._the_Extra-Terrestrial_(video_game)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "일본에서 뜻밖이었고 자국 게임 산업을 바꿔 놓아 붙은 이름",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Video_game_crash_of_1983",
+     "quote": "it still came as a surprise there and created repercussions that changed that industry, and thus became known as the \"Atari shock\"."
+    }
+   ]
+  },
+  "3578": {
+   "before": {
+    "question_text": "몸에서 가장 작은 골격근이 붙어 있어, 큰 소리가 나면 이 근육에 당겨져 진동이 줄어드는 귓속뼈는?",
+    "explanation": "이 근육은 얼굴 신경이 움직이므로, 얼굴 신경이 마비되면 소리가 유난히 크게 울려 들리기도 합니다.",
+    "general_hint": "이름은 말을 탈 때 쓰는 마구 하나의 생김새를 본떴고, 달팽이관 쪽 창문 모양 구멍에 맞닿아 있다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters,h-pair-same)",
+   "notTaken": [],
+   "general_hint": "중이에서 진동을 안쪽 귀로 전하며, 납작한 판 모양 아랫부분이 달팽이관 쪽 난원창에 맞닿아 있다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Stapes"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Stapedius_muscle",
+    "https://en.wikipedia.org/wiki/Stapes"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "납작한 판 모양 아랫부분이 난원창에 맞닿음",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Stapes",
+     "quote": "connected to the oval window by its annular ligament, which allows the footplate (or base) to transmit sound energy"
+    }
+   ]
+  },
+  "3712": {
+   "before": {
+    "question_text": "봉준호 감독이 '기생충'에 큰 영향을 준 작품으로 여러 번 꼽은 한국 고전 영화로, 2층 양옥집의 계단과 쥐약이 파국의 도구가 되는 작품은?",
+    "explanation": "김기영 감독은 이 이야기를 '화녀'(1971)와 '화녀 '82'로 스스로 다시 만들기도 했습니다.",
+    "general_hint": "신인 이은심이 이 영화로 첫 주연을 맡아 한국최우수영화상 신인상을 받았다.",
+    "variants": []
+   },
+   "why": "V015 fix(scope · explanation) — 질문 제안 반영 · 해설은 문서대로(\"같은 이야기를 다시 풀어\" 근거 없음)",
+   "notTaken": [
+    {
+     "field": "explanation",
+     "proposal": "김기영 감독은 같은 이야기를 '화녀'(1971)와 '화녀 '82'로 시대에 맞게 다시 풀어 '하녀 3부작'을 이루었습니다.",
+     "why": "문서는 속편으로 적음 — \"같은 이야기를 다시 풀어\" 는 없음"
+    }
+   ],
+   "question_text": "봉준호 감독이 '기생충'에 큰 영향을 준 작품으로 여러 번 꼽은 1960년 한국 고전 영화로, 2층 양옥집의 계단과 쥐약이 파국의 도구가 되는 작품은?",
+   "explanation": "김기영 감독은 뒤에 '화녀'(1971)와 '화녀 '82'를 만들어 '하녀 3부작'을 이루었습니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/The_Housemaid_(1960_film)",
+    "https://ko.wikipedia.org/wiki/하녀_(1960년_영화)"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "1960년 한국 고전 영화",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%95%98%EB%85%80_(1960%EB%85%84_%EC%98%81%ED%99%94)",
+     "quote": "《하녀》(下女)는 1960년에 김기영 감독이 만든 스릴러 영화이다."
+    },
+    {
+     "what": "explanation",
+     "text": "같은 이야기를 화녀(1971)·화녀 '82로 다시 풀어 하녀 3부작",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/%ED%95%98%EB%85%80_(1960%EB%85%84_%EC%98%81%ED%99%94)",
+     "quote": "이 영화는 하녀 3부작이라고 불리는 시리즈의 첫 번째 작품이다. 속편으로는 <화녀>(1971)와 <화녀'82>(1982) 가 있다.",
+     "note": "문서는 '속편'으로 적음 — '같은 이야기를 다시 풀어'는 문서에 없음. 고칠 말: '김기영 감독은 뒤에 '화녀'(1971)와 '화녀 '82'를 만들어 '하녀 3부작'을 이루었습니다.'"
+    }
+   ]
+  },
+  "3713": {
+   "before": {
+    "question_text": "가수 이장희가 영화 음악에 참여해 '나는 열아홉 살이에요' 등을 들려준 1970년대 영화로, 이른바 '호스티스 영화' 유행의 출발점으로 꼽히는 작품은?",
+    "explanation": "경아 역은 안인숙이, 경아를 사랑하는 화가 역은 신성일이 맡았습니다.",
+    "general_hint": "최인호가 신문에 연재한 소설이 원작이며, 이장호 감독의 데뷔작이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same)",
+   "notTaken": [],
+   "general_hint": "불황 속에서도 46만 5천 명의 관객이 들어 당시 최고 흥행 기록을 세웠다.",
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/별들의_고향_(영화)"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/별들의_고향_(영화)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "불황 속 46만 5천 명 · 최고 흥행 기록",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%B3%84%EB%93%A4%EC%9D%98_%EA%B3%A0%ED%96%A5_(%EC%98%81%ED%99%94)",
+     "quote": "당시 불황의 벽(壁)을 뚫고 46만 5천이라는 최고 흥행기록을 수립했다."
+    }
+   ]
+  },
+  "3773": {
+   "before": {
+    "question_text": "아즈텍 사람들이 에스파냐의 코르테스를 보고, 동쪽 바다로 떠났다 돌아온 것이라 여겼다는 이야기가 전하는 아즈텍의 신은?",
+    "explanation": "이 이야기는 정복 뒤 에스파냐 쪽 기록에서 퍼졌다고 보는 학자가 많으며, 마야에서는 같은 신을 쿠쿨칸이라 불렀습니다.",
+    "general_hint": "이름은 화려한 초록 깃털을 지닌 중앙아메리카의 새 이름과 '뱀'을 뜻하는 아즈텍 말을 합친 이름이다.",
+    "variants": []
+   },
+   "why": "V015 fix(h-letters · h-pair-same) 힌트 제안을 고쳐 받음 — 칭호로 쓴 쪽은 아즈텍 사제(사실 확인 partial)",
+   "notTaken": [
+    {
+     "field": "general_hint",
+     "proposal": "전설 속 톨텍의 왕 토필친이 이 신의 이름을 칭호로 썼다고 하며, 그의 중심 도시는 톨란(툴라)이었다.",
+     "why": "\"토필친이 이 신의 이름을 칭호로 썼다\" 는 문서에 없음"
+    }
+   ],
+   "general_hint": "에스파냐 정복 뒤의 기록들은 전설 속 도시 톨란의 왕 토필친을 이 신과 뒤섞어 전한다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Quetzalcoatl"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Quetzalcoatl",
+    "https://en.wikipedia.org/wiki/Topiltzin_Quetzalcoatl"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "톨텍의 왕 토필친이 이 신의 이름을 칭호로 썼다 · 중심 도시 톨란(툴라)",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Quetzalcoatl",
+     "quote": "a number of records conflated Quetzalcoatl with Ce Acatl Topiltzin, a ruler of the mythico-historic city of Tollan … Among the Aztecs, the name Quetzalcoatl was also a priestly title",
+     "note": "문서는 '기록들이 토필친과 이 신을 뒤섞었다'고만 하고, 칭호로 쓴 쪽은 아즈텍 사제 — '토필친이 칭호로 썼다'는 없음. 고칠 말: '에스파냐 정복 뒤 기록들은 전설 속 도시 톨란의 왕 토필친을 이 신과 뒤섞어 전한다.'"
+    }
+   ]
+  },
+  "3780": {
+   "before": {
+    "question_text": "1972년 뮌헨 올림픽의 공식 마스코트 '발디'는 어떤 개 품종을 본뜬 것일까요?",
+    "explanation": "발디는 올림픽 역사에서 첫 공식 마스코트로 꼽히며, 품종의 고향인 독일에서 열린 대회를 상징했습니다.",
+    "general_hint": "털 생김새에 따라 짧은털·긴털·철사털의 세 갈래로 나뉘는 견종이다.",
+    "variants": []
+   },
+   "why": "V015 fix(h-pair-same) — 제안 힌트('소시지 개' 별명)는 대표 정체(CV-37)라 받지 않고 GEN 새 힌트(1회차 #1823 의 오소리 · 털 세 갈래 · 독일 원산과 다른 사실)",
+   "notTaken": [
+    {
+     "field": "general_hint",
+     "proposal": "다리가 짧고 몸이 긴 생김새 때문에 영국에서는 '소시지 개'라는 별명으로도 불린다.",
+     "why": "대표 별명이라 힌트만으로 답이 떠오름(H9 · CV-37)"
+    }
+   ],
+   "general_hint": "미국의 22·24대 대통령 그로버 클리블랜드는 백악관에서 이 품종의 개를 길렀다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Dachshund"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Olympic_mascot",
+    "https://en.wikipedia.org/wiki/Dachshund"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "영국에서는 소시지 개",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Dachshund",
+     "quote": "nicknamed the wiener dog in the US and Canada or the sausage dog in the British Isles and Australasia."
+    }
+   ]
+  },
+  "3797": {
+   "before": {
+    "question_text": "오스트리아 손꼽히는 부호 집안에서 태어났지만 물려받은 재산을 형제들에게 넘기고, 한동안 시골 초등학교 교사로 일한 철학자는?",
+    "explanation": "형 파울은 전쟁에서 오른팔을 잃은 피아니스트로, 라벨에게 '왼손을 위한 피아노 협주곡'을 의뢰했습니다.",
+    "general_hint": "케임브리지에서 러셀에게 배웠고, 생전에 낸 철학책은 얇은 책 한 권뿐이었다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (readable)",
+   "notTaken": [],
+   "question_text": "오스트리아에서 손꼽히는 부호 집안에서 태어났지만 물려받은 재산을 형제들에게 넘기고, 한동안 시골 초등학교 교사로 일한 철학자는?",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ludwig_Wittgenstein",
+    "https://en.wikipedia.org/wiki/Paul_Wittgenstein"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "'오스트리아에서' 조사 보탬",
+     "result": "true",
+     "note": "새 사실 없음 — 조사만 고침"
+    }
+   ]
+  },
+  "3808": {
+   "before": {
+    "question_text": "체로키족의 문자를 만든 인물의 이름에서 따왔다는 설이 널리 알려진, 미국 서부의 거대한 침엽수는?",
+    "explanation": "두꺼운 껍질 덕분에 산불에 잘 견디고, 불의 열기로 솔방울이 벌어져 씨를 퍼뜨리기도 합니다.",
+    "general_hint": "캘리포니아의 '제너럴 셔먼' 나무가 이 무리에 속하며, 부피로는 세계에서 가장 큰 나무로 꼽힌다.",
+    "variants": [
+     "세콰이어"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same)",
+   "notTaken": [],
+   "general_hint": "자연 상태로는 캘리포니아 시에라네바다 산맥에서만 자라는 나무다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Giant_sequoia"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Giant_sequoia",
+    "https://en.wikipedia.org/wiki/Sequoia_sempervirens",
+    "https://en.wikipedia.org/wiki/Sequoiadendron"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "자연 상태로는 시에라네바다에서만",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Sequoiadendron_giganteum",
+     "quote": "The natural distribution of giant sequoias is restricted to a limited area of the western Sierra Nevada, California."
+    }
+   ]
+  },
+  "3827": {
+   "before": {
+    "question_text": "창업자 베리 고디가 자동차 공장의 조립 라인을 본떠 작곡·녹음·무대 훈련을 분업으로 나눠 히트곡을 찍어 냈다고 알려진 미국 음반사는?",
+    "explanation": "스티비 원더, 잭슨 파이브, 슈프림스 같은 스타가 이 음반사에서 나왔습니다.",
+    "general_hint": "회사가 처음 자리 잡은 도시는 미국 자동차 산업의 중심지였고, 이름도 그 도시의 별명에서 왔다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same)",
+   "notTaken": [],
+   "general_hint": "1959년 설립자가 가족에게서 빌린 800달러로 시작했으며, 처음에는 '태믈라'라는 이름이었다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Motown"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Motown",
+    "https://en.wikipedia.org/wiki/Berry_Gordy"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1959 가족에게서 빌린 800달러 · 처음 이름 태믈라",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Motown",
+     "quote": "Founded … as Tamla Records on January 12, 1959 … Needing $800 … Gordy asked his family to borrow money"
+    }
+   ]
+  },
+  "3850": {
+   "before": {
+    "question_text": "1920~30년대 미국 웨스턴 일렉트릭사에서 진행된 연구에서 이름을 딴 심리 현상은?",
+    "explanation": "이 이름은 공장이 있던 시카고 근교 지명에서 왔고, 1950년대 연구자 헨리 랜즈버거가 붙였습니다.",
+    "general_hint": "엘턴 메이오가 이끈 연구진이 진행한 것으로 알려져 있다.",
+    "variants": []
+   },
+   "why": "V015 fix(explanation · fact-error) 해설 제안을 고쳐 받음 — 이름은 지명이 아니라 공장 이름(사실 확인 partial)",
+   "notTaken": [
+    {
+     "field": "explanation",
+     "proposal": "이 이름은 공장이 있던 시카고 근교 지명에서 왔고, 1950년대 연구자들이 붙였습니다.",
+     "why": "\"공장이 있던 시카고 근교 지명에서\" 는 틀림 — 공장 이름 Hawthorne Works"
+    }
+   ],
+   "explanation": "이 이름은 연구가 열린 웨스턴 일렉트릭의 호손 공장에서 왔고, 1953년에 처음 쓰였습니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hawthorne_effect"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "이름은 공장이 있던 시카고 근교 지명에서 왔고, 1950년대 연구자들이 붙였다",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Hawthorne_effect",
+     "quote": "the Hawthorne Works, a Western Electric plant in Cicero, Illinois … The term \"Hawthorne effect\" was coined in 1953 by John R. P. French",
+     "note": "공장 소재지 지명은 시서로(Cicero) — 이름은 공장 '호손 웍스'에서 옴. 붙인 이는 1953년 존 R. P. 프렌치 한 사람(랜즈버거는 뒤에 해석을 낸 사람). 고칠 말: '이 이름은 연구가 열린 웨스턴 일렉트릭의 호손 공장에서 왔고, 1953년에 처음 쓰였습니다.'"
+    }
+   ]
+  },
+  "3933": {
+   "before": {
+    "question_text": "만들고 남은 국물을 '호랑이 젖'이라 부르며 따로 마시기도 하고, 2023년 이것을 만들고 먹는 관습이 유네스코 인류무형문화유산에 오른 요리는?",
+    "explanation": "생선을 절이고 남은 시큼한 국물을 그렇게 부르며, 페루를 대표하는 요리입니다.",
+    "general_hint": "고수·붉은 양파·고추를 곁들이고, 옆에 삶은 고구마나 굵은 옥수수 알을 함께 내는 일이 많다.",
+    "variants": [
+     "세비치"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same)",
+   "notTaken": [],
+   "general_hint": "옆에 삶은 고구마와 굵은 옥수수 알을 함께 내는 일이 많다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Ceviche"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ceviche"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "삶은 고구마와 굵은 옥수수 알을 곁들임",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Ceviche",
+     "quote": "served at room temperature, with chunks of corn on the cob and slices of cooked sweet potato."
+    }
+   ]
+  },
+  "3935": {
+   "before": {
+    "question_text": "1841년 레위니옹섬의 열두 살 노예 소년 에드몽 알비우스가 손으로 꽃가루받이하는 간단한 방법을 찾아내 대량 재배의 길이 열린 향료는?",
+    "explanation": "이 방법 덕분에 인도양 섬들이 주산지가 되어, 지금은 마다가스카르가 세계 최대 생산국입니다.",
+    "general_hint": "스페인어로 '꼬투리'를 뜻하는 낱말에 작다는 뜻의 꼬리를 붙인 이름으로, 난초과 덩굴에서 얻는다.",
+    "variants": []
+   },
+   "why": "V015 fix(h-pair-same · h-letters) 힌트 제안을 고쳐 받음 — \"하루 남짓\" 은 문서보다 김",
+   "notTaken": [
+    {
+     "field": "general_hint",
+     "proposal": "꽃은 하루 남짓만 피었다 지고, 이 식물은 덩굴이 되어 나무나 기둥을 타고 오른다.",
+     "why": "\"하루 남짓\" → 문서 \"하루쯤, 때로 그보다 짧게\""
+    }
+   ],
+   "general_hint": "꽃은 하루쯤만 피었다 지고, 이 식물은 덩굴이 되어 나무나 기둥을 타고 오른다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Vanilla"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Vanilla"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "꽃은 하루 남짓만 피었다 진다",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Vanilla",
+     "quote": "flowers of V. planifolia last about one day, sometimes less",
+     "note": "'남짓'은 하루보다 길다는 뜻 — 문서는 '하루쯤, 때로 그보다 짧게'. 고칠 말: '꽃은 하루쯤만 피었다 지고'"
+    },
+    {
+     "what": "hint",
+     "text": "덩굴이 되어 나무나 기둥을 타고 오른다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Vanilla",
+     "quote": "Vanilla grows as a vine, climbing up an existing tree (also called a tutor), pole, or other support."
+    }
+   ]
+  },
+  "3958": {
+   "before": {
+    "question_text": "격리된 소수 집단의 거주 구역을 뜻하는 '게토' 라는 말이 처음 생겨난 이탈리아 도시는?",
+    "explanation": "1516년 유대인을 옛 주물 공장 자리의 한 구역에 모여 살게 한 것이 시작이며, 주물 공장을 가리키던 현지 말에서 이름이 왔다는 설명이 유력합니다.",
+    "general_hint": "도시의 수호성인이 성 마르코여서, 날개 달린 사자를 도시의 상징으로 삼는다.",
+    "variants": [
+     "베니스"
+    ]
+   },
+   "why": "V015 fix(assertive · explanation) — 질문 제안 반영 · 해설은 문서대로(\"가장 흔하다\" 근거 없음)",
+   "notTaken": [
+    {
+     "field": "explanation",
+     "proposal": "1516년 유대인을 옛 주물 공장 자리의 한 구역에 모여 살게 한 것이 시작이며, 이름은 주물 공장을 가리키던 현지 말에서 왔다는 설명이 가장 흔하지만 학설이 갈립니다.",
+     "why": "\"설명이 가장 흔하지만\" 은 문서에 없음"
+    }
+   ],
+   "question_text": "격리된 소수 집단의 거주 구역을 뜻하는 '게토'라는 말이 처음 쓰였다고 전하는 이탈리아 도시는?",
+   "explanation": "1516년 유대인을 옛 주물 공장 자리의 한 구역에 모여 살게 한 것이 시작이며, 이름은 주물 공장을 가리키던 현지 말에서 왔다는 설이 있으나 학설이 갈립니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Venetian_Ghetto",
+    "https://en.wikipedia.org/wiki/Venice"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "처음 쓰였다고 전하는",
+     "result": "true",
+     "note": "새 사실 없음 — 단정만 낮춤"
+    },
+    {
+     "what": "explanation",
+     "text": "1516년 옛 주물 공장 자리에 유대인을 모여 살게 함",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Venetian_Ghetto",
+     "quote": "instituted on 29 March 1516 … These names refer to older and newer foundries sites in these locations which fell out of use before the ghetto was created"
+    },
+    {
+     "what": "explanation",
+     "text": "주물 공장 어원 설명이 가장 흔하지만 학설이 갈림",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Venetian_Ghetto",
+     "quote": "The origins of the name ghetto … are disputed. Among the theories are: ghetto comes from giotto or geto, meaning \"foundry\"",
+     "note": "문서는 여러 설 중 하나로만 적고 '가장 흔하다'는 없음. 고칠 말: '이름은 주물 공장을 가리키던 현지 말에서 왔다는 설이 있으나 학설이 갈립니다.'"
+    }
+   ]
+  },
+  "3959": {
+   "before": {
+    "question_text": "자동차 브랜드 캐딜락에 이름을 남긴 프랑스 탐험가가 1701년 요새를 세우면서 시작된 미국 도시는?",
+    "explanation": "도시 이름도 프랑스어로 '해협' 을 뜻하는 말에서 왔으며, 두 호수를 잇는 좁은 물길 가에 자리했기 때문입니다.",
+    "general_hint": "2013년 미국 도시로는 역대 가장 큰 규모의 파산을 신청한 미시간주의 도시다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same)",
+   "notTaken": [],
+   "general_hint": "미시간주에서 인구가 가장 많은 도시로, 강 건너편에 캐나다의 도시 윈저가 있다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Detroit"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Detroit"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "미시간주 인구 최다 · 강 건너 윈저",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Detroit",
+     "quote": "the most populous city in the U.S. state of Michigan … across from the Canadian city of Windsor, Ontario."
+    }
+   ]
+  },
+  "3992": {
+   "before": {
+    "question_text": "제목 속 라틴어 낱말이 친구 토머스 모어의 성과 말장난이 되도록 지었고, 그의 집에 머물며 썼다고 전하는 책은?",
+    "explanation": "에라스뮈스가 쓴 책으로, 말장난이 된 라틴어 낱말은 '어리석음'을 뜻합니다. 종교개혁에 큰 영향을 주었지만 정작 그는 루터와 갈라섰습니다.",
+    "general_hint": "1511년 파리에서 처음 펴낸 풍자 문학으로, 수도사·신학자·교황까지 거침없이 비꼬았다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-pair-same)",
+   "notTaken": [],
+   "general_hint": "1509년 라틴어 연설문 형식으로 쓰였고, 1511년에 처음 인쇄되었다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/In_Praise_of_Folly"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/In_Praise_of_Folly"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "1509 라틴어 연설문 형식 · 1511 첫 인쇄",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/In_Praise_of_Folly",
+     "quote": "an oration written in Latin in 1509 … and first printed in June 1511."
+    }
+   ]
+  },
+  "4002": {
+   "before": {
+    "question_text": "포르투갈 상인이 일본 나가사키에 전한 노란 스펀지 빵의 이름은 스페인의 어느 지방 이름에서 왔을까요?",
+    "explanation": "포르투갈어로 '카스티야의 빵'이라 부른 데서 왔다는 설명이 널리 알려져 있으며, 원형은 포르투갈 과자 '팡 드 로'로 본다.",
+    "general_hint": "이 지방의 여왕 이사벨 1세가 아라곤 왕 페르난도와 혼인하며 스페인 통일의 바탕이 놓였다.",
+    "variants": []
+   },
+   "why": "V015 fix(explanation) 해설 제안을 고쳐 받음 — 문서는 \"원형\" 이 아니라 \"가장 가까운 친척\"",
+   "notTaken": [
+    {
+     "field": "explanation",
+     "proposal": "포르투갈어로 '카스티야의 케이크(볼루 지 카스텔라)'라 부른 데서 왔다는 설명이 널리 알려져 있으며, 원형은 포르투갈 과자 '팡 드 로'로 본다.",
+     "why": "\"원형\" 은 문서보다 셈"
+    }
+   ],
+   "explanation": "포르투갈어로 '카스티야의 케이크(볼루 지 카스텔라)'라 부른 데서 왔다는 설명이 널리 알려져 있으며, 가장 가까운 과자로 포르투갈의 '팡 드 로'가 꼽힌다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Castella",
+    "https://en.wikipedia.org/wiki/Isabella_I_of_Castile"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "포르투갈어 '카스티야의 케이크(볼루 지 카스텔라)'",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Castella",
+     "quote": "derived from the Portuguese Bolo de Castela, meaning \"cake from Castile\"."
+    },
+    {
+     "what": "explanation",
+     "text": "원형은 포르투갈 과자 '팡 드 로'로 본다",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Castella",
+     "quote": "Its closest relative is pão-de-ló, a Portuguese cake.",
+     "note": "문서는 '가장 가까운 친척' — '원형'은 셈. 고칠 말: '가장 가까운 과자로 포르투갈의 '팡 드 로'가 꼽힙니다.'"
+    }
+   ]
+  },
+  "4034": {
+   "before": {
+    "question_text": "'블리치'에서 주인공 쿠로사키 이치고가 휘두르는, 사람 키만 한 커다란 칼 모양의 참백도 이름은?",
+    "explanation": "만해하면 검은 칼날의 '천쇄참월'이 되고, 이치고의 마음속 세계에서는 선글라스에 검은 코트를 입은 아저씨 모습으로 나타납니다.",
+    "general_hint": "두 한자 이름 중 한 글자는 하늘의 천체를 뜻하며, 이치고 아버지의 참백도 이름에도 그 글자가 들어간다.",
+    "variants": [
+     "잔게츠"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "우라하라 키스케에게 수련을 받던 중 이 칼의 이름을 처음 알게 되고, 이때 시카이 상태가 된다.",
+   "hintSources": [],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Bleach_(manga)",
+    "https://en.wikipedia.org/wiki/Ichigo_Kurosaki"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "우라하라 수련 중 이름을 처음 알고 시카이",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Ichigo_Kurosaki",
+     "quote": "In training with Kisuke Urahara … learns the name of his Zanpakutō, Zangetsu … turning his Zanpakutō into Shikai state."
+    }
+   ]
+  },
+  "4036": {
+   "before": {
+    "question_text": "'코드 기어스 반역의 를르슈'에서 를르슈는 가면을 쓰고 저항 조직 '흑의 기사단'을 이끕니다. 이때 그가 내세우는 이름은 무엇일까요?",
+    "explanation": "마지막에는 스자쿠가 이 가면을 쓰고 를르슈를 찌르는 '제로 레퀴엠'으로 이야기가 끝납니다.",
+    "general_hint": "영어 낱말 하나로 된 이름이며, 어떤 수를 가리키는 말이다.",
+    "variants": []
+   },
+   "why": "V015 fix(h-letters — 번역 조각) · 제안 힌트 없음 → GEN 새 힌트",
+   "notTaken": [],
+   "general_hint": "이 이름으로 활동하는 주인공의 일본어 목소리는 후쿠야마 준이 맡았다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Lelouch_Lamperouge"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Code_Geass",
+    "https://en.wikipedia.org/wiki/List_of_Code_Geass_characters"
+   ]
+  },
+  "4037": {
+   "before": {
+    "question_text": "'카우보이 비밥'에서 현상금 사냥꾼들의 우주선 비밥호에 웰시 코기 한 마리가 눌러앉습니다. 실험을 받아 사람 못지않게 영리해진 이 개의 이름은 무엇일까요?",
+    "explanation": "희귀 동물 도둑에게 넘어갈 뻔한 것을 스파이크 일행이 데려온 개로, 해커 소녀 에드와 가장 죽이 잘 맞습니다.",
+    "general_hint": "이름은 독일어의 수를 세는 낱말과 철자가 같다.",
+    "variants": [
+     "Ein"
+    ]
+   },
+   "why": "V015 fix(h-letters) 힌트 제안을 고쳐 받음 — \"직접 길렀다\" 는 기사끼리 엇갈려 뺌",
+   "notTaken": [
+    {
+     "field": "general_hint",
+     "proposal": "캐릭터 디자이너 가와모토 도시히로는 친구가 기르던 코기를 본떠 디자인하고, 움직임을 참고하려 직접 코기를 길렀다.",
+     "why": "\"움직임을 참고하려 직접 코기를 길렀다\" 는 기사끼리 엇갈림"
+    }
+   ],
+   "general_hint": "캐릭터 디자이너 가와모토 도시히로는 친구가 기르던 코기를 본떠 이 개를 디자인했다.",
+   "hintSources": [
+    "https://www.looper.com/362779/the-real-reason-ein-was-created-for-cowboy-bebop"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cowboy_Bebop"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "친구가 기르던 코기를 본떠 디자인",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Toshihiro_Kawamoto",
+     "quote": "Kawamoto modeled … Ein on a friend's dog, from a suggestion by writer Keiko Nobumoto."
+    },
+    {
+     "what": "hint",
+     "text": "움직임을 참고하려 직접 코기를 길렀다",
+     "result": "partial",
+     "source": "https://www.looper.com/362779/the-real-reason-ein-was-created-for-cowboy-bebop",
+     "note": "위키에 없음. 웹 기사 한 곳(thedigitalfix)만 '직접 입양'이라 하고 Looper·Animation Obsessive 는 친구 개(비디오·사진 제공)만 적음 — 엇갈림. 고칠 말: 뒷부분을 빼고 '친구가 기르던 코기를 본떠 디자인했다'까지만"
+    }
+   ]
+  },
+  "4075": {
+   "before": {
+    "question_text": "손제호·이광수의 네이버 웹툰 '노블레스'에서 820년 동안 잠들었다 깨어나 한국의 고등학교에 다니게 되는 귀족은?",
+    "explanation": "그를 주인으로 모시는 프랑켄슈타인이 그 학교, 예란 고등학교를 운영합니다.",
+    "general_hint": "주변에서 부르는 짧은 이름은, 긴 본명의 맨 끝 낱말에서 앞부분만 줄여 부르는 두 글자다.",
+    "variants": [
+     "라이제르",
+     "카디스 에트라마 디 라이제르"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "이 인물이 이은 칭호는 인간 사회를 몰래 지켜 온 수호자이자, 필요하면 심판하고 처형하는 존재라고 설명된다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Noblesse_(manhwa)"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Noblesse_(manhwa)"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "숨은 수호자 · 심판 · 필요하면 처형",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Noblesse_(manhwa)",
+     "quote": "holds the special title of Noblesse, which distinguishes him from all other Nobles as their hidden protector, their judge, and if necessary, executioner.",
+     "note": "문서는 '귀족들의' 수호자 — 힌트의 '인간 사회를 몰래 지켜 온'은 대상이 다를 수 있음(사소 — '귀족 사회를'로 고치면 안전)"
+    }
+   ]
+  },
+  "4123": {
+   "before": {
+    "question_text": "2006년 이탈리아 축구를 뒤흔든 심판 배정 비리 스캔들입니다. 이 일로 유벤투스는 두 시즌의 우승 타이틀을 빼앗기고 세리에 B로 강등되었습니다. 이 사건을 무엇이라 부를까요?",
+    "explanation": "스캔들이 터진 직후 열린 2006 독일 월드컵에서는 이탈리아가 우승했습니다.",
+    "general_hint": "1990년대 초 이탈리아 정계 뇌물 스캔들의 이름을 본떠, 앞쪽만 축구를 뜻하는 이탈리아어로 바꾼 말이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "유벤투스 임원 루치아노 모지의 통화가 도청되면서 드러난 사건으로, 2015년 대법원은 모지가 공모를 부추긴 주도자였다고 판단했다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Calciopoli"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Calciopoli"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "모지의 통화가 도청되며 드러남 · 2015 대법원이 모지를 주도자로 판단",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Calciopoli",
+     "quote": "Transcripts of wiretapped conversations between … Luciano Moggi … the court's view that he was the promoter of the criminal behavior"
+    }
+   ]
+  },
+  "4213": {
+   "before": {
+    "question_text": "영화 '유주얼 서스펙트'(1995)에서 수사관 쿠얀은 버벌 킨트를 심문하며 한 범죄자의 정체를 캡니다. 누구도 실체를 모른다는 이 전설의 범죄자 이름은 무엇일까요?",
+    "explanation": "마지막에 버벌 킨트가 바로 그 인물이었음이 드러나고, 버벌을 연기한 케빈 스페이시는 아카데미 남우조연상을 받았습니다.",
+    "general_hint": "이름 뒷부분은 '말을 너무 많이 해 남을 헷갈리게 하다'라는 튀르키예어 관용구에서 따왔다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (explanation)",
+   "notTaken": [],
+   "explanation": "마지막 장면에서 버벌 킨트가 곧 카이저 소제였던 것으로 읽히게 하며, 버벌을 연기한 케빈 스페이시는 아카데미 남우조연상을 받았습니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Keyser_S%C3%B6ze"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "버벌 킨트가 곧 카이저 소제로 읽히게 함 · 스페이시 아카데미 남우조연상",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Keyser_S%C3%B6ze",
+     "quote": "a police sketch identifies Kint and Söze as one and the same … Spacey won the Academy Award for Best Supporting Actor",
+     "note": "'읽히게 하며'로 단정을 낮춘 것이 문서(해석에 열어 둠)와 맞음"
+    }
+   ]
+  },
+  "4266": {
+   "before": {
+    "question_text": "배구는 1895년 미국 매사추세츠주 홀리요크의 YMCA 체육 지도자 윌리엄 G. 모건이 고안했습니다. 처음에는 배드민턴에서 따온 다른 이름으로 불렸는데, 이 첫 이름은 무엇일까요?",
+    "explanation": "공을 떨어뜨리지 않고 주고받는 모습을 보고 시범 경기를 본 앨프리드 홀스테드가 지금의 이름을 제안했다고 합니다.",
+    "general_hint": "모건은 스프링필드 대학에서 농구를 만든 제임스 네이스미스를 만났고, 나이 든 회원도 할 덜 격한 운동을 원했다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (other)",
+   "notTaken": [],
+   "general_hint": "모건은 농구를 만든 제임스 네이스미스에게 배운 적이 있고, 나이 든 사업가 회원들이 농구보다 덜 격하게 즐길 운동을 원했다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Volleyball"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Volleyball"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "네이스미스에게 배움 · 나이 든 사업가 회원용 덜 격한 운동",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Volleyball",
+     "quote": "He was a one-time student of basketball inventor James Naismith … most of whom were middle-aged businessmen for whom the physical demands of basketball were too great.",
+     "note": "문서는 '중년' — '나이 든'과 큰 차이 없음"
+    }
+   ]
+  },
+  "4294": {
+   "before": {
+    "question_text": "프랑스식 트럼프의 그림 카드 왕에게는 역사 속 인물의 이름이 붙어 있습니다. 하트 왕은 샤를마뉴, 다이아몬드 왕은 율리우스 카이사르입니다. 스페이드 왕에 붙은 이스라엘 왕의 이름은 무엇일까요?",
+    "explanation": "같은 파리식 그림에서 클로버 왕은 알렉산드로스 대왕입니다.",
+    "general_hint": "함부르크 계열 카드 그림에서는 이 스페이드 왕이 하프를 들고 있다.",
+    "variants": []
+   },
+   "why": "V015 fix(h-famous — 하프) · 제안 힌트 없음 → GEN 새 힌트",
+   "notTaken": [],
+   "general_hint": "성경에 따르면 그는 여부스 사람의 성이던 예루살렘을 정복해 도읍으로 삼았다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/David"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/King_(playing_card)"
+   ]
+  },
+  "4387": {
+   "before": {
+    "question_text": "1711년 영국 정부의 빚을 덜려고 세워진 한 회사는 스페인령 아메리카와의 무역과 노예무역 권리를 내세웠지만 실제 사업은 부진했습니다. 그런데도 1720년 이 회사 주가가 1주 100파운드에서 1,000파운드 넘게 치솟았다가 무너졌는데, 이 사건은?",
+    "explanation": "아이작 뉴턴도 이 주식으로 7,000파운드를 벌었다가 폭락 뒤 2만 파운드를 잃었다고 전해집니다.",
+    "general_hint": "같은 1720년 프랑스에서도 존 로가 이끈 미시시피 회사의 주가가 치솟았다가 무너졌다.",
+    "variants": [
+     "남해 버블",
+     "남해회사 사건",
+     "남해 포말 사건"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (fact-error,assertive,explanation)",
+   "notTaken": [],
+   "question_text": "1711년 영국 정부의 빚을 덜려고 세워진 한 회사는 스페인령 아메리카와의 무역과 노예무역 권리를 내세웠지만 실제 사업은 부진했습니다. 그런데도 1720년 이 회사 주가가 1주 100파운드쯤에서 1,000파운드 가까이 치솟았다가 무너졌는데, 이 사건은?",
+   "explanation": "아이작 뉴턴도 이 주식에 투자했다가 폭락으로 적어도 1만 파운드, 아마 2만 파운드가 넘게 잃었다고 전해집니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/South_Sea_Company",
+    "https://en.wikipedia.org/wiki/South_Sea_Bubble",
+    "https://en.wikipedia.org/wiki/Isaac_Newton"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "1주 100파운드쯤에서 1,000파운드 가까이",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/South_Sea_Company",
+     "quote": "The price of the stock went up over the course of a year from about £100 to almost £1,000 per share."
+    },
+    {
+     "what": "explanation",
+     "text": "뉴턴이 적어도 1만, 아마 2만 파운드 넘게 잃음",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Isaac_Newton",
+     "quote": "lost at least £10,000, and plausibly more than £20,000"
+    }
+   ]
+  },
+  "4390": {
+   "before": {
+    "question_text": "풍력 터빈이 바람의 운동 에너지를 모두 빼앗으면 지나간 공기가 멈춰 새 바람이 들어오지 못합니다. 그래서 어떤 풍력 터빈도 바람 에너지의 약 59.3%보다 많이 거둘 수 없다는 이론상 상한을, 1919년 이를 발표한 독일 물리학자의 이름을 붙여 무엇이라 할까요?",
+    "explanation": "영국의 랜체스터가 1915년에 같은 값을 먼저 얻어, 발견자의 이름이 붙지 않는 '스티글러의 법칙'의 예로 꼽힌다.",
+    "general_hint": "그 물리학자는 1936년 루트비히 프란틀의 뒤를 이어 괴팅겐 공기역학 연구소장이 되었다.",
+    "variants": [
+     "베츠의 법칙"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (assertive)",
+   "notTaken": [],
+   "question_text": "풍력 터빈이 바람의 운동 에너지를 모두 빼앗으면 지나간 공기가 멈춰 새 바람이 들어오지 못합니다. 그래서 어떤 풍력 터빈도 바람 에너지의 약 59.3%보다 많이 거둘 수 없다는 이론상 상한을, 이를 발표한 독일 물리학자의 이름을 붙여 무엇이라 할까요?",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Betz's_law",
+    "https://en.wikipedia.org/wiki/Albert_Betz"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "1919 연도 뺌",
+     "result": "true",
+     "note": "새 사실 없음 — 문서끼리 엇갈리는 연도를 뺌"
+    }
+   ]
+  },
+  "4439": {
+   "before": {
+    "question_text": "남한에서 함흥냉면이라 부르는 음식을 북한에서는 감자 녹말로 뽑은 국수라는 뜻의 이름으로 부릅니다. 북한말로 녹말을 이르는 말이 들어간 이 국수 이름은?",
+    "explanation": "메밀국수를 쓰는 평양냉면과 달리 감자녹말 면은 발이 가늘고 질긴 것이 특징입니다.",
+    "general_hint": "같은 고장에서 온 매운 회국수와 짝을 이루며, 남쪽에서는 감자 대신 고구마 녹말을 주로 쓰게 되었다.",
+    "variants": [
+     "감자농마국수"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "함흥감자농마국수"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/함흥냉면"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "함흥감자농마국수",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%ED%95%A8%ED%9D%A5%EB%83%89%EB%A9%B4",
+     "quote": "함흥냉면(咸興冷麵, 문화어: 함흥감자농마국수)",
+     "note": "제안 목록에서 정답 '농마국수'가 빠짐 — 남겨야 함"
+    }
+   ]
+  },
+  "4550": {
+   "before": {
+    "question_text": "조선 후기 전통 혼례의 대례는 신랑이 기러기를 바치는 의식, 신랑과 신부가 맞절하는 교배례에 이어 이 의식으로 마무리되었습니다. 표주박을 둘로 쪼갠 잔으로 신랑과 신부가 술을 주고받던 이 의식은 무엇일까요?",
+    "explanation": "『예기』는 표주박을 둘로 자른 잔으로 술을 마셔 두 사람의 몸을 합한다는 뜻이라고 풀이합니다.",
+    "general_hint": "흔히 술을 세 번 따르는데, 첫 잔은 신랑이 하늘을 향해 들어 올린다.",
+    "variants": []
+   },
+   "why": "V015 fix(other — 힌트 사실 문서 없음) · 제안 힌트 없음 → GEN 새 힌트(한국민족문화대백과 '합환주상' — 대례 순서 전안 · 교배 · 합근도 같은 항목으로 닫음)",
+   "notTaken": [],
+   "general_hint": "이때 신랑과 신부가 마실 술잔을 올려놓는 상을 따로 차렸다.",
+   "hintSources": [
+    "https://encykorea.aks.ac.kr/Article/E0071860"
+   ],
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0071860"
+   ]
+  },
+  "4576": {
+   "before": {
+    "question_text": "파와 시 사이처럼 한 옥타브를 정확히 반으로 가르는 음정입니다. 불안하고 긴장된 소리를 내며 '음악 속의 악마'라는 별명으로도 불려 온 이 음정은 무엇일까요?",
+    "explanation": "번스타인은 '웨스트 사이드 스토리'의 상당 부분을 이 음정 위에 쌓았고, 프롤로그와 노래 '마리아'에서 되풀이해 들려줍니다.",
+    "general_hint": "블랙 사바스의 데뷔 앨범 첫 곡 '블랙 사바스'의 첫 리프가 이 음정으로 짜였다.",
+    "variants": [
+     "증4도",
+     "감5도"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "트리톤"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "add": [
+    "삼전음",
+    "셋온음"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Tritone",
+    "https://ko.wikipedia.org/wiki/삼전음"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "삼전음",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%85%8B%EC%98%A8%EC%9D%8C",
+     "quote": "셋온음, 삼전음(三全音), 혹은 트라이톤(영어: tritone)"
+    },
+    {
+     "what": "variant",
+     "text": "셋온음",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%85%8B%EC%98%A8%EC%9D%8C",
+     "quote": "ko 위키 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "트리톤",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/w/index.php?search=%22%ED%8A%B8%EB%A6%AC%ED%86%A4%22&fulltext=1",
+     "quote": "ko 셋온음 문서에 없음 · '트리톤' 검색은 신화·위성이 대부분",
+     "note": "음정 이름으로 쓰인 근거 못 찾음. 제안 목록에서 정답 '트라이톤'이 빠짐 — 남겨야 함"
+    }
+   ]
+  },
+  "4663": {
+   "before": {
+    "question_text": "1915년 처칠이 밀어붙인 다르다넬스 해협 돌파 계획에 따라 연합군이 오스만 제국 땅에 상륙했지만, 이듬해 1월 끝내 철수했습니다. 호주와 뉴질랜드가 상륙일 4월 25일을 '안작 데이'로 기리는 이 전투는?",
+    "explanation": "오스만군 지휘관으로 이름을 떨친 무스타파 케말은 1923년 튀르키예 공화국을 세우고 초대 대통령이 됐습니다.",
+    "general_hint": "1981년 피터 위어 감독, 멜 깁슨 주연의 오스트레일리아 영화가 이 싸움터 이름을 제목으로 삼았다.",
+    "variants": [
+     "갈리폴리 전역"
+    ]
+   },
+   "why": "V015 fix(h-famous — 같은 이름 영화) · 제안 힌트 없음 → GEN 새 힌트",
+   "notTaken": [],
+   "general_hint": "연합군 지휘관은 이언 해밀턴 장군이었고, 양쪽 사상자는 저마다 25만 명 안팎이었다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Gallipoli_campaign"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Gallipoli_campaign",
+    "https://en.wikipedia.org/wiki/Gallipoli_(1981_film)"
+   ]
+  },
+  "4682": {
+   "before": {
+    "question_text": "인도네시아 반다 제도가 원산지인 향신료로, 네덜란드 동인도회사가 이를 독점하려고 1621년 반다 사람들과 피비린내 나는 싸움을 벌였습니다. 잉글랜드가 반다 제도의 작은 섬 런을 넘겨주고 뉴암스테르담을 얻은 일로도 이어진 이 향신료는?",
+    "explanation": "같은 열매에서 씨를 감싼 붉은 껍질은 따로 '메이스'라는 향신료가 됩니다.",
+    "general_hint": "카리브해의 섬나라 그레나다 국기에는 쪼개진 이 열매 그림이 들어 있다.",
+    "variants": [
+     "넛맥"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (not-unique)",
+   "notTaken": [],
+   "question_text": "인도네시아 반다 제도가 원산지인 향신료로, 열매 속 씨앗을 갈아서 씁니다. 네덜란드 동인도회사가 이를 독점하려고 1621년 반다 사람들과 피비린내 나는 싸움을 벌였습니다. 잉글랜드가 반다 제도의 작은 섬 런을 넘겨주고 뉴암스테르담을 얻은 일로도 이어진 이 향신료는?",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Nutmeg"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "열매 속 씨앗을 갈아서 씀",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Nutmeg",
+     "quote": "Nutmeg is the spice made by grinding the seed of the fragrant nutmeg tree … mace, from the seed covering."
+    }
+   ]
+  },
+  "4732": {
+   "before": {
+    "question_text": "시인 이상과 결혼했다가 넉 달 만에 사별한 변동림은 1944년 가족의 반대를 무릅쓰고 한 화가와 재혼했습니다. 이 화가는 누구일까요?",
+    "explanation": "변동림은 결혼하며 남편의 호 '향안'을 받아 김향안으로 살았고, 남편은 뒤에 호를 '수화(樹話)'로 바꾸었습니다.",
+    "general_hint": "이 화가의 사위는 화가 윤형근이며, 그는 1970년 한국일보사 주최 한국미술대상전에서 대상을 받았다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-error)",
+   "notTaken": [],
+   "general_hint": "이 화가의 사위는 단색조 추상으로 알려진 화가 윤형근으로, 1960년에 이 화가의 딸과 결혼했다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Yun_Hyong-keun",
+    "https://ko.wikipedia.org/wiki/윤형근"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/김향안",
+    "https://ko.wikipedia.org/wiki/윤형근",
+    "https://en.wikipedia.org/wiki/Yun_Hyong-keun",
+    "https://en.wikipedia.org/wiki/Kim_Whanki",
+    "https://ko.wikipedia.org/wiki/변동림"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "사위 윤형근(단색조 추상) · 1960년 결혼",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Yun_Hyong-keun",
+     "quote": "Kim, who even became Yun's father-in-law in 1960 … Yun became associated with the Dansaekhwa movement."
+    }
+   ]
+  },
+  "4762": {
+   "before": {
+    "question_text": "1982년 프로야구 원년, 이 구단은 여섯 구단 가운데 가장 적은 15명의 선수로 출발했습니다. 그해 한 선수는 투수와 타자를 함께 맡아 10승과 타점왕을 함께 거두기도 했습니다. 이 구단은 어디일까요?",
+    "explanation": "2001년 8월 1일 기아자동차가 이 구단을 인수했고, 같은 날 이름이 KIA 타이거즈로 바뀌었습니다.",
+    "general_hint": "그 투타 겸업 선수는 김성한으로, 그해 3할 타율까지 함께 남겼다.",
+    "variants": [
+     "해태",
+     "KIA 타이거즈",
+     "기아 타이거즈"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (fact-error,explanation)",
+   "notTaken": [],
+   "explanation": "2001년 7월 기아자동차가 이 구단을 인수했고, 같은 해 8월 1일부터 팀 이름이 KIA 타이거즈로 바뀌었습니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/KIA_타이거즈",
+    "https://ko.wikipedia.org/wiki/김성한"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "2001년 7월 인수 · 8월 1일부터 KIA 타이거즈",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/KIA_%ED%83%80%EC%9D%B4%EA%B1%B0%EC%A6%88",
+     "quote": "2001년 시즌 중반인 7월에 기아자동차가 해태 타이거즈 야구단을 인수했고, 동년 8월 1일부터 KIA 타이거즈로 팀명을 변경",
+     "note": "같은 문서 첫머리는 '2001년 8월 1일 … 인수'로도 적음 — 제안 문장은 본문 연혁과 일치"
+    }
+   ]
+  },
+  "4796": {
+   "before": {
+    "question_text": "1859년 펜실베이니아 타이터스빌 유전을 찾은 한 화학자는, 석유 펌프에서 주기적으로 걷어 내야 하던 찌꺼기 '로드 왁스'를 브루클린으로 가져가 다듬었습니다. 제조사는 이 상표 이름이 '물'을 뜻하는 독일어와 '기름'을 뜻하는 그리스어에서 왔다고 하는데, 이 상표는 무엇일까요?",
+    "explanation": "체스브로는 자기 피부에 일부러 화상을 입힌 뒤 이 연고를 발라 낫는 모습을 보여 주며 팔았다고 합니다.",
+    "general_hint": "그 화학자는 날마다 이것을 한 숟가락 넘게 먹는다고 말했다고 하며, 96세까지 살았다.",
+    "variants": [
+     "바셀린"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (h-error)",
+   "notTaken": [],
+   "general_hint": "그 화학자는 날마다 이것을 한 찻숟가락 넘게 먹는다고 말했다고 하며, 96세까지 살았다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Robert_Chesebrough"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Vaseline",
+    "https://en.wikipedia.org/wiki/Robert_Chesebrough"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "날마다 한 찻숟가락 넘게 먹었다고 말함 · 96세",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Robert_Chesebrough",
+     "quote": "Chesebrough lived to be 96 years old … claimed to have eaten \"more than a teaspoon\" of it every day."
+    }
+   ]
+  },
+  "4847": {
+   "before": {
+    "question_text": "1979년 일본 디자이너 오타 유키오가 디자인한 표지가 1982년부터 일본에서 쓰였고, 1987년에는 ISO 국제 표준이 되었습니다. 이 표지는 무엇을 알리는 표지일까요?",
+    "explanation": "한국·중국·유럽 연합·일본 등 대부분 지역에서 이 표지는 초록을 쓴다.",
+    "general_hint": "비슷하게 달리는 사람을 그린 더 오래된 표지는 소련이 디자인했다고 한다.",
+    "variants": [
+     "피난구",
+     "비상출구"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (assertive,explanation)",
+   "notTaken": [],
+   "question_text": "1979년 일본 디자이너 오타 유키오가 디자인한 표지가 일본에서 쓰이기 시작했고, 1980년대에 ISO 국제 표준이 되었습니다. 이 표지는 무엇을 알리는 표지일까요?",
+   "explanation": "한국·일본·유럽 연합 등 많은 지역에서 이 표지는 초록을 쓴다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Emergency_exit",
+    "https://en.wikipedia.org/wiki/Yukio_Ota"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "일본에서 쓰이기 시작 · 1980년대 ISO",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Yukio_Ota",
+     "quote": "adapted as a part of the ISO 7010 standard in 1985 or 1987"
+    },
+    {
+     "what": "explanation",
+     "text": "한국·일본·유럽 연합 등 많은 지역에서 초록",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Exit_sign",
+     "quote": "In most regions, including China, the European Union, Japan, and South Korea exit signs have green lettering."
+    }
+   ]
+  },
+  "4878": {
+   "before": {
+    "question_text": "하루 전력 수요에서 태양광 같은 변동성 재생에너지 발전량을 뺀 나머지를 그리면, 한낮에 움푹 꺼졌다가 해 질 무렵 빠르게 치솟습니다. 2012년 캘리포니아 독립계통운영기관(CAISO)이 이 그래프를 어떤 동물의 윤곽을 닮았다며 이름 붙였습니다. 이 그래프를 무엇이라 할까요?",
+    "explanation": "이 모양이 더 심하게 나타나는 하와이에서는 '네스호의 괴물 곡선(네시 곡선)'이라고도 부릅니다.",
+    "general_hint": "2024년 무렵 캘리포니아에서는 대형 배터리가 저녁에 전기를 풀어 이 그래프의 꺾임이 크게 누그러졌다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants)",
+   "notTaken": [],
+   "add": [
+    "덕커브",
+    "오리 곡선",
+    "오리곡선"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Duck_curve"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "덕커브",
+     "result": "true",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복"
+    },
+    {
+     "what": "variant",
+     "text": "오리 곡선",
+     "result": "true",
+     "source": "https://m.cafe.daum.net/subdued20club/ReHf/5347175",
+     "quote": "덕 커브(오리 곡선) 병기 — 블로그·커뮤니티 사용례(WebSearch)",
+     "note": "ko 위키 0건 · 공식 자료 사용례는 못 찾음. 질문이 '동물'을 물어 받는 것은 합당"
+    },
+    {
+     "what": "variant",
+     "text": "오리곡선",
+     "result": "true",
+     "note": "normalizeAnswer 가 공백을 지워 기존 표기와 같은 값 — 넣어도 해 없으나 중복('오리 곡선'과 같은 값)"
+    }
+   ]
+  },
+  "4893": {
+   "before": {
+    "question_text": "영국에서 태어나 파리에서 활동한 찰스 프레더릭 워스는 디자인을 살아 있는 모델에게 입혀 보여 주었고, 1868년 세워진 디자이너 조합의 결성을 이끌었습니다. 이 조합의 회원은 철마다 낮옷과 밤옷을 아우르는 독창적인 디자인 50벌 이상을 선보여야 합니다. 오늘날 워스를 '아버지'라 부르는 이 분야를 가리키는 프랑스어 이름은 무엇일까요?",
+    "explanation": "이 말은 프랑스 법이 보호해, 파리에 상근 직원 15명 이상을 둔 작업실이 있어야 쓸 수 있습니다.",
+    "general_hint": "워스는 외제니 황후의 공식 의상가였고, 지은 옷마다 자기 이름표를 꿰매 넣은 첫 디자이너다.",
+    "variants": [
+     "오뜨 꾸뛰르"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (assertive)",
+   "notTaken": [],
+   "question_text": "영국에서 태어나 파리에서 활동한 찰스 프레더릭 워스는 디자인을 살아 있는 모델에게 입혀 보여 주었고, 1868년 세워진 디자이너 조합의 결성에도 힘을 보탰습니다. 이 조합의 회원은 철마다 낮옷과 밤옷을 아우르는 독창적인 디자인 50벌 이상을 선보여야 합니다. 오늘날 워스를 '아버지'라 부르는 이 분야를 가리키는 프랑스어 이름은 무엇일까요?",
+   "explanation": "이 말은 프랑스 법이 보호하며, 파리에 상근 직원 15명 이상을 둔 작업실을 비롯한 조건을 갖춰야 쓸 수 있습니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Haute_couture",
+    "https://en.wikipedia.org/wiki/Charles_Frederick_Worth"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "1868 조합 결성에도 힘을 보탰다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Haute_couture",
+     "quote": "Formation of the organisation was brought about by Charles Frederick Worth.",
+     "note": "문서는 오히려 더 세게('워스가 이끌어 냄') 적음 — 제안 문장은 안전"
+    },
+    {
+     "what": "explanation",
+     "text": "프랑스 법 보호 · 파리 상근 15명 이상 작업실 등 조건",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Haute_couture",
+     "quote": "The term haute couture is protected by French law … have a workshop (atelier) in Paris that employs at least fifteen staff members full-time"
+    }
+   ]
+  },
+  "4917": {
+   "before": {
+    "question_text": "1942년 군용기의 더 튼튼한 조종석 덮개 재료를 찾다가 이 물질이 발견되었고, 1951년 코닥에서 제트기 덮개용 내열 고분자를 연구하던 해리 쿠버의 팀이 다시 시험했지만 이번에도 쓰지 못했습니다. 베트남 전쟁에서는 스프레이로 만들어 다친 병사의 장기를 임시로 막아 피를 멈추는 데 처음 쓰인 이것은 무엇일까요?",
+    "explanation": "1958년 코닥이 '이스트먼 910'이라는 이름으로 팔기 시작했습니다.",
+    "general_hint": "코닥의 한 화학자가 실수로 굴절계를 이것으로 붙여 버린 일이 쓸모를 알아차리는 계기가 되었다.",
+    "variants": [
+     "시아노아크릴레이트",
+     "강력 접착제",
+     "슈퍼글루"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (assertive,fact-error)",
+   "notTaken": [],
+   "question_text": "1942년 군용기의 더 튼튼한 조종석 덮개 재료를 찾다가 이 물질이 발견되었고, 1951년 코닥에서 제트기 덮개용 내열 고분자를 연구하던 해리 쿠버의 팀이 다시 시험했지만 이번에도 쓰지 못했습니다. 베트남 전쟁에서는 스프레이로 만들어 다친 병사의 피를 임시로 멎게 하는 데 쓰였다고 하는 이것은 무엇일까요?",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cyanoacrylate",
+    "https://en.wikipedia.org/wiki/Harry_Coover"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "베트남 전쟁에서 스프레이로 피를 임시로 멎게 하는 데 쓰였다고 하는",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Cyanoacrylate",
+     "quote": "A cyanoacrylate spray was used in the Vietnam War to reduce bleeding in wounded soldiers until they could be taken to a hospital.",
+     "note": "1942 조종석 덮개 · 1951 코닥 제트기 덮개는 Harry Coover 문서로 확인"
+    }
+   ]
+  },
+  "4991": {
+   "before": {
+    "question_text": "제나라 재상 전문(田文)의 식객 풍환은 위나라 양왕을 움직여 전문을 부르게 했고, 이를 안 제나라 민왕은 전문을 붙잡으려고 설 땅에 선대의 묘를 세워 주겠다고 했습니다. 그러자 풍환이 '이제 겨우 두 개가 생겼다'고 했다는 일에서 나온 사자성어는?",
+    "explanation": "풍환은 전문이 재상에서 물러났을 때 떠나간 식객들을 다시 불러들이라고 권한 사람이기도 하다.",
+    "general_hint": "풍환은 앞서 설 땅에서 받아 낼 길 없는 빚 증서를 불살라, 백성에게 주인의 은혜를 팔았다고 말했다.",
+    "variants": []
+   },
+   "why": "V015 fix(assertive · fact-error) 질문 제안을 고쳐 받음 — 원문(전국책): 종묘는 민왕이 먼저 준 것이 아니라 풍환이 맹상군에게 청하게 함 · \"세 굴\" 은 정답 뜻풀이라 질문에 쓰지 않음 · 원문 \"君姑高枕為樂矣\"를 옮김",
+   "notTaken": [
+    {
+     "field": "question_text",
+     "proposal": "제나라 재상 전문(田文)의 식객 풍환은 위나라 왕을 움직여 전문을 부르게 했고, 이를 안 제나라 민왕은 전문을 붙잡으려고 설 땅에 선대의 묘를 세워 주겠다고 했습니다. 그러자 풍환이 굴이 하나 더 생겼다고 했다는 일에서 나온 사자성어는?",
+     "why": "\"민왕이 묘를 세워 주겠다고 했다\" · \"굴이 하나 더\" 가 원문과 어긋남(사실 확인 partial)"
+    }
+   ],
+   "question_text": "제나라 재상 전문(田文)의 식객 풍환은 맹상군이 설 땅에 선왕의 종묘를 세우도록 청하게 했고, 종묘가 서자 이제 베개를 높이 하고 즐기시라고 했다는 일화가 있습니다. 이 일화에서 나온 사자성어는?",
+   "sources": [
+    "https://zh.wikisource.org/wiki/戰國策/卷11"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "위나라 왕을 움직여 전문을 부르게 함",
+     "result": "true",
+     "source": "https://zh.wikisource.org/wiki/戰國策/卷11",
+     "quote": "西遊於梁，謂惠王曰 … 於是，梁王虛上位",
+     "note": "양(梁)=위(魏) · 원문 '혜왕' — 이름을 뺀 '위나라 왕'은 안전"
+    },
+    {
+     "what": "question",
+     "text": "풍환이 굴이 하나 더 생겼다고 했다",
+     "result": "partial",
+     "source": "https://zh.wikisource.org/wiki/戰國策/卷11",
+     "quote": "馮諼誡孟嘗君曰：「願請先王之祭器，立宗廟於薛。」廟成，還報孟嘗君曰：「三窟已就，君姑高枕為樂矣。」",
+     "note": "원문 말은 '세 굴이 이미 다 마련되었다'. 또 묘는 민왕이 먼저 주겠다고 한 것이 아니라 풍환이 맹상군에게 청하게 한 것(질문 앞 문장도 원문과 어긋남). 고칠 말: '…맹상군이 설 땅에 선왕의 종묘를 세우도록 청하게 했고, 종묘가 서자 풍환이 '굴 세 개가 다 마련되었다'고 했다는 일에서 나온 사자성어는?'"
+    }
+   ]
+  },
+  "5027": {
+   "before": {
+    "question_text": "복날은 보통 열흘 간격으로 들어 초복부터 말복까지 스무 날이 걸리지만, 해에 따라서는 중복과 말복 사이가 스무 날이 되기도 합니다. 이런 해를 두고 쓰는 두 글자 말은?",
+    "explanation": "초복·중복은 하지로부터 셋째·넷째 경일(庚日)로 정하지만 말복은 입추로부터 첫 경일로 정하기 때문에 이런 해가 생긴다.",
+    "general_hint": "2026년 여름 언론은 올해가 이런 해라 늦더위가 길 수 있다고 했지만, 달력 구분만으로 폭염이 길다고 볼 수 없다는 반론도 나왔다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-weak,h-error)",
+   "notTaken": [],
+   "general_hint": "2026년에는 첫 번째 날이 7월 15일, 두 번째 날이 7월 25일, 세 번째 날이 8월 14일이라 이런 해에 든다.",
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/복날"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/복날"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "2026년 초복 7/15 · 중복 7/25 · 말복 8/14",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EB%B3%B5%EB%82%A0",
+     "quote": "2026년 | 7월 15일, 7월 25일, 8월 14일 (문서 날짜표)",
+     "note": "경일(庚日) 계산으로도 하지(6/21) 뒤 셋째 경일 7/15 · 입추(8/7) 뒤 첫 경일 8/14 — 중복~말복 20일"
+    }
+   ]
+  },
+  "5039": {
+   "before": {
+    "question_text": "다산 정약용이 마지막으로 남긴 시 「회근시」는 이 잔치를 치를 날을 사흘 앞두고 지은 것으로, 그는 바로 그날 일흔다섯 살로 눈을 감았습니다. 부부가 함께 맞는 이 잔치는 무엇일까요?",
+    "explanation": "부부가 혼인하여 함께 맞이하는 예순 돌을 기념하는 잔치입니다.",
+    "general_hint": "다산은 1776년 풍산 홍씨를 아내로 맞았고, 아홉 자녀 가운데 여섯을 일찍 잃었다.",
+    "variants": [
+     "회혼식"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (fact-error,assertive)",
+   "notTaken": [],
+   "question_text": "다산 정약용은 이 잔치를 치를 날을 앞두고 마지막 시를 지었고, 그는 바로 그날 세상을 떠났습니다. 부부가 함께 맞는 이 잔치는 무엇일까요?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/정약용"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "이 잔치를 치를 날을 앞두고 마지막 시 · 바로 그날 세상을 떠남",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/%EC%A0%95%EC%95%BD%EC%9A%A9",
+     "quote": "혼인 60주년 회혼일 아침인 1836년 마현리 자택에서 별세하였다. … 다산이 남긴 마지막 시는 〈회혼시〉였다.",
+     "note": "문서는 시 이름을 '회혼시'로 적음(지금 질문의 '회근시' · 75세와 다름) — 제안이 이름·나이·사흘을 뺀 것이 맞음"
+    }
+   ]
+  },
+  "5052": {
+   "before": {
+    "question_text": "파리 에펠탑의 쇠뼈대 7,300톤은 흔히 떠올리는 강철이 아닌 이 쇠로 지어졌습니다. 탄소가 많은 쇠를 녹여 휘저으며 탄소를 태워 없애는 '퍼들법'으로 만들어, 탄소가 0.05%도 안 되고 속에 슬래그가 섞여 남는 이 쇠는 무엇일까요?",
+    "explanation": "퍼들로는 1784년 영국의 헨리 코트가 발명했고, 1890년 무렵에는 구조재 자리를 대부분 강철에 내주었습니다.",
+    "general_hint": "부러뜨린 면에 비단처럼 윤이 나는 결이 보이며, 연강이 나오기 전에는 리벳·쇠사슬·말굽을 흔히 이것으로 만들었다.",
+    "variants": []
+   },
+   "why": "V015 fix(h-letters · explanation) — 힌트 제안 반영 · 해설은 문서대로(코트는 발명이 아니라 개량 특허)",
+   "notTaken": [
+    {
+     "field": "explanation",
+     "proposal": "퍼들로는 1784년 영국의 헨리 코트가 발명했고, 19세기 말에는 값싼 강철이 구조재 자리를 대부분 차지했습니다.",
+     "why": "\"발명했고\" 는 문서와 다름 — 개량해 특허"
+    }
+   ],
+   "explanation": "퍼들법은 1784년 영국의 헨리 코트가 개량해 특허를 냈고, 19세기 말에는 값싼 강철이 구조재 자리를 대부분 차지했습니다.",
+   "general_hint": "부러뜨린 면에 비단처럼 윤이 나는 결이 보이며, 값싼 강철이 널리 퍼지기 전에는 리벳·쇠사슬·말굽을 흔히 이것으로 만들었다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Wrought_iron"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Eiffel_Tower",
+    "https://en.wikipedia.org/wiki/Wrought_iron"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "퍼들로는 1784년 영국의 헨리 코트가 발명",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Puddling_(metallurgy)",
+     "quote": "The furnace was improved by Henry Cort at Fontley in Hampshire in 1783–84 and patented in 1784.",
+     "note": "문서는 '개량해 특허' — 그 앞 단계 퍼들링이 이미 있었음. 고칠 말: '퍼들법은 1784년 영국의 헨리 코트가 개량해 특허를 냈고'"
+    },
+    {
+     "what": "explanation",
+     "text": "19세기 말 값싼 강철이 구조재 자리를 대부분 차지",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Wrought_iron",
+     "quote": "as the Bessemer process and the Siemens–Martin process made steel much cheaper to produce, the use of wrought iron declined.",
+     "note": "연도 없이 '19세기 말'은 무리 없음"
+    },
+    {
+     "what": "hint",
+     "text": "부러뜨린 면 비단 윤 · 리벳 · 쇠사슬 · 말굽",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Wrought_iron",
+     "quote": "A fresh fracture shows a clear bluish color with a high silky luster and fibrous appearance … rivets, nails, wire, chains … horseshoes"
+    }
+   ]
+  },
+  "5060": {
+   "before": {
+    "question_text": "1960년 노르웨이 스타방에르의 소생술 심포지엄에서 첫 형태를 선보인 심폐소생술 연습용 마네킹이 있습니다. 장난감 제작자 레르달은 남자 교육생이 남자 얼굴에 입을 대기를 꺼릴 것이라 보고, 19세기 말 센강에서 숨진 것으로 여겨지는 이름 모를 젊은 여성의 데스마스크를 얼굴로 삼았습니다. 이 마네킹에 붙은 여자 이름은 무엇일까요?",
+    "explanation": "마이클 잭슨의 노래 'Smooth Criminal' 후렴의 'Annie, are you OK?'도 이 마네킹에서 왔다고 합니다.",
+    "general_hint": "1977년 브로드웨이에 오른 뮤지컬 속 빨강 머리 고아 소녀와 같은 이름이다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (variants,h-famous)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "레서시 애니"
+     ],
+     "why": "한국어 용례 0건(사실 확인 unverified) — 음역 · 오기 · 영문 표기라 받지 않음(15 B2 · 변형은 실제로 치는 표기만)"
+    }
+   ],
+   "general_hint": "얼굴 조각은 노르웨이계 덴마크 조각가 엠마 마티아센이 맡았다.",
+   "hintSources": [],
+   "add": [
+    "앤",
+    "레서시 앤"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Resusci_Anne"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "얼굴 조각은 노르웨이계 덴마크 조각가 엠마 마티아센",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Resusci_Anne",
+     "quote": "The face was sculpted by the Norwegian-Danish sculptor Emma Matthiasen."
+    },
+    {
+     "what": "variant",
+     "text": "앤",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Resusci_Anne",
+     "quote": "Resusci Anne, also known as Rescue Anne, Resusci Annie, CPR Annie … Little Annie",
+     "note": "Anne 의 한국어 표기 — 한 글자라도 질문이 이름을 물어 오답 겹침 위험 낮음"
+    },
+    {
+     "what": "variant",
+     "text": "레서시 앤",
+     "result": "true",
+     "source": "https://www.healthysimulation.com/ko/medical-mannequin/",
+     "quote": "한국어 시뮬레이션 자료에서 Resusci Anne 을 '레서시 앤'으로 적은 예(WebSearch — '리서시 앤'과 섞임)",
+     "note": "근거 약함"
+    },
+    {
+     "what": "variant",
+     "text": "레서시 애니",
+     "result": "unverified",
+     "note": "ko 사용례 0건. 제안 목록에서 정답 '애니'가 빠짐 — 남겨야 함"
+    }
+   ]
+  },
+  "5125": {
+   "before": {
+    "question_text": "2000년대 초 사우스런던에서 태어난 전자 댄스 음악 장르가 있습니다. 크로이던의 음반 가게 '빅 애플 레코드'와 2001년 생긴 클럽 나이트 'FWD>>'가 그 산실이었고, 긴 베이스 음을 리듬감 있게 떨게 하는 '워블 베이스'가 특징입니다. 이 장르는 무엇일까요?",
+    "explanation": "2011년 무렵 미국에서는 스크릴렉스를 앞세운 '브로스텝'으로 크게 퍼졌습니다.",
+    "general_hint": "버리얼이 2006년 하이퍼덥에서 낸 데뷔 음반은 잡지 '와이어'가 그해 최고의 음반으로 꼽았다.",
+    "variants": []
+   },
+   "why": "V015 fix 제안 반영 (h-letters)",
+   "notTaken": [],
+   "general_hint": "버리얼이 2006년에 낸 데뷔 음반은 잡지 '와이어'가 그해 최고의 음반으로 꼽았다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Dubstep"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Dubstep"
+   ],
+   "factcheck": [
+    {
+     "what": "hint",
+     "text": "버리얼 2006 데뷔 음반을 와이어가 그해 최고 음반으로",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Dubstep",
+     "quote": "Burial's self-titled album appearing in many critics' \"Best of ...\" lists for the year, notably The Wire's Best Album of 2006."
+    }
+   ]
+  },
+  "5139": {
+   "before": {
+    "question_text": "철학자 칼 포퍼가 '오이디푸스 효과'라고 부른 현상과 같은 갈래로, 사회학자 로버트 머턴이 이름 붙인 개념은 무엇일까요?",
+    "explanation": "머턴은 멀쩡한 마을 은행이 곧 파산한다는 소문에 예금자들이 몰려가 정말로 은행이 무너지는 예로 이를 설명했습니다.",
+    "general_hint": "머턴은 '사람들이 상황을 실재라 규정하면 그 결과도 실재가 된다'는 토머스 정리의 연구를 이어 이 말을 지었다.",
+    "variants": [
+     "자기 충족적 예언",
+     "자기 성취적 예언"
+    ]
+   },
+   "why": "V015 fix 제안 반영 (not-unique,scope)",
+   "notTaken": [],
+   "question_text": "철학자 칼 포퍼는 예언이 사건에 영향을 미치는 현상을 '오이디푸스 효과'라고 불렀습니다. 그중 사회학자 로버트 머턴이 이름 붙인, 어떤 일이 일어나리라는 믿음이 사람들의 행동을 바꿔 결국 그 일이 정말 일어나게 만드는 현상은 무엇일까요?",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Self-fulfilling_prophecy",
+    "https://en.wikipedia.org/wiki/Robert_K._Merton"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "포퍼가 예언이 사건에 영향을 미치는 현상을 오이디푸스 효과라 부름 · 머턴이 이름 붙인 자기실현 현상",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Self-fulfilling_prophecy",
+     "quote": "Popper called the self-fulfilling prophecy the Oedipus effect: … the influence of a prediction upon the event predicted … Merton … is credited with coining the term \"self-fulfilling prophecy\""
+    }
+   ]
+  },
+  "5330": {
+   "before": {
+    "question_text": "제1차 세계대전이 터진 직후인 1914년 7월 31일 문을 닫았다가 그해 12월 12일에야 주식 매매를 모두 다시 열었습니다. 1863년 지금의 이름을 얻었고 1903년 브로드가 18번지에 본관을 지은 이 기관은 무엇일까요?",
+    "explanation": "1792년 5월 17일 주식 중개인 24명이 맺은 버튼우드 협정을 자기 출발로 기념합니다.",
+    "general_hint": "2018년 12월 '두려움 없는 소녀' 동상이 이 기관 건물을 마주 보는 자리로 옮겨 섰다."
+   },
+   "general_hint": "1971년 비영리 법인이 되었고, 2007년 유로넥스트와 합병했다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/New_York_Stock_Exchange"
+   ],
+   "why": "C73 ② — g009a H2-21 힌트('두려움 없는 소녀' 동상)를 CV-37 H9 새 줄(상징 동상도 정체)로 다시 읽어 GEN 새 힌트"
+  },
+  "5365": {
+   "before": {
+    "question_text": "레일리 경은 화합물에서 얻은 질소가 공기에서 얻은 질소보다 0.5% 가볍다는 데 주목했고, 1894년 윌리엄 램지와 함께 그 까닭이 된 원소를 처음 따로 얻었습니다. 1957년 이전까지 원소 기호가 알파벳 한 글자였던 이 원소는 무엇일까요?",
+    "explanation": "1785년 헨리 캐번디시도 공기 속에 이런 기체가 있으리라 짐작했습니다.",
+    "general_hint": "칼륨-40이 붕괴해 생기는 이 원소를 재어 암석의 나이를 셈하는 연대 측정법이 있다."
+   },
+   "general_hint": "에너지 효율이 높은 창문의 단열에도 이 기체가 쓰인다.",
+   "hintSources": [
+    "https://en.wikipedia.org/wiki/Argon"
+   ],
+   "why": "C73 ② — g009a C2-18 힌트(K-Ar 연대 측정)를 CV-37 H9 새 줄(대표 쓰임도 정체)로 다시 읽어 GEN 새 힌트(용접 보호 가스 · 백열전구도 대표 쓰임이라 피함)"
+  }
+ }
+}
