@@ -1965,6 +1965,906 @@
     "rejected": 3,
     "proposal": 46
    }
+  },
+  "v017": {
+   "rows": [
+    {
+     "id": "price-0144",
+     "file": "data/minigame/price/items-2.json",
+     "take": "modified",
+     "why": "V017 fix — CU 상품 그림(공식 · 바코드 8801051152845)의 병 표기가 'LOVE ME' 이고 엘라스틴 퍼퓸 샴푸의 향 이름은 '러브미'(네이버 이미지 검색 — 예스24 · 롯데 등 '퍼퓸 러브미 샴푸 400ml'). CU 설명의 'Lovely' 는 향을 꾸미는 말이라 이름을 그림에 맞춤",
+     "before": {
+      "status": "candidate",
+      "name": "엘라스틴 퍼퓸 샴푸 러블리 400ml"
+     },
+     "after": {
+      "status": "verified",
+      "name": "엘라스틴 퍼퓸 샴푸 러브미 400ml"
+     }
+    },
+    {
+     "id": "photo-0140",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "rejected",
+     "why": "V017 fix · CV-51 — 한국 키 사진을 공용에서 못 구함(ko 위키 키 (도구) 의 그림은 일본 키와 아이가 키를 쓴 사진 · 공용 검색 winnow/키 농기구에 한국 키 사물 사진 없음) → rejected",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "rejected"
+     }
+    },
+    {
+     "id": "photo-0141",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix · CV-51 — 정답 모르는 판정자가 '다식판' 으로 답함 → 설계 판단대로 altAnswers 에 '다식판'",
+     "before": {
+      "status": "candidate",
+      "altAnswers": []
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "다식판"
+      ]
+     }
+    },
+    {
+     "id": "photo-0152",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix — 문서로 닫히는 '앵금' 더함",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "깡깡이"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "깡깡이",
+       "앵금"
+      ]
+     }
+    },
+    {
+     "id": "photo-0170",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix — ko 위키 문장의 '시트로엔' 더함",
+     "before": {
+      "status": "candidate",
+      "altAnswers": []
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "시트로엔"
+      ]
+     }
+    },
+    {
+     "id": "photo-0172",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix(변형 제거 제안) — '파리 개선문' · '프랑스 개선문' 은 ko 위키 넘겨주기(→ 에투알 개선문)가 있고 기사도 많음(2,457 · 307) · CV-49 기준으로 유지(변형 그대로)",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "verified"
+     }
+    },
+    {
+     "id": "photo-0174",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix(변형 제거 제안) — '타워 브릿지' 는 ko 위키 넘겨주기(→ 타워 브리지)와 기사 1,910 · CV-49 기준으로 유지(변형 그대로)",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "verified"
+     }
+    },
+    {
+     "id": "photo-0175",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix — '브란덴부르크문' 더함. '브란덴부르크 개선문' 은 ko 위키 넘겨주기와 기사 59 가 있어 CV-49 기준으로 유지",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "브란덴부르크 개선문"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "브란덴부르크 개선문",
+       "브란덴부르크문"
+      ]
+     }
+    },
+    {
+     "id": "photo-0176",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix(변형 제거 제안) — '버즈 칼리파' · '버즈 두바이' 는 ko 위키 넘겨주기(→ 부르즈 할리파)와 기사(1,655 · 2,556) · CV-49 기준으로 유지(변형 그대로)",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "verified"
+     }
+    },
+    {
+     "id": "photo-0177",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix — 라이선스 PD → CC BY-SA 3.0 · 손질 표시",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0177.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mont_St_Michel_3%2C_Brittany%2C_France_-_July_2011.jpg?width=1024",
+       "license": "Public domain",
+       "attribution": "Diliff / Wikimedia Commons",
+       "width": 1024,
+       "height": 726,
+       "bytes": 140387
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0177.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mont_St_Michel_3%2C_Brittany%2C_France_-_July_2011.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Diliff / Wikimedia Commons (cropped, contrast adjusted)",
+       "width": 1024,
+       "height": 726,
+       "bytes": 140387
+      }
+     }
+    },
+    {
+     "id": "photo-0185",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix — edited 표시 · '아야 소피아 대성당'(기사 36) 더함. '아야 소피아 성당' 은 ko 위키 넘겨주기와 기사 362 가 있어 CV-49 기준으로 유지(제안은 교체)",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "하기아 소피아",
+       "하기아 소피아 대성당",
+       "아야 소피아 성당"
+      ],
+      "image": {
+       "file": "assets/minigame/photo/photo-0185.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hagia_Sophia_Mars_2013.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Arild Vågen / Wikimedia Commons",
+       "width": 1024,
+       "height": 683,
+       "bytes": 155369
+      }
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "하기아 소피아",
+       "하기아 소피아 대성당",
+       "아야 소피아 성당",
+       "아야 소피아 대성당"
+      ],
+      "image": {
+       "file": "assets/minigame/photo/photo-0185.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hagia_Sophia_Mars_2013.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Arild Vågen / Wikimedia Commons (edited)",
+       "width": 1024,
+       "height": 683,
+       "bytes": 155369
+      }
+     }
+    },
+    {
+     "id": "photo-0188",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix(변형 제거 제안) — '빈센트 반 고호' 는 ko 위키 넘겨주기(→ 빈센트 반 고흐)와 기사 123 · CV-49 기준으로 유지(변형 그대로)",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "verified"
+     }
+    },
+    {
+     "id": "photo-0191",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix(변형 제거 제안) — '토마스 에디슨' 은 ko 위키 넘겨주기(→ 토머스 에디슨)와 기사 1,969 · CV-49 기준으로 유지(변형 그대로)",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "verified"
+     }
+    },
+    {
+     "id": "photo-0193",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix(변형 제거 제안) — '마크 트와인' 은 ko 위키 넘겨주기(→ 마크 트웨인) · 기사 2 · CV-49 기준으로 유지(변형 그대로)",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "verified"
+     }
+    },
+    {
+     "id": "photo-0194",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix(변형 제거 제안) — '프로이드' · '지그문트 프로이드' 는 ko 위키 넘겨주기(→ 지그문트 프로이트)와 기사(2,517 · 215) · CV-49 기준으로 유지(변형 그대로)",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "verified"
+     }
+    },
+    {
+     "id": "photo-0207",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix · CV-51 — 정답 모르는 판정자가 '다식' 으로 답함 → 설계 판단대로 altAnswers 에 '다식'",
+     "before": {
+      "status": "candidate",
+      "altAnswers": []
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "다식"
+      ]
+     }
+    },
+    {
+     "id": "photo-0210",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix — ko 위키 문장의 '빨간 무' 더함",
+     "before": {
+      "status": "candidate",
+      "altAnswers": []
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "빨간 무"
+      ]
+     }
+    },
+    {
+     "id": "photo-0213",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "modified",
+     "why": "V017 fix · CV-51 — 설계 판단대로 '큰부리새'(정답 모르는 판정자의 답 · 기사 241) 더함. 제안은 '왕부리새'(과 이름)를 뺐으나 ko 위키 넘겨주기(→ 왕부리새류)와 기사 138 이 있어 CV-49 기준으로 유지",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "왕부리새"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "왕부리새",
+       "큰부리새"
+      ]
+     }
+    },
+    {
+     "id": "photo-0214",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "image",
+     "why": "V017 fix · CV-51 — 오른쪽 위 서명 글자를 잘라 냄(scripts/g016-crop.mjs)",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0214.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Myresluger2.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Malene Thyssen / Wikimedia Commons",
+       "width": 850,
+       "height": 575,
+       "bytes": 164852
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0214.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Myresluger2.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Malene Thyssen / Wikimedia Commons (cropped — 서명 잘라 냄)",
+       "width": 850,
+       "height": 553,
+       "bytes": 170071
+      }
+     }
+    },
+    {
+     "id": "photo-0215",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix — 자름 표시",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0215.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nine-banded_Armadillo.jpg?width=1024",
+       "license": "CC BY 3.0",
+       "attribution": "birdphotos.com / Wikimedia Commons",
+       "width": 1024,
+       "height": 618,
+       "bytes": 185908
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0215.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nine-banded_Armadillo.jpg?width=1024",
+       "license": "CC BY 3.0",
+       "attribution": "birdphotos.com / Wikimedia Commons (cropped)",
+       "width": 1024,
+       "height": 618,
+       "bytes": 185908
+      }
+     }
+    },
+    {
+     "id": "photo-0220",
+     "file": "data/minigame/photo/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix — 문서로 닫히는 '안진복' · '골복짱이' 더함. '몰라몰라' 는 ko 위키 넘겨주기(→ 개복치)가 있어 CV-49 기준으로 유지",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "몰라몰라"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "몰라몰라",
+       "안진복",
+       "골복짱이"
+      ]
+     }
+    },
+    {
+     "id": "estimate-0185",
+     "file": "data/minigame/estimate/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix · CV-47 (a) — 원화 환산(현재 환율 단순 곱 · 당시 가치 아님) · 원래 통화 · 연도는 note",
+     "before": {
+      "status": "candidate",
+      "value": 7200000,
+      "unit": "달러",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Alaska_Purchase",
+        "note": "The Alaska Purchase in 1867 resulted in the transfer of Russian America to the United States for $7.2 million (equivalent to $132 million in 2024).",
+        "fetchedAt": "2026-10-18"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "value": 9672408000,
+      "unit": "원",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Alaska_Purchase",
+        "note": "The Alaska Purchase in 1867 resulted in the transfer of Russian America to the United States for $7.2 million (equivalent to $132 million in 2024).",
+        "fetchedAt": "2026-10-18"
+       },
+       {
+        "url": "https://www.x-rates.com/average/?from=USD&to=KRW&amount=1&year=2026",
+        "note": "(요지) 2026-10 월평균 환율(x-rates) — 원화 환산 기준(V017 판정자)",
+        "fetchedAt": "2026-10-19"
+       }
+      ],
+      "note": "원래 7,200,000달러(1867). 환산 기준: 2026-10 평균 환율 1달러 = 1,343.39원(x-rates 월평균, 부분월) 곱셈. 당시 가치가 아닌 현재 환율 단순 환산"
+     }
+    },
+    {
+     "id": "estimate-0186",
+     "file": "data/minigame/estimate/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix · CV-47 (a) — 원화 환산(현재 환율 단순 곱 · 당시 가치 아님) · 원래 통화 · 연도는 note",
+     "before": {
+      "status": "candidate",
+      "value": 15000000,
+      "unit": "달러",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Louisiana_Purchase",
+        "note": "In return for $15 million, or approximately $18 per square mile ($7/km2), the United States nominally acquired a total of 828,000 sq mi (2,140,000 km2; 530,000,000 acres) of land now in the Central United States.",
+        "fetchedAt": "2026-10-18"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "value": 20150850000,
+      "unit": "원",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Louisiana_Purchase",
+        "note": "In return for $15 million, or approximately $18 per square mile ($7/km2), the United States nominally acquired a total of 828,000 sq mi (2,140,000 km2; 530,000,000 acres) of land now in the Central United States.",
+        "fetchedAt": "2026-10-18"
+       },
+       {
+        "url": "https://www.x-rates.com/average/?from=USD&to=KRW&amount=1&year=2026",
+        "note": "(요지) 2026-10 월평균 환율(x-rates) — 원화 환산 기준(V017 판정자)",
+        "fetchedAt": "2026-10-19"
+       }
+      ],
+      "note": "원래 15,000,000달러(1803). 환산 기준: 2026-10 평균 1달러 = 1,343.39원(x-rates) 단순 곱. 당시 가치가 아닌 현재 환율 단순 환산"
+     }
+    },
+    {
+     "id": "estimate-0187",
+     "file": "data/minigame/estimate/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix · CV-47 (a) — 원화 환산(현재 환율 단순 곱 · 당시 가치 아님) · 원래 통화 · 연도는 note",
+     "before": {
+      "status": "candidate",
+      "value": 599,
+      "unit": "달러",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)",
+        "note": "The iPhone was released in the United States on June 29, 2007, at the price of $499 for the 4 GB model and $599 for the 8 GB model, both requiring a 2-year contract.",
+        "fetchedAt": "2026-10-18"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "value": 804691,
+      "unit": "원",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)",
+        "note": "The iPhone was released in the United States on June 29, 2007, at the price of $499 for the 4 GB model and $599 for the 8 GB model, both requiring a 2-year contract.",
+        "fetchedAt": "2026-10-18"
+       },
+       {
+        "url": "https://www.x-rates.com/average/?from=USD&to=KRW&amount=1&year=2026",
+        "note": "(요지) 2026-10 월평균 환율(x-rates) — 원화 환산 기준(V017 판정자)",
+        "fetchedAt": "2026-10-19"
+       }
+      ],
+      "note": "원래 599달러(2007 미국 출시 · 2년 약정). 환산 기준: 2026-10 평균 1달러 = 1,343.39원(x-rates) 단순 곱. 당시 가치가 아닌 현재 환율 단순 환산"
+     }
+    },
+    {
+     "id": "estimate-0188",
+     "file": "data/minigame/estimate/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix · CV-47 (a) — 원화 환산(현재 환율 단순 곱 · 당시 가치 아님) · 원래 통화 · 연도는 note",
+     "before": {
+      "status": "candidate",
+      "value": 450300000,
+      "unit": "달러",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Salvator_Mundi_(painting)",
+        "note": "The painting was sold at auction for US$450.3 million on 15 November 2017 by Christie's in New York to Prince Badr bin Abdullah Al Saud, setting a new record for the most expensive painting ever sold at public auction.",
+        "fetchedAt": "2026-10-18"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "value": 604928517000,
+      "unit": "원",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Salvator_Mundi_(painting)",
+        "note": "The painting was sold at auction for US$450.3 million on 15 November 2017 by Christie's in New York to Prince Badr bin Abdullah Al Saud, setting a new record for the most expensive painting ever sold at public auction.",
+        "fetchedAt": "2026-10-18"
+       },
+       {
+        "url": "https://www.x-rates.com/average/?from=USD&to=KRW&amount=1&year=2026",
+        "note": "(요지) 2026-10 월평균 환율(x-rates) — 원화 환산 기준(V017 판정자)",
+        "fetchedAt": "2026-10-19"
+       }
+      ],
+      "note": "원래 450,300,000달러(2017 크리스티 · 수수료 포함). 환산 기준: 2026-10 평균 1달러 = 1,343.39원(x-rates) 단순 곱. 당시 가치가 아닌 현재 환율 단순 환산"
+     }
+    },
+    {
+     "id": "estimate-0189",
+     "file": "data/minigame/estimate/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix · CV-47 (a) — 원화 환산(현재 환율 단순 곱 · 당시 가치 아님) · 원래 통화 · 연도는 note",
+     "before": {
+      "status": "candidate",
+      "value": 135000000,
+      "unit": "유로",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Mercedes-Benz_300_SLR",
+        "note": "Its only sibling was sold from the museum in May 2022 to a private collector for €135 million (£114 million or US$142 million) with the proceeds used to establish the Mercedes-Benz Fund.",
+        "fetchedAt": "2026-10-18"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "value": 203516550000,
+      "unit": "원",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Mercedes-Benz_300_SLR",
+        "note": "Its only sibling was sold from the museum in May 2022 to a private collector for €135 million (£114 million or US$142 million) with the proceeds used to establish the Mercedes-Benz Fund.",
+        "fetchedAt": "2026-10-18"
+       },
+       {
+        "url": "https://www.x-rates.com/average/?from=EUR&to=KRW&amount=1&year=2026",
+        "note": "(요지) 2026-10 월평균 환율(x-rates) — 원화 환산 기준(V017 판정자)",
+        "fetchedAt": "2026-10-19"
+       }
+      ],
+      "note": "원래 135,000,000유로(2022-05 경매). 환산 기준: 2026-10 평균 1유로 = 1,507.53원(x-rates) 단순 곱. 당시 가치가 아닌 현재 환율 단순 환산"
+     }
+    },
+    {
+     "id": "estimate-0190",
+     "file": "data/minigame/estimate/items-2.json",
+     "take": "proposal",
+     "why": "V017 fix · CV-47 (a) — 원화 환산(현재 환율 단순 곱 · 당시 가치 아님) · 원래 통화 · 연도는 note",
+     "before": {
+      "status": "candidate",
+      "value": 100000000,
+      "unit": "달러",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Mona_Lisa",
+        "note": "It holds the Guinness World Record for the highest known painting insurance valuation in history at US$100 million in 1962, equivalent to $1 billion as of 2023.",
+        "fetchedAt": "2026-10-18"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "value": 134339000000,
+      "unit": "원",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Mona_Lisa",
+        "note": "It holds the Guinness World Record for the highest known painting insurance valuation in history at US$100 million in 1962, equivalent to $1 billion as of 2023.",
+        "fetchedAt": "2026-10-18"
+       },
+       {
+        "url": "https://www.x-rates.com/average/?from=USD&to=KRW&amount=1&year=2026",
+        "note": "(요지) 2026-10 월평균 환율(x-rates) — 원화 환산 기준(V017 판정자)",
+        "fetchedAt": "2026-10-19"
+       }
+      ],
+      "note": "원래 100,000,000달러(1962 보험 평가액). 환산 기준: 2026-10 평균 1달러 = 1,343.39원(x-rates) 단순 곱. 당시 가치가 아닌 현재 환율 단순 환산"
+     }
+    },
+    {
+     "id": "which-0190",
+     "file": "data/minigame/which/items-2.json",
+     "take": "image",
+     "why": "V017 fix · CV-50 — 그림 B 오른쪽 아래 워터마크 글자를 잘라 냄(which-0058-a 와 같은 파일 · 같은 자름) · 값 그대로",
+     "before": {
+      "status": "candidate",
+      "b": {
+       "label": "엘브루스산",
+       "value": 5642,
+       "image": {
+        "file": "assets/minigame/which/which-0190-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mount_Elbrus_(cropped).jpg?width=1024",
+        "license": "CC BY-SA 2.0",
+        "attribution": "Aleksandr Markin (cropped) / Wikimedia Commons",
+        "width": 1024,
+        "height": 545,
+        "bytes": 80031
+       }
+      }
+     },
+     "after": {
+      "status": "verified",
+      "b": {
+       "label": "엘브루스산",
+       "value": 5642,
+       "image": {
+        "file": "assets/minigame/which/which-0190-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mount_Elbrus_(cropped).jpg?width=1024",
+        "license": "CC BY-SA 2.0",
+        "attribution": "Aleksandr Markin / Wikimedia Commons (cropped · 아래 글자 잘라 냄)",
+        "width": 1024,
+        "height": 492,
+        "bytes": 70206
+       }
+      }
+     }
+    },
+    {
+     "id": "which-0199",
+     "file": "data/minigame/which/items-2.json",
+     "take": "image",
+     "why": "V017 fix · CV-50 — 그림 A 오른쪽 아래 워터마크를 잘라 냄 · 값 그대로",
+     "before": {
+      "status": "candidate",
+      "a": {
+       "label": "티그리스강",
+       "value": 1950,
+       "image": {
+        "file": "assets/minigame/which/which-0199-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mosul_river.jpg?width=1024",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Duha masood / Wikimedia Commons",
+        "width": 1024,
+        "height": 683,
+        "bytes": 143829
+       }
+      }
+     },
+     "after": {
+      "status": "verified",
+      "a": {
+       "label": "티그리스강",
+       "value": 1950,
+       "image": {
+        "file": "assets/minigame/which/which-0199-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mosul_river.jpg?width=1024",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Duha masood / Wikimedia Commons (cropped — 워터마크 잘라 냄)",
+        "width": 895,
+        "height": 683,
+        "bytes": 136451
+       }
+      }
+     }
+    },
+    {
+     "id": "which-0272",
+     "file": "data/minigame/which/items-2.json",
+     "take": "image",
+     "why": "CV-50 — 정약용 초상 양옆 한자(이름 · 찬문)를 잘라 냄 · verified 그대로",
+     "before": {
+      "b": {
+       "label": "정약용",
+       "value": 1762,
+       "image": {
+        "file": "assets/minigame/which/which-0272-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jeong_Yak-yong.jpg?width=1024",
+        "license": "Public domain",
+        "attribution": "작자 미상 / Wikimedia Commons",
+        "width": 593,
+        "height": 1024,
+        "bytes": 141386
+       }
+      }
+     },
+     "after": {
+      "b": {
+       "label": "정약용",
+       "value": 1762,
+       "image": {
+        "file": "assets/minigame/which/which-0272-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jeong_Yak-yong.jpg?width=1024",
+        "license": "Public domain",
+        "attribution": "작자 미상 / Wikimedia Commons (cropped — 글씨 잘라 냄)",
+        "width": 405,
+        "height": 700,
+        "bytes": 68837
+       }
+      }
+     }
+    },
+    {
+     "id": "which-0278",
+     "file": "data/minigame/which/items-2.json",
+     "take": "image",
+     "why": "CV-50 — 가슴의 이름표(柳寬順)와 번호를 잘라 냄 · verified 그대로",
+     "before": {
+      "a": {
+       "label": "유관순",
+       "value": 1902,
+       "image": {
+        "file": "assets/minigame/which/which-0278-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ryu_Gwan-sun.jpg?width=1024",
+        "license": "Public domain",
+        "attribution": "작자 미상 / Wikimedia Commons",
+        "width": 742,
+        "height": 1024,
+        "bytes": 176203
+       }
+      }
+     },
+     "after": {
+      "a": {
+       "label": "유관순",
+       "value": 1902,
+       "image": {
+        "file": "assets/minigame/which/which-0278-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ryu_Gwan-sun.jpg?width=1024",
+        "license": "Public domain",
+        "attribution": "작자 미상 / Wikimedia Commons (cropped — 이름표 · 번호 잘라 냄)",
+        "width": 600,
+        "height": 560,
+        "bytes": 78785
+       }
+      }
+     }
+    },
+    {
+     "id": "which-0279",
+     "file": "data/minigame/which/items-2.json",
+     "take": "image",
+     "why": "CV-50 — 받침의 '퇴계 이황 선생 상' 현판을 잘라 냄 · verified 그대로",
+     "before": {
+      "b": {
+       "label": "이황(퇴계)",
+       "value": 1501,
+       "image": {
+        "file": "assets/minigame/which/which-0279-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Statue_of_Yi_Hwang.jpg?width=1024",
+        "license": "CC BY-SA 2.0 kr",
+        "attribution": "Integral / Wikimedia Commons",
+        "width": 579,
+        "height": 1024,
+        "bytes": 82285
+       }
+      }
+     },
+     "after": {
+      "b": {
+       "label": "이황(퇴계)",
+       "value": 1501,
+       "image": {
+        "file": "assets/minigame/which/which-0279-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Statue_of_Yi_Hwang.jpg?width=1024",
+        "license": "CC BY-SA 2.0 kr",
+        "attribution": "Integral / Wikimedia Commons (cropped — 현판 잘라 냄)",
+        "width": 579,
+        "height": 770,
+        "bytes": 52971
+       }
+      }
+     }
+    },
+    {
+     "id": "which-0286",
+     "file": "data/minigame/which/items-2.json",
+     "take": "image",
+     "why": "CV-50 — 훈민정음 해례본 면(제목 · 본문 한자)은 잘라서 글자를 뺄 수 없어 광화문 세종대왕 동상 사진으로 바꿈(오른쪽 아래 광고 글자 잘라 냄) · verified 그대로",
+     "before": {
+      "a": {
+       "label": "훈민정음 반포",
+       "value": 1446,
+       "image": {
+        "file": "assets/minigame/which/which-0286-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hunminjeongum.jpg?width=1024",
+        "license": "Public domain",
+        "attribution": "세종(훈민정음 해례본) / Wikimedia Commons",
+        "width": 626,
+        "height": 710,
+        "bytes": 82904
+       }
+      }
+     },
+     "after": {
+      "a": {
+       "label": "훈민정음 반포",
+       "value": 1446,
+       "image": {
+        "file": "assets/minigame/which/which-0286-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Statue_of_King_Sejong.jpg?width=1024",
+        "license": "CC BY-SA 2.0",
+        "attribution": "Republic of Korea / Wikimedia Commons (cropped)",
+        "width": 585,
+        "height": 480,
+        "bytes": 51750
+       }
+      }
+     }
+    },
+    {
+     "id": "which-0292",
+     "file": "data/minigame/which/items-2.json",
+     "take": "image",
+     "why": "CV-50 — 국제연맹 깃발의 'LEAGUE OF NATIONS' 글자를 잘라 내고 가운데 별 무늬만 · verified 그대로",
+     "before": {
+      "b": {
+       "label": "국제연맹",
+       "value": 1920,
+       "image": {
+        "file": "assets/minigame/which/which-0292-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_League_of_Nations_(1939).svg?width=1024",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Martin Grandjean / Wikimedia Commons",
+        "width": 1024,
+        "height": 683,
+        "bytes": 39926
+       }
+      }
+     },
+     "after": {
+      "b": {
+       "label": "국제연맹",
+       "value": 1920,
+       "image": {
+        "file": "assets/minigame/which/which-0292-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_League_of_Nations_(1939).svg?width=1024",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Martin Grandjean / Wikimedia Commons (cropped — 글자 잘라 냄)",
+        "width": 340,
+        "height": 250,
+        "bytes": 9888
+       }
+      }
+     }
+    },
+    {
+     "id": "which-0300",
+     "file": "data/minigame/which/items-2.json",
+     "take": "image",
+     "why": "CV-50 — 'BAND-AID' 포장을 잘라 내고 반창고만 · verified 그대로",
+     "before": {
+      "b": {
+       "label": "밴드에이드(반창고)",
+       "value": 1920,
+       "image": {
+        "file": "assets/minigame/which/which-0300-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/BandAid.jpg?width=1024",
+        "license": "Public domain",
+        "attribution": "Svetlana Miljkovic / Wikimedia Commons",
+        "width": 960,
+        "height": 567,
+        "bytes": 86866
+       }
+      }
+     },
+     "after": {
+      "b": {
+       "label": "밴드에이드(반창고)",
+       "value": 1920,
+       "image": {
+        "file": "assets/minigame/which/which-0300-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/BandAid.jpg?width=1024",
+        "license": "Public domain",
+        "attribution": "Svetlana Miljkovic / Wikimedia Commons (cropped — 포장 글자 잘라 냄)",
+        "width": 660,
+        "height": 200,
+        "bytes": 23442
+       }
+      }
+     }
+    }
+   ],
+   "tally": {
+    "modified": 13,
+    "rejected": 1,
+    "proposal": 12,
+    "image": 9
+   }
   }
  }
 }
