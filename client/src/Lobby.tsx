@@ -14,7 +14,7 @@
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatExperienceRate, nicknameFits, RULES } from '@quiz/shared';
+import { countEmojiTokens, formatExperienceRate, INLINE_EMOJI_MAX, nicknameFits, RULES } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import ConfirmModal from './ConfirmModal.js';
 import KickFlow, { type KickTarget } from './KickFlow.js';
@@ -36,7 +36,7 @@ import Prefs, { setRoomOwnsKeys } from './Prefs.js';
 import Seat from './Seat.js';
 import Emoji from './Emoji.js';
 import EmojiPicker from './EmojiPicker.js';
-import { isSpecialEmoji, specialDisplayMode, useEmojiSlots } from './emojiCatalog.js';
+import { emojiToken, isSpecialEmoji, peekEmojiCatalog, specialDisplayMode, useEmojiSlots } from './emojiCatalog.js';
 import { useFocusChatOnEscape, useShortcuts, type Shortcut } from './shortcuts.js';
 import { chatSound, toggleMuteAll } from './sound.js';
 import { cycleTheme } from './theme.js';
@@ -255,6 +255,7 @@ export default function Lobby({
     // ★★ 장치 B — 지금 보고 있는 문제의 epoch 를 함께 보낸다 (guide 20절 / R003 2-3)
     socket.emit('chat.send', { text, epoch: snapshot.question?.epoch ?? null });
     setDraft('');
+    caretRef.current = null;
     // ★ 내가 보낸 메시지는 맨 아래로 따라간다
     userScrolledUp.current = false;
     inputRef.current?.focus();
@@ -348,6 +349,30 @@ export default function Lobby({
     socket.emit('emoji.send', { emojiId: id });
     setEmojiFlash({ id, key: Date.now() });
   };
+  // ★★★ R057 (D-250) — 입력창에 넣기: 커서 자리에 토큰(표준 = 글자 · 특별 = :sp:번호:) · 한 줄 10개까지
+  //   ★ 터치 기기는 입력창에 포커스를 주지 않는다(키보드가 올라와 고르기 창을 덮는다) — 마지막 커서 자리에 넣는다
+  const caretRef = useRef<number | null>(null);
+  const insertEmoji = (id: number) => {
+    const e = peekEmojiCatalog()?.byId.get(id);
+    if (!e) return;
+    const token = emojiToken(e);
+    if (countEmojiTokens(draft) >= INLINE_EMOJI_MAX || draft.length + token.length > RULES.CHAT_MAX_LENGTH) {
+      setShakeKey((k) => k + 1);
+      return;
+    }
+    const at = Math.min(caretRef.current ?? draft.length, draft.length);
+    const next = draft.slice(0, at) + token + draft.slice(at);
+    caretRef.current = at + token.length;
+    setDraft(next);
+    if (!window.matchMedia('(pointer: coarse)').matches) {
+      requestAnimationFrame(() => {
+        const el = inputRef.current;
+        if (!el) return;
+        el.focus();
+        el.setSelectionRange(at + token.length, at + token.length);
+      });
+    }
+  };
 
   const shortcuts: Shortcut[] = [
     {
@@ -436,8 +461,8 @@ export default function Lobby({
   // ★★ R039 — 참여자 칸의 이모티콘: 계정마다 마지막 이모티콘을 6초 동안
   const [emojiNow, setEmojiNow] = useState(() => Date.now());
   const lastEmojiOf = useMemo(() => {
-    const out: Record<string, { id: number; key: string; at: number }> = {};
-    for (const m of chat) if (m.emojiId && m.accountId) out[m.accountId] = { id: m.emojiId, key: m.id, at: Date.now() };
+    const out: Record<string, { id: number; ids: number[]; key: string; at: number }> = {};
+    for (const m of chat) if (m.emojiId && m.accountId) out[m.accountId] = { id: m.emojiId, ids: m.emojiIds ?? [m.emojiId], key: m.id, at: Date.now() };
     return out;
   }, [chat]);
   const emojiSeen = useRef(new Map<string, number>());
@@ -454,7 +479,7 @@ export default function Lobby({
     if (!e) return null;
     const at = emojiSeen.current.get(`${accountId}:${e.key}`) ?? 0;
     // ★ R040 (건우) — 칸의 이모티콘은 **3초**만 (R039 의 6초 개정)
-    return emojiNow - at < RULES.SEAT_EMOJI_MS ? { id: e.id, key: e.key } : null;
+    return emojiNow - at < RULES.SEAT_EMOJI_MS ? { id: e.id, ids: e.ids, key: e.key } : null;
   };
   // ── ★★★ R049 D — 특별 이모티콘 = **떠 있는 큰 반응** (채팅 입력창 바로 위 · 약 96px · 3초 · 동시 최대 3개 · 보낸 사람 닉네임)
   //   ★ 찬종: "이 특별한 이모티콘은 공간을 좀더 차지해서 모두가 자세히 볼 수 있게 … 모바일에서는 채팅로그에 올라오지 않는 이상 안보이거든"
@@ -471,7 +496,11 @@ export default function Lobby({
     if (fresh.length === 0) return;
     for (const m of fresh) seen.add(m.id);
     const now = Date.now();
-    setFloats((prev) => [...prev, ...fresh.map((m) => ({ key: m.id, id: m.emojiId!, nickname: m.nickname, colorIndex: m.colorIndex, at: now }))].slice(-RULES.SPECIAL_FLOAT_MAX));
+    // ★ R057 — 채팅으로 보낸 이모티콘만 1~3개면 그중 특별인 것마다
+    const add = fresh.flatMap((m) =>
+      (m.emojiIds ?? [m.emojiId!]).filter((id) => isSpecialEmoji(id)).map((id, i) => ({ key: `${m.id}:${i}`, id, nickname: m.nickname, colorIndex: m.colorIndex, at: now })),
+    );
+    setFloats((prev) => [...prev, ...add].slice(-RULES.SPECIAL_FLOAT_MAX));
   }, [chat, specialDisplay]);
   useEffect(() => {
     if (floats.length === 0) return undefined;
@@ -928,11 +957,18 @@ export default function Lobby({
                       </span>
                       {m.emojiId ? (
                         // ★ R049 — 특별 이모티콘: 기본(float)은 로그에 32px 한 줄(큰 반응은 입력창 위에 떠 있다) · 대안(inline)은 로그 안에 96px
-                        <Emoji
-                          id={m.emojiId}
-                          size={m.special ? (specialDisplay === 'inline' ? 96 : 32) : 24}
-                          className={m.special ? (specialDisplay === 'inline' ? 'chat-emoji chat-special-big' : 'chat-emoji chat-special') : 'chat-emoji'}
-                        />
+                        // ★ R057 — 채팅으로 보낸 이모티콘만 1~3개면 나란히
+                        (m.emojiIds ?? [m.emojiId]).map((id, i) => {
+                          const sp = isSpecialEmoji(id);
+                          return (
+                            <Emoji
+                              key={i}
+                              id={id}
+                              size={sp ? (specialDisplay === 'inline' ? 96 : 32) : 24}
+                              className={sp ? (specialDisplay === 'inline' ? 'chat-emoji chat-special-big' : 'chat-emoji chat-special') : 'chat-emoji'}
+                            />
+                          );
+                        })
                       ) : (
                         <ChatText text={m.text} mine={m.accountId === snapshot.me.accountId} masked={m.masked} />
                       )}
@@ -966,14 +1002,26 @@ export default function Lobby({
                 {throttledKind === 'special' ? '특별 이모티콘 도배 방지' : throttledKind === 'emoji' ? '이모티콘 도배 방지' : '도배 방지'} · <strong className="mono">{lockLeft}초</strong> 후 다시 보낼 수 있어요
               </p>
             )}
+            {/* ★ R057 — 특별 이모티콘 토큰(:sp:번호:)이 든 글은 보낼 모습을 입력창 바로 위에 작게 보인다(입력창은 글자만 그린다) */}
+            {draft.includes(':sp:') && (
+              <div className="chat-preview" aria-label="보낼 모습">
+                <ChatText text={draft} mine={false} masked={false} />
+              </div>
+            )}
             <div className="field-row chat-input-row">
-              <EmojiPicker slots={emojiSlots} onSend={sendEmoji} flash={emojiFlash} />
+              <EmojiPicker slots={emojiSlots} onSend={sendEmoji} onInsert={insertEmoji} flash={emojiFlash} />
               <input
                 ref={inputRef}
                 value={draft}
                 maxLength={RULES.CHAT_MAX_LENGTH}
                 className={[judging ? 'judging' : '', lockedNow ? 'locked' : '', shaking ? 'input-shake' : ''].filter(Boolean).join(' ') || undefined}
-                onChange={(e) => setDraft(e.target.value)}
+                onChange={(e) => {
+                  setDraft(e.target.value);
+                  caretRef.current = e.target.selectionStart;
+                }}
+                onSelect={(e) => {
+                  caretRef.current = e.currentTarget.selectionStart;
+                }}
                 onKeyDown={(e) => {
                   // ★ 한글 IME 조합 중 Enter는 전송으로 처리하지 않는다 (미완성 문자열이 나간다)
                   if (e.key !== 'Enter') return;

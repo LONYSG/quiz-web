@@ -105,7 +105,11 @@ export function normalizeAnswer(input: unknown): string {
  *     ★ 뒤따르는 **공백 하나까지 마스킹**된다. 그러면 "[가려짐]아님?" 이 되어 문장이 붙는다.
  *   ★ 그래서 매칭 구간의 끝은 **마지막으로 매칭된 문자의 끝**(mapEnd)으로 잡아야 한다.
  */
-export function buildNormalizedIndex(input: string): {
+export function buildNormalizedIndex(
+  input: string,
+  /** ★ R057 — 정규화에서 빼고 지나갈 글자(이모티콘 자리표 — 마스킹이 토큰을 건너뛴다). g 플래그 없이 */
+  skip?: RegExp,
+): {
   rawNfc: string;
   norm: string;
   map: number[];
@@ -128,7 +132,7 @@ export function buildNormalizedIndex(input: string): {
     // ★ 이 정규화에는 한 문자가 2글자 이상으로 늘어나는 변환이 없다
     //   (NFKC를 쓰지 않기 때문이다). 그 사실이 매핑을 단순하게 유지해 준다.
     let piece = ch;
-    if (ZERO_WIDTH_TEST_RE.test(piece)) {
+    if (ZERO_WIDTH_TEST_RE.test(piece) || (skip !== undefined && skip.test(piece))) {
       piece = '';
     } else {
       piece = fullWidthToHalf(piece);

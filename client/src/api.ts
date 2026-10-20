@@ -175,6 +175,8 @@ export interface ServerPrefs {
   chatVolume?: number;
   /** ★ R039 — 이모티콘 10칸 (번호) */
   emojiSlots?: number[];
+  /** ★ R057 — 고르기 창: 입력창에 넣기(true) · 바로 보내기(false) */
+  emojiInsert?: boolean;
 }
 
 export async function fetchPrefs(): Promise<ServerPrefs | null> {

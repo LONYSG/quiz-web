@@ -125,6 +125,7 @@ const SCENARIO_ENV = {
   achievements: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   feedback: { RESOLVED_WAIT_MS: '200' },
   mgonly: { MINIGAME_PHASE_SCALE: '0.05' },
+  emojiinline: { RESOLVED_WAIT_MS: '200' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -302,7 +303,7 @@ class Bot {
       );
       // ★ R016 — 마스킹 여부와 발신자를 함께 기록한다 (Phase 6 검증에 필요하다)
       s.on('chat.message', (m) =>
-        this.events.push({ type: 'chat', text: m.text, masked: m.masked === true, accountId: m.accountId, emojiId: m.emojiId ?? null, special: m.special === true }),
+        this.events.push({ type: 'chat', text: m.text, masked: m.masked === true, accountId: m.accountId, emojiId: m.emojiId ?? null, special: m.special === true, emojiIds: m.emojiIds ?? null }),
       );
 
       // ── ★★★ R050 — 미니게임 (보기 전체가 온다 · 받은 순간을 함께 적는다 — 케이크 타이밍 검사)
@@ -7305,6 +7306,87 @@ async function scenarioMgOnly() {
   return checkSummary();
 }
 
+// =============================================================================
+// ★★★ R057 — 이모티콘 나열(인라인) (D-250): 토큰 섞인 채팅 · 판정은 글자로 · 가지지 않은 특별 토큰 버림 · 상한 10 · 1~3개만 = 반응 꼴 · 도배
+// =============================================================================
+async function scenarioEmojiInline() {
+  log('시나리오 emojiinline — ★★★ 이모티콘 나열 (R057)');
+  const [host, guest] = await makeBots(2);
+  const sp = await withDb(async (c) => (await c.query(`SELECT id FROM emojis WHERE theme_id IS NOT NULL AND active ORDER BY id LIMIT 2`)).rows.map((r) => r.id));
+  if (sp.length < 2) throw new Error('특별 이모티콘이 없다 (0016)');
+  const [s1, s2] = sp;
+  // ★ 테스트 행 — 손님은 s1 만 가진다 · 방장은 없다
+  await withDb(async (c) => {
+    await c.query(`DELETE FROM account_emojis WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[host.loginId, guest.loginId]]);
+    await c.query(`INSERT INTO account_emojis (account_id, emoji_id) SELECT id, $2 FROM accounts WHERE login_id = $1`, [guest.loginId, s1]);
+  });
+  await host.connect();
+  await guest.connect();
+  host.createRoom('R057 이모티콘');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  guest.join(host.snapshot.room.id);
+  await guest.waitFor(() => guest.snapshot?.room.id === host.snapshot.room.id, 6000, '입장');
+  await sleep(300);
+  const got = async (from, bot, text) => {
+    const m = host.mark();
+    bot.chat(text);
+    await sleep(500);
+    return host.since(m, 'chat').filter((e) => e.accountId === from)[0] ?? null;
+  };
+  const hostId = host.snapshot.me.accountId;
+  const guestId = guest.snapshot.me.accountId;
+
+  log('\n[1] 토큰 섞인 채팅 · 가진 것만 · 상한 10');
+  let e = await got(guestId, guest, `안녕 😂:sp:${s1}::sp:${s2}:`);
+  expect('★★★ 가진 특별(s1)만 남고 안 가진 것(s2)은 버림 · 글자 · 표준은 그대로', e?.text, `안녕 😂:sp:${s1}:`);
+  e = await got(hostId, host, `:sp:${s1}: 가`);
+  expect('★★ 특별을 안 가진 방장 — 토큰을 버리고 글자만', e?.text?.trim(), '가');
+  e = await got(hostId, host, `${'😀'.repeat(12)}끝`);
+  expect('★★ 한 줄 토큰 10개까지(넘는 2개 버림)', e?.text, `${'😀'.repeat(10)}끝`);
+  e = await got(hostId, host, `:sp:${s1}:`);
+  expect('★ 안 가진 토큰만 → 빈 글이라 안 보냄', e, null);
+  await sleep(5200); // 도배 창(5초 5회) 비우기
+
+  log('\n[2] 이모티콘만 1~3개 = 반응 꼴 · 4개 이상 = 인라인');
+  e = await got(guestId, guest, '😂👍');
+  expectTrue('★★★ 이모티콘만 2개 → 반응 꼴(emojiIds 2 · 글 없음)', e?.emojiIds?.length === 2 && e.emojiId === e.emojiIds[0] && e.text === '', JSON.stringify(e));
+  e = await got(guestId, guest, `:sp:${s1}:`);
+  expectTrue('★★ 가진 특별 하나만 → 특별 반응(special)', e?.emojiId === s1 && e.special === true, JSON.stringify(e));
+  e = await got(guestId, guest, '😂😂😂😂');
+  expectTrue('★★ 4개 이상 → 인라인 글(반응 아님)', e?.emojiId === null && e.text === '😂😂😂😂', JSON.stringify(e));
+  await sleep(5200);
+
+  log('\n[3] 판정은 토큰을 뺀 글자로');
+  host.socket.emit('lobby.updateSettings', { questionCount: 1, minigames: false, minigameOnly: false });
+  await sleep(400);
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.snapshot?.room.state === 'QUESTION_ACTIVE' && host.snapshot.question?.index === 1, 20000, '문제 1');
+  const [ans] = await answersForText(host.snapshot.question.text);
+  guest.chat(`😂 ${ans} :sp:${s1}:`);
+  await host.waitFor(() => host.since(g, 'question.resolved').length > 0, 8000, '정답');
+  const res = host.since(g, 'question.resolved')[0];
+  expectTrue('★★★ "😂 정답 :sp:" → 정답 인정(손님)', res.reason === 'correct' && res.winnerAccountId === guestId, JSON.stringify({ r: res.reason, w: res.winnerAccountId, ans }));
+  const ev = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM answer_events e JOIN accounts a ON a.id = e.account_id WHERE a.login_id = $1 AND e.accepted`, [guest.loginId])).rows[0].n);
+  expectTrue('★★ answer_events 정답 행', ev >= 1, String(ev));
+  await host.waitFor(() => host.snapshot?.room.state === 'GAME_RESULT', 30000, '결과');
+  await sleep(5200);
+
+  log('\n[4] 도배 — 채팅 규칙(5초 5회)');
+  const t = guest.mark();
+  for (let i = 0; i < 6; i += 1) guest.chat('😂👍');
+  await sleep(500);
+  const th = guest.since(t, 'chat.throttled');
+  expect('★★ 이모티콘만 채팅도 채팅 도배 규칙(6번째 → 잠금 · kind chat)', th[0]?.kind ?? null, 'chat');
+  await withDb((c) => c.query(`DELETE FROM account_emojis WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [guest.loginId]));
+  for (const b of [host, guest]) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
 async function scenarioFeedback() {
   log('시나리오 feedback — ★★★ 문제 평가(설문) (R056)');
   const [host, guest, outsider] = await makeBots(3);
@@ -7605,6 +7687,7 @@ const SCENARIOS = {
   // ★★★ R056 — 문제 평가
   feedback: scenarioFeedback,
   mgonly: scenarioMgOnly,
+  emojiinline: scenarioEmojiInline,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

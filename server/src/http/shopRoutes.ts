@@ -18,7 +18,7 @@ import { getPool } from '../db/pool.js';
 import { config } from '../config.js';
 import { POINTS_SQL, pointsFromRow } from '../db/points.js';
 import { checkAchievements } from '../achievements.js';
-import { emojiName, ensureCatalog, getThemes, specialIdsOfTheme, ownedEmojiIds } from './emojiRoutes.js';
+import { emojiName, ensureCatalog, forgetOwned, getThemes, specialIdsOfTheme, ownedEmojiIds } from './emojiRoutes.js';
 
 export const shopRouter = Router();
 
@@ -84,6 +84,7 @@ shopRouter.post('/draw', async (req, res) => {
     await client.query(`INSERT INTO account_emojis (account_id, emoji_id) VALUES ($1, $2)`, [session.accountId, picked]);
     await client.query(`INSERT INTO point_spends (account_id, amount, reason, ref) VALUES ($1, $2, 'gacha', $3)`, [session.accountId, price, `theme:${theme.key}/emoji:${picked}`]);
     await client.query('COMMIT');
+    forgetOwned(session.accountId); // ★ R057 — 채팅 토큰이 새로 뽑은 것을 받게
     owned.add(picked);
     res.json({
       ok: true,

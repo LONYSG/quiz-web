@@ -504,4 +504,6 @@ export interface ChatEntry {
   emojiId?: number | null;
   /** ★ R049 — 특별 이모티콘(테마)이면 true — 화면이 크게 띄운다 (D-231) */
   special?: boolean;
+  /** ★ R057 — 채팅으로 보낸 이모티콘만 1~3개(반응 꼴) — 번호들(emojiId 는 첫 번호) */
+  emojiIds?: number[] | null;
 }

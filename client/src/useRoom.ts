@@ -42,6 +42,8 @@ export interface ChatView {
   emojiId?: number | null;
   /** ★ R049 — 특별 이모티콘 (크게 띄운다) */
   special?: boolean;
+  /** ★ R057 — 채팅으로 보낸 이모티콘만 1~3개(반응 꼴) — emojiId 는 첫 번호 */
+  emojiIds?: number[] | null;
 }
 
 export interface ExperienceRate {

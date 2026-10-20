@@ -7,27 +7,37 @@
 //   · "칸 바꾸기" — 칸을 고른 뒤 아래에서 이모티콘을 누르면 그 칸이 바뀐다 (계정에 저장)
 // ★ 보내면 버튼 위로 그 이모티콘이 떠올라 "보냈다" 를 알린다 (모바일은 참여자 칸이 없어서 특히 필요하다)
 // ★ 이 창 안의 이모티콘 목록만은 스크롤된다 — 1,800개를 한 화면에 둘 수 없다 (떠 있는 창이라 화면 배치에는 영향이 없다)
+// ★★★ R057 (D-250) — 이모티콘 나열: 창 맨 위 [바로 보내기 · 입력창에 넣기](계정 저장 · 기본 바로 보내기).
+//   단발로는 PC **Shift+클릭** · 모바일 **길게 누르기**(0.45초) = 입력창에 넣기(토글과 무관). 넣는 동안 창은 열린 채로 둔다.
 // =============================================================================
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { usePopup } from './popup.js';
 import PopupClose from './PopupClose.js';
 import Emoji from './Emoji.js';
-import { EMOJI_CATEGORIES, setStoredSlots, useEmojiCatalog, type EmojiMeta } from './emojiCatalog.js';
+import { EMOJI_CATEGORIES, setEmojiInsert, setStoredSlots, useEmojiCatalog, useEmojiInsert, type EmojiMeta } from './emojiCatalog.js';
 import Icon from './Icon.js';
-import { Check, Pencil, Search, Smile } from 'lucide-react';
+import { Check, Pencil, Search, Send, Smile, TextCursorInput } from 'lucide-react';
 
 interface Props {
   slots: number[];
   onSend: (id: number) => void;
+  /** ★ R057 — 입력창에 넣기(토큰) */
+  onInsert: (id: number) => void;
   /** 마지막으로 보낸 것 (떠오르는 표시) */
   flash: { id: number; key: number } | null;
 }
 
 const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+/** ★ R057 — 길게 누르기(모바일) */
+const LONG_PRESS_MS = 450;
 
-export default function EmojiPicker({ slots, onSend, flash }: Props) {
+export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   const cat = useEmojiCatalog();
+  const insertMode = useEmojiInsert();
+  // ★ 길게 누르기 — 넣은 뒤 따라오는 click 은 버린다
+  const longTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const longFired = useRef(false);
   // ★ R041 — 팝업은 한 번에 하나
   const [open, setOpen] = usePopup('emoji');
   const [edit, setEdit] = useState<number | null>(null);
@@ -75,7 +85,7 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
     if (tab === 'special' && cat && !hasSpecial) setTab('smileys');
   }, [tab, cat, hasSpecial]);
 
-  const pick = (id: number) => {
+  const pick = (id: number, shift = false) => {
     if (editing && edit !== null) {
       const next = [...slots];
       next[edit] = id;
@@ -83,8 +93,39 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
       setEdit((i) => (i === null ? null : (i + 1) % 10));
       return;
     }
-    onSend(id);
+    // ★ R057 — 토글이 "입력창에 넣기" 거나 Shift+클릭이면 넣기 · 아니면 지금처럼 바로 보내기
+    if (insertMode || shift) onInsert(id);
+    else onSend(id);
   };
+  /** 한 칸의 누르기 처리 — 클릭(Shift) · 길게 누르기(터치) */
+  const press = (id: number, onTap: (shift: boolean) => void) => ({
+    onClick: (e: React.MouseEvent) => {
+      if (longFired.current) {
+        longFired.current = false;
+        return;
+      }
+      onTap(e.shiftKey);
+    },
+    onPointerDown: (e: React.PointerEvent) => {
+      if (e.pointerType === 'mouse' || editing) return;
+      longFired.current = false;
+      if (longTimer.current) clearTimeout(longTimer.current);
+      longTimer.current = setTimeout(() => {
+        longTimer.current = null;
+        longFired.current = true;
+        onInsert(id);
+      }, LONG_PRESS_MS);
+    },
+    onPointerUp: () => {
+      if (longTimer.current) clearTimeout(longTimer.current);
+      longTimer.current = null;
+    },
+    onPointerLeave: () => {
+      if (longTimer.current) clearTimeout(longTimer.current);
+      longTimer.current = null;
+    },
+    onContextMenu: (e: React.MouseEvent) => e.preventDefault(),
+  });
 
   return (
     <span className="emoji-picker">
@@ -109,13 +150,23 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
             <p className="pop-title">이모티콘</p>
             <PopupClose onClose={() => setOpen(false)} />
           </div>
+          {/* ★★★ R057 — 바로 보내기(기본) ⇄ 입력창에 넣기 (계정 저장) */}
+          <div className="emoji-mode" role="group" aria-label="누르면">
+            <button type="button" data-emoji-mode="send" aria-pressed={!insertMode} className={!insertMode ? 'emoji-mode-btn on' : 'emoji-mode-btn'} onClick={() => setEmojiInsert(false)}>
+              <Icon icon={Send} /> 바로 보내기
+            </button>
+            <button type="button" data-emoji-mode="insert" aria-pressed={insertMode} className={insertMode ? 'emoji-mode-btn on' : 'emoji-mode-btn'} onClick={() => setEmojiInsert(true)}>
+              <Icon icon={TextCursorInput} /> 입력창에 넣기
+            </button>
+            <span className="dim emoji-mode-tip">{insertMode ? '여러 개 넣고 전송' : 'Shift+클릭 · 길게 누르면 넣기'}</span>
+          </div>
           <div className="emoji-slots">
             {slots.map((id, i) => (
               <button
                 key={i}
                 type="button"
                 className={editing && edit === i ? 'emoji-slot sel' : 'emoji-slot'}
-                onClick={() => (editing ? setEdit(i) : onSend(id))}
+                {...press(id, (shift) => (editing ? setEdit(i) : insertMode || shift ? onInsert(id) : onSend(id)))}
                 title={`Alt+${KEYS[i]}`}
               >
                 <Emoji id={id} size={26} />
@@ -167,7 +218,7 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
                     </p>
                     <div className="emoji-group-cells">
                       {g.owned.map((e) => (
-                        <button key={e.id} type="button" className="emoji-cell special" title={e.name} onClick={() => pick(e.id)}>
+                        <button key={e.id} type="button" className="emoji-cell special" title={e.name} {...press(e.id, (shift) => pick(e.id, shift))}>
                           <Emoji id={e.id} size={34} />
                         </button>
                       ))}
@@ -175,7 +226,7 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
                   </div>
                 ))
               : shown.map((e) => (
-                  <button key={e.id} type="button" className={e.category === 'special' ? 'emoji-cell special' : 'emoji-cell'} title={e.name} onClick={() => pick(e.id)}>
+                  <button key={e.id} type="button" className={e.category === 'special' ? 'emoji-cell special' : 'emoji-cell'} title={e.name} {...press(e.id, (shift) => pick(e.id, shift))}>
                     <Emoji id={e.id} size={e.category === 'special' ? 34 : 26} />
                   </button>
                 ))}

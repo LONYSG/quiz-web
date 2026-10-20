@@ -11,9 +11,30 @@
 //
 // ★ 마스크 길이는 정답 길이와 무관하게 **항상 칩 하나**다 (Q-35).
 //   ★ 근거: 정답 길이는 힌트보다 강한 정보이고, 문제 시작 직후부터 노출되면 게임이 망가진다.
+// ★★★ R057 (D-250) — 글 속 이모티콘 토큰을 그림으로: 표준(유니코드 글자) = 글자 높이의 1.4배 · 특별(`:sp:번호:`) = 32px.
+//   목록에 없는 글자는 그대로 둔다 · 알 수 없는 특별 번호는 그리지 않는다(서버가 이미 걸렀다)
 // =============================================================================
 
-import { MASK_SENTINEL } from '@quiz/shared';
+import { MASK_SENTINEL, splitEmojiText } from '@quiz/shared';
+import Emoji from './Emoji.js';
+import { emojiIdOfChar, useEmojiCatalog } from './emojiCatalog.js';
+
+/** 글자 + 이모티콘 섞인 글 */
+function Inline({ text }: { text: string }) {
+  const cat = useEmojiCatalog();
+  const parts = splitEmojiText(text);
+  if (parts.every((p) => p.kind === 'text')) return <>{text}</>;
+  return (
+    <>
+      {parts.map((p, i) => {
+        if (p.kind === 'text') return <span key={i}>{p.text}</span>;
+        if (p.kind === 'sp') return cat?.byId.has(p.id) ? <Emoji key={i} id={p.id} size={32} className="chat-inline-special" /> : null;
+        const id = cat ? emojiIdOfChar(cat, p.text) : null;
+        return id ? <Emoji key={i} id={id} size={20} className="chat-inline-emoji" /> : <span key={i}>{p.text}</span>;
+      })}
+    </>
+  );
+}
 
 interface Props {
   text: string;
@@ -28,7 +49,7 @@ export default function ChatText({ text, mine, masked }: Props) {
   if (mine) {
     return (
       <span className="chat-text">
-        {text}
+        <Inline text={text} />
         {masked && (
           <span className="masked-note" title="이미 풀어본 문제라 다른 사람에게는 가려져서 전송되었습니다">
             가려져서 전송됨
@@ -38,7 +59,12 @@ export default function ChatText({ text, mine, masked }: Props) {
     );
   }
 
-  if (!masked) return <span className="chat-text">{text}</span>;
+  if (!masked)
+    return (
+      <span className="chat-text">
+        <Inline text={text} />
+      </span>
+    );
 
   // ★ 남의 메시지: 센티널을 칩으로 바꾼다. 나머지 문자는 그대로 둔다
   const parts = text.split(MASK_SENTINEL);
@@ -51,7 +77,7 @@ export default function ChatText({ text, mine, masked }: Props) {
               가려짐
             </span>
           )}
-          {part}
+          <Inline text={part} />
         </span>
       ))}
     </span>

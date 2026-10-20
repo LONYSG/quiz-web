@@ -34,7 +34,7 @@ interface Props {
   /** 로비 — 경험률 문구 */
   rate: string | null;
   /** ★ R039 — 지금 띄울 이모티콘 (번호 + 메시지 id — 같은 이모티콘이라도 새로 보내면 다시 튄다) */
-  emoji: { id: number; key: string } | null;
+  emoji: { id: number; ids?: number[]; key: string } | null;
   /** ★ R039 — 순위 (점수가 있을 때) */
   rank: number | null;
   /** 방금 정답을 맞힌 사람인가 (반짝). 값이 바뀌면 다시 반짝인다 */
@@ -123,7 +123,10 @@ export default function Seat({
       <div className="seat-emoji" aria-live="polite">
         {emoji && (
           <span key={emoji.key} className="seat-emoji-pop">
-            <Emoji id={emoji.id} size={64} />
+            {/* ★ R057 — 채팅으로 보낸 이모티콘만 1~3개면 나란히(둘 이상이면 작게) */}
+            {(emoji.ids ?? [emoji.id]).map((id, i, all) => (
+              <Emoji key={i} id={id} size={all.length > 1 ? 40 : 64} />
+            ))}
           </span>
         )}
       </div>

@@ -45,6 +45,9 @@ let catalog = new Map<number, EmojiMeta>();
 let themes: EmojiThemeMeta[] = [];
 let defaults: number[] = [];
 let loadedAt = 0;
+/** ★ R057 — 유니코드 글자 → 번호 (변형 선택자 FE0F 는 빼고 맞춘다) */
+let byChar = new Map<string, number>();
+const charKey = (s: string) => s.replace(/\uFE0F/g, '');
 
 export async function loadEmojiCatalog(): Promise<void> {
   try {
@@ -66,6 +69,7 @@ export async function loadEmojiCatalog(): Promise<void> {
       next.set(x.id, { id: x.id, kind: x.kind, code: x.code, char: x.char, name: x.name_ko, tags: x.tags ?? [], category: x.category, themeId: x.theme_id ?? null });
     }
     catalog = next;
+    byChar = new Map([...next.values()].filter((e) => e.char).map((e) => [charKey(e.char!), e.id]));
     try {
       const t = await query<{ id: number; key: string; name_ko: string; price: number; active: boolean }>(`SELECT id, key, name_ko, price, active FROM emoji_themes ORDER BY sort_order, id`);
       themes = t.rows.map((x) => ({ id: x.id, key: x.key, name: x.name_ko, price: x.price, active: x.active }));
@@ -84,6 +88,11 @@ export async function loadEmojiCatalog(): Promise<void> {
 /** 소켓이 쓴다 — 사용 중인 이모티콘 번호인가 */
 export function isEmojiId(id: number): boolean {
   return catalog.has(id);
+}
+
+/** ★ R057 — 유니코드 이모지 글자의 번호(목록에 없으면 null) */
+export function emojiIdOfChar(char: string): number | null {
+  return byChar.get(charKey(char)) ?? null;
 }
 
 /** ★ R048 — 특별 이모티콘인가 (theme_id 있음) */
@@ -109,10 +118,25 @@ export async function ensureCatalog(): Promise<void> {
 export async function ownedEmojiIds(accountId: string): Promise<Set<number>> {
   try {
     const r = await query<{ emoji_id: number }>(`SELECT emoji_id FROM account_emojis WHERE account_id = $1`, [accountId]);
-    return new Set(r.rows.map((x) => x.emoji_id));
+    const ids = new Set(r.rows.map((x) => x.emoji_id));
+    ownedCache.set(accountId, { ids, at: Date.now() });
+    return ids;
   } catch {
     return new Set(); // 0016 미적용
   }
+}
+
+/**
+ * ★ R057 — 가진 특별 이모티콘의 메모리 사본(60초). 채팅 판정 경로가 기다리지 않게(채팅 속 `:sp:` 토큰).
+ *   GET /api/emoji · emoji.send 가 채운다 · 뽑기 뒤 forgetOwned. 없으면 null(부르는 쪽이 한 번 읽는다)
+ */
+const ownedCache = new Map<string, { ids: Set<number>; at: number }>();
+export function ownedEmojiIdsCached(accountId: string): Set<number> | null {
+  const c = ownedCache.get(accountId);
+  return c && Date.now() - c.at < 60_000 ? c.ids : null;
+}
+export function forgetOwned(accountId: string): void {
+  ownedCache.delete(accountId);
 }
 
 emojiRouter.get('/', async (req, res) => {

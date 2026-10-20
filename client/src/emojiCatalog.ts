@@ -7,6 +7,7 @@
 // =============================================================================
 
 import { useEffect, useState } from 'react';
+import { specialToken } from '@quiz/shared';
 
 export interface EmojiMeta {
   id: number;
@@ -117,6 +118,47 @@ export function useEmojiCatalog(): typeof cache {
 
 export function emojiSrc(e: EmojiMeta): string {
   return e.kind === 'custom' ? `/api/emoji/${e.id}/image` : `/emoji/${e.code}.svg`;
+}
+
+// ── ★★★ R057 — 고르기 창 "바로 보내기 ⇄ 입력창에 넣기" (기본 바로 보내기 · 계정에도 저장 — prefsSync) ──
+const INSERT_KEY = 'qw.emoji.insert';
+export function getEmojiInsert(): boolean {
+  try {
+    return localStorage.getItem(INSERT_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+export function setEmojiInsert(on: boolean): void {
+  try {
+    localStorage.setItem(INSERT_KEY, on ? '1' : '0');
+  } catch {
+    /* 이번 세션만 */
+  }
+  window.dispatchEvent(new CustomEvent('qw:emoji-insert', { detail: on }));
+}
+export function useEmojiInsert(): boolean {
+  const [on, setOn] = useState(getEmojiInsert());
+  useEffect(() => {
+    const h = (e: Event) => setOn((e as CustomEvent<boolean>).detail);
+    window.addEventListener('qw:emoji-insert', h);
+    return () => window.removeEventListener('qw:emoji-insert', h);
+  }, []);
+  return on;
+}
+/** 입력창에 넣을 토큰 — 표준 = 유니코드 글자 · 특별(그림만) = `:sp:번호:` (shared/emojiText) */
+export function emojiToken(e: EmojiMeta): string {
+  return e.char ?? specialToken(e.id);
+}
+/** 유니코드 이모지 글자 → 번호 (변형 선택자 FE0F 는 빼고 맞춘다 — 서버 emojiIdOfChar 와 같다) */
+const charMaps = new WeakMap<EmojiCatalog, Map<string, number>>();
+export function emojiIdOfChar(cat: EmojiCatalog, ch: string): number | null {
+  let m = charMaps.get(cat);
+  if (!m) {
+    m = new Map(cat.list.filter((e) => e.char).map((e) => [e.char!.replace(/\uFE0F/g, ''), e.id]));
+    charMaps.set(cat, m);
+  }
+  return m.get(ch.replace(/\uFE0F/g, '')) ?? null;
 }
 
 // ── 내 10칸 ────────────────────────────────────────────────────────────────

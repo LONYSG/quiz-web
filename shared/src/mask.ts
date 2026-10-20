@@ -71,8 +71,13 @@ export interface MaskResult {
  * @param raw            발신자가 보낸 원문
  * @param normalizedAnswers 이 문제의 정규화된 정답 집합 (메모리에 이미 로드되어 있다)
  */
-export function maskAnswers(raw: string, normalizedAnswers: readonly string[]): MaskResult {
-  const { rawNfc, norm, map, mapEnd } = buildNormalizedIndex(raw);
+export function maskAnswers(
+  raw: string,
+  normalizedAnswers: readonly string[],
+  /** ★ R057 — 건너뛸 글자(이모티콘 자리표 — shared/emojiText protectEmojiTokens) */
+  skip?: RegExp,
+): MaskResult {
+  const { rawNfc, norm, map, mapEnd } = buildNormalizedIndex(raw, skip);
   if (norm.length === 0) return { text: rawNfc, masked: false };
 
   // ★ 긴 정답을 먼저 본다. 그러지 않으면 짧은 정답이 긴 정답의 앞부분을 먼저 먹는다.

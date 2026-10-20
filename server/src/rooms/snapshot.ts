@@ -174,6 +174,8 @@ export interface ChatView {
   emojiId?: number | null;
   /** ★ R049 — 특별 이모티콘 */
   special?: boolean;
+  /** ★ R057 — 이모티콘만 1~3개 */
+  emojiIds?: number[] | null;
 }
 
 /**
@@ -234,6 +236,7 @@ export function toChatView(
       system: entry.system,
       emojiId: entry.emojiId ?? null,
       special: entry.special === true,
+      emojiIds: entry.emojiIds ?? null,
     });
   }
   void now;

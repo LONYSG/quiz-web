@@ -6914,3 +6914,61 @@ button.person-all-btn {
 .mg-rounds-input {
   width: 4.2em;
 }
+
+/* ★★★ R057 — 이모티콘 나열(인라인) (D-250) */
+.emoji-mode {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 2px 6px;
+  flex-wrap: wrap;
+}
+.emoji-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.emoji-mode-btn.on {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+.emoji-mode-tip {
+  font-size: 0.72rem;
+  margin-left: auto;
+}
+.chat-text .chat-inline-emoji {
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: -0.35em;
+  margin: 0 1px;
+}
+.chat-text .chat-inline-special {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+.chat-preview {
+  font-size: 0.85rem;
+  padding: 2px 8px 4px;
+  opacity: 0.85;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.chat-preview .chat-inline-special {
+  width: 22px;
+  height: 22px;
+}
+.seat-emoji-pop {
+  white-space: nowrap;
+}

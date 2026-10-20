@@ -16,7 +16,23 @@
 
 import { randomUUID } from 'node:crypto';
 import type { Server, Socket } from 'socket.io';
-import { isMinigameKey, maskAnswers, NICKNAME_LIMIT_HINT, nicknameFits, RULES, validateRoomSettings, type MinigameKey } from '@quiz/shared';
+import {
+  capEmojiTokens,
+  countEmojiTokens,
+  EMOJI_ONLY_BIG_MAX,
+  EMOJI_PLACEHOLDER_RE,
+  emojiOnlyTokens,
+  INLINE_EMOJI_MAX,
+  isMinigameKey,
+  maskAnswers,
+  NICKNAME_LIMIT_HINT,
+  nicknameFits,
+  protectEmojiTokens,
+  RULES,
+  stripEmojiTokens,
+  validateRoomSettings,
+  type MinigameKey,
+} from '@quiz/shared';
 import { closeRoom, findRoom, insertRoom, openRoomsHostedBy, updateRoomHost } from '../db/rooms.js';
 import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
 import { loadExperienced } from '../db/questionPool.js';
@@ -73,7 +89,7 @@ import { initFriends, onAccountOffline, onAccountOnline, registerFriendHandlers 
 /** ★ R043 — 방을 만드는 중인 계정 (연타 무시) */
 const creatingRooms = new Set<string>();
 import { buildSnapshot, toPlayerView } from '../rooms/snapshot.js';
-import { isEmojiId, isSpecialEmoji, ownedEmojiIds } from '../http/emojiRoutes.js';
+import { emojiIdOfChar, isEmojiId, isSpecialEmoji, ownedEmojiIds, ownedEmojiIdsCached } from '../http/emojiRoutes.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
@@ -106,8 +122,10 @@ function maskForBroadcast(room: Room, senderAccountId: string, rawNfc: string): 
   // ★ (2) 발신자가 이 문제의 경험자일 때만. ★★ 미경험자의 메시지는 절대 건드리지 않는다
   if (!q.experiencedAccountIds.has(senderAccountId)) return null;
   // ★ (3) 실제로 정답이 들어 있을 때만
-  const result = maskAnswers(rawNfc, [...q.answersNorm]);
-  return result.masked ? result.text : null;
+  //   ★★ R057 — 이모티콘 토큰은 건너뛰고 찾는다(마스킹은 글자 부분만 — "이😂순신" 도 가린다) · 가리지 않은 토큰은 되돌린다
+  const p = protectEmojiTokens(rawNfc);
+  const result = maskAnswers(p.text, [...q.answersNorm], EMOJI_PLACEHOLDER_RE);
+  return result.masked ? p.restore(result.text) : null;
 }
 
 /**
@@ -412,8 +430,8 @@ function registerRoomHandlers(socket: Socket): void {
         return { text, epoch };
       },
     },
-    ({ seq, socket: s, room, player, payload, arrivedNs }) => {
-      const now = Date.now();
+    async ({ seq, socket: s, room, player, payload, arrivedNs }) => {
+      let now = Date.now();
 
       // ── 단계 1. 검증
       //   ★ rate limit 초과는 **본인에게만** 조용히 알린다 (Q-18).
@@ -431,12 +449,36 @@ function registerRoomHandlers(socket: Socket): void {
         return;
       }
 
-      const rawNfc = payload.text.normalize('NFC');
+      let rawNfc = payload.text.normalize('NFC');
+
+      // ── ★★★ R057 (D-250) — 이모티콘 토큰: 가지지 않은 특별 토큰 · 10개 넘는 토큰을 버린다
+      //   ★ 가진 목록은 메모리 사본을 쓴다(판정 경로가 기다리지 않게). 사본이 없을 때만 한 번 읽는다 — 판정 블록보다 **앞**이다
+      if (/:sp:\d/.test(rawNfc)) {
+        const owned = ownedEmojiIdsCached(player.accountId) ?? (await ownedEmojiIds(player.accountId));
+        now = Date.now();
+        rawNfc = capEmojiTokens(rawNfc, (id) => isSpecialEmoji(id) && owned.has(id));
+      } else if (countEmojiTokens(rawNfc) > INLINE_EMOJI_MAX) {
+        rawNfc = capEmojiTokens(rawNfc, () => false);
+      }
+      if (rawNfc.trim() === '') return; // 버리고 나니 빈 글
+
+      // ── ★ 이모티콘만 1~3개 → 지금 반응 꼴(크게 · 참여자 칸 · 특별은 떠 있는 층). 판정 · 마스킹 없음
+      const only = emojiOnlyTokens(rawNfc);
+      const onlyIds = only && only.length <= EMOJI_ONLY_BIG_MAX ? only.map((t) => (t.kind === 'sp' ? t.id : emojiIdOfChar(t.text))) : null;
+      if (onlyIds && onlyIds.every((id): id is number => id !== null)) {
+        const special = onlyIds.some((id) => isSpecialEmoji(id));
+        const e = { id: randomUUID(), seq, accountId: player.accountId, nickname: player.nickname, colorIndex: player.colorIndex, rawNfc: '', maskedText: null, ts: now, system: false, emojiId: onlyIds[0]!, special, emojiIds: onlyIds };
+        pushChat(room, e);
+        emitRoom(room, 'chat.message', { id: e.id, seq: e.seq, accountId: e.accountId, nickname: e.nickname, colorIndex: e.colorIndex, text: '', masked: false, ts: e.ts, system: false, emojiId: e.emojiId, special, emojiIds: onlyIds });
+        return;
+      }
 
       // ── 단계 2. ★★ 판정. **동기다. 여기에 await 가 없다.**
       //   ★ 입력은 클라이언트가 보낸 원문이다. 마스킹을 전혀 알지 못한다.
+      //   ★★ R057 — 판정은 **토큰을 뺀 글자로**("이순신😂" = "이순신"). 글자가 비면 판정하지 않는다
+      //     (토큰만 남은 글은 정규화하면 빈 글 — 정답 집합에 빈 글은 없다)
       const outcome = judgeAnswer(room, player, {
-        rawText: rawNfc,
+        rawText: stripEmojiTokens(rawNfc),
         epoch: payload.epoch,
         receivedAt: now,
       });
