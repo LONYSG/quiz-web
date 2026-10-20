@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-10-20 — 미니게임 1차 · 2차 fix 반영 · 적재 (G016, GEN)
+
+- **무엇을**: 미니게임 1차 V012 fix 63 + 2차 V017 fix 29 반영 · 적재 — verified 1,164 · rejected 11(새로 4: price-0062 · 0098 · which-0078 · photo-0140) · candidate 0 → DB loaded 1,164(price 197 · worldprice 254 · photo 219 · estimate 199 · which 295) · 그림 1,002장 91.2MB · 품목 5 · 파일 status loaded(--mark) · 그림 자름 12 · 교체 3 · zip backups/minigame-2026-10-19.zip.
+- **어떻게**: fix 92 · drop 7 을 다 읽고 결정 표(`scripts/g016-apply-v012.mjs` 63 · `g016-apply-v017.mjs` 29 + CV-50 그림 6)로 반영 — 공통 `g016-lib.mjs`(멱등 · `audit/g016-fixes.json` 에 before/after · verify 칸은 그대로). 그림은 `scripts/g016-crop.mjs`(원본을 tmp/g016/orig 에 두고 늘 원본에서 자름) · 새 그림은 `g008-img.mjs`. 변형 제거 제안(CV-49)은 ko 위키 넘겨주기 · 네이버 뉴스 건수로 항목마다 확인(`tmp/g016/variant-evidence.json`).
+- **결정**: DG-054(미니게임 반영의 개별 처리). 설계 판단 CV-47 (a) · CV-48 (a) · CV-49 · CV-50 · CV-51 · CV-30 그대로.
+- **검증**: g008-check 1차+2차 1,175 막힘 0 · candidate 0 · 결정 표 다시 돌려 바뀔 것 0 · minigame-load 다시 돌려 1,164 · 그림 1,002 그대로 · DB 그림 md5 = 파일 · questions 0 행 변경.
+- **남은 것**: C78.
+
 ## 2026-10-19 — 기존 활성 난이도 2 V015 fix 243 반영 · CV-39 끝 (G015, GEN)
 
 - **무엇을**: 기존 활성 난이도 2 의 V015 fix 243 반영 — 238 문항 362행(질문 83 · 해설 81 · 힌트 9(비움 2) · 변형 +185 · 빼기 3) · 비활성 1(#2051 마찰열) · 받지 않은 제안 84(변형 82) · 새 사실 · 변형 240건 다시 엶 → 활성 6,043 · 상 950 · 50문제 상만 19 · 중+상 76 · 전체 120 그대로 — CV-39(기존 활성 fix 955) 끝. 순서는 브리핑대로 변형 115 → 단정 · 해설 106 → 정답 비유일 · 사실 13 → 힌트 9(한 항목은 첫 사유의 part 에서 모든 칸을 함께).

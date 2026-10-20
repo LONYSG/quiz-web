@@ -117,4 +117,6 @@ assets/minigame/<game>/<id>.<jpg|png|webp>  ← 그림 (git 에 없다 — .giti
 - 그림은 적재 뒤 **DB 가 정본**(백업 포함). 서빙 `GET /api/minigame/image/:imageId`(로그인 · 캐시).
 - 출제 규칙(MAIN · 01 16-1): 얼마게요는 `priceAsOf` 가 1년 지나면 내지 않는다 · 빅맥지수는 `targetCc: "EU"` 를 내지 않고 표에는 "유로 지역" 한 줄 · 경험은 문항 `id` 로(01 12장).
 - R052 첫 적재(2026-10-17 · V012 뒤): price 93 · worldprice 171 · photo 86 · estimate 96 · which 127 = **573** · 그림 447장 41.6MB · 형식 거부 0 · 그림 없음 0. candidate 63 · rejected 6 은 넣지 않았다.
+- G016 재적재(2026-10-20 · V012 fix 63 · V017 fix 29 반영 뒤): price 197 · worldprice 254 · photo 219 · estimate 199 · which 295 = **1,164 loaded**(파일 status 도 `--mark` 로 loaded) · 그림 1,002장 91.2MB · 품목 5 · 형식 거부 0 · 그림 없음 0 · rejected 11 은 넣지 않았다. 다시 돌려도 같다(멱등).
+- 재적재 규칙(G016): 파일(값 · 그림)을 고치면 같은 스크립트를 다시 돌린다 — 같은 항목 id · 같은 그림 id 는 갱신(payload · bytea · 크기), loaded 도 다시 넣고, verified/loaded 가 아니게 된 항목은 active=false. 그림을 바꿀 때는 파일 이름(= 그림 id)을 그대로 두고 image 칸의 크기 · 출처 · 라이선스 · attribution 을 파일에 맞춘다. 다음 묶음은 `items-3.json`.
 

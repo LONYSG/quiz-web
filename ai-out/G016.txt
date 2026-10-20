@@ -1,0 +1,101 @@
+===========================================
+ROUND: G016
+DATE: 2026-10-20
+TASK: 미니게임 데이터 반영 · 적재 — 1차 V012 fix 63 + CV-30 그림(items.json) · 2차 V017 fix 29 · drop 1(items-2.json · CV-47~51) → g008-check 막힘 0 → minigame-load --apply(1차 갱신 + 2차 신규) → --mark → 적재 표. questions 는 손대지 않음
+STATUS: 완료
+===========================================
+
+[cmd 창 요약]
+1. fix 92 반영: 1차 63(제안 그대로 46 · 고쳐 받음 8 · 그림 6 · rejected 3) · 2차 29(제안 그대로 12 · 고쳐 받음 13 · 그림 3 · rejected 1) + CV-50 verified 그림 6.
+2. 1차+2차 1,175: verified → loaded 1,164 · rejected 11 · candidate 0 · g008-check 막힘 0.
+3. 적재: DB minigame_items loaded 1,164(쉬게 함 0) · 그림 1,002장 91.2MB · 품목 5 · 다시 돌려도 같음(멱등) · 그림 md5 = 파일.
+4. 그림: 자름 12 · 교체 3 · iPhone 그대로(CV-30) · zip backups/minigame-2026-10-19.zip(1,012개 · 95.8MB).
+5. CV-30 · CV-47~51 · C72 끝 · DG-054 · C78. 하위 에이전트 0 · WebSearch 0.
+
+0. 찬종이 볼 것
+- 적재 표 (node scripts/minigame-load.mjs --apply · 백업 backups/quizweb-20261020-160226.dump)
+  | 게임 | 파일 | 전체 | verified→loaded | rejected | 넣음 | 그림(DB) |
+  |---|---|---|---|---|---|---|
+  | price | items · items-2 | 200 | 197 | 3 | 197 | 197 |
+  | worldprice | items · items-2 | 255 | 254 | 1 | 254 | 품목 5 |
+  | photo | items · items-2 | 220 | 219 | 1 | 219 | 219 |
+  | estimate | items · items-2 | 200 | 199 | 1 | 199 | 169 |
+  | which | items · items-2 | 300 | 295 | 5 | 295 | 412 |
+  | 합 | | 1,175 | 1,164 | 11 | **1,164** | **1,002장 · 91.2MB** |
+  · 적재 전 DB: loaded 573 · 그림 447장 → 적재 뒤 1,164 · 1,002장. 형식 거부 0 · 그림 없음 0 · 쉬게 함 0.
+- rejected 11 (넣지 않음)
+  · 전부터: price-0014 · worldprice-0046 · estimate-0087 · which-0039 · 0074 · 0097(V012) · which-0178(V017)
+  · 이번에 GEN: price-0062(롤렉스 정가를 문서로 못 닫음) · price-0098(price-0018 과 같은 상품) · which-0078(벤츠 2025 매출 없음) · photo-0140(한국 키 사진 없음)
+- 그림 교체 전 → 후 (이 PC · git 밖 · 원본은 tmp/g016/orig/)
+  · price-0013: tmp/g016/orig/assets__minigame__price__price-0013.jpg(액체형 병) → assets/minigame/price/price-0013.jpg(분말형 1kg 용기 · 네이버 이미지)
+  · estimate-0069: tmp/g016/orig/assets__minigame__estimate__estimate-0069.jpg(틀니 모형) → assets/minigame/estimate/estimate-0069.jpg(자연 치아 위턱 · 공용 CC0)
+  · which-0286-a: tmp/g016/orig/hunmin-original-which-0286-a.jpg(훈민정음 면 · 한자) → assets/minigame/which/which-0286-a.jpg(광화문 세종대왕 동상)
+  · which-0278-a: tmp/g016/orig/assets__minigame__which__which-0278-a.jpg(이름표 柳寬順) → assets/minigame/which/which-0278-a.jpg(얼굴만)
+  · price-0030: tmp/g016/orig/assets__minigame__price__price-0030.jpg(배지 글자) → assets/minigame/price/price-0030.jpg(제품만)
+- 교체 못 한 그림: photo-0140 키(한국 키 사진을 공용에서 못 구함 → rejected). 그 밖은 모두 자르거나 바꿈.
+- 못 한 것: 없음(브리핑 범위). CV-48 새 품목 46행 재독은 설계 판단 (a) 대로 그대로 적재 — 다음 V(C78).
+
+★ 원칙 메모
+- 원칙 7: 1차 642(verified 573 · candidate 63 · rejected 6) — 맞다. 2차 533(verified 503 · candidate 29 · rejected 1) — 맞다(V017 이 status 를 썼다). DB minigame_items loaded 573 · 그림 447 · 품목 3 — 맞다. g008-check 1,175 막힘 0 — 맞다. 마지막 DG-053 · C77 — 맞다(이번 DG-054 · C78).
+- ★ 브리핑과 다른 점: CV-50 은 "9장" 이지만 which-0178-a 는 V017 이 drop 한 항목이라 손대지 않았다 → 8장(자름 7 · 교체 1). zip 이름은 브리핑대로 2026-10-19(오늘은 10-20).
+- minigame-load.mjs: 같은 id 재적재 = 갱신(ON CONFLICT DO UPDATE · 그림 bytea 포함)이 이미 되어 있어 고치지 않았다. ★ --mark 는 파일을 2칸 들여쓰기로 다시 쓴다 — 원래 꼴(1칸)로 되돌려 커밋(diff 는 status 줄 1,164 뿐).
+- DB 쓰기: 백업 뒤 minigame_items · minigame_images · minigame_products 만(스크립트). questions · server/ client/ shared/ 0.
+- 웹: WebSearch 0 / 60 · WebFetch 9(애플 2 · 롤렉스 1(403) · 다나와 2 · CU 1 · 위키 4 — 폭스바겐 · BMW · 벤츠 · 코스트코) · 위키미디어 공용 · ko 위키 API(그림 찾기 · 넘겨주기) · 네이버 검색 API(이미지 · 뉴스 — .env 키 · 값은 어디에도 없음). 하위 에이전트 0 · 429 는 위키 API 요청 제한 2번(기다렸다 이어서) · 모델 그대로.
+
+A. 1차 반영 — scripts/g016-apply-v012.mjs (커밋 e916ae5)
+- 63 전부: price 6(그림 3 · 이름 1 · rejected 2) · photo 34(attribution · 라이선스 16 · 변형 18) · estimate 3(값 2 · 그림 1) · which 20(값 · 연도 16 · 그림 2 · 유로 단위 1 · rejected 1).
+- 고쳐 받은 것 8: price-0018(이름) · photo-0028 · 0031 · 0085 · 0108(제거 제안 변형 유지) · which-0001(asOf 날짜 + note) · 0036(상어 폭 note) · 0077(2025 유로 값 · '억 유로').
+- 그림: price-0013 교체 · 0030 · 0049 자름 · estimate-0069 교체 · which-0058-a · 0118-b 자름. iPhone(CV-30): 애플 공식 페이지 iphone-compare-iphone-17 그림과 같은 모양 → 그대로.
+- 기록 audit/g016-fixes.json parts.v012.rows[] = {id, take, why, before, after}.
+
+B. 2차 반영 — scripts/g016-apply-v017.mjs (커밋 68206e1)
+- 29: price 1(이름 러브미) · photo 20(변형 · attribution · 라이선스 · 그림 1 · rejected 1) · estimate 6(CV-47 원화 환산) · which 2(그림 자름). + CV-50 verified 6(자름 5 · 교체 1).
+- CV-49 변형 판단 (제거 제안 → 근거 → 처리)
+  | 항목 | 제거 제안 | ko 위키 | 뉴스(표기 그대로 · 앞 100건 중 / 전체) | 처리 |
+  |---|---|---|---|---|
+  | photo-0172 | 파리 개선문 · 프랑스 개선문 | 넘겨주기 → 에투알 개선문 | 100/2,457 · 99/307 | 유지 |
+  | photo-0174 | 타워 브릿지 | 넘겨주기 → 타워 브리지 | 28/1,910 | 유지 |
+  | photo-0175 | 브란덴부르크 개선문 | 넘겨주기 → 브란덴부르크 문 | 57/59 | 유지 + 브란덴부르크문 더함 |
+  | photo-0176 | 버즈 칼리파 · 버즈 두바이 | 넘겨주기 → 부르즈 할리파 | 80/1,655 · 61/2,556 | 유지 |
+  | photo-0185 | 아야 소피아 성당 | 넘겨주기 → 아야 소피아 | 69/362 | 유지 + 아야 소피아 대성당(23/36) 더함 |
+  | photo-0188 | 빈센트 반 고호 | 넘겨주기 → 빈센트 반 고흐 | 92/123 | 유지 |
+  | photo-0191 | 토마스 에디슨 | 넘겨주기 → 토머스 에디슨 | 100/1,969 | 유지 |
+  | photo-0193 | 마크 트와인 | 넘겨주기 → 마크 트웨인 | 2/2 | 유지 |
+  | photo-0194 | 프로이드 · 지그문트 프로이드 | 넘겨주기 → 지그문트 프로이트 | 100/2,517 · 95/215 | 유지 |
+  | photo-0213 | 왕부리새 | 넘겨주기 → 왕부리새류 | 96/138 | 유지 + 큰부리새(99/241) 더함(CV-51) |
+  | photo-0220 | 몰라몰라(판단 요청) | 넘겨주기 → 개복치 | 2/1,663 | 유지 + 안진복 · 골복짱이 |
+  | photo-0085(1차) | 마추피추 | 넘겨주기 → 마추 픽추 | 100/545 | 유지 |
+  | photo-0031(1차) | 타이랩 | 없음 | 86/86 | 유지(기사) + 집 타이 · 호스 타이 |
+  · 근거 파일 tmp/g016/variant-evidence.json(스크립트 tmp/g016/variant-evidence.mjs). 표준국어대사전은 열지 않았다(위키 · 기사로 모두 닫혀서).
+- CV-51: photo-0207 altAnswers 다식 · 0141 다식판(설계 판단 그대로) · 0213 큰부리새 · 0214 서명 자름 · 0140 rejected.
+- CV-47 (a): estimate-0185~0190 value 원화 · unit 원 · note(원래 통화 · 연도 · 환율 · "당시 가치 아님") · sources 에 x-rates 더함. explanation 의 원래 통화 문장은 그대로.
+
+C. 검사
+- node scripts/g008-check.mjs: 1차+2차 1,175 · 막힘 0 · 경고 0(반영 뒤 · 적재 뒤 · --mark 뒤 모두).
+- status: loaded 1,164 · rejected 11 · candidate 0 · verified 0(적재 뒤 --mark).
+- 결정 표 다시 돌림: v012 · v017 모두 바뀔 것 0(멱등).
+
+D. 적재 (커밋 8427a89)
+- npm run db:backup(quizweb-20261020-160226) → dry-run 표(넣을 1,164 · 그림 1,002 · 품목 5) → --apply → 다시 --apply(같음) → --mark → 파일 꼴 되돌림 → 다시 --apply(같음).
+- DB: minigame_items loaded · active 1,164(estimate 199 · photo 219 · price 197 · which 295 · worldprice 254) · 쉬게 함 0(새로 rejected 된 4 는 전에 적재된 적 없음) · minigame_images 1,002 · minigame_products 5. 교체 그림 5장 크기 · md5 확인(which-0286-a md5 = 파일).
+
+E. zip
+- backups/minigame-2026-10-19.zip — assets/minigame 전체 1,011장 + README(1,012개 · 95.8MB) · 교체 · 자른 그림 포함(which-0286-a 51,750 바이트 확인).
+
+F. 문서
+- docs/18 7절(G016 재적재 · 재적재 규칙) · 05 Track E · 06 · 07 DG-054 · 13(CV-30 · CV-47~51 · C72 끝 · C78 · 머리글) · ai-out/README.md G 표 · 이 보고서.
+
+GEN 판단 (DG-054)
+1. 이름을 그림에 맞춤 2 — price-0018(블랙은 프레임 · 좌판은 딥그린) · price-0144(러브미). 같은 상품 price-0098 은 rejected.
+2. rejected 4 — price-0062 · 0098 · which-0078 · photo-0140.
+3. which-0077 은 2025 유로 값 · '억 유로'(환산 안 함) · which-0001 asOf 날짜 꼴 · which-0036 상어 폭 note.
+4. 변형 제거 제안은 CV-49 기준으로 모두 유지 · 영문 변형만 뺌 · attribution 손질 표시는 영어 꼴.
+5. 그림은 자르기 먼저 · 자를 수 없는 3 만 교체.
+
+새 결정 필요
+- 없음(Q 를 올리지 않았다). 메모는 13 C78(rejected 11 · 다음 V 표본 · CV-48 재독 · 사치품 시세 · items-3.json).
+
+고친 문서
+- docs/18-MINIGAME-DATA.md · docs/05-STATUS.md · docs/06-WORKLOG.md · docs/07-DECISIONS.md(DG-054) · docs/13-PENDING-CHECKS.md · ai-out/README.md · ai-out/G016.txt
+- 코드 · 데이터: scripts/g016-lib.mjs · g016-apply-v012.mjs · g016-apply-v017.mjs · g016-crop.mjs · data/minigame/*/items.json · items-2.json · data/pipeline/audit/g016-fixes.json
+- git 밖: assets/minigame/(그림 15장) · backups/minigame-2026-10-19.zip · backups/quizweb-20261020-160226.dump
