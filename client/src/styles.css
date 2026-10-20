@@ -6529,3 +6529,372 @@ button.primary.tone-warn {
   font-size: 0.7rem;
   color: var(--text-dim);
 }
+
+/* =============================================================================
+   ★★★ R056 — 문제 평가(설문) · D-246
+   (가) 정답 공개: 👍/👎 + 사유 칩은 진행 안내와 같은 줄(.reveal-foot) — 카드 높이가 늘지 않는다 · 칩은 가로 스크롤
+   (나) 결과 화면 접이식 목록 · (다) 로비 "지난 판 문제 평가" 팝업
+   ============================================================================= */
+.reveal-foot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  min-width: 0;
+}
+.reveal.has-winner .reveal-foot {
+  grid-column: 1 / -1;
+}
+.reveal-foot .reveal-next {
+  flex: 0 0 auto;
+  margin: 0 0 0 auto;
+  white-space: nowrap;
+}
+.reveal-fb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+.reveal-fb.down {
+  flex: 1 1 auto;
+}
+.fb-votes {
+  display: inline-flex;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+button.fb-vote {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin: 0;
+  padding: 2px 10px;
+  height: 28px;
+  box-sizing: border-box;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-dim);
+  background: var(--surface);
+  border-color: var(--border);
+}
+button.fb-vote.up.on {
+  color: var(--ok);
+  border-color: var(--ok);
+  background: color-mix(in srgb, var(--ok) 14%, var(--surface));
+}
+button.fb-vote.down.on {
+  color: var(--bad);
+  border-color: currentColor;
+  background: color-mix(in srgb, var(--bad) 12%, var(--surface));
+}
+.fb-chips {
+  display: flex;
+  gap: 4px;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* ★ 스크롤바는 숨긴다 — 보이면 줄 높이가 늘어 공개 카드가 밀린다. 손가락 · 휠(가로로 바꿔 줌)로 민다 · 오른쪽 끝을 흐리게(더 있다는 표시) */
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 22px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 22px), transparent);
+  padding-right: 18px;
+}
+.fb-chips::-webkit-scrollbar {
+  display: none;
+}
+button.fb-chip {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 2px 9px;
+  height: 26px;
+  box-sizing: border-box;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface);
+  border-color: var(--border);
+}
+button.fb-chip.on {
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.fb-err {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--bad);
+}
+/* (나) 결과 화면 */
+.fb-result {
+  margin-top: 12px;
+  text-align: left;
+}
+.fb-result {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+button.fb-result-head {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  margin: 0;
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  border-radius: 6px;
+  font-weight: 900;
+  font-size: 0.92rem;
+  text-align: left;
+  white-space: normal;
+}
+button.fb-result-head:hover:not(:disabled) {
+  transform: none;
+  color: var(--accent);
+}
+/* ★ PC 한 화면 — 결과 카드는 남는 높이만(채팅 칸 최소 120px 은 남긴다) · 줄어드는 것은 평가 목록뿐 */
+:where(.ui-pc) .room-result .center-main {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+:where(.ui-pc) .room-result .result-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+:where(.ui-pc) .room-result .result-card > * {
+  flex: 0 0 auto;
+}
+:where(.ui-pc) .room-result .result-card > .fb-result {
+  flex: 0 1 auto;
+  min-height: 0;
+}
+/* 채팅은 기준 높이 0 에서 남는 만큼 자란다(옛 기준 = 100vh 라 줄어들 때 결과 카드까지 같이 줄었다) */
+:where(.ui-pc) .room-result .chat-card {
+  flex-basis: 0;
+}
+:where(.ui-pc) .room-result .fb-list {
+  flex: 0 1 auto;
+  min-height: 64px;
+  max-height: none;
+}
+.fb-sub {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.fb-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  max-height: min(42vh, 360px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.fb-row {
+  min-width: 0;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+.fb-row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.fb-no {
+  flex: 0 0 auto;
+  min-width: 1.6em;
+  font-weight: 900;
+  color: var(--accent);
+}
+.fb-q {
+  display: grid;
+  min-width: 0;
+  flex: 1 1 auto;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+.fb-text {
+  overflow-wrap: anywhere;
+}
+.fb-answer {
+  font-size: 0.76rem;
+}
+.fb-row-more {
+  display: grid;
+  gap: 6px;
+  margin-top: 6px;
+  min-width: 0;
+}
+.fb-row-more .fb-chips {
+  flex-wrap: wrap;
+  overflow: visible;
+  -webkit-mask-image: none;
+  mask-image: none;
+  padding-right: 0;
+}
+.fb-comment {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  border-radius: 10px;
+}
+.fb-comment:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.fb-empty {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+}
+/* (다) 로비 */
+button.fb-last-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: 10px;
+  font-size: 0.82rem;
+}
+.fb-modal {
+  position: relative;
+  width: min(560px, calc(100vw - 24px));
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 12px 14px 14px;
+}
+.fb-modal .fb-list {
+  max-height: none;
+  overflow: visible;
+}
+:where(.ui-mobile) .fb-modal {
+  width: calc(100vw - 16px);
+}
+
+/* =============================================================================
+   ★★ R056 — 프로필 카드(사진 크게 · 업적) · 전체 업적 창 · 작은 수정 둘 (D-247 · D-248)
+   ============================================================================= */
+.avatar.zoomable {
+  cursor: zoom-in;
+}
+.avatar.zoomable:hover {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.person-card {
+  position: relative;
+  width: min(380px, calc(100vw - 24px));
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 12px 14px 14px;
+  text-align: center;
+}
+.person-card .pop-title {
+  font-weight: 900;
+}
+/* ★ 저장 원본은 256×256(R039) — 화면 폭 안에서 그대로 확대(모바일은 거의 전체 폭) */
+.person-photo {
+  display: block;
+  width: min(320px, calc(100vw - 56px));
+  height: auto;
+  aspect-ratio: 1;
+  margin: 4px auto 10px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--shadow-pop);
+}
+.person-letter {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0 10px;
+}
+.person-ach {
+  text-align: left;
+}
+.person-ach h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+}
+.person-ach-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 0.82rem;
+}
+.person-none {
+  margin: 0;
+  font-size: 0.82rem;
+}
+button.person-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: 10px;
+}
+.ach-all-modal {
+  position: relative;
+  width: min(560px, calc(100vw - 24px));
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 12px 14px 14px;
+}
+.ach-all-modal .pop-title {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  flex-wrap: wrap;
+}
+.ach-all .ach.on .ach-medal {
+  color: var(--ok);
+  font-size: 1.2rem;
+}
+:where(.ui-mobile) .ach-all {
+  grid-template-columns: minmax(0, 1fr);
+}
+.profile-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.profile-btns button {
+  margin-top: 0;
+}
+/* ★ D-247 (a) 미니게임 골라 하기 — 가로 스크롤: 버튼은 전역 white-space:nowrap(253행)이라 한 줄 설명이 줄을 안 바꾸고 칸(360px)을 넘었다.
+   → 항목 안에서는 줄바꿈 · 칸 폭 안(border-box). 가리기(overflow-x:hidden)가 아니라 넘치지 않게 */
+.mg-pick-item {
+  box-sizing: border-box;
+  min-width: 0;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+/* ★ D-247 (b) 이모티콘 찾기 결과 없음 "없어요" — 36px 격자 칸 하나에 들어가 글자마다 줄이 바뀌었다 → 격자 한 줄 전체 */
+.emoji-grid > .emoji-none {
+  grid-column: 1 / -1;
+  margin: 8px 0;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 0.85rem;
+}

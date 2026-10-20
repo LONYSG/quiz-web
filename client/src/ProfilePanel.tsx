@@ -9,7 +9,7 @@
 // =============================================================================
 
 import { useCallback, useEffect, useState } from 'react';
-import { BarChart3, Camera, Pencil } from 'lucide-react';
+import { Award, BarChart3, Camera, Maximize2, Pencil } from 'lucide-react';
 import { NICKNAME_LIMIT_HINT, NICKNAME_TOO_LONG_MESSAGE, RULES, nicknameFits } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import BusyButton from './BusyButton.js';
@@ -18,6 +18,7 @@ import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import ProfileEditor from './ProfileEditor.js';
 import StatsModal from './StatsModal.js';
+import { openPersonCard } from './PersonCard.js';
 import { changeNickname, deleteAvatar, errorMessage, fetchPoints, uploadAvatar, type PointBalance } from './api.js';
 import { usePopup } from './popup.js';
 import { useDismiss } from './useDismiss.js';
@@ -113,9 +114,15 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
               </p>
             )}
             {/* ★ R054 — 전적 · 업적 (읽기만 · 표시만) */}
-            <button type="button" className="ghost tiny stats-open" onClick={() => setStatsOpen(true)}>
-              <Icon icon={BarChart3} /> 전적 · 업적
-            </button>
+            <span className="profile-btns">
+              <button type="button" className="ghost tiny stats-open" onClick={() => setStatsOpen(true)}>
+                <Icon icon={BarChart3} /> 전적 · 업적
+              </button>
+              {/* ★ R056 — 전체 업적 창(다른 사람 프로필 카드와 같은 창) */}
+              <button type="button" className="ghost tiny ach-all-open" onClick={() => openPersonCard({ accountId, nickname, colorIndex, avatarV }, 'all')}>
+                <Icon icon={Award} /> 전체 업적
+              </button>
+            </span>
             {/* ★ R048 C — 포인트 한 줄 (찬종: "여태 맞힌 문제수 = 1 point") */}
             <p className="profile-points" aria-live="polite">
               <span className="dim">포인트</span>{' '}
@@ -152,9 +159,15 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
                 />
               </label>
               {avatarV ? (
-                <button type="button" className="ghost tiny" onClick={() => setPhotoDelOpen(true)}>
-                  사진 지우기
-                </button>
+                <>
+                  {/* ★ R056 — 사진 크게 보기 (사진을 누르면 바꾸기라서 따로 둔다) */}
+                  <button type="button" className="ghost tiny photo-zoom" onClick={() => openPersonCard({ accountId, nickname, colorIndex, avatarV })}>
+                    <Icon icon={Maximize2} /> 크게 보기
+                  </button>
+                  <button type="button" className="ghost tiny" onClick={() => setPhotoDelOpen(true)}>
+                    사진 지우기
+                  </button>
+                </>
               ) : (
                 <span className="dim profile-tip">
                   <Icon icon={Camera} /> 눌러 사진 넣기

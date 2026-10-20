@@ -48,6 +48,7 @@ import FriendList from './FriendList.js';
 // import { BellButton } from './SocialPopups.js'; // ★ R044 A-3 — 알림 끔 (D-214)
 import InviteToast from './InviteToast.js';
 import AchievementToast from './AchievementToast.js';
+import { PersonCardHost } from './PersonCard.js';
 import ProfilePanel from './ProfilePanel.js';
 import ShopPanel from './ShopPanel.js';
 // ★ R050 — /lab 화면은 따로 받는다 (첫 화면 묶음에 넣지 않는다)
@@ -541,6 +542,8 @@ export default function App() {
       )}
       {/* ★ R054 — 업적 토스트 */}
       {socket && account && <AchievementToast socket={socket} />}
+      {/* ★ R056 — 아바타를 누르면 뜨는 프로필 카드(사진 크게 · 업적) · 전체 업적 창 */}
+      {account && <PersonCardHost />}
       {view.body}
       {switchOpen && switchTo && (
         <ConfirmModal

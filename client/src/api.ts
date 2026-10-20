@@ -211,3 +211,65 @@ export async function deleteAvatar(): Promise<void> {
   const res = await fetch('/api/avatar', { method: 'DELETE', credentials: 'same-origin' });
   if (!res.ok) throw (await res.json().catch(() => ({}))) as ApiError;
 }
+
+// =============================================================================
+// ★★★ R056 — 문제 평가(설문) · 다른 사람 업적
+// =============================================================================
+export interface QuestionFeedbackValue {
+  vote: 1 | -1;
+  reasons: string[];
+  comment: string | null;
+}
+
+/** 평가 저장 (vote null = 취소). 성공하면 저장된 값(취소면 null) */
+export async function postQuestionFeedback(body: {
+  questionId: string;
+  gameId: string;
+  vote: 1 | -1 | null;
+  reasons?: string[];
+  comment?: string | null;
+}): Promise<QuestionFeedbackValue | null> {
+  const res = await fetch('/api/feedback/question', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(body),
+    credentials: 'same-origin',
+  });
+  const json = (await res.json().catch(() => ({}))) as { ok?: boolean; feedback?: QuestionFeedbackValue | null } & ApiError;
+  if (!res.ok || !json.ok) throw json;
+  return json.feedback ?? null;
+}
+
+export interface FeedbackItem {
+  questionId: string;
+  index: number;
+  text: string;
+  answer: string;
+  vote: 1 | -1 | null;
+  reasons: string[];
+  comment: string | null;
+}
+
+/** 그 판 문제 목록 + 내 평가 */
+export async function fetchGameFeedback(gameId: string): Promise<FeedbackItem[]> {
+  const res = await fetch(`/api/feedback/game/${gameId}/mine`, { credentials: 'same-origin' });
+  const json = (await res.json().catch(() => ({}))) as { ok?: boolean; items?: FeedbackItem[] } & ApiError;
+  if (!res.ok || !json.items) throw json;
+  return json.items;
+}
+
+/** 내가 참가한 마지막 끝난 판 (없으면 null) */
+export async function fetchLastFeedbackGame(): Promise<string | null> {
+  const res = await fetch('/api/feedback/last-game', { credentials: 'same-origin' });
+  if (!res.ok) return null;
+  const json = (await res.json().catch(() => ({}))) as { gameId?: string | null };
+  return json.gameId ?? null;
+}
+
+/** 다른 사람(또는 나)의 얻은 업적 */
+export async function fetchAchievementsOf(accountId: string): Promise<{ key: string; earnedAt: string }[]> {
+  const res = await fetch(`/api/profile/${accountId}/achievements`, { credentials: 'same-origin' });
+  const json = (await res.json().catch(() => ({}))) as { ok?: boolean; achievements?: { key: string; earnedAt: string }[] };
+  if (!res.ok || !json.achievements) throw new Error(`achievements ${res.status}`);
+  return json.achievements;
+}

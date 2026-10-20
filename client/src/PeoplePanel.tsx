@@ -67,7 +67,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
             const pickable = !me && canPick(p.accountId);
             const body = (
               <>
-                <Avatar nickname={p.nickname} colorIndex={p.colorIndex} accountId={p.accountId} avatarV={p.avatarV} />
+                <Avatar nickname={p.nickname} colorIndex={p.colorIndex} accountId={p.accountId} avatarV={p.avatarV} zoom />
                 <span className="people-name">
                   <FitText text={p.nickname} className="nick" style={{ color: `var(--p${p.colorIndex})` }} minPx={12} />
                   <span className="people-badges">

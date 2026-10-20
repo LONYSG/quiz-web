@@ -179,7 +179,8 @@ export default function EmojiPicker({ slots, onSend, flash }: Props) {
                     <Emoji id={e.id} size={e.category === 'special' ? 34 : 26} />
                   </button>
                 ))}
-            {shown.length === 0 && !specialGroups && <p className="dim">없어요</p>}
+            {/* ★ R056 — 격자 한 줄 전체(칸 하나에 들어가 글자마다 줄이 바뀌었다) */}
+            {shown.length === 0 && !specialGroups && <p className="dim emoji-none">없어요</p>}
           </div>
         </div>
       )}

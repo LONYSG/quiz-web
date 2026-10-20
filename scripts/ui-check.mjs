@@ -3098,6 +3098,254 @@ async function r054Stats(browser) {
   record('★★★ B 업적 토스트 — 첫 정답 → "🏅 업적 — 첫 정답" · 채팅 한 줄', got && (await H.evaluate("(document.querySelector('.ach-toast')?.innerText ?? '').includes('첫 정답')")) && (await H.evaluate("(document.querySelector('.chat-log')?.innerText ?? '').includes('🏅')")));
   await H.close?.();
 }
+// =============================================================================
+// ★★★ R056 — 문제 평가(설문) · 작은 수정 넷 (UICHECK_R056=1 · SHOT_DIR=r056)
+//   R056_BEFORE=1 이면 옛 빌드로 "전" 그림만(골라 하기 가로 스크롤 · 이모티콘 "없어요")
+// =============================================================================
+/** 골라 하기 창 — 가로로 넘치나(창 scrollWidth > clientWidth) · 가장 넓은 칸 */
+const PICK_OVER = "JSON.stringify((() => { const p = document.querySelector('.mg-pick-pop'); if (!p) return null; const items = [...p.querySelectorAll('.mg-pick-item')]; const w = Math.max(...items.map((i) => Math.round(i.scrollWidth))); return { pop: Math.round(p.clientWidth), scroll: Math.round(p.scrollWidth), over: p.scrollWidth - p.clientWidth, widest: w, white: items[0] ? getComputedStyle(items[0]).whiteSpace : null }; })())";
+/** "없어요" 줄 수 · 너비 */
+const NONE_LINES = "JSON.stringify((() => { const el = [...document.querySelectorAll('.emoji-grid p')].find((p) => p.textContent.trim() === '없어요'); if (!el) return null; const r = document.createRange(); r.selectNodeContents(el); const tops = new Set([...r.getClientRects()].map((x) => Math.round(x.top))); return { lines: tops.size, w: Math.round(el.getBoundingClientRect().width) }; })())";
+async function r056PickerEmoji(H, tag) {
+  // 골라 하기 — PC · m390
+  for (const [w, h, nm, touch] of [[1280, 720, 'pc', false], [390, 844, 'm390', true]]) {
+    if (touch) await touchDevice(H, w, h);
+    else {
+      await touchDevice(H, w, h, false);
+      await H.setViewport(w, h);
+    }
+    await H.evaluate("window.dispatchEvent(new Event('resize'))");
+    await sleep(500);
+    if (!(await H.evaluate("document.querySelector('.mg-pick-pop') !== null"))) await realClick(H, '#minigame-pick-btn');
+    await H.waitFor("document.querySelector('.mg-pick-pop') !== null", 5000);
+    await sleep(300);
+    const m = JSON.parse(await H.evaluate(PICK_OVER));
+    await snap(H, `94-${tag}-picker-${nm}`);
+    record(`★★ ${tag === 'before' ? '(전) ' : ''}E-a 골라 하기 ${nm} 가로 스크롤 ${tag === 'before' ? '있음(재현)' : '0'}`, tag === 'before' ? !!m && m.over > 0 : !!m && m.over <= 0, JSON.stringify(m));
+    await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+    await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+    await sleep(300);
+    if (await H.evaluate("document.querySelector('.mg-pick-pop') !== null")) await realClick(H, '#minigame-pick-btn');
+    await sleep(200);
+    // 이모티콘 찾기 결과 없음
+    await realClick(H, '.emoji-btn');
+    await H.waitFor("document.querySelector('.emoji-search') !== null", 5000);
+    await realType(H, '.emoji-search', 'zzqqxx');
+    await sleep(300);
+    const n = JSON.parse(await H.evaluate(NONE_LINES));
+    await snap(H, `95-${tag}-emoji-none-${nm}`);
+    record(`★★ ${tag === 'before' ? '(전) ' : ''}E-b 이모티콘 "없어요" ${nm} ${tag === 'before' ? '격자 칸 하나에 갇힘(재현)' : '한 줄 · 격자 한 줄 전체'}`, tag === 'before' ? !!n && (n.lines > 1 || n.w <= 40) : !!n && n.lines === 1 && n.w > 40, JSON.stringify(n));
+    await realClick(H, '.emoji-pop .popup-close');
+    await sleep(200);
+  }
+  await touchDevice(H, 1280, 720, false);
+  await H.setViewport(1280, 720);
+  await H.evaluate("window.dispatchEvent(new Event('resize'))");
+  await sleep(400);
+}
+/** 목록 안(줄어든 스크롤 칸) 요소는 먼저 보이게 한 뒤 누른다 */
+const clickInView = async (P, sel) => {
+  await P.evaluate(`document.querySelector(${JSON.stringify(sel)})?.scrollIntoView({ block: 'nearest', inline: 'nearest' })`);
+  await sleep(150);
+  return realClick(P, sel);
+};
+const FOOT = "JSON.stringify([...document.querySelectorAll('.reveal-foot, .reveal-foot > *, .reveal-main, .ceremony')].map((e) => (e.className.split(' ')[0]) + ':' + Math.round(e.getBoundingClientRect().height * 10) / 10))";
+const pressKey = async (P, key, code, vk) => {
+  await P.send('Input.dispatchKeyEvent', { type: 'keyDown', key, code, windowsVirtualKeyCode: vk });
+  await P.send('Input.dispatchKeyEvent', { type: 'keyUp', key, code, windowsVirtualKeyCode: vk });
+};
+const tapOn = async (P, sel) => {
+  // ★ 가로 스크롤 안에 숨은 칩은 먼저 보이게(사람도 밀어서 누른다)
+  await P.evaluate(`document.querySelector(${JSON.stringify(sel)})?.scrollIntoView({ inline: 'center', block: 'nearest' })`);
+  await sleep(150);
+  const r = await rectOf(P, sel);
+  if (!r) return false;
+  await trustedTap(P, r.x + r.w / 2, r.y + r.h / 2);
+  await sleep(250);
+  return true;
+};
+async function r056Flow(browser) {
+  // ★ 정답 공개는 실제 8초로 돌린다(묶음 env RESOLVED_WAIT_MS=8000 — 미니게임 모드 기본 1.5초면 누를 틈이 없다)
+  const H = await newPage(browser, 'F-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'fh', '평가방장');
+  const roomId = await createRoom(H, 'R056 평가');
+  if (process.env.R056_BEFORE) {
+    await r056PickerEmoji(H, 'before');
+    await H.close?.();
+    return;
+  }
+  const G = await newPage(browser, 'F-guest', true);
+  await touchDevice(G, 390, 844);
+  await signUp(G, 'fg', '평가손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 10000);
+  // ── E (a)(b) — 후
+  await r056PickerEmoji(H, 'after');
+  // ── B 정답 공개 👍/👎
+  await setQuestionCount(H, 3);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await H.waitFor("document.querySelector('.question-card .q-text') !== null", 30000);
+  await answerCurrent(H, H);
+  const shown = await H.waitFor("document.querySelector('.reveal-fb') !== null", 8000);
+  await G.waitFor("document.querySelector('.reveal-fb') !== null", 4000);
+  record('★★★ B 정답 공개에 👍 좋아 · 👎 별로', shown && (await H.evaluate("[...document.querySelectorAll('.reveal-fb .fb-vote')].map((b) => b.innerText.trim()).join(',')")) === '좋아,별로');
+  const hH0 = (await rectOf(H, '.reveal'))?.h;
+  const foot0 = await H.evaluate(FOOT);
+  const gH0 = (await rectOf(G, '.reveal'))?.h;
+  // ★ 공개는 8초 — 두 사람 조작을 먼저 하고 그림은 뒤에
+  await H.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await G.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await realClick(H, '.reveal-fb .fb-vote.down');
+  await tapOn(G, '.reveal-fb .fb-vote.down');
+  await H.waitFor("document.querySelector('.reveal-fb .fb-chips') !== null", 2000);
+  await G.waitFor("document.querySelector('.reveal-fb .fb-chips') !== null", 2000);
+  await realClick(H, '.reveal-fb .fb-chip[data-reason="never_heard"]');
+  await realClick(H, '.reveal-fb .fb-chip[data-reason="unclear"]');
+  await tapOn(G, '.reveal-fb .fb-chip[data-reason="boring"]');
+  const focusKept = await H.evaluate("document.activeElement === document.querySelector('.chat-card input')");
+  const gFocus = await G.evaluate("document.activeElement === document.querySelector('.chat-card input')");
+  const hH1 = (await rectOf(H, '.reveal'))?.h;
+  const foot1 = await H.evaluate(FOOT);
+  const gH1 = (await rectOf(G, '.reveal'))?.h;
+  const gm = JSON.parse(await G.evaluate("JSON.stringify({ doc: document.documentElement.scrollWidth, vw: innerWidth, chipsScroll: document.querySelector('.reveal-fb .fb-chips')?.scrollWidth > document.querySelector('.reveal-fb .fb-chips')?.clientWidth })"));
+  await snap(G, '96-reveal-fb-m390');
+  await snap(H, '96-reveal-fb-pc');
+  record('★★★ B 👎 · 사유 칩을 눌러도 입력창(답안) 포커스 그대로(PC 클릭 · m390 터치)', focusKept && gFocus, `${focusKept} · ${gFocus}`);
+  record('★★ B PC 👎 + 칩 — 공개 카드 높이 그대로(±1px)', Math.abs(hH1 - hH0) <= 1, `${hH0} → ${hH1} · ${foot0} → ${foot1}`);
+  record('★★★ B m390 👎 + 칩 — 세로 안 밀림 · 페이지 가로 넘침 없음(칩만 가로 스크롤)', Math.abs(gH1 - gH0) <= 1 && gm.doc <= gm.vw && gm.chipsScroll, `${gH0} → ${gH1} · ${JSON.stringify(gm)}`);
+  const hLogin = `${ACCOUNT_PREFIX}_fh`;
+  const gLogin = `${ACCOUNT_PREFIX}_fg`;
+  await sleep(400);
+  const rowsB = await withPg(async (c) => (await c.query(`SELECT a.login_id, f.vote, f.reasons FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = ANY($1) ORDER BY a.login_id`, [[hLogin, gLogin]])).rows);
+  const okB = rowsB.length === 2 && rowsB.some((r) => r.login_id === hLogin && r.vote === -1 && r.reasons.join(',') === 'never_heard,unclear') && rowsB.some((r) => r.login_id === gLogin && r.reasons.join(',') === 'boring');
+  record('★★★ B 즉시 저장 — 표 행(방장 👎 never_heard,unclear · 손님 👎 boring)', okB, JSON.stringify(rowsB));
+  // 나머지 두 문제
+  for (let i = 2; i <= 3; i += 1) {
+    await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.reveal') === null", 20000);
+    await sleep(300);
+    await answerCurrent(H, H);
+    await H.waitFor("document.querySelector('.reveal-fb') !== null", 8000);
+    if (i === 2) {
+      // 밤 그림 — 👎 칩이 열린 모습
+      await H.evaluate("document.documentElement.dataset.theme = 'night'");
+      await G.evaluate("document.documentElement.dataset.theme = 'night'");
+      await realClick(H, '.reveal-fb .fb-vote.down');
+      await tapOn(G, '.reveal-fb .fb-vote.up');
+      await sleep(450);
+      await snap(H, '96-reveal-fb-pc-night');
+      await snap(G, '96-reveal-fb-m390-night');
+      await H.evaluate("document.documentElement.dataset.theme = 'pastel'");
+      await G.evaluate("document.documentElement.dataset.theme = 'pastel'");
+    }
+  }
+  // ── C 결과 화면
+  await H.waitFor("document.querySelector('.fb-list')?.dataset.loaded === '1'", 30000);
+  await G.waitFor("document.querySelector('.fb-list')?.dataset.loaded === '1'", 10000);
+  const rowsN = await H.evaluate("document.querySelectorAll('.fb-row').length");
+  const firstDown = await H.evaluate("document.querySelector('.fb-row')?.classList.contains('down') && document.querySelector('.fb-row .fb-vote.down')?.classList.contains('on')");
+  record('★★★ C 결과 화면 목록 3문제 · 공개 때 누른 👎 가 그대로', rowsN === 3 && firstDown, `${rowsN} · ${firstDown}`);
+  if (!(await H.evaluate("document.querySelector('.fb-row:nth-child(2) .fb-vote.down')?.classList.contains('on')"))) await clickInView(H, '.fb-row:nth-child(2) .fb-vote.down');
+  await H.waitFor("document.querySelector('.fb-row:nth-child(2) .fb-comment') !== null", 2000);
+  await clickInView(H, '.fb-row:nth-child(2) .fb-chip[data-reason="other"]');
+  await H.evaluate("document.querySelector('.fb-row:nth-child(2) .fb-comment')?.scrollIntoView({ block: 'nearest' })");
+  await sleep(150);
+  await realType(H, '.fb-row:nth-child(2) .fb-comment', '역사 문제가 너무 어려워요');
+  await pressKey(H, 'Enter', 'Enter', 13);
+  await sleep(600);
+  const qid2 = await H.evaluate("document.querySelector('.fb-row:nth-child(2)')?.dataset.fbQuestion");
+  const c2 = await withPg(async (c) => (await c.query(`SELECT f.comment, f.reasons FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1 AND f.question_id = $2`, [hLogin, qid2])).rows[0] ?? null);
+  record('★★★ C 기타 의견 저장(Enter) · 사유 other', c2?.comment === '역사 문제가 너무 어려워요' && c2.reasons.includes('other'), JSON.stringify(c2));
+  record('★★ C 질문은 복사 막기(.no-copy)', await H.evaluate("[...document.querySelectorAll('.fb-text')].every((e) => e.classList.contains('no-copy'))"));
+  await snap(H, '97-result-fb-pc');
+  await tapOn(G, '.fb-row:nth-child(3) .fb-vote.up');
+  await sleep(300);
+  const gDoc = JSON.parse(await G.evaluate("JSON.stringify({ doc: document.documentElement.scrollWidth, vw: innerWidth })"));
+  await snap(G, '97-result-fb-m390');
+  record('★★ C m390 결과 목록 — 가로 넘침 없음', gDoc.doc <= gDoc.vw, JSON.stringify(gDoc));
+  await H.evaluate("document.documentElement.dataset.theme = 'night'");
+  await sleep(450);
+  await snap(H, '97-result-fb-pc-night');
+  await H.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  // ── C 로비 링크
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '로비로')?.click()");
+  await H.waitFor("document.querySelector('#feedback-last-btn') !== null", 10000);
+  record('★★ C 로비 "지난 판 문제 평가" 링크', await H.evaluate("document.querySelector('#feedback-last-btn') !== null"));
+  await realClick(H, '#feedback-last-btn');
+  await H.waitFor("document.querySelector('.fb-modal .fb-list')?.dataset.loaded === '1'", 6000);
+  await sleep(300);
+  await snap(H, '98-lobby-fb-pc');
+  const kept = await H.evaluate("document.querySelector('.fb-modal .fb-row:nth-child(2) .fb-comment')?.value");
+  record('★★ C 팝업 목록 = 결과 화면과 같은 값(의견 그대로)', kept === '역사 문제가 너무 어려워요', kept);
+  await pressKey(H, 'Escape', 'Escape', 27);
+  await sleep(300);
+  record('★ C 팝업 Esc 로 닫힘', await H.evaluate("document.querySelector('.fb-modal') === null"));
+  // ── E (c)(d) 프사 확대 · 업적
+  const sharp = (await import('sharp')).default;
+  const svg = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><rect width="256" height="256" fill="#ffb347"/><circle cx="128" cy="110" r="60" fill="#8a6bff"/><rect x="58" y="180" width="140" height="50" rx="25" fill="#18b26b"/></svg>');
+  const png = await sharp(svg).png().toBuffer();
+  await G.waitFor("document.querySelector('.lobby-card') !== null", 10000);
+  const up = await G.evaluate(`fetch('/api/avatar', { method: 'PUT', headers: { 'content-type': 'image/png' }, body: Uint8Array.from(atob('${png.toString('base64')}'), (c) => c.charCodeAt(0)), credentials: 'same-origin' }).then((r) => r.status)`);
+  const gId = await withPg(async (c) => String((await c.query(`SELECT id FROM accounts WHERE login_id = $1`, [gLogin])).rows[0].id));
+  const seatAv = `.seat-card img[data-person="${gId}"]`;
+  await H.waitFor(`document.querySelector('${seatAv}') !== null`, 6000);
+  await realClick(H, seatAv);
+  await H.waitFor("document.querySelector('.person-card .person-photo') !== null", 4000);
+  await H.waitFor("document.querySelector('.person-ach')?.dataset.loaded === '1'", 4000);
+  await sleep(500);
+  const ph = JSON.parse(await H.evaluate("JSON.stringify({ w: Math.round(document.querySelector('.person-photo')?.getBoundingClientRect().width ?? 0), nat: document.querySelector('.person-photo')?.naturalWidth, kick: document.querySelector('.confirm, .confirm-modal') !== null })"));
+  await snap(H, '99-avatar-zoom-pc');
+  record('★★★ E-c 참여자 칸 아바타 → 사진 크게(원본 256 → 화면 300px 이상) · 강퇴 창은 안 뜸', up === 200 && ph.w >= 300 && ph.nat === 256 && !ph.kick, `${up} · ${JSON.stringify(ph)}`);
+  await realClick(H, '.person-all-btn');
+  await H.waitFor("document.querySelector('.ach-all-modal .ach-list')?.dataset.loaded === '1'", 5000);
+  await sleep(300);
+  const all = JSON.parse(await H.evaluate("JSON.stringify({ n: document.querySelectorAll('.ach-all .ach').length, on: document.querySelectorAll('.ach-all .ach.on').length })"));
+  const dbG = await withPg(async (c) => (await c.query(`SELECT count(*)::int n FROM achievements a JOIN accounts x ON x.id = a.account_id WHERE x.login_id = $1`, [gLogin])).rows[0].n);
+  await snap(H, '99-ach-all-pc');
+  record('★★★ E-d 다른 사람 전체 업적 — 모든 업적 · 깬 것 = 표', all.n >= 20 && all.on === dbG, `${JSON.stringify(all)} · DB ${dbG}`);
+  await pressKey(H, 'Escape', 'Escape', 27);
+  await sleep(300);
+  // 채팅 줄 아바타
+  await H.setInput('.chat-card input', '안녕');
+  await H.click('전송');
+  await G.waitFor("document.querySelector('.chat-line [data-person]') !== null", 4000);
+  await tapOn(G, '.chat-line [data-person]');
+  const chatCard = await G.waitFor("document.querySelector('.person-card') !== null", 3000);
+  const letter = await G.evaluate("document.querySelector('.person-card .person-letter') !== null && document.querySelector('.person-card .person-photo') === null");
+  await G.waitFor("document.querySelector('.person-ach')?.dataset.loaded === '1'", 4000);
+  await sleep(300);
+  await snap(G, '99-person-letter-m390');
+  record('★★ E-c 채팅 줄 아바타 → 카드 · 글자 아바타는 확대 안 함(m390)', chatCard && letter);
+  await tapOn(G, '.person-all-btn');
+  await G.waitFor("document.querySelector('.ach-all-modal .ach-list')?.dataset.loaded === '1'", 5000);
+  await G.evaluate("document.documentElement.dataset.theme = 'night'");
+  await sleep(450);
+  const gw = JSON.parse(await G.evaluate("JSON.stringify({ doc: document.documentElement.scrollWidth, vw: innerWidth, cols: getComputedStyle(document.querySelector('.ach-all')).gridTemplateColumns.split(' ').length })"));
+  await snap(G, '99-ach-all-m390-night');
+  record('★★ E-d 전체 업적 m390 — 세로 목록(1열) · 가로 넘침 없음', gw.cols === 1 && gw.doc <= gw.vw, JSON.stringify(gw));
+  await G.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  await pressKey(G, 'Escape', 'Escape', 27);
+  await sleep(300);
+  // 👥 창 아바타(모바일)
+  await tapOn(G, '#people-btn');
+  await G.waitFor(`document.querySelector('.people-list [data-person="${gId}"]') !== null`, 4000);
+  await tapOn(G, `.people-list [data-person="${gId}"]`);
+  const peopleCard = await G.waitFor("document.querySelector('.person-card .person-photo') !== null", 3000);
+  await sleep(400);
+  await snap(G, '99-avatar-zoom-m390');
+  const gph = Math.round(Number(await G.evaluate("document.querySelector('.person-photo')?.getBoundingClientRect().width ?? 0")));
+  record('★★ E-c 👥 창 아바타 → 사진 크게(m390 거의 전체 폭)', peopleCard && gph >= 300, `${gph}px`);
+  await pressKey(G, 'Escape', 'Escape', 27);
+  // 내 프로필 → 전체 업적
+  await realClick(H, '#rename-btn');
+  await H.waitFor("document.querySelector('.ach-all-open') !== null", 4000);
+  await realClick(H, '.ach-all-open');
+  const mine = await H.waitFor("document.querySelector('.ach-all-modal .ach-list')?.dataset.loaded === '1'", 5000);
+  record('★★ E-d 내 프로필 → 전체 업적 창', mine);
+  await pressKey(H, 'Escape', 'Escape', 27);
+  await G.close?.();
+  await H.close?.();
+}
 async function r054Flow(browser) {
   if (!process.env.MG_SKIP_LAB) await r054Lab(browser);
   if (process.env.MG_SKIP_LIVE) return;
@@ -3141,6 +3389,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_STATS) {
     await closeAllTabs(browser);
     await r054Stats(browser);
+  }
+  // ★ R056 — 문제 평가 · 작은 수정 넷
+  if (process.env.UICHECK_R056) {
+    await closeAllTabs(browser);
+    await r056Flow(browser);
   }
 }
 /** ★ R050 F — /lab/sound — 후보 버튼 · 실제 파일 길이(브라우저가 읽은 duration) · 누르면 소리가 난다(오류 없음) */

@@ -12,6 +12,7 @@ import Avatar from './Avatar.js';
 import FitText from './FitText.js';
 import type { GameResultView, PlayerView } from './useRoom.js';
 import Icon from './Icon.js';
+import { ResultFeedback } from './QuestionFeedback.js';
 import { RotateCcw } from 'lucide-react';
 
 interface Props {
@@ -90,7 +91,7 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
               ) : null}{' '}
               {r.rank}위
             </span>
-            <Avatar nickname={r.nickname} colorIndex={r.colorIndex} accountId={r.accountId} avatarV={players.find((p) => p.accountId === r.accountId)?.avatarV} />
+            <Avatar nickname={r.nickname} colorIndex={r.colorIndex} accountId={r.accountId} avatarV={players.find((p) => p.accountId === r.accountId)?.avatarV} zoom />
             <FitText text={r.nickname} className="nick" style={{ color: `var(--p${r.colorIndex})` }} minPx={11} />
             {!r.connected && <span className="badge off">접속 종료</span>}
             <span className="score mono">{r.score}점</span>
@@ -99,6 +100,9 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
       </ol>
 
       {notice && <p className="info">{notice}</p>}
+
+      {/* ★★★ R056 — 이번 판 문제 평가(접이식 · 기본 펼침) — 정답 공개 때 못 누른 사람 · 기타 의견 */}
+      {result.gameId && <ResultFeedback gameId={result.gameId} />}
 
       <div className="next-row" data-arrow-nav>
         {isHost ? (

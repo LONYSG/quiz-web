@@ -47,6 +47,8 @@ import ProfilePanel from './ProfilePanel.js';
 import ShopPanel from './ShopPanel.js';
 import MinigameStage from './minigame/MinigameStage.js';
 import MinigamePicker from './minigame/MinigamePicker.js';
+import { LastGameFeedback } from './QuestionFeedback.js';
+import { fetchLastFeedbackGame } from './api.js';
 import type { Social } from './useSocial.js';
 import { isMobileUi, useUiMode } from './uiMode.js';
 
@@ -293,6 +295,18 @@ export default function Lobby({
     }
   }, [state]);
   const inLobby = state === 'LOBBY' || state === 'COUNTDOWN';
+  // ★★ R056 — 로비 "지난 판 문제 평가" 링크: 로비에 들어올 때마다 내가 참가한 마지막 판을 다시 묻는다
+  const [lastFeedbackGame, setLastFeedbackGame] = useState<string | null>(null);
+  useEffect(() => {
+    if (state !== 'LOBBY') return undefined;
+    let alive = true;
+    void fetchLastFeedbackGame().then((id) => {
+      if (alive) setLastFeedbackGame(id);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [state]);
   const isActive = state === 'QUESTION_ACTIVE';
   const isResult = state === 'GAME_RESULT';
   const isPaused = state === 'PAUSED';
@@ -819,6 +833,8 @@ export default function Lobby({
                   ) : (
                     <p className="note">방장이 게임을 시작할 때까지 기다려 주세요.</p>
                   )}
+                  {/* ★★ R056 — 결과 화면을 놓친 사람용 "지난 판 문제 평가" (내가 참가한 마지막 판이 있을 때만) */}
+                  {state === 'LOBBY' && lastFeedbackGame && <LastGameFeedback gameId={lastFeedbackGame} />}
                 </div>
               </section>
             )}
@@ -851,6 +867,7 @@ export default function Lobby({
                 difficulties={snapshot.room.settings.difficulties}
                 topics={snapshot.room.settings.topics}
                 ceremony={ceremony}
+                gameId={snapshot.game?.gameId ?? null}
               />
             )}
 
@@ -904,6 +921,7 @@ export default function Lobby({
                         colorIndex={m.colorIndex}
                         accountId={m.accountId}
                         avatarV={avatarOf(m.accountId)}
+                        zoom
                       />
                       <span className="nick" style={{ color: `var(--p${m.colorIndex})` }}>
                         {m.nickname}

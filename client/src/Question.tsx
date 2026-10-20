@@ -27,6 +27,7 @@ import Emoji from './Emoji.js';
 import FitText from './FitText.js';
 import ExplainText from './ExplainText.js';
 import ConfirmModal from './ConfirmModal.js';
+import { RevealFeedback } from './QuestionFeedback.js';
 import { usePopup } from './popup.js';
 import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
 import Icon from './Icon.js';
@@ -53,6 +54,8 @@ interface Props {
   activeCount: number;
   /** ★★ R038 — 세레머니: 정답 공개 동안 정답자가 친 채팅 (정답 메시지부터) */
   ceremony: ChatView[];
+  /** ★ R056 — 이 판 번호 (문제 평가 👍/👎). 없으면(기록 실패) 버튼을 숨긴다 */
+  gameId?: string | null;
 }
 
 export default function Question({
@@ -69,6 +72,7 @@ export default function Question({
   topics,
   activeCount,
   ceremony,
+  gameId,
 }: Props) {
   const active = state === 'QUESTION_ACTIVE';
   const [remainMs, setRemainMs] = useState(() => Math.max(0, question.endsAt - serverNow()));
@@ -343,12 +347,16 @@ export default function Question({
             </p>
           )}
 
-          {/* ★ 진행 안내 — 작고 흐리게. 자리를 잡아 두어 3초 뒤 나타나도 화면이 출렁이지 않는다 */}
-          <p className="reveal-next" aria-live="polite">
-            {showNext && nextRemainMs !== null
-              ? `${Math.ceil(nextRemainMs / 1000)}초 후 ${isLastQuestion ? '결과 화면' : '다음 문제'}`
-              : ' '}
-          </p>
+          {/* ★★★ R056 — 문제 평가(👍/👎 · 👎 면 사유 칩)는 진행 안내와 **같은 줄** — 카드가 세로로 늘지 않는다 */}
+          <div className="reveal-foot">
+            {gameId && resolution.questionId && <RevealFeedback gameId={gameId} questionId={resolution.questionId} />}
+            {/* ★ 진행 안내 — 작고 흐리게. 자리를 잡아 두어 3초 뒤 나타나도 화면이 출렁이지 않는다 */}
+            <p className="reveal-next" aria-live="polite">
+              {showNext && nextRemainMs !== null
+                ? `${Math.ceil(nextRemainMs / 1000)}초 후 ${isLastQuestion ? '결과 화면' : '다음 문제'}`
+                : ' '}
+            </p>
+          </div>
         </div>
       )}
 

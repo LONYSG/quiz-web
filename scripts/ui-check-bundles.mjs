@@ -55,6 +55,9 @@ export const BUNDLES = [
   { id: 'mg-r054-lab', stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R054: '', MG_SKIP_LIVE: '1', SHOT_DIR: 'r054' }) },
   ...['balloon', 'tap'].map((g) => ({ id: `mg-r054-${g}`, stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R054: '', MG_SKIP_LAB: '1', MG_R054: g, SHOT_DIR: 'r054' }) })),
   { id: 'r054-stats', stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', UICHECK_STATS: '1', SHOT_DIR: 'r054' }) },
+  // ★ R056 — 문제 평가(공개 · 결과 · 로비) · 골라 하기 가로 스크롤 · "없어요" · 프사 확대 · 업적 창 (r056-before = 옛 빌드로 "전" 그림)
+  { id: 'r056', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R056: '1', SHOT_DIR: 'r056', RESOLVED_WAIT_MS: '8000' }) },
+  { id: 'r056-before', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R056: '1', R056_BEFORE: '1', SHOT_DIR: 'r056' }) },
 ];
 
 if (flag('--list')) {
