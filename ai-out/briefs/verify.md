@@ -3,7 +3,7 @@ TASK: **g009a/b "애매" 나머지 전수 + G017 반영 표본** — A. V020 B �
 실행 모델: Sonnet 5.5 (바꾸지 않는다)
 
 ■ 고정 규칙: docs/16 그대로 (13-PENDING 은 V020 이 쓴 다음 **CV-64** 부터 — ★ G018 이 같은 번호를 쓸 수 있으니 13 을 쓰기 직전 `git fetch` · rebase 하고 비어 있는 다음 번호를 쓴다 · README V 표 · 조각 `audit/v021-raw/`). 판정자 한 번에 1개 · 메모리 1.5GB.
-■ ★★ 동시 라운드 — GEN(**G018 — 상 생성 4차 700**: 15 두 줄 · hint-v6 · 생성 g018a/b · **적재 없음 · questions 쓰기 없음** — 앞서 쓴 "V020 반영" G018 은 G019 로 미뤘다). VERIFY 몫: V021.txt · audit/v021-* · 13 CV · C79 ① 처리 표시 · README V 표. **questions 읽기만.** A · B 대상은 이번 GEN 이 한 행도 쓰지 않으니 바뀌지 않는다 — 그래도 읽은 시점 값을 JSON 에 담는다. 13 · README 는 GEN 도 쓴다(C80 · G 표) — 쓰기 직전 fetch · rebase. git: 내 파일만 · fetch · rebase.
+■ ★★ 동시 라운드(밤샘 — 세 창) — GEN(**G018 미니게임 데이터 3차 → G019 상 생성 4차** — data/minigame · pipeline · 15 · generated — **questions 쓰기 없음**) · MAIN(R056 문제 평가 → R057 — server/ client/ shared/ migrations/ · 01 · 03 · 10 · 13 A · README R). VERIFY 몫: V021.txt · audit/v021-* · 13 CV · C79 ① 처리 표시 · README V 표. **questions 읽기만.** A · B 대상은 아무도 쓰지 않는다 — 그래도 읽은 시점 값을 JSON 에 담는다. 05 · 06 · 13 · README 는 셋이 같이 쓴다 — 쓰기 직전 fetch · rebase. git: 내 파일만 · force 금지. 찬종은 자고 있다 — 묻지 않는다.
 ■ 토큰: 넉넉하다 — 약 345 항목 · 판정자 조각 35 안팎 × 10 (한 번에 1개).
 
 ■ 먼저 읽기
@@ -23,5 +23,5 @@ C. 집계 — A: ok/fix/drop 수 · 유형 · blind vs DB 난이도 표 · V020 
 ■ 하지 말 것: DB 쓰기 · 문항 고치기 · 미니게임 · 규칙/프롬프트/코드 수정 · Q · 서버.
 ■ 커밋: 위 파일만 · 끝줄 `Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>`.
 ■ 확인할 것 (원칙 7): 애매 풀 375(g009a 175 · g009b 200) · V020 이 본 67 · 남은 수(세서) · G017 힌트 처리 52(교체 35 · 고침 7 · 씀 10) · 활성 6,044 — 다르면 0절에.
-■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄에 "V021 끝 — 다음 브리핑 대기".
+■ ★ 이어서: 이 라운드의 보고서 · 커밋 · push 가 끝나면 **같은 창에서** `ai-out/briefs/verify-next.md` 를 읽고 그 라운드(V022 정답 친숙도 전수)를 바로 시작한다 — 찬종에게 묻지 않는다. 그 파일이 없거나 첫 줄이 "보류" 면 멈춘다. 터미널 마지막 줄에 "V021 끝 — V022 로".
 ■ 답변: 한국어 · 터미널 5줄 이내.
