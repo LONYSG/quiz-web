@@ -3,7 +3,7 @@ TASK: **g009a/b "애매" 나머지 전수 + G017 반영 표본** — A. V020 B �
 실행 모델: Sonnet 5.5 (바꾸지 않는다)
 
 ■ 고정 규칙: docs/16 그대로 (13-PENDING 은 V020 이 쓴 다음 **CV-64** 부터 — ★ G018 이 같은 번호를 쓸 수 있으니 13 을 쓰기 직전 `git fetch` · rebase 하고 비어 있는 다음 번호를 쓴다 · README V 표 · 조각 `audit/v021-raw/`). 판정자 한 번에 1개 · 메모리 1.5GB.
-■ ★★ 동시 라운드 — GEN(G018 — V020 반영: 애매 fix 10 · drop 2 · unverified 7 · 행정 구역 16 · 힌트 4+16 · 미니게임 photo 2 — **questions 를 쓴다**). VERIFY 몫: V021.txt · audit/v021-* · 13 CV · C79 ① 처리 표시 · README V 표. **questions 읽기만.** A 의 대상(애매 나머지)은 G018 이 거의 안 건드린다(G018 은 V020 fix 12 만) · B 는 G017 이 이미 쓴 값이라 바뀌지 않는다 — 그래도 읽은 시점 값을 JSON 에 담는다. git: 내 파일만 · fetch · rebase.
+■ ★★ 동시 라운드 — GEN(**G018 — 상 생성 4차 700**: 15 두 줄 · hint-v6 · 생성 g018a/b · **적재 없음 · questions 쓰기 없음** — 앞서 쓴 "V020 반영" G018 은 G019 로 미뤘다). VERIFY 몫: V021.txt · audit/v021-* · 13 CV · C79 ① 처리 표시 · README V 표. **questions 읽기만.** A · B 대상은 이번 GEN 이 한 행도 쓰지 않으니 바뀌지 않는다 — 그래도 읽은 시점 값을 JSON 에 담는다. 13 · README 는 GEN 도 쓴다(C80 · G 표) — 쓰기 직전 fetch · rebase. git: 내 파일만 · fetch · rebase.
 ■ 토큰: 넉넉하다 — 약 345 항목 · 판정자 조각 35 안팎 × 10 (한 번에 1개).
 
 ■ 먼저 읽기
