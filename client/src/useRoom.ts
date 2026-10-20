@@ -128,6 +128,8 @@ export interface QuestionView {
 /** 정답 공개 구간 */
 export interface ResolutionView {
   epoch: number;
+  /** ★ R056 — 문제 평가(👍/👎)용 (옛 서버면 없다) */
+  questionId?: string;
   reason: 'correct' | 'timeout' | 'skip_vote' | 'host_skip' | 'aborted';
   winnerAccountId: string | null;
   displayAnswer: string;
@@ -543,6 +545,7 @@ export function useRoom(socket: Socket | null): RoomHook {
           })),
           resolution: {
             epoch: p.epoch,
+            questionId: p.questionId,
             reason: p.reason,
             winnerAccountId: p.winnerAccountId,
             displayAnswer: p.displayAnswer,

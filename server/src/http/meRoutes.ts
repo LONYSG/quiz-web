@@ -35,3 +35,25 @@ meRouter.get('/stats', async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   res.json({ ok: true, ...stats, achievements });
 });
+
+// =============================================================================
+// ★★ R056 — 다른 사람 업적 보기 (D-248)
+//   GET /api/profile/:accountId/achievements  { ok, achievements:[{ key, earnedAt }] } — 로그인한 사람만 · 표시만(업적은 공개 정보로 본다)
+// =============================================================================
+export const profileRouter = Router();
+
+profileRouter.get('/:accountId/achievements', async (req, res) => {
+  const session = await resolveSession(readSessionToken(req.headers.cookie));
+  if (!session) {
+    res.status(401).json({ ok: false });
+    return;
+  }
+  const id = req.params.accountId;
+  if (!/^\d{1,19}$/.test(id)) {
+    res.status(400).json({ ok: false });
+    return;
+  }
+  const achievements = await listAchievements(id);
+  res.setHeader('Cache-Control', 'no-store');
+  res.json({ ok: true, achievements });
+});

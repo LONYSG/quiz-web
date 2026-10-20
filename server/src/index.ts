@@ -16,7 +16,8 @@ import { runBootCleanup } from './db/bootCleanup.js';
 import { closePool, getDbActiveMs } from './db/pool.js';
 import { emojiRouter, loadEmojiCatalog } from './http/emojiRoutes.js';
 import { avatarRouter } from './http/avatarRoutes.js';
-import { meRouter } from './http/meRoutes.js';
+import { meRouter, profileRouter } from './http/meRoutes.js';
+import { feedbackRouter } from './http/feedbackRoutes.js';
 import { minigameRouter } from './http/minigameRoutes.js';
 import { shopRouter } from './http/shopRoutes.js';
 import { authRouter } from './http/authRoutes.js';
@@ -113,6 +114,9 @@ async function main(): Promise<void> {
   app.use('/api/avatar', avatarRouter);
   // ★ R048 — 포인트 (D-229)
   app.use('/api/me', meRouter);
+  // ★ R056 — 다른 사람 업적 (D-248) · 문제 평가 (D-246)
+  app.use('/api/profile', profileRouter);
+  app.use('/api/feedback', feedbackRouter);
   // ★ R049 — 이모티콘샵 · 뽑기 (D-231)
   app.use('/api/shop', shopRouter);
   // ★ R052 — 퀴즈류 미니게임 그림 (DB bytea · 로그인만)

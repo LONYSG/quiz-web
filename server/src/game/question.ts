@@ -367,6 +367,8 @@ export function resolveQuestionSync(
 
   emitRoom(room, 'question.resolved', {
     epoch: current.epoch,
+    // ★ R056 — 문제 평가(👍/👎)용. 정답 공개 뒤라 알려도 된다
+    questionId: current.questionId,
     reason,
     winnerAccountId,
     displayAnswer: current.displayAnswer,

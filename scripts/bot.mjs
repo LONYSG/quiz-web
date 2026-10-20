@@ -123,6 +123,7 @@ const SCENARIO_ENV = {
   mgballoon: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   mgtap: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   achievements: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  feedback: { RESOLVED_WAIT_MS: '200' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -7198,6 +7199,95 @@ async function scenarioAchievements() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ feedback — R056: 문제 평가(👍/👎 · 사유 · 의견) — 판에 있었던 사람 · 그 판 문제만 · upsert · 취소 = 삭제 · 속도 제한
+// -----------------------------------------------------------------------------
+async function scenarioFeedback() {
+  log('시나리오 feedback — ★★★ 문제 평가(설문) (R056)');
+  const [host, guest, outsider] = await makeBots(3);
+  await withDb((c) => c.query(`DELETE FROM question_feedback WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[host.loginId, guest.loginId, outsider.loginId]]));
+  await host.connect();
+  await guest.connect();
+  await outsider.connect();
+  host.createRoom('R056 평가');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  guest.join(host.snapshot.room.id);
+  await guest.waitFor(() => guest.snapshot?.room.id === host.snapshot.room.id, 6000, '입장');
+  host.socket.emit('lobby.updateSettings', { questionCount: 3, minigames: false });
+  await sleep(400);
+  const g = guest.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.snapshot?.room.state === 'QUESTION_ACTIVE', 12000, '게임 시작');
+  for (let i = 0; i < 3; i += 1) {
+    await host.waitFor(() => host.snapshot?.room.state === 'QUESTION_ACTIVE' && host.snapshot.question?.index === i + 1, 30000, `문제 ${i + 1}`);
+    const [ans] = await answersForText(host.snapshot.question.text);
+    host.chat(ans);
+    await host.waitFor(() => host.snapshot?.room.state !== 'QUESTION_ACTIVE' || host.snapshot.question?.index !== i + 1, 30000, '맞힘');
+  }
+  await host.waitFor(() => host.snapshot?.room.state === 'GAME_RESULT', 60000, '결과');
+  const resolved = guest.since(g, 'question.resolved');
+  const qids = resolved.map((r) => r.payload?.questionId);
+  const gameId = guest.snapshot.result?.gameId ?? guest.snapshot.game?.gameId;
+  log(`  판 ${gameId} · 문제 ${qids.join(' · ')}`);
+  expectTrue('★★ 정답 공개(question.resolved)에 questionId 가 실린다', qids.length === 3 && qids.every((q) => /^\d+$/.test(String(q))), qids.join(','));
+  expectTrue('★ 결과에 gameId', /^\d+$/.test(String(gameId ?? '')), gameId);
+  const [q1, q2] = qids;
+  const post = (bot, body) => postJson('/api/feedback/question', { gameId, ...body }, bot.cookie);
+  const row = async (bot, q) =>
+    (await withDb((c) => c.query(`SELECT f.vote, f.reasons, f.comment, f.game_id::text FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1 AND f.question_id = $2`, [bot.loginId, q]))).rows[0] ?? null;
+
+  log('\n[1] ★★★ 👎 + 사유 → 표 행 · 다시 누르면 갱신 · 취소 = 삭제');
+  let r = await post(guest, { questionId: q1, vote: -1, reasons: ['unclear', 'never_heard'] });
+  expect('★ 👎 + 사유 200', r.status, 200);
+  let x = await row(guest, q1);
+  expectTrue('★★★ 표 행 — vote -1 · 사유 상수 순서', x?.vote === -1 && x.reasons.join(',') === 'never_heard,unclear' && x.game_id === String(gameId), JSON.stringify(x));
+  r = await post(guest, { questionId: q1, vote: -1, reasons: ['other'], comment: '  역사 문제가 너무 어려워요  ' });
+  x = await row(guest, q1);
+  expectTrue('★★ 같은 문제 다시 → 한 행 갱신(사유 · 의견 trim)', x?.reasons.join(',') === 'other' && x.comment === '역사 문제가 너무 어려워요', JSON.stringify(x));
+  r = await post(guest, { questionId: q1, vote: 1, reasons: ['other'], comment: '무시' });
+  x = await row(guest, q1);
+  expectTrue('★★ 👍 로 바꾸면 사유 · 의견 비움', x?.vote === 1 && x.reasons.length === 0 && x.comment === null, JSON.stringify(x));
+  const cnt = (await withDb((c) => c.query(`SELECT count(*)::int n FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1`, [guest.loginId]))).rows[0].n;
+  expect('★★ 한 사람 한 문제 한 행', cnt, 1);
+  r = await post(guest, { questionId: q1, vote: null });
+  expect('★ 취소 200', r.status, 200);
+  expect('★★★ 취소 → 행 삭제', await row(guest, q1), null);
+
+  log('\n[2] ★★★ 거부 — 안 본 문제 · 판 밖 사람 · 사유 밖 · 200자 · 로그인 없음');
+  const other = (await withDb((c) => c.query(`SELECT id::text FROM questions WHERE id <> ALL($1::bigint[]) AND is_active LIMIT 1`, [qids]))).rows[0].id;
+  expect('★★★ 이 판에 안 나온 문제 → 403', (await post(guest, { questionId: other, vote: -1 })).status, 403);
+  expect('★★★ 판에 없던 사람 → 403', (await post(outsider, { questionId: q1, vote: -1 })).status, 403);
+  expect('★★ 사유 밖 → 400', (await post(guest, { questionId: q1, vote: -1, reasons: ['hard'] })).status, 400);
+  expect('★★ 의견 201자 → 400', (await post(guest, { questionId: q1, vote: -1, comment: '가'.repeat(201) })).status, 400);
+  expect('★ 의견 200자 → 200', (await post(guest, { questionId: q2, vote: -1, reasons: ['other'], comment: '가'.repeat(200) })).status, 200);
+  expect('★ 로그인 없음 → 401', (await postJson('/api/feedback/question', { gameId, questionId: q1, vote: 1 })).status, 401);
+
+  log('\n[3] ★★ 결과 화면 목록 · 로비 링크');
+  await post(host, { questionId: q1, vote: 1 });
+  const mine = await apiGet(`/api/feedback/game/${gameId}/mine`, guest.cookie);
+  expect('★ 내 판 목록 200', mine.status, 200);
+  expect('★★ 목록 = 정답 공개된 문제 3', mine.json?.items.length, 3);
+  const it2 = mine.json?.items.find((i) => i.questionId === String(q2));
+  expectTrue('★★ 내 평가가 실린다(👎 · other · 200자)', it2?.vote === -1 && it2.reasons[0] === 'other' && it2.comment.length === 200, JSON.stringify(it2)?.slice(0, 120));
+  expectTrue('★ 질문은 앞 60자(+…)만', mine.json?.items.every((i) => [...i.text].length <= 61 && typeof i.answer === 'string'));
+  expect('★★ 남의 평가는 안 섞인다(방장 👍 q1 → 내 목록 q1 은 비어 있음)', mine.json?.items.find((i) => i.questionId === String(q1))?.vote, null);
+  expect('★★ 판 밖 사람의 목록 → 403', (await apiGet(`/api/feedback/game/${gameId}/mine`, outsider.cookie)).status, 403);
+  const last = await apiGet('/api/feedback/last-game', guest.cookie);
+  expect('★★ 로비 링크 — 내가 참가한 마지막 판', last.json?.gameId, String(gameId));
+
+  log('\n[4] ★ 속도 제한 10초 20번');
+  let limited = 0;
+  for (let i = 0; i < 24; i += 1) if ((await post(host, { questionId: q2, vote: i % 2 ? 1 : -1 })).status === 429) limited += 1;
+  expectTrue('★ 21번째부터 429', limited >= 3, `${limited}`);
+
+  for (const b of [host, guest, outsider]) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
 async function scenarioNickname() {
   log('시나리오 nickname — ★★ 닉네임 폭 한도 (R040 규칙 · R041 한도 10칸)');
   const stamp = Date.now().toString(36).slice(-4);
@@ -7409,6 +7499,8 @@ const SCENARIOS = {
   mgballoon: scenarioMgBalloon,
   mgtap: scenarioMgTap,
   achievements: scenarioAchievements,
+  // ★★★ R056 — 문제 평가
+  feedback: scenarioFeedback,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

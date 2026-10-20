@@ -147,6 +147,8 @@ export interface QuestionView {
 
 export interface ResolutionView {
   epoch: number;
+  /** ★ R056 — 문제 평가(👍/👎)용 문제 번호 (정답 공개 뒤라 알려도 된다) */
+  questionId: string;
   reason: QuestionResolution;
   winnerAccountId: string | null;
   displayAnswer: string;
@@ -396,6 +398,7 @@ function buildResolutionView(room: Room): ResolutionView | null {
   if (!r || !q || room.state !== 'QUESTION_RESOLVED') return null;
   return {
     epoch: r.epoch,
+    questionId: q.questionId,
     reason: r.reason,
     winnerAccountId: r.winnerAccountId,
     displayAnswer: r.displayAnswer,
