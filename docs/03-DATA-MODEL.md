@@ -351,3 +351,18 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 | `question_feedback` | id bigserial · question_id FK · account_id FK(계정 지우면 같이) · game_id FK(null 허용 · 판 지우면 null) · vote smallint (-1 · 1) · reasons text[] · comment text(≤200) · created_at · updated_at · **UNIQUE (question_id, account_id)** · 인덱스 question_id | 한 사람 한 문제 한 평가 — 나중 것이 이긴다(game_id 는 최근 판) · 취소 = 행 삭제 · 사유 코드는 shared/src/feedback.ts · 서버가 **그 판(game_players)에 있었고 그 문제가 그 판(game_questions)에 나왔는지** 본다 · 지우지 않는다(17 3절) |
 - 보고: `npm run feedback:report [--since YYYY-MM-DD] [--no-bots]`(읽기만 · tmp/feedback-report.md). 문항 반영은 GEN 몫.
 - ★ 정답 공개 이벤트(question.resolved · 재접속 스냅숏 resolution)에 questionId 가 실린다(R056 — 공개 뒤라 알려도 된다).
+
+## ★★★ 미니게임만 판 (R057 / 0021 — D-249)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `games.mode` | text NOT NULL DEFAULT 'quiz' · CHECK ('quiz', 'minigame') | 옛 행은 전부 'quiz'. 'minigame' 판은 setting_question_count = planned_question_count = ended_question_count = 0 · game_questions · answer_events 0 행 |
+| `games.setting_minigame_rounds` | smallint · null 허용 | 미니게임만 판의 N(2~10) · 퀴즈 판은 null |
+- 미니게임 기록(minigame_runs · players · rounds · results · rewards)은 퀴즈 판 안 미니게임과 같은 표 · game_id 로 붙는다(after_question_index = null). game_players.final_score = 순위 점수 합.
+- 전적(GET /api/me/stats)의 "퀴즈 판 수" 는 mode = 'quiz' 만 센다.
+
+## ★ 채팅 속 이모티콘 토큰 · 고르기 창 설정 (R057 — D-250)
+
+- 표 추가 없음. 채팅은 여전히 DB 에 남기지 않는다(9장) — 토큰(표준 = 유니코드 글자 · 특별 = `:sp:<번호>:`)은 채팅 글 안에만 있다. 이모티콘만 1~3개면 chat.message 에 `emojiIds`(번호들 · emojiId 는 첫 번호).
+- `accounts.prefs.emojiInsert`(boolean) — 고르기 창 "입력창에 넣기" (없거나 false = 바로 보내기).
+- ★ 정답 판정 경로가 기다리지 않게 가진 특별 이모티콘을 메모리에 60초 둔다(GET /api/emoji · emoji.send 가 채움 · 뽑기 뒤 지움).
