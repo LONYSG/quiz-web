@@ -1,31 +1,42 @@
-[GEN G016]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 짧은 라운드 — 하나만 · 끝나면 멈춘다)
-TASK: **미니게임 데이터 반영 · 적재** — 1차 V012 fix 63 + CV-30 그림(items.json) · 2차 V017 fix 29 · drop 1(items-2.json · CV-47~51) → `g008-check` 1차+2차 막힘 0 → `scripts/minigame-load.mjs --apply`(1차 재적재 갱신 + 2차 적재 · verified 만) → `--mark`(loaded) → 적재 표. **questions 는 손대지 않는다**(G017)
+[GEN G017]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 짧은 라운드 — 하나만 · 끝나면 멈춘다)
+TASK: **기존 활성 마무리** — ① 난이도 1 fix 98(V018 `audit/v018-active1.json`) 반영 ② 힌트 52 = V019 fix 41(쓴 24 교체·비움 + 비운 17 다시 채움 — CV-56 · CV-57) + V018 새 힌트 fix 11(CV-53 (c)) ③ 정리 — #2051 살리기(C77 ②) · CV-55 쌍 한쪽 비활성 · 비활성 #940 · #1035 살릴 수 있으면 ④ A79 (다) — 200자 넘는 질문 2(#6000 · #5327) + #5700 줄이기 · 15 §3-1 한 줄. **생성 · 미니게임 없음**
 실행 모델: Opus 5.5 (바꾸지 않는다)
 
-■ 고정 규칙: docs/16 그대로 (번호 — G015 가 쓴 다음 DG- · C- 부터(07 · 13 을 보고) · Q 는 올리지 않는다). 하위 에이전트 ≤1(그림 교체 조각) · 메모리 1.5GB · 429 면 같은 모델로 이어서.
-■ ★★ 동시 라운드 — VERIFY(V019 힌트 표본 — audit/v019-* · 13 CV · README V 표 · questions 읽기만) 가 같이 돌 수 있다. MAIN 은 R055 마무리(둘 재실행)만. GEN 몫: `data/minigame/*/items*.json` · `worldprice/products.json` · `assets/minigame/`(그림 교체 · git 밖) · `backups/minigame-*.zip` · scripts/g008-* · `scripts/g016-*` · audit/g016-* · DB **minigame_items · minigame_images · minigame_products** · docs/18 · 05 Track E · 06 · 07 DG- · 13 CV-30 · CV-47~51 처리 표시 · C72 끝 · README G 표. git: 내 파일만 · fetch → rebase → push. 찬종 없이 간다 — 묻지 말고 13 C 에 적는다.
-■ 토큰: 넉넉하다 — fix 92 전부 읽고 판단.
+■ 고정 규칙: docs/16 그대로 (번호 — G016 · V019 가 쓴 다음: **DG-055 · C79 · CV-59**(07 · 13 을 보고) · Q 는 올리지 않는다). 하위 에이전트 ≤1(사실 재확인 조각) · 메모리 1.5GB · 429 면 같은 모델로 이어서.
+■ ★★ 동시 라운드 — VERIFY(V020 — 미니게임 적재본 표본 · g009a/b "애매" 표본 · unverified 질문 문장 · 행정 구역 기계 검색 — **questions · minigame 읽기만** · audit/v020-* · 13 CV · README V 표) · MAIN(R055 마무리 — 케이크 · 사진 묶음 재실행만 · 봇 계정 기록만). GEN 몫: **questions · question_answers**(백업 뒤 · 대상 행만) · scripts/g017-* · audit/g017-* · docs/15 §3-1 · §4-1 H8 한 줄 · pipeline hint-v5 SYNC 블록(H8 줄이 들어가면) · criteria-sync · 05 · 06 · 07 DG- · 13(아래 끝 표시) · README G 표. git: 내 파일만 · fetch → rebase → push. 찬종 없이 간다 — 묻지 말고 13 C 에 적는다.
+■ 토큰: 넉넉하다 — fix 98 · 힌트 52 전부 읽고 판단.
 
 ■ 먼저 읽기
-- **docs/18 전체**(0 묶음 파일 · 6 재검증 칸 · **7 적재** — status 흐름 verified → loaded) · ai-out/V012.txt 3절(1차 fix 63 · drop 6 전문) · **ai-out/V017.txt 2·3·4절**(2차 fix 29 · drop 1 · 그림 문제 13 · 맞혀 보기 못 맞힌 3) · `audit/v012-minigame.json` · `audit/v017-minigame.json`(items[id].proposal · verify) · 13 **CV-30 · CV-47 · CV-48 · CV-49 · CV-50 · CV-51** · C72
-- ai-out/R052.txt A 절(적재 스크립트 · 표 · 멱등 · `--mark`) · `scripts/minigame-load.mjs`(옵션 · 같은 id 재적재 = 갱신인지 확인 — 아니면 고친다 · 그림 bytea 갱신 포함) · scripts/g008-img.mjs(그림 받기·줄이기) · g008-check.mjs · ai-out/G010.txt 0절 · docs/DB-ADMIN(미니게임 항목 · 그림)
+- ai-out/V018.txt 2절 · [3-1](fix 98 전문) · 6절 ③ · `audit/v018-active1.json`(items[id].verdict/categories/proposal/facts) · `audit/v018-hints.json`(fix 11 — CV-53)
+- **ai-out/V019.txt 2 · 3 · 4 · 6절** · `audit/v019-hints.json`(items[id] — kind written/edited/cleared · verdict · categories · proposal · facts · urls · note · blind) — written fix 22 · edited fix 2 · cleared fix 17 = 41
+- ai-out/G015.txt(방법 · `scripts/g015-apply-active2.mjs` — 복제) · G013.txt 0절(#940 · #1035 비활성 사유) · G014.txt(비운 31 사유 · `g014-fixes.json` rows gen)
+- 13 **CV-53 · CV-54 · CV-55 · CV-56 · CV-57 · CV-58 · A79 · C77 ② ④** · R055.txt 0절 4(A79 — 그림 docs/design/verify-long/20-long-q5327-reveal-m360.png) · docs/15 §3-1 · §4-1 H0 · H8 · H9 · hint-v5
 
-■ 찬종의 말 · 확정
-- "이미지 없으면 몰입이 안돼." · "쿠팡 말고 네이버로" · 그림은 git 밖 · 설계 판단(2026-10-19): **CV-47 (a)** 원화 환산 + note(원래 통화 · 연도) · **CV-48 (a)** 그대로 적재(verified · 틀린 증거 없음 — 재독은 다음 V 표본) · **CV-49** 변형 제거는 "표준국어대사전 · 위키 문서명/넘겨주기 · 언론 기사 중 하나라도 있으면 **유지**"(프로이드 · 토마스 에디슨 · 마크 트와인 · 파리 개선문 · 버즈 칼리파 꼴은 유지 — 항목마다 적는다) · **CV-50** 9장 교체(워터마크 3 · 이름 글자 6 — 못 구하면 자르기 + attribution) · **CV-51** photo-0207 · 0141 은 multi-answer fix(altAnswers 에 다식 · 다식판) · 0213 큰부리새 변형 · 0140 한국 키 그림으로 교체(못 구하면 rejected) · 0214 서명 자르기 · **CV-30** iPhone 그림은 애플 공식 iPhone 17 페이지 대표 이미지와 대조해 다르면 교체 · 1차 그림 교체 8(V012 — price 0013·0018·0030·0049·0098 · estimate 0069 · which 0058·0118) 못 구하면 rejected · 같은 상품 둘(price-0018 · 0098)은 하나를 rejected.
+■ 찬종의 말 · 확정 · 설계 판단(2026-10-20)
+- "퀄리티 있는 문제 수 늘리는게 우선이야."
+- **CV-56 (a) 채운다** — 판정자 제안 17(504 · 1928 · 2123 · 2205 · 2228 · 3346 · 3347 · 3392 · 3674 · 3793 · 3866 · 4039 · 4063 · 4100 · 4673 · 4724 · 4725)을 GEN 이 **문서로 열어 확정한 뒤** 채운다(VERIFY 가 직접 연 2123 · 3347 · 4724 · 4725 도 한 번 더). 1928 은 "적어도 1724년" 꼴로 약하게. 못 닫으면 비움 유지(목록으로). 15 §4-1 **H8 에 한 줄**: "제안이 없어도 문서에서 두 번째 줄 사실을 한 번 더 찾은 뒤에 비운다(V019 — 비운 33 중 17 은 쓸 사실이 있었다)".
+- **CV-57** fix 24 — 제안 있는 16 은 문서로 열어 교체 · 제안 null 8(1833 · 2142 · 2263 · 2422 · 2880 · 3103 · 3107 · 4294)은 GEN 이 문서에서 두 번째 줄 사실을 찾아 쓰고 → 못 찾으면 비움(H8) · 4484 는 letters 만('개헌안' 표현 바꾸기 — 자유당 소속은 맞음) · 3556 · 1822 는 제안 그대로.
+- **CV-53 (c)** 그대로 — V018 fix 11: 제안 있는 9 는 교체(근거 약한 M1-12 · M1-07 · S3-12 는 문서 확인 뒤) · L1-31 · S3-09 는 찾거나 비움.
+- **CV-54 · CV-58 (b) blind 는 수치로만** — 파이프라인에 단계를 두지 않는다(정밀도 27% · 판정자가 사람보다 잘 맞힘). famous-one 자기 점검 한 줄은 다음 생성 라운드(G018)의 hint-v6 몫 — 이번엔 hint-v5 를 고치지 않는다(H8 SYNC 줄 빼고). 13 에 "설계 판단 (b) · G018" 로 끝 표시.
+- **CV-55** — #29↔#166(목성) · #27↔#281(떡볶이): 질문·해설이 더 나은 쪽 하나만 남기고 다른 쪽 `is_active=false` · `inactive_reason` "중복 — #n 과 같은 문항(CV-55)" · 남긴 #27 쪽이면 해설의 "힌트 테스트용" 문구 삭제(어느 쪽을 남기든 그 문구는 지운다).
+- **C77 ② #2051** — display_answer 를 "공력가열" 로 · 변형에 "마찰열" 은 넣지 않는다(틀린 답) · 질문·해설을 공력가열에 맞게 손질 · 문서(ko/en 위키 · 항공우주 자료)로 닫히면 `is_active=true` · 못 닫으면 그대로.
+- **#940 인플레이션 조세 · #1035 애오라지** — 한 번만 시도: #940 은 개념을 닫는 문서(경제학 사전 · en Inflation tax 본문)와 #933 시뇨리지와 정답이 갈리는 근거가 있으면 살림 · #1035 는 두 번째 줄 사실(우리말샘 · 표준국어대사전 어원·용례)을 찾아 힌트를 쓰면 살림. 못 하면 그대로(13 C 에 한 줄).
+- **A79 (다)** — 15 §3-1 에 한 줄: "★ 질문은 **200자를 넘지 않는다**(360 폭 정답 공개에서 넘친다 — R055 A79) · 170자가 넘으면 줄일 수 있는지 본다". DB 의 200자 초과 2(#6000 215 · #5327 204)와 #5700(138자 + 긴 정답 "Take Me Out to the Ball Game")의 질문을 **뜻 · 한정어 그대로 두고** 줄인다(해설 정보 끌어오지 않음 · 정답 조각 새지 않음). 170~200 의 70 은 손대지 않는다(목록만 0절에). MAIN 은 손대지 않는다 — 화면은 그대로.
+- 변형 · 사실 기준은 DG-051 · DG-053(좁은 말 받음 · 넓은 말 · 다른 대상 · 용례 0건은 받지 않음) 그대로. 난이도 1 은 힌트 없음(H0 보류) — 힌트 사유는 거의 없다.
 
 ■ 할 일 (항목마다 "다 됐다" · 단계마다 커밋)
-A. 1차 반영 — `scripts/g016-apply-v012.mjs`(items.json 63: 제안 적용 · 그림 교체 목록 · status candidate → verified(고침 끝) 또는 rejected · `audit/g016-fixes.json` rows[].before) · 그림 8 + iPhone 교체(g008-img) · 다 됐다 = 63 전부 "받음/고쳐 받음/rejected" 표.
-B. 2차 반영 — `scripts/g016-apply-v017.mjs`(items-2.json 29 + drop 1 · CV-47 환산 6 · CV-49 변형 판단 표 · CV-50 그림 9 · CV-51) · products.json 새 품목 rows 는 값 불변(verify 는 V017 것 그대로).
-C. 검사 — `node scripts/g008-check.mjs`(1차+2차 · --products) 막힘 0 · status 집계(verified · rejected · candidate 0 이어야 — 남으면 사유).
-D. 적재 — `npm run db:backup` → `minigame-load --dry-run` 표 → `--apply`(1차 갱신 + 2차 신규 · 그림 갱신) → 표(게임별 전체 · verified · 넣음 · 그림 수) → `--mark` → 다시 돌려 멱등 확인 · DB 수(minigame_items status · images 수).
-E. zip — `backups/minigame-2026-10-19.zip`(교체 그림 포함 · 전체).
-F. 문서 — docs/18 7절(loaded 표시 · 재적재 규칙 한 줄) · 05 Track E · 06 · 07 DG- · 13(CV-30 · 47~51 끝 · C72 끝 · 다음 C 메모) · README G 표 · `ai-out/G016.txt`(0절: 적재 표 · rejected 목록 · 교체 못 한 그림).
+A. 난이도 1 fix 98 — `npm run db:backup` → `scripts/g017-apply-active1.mjs`(g015 복제 · 멱등 · before 대조 · checkAnswerSet · blankCheck) · 98 을 다 읽고 바꾸거나 받지 않는 것만 `audit/g017-decisions.json` → `audit/g017-fixes.json`(rows · notTaken) · 제안 속 새 사실 · 변형을 하위 에이전트 1 이 문서로 다시 엶(true/partial/false/unverified — partial · false 는 문서 문장대로). 다 됐다 = 다시 돌려 할 일 0 · 대상 밖 questions · question_answers 해시 같음.
+B. 힌트 52 — `scripts/g017-apply-hints.mjs`: V019 fix 41(교체 16 + null 8 찾기 + 채움 17) + V018 fix 11 → 표(id · 전 · 후 · 출처 url · 처리 = 교체/채움/비움) · hint-check 막힘 0 · 같은 정답 활성 대조(H12 — 4글자 조각) · 비운 채로 남긴 목록(H8 보고). 다 됐다 = 중(3) 힌트 빈 칸 31 → 몇 개인지 숫자.
+C. 정리 — CV-55 쌍 2 · #2051 · #940 · #1035 · A79 질문 3(전/후 전문 0절에).
+D. 규칙 — 15 §3-1 한 줄(A79) · §4-1 H8 한 줄(CV-56) · hint-v5 SYNC 블록(H8 줄) · `criteria-sync --check`.
+E. 실측 — 활성 수 · 난이도별 · 3~5 힌트 빈 칸 수 · 50문제 상만 판 수(바뀌면 안 됨 — #940 · #1035 살리면 +2 상) · 200자 초과 0.
+F. 문서 — 05 · 06 · 07 DG-055 · 13(CV-53 · 54 · 55 · 56 · 57 · 58 끝 · A79 "(가)+(다) — GEN 끝 · MAIN 몫 없음" · C77 ② 끝 · C79 메모) · README G 표 · `ai-out/G017.txt`(0절: 표 — fix 98 반영 · 힌트 52 처리 · 정리 5 · 긴 질문 3 전/후).
 
-■ DB 쓰기: **허용**(백업 뒤 · minigame_* 표만). **questions 금지**.
-■ 웹·토큰 예산: WebSearch **60회 이내** · WebFetch 주 수단 · 하위 에이전트 ≤1.
-■ 하지 말 것: questions · 생성 · server/ client/ shared/(적재 스크립트 버그가 아니면 — 갱신이 안 되면 `scripts/minigame-load.mjs` 만 고치고 13 C 에 적는다) · 13 A · README R/V · 그림 커밋.
-■ 확인할 것 (원칙 7): 1차 642(verified 573 · candidate 63 · rejected 6) · 2차 533(ok 503 → verified · fix 29 → candidate · drop 1 → rejected — V017 이 썼는지) · DB minigame_items loaded 573 · g008-check 1,175 막힘 0 · 마지막 DG-053 · C77 — 다르면 0절에.
-■ 보고 항목: cmd 창 → 0 찬종이 볼 것(적재 표 · 그림 교체 전/후 경로 5) → 원칙 메모 → A~F → GEN 판단 → 새 결정 필요 → 고친 문서.
+■ DB 쓰기: **허용**(백업 뒤 · questions · question_answers 대상 행만 · 대상 밖 해시 전후 같음). **minigame_* 금지**.
+■ 웹·토큰 예산: WebSearch **40회 이내** · WebFetch 주 수단 · 하위 에이전트 ≤1.
+■ 하지 말 것: 생성 · 미니게임(data/minigame · minigame_*) · server/ client/ shared/ · pipeline 프롬프트(hint-v5 SYNC 블록 빼고) · 13 A · README R/V · Q · 170~200자 질문 70.
+■ 확인할 것 (원칙 7): v018-active1 verdict=fix 98 · v019-hints written fix 22 · edited fix 2 · cleared fix 17(합 41) · v018-hints fix 11 · 활성 6,043(1: 757 · 2: 1,485 · 3: 2,851 · 4: 947 · 5: 3) · 중(3) 힌트 빈 칸 31 · 질문 200자 초과 2 · 170자 초과 72 · 마지막 DG-054 · C78 · CV-58 — 다르면 0절에.
+■ 보고 항목: cmd 창 → 0 찬종이 볼 것(표 넷 · 비활성/복구 목록 · 긴 질문 전/후) → 원칙 메모 → A~F → GEN 판단 → 새 결정 필요 → 고친 문서.
 ■ 커밋: 단계마다 · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` · 내 파일만 add · fetch → rebase → push.
-■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄에 "G016 끝 — 다음 브리핑 대기".
+■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄에 "G017 끝 — 다음 브리핑 대기".
 ■ 답변: 한국어 · 터미널 5줄 이내.
