@@ -204,6 +204,8 @@ export interface CurrentQuestion {
 
   /** ★★ 판정에 쓰는 정규화 정답 집합. 이것만으로 판정한다 */
   answersNorm: Set<string>;
+  /** ★★★ R057 (D-251) — 안전한 변환(괄호 · 가운뎃점 등 · 영문 관사)을 적용한 정답 표준형(정규화 정답과 다른 것만). 없으면 빈 집합 */
+  answersFlex?: Set<string>;
   /** 정답 공개 화면용 대표 표기. ★ 판정에 쓰지 않는다 */
   displayAnswer: string;
   /** 마스킹용 원문 표기 (Phase 6) */

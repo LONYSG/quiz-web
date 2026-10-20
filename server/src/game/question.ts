@@ -31,7 +31,7 @@
 // =============================================================================
 
 import { checkAchievements } from '../achievements.js';
-import { RULES, computeRanking, generateHint, normalizeAnswer, rankFinal, skipThreshold } from '@quiz/shared';
+import { RULES, computeRanking, flexAnswerSet, generateHint, normalizeAnswer, rankFinal, skipThreshold } from '@quiz/shared';
 import type { GameEndReason, QuestionResolution } from '@quiz/shared';
 import { endGame } from '../db/games.js';
 import { config } from '../config.js';
@@ -124,6 +124,8 @@ ${normalizeAnswer(q.explanation ?? '')}`;
     categoryName: q.categoryName,
     // ── 2. 판정용 정답 집합
     answersNorm: new Set(q.answersNorm),
+    // ★★★ R057 — 복수정답 유연화(안전한 변환) 표준형
+    answersFlex: flexAnswerSet(q.answersRaw, new Set(q.answersNorm)),
     displayAnswer: q.displayAnswer,
     // ── 3. 마스킹용 원문 표기 (Phase 6)
     answersRaw: [...q.answersRaw],

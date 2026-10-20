@@ -33,6 +33,7 @@
     "reset-password": "node scripts/reset-password.mjs",
     "verify:gemini": "node scripts/verify-gemini.mjs",
     "smoke": "node scripts/smoke.mjs",
+    "answers:flex": "node scripts/answer-flex-report.mjs",
     "feedback:report": "node scripts/feedback-report.mjs",
     "verify": "npm run typecheck && npm test && npm run smoke && npm run ui-check && npm run ui-check:sound && npm run ui-check:social && npm run ui-check:leave && npm run ui-check:spam && npm run ui-check:shop && npm run ui-check:copy && npm run ui-check:devices && npm run ui-check:minigame",
     "build:force": "tsc -b shared server client --force && npm run build -w client",

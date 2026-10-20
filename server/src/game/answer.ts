@@ -33,7 +33,7 @@
 //   판정은 **항상 클라이언트가 보낸 원문**을 입력으로 받고 마스킹 결과를 참조하지 않는다.
 // =============================================================================
 
-import { normalizeAnswer } from '@quiz/shared';
+import { flexMatch, normalizeAnswer } from '@quiz/shared';
 import type { AnswerRejectReason } from '@quiz/shared';
 import type { Player, Room } from '../rooms/types.js';
 
@@ -62,6 +62,8 @@ export interface JudgeOutcome {
     startedAt: number;
   } | null;
 }
+
+const EMPTY_FLEX: ReadonlySet<string> = new Set();
 
 const NO_QUESTION: JudgeOutcome = {
   matched: false,
@@ -97,7 +99,11 @@ export function judgeAnswer(room: Room, player: Player, input: JudgeInput): Judg
   //   ★ 근거: matched 여부가 answer_events 기록 대상을 정한다 (Q-52).
   //     ★ 자격이 없어도 "정답 문자열과 일치했다" 는 기록해야 한다 —
   //       guide 18절의 순서 추적과 동시 정답 사후 검증의 근거다.
-  const matched = current.answersNorm.has(normalizeAnswer(input.rawText));
+  //   ★★★ R057 (D-251) — 정규화 그대로 맞지 않으면 안전한 변환(괄호 · 가운뎃점 등 · 끝맺음 · 영문 관사)으로 한 번 더 본다.
+  //     글자를 지우기만 한다 — 오타 허용 · 유사도 판정은 여전히 없다(01 10장)
+  const matched =
+    current.answersNorm.has(normalizeAnswer(input.rawText)) ||
+    flexMatch(input.rawText, current.answersNorm, current.answersFlex ?? EMPTY_FLEX);
   if (!matched) {
     // ★ 일치하지 않으면 그냥 일반 채팅이다. "오답입니다" 를 보내지 않는다 (guide 15절)
     return { ...NO_QUESTION, question: q };

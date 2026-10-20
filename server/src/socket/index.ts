@@ -124,7 +124,8 @@ function maskForBroadcast(room: Room, senderAccountId: string, rawNfc: string): 
   // ★ (3) 실제로 정답이 들어 있을 때만
   //   ★★ R057 — 이모티콘 토큰은 건너뛰고 찾는다(마스킹은 글자 부분만 — "이😂순신" 도 가린다) · 가리지 않은 토큰은 되돌린다
   const p = protectEmojiTokens(rawNfc);
-  const result = maskAnswers(p.text, [...q.answersNorm], EMOJI_PLACEHOLDER_RE);
+  //   ★ R057 — 변환 표준형(괄호를 뗀 정답 등)도 같이 찾는다
+  const result = maskAnswers(p.text, [...q.answersNorm, ...(q.answersFlex ?? [])], EMOJI_PLACEHOLDER_RE);
   return result.masked ? p.restore(result.text) : null;
 }
 

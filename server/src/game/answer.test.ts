@@ -11,7 +11,7 @@
 // =============================================================================
 
 import { describe, expect, it } from 'vitest';
-import { RULES } from '@quiz/shared';
+import { flexAnswerSet, normalizeAnswer, RULES } from '@quiz/shared';
 import { checkChatRate, checkEmojiRate, judgeAnswer } from './answer.js';
 import type { CurrentQuestion, Player, Room } from '../rooms/types.js';
 
@@ -409,5 +409,54 @@ describe('★★ R048 도배 방지 — 창 + 잠금', () => {
     for (let i = 0; i < 6; i += 1) checkChatRate(r, 'A', NOW, limits);
     expect(checkChatRate(r, 'B', NOW, limits)).toBeNull();
     expect(checkEmojiRate(r, 'A', NOW, limits)).toBeNull();
+  });
+});
+
+// ★★★ R057 (D-251) — 복수정답 유연화: 글자를 지우기만 하는 안전한 변환 넷 · 오타 · 호칭 · 조사는 없다
+describe('★★★ 복수정답 유연화 (R057)', () => {
+  const withAnswers = (raws: string[]) => {
+    const norms = new Set(raws.map((r) => normalizeAnswer(r)));
+    return question({ answersRaw: raws, answersNorm: norms, answersFlex: flexAnswerSet(raws, norms) });
+  };
+  const ok = (raws: string[], text: string) => judgeAnswer(room({}, withAnswers(raws)), player(), { rawText: text, epoch: 3, receivedAt: NOW + 100 }).accepted;
+
+  it('① 괄호와 괄호 안 글자 — 제출 · 정답 둘 다', () => {
+    expect(ok(['이순신'], '이순신(李舜臣)')).toBe(true);
+    expect(ok(['회계법인(감사 법인)'], '회계법인')).toBe(true);
+  });
+  it('② 가운뎃점 · 마침표 · 쉼표 · 물결', () => {
+    expect(ok(['4·19 혁명'], '4.19혁명')).toBe(true);
+    expect(ok(['4·19 혁명'], '419 혁명')).toBe(true);
+    expect(ok(['USA'], 'U.S.A.')).toBe(true);
+    expect(ok(['1,000'], '1000')).toBe(true);
+    // ★ 숫자만인 글의 소수점은 둔다 — "314" 는 "3.14" 가 아니다
+    expect(ok(['3.14'], '314')).toBe(false);
+  });
+  it('③ 끝맺음(이다 · 입니다 · 요 · 임) — 제출 쪽만 · 남은 글 2자 이상', () => {
+    expect(ok(['이순신'], '이순신이다')).toBe(true);
+    expect(ok(['이순신'], '이순신입니다!')).toBe(true);
+    expect(ok(['이순신'], '이순신요')).toBe(true);
+    expect(ok(['이순신'], '이순신임')).toBe(true);
+    // ★ 정답 쪽에는 쓰지 않는다 — "사이다" 가 "사" 로 맞지 않게
+    expect(ok(['사이다'], '사')).toBe(false);
+    expect(ok(['오징어 게임'], '오징어 게')).toBe(false);
+    // ★ 1자 정답은 끝맺음으로 맞지 않는다
+    expect(ok(['수'], '수요')).toBe(false);
+  });
+  it('④ 영문 관사(the · a · an) — 한글이 없을 때만', () => {
+    expect(ok(['The Beatles'], 'Beatles')).toBe(true);
+    expect(ok(['Beatles'], 'the beatles')).toBe(true);
+  });
+  it('★ 넣지 않는 것 — 오타 · 호칭 · 조사', () => {
+    expect(ok(['세종'], '세중')).toBe(false);
+    expect(ok(['이순신'], '이순신장군')).toBe(false);
+    expect(ok(['이순신'], '이순신은')).toBe(false);
+  });
+  it('★ 경험자는 변환으로 맞아도 판정 제외 그대로', () => {
+    const q = withAnswers(['이순신']);
+    q.experiencedAccountIds.add('A');
+    const r = judgeAnswer(room({}, q), player(), { rawText: '이순신이다', epoch: 3, receivedAt: NOW + 100 });
+    expect(r.matched).toBe(true);
+    expect(r.rejectReason).toBe('experienced');
   });
 });
