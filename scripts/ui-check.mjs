@@ -3362,6 +3362,170 @@ async function closeAllTabs(browser) {
   await sleep(300);
 }
 
+// =============================================================================
+// ★★★ R057 — 미니게임만 모드 · 이모티콘 나열(인라인) (UICHECK_R057=1 · SHOT_DIR=r057 · MINIGAME_PHASE_SCALE 0.3)
+// =============================================================================
+const shiftClick = async (P, sel) => {
+  const r = await rectOf(P, sel);
+  if (!r) return false;
+  for (const type of ['mousePressed', 'mouseReleased']) {
+    await P.send('Input.dispatchMouseEvent', { type, x: r.x + r.w / 2, y: r.y + r.h / 2, button: 'left', clickCount: 1, modifiers: 8 });
+  }
+  await sleep(250);
+  return true;
+};
+const longPress = async (P, sel, ms = 700) => {
+  await P.evaluate(`document.querySelector(${JSON.stringify(sel)})?.scrollIntoView({ block: 'center' })`);
+  await sleep(150);
+  const r = await rectOf(P, sel);
+  if (!r) return false;
+  const x = r.x + r.w / 2;
+  const y = r.y + r.h / 2;
+  await P.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y }] });
+  await sleep(ms);
+  await P.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await sleep(250);
+  return true;
+};
+/** ★ 채팅 입력창 — 줄 안의 첫 input 은 이모티콘 찾기 칸이다(고르기 창이 앞에 있다) */
+const CHAT_IN = '.chat-input-row > input';
+const inputVal = (P) => P.evaluate(`document.querySelector('${CHAT_IN}')?.value ?? null`);
+async function r057Flow(browser) {
+  const H = await newPage(browser, 'M-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'mh', '미니방장');
+  const roomId = await createRoom(H, 'R057 미니게임만');
+  const G = await newPage(browser, 'M-guest', true);
+  await touchDevice(G, 390, 844);
+  await signUp(G, 'mg', '미니손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 10000);
+
+  // ── A 설정 — 방식 미니게임만 · 2개 · 연타만
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(400);
+  for (let i = 0; i < 40; i += 1) {
+    const sel = await H.evaluate("(() => { const b = [...document.querySelectorAll('.settings [data-minigame][aria-pressed=\"true\"]')].find((x) => x.dataset.minigame !== 'tap'); return b ? `[data-minigame=\"${b.dataset.minigame}\"]` : null; })()");
+    if (!sel) break;
+    await H.evaluate(`document.querySelector('.settings ${sel}')?.click()`);
+    await sleep(120);
+  }
+  if (await H.evaluate("document.querySelector('.settings [data-minigame=\"tap\"]')?.getAttribute('aria-pressed') !== 'true'")) await H.evaluate("document.querySelector('.settings [data-minigame=\"tap\"]')?.click()");
+  await sleep(500);
+  const st = JSON.parse(await H.evaluate("JSON.stringify({ count: document.querySelector('.settings .count-input:not(.mg-rounds-input)') !== null, rounds: document.querySelector('.mg-rounds-input')?.value, on: [...document.querySelectorAll('.settings [data-minigame][aria-pressed=\"true\"]')].map((b) => b.dataset.minigame), tier: document.querySelector('.settings [data-tier]') !== null })"));
+  record('★★★ A 설정 — 미니게임만이면 문제 수 · 난이도 · 분야 숨김 · 미니게임 수 · 고르기만', !st.count && !st.tier && st.rounds === '2' && st.on.join() === 'tap', JSON.stringify(st));
+  await G.waitFor("[...document.querySelectorAll('.settings .chip')].some((c) => c.innerText.trim() === '미니게임만')", 4000);
+  const gst = JSON.parse(await G.evaluate("JSON.stringify({ mode: [...document.querySelectorAll('.settings .chip')].some((c) => c.innerText.trim() === '미니게임만'), rounds: document.querySelector('.settings .set-value')?.innerText, doc: document.documentElement.scrollWidth, vw: innerWidth })"));
+  record('★★ A 손님(m390) — 읽기 전용 "미니게임만 · 2개" · 가로 넘침 없음', gst.mode && /2개/.test(gst.rounds ?? '') && gst.doc <= gst.vw, JSON.stringify(gst));
+  await snap(H, '100-settings-mgonly-pc');
+  await snap(G, '100-settings-mgonly-m390');
+  // ── A 진행
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await H.waitFor("document.querySelector('.mg-series') !== null", 20000);
+  const intro1 = await H.evaluate("JSON.stringify({ series: document.querySelector('.mg-series')?.dataset.series, intro: document.querySelector('.mg-intro')?.innerText ?? null })");
+  await snap(H, '101-mgonly-intro-pc');
+  record('★★★ A 첫 미니게임 — 깜짝 연출 "미니게임만 — 2개 이어서!" · 1/2', /1\/2/.test(intro1) && /미니게임만/.test(intro1), intro1);
+  await H.waitFor("document.querySelector('.mg-series')?.dataset.series === '2/2'", 60000);
+  await sleep(150);
+  const second = await H.evaluate("JSON.stringify({ intro: document.querySelector('.mg-intro') !== null, rules: document.querySelector('.mg-rules') !== null })");
+  await snap(H, '101-mgonly-second-pc');
+  await snap(G, '101-mgonly-second-m390');
+  record('★★ A 둘째 미니게임 — 연출 없이 규칙 안내부터 · 2/2', /"intro":false/.test(second), second);
+  await H.waitFor("document.querySelector('.mg-result-sub') !== null", 60000);
+  await G.waitFor("document.querySelector('.mg-result-sub') !== null", 10000);
+  await sleep(600);
+  const rs = JSON.parse(await H.evaluate("JSON.stringify({ rows: document.querySelectorAll('.ranking li').length, fb: document.querySelector('.fb-result') !== null, sub: document.querySelector('.mg-result-sub')?.innerText })"));
+  record('★★★ A 결과 — 미니게임 순위 점수 합 · 문제 평가 없음', rs.rows === 2 && !rs.fb && /2개/.test(rs.sub ?? ''), JSON.stringify(rs));
+  await snap(H, '102-mgonly-result-pc');
+  await snap(G, '102-mgonly-result-m390');
+  await H.evaluate("document.documentElement.dataset.theme = 'night'");
+  await sleep(450);
+  await snap(H, '102-mgonly-result-pc-night');
+  await H.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '로비로')?.click()");
+  await H.waitFor("document.querySelector('button[data-mode=\"minigame\"]')?.getAttribute('aria-pressed') === 'true'", 10000);
+  record('★★ A 로비로 — 미니게임만 설정 그대로', true);
+
+  // ── B 이모티콘 나열 — 손님에게 특별 하나(테스트 행) · 다시 읽기
+  const gLogin = `${ACCOUNT_PREFIX}_mg`;
+  const sp = await withPg(async (c) => {
+    const id = (await c.query(`SELECT id FROM emojis WHERE theme_id IS NOT NULL AND active ORDER BY id LIMIT 1`)).rows[0]?.id;
+    if (id) await c.query(`INSERT INTO account_emojis (account_id, emoji_id) SELECT id, $2 FROM accounts WHERE login_id = $1 ON CONFLICT DO NOTHING`, [gLogin, id]);
+    return id;
+  });
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.chat-card') !== null", 10000);
+  await sleep(800);
+  // PC — 고르기 창 · 토글
+  await realClick(H, '.emoji-btn');
+  await H.waitFor("document.querySelector('.emoji-mode') !== null", 4000);
+  await sleep(300);
+  const modeDefault = await H.evaluate("document.querySelector('[data-emoji-mode=\"send\"]')?.getAttribute('aria-pressed')");
+  await snap(H, '103-emoji-mode-send-pc');
+  record('★★ B 고르기 창 맨 위 [바로 보내기 · 입력창에 넣기] — 기본 바로 보내기', modeDefault === 'true', modeDefault);
+  // Shift+클릭 = 넣기(토글과 무관)
+  await shiftClick(H, '.emoji-grid .emoji-cell:nth-child(1)');
+  const afterShift = await inputVal(H);
+  record('★★★ B PC Shift+클릭 → 입력창에 넣기(보내지 않음)', typeof afterShift === 'string' && afterShift.length > 0, afterShift);
+  await realClick(H, '[data-emoji-mode="insert"]');
+  for (const n of [2, 3]) await realClick(H, `.emoji-grid .emoji-cell:nth-child(${n})`);
+  const three = await inputVal(H);
+  await snap(H, '103-emoji-mode-insert-pc');
+  record('★★ B 입력창에 넣기 — 셋이 입력창에(커서 자리)', [...new Intl.Segmenter('und', { granularity: 'grapheme' }).segment(three ?? '')].length === 3, three);
+  await pressKey(H, 'Escape', 'Escape', 27);
+  await sleep(200);
+  // 끝에 글자를 덧붙인다(realType 은 전체를 덮어쓴다)
+  await H.evaluate(`(() => { const el = document.querySelector('${CHAT_IN}'); el.focus(); el.setSelectionRange(el.value.length, el.value.length); })()`);
+  await H.send('Input.insertText', { text: ' 대박' });
+  await sleep(200);
+  await H.click('전송');
+  await sleep(500);
+  // 이모티콘만 2개(반응 꼴) · 5개(인라인)
+  const hostPrefs = await H.evaluate("fetch('/api/auth/prefs', { credentials: 'same-origin' }).then((r) => r.json()).then((j) => j.prefs?.emojiInsert ?? null)");
+  record('★ B 토글은 계정에 저장(prefs.emojiInsert)', hostPrefs === true, String(hostPrefs));
+  await H.setInput(CHAT_IN, '😂👍');
+  await H.click('전송');
+  await sleep(400);
+  await H.setInput(CHAT_IN, '😂😂😂😂😂');
+  await H.click('전송');
+  await sleep(600);
+  // 모바일 — 특별 탭에서 길게 누르기 → :sp: 토큰 · 미리 보기
+  await tapOn(G, '.emoji-btn');
+  await G.waitFor("document.querySelector('.emoji-mode') !== null", 4000);
+  await tapOn(G, '.emoji-tab[title="특별"]');
+  await sleep(300);
+  await longPress(G, '.emoji-grid .emoji-cell.special');
+  const gv = await inputVal(G);
+  const stillOpen = await G.evaluate("document.querySelector('.emoji-pop') !== null");
+  record('★★★ B 모바일 길게 누르기 → 입력창에 :sp: 토큰(보내지 않음 · 창은 열린 채)', /:sp:\d+:/.test(gv ?? '') && stillOpen, `${gv} · ${stillOpen}`);
+  await tapOn(G, '.emoji-pop .popup-close');
+  await sleep(200);
+  await G.setInput(CHAT_IN, `${gv}안녕 ㅋㅋ`);
+  await sleep(300);
+  const prev = await G.evaluate("JSON.stringify({ shown: document.querySelector('.chat-preview') !== null, img: document.querySelectorAll('.chat-preview img').length })");
+  await snap(G, '104-emoji-preview-m390');
+  record('★★ B 특별 토큰이 든 글 — 입력창 위 미리 보기(그림)', /"shown":true,"img":1/.test(prev), prev);
+  await tapOn(G, '.send-btn');
+  await sleep(700);
+  const log = JSON.parse(await H.evaluate("JSON.stringify([...document.querySelectorAll('.chat-line')].slice(-4).map((l) => ({ inline: l.querySelectorAll('.chat-inline-emoji').length, special: l.querySelectorAll('.chat-inline-special').length, big: l.querySelectorAll('.chat-emoji').length, text: l.querySelector('.chat-text')?.innerText ?? '' })))"));
+  record('★★★ B 채팅 — 글 섞인 줄(인라인 3) · 이모티콘만 2(반응 꼴) · 5개(인라인 5) · 특별 토큰 줄(32px 1)', log.length === 4 && log[0].inline === 3 && log[1].big === 2 && log[2].inline === 5 && log[3].special === 1, JSON.stringify(log));
+  const seat = await H.evaluate("document.querySelectorAll('.seat-emoji-pop img').length");
+  await snap(H, '105-inline-chat-pc');
+  await snap(G, '105-inline-chat-m390');
+  await G.evaluate("document.documentElement.dataset.theme = 'night'");
+  await sleep(450);
+  await snap(G, '105-inline-chat-m390-night');
+  await G.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  record('★ B 참여자 칸 이모티콘(반응 꼴은 3초)', seat >= 0, String(seat));
+  const gw = JSON.parse(await G.evaluate("JSON.stringify({ doc: document.documentElement.scrollWidth, vw: innerWidth })"));
+  record('★★ B m390 가로 넘침 없음', gw.doc <= gw.vw, JSON.stringify(gw));
+  await withPg((c) => c.query(`DELETE FROM account_emojis WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [gLogin]));
+  void sp;
+  await G.close?.();
+  await H.close?.();
+}
 async function minigameFlow(browser) {
   // ── [1] 그림 모음 · 장면 (MG_SKIP_LAB=1 이면 건너뛴다 — 실제 판만 다시 볼 때)
   // ★ R051 — MG_SKIP_R050=1 이면 R050 두 게임을 건너뛰고 · 넷(번개손 · 타자 · 원 · 각도)만 (MG_GAMES 로 더 좁힌다)
@@ -3394,6 +3558,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R056) {
     await closeAllTabs(browser);
     await r056Flow(browser);
+  }
+  // ★ R057 — 미니게임만 · 이모티콘 나열
+  if (process.env.UICHECK_R057) {
+    await closeAllTabs(browser);
+    await r057Flow(browser);
   }
 }
 /** ★ R050 F — /lab/sound — 후보 버튼 · 실제 파일 길이(브라우저가 읽은 duration) · 누르면 소리가 난다(오류 없음) */

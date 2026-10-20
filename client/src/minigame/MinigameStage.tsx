@@ -198,7 +198,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
             )}
             <p className="dim mg-rules-note">
               {view.roundCount}판 · 판마다 순위 점수 ·{' '}
-              {view.practice ? '연습이라 보상 없음' : view.series ? '최종 순위대로 게임 점수 · 1~3위 포인트 보너스' : '최종 1~3위에게 보너스 점수(포인트도)'}
+              {view.practice ? '연습이라 보상 없음' : view.series ? '최종 순위가 게임 점수로 · 1~3위는 포인트도' : '최종 1~3위에게 보너스 점수(포인트도)'}
             </p>
           </div>
         </div>
