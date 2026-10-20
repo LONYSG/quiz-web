@@ -1,42 +1,37 @@
-[GEN G017]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 짧은 라운드 — 하나만 · 끝나면 멈춘다)
-TASK: **기존 활성 마무리** — ① 난이도 1 fix 98(V018 `audit/v018-active1.json`) 반영 ② 힌트 52 = V019 fix 41(쓴 24 교체·비움 + 비운 17 다시 채움 — CV-56 · CV-57) + V018 새 힌트 fix 11(CV-53 (c)) ③ 정리 — #2051 살리기(C77 ②) · CV-55 쌍 한쪽 비활성 · 비활성 #940 · #1035 살릴 수 있으면 ④ A79 (다) — 200자 넘는 질문 2(#6000 · #5327) + #5700 줄이기 · 15 §3-1 한 줄. **생성 · 미니게임 없음**
+[GEN G018]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 짧은 라운드 — 하나만 · 끝나면 멈춘다)
+TASK: **V020 반영 라운드** — ① 미니게임 CV-59 (b)(photo-0207 · 0141 altAnswers 비우기 + 그림 판단 → items 파일 → 재적재) ② 애매 재판정 fix 10 · drop 2(CV-61) ③ unverified still 7 낮추기·빼기(CV-62) ④ 행정 구역 개편 영향 16(CV-60 — 도 이름 빼기 기본) ⑤ V018 힌트 ambiguous 4(C79 ②) ⑥ 중(3) 힌트 빈 칸 16 한 번 더 찾기(H8 새 줄). **생성 없음**(상 4차는 찬종 답 뒤 — G019)
 실행 모델: Opus 5.5 (바꾸지 않는다)
 
-■ 고정 규칙: docs/16 그대로 (번호 — G016 · V019 가 쓴 다음: **DG-055 · C79 · CV-59**(07 · 13 을 보고) · Q 는 올리지 않는다). 하위 에이전트 ≤1(사실 재확인 조각) · 메모리 1.5GB · 429 면 같은 모델로 이어서.
-■ ★★ 동시 라운드 — VERIFY(V020 — 미니게임 적재본 표본 · g009a/b "애매" 표본 · unverified 질문 문장 · 행정 구역 기계 검색 — **questions · minigame 읽기만** · audit/v020-* · 13 CV · README V 표) · MAIN(R055 마무리 — 케이크 · 사진 묶음 재실행만 · 봇 계정 기록만). GEN 몫: **questions · question_answers**(백업 뒤 · 대상 행만) · scripts/g017-* · audit/g017-* · docs/15 §3-1 · §4-1 H8 한 줄 · pipeline hint-v5 SYNC 블록(H8 줄이 들어가면) · criteria-sync · 05 · 06 · 07 DG- · 13(아래 끝 표시) · README G 표. git: 내 파일만 · fetch → rebase → push. 찬종 없이 간다 — 묻지 말고 13 C 에 적는다.
-■ 토큰: 넉넉하다 — fix 98 · 힌트 52 전부 읽고 판단.
+■ 고정 규칙: docs/16 그대로 (번호 — 다음 **DG-056 · C80 · CV-64**(07 · 13 을 보고) · Q 는 올리지 않는다). 하위 에이전트 ≤1(사실 재확인 조각) · 메모리 1.5GB · 429 면 같은 모델로 이어서.
+■ ★★ 동시 라운드 — VERIFY(V021 — g009a/b "애매" 나머지 약 315 전수 + G017 반영 표본 — **questions 읽기만** · audit/v021-* · 13 CV · README V 표). MAIN 은 쉰다. GEN 몫: **questions · question_answers**(백업 뒤 · 대상 행만) · `data/minigame/photo/items*.json` · **minigame_items**(재적재 — 백업 뒤) · scripts/g018-* · audit/g018-* · 05 · 06 · 07 DG- · 13(아래 끝 표시) · docs/18 7절 한 줄(재적재 기록) · README G 표. git: 내 파일만 · fetch → rebase → push. 찬종 없이 간다 — 묻지 말고 13 C 에 적는다.
+■ 토큰: 넉넉하다 — 항목 수는 적다(약 50) · 하나하나 문서로 닫는다.
 
 ■ 먼저 읽기
-- ai-out/V018.txt 2절 · [3-1](fix 98 전문) · 6절 ③ · `audit/v018-active1.json`(items[id].verdict/categories/proposal/facts) · `audit/v018-hints.json`(fix 11 — CV-53)
-- **ai-out/V019.txt 2 · 3 · 4 · 6절** · `audit/v019-hints.json`(items[id] — kind written/edited/cleared · verdict · categories · proposal · facts · urls · note · blind) — written fix 22 · edited fix 2 · cleared fix 17 = 41
-- ai-out/G015.txt(방법 · `scripts/g015-apply-active2.mjs` — 복제) · G013.txt 0절(#940 · #1035 비활성 사유) · G014.txt(비운 31 사유 · `g014-fixes.json` rows gen)
-- 13 **CV-53 · CV-54 · CV-55 · CV-56 · CV-57 · CV-58 · A79 · C77 ② ④** · R055.txt 0절 4(A79 — 그림 docs/design/verify-long/20-long-q5327-reveal-m360.png) · docs/15 §3-1 · §4-1 H0 · H8 · H9 · hint-v5
+- **ai-out/V020.txt 0 · 2 · 3-A · 3-B · 3-C · 3-D · 4절** · `audit/v020-minigame.json`(human.items — photo-0207 · 0141) · `v020-ambiguous.json`(items[] key · id · verdict · categories · proposal · facts · boundary · dbDifficulty) · `v020-unverified.json` · `v020-admin.json`(affected 11 · date-limit 5 · already-ok 11)
+- 13 **CV-59 · CV-60 · CV-61 · CV-62 · CV-63 · C79** · ai-out/G017.txt 0절 ②(힌트 빈 칸 31 → 16 · 남은 16 목록은 `audit/g017-fixes.json` 또는 DB 에서 다시 센다) · `audit/v018-hints.json`(ambiguous 4 — M1-23 · L1-28 · C2-14 · K1-19 · 판정 갈림)
+- docs/15 §3-2(한정어) · §3-3(2회차 범주 단서) · §4-1 H8(새 줄) · H9 · docs/18 7절 · `scripts/minigame-load.mjs`(같은 id 재적재 = 갱신) · `scripts/g016-apply-v017.mjs`(items 파일 고치는 꼴) · `scripts/g017-apply-active1.mjs`(questions 반영 꼴 — 복제)
 
 ■ 찬종의 말 · 확정 · 설계 판단(2026-10-20)
-- "퀄리티 있는 문제 수 늘리는게 우선이야."
-- **CV-56 (a) 채운다** — 판정자 제안 17(504 · 1928 · 2123 · 2205 · 2228 · 3346 · 3347 · 3392 · 3674 · 3793 · 3866 · 4039 · 4063 · 4100 · 4673 · 4724 · 4725)을 GEN 이 **문서로 열어 확정한 뒤** 채운다(VERIFY 가 직접 연 2123 · 3347 · 4724 · 4725 도 한 번 더). 1928 은 "적어도 1724년" 꼴로 약하게. 못 닫으면 비움 유지(목록으로). 15 §4-1 **H8 에 한 줄**: "제안이 없어도 문서에서 두 번째 줄 사실을 한 번 더 찾은 뒤에 비운다(V019 — 비운 33 중 17 은 쓸 사실이 있었다)".
-- **CV-57** fix 24 — 제안 있는 16 은 문서로 열어 교체 · 제안 null 8(1833 · 2142 · 2263 · 2422 · 2880 · 3103 · 3107 · 4294)은 GEN 이 문서에서 두 번째 줄 사실을 찾아 쓰고 → 못 찾으면 비움(H8) · 4484 는 letters 만('개헌안' 표현 바꾸기 — 자유당 소속은 맞음) · 3556 · 1822 는 제안 그대로.
-- **CV-53 (c)** 그대로 — V018 fix 11: 제안 있는 9 는 교체(근거 약한 M1-12 · M1-07 · S3-12 는 문서 확인 뒤) · L1-31 · S3-09 는 찾거나 비움.
-- **CV-54 · CV-58 (b) blind 는 수치로만** — 파이프라인에 단계를 두지 않는다(정밀도 27% · 판정자가 사람보다 잘 맞힘). famous-one 자기 점검 한 줄은 다음 생성 라운드(G018)의 hint-v6 몫 — 이번엔 hint-v5 를 고치지 않는다(H8 SYNC 줄 빼고). 13 에 "설계 판단 (b) · G018" 로 끝 표시.
-- **CV-55** — #29↔#166(목성) · #27↔#281(떡볶이): 질문·해설이 더 나은 쪽 하나만 남기고 다른 쪽 `is_active=false` · `inactive_reason` "중복 — #n 과 같은 문항(CV-55)" · 남긴 #27 쪽이면 해설의 "힌트 테스트용" 문구 삭제(어느 쪽을 남기든 그 문구는 지운다).
-- **C77 ② #2051** — display_answer 를 "공력가열" 로 · 변형에 "마찰열" 은 넣지 않는다(틀린 답) · 질문·해설을 공력가열에 맞게 손질 · 문서(ko/en 위키 · 항공우주 자료)로 닫히면 `is_active=true` · 못 닫으면 그대로.
-- **#940 인플레이션 조세 · #1035 애오라지** — 한 번만 시도: #940 은 개념을 닫는 문서(경제학 사전 · en Inflation tax 본문)와 #933 시뇨리지와 정답이 갈리는 근거가 있으면 살림 · #1035 는 두 번째 줄 사실(우리말샘 · 표준국어대사전 어원·용례)을 찾아 힌트를 쓰면 살림. 못 하면 그대로(13 C 에 한 줄).
-- **A79 (다)** — 15 §3-1 에 한 줄: "★ 질문은 **200자를 넘지 않는다**(360 폭 정답 공개에서 넘친다 — R055 A79) · 170자가 넘으면 줄일 수 있는지 본다". DB 의 200자 초과 2(#6000 215 · #5327 204)와 #5700(138자 + 긴 정답 "Take Me Out to the Ball Game")의 질문을 **뜻 · 한정어 그대로 두고** 줄인다(해설 정보 끌어오지 않음 · 정답 조각 새지 않음). 170~200 의 70 은 손대지 않는다(목록만 0절에). MAIN 은 손대지 않는다 — 화면은 그대로.
-- 변형 · 사실 기준은 DG-051 · DG-053(좁은 말 받음 · 넓은 말 · 다른 대상 · 용례 0건은 받지 않음) 그대로. 난이도 1 은 힌트 없음(H0 보류) — 힌트 사유는 거의 없다.
+- "퀄리티 있는 문제 수 늘리는게 우선이야." · "이미지 없으면 몰입이 안돼."
+- **CV-59 (b)** — 다식 · 다식판은 다른 음식 · 다른 도구라 정답으로 받지 않는다(CV-51 설계 판단을 뒤집음 — V020 판정자 근거 채택). photo-0207 약과 · photo-0141 떡살: altAnswers 에서 다식 · 다식판을 빼고, **그림을 직접 보고** 그 사진만으로 약과/떡살이 하나로 보이면 그대로 · 혼동될 만하면 더 분명한 공용 그림으로 교체(g008-img) · 못 구하면 rejected(쉬게 함). items 파일 status 는 loaded 그대로 두고 값만 고친 뒤 `minigame-load --apply`(갱신) → DB 값 = 파일 값 확인.
+- **CV-60 도 이름 빼기 기본** — affected 11 은 V020 제안대로 "전남/전라남도" 를 빼고 군·지명만 남긴다(#1819 는 "진도에서" · #2347 "남해안의 연안 습지" · #4930 "호남의 고기 요리"). date-limit 5: 출생·출신(#4755 · #4832 · #5775)은 도 이름 빼기 · #4926 방언 분포는 그대로 · #5870 "1988년 (당시) 전라남도" 한정어. already-ok 11 은 손대지 않음. **대전충남 · 대구경북은 법령이 없으니 손대지 않는다.** 바뀐 문장도 15 §3-2 한정어 규칙(묻는 문장만 읽고 답이 하나인가)을 지킨다 — 도 이름을 뺐더니 답이 둘 이상이면 다른 단서를 더한다(해설 정보 끌어오지 않고 문서에서).
+- **CV-61** — fix 10 반영(변형 5 — S1-02 야구 장갑 · 글로브는 한국 쓰임을 문서(사전 · 기사)로 확인한 뒤 · 힌트 famous-one 3 · h-error 2 는 제안 힌트를 문서로 열어 교체) · drop 2(L2-31 #5269 · S2-12 #5690)는 GEN 이 15 §3-3 으로 다시 읽어 범주 단서가 맞으면 `is_active=false` · `inactive_reason` "3-3 범주 단서(V020)" · 아니면 그대로 두고 13 C 에 한 줄. 난이도는 바꾸지 않는다(blind 85% 같음).
+- **CV-62** — still 7 은 제안대로: #1036 곰비임비 용례 문장 빼기 · #3811 연밥 씨 개수 문장 빼기 · #666 "딱 하나만" 낮추기 · #1215 · #594 soften(V020 제안 문장) · #675 · #2557 은 그대로(unverified 표시 유지). 닫힌 7 중 #2137 "광 패" → "비광 패".
+- **C79 ② V018 ambiguous 4** — famous-one 이면 교체(문서로) · 아니면 그대로 · 표로.
+- **힌트 빈 칸 16** — H8 새 줄대로 문서에서 두 번째 줄 사실을 한 번 더 찾는다(하위 에이전트 1 · 후보 1~2개씩) → 쓴 것 · 못 쓴 것 목록(0 에 가까워야 — 못 쓴 것은 사유).
+- 변형 · 사실 기준은 DG-051 · DG-053 · DG-055 그대로.
 
 ■ 할 일 (항목마다 "다 됐다" · 단계마다 커밋)
-A. 난이도 1 fix 98 — `npm run db:backup` → `scripts/g017-apply-active1.mjs`(g015 복제 · 멱등 · before 대조 · checkAnswerSet · blankCheck) · 98 을 다 읽고 바꾸거나 받지 않는 것만 `audit/g017-decisions.json` → `audit/g017-fixes.json`(rows · notTaken) · 제안 속 새 사실 · 변형을 하위 에이전트 1 이 문서로 다시 엶(true/partial/false/unverified — partial · false 는 문서 문장대로). 다 됐다 = 다시 돌려 할 일 0 · 대상 밖 questions · question_answers 해시 같음.
-B. 힌트 52 — `scripts/g017-apply-hints.mjs`: V019 fix 41(교체 16 + null 8 찾기 + 채움 17) + V018 fix 11 → 표(id · 전 · 후 · 출처 url · 처리 = 교체/채움/비움) · hint-check 막힘 0 · 같은 정답 활성 대조(H12 — 4글자 조각) · 비운 채로 남긴 목록(H8 보고). 다 됐다 = 중(3) 힌트 빈 칸 31 → 몇 개인지 숫자.
-C. 정리 — CV-55 쌍 2 · #2051 · #940 · #1035 · A79 질문 3(전/후 전문 0절에).
-D. 규칙 — 15 §3-1 한 줄(A79) · §4-1 H8 한 줄(CV-56) · hint-v5 SYNC 블록(H8 줄) · `criteria-sync --check`.
-E. 실측 — 활성 수 · 난이도별 · 3~5 힌트 빈 칸 수 · 50문제 상만 판 수(바뀌면 안 됨 — #940 · #1035 살리면 +2 상) · 200자 초과 0.
-F. 문서 — 05 · 06 · 07 DG-055 · 13(CV-53 · 54 · 55 · 56 · 57 · 58 끝 · A79 "(가)+(다) — GEN 끝 · MAIN 몫 없음" · C77 ② 끝 · C79 메모) · README G 표 · `ai-out/G017.txt`(0절: 표 — fix 98 반영 · 힌트 52 처리 · 정리 5 · 긴 질문 3 전/후).
+A. 미니게임 — CV-59: 그림 2 직접 보기 → 판단 표 → `scripts/g018-apply-v020-mg.mjs`(items 파일 값 고침 · audit/g018-fixes.json parts.mg) → `npm run db:backup` → `minigame-load --apply` → DB ↔ 파일 같음 · 멱등. 다 됐다 = 0207 · 0141 전/후 + 그림 경로.
+B. questions — `scripts/g018-apply-v020.mjs`(g017 복제 · 멱등 · before 대조): 애매 fix 10 · drop 2 · unverified 7 + #2137 · 행정 구역 16 · V018 ambiguous 4 · 빈 힌트 16 → 결정 `audit/g018-decisions.json` → 기록 `g018-fixes.json`(rows · notTaken) · hint-check 막힘 0 · 대상 밖 해시 같음. 다 됐다 = 묶음별 표(건수 · 반영 · 받지 않음).
+C. 실측 — 활성 · 난이도별 · 3~5 힌트 빈 칸 · 상만 판 수 · 질문 200자 초과 0 · 미니게임 loaded 수.
+D. 문서 — 05 · 06 · 07 DG-056 · 13(CV-59 · 60 · 61 · 62 끝 · CV-63 메모 · C79 ② 끝 · C80) · docs/18 7절 한 줄 · README G 표 · `ai-out/G018.txt`(0절: 표 — 미니게임 2 전/후 · 애매 12 · unverified 8 · 행정 구역 16 전/후 문장 · ambiguous 4 · 빈 힌트 16 결과).
 
-■ DB 쓰기: **허용**(백업 뒤 · questions · question_answers 대상 행만 · 대상 밖 해시 전후 같음). **minigame_* 금지**.
+■ DB 쓰기: **허용**(백업 뒤 · questions · question_answers 대상 행 · minigame_items/images 는 photo 2 만). 대상 밖 해시 전후 같음.
 ■ 웹·토큰 예산: WebSearch **40회 이내** · WebFetch 주 수단 · 하위 에이전트 ≤1.
-■ 하지 말 것: 생성 · 미니게임(data/minigame · minigame_*) · server/ client/ shared/ · pipeline 프롬프트(hint-v5 SYNC 블록 빼고) · 13 A · README R/V · Q · 170~200자 질문 70.
-■ 확인할 것 (원칙 7): v018-active1 verdict=fix 98 · v019-hints written fix 22 · edited fix 2 · cleared fix 17(합 41) · v018-hints fix 11 · 활성 6,043(1: 757 · 2: 1,485 · 3: 2,851 · 4: 947 · 5: 3) · 중(3) 힌트 빈 칸 31 · 질문 200자 초과 2 · 170자 초과 72 · 마지막 DG-054 · C78 · CV-58 — 다르면 0절에.
-■ 보고 항목: cmd 창 → 0 찬종이 볼 것(표 넷 · 비활성/복구 목록 · 긴 질문 전/후) → 원칙 메모 → A~F → GEN 판단 → 새 결정 필요 → 고친 문서.
+■ 하지 말 것: 생성 · 다른 미니게임 항목 · server/ client/ shared/ · pipeline 프롬프트 · 15 · 13 A · README R/V · Q · 170~200자 질문 70 · 대전충남·대구경북 문항.
+■ 확인할 것 (원칙 7): v020-ambiguous fix 10 · drop 2 · v020-unverified still 7 · true 7 · v020-admin affected 11 · date-limit 5 · 활성 6,044(1: 755 · 2: 1,486 · 3: 2,851 · 4: 949 · 5: 3) · 중 힌트 빈 칸 16 · 미니게임 loaded 1,164 · 마지막 DG-055 · C79 · CV-63 — 다르면 0절에.
+■ 보고 항목: cmd 창 → 0 찬종이 볼 것 → 원칙 메모 → A~D → GEN 판단 → 새 결정 필요 → 고친 문서.
 ■ 커밋: 단계마다 · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` · 내 파일만 add · fetch → rebase → push.
-■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄에 "G017 끝 — 다음 브리핑 대기".
+■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄에 "G018 끝 — 다음 브리핑 대기".
 ■ 답변: 한국어 · 터미널 5줄 이내.
