@@ -1074,6 +1074,24 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 37. ★★★ R056 — 문제 평가 · 작은 수정 넷
+
+```bash
+npm run bot -- feedback                                   ★ 문제 평가 API 23개: 판에 없던 사람 403 · 그 판 문제 아님 403 · 👍/👎 upsert · 취소=삭제 · 사유 코드 검사 · 의견 200자 · 10초 20번 429 · 내 판 목록 · 지난 판
+node scripts/ui-check-bundles.mjs r056                    ★ 22개: 공개 화면 👍/👎 · 칩(포커스 유지 · 카드 높이 그대로 · m390 가로 넘침 0) · 즉시 저장(표 행) · 결과 목록 · 기타 의견 · 로비 팝업 · 골라 하기 가로 스크롤 0 · "없어요" 한 줄 · 프사 확대 · 전체 업적(그림 docs/design/r056)
+node scripts/ui-check-bundles.mjs r056-before             옛 빌드에서 "전" 그림만(골라 하기 넘침 · "없어요" 두 줄 재현) — git stash 등으로 옛 코드일 때만
+npm run feedback:report [-- --since YYYY-MM-DD --no-bots]  보고(읽기만 · tmp/feedback-report.md)
+```
+| 끝 점검 (R056 · 2026-10-21 03:16 ~ 05:22) | 결과 |
+|---|---|
+| typecheck · vitest · build · smoke | 통과 · 504/504(+8 feedback) · 통과 · 12/12 |
+| 봇 55 (03:16~04:21) | 54 통과 · shop 27/28(안 가진 사람의 특별 전송 BAD_REQUEST 를 400ms 안에 못 받음) → 다시 두 번 28/28(재현 안 됨) |
+| ui-check 34묶음 (04:21~05:18 · 남는 6342→4792MB) | 31 통과 · main-layout 128/129 · main-behavior 326/327(둘 다 13 A79 — 360 아주 긴 문항 그대로) · mg-r050-live 12/13(케이크 Enter 오차 0.57초) → 다시 13/13 |
+| r056 | 22/22 (59초) |
+★ 못 돌림 — 메모리 0.
+
+---
+
 ## 36. ★★ R055 — 못 돌린 검사 전부 (검사 라운드)
 
 ```bash
