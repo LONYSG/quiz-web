@@ -8,6 +8,8 @@
 //         게임별 규칙(price 출처 2 · 1.5 · bucket · category / worldprice shownCc · rows / photo category · revealMode · 라이선스 /
 //         estimate kind · 질문 '이것' / which margin 1.3 · 5년 · answer 맞음) · 정답 글자가 그림 파일 이름에 없음
 //   경고: 같은 브랜드 3 넘음 · 균형
+//   (G018) photoyear(docs/18 §8) — year 정수 · yearKind exact|circa · circa 면 yearRange [a, b] (a ≤ year ≤ b) · exact 면 null · region kr|world · 그림 필수(공용 자유 라이선스) · 같은 사진(sourceUrl) 겹침
+//          --add-rows <파일> = { rows: { <productId>: [row…] } } — 기존 품목 끝에 덧붙일 나라 행(기존 행은 그대로)도 합쳐 검사
 // =============================================================================
 import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
 import path from 'node:path';
@@ -19,8 +21,9 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // --part <파일>: 하위 에이전트의 중간 파일(항목 배열 · 이름이 <game>-<part>.json)을 검사한다
 const PART = process.argv.includes('--part') ? process.argv[process.argv.indexOf('--part') + 1] : null;
 const EXTRA_PRODUCTS = process.argv.includes('--products') ? process.argv[process.argv.indexOf('--products') + 1] : null;
-const ARGS = process.argv.slice(2).filter((a, i, all) => !a.startsWith('--') && !['--part', '--products'].includes(all[i - 1]));
-const GAMES = PART ? [path.basename(PART).split('-')[0]] : ARGS.length ? ARGS : ['price', 'worldprice', 'photo', 'estimate', 'which'];
+const ADD_ROWS = process.argv.includes('--add-rows') ? process.argv[process.argv.indexOf('--add-rows') + 1] : null;
+const ARGS = process.argv.slice(2).filter((a, i, all) => !a.startsWith('--') && !['--part', '--products', '--add-rows'].includes(all[i - 1]));
+const GAMES = PART ? [path.basename(PART).split('-')[0]] : ARGS.length ? ARGS : ['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear'];
 const STATUS = ['candidate', 'verified', 'rejected', 'loaded'];
 // 묶음 파일 — items.json · items-2.json · items-3.json … (번호 순)
 const bundleFiles = (g) => { const d = path.join(ROOT, `data/minigame/${g}`); return existsSync(d) ? readdirSync(d).filter((f) => /^items(-\d+)?\.json$/.test(f)).sort((a, b) => (Number(a.match(/-(\d+)/)?.[1] ?? 1)) - (Number(b.match(/-(\d+)/)?.[1] ?? 1))).map((f) => path.join(d, f)) : []; };
@@ -32,8 +35,9 @@ const FIELDS = {
   photo: ['answer', 'altAnswers', 'category', 'revealMode', 'explanation', 'difficulty'],
   estimate: ['kind', 'question', 'value', 'unit', 'displayDecimals', 'asOf', 'explanation'],
   which: ['kind', 'stem', 'a', 'b', 'answer', 'unit', 'margin', 'asOf'],
+  photoyear: ['year', 'yearKind', 'yearRange', 'title', 'place', 'region', 'difficulty', 'cues'],
 };
-const OPTIONAL = { estimate: ['note'], which: ['note', 'explanation'], price: [], photo: [], worldprice: [] };
+const OPTIONAL = { estimate: ['note'], which: ['note', 'explanation'], price: [], photo: [], worldprice: [], photoyear: [] };
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const PRICE_CAT = ['식품', '생활', '가전', '패션', '뷰티', '취미', '자동차', '사치품', '해외', '기타'];
 const BUCKET = (p) => (p < 10000 ? '<1만' : p < 100000 ? '1~10만' : p < 1000000 ? '10~100만' : '100만+');
@@ -54,8 +58,8 @@ async function checkImage(g, id, img, need, answers = []) {
   const m = await sharp(f).metadata(); if (Math.max(m.width, m.height) > 1024) B(g, id, `1024px 초과 ${m.width}x${m.height}`);
   if (img.width !== m.width || img.height !== m.height || img.bytes !== st.size) B(g, id, `image 크기 칸이 파일과 다름`);
   for (const a of answers) if (a && normalizeAnswer(a).length >= 2 && normalizeAnswer(path.basename(img.file)).includes(normalizeAnswer(a))) B(g, id, '정답 글자가 그림 파일 이름에');
-  if (g === 'photo' && !FREE.test(img.license ?? '')) B(g, id, `자유 라이선스 아님 '${img.license}'`);
-  if (g === 'photo' && !/commons\.wikimedia\.org|upload\.wikimedia\.org/.test(img.sourceUrl ?? '')) B(g, id, '위키미디어 공용 밖 그림');
+  if ((g === 'photo' || g === 'photoyear') && !FREE.test(img.license ?? '')) B(g, id, `자유 라이선스 아님 '${img.license}'`);
+  if ((g === 'photo' || g === 'photoyear') && !/commons\.wikimedia\.org|upload\.wikimedia\.org/.test(img.sourceUrl ?? '')) B(g, id, '위키미디어 공용 밖 그림');
   if (!img.attribution) B(g, id, 'attribution 빈 칸');
 }
 for (const g of GAMES) {
@@ -72,6 +76,7 @@ for (const g of GAMES) {
     if (!existsSync(pp)) B(g, '-', 'products.json 없음');
     else {
       products = new Map(JSON.parse(readFileSync(pp, 'utf8')).products.map((x) => [x.productId, x]));
+      if (ADD_ROWS) for (const [pid, rows] of Object.entries(JSON.parse(readFileSync(path.resolve(ADD_ROWS), 'utf8')).rows)) { const x = products.get(pid); if (!x) B(g, pid, '--add-rows 품목 없음'); else x.rows = [...x.rows, ...rows]; }
       if (EXTRA_PRODUCTS) for (const x of JSON.parse(readFileSync(path.resolve(EXTRA_PRODUCTS), 'utf8')).products) { if (products.has(x.productId)) B(g, x.productId, '품목 productId 가 이미 products.json 에'); products.set(x.productId, x); }
       for (const [pid, x] of products) {
         for (const k of ['productId', 'nameKo', 'unit', 'image', 'asOf', 'fxAsOf', 'fxSource', 'rows', 'sources', 'note']) if (x[k] === undefined) B(g, pid, `product.${k} 없음`);
@@ -95,6 +100,7 @@ for (const g of GAMES) {
       if (g === 'worldprice') names.set(`${it.productId}|${it.targetCc}`, id);
       if (g === 'photo') for (const a of [it.answer, ...(it.altAnswers ?? [])]) names.set(key0(a), id);
       if (g === 'estimate') names.set(key0(it.question), id);
+      if (g === 'photoyear') { names.set(String(it.image?.sourceUrl ?? ''), id); names.set(key0(it.title), id); }
       if (g === 'which') names.set([key0(it.a?.label), key0(it.b?.label)].sort().join('|') + '|' + key0(it.stem), id);
       continue;
     }
@@ -148,6 +154,18 @@ for (const g of GAMES) {
       if (/이것|이거/.test(it.question ?? '')) B(g, id, "질문에 '이것'");
       if (it.image !== null) await checkImage(g, id, it.image, false);
       dup(key(it.question), id, '같은 질문');
+    }
+    if (g === 'photoyear') {
+      if (!Number.isInteger(it.year) || it.year < 1826 || it.year > 2026) B(g, id, 'year 정수 1826~2026');
+      if (!['exact', 'circa'].includes(it.yearKind)) B(g, id, `yearKind ${it.yearKind}`);
+      if (it.yearKind === 'circa') { const r = it.yearRange; if (!Array.isArray(r) || r.length !== 2 || !r.every(Number.isInteger) || !(r[0] <= it.year && it.year <= r[1]) || r[1] - r[0] > 20) B(g, id, 'circa 는 yearRange [a, b] · a ≤ year ≤ b · 폭 20 이하'); }
+      else if (it.yearRange !== null) B(g, id, 'exact 면 yearRange null');
+      if (!['kr', 'world'].includes(it.region)) B(g, id, `region ${it.region}`);
+      if (!Number.isInteger(it.difficulty) || it.difficulty < 1 || it.difficulty > 3) B(g, id, 'difficulty 1~3');
+      for (const k of ['title', 'place', 'cues']) if (typeof it[k] !== 'string' || !it[k]) B(g, id, `${k} 글`);
+      await checkImage(g, id, it.image, true);
+      dup(String(it.image?.sourceUrl ?? ''), id, '같은 사진');
+      dup(key(it.title), id, '같은 제목');
     }
     if (g === 'which') {
       if (!['bigger', 'earlier'].includes(it.kind)) B(g, id, `kind ${it.kind}`);

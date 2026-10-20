@@ -17,8 +17,55 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ROUND = process.argv.includes('--round') ? process.argv[process.argv.indexOf('--round') + 1] : 'g008';
-if (!['g008', 'g010'].includes(ROUND)) { console.error('--round g008 | g010'); process.exit(1); }
+if (!['g008', 'g010', 'g018'].includes(ROUND)) { console.error('--round g008 | g010 | g018'); process.exit(1); }
 if (ROUND === 'g010') { buildG010(); process.exit(0); }
+if (ROUND === 'g018') { buildG018(); process.exit(0); }
+// (G018) 입력 tmp/g018/out · 출력 items-3.json(price · photo · estimate · which) · data/minigame/photoyear/items.json(새 게임 1차 — docs/18 §8) ·
+//   worldprice: tmp/g018/out/worldprice-rows.json { rows: { <productId>: [row…] } } 을 기존 품목 rows **끝에 덧붙인다**(기존 rows · 다른 칸은 글자 그대로 — 바뀌면 멈춤) ·
+//   worldprice 문항은 덧붙인 나라만(items-3.json · id 는 1·2차 가장 큰 번호 다음 — 멱등) · data/pipeline/audit/g018-mg-verify-targets.json(전수)
+function buildG018() {
+  const OUT3 = path.join(ROOT, 'tmp/g018/out'); const AS3 = '2026-10-21'; const J3 = (q) => JSON.parse(readFileSync(q, 'utf8'));
+  const w3 = (q, o) => { mkdirSync(path.dirname(q), { recursive: true }); writeFileSync(q, JSON.stringify(o, null, 1) + '\n'); };
+  const res3 = {};
+  for (const g of ['price', 'photo', 'estimate', 'which', 'photoyear']) {
+    const parts = readdirSync(OUT3).filter((f) => f.startsWith(`${g}-`) && f.endsWith('.json') && !f.endsWith('.log.json') && !f.includes('blind')).sort();
+    const items = parts.flatMap((f) => { const x = J3(path.join(OUT3, f)); return Array.isArray(x) ? x : x.items; }).sort((x, y) => x.id.localeCompare(y.id));
+    if (!items.length) continue;
+    w3(path.join(ROOT, g === 'photoyear' ? 'data/minigame/photoyear/items.json' : `data/minigame/${g}/items-3.json`), { game: g, version: 1, asOf: AS3, items });
+    res3[g] = items;
+  }
+  const rp = path.join(OUT3, 'worldprice-rows.json');
+  if (existsSync(rp)) {
+    const pfile = path.join(ROOT, 'data/minigame/worldprice/products.json');
+    const old = J3(pfile); const add = J3(rp).rows;
+    const merged = { ...old, products: old.products.map((x) => { const extra = (add[x.productId] ?? []).filter((r) => !x.rows.some((o) => o.cc === r.cc)); return extra.length ? { ...x, rows: [...x.rows, ...extra] } : x; }) };
+    for (const [i, x] of old.products.entries()) {
+      const m = merged.products[i];
+      if (JSON.stringify(x.rows) !== JSON.stringify(m.rows.slice(0, x.rows.length)) || JSON.stringify({ ...x, rows: 0 }) !== JSON.stringify({ ...m, rows: 0 })) throw new Error('★ 기존 품목이 바뀐다 — 멈춤');
+    }
+    w3(pfile, merged);
+    const prev = ['items.json', 'items-2.json'].map((f) => path.join(ROOT, 'data/minigame/worldprice', f)).filter(existsSync).flatMap((f) => J3(f).items);
+    let n = Math.max(...prev.map((x) => Number(x.id.slice(-4))));
+    let sd = 20261021; const r3 = () => ((sd = (sd * 1103515245 + 12345) % 2147483648) / 2147483648);
+    const items = [];
+    for (const [pid, rows] of Object.entries(add)) {
+      const pr = merged.products.find((x) => x.productId === pid);
+      for (const r of rows.filter((x) => x.cc !== 'KR' && x.cc !== 'EU')) {
+        const others = pr.rows.filter((x) => x.cc !== 'KR' && x.cc !== 'EU' && x.cc !== r.cc).map((x) => [r3(), x.cc]).sort((u, v) => u[0] - v[0]).slice(0, 2).map((x) => x[1]);
+        items.push({ id: `worldprice-${String(++n).padStart(4, '0')}`, productId: pid, targetCc: r.cc, shownCc: ['KR', ...others],
+          status: 'candidate', createdRound: 'G018', sources: [{ url: r.source, note: `${r.countryKo} ${pr.nameKo} ${r.localPrice} ${r.currency} · 환율 ${pr.fxAsOf}`, fetchedAt: AS3 }],
+          image: null, tags: [pid, r.countryKo], verify: null });
+      }
+    }
+    w3(path.join(ROOT, 'data/minigame/worldprice/items-3.json'), { game: 'worldprice', version: 1, asOf: AS3, items });
+    res3.worldprice = items;
+  }
+  const targets = {};
+  for (const [g, items] of Object.entries(res3)) targets[g] = { count: items.length, items };
+  if (existsSync(rp)) targets.worldprice.addedRows = J3(rp).rows;
+  w3(path.join(ROOT, 'data/pipeline/audit/g018-mg-verify-targets.json'), { round: 'G018', note: 'V023 미니게임 3차 재검증 대상 — docs/18 6장 · 전수 · 묶음 파일 items-3.json + 새 게임 photoyear/items.json(§8) · worldprice 는 기존 품목 끝에 덧붙인 나라 행(addedRows)과 그 문항 · 그림은 assets/minigame/ (git 밖 — backups/minigame-g018.zip)', games: targets });
+  console.log(Object.entries(res3).map(([g, x]) => `${g} ${x.length}`).join(' · '));
+}
 function buildG010() {
   const OUT2 = path.join(ROOT, 'tmp/g010/out'); const AS2 = '2026-10-18'; const J2 = (q) => JSON.parse(readFileSync(q, 'utf8'));
   const w2 = (q, o) => { mkdirSync(path.dirname(q), { recursive: true }); writeFileSync(q, JSON.stringify(o, null, 1) + '\n'); };
