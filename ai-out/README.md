@@ -44,6 +44,7 @@
 | V017.txt | 미니게임 2차 533 전수(ok 503 · fix 29 · drop 1 = fix 율 5.4% ← 1차 9.8%) · 그림 503 전수(문제 13) · photo 맞혀 보기 97/100 · 새 품목 나라 행 85 중 46 은 사이트 요청 제한으로 현지가 미재독 → `audit/v017-minigame.json` · `v017-raw/` · items-2.json verify·status · products.json 새 품목 rows verify · 반영은 GEN · Sonnet 5.5 · CV-47~51 |
 | V018.txt | ① 활성 난이도 1 757 전수(ok 659 · fix 98 = 12.9%) → 활성 5,113(난이도 1~5) 전수 판정 끝: fix 1,053(20.6%) · ② G011 새 힌트 28 중 fix 11(39% — famous-one 10) · V014 "애매 ok" 표본 60 중 fix 4(6.7% → 176 환산 약 12) → `audit/v018-active1.json` · `v018-hints.json` · `v018-raw/` · 반영은 GEN · Sonnet 5.5 · CV-40 끝 · CV-52~55 |
 | V019.txt | GEN 이 새로 쓴·비운 힌트 137 전수(쓴·고친 104 중 fix 24 = 23% · famous-one 17 · 비운 33 중 fix 17) + blind 맞혀 보기 104(63% 맞힘 · fix 75% 걸림) → `audit/v019-hints.json` · `v019-raw/` · CV-56~58 |
+| V020.txt | 표본 4덩어리: ① 미니게임 DB 1,164 ↔ 파일 전수 대조(차이 0) · 사람 읽기 72 fix 2 · 그림 15 문제 0 · CV-48 46행 fix 0 ② 애매 67 중 fix 10 · drop 2 ③ unverified 14 중 true 7 ④ 행정 구역(전남광주통합특별시 2026-07-01 시행) 영향 16 → `audit/v020-minigame.json` · `v020-ambiguous.json` · `v020-unverified.json` · `v020-admin.json` · `v020-raw/` · CV-59~63 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 

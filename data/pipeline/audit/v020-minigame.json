@@ -1,0 +1,2349 @@
+{
+ "round": "V020",
+ "date": "2026-10-20",
+ "mech": {
+  "loaded": 1164,
+  "byGame": {
+   "price": 197,
+   "worldprice": 254,
+   "photo": 219,
+   "estimate": 199,
+   "which": 295
+  },
+  "images": 1002,
+  "products": 5,
+  "diffs": 0,
+  "productDiffs": 0,
+  "extraInDb": 0,
+  "payloadStatusOnly": 0
+ },
+ "sample": {
+  "list": {
+   "name": [
+    "price-0018",
+    "price-0144"
+   ],
+   "newImage": [
+    "price-0013",
+    "estimate-0069",
+    "which-0286"
+   ],
+   "cropped": [
+    "price-0030",
+    "price-0049",
+    "which-0058",
+    "which-0118",
+    "photo-0214",
+    "which-0190",
+    "which-0199",
+    "which-0272",
+    "which-0278",
+    "which-0279",
+    "which-0292",
+    "which-0300"
+   ],
+   "cv49variants": [
+    "photo-0172",
+    "photo-0174",
+    "photo-0175",
+    "photo-0176",
+    "photo-0185",
+    "photo-0188",
+    "photo-0191",
+    "photo-0193",
+    "photo-0194",
+    "photo-0213",
+    "photo-0220",
+    "photo-0085",
+    "photo-0031"
+   ],
+   "multi": [
+    "photo-0207",
+    "photo-0141",
+    "photo-0213"
+   ]
+  },
+  "rand": {
+   "price": [
+    "price-0151",
+    "price-0134",
+    "price-0025",
+    "price-0137",
+    "price-0043",
+    "price-0121",
+    "price-0002",
+    "price-0190"
+   ],
+   "worldprice": [
+    "worldprice-0074",
+    "worldprice-0195",
+    "worldprice-0180",
+    "worldprice-0118",
+    "worldprice-0190",
+    "worldprice-0199",
+    "worldprice-0098",
+    "worldprice-0137"
+   ],
+   "photo": [
+    "photo-0057",
+    "photo-0074",
+    "photo-0092",
+    "photo-0166",
+    "photo-0005",
+    "photo-0067",
+    "photo-0049",
+    "photo-0108"
+   ],
+   "estimate": [
+    "estimate-0191",
+    "estimate-0018",
+    "estimate-0073",
+    "estimate-0016",
+    "estimate-0113",
+    "estimate-0132",
+    "estimate-0109",
+    "estimate-0148"
+   ],
+   "which": [
+    "which-0004",
+    "which-0187",
+    "which-0057",
+    "which-0170",
+    "which-0291",
+    "which-0025",
+    "which-0194",
+    "which-0160"
+   ]
+  },
+  "total": 72
+ },
+ "human": {
+  "n": 72,
+  "verdict": {
+   "ok": 70,
+   "fix": 2
+  },
+  "unverifiedFlag": 30,
+  "items": [
+   {
+    "id": "price-0018",
+    "verdict": "ok",
+    "reason": "다나와 재확인: 최저 394,900~최고 438,240, 사양(목받침·요추·팔걸이) 일치; 값 397,970 범위 안",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=18132734",
+      "quote": "G마켓 394,900 · 11번가 438,240"
+     },
+     {
+      "what": "이름",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=18132734",
+      "quote": "시디즈 T50 블랙 컴퓨터 책상 의자 HLDA"
+     },
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=18132734",
+      "quote": "목받침 높낮이·각도 / 요추받침 높낮이·깊이 / 팔걸이 높낮이·좌우·앞뒤"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "name"
+   },
+   {
+    "id": "price-0144",
+    "verdict": "ok",
+    "reason": "CU 페이지 11,900원 확인(1+1 행사 표시, 정가 11,900); 이마트24 행사 페이지는 열지 않음",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://cu.bgfretail.com/product/view.do?category=product&gdIdx=1256",
+      "quote": "엘라)퍼퓸샴푸 11,900원"
+     },
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://cu.bgfretail.com/product/view.do?category=product&gdIdx=1256",
+      "quote": "시트러스, 피치, 애플 등 과일향에 플로럴 향"
+     },
+     {
+      "what": "출처",
+      "result": "unverified",
+      "source": null,
+      "quote": "이마트24 행사 페이지 미개방; 페이지에 '러브미 400ml' 문구는 없음"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "name"
+   },
+   {
+    "id": "price-0013",
+    "verdict": "ok",
+    "reason": "다나와 상품명·사양 일치, 가격 6,860~9,457(8,520 중앙값은 ±30% 안); 새 그림 라이선스는 상품 이미지",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=1036574",
+      "quote": "6,860원~9,457원 (9개 쇼핑몰)"
+     },
+     {
+      "what": "이름",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=1036574",
+      "quote": "옥시크린 분말형 1kg / 본품 / 살균·색상보호·표백"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "newImage"
+   },
+   {
+    "id": "estimate-0069",
+    "verdict": "ok",
+    "reason": "위키: 영구치 32, 젖니 20, 위아래 16씩",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Human_tooth",
+      "quote": "20 primary ... and 32 permanent (adult) teeth"
+     },
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Human_tooth",
+      "quote": "16 upper, 16 lower"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "newImage"
+   },
+   {
+    "id": "which-0286",
+    "verdict": "ok",
+    "reason": "1446 반포 / 1431 잔 다르크 사망 모두 확인, 정답 b 맞음, margin 15 맞음",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/훈민정음",
+      "quote": "1443년 창제, 1446년 반포"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Joan_of_Arc",
+      "quote": "burned at the stake on 30 May 1431"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "newImage"
+   },
+   {
+    "id": "price-0030",
+    "verdict": "ok",
+    "reason": "다나와 1,190,000~1,420,000, 22,000Pa 일치; 중앙값이 판매처 상단(1.42M)에 가깝지만 ±30% 안",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=93806297",
+      "quote": "1,188,500원 ~ 1,420,000원, 흡입력 22,000Pa"
+     },
+     {
+      "what": "이름",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=93806297",
+      "quote": "로보락 S9 MaxV Ultra (화이트)"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cropped"
+   },
+   {
+    "id": "price-0049",
+    "verdict": "ok",
+    "reason": "다나와 118,990~160,000, 주름개선 기능성 일치; 125,460 범위 안",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=63419153",
+      "quote": "118,990원부터 160,000원(신세계몰)"
+     },
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=63419153",
+      "quote": "식약처 고시 기능성 성분: 주름개선 도움"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cropped"
+   },
+   {
+    "id": "which-0058",
+    "verdict": "ok",
+    "reason": "엘브루스 5,642 / 코지어스코 2,228 확인, margin 2.53 맞음",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Seven_Summits",
+      "quote": "Elbrus 5,642 m · Kosciuszko 2,228 m"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cropped"
+   },
+   {
+    "id": "which-0118",
+    "verdict": "ok",
+    "reason": "기아 1944(5월) / 현대 1967 확인, 차이 23",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Kia",
+      "quote": "founded in May 1944"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Hyundai_Motor_Company",
+      "quote": "established in 1967 (29 December 1967)"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cropped"
+   },
+   {
+    "id": "photo-0214",
+    "verdict": "ok",
+    "reason": "큰개미핥기=개미핥기아목 최대종, 개미·흰개미 먹이 확인; 정답 개미핥기·변형 큰개미핥기 타당",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/큰개미핥기",
+      "quote": "현존하는 개미핥기아목 동물들 중 제일 크며 ... 주로 개미와 흰개미를 먹는다"
+     },
+     {
+      "what": "변형",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/큰개미핥기",
+      "quote": "개미핥기는 개미핥기아목 전체를 가리키는 말이기도 함"
+     },
+     {
+      "what": "라이선스",
+      "result": "unverified",
+      "source": null,
+      "quote": "commons 파일 페이지 미개방"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "cropped"
+   },
+   {
+    "id": "which-0190",
+    "verdict": "ok",
+    "reason": "에베레스트 8848.86 / 엘브루스 5642, margin 1.57 맞음(1.568); 문서 직접 열지는 않았으나 en 위키 5,642 일치",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Seven_Summits",
+      "quote": "Elbrus 5,642 m"
+     },
+     {
+      "what": "값",
+      "result": "unverified",
+      "source": null,
+      "quote": "에베레스트 8,848.86 ko 위키 미개방"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "cropped"
+   },
+   {
+    "id": "which-0199",
+    "verdict": "ok",
+    "reason": "티그리스 1,950 / 라인 1,233 확인, margin 1.58 맞음",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/List_of_river_systems_by_length",
+      "quote": "Tigris 1,950 km · Rhine 1,233 km"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cropped"
+   },
+   {
+    "id": "which-0272",
+    "verdict": "ok",
+    "reason": "베토벤 1770(세례 12/17, 출생 12/16 추정) / 정약용 1762, 정답 b, margin 8; note 에 기준 명시",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven",
+      "quote": "baptised on 17 December 1770"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Chŏng_Yagyong",
+      "quote": "1762"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cropped"
+   },
+   {
+    "id": "which-0278",
+    "verdict": "ok",
+    "reason": "유관순 1902 / 퀴리 1867 확인, margin 35",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Yu_Gwan-sun",
+      "quote": "born on December 16, 1902"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Marie_Curie",
+      "quote": "7 November 1867"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cropped"
+   },
+   {
+    "id": "which-0279",
+    "verdict": "ok",
+    "reason": "미켈란젤로 1475 / 이황 1501 확인, margin 26",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Michelangelo",
+      "quote": "6 March 1475"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Yi_Hwang",
+      "quote": "in 1501"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cropped"
+   },
+   {
+    "id": "which-0292",
+    "verdict": "ok",
+    "reason": "UN 헌장 서명 1945 / 연맹 1920 확인; note 가 기준 차이를 밝힘, margin 25",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/United_Nations",
+      "quote": "established by the signing of the Charter ... on 26 June 1945"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/League_of_Nations",
+      "quote": "founded on 10 January 1920"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cropped"
+   },
+   {
+    "id": "which-0300",
+    "verdict": "ok",
+    "reason": "아스피린 1897 / 밴드에이드 1920 확인, margin 23; note 가 기준 명시(Eichengrün 논쟁은 본문에 있으나 연도엔 무관)",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Aspirin",
+      "quote": "first to produce acetylsalicylic acid in a pure, stable form in 1897"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Band-Aid",
+      "quote": "invented in 1920"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cropped"
+   },
+   {
+    "id": "photo-0172",
+    "verdict": "ok",
+    "reason": "해설(샹젤리제 서쪽 끝·샤를 드골 광장·혁명/나폴레옹 전쟁 전사자) 일치; '개선문'은 한국어에서 이 건축물을 가리키는 통상 이름",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/에투알_개선문",
+      "quote": "샹젤리제 거리의 서쪽 끝, 샤를 드골 광장 한복판"
+     },
+     {
+      "what": "변형",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/에투알_개선문",
+      "quote": "simply 개선문 in Korean; 에투알 개선문이 문서 제목"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0174",
+    "verdict": "ok",
+    "reason": "1886~1894·도개교 일치; 타워 브릿지 표기는 국내 여행 안내에서 광범위하게 사용",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/타워_브리지",
+      "quote": "1886년부터 1894년 사이에 건설"
+     },
+     {
+      "what": "변형",
+      "result": "true",
+      "source": "https://londonpass.com/ko/things-to-do/a-complete-guide-to-visiting-tower-bridge",
+      "quote": "타워 브릿지 방문 완벽 가이드"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0175",
+    "verdict": "ok",
+    "reason": "1788~1791·통합 상징 일치; '브란덴부르크 개선문' 표기는 위키가 개선문 양식이라 서술할 뿐 한국 기사 용례는 확인 못함",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/브란덴부르크_문",
+      "quote": "1788~1791 ... symbol of freedom, peace, and European unity"
+     },
+     {
+      "what": "변형",
+      "result": "unverified",
+      "source": null,
+      "quote": "'브란덴부르크 개선문' 기사 용례 검색에서 확인되지 않음"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0176",
+    "verdict": "ok",
+    "reason": "829.8m·최고 구조물 일치; 부르즈 칼리파·버즈 칼리파는 국내 기사에 쓰임, 버즈 두바이 용례는 못 찾음(위키는 공사 중 '부르즈 두바이')",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/부르즈_할리파",
+      "quote": "829.8m, 세계 최고층 건물"
+     },
+     {
+      "what": "변형",
+      "result": "true",
+      "source": "https://www.imaeil.com/page/view/2025090411242715954",
+      "quote": "'버즈 칼리파' 타워를 시공한 삼성건설"
+     },
+     {
+      "what": "변형",
+      "result": "unverified",
+      "source": null,
+      "quote": "버즈 두바이 용례 미확인"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0185",
+    "verdict": "ok",
+    "reason": "537년 건립·정교회 대성당·현재 모스크 일치; 아야/하기아 소피아 모두 위키 문서가 병기",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/아야_소피아",
+      "quote": "537년 완공, 동방 정교회 대성당, 현재 하기아 소피아 그랜드 모스크"
+     },
+     {
+      "what": "변형",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/아야_소피아",
+      "quote": "고대식 하기아 소피아, 현대식 아야 소피아"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0188",
+    "verdict": "ok",
+    "reason": "네덜란드 후기인상주의 화가 일치(자화상은 그림 소관); 반 고흐·빈센트 반 고흐는 표준 표기, 반고흐·반 고호 용례는 직접 확인 못함",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/빈센트_반_고흐",
+      "quote": "네덜란드의 후기인상주의 화가"
+     },
+     {
+      "what": "변형",
+      "result": "unverified",
+      "source": null,
+      "quote": "'반고흐'·'빈센트 반 고호' 기사 용례 미확인"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0191",
+    "verdict": "ok",
+    "reason": "축음기·전구·특허 1,093 일치; 토머스/토마스 표기 모두 통용",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/토머스_에디슨",
+      "quote": "1,093개의 미국 특허가 에디슨의 이름으로 등록"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0193",
+    "verdict": "ok",
+    "reason": "톰 소여·본명 새뮤얼 클레먼스·필명 일치; 마크 트와인은 통용 표기이나 위키 문서에서는 확인 못함",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/마크_트웨인",
+      "quote": "새뮤얼 랭혼 클레먼스 ... 마크 트웨인이라는 필명 ... 톰 소여의 모험"
+     },
+     {
+      "what": "변형",
+      "result": "unverified",
+      "source": null,
+      "quote": "마크 트와인 용례 미확인"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0194",
+    "verdict": "ok",
+    "reason": "정신분석학 창시·무의식·억압 일치; 프로이드는 널리 쓰인 표기이나 용례는 직접 확인 못함",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/지그문트_프로이트",
+      "quote": "오스트리아의 심리학자 정신분석학의 창시자; 무의식, 억압"
+     },
+     {
+      "what": "변형",
+      "result": "unverified",
+      "source": null,
+      "quote": "프로이드 용례 미확인"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0213",
+    "verdict": "ok",
+    "reason": "토코투칸은 왕부리새과 최대종·부리 1/3 일치; 왕부리새·큰부리새는 토코 전용이 아닌 과(투칸류) 총칭이지만 투칸 사진의 답으로 통용, multi 의도에 부합",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/토코투칸",
+      "quote": "왕부리새과에서 가장 잘 알려져 있고, 크기도 가장 큰 종 ... 부리가 몸의 1/3"
+     },
+     {
+      "what": "변형",
+      "result": "unverified",
+      "source": "https://thewiki.kr/w/투칸",
+      "quote": "왕부리새(큰부리새, 투칸) — 투칸류 총칭; 토코투칸 문서 자체엔 두 이름 없음"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "cv49variants+multi"
+   },
+   {
+    "id": "photo-0220",
+    "verdict": "ok",
+    "reason": "복어목·납작·한반도 전 해안 일치; 몰라몰라·안진복·골복짱이는 위키가 한국어 별칭으로 병기(몰라몰라는 아쿠아리움 특별전에서도 사용)",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/개복치",
+      "quote": "한반도의 전 해안에 나타나고 ... 안진복, 골복짱이라고도 부른다"
+     },
+     {
+      "what": "변형",
+      "result": "true",
+      "source": "https://www.journalist.or.kr/m/m_article.html?no=58821",
+      "quote": "'몰라몰라' 재밌는 학명…개복치"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0085",
+    "verdict": "ok",
+    "reason": "해발 2,430m·페루 잉카 요새 도시 일치; 마추 픽추 표기 모두 한국어에서 통용(마추피추는 문서에서 직접 확인 못함)",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/%EB%A7%88%EC%B6%94_%ED%94%BD%EC%B6%94",
+      "quote": "해수면에서 2,430m나 되는 산맥의 정상 위"
+     },
+     {
+      "what": "변형",
+      "result": "unverified",
+      "source": null,
+      "quote": "마추피추 용례 미확인"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0031",
+    "verdict": "ok",
+    "reason": "1958 토머스 앤드 베츠 Ty-Rap 일치; 타이랩·집 타이·호스 타이는 위키가 다른 이름으로 병기",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/케이블_타이",
+      "quote": "1958년 토머스 앤드 베츠가 Ty-Rap 이라는 상품명으로 처음 발명"
+     },
+     {
+      "what": "변형",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/케이블_타이",
+      "quote": "호스 타이, 집 타이, 타이랩이라고도 부른다"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "cv49variants"
+   },
+   {
+    "id": "photo-0207",
+    "verdict": "fix",
+    "reason": "다식은 약과와 다른 음식(다식판에 찍어 내는 가루 반죽 과자, 튀기지 않음). 약과 사진의 정답으로 다식을 받으면 오답이 정답 처리됨",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/약과",
+      "quote": "유밀과의 대표적인 종류로 ... 기름에 튀겨 낸 한국의 전통 과자"
+     },
+     {
+      "what": "변형",
+      "result": "false",
+      "source": "https://ko.wikipedia.org/wiki/다식",
+      "quote": "곡물·땅콩·약재 가루를 꿀 등으로 반죽해 다식판에 찍어 내는 과자 (별개 음식)"
+     }
+    ],
+    "proposal": {
+     "field": "altAnswers",
+     "text": "(비움) — 다식 제거; 사진이 다식과 혼동될 만큼 모호하면 문항 폐기 검토"
+    },
+    "unverified": false,
+    "tag": "multi"
+   },
+   {
+    "id": "photo-0141",
+    "verdict": "fix",
+    "reason": "다식판은 다식을 찍는 별도 틀. 떡살 사진에 다식판을 정답으로 받을 근거가 문서에 없음(떡살 문서는 다식판과의 관계를 설명하지 않음)",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/떡살",
+      "quote": "떡을 눌러 무늬를 찍어 내는 판 ... 주로 나무로 만든다"
+     },
+     {
+      "what": "변형",
+      "result": "false",
+      "source": "https://ko.wikipedia.org/wiki/다식",
+      "quote": "다식판은 다식을 찍는 별개의 틀"
+     }
+    ],
+    "proposal": {
+     "field": "altAnswers",
+     "text": "(비움) — 다식판 제거; 사진이 다식판과 구별되지 않으면 문항 폐기 검토"
+    },
+    "unverified": false,
+    "tag": "multi"
+   },
+   {
+    "id": "price-0151",
+    "verdict": "ok",
+    "reason": "Apple 공식 49,000원, 다나와 44,160~49,000, 1.5배 문구 일치",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://www.apple.com/kr/shop/product/MFE94KH/A/airtag",
+      "quote": "1팩 ₩49,000"
+     },
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=105813662",
+      "quote": "UWB칩 탑재! 1세대보다 1.5배 넓어진 작동거리"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "price-0134",
+    "verdict": "ok",
+    "reason": "CU 9,900원 확인; CU 상품명은 '딥클렌져100g' 이나 설명이 일치. 이마트24 미개방",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://cu.bgfretail.com/product/view.do?category=product&gdIdx=13125",
+      "quote": "뉴트로지나)딥클렌져100g 9,900원"
+     },
+     {
+      "what": "출처",
+      "result": "unverified",
+      "source": null,
+      "quote": "이마트24 행사 페이지 미개방"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "price-0025",
+    "verdict": "ok",
+    "reason": "다나와 96,790~130,000, 1.7L 일치; 105,300 범위 안",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=4229009",
+      "quote": "96,790원 ~ 130,000원, 1.7L"
+     },
+     {
+      "what": "이름",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=4229009",
+      "quote": "드롱기 아이코나 빈티지 KBOV2001 (올리브그린)"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "price-0137",
+    "verdict": "ok",
+    "reason": "CU 2,500원 미개방(시간 절약), 소액 품목이고 이마트24와 값 동일 기재; unverified",
+    "checks": [
+     {
+      "what": "값",
+      "result": "unverified",
+      "source": null,
+      "quote": "CU·이마트24 페이지를 열지 않음"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "price-0043",
+    "verdict": "ok",
+    "reason": "다나와 재확인: 판매처 6,550~10,500원 중 롯데ON 7,130원 · 글로시 · 색상 약 20 — ±30% 안. 에누리 6,590원은 unverified",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=70608527",
+      "quote": "G마켓 6,550 · 옥션 6,870 · 11번가 7,040 · 롯데ON 7,130 · W쇼핑 9,450 · SSG 10,500"
+     },
+     {
+      "what": "이름·note",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=70608527",
+      "quote": "롬앤 더 쥬시 래스팅 틴트 3.5g · 질감 글로시 · 색상 19~20가지"
+     },
+     {
+      "what": "출처(에누리)",
+      "result": "unverified",
+      "source": "https://price.enuri.com/catalog/129577678",
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "price-0121",
+    "verdict": "ok",
+    "reason": "CU 상품 페이지 2,000원(2+1 행사 표시이나 정가 2,000원) · 설명 일치. 이마트24 쪽은 unverified",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://cu.bgfretail.com/product/view.do?category=product&gdIdx=23901",
+      "quote": "마즈)스키틀즈젤리후르츠 2,000원 (2+1 행사)"
+     },
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://cu.bgfretail.com/product/view.do?category=product&gdIdx=23901",
+      "quote": "말랑말랑 폭신폭신! 부드럽고 재미있는 식감!"
+     },
+     {
+      "what": "출처(이마트24)",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "price-0002",
+    "verdict": "ok",
+    "reason": "다나와 5입 4,693~5,170원(10곳) — 4,880원은 ±30% 안 · 140g · 530kcal 일치. 신라면 120g 비교는 지식(unverified)",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=1992016",
+      "quote": "SSG.COM 4,693 … GS SHOP 5,170 (중앙 4,880 하프클럽)"
+     },
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://prod.danawa.com/info/?pcode=1992016",
+      "quote": "표시기준분량: 140g / 530kcal"
+     },
+     {
+      "what": "note 신라면 20g",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "price-0190",
+    "verdict": "ok",
+    "reason": "카동 GTI 52,750,000원(2026.07~ 개소세 인하 종료 가격) 일치. 다나와 자동차 쪽은 열지 않음(unverified)",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://www.cardong.co.kr/newcar/vehicle/11791",
+      "quote": "2026년형 GTI / GTI Black Edition 52,750,000원"
+     },
+     {
+      "what": "출처(다나와)",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     },
+     {
+      "what": "라이선스",
+      "result": "unverified",
+      "source": null,
+      "quote": "CC BY-SA 4.0 Alexander-93 — 파일 페이지 미확인"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "worldprice-0074",
+    "verdict": "ok",
+    "reason": "영국 애플 아이폰 17 256GB £899 일치. 환율은 unverified",
+    "checks": [
+     {
+      "what": "현지가",
+      "result": "true",
+      "source": "https://www.apple.com/uk/shop/buy-iphone/iphone-17",
+      "quote": "iPhone 17 256GB £899.00"
+     },
+     {
+      "what": "환율",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "worldprice-0195",
+    "verdict": "ok",
+    "reason": "튀르키예 휘발유 83.79 TRY (2026-10-12) 일치",
+    "checks": [
+     {
+      "what": "현지가",
+      "result": "true",
+      "source": "https://www.globalpetrolprices.com/Turkey/gasoline_prices/",
+      "quote": "TRY 83.79 per liter, 12 October 2026"
+     },
+     {
+      "what": "환율",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "worldprice-0180",
+    "verdict": "ok",
+    "reason": "베트남 휘발유 28,935 VND (2026-10-12) 일치",
+    "checks": [
+     {
+      "what": "현지가",
+      "result": "true",
+      "source": "https://www.globalpetrolprices.com/Vietnam/gasoline_prices/",
+      "quote": "VND 28,935.00 per liter"
+     },
+     {
+      "what": "환율",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "worldprice-0118",
+    "verdict": "ok",
+    "reason": "벨라루스 넷플릭스 스탠다드 9.99€ 일치(페이지는 유로 표기)",
+    "checks": [
+     {
+      "what": "현지가",
+      "result": "true",
+      "source": "https://help.netflix.com/en/node/24926/by",
+      "quote": "Standard: 9.99€ / month"
+     },
+     {
+      "what": "환율",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "worldprice-0190",
+    "verdict": "ok",
+    "reason": "태국 휘발유 50.51 THB (2026-10-12) 일치",
+    "checks": [
+     {
+      "what": "현지가",
+      "result": "true",
+      "source": "https://www.globalpetrolprices.com/Thailand/gasoline_prices/",
+      "quote": "THB 50.51 per liter"
+     },
+     {
+      "what": "환율",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "worldprice-0199",
+    "verdict": "ok",
+    "reason": "스페인 휘발유 1.79 EUR (2026-10-12) 일치",
+    "checks": [
+     {
+      "what": "현지가",
+      "result": "true",
+      "source": "https://www.globalpetrolprices.com/Spain/gasoline_prices/",
+      "quote": "EUR 1.79 per liter"
+     },
+     {
+      "what": "환율",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "worldprice-0098",
+    "verdict": "ok",
+    "reason": "튀르키예 넷플릭스 스탠다드 389.99 TRY 일치",
+    "checks": [
+     {
+      "what": "현지가",
+      "result": "true",
+      "source": "https://help.netflix.com/en/node/24926/tr",
+      "quote": "389.99 TRY per month"
+     },
+     {
+      "what": "환율",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "worldprice-0137",
+    "verdict": "ok",
+    "reason": "캐나다 넷플릭스 스탠다드 18.99 CAD 일치",
+    "checks": [
+     {
+      "what": "현지가",
+      "result": "true",
+      "source": "https://help.netflix.com/en/node/24926/ca",
+      "quote": "18.99 CAD per month"
+     },
+     {
+      "what": "환율",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "photo-0057",
+    "verdict": "ok",
+    "reason": "오카피 · 해설(기린과·얼룩무늬 오해) 위키 일치 · 라이선스 Raul654 CC BY-SA 3.0 일치",
+    "checks": [
+     {
+      "what": "이름",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/오카피",
+      "quote": "오카피는 기린과에 속하는 포유류이다"
+     },
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/오카피",
+      "quote": "얼룩무늬 때문에 얼룩말과 관계가 있는 것으로 잘못 여겨지기도 하나, 실제로는 기린에 더 가깝다"
+     },
+     {
+      "what": "라이선스",
+      "result": "true",
+      "source": "https://commons.wikimedia.org/wiki/File:Okapi2.jpg",
+      "quote": "Raul654 · CC BY-SA 3.0 (+GFDL)"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "photo-0074",
+    "verdict": "ok",
+    "reason": "위키 제목 마리 퀴리 · 해설 일치 · 퀴리 부인 변형은 통용 표기(문서 직접 확인은 못 함) · Henri Manuel 퍼블릭 도메인 일치",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/%EB%A7%88%EB%A6%AC_%ED%80%B4%EB%A6%AC",
+      "quote": "폴란드 출신의 프랑스 과학자 · 본명 마리아 살로메아 스크워도프스카 (입력 인용)"
+     },
+     {
+      "what": "변형(퀴리 부인)",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     },
+     {
+      "what": "라이선스",
+      "result": "true",
+      "source": "https://commons.wikimedia.org/wiki/File:Marie_Curie_c1920_(cropped).jpg",
+      "quote": "Henri Manuel (1874-1947) · public domain"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "photo-0092",
+    "verdict": "ok",
+    "reason": "위키 표제 앙코르 와트(띄어쓰기만 다름 · 정규화 대상) · 라이선스 Satdeep Gill CC BY-SA 4.0 일치. 해설 문서 문장은 입력 인용 기준",
+    "checks": [
+     {
+      "what": "이름",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/%EC%95%99%EC%BD%94%EB%A5%B4_%EC%99%80%ED%8A%B8",
+      "quote": "앙코르 와트 … 12세기 초 수리야바르만 2세 (입력 인용)"
+     },
+     {
+      "what": "라이선스",
+      "result": "true",
+      "source": "https://commons.wikimedia.org/wiki/File:Angkor_Wat_with_its_reflection_(cropped).jpg",
+      "quote": "Satdeep Gill · CC BY-SA 4.0"
+     },
+     {
+      "what": "해설(캄보디아 국기)",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "photo-0166",
+    "verdict": "ok",
+    "reason": "해설 사실은 입력 인용대로 · 라이선스: 공용 파일은 PD-textlogo(상표 가능성 표시), 업로더 own work 표기와 attribution(Instagram 디자이너)이 어긋남 — 비상업 사용이라 유지, 참고",
+    "checks": [
+     {
+      "what": "해설",
+      "result": "unverified",
+      "source": "https://ko.wikipedia.org/wiki/인스타그램",
+      "quote": "입력 인용 기준"
+     },
+     {
+      "what": "라이선스",
+      "result": "true",
+      "source": "https://commons.wikimedia.org/wiki/File:Instagram-Logo-Round-Color.png",
+      "quote": "public domain (PD-textlogo) · 'may be protected as a trademark' · Author field: Instagram / Ian Spalter, Joy-Vincent Niemantsverdriet, Eric Goud, Robert Padbury"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "photo-0005",
+    "verdict": "ok",
+    "reason": "깔때기 표준 표기 · 해설 위키 일치 · 라이선스 Donovan Govan CC BY-SA 3.0 일치. 변형 깔대기는 비표준 오기이나 실제로 많이 침 — 문서 확인 못 해 unverified",
+    "checks": [
+     {
+      "what": "이름",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/깔때기",
+      "quote": "깔때기(영어: funnel)는 윗 부분은 넓고 아랫 부분은 좁은 원뿔 모양의 도구"
+     },
+     {
+      "what": "변형(깔대기)",
+      "result": "unverified",
+      "source": null,
+      "quote": "위키에 언급 없음 · 검색에서도 확인 못 함"
+     },
+     {
+      "what": "라이선스",
+      "result": "true",
+      "source": "https://commons.wikimedia.org/wiki/File:Kitchen_Funnel.jpg",
+      "quote": "Donovan Govan · CC BY-SA 3.0"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "photo-0067",
+    "verdict": "ok",
+    "reason": "위키: 마틴 루터 킹 주니어(마틴 루서 킹 주니어 병기) · 침례회 목사 · 1964 노벨평화상 일치 · PD(Dick DeMarsico, LoC) 일치. 킹 목사 변형은 unverified",
+    "checks": [
+     {
+      "what": "이름·변형",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/%EB%A7%88%ED%8B%B4_%EB%A3%A8%ED%84%B0_%ED%82%B9_%EC%A3%BC%EB%8B%88%EC%96%B4",
+      "quote": "마틴 루서 킹 주니어 (입력 인용)"
+     },
+     {
+      "what": "변형(킹 목사)",
+      "result": "unverified",
+      "source": null,
+      "quote": null
+     },
+     {
+      "what": "라이선스",
+      "result": "true",
+      "source": "https://commons.wikimedia.org/wiki/File:Martin_Luther_King_Jr_NYWTS.jpg",
+      "quote": "public domain · LoC World-Telegram & Sun · Dick DeMarsico"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "photo-0049",
+    "verdict": "ok",
+    "reason": "오리너구리 · 해설(반수서성 단공류) 위키 인용 일치 · Charles J. Sharp CC BY-SA 4.0 일치",
+    "checks": [
+     {
+      "what": "이름·해설",
+      "result": "unverified",
+      "source": "https://ko.wikipedia.org/wiki/오리너구리",
+      "quote": "입력 인용 기준"
+     },
+     {
+      "what": "라이선스",
+      "result": "true",
+      "source": "https://commons.wikimedia.org/wiki/File:Duck-billed_platypus_(Ornithorhynchus_anatinus)_Scottsdale.jpg",
+      "quote": "Charles J. Sharp · CC BY-SA 4.0"
+     }
+    ],
+    "proposal": null,
+    "unverified": true,
+    "tag": "random"
+   },
+   {
+    "id": "photo-0108",
+    "verdict": "ok",
+    "reason": "ko 위키 동음이의어 문서에 이니그마(에니그마) 병기 · 에니그마 기계 문서 있음 · 변형 적절. 라이선스 Rama CC BY-SA 2.0 fr 일치",
+    "checks": [
+     {
+      "what": "이름·변형",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/에니그마",
+      "quote": "이니그마(에니그마) … 회전자로 작동하는 암호 기계인 에니그마 기계"
+     },
+     {
+      "what": "라이선스",
+      "result": "true",
+      "source": "https://commons.wikimedia.org/wiki/File:Enigma-IMG_0487-black.jpg",
+      "quote": "Rama · CC BY-SA 2.0 fr"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "estimate-0191",
+    "verdict": "ok",
+    "reason": "ko 위키 순금 녹는점 1064.43 ℃ · 끓는점 2807 — 일치",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/%EA%B8%88",
+      "quote": "순금의 녹는점은 1064.43도이고, 끓는점은 2807도"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "estimate-0018",
+    "verdict": "ok",
+    "reason": "146.6 m · 현재 138.5 m · 3,700년 이상 일치",
+    "checks": [
+     {
+      "what": "값·해설",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+      "quote": "Initially standing at 146.6 metres … current 138.5 metres … more than 3,700 years"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "estimate-0073",
+    "verdict": "ok",
+    "reason": "검은 머리 100,000 · 금발 150,000 · 빨강 90,000 일치",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Hair",
+      "quote": "a black-haired person has 100,000, and a redhead has 90,000"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "estimate-0016",
+    "verdict": "ok",
+    "reason": "4.3~5.7 m 일치 · 중앙 5.0 m",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Giraffe",
+      "quote": "Fully grown giraffes stand 4.3–5.7 m tall, with males taller than females"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "estimate-0113",
+    "verdict": "ok",
+    "reason": "634 m · 2012 개장 · 숫자 말놀이 일치",
+    "checks": [
+     {
+      "what": "값·해설",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Tokyo_Skytree",
+      "quote": "634 m … opened 2012 … chosen to be easily remembered (Musashi)"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "estimate-0132",
+    "verdict": "ok",
+    "reason": "35,786 km 일치",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Geostationary_orbit",
+      "quote": "35,786 km (22,236 mi) in altitude above Earth's equator"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "estimate-0109",
+    "verdict": "ok",
+    "reason": "USBC ≤16파운드(7.3kg) 일치",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Bowling_ball",
+      "quote": "weight (≤16 pounds (7.3 kg))"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "estimate-0148",
+    "verdict": "ok",
+    "reason": "1883-05-24 개통 · 당시 최장 현수교 일치",
+    "checks": [
+     {
+      "what": "값·해설",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Brooklyn_Bridge",
+      "quote": "Opened on May 24, 1883 … longest suspension bridge in the world when opened"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "which-0004",
+    "verdict": "ok",
+    "reason": "이집트 108,613,296 · 프랑스 69,081,996 (2026-01-01) 일치 · 비율 1.57 · 방향 a 맞음",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population",
+      "quote": "Egypt 108,613,296 · France 69,081,996 (1 Jan 2026)"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "which-0187",
+    "verdict": "ok",
+    "reason": "스페이스 니들 184.404 m(안테나 포함 최고점) · 빅벤 96.3 — 방향·margin 맞음. 기준은 둘 다 최고점(첨탑 포함)이나 건축물 높이로 통용",
+    "checks": [
+     {
+      "what": "값 A",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Space_Needle",
+      "quote": "antenna spire 605.00 ft (184.404 m)"
+     },
+     {
+      "what": "값 B",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Big_Ben",
+      "quote": "316 feet (96 m) tall"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "which-0057",
+    "verdict": "ok",
+    "reason": "데날리 6,194 · 마터호른 4,478 일치 · 1.38배",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Seven_Summits",
+      "quote": "Denali 6,194 m"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Matterhorn",
+      "quote": "4,478 metres (14,692 ft)"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "which-0170",
+    "verdict": "ok",
+    "reason": "AnAge 고릴라 139,842 g · 침팬지 44,984 g 일치",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://genomics.senescence.info/species/entry.php?species=Gorilla_gorilla",
+      "quote": "139,842 g"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://genomics.senescence.info/species/entry.php?species=Pan_troglodytes",
+      "quote": "44,984 g"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "which-0291",
+    "verdict": "ok",
+    "reason": "캔버라 1913 · 브라질리아 1960 일치 · 차 47년",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Canberra",
+      "quote": "founded and formally named as Canberra in 1913"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/Brasília",
+      "quote": "founded ... on 21 April 1960"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "which-0025",
+    "verdict": "ok",
+    "reason": "Demographia 도시권 LA 15,204,000 · 시카고 9,057,000 일치",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/List_of_largest_cities",
+      "quote": "Los Angeles 15,204,000 · Chicago 9,057,000"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "which-0194",
+    "verdict": "ok",
+    "reason": "마우나케아 4,207 · 한라산 1,947.06 (해발) 일치",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/%EB%A7%88%EC%9A%B0%EB%82%98%EC%BC%80%EC%95%84%EC%82%B0",
+      "quote": "해수면 위 높이는 4,207m"
+     },
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://ko.wikipedia.org/wiki/%ED%95%9C%EB%9D%BC%EC%82%B0",
+      "quote": "해발 1,947.06m"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   },
+   {
+    "id": "which-0160",
+    "verdict": "ok",
+    "reason": "UN 2023-07-01 콩고민주공화국 105,789,731 · 이탈리아 59,499,453 일치",
+    "checks": [
+     {
+      "what": "값",
+      "result": "true",
+      "source": "https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)",
+      "quote": "DR Congo 105,789,731 · Italy 59,499,453"
+     }
+    ],
+    "proposal": null,
+    "unverified": false,
+    "tag": "random"
+   }
+  ]
+ },
+ "images": {
+  "read": 15,
+  "ids": [
+   "price-0013",
+   "price-0030",
+   "price-0049",
+   "estimate-0069",
+   "photo-0214",
+   "which-0058-a",
+   "which-0118-b",
+   "which-0190-b",
+   "which-0199-a",
+   "which-0272-b",
+   "which-0278-a",
+   "which-0279-b",
+   "which-0286-a",
+   "which-0292-b",
+   "which-0300-b"
+  ],
+  "extraAsideViewed": [
+   "which-0272-a",
+   "which-0279-a",
+   "which-0292-a",
+   "which-0300-a"
+  ],
+  "problems": 0,
+  "note": "글자·워터마크·엉뚱한 대상 없음. 0272-b·0279-b 는 사진만으로 인물 확인 불가(원 근거: 현판·초상 — 판정 근거 그대로)"
+ },
+ "cv48": {
+  "n": 46,
+  "verdict": {
+   "ok": 46
+  },
+  "status": {
+   "reread": 43,
+   "unverified": 3
+  },
+  "rows": [
+   {
+    "key": "gasoline/AE",
+    "verdict": "ok",
+    "recorded": 4.28,
+    "found": 4.28,
+    "foundCurrency": "AED",
+    "diffPct": 0,
+    "source": "https://www.globalpetrolprices.com/United-Arab-Emirates/gasoline_prices/",
+    "asOfFound": "2026-10-12",
+    "status": "reread",
+    "reason": "GPP 재독 4.28 AED 일치(기준일 같음)",
+    "proposal": null
+   },
+   {
+    "key": "gasoline/TH",
+    "verdict": "ok",
+    "recorded": 50.51,
+    "found": 50.51,
+    "foundCurrency": "THB",
+    "diffPct": 0,
+    "source": "https://www.globalpetrolprices.com/Thailand/gasoline_prices/",
+    "asOfFound": "2026-10-12",
+    "status": "reread",
+    "reason": "GPP 재독 50.51 THB 일치",
+    "proposal": null
+   },
+   {
+    "key": "gasoline/MX",
+    "verdict": "ok",
+    "recorded": 28.38,
+    "found": 28.38,
+    "foundCurrency": "MXN",
+    "diffPct": 0,
+    "source": "https://www.globalpetrolprices.com/Mexico/gasoline_prices/",
+    "asOfFound": "2026-10-12",
+    "status": "reread",
+    "reason": "GPP 재독 28.38 MXN 일치",
+    "proposal": null
+   },
+   {
+    "key": "gasoline/PL",
+    "verdict": "ok",
+    "recorded": 6.66,
+    "found": 6.66,
+    "foundCurrency": "PLN",
+    "diffPct": 0,
+    "source": "https://www.globalpetrolprices.com/Poland/gasoline_prices/",
+    "asOfFound": "2026-10-12",
+    "status": "reread",
+    "reason": "GPP 재독(재시도 후) 6.66 PLN 일치",
+    "proposal": null
+   },
+   {
+    "key": "gasoline/ZA",
+    "verdict": "ok",
+    "recorded": 29.82,
+    "found": 1.64,
+    "foundCurrency": "USD",
+    "diffPct": -9.1,
+    "source": "https://tradingeconomics.com/south-africa/gasoline-prices",
+    "asOfFound": "2026-09",
+    "status": "unverified",
+    "reason": "GPP 429 지속; TE 는 USD 1.64/L(2026-09, 에너지부) — 기록 원화환산 역산 USD 1.80 과 -9% 로 ±10% 안, 월·환산 차이. 틀린 증거 없음",
+    "proposal": null
+   },
+   {
+    "key": "gasoline/SE",
+    "verdict": "ok",
+    "recorded": 19.49,
+    "found": 1.72,
+    "foundCurrency": "USD",
+    "diffPct": -11.7,
+    "source": "https://tradingeconomics.com/sweden/gasoline-prices",
+    "asOfFound": "2026-09",
+    "status": "unverified",
+    "reason": "GPP 429 지속; TE 는 USD 1.72/L(2026-09) — 기록 역산 USD 1.95 와 -12% 이나 출처·월·환산 차이라 확정 fix 아님. 틀린 증거 없음",
+    "proposal": {
+     "localPrice": null,
+     "note": "출처 차이: TE 2026-09 USD 1.72/L vs 기록 역산 USD 1.95 (-12%). GPP 재독 필요"
+    }
+   },
+   {
+    "key": "gasoline/ES",
+    "verdict": "ok",
+    "recorded": 1.79,
+    "found": 1.79,
+    "foundCurrency": "EUR",
+    "diffPct": 0,
+    "source": "https://www.globalpetrolprices.com/Spain/gasoline_prices/",
+    "asOfFound": "2026-10-12",
+    "status": "reread",
+    "reason": "GPP 재독 1.79 EUR 일치",
+    "proposal": null
+   },
+   {
+    "key": "gasoline/NZ",
+    "verdict": "ok",
+    "recorded": 3.66,
+    "found": 1.88,
+    "foundCurrency": "USD",
+    "diffPct": -8.3,
+    "source": "https://tradingeconomics.com/new-zealand/gasoline-prices",
+    "asOfFound": "2026-09",
+    "status": "unverified",
+    "reason": "GPP 429 지속; TE 는 USD 1.88/L(2026-09, MBIE) — 기록 역산 USD 2.05 와 -8% 로 ±10% 안. 틀린 증거 없음",
+    "proposal": null
+   },
+   {
+    "key": "gasoline/NO",
+    "verdict": "ok",
+    "recorded": 29.79,
+    "found": 29.79,
+    "foundCurrency": "NOK",
+    "diffPct": 0,
+    "source": "https://www.globalpetrolprices.com/Norway/gasoline_prices/",
+    "asOfFound": "2026-10-12",
+    "status": "reread",
+    "reason": "GPP 재독 29.79 NOK 일치. TE(SSB, USD 2.04, 2026-08)와의 큰 차이는 출처·월 차이로 GPP 값 자체는 기록과 같음",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/VN",
+    "verdict": "ok",
+    "recorded": 13187.72,
+    "found": 13152.69,
+    "foundCurrency": "VND",
+    "diffPct": -0.27,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Vietnam",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 -0.27%",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/KW",
+    "verdict": "ok",
+    "recorded": 0.17,
+    "found": 0.17,
+    "foundCurrency": "KWD",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Kuwait",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/TH",
+    "verdict": "ok",
+    "recorded": 22.67,
+    "found": 22.66,
+    "foundCurrency": "THB",
+    "diffPct": -0.04,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Thailand",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 -0.04%",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/PH",
+    "verdict": "ok",
+    "recorded": 46.03,
+    "found": 46.03,
+    "foundCurrency": "PHP",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Philippines",
+    "asOfFound": "2026-10-15",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/SA",
+    "verdict": "ok",
+    "recorded": 2.87,
+    "found": 2.87,
+    "foundCurrency": "SAR",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Saudi%20Arabia",
+    "asOfFound": "2026-10-15",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/MY",
+    "verdict": "ok",
+    "recorded": 3.18,
+    "found": 3.18,
+    "foundCurrency": "MYR",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Malaysia",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/TW",
+    "verdict": "ok",
+    "recorded": 31.52,
+    "found": 31.47,
+    "foundCurrency": "TWD",
+    "diffPct": -0.16,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Taiwan",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 -0.16%",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/AE",
+    "verdict": "ok",
+    "recorded": 4.05,
+    "found": 4.04,
+    "foundCurrency": "AED",
+    "diffPct": -0.25,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=United%20Arab%20Emirates",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 -0.25%",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/JP",
+    "verdict": "ok",
+    "recorded": 180.3,
+    "found": 178.93,
+    "foundCurrency": "JPY",
+    "diffPct": -0.76,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Japan",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 -0.76%",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/ZA",
+    "verdict": "ok",
+    "recorded": 18.86,
+    "found": 18.86,
+    "foundCurrency": "ZAR",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=South%20Africa",
+    "asOfFound": "2026-10-16",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/BR",
+    "verdict": "ok",
+    "recorded": 6.31,
+    "found": 6.31,
+    "foundCurrency": "BRL",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Brazil",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/HK",
+    "verdict": "ok",
+    "recorded": 10.06,
+    "found": 10.2,
+    "foundCurrency": "HKD",
+    "diffPct": 1.39,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Hong%20Kong",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 +1.39% (±10% 안)",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/CL",
+    "verdict": "ok",
+    "recorded": 1299.66,
+    "found": 1299.59,
+    "foundCurrency": "CLP",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Chile",
+    "asOfFound": "2026-10-15",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/MX",
+    "verdict": "ok",
+    "recorded": 26.67,
+    "found": 26.61,
+    "foundCurrency": "MXN",
+    "diffPct": -0.22,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Mexico",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 -0.22%",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/TR",
+    "verdict": "ok",
+    "recorded": 74.43,
+    "found": 74.43,
+    "foundCurrency": "TRY",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Turkey",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/KR",
+    "verdict": "ok",
+    "recorded": 2173.54,
+    "found": 2173.36,
+    "foundCurrency": "KRW",
+    "diffPct": -0.01,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=South%20Korea",
+    "asOfFound": "2026-10-17",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/HU",
+    "verdict": "ok",
+    "recorded": 572.76,
+    "found": 572.75,
+    "foundCurrency": "HUF",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Hungary",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/CZ",
+    "verdict": "ok",
+    "recorded": 39.98,
+    "found": 40.01,
+    "foundCurrency": "CZK",
+    "diffPct": 0.08,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Czech%20Republic",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 +0.08%",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/SG",
+    "verdict": "ok",
+    "recorded": 2.37,
+    "found": 2.37,
+    "foundCurrency": "SGD",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Singapore",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/CA",
+    "verdict": "ok",
+    "recorded": 2.94,
+    "found": 2.94,
+    "foundCurrency": "CAD",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Canada",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/PL",
+    "verdict": "ok",
+    "recorded": 8.26,
+    "found": 8.26,
+    "foundCurrency": "PLN",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Poland",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/NZ",
+    "verdict": "ok",
+    "recorded": 3.79,
+    "found": 3.79,
+    "foundCurrency": "NZD",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=New%20Zealand",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/AR",
+    "verdict": "ok",
+    "recorded": 2.15,
+    "found": 2.15,
+    "foundCurrency": "USD",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Argentina",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 USD 2.15 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/GB",
+    "verdict": "ok",
+    "recorded": 1.96,
+    "found": 1.96,
+    "foundCurrency": "GBP",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=United%20Kingdom",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/ES",
+    "verdict": "ok",
+    "recorded": 2.33,
+    "found": 2.33,
+    "foundCurrency": "EUR",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Spain",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/US",
+    "verdict": "ok",
+    "recorded": 2.7,
+    "found": 2.71,
+    "foundCurrency": "USD",
+    "diffPct": 0.37,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=United%20States",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 +0.37%",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/SE",
+    "verdict": "ok",
+    "recorded": 27.32,
+    "found": 27.32,
+    "foundCurrency": "SEK",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Sweden",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/IE",
+    "verdict": "ok",
+    "recorded": 2.51,
+    "found": 2.51,
+    "foundCurrency": "EUR",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Ireland",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/AU",
+    "verdict": "ok",
+    "recorded": 4.17,
+    "found": 4.17,
+    "foundCurrency": "AUD",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Australia",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/IT",
+    "verdict": "ok",
+    "recorded": 2.71,
+    "found": 2.71,
+    "foundCurrency": "EUR",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Italy",
+    "asOfFound": "2026-10-20",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/FR",
+    "verdict": "ok",
+    "recorded": 2.98,
+    "found": 2.98,
+    "foundCurrency": "EUR",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=France",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/DE",
+    "verdict": "ok",
+    "recorded": 3.1,
+    "found": 3.09,
+    "foundCurrency": "EUR",
+    "diffPct": -0.32,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Germany",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 -0.32%",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/IL",
+    "verdict": "ok",
+    "recorded": 11.08,
+    "found": 11.08,
+    "foundCurrency": "ILS",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Israel",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/NL",
+    "verdict": "ok",
+    "recorded": 3.3,
+    "found": 3.3,
+    "foundCurrency": "EUR",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Netherlands",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/DK",
+    "verdict": "ok",
+    "recorded": 27.9,
+    "found": 27.9,
+    "foundCurrency": "DKK",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Denmark",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/NO",
+    "verdict": "ok",
+    "recorded": 39.78,
+    "found": 39.78,
+    "foundCurrency": "NOK",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Norway",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   },
+   {
+    "key": "cocacola/CH",
+    "verdict": "ok",
+    "recorded": 4.42,
+    "found": 4.42,
+    "foundCurrency": "CHF",
+    "diffPct": 0,
+    "source": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Switzerland",
+    "asOfFound": "2026-10-19",
+    "status": "reread",
+    "reason": "Numbeo 재독 일치",
+    "proposal": null
+   }
+  ]
+ }
+}
