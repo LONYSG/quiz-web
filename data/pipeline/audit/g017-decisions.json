@@ -1,0 +1,4149 @@
+{
+ "round": "G017",
+ "note": "GEN 이 V018 난이도 1 fix 98(part a) · 힌트 52(part h — V019 fix 41 + V018 새 힌트 fix 11) · 정리(part c — CV-55 · #2051 · #940 · #1035 · A79)를 다 읽고 정한 반영 값 — scripts/g017-apply-active1.mjs 의 입력. before 는 결정 때 DB 값 · factcheck 는 하위 에이전트가 문서로 다시 연 결과 · 받지 않은 제안은 notTaken · hintGen 은 GEN 이 쓰거나 고친 힌트(null = 비움)",
+ "items": {
+  "10": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "귀를 자른 것으로 유명한 네덜란드 화가는?",
+    "explanation": "표기 변형이 많은 인명 테스트용.",
+    "general_hint": null,
+    "variants": [
+     "반 고흐",
+     "고흐"
+    ],
+    "display_answer": "빈센트 반 고흐",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "1888년 12월 아를에서 고갱과 다툰 뒤 왼쪽 귀의 일부 또는 전부를 잘랐다고 전한다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/빈센트_반_고흐"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "1888년 12월 아를에서 고갱과 다툰 뒤 왼쪽 귀의 일부 또는 전부를 잘랐다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
+     "quote": "After an altercation on the evening of 23 December 1888, Van Gogh ... either wholly or in part severed his left ear with a razor",
+     "note": "ko 문서도 '고갱과의 우정은 면도날을 들고 대치한 끝에 ... 왼쪽 귀를 자른 사건으로 끝이 났다'"
+    }
+   ]
+  },
+  "15": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "밤하늘에서 지구를 도는 지구의 유일한 위성은?",
+    "explanation": "★ 1글자 정답 + Q-43 마스킹 테스트용('달라졌네'가 마스킹되면 안 된다).",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "달",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "달은 태양계의 위성 가운데 5번째로 큰 위성이다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/달"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "태양계의 위성 가운데 5번째로 큰 위성",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/달",
+     "quote": "달은 지구의 유일한 자연위성이고, 태양계의 위성 중에서 5번째로 크다.",
+     "note": ""
+    }
+   ]
+  },
+  "18": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "원주율 파이를 소수점 둘째 자리까지 나타내면?",
+    "explanation": "기호가 포함된 정답. 힌트에서 마침표는 그대로 노출된다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "3.14",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "원주율은 소수점 아래가 끝나지 않고 순환하지도 않는 무리수라서, 실생활에서는 보통 3.14 같은 근삿값을 쓴다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/원주율"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "끝나지 않고 순환하지도 않는 무리수 · 3.14 같은 근삿값",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/원주율",
+     "quote": "원주율의 값은 순환하지 않는 무한소수(무리수)이기 때문에, ... 3.1 또는 3.14 등 ... 근삿값을 사용하거나 기호 파이(π)를 사용한다.",
+     "note": ""
+    }
+   ]
+  },
+  "20": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "자유의 여신상이 있는 미국 도시의 영어 이름은?",
+    "explanation": "★ 다단어 영문 정답. Q-38에 따라 힌트는 N__ Y___ 가 된다.",
+    "general_hint": null,
+    "variants": [
+     "뉴욕"
+    ],
+    "display_answer": "New York",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "자유의 여신상은 뉴욕 항의 리버티 섬에 서 있다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Statue_of_Liberty"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "뉴욕 항의 리버티 섬에 서 있다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Statue_of_Liberty",
+     "quote": "a colossal neoclassical sculpture ... on Liberty Island, part of New York City, in New York Harbor",
+     "note": ""
+    }
+   ]
+  },
+  "22": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "사과를 영어로 쓰면?",
+    "explanation": "guide 11절의 힌트 예시 그대로. A____ 가 되어야 한다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "Apple",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "apple 은 고대 영어 æppel 에서 온 낱말이다.",
+   "sources": [
+    "https://ko.wiktionary.org/wiki/apple"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "apple 은 고대 영어 æppel 에서 온 낱말",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Apple",
+     "quote": "The word apple is derived from Old English æppel, meaning \"fruit\", not specifically the apple.",
+     "note": ""
+    }
+   ]
+  },
+  "26": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "not-unique",
+    "scope"
+   ],
+   "before": {
+    "question_text": "김치를 담글 때 쓰는 대표적인 채소는?",
+    "explanation": null,
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "배추",
+    "is_active": true
+   },
+   "why": "V018 fix(not-unique) — 한정어(포기째 · 속을 넣어)로 무와 가름 · '오늘날 가장 대표적인' 은 문서로 못 닫아 뺌(사실 확인 unverified)",
+   "question_text": "포기째 소금에 절여 양념 속을 넣어 담그는 김치의 주재료가 되는 채소는?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/김치",
+    "https://ko.wikipedia.org/wiki/무"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "포기째 소금에 절여 속을 채워 담그는",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/배추김치",
+     "quote": "소금에 절인 배추에 무채, 고춧가루, 다진 마늘, 파, 젓갈 등을 넣고 버무린 속을 넣어 담근다. / 포기김치: 배추를 통째로 담그는 김치이다.",
+     "note": ""
+    },
+    {
+     "what": "question",
+     "text": "오늘날 가장 대표적인 김치의 주재료",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/wiki/김치",
+     "quote": "소금에 절인 배추나, 무 등을 고춧가루, 파, 마늘 등의 양념에 버무린 뒤 발효시켜 만든다.",
+     "note": "김치 · 배추김치 문서에 '가장 대표적' 문장은 못 찾음. 배추 · 무가 나란히 적혀 있어 '가장 대표적인' 을 빼고 '포기째 절여 속을 넣어 담그는 김치의 주재료' 만으로도 무와 갈림"
+    }
+   ]
+  },
+  "27": {
+   "part": "a",
+   "vround": "CV-55",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "떡을 고추장 양념에 볶은 한국의 대표 분식은?",
+    "explanation": "쌍자음 초성(ㄸ) 힌트 테스트용.",
+    "general_hint": null,
+    "variants": [
+     "떡뽁이"
+    ],
+    "display_answer": "떡볶이",
+    "is_active": true
+   },
+   "why": "V018 fix(explanation) 제안 반영 + 중복 — #281 과 같은 문항(CV-55) · 해설의 제작 메모는 V018 제안대로 지움",
+   "explanation": "간장으로도 양념할 수 있지만 고추장 양념이 가장 대표적인 형태로 꼽힌다.",
+   "deactivate": "중복 — #281 과 같은 문항(CV-55) · 해설의 제작 메모는 V018 제안대로 지움",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/떡볶이"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "간장으로도 양념할 수 있지만 고추장 양념이 가장 대표적인 형태",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/떡볶이",
+     "quote": "고추장과 간장을 기본으로 양념할 수 있는데 전자가 가장 대표적인 형태다.",
+     "note": ""
+    }
+   ]
+  },
+  "29": {
+   "part": "c",
+   "vround": "CV-55",
+   "before": {
+    "question_text": "태양계에서 가장 큰 행성은?",
+    "explanation": null,
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "목성",
+    "is_active": true
+   },
+   "why": "CV-55 — #29 ↔ #166 중 #166 을 남김",
+   "sources": [],
+   "deactivate": "중복 — #166 과 같은 문항(CV-55) · #166 쪽이 질문(질량과 부피) · 해설이 있음"
+  },
+  "34": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "한국의 프로 축구 리그 이름은?",
+    "explanation": "한글·영문 혼합 정답. 힌트는 Kㄹㄱ 가 된다.",
+    "general_hint": null,
+    "variants": [
+     "케이리그"
+    ],
+    "display_answer": "K리그",
+    "is_active": true
+   },
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(연맹은 1994년 출범 — 1983년은 대한축구협회 주도의 수퍼리그)",
+   "explanation": "1983년 수퍼리그라는 이름으로 출범했고, 지금은 한국프로축구연맹이 열며 1부 K리그1과 2부 K리그2로 나뉜다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/K리그"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "한국프로축구연맹이 1983년부터 열어 왔으며",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/K리그",
+     "quote": "1983년 5월 8일 대한축구협회의 주도로 '수퍼리그'라는 명칭으로 출범했다. / 1994년에 ... 프로리그위원회가 독립하여 ... 한국프로축구연맹으로 새롭게 출범하였는데",
+     "note": "연맹은 1994년 출범 — 1983년부터 연 것은 연맹이 아님. 고칠 말: '1983년 출범해 지금은 한국프로축구연맹이 열며, 1부 K리그1과 2부 K리그2로 나뉜다.'"
+    },
+    {
+     "what": "explanation",
+     "text": "1부 K리그1과 2부 K리그2",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/K리그",
+     "quote": "K리그는 K리그1과 K리그2 전체를 아우르는 통칭으로 사용되게 되었다. 2018년에 K리그 클래식을 K리그1, K리그 챌린지를 K리그2로 변경하였다.",
+     "note": ""
+    }
+   ]
+  },
+  "53": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "scope",
+    "variants"
+   ],
+   "before": {
+    "question_text": "세계에서 가장 높은 산의 이름은?",
+    "explanation": null,
+    "general_hint": null,
+    "variants": [
+     "에베레스트산"
+    ],
+    "display_answer": "에베레스트",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (scope,variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "주무랑마"
+     ],
+     "why": "주무랑마 — 문서 표기는 주무랑마봉이고 한국어 용례가 드묾(DG-051 용례)"
+    }
+   ],
+   "question_text": "해발 높이를 기준으로 세계에서 가장 높은 산의 이름은?",
+   "add": [
+    "초모랑마",
+    "사가르마타"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/에베레스트산"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "해발 높이를 기준으로 세계에서 가장 높은 산",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/에베레스트산",
+     "quote": "에베레스트산은 높이가 해발 8,848.86 m로 지구에서 가장 높은 산이다.",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "초모랑마",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/에베레스트산",
+     "quote": "티베트어로는 초모랑마",
+     "note": "같은 대상"
+    },
+    {
+     "what": "variant",
+     "text": "사가르마타",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/에베레스트산",
+     "quote": "네팔에서는 사가르마타(산스크리트어: सगरमाथा)라 하고",
+     "note": "같은 대상"
+    },
+    {
+     "what": "variant",
+     "text": "주무랑마",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/에베레스트산",
+     "quote": "중국어와 문화어에서는 티베트어 '초모랑마'를 그대로 차용해 주무랑마봉(珠穆朗瑪峰)이라고 부른다.",
+     "note": "같은 대상이나 문서 표기는 '주무랑마봉'(중국어 · 문화어). 남한 쓰임은 드묾 — 넣는다면 '주무랑마봉' 도 함께"
+    }
+   ]
+  },
+  "71": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "not-unique",
+    "scope"
+   ],
+   "before": {
+    "question_text": "카우보이 인형 '우디'와 우주 비행사 장난감 '버즈 라이트이어'가 주인공으로 등장하는 픽사의 장편 3D 애니메이션 영화는?",
+    "explanation": "1995년 픽사가 제작한 세계 최초의 극장용 풀 3D 컴퓨터 그래픽 장편 애니메이션이다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "토이 스토리",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (not-unique,scope)",
+   "question_text": "카우보이 인형 '우디'와 우주 비행사 장난감 '버즈 라이트이어'가 주인공으로 나오는, 픽사의 첫 장편 3D 애니메이션 영화는?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/토이_스토리"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "픽사의 첫 장편 3D 애니메이션 영화",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/토이_스토리",
+     "quote": "픽사 애니메이션 스튜디오에서 제작한 최초의 장편 영화이자 전편이 컴퓨터 애니메이션으로 제작된 최초의 장편 영화로",
+     "note": ""
+    }
+   ]
+  },
+  "113": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "그리스 신화에서 바다와 지진, 말을 관장하며 삼지창(트라이던트)을 무기로 쓰는 신은?",
+    "explanation": "포세이돈은 제우스, 하데스와 형제 사이인 바다의 주신이다.",
+    "general_hint": null,
+    "variants": [
+     "넵투누스",
+     "넵튠"
+    ],
+    "display_answer": "포세이돈",
+    "is_active": true
+   },
+   "why": "V018 fix(variants) — 넵투누스 · 넵튠은 로마 신화의 다른 신이라 뺌(CV-41)",
+   "remove": [
+    "넵투누스",
+    "넵튠"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/포세이돈"
+   ],
+   "factcheck": [
+    {
+     "what": "removeVariant",
+     "text": "넵투누스",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/포세이돈",
+     "quote": "로마 신화의 넵투누스(라틴어: Neptūnus)에 해당한다.",
+     "note": "로마 신화의 대응 신 — 다른 신화의 다른 이름 신이라 빼는 것이 맞음"
+    },
+    {
+     "what": "removeVariant",
+     "text": "넵튠",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/포세이돈",
+     "quote": "로마 신화의 넵투누스(라틴어: Neptūnus)에 해당한다.",
+     "note": "넵튠은 넵투누스의 영어 이름(해왕성 이름이기도 함) — 그리스 신 포세이돈과 다른 대상"
+    }
+   ]
+  },
+  "149": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive",
+    "explanation"
+   ],
+   "before": {
+    "question_text": "매년 10월 31일 밤 유령이나 괴물 분장을 하고 '트릭 오어 트릿'을 외치며 사탕을 얻으러 다니는 서양의 축제는?",
+    "explanation": "고대 켈트족 축제에서 유래하여 10월 31일에 행해지는 대표적인 서양 축제다.",
+    "general_hint": null,
+    "variants": [
+     "핼러윈",
+     "할로윈데이",
+     "핼러윈 데이"
+    ],
+    "display_answer": "할로윈",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive,explanation)",
+   "explanation": "켈트족의 삼하인 축제에서 영향을 받았다는 가설이 있으며, 서방 기독교 만성절 전날인 10월 31일에 기념한다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/핼러윈"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "서방 기독교 만성절 전날인 10월 31일에 기념",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/할로윈",
+     "quote": "만성절 전야는 서방 기독교의 만성절 전날인 10월 31일에 많은 국가에서 기념하는 축제이다.",
+     "note": ""
+    },
+    {
+     "what": "explanation",
+     "text": "켈트족의 삼하인 축제에서 영향을 받았다는 가설",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/할로윈",
+     "quote": "일부 학자들은 더 나아가 초기 교회가 서우인을 만성절과 그 전야인 할로윈으로 기독교화했을 수 있다고 주장한다.",
+     "note": "'가설' 한정이 문서 세기와 맞음. ko 위키 표기는 '서우인'(Samhain) — '삼하인' 도 흔히 쓰이나 문서 표기와 다름을 알려 둠"
+    }
+   ]
+  },
+  "151": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "fact-error"
+   ],
+   "before": {
+    "question_text": "유재석, 박명수, 정준하, 하하 등이 출연하여 2006년부터 2018년까지 방영되며 '대한민국 평균 이하'를 자처했던 MBC 대표 예능 프로그램은?",
+    "explanation": "김태호 PD 연출 하에 13년여간 방영되며 국민적 인기를 누린 리얼 버라이어티 프로그램이다.",
+    "general_hint": null,
+    "variants": [
+     "무도"
+    ],
+    "display_answer": "무한도전",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (fact-error)",
+   "question_text": "유재석, 박명수, 정준하, 하하 등이 출연하여 2005년부터 2018년까지 방영되며 '대한민국 평균 이하'를 자처했던 MBC 대표 예능 프로그램은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/무한도전"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "2005년부터 2018년까지 방영",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/무한도전",
+     "quote": "《무한도전》은 2005년부터 2018년까지 MBC TV에서 방영된 대한민국의 코미디 리얼리티 방송 프로그램이다.",
+     "note": "'대한민국 평균 이하' 는 기존 문구 — 이 문서 본문에서 못 찾음(unverified 그대로)"
+    }
+   ]
+  },
+  "257": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive",
+    "fact-error"
+   ],
+   "before": {
+    "question_text": "한국 영화 최초로 칸 영화제 황금종려상과 미국 아카데미 시상식 작품상을 동시에 수상한 봉준호 감독의 2019년 영화는?",
+    "explanation": "봉준호 감독의 영화 《기생충》은 2019년 칸 영화제 황금종려상과 2020년 아카데미 4관왕(작품상 포함)을 달성했다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "기생충",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive,fact-error)",
+   "question_text": "한국 영화 최초로 칸 영화제 황금종려상을 받고, 이듬해 미국 아카데미 시상식 작품상까지 받은 봉준호 감독의 2019년 영화는?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/기생충_(영화)",
+    "https://en.wikipedia.org/wiki/Parasite_(2019_film)"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "칸 황금종려상을 받고, 이듬해 아카데미 작품상까지",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/기생충_(영화)",
+     "quote": "제92회 아카데미상에서 ... 작품상, 국제영화상, 감독상, 각본상의 4개의 상을 수상하는 쾌거를 이뤄내며, 역대 시상식 사상 작품상을 수상한 최초의 비영어 영화가 되었다.",
+     "note": "칸 2019년 5월 · 제92회 아카데미 2020년 2월 — '이듬해' 맞음"
+    }
+   ]
+  },
+  "302": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "비발디의 현악 협주곡집으로 봄, 여름, 가을, 겨울의 4개 계절을 표현한 대표작은?",
+    "explanation": "안토니오 비발디의 '사계'는 계절별 특성을 묘사한 대표적인 바르코 양식 협주곡입니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "사계",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "안토니오 비발디의 '사계'는 봄·여름·가을·겨울의 특징을 묘사한 대표적인 바로크 협주곡입니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/The_Four_Seasons_(Vivaldi)"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "봄·여름·가을·겨울을 묘사한 대표적인 바로크 협주곡",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/사계_(비발디)",
+     "quote": "가장 사랑받는 바로크 음악 중 하나이기도 하다. / 사계를 구성하는 네 개의 협주곡은 각 계절을 잘 묘사하고 있다.",
+     "note": ""
+    }
+   ]
+  },
+  "359": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive"
+   ],
+   "before": {
+    "question_text": "24절기 가운데 첫 번째로, 이날 대문이나 기둥에 좋은 글귀를 써 붙이며 한 해의 봄이 시작되었음을 알리는 절기는?",
+    "explanation": "양력으로 2월 4일 무렵이라 실제로는 가장 추운 때와 겹치는데, 절기가 계절의 시작을 앞당겨 잡기 때문입니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "입춘",
+    "is_active": true
+   },
+   "why": "사실 확인 unverified — 추위와 겹친다는 인과 문장은 문서에 없어 문서가 말하는 만큼만 씀(가장 추운 때와 겹친다는 단정은 뺌)",
+   "explanation": "양력으로 2월 4일 무렵입니다. 절기 이름이 중국 화북 지방을 기준으로 한 것이라 우리 날씨와 어긋나기도 합니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/입춘"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "양력으로 2월 4일 무렵",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/입춘",
+     "quote": "양력으로 2월 3일 또는 2월 4일이며 과거에는 2월 5일에도 있었다.",
+     "note": ""
+    },
+    {
+     "what": "explanation",
+     "text": "절기의 이름은 중국 화북 지방의 계절감에서 나왔다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/입춘",
+     "quote": "그러나 입춘이라는 명칭은 중국의 화북 지방을 기준으로 한 것이다.",
+     "note": ""
+    },
+    {
+     "what": "explanation",
+     "text": "때로는 한겨울 추위와 겹치기도 합니다",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/wiki/입춘",
+     "quote": "",
+     "note": "ko 입춘 · en Lichun 문서에 추위 문장 없음. 인과('겹치기도 합니다. ... 때문입니다')는 문서가 말하지 않음 — 쓴다면 '이름은 중국 화북 지방을 기준으로 한 것이라 우리 날씨와 어긋나기도 합니다' 정도로"
+    }
+   ]
+  },
+  "363": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "지구에 사계절이 생기는 것은 태양과의 거리가 달라져서가 아니라, 공전 궤도면에 대해 무엇이 약 23.5도 기울어져 있기 때문인가요?",
+    "explanation": "지구는 오히려 북반구가 겨울일 때 태양에 더 가깝습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "자전축",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "지축",
+    "지구 자전축"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/자전축"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "지축",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/지축",
+     "quote": "지축(地軸, axis of the earth, pole)은 지구 자전 운동의 축을 말한다. ... 지축은 약 23°기울어져 있다.",
+     "note": "같은 대상"
+    },
+    {
+     "what": "variant",
+     "text": "지구 자전축",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/지축",
+     "quote": "지축은 지구 자전 운동의 축을 말한다.",
+     "note": "ko 표제어 · 넘겨주기는 없으나 풀어 쓴 같은 말"
+    },
+    {
+     "what": "question",
+     "text": "약 23.5도 기울어져 (기존 문구 확인)",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Axial_tilt",
+     "quote": "Earth currently has an axial tilt of about 23.44°. ... This is the cause of Earth's seasons.",
+     "note": "판정자가 대조 못 한 23.5도를 확인함"
+    }
+   ]
+  },
+  "410": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "득점, 퇴장, 페널티킥 같은 결정적 장면을 심판이 영상으로 다시 확인하는 제도가 2018년 러시아 대회부터 월드컵에 도입되었습니다. 이 제도를 무엇이라 하나요?",
+    "explanation": "심판의 판단을 대신하는 것이 아니라 '명백한 오심'일 때만 개입하도록 되어 있습니다.",
+    "general_hint": null,
+    "variants": [
+     "VAR"
+    ],
+    "display_answer": "비디오 판독",
+    "is_active": true
+   },
+   "why": "V018 fix(variants) — 비디오 보조 심판(ko 위키 넘겨주기) · 문서 표기 '영상 보조 심판' 도 더함(사실 확인)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "비디오 판독 제도"
+     ],
+     "why": "비디오 판독 제도 — 정답에 낱말을 덧붙인 꼴(용례 드묾)"
+    }
+   ],
+   "add": [
+    "비디오 보조 심판",
+    "비디오판독",
+    "영상 보조 심판"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/비디오_보조_심판",
+    "https://ko.wikipedia.org/wiki/비디오_판독"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "비디오 보조 심판",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/비디오_판독심",
+     "quote": "영상 보조 심판(영어: video assistant referee, VAR)는 축구에서 경기 영상을 통해 판정을 하는 행위를 의미한다.",
+     "note": "ko 위키 넘겨주기로 있음(→ 비디오 판독심). 문서 표기는 '영상 보조 심판' — 함께 넣는 것을 권함"
+    },
+    {
+     "what": "variant",
+     "text": "비디오판독",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/비디오_판독",
+     "quote": "축구에서 비디오 판정을 VAR (Video Assistant Referee)라고 부른다.",
+     "note": "넘겨주기 있음(띄어쓰기 차이)"
+    },
+    {
+     "what": "variant",
+     "text": "비디오 판독 제도",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/비디오_판독심",
+     "quote": "그것을 계기로 2018 러시아 월드컵부터 GLT(골라인 테크놀로지)를 포함해 VAR 시스템을 도입하였다.",
+     "note": "표제어는 없으나 같은 대상을 풀어 쓴 말"
+    }
+   ]
+  },
+  "418": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "몇 톤의 피치블렌드를 끓이고 걸러 가며 새 원소 두 가지를 찾아냈고, 물리학상과 화학상을 모두 받은 최초의 인물이 된 과학자는?",
+    "explanation": "새로 찾은 원소 하나에는 조국 폴란드의 이름을 따 폴로늄이라는 이름을 붙였습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "마리 퀴리",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "퀴리 부인",
+    "마리 큐리",
+    "마리퀴리"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/마리_퀴리"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "퀴리 부인",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/마리_퀴리",
+     "quote": "프랑스 당국은 퀴리 부인의 유해를 ... 옮기고",
+     "note": "넘겨주기 있음 · 위인전 제목으로 널리 쓰임"
+    },
+    {
+     "what": "variant",
+     "text": "마리 큐리",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/마리_퀴리",
+     "quote": "마리아 스크워도프스카 퀴리(프랑스어: Maria Skłodowska-Curie, 문화어: 마리 큐리, ...)",
+     "note": "넘겨주기 있음(문서는 문화어 표기로 적음)"
+    },
+    {
+     "what": "variant",
+     "text": "마리퀴리",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/마리_퀴리",
+     "quote": "",
+     "note": "띄어쓰기 차이"
+    },
+    {
+     "what": "question",
+     "text": "물리학상과 화학상을 모두 받은 최초의 인물 (기존)",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/마리_퀴리",
+     "quote": "두 차례 노벨상을 받은 최초의 인물이며, 서로 다른 두 과학 분야에서 노벨상을 받은 유일한 인물이다.",
+     "note": ""
+    }
+   ]
+  },
+  "429": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "정조 때 수원 화성을 쌓으면서 정약용이 도르래 원리를 응용해 고안한, 무거운 돌을 적은 힘으로 들어 올리는 기계는?",
+    "explanation": "덕분에 공사 기간과 비용이 크게 줄었고, 그 과정은 '화성성역의궤'에 자세히 남아 있습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "거중기",
+    "is_active": true
+   },
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(비용 절감은 문서로 못 닫고 거중기는 1대만 쓰였다는 칼럼이 있어 뺌 · 의궤는 그림이 실림)",
+   "explanation": "'화성성역의궤'에는 거중기의 전체 모습과 부분을 나눈 그림이 실려 있습니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/거중기",
+    "https://ko.wikipedia.org/wiki/수원_화성"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "덕분에 무거운 돌을 쉽게 들어 공사 비용을 줄였고",
+     "result": "partial",
+     "source": "https://v.daum.net/v/20231030004709607",
+     "quote": "그러나 녹로와 거중기가 화성 공사에 그리 크게 기여하지는 않았던 것으로 판단된다. 왜냐하면 녹로는 2대, 거중기는 1대가 사용되었던 것으로 기록되어 있기 때문이다.",
+     "note": "ko 위키 · 거중기 문서에 비용 절감 문장 없음. 송성수 칼럼은 기여가 크지 않았다고 봄 — 비용 절감 단정은 빼는 것을 권함"
+    },
+    {
+     "what": "explanation",
+     "text": "그 과정은 '화성성역의궤'에 자세히 남아 있습니다",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/거중기",
+     "quote": "《화성성역의궤》(華城城役儀軌)에 완전히 조립된 모습의 전체 그림과 각 부분을 분해한 그림이 실려 있다.",
+     "note": "문서는 '설계도 · 그림이 실려 있다'. 고칠 말: \"'화성성역의궤'에 거중기의 전체 모습과 부분을 나눈 그림이 실려 있습니다.\""
+    }
+   ]
+  },
+  "512": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "구두쇠 노인 스크루지가 성탄 전야에 세 유령을 따라 지난날과 지금과 앞날을 차례로 둘러본 뒤 달라지는 이야기를 담은 찰스 디킨스의 소설은?",
+    "explanation": "이 작품이 오늘날 우리가 아는 성탄절 분위기를 굳히는 데 큰 몫을 했다고 평가됩니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "크리스마스 캐럴",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "크리스마스 캐롤",
+    "크리스마스캐럴",
+    "크리스마스캐롤"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/A_Christmas_Carol"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "크리스마스 캐롤",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/크리스마스_캐럴_(소설)",
+     "quote": "찰스 디킨슨의 중편 소설 크리스마스 캐롤의 주인공이다.",
+     "note": "ko 위키 넘겨주기 있음(→ 크리스마스 캐럴) · 문서 본문도 이 표기를 씀"
+    },
+    {
+     "what": "variant",
+     "text": "크리스마스캐럴 · 크리스마스캐롤",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/크리스마스_캐럴_(소설)",
+     "quote": "",
+     "note": "띄어쓰기 차이 — 채점 정규화가 띄어쓰기를 무시하면 따로 넣을 필요 없음"
+    },
+    {
+     "what": "question",
+     "text": "성탄 전야 (기존)",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/크리스마스_캐럴_(소설)",
+     "quote": "지독한 구두쇠 스크루지는 크리스마스 이브에 초자연적인 체험을 하고 개과천선한다.",
+     "note": ""
+    }
+   ]
+  },
+  "672": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "좌회전 신호를 따로 주지 않고, 마주 오는 차가 없을 때 운전자가 스스로 판단해 돌도록 한 통행 방식을 무엇이라 하는가?",
+    "explanation": "사고가 나면 좌회전한 쪽의 책임이 크다는 점 때문에 이름에 '비보호'가 들어갔습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "비보호좌회전",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "신호등이 좌회전 차량의 통행을 보호해 주지 않는다는 뜻에서 '비보호'라고 부릅니다. 사고가 나면 좌회전한 쪽의 과실이 크게 잡히는 것이 기본입니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/비보호_좌회전",
+    "https://namu.wiki/w/비보호%20좌회전"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "신호등이 좌회전 차량의 통행을 보호해 주지 않는다는 뜻에서 '비보호'",
+     "result": "true",
+     "source": "https://www.lawtalk.co.kr/posts/109961",
+     "quote": "비보호 좌회전은 직진 신호에서, 반대 차선에 진행 차량이 없을 때 좌회전이 가능합니다.",
+     "note": "이름 풀이는 말뜻 그대로라 따로 문서 문장 없음"
+    },
+    {
+     "what": "explanation",
+     "text": "사고가 나면 좌회전한 쪽의 과실이 크게 잡히는 것이 기본",
+     "result": "true",
+     "source": "https://www.metroseoul.co.kr/article/20230629500410",
+     "quote": "비보호 좌회전 사고의 경우 좌회전 차량의 기본 과실 비율을 80%에서 90%로 상향했다. 경우에 따라 100%까지 조정할 수 있다.",
+     "note": "손해보험협회 과실비율 기준(2023 기사)"
+    }
+   ]
+  },
+  "766": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "다섯 개의 별이 알파벳 W 모양으로 늘어서 있어 북쪽 하늘에서 찾기 쉬운 별자리는?",
+    "explanation": "북극성을 사이에 두고 큰곰자리 반대편에 있어, 계절에 따라 둘 중 하나로 북쪽을 찾습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "카시오페이아자리",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "카시오페아자리",
+    "카시오페이아",
+    "카시오페아"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/카시오페이아자리"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "카시오페아자리",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/카시오페이아자리",
+     "quote": "",
+     "note": "ko 위키 넘겨주기 있음(→ 카시오페이아자리)"
+    },
+    {
+     "what": "variant",
+     "text": "카시오페이아",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/카시오페이아",
+     "quote": "",
+     "note": "ko 위키에서 별개 문서(신화 속 왕비) — '자리' 를 뺀 이름은 신화 인물과 겹침. 별자리 질문 문맥이라 받아도 되지만 엄밀히는 다른 대상"
+    },
+    {
+     "what": "variant",
+     "text": "카시오페아",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/카시오페아",
+     "quote": "",
+     "note": "ko 위키 넘겨주기 → '카시오페이아 (동음이의)' — 위와 같음"
+    },
+    {
+     "what": "question",
+     "text": "다섯 개의 별이 W 모양 (기존 · unverified 였던 것)",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Cassiopeia_(constellation)",
+     "quote": "It is easily recognizable due to its distinctive 'W' shape, formed by five bright stars.",
+     "note": "en 문서로 '다섯' 확인"
+    }
+   ]
+  },
+  "896": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "화재 현장에서 목숨을 잃는 원인의 대부분은 불길 자체가 아니라 이것입니다. 위로 빠르게 차오르기 때문에 몸을 낮추고 코와 입을 막아야 하는 이것은?",
+    "explanation": "유독가스를 몇 모금만 마셔도 의식을 잃을 수 있어 자세를 낮추는 것이 중요합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "연기",
+    "is_active": true
+   },
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(질문 '대부분' → 문서 'most common cause') · 변형 제안 유독가스는 받지 않음",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "유독가스"
+     ],
+     "why": "유독가스 — ko 위키에서 '독가스' 로 넘겨지는 다른 대상(사실 확인 false · 15 §3-2)"
+    }
+   ],
+   "question_text": "화재 현장에서 목숨을 잃는 가장 흔한 원인은 불길 자체가 아니라 이것입니다. 위로 빠르게 차오르기 때문에 몸을 낮추고 코와 입을 막아야 하는 이것은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/화재"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "유독가스",
+     "result": "false",
+     "source": "https://ko.wikipedia.org/wiki/독가스",
+     "quote": "",
+     "note": "ko 위키 '유독가스' 는 '독가스' 로 넘겨짐 — 연기(입자+가스)와 다른 대상 · 더 넓은 말. 질문 문맥에서 정답으로 받을지는 정책 판단(찬종)"
+    },
+    {
+     "what": "question",
+     "text": "목숨을 잃는 원인의 대부분 (기존)",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Smoke_inhalation",
+     "quote": "Smoke inhalation injury is the most common cause of death in fire victims.",
+     "note": "문서는 '가장 흔한 사망 원인' — '대부분' 보다 약함. 고칠 말: '화재 현장에서 목숨을 잃는 가장 흔한 원인은 ...'"
+    }
+   ]
+  },
+  "898": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "지진으로 건물이 흔들리는 동안에는 밖으로 나가려 하지 말고, 떨어지는 물건을 막아 줄 튼튼한 것 아래로 들어가야 합니다. 가정이나 사무실에서 이때 들어가라고 흔히 권하는 가구는?",
+    "explanation": "흔들리는 동안 이동하다 넘어지거나 떨어지는 물체에 맞는 사고가 더 많기 때문입니다.",
+    "general_hint": null,
+    "variants": [
+     "책상"
+    ],
+    "display_answer": "탁자",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "테이블",
+    "식탁"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/지진"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "테이블",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/테이블",
+     "quote": "",
+     "note": "탁자와 같은 대상(외래어)"
+    },
+    {
+     "what": "variant",
+     "text": "식탁",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/탁자",
+     "quote": "",
+     "note": "ko 위키 '식탁' 은 '탁자' 로 넘겨짐 · 좁은 말(밥상용 탁자)이라 정답으로 받아도 무방"
+    }
+   ]
+  },
+  "900": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "fact-error",
+    "assertive"
+   ],
+   "before": {
+    "question_text": "화상을 입었을 때는 얼음이나 된장 같은 민간요법을 쓰지 말고, 미지근한 이것으로 15분 이상 식혀야 합니다. 이것은?",
+    "explanation": "얼음은 오히려 조직을 더 상하게 하고, 기름이나 된장은 열을 가두고 감염을 부릅니다.",
+    "general_hint": null,
+    "variants": [
+     "물"
+    ],
+    "display_answer": "흐르는 물",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (fact-error,assertive)",
+   "question_text": "화상을 입었을 때는 얼음이나 된장 같은 민간요법을 쓰지 말고, 흐르는 이것으로 충분히 식혀야 합니다. 이것은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/화상"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "흐르는 이것으로 충분히 식혀야",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/화상",
+     "quote": "1분 이내에 흐르는 차가운 물(깨끗한 물 또는 수돗물)로 계속 식히는 것이 좋지만 ... 5 ~ 15분 정도 식혔으면 빨리 의사의 진찰을 받아야 한다.",
+     "note": "민간요법 · 얼음 금지도 문서와 맞음('된장, 간장, 기름,소주 등을 바르는 행위는 ... 절대로 해서는 안 된다')"
+    }
+   ]
+  },
+  "902": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "119에 신고할 때 상황 설명보다 먼저 알려야 한다고 하는 것으로, 출동 시간을 가장 크게 좌우하는 것은?",
+    "explanation": "말할 수 없는 상황이면 전화를 끊지 않고 두는 것만으로도 추적에 도움이 됩니다.",
+    "general_hint": null,
+    "variants": [
+     "장소"
+    ],
+    "display_answer": "위치",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "주소"
+   ],
+   "sources": [],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "주소",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/주소",
+     "quote": "",
+     "note": "위치를 알리는 말로 같은 대상(좁은 말). 새 사실 없음"
+    }
+   ]
+  },
+  "940": {
+   "part": "c",
+   "vround": "G017",
+   "before": {
+    "question_text": "정부가 돈을 더 찍어 물가가 오르면 현금을 가진 사람의 실질 가치가 줄어들어 사실상 세금을 걷은 것과 같아집니다. 이를 무엇이라 합니까?",
+    "explanation": "국회를 거치지 않고 부담을 옮긴다는 점에서 '보이지 않는 세금'이라고도 합니다.",
+    "general_hint": "물가 상승을 뜻하는 외래어가 이름 앞에 붙는다.",
+    "variants": [],
+    "display_answer": "인플레이션 조세",
+    "is_active": false
+   },
+   "why": "C77 · G015 비활성 #940 — ko 위키 '인플레이션세' 문서가 개념을 닫음('인플레이션이 곧 국민이 부담해야 하는 세금과도 같은 작용') · 같은 문서가 '정부가 화폐발행으로 얻는 이득을 세뇨리지' 로 따로 적어 #933 시뇨리지와 정답이 갈림 · 해설은 문서 문장대로('보이지 않는 세금' 은 문서에 없어 고침) · 옛 힌트(물가 상승을 뜻하는 외래어)는 정답 조각 풀이라 문서의 두 번째 줄 사실로 바꿈 · 변형 인플레이션세(문서 제목) → 다시 활성",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/인플레이션세"
+   ],
+   "explanation": "세금을 늘리려면 의회 승인을 거쳐야 하지만, 돈을 더 찍는 방법은 국민이 직접 느끼지 못하게 세금을 거두는 것과 같은 효과를 냅니다.",
+   "general_hint": "부동산 같은 실물 자산을 가진 쪽은 자산 값도 함께 올라 부담이 덜하다.",
+   "hintGen": true,
+   "hintSources": [
+    "https://ko.wikipedia.org/wiki/인플레이션세"
+   ],
+   "add": [
+    "인플레이션세"
+   ],
+   "activate": true
+  },
+  "952": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "앞이 트여 단추로 여미는 스웨터로, 크림 전쟁에 참전한 영국 귀족의 작위 이름에서 온 것은?",
+    "explanation": "부상병이 옷을 머리 위로 벗지 않아도 되게 앞을 텄다는 이야기가 전해집니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "카디건",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "이름은 크림 전쟁 경기병 여단 돌격을 이끈 7대 카디건 백작에서 왔고, 영국 장교들이 입던 털 조끼에서 비롯됐다고 전해집니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cardigan_(sweater)",
+    "https://ko.wikipedia.org/wiki/카디건"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "크림 전쟁 경기병 여단 돌격을 이끈 7대 카디건 백작에서 왔고",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Cardigan_(sweater)",
+     "quote": "The cardigan was named after James Brudenell, 7th Earl of Cardigan, a British Army major general who led the Charge of the Light Brigade at the Battle of Balaclava during the Crimean War.",
+     "note": ""
+    },
+    {
+     "what": "explanation",
+     "text": "영국 장교들이 입던 털 조끼에서 비롯됐다고 전해집니다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Cardigan_(sweater)",
+     "quote": "It is modelled after the knitted wool waistcoat that British officers supposedly wore during the war.",
+     "note": "'supposedly' 를 '전해집니다' 로 맞게 한정함"
+    }
+   ]
+  },
+  "997": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "not-unique"
+   ],
+   "before": {
+    "question_text": "메주를 몇 달씩 띄우는 된장과 달리 삶은 콩을 며칠 만에 띄워 먹는, 냄새가 강한 발효 식품은?",
+    "explanation": "짧게 띄우기 때문에 콩의 형태가 그대로 남고 실 같은 점성이 생깁니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "청국장",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (not-unique)",
+   "question_text": "메주를 몇 달씩 띄우는 된장과 달리 삶은 콩을 며칠 만에 띄워 먹는, 냄새가 강한 한국의 발효 식품은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/청국장"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "한국의 발효 식품 · 며칠 만에 띄워",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/청국장",
+     "quote": "된장은 발효시켜서 먹기까지 몇 달이 걸리지만 청국장은 담가서 2~3일이면 먹을 수 있다. / 일본의 낫토와 비슷하다고 알려져 있는데 발효에 관여하는 균이 다른 것으로 보고되고 있다.",
+     "note": ""
+    }
+   ]
+  },
+  "1035": {
+   "part": "c",
+   "vround": "G017",
+   "before": {
+    "question_text": "'오로지'라는 뜻과 '겨우'라는 뜻으로 문맥에 따라 갈려 쓰이는 순우리말 부사는?",
+    "explanation": "두 뜻이 거의 반대여서 문맥을 보지 않으면 헷갈립니다.",
+    "general_hint": "한자 '聊(료)'의 뜻풀이로 쓰이는 네 글자 순우리말이다.",
+    "variants": [],
+    "display_answer": "애오라지",
+    "is_active": false
+   },
+   "why": "G015 비활성 #1035 — 우리말샘 역사 정보('애야시(15세기)>아야로시(17세기)>애오라지(18세기~현재)' · 1481 두시언해 초간본 용례)로 두 번째 줄 힌트를 씀 · 옛 힌트(한자 聊 의 뜻풀이)는 번역 · 한자 뜻풀이 조각(CV-33)이라 바꿈 → 다시 활성",
+   "sources": [
+    "https://opendict.korean.go.kr/dictionary/view?sense_no=479626"
+   ],
+   "general_hint": "15세기 두시언해에는 옛 꼴로 나오고, 18세기에 들어 지금과 같은 꼴이 자리 잡았다.",
+   "hintGen": true,
+   "hintSources": [
+    "https://opendict.korean.go.kr/dictionary/view?sense_no=479626"
+   ],
+   "activate": true
+  },
+  "1093": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "풍년을 빌며 마을이 편을 갈라 굵은 줄을 당겨 겨루던 농경 의례에서 온 놀이로, 유네스코 인류무형문화유산에 오른 것은?",
+    "explanation": "네 나라가 함께 올린 공동 등재였습니다. 이기는 쪽이 풍년이 든다고 여겼습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "줄다리기",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "네 나라가 함께 올린 공동 등재였습니다. 한국에서는 동쪽 편이 이기면 풍년, 서쪽 편이 이기면 만선이 든다고 믿었습니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/줄다리기"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "네 나라가 함께 올린 공동 등재",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/줄다리기",
+     "quote": "2015년 제10차 무형유산보호협약 정부간위원회는 한국, 베트남, 캄보디아, 필리핀이 공동등재 신청한 줄다리기를 인류무형문화유산으로 등재하였다.",
+     "note": ""
+    },
+    {
+     "what": "explanation",
+     "text": "동쪽 편이 이기면 풍년, 서쪽 편이 이기면 만선",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/줄다리기",
+     "quote": "원래 줄다리기는 대개 동부와 서부의 양편으로 갈리고 ... 이리하여 동부가 이기면 풍년이 들고 서부가 이기면 만선(滿船)이 된다고 믿어 왔다.",
+     "note": "문서 낱말은 '동부 · 서부'"
+    }
+   ]
+  },
+  "1172": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "받침점과 힘점, 작용점의 거리 비에 따라 작은 힘으로도 무거운 것을 들어 올릴 수 있게 해 주는 단순한 도구는?",
+    "explanation": "'긴 막대와 받침점만 있으면 지구도 들겠다'는 아르키메데스의 말이 전합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "지레",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "'설 곳만 주어진다면 지구도 들어 보이겠다'는 아르키메데스의 말이 전합니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/지레",
+    "https://ko.wikipedia.org/wiki/아르키메데스"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "'설 곳만 주어진다면 지구도 들어 보이겠다'는 아르키메데스의 말",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Lever",
+     "quote": "the Greek mathematician Archimedes, who famously stated \"Give me a lever (long enough and a fulcrum on which to place it), and I shall move the world\". (The Greek usually attributed to Archimedes does not include details about length of lever or fulcrum, i.e., δῶς μοι πᾶ στῶ ...)",
+     "note": "ko 지레 문서에는 없음. '전합니다' 한정 맞음"
+    }
+   ]
+  },
+  "1249": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation",
+    "h-pair-same"
+   ],
+   "before": {
+    "question_text": "십이지의 열두 동물에는 들어 있지 않아, 쥐에게 속아 늦었다는 설화로 그 까닭을 설명하곤 하는 동물은?",
+    "explanation": "베트남의 십이지에는 토끼 대신 고양이가 들어 있습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "고양이",
+    "is_active": true
+   },
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(문서 'had not proliferated' — 들어오지 않았다가 아니라 널리 퍼지지 않았을 수 있다)",
+   "explanation": "십이지가 정해질 무렵 중국에 집고양이가 아직 널리 퍼지지 않았기 때문일 수 있다는 설명도 있습니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/십이지",
+    "https://en.wikipedia.org/wiki/Chinese_zodiac"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "십이지가 정해질 무렵 중국에 고양이가 아직 들어오지 않았기 때문이라고 설명하기도",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Cat_(zodiac)",
+     "quote": "It is possible domesticated cats had not proliferated through China at the zodiac's induction.",
+     "note": "문서는 '들어오지 않았다' 가 아니라 '널리 퍼지지 않았을 수 있다'. 고칠 말: '십이지가 정해질 무렵 중국에 집고양이가 아직 널리 퍼지지 않았기 때문일 수 있다는 설명도 있습니다.' (ko 고양이: '중국의 십이지에는 포함되어 있지 않지만 베트남과 네팔에서는 토끼 대신 고양이가 십이지 중 하나다.')"
+    }
+   ]
+  },
+  "1392": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "fact-error"
+   ],
+   "before": {
+    "question_text": "자전거 가게를 하던 형제로, 1903년에 12초 동안 36미터를 날아 동력 비행에 처음 성공한 것으로 기록된 사람들은?",
+    "explanation": "자전거를 다루며 익힌 균형과 조종의 감각이 비행기 설계에 쓰였습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "라이트 형제",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (fact-error)",
+   "question_text": "자전거 가게를 하던 형제로, 1903년에 12초 동안 약 37미터를 날아 동력 비행에 처음 성공한 것으로 기록된 사람들은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/라이트_형제",
+    "https://en.wikipedia.org/wiki/Wright_brothers"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "12초 동안 약 37미터",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/라이트_형제",
+     "quote": "오빌이 비행한 첫 비행에서 12초 동안 37m 비행했고, 속도는 약 시속 10.9km이었다.",
+     "note": ""
+    }
+   ]
+  },
+  "1393": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "expose"
+   ],
+   "before": {
+    "question_text": "비행 자료와 조종실 음성을 기록하는 장치는 무엇일까요? 이름은 검은 상자이지만, 사고 뒤에 찾기 쉽도록 실제로는 주황색으로 칠해져 있습니다.",
+    "explanation": "비행 자료 기록 장치와 음성 기록 장치 두 가지로 이루어집니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "블랙박스",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (expose)",
+   "question_text": "비행 자료와 조종실 음성을 기록하는 장치는 무엇일까요? 이름과 달리 사고 뒤에 찾기 쉽도록 실제로는 주황색으로 칠해져 있습니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/비행기록장치"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "이름과 달리 실제로는 주황색",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/블랙박스_(항공기)",
+     "quote": "현재는 사고 후 복구를 돕기 위해 밝은 주황색으로 칠해야 한다.",
+     "note": "새 사실 없음 — 문구만"
+    }
+   ]
+  },
+  "1467": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "야구에서 타자가 스트라이크를 세 개 받아 아웃되는 것을 무엇이라 합니까?",
+    "explanation": "다만 세 번째가 파울이면 카운트에 넣지 않습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "삼진",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "두 스트라이크 뒤의 파울은 스트라이크로 세지 않지만, 번트가 파울이 되면 삼진 아웃입니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Strikeout"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "두 스트라이크 뒤의 파울은 스트라이크로 세지 않지만, 번트가 파울이 되면 삼진 아웃",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Foul_ball",
+     "quote": "If the batter already has two strikes against him when he hits a foul ball, a strike is not issued unless the ball was bunted to become a foul ball, in which case a third strike is issued and a strikeout recorded",
+     "note": "ko 삼진 문서는 짧아 en 으로 대조"
+    }
+   ]
+  },
+  "1524": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation",
+    "assertive"
+   ],
+   "before": {
+    "question_text": "'따따따 딴' 하는 네 음으로 시작하며 '운명이 문을 두드린다' 는 이야기가 붙은 교향곡 5번의 별칭은?",
+    "explanation": "그 별칭은 작곡가가 붙인 것이 아니라 뒷날 제자의 회고에서 퍼진 것입니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "운명 교향곡",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation,assertive)",
+   "explanation": "작곡가가 직접 붙인 이름이 아니라, 비서 쉰들러와 제자 리스의 회고를 통해 퍼졌다고 전합니다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Symphony_No._5_(Beethoven)"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "작곡가가 직접 붙인 이름이 아니라, 비서 쉰들러와 제자 리스의 회고를 통해 퍼졌다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Symphony_No._5_(Beethoven)",
+     "quote": "This idea comes from Beethoven's secretary and factotum Anton Schindler ... / Beethoven's pupil, Ferdinand Ries, was really author of this would-be poetic exegesis",
+     "note": "문서는 쉰들러 증언을 믿기 어렵다고 봄 — '전합니다' 한정이면 맞음"
+    }
+   ]
+  },
+  "1546": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation",
+    "assertive"
+   ],
+   "before": {
+    "question_text": "1938년에 등장해 초능력 히어로라는 장르 자체를 열었고, 크립톤 행성에서 왔다는 설정을 가진 캐릭터는?",
+    "explanation": "이민자였던 두 유대계 청년이 만들었고, 그 배경이 설정에 반영됐다는 해석이 있습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "슈퍼맨",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation,assertive)",
+   "explanation": "외계에서 온 설정을 이민자 이야기로 읽는 해석이 있습니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/슈퍼맨",
+    "https://en.wikipedia.org/wiki/Superman"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "외계에서 온 설정을 이민자 이야기로 읽는 해석",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Superman",
+     "quote": "=== An allegory for immigrants === Superman's immigrant status is a key aspect of his appeal.",
+     "note": ""
+    }
+   ]
+  },
+  "1599": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "성질이 다른 두 공기 덩어리가 맞서 만든 전선이 한자리에 오래 머물며 비가 이어지는, 초여름의 우리나라 기상 현상은?",
+    "explanation": "최근에는 전선이 오르내리지 않고 국지성 호우가 잦아져 예보가 어려워졌습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "장마",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "2010년 이후에는 장마전선의 남북 진동 폭이 커져 중부에도 많은 비가 내리고, 예보가 빗나가는 경우가 늘었다고 설명합니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/장마"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "2010년 이후 장마전선 남북 진동 폭이 커져 중부에도 많은 비 · 예보가 빗나가는 경우가 늘었다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/장마",
+     "quote": "그러나 2010년이 되면서 장마의 경향이 바뀌고 있는데 ... 장마전선의 남북 진동이 커지면서 중부 지방에도 많은 비가 내리 ... 또한 남북진동이 강하다 보니 장마예보가 많이 빗겨나가고 있다.",
+     "note": ""
+    }
+   ]
+  },
+  "1602": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation",
+    "assertive"
+   ],
+   "before": {
+    "question_text": "일기예보에서 '비 올 확률 60%' 는 예보 구역의 60%에 비가 온다는 뜻이 아닙니다. 같은 조건이 여러 번 반복될 때 비가 내린 비율을 뜻하는 이 값을 무엇이라 합니까?",
+    "explanation": "비의 양이나 지속 시간과도 관계가 없습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "강수확률",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation,assertive)",
+   "explanation": "비가 얼마나 많이, 얼마나 오래 오는지를 나타내는 값이 아닙니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/강수_확률"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "비가 얼마나 많이, 얼마나 오래 오는지를 나타내는 값이 아닙니다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/강수_확률",
+     "quote": "강수 확률(probability of precipitation, PoP)은 특정 지역에서 정의된 시간 동안 ... 강수가 발생할 가능성을 나타내는 일반적인 용어이다.",
+     "note": "직접 부정 문장은 없으나 정의(발생 가능성)에서 바로 따라 나옴. 질문의 '구역 60% 가 아니다' 도 문서 NWS 정의(예보 구역 평균한 특정 지점 강수 초과 확률)와 어긋나지 않음"
+    }
+   ]
+  },
+  "1611": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation",
+    "assertive",
+    "variants"
+   ],
+   "before": {
+    "question_text": "해고만을 뜻하는 말로 흔히 쓰이지만 본래는 사업 매각·합병·재편까지 아우르는 경영 용어는?",
+    "explanation": "외환위기를 거치며 인력 감축의 뜻으로 좁게 쓰이게 됐습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "구조조정",
+    "is_active": true
+   },
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(해고의 뜻으로 굳었다는 말은 문서에 없음)",
+   "explanation": "한국에서는 1997년 외환위기 때 이 말이 널리 쓰이기 시작했고, 그때 기업들이 인원 감축과 정리해고를 이 이름으로 단행했습니다.",
+   "add": [
+    "리스트럭처링"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/구조조정"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "1997년 외환위기 때 인원 감축 사례가 두드러지면서 해고의 뜻으로 많이 쓰이게 됐다",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/구조조정",
+     "quote": "대한민국에서는 이 용어는 1997년 외환위기 시기에 사용되기 시작했다. 1997년 외환위기를 겪으며, ... 기업들은 ... 조직 인원을 감축, 퇴출(정리해고)시키고, 조직 개편 및 해외 매각, 폐쇄하며 '규모의 조정'을 구조조정이라는 용어를 사용하며 중점적으로 감행하였다.",
+     "note": "문서는 '해고의 뜻으로 굳었다' 고 말하지 않음. 고칠 말: '한국에서는 1997년 외환위기 때 이 말이 널리 쓰이기 시작했고, 그때 기업들이 인원 감축과 정리해고를 이 이름으로 단행했습니다.'"
+    },
+    {
+     "what": "variant",
+     "text": "리스트럭처링",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/구조조정",
+     "quote": "리스트럭처링(restructuring)이라는 단어가 구조조정이라는 의미로 쓰이기 시작한 것은 1981년 ...",
+     "note": "ko 위키 넘겨주기 있음"
+    }
+   ]
+  },
+  "1616": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "바람으로 날개를 돌려 전기를 만드는 발전 방식은 무엇일까요? 효율과 안정 사이의 절충으로 날개를 셋으로 두는 것이 흔합니다.",
+    "explanation": "날개가 적으면 흔들리고 많으면 서로 바람을 가려 효율이 떨어집니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "풍력 발전",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "날개를 늘릴수록 효율은 오르지만 증가폭이 점점 작아지고 비용은 늘어, 셋이 흔한 절충이라고 설명합니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/풍력_발전",
+    "https://en.wikipedia.org/wiki/Wind_turbine_design"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "날개를 늘릴수록 효율은 오르지만 증가폭이 점점 작아지고 비용은 늘어, 셋이 흔한 절충",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Wind_turbine_design",
+     "quote": "The number of blades is selected for aerodynamic efficiency, component costs, and system reliability. Aerodynamic efficiency increases with number of blades but with diminishing return.",
+     "note": "ko 풍력 발전: '거의 모든 대형 풍력 터빈은 ... 기본적으로 3개의 날개가 있는 상풍 로터'"
+    }
+   ]
+  },
+  "1627": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "not-unique"
+   ],
+   "before": {
+    "question_text": "초기 게임기의 화면이 거칠어 형태를 알아보게 하려고 모자와 콧수염, 멜빵을 입혔다는 설명이 전하는 닌텐도의 캐릭터는?",
+    "explanation": "머리카락을 그리기 어려워 모자를, 입을 표현하기 어려워 콧수염을 붙였다고 합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "마리오",
+    "is_active": true
+   },
+   "why": "V018 fix(not-unique) — 루이지와 가르는 한정어(동생 루이지와 함께 다니는)를 넣되, 제안의 '형 쪽은 누구' 꼴은 어색해 묻는 문장을 다시 씀",
+   "question_text": "모자와 콧수염, 멜빵 차림은 초기 게임기의 거친 화면에서 형태를 알아보게 하려고 붙였다는 설명이 전합니다. 동생 루이지와 함께 다니는, 이 닌텐도의 대표 캐릭터는?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/마리오_(프랜차이즈)",
+    "https://en.wikipedia.org/wiki/Mario"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "동생 루이지와 함께 다니는 ... 형 쪽",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Mario",
+     "quote": "Mario is an Italian-American plumber who lives in the Mushroom Kingdom with his younger twin brother, Luigi.",
+     "note": "루이지는 '쌍둥이 동생' — '동생' 맞음"
+    },
+    {
+     "what": "question",
+     "text": "화면이 거칠어 모자 · 콧수염 · 멜빵 (기존)",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Mario",
+     "quote": "The graphical limitations of arcade hardware influenced Mario's design, such as his nose, mustache, and overalls",
+     "note": ""
+    }
+   ]
+  },
+  "1636": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive"
+   ],
+   "before": {
+    "question_text": "허리를 가늘게 보이려 몸통을 단단히 조이던 속옷으로, 건강 문제가 지적되며 20세기 들어 사라진 것은?",
+    "explanation": "갈비뼈와 내장이 눌릴 정도로 조이는 경우가 있어 의사들이 오랫동안 경고했습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "코르셋",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive)",
+   "question_text": "허리를 가늘게 보이려 몸통을 단단히 조이던 속옷으로, 건강 문제가 지적되며 20세기 들어 일상에서 크게 줄어든 것은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/코르셋",
+    "https://en.wikipedia.org/wiki/Corset"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "20세기 들어 일상에서 크게 줄어든",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Corset",
+     "quote": "The corset has largely fallen out of mainstream fashion since the 1920s in Europe and North America, replaced by girdles and elastic brassieres, but has survived as an article of costume.",
+     "note": "ko: '20세기 초반 ... 점차 사용되지 않게 되었다'. 건강 문제 지적은 en Health effects 절과 맞음"
+    }
+   ]
+  },
+  "1645": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "not-unique",
+    "explanation"
+   ],
+   "before": {
+    "question_text": "다음 계절에 팔 옷을 미리 선보여 주문을 받는 자리로, 봄·가을에 주요 도시에서 잇달아 열리는 행사는?",
+    "explanation": "그래서 한여름에 겨울옷을, 한겨울에 여름옷을 선보이게 됩니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "패션쇼",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (not-unique,explanation)",
+   "question_text": "디자이너와 브랜드는 다음 계절에 팔 옷을 미리 선보여 바이어와 거래를 맺습니다. 이때 모델이 무대를 걸으며 옷을 보여 주는 개별 행사를 무엇이라 합니까?",
+   "explanation": "전통적으로 2~3월에 가을·겨울 옷을, 9~10월에 봄·여름 옷을 미리 선보여 왔습니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/패션쇼",
+    "https://ko.wikipedia.org/wiki/패션_위크"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "모델이 무대를 걸으며 옷을 보여 주는 개별 행사 · 바이어와 거래",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/패션쇼",
+     "quote": "전형적인 패션쇼에서 모델들은 디자이너가 만든 의상을 입고 런웨이를 걷는다. / 이 행사는 패션 하우스가 해외 바이어들에게 라인을 계획하고 홍보하기 위해 매년 두 차례 열렸다.",
+     "note": ""
+    },
+    {
+     "what": "explanation",
+     "text": "전통적으로 2~3월에 가을·겨울 옷을, 9~10월에 봄·여름 옷을",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Fashion_week",
+     "quote": "In February and March, designers showcased their autumn and winter collections. In September and October, designers showcased their spring and summer collections.",
+     "note": "문서 과거형 서술 — '전통적으로' 한정 맞음"
+    }
+   ]
+  },
+  "1662": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "안쪽에 주름과 융털이 촘촘히 나 표면적을 크게 늘려 영양분 흡수를 맡는, 사람 몸에서 가장 긴 소화기관은?",
+    "explanation": "융털까지 펼치면 표면적이 테니스 코트만 하다고 설명되곤 합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "소장",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "주름과 융털, 미세융털까지 합치면 표면적이 성인 평균 약 30제곱미터에 이른다고 설명합니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/작은창자",
+    "https://en.wikipedia.org/wiki/Small_intestine"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "주름 · 융털 · 미세융털까지 합치면 표면적이 성인 평균 약 30제곱미터",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Small_intestine",
+     "quote": "The surface area of the human small intestinal mucosa, due to enlargement caused by folds, villi and microvilli, averages 30 square metres (320 sq ft).",
+     "note": "문서는 '성인' 을 따로 말하지 않음 — '사람 평균 약 30제곱미터' 가 문서대로"
+    }
+   ]
+  },
+  "1673": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive",
+    "not-unique"
+   ],
+   "before": {
+    "question_text": "백열전구를 실용화하는 데 가장 큰 문제는 오래 견디는 필라멘트를 찾는 일이었습니다. 수천 가지 재료를 시험해 이를 해결한 발명가는?",
+    "explanation": "대나무 섬유를 태운 것으로 수명을 크게 늘린 일화가 전합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "에디슨",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive,not-unique)",
+   "question_text": "백열전구를 실용화하는 데 가장 큰 문제는 오래 견디는 필라멘트를 찾는 일이었습니다. 여러 재료를 시험해 오래 가는 필라멘트를 찾아내고 전구를 실용화한 미국의 발명가는 누구입니까?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/토머스_에디슨",
+    "https://en.wikipedia.org/wiki/Incandescent_light_bulb"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "여러 재료를 시험해 오래 가는 필라멘트를 찾아내고 전구를 실용화한 미국의 발명가",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Incandescent_light_bulb",
+     "quote": "They conclude that Edison's version was the first practical implementation, able to outstrip the others because of a combination of four factors: an effective incandescent material; ...",
+     "note": "'수천 가지' 를 '여러' 로 낮춘 것은 안전. 문서에 스완 전구가 먼저 실용 설치됐다는 문장도 있음 — '최초 실용화' 단정은 피한 문구라 괜찮음"
+    }
+   ]
+  },
+  "1675": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "fact-error"
+   ],
+   "before": {
+    "question_text": "빛에 반응하는 물질에 상을 맺어 고정하는 기술이 19세기에 실용화됐는데, 초기에는 한 장을 찍는 데 몇십 분이 걸렸습니다. 이 기술은?",
+    "explanation": "노출 시간이 길어 초상 사진을 찍을 때 머리를 고정하는 받침대를 썼습니다.",
+    "general_hint": null,
+    "variants": [
+     "사진"
+    ],
+    "display_answer": "사진술",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (fact-error)",
+   "question_text": "빛에 반응하는 물질에 상을 맺어 고정하는 기술이 19세기에 실용화됐는데, 초기에는 한 장을 찍는 데 몇 분 넘게 걸렸습니다. 이 기술은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/사진술",
+    "https://en.wikipedia.org/wiki/Daguerreotype"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "초기에는 한 장을 찍는 데 몇 분 넘게 걸렸습니다",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/History_of_photography",
+     "quote": "In 1826 or 1827, Nicéphore Niépce first managed to fix an image ... but at least eight hours or even several days of exposure ... / The daguerreotype required only minutes of exposure in the camera",
+     "note": ""
+    }
+   ]
+  },
+  "1704": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "완도에 청해진을 두고 해적을 소탕하며 신라·당·일본을 잇는 바닷길을 장악한 인물은?",
+    "explanation": "'해상왕' 으로 불렸고 당나라에도 신라인 거주지를 두었습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "장보고",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "서남해 해상권을 장악해 당나라와 일본은 물론 발해, 탐라와도 교역하며 큰 이익을 얻었다고 전합니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/장보고",
+    "https://en.wikipedia.org/wiki/Jang_Bogo"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "서남해 해상권을 장악해 당나라와 일본은 물론 발해, 탐라와도 교역",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/장보고",
+     "quote": "장보고는 해적 토벌에 그치지 않고 서남해 해상권을 장악하여 당나라와 일본뿐만 아니라 발해와 탐라, 우산국, ... 등 여러 나라와의 무역으로 많은 이익을 취하였으며",
+     "note": ""
+    }
+   ]
+  },
+  "1713": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "몽골의 침입을 부처의 힘으로 물리치려 16년에 걸쳐 나무판에 새긴 경전으로, 합천 해인사에 보관된 것은?",
+    "explanation": "8만 장이 넘는 판에 오탈자가 거의 없고, 보관 건물의 통풍 구조 덕에 지금까지 온전합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "팔만대장경",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "대장경"
+     ],
+     "why": "대장경 — 불경 모음 전반 · 15 B7 넓은 말"
+    }
+   ],
+   "add": [
+    "고려대장경",
+    "재조대장경",
+    "해인사 대장경판"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/팔만대장경"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "고려대장경",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/합천_해인사_대장경판",
+     "quote": "합천 해인사 대장경판 또는 팔만대장경(八萬大藏經), 고려대장경(高麗大藏經, Tripitaka Koreana)은 ...",
+     "note": "ko 위키에 '고려대장경' 별도 문서도 있음(초조 · 재조를 함께 다룰 수 있는 말) — 이 질문(16년 · 해인사)에서는 같은 대상"
+    },
+    {
+     "what": "variant",
+     "text": "재조대장경",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/합천_해인사_대장경판",
+     "quote": "",
+     "note": "ko 위키 넘겨주기 있음(→ 합천 해인사 대장경판)"
+    },
+    {
+     "what": "variant",
+     "text": "해인사 대장경판",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/합천_해인사_대장경판",
+     "quote": "1962년 12월 20일에 대한민국의 국보 제32호 해인사대장경판으로 지정되었다가, 2010년 8월 25일 현재의 명칭으로 변경되었다.",
+     "note": "넘겨주기 있음"
+    },
+    {
+     "what": "variant",
+     "text": "대장경",
+     "result": "false",
+     "source": "https://ko.wikipedia.org/wiki/대장경",
+     "quote": "",
+     "note": "ko 위키 별도 문서 — 불교 경전 총서 일반을 뜻하는 더 넓은 말"
+    }
+   ]
+  },
+  "1754": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "차례를 지내고 어른께 세배를 하며 떡국을 먹는, 음력 정월 초하루의 명절은?",
+    "explanation": "떡국의 흰 떡은 새로 시작한다는 뜻을, 동전 모양은 재물을 바라는 뜻을 담았다고 전합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "설날",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "설",
+    "음력설"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/설날"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "음력설",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/설날_(한국)",
+     "quote": "음력 1월 1일의 달력상 명칭은 \"설날\"이고, 보통 설날, 구정, 음력설이라고 부른다.",
+     "note": "넘겨주기 있음"
+    },
+    {
+     "what": "variant",
+     "text": "설",
+     "result": "true",
+     "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=설",
+     "quote": "설1 「명사」 「1」 우리나라 명절의 하나. 정월 초하룻날이다.=설날.",
+     "note": "표준국어대사전에서 설날과 같은 말"
+    }
+   ]
+  },
+  "1762": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "readable",
+    "explanation"
+   ],
+   "before": {
+    "question_text": "한식과 추석에 조상의 산소를 찾아 풀을 베고 절을 올리는 일을 무엇이라 합니까?",
+    "explanation": "무덤의 풀을 베고 돌보는 일은 따로 벌초라고 합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "성묘",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (readable,explanation)",
+   "question_text": "한식과 추석에 조상의 산소를 찾아가 절을 올리는 일을 무엇이라 합니까?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/성묘"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "한식과 추석에 조상의 산소를 찾아가 절을 올리는 일",
+     "result": "true",
+     "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=성묘",
+     "quote": "성묘(省墓) 「명사」 조상의 산소를 찾아가서 돌봄. 또는 그런 일. 주로 설, 추석, 한식에 한다.",
+     "note": "새 사실 없음 — '풀을 베고' 만 뺌. 사전도 설 · 추석 · 한식을 듦"
+    }
+   ]
+  },
+  "1796": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "not-unique"
+   ],
+   "before": {
+    "question_text": "약하게 만들거나 일부만 떼어 낸 병원체를 미리 넣어 면역 반응을 일으켜 두는 예방 수단을 무엇이라 합니까?",
+    "explanation": "일정 비율 이상이 맞으면 맞지 못한 사람까지 보호되는 집단면역이 생깁니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "백신",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (not-unique)",
+   "question_text": "약하게 만들거나 일부만 떼어 낸 병원체로 만들어, 몸에 미리 넣어 면역 반응을 일으켜 두는 약을 무엇이라 합니까?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/백신"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "병원체로 만들어 몸에 미리 넣어 면역 반응을 일으켜 두는 약",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/백신",
+     "quote": "",
+     "note": "새 사실 없음 — '예방 수단' 을 '약' 으로 좁혀 접종(행위)과 가름"
+    }
+   ]
+  },
+  "1819": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "전라남도의 한 섬에서 내려온 우리나라 고유 품종으로, 천연기념물로 지정돼 보호받는 개는?",
+    "explanation": "그 섬에서 밖으로 내보내려면 심사를 거치도록 정해져 있습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "진돗개",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "explanation": "그 섬에서 밖으로 내보내려면 반출 허가를 받도록 정해져 있습니다.",
+   "add": [
+    "진도개",
+    "진도견"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/진돗개"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "그 섬에서 밖으로 내보내려면 반출 허가를 받도록 정해져 있습니다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/진돗개",
+     "quote": "진도군 및 진도섬 이외의 타 지역 ... 에서 진돗개를 반출하여 키울 경우에는 반드시 진도군청에서 발급한 진도군 공인 반출허가증을 받아야 한다.",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "진도개",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/진돗개",
+     "quote": "1962년 진도 특산인 진돗개를 천연기념물(천연기념물로는 '진도개'이다)로 지정해 보호하고 있다.",
+     "note": "넘겨주기 있음 · 천연기념물 공식 이름"
+    },
+    {
+     "what": "variant",
+     "text": "진도견",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/진돗개",
+     "quote": "「진도의 진도견」, 《한국민족문화대백과》 / 한국진도견협회",
+     "note": "넘겨주기 있음"
+    }
+   ]
+  },
+  "1827": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "시각장애인을 돕도록 훈련된 개로, 정당한 이유 없이 식당이나 대중교통 출입을 막으면 과태료를 물리도록 법에 정해져 있는 것은?",
+    "explanation": "훈련 중인 개와 훈련사도 같은 보호를 받습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "안내견",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "시각장애인 안내견",
+    "맹도견"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/안내견",
+    "https://ko.wikipedia.org/wiki/장애인_보조견"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "맹도견",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/안내견",
+     "quote": "이와 동일한 의미로 맹인안내견 또는 맹도견(盲導犬)이라는 표현도 사용되지만",
+     "note": "넘겨주기 있음"
+    },
+    {
+     "what": "variant",
+     "text": "시각장애인 안내견",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/안내견",
+     "quote": "",
+     "note": "표제어 · 넘겨주기는 없으나 같은 대상을 풀어 쓴 말"
+    }
+   ]
+  },
+  "1848": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "서로 다른 물질을 비빌 때 전자가 한쪽으로 옮겨 가 쌓이면서 생기고, 건조한 겨울에 특히 잦은 현상은?",
+    "explanation": "습하면 수분을 타고 전하가 빠져나가기 때문에 여름에는 잘 생기지 않습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "정전기",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "마찰전기",
+    "마찰 전기"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/정전기",
+    "https://en.wikipedia.org/wiki/Static_electricity"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "마찰전기 · 마찰 전기",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/정전기",
+     "quote": "흔히 마찰에 의해 대전된 전하를 정전기라고 부르는데, 본래는 마찰전기도 정전기 현상의 하나에 지나지 않는다.",
+     "note": "마찰전기는 정전기의 한 갈래(좁은 말)지만 질문이 '비빌 때' 로 한정해 같은 대상으로 받아도 됨"
+    }
+   ]
+  },
+  "1855": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive",
+    "fact-error"
+   ],
+   "before": {
+    "question_text": "겨울에 물이 마르는 것을 막으려고 나무가 잎자루에 '떨켜' 라는 층을 만들어 잎을 스스로 떨어뜨립니다. 이렇게 떨어진 잎을 무엇이라 합니까?",
+    "explanation": "바람에 떨어지는 것이 아니라 나무가 스스로 끊어 내는 것입니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "낙엽",
+    "is_active": true
+   },
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(겨울 사유는 추위 손상 · 건조는 건기 지역 나무의 사유)",
+   "question_text": "겨울 추위에 잎이 상하는 것을 막으려고 나무가 잎자루에 '떨켜' 라는 층을 만들어 잎을 스스로 떨어뜨립니다. 이렇게 떨어진 잎을 무엇이라 합니까?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/낙엽",
+    "https://en.wikipedia.org/wiki/Abscission"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "겨울의 추위와 건조를 견디려고",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/낙엽성",
+     "quote": "온대 및 냉대에 서식하는 대부분의 활엽수는 낙엽을 떨굼으로써 겨울철 추운 기온 때문에 일어날 수 있는 손상으로부터 스스로를 보호한다. / 건기와 우기가 있는 지역에서 서식하는 일부 활엽수들은 과도한 증발을 막기 위해 잎을 떨군다.",
+     "note": "'건조(증발)' 는 문서에서 건기 지역 활엽수 사유 — 겨울 사유는 추위 손상. 고칠 말: '겨울 추위에 잎이 상하는 것을 막으려고'"
+    }
+   ]
+  },
+  "1882": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants",
+    "assertive"
+   ],
+   "before": {
+    "question_text": "1980년대에 보급되어 LP와 카세트를 밀어내고 음악 산업의 수익을 크게 끌어올린 디지털 음반 매체는?",
+    "explanation": "한 장에 74분을 담게 정한 것이 교향곡 한 곡을 넣기 위해서였다는 이야기가 전합니다.",
+    "general_hint": null,
+    "variants": [
+     "시디"
+    ],
+    "display_answer": "CD",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants,assertive)",
+   "add": [
+    "컴팩트 디스크",
+    "컴팩트디스크",
+    "콤팩트 디스크",
+    "콤팩트디스크"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/컴팩트_디스크",
+    "https://en.wikipedia.org/wiki/Compact_disc"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "컴팩트 디스크 · 컴팩트디스크",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/콤팩트_디스크",
+     "quote": "",
+     "note": "'컴팩트 디스크' 넘겨주기 있음(→ 콤팩트 디스크)"
+    },
+    {
+     "what": "variant",
+     "text": "콤팩트 디스크 · 콤팩트디스크",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/콤팩트_디스크",
+     "quote": "1982년에 도입한 콤팩트 디스크(CD)",
+     "note": "ko 표제어(외래어 표기법 표기)"
+    }
+   ]
+  },
+  "1901": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "왕자로 태어났으나 성 밖에서 늙음·병듦·죽음을 보고 출가해 깨달음을 얻었다고 전하는 불교의 창시자는?",
+    "explanation": "'석가족의 성자' 라는 뜻이며 본래 이름은 고타마 싯다르타입니다.",
+    "general_hint": null,
+    "variants": [
+     "싯다르타"
+    ],
+    "display_answer": "석가모니",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "부처"
+     ],
+     "why": "부처 · 붓다 — 깨달은 이 일반을 이르는 더 넓은 말(사실 확인 partial · 15 B7) · 고타마 싯다르타 · 석가 · 샤카무니 · 석가모니 부처는 받음"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "붓다"
+     ],
+     "why": "부처 · 붓다 — 깨달은 이 일반을 이르는 더 넓은 말(사실 확인 partial · 15 B7) · 고타마 싯다르타 · 석가 · 샤카무니 · 석가모니 부처는 받음"
+    }
+   ],
+   "add": [
+    "고타마 싯다르타",
+    "석가",
+    "샤카무니",
+    "석가모니 부처"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/석가모니"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "고타마 싯다르타",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/석가모니",
+     "quote": "본명인 싯다르타 가우타마",
+     "note": "넘겨주기 있음(→ 석가모니)"
+    },
+    {
+     "what": "variant",
+     "text": "석가 · 샤카무니",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/석가모니",
+     "quote": "“샤카무니” 또는 그 한자 음차인 “석가모니”(釋迦牟尼)라고 부르고, 줄여서 “샤카” 혹은 “석가”(釋迦)라고 한다.",
+     "note": "둘 다 넘겨주기 있음"
+    },
+    {
+     "what": "variant",
+     "text": "부처 · 붓다",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/부처",
+     "quote": "성씨인 가우타마에 깨달음을 성취한 존재라는 뜻의 “붓다(불타 · 불 · 부처)”를 더하여 “가우타마 붓다”라고 한다.",
+     "note": "ko 위키 '부처' 는 별도 문서(깨달은 이 일반) · '붓다' 는 그쪽으로 넘겨짐 — 더 넓은 말. 다만 문서는 석가모니를 '부처, 붓다 등 다양하게 부른다' 고도 적어 받을지는 정책 판단"
+    },
+    {
+     "what": "variant",
+     "text": "석가모니 부처",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/석가모니",
+     "quote": "역할에 따라 부처님, 부처, 석가모니, 석가세존, ... 붓다, 불(佛) 등 다양하게 부른다.",
+     "note": "표제어는 없으나 같은 대상"
+    }
+   ]
+  },
+  "1905": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "본래 석가모니의 유골을 모시려고 세운 건축으로, 동아시아로 오면서 층을 쌓은 형태로 바뀌었습니다. 절 마당에 서 있는 이것은 무엇일까요?",
+    "explanation": "인도에서는 돔 형태였는데 목조 건축 전통과 만나 층이 있는 모양이 됐습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "탑",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "불탑"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/탑"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "불탑",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/탑",
+     "quote": "동양에서 탑은 불교의 건축물로 원래 석가모니의 진신사리를 모시기 위해 지은 건축물이었다. / 한국의 불탑은 중국과 일본에 비해 그 규모가 작은 편이다.",
+     "note": "ko 위키 별도 문서도 있음 — 질문(석가모니 유골 · 절 마당)에 맞는 같은 대상"
+    }
+   ]
+  },
+  "1918": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "태극기의 네 모서리에 그려진 괘는 하늘·땅·물·불을 뜻합니다. 이 네 괘를 통틀어 무엇이라 합니까?",
+    "explanation": "각각 건·곤·감·리라 하며 주역의 팔괘 가운데 넷을 골라 쓴 것입니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "사괘",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "건곤감리",
+    "4괘",
+    "사 괘"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/태극기"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "건곤감리",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/대한민국의_국기",
+     "quote": "건곤감리는 태극기 네 모서리에 그려진 4괘(四卦)로, 각각 하늘(건·乾)과 땅(곤·坤), 물(감·坎), 불(리·離)을 상징한다.",
+     "note": "넘겨주기 있음"
+    },
+    {
+     "what": "variant",
+     "text": "4괘 · 사 괘",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/대한민국의_국기",
+     "quote": "네모서리의 건곤감리(乾坤坎離) 4괘(四卦)로 구성되어 있다.",
+     "note": "문서 표기 '4괘'"
+    }
+   ]
+  },
+  "1924": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "국가적인 애도를 나타낼 때 깃발을 깃대 끝까지 올리지 않고 절반 높이에 다는 것을 무엇이라 합니까?",
+    "explanation": "한 번 끝까지 올렸다가 내려 다는 것이 정식 절차입니다.",
+    "general_hint": null,
+    "variants": [
+     "조기 게양"
+    ],
+    "display_answer": "조기",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "반기",
+    "반기 게양"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/반기",
+    "https://ko.wikipedia.org/wiki/조기_(기례)"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "반기",
+     "result": "true",
+     "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=반기",
+     "quote": "반기4(半旗) 「명사」 조의를 표하기 위하여 깃봉에서 기의 한 폭만큼 내려서 다는 국기.=조기.",
+     "note": "사전이 조기와 같은 말로 봄. 참고: 사전 풀이는 '기의 한 폭만큼 내려서' — 질문의 '절반 높이' 와 다름(기존 문구)"
+    },
+    {
+     "what": "variant",
+     "text": "반기 게양",
+     "result": "true",
+     "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=반기",
+     "quote": "",
+     "note": "기존 '조기 게양' 과 짝"
+    }
+   ]
+  },
+  "1929": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants",
+    "assertive"
+   ],
+   "before": {
+    "question_text": "우리나라를 상징하는 꽃은 널리 쓰이지만 법으로 정해져 있지는 않습니다. 이처럼 나라를 대표하는 꽃을 무엇이라 합니까?",
+    "explanation": "관습으로 굳은 나라와 법으로 정한 나라가 갈립니다. 꽃 이름인 국화와는 다른 말입니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "국화",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants,assertive)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "國花"
+     ],
+     "why": "國花 — 영문 · 기호 표기(G015 와 같은 기계 거름)"
+    }
+   ],
+   "add": [
+    "나라꽃"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/국화_(나라)",
+    "https://en.wikipedia.org/wiki/National_flower"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "나라꽃",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/무궁화",
+     "quote": "나라꽃 무궁화의 매력, 국가기록원",
+     "note": "ko 위키 문서 있음"
+    },
+    {
+     "what": "variant",
+     "text": "國花",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/무궁화",
+     "quote": "대한민국에서는 관습헌법에 의해 국화(國花)로 여겨진다.",
+     "note": "한자 표기"
+    },
+    {
+     "what": "question",
+     "text": "법으로 정해져 있지는 않습니다 (기존 · 판정자 근거 못 찾음)",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/무궁화",
+     "quote": "대한민국에서는 관습헌법에 의해 국화(國花)로 여겨진다. / 관습상 국화(國花)로 받아들여지고 있다.",
+     "note": "ko 무궁화 문서가 뒷받침 — en 'officially' 와 엇갈리나 ko 서술로 충분"
+    }
+   ]
+  },
+  "1974": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "흰살생선 튀김과 감자튀김을 함께 내는 영국의 대표적인 서민 음식으로, 예전에는 신문지에 싸서 팔던 것은?",
+    "explanation": "잉크가 음식에 묻는 위생 문제로 신문지 포장은 금지됐습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "피시 앤드 칩스",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "피시 앤 칩"
+     ],
+     "why": "피시 앤 칩 — 쓰임 드묾(사실 확인 partial)"
+    }
+   ],
+   "add": [
+    "피시앤칩스",
+    "피시 앤 칩스",
+    "피쉬 앤 칩스",
+    "피쉬앤칩스"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/피시_앤드_칩스"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "피시앤칩스",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/피시_앤드_칩스",
+     "quote": "영국인들은 최소한 일주일에 한번 이상은 피시앤칩스를 먹는다고 한다.",
+     "note": "문서 본문 표기"
+    },
+    {
+     "what": "variant",
+     "text": "피시 앤 칩스 · 피쉬 앤 칩스 · 피쉬앤칩스",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/피시_앤드_칩스",
+     "quote": "",
+     "note": "셋 다 ko 위키 넘겨주기 있음"
+    },
+    {
+     "what": "variant",
+     "text": "피시 앤 칩",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/피시_앤드_칩스",
+     "quote": "",
+     "note": "넘겨주기 없음 · 쓰임 드묾(복수 '칩스' 를 뺀 꼴) — 빼는 것을 권함"
+    },
+    {
+     "what": "explanation",
+     "text": "신문지 포장 (해설 '금지' → '제약')",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/피시_앤드_칩스",
+     "quote": "2003년, 위생 규정에 의해 제약을 받기 전에는 전날 나온 황색 신문지에 피시앤드칩스를 싸서 주는 것이 유행했으나",
+     "note": "판정자 노트 그대로 맞음"
+    }
+   ]
+  },
+  "1975": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "커피를 적신 과자와 마스카르포네 치즈를 층층이 쌓아 만든 이탈리아 디저트로, 이름이 '나를 끌어올려 줘' 라는 뜻인 것은?",
+    "explanation": "커피와 설탕으로 기운을 북돋운다는 뜻에서 온 이름으로 풀이됩니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "티라미수",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "티라미스"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/티라미수"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "티라미스",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/티라미수",
+     "quote": "",
+     "note": "ko 위키 넘겨주기 있음(→ 티라미수)"
+    }
+   ]
+  },
+  "1978": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive",
+    "scope"
+   ],
+   "before": {
+    "question_text": "냉장 기술이 없던 시절 북유럽에서는 생선을 오래 두고 먹으려고 절이고 말렸습니다. 이때 쓰인 것은?",
+    "explanation": "수분을 빼내 미생물이 번식하지 못하게 하는 원리이며, 그래서 소금이 귀한 물자였습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "소금",
+    "is_active": true
+   },
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(값싼 소금은 17세기 이후 · 스톡피시는 소금 없이 건조)",
+   "question_text": "냉장 기술이 없던 시절 북유럽에서는 대구 같은 생선을 바람에 말려 오래 두고 먹었고, 17세기에 남유럽의 값싼 이것이 들어온 뒤로는 절여서도 저장했습니다. 이 재료는 무엇일까요?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/소금",
+    "https://en.wikipedia.org/wiki/Stockfish"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "대구 같은 생선을 바람에 말리거나",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Stockfish",
+     "quote": "Stockfish is unsalted fish, especially cod, dried by cold air and wind on wooden racks",
+     "note": ""
+    },
+    {
+     "what": "question",
+     "text": "값싼 이것(소금)에 절여 저장했습니다",
+     "result": "partial",
+     "source": "https://en.wikipedia.org/wiki/Stockfish",
+     "quote": "Salting was not economically feasible until the 17th century, when cheap salt from southern Europe became available to the maritime nations of northern Europe.",
+     "note": "북유럽에서 소금이 값싸진 것은 17세기 이후. 고칠 말: '... 바람에 말렸고, 17세기에 남유럽의 값싼 이것이 들어온 뒤로는 절여서도 저장했습니다.'"
+    }
+   ]
+  },
+  "1979": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "콜로라도강이 고원을 깎아 만든 거대한 협곡으로, 미국 애리조나주에 있는 것은?",
+    "explanation": "깎인 지층이 드러나 지구의 역사를 그대로 보여 주는 곳으로도 꼽힙니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "그랜드캐니언",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "그랜드캐니온"
+     ],
+     "why": "그랜드캐니온 — 넘겨주기 · 쓰임을 못 찾음(사실 확인 unverified)"
+    }
+   ],
+   "add": [
+    "그랜드 캐니언",
+    "그랜드캐년",
+    "그랜드 캐년"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/그랜드캐니언"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "그랜드 캐니언",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/그랜드_캐니언",
+     "quote": "그랜드 캐니언(Grand Canyon), 또는 대협곡(大峽谷)은 미국 애리조나주의 고원지대 콜로라도강에 있는 거대한 계곡",
+     "note": "ko 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "그랜드캐년 · 그랜드 캐년",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/그랜드_캐니언",
+     "quote": "",
+     "note": "둘 다 넘겨주기 있음"
+    },
+    {
+     "what": "variant",
+     "text": "그랜드캐니온",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/wiki/그랜드_캐니언",
+     "quote": "",
+     "note": "넘겨주기 없음 · 쓰임 확인 못 함"
+    }
+   ]
+  },
+  "2002": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "서쪽으로 가면 인도에 닿는다고 믿고 항해해 다른 대륙에 닿고도, 죽을 때까지 그곳을 인도라고 여긴 탐험가는?",
+    "explanation": "그래서 그 지역 원주민을 '인디언' 이라 부르게 됐습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "콜럼버스",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "콜럼부스"
+     ],
+     "why": "콜럼부스 — 한국어 용례 드묾(DG-051)"
+    }
+   ],
+   "add": [
+    "크리스토퍼 콜럼버스",
+    "콜롬버스",
+    "크리스토퍼 콜롬버스"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/크리스토퍼_콜럼버스"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "크리스토퍼 콜럼버스",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/크리스토퍼_콜럼버스",
+     "quote": "",
+     "note": "ko 표제어"
+    },
+    {
+     "what": "variant",
+     "text": "콜롬버스 · 크리스토퍼 콜롬버스 · 콜럼부스",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/크리스토퍼_콜럼버스",
+     "quote": "",
+     "note": "셋 다 ko 위키 넘겨주기 있음"
+    },
+    {
+     "what": "question",
+     "text": "죽을 때까지 그곳을 인도라고 여긴 (기존)",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/크리스토퍼_콜럼버스",
+     "quote": "또한 사망할 때까지 그는 자신이 탐험했던 땅이 인도나 아시아의 일부라고 믿었다.",
+     "note": ""
+    }
+   ]
+  },
+  "2006": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "망원경으로 목성의 위성을 관측하고 태양 중심설을 지지했다가 종교재판을 받은 이탈리아의 과학자는?",
+    "explanation": "'그래도 지구는 돈다' 는 말은 뒷날 덧붙여진 이야기로 봅니다.",
+    "general_hint": null,
+    "variants": [
+     "갈릴레오 갈릴레이"
+    ],
+    "display_answer": "갈릴레이",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "갈릴레오"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/갈릴레오_갈릴레이"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "갈릴레오",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/갈릴레오_갈릴레이",
+     "quote": "갈릴레오는 결국 그의 지동설을 철회하도록 강요받았고",
+     "note": "문서가 이 이름으로 부름 · ko 위키 '갈릴레오' 는 별도 문서(동음이의 가능)지만 질문 문맥상 같은 대상"
+    }
+   ]
+  },
+  "2014": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "먼 곳의 영상을 받아 보는 장치와 먼 곳의 사람과 말하는 장치의 영어 이름 앞머리에 공통으로 붙는 그리스어 어근은 무엇일까요? '멀리 떨어진' 을 뜻합니다.",
+    "explanation": "멀리 보는 것, 멀리 말하는 것처럼 뒤에 붙는 말과 합쳐져 뜻이 만들어집니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "텔레",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "텔레-",
+      "tele",
+      "tele-",
+      "텔레 어근"
+     ],
+     "why": "텔레- · tele · tele- · 텔레 어근 — 영문 · 기호 표기이거나 정답에 낱말을 덧붙인 꼴(G015 기계 거름) · 정답 \"텔레\" 로 충분"
+    }
+   ],
+   "sources": [
+    "https://en.wiktionary.org/wiki/tele-"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "tele · tele- · 텔레-",
+     "result": "true",
+     "source": "https://en.wiktionary.org/wiki/tele-",
+     "quote": "",
+     "note": "같은 어근의 원어 · 붙임표 표기"
+    },
+    {
+     "what": "variant",
+     "text": "텔레 어근",
+     "result": "false",
+     "source": "",
+     "quote": "",
+     "note": "쓰이는 이름이 아니라 정답에 설명어를 붙인 꼴 — 변형으로 둘 이유 없음"
+    }
+   ]
+  },
+  "2016": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "fact-error"
+   ],
+   "before": {
+    "question_text": "'맞서는' 을 뜻해, 항생제나 반대 운동을 가리키는 영어 낱말 앞머리에 붙는 어근은?",
+    "explanation": "우리말에서도 '안티' 가 그대로 쓰일 만큼 익숙해진 말입니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "안티",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (fact-error)",
+   "question_text": "'맞서는' 을 뜻해, 항생제나 반대 운동을 가리키는 영어 낱말 앞머리에 붙는 접두사는?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/안티",
+    "https://en.wikipedia.org/wiki/Anti-"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "앞머리에 붙는 접두사",
+     "result": "true",
+     "source": "https://en.wiktionary.org/wiki/anti-",
+     "quote": "",
+     "note": "새 사실 없음 — '어근' 을 '접두사' 로 바로잡음(anti- 는 접두사)"
+    }
+   ]
+  },
+  "2028": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "동물을 사람처럼 등장시켜 짧은 이야기 끝에 교훈을 붙이는 형식의 고대 그리스 이야기 모음으로, 노예였다고 전하는 사람의 이름이 붙은 것은?",
+    "explanation": "실존 인물인지도 확실하지 않고, 여러 이야기가 나중에 덧붙여졌습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "이솝 우화",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "이솝우화",
+    "이솝 이야기"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/이솝_우화"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "이솝우화",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/이솝_우화",
+     "quote": "1668년 프랑스에서는 장 드 라 퐁텐이 이솝우화에서 영감을 받아 우화 시집을 냈다.",
+     "note": "넘겨주기 있음(띄어쓰기 차이)"
+    },
+    {
+     "what": "variant",
+     "text": "이솝 이야기",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/이솝_우화",
+     "quote": "이솝 우화(-寓話, ...) 혹은 이솝 이야기(문화어: 이소프 이야기), 아이소피카(Aesopica)는 고대 그리스에 살았던 노예이자 이야기꾼이었던 아이소포스가 지은 우화 모음집을 말한다.",
+     "note": "넘겨주기 있음"
+    }
+   ]
+  },
+  "2029": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "fact-error",
+    "variants"
+   ],
+   "before": {
+    "question_text": "손에 넣지 못한 것을 하찮게 여기며 마음을 달래는 심리를 보여 주는 우화로, 나무에 매달린 열매를 따지 못한 짐승이 등장하는 이야기는?",
+    "explanation": "심리학에서 합리화를 설명할 때 자주 인용됩니다.",
+    "general_hint": null,
+    "variants": [
+     "신 포도"
+    ],
+    "display_answer": "여우와 신 포도",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (fact-error,variants)",
+   "question_text": "손에 넣지 못한 것을 하찮게 여기며 마음을 달래는 심리를 보여 주는 우화로, 덩굴에 매달린 열매를 따지 못한 짐승이 등장하는 이야기는?",
+   "add": [
+    "여우와 포도"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/The_Fox_and_the_Grapes"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "덩굴에 매달린 열매",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/The_Fox_and_the_Grapes",
+     "quote": "Driven by hunger, a fox tried to reach some grapes hanging high on the vine but was unable to",
+     "note": ""
+    },
+    {
+     "what": "variant",
+     "text": "여우와 포도",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/이솝_우화",
+     "quote": "",
+     "note": "ko 위키 넘겨주기 있음(→ 이솝 우화)"
+    }
+   ]
+  },
+  "2051": {
+   "part": "c",
+   "vround": "C77",
+   "before": {
+    "question_text": "우주선이 지구로 돌아올 때 표면이 수천 도까지 오르는 것은, 대기와 부딪히며 무엇이 생기기 때문입니까?",
+    "explanation": "정확히는 공기가 급격히 압축되며 생기는 열이 크다고 설명됩니다.",
+    "general_hint": null,
+    "variants": [
+     "압축열",
+     "열"
+    ],
+    "display_answer": "마찰열",
+    "is_active": false
+   },
+   "why": "C77 ② — 대표 정답 마찰열 → 공력가열(ko 위키 문서 · 대기권 진입 '공력가열이 발생하는데, 이는 충격파로 인한 단열압축효과 혹은 항력 때문' · en 'Direct friction … is not the main cause') · 질문 · 해설을 공력가열에 맞게 · 변형 '열'(넓은 말) 뺌 · 마찰열은 넣지 않음(틀린 답) → 다시 활성",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/공력가열",
+    "https://ko.wikipedia.org/wiki/대기권_진입",
+    "https://en.wikipedia.org/wiki/Atmospheric_entry"
+   ],
+   "question_text": "우주선이 대기권에 다시 들어올 때 표면이 수천 도까지 달아오르는 것은 주로 앞쪽 공기가 급격히 압축되며 생기는 열 때문입니다. 빠르게 나는 물체가 공기 때문에 받는 이 열을 무엇이라 합니까?",
+   "explanation": "흔히 마찰 때문이라고 알려져 있지만, 실제로는 충격파 속에서 공기가 압축되며 데워지는 몫이 더 큽니다.",
+   "display_answer": "공력가열",
+   "remove": [
+    "열"
+   ],
+   "activate": true
+  },
+  "2059": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive"
+   ],
+   "before": {
+    "question_text": "개미 무리에서 알을 낳는 일을 거의 도맡는 한 마리를 무엇이라 부릅니까?",
+    "explanation": "역할이 나뉜 이런 곤충을 사회성 곤충이라 합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "여왕개미",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive)",
+   "question_text": "개미 무리에서 알을 낳는 일을 거의 도맡는 개미를 무엇이라 부릅니까?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/개미"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "'한 마리' 를 빼고 '개미'",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/여왕개미",
+     "quote": "대부분의 종에서는 여왕개미가 한 마리뿐이나, 몇몇 종에서는 여왕개미가 수백에 달하기도 한다.",
+     "note": "새 사실 없음 — 단정을 뺀 것이 문서와 맞음"
+    }
+   ]
+  },
+  "2065": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive",
+    "fact-error"
+   ],
+   "before": {
+    "question_text": "1937년 '백설공주' 로 최초의 장편 컬러 애니메이션을 내놓아 장편의 틀을 만든 스튜디오는?",
+    "explanation": "당시에는 무모한 도전이라는 뜻으로 '어리석은 짓' 이라 불렸다고 전합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "디즈니",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive,fact-error)",
+   "question_text": "1937년 '백설공주' 로 최초의 장편 셀 애니메이션을 내놓아 장편의 틀을 만든 스튜디오는?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/백설공주와_일곱_난쟁이",
+    "https://en.wikipedia.org/wiki/Snow_White_(1937_film)"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "최초의 장편 셀 애니메이션",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Snow_White_and_the_Seven_Dwarfs_(1937_film)",
+     "quote": "It is the first animated feature film produced in the United States and the first cel animated feature film.",
+     "note": "'어리석은 짓' 해설도 문서 'Disney's Folly' 와 맞음"
+    }
+   ]
+  },
+  "2071": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "애니메이션이 끝난 뒤 수백 명이 넘는 제작진 이름이 올라가는 부분을 무엇이라 합니까?",
+    "explanation": "분업의 규모를 그대로 보여 주는 대목입니다.",
+    "general_hint": null,
+    "variants": [
+     "엔딩 크레디트",
+     "크레디트"
+    ],
+    "display_answer": "엔드 크레디트",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "크레딧"
+     ],
+     "why": "크레딧 — 더 넓은 말(사실 확인 partial) · 스태프 롤 — 영화 · 애니메이션 쓰임 근거 없음(unverified) · 엔딩 크레딧 · 엔드 크레딧 · 끝자막은 받음"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "스태프 롤"
+     ],
+     "why": "크레딧 — 더 넓은 말(사실 확인 partial) · 스태프 롤 — 영화 · 애니메이션 쓰임 근거 없음(unverified) · 엔딩 크레딧 · 엔드 크레딧 · 끝자막은 받음"
+    }
+   ],
+   "add": [
+    "엔딩 크레딧",
+    "엔드 크레딧",
+    "끝자막"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/엔딩_크레딧"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "엔딩 크레딧",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/엔딩_크레디트",
+     "quote": "",
+     "note": "ko 위키 넘겨주기 있음(→ 엔딩 크레디트)"
+    },
+    {
+     "what": "variant",
+     "text": "엔드 크레딧",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/엔딩_크레디트",
+     "quote": "",
+     "note": "넘겨주기는 없으나 기존 정답 '엔드 크레디트' 의 흔한 표기 차이"
+    },
+    {
+     "what": "variant",
+     "text": "크레딧",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/크레디트",
+     "quote": "",
+     "note": "ko 위키 넘겨주기 → '크레디트'(동음이의 · 신용 등). 기존 변형 '크레디트' 와 같은 수준이라 넣는다면 짝으로 — 엄밀히는 더 넓은 말"
+    },
+    {
+     "what": "variant",
+     "text": "스태프 롤",
+     "result": "unverified",
+     "source": "",
+     "quote": "",
+     "note": "ko 위키 표제어 · 넘겨주기 없음. 게임 쪽에서 쓰는 말(일본식) — 영화 · 애니메이션 쓰임 근거 못 찾음"
+    },
+    {
+     "what": "variant",
+     "text": "끝자막",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/엔딩_크레디트",
+     "quote": "",
+     "note": "ko 위키 넘겨주기 있음(→ 엔딩 크레디트)"
+    }
+   ]
+  },
+  "2082": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "미켈란젤로가 대리석 한 덩이로 깎아 낸 조각으로, 거인과 맞서기 직전의 긴장을 담은 것은?",
+    "explanation": "다른 작가가 손대다 만 돌을 이어받아 완성했다고 전합니다.",
+    "general_hint": null,
+    "variants": [
+     "다비드"
+    ],
+    "display_answer": "다비드상",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "다윗상"
+     ],
+     "why": "다윗상 — 쓰임을 못 찾음(사실 확인 unverified) · 다윗 — 조각이 아니라 성경 인물(다른 대상 · 사실 확인 partial)"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "다윗"
+     ],
+     "why": "다윗상 — 쓰임을 못 찾음(사실 확인 unverified) · 다윗 — 조각이 아니라 성경 인물(다른 대상 · 사실 확인 partial)"
+    }
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/다비드_(미켈란젤로)"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "다윗상",
+     "result": "unverified",
+     "source": "",
+     "quote": "",
+     "note": "ko 위키 표제어 · 넘겨주기 없음. 쓰임 근거 못 찾음"
+    },
+    {
+     "what": "variant",
+     "text": "다윗",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/다비드_(미켈란젤로)",
+     "quote": "미켈란젤로는 이스라엘의 위대한 왕 다윗의 청년의 모습을 예술적으로 위엄있게 표현해냈다.",
+     "note": "조각이 아니라 성경 인물 이름(ko 위키 '다윗' 은 인물 문서). 기존 변형 '다비드' 와 같은 수준으로 받을지는 정책 판단"
+    }
+   ]
+  },
+  "2116": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "scope"
+   ],
+   "before": {
+    "question_text": "황소개구리나 뉴트리아처럼 다른 지역에서 들어와 천적이 없어 크게 번져 토종을 위협하는 생물을 무엇이라 합니까?",
+    "explanation": "모든 외래종이 문제가 되는 것은 아니며 크게 번지는 일부가 문제입니다.",
+    "general_hint": null,
+    "variants": [
+     "침입외래종",
+     "생태계교란종"
+    ],
+    "display_answer": "외래종",
+    "is_active": true
+   },
+   "why": "V018 fix(scope) — 질문을 '통틀어' 외래종으로 넓혀 더 좁은 침입외래종 · 생태계교란종은 정답 범위가 달라져 뺌(판정자 note)",
+   "question_text": "황소개구리나 뉴트리아처럼 사람의 활동으로 원래 살던 곳을 벗어나 다른 지역에 들어온 생물을 통틀어 무엇이라 합니까?",
+   "explanation": "모든 외래종이 문제가 되는 것은 아니며, 천적이 없어 크게 번지는 일부(침입종)가 문제입니다.",
+   "add": [
+    "유입종",
+    "도입종"
+   ],
+   "remove": [
+    "침입외래종",
+    "생태계교란종"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/외래종"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "사람의 활동으로 원래 살던 곳을 벗어나 다른 지역에 들어온 생물을 통틀어",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/외래종",
+     "quote": "외래종 또는 유입종(introduced species, ...)은 고의적 또는 우연적으로 인간의 활동 등에 의해, 기존환경에 새로이 유입된 생물종으로 그 생물종의 기본적인 분포 범위를 벗어난 생물 종이다.",
+     "note": ""
+    },
+    {
+     "what": "explanation",
+     "text": "모든 외래종이 문제가 되는 것은 아니며, 크게 번지는 일부(침입종)가 문제",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/외래종",
+     "quote": "특히 지역 생태계, 인류에 해를 끼치는 유입종을 침입종(invasive species)이라고 부른다. / ... 필요에 의해 도입이 권장되는 경우 등이 있다.",
+     "note": "'천적이 없어' 인과는 이 문서에 없음 — 빼도 뜻이 통함"
+    },
+    {
+     "what": "variant",
+     "text": "유입종",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/외래종",
+     "quote": "외래종 또는 유입종(introduced species ...)",
+     "note": "문서 첫 문장의 같은 이름"
+    },
+    {
+     "what": "variant",
+     "text": "도입종",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/외래종",
+     "quote": "외래종을 흔히 비토착종, 비고유종, 침략적 외래종 혹은 도입종 등이라 칭하며",
+     "note": "넘겨주기 있음"
+    }
+   ]
+  },
+  "2296": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive"
+   ],
+   "before": {
+    "question_text": "1973년에 처음 시연된 것은 벽돌만 한 크기에 무게도 1킬로그램 가까이 나갔습니다. 걸어 다니며 통화하려고 만든 이 기기는?",
+    "explanation": "한 번 충전에 통화 시간이 30분 남짓이었다고 전합니다.",
+    "general_hint": null,
+    "variants": [
+     "휴대폰",
+     "이동전화"
+    ],
+    "display_answer": "휴대전화",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive)",
+   "question_text": "1973년에 처음 시연된 것은 벽돌만 한 크기에 무게도 1킬로그램이 넘었습니다. 걸어 다니며 통화하려고 만든 이 기기는?",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Motorola_DynaTAC",
+    "https://en.wikipedia.org/wiki/Martin_Cooper_(inventor)"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "1973년 처음 시연된 것은 무게가 1킬로그램이 넘었습니다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/휴대_전화",
+     "quote": "최초의 휴대용 휴대 전화는 1973년 4월 3일 뉴욕에서 모토로라의 마틴 쿠퍼가 약 2 킬로그램 (4.4 파운드)의 단말기를 사용하여 시연했다.",
+     "note": "ko 문서에 시연 단말기 약 2kg 이 있음 — '넘었습니다' 맞음(en DynaTAC 은 계획 3파운드 · 시판 8000X 1kg)"
+    }
+   ]
+  },
+  "2308": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive"
+   ],
+   "before": {
+    "question_text": "김칫독을 땅에 묻어 두던 온도를 기계로 재현한 가전으로, 1990년대에 널리 퍼진 것은?",
+    "explanation": "온도 변화를 줄여 오래 아삭한 상태를 유지합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "김치냉장고",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive)",
+   "question_text": "김칫독을 땅에 묻어 두던 온도를 기계로 재현했다는 가전으로, 1990년대 중반 '딤채'가 큰 인기를 끌며 퍼지기 시작한 것은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/김치냉장고",
+    "https://en.wikipedia.org/wiki/Kimchi_refrigerator"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "1990년대 중반 '딤채'가 큰 인기를 끌며 퍼지기 시작한",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/김치냉장고",
+     "quote": "1994년 만도기계 아산산업본부의해 김치의 옛말인 '딤채'란 이름으로 다시 출시된다. 딤채는 출시 후 시장 판도를 뒤흔든 공전의 히트 상품이 됐다.",
+     "note": "en: 'launched ... DIMCHAE ... in December 1995' — 연도 갈림이라 '중반' 이 안전. '땅에 묻던 온도 재현' 은 두 문서 모두 없음('했다는' 한정 유지)"
+    }
+   ]
+  },
+  "2312": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation",
+    "assertive"
+   ],
+   "before": {
+    "question_text": "산과 들의 채소를 데치거나 볶아 양념한 반찬을 통틀어 무엇이라 합니까? 정월대보름에는 이것을 아홉 가지 먹는다고 했습니다.",
+    "explanation": "묵은 것을 먹는다 하여 묵나물이라고도 했습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "나물",
+    "is_active": true
+   },
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(문서 '여러 집에서 … 먹기도')",
+   "question_text": "산과 들의 채소를 데치거나 볶아 양념한 반찬을 통틀어 무엇이라 합니까? 정월대보름에는 이것을 아홉 가지 먹는 집도 있었다고 합니다.",
+   "explanation": "정월대보름에는 말려 두었던 묵은 나물을 먹는 풍습이 있어, 그런 나물을 묵나물이라고도 불렀습니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/나물",
+    "https://ko.wikipedia.org/wiki/정월_대보름"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "정월대보름에는 이것을 아홉 가지쯤 먹는 집이 많았다고 합니다",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/정월_대보름",
+     "quote": "여러 집에서 아홉 가지 나물을 아홉 번, 또는 열 가지 나물을 먹기도 함.",
+     "note": "문서는 '여러 집에서 … 먹기도' — '많았다' 는 조금 셈. 고칠 말: '정월대보름에는 이것을 아홉 가지 먹는 집도 있었다고 합니다.'"
+    },
+    {
+     "what": "explanation",
+     "text": "정월대보름에는 말려 두었던 묵은 나물을 먹는 풍습",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/정월_대보름",
+     "quote": "대보름에 차려 먹는 절식으로는 부럼·귀밝이술 외에도 약밥·오곡밥·묵은 나물과 복쌈 등이 있다. / 햇볕에 말린 묵은 나물을 물에 잘 씻어서 먹으면",
+     "note": ""
+    },
+    {
+     "what": "explanation",
+     "text": "그런 나물을 묵나물이라고도 불렀습니다",
+     "result": "true",
+     "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=묵나물",
+     "quote": "묵나물 「명사」 뜯어 두었다가 이듬해 봄에 먹는 나물.",
+     "note": "사전 뜻(이듬해 봄에 먹는)과 대보름 묵은 나물이 꼭 같진 않으나 '말려 두었던 나물' 이라는 뜻은 맞음"
+    }
+   ]
+  },
+  "2326": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "fact-error"
+   ],
+   "before": {
+    "question_text": "백두산 꼭대기의 분화구에 물이 고여 생긴 호수로, 압록강과 두만강의 발원지로 꼽히는 것은?",
+    "explanation": "화산 활동으로 생긴 칼데라에 물이 고인 호수입니다.",
+    "general_hint": null,
+    "variants": [
+     "백두산 천지"
+    ],
+    "display_answer": "천지",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (fact-error)",
+   "question_text": "백두산 꼭대기의 분화구에 물이 고여 생긴 호수로, 쑹화강(송화강)의 발원지로 꼽히는 것은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/백두산_천지",
+    "https://ko.wikipedia.org/wiki/백두산"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "쑹화강(송화강)의 발원지",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/천지",
+     "quote": "천지(중국어: 天池 톈치, 영어: Heaven Lake)는 백두산 정상에 있는 화산호로, 쑹화강(松花江)의 발원지이다.",
+     "note": "압록강 · 두만강은 문서에서 발원지로 적지 않음 — 뺀 것이 맞음"
+    }
+   ]
+  },
+  "2442": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "약 상자에 적힌 날짜가 지나면 효과가 떨어지거나 변질될 수 있습니다. 이 날짜를 무엇이라 합니까?",
+    "explanation": "개봉한 뒤에는 기한이 더 짧아지는 약도 있습니다.",
+    "general_hint": null,
+    "variants": [
+     "사용기한",
+     "유통기한"
+    ],
+    "display_answer": "유효기간",
+    "is_active": true
+   },
+   "why": "V018 fix(variants) — 유통기한은 유통 가능한 기한이라 의약품 유효기간과 다른 개념이라 뺌(CV-41 · 판정자 제안)",
+   "add": [
+    "유효기한"
+   ],
+   "remove": [
+    "유통기한"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/유통기한"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "유효기한",
+     "result": "unverified",
+     "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=유효기한",
+     "quote": "유효기한 찾기 결과 (총 0 개)",
+     "note": "표준국어대사전 · ko 위키 모두 표제어 없음. 같은 뜻으로 쓰이긴 하나 근거 문서 못 찾음 — 넣을지는 판단"
+    }
+   ]
+  },
+  "2525": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "readable"
+   ],
+   "before": {
+    "question_text": "신호등의 정지와 소화기, 비상 정지 버튼에 공통으로 쓰이는 색은? 파장이 길어 멀리서도 눈에 잘 띕니다.",
+    "explanation": "안개나 비 속에서도 비교적 잘 보입니다.",
+    "general_hint": null,
+    "variants": [
+     "빨간색",
+     "적색"
+    ],
+    "display_answer": "빨강",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (readable)",
+   "question_text": "빛의 파장이 길어 멀리서도 눈에 잘 띄는 색입니다. 신호등의 정지와 소화기, 비상 정지 버튼에 공통으로 쓰이는 이 색은 무엇일까요?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/빨강",
+    "https://en.wikipedia.org/wiki/ISO_7010"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "빛의 파장이 길어 멀리서도 눈에 잘 띄는 색",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/빨강",
+     "quote": "가시광선을 구성하는 색 중에서 파장이 가장 긴 색이며, 파장의 길이는 약 625~740nm이다. / 위험물의 표지, 정지신호, 출입금지 ... 등에 사용된다.",
+     "note": "새 사실 없음 — 순서만 바꿈. '그래서 멀리서 잘 띈다' 인과는 ko 문서에 없음(기존 문구 그대로)"
+    }
+   ]
+  },
+  "2527": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive"
+   ],
+   "before": {
+    "question_text": "검정과 함께 쓰면 대비가 가장 커서 공사장 표지나 경고 테이프에 쓰이는 색은?",
+    "explanation": "벌이나 말벌의 경고색과 같은 조합입니다.",
+    "general_hint": null,
+    "variants": [
+     "노란색",
+     "황색"
+    ],
+    "display_answer": "노랑",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive)",
+   "question_text": "검정과 함께 쓰면 대비가 커서 공사장 표지나 경고 테이프에 쓰이는 색은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/노랑",
+    "https://en.wikipedia.org/wiki/ISO_7010"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "검정과 함께 쓰면 대비가 커서",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/노랑",
+     "quote": "노랑색과 검정색 무늬는 위험과 주의를 뜻한다.",
+     "note": "새 사실 없음 — 최상급 '가장' 을 뺌"
+    }
+   ]
+  },
+  "2565": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "expose"
+   ],
+   "before": {
+    "question_text": "영화예술과학아카데미 회원들의 투표로 정해지며, 트로피 별명으로 더 자주 불리는 미국의 영화상은?",
+    "explanation": "회원 구성이 상의 성격을 좌우한다는 지적이 오래 있었습니다.",
+    "general_hint": null,
+    "variants": [
+     "오스카"
+    ],
+    "display_answer": "아카데미상",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (expose)",
+   "question_text": "미국 영화 관련 단체의 회원들이 투표로 수상작을 정하며, 트로피 별명으로 더 자주 불리는 영화상은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/아카데미_시상식"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "미국 영화 관련 단체의 회원들이 투표로 수상작을 정하며",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/아카데미상",
+     "quote": "아카데미상(영어: Academy Awards) 혹은 오스카(영어: the Oscars)는 미국의 영화 시상식이다.",
+     "note": "새 사실 없음 — 단체 이름만 뺀 일반화. 투표 방식 문장은 ko 문서에 없음(기존 사실)"
+    }
+   ]
+  },
+  "2573": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants",
+    "not-unique"
+   ],
+   "before": {
+    "question_text": "한 편의 작품이 아니라 한 사람의 경력 전체를 기려 주는 상을 무엇이라 합니까?",
+    "explanation": "경쟁 부문과 달리 후보를 두지 않는 경우가 많습니다.",
+    "general_hint": null,
+    "variants": [
+     "평생공로상",
+     "종신 공로상"
+    ],
+    "display_answer": "공로상",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants,not-unique)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "명예상"
+     ],
+     "why": "평생업적상 — 넘겨주기 · 언론 쓰임을 못 찾음(사실 확인 unverified) · 명예상 — 더 넓은 말(false)"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "평생업적상"
+     ],
+     "why": "평생업적상 — 넘겨주기 · 언론 쓰임을 못 찾음(사실 확인 unverified) · 명예상 — 더 넓은 말(false)"
+    }
+   ],
+   "add": [
+    "평생 공로상",
+    "평생 업적상"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Lifetime_achievement_award",
+    "https://en.wikipedia.org/wiki/Academy_Honorary_Award"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "평생 공로상",
+     "result": "true",
+     "source": "",
+     "quote": "",
+     "note": "기존 변형 '평생공로상' 의 띄어쓰기 차이"
+    },
+    {
+     "what": "variant",
+     "text": "평생업적상 · 평생 업적상",
+     "result": "unverified",
+     "source": "",
+     "quote": "",
+     "note": "ko 위키 표제어 · 넘겨주기 없음. 언론 쓰임 확인 못 함"
+    },
+    {
+     "what": "variant",
+     "text": "명예상",
+     "result": "false",
+     "source": "",
+     "quote": "",
+     "note": "공로 · 경력과 무관한 명예 수여 일반을 뜻하는 더 넓은 말(아카데미 '명예상' 은 고유한 상 이름) — 다른 대상이 될 수 있음"
+    }
+   ]
+  },
+  "2605": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "오스트레일리아와 태평양의 섬나라들을 묶어 부르는 지역 구분은?",
+    "explanation": "육지 면적은 가장 작은 대륙 구분입니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "오세아니아",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "대양주"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/오세아니아"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "대양주",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/오세아니아",
+     "quote": "대양주(大洋洲)라고도 한다.",
+     "note": "넘겨주기 있음"
+    }
+   ]
+  },
+  "2640": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "explanation"
+   ],
+   "before": {
+    "question_text": "'비어 있음' 을 뜻하는 말에서 나와 휴가를 가리키게 된 프랑스어 낱말은?",
+    "explanation": "영어의 '베이컨스' 와 같은 어원입니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "바캉스",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (explanation)",
+   "explanation": "영어의 '베이컨시(vacancy)' 와 뿌리가 같은 말입니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/바캉스",
+    "https://en.wiktionary.org/wiki/vacance"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "영어의 '베이컨시(vacancy)' 와 뿌리가 같은 말",
+     "result": "true",
+     "source": "https://en.wiktionary.org/wiki/vacance",
+     "quote": "From Middle French vacance, from Medieval Latin vacantia. Doublet of vacancy.",
+     "note": "프랑스어 vacance 는 'vaquer(비다) + -ance' — 질문의 '비어 있음' 어원도 이로써 뒷받침"
+    }
+   ]
+  },
+  "2655": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "fact-error"
+   ],
+   "before": {
+    "question_text": "영종도와 용유도 사이의 바다를 메워 지어 2001년 문을 연 우리나라 최대의 공항은?",
+    "explanation": "갯벌을 메운 땅 위에 지어졌습니다.",
+    "general_hint": null,
+    "variants": [
+     "인천공항"
+    ],
+    "display_answer": "인천국제공항",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (fact-error)",
+   "question_text": "영종도와 용유도 사이를 메워 지어 2001년 문을 연 우리나라 최대의 공항은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/인천국제공항"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "영종도와 용유도 사이를 메워 지어 2001년 문을 연",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/인천국제공항",
+     "quote": "인천국제공항은 2001년 3월 29일 개항 ... 영종도와 용유도 사이의 간석지를 간척하여 만든 해상 공항",
+     "note": "'바다' 를 뺀 것이 문서('간석지')와 더 맞음"
+    }
+   ]
+  },
+  "2683": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "fact-error",
+    "explanation"
+   ],
+   "before": {
+    "question_text": "곰이나 개구리처럼 먹이가 부족한 겨울 동안 체온과 심장 박동을 크게 낮추고 잠든 듯 지내는 것을 무엇이라 합니까?",
+    "explanation": "곰은 체온이 조금만 내려가 깊은 동면과 구별하기도 합니다.",
+    "general_hint": null,
+    "variants": [
+     "겨울잠"
+    ],
+    "display_answer": "동면",
+    "is_active": true
+   },
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(곰 체온이 별로 변하지 않는다는 문장은 문서에 없음 — 동면 재정의 문장대로)",
+   "question_text": "개구리나 뱀처럼 먹이가 부족한 겨울 동안 체온과 심장 박동을 크게 낮추고 잠든 듯 지내는 것을 무엇이라 합니까?",
+   "explanation": "곰도 동면을 하는 것으로 보는데, 요즘은 체온이 얼마나 내려가느냐보다 대사를 얼마나 낮추느냐로 동면을 가르기 때문입니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/동면"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "개구리나 뱀처럼 먹이가 부족한 겨울 동안 체온과 심장 박동을 크게 낮추고",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/겨울잠",
+     "quote": "체온이 낮아지고 호흡과 심박이 느려지며 대사율이 크게 떨어진다. / 개구리·거북·뱀 등의 척추동물 ... 이 개구리형에 해당된다.",
+     "note": ""
+    },
+    {
+     "what": "explanation",
+     "text": "곰은 체온이 별로 변하지 않은 채 대사만 낮추는 동면을 합니다",
+     "result": "partial",
+     "source": "https://ko.wikipedia.org/wiki/겨울잠",
+     "quote": "전통적으로 설치류 같은 '깊은' 동면생물들에게만 적용되던 용어였으나, 최근에는 곰과 같은 동물도 포함하도록 재정의되었으며, 체온 하강 여부가 아니라 대사 억제 자체를 기준으로 쓰인다.",
+     "note": "문서는 곰의 체온이 '별로 변하지 않는다' 고 말하지 않음. 고칠 말: '곰도 동면을 하는 것으로 보는데, 요즘은 체온이 얼마나 내려가느냐보다 대사를 얼마나 낮추느냐로 동면을 가르기 때문입니다.'"
+    }
+   ]
+  },
+  "2688": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "개가 전봇대에 오줌을 누거나 새가 노래하는 것처럼, 자기 구역의 경계를 냄새나 소리로 알리는 행동을 무엇이라 합니까?",
+    "explanation": "싸우지 않고 충돌을 줄이는 역할을 합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "영역 표시",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "세력권 표시"
+     ],
+     "why": "세력권 표시 · 마킹 — 쓰임 근거 못 찾음(unverified) · 영역 행동 — 더 넓은 말(partial) · 텃세 — 표준국어대사전에 동물 뜻 없음(false)"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "영역 행동"
+     ],
+     "why": "세력권 표시 · 마킹 — 쓰임 근거 못 찾음(unverified) · 영역 행동 — 더 넓은 말(partial) · 텃세 — 표준국어대사전에 동물 뜻 없음(false)"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "텃세"
+     ],
+     "why": "세력권 표시 · 마킹 — 쓰임 근거 못 찾음(unverified) · 영역 행동 — 더 넓은 말(partial) · 텃세 — 표준국어대사전에 동물 뜻 없음(false)"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "마킹"
+     ],
+     "why": "세력권 표시 · 마킹 — 쓰임 근거 못 찾음(unverified) · 영역 행동 — 더 넓은 말(partial) · 텃세 — 표준국어대사전에 동물 뜻 없음(false)"
+    }
+   ],
+   "add": [
+    "영역표시"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/세력권",
+    "https://en.wikipedia.org/wiki/Territory_(animal)"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "영역표시",
+     "result": "true",
+     "source": "",
+     "quote": "",
+     "note": "정답의 띄어쓰기 차이"
+    },
+    {
+     "what": "variant",
+     "text": "세력권 표시",
+     "result": "unverified",
+     "source": "",
+     "quote": "",
+     "note": "ko 위키 표제어 · 넘겨주기 없음. '세력권' 은 생물학 용어이나 이 꼴 쓰임 확인 못 함"
+    },
+    {
+     "what": "variant",
+     "text": "영역 행동",
+     "result": "partial",
+     "source": "",
+     "quote": "",
+     "note": "ko 위키 문서 없음. 영역 행동은 표시뿐 아니라 쫓아내기 · 싸움까지 아우르는 더 넓은 말"
+    },
+    {
+     "what": "variant",
+     "text": "텃세",
+     "result": "false",
+     "source": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=텃세",
+     "quote": "텃세2(텃勢) 먼저 자리 잡은 사람이 나중에 들어온 사람에 대하여 가지는 특권 의식. 또는 뒤에 들어온 사람을 업신여기어 텃세를 부리는 일.",
+     "note": "표준국어대사전에 동물 영역 뜻 없음 — 다른 대상"
+    },
+    {
+     "what": "variant",
+     "text": "마킹",
+     "result": "unverified",
+     "source": "https://ko.wikipedia.org/wiki/마킹",
+     "quote": "",
+     "note": "ko 위키 '마킹' 문서는 짧고 영역 표시 뜻이 없음 — 반려견 쪽에서 흔히 쓰는 말이나 근거 문서 못 찾음"
+    }
+   ]
+  },
+  "2907": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive"
+   ],
+   "before": {
+    "question_text": "게임 대회에 나가 상금과 연봉을 받으며 게임을 직업으로 하는 사람을 무엇이라 합니까?",
+    "explanation": "1990년대 말 한국에서 처음 직업으로 자리 잡았습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "프로게이머",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive)",
+   "explanation": "1999년 무렵 한국에서 늘기 시작해 2000년 무렵 직업으로 자리 잡았습니다.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/프로게이머"
+   ],
+   "factcheck": [
+    {
+     "what": "explanation",
+     "text": "1999년 무렵 한국에서 늘기 시작해 2000년 무렵 직업으로 자리 잡았습니다",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/프로게이머",
+     "quote": "대한민국에서 1999년 가을, 전략시뮬레이션 게임인 스타크래프트가 큰 인기를 얻기 시작하면서 스타크래프트 프로게이머들이 조금씩 늘어나기 시작하였고 다음해인 2000년 프로게이머는 새로운 역사로 자리 잡게 되었다.",
+     "note": ""
+    }
+   ]
+  },
+  "2922": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "누에고치에서 뽑은 실로 짠 옷감으로, 우리말로는 비단이라 하는 것은?",
+    "explanation": "중국에서 시작되어 서역으로 전해진 길을 비단길이라 부릅니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "실크",
+    "is_active": true
+   },
+   "why": "V018 fix(variants) — 변형 '비단' 을 받되, 질문의 '우리말로는 비단' 이 그 변형을 낱말로 담아 게이트가 막아 질문에서 뺌(정답 실크 · 비단 둘 다 받음)",
+   "add": [
+    "비단"
+   ],
+   "question_text": "누에고치에서 뽑은 실로 짠, 부드럽고 윤기가 나는 옷감은?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/비단"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "비단",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/견섬유",
+     "quote": "견섬유(絹纖維, silk)는 누에 고치에서 얻은 천연 단백질 섬유다.",
+     "note": "ko 위키 '비단' 은 견섬유로 넘겨짐 — 같은 대상. 단 질문이 '우리말로는 비단이라 하는' 이라 정답을 질문이 건넴(문항 문구는 판단)"
+    }
+   ]
+  },
+  "2976": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "아이돌을 뽑아 훈련시키고 음반 제작부터 활동 관리까지 맡는 회사를 흔히 무엇이라 합니까?",
+    "explanation": "발굴·훈련·제작을 한 회사가 모두 맡는 것이 K팝 방식의 특징으로 꼽힙니다.",
+    "general_hint": null,
+    "variants": [
+     "소속사",
+     "연예기획사"
+    ],
+    "display_answer": "기획사",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "notTaken": [
+    {
+     "field": "variants",
+     "proposal": [
+      "엔터테인먼트"
+     ],
+     "why": "엔터테인먼트 — 업종 전반을 이르는 더 넓은 말(15 B7) · 엔터 — 줄임말(용례는 있으나 회사 이름 꼬리 · 업계 통칭)"
+    },
+    {
+     "field": "variants",
+     "proposal": [
+      "엔터"
+     ],
+     "why": "엔터테인먼트 — 업종 전반을 이르는 더 넓은 말(15 B7) · 엔터 — 줄임말(용례는 있으나 회사 이름 꼬리 · 업계 통칭)"
+    }
+   ],
+   "add": [
+    "연예 기획사"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/연예_기획사"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "연예 기획사",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/연예_기획사",
+     "quote": "",
+     "note": "ko 표제어 · 기존 '연예기획사' 의 띄어쓰기 차이"
+    },
+    {
+     "what": "variant",
+     "text": "엔터테인먼트 · 엔터",
+     "result": "false",
+     "source": "https://ko.wikipedia.org/wiki/오락",
+     "quote": "",
+     "note": "ko 위키 '엔터테인먼트' 는 '오락' 으로 넘겨짐 — 오락 · 연예 산업 일반을 뜻하는 더 넓은 말(회사 이름 꼬리말로 쓰일 뿐)"
+    }
+   ]
+  },
+  "3080": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "감염된 동물에게 물리면 사람에게도 옮고, 증상이 나타나면 거의 목숨을 잃는 병은 무엇일까요? 반려견도 이 병의 예방 접종을 받습니다.",
+    "explanation": "물린 뒤 곧바로 치료를 받으면 발병을 막을 수 있습니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "광견병",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "공수병"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/광견병",
+    "https://ko.wikipedia.org/wiki/공수병"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "공수병",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/광견병",
+     "quote": "물 등을 두려워하게 되는 특징 때문에 공수병(恐水病, 영어: Hydrophobia)으로도 불리며",
+     "note": "넘겨주기 있음"
+    }
+   ]
+  },
+  "3279": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "variants"
+   ],
+   "before": {
+    "question_text": "1993년 컴퓨터 그래픽으로 만든 공룡을 실사처럼 선보여 영화 특수효과의 전환점이 된 스티븐 스필버그의 영화는?",
+    "explanation": "마이클 크라이튼의 소설이 원작입니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "쥬라기 공원",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (variants)",
+   "add": [
+    "쥐라기 공원",
+    "쥐라기공원",
+    "쥬라기공원"
+   ],
+   "sources": [
+    "https://ko.wikipedia.org/wiki/쥬라기_공원_(영화)"
+   ],
+   "factcheck": [
+    {
+     "what": "variant",
+     "text": "쥐라기 공원 · 쥐라기공원 · 쥬라기공원",
+     "result": "true",
+     "source": "https://ko.wikipedia.org/wiki/쥬라기_공원_(영화)",
+     "quote": "영화 중의 해먼드가 쥐라기 공원을 창립한 목표는",
+     "note": "셋 다 ko 위키 넘겨주기 있음"
+    }
+   ]
+  },
+  "3538": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "fact-error"
+   ],
+   "before": {
+    "question_text": "위에 '크레마'라 부르는 황금빛 거품이 덮이고, 이름이 영어 'express'와 어원이 같은 이탈리아 커피는?",
+    "explanation": "이탈리아에서는 '카페'라고만 주문해도 보통 이 커피가 나옵니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "에스프레소",
+    "is_active": true
+   },
+   "why": "사실 확인 partial — 문서 문장대로 고쳐 받음(문서 'a lighter-colored foam called crema' — 황금빛 · 갈색빛 낱말 없음)",
+   "question_text": "위에 '크레마'라 부르는 옅은 빛깔의 거품이 덮이고, 이름이 영어 'express'와 어원이 같은 이탈리아 커피는?",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/에스프레소"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "'크레마'라 부르는 갈색빛 거품",
+     "result": "unverified",
+     "source": "https://en.wikipedia.org/wiki/Espresso",
+     "quote": "a dark body topped with a lighter-colored foam called \"crema\".",
+     "note": "ko · en 문서 모두 '황금빛' · '갈색빛' 낱말 없음 — 문서는 '(본체보다) 옅은 빛깔의 거품'. 고칠 말: '위에 크레마라 부르는 옅은 빛깔의 거품이 덮이고'"
+    },
+    {
+     "what": "question",
+     "text": "이름이 영어 'express'와 어원이 같은 (기존 · 확인 권장)",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Espresso",
+     "quote": "The words express, expres and espresso each have several meanings in English, French and Italian. The first meaning is to do with the idea of \"expressing\" (\"pressing out of\") ...",
+     "note": ""
+    }
+   ]
+  },
+  "4400": {
+   "part": "a",
+   "vround": "V018",
+   "categories": [
+    "assertive"
+   ],
+   "before": {
+    "question_text": "1886년 미국 뉴욕주의 한 부유층 마을에서 클럽 무도회에 회원들이 꼬리 없는 야회복을 입고 나왔고, 그 마을 이름이 이 옷의 이름이 되었습니다. 영국에서는 흔히 '디너 재킷'이라 부르는 이 남성 예복은?",
+    "explanation": "옷차림 규정으로는 '블랙타이'에 해당하며, 이 이름이 남성복을 가리키는 말로 쓰인 것은 1888년 무렵 미국에서라고 합니다.",
+    "general_hint": null,
+    "variants": [],
+    "display_answer": "턱시도",
+    "is_active": true
+   },
+   "why": "V018 fix 제안 반영 (assertive)",
+   "question_text": "1886년 미국 뉴욕주의 한 부유층 마을 클럽 무도회에 젊은 남성들이 꼬리 없는 야회복을 입고 나왔다고 전하며, 그 마을 이름이 이 옷의 이름이 되었다고 합니다. 영국에서는 흔히 '디너 재킷'이라 부르는 이 남성 예복은?",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Tuxedo"
+   ],
+   "factcheck": [
+    {
+     "what": "question",
+     "text": "1886년 뉴욕주 부유층 마을 클럽 무도회에 젊은 남성들이 꼬리 없는 야회복을 입고 나왔다고 전하며",
+     "result": "true",
+     "source": "https://en.wikipedia.org/wiki/Black_tie",
+     "quote": "A son of one of the community's founders, Griswold Lorillard, and his friends were widely reported in society columns for showing up at the club's first Autumn Ball in October 1886 ... / its synonym \"tuxedo\" was derived from the village of Tuxedo Park in New York State, where it was introduced in 1886",
+     "note": "'전하며' · '했다고 합니다' 한정이 문서 세기와 맞음"
+    }
+   ]
+  },
+  "5327": {
+   "part": "c",
+   "vround": "A79",
+   "before": {
+    "question_text": "1896년 논문 '공기 중 탄산이 지표 온도에 미치는 영향에 관하여'에서 물리화학의 기본 원리로 이산화탄소가 늘면 지표가 얼마나 데워질지 처음 어림한 스웨덴 과학자가 있습니다. 1908년 책에서 그는 오히려 '더 고르고 좋은 기후'와 '훨씬 풍성한 수확'을 기대했는데, 그레타 툰베리의 아버지 스반테는 먼 친척인 그의 이름을 물려받았습니다. 이 과학자는 누구일까요?",
+    "explanation": "그는 1903년 노벨 화학상을 받아 스웨덴의 첫 노벨상 수상자가 되었습니다.",
+    "general_hint": "1905년 스톡홀름에 노벨 연구소가 세워지자 소장을 맡았다.",
+    "variants": [
+     "스반테 아레니우스"
+    ],
+    "display_answer": "아레니우스",
+    "is_active": true
+   },
+   "why": "A79 (다) — 질문 204자 → 200자 아래(논문 제목만 뺌 · 뜻 · 한정어 그대로)",
+   "sources": [],
+   "question_text": "1896년 논문에서 물리화학의 원리로 이산화탄소가 늘면 지표가 얼마나 데워질지 처음 어림한 스웨덴 과학자가 있습니다. 1908년 책에서 그는 오히려 '더 고르고 좋은 기후'와 '훨씬 풍성한 수확'을 기대했는데, 그레타 툰베리의 아버지 스반테는 먼 친척인 그의 이름을 물려받았습니다. 이 과학자는?"
+  },
+  "5700": {
+   "part": "c",
+   "vround": "A79",
+   "before": {
+    "question_text": "1908년 작사가 잭 노워스는 지하철에서 '오늘 야구 — 폴로 그라운즈'라는 광고판을 보고 이 노래의 가사를 썼습니다. 작곡가 앨버트 폰 틸저와 둘 다 야구 경기를 본 적도 없이 만든, 열성 팬 케이티 케이시가 주인공인 이 왈츠 노래는 무엇일까요?",
+    "explanation": "두 사람은 각각 32년, 20년이 지나서야 메이저리그 경기를 처음 보았다고 전합니다.",
+    "general_hint": "작사가의 당시 아내 노라 베이즈가 이 노래를 처음 불렀다.",
+    "variants": [
+     "테이크 미 아웃 투 더 볼 게임",
+     "나를 야구장에 데려가 줘"
+    ],
+    "display_answer": "Take Me Out to the Ball Game",
+    "is_active": true
+   },
+   "why": "A79 (다) — 긴 정답(Take Me Out to the Ball Game)과 함께 360 폭에서 넘쳐 질문 138자를 줄임(광고판 문구 · 작곡가 이름만 뺌 · 뜻 · 한정어 그대로)",
+   "sources": [],
+   "question_text": "1908년 작사가 잭 노워스는 지하철의 야구 광고판을 보고 이 노래의 가사를 썼습니다. 작곡가와 둘 다 야구 경기를 본 적도 없이 만든, 열성 팬 케이티 케이시가 주인공인 이 왈츠 노래는 무엇일까요?"
+  },
+  "6000": {
+   "part": "c",
+   "vround": "A79",
+   "before": {
+    "question_text": "카리브해의 한 카니발에서는 1880년대 아프리카식 타악이 금지되자 대나무 막대를 맞부딪치는 '탐부 밤부' 악단이 생겨났습니다. 1951년 영국 축제(Festival of Britain)에 나가려고 꾸린 악단 TASPO 에는 '핑퐁'이라는 초기 선율 악기를 만든 윈스턴 '스프리' 사이먼과, 훗날 '현대 이 악기의 아버지'로 불린 엘리 마네트가 함께 있었습니다. 이 타악기는 무엇일까요?",
+    "explanation": "1992년 트리니다드 토바고 총리 패트릭 매닝이 이 악기를 나라의 국가 악기로 선포했습니다.",
+    "general_hint": "트리니다드에서는 1963년부터 카니발 때 이 악기 악단들이 겨루는 '파노라마' 대회가 열린다.",
+    "variants": [
+     "스틸 드럼"
+    ],
+    "display_answer": "스틸팬",
+    "is_active": true
+   },
+   "why": "A79 (다) — 질문 215자 → 200자 아래(영문 축제 이름 · 별명 · 군말만 뺌 · 뜻 · 한정어 그대로)",
+   "sources": [],
+   "question_text": "카리브해의 한 카니발에서는 1880년대 아프리카식 타악이 금지되자 대나무 막대를 맞부딪치는 '탐부 밤부' 악단이 생겼습니다. 1951년 영국 축제에 나간 악단 TASPO 에는 초기 선율 악기 '핑퐁'을 만든 윈스턴 사이먼과, 훗날 '현대 이 악기의 아버지'로 불린 엘리 마네트가 있었습니다. 이 타악기는?"
+  }
+ }
+}
