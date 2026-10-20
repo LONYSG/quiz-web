@@ -12,6 +12,8 @@
 // ★★ 보상은 돈이다 — final 에 들어갈 때 **한 번만**(run.rewarded) 메모리 점수에 더하고, DB 는 (run_id, account_id) UNIQUE.
 //   연습 판은 판 점수 · 포인트 · 경험 · 보상에 넣지 않는다(기록만 practice=true).
 // ★ tick 안에서 await 하지 않는다 — DB 는 전부 fire-and-forget(실패는 로그).
+// ★★★ R057 미니게임만(D-249): 문제 없이 미니게임 N개를 잇는다 — 깜짝 연출(intro)은 첫 미니게임만 · 끝나면 바로 다음(minigame.ended 없이) ·
+//   미니게임마다 순위 점수(참가자 수 − 최종 순위 + 1)를 게임 점수에 더한다(보너스는 포인트로만 — minigame_rewards) · N개가 끝나면 결과.
 // =============================================================================
 
 import { randomInt } from 'node:crypto';
@@ -67,6 +69,8 @@ export interface MinigameRun {
   practice: boolean;
   seed: number;
   afterQuestionIndex: number | null;
+  /** ★ R057 — 미니게임만 판의 몇 번째(1부터) / 몇 개 — 퀴즈 판 · 연습은 null */
+  series: { index: number; total: number } | null;
   /** DB id — 넣는 중이면 Promise */
   dbId: Promise<string | null>;
   participants: MinigameParticipant[];
@@ -120,6 +124,7 @@ export interface MinigameView {
   totals: { accountId: string; total: number }[];
   final: MinigameRun['final'];
   afterQuestionIndex: number | null;
+  series: MinigameRun['series'];
 }
 
 export function minigameView(room: Room, viewerAccountId: string): MinigameView | null {
@@ -159,6 +164,7 @@ export function minigameView(room: Room, viewerAccountId: string): MinigameView 
     totals: [...run.totals.entries()].map(([accountId, total]) => ({ accountId, total })),
     final: run.final,
     afterQuestionIndex: run.afterQuestionIndex,
+    series: run.series,
   };
 }
 
@@ -201,7 +207,11 @@ export function pickMinigameKey(room: Room): MinigameKey | null {
   return key;
 }
 
-export function startMinigame(room: Room, key: MinigameKey, opts: { practice: boolean; afterQuestionIndex: number | null }): boolean {
+export function startMinigame(
+  room: Room,
+  key: MinigameKey,
+  opts: { practice: boolean; afterQuestionIndex: number | null; series?: { index: number; total: number } | null },
+): boolean {
   const def = MINIGAME_DEFS[key];
   if (!def || room.players.size === 0) return false;
   // ★ R053 — 최소 인원(소수파 3명) — 퀴즈 판 자리에서는 뽑지 않는다(골라 하기 연습은 된다)
@@ -238,17 +248,20 @@ export function startMinigame(room: Room, key: MinigameKey, opts: { practice: bo
       console.error(`[minigame] ★ 판 기록 실패 — 결과 기록 없이 진행:`, (err as Error).message);
       return null;
     });
+  // ★ R057 — 미니게임만의 둘째부터는 깜짝 연출 없이 규칙 안내부터(매번 연출하면 지루하다)
+  const skipIntro = (opts.series?.index ?? 1) > 1;
   const run: MinigameRun = {
     token: String(seed),
     key,
     practice: opts.practice,
     seed,
     afterQuestionIndex: opts.afterQuestionIndex,
+    series: opts.series ?? null,
     dbId,
     participants,
-    phase: 'intro',
+    phase: skipIntro ? 'rules' : 'intro',
     phaseStartedAt: now,
-    phaseEndsAt: now + T(MINIGAME_TIMING.INTRO_MS),
+    phaseEndsAt: now + T(skipIntro ? MINIGAME_TIMING.RULES_MS : MINIGAME_TIMING.INTRO_MS),
     roundIndex: -1,
     rounds,
     submissions: rounds.map(() => new Map()),
@@ -263,7 +276,7 @@ export function startMinigame(room: Room, key: MinigameKey, opts: { practice: bo
   if (opts.practice) room.settingsLocked = true;
   console.log(
     `[minigame] ${room.id} ★ ${opts.practice ? '연습 ' : ''}${def.info.name} 시작 (참가 ${participants.length}명 · 판 ${rounds.length} · 시드 ${seed}` +
-      `${opts.afterQuestionIndex !== null ? ` · ${opts.afterQuestionIndex}번째 문제 뒤` : ''})`,
+      `${opts.afterQuestionIndex !== null ? ` · ${opts.afterQuestionIndex}번째 문제 뒤` : ''}${opts.series ? ` · 미니게임만 ${opts.series.index}/${opts.series.total}` : ''})`,
   );
   broadcast(room);
   return true;
@@ -276,27 +289,41 @@ export function startMinigame(room: Room, key: MinigameKey, opts: { practice: bo
 function maybeStartQuizMinigame(room: Room): boolean {
   const game = room.game;
   const current = room.currentQuestion;
-  if (!game || !current || !room.settings.minigames) return false;
+  if (!game || !current || !room.settings.minigames || game.mgSeries) return false;
   const idx = current.index;
   if (idx >= game.totalQuestions) return false; // ★ 마지막 문제 뒤에는 없다
   if (!minigameSlots(game.totalQuestions).includes(idx)) return false;
   if (game.minigameDoneAt.includes(idx)) return false;
   game.minigameDoneAt.push(idx);
-  // ★ R052 — 고른 것이 문항 모자람으로 안 되면 다른 것을(퀴즈류가 다 안 되면 피지컬만 남는다)
+  return startPicked(room, { practice: false, afterQuestionIndex: idx });
+}
+
+/** 켜진 것 중 하나를 골라 시작 — ★ R052 고른 것이 문항 모자람 · 인원으로 안 되면 다른 것을(퀴즈류가 다 안 되면 피지컬만 남는다) */
+function startPicked(room: Room, opts: Parameters<typeof startMinigame>[2]): boolean {
   const tried = new Set<MinigameKey>();
   for (let i = 0; i < room.settings.minigameKeys.length + 1; i += 1) {
     const key = pickMinigameKey(room);
     if (!key || tried.has(key)) {
       const rest = room.settings.minigameKeys.filter((k) => !tried.has(k) && MINIGAME_DEFS[k]);
       if (rest.length === 0) return false;
-      if (startMinigame(room, rest[0]!, { practice: false, afterQuestionIndex: idx })) return true;
+      if (startMinigame(room, rest[0]!, opts)) return true;
       tried.add(rest[0]!);
       continue;
     }
     tried.add(key);
-    if (startMinigame(room, key, { practice: false, afterQuestionIndex: idx })) return true;
+    if (startMinigame(room, key, opts)) return true;
   }
   return false;
+}
+
+/**
+ * ★★★ R057 — 미니게임만 판의 다음 미니게임(첫 것은 start.ts 가 부른다).
+ *   @returns 시작했으면 true (못 하면 부르는 쪽이 게임을 끝낸다)
+ */
+export function startSeriesMinigame(room: Room): boolean {
+  const s = room.game?.mgSeries;
+  if (!s || s.done >= s.total) return false;
+  return startPicked(room, { practice: false, afterQuestionIndex: null, series: { index: s.done + 1, total: s.total } });
 }
 
 setBeforeNextQuestion(maybeStartQuizMinigame);
@@ -476,14 +503,21 @@ function enterFinal(room: Room, run: MinigameRun, now: number): void {
   const n = run.participants.length;
   run.final = final.map((f) => ({ accountId: f.accountId, rank: f.rank, total: f.total, reward: run.practice ? 0 : minigameReward(f.rank, n) }));
   // ★★ 보상 — 한 번만. 연습은 없음
+  //   ★ R057 미니게임만: 게임 점수에는 **순위 점수**(참가자 수 − 최종 순위 + 1)를 더하고 보너스는 포인트로만(minigame_rewards)
+  const series = run.series ? (room.game?.mgSeries ?? null) : null;
   if (!run.practice && !run.rewarded) {
     run.rewarded = true;
     let any = false;
     for (const f of run.final) {
-      if (f.reward <= 0) continue;
+      const add = series ? n - f.rank + 1 : f.reward;
+      if (series) {
+        series.totals.set(f.accountId, (series.totals.get(f.accountId) ?? 0) + add);
+        series.lastRank.set(f.accountId, f.rank);
+      }
+      if (add <= 0) continue;
       const p = room.players.get(f.accountId);
       if (p) {
-        p.score += f.reward;
+        p.score += add;
         any = true;
       }
     }
@@ -512,6 +546,23 @@ function exitMinigame(room: Room, run: MinigameRun, reason: 'completed' | 'force
   room.minigame = null;
   console.log(`[minigame] ${room.id} 끝 (${reason})`);
   if (reason === 'abandoned') return;
+  // ★★★ R057 — 미니게임만: 다음 미니게임 또는 결과(사이에 minigame.ended 를 보내지 않는다 — 화면이 빈 칸으로 깜빡이지 않게)
+  const series = run.series ? (room.game?.mgSeries ?? null) : null;
+  if (series && reason === 'completed') {
+    series.done += 1;
+    if (series.done >= series.total) {
+      finishGame(room, 'completed', null);
+      return;
+    }
+    // ★ 모두 끊겼으면 더 하지 않는다(퀴즈 판은 다음 문제에서 일시정지 — 미니게임만은 걸 문제가 없다)
+    if (![...room.players.values()].some((p) => p.connected)) {
+      finishGame(room, 'abandoned', '모두 접속이 끊겨 미니게임만 판을 끝냈습니다.');
+      return;
+    }
+    if (startSeriesMinigame(room)) return;
+    finishGame(room, 'no_questions', '다음 미니게임을 지금 인원으로 할 수 없어 끝냈습니다.');
+    return;
+  }
   if (run.practice) {
     room.state = 'LOBBY';
     room.settingsLocked = false;
@@ -520,6 +571,7 @@ function exitMinigame(room: Room, run: MinigameRun, reason: 'completed' | 'force
   }
   emitRoom(room, 'minigame.ended', { state: room.state, practice: false });
   if (reason === 'force_ended') return; // 호출자가 finishGame 을 부른다
+  if (series) return; // 미니게임만 강제 종료 — 호출자가 끝낸다
   // ★ 다음 문제 — 미니게임 앞의 문제는 마지막이 아니었다(마지막 뒤에는 없다)
   if (beginQuestion(room)) return;
   finishGame(room, 'no_questions', '출제할 수 있는 문제가 모두 소진되어 조기 종료되었습니다. 참가자 전원이 이미 경험한 문제만 남았습니다.');

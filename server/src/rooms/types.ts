@@ -64,6 +64,9 @@ export interface RoomSettings {
   minigames: boolean;
   /** ★ R050 — 넣을 미니게임 (기본 전부) */
   minigameKeys: import('@quiz/shared').MinigameKey[];
+  /** ★★★ R057 — 미니게임만 (기본 꺼짐 — D-249) · 그때의 미니게임 수(2~10) */
+  minigameOnly: boolean;
+  minigameRounds: number;
 }
 
 /**
@@ -135,6 +138,11 @@ export interface ActiveGame {
    *   미니게임 포함이 꺼졌거나 퀴즈류를 고르지 않았으면 null — 그때는 피지컬만 나온다.
    */
   minigameQuiz: { data: import('../db/minigameItems.js').QuizData; experienced: Map<string, Set<string>> } | null;
+  /**
+   * ★★★ R057 — 미니게임만 판(D-249). 퀴즈 판이면 null.
+   *   total = 할 미니게임 수 · done = 끝난 수 · totals = 계정 → 순위 점수 합(미니게임마다 참가자 수 − 최종 순위 + 1) · lastRank = 마지막 미니게임의 최종 순위(동점 가르기)
+   */
+  mgSeries: { total: number; done: number; totals: Map<string, number>; lastRank: Map<string, number> } | null;
   /** 정답 공개 뒤 5초 대기 구간의 정보. QUESTION_RESOLVED 에서만 값이 있다 */
   resolution: Resolution | null;
   /**
@@ -466,6 +474,9 @@ export interface GameResultData {
   abortedNote: string | null;
   endedQuestionCount: number;
   totalQuestions: number;
+  /** ★★★ R057 — 'minigame' = 미니게임만 판(점수 = 순위 점수 합 · 동점은 마지막 미니게임 순위) · 그때 한 수 / 정한 수 */
+  mode: 'quiz' | 'minigame';
+  minigameSeries: { done: number; total: number } | null;
 }
 
 /** 참가자 한 명의 경험률 (guide 6절 표기: "1,234문제 중 153문제 (12.4%)") */

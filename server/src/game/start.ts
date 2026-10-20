@@ -28,7 +28,7 @@
 //   · ★ 출제 풀과 경험 기록을 게임 시작 때 메모리로 올린다 (D-054 성능 항목)
 // =============================================================================
 
-import { NICKNAME_LIMIT_HINT, nicknameFits, validateRoomSettings } from '@quiz/shared';
+import { MINIGAMES, NICKNAME_LIMIT_HINT, nicknameFits, validateRoomSettings } from '@quiz/shared';
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
 import { loadAllItemExperiences, loadQuizData } from '../db/minigameItems.js';
@@ -40,6 +40,7 @@ import { emitRoom } from '../rooms/emit.js';
 import { activeCount } from '../rooms/registry.js';
 import { participantIds } from '../lobby/info.js';
 import { beginQuestion, finishGame } from './question.js';
+import { startSeriesMinigame } from '../minigame/engine.js';
 import type { Room } from '../rooms/types.js';
 
 export type StartFailure =
@@ -74,6 +75,18 @@ export function notEnoughMessage(available: number, wanted: number): string {
 }
 
 /**
+ * ★★★ R057 — 미니게임만: 지금 인원으로 할 수 있는 미니게임이 하나도 없으면 시작하지 않는다(소수파 3명부터 — R053).
+ *   @returns 막는 이유(없으면 null)
+ */
+export function minigameOnlyBlock(room: Room): string | null {
+  const n = room.players.size;
+  const keys = room.settings.minigameKeys;
+  if (keys.some((k) => (MINIGAMES.find((m) => m.key === k)?.minPlayers ?? 1) <= n)) return null;
+  const need = Math.min(...keys.map((k) => MINIGAMES.find((m) => m.key === k)?.minPlayers ?? 1));
+  return `고른 미니게임은 ${need}명부터 할 수 있어요. 다른 미니게임도 골라 주세요.`;
+}
+
+/**
  * 게임 시작 요청 (T01). 방장의 game.start 가 호출한다.
  *
  * ★ 항상 5초 카운트다운을 건다 (Q-11 개정). 실제 시작은 tick 의 startFromCountdown(T04) 이다.
@@ -97,10 +110,17 @@ export async function requestStart(room: Room): Promise<StartResult> {
     const longNames = nicknamesToChange(room);
     if (longNames.length > 0) return { ok: false, reason: 'nickname', nicknames: longNames };
 
+    // ── ★★★ R057 — 미니게임만은 문제를 내지 않는다: 출제 가능 수를 보지 않고(0 개 요청) 인원만 본다
+    const mgOnly = room.settings.minigameOnly;
+    if (mgOnly) {
+      const block = minigameOnlyBlock(room);
+      if (block) return { ok: false, reason: 'settings', message: block };
+    }
+
     // ── 2. ★ 출제 가능 수 재검증 (Q-21). 캐시를 믿지 않고 지금 조회한다.
-    const wanted = room.settings.questionCount;
-    const available = await countAvailableQuestions(participantIds(room), room.settings);
-    room.availableQuestionCount = available;
+    const wanted = mgOnly ? 0 : room.settings.questionCount;
+    const available = mgOnly ? 0 : await countAvailableQuestions(participantIds(room), room.settings);
+    if (!mgOnly) room.availableQuestionCount = available;
 
     // ★ await 뒤 상태 재확인. 조회 중에 방이 바뀔 수 있다.
     if (room.state !== 'LOBBY' || room.game !== null) {
@@ -121,7 +141,8 @@ export async function requestStart(room: Room): Promise<StartResult> {
     room.settingsLocked = true;
     room.countdownEndsAt = Date.now() + room.settings.countdownSec * 1000;
     console.log(
-      `[game] ${room.id} 카운트다운 시작 ${room.settings.countdownSec}초 (문제 ${wanted}개 / 가능 ${available}개)`,
+      `[game] ${room.id} 카운트다운 시작 ${room.settings.countdownSec}초 ` +
+        (mgOnly ? `(미니게임만 ${room.settings.minigameRounds}개)` : `(문제 ${wanted}개 / 가능 ${available}개)`),
     );
     emitRoom(room, 'game.countdownStarted', {
       endsAt: room.countdownEndsAt,
@@ -171,9 +192,11 @@ export async function startFromCountdown(room: Room): Promise<StartResult> {
   try {
     // ★ 카운트다운 중 신규 입장이 허용되므로(Q-11) 참가자 집합이 바뀌었을 수 있다.
     //   출제 가능 수를 다시 확인한다. 사람이 늘면 수가 늘고, 나가면 줄어든다.
-    const wanted = room.settings.questionCount;
-    const available = await countAvailableQuestions(participantIds(room), room.settings);
-    room.availableQuestionCount = available;
+    // ★★★ R057 — 미니게임만은 출제 가능 수를 보지 않는다(인원이 줄어 할 게 없으면 첫 미니게임에서 끝난다)
+    const mgOnly = room.settings.minigameOnly;
+    const wanted = mgOnly ? 0 : room.settings.questionCount;
+    const available = mgOnly ? 0 : await countAvailableQuestions(participantIds(room), room.settings);
+    if (!mgOnly) room.availableQuestionCount = available;
 
     // ★ await 뒤 재확인. 조회 중에 방장이 취소했을 수 있다.
     if (room.state !== 'COUNTDOWN' || room.game !== null) {
@@ -223,6 +246,7 @@ export async function startFromCountdown(room: Room): Promise<StartResult> {
  */
 async function beginGame(room: Room, availableAtStart: number): Promise<boolean> {
   const settings = { ...room.settings };
+  const mgOnly = settings.minigameOnly;
   const roster = [...room.players.values()].map((p) => ({
     accountId: p.accountId,
     colorIndex: p.colorIndex,
@@ -235,10 +259,12 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   try {
     gameId = await insertGame({
       roomId: room.id,
-      settingQuestionCount: settings.questionCount,
+      settingQuestionCount: mgOnly ? 0 : settings.questionCount,
       settingStartMode: 'countdown',
       settingCountdownSec: settings.countdownSec,
       plannedQuestionCount: availableAtStart,
+      mode: mgOnly ? 'minigame' : 'quiz',
+      settingMinigameRounds: mgOnly ? settings.minigameRounds : null,
     });
     await insertGamePlayers(gameId, roster);
     // ★ R050 — 참가자의 기기 종류 (🖥/📱 — 기록만)
@@ -259,10 +285,11 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   let minigameQuiz;
   try {
     [pool, experienced, minigameQuiz] = await Promise.all([
-      loadQuestionPool(settings),
+      // ★ R057 — 미니게임만은 퀴즈 풀이 필요 없다
+      mgOnly ? Promise.resolve([]) : loadQuestionPool(settings),
       loadExperienced(participantIds(room)),
       // ★ R052 — 퀴즈류 미니게임 문항 · 경험 (켜져 있고 퀴즈류를 골랐을 때만)
-      settings.minigames && settings.minigameKeys.some((k) => isQuizMinigameKey(k))
+      (settings.minigames || mgOnly) && settings.minigameKeys.some((k) => isQuizMinigameKey(k))
         ? Promise.all([loadQuizData(), loadAllItemExperiences(participantIds(room))]).then(([data, exp]) => ({ data, experienced: exp }))
         : Promise.resolve(null),
     ]);
@@ -283,7 +310,8 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
 
   // ── 3. 동기 전이 구간. ★ 여기에 await 를 넣지 않는다.
   const now = Date.now();
-  room.state = 'QUESTION_ACTIVE';
+  // ★ R057 — 미니게임만은 바로 미니게임 상태(첫 미니게임이 아래에서 시작한다)
+  room.state = mgOnly ? 'MINIGAME' : 'QUESTION_ACTIVE';
   room.settingsLocked = true;
   room.countdownEndsAt = null;
   room.result = null;
@@ -298,7 +326,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   room.specialLocks?.clear();
   room.game = {
     gameId,
-    totalQuestions: settings.questionCount,
+    totalQuestions: mgOnly ? 0 : settings.questionCount,
     availableAtStart,
     startedAt: now,
     questionIndex: 0,
@@ -312,21 +340,32 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     lastMinigameKey: null,
     minigameDoneAt: [],
     minigameQuiz: minigameQuiz ?? null,
+    mgSeries: mgOnly ? { total: settings.minigameRounds, done: 0, totals: new Map(), lastRank: new Map() } : null,
     resolution: null,
     endedQuestionCount: 0,
     stage3Count: 0,
     questionLog: [],
   };
   console.log(
-    `[game] ${room.id} 게임 시작 — 문제 ${settings.questionCount}개 / 참가자 ${roster.length}명 / ` +
-      `가능 ${availableAtStart}개 / 풀 ${pool.length}건 / games.id=${gameId}`,
+    mgOnly
+      ? `[game] ${room.id} 게임 시작 — ★ 미니게임만 ${settings.minigameRounds}개 / 참가자 ${roster.length}명 / games.id=${gameId}`
+      : `[game] ${room.id} 게임 시작 — 문제 ${settings.questionCount}개 / 참가자 ${roster.length}명 / ` +
+          `가능 ${availableAtStart}개 / 풀 ${pool.length}건 / games.id=${gameId}`,
   );
 
   emitRoom(room, 'game.started', {
     gameId,
-    totalQuestions: settings.questionCount,
+    totalQuestions: room.game.totalQuestions,
     state: room.state,
+    mode: mgOnly ? 'minigame' : 'quiz',
   });
+
+  // ── ★★★ R057 — 미니게임만: 문제 대신 첫 미니게임(깜짝 연출은 이것만)
+  if (mgOnly) {
+    if (startSeriesMinigame(room)) return true;
+    finishGame(room, 'no_questions', '고른 미니게임을 지금 인원으로 할 수 없어 끝냈습니다.');
+    return false;
+  }
 
   // ── 4. ★★ [문제 시작 공통 절차] (04-PROTOCOL 3장). 동기다
   if (!beginQuestion(room)) {

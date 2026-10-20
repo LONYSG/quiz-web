@@ -19,7 +19,7 @@ export interface Stats {
 
 export async function getStats(accountId: string): Promise<Stats> {
   const [games, correct, topics, tiers, resp, runs, best, spends, points] = await Promise.all([
-    query<{ n: string }>(`SELECT count(DISTINCT game_id)::text n FROM game_players WHERE account_id = $1`, [accountId]),
+    query<{ n: string }>(`SELECT count(DISTINCT gp.game_id)::text n FROM game_players gp JOIN games g ON g.id = gp.game_id WHERE gp.account_id = $1 AND g.mode = 'quiz'`, [accountId]),
     query<{ n: string }>(`SELECT count(*)::text n FROM answer_events WHERE account_id = $1 AND accepted`, [accountId]),
     query<{ game_topic: string; n: string }>(
       `SELECT t.game_topic, count(*)::text n FROM answer_events e JOIN questions q ON q.id = e.question_id JOIN category_game_topics t ON t.category_id = q.category_id

@@ -61,6 +61,9 @@ export interface RoomSettings {
   /** ★★ R050 — 미니게임 포함 (기본 꺼짐) · 넣을 미니게임 */
   minigames?: boolean;
   minigameKeys?: MinigameKey[];
+  /** ★★★ R057 — 미니게임만 · 미니게임 수(2~10) */
+  minigameOnly?: boolean;
+  minigameRounds?: number;
 }
 
 /** ★★★ R050 — 미니게임 화면 상태 (서버 minigame/engine.ts MinigameView 와 같은 꼴) */
@@ -97,6 +100,8 @@ export interface MinigameView {
   totals: { accountId: string; total: number }[];
   final: { accountId: string; rank: number; total: number; reward: number }[] | null;
   afterQuestionIndex: number | null;
+  /** ★ R057 — 미니게임만 판의 몇 번째 / 몇 개 (퀴즈 판 · 연습은 null) */
+  series?: { index: number; total: number } | null;
   /** 화면 전용 — 이 보기를 받은 기기 시각(performance.now). 스냅샷(재접속)이면 없다 */
   receivedAt?: number;
   /** ★ R051 — /lab/minigame 장면 전용(서버는 보내지 않는다): 멈춘 판 시간 · 미리 친 글 */
@@ -198,6 +203,9 @@ export interface GameResultView {
   abortedNote: string | null;
   endedQuestionCount: number;
   totalQuestions: number;
+  /** ★★★ R057 — 미니게임만 판이면 'minigame'(점수 = 순위 점수 합) */
+  mode?: 'quiz' | 'minigame';
+  minigameSeries?: { done: number; total: number } | null;
 }
 
 /** ★ 일시정지 (Phase 5). PAUSED 에서만 값이 있다 */

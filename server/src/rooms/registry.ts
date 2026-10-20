@@ -20,7 +20,7 @@
 // =============================================================================
 
 import { randomBytes, randomInt } from 'node:crypto';
-import { DEFAULT_DIFFICULTIES, DEFAULT_TOPICS, MINIGAME_KEYS, RULES } from '@quiz/shared';
+import { DEFAULT_DIFFICULTIES, DEFAULT_TOPICS, MINIGAME_KEYS, MINIGAME_ONLY_ROUNDS, RULES } from '@quiz/shared';
 import type { ChatEntry, Player, Room, RoomSettings } from './types.js';
 
 const rooms = new Map<string, Room>();
@@ -56,6 +56,9 @@ export const DEFAULT_SETTINGS: RoomSettings = {
   // ★★ R050 — 미니게임 포함은 기본 꺼짐 · 넣을 미니게임은 전부 (D-234)
   minigames: false,
   minigameKeys: [...MINIGAME_KEYS],
+  // ★★★ R057 — 미니게임만은 기본 꺼짐 · 5개 (D-249)
+  minigameOnly: false,
+  minigameRounds: MINIGAME_ONLY_ROUNDS.DEFAULT,
 };
 
 /**

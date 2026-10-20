@@ -24,6 +24,7 @@ export {
   GAME_TOPICS,
   DEFAULT_TOPICS,
   formatTopics,
+  MINIGAME_ONLY_ROUNDS,
 } from './settings.js';
 export type {
   RoomSettingsInput,

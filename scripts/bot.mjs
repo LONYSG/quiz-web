@@ -124,6 +124,7 @@ const SCENARIO_ENV = {
   mgtap: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   achievements: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   feedback: { RESOLVED_WAIT_MS: '200' },
+  mgonly: { MINIGAME_PHASE_SCALE: '0.05' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -307,7 +308,7 @@ class Bot {
       // ── ★★★ R050 — 미니게임 (보기 전체가 온다 · 받은 순간을 함께 적는다 — 케이크 타이밍 검사)
       s.on('minigame.state', (p) => {
         const mg = p.minigame;
-        this.events.push({ type: 'minigame.state', phase: mg?.phase ?? null, roundIndex: mg?.roundIndex ?? null, token: mg?.token ?? null, at: Date.now() });
+        this.events.push({ type: 'minigame.state', phase: mg?.phase ?? null, roundIndex: mg?.roundIndex ?? null, token: mg?.token ?? null, series: mg?.series ?? null, spectating: mg?.spectating ?? null, at: Date.now() });
         if (this.snapshot) {
           this.snapshot.room.state = p.state;
           this.snapshot.minigame = mg;
@@ -338,7 +339,7 @@ class Bot {
         if (this.snapshot) this.snapshot.experienceRates = p.rates;
       });
       s.on('game.countdownStarted', (p) => {
-        this.events.push({ type: 'game.countdownStarted', endsAt: p.endsAt, at: Date.now() });
+        this.events.push({ type: 'game.countdownStarted', endsAt: p.endsAt, settings: p.settings ?? null, at: Date.now() });
         if (this.snapshot) {
           this.snapshot.room.state = p.state;
           this.snapshot.room.settingsLocked = p.settingsLocked;
@@ -354,7 +355,7 @@ class Bot {
         }
       });
       s.on('game.started', (p) => {
-        this.events.push({ type: 'game.started', gameId: p.gameId, at: Date.now() });
+        this.events.push({ type: 'game.started', gameId: p.gameId, mode: p.mode ?? null, at: Date.now() });
         if (this.snapshot) {
           this.snapshot.room.state = p.state;
           this.snapshot.game = { gameId: p.gameId, totalQuestions: p.totalQuestions };
@@ -7202,6 +7203,108 @@ async function scenarioAchievements() {
 // -----------------------------------------------------------------------------
 // ★★★ feedback — R056: 문제 평가(👍/👎 · 사유 · 의견) — 판에 있었던 사람 · 그 판 문제만 · upsert · 취소 = 삭제 · 속도 제한
 // -----------------------------------------------------------------------------
+// =============================================================================
+// ★★★ R057 — 미니게임만 모드 (D-249): 3명 · 미니게임 3개(연타만 — 켜진 것이 N 보다 적으면 다시 섞음) · 둘째에 중간 입장 · 다시 하기 이어받음
+// =============================================================================
+async function scenarioMgOnly() {
+  log('시나리오 mgonly — ★★★ 미니게임만 (R057)');
+  const { bots, host, roomId } = await mgRoom(3, 'R057 미니게임만');
+  // ★ makeBots 는 번호로 계정을 만든다 — 중간 입장은 다른 이름(같은 계정이면 방장이 끊긴다)
+  const late = new Bot('09');
+  await late.auth();
+  await late.connect();
+  const all = [...bots, late];
+  // 연타 — b1 70 · b2 50 · b3 30 · 중간 입장 late 는 안 누름
+  const counts = new Map([[bots[0], 70], [bots[1], 50], [bots[2], 30]]);
+  for (const b of all) {
+    b.__mgDone = new Set();
+    b.onMinigame = (mg) => {
+      if (!mg || mg.phase !== 'play' || mg.spectating) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (b.__mgDone.has(k) || !counts.has(b)) return;
+      b.__mgDone.add(k);
+      setTimeout(() => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { count: counts.get(b), final: true } }), 10100);
+    };
+  }
+  // ── 설정 — 범위 밖 거부 · 3개
+  let m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 11, minigameKeys: ['tap'] });
+  await sleep(300);
+  const e11 = host.since(m, 'error')[0];
+  expectTrue('★ 미니게임 수 11 → BAD_REQUEST(미니게임 수 2~10)', e11?.code === 'BAD_REQUEST' && /미니게임 수/.test(e11?.detail ?? e11?.message ?? ''), JSON.stringify(e11));
+  m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 3, minigameKeys: ['tap'] });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.minigameOnly === true), 4000, '설정').catch((e) => {
+    log(`설정 이벤트: ${JSON.stringify(host.since(m, 'lobby.settingsUpdated').map((x) => x.settings))} · 오류 ${JSON.stringify(host.since(m, 'error'))}`);
+    throw e;
+  });
+  const st = host.since(m, 'lobby.settingsUpdated').find((e) => e.settings?.minigameOnly === true).settings;
+  expectTrue('★★ 설정 — 미니게임만 · 3개 · 연타만 · 문제 수 값은 남는다', st.minigameRounds === 3 && st.minigameKeys.join() === 'tap' && st.questionCount > 0, JSON.stringify(st));
+  // ── 시작
+  const g = host.mark();
+  const gq = bots.map((b) => b.mark());
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작');
+  const started = host.since(g, 'game.started')[0];
+  expect('★★ game.started mode', started.mode, 'minigame');
+  // 둘째 미니게임이 시작되면 중간 입장
+  await host.waitFor(() => host.snapshot?.minigame?.series?.index === 2, 90000, '둘째 미니게임');
+  late.join(roomId);
+  await late.waitFor(() => late.snapshot?.room.id === roomId, 6000, '중간 입장');
+  await sleep(500);
+  expectTrue('★★ 중간 입장 = 그 미니게임은 구경', late.snapshot?.minigame?.spectating === true, JSON.stringify({ s: late.snapshot?.minigame?.spectating, st: late.snapshot?.room.state }));
+  await host.waitFor(() => host.since(g, 'game.result').length > 0, 120000, '결과');
+  const res = host.since(g, 'game.result')[0].payload;
+  // ── 흐름
+  const states = host.since(g, 'minigame.state');
+  const firstPhase = new Map();
+  for (const e of states) if (e.token && !firstPhase.has(e.token)) firstPhase.set(e.token, { phase: e.phase, series: e.series });
+  const runs = [...firstPhase.values()];
+  expectTrue('★★★ 미니게임 3개 · 1/3 2/3 3/3', runs.length === 3 && runs.map((r) => `${r.series?.index}/${r.series?.total}`).join() === '1/3,2/3,3/3', JSON.stringify(runs));
+  expectTrue('★★★ 깜짝 연출(intro)은 첫 미니게임만 — 둘째부터 규칙 안내부터', runs.map((r) => r.phase).join() === 'intro,rules,rules', JSON.stringify(runs.map((r) => r.phase)));
+  expect('★★ 사이에 minigame.ended 없음(화면 깜빡임 없이 이어짐)', host.since(g, 'minigame.ended').length, 0);
+  expect('★★ 문제는 하나도 안 나옴', bots.reduce((n, b, i) => n + b.since(gq[i], 'question.started').length, 0), 0);
+  // ── 결과 · 순위 점수: 1·2 번째 3명(3 · 2 · 1) · 셋째 4명(late 미제출 4위 → 4 · 3 · 2 · 1)
+  const ids = await withDb(async (c) => new Map((await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [all.map((b) => b.loginId)])).rows.map((r) => [r.id, r.login_id])));
+  const rk = res.ranking.map((r) => [ids.get(r.accountId), r.rank, r.score]);
+  const want = [[bots[0].loginId, 1, 10], [bots[1].loginId, 2, 7], [bots[2].loginId, 3, 4], [late.loginId, 4, 1]];
+  expect('★★★ 결과 = 순위 점수 합(인원 − 순위 + 1) · 순위', rk, want);
+  expectTrue('★★ 결과 mode minigame · 3/3 · 끝 completed', res.mode === 'minigame' && res.minigameSeries?.done === 3 && res.minigameSeries?.total === 3 && res.endReason === 'completed', JSON.stringify({ mode: res.mode, s: res.minigameSeries, e: res.endReason }));
+  // ── DB
+  const gid = started.gameId;
+  const grow = await withDb(async (c) => (await c.query(`SELECT mode, setting_minigame_rounds, setting_question_count, planned_question_count, end_reason, ended_question_count FROM games WHERE id = $1`, [gid])).rows[0]);
+  expect('★★★ games 행 — mode · 3 · 문제 0', [grow.mode, grow.setting_minigame_rounds, grow.setting_question_count, grow.planned_question_count, grow.end_reason, grow.ended_question_count], ['minigame', 3, 0, 0, 'completed', 0]);
+  const qrows = await withDb(async (c) => (await c.query(`SELECT (SELECT count(*)::int FROM game_questions WHERE game_id = $1) q, (SELECT count(*)::int FROM answer_events WHERE game_id = $1) a`, [gid])).rows[0]);
+  expect('★★ game_questions · answer_events 0 행', [qrows.q, qrows.a], [0, 0]);
+  const mruns = await withDb(async (c) => (await c.query(`SELECT minigame_key k, practice, after_question_index a, end_reason e FROM minigame_runs WHERE game_id = $1 ORDER BY id`, [gid])).rows);
+  expect('★★ minigame_runs 3 — 연타 · 연습 아님 · 문제 뒤 아님 · 끝까지', mruns.map((r) => [r.k, r.practice, r.a, r.e]), [['tap', false, null, 'completed'], ['tap', false, null, 'completed'], ['tap', false, null, 'completed']]);
+  await sleep(500);
+  const rw = await withDb(async (c) =>
+    (await c.query(
+      `SELECT a.login_id, sum(w.amount)::int s FROM minigame_rewards w JOIN minigame_runs r ON r.id = w.run_id JOIN accounts a ON a.id = w.account_id WHERE r.game_id = $1 AND w.amount > 0 GROUP BY a.login_id ORDER BY s DESC`,
+      [gid],
+    )).rows.map((r) => [r.login_id, r.s]),
+  );
+  expect('★★★ 보상(포인트) = 퀴즈 판 미니게임과 같다 — 3명 1위 +3 · 2위 +1 / 4명 1위 +3 · 2위 +1', rw, [[bots[0].loginId, 9], [bots[1].loginId, 3]]);
+  const fs = await withDb(async (c) => (await c.query(`SELECT a.login_id, p.final_score, p.final_rank, p.is_midgame_join FROM game_players p JOIN accounts a ON a.id = p.account_id WHERE p.game_id = $1 ORDER BY p.final_rank`, [gid])).rows);
+  await sleep(300);
+  expect('★★ game_players 최종 점수 · 순위(중간 입장 표시)', fs.map((r) => [r.login_id, r.final_score, r.final_rank, r.is_midgame_join]), [[bots[0].loginId, 10, 1, false], [bots[1].loginId, 7, 2, false], [bots[2].loginId, 4, 3, false], [late.loginId, 1, 4, true]]);
+  // ── 다시 하기 — 이어받음(카운트다운만 보고 취소)
+  const a = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(a, 'game.countdownStarted').length > 0, 8000, '다시 하기');
+  const cdSettings = host.since(a, 'game.countdownStarted')[0].settings;
+  host.socket.emit('game.cancelCountdown', {});
+  await sleep(400);
+  expectTrue('★★ 다시 하기 — 미니게임만 · 3개 이어받음', cdSettings?.minigameOnly === true && cdSettings?.minigameRounds === 3, JSON.stringify(cdSettings));
+  for (const b of all) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
 async function scenarioFeedback() {
   log('시나리오 feedback — ★★★ 문제 평가(설문) (R056)');
   const [host, guest, outsider] = await makeBots(3);
@@ -7501,6 +7604,7 @@ const SCENARIOS = {
   achievements: scenarioAchievements,
   // ★★★ R056 — 문제 평가
   feedback: scenarioFeedback,
+  mgonly: scenarioMgOnly,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

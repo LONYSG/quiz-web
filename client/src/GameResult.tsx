@@ -43,6 +43,8 @@ function endReasonText(reason: string): string {
 }
 
 export default function GameResult({ socket, players, result, isHost, myAccountId }: Props) {
+  // ★★★ R057 — 미니게임만 판: 점수 = 미니게임 순위 점수 합 · 문제 평가 없음
+  const mgOnly = result.mode === 'minigame';
   const champs = result.ranking.filter((r) => r.rank === 1 && r.score > 0);
   // ★ 사람이 많으면 순위를 두 줄로 나눠 세로를 아낀다 (스크롤 없음 — R035)
   const twoCols = result.ranking.length > 5;
@@ -70,6 +72,12 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
             </p>
           </div>
         </div>
+      )}
+
+      {mgOnly && (
+        <p className="dim mg-result-sub">
+          미니게임만 · {result.minigameSeries?.done ?? 0}개 — 미니게임마다 순위 점수(인원 − 순위 + 1)를 더했어요
+        </p>
       )}
 
       <ol className={twoCols ? 'ranking two' : 'ranking'}>
@@ -102,7 +110,7 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
       {notice && <p className="info">{notice}</p>}
 
       {/* ★★★ R056 — 이번 판 문제 평가(접이식 · 기본 펼침) — 정답 공개 때 못 누른 사람 · 기타 의견 */}
-      {result.gameId && <ResultFeedback gameId={result.gameId} />}
+      {result.gameId && !mgOnly && <ResultFeedback gameId={result.gameId} />}
 
       <div className="next-row" data-arrow-nav>
         {isHost ? (

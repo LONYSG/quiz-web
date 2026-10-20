@@ -625,6 +625,9 @@ function registerRoomHandlers(socket: Socket): void {
         // ★ R050 — 미니게임도 보낸 것만 바꾼다
         minigames: room.settings.minigames,
         minigameKeys: room.settings.minigameKeys,
+        // ★ R057 — 미니게임만도
+        minigameOnly: room.settings.minigameOnly,
+        minigameRounds: room.settings.minigameRounds,
         ...payload,
       });
       if (!valid.ok) {

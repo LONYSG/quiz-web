@@ -113,6 +113,15 @@ export function formatTopics(topics: readonly GameTopic[]): string {
   return labels.join(' · ');
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★★ 미니게임만 모드 (R057 · D-249)
+//
+// ★ 찬종: "미니게임 반응이 생각보다 좋아. 미니게임만 하는 모드도 추가하면 좋을듯."
+// ★ 켜면 문제 없이 미니게임 N개(2~10 · 기본 5)를 잇달아 한다 — 깜짝 연출은 첫 미니게임에만 · 결과는 미니게임 순위 점수 합.
+//   ★ 문제 수 · 난이도 · 분야 값은 그대로 남는다(끄면 돌아온다) — 이 모드에서는 쓰지 않을 뿐.
+// ─────────────────────────────────────────────────────────────────────────────
+export const MINIGAME_ONLY_ROUNDS = { MIN: 2, MAX: 10, DEFAULT: 5 } as const;
+
 export interface RoomSettingsInput {
   questionCount: number;
   startMode: StartMode;
@@ -125,13 +134,17 @@ export interface RoomSettingsInput {
   minigames: boolean;
   /** ★ R050 — 넣을 미니게임 (기본 전부 · 확장성 — 정규화된 순서 · 최소 1개) */
   minigameKeys: MinigameKey[];
+  /** ★★★ R057 — 미니게임만 (기본 꺼짐 · 다시 하기 이어받음 — D-249) */
+  minigameOnly: boolean;
+  /** ★ R057 — 미니게임만 모드의 미니게임 수 (2~10 · 기본 5) */
+  minigameRounds: number;
 }
 
 export type SettingsValidation =
   | { ok: true; settings: RoomSettingsInput }
   | {
       ok: false;
-      field: 'questionCount' | 'startMode' | 'countdownSec' | 'difficulties' | 'topics' | 'minigames';
+      field: 'questionCount' | 'startMode' | 'countdownSec' | 'difficulties' | 'topics' | 'minigames' | 'minigameRounds';
       message: string;
     };
 
@@ -240,6 +253,19 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
     }
   }
 
+  // ── ★★★ R057 — 미니게임만 (없으면 기본: 꺼짐 · 5개)
+  if (raw.minigameOnly !== undefined && typeof raw.minigameOnly !== 'boolean') {
+    return { ok: false, field: 'minigames', message: '미니게임만 설정 형식이 올바르지 않습니다.' };
+  }
+  const minigameRounds = raw.minigameRounds ?? MINIGAME_ONLY_ROUNDS.DEFAULT;
+  if (!isInt(minigameRounds) || minigameRounds < MINIGAME_ONLY_ROUNDS.MIN || minigameRounds > MINIGAME_ONLY_ROUNDS.MAX) {
+    return {
+      ok: false,
+      field: 'minigameRounds',
+      message: `미니게임 수는 ${MINIGAME_ONLY_ROUNDS.MIN}~${MINIGAME_ONLY_ROUNDS.MAX} 사이여야 합니다.`,
+    };
+  }
+
   return {
     ok: true,
     settings: {
@@ -250,6 +276,8 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
       topics,
       minigames: raw.minigames === true,
       minigameKeys,
+      minigameOnly: raw.minigameOnly === true,
+      minigameRounds,
     },
   };
 }

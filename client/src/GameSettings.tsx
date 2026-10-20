@@ -6,6 +6,8 @@
 // ★ 검증은 shared/validateRoomSettings 하나만 쓴다 (화면과 서버가 어긋나지 않게).
 // ★ 출제 가능 수 안내 (Q-21) — 입력 단계에서 상한을 보여 준다.
 //
+// ★★★ R057 — 맨 위 "방식" [퀴즈 · 미니게임만](D-249). 미니게임만이면 문제 수 · 난이도 · 분야를 숨기고(값은 남는다)
+//   미니게임 수(2~10) + 넣을 미니게임만 남는다.
 // ★★ R035 — 카드 테두리를 없앴다. 로비 가운데 **카드 하나**(설정 + 게임 시작) 안에 들어간다 (건우: "칸을 줄여라").
 //   ★ 난이도 설명 문구를 지웠다. ★ 게스트에게도 분야 **목록 전체**를 보이고 켜진 것만 진하게 — "전체" 한 단어로는
 //     무엇이 들어 있는지 모른다 (건우 지적).
@@ -18,6 +20,7 @@ import {
   GAME_TOPICS,
   MINIGAMES,
   MINIGAME_KEYS,
+  MINIGAME_ONLY_ROUNDS,
   minigameSlots,
   type MinigameKey,
   RULES,
@@ -29,6 +32,8 @@ import type { RoomSettings } from './useRoom.js';
 
 /** Q-10 확정: UI 에 프리셋을 제공한다 */
 const PRESETS = [50, 100, 200] as const;
+/** ★ R057 — 미니게임 수 프리셋 */
+const MG_PRESETS = [3, 5, 10] as const;
 
 interface Props {
   socket: Socket;
@@ -96,130 +101,201 @@ export default function GameSettings({
   };
   const topics = shown.topics ?? [];
   const allTopics = topics.length === GAME_TOPICS.length;
+  const mgOnly = shown.minigameOnly === true;
+  const mgRounds = shown.minigameRounds ?? MINIGAME_ONLY_ROUNDS.DEFAULT;
+  const keysOf = (s: RoomSettings) => s.minigameKeys ?? [...MINIGAME_KEYS];
 
   return (
     <div className={editable ? 'settings' : 'settings readonly'}>
-      <div className="set-row">
-        <span className="set-label">문제 수</span>
-        {editable ? (
-          <div className="preset-row">
-            <input
-              type="number"
-              className="count-input"
-              inputMode="numeric"
-              min={RULES.QUESTION_COUNT_MIN}
-              max={RULES.QUESTION_COUNT_MAX}
-              aria-label={`문제 수 (${RULES.QUESTION_COUNT_MIN}~${RULES.QUESTION_COUNT_MAX})`}
-              value={Number.isFinite(draft.questionCount) ? draft.questionCount : ''}
-              onChange={(e) => push({ ...draft, questionCount: Number.parseInt(e.target.value, 10) })}
-            />
-            {/* ★ Q-10 확정: 50 / 100 / 200 프리셋 */}
-            {PRESETS.map((n) => (
-              <button
-                key={n}
-                type="button"
-                className={draft.questionCount === n ? 'preset active' : 'preset'}
-                onClick={() => push({ ...draft, questionCount: n })}
-              >
-                {n}
-              </button>
-            ))}
-            {availableQuestionCount !== null && availableQuestionCount > 0 && (
+      {/* ★★★ R057 — 방식: 퀴즈 / 미니게임만 (기본 퀴즈 · 다시 하기 이어받음) */}
+      <div className="set-row mode-row">
+        <span className="set-label">방식</span>
+        <div className="preset-row">
+          {editable ? (
+            <>
               <button
                 type="button"
-                className="preset"
-                onClick={() =>
-                  push({ ...draft, questionCount: Math.min(availableQuestionCount, RULES.QUESTION_COUNT_MAX) })
-                }
+                data-mode="quiz"
+                aria-pressed={!mgOnly}
+                className={!mgOnly ? 'preset active' : 'preset'}
+                onClick={() => mgOnly && push({ ...draft, minigameOnly: false })}
               >
-                최대 ({Math.min(availableQuestionCount, RULES.QUESTION_COUNT_MAX)})
+                퀴즈
               </button>
+              <button
+                type="button"
+                data-mode="minigame"
+                aria-pressed={mgOnly}
+                className={mgOnly ? 'preset active' : 'preset'}
+                onClick={() => !mgOnly && push({ ...draft, minigameOnly: true, minigameKeys: keysOf(draft), minigameRounds: draft.minigameRounds ?? MINIGAME_ONLY_ROUNDS.DEFAULT })}
+              >
+                미니게임만
+              </button>
+            </>
+          ) : (
+            <span className="chip on">{mgOnly ? '미니게임만' : '퀴즈'}</span>
+          )}
+        </div>
+      </div>
+
+      {mgOnly && (
+        <div className="set-row">
+          <span className="set-label">미니게임 수</span>
+          {editable ? (
+            <div className="preset-row">
+              <input
+                type="number"
+                className="count-input mg-rounds-input"
+                inputMode="numeric"
+                min={MINIGAME_ONLY_ROUNDS.MIN}
+                max={MINIGAME_ONLY_ROUNDS.MAX}
+                aria-label={`미니게임 수 (${MINIGAME_ONLY_ROUNDS.MIN}~${MINIGAME_ONLY_ROUNDS.MAX})`}
+                value={Number.isFinite(draft.minigameRounds) ? draft.minigameRounds : ''}
+                onChange={(e) => push({ ...draft, minigameRounds: Number.parseInt(e.target.value, 10) })}
+              />
+              {MG_PRESETS.map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  data-rounds={n}
+                  className={draft.minigameRounds === n ? 'preset active' : 'preset'}
+                  onClick={() => push({ ...draft, minigameRounds: n })}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <span className="set-value mono">{mgRounds}개</span>
+          )}
+        </div>
+      )}
+
+      {!mgOnly && (
+        <>
+          <div className="set-row">
+            <span className="set-label">문제 수</span>
+            {editable ? (
+              <div className="preset-row">
+                <input
+                  type="number"
+                  className="count-input"
+                  inputMode="numeric"
+                  min={RULES.QUESTION_COUNT_MIN}
+                  max={RULES.QUESTION_COUNT_MAX}
+                  aria-label={`문제 수 (${RULES.QUESTION_COUNT_MIN}~${RULES.QUESTION_COUNT_MAX})`}
+                  value={Number.isFinite(draft.questionCount) ? draft.questionCount : ''}
+                  onChange={(e) => push({ ...draft, questionCount: Number.parseInt(e.target.value, 10) })}
+                />
+                {/* ★ Q-10 확정: 50 / 100 / 200 프리셋 */}
+                {PRESETS.map((n) => (
+                  <button
+                    key={n}
+                    type="button"
+                    className={draft.questionCount === n ? 'preset active' : 'preset'}
+                    onClick={() => push({ ...draft, questionCount: n })}
+                  >
+                    {n}
+                  </button>
+                ))}
+                {availableQuestionCount !== null && availableQuestionCount > 0 && (
+                  <button
+                    type="button"
+                    className="preset"
+                    onClick={() =>
+                      push({ ...draft, questionCount: Math.min(availableQuestionCount, RULES.QUESTION_COUNT_MAX) })
+                    }
+                  >
+                    최대 ({Math.min(availableQuestionCount, RULES.QUESTION_COUNT_MAX)})
+                  </button>
+                )}
+              </div>
+            ) : (
+              <span className="set-value mono">{settings.questionCount}문제</span>
             )}
           </div>
-        ) : (
-          <span className="set-value mono">{settings.questionCount}문제</span>
-        )}
-      </div>
 
-      {/* ★ 출제 가능 수 (Q-21) — 진행에 필요한 알림이다 (부족하면 시작할 수 없다) */}
-      <p className={shortage ? 'form-error avail-line' : 'note avail-line'}>
-        {availableQuestionCount === null
-          ? '출제 가능 문제 수를 확인하는 중입니다.'
-          : shortage
-            ? `★ 지금 출제할 수 있는 문제는 ${availableQuestionCount}개입니다. 이대로 시작할 수 없습니다.`
-            : `이번 설정으로 낼 수 있는 문제 ${availableQuestionCount.toLocaleString('ko-KR')}개`}
-      </p>
+          {/* ★ 출제 가능 수 (Q-21) — 진행에 필요한 알림이다 (부족하면 시작할 수 없다) */}
+          <p className={shortage ? 'form-error avail-line' : 'note avail-line'}>
+            {availableQuestionCount === null
+              ? '출제 가능 문제 수를 확인하는 중입니다.'
+              : shortage
+                ? `★ 지금 출제할 수 있는 문제는 ${availableQuestionCount}개입니다. 이대로 시작할 수 없습니다.`
+                : `이번 설정으로 낼 수 있는 문제 ${availableQuestionCount.toLocaleString('ko-KR')}개`}
+          </p>
 
-      {/* ★★ 난이도 (R025) — 하=1~2 / 중=3 / 상=4~5 */}
-      <div className="set-row">
-        <span className="set-label">난이도</span>
-        <div className="preset-row">
-          {DIFFICULTY_TIERS.map((info) => {
-            const on = shown.difficulties.includes(info.tier);
-            return editable ? (
-              <button
-                key={info.tier}
-                type="button"
-                data-tier={info.tier}
-                aria-pressed={on}
-                className={on ? 'preset active' : 'preset'}
-                onClick={() => toggleTier(info.tier)}
-              >
-                {info.label}
-              </button>
-            ) : (
-              <span key={info.tier} className={on ? 'chip on' : 'chip'}>
-                {info.label}
-              </span>
-            );
-          })}
-        </div>
-      </div>
+          {/* ★★ 난이도 (R025) — 하=1~2 / 중=3 / 상=4~5 */}
+          <div className="set-row">
+            <span className="set-label">난이도</span>
+            <div className="preset-row">
+              {DIFFICULTY_TIERS.map((info) => {
+                const on = shown.difficulties.includes(info.tier);
+                return editable ? (
+                  <button
+                    key={info.tier}
+                    type="button"
+                    data-tier={info.tier}
+                    aria-pressed={on}
+                    className={on ? 'preset active' : 'preset'}
+                    onClick={() => toggleTier(info.tier)}
+                  >
+                    {info.label}
+                  </button>
+                ) : (
+                  <span key={info.tier} className={on ? 'chip on' : 'chip'}>
+                    {info.label}
+                  </span>
+                );
+              })}
+            </div>
+          </div>
 
-      {/* ★★ 분야 (R034) — 난이도 × 분야로 출제 가능 수가 바뀐다 */}
-      <div className="set-row">
-        <span className="set-label">분야</span>
-        <div className="preset-row topic-row">
-          {editable && (
-            <button
-              type="button"
-              aria-pressed={allTopics}
-              className={allTopics ? 'preset active' : 'preset'}
-              onClick={() => {
-                setLastHint(null);
-                if (!allTopics) push({ ...draft, topics: GAME_TOPICS.map((i) => i.topic) });
-              }}
-            >
-              전체
-            </button>
-          )}
-          {GAME_TOPICS.map((info) => {
-            const on = topics.includes(info.topic);
-            return editable ? (
-              <button
-                key={info.topic}
-                type="button"
-                data-topic={info.topic}
-                aria-pressed={on}
-                className={on ? 'preset active' : 'preset'}
-                onClick={() => toggleTopic(info.topic)}
-              >
-                {info.label}
-              </button>
-            ) : (
-              <span key={info.topic} data-topic={info.topic} className={on ? 'chip on' : 'chip'}>
-                {info.label}
-              </span>
-            );
-          })}
-        </div>
-      </div>
+          {/* ★★ 분야 (R034) — 난이도 × 분야로 출제 가능 수가 바뀐다 */}
+          <div className="set-row">
+            <span className="set-label">분야</span>
+            <div className="preset-row topic-row">
+              {editable && (
+                <button
+                  type="button"
+                  aria-pressed={allTopics}
+                  className={allTopics ? 'preset active' : 'preset'}
+                  onClick={() => {
+                    setLastHint(null);
+                    if (!allTopics) push({ ...draft, topics: GAME_TOPICS.map((i) => i.topic) });
+                  }}
+                >
+                  전체
+                </button>
+              )}
+              {GAME_TOPICS.map((info) => {
+                const on = topics.includes(info.topic);
+                return editable ? (
+                  <button
+                    key={info.topic}
+                    type="button"
+                    data-topic={info.topic}
+                    aria-pressed={on}
+                    className={on ? 'preset active' : 'preset'}
+                    onClick={() => toggleTopic(info.topic)}
+                  >
+                    {info.label}
+                  </button>
+                ) : (
+                  <span key={info.topic} data-topic={info.topic} className={on ? 'chip on' : 'chip'}>
+                    {info.label}
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+        </>
+      )}
 
       {/* ★★★ R050 — 미니게임 포함 (기본 꺼짐 · 10문제마다 · 5~9문제는 가운데 한 번 · 마지막 문제 뒤에는 없음 — D-234) */}
       <div className="set-row mg-set-row">
         <span className="set-label">미니게임</span>
         <div className="preset-row">
-          {editable ? (
+          {mgOnly ? null : editable ? (
             <label className="mg-check">
               <input
                 type="checkbox"
@@ -231,7 +307,7 @@ export default function GameSettings({
           ) : (
             <span className={shown.minigames ? 'chip on' : 'chip'}>{shown.minigames ? '포함' : '안 함'}</span>
           )}
-          {shown.minigames &&
+          {(shown.minigames || mgOnly) &&
             MINIGAMES.map((m) => {
               const keys = shown.minigameKeys ?? [...MINIGAME_KEYS];
               const on = keys.includes(m.key);
@@ -245,7 +321,7 @@ export default function GameSettings({
                   onClick={() => {
                     if (on && keys.length === 1) return; // 마지막 하나는 끌 수 없다
                     const next: MinigameKey[] = on ? keys.filter((k) => k !== m.key) : MINIGAME_KEYS.filter((k) => k === m.key || keys.includes(k));
-                    push({ ...draft, minigames: true, minigameKeys: next });
+                    push({ ...draft, minigames: mgOnly ? draft.minigames : true, minigameKeys: next });
                   }}
                 >
                   {m.name}
@@ -256,7 +332,8 @@ export default function GameSettings({
                 </span>
               );
             })}
-          {shown.minigames && (
+          {mgOnly && <span className="dim mg-set-note">고른 것 중에서 {mgRounds}개 · 겹치지 않게</span>}
+          {shown.minigames && !mgOnly && (
             <span className="dim mg-set-note">
               {(() => {
                 const n = minigameSlots(Number.isFinite(shown.questionCount) ? shown.questionCount : 0).length;

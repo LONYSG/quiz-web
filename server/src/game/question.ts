@@ -31,7 +31,7 @@
 // =============================================================================
 
 import { checkAchievements } from '../achievements.js';
-import { RULES, computeRanking, generateHint, normalizeAnswer, skipThreshold } from '@quiz/shared';
+import { RULES, computeRanking, generateHint, normalizeAnswer, rankFinal, skipThreshold } from '@quiz/shared';
 import type { GameEndReason, QuestionResolution } from '@quiz/shared';
 import { endGame } from '../db/games.js';
 import { config } from '../config.js';
@@ -515,15 +515,21 @@ export function finishGame(
   // ★ 두 번 끝내지 않는다. 강제 종료와 마지막 문제가 겹칠 수 있다
   if (room.result) return;
 
-  const ranked = computeRanking(
-    [...room.players.values()].map((p) => ({
-      accountId: p.accountId,
-      nickname: p.nickname,
-      colorIndex: p.colorIndex,
-      score: p.score,
-      connected: p.connected,
-    })),
-  );
+  const rows = [...room.players.values()].map((p) => ({
+    accountId: p.accountId,
+    nickname: p.nickname,
+    colorIndex: p.colorIndex,
+    score: p.score,
+    connected: p.connected,
+  }));
+  // ★★★ R057 — 미니게임만: 점수(= 순위 점수 합)가 같으면 마지막 미니게임 순위로 가른다(미니게임 최종 순위와 같은 규칙 — rankFinal)
+  const series = game.mgSeries;
+  const ranked = series
+    ? rankFinal(rows.map((r) => ({ accountId: r.accountId, total: r.score, lastRoundRank: series.lastRank.get(r.accountId) ?? 99 }))).map((f) => ({
+        ...rows.find((r) => r.accountId === f.accountId)!,
+        rank: f.rank,
+      }))
+    : computeRanking(rows);
 
   const current = room.currentQuestion;
   // ★ 마지막 문제의 정답을 결과 화면에 담는다 (Q-17).
@@ -580,6 +586,8 @@ export function finishGame(
     abortedNote,
     endedQuestionCount: game.endedQuestionCount,
     totalQuestions: game.totalQuestions,
+    mode: series ? 'minigame' : 'quiz',
+    minigameSeries: series ? { done: series.done, total: series.total } : null,
   };
 
   room.state = 'GAME_RESULT';

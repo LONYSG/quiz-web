@@ -12,6 +12,7 @@ import {
   formatExperienceRate,
   formatTopics,
   GAME_TOPICS,
+  MINIGAME_ONLY_ROUNDS,
   validateRoomSettings,
 } from './settings.js';
 
@@ -77,6 +78,9 @@ describe('validateRoomSettings — 형식 방어', () => {
       'difficulties',
       // ★ R050 — 미니게임 포함 · 넣을 미니게임
       'minigameKeys',
+      // ★ R057 — 미니게임만 · 미니게임 수
+      'minigameOnly',
+      'minigameRounds',
       'minigames',
       'questionCount',
       'startMode',
@@ -162,5 +166,25 @@ describe('★ 분야 선택 (R034)', () => {
   it('표기 — 전부면 "전체"', () => {
     expect(formatTopics(GAME_TOPICS.map((t) => t.topic))).toBe('전체');
     expect(formatTopics(['media', 'korea'])).toBe('한국 · 미디어·콘텐츠');
+  });
+});
+
+describe('★★★ 미니게임만 (R057)', () => {
+  it('없으면 꺼짐 · 5개', () => {
+    const r = validateRoomSettings(base);
+    expect(r.ok && r.settings.minigameOnly).toBe(false);
+    expect(r.ok && r.settings.minigameRounds).toBe(MINIGAME_ONLY_ROUNDS.DEFAULT);
+  });
+  it('켜고 2~10 은 통과 · 밖이나 소수는 거부', () => {
+    expect(validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: 2 }).ok).toBe(true);
+    expect(validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: 10 }).ok).toBe(true);
+    for (const n of [1, 11, 3.5, '5']) {
+      const r = validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: n });
+      expect(r.ok).toBe(false);
+      if (!r.ok) expect(r.field).toBe('minigameRounds');
+    }
+  });
+  it('boolean 이 아니면 거부', () => {
+    expect(validateRoomSettings({ ...base, minigameOnly: 'yes' }).ok).toBe(false);
   });
 });

@@ -30,6 +30,9 @@ export interface NewGame {
   settingCountdownSec: number | null;
   /** 시작 시점 출제 가능 수 검증 결과 (Q-21) */
   plannedQuestionCount: number;
+  /** ★★★ R057 — 'minigame' = 미니게임만 판(0021) · 그때 미니게임 수 */
+  mode: 'quiz' | 'minigame';
+  settingMinigameRounds: number | null;
 }
 
 /** games INSERT. 반환값은 games.id (bigint 라 문자열이다) */
@@ -37,8 +40,8 @@ export async function insertGame(game: NewGame): Promise<string> {
   const r = await query<{ id: string }>(
     `INSERT INTO games
        (room_id, setting_question_count, setting_start_mode,
-        setting_countdown_sec, planned_question_count)
-     VALUES ($1, $2, $3, $4, $5)
+        setting_countdown_sec, planned_question_count, mode, setting_minigame_rounds)
+     VALUES ($1, $2, $3, $4, $5, $6, $7)
      RETURNING id::text AS id`,
     [
       game.roomId,
@@ -46,6 +49,8 @@ export async function insertGame(game: NewGame): Promise<string> {
       game.settingStartMode,
       game.settingCountdownSec,
       game.plannedQuestionCount,
+      game.mode,
+      game.settingMinigameRounds,
     ],
   );
   return r.rows[0]!.id;

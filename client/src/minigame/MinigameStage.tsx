@@ -138,6 +138,12 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
           <Icon icon={Gamepad2} /> 미니게임
         </span>
         <strong className="mg-name">{info.name}</strong>
+        {/* ★★★ R057 — 미니게임만: 몇 번째 미니게임인지 */}
+        {view.series && (
+          <span className="badge mg-series mono" data-series={`${view.series.index}/${view.series.total}`}>
+            미니게임 {view.series.index}/{view.series.total}
+          </span>
+        )}
         {view.roundIndex >= 0 && view.phase !== 'final' && view.phase !== 'outro' && (
           <span className="mg-round mono">
             {roundNo} / {view.roundCount}판
@@ -162,7 +168,13 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
             <Icon icon={PartyPopper} /> 깜짝 이벤트!
           </p>
           <p className="mg-intro-name">{info.name}</p>
-          <p className="dim">{view.practice ? '연습 판 — 점수 · 포인트 없음' : `${view.afterQuestionIndex ?? ''}번째 문제를 지나 잠깐 미니게임!`}</p>
+          <p className="dim">
+            {view.practice
+              ? '연습 판 — 점수 · 포인트 없음'
+              : view.series
+                ? `미니게임만 — ${view.series.total}개 이어서!`
+                : `${view.afterQuestionIndex ?? ''}번째 문제를 지나 잠깐 미니게임!`}
+          </p>
         </div>
       )}
 
@@ -185,7 +197,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
               </p>
             )}
             <p className="dim mg-rules-note">
-              {view.roundCount}판 · 판마다 순위 점수 · {view.practice ? '연습이라 보상 없음' : '최종 1~3위에게 보너스 점수(포인트도)'}
+              {view.roundCount}판 · 판마다 순위 점수 ·{' '}
+              {view.practice ? '연습이라 보상 없음' : view.series ? '최종 순위대로 게임 점수 · 1~3위 포인트 보너스' : '최종 1~3위에게 보너스 점수(포인트도)'}
             </p>
           </div>
         </div>
@@ -219,6 +232,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
           <ol className="mg-table">
             {view.final.map((f) => {
               const p = nameOf(f.accountId);
+              // ★ R057 — 미니게임만은 게임 점수에 순위 점수(인원 − 순위 + 1)가 들어간다(보너스는 포인트로만)
+              const add = view.series ? view.participants.length - f.rank + 1 : f.reward;
               return (
                 <li key={f.accountId} className={f.accountId === myAccountId ? 'me' : undefined} data-rank={f.rank}>
                   <span className="mg-rank mono">{f.rank}위</span>
@@ -228,13 +243,19 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
                   </span>
                   <DeviceIcon device={(p as { device?: 'pc' | 'mobile' | null } | undefined)?.device} />
                   <span className="mg-total mono">{f.total}점</span>
-                  <span className={f.reward > 0 ? 'mg-reward on mono' : 'mg-reward mono'}>{view.practice ? '연습' : f.reward > 0 ? `+${f.reward}` : '—'}</span>
+                  <span className={add > 0 ? 'mg-reward on mono' : 'mg-reward mono'}>{view.practice ? '연습' : add > 0 ? `+${add}` : '—'}</span>
                 </li>
               );
             })}
           </ol>
           {view.key === 'which' && <WhichSummary view={view} nameOf={nameOf} />}
-          <p className="dim mg-final-note">{view.practice ? '연습 판이라 점수 · 포인트에 들어가지 않아요' : '보너스는 퀴즈 점수와 포인트에 함께 들어가요'}</p>
+          <p className="dim mg-final-note">
+            {view.practice
+              ? '연습 판이라 점수 · 포인트에 들어가지 않아요'
+              : view.series
+                ? '순위 점수는 이번 게임 점수에 · 1~3위는 포인트 보너스도 받아요'
+                : '보너스는 퀴즈 점수와 포인트에 함께 들어가요'}
+          </p>
         </div>
       )}
 
