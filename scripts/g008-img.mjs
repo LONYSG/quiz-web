@@ -15,7 +15,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const [url, game, id] = process.argv.slice(2);
 const extArg = process.argv.includes('--ext') ? process.argv[process.argv.indexOf('--ext') + 1] : 'jpg';
 if (!url || !game || !id) { console.error('사용법: node scripts/g008-img.mjs <url> <game> <id> [--ext jpg|png]'); process.exit(1); }
-if (!['price', 'worldprice', 'photo', 'estimate', 'which'].includes(game)) { console.error('★ game 이름'); process.exit(1); }
+if (!['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear'].includes(game)) { console.error('★ game 이름'); process.exit(1); }
 const MAX = 1024, LIMIT = 500 * 1024;
 const res = await fetch(url, { headers: { 'User-Agent': 'quiz-web-minigame/1.0 (personal non-commercial; contact via repo)', Accept: 'image/*,*/*' }, redirect: 'follow' });
 if (!res.ok) { console.error(`★ 받기 실패 ${res.status} ${url}`); process.exit(2); }
