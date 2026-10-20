@@ -1,0 +1,1970 @@
+{
+ "round": "G016",
+ "parts": {
+  "v012": {
+   "rows": [
+    {
+     "id": "price-0013",
+     "file": "data/minigame/price/items.json",
+     "take": "image",
+     "why": "V012 fix — 액체형 병 그림 → 분말형 1kg 용기 그림(네이버 이미지 검색 · 다나와 상품 페이지에는 액체형 그림 하나뿐). 가격은 그대로(unverified ok)",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/price/price-0013.jpg",
+       "sourceUrl": "https://img.danuri.io/catalog-image/574/036/001/296ca56272dc438bb6079865aa6ca268.jpg",
+       "license": "product-page",
+       "attribution": "다나와 상품 페이지",
+       "width": 300,
+       "height": 300,
+       "bytes": 8494
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/price/price-0013.jpg",
+       "sourceUrl": "http://shop1.phinf.naver.net/20190102_10/mysskagi2271_1546433663130qPGN2_JPEG/69740822751238046_1784286401.jpg",
+       "license": "product-page",
+       "attribution": "네이버 쇼핑 판매처 상품 이미지(너네집 생활용품)",
+       "width": 400,
+       "height": 400,
+       "bytes": 18516
+      }
+     }
+    },
+    {
+     "id": "price-0018",
+     "file": "data/minigame/price/items.json",
+     "take": "modified",
+     "why": "V012 fix — 그림은 다나와 pcode=18132734 대표 그림 그대로 둠: 다나와 상품 정보의 색상은 '딥그린 · 웜그레이 · 차콜'(좌판)이고 '블랙' 은 프레임 · 메쉬 색이라, 그림을 바꾸지 않고 이름을 그림에 맞춤(GEN 판단)",
+     "before": {
+      "status": "candidate",
+      "name": "시디즈 T50 블랙 컴퓨터 책상 의자 HLDA"
+     },
+     "after": {
+      "status": "verified",
+      "name": "시디즈 T50 컴퓨터 책상 의자 HLDA (블랙 프레임 · 딥그린 좌판)"
+     }
+    },
+    {
+     "id": "price-0030",
+     "file": "data/minigame/price/items.json",
+     "take": "image",
+     "why": "V012 fix — 배지 · 글자를 잘라 낸 제품 사진(scripts/g016-crop.mjs)",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/price/price-0030.jpg",
+       "sourceUrl": "https://img.danuri.io/catalog-image/297/806/093/842d52092b2a4da6ae423010a12daa41.jpg",
+       "license": "product-page",
+       "attribution": "다나와 상품 페이지",
+       "width": 500,
+       "height": 500,
+       "bytes": 20873
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/price/price-0030.jpg",
+       "sourceUrl": "https://img.danuri.io/catalog-image/297/806/093/842d52092b2a4da6ae423010a12daa41.jpg",
+       "license": "product-page",
+       "attribution": "다나와 상품 페이지 (배지 · 글자 잘라 냄)",
+       "width": 288,
+       "height": 312,
+       "bytes": 8176
+      }
+     }
+    },
+    {
+     "id": "price-0049",
+     "file": "data/minigame/price/items.json",
+     "take": "image",
+     "why": "V012 fix — 'New' 문구를 잘라 냄",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/price/price-0049.jpg",
+       "sourceUrl": "https://img.danuri.io/catalog-image/153/419/063/86d9044e8b494ed3bad05ccdb7c56439.jpg",
+       "license": "product-page",
+       "attribution": "다나와 상품 페이지",
+       "width": 500,
+       "height": 500,
+       "bytes": 10932
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/price/price-0049.jpg",
+       "sourceUrl": "https://img.danuri.io/catalog-image/153/419/063/86d9044e8b494ed3bad05ccdb7c56439.jpg",
+       "license": "product-page",
+       "attribution": "다나와 상품 페이지 ('New' 문구 잘라 냄)",
+       "width": 500,
+       "height": 420,
+       "bytes": 10636
+      }
+     }
+    },
+    {
+     "id": "price-0062",
+     "file": "data/minigame/price/items.json",
+     "take": "rejected",
+     "why": "V012 fix(priceKrw null) — 롤렉스 공식 정가를 열지 못함(rolex.com 403 · 뉴스는 모델별 정가가 갈림) · 다나와 판매처 2,310만~3,040만은 병행 시세라 새 상품 정가 근거가 아님 → rejected(GEN 판단 · CV-29 사치품)",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "rejected"
+     }
+    },
+    {
+     "id": "price-0098",
+     "file": "data/minigame/price/items.json",
+     "take": "rejected",
+     "why": "V012 5절 — price-0018 과 같은 상품(다나와 pcode=18132734) · 브리핑대로 하나를 뺌(0018 은 판매처 3곳 · 이름을 그림에 맞춤)",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "rejected"
+     }
+    },
+    {
+     "id": "photo-0002",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 공용 파일의 자름 · 보정 표시를 attribution 에",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0002.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wooden_hourglass.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Martin Olsson (Mnemo) / Wikimedia Commons",
+       "width": 473,
+       "height": 1024,
+       "bytes": 58875
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0002.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wooden_hourglass.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Martin Olsson (Mnemo) / Wikimedia Commons (cropped)",
+       "width": 473,
+       "height": 1024,
+       "bytes": 58875
+      }
+     }
+    },
+    {
+     "id": "photo-0005",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 회전 표시 · 변형 '깔대기' 는 제거 제안이 아니라 그대로",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0005.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kitchen_Funnel.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Donovan Govan / Wikimedia Commons",
+       "width": 1024,
+       "height": 1022,
+       "bytes": 38991
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0005.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kitchen_Funnel.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Donovan Govan / Wikimedia Commons (rotated)",
+       "width": 1024,
+       "height": 1022,
+       "bytes": 38991
+      }
+     }
+    },
+    {
+     "id": "photo-0007",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 문서로 닫히는 '오똑이' 더함",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "오뚜기"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "오뚜기",
+       "오똑이"
+      ]
+     }
+    },
+    {
+     "id": "photo-0010",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 보정 표시 · 변형 '휘스크' 는 그대로(제거 제안 아님)",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0010.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Schneebesen1.JPG?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Peng / Wikimedia Commons",
+       "width": 500,
+       "height": 407,
+       "bytes": 28613
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0010.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Schneebesen1.JPG?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Peng / Wikimedia Commons (colour-adjusted)",
+       "width": 500,
+       "height": 407,
+       "bytes": 28613
+      }
+     }
+    },
+    {
+     "id": "photo-0011",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 공용 파일의 자름 · 보정 표시를 attribution 에",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0011.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pacifier_for_newborn%2C_2015-08-03.jpg?width=1024",
+       "license": "CC BY-SA 4.0",
+       "attribution": "Crisco 1492 / Wikimedia Commons",
+       "width": 1024,
+       "height": 1024,
+       "bytes": 25834
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0011.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pacifier_for_newborn%2C_2015-08-03.jpg?width=1024",
+       "license": "CC BY-SA 4.0",
+       "attribution": "Crisco 1492 / Wikimedia Commons (brightness adjusted, cropped)",
+       "width": 1024,
+       "height": 1024,
+       "bytes": 25834
+      }
+     }
+    },
+    {
+     "id": "photo-0018",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 문서로 닫히는 '칼라콘' · '트래픽콘' 더함",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "트래픽 콘"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "트래픽 콘",
+       "트래픽콘",
+       "칼라콘"
+      ]
+     }
+    },
+    {
+     "id": "photo-0019",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — '안전유도블록'(ko 위키 문장) 더함 · edited 표시",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "시각 장애인 유도 블록"
+      ],
+      "image": {
+       "file": "assets/minigame/photo/photo-0019.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tenji-block.JPG?width=1024",
+       "license": "CC BY-SA 2.5",
+       "attribution": "Haragayato / Wikimedia Commons",
+       "width": 1024,
+       "height": 768,
+       "bytes": 149436
+      }
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "시각 장애인 유도 블록",
+       "안전유도블록",
+       "점자블록"
+      ],
+      "image": {
+       "file": "assets/minigame/photo/photo-0019.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tenji-block.JPG?width=1024",
+       "license": "CC BY-SA 2.5",
+       "attribution": "Haragayato / Wikimedia Commons (edited)",
+       "width": 1024,
+       "height": 768,
+       "bytes": 149436
+      }
+     }
+    },
+    {
+     "id": "photo-0027",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 공용 파일의 자름 · 보정 표시를 attribution 에",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0027.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sporks_-_20070804.jpg?width=1024",
+       "license": "CC BY 2.5",
+       "attribution": "Jmb / Wikimedia Commons",
+       "width": 976,
+       "height": 1024,
+       "bytes": 139069
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0027.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sporks_-_20070804.jpg?width=1024",
+       "license": "CC BY 2.5",
+       "attribution": "Jmb / Wikimedia Commons (colour-adjusted, watermark removed)",
+       "width": 976,
+       "height": 1024,
+       "bytes": 139069
+      }
+     }
+    },
+    {
+     "id": "photo-0028",
+     "file": "data/minigame/photo/items.json",
+     "take": "modified",
+     "why": "V012 fix — '자릿쇠' 더함 · 자름 표시. 제안은 '와샤' 를 뺐으나 판정 reason 은 unverified 일 뿐 제거 사유가 아니라 유지(CV-49 기준)",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "와샤",
+       "나사받이"
+      ],
+      "image": {
+       "file": "assets/minigame/photo/photo-0028.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Washers.agr.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "agr / Wikimedia Commons",
+       "width": 572,
+       "height": 599,
+       "bytes": 51752
+      }
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "와샤",
+       "나사받이",
+       "자릿쇠"
+      ],
+      "image": {
+       "file": "assets/minigame/photo/photo-0028.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Washers.agr.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "agr / Wikimedia Commons (cropped)",
+       "width": 572,
+       "height": 599,
+       "bytes": 51752
+      }
+     }
+    },
+    {
+     "id": "photo-0031",
+     "file": "data/minigame/photo/items.json",
+     "take": "modified",
+     "why": "V012 fix — '집 타이 · 호스 타이' 더함 · 밝기 보정 표시. 제안은 '타이랩' 을 뺐으나 언론 기사 86건(네이버 뉴스 — 예: 중앙일보 2026-07-10 '케이블타이의 두 얼굴')에 쓰여 CV-49 기준으로 유지",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "타이랩"
+      ],
+      "image": {
+       "file": "assets/minigame/photo/photo-0031.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cable_ties.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Silverxxx / Wikimedia Commons",
+       "width": 1024,
+       "height": 768,
+       "bytes": 84176
+      }
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "타이랩",
+       "집 타이",
+       "호스 타이"
+      ],
+      "image": {
+       "file": "assets/minigame/photo/photo-0031.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cable_ties.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Silverxxx / Wikimedia Commons (brightness adjusted)",
+       "width": 1024,
+       "height": 768,
+       "bytes": 84176
+      }
+     }
+    },
+    {
+     "id": "photo-0035",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 자름 · 보정 표시(제안의 한국어 문구를 다른 항목과 같은 영어 꼴로) · '프레즐' 은 그대로",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0035.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/BrezelnSalz02_(cropped).JPG?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Sundar1 / Wikimedia Commons",
+       "width": 1024,
+       "height": 723,
+       "bytes": 203449
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0035.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/BrezelnSalz02_(cropped).JPG?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Sundar1 / Wikimedia Commons (cropped, colour-adjusted)",
+       "width": 1024,
+       "height": 723,
+       "bytes": 203449
+      }
+     }
+    },
+    {
+     "id": "photo-0036",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 자름 표시(영어 꼴로)",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0036.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/VanillaMacaron.jpg?width=1024",
+       "license": "CC BY-SA 4.0",
+       "attribution": "Michelle Naherny / Wikimedia Commons",
+       "width": 1024,
+       "height": 902,
+       "bytes": 47261
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0036.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/VanillaMacaron.jpg?width=1024",
+       "license": "CC BY-SA 4.0",
+       "attribution": "Michelle Naherny / Wikimedia Commons (cropped)",
+       "width": 1024,
+       "height": 902,
+       "bytes": 47261
+      }
+     }
+    },
+    {
+     "id": "photo-0057",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 보정 표시(영어 꼴로)",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0057.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Okapi2.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Raul654 / Wikimedia Commons",
+       "width": 1024,
+       "height": 889,
+       "bytes": 280798
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0057.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Okapi2.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Raul654 / Wikimedia Commons (contrast adjusted)",
+       "width": 1024,
+       "height": 889,
+       "bytes": 280798
+      }
+     }
+    },
+    {
+     "id": "photo-0058",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — ko 위키에 나오는 '판골린' 더함",
+     "before": {
+      "status": "candidate",
+      "altAnswers": []
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "판골린"
+      ]
+     }
+    },
+    {
+     "id": "photo-0060",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 보정 표시(영어 꼴로)",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0060.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wild_aye_aye.jpg?width=1024",
+       "license": "CC BY 2.0",
+       "attribution": "nomis-simon / Wikimedia Commons",
+       "width": 1024,
+       "height": 682,
+       "bytes": 117624
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0060.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wild_aye_aye.jpg?width=1024",
+       "license": "CC BY 2.0",
+       "attribution": "nomis-simon / Wikimedia Commons (shadows adjusted)",
+       "width": 1024,
+       "height": 682,
+       "bytes": 117624
+      }
+     }
+    },
+    {
+     "id": "photo-0064",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 라이선스 PD → CC BY 2.0 · 저작자",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0064.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sir_Winston_Churchill_-_19086236948.jpg?width=1024",
+       "license": "Public domain",
+       "attribution": "Library and Archives Canada (Flickr) / Wikimedia Commons",
+       "width": 805,
+       "height": 1024,
+       "bytes": 41967
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0064.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sir_Winston_Churchill_-_19086236948.jpg?width=1024",
+       "license": "CC BY 2.0",
+       "attribution": "Yousuf Karsh / Library and Archives Canada / Wikimedia Commons",
+       "width": 805,
+       "height": 1024,
+       "bytes": 41967
+      }
+     }
+    },
+    {
+     "id": "photo-0068",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — edit 표시",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0068.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nelson_Mandela-2008_(edit).jpg?width=1024",
+       "license": "CC BY 2.0",
+       "attribution": "South Africa The Good News / Wikimedia Commons",
+       "width": 657,
+       "height": 778,
+       "bytes": 68915
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0068.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nelson_Mandela-2008_(edit).jpg?width=1024",
+       "license": "CC BY 2.0",
+       "attribution": "South Africa The Good News / www.sagoodnews.co.za / Wikimedia Commons (edited)",
+       "width": 657,
+       "height": 778,
+       "bytes": 68915
+      }
+     }
+    },
+    {
+     "id": "photo-0079",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 라이선스 PD → CC BY-SA 3.0",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0079.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tour_Eiffel_Wikimedia_Commons.jpg?width=1024",
+       "license": "Public domain",
+       "attribution": "Benh LIEU SONG / Wikimedia Commons",
+       "width": 553,
+       "height": 1024,
+       "bytes": 73105
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0079.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tour_Eiffel_Wikimedia_Commons.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Benh LIEU SONG / Wikimedia Commons",
+       "width": 553,
+       "height": 1024,
+       "bytes": 73105
+      }
+     }
+    },
+    {
+     "id": "photo-0080",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 라이선스 PD → CC BY-SA 3.0",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0080.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Statue_of_Liberty_7.jpg?width=1024",
+       "license": "Public domain",
+       "attribution": "Elcobbola / Wikimedia Commons",
+       "width": 741,
+       "height": 1024,
+       "bytes": 68839
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0080.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Statue_of_Liberty_7.jpg?width=1024",
+       "license": "CC BY-SA 3.0",
+       "attribution": "Elcobbola / Wikimedia Commons",
+       "width": 741,
+       "height": 1024,
+       "bytes": 68839
+      }
+     }
+    },
+    {
+     "id": "photo-0085",
+     "file": "data/minigame/photo/items.json",
+     "take": "modified",
+     "why": "V012 fix — 위키 표기 '마추 픽추' 더함. 제안은 '마추피추' 제외를 검토했으나 ko 위키 넘겨주기(마추피추 → 마추 픽추)와 기사 545건이 있어 CV-49 기준으로 유지",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "마추피추"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "마추피추",
+       "마추 픽추"
+      ]
+     }
+    },
+    {
+     "id": "photo-0090",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 문서로 닫히는 '성가정 성당' 더함",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "사그라다 파밀리아 성당"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "사그라다 파밀리아 성당",
+       "성가정 성당"
+      ]
+     }
+    },
+    {
+     "id": "photo-0093",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 라이선스 PD → CC BY-SA 4.0 · delso.photo 표기",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/photo/photo-0093.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Catedral_de_San_Basilio%2C_Mosc%C3%BA%2C_Rusia%2C_2016-10-03%2C_DD_05-06_HDR.jpg?width=1024",
+       "license": "Public domain",
+       "attribution": "Diego Delso / Wikimedia Commons",
+       "width": 1024,
+       "height": 883,
+       "bytes": 211477
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/photo/photo-0093.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Catedral_de_San_Basilio%2C_Mosc%C3%BA%2C_Rusia%2C_2016-10-03%2C_DD_05-06_HDR.jpg?width=1024",
+       "license": "CC BY-SA 4.0",
+       "attribution": "Diego Delso, delso.photo, License CC BY-SA / Wikimedia Commons",
+       "width": 1024,
+       "height": 883,
+       "bytes": 211477
+      }
+     }
+    },
+    {
+     "id": "photo-0101",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 영문 변형 제거(15 B2) · '미니컴보이' 더함",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "Game Boy"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "미니컴보이"
+      ]
+     }
+    },
+    {
+     "id": "photo-0102",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 영문 변형 제거(15 B2)",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "Tamagotchi"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": []
+     }
+    },
+    {
+     "id": "photo-0108",
+     "file": "data/minigame/photo/items.json",
+     "take": "modified",
+     "why": "V012 fix — 영문 'Enigma' 제거 · '에니그마 기계' 더함. 제안은 '에니그마 암호기' 도 뺐으나 제거 사유가 적혀 있지 않아 유지",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "이니그마",
+       "에니그마 암호기",
+       "Enigma"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "이니그마",
+       "에니그마 암호기",
+       "에니그마 기계"
+      ]
+     }
+    },
+    {
+     "id": "photo-0110",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 영문 변형 제거(15 B2)",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "Jenga"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": []
+     }
+    },
+    {
+     "id": "photo-0112",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 문서로 닫히는 '뉴턴의 진자' 더함",
+     "before": {
+      "status": "candidate",
+      "altAnswers": []
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "뉴턴의 진자"
+      ]
+     }
+    },
+    {
+     "id": "photo-0113",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 영문 변형 제거(15 B2)",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "Apple"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": []
+     }
+    },
+    {
+     "id": "photo-0114",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 영문 변형 제거(15 B2)",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "Nike"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": []
+     }
+    },
+    {
+     "id": "photo-0116",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 영문 변형 제거 · '메르세데스' 더함",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "메르세데스-벤츠",
+       "메르세데스 벤츠",
+       "Mercedes-Benz"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "메르세데스-벤츠",
+       "메르세데스 벤츠",
+       "메르세데스"
+      ]
+     }
+    },
+    {
+     "id": "photo-0117",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 영문 변형 제거(15 B2)",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "Audi"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": []
+     }
+    },
+    {
+     "id": "photo-0118",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 영문 변형 제거(미츠비시 유지)",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "미츠비시",
+       "Mitsubishi"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": [
+       "미츠비시"
+      ]
+     }
+    },
+    {
+     "id": "photo-0119",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 영문 변형 제거(15 B2)",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "Android"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": []
+     }
+    },
+    {
+     "id": "photo-0120",
+     "file": "data/minigame/photo/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 영문 변형 제거(15 B2)",
+     "before": {
+      "status": "candidate",
+      "altAnswers": [
+       "McDonald's"
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "altAnswers": []
+     }
+    },
+    {
+     "id": "estimate-0003",
+     "file": "data/minigame/estimate/items.json",
+     "take": "proposal",
+     "why": "V012 fix — ko 위키 범위의 중앙값 1,500kg + note(범위)",
+     "before": {
+      "status": "candidate",
+      "value": 1192,
+      "explanation": "기린 수컷은 평균 약 1.2톤, 암컷은 약 830kg이다. 키에 비해 몸통은 짧은 편이다.",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Giraffe",
+        "note": "The average weight is 1,192 kg for an adult male and 828 kg for an adult female.",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "value": 1500,
+      "explanation": "기린 수컷은 보통 1.3~1.7톤(약 1.5톤)이고 암컷은 그보다 200~400kg 가볍다.",
+      "sources": [
+       {
+        "url": "https://ko.wikipedia.org/wiki/기린",
+        "note": "(요지) 수컷 몸무게 1,300~1,700kg (V012 재확인)",
+        "fetchedAt": "2026-10-20"
+       }
+      ],
+      "note": "수컷 일반적으로 1,300~1,700kg(중앙값)"
+     }
+    },
+    {
+     "id": "estimate-0069",
+     "file": "data/minigame/estimate/items.json",
+     "take": "image",
+     "why": "V012 fix — 틀니 모형 → 자연 치아 위턱 치열 사진(공용 Category:Permanent teeth · CC0) · 값은 그대로",
+     "before": {
+      "status": "candidate",
+      "image": {
+       "file": "assets/minigame/estimate/estimate-0069.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dental_model_demonstrating_oral_anatomy_with_detailed_teeth_and_gum_structure_in_clear_display.jpg?width=1024",
+       "license": "CC BY 2.0",
+       "attribution": "Shixart1985 / Wikimedia Commons",
+       "width": 1024,
+       "height": 684,
+       "bytes": 31649
+      }
+     },
+     "after": {
+      "status": "verified",
+      "image": {
+       "file": "assets/minigame/estimate/estimate-0069.jpg",
+       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fullset.jpg?width=1024",
+       "license": "CC0",
+       "attribution": "Roquex / Wikimedia Commons",
+       "width": 1022,
+       "height": 1024,
+       "bytes": 161414
+      }
+     }
+    },
+    {
+     "id": "estimate-0086",
+     "file": "data/minigame/estimate/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 제안 caveat 대로 공식 뉴스(정책브리핑 korea.kr)로 재확인 뒤 반영",
+     "before": {
+      "status": "candidate",
+      "value": 5500,
+      "asOf": "2017-08-15",
+      "explanation": "2017년 8월 15일 6,200원에서 5,500원으로 700원 내렸다.",
+      "sources": [
+       {
+        "url": "https://ko.wikipedia.org/wiki/인천대교",
+        "note": "2017년 자금재조달을 통해 같은 해 8월 15일부터 소형차 기준 통행료를 6,200원에서 5,500원으로 700원 인하하였다.",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "value": 2000,
+      "asOf": "2025-12-18",
+      "explanation": "2025년 12월 18일 5,500원에서 2,000원으로 내렸다(평균 63% 인하).",
+      "sources": [
+       {
+        "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148957659",
+        "note": "인천대교는 지난달 18일부터 통행료를 평균 63% 인하했다. 승용차(소형)는 5500원에서 2000원으로…",
+        "fetchedAt": "2026-10-20"
+       }
+      ],
+      "note": "2025-12-18 부터 소형차 2,000원(종전 5,500원)"
+     }
+    },
+    {
+     "id": "which-0001",
+     "file": "data/minigame/which/items.json",
+     "take": "modified",
+     "why": "V012 fix — 한 출처(UN 추계 2026) 값으로 · asOf 는 날짜 꼴만 받으므로 '(UN 추계)' 는 note 로",
+     "before": {
+      "status": "candidate",
+      "a": {
+       "label": "에티오피아",
+       "value": 111652998,
+       "image": {
+        "file": "assets/minigame/which/which-0001-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Ethiopia.svg?width=1024",
+        "license": "Public domain",
+        "attribution": "Drawn by User:SKopp / Wikimedia Commons",
+        "width": 1024,
+        "height": 512,
+        "bytes": 21114
+       }
+      },
+      "b": {
+       "label": "독일",
+       "value": 83298787,
+       "image": {
+        "file": "assets/minigame/which/which-0001-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Germany.svg?width=1024",
+        "license": "Public domain",
+        "attribution": "User:SKopp, User:Madden, and other users / Wikimedia Commons",
+        "width": 1024,
+        "height": 614,
+        "bytes": 5516
+       }
+      },
+      "margin": 1.34,
+      "asOf": "2026-06-30",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population",
+        "note": "(요지) List of countries and territories by total population — 나라마다 공식 추계·센서스 값과 날짜",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "a": {
+       "label": "에티오피아",
+       "value": 138902185,
+       "image": {
+        "file": "assets/minigame/which/which-0001-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Ethiopia.svg?width=1024",
+        "license": "Public domain",
+        "attribution": "Drawn by User:SKopp / Wikimedia Commons",
+        "width": 1024,
+        "height": 512,
+        "bytes": 21114
+       }
+      },
+      "b": {
+       "label": "독일",
+       "value": 83644258,
+       "image": {
+        "file": "assets/minigame/which/which-0001-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Germany.svg?width=1024",
+        "license": "Public domain",
+        "attribution": "User:SKopp, User:Madden, and other users / Wikimedia Commons",
+        "width": 1024,
+        "height": 614,
+        "bytes": 5516
+       }
+      },
+      "margin": 1.66,
+      "asOf": "2026-07-01",
+      "sources": [
+       {
+        "url": "https://www.worldometers.info/world-population/population-by-country/",
+        "note": "(요지) 2026 인구 — 에티오피아 138,902,185 · 독일 83,644,258 (UN 추계 · V012 재확인)",
+        "fetchedAt": "2026-10-20"
+       }
+      ],
+      "note": "둘 다 UN 추계 2026년 값(Worldometer)"
+     }
+    },
+    {
+     "id": "which-0016",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 연도 2020 · '광주'(경기 광주시와 헷갈림) → 광주광역시",
+     "before": {
+      "status": "candidate",
+      "stem": "둘 중 인구가 더 많은 도시는? (2022년 인구총조사)",
+      "b": {
+       "label": "광주",
+       "value": 1477573,
+       "image": null
+      },
+      "asOf": "2022-11-01",
+      "sources": [
+       {
+        "url": "https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%9D%B8%EA%B5%AC%EC%88%9C_%EB%8F%84%EC%8B%9C_%EB%AA%A9%EB%A1%9D",
+        "note": "(요지) 2022년 11월 인구(명) 표 — 통계청 인구총조사에 근거한 것이다.",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "stem": "둘 중 인구가 더 많은 도시는? (2020년 인구총조사)",
+      "b": {
+       "label": "광주광역시",
+       "value": 1477573,
+       "image": null
+      },
+      "asOf": "2020-11-01",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_cities_in_South_Korea",
+        "note": "(요지) 시별 인구 — 2020년 인구총조사 값(V012 재확인 · 값은 그대로)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0017",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 값은 2020 인구총조사 값이라 질문 · asOf 의 연도를 2020 으로",
+     "before": {
+      "status": "candidate",
+      "stem": "둘 중 인구가 더 많은 도시는? (2022년 인구총조사)",
+      "asOf": "2022-11-01",
+      "sources": [
+       {
+        "url": "https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%9D%B8%EA%B5%AC%EC%88%9C_%EB%8F%84%EC%8B%9C_%EB%AA%A9%EB%A1%9D",
+        "note": "(요지) 2022년 11월 인구(명) 표 — 통계청 인구총조사에 근거한 것이다.",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "stem": "둘 중 인구가 더 많은 도시는? (2020년 인구총조사)",
+      "asOf": "2020-11-01",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_cities_in_South_Korea",
+        "note": "(요지) 시별 인구 — 2020년 인구총조사 값(V012 재확인 · 값은 그대로)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0018",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 값은 2020 인구총조사 값이라 질문 · asOf 의 연도를 2020 으로",
+     "before": {
+      "status": "candidate",
+      "stem": "둘 중 인구가 더 많은 도시는? (2022년 인구총조사)",
+      "asOf": "2022-11-01",
+      "sources": [
+       {
+        "url": "https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%9D%B8%EA%B5%AC%EC%88%9C_%EB%8F%84%EC%8B%9C_%EB%AA%A9%EB%A1%9D",
+        "note": "(요지) 2022년 11월 인구(명) 표 — 통계청 인구총조사에 근거한 것이다.",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "stem": "둘 중 인구가 더 많은 도시는? (2020년 인구총조사)",
+      "asOf": "2020-11-01",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_cities_in_South_Korea",
+        "note": "(요지) 시별 인구 — 2020년 인구총조사 값(V012 재확인 · 값은 그대로)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0019",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 값은 2020 인구총조사 값이라 질문 · asOf 의 연도를 2020 으로",
+     "before": {
+      "status": "candidate",
+      "stem": "둘 중 인구가 더 많은 도시는? (2022년 인구총조사)",
+      "asOf": "2022-11-01",
+      "sources": [
+       {
+        "url": "https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%9D%B8%EA%B5%AC%EC%88%9C_%EB%8F%84%EC%8B%9C_%EB%AA%A9%EB%A1%9D",
+        "note": "(요지) 2022년 11월 인구(명) 표 — 통계청 인구총조사에 근거한 것이다.",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "stem": "둘 중 인구가 더 많은 도시는? (2020년 인구총조사)",
+      "asOf": "2020-11-01",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_cities_in_South_Korea",
+        "note": "(요지) 시별 인구 — 2020년 인구총조사 값(V012 재확인 · 값은 그대로)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0020",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 값은 2020 인구총조사 값이라 질문 · asOf 의 연도를 2020 으로",
+     "before": {
+      "status": "candidate",
+      "stem": "둘 중 인구가 더 많은 도시는? (2022년 인구총조사)",
+      "asOf": "2022-11-01",
+      "sources": [
+       {
+        "url": "https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%9D%B8%EA%B5%AC%EC%88%9C_%EB%8F%84%EC%8B%9C_%EB%AA%A9%EB%A1%9D",
+        "note": "(요지) 2022년 11월 인구(명) 표 — 통계청 인구총조사에 근거한 것이다.",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "stem": "둘 중 인구가 더 많은 도시는? (2020년 인구총조사)",
+      "asOf": "2020-11-01",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_cities_in_South_Korea",
+        "note": "(요지) 시별 인구 — 2020년 인구총조사 값(V012 재확인 · 값은 그대로)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0021",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 값은 2020 인구총조사 값이라 질문 · asOf 의 연도를 2020 으로",
+     "before": {
+      "status": "candidate",
+      "stem": "둘 중 인구가 더 많은 도시는? (2022년 인구총조사)",
+      "asOf": "2022-11-01",
+      "sources": [
+       {
+        "url": "https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%9D%B8%EA%B5%AC%EC%88%9C_%EB%8F%84%EC%8B%9C_%EB%AA%A9%EB%A1%9D",
+        "note": "(요지) 2022년 11월 인구(명) 표 — 통계청 인구총조사에 근거한 것이다.",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "stem": "둘 중 인구가 더 많은 도시는? (2020년 인구총조사)",
+      "asOf": "2020-11-01",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_cities_in_South_Korea",
+        "note": "(요지) 시별 인구 — 2020년 인구총조사 값(V012 재확인 · 값은 그대로)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0022",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 값은 2020 인구총조사 값이라 질문 · asOf 의 연도를 2020 으로",
+     "before": {
+      "status": "candidate",
+      "stem": "둘 중 인구가 더 많은 도시는? (2022년 인구총조사)",
+      "asOf": "2022-11-01",
+      "sources": [
+       {
+        "url": "https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%9D%B8%EA%B5%AC%EC%88%9C_%EB%8F%84%EC%8B%9C_%EB%AA%A9%EB%A1%9D",
+        "note": "(요지) 2022년 11월 인구(명) 표 — 통계청 인구총조사에 근거한 것이다.",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "stem": "둘 중 인구가 더 많은 도시는? (2020년 인구총조사)",
+      "asOf": "2020-11-01",
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_cities_in_South_Korea",
+        "note": "(요지) 시별 인구 — 2020년 인구총조사 값(V012 재확인 · 값은 그대로)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0026",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 하마 값을 종 문서(수컷 1,480kg)로",
+     "before": {
+      "status": "candidate",
+      "b": {
+       "label": "하마",
+       "value": 1800,
+       "image": {
+        "file": "assets/minigame/which/which-0026-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Portrait_Hippopotamus_in_the_water.jpg?width=1024",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Muhammad Mahdi Karim / Wikimedia Commons",
+        "width": 1024,
+        "height": 682,
+        "bytes": 133973
+       }
+      },
+      "margin": 2.22,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+        "note": "(요지) 동물별 다 자란 개체의 평균 몸무게 표(average mass)",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "b": {
+       "label": "하마",
+       "value": 1480,
+       "image": {
+        "file": "assets/minigame/which/which-0026-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Portrait_Hippopotamus_in_the_water.jpg?width=1024",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Muhammad Mahdi Karim / Wikimedia Commons",
+        "width": 1024,
+        "height": 682,
+        "bytes": 133973
+       }
+      },
+      "margin": 2.7,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Hippopotamus",
+        "note": "(요지) 하마 수컷 평균 1,480kg (V012 재확인)",
+        "fetchedAt": "2026-10-20"
+       },
+       {
+        "url": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+        "note": "(요지) 동물별 다 자란 개체의 평균 몸무게 표(average mass)",
+        "fetchedAt": "2026-10-17"
+       }
+      ],
+      "note": "둘 다 수컷 평균 기준"
+     }
+    },
+    {
+     "id": "which-0033",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 코끼리 25km/h",
+     "before": {
+      "status": "candidate",
+      "b": {
+       "label": "아프리카코끼리",
+       "value": 21,
+       "image": {
+        "file": "assets/minigame/which/which-0033-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg?width=1024",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Giles Laurent / Wikimedia Commons",
+        "width": 1024,
+        "height": 682,
+        "bytes": 133108
+       }
+      },
+      "margin": 2.29,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Fastest_animals",
+        "note": "(요지) 동물별 최고 속도(km/h) 표",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "b": {
+       "label": "아프리카코끼리",
+       "value": 25,
+       "image": {
+        "file": "assets/minigame/which/which-0033-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg?width=1024",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Giles Laurent / Wikimedia Commons",
+        "width": 1024,
+        "height": 682,
+        "bytes": 133108
+       }
+      },
+      "margin": 1.92,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Fastest_animals",
+        "note": "(요지) 동물별 최고 속도(km/h) 표",
+        "fetchedAt": "2026-10-17"
+       },
+       {
+        "url": "https://en.wikipedia.org/wiki/Elephant",
+        "note": "(요지) 코끼리 최고 속도 25km/h (V012 재확인)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0036",
+     "file": "data/minigame/which/items.json",
+     "take": "modified",
+     "why": "V012 fix — 북극고래 268 · 상어 값의 폭은 note 로(중앙값 비율 1.46 ≥ 1.3 · 방향 그대로 · GEN 판단)",
+     "before": {
+      "status": "candidate",
+      "b": {
+       "label": "북극고래",
+       "value": 211,
+       "image": {
+        "file": "assets/minigame/which/which-0036-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowhead_Whale_NOAA.jpg?width=1024",
+        "license": "Public domain",
+        "attribution": "Vicki Beaver, Alaska Fisheries Science Center, NOAA FIsheries, Marine Mammal Per / Wikimedia Commons",
+        "width": 1024,
+        "height": 682,
+        "bytes": 71883
+       }
+      },
+      "margin": 1.86,
+      "sources": [
+       {
+        "url": "https://genomics.senescence.info/species/entry.php?species=Somniosus_microcephalus",
+        "note": "Maximum longevity: 392 years (wild)",
+        "fetchedAt": "2026-10-17"
+       },
+       {
+        "url": "https://genomics.senescence.info/species/entry.php?species=Balaena_mysticetus",
+        "note": "Maximum longevity: 211 years (wild)",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "b": {
+       "label": "북극고래",
+       "value": 268,
+       "image": {
+        "file": "assets/minigame/which/which-0036-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowhead_Whale_NOAA.jpg?width=1024",
+        "license": "Public domain",
+        "attribution": "Vicki Beaver, Alaska Fisheries Science Center, NOAA FIsheries, Marine Mammal Per / Wikimedia Commons",
+        "width": 1024,
+        "height": 682,
+        "bytes": 71883
+       }
+      },
+      "margin": 1.46,
+      "sources": [
+       {
+        "url": "https://genomics.senescence.info/species/entry.php?species=Somniosus_microcephalus",
+        "note": "Maximum longevity: 392 years (wild)",
+        "fetchedAt": "2026-10-17"
+       },
+       {
+        "url": "https://en.wikipedia.org/wiki/Bowhead_whale",
+        "note": "(요지) 북극고래 최대 수명 268년 (V012 재확인)",
+        "fetchedAt": "2026-10-20"
+       }
+      ],
+      "note": "그린란드상어 392년은 방사성 탄소 추정(±120년) — 그래도 가장 오래 사는 척추동물로 꼽힌다"
+     }
+    },
+    {
+     "id": "which-0038",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 두더지쥐 37년",
+     "before": {
+      "status": "candidate",
+      "a": {
+       "label": "벌거숭이두더지쥐",
+       "value": 31,
+       "image": {
+        "file": "assets/minigame/which/which-0038-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Webs180130-rat.jpg?width=1024",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Kein keen / Wikimedia Commons",
+        "width": 720,
+        "height": 560,
+        "bytes": 62758
+       }
+      },
+      "margin": 7.75,
+      "sources": [
+       {
+        "url": "https://genomics.senescence.info/species/entry.php?species=Heterocephalus_glaber",
+        "note": "Maximum longevity: 31 years (captivity)",
+        "fetchedAt": "2026-10-17"
+       },
+       {
+        "url": "https://genomics.senescence.info/species/entry.php?species=Mus_musculus",
+        "note": "Maximum longevity: 4 years (captivity)",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "a": {
+       "label": "벌거숭이두더지쥐",
+       "value": 37,
+       "image": {
+        "file": "assets/minigame/which/which-0038-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Webs180130-rat.jpg?width=1024",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Kein keen / Wikimedia Commons",
+        "width": 720,
+        "height": 560,
+        "bytes": 62758
+       }
+      },
+      "margin": 9.25,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Naked_mole-rat",
+        "note": "(요지) 벌거숭이두더지쥐 최대 수명 37년 (V012 재확인)",
+        "fetchedAt": "2026-10-20"
+       },
+       {
+        "url": "https://genomics.senescence.info/species/entry.php?species=Mus_musculus",
+        "note": "Maximum longevity: 4 years (captivity)",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0058",
+     "file": "data/minigame/which/items.json",
+     "take": "image",
+     "why": "V012 fix — 오른쪽 아래 워터마크 글자를 잘라 냄(scripts/g016-crop.mjs) · 값 그대로",
+     "before": {
+      "status": "candidate",
+      "a": {
+       "label": "엘브루스산",
+       "value": 5642,
+       "image": {
+        "file": "assets/minigame/which/which-0058-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mount_Elbrus_(cropped).jpg?width=1024",
+        "license": "CC BY-SA 2.0",
+        "attribution": "Aleksandr Markin / Wikimedia Commons",
+        "width": 1024,
+        "height": 545,
+        "bytes": 80031
+       }
+      }
+     },
+     "after": {
+      "status": "verified",
+      "a": {
+       "label": "엘브루스산",
+       "value": 5642,
+       "image": {
+        "file": "assets/minigame/which/which-0058-a.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mount_Elbrus_(cropped).jpg?width=1024",
+        "license": "CC BY-SA 2.0",
+        "attribution": "Aleksandr Markin / Wikimedia Commons (cropped · 아래 글자 잘라 냄)",
+        "width": 1024,
+        "height": 492,
+        "bytes": 70206
+       }
+      }
+     }
+    },
+    {
+     "id": "which-0073",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 삼성전자 FY2025 291.6B",
+     "before": {
+      "status": "candidate",
+      "a": {
+       "label": "아마존",
+       "value": 7160,
+       "image": null
+      },
+      "b": {
+       "label": "삼성전자",
+       "value": 1980,
+       "image": null
+      },
+      "margin": 3.62,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue",
+        "note": "Data reflects the most recent fiscal year, primarily 2024 or 2025. (매출 US$ billions)",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "a": {
+       "label": "아마존",
+       "value": 7169,
+       "image": null
+      },
+      "b": {
+       "label": "삼성전자",
+       "value": 2916,
+       "image": null
+      },
+      "margin": 2.46,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue",
+        "note": "Data reflects the most recent fiscal year, primarily 2024 or 2025. (매출 US$ billions)",
+        "fetchedAt": "2026-10-17"
+       },
+       {
+        "url": "https://en.wikipedia.org/wiki/Samsung_Electronics",
+        "note": "(요지) 매출 US$291.63B (FY2025 · V012 재확인)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0075",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 토요타 FY2025 437.7B",
+     "before": {
+      "status": "candidate",
+      "a": {
+       "label": "월마트",
+       "value": 7130,
+       "image": null
+      },
+      "b": {
+       "label": "토요타",
+       "value": 3120,
+       "image": null
+      },
+      "margin": 2.29,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue",
+        "note": "Data reflects the most recent fiscal year, primarily 2024 or 2025. (매출 US$ billions)",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "a": {
+       "label": "월마트",
+       "value": 7131,
+       "image": null
+      },
+      "b": {
+       "label": "토요타",
+       "value": 4377,
+       "image": null
+      },
+      "margin": 1.63,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue",
+        "note": "Data reflects the most recent fiscal year, primarily 2024 or 2025. (매출 US$ billions)",
+        "fetchedAt": "2026-10-17"
+       },
+       {
+        "url": "https://en.wikipedia.org/wiki/Toyota",
+        "note": "(요지) 매출 US$437.69B (FY2025 · V012 재확인)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0076",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 메타 FY2025 201B",
+     "before": {
+      "status": "candidate",
+      "a": {
+       "label": "알파벳(구글)",
+       "value": 4020,
+       "image": null
+      },
+      "b": {
+       "label": "메타(페이스북)",
+       "value": 1640,
+       "image": null
+      },
+      "margin": 2.45,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue",
+        "note": "Data reflects the most recent fiscal year, primarily 2024 or 2025. (매출 US$ billions)",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "a": {
+       "label": "알파벳(구글)",
+       "value": 4028,
+       "image": null
+      },
+      "b": {
+       "label": "메타(페이스북)",
+       "value": 2010,
+       "image": null
+      },
+      "margin": 2,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue",
+        "note": "Data reflects the most recent fiscal year, primarily 2024 or 2025. (매출 US$ billions)",
+        "fetchedAt": "2026-10-17"
+       },
+       {
+        "url": "https://en.wikipedia.org/wiki/Meta_Platforms",
+        "note": "(요지) 매출 US$201B (FY2025 · V012 재확인)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0077",
+     "file": "data/minigame/which/items.json",
+     "take": "modified",
+     "why": "V012 fix(값 null) — 두 회사 모두 같은 해(2025) · 같은 통화(유로) 정보상자 값으로 · 단위 '억 유로'(환산을 하지 않음 · GEN 판단)",
+     "before": {
+      "status": "candidate",
+      "a": {
+       "label": "폭스바겐",
+       "value": 3480,
+       "image": null
+      },
+      "b": {
+       "label": "BMW",
+       "value": 1680,
+       "image": null
+      },
+      "unit": "억 달러",
+      "margin": 2.07,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue",
+        "note": "Data reflects the most recent fiscal year, primarily 2024 or 2025. (매출 US$ billions)",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "a": {
+       "label": "폭스바겐",
+       "value": 3219,
+       "image": null
+      },
+      "b": {
+       "label": "BMW",
+       "value": 1335,
+       "image": null
+      },
+      "unit": "억 유로",
+      "margin": 2.41,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/Volkswagen_Group",
+        "note": "Revenue €321.913B (2025)",
+        "fetchedAt": "2026-10-20"
+       },
+       {
+        "url": "https://en.wikipedia.org/wiki/BMW",
+        "note": "Revenue €133.453 billion (2025)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0078",
+     "file": "data/minigame/which/items.json",
+     "take": "rejected",
+     "why": "V012 fix(벤츠 값 null) — 메르세데스-벤츠 그룹 2025 매출을 문서로 못 닫음(위키 정보상자는 €145.6B 2024) · 코스트코(US$ 2025)와 같은 연도 · 통화로 맞출 수 없어 rejected",
+     "before": {
+      "status": "candidate"
+     },
+     "after": {
+      "status": "rejected"
+     }
+    },
+    {
+     "id": "which-0088",
+     "file": "data/minigame/which/items.json",
+     "take": "proposal",
+     "why": "V012 fix — 수마트라 482,287㎢",
+     "before": {
+      "status": "candidate",
+      "b": {
+       "label": "수마트라섬",
+       "value": 428134,
+       "image": null
+      },
+      "margin": 1.69,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_islands_by_area",
+        "note": "(요지) 섬별 면적(km2) 표",
+        "fetchedAt": "2026-10-17"
+       }
+      ]
+     },
+     "after": {
+      "status": "verified",
+      "b": {
+       "label": "수마트라섬",
+       "value": 482287,
+       "image": null
+      },
+      "margin": 1.5,
+      "sources": [
+       {
+        "url": "https://en.wikipedia.org/wiki/List_of_islands_by_area",
+        "note": "(요지) 섬별 면적(km2) 표",
+        "fetchedAt": "2026-10-17"
+       },
+       {
+        "url": "https://en.wikipedia.org/wiki/Sumatra",
+        "note": "(요지) 수마트라 면적 482,286.55km² (V012 재확인)",
+        "fetchedAt": "2026-10-20"
+       }
+      ]
+     }
+    },
+    {
+     "id": "which-0118",
+     "file": "data/minigame/which/items.json",
+     "take": "image",
+     "why": "V012 fix — 기아 건물이 함께 보이던 그림 B 를 현대 건물만 남게 잘라 냄 · 1967 은 en 위키 Hyundai Motor Company 문장(sources)",
+     "before": {
+      "status": "candidate",
+      "b": {
+       "label": "현대자동차",
+       "value": 1967,
+       "image": {
+        "file": "assets/minigame/which/which-0118-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/HyundaiMotorsCompany_KiaMotorsCompany.jpg?width=1024",
+        "license": "CC BY-SA 3.0",
+        "attribution": "HappyMidnight / Wikimedia Commons",
+        "width": 1024,
+        "height": 794,
+        "bytes": 110798
+       }
+      }
+     },
+     "after": {
+      "status": "verified",
+      "b": {
+       "label": "현대자동차",
+       "value": 1967,
+       "image": {
+        "file": "assets/minigame/which/which-0118-b.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/HyundaiMotorsCompany_KiaMotorsCompany.jpg?width=1024",
+        "license": "CC BY-SA 3.0",
+        "attribution": "HappyMidnight / Wikimedia Commons (cropped — 현대 건물만)",
+        "width": 440,
+        "height": 624,
+        "bytes": 57358
+       }
+      }
+     }
+    }
+   ],
+   "tally": {
+    "image": 6,
+    "modified": 8,
+    "rejected": 3,
+    "proposal": 46
+   }
+  }
+ }
+}
