@@ -343,3 +343,11 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 |---------|------|------|
 | `achievements` | (account_id, key) PK · earned_at · value · game_id · run_id · backfilled | 표시만(포인트 없음). 판정은 기존 표(server/src/db/achievementsSql.ts) — 이 표는 "언제 얻었나". 소급 scripts/achievements-backfill.mjs(멱등) |
 - 전적(GET /api/me/stats)은 새 표 없이 기존 표에서 읽는다(D-242).
+
+## ★★★ 문제 평가(설문) (R056 / 0020 — D-246)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `question_feedback` | id bigserial · question_id FK · account_id FK(계정 지우면 같이) · game_id FK(null 허용 · 판 지우면 null) · vote smallint (-1 · 1) · reasons text[] · comment text(≤200) · created_at · updated_at · **UNIQUE (question_id, account_id)** · 인덱스 question_id | 한 사람 한 문제 한 평가 — 나중 것이 이긴다(game_id 는 최근 판) · 취소 = 행 삭제 · 사유 코드는 shared/src/feedback.ts · 서버가 **그 판(game_players)에 있었고 그 문제가 그 판(game_questions)에 나왔는지** 본다 · 지우지 않는다(17 3절) |
+- 보고: `npm run feedback:report [--since YYYY-MM-DD] [--no-bots]`(읽기만 · tmp/feedback-report.md). 문항 반영은 GEN 몫.
+- ★ 정답 공개 이벤트(question.resolved · 재접속 스냅숏 resolution)에 questionId 가 실린다(R056 — 공개 뒤라 알려도 된다).

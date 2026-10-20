@@ -247,6 +247,26 @@ DELETE FROM achievements WHERE account_id = (SELECT id FROM accounts WHERE login
 DELETE FROM achievements WHERE account_id IN (SELECT id FROM accounts WHERE login_id LIKE 'bot\_%' OR login_id LIKE 'uic%');
 ```
 
+### ★★★ 문제 평가(설문) (R056)
+```bash
+npm run feedback:report                          # 전부 — 👎 많은 문제 50 · 사유별 합계 · 의견 → tmp/feedback-report.md
+npm run feedback:report -- --since 2026-10-21 --no-bots   # 그날부터 · 봇/검사 계정(bot_* · uic* · r10_*) 빼고
+```
+```sql
+-- 👎 많은 문제 (사유 펼침)
+SELECT f.question_id, count(*) FILTER (WHERE vote = -1) AS down, count(*) FILTER (WHERE vote = 1) AS up,
+       left(q.question_text, 50) AS q, q.display_answer
+  FROM question_feedback f JOIN questions q ON q.id = f.question_id
+ GROUP BY f.question_id, q.question_text, q.display_answer ORDER BY down DESC LIMIT 30;
+-- 사유별 합계
+SELECT r AS reason, count(*) FROM question_feedback, unnest(reasons) r GROUP BY r ORDER BY 2 DESC;
+-- 의견(닉네임 · 시각)
+SELECT f.question_id, a.nickname, f.updated_at, f.comment FROM question_feedback f JOIN accounts a ON a.id = f.account_id
+ WHERE f.comment IS NOT NULL ORDER BY f.updated_at DESC;
+-- 검사 계정 평가 비우기(봇 feedback 은 스스로 비우고 시작) — 찬종 · 친구 평가는 건드리지 않는다
+DELETE FROM question_feedback WHERE account_id IN (SELECT id FROM accounts WHERE login_id LIKE 'bot\_%' OR login_id LIKE 'uic%');
+```
+
 ### ★★★ 퀴즈류 미니게임 항목 · 그림 · 경험 (R052)
 ```bash
 node scripts/minigame-load.mjs             # dry-run — 게임별 verified · 형식 거부 · 그림 없음 표 (DB 를 쓰지 않는다)
