@@ -1074,6 +1074,23 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 38. ★★★ R057 — 미니게임만 · 이모티콘 나열 · 복수정답 유연화
+
+```bash
+npm run bot -- mgonly          ★ 16개: 설정 범위 · mode · 중간 입장 구경 · 1/3 2/3 3/3 · intro 첫 것만 · minigame.ended 0 · 문제 0 · 순위 점수 합 · games 행 · 보상 포인트 · 다시 하기 이어받음
+npm run bot -- emojiinline     ★ 10개: 안 가진 특별 토큰 버림 · 상한 10 · 빈 글 · 1~3개 반응 꼴 · 4개 인라인 · "😂 정답 :sp:" 정답 인정 · 도배(채팅 규칙)
+node scripts/ui-check-bundles.mjs r057   ★ 15개 · 그림 docs/design/r057 (MINIGAME_PHASE_SCALE 0.5)
+npm run answers:flex           복수정답 변환 측정(읽기만 · tmp/answer-flex-report.md)
+```
+| 끝 점검 (R057 · 2026-10-21 06:09~) | 결과 |
+|---|---|
+| typecheck · vitest · build · smoke | 통과 · 518/518 · 통과 · 12/12 |
+| 봇 | 12 통과(join ~ concur) → collide 에서 **메모리 부족으로 셸 회수**(남는 3.5GB) — 나머지 45 · ui-check 35묶음 **못 돌림 — 메모리** |
+| 라운드 안 따로 | mgonly 16 · emojiinline 10 · chat · mask 23 · emoji 9 · spam 17 · shop 28 · game 60 · collide 20 · race 7 · r057 15/15 |
+★ 검사 교훈: 채팅 줄의 첫 input 은 이모티콘 찾기 칸 — 입력창은 `.chat-input-row > input` · realType 은 덮어쓴다(덧붙이기는 Input.insertText).
+
+---
+
 ## 37. ★★★ R056 — 문제 평가 · 작은 수정 넷
 
 ```bash
