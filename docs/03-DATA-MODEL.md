@@ -361,6 +361,14 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 - 미니게임 기록(minigame_runs · players · rounds · results · rewards)은 퀴즈 판 안 미니게임과 같은 표 · game_id 로 붙는다(after_question_index = null). game_players.final_score = 순위 점수 합.
 - 전적(GET /api/me/stats)의 "퀴즈 판 수" 는 mode = 'quiz' 만 센다.
 
+## ★★ 근접 오답 (R058 / 0022 — D-252 · A83 (나))
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `near_misses` | id bigserial · question_id FK · account_id FK(계정 지우면 같이) · game_id FK(null 허용 · 판 지우면 null) · normalized text(1~40자 — **정규화 글**) · nearest text(가장 가까운 정답 · 정규화) · distance smallint(편집 거리 — 포함 · 포함됨이면 길이 차) · kind text('contains' · 'contained' · 'edit') · created_at · 인덱스 question_id · created_at | 문제가 열려 있는 동안(공개 전 · 같은 epoch) **미경험자의 틀린 제출 가운데 정답에 가까운 것만** — 기준은 shared/src/nearMiss.ts(포함은 정답 2자 이상 · 포함됨은 제출 2자 이상 · 거리는 ≤ 2 · 2자 정답은 ≤ 1). 판정 · emit 이 끝난 뒤 void(판정 지연 0) · 한 판 한 문제 한 사람 5행(메모리 셈) · 봇 · 검사 계정(login_id `^(bot\|uic\|r10_)`)은 INSERT 의 SQL 이 거른다 · **보관 90일 — 서버 부팅 때 지움**(bootCleanup · 주기 작업 없음) |
+- 보고: `npm run answers:near [-- --since 7 | 2026-10-21] [--with-bots]`(읽기만 · tmp/answer-near-report.md — 문항별 행 · 사람 수 · 예 · 정답). 반영(정답 변형 추가)은 GEN 몫.
+- `answer_events` 는 그대로 맞은 제출만(Q-52) — 틀린 제출은 이 표에만 · 원문 채팅은 여전히 DB 에 없다(01 9장).
+
 ## ★ 채팅 속 이모티콘 토큰 · 고르기 창 설정 (R057 — D-250)
 
 - 표 추가 없음. 채팅은 여전히 DB 에 남기지 않는다(9장) — 토큰(표준 = 유니코드 글자 · 특별 = `:sp:<번호>:`)은 채팅 글 안에만 있다. 이모티콘만 1~3개면 chat.message 에 `emojiIds`(번호들 · emojiId 는 첫 번호).

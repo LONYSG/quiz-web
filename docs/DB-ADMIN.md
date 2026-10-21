@@ -267,6 +267,21 @@ SELECT f.question_id, a.nickname, f.updated_at, f.comment FROM question_feedback
 DELETE FROM question_feedback WHERE account_id IN (SELECT id FROM accounts WHERE login_id LIKE 'bot\_%' OR login_id LIKE 'uic%');
 ```
 
+### ★★ 근접 오답 (R058 · near_misses · 90일)
+보고서는 `npm run answers:near`(tmp/answer-near-report.md). 직접 볼 때:
+```sql
+-- 문항별 — 사람 수 많은 순 (같은 글을 여러 사람이 쳤으면 변형 누락 후보)
+SELECT n.question_id, count(*) AS rows, count(DISTINCT n.account_id) AS people,
+       left(q.question_text, 50) AS q, q.display_answer
+  FROM near_misses n JOIN questions q ON q.id = n.question_id
+ GROUP BY n.question_id, q.question_text, q.display_answer ORDER BY people DESC, rows DESC LIMIT 30;
+-- 한 문항의 글 · 가까운 정답 · 거리
+SELECT normalized, nearest, distance, kind, count(*) FROM near_misses WHERE question_id = 문항번호
+ GROUP BY 1, 2, 3, 4 ORDER BY 5 DESC;
+-- 90일 지난 것 바로 지우기(서버 부팅 때도 지운다)
+DELETE FROM near_misses WHERE created_at < now() - interval '90 days';
+```
+
 ### ★★★ 퀴즈류 미니게임 항목 · 그림 · 경험 (R052)
 ```bash
 node scripts/minigame-load.mjs             # dry-run — 게임별 verified · 형식 거부 · 그림 없음 표 (DB 를 쓰지 않는다)
