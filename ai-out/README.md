@@ -47,6 +47,7 @@
 | V020.txt | 표본 4덩어리: ① 미니게임 DB 1,164 ↔ 파일 전수 대조(차이 0) · 사람 읽기 72 fix 2 · 그림 15 문제 0 · CV-48 46행 fix 0 ② 애매 67 중 fix 10 · drop 2 ③ unverified 14 중 true 7 ④ 행정 구역(전남광주통합특별시 2026-07-01 시행) 영향 16 → `audit/v020-minigame.json` · `v020-ambiguous.json` · `v020-unverified.json` · `v020-admin.json` · `v020-raw/` · CV-59~63 |
 | V021.txt | ① 애매 나머지 309 전수(판정자 fix 95 → 최종 fix 92 · drop 2 · 변형 37 · famous-one 25) · blind 재채점 = DB 72% ② G017 표본: 힌트 27 중 fix 2(제안 없이 쓴 10 은 famous-one 0) · blind 맞힘 48% · #2051 fix · 줄인 질문 3 ok · 반영 30 중 fix 1 → `audit/v021-ambiguous.json` · `v021-g017.json` · `v021-raw/` · CV-64~67 |
 | V022.txt | 정답 친숙도 판정 — 상 952 중 1(처음 듣는 정답) 225(23.6%) · 중 표본 300 중 25(8.3%) · 역사·사회 32.4% · 1 비활성 시 상만 19.04 → 14.54판 · 보정 예 69% → `audit/v022-targets.json` · `v022-familiarity.json` · `v022-raw/` · CV-68~70 |
+| V023.txt | 정답 친숙도 — 중 나머지 2,551 전수(1 225 · 8.8%) + 둘째 판정자 교차: 확정 1 268(상 159 · 중 109) · 경계 182 · 확정 비활성 시 중+상 76.06 → 70.70판 · 대조 오판 2.5% → `audit/v023-targets.json` · `v023-familiarity.json` · `v023-cross.json` · `v023-raw/` · CV-71 (+CV-68 덧붙임) |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 
