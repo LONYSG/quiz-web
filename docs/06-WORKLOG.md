@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-10-21 — 미니게임 데이터 3차 + 새 게임 photoyear 1차 (G018, GEN)
+
+- **무엇을**: 미니게임 3차 609(items-3.json — price 100 · photo 120 · estimate 100 · which 120 · worldprice 69) + 새 게임 photoyear(이 사진 몇 년도?) 1차 100(한국 50 · 세계 50 · docs/18 §8 신설) · worldprice 나라 보충(iphone 38→40 · 콜라 43→77 · 휘발유 42→75 — 기존 행 그대로 끝에 덧붙임) · 그림 627장(git 밖 — backups/minigame-g018.zip) · 맞혀 보기 사진 이름 117/120 · 사진 연도 중앙 오차 2년 · g008-check 1,784 막힘 0 · candidate — V023 대기 · 적재 없음.
+- **어떻게**: 도구 — g008-check 에 photoyear 규칙 · `--add-rows` · g008-build `--round g018`(기존 품목 rows 는 끝에 덧붙이기만 — 바뀌면 멈춤) · g008-img 에 photoyear. 수집 — 하위 에이전트 12회(한 번에 1개 · 지시 `tmp/g018/MG-INSTRUCTIONS.md` — sources[].note 에 읽은 문장) · 맞혀 보기 1회(사진 이름 120 · 사진 연도 100 — 정답 모름) · GEN 이 게임마다 무작위 그림을 직접 봄(약 100장) · GEN 수정 8(`audit/g018-gen-fixes.json`). 중간에 찬종 요청으로 일시중지 · PC 재부팅 → `tmp/g018/STATE.md` 로 이어서.
+- **결정**: DG-056.
+- **검증**: g008-check 1·2·3차 + photoyear 1,784 막힘 0 · 그림 칸 627 = 파일 627 · products.json 더하기 552줄 · 지움 0 · DB 쓰기 0.
+- **남은 것**: C80(V023).
+
 ## 2026-10-21 — 미니게임만 · 이모티콘 나열 · 복수정답 유연화 (R057, MAIN)
 
 - **무엇을**: 설정 "방식 [퀴즈 · 미니게임만]"(0021) · 이모티콘 고르기 창 [바로 보내기 · 입력창에 넣기] · Shift+클릭 · 길게 누르기 · 토큰 · 판정은 글자로 · 복수정답 변환 넷 · npm run answers:flex · 17 2-1.

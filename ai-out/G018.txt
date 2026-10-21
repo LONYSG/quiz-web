@@ -1,0 +1,71 @@
+===========================================
+ROUND: G018
+DATE: 2026-10-21
+TASK: 미니게임 데이터 3차(items-3.json — price · worldprice 나라 보충 · photo · estimate · which) + 새 게임 photoyear(이 사진 몇 년도?) 1차 100(docs/18 §8 신설) → 그림 git 밖 · zip · VERIFY 묶음(V023). 적재 없음
+STATUS: 완료
+===========================================
+
+[cmd 창 요약]
+1. 3차 609: price 100 · photo 120 · estimate 100 · which 120 · worldprice 69(덧붙인 나라 문항) + photoyear 100(한국 50 · 세계 50).
+2. worldprice 나라 보충: iphone 38→40 · 콜라 43→77 · 휘발유 42→75(기존 행 그대로 끝에 덧붙임) · 빅맥 54 · 넷플릭스 194 그대로.
+3. 그림 627장(git 밖 · backups/minigame-g018.zip 159MB) · 맞혀 보기 사진 이름 117/120 · 사진 연도 중앙 오차 2년.
+4. g008-check 1·2·3차 + photoyear 1,784 막힘 0 · DB 쓰기 0 · 커밋 d0fa2b3 외.
+5. DG-056 · C80(V023 대기). 일시중지 · 재부팅 1회 — STATE.md 로 이어서.
+
+0. 찬종이 볼 것
+- 게임별 수 (status candidate · verify null · createdRound G018)
+  | 게임 | 3차 | 배분 | 그림 | 1+2+3차 |
+  |---|---|---|---|---|
+  | price 얼마게요 | 100 | <1만 31 · 1~10만 29 · 10~100만 25 · 100만+ 15 · 의외로 비쌈 20 · 의외로 쌈 13 · 기괴한 해외 10 | 100 | 300 |
+  | worldprice 빅맥지수 | 69 문항 | 새 나라 행 69(iphone 2 · 콜라 34 · 휘발유 33) | 품목 그림 그대로 | 문항 324 |
+  | photo 사진 이름 | 120 | everyday 25 · object 25 · place 20 · person 15 · food 15 · animal 10 · logo 10 · 난이도 1:33 · 2:65 · 3:22(2~3 이 73%) | 120 | 340 |
+  | estimate 얼마나 될까 | 100 | kind 11 섞음(한 kind 10 이하) | 91 | 300 |
+  | which 어느 쪽? | 120 | bigger 70(1.45배 이상) · earlier 50(8년 이상 · 한국 짝 30) | 짝 108 | 420 |
+  | ★ photoyear 이 사진 몇 년도? | 100 | 한국 50(연대마다 7) · 세계 50(1900~40년대 12 · 이후 연대 5~6 · 20개국) · exact 96 · circa 4 · 난이도 1:9 · 2:51 · 3:40 | 100 | 100(새 게임) |
+- photoyear 예 5 (이 PC)
+  · assets/minigame/photoyear/photoyear-0007.jpg — 1958 · 복구된 한강대교 준공식 날 다리를 건너는 시민들
+  · assets/minigame/photoyear/photoyear-0021.jpg — 1979 · 서울 시내 지하도 입구와 도심 거리
+  · assets/minigame/photoyear/photoyear-0036.jpg — 2001 · 서울의 PC방
+  · assets/minigame/photoyear/photoyear-0063.jpg — 1952 · 암스테르담 직물 가게 앞
+  · assets/minigame/photoyear/photoyear-0084.jpg — 1987 · 홍콩섬 거리와 2층 트램
+- worldprice 나라 수 (전 → 후): 빅맥 54 → 54(이코노미스트 자료의 나라가 이미 다 있음) · iphone 38 → 40(벨기에 · 룩셈부르크 — 마카오는 403, 그 밖 19국은 온라인 스토어 없음) · 넷플릭스 194 → 194 · 휘발유 42 → 75 · 콜라 43 → 77. 목표 "품목마다 40 이상" 채움.
+- 버린 소재 175(게임별 · 사유): price 73(가격 분산 1.5 초과 46 · 출처 6 · 그림 · 이름 다름 등 21) · photo 28(유일성 8 · 라이선스 10 · 그림 글자 3 · 그 밖 7) · estimate 30(출처 문장 없음 15 · 출처마다 갈림 4 · 곧 바뀜 · 그림 등 11) · which 19(근소 2 · 그림 글자 · 작은 그림 7 · 그 밖 10) · photoyear 25(얼굴 크게 9 · 연도 글자 5 · 촬영 연도 근거 없음 4 · KOGL 2 · 그 밖 5). + GEN 이 뺀 4(아래 GEN 판단).
+- 맞혀 보기(정답 모르는 에이전트 · 웹 없음)
+  · 사진 이름 120: 맞힘 117 — 결과 파일에서 이웃 열쇠 5쌍(자격루↔유튜브 · 크롬↔트롬본 · 쥐덫↔나폴레옹 · 플라스마 구↔테슬라 코일 · 아스파라거스↔피젯 스피너)의 답이 서로 바뀌어 적혀 있었고 바꾸면 모두 맞음. 못 맞힘 3: 스노 글로브('스노우볼' — 변형 더함) · 구세주 그리스도상('예수 그리스도상' — 그대로) · 요강('놋그릇' — 뺌). unknown 2(손기정 · 독립운동가 사진 — 추정은 맞음).
+  · 사진 연도 100: 중앙 오차 2년 · 0~2년 67 · 3~5년 24 · 6~10년 8 · 11~20년 1 · 21년+ 0 · 난이도 1 중앙 0 · 2 · 3 중앙 2. 연도 글자 3(0094 'Beijing 2008' → 잘라 냄 · 0032 'Since 1974' · 0035 '1937' 은 창업 연도라 둠). ★ 판정자가 사람보다 잘 맞히는 쪽이라(V019 blind) 실제 오차는 더 클 것.
+- 못 한 것: worldprice 품목 +1(브리핑의 "휘발유 1L" 은 G010 에 이미 있음 — 다른 품목은 설계 판단 · C80). 마카오 iPhone(403).
+
+★ 원칙 메모
+- 원칙 7: loaded 1,164(price 197 · worldprice 254 · photo 219 · estimate 199 · which 295) — 맞다. 품목 5 · 그림 1,002 — 맞다. docs/18 0절 묶음 파일 규칙 — 있다. data/minigame/photoyear/ — 없었다. DG-055 · C79 · CV-63 — 맞다(이번 DG-056 · C80). ★ 다른 점: "품목 +1 은 휘발유 1L" — 휘발유는 G010 에 이미 있는 품목(42국)이라 하지 않았다 · iphone 만 40국 미만(38)이었다.
+- 동시 라운드: VERIFY · MAIN 파일 0 · DB 쓰기 0(읽기만 — minigame_items) · products.json 은 기존 품목 끝에 행만 더함(더하기 552줄 · 지움 0 · build 가 기존 행이 바뀌면 멈춘다) · items.json · items-2.json 0 줄 바뀜 · server/ client/ shared/ migrations/ pipeline/ 0.
+- 하위 에이전트 한 번에 1개(수집 11 + 추가 3 + 맞혀 보기 1) · 남는 메모리 5.9~6GB · 스트림 멈춤 1 · 네트워크 끊김 1(이어서) · 찬종 요청 일시중지 · PC 재부팅 1(STATE.md 로 이어서) · 429 없음 · 모델 그대로. WebSearch: 에이전트 12 / 300 · GEN 0. 이 PC 는 TLS 검사 프록시가 있어 node 요청에 NODE_OPTIONS=--use-system-ca 를 썼다(검증을 끄지 않음).
+
+A. 도구 (20f0423 · 7f667d1)
+- g008-check: photoyear 규칙(year 1826~2026 정수 · yearKind · circa 범위 20년 이하 · region · difficulty · 그림 필수 자유 라이선스 · 같은 사진 · 같은 제목 겹침) · `--add-rows`(기존 품목 끝 행) — 기존 1,175 막힘 0.
+- g008-build `--round g018`: items-3.json · photoyear/items.json · 기존 품목 rows 덧붙이기(기존 행 · 다른 칸이 바뀌면 멈춤) · worldprice 문항은 덧붙인 나라만(id 0256~0324) · audit/g018-mg-verify-targets.json(전수).
+- g008-img 에 photoyear · docs/18 §8 신설 · 0절 게임 목록 · 7절 한 줄.
+- minigame-load: 게임 목록에 photoyear 가 없어 그 파일을 건너뛴다(막히지 않고 안 읽음) — 고치는 것은 MAIN(C80).
+
+B. 수집
+- 지시 tmp/g018/MG-INSTRUCTIONS.md(G010 지시 + ★ sources[].note 에 읽은 문장 · CV-59 다른 물건 altAnswers 금지 · 그림 수량 = 이름 수량 · 연도 글자 금지 · photoyear 형식) · 몫: price-1 · price-2 · worldprice-rows · photo-1 · photo-2 · estimate-1 · estimate-2 · which-1 · which-2 · photoyear-kr · photoyear-world.
+- GEN 직접 보기: price 22 · photo 24 · which 13 · photoyear 24 · estimate 약한 3 · 그 밖 3(0217 No.1 인쇄 배지 — 포장 디자인이라 둠 · 0301 · 0341).
+
+C. 빌드 (d0fa2b3)
+- items-3.json 다섯 · photoyear/items.json · products.json · check 1,784 막힘 0 · 그림 칸 627 = 파일 627 · zip backups/minigame-g018.zip(assets/minigame + data/minigame · 1,659개 · 159MB).
+
+D. VERIFY 묶음 · 문서
+- data/pipeline/audit/g018-mg-verify-targets.json(게임별 전수 · worldprice addedRows) · audit/g018-gen-fixes.json(8) · 13 C80(먼저 볼 것).
+
+GEN 판단 (DG-056)
+1. 뺌 4: price-0233 두리안(5개 묶음 ↔ 그림 1상자) · 0244 와이퍼(2개 세트 ↔ 1개) · estimate-0293 9급 보수('수준' 전망치) · photo-0235 요강(맞혀 보기 — 놋그릇과 헷갈림) → 같은 규칙으로 price-0301 · 0302 · estimate-0301 · photo-0341 을 채움.
+2. 고침 4: price-0209 · 0228 note 의 가격 숫자 뺌 · photo-0224 변형 '스노우볼'(기사 643건 — CV-49) · photoyear-0094 'Beijing 2008' 광고판을 잘라 내고 난이도 1 → 2.
+3. worldprice 보충은 기존 품목 rows 끝에 덧붙이기(기존 칸 · fxSource 그대로 — 새 통화 환율 출처는 audit 의 에이전트 기록) · 품목 +1 은 하지 않음.
+4. 같은 기관 소장 사진(Agence Rol · Bundesarchiv · Anefo)은 해 · 취재가 다르면 다른 묶음으로 봄.
+
+새 결정 필요
+- 없음(Q 를 올리지 않았다). 메모는 13 C80(VERIFY 먼저 볼 것 · MAIN 메모 — minigame-load photoyear · products.json 새 행).
+
+고친 문서
+- docs/18-MINIGAME-DATA.md(§8 · 0절 · 7절) · docs/05-STATUS.md · docs/06-WORKLOG.md · docs/07-DECISIONS.md(DG-056) · docs/13-PENDING-CHECKS.md(C80 · 머리글) · ai-out/README.md(G 표) · ai-out/G018.txt
+- 코드 · 데이터: scripts/g008-check.mjs · g008-build.mjs · g008-img.mjs · data/minigame/{price,photo,estimate,which,worldprice}/items-3.json · photoyear/items.json · worldprice/products.json(행 덧붙임) · data/pipeline/audit/g018-mg-verify-targets.json · g018-gen-fixes.json
+- git 밖: assets/minigame/(새 그림 627) · backups/minigame-g018.zip
