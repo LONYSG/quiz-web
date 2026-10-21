@@ -1074,6 +1074,23 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 39. ★★ R058 — 결과 화면 문제 평가 PC 접힘 · 근접 오답 표
+
+```bash
+npm run bot -- near                       ★ 12개: 포함 · 포함됨 · 거리 ≤2 만 행 · 맞은 제출 · 먼 오답 · 경험자 · 공개 뒤 행 0 · 한 문제 한 사람 5행 · 봇 거르기(NEAR_MISS_SKIP_LOGIN) · 정규화 글
+node scripts/ui-check-bundles.mjs r056    ★ 26개(+4 A80): PC 안 누른 사람 접힘 · 채팅 넓음(316 > 120 · 스크롤 0) · 누른 사람 · 모바일 펼침 · 머리줄 눌러 펼침(채팅 ≥120) · 다시 접힘 · 그림 103-result-fb-pc-closed · opened
+npm run answers:near [-- --since 7]       근접 오답 보고(읽기만 · tmp/answer-near-report.md)
+```
+| 끝 점검 (R058 · 2026-10-21 21:57~22:59) | 결과 |
+|---|---|
+| typecheck · vitest · build · smoke | 통과 · 524/524(+6 nearMiss) · 통과 · 12/12 |
+| 봇 | 51 통과(join ~ mgoddone) → mggauge 에서 **메모리 부족으로 셸 회수**(남는 2.3GB) — **못 돌림 — 메모리**: mggauge · mgballoon · mgtap · achievements · feedback · mgonly · emojiinline · near(near 는 라운드 안 12/12) |
+| ui-check | **못 돌림 — 메모리**: 35묶음 + r057 · r056 만 라운드 안 26/26 |
+★ 검사 교훈: 정답 공개 높이는 ceremony-in 애니메이션이 끝난 뒤(500ms) 잰다 — R057 r056 21/22 의 원인. 결과 화면 채팅 줄이 늘면 첫 줄이 가려지니 마지막 줄을 누른다.
+★ C-3(social) 은 "방식" 줄(R057)을 건너뛰고 문제 수 줄로 간격을 잰다(3d20e26 — R057 social 117/118 의 원인).
+
+---
+
 ## 38. ★★★ R057 — 미니게임만 · 이모티콘 나열 · 복수정답 유연화
 
 ```bash
@@ -1085,7 +1102,8 @@ npm run answers:flex           복수정답 변환 측정(읽기만 · tmp/answe
 | 끝 점검 (R057 · 2026-10-21 06:09~) | 결과 |
 |---|---|
 | typecheck · vitest · build · smoke | 통과 · 518/518 · 통과 · 12/12 |
-| 봇 | 12 통과(join ~ concur) → collide 에서 **메모리 부족으로 셸 회수**(남는 3.5GB) — 나머지 45 · ui-check 35묶음 **못 돌림 — 메모리** |
+| 봇 | ★ **정정(R058)**: 셸 회수는 출력만 끊긴 것이고 검사는 끝까지 돌았다(r057-end.log) — **봇 57 전부 통과**(06:09~07:17) |
+| ui-check 35묶음 (07:17~12:26 · 남는 3332→1326MB) | 27 통과 · main-layout 128/129 · main-behavior 326/327(13 A79) · social 117/118(검사 쪽 — R058 고침) · r056 21/22(검사 쪽 높이 재는 때 — R058 고침) · mg-r053-twothirds 4369초 멈춤(규칙 그림 뒤 · 원인 모름) · **못 돌림 — 메모리**: mg-r054-balloon · mg-r054-tap · r054-stats |
 | 라운드 안 따로 | mgonly 16 · emojiinline 10 · chat · mask 23 · emoji 9 · spam 17 · shop 28 · game 60 · collide 20 · race 7 · r057 15/15 |
 ★ 검사 교훈: 채팅 줄의 첫 input 은 이모티콘 찾기 칸 — 입력창은 `.chat-input-row > input` · realType 은 덮어쓴다(덧붙이기는 Input.insertText).
 
