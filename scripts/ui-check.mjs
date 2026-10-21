@@ -3180,6 +3180,12 @@ async function r056Flow(browser) {
   await signUp(G, 'fg', '평가손님');
   await G.goto(`${BASE}/r/${roomId}`);
   await G.waitFor("document.querySelector('.stage') !== null", 10000);
+  // ★ R058 (A80) — PC 로 들어와 👍/👎 를 하나도 안 누르는 사람(결과 목록 기본 접힘을 본다)
+  const Q = await newPage(browser, 'F-quiet', true);
+  await Q.setViewport(1280, 720);
+  await signUp(Q, 'fq', '평가조용');
+  await Q.goto(`${BASE}/r/${roomId}`);
+  await Q.waitFor("document.querySelector('.stage') !== null", 10000);
   // ── E (a)(b) — 후
   await r056PickerEmoji(H, 'after');
   // ── B 정답 공개 👍/👎
@@ -3190,6 +3196,7 @@ async function r056Flow(browser) {
   const shown = await H.waitFor("document.querySelector('.reveal-fb') !== null", 8000);
   await G.waitFor("document.querySelector('.reveal-fb') !== null", 4000);
   record('★★★ B 정답 공개에 👍 좋아 · 👎 별로', shown && (await H.evaluate("[...document.querySelectorAll('.reveal-fb .fb-vote')].map((b) => b.innerText.trim()).join(',')")) === '좋아,별로');
+  await sleep(500); // ★ R058 — 등장 연출(ceremony-in 420ms)이 끝난 뒤 잰다(셋째 참가자로 느려지면 연출 중에 재서 높이가 1~2px 달랐다)
   const hH0 = (await rectOf(H, '.reveal'))?.h;
   const foot0 = await H.evaluate(FOOT);
   const gH0 = (await rectOf(G, '.reveal'))?.h;
@@ -3242,6 +3249,26 @@ async function r056Flow(browser) {
   // ── C 결과 화면
   await H.waitFor("document.querySelector('.fb-list')?.dataset.loaded === '1'", 30000);
   await G.waitFor("document.querySelector('.fb-list')?.dataset.loaded === '1'", 10000);
+  // ★ R058 (A80) — PC 기본 접힘(안 누른 사람) · 누른 사람은 펼침 · 모바일은 펼침 · 접히면 채팅 칸이 넓다
+  await Q.waitFor("document.querySelector('.fb-result') !== null", 10000);
+  await sleep(700);
+  const RES = "JSON.stringify({ def: document.querySelector('.fb-result')?.dataset.fbDefault ?? null, open: document.querySelector('.fb-result')?.classList.contains('open'), list: document.querySelector('.fb-list') !== null, chat: Math.round(document.querySelector('.chat-card')?.getBoundingClientRect().height ?? 0), doc: document.documentElement.scrollHeight <= innerHeight + 1 })";
+  const q0 = JSON.parse(await Q.evaluate(RES));
+  const h0 = JSON.parse(await H.evaluate(RES));
+  const g0 = JSON.parse(await G.evaluate(RES));
+  await snap(Q, '103-result-fb-pc-closed');
+  record('★★★ A80 PC 안 누른 사람 — 목록 기본 접힘 · 채팅 칸이 펼친 사람보다 넓음 · 한 화면', q0.def === 'closed' && !q0.open && !q0.list && q0.chat > h0.chat && q0.chat >= 200 && q0.doc, `Q ${JSON.stringify(q0)} · H ${JSON.stringify(h0)}`);
+  record('★★★ A80 PC 👎 누른 사람 — 기본 펼침 · 채팅 칸 최소 120px · 모바일은 펼침', h0.def === 'open' && h0.open && h0.list && h0.chat >= 120 && g0.def === 'open' && g0.open, `H ${JSON.stringify(h0)} · G ${JSON.stringify(g0)}`);
+  await realClick(Q, '.fb-result-head');
+  await Q.waitFor("document.querySelector('.fb-list')?.dataset.loaded === '1'", 4000);
+  await sleep(300);
+  const q1 = JSON.parse(await Q.evaluate(RES));
+  await snap(Q, '103-result-fb-pc-opened');
+  record('★★ A80 접힌 목록 머리를 누르면 펼침 · 채팅 칸 최소 120px · 한 화면', q1.open && q1.list && q1.chat >= 120 && q1.doc, JSON.stringify(q1));
+  await realClick(Q, '.fb-result-head');
+  await sleep(200);
+  record('★ A80 다시 누르면 접힘', await Q.evaluate("!document.querySelector('.fb-result')?.classList.contains('open')"));
+  await Q.close?.();
   const rowsN = await H.evaluate("document.querySelectorAll('.fb-row').length");
   const firstDown = await H.evaluate("document.querySelector('.fb-row')?.classList.contains('down') && document.querySelector('.fb-row .fb-vote.down')?.classList.contains('on')");
   record('★★★ C 결과 화면 목록 3문제 · 공개 때 누른 👎 가 그대로', rowsN === 3 && firstDown, `${rowsN} · ${firstDown}`);
@@ -3306,10 +3333,12 @@ async function r056Flow(browser) {
   await pressKey(H, 'Escape', 'Escape', 27);
   await sleep(300);
   // 채팅 줄 아바타
-  await H.setInput('.chat-card input', '안녕');
+  await H.setInput('.chat-input-row > input', '안녕'); // ★ R057 뒤 — 채팅 줄 첫 input 은 이모티콘 찾기 칸일 수 있다
   await H.click('전송');
   await G.waitFor("document.querySelector('.chat-line [data-person]') !== null", 4000);
-  await tapOn(G, '.chat-line [data-person]');
+  // ★ R058 — 셋째 참가자로 채팅이 길어져 첫 줄은 가려질 수 있다 → 마지막 채팅 줄("안녕")을 누른다
+  await G.evaluate("[...document.querySelectorAll('.chat-line')].at(-1)?.setAttribute('data-uic-last', '1')");
+  await tapOn(G, '.chat-line[data-uic-last] [data-person]');
   const chatCard = await G.waitFor("document.querySelector('.person-card') !== null", 3000);
   const letter = await G.evaluate("document.querySelector('.person-card .person-letter') !== null && document.querySelector('.person-card .person-photo') === null");
   await G.waitFor("document.querySelector('.person-ach')?.dataset.loaded === '1'", 4000);

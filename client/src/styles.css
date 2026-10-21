@@ -6656,7 +6656,8 @@ button.fb-result-head:hover:not(:disabled) {
   transform: none;
   color: var(--accent);
 }
-/* ★ PC 한 화면 — 결과 카드는 남는 높이만(채팅 칸 최소 120px 은 남긴다) · 줄어드는 것은 평가 목록뿐 */
+/* ★ PC 한 화면 — 결과 카드는 남는 높이만(채팅 칸 최소 120px 은 남긴다) · 줄어드는 것은 평가 목록뿐
+   ★ R058 (A80) — 목록은 PC 기본 접힘 · 접혀 있으면 아래 규칙은 걸리지 않는다(채팅 칸 = R055 처럼 남는 높이 전부 · 최소 120px) */
 :where(.ui-pc) .room-result .center-main {
   flex: 0 1 auto;
   min-height: 0;
@@ -6676,7 +6677,7 @@ button.fb-result-head:hover:not(:disabled) {
   min-height: 0;
 }
 /* 채팅은 기준 높이 0 에서 남는 만큼 자란다(옛 기준 = 100vh 라 줄어들 때 결과 카드까지 같이 줄었다) */
-:where(.ui-pc) .room-result .chat-card {
+:where(.ui-pc) .room-result:has(.fb-result.open) .chat-card {
   flex-basis: 0;
 }
 :where(.ui-pc) .room-result .fb-list {

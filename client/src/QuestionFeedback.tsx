@@ -19,6 +19,7 @@ import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import { fetchGameFeedback, postQuestionFeedback, type FeedbackItem } from './api.js';
 import { usePopup } from './popup.js';
+import { useUiMode } from './uiMode.js';
 
 type Vote = 1 | -1 | null;
 
@@ -183,7 +184,8 @@ function FeedbackRow({ gameId, item }: { gameId: string; item: FeedbackItem }) {
   );
 }
 
-export function FeedbackList({ gameId }: { gameId: string }) {
+/** 이번 판 문제 목록 + 내 평가 불러오기 */
+function useGameFeedbackItems(gameId: string) {
   const [items, setItems] = useState<FeedbackItem[] | null>(null);
   const [err, setErr] = useState(false);
   useEffect(() => {
@@ -197,6 +199,10 @@ export function FeedbackList({ gameId }: { gameId: string }) {
       alive = false;
     };
   }, [gameId]);
+  return { items, err };
+}
+
+function FeedbackListView({ gameId, items, err }: { gameId: string; items: FeedbackItem[] | null; err: boolean }) {
   if (err) return <p className="dim fb-empty">문제 목록을 불러오지 못했어요.</p>;
   if (!items) return <p className="dim fb-empty">불러오는 중…</p>;
   if (items.length === 0) return <p className="dim fb-empty">평가할 문제가 없어요.</p>;
@@ -209,16 +215,27 @@ export function FeedbackList({ gameId }: { gameId: string }) {
   );
 }
 
-/** 결과 화면 — 순위 아래 접이식(기본 펼침). ★ PC 는 결과 카드가 남는 높이만 쓰고 목록만 줄어든다(안에서 스크롤) */
+export function FeedbackList({ gameId }: { gameId: string }) {
+  const { items, err } = useGameFeedbackItems(gameId);
+  return <FeedbackListView gameId={gameId} items={items} err={err} />;
+}
+
+/** 결과 화면 — 순위 아래 접이식. ★ PC 는 결과 카드가 남는 높이만 쓰고 목록만 줄어든다(안에서 스크롤)
+ *  ★ R058 (A80 · D-252 앞) — PC 는 **기본 접힘**(채팅 칸을 R055 처럼 넓게) · 공개 화면에서 👍/👎 를 하나라도 눌렀으면 펼침 ·
+ *    모바일은 그대로 펼침(세로 스크롤). 직접 접고 펼친 것은 그대로 둔다. */
 export function ResultFeedback({ gameId }: { gameId: string }) {
-  const [open, setOpen] = useState(true);
+  const mode = useUiMode();
+  const { items, err } = useGameFeedbackItems(gameId);
+  const [userOpen, setUserOpen] = useState<boolean | null>(null);
+  const voted = !!items?.some((it) => it.vote !== null);
+  const open = userOpen ?? (mode === 'mobile' || voted);
   return (
-    <div className={open ? 'fb-result open' : 'fb-result'}>
-      <button type="button" className="fb-result-head" aria-expanded={open} onClick={() => setOpen((v) => !v)}>
+    <div className={open ? 'fb-result open' : 'fb-result'} data-fb-default={userOpen === null ? (open ? 'open' : 'closed') : undefined}>
+      <button type="button" className="fb-result-head" aria-expanded={open} onClick={() => setUserOpen(!open)}>
         <Icon icon={open ? ChevronDown : ChevronRight} />
         <Icon icon={ClipboardList} /> 이번 판 문제 평가 <span className="dim fb-sub">별로인 문제를 알려 주세요</span>
       </button>
-      {open && <FeedbackList gameId={gameId} />}
+      {open && <FeedbackListView gameId={gameId} items={items} err={err} />}
     </div>
   );
 }
