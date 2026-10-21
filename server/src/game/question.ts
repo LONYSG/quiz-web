@@ -31,9 +31,10 @@
 // =============================================================================
 
 import { checkAchievements } from '../achievements.js';
-import { RULES, computeRanking, flexAnswerSet, generateHint, normalizeAnswer, rankFinal, skipThreshold } from '@quiz/shared';
+import { NEAR_MISS_PER_QUESTION, RULES, computeRanking, flexAnswerSet, generateHint, nearestAnswer, normalizeAnswer, rankFinal, skipThreshold } from '@quiz/shared';
 import type { GameEndReason, QuestionResolution } from '@quiz/shared';
 import { endGame } from '../db/games.js';
+import { insertNearMiss } from '../db/nearMisses.js';
 import { config } from '../config.js';
 import { runBeforeNextQuestion } from './hooks.js';
 import {
@@ -744,6 +745,38 @@ export function recordAnswerEvent(
       wasEligible: input.wasEligible,
       accepted: input.accepted,
       rejectReason: input.rejectReason,
+    }),
+  );
+}
+
+/**
+ * ★★ R058 (A83 (나) · D-252) — 근접 오답 기록. **판정이 끝난 뒤** 부른다(동기 · DB 는 void — 판정 지연 0).
+ *   ★ 문제가 열려 있고(공개 전 · 같은 epoch) 미경험자의 틀린 제출 가운데 정답에 가까운 것만 · 정규화 글만(원문 아님)
+ *   ★ 한 판 한 문제 한 사람 최대 5행 · 봇 · 검사 계정은 SQL 에서 거른다
+ */
+export function recordNearMiss(room: Room, player: Player, text: string, epoch: number | null): void {
+  const game = room.game;
+  const cur = room.currentQuestion;
+  if (!game?.gameId || !cur || room.state !== 'QUESTION_ACTIVE' || cur.resolved || epoch !== cur.epoch) return;
+  if (cur.experiencedAccountIds.has(player.accountId)) return;
+  const counts = (cur.nearMissCounts ??= new Map());
+  const n = counts.get(player.accountId) ?? 0;
+  if (n >= NEAR_MISS_PER_QUESTION) return;
+  const norm = normalizeAnswer(text);
+  const near = nearestAnswer(norm, cur.answersNorm);
+  if (!near) return;
+  counts.set(player.accountId, n + 1);
+  fireAndForget(
+    'near_misses',
+    insertNearMiss({
+      questionId: cur.questionId,
+      accountId: player.accountId,
+      gameId: game.gameId,
+      normalized: norm,
+      nearest: near.answer,
+      distance: near.distance,
+      kind: near.kind,
+      skipLogin: config.tuning.nearMissSkipLogin,
     }),
   );
 }

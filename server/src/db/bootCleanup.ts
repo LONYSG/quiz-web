@@ -27,6 +27,7 @@
 
 import { query } from './pool.js';
 import { closeOpenRuns } from './minigames.js';
+import { deleteOldNearMisses } from './nearMisses.js';
 
 export interface BootCleanupResult {
   closedRooms: number;
@@ -47,6 +48,8 @@ export async function runBootCleanup(): Promise<BootCleanupResult> {
   // (1) 닫히지 않은 방을 전부 닫는다.
   // ★ R050 — 끝나지 않은 미니게임 판도 닫는다 (보상은 final 에서만 넣으므로 두 번 지급될 일이 없다)
   await closeOpenRuns().catch(() => 0);
+  // ★ R058 (D-252) — 근접 오답 보관 90일 (주기 작업 없이 부팅 때만)
+  await deleteOldNearMisses().catch(() => 0);
 
   const rooms = await query(
     `UPDATE rooms

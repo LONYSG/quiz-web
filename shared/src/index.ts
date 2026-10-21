@@ -16,6 +16,7 @@ export { maskAnswers, MASK_SENTINEL, MASK_SHORT_ANSWER_MAX } from './mask.js';
 // ★★★ R057 — 이모티콘 나열(인라인) 토큰 · 복수정답 유연화
 export * from './emojiText.js';
 export * from './answerFlex.js';
+export * from './nearMiss.js';
 export type { MaskResult } from './mask.js';
 export {
   validateRoomSettings,

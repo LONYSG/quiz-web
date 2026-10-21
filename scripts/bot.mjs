@@ -126,6 +126,8 @@ const SCENARIO_ENV = {
   feedback: { RESOLVED_WAIT_MS: '200' },
   mgonly: { MINIGAME_PHASE_SCALE: '0.05' },
   emojiinline: { RESOLVED_WAIT_MS: '200' },
+  // ★ R058 — 근접 오답: bot_nx 만 거른다(기본 봇 · 검사 계정 규칙 대신 — 나머지 봇의 행을 본다)
+  near: { RESOLVED_WAIT_MS: '200', NEAR_MISS_SKIP_LOGIN: '^(bot_nx|uic|r10_)' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -7387,6 +7389,112 @@ async function scenarioEmojiInline() {
   return checkSummary();
 }
 
+// =============================================================================
+// ★★ R058 — 근접 오답 (A83 (나) · D-252): 가까운 것만 · 정규화 글만 · 봇 제외(검사 서버는 bot_nx 만 거른다) · 5행 상한 · 공개 뒤 안 남김 · 90일 지움
+// =============================================================================
+async function scenarioNear() {
+  log('시나리오 near — ★★ 근접 오답 (R058)');
+  const { nearestAnswer, normalizeAnswer, NEAR_MISS_PER_QUESTION } = await import('../shared/dist/index.js');
+  // ★ 번호 계정(bot_01 …)과 겹치지 않게 이름으로 — 서버는 SCENARIO_ENV 로 bot_nx 만 거른다
+  const host = new Bot('nh');
+  const guest = new Bot('ng');
+  const nx = new Bot('nx');
+  const all = [host, guest, nx];
+  for (const b of all) await b.auth();
+  const logins = all.map((b) => b.loginId);
+  await withDb((c) => c.query(`DELETE FROM near_misses WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [logins]));
+  for (const b of all) await b.connect();
+  host.createRoom('R058 근접');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  for (const b of [guest, nx]) {
+    b.join(host.snapshot.room.id);
+    await b.waitFor(() => b.snapshot?.room.id === host.snapshot.room.id, 6000, '입장');
+  }
+  host.socket.emit('lobby.updateSettings', { questionCount: 2, minigames: false, minigameOnly: false });
+  await sleep(400);
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.snapshot?.room.state === 'QUESTION_ACTIVE' && host.snapshot.question?.index === 1, 20000, '문제 1');
+  await guest.waitFor(() => guest.snapshot?.question?.index === 1, 4000, '손님 문제 1');
+  const answers = await answersForText(host.snapshot.question.text);
+  const norms = new Set(answers.map((a) => normalizeAnswer(a)));
+  // ★ 2자 이상 정답으로 만든다(1자 정답은 "포함" 을 보지 않는다)
+  const base = answers.find((a) => [...normalizeAnswer(a)].length >= 2) ?? answers[0];
+  const guestId = guest.snapshot.me.accountId;
+  const expGuest = host.snapshot.question.experiencedPlayers ?? [];
+  log(`  정답 ${answers.join(' · ')} · 기준 "${base}" · 손님 경험 ${expGuest.includes?.(guestId) ?? false}`);
+
+  log('\n[1] 문제 열린 동안 — 가까운 것 7번(5행까지) · 먼 것 · 거른 봇');
+  const sends = ['맞나', '같은데', '아닌가', '일걸', '맞지', '인가봐', '이겠지'].map((s) => `${base}${s}`);
+  const expect7 = sends.map((t) => nearestAnswer(normalizeAnswer(t), norms)).filter(Boolean).length;
+  for (let i = 0; i < sends.length; i += 1) {
+    if (i === 4) await sleep(5300); // 도배 창(5초 5회)
+    guest.chat(sends[i]);
+    await sleep(120);
+  }
+  guest.chat('ㅋㅋㅋ 오늘 날씨 좋다');
+  nx.chat(`${base}맞나`);
+  await sleep(700);
+  expect('★ 문제가 아직 열려 있다(아무도 안 맞힘)', host.snapshot.room.state, 'QUESTION_ACTIVE');
+  // 정답 → 공개 뒤 가까운 글
+  const g = host.mark();
+  host.chat(answers[0]);
+  await host.waitFor(() => host.since(g, 'question.resolved').length > 0, 8000, '정답');
+  const res = host.since(g, 'question.resolved')[0];
+  expectTrue('★★ 판정 그대로 — 방장 정답 인정(근접 기록이 판정을 막지 않음)', res.reason === 'correct' && res.winnerAccountId === host.snapshot.me.accountId, res.reason);
+  guest.chat(`${base}맞나`);
+  await sleep(300);
+  await host.waitFor(() => host.snapshot?.room.state === 'QUESTION_ACTIVE' && host.snapshot.question?.index === 2, 30000, '문제 2');
+  const [a2] = await answersForText(host.snapshot.question.text);
+  host.chat(a2);
+  await host.waitFor(() => host.snapshot?.room.state === 'GAME_RESULT', 30000, '결과');
+  const gameId = host.snapshot.result?.gameId;
+  await sleep(500);
+
+  log('\n[2] 표 near_misses');
+  const rows = (
+    await withDb((c) =>
+      c.query(`SELECT a.login_id, n.normalized, n.nearest, n.distance, n.kind, n.game_id::text, n.question_id::text FROM near_misses n JOIN accounts a ON a.id = n.account_id WHERE a.login_id = ANY($1) ORDER BY n.id`, [logins]),
+    )
+  ).rows;
+  const gRows = rows.filter((r) => r.login_id === guest.loginId);
+  expectTrue('★ 이 문제에서 가까운 제출이 5개 넘게 계산됨(검사 조건)', expect7 > NEAR_MISS_PER_QUESTION, `${expect7}`);
+  expect('★★★ 한 판 한 문제 한 사람 최대 5행', gRows.length, Math.min(NEAR_MISS_PER_QUESTION, expect7));
+  expectTrue('★★★ 정규화 글만(원문 아님 — 공백 · 대문자 없음) · 가까운 정답은 정답 집합', gRows.every((r) => r.normalized === normalizeAnswer(r.normalized) && norms.has(r.nearest)), JSON.stringify(gRows.slice(0, 2)));
+  expectTrue('★★ 종류 contains · 거리 = 길이 차', gRows.every((r) => r.kind === 'contains' && r.distance === [...r.normalized].length - [...r.nearest].length), JSON.stringify(gRows.map((r) => r.kind + r.distance)));
+  expectTrue('★★ game_id · 문항이 이 판 1번 문제', gRows.every((r) => r.game_id === String(gameId)) && new Set(gRows.map((r) => r.question_id)).size === 1, `${gameId}`);
+  expect('★★ 먼 글(ㅋㅋㅋ 오늘 날씨 좋다)은 안 남김', gRows.filter((r) => r.normalized.includes('날씨')).length, 0);
+  expect('★★★ 거른 계정(bot_nx — 봇 · 검사 계정 꼴)은 안 남김', rows.filter((r) => r.login_id === nx.loginId).length, 0);
+  expect('★★ 맞힌 사람(방장)은 안 남김', rows.filter((r) => r.login_id === host.loginId).length, 0);
+
+  log('\n[3] 보고 · 90일 지움');
+  const rep = await new Promise((resolve) => {
+    const p = spawn(process.execPath, [path.join(ROOT, 'scripts', 'answer-near-report.mjs'), '--with-bots', '--since', '1'], { cwd: ROOT, stdio: ['ignore', 'pipe', 'pipe'] });
+    let out = '';
+    p.stdout.on('data', (d) => (out += d));
+    p.stderr.on('data', (d) => (out += d));
+    p.on('close', (code) => resolve({ code, out }));
+  });
+  expectTrue('★★ npm run answers:near — 문항 · 예가 나온다', rep.code === 0 && rep.out.includes(gRows[0]?.question_id ?? '없음'), rep.out.split('\n').slice(0, 2).join(' / '));
+  await withDb(async (c) => {
+    const ins = `INSERT INTO near_misses (question_id, account_id, game_id, normalized, nearest, distance, kind, created_at)
+                 SELECT $1, a.id, NULL, $3, $4, 1, 'contains', now() - make_interval(days => $5) FROM accounts a WHERE a.login_id = $2`;
+    await c.query(ins, [gRows[0].question_id, guest.loginId, 'old91', 'old9', 91]);
+    await c.query(ins, [gRows[0].question_id, guest.loginId, 'old89', 'old8', 89]);
+  });
+  process.env.DATABASE_URL ??= DATABASE_URL; // 서버 모듈(pool)이 읽는다
+  const { deleteOldNearMisses } = await import('../server/dist/db/nearMisses.js');
+  const deleted = await deleteOldNearMisses();
+  const left = (await withDb((c) => c.query(`SELECT normalized FROM near_misses n JOIN accounts a ON a.id = n.account_id WHERE a.login_id = $1 AND normalized LIKE 'old%'`, [guest.loginId]))).rows.map((r) => r.normalized);
+  expectTrue('★★ 보관 90일 — 91일 지난 행 지움 · 89일은 남김(bootCleanup 이 부르는 함수)', deleted >= 1 && left.join(',') === 'old89', `${deleted} · ${left.join(',')}`);
+  await withDb((c) => c.query(`DELETE FROM near_misses WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [logins]));
+  for (const b of all) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
 async function scenarioFeedback() {
   log('시나리오 feedback — ★★★ 문제 평가(설문) (R056)');
   const [host, guest, outsider] = await makeBots(3);
@@ -7688,6 +7796,7 @@ const SCENARIOS = {
   feedback: scenarioFeedback,
   mgonly: scenarioMgOnly,
   emojiinline: scenarioEmojiInline,
+  near: scenarioNear,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

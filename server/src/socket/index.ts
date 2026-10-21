@@ -47,6 +47,7 @@ import {
   finishGame,
   noteLateAnswer,
   recordAnswerEvent,
+  recordNearMiss,
   resolveQuestionSync,
 } from '../game/question.js';
 import { broadcastPauseStatus, pauseIfNoActive, resumeGame } from '../game/pause.js';
@@ -550,6 +551,9 @@ function registerRoomHandlers(socket: Socket): void {
           questionId: outcome.question.questionId,
           startedAt: outcome.question.startedAt,
         });
+      } else if (!outcome.matched && outcome.question) {
+        // ★★ R058 (D-252) — 정답에 가까운 틀린 제출만 정규화 글로 남긴다(판정 · 마스킹 · emit 이 다 끝난 뒤 · DB 는 void)
+        recordNearMiss(room, player, stripEmojiTokens(rawNfc), payload.epoch);
       }
       if (outcome.accepted) {
         // ★★ 여기까지 오는 사이에 await 가 없었다. 그래서 두 번째 정답이 끼어들 수 없다.

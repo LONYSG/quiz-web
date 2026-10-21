@@ -230,6 +230,8 @@ export interface CurrentQuestion {
 
   /** ★ 이 문제를 이미 경험한 참가자. 판정 제외 + 배지 + 마스킹 대상 */
   experiencedAccountIds: Set<string>;
+  /** ★ R058 (D-252) — 이 문제에서 사람마다 남긴 근접 오답 수(최대 5) */
+  nearMissCounts?: Map<string, number>;
 
   startedAt: number;
   /** ★★ 정답 인정 경계다. tick 오차가 아니라 이 시각이 기준이다 */
