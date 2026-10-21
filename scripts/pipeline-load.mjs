@@ -47,7 +47,7 @@ import { findMid, findMajor } from '../pipeline/dist/categories.js';
 import { resolveSubId } from '../pipeline/lib/subid.mjs';
 import { generatedDir } from '../pipeline/lib/seedstore.mjs';
 import { checkHint } from './hint-check.mjs';
-import { blankCheck, roundDupCheck, assertiveWords, answerFragments } from '../pipeline/lib/question-checks.mjs';
+import { blankCheck, roundDupCheck, assertiveWords, answerFragments, lengthCheck, QUESTION_MAX } from '../pipeline/lib/question-checks.mjs';
 import { checkAnswerSet } from '../pipeline/lib/answer-rules.mjs';
 
 /**
@@ -435,6 +435,8 @@ try {
       if (roundBlock.has(item.sourceRef)) { skipped.push({ ref: item.sourceRef, reason: roundBlock.get(item.sourceRef) }); continue; }
       const bc = blankCheck(g.questionKo, g.displayAnswer);
       if (!bc.ok) { skipped.push({ ref: item.sourceRef, reason: `★ 빈칸 ${bc.blanks}칸 ≠ 정답 ${bc.answerLength}글자 (기준서 3-2)` }); continue; }
+      const lc = lengthCheck(g.questionKo);
+      if (!lc.ok) { skipped.push({ ref: item.sourceRef, reason: `★ 질문 ${lc.length}자 > ${QUESTION_MAX}자 (기준서 3-1 QLEN — G019)` }); continue; }
       for (const t of [g.questionKo, g.explanation]) for (const a of assertiveWords(t)) assertWarnings.push({ ref: item.sourceRef, words: a.words.join('·'), sentence: a.sentence });
       const fr = answerFragments(g.questionKo, g.displayAnswer);
       if (fr.length) fragWarnings.push({ ref: item.sourceRef, answer: g.displayAnswer, frags: fr.map((h) => h.frag).join(',') });
