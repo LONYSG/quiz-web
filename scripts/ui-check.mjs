@@ -4576,10 +4576,10 @@ async function socialFlow(browser) {
     await closeTop(host);
     await sleep(200);
   }
-  // ── ★ C-3 — "문제 수" 줄과 "이번 설정으로 낼 수 있는 문제" 간격
+  // ── ★ C-3 — "문제 수" 줄과 "이번 설정으로 낼 수 있는 문제" 간격 (★ R058 — R057 "방식" 줄이 맨 위라 그 줄은 건너뛴다)
   await host.setViewport(1280, 720);
   await sleep(300);
-  const gap = await host.evaluate("(() => { const a = document.querySelector('.settings .set-row'); const b = document.querySelector('.avail-line'); return a && b ? Math.round(b.getBoundingClientRect().top - a.getBoundingClientRect().bottom) : null; })()");
+  const gap = await host.evaluate("(() => { const a = document.querySelector('.settings .set-row:not(.mode-row)'); const b = document.querySelector('.avail-line'); return a && b ? Math.round(b.getBoundingClientRect().top - a.getBoundingClientRect().bottom) : null; })()");
   await snap(host, '51-avail-gap-pc');
   record('★ C-3 — 문제 수 ↔ 낼 수 있는 문제 간격 4px 이하', gap !== null && gap <= 4, `${gap}px`);
   // ── ★★ C-4 — 안내 창: 한 항목 한 줄 (PC 5 · 모바일 3)
