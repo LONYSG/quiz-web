@@ -1074,6 +1074,24 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 41. ★★ R059 — 제보 채택 · 보너스 포인트 (0023 point_grants)
+
+```bash
+npm run bot -- grant                      ★ 12개: --yes 없으면 멈춤(쓰기 0) · 봇 거부(--allow-bot 은 검사 DB 만) · 채택 한 트랜잭션 · 두 번 거부 · 잔액 +5 · 알림 한 번(seen_at) · points:grant reason 거부 · 월 최다 +30 · feedback:report f# · ✔ · 합계 · 로그인 없이 401
+node scripts/ui-check-bundles.mjs r059    ★ 4개: 보너스 토스트 PC · m390 · 다시 들어오면 없음 · 그림 docs/design/r059
+node scripts/ui-check-bundles.mjs r056    ★ 27개(+1): 접힌 목록 아래 "채택되면 보너스 포인트(채택 1건 5P)" · 한 화면 · 로비 링크 "채택되면 포인트"
+```
+| 끝 점검 (R059 · 2026-10-22 12:22~12:27 · 검사 DB) | 결과 |
+|---|---|
+| typecheck · vitest · smoke | 통과 · 536/536(+4 points) · 12/12 |
+| 봇 | grant 12/12 · feedback 23/23 · ★ R058 에서 못 돌린 넷 achievements 9/9 · mggauge 7/7 · mgballoon 7/7 · mgtap 3/3 |
+| ui-check | r059 4/4 · r056 27/27 (12:22) |
+| 0023 | 백업 backups/quizweb-20261022-121242.dump → 검사 DB 먼저 → 실 DB "[migrate] OK" · 잔액 앞뒤 같음(123qwe 97 · yuja0218 2) |
+| ★ 실 DB 무변화(검사 중) | 12:22 · 12:27 — rooms 2,305 · games 1,734 · minigame_runs 462(0023 이 가짜 판 셋을 지운 뒤) · accounts 98 · near_misses 9 같음 |
+★ 못 돌림 — 메모리 0.
+
+---
+
 ## 40. ★★★ R060 — 검사 DB 분리 · 어젯밤 버그 넷 · 평균의 2/3 삭제 · 둘이서 16 게임
 
 ★★★ **규칙(D-253)**: 검사(ui-check · bot · smoke)는 **quizweb_test 만**. 처음 한 번(또는 실 DB 가 바뀐 뒤) `npm run db:test-init [-- --refresh]`. 검사 서버는 QUIZ_TEST_SERVER=1 로 뜨고 실 DB 면 부팅을 거부한다. 실 서버(npm run dev · 3000)가 떠 있으면 smoke · 묶음은 **빌드하지 않는다**(dev 는 node --watch server/dist — dist 가 바뀌면 실 서버가 다시 뜨며 판이 닫힌다) — `smoke -- --no-build` · `UICHECK_NO_BUILD=1`. ★ **사람이 플레이 중이면 MAIN 은 server/ shared/ 를 고치지 않는다**(dev 의 tsc --watch 가 dist 를 바꾼다).
