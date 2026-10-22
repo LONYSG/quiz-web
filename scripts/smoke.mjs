@@ -32,7 +32,7 @@ import { existsSync } from 'node:fs';
 import net from 'node:net';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { useTestDb } from './test-db.mjs';
+import { liveServerUp, useTestDb } from './test-db.mjs';
 
 // ★★★ R060 (D-253) — 검사는 quizweb_test 만(실 DB 로 서버를 띄우지 않는다 · 없으면 npm run db:test-init)
 await useTestDb('smoke');
@@ -73,6 +73,12 @@ function record(name, ok, detail = '') {
 }
 
 // ── 1. 빌드
+// ★★ R060 — 실 서버(npm run dev)가 떠 있으면 빌드하지 않는다(dist 가 바뀌면 실 서버가 다시 뜨며 판이 닫힌다)
+const live = SKIP_BUILD ? null : await liveServerUp();
+if (live) {
+  console.error(`[smoke] ★★ 실 서버가 ${live.port} 에 떠 있다 — 빌드하면 실 서버가 다시 뜨며 판이 닫힌다. --no-build 로(지금 dist 로) 또는 실 서버를 끈 뒤에.`);
+  process.exit(1);
+}
 if (!SKIP_BUILD) {
   console.log('\n[1] 빌드');
   const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';

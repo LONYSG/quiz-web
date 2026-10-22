@@ -19,10 +19,12 @@ import { existsSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { useTestDb } from './test-db.mjs';
+import { liveServerUp, useTestDb } from './test-db.mjs';
 
 // ★★★ R060 (D-253) — 묶음마다 띄우는 ui-check 도 같은 검사 DB(quizweb_test)로
 await useTestDb('bundles');
+// ★★ R060 — 실 서버(npm run dev)가 떠 있으면 빌드하지 않는다
+const LIVE = await liveServerUp();
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -122,6 +124,7 @@ function buildIfNeeded() {
   const distT = (f) => (existsSync(f) ? statSync(f).mtimeMs : 0);
   const dist = Math.min(distT(path.join(ROOT, 'server/dist/index.js')), distT(path.join(ROOT, 'client/dist/index.html')));
   if (dist > src) return 'skip(dist 가 새것)';
+  if (LIVE) throw new Error(`실 서버가 ${LIVE.port} 에 떠 있다 — 빌드하면 실 서버가 다시 뜨며 판이 닫힌다(R060). UICHECK_NO_BUILD=1 로(지금 dist 로) 또는 실 서버를 끈 뒤에`);
   console.log('[bundles] 소스가 dist 보다 새것 — 한 번 빌드');
   const r = spawnSync(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'build'], { cwd: ROOT, stdio: 'inherit', shell: process.platform === 'win32' });
   if (r.status !== 0) throw new Error('빌드 실패');
