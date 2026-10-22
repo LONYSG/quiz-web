@@ -113,8 +113,20 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
     spectating: false,
     roundResults: phase === 'roundResult' ? [{ roundIndex: 0, decimals, rows }] : [],
     totals: [],
+    // ★ R060 — ?series=1/3 (미니게임만 사이 문구) · ?tie=1 (공동 1위)
+    series: (() => {
+      const m = /^(\d+)\/(\d+)$/.exec(new URLSearchParams(window.location.search).get('series') ?? '');
+      return m ? { index: Number(m[1]), total: Number(m[2]) } : null;
+    })(),
     final:
-      phase === 'final'
+      phase === 'final' && new URLSearchParams(window.location.search).get('tie') === '1'
+        ? [
+            { accountId: 'lab1', rank: 1, total: 11, reward: 3 },
+            { accountId: 'lab3', rank: 1, total: 11, reward: 3 },
+            { accountId: 'lab2', rank: 3, total: 8, reward: 0 },
+            { accountId: 'lab4', rank: 4, total: 2, reward: 0 },
+          ]
+        : phase === 'final'
         ? [
             { accountId: 'lab1', rank: 1, total: 13, reward: 3 },
             { accountId: 'lab3', rank: 2, total: 10, reward: 1 },
@@ -236,10 +248,13 @@ function r052Scene(key: MinigameKey, phase: MinigamePhase) {
   }
   if (key === 'estimate') {
     const d = QUIZ_DUMMY.estimate[0];
+    // ★ R060 — ?unit=광년&value=… — 긴 단위 줄바꿈 그림
+    const unit = q.get('unit') ?? d.unit;
+    const value = q.get('value') !== null ? Number(q.get('value')) : d.value;
     return {
       playMs: 12000,
-      params: { question: d.question, unit: d.unit, kind: 'weight', imageId: image, displayDecimals: 0, dummy: !image },
-      reveal: { value: d.value, unit: d.unit, displayDecimals: 0, note: '40~45kg', explanation: d.explanation },
+      params: { question: d.question, unit, kind: 'weight', imageId: image, displayDecimals: 0, dummy: !image },
+      reveal: { value, unit, displayDecimals: 0, note: '40~45kg', explanation: d.explanation },
       rows: [row('lab1', 1, 4, { guess: 40, pct: -4.76 }, 0.049), row('lab2', 2, 3, { guess: 60, pct: 42.86 }, 0.357), row('lab3', 3, 2, { guess: 10, pct: -76.19 }, 1.435), row('lab4', 4, 0, null, null, false)],
     };
   }

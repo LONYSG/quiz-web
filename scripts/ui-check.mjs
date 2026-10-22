@@ -3548,6 +3548,107 @@ async function r057Flow(browser) {
   await G.close?.();
   await H.close?.();
 }
+// ★★★ R060 — 어젯밤 버그 넷 그림 (UICHECK_R060=1 · 묶음 r060 · docs/design/r060)
+//   (가) 미니게임만 사이 문구 · (나) 긴 단위 줄바꿈 · (다) 이모티콘 바로 보내기 뒤 창 닫힘 · (라) 공동 1위
+async function r060Flow(browser) {
+  const L = await newPage(browser, 'R060-lab');
+  await L.setViewport(1280, 720);
+  await signUp(L, 'r6', '둘이서점검');
+  const lab = async (qs, dev, phase) => {
+    const [w, h, touch] = { pc: [1280, 720, false], m390: [390, 844, true], fold: [344, 882, true] }[dev];
+    if (touch) await touchDevice(L, w, h);
+    else {
+      await touchDevice(L, w, h, false);
+      await L.setViewport(w, h);
+    }
+    await L.goto(`${BASE}/lab/minigame?scene=1&seed=2024&${qs}`);
+    await L.waitFor(`document.querySelector('.mg-card')?.dataset.phase === '${phase}'`, 6000);
+    await sleep(450);
+  };
+  // ── (가) 미니게임만 사이 문구
+  for (const [series, want, tag] of [['1/3', '다음 미니게임으로!', 'next'], ['3/3', '결과로!', 'last'], ['', '퀴즈로 돌아갑니다!', 'quiz']]) {
+    for (const dev of ['pc', 'm390']) {
+      await lab(`key=tap&phase=outro${series ? `&series=${series}` : ''}`, dev, 'outro');
+      const t = await L.evaluate("document.querySelector('.mg-outro-line')?.innerText.trim() ?? ''");
+      if (dev === 'pc') record(`★★★ (가) 사이 문구 — ${series ? `미니게임만 ${series}` : '퀴즈 판'} → "${want}"`, t === want, t);
+      if (tag !== 'quiz') await snap(L, `110-outro-${tag}-${dev}`);
+    }
+  }
+  // ── (나) 긴 단위 — 숫자 · 단위가 한 줄(인라인 조각이 하나)
+  for (const [unit, value, tag] of [['광년', 41300000, 'lightyear'], ['킬로미터', 12742, 'km'], ['만 원', 3800, 'manwon']]) {
+    for (const dev of ['m390', 'fold']) {
+      await lab(`key=estimate&phase=roundResult&unit=${encodeURIComponent(unit)}&value=${value}`, dev, 'roundResult');
+      const ans = JSON.parse(await L.evaluate("JSON.stringify((() => { const n = document.querySelector('.quiz-answer .nowrap'); return { rects: n ? n.getClientRects().length : -1, text: n?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth }; })())"));
+      record(`★★★ (나) ${unit} 정답(${dev}) — 숫자 · 단위 한 줄 · 가로 넘침 없음`, ans.rects === 1 && ans.text.includes(unit) && ans.over <= 1, JSON.stringify(ans));
+      if (tag === 'lightyear') await snap(L, `111-unit-${tag}-reveal-${dev}`);
+      await lab(`key=estimate&phase=play&unit=${encodeURIComponent(unit)}`, dev, 'play');
+      const ask = JSON.parse(await L.evaluate("JSON.stringify((() => { const n = document.querySelector('.quiz-ask .nowrap'); const u = document.querySelector('.quiz-num-unit'); const lh = u ? parseFloat(getComputedStyle(u).lineHeight) || parseFloat(getComputedStyle(u).fontSize) * 1.5 : 0; return { ask: n ? n.getClientRects().length : -1, unitH: u ? Math.round(u.getBoundingClientRect().height) : -1, lh: Math.round(lh) }; })())"));
+      record(`★★ (나) ${unit} 놀이 화면(${dev}) — "단위:" · 입력칸 옆 단위 한 줄`, ask.ask === 1 && ask.unitH > 0 && ask.unitH <= ask.lh + 2, JSON.stringify(ask));
+      if (tag === 'lightyear') await snap(L, `111-unit-${tag}-play-${dev}`);
+    }
+  }
+  // ── (라) 공동 1위
+  for (const dev of ['pc', 'm390', 'fold']) {
+    await lab('key=tap&phase=final&tie=1', dev, 'final');
+    const f = JSON.parse(await L.evaluate("JSON.stringify({ ranks: [...document.querySelectorAll('.mg-final .mg-rank')].map((e) => e.innerText.trim()), oneLine: [...document.querySelectorAll('.mg-final .mg-rank')].every((e) => e.getClientRects().length === 1 && e.getBoundingClientRect().height < 40), over: document.documentElement.scrollWidth - innerWidth })"));
+    record(`★★★ (라) 최종 — "공동 1위" 둘 · 다음은 3위(${dev}) · 한 줄 · 넘침 없음`, f.ranks.join(',') === '공동 1위,공동 1위,3위,4위' && f.oneLine && f.over <= 1, JSON.stringify(f));
+    await snap(L, `113-final-tie-${dev}`);
+  }
+  await touchDevice(L, 1280, 720, false);
+  await L.close?.();
+
+  // ── (다) 이모티콘 — 바로 보내기면 창이 닫힌다 · 넣기는 열린 채 · 특별(큰 반응)이 창에 가리지 않는다
+  const H = await newPage(browser, 'R060-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'r6h', '이모방장');
+  const roomId = await createRoom(H, 'R060 이모티콘');
+  const G = await newPage(browser, 'R060-guest', true);
+  await touchDevice(G, 390, 844);
+  await signUp(G, 'r6g', '이모손님');
+  const gLogin = `${ACCOUNT_PREFIX}_r6g`;
+  await withPg(async (c) => {
+    const id = (await c.query(`SELECT id FROM emojis WHERE theme_id IS NOT NULL AND active ORDER BY id LIMIT 1`)).rows[0]?.id;
+    if (id) await c.query(`INSERT INTO account_emojis (account_id, emoji_id) SELECT id, $2 FROM accounts WHERE login_id = $1 ON CONFLICT DO NOTHING`, [gLogin, id]);
+  });
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.chat-card') !== null", 10000);
+  await sleep(800);
+  // PC 바로 보내기
+  await realClick(H, '.emoji-btn');
+  await H.waitFor("document.querySelector('.emoji-pop') !== null", 4000);
+  await sleep(250);
+  await realClick(H, '.emoji-grid .emoji-cell:nth-child(1)');
+  await sleep(250);
+  const pc = JSON.parse(await H.evaluate("JSON.stringify({ open: document.querySelector('.emoji-pop') !== null, flash: document.querySelector('.emoji-flash') !== null })"));
+  record('★★★ (다) PC 바로 보내기 → 고르기 창 닫힘 · 보냈다 표시', !pc.open && pc.flash, JSON.stringify(pc));
+  await snap(H, '112-emoji-sent-pc');
+  // PC 넣기 모드 — 창은 열린 채(여러 개)
+  await realClick(H, '.emoji-btn');
+  await H.waitFor("document.querySelector('.emoji-pop') !== null", 4000);
+  await realClick(H, '[data-emoji-mode="insert"]');
+  await realClick(H, '.emoji-grid .emoji-cell:nth-child(2)');
+  await sleep(250);
+  record('★★ (다) 입력창에 넣기 모드 — 창은 열린 채', await H.evaluate("document.querySelector('.emoji-pop') !== null"));
+  await realClick(H, '[data-emoji-mode="send"]');
+  await pressKey(H, 'Escape', 'Escape', 27);
+  // 모바일 — 특별 이모티콘 바로 보내기 → 창 닫힘 · 큰 반응 층이 보인다
+  await tapOn(G, '.emoji-btn');
+  await G.waitFor("document.querySelector('.emoji-mode') !== null", 4000);
+  await tapOn(G, '.emoji-tab[title="특별"]');
+  await sleep(300);
+  await tapOn(G, '.emoji-grid .emoji-cell.special');
+  await G.waitFor("document.querySelector('.special-layer .special-float') !== null", 4000).catch(() => undefined);
+  await sleep(200);
+  const mob = JSON.parse(await G.evaluate("JSON.stringify((() => { const layer = document.querySelector('.special-layer'); const f = document.querySelector('.special-float-pic'); let top = null; if (f) { const r = f.getBoundingClientRect(); const el = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2); top = el ? (el.closest('.special-float') ? 'float' : el.closest('.emoji-pop') ? 'pop' : el.className || el.tagName) : null; } return { open: document.querySelector('.emoji-pop') !== null, layer: layer !== null, z: layer ? getComputedStyle(layer).zIndex : null, top }; })())"));
+  record('★★★ (다) 모바일 특별 바로 보내기 → 창 닫힘 · 보낸 사람 화면에 큰 반응이 보인다', !mob.open && mob.layer, JSON.stringify(mob));
+  await snap(G, '112-emoji-special-sent-m390');
+  const gw = JSON.parse(await G.evaluate("JSON.stringify({ doc: document.documentElement.scrollWidth, vw: innerWidth })"));
+  record('★ (다) m390 가로 넘침 없음', gw.doc <= gw.vw, JSON.stringify(gw));
+  await withPg((c) => c.query(`DELETE FROM account_emojis WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [gLogin]));
+  void roomId;
+  await G.close?.();
+  await H.close?.();
+}
 async function minigameFlow(browser) {
   // ── [1] 그림 모음 · 장면 (MG_SKIP_LAB=1 이면 건너뛴다 — 실제 판만 다시 볼 때)
   // ★ R051 — MG_SKIP_R050=1 이면 R050 두 게임을 건너뛰고 · 넷(번개손 · 타자 · 원 · 각도)만 (MG_GAMES 로 더 좁힌다)
@@ -3585,6 +3686,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R057) {
     await closeAllTabs(browser);
     await r057Flow(browser);
+  }
+  // ★ R060 — 어젯밤 버그 넷(사이 문구 · 긴 단위 · 이모티콘 창 닫힘 · 공동 1위)
+  if (process.env.UICHECK_R060) {
+    await closeAllTabs(browser);
+    await r060Flow(browser);
   }
 }
 /** ★ R050 F — /lab/sound — 후보 버튼 · 실제 파일 길이(브라우저가 읽은 duration) · 누르면 소리가 난다(오류 없음) */
