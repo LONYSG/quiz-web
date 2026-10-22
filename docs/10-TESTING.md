@@ -1074,6 +1074,32 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 40. ★★★ R060 — 검사 DB 분리 · 어젯밤 버그 넷 · 평균의 2/3 삭제 · 둘이서 16 게임
+
+★★★ **규칙(D-253)**: 검사(ui-check · bot · smoke)는 **quizweb_test 만**. 처음 한 번(또는 실 DB 가 바뀐 뒤) `npm run db:test-init [-- --refresh]`. 검사 서버는 QUIZ_TEST_SERVER=1 로 뜨고 실 DB 면 부팅을 거부한다. 실 서버(npm run dev · 3000)가 떠 있으면 smoke · 묶음은 **빌드하지 않는다**(dev 는 node --watch server/dist — dist 가 바뀌면 실 서버가 다시 뜨며 판이 닫힌다) — `smoke -- --no-build` · `UICHECK_NO_BUILD=1`. ★ **사람이 플레이 중이면 MAIN 은 server/ shared/ 를 고치지 않는다**(dev 의 tsc --watch 가 dist 를 바꾼다).
+
+```bash
+npm run db:test-init                      검사 DB 만들기(지금 quizweb 통째 복사 → migrate) · --refresh · --from 백업
+npm run bot -- mgduo                      ★ 23개: 16 게임마다 둘이 연습 · 둘 다 안 냄 → 끝까지 · 공동 1위 / 미니게임만 같은 횟수 → 미니게임마다 공동 1위 · 판 결과 공동 1위 · 보상 같음 / 한 명 끊김 → 남은 사람이 내면 바로 넘어감 · 미니게임만에서 한 명 나가도 끝까지
+node scripts/ui-check-bundles.mjs r060    ★ 22개: (가) 사이 문구 셋 · (나) 광년 · 킬로미터 · 만 원 한 줄(m390 · 폴드) · (다) 바로 보내기 뒤 창 닫힘 · 넣기는 열린 채 · 특별 큰 반응 보임 · (라) 공동 1위(PC · m390 · 폴드) · 그림 docs/design/r060
+```
+| 사고 (2026-10-21 밤 · 실 DB 읽기로 맞춤) | |
+|---|---|
+| 닫힌 판 | 2025(22:09:09) · 2134(23:06:34) · 2138(23:10:20) · 2145(23:23:15) · 2146(23:36:40) — 모두 end_reason server_restart · 미니게임 판 다수 |
+| 경로 ① | 끝 점검의 검사 서버가 같은 DB 로 부팅 → bootCleanup |
+| 경로 ② | 검사 묶음의 "한 번 빌드" → 실 서버(node --watch) 다시 뜸 → 그 부팅 정리 (23:06:34 닫힘 → 23:06:35 실 서버 다시 뜸) |
+
+| 끝 점검 (R060 · 2026-10-22 10:48~12:09 · 검사 DB) | 결과 |
+|---|---|
+| typecheck · vitest · build · smoke | 통과 · 532/532(+3 testGuard · +4 동점 · +3 설정 · −2 2/3) · 통과 · 11/11 |
+| 봇 | mgonly 16/16 · emojiinline 10/10 · near 12/12 · mgduo 21/23 → 검사 쪽 둘 고침(이벤트에 final 없음 · 연타 상한) → 23/23 |
+| ui-check | r060 16/22 → 검사 쪽 고침(줄 수를 글자 조각으로 셈 — 그림은 한 줄) → 22/22 · r056 26/26 · r057 15/15 |
+| ★★ 실 DB 무변화 | 검사 앞(10:48) · 뒤(11:51 · 12:09) — rooms 2,305(열린 1) · games 1,734(열린 1 · 최대 2151) · minigame_runs 465(최대 497) · accounts 98 · near_misses 9 **모두 같다** |
+| 빗장 | DATABASE_URL=…/quizweb + QUIZ_TEST_SERVER=1 → "[boot] 부팅 거부" exit 1(없는 포트로 — 거부가 연결 전) · 봇에 실 DB 를 주면 "검사는 quizweb_test 로만" exit 1 |
+★ 못 돌림 — 메모리 0(봇은 10:48 · 묶음은 11:47 에 3GB 넘음). R058 에서 못 돌린 봇 다섯(mggauge · mgballoon · mgtap · achievements · feedback)은 이번 범위 밖 — 다음 끝 점검에.
+
+---
+
 ## 39. ★★ R058 — 결과 화면 문제 평가 PC 접힘 · 근접 오답 표
 
 ```bash
