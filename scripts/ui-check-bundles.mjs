@@ -66,6 +66,8 @@ export const BUNDLES = [
   { id: 'r056-before', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R056: '1', R056_BEFORE: '1', SHOT_DIR: 'r056' }) },
   // ★ R057 — 미니게임만 모드(설정 · 2개 · 결과) · 이모티콘 나열(토글 · Shift+클릭 · 길게 누르기 · 인라인 · 미리 보기)
   { id: 'r057', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R057: '1', SHOT_DIR: 'r057', MINIGAME_PHASE_SCALE: '0.5' }) },
+  // ★ R059 — 보너스 포인트 토스트(PC · m390)
+  { id: 'r059', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R059: '1', SHOT_DIR: 'r059', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   // ★ R060 — 미니게임만 사이 문구 · 긴 단위(광년) · 이모티콘 보내면 창 닫힘 · 공동 1위 (실험실 장면 + 방 하나)
   { id: 'r060', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R060: '1', SHOT_DIR: 'r060', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
 ];

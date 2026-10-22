@@ -3261,6 +3261,10 @@ async function r056Flow(browser) {
   await realClick(Q, '.fb-result-head');
   await sleep(200);
   record('★ A80 다시 누르면 접힘', await Q.evaluate("!document.querySelector('.fb-result')?.classList.contains('open')"));
+  // ★ R059 (D-254) — 접혀 있어도 머리 줄 아래 채택 보너스 안내가 보인다 · 한 화면
+  const bq = JSON.parse(await Q.evaluate("JSON.stringify((() => { const b = document.querySelector('.fb-result .fb-bonus'); const r = b?.getBoundingClientRect(); return { text: b?.innerText ?? '', vis: !!r && r.height > 0 && r.bottom <= innerHeight, doc: document.documentElement.scrollHeight <= innerHeight + 1 }; })())"));
+  record('★★ R059 접힌 목록 — "채택되면 보너스 포인트(채택 1건 5P)" 한 줄이 보인다 · 한 화면', /채택되면 보너스 포인트/.test(bq.text) && /5P/.test(bq.text) && bq.vis && bq.doc, JSON.stringify(bq));
+  await snap(Q, '103-result-fb-pc-closed-bonus');
   await Q.close?.();
   const rowsN = await H.evaluate("document.querySelectorAll('.fb-row').length");
   const firstDown = await H.evaluate("document.querySelector('.fb-row')?.classList.contains('down') && document.querySelector('.fb-row .fb-vote.down')?.classList.contains('on')");
@@ -3290,7 +3294,7 @@ async function r056Flow(browser) {
   // ── C 로비 링크
   await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '로비로')?.click()");
   await H.waitFor("document.querySelector('#feedback-last-btn') !== null", 10000);
-  record('★★ C 로비 "지난 판 문제 평가" 링크', await H.evaluate("document.querySelector('#feedback-last-btn') !== null"));
+  record('★★ C 로비 "지난 판 문제 평가" 링크 · R059 "채택되면 포인트"', await H.evaluate("document.querySelector('#feedback-last-btn') !== null && /채택되면 포인트/.test(document.querySelector('#feedback-last-btn').innerText)"));
   await realClick(H, '#feedback-last-btn');
   await H.waitFor("document.querySelector('.fb-modal .fb-list')?.dataset.loaded === '1'", 6000);
   await sleep(300);
@@ -3649,6 +3653,32 @@ async function r060Flow(browser) {
   await G.close?.();
   await H.close?.();
 }
+// ★★ R059 — 보너스 포인트 토스트(로그인 뒤 한 번) · PC · m390 (UICHECK_R059=1 · 묶음 r059 · docs/design/r059)
+async function r059Flow(browser) {
+  for (const [dev, suffix, touch] of [['pc', 'g9p', false], ['m390', 'g9m', true]]) {
+    const P = await newPage(browser, `R059-${dev}`, true);
+    if (touch) await touchDevice(P, 390, 844);
+    else await P.setViewport(1280, 720);
+    await signUp(P, suffix, dev === 'pc' ? '제보왕' : '제보손님');
+    const login = `${ACCOUNT_PREFIX}_${suffix}`;
+    await withPg(async (c) => {
+      const f = (await c.query(`INSERT INTO question_feedback (question_id, account_id, vote, reasons, comment) SELECT (SELECT id FROM questions WHERE is_active ORDER BY id LIMIT 1), id, -1, '{answer}', 'ui-check' FROM accounts WHERE login_id = $1 ON CONFLICT (question_id, account_id) DO UPDATE SET vote = -1 RETURNING id`, [login])).rows[0];
+      const g = (await c.query(`INSERT INTO point_grants (account_id, amount, reason, ref_type, ref_id) SELECT id, 5, 'feedback_adopted', 'question_feedback', $2 FROM accounts WHERE login_id = $1 RETURNING id`, [login, f.id])).rows[0];
+      await c.query(`UPDATE question_feedback SET adopted_at = now(), adopted_grant_id = $2 WHERE id = $1`, [f.id, g.id]);
+    });
+    await P.goto(`${BASE}/`);
+    await P.waitFor("document.querySelector('.grant-toast') !== null", 8000).catch(() => undefined);
+    await sleep(300);
+    const t = JSON.parse(await P.evaluate("JSON.stringify({ text: document.querySelector('.grant-toast')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth })"));
+    record(`★★★ R059 보너스 토스트(${dev}) — "제보가 채택됐어요 +5P · '문제 앞 30자'" · 넘침 없음`, /제보가 채택됐어요 \+5P/.test(t.text) && /'/.test(t.text) && t.over <= 1, JSON.stringify(t));
+    await snap(P, `120-grant-toast-${dev}`);
+    await P.goto(`${BASE}/`);
+    await sleep(1500);
+    record(`★★ R059 다시 들어오면 토스트 없음(${dev} — seen_at)`, await P.evaluate("document.querySelector('.grant-toast') === null"));
+    await withPg((c) => c.query(`DELETE FROM point_grants WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [login]));
+    await P.close?.();
+  }
+}
 async function minigameFlow(browser) {
   // ── [1] 그림 모음 · 장면 (MG_SKIP_LAB=1 이면 건너뛴다 — 실제 판만 다시 볼 때)
   // ★ R051 — MG_SKIP_R050=1 이면 R050 두 게임을 건너뛰고 · 넷(번개손 · 타자 · 원 · 각도)만 (MG_GAMES 로 더 좁힌다)
@@ -3686,6 +3716,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R057) {
     await closeAllTabs(browser);
     await r057Flow(browser);
+  }
+  // ★ R059 — 보너스 포인트 토스트
+  if (process.env.UICHECK_R059) {
+    await closeAllTabs(browser);
+    await r059Flow(browser);
   }
   // ★ R060 — 어젯밤 버그 넷(사이 문구 · 긴 단위 · 이모티콘 창 닫힘 · 공동 1위)
   if (process.env.UICHECK_R060) {
