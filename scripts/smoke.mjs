@@ -32,6 +32,10 @@ import { existsSync } from 'node:fs';
 import net from 'node:net';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { useTestDb } from './test-db.mjs';
+
+// ★★★ R060 (D-253) — 검사는 quizweb_test 만(실 DB 로 서버를 띄우지 않는다 · 없으면 npm run db:test-init)
+await useTestDb('smoke');
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SERVER_ENTRY = path.join(ROOT, 'server', 'dist', 'index.js');

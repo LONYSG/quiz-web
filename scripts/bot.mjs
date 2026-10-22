@@ -69,6 +69,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { io } from 'socket.io-client';
+import { TEST_DATABASE_URL, assertTestServer, useTestDb } from './test-db.mjs';
+
+// ★★★ R060 (D-253) — 검사는 quizweb_test 만(실 DB 로 서버를 띄우지 않는다 · 없으면 npm run db:test-init)
+await useTestDb('bot');
 
 const args = process.argv.slice(2);
 const scenario = args[0] ?? 'join';
@@ -148,6 +152,7 @@ let serverIsOurs = false;
 
 async function ensureServer() {
   if (await serverAlive()) {
+    await assertTestServer(BASE, 'bot');
     console.log('[bot] 이미 떠 있는 서버를 사용합니다:', BASE);
     if (Object.keys(SERVER_ENV).length > 0) {
       console.log('[bot] ★★ 이미 떠 있는 서버이므로 설정 덮어쓰기가 적용되지 않았다.');
@@ -602,7 +607,7 @@ function checkSummary() {
 //   소켓 이벤트만 보면 "서버가 만들었다고 말한 것" 까지만 확인된다.
 // -----------------------------------------------------------------------------
 const DATABASE_URL =
-  process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
+  process.env.DATABASE_URL ?? TEST_DATABASE_URL;
 
 async function withDb(fn) {
   const client = new pg.Client({ connectionString: DATABASE_URL });

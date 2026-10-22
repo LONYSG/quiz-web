@@ -19,6 +19,10 @@ import { existsSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { useTestDb } from './test-db.mjs';
+
+// ★★★ R060 (D-253) — 묶음마다 띄우는 ui-check 도 같은 검사 DB(quizweb_test)로
+await useTestDb('bundles');
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);

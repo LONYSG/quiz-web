@@ -47,6 +47,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import WebSocket from 'ws';
+import { TEST_DATABASE_URL, assertTestServer, useTestDb } from './test-db.mjs';
+
+// ★★★ R060 (D-253) — 검사는 quizweb_test 만(실 DB 로 서버를 띄우지 않는다 · 없으면 npm run db:test-init)
+await useTestDb('ui-check');
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SERVER_ENTRY = path.join(ROOT, 'server', 'dist', 'index.js');
@@ -709,6 +713,7 @@ async function serverAlive() {
 
 async function ensureServer() {
   if (await serverAlive()) {
+    await assertTestServer(BASE, 'ui-check');
     console.log(`[ui-check] 이미 떠 있는 서버를 사용한다: ${BASE}`);
     return;
   }
@@ -764,7 +769,7 @@ function stopServer() {
  */
 async function shrinkAvailable(loginIdPattern, keepCount) {
   const url =
-    process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
+    process.env.DATABASE_URL ?? TEST_DATABASE_URL;
   const client = new pg.Client({ connectionString: url });
   try {
     await client.connect();
@@ -815,7 +820,7 @@ const UI_HINT_TEXT = (() => {
 })();
 
 async function withPg(fn) {
-  const url = process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
+  const url = process.env.DATABASE_URL ?? TEST_DATABASE_URL;
   const client = new pg.Client({ connectionString: url });
   try {
     await client.connect();
@@ -854,7 +859,7 @@ function clearUiHints() {
 
 async function cleanupAccounts(pattern = `${ACCOUNT_PREFIX}%`, label = '테스트 계정') {
   const url =
-    process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
+    process.env.DATABASE_URL ?? TEST_DATABASE_URL;
   const client = new pg.Client({ connectionString: url });
   try {
     await client.connect();

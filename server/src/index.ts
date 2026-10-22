@@ -14,6 +14,7 @@ import { Server as SocketIOServer } from 'socket.io';
 import { CLIENT_DIST, TWEMOJI_DIR, config } from './config.js';
 import { runBootCleanup } from './db/bootCleanup.js';
 import { closePool, getDbActiveMs } from './db/pool.js';
+import { isTestServer, testServerRefusal } from './db/testGuard.js';
 import { emojiRouter, loadEmojiCatalog } from './http/emojiRoutes.js';
 import { avatarRouter } from './http/avatarRoutes.js';
 import { meRouter, profileRouter } from './http/meRoutes.js';
@@ -32,6 +33,13 @@ async function main(): Promise<void> {
   //   ★ 이것이 없으면 프로세스가 죽은 뒤 그 사람이 다시는 방을 만들 수 없다.
   //     로컬 PC 서버는 껐다 켜는 것이 일상이라 반드시, 자주 발생한다.
   //     docs/02-ARCHITECTURE.md 2장 참조.
+  // ★★★ R060 (D-253) — 검사 서버가 실 DB 로 뜨면 부팅 정리 전에 멈춘다
+  const refusal = testServerRefusal();
+  if (refusal) {
+    console.error(`[boot] ★★ ${refusal}`);
+    process.exit(1);
+  }
+
   try {
     const result = await runBootCleanup();
     if (result.closedRooms > 0 || result.endedGames > 0) {
@@ -60,6 +68,8 @@ async function main(): Promise<void> {
       uptimeMs: Date.now() - BOOTED_AT,
       dbActiveMs: getDbActiveMs(),
       rooms: roomCount(),
+      // ★ R060 — 검사 스크립트가 "이미 떠 있는 서버" 를 쓰기 전에 본다(실 서버면 쓰지 않는다)
+      testServer: isTestServer(),
     });
   });
 
