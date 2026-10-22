@@ -60,6 +60,9 @@ export default function PhotoGuess({ socket, view, serverNow, mobile }: Props) {
   const now = useFrameNow(playing);
   const elapsed = view.lab?.elapsedMs ?? (t0 !== null ? Math.max(0, now - t0) : 0);
   const f = Math.min(1, elapsed / revealMs); // 0 → 1 드러남
+  // ★ R060 — 남은 시간 막대(둘 다 못 맞히면 제한 시간까지 기다린다 — 얼마나 남았는지 보이게 · 숫자 셋과 같은 막대)
+  const playMs = view.round?.playMs ?? revealMs;
+  const left = Math.max(0, 1 - elapsed / playMs);
   const [text, setText] = useState('');
   const [state, setState] = useState<{ key: string; correct: boolean; timeMs?: number; wrong: string[] } | null>(null);
   const mine = state?.key === key ? state : null;
@@ -108,6 +111,9 @@ export default function PhotoGuess({ socket, view, serverNow, mobile }: Props) {
 
   return (
     <div className={`quiz-stage photo-stage${mobile ? ' m' : ''}`}>
+      <div className="circle-bar" aria-hidden="true">
+        <span style={{ width: `${left * 100}%` }} />
+      </div>
       <SeenBadge view={view} />
       <div className="photo-frame" data-mode={mode}>
         {mode === 'mosaic' && imageId && level > 1 ? (
