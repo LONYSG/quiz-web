@@ -4648,7 +4648,8 @@ button.primary.tone-warn {
   left: 0;
   right: 0;
   bottom: calc(100% + 6px);
-  z-index: 55;
+  /* ★ R060 — 이모티콘 고르기 창(60)보다 위(누를 수 없는 층이라 창 조작은 그대로) */
+  z-index: 61;
   display: flex;
   justify-content: center;
   align-items: flex-end;

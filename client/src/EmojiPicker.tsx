@@ -9,6 +9,7 @@
 // ★ 이 창 안의 이모티콘 목록만은 스크롤된다 — 1,800개를 한 화면에 둘 수 없다 (떠 있는 창이라 화면 배치에는 영향이 없다)
 // ★★★ R057 (D-250) — 이모티콘 나열: 창 맨 위 [바로 보내기 · 입력창에 넣기](계정 저장 · 기본 바로 보내기).
 //   단발로는 PC **Shift+클릭** · 모바일 **길게 누르기**(0.45초) = 입력창에 넣기(토글과 무관). 넣는 동안 창은 열린 채로 둔다.
+// ★★ R060 — **바로 보내기로 보내면 창을 닫는다**(보낸 사람의 큰 반응을 창이 가렸다 — 찬종 2026-10-21). 넣기는 열어 둔다.
 // =============================================================================
 
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -95,7 +96,11 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
     }
     // ★ R057 — 토글이 "입력창에 넣기" 거나 Shift+클릭이면 넣기 · 아니면 지금처럼 바로 보내기
     if (insertMode || shift) onInsert(id);
-    else onSend(id);
+    else send(id);
+  };
+  const send = (id: number) => {
+    onSend(id);
+    setOpen(false);
   };
   /** 한 칸의 누르기 처리 — 클릭(Shift) · 길게 누르기(터치) */
   const press = (id: number, onTap: (shift: boolean) => void) => ({
@@ -166,7 +171,7 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
                 key={i}
                 type="button"
                 className={editing && edit === i ? 'emoji-slot sel' : 'emoji-slot'}
-                {...press(id, (shift) => (editing ? setEdit(i) : insertMode || shift ? onInsert(id) : onSend(id)))}
+                {...press(id, (shift) => (editing ? setEdit(i) : insertMode || shift ? onInsert(id) : send(id)))}
                 title={`Alt+${KEYS[i]}`}
               >
                 <Emoji id={id} size={26} />
