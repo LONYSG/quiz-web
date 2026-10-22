@@ -1,42 +1,43 @@
-[MAIN R059]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 짧은 라운드 — 끝나면 멈춘다)
-TASK: ⓪ **R058 마무리 확인** — 2026-10-21 22시 기준 origin 에 `ai-out/R058.txt` · 10 39절 · README R 표 · 13 A86 체감 줄이 없다(마지막 push 51b576a = R058 D). 안 끝난 것(끝 점검 C · 문서 E · 보고 F · push)을 **먼저** 끝낸다. 끝 점검을 메모리로 못 돌렸으면 못 돌린 목록을 R058.txt 에 적고 넘어간다. ① **제보 채택 · 보너스 포인트**(찬종 2026-10-21 밤 결정) — `0023 point_grants` · 채택 표시 · 채택/지급 스크립트 · 화면 안내 문구 · 받은 사람 알림
+[MAIN R060]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 짧은 라운드 — 끝나면 main-next.md(R059)로 이어진다)
+TASK: ① ★★★ **검사 DB 분리** — ui-check · 봇 · smoke 가 띄우는 검사 서버가 **실제 DB(quizweb)** 에 붙어 부팅 정리(bootCleanup)로 사람이 하던 방·판을 닫았다(2026-10-21 23:06~23:46 · 11번). 검사는 `quizweb_test` 만 쓰고, 실 DB 로는 못 뜨게 막는다 ② 어젯밤 모바일 실사용 버그 넷 — (가) 미니게임만 모드 사이 연출 "퀴즈로 돌아갑니다!" (나) '얼마나 될까' 단위(광년) 줄바꿈 (다) 특별 이모티콘 바로 보내기 뒤 고르기 창이 반응을 가림 (라) 미니게임 안 동점 처리(설계 판단 — 아래)
 실행 모델: Opus 5.5 (`claude --model claude-opus-5-5` · 바꾸지 않는다)
 
-■ 고정 규칙: docs/16 그대로 (번호 — R058 이 쓴 다음: **D-253 · A87** · 마이그레이션 **0023** · 10 **40절**(R058 이 39 를 안 썼으면 R058 몫이 39 · 이 라운드가 40)). 하위 에이전트 ≤1 · 경량 ui-check(R053 묶음). ★ **메모리**: GEN(G019 상 생성) · VERIFY(V023 판정자 1개)가 같이 돈다 — 띄우기 전 남는 메모리 1.5GB 미만이면 2분 × 10 대기 · ui-check · 봇 전부는 **3GB 이상**일 때만(아니면 10분 × 6 대기 뒤 못 돌린 목록). 셸이 회수되면 같은 명령을 다시 걸지 않는다.
-■ ★★ 동시 라운드 — GEN(G019 — data/ · pipeline · 15 · 05 Track D/E · 06 · 07 DG- · 13 C · README G · tmp/) · VERIFY(V023 — audit · 13 CV · README V). MAIN 몫: server/ client/ shared/ scripts/(feedback-* · points-*) migrations · 01 · 03 · 10 · 13 A · 07 D- · DB-ADMIN · PLAY-GUIDE · 05 · 06 · README R. 쓰기 직전 fetch · rebase · 내 파일만 add · force 금지 · 찬종 PC dev 서버(3000)·터널·브라우저 안 건드림.
+■ 고정 규칙: docs/16 그대로 (번호 — R058 이 쓴 다음: **D-253 · A87** · 10 **40절** · 마이그레이션 없음(0023 은 R059 몫)). 하위 에이전트 ≤1 · 경량 ui-check(R053 묶음). 메모리: GEN(G019) · VERIFY(V023)가 돌 수 있다 — 띄우기 전 1.5GB 미만이면 2분 × 10 대기 · ui-check · 봇은 3GB 이상일 때만. ★★ **① 이 끝나 검사 DB 로 돌기 전에는 ui-check · 봇 · smoke 를 한 번도 띄우지 않는다**(사람이 하고 있을 수 있다). 셸이 회수되면 같은 명령을 다시 걸지 않는다.
+■ ★★ 동시 라운드 — GEN(G019 — data/ · pipeline · 15 · 05 Track D/E · 06 · 07 DG- · 13 C · README G · tmp/) · VERIFY(V023 — audit · 13 CV · README V). MAIN 몫: server/ client/ shared/ scripts/ docker-compose · 01 · 03 · 10 · 13 A · 07 D- · DB-ADMIN · 05 · 06 · README R. 쓰기 직전 fetch · rebase · 내 파일만 add · force 금지 · 찬종 PC dev 서버(3000)·터널·브라우저 안 건드림(지금은 꺼져 있을 수 있다 — 켜지 않는다).
 ■ 토큰: 넉넉하다.
 
 ■ 먼저 읽기
-- ai-out/R056.txt(설문 구조 — 0020 question_feedback · 사유 코드 7 · `scripts/feedback-report.mjs` · 결과 화면 목록 · 로비 링크) · R058.txt(있으면 — A80 접힘) · docs/16 **§7**(제보 반영 흐름 — 이번에 새로 씀) · 13 A80 · A86
-- server/src/db/points.ts(`POINTS_SQL` 세 항 — correct · rewards · spent) · server/src/db/stats.ts · server/src/http/shopRoutes.ts(잔액을 어디서 읽는지) · shared/src/feedback.ts · shared/src/achievements.ts(업적 꼴) · client GameResult(목록 머리 — R058 접힘) · Lobby(지난 판 평가 링크) · docs/03(question_feedback · minigame_rewards · point_spends) · DB-ADMIN(관리자 포인트 지급 절)
-- ★ 지금 관리자 지급은 **가짜 미니게임 판**으로 넣었다(2026-10-21 새벽 · 설계 에이전트): minigame_runs #274(minigame_key 'admin-grant' · room_id 'admin' · end_reason 'admin_grant') + minigame_rewards #219(account 3556 = 123qwe · 70 · rank 0). 같은 방식으로 **minigame_runs #463 + rewards #378**(account 4386 = yuja0218 · 200 · 2026-10-21 23시)도 있다. 이 라운드에서 **minigame_key = 'admin-grant' 인 판 전부**를 point_grants 로 옮긴다(아래 A).
+- ai-out/R058.txt(끝 점검 · 봇 near) · docs/10 39절 · 13 A80 · A86 · server/src/db/bootCleanup.ts(부팅 정리 — **고치지 않는다**) · server/src/db/pool.ts · server/src/index.ts(부팅 순서) · scripts/ui-check.mjs(697~760 ensureServer · 767/818/857 DATABASE_URL 기본값 · PORT 후보 3101…) · scripts/ui-check-bundles.mjs · scripts/bot.mjs(604 · 7484) · scripts/smoke.mjs · scripts/migrate.mjs · scripts/backup.mjs · restore.mjs · docker-compose.yml · package.json scripts
+- 버그 자리: client/src/minigame/MinigameStage.tsx 264(outro 문구) · client/src/minigame/QuizReveal.tsx 114 · 135 · QuizNumber.tsx 52 · 73 · 81(단위) · client/src/EmojiPicker.tsx 42~62(열림/닫힘) · 97 · 169(보내기) · 반응 층(1~3개 이모티콘만 = 큰 반응 — R057 B) 의 z-index · shared/src/minigame.ts 54~57 · 227(tiebreak) · 361 · server/src/minigame/engine.ts 500~520(rankFinal · tie) · server/src/game/question.ts 528
+
+■ 사고 기록 (2026-10-21 밤 · DB games · minigame_runs 로 맞춤 — 설계 에이전트)
+- MAIN 끝 점검(R058 봇 22:58~23:05 · R059 ui-check 묶음 23:05~23:46)이 띄운 검사 서버가 같은 DB 로 부팅 → bootCleanup 이 `ended_at IS NULL` 인 games 전부 · 열린 rooms 전부 · 열린 minigame_runs 를 닫음. 찬종 둘이 하던 미니게임만 판 game 2134(23:06:34) · 2138(23:10:20 · 이후 판 468 · 469 · 472 · 474 · 475 · 476 이 잇달아 닫힘) · 2145(23:23:15 · 478 · 483 · 484 · 487 · 491) · 퀴즈 2146(23:36:40). game_id 가 비어 있는 판 479 · 482 · 485 · 488 · 492~497 이 검사 서버의 연습 판이다(시각이 맞물린다). 22:09 game 2025 도 같은 꼴.
+- 실 서버(3000)도 23:06:35 에 다시 떴다(원인 추정: 밑에서 닫힌 행 때문에 예외 — 확인 대상 · 필요하면 10 40절에 한 줄).
 
 ■ 찬종의 말 (2026-10-21 밤 · 원문)
-- "가장 도움이 된 제보를 한 유저에게 보너스 포인트를 주도록 하자. (평가 버튼에도 그러한 내용을 기재하면 좋을듯)"
-- "피드백들을 모아서 나한테 브리핑 하고 나랑 상의 후에 적용할 수 있도록 하는거야." → 채택은 **사람(찬종)이 정한다**. 자동 채택 없음. 흐름은 16 §7.
+- "미니게이 모드 하다가 각도 맞히기 두판 하니까 갑자기 멈추더니 방 터졌어." / "방금 방 또 터짐."
+- "미니게임 총합 동점인데 1,2위 점수가 다른 이유는 뭐지?"
+- "미니게임 '얼마나 될까' 에서 ~광년 의 광년 이 줄바꿈이 생겨."
+- "미니게임만 모드인데 게임 끝날때마다 이제 퀴즈로 넘어간다는 문구가 자동으로 붙네. 퀴즈가 아니라 게임인데."
+- "특별 이모티콘 눌렀을때 정작 보낸 사람은 이모티콘 선택창에 가려져서 이모티콘이 안보여. 이것도 해결해야함."
 
-■ 설계 판단 (찬종 확인 전 — 권장안 · 수치는 스크립트 기본값이라 되돌리기 쉽다)
-- **0023 `point_grants`**: id · account_id FK(계정 지우면 같이) · amount int > 0 · reason text('feedback_adopted' | 'feedback_monthly_top' | 'admin') · ref_type text null('question_feedback') · ref_id bigint null · note text null(≤200) · created_at · **seen_at** null(알림 한 번). 인덱스 (account_id, created_at). `POINTS_SQL` 에 넷째 항 `grants` = sum(point_grants.amount) · `pointsFromRow` · 잔액 = correct + rewards + grants − spent. stats · 업적이 minigame_rewards 를 읽는 자리는 그대로(grants 는 전적이 아니다).
-- **이관**: 0023 안에서 minigame_key = 'admin-grant' 인 판의 rewards 전부(#219 = 3556 · 70 · #378 = 4386 · 200) → point_grants(reason 'admin' · note '2026-10-21 수동 지급(이관)' · seen_at = now()) 넣고 그 rewards · runs 지움. 123qwe 잔액 **97** · yuja0218 잔액 **200** 그대로인지 마이그레이션 앞뒤로 확인(바뀌면 멈추고 0절).
-- **채택 표시**: question_feedback 에 `adopted_at` null · `adopted_grant_id` FK point_grants null(0023 같은 파일). UNIQUE(question_id, account_id) 는 그대로.
-- **스크립트 둘**(scripts/ · package.json): ① `npm run feedback:adopt -- --id <question_feedback.id> [--points 5] [--note "..."]` — 백업 안내 한 줄(`db:backup` 을 먼저 하라고 찍고 `--yes` 없으면 묻지 말고 멈춤 — 세션은 사람에게 묻지 않는다 · 찬종이 직접 돌리는 명령) · 한 트랜잭션(adopted_at + grant) · 이미 채택이면 거부 · 봇 계정이면 거부 · 끝에 "닉네임 +5P (문제 #id 앞 40자)". ② `npm run points:grant -- --login <login_id> --points N --reason feedback_monthly_top|admin [--note]` — 월 최다 채택 · 수동 지급(가짜 판 방식 폐기 · DB-ADMIN 절 갈아 끼움). `feedback:report` 에 채택 표시(✔ +5P · 누가 · 언제)와 **"채택된 제보 사람별 합계"** 절(월별) 추가.
-- **금액 기본값**(코드 고정 아님): 채택 1건 **5P**(정답 1개 = 1P · 미니게임 1등 보상 수준과 비교해 체감되되 과하지 않게) · 월 최다 채택 **+30P**. 찬종이 `--points` 로 바꾼다.
-- **화면 문구(넷)**: ① 결과 화면 "이번 판 문제 평가" 머리 아래 작은 한 줄 "👎 사유·의견이 채택되면 보너스 포인트를 드려요(채택 1건 5P)" — 접혀 있어도 보이게(머리 줄에) ② 로비 "지난 판 문제 평가" 링크 옆 같은 뜻 짧게("채택되면 포인트") ③ 공개 화면 👎 버튼은 **글자 추가 없음**(카드 높이 고정 — R056 ±1px) · title/툴팁만 ④ **알림**: 로그인 뒤 로비에서 seen_at null 인 grant 가 있으면 토스트 한 번 "제보가 채택됐어요 +5P · '문제 앞 30자'" → seen_at 기록(여러 건이면 합쳐서 한 번). 접속 중 소켓 알림은 **있으면 좋고 없어도 됨**(로비 토스트가 기본 · 20줄 넘게 번지면 뺌).
-- **업적(있으면)**: achievements.ts 꼴로 "문제 감별사" 채택 1회 · 5회. 업적 체계가 grants 를 읽기 어렵거나 30줄 넘게 번지면 **뺌**(13 A87 에 "다음에" 한 줄).
-- 상점(shopRoutes)·프로필 잔액이 grants 를 포함하는지 확인 · 포인트 내역 화면이 **있다면** "제보 채택" 줄 — 없으면 만들지 않는다.
+■ 설계 판단 (찬종 확인 전 — 권장안 · 되돌리기 쉽다)
+- **① 검사 DB**: 같은 컨테이너(quiz-web-db · 5434)에 **`quizweb_test`**. `npm run db:test-init` = (없으면 createdb) → 최신 `backups/*.dump` 또는 지금 quizweb 를 `pg_dump | pg_restore` 로 **통째 복사**(124MB · 문항 · 미니게임 · 이모티콘 · 계정 다 필요하므로) → migrate. `--refresh` 면 지우고 다시. ui-check.mjs · ui-check-bundles.mjs · bot.mjs · smoke.mjs 의 DATABASE_URL **기본값을 quizweb_test 로** 바꾸고, 검사 DB 가 없으면 "먼저 npm run db:test-init" 하고 멈춤. **서버 쪽 빗장**: 검사 스크립트는 서버를 띄울 때 `QUIZ_TEST_SERVER=1` 을 주고, 서버는 그 값이 있는데 DB 이름이 `quizweb` 면 **부팅 거부**(pool.ts 또는 index.ts · 부팅 정리 전에). 반대로 사람이 쓰는 `npm run dev` 는 그대로 quizweb. 실 DB 를 읽는 보고·운영 스크립트(feedback:report · answers:near · db:backup · migrate · minigame-load · pipeline-load …)는 **손대지 않는다**. bootCleanup 은 설계가 맞으니 그대로.
+- **(가) outro 문구**: `view.series` 면 "다음 미니게임으로!" · 마지막(done + 1 === total)이면 "결과로!" — view 에 그 정보가 없으면 MinigameView 에 한 칸(series: { done, total }) 더한다. 연습은 "로비로" 그대로.
+- **(나) 단위 줄바꿈**: 숫자와 단위를 `white-space: nowrap` 한 span 으로(QuizReveal 114 · 135 · QuizNumber 52 · 73 · 입력칸 옆 단위 81). 긴 단위(광년 · 킬로미터 · 만 원)로 m390 그림.
+- **(다) 이모티콘 가림**: **바로 보내기 모드로 보내면 고르기 창을 닫는다**(PC · 모바일 같이 · 입력창에 넣기 모드는 열어 둠 — 여러 개 넣는 모드니까). 더해서 큰 반응 층의 z-index 를 고르기 창보다 위로(닫히기 전 한 프레임 · 길게 누르기 뒤에도 보이게). 길게 누르기 = 넣기는 그대로.
+- **(라) 동점**: 찬종이 본 것은 **한 미니게임 안에서 둘의 점수(total)가 같은데 1위 · 2위로 갈려 순위 점수(2 · 1)가 달라진 것**으로 보인다 — 지금 규칙은 R053 tiebreak 'lastRank'(마지막 라운드 순위로 가름). 권장: **미니게임 안의 동점은 공동 순위**(둘 다 1위 → 순위 점수 · 포인트 보너스 같이 · 다음은 3위) · 미니게임만 모드의 **최종** 동점만 마지막 미니게임 순위로 가름(R057 그대로) · 'timeSum'(맞힌 시간 합) 방식은 그대로(시간은 거의 안 겹친다). 결과 화면 "공동 1위" 표기. 찬종이 "동점 가르기 그대로" 라고 하면 되돌리기 — 13 A87 에 체감 한 줄.
 
 ■ 할 일 (항목마다 "다 됐다" · 단계마다 커밋)
-⓪. R058 마무리 — 위 TASK ⓪ (있는 그대로 · 없으면 "이미 끝남" 한 줄).
-A. 0023(point_grants · question_feedback 두 칸 · #219/#274 이관) · POINTS_SQL · pointsFromRow · 테스트(잔액 넷 합 · 이관 뒤 123qwe 97) — 다 됐다 = migrate OK · 잔액 테스트 통과.
-B. 스크립트 둘 · feedback:report 보강 · 테스트(채택 두 번 거부 · 봇 거부 · --yes 없으면 멈춤 · 합계) · 봇 `grant` 10 안팎(채택 → 잔액 → 토스트 한 번 → seen_at).
-C. 화면 넷 · 그림(PC 결과 머리 줄 · 로비 · 토스트 · m390) · ui-check r056 묶음 + 토스트 묶음.
-D. 끝 점검 — 메모리 규칙대로: 게이트 → 봇(grant + R058 에서 못 돌린 것이 있으면 같이) → ui-check. 다 됐다 = 10 40절 표 · 못 돌린 것은 사유.
-E. 문서 — 01(15장 결과 목록 문구 · 5장 로비 · 포인트 장에 "제보 채택" 원천) · 03(point_grants · question_feedback 두 칸) · 07 D-253(point_grants 신설 · 가짜 판 폐기 · 기본 5P/30P) · 13 A87(찬종: 채택 토스트 · 문구 체감) · DB-ADMIN(관리자 지급 = points:grant · 채택 = feedback:adopt · 잔액 쿼리에 grants) · PLAY-GUIDE 한 줄 · 05 · 06 · README R · `ai-out/R059.txt`.
+A. 검사 DB — db:test-init(+ --refresh) · 검사 스크립트 넷 기본값 · 서버 빗장(QUIZ_TEST_SERVER + quizweb 면 거부 · 테스트) · DB-ADMIN 에 "검사 DB" 절 · docs/10 끝 점검 명령에 `db:test-init` 한 줄. 다 됐다 = ① quizweb_test 에서 봇 2 묶음 + ui-check 1 묶음이 돈다 ② 그동안 quizweb 의 rooms · games · minigame_runs 에 **아무 변화도 없다**(앞뒤 count 로 증명 · 10 40절 표) ③ 빗장 테스트(DATABASE_URL=quizweb + QUIZ_TEST_SERVER=1 → 거부).
+B. 버그 넷 — (가)(나)(다)(라) 각각 커밋 · 테스트(라: rankFinal 공동 순위 · 다음 순위 건너뜀 · 최종 lastRank 그대로) · 그림(m390 · PC): outro 두 가지 · 광년 · 이모티콘 보낸 직후 · 공동 1위 결과.
+C. 끝 점검 — **A 끝난 뒤 · 검사 DB 로만** · 메모리 규칙대로: 게이트 → 봇(mgonly · emojiinline · near + R059 못 돌린 것 없음) → ui-check(r056 · r057 묶음 + 이번 그림). 다 됐다 = 10 40절 표 · 못 돌린 것은 사유.
+D. 문서 — 01(미니게임 동점 규칙 · 미니게임만 사이 문구 · 이모티콘 보내면 닫힘) · 07 D-253(검사 DB 분리 · 사고 기록 요약 · 동점 공동 순위) · 13 A87(찬종: 동점 · 이모티콘 · 문구 체감) · 10 40절(사고 · 검사 DB · 끝 점검 표) · DB-ADMIN · 16 은 설계 에이전트가 이미 고침(§6 환경 줄) · 05 · 06 · README R · `ai-out/R060.txt`.
 
-■ DB 쓰기: 허용 — 0023 · 이관 · 봇 테스트 행(백업 뒤). **questions · minigame_items 금지.** 실제 사람 계정에 grant 를 넣지 않는다(테스트는 봇 계정만).
-■ 하지 말 것: 평가 UI 재설계 · 공개 카드 높이 변경 · 자동 채택 · 사람 계정 지급 · A82 · 새 상점 품목 · 15 · pipeline · 13 C/CV · README G/V · force push.
-■ 확인할 것 (원칙 7): R058 마지막 번호(D-252 · A86 · 0022 · 10 39절 유무) · admin-grant 판 2(runs #274/#463 · rewards #219/#378) · 123qwe(3556) 잔액 97 · yuja0218(4386) 잔액 200 · POINTS_SQL 세 항 · question_feedback UNIQUE(question_id, account_id) · 사람 설문 0건(2026-10-21 22시) — 다르면 0절에.
-■ 보고 항목: cmd 창 → 0 찬종이 볼 것(채택 명령 예 · 토스트 그림 · 문구 그림 · 끝 점검 표) → 원칙 메모 → ⓪ → A~D → E → 판단 목록(뺀 것 포함) → 새 결정 필요 → 고친 문서.
+■ DB 쓰기: **quizweb 는 금지**(읽기 · count 만). quizweb_test 는 자유(만들고 지우고). 마이그레이션 없음.
+■ 하지 말 것: bootCleanup 수정 · dev 서버 켜기/끄기 · 실 DB 로 검사 서버 띄우기 · 0023/제보 채택(R059 몫 — main-next.md) · A82 · 15 · pipeline · force push.
+■ 확인할 것 (원칙 7): R058 마지막 번호(D-252 · A86 · 0022 · 10 39절) · 사고 시각(games 2134 · 2138 · 2145 · 2146 end_reason server_restart) · ui-check PORT 후보 3101~ · bot.mjs 7484 가 서버 모듈에 DATABASE_URL 을 넘기는 것 · vitest 는 DB 를 안 쓴다 — 다르면 0절에.
+■ 보고 항목: cmd 창 → 0 찬종이 볼 것(검사 중 실 DB 무변화 표 · 버그 넷 그림 · 동점 규칙 한 줄) → 원칙 메모 → A~C → D → 판단 목록 → 새 결정 필요 → 고친 문서.
 ■ 커밋: 단계마다 · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` · 내 파일만 add · fetch → rebase → push.
-■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄에 "R059 끝 — 다음 브리핑 대기".
+■ ★ 이어서: 끝나면 `ai-out/briefs/main-next.md`(R059 제보 채택 보너스)를 읽고 이어서 한다. 없거나 첫 줄이 "보류" 면 멈춘다. 터미널 마지막 줄에 "R060 끝 — R059 로".
 ■ 답변: 한국어 · 터미널 5줄 이내.
