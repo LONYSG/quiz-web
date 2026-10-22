@@ -49,7 +49,7 @@ export default function QuizNumber({ socket, view, serverNow }: Props) {
           <QuizImage imageId={p.imageId as string | null} alt={String(p.nameKo ?? '')} className="quiz-pic" />
           <div className="quiz-q-text">
             <p className="quiz-name no-copy">
-              {String(p.nameKo ?? '')} <span className="dim">· {String(p.unit ?? '')}</span>
+              {String(p.nameKo ?? '')} <span className="dim nowrap">· {String(p.unit ?? '')}</span>
             </p>
             <ul className="wp-shown">
               {((p.shown as ShownRow[] | undefined) ?? []).map((r) => (
@@ -70,7 +70,9 @@ export default function QuizNumber({ socket, view, serverNow }: Props) {
           {Boolean(p.imageId || p.dummy) && <QuizImage imageId={p.imageId as string | null} alt="" className="quiz-pic" />}
           <div className="quiz-q-text">
             <p className="quiz-name no-copy">{String(p.question ?? '')}</p>
-            <p className="quiz-ask">단위: {String(p.unit ?? '')}</p>
+            <p className="quiz-ask">
+              단위: <span className="nowrap">{String(p.unit ?? '')}</span>
+            </p>
           </div>
         </div>
       )}

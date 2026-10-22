@@ -5801,7 +5801,13 @@ button.primary.tone-warn {
 .photo-stage .quiz-num-input {
   text-align: left;
 }
+/* ★ R060 — 단위(광년 · 킬로미터 · 만 원)가 줄바꿈되지 않게 */
+.nowrap {
+  white-space: nowrap;
+}
 .quiz-num-unit {
+  white-space: nowrap;
+  flex-shrink: 0;
   font-weight: 900;
   color: var(--text-dim);
 }

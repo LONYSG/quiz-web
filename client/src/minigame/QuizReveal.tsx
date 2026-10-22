@@ -16,6 +16,9 @@ type Row = { cc: string; countryKo: string; localPrice: number; currency: string
 const fmtNum = (v: number, d: number) => v.toLocaleString('ko-KR', { minimumFractionDigits: d, maximumFractionDigits: d });
 
 /** 판 결과 표의 값 글 */
+/** ★ R060 — 숫자 · 단위가 한 덩어리로("12.5광년" 이 "12.5광" / "년" 으로 갈리지 않게 — 글자 사이에 WORD JOINER) */
+const glue = (s: string) => [...s].join('⁠');
+
 export function quizValueText(view: MinigameView, r: MinigameRoundRow): string {
   const e = r.extra ?? {};
   const unit = view.key === 'estimate' ? String(view.round?.reveal?.unit ?? view.round?.params?.unit ?? '') : '원';
@@ -28,7 +31,7 @@ export function quizValueText(view: MinigameView, r: MinigameRoundRow): string {
   const g = Number(e.guess);
   const pct = Number(e.pct ?? 0);
   const d = view.key === 'estimate' ? Number(view.round?.reveal?.displayDecimals ?? 0) : 0;
-  return `${fmtNum(g, d)}${unit} (${pct >= 0 ? '+' : '−'}${Math.abs(pct).toFixed(1)}%)`;
+  return `${glue(`${fmtNum(g, d)}${unit}`)} (${pct >= 0 ? '+' : '−'}${Math.abs(pct).toFixed(1)}%)`;
 }
 
 export default function QuizReveal({ view, mine }: { view: MinigameView; mine: MinigameRoundRow | undefined }) {
@@ -111,7 +114,9 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
         <div>
           <p className="quiz-name">{String(p.question ?? '')}</p>
           <p className="quiz-answer mono">
-            {fmtNum(Number(rv.value ?? 0), d)} {String(rv.unit ?? '')}
+            <span className="nowrap">
+              {fmtNum(Number(rv.value ?? 0), d)} {String(rv.unit ?? '')}
+            </span>
           </p>
           {rv.note ? <p className="quiz-note">범위: {String(rv.note)}</p> : null}
           {rv.explanation ? <p className="quiz-note">{String(rv.explanation)}</p> : null}
@@ -131,8 +136,10 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
         <QuizImage imageId={s.imageId ?? null} alt={s.label ?? ''} className="which-img" />
         <span className="which-label">{s.label}</span>
         <span className="mono which-value">
-          {v.toLocaleString('ko-KR')}
-          {String(rv.unit ?? '')}
+          <span className="nowrap">
+            {v.toLocaleString('ko-KR')}
+            {String(rv.unit ?? '')}
+          </span>
         </span>
         {ans === k && <Icon icon={Check} className="which-check" />}
       </div>
