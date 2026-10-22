@@ -1,0 +1,345 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "football/4",
+  "midKey": "football",
+  "subName": "K리그·아시아",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/4#g019a-S1-23",
+   "seed": {
+    "subject": "박지성",
+    "aspect": null,
+    "ref": "S1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1999년 1월 대학 입학을 앞두고 축구부 합숙에 일찍 합류한 이 선수는, 그때 열린 올림픽 대표팀과의 연습 경기에서 두드러진 활약을 보였습니다. 이듬해 그를 데려간 일본 구단이 대학 축구부에 발전 기금 명목으로 1억 원을 낸 이 한국 선수는?",
+    "answer": "박지성",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "일본 구단과의 계약이 2002년 12월 31일 끝났는데도 남아, 2003년 1월 1일 천황배 결승에서 헤딩 동점골로 팀의 2-1 역전승과 첫 우승을 도왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "그를 데려간 일본 구단이 대학 축구부에 발전 기금 … 1억 원",
+     "difWhy": "명지대→교토 이적 — 축구 관심층",
+     "wor": 3,
+     "worWhy": "누구나 아는 선수 이름",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "천황배 결승 … 팀의 … 첫 우승을 이끈 이 한국 선수",
+     "difWhy": "교토 천황배 한국 선수 — 축구 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 선수 일화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 선수는 2002년 12월 31일로 소속팀과 계약이 끝났는데도 남아, 2003년 1월 1일 천황배 결승에서 가시마 앤틀러스에 0-1로 뒤지던 후반 7분 헤딩 동점골을 넣었습니다. 팀의 2-1 역전승과 첫 우승을 이끈 이 한국 선수는?",
+     "beforeExplanation": "그가 일본으로 갈 때 일본 구단은 명지대 축구부에 발전 기금 명목으로 1억 원을 냈습니다.",
+     "removedCue": "천황배 결승 … 팀의 첫 우승을 이끈 이 한국 선수",
+     "addedCue": "입학 전 합숙 중 올림픽 대표팀 연습 경기 활약 · 일본 구단의 1억 원 발전 기금",
+     "why": "팬에게 유명한 천황배 결승 골을 해설로 옮기고 입단 경위 세부로 바꿈"
+    },
+    "generalHint": "고교는 수원공업고등학교를 다녔는데, 1학년 때는 키가 작고 몸이 왜소해 기본 훈련만 받았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "맨체스터 유나이티드에서 뛴 한국 축구 미드필더",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "국민 축구 스타",
+     "piece": "f09",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "S1-23",
+     "key": "b218",
+     "hint": "고교는 수원공업고등학교를 다녔는데, 1학년 때는 키가 작고 몸이 왜소해 기본 훈련만 받았다.",
+     "guess": "박지성",
+     "confidence": "high",
+     "hit": true,
+     "answer": "박지성"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%80%EC%84%B1",
+     "https://ko.wikipedia.org/wiki/박지성"
+    ],
+    "facts": [
+     {
+      "claim": "명지대에 1억 원 발전 기금",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%80%EC%84%B1",
+      "note": "이 때, 명지대에는 축구부 발전 기금 명목으로 1억원이 교토에서 지출됐다."
+     },
+     {
+      "claim": "2003년 1월 1일 천황배 결승 가시마전 0-1 후반 7분 헤딩 동점골 · 2-1 역전승 · 첫 우승",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%80%EC%84%B1",
+      "note": "2003년 1월 1일은 일본의 FA컵 대회격인 천황배 전일본 축구 선수권 대회 결승에서 가시마 앤틀러스를 맞아 0-1로 뒤지던 후반 7분 프리킥을 받아 헤딩으로 동점골을 성공시키면서 팀의 2-1 역전승을 도우면서, 교토 상가가 처음으로 우승컵을 안는데 크게 기여했다."
+     },
+     {
+      "claim": "계약이 2002년 12월 31일 끝났는데도 출전",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%80%EC%84%B1",
+      "note": "이때, 박지성과 교토 퍼플상가의 계약은 2002년 12월 31일자로 종료되었으나 팀의 컵 대회 우승을 위해 계약 기간이 만료되었음에도 불구하고 경기에 출전해 팀을 우승으로 이끌어 찬사를 받은 바 있다."
+     },
+     {
+      "claim": "1999년 1월 명지대 축구부 합숙에 조기 합류, 올림픽 대표팀과 연습 경기에서 활약",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/박지성",
+      "note": "1999년 1월 명지대학교 김희태 감독의 눈에 띄어 특기생으로 입학할 예정이던 명지대의 축구부의 합숙에 조기 합류하면서 그때 열린 한국 올림픽 대표팀과의 연습 경기에서 두드러진 활약을 보였다."
+     },
+     {
+      "claim": "대학 재학 중 2000년 6월 교토 퍼플 상가 입단",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/박지성",
+      "note": "대학 재학 중인 2000년 6월 그 재능을 조기에 프로에서 개화시켜야 한다고 생각한 김희태 감독은 구면의 사이인 당시 교토 퍼플 상가 키무라 분지 총감독으로 상담한 결과 교토의 가입이 실현하고, 일본에서 프로 데뷔하게 된다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%80%EC%84%B1"
+    ],
+    "hintNote": "안용중학교, 수원공업고등학교를 거친 그는 ... 어려서부터 키가 작고 왜소해 수원공고 1학년 시절에는 기본 훈련만 시켰을 정도였다.",
+    "easiestCue": "일본 구단이 대학 축구부에 발전 기금 1억 원을 냄",
+    "targetWhy": "명지대 합숙·교토 이적료 성격의 기금은 축구 애호가가 아는 입단 뒷이야기 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 선수의 덜 알려진 일본 시절",
+    "pairCheck": null,
+    "dbCheck": "answercheck 박지성 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/4#g019a-S1-24",
+   "seed": {
+    "subject": "김병지",
+    "aspect": null,
+    "ref": "S1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고교 졸업 뒤 받아 주는 팀이 없어 창원 기계공단에서 용접공으로 2년을 지낸 골키퍼입니다. 1998년 월드컵 뒤 블랙번·에버턴 등의 러브콜을 받았지만 소속팀 울산 현대의 반대로 K리그에 남은 이 선수는?",
+    "answer": "김병지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1998년 10월 포항 스틸러스와의 플레이오프 2차전 후반 추가 시간에 프리킥 헤딩슛으로 골을 넣었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "용접공으로 2년을 지낸 골키퍼 … 울산 현대",
+     "difWhy": "용접공 출신 골키퍼 — 축구 관심층",
+     "wor": 3,
+     "worWhy": "누구나 아는 선수 이름",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이 골키퍼가 헤딩슛으로 골을 넣었습니다",
+     "difWhy": "골키퍼 헤딩골 — 축구 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 선수 일화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1998년 10월 K리그 플레이오프 2차전 포항 스틸러스전, 1-1로 맞선 후반 추가 시간 프리킥 때 이 골키퍼가 헤딩슛으로 골을 넣었습니다. 고교 졸업 뒤 받아 주는 팀이 없어 창원 기계공단에서 용접공으로 2년을 지낸 이 선수는?",
+     "beforeExplanation": "1998년 월드컵 뒤 블랙번·에버턴 등 잉글랜드 구단의 러브콜이 있었지만 소속팀 울산 현대의 반대로 K리그에 남았습니다.",
+     "removedCue": "골키퍼의 헤딩골(축구 관심층 — 해설로 옮김)",
+     "addedCue": "1998년 월드컵 뒤 잉글랜드 구단 러브콜 · 울산 반대로 잔류(해설에서 옮김)",
+     "why": "가장 유명한 헤딩골 장면을 빼고 경력의 뒷이야기 둘로"
+    },
+    "generalHint": "1995년부터 2007년까지 12회 연속 K리그 올스타전에 나가 최다 출전 기록을 세웠다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1998·2002 월드컵 대표였던 '꽁지머리' 골키퍼",
+    "familiarity": {
+     "judge": 3,
+     "pct": 88,
+     "why": "유명 국가대표 골키퍼",
+     "piece": "f04",
+     "genPct": 75
+    },
+    "blind": {
+     "ref": "S1-24",
+     "key": "b214",
+     "hint": "1995년부터 2007년까지 12회 연속 K리그 올스타전에 나가 최다 출전 기록을 세웠다.",
+     "guess": "김병지",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "김병지"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/%EA%B9%80%EB%B3%91%EC%A7%80"
+    ],
+    "facts": [
+     {
+      "claim": "1998년 10월 24일 포항과 PO 2차전 1-1 후반 추가시간 프리킥 헤딩골",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EB%B3%91%EC%A7%80",
+      "note": "특히, 1998년 10월 24일 포항 스틸러스와의 플레이오프 2차전에서 1:1로 맞선 후반 추가시간 프리킥 찬스에서 헤딩슛을 성공시키면서 골키퍼 최초의 필드골을 성공시키기도 했는데"
+     },
+     {
+      "claim": "받아 주는 팀이 없어 창원 기계공단에서 용접공 2년",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EB%B3%91%EC%A7%80",
+      "note": "받아주는 팀이 없자 결국 고등학교 졸업 후, 창원 기계공단의 금성산전에서 용접공으로 2년을 생활하였다."
+     },
+     {
+      "claim": "1998년 월드컵 뒤 블랙번·에버턴·사우샘프턴 러브콜, 울산 반대로 잔류",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EB%B3%91%EC%A7%80",
+      "note": "1998년 FIFA 월드컵 이후, 월드컵에서 김병지의 활약을 지켜본 잉글랜드 프리미어리그의 블랙번 로버스 FC, 에버턴 FC, 사우샘프턴 FC 등 여러 팀들이 김병지에게 러브콜을 보냈으나 김병지는 당시 소속팀이었던 울산 현대의 반대로 K-리그에 남게 되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EA%B9%80%EB%B3%91%EC%A7%80"
+    ],
+    "hintNote": "1995년부터 2006년까지 11회 연속으로 올스타전에 출전하여 올스타전 최다 출전 기록을 세웠고, 2007년에도 12회 연속으로 출전하여 올스타전 최다 출전 기록을 경신하였다.",
+    "easiestCue": "창원 기계공단에서 용접공으로 2년을 지낸 골키퍼",
+    "targetWhy": "K리그 레전드의 이력 세부 — 축구 애호가(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "골키퍼 헤딩골은 K리그 관심층에 알려진 장면",
+    "pairCheck": null,
+    "dbCheck": "answercheck 김병지 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/4#g019a-S1-25",
+   "seed": {
+    "subject": "이동국",
+    "aspect": null,
+    "ref": "S1-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2007년 전까지는 이름 한자를 다른 글자로 썼던 이 공격수는, 그해 1월 이적료 없이 K리그에서 프리미어리그로 곧장 옮긴 첫 선수가 되었습니다. 그 팀 데뷔전에서 스튜어트 다우닝의 크로스를 발리슛으로 때려 골대를 맞혔던 이 선수는?",
+    "answer": "이동국",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2017년 10월 제주 유나이티드전 골로 K리그 처음 통산 200골을 넣었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "K리그에서 프리미어리그로 곧장 옮긴 첫 선수 … 스튜어트 다우닝",
+     "difWhy": "미들즈브러 이적 공격수 — 축구 관심층",
+     "wor": 3,
+     "worWhy": "누구나 아는 선수 이름",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "베르더 브레멘에 6개월 임대 … 전북 현대로 옮길 때",
+     "difWhy": "브레멘 임대·전북 이적 — 축구 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 선수 이름"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2001년 1월 무릎 재활을 하러 독일에 가 있던 이 공격수는 뜻밖의 제안을 받고 베르더 브레멘에 6개월 임대로 들어갔습니다. 2009년 전북 현대로 옮길 때는 최강희 감독의 지나친 모험수라는 우려를 들었던 이 선수는?",
+     "beforeExplanation": null,
+     "removedCue": "베르더 브레멘 6개월 임대 · 전북 현대 이적 때의 우려",
+     "addedCue": "2007 개명 · K리그→프리미어리그 직행 첫 선수 · 데뷔전 발리 골대",
+     "why": "브레멘·전북(축구 관심층 상식)을 빼고 프리미어리그 시절 세부로"
+    },
+    "generalHint": "1998년 프랑스 월드컵 조별 리그 2차전에 열아홉 살로 교체 출전해, 당시 한국 최연소 월드컵 출전 기록을 남겼다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "전북 현대에서 오래 뛴 K리그의 대표 골잡이",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "유명 축구 선수",
+     "piece": "f06",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "S1-25",
+     "key": "b034",
+     "hint": "1998년 프랑스 월드컵 조별 리그 2차전에 열아홉 살로 교체 출전해, 당시 한국 최연소 월드컵 출전 기록을 남겼다.",
+     "guess": "이동국",
+     "confidence": "high",
+     "hit": true,
+     "answer": "이동국"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%8F%99%EA%B5%AD"
+    ],
+    "facts": [
+     {
+      "claim": "2017년 10월 제주전 K리그 첫 통산 200골",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%8F%99%EA%B5%AD",
+      "note": "2017년 10월 29일 제주 유나이티드를 상대로 1골을 넣어 K리그 사상 최초로 통산 200골을 달성하여"
+     },
+     {
+      "claim": "2007년 개명 전 한자 李東國",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%8F%99%EA%B5%AD",
+      "note": "2007년 개명 전까지는 한자표기로 李東國 을 썼으며"
+     },
+     {
+      "claim": "2007년 1월 이적료 없이 미들즈브러 — K리그에서 프리미어리그 직행 첫 선수",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%8F%99%EA%B5%AD",
+      "note": "이동국은 2007년 1월 23일 프리미어리그 팀 미들즈브러에 입단하였다. 포항 스틸러스 구단은 대승적인 차원에서 이동국을 이적료 없이 이적시키기로 미들즈브러와 최종 합의했다. 이동국은 K리그에서 프리미어리그로 직행하게 된 첫 번째 선수가 되었다."
+     },
+     {
+      "claim": "데뷔전 다우닝 크로스 발리슛 골대",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%8F%99%EA%B5%AD",
+      "note": "데뷔전에서 스튜어트 다우닝의 크로스를 발리슛으로 연결해 골대를 맞추는 등 초반의 인상적인 활약으로 눈에 띄었으나"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%8F%99%EA%B5%AD"
+    ],
+    "hintNote": "1998 FIFA 월드컵 엔트리에 포함되어 예선 2차전에서 서정원과 후반교체출전으로 월드컵에 데뷔하게 되었는데, 당시 이동국의 나이는 19세였고 대한민국 역사상 최연소 월드컵 출전이었다.",
+    "easiestCue": "이적료 없이 K리그에서 프리미어리그로 곧장 옮긴 첫 선수",
+    "targetWhy": "선수 이적사의 뒷이야기 — 축구 애호가(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "전북 부활 이야기는 K리그 관심층에 알려져 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 이동국 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

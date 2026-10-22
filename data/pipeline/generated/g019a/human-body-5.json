@@ -1,0 +1,236 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "human-body/5",
+  "midKey": "human-body",
+  "subName": "혈액·면역",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/5#g019a-C1-05",
+   "seed": {
+    "subject": "대식세포",
+    "aspect": null,
+    "ref": "C1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1882년 시칠리아 메시나에서 한 동물학자가 불가사리 유생에 작은 감귤나무 가시를 꽂자, 가시 둘레에 낯선 세포들이 모였습니다. 몸 곳곳에서 쿠퍼 세포·미세아교세포 같은 여러 이름으로 불리는 이 세포는?",
+    "answer": "대식세포",
+    "acceptedAnswers": [
+     "큰포식세포",
+     "탐식세포"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 대식세포 넘겨주기(대식 세포 · 탐식세포 · 큰포식세포) 확인",
+    "explanation": "문신이 제자리에 남는 것도 색소를 삼킨 이 세포가 죽으면 뒤이은 세포가 다시 삼키기 때문입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "쿠퍼 세포·미세아교세포 같은 여러 이름으로 불리는 이 세포",
+     "difWhy": "조직별 대식세포 이름 — 대학 교양 생물",
+     "wor": 4,
+     "worWhy": "교양 — 면역 기본 어휘",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "문신이 제자리에 남는 것도 색소를 삼킨 이 세포가",
+     "difWhy": "식세포 작용 — 고교 생명과학",
+     "wor": 4,
+     "worWhy": "교양 — 면역 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1882년 시칠리아 메시나에서 한 동물학자가 불가사리 유생에 작은 감귤나무 가시를 꽂자, 가시 둘레에 낯선 세포들이 모였습니다. 문신이 제자리에 남는 것도 색소를 삼킨 이 세포가 죽으면 뒤이은 세포가 다시 삼키기 때문인데, 이 세포는?",
+     "beforeExplanation": "이 세포를 처음 찾아 이름 붙인 엘리 메치니코프는 1908년 파울 에를리히와 노벨 생리학·의학상을 나눠 받았습니다.",
+     "removedCue": "문신이 제자리에 남는 것도 색소를 삼킨 이 세포",
+     "addedCue": "쿠퍼 세포·미세아교세포 같은 다른 이름",
+     "why": "식세포 작용(고교 생명과학)으로 바로 풀리는 문신 문장을 해설로 옮기고 조직별 이름 세부로 바꿈"
+    },
+    "generalHint": "가시를 꽂은 동물학자 메치니코프는 1908년 파울 에를리히와 노벨 생리의학상을 나눠 받았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "병원체·죽은 세포를 통째로 삼켜 없애는 큰 백혈구",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "생명과학 교과서에 나오는 용어",
+     "piece": "f04",
+     "genPct": 45
+    },
+    "blind": {
+     "ref": "C1-05",
+     "key": "b243",
+     "hint": "가시를 꽂은 동물학자 메치니코프는 1908년 파울 에를리히와 노벨 생리의학상을 나눠 받았다.",
+     "guess": "식세포",
+     "confidence": "high",
+     "hit": true,
+     "answer": "대식세포"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Élie_Metchnikoff",
+     "https://en.wikipedia.org/wiki/Macrophage"
+    ],
+    "facts": [
+     {
+      "claim": "1882 메시나 불가사리 유생에 감귤 가시 → 세포가 둘러쌈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Élie_Metchnikoff",
+      "note": "He went to Sicily to set up his private laboratory in Messina. At Messina he discovered phagocytosis after experimenting on the larvae of starfish. In 1882 he first demonstrated the process when he inserted small citrus thorns into starfish larvae, then found unusual cells surrounding the thorns."
+     },
+     {
+      "claim": "그 세포 = 대식세포",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Élie_Metchnikoff",
+      "note": "Metchnikoff was the first to discover a process of immunity called phagocytosis and the cell responsible for it, called phagocyte, specifically macrophage, in 1882."
+     },
+     {
+      "claim": "문신 — 죽은 진피 대식세포의 색소를 뒤이은 세포가 삼켜 제자리에 남음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Macrophage",
+      "note": "This occurs repeatedly as the pigment from dead dermal macrophages is phagocytosed by their successors, preserving the tattoo in the same place."
+     },
+     {
+      "claim": "쿠퍼 세포·폐포 대식세포·미세아교세포 등 여러 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Macrophage",
+      "note": "They take various forms (with various names) throughout the body (e.g., histiocytes, Kupffer cells, alveolar macrophages, microglia, and others), but all are part of the mononuclear phagocyte system."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/%C3%89lie_Metchnikoff"
+    ],
+    "hintNote": "He and Paul Ehrlich were jointly awarded the 1908 Nobel Prize in Physiology or Medicine \"in recognition of their work on immunity\".",
+    "easiestCue": "메치니코프의 불가사리 유생 실험",
+    "targetWhy": "쿠퍼 세포·미세아교세포가 같은 계열이라는 것은 대학 교양 생물 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "고교에서 이름은 배우는 세포의 뜻밖 연결(문신)",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "정답조각 세포",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "human-body/5#g019a-C1-06",
+   "seed": {
+    "subject": "NK세포",
+    "aspect": null,
+    "ref": "C1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1970년대 초 스톡홀름 카롤린스카 연구소의 대학원생 롤프 키슬링 등은, 미리 면역시키지 않은 생쥐에서도 종양 세포를 공격하는 림프구를 밝혔습니다. T세포가 놓치는, MHC 1형 표지를 잃은 세포를 알아보고 없애는 이 림프구는?",
+    "answer": "NK세포",
+    "acceptedAnswers": [
+     "자연살해세포"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia \"자연 살해 세포\" 문서 · 넘겨주기(NK세포 · 자연살해세포) 확인 — 띄어쓰기 다른 것은 정규화로 같음",
+    "explanation": "자궁에는 혈액 속의 것과 성질이 다른 \"자궁 NK세포\" 가 따로 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "MHC 1형 표지를 잃은 세포를 알아보고 없애는 이 림프구",
+     "difWhy": "MHC 1형 결손 인식 림프구 — 대학 교양 면역",
+     "wor": 4,
+     "worWhy": "교양 — 면역 기본 어휘",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "MHC 1형 표지를 잃은 세포를 알아보고 없애는 이 림프구",
+     "difWhy": "MHC 1형 결손 인식 림프구 — 대학 교양 면역",
+     "wor": 4,
+     "worWhy": "교양 — 면역 기본 어휘"
+    },
+    "rewrite": null,
+    "generalHint": "사람 혈액 속 림프구의 5~20%쯤을 차지하며, CD3 없이 CD56을 지닌 것으로 가려낸다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "감작 없이 암세포·감염 세포를 없애는 선천 면역 림프구",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "건강 프로·광고에서 들어 봄",
+     "piece": "f03",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "C1-06",
+     "key": "b012",
+     "hint": "사람 혈액 속 림프구의 5~20%쯤을 차지하며, CD3 없이 CD56을 지닌 것으로 가려낸다.",
+     "guess": "자연 살해 세포(NK세포)",
+     "confidence": "high",
+     "hit": true,
+     "answer": "NK세포"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Natural_killer_cell"
+    ],
+    "facts": [
+     {
+      "claim": "1970년대 초 카롤린스카 박사과정 키슬링 등이 생쥐에서 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Natural_killer_cell",
+      "note": "The discovery that a unique type of lymphocyte was responsible for \"natural\" or spontaneous cytotoxicity was made in the early 1970s by doctoral student Rolf Kiessling and postdoctoral fellow Hugh Pross, in the mouse ... under the supervision of professors Eva Klein and Hans Wigzell, respectively, of the Karolinska Institute, Stockholm."
+     },
+     {
+      "claim": "미리 면역시키지 않아도(자발적) 종양 세포 공격",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Natural_killer_cell",
+      "note": "Kiessling's research involved the well-characterized ability of T lymphocytes to attack tumor cells which they had been previously immunized against. / ... a unique type of lymphocyte was responsible for \"natural\" or spontaneous cytotoxicity"
+     },
+     {
+      "claim": "MHC 1형이 없는 세포를 알아보고 죽임 — T세포는 못 찾음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Natural_killer_cell",
+      "note": "NK cells recognize and kill stressed cells that are lacking the MHC class I molecules. ... harmful cells that are missing MHC I markers cannot be detected and destroyed by other immune cells, such as T lymphocyte cells."
+     },
+     {
+      "claim": "자궁 NK세포는 혈액 NK세포와 다름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Natural_killer_cell",
+      "note": "These cells are known as \"uterine NK cells\" (uNK cells) and they differ from peripheral NK cells."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Natural_killer_cell"
+    ],
+    "hintNote": "represent 5–20% of all circulating lymphocytes in humans. / NK cells can be identified by the presence of CD56 and the absence of CD3 (CD56+, CD3−).",
+    "easiestCue": "T세포가 놓치는, MHC 1형 표지를 잃은 세포를 알아보고 없애는 이 림프구",
+    "targetWhy": "\"missing self\" 인식 — 대학 교양 면역학(고교는 이름 정도)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "건강 광고로 이름은 친숙, 발견사·인식 원리는 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

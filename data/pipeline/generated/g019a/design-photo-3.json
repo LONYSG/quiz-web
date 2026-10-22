@@ -1,0 +1,242 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "design-photo/3",
+  "midKey": "design-photo",
+  "subName": "그래픽 디자인",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/3#g019a-A1-07",
+   "seed": {
+    "subject": "미쉐린",
+    "aspect": null,
+    "ref": "A1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1898년 만화가 오갈롭은 뮌헨의 한 맥주 회사에 퇴짜 맞은 그림을 고쳐, 코안경을 쓰고 시가를 문 채 라틴어로 '이제 마실 때다'를 외치는 이 회사의 마스코트를 그렸습니다. 이 프랑스 회사는 무엇일까요?",
+    "answer": "미쉐린",
+    "acceptedAnswers": [
+     "미슐랭"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '미슐랭' → '미쉐린' 넘겨주기, 첫 줄 '미쉐린 또는 미슐랭'",
+    "explanation": "이 마스코트는 1894년 리옹 박람회에서 창업 형제 에두아르가 쌓인 타이어를 보고 팔 없는 사람을 떠올린 데서 비롯했고, 처음 흰색이었던 것은 당시 타이어가 회백색이었기 때문입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "오갈롭 … 코안경을 쓰고 시가를 문 … 마스코트",
+     "difWhy": "비벤덤 초기 그림 — 디자인 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 마스코트 기원",
+     "acc": 3,
+     "accWhy": "사진·디자인 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "쌓여 있는 자기 회사 제품을 보고 팔 없는 사람 같다고",
+     "difWhy": "타이어 더미 마스코트 기원 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 브랜드 마스코트 일화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1894년 리옹 박람회에 나간 창업 형제 가운데 에두아르는 쌓여 있는 자기 회사 제품을 보고 팔 없는 사람 같다고 생각했습니다. 4년 뒤 만화가 오갈롭이 맥주 회사에 퇴짜 맞은 그림을 고쳐 '이제 마실 때다'를 외치는 마스코트를 그린 이 회사는?",
+     "beforeExplanation": "처음 마스코트가 흰색이었던 것은 당시 고무 타이어가 회백색이었기 때문이며, 1912년 탄소를 섞으면서 타이어가 검게 바뀌었습니다.",
+     "removedCue": "쌓여 있는 자기 회사 제품을 보고 팔 없는 사람 같다고 생각 (리옹 박람회 기원담)",
+     "addedCue": "코안경·시가 차림의 첫 마스코트 · 1898년",
+     "why": "널리 알려진 타이어 더미 기원담을 해설로 옮기고 첫 포스터의 차림 세부로 바꿈"
+    },
+    "generalHint": "1946년 래디얼 타이어를 개발해 특허를 냈고, 처음에는 'X' 타이어라는 이름으로 팔았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "타이어 더미 사람 마스코트로 유명한 프랑스 타이어 회사",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "미쉐린 가이드로 널리 앎",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "A1-07",
+     "key": "b226",
+     "hint": "1946년 래디얼 타이어를 개발해 특허를 냈고, 처음에는 'X' 타이어라는 이름으로 팔았다.",
+     "guess": "미쉐린",
+     "confidence": "high",
+     "hit": true,
+     "answer": "미쉐린"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Michelin_Man"
+    ],
+    "facts": [
+     {
+      "claim": "4년 뒤 오갈롭이 맥주 회사에 퇴짜 맞은 그림을 고침 — Nunc est bibendum",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michelin_Man",
+      "note": "Four years later, André met French cartoonist Marius Rossillon, popularly known as O'Galop, who showed him a rejected image he had created for a Munich brewery — a large, regal figure holding a huge glass of beer and quoting Horace's phrase Nunc est bibendum (\"Now is the time for drinking\"). ... O'Galop adapted the earlier image into Michelin's symbol."
+     },
+     {
+      "claim": "1894 리옹 박람회에서 에두아르가 쌓인 타이어를 보고 팔 없는 사람을 떠올림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Michelin_Man",
+      "note": "While attending the Universal and Colonial Exposition in Lyon in 1894, Édouard and André Michelin noticed a stack of tires that suggested to Édouard the figure of a man without arms."
+     },
+     {
+      "claim": "타이어가 원래 회백색, 1912년 탄소로 검게",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Michelin_Man",
+      "note": "Rubber tires were originally gray-white, or light or translucent beige. In 1912, they became black when carbon was added to them as a preservative and strengthener."
+     },
+     {
+      "claim": "오갈롭의 로고는 코안경을 쓰고 시가를 피움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michelin_Man",
+      "note": "O'Galop's logo was based on bicycle tires, wore pince-nez glasses with lanyard, and smoked a cigar."
+     },
+     {
+      "claim": "1898년 포스터 — Nunc est bibendum 건배",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michelin_Man",
+      "note": "The 1898 poster showed him offering the toast Nunc est bibendum to his scrawny Brand X competitors with a glass full of road hazards"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Michelin"
+    ],
+    "hintNote": "Michelin developed and patented a key innovation in tyre history, the 1946 radial tyre ... The radial was initially marketed as the \"X\" tyre.",
+    "easiestCue": "라틴어 '이제 마실 때다'를 외치는 마스코트(비벤덤)",
+    "targetWhy": "비벤덤의 구호·첫 차림은 그래픽 디자인 애호가가 아는 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 브랜드 마스코트의 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "new — 미쉐린·미슐랭 둘 다 활성·초안 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "design-photo/3#g019a-A1-08",
+   "seed": {
+    "subject": "구글 두들",
+    "aspect": null,
+    "ref": "A1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1998년 두 창업자가 네바다 사막의 버닝 맨 축제에 가며 자리를 비운다는 것을 알리려고 처음 그린 이것은, 2000년 프랑스 혁명 기념일부터 홍보 담당 직원 데니스 황이 맡아 그렸습니다. 이것은 무엇일까요?",
+    "answer": "구글 두들",
+    "acceptedAnswers": [
+     "두들"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '구글 두들' 문서 · '두들' 동음이의 문서 첫 항목이 구글 두들",
+    "explanation": "2010년 5월 팩맨 30주년을 맞은 것이 직접 즐길 수 있는 첫 두들이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "두 창업자가 … 자리를 비운다는 것을 알리려고 처음 그린 이것 … 데니스 황",
+     "difWhy": "구글 로고 장식 데니스 황 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 두들 기원",
+     "acc": 3,
+     "accWhy": "사진·디자인 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "서버가 멈추면 자리에 없다는 것을 알리려고 이 회사 로고에",
+     "difWhy": "검색 회사 로고 그림 — 일상",
+     "wor": 3,
+     "worWhy": "유명 기업 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1998년 두 창업자가 네바다 사막의 버닝 맨 축제에 가면서, 서버가 멈추면 자리에 없다는 것을 알리려고 이 회사 로고에 처음 그려 넣었습니다. 2000년 프랑스 혁명 기념일부터는 홍보 담당 직원 데니스 황이 맡아 그린 이것은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "서버가 멈추면 · 이 회사 로고에(검색 회사 로고 그림 — 일상)",
+     "addedCue": "없음 — 로고·서버 단서를 빼고 버닝 맨·데니스 황만 남김",
+     "why": "검색 회사 로고라는 일상 연결을 빼고 탄생 일화의 세부로"
+    },
+    "generalHint": "2000년 10월 31일 핼러윈에 처음으로 움직이는 그림으로 나왔다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "기념일마다 검색 사이트 첫 화면 로고를 바꿔 그린 그림",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "로고 그림은 봤으나 이름은 일부만 앎",
+     "piece": "f03",
+     "genPct": 45
+    },
+    "blind": {
+     "ref": "A1-08",
+     "key": "b188",
+     "hint": "2000년 10월 31일 핼러윈에 처음으로 움직이는 그림으로 나왔다.",
+     "guess": "구글 두들",
+     "confidence": "low",
+     "hit": true,
+     "answer": "구글 두들"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Google_Doodle"
+    ],
+    "facts": [
+     {
+      "claim": "첫 두들은 1998 버닝 맨, 페이지·브린이 서버 다운 시 부재 알림용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Google_Doodle",
+      "note": "The first Google Doodle honored the 1998 edition of the long-running annual Burning Man event in Black Rock City, Nevada, and was designed by co-founders Larry Page and Sergey Brin to notify users of their absence in case the servers crashed."
+     },
+     {
+      "claim": "2000년 바스티유의 날부터 홍보 담당 데니스 황",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Google_Doodle",
+      "note": "... until 2000, when Page and Brin asked public relations officer Dennis Hwang to design a logo for Bastille Day."
+     },
+     {
+      "claim": "2010년 5월 팩맨 첫 인터랙티브 두들",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Google_Doodle",
+      "note": "On May 21, 2010, the first interactive Doodle appeared later celebrating Pac-Man"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Google_Doodle"
+    ],
+    "hintNote": "On October 31, 2000, the first animated Doodle celebrated Halloween.",
+    "easiestCue": "2000년 프랑스 혁명 기념일부터 데니스 황이 맡아 그림",
+    "targetWhy": "IT 기업 문화의 기원 세부 — 관심층 위(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'로고에 그려 넣은 것' 이 갈래를 알려 주어, 이름을 아는 사람은 쉽게 풀 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

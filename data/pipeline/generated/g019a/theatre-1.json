@@ -1,0 +1,350 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "theatre/1",
+  "midKey": "theatre",
+  "subName": "연극 사조·연출",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "theatre/1#g019a-A1-16",
+   "seed": {
+    "subject": "경극",
+    "aspect": null,
+    "ref": "A1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1935년 유럽 순회 때 독일 극작가 브레히트는 이 중국 전통극의 배우 메이란팡을 보고 '낯설게 하기' 생각에 영향을 받았습니다. 메이란팡이 여섯 번째 배역 갈래 '화산'을 새로 연 이 전통극은 무엇일까요?",
+    "answer": "경극",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '경극' 첫 줄 '경극 또는 경희' — '경희'는 흔히 치지 않아 넣지 않음 · '베이징 오페라'는 ko 문서 없음",
+    "explanation": "1772년 청나라 건륭제가 베이징에서 여자 배우를 모두 금한 뒤 여자 역은 남자가 맡았고, 이 금지는 1912년에야 풀렸습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "이 중국 전통극의 배우 메이란팡",
+     "difWhy": "메이란팡 = 패왕별희 극 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 브레히트 소격 효과",
+     "acc": 3,
+     "accWhy": "공연·뮤지컬 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "안후이의 4대 극단이 베이징에 올라와 공연",
+     "difWhy": "베이징 전통극 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 중국 전통극"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1790년 건륭제의 여든 살 생일을 맞아 안후이의 4대 극단이 베이징에 올라와 공연한 것이 이 공연 갈래의 시작으로 꼽힙니다. 1935년 유럽 순회 때 이 공연의 한 배우를 본 독일 극작가 브레히트는 '낯설게 하기' 생각에 영향을 받았는데, 무엇일까요?",
+     "beforeExplanation": "1772년 건륭제가 베이징에서 여자 배우를 금한 뒤 여자 역은 남자가 맡았고, 이 금지는 1912년에야 풀렸습니다.",
+     "removedCue": "1790년 건륭제 여든 살 생일에 안후이 4대 극단이 베이징에 올라옴(기원)",
+     "addedCue": "메이란팡이 연 여섯 번째 배역 '화산'",
+     "why": "기원(세계사 교양)을 빼고 배우·배역 세부로"
+    },
+    "generalHint": "메이란팡은 1930년 북아메리카를 돌며 할리우드에서 더글러스 페어뱅크스와 메리 픽퍼드의 환영을 받았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "화려한 분장과 노래·무술을 섞은 중국의 전통 극",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "중국 전통극으로 교과서·영화(패왕별희)에서 접함",
+     "piece": "f01",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "A1-16",
+     "key": "b069",
+     "hint": "메이란팡은 1930년 북아메리카를 돌며 할리우드에서 더글러스 페어뱅크스와 메리 픽퍼드의 환영을 받았다.",
+     "guess": "경극",
+     "confidence": "high",
+     "hit": true,
+     "answer": "경극"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mei_Lanfang",
+     "https://en.wikipedia.org/wiki/Peking_opera"
+    ],
+    "facts": [
+     {
+      "claim": "1935 유럽 순회, 메이란팡을 본 브레히트의 낯설게 하기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mei_Lanfang",
+      "note": "In 1935, Mei toured Europe, playing to appreciative audiences in Berlin and Moscow. Seeing Mei perform especially impressed the German playwright Bertolt Brecht and influenced his concept of the alienation effect."
+     },
+     {
+      "claim": "1772 여자 배우 금지, 1912 해제",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Peking_opera",
+      "note": "The last ban was by the Qianlong Emperor who banned all female performers in Beijing in 1772. ... the ban was lifted in 1912"
+     },
+     {
+      "claim": "메이란팡이 여섯 번째 배역 갈래 화산을 개척",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Peking_opera",
+      "note": "One of Mei Lanfang's most important contributions to Beijing opera was in pioneering a sixth type of role, the huashan."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mei_Lanfang"
+    ],
+    "hintNote": "In 1930 he toured North America, visiting Hollywood, where he was welcomed by Douglas Fairbanks and Mary Pickford.",
+    "easiestCue": "브레히트는 이 중국 전통극의 배우 메이란팡을 보고 '낯설게 하기'",
+    "targetWhy": "연극사의 동서 교류 — 대학 교양 연극",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 공연 갈래의 기원과 뜻밖 연결",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "theatre/1#g019a-A1-17",
+   "seed": {
+    "subject": "마임",
+    "aspect": null,
+    "ref": "A1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "독일 점령기의 프랑스에서 한 유대인 청년은 프랑스 혁명기 한 장군의 이름을 따 성을 바꾸었습니다. 1976년 멜 브룩스의 영화 '사일런트 무비'에서 영화 속 유일한 대사 'Non!'을 말한 그가 해 온 공연 예술은?",
+    "answer": "마임",
+    "acceptedAnswers": [
+     "무언극",
+     "판토마임",
+     "팬터마임"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '마임' → '무언극' 넘겨주기('무언극 또는 마임') · '판토마임' → '팬터마임' 문서에 '한자 문화권에서는 팬터마임이라고 하면 무언극을 의미하는 경우가 많다'",
+    "explanation": "그는 이 예술을 '보이지 않는 것을 보이게 하는 예술'이라 불렀고, 1947년 파리에서 광대 '비프'를 처음 선보였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "멜 브룩스의 영화 '사일런트 무비'에서 … 'Non!'",
+     "difWhy": "마르소의 유일한 대사 — 공연 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 공연 예술",
+     "acc": 3,
+     "accWhy": "공연·뮤지컬 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "유대인 아이들을 조용히 시키려고 … 광대 '비프'",
+     "difWhy": "말 없는 공연 예술 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "예술가 일화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2차 세계대전 때 유대인 저항 조직에서 활동한 한 프랑스 청년은, 스위스로 몰래 데려가던 유대인 아이들을 조용히 시키려고 처음 이 예술을 썼다고 합니다. 1947년 파리의 작은 극장에서 광대 '비프'를 선보인 그가 해 온 이 공연 예술은?",
+     "beforeExplanation": "그는 이 예술을 '보이지 않는 것을 보이게 하는 예술'이라고 불렀습니다.",
+     "removedCue": "유대인 아이들을 조용히 시키려고 처음 썼다 · 1947년 광대 '비프'",
+     "addedCue": "혁명기 장군 이름으로 바꾼 성 · 영화 '사일런트 무비'의 유일한 대사 'Non!'",
+     "why": "널리 알려진 마르소 일화(비프)를 해설로 옮기고 이름·영화 뒷이야기로"
+    },
+    "generalHint": "그와 같은 스승 에티엔 드크루에게 배운 장루이 바로는 1945년 영화 'Les Enfants du Paradis'에서 이 예술가 드뷔로를 맡았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "말 없이 몸짓과 표정만으로 하는 연기",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "판토마임으로 익숙한 말",
+     "piece": "f01",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "A1-17",
+     "key": "b255",
+     "hint": "그와 같은 스승 에티엔 드크루에게 배운 장루이 바로는 1945년 영화 'Les Enfants du Paradis'에서 이 예술가 드뷔로를 맡았다.",
+     "guess": "마르셀 마르소",
+     "confidence": "high",
+     "hit": false,
+     "answer": "마임"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Marcel_Marceau",
+     "https://en.wikipedia.org/wiki/Silent_Movie"
+    ],
+    "facts": [
+     {
+      "claim": "1947년 파리 포슈 극장에서 비프 첫 공연",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Marcel_Marceau",
+      "note": "In 1947 Marceau created Bip the Clown, whom he first played at the Théâtre de Poche (Pocket Theatre) in Paris."
+     },
+     {
+      "claim": "'보이지 않는 것을 보이게 하는 예술'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Marcel_Marceau",
+      "note": "Calling mime the art of \"making the invisible visible,\""
+     },
+     {
+      "claim": "독일 점령기 프랑스 혁명기 장군 마르소의 이름을 따 성을 바꿈(본명 Mangel)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Marcel_Marceau",
+      "note": "Marcel and his older brother, Alain, adopted the last name \"Marceau\" during the German occupation of France; the name was chosen as a reference to François Séverin Marceau-Desgraviers, a general of the French Revolution."
+     },
+     {
+      "claim": "1976 사일런트 무비에서 유일한 대사 'Non!'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Silent_Movie",
+      "note": "Funn phones mime artist Marcel Marceau, who responds in French with the only spoken word in the film / (Marcel Marceau 문서) Silent Movie (1976), in which, with intentional irony, his character has the only audible speaking part, uttering the single word \"Non!\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/%C3%89tienne_Decroux",
+     "https://en.wikipedia.org/wiki/Jean-Louis_Barrault"
+    ],
+    "hintNote": "Among his better known students were Marcel Marceau ... / One of his most famous performances was in Marcel Carné's film Les Enfants du Paradis (1945), in which he played the mime Jean-Gaspard Deburau.",
+    "easiestCue": "멜 브룩스의 '사일런트 무비'에서 유일한 대사 'Non!'을 말한 사람",
+    "targetWhy": "마르소의 개명·카메오는 공연·영화 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'조용히' 가 소리 없는 예술을 떠올리게 해 3 으로 내려갈 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new — 마임·무언극·판토마임 활성·초안 없음",
+    "warn": [
+     "단정어 처음",
+     "숫자대조 2"
+    ]
+   }
+  },
+  {
+   "seedId": "theatre/1#g019a-A1-18",
+   "seed": {
+    "subject": "비극",
+    "aspect": null,
+    "ref": "A1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "전승에 따르면 기원전 534년 아테네의 디오니소스 축제에서 이 극의 첫 경연이 열려 테스피스가 우승했습니다. 아리스토텔레스는 『시학』에서 이 극이 디티람보스 합창을 이끌던 사람의 즉흥에서 비롯했다고 보았는데, 이 연극 갈래는?",
+    "answer": "비극",
+    "acceptedAnswers": [
+     "그리스 비극"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '그리스 비극' → '고대 그리스 연극' 넘겨주기 — 같은 대상을 한정해 부르는 흔한 이름",
+    "explanation": "테스피스는 의상과 가면, 소품을 말이 끄는 수레에 싣고 여러 도시를 돌아 순회 공연을 처음 했다고도 전합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "아리스토텔레스는 『시학』에서 … 이 연극 갈래",
+     "difWhy": "시학의 중심 갈래 — 고교 문학·윤리",
+     "wor": 4,
+     "worWhy": "교양 — 연극 갈래 기원",
+     "acc": 3,
+     "accWhy": "공연·뮤지컬 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "디오니소스 축제 … 이 극 세 편에 사티로스극 한 편",
+     "difWhy": "디오니소스 축제 경연극 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 그리스 비극 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "전승에 따르면 기원전 534년 아테네의 디오니소스 축제에서 이 극의 첫 경연이 열려 테스피스가 우승했습니다. 그 뒤 이 경연에서는 극작가 세 사람이 저마다 이 극 세 편에 사티로스극 한 편을 붙여 사흘에 걸쳐 올렸는데, 이 연극 갈래는?",
+     "beforeExplanation": null,
+     "removedCue": "극작가 셋이 이 극 세 편과 사티로스극 한 편을 사흘에 걸쳐(고교 세계사)",
+     "addedCue": "『시학』의 기원설 — 디티람보스 합창 지휘자의 즉흥",
+     "why": "교과서식 경연 구성을 빼고 기원설로 — 희극은 다른 기원이라 유일"
+    },
+    "generalHint": "같은 축제에서 희극 시인들이 정식으로 경연에 들어 따로 상을 받게 된 것은 기원전 487/486년부터다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "고대 아테네에서 생긴 주인공의 몰락을 그리는 연극 갈래",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "일상어",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "A1-18",
+     "key": "b062",
+     "hint": "같은 축제에서 희극 시인들이 정식으로 경연에 들어 따로 상을 받게 된 것은 기원전 487/486년부터다.",
+     "guess": "디오니시아 제전",
+     "confidence": "high",
+     "hit": false,
+     "answer": "비극"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dionysia",
+     "https://en.wikipedia.org/wiki/Thespis",
+     "https://en.wikipedia.org/wiki/Tragedy"
+    ],
+    "facts": [
+     {
+      "claim": "전승상 534년 디오니시아 첫 비극 공연은 테스피스",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dionysia",
+      "note": "According to tradition, the first performance of tragedy at the Dionysia was by the playwright and actor Thespis ... in 534 BC."
+     },
+     {
+      "claim": "534년 비극 경연 제정, 테스피스 첫 우승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thespis",
+      "note": "Eventually, in 534 BC competitions to find the best tragedy were instituted at the City Dionysia in Athens, and Thespis won the first documented competition."
+     },
+     {
+      "claim": "말 수레 순회 공연",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Thespis",
+      "note": "Thespis also invented theatrical touring; he would tour various cities while carrying his costumes, masks and other props in a horse-drawn wagon."
+     },
+     {
+      "claim": "아리스토텔레스 시학 — 디티람보스 합창 지휘자의 즉흥에서 발전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tragedy",
+      "note": "Aristotle provides the earliest surviving explanation for the origin of the dramatic art form in his Poetics, in which he argues that tragedy developed from the improvisations of the leader of choral dithyrambs ... (both tragedy and comedy—tragedy from the leaders of the dithyramb, and comedy from the leaders of the phallic processions ...)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dionysia"
+    ],
+    "hintNote": "The other two days of the festival were likely devoted to dithyrambic contests until 487/6 BC, when comic poets were officially admitted to the agons and eligible for their own prizes.",
+    "easiestCue": "기원전 534년 디오니소스 축제 첫 경연에서 테스피스 우승",
+    "targetWhy": "테스피스·디티람보스 기원설은 연극사 교양 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "디오니소스 축제=비극 연결을 고교에서 배운 사람은 바로 푼다",
+    "pairCheck": null,
+    "dbCheck": "new — 비극·그리스 비극 활성·초안 없음 (#1386 코러스와 다른 답)",
+    "warn": []
+   }
+  }
+ ]
+}

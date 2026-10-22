@@ -1,0 +1,123 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "animals/6",
+  "midKey": "animals",
+  "subName": "동물의 습성·생태",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/6#g019a-C1-21",
+   "seed": {
+    "subject": "까치",
+    "aspect": null,
+    "ref": "C1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2008년 연구자들이 유럽에 사는 이 새 다섯 마리의 목에 색 스티커를 붙이고 거울을 보여 주자, 새들이 목을 긁었습니다. 2014년 영국 엑서터 대학 연구에서는 낯선 반짝이는 물건에 오히려 덜 다가갔는데, 이 새는 무엇일까요?",
+    "answer": "까치",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2020년 더 많은 개체로 같은 실험을 되풀이한 연구는 2008년 결과를 다시 확인하지 못했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "유럽에 사는 이 새 … 거울을 보여 주자, 새들이 목을 긁었습니다",
+     "difWhy": "거울 자기인식 새 — 방송 다큐 관심층",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 동물 인지",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "포유류가 아닌 동물로는 처음 거울 시험을 통과",
+     "difWhy": "거울 시험 통과 새 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "동물 지능 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2008년 연구자들이 유럽에 사는 이 새 다섯 마리의 목에 색 스티커를 붙이고 거울을 주자, 새들이 목을 긁었습니다. 포유류가 아닌 동물로는 처음 거울 시험을 통과했다는 이 새는, 2014년 연구에서 오히려 반짝이는 물건을 꺼렸는데 무엇일까요?",
+     "beforeExplanation": "2020년 더 많은 개체로 같은 실험을 되풀이한 연구는 2008년 결과를 다시 확인하지 못했습니다.",
+     "removedCue": "포유류가 아닌 동물로는 처음 거울 시험을 통과",
+     "addedCue": "(뺌만) 2014년 엑서터 대학 연구 출처를 문장에",
+     "why": "'첫 비포유류 거울 시험 통과'라는 대표 문장을 빼고 실험 세부만 남김"
+    },
+    "generalHint": "로시니의 오페라 한 편과 땡땡의 '카스타피오레의 보석'은 이 새가 반짝이는 것을 훔친다는 속설을 바탕으로 했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "검고 흰 깃털에 꼬리가 긴, 길조로 여기는 새",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "흔한 새",
+     "piece": "f07",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "C1-21",
+     "key": "b102",
+     "hint": "로시니의 오페라 한 편과 땡땡의 '카스타피오레의 보석'은 이 새가 반짝이는 것을 훔친다는 속설을 바탕으로 했다.",
+     "guess": "까치",
+     "confidence": "high",
+     "hit": true,
+     "answer": "까치"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mirror_test",
+     "https://en.wikipedia.org/wiki/Magpie"
+    ],
+    "facts": [
+     {
+      "claim": "2008 유라시아까치 5마리 목에 스티커 · 거울 보고 목을 긁음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mirror_test",
+      "note": "In 2008, researchers applied a small red, yellow, or black sticker to the throat of five Eurasian magpies ... when the birds with colored stickers glimpsed themselves in the mirror, they scratched at their throats"
+     },
+     {
+      "claim": "2014 엑서터 대학 — 반짝이는 물건에 덜 다가감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Magpie",
+      "note": "A 2014 study conducted by Exeter University found that Eurasian magpies express neophobia when presented with unfamiliar objects, and were less likely to approach or interact with the shiny objects"
+     },
+     {
+      "claim": "2020 재현 실패",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mirror_test",
+      "note": "In 2020, researchers attempted to closely replicate the 2008 study with a larger number of magpies, and failed to confirm the results of the 2008 study."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Eurasian_magpie"
+    ],
+    "hintNote": "magpies are believed to have a penchant for picking up shiny items ... Rossini's opera La gazza ladra and The Adventures of Tintin comic The Castafiore Emerald are based on this theme.",
+    "easiestCue": "목에 색 스티커를 붙이고 거울을 보여 주자 목을 긁은 유럽의 새",
+    "targetWhy": "실험 세부와 2014년 반짝이 연구는 동물행동 애호가 세부 — 4(경계)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국인이 다 아는 새의 인지 연구",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,250 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "animals/4",
+  "midKey": "animals",
+  "subName": "곤충·절지동물",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/4#g019a-C1-19",
+   "seed": {
+    "subject": "모기",
+    "aspect": null,
+    "ref": "C1-19",
+    "pairedWith": 1795
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1795,
+    "question": "곤충 더듬이의 '존스턴 기관'에는 초파리의 경우 감각 신경세포가 480개쯤이지만, 이 곤충의 수컷에게는 1만 5천 개쯤 있어 사람의 달팽이관에 맞먹습니다. 암컷은 그 절반쯤인 이 곤충은 무엇일까요?",
+    "answer": "모기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "영어 이름은 스페인어·포르투갈어로 '작은 파리'라는 뜻입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "이 곤충의 수컷에게는 1만 5천 개쯤 있어 사람의 달팽이관에 맞먹습니다",
+     "difWhy": "수컷이 날갯소리 듣는 곤충 — 대학 교양 생물",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 곤충 청각",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "수컷은 1초에 날개를 450~600번 치는데",
+     "difWhy": "날갯소리 곤충 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "곤충 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 곤충 수컷 더듬이의 '존스턴 기관'에는 감각 세포가 1만 5천 개쯤 있어, 사람의 달팽이관에 맞먹습니다. 수컷은 1초에 날개를 450~600번 치는데, 이 곤충은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "수컷은 1초에 날개를 450~600번 친다(날갯소리)",
+     "addedCue": "초파리 480개와의 대비 · 암컷은 절반",
+     "why": "날갯소리 단서를 빼고 감각 기관 세부만으로"
+    },
+    "generalHint": "남극과 몇몇 섬을 빼고 모든 땅에 사는데, 없는 나라로 여겨지던 아이슬란드에서도 2025년 몇 마리가 발견되었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "피를 빨고 앵앵거리며 병을 옮기는 작은 곤충",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "흔한 곤충",
+     "piece": "f07",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "C1-19",
+     "key": "b278",
+     "hint": "남극과 몇몇 섬을 빼고 모든 땅에 사는데, 없는 나라로 여겨지던 아이슬란드에서도 2025년 몇 마리가 발견되었다.",
+     "guess": "모기",
+     "confidence": "high",
+     "hit": true,
+     "answer": "모기"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mosquito",
+     "https://en.wikipedia.org/wiki/Johnston's_organ"
+    ],
+    "facts": [
+     {
+      "claim": "이름 = 스페인어·포르투갈어 작은 파리",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mosquito",
+      "note": "The word mosquito (formed by mosca and diminutive -ito) is Spanish and Portuguese for little fly."
+     },
+     {
+      "claim": "초파리 존스턴 기관 신경세포 약 480개",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Johnston's_organ",
+      "note": "In the fruit fly Drosophila melanogaster and Chironomus annularius, the Johnston's organ contains almost 480 sensory neurons."
+     },
+     {
+      "claim": "수컷 약 1만 5천 개 · 달팽이관에 맞먹음 · 암컷은 절반쯤",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Johnston's_organ",
+      "note": "In the mosquito, the Johnston's organ houses ~15 000 sensory cells in males, comparable to that in the human cochlea, and approximately half as many in females."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mosquito"
+    ],
+    "hintNote": "Mosquitoes have a cosmopolitan distribution, occurring in every land region except Antarctica and a few islands. In 2025, some specimens of Culiseta annulata were found in Kjósarhreppur in Iceland, a country that had been free of mosquitoes",
+    "easiestCue": "이 곤충의 수컷에게는 1만 5천 개쯤 있어 사람의 달팽이관에 맞먹습니다",
+    "targetWhy": "곤충 청각 기관의 세부 — 대학 교양 생물",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 곤충의 감각 세부",
+    "pairCheck": "1회차 #1795 q(말라리아·뎅기열 매개 · 가장 많이 죽이는 동물)·e(매개 구실)·h(없음)와 겹치지 않음 — 질병·흡혈·사람 찾기 단서 없음",
+    "dbCheck": "pair-or-different — 활성 1795 의 (가) 2회차(지식 다름: 질병 매개 ↔ 청각 기관)",
+    "warn": [],
+    "first": {
+     "id": 1795,
+     "question": "말라리아·뎅기열·황열을 옮겨, 사람을 가장 많이 죽이는 동물로 꼽히는 곤충은?",
+     "explanation": "직접 해치는 것이 아니라 병원체를 옮기는 매개 구실을 합니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "animals/4#g019a-C1-20",
+   "seed": {
+    "subject": "반딧불이",
+    "aspect": null,
+    "ref": "C1-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북아메리카의 한 무리 암컷은 다른 종 암컷의 신호를 흉내 내 그 종 수컷을 꾀어 잡아먹고, 그 몸에서 방어 물질 루시부파긴을 얻습니다. 애벌레는 다슬기나 달팽이를 큰 턱으로 물어 소화액으로 마취시킨 뒤 녹여 빨아 먹는데, 이 곤충은?",
+    "answer": "반딧불이",
+    "acceptedAnswers": [
+     "개똥벌레",
+     "반딧불"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 반딧불이과 넘겨주기(반딧불이 · 개똥벌레 · 반딧불 · 반디) 확인 — 반디는 짧고 드물어 뺌",
+    "explanation": "이 곤충의 빛은 적외선이나 자외선이 없는 \"차가운 빛\" 입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "애벌레는 다슬기나 달팽이를 … 녹여 빨아 먹는데",
+     "difWhy": "다슬기 먹는 애벌레 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 곤충 생태",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "수많은 개체가 신호를 한꺼번에 맞추는데",
+     "difWhy": "동시 발광 곤충 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "곤충 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "북아메리카의 한 무리 암컷은 다른 종 암컷의 신호를 흉내 내 그 종 수컷을 꾀어 잡아먹고, 그 몸에서 방어 물질 루시부파긴을 얻습니다. 미국 테네시주 엘크몬트 근처에서는 6월 첫 몇 주 동안 수많은 개체가 신호를 한꺼번에 맞추는데, 이 곤충은?",
+     "beforeExplanation": null,
+     "removedCue": "테네시주 엘크몬트 근처에서 수많은 개체가 신호를 한꺼번에 맞춤(동시 발광)",
+     "addedCue": "애벌레가 다슬기·달팽이를 마취시켜 녹여 먹음",
+     "why": "관광 명소로 알려진 동시 발광을 빼고 애벌레 먹이 습성으로"
+    },
+    "generalHint": "1974년 미국 펜실베이니아주는 이 무리의 한 종을 주의 곤충으로 정했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "배 끝에서 빛을 내는 딱정벌레 무리 곤충",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "잘 알려진 곤충",
+     "piece": "f04",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "C1-20",
+     "key": "b008",
+     "hint": "1974년 미국 펜실베이니아주는 이 무리의 한 종을 주의 곤충으로 정했다.",
+     "guess": "반딧불이",
+     "confidence": "high",
+     "hit": true,
+     "answer": "반딧불이",
+     "first": {
+      "ref": "C1-20",
+      "key": "b084",
+      "hint": "전북 무주 일원의 이 곤충과 그 먹이 서식지가 천연기념물 제322호로 지정되어 있다.",
+      "guess": "반딧불이",
+      "confidence": "high",
+      "hit": true,
+      "answer": "반딧불이"
+     }
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Firefly",
+     "https://en.wikipedia.org/wiki/Photuris",
+     "https://ko.wikipedia.org/wiki/%EB%B0%98%EB%94%A7%EB%B6%88%EC%9D%B4"
+    ],
+    "facts": [
+     {
+      "claim": "Photuris 암컷이 Photinus 신호를 흉내 내 수컷을 잡아먹고 루시부파긴을 얻음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Firefly",
+      "note": "Female \"femme fatale\" Photuris fireflies mimic the photic signaling patterns of the smaller Photinus, attracting males to what appears to be a suitable mate, then eating them. This provides the females with a supply of the toxic defensive lucibufagin chemicals."
+     },
+     {
+      "claim": "Photuris 는 신대륙(북아메리카) 무리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Photuris",
+      "note": "They engage in aggressive mimicry, imitating the light signals that other firefly species' females use to attract mates – but Photuris use it to attract, kill and eat the unsuspecting males of those other species. / (Firefly 문서 참고문헌) \"...its effects on the evolution of flash signaling in other New World fireflies\"."
+     },
+     {
+      "claim": "차가운 빛 — 적외선·자외선 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Firefly",
+      "note": "Fireflies produce a \"cold light\", with no infrared or ultraviolet frequencies."
+     },
+     {
+      "claim": "유충은 다슬기·달팽이를 큰 턱으로 물어 소화액으로 마취시킨 뒤 액체로 만들어 빨아먹음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EB%B0%98%EB%94%A7%EB%B6%88%EC%9D%B4",
+      "note": "주로 다슬기, 달팽이 등 조개류를 날카로운 큰 턱으로 물고, 큰 턱의 작은 홈으로 소화액을 주입하여 다슬기나 달팽이 등을 마취시킨 다음, 액체 모양으로 만들어 빨아먹는다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Photuris_pensylvanica"
+    ],
+    "hintNote": "\"In 1974, P. pensylvanica was designated the state insect of Pennsylvania.\"",
+    "easiestCue": "애벌레가 다슬기나 달팽이를 물어 녹여 빨아 먹는 곤충",
+    "targetWhy": "다슬기 먹는 애벌레·팜파탈 암컷은 곤충 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 곤충의 뜻밖 생태",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

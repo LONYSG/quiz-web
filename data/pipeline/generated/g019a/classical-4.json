@@ -1,0 +1,230 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "classical/4",
+  "midKey": "classical",
+  "subName": "음악 형식·용어",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "classical/4#g019a-A1-14",
+   "seed": {
+    "subject": "절대음감",
+    "aspect": null,
+    "ref": "A1-14",
+    "pairedWith": 1808
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1808,
+    "question": "중국·티베트계 언어를 쓰는 사람들은 다른 날에도 같은 낱말을 4분의 1음 안의 같은 높이로 말한다는 보고가 있어, 아기가 성조 언어를 배우며 이 능력을 얻을 수도 있다고 봅니다. 상염색체 우성 형질일 수도 있다는 이 능력은?",
+    "answer": "절대음감",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '절대음감' → '절대 음감'(띄어쓰기만 다름 — 정규화로 같음)",
+    "explanation": "청각이 발달하는 어린 시기의 결정적 시기에는 누구나 얻을 수 있을지 모른다는 견해도 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 같은 낱말을 같은 높이로 말한다 + 이 능력",
+     "difWhy": "음 높이를 그대로 아는 능력 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음악 능력",
+     "acc": 3,
+     "accWhy": "클래식 음악 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "성조 언어를 쓰는 사람에게 더 흔하다 … 음대생",
+     "difWhy": "음높이 인식 능력 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "음악 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 능력은 중국어나 베트남어처럼 음높이로 낱말 뜻을 가르는 성조 언어를 쓰는 사람에게 더 흔하다고 합니다. 1만 명에 한 명꼴이라는 수치가 널리 퍼져 있지만, 2019년 한 리뷰는 음대생 가운데 적어도 4%가 지녔다고 보았는데, 이 능력은?",
+     "beforeExplanation": null,
+     "removedCue": "성조 언어 사용자에게 더 흔함 · 1만 명에 1명 · 음대생 4%",
+     "addedCue": "같은 낱말을 4분의 1음 안의 같은 높이로 말함 · 상염색체 우성 가능성",
+     "why": "음대생 비율처럼 음악 능력을 바로 가리키는 단서를 빼고 언어 습득·유전 세부로"
+    },
+    "generalHint": "윌리엄스 증후군이 있거나 자폐 스펙트럼인 사람에게서 더 흔하다는 보고가 있다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "기준음 없이 들은 음의 높이를 바로 아는 능력",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "일상·예능에서 흔한 말",
+     "piece": "f01",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "A1-14",
+     "key": "b282",
+     "hint": "윌리엄스 증후군이 있거나 자폐 스펙트럼인 사람에게서 더 흔하다는 보고가 있다.",
+     "guess": "절대 음감",
+     "confidence": "high",
+     "hit": true,
+     "answer": "절대음감"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Absolute_pitch"
+    ],
+    "facts": [
+     {
+      "claim": "결정적 시기 견해",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Absolute_pitch",
+      "note": "Absolute pitch might be achievable by any human being during a critical period of auditory development"
+     },
+     {
+      "claim": "중국·티베트계 언어 화자는 다른 날에도 같은 낱말을 4분의 1음 안의 같은 높이로 말함 → 아기가 성조 언어를 배우며 얻을 수 있다는 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Absolute_pitch",
+      "note": "Speakers of Sino-Tibetan languages have been reported to speak a word in the same absolute pitch (within a quarter-tone) on different days; it has therefore been suggested that absolute pitch may be acquired by infants when they learn to speak a tonal language"
+     },
+     {
+      "claim": "상염색체 우성 유전 형질일 가능성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Absolute_pitch",
+      "note": "absolute pitch may be influenced by genetic variation, possibly an autosomal dominant genetic trait."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Absolute_pitch"
+    ],
+    "hintNote": "Absolute pitch ability has higher prevalence among those with Williams syndrome and those who are autistic",
+    "easiestCue": "아기가 성조 언어를 배우며 이 능력을 얻을 수도 있다",
+    "targetWhy": "음감 연구의 언어학·유전 세부 — 대학 교양(경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 능력의 몰랐던 연결",
+    "pairCheck": "1회차 #1808 q(기준음 없이 음 이름 맞힘 — 정의) · e(상대음감이 더 중요) 와 겹치지 않음 · 힌트 없음 — 정의 문장을 쓰지 않음",
+    "dbCheck": "pair-or-different — 활성 #1808 (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 1808,
+     "question": "비교할 기준음 없이도 들은 음의 이름을 바로 알아맞히는 능력을 무엇이라 합니까?",
+     "explanation": "음악을 하는 데 반드시 필요한 것은 아니며, 음 사이의 관계를 아는 상대음감이 더 중요하다고 보기도 합니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "classical/4#g019a-A1-15",
+   "seed": {
+    "subject": "현악 사중주",
+    "aspect": null,
+    "ref": "A1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "하이든이 황제 프란츠 2세를 위해 쓴 찬가는 뒷날 독일 국가의 선율이 되었습니다. 그는 1797년 무렵 이 찬가를 주제로 한 변주곡을 2악장에 넣은, '황제'라는 별명의 작품을 썼는데, 이 작품은 어떤 편성의 곡일까요?",
+    "answer": "현악 사중주",
+    "acceptedAnswers": [
+     "현악4중주"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '현악4중주' → '현악 사중주' 넘겨주기",
+    "explanation": "1986년 음악학자 솜파이는 1악장 첫 음들이 찬가 제목 낱말의 머리글자를 나타낸다고 보았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'황제'라는 별명의 작품 … 어떤 편성의 곡",
+     "difWhy": "하이든 '황제' 편성 — 클래식 애호가",
+     "wor": 3,
+     "worWhy": "유명 곡 이야깃거리",
+     "acc": 3,
+     "accWhy": "클래식 음악 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'황제'라는 별명의 작품 … 어떤 편성의 곡",
+     "difWhy": "하이든 '황제' 편성 — 클래식 애호가",
+     "wor": 3,
+     "worWhy": "유명 곡 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "같은 작품집에는 '5도'·'일출'이라는 별명이 붙은 곡도 실렸고, 헝가리의 에르되디 백작에게 바쳐졌다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "바이올린 둘·비올라·첼로가 함께하는 실내악 편성",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "음악 교과서·공연에서 접함",
+     "piece": "f03",
+     "genPct": 70
+    },
+    "blind": {
+     "ref": "A1-15",
+     "key": "b099",
+     "hint": "같은 작품집에는 '5도'·'일출'이라는 별명이 붙은 곡도 실렸고, 헝가리의 에르되디 백작에게 바쳐졌다.",
+     "guess": "황제 4중주",
+     "confidence": "high",
+     "hit": false,
+     "answer": "현악 사중주"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/String_Quartets,_Op._76_(Haydn)"
+    ],
+    "facts": [
+     {
+      "claim": "'황제' 별명 — 2악장이 프란츠 2세 찬가 변주",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/String_Quartets,_Op._76_(Haydn)",
+      "note": "No. 3 ... boasts the nickname Emperor (or Kaiser), because in the second movement is a set of variations on \"Gott erhalte Franz den Kaiser\" (\"God save Emperor Francis\"), an anthem he wrote for Emperor Francis II"
+     },
+     {
+      "claim": "그 선율이 독일 국가에 쓰임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/String_Quartets,_Op._76_(Haydn)",
+      "note": "This same melody is known to modern listeners for its later use in the German national anthem, the Deutschlandlied"
+     },
+     {
+      "claim": "작품 76은 1797~1798 작곡",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/String_Quartets,_Op._76_(Haydn)",
+      "note": "The String Quartets, Op. 76, by Joseph Haydn were composed in 1797 or 1798"
+     },
+     {
+      "claim": "솜파이 1986 머리글자 해석",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/String_Quartets,_Op._76_(Haydn)",
+      "note": "The musicologist László Somfai suggested (1986) that the opening notes have an extra-musical origin: they represent the initial letters of \"Gott erhalte Franz den Caesar\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/String_Quartets,_Op._76_(Haydn)"
+    ],
+    "hintNote": "76, by Joseph Haydn were composed in 1797 or 1798 and dedicated to the Hungarian count Joseph Georg von Erdődy ... 2 in D minor (\"Fifths\") ... 4 in B♭ major (\"Sunrise\")",
+    "easiestCue": "찬가를 주제로 한 변주곡을 2악장에 넣은 '황제'라는 별명의 작품",
+    "targetWhy": "하이든 '황제'가 현악 사중주라는 것은 고교 음악(교향곡 '놀람' 등) 밖 — 클래식 애호가 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "하이든=현악 사중주의 아버지를 아는 사람은 찍어 맞힐 수 있다",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

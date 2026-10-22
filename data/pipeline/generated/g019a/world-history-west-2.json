@@ -1,0 +1,352 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "world-history-west/2",
+  "midKey": "world-history-west",
+  "subName": "중세 유럽",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/2#g019a-H1-15",
+   "seed": {
+    "subject": "바이킹",
+    "aspect": null,
+    "ref": "H1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아야 소피아 남쪽 구역에서 '할브단이 여기 왔다'는 9세기 낙서가 발견되었는데, 동로마 제국에서 용병으로 일하던 이들 가운데 하나가 새긴 것으로 여겨집니다. 988년 무렵부터 동로마 황제의 친위대를 이룬 이 사람들은?",
+    "answer": "바이킹",
+    "acceptedAnswers": [
+     "바랑인"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "바랑인 — 질문이 동로마 친위대를 이룬 사람들을 물어 같은 대상의 이름(en.wikipedia Vikings 'also known as Varangians')",
+    "explanation": "흔히 793년 처음 기록된 습격부터 1066년 노르만 정복까지를 이들의 시대로 봅니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "988년 무렵부터 동로마 황제의 친위대를 이룬 이 사람들",
+     "difWhy": "바랑기안 친위대 — 대학 교양 중세사",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 룬 낙서",
+     "acc": 4,
+     "accWhy": "서양사 — 고교 세계사 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'바랑인'이라고도 불린 이 사람들",
+     "difWhy": "바랑인 = 노르만 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 바이킹 활동 범위"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "아야 소피아 남쪽 구역에서 '할브단이 여기 왔다'는 9세기 낙서가 발견되었는데, 동로마 제국의 용병이 새긴 것으로 여겨집니다. 드네프르강·볼가강 교역로에서 '바랑인'이라고도 불린 이 사람들은?",
+     "beforeExplanation": null,
+     "removedCue": "드네프르강·볼가강 교역로의 '바랑인'(고교 세계사)",
+     "addedCue": "988년 무렵부터 동로마 황제 친위대",
+     "why": "교과서 용어 '바랑인'을 빼고 친위대 세부로 — 바랑인도 정답으로 받음"
+    },
+    "generalHint": "뒷날 노르웨이 왕이 된 하랄 3세는 젊을 때 콘스탄티노폴리스로 건너가 이 친위대의 우두머리를 지냈다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "중세 스칸디나비아의 해상 약탈자·무역인",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "영화·교과서로 익숙",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "H1-15",
+     "key": "b224",
+     "hint": "뒷날 노르웨이 왕이 된 하랄 3세는 젊을 때 콘스탄티노폴리스로 건너가 이 친위대의 우두머리를 지냈다.",
+     "guess": "바랑기안 친위대",
+     "confidence": "high",
+     "hit": false,
+     "answer": "바이킹"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hagia_Sophia",
+     "https://en.wikipedia.org/wiki/Vikings",
+     "https://en.wikipedia.org/wiki/Varangian_Guard"
+    ],
+    "facts": [
+     {
+      "claim": "아야 소피아 남쪽 구역의 9세기 'Halvdan was here' 낙서, 용병이 새긴 것으로 추정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+      "note": "In the southern section of Hagia Sophia, a 9th-century Viking inscription has been discovered, which reads, \"Halvdan was here.\" It is theorized that the inscription was created by a Viking soldier serving as a mercenary in the Eastern Roman Empire."
+     },
+     {
+      "claim": "드네프르·볼가 교역로에서 바랑인으로 불림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vikings",
+      "note": "as well as along the Dnieper and Volga trade routes across Eastern Europe where they were also known as Varangians."
+     },
+     {
+      "claim": "793년 첫 기록 습격 ~ 1066년 노르만 정복",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Vikings",
+      "note": "The Viking Age in Scandinavian history is taken to have been the period from the earliest recorded raids by Norsemen in 793 until the Norman conquest of England in 1066."
+     },
+     {
+      "claim": "바랑인 친위대 — 동로마 황제의 개인 경호",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Varangian_Guard",
+      "note": "The Varangian Guard … was an elite unit of the Byzantine army from the 10th to the 14th century who served as personal bodyguards to the Byzantine emperors."
+     },
+     {
+      "claim": "988년 바실리오스 2세 때 정식 창설",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Varangian_Guard",
+      "note": "The Guard was first formally constituted under Emperor Basil II in 988"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Harald_Hardrada"
+    ],
+    "hintNote": "Before becoming king, Harald spent 15 years in exile as a mercenary and military commander in Kievan Rus' and chief of the Varangian Guard in the Byzantine Empire.",
+    "easiestCue": "'할브단이 여기 왔다' 낙서 · 동로마 황제의 친위대",
+    "targetWhy": "중세사의 교과서 밖 세부 — 세계사 애호가(경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 대상의 동쪽 활동 세부",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-history-west/2#g019a-H1-16",
+   "seed": {
+    "subject": "케임브리지 대학",
+    "aspect": null,
+    "ref": "H1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 대학의 첫 칼리지는 1284년 일리의 주교 휴 드 발셤이 세운 피터하우스입니다. 세워진 지 22년 뒤인 1231년 잉글랜드 왕 헨리 3세에게서 왕실 칙허장을 받은 이 대학은 어디일까요?",
+    "answer": "케임브리지 대학",
+    "acceptedAnswers": [
+     "케임브리지 대학교",
+     "캠브리지 대학교",
+     "캠브리지 대학"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 \"케임브리지 대학교\" · \"캠브리지 대학교\" 넘겨주기 확인",
+    "explanation": "1209년 마을 사람들과 다툰 끝에 옥스퍼드를 떠난 학자들이 옮겨 오면서 세워졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "첫 칼리지는 … 피터하우스",
+     "difWhy": "피터하우스 칼리지 — 대학 교양",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대학 역사",
+     "acc": 4,
+     "accWhy": "서양사 — 고교 세계사 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "옥스퍼드를 떠나 … 영어권에서 두 번째로 오래된 이 대학",
+     "difWhy": "옥스퍼드 다음 오래된 대학 — 관심 있는 사람 교양",
+     "wor": 3,
+     "worWhy": "케임브리지 기원 일화 — 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1209년 마을 사람들과 다툼을 벌인 학자들이 옥스퍼드를 떠나 이곳으로 옮겨 온 일을 계기로 세워진 대학입니다. 영어권에서 두 번째로 오래된 이 대학은 어디일까요?",
+     "beforeExplanation": "그 전부터 가까운 일리 대성당 수도사들의 학문 활동으로 이 지역은 학문의 고장으로 이름이 있었습니다.",
+     "removedCue": "옥스퍼드를 떠난 학자들이 옮겨 와 세움 · 영어권 두 번째로 오래된 대학",
+     "addedCue": "첫 칼리지 피터하우스(1284 · 휴 드 발셤) · 1231년 헨리 3세 칙허장",
+     "why": "알려진 창립 배경을 해설로 옮기고 칼리지·칙허 세부로"
+    },
+    "generalHint": "1869년 이 대학의 첫 여자 칼리지로 거턴 칼리지가 세워졌지만, 정식 칼리지 지위는 1948년에야 받았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "영국의 오랜 명문 대학",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "세계적 명문대",
+     "piece": "f04",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "H1-16",
+     "key": "b254",
+     "hint": "1869년 이 대학의 첫 여자 칼리지로 거턴 칼리지가 세워졌지만, 정식 칼리지 지위는 1948년에야 받았다.",
+     "guess": "케임브리지 대학교",
+     "confidence": "high",
+     "hit": true,
+     "answer": "케임브리지 대학"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/University_of_Cambridge"
+    ],
+    "facts": [
+     {
+      "claim": "1209년 창립, 영어권 두 번째로 오래된 대학",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/University_of_Cambridge",
+      "note": "Founded in 1209, the University of Cambridge is the second-oldest university in the English-speaking world"
+     },
+     {
+      "claim": "주민과 다툼 끝에 옥스퍼드를 떠난 학자들이 옮겨 와 세움",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/University_of_Cambridge",
+      "note": "The university's founding followed the arrival of scholars who left the University of Oxford for Cambridge after a dispute with local townspeople."
+     },
+     {
+      "claim": "첫 칼리지 피터하우스 1284 일리 주교 휴 드 발셤",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/University_of_Cambridge",
+      "note": "The University of Cambridge's first college, Peterhouse, was founded in 1284 by Hugh de Balsham, the Bishop of Ely."
+     },
+     {
+      "claim": "1231년 창립 22년 뒤 헨리 3세 왕실 칙허장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/University_of_Cambridge",
+      "note": "In 1231, 22 years after its founding, the university was recognised with a royal charter, granted by King Henry III."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Girton_College,_Cambridge"
+    ],
+    "hintNote": "The college was established in 1869 by Emily Davies and Barbara Bodichon as the first women's college at Cambridge. In 1948, it was granted full college status by the university",
+    "easiestCue": "첫 칼리지가 1284년 세운 피터하우스인 대학",
+    "targetWhy": "피터하우스·1231 칙허는 대학사 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'옥스퍼드 다음'이라 추리할 길은 있으나 사연 자체는 덜 알려짐",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "정답조각 대학"
+    ]
+   }
+  },
+  {
+   "seedId": "world-history-west/2#g019a-H1-17",
+   "seed": {
+    "subject": "마르코 폴로",
+    "aspect": null,
+    "ref": "H1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 상인은 살아 있을 때 '백만'을 뜻하는 별명으로 불렸는데, 라무시오는 그가 고향에 돌아와 한 군주의 부를 늘 백만 단위로 말했기 때문이라고 전합니다. 유언으로 아시아에서 함께 왔을지 모를 타타르인 하인 페테르를 풀어 준 이 상인은?",
+    "answer": "마르코 폴로",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "베네치아와 제노바의 전쟁 때 제노바 감옥에 갇혀, 같은 감방의 작가 루스티켈로에게 여행 이야기를 불러 주었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "'백만'을 뜻하는 별명 … 한 군주의 부를 늘 백만 단위로",
+     "difWhy": "동방견문록 상인 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 인물 일화",
+     "acc": 4,
+     "accWhy": "서양사 — 고교 세계사 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "제노바의 감옥 … 루스티켈로에게 자기 여행 이야기를",
+     "difWhy": "동방견문록 구술 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 세계사 인물"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "베네치아와 제노바가 전쟁을 벌이던 때 제노바의 감옥에 갇힌 한 상인은, 같은 감방에 있던 기사 이야기 작가 루스티켈로에게 자기 여행 이야기를 불러 주었습니다. 이 상인은 누구일까요?",
+     "beforeExplanation": "루스티켈로는 그 전에 이탈리아인으로서는 처음 알려진 아서왕 이야기를 프랑스어로 썼습니다.",
+     "removedCue": "제노바 감옥에서 루스티켈로에게 여행 이야기를 불러 줌(질문에서 해설로 옮김)",
+     "addedCue": "별명 '백만'의 유래 · 하인 페테르 해방",
+     "why": "동방견문록 구술(고교 세계사)을 빼고 별명·유언 세부로"
+    },
+    "generalHint": "아버지 니콜로와 숙부 마페오는 그가 태어나기 전에 교역 여행을 떠나, 1269년 돌아와서야 열다섯 살이 된 그를 처음 만났다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "원나라를 다녀와 여행기를 남긴 베네치아 상인",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "동방견문록으로 교과서에 나옴",
+     "piece": "f08",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "H1-17",
+     "key": "b053",
+     "hint": "아버지 니콜로와 숙부 마페오는 그가 태어나기 전에 교역 여행을 떠나, 1269년 돌아와서야 열다섯 살이 된 그를 처음 만났다.",
+     "guess": "마르코 폴로",
+     "confidence": "high",
+     "hit": true,
+     "answer": "마르코 폴로"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Marco_Polo"
+    ],
+    "facts": [
+     {
+      "claim": "베네치아-제노바 전쟁 중 투옥, 감방 동료 루스티켈로에게 구술",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Marco_Polo",
+      "note": "At this time, Venice was at war with Genoa. / While imprisoned, he dictated stories of his travels to Rustichello da Pisa, a cellmate."
+     },
+     {
+      "claim": "별명 Milione(백만) — 라무시오: 쿠빌라이의 부를 백만 단위로 말해서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Marco_Polo",
+      "note": "He was nicknamed Milione during his lifetime (which in Italian literally means 'Million'). … According to the 15th-century humanist Giovanni Battista Ramusio, his fellow citizens awarded him this nickname when he came back to Venice because he kept on saying that Kublai Khan's wealth was counted in millions."
+     },
+     {
+      "claim": "유언으로 타타르인 하인 페테르 해방",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Marco_Polo",
+      "note": "He also set free Peter, a Tartar servant, who may have accompanied him from Asia, and to whom Polo bequeathed 100 lire of Venetian denari."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Marco_Polo"
+    ],
+    "hintNote": "Niccolò and his brother Maffeo set off on a trading voyage before Marco's birth. ... In 1269, Niccolò and Maffeo returned to their families in Venice, meeting young Marco for the first time. / left a 15-year-old son named Marco",
+    "easiestCue": "'백만'을 뜻하는 별명으로 불렸는데 … 한 군주의 부를 늘 백만 단위로",
+    "targetWhy": "인물의 교과서 밖 일화 — 대학 교양 세계사",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'감옥에서 구술한 여행기'를 아는 사람이 꽤 있을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,246 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "biology/2",
+  "midKey": "biology",
+  "subName": "분류·진화",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "biology/2#g019a-C1-22",
+   "seed": {
+    "subject": "공룡",
+    "aspect": null,
+    "ref": "C1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1676년 영국 옥스퍼드셔 콘웰의 채석장에서 나온 뼈 조각을 로버트 플롯은 거인의 넓적다리뼈로 보았고, 1763년 한 책에서는 생김새 탓에 '스크로툼 후마눔'이라 불렸습니다. 1842년에 처음 이름이 붙은, 이 뼈 주인이 속한 무리는?",
+    "answer": "공룡",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 무리 이름은 리처드 오언이 1841년 강연에서는 말하지 않았고, 이듬해 4월 펴낸 강연 원고에서야 내놓았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 채석장 뼈 조각 화석 + 1842년에 처음 이름이 붙은 무리",
+     "difWhy": "1842 오언 명명 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 화석 연구사",
+     "acc": 5,
+     "accWhy": "생물 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "리처드 오언은 … 이 무리 이름을",
+     "difWhy": "오언 명명 무리 — 고교 과학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 명칭 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1676년 영국 옥스퍼드셔 콘웰의 석회암 채석장에서 나온 뼈 조각은 뒷날 이 무리의 넓적다리뼈로 밝혀졌습니다. 리처드 오언은 1841년 강연에서는 이 무리 이름을 말하지 않았고, 이듬해 4월 펴낸 강연 원고에서야 내놓았는데, 이 무리는?",
+     "beforeExplanation": "1853년 마지막 날 밤, 런던 크리스털 팰리스 공원에서는 실물 크기 이구아노돈 모형의 틀 안에서 만찬이 열렸습니다.",
+     "removedCue": "리처드 오언이 1841 강연에선 말하지 않고 이듬해 원고에서 이름을 내놓음(오언 명명)",
+     "addedCue": "플롯의 거인 넓적다리뼈 해석 · 1763년 '스크로툼 후마눔' 이름",
+     "why": "교과서의 오언 명명을 해설로 옮기고 화석 해석의 뒷이야기로"
+    },
+    "generalHint": "1824년 윌리엄 버클랜드가 이름 붙인 메갈로사우루스가 이 무리에서 처음 정식으로 이름을 얻은 속이다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "중생대에 번성했던 거대 파충류 무리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 앎",
+     "piece": "f03",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "C1-22",
+     "key": "b236",
+     "hint": "1824년 윌리엄 버클랜드가 이름 붙인 메갈로사우루스가 이 무리에서 처음 정식으로 이름을 얻은 속이다.",
+     "guess": "수각류",
+     "confidence": "high",
+     "hit": false,
+     "answer": "공룡"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dinosaur",
+     "https://en.wikipedia.org/wiki/Megalosaurus"
+    ],
+    "facts": [
+     {
+      "claim": "1676 콘웰 석회암 채석장 — 메갈로사우루스 넓적다리뼈 일부",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dinosaur",
+      "note": "Part of a bone, now known to have been the femur of a Megalosaurus, was recovered from a limestone quarry at Cornwell near Chipping Norton, Oxfordshire, in 1676."
+     },
+     {
+      "claim": "1841 강연에선 말하지 않고 1842년 4월 원고에서 Dinosauria 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dinosaur",
+      "note": "Owen had given a presentation about fossil reptiles to the British Association for the Advancement of Science in 1841, but reports of the time show that Owen did not mention the word \"dinosaur\" ... He introduced the Dinosauria only in the revised text version of his talk published in April 1842."
+     },
+     {
+      "claim": "플롯은 거인의 넓적다리뼈로 결론",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dinosaur",
+      "note": "The fragment was sent to Robert Plot ... He therefore concluded it to be the femur of a huge human, perhaps a Titan or another type of giant featured in legends."
+     },
+     {
+      "claim": "1763년 브룩스의 책 설명에 'Scrotum humanum'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Megalosaurus",
+      "note": "Plot's engraving of the Cornwell bone was again used in a book by Richard Brookes in 1763. Brookes, in a caption, called it \"Scrotum humanum\", apparently comparing its appearance to a pair of \"human testicles\"."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Megalosaurus"
+    ],
+    "hintNote": "Megalosaurus was named in 1824 by William Buckland, becoming the first genus of dinosaur to be validly named (other than birds, not then recognized as dinosaurs).",
+    "easiestCue": "1676년 콘웰 채석장 뼈를 플롯이 거인의 넓적다리뼈로 봄",
+    "targetWhy": "스크로툼 후마눔·플롯 해석은 고생물 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "\"오언이 이름 지은 무리\" 는 교양 수준이라 3/4 경계",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  },
+  {
+   "seedId": "biology/2#g019a-C1-23",
+   "seed": {
+    "subject": "네안데르탈인",
+    "aspect": null,
+    "ref": "C1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1829년 벨기에 앙지스 동굴과 1848년 지브롤터 채석장에서 나온 머리뼈는 뒷날 이 옛 인류의 것으로 밝혀졌습니다. 1908년부터 마르슬랭 불이 '노인'이라 불린 뼈를 구부정한 유인원 같은 모습으로 그려 한동안 논의를 이끈 이 인류는?",
+    "answer": "네안데르탈인",
+    "acceptedAnswers": [
+     "네안데르탈",
+     "호모 네안데르탈렌시스"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 네안데르탈인 넘겨주기(호모 네안데르탈렌시스 · 네안데르탈) 확인",
+    "explanation": "1901년 독일어 맞춤법 개정 전에는 골짜기 이름을 'Neanderthal'로 썼고, 학명에는 지금도 'th'가 남아 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'노인'이라 불린 뼈를 구부정한 유인원 같은 모습으로 그려",
+     "difWhy": "라샤펠 노인 복원 — 대학 교양 인류학 (경계 3)",
+     "wor": 4,
+     "worWhy": "교양 — 인류 진화 오해",
+     "acc": 5,
+     "accWhy": "생물 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이름이 된 독일 골짜기 … 이 옛 인류",
+     "difWhy": "독일 골짜기 이름 인류 — 고교 과학·세계사",
+     "wor": 4,
+     "worWhy": "교양 — 인류 진화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1829년 벨기에 앙지스 동굴과 1848년 지브롤터 채석장에서 나온 머리뼈는 뒷날 이 옛 인류의 것으로 밝혀졌습니다. 이름이 된 독일 골짜기는 '새 사람'이라는 뜻의 성을 고쳐 쓴 집안의 17세기 찬송가 작가에게서 왔는데, 이 인류는?",
+     "beforeExplanation": null,
+     "removedCue": "이름이 된 독일 골짜기(네안더 찬송가 작가)",
+     "addedCue": "마르슬랭 불의 '노인' 복원",
+     "why": "이름의 골짜기(고교 과학 상식)를 빼고 연구사 세부로"
+    },
+    "generalHint": "사하라 이남 아프리카 밖에 조상을 둔 사람은 이들의 DNA를 2%쯤 지닌다고 본다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "유럽·서아시아에 살다 사라진 옛 인류",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "교과서에 나오는 옛 인류",
+     "piece": "f01",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "C1-23",
+     "key": "b187",
+     "hint": "사하라 이남 아프리카 밖에 조상을 둔 사람은 이들의 DNA를 2%쯤 지닌다고 본다.",
+     "guess": "네안데르탈인",
+     "confidence": "high",
+     "hit": true,
+     "answer": "네안데르탈인"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Neanderthal"
+    ],
+    "facts": [
+     {
+      "claim": "1829 앙지스 동굴 머리뼈(Engis 2)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neanderthal",
+      "note": "The earliest known—Engis 2 (a skull)—was discovered in 1829 by the Belgian prehistorian Philippe-Charles Schmerling ... in the Grottes d'Engis, Belgium."
+     },
+     {
+      "claim": "1848 지브롤터 포브스 채석장(처음엔 현생 인류로 분류)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neanderthal",
+      "note": "In 1848, Gibraltar 1 from Forbes' Quarry was presented to the Gibraltar Scientific Society ... but was classified as a modern human."
+     },
+     {
+      "claim": "1901 맞춤법 개정 전 Neanderthal · 학명은 th 유지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Neanderthal",
+      "note": "The valley was spelled Neanderthal and the species was spelled Neanderthaler in German until the spelling reform of 1901. ... neanderthalensis, is always spelled with th according to the principle of priority."
+     },
+     {
+      "claim": "불 — 1908년부터 라샤펠오생 1('노인')을 구부정한 유인원 같은 존재로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neanderthal",
+      "note": "French palaeontologist Marcellin Boule, who authored several publications starting in 1908 describing the French Neanderthal specimen La Chapelle-aux-Saints 1 (\"The Old Man\") as a slouching, ape-like creature distantly related to modern man."
+     },
+     {
+      "claim": "불의 생각이 한동안 논의를 규정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neanderthal",
+      "note": "Boule's ideas would define discussions of Neanderthals for some time."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Neanderthal"
+    ],
+    "hintNote": "An individual whose ancestry lies beyond sub-Saharan Africa may carry about 2% of Neanderthal DNA.",
+    "easiestCue": "마르슬랭 불이 '노인'이라 불린 뼈를 구부정한 유인원 같은 모습으로",
+    "targetWhy": "고인류 연구사 — 대학 교양",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 옛 인류 이름의 뜻밖 유래",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,669 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "daily-rule/3",
+  "midKey": "daily-rule",
+  "subName": "우편·번호 체계",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "daily-rule/3#g019a-L1-01",
+   "seed": {
+    "subject": "우편번호",
+    "aspect": null,
+    "ref": "L1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "현대식 이것은 1932년 12월 소비에트 우크라이나에서 처음 도입되었다가 1939년에 폐지되었고, 그다음으로 독일이 1941년, 싱가포르가 1950년에 들여왔습니다. 1857년 런던이 EC·WC 등 열 개 구역으로 나뉜 것처럼 큰 도시에서 먼저 발달한 이것은?",
+    "answer": "우편번호",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "미국에서는 1963년 7월 1일 다섯 자리 'ZIP 코드'로 전국에 처음 도입되었고, 산타클로스에게 보내는 편지 주소에는 '북극 88888'이라고 쓰게 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "런던이 EC·WC 등 열 개 구역으로 나뉜 것처럼 … 이것",
+     "difWhy": "도시 우편 구역 번호 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 제도 기원",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "주소에 '북극 88888'이라고 쓰게 하는데",
+     "difWhy": "주소 숫자 — 일상",
+     "wor": 3,
+     "worWhy": "생활 제도 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "현대식 이것은 1932년 12월 소비에트 우크라이나에서 처음 도입되었다가 1939년에 폐지되었습니다. 미국 우정청은 아이들이 산타클로스에게 편지를 보낼 때 주소에 '북극 88888'이라고 쓰게 하는데, 이 88888은 무엇일까요?",
+     "beforeExplanation": "미국식 이름 ZIP 코드는 1963년 7월 1일 다섯 자리로 전국에 처음 도입되었습니다.",
+     "removedCue": "주소에 '북극 88888'이라고 쓰게 하는데, 이 88888은 무엇일까요 (일상)",
+     "addedCue": "독일 1941·싱가포르 1950 도입 · 1857년 런던 열 구역",
+     "why": "일상 지식으로 풀리는 산타 주소를 해설로 옮기고 도입사 세부로 바꿈"
+    },
+    "generalHint": "영국의 지금 체계는 편지 자동 분류기를 이미 여덟 대 쓰던 노리치를 시험 도시로 골라 시작했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "우편물을 지역별로 가르려고 주소에 붙이는 번호",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상 생활 번호",
+     "piece": "f02",
+     "genPct": 98
+    },
+    "blind": {
+     "ref": "L1-01",
+     "key": "b174",
+     "hint": "영국의 지금 체계는 편지 자동 분류기를 이미 여덟 대 쓰던 노리치를 시험 도시로 골라 시작했다.",
+     "guess": "우편번호",
+     "confidence": "high",
+     "hit": true,
+     "answer": "우편번호"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Postal_code",
+     "https://en.wikipedia.org/wiki/ZIP_Code"
+    ],
+    "facts": [
+     {
+      "claim": "현대식 우편번호는 1932년 12월 소비에트 우크라이나에서 처음 도입, 1939년 폐지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Postal_code",
+      "note": "Modern postal codes were first introduced in the Ukrainian Soviet Socialist Republic in December 1932, but the system was abandoned in 1939."
+     },
+     {
+      "claim": "ZIP 코드 1963년 7월 1일 다섯 자리로 전국 도입",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/ZIP_Code",
+      "note": "Non-mandatory five-digit ZIP Codes were introduced nationwide on July 1, 1963"
+     },
+     {
+      "claim": "산타클로스 앞 편지 주소 North Pole 88888",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/ZIP_Code",
+      "note": "...the Postal Service's Operation Santa Claus program, under which children are invited to write to Santa Claus at \"North Pole 88888\"."
+     },
+     {
+      "claim": "1941 독일 · 1950 싱가포르 · 큰 도시에서 먼저 발달 · 1857 런던 10구역",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Postal_code",
+      "note": "The development of postal codes happened first in large cities. London was first subdivided into 10 districts in 1857 ... Modern postal codes were first introduced in the Ukrainian Soviet Socialist Republic in December 1932, but the system was abandoned in 1939. The next country to introduce postal codes was Germany in 1941, followed by Singapore in 1950"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom"
+    ],
+    "hintNote": "Ernest Marples, the Postmaster General, announced that Norwich had been selected ... Norwich was selected as it already had eight automatic mail sorting machines in use.",
+    "easiestCue": "1857년 런던의 열 개 우편 구역",
+    "targetWhy": "도입 순서는 교과서 밖 세부 — 4(경계 3: 우편 구역이라는 말로 짐작 가능)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "주소 속 숫자라 추리로 풀릴 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "daily-rule/3#g019a-L1-02",
+   "seed": {
+    "subject": "우체통",
+    "aspect": null,
+    "ref": "L1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1852년 채널 제도에 파견된 영국 소설가 앤서니 트롤럽은 저지섬에 이것 다섯 개, 건지섬에 네 개가 필요하다고 보았습니다. 2012년 런던 올림픽 때 영국은 금메달리스트마다 그 고향의 이것 하나를 금색으로 칠했는데, 이것은?",
+    "answer": "우체통",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1874년에 영국 전역의 색이 빨강으로 정해졌지만, 모든 통을 다시 칠하기까지는 10년이 더 걸렸습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "금메달리스트마다 그 고향의 이것 하나를 금색으로 칠했는데",
+     "difWhy": "금색 우편 시설 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 런던 올림픽",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "청동빛 초록색이 표준 색이었던 이것",
+     "difWhy": "영국 우편 시설 색 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "생활 시설 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1852년 채널 제도에 파견된 영국 소설가 앤서니 트롤럽은 저지섬에 이것 다섯 개, 건지섬에 네 개가 필요하다고 보았습니다. 1859년부터 1874년까지 영국에서는 청동빛 초록색이 표준 색이었던 이것은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "1859~1874년 청동빛 초록색이 표준 색",
+     "addedCue": "2012 올림픽 금메달리스트 고향의 금색 칠",
+     "why": "색 변천(관심층 상식)을 빼고 올림픽 뒷이야기로"
+    },
+    "generalHint": "1952년 에든버러에 'E II R' 표시를 단 이것이 처음 서자 스코틀랜드에서 반발이 일어, 스코틀랜드 왕관만 새긴 것으로 바꾸기로 했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "거리에 세워 편지를 넣게 하는 통",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상 물건",
+     "piece": "f06",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "L1-02",
+     "key": "b172",
+     "hint": "1952년 에든버러에 'E II R' 표시를 단 이것이 처음 서자 스코틀랜드에서 반발이 일어, 스코틀랜드 왕관만 새긴 것으로 바꾸기로 했다.",
+     "guess": "우체통",
+     "confidence": "high",
+     "hit": true,
+     "answer": "우체통"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pillar_box",
+     "https://en.wikipedia.org/wiki/Anthony_Trollope"
+    ],
+    "facts": [
+     {
+      "claim": "롤런드 힐이 트롤럽을 채널 제도로 보냄, 1852년 저지 도착",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pillar_box",
+      "note": "Hill sent Trollope to the Channel Islands to ascertain what could be done about the problem of collecting the mail on a pair of islands. Trollope subsequently arrived in Jersey in the early Spring of 1852 and proceeded to survey both islands."
+     },
+     {
+      "claim": "건지 넷, 저지 다섯 필요하다고 어림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pillar_box",
+      "note": "Trollope estimated that four would be needed for Guernsey and five for Jersey."
+     },
+     {
+      "claim": "트롤럽은 소설가이자 우정청 관리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anthony_Trollope",
+      "note": "Postal history credits Trollope with introducing the pillar box (the ubiquitous mail-box) in the United Kingdom."
+     },
+     {
+      "claim": "1874년 빨강 표준, 다시 칠하는 데 10년 더",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pillar_box",
+      "note": "Red became the standard colour in 1874, although ten more years elapsed before every box in the UK had been repainted."
+     },
+     {
+      "claim": "2012 올림픽 금메달리스트 고향마다 금색으로 칠함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pillar_box",
+      "note": "To mark the 2012 Summer Olympics, Royal Mail, Isle of Man Post and Guernsey Post painted a pillar box gold in the home town of each Great Britain team member who won a gold medal, as well as a demonstration model near Westminster Abbey."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pillar_box"
+    ],
+    "hintNote": "When the first one bearing the cypher \"E II R\" was installed in Edinburgh in 1952 ... the General Post Office announced that the Elizabeth II boxes would be replaced with ones which only bore the Crown of Scotland and no royal cypher.",
+    "easiestCue": "금메달리스트마다 그 고향의 이것 하나를 금색으로 칠했는데",
+    "targetWhy": "영국 우편 문화의 세부 — 애호가(경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 대상, 단서는 교과서 밖 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "daily-rule/3#g019a-L1-03",
+   "seed": {
+    "subject": "엽서",
+    "aspect": null,
+    "ref": "L1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1865년 독일 우편 회의에서 하인리히 폰 슈테판이 처음 제안했지만 그때는 받아들여지지 않았습니다. 1869년 10월 오스트리아-헝가리가 그림 없이 발행하자 석 달 만에 300만 장이 오간 이것은 무엇일까요?",
+    "answer": "엽서",
+    "acceptedAnswers": [
+     "우편엽서"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '엽서' 문서가 '우편 엽서'라는 말을 함께 씀 — 같은 대상의 흔한 이름",
+    "explanation": "한국에서는 1900년 5월 10일 대한제국 농상공부 통신국이 이화 문양을 넣은 1전짜리를 처음 펴냈습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 1869년 오스트리아-헝가리가 그림 없이 발행 + 300만 장이 오간",
+     "difWhy": "오스트리아 첫 엽서 발행 — 우편사 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 엽서의 기원",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "사적인 내용이 드러나 품위가 없다는 이유로",
+     "difWhy": "내용이 드러나는 우편물 — 관심 있는 사람 추론",
+     "wor": 3,
+     "worWhy": "엽서 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1865년 독일 우편 회의에서 하인리히 폰 슈테판이 처음 제안했지만, 사적인 내용이 드러나 품위가 없다는 이유로 받아들여지지 않았습니다. 1869년 10월 오스트리아-헝가리가 발행하자 석 달 만에 300만 장이 오간 이것은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "사적인 내용이 드러나 품위가 없다는 이유(내용이 드러나는 우편물 — 추론)",
+     "addedCue": "(새 단서 없음 — 기각 이유를 감춤)",
+     "why": "정답의 성질을 드러내는 기각 이유를 빼고 도입사만으로"
+    },
+    "generalHint": "1870년 보불 전쟁이 터지자 북독일 연방은 병사들이 싸게 집에 소식을 보내도록 이것을 펴냈다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "봉투 없이 한 장에 써서 부치는 우편물",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상 물건",
+     "piece": "f08",
+     "genPct": 97
+    },
+    "blind": {
+     "ref": "L1-03",
+     "key": "b146",
+     "hint": "1870년 보불 전쟁이 터지자 북독일 연방은 병사들이 싸게 집에 소식을 보내도록 이것을 펴냈다.",
+     "guess": "우편엽서",
+     "confidence": "high",
+     "hit": true,
+     "answer": "엽서"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/엽서",
+     "https://en.wikipedia.org/wiki/Postcard"
+    ],
+    "facts": [
+     {
+      "claim": "1865년 독일 우편 회의에서 슈테판이 처음 제안",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/엽서",
+      "note": "엽서의 개념은 1865년 독일 카를스루에에서 열린 독일 우편 회의에서 하인리히 폰 슈테판에 의해 처음 제안되었다."
+     },
+     {
+      "claim": "사적인 내용 공개가 품위 없다는 이유로 기각",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/엽서",
+      "note": "우편 엽서의 도입을 건의했으나, 당시에는 사적인 내용이 공개된다는 점이 비도덕적이고 품위가 없다는 이유로 기각되었다."
+     },
+     {
+      "claim": "1869년 10월 오스트리아-헝가리, 석 달 만에 300만 장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Postcard",
+      "note": "In October 1869, the post office of Austria-Hungary accepted a similar proposal, also without images, and 3 million cards were mailed within the first three months."
+     },
+     {
+      "claim": "1900년 5월 10일 대한제국 최초 관제 엽서, 이화 문양 1전",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/엽서",
+      "note": "1900년(광무 4년) 5월 10일, 대한제국 농상공부 통신국에서 최초의 관제 엽서를 발행했다. 이는 국내용 1전 엽서로, 대한제국의 상징인 이화 문양이 도안되어 있었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Postcard"
+    ],
+    "hintNote": "With the outbreak of the Franco-Prussian War in July 1870, the government of the North German Confederation decided to take the advice of Austrian Emanuel Herrmann and issued postals for soldiers to inexpensively send home from the field.",
+    "easiestCue": "1869년 10월 오스트리아-헝가리가 그림 없이 발행하자 석 달 만에 300만 장",
+    "targetWhy": "우편 제도의 도입사 — 애호가 세부(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'내용이 드러나는 우편물' 추리 여지",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "daily-rule/3#g019a-L1-04",
+   "seed": {
+    "subject": "주민등록번호",
+    "aspect": null,
+    "ref": "L1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1968년 11월 21일부터 매기기 시작했을 때는 지금과 달리 12자리였습니다. 1975년 법 개정으로 지금의 자릿수가 된 이 번호는 무엇일까요?",
+    "answer": "주민등록번호",
+    "acceptedAnswers": [
+     "주민번호"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "주민번호 — 같은 번호의 흔한 줄임말(일상·언론에서 널리 씀)",
+    "explanation": "처음 매길 때 박정희 대통령은 110101-100001번, 육영수 여사는 110101-200002번을 받았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "1968년 … 12자리 … 1975년 법 개정으로 지금의 자릿수",
+     "difWhy": "국민 신분 번호 — 일상",
+     "wor": 3,
+     "worWhy": "생활 제도 이야깃거리",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "1968년 … 12자리 … 1975년 법 개정으로 지금의 자릿수",
+     "difWhy": "국민 신분 번호 — 일상",
+     "wor": 3,
+     "worWhy": "생활 제도 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "번호의 자릿수·첫 부여일·대통령 번호 등 어떤 단서를 써도 '국민에게 매기는 번호'가 일상 지식으로 바로 정답을 가리키고, 그것을 빼면 묻는 대상이 흐려짐"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "한국 국민 개개인에게 매기는 신원 식별 번호",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "모든 국민이 가진 번호",
+     "piece": "f02",
+     "genPct": 100
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/주민등록번호"
+    ],
+    "facts": [
+     {
+      "claim": "1968년 11월 21일부터 부여 시작",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주민등록번호",
+      "note": "1968년 11월 21일부터 편리한 간첩 식별 등의 목적으로 주민등록증이 발급되면서 부여되기 시작했다."
+     },
+     {
+      "claim": "처음에는 12자리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주민등록번호",
+      "note": "주민등록번호는 처음에는 지금과 달리 12자리로 이루어져 있었으며 박정희 전 대통령은 110101-100001번을, 육영수 여사는 110101-200002번을 부여받았다."
+     },
+     {
+      "claim": "1975년 개정으로 13자리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주민등록번호",
+      "note": "지금처럼 13자리로 바뀐 것은 3차 개정[법령 2777호, 1975.7.25 일부 개정]을 통해서이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1968년 11월 21일부터 매기기 시작했을 때는 지금과 달리 12자리였습니다",
+    "targetWhy": "1968년 시작·12자리 시절·1975 개정은 교과서 밖 제도사 — 연도로 추리할 여지가 있어 4 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "1968년이라는 시작 연도만으로 떠올리는 사람이 있을 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 번호",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "daily-rule/3#g019a-L1-05",
+   "seed": {
+    "subject": "번호판",
+    "aspect": null,
+    "ref": "L1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1893년 8월 14일 파리 경찰 명령으로 프랑스가 처음 도입했고, 1898년에는 네덜란드가 나라 전체에 들였습니다. 미국 뉴욕주가 1901년 처음에는 주인 이름의 머리글자만 뒤쪽에 잘 보이게 하라고 했던 이것은?",
+    "answer": "번호판",
+    "acceptedAnswers": [
+     "자동차 번호판"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "자동차 번호판 — 같은 대상의 흔한 이름(국어사전·일상 표현)",
+    "explanation": "처음에는 대부분 정부가 만들어 주지 않아 주인이 직접 만들어 달아야 했고, 뉴욕주는 1903년부터 흰 바탕에 검은 숫자를 요구했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 주인 이름의 머리글자만 뒤쪽에 잘 보이게 + 1893 파리 경찰 명령",
+     "difWhy": "뒤쪽에 다는 식별 표시 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 번호판 기원",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "차 주인이 직접 만들어 달아야 했던 이것",
+     "difWhy": "자동차 식별 판 — 일상",
+     "wor": 3,
+     "worWhy": "생활 제도 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1893년 8월 14일 파리 경찰 명령으로 프랑스가 처음 도입했고, 1898년에는 네덜란드가 나라 전체에 들였습니다. 처음에는 대부분 정부가 만들어 주지 않아 차 주인이 직접 만들어 달아야 했던 이것은 무엇일까요?",
+     "beforeExplanation": "미국 뉴욕주는 1901년에는 차 주인 이름의 머리글자만 뒤쪽에 보이게 달게 했다가, 1903년부터 흰 바탕에 검은 숫자를 요구했습니다.",
+     "removedCue": "처음에는 차 주인이 직접 만들어 달아야 했던(자동차 식별 판 — 일상)",
+     "addedCue": "뉴욕주 1901년 — 주인 이름 머리글자만 뒤쪽에",
+     "why": "'차' 를 드러내는 단서를 빼고 제도 도입사 세부로"
+    },
+    "generalHint": "프랑스에 이어 1896년 독일도 이것을 들였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "자동차에 달아 등록 번호를 보여 주는 판",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상 물건",
+     "piece": "f07",
+     "genPct": 100
+    },
+    "blind": {
+     "ref": "L1-05",
+     "key": "b089",
+     "hint": "프랑스에 이어 1896년 독일도 이것을 들였다.",
+     "guess": "자동차 번호판",
+     "confidence": "low",
+     "hit": true,
+     "answer": "번호판"
+    },
+    "hobby": "자동차",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Vehicle_registration_plate"
+    ],
+    "facts": [
+     {
+      "claim": "1893년 8월 14일 파리 경찰 명령, 프랑스 최초",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vehicle_registration_plate",
+      "note": "France was the first country to introduce the registration plate with the enactment of the Paris Police Ordinance on 14 August 1893, followed by Germany in 1896."
+     },
+     {
+      "claim": "1898년 네덜란드 전국 번호판",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vehicle_registration_plate",
+      "note": "The Netherlands was the first country to introduce a national registration plate, called a \"driving permit\", in 1898."
+     },
+     {
+      "claim": "처음에는 정부가 발급하지 않아 운전자가 직접 만듦",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Vehicle_registration_plate",
+      "note": "At first, plates were not government-issued in most jurisdictions and motorists were obliged to make their own."
+     },
+     {
+      "claim": "뉴욕주 1901 머리글자, 1903 번호판",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vehicle_registration_plate",
+      "note": "New York State has required plates since 1903 (black numerals on a white background) after first requiring in 1901 only that the owner's initials be clearly visible on the back of the vehicle."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Vehicle_registration_plate"
+    ],
+    "hintNote": "France was the first country to introduce the registration plate with the enactment of the Paris Police Ordinance on 14 August 1893, followed by Germany in 1896.",
+    "easiestCue": "주인 이름의 머리글자만 뒤쪽에 잘 보이게 하라고 했던",
+    "targetWhy": "자동차 제도의 도입사 — 자동차 애호가(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'차 주인이 달아야 했다'에서 범주가 좁혀진다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "daily-rule/3#g019a-L1-06",
+   "seed": {
+    "subject": "우표",
+    "aspect": null,
+    "ref": "L1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "맨 처음 나온 이것들은 가위로 오려서 썼습니다. 아일랜드 출신 헨리 아처가 만든 기계와 특허를 영국 정부가 4,000파운드에 사들인 뒤, 1854년부터 줄지어 뚫은 구멍을 넣어 내기 시작한 이것은 무엇일까요?",
+    "answer": "우표",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "아처가 시험 삼아 구멍을 낸 첫 우표는 1850년의 '페니 레드'였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "가위로 오려서 썼습니다 … 줄지어 뚫은 구멍",
+     "difWhy": "우편 붙이는 종이 — 일상",
+     "wor": 3,
+     "worWhy": "생활 물건 기원",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "가위로 오려서 썼습니다 … 줄지어 뚫은 구멍",
+     "difWhy": "우편 붙이는 종이 — 일상",
+     "wor": 3,
+     "worWhy": "생활 물건 기원"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "정답이 일상 사물(우표)이라 아처의 천공 기계를 말하는 순간 '줄지어 뚫은 구멍'이 일상 단서가 되고, 그것을 빼면 묻는 대상이 흐려짐"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "우편 요금을 냈다는 표시로 붙이는 작은 종이",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상 물건",
+     "piece": "f07",
+     "genPct": 100
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Postage_stamp"
+    ],
+    "facts": [
+     {
+      "claim": "첫 우표는 가위로 잘라 씀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Postage_stamp",
+      "note": "...without perforations, as the first stamps were separated from their sheets by cutting them with scissors."
+     },
+     {
+      "claim": "아처는 더블린 출신 아일랜드 지주, 정부가 4,000파운드에 기계·특허 매입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Postage_stamp",
+      "note": "The first machine specifically designed to perforate sheets of postage stamps was invented in London by Henry Archer, an Irish landowner and railroad man from Dublin, Ireland. ... after the United Kingdom government paid Archer £4,000 for his machine and the patent."
+     },
+     {
+      "claim": "1854년부터 구멍 낸 우표 계속 발행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Postage_stamp",
+      "note": "in 1854 the United Kingdom postal authorities started continuously issuing perforated postage stamps in the Penny Red and all subsequent designs."
+     },
+     {
+      "claim": "아처 기계로 처음 구멍 낸 우표는 1850 페니 레드",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Postage_stamp",
+      "note": "The 1850 Penny Red was the first stamp to be perforated during trial course of Archer's perforating machine."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1854년부터 줄지어 뚫은 구멍을 넣어 내기 시작한 이것",
+    "targetWhy": "구멍 줄 → 우표 추리 여지가 있으나 아처·1854 천공은 우표 수집가 세부 — 4 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "우표의 톱니 구멍은 누구나 아는 생김새라 추리로 닿을 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (페니 블랙 #552 와는 정답·지식 다름)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

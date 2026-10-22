@@ -1,0 +1,594 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "olympic/4",
+  "midKey": "olympic",
+  "subName": "올림픽 상징·의례",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "olympic/4#g019a-S2-07",
+   "seed": {
+    "subject": "오륜기",
+    "aspect": null,
+    "ref": "S2-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이것은 1914년 이집트 알렉산드리아의 범이집트 경기 대회에서 처음 선보였습니다. 1920년 안트베르펜 대회 때 미국 다이빙 선수 할 프리스트가 몰래 가져가 77년 동안 여행 가방 바닥에 두었다가, 2000년 시드니 대회 때 IOC에 돌려준 이것은 무엇일까요?",
+    "answer": "오륜기",
+    "acceptedAnswers": [
+     "올림픽기"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 오륜기·올림픽기 모두 \"올림픽 상징\" 문서로 넘겨주기 확인",
+    "explanation": "쿠베르탱은 흰 바탕과 다섯 고리의 색을 합치면 당시 모든 나라 국기의 색을 담을 수 있다고 설명했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "할 프리스트가 몰래 가져가 77년 동안",
+     "difWhy": "안트베르펜 깃발 도난 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 상징 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "할 프리스트가 몰래 가져가 77년 동안",
+     "difWhy": "안트베르펜 깃발 도난 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 상징 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "1924년부터 쓰던 깃발은 1988년 서울 대회 때 물러나고, 서울시가 내놓은 새것이 그 뒤를 이었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "흰 바탕에 다섯 고리가 그려진 올림픽 깃발",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "올림픽 상징",
+     "piece": "f06",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "S2-07",
+     "key": "b252",
+     "hint": "1924년부터 쓰던 깃발은 1988년 서울 대회 때 물러나고, 서울시가 내놓은 새것이 그 뒤를 이었다.",
+     "guess": "올림픽기",
+     "confidence": "high",
+     "hit": true,
+     "answer": "오륜기"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Olympic_symbols",
+     "https://en.wikipedia.org/wiki/Hal_Haig_Prieste"
+    ],
+    "facts": [
+     {
+      "claim": "1914 알렉산드리아 범이집트 경기 대회에서 처음 게양",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Olympic_symbols",
+      "note": "It was first hoisted in Alexandria, Egypt, in Old Shatby Stadium ... at the 1914 Pan-Egyptian Games."
+     },
+     {
+      "claim": "1920 안트베르펜, 프리스트가 가져감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hal_Haig_Prieste",
+      "note": "He is known for taking the original five-interlocking-ring Olympic flag as a prank at the 1920 Summer Olympics hosted by the city of Antwerp, Belgium."
+     },
+     {
+      "claim": "77년 여행 가방, 2000 시드니에서 반환",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hal_Haig_Prieste",
+      "note": "For 77 years the flag was stored away in the bottom of his suitcase. The flag was returned to the IOC by Prieste, by then 103 years old, in a special ceremony held at the 2000 Summer Olympics in Sydney."
+     },
+     {
+      "claim": "프리스트는 다이빙 선수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hal_Haig_Prieste",
+      "note": "was an American athlete who participated in the 1920 Summer Olympics in Antwerp as a diver."
+     },
+     {
+      "claim": "흰 바탕+고리 색 = 모든 나라 국기 색",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Olympic_symbols",
+      "note": "According to Coubertin, the colours of the rings, along with the white background, represented the colours of every competing country's flag at the time."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Olympic_symbols"
+    ],
+    "hintNote": "The 1924 flag continued to be used at the Summer Olympics until the 1988 Summer Olympics in Seoul when it was retired and replaced by the Seoul flag.",
+    "easiestCue": "1920년 안트베르펜 대회 때 미국 다이빙 선수 할 프리스트가 몰래 가져가",
+    "targetWhy": "오륜기 첫 게양지·도난 일화 — 올림픽 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 상징의 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "new (628 대륙·5538 선수 선서 — 다른 정답)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/4#g019a-S2-08",
+   "seed": {
+    "subject": "폐회식",
+    "aspect": null,
+    "ref": "S2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1956년 멜버른 대회 때 중국계 열일곱 살 목수 견습생 존 이언 윙은 IOC에 이름을 밝히지 않은 편지를 보내, 올림픽의 이 의식을 바꾸자고 제안했습니다. 그 제안은 그 대회부터 받아들여져 지금까지 이어지고 있는데, 이 의식은 무엇일까요?",
+    "answer": "폐회식",
+    "acceptedAnswers": [
+     "폐막식"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 폐회식 → 폐막식 넘겨주기, 첫 줄 \"폐막식 또는 폐회식\" 확인",
+    "explanation": "선수들이 나라별로 행진하지 말고 한데 섞여 걸으며 관중에게 손을 흔들자는 제안이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1956년 멜버른 대회 … 올림픽의 이 의식을 바꾸자고 제안",
+     "difWhy": "멜버른 폐회식 개편 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 의례 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1956년 멜버른 대회 … 올림픽의 이 의식을 바꾸자고 제안",
+     "difWhy": "멜버른 폐회식 개편 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "올림픽 의례 기원 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "남자 마라톤 메달은 관례상 이 의식 안에서 주며, 2020년 대회부터는 여자 마라톤 시상도 함께 한다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "대회를 마치며 여는 마지막 공식 행사",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상 행사 용어",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "S2-08",
+     "key": "b011",
+     "hint": "남자 마라톤 메달은 관례상 이 의식 안에서 주며, 2020년 대회부터는 여자 마라톤 시상도 함께 한다.",
+     "guess": "올림픽 폐회식",
+     "confidence": "high",
+     "hit": true,
+     "answer": "폐회식"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/John_Ian_Wing"
+    ],
+    "facts": [
+     {
+      "claim": "1956 멜버른, 익명 편지로 폐회 행진 제안, 그 뒤 전통",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Ian_Wing",
+      "note": "as a student in Australia in 1956, wrote an anonymous letter to the International Olympic Committee suggesting the athletes from all countries mingle during the closing parade of the Summer Olympics held in Melbourne that year. His idea was used that Olympiad and has remained an Olympic tradition since that time."
+     },
+     {
+      "claim": "중국계, 17살 목수 견습생",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Ian_Wing",
+      "note": "At the time of the letter, Wing was a 17-year-old apprentice carpenter."
+     },
+     {
+      "claim": "행진 대신 섞여 걸으며 손 흔들기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/John_Ian_Wing",
+      "note": "the athletes must not march but walk freely and wave to the public during the closing ceremonies."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Olympic_Games_ceremony"
+    ],
+    "hintNote": "By custom, two sets of medals—the men's and women's marathon medals (Summer Olympics, since 2020) ... are awarded as part of the closing ceremony in the Olympic Stadium",
+    "easiestCue": "중국계 열일곱 살 목수 견습생 존 이언 윙은 IOC에 이름을 밝히지 않은 편지를 보내",
+    "targetWhy": "1956 멜버른 폐회식 관례의 기원 — 올림픽 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 의식의 뜻밖의 기원",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/4#g019a-S2-09",
+   "seed": {
+    "subject": "엘리자베스 2세",
+    "aspect": null,
+    "ref": "S2-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1976년 몬트리올 올림픽 승마 종합 경기에는 이 사람의 딸이 영국 대표로 나서, 이 사람의 말 '굿윌'을 탔습니다. 이 사람은 누구일까요?",
+    "answer": "엘리자베스 2세",
+    "acceptedAnswers": [
+     "엘리자베스 여왕"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 엘리자베스 2세 문서 · 언론의 흔한 호칭 \"엘리자베스 여왕\"",
+    "explanation": "이 사람은 2012년 런던 대회도 직접 열어 두 번 올림픽 개회를 선언했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 이 사람의 딸이 영국 대표로 승마 + 이 사람의 말",
+     "difWhy": "앤 공주 어머니 — 관심 있는 사람 (경계 4)",
+     "wor": 3,
+     "worWhy": "유명 인물 일화",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "몬트리올 대회 개회식 … 이 사람의 딸이 … 출전",
+     "difWhy": "캐나다 국가원수 개회 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 인물 일화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1976년 몬트리올 대회 개회식에서는 이 사람이 대회를 열었습니다. 같은 대회 승마 종합 경기에는 이 사람의 딸이 이 사람의 말 '굿윌'을 타고 출전했는데, 이 사람은 누구일까요?",
+     "beforeExplanation": null,
+     "removedCue": "몬트리올 대회 개회식에서 대회를 엶(캐나다 국가원수 — 관심층)",
+     "addedCue": "없음 — 개회 단서를 빼고 딸의 출전·말 이름만 남김",
+     "why": "국가원수 개회 추론을 빼고 왕실 승마 세부만으로"
+    },
+    "generalHint": "그 딸의 딸도 2012년 런던 올림픽 승마 종합 단체전에서 은메달을 땄고, 그 메달은 어머니가 직접 걸어 주었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1952~2022년 영국을 다스린 여왕",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "세계적으로 유명한 영국 여왕",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "S2-09",
+     "key": "b015",
+     "hint": "그 딸의 딸도 2012년 런던 올림픽 승마 종합 단체전에서 은메달을 땄고, 그 메달은 어머니가 직접 걸어 주었다.",
+     "guess": "앤 공주",
+     "confidence": "mid",
+     "hit": false,
+     "answer": "엘리자베스 2세"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2012_Summer_Olympics",
+     "https://en.wikipedia.org/wiki/Anne,_Princess_Royal"
+    ],
+    "facts": [
+     {
+      "claim": "2012가 두 번째 개회, 첫째 1976",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/2012_Summer_Olympics",
+      "note": "This was the second Olympic Games opened personally by the Queen, the first being in 1976 in Montreal, Canada."
+     },
+     {
+      "claim": "딸 앤 공주가 여왕의 말 굿윌로 승마 종합 출전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Anne,_Princess_Royal",
+      "note": "she took part in the 1976 Olympic Games in Montreal as a member of the British team, riding the Queen's horse Goodwill in Eventing."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Zara_Tindall"
+    ],
+    "hintNote": "went on to win a team silver medal in eventing at the 2012 London Summer Olympics, presented to her by her mother.",
+    "easiestCue": "딸이 이 사람의 말 '굿윌'을 타고 1976년 몬트리올 승마 종합에 출전",
+    "targetWhy": "올림픽 승마의 왕실 세부 — 올림픽·승마 애호가(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "딸·말에서 왕실을 떠올리면 추리 가능",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/4#g019a-S2-10",
+   "seed": {
+    "subject": "손에 손 잡고",
+    "aspect": null,
+    "ref": "S2-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조르조 모로더는 1986년 서울 아시안 게임 영상을 보며 분위기를 참고해 이 곡을 썼고, 원곡 데모는 조 피줄로가 불렀습니다. 처음 5분 15초였던 연주 시간을 전문위원들의 조언으로 4분 10초까지 줄인 이 노래는 무엇일까요?",
+    "answer": "손에 손 잡고",
+    "acceptedAnswers": [
+     "Hand in Hand"
+    ],
+    "originalTitleVariants": [
+     "Hand in Hand"
+    ],
+    "variantCheck": "ko.wikipedia 손에 손 잡고 문서 \"《손에 손 잡고》(Hand in Hand)\" — 영어판 원제",
+    "explanation": "노랫말은 미국의 톰 휘틀록과 한국의 김문환 교수가 함께 썼고, 처음에는 MBC 공모 당선곡인 길옥윤 작곡 '아침의 나라에서'를 공식 주제가로 삼자는 여론도 있었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1986년 서울 아시안 게임 영상을 보며 … 이 곡을 썼고",
+     "difWhy": "86 다음 88 서울 노래 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "누구나 아는 노래 제목",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "휘틀록이 한국의 김문환 교수와 함께 노랫말을 쓴",
+     "difWhy": "서울 올림픽 노래 — 관심 있는 사람 (경계 4)",
+     "wor": 3,
+     "worWhy": "유명 노래 제목"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "영화 '탑건'의 주제가 'Take My Breath Away'를 함께 만든 조르조 모로더와 톰 휘틀록이 이 노래도 만들었습니다. 모로더가 곡을 쓰고 휘틀록이 한국의 김문환 교수와 함께 노랫말을 쓴 이 노래는 무엇일까요?",
+     "beforeExplanation": "처음에는 MBC 공모 당선곡인 길옥윤 작곡 '아침의 나라에서'를 공식 주제가로 삼자는 여론도 있었습니다.",
+     "removedCue": "휘틀록이 한국의 김문환 교수와 함께 노랫말을 쓴",
+     "addedCue": "서울 아시안 게임 영상 참고 · 데모 가수 조 피줄로 · 5분 15초→4분 10초",
+     "why": "작사진(한국인 공동 작사)을 해설로 옮기고 작곡·편집 뒷이야기로 바꿈"
+    },
+    "generalHint": "1988년 9월 18일부터 6주 내리 1위에 올랐고, 비공식적으로 1,700만 장쯤 팔렸다고 추측된다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1988년 서울 올림픽 공식 주제가",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "88올림픽 주제가로 유명",
+     "piece": "f05",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "S2-10",
+     "key": "b016",
+     "hint": "1988년 9월 18일부터 6주 내리 1위에 올랐고, 비공식적으로 1,700만 장쯤 팔렸다고 추측된다.",
+     "guess": "손에 손잡고",
+     "confidence": "high",
+     "hit": true,
+     "answer": "손에 손 잡고"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/%EC%86%90%EC%97%90%20%EC%86%90%20%EC%9E%A1%EA%B3%A0",
+     "https://ko.wikipedia.org/wiki/손에_손_잡고"
+    ],
+    "facts": [
+     {
+      "claim": "모로더 작곡, 휘틀록·김문환 공동 작사",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/%EC%86%90%EC%97%90%20%EC%86%90%20%EC%9E%A1%EA%B3%A0",
+      "note": "이탈리아의 조르조 모로데르 작곡에, 미국의 톰 휘틀록(Tom Whitlock)과 한국의 김문환 교수의 공동작사로 ... \"손에 손 잡고\"를 주제가로 탄생시켰다."
+     },
+     {
+      "claim": "아침의 나라에서 여론",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/%EC%86%90%EC%97%90%20%EC%86%90%20%EC%9E%A1%EA%B3%A0",
+      "note": "먼저 1986년 MBC 방송이 공모한 올림픽 노래 당선작인 길옥윤 작곡 ⦁박건호 작사⦁ 김연자 노래의 <아침의 나라에서>가 ... 1988년 서울 올림픽의 공식 주제가로 선정이 되어야 한다는 여론이 있었고"
+     },
+     {
+      "claim": "1986년 서울 아시안 게임 영상을 참고해 작곡 · 5분 15초 → 4분 10초 · 데모는 조 피줄로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/손에_손_잡고",
+      "note": "1986년 서울 아시안 게임 영상을 보고 분위기 등을 참고하여 곡을 완성하였다. 원래 연주 시간은 5분 15초였으나, 조직위 전문위원들의 조언을 받아들여 4분 10초까지 줄이고 믹싱을 끝냈다. 원곡 데모는 조 피줄로(Joe Pizzulo)가 불렀다."
+     },
+     {
+      "claim": "조르조 모로데르 작곡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/손에_손_잡고",
+      "note": "《손에 손 잡고》(Hand in Hand)는 이탈리아의 작곡가 조르조 모로데르가 작곡하고, 코리아나가 부른 1988년 서울 하계 올림픽의 공식 주제곡이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%86%90%EC%97%90_%EC%86%90_%EC%9E%A1%EA%B3%A0"
+    ],
+    "hintNote": "이 싱글 앨범은 비공식적으로 동양인 최초 1,700만 장이 판매되었다고 추측된다. 1988년 9월 18일부터 6주 연속 1위에 올랐다.",
+    "easiestCue": "모로더가 서울 아시안 게임 영상을 참고해 쓴 곡",
+    "targetWhy": "데모 가수·연주 시간 단축은 올림픽 노래 애호가 세부 — 4(경계 3: 모로더=올림픽 노래를 알면 풀림)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "한국인 작사가에서 1988 주제가를 추리할 수 있어 3 위험",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/4#g019a-S2-12",
+   "seed": {
+    "subject": "눈송이",
+    "aspect": null,
+    "ref": "S2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2014년 소치 대회 개회식에서 경기장 위로 내려온 다섯 개의 이것은 펼쳐져 오륜을 이룰 예정이었지만, 다섯째가 펴지지 않았습니다. 러시아 방송은 이 장면을 리허설 화면으로 바꿔 내보냈는데, 이것은 무엇일까요?",
+    "answer": "눈송이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "주최 측은 폐회식에서 춤추는 무리가 다섯째 고리를 일부러 펴지 않는 장면으로 이 실수를 스스로 패러디했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "소치 대회 개회식 … 다섯째가 펴지지 않았습니다",
+     "difWhy": "소치 오륜 사고 — 방송 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "올림픽 해프닝 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "소치 대회 개회식 … 다섯째가 펴지지 않았습니다",
+     "difWhy": "소치 오륜 사고 — 방송 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "올림픽 해프닝 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "정답(눈송이)이 소치 개회식 오륜 사고 자체에 묶여 있어, 그 사고를 빼면 묻는 대상이 사라짐"
+    },
+    "generalHint": "이 개회식의 연출 책임자는 러시아 방송 제작자 콘스탄틴 에른스트였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "하늘에서 내리는 여섯 갈래 얼음 결정",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상어",
+     "piece": "f03",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "S2-12",
+     "key": "b028",
+     "hint": "이 개회식의 연출 책임자는 러시아 방송 제작자 콘스탄틴 에른스트였다.",
+     "guess": "2014 소치 동계 올림픽",
+     "confidence": "high",
+     "hit": false,
+     "answer": "눈송이"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2014_Winter_Olympics_opening_ceremony"
+    ],
+    "facts": [
+     {
+      "claim": "2014 소치 동계 대회 개회식 — 다섯 눈송이가 펼쳐져 오륜, 다섯째 실패",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/2014_Winter_Olympics_opening_ceremony",
+      "note": "Five large snowflakes descended into the stadium which expanded and joined to form the Olympic rings. However, a technical error caused the fifth ring not to expand"
+     },
+     {
+      "claim": "러시아 방송은 리허설 화면으로 바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/2014_Winter_Olympics_opening_ceremony",
+      "note": "The malfunction of the fifth Olympic snowflake ring was not seen during the telecast of the ceremony in Russia, where both Channel One and VGTRK quickly cut to footage of the scene from a dress rehearsal"
+     },
+     {
+      "claim": "폐회식 패러디",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/2014_Winter_Olympics_opening_ceremony",
+      "note": "The mishap was later self-mocked by the organizers at the closing ceremony where one of the roundrelay dance groups symbolizing the Olympic rings \"failed\" to expand."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/2014_Winter_Olympics_opening_ceremony"
+    ],
+    "hintNote": "Television producer Konstantin Ernst was the main Creative Head in charge of the opening ceremonies.",
+    "easiestCue": "2014년 소치 대회 개회식에서 경기장 위로 내려온 다섯 개의 이것은 펼쳐져 오륜을 이룰 예정이었지만, 다섯째가 펴지지 않았습니다",
+    "targetWhy": "소치 개회식 사고의 소품 — 뉴스로 본 사람은 많지만 그것이 무엇이었는지는 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "동계 대회라 짐작 가능 · 사고 장면이 뉴스에 났음",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/4#g019a-S2-11",
+   "seed": {
+    "subject": "리닝",
+    "aspect": null,
+    "ref": "S2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2008년 베이징 대회 개회식에서 이 사람은 줄에 매달려 경기장 지붕 가장자리를 따라 허공을 달리듯 돈 뒤 성화대에 불을 붙였습니다. 1984년 로스앤젤레스 대회 체조에서 마루·안마·링 금메달을 딴 이 중국 사람은 누구일까요?",
+    "answer": "리닝",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1990년 자기 이름을 단 스포츠 의류 회사를 세워 이사회 의장을 맡아 왔습니다.",
+    "identity": "1980년대 중국의 체조 영웅이자 스포츠 브랜드 창업자",
+    "familiarity": {
+     "judge": 1,
+     "pct": 25,
+     "why": "중국 브랜드·체조 선수로 한국엔 덜 알려짐",
+     "piece": "f07",
+     "genPct": 35
+    },
+    "sources": [
+     "https://en.wikipedia.org/wiki/Li_Ning"
+    ],
+    "facts": [
+     {
+      "claim": "2008 개회식 줄에 매달려 지붕 둘레를 달리듯 돈 뒤 점화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Li_Ning",
+      "note": "At the 2008 Summer Olympics, Li ignited the cauldron at the opening ceremony after being hoisted high into the air with cables and miming running around the stadium's rim."
+     },
+     {
+      "claim": "1984 마루·안마·링 금",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Li_Ning",
+      "note": "He won three gold medals (in floor exercise, pommel horse, and rings), two silver medals, and one bronze medal."
+     },
+     {
+      "claim": "1990 회사 설립, 의장",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Li_Ning",
+      "note": "in 1990 he founded Li-Ning Company Limited ... Li remains chairman of the company's board of directors."
+     }
+    ],
+    "discarded": "정답 친숙도 1 — 판정자 pct 25 (중국 브랜드·체조 선수로 한국엔 덜 알려짐) · 15 §5-4 · 채점 전에 격리"
+   }
+  }
+ ]
+}

@@ -1,0 +1,230 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "football/2",
+  "midKey": "football",
+  "subName": "월드컵",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/2#g019a-S1-21",
+   "seed": {
+    "subject": "아르헨티나",
+    "aspect": null,
+    "ref": "S1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "월드컵 결승을 앞두고 두 팀이 어느 쪽 공을 쓸지 다투자 FIFA가 중재해, 전반에는 이 나라가 후반에는 상대 팀이 공을 내기로 했습니다. 그 대회 득점왕 기예르모 스타빌레가 뛴 이 나라는?",
+    "answer": "아르헨티나",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1930년 첫 월드컵 결승에서 이 나라는 전반을 2-1로 앞서고도 우루과이에 2-4로 졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "그 대회 득점왕 기예르모 스타빌레가 뛴 이 나라",
+     "difWhy": "1930 결승 공 다툼 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 월드컵 역사",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1930년 첫 월드컵 결승 … 전반을 2-1로 앞서고도 4-2로 진",
+     "difWhy": "첫 월드컵 준우승국 — 축구 관심 있는 사람 (경계 4)",
+     "wor": 3,
+     "worWhy": "월드컵 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1930년 첫 월드컵 결승을 앞두고 두 팀이 어느 쪽 공을 쓸지 다투자, FIFA가 중재해 전반에는 이 나라가, 후반에는 상대 팀이 공을 내기로 했습니다. 전반을 2-1로 앞서고도 4-2로 진 이 나라는?",
+     "beforeExplanation": "이 대회 득점왕 기예르모 스타빌레가 전반 37분 앞서 가는 골을 넣었습니다.",
+     "removedCue": "1930년 첫 월드컵 결승 · 전반 2-1로 앞서고도 4-2로 진(첫 월드컵 준우승국)",
+     "addedCue": "득점왕 스타빌레",
+     "why": "첫 월드컵 준우승국 단서를 해설로 옮기고 공 다툼·득점왕 세부로"
+    },
+    "generalHint": "이 나라와 프랑스의 조별 경기에서 브라질 주심은 6분이나 일찍 경기 끝 휘슬을 불었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "남아메리카 남부의 축구 강국",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 나라",
+     "piece": "f08",
+     "genPct": 100
+    },
+    "blind": {
+     "ref": "S1-21",
+     "key": "b108",
+     "hint": "이 나라와 프랑스의 조별 경기에서 브라질 주심은 6분이나 일찍 경기 끝 휘슬을 불었다.",
+     "guess": "아르헨티나",
+     "confidence": "high",
+     "hit": true,
+     "answer": "아르헨티나"
+    },
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup_final"
+    ],
+    "facts": [
+     {
+      "claim": "결승 공을 두고 다툼 · FIFA 중재로 전반 아르헨티나, 후반 우루과이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup_final",
+      "note": "The final match of the 1930 FIFA World Cup, the inaugural edition … was contested by Uruguay and Argentina. Before the match, a disagreement overshadowed the build-up to the match as which team would provide the match ball. FIFA intervened with a compromise, that Argentina would provide the ball for the first half, and Uruguay for the second."
+     },
+     {
+      "claim": "전반 2-1 리드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup_final",
+      "note": "The tournament top scorer Guillermo Stábile gave Argentina a 2–1 lead going into the break."
+     },
+     {
+      "claim": "4-2로 우루과이 우승",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup_final",
+      "note": "Two more goals in the 68th and the 89th minute from Santos Iriarte and Héctor Castro put Uruguay up 4–2, sealing victory in the inaugural World Cup."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup"
+    ],
+    "hintNote": "Gilberto de Almeida Rêgo in the match between Argentina and France, in which the Brazilian referee blew for full-time six minutes early",
+    "easiestCue": "그 대회 득점왕 기예르모 스타빌레가 뛴 이 나라",
+    "targetWhy": "월드컵 역사의 뒷이야기 — 축구 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "첫 결승 상대를 아는 관심층은 바로 댄다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 아르헨티나 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/2#g019a-S1-22",
+   "seed": {
+    "subject": "호나우두",
+    "aspect": null,
+    "ref": "S1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1994년 열일곱 살로 브라질의 월드컵 우승 멤버가 됐지만 한 경기도 뛰지 않은 이 공격수는, 그해 PSV로 옮겨 UEFA컵 레버쿠젠전에서 해트트릭을 했습니다. 그 뒤 루디 푈러가 '열여덟 살이 이렇게 뛰는 걸 평생 본 적 없다'고 한 이 선수는?",
+    "answer": "호나우두",
+    "acceptedAnswers": [
+     "호나우도"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 넘겨주기 \"호나우도\" → 호나우두",
+    "explanation": "1998년 프랑스 대회 결승을 몇 시간 앞두고 경련 발작을 일으켜 선발 명단에서 빠졌다가, 뛰게 해 달라고 해 다시 명단에 들었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1994년 열일곱 살로 브라질의 월드컵 우승 멤버 … PSV",
+     "difWhy": "17세 우승 멤버 공격수 — 축구 관심층",
+     "wor": 3,
+     "worWhy": "누구나 아는 선수 이름",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1998년 프랑스 대회 결승을 몇 시간 앞두고 경련 발작",
+     "difWhy": "98 결승 발작 공격수 — 축구 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 선수 사건"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1998년 프랑스 대회 결승을 몇 시간 앞두고 경련 발작을 일으킨 이 브라질 공격수는, 킥오프 72분 전 제출된 선발 명단에서 에드문두로 바뀌었습니다. 괜찮다며 뛰게 해 달라고 해 경기 직전 다시 명단에 든 이 선수는?",
+     "beforeExplanation": "결승에서는 부진했지만 결승까지의 활약으로 대회 최우수 선수상인 골든볼을 받았습니다.",
+     "removedCue": "1998년 프랑스 대회 결승을 몇 시간 앞두고 경련 발작",
+     "addedCue": "1994년 출전 없는 우승 멤버 · PSV 해트트릭 뒤 푈러의 감탄",
+     "why": "98 결승 미스터리(유명 일화)를 해설로 옮기고 데뷔 초 세부로 바꿈"
+    },
+    "generalHint": "1996년 당시 세계 최고 이적료로 바르셀로나에 가, 스무 살에 그해 FIFA 올해의 선수가 되며 최연소 수상자가 되었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "'축구 황제' 뒤를 이은 브라질의 골잡이, '외계인'",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "유명 축구 선수",
+     "piece": "f05",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "S1-22",
+     "key": "b036",
+     "hint": "1996년 당시 세계 최고 이적료로 바르셀로나에 가, 스무 살에 그해 FIFA 올해의 선수가 되며 최연소 수상자가 되었다.",
+     "guess": "호나우두",
+     "confidence": "high",
+     "hit": true,
+     "answer": "호나우두"
+    },
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)"
+    ],
+    "facts": [
+     {
+      "claim": "결승 몇 시간 전 경련 발작",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)",
+      "note": "At the 1998 FIFA World Cup, Ronaldo received the Golden Ball … after he helped Brazil reach the final, where he suffered a convulsive fit hours before kick-off. Hours before the final against France, Ronaldo suffered a convulsive fit."
+     },
+     {
+      "claim": "괜찮다며 뛰게 해 달라 → 다시 명단에",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)",
+      "note": "However, shortly before kick off, after pleading that he felt fine and requested to play, Ronaldo was reinstated by Brazil coach Mário Zagallo."
+     },
+     {
+      "claim": "17세로 1994 월드컵 우승 브라질 대표팀 최연소 멤버, 출전은 없음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)",
+      "note": "At age 17, he was the youngest member of the Brazilian squad that won the 1994 FIFA World Cup. ... He was selected for the tournament despite being just 17, but did not play in any games."
+     },
+     {
+      "claim": "1994 월드컵 뒤 PSV 이적 · 1994-95 UEFA컵 레버쿠젠전 해트트릭 · 루디 펠러의 말",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)",
+      "note": "Ronaldo joined PSV after the 1994 World Cup. ... After scoring a hat-trick in PSV's game against Bayer Leverkusen in the 1994–95 UEFA Cup, Leverkusen striker and Germany World Cup winner Rudi Völler stated in a post match press conference, \"Never in my life have I seen an 18-year-old play in this way.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)"
+    ],
+    "hintNote": "He joined Barcelona in 1996 for a then world record transfer fee and at 20 years old, he was named the 1996 FIFA World Player of the Year, making him the youngest recipient of the award.",
+    "easiestCue": "1994년 열일곱 살 우승 멤버 · 출전 없음",
+    "targetWhy": "94 대표팀 막내·PSV 시절 푈러의 말은 축구 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "1998 결승 사건은 축구 관심층에 꽤 알려져 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 호나우두 new",
+    "warn": []
+   }
+  }
+ ]
+}

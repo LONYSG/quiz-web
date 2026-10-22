@@ -1,0 +1,132 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "aerospace/2",
+  "midKey": "aerospace",
+  "subName": "항공사·공항",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/2#g019a-C2-11",
+   "seed": {
+    "subject": "히스로 공항",
+    "aspect": null,
+    "ref": "C2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1944년 영국 항공성은 항공기 회사 페어리의 시험 비행장과 주변 농장을 전시 징발령으로 차지했는데, 책임자 해럴드 밸푸어는 긴 공청회를 피하려 정부 위원회를 일부러 속였다고 1973년 자서전에서 털어놓았습니다. 1946년 문을 열 때 승객 터미널이 군용 천막이었던 이 공항은 어디일까요?",
+    "answer": "히스로 공항",
+    "acceptedAnswers": [
+     "히드로 공항",
+     "히스로",
+     "히드로"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '히드로 공항' · '히스로' → '히스로 공항' 넘겨주기 확인(히드로는 한국 언론 흔한 표기)",
+    "explanation": "페어리의 1930년 격납고는 보상 소송이 끝나기까지 20년 동안 헐지 못해 공항 소방서로 쓰였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1946년 문을 열 때 승객 터미널이 군용 천막",
+     "difWhy": "런던 공항 개항 사정 — 항공 애호가",
+     "wor": 3,
+     "worWhy": "유명 공항 이야깃거리",
+     "acc": 3,
+     "accWhy": "항공·우주 기술 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1946년 문을 열 때 승객 터미널이 군용 천막",
+     "difWhy": "런던 공항 개항 사정 — 항공 애호가",
+     "wor": 3,
+     "worWhy": "유명 공항 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "2008년 문을 연 제5터미널에서 처음 떠난 비행기는 파리행 BA302편이었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "영국 수도 서쪽에 있는 영국 최대의 국제공항",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "런던 여행·뉴스에서 들어 본 공항",
+     "piece": "f09",
+     "genPct": 60
+    },
+    "blind": {
+     "ref": "C2-11",
+     "key": "b269",
+     "hint": "2008년 문을 연 제5터미널에서 처음 떠난 비행기는 파리행 BA302편이었다.",
+     "guess": "히스로 공항",
+     "confidence": "high",
+     "hit": true,
+     "answer": "히스로 공항"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/History_of_Heathrow_Airport",
+     "https://ko.wikipedia.org/wiki/히스로_공항"
+    ],
+    "facts": [
+     {
+      "claim": "1944년 항공성이 비행장과 주변 농장·도로·집을 징발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/History_of_Heathrow_Airport",
+      "note": "April 1944: The Air Ministry requisitioned the airfield and surrounding farms, roads and houses, ostensibly to accommodate military bombers."
+     },
+     {
+      "claim": "페어리 항공의 시험 비행용 비행장(Great West Aerodrome)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/History_of_Heathrow_Airport",
+      "note": "Fairey Aviation needed an airfield for flight testing of aircraft designed and manufactured at its factory ... The Great West Aerodrome was used for aircraft assembly and testing."
+     },
+     {
+      "claim": "밸푸어가 책임자 · 1973년 자서전에서 공청회를 피하려 위원회를 일부러 속였다고 밝힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/History_of_Heathrow_Airport",
+      "note": "The project was headed by Harold Balfour ... wrote in his 1973 autobiography, Wings over Westminster, that he deliberately deceived the government committee into believing a requisition was necessary ... and used a wartime emergency requisition order to avoid a lengthy and costly public inquiry."
+     },
+     {
+      "claim": "1946년 개장 · 승객 터미널은 군용 천막",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/History_of_Heathrow_Airport",
+      "note": "25 March 1946: Reginald Fletcher, 1st Baron Winster, the Minister of Aviation, performed the official opening ceremony. The passenger terminal was an area of Army tents and duckboarding next to the south side of the Bath Road."
+     },
+     {
+      "claim": "페어리 1930년 격납고는 20년 소송 동안 헐지 못해 소방서로 쓰임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/History_of_Heathrow_Airport",
+      "note": "Fairey's 1930 hangar, in legal limbo for 20 years, and used as the Heathrow Airport fire station ... was then finally demolished."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Heathrow_Airport"
+    ],
+    "hintNote": "The first passenger to enter Terminal 5 ... was presented with a boarding pass by British Airways CEO Willie Walsh for the first departing flight, BA302 to Paris.",
+    "easiestCue": "1946년 문을 열 때 승객 터미널이 군용 천막이었던 이 공항",
+    "targetWhy": "공항 탄생 비화 — 항공 애호가 세부(런던 · 영국항공 허브 같은 정체는 뺌)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 공항의 몰랐던 출생 이야기",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "정답조각 공항"
+    ]
+   }
+  }
+ ]
+}

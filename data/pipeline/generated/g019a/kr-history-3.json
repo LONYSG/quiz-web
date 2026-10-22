@@ -1,0 +1,451 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "kr-history/3",
+  "midKey": "kr-history",
+  "subName": "조선 전기",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/3#g019a-K2-05",
+   "seed": {
+    "subject": "거북선",
+    "aspect": null,
+    "ref": "K2-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "임진왜란 때 이 배는 본영·방답·순천에 한 척씩 있었다고 전합니다. 이분(李芬)의 『행록』에는 덮개 판자 위에 십자 모양의 좁은 길을 내어 사람이 다닐 수 있게 했다고 적혀 있는데, 이 배는 무엇일까요?",
+    "answer": "거북선",
+    "acceptedAnswers": [
+     "귀선"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "귀선(龜船) — ko.wikipedia '거북선' 문서 첫 줄 '거북선 또는 귀선' · 실록 표기",
+    "explanation": "『태종실록』 1413년 기사에도 임금이 임진강 나루를 지나다 이 배와 왜선이 서로 싸우는 모습을 구경했다는 기록이 있다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "덮개 판자 위에 십자 모양의 좁은 길 … 이 배",
+     "difWhy": "덮개 덮은 임진왜란 배 — 중학 역사",
+     "wor": 5,
+     "worWhy": "한국사 교과",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "『태종실록』 1413년 … 이 배와 왜선이 서로 싸우는 모습",
+     "difWhy": "태종 때 거북선 기록 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "교양 — 거북선 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "『태종실록』 1413년 기사에는 임금이 임진강 나루를 지나다 이 배와 왜선이 서로 싸우는 모습을 구경했다는 기록이 있습니다. 훗날 본영·방답·순천에 한 척씩 있었다고 전하는 이 배는?",
+     "beforeExplanation": "임진왜란 때의 이 배들은 1597년 칠천량 해전에서 모두 가라앉았다.",
+     "removedCue": "『태종실록』 1413년 이 배와 왜선이 싸우는 모습(교과서)",
+     "addedCue": "이분 『행록』의 덮개 판자 위 십자 모양 좁은 길",
+     "why": "교과서 기록을 해설로 옮기고 판본·기록 세부로"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "판옥선 위에 덮개를 씌운 조선 수군의 돌격선",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "이순신과 함께 누구나 앎",
+     "piece": "f07",
+     "genPct": 99
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://sillok.history.go.kr/id/kca_11302005_001",
+     "https://ko.wikipedia.org/wiki/거북선",
+     "https://ko.wikipedia.org/wiki/%EA%B1%B0%EB%B6%81%EC%84%A0"
+    ],
+    "facts": [
+     {
+      "claim": "태종 13년(1413) 2월 임진도에서 거북선과 왜선이 싸우는 것을 구경",
+      "where": "e",
+      "url": "https://sillok.history.go.kr/id/kca_11302005_001",
+      "note": "태종 13년 2월 5일 — 임금이 임진도(臨津渡)를 지나다가 거북선[龜船]과 왜선(倭船)이 서로 싸우는 상황을 구경하였다."
+     },
+     {
+      "claim": "임진왜란 때 거북선은 본영귀선·방답귀선·순천귀선 3척",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/거북선",
+      "note": "임진왜란 때 사용했던 거북선은 본영귀선(本營龜船), 방답귀선(防踏龜船), 순천귀선(順天龜船) 3척 이었다."
+     },
+     {
+      "claim": "이분의 행록 — 판자 위 십자로 좁은 길",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EA%B1%B0%EB%B6%81%EC%84%A0",
+      "note": "이분(李芬)의 〈이순신행록〉(李舜臣行錄)에 따르면, '위에는 판자를 덮고 그 위에 십자로 좁은 길을 내어 다닐 수 있게 하였고 ...'"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "본영·방답·순천에 한 척씩 있던 배",
+    "targetWhy": "세 척의 배치·행록의 구조 묘사는 교과서 밖 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "국민 상식 대상의 '임진왜란 180년 전에도 있었다' 는 뜻밖의 사실",
+    "pairCheck": null,
+    "dbCheck": "answercheck 거북선 new",
+    "warn": [
+     "단정어 모두"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/3#g019a-K2-06",
+   "seed": {
+    "subject": "대마도 정벌",
+    "aspect": null,
+    "ref": "K2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "음력 6월 19일 거제도 남쪽 주원방포를 떠난 병선 227척이 이튿날 섬에 닿았습니다. 출병에 앞서 임금이 한강 두모포에 나가 연회를 베풀며 출정식을 연 이 원정은 무엇일까요?",
+    "answer": "대마도 정벌",
+    "acceptedAnswers": [
+     "쓰시마 정벌",
+     "기해동정"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '대마도 정벌' 문서 — '쓰시마 섬' 표기와 '기해동정(己亥東征)이라고 부른다' 확인",
+    "explanation": "이 원정에서 왜구 100여 명을 베고 2천여 호를 불태웠으며, 붙잡혀 있던 명나라 사람 131명을 찾아냈다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "거제도 남쪽 … 병선 227척이 이튿날 섬에 닿았습니다",
+     "difWhy": "거제 출발 섬 원정 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "왕위를 물려준 뒤에도 병권을 쥐고 있던 상왕이 주도한 이 원정",
+     "difWhy": "세종 초 태종 원정 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "음력 6월 19일 거제도 남쪽 주원방포를 떠난 병선 227척이 이튿날 섬에 닿았습니다. 왕위를 물려준 뒤에도 병권을 쥐고 있던 상왕이 주도한 이 원정은?",
+     "beforeExplanation": null,
+     "removedCue": "왕위를 물려준 뒤에도 병권을 쥐고 있던 상왕이 주도",
+     "addedCue": "한강 두모포의 출정 연회",
+     "why": "상왕 태종 주도(고교 한국사)를 빼고 출정 경과 세부로"
+    },
+    "generalHint": "같은 섬을 노린 원정 가운데 세 번째였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "세종 즉위 초 왜구 근거지 섬을 친 조선의 원정",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "한국사 교과서(이종무)에 나옴",
+     "piece": "f03",
+     "genPct": 60
+    },
+    "blind": {
+     "ref": "K2-06",
+     "key": "b191",
+     "hint": "같은 섬을 노린 원정 가운데 세 번째였다.",
+     "guess": "대마도 정벌(기해동정)",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "대마도 정벌"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/대마도_정벌",
+     "https://ko.wikipedia.org/wiki/%EB%8C%80%EB%A7%88%EB%8F%84%20%EC%A0%95%EB%B2%8C"
+    ],
+    "facts": [
+     {
+      "claim": "1419년 음력 6월 19일 거제도 남쪽 주원방포 출발, 20일 쓰시마 도착",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대마도_정벌",
+      "note": "1419년(세종 1) 음력 6월 19일 거제도 남쪽 주원방포를 출발하여 20일에 쓰시마 섬에 도착하였다."
+     },
+     {
+      "claim": "병선 227척 · 상왕 태종 주도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대마도_정벌",
+      "note": "상왕 태종의 주도 아래 … 경상도, 전라도, 충청도의 3도에 있는 병선 227척과 병사 1만7천 명을 거느리고"
+     },
+     {
+      "claim": "왜구 100여 명 참수 · 2천여 호 · 명 포로 131명",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/대마도_정벌",
+      "note": "왜구 1백여 명을 참수하고 2천여 호의 가옥을 불태우고, 131명의 명나라 포로를 찾아내었다."
+     },
+     {
+      "claim": "출병을 지시한 세종이 태종과 한강 두모포에서 연회·출정식",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EB%8C%80%EB%A7%88%EB%8F%84%20%EC%A0%95%EB%B2%8C",
+      "note": "출병을 지시한 세종은 태종과 함께 한강 두모포에 거동해 연회를 베풀며 출정식을 갖는다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EA%B8%B0%ED%95%B4%EB%8F%99%EC%A0%95"
+    ],
+    "hintNote": "대마도 정벌 중 세 번째 정벌이었던 기해동정은 1419년(세종 원년)에 일어났으며",
+    "easiestCue": "주원방포를 떠난 병선 227척이 이튿날 섬에 닿았습니다",
+    "targetWhy": "원정의 경과 세부 — 교과서 밖 한국사(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'상왕 + 섬 원정' 에서 태종·쓰시마를 떠올리는 고교 지식이면 3 경계",
+    "pairCheck": null,
+    "dbCheck": "answercheck 대마도 정벌 · 쓰시마 정벌 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/3#g019a-K2-07",
+   "seed": {
+    "subject": "훈민정음 해례본",
+    "aspect": null,
+    "ref": "K2-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "발견 당시 표지와 첫 두 장이 떨어져 나가 소장 가문 셋째 아들의 글씨로 채워 넣은 이 책은, 500부쯤 찍혔으리라 짐작되지만 20세기 초까지 한 권도 알려지지 않았습니다. 2008년 한 부가 더 나온 이 책은 흔히 무엇이라 부를까요?",
+    "answer": "훈민정음 해례본",
+    "acceptedAnswers": [
+     "해례본",
+     "훈민정음 해례"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '훈민정음' 문서의 '해례본 · 《해례본》' 줄임 표기 확인 — 같은 대상의 짧은 이름",
+    "explanation": "1962년 국보로 지정되었고, 1997년 유네스코 세계기록유산에 올랐다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "2008년 한 부가 더 나온 이 책",
+     "difWhy": "2008 상주본 — 뉴스 관심층",
+     "wor": 5,
+     "worWhy": "한국사 교과",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1940년 무렵까지 경북 안동 … 표지와 첫 두 장이 떨어져",
+     "difWhy": "안동본 발견 — 고교 한국사 교양",
+     "wor": 4,
+     "worWhy": "교양 — 국보 내력"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1940년 무렵까지 경북 안동 와룡면의 한 가문이 간직해 온 이 책은, 나올 때 표지와 첫 두 장이 떨어져 나가 집안사람의 글씨로 채워 넣었습니다. 한국 전쟁 때 소장자가 베개 삼아 지켰다는 이 책은 흔히 무엇이라 부를까요?",
+     "beforeExplanation": null,
+     "removedCue": "1940년 무렵까지 경북 안동 와룡면의 한 가문 · 한국 전쟁 때 베개 삼아 지킴",
+     "addedCue": "500부 인쇄 추정 · 2008년 한 부 더 · 셋째 아들 글씨",
+     "why": "안동 발견·베개 일화(한국사 교양)를 빼고 판본 세부로"
+    },
+    "generalHint": "광복 뒤 이 책을 가진 간송 전형필은 영인본을 만들어 내용을 학계에 공개했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "새 글자의 만든 원리와 쓰임을 풀이한 세종 때의 책",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "국보·교과서에 나오는 책",
+     "piece": "f04",
+     "genPct": 75
+    },
+    "blind": {
+     "ref": "K2-07",
+     "key": "b250",
+     "hint": "광복 뒤 이 책을 가진 간송 전형필은 영인본을 만들어 내용을 학계에 공개했다.",
+     "guess": "훈민정음 해례본",
+     "confidence": "high",
+     "hit": true,
+     "answer": "훈민정음 해례본"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/훈민정음"
+    ],
+    "facts": [
+     {
+      "claim": "표지와 첫 두 엽이 없어 셋째 아들 용준의 글씨로 보완",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/훈민정음",
+      "note": "발견당시 표지와 첫 두 엽은 떨어져 나가 없었는데 이한걸의 셋째 아들 용준(容準)의 글씨로 보완하였다."
+     },
+     {
+      "claim": "1962년 국보, 1997년 세계기록유산",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/훈민정음",
+      "note": "해례본은 1962년에 국보 70호로 지정되었으며 1997년에 유네스코 세계기록유산으로 지정되었다."
+     },
+     {
+      "claim": "약 500부 인쇄 추정 · 20세기 초까지 한 권도 알려지지 않음 · 2008년 상주에서 한 부 더",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%ED%9B%88%EB%AF%BC%EC%A0%95%EC%9D%8C",
+      "note": "《훈민정음 해례본》은 약 500부 정도가 인쇄되었을 것으로 추정되지만, 《훈민정음 해례본》의 편찬사실은 기록에만 존재할뿐, 20세기 초반경만 해도 단 한 권도 그 존재사실이 알려지지 않았었는데, 1940년에 안동에서 처음으로 발견되었다. 이후 2008년에 상주에서 한부가 더 발견되어 현재까지는 두 부가 존재한다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%ED%9B%88%EB%AF%BC%EC%A0%95%EC%9D%8C_%ED%95%B4%EB%A1%80%EB%B3%B8"
+    ],
+    "hintNote": "광복이 되자 전형필은 해례본의 존재사실을 학계에 알렸고 영인본을 제작 배포하여 책의 내용을 공개하였다.",
+    "easiestCue": "500부쯤 찍혔으리라 짐작되지만 20세기 초까지 한 권도 알려지지 않았습니다",
+    "targetWhy": "판본의 발견·보존 뒷이야기 — 교과서 밖 세부(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1940년 안동에서 나온 책' 이 방송에 자주 나와 3 으로 보일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck 훈민정음 해례본 new (훈민정음 188 은 정답 문자열이 다르고 지식도 창제 자체)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/3#g019a-K2-08",
+   "seed": {
+    "subject": "신문고",
+    "aspect": null,
+    "ref": "K2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "연산군 때 없어졌다가 1771년 다시 설치되어 창덕궁 진선문과 경희궁 건명문 남쪽에 놓였습니다. 처음에는 의금부 당직청이 맡았으나 실제로는 주로 서울의 관리들만 썼다는 이것은 무엇일까요?",
+    "answer": "신문고",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "태종 때 처음 대궐 밖 문루에 달았으며, 치는 사람의 소리를 임금이 직접 듣고 처리하도록 한 마지막 호소 수단이었다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "실제로는 주로 서울의 관리들만 썼다는 이것",
+     "difWhy": "백성용인데 관리만 쓴 북 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 제도",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1771년 영조가 되살려 … 의금부 당직청이 맡았지만",
+     "difWhy": "백성 호소 북 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "교양 — 조선 제도"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "연산군 때 없어졌다가 1771년 영조가 되살려 창덕궁 진선문과 경희궁 건명문 남쪽에 두었습니다. 처음에는 의금부 당직청이 맡았지만 영조 때는 병조가 관리한 이것은?",
+     "beforeExplanation": null,
+     "removedCue": "영조가 되살려(교과서의 영조 신문고 부활) · 영조 때 병조 관리",
+     "addedCue": "실제로는 주로 서울의 관리들만 썼다는 운영 실상",
+     "why": "교과서 연결(영조 부활)을 빼고 제도의 실제 운영으로"
+    },
+    "generalHint": "억울한 사람은 서울에서는 주장관, 지방에서는 관찰사에게 먼저 알리고, 사헌부에서도 풀리지 않을 때에야 이것을 칠 수 있었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "백성이 억울함을 임금에게 알리도록 궁궐 밖에 단 북",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "한국사 교과서 필수",
+     "piece": "f06",
+     "genPct": 92
+    },
+    "blind": {
+     "ref": "K2-08",
+     "key": "b030",
+     "hint": "억울한 사람은 서울에서는 주장관, 지방에서는 관찰사에게 먼저 알리고, 사헌부에서도 풀리지 않을 때에야 이것을 칠 수 있었다.",
+     "guess": "신문고",
+     "confidence": "high",
+     "hit": true,
+     "answer": "신문고"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/신문고",
+     "https://ko.wikipedia.org/wiki/%EC%8B%A0%EB%AC%B8%EA%B3%A0"
+    ],
+    "facts": [
+     {
+      "claim": "연산군 때부터 폐지, 1771년 영조가 다시 설치 · 병조 관리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/신문고",
+      "note": "그 후 연산군 때부터 오랫동안 신문고 제도가 폐지되었으나 1771년(영조 47년) 11월에 다시 설치하고 병조에서 관리하게 하였다."
+     },
+     {
+      "claim": "창덕궁 진선문 · 경희궁 건명문 남쪽",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/신문고",
+      "note": "영조는 창덕궁의 진선문(進善門)과 경희궁의 건명문(建明門) 남쪽에 설치하게 하였다."
+     },
+     {
+      "claim": "의금부 당직청 주관",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/신문고",
+      "note": "신문고는 그 최후의 항고(抗告) 시설로 임금의 직속인 의금부 당직청(當直廳)에서 주관, 북을 치는 자의 소리를 임금이 직접 듣고 처리하도록 하였다."
+     },
+     {
+      "claim": "태종 때 대궐 밖 문루에 단 북",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/신문고",
+      "note": "신문고(申聞鼓)는 1401년(태종 2년) 특수청원(特殊請願)·상소(上訴)를 위하여 대궐 밖 문루(門樓)에 달았던 북이다."
+     },
+     {
+      "claim": "실제 이용은 주로 서울의 관리들에 한정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EC%8B%A0%EB%AC%B8%EA%B3%A0",
+      "note": "그러나 실제로는 신문고의 이용은 주로 서울의 관리들에게만 한정되었으며 본래의 취지와는 달리 일반 상인(常人)이나 노비 또는 지방 관민에게는 효용이 없게 되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%8B%A0%EB%AC%B8%EA%B3%A0"
+    ],
+    "hintNote": "즉 억울함을 호소하려는 자는 서울에서 주장관(主掌官), 지방에서는 관찰사에게 신고하여 사헌부에 고소하고 여기서도 해결이 안 되는 경우에 신문고를 두드리게 하였는데",
+    "easiestCue": "1771년 다시 설치되어 창덕궁 진선문·경희궁 건명문 남쪽에",
+    "targetWhy": "설치 위치·실제 이용층은 교과서가 다루지 않는 운영 세부 — 4(경계)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "국민 상식 제도의 몰랐던 뒷이야기(없어졌다 되살아남)",
+    "pairCheck": null,
+    "dbCheck": "answercheck 신문고 new",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음,마지막"
+    ]
+   }
+  }
+ ]
+}

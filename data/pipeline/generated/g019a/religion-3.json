@@ -1,0 +1,129 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "religion/3",
+  "midKey": "religion",
+  "subName": "이슬람",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "religion/3#g019a-H2-30",
+   "seed": {
+    "subject": "쿠란",
+    "aspect": null,
+    "ref": "H2-30",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2015년 영국 버밍엄 대학교가 소장한 양피지 두 장을 방사성 탄소로 재어 보니 568~645년 사이의 것으로 나와 화제가 되었습니다. 캐드버리 초콜릿 집안의 에드워드 캐드버리가 돈을 대 모은 밍가나 컬렉션에 든 이 사본은 어느 경전일까요?",
+    "answer": "쿠란",
+    "acceptedAnswers": [
+     "코란"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '쿠란', 넘겨주기 '코란' 확인",
+    "explanation": "이 경전은 제3대 칼리프 우스만이 표준본을 엮어 퍼뜨린 것으로 이름나 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 568~645년 사이 양피지 + 어느 경전",
+     "difWhy": "7세기 이슬람 경전 — 중학·고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 최고(最古) 사본",
+     "acc": 3,
+     "accWhy": "종교·경전 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "제3대 칼리프 우스만이 표준본을 엮어 퍼뜨린",
+     "difWhy": "칼리프 경전 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 이슬람 경전"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2015년 영국 버밍엄 대학교가 소장한 양피지 사본을 방사성 탄소로 재어 보니 568~645년 사이의 것으로 나와 화제가 되었습니다. 제3대 칼리프 우스만이 표준본을 엮어 퍼뜨린 것으로 이름난 이 경전은?",
+     "beforeExplanation": "이 사본은 2015년 버밍엄 대학교에서 전시된 뒤 2016년 8월 5일까지 버밍엄 박물관·미술관에서 공개되었습니다.",
+     "removedCue": "제3대 칼리프 우스만이 표준본을 엮어 퍼뜨린",
+     "addedCue": "캐드버리가 돈을 댄 밍가나 컬렉션",
+     "why": "고교 세계사의 우스만 표준본을 해설로 옮기고 사본 소장 경위로 바꿈"
+    },
+    "generalHint": "이 양피지는 '히자즈체'라 불리는 옛 아랍 글씨로 쓰여 있다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "이슬람의 경전",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "코란·쿠란으로 교과서에 나옴",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "H2-30",
+     "key": "b164",
+     "hint": "이 양피지는 '히자즈체'라 불리는 옛 아랍 글씨로 쓰여 있다.",
+     "guess": "버밍엄 쿠란 사본",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "쿠란"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Birmingham_Quran_manuscript",
+     "https://en.wikipedia.org/wiki/Uthman"
+    ],
+    "facts": [
+     {
+      "claim": "2015년 버밍엄 대학교 소장 사본, 방사성 탄소로 568~645년",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Birmingham_Quran_manuscript",
+      "note": "In 2015, the manuscript, which is held by the University of Birmingham in England, was radiocarbon dated to between 568 and 645 CE."
+     },
+     {
+      "claim": "양피지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Birmingham_Quran_manuscript",
+      "note": "They determined the radiocarbon date of the parchment to be 1465±21 years BP"
+     },
+     {
+      "claim": "우스만 제3대 정통 칼리프, 표준본 편찬·배포",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Uthman",
+      "note": "was the third and longest-reigned Rashidun caliph ... He is most famously known for the compilation and distribution of the standardized version of the Quran during his reign, known as the Uthmanic codex."
+     },
+     {
+      "claim": "밍가나 컬렉션 — 에드워드 캐드버리가 자금을 댐 · 양피지 두 장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Birmingham_Quran_manuscript",
+      "note": "The Birmingham Quran manuscript comprises two leaves of parchment from an early Quranic manuscript ... It is part of the Mingana Collection of Middle Eastern manuscripts ... was collected by Alphonse Mingana over three trips to the Middle East in the 1920s and was funded by Edward Cadbury, a philanthropist and businessman of the Birmingham-based chocolate-manufacturing Cadbury family."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Birmingham_Quran_manuscript"
+    ],
+    "hintNote": "The manuscript is written in ink on parchment, using an Arabic Hijazi script and is still clearly legible.",
+    "easiestCue": "버밍엄 대학교 양피지 사본의 연대 568~645년",
+    "targetWhy": "버밍엄 사본 연대 측정은 종교·역사 애호가 뉴스 세부 — 4(경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'칼리프 + 경전'으로 쿠란을 떠올리기 쉬울 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new(쿠란 · 코란)",
+    "warn": []
+   }
+  }
+ ]
+}

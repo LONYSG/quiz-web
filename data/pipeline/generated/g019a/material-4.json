@@ -1,0 +1,226 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "material/4",
+  "midKey": "material",
+  "subName": "토목 구조물",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "material/4#g019a-C2-20",
+   "seed": {
+    "subject": "파나마 운하",
+    "aspect": null,
+    "ref": "C2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1928년 미국 작가 리처드 핼리버턴은 이 뱃길을 헤엄쳐 건너며 36센트를 냈는데, 이는 이곳에서 낸 가장 적은 통행료로 꼽힙니다. 1913년 강을 막아 만들 당시 세계에서 가장 큰 인공 호수였던 곳을 지나는 이 뱃길은?",
+    "answer": "파나마 운하",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1915년 9월 18일에는 쿨레브라 절개지에서 산사태가 나 거의 일곱 달 동안 뱃길이 닫혔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1913년 강을 막아 만들 당시 세계에서 가장 큰 인공 호수 … 이 뱃길",
+     "difWhy": "갑문·인공호 운하 — 고교 지리",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 최소 통행료",
+     "acc": 2,
+     "accWhy": "재료·건설 기술 — 애호가 영역"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "가툰호를 지나는 이 뱃길",
+     "difWhy": "가툰호 운하 — 고교 지리",
+     "wor": 3,
+     "worWhy": "운하 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1928년 미국 작가 리처드 핼리버턴은 이곳을 헤엄쳐 건너며 36센트를 냈는데, 이는 이곳에서 낸 가장 적은 통행료로 꼽힙니다. 1913년 강을 막아 만들 때 세계에서 가장 큰 인공 호수였던 가툰호를 지나는 이 뱃길은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "가툰호(호수 이름)",
+     "addedCue": "호수 이름을 빼고 '강을 막아 만든 당시 세계 최대 인공 호수' 로만",
+     "why": "호수 이름(지리 상식)을 빼서 두 세부를 엮어야 풀리게"
+    },
+    "generalHint": "수에즈 뱃길을 낸 레셉스가 1881년 먼저 공사를 시작했지만 1889년 멈추었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "중앙아메리카 지협을 가로질러 두 대양을 잇는 운하",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "지리 교과서·뉴스로 앎",
+     "piece": "f09",
+     "genPct": 92
+    },
+    "blind": {
+     "ref": "C2-20",
+     "key": "b268",
+     "hint": "수에즈 뱃길을 낸 레셉스가 1881년 먼저 공사를 시작했지만 1889년 멈추었다.",
+     "guess": "파나마 운하",
+     "confidence": "high",
+     "hit": true,
+     "answer": "파나마 운하"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Panama_Canal",
+     "https://en.wikipedia.org/wiki/Gatun_Lake"
+    ],
+    "facts": [
+     {
+      "claim": "가장 적은 통행료 36센트 — 1928년 헤엄쳐 건넌 리처드 핼리버턴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Panama_Canal",
+      "note": "The lowest toll ever paid was 36 cents, equivalent to $6.75 in 2025, by American Richard Halliburton who swam the Panama Canal in 1928."
+     },
+     {
+      "claim": "가툰호는 1913년 차그레스강을 막아 만듦 · 만들 때 세계 최대 인공 호수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gatun_Lake",
+      "note": "Created in 1913 by damming the Chagres River, Gatun Lake is a key part of the Panama Canal ... When constructed, Gatun Lake was the largest artificial lake in the world."
+     },
+     {
+      "claim": "1915년 9월 18일 쿨레브라 절개지 산사태로 거의 일곱 달 폐쇄",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Panama_Canal",
+      "note": "despite the closure of the canal for nearly seven months after a landslide in the Culebra Cut on 18 September 1915."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Panama_Canal"
+    ],
+    "hintNote": "France began work on the canal in 1881, but stopped in 1889 ... Ferdinand de Lesseps and engineer Philippe Bunau-Varilla were the driving forces behind the French attempts",
+    "easiestCue": "1913년 강을 막아 만들 당시 세계에서 가장 큰 인공 호수였던 곳을 지나는",
+    "targetWhy": "운하 건설·통행료 뒷이야기 — 애호가 세부(경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 운하의 몰랐던 세부",
+    "pairCheck": null,
+    "dbCheck": "new — 활성 689(정답 파나막스)와 정답 · 지식이 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "material/4#g019a-C2-21",
+   "seed": {
+    "subject": "싼샤 댐",
+    "aspect": null,
+    "ref": "C2-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "쑨원이 1919년 책 '중국의 국제 개발'에서 구상했고, 1944년 미국 개척국 기술자 존 L. 새비지가 현장을 조사해 설계안을 그렸습니다. 1992년 전국인민대표대회에서 2,633명 가운데 1,767명만 찬성해 이례적으로 낮은 찬성률로 건설안이 통과된 이 댐은 무엇일까요?",
+    "answer": "싼샤 댐",
+    "acceptedAnswers": [
+     "삼협댐",
+     "산샤 댐"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '삼협댐' · '산샤 댐' → '싼샤 댐' 넘겨주기 확인",
+    "explanation": "2005년 NASA 과학자들은 이 댐에 가둔 물 때문에 지구의 하루가 0.06마이크로초 길어진다고 계산했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1992년 전국인민대표대회 … 이례적으로 낮은 찬성률",
+     "difWhy": "전인대 낮은 찬성 댐 — 시사 애호가",
+     "wor": 3,
+     "worWhy": "세계 최대 댐 이야깃거리",
+     "acc": 2,
+     "accWhy": "재료·건설 기술 — 애호가 영역"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1992년 전국인민대표대회 … 이례적으로 낮은 찬성률",
+     "difWhy": "전인대 낮은 찬성 댐 — 시사 애호가",
+     "wor": 3,
+     "worWhy": "세계 최대 댐 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "이 댐 공사로 살던 곳을 떠나야 했던 사람은 113만 명에서 140만 명쯤으로 추산된다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "중국 양쯔강 중류를 막은 세계 최대 수력 발전 댐",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "뉴스로 들어 본 중국 댐",
+     "piece": "f06",
+     "genPct": 70
+    },
+    "blind": {
+     "ref": "C2-21",
+     "key": "b001",
+     "hint": "이 댐 공사로 살던 곳을 떠나야 했던 사람은 113만 명에서 140만 명쯤으로 추산된다.",
+     "guess": "싼샤 댐",
+     "confidence": "high",
+     "hit": true,
+     "answer": "싼샤 댐"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Three_Gorges_Dam",
+     "https://ko.wikipedia.org/wiki/싼샤_댐"
+    ],
+    "facts": [
+     {
+      "claim": "쑨원이 1919년 '중국의 국제 개발'에서 양쯔강 큰 댐을 구상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Three_Gorges_Dam",
+      "note": "Sun Yat-sen envisioned a large dam across the Yangtze River in The International Development of China (1919)."
+     },
+     {
+      "claim": "1944년 미국 개척국 설계 기술자 존 L. 새비지가 조사해 댐 제안서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Three_Gorges_Dam",
+      "note": "In 1944, the United States Bureau of Reclamation's head design engineer, John L. Savage, surveyed the area and drew up a dam proposal for a \"Yangtze River Project\"."
+     },
+     {
+      "claim": "1992년 전인대 2,633명 중 1,767명 찬성 — 이례적으로 낮은 67.75%",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Three_Gorges_Dam",
+      "note": "The National People's Congress approved the dam in 1992: of 2,633 delegates, 1,767 voted in favour, 177 voted against, 664 abstained, and 25 members did not vote, giving the legislation an unusually low 67.75% approval rate."
+     },
+     {
+      "claim": "2005년 NASA — 하루가 0.06마이크로초 길어짐",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Three_Gorges_Dam",
+      "note": "In 2005, NASA scientists calculated that the shift of water mass stored by the dams would increase the total length of the Earth's day by 0.06 microseconds"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Three_Gorges_Dam"
+    ],
+    "hintNote": "Estimates of the number of people displaced by the dam's construction range from 1.13 million to around 1.4 million.",
+    "easiestCue": "쑨원이 1919년 책 '중국의 국제 개발'에서 구상했고",
+    "targetWhy": "구상 · 설계 · 표결 뒷이야기 — 토목·중국 현대사 애호가(세계 최대 발전소라는 정체는 뺌)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 아는 거대 댐의 몰랐던 역사",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

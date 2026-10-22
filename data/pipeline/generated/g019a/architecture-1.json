@@ -1,0 +1,252 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "architecture/1",
+  "midKey": "architecture",
+  "subName": "건축 양식",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "architecture/1#g019a-A1-01",
+   "seed": {
+    "subject": "고딕 양식",
+    "aspect": null,
+    "ref": "A1-01",
+    "pairedWith": 174
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 174,
+    "question": "1140~1144년 한 수도원장은 성가대석을 다시 지으며, 끊임없는 빛이 교회 안을 채우도록 창을 70개나 내게 했습니다. 1135~1140년 사이 짓기 시작한 상스 대성당이 처음부터 끝까지 이 양식으로 지은 첫 대성당으로 꼽히는 이 중세 건축 양식은?",
+    "answer": "고딕 양식",
+    "acceptedAnswers": [
+     "고딕",
+     "고딕 건축"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '고딕 양식' → '고딕 건축' 넘겨주기 확인 · '고딕' 단독은 같은 양식을 부르는 흔한 말",
+    "explanation": "그 수도원장은 파리 근교 생드니 수도원의 쉬제르로, 이 수도원 성당이 이 양식의 첫 건물로 꼽힙니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "끊임없는 빛이 교회 안을 채우도록 창을 70개나 … 중세 건축 양식",
+     "difWhy": "빛 가득한 중세 성당 양식 — 고교 미술·세계사",
+     "wor": 5,
+     "worWhy": "교과 — 미술 양식",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "생드니 수도원 … 끊임없는 빛 … 중세 건축 양식",
+     "difWhy": "생드니 첫 건물 양식 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 건축 양식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "파리 근교 생드니 수도원의 원장 쉬제르는 1140~1144년 성가대석을 다시 지으며, 끊임없는 빛이 교회 안을 채우도록 창을 70개나 내게 했습니다. 이 수도원 성당이 첫 건물로 꼽히는 중세 건축 양식은 무엇일까요?",
+     "beforeExplanation": "이 양식으로 처음부터 끝까지 지은 첫 대성당은 1135~1140년 사이 짓기 시작한 상스 대성당으로 꼽힙니다.",
+     "removedCue": "파리 근교 생드니 수도원의 원장 쉬제르 · 이 수도원 성당이 첫 건물로 꼽히는",
+     "addedCue": "상스 대성당(해설에서 옮김)",
+     "why": "고교 세계사의 생드니=첫 건물을 해설로 옮기고 상스 대성당 세부로 바꿈"
+    },
+    "generalHint": "상스 대성당에서 일한 건축가 기욤은 1174년 불탄 캔터베리 대성당 성가대석을 다시 지어, 잉글랜드에서 이 양식으로 지은 첫 중요한 예를 남겼다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "12세기 프랑스에서 시작된 첨탑과 스테인드글라스의 중세 성당 양식",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "미술·세계사 교과서 용어",
+     "piece": "f09",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "A1-01",
+     "key": "b311",
+     "hint": "상스 대성당에서 일한 건축가 기욤은 1174년 불탄 캔터베리 대성당 성가대석을 다시 지어, 잉글랜드에서 이 양식으로 지은 첫 중요한 예를 남겼다.",
+     "guess": "고딕 양식",
+     "confidence": "high",
+     "hit": true,
+     "answer": "고딕 양식"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gothic_architecture"
+    ],
+    "facts": [
+     {
+      "claim": "성가대석 재건 1140~1144",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gothic_architecture",
+      "note": "Its choir was reconstructed between 1140 and 1144, drawing together the developing Gothic architectural features."
+     },
+     {
+      "claim": "쉬제르가 창 70개, 끊임없는 빛",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gothic_architecture",
+      "note": "When the Abbot Suger ordered the reconstruction of choir of the abbey church at Saint-Denis, he had the builders create seventy windows, admitting as much light as possible ... \"the whole church would shine with the wonderful and uninterrupted light of most luminous windows\""
+     },
+     {
+      "claim": "상스 대성당이 새 양식으로 전부 지은 첫 대성당",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gothic_architecture",
+      "note": "The first cathedral built entirely in the new style was Sens Cathedral, begun between 1135 and 1140 and consecrated in 1160."
+     },
+     {
+      "claim": "생드니 수도원 성당이 첫 고딕 건물로 꼽힘",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gothic_architecture",
+      "note": "The Abbey of Saint-Denis, near Paris, is considered to be the first Gothic building."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/William_of_Sens"
+    ],
+    "hintNote": "He is known for rebuilding the choir of Canterbury Cathedral between 1174 and 1177, counted as the first important example of the Early Gothic Style of architecture in England / Before Canterbury, he worked on Sens Cathedral.",
+    "easiestCue": "끊임없는 빛을 위해 창 70개를 낸 수도원장",
+    "targetWhy": "쉬제르의 빛·상스 대성당은 건축사 애호가 세부 — 4(경계 3)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 양식의 탄생 경위",
+    "pairCheck": "1회차 q(첨두 아치·리브 볼트·플라잉 버트레스) · e(노트르담·샤르트르) · h(바사리 이름 유래)와 겹치지 않음 — 생드니·쉬제르·상스는 새 사실이고 정의 문장 없음",
+    "dbCheck": "pair-or-different — 활성 #174 와 같은 답, (가) 2회차 · #3396(답 고트족)은 다른 답",
+    "warn": [
+     "정답조각 양식",
+     "단정어 처음,끝까지"
+    ],
+    "first": {
+     "id": 174,
+     "question": "뾰족한 첨두 아치, 리브 볼트, 플라잉 버트레스, 스테인드글라스 창문이 특징인 중세 유럽의 대표적인 건축 양식은?",
+     "explanation": "노트르담 대성당, 샤르트르 대성당 등으로 대표되는 뾰족한 첨탑과 스테인드글라스 중심의 중세 건축 양식은 고딕 양식이다.",
+     "hint": "16세기 바사리가 『미술가 열전』에서 이 건축을 야만적인 독일 풍이라 낮춰 부른 데서 이름이 왔다.",
+     "difficulty": 3
+    }
+   }
+  },
+  {
+   "seedId": "architecture/1#g019a-A1-02",
+   "seed": {
+    "subject": "로코코",
+    "aspect": null,
+    "ref": "A1-02",
+    "pairedWith": 753
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 753,
+    "question": "1734~1739년 뮌헨에 지은 정자 아말리엔부르크는 독일에서 이 양식의 첫 건물 가운데 하나로 꼽힙니다. 1740~50년대 바이에른에서는 도미니쿠스 치머만이 설계한 비스 교회처럼 실내를 이 양식의 독특한 변형으로 꾸민 순례 성당들이 지어졌는데, 이 양식은?",
+    "answer": "로코코",
+    "acceptedAnswers": [
+     "로코코 양식"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '로코코' 문서 확인 · '로코코 양식'은 같은 대상을 부르는 흔한 꼴",
+    "explanation": "프로이센에서는 프리드리히 대왕 시대에 '프리드리히식'이라 불리는 갈래가 생겨 상수시 궁전 같은 건물을 남겼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "아말리엔부르크 … 비스 교회",
+     "difWhy": "남독일 18세기 양식 건물 — 대학 교양 미술사",
+     "wor": 4,
+     "worWhy": "교양 — 미술 양식 어휘",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "프리드리히 대왕 시대 … 상수시 궁전",
+     "difWhy": "상수시 궁전 양식 — 고교 세계사",
+     "wor": 4,
+     "worWhy": "교양 — 미술 양식 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1734~1739년 뮌헨에 지은 정자 아말리엔부르크는 독일에서 이 양식의 첫 건물 가운데 하나로 꼽힙니다. 프로이센에서는 프리드리히 대왕 시대에 이 양식의 한 갈래가 생겨 상수시 궁전 같은 건물을 남겼는데, 이 18세기 양식은 무엇일까요?",
+     "beforeExplanation": "바이에른의 순례 성당들은 겉은 소박한 파스텔 벽이지만 안은 장식이 넘쳐, 1745~1754년에 지은 비스 교회가 대표로 꼽힙니다.",
+     "removedCue": "프리드리히 대왕 시대 … 상수시 궁전",
+     "addedCue": "비스 교회 · 바이에른 순례 성당 실내",
+     "why": "고교 세계사의 상수시 궁전을 해설로 옮기고 바이에른 순례 성당 세부로 바꿈 — 1회차 정의(파스텔조 장식)와 겹치는 파스텔 벽 서술은 넣지 않음"
+    },
+    "generalHint": "1750~1753년 베네치아 화가 티에폴로는 아들과 함께 바이에른의 이 양식 명소인 뷔르츠부르크 궁전의 천장을 꾸몄다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "18세기 프랑스에서 퍼진 섬세하고 화려한 장식 양식",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "미술 교과서 양식 이름",
+     "piece": "f09",
+     "genPct": 65
+    },
+    "blind": {
+     "ref": "A1-02",
+     "key": "b301",
+     "hint": "1750~1753년 베네치아 화가 티에폴로는 아들과 함께 바이에른의 이 양식 명소인 뷔르츠부르크 궁전의 천장을 꾸몄다.",
+     "guess": "바로크",
+     "confidence": "mid",
+     "hit": false,
+     "answer": "로코코"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Rococo"
+    ],
+    "facts": [
+     {
+      "claim": "아말리엔부르크(1734~1739, 뮌헨)는 독일 첫 로코코 건물 가운데 하나",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rococo",
+      "note": "One of the first Rococo buildings in Germany, the pavilion of Amalienburg in Munich (1734–1739), was created by the Belgian-born architect and designer François de Cuvilliés"
+     },
+     {
+      "claim": "프리드리히 대왕 시대 프로이센의 프리드리히식 로코코 — 상수시 궁전",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rococo",
+      "note": "Frederician Rococo is a form of Rococo which developed in Prussia during the reign of Frederick the Great ... Famous buildings in the Frederician style include Sanssouci Palace, the Potsdam City Palace"
+     },
+     {
+      "claim": "1740~50년대 바이에른 순례 성당들의 실내 — 로코코의 독특한 변형 · 비스 교회(1745~1754, 도미니쿠스 치머만)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rococo",
+      "note": "In the 1740s and 1750s, a number of pilgrimage churches were constructed in Bavaria with interiors decorated in a distinctive variant of Rococo style. One of the most notable examples is the Wieskirche (1745–1754) designed by Dominikus Zimmermann."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Rococo"
+    ],
+    "hintNote": "Tiepolo travelled to Germany with his son from 1750 to 1753, decorating the ceilings of the Würzburg Residence, one of the major landmarks of Bavarian Rococo.",
+    "easiestCue": "뮌헨 아말리엔부르크 · 비스 교회",
+    "targetWhy": "아말리엔부르크·비스 교회는 건축 애호가 세부 — 4(경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "상수시 궁전을 아는 사람은 바로 풀 수 있어 3 쪽으로 내려갈 수 있다",
+    "pairCheck": "1회차 #753 q(파스텔·귀족 유희) · e(조개껍데기 어원·프라고나르) · h(와토·루이 15세)와 겹치지 않음 — 독일 건축 사실만 씀",
+    "dbCheck": "pair-or-different — 활성 #753(미술 양식) 과 같은 답, 건축 쪽 다른 지식",
+    "warn": [
+     "숫자대조 18"
+    ],
+    "first": {
+     "id": 753,
+     "question": "앞선 시대의 무게와 엄숙함을 덜어 내고, 파스텔조의 섬세한 장식과 귀족의 유희를 담은 18세기 프랑스 중심의 양식은?",
+     "explanation": "조개껍데기 모양 장식을 뜻하는 말에서 왔습니다. 프라고나르의 '그네'가 자주 꼽힙니다.",
+     "hint": "와토의 '키테라섬으로의 순례'가 이 양식의 문을 연 그림으로 꼽히며, 루이 15세 시대와 겹친다.",
+     "difficulty": 3
+    }
+   }
+  }
+ ]
+}

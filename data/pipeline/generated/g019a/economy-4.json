@@ -1,0 +1,114 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "economy/4",
+  "midKey": "economy",
+  "subName": "기업·경영 용어",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "economy/4#g019a-H2-26",
+   "seed": {
+    "subject": "유니콘 기업",
+    "aspect": null,
+    "ref": "H2-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2013년 미국 벤처 투자자 에일린 리는 테크크런치에 실은 글에서 이런 기업을 39곳으로 꼽으며, 그만큼 드물다는 뜻으로 상상 속 동물의 이름을 붙였습니다. 이 기업들을 흔히 무엇이라 부를까요?",
+    "answer": "유니콘 기업",
+    "acceptedAnswers": [
+     "유니콘"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '유니콘 기업' 확인 · 기사에서 '유니콘'만으로도 흔히 씀",
+    "explanation": "2013년부터 2015년 사이 소프트웨어 기업에 들어간 민간 자본은 세 배로 늘었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "그만큼 드물다는 뜻으로 상상 속 동물의 이름을 붙였습니다",
+     "difWhy": "드문 스타트업 = 상상 동물 — 뉴스에서 흔히",
+     "wor": 4,
+     "worWhy": "시사 경제 기본 어휘",
+     "acc": 4,
+     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "그만큼 드물다는 뜻으로 상상 속 동물의 이름을 붙였습니다",
+     "difWhy": "드문 스타트업 = 상상 동물 — 뉴스에서 흔히",
+     "wor": 4,
+     "worWhy": "시사 경제 기본 어휘"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "정답이 용어 이름이라 정의(기업가치 10억 달러 비상장 스타트업)나 이름 유래(상상 속 동물) 가운데 하나는 써야 하고, 둘 다 뉴스 상식 — 빼면 묻는 대상이 흐려짐"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "기업 가치 10억 달러 이상인 비상장 신생 기업",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "경제 뉴스에서 흔한 말",
+     "piece": "f08",
+     "genPct": 78
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Unicorn_(finance)"
+    ],
+    "facts": [
+     {
+      "claim": "2013년 벤처 투자자 에일린 리가 만든 말 — 드묾을 나타내려 상상의 동물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Unicorn_(finance)",
+      "note": "The term was coined in 2013 by venture capitalist Aileen Lee, choosing the mythical animal to represent the statistical rarity of such successful ventures."
+     },
+     {
+      "claim": "테크크런치 글, 당시 39곳",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Unicorn_(finance)",
+      "note": "Aileen Lee originated the term \"unicorn\" in a 2013 TechCrunch article ... At the time, 39 companies were identified as unicorns."
+     },
+     {
+      "claim": "2013~2015 소프트웨어 기업 민간 투자 세 배",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Unicorn_(finance)",
+      "note": "The amount of private capital invested in software companies has increased three-fold from 2013 to 2015."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "그만큼 드물다는 뜻으로 상상 속 동물의 이름을 붙였습니다",
+    "targetWhy": "정의(10억 달러·비상장)를 주지 않음 — 명명자·39곳은 스타트업 관심층 세부(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'드문 + 상상 동물'로 짐작할 여지가 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new(유니콘 기업 · 유니콘)",
+    "warn": [
+     "정답조각 기업"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,215 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "football/1",
+  "midKey": "football",
+  "subName": "규칙",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/1#g019a-S1-19",
+   "seed": {
+    "subject": "호루라기",
+    "aspect": null,
+    "ref": "S1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "축구 심판이 처음 쓴 이것은 영국 버밍엄의 조지프 허드슨이 만든 것이었습니다. 허드슨은 1884년 런던 경찰청과도 첫 계약을 맺었는데, 1936년에야 축구 규칙에 처음 언급된 이것은?",
+    "answer": "호루라기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이것이 쓰이기 전 심판은 흰 손수건을 흔들어 판정을 알렸습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "축구 심판이 처음 쓴 이것 … 런던 경찰청과도",
+     "difWhy": "심판·경찰 도구 — 일상",
+     "wor": 3,
+     "worWhy": "도구 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "축구 심판이 처음 쓴 이것 … 런던 경찰청과도",
+     "difWhy": "심판·경찰 도구 — 일상",
+     "wor": 3,
+     "worWhy": "도구 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "어떤 세부를 써도 '심판·경찰이 쓰는 도구' 라는 범주가 일상 수준으로 정답을 가리키고(손수건 대신 · 런던 경찰청 계약), 그것을 빼면 묻는 대상이 흐려짐"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "입으로 불어 날카로운 소리를 내는 작은 도구",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상 도구",
+     "piece": "f03",
+     "genPct": 100
+    },
+    "blind": null,
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Referee_(association_football)",
+     "https://en.wikipedia.org/wiki/Whistle"
+    ],
+    "facts": [
+     {
+      "claim": "심판이 처음 쓴 것은 버밍엄의 허드슨 제작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Referee_(association_football)",
+      "note": "The whistles that were first adopted by referees were made by Joseph Hudson at Mills Munitions in Birmingham, England."
+     },
+     {
+      "claim": "1884년 런던 경찰청(스코틀랜드 야드) 첫 계약",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Whistle",
+      "note": "Hudson demonstrated his whistle to Scotland Yard and was awarded his first contract in 1884."
+     },
+     {
+      "claim": "1936년에야 규칙에 언급",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Referee_(association_football)",
+      "note": "The whistle was not mentioned in the Laws of the Game until 1936"
+     },
+     {
+      "claim": "그전엔 흰 손수건",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Referee_(association_football)",
+      "note": "Before the introduction of the whistle, referees indicated their decisions by waving a white handkerchief."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "허드슨은 1884년 런던 경찰청과도 첫 계약을 맺었는데",
+    "targetWhy": "심판 장비의 기원 — 축구 애호가. 손수건(대체 관계로 바로 풀리는 단서)은 해설로 돌렸다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "\"심판이 쓴 것 + 경찰\" 에서 짐작할 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 호루라기 new",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "football/1#g019a-S1-20",
+   "seed": {
+    "subject": "주심",
+    "aspect": null,
+    "ref": "S1-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "초창기 축구에서는 두 팀이 한 명씩 낸 '엄파이어'에게 판정을 호소했고, 둘의 의견이 갈릴 때만 경기 시간을 재던 이 사람에게 물었습니다. 1891년 규칙 개편으로 이 사람이 판정의 중심이 되고 엄파이어는 선심이 되었는데, 이 사람은?",
+    "answer": "주심",
+    "acceptedAnswers": [
+     "심판",
+     "레퍼리"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 넘겨주기 \"주심\" → 심판 (스포츠) — 축구 referee 를 \"심판\" 으로도 흔히 부름, 영어 음차 \"레퍼리\" 도 받음",
+    "explanation": "오늘날 두 부심은 한쪽 터치라인을 절반씩 나눠 맡습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "1891년 규칙 개편으로 이 사람이 판정의 중심이 되고 엄파이어는 선심이 되었는데",
+     "difWhy": "판정 중심 심판 — 일상·방송 추론",
+     "wor": 3,
+     "worWhy": "규칙 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "1891년 규칙 개편으로 이 사람이 판정의 중심이 되고 엄파이어는 선심이 되었는데",
+     "difWhy": "판정 중심 심판 — 일상·방송 추론",
+     "wor": 3,
+     "worWhy": "규칙 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "묻는 대상이 '판정을 맡는 사람'이라 어떤 역사 세부를 넣어도 역할 서술로 풀린다 — 쉬운 단서를 빼면 묻는 대상이 흐려짐"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "축구 경기에서 휘슬을 불며 판정을 내리는 사람",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "스포츠 일상 용어",
+     "piece": "f06",
+     "genPct": 100
+    },
+    "blind": null,
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Referee_(association_football)"
+    ],
+    "facts": [
+     {
+      "claim": "두 팀 엄파이어 · 의견이 갈리면 시간 재던 레퍼리에게",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Referee_(association_football)",
+      "note": "Initially there existed two umpires, one per team, who could be appealed to with the referee (the game's timekeeper) being \"referred\" to if the umpires could not agree."
+     },
+     {
+      "claim": "1891년 개편 — 레퍼리가 중심, 엄파이어는 선심",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Referee_(association_football)",
+      "note": "The promotion of referees to the dominant position they occupy today, and the reformation of umpires into the linesmen role, occurred as part of a major restructuring of the laws in 1891."
+     },
+     {
+      "claim": "두 부심은 터치라인 절반씩",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Referee_(association_football)",
+      "note": "The two assistant referees are instructed by the referee to each patrol half of a single touchline on opposite sides of the field."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1891년 규칙 개편으로 이 사람이 판정의 중심이 되고 엄파이어는 선심이 되었는데",
+    "targetWhy": "심판 제도의 기원 — 축구 애호가",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "\"판정의 중심\" 에서 짐작할 수 있지만 엄파이어 제도는 애호가 지식",
+    "pairCheck": null,
+    "dbCheck": "answercheck 주심 · 심판 new",
+    "warn": []
+   }
+  }
+ ]
+}

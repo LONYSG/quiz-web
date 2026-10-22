@@ -1,0 +1,981 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "kr-geo/1",
+  "midKey": "kr-geo",
+  "subName": "행정구역·도시",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-geo/1#g019a-K1-01",
+   "seed": {
+    "subject": "충주",
+    "aspect": null,
+    "ref": "K1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 태조 때 충청도 감영이 이 고을에 놓였다가 1602년 공주로 옮겨 갔습니다. 대한제국 때는 충청북도 관찰부가 이곳에 있었지만 1908년 칙령으로 청주에 넘어간 이 고을은 어디일까요?",
+    "answer": "충주",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "고구려 때는 남부 거점 국원성이었고, 신라 경덕왕 때 중원경으로 이름이 바뀌었다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "충청북도 관찰부가 이곳에 있었지만 1908년 … 청주에",
+     "difWhy": "충북 관찰부 이전 — 지역사 애호가",
+     "wor": 3,
+     "worWhy": "지명 이름 기원 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "충청북도 관찰부가 이곳에 있었지만 1908년 … 청주에",
+     "difWhy": "충북 관찰부 이전 — 지역사 애호가",
+     "wor": 3,
+     "worWhy": "지명 이름 기원 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "경상도와 충청도 음성 등지에서 거둔 세곡을 관리하던 조창인 가흥창이 이 고을에 있었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "충청북도 북부 남한강 가의 도시",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "잘 알려진 도시",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "K1-01",
+     "key": "b003",
+     "hint": "경상도와 충청도 음성 등지에서 거둔 세곡을 관리하던 조창인 가흥창이 이 고을에 있었다.",
+     "guess": "충주",
+     "confidence": "high",
+     "hit": true,
+     "answer": "충주",
+     "first": {
+      "ref": "K1-01",
+      "key": "b170",
+      "hint": "한반도 한가운데쯤에 있다 하여 '중앙탑'이라 부르는 통일신라 최대의 석탑이 이 고을에 있다.",
+      "guess": "충주",
+      "confidence": "high",
+      "hit": true,
+      "answer": "충주"
+     }
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/충주시",
+     "https://ko.wikipedia.org/wiki/십삼도"
+    ],
+    "facts": [
+     {
+      "claim": "1395년 충청도 감영이 충주에 설치",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/충주시",
+      "note": "1395년 조선 태조 4년 충청도로 개칭, 충주에 도감영 설치"
+     },
+     {
+      "claim": "1602년 감영을 공주로 이전",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/충주시",
+      "note": "1602년 조선 선조 35년 충청도 감영을 공주로 이전"
+     },
+     {
+      "claim": "1908년 칙령으로 충북 관찰부가 충주에서 청주로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/십삼도",
+      "note": "융희 2년(1908년) 칙령 제30호 〈관찰도 위치 개정에 관한 건〉에 의해서 충청북도 관찰부가 충주에서 청주로 … 이전하였다."
+     },
+     {
+      "claim": "국원성 · 중원경",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/충주시",
+      "note": "475년 고구려 장수왕 63년 남부거점인 국원성(國原城) 설치 … 757년 신라 경덕왕 16년 중원경으로 개칭"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/가흥창"
+    ],
+    "hintNote": "\"세조 때 가흥역 근처로 조창의 자리를 이전하여 가흥창이라 부르기 시작했다.\" · \"경상도와 충청도 음성, 영동 등지에서 거둔 세곡을 관리했다.\" (충청북도 충주)",
+    "easiestCue": "1908년 칙령으로 충청북도 관찰부가 청주에 넘어간",
+    "targetWhy": "도청 이전 연혁은 교과서 밖 지역사 — 애호가. '충청=충주+청주' 를 아는 사람은 지우기로 풀 수 있어 경계",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "충청도 이름 유래(관심층)로 지우기 풀이가 되면 3",
+    "pairCheck": null,
+    "dbCheck": "answercheck 충주 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g019a-K1-02",
+   "seed": {
+    "subject": "춘천",
+    "aspect": null,
+    "ref": "K1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "신라 선덕여왕 때 '우수주'라 불렸던 고을입니다. 1888년 유수부로 격이 높아졌고, 2년 뒤 유수 민두호가 왕명에 따라 조정이 위급할 때 피난할 이궁을 지은 이 도시는 어디일까요?",
+    "answer": "춘천",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1895년 지방 제도 개편 때 원주 감영이 폐지되고 이곳에 관찰부가 들어서면서, 약 500년 동안 원주에 있던 감영이 이곳으로 옮겨진 셈이 되었다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'우수주' … 유수 민두호가 … 이궁을 지은",
+     "difWhy": "우수주·춘천 이궁 — 지역사 애호가",
+     "wor": 3,
+     "worWhy": "지역 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'우수주' … 유수 민두호가 … 이궁을 지은",
+     "difWhy": "우수주·춘천 이궁 — 지역사 애호가",
+     "wor": 3,
+     "worWhy": "지역 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "도시 한가운데에 진산(鎭山)인 봉의산이 솟아 있다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "강원특별자치도의 도청이 있는 호반 도시",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "잘 알려진 도시",
+     "piece": "f06",
+     "genPct": 98
+    },
+    "blind": {
+     "ref": "K1-02",
+     "key": "b024",
+     "hint": "도시 한가운데에 진산(鎭山)인 봉의산이 솟아 있다.",
+     "guess": "춘천",
+     "confidence": "high",
+     "hit": true,
+     "answer": "춘천"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/춘천시",
+     "https://encykorea.aks.ac.kr/Article/E0058016"
+    ],
+    "facts": [
+     {
+      "claim": "637년 우수주",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/춘천시",
+      "note": "637년(선덕여왕 6년)에 우수주(牛首州)라 부르고 군주(君主)를 두었다."
+     },
+     {
+      "claim": "1888년 유수부",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0058016",
+      "note": "1888년(고종 25)에 그 격을 높여 유수부로 개편되었다."
+     },
+     {
+      "claim": "2년 뒤 민두호가 왕명으로 피난용 이궁",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0058016",
+      "note": "2년 뒤에는 춘천유수였던 민두호(閔斗鎬)가 왕명에 따라 … 2년에 걸쳐 조정이 위급할 때 피난하기 위한 이궁을 지었다."
+     },
+     {
+      "claim": "1895년 원주 감영 폐지 · 관찰부 · 500년 감영 이전",
+      "where": "e",
+      "url": "https://encykorea.aks.ac.kr/Article/E0058016",
+      "note": "원주 감영을 폐지하고 춘천과 강릉에는 관찰부(觀察府)를 설치하게 되었다. … 약 500년 동안 원주에 있던 감영(監營)이 춘천으로 옮겨지게 되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%B6%98%EC%B2%9C%EC%8B%9C"
+    ],
+    "hintNote": "시의 중앙부에는 춘천의 진산(鎭山)인 봉의산(鳳儀山)이 솟아 있다.",
+    "easiestCue": "1888년 유수부로 격이 높아졌고 … 피난할 이궁을 지은",
+    "targetWhy": "춘천 이궁 · 유수부는 교과서에 없는 지역사 세부 — 애호가. 도청 · 소양강 같은 쉬운 단서는 뺐다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대상은 누구나 알고 단서는 교과서 밖",
+    "pairCheck": null,
+    "dbCheck": "answercheck 춘천 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g019a-K1-03",
+   "seed": {
+    "subject": "부천",
+    "aspect": null,
+    "ref": "K1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1914년 두 고을의 이름에서 한 글자씩 따 새 군 이름을 지었고, 1973년 그 군의 한 읍이 같은 이름의 시가 되었습니다. 고구려 때 '주부토'라는 이름으로 문헌에 처음 나오는 이 경기도 시는?",
+    "answer": "부천",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "복숭아가 많이 나 예로부터 '복사골'로 불렸고, 시의 나무와 꽃도 복숭아나무와 복숭아꽃이다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 1914년 두 고을 이름에서 한 글자씩 + 1973년 시",
+     "difWhy": "부평+인천 합성 지명 — 지리 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 지명 유래",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 지역 국번이 032 + '032 더비' 경기도 시",
+     "difWhy": "032 더비 — 축구 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "지명 유래 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1914년 두 고을의 이름에서 한 글자씩 따 새 군 이름을 지었고, 1973년 그 군의 소사읍이 같은 이름의 시가 되었습니다. 지역 국번이 032라 인천 구단과의 축구 경기를 '032 더비'라 부르는 이 경기도 시는?",
+     "beforeExplanation": "이름은 부군면 통폐합 때 합친 부평군과 인천부에서 한 글자씩 따온 것이다.",
+     "removedCue": "지역 국번 032 · '032 더비'(축구 관심층) · 소사읍 이름",
+     "addedCue": "고구려의 옛 이름 '주부토'",
+     "why": "축구 더비와 소사읍 지명을 빼고 지명 연혁의 깊은 세부로"
+    },
+    "generalHint": "2001년 문을 연 한국만화박물관이 이 시 영상문화단지 안에 있다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "서울과 인천 사이에 있는 경기도의 시",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "수도권 도시",
+     "piece": "f08",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "K1-03",
+     "key": "b027",
+     "hint": "2001년 문을 연 한국만화박물관이 이 시 영상문화단지 안에 있다.",
+     "guess": "부천",
+     "confidence": "high",
+     "hit": true,
+     "answer": "부천"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/부천시"
+    ],
+    "facts": [
+     {
+      "claim": "1914년 두 고을 이름에서 한 글자씩",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/부천시",
+      "note": "부천이란 지명은 1914년에 부군면 통폐합으로 부평군과 인천부의 비도시 지역을 합쳐서 부천군이 설치될 당시 부평의 '부'와 인천의 '천'을 따서 붙인 것이다."
+     },
+     {
+      "claim": "1973년 소사읍이 시로 승격",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/부천시",
+      "note": "1973년 7월에 부천군 소사읍이 부천시로 승격하였고"
+     },
+     {
+      "claim": "475년 고구려의 '주부토'로 문헌에 처음 등장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EB%B6%80%EC%B2%9C%EC%8B%9C",
+      "note": "475년(장수왕 63) 고구려가 백제를 공격하여 수도인 한성을 함락시키고 한강 일대를 차지하면서 고구려의 주부토(主夫吐)로 기록되어 문헌에 최초로 등장한다."
+     },
+     {
+      "claim": "복사골 별칭 · 시목 복숭아나무 · 시화 복숭아꽃",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/%EB%B6%80%EC%B2%9C%EC%8B%9C",
+      "note": "부천은 복숭아가 많이 난다고 하여 예로부터 '복사골'이라는 별칭으로 불려 왔는데, 이 때문에 부천시는 복숭아를 상징물로 지정하였고 시목(市木)도 복숭아나무, 시화(市花)도 복숭아꽃이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%ED%95%9C%EA%B5%AD%EB%A7%8C%ED%99%94%EB%B0%95%EB%AC%BC%EA%B4%80"
+    ],
+    "hintNote": "한국만화박물관은 경기도 부천시 원미구 영상문화단지 안에 있는 박물관이다. / 2001년 10월 12일 ... 개관했다.",
+    "easiestCue": "1914년 두 고을 이름에서 한 글자씩 따 지은 군 이름",
+    "targetWhy": "지명의 옛 이름과 바뀐 사연 — 교과서 밖 지리(경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름 짜임은 해설로 돌려 '아 그렇구나' 를 남겼다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 부천 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g019a-K1-04",
+   "seed": {
+    "subject": "시흥",
+    "aspect": null,
+    "ref": "K1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1795년 금천현이 이 이름으로 바뀌었고, 옛 고을의 중심은 오늘날 서울 금천구 자리였습니다. 1989년 소래읍·수암면·군자면을 묶어 시가 되며 이 이름을 물려받았지만, 옛 고을과는 다른 곳에 있는 경기도의 시는?",
+    "answer": "시흥",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "옛 시흥 고을은 지금의 서울 금천구·영등포구·관악구 일대와 광명시 등을 아우르던 곳이다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1989년 소래읍·수암면·군자면을 묶어 시가 되며",
+     "difWhy": "소래·군자 통합 시 — 지역 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "지명 이동 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1989년 소래읍·수암면·군자면을 묶어 시가 되며",
+     "difWhy": "소래·군자 통합 시 — 지역 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "지명 이동 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "조선 강희맹이 명나라에서 가져온 연꽃 씨를 심어 퍼뜨렸다는 연못 관곡지가 이 시에 있다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "서해 오이도·월곶이 있는 경기도 서부의 시",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "수도권 도시",
+     "piece": "f03",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "K1-04",
+     "key": "b266",
+     "hint": "조선 강희맹이 명나라에서 가져온 연꽃 씨를 심어 퍼뜨렸다는 연못 관곡지가 이 시에 있다.",
+     "guess": "시흥",
+     "confidence": "high",
+     "hit": true,
+     "answer": "시흥"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/시흥군",
+     "https://ko.wikipedia.org/wiki/시흥시"
+    ],
+    "facts": [
+     {
+      "claim": "1795년 금천현이 시흥현으로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/시흥군",
+      "note": "1795년 : 시흥현(始興縣)으로 개칭되었고, 담당 관리는 현감에서 현령으로 승격되었다."
+     },
+     {
+      "claim": "옛 읍치에 금천구",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/시흥군",
+      "note": "1995년 3월 1일 : 옛 시흥군(1911년 이전)의 읍치에 서울특별시 금천구가 설치되었다."
+     },
+     {
+      "claim": "1989년 소래읍·수암면·군자면으로 시 설치, 이름은 물려받았으나 다른 지역",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/시흥시",
+      "note": "1989년 1월 1일 : 시흥군 소래읍, 수암면, 군자면 일원을 관할로 시흥시가 설치되었다. / 1989년 1월 1일에 시로 승격한 현재의 시흥시는 시흥군의 이름을 물려받았으나, 조선 시대의 전통적·역사적인 시흥군 지역(현재의 서울특별시 금천구·영등포구·관악구 및 동작구 일부, 구로구 동부, 경기도 광명시)과는 다른 지역이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EA%B4%80%EA%B3%A1%EC%A7%80"
+    ],
+    "hintNote": "이 연못은 조선 전기의 농학자인 강희맹이 세조 9년 명나라에 다녀와 중국 남경에 있는 전당지에서 연꽃 씨를 채취해, 지금의 시흥시 하중동 관곡에 있는 연못에 씨를 심어 재배하여 널리 퍼지게 되었고",
+    "easiestCue": "옛 고을의 중심은 오늘날 서울 금천구 자리였습니다",
+    "targetWhy": "시흥 이름이 옮겨 간 내력은 교과서 밖 — 서울 시흥동을 아는 관심층이 떠올릴 수 있어 경계 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 지명의 '이름만 옮겨 왔다' 는 뜻밖의 사실",
+    "pairCheck": null,
+    "dbCheck": "answercheck 시흥 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g019a-K1-05",
+   "seed": {
+    "subject": "강서구",
+    "aspect": null,
+    "ref": "K1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1963년 경기도 김포군 양동면과 양서면이 서울 영등포구에 편입되었고, 1977년 그 일대가 영등포구에서 갈라져 새 자치구가 되었습니다. 양천향교터와 양천고성지가 남아 있는 서울의 이 자치구는?",
+    "answer": "강서구",
+    "acceptedAnswers": [
+     "강서"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "질문이 '서울의 자치구' 로 한정해 '강서' 만 쳐도 같은 대상 — 위키 문서 제목 '강서구 (서울특별시)'",
+    "explanation": "김포국제공항이 이름과 달리 서울특별시 강서구에 있는 것도 이 일대가 본래 김포군 땅이었기 때문이다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 1977년 영등포구에서 갈라진 자치구 + 양천향교터",
+     "difWhy": "양천향교 있는 강서구 — 서울 지리 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 행정구역 변천",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1988년 목동·신월동·신정동을 양천구로 떼어 준",
+     "difWhy": "양천구 분구 모구 — 서울 관심 있는 사람 (경계 4)",
+     "wor": 3,
+     "worWhy": "김포공항 소재 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1963년 경기도 김포군 양동면과 양서면이 서울 영등포구에 편입되었고, 1977년 그 일대가 영등포구에서 갈라져 새 자치구가 되었습니다. 1988년 목동·신월동·신정동을 양천구로 떼어 준 서울의 이 자치구는?",
+     "beforeExplanation": null,
+     "removedCue": "1988년 목동·신월동·신정동을 양천구로 떼어 준",
+     "addedCue": "양천향교터·양천고성지가 이 구에 있음",
+     "why": "양천구 분구 사실을 빼고, 이름과 달리 양천구가 아닌 이 구에 남은 옛 양천의 유적으로 바꿈"
+    },
+    "generalHint": "본관이 양천인 『동의보감』의 허준을 기리는 구암공원이 이 자치구 가양동에 있다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "서울 서쪽 끝 한강 남쪽의 자치구",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "서울 자치구",
+     "piece": "f02",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "K1-05",
+     "key": "b230",
+     "hint": "본관이 양천인 『동의보감』의 허준을 기리는 구암공원이 이 자치구 가양동에 있다.",
+     "guess": "강서구",
+     "confidence": "high",
+     "hit": true,
+     "answer": "강서구"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/강서구_(서울특별시)",
+     "https://ko.wikipedia.org/wiki/김포국제공항"
+    ],
+    "facts": [
+     {
+      "claim": "1963년 김포군 양동면·양서면 영등포구 편입",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강서구_(서울특별시)",
+      "note": "1963년 1월 1일 : 양동면(陽東面), 양서면(陽西面) 및 부천군 오정면 오곡리, 오쇠리를 서울특별시 영등포구에 편입"
+     },
+     {
+      "claim": "1914년 김포군 양동면·양서면",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강서구_(서울특별시)",
+      "note": "1914년 4월 1일 : 경기도 김포군 양동면, 양서면"
+     },
+     {
+      "claim": "1977년 영등포구에서 분리 신설",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강서구_(서울특별시)",
+      "note": "1977년 9월 1일 : 영등포구 염창동, 목동, 등촌동, 화곡동 … 일원 및 신정동 일부가 분리, 강서구로 신설되었으며"
+     },
+     {
+      "claim": "김포국제공항은 서울 강서구에 있다",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/김포국제공항",
+      "note": "김포국제공항(金浦國際空港 …)은 서울특별시 강서구에 있는 국제공항으로"
+     },
+     {
+      "claim": "문화재 — 서울 양천고성지(사적 제372호) · 양천향교터",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강서구_(서울특별시)",
+      "note": "서울 양천고성지 - 사적 제372호 / 양천향교터 - 서울특별시 기념물 제8호"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%ED%97%88%EC%A4%80"
+    ],
+    "hintNote": "본관은 양천이다. / 서울 강서구 가양동에는 그를 기리기 위한 공원인 구암공원이 조성되어 있다.",
+    "easiestCue": "1963년 김포군 양동·양서면 서울 편입 · 1977년 영등포구에서 분리",
+    "targetWhy": "옛 양천현 유적이 강서구에 있다는 것은 서울 지리 애호가 세부 — 4(경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "연혁 맞히기에 가까워 알 가치가 3 에 걸칠 수 있다 — 해설에 공항 연결로 이야깃거리를 둠",
+    "pairCheck": null,
+    "dbCheck": "answercheck 강서구 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g019a-K1-06",
+   "seed": {
+    "subject": "철원",
+    "aspect": null,
+    "ref": "K1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1945년 9월 이 고장의 읍은 북한 쪽 강원도 인민위원회 소재지가 되어 시로 승격했다가, 이듬해 위원회가 원산으로 옮겨 가며 다시 군에 속했습니다. 광복 당시와 달리 지금은 군청이 갈말읍에 있는 이 강원도의 군은?",
+    "answer": "철원",
+    "acceptedAnswers": [
+     "철원군"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "같은 대상의 행정 이름 — 위키 문서 제목 '철원군'",
+    "explanation": "1953년 정전 때 대한민국이 이 군의 철원읍·갈말면·동송면 등을 되찾았다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "지금은 군청이 갈말읍에 있는 이 강원도의 군",
+     "difWhy": "갈말읍 군청 — 지리 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 분단 지역사",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1953년 정전 때 남쪽이 일부를 되찾은 이 강원도의 군",
+     "difWhy": "수복 지구 강원 군 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "분단 지역 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "광복 직후인 1945년 9월, 이 고장의 읍은 북한 쪽 강원도 인민위원회 소재지가 되어 시로 승격했다가 이듬해 위원회가 원산으로 옮겨 가며 다시 군에 속했습니다. 1953년 정전 때 남쪽이 일부를 되찾은 이 강원도의 군은?",
+     "beforeExplanation": "광복 당시 군청은 철원읍에 있었지만, 오늘날 군청은 갈말읍 신철원리에 있다.",
+     "removedCue": "1953년 정전 때 남쪽이 일부를 되찾은(수복 지구 — 관심층 · 해설로 옮김)",
+     "addedCue": "지금 군청 소재지 갈말읍(해설에서 옮김)",
+     "why": "수복 지구라는 범주 단서를 빼고 행정 연혁 세부 둘로"
+    },
+    "generalHint": "소설가 이태준과 야구인 이만수가 이 고장 출신이다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "휴전선에 맞닿은 강원도 서북부의 군",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "잘 알려진 접경 지역",
+     "piece": "f04",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "K1-06",
+     "key": "b144",
+     "hint": "소설가 이태준과 야구인 이만수가 이 고장 출신이다.",
+     "guess": "철원",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "철원"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/철원군"
+    ],
+    "facts": [
+     {
+      "claim": "1945년 9월 강원도 인민위원회 소재지 · 철원시 승격",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/철원군",
+      "note": "1945년 9월 : 철원읍이 소비에트 민정청의 강원도 인민위원회 소재지가 되어 철원시로 승격하였다."
+     },
+     {
+      "claim": "1946년 원산으로 이전 · 군에 환원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/철원군",
+      "note": "1946년 9월 5일: … 강원도 인민위원회가 원산시로 이전하고, 철원읍이 군에 환원되었다."
+     },
+     {
+      "claim": "1953년 일부 수복",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/철원군",
+      "note": "1953년 7월 27일: 한국 전쟁의 결과, 철원읍, 갈말면, 동송면, 신서면, 묘장면, 어운면과 인목면 남반부 … 를 대한민국이 수복하였다."
+     },
+     {
+      "claim": "군청 철원읍 → 갈말읍",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/철원군",
+      "note": "광복 당시 … 군청 소재지는 철원읍 사요리였다.(현재 철원군청 소재지는 갈말읍 신철원리)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%B2%A0%EC%9B%90%EA%B5%B0"
+    ],
+    "hintNote": "== 출신 인물 == ... 이태준 : 소설가 ... 이만수 : 전 야구선수, 전 야구감독",
+    "easiestCue": "1945년 9월 북한 쪽 강원도 인민위원회 소재지",
+    "targetWhy": "행정구역 연혁의 교과서 밖 세부(경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "노동당사 같은 대표 단서를 빼고 행정 연혁의 뜻밖의 사실만 남김",
+    "pairCheck": null,
+    "dbCheck": "answercheck 철원 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g019a-K1-07",
+   "seed": {
+    "subject": "을지로",
+    "aspect": null,
+    "ref": "K1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 시대 이곳 언덕은 진흙이 구릿빛을 띠어 '구리개'라 불렸고, 1887년 제중원이 재동에서 이곳으로 넓혀 옮겨 왔습니다. 일제강점기에는 '황금정'이라 불린 서울 중구의 이 도로는?",
+    "answer": "을지로",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1946년 일본식 동명을 고칠 때 을지문덕 장군의 성 '을지'를 따 지금 이름이 되었는데, 당시 화교의 성장을 의식한 것이라고 한다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'구리개' … 일제강점기에는 '황금정'",
+     "difWhy": "황금정 옛 이름 — 서울 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "지명 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'구리개' … 일제강점기에는 '황금정'",
+     "difWhy": "황금정 옛 이름 — 서울 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "지명 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "1883년 지금의 이 길 2가에 박문국이 세워졌고, 그 뒤 이 일대 골목에 인쇄업이 몰렸다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "서울 도심을 동서로 잇는 큰길이자 동 이름",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "서울 대표 거리",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "K1-07",
+     "key": "b018",
+     "hint": "1883년 지금의 이 길 2가에 박문국이 세워졌고, 그 뒤 이 일대 골목에 인쇄업이 몰렸다.",
+     "guess": "을지로",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "을지로"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/을지로"
+    ],
+    "facts": [
+     {
+      "claim": "구리개 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/을지로",
+      "note": "진흙으로 된 언덕이 구리빛을 띄어 구리개라고 불렀다."
+     },
+     {
+      "claim": "1887년 제중원이 재동에서 구리개로 확장 이전",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/을지로",
+      "note": "제중원은 처음엔 재동에 있었지만 1887년 의원들이 밀집해 있던 구리개로 확장 이전하였다."
+     },
+     {
+      "claim": "황금정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/을지로",
+      "note": "일본인들은 구리개를 황금정(일본어: 黃金町 고카네마치)이라 불렀다."
+     },
+     {
+      "claim": "중구의 도로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/을지로",
+      "note": "을지로(乙支路)는 서울특별시 중구 소공동 97-3에서 시작하여 중구 신당동 224-2에 이르는 도로이자 법정동 이름이다."
+     },
+     {
+      "claim": "1946년 을지문덕 성씨 · 화교 의식",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/을지로",
+      "note": "1946년 일본식 동명(洞名) 정리 사업에 따라 고구려 을지문덕(乙支文德) 장군의 성씨인 을지(乙支)를 따서 개정되었다. 을지문덕의 이름을 도로명으로 삼은 것은 당시 화교의 성장을 의식한 것이라고 한다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%9D%84%EC%A7%80%EB%A1%9C"
+    ],
+    "hintNote": "1883년 지금의 을지로2가에 박문국이 세워졌다. ... 충무로에서 을지로로 이어지는 길고 좁은 골목은 각종 인쇄업이 집중한 인쇄골목이 되었다.",
+    "easiestCue": "일제강점기에는 '황금정'이라 불린 서울 중구의 이 도로",
+    "targetWhy": "구리개 · 황금정 옛 이름은 서울 지명 애호가 — 교과서는 제중원 위치를 다루지 않는다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 길 이름의 옛 이름과 바뀐 사연",
+    "pairCheck": null,
+    "dbCheck": "answercheck 을지로 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g019a-K1-08",
+   "seed": {
+    "subject": "잠실",
+    "aspect": null,
+    "ref": "K1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이곳은 본래 오늘날 광진구 자양동에 붙은 땅이었는데, 큰 홍수로 새 물길이 생기며 떨어져 나갔습니다. 1914년 행정구역으로는 경기도 고양군 뚝도면에 속했던 서울의 이 동네는?",
+    "answer": "잠실",
+    "acceptedAnswers": [
+     "잠실동"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "같은 대상의 법정동 이름 — 위키 '잠실섬' 문서 '송파구 잠실동과 신천동 일대'",
+    "explanation": "섬 남쪽을 흐르던 한강 본류 송파강은 1971년 매립되어 사라졌고, 그 자리에 석촌호수가 남았다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "자양동에 붙은 땅이었는데, 큰 홍수로 새 물길이 생기며 떨어져",
+     "difWhy": "섬이 된 송파 동네 — 서울 지리 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 지형 변천",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "한강의 섬이 되었습니다 … 1970년대 개발로 다시 육지",
+     "difWhy": "섬이던 강남 동네 — 서울 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "지역 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이곳은 본래 오늘날 광진구 자양동에 붙은 땅이었는데, 큰 홍수로 새 물길이 생기며 한강의 섬이 되었습니다. 1914년 경기도 고양군 뚝도면에 속했다가 1970년대 개발로 다시 육지가 된 서울의 이 동네는?",
+     "beforeExplanation": null,
+     "removedCue": "한강의 섬이 되었습니다 · 1970년대 개발로 다시 육지",
+     "addedCue": "(새 단서 없음 — 섬·매립 단서를 감춤)",
+     "why": "섬이던 동네·개발(서울 관심층 상식)을 빼고 옛 지형·행정 세부로"
+    },
+    "generalHint": "1949년 서울시가 넓어지며 고양군 뚝도면이 통째로 편입되자, 이곳은 성동구에 속하게 되었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "서울 송파구의 롯데월드·종합운동장 일대 동네",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "서울의 대표 동네",
+     "piece": "f01",
+     "genPct": 98
+    },
+    "blind": {
+     "ref": "K1-08",
+     "key": "b093",
+     "hint": "1949년 서울시가 넓어지며 고양군 뚝도면이 통째로 편입되자, 이곳은 성동구에 속하게 되었다.",
+     "guess": "성수동",
+     "confidence": "mid",
+     "hit": false,
+     "answer": "잠실"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/잠실섬",
+     "https://ko.wikipedia.org/wiki/송파강"
+    ],
+    "facts": [
+     {
+      "claim": "본래 자양동에 붙은 육지 · 홍수로 분리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/잠실섬",
+      "note": "본래 광진구 자양동에 붙은 육지였으나 큰 홍수로 신천강이 생겨나 육지와 영구히 분리되고, 기존의 한강은 송파강이 되었다."
+     },
+     {
+      "claim": "1914년 고양군 뚝도면 잠실리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/잠실섬",
+      "note": "1914년의 행정구역상 잠실섬은 경기도 고양군 뚝도면 잠실리와 신천리"
+     },
+     {
+      "claim": "송파강 1971 매립 · 석촌호수",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/송파강",
+      "note": "송파강(松坡江)은 1971년까지 한강 중류 유역의 잠실동 부근에 있던 한강의 본류이다. 현재는 매립되어 사라졌다. 그자리에 석촌호수가 남아있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%9E%A0%EC%8B%A4%EB%8F%99"
+    ],
+    "hintNote": "광복 후 1949년 대통령령 제159호에 의해 서울특별시가 확장됨에 따라 고양군 독도면 전부가 서울시에 편입됨으로써, 이 지역은 성동구에 속하게 되고",
+    "easiestCue": "본래 오늘날 광진구 자양동에 붙은 땅이었는데, 큰 홍수로 새 물길이 생기며 떨어져 나갔습니다",
+    "targetWhy": "지명의 옛 지형 — 지역사 애호가(경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "강 북쪽 땅이 섬을 거쳐 강남이 된 뜻밖의 내력",
+    "pairCheck": null,
+    "dbCheck": "answercheck 잠실 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-geo/1#g019a-K1-09",
+   "seed": {
+    "subject": "진해",
+    "aspect": null,
+    "ref": "K1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 고장의 이름은 원래 오늘날 창원시 마산합포구의 진동·진북·진전면 일대에 있던 군의 이름이었고, 그 옛 지역은 지금 흔히 '삼진 지역'이라 부릅니다. 1912년 웅중면 전부와 웅서면 일부를 합친 면 이름에서 지금 이름이 비롯한 이 고장은?",
+    "answer": "진해",
+    "acceptedAnswers": [
+     "진해구",
+     "진해시"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "같은 대상의 지금 행정 이름(창원시 진해구 — 위키 문서 제목)과 옛 시 이름(진해시 — 같은 문서 '벚꽃으로 유명한 진해시는')",
+    "explanation": "1952년 북원로터리에 대한민국 최초의 이순신 장군 동상이 세워졌고, 그 앞에서 지내 온 추모제가 계기가 되어 1963년부터 군항제가 열렸다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "오늘날 … 진동·진북·진전면 일대 … '삼진 지역'",
+     "difWhy": "삼진 옛 군명 — 지리 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 지명 유래",
+     "acc": 5,
+     "accWhy": "한국 지리 — 초중 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1952년 대한민국 최초의 이순신 장군 동상이 북원로터리에",
+     "difWhy": "첫 이순신 동상 군항 — 관심 있는 사람 (경계 4)",
+     "wor": 3,
+     "worWhy": "지역 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1912년 웅천군 웅중면 전부와 웅서면 일부를 합쳐 만든 면의 이름에서 지금 이름이 비롯했습니다. 1952년 대한민국 최초의 이순신 장군 동상이 북원로터리에 세워진 이 고장은 어디일까요?",
+     "beforeExplanation": "이 동상 앞에서 해마다 지내 온 추모제가 계기가 되어 1963년부터 군항제가 열리기 시작했다.",
+     "removedCue": "1952년 대한민국 최초의 이순신 장군 동상이 북원로터리에",
+     "addedCue": "이름을 옮겨 온 옛 군(삼진 지역)",
+     "why": "첫 이순신 동상(군항제 상식)을 빼고 지명이 옮겨 온 사연으로"
+    },
+    "generalHint": "1995년 가덕도 등 이 고장 웅동2동의 일부가 부산 강서구로 넘어갔다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "해군 기지와 벚꽃 축제로 이름난 창원의 옛 시",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "진해 군항제로 유명",
+     "piece": "f09",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "K1-09",
+     "key": "b051",
+     "hint": "1995년 가덕도 등 이 고장 웅동2동의 일부가 부산 강서구로 넘어갔다.",
+     "guess": "진해",
+     "confidence": "high",
+     "hit": true,
+     "answer": "진해"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/진해구"
+    ],
+    "facts": [
+     {
+      "claim": "1912년 웅중면 전부·웅서면 일부 → 진해면",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/진해구",
+      "note": "지금의 진해는 본래 웅천군이었는데, 이 지역은 1912년에 웅중면 전부와 웅서면의 일부가 합쳐져 진해면(鎭海面)으로 개편되면서부터 진해로 불리기 시작했다."
+     },
+     {
+      "claim": "1952년 최초 이순신 동상 북원로터리",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/진해구",
+      "note": "진해군항제는 1952년 4월 13일, 대한민국 최초로 충무공 이순신 장군의 동상을 진해 북원로터리에 세우고 추모제를 거행하여 온 것이 계기가 되며, 1963년에 축제를 개최하기 시작하였다."
+     },
+     {
+      "claim": "이름은 삼진 지역에 있던 군에서 유래 · 그 옛 지역은 구분해 삼진 지역이라 부름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EC%A7%84%ED%95%B4%EA%B5%AC",
+      "note": "진해(鎭海)란 이름은 삼진(三鎭) 지역에 있었던 진해군에서 유래하였다. … 이후 본래의 진해군 지역(진동면·진북면·진전면)은 해군항이 있는 진해와 구분하기 위하여 편의상 '삼진(三鎭) 지역'으로 불리고 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%A7%84%ED%95%B4%EA%B5%AC"
+    ],
+    "hintNote": "1995년 3월 1일: 웅동2동(가덕도등) 일부가 부산 강서구로 편입되었다.",
+    "easiestCue": "그 옛 지역은 지금 흔히 '삼진 지역'이라 부릅니다",
+    "targetWhy": "지명의 옛 이름과 바뀐 사연 — 지역사 애호가(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "이순신 + 해군 연상으로 관심층이 닿을 수 있다",
+    "pairCheck": null,
+    "dbCheck": "answercheck 진해 new",
+    "warn": [
+     "단정어 최초"
+    ]
+   }
+  }
+ ]
+}

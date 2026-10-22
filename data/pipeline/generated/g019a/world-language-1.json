@@ -1,0 +1,243 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "world-language/1",
+  "midKey": "world-language",
+  "subName": "외래어 어원",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-language/1#g019a-L1-09",
+   "seed": {
+    "subject": "케첩",
+    "aspect": null,
+    "ref": "L1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국에서는 1600년대부터 버섯을 주재료로 만들었고, 굴이나 호두로 만든 것도 있었습니다. 이름은 중국 푸젠 지방 민난어에서 절인 생선이나 조개의 국물을 가리키던 말에서 왔다는 설이 있는 이 소스는 무엇일까요?",
+    "answer": "케첩",
+    "acceptedAnswers": [
+     "케찹"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "케찹 — 국립국어원 1999 칼럼이 상표마다 '케챱·케첲' 등으로 갈려 쓰인다고 지적, 일상에서 '케찹'이 흔함(WebSearch 1회) · 표준 표기는 케첩",
+    "explanation": "토마토로 만드는 조리법은 1812년 미국의 제임스 미즈가 처음 펴낸 것으로 알려져 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "민난어에서 절인 생선이나 조개의 국물을 가리키던 말",
+     "difWhy": "소스 이름 어원 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "음식 어원 이야깃거리",
+     "acc": 3,
+     "accWhy": "언어·어원 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "민난어에서 절인 생선이나 조개의 국물을 가리키던 말",
+     "difWhy": "소스 이름 어원 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "음식 어원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "외래어 어원 소분류 — 어원(민난어)이 곧 묻는 사실이라 빼면 소분류를 벗어나고, 남은 단서(토마토 이전 재료)는 모두 같은 어원 문서의 첫 줄 사실이라 더 깊은 세부가 없다"
+    },
+    "generalHint": "1817년의 한 토마토 조리법에는 안초비와, 붉은 색소를 내는 연지벌레가 함께 들어갔다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "감자튀김에 찍어 먹는 붉은 소스",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상 소스",
+     "piece": "f06",
+     "genPct": 100
+    },
+    "blind": {
+     "ref": "L1-09",
+     "key": "b305",
+     "hint": "1817년의 한 토마토 조리법에는 안초비와, 붉은 색소를 내는 연지벌레가 함께 들어갔다.",
+     "guess": "케첩",
+     "confidence": "high",
+     "hit": true,
+     "answer": "케첩"
+    },
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ketchup",
+     "https://www.korean.go.kr/nkview/nknews/199908/13_5.htm"
+    ],
+    "facts": [
+     {
+      "claim": "영국에서 1600년대부터 버섯이 주재료",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ketchup",
+      "note": "In the United Kingdom, from the 1600s ketchup was prepared with mushrooms as a primary ingredient, rather than tomatoes."
+     },
+     {
+      "claim": "초기 조리법에 굴·호두 등",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ketchup",
+      "note": "early recipes for different varieties contained mushrooms, oysters, mussels, egg whites, grapes, or walnuts, among other ingredients."
+     },
+     {
+      "claim": "푸젠 민난어 '절인 생선·조개 국물'에서 왔다는 설",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ketchup",
+      "note": "Another theory is that the word derives from one of two words from Hokkien of the Fujian region of coastal southern China ... where it meant the brine of pickled fish or shellfish"
+     },
+     {
+      "claim": "1812 제임스 미즈 첫 토마토 케첩 조리법",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ketchup",
+      "note": "James Mease published the first known tomato ketchup recipe in 1812."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ketchup"
+    ],
+    "hintNote": "An early recipe for \"tomato catsup\" from 1817 includes anchovies and cochineal (a species of insect used for carmine dye).",
+    "easiestCue": "이름은 중국 푸젠 지방 민난어에서 절인 생선이나 조개의 국물을 가리키던 말에서 왔다는 설",
+    "targetWhy": "케첩의 민난어 어원·버섯 케첩은 요리·어원 애호가 세부(방송에서 가끔) — 4 경계",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "국민 소스, 단서는 교과서 밖 유래",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-language/1#g019a-L1-10",
+   "seed": {
+    "subject": "점보",
+    "aspect": null,
+    "ref": "L1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1865년 파리 동물원에서 런던 동물원으로 옮겨 온 아프리카코끼리로, 1882년 미국 흥행사 바넘에게 팔릴 때 학생 10만 명이 빅토리아 여왕에게 팔지 말아 달라는 편지를 보냈습니다. 1885년 캐나다 온타리오주 세인트토머스에서 숨진 이 코끼리의 이름은?",
+    "answer": "점보",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 이름은 뒤에 '크다'는 뜻의 흔한 영어 낱말이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "미국 흥행사 바넘에게 팔릴 때 … 이 코끼리",
+     "difWhy": "바넘이 산 런던 코끼리 — 어원 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — '점보' 어원",
+     "acc": 3,
+     "accWhy": "언어·어원 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 아프리카코끼리 + 이름이 뒤에 영어의 흔한 낱말",
+     "difWhy": "'아주 큰' 뜻 된 코끼리 이름 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "낱말 어원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1865년 파리 동물원에서 런던 동물원으로 옮겨 온 아프리카코끼리는 1882년 미국 흥행사 바넘에게 2,000파운드에 팔렸습니다. 이름이 뒤에 영어의 흔한 낱말이 된 이 코끼리의 이름은 무엇일까요?",
+     "beforeExplanation": "1884년에는 바넘의 코끼리 21마리와 함께 브루클린 다리를 건너, 다리가 안전하다는 것을 보여 주었습니다.",
+     "removedCue": "이름이 뒤에 영어의 흔한 낱말이 됨(엮으면 '아주 큰' — 해설로 옮김)",
+     "addedCue": "학생 10만 명의 편지 · 1885년 세인트토머스에서 죽음",
+     "why": "낱말 뜻으로 바로 풀리는 단서를 빼고 코끼리의 생애 세부로"
+    },
+    "generalHint": "이 코끼리는 100년 넘게 미국 터프츠 대학의 마스코트로 쓰여 왔다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "19세기 런던 동물원의 유명한 아프리카코끼리",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "점보라는 말은 익숙하나 코끼리 이름인 줄은 일부만 앎",
+     "piece": "f08",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "L1-10",
+     "key": "b251",
+     "hint": "이 코끼리는 100년 넘게 미국 터프츠 대학의 마스코트로 쓰여 왔다.",
+     "guess": "점보",
+     "confidence": "high",
+     "hit": true,
+     "answer": "점보"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Jumbo"
+    ],
+    "facts": [
+     {
+      "claim": "1865년 파리 자르댕 데 플랑트 → 런던 동물원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jumbo",
+      "note": "Jumbo was exported to Jardin des Plantes, a zoo in Paris, and then transferred in 1865 to London Zoo in England."
+     },
+     {
+      "claim": "바넘에게 2,000파운드에 팔림, 1882년 3월 미국으로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jumbo",
+      "note": "Barnum of the Barnum & Bailey Circus for £2,000 (US$10,000). ... Barnum, who took him to the United States for exhibition in March 1882."
+     },
+     {
+      "claim": "이름이 일반어 jumbo 가 됨",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jumbo",
+      "note": "The elephant's name spawned the common word \"jumbo\", meaning large in size."
+     },
+     {
+      "claim": "학생 10만 명이 빅토리아 여왕에게 팔지 말라는 편지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jumbo",
+      "note": "100,000 school children wrote to Queen Victoria begging her not to sell the elephant."
+     },
+     {
+      "claim": "1885년 9월 15일 온타리오주 세인트토머스에서 죽음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jumbo",
+      "note": "Jumbo (December 25, 1860 – September 15, 1885) … Thomas, Ontario, Canada, on September 15, 1885."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jumbo"
+    ],
+    "hintNote": "\"Jumbo\" has been the mascot of Tufts University for over one hundred years.",
+    "easiestCue": "1882년 미국 흥행사 바넘에게 팔린 런던 동물원의 아프리카코끼리",
+    "targetWhy": "외래어 어원 뒤의 실화 세부 — 애호가(경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 외래어의 뜻밖의 유래",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

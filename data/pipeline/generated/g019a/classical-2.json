@@ -1,0 +1,329 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "classical/2",
+  "midKey": "classical",
+  "subName": "작품·악곡",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "classical/2#g019a-A1-11",
+   "seed": {
+    "subject": "위풍당당 행진곡",
+    "aspect": null,
+    "ref": "A1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1901년 런던 프롬스 공연에서 이 곡 1번을 들은 청중이 일어나 소리를 질렀고, 지휘자 헨리 우드는 관현악곡이 앙코르를 두 번 받은 프롬스 역사상 유일한 일이었다고 회고했습니다. 제목이 셰익스피어 '오셀로'의 대사에서 온 이 행진곡은?",
+    "answer": "위풍당당 행진곡",
+    "acceptedAnswers": [
+     "위풍당당"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 《위풍당당 행진곡》 문서 · 제목을 '위풍당당'으로 줄여 부르는 것은 같은 문서 '제목인 “위풍당당”'",
+    "explanation": "1905년 예일 대학교 졸업식에서 처음 연주된 뒤, 1번의 중간 선율이 미국 졸업식 입장 음악으로 굳었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "제목이 셰익스피어 '오셀로'의 대사에서 온 이 행진곡",
+     "difWhy": "프롬스 앙코르·제목 출처 — 클래식 애호가",
+     "wor": 3,
+     "worWhy": "유명 곡 제목",
+     "acc": 3,
+     "accWhy": "클래식 음악 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "제목이 셰익스피어 '오셀로'의 대사에서 온 이 행진곡",
+     "difWhy": "프롬스 앙코르·제목 출처 — 클래식 애호가",
+     "wor": 3,
+     "worWhy": "유명 곡 제목"
+    },
+    "rewrite": null,
+    "generalHint": "이 곡 1번은 조지 6세·엘리자베스 2세·찰스 3세의 대관식에서 퇴장 음악의 첫 곡으로 쓰였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "영국 작곡가 엘가의 졸업식 단골 관현악 행진곡",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "졸업식 곡으로 제목도 꽤 알려짐",
+     "piece": "f07",
+     "genPct": 75
+    },
+    "blind": {
+     "ref": "A1-11",
+     "key": "b318",
+     "hint": "이 곡 1번은 조지 6세·엘리자베스 2세·찰스 3세의 대관식에서 퇴장 음악의 첫 곡으로 쓰였다.",
+     "guess": "위풍당당 행진곡",
+     "confidence": "high",
+     "hit": true,
+     "answer": "위풍당당 행진곡"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pomp_and_Circumstance_Marches",
+     "https://ko.wikipedia.org/wiki/위풍당당_행진곡"
+    ],
+    "facts": [
+     {
+      "claim": "1901년 런던 프롬스(퀸스 홀)에서 헨리 우드 지휘, 1번",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pomp_and_Circumstance_Marches",
+      "note": "Both marches were played two days later at a promenade concert in the Queen's Hall London, conducted by Henry Wood, with March No. 1 played second."
+     },
+     {
+      "claim": "청중이 일어나 소리침, 관현악곡 앙코르 두 번 유일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pomp_and_Circumstance_Marches",
+      "note": "Wood remembered that the audience \"… rose and yelled … the one and only time in the history of the Promenade concerts that an orchestral item was accorded a double encore.\""
+     },
+     {
+      "claim": "제목은 오셀로 3막 3장 대사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/위풍당당_행진곡",
+      "note": "제목인 “위풍당당”(Pomp and Circumstance)은 윌리엄 셰익스피어의 비극 《오셀로》 제3막 제3장의 대사에서 따온 것"
+     },
+     {
+      "claim": "1905년 예일 졸업식 첫 연주, 미국 졸업식 입장곡",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pomp_and_Circumstance_Marches",
+      "note": "... is played as the processional tune at most high school and college graduation ceremonies. It was first played at such a ceremony on 28 June 1905, at Yale University"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pomp_and_Circumstance_Marches"
+    ],
+    "hintNote": "1 was the first piece in the recessional music for the coronations of George VI and Elizabeth II / It was the first piece in the recessional music for the coronation of Charles III on 6 May 2023.",
+    "easiestCue": "제목이 셰익스피어 '오셀로'의 대사에서 온 이 행진곡",
+    "targetWhy": "프롬스 앙코르 일화·오셀로 제목 유래는 고교 음악(엘가·대표곡) 밖 — 클래식 애호가 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 들어 본 곡의 초연 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "정답조각 행진곡",
+     "단정어 유일",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "classical/2#g019a-A1-12",
+   "seed": {
+    "subject": "왕벌의 비행",
+    "aspect": null,
+    "ref": "A1-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "오페라 '술탄 황제의 이야기'에 나오는 관현악곡입니다. 마법의 백조새가 그비돈 왕자의 모습을 바꿔, 왕자가 바다 건너 아버지 황제를 찾아가게 하는 장면에 흐르는 이 곡은 무엇일까요?",
+    "answer": "왕벌의 비행",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1분에 144박으로 재는 빠르기로 벌의 정신없는 움직임을 그리며, 림스키코르사코프가 1899~1900년에 썼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "오페라 '술탄 황제의 이야기'에 나오는 관현악곡",
+     "difWhy": "림스키코르사코프 오페라 곡 — 클래식 애호가",
+     "wor": 3,
+     "worWhy": "유명 곡 제목",
+     "acc": 3,
+     "accWhy": "클래식 음악 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "오페라 '술탄 황제의 이야기'에 나오는 관현악곡",
+     "difWhy": "림스키코르사코프 오페라 곡 — 클래식 애호가",
+     "wor": 3,
+     "worWhy": "유명 곡 제목"
+    },
+    "rewrite": null,
+    "generalHint": "오페라에서 궁에 닿은 왕자는 자기를 해친 요리사·직조공 이모들의 이마를 찌르고, 바바리하의 눈도 찔러 멀게 한다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "림스키코르사코프의 아주 빠른 관현악 소품",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "곡은 유명하나 제목은 모르는 사람도 있음",
+     "piece": "f05",
+     "genPct": 70
+    },
+    "blind": {
+     "ref": "A1-12",
+     "key": "b059",
+     "hint": "오페라에서 궁에 닿은 왕자는 자기를 해친 요리사·직조공 이모들의 이마를 찌르고, 바바리하의 눈도 찔러 멀게 한다.",
+     "guess": "살탄 황제 이야기",
+     "confidence": "high",
+     "hit": false,
+     "answer": "왕벌의 비행"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/왕벌의_비행",
+     "https://en.wikipedia.org/wiki/Flight_of_the_Bumblebee"
+    ],
+    "facts": [
+     {
+      "claim": "오페라 술탄(살탄) 황제의 이야기의 관현악곡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/왕벌의_비행",
+      "note": "《왕벌의 비행》 … 은 니콜라이 림스키코르사코프의 오페라 《술탄 황제의 이야기》(Сказка о царе Салтане) 제 2막 1장에 나오는 관현악곡이다."
+     },
+     {
+      "claim": "백조새가 그비돈 왕자를 곤충으로 바꿔 아버지 황제를 찾아가게 하는 장면",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flight_of_the_Bumblebee",
+      "note": "The piece closes act 3, tableau 1, during which the magic Swan-Bird changes Prince Gvidon Saltanovich into an insect so that he can fly away to visit his father, the tsar."
+     },
+     {
+      "claim": "144박, 1899~1900 작곡",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Flight_of_the_Bumblebee",
+      "note": "an orchestral interlude written by Nikolai Rimsky-Korsakov for his opera The Tale of Tsar Saltan, composed in 1899–1900. This rapidity, measured at 144 beats per minute, evokes the skittish and frenetic activity of a bumblebee."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Tale_of_Tsar_Saltan_(opera)"
+    ],
+    "hintNote": "Her sisters are ... the older sister as Cook, and the middle sister as Weaver. / In retaliation the bumble-bee Gvidon stings each of them in the brow. / Gvidon stings her in the eye and blinds her.",
+    "easiestCue": "오페라 '술탄 황제의 이야기'에 나오는 관현악곡",
+    "targetWhy": "원래 오페라와 장면은 클래식 애호가 세부(곡은 유명하나 출처는 덜 알려짐) — 4 · 막 번호는 ko(2막)·en(3막)이 달라 쓰지 않음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "모두 아는 곡의 몰랐던 출처",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "classical/2#g019a-A1-13",
+   "seed": {
+    "subject": "아름답고 푸른 도나우",
+    "aspect": null,
+    "ref": "A1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1867년 2월 빈 남성 합창 협회 연주회에서 처음 선보일 때는, 오스트리아가 프로이센에 막 진 뒤라 풍자 섞인 가사를 붙인 합창곡이었습니다. 브람스가 작곡가 의붓딸의 부채에 첫 마디를 적고 '아쉽게도 브람스의 것이 아님'이라 쓴 이 왈츠는?",
+    "answer": "아름답고 푸른 도나우",
+    "acceptedAnswers": [
+     "아름답고 푸른 다뉴브"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 《아름답고 푸른 도나우》 문서 · '아름답고 푸른 다뉴브'는 WebSearch 로 국내 기사(kbmaeil) 쓰임 확인",
+    "explanation": "그해 파리 만국 박람회를 위해 관현악판으로 고친 뒤 크게 성공해, 오늘날은 대부분 관현악으로 연주됩니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1867년 2월 빈 남성 합창 협회 … 프로이센에 막 진 뒤",
+     "difWhy": "빈 합창곡 초연 사정 — 클래식 애호가",
+     "wor": 3,
+     "worWhy": "유명 왈츠 제목",
+     "acc": 3,
+     "accWhy": "클래식 음악 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1867년 2월 빈 남성 합창 협회 … 프로이센에 막 진 뒤",
+     "difWhy": "빈 합창곡 초연 사정 — 클래식 애호가",
+     "wor": 3,
+     "worWhy": "유명 왈츠 제목"
+    },
+    "rewrite": null,
+    "generalHint": "처음 가사는 그 합창 협회 소속 시인 요제프 바일이 붙였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "요한 슈트라우스 2세의 가장 유명한 빈 왈츠",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "곡은 유명하나 제목은 일부만 앎",
+     "piece": "f09",
+     "genPct": 75
+    },
+    "blind": {
+     "ref": "A1-13",
+     "key": "b264",
+     "hint": "처음 가사는 그 합창 협회 소속 시인 요제프 바일이 붙였다.",
+     "guess": "아름답고 푸른 도나우",
+     "confidence": "high",
+     "hit": true,
+     "answer": "아름답고 푸른 도나우"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/The_Blue_Danube",
+     "https://ko.wikipedia.org/wiki/아름답고_푸른_도나우",
+     "https://kbmaeil.com/article/201906020252373"
+    ],
+    "facts": [
+     {
+      "claim": "1867년 2월 15일 빈 남성 합창 협회 연주회 초연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Blue_Danube",
+      "note": "Originally performed on 15 February 1867 at a concert of the Wiener Männergesang-Verein (Vienna Men's Choral Association)"
+     },
+     {
+      "claim": "프로이센에 진 뒤 풍자 가사의 합창곡",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Blue_Danube",
+      "note": "The \"Beautiful Blue Danube\" was first written as a song for a carnival choir (for bass and tenor), with rather satirical lyrics (Austria having just lost a war with Prussia)."
+     },
+     {
+      "claim": "브람스가 의붓딸 부채에 '아쉽게도 브람스의 것이 아님'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Blue_Danube",
+      "note": "When Strauss's stepdaughter, Alice von Meyszner-Strauss, asked the composer Johannes Brahms to sign her autograph-fan, he wrote down the first bars of \"The Blue Danube\", but added \"Leider nicht von Johannes Brahms\" (\"Unfortunately not by Johannes Brahms\")."
+     },
+     {
+      "claim": "파리 만국박람회용 관현악판 성공, 오늘날 주로 관현악",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Blue_Danube",
+      "note": "Strauss adapted it into a purely orchestral version for the 1867 Paris World's Fair, and it became a great success in this form. The instrumental version is by far the most commonly performed today."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Blue_Danube"
+    ],
+    "hintNote": "After the original music was written, the words were added by the Choral Association's poet, Joseph Weyl.",
+    "easiestCue": "브람스가 작곡가 의붓딸의 부채에 첫 마디를 적고 '아쉽게도 브람스의 것이 아님'이라 쓴 이 왈츠",
+    "targetWhy": "합창곡 초연·브람스 부채 일화는 클래식 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 왈츠의 뜻밖 출발",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

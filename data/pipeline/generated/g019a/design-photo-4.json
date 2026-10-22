@@ -1,0 +1,233 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "design-photo/4",
+  "midKey": "design-photo",
+  "subName": "산업 디자인",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/4#g019a-A1-09",
+   "seed": {
+    "subject": "비틀",
+    "aspect": null,
+    "ref": "A1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1938년 독일의 여가 단체 '기쁨을 통한 힘'은 저축 계획으로 이 차를 예약받았지만, 공장이 전쟁 물자만 만들게 되면서 33만 명이 넘는 저축자가 차를 받지 못했습니다. 공식 이름이 '타입 1'이었던 이 차는?",
+    "answer": "비틀",
+    "acceptedAnswers": [
+     "폭스바겐 비틀",
+     "딱정벌레차"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '폭스바겐 비틀' 첫 줄 '일명 딱정벌레차 또는 버그'",
+    "explanation": "1972년 포드 모델 T를 넘어 역대 가장 많이 팔린 차가 되었고, 그 기록을 25년 동안 지켰습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1938년 독일의 여가 단체 '기쁨을 통한 힘'은 저축 계획으로 이 차",
+     "difWhy": "나치 국민차 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 국민차 사연",
+     "acc": 3,
+     "accWhy": "사진·디자인 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1972년 포드 모델 T의 기록을 넘어 가장 많이 팔린 차",
+     "difWhy": "국민차 최다 판매 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 차 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1938년 독일의 여가 단체 '기쁨을 통한 힘'은 저축 계획으로 이 차를 예약받았지만, 공장이 전쟁 물자만 만들게 되면서 33만 명이 넘는 저축자가 차를 받지 못했습니다. 1972년 포드 모델 T의 기록을 넘어 가장 많이 팔린 차가 된 이 차는?",
+     "beforeExplanation": "공식 이름은 '타입 1'이었고, '비틀'은 1968년에야 공식 이름이 되었습니다.",
+     "removedCue": "1972년 포드 모델 T의 기록을 넘어 가장 많이 팔린 차",
+     "addedCue": "공식 이름 '타입 1'",
+     "why": "널리 알려진 최다 판매 기록을 해설로 옮기고 공식 이름으로"
+    },
+    "generalHint": "마지막 차는 2003년 7월 30일 멕시코 푸에블라 공장에서 나왔고, 그때까지 2,152만여 대가 만들어졌다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "딱정벌레 같은 둥근 모양의 독일 소형 국민차",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "폭스바겐 비틀로 널리 알려진 차",
+     "piece": "f05",
+     "genPct": 75
+    },
+    "blind": {
+     "ref": "A1-09",
+     "key": "b086",
+     "hint": "마지막 차는 2003년 7월 30일 멕시코 푸에블라 공장에서 나왔고, 그때까지 2,152만여 대가 만들어졌다.",
+     "guess": "폭스바겐 비틀",
+     "confidence": "high",
+     "hit": true,
+     "answer": "비틀"
+    },
+    "hobby": "자동차",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Volkswagen_Beetle"
+    ],
+    "facts": [
+     {
+      "claim": "KdF(기쁨을 통한 힘)가 사업을 맡음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Volkswagen_Beetle",
+      "note": "Kraft durch Freude (Strength Through Joy, a political organisation aimed at providing the populace with leisure activities) was in charge of this project."
+     },
+     {
+      "claim": "저축 계획, 33만 명 넘는 저축자가 차를 못 받음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Volkswagen_Beetle",
+      "note": "Before the completion of the KdF factory, many Germans had already signed up for a savings plan to buy a car. With the Volkswagen facility dedicated solely to wartime requirements, more than 330,000 KdF savers could not acquire their vehicles."
+     },
+     {
+      "claim": "1972년 포드 모델 T를 넘어 가장 많이 팔린 차",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Volkswagen_Beetle",
+      "note": "In 1972, the Beetle surpassed the Ford Model T to become the best-selling car of all time, a record it held for 25 years."
+     },
+     {
+      "claim": "1938년 KdF 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Volkswagen_Beetle",
+      "note": "The name Volkswagen was officially substituted by the term KdF ... once Hitler ceremoniously laid the foundation stone for the Volkswagen factory on 26 May 1938."
+     },
+     {
+      "claim": "공식 타입 1, 1968년 비틀이 공식 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Volkswagen_Beetle",
+      "note": "The Volkswagen Beetle, officially the Volkswagen Type 1 ... In 1968, the Type 1 was officially given the name \"Beetle\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Volkswagen_Beetle"
+    ],
+    "hintNote": "On 30 July 2003 at 9:05 a.m., at the Puebla plant in Mexico, Volkswagen produced the final Type 1, after 21,529,464 examples were produced globally during its tenure.",
+    "easiestCue": "공식 이름이 '타입 1'이었던 차",
+    "targetWhy": "KdF 저축 계획·타입 1은 자동차·디자인 애호가 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 차의 어두운 출발",
+    "pairCheck": null,
+    "dbCheck": "new — 비틀·폭스바겐 비틀·딱정벌레차 모두 활성·초안 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "design-photo/4#g019a-A1-10",
+   "seed": {
+    "subject": "클립",
+    "aspect": null,
+    "ref": "A1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2차 세계대전 때 독일에 점령된 노르웨이에서는 망명한 국왕의 표지를 다는 것이 금지되자, 사람들이 이것을 옷깃에 꽂아 저항의 뜻을 보였습니다. 1989년 오슬로 근처 한 대학 교정에는 노르웨이 사람의 발명이라며 기리는 7m 가까운 이것의 조형물이 섰는데, 무엇일까요?",
+    "answer": "클립",
+    "acceptedAnswers": [
+     "종이 클립"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '종이 클립' → '클립' 넘겨주기",
+    "explanation": "1899년 4월 미국의 윌리엄 미들브룩은 이런 꼴의 철사 클립을 만드는 기계로 특허를 받았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "사람들이 이것을 옷깃에 꽂아 저항의 뜻을 보였습니다",
+     "difWhy": "노르웨이 저항 상징 — 디자인 애호가",
+     "wor": 3,
+     "worWhy": "물건 이야깃거리",
+     "acc": 3,
+     "accWhy": "사진·디자인 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "사람들이 이것을 옷깃에 꽂아 저항의 뜻을 보였습니다",
+     "difWhy": "노르웨이 저항 상징 — 디자인 애호가",
+     "wor": 3,
+     "worWhy": "물건 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "노르웨이 사전들은 1950년대부터 특허청 직원 요한 볼러를 이것의 발명가로 적어 왔지만, 실은 잘못 퍼진 신화로 본다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "철사를 고리 모양으로 구부려 종이를 끼우는 문구",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "일상 문구",
+     "piece": "f01",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "A1-10",
+     "key": "b160",
+     "hint": "노르웨이 사전들은 1950년대부터 특허청 직원 요한 볼러를 이것의 발명가로 적어 왔지만, 실은 잘못 퍼진 신화로 본다.",
+     "guess": "종이 클립",
+     "confidence": "high",
+     "hit": true,
+     "answer": "클립"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Paper_clip",
+     "https://ko.wikipedia.org/wiki/클립"
+    ],
+    "facts": [
+     {
+      "claim": "국왕 표지 금지 뒤 옷깃에 클립을 꽂아 저항",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Paper_clip",
+      "note": "Patriots wore them in their lapels as a symbol of resistance to the German occupiers and local Nazi authorities when other signs of resistance, such as flag pins or pins showing the cipher of the exiled King Haakon VII of Norway, were forbidden."
+     },
+     {
+      "claim": "1989년 오슬로 근처 대학 교정 7m 가까운 거대 클립, 볼레르(Vaaler) 기림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Paper_clip",
+      "note": "In 1989, a giant paper clip, almost 7 m (23 ft) high, was erected on the campus of a commercial college near Oslo in honor of Vaaler, ninety years after his invention was patented."
+     },
+     {
+      "claim": "1899년 4월 27일 미들브룩 클립 제조기 특허",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Paper_clip",
+      "note": "the patent granted to William Middlebrook of Waterbury, Connecticut on 27 April of that year for a \"Machine for making wire paper clips\"."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Paper_clip"
+    ],
+    "hintNote": "Norwegian dictionaries since the 1950s have mentioned Vaaler as the inventor of the paper clip, and that myth later found its way into international dictionaries / Long after Vaaler's death, his countrymen created a national myth",
+    "easiestCue": "사람들이 이것을 옷깃에 꽂아 저항의 뜻을 보였습니다",
+    "targetWhy": "노르웨이 저항 상징·발명 신화 조형물은 디자인사 애호가 세부 — 4 (발명자 진위는 en·ko 가 달라 질문은 '발명이라며 기리는' 으로 씀)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "매일 쓰는 물건의 뜻밖 역사",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

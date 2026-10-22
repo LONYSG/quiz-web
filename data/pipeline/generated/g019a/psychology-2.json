@@ -1,0 +1,337 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "psychology/2",
+  "midKey": "psychology",
+  "subName": "발달·성격 이론",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "psychology/2#g019a-H2-07",
+   "seed": {
+    "subject": "아들러",
+    "aspect": null,
+    "ref": "H2-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "어린 시절 구루병을 앓아 네 살이 되어서야 걸었던 이 오스트리아 의사는 1910년 빈 정신분석학회 회장을 지냈고, 분석용 긴 의자 대신 의자 두 개를 쓴 초기 심리 치료사였습니다. 1937년 스코틀랜드 애버딘에서 숨진 이 심리학자는?",
+    "answer": "아들러",
+    "acceptedAnswers": [
+     "알프레트 아들러",
+     "알프레드 아들러"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '알프레트 아들러', 넘겨주기 '알프레드 아들러' 확인",
+    "explanation": "1911년 지지자들과 함께 프로이트의 모임을 떠났는데, 융이 갈라선 1914년보다 먼저였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "어린 시절 구루병을 앓아 … 빈 정신분석학회 회장",
+     "difWhy": "열등감 이론가 생애 — 대학 교양 심리학",
+     "wor": 3,
+     "worWhy": "유명 인물 이야깃거리",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "형제 사이의 태어난 순서가 성격에 영향을 준다고 강조",
+     "difWhy": "출생 순서 이론 — 고교 심리·윤리",
+     "wor": 4,
+     "worWhy": "교양 — 심리학 인물"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "빈 정신분석학회 회장까지 지낸 이 의사는 1911년 지지자들과 함께 프로이트의 모임을 떠났는데, 융보다 3년 먼저였습니다. 형제 사이의 태어난 순서가 성격에 영향을 준다고 강조한 그는 1937년 강연 여행 중 스코틀랜드 애버딘에서 숨졌습니다. 이 심리학자는?",
+     "beforeExplanation": "그는 어린 시절 구루병을 앓아 네 살이 되어서야 걸을 수 있었습니다.",
+     "removedCue": "형제 사이의 태어난 순서가 성격에 영향을 준다고 강조",
+     "addedCue": "구루병 · 의자 두 개 상담 · 애버딘에서 사망",
+     "why": "고교 심리의 출생 순서 이론을 빼고 생애·상담 방식 세부로 바꿈"
+    },
+    "generalHint": "아내 라이사는 빈에서 공부하던 러시아 출신 사회주의 운동가로, 트로츠키 같은 러시아 마르크스주의자들과 가까웠다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "열등감과 개인심리학으로 알려진 오스트리아 심리학자",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "『미움받을 용기』 열풍으로 들어 봄",
+     "piece": "f04",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "H2-07",
+     "key": "b213",
+     "hint": "아내 라이사는 빈에서 공부하던 러시아 출신 사회주의 운동가로, 트로츠키 같은 러시아 마르크스주의자들과 가까웠다.",
+     "guess": "알프레트 아들러",
+     "confidence": "high",
+     "hit": true,
+     "answer": "아들러"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Alfred_Adler"
+    ],
+    "facts": [
+     {
+      "claim": "1910년 빈 정신분석학회 회장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Adler",
+      "note": "Adler became president of the Vienna Psychoanalytic Society eight years later (1910)."
+     },
+     {
+      "claim": "구루병으로 네 살까지 걷지 못함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Adler",
+      "note": "Early on, he developed rickets, which kept Alfred from walking until he was four years old."
+     },
+     {
+      "claim": "1937년 강연 여행 중 애버딘에서 심장마비로 사망",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Adler",
+      "note": "Adler died from a heart attack in 1937 in Aberdeen, Scotland, during a lecture tour."
+     },
+     {
+      "claim": "1911년 지지자들과 프로이트 모임을 떠남, 융(1914)보다 먼저",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Adler",
+      "note": "He remained a member of the Society until 1911, when he and a group of his supporters formally disengaged from Freud's circle, the first of the great dissenters from orthodox psychoanalysis (preceding Carl Jung's split in 1914)."
+     },
+     {
+      "claim": "분석용 카우치 대신 의자 두 개를 쓴 최초의 심리 치료사 가운데 하나",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Adler",
+      "note": "Adler was concerned with overcoming the superiority/inferiority dynamic, and was one of the first psychotherapists to discard the analytic couch in favor of two chairs."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Alfred_Adler"
+    ],
+    "hintNote": "his wife-to-be, Raissa Timofeyewna Epstein, an intellectual and social activist from Russia studying in Vienna. / the latter's wife (Raissa Timofeyewna Epstein) being for example an intimate friend of many of the Russian Marxists such as Leon Trotsky.",
+    "easiestCue": "1910년 빈 정신분석학회 회장",
+    "targetWhy": "학회 회장·상담 의자·애버딘 사망은 심리학 대학 교양 세부 — 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "베스트셀러로 이름은 들은 심리학자의 이론·생애 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "psychology/2#g019a-H2-08",
+   "seed": {
+    "subject": "혈액형",
+    "aspect": null,
+    "ref": "H2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1927년 도쿄 여자 사범학교 교수 후루카와 다케지는 이것으로 기질을 연구한 논문을 냈고, 당시 군부 정부는 이상적인 군인을 길러 내려는 연구를 맡기기도 했습니다. 일본에서 이것을 빌미로 한 괴롭힘을 '부라하라'라 부르는, 성격을 나누는 이 기준은?",
+    "answer": "혈액형",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1970년대에 의학을 배운 적 없는 공대 출신 기자 노미 마사히코의 책으로 다시 유행했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "이것을 빌미로 한 괴롭힘을 '부라하라' … 성격을 나누는 이 기준",
+     "difWhy": "일본발 혈액형 성격설 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 혈액형 성격론 기원",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1970년대 … 노미 마사히코의 책으로 다시 유행한, 성격을 나누는 이 기준",
+     "difWhy": "일본발 성격 분류 유행 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "혈액형 성격론 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1927년 도쿄의 한 여자 사범학교 교수 후루카와 다케지는 이것으로 기질을 연구한 논문을 냈고, 당시 군부 정부는 이상적인 군인을 길러 내려는 연구를 맡기기도 했습니다. 1970년대 공대 출신 기자 노미 마사히코의 책으로 다시 유행한, 성격을 나누는 이 기준은?",
+     "beforeExplanation": "후루카와는 타이완 사람 표본의 41.2%가 O형이라는 결과를 들어 타이완 사람의 반항심이 유전이라고 주장하기도 했습니다.",
+     "removedCue": "1970년대 노미 마사히코의 책으로 다시 유행한",
+     "addedCue": "이것을 빌미로 한 괴롭힘을 일본에서 '부라하라'라 부름",
+     "why": "대중적 유행 단서를 해설로 옮기고 '부라하라'라는 낯선 세부로"
+    },
+    "generalHint": "후루카와는 타이완 사람과 홋카이도 아이누의 이것 분포를 견주어, 일본 점령에 거세게 맞선 타이완 사람의 기질을 설명하려 했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "A·B·O·AB형으로 성격을 나누는 속설의 기준",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 말",
+     "piece": "f02",
+     "genPct": 100
+    },
+    "blind": {
+     "ref": "H2-08",
+     "key": "b245",
+     "hint": "후루카와는 타이완 사람과 홋카이도 아이누의 이것 분포를 견주어, 일본 점령에 거세게 맞선 타이완 사람의 기질을 설명하려 했다.",
+     "guess": "혈액형",
+     "confidence": "high",
+     "hit": true,
+     "answer": "혈액형"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Blood_type_personality_theory"
+    ],
+    "facts": [
+     {
+      "claim": "1927년 도쿄 여자 사범학교 교수 후루카와 다케지의 혈액형 기질 연구 논문",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blood_type_personality_theory",
+      "note": "In 1927, Takeji Furukawa, a professor at Tokyo Women's Teacher's School, published his paper \"The Study of Temperament Through Blood Type\""
+     },
+     {
+      "claim": "군부 정부가 이상적 군인 육성 연구를 의뢰",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blood_type_personality_theory",
+      "note": "the militarist government of the time commissioned a study aimed at breeding ideal soldiers."
+     },
+     {
+      "claim": "1970년대 노미 마사히코(공대 출신 기자) 책으로 부활",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Blood_type_personality_theory",
+      "note": "Interest in the theory was revived in the 1970s with a book by Masahiko Nomi, a journalist with no medical background (he graduated from the engineering department of the University of Tokyo)."
+     },
+     {
+      "claim": "일본의 혈액형 괴롭힘 부라하라",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blood_type_personality_theory",
+      "note": "Blood type harassment, called bura-hara (wasei-eigo: a portmanteau of blood and harassment), has been blamed for bullying of children in playgrounds, loss of job opportunities, and the end of relationships."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Blood_type_personality_theory"
+    ],
+    "hintNote": "In another study, Furukawa compared the distribution of blood types among two ethnic groups: the Formosans in Taiwan and the Ainu of Hokkaidō. ... After the Japanese occupation of Taiwan ... the inhabitants tenaciously resisted their occupiers.",
+    "easiestCue": "1927년 후루카와 다케지가 이것으로 기질을 연구한 논문",
+    "targetWhy": "1920년대 일본 기원·부라하라는 심리 교양 애호가 세부 — 4(경계)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 속설의 일본 기원과 어두운 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different — 활성 #986(ABO 혈액형 발견·수혈) · 지식이 다름(성격 속설의 기원)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "psychology/2#g019a-H2-09",
+   "seed": {
+    "subject": "IQ",
+    "aspect": null,
+    "ref": "H2-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1905년 프랑스의 알프레드 비네와 테오도르 시몽은 아이의 '정신 연령'을 알아보는 검사를 내놓았습니다. 1912년 독일 심리학자 빌리암 슈테른이 책에서 이런 검사의 점수 매김 방식을 두고 처음 쓴 독일어 낱말을 줄인 영문 약칭은?",
+    "answer": "IQ",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "미국 스탠퍼드 대학교의 루이스 터먼은 비네-시몽 검사를 고쳐 1916년 스탠퍼드-비네 검사를 만들었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "아이의 '정신 연령'을 알아보는 검사 … 영문 약칭",
+     "difWhy": "지능 검사 점수 약칭 — 중학 교과",
+     "wor": 4,
+     "worWhy": "교양 기본 어휘",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "아이의 '정신 연령'을 알아보는 검사 … 영문 약칭",
+     "difWhy": "지능 검사 점수 약칭 — 중학 교과",
+     "wor": 4,
+     "worWhy": "교양 기본 어휘"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "묻는 문장 자체가 '지능 검사 점수 매김 방식의 약칭' 이라 어떤 세부를 넣어도 그 범주(중학 교과)로 풀리고, 그것을 빼면 무엇을 묻는지 흐려짐"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "지능 검사 결과를 나타내는 수치",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상 용어",
+     "piece": "f08",
+     "genPct": 100
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Intelligence_quotient"
+    ],
+    "facts": [
+     {
+      "claim": "1905년 비네·시몽 검사, 점수는 정신 연령을 보여 줌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Intelligence_quotient",
+      "note": "French psychologist Alfred Binet and psychiatrist Théodore Simon, had more success in 1905, when they published the Binet–Simon Intelligence test ... The score on the Binet–Simon scale would reveal the child's mental age."
+     },
+     {
+      "claim": "IQ 약칭은 슈테른의 독일어 Intelligenzquotient, 1912년 책에서 주장한 점수 매김 방식",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Intelligence_quotient",
+      "note": "The abbreviation \"IQ\" was coined by the psychologist William Stern for the German term Intelligenzquotient, his term for a scoring method for intelligence tests at University of Breslau he advocated in a 1912 book."
+     },
+     {
+      "claim": "터먼이 1916년 스탠퍼드 개정판",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Intelligence_quotient",
+      "note": "American psychologist Lewis Terman at Stanford University revised the Binet–Simon scale, which resulted in the Stanford revision of the Binet-Simon Intelligence Scale (1916)."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1905년 프랑스의 알프레드 비네와 테오도르 시몽은 아이의 '정신 연령'을 알아보는 검사",
+    "targetWhy": "비네-시몽 검사는 심리학 교양(고교 밖), 슈테른의 명명은 더 깊음 — 경계 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "비네 검사를 아는 사람은 '지능' 쪽으로 바로 닿을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new(IQ · 지능지수)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,215 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "animals/1",
+  "midKey": "animals",
+  "subName": "포유류",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/1#g019a-C1-17",
+   "seed": {
+    "subject": "얼룩말",
+    "aspect": null,
+    "ref": "C1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "19세기 말 영국 동물학자 월터 로스차일드는 이 동물에게 마차를 끌도록 가르쳐 버킹엄 궁전까지 몰고 갔습니다. 1882년 에티오피아가 프랑스 대통령 쥘 그레비에게 한 마리를 보낸 뒤 그 종에 대통령 이름이 붙은 이 동물은?",
+    "answer": "얼룩말",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "털 아래 피부는 검은색이고, 갓 태어난 새끼는 갈색과 흰색 털을 지녔다가 자라며 갈색이 짙어집니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1882년 에티오피아가 … 쥘 그레비 … 대통령 이름이 붙은 이 동물",
+     "difWhy": "그레비 종 동물 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 종 이름 유래",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "이 동물 무늬 옷을 입힌 말에도 파리가 잘 내려앉지 못했는데",
+     "difWhy": "줄무늬 말 — 방송·일상",
+     "wor": 3,
+     "worWhy": "동물 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "19세기 말 영국 동물학자 월터 로스차일드는 이 동물에게 마차를 끌도록 가르쳐, 버킹엄 궁전까지 몰고 갔습니다. 2019년 연구에서는 이 동물 무늬 옷을 입힌 말에도 파리가 잘 내려앉지 못했는데, 이 동물은?",
+     "beforeExplanation": null,
+     "removedCue": "이 동물 무늬 옷을 입힌 말에도 파리가 잘 내려앉지 못함(2019 연구)",
+     "addedCue": "1882년 에티오피아가 쥘 그레비에게 보낸 한 마리 — 종 이름",
+     "why": "무늬·파리 연구(방송 상식)를 빼고 종 이름의 유래로"
+    },
+    "generalHint": "대통령 이름이 붙은 종은 야생 말 무리 가운데 가장 큰 종으로, 지금은 케냐 북부와 에티오피아 일부에만 산다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "검고 흰 줄무늬가 있는 아프리카 말 무리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 동물",
+     "piece": "f02",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "C1-17",
+     "key": "b003",
+     "hint": "대통령 이름이 붙은 종은 야생 말 무리 가운데 가장 큰 종으로, 지금은 케냐 북부와 에티오피아 일부에만 산다.",
+     "guess": "그레비얼룩말",
+     "confidence": "high",
+     "hit": true,
+     "answer": "얼룩말"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Zebra"
+    ],
+    "facts": [
+     {
+      "claim": "19세기 말 로스차일드가 마차를 끌게 훈련해 버킹엄 궁전까지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zebra",
+      "note": "In the late 19th century, the zoologist Walter Rothschild trained some zebras to draw a carriage in England, which he drove to Buckingham Palace to demonstrate that it can be done."
+     },
+     {
+      "claim": "피부는 검고 새끼는 갈색·흰색, 자라며 갈색이 짙어짐",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Zebra",
+      "note": "The coat appears to be white with black stripes ... but the skin is black. Young or foals are born with brown and white coats, and the brown darkens with age."
+     },
+     {
+      "claim": "1882년 에티오피아가 그레비에게 보냄 — 그 종에 그의 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zebra",
+      "note": "In 1882, Ethiopia sent a zebra to French president Jules Grévy, and the species it belonged to was named in his honour."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gr%C3%A9vy's_zebra"
+    ],
+    "hintNote": "Grévy's zebra ... is the largest living species of wild equid ... it is found in parts of Kenya and Ethiopia.",
+    "easiestCue": "로스차일드는 이 동물에게 마차를 끌도록 가르쳐 버킹엄 궁전까지",
+    "targetWhy": "동물 이름·사육 뒷이야기 — 애호가 세부(경계 4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 동물의 뜻밖 이야기",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "animals/1#g019a-C1-18",
+   "seed": {
+    "subject": "치타",
+    "aspect": null,
+    "ref": "C1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 동물은 핏줄이 닿지 않는 두 개체 사이에 피부를 옮겨 붙여도 거부 반응 없이 잘 아물 만큼 유전자가 서로 비슷합니다. 무굴 제국의 아크바르 대제가 사냥용으로 1,000마리까지 길렀다고 전하는 이 동물은?",
+    "answer": "치타",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1927년 포콕은 등에 굵은 줄무늬가 있는 개체를 새 종 \"킹치타\" 로 기재했지만, 뒤에 열성 돌연변이로 밝혀졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "피부를 옮겨 붙여도 거부 반응 없이 … 유전자가 서로 비슷",
+     "difWhy": "유전적 병목 고양잇과 — 대학 교양 생물 (경계 3)",
+     "wor": 3,
+     "worWhy": "동물 이야깃거리",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "피부를 옮겨 붙여도 거부 반응 없이 … 유전자가 서로 비슷",
+     "difWhy": "유전적 병목 고양잇과 — 대학 교양 생물 (경계 3)",
+     "wor": 3,
+     "worWhy": "동물 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "다른 고양잇과보다 짧고 곧은 발톱은 감싸는 덮개가 없어 일부만 집어넣을 수 있다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "땅 위에서 가장 빨리 달리는 고양잇과 동물",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 동물",
+     "piece": "f09",
+     "genPct": 98
+    },
+    "blind": {
+     "ref": "C1-18",
+     "key": "b145",
+     "hint": "다른 고양잇과보다 짧고 곧은 발톱은 감싸는 덮개가 없어 일부만 집어넣을 수 있다.",
+     "guess": "치타",
+     "confidence": "high",
+     "hit": true,
+     "answer": "치타"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cheetah"
+    ],
+    "facts": [
+     {
+      "claim": "혈연 없는 개체끼리 피부 이식이 잘 받아들여짐(유전자 균질)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cheetah",
+      "note": "Skin grafts exchanged between unrelated cheetahs are accepted well and heal, as if their genetic makeup were the same."
+     },
+     {
+      "claim": "아크바르가 1000마리 길렀다고 전함 · 사냥용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cheetah",
+      "note": "The Mughal ruler Akbar the Great (1556–1605 AD) is said to have kept as many as 1000 khasa (imperial) cheetahs. Mughal rulers trained cheetahs and caracals ... and used them to hunt game"
+     },
+     {
+      "claim": "1927 포콕 Acinonyx rex 새 종 기재 — 드문 돌연변이 · 열성 대립유전자",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cheetah",
+      "note": "In 1927, Pocock described these individuals as a new species by the name of Acinonyx rex (\"king cheetah\"). / ...it is a rare mutation. / The appearance is caused by reinforcement of a recessive allele"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cheetah"
+    ],
+    "hintNote": "The slightly curved claws are shorter and straighter than those of other cats, lack a protective sheath and are partly retractile.",
+    "easiestCue": "무굴 제국의 아크바르 대제가 사냥용으로 1,000마리까지 길렀다고 전하는",
+    "targetWhy": "병목 효과·무굴 사냥 문화 — 대학 교양 생물·역사 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 동물의 교과서 밖 유전·역사 세부",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

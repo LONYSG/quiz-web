@@ -1,0 +1,284 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "kr-food/5",
+  "midKey": "kr-food",
+  "subName": "떡·한과·전통 음료",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/5#g019a-K2-22",
+   "seed": {
+    "subject": "약식",
+    "aspect": null,
+    "ref": "K2-22",
+    "pairedWith": 4442
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 4442,
+    "question": "허균의 『도문대작』은 중국 사람들이 이 음식을 좋아해 배워 만들고는 '고려반'이라 부른다고 적었습니다. 『열양세시기』에도 연경에 간 조선 사신들이 나눠 주자 귀인들이 반겼다고 나오는 이 음식은?",
+    "answer": "약식",
+    "acceptedAnswers": [
+     "약밥"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "약밥 — 한국민족문화대백과 '약식' 이칭 '약밥' · ko.wikipedia '약밥 또는 약반으로 불리기도' 확인",
+    "explanation": "정약용은 『아언각비』에서 우리나라에서는 꿀을 흔히 '약'이라 부르기 때문에 붙은 이름이라고 풀었다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "중국 사람들이 … '고려반'이라 부른다",
+     "difWhy": "도문대작 고려반 — 전통 음식 애호가",
+     "wor": 3,
+     "worWhy": "전통 음식 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "중국 사람들이 … '고려반'이라 부른다",
+     "difWhy": "도문대작 고려반 — 전통 음식 애호가",
+     "wor": 3,
+     "worWhy": "전통 음식 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "찐 찹쌀에 흑설탕을 섞어 갈색으로 물들인 뒤, 마지막에 30분쯤 다시 중탕해 쪄 낸다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "찹쌀에 밤·대추·잣을 섞어 꿀·간장으로 버무려 찐 음식",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "전통 음식으로 흔히 들음",
+     "piece": "f05",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "K2-22",
+     "key": "b137",
+     "hint": "찐 찹쌀에 흑설탕을 섞어 갈색으로 물들인 뒤, 마지막에 30분쯤 다시 중탕해 쪄 낸다.",
+     "guess": "약밥",
+     "confidence": "high",
+     "hit": true,
+     "answer": "약식"
+    },
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://encykorea.aks.ac.kr/Article/E0035340"
+    ],
+    "facts": [
+     {
+      "claim": "도문대작 — 중국인이 좋아해 배워 만들고 고려반이라 함",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0035340",
+      "note": "『도문대작(屠門大嚼)』에 “약반을 중국인이 좋아한다. 그들은 이것을 배워서 만들고는 고려반(高麗飯)이라고 한다.”"
+     },
+     {
+      "claim": "열양세시기 — 중국에 간 사신들이 약식을 나눠 주자 연경 귀인들이 반색",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0035340",
+      "note": "『열양세시기』의 “정월 보름날에 중국에 간 우리나라 사신들이 약식을 만들어 나누어주면 연경의 귀인들이 그 맛을 보고 반색하며 매우 좋아하였다.”"
+     },
+     {
+      "claim": "아언각비 — 꿀을 약이라 함",
+      "where": "e",
+      "url": "https://encykorea.aks.ac.kr/Article/E0035340",
+      "note": "『아언각비(雅言覺非)』에서는 “우리나라에서는 꿀을 흔히 약(藥)이라 한다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%95%BD%EC%8B%9D"
+    ],
+    "hintNote": "찐 쌀에 꿀, 흑설탕, 진간장 등을 섞어 갈색으로 물들인 후, 반으로 쪼개서 손질한 밤과 네등분한 대추 등을 넣고 마지막에 참기름을 넣어 다시 30분간 중탕하여 찐다.",
+    "easiestCue": "중국 사람들이 이 음식을 좋아해 배워 만들고는 '고려반'이라 부른다고 적었습니다",
+    "targetWhy": "정월 대보름 · 찹쌀·대추 같은 1회차·정의 단서를 뺐다 — 도문대작·열양세시기의 중국 반응은 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "아는 음식의 '조선 때 중국 한류' 세부",
+    "pairCheck": "1회차 Q(삼국유사 사금갑 · 까마귀 · 정월 대보름 찰밥) · E(재료·만드는 법) · H(혼례·환갑 잔치)와 겹치지 않음 — 『열양세시기』 원문의 '정월 보름날' 도 일부러 뺐다",
+    "dbCheck": "answercheck 약식 pair-or-different(4442) — (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 4442,
+     "question": "『삼국유사』 사금갑 조에는 488년 정월 대보름에 까마귀가 신라 소지왕에게 위험을 알려 목숨을 구한 이야기가 실려 있습니다. 그 뒤 까마귀를 기리며 찰밥을 지어 제사 지낸 데서 비롯되었다고 전하는 음식은?",
+     "explanation": "찹쌀에 밤·대추·잣을 섞어 찐 뒤 참기름·꿀·간장 등으로 버무려 만듭니다.",
+     "hint": "정월 대보름 말고도 혼례와 환갑잔치 상에 올리던 음식이다.",
+     "difficulty": 3
+    }
+   }
+  },
+  {
+   "seedId": "kr-food/5#g019a-K2-24",
+   "seed": {
+    "subject": "유자차",
+    "aspect": null,
+    "ref": "K2-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1700년대 『산림경제』에는 이 열매를 채 썰어 배와 함께 꿀물에 넣고 잣을 띄운 뒤 저민 껍질을 더해 마시는 법이 실렸고, 1835년경 『임원십육지』에는 석류알을 띄우는 법이 소개되었습니다. 이 열매로 만든 차는?",
+    "answer": "유자차",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "『동의보감』은 이 열매가 위 속의 나쁜 기를 없애고 술독을 풀며 입 냄새를 없앤다고 적었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 열매를 채 썰어 배와 꿀물 + 이 열매로 만든 차",
+     "difWhy": "옛 조리서 열매 차 — 전통음식 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 전통 음료",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 이 열매로 만든 청을 물에 타 마시는 차 + 술독을 풀고",
+     "difWhy": "청을 타 마시는 차 — 일상 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "전통 음료 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1700년대 『산림경제』에는 채 썬 이 열매와 배를 꿀물에 넣고 잣을 띄워 마시는 법이 실렸고, 『동의보감』은 이 열매가 술독을 풀고 입 냄새를 없앤다고 적었습니다. 이 열매로 만든 청을 물에 타 마시는 차는?",
+     "beforeExplanation": "옛 문헌의 '유자장'은 이 열매를 꿀에 재워 두었다가 그 액을 물에 타 마시는 음료였다.",
+     "removedCue": "이 열매로 만든 청을 물에 타 마시는 차(정의) · 『동의보감』 술독(해설로 옮김)",
+     "addedCue": "1835년경 『임원십육지』의 석류알 띄우기",
+     "why": "차의 정의와 효능 단서를 빼고 옛 조리서 두 기록으로"
+    },
+    "generalHint": "이 열매 나무의 원산지는 중국 장강 상류이며, 한국에는 신라 시대에 전해졌다고 한다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "노란 향긋한 열매를 설탕·꿀에 재운 청을 타 마시는 차",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "흔한 차",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "K2-24",
+     "key": "b259",
+     "hint": "이 열매 나무의 원산지는 중국 장강 상류이며, 한국에는 신라 시대에 전해졌다고 한다.",
+     "guess": "유자",
+     "confidence": "mid",
+     "hit": false,
+     "answer": "유자차"
+    },
+    "hobby": "요리",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/유자차"
+    ],
+    "facts": [
+     {
+      "claim": "1700년대 산림경제 — 채 썬 유자와 배를 꿀물에 넣고 잣을 띄움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/유자차",
+      "note": "1700년대의 《산림경제》에는 채 썬 유자와 배를 꿀물에 넣고 잣을 띄운 뒤, 저민 유자 껍질을 더해 마시는 방법이 기록되어 있다."
+     },
+     {
+      "claim": "동의보감 — 술독을 풀고 입 냄새를 없앰",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/유자차",
+      "note": "《동의보감》에는 유자가 “위 속의 나쁜 기를 없애고 술독을 풀어주며 입 냄새를 없앤다”고 기록되어 있다."
+     },
+     {
+      "claim": "1835년경 임원십육지 — 유자 껍질과 배를 채 썰어 꿀물에 석류알",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/%EC%9C%A0%EC%9E%90%EC%B0%A8",
+      "note": "1835년경의 《임원십육지》에는 《증보산림경제》를 인용하여 유자 껍질과 배 과육을 채 썰어 꿀물에 넣고, 석류알을 띄워 마시는 방법이 소개되어 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%9C%A0%EC%9E%90%EB%82%98%EB%AC%B4"
+    ],
+    "hintNote": "원산지는 중국의 장강 상류로서 쓰촨성, 후베이성, 윈난성 및 티베트 등지에 야생하고 있으며 한국에는 신라시대에 전래되었고",
+    "easiestCue": "채 썬 이 열매와 배를 꿀물에 넣고 잣을 띄움",
+    "targetWhy": "전통 음료의 문헌 세부 — 요리 애호가(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'청을 물에 타 마시는 차' 의 대표가 몇 안 돼 3 으로 볼 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck 유자차 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/5#g019a-K2-23",
+   "seed": {
+    "subject": "주악",
+    "aspect": null,
+    "ref": "K2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "『임원경제지』는 손님 대접과 제사 음식에서 이 떡을 떡 가운데 으뜸으로 친다고 적었고, 『진찬의궤』에는 대추·감태·후추 등을 넣은 여러 가지가 보입니다. 소를 넣어 송편처럼 빚은 뒤 기름에 지지는 이 떡은?",
+    "answer": "주악",
+    "acceptedAnswers": [
+     "개성주악"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "떡을 높이 괸 위에 웃기로 얹거나, 이것만 따로 높이 괴어 담기도 했다.",
+    "identity": "찹쌀 반죽에 소를 넣어 빚어 기름에 지진 개성식 웃기떡",
+    "familiarity": {
+     "judge": 1,
+     "pct": 15,
+     "why": "지역 전통 떡으로 낯선 이름",
+     "piece": "f02",
+     "genPct": 40
+    },
+    "sources": [
+     "https://encykorea.aks.ac.kr/Article/E0053333",
+     "https://ko.wikipedia.org/wiki/주악"
+    ],
+    "facts": [
+     {
+      "claim": "임원경제지 정조지 — 손님 대접·제사 음식에서 병품의 상",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0053333",
+      "note": "주악은 『임원경제지』 정조지(鼎俎志)에, “지금 사람은 가장 귀중히 여기며 손님 대접과 제사음식에는 반드시 이것을 병품(餠品)의 상으로 친다.”고 한 것으로 미루어 고급 떡류였음을 알 수 있다."
+     },
+     {
+      "claim": "진찬의궤 — 대추주악·감태주악·후추주악 등",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0053333",
+      "note": "『진찬의궤(進饌儀軌)』에는 대추주악·감태주악·후추주악·계피주악·치잣황주악 등의 각색 주악이 보인다."
+     },
+     {
+      "claim": "찹쌀가루 반죽에 소를 넣어 송편처럼 만들어 기름에 지진 떡",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0053333",
+      "note": "찹쌀가루를 반죽하여 소를 넣고 송편처럼 만들어 기름에 지진 떡."
+     },
+     {
+      "claim": "웃기로 놓거나 따로 높이 괴어 담음",
+      "where": "e",
+      "url": "https://encykorea.aks.ac.kr/Article/E0053333",
+      "note": "주악은 떡을 높이 괸 위에 웃기로 놓거나 따로 주악 한 가지만을 높이 괴어 담기도 한다."
+     }
+    ],
+    "discarded": "정답 친숙도 1 — 판정자 pct 15 (지역 전통 떡으로 낯선 이름) · 15 §5-4 · 채점 전에 격리"
+   }
+  }
+ ]
+}

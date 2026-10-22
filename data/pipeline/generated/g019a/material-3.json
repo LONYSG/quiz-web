@@ -1,0 +1,131 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "material/3",
+  "midKey": "material",
+  "subName": "건설 공법",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "material/3#g019a-C2-19",
+   "seed": {
+    "subject": "잠수병",
+    "aspect": null,
+    "ref": "C2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 세인트루이스의 이즈 다리 공사에서는 노동자 15명이 당시엔 정체 모를 이 병으로 숨졌고, 브루클린 다리 공사 때는 책임자 워싱턴 로블링이 이 병으로 일을 못 하게 되었습니다. 앓는 이들이 허리를 앞으로 굽힌 모습이 당시 유행하던 여성 자세를 닮아 '그리스식 굽힘'이라 불린 이 병은?",
+    "answer": "잠수병",
+    "acceptedAnswers": [
+     "감압병",
+     "잠함병"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '감압병' → '잠수병' 넘겨주기 · 문서 첫 줄 '흔히 감압병 혹은 잠합병이라고도'(잠함병은 활성 #4562 질문의 표기)",
+    "explanation": "이즈 다리 현장 의사 알퐁스 자미네는 자신도 이 병에 걸려, 그 증상을 처음으로 직접 겪은 대로 기록했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'그리스식 굽힘'이라 불린 이 병",
+     "difWhy": "the bends · 케이슨병 — 대학 교양 의학사",
+     "wor": 4,
+     "worWhy": "교양 — 감압 질환",
+     "acc": 2,
+     "accWhy": "재료·건설 기술 — 애호가 영역"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "압축 공기 작업실에서 일하던 노동자 … 이 병",
+     "difWhy": "감압병 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "병 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "미국 세인트루이스의 이즈 다리 공사에서는 강바닥 아래 압축 공기 작업실에서 일하던 노동자 15명이 당시엔 정체 모를 이 병으로 숨졌습니다. 뒤이은 브루클린 다리 공사 때는 앓는 이들이 허리를 앞으로 굽힌 모습이 당시 유행하던 여성 자세를 닮았다 해 '그리스식 굽힘'이라 불린 이 병은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "강바닥 아래 압축 공기 작업실에서 일하던 노동자",
+     "addedCue": "브루클린 다리 책임자 워싱턴 로블링이 이 병으로 쓰러짐",
+     "why": "압축 공기 작업실(병의 원인 = 정의)을 빼고 다리 공사의 뒷이야기로"
+    },
+    "generalHint": "로블링이 쓰러진 뒤에는 다리 공법을 독학한 아내 에밀리가 현장 감독을 대부분 넘겨받았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "높은 압력에서 급히 나올 때 몸속 기체가 거품이 되는 병",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "다이빙·해녀 관련 뉴스로 앎",
+     "piece": "f08",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "C2-19",
+     "key": "b135",
+     "hint": "로블링이 쓰러진 뒤에는 다리 공법을 독학한 아내 에밀리가 현장 감독을 대부분 넘겨받았다.",
+     "guess": "브루클린 다리",
+     "confidence": "high",
+     "hit": false,
+     "answer": "잠수병"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Decompression_sickness"
+    ],
+    "facts": [
+     {
+      "claim": "이즈 다리 공사 때 15명이 당시 정체 모를 병으로 숨짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Decompression_sickness",
+      "note": "DCS was a major factor during the construction of Eads Bridge, when 15 workers died from what was then a mysterious illness"
+     },
+     {
+      "claim": "브루클린 다리 공사 때 허리를 앞으로 굽힌 모습이 유행하던 여성 자세 '그리션 벤드'를 닮아 그렇게 불림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Decompression_sickness",
+      "note": "During this project, decompression sickness became known as \"The Grecian Bends\" or simply \"the bends\" because affected individuals characteristically bent forward at the hips: this is possibly reminiscent of a then popular women's fashion and dance maneuver known as the Grecian Bend."
+     },
+     {
+      "claim": "현장 의사 자미네가 직접 걸려 남긴 기록이 첫 기록",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Decompression_sickness",
+      "note": "1871: The Eads Bridge in St Louis employed 352 compressed air workers including Alphonse Jaminet as the physician in charge. Jaminet himself developed decompression sickness and his personal description was the first such recorded."
+     },
+     {
+      "claim": "브루클린 다리 공사 책임자 워싱턴 로블링이 이 병으로 일을 못 하게 됨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Decompression_sickness",
+      "note": "DCS was a major factor during the construction of Eads Bridge, when 15 workers died from what was then a mysterious illness, and later during the construction of the Brooklyn Bridge, where it incapacitated the project leader Washington Roebling."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Washington_Roebling"
+    ],
+    "hintNote": "His wife, Emily Warren Roebling, who had taught herself bridge construction, took over much of the chief engineer's duties including day-to-day supervision and project management.",
+    "easiestCue": "허리를 앞으로 굽힌 모습 때문에 '그리스식 굽힘'이라고도 불린",
+    "targetWhy": "병의 옛 별명과 다리 공사사 — 대학 교양(경계 4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'압축 공기' 에서 고교 물리로 감압 → 잠수병 추리가 가능해 3 일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "new — 활성 4562(정답 브루클린 다리) 질문에 '잠함병' 이 나와 그 문항의 로블링 일화는 쓰지 않음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

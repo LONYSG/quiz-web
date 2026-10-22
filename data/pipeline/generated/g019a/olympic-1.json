@@ -1,0 +1,656 @@
+{
+ "_meta": {
+  "round": "g019a",
+  "subId": "olympic/1",
+  "midKey": "olympic",
+  "subName": "하계 올림픽",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "olympic/1#g019a-S2-01",
+   "seed": {
+    "subject": "패럴림픽",
+    "aspect": null,
+    "ref": "S2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "의사 안토니오 마글리오의 제안으로 1960년 로마에서 23개 나라 선수 400명이 모인 대회가 이 대회의 첫 공식 대회로 꼽힙니다. 세 개의 '아지토스'가 한 점을 둘러싼 모양을 2003년부터 상징으로 쓰는 이 국제 대회는?",
+    "answer": "패럴림픽",
+    "acceptedAnswers": [
+     "장애인 올림픽"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 패럴림픽 문서 첫머리 \"흔히 장애인 올림픽이라고 부르기도 한다\" 확인",
+    "explanation": "이 대회 이름은 1988년 서울 대회 때 처음 공식으로 쓰였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "세 개의 '아지토스'가 한 점을 둘러싼 모양을 … 상징",
+     "difWhy": "아지토스 상징 대회 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 국제 대회",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "스토크맨더빌 병원에서 참전 군인들의 경기 대회",
+     "difWhy": "장애인 대회 기원 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 국제 대회"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1948년 런던 대회 개막일, 나치 독일을 피해 영국에 온 의사 루트비히 구트만이 스토크맨더빌 병원에서 참전 군인들의 경기 대회를 열었습니다. 2024년부터 성화 봉송도 이곳에서 공식 출발하는, 이 대회에서 비롯된 국제 대회는 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "구트만이 스토크맨더빌 병원에서 연 참전 군인 경기 대회 · 2024년부터 성화가 그곳에서 출발",
+     "addedCue": "1960 로마 대회(마글리오 제안) · 세 아지토스 상징",
+     "why": "스토크맨더빌 기원(스포츠 관심층 상식)을 빼고 첫 공식 대회·상징 세부로"
+    },
+    "generalHint": "1976년 스웨덴 외른셸드스비크에서 이 대회의 첫 겨울 대회가 열렸다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "장애가 있는 선수들이 겨루는 올림픽 짝 국제 대회",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "올림픽과 함께 열리는 대회",
+     "piece": "f06",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "S2-01",
+     "key": "b091",
+     "hint": "1976년 스웨덴 외른셸드스비크에서 이 대회의 첫 겨울 대회가 열렸다.",
+     "guess": "패럴림픽",
+     "confidence": "high",
+     "hit": true,
+     "answer": "패럴림픽"
+    },
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Paralympic_Games"
+    ],
+    "facts": [
+     {
+      "claim": "1988 서울에서 이름이 처음 공식 사용",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Paralympic_Games",
+      "note": "The Summer Games of 1988 held in Seoul was the first time the term Paralympic came into official use."
+     },
+     {
+      "claim": "1960 로마 — 마글리오 제안, 23개국 400명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Paralympic_Games",
+      "note": "The 1960 Games in Rome drew 400 athletes with disabilities from 23 countries, as proposed by doctor Antonio Maglio."
+     },
+     {
+      "claim": "첫 공식 대회는 1960 로마",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Paralympic_Games",
+      "note": "The first official Paralympic Games, coincident with the ninth Stoke Mandeville Games but no longer open solely to war veterans, was held in Rome in 1960."
+     },
+     {
+      "claim": "세 아지토스가 중심점을 둘러쌈 · 2003년 현재 상징으로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Paralympic_Games",
+      "note": "The three Agitos circle a central point, which is a symbol for the athletes congregating from all points of the globe. … The motto and symbol of the IPC were changed in 2003 to their current versions."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Paralympic_Games"
+    ],
+    "hintNote": "The first Winter Paralympic Games were held in 1976 in Örnsköldsvik, Sweden.",
+    "easiestCue": "세 개의 '아지토스'가 한 점을 둘러싼 모양을 … 상징으로",
+    "targetWhy": "국제 대회의 역사·상징 — 스포츠 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "병원·참전 군인에서 장애인 대회를 추리할 수 있어 3 쪽 위험",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/1#g019a-S2-02",
+   "seed": {
+    "subject": "우사인 볼트",
+    "aspect": null,
+    "ref": "S2-02",
+    "pairedWith": 5074
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 5074,
+    "question": "2009년 베를린 세계선수권 마지막 날, 베를린 시장은 이 선수에게 무게 3톤 가까운 베를린 장벽 조각을 선물했습니다. 2017년 1월 팀 동료 네스타 카터의 2008년 시료 재검사 양성 반응으로 베이징 대회 계주 금메달을 잃은 이 선수는?",
+    "answer": "우사인 볼트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2017년 세계선수권을 끝으로 은퇴했는데, 마지막 계주 결승에서 다리를 다쳐 멈춰 섰습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "팀 동료 네스타 카터 … 베이징 대회 계주 금메달을 잃은",
+     "difWhy": "자메이카 계주 금 박탈 — 뉴스에서 흔히",
+     "wor": 3,
+     "worWhy": "누구나 아는 선수 이름",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "마지막 대회였던 세계선수권 계주 결승에서는 다리를 다쳐 멈춰 섰는데",
+     "difWhy": "2017 은퇴 경기 부상 — 스포츠 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "세계적 선수 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2017년 1월 이 선수는 팀 동료 네스타 카터의 2008년 시료 재검사 양성 반응 때문에 베이징 대회 계주 금메달을 잃었습니다. 같은 해 8월 마지막 대회였던 세계선수권 계주 결승에서는 다리를 다쳐 멈춰 섰는데, 이 선수는 누구일까요?",
+     "beforeExplanation": "카터의 시료에서 나온 금지 약물은 메틸헥산아민이었습니다.",
+     "removedCue": "2017년 마지막 대회 세계선수권 계주 결승에서 다리를 다쳐 멈춤",
+     "addedCue": "2009년 베를린 시장이 선물한 3톤 가까운 베를린 장벽 조각",
+     "why": "널리 중계된 은퇴 경기 부상을 해설로 옮기고 뒷이야기로"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "자메이카 출신 남자 100m·200m 세계 기록 보유 단거리 선수",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "세계적 육상 스타",
+     "piece": "f09",
+     "genPct": 95
+    },
+    "blind": null,
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Usain_Bolt"
+    ],
+    "facts": [
+     {
+      "claim": "2017년 1월 카터 도핑으로 2008 베이징 계주 금메달 박탈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Usain_Bolt",
+      "note": "However, in January 2017, Bolt was stripped of the 4 × 100 m relay gold from the Beijing Games in 2008 because his teammate Nesta Carter was found guilty of a doping violation."
+     },
+     {
+      "claim": "2017 세계선수권이 마지막, 계주 결승에서 부상으로 멈춤",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Usain_Bolt",
+      "note": "Bolt retired after the 2017 World Championships, when he finished third in his last solo 100 m race, opted out of the 200 m, and pulled up injured in the 4 × 100 m relay final."
+     },
+     {
+      "claim": "2009 베를린 세계선수권 마지막 날 베를린 시장이 3톤 가까운 장벽 조각 선물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Usain_Bolt",
+      "note": "On the last day of the Berlin Championships, the Governing Mayor of Berlin, Klaus Wowereit, presented Bolt with a 12-foot high section of the Berlin Wall ... The nearly three-ton segment was delivered to the Jamaica Military Museum in Kingston. (2009 World Championships)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "카터 도핑으로 베이징 계주 금메달을 잃은 선수",
+    "targetWhy": "장벽 조각 선물·메달 박탈은 육상 애호가 세부 — 4(경계)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "계주 스타라는 점에서 볼트를 짐작하기 쉬움",
+    "pairCheck": "1회차 질문(크리켓 소년)·해설(축구 팬)·힌트(세계주니어 2002)와 겹치지 않음 — 2017 박탈·은퇴 부상은 새 사실",
+    "dbCheck": "pair-or-different 5074 — (가) 2회차, 다른 지식",
+    "warn": [
+     "단정어 마지막"
+    ],
+    "first": {
+     "id": 5074,
+     "question": "자메이카의 작은 마을 셔우드 콘텐트에서 태어난 이 육상 선수가 처음 빠진 운동은 크리켓이었고, 그는 단거리 선수가 아니었다면 패스트 볼러가 됐을 거라고 말했습니다. 윌리엄 니브 기념 고등학교 시절 크리켓 코치가 그의 빠른 발을 눈여겨보고 육상을 권한 이 선수는 누구일까요?",
+     "explanation": "어린 시절 그는 축구도 즐겨 레알 마드리드와 맨체스터 유나이티드를 좋아했습니다.",
+     "hint": "그는 2002년 자국 킹스턴에서 열린 세계주니어선수권 200m에서 우승해 역대 최연소 세계주니어 금메달리스트가 되었다.",
+     "difficulty": 3
+    }
+   }
+  },
+  {
+   "seedId": "olympic/1#g019a-S2-03",
+   "seed": {
+    "subject": "아디다스",
+    "aspect": null,
+    "ref": "S2-03",
+    "pairedWith": 2916
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2916,
+    "question": "1936년 베를린 대회에서 금메달 넷을 딴 제시 오언스는, 한 신발 장인이 직접 찾아와 건넨 스파이크를 신고 뛰었습니다. 이 장인은 1954년 월드컵 결승 '베른의 기적' 때 서독 대표팀에 나사로 갈아 끼우는 스터드를 단 축구화를 댔는데, 그가 1949년 세운 회사는?",
+    "answer": "아디다스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "미군은 오언스의 신발을 만든 공장이라는 것을 알고 이 공장을 그대로 남겨 두었다고 전합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 신발 장인 + 그가 1949년 세운 회사",
+     "difWhy": "아디 다슬러 신발 회사 — 스포츠 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 브랜드 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 신발 장인 + 그가 1949년 세운 회사",
+     "difWhy": "아디 다슬러 신발 회사 — 스포츠 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 브랜드 기원 이야깃거리"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "묻는 것이 '그가 세운 회사' 라 창업자·창업 사실이 곧 범주 단서(1회차 정의와 겹침)이고, 그것을 빼면 같은 다슬러 공장에서 비롯한 푸마와 갈려 정답이 유일하지 않음"
+    },
+    "generalHint": "1970년 멕시코 월드컵 공인구 '텔스타'는 오각형 12장과 육각형 20장으로 된 첫 월드컵 공이었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "세 줄 무늬로 알려진 독일 스포츠 용품 회사",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 브랜드",
+     "piece": "f07",
+     "genPct": 98
+    },
+    "blind": {
+     "ref": "S2-03",
+     "key": "b169",
+     "hint": "1970년 멕시코 월드컵 공인구 '텔스타'는 오각형 12장과 육각형 20장으로 된 첫 월드컵 공이었다.",
+     "guess": "축구공",
+     "confidence": "mid",
+     "hit": false,
+     "answer": "아디다스"
+    },
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Adolf_Dassler",
+     "https://en.wikipedia.org/wiki/Adidas"
+    ],
+    "facts": [
+     {
+      "claim": "1936 베를린 대회 오언스가 다슬러의 신발을 신고 금메달 넷(멀리뛰기·개인 트랙 둘·계주)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Adolf_Dassler",
+      "note": "The relationship proved extremely valuable in giving Adi access to the athletes ... at the 1936 Berlin Olympics. / Adi found his way to meet Owens, who accepted a wordless offer and wore his shoes ... when he defeated Luz Long ... in his two further individual gold-winning performances in track and as a member of the United States' upset of the German relay team."
+     },
+     {
+      "claim": "1954 베른의 기적, 나사식 스터드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Adolf_Dassler",
+      "note": "Dassler informed Herberger before the match of his latest innovation—\"screw in studs.\" ... The West Germans staged a come-from-behind upset, winning 3-2 in what became known as the Miracle of Bern."
+     },
+     {
+      "claim": "1949년 아디다스 설립",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Adidas",
+      "note": "Adolf forming a company registered as Adidas AG, from Adi Dassler, on 18 August 1949"
+     },
+     {
+      "claim": "미군이 공장을 남겨 둠",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Adolf_Dassler",
+      "note": "When American GIs discovered that the Dassler factory was where the shoes for Owens' Olympic victories were made, they decided to let the works remain."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Adidas_Telstar"
+    ],
+    "hintNote": "A slightly different ball named \"Telstar\" was used as the official match ball of the 1970 FIFA World Cup in Mexico. The Telstar was the first World Cup ball to use the now-familiar truncated icosahedron ... 12 black pentagonal and 20 white hexagonal panels.",
+    "easiestCue": "1954년 월드컵 결승 '베른의 기적' 때 서독 대표팀에 나사로 갈아 끼우는 스터드를 단 축구화를 댔는데",
+    "targetWhy": "오언스 스파이크·베른의 기적 스터드 — 스포츠사·축구 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 브랜드의 창업자 뒷이야기, 형제 분열(1회차 해설)은 뺐다",
+    "pairCheck": "1회차 질문(이름 유래·세 줄 무늬)·해설(형 푸마)과 겹치지 않음 — 질문에 브랜드 정의·형제 이야기 없음",
+    "dbCheck": "pair-or-different 2916(패션 브랜드) — 다른 지식",
+    "warn": [],
+    "first": {
+     "id": 2916,
+     "question": "창업자 아돌프 다슬러의 애칭과 성을 줄여 이름을 짓고, 세 줄 무늬로 알려진 독일 스포츠 브랜드는?",
+     "explanation": "형제가 갈라서며 형은 푸마를 세웠습니다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "olympic/1#g019a-S2-04",
+   "seed": {
+    "subject": "뉴질랜드",
+    "aspect": null,
+    "ref": "S2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1976년 몬트리올 대회에서 이 나라는 남자 필드하키 결승에서 오스트레일리아를 꺾고 금메달을 땄습니다. 그 대회에는 IOC가 이 나라의 출전을 막지 않았다는 이유로 아프리카 나라를 중심으로 29개국이 나오지 않았는데, 이 나라는?",
+    "answer": "뉴질랜드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그해 이 나라 럭비 대표팀이 아파르트헤이트의 남아프리카 공화국을 순회한 것이 보이콧의 이유였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "IOC가 이 나라의 출전을 막지 않았다는 이유로 … 29개국이 나오지 않았는데",
+     "difWhy": "1976 아프리카 보이콧 원인국 — 올림픽 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 올림픽 보이콧사",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이 나라 럭비 대표팀이 아파르트헤이트의 남아프리카 공화국을 순회",
+     "difWhy": "럭비 강국 순회 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "올림픽 보이콧 이야깃거리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1976년 몬트리올 대회에는 아프리카 나라를 중심으로 29개국이 나오지 않았습니다. 그해 이 나라 럭비 대표팀이 아파르트헤이트의 남아프리카 공화국을 순회했는데도 IOC가 이 나라의 출전을 막지 않았기 때문인데, 이 나라는 어디일까요?",
+     "beforeExplanation": "이 나라는 그 대회 남자 필드하키에서 오스트레일리아를 꺾고 금메달을 땄습니다.",
+     "removedCue": "이 나라 럭비 대표팀이 아파르트헤이트의 남아프리카 공화국을 순회",
+     "addedCue": "남자 필드하키 결승에서 오스트레일리아를 꺾고 금메달",
+     "why": "보이콧 이유(럭비 순회)를 해설로 옮기고 해설의 필드하키 금메달을 질문으로"
+    },
+    "generalHint": "1984년 데이비드 롱이 총리가 되자 이 나라는 핵 추진·핵무장 함정의 항구 출입을 막았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "오스트레일리아 남동쪽 남태평양의 섬나라",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 나라",
+     "piece": "f03",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "S2-04",
+     "key": "b049",
+     "hint": "1984년 데이비드 롱이 총리가 되자 이 나라는 핵 추진·핵무장 함정의 항구 출입을 막았다.",
+     "guess": "뉴질랜드",
+     "confidence": "high",
+     "hit": true,
+     "answer": "뉴질랜드"
+    },
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/1976_Summer_Olympics"
+    ],
+    "facts": [
+     {
+      "claim": "남자 필드하키 금메달",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1976_Summer_Olympics",
+      "note": "The New Zealand men's national field hockey team beat Australia to win gold"
+     },
+     {
+      "claim": "29개국 보이콧, 뉴질랜드 럭비 남아공 순회",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1976_Summer_Olympics",
+      "note": "Twenty-nine countries, mostly African, boycotted the Montreal Games when the International Olympic Committee (IOC) refused to ban New Zealand, after the New Zealand national rugby union team had toured South Africa earlier in 1976 in defiance of the United Nations' calls for a sporting embargo due to their racist apartheid policies."
+     },
+     {
+      "claim": "29개국 보이콧, 뉴질랜드 럭비 남아공 순회",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1976_Summer_Olympics",
+      "note": "Twenty-nine countries, mostly African, boycotted the Montreal Games when the International Olympic Committee (IOC) refused to ban New Zealand, after the New Zealand national rugby union team had toured South Africa earlier in 1976 in defiance of the United Nations' calls for a sporting embargo due to their racist apartheid policies."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Nuclear-free_zone"
+    ],
+    "hintNote": "In 1984, Prime Minister David Lange barred nuclear-powered or nuclear-armed ships from using New Zealand ports or entering New Zealand waters.",
+    "easiestCue": "1976년 몬트리올 대회 29개국 보이콧의 원인 국가",
+    "targetWhy": "보이콧 원인 국가·필드하키 금은 올림픽 애호가 세부 — 4(경계 3)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 나라, 교과서 밖 올림픽사",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different 6045(여성 참정권) — 다른 지식",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "olympic/1#g019a-S2-05",
+   "seed": {
+    "subject": "핸드볼",
+    "aspect": null,
+    "ref": "S2-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1936년 베를린 대회에서 처음 올림픽에 들어온 이 종목은 야외에서 한 팀 열한 명씩 겨루는 경기였습니다. 그 뒤 빠졌다가 1972년 뮌헨 대회에서 실내 경기로 돌아왔고, 여자 경기는 1976년 몬트리올 대회에서 시작된 이 종목은 무엇일까요?",
+    "answer": "핸드볼",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "야외 경기는 1952년 헬싱키 대회에서 시범 종목으로 한 번 더 치러졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1936년 … 야외에서 한 팀 열한 명 … 1972년 실내 경기로",
+     "difWhy": "야외→실내 올림픽 종목 — 스포츠 애호가",
+     "wor": 3,
+     "worWhy": "종목 역사 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1936년 … 야외에서 한 팀 열한 명 … 1972년 실내 경기로",
+     "difWhy": "야외→실내 올림픽 종목 — 스포츠 애호가",
+     "wor": 3,
+     "worWhy": "종목 역사 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "한국 여자 대표팀은 1988년 서울 대회에서 유럽 밖 나라로는 처음 이 종목 정상에 올랐다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "공을 손으로 던져 골문에 넣는 7인제 구기 종목",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "체육 시간·올림픽 종목",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "S2-05",
+     "key": "b032",
+     "hint": "한국 여자 대표팀은 1988년 서울 대회에서 유럽 밖 나라로는 처음 이 종목 정상에 올랐다.",
+     "guess": "핸드볼",
+     "confidence": "high",
+     "hit": true,
+     "answer": "핸드볼"
+    },
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Handball_at_the_1936_Summer_Olympics",
+     "https://en.wikipedia.org/wiki/Handball_at_the_Summer_Olympics"
+    ],
+    "facts": [
+     {
+      "claim": "1936 첫 등장, 야외 11명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Handball_at_the_1936_Summer_Olympics",
+      "note": "Field handball at the 1936 Summer Olympics was the first appearance of the sport at the Olympics. ... Games were played outdoors with 11 players on each side."
+     },
+     {
+      "claim": "1972 뮌헨 실내 복귀, 1976 여자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Handball_at_the_Summer_Olympics",
+      "note": "(Indoor) handball was introduced for men at the 1972 Summer Olympics in Munich. Women's handball competition was introduced at the 1976 Summer Olympics in Montreal."
+     },
+     {
+      "claim": "1952 시범 종목",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Handball_at_the_Summer_Olympics",
+      "note": "At the 1952 Olympics, field handball was a demonstration sport."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%97%AC%EC%9E%90_%ED%95%B8%EB%93%9C%EB%B3%BC_%EA%B5%AD%EA%B0%80%EB%8C%80%ED%91%9C%ED%8C%80"
+    ],
+    "hintNote": "특히 1988년 하계 올림픽과 1995년 세계 여자 핸드볼 선수권 대회에서 비유럽권 최초로 우승을 차지했다.",
+    "easiestCue": "1972년 뮌헨 대회에서 실내 경기로 돌아왔고",
+    "targetWhy": "야외 11인제 핸드볼의 올림픽사 — 스포츠사 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 종목의 잊힌 옛 모습",
+    "pairCheck": null,
+    "dbCheck": "pair-or-different 964(축구 반칙 핸드볼) — 다른 대상·다른 지식",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "olympic/1#g019a-S2-06",
+   "seed": {
+    "subject": "트라이애슬론",
+    "aspect": null,
+    "ref": "S2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1974년 9월 미국 샌디에이고 미션베이에서 샌디에이고 육상 클럽의 잭 존스턴과 돈 섀너핸이 연 경기가 이 종목의 첫 현대식 대회로 꼽힙니다. 영국의 앨리스터 브라운리가 2012·2016년 올림픽 개인전을 잇달아 우승한 이 종목은 무엇일까요?",
+    "answer": "트라이애슬론",
+    "acceptedAnswers": [
+     "철인삼종경기",
+     "철인 3종 경기",
+     "철인 3종"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 트라이애슬론 첫 줄 \"트라이애슬론(triathlon) 또는 철인삼종경기\" 확인 — 숫자 표기 철인 3종은 같은 이름의 흔한 꼴",
+    "explanation": "2000년 시드니 대회에서 처음 올림픽 종목이 되어 오페라 하우스 일대에서 치러졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "앨리스터 브라운리가 2012·2016년 올림픽 개인전을 잇달아 우승",
+     "difWhy": "브라운리 2연패 종목 — 스포츠 애호가",
+     "wor": 3,
+     "worWhy": "종목 기원 이야깃거리",
+     "acc": 4,
+     "accWhy": "올림픽 — 대부분이 관심 (일상은 아니다)"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "앨리스터 브라운리가 2012·2016년 올림픽 개인전을 잇달아 우승",
+     "difWhy": "브라운리 2연패 종목 — 스포츠 애호가",
+     "wor": 3,
+     "worWhy": "종목 기원 이야깃거리"
+    },
+    "rewrite": null,
+    "generalHint": "브라운리의 동생 조니도 같은 종목에서 2012년 동메달, 2016년 은메달을 땄다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "수영·사이클·달리기를 잇달아 하는 복합 종목",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "철인 3종 경기로 알려진 종목",
+     "piece": "f07",
+     "genPct": 80
+    },
+    "blind": {
+     "ref": "S2-06",
+     "key": "b103",
+     "hint": "브라운리의 동생 조니도 같은 종목에서 2012년 동메달, 2016년 은메달을 땄다.",
+     "guess": "트라이애슬론",
+     "confidence": "high",
+     "hit": true,
+     "answer": "트라이애슬론"
+    },
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Triathlon",
+     "https://en.wikipedia.org/wiki/Triathlon_at_the_Summer_Olympics",
+     "https://en.wikipedia.org/wiki/Triathlon_at_the_2000_Summer_Olympics"
+    ],
+    "facts": [
+     {
+      "claim": "1974.9.25 미션베이, 존스턴·섀너핸",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Triathlon",
+      "note": "The first modern swim/bike/run event was held at Mission Bay, San Diego, California, on September 25, 1974. The race was conceived and directed by two members of the San Diego Track Club, Jack Johnstone and Don Shanahan."
+     },
+     {
+      "claim": "브라운리 2012·2016 개인전 두 번 우승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Triathlon_at_the_Summer_Olympics",
+      "note": "Only one athlete, Great Britain's Alistair Brownlee, has ever won the individual Olympic triathlon twice (in 2012 and 2016)"
+     },
+     {
+      "claim": "2000 시드니 첫 올림픽, 오페라 하우스",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Triathlon_at_the_Summer_Olympics",
+      "note": "Triathlon had its Summer Olympics debut at the 2000 Games, in Sydney"
+     },
+     {
+      "claim": "시드니 오페라 하우스에서 열림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Triathlon_at_the_2000_Summer_Olympics",
+      "note": "This sporting event was held at the Sydney Opera House."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jonny_Brownlee"
+    ],
+    "hintNote": "He won the bronze medal in the individual triathlon at the London 2012 Olympic Games, the silver medal in the same race at the Rio 2016 Olympic Games",
+    "easiestCue": "영국의 앨리스터 브라운리가 2012·2016년 올림픽 개인전을 잇달아 우승한 이 종목",
+    "targetWhy": "미션베이 기원·브라운리 2연패 — 철인 경기 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름 알려진 종목의 기원 세부, 하와이 아이언맨(활성 4830)과 다른 사실",
+    "pairCheck": null,
+    "dbCheck": "new (관련 4830 아이언맨 — 다른 정답·다른 지식)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}
