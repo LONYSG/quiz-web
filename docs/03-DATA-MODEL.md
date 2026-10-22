@@ -361,6 +361,15 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 - 미니게임 기록(minigame_runs · players · rounds · results · rewards)은 퀴즈 판 안 미니게임과 같은 표 · game_id 로 붙는다(after_question_index = null). game_players.final_score = 순위 점수 합.
 - 전적(GET /api/me/stats)의 "퀴즈 판 수" 는 mode = 'quiz' 만 센다.
 
+## ★★ 포인트 지급 · 제보 채택 (R059 / 0023 — D-254)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `point_grants` | id bigserial · account_id FK(계정 지우면 같이) · amount int > 0 · reason text('feedback_adopted' · 'feedback_monthly_top' · 'admin') · ref_type text null('question_feedback') · ref_id bigint null · note text null(≤200 — 운영자 메모 · 화면에 안 나감) · created_at · **seen_at** null · 인덱스 (account_id, created_at) | **사람이 스크립트로만 쓴다**(`npm run feedback:adopt` · `points:grant`) · 서버는 seen_at 만 적는다(POST /api/me/grants/claim — 로그인 뒤 토스트 한 번) · 지우지 않는다 |
+| `question_feedback` + | **adopted_at** timestamptz null · **adopted_grant_id** FK point_grants null(지급 지우면 null) | 채택 = 한 트랜잭션(지급 행 + 두 칸) · 이미 채택이면 거부 |
+- ★ 포인트 = answer_events.accepted 수 + minigame_rewards 합 + **point_grants 합** − point_spends 합(server/src/db/points.ts POINTS_SQL 넷째 항). 전적 · 업적은 minigame_rewards 만 읽는다(지급은 전적이 아니다).
+- ★ 이관(0023): 2026-10-21 수동 지급을 넣은 가짜 미니게임 판(minigame_key 'admin-grant' · #274 · #463 · #466 → 70 · 200 · 200)을 point_grants('admin' · seen_at 채움)로 옮기고 그 판을 지웠다 — 잔액 그대로(123qwe 97 · yuja0218 2).
+
 ## ★★ 근접 오답 (R058 / 0022 — D-252 · A83 (나))
 
 | 표 · 열 | 형식 | 규칙 |

@@ -197,9 +197,11 @@ SELECT a.login_id, e.name_ko, ae.obtained_at FROM account_emojis ae JOIN account
 ```sql
 -- 누가 언제 무엇을 뽑았나 (최근 50)
 SELECT p.id, a.login_id, p.amount, p.ref, p.created_at FROM point_spends p JOIN accounts a ON a.id = p.account_id WHERE p.reason = 'gacha' ORDER BY p.id DESC LIMIT 50;
--- 계정별 잔액 한눈에 (번 것 − 쓴 것)
+-- 계정별 잔액 한눈에 (맞힘 + 미니게임 보상 + 지급(R059) − 쓴 것)
 SELECT a.login_id,
        (SELECT count(*) FROM answer_events e WHERE e.account_id = a.id AND e.accepted) AS earned,
+       (SELECT coalesce(sum(amount),0) FROM minigame_rewards w WHERE w.account_id = a.id) AS rewards,
+       (SELECT coalesce(sum(amount),0) FROM point_grants g WHERE g.account_id = a.id) AS grants,
        (SELECT coalesce(sum(amount),0) FROM point_spends p WHERE p.account_id = a.id) AS spent,
        (SELECT count(*) FROM account_emojis ae WHERE ae.account_id = a.id) AS owned_special
   FROM accounts a ORDER BY earned DESC;
@@ -305,6 +307,25 @@ DELETE FROM minigame_item_experiences WHERE account_id IN (SELECT id FROM accoun
 ```
 - 문항 · 그림은 DB 가 정본이 됐다(파일은 찬종 PC · git 밖 그림) — `npm run db:backup` 에 들어간다.
 - 기록은 지우지 않는 것이 원칙이다(docs/17 3절) — 위 DELETE 는 잘못 지급된 보상을 바로잡을 때만.
+
+### ★★★ 보너스 포인트 — 제보 채택 · 수동 지급 (R059 · D-254)
+★ **가짜 미니게임 판으로 지급하지 않는다**(0023 이 옮겼다). 지급은 명령 둘로만 — `--yes` 없으면 할 일만 찍고 멈춘다.
+```bash
+npm run feedback:report -- --no-bots          # 👎 설문 하나하나(f#) · 채택 표시 · 사람별 합계(월별)
+npm run db:backup
+npm run feedback:adopt -- --id 210 --yes                                   # 설문 f#210 채택 · 5P
+npm run points:grant -- --login yuja0218 --points 30 --reason feedback_monthly_top --note "2026-10 최다" --yes
+npm run points:grant -- --login 123qwe --points 50 --reason admin --note "이벤트" --yes
+```
+```sql
+-- 지급 보기
+SELECT g.id, a.login_id, g.amount, g.reason, g.ref_id, g.note, g.created_at, g.seen_at FROM point_grants g JOIN accounts a ON a.id = g.account_id ORDER BY g.id DESC LIMIT 50;
+-- 잘못 준 것 되돌리기(채택이면 설문 표시도 같이) — 한 트랜잭션
+BEGIN;
+UPDATE question_feedback SET adopted_at = NULL, adopted_grant_id = NULL WHERE adopted_grant_id = 123;
+DELETE FROM point_grants WHERE id = 123;
+COMMIT;
+```
 
 ### ★★★ 검사 DB quizweb_test (R060 · D-253)
 - 검사(ui-check · bot · smoke)는 **quizweb_test 만** 쓴다 — 실 DB 로는 검사 서버가 뜨지 않는다(QUIZ_TEST_SERVER 빗장).
