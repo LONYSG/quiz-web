@@ -23,7 +23,7 @@ import {
   decimalsFor,
   minigameReward,
   minigameSlots,
-  rankFinal,
+  rankMinigameFinal,
   rankRound,
   type MinigameKey,
   type MinigamePhase,
@@ -488,18 +488,18 @@ function endRound(room: Room, run: MinigameRun, now: number): void {
 }
 
 function enterFinal(room: Room, run: MinigameRun, now: number): void {
-  const lastRows = run.roundResults[run.roundResults.length - 1]?.rows ?? [];
   const info = MINIGAME_DEFS[run.key].info;
-  // ★ 동점 가르기 — 기본은 마지막 판 순위 · 맞히기 방식(어느 쪽?)은 맞힌 문항의 시간 합(작은 쪽) · R053 소수파는 마지막 판 순위(tiebreak)
-  const timeSum = (info.tiebreak ?? (info.scoring === 'correct' ? 'timeSum' : 'lastRank')) === 'timeSum';
-  const tie = (accountId: string): number =>
-    timeSum
-      ? run.roundResults.reduce((sum, rr) => {
-          const r = rr.rows.find((x) => x.accountId === accountId);
-          return sum + (r && r.points > 0 && r.value !== null ? r.value : 0);
-        }, 0)
-      : (lastRows.find((r) => r.accountId === accountId)?.rank ?? 99);
-  const final = rankFinal(run.participants.map((p) => ({ accountId: p.accountId, total: run.totals.get(p.accountId) ?? 0, lastRoundRank: tie(p.accountId) })));
+  // ★★ R060 (D-253) — 동점은 **공동 순위**(찬종 확정) · 맞히기 방식(어느 쪽?)만 맞힌 문항의 시간 합(작은 쪽)으로 가른다
+  const tiebreak = info.tiebreak ?? (info.scoring === 'correct' ? 'timeSum' : 'none');
+  const timeSum = (accountId: string): number =>
+    run.roundResults.reduce((sum, rr) => {
+      const r = rr.rows.find((x) => x.accountId === accountId);
+      return sum + (r && r.points > 0 && r.value !== null ? r.value : 0);
+    }, 0);
+  const final = rankMinigameFinal(
+    run.participants.map((p) => ({ accountId: p.accountId, total: run.totals.get(p.accountId) ?? 0, timeSum: tiebreak === 'timeSum' ? timeSum(p.accountId) : 0 })),
+    tiebreak,
+  );
   const n = run.participants.length;
   run.final = final.map((f) => ({ accountId: f.accountId, rank: f.rank, total: f.total, reward: run.practice ? 0 : minigameReward(f.rank, n) }));
   // ★★ 보상 — 한 번만. 연습은 없음

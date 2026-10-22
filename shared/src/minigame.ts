@@ -53,8 +53,11 @@ export interface MinigameInfo {
   unit: '초' | '%' | 'ms' | '°';
   /** ★ R052 — 판 점수 방식: 'rank'(판 순위 점수 — 기본) · 'correct'(맞히면 1점 · 최종 동점은 맞힌 문항 시간 합이 작은 쪽 — 어느 쪽?) */
   scoring?: 'rank' | 'correct';
-  /** ★ R053 — 최종 동점 가르기: 'lastRank'(마지막 판 순위 — rank 기본) · 'timeSum'(맞힌 문항 시간 합 — correct 기본) */
-  tiebreak?: 'lastRank' | 'timeSum';
+  /**
+   * ★ 최종 동점 가르기: 'none'(공동 순위 — rank 기본) · 'timeSum'(맞힌 문항 시간 합 — correct 기본).
+   *   ★★ R060 (D-253 · 찬종 "점수 같으면 공동 순위") — 한 미니게임 안에서는 마지막 판 순위로 가르지 않는다(R053 'lastRank' 없앰).
+   */
+  tiebreak?: 'none' | 'timeSum';
   /** ★ R053 — 퀴즈 판 자리에서 뽑히는 최소 참가자 수(골라 하기는 된다 · 안내만). 없으면 1 */
   minPlayers?: number;
   /**
@@ -224,7 +227,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     unit: '%',
     fixedDecimals: 0,
     scoring: 'correct',
-    tiebreak: 'lastRank',
+    tiebreak: 'none',
     minPlayers: 3,
   },
   {
@@ -383,6 +386,17 @@ export function rankFinal(totals: readonly { accountId: string; total: number; l
     out.push({ ...t, rank: tie ? p.rank : i + 1 });
   });
   return out;
+}
+
+/**
+ * ★★ R060 (D-253) — **한 미니게임의** 최종 순위: 합이 같으면 **공동**(1 · 1 · 3 — 보상 · 순위 점수 같이).
+ *   'timeSum'(어느 쪽?)만 맞힌 문항 시간 합(작은 쪽)으로 가른다. 미니게임만 판 전체의 최종 순위는 rankFinal(마지막 미니게임 순위 — R057 그대로).
+ */
+export function rankMinigameFinal(
+  totals: readonly { accountId: string; total: number; timeSum?: number }[],
+  tiebreak: 'none' | 'timeSum',
+): FinalRanked[] {
+  return rankFinal(totals.map((t) => ({ accountId: t.accountId, total: t.total, lastRoundRank: tiebreak === 'timeSum' ? (t.timeSum ?? 0) : 0 })));
 }
 
 /**

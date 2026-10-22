@@ -25,7 +25,7 @@ describe('★★ 목록 — 넷 · 판 수 · 최소 인원', () => {
     expect(['minority', 'twothirds', 'oddone', 'gauge'].map((k) => m(k).rounds)).toEqual([5, 3, 5, 5]);
     expect(m('minority').minPlayers).toBe(3);
     expect(m('minority').scoring).toBe('correct');
-    expect(m('minority').tiebreak).toBe('lastRank');
+    expect(m('minority').tiebreak).toBe('none'); // ★ R060 — 동점은 공동 순위
   });
   it('게이지 소수 최대 둘째', () => expect(decimalsFor(MINIGAMES.find((x) => x.key === 'gauge')!, [1.2341, 1.2349])).toBe(2));
 });

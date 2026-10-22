@@ -6,6 +6,8 @@ import {
   minigameReward,
   minigameSlots,
   rankFinal,
+  rankMinigameFinal,
+  minigameReward,
   rankRound,
 } from './minigame.js';
 import { balanceItem, balanceSplit, BALANCE_BOTTOM_Y, BALANCE_TOP_Y, clipHalfPlane, polygonArea, type Pt } from './balance.js';
@@ -73,6 +75,55 @@ describe('판 순위', () => {
       ['a', 2],
       ['c', 3],
       ['d', 3],
+    ]);
+  });
+});
+
+describe('★★ R060 — 한 미니게임 안 동점은 공동 순위 (D-253)', () => {
+  it('합이 같으면 공동 · 다음 순위는 건너뜀(1 · 1 · 3) · 마지막 판 순위로 가르지 않는다', () => {
+    const f = rankMinigameFinal(
+      [
+        { accountId: 'a', total: 7 },
+        { accountId: 'b', total: 7 },
+        { accountId: 'c', total: 5 },
+      ],
+      'none',
+    );
+    expect(f.map((x) => [x.accountId, x.rank])).toEqual([
+      ['a', 1],
+      ['b', 1],
+      ['c', 3],
+    ]);
+  });
+  it('공동 1위는 보상이 같다', () => {
+    const f = rankMinigameFinal([{ accountId: 'a', total: 4 }, { accountId: 'b', total: 4 }], 'none');
+    expect(f.map((x) => minigameReward(x.rank, 2))).toEqual([2, 2]);
+    const g = rankMinigameFinal([{ accountId: 'a', total: 9 }, { accountId: 'b', total: 9 }, { accountId: 'c', total: 9 }, { accountId: 'd', total: 1 }, { accountId: 'e', total: 0 }], 'none');
+    expect(g.map((x) => minigameReward(x.rank, 5))).toEqual([3, 3, 3, 0, 0]);
+  });
+  it("'timeSum'(어느 쪽?)은 시간 합이 작은 쪽 · 같으면 공동", () => {
+    const f = rankMinigameFinal(
+      [
+        { accountId: 'a', total: 10, timeSum: 9000 },
+        { accountId: 'b', total: 10, timeSum: 7000 },
+        { accountId: 'c', total: 10, timeSum: 7000 },
+      ],
+      'timeSum',
+    );
+    expect(f.map((x) => [x.accountId, x.rank])).toEqual([
+      ['b', 1],
+      ['c', 1],
+      ['a', 3],
+    ]);
+  });
+  it('미니게임만 판 전체(rankFinal)는 그대로 마지막 미니게임 순위로 가른다(R057)', () => {
+    const f = rankFinal([
+      { accountId: 'a', total: 6, lastRoundRank: 2 },
+      { accountId: 'b', total: 6, lastRoundRank: 1 },
+    ]);
+    expect(f.map((x) => [x.accountId, x.rank])).toEqual([
+      ['b', 1],
+      ['a', 2],
     ]);
   });
 });

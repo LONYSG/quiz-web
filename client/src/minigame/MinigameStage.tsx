@@ -229,14 +229,15 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
           <p className="mg-final-title">
             <Icon icon={Trophy} /> 최종 결과
           </p>
-          <ol className="mg-table">
+          {/* ★ R060 (D-253) — 한 미니게임 안 동점은 공동 순위 · "공동 1위" 로 적는다 */}
+          <ol className={view.final.some((f, i) => view.final!.findIndex((x) => x.rank === f.rank) !== i) ? 'mg-table has-co' : 'mg-table'}>
             {view.final.map((f) => {
               const p = nameOf(f.accountId);
               // ★ R057 — 미니게임만은 게임 점수에 순위 점수(인원 − 순위 + 1)가 들어간다(보너스는 포인트로만)
               const add = view.series ? view.participants.length - f.rank + 1 : f.reward;
               return (
                 <li key={f.accountId} className={f.accountId === myAccountId ? 'me' : undefined} data-rank={f.rank}>
-                  <span className="mg-rank mono">{f.rank}위</span>
+                  <span className="mg-rank mono">{view.final!.filter((x) => x.rank === f.rank).length > 1 ? `공동 ${f.rank}위` : `${f.rank}위`}</span>
                   {p && <Avatar xs nickname={p.nickname} colorIndex={p.colorIndex} accountId={p.accountId} avatarV={players.find((x) => x.accountId === p.accountId)?.avatarV ?? null} />}
                   <span className="nick mg-nick" style={{ color: `var(--p${p?.colorIndex ?? 0})` }}>
                     {p?.nickname ?? '나간 사람'}
