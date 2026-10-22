@@ -128,6 +128,8 @@ const SCENARIO_ENV = {
   achievements: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   feedback: { RESOLVED_WAIT_MS: '200' },
   mgonly: { MINIGAME_PHASE_SCALE: '0.05' },
+  // ★ R060 — 둘이서 16 게임(놀이 시간은 줄지 않는다 — 판 사이만 짧게)
+  mgduo: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   emojiinline: { RESOLVED_WAIT_MS: '200' },
   // ★ R058 — 근접 오답: bot_nx 만 거른다(기본 봇 · 검사 계정 규칙 대신 — 나머지 봇의 행을 본다)
   near: { RESOLVED_WAIT_MS: '200', NEAR_MISS_SKIP_LOGIN: '^(bot_nx|uic|r10_)' },
@@ -7182,6 +7184,106 @@ async function scenarioAchievements() {
 // =============================================================================
 // ★★★ R057 — 미니게임만 모드 (D-249): 3명 · 미니게임 3개(연타만 — 켜진 것이 N 보다 적으면 다시 섞음) · 둘째에 중간 입장 · 다시 하기 이어받음
 // =============================================================================
+// =============================================================================
+// ★★★ R060 — 둘이서 할 때 미니게임 16 점검 (D-253 · 찬종 "다른 게임도 둘이서 할 때 괜찮은지")
+//   [A] 게임마다 둘이 연습 · 둘 다 안 냄 → 끝까지 간다(진행 막힘 없음) · 둘 다 같은 점수 = 공동 1위 · 걸린 시간
+//   [B] 미니게임만 3개(연타) · 둘이 같은 횟수 → 미니게임마다 공동 1위 · 보상 같음(+2 · +2) · 판 결과도 공동 1위
+//   [C] 한 명 끊김 → 남은 한 명이 내면 판이 바로 넘어간다 · 미니게임만에서 한 명이 나가도 판이 끝까지 간다
+// =============================================================================
+async function scenarioMgDuo() {
+  log('시나리오 mgduo — ★★★ 둘이서 미니게임 16 (R060)');
+  const sh = await mgShared();
+  const { bots, host, roomId } = await mgRoom(2, 'R060 둘이서');
+  const [, guest] = bots;
+  const keys = sh.MINIGAMES.map((m) => m.key);
+  expectTrue('★★ 미니게임 16 · twothirds 없음', keys.length === 16 && !keys.includes('twothirds'), keys.join(','));
+  // ── [A] 게임마다 연습 · 둘 다 안 냄
+  const times = [];
+  for (const key of keys) {
+    const t0 = Date.now();
+    let runId = null;
+    try {
+      runId = await mgPractice(host, roomId, key, 300000);
+    } catch (e) {
+      expectTrue(`★★ [A] ${key} — 둘 다 안 내도 끝까지`, false, e.message);
+      continue;
+    }
+    const sec = Math.round((Date.now() - t0) / 100) / 10;
+    times.push(`${key} ${sec}s`);
+    const fin = await withDb(async (c) => (await c.query(`SELECT final_rank FROM minigame_players WHERE run_id = $1 ORDER BY final_rank`, [runId])).rows.map((r) => r.final_rank));
+    const run = await withDb(async (c) => (await c.query(`SELECT end_reason FROM minigame_runs WHERE id = $1`, [runId])).rows[0]);
+    expectTrue(`★★ [A] ${key} — 둘 다 안 냄 → 끝까지(${sec}초) · 공동 1위`, run?.end_reason === 'completed' && fin.length === 2 && fin.every((r) => r === 1), JSON.stringify({ e: run?.end_reason, fin }));
+    await sleep(300);
+  }
+  log(`[A] 걸린 시간: ${times.join(' · ')}`);
+  // ── [B] 미니게임만 3개(연타) · 같은 횟수
+  for (const b of bots) {
+    b.__mgDone = new Set();
+    b.onMinigame = (mg) => {
+      if (!mg || mg.phase !== 'play' || mg.spectating) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (b.__mgDone.has(k)) return;
+      b.__mgDone.add(k);
+      setTimeout(() => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { count: 40, final: true } }), 10100);
+    };
+  }
+  let m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 3, minigameKeys: ['tap'] });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.minigameOnly === true), 4000, '설정');
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작');
+  const gid = host.since(g, 'game.started')[0].gameId;
+  await host.waitFor(() => host.since(g, 'game.result').length > 0, 150000, '결과');
+  const res = host.since(g, 'game.result')[0].payload;
+  const finals = host.since(g, 'minigame.state').filter((e) => e.phase === 'final' && e.final).map((e) => e.final.map((f) => f.rank).join(','));
+  expectTrue('★★★ [B] 미니게임마다 같은 횟수 → 공동 1위(1,1)', finals.length >= 3 && [...new Set(finals)].join('|') === '1,1', JSON.stringify(finals));
+  expectTrue('★★★ [B] 판 결과도 공동 1위 · 점수 같음(2+2+2)', res.ranking.length === 2 && res.ranking.every((r) => r.rank === 1 && r.score === 6), JSON.stringify(res.ranking.map((r) => [r.rank, r.score])));
+  await sleep(500);
+  const rw = await withDb(async (c) =>
+    (await c.query(`SELECT a.login_id, sum(w.amount)::int s, min(w.rank) r FROM minigame_rewards w JOIN minigame_runs r ON r.id = w.run_id JOIN accounts a ON a.id = w.account_id WHERE r.game_id = $1 GROUP BY a.login_id ORDER BY a.login_id`, [gid])).rows,
+  );
+  expectTrue('★★★ [B] 보상 같음 — 둘이 공동 1위면 둘 다 +2 × 3', rw.length === 2 && rw.every((r) => r.s === 6 && r.r === 1), JSON.stringify(rw));
+  await backToLobby(host, [guest]);
+  // ── [C-1] 연습 연타 — 손님이 놀이 중 끊김 · 방장이 내면 그 판은 바로 넘어간다
+  for (const b of bots) b.onMinigame = null;
+  m = host.mark();
+  host.socket.emit('minigame.practice', { key: 'tap' });
+  await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 30000, '연타 놀이');
+  guest.disconnect();
+  await sleep(500);
+  const mg = host.snapshot.minigame;
+  const tSub = Date.now();
+  host.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { count: 30, final: true } });
+  await host.waitFor(() => host.snapshot?.minigame?.phase !== 'play', 15000, '판 넘어감');
+  const waited = Date.now() - tSub;
+  expectTrue('★★ [C] 한 명 끊김 → 남은 한 명이 내면 바로 넘어간다(끊긴 사람을 기다리지 않음)', waited < 3000, `${waited}ms`);
+  await host.waitFor(() => host.since(m, 'minigame.ended').length > 0, 120000, '연습 끝');
+  expectTrue('★★ [C] 끊긴 채로도 연습이 끝까지 간다', host.since(m, 'minigame.ended').length > 0);
+  // ── [C-2] 미니게임만 2개 — 첫째 놀이 중 손님이 나감 → 혼자 남아도 끝까지(결과)
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot?.room.id === roomId, 8000, '다시 입장');
+  await sleep(500);
+  m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 2, minigameKeys: ['tap'] });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').length > 0, 4000, '설정');
+  const g2 = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g2, 'game.started').length > 0, 12000, '게임 시작');
+  await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 60000, '첫째 놀이');
+  guest.leave();
+  await host.waitFor(() => host.since(g2, 'game.result').length > 0, 150000, '결과').catch(() => undefined);
+  const r2 = host.since(g2, 'game.result')[0]?.payload;
+  expectTrue('★★ [C] 미니게임만에서 한 명이 나가도 혼자 끝까지(결과 · completed)', r2?.endReason === 'completed' && r2?.minigameSeries?.done === 2, JSON.stringify({ e: r2?.endReason, s: r2?.minigameSeries }));
+  for (const b of bots) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
 async function scenarioMgOnly() {
   log('시나리오 mgonly — ★★★ 미니게임만 (R057)');
   const { bots, host, roomId } = await mgRoom(3, 'R057 미니게임만');
@@ -7767,6 +7869,7 @@ const SCENARIOS = {
   // ★★★ R056 — 문제 평가
   feedback: scenarioFeedback,
   mgonly: scenarioMgOnly,
+  mgduo: scenarioMgDuo,
   emojiinline: scenarioEmojiInline,
   near: scenarioNear,
   // ★ Q-84 (R015)

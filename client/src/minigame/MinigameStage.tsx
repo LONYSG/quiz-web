@@ -197,7 +197,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
             )}
             <p className="dim mg-rules-note">
               {view.roundCount}판 · 판마다 순위 점수 ·{' '}
-              {view.practice ? '연습이라 보상 없음' : view.series ? '최종 순위가 게임 점수로 · 1~3위는 포인트도' : '최종 1~3위에게 보너스 점수(포인트도)'}
+              {view.practice ? '연습이라 보상 없음' : view.series ? `최종 순위가 게임 점수로 · ${bonusRanks(view.participants.length)}는 포인트도` : `최종 ${bonusRanks(view.participants.length)}에게 보너스 점수(포인트도)`}
             </p>
           </div>
         </div>
@@ -253,7 +253,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
             {view.practice
               ? '연습 판이라 점수 · 포인트에 들어가지 않아요'
               : view.series
-                ? '순위 점수는 이번 게임 점수에 · 1~3위는 포인트 보너스도 받아요'
+                ? `순위 점수는 이번 게임 점수에 · ${bonusRanks(view.participants.length)}는 포인트 보너스도 받아요`
                 : '보너스는 퀴즈 점수와 포인트에 함께 들어가요'}
           </p>
         </div>
@@ -275,6 +275,11 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
       )}
     </section>
   );
+}
+
+/** ★ R060 — 보너스를 받는 순위(minigameReward — 둘 1위 · 3~4명 1 · 2위 · 5명 이상 1~3위). 둘이서 "1~3위" 로 적던 것 */
+function bonusRanks(n: number): string {
+  return n <= 2 ? '1위' : n <= 4 ? '1 · 2위' : '1~3위';
 }
 
 function PlayView(props: { socket: Socket; view: MinigameView; serverNow: () => number; mobile: boolean }) {
