@@ -59,13 +59,11 @@ import {
   ODDONE_PLAY_MS,
   GAUGE_HIDE_PCT,
   GAUGE_PLAY_MS,
-  TWOTHIRDS_PLAY_MS,
   gaugeOffPct,
   gaugePos,
   gaugeRounds,
   minorityResult,
   oddoneRounds,
-  twoThirdsTarget,
   BALLOON_PLAY_MS,
   TAP_MAX_PER_SEC,
   TAP_PLAY_MS,
@@ -618,27 +616,6 @@ const minority: MinigameDef = {
   },
 };
 
-// 평균의 2/3 — 0~100 정수 한 번 · 판 끝 정산: 목표 = 평균 × 2/3(낸 사람만) · 값 = |입력 − 목표|
-const twothirds: MinigameDef = {
-  key: 'twothirds',
-  info: minigameInfo('twothirds'),
-  buildRounds(seed) {
-    return [0, 1, 2].map((i) => ({ itemKey: `twothirds-${i + 1}`, params: { min: 0, max: 100 }, playMs: TWOTHIRDS_PLAY_MS, seed: seed + i }));
-  },
-  parseInput(raw) {
-    const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
-    const v = num(obj?.value);
-    if (v === null || !Number.isInteger(v) || v < 0 || v > 100) return null;
-    return { input: { value: v }, value: 0, error: null, elapsedMs: num(obj?.elapsedMs), extra: { pick: v }, provisional: false };
-  },
-  finalizeRound(_spec, subs) {
-    const picks = [...subs.entries()].map(([a, s]) => [a, Number(s.extra?.pick)] as const);
-    const t = twoThirdsTarget(picks.map(([, p]) => p));
-    const values = new Map(picks.map(([a, p]) => [a, { value: t ? Math.abs(p - t.target) : null, error: t ? p - t.target : null, extra: { pick: p, target: t?.target ?? null } }]));
-    return { values, reveal: t ? { mean: t.mean, target: t.target, n: picks.length } : { mean: null, target: null, n: 0 } };
-  },
-};
-
 // 다른 하나 찾기 — 격자는 서버 시드 · 누른 칸 + 기기 ms · 틀리면 +2초 벌점(임시 · 계속) · 맞으면 확정(값 = ms + 벌점)
 const oddone: MinigameDef = {
   key: 'oddone',
@@ -745,4 +722,4 @@ const tap: MinigameDef = {
   },
 };
 
-export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, price, worldprice, photo, estimate, which, minority, twothirds, oddone, gauge, balloon, tap };
+export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, price, worldprice, photo, estimate, which, minority, oddone, gauge, balloon, tap };

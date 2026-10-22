@@ -77,20 +77,6 @@ export function MinorityPick({ socket, view, serverNow, mobile }: Props) {
   );
 }
 
-// ── 평균의 2/3
-export function TwoThirdsInput({ socket, view, serverNow }: Props) {
-  const playing = view.phase === 'play';
-  const { t0 } = usePlayT0(view, serverNow);
-  const now = useFrameNow(playing);
-  return (
-    <div className="quiz-stage twothirds-stage">
-      <TimeBar view={view} t0={t0} now={now} />
-      <p className="which-stem">0 ~ 100 중 숫자 하나 — 모두의 평균 × 2/3 에 가장 가까우면 1등!</p>
-      <NumberInput view={view} socket={socket} t0={t0} unit="" allowDecimal={false} allowZero max={100} placeholder="0 ~ 100" />
-    </div>
-  );
-}
-
 // ── 다른 하나 찾기
 export function OddOneGrid({ socket, view, serverNow, mobile }: Props) {
   const p = view.round?.params ?? {};

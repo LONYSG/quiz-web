@@ -13,16 +13,16 @@ import {
   gaugeRounds,
   minorityResult,
   oddoneRounds,
-  twoThirdsTarget,
 } from './r053.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const SEEDS = Array.from({ length: 200 }, (_, i) => (i * 2654435761 + 7) >>> 0);
 
-describe('★★ 목록 — 넷 · 판 수 · 최소 인원', () => {
-  it('키 넷 · 판 수(5 · 3 · 5 · 5)', () => {
+describe('★★ 목록 — 셋(R060 twothirds 삭제) · 판 수 · 최소 인원', () => {
+  it('키 셋 · 판 수(5 · 5 · 5) · twothirds 없음', () => {
     const m = (k: string) => MINIGAMES.find((x) => x.key === k)!;
-    expect(['minority', 'twothirds', 'oddone', 'gauge'].map((k) => m(k).rounds)).toEqual([5, 3, 5, 5]);
+    expect(['minority', 'oddone', 'gauge'].map((k) => m(k).rounds)).toEqual([5, 5, 5]);
+    expect(MINIGAMES.some((x) => (x.key as string) === 'twothirds')).toBe(false);
     expect(m('minority').minPlayers).toBe(3);
     expect(m('minority').scoring).toBe('correct');
     expect(m('minority').tiebreak).toBe('none'); // ★ R060 — 동점은 공동 순위
@@ -43,10 +43,6 @@ describe('★★★ 소수파 — 가장 적게 고른 수(0명 제외)', () => 
   it('모두 다른 수 → 전원 소수파', () => expect(minorityResult([1, 2, 3]).minority).toEqual([1, 2, 3]));
 });
 
-describe('★★ 평균의 2/3', () => {
-  it('평균 · 목표', () => expect(twoThirdsTarget([30, 60, 90])).toEqual({ mean: 60, target: 40 }));
-  it('아무도 → null', () => expect(twoThirdsTarget([])).toBe(null));
-});
 
 describe('★★★ 다른 하나 찾기 — 쌍 목록 · 시드 격자', () => {
   it('쌍 ≥ 24 · 쉬운 ≥ 2 · 어려운 ≥ 3', () => {

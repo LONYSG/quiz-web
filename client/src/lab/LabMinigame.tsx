@@ -276,7 +276,7 @@ function r054Scene(key: MinigameKey) {
 
 /** ★★★ R053 — 미니게임 3차 장면 (?state=hidden 게이지 가림 · ?size= 다른 하나 격자) */
 function r053Scene(key: MinigameKey) {
-  if (!['minority', 'twothirds', 'oddone', 'gauge'].includes(key)) return null;
+  if (!['minority', 'oddone', 'gauge'].includes(key)) return null;
   const q = new URLSearchParams(window.location.search);
   const row = (id: string, rank: number, points: number, extra: Record<string, unknown> | null, value: number | null, submitted = true) => ({ accountId: id, submitted, value, error: null, rank, points, extra });
   if (key === 'minority')
@@ -285,13 +285,6 @@ function r053Scene(key: MinigameKey) {
       params: { choices: [1, 2, 3, 4, 5] },
       reveal: { counts: { 1: 0, 2: 2, 3: 1, 4: 1, 5: 0 }, minority: [3, 4] },
       rows: [row('lab1', 1, 1, { pick: 3, win: true }, 1), row('lab3', 1, 1, { pick: 4, win: true }, 1), row('lab2', 3, 0, { pick: 2, win: false }, null), row('lab4', 3, 0, { pick: 2, win: false }, null)],
-    };
-  if (key === 'twothirds')
-    return {
-      playMs: 10000,
-      params: { min: 0, max: 100 },
-      reveal: { mean: 41.25, target: 27.5, n: 4 },
-      rows: [row('lab1', 1, 4, { pick: 27, target: 27.5 }, 0.5), row('lab3', 2, 3, { pick: 33, target: 27.5 }, 5.5), row('lab2', 3, 2, { pick: 50, target: 27.5 }, 22.5), row('lab4', 4, 1, { pick: 55, target: 27.5 }, 27.5)],
     };
   if (key === 'oddone') {
     const size = Number(q.get('size') ?? 4);

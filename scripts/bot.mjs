@@ -121,7 +121,6 @@ const SCENARIO_ENV = {
   mgangle: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   mgquiz: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   mgminority: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
-  mgtwothirds: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   mgoddone: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   mggauge: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   mgballoon: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
@@ -6864,7 +6863,7 @@ async function scenarioMgQuiz() {
 }
 
 // -----------------------------------------------------------------------------
-// ★★★ R053 — 미니게임 3차 봇 (D-241) — mgminority · mgtwothirds · mgoddone · mggauge
+// ★★★ R053 — 미니게임 3차 봇 (D-241) — mgminority · mgoddone · mggauge (mgtwothirds 는 R060 게임 삭제와 함께 뺌)
 //   자기 서버(SCENARIO_ENV): 정답 공개 대기 200ms · 판 진행 밖 단계 ×0.05
 // -----------------------------------------------------------------------------
 async function scenarioMgMinority() {
@@ -6920,37 +6919,6 @@ async function scenarioMgMinority() {
   await backToLobby(host, [b2]);
   const pr2 = await mgPractice(host, roomId, 'minority', 120000);
   expectTrue('★ 2명 — 골라 하기(연습)는 된다', Boolean(pr2));
-  for (const b of bots) {
-    b.leave();
-    await sleep(40);
-    b.disconnect();
-  }
-  return checkSummary();
-}
-
-async function scenarioMgTwoThirds() {
-  log('시나리오 mgtwothirds — ★★★ 평균의 2/3 (R053)');
-  const { bots, host, roomId } = await mgRoom(5, 'R053 2/3');
-  const [b1, b2, b3, b4, b5] = bots;
-  const vals = new Map([[b1.loginId, 30], [b2.loginId, 60], [b3.loginId, 90], [b4.loginId, 0]]);
-  for (const b of bots) driveMinigame(b, (bot) => (vals.has(bot.loginId) ? { delayMs: 80, input: { value: vals.get(bot.loginId) } } : null));
-  log('\n[1] ★★★ 30 · 60 · 90 · 0 · b5 미입력 → 평균 45 · 목표 30');
-  let bad = null;
-  const runId = await mgPractice(host, roomId, 'twothirds', 120000, async () => {
-    await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 15000, '1판');
-    const m = b5.mark();
-    b5.socket.emit('minigame.submit', { token: host.snapshot.minigame.token, roundIndex: 0, input: { value: 101 } });
-    await sleep(250);
-    bad = b5.since(m, 'error')[0]?.code ?? null;
-  });
-  expect('★ 범위 밖(101) → 거부', bad, 'BAD_REQUEST');
-  const rows = await mgRows(runId);
-  expect('★ 기록 = 3판 × 5명', rows.length, 15);
-  const r0 = rows.filter((r) => r.round_index === 0);
-  const get = (b) => r0.find((r) => r.login_id === b.loginId);
-  expectTrue('★★★ 값 = |입력 − 목표 30| (0 · 30 · 60 · 30)', get(b1).value === 0 && get(b2).value === 30 && get(b3).value === 60 && get(b4).value === 30, JSON.stringify(r0.map((r) => r.value)));
-  expectTrue('★★ 순위 — b1 1위 · b2 · b4 공동 2위 · b3 4위 · 미입력 b5 0점', get(b1).rank === 1 && get(b2).rank === 2 && get(b4).rank === 2 && get(b3).rank === 4 && get(b5).points === 0 && !get(b5).submitted);
-  expectTrue('★ 0 도 낼 수 있다(b4)', get(b4).input?.value === 0);
   for (const b of bots) {
     b.leave();
     await sleep(40);
@@ -7790,7 +7758,6 @@ const SCENARIOS = {
   mgquiz: scenarioMgQuiz,
   // ★★★ R053 — 미니게임 3차
   mgminority: scenarioMgMinority,
-  mgtwothirds: scenarioMgTwoThirds,
   mgoddone: scenarioMgOddOne,
   mggauge: scenarioMgGauge,
   // ★★★ R054 — 전적 · 업적 · 풍선 · 연타

@@ -90,6 +90,25 @@ describe('validateRoomSettings — 형식 방어', () => {
   });
 });
 
+describe('★ R060 — 넣을 미니게임: 모르는 키(삭제한 twothirds)는 버린다', () => {
+  const mg = { ...base, minigames: true };
+  it('옛 설정에 twothirds 가 섞여 있어도 나머지로 통과', () => {
+    const r = validateRoomSettings({ ...mg, minigameKeys: ['cake', 'twothirds', 'gauge'] });
+    expect(r.ok).toBe(true);
+    if (r.ok) expect(r.settings.minigameKeys).toEqual(['cake', 'gauge']);
+  });
+  it('twothirds 만 골랐던 설정은 전부로', () => {
+    const r = validateRoomSettings({ ...mg, minigameKeys: ['twothirds'] });
+    expect(r.ok).toBe(true);
+    if (r.ok) expect(r.settings.minigameKeys).not.toContain('twothirds');
+    if (r.ok) expect(r.settings.minigameKeys!.length).toBeGreaterThan(10);
+  });
+  it('빈 목록 · 글이 아닌 값은 여전히 거절', () => {
+    expect(validateRoomSettings({ ...mg, minigameKeys: [] }).ok).toBe(false);
+    expect(validateRoomSettings({ ...mg, minigameKeys: [1] }).ok).toBe(false);
+  });
+});
+
 describe('formatExperienceRate (guide 6절 표기 규칙)', () => {
   it('백분율과 절대 개수를 함께 보여준다', () => {
     expect(formatExperienceRate(153, 1234)).toBe('전체 1,234 중 153 풀어봄 (12.4%)');

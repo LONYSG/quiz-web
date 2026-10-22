@@ -35,17 +35,6 @@ export function minorityResult(picks: readonly number[]): MinorityResult {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 평균의 2/3 — 0~100 정수 · 목표 = 평균 × 2/3 · |입력 − 목표| 작은 순
-// ─────────────────────────────────────────────────────────────────────────────
-export const TWOTHIRDS_ROUNDS = 3;
-export const TWOTHIRDS_PLAY_MS = 10_000;
-export function twoThirdsTarget(values: readonly number[]): { mean: number; target: number } | null {
-  if (values.length === 0) return null;
-  const mean = values.reduce((a, b) => a + b, 0) / values.length;
-  return { mean, target: (mean * 2) / 3 };
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
 // 다른 하나 찾기 — 격자 4·5·6·6·7 · 1~2판 쉬운 쌍 · 3~5판 어려운 쌍 · 틀리면 +2초
 // ─────────────────────────────────────────────────────────────────────────────
 export const ODDONE_SIZES = [4, 5, 6, 6, 7] as const;

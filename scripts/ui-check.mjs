@@ -2801,16 +2801,16 @@ async function r052Flow(browser) {
 }
 
 // -----------------------------------------------------------------------------
-// ★★★ R053 — 미니게임 3차 화면 점검 (MG_R053=minority,twothirds,oddone,gauge · MG_SKIP_R053)
+// ★★★ R053 — 미니게임 3차 화면 점검 (MG_R053=minority,oddone,gauge · MG_SKIP_R053 · R060 twothirds 삭제)
 //   [1] 실험실 장면 — 규칙 · 진행 · 판 결과 · 최종 · 다른 하나 4×4/7×7 · 게이지 가림 (PC 1280 · 390 · 폴드 344)
 //   [2] 연습 판 — H(PC 1280 · 키보드/마우스) · G(390 터치)
 // -----------------------------------------------------------------------------
-const R053_GAMES = (process.env.MG_R053 ?? 'minority,twothirds,oddone,gauge').split(',').filter(Boolean);
+const R053_GAMES = (process.env.MG_R053 ?? 'minority,oddone,gauge').split(',').filter(Boolean);
 async function r053Lab(browser) {
   const L = await newPage(browser, 'M4-lab');
   await L.setViewport(1280, 720);
   await signUp(L, 'm4l', '그림점검넷');
-  const num = { minority: 80, twothirds: 81, oddone: 82, gauge: 83 };
+  const num = { minority: 80, oddone: 82, gauge: 83 };
   const scenes = [];
   for (const k of R053_GAMES) for (const ph of ['rules', 'play', 'roundResult', 'final']) scenes.push([k, ph, '', '']);
   if (R053_GAMES.includes('oddone')) scenes.push(['oddone', 'play', '&size=7', '7x7']);
@@ -2850,13 +2850,13 @@ async function r053Lab(browser) {
 }
 async function r053Live(browser, key) {
   const { H, G, roomId } = await r051Room(browser, `n${key.slice(0, 3)}`);
-  const num = { minority: 80, twothirds: 81, oddone: 82, gauge: 83 }[key];
+  const num = { minority: 80, oddone: 82, gauge: 83 }[key];
   await r051Start(H, key);
   await waitPhase(H, 'rules', 12000);
   await sleep(400);
   await snap(H, `${num}-live-${key}-rules-pc`);
   await snap(G, `${num}-live-${key}-rules-m390`);
-  const rounds = { minority: 5, twothirds: 3, oddone: 5, gauge: 5 }[key];
+  const rounds = { minority: 5, oddone: 5, gauge: 5 }[key];
   for (let i = 0; i < rounds; i += 1) {
     await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'play'", 30000);
     await sleep(300);
@@ -2870,16 +2870,6 @@ async function r053Live(browser, key) {
         await snap(H, `${num}-live-minority-picked-pc`);
         await snap(G, `${num}-live-minority-picked-m390`);
       }
-    } else if (key === 'twothirds') {
-      await H.evaluate("document.querySelector('.quiz-num-input')?.focus()");
-      await H.send('Input.insertText', { text: String(40 + i) });
-      if (i === 0) await snap(H, `${num}-live-twothirds-typed-pc`);
-      await H.key('Enter');
-      const gi = await rectOf(G, '.quiz-num-input');
-      await trustedTap(G, gi.x + gi.w / 2, gi.y + gi.h / 2);
-      await G.send('Input.insertText', { text: String(20 + i) });
-      const ok = await rectOf(G, '.quiz-num-ok');
-      if (ok) await trustedTap(G, ok.x + ok.w / 2, ok.y + ok.h / 2);
     } else if (key === 'oddone') {
       const cells = JSON.parse(await H.evaluate(`JSON.stringify((() => { const cs = [...document.querySelectorAll('.oddone-cell')]; const srcs = cs.map((c) => c.querySelector('img')?.getAttribute('src')); const cnt = {}; for (const s of srcs) cnt[s] = (cnt[s] ?? 0) + 1; const odd = srcs.findIndex((s) => cnt[s] === 1); return { odd, n: cs.length }; })())`));
       const cell = async (page, idx) => rectOf(page, `.oddone-cell[data-i="${idx}"]`);
@@ -2937,9 +2927,7 @@ async function r053Live(browser, key) {
   const ok =
     key === 'minority'
       ? h.every((r) => r.input?.pick === 3) && g.every((r) => r.input?.pick === 2) && h.every((r) => r.points === 1) && g.every((r) => r.points === 1)
-      : key === 'twothirds'
-        ? h.every((r, i) => r.input?.value === 40 + i) && g.every((r, i) => r.input?.value === 20 + i)
-        : key === 'oddone'
+      : key === 'oddone'
           ? h.every((r) => r.submitted && r.input?.wrong === 1 && r.value >= 2000) && g.filter((r) => r.submitted).length >= 3
           : h.every((r) => r.submitted && r.value < 25) && g.every((r) => r.submitted);
   record(`★★★ ${key} 실제 판 기록(DB) — 입력 · 값`, ok, JSON.stringify([h.map((r) => r.value), g.map((r) => r.value)]));

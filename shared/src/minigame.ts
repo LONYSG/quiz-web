@@ -25,7 +25,7 @@ export type MinigameKey =
   | 'which'
   // ★ R053
   | 'minority'
-  | 'twothirds'
+  // ★ R060 — 'twothirds'(평균의 2/3) 삭제(찬종 — 둘이면 0 이 필승 · 직관적이지 않음 · D-253). DB 의 옛 행은 전적이라 그대로
   | 'oddone'
   | 'gauge'
   // ★ R054
@@ -229,18 +229,6 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     scoring: 'correct',
     tiebreak: 'none',
     minPlayers: 3,
-  },
-  {
-    key: 'twothirds',
-    name: '평균의 2/3',
-    oneLine: '0~100 숫자를 내세요! 모두의 평균 × 2/3 에 가장 가까운 사람이 1등',
-    controlsPc: '숫자 입력 → Enter',
-    controlsMobile: '숫자 입력 → 확인',
-    kind: 'physical',
-    rounds: 3,
-    estSec: 60,
-    better: 'low',
-    unit: '%',
   },
   {
     key: 'oddone',

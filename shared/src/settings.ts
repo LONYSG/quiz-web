@@ -244,12 +244,15 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
   }
   let minigameKeys: MinigameKey[] = [...MINIGAME_KEYS];
   if (raw.minigameKeys !== undefined) {
-    if (!Array.isArray(raw.minigameKeys) || !(raw.minigameKeys as unknown[]).every(isMinigameKey)) {
-      return { ok: false, field: 'minigames', message: '알 수 없는 미니게임이 있습니다.' };
+    if (!Array.isArray(raw.minigameKeys) || !(raw.minigameKeys as unknown[]).every((k) => typeof k === 'string')) {
+      return { ok: false, field: 'minigames', message: '미니게임 설정 형식이 올바르지 않습니다.' };
     }
+    // ★ R060 — **모르는 키는 버린다**(삭제한 'twothirds' 가 옛 설정 · 열린 화면에 남아 있어도 안 깨지게 — D-253)
     minigameKeys = MINIGAME_KEYS.filter((k) => (raw.minigameKeys as unknown[]).includes(k));
     if (minigameKeys.length === 0) {
-      return { ok: false, field: 'minigames', message: '미니게임은 하나 이상 골라야 합니다.' };
+      // 고른 것이 전부 없어진 게임이면 전부로 · 정말 빈 목록은 그대로 거절
+      if ((raw.minigameKeys as unknown[]).length > 0 && !(raw.minigameKeys as unknown[]).some(isMinigameKey)) minigameKeys = [...MINIGAME_KEYS];
+      else return { ok: false, field: 'minigames', message: '미니게임은 하나 이상 골라야 합니다.' };
     }
   }
 

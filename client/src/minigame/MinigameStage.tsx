@@ -18,7 +18,7 @@ import {
   minigameInfo,
   type BalanceKind,
 } from '@quiz/shared';
-import { BookOpenCheck, Crosshair, Gamepad2, Hand, Globe2, Hash, ImageIcon, Keyboard, PartyPopper, Ruler, Scale, ScanSearch, Tag, Trophy, Users, Zap } from 'lucide-react';
+import { BookOpenCheck, Crosshair, Gamepad2, Hand, Globe2, ImageIcon, Keyboard, PartyPopper, Ruler, Scale, ScanSearch, Tag, Trophy, Users, Zap } from 'lucide-react';
 import Icon from '../Icon.js';
 import Avatar from '../Avatar.js';
 import DeviceIcon from '../DeviceIcon.js';
@@ -37,7 +37,7 @@ import QuizNumber from './QuizNumber.js';
 import QuizReveal, { WhichSummary, quizValueText } from './QuizReveal.js';
 import { preloadQuizImages } from './QuizParts.js';
 import WhichPick from './WhichPick.js';
-import { GaugeStop, MinorityPick, OddOneGrid, TwoThirdsInput, twemoji } from './R053Games.js';
+import { GaugeStop, MinorityPick, OddOneGrid, twemoji } from './R053Games.js';
 import { BalloonArt, BalloonBlow, TapRush } from './R054Games.js';
 
 /** ★ 판 진행 화면 — 미니게임 키 → 컴포넌트 */
@@ -56,17 +56,16 @@ const PLAY = {
   which: WhichPick,
   // ★ R053 — 미니게임 3차
   minority: MinorityPick,
-  twothirds: TwoThirdsInput,
   oddone: OddOneGrid,
   gauge: GaugeStop,
   // ★ R054
   balloon: BalloonBlow,
   tap: TapRush,
 } as const;
-const R053_KEYS = new Set(['minority', 'twothirds', 'oddone', 'gauge', 'balloon', 'tap']);
+const R053_KEYS = new Set(['minority', 'oddone', 'gauge', 'balloon', 'tap']);
 const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which']);
 /** 진행 중 "n / m명 …" 의 말 */
-const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', minority: '고름', twothirds: '냄', oddone: '찾음', gauge: '멈춤', balloon: '뗌', tap: '끝' };
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '뗌', tap: '끝' };
 
 interface Props {
   socket: Socket;
@@ -312,8 +311,6 @@ function readyDesc(view: MinigameView): string {
       return '';
     case 'minority':
       return '남들이 안 고를 숫자는?';
-    case 'twothirds':
-      return '평균 × 2/3 — 남들은 몇을 낼까?';
     case 'oddone':
       return `${String(p.size ?? '')} × ${String(p.size ?? '')} 격자`;
     case 'gauge':
@@ -375,13 +372,12 @@ function RulesArt({ k }: { k: MinigameView['key'] }) {
       );
     }
     case 'minority':
-    case 'twothirds':
     case 'oddone':
     case 'balloon':
       return <BalloonArt pct={180} />;
     case 'tap':
     case 'gauge': {
-      const I = { minority: Users, twothirds: Hash, oddone: ScanSearch, gauge: Crosshair, tap: Hand }[k];
+      const I = { minority: Users, oddone: ScanSearch, gauge: Crosshair, tap: Hand }[k];
       return (
         <div className="mg-rules-icon" aria-hidden="true">
           <Icon icon={I} className="mg-rules-big" />
@@ -440,7 +436,6 @@ function RoundResult({
     if (QUIZ_KEYS.has(view.key)) return quizValueText(view, r);
     // ★ R053
     if (view.key === 'minority') return r.extra?.pick ? `${String(r.extra.pick)} ${r.extra.win ? '· 소수파!' : ''}` : '안 고름';
-    if (view.key === 'twothirds') return r.extra?.pick !== undefined && r.value !== null ? `${String(r.extra.pick)} (차이 ${formatMinigameValue(r.value, d)})` : '안 냄';
     if (view.key === 'oddone') return r.value !== null && r.submitted ? `${(r.value / 1000).toFixed(2)}초${r.extra?.wrong ? ` (+${Number(r.extra.wrong) * 2})` : ''}` : r.extra?.wrong ? `못 찾음 (${String(r.extra.wrong)}번 틀림)` : '못 찾음';
     if (view.key === 'gauge') return r.value !== null ? `${formatMinigameValue(r.value, d)}%` : '안 누름';
     if (view.key === 'balloon') return r.extra?.popped ? `펑! (${formatMinigameValue(Number(r.extra.size ?? 0), 1)}%)` : r.value !== null && r.submitted ? `${formatMinigameValue(r.value, 1)}%` : '안 붊';
@@ -747,16 +742,6 @@ function R053Result({ view, mine, decimals }: { view: MinigameView; mine: Miniga
           ))}
         </div>
         <p className="dim">{minority.length ? `소수파: ${minority.join(' · ')}` : '모두 같은 숫자 — 이번 판은 모두 0점'}</p>
-      </div>
-    );
-  }
-  if (view.key === 'twothirds') {
-    return (
-      <div className="mg-r051-result">
-        <p className="mg-r051-big mono">{rv.target !== null && rv.target !== undefined ? formatMinigameValue(Number(rv.target), Math.max(1, decimals)) : '—'}</p>
-        <p className="dim">
-          목표(평균 {rv.mean !== null && rv.mean !== undefined ? formatMinigameValue(Number(rv.mean), Math.max(1, decimals)) : '—'} × 2/3){mine?.extra?.pick !== undefined ? ` · 나 ${String(mine.extra.pick)}` : ''}
-        </p>
       </div>
     );
   }

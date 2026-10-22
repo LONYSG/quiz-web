@@ -54,7 +54,7 @@ export const BUNDLES = [
   { id: 'mg-r052-lab', stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R052: '', MG_SKIP_LIVE: '1', SHOT_DIR: 'r052' }) },
   ...['price', 'worldprice', 'photo', 'estimate', 'which'].map((g) => ({ id: `mg-r052-${g}`, stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R052: '', MG_SKIP_LAB: '1', MG_QUIZ: g, SHOT_DIR: 'r052' }) })),
   { id: 'mg-r053-lab', stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R053: '', MG_SKIP_LIVE: '1', SHOT_DIR: 'r053' }) },
-  ...['minority', 'twothirds', 'oddone', 'gauge'].map((g) => ({ id: `mg-r053-${g}`, stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R053: '', MG_SKIP_LAB: '1', MG_R053: g, SHOT_DIR: 'r053' }) })),
+  ...['minority', 'oddone', 'gauge'].map((g) => ({ id: `mg-r053-${g}`, stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R053: '', MG_SKIP_LAB: '1', MG_R053: g, SHOT_DIR: 'r053' }) })),
   // ★ R054
   { id: 'mg-r054-lab', stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R054: '', MG_SKIP_LIVE: '1', SHOT_DIR: 'r054' }) },
   ...['balloon', 'tap'].map((g) => ({ id: `mg-r054-${g}`, stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R054: '', MG_SKIP_LAB: '1', MG_R054: g, SHOT_DIR: 'r054' }) })),
