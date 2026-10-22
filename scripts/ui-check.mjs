@@ -3578,11 +3578,11 @@ async function r060Flow(browser) {
   for (const [unit, value, tag] of [['광년', 41300000, 'lightyear'], ['킬로미터', 12742, 'km'], ['만 원', 3800, 'manwon']]) {
     for (const dev of ['m390', 'fold']) {
       await lab(`key=estimate&phase=roundResult&unit=${encodeURIComponent(unit)}&value=${value}`, dev, 'roundResult');
-      const ans = JSON.parse(await L.evaluate("JSON.stringify((() => { const n = document.querySelector('.quiz-answer .nowrap'); return { rects: n ? n.getClientRects().length : -1, text: n?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth }; })())"));
+      const ans = JSON.parse(await L.evaluate("JSON.stringify((() => { const n = document.querySelector('.quiz-answer .nowrap'); const rg = document.createRange(); if (n) rg.selectNodeContents(n); const lines = n ? new Set([...rg.getClientRects()].filter((r) => r.width > 0).map((r) => Math.round(r.top))).size : -1; return { rects: lines, text: n?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth }; })())"));
       record(`★★★ (나) ${unit} 정답(${dev}) — 숫자 · 단위 한 줄 · 가로 넘침 없음`, ans.rects === 1 && ans.text.includes(unit) && ans.over <= 1, JSON.stringify(ans));
       if (tag === 'lightyear') await snap(L, `111-unit-${tag}-reveal-${dev}`);
       await lab(`key=estimate&phase=play&unit=${encodeURIComponent(unit)}`, dev, 'play');
-      const ask = JSON.parse(await L.evaluate("JSON.stringify((() => { const n = document.querySelector('.quiz-ask .nowrap'); const u = document.querySelector('.quiz-num-unit'); const lh = u ? parseFloat(getComputedStyle(u).lineHeight) || parseFloat(getComputedStyle(u).fontSize) * 1.5 : 0; return { ask: n ? n.getClientRects().length : -1, unitH: u ? Math.round(u.getBoundingClientRect().height) : -1, lh: Math.round(lh) }; })())"));
+      const ask = JSON.parse(await L.evaluate("JSON.stringify((() => { const n0 = document.querySelector('.quiz-ask .nowrap'); const rg = document.createRange(); if (n0) rg.selectNodeContents(n0); const n = n0 ? { getClientRects: () => ({ length: new Set([...rg.getClientRects()].filter((r) => r.width > 0).map((r) => Math.round(r.top))).size }) } : null; const u = document.querySelector('.quiz-num-unit'); const lh = u ? parseFloat(getComputedStyle(u).lineHeight) || parseFloat(getComputedStyle(u).fontSize) * 1.5 : 0; return { ask: n ? n.getClientRects().length : -1, unitH: u ? Math.round(u.getBoundingClientRect().height) : -1, lh: Math.round(lh) }; })())"));
       record(`★★ (나) ${unit} 놀이 화면(${dev}) — "단위:" · 입력칸 옆 단위 한 줄`, ask.ask === 1 && ask.unitH > 0 && ask.unitH <= ask.lh + 2, JSON.stringify(ask));
       if (tag === 'lightyear') await snap(L, `111-unit-${tag}-play-${dev}`);
     }
