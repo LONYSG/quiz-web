@@ -16,7 +16,7 @@ import PopupClose from './PopupClose.js';
 interface Stats {
   quiz: { games: number; correct: number; byTopic: { topic: string; label: string; n: number }[]; byTier: { tier: string; label: string; n: number }[]; avgResponseMs: number | null };
   minigames: { key: string; name: string; runs: number; wins: number; best: number | null; unit: string; better: 'low' | 'high'; accuracy: number | null }[];
-  points: { correct: number; rewards: number; spent: number; balance: number; recent: { amount: number; reason: string; at: string }[] };
+  points: { correct: number; rewards: number; grants?: number; spent: number; balance: number; recent: { amount: number; reason: string; at: string }[] };
   achievements: { key: string; earnedAt: string }[];
 }
 
@@ -137,7 +137,8 @@ export default function StatsModal({ onClose }: { onClose: () => void }) {
             <section className="stats-sec">
               <h3>포인트</h3>
               <p className="stats-line">
-                맞힘 {s.points.correct} + 미니게임 {s.points.rewards} − 쓴 것 {s.points.spent} = <strong className="mono" data-stat="balance">{s.points.balance}</strong>
+                맞힘 {s.points.correct} + 미니게임 {s.points.rewards}
+                {(s.points.grants ?? 0) > 0 && <> + 보너스 {s.points.grants}</>} − 쓴 것 {s.points.spent} = <strong className="mono" data-stat="balance">{s.points.balance}</strong>
               </p>
               {s.points.recent.length > 0 && (
                 <ul className="stats-recent">

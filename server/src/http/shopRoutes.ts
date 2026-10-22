@@ -32,7 +32,7 @@ shopRouter.get('/', async (req, res) => {
   }
   await ensureCatalog();
   const owned = await ownedEmojiIds(session.accountId);
-  const bal = await getPool().query<{ correct: string; rewards: string; spent: string }>(POINTS_SQL, [session.accountId]);
+  const bal = await getPool().query<{ correct: string; rewards: string; grants: string; spent: string }>(POINTS_SQL, [session.accountId]);
   const balance = pointsFromRow(bal.rows[0]).balance;
   const themes = getThemes()
     .filter((t) => t.active)
@@ -65,7 +65,7 @@ shopRouter.post('/draw', async (req, res) => {
     // ★ 같은 계정의 동시 뽑기를 직렬로 — 계정 행 잠금
     await client.query(`SELECT id FROM accounts WHERE id = $1 FOR UPDATE`, [session.accountId]);
     // ★ R050 — 포인트 식은 db/points.ts 한 곳 (맞힌 문제 + 미니게임 보상 − 쓴 것)
-    const bal = await client.query<{ correct: string; rewards: string; spent: string }>(POINTS_SQL, [session.accountId]);
+    const bal = await client.query<{ correct: string; rewards: string; grants: string; spent: string }>(POINTS_SQL, [session.accountId]);
     const balance = pointsFromRow(bal.rows[0]).balance;
     const ownedRows = await client.query<{ emoji_id: number }>(`SELECT emoji_id FROM account_emojis WHERE account_id = $1`, [session.accountId]);
     const owned = new Set(ownedRows.rows.map((r) => r.emoji_id));

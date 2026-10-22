@@ -2,6 +2,7 @@
 // ★★ 포인트 (R048 / D-229)
 //
 //   번 것 = answer_events.accepted 수(계정별 · 처음부터) · 쓴 것 = point_spends 합 · 잔액 = 차.
+//   ★ R059 (D-254) — 번 것에 point_grants 합(제보 채택 · 월 최다 · 수동 지급)이 더해진다.
 //   ★ 잔액 열을 두지 않는다 — 두 표에서 언제든 다시 센다(옛 기록도 그대로 인정 — 찬종 확정).
 //   쓰기(spend)는 R049 뽑기가 쓴다. 잔액이 모자라면 실패(한 트랜잭션 안에서 다시 세어 확인).
 // =============================================================================
@@ -14,6 +15,8 @@ export interface PointBalance {
   /** ★ R050 — 번 것의 두 갈래 */
   correct: number;
   rewards: number;
+  /** ★ R059 — 지급(point_grants — 제보 채택 · 수동) */
+  grants: number;
   spent: number;
   balance: number;
 }
@@ -25,16 +28,18 @@ export interface PointBalance {
 export const POINTS_SQL = `SELECT
        (SELECT count(*) FROM answer_events WHERE account_id = $1 AND accepted)::text AS correct,
        (SELECT coalesce(sum(amount), 0) FROM minigame_rewards WHERE account_id = $1)::text AS rewards,
+       (SELECT coalesce(sum(amount), 0) FROM point_grants WHERE account_id = $1)::text AS grants,
        (SELECT coalesce(sum(amount), 0) FROM point_spends WHERE account_id = $1)::text AS spent`;
 
-export function pointsFromRow(row: { correct?: string; rewards?: string; spent?: string } | undefined): PointBalance {
+export function pointsFromRow(row: { correct?: string; rewards?: string; grants?: string; spent?: string } | undefined): PointBalance {
   const correct = Number(row?.correct ?? 0);
   const rewards = Number(row?.rewards ?? 0);
+  const grants = Number(row?.grants ?? 0);
   const spent = Number(row?.spent ?? 0);
-  return { earned: correct + rewards, correct, rewards, spent, balance: correct + rewards - spent };
+  return { earned: correct + rewards + grants, correct, rewards, grants, spent, balance: correct + rewards + grants - spent };
 }
 
 export async function getPoints(accountId: string): Promise<PointBalance> {
-  const r = await query<{ correct: string; rewards: string; spent: string }>(POINTS_SQL, [accountId]);
+  const r = await query<{ correct: string; rewards: string; grants: string; spent: string }>(POINTS_SQL, [accountId]);
   return pointsFromRow(r.rows[0]);
 }
