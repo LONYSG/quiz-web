@@ -968,9 +968,9 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 
 | 항목 | 내용 |
 |------|------|
-| 미니게임 키 | + `'minority' \| 'twothirds' \| 'oddone' \| 'gauge'` |
+| 미니게임 키 | + `'minority' \| 'oddone' \| 'gauge'`(★ R060 `'twothirds'` 삭제 — 설정의 모르는 키는 버린다 · 옛 minigame_runs 행은 그대로) |
 | `minigame.submit` 소수파 | `{ pick: 1~5 }` 임시(바꿀 수 있다 · 마감 때 마지막) · 공개 reveal `{ counts, minority[] }` |
-| `minigame.submit` 2/3 | `{ value: 0~100 정수 }` 한 번 · reveal `{ mean, target, n }` |
+| ~~`minigame.submit` 2/3~~ (R060 삭제) | `{ value: 0~100 정수 }` 한 번 · reveal `{ mean, target, n }` |
 | `minigame.submit` 다른 하나 | `{ index, elapsedMs }` — 틀리면 임시(+2초 · `minigame.feedback { correct:false, index, wrong }`) · 맞으면 확정 · params `{ size, base, odd, oddIndex, penaltyMs }`(Twemoji 코드) |
 | `minigame.submit` 게이지 | `{ elapsedMs }` 한 번 — 서버가 params `{ periodMs, phase0, hidden, hidePct }` 로 위치를 다시 계산 |
 

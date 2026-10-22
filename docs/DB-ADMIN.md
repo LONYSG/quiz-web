@@ -306,6 +306,17 @@ DELETE FROM minigame_item_experiences WHERE account_id IN (SELECT id FROM accoun
 - 문항 · 그림은 DB 가 정본이 됐다(파일은 찬종 PC · git 밖 그림) — `npm run db:backup` 에 들어간다.
 - 기록은 지우지 않는 것이 원칙이다(docs/17 3절) — 위 DELETE 는 잘못 지급된 보상을 바로잡을 때만.
 
+### ★★★ 검사 DB quizweb_test (R060 · D-253)
+- 검사(ui-check · bot · smoke)는 **quizweb_test 만** 쓴다 — 실 DB 로는 검사 서버가 뜨지 않는다(QUIZ_TEST_SERVER 빗장).
+- 만들기: `npm run db:test-init`(없으면 만들고 지금 quizweb 를 통째 복사 → migrate · 있으면 migrate 만) · 새로: `-- --refresh` · 백업에서: `-- --refresh --from backups/quizweb-….dump`.
+- 실 DB 가 바뀐 뒤(문항 적재 · 마이그레이션) 검사에 새 데이터가 필요하면 `--refresh`. 검사 DB 는 마음대로 지워도 된다.
+```sql
+-- 검사 DB 에 붙기
+docker exec -it quiz-web-db psql -U quiz -d quizweb_test
+-- 통째 지우기(다시 만들려면 npm run db:test-init)
+docker exec quiz-web-db dropdb -U quiz --force quizweb_test
+```
+
 ## 4. 서버가 켜진 상태에서 바꾸면 — 언제 반영되나
 
 | 바꾼 것 | 바로 반영 | 반영 안 되는 곳 |

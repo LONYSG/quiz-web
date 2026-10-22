@@ -310,6 +310,20 @@
 
 ---
 
+## D-253. 검사 DB 분리 · 빌드 빗장 · 미니게임 안 동점 = 공동 순위 · 평균의 2/3 삭제 · 어젯밤 버그 셋 (R060 — 찬종 확정 둘 + 설계 판단)
+
+- ★★★ **사고(2026-10-21 밤)**: 끝 점검의 검사 서버(봇 · ui-check)가 실 DB(quizweb)로 부팅 → 부팅 정리가 `ended_at IS NULL` 인 판 · 열린 방 · 미니게임 판을 전부 닫았다 — 찬종 둘의 미니게임만 판 2134(23:06:34) · 2138 · 2145 · 퀴즈 2146(23:36:40) 등 11번 · 22:09 의 2025 도 같은 꼴. ★ 둘째 경로: 찬종의 `npm run dev` 는 `node --watch server/dist/index.js` — 검사 묶음의 "한 번 빌드" 가 dist 를 바꾸면 **실 서버가 다시 뜨고 그 부팅 정리가** 판을 닫는다(23:06:34 판 2134 닫힘 → 23:06:35 실 서버 다시 뜸).
+- ★ 검사 DB: 같은 컨테이너의 `quizweb_test`(`npm run db:test-init` — 지금 quizweb 를 통째 복사 → migrate · `--refresh` · `--from 백업`). ui-check · ui-check-bundles · bot · smoke 의 DATABASE_URL 기본값 = quizweb_test · 실 DB 를 가리키거나 검사 DB 가 없으면 멈춘다(scripts/test-db.mjs).
+- ★ 서버 빗장: 검사 스크립트는 서버를 `QUIZ_TEST_SERVER=1` 로 띄우고, 서버는 그 값이 있는데 DB 이름이 quizweb 면 **부팅 정리 전에 거부**(server/src/db/testGuard.ts · vitest 3). `/healthz` 에 testServer — 검사 스크립트는 이미 떠 있는 서버가 검사 서버가 아니면 쓰지 않는다(봇 기본 --url 3000 이 실 서버에 붙던 것).
+- ★ 빌드 빗장: 실 서버(3000)가 떠 있으면 smoke · ui-check-bundles 가 빌드하지 않는다(`--no-build` · `UICHECK_NO_BUILD=1` 로 지금 dist 를 쓰거나 실 서버를 끈 뒤). ★ 남는 구멍 — MAIN 이 server/ shared/ 를 고치면 dev 의 `tsc -b --watch` 가 dist 를 바꾼다 → **사람이 플레이 중일 때 MAIN 은 코드를 고치지 않는다**(10 40절 규칙 · 16 §6).
+- bootCleanup 은 그대로(설계가 맞다 — 프로세스가 죽으면 닫아야 한다). 실 DB 를 읽는 보고 · 운영 스크립트(feedback:report · answers:near · db:backup · migrate · minigame-load · pipeline-load …)는 그대로 quizweb.
+- ★★ **동점(찬종 확정 "점수 같으면 공동 순위")**: 한 미니게임 안에서 합이 같으면 공동 순위(1 · 1 · 3 — 순위 점수 · 포인트 보너스 · 업적 "1등" 같이). R053 'lastRank' 는 미니게임 안에서 쓰지 않는다(tiebreak 'none'). 어느 쪽?(timeSum)은 그대로. 미니게임만 판 **전체**의 동점은 마지막 미니게임 순위(R057 그대로 · 거기서도 같으면 공동).
+- ★★ **평균의 2/3 삭제(찬종 확정 — "둘이면 0 이 필승 · 직관적이지 않고 재미없음")**: 목록 · 서버 정의 · 화면 · 실험실 · 봇 · ui-check 에서 뺌(17 → 16). 설정의 모르는 미니게임 키는 버린다(전부 없어진 것이면 전부로). minigame_runs 의 옛 행은 전적 — 전적 · 업적은 MINIGAMES 를 돌아 그대로 건너뛴다.
+- 설계 판단(작은 것): 미니게임만 사이 문구 "다음 미니게임으로!" · 마지막 "결과로!" · 숫자 · 단위를 한 덩어리로(광년 줄바꿈) · 이모티콘 바로 보내기면 고르기 창 닫기 + 큰 반응 층을 창 위로 · 둘이서 보너스 안내 "1위" · 사진 이름 맞히기 남은 시간 막대.
+- 되돌리기: 동점 — engine enterFinal 의 rankMinigameFinal 을 rankFinal(마지막 판 순위)로 · twothirds — 이 커밋을 되돌리면 된다(데이터 없음) · 이모티콘 — EmojiPicker 의 send 에서 setOpen(false) 한 줄.
+
+---
+
 ## D-252. 근접 오답만 남긴다 · 결과 화면 문제 평가 PC 기본 접힘 (R058 B · A · 설계 판단 — 찬종 확인 전 · 되돌리기 쉽다)
 
 - ★ A83 (나) — 판정에서 틀린 제출 가운데 **정규화 글이 정답 집합 중 하나를 포함 · 포함됨 · 편집 거리 ≤ 2** 인 것만 `near_misses`(0022)에. 정규화 글만(원문 아님) · 미경험자 · 문제가 열려 있는 동안 · 한 판 한 문제 한 사람 5행 · 봇 · 검사 계정 제외 · 90일(부팅 때 지움). 01 9장 "채팅은 DB 에 남기지 않는다" 의 예외 한 줄.
