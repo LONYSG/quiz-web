@@ -24,6 +24,13 @@ export type FeedbackReason = (typeof FEEDBACK_REASONS)[number]['code'];
 /** 기타 의견 최대 글자 수 (DB CHECK 와 같다) */
 export const FEEDBACK_COMMENT_MAX = 200;
 
+/**
+ * ★ R059 (D-254) — 제보 채택 보너스 기본값(찬종이 스크립트 --points 로 바꾼다 · 화면 문구도 이 값)
+ *   채택 1건 5P(정답 1개 = 1P) · 월 최다 채택 30P.
+ */
+export const FEEDBACK_ADOPT_POINTS = 5;
+export const FEEDBACK_MONTHLY_TOP_POINTS = 30;
+
 /** 속도 제한 — 한 계정 10초에 20번 */
 export const FEEDBACK_RATE = { windowMs: 10_000, max: 20 } as const;
 

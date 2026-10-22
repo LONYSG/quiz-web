@@ -48,6 +48,7 @@ import FriendList from './FriendList.js';
 // import { BellButton } from './SocialPopups.js'; // ★ R044 A-3 — 알림 끔 (D-214)
 import InviteToast from './InviteToast.js';
 import AchievementToast from './AchievementToast.js';
+import GrantToast from './GrantToast.js';
 import { PersonCardHost } from './PersonCard.js';
 import ProfilePanel from './ProfilePanel.js';
 import ShopPanel from './ShopPanel.js';
@@ -542,6 +543,8 @@ export default function App() {
       )}
       {/* ★ R054 — 업적 토스트 */}
       {socket && account && <AchievementToast socket={socket} />}
+      {/* ★ R059 — 제보 채택 · 보너스 포인트 알림(로그인 뒤 한 번) */}
+      {account && !mustChange && <GrantToast accountId={account.accountId} />}
       {/* ★ R056 — 아바타를 누르면 뜨는 프로필 카드(사진 크게 · 업적) · 전체 업적 창 */}
       {account && <PersonCardHost />}
       {view.body}

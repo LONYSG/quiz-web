@@ -14,7 +14,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown, ChevronRight, ClipboardList, ThumbsDown, ThumbsUp } from 'lucide-react';
-import { FEEDBACK_COMMENT_MAX, FEEDBACK_REASONS } from '@quiz/shared';
+import { FEEDBACK_ADOPT_POINTS, FEEDBACK_COMMENT_MAX, FEEDBACK_REASONS } from '@quiz/shared';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import { fetchGameFeedback, postQuestionFeedback, type FeedbackItem } from './api.js';
@@ -47,7 +47,7 @@ function VoteButtons({ vote, onVote, compact }: { vote: Vote; onVote: (v: 1 | -1
         className={vote === -1 ? 'fb-vote down on' : 'fb-vote down'}
         aria-pressed={vote === -1}
         aria-label="별로"
-        title="별로"
+        title={`별로 — 사유·의견이 채택되면 보너스 ${FEEDBACK_ADOPT_POINTS}P`}
         onMouseDown={keepFocus}
         onClick={() => onVote(-1)}
       >
@@ -234,6 +234,10 @@ export function ResultFeedback({ gameId }: { gameId: string }) {
       <button type="button" className="fb-result-head" aria-expanded={open} onClick={() => setUserOpen(!open)}>
         <Icon icon={open ? ChevronDown : ChevronRight} />
         <Icon icon={ClipboardList} /> 이번 판 문제 평가 <span className="dim fb-sub">별로인 문제를 알려 주세요</span>
+        {/* ★ R059 (D-254) — 접혀 있어도 보이게 머리 줄에 */}
+        <span className="fb-bonus" data-fb-bonus>
+          👎 사유·의견이 채택되면 보너스 포인트를 드려요(채택 1건 {FEEDBACK_ADOPT_POINTS}P)
+        </span>
       </button>
       {open && <FeedbackListView gameId={gameId} items={items} err={err} />}
     </div>
@@ -258,7 +262,7 @@ export function LastGameFeedback({ gameId }: { gameId: string }) {
   return (
     <>
       <button type="button" id="feedback-last-btn" className="link-btn fb-last-btn" onClick={() => setOpen(true)}>
-        <Icon icon={ClipboardList} /> 지난 판 문제 평가
+        <Icon icon={ClipboardList} /> 지난 판 문제 평가 <span className="dim fb-bonus-tip">· 채택되면 포인트</span>
       </button>
       {open &&
         createPortal(
