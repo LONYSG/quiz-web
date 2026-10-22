@@ -7236,7 +7236,9 @@ async function scenarioMgDuo() {
   const gid = host.since(g, 'game.started')[0].gameId;
   await host.waitFor(() => host.since(g, 'game.result').length > 0, 150000, '결과');
   const res = host.since(g, 'game.result')[0].payload;
-  const finals = host.since(g, 'minigame.state').filter((e) => e.phase === 'final' && e.final).map((e) => e.final.map((f) => f.rank).join(','));
+  // ★ 미니게임마다 최종 순위 — DB(minigame_players.final_rank · 봇 이벤트에는 final 이 없다)
+  await sleep(500);
+  const finals = await withDb(async (c) => (await c.query(`SELECT string_agg(p.final_rank::text, ',' ORDER BY p.final_rank) f FROM minigame_runs r JOIN minigame_players p ON p.run_id = r.id WHERE r.game_id = $1 GROUP BY r.id ORDER BY r.id`, [gid])).rows.map((r) => r.f));
   expectTrue('★★★ [B] 미니게임마다 같은 횟수 → 공동 1위(1,1)', finals.length >= 3 && [...new Set(finals)].join('|') === '1,1', JSON.stringify(finals));
   expectTrue('★★★ [B] 판 결과도 공동 1위 · 점수 같음(2+2+2)', res.ranking.length === 2 && res.ranking.every((r) => r.rank === 1 && r.score === 6), JSON.stringify(res.ranking.map((r) => [r.rank, r.score])));
   await sleep(500);
@@ -7254,7 +7256,8 @@ async function scenarioMgDuo() {
   await sleep(500);
   const mg = host.snapshot.minigame;
   const tSub = Date.now();
-  host.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { count: 30, final: true } });
+  // ★ 연타 상한(흐른 초 × 20 + 2) 안의 횟수 — 0.5초 뒤면 12 까지
+  host.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { count: 5, final: true } });
   await host.waitFor(() => host.snapshot?.minigame?.phase !== 'play', 15000, '판 넘어감');
   const waited = Date.now() - tSub;
   expectTrue('★★ [C] 한 명 끊김 → 남은 한 명이 내면 바로 넘어간다(끊긴 사람을 기다리지 않음)', waited < 3000, `${waited}ms`);
