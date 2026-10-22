@@ -261,7 +261,16 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
 
       {view.phase === 'outro' && (
         <div className="mg-outro">
-          <p className="mg-outro-line">{view.practice ? '로비로 돌아갑니다' : '퀴즈로 돌아갑니다!'}</p>
+          <p className="mg-outro-line">
+            {/* ★ R060 — 미니게임만이면 퀴즈로 가지 않는다(찬종 2026-10-21) */}
+            {view.practice
+              ? '로비로 돌아갑니다'
+              : view.series
+                ? view.series.index >= view.series.total
+                  ? '결과로!'
+                  : '다음 미니게임으로!'
+                : '퀴즈로 돌아갑니다!'}
+          </p>
         </div>
       )}
     </section>
