@@ -7573,6 +7573,81 @@ async function scenarioNear() {
   return checkSummary();
 }
 
+// =============================================================================
+// ★★ R059 — 제보 채택 · 보너스 포인트 (D-254): feedback:adopt · points:grant · 잔액 · 토스트 한 번(seen_at) · 거부
+//   ★ 검사 DB 에서만 돈다(스크립트에 --allow-bot — 실 DB 에서는 봇 계정을 거부한다)
+// =============================================================================
+async function scenarioGrant() {
+  log('시나리오 grant — ★★ 제보 채택 · 보너스 포인트 (R059)');
+  const [b1] = await makeBots(1);
+  const api = async (method, pathname) => {
+    const r = await fetch(`${BASE}${pathname}`, { method, headers: { cookie: b1.cookie ?? '' } });
+    return { status: r.status, json: await r.json().catch(() => null) };
+  };
+  const runScript = (file, extra) =>
+    new Promise((resolve) => {
+      const p = spawn(process.execPath, [path.join(ROOT, 'scripts', file), ...extra], { cwd: ROOT, stdio: ['ignore', 'pipe', 'pipe'] });
+      let out = '';
+      p.stdout.on('data', (d) => (out += d));
+      p.stderr.on('data', (d) => (out += d));
+      p.on('close', (code) => resolve({ code, out: out.trim() }));
+    });
+  // 설문 행 하나(검사 DB · 봇 계정) — 지난 채택 · 지급은 지운다
+  const fid = await withDb(async (c) => {
+    await c.query(`DELETE FROM point_grants WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [b1.loginId]);
+    await c.query(`DELETE FROM question_feedback WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [b1.loginId]);
+    return (
+      await c.query(
+        `INSERT INTO question_feedback (question_id, account_id, vote, reasons, comment)
+         SELECT (SELECT id FROM questions WHERE is_active ORDER BY id LIMIT 1), id, -1, '{answer}', '정답이 둘인 것 같아요' FROM accounts WHERE login_id = $1 RETURNING id::text`,
+        [b1.loginId],
+      )
+    ).rows[0].id;
+  });
+  const p0 = (await api('GET', '/api/me/points')).json;
+  // --yes 없음 → 쓰지 않고 멈춤
+  const dry = await runScript('feedback-adopt.mjs', ['--id', fid, '--allow-bot']);
+  const after0 = await withDb(async (c) => (await c.query(`SELECT adopted_at FROM question_feedback WHERE id = $1`, [fid])).rows[0]);
+  expectTrue('★★ --yes 없으면 할 일만 찍고 멈춘다(쓰기 0 · exit 2)', dry.code === 2 && /채택할 것/.test(dry.out) && after0.adopted_at === null, dry.out.split('\n')[0]);
+  // --allow-bot 없음 → 봇 거부
+  const bot = await runScript('feedback-adopt.mjs', ['--id', fid, '--yes']);
+  expectTrue('★★ 봇 · 검사 계정의 설문은 거부(--allow-bot 은 검사 DB 에서만)', bot.code === 1 && /봇/.test(bot.out), bot.out);
+  // 채택
+  const ok = await runScript('feedback-adopt.mjs', ['--id', fid, '--note', '봇 검사', '--allow-bot', '--yes']);
+  expectTrue('★★★ 채택 — "닉네임 +5P (문제 #…)"', ok.code === 0 && /\+5P/.test(ok.out), ok.out);
+  const row = await withDb(async (c) => (await c.query(`SELECT f.adopted_at, g.amount, g.reason, g.ref_type, g.ref_id::text, g.seen_at FROM question_feedback f JOIN point_grants g ON g.id = f.adopted_grant_id WHERE f.id = $1`, [fid])).rows[0]);
+  expectTrue('★★ 한 트랜잭션 — adopted_at · 지급 5 · feedback_adopted · ref 설문 · 아직 안 봄', row && row.adopted_at && row.amount === 5 && row.reason === 'feedback_adopted' && row.ref_type === 'question_feedback' && row.ref_id === fid && row.seen_at === null, JSON.stringify(row));
+  const again = await runScript('feedback-adopt.mjs', ['--id', fid, '--allow-bot', '--yes']);
+  expectTrue('★★ 두 번 채택 거부', again.code === 1 && /이미 채택/.test(again.out), again.out);
+  const p1 = (await api('GET', '/api/me/points')).json;
+  expectTrue('★★★ 잔액 +5 · grants 5', p1.balance - p0.balance === 5 && p1.grants === 5, JSON.stringify({ before: p0.balance, after: p1.balance, grants: p1.grants }));
+  // 토스트 한 번
+  const c1 = (await api('POST', '/api/me/grants/claim')).json;
+  const c2 = (await api('POST', '/api/me/grants/claim')).json;
+  expectTrue('★★★ 알림 한 번 — 처음 1건(5 · 문제 앞 30자) · 다음 0건', c1?.grants?.length === 1 && c1.grants[0].amount === 5 && typeof c1.grants[0].question === 'string' && [...c1.grants[0].question].length <= 30 && c2?.grants?.length === 0, JSON.stringify({ c1: c1?.grants, c2: c2?.grants?.length }));
+  const seen = await withDb(async (c) => (await c.query(`SELECT count(*) FILTER (WHERE seen_at IS NULL)::int n FROM point_grants WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [b1.loginId])).rows[0].n);
+  expect('★★ seen_at 기록', seen, 0);
+  // 월 최다 · 수동 지급
+  const bad = await runScript('points-grant.mjs', ['--login', b1.loginId, '--points', '30', '--reason', 'feedback_adopted', '--allow-bot', '--yes']);
+  expectTrue('★ points:grant — reason 이 둘 밖이면 거부', bad.code === 1, bad.out);
+  const mt = await runScript('points-grant.mjs', ['--login', b1.loginId, '--points', '30', '--reason', 'feedback_monthly_top', '--note', '봇 검사', '--allow-bot', '--yes']);
+  const c3 = (await api('POST', '/api/me/grants/claim')).json;
+  const p2 = (await api('GET', '/api/me/points')).json;
+  expectTrue('★★ 월 최다 +30 — 잔액 +35 · 알림 1건(feedback_monthly_top)', mt.code === 0 && p2.balance - p0.balance === 35 && c3?.grants?.length === 1 && c3.grants[0].reason === 'feedback_monthly_top', JSON.stringify({ code: mt.code, d: p2.balance - p0.balance, c3: c3?.grants }));
+  // 보고 — 채택 표시 · 합계
+  const rep = await runScript('feedback-report.mjs', []);
+  expectTrue('★★ feedback:report — f# · ✔ 채택 +5P · 사람별 합계', rep.code === 0 && rep.out.includes(`f#${fid}`) && /✔ 채택 \+5P/.test(rep.out) && /채택된 제보 사람별 합계/.test(rep.out), rep.out.split('\n').filter((l) => l.includes(`f#${fid}`)).join(' / '));
+  const unauth = await fetch(`${BASE}/api/me/grants/claim`, { method: 'POST' });
+  expect('★ 로그인 없이 claim → 401', unauth.status, 401);
+  // 정리(검사 DB)
+  await withDb(async (c) => {
+    await c.query(`UPDATE question_feedback SET adopted_grant_id = NULL WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [b1.loginId]);
+    await c.query(`DELETE FROM point_grants WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [b1.loginId]);
+    await c.query(`DELETE FROM question_feedback WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [b1.loginId]);
+  });
+  return checkSummary();
+}
+
 async function scenarioFeedback() {
   log('시나리오 feedback — ★★★ 문제 평가(설문) (R056)');
   const [host, guest, outsider] = await makeBots(3);
@@ -7875,6 +7950,7 @@ const SCENARIOS = {
   mgduo: scenarioMgDuo,
   emojiinline: scenarioEmojiInline,
   near: scenarioNear,
+  grant: scenarioGrant,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

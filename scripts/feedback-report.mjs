@@ -6,6 +6,7 @@
 //   npm run feedback:report -- --since 2026-10-21  ← 그날부터(갱신 시각 기준)
 //   npm run feedback:report -- --no-bots           ← 봇 · 검사 계정(bot_* · uic* · r10_*) 빼고
 //   [--top 50]                                     ← 👎 많은 문제 몇 개
+//   ★ R059 — 👎 설문마다 번호(f#) · 채택 표시(✔ +5P) · "채택된 제보 사람별 합계(월별)" — 채택은 npm run feedback:adopt -- --id <f#> --yes
 //
 // ★ 콘솔 표 + tmp/feedback-report.md(git 밖). 표 question_feedback 만 읽는다(DB 쓰기 없음).
 // ★ 문항 반영은 GEN 몫 — 이 보고를 읽고 15 기준대로 고친다(MAIN 은 questions 를 건드리지 않는다).
@@ -53,8 +54,8 @@ const W = where.join(' AND ');
 try {
   const rows = (
     await db.query(
-      `SELECT f.question_id::text, f.vote, f.reasons, f.comment, f.updated_at, a.nickname, a.login_id
-         FROM question_feedback f JOIN accounts a ON a.id = f.account_id
+      `SELECT f.id::text AS fid, f.question_id::text, f.vote, f.reasons, f.comment, f.updated_at, f.adopted_at, g.amount AS adopted_amount, a.nickname, a.login_id
+         FROM question_feedback f JOIN accounts a ON a.id = f.account_id LEFT JOIN point_grants g ON g.id = f.adopted_grant_id
         WHERE ${W}`,
       params,
     )
@@ -82,7 +83,7 @@ try {
         reasonTotal[c] = (reasonTotal[c] ?? 0) + 1;
       }
     }
-    if (r.comment) p.comments.push({ nick: r.nickname, at: r.updated_at, text: r.comment });
+    if (r.comment) p.comments.push({ fid: r.fid, nick: r.nickname, at: r.updated_at, text: r.comment, adopted: r.adopted_at ? r.adopted_amount : null });
     per.set(r.question_id, p);
   }
   const people = new Set(rows.map((r) => r.login_id)).size;
@@ -112,7 +113,22 @@ try {
   }
   const comments = [...per.entries()].flatMap(([id, p]) => p.comments.map((c) => ({ id, ...c }))).sort((a, b) => b.at - a.at);
   console.log(`\n의견 ${comments.length}`);
-  for (const c of comments) console.log(`  #${c.id} · ${c.nick} · ${kst(c.at)} — ${c.text}`);
+  const mark = (amt) => (amt ? ` ✔ 채택 +${amt}P` : '');
+  for (const c of comments) console.log(`  #${c.id} · f#${c.fid} · ${c.nick} · ${kst(c.at)} — ${c.text}${mark(c.adopted)}`);
+  // ★ R059 — 👎 설문 하나하나(채택용 번호) · 채택 합계(월별 · 사람별)
+  const downRows = rows.filter((r) => r.vote === -1).sort((a, b) => b.updated_at - a.updated_at);
+  const adoptedSum = (
+    await db.query(
+      `SELECT to_char(g.created_at AT TIME ZONE 'Asia/Seoul', 'YYYY-MM') AS month, a.nickname, a.login_id, count(*)::int AS n, sum(g.amount)::int AS points
+         FROM point_grants g JOIN accounts a ON a.id = g.account_id
+        WHERE g.reason = 'feedback_adopted'${NO_BOTS ? " AND a.login_id !~ '^(bot|uic|r10_)'" : ''}
+        GROUP BY 1, 2, 3 ORDER BY 1 DESC, 4 DESC, 5 DESC`,
+    )
+  ).rows;
+  console.log(`\n👎 설문 ${downRows.length} — 채택: npm run feedback:adopt -- --id <f#> --yes`);
+  for (const r of downRows.slice(0, 30)) console.log(`  f#${r.fid} · #${r.question_id} · ${r.nickname} · ${r.reasons.map(labelOf).join(' · ')}${r.comment ? ` · "${short(r.comment, 40)}"` : ''}${mark(r.adopted_at ? r.adopted_amount : null)}`);
+  console.log(`\n채택된 제보 사람별 합계 ${adoptedSum.length}`);
+  for (const x of adoptedSum) console.log(`  ${x.month} · ${x.nickname} — ${x.n}건 · ${x.points}P`);
 
   // ── 파일
   const md = [
@@ -139,7 +155,22 @@ try {
     '',
     `## 의견 ${comments.length}`,
     '',
-    ...comments.map((c) => `- #${c.id} · ${c.nick} · ${kst(c.at)} — ${c.text.replace(/\n/g, ' ')}`),
+    ...comments.map((c) => `- #${c.id} · f#${c.fid} · ${c.nick} · ${kst(c.at)} — ${c.text.replace(/\n/g, ' ')}${mark(c.adopted)}`),
+    '',
+    `## 👎 설문 하나하나 ${downRows.length} — 채택: \`npm run feedback:adopt -- --id <f#> --yes\``,
+    '',
+    '| f# | 문제 | 누가 | 언제 | 사유 | 의견 | 채택 |',
+    '|---|---|---|---|---|---|---|',
+    ...downRows.map((r) => {
+      const cell = (x) => String(x ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
+      return `| ${r.fid} | #${r.question_id} ${cell(short(qs.get(r.question_id)?.question_text ?? '', 30))} | ${cell(r.nickname)} | ${kst(r.updated_at)} | ${r.reasons.map(labelOf).join(' · ')} | ${cell(r.comment)} | ${r.adopted_at ? `✔ +${r.adopted_amount}P` : ''} |`;
+    }),
+    '',
+    `## 채택된 제보 사람별 합계(월별) ${adoptedSum.length}`,
+    '',
+    '| 달 | 누가 | 건 | 포인트 |',
+    '|---|---|---|---|',
+    ...adoptedSum.map((x) => `| ${x.month} | ${x.nickname} | ${x.n} | ${x.points} |`),
     '',
   ].join('\n');
   mkdirSync(path.join(ROOT, 'tmp'), { recursive: true });

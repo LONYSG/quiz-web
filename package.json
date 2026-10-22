@@ -37,6 +37,8 @@
     "answers:flex": "node scripts/answer-flex-report.mjs",
     "answers:near": "node scripts/answer-near-report.mjs",
     "feedback:report": "node scripts/feedback-report.mjs",
+    "feedback:adopt": "node scripts/feedback-adopt.mjs",
+    "points:grant": "node scripts/points-grant.mjs",
     "verify": "npm run typecheck && npm test && npm run smoke && npm run ui-check && npm run ui-check:sound && npm run ui-check:social && npm run ui-check:leave && npm run ui-check:spam && npm run ui-check:shop && npm run ui-check:copy && npm run ui-check:devices && npm run ui-check:minigame",
     "build:force": "tsc -b shared server client --force && npm run build -w client",
     "ui-check": "node scripts/ui-check.mjs",

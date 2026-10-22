@@ -2,7 +2,7 @@
 // ★ /api/me — 로그인한 나에 관한 것 (R048)
 //
 //   GET /api/me/points   { ok, earned, correct, rewards, grants(R059), spent, balance }
-//   ★ R059 POST /api/me/grants/claim  { ok, grants: [{ id, amount, reason, note, question }] } — 아직 알리지 않은 지급(제보 채택 등)을 읽고 본 것으로 적는다(토스트 한 번)
+//   ★ R059 POST /api/me/grants/claim  { ok, grants: [{ id, amount, reason, question }] } — 아직 알리지 않은 지급(제보 채택 등)을 읽고 본 것으로 적는다(토스트 한 번)
 //   ★ R054 GET /api/me/stats  전적(퀴즈 · 미니게임 · 포인트) + 업적 — 기존 표에서 읽기만 (D-242 · D-243)   ★ 포인트 = 맞힌 문제 수 + 미니게임 보상(R050) − 쓴 포인트 (D-229 · D-234)
 // =============================================================================
 
