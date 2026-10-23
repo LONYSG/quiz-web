@@ -7301,3 +7301,27 @@ button.mg-cat-card.on .mg-cat-check {
 :where(.ui-mobile) .mg-cat-list {
   grid-template-columns: 1fr;
 }
+
+/* ★★ R063 (D-261) — 고기 굽기: 큰 정수 · 작은 소수 · 익은 정도 글 */
+.cake-count .cake-small {
+  font-size: 0.42em;
+  font-weight: 800;
+  opacity: 0.75;
+}
+.meat-art.sizzle .meat-steam {
+  animation: meat-steam 0.9s ease-in-out infinite alternate;
+}
+@keyframes meat-steam {
+  from { transform: translateY(2px); opacity: 0.35; }
+  to { transform: translateY(-3px); opacity: 0.8; }
+}
+.meat-label {
+  margin: 4px 0 0;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1rem;
+}
+.meat-label.perfect { color: var(--ok); }
+.meat-label.raw, .meat-label.rare { color: #d9485f; }
+.meat-label.over, .meat-label.burnt { color: #7a4a2a; }
+[data-theme='night'] .meat-label.over, [data-theme='night'] .meat-label.burnt { color: #c08a64; }

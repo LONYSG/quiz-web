@@ -73,8 +73,9 @@ export interface MinigameInfo {
 export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'cake',
-    name: '케이크 기다리기',
-    oneLine: '숫자가 0이 되는 순간 누르세요! 중간부터 숫자와 소리가 사라집니다 — 리듬을 기억하세요',
+    // ★ R063 (D-261 · 찬종 #13 "고기 같은게 생고기로 시작해서 점점 익어가고" — 키 cake 그대로 · 이름 · 그림만)
+    name: '고기 굽기',
+    oneLine: '0초에 누르면 딱 좋게 익어요! 중간부터 숫자와 소리가 사라져요 — 리듬을 기억하세요',
     controlsPc: 'Space 또는 Enter — 한 번만',
     controlsMobile: '화면을 톡 — 한 번만',
     kind: 'physical',
@@ -482,9 +483,33 @@ export const CAKE_ROUNDS: readonly CakeRound[] = [
 /** 0초가 지나도 이만큼(실제 시간)은 누를 수 있다 */
 export const CAKE_LATE_MS = 3_000;
 export const CAKE_FADE_MS = 500;
+/**
+ * ★ R063 (D-261 · 찬종 #13 "10초라면 … 사실상 11초 정도의 시간을 주고 … 10, 9, 8, 7 ..") — 처음 1초(화면 기준)는 "10.00" 에 멈춰 있다가
+ *   10.00 → 0.00 으로 흐른다. 목표 = 0.00 이 되는 순간 = (설정 초 + 1) 화면 초.
+ */
+export const CAKE_HOLD_SEC = 1;
 /** 실제 목표 시각(ms — 판 시작 신호를 받은 때부터) */
 export function cakeTargetMs(r: CakeRound): number {
-  return (r.durationSec / r.speed) * 1000;
+  return ((r.durationSec + CAKE_HOLD_SEC) / r.speed) * 1000;
+}
+/** 화면 숫자 — 처음 1초는 설정 초에 멈춤 · 그 뒤 0 까지 */
+export function cakeDisplaySec(durationSec: number, shownElapsedSec: number): number {
+  return Math.max(0, Math.min(durationSec, durationSec + CAKE_HOLD_SEC - shownElapsedSec));
+}
+/**
+ * ★ R063 — 고기 익은 정도(누른 시각 − 목표, 초). ±0.3초 = 딱 좋게 · 일찍일수록 덜 익음 · 늦을수록 탐.
+ *   d: 0 생고기 … 1 딱 좋게 … 1.6 새까맣게.
+ */
+export const MEAT_PERFECT_SEC = 0.3;
+export function meatDoneness(errSec: number | null): { d: number; label: string; level: 'raw' | 'rare' | 'perfect' | 'over' | 'burnt' } {
+  if (errSec === null) return { d: 1.6, label: '새까맣게 탐', level: 'burnt' };
+  if (Math.abs(errSec) <= MEAT_PERFECT_SEC) return { d: 1, label: '딱 좋게!', level: 'perfect' };
+  if (errSec < 0) {
+    const d = Math.max(0, 1 + errSec / 3);
+    return d < 0.4 ? { d, label: '생고기', level: 'raw' } : { d, label: '덜 익음', level: 'rare' };
+  }
+  const d = Math.min(1.6, 1 + errSec / 2.5);
+  return d < 1.3 ? { d, label: '조금 탐', level: 'over' } : { d, label: '새까맣게 탐', level: 'burnt' };
 }
 /** 판 길이(실제 ms) — 목표 + 늦게 누를 수 있는 시간 */
 export function cakePlayMs(r: CakeRound): number {

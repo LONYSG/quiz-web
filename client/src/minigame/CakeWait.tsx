@@ -1,5 +1,7 @@
 // =============================================================================
-// ★★★ 케이크 기다리기 (가제 · Cake Wait — 리듬 천국 미라클 스타즈 '간식') — R050 · D-235
+// ★★★ 고기 굽기 (옛 케이크 기다리기 — 리듬 천국 미라클 스타즈 '간식') — R050 · D-235 → ★ R063 (D-261) 고기 · 카운트다운
+//   ★ R063 — 찬종 #13: 생고기 → 익어 감 → 딱 좋게 → 탐 · "10" 을 1초 보여 주고 10, 9, 8 … (큰 정수 · 작은 소수)
+//     판 동안 고기는 **가려지는 순간까지만** 익는다(그 뒤엔 지글지글만 — 색이 시간을 알려 주면 가림이 무의미) · 누르면 내 결과 굽기로.
 //
 // ★ 찬종: "1판째는 정속, 10초, 5초쯤부터 페이드아웃 되면서 시간 및 소리 제거 … 특정 시간부터 페이드아웃/시간,소리제거 가 핵심임 …
 //   초반만 약간 들려주고 나머지는 리듬을 기억해서 멈춰야함." · "시간이 보일때는 줄어드는 초에 맞춰서 소리로 리듬을 알려줌 …
@@ -12,7 +14,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { CAKE_FADE_MS } from '@quiz/shared';
+import { CAKE_FADE_MS, CAKE_HOLD_SEC, cakeDisplaySec, meatDoneness } from '@quiz/shared';
 import { cakeBeat, sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 
@@ -59,27 +61,27 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
 
   const elapsed = t0 !== null ? Math.max(0, now - t0) : 0; // 실제 ms
   const shownElapsedSec = (elapsed * speed) / 1000; // 화면 기준
-  const remainSec = Math.max(0, durationSec - shownElapsedSec);
-  const hideStart = hideAfterSec;
+  const remainSec = cakeDisplaySec(durationSec, shownElapsedSec);
+  // ★ R063 — 가림은 "흐르기 시작한 뒤 hideAfterSec 초" (처음 1초 멈춤 뒤부터 센다)
+  const hideStart = hideAfterSec + CAKE_HOLD_SEC;
   const fade = shownElapsedSec <= hideStart ? 1 : Math.max(0, 1 - ((shownElapsedSec - hideStart) * 1000) / speed / CAKE_FADE_MS);
   const hidden = fade <= 0;
   const over = elapsed > targetMs + lateMs;
 
-  // ── 리듬: 화면 기준 정수 초마다 한 박 (가려지기 전까지 · 0초는 소리 없음)
+  // ── 리듬: 화면 숫자가 정수(10.00 · 9.00 …)에 닿을 때마다 한 박 (가려지기 전까지 · 0초는 소리 없음)
+  //   ★ R063 — 처음 1초 멈춤이 끝나는 순간이 "10" · 그 뒤 1초마다 9 · 8 … → "0" 박자가 곧 목표
   const beatRef = useRef<{ key: string; last: number } | null>(null);
   useEffect(() => {
     if (!playing || t0 === null) return;
-    const r = Math.ceil(remainSec - 1e-6); // 지금 표시 중인 정수 초
-    const crossed = durationSec - Math.floor(shownElapsedSec + 1e-6); // 방금 지난 정수 초
+    const crossed = durationSec + CAKE_HOLD_SEC - Math.floor(shownElapsedSec + 1e-6); // 방금 닿은 정수
     if (beatRef.current?.key !== key) {
       beatRef.current = { key, last: durationSec + 1 };
     }
-    if (crossed < beatRef.current.last && crossed > 0 && shownElapsedSec < hideStart + 1e-6) {
+    if (crossed <= durationSec && crossed < beatRef.current.last && crossed > 0 && shownElapsedSec < hideStart + 1e-6) {
       beatRef.current.last = crossed;
       cakeBeat(crossed, 1 / speed);
     }
-    void r;
-  }, [playing, t0, key, remainSec, shownElapsedSec, durationSec, hideStart, speed]);
+  }, [playing, t0, key, shownElapsedSec, durationSec, hideStart, speed]);
 
   const press = () => {
     if (!canPlay || pressedHere || t0 === null || view.selfSubmitted) return;
@@ -103,9 +105,13 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
     return () => window.removeEventListener('keydown', onKey, true);
   });
 
-  const display = remainSec.toFixed(2);
+  // ★ R063 — 큰 정수 + 작은 소수 ("10" 크게 ".00" 작게)
+  const [bigPart, smallPart] = remainSec.toFixed(2).split('.');
   const done = Boolean(pressedHere) || view.selfSubmitted;
-  const lit = done || over;
+  // ★ 고기: 판 동안은 가려지는 순간까지만 익는다 · 누르면 내 굽기 · 시간이 지나면 탐
+  const cookUntil = Math.min(shownElapsedSec, hideStart);
+  const playD = Math.min(0.85, (cookUntil / (durationSec + CAKE_HOLD_SEC)) * 1.1);
+  const mineD = pressedHere ? meatDoneness((pressedHere.elapsed - targetMs) / 1000) : over ? meatDoneness(null) : null;
 
   return (
     <div
@@ -120,11 +126,13 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
       }}
     >
       <div className="cake-count mono" style={{ opacity: hidden ? 0 : fade }} aria-live="off" data-hidden={hidden ? '1' : '0'}>
-        {display}
+        <span className="cake-big">{bigPart}</span>
+        <span className="cake-small">.{smallPart}</span>
         <span className="cake-unit">초</span>
       </div>
       {hidden && !done && !over && <p className="cake-hidden-note">리듬을 기억하세요…</p>}
-      <CakeArt open={lit} />
+      <MeatArt d={mineD ? mineD.d : playD} sizzle={playing && !done && !over} />
+      {mineD && !view.spectating && <p className={`meat-label ${mineD.level}`}>{mineD.label}</p>}
       <p className="cake-help">
         {view.spectating
           ? '구경 중이에요'
@@ -140,57 +148,59 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
   );
 }
 
-/** 오븐 속 딸기 케이크 — 누르면(또는 시간이 지나면) 문이 열리고 케이크가 김을 낸다 */
-export function CakeArt({ open, small = false }: { open: boolean; small?: boolean }) {
+/** 고기 색 — d: 0 생고기(붉은) → 1 딱 좋게(갈색 · 석쇠 자국) → 1.6 새까맣게 */
+function meatColor(d: number): string {
+  const stops: [number, [number, number, number]][] = [
+    [0, [214, 70, 88]],
+    [0.5, [196, 110, 96]],
+    [1, [150, 82, 42]],
+    [1.3, [92, 52, 30]],
+    [1.6, [38, 26, 20]],
+  ];
+  const x = Math.max(0, Math.min(1.6, d));
+  let i = 0;
+  while (i < stops.length - 2 && x > stops[i + 1]![0]) i += 1;
+  const [a, ca] = stops[i]!;
+  const [b, cb] = stops[i + 1]!;
+  const t = (x - a) / (b - a || 1);
+  const c = ca.map((v, k) => Math.round(v + (cb[k]! - v) * t));
+  return `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
+}
+
+/** ★ R063 — 석쇠 위 고기 한 점(인라인 SVG — 외부 그림 없음). d 로 익은 정도 · sizzle 이면 김이 오른다 */
+export function MeatArt({ d, sizzle = false, small = false }: { d: number; sizzle?: boolean; small?: boolean }) {
+  const fill = meatColor(d);
+  const marks = d >= 0.7 ? Math.min(1, (d - 0.7) / 0.3) : 0;
   return (
-    <svg className={`cake-art${open ? ' open' : ''}${small ? ' small' : ''}`} viewBox="0 0 160 120" aria-hidden="true">
-      <defs>
-        <linearGradient id="oven-body" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#ffd6a5" />
-          <stop offset="100%" stopColor="#f4a261" />
-        </linearGradient>
-        <linearGradient id="oven-window" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#3d2b20" />
-          <stop offset="100%" stopColor="#1f140e" />
-        </linearGradient>
-        <radialGradient id="oven-glow" cx="50%" cy="70%" r="60%">
-          <stop offset="0%" stopColor="#ffb347" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#ff7b00" stopOpacity="0" />
-        </radialGradient>
-        <linearGradient id="cake-sponge" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#fde3a7" />
-          <stop offset="100%" stopColor="#efc27a" />
-        </linearGradient>
-        <radialGradient id="cake-berry" cx="40%" cy="30%" r="75%">
-          <stop offset="0%" stopColor="#ff6b6b" />
-          <stop offset="100%" stopColor="#c81d3a" />
-        </radialGradient>
-      </defs>
-      <ellipse cx="80" cy="114" rx="62" ry="5" fill="#000" opacity="0.12" />
-      <rect x="18" y="12" width="124" height="100" rx="14" fill="url(#oven-body)" />
-      <rect x="26" y="20" width="108" height="14" rx="5" fill="#fff" opacity="0.35" />
-      {[40, 58, 76].map((x) => (
-        <circle key={x} cx={x} cy="27" r="3.2" fill="#e76f51" />
+    <svg className={`cake-art meat-art${small ? ' small' : ''}${sizzle ? ' sizzle' : ''}`} viewBox="0 0 160 120" aria-hidden="true" data-doneness={d.toFixed(2)}>
+      <ellipse cx="80" cy="112" rx="64" ry="5" fill="#000" opacity="0.12" />
+      {/* 석쇠 */}
+      <rect x="14" y="30" width="132" height="76" rx="12" fill="#3a3a44" />
+      {[40, 58, 76, 94, 112].map((x) => (
+        <rect key={x} x={x} y="34" width="4" height="68" rx="2" fill="#5c5c68" />
       ))}
-      <rect x="104" y="23" width="22" height="8" rx="3" fill="#264653" opacity="0.8" />
-      <g className="cake-door">
-        <rect x="28" y="40" width="104" height="64" rx="9" fill="url(#oven-window)" />
-        <rect x="28" y="40" width="104" height="64" rx="9" fill="url(#oven-glow)" />
-        <rect x="36" y="45" width="34" height="6" rx="3" fill="#fff" opacity="0.18" />
-      </g>
-      <g className="cake-item">
-        <ellipse cx="80" cy="96" rx="34" ry="5" fill="#fff" />
-        <rect x="52" y="74" width="56" height="20" rx="4" fill="url(#cake-sponge)" />
-        <rect x="52" y="81" width="56" height="3.5" fill="#fff8ee" />
-        <path d="M50 76 Q56 68 62 75 Q68 68 74 75 Q80 68 86 75 Q92 68 98 75 Q104 68 110 76 L110 79 L50 79 Z" fill="#fffdf8" />
-        <path d="M80 56 C72 56 70 66 74 70 C77 73 83 73 86 70 C90 66 88 56 80 56Z" fill="url(#cake-berry)" />
-        <path d="M75 57 L80 53 L85 57 L80 59Z" fill="#3f8f3a" />
-        <g className="cake-steam">
-          <path d="M66 52 q-4 -6 0 -12 q4 -6 0 -12" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" opacity="0.7" />
-          <path d="M94 52 q-4 -6 0 -12 q4 -6 0 -12" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" opacity="0.7" />
+      {/* 고기 */}
+      <path d="M38 64 C34 46 58 38 82 42 C108 44 128 52 124 72 C122 90 98 98 74 96 C52 94 40 84 38 64Z" fill={fill} />
+      <path d="M50 58 C60 52 76 52 84 56" fill="none" stroke="#fff" strokeOpacity={Math.max(0, 0.55 - d * 0.4)} strokeWidth="5" strokeLinecap="round" />
+      <path d="M96 76 C104 74 112 70 114 64" fill="none" stroke="#fff" strokeOpacity={Math.max(0, 0.45 - d * 0.35)} strokeWidth="4" strokeLinecap="round" />
+      {marks > 0 && (
+        <g stroke="#2a1608" strokeOpacity={0.7 * marks} strokeWidth="4" strokeLinecap="round">
+          <path d="M54 54 L76 88" />
+          <path d="M72 48 L96 90" />
+          <path d="M92 48 L112 82" />
         </g>
-      </g>
-      <rect x="70" y="106" width="20" height="4" rx="2" fill="#e76f51" opacity="0.9" />
+      )}
+      {sizzle && (
+        <g className="meat-steam" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" opacity="0.7">
+          <path d="M62 36 q-4 -6 0 -12 q4 -6 0 -12" />
+          <path d="M98 36 q-4 -6 0 -12 q4 -6 0 -12" />
+        </g>
+      )}
     </svg>
   );
+}
+
+/** 옛 이름 — 규칙 화면 · 실험실이 부른다(R063 부터 고기) */
+export function CakeArt({ open, small = false }: { open: boolean; small?: boolean }) {
+  return <MeatArt d={open ? 1 : 0} small={small} />;
 }

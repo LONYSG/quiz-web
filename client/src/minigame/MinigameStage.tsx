@@ -15,6 +15,7 @@ import {
   BALANCE_TOP_Y,
   balanceItem,
   formatMinigameValue,
+  meatDoneness,
   minigameInfo,
   type BalanceKind,
 } from '@quiz/shared';
@@ -27,7 +28,7 @@ import { useUiMode } from '../uiMode.js';
 import type { MinigameRoundRow, MinigameView, PlayerView } from '../useRoom.js';
 import BalanceArt, { pathOf } from './BalanceArt.js';
 import BalanceGuard from './BalanceGuard.js';
-import CakeWait, { CakeArt } from './CakeWait.js';
+import CakeWait, { CakeArt, MeatArt } from './CakeWait.js';
 import AngleMatch, { ANGLE_VX, ANGLE_VY, rayEnd } from './AngleMatch.js';
 import CircleDraw from './CircleDraw.js';
 import ReactionTap, { fakeName } from './ReactionTap.js';
@@ -480,7 +481,9 @@ function RoundResult({
         <BalanceCutShow view={view} row={mine ?? result.rows[0]} decimals={d} />
       ) : (
         <div className="mg-cake-result">
-          <CakeArt open small />
+          {/* ★ R063 — 내 굽기(±0.3초 딱 좋게 · 일찍 덜 익음 · 늦게 탐) */}
+          <MeatArt d={meatDoneness(mine && !view.spectating ? (mine.submitted ? (mine.error ?? null) : null) : 0).d} small />
+          {mine && !view.spectating && <p className={`meat-label ${meatDoneness(mine.submitted ? (mine.error ?? null) : null).level}`}>{meatDoneness(mine.submitted ? (mine.error ?? null) : null).label}</p>}
           {mine && !view.spectating && (
             // ★ 내 줄은 셋째 자리까지(브리핑 예: "−0.123초(일찍) / +0.045초(늦게)") — 표는 1·2위가 갈리는 자리(규칙 6)
             <p className={`mg-cake-mine mono${mine.submitted && Math.abs(mine.error ?? 9) < 0.05 ? ' perfect' : ''}`}>

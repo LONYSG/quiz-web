@@ -29,7 +29,7 @@ export const ACHIEVEMENTS: readonly AchievementDef[] = [
   ]),
   { key: 'mg-win-1', name: '미니게임 첫 1위', desc: '미니게임에서 최종 1위를 했다(2명 이상 · 연습 제외)', group: 'minigame' },
   { key: 'mg-win-10', name: '미니게임 1위 10번', desc: '미니게임에서 최종 1위를 10번 했다', group: 'minigame' },
-  { key: 'cake-50ms', name: '케이크 장인', desc: '케이크 기다리기에서 오차 0.05초(50ms) 이내', group: 'minigame' },
+  { key: 'cake-50ms', name: '굽기 장인', desc: '고기 굽기에서 오차 0.05초(50ms) 이내', group: 'minigame' },
   { key: 'circle-95', name: '컴퍼스 손', desc: '완벽한 원에서 95% 이상', group: 'minigame' },
   { key: 'reaction-200', name: '번개', desc: '번개손에서 200ms 미만', group: 'minigame' },
   { key: 'typing-10s', name: '타자왕', desc: '타자에서 문장을 10초 안에 정확히 완성', group: 'minigame' },
