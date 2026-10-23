@@ -7576,6 +7576,46 @@ async function scenarioNear() {
 }
 
 // =============================================================================
+// ★★ R063 — 가입 선물 50P(가입 한 문장 · 봇 제외 · 토스트 한 번) · 로그인 전 제보(auth 만 · ip_hash · login_hint · 10초 3번)
+//   ★ 검사 DB 에서만 — 봇 아닌 아이디(sg…)를 하나 만들고 끝에 지운다
+// =============================================================================
+async function scenarioSignup() {
+  log('시나리오 signup — ★★ 가입 선물 50P · 로그인 전 제보 (R063)');
+  const loginId = `sg${String(Date.now()).slice(-7)}`;
+  const raw = async (method, pathname, body, cookie) => {
+    const r = await fetch(`${BASE}${pathname}`, { method, headers: { 'content-type': 'application/json', ...(cookie ? { cookie } : {}) }, body: body ? JSON.stringify(body) : undefined });
+    return { status: r.status, json: await r.json().catch(() => null), setCookie: r.headers.get('set-cookie') };
+  };
+  const su = await raw('POST', '/api/auth/signup', { loginId, password: 'pw-signup-1234', nickname: `가입${loginId.slice(-4)}` });
+  const cookie = (su.setCookie ?? '').split(';')[0];
+  expectTrue('★ 봇 아닌 아이디로 가입(검사 DB)', su.status === 200 && cookie.includes('='), `${su.status}`);
+  const pts = (await raw('GET', '/api/me/points', null, cookie)).json;
+  const row = await withDb(async (c) => (await c.query(`SELECT g.amount, g.reason, g.note, g.seen_at FROM point_grants g JOIN accounts a ON a.id = g.account_id WHERE a.login_id = $1`, [loginId])).rows);
+  expectTrue('★★★ 가입하자마자 +50P(signup · "가입 선물" · 아직 안 봄) · 잔액 50', row.length === 1 && row[0].amount === 50 && row[0].reason === 'signup' && row[0].note === '가입 선물' && row[0].seen_at === null && pts?.balance === 50 && pts?.grants === 50, JSON.stringify({ row, pts }));
+  const c1 = (await raw('POST', '/api/me/grants/claim', null, cookie)).json;
+  const c2 = (await raw('POST', '/api/me/grants/claim', null, cookie)).json;
+  expectTrue('★★ 토스트 한 번(signup 50) · 다음 0건', c1?.grants?.length === 1 && c1.grants[0].reason === 'signup' && c1.grants[0].amount === 50 && c2?.grants?.length === 0, JSON.stringify({ c1: c1?.grants, c2: c2?.grants?.length }));
+  const [b] = await makeBots(1);
+  const bRows = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM point_grants g JOIN accounts a ON a.id = g.account_id WHERE a.login_id = $1 AND g.reason = 'signup'`, [b.loginId])).rows[0].n);
+  expect('★★ 봇 계정은 가입 선물 없음', bRows, 0);
+  // 로그인 전 제보
+  const a1 = await raw('POST', '/api/reports', { kind: 'bug', text: '로그인 버튼이 안 눌려요', screen: 'auth', loginHint: loginId, device: { ui: 'pc', screen: '1536x864', dpr: 1.25 } });
+  const ar = a1.json?.id ? await withDb(async (c) => (await c.query(`SELECT account_id, login_hint, ip_hash, game_id, question_id, device FROM app_reports WHERE id = $1`, [a1.json.id])).rows[0]) : null;
+  expectTrue('★★★ 로그인 전(auth) 제보 — 계정 없음 · login_hint · ip_hash 16자 · 맥락 null · 배율', a1.status === 200 && ar?.account_id === null && ar.login_hint === loginId && /^[0-9a-f]{16}$/.test(ar.ip_hash ?? '') && ar.game_id === null && ar.device?.dpr === 1.25, JSON.stringify(ar));
+  const l401 = await raw('POST', '/api/reports', { kind: 'bug', text: 'x', screen: 'lobby' });
+  expect('★★ 로그인 없이 다른 화면(lobby)은 401', l401.status, 401);
+  const burst = [];
+  for (let i = 0; i < 3; i += 1) burst.push((await raw('POST', '/api/reports', { kind: 'other', text: `연속 ${i}`, screen: 'auth' })).status);
+  expectTrue('★ 로그인 전 속도 제한 — ip 기준 10초 3번', burst.slice(0, 2).every((s) => s === 200) && burst[2] === 429, burst.join(','));
+  // 정리(검사 DB)
+  await withDb(async (c) => {
+    await c.query(`DELETE FROM app_reports WHERE account_id IS NULL AND ip_hash IS NOT NULL AND created_at > now() - interval '10 minutes'`);
+    await c.query(`DELETE FROM accounts WHERE login_id = $1`, [loginId]);
+  });
+  return checkSummary();
+}
+
+// =============================================================================
 // ★★ R061 — 앱 제보 (D-255): 로비 · 퀴즈 중 🐞 · 문제 단계 📝 · 미니게임 중 — 맥락을 서버가 채운다 · "#번호" · 속도 제한 10초 5번
 //   ★ 검사 DB 에서만(bot.mjs 기본)
 // =============================================================================
@@ -8031,6 +8071,7 @@ const SCENARIOS = {
   near: scenarioNear,
   grant: scenarioGrant,
   report: scenarioReport,
+  signup: scenarioSignup,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

@@ -12,6 +12,7 @@
 // ★ 팝업 규칙(popup.ts — 한 번에 하나 · ✕ · 바깥 · Esc) 그대로. 닫으면 채팅 입력으로 포커스를 돌린다 (onClosed).
 // =============================================================================
 
+import { FEEDBACK_ADOPT_POINTS, SIGNUP_GIFT_POINTS } from '@quiz/shared';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Gift, Sparkles } from 'lucide-react';
 import Emoji from './Emoji.js';
@@ -122,10 +123,11 @@ export default function ShopPanel({ onClosed }: Props) {
             </p>
             <PopupClose onClose={close} />
           </div>
-          {/* ★ 맨 위 — 내 포인트 (맞힌 문제 수 − 쓴 포인트) */}
+          {/* ★ 맨 위 — 내 포인트 */}
           <p className="shop-points" aria-live="polite">
             <span className="dim">내 포인트</span> <strong className="mono">{shop ? shop.balance.toLocaleString('ko-KR') : '—'}</strong>
-            <span className="dim shop-points-sub"> · 문제 하나 맞히면 1P</span>
+            {/* ★ R063 (D-260) — 어디서 오는지 한 줄(계산식 없이) */}
+            <span className="dim shop-points-sub"> · 문제 1개 1P · 미니게임 1~3위 보너스 · 제보 채택 {FEEDBACK_ADOPT_POINTS}P · 가입 선물 {SIGNUP_GIFT_POINTS}P</span>
           </p>
 
           {stage.kind === 'list' && (
