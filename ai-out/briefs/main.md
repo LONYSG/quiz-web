@@ -1,48 +1,42 @@
-[MAIN R060]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 짧은 라운드 — 끝나면 main-next.md(R059)로 이어진다)
-TASK: ① ★★★ **검사 DB 분리** — ui-check · 봇 · smoke 가 띄우는 검사 서버가 **실제 DB(quizweb)** 에 붙어 부팅 정리(bootCleanup)로 사람이 하던 방·판을 닫았다(2026-10-21 23:06~23:46 · 11번). 검사는 `quizweb_test` 만 쓰고, 실 DB 로는 못 뜨게 막는다 ② 어젯밤 모바일 실사용 버그 넷 — (가) 미니게임만 모드 사이 연출 "퀴즈로 돌아갑니다!" (나) '얼마나 될까' 단위(광년) 줄바꿈 (다) 특별 이모티콘 바로 보내기 뒤 고르기 창이 반응을 가림 (라) **미니게임 안 동점 = 공동 순위**(찬종 확정) ③ **"평균의 2/3"(twothirds) 삭제**(찬종 확정 — 둘이면 0 이 필승 · 직관적이지 않음) ④ **둘이서 할 때 나머지 16 미니게임 점검**(필승 수 · 둘 다 실격/0점 · 동점 빈도 · 진행 막힘 — 봇 2인 + 설계 분석)
+[MAIN R061]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. **짧고 빠른 라운드** — 찬종 토큰이 얼마 안 남았다. 끝나면 멈춘다)
+TASK: **어느 화면에서든 문제점 제보** — 찬종이 플레이하다 바로 적는 제보 창(PC · 모바일) + 자동 맥락(화면 · 방 · 판 · 문항 · 미니게임 · 기기) + 표 `0024 app_reports` + 읽기 스크립트 `npm run reports:report` + **문항 번호를 화면에 표기**(문제 · 공개 · 결과 목록 · 지난 판 평가 — 제보 글에 "#번호" 를 적으면 그 문항에 붙음). 모아 둔 제보는 설계 에이전트/MAIN 이 읽고 반영한다(16 §7).
 실행 모델: Opus 5.5 (`claude --model claude-opus-5-5` · 바꾸지 않는다)
 
-■ 고정 규칙: docs/16 그대로 (번호 — R058 이 쓴 다음: **D-253 · A87** · 10 **40절** · 마이그레이션 없음(0023 은 R059 몫)). 하위 에이전트 ≤1 · 경량 ui-check(R053 묶음). 메모리: GEN(G019) · VERIFY(V023)가 돌 수 있다 — 띄우기 전 1.5GB 미만이면 2분 × 10 대기 · ui-check · 봇은 3GB 이상일 때만. ★★ **① 이 끝나 검사 DB 로 돌기 전에는 ui-check · 봇 · smoke 를 한 번도 띄우지 않는다**(사람이 하고 있을 수 있다). 셸이 회수되면 같은 명령을 다시 걸지 않는다.
-■ ★★ 동시 라운드 — GEN(G019 — data/ · pipeline · 15 · 05 Track D/E · 06 · 07 DG- · 13 C · README G · tmp/) · VERIFY(V023 — audit · 13 CV · README V). MAIN 몫: server/ client/ shared/ scripts/ docker-compose · 01 · 03 · 10 · 13 A · 07 D- · DB-ADMIN · 05 · 06 · README R. 쓰기 직전 fetch · rebase · 내 파일만 add · force 금지 · 찬종 PC dev 서버(3000)·터널·브라우저 안 건드림(지금은 꺼져 있을 수 있다 — 켜지 않는다).
-■ 토큰: 넉넉하다.
+■ 고정 규칙: docs/16 그대로 (번호 — R059 가 쓴 다음: **D-255 · A90** · 마이그레이션 **0024** · 10 **42절**). 하위 에이전트 0(직접 한다 — 토큰 아끼기) · 검사는 **quizweb_test** 로만(R060 규칙 · `npm run db:test-init --refresh` 뒤) · 실 서버가 떠 있으면 빌드하지 않는 빗장 그대로. 메모리: GEN 은 멈춰 있고 VERIFY 도 쉰다 — 지금은 MAIN 혼자.
+■ ★ 토큰 절약: 그림은 PC 1 · m390 1 · 열린 창 1 — 셋만. ui-check 는 새 묶음 r061 하나(6 이내) + r056 묶음(접힘 목록이 안 깨졌는지)만. 봇은 report 1 묶음(보내기 · 맥락 채움 · 속도 제한)만. R057 · r060 묶음은 돌리지 않는다. 보고서는 R060 꼴에서 절반 길이.
+■ 토큰: 넉넉하지 않다 — 위 절약 규칙.
 
 ■ 먼저 읽기
-- ai-out/R058.txt(끝 점검 · 봇 near) · docs/10 39절 · 13 A80 · A86 · server/src/db/bootCleanup.ts(부팅 정리 — **고치지 않는다**) · server/src/db/pool.ts · server/src/index.ts(부팅 순서) · scripts/ui-check.mjs(697~760 ensureServer · 767/818/857 DATABASE_URL 기본값 · PORT 후보 3101…) · scripts/ui-check-bundles.mjs · scripts/bot.mjs(604 · 7484) · scripts/smoke.mjs · scripts/migrate.mjs · scripts/backup.mjs · restore.mjs · docker-compose.yml · package.json scripts
-- 버그 자리: client/src/minigame/MinigameStage.tsx 264(outro 문구) · client/src/minigame/QuizReveal.tsx 114 · 135 · QuizNumber.tsx 52 · 73 · 81(단위) · client/src/EmojiPicker.tsx 42~62(열림/닫힘) · 97 · 169(보내기) · 반응 층(1~3개 이모티콘만 = 큰 반응 — R057 B) 의 z-index · shared/src/minigame.ts 54~57 · 227(tiebreak) · 361 · server/src/minigame/engine.ts 500~520(rankFinal · tie) · server/src/game/question.ts 528
+- ai-out/R056.txt(문제 평가 창 — 공개 화면 입력 포커스 안 뺏기 · 속도 제한 10초 20번 · 보고 스크립트 꼴) · R059.txt(토스트 · feedback:adopt 꼴) · client/src/QuestionFeedback.tsx · Toast.tsx · GrantToast.tsx · MobileMenu.tsx · ShortcutBar.tsx · shortcuts.ts(안전한 F키 넷은 다 쓰였다 — **Alt+B** 로 · 충돌 확인) · popup.ts(usePopup — 다른 팝업과 겹치지 않게) · server/src/http/*(feedback 경로 꼴) · server/src/game/ 의 "지금 문항 · 미니게임 판" 을 서버가 아는 자리 · docs/03(question_feedback · near_misses) · DB-ADMIN(설문 절)
 
-■ 사고 기록 (2026-10-21 밤 · DB games · minigame_runs 로 맞춤 — 설계 에이전트)
-- MAIN 끝 점검(R058 봇 22:58~23:05 · R059 ui-check 묶음 23:05~23:46)이 띄운 검사 서버가 같은 DB 로 부팅 → bootCleanup 이 `ended_at IS NULL` 인 games 전부 · 열린 rooms 전부 · 열린 minigame_runs 를 닫음. 찬종 둘이 하던 미니게임만 판 game 2134(23:06:34) · 2138(23:10:20 · 이후 판 468 · 469 · 472 · 474 · 475 · 476 이 잇달아 닫힘) · 2145(23:23:15 · 478 · 483 · 484 · 487 · 491) · 퀴즈 2146(23:36:40). game_id 가 비어 있는 판 479 · 482 · 485 · 488 · 492~497 이 검사 서버의 연습 판이다(시각이 맞물린다). 22:09 game 2025 도 같은 꼴.
-- 실 서버(3000)도 23:06:35 에 다시 떴다(원인 추정: 밑에서 닫힌 행 때문에 예외 — 확인 대상 · 필요하면 10 40절에 한 줄).
+■ 찬종의 말 (2026-10-23 · 원문)
+- "내가 게임 하면서 생긴 문제점을 따로 기록했다가 다시 전달하는게 힘들어. 자꾸 까먹기도 하고. 피드백을 수용할 수 있는 버튼? 기능을 만들어서 어떤 화면이라도 문제점을 제보할 수 있는 창을 만들어줘. 모바일/웹 둘다. 내가 플레이하면서 실시간으로 제보를 할테니까 그 제보는 따로 모아놨다가 나중에 agent 나 main이 보고 반영할 수 있도록 하자. 그게 빠짐없이 될 거 같아."
+- "지금 토큰이 얼마 안남아서 이 기능을 우선적으로 만들면 토큰 초기화 때 까지 내가 테스트를 해서 기록을 남겨놓을게."
+- "문제마다 고유 번호나 식별 번호를 같이 표기해줘. 제보할 때 해당 번호를 같이 적어서 문제에 대한 피드백도 쉽게 할 수 있게."
 
-■ 찬종의 말 (2026-10-21 밤 · 원문)
-- "미니게이 모드 하다가 각도 맞히기 두판 하니까 갑자기 멈추더니 방 터졌어." / "방금 방 또 터짐."
-- "미니게임 총합 동점인데 1,2위 점수가 다른 이유는 뭐지?"
-- "미니게임 '얼마나 될까' 에서 ~광년 의 광년 이 줄바꿈이 생겨."
-- "미니게임만 모드인데 게임 끝날때마다 이제 퀴즈로 넘어간다는 문구가 자동으로 붙네. 퀴즈가 아니라 게임인데."
-- "특별 이모티콘 눌렀을때 정작 보낸 사람은 이모티콘 선택창에 가려져서 이모티콘이 안보여. 이것도 해결해야함."
-- (2026-10-22 아침) "점수 같으면 공동 순위로 쳐줘." / "2/3 지점 맞히기 게임은 없애자." / "둘이 했을때 애매한 게임들이 있는거 같아. 2/3 지점 그 게임 같은 경우에는 0점만 제출하면 필승이어서 이상했음. 그걸 떠나서 그냥 게임이 직관적이지 않고 재미없어서 삭제 필요함. 다른게임도 둘이서 할때 괜찮은지 확인해봐."
-
-■ 설계 판단 (찬종 확인 전 — 권장안 · 되돌리기 쉽다)
-- **① 검사 DB**: 같은 컨테이너(quiz-web-db · 5434)에 **`quizweb_test`**. `npm run db:test-init` = (없으면 createdb) → 최신 `backups/*.dump` 또는 지금 quizweb 를 `pg_dump | pg_restore` 로 **통째 복사**(124MB · 문항 · 미니게임 · 이모티콘 · 계정 다 필요하므로) → migrate. `--refresh` 면 지우고 다시. ui-check.mjs · ui-check-bundles.mjs · bot.mjs · smoke.mjs 의 DATABASE_URL **기본값을 quizweb_test 로** 바꾸고, 검사 DB 가 없으면 "먼저 npm run db:test-init" 하고 멈춤. **서버 쪽 빗장**: 검사 스크립트는 서버를 띄울 때 `QUIZ_TEST_SERVER=1` 을 주고, 서버는 그 값이 있는데 DB 이름이 `quizweb` 면 **부팅 거부**(pool.ts 또는 index.ts · 부팅 정리 전에). 반대로 사람이 쓰는 `npm run dev` 는 그대로 quizweb. 실 DB 를 읽는 보고·운영 스크립트(feedback:report · answers:near · db:backup · migrate · minigame-load · pipeline-load …)는 **손대지 않는다**. bootCleanup 은 설계가 맞으니 그대로.
-- **(가) outro 문구**: `view.series` 면 "다음 미니게임으로!" · 마지막(done + 1 === total)이면 "결과로!" — view 에 그 정보가 없으면 MinigameView 에 한 칸(series: { done, total }) 더한다. 연습은 "로비로" 그대로.
-- **(나) 단위 줄바꿈**: 숫자와 단위를 `white-space: nowrap` 한 span 으로(QuizReveal 114 · 135 · QuizNumber 52 · 73 · 입력칸 옆 단위 81). 긴 단위(광년 · 킬로미터 · 만 원)로 m390 그림.
-- **(다) 이모티콘 가림**: **바로 보내기 모드로 보내면 고르기 창을 닫는다**(PC · 모바일 같이 · 입력창에 넣기 모드는 열어 둠 — 여러 개 넣는 모드니까). 더해서 큰 반응 층의 z-index 를 고르기 창보다 위로(닫히기 전 한 프레임 · 길게 누르기 뒤에도 보이게). 길게 누르기 = 넣기는 그대로.
-- **(라) 동점 — 찬종 확정 "점수 같으면 공동 순위"**: 한 미니게임 안에서 점수(total)가 같으면 **공동 순위**(둘 다 1위 → 순위 점수 · 포인트 보너스 같이 · 다음은 3위 — 표준 경쟁 순위). R053 tiebreak 'lastRank' 는 미니게임 안에서는 쓰지 않는다. 미니게임만 모드의 **최종** 동점은 마지막 미니게임 순위로 가름(R057 그대로 · 거기서도 같으면 공동). 'timeSum'(맞힌 시간 합 — which) 은 그대로. 결과 화면 "공동 1위" 표기 · 경험·업적 "1등" 은 공동 1위도 1등.
-- **③ twothirds 삭제**: MINIGAMES 등록 · server/src/minigame/defs.ts · client R053Games.tsx · MinigameStage · LabMinigame · r051/r053 테스트 · bot.mjs · ui-check(.mjs · bundles) · 04 · 10 · 01 목록에서 뺀다. **저장된 설정에 'twothirds' 가 남아 있어도 안 깨지게**(방 설정 · 미니게임 골라 하기 · prefs — 모르는 키는 읽을 때 버림 · 테스트). minigame_runs 의 옛 twothirds 행은 전적이니 그대로(통계 · 업적이 키 목록을 돌 때 모르는 키를 건너뛰는지 확인). minigame_items 는 없음(데이터 없는 게임).
-- **④ 둘이서 점검 — 설계 에이전트 1차 분석(MAIN 이 봇 2인으로 확인·보강)**: 상호작용이 결과를 정하는 게임은 minority(이미 3명부터 · 그대로)와 twothirds(삭제)뿐이고, 나머지 15 는 각자 기록을 겨루는 꼴이라 둘이어도 성립한다. 확인할 것 — (ⅰ) **필승·우세 수**가 있는가(둘이면 극단값이 유리한 게임: balloon 은 "안 터지는 선" 이 개인 기록이라 괜찮음 · price/estimate/worldprice 는 가까운 쪽이라 괜찮음) (ⅱ) **둘 다 실격/0점**(reaction 둘 다 가짜 신호에 누름 · balloon 둘 다 터짐 · photo 둘 다 못 맞힘 · cake/gauge 둘 다 안 누름) → 공동 1위로 순위 점수 2 · 2 가 되는데 그게 자연스러운지(권장: 그대로 — 둘 다 못 한 판은 둘 다 같은 점수) (ⅲ) **동점 빈도**(which 10문항 둘 다 전부 맞힘 → 시간 합 · tap 같은 횟수 · angle/balance 같은 오차) (ⅳ) **진행 막힘**(photo 는 둘 다 못 맞히면 제한 시간까지 기다림 — 시간 표시가 있는지 · 한 명 나가면 혼자 남아도 끝나는지 · 한 명 연결 끊김이면 판이 멈추지 않는지) (ⅴ) 둘일 때 결과 화면 — 1위 · 2위만 있으니 "1~3위 포인트 보너스" 문구 · 보너스 표가 어색하지 않은지. 결과는 표(16 게임 × ⅰ~ⅴ) 로 R060.txt 0절 · 고칠 것이 작으면 이 라운드에서 · 크면 13 A 로.
+■ 설계 판단 (되돌리기 쉬움)
+- **표 `app_reports`(0024)**: id · account_id FK(계정 지우면 같이) · created_at · **kind** text('bug' | 'awkward' | 'idea' | 'question' | 'other') · **text** ≤500(찬종이 친 글 — 그대로) · **screen** text(아래 화면 이름) · room_id null · game_id FK null(판 지우면 null) · question_id FK null · question_index int null · minigame_key text null · minigame_run_id FK null · **device** jsonb(mobile · viewport w×h · ua 앞 120자 · build 커밋 짧은 해시 · prefs.emojiInsert) · **recent** jsonb null(클라이언트가 기억한 **마지막 소켓 이벤트 이름 20개**(글 내용 없이 이름 · 시각만) — 있으면 좋고 20줄 넘게 번지면 뺌) · handled_at null · note null(나중에 설계 에이전트/MAIN 이 "반영 R0xx" 적는 칸). 인덱스 (created_at) · (handled_at). **채팅 원문 · 다른 사람 글은 담지 않는다**(01 9장 원칙 — 찬종이 친 제보 글만).
+- **화면 이름(screen)**: `auth` · `lobby` · `room` · `game:question` · `game:reveal` · `game:result` · `minigame:<key>:<phase>`(intro/play/final/outro) · `shop` · `profile` · `settings` · `stats` · `achievements` — 클라이언트가 지금 보이는 화면에서 정한다(라우팅 상태 하나로 — 새 전역 상태 말고 App 이 이미 아는 것으로).
+- **문항·판은 서버가 채운다**: 클라이언트는 screen · question_index · minigame_key 만 보내고, 서버가 그 계정이 있는 방의 지금 판(game_id) · 지금 문항(question_id — 공개 전이어도 **id 만** · 정답은 안 담김) · 미니게임 판 id 를 붙인다. 방 밖이면 null.
+- **열기**: PC — 모든 화면 오른쪽 아래 작은 떠 있는 버튼 "🐞 제보" + **Alt+B**(shortcuts 충돌 확인 · ShortcutBar 에 한 줄) · 모바일 — 위 막대 메뉴(MobileMenu)에 "🐞 제보" + 오른쪽 위 작은 반투명 🐞(28px — 게임 조작(연타 · 풍선 · 그리기)을 가리지 않는 자리 · 미니게임 play 단계에서는 숨기고 메뉴로만). 입력 포커스 규칙은 문제 평가와 같다(창을 열기 전엔 답 입력창 포커스 안 뺏음 · 닫으면 돌려줌).
+- **창(작게)**: 종류 칩 5(버그 · 어색함 · 제안 · 이 문제(문항 — 번호 자동) · 기타 — 기본 "버그") · 글 한 칸(≤500 · 여러 줄 · 모바일 키보드 올라와도 보내기 버튼 보이게) · 맥락 한 줄 회색("지금: 미니게임 각도 맞추기 · 판 #2151 · 문항 7")  · [보내기] [닫기]. 보내면 토스트 "제보 접수 #n — 고마워요" 1.5초 · 창 닫힘 · 글 비움. 실패(끊김)면 글을 **localStorage 에 임시 보관**해 다음 열기 때 복구(한 건만). Enter 는 줄바꿈(글이 여러 줄) · Ctrl+Enter 보내기.
+- **서버**: POST /api/reports(로그인 필수 · 속도 제한 10초 5번 · 글 비면 거부 · 길이 자르기) · 소켓 말고 HTTP(문제 평가와 같이). 봇(login_id bot* · uic* · r10_*)도 저장은 되지만 보고에서 `--no-bots` 로 뺀다.
+- **읽기**: `npm run reports:report [-- --since 2026-10-23 --no-bots --all]` → 콘솔 + `tmp/app-reports.md`(최신순 · 번호 · 시각(한국) · 닉네임 · 종류 · 화면 · 판/문항/미니게임 · 글 · handled). 기본은 **handled_at 이 비어 있는 것만** · `--all` 이면 전부. `npm run reports:handle -- --id N --note "R062 반영"`(handled_at + note · --yes). DB-ADMIN 에 같은 쿼리. **13 에 새 항목은 만들지 않는다** — 제보는 표에 있고 설계 에이전트가 16 §7 흐름으로 읽는다.
+- **문항 번호 표기**: questions.id 를 그대로 쓴다(새 번호 체계 없음 — 보고서 · 설문 · 13 이 이미 #id 로 부른다). 자리 — 문제 카드 구석 작은 회색 `#2271`(질문 글과 떨어져 · 복사 막기 바깥 · 폴드 m390 에서도 보이되 카드 높이 안 늘림 ±1px) · 정답 공개 카드 같은 자리 · 결과 화면 "이번 판 문제 평가" 목록 각 줄 앞 · 로비 "지난 판 문제 평가" 목록 · 미니게임 퀴즈류(얼마게요 · 사진 · 어느 쪽 …)는 **minigame_items.item_id**(예 `photo-0303`)를 공개 화면에 같은 꼴로. 답 입력 판정에는 영향 없음(번호는 질문 글 밖). 봇 · 마스킹 · 복사 막기 영향 없음 확인.
+- **제보 글의 "#번호"**: 서버가 글에서 `#\d{1,6}` 첫 것을 찾아 question_id 가 비어 있으면 그 문항으로 채운다(존재하는 id 일 때만) · 종류 칩 "이 문제" 를 고르면 맥락 줄에 지금 문항 번호가 들어가고 글 앞에 `#번호 ` 가 자동으로 붙는다(지우면 안 붙음). 미니게임 문항은 `photo-0303` 꼴을 같은 규칙으로 minigame_item 칸(text null)에.
+- **업적·포인트 연동 없음**(R059 채택은 question_feedback 만). 나중에 app_reports 채택 보너스를 넣을지는 찬종 결정(13 A90 에 한 줄).
 
 ■ 할 일 (항목마다 "다 됐다" · 단계마다 커밋)
-A. 검사 DB — db:test-init(+ --refresh) · 검사 스크립트 넷 기본값 · 서버 빗장(QUIZ_TEST_SERVER + quizweb 면 거부 · 테스트) · DB-ADMIN 에 "검사 DB" 절 · docs/10 끝 점검 명령에 `db:test-init` 한 줄. 다 됐다 = ① quizweb_test 에서 봇 2 묶음 + ui-check 1 묶음이 돈다 ② 그동안 quizweb 의 rooms · games · minigame_runs 에 **아무 변화도 없다**(앞뒤 count 로 증명 · 10 40절 표) ③ 빗장 테스트(DATABASE_URL=quizweb + QUIZ_TEST_SERVER=1 → 거부).
-B. 버그 넷 — (가)(나)(다)(라) 각각 커밋 · 테스트(라: rankFinal 공동 순위 · 다음 순위 건너뜀 · 최종 lastRank 그대로 · 공동 1위 보상 같음) · 그림(m390 · PC): outro 두 가지 · 광년 · 이모티콘 보낸 직후 · 공동 1위 결과.
-B2. twothirds 삭제 — 위 ③ · 옛 설정 키 무시 테스트 · 봇 mgonly 가 16 게임으로 도는지.
-B3. 둘이서 점검 — 위 ④ · 봇 2인으로 16 게임 각 1판(검사 DB · A 뒤) · 표 · 작은 고침은 바로(각각 커밋) · 큰 것은 13 A 에.
-C. 끝 점검 — **A 끝난 뒤 · 검사 DB 로만** · 메모리 규칙대로: 게이트 → 봇(mgonly · emojiinline · near · 2인 16) → ui-check(r056 · r057 묶음 + 이번 그림). 다 됐다 = 10 40절 표 · 못 돌린 것은 사유.
-D. 문서 — 01(미니게임 동점 규칙 · twothirds 뺌 · 미니게임만 사이 문구 · 이모티콘 보내면 닫힘 · 둘이서 표) · 04 · 07 D-253(검사 DB 분리 · 사고 기록 요약 · 동점 공동 순위 · twothirds 삭제 — 찬종 "0 이 필승 · 직관적이지 않음") · 13 A87(찬종: 동점 · 이모티콘 · 문구 체감) · 10 40절(사고 · 검사 DB · 끝 점검 표) · DB-ADMIN · 16 은 설계 에이전트가 이미 고침(§6 환경 줄) · 05 · 06 · README R · `ai-out/R060.txt`.
+A. 0024(+ minigame_item text null) · POST /api/reports(서버가 판·문항·미니게임 채움 · "#번호" 파싱 · 속도 제한 · 테스트 4: 방 밖 null · 문항 id 만 · "#번호" 로 채움 · 봇 표시) · 스크립트 둘(reports:report · reports:handle).
+B0. 문항 번호 표기 — 문제 · 공개 · 결과 목록 · 로비 목록 · 미니게임 퀴즈류 · 카드 높이 측정 · 그림은 아래 B 의 셋에 번호가 같이 보이게(따로 찍지 않음).
+B. 창 — PC 떠 있는 버튼 + Alt+B · 모바일 메뉴 + 🐞 · 창(칩 · 글 · 맥락 줄 · Ctrl+Enter · localStorage 복구) · 토스트 · 포커스 규칙. 그림 셋(PC 창 열림 · m390 창 열림(키보드 올라온 상태) · 보낸 뒤 토스트 PC).
+C. 끝 점검(절약) — 게이트(typecheck · vitest · build · smoke) → 봇 report 1 묶음(퀴즈 중 · 미니게임 중 · 로비 — 맥락 채워짐 · 속도 제한) → ui-check r061(≤6) + r056. 검사 DB 로만.
+D. 문서 — 01(제보 창 한 절 — 9장 예외: 찬종이 친 제보 글만 저장) · 03(app_reports) · 07 D-255 · 13 A90(찬종: 플레이하며 써 보기 · 채택 보너스 넣을지) · 10 42절 · DB-ADMIN · PLAY-GUIDE 한 줄 · 05 · 06 · README R · `ai-out/R061.txt`(짧게 — 0절: 쓰는 법 3줄 · 그림 셋 · 끝 점검 표).
 
-■ DB 쓰기: **quizweb 는 금지**(읽기 · count 만). quizweb_test 는 자유(만들고 지우고). 마이그레이션 없음.
-■ 하지 말 것: bootCleanup 수정 · dev 서버 켜기/끄기 · 실 DB 로 검사 서버 띄우기 · 0023/제보 채택(R059 몫 — main-next.md) · 새 미니게임 · twothirds 말고 다른 게임 삭제(둘이서 점검에서 문제가 커도 13 A 로만) · A82 · 15 · pipeline · force push.
-■ 확인할 것 (원칙 7): R058 마지막 번호(D-252 · A86 · 0022 · 10 39절) · MINIGAMES 17(twothirds 포함 · minority minPlayers 3) · 사고 시각(games 2134 · 2138 · 2145 · 2146 end_reason server_restart) · ui-check PORT 후보 3101~ · bot.mjs 7484 가 서버 모듈에 DATABASE_URL 을 넘기는 것 · vitest 는 DB 를 안 쓴다 — 다르면 0절에.
-■ 보고 항목: cmd 창 → 0 찬종이 볼 것(검사 중 실 DB 무변화 표 · 버그 넷 그림 · 동점 규칙 한 줄) → 원칙 메모 → A~C → D → 판단 목록 → 새 결정 필요 → 고친 문서.
+■ DB 쓰기: 허용 — 0024(백업 뒤 · 실 DB `npm run db:backup` → `npm run db:migrate`). 봇 테스트 행은 quizweb_test 에만. questions · minigame_* · question_feedback 금지.
+■ 하지 말 것: 스크린샷 캡처(외부 라이브러리 금지 · 토큰) · 채팅 원문 저장 · 13 에 제보 내용 옮겨 적기 · 문제 평가(👍/👎) 창 손대기 · 새 업적 · A82 · 15 · pipeline · force push · dev 서버 켜기/끄기.
+■ 확인할 것 (원칙 7): R059 마지막 번호(D-254 · A89 · 0023 · 10 41절) · 안전한 F키 넷 다 쓰임(F2 · F4 · F8 · F9 — Lobby) · Alt+B 가 비어 있는지 · 문제 평가 속도 제한이 서버 메모리 방식인 것 · quizweb_test 가 있는지(없으면 db:test-init) — 다르면 0절에.
+■ 보고 항목: cmd 창 → 0 찬종이 볼 것(쓰는 법 · 그림 셋 · 읽는 명령) → 원칙 메모 → A~C → D → 판단 목록 → 새 결정 필요 → 고친 문서.
 ■ 커밋: 단계마다 · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` · 내 파일만 add · fetch → rebase → push.
-■ ★ 이어서: 끝나면 `ai-out/briefs/main-next.md`(R059 제보 채택 보너스)를 읽고 이어서 한다. 없거나 첫 줄이 "보류" 면 멈춘다. 터미널 마지막 줄에 "R060 끝 — R059 로".
+■ ★ 이어서: 끝나면 멈춘다(main-next 없음). 터미널 마지막 줄에 "R061 끝 — 다음 브리핑 대기".
 ■ 답변: 한국어 · 터미널 5줄 이내.
