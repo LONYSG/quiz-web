@@ -230,7 +230,9 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
           </div>
           {assign !== null ? (
             <p className="emoji-edit-tip" data-slot-assign={KEYS[assign]}>
-              <strong>{KEYS[assign]}번 자리</strong>에 넣을 이모티콘을 고르세요
+              <span>
+                <strong>{KEYS[assign]}번 자리</strong>에 넣을 이모티콘을 고르세요
+              </span>
               <button type="button" className="link-btn" onClick={() => setAssign(null)}>
                 취소
               </button>

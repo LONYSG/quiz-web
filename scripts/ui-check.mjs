@@ -1864,7 +1864,8 @@ async function shopFlow(browser) {
   const rInput = await rectOf(H, '.chat-card input');
   const nick = await H.evaluate("document.querySelector('.special-float-nick')?.innerText ?? ''");
   const gNick = await G.evaluate("document.querySelector('.seat.me .seat-name, .seat.me .name')?.innerText ?? ''");
-  record('★★★ D 특별을 보내면 상대 화면 입력창 **위에 큰 반응**(96px · 닉네임)', f1 && rPic && Math.round(rPic.w) === 96 && rInput && rPic.b <= rInput.y && nick.length > 0, JSON.stringify({ rPic, inputTop: rInput?.y, nick, gNick }));
+  // ★ R064 (D-267) — PC 반응 층 특별 96 → 144px(1.5배)
+  record('★★★ D 특별을 보내면 상대 화면 입력창 **위에 큰 반응**(PC 144px · 닉네임)', f1 && rPic && Math.round(rPic.w) === 144 && rInput && rPic.b <= rInput.y && nick.length > 0, JSON.stringify({ rPic, inputTop: rInput?.y, nick, gNick }));
   record('★★ D 로그엔 "닉네임 + 작은 그림(32px)" 한 줄', (await specialLines(H)) === l0 + 1 && (await H.evaluate("document.querySelector('.chat-line .chat-special')?.getBoundingClientRect().width")) === 32, String(await H.evaluate("document.querySelector('.chat-line .chat-special')?.getBoundingClientRect().width")));
   await altDigit(G, '1');
   await sleep(120);
@@ -1873,17 +1874,21 @@ async function shopFlow(browser) {
   await sleep(300);
   await snap(H, '121-special-float-3-pc');
   record('★★ D 3개 겹치면 옆으로 나란히 (동시 최대 3)', f3 && (await H.evaluate("(() => { const r = [...document.querySelectorAll('.special-float')].map((e) => e.getBoundingClientRect()); return r.length === 3 && r[0].right <= r[1].left + 1 && r[1].right <= r[2].left + 1; })()")));
-  // 4번째 → 특별 도배 방지 (보낸 사람 화면)
+  // ★ R064 (D-269) — 10초 5회: 4 · 5번째는 가고 6번째 → 특별 도배 방지 (보낸 사람 화면)
+  await altDigit(G, '1');
+  await sleep(120);
+  await altDigit(G, '1');
+  await sleep(120);
   await altDigit(G, '1');
   const locked = await G.waitFor("(document.querySelector('.throttle-note')?.innerText ?? '').includes('특별')", 3000);
   await sleep(150);
   await snap(G, '122-special-locked-pc');
-  record('★★★ D 10초 안 4번째 → "특별 이모티콘 도배 방지 · N초" (보낸 사람만)', locked && (await H.evaluate("document.querySelector('.throttle-note') === null")), await G.evaluate("document.querySelector('.throttle-note')?.innerText ?? ''"));
-  record('★ D 상대 화면엔 3개까지만 (4번째는 안 간다)', (await specialLines(H)) === l0 + 3, String((await specialLines(H)) - l0));
+  record('★★★ D 10초 안 6번째 → "특별 이모티콘 도배 방지 · N초" (보낸 사람만)', locked && (await H.evaluate("document.querySelector('.throttle-note') === null")), await G.evaluate("document.querySelector('.throttle-note')?.innerText ?? ''"));
+  record('★ D 상대 화면엔 5개까지만 (6번째는 안 간다)', (await specialLines(H)) === l0 + 5, String((await specialLines(H)) - l0));
   await H.waitFor("document.querySelectorAll('.special-layer .special-float').length === 0", 4500);
   await sleep(200);
   await snap(H, '123-special-after-pc');
-  record('★★ D 3초 뒤 큰 반응은 사라지고 로그 줄만 남는다', (await floats(H)) === 0 && (await specialLines(H)) === l0 + 3);
+  record('★★ D 3초 뒤 큰 반응은 사라지고 로그 줄만 남는다', (await floats(H)) === 0 && (await specialLines(H)) === l0 + 5);
   // 특별이 잠겨도 표준 이모티콘은 간다
   const e0 = await H.evaluate("document.querySelectorAll('.chat-line .chat-emoji').length");
   await realClick(G, '.emoji-btn');

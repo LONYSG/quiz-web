@@ -364,6 +364,7 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 ## ★★ 앱 제보 (R061 / 0024 — D-255)
 
 - ★ **R063 / 0025** — `account_id` **NULL 허용**(로그인 전 제보 — screen 'auth' · 'password-change' 만 서버가 받는다) · `login_hint` ≤40(로그인 칸 아이디 · 비밀번호 아님) · `ip_hash` ≤32(비로그인 때만 · sha256(ip + 비밀 앞 8자) 앞 16자 — 원 IP 없음 · 속도 제한 10초 3번). `device` 에 `screen`(모니터 CSS px) · `dpr`(배율) · `theme` · `ui` 추가.
+- ★ **R064 (D-264)** — 마이그레이션 없음 · `device` jsonb 에 `errors`(브라우저 최근 예외 ≤5 × 200자 — window error · promise · 화면 경계에서 잡은 것) · `layout`(가운데 화면 카드별 위-아래 px 한 줄 ≤200) 추가.
 - ★ **R063 / 0025 · point_grants** — reason 에 `'signup'`(가입 선물 50P — 가입 한 문장(CTE) 안에서 · 봇 제외 · 기존 회원 소급은 0025 가 한 번 · seen_at null → 토스트).
 
 | 표 · 열 | 형식 | 규칙 |

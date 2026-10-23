@@ -7605,8 +7605,8 @@ button.profile-photo {
 
 /* ★★ R064 (D-267 · 찬종 #22 "피드백 버튼이 혼자 작음") — 📝 피드백은 같은 줄 이웃과 같은 높이 · 글자 크기
    · 문제 머리 줄 = 뱃지(문화·예술 · 난이도)와 같은 꼴 · 결과 목록 줄 = 👍/👎(28px)와 같은 높이 */
-.q-head button.qreport-btn,
-.mg-item-id button.qreport-btn {
+:where(.ui-pc) .q-head button.qreport-btn,
+:where(.ui-pc) .mg-item-id button.qreport-btn {
   height: auto;
   padding: 1px 8px;
   font-size: 0.72rem;
@@ -7715,8 +7715,12 @@ button.profile-photo {
 }
 button.mg-cat-card {
   min-width: 0;
-  overflow: hidden;
   white-space: normal;
+}
+/* 카드 높이는 내용대로(창 안 스크롤) — 카드에 overflow 를 주면 그리드 행이 눌린다(R064 m390 에서 봄) */
+.mg-cat-list {
+  grid-auto-rows: max-content;
+  align-content: start;
 }
 .mg-cat-body > * {
   min-width: 0;
