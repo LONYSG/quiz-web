@@ -76,7 +76,8 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
 
       {mgOnly && (
         <p className="dim mg-result-sub">
-          미니게임만 · {result.minigameSeries?.done ?? 0}개 — 미니게임마다 순위 점수(인원 − 순위 + 1)를 더했어요
+          {/* ★ R063 (D-259) — 계산식은 적지 않는다(찬종 #17) */}
+          미니게임만 · {result.minigameSeries?.done ?? 0}개
         </p>
       )}
 

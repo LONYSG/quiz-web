@@ -191,14 +191,9 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
             {view.key === 'cake' && <p className="dim mg-rules-note">블루투스 이어폰은 소리가 늦게 들려요 — 화면 숫자를 믿으세요</p>}
             {view.key === 'reaction' && <p className="dim mg-rules-note">진짜 신호는 초록 화면 — 소리를 꺼도 초록만 보면 돼요 · 노란 화면 · 글자 · 소리만은 가짜</p>}
             {view.key === 'typing' && <p className="dim mg-rules-note">한글 짧은 문장 · 영어 · 한글 긴 문장 — 30초 안에 못 치면 친 만큼(%)으로</p>}
-            {QUIZ_KEYS.has(view.key) && (
-              <p className="dim mg-rules-note">
-                {view.practice ? '연습 판은 가짜 문항이에요(실제 문항을 미리 보지 않게)' : '한 번 본 문항은 다시 나오지 않아요 · 이미 본 사람은 그 문항 점수가 없어요'}
-              </p>
-            )}
+            {/* ★ R063 (D-259) — 내부 규칙 · 계산 설명은 적지 않는다(찬종 #17) — 판 수와 보상만 */}
             <p className="dim mg-rules-note">
-              {view.roundCount}판 · 판마다 순위 점수 ·{' '}
-              {view.practice ? '연습이라 보상 없음' : view.series ? `최종 순위가 게임 점수로 · ${bonusRanks(view.participants.length)}는 포인트도` : `최종 ${bonusRanks(view.participants.length)}에게 보너스 점수(포인트도)`}
+              {view.roundCount}판 · {view.practice ? '연습' : `${bonusRanks(view.participants.length)}는 포인트도!`}
             </p>
           </div>
         </div>
@@ -251,11 +246,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
           </ol>
           {view.key === 'which' && <WhichSummary view={view} nameOf={nameOf} />}
           <p className="dim mg-final-note">
-            {view.practice
-              ? '연습 판이라 점수 · 포인트에 들어가지 않아요'
-              : view.series
-                ? `순위 점수는 이번 게임 점수에 · ${bonusRanks(view.participants.length)}는 포인트 보너스도 받아요`
-                : '보너스는 퀴즈 점수와 포인트에 함께 들어가요'}
+            {view.practice ? '연습' : `${bonusRanks(view.participants.length)}는 포인트도!`}
           </p>
         </div>
       )}
