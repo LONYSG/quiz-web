@@ -59,3 +59,4 @@ export * from './achievements.js';
 export * from './minigame/r054.js';
 // ★★★ R056 — 문제 평가(설문)
 export * from './feedback.js';
+export * from './report.js';

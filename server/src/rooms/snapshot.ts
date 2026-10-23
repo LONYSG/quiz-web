@@ -143,6 +143,8 @@ export interface QuestionView {
   generalHint: string | null;
   /** ★★ R040 — 일반 힌트가 있는 문제인가 (여부만 — 내용은 위 generalHint 규칙). 문제 시작부터 알려 준다 */
   hasGeneralHint: boolean;
+  /** ★ R061 — 문항 번호(questions.id) — 문제 단계부터 보인다(제보 · 복사). 단서가 아니다 */
+  questionId: string;
 }
 
 export interface ResolutionView {
@@ -391,6 +393,7 @@ function buildQuestionView(
     hintRevealed: revealed,
     generalHint: generalRevealed ? q.generalHint : null,
     hasGeneralHint: q.generalHint !== null,
+    questionId: q.questionId,
   };
 }
 

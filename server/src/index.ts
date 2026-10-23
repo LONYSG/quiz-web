@@ -19,6 +19,7 @@ import { emojiRouter, loadEmojiCatalog } from './http/emojiRoutes.js';
 import { avatarRouter } from './http/avatarRoutes.js';
 import { meRouter, profileRouter } from './http/meRoutes.js';
 import { feedbackRouter } from './http/feedbackRoutes.js';
+import { reportRouter } from './http/reportRoutes.js';
 import { minigameRouter } from './http/minigameRoutes.js';
 import { shopRouter } from './http/shopRoutes.js';
 import { authRouter } from './http/authRoutes.js';
@@ -127,6 +128,8 @@ async function main(): Promise<void> {
   // ★ R056 — 다른 사람 업적 (D-248) · 문제 평가 (D-246)
   app.use('/api/profile', profileRouter);
   app.use('/api/feedback', feedbackRouter);
+  // ★ R061 — 앱 제보(🐞 · 📝) → app_reports
+  app.use('/api/reports', reportRouter);
   // ★ R049 — 이모티콘샵 · 뽑기 (D-231)
   app.use('/api/shop', shopRouter);
   // ★ R052 — 퀴즈류 미니게임 그림 (DB bytea · 로그인만)

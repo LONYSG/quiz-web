@@ -130,6 +130,8 @@ export interface QuestionView {
   generalHint: string | null;
   /** ★ R040 — 일반 힌트가 있는 문제인가 (문제 시작부터. 내용은 30초에) */
   hasGeneralHint?: boolean;
+  /** ★ R061 — 문항 번호(문제 단계부터 · 제보 · 복사) */
+  questionId?: string;
 }
 
 /** 정답 공개 구간 */
@@ -492,6 +494,7 @@ export function useRoom(socket: Socket | null): RoomHook {
                 generalHint: null,
                 // ★★ R040 — 있음/없음 여부는 처음부터 온다
                 hasGeneralHint: p.hasGeneralHint,
+                questionId: p.questionId,
               },
               resolution: null,
               minigame: null,

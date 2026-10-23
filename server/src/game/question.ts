@@ -218,6 +218,8 @@ function broadcastQuestionStarted(room: Room, current: CurrentQuestion): void {
     // ★★ R040 — 일반 힌트 **있음/없음 여부만** 처음부터 보낸다 (건우: "없으면 처음부터 없다고, 있으면 있다고").
     //   ★ 내용은 지금처럼 남은 30초에 question.generalHint 로 (R015 누출 방어 그대로). 여부는 힌트가 아니다.
     hasGeneralHint: current.generalHint !== null,
+    // ★ R061 — 문항 번호(questions.id) — 제보 · 복사용. 번호는 정답의 단서가 아니다
+    questionId: current.questionId,
     state: room.state,
   };
   emitRoomPerPlayer(room, 'question.started', base, (player) =>
