@@ -79,6 +79,8 @@ export interface MinigameRun {
   phaseEndsAt: number;
   roundIndex: number;
   rounds: RoundSpec[];
+  /** ★ R063 — 판 진행 중 다시 알린 시각들(roundIndex:ms) */
+  liveSent?: Set<string>;
   /** 판마다 계정 → 받은 입력 (provisional 이면 아직 확정 아님 — 마감 때 마지막 값을 쓴다) */
   submissions: Map<string, ParsedInput & { provisional: boolean }>[];
   roundResults: { roundIndex: number; decimals: number; rows: RoundResultRow[] }[];
@@ -152,7 +154,8 @@ export function minigameView(room: Room, viewerAccountId: string): MinigameView 
     round:
       inRound && spec
         ? {
-            params: spec.params,
+            // ★ R063 — 시간이 지나야 보이는 것(사진 d3 초성)은 그 시각 뒤에만 덧붙인다
+            params: def.liveParams && run.phase === 'play' ? { ...spec.params, ...def.liveParams.at(spec, Date.now() - run.phaseStartedAt) } : spec.params,
             playMs: spec.playMs,
             private: privateOf(def, spec, viewerAccountId, run.roundIndex, participating),
             // ★ R052 — 정답 · 값은 정답 공개 때만 (판 진행 중에는 보내지 않는다)
@@ -383,6 +386,22 @@ function maybeEndPlayEarly(room: Room, run: MinigameRun, now: number): void {
 export function checkMinigame(room: Room, now: number): void {
   const run = room.minigame;
   if (!run || room.state !== 'MINIGAME') return;
+  // ★ R063 — 판 진행 중 덧붙일 것(사진 d3 초성)의 시각이 지나면 한 번 다시 알린다
+  if (run.phase === 'play' && now < run.phaseEndsAt) {
+    const def = MINIGAME_DEFS[run.key];
+    const spec = run.rounds[run.roundIndex];
+    if (def.liveParams && spec) {
+      const el = now - run.phaseStartedAt;
+      const sent = (run.liveSent ??= new Set<string>());
+      for (const t of def.liveParams.times(spec)) {
+        const k = `${run.roundIndex}:${t}`;
+        if (el >= t && !sent.has(k)) {
+          sent.add(k);
+          broadcast(room);
+        }
+      }
+    }
+  }
   if (now < run.phaseEndsAt) return;
   switch (run.phase) {
     case 'intro':

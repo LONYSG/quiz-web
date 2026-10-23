@@ -8,6 +8,7 @@
 // =============================================================================
 
 import {
+  generateHint,
   isExampleItem,
   ANGLE_PLAY_MS,
   BALANCE_PLAY_MS,
@@ -132,6 +133,11 @@ export interface MinigameDef {
   buildRounds(seed: number, ctx: BuildCtx): RoundSpec[] | null;
   /** 사람마다 다른 공개 값 (균형 = 시작 점). 없으면 null */
   privateFor?(spec: RoundSpec, accountId: string, roundIndex: number): Record<string, unknown> | null;
+  /**
+   * ★ R063 (D-261 · 찬종 #19) — 판 진행 중 시간이 지나야 보이는 것(사진 d3 초성 힌트). 그 시각 전에는 클라에 보내지 않는다.
+   *   times: 바뀌는 시각들(엔진이 그때 다시 알린다) · at: 흐른 ms 에 맞는 덧붙일 params
+   */
+  liveParams?: { times(spec: RoundSpec): number[]; at(spec: RoundSpec, elapsedMs: number): Record<string, unknown> };
   /** ★ R063 (D-261 · 찬종 #18) — 규칙 · 준비 단계에 미리 받아 둘 그림 주소(답이 드러나지 않는 것만) */
   preloadAll?(rounds: readonly RoundSpec[]): string[];
   /**
@@ -473,6 +479,9 @@ const worldprice: MinigameDef = {
 
 const DUMMY_SHAPE: Record<string, string> = { 'dummy-photo-1': 'circle', 'dummy-photo-2': 'triangle', 'dummy-photo-3': 'square' };
 const answersOf = (a: string, alt: readonly string[]) => [...new Set([a, ...alt].map((x) => normalizeAnswer(x)).filter(Boolean))];
+/** ★ R063 — 사진 난이도 3 의 시간 배수 */
+const PHOTO_HARD_TIME_X = 1.5;
+
 const photo: MinigameDef = {
   key: 'photo',
   info: minigameInfo('photo'),
@@ -491,15 +500,28 @@ const photo: MinigameDef = {
     if (!pick) return null;
     return pick.items.map((it, i) => {
       const p = it.payload;
-      return quizSpec('photo', i, seed, {
+      // ★★ R063 (D-261 · 찬종 #19 "잘 모를만한 문제는 … 처음부터 보여주자 … 시간 조금만 더 넉넉하게 … 초성 힌트") —
+      //   난이도 3 은 처음부터 전부 · 시간 1.5배 · 2/3 지나면 초성(정답에서 자동). 일반 힌트 칸은 사진 항목에 없다 → 건너뜀.
+      const hard = Number(p.difficulty) === 3;
+      const spec = quizSpec('photo', i, seed, {
         itemKey: it.id,
         itemId: it.id,
-        params: { imageId: it.imageIds[0] ?? null, revealMode: p.revealMode, category: p.category, revealMs: PHOTO_REVEAL_MS },
+        params: { imageId: it.imageIds[0] ?? null, revealMode: hard ? 'plain' : p.revealMode, category: p.category, revealMs: PHOTO_REVEAL_MS, ...(hard ? { hard: true } : {}) },
         reveal: { answer: p.answer, explanation: p.explanation, attribution: it.attribution },
-        secret: { answers: answersOf(String(p.answer), (p.altAnswers as string[]) ?? []) },
+        secret: { answers: answersOf(String(p.answer), (p.altAnswers as string[]) ?? []), ...(hard ? { chosung: generateHint(String(p.answer)) } : {}) },
         experiencedBy: pick.experiencedBy.get(it.id),
       });
+      return hard ? { ...spec, playMs: Math.round(spec.playMs * PHOTO_HARD_TIME_X) } : spec;
     });
+  },
+  liveParams: {
+    times(spec) {
+      return spec.params.hard && spec.secret?.chosung ? [Math.round((spec.playMs * 2) / 3)] : [];
+    },
+    at(spec, elapsedMs) {
+      if (!spec.params.hard || !spec.secret?.chosung) return {};
+      return elapsedMs >= Math.round((spec.playMs * 2) / 3) ? { chosung: spec.secret.chosung } : {};
+    },
   },
   parseInput(raw, spec, ctx) {
     const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;

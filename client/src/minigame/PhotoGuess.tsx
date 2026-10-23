@@ -124,6 +124,12 @@ export default function PhotoGuess({ socket, view, serverNow, mobile }: Props) {
           </div>
         )}
       </div>
+      {/* ★ R063 (D-261) — 어려운 사진(d3)은 처음부터 다 보이고 · 2/3 지나면 초성(서버가 그 시각 뒤에만 보낸다) */}
+      {typeof p.chosung === 'string' && canPlay && !mine?.correct && (
+        <p className="photo-hint" data-photo-hint>
+          초성 <strong className="mono">{p.chosung}</strong>
+        </p>
+      )}
       <form
         className="quiz-num"
         onSubmit={(e) => {

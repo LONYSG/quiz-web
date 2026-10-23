@@ -241,7 +241,8 @@ function r052Scene(key: MinigameKey, phase: MinigamePhase) {
     const mode = q.get('mode') ?? 'zoom';
     return {
       playMs: 20000,
-      params: { imageId: image, dummyShape: 'circle', revealMode: mode, revealMs: 15000, dummy: !image },
+      // ★ R063 — ?hard=1 : 난이도 3(처음부터 다 보임 · 초성 힌트)
+      params: { imageId: image, dummyShape: 'circle', revealMode: q.get('hard') ? 'plain' : mode, revealMs: 15000, dummy: !image, ...(q.get('hard') ? { hard: true, chosung: 'ㄷㄱㄹㅁ' } : {}) },
       reveal: { answer: image ? '(정답)' : '동그라미', explanation: '연습용 설명이에요.', attribution: image ? '(그림 출처)' : null },
       rows: [row('lab3', 1, 4, { timeSec: 3.2, tries: 1 }, 3200), row('lab1', 2, 3, { timeSec: 6.9, tries: 3 }, 6900), row('lab2', 3, 0, { tries: 2 }, null, false), row('lab4', 3, 0, null, null, false)],
     };
