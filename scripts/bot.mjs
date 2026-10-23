@@ -51,7 +51,7 @@
 // ★ 로그만 찍지 않는다 (R005 5-1의 교훈).
 //   lobby / countdown 은 expect() 로 단정하고, 하나라도 틀리면 0이 아닌 코드로 끝난다.
 //
-//   --url http://localhost:3000   대상 서버 (기본값)
+//   --url http://localhost:3200   대상 서버 (기본값 · ★ R063 — 3000 은 찬종 dev 서버 자리라 비운다)
 //   --prefix bot                   계정 아이디 접두어
 //   --no-boot                      서버가 안 떠 있어도 직접 띄우지 않는다
 //
@@ -80,7 +80,7 @@ function opt(name, fallback) {
   const i = args.indexOf(name);
   return i >= 0 && args[i + 1] !== undefined ? args[i + 1] : fallback;
 }
-const BASE = opt('--url', 'http://localhost:3000');
+const BASE = opt('--url', 'http://localhost:3200');
 const COUNT = Number(opt('--count', '3'));
 const PREFIX = opt('--prefix', 'bot');
 const MESSAGES = Number(opt('--messages', '5'));
@@ -188,7 +188,8 @@ async function ensureServer() {
   bootedServer = spawn(process.execPath, [SERVER_ENTRY], {
     cwd: ROOT,
     stdio: ['ignore', 'pipe', 'pipe'],
-    env: { ...process.env, ...SERVER_ENV },
+    // ★ R063 — 직접 띄우는 서버는 BASE 의 포트로 연다(예전엔 기본 3000 → 찬종 dev 서버가 EADDRINUSE 로 못 떴다)
+    env: { ...process.env, ...SERVER_ENV, PORT: new URL(BASE).port || '80' },
   });
   let out = '';
   bootedServer.stdout.on('data', (c) => {
