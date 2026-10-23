@@ -126,7 +126,7 @@ export default function FriendList({ social, mode, inRoom, onJoin, pageSize }: P
         )}
       </div>
       {sorted.length === 0 ? (
-        <p className="list-empty dim">아직 친구가 없어요. 아이디로 신청하거나 같은 방 사람을 눌러 신청해요.</p>
+        <p className="list-empty dim" data-wrap-ok>아직 친구가 없어요. 아이디로 신청하거나 같은 방 사람을 눌러 신청해요.</p>
       ) : (
         <ul className="people-list">
           {shown.map((f) => {

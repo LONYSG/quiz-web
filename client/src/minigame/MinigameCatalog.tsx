@@ -105,9 +105,9 @@ export default function MinigameCatalog({ mode, editable, selected = [], onConfi
                 </span>
                 <span className="mg-cat-body">
                   <strong className="mg-cat-name">{m.name}</strong>
-                  <span className="mg-cat-line">{m.oneLine}</span>
+                  <span className="mg-cat-line" data-wrap-ok>{m.oneLine}</span>
                   {ex && (
-                    <span className="mg-cat-ex">
+                    <span className="mg-cat-ex" title={`예) ${ex.q} → ${ex.a}`}>
                       예) {ex.q} → <strong>{ex.a}</strong>
                     </span>
                   )}

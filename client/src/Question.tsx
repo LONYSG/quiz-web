@@ -332,7 +332,8 @@ export default function Question({
                     /* ★ R039 — 최신 한 마디만. key=메시지 id 라 **같은 말이라도 새 채팅이면** 다시 튀어 오른다 */
                     <p key={m.id} className="ceremony-msg">
                       {m.emojiId ? (
-                        <Emoji id={m.emojiId} size={56} />
+                        /* ★ R064 (D-267 · 찬종 #22) — 특별 이모티콘은 세레모니에서 1.5배(56 → 84 · 모바일은 그대로 — CSS) */
+                        <Emoji id={m.emojiId} size={m.special ? 84 : 56} className={m.special ? 'ceremony-special' : undefined} />
                       ) : (
                         <ChatText text={m.text} mine={m.accountId === myAccountId} masked={m.masked} />
                       )}

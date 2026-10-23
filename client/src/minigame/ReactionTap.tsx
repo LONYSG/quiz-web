@@ -123,7 +123,7 @@ export default function ReactionTap({ socket, view, serverNow, mobile }: Props) 
       <div className="rx-panel">
         {state === 'go' && <Icon icon={Zap} className="rx-zap" />}
         <p className="rx-big mono">{big}</p>
-        <p className="rx-sub">
+        <p className="rx-sub" data-wrap-ok>
           {view.spectating
             ? '구경 중이에요'
             : state === 'foul'

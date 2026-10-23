@@ -164,7 +164,7 @@ export default function StatsModal({ onClose }: { onClose: () => void }) {
                   </span>
                   <span className="ach-text">
                     <strong>{d.name}</strong>
-                    <span className="dim">{at ? `${at.slice(0, 10)} 달성` : d.desc}</span>
+                    <span className="dim" title={d.desc}>{at ? `${at.slice(0, 10)} 달성` : d.desc}</span>
                   </span>
                 </li>
               );

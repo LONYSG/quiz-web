@@ -187,7 +187,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
           <div className="mg-rules-art">
             <RulesArt k={view.key} />
           </div>
-          <div className="mg-rules-text">
+          {/* ★ R064 — 규칙은 설명문(줄바꿈 감사에서 의도한 줄바꿈) */}
+          <div className="mg-rules-text" data-wrap-ok>
             <p className="mg-rules-line">{info.oneLine}</p>
             <p className="mg-rules-ctrl">
               <span className="hint-label">{mobile ? '모바일' : 'PC'}</span> {mobile ? info.controlsMobile : info.controlsPc}
@@ -640,7 +641,7 @@ function R051Result({ view, mine, first, decimals }: { view: MinigameView; mine:
     const unfinished = row?.extra?.unfinished === true;
     return (
       <div className="mg-r051-result typing-result">
-        <p className="typing-target small no-copy" lang={p.lang === 'en' ? 'en' : 'ko'}>
+        <p className="typing-target small no-copy" data-wrap-ok lang={p.lang === 'en' ? 'en' : 'ko'}>
           {String(p.text ?? '')}
         </p>
         <p className="mg-r051-big mono">

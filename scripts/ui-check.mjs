@@ -40,7 +40,7 @@
 // =============================================================================
 
 import { spawn } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
+import { appendFileSync, existsSync, mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
 import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
@@ -174,6 +174,12 @@ class Cdp {
     });
     this.ws.on('message', (raw) => {
       const msg = JSON.parse(raw.toString());
+      // ★ R064 — 페이지 예외 · console.error 를 모아 둔다(결과 화면 "아예 안 보임" 같은 것을 숫자로 잡는다)
+      if (msg.method === 'Runtime.exceptionThrown') {
+        (this.pageErrors ??= []).push(String(msg.params?.exceptionDetails?.exception?.description ?? msg.params?.exceptionDetails?.text ?? '').slice(0, 300));
+      } else if (msg.method === 'Runtime.consoleAPICalled' && msg.params?.type === 'error') {
+        (this.pageErrors ??= []).push(('console.error ' + (msg.params.args ?? []).map((a) => a.value ?? a.description ?? '').join(' ')).slice(0, 300));
+      }
       const entry = msg.id && this.pending.get(msg.id);
       if (!entry) return;
       this.pending.delete(msg.id);
@@ -1052,6 +1058,82 @@ async function snap(page, name) {
   const r = await page.send('Page.captureScreenshot', { format: 'png' });
   writeFileSync(path.join(dir, `${name}.png`), Buffer.from(r.data, 'base64'));
   console.log(`  📸 ${name}`);
+  if (WRAP_AUDIT) await wrapAudit(page, name);
+}
+
+/**
+ * ★★ R064 (D-267 · 찬종 #31 "줄바꿈 되는게 최악 … 다른 요소에서도 줄바꿈 되는거 없는지 검토해") — 줄바꿈 전수 감사.
+ *   `--wrap-audit`(또는 WRAP_AUDIT=1) 이면 그림을 찍을 때마다 그 화면에서 **두 줄 이상으로 그려진 글**을 모은다.
+ *   글 상자(자기 글자를 가진 요소)마다 Range 로 줄 수를 센다(white-space: pre/pre-wrap 은 뺀다 — 일부러 줄을 나눈 자리).
+ *   [data-wrap-ok] 안은 "의도한 설명문"(문제 글 · 채팅 · 해설 등) — 목록에는 남기되 ok 표시.
+ *   결과: docs/design/<SHOT_DIR>/wrap-audit.txt (묶음마다 한 파일 · 같은 자리+글은 한 번)
+ */
+const WRAP_AUDIT = process.argv.includes('--wrap-audit') || process.env.WRAP_AUDIT === '1';
+const wrapSeen = new Set();
+const WRAP_PROBE = `JSON.stringify((() => {
+  const out = [];
+  const path = (el) => { const parts = []; let e = el; for (let i = 0; i < 3 && e && e !== document.body; i += 1) { parts.unshift(e.tagName.toLowerCase() + (typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\\s+/).slice(0, 2).join('.') : '')); e = e.parentElement; } return parts.join(' > '); };
+  for (const el of document.querySelectorAll('body *')) {
+    if (['SCRIPT', 'STYLE', 'SVG', 'svg', 'TEXTAREA', 'INPUT', 'OPTION'].includes(el.tagName)) continue;
+    const texts = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim());
+    if (texts.length === 0) continue;
+    const cs = getComputedStyle(el);
+    if (/pre/.test(cs.whiteSpace) || cs.visibility === 'hidden' || cs.display === 'none') continue;
+    const box = el.getBoundingClientRect();
+    if (box.width === 0 || box.height === 0 || box.bottom < 0 || box.top > innerHeight) continue;
+    const tops = [];
+    for (const t of texts) {
+      const rg = document.createRange();
+      rg.selectNodeContents(t);
+      for (const q of rg.getClientRects()) if (q.width > 1 && q.height > 0 && !tops.some((y) => Math.abs(y - q.top) < q.height * 0.5)) tops.push(q.top);
+    }
+    // ★ R064 — 넘침(#28 "글자가 튀어나감"): 글이 제 상자 밖으로 그려짐 · 일부러 자르는 자리(overflow hidden · …)는 뺀다
+    const clipped = cs.overflowX !== 'visible' || (el.parentElement && getComputedStyle(el.parentElement).overflowX !== 'visible');
+    let spill = false;
+    if (!clipped) {
+      for (const t of texts) {
+        const rg = document.createRange();
+        rg.selectNodeContents(t);
+        for (const q of rg.getClientRects()) if (q.width > 1 && (q.right > box.right + 2 || q.left < box.left - 2)) spill = true;
+      }
+    }
+    if (spill) {
+      const text = texts.map((t) => t.textContent.trim()).join(' ').replace(/\\s+/g, ' ');
+      out.push({ sel: path(el) + ' [넘침]', lines: tops.length, w: Math.round(box.width), text: text.slice(0, 40), ok: false, vw: innerWidth });
+      continue;
+    }
+    if (tops.length < 2) continue;
+    const text = texts.map((t) => t.textContent.trim()).join(' ').replace(/\\s+/g, ' ');
+    out.push({ sel: path(el), lines: tops.length, w: Math.round(box.width), text: text.slice(0, 40), ok: !!el.closest('[data-wrap-ok]'), vw: innerWidth });
+  }
+  return out;
+})())`;
+async function wrapAudit(page, name) {
+  /** @type {{ sel: string; lines: number; w: number; text: string; ok: boolean; vw: number }[]} */
+  let rows = [];
+  try {
+    rows = JSON.parse(await page.evaluate(WRAP_PROBE));
+  } catch {
+    return [];
+  }
+  const dir = path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r040');
+  const lines = [];
+  const fresh = [];
+  for (const r of rows) {
+    const k = `${r.sel}|${r.text}|${r.ok}`;
+    if (wrapSeen.has(k)) continue;
+    wrapSeen.add(k);
+    fresh.push(r);
+    lines.push(`${r.ok ? 'ok  ' : 'WRAP'} | ${name} @${r.vw} | ${r.sel} | ${r.lines}줄 · ${r.w}px | ${r.text}`);
+  }
+  const file = path.join(dir, 'wrap-audit.txt');
+  // 한 번 돌 때마다 새로(앞선 실행의 목록과 섞이지 않게)
+  if (!wrapAudit.started) {
+    wrapAudit.started = true;
+    writeFileSync(file, '');
+  }
+  if (lines.length) appendFileSync(file, lines.join('\n') + '\n');
+  return fresh;
 }
 async function snapSizes(page, name, sizes) {
   for (const s of sizes) {
@@ -1754,15 +1836,11 @@ async function shopFlow(browser) {
   const cells = await G.evaluate("document.querySelectorAll('.emoji-cell.special').length");
   await snap(G, '110-picker-special-pc');
   record(`★★ C ✨ 탭 — 테마 머리글 "치이카와 ${ownedBefore + 2}/27" · 가진 것만 ${ownedBefore + 2}칸`, head.includes('치이카와') && head.includes(`${ownedBefore + 2}/27`) && cells === ownedBefore + 2, `${head} · ${cells}`);
-  // 칸 바꾸기 → 1번 칸 → 특별
-  await realClick(G, '.emoji-tools button', '칸 바꾸기');
-  await sleep(150);
-  await realClick(G, '.emoji-slot');
+  // 칸 바꾸기 → 1번 칸 → 특별 (★ R064 — 칸 아래 숫자 자리 "1" 을 누르고 고르면 끝)
+  await realClick(G, '.emoji-key[data-slot-key="1"]');
   await sleep(150);
   await realClick(G, '.emoji-cell.special');
   await sleep(300);
-  await realClick(G, '.emoji-tools button', '다 바꿨어요');
-  await sleep(150);
   const slot1 = await G.evaluate("Number(document.querySelector('.emoji-slot img')?.dataset.emojiId ?? 0)");
   const ownedIds = after2.themes[0].owned;
   record('★★ C 칸 바꾸기 — 1번 칸에 특별 이모티콘', ownedIds.includes(slot1), `slot1=${slot1}`);
@@ -3660,6 +3738,244 @@ async function r060Flow(browser) {
   await G.close?.();
   await H.close?.();
 }
+// ★★ R064 — 찬종 제보 #20~#31 (UICHECK_R064=1 · 묶음 r064 · docs/design/r064 · 찬종 새 환경 2560×1313 @1 먼저 → 고친 뒤 전 크기)
+const R064_PC = [
+  { w: 1280, h: 720 },
+  { w: 1536, h: 864 },
+  { w: 1536, h: 730 },
+  { w: 1920, h: 1080 },
+  { w: 2560, h: 1313 },
+];
+/** 결과 화면 — 순위 카드가 화면 안에 보이고 · 방장이면 다시 하기 · 로비로가 보이고 · 덮는 것 없음 */
+const RESULT_SEEN = `JSON.stringify((() => {
+  const card = document.querySelector('.result-card');
+  const r = card?.getBoundingClientRect();
+  const vis = (el) => { if (!el) return false; const b = el.getBoundingClientRect(); const cs = getComputedStyle(el); return b.width > 0 && b.height > 0 && b.top >= 0 && b.bottom <= innerHeight + 1 && cs.visibility !== 'hidden' && Number(cs.opacity) > 0.5; };
+  const btn = (t) => [...document.querySelectorAll('.result-card .next-row button')].find((b) => b.innerText.trim().endsWith(t));
+  const ranks = [...document.querySelectorAll('.result-card .ranking li')];
+  const top = r ? document.elementFromPoint(Math.round(r.left + r.width / 2), Math.round(r.top + Math.min(40, r.height / 2))) : null;
+  return { card: !!card, h: r ? Math.round(r.height) : 0, top: r ? Math.round(r.top) : null, bottom: r ? Math.round(r.bottom) : null, vh: innerHeight, vw: innerWidth,
+    ranks: ranks.length, ranksVis: ranks.length > 0 && ranks.every(vis), again: vis(btn('다시 하기')), lobby: vis(btn('로비로')), note: vis(document.querySelector('.result-card .next-row .note')),
+    covered: !!(top && card && !card.contains(top)), coverBy: top && card && !card.contains(top) ? String(top.className || top.tagName) : null,
+    page: document.documentElement.scrollHeight - innerHeight };
+})())`;
+async function r064ResultAt(page, sizes, host) {
+  const out = {};
+  for (const z of sizes) {
+    await page.setViewport(z.w, z.h);
+    await sleep(350);
+    out[`${z.w}x${z.h}`] = JSON.parse(await page.evaluate(RESULT_SEEN));
+  }
+  const ok = Object.values(out).every((o) => o.card && o.ranksVis && !o.covered && (host ? o.again && o.lobby : o.note));
+  return { ok, out };
+}
+
+async function r064Flow(browser) {
+  const H = await newPage(browser, 'S-host', true);
+  await H.setViewport(2560, 1313);
+  await signUp(H, 'sh', '결과방장');
+  const roomId = await createRoom(H, 'R064 결과');
+  const G = await newPage(browser, 'S-guest', true);
+  await G.setViewport(2560, 1313);
+  await signUp(G, 'sg', '결과손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 10000);
+  const X = await newPage(browser, 'S-leave', true);
+  await X.setViewport(1280, 720);
+  await signUp(X, 'sx', '중간나감');
+  await X.goto(`${BASE}/r/${roomId}`);
+  await X.waitFor("document.querySelector('.stage') !== null", 10000);
+  H.pageErrors = [];
+  G.pageErrors = [];
+
+  // ── §A-1 미니게임만 2개(연타) · 셋째 사람은 첫 미니게임 중에 나감(#27 판 2186 과 같은 꼴 — 나간 사람 final 없음)
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(300);
+  await selectMinigames(H, ['tap']);
+  await sleep(300);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await H.waitFor("document.querySelector('.mg-series') !== null", 20000);
+  await sleep(1500);
+  // ★ 판 2186 그대로 — 셋째는 **끊김**(탭 닫기) → 결과 뒤 끊김 제한(묶음 DISCONNECT_REMOVE_MS) 이 지나 방에서 빠진다(room.playerLeft + lobby.settingsUpdated)
+  X.close?.();
+  await H.waitFor("document.querySelector('.result-card') !== null", 120000).catch(() => false);
+  await G.waitFor("document.querySelector('.result-card') !== null", 10000).catch(() => false);
+  await H.waitFor("document.querySelectorAll('.seats .seat-card:not(.empty)').length <= 2 && ![...document.querySelectorAll('.seat-card')].some((c) => c.innerText.includes('중간나감'))", 40000).catch(() => false);
+  await sleep(1200);
+  await snap(H, '150-mgonly-result-2560');
+  await snap(G, '150-mgonly-result-2560-guest');
+  const a1h = await r064ResultAt(H, [{ w: 2560, h: 1313 }], true);
+  const a1g = await r064ResultAt(G, [{ w: 2560, h: 1313 }], false);
+  record('★★★ §A 미니게임만 결과(2560×1313 · 셋째 중간 나감) — 순위 카드 보임 · 방장 다시 하기 · 로비로 · 손님 안내 · 예외 0', a1h.ok && a1g.ok && H.pageErrors.length === 0 && G.pageErrors.length === 0, JSON.stringify({ h: a1h.out, g: a1g.out, errH: H.pageErrors.slice(0, 3), errG: G.pageErrors.slice(0, 3) }));
+  const a1all = await r064ResultAt(H, R064_PC, true);
+  await touchDevice(G, 390, 844);
+  await sleep(400);
+  const a1m = JSON.parse(await G.evaluate(RESULT_SEEN));
+  await snap(G, '151-mgonly-result-m390');
+  await touchDevice(G, 390, 844, false);
+  await G.setViewport(2560, 1313);
+  record('★★ §A 미니게임만 결과 — PC 다섯 크기 모두 · m390 손님', a1all.ok && a1m.card && a1m.ranksVis && a1m.note, JSON.stringify({ pc: a1all.out, m390: a1m }));
+
+  // ── §A-2 퀴즈 판 결과(문제 평가 목록 있음) — 2560 먼저
+  await H.setViewport(2560, 1313);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '로비로')?.click()");
+  await H.waitFor("document.querySelector('button[data-mode=\"quiz\"]') !== null", 10000);
+  await realClick(H, 'button[data-mode="quiz"]');
+  await sleep(300);
+  // ★ 판 2185 처럼 문제가 많고(12) 방장이 👎 를 눌러 결과 목록이 펼쳐진 꼴
+  const QN = 12;
+  await setQuestionCount(H, QN);
+  H.pageErrors = [];
+  G.pageErrors = [];
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  for (let i = 1; i <= QN; i += 1) {
+    await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.reveal') === null", 40000);
+    await sleep(300);
+    await answerCurrent(H, H);
+    await H.waitFor("document.querySelector('.reveal') !== null || document.querySelector('.result-card') !== null", 15000);
+    if (i <= 2) await H.evaluate("document.querySelector('.reveal-fb .fb-vote.down')?.click()");
+  }
+  await H.waitFor("document.querySelector('.result-card') !== null", 60000).catch(() => false);
+  await sleep(1500);
+  await snap(H, '152-quiz-result-2560');
+  await snap(G, '152-quiz-result-2560-guest');
+  const a2 = await r064ResultAt(H, R064_PC, true);
+  const a2g = JSON.parse(await G.evaluate(RESULT_SEEN));
+  record('★★★ §A 퀴즈 결과(문제 평가 목록) — PC 다섯 크기(2560 포함) 순위 · 버튼 보임 · 손님 · 예외 0', a2.ok && a2g.card && a2g.ranksVis && H.pageErrors.length === 0 && G.pageErrors.length === 0, JSON.stringify({ h: a2.out, g: a2g, errH: H.pageErrors.slice(0, 3), errG: G.pageErrors.slice(0, 3) }));
+  await H.setViewport(2560, 1313);
+
+  if (process.env.R064_ONLY === 'A') return;
+  // ── §B 사진 그림 실패 — 없는 그림 id → "그림 불러오는 중" → 2초 뒤 다시 × 2 → 글로 대신(진행은 그대로)
+  const L = await newPage(browser, 'S-lab', true);
+  await L.setViewport(2560, 1313);
+  await signUp(L, 'sl', '실험실');
+  const imgFail = {};
+  for (const mode of ['zoom', 'mosaic']) {
+    await L.goto(`${BASE}/lab/minigame?scene=1&key=photo&phase=play&seed=2024&mode=${mode}&image=photo-none-r064&at=2000`);
+    const loading = await L.waitFor("document.querySelector('[data-img-loading]') !== null", 4000).catch(() => false);
+    const failed = await L.waitFor("document.querySelector('[data-img-fail]') !== null", 9000).catch(() => false);
+    const input = await L.evaluate("document.querySelector('.quiz-num input') !== null");
+    imgFail[mode] = { loading, failed, input, text: await L.evaluate("document.querySelector('[data-img-fail]')?.innerText ?? ''") };
+    if (mode === 'zoom') await snap(L, '153-photo-imgfail-2560');
+  }
+  record('★★ §B 사진 그림 실패 — 불러오는 중 → 다시 받기 2번 → "사진을 못 받았어요" · 입력칸 그대로(확대 · 모자이크)', Object.values(imgFail).every((o) => o.loading && o.failed && o.input && /못 받았어요/.test(o.text)), JSON.stringify(imgFail));
+
+  // ── §C 줄바꿈 전수 감사 — 실험실 16게임 × (규칙 · 진행 · 판 결과) × (2560 · 1536 · 1280 · m390) + 화면(고르기 창 · 제보 창 · 전체 업적 · 결과)
+  const wrapRows = [];
+  const auditAt = async (page, label) => {
+    const rows = await wrapAudit(page, label, true);
+    wrapRows.push(...rows);
+  };
+  const LAB_SIZES = [{ w: 2560, h: 1313 }, { w: 1536, h: 864 }, { w: 1280, h: 720 }, { w: 390, h: 844, m: true }];
+  const keys = JSON.parse(await L.evaluate("fetch('/api/minigames').then((r) => r.ok ? r.json() : null).then((j) => JSON.stringify((j?.minigames ?? []).map((m) => m.key))).catch(() => '[]')"));
+  const KEYS16 = keys.length ? keys : ['cake', 'balance', 'reaction', 'typing', 'circle', 'angle', 'price', 'worldprice', 'photo', 'estimate', 'which', 'minority', 'oddone', 'gauge', 'balloon', 'tap'];
+  for (const z of LAB_SIZES) {
+    if (z.m) await touchDevice(L, z.w, z.h);
+    else await L.setViewport(z.w, z.h);
+    for (const k of KEYS16) {
+      for (const ph of ['rules', 'play', 'roundResult']) {
+        await L.goto(`${BASE}/lab/minigame?scene=1&key=${k}&phase=${ph}&seed=2024`);
+        await sleep(250);
+        await auditAt(L, `lab-${k}-${ph}@${z.w}`);
+      }
+    }
+  }
+  if (true) await touchDevice(L, 390, 844, false);
+  // 화면 — 방 대기실(방장 H): 고르기 창 · 제보 창 · 이모티콘 창 / 첫 화면(L): 전체 업적
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '로비로')?.click()");
+  await H.waitFor("document.querySelector('[data-mg-catalog-open]') !== null", 10000);
+  await realClick(H, 'button[data-mode="minigame"]');
+  await sleep(300);
+  const SURF = [...R064_PC, { w: 390, h: 844, m: true }];
+  for (const z of SURF) {
+    if (z.m) await touchDevice(H, z.w, z.h);
+    else await H.setViewport(z.w, z.h);
+    await sleep(300);
+    const tag = `${z.w}x${z.h}`;
+    // 고르기 창
+    await H.evaluate("document.querySelector('[data-mg-catalog-open]')?.click()");
+    await H.waitFor("document.querySelector('.mg-catalog') !== null", 4000).catch(() => false);
+    await sleep(350);
+    if (z.w === 2560) await snap(H, '154-catalog-2560');
+    if (z.m) await snap(H, '154-catalog-m390');
+    await auditAt(H, `catalog@${tag}`);
+    await H.key('Escape');
+    await sleep(250);
+    // 제보 창
+    if (!z.m) {
+      await H.evaluate("document.querySelector('[data-report-btn]')?.click()");
+      await H.waitFor("document.querySelector('.report-modal') !== null", 4000).catch(() => false);
+      await sleep(300);
+      if (z.w === 2560) await snap(H, '155-report-2560');
+      await auditAt(H, `report@${tag}`);
+      await H.key('Escape');
+      await sleep(250);
+    }
+    // 결과 대신 대기실 자체
+    await auditAt(H, `room@${tag}`);
+  }
+  await touchDevice(H, 390, 844, false);
+  await H.setViewport(2560, 1313);
+  // 전체 업적 — 첫 화면(L)
+  await L.goto(`${BASE}/`);
+  await L.waitFor("document.querySelector('#rename-btn') !== null", 10000);
+  for (const z of SURF) {
+    if (z.m) await touchDevice(L, z.w, z.h);
+    else await L.setViewport(z.w, z.h);
+    await sleep(300);
+    await L.evaluate("document.querySelector('#rename-btn')?.click()");
+    await L.waitFor("document.querySelector('.ach-all-open') !== null", 4000).catch(() => false);
+    await L.evaluate("document.querySelector('.ach-all-open')?.click()");
+    await L.waitFor("document.querySelector('.ach-all-modal .ach-list')?.dataset.loaded === '1'", 5000).catch(() => false);
+    await sleep(350);
+    if (z.w === 2560) await snap(L, '156-ach-all-2560');
+    if (z.m) await snap(L, '156-ach-all-m390');
+    await auditAt(L, `ach-all@${z.w}x${z.h}`);
+    await L.key('Escape');
+    await sleep(200);
+    await L.key('Escape');
+    await sleep(200);
+  }
+  await touchDevice(L, 390, 844, false);
+  const bad = wrapRows.filter((r) => !r.ok);
+  const bySel = {};
+  for (const r of bad) bySel[r.sel] = (bySel[r.sel] ?? 0) + 1;
+  record('★★★ §C 줄바꿈 · 넘침 감사 — 의도한 설명문([data-wrap-ok]) 말고는 두 줄 0 · 상자 밖으로 넘친 글 0 (실험실 16게임 × 3단계 × 4크기 · 고르기 창 · 제보 창 · 업적 창 · 대기실 × 6크기)', bad.length === 0, `${bad.length}건 · ${JSON.stringify(Object.entries(bySel).sort((a, b) => b[1] - a[1]).slice(0, 12))}`);
+
+  // ── §D 이모티콘 단축키 자리 — 숫자 자리를 누르면 고르기 · 첫 열기 팁 한 번 · Esc 는 고르기만 취소
+  await H.setViewport(1536, 864);
+  await sleep(300);
+  await H.evaluate("try { localStorage.removeItem('quiz.emojiSlotTip'); } catch {}");
+  await H.evaluate("document.querySelector('.emoji-btn')?.click()");
+  await H.waitFor("document.querySelectorAll('.emoji-pop .emoji-slot').length === 10", 4000);
+  const tip1 = await H.evaluate("document.querySelector('[data-slot-tip]')?.innerText ?? ''");
+  await realClick(H, '.emoji-key[data-slot-key="3"]');
+  await sleep(200);
+  const asg = await H.evaluate("document.querySelector('[data-slot-assign]')?.innerText ?? ''");
+  await snap(H, '157-emoji-assign-pc');
+  await H.key('Escape');
+  await sleep(200);
+  const afterEsc = JSON.parse(await H.evaluate("JSON.stringify({ pop: document.querySelector('.emoji-pop') !== null, asg: document.querySelector('[data-slot-assign]') !== null })"));
+  await realClick(H, '.emoji-key[data-slot-key="3"]');
+  await sleep(150);
+  const pickId = Number(await H.evaluate("document.querySelector('.emoji-grid .emoji-cell img')?.dataset.emojiId ?? 0"));
+  await realClick(H, '.emoji-grid .emoji-cell');
+  await sleep(1300);
+  const slots = JSON.parse(await H.evaluate("fetch('/api/auth/prefs').then((r) => r.json()).then((j) => JSON.stringify(j.prefs?.emojiSlots ?? null))"));
+  const done = JSON.parse(await H.evaluate("JSON.stringify({ pop: document.querySelector('.emoji-pop') !== null, asg: document.querySelector('[data-slot-assign]') !== null, edit: [...document.querySelectorAll('.emoji-tools button')].some((b) => /칸 바꾸기/.test(b.innerText)) })"));
+  await H.key('Escape');
+  await sleep(200);
+  await H.evaluate("document.querySelector('.emoji-btn')?.click()");
+  await sleep(300);
+  const tip2 = await H.evaluate("document.querySelector('[data-slot-tip]') !== null");
+  await H.key('Escape');
+  record('★★★ §D 숫자 자리 "3" → "3번 자리에 넣을 이모티콘을 고르세요" · 고르면 3번 칸 저장 · 고르기 끝 · 창은 열린 채 · Esc 는 고르기만 취소 · 옛 "칸 바꾸기" 없음', /3번 자리/.test(asg) && afterEsc.pop && !afterEsc.asg && Array.isArray(slots) && slots[2] === pickId && done.pop && !done.asg && !done.edit, JSON.stringify({ asg, afterEsc, pickId, slot3: slots?.[2], done }));
+  record('★★ §D 첫 열기 팁 "숫자 자리를 눌러 바꿀 수 있어요" — 한 번만', /숫자 자리를 눌러/.test(tip1) && !tip2, JSON.stringify({ tip1, tip2 }));
+  L.close?.();
+}
+
 // ★★ R063 — 찬종 제보 19건 (UICHECK_R063=1 · 묶음 r063 · docs/design/r063 · 찬종 환경 1536×864 @1.25 먼저)
 /** 글꼴 감사 — 글자가 보이는 요소의 computed font-family 가 --font(Pretendard…)로 시작하나(일부러 mono 인 자리는 뺀다) */
 const FONT_AUDIT = "JSON.stringify((() => { const bad = new Map(); for (const el of document.querySelectorAll('body *')) { if (!(el instanceof HTMLElement) || !el.offsetParent && getComputedStyle(el).position !== 'fixed') continue; const own = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()) || ['INPUT','TEXTAREA','SELECT','BUTTON'].includes(el.tagName); if (!own) continue; const f = getComputedStyle(el).fontFamily; if (/Pretendard/.test(f.split(',')[0]) || /monospace|Cascadia|Consolas/.test(f)) continue; const k = el.tagName.toLowerCase() + (el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\\s+/)[0] : ''); bad.set(k, f.split(',')[0]); } return [...bad.entries()].slice(0, 12); })())";
@@ -4030,6 +4346,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R063) {
     await closeAllTabs(browser);
     await r063Flow(browser);
+  }
+  // ★ R064 — 찬종 제보 #20~#31(결과 화면 · 사진 · 줄바꿈 · 단축키)
+  if (process.env.UICHECK_R064) {
+    await closeAllTabs(browser);
+    await r064Flow(browser);
   }
   // ★ R061 — 앱 제보 🐞 · 📝 · 문항 번호
   if (process.env.UICHECK_R061) {
@@ -6970,7 +7291,8 @@ try {
     await host.evaluate("document.querySelector('.emoji-btn').click()");
     const pop = await host.waitFor("document.querySelectorAll('.emoji-pop .emoji-slot').length === 10 && document.querySelectorAll('.emoji-grid .emoji-cell').length > 50", 4000);
     record('★★ 😊 → 고르기 창 (내 10칸 + 분류별 목록)', pop);
-    await host.evaluate("[...document.querySelectorAll('.emoji-tools button')][0].click()");
+    // ★ R064 — 옛 "칸 바꾸기" 토글 대신 칸 아래 숫자 자리 "1"
+    await host.evaluate("document.querySelector('.emoji-key[data-slot-key=\"1\"]').click()");
     await host.setInput('.emoji-search', '하트');
     await sleep(300);
     const firstHeart = await host.evaluate("Number(document.querySelector('.emoji-grid .emoji-cell img')?.dataset.emojiId ?? 0)");

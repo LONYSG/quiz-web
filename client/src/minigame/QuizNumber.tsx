@@ -37,7 +37,7 @@ export default function QuizNumber({ socket, view, serverNow }: Props) {
       {view.key === 'price' && (
         <div className="quiz-q">
           <QuizImage imageId={p.imageId as string | null} alt={String(p.name ?? '')} className="quiz-pic" />
-          <div className="quiz-q-text">
+          <div className="quiz-q-text" data-wrap-ok>
             <p className="quiz-brand dim">{String(p.brand ?? '')}</p>
             <p className="quiz-name no-copy">{String(p.name ?? '')}</p>
             <p className="quiz-ask">얼마일까요? (원)</p>
@@ -47,7 +47,7 @@ export default function QuizNumber({ socket, view, serverNow }: Props) {
       {view.key === 'worldprice' && (
         <div className="quiz-q">
           <QuizImage imageId={p.imageId as string | null} alt={String(p.nameKo ?? '')} className="quiz-pic" />
-          <div className="quiz-q-text">
+          <div className="quiz-q-text" data-wrap-ok>
             <p className="quiz-name no-copy">
               {String(p.nameKo ?? '')} <span className="dim nowrap">· {String(p.unit ?? '')}</span>
             </p>
@@ -68,7 +68,7 @@ export default function QuizNumber({ socket, view, serverNow }: Props) {
       {view.key === 'estimate' && (
         <div className="quiz-q">
           {Boolean(p.imageId || p.dummy) && <QuizImage imageId={p.imageId as string | null} alt="" className="quiz-pic" />}
-          <div className="quiz-q-text">
+          <div className="quiz-q-text" data-wrap-ok>
             <p className="quiz-name no-copy">{String(p.question ?? '')}</p>
             <p className="quiz-ask">
               단위: <span className="nowrap">{String(p.unit ?? '')}</span>

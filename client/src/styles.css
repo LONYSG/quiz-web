@@ -5905,6 +5905,35 @@ button.primary.tone-warn {
   max-height: 46vh;
   margin: 0 auto;
 }
+/* ★ R064 (D-266) — 그림 다시 받기: 받는 동안 한 줄 · 끝내 실패면 글 상자(진행은 그대로) */
+.img-wrap {
+  position: relative;
+  display: block;
+  min-height: 3.2em;
+}
+.img-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.quiz-img.img-fail {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  max-height: 46vh;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border: 2px dashed var(--border);
+  color: var(--text-dim);
+  font-weight: 700;
+  text-align: center;
+}
 .photo-canvas {
   max-height: 46vh;
   width: auto;
@@ -7520,4 +7549,188 @@ button.profile-photo {
 :where(.ui-mobile) .brand h1 {
   font-size: 1.6rem;
   margin-top: 8px;
+}
+
+/* ★★ R064 (D-268) — 이모티콘 칸: 그림(누르면 보내기) + 아래 숫자 자리(누르면 이 칸 바꾸기) · 모바일도 숫자 자리를 보인다 */
+.emoji-slot-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  min-width: 0;
+}
+.emoji-pop button.emoji-slot {
+  padding: 4px 0;
+}
+.emoji-pop button.emoji-key {
+  display: block;
+  box-sizing: border-box;
+  height: 18px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 18px;
+  cursor: pointer;
+}
+.emoji-pop button.emoji-key:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.emoji-slot-cell.sel .emoji-slot {
+  outline: 3px solid var(--accent);
+}
+.emoji-pop .emoji-slot-cell.sel button.emoji-key {
+  background: var(--accent);
+  color: #fff;
+}
+.emoji-slots.assigning .emoji-slot-cell:not(.sel) .emoji-slot {
+  opacity: 0.55;
+}
+.emoji-edit-tip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 0;
+  white-space: nowrap;
+}
+.emoji-edit-tip .link-btn {
+  margin-left: auto;
+}
+
+/* ★★ R064 (D-267 · 찬종 #22 "피드백 버튼이 혼자 작음") — 📝 피드백은 같은 줄 이웃과 같은 높이 · 글자 크기
+   · 문제 머리 줄 = 뱃지(문화·예술 · 난이도)와 같은 꼴 · 결과 목록 줄 = 👍/👎(28px)와 같은 높이 */
+.q-head button.qreport-btn,
+.mg-item-id button.qreport-btn {
+  height: auto;
+  padding: 1px 8px;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  background: var(--chip-bg);
+}
+.fb-row button.qreport-btn {
+  height: 28px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  background: var(--surface);
+}
+
+/* ★★ R064 (D-267 · 찬종 #22 "제보 창 버튼이랑 글자 중심이 안맞음 · 크기도 애매함") — 2560 에서도 작지 않게(폭 clamp) ·
+   버튼 · 칩은 글자를 높이 가운데에(inline-flex) · 보내기는 주 버튼 · 입력칸은 앱 입력칸 꼴 */
+:where(.ui-pc) .report-modal {
+  width: clamp(440px, 30vw, 600px);
+  padding: 20px 22px;
+  gap: 10px;
+}
+.report-modal .report-chips .fb-chip,
+.report-modal .qreport-chips .fb-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding: 0 12px;
+  line-height: 1;
+}
+.report-modal .report-text {
+  padding: 10px 12px;
+  border: var(--bw) solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text);
+  line-height: 1.5;
+}
+.report-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  min-height: 0;
+  padding: 0 18px;
+  line-height: 1;
+}
+
+/* ★★ R064 (D-267 · 찬종 #22 "세레모니 때 특별 이모티콘 크기 좀더 키워") — PC 1.5배 · 모바일은 그대로
+   · 소감 칸: 특별 하나 56 → 84 · 글 속 특별 32 → 48 / 반응 층(떠오르는 특별): 96 → 144 */
+:where(.ui-mobile) .ceremony-msg img.ceremony-special {
+  width: 56px;
+  height: 56px;
+}
+:where(.ui-pc) .ceremony-msg .chat-text .chat-inline-special {
+  width: 48px;
+  height: 48px;
+}
+:where(.ui-pc) .special-float-pic {
+  width: 144px;
+  height: 144px;
+}
+
+/* ★★ R064 (D-267 · 찬종 #31 "업적에서 다 줄바꿈 … 다른 요소에서도 줄바꿈 되는거 없는지 검토해") — 줄바꿈 감사로 찾은 자리
+   · 업적: PC 창을 넓히고 2칸 · 이름 · 설명은 한 줄(넘치면 … — 글은 title 로) · 설명 글은 짧게(shared/achievements)
+   · 세계 물가 공개 · 번개손 결과 한 줄 · 실험실 장면 폭 = 방 가운데 칸 폭(큰 화면 감사가 실제와 같게) */
+:where(.ui-pc) .ach-all-modal {
+  width: clamp(600px, 44vw, 860px);
+}
+:where(.ui-pc) .ach-all {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ach-text {
+  min-width: 0;
+}
+.ach-text > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wp-reveal .quiz-name,
+.wp-reveal > div > p.dim,
+.wp-minmax > span,
+.rx-result > p.dim {
+  white-space: nowrap;
+}
+.wp-reveal > div {
+  min-width: 0;
+}
+.wp-reveal .quiz-name,
+.wp-reveal > div > p.dim {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lab-scene {
+  max-width: clamp(900px, 58vw, 1500px);
+}
+
+/* ★★ R064 (D-267 · 찬종 #28 "미니게임 고르기에서 글자가 막 다 튀어나가고") — 카드가 버튼이라 글이 꺾이지 않고 카드 밖으로 넘쳤다
+   · PC 창을 넓힌다(2560 에서 한 줄 설명이 한 줄로) · 한 줄 설명은 설명문 — 카드 안에서 두 줄까지 · 이름 · 예시 · 판 수는 한 줄(넘치면 …) */
+:where(.ui-pc) .mg-cat {
+  width: clamp(760px, 66vw, 1320px);
+}
+:where(.ui-pc) .mg-cat-list {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+button.mg-cat-card {
+  min-width: 0;
+  overflow: hidden;
+  white-space: normal;
+}
+.mg-cat-body > * {
+  min-width: 0;
+  overflow: hidden;
+}
+.mg-cat-name,
+.mg-cat-ex,
+.mg-cat-meta {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.mg-cat-line {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
 }

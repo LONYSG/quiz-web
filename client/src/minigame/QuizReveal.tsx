@@ -112,7 +112,7 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
       <div className="quiz-reveal">
         {Boolean(p.imageId || p.dummy) && <QuizImage imageId={p.imageId as string | null} alt="" className="quiz-pic small" />}
         <div>
-          <p className="quiz-name">{String(p.question ?? '')}</p>
+          <p className="quiz-name" data-wrap-ok>{String(p.question ?? '')}</p>
           <p className="quiz-answer mono">
             <span className="nowrap">
               {fmtNum(Number(rv.value ?? 0), d)} {String(rv.unit ?? '')}

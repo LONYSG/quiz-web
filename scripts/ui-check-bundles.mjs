@@ -71,6 +71,8 @@ export const BUNDLES = [
   // ★ R060 — 미니게임만 사이 문구 · 긴 단위(광년) · 이모티콘 보내면 창 닫힘 · 공동 1위 (실험실 장면 + 방 하나)
   // ★ R063 — 찬종 제보 19건(제보 위치 · 평가 목록 · 고르기 창 · 포인트 · 고기 · 풍선 · 사진 · 타자 · 카드 · 사진 메뉴 · 업적 창 · 위 막대 · 글꼴)
   { id: 'r063', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R063: '1', SHOT_DIR: 'r063', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
+  // ★ R064 — 찬종 제보 #20~#31(결과 화면 2560 · 사진 그림 실패 · 줄바꿈 감사 · 단축키 자리)
+  { id: 'r064', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R064: '1', SHOT_DIR: 'r064', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', DISCONNECT_REMOVE_MS: '8000' }) },
   // ★ R061 — 앱 제보 🐞(PC Alt+B · m390 키보드 높이) · 📝 문항 피드백(문제 단계) · 번호 복사 · 카드 높이
   { id: 'r061', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R061: '1', SHOT_DIR: 'r061', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   { id: 'r060', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R060: '1', SHOT_DIR: 'r060', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
