@@ -130,6 +130,8 @@ const SCENARIO_ENV = {
   mgonly: { MINIGAME_PHASE_SCALE: '0.05' },
   // ★ R060 — 둘이서 16 게임(놀이 시간은 줄지 않는다 — 판 사이만 짧게)
   mgduo: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  // ★ R061 — 앱 제보(미니게임 하나를 지나간다)
+  report: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   emojiinline: { RESOLVED_WAIT_MS: '200' },
   // ★ R058 — 근접 오답: bot_nx 만 거른다(기본 봇 · 검사 계정 규칙 대신 — 나머지 봇의 행을 본다)
   near: { RESOLVED_WAIT_MS: '200', NEAR_MISS_SKIP_LOGIN: '^(bot_nx|uic|r10_)' },
@@ -7574,6 +7576,80 @@ async function scenarioNear() {
 }
 
 // =============================================================================
+// ★★ R061 — 앱 제보 (D-255): 로비 · 퀴즈 중 🐞 · 문제 단계 📝 · 미니게임 중 — 맥락을 서버가 채운다 · "#번호" · 속도 제한 10초 5번
+//   ★ 검사 DB 에서만(bot.mjs 기본)
+// =============================================================================
+async function scenarioReport() {
+  log('시나리오 report — ★★ 앱 제보 🐞 · 📝 (R061)');
+  const [h, g] = await makeBots(2);
+  const send = (bot, body) => postJson('/api/reports', { device: { mobile: false, viewport: '1280x720' }, ...body }, bot.cookie);
+  const rowOf = (id) => withDb(async (c) => (await c.query(`SELECT kind, text, reasons, screen, room_id, game_id::text, question_id::text, question_index, minigame_key, minigame_run_id::text, minigame_item, recent FROM app_reports WHERE id = $1`, [id])).rows[0]);
+  await withDb((c) => c.query(`DELETE FROM app_reports WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[h.loginId, g.loginId]]));
+  // ① 방 밖(로비) — 판 · 문항 null · "#번호" 로 문항 채움
+  for (const b of [h, g]) if (b.snapshot) b.leave();
+  await sleep(300);
+  const qAny = await withDb(async (c) => (await c.query(`SELECT id::text FROM questions WHERE is_active ORDER BY id LIMIT 1`)).rows[0].id);
+  const r1 = await send(h, { kind: 'idea', text: `로비에서 #${qAny} 문항 정답이 둘 같아요`, screen: 'lobby', recent: [{ e: 'room.list', t: Date.now() }] });
+  const row1 = await rowOf(r1.json.id);
+  expectTrue('★★★ 로비 — 판 · 미니게임 null · 글의 "#번호" 로 문항 채움', r1.status === 200 && row1.room_id === null && row1.game_id === null && row1.question_id === qAny && row1.minigame_key === null && row1.recent?.length === 1, JSON.stringify(row1));
+  const r1b = await send(h, { kind: 'bug', text: '#99999999 없는 번호', screen: 'lobby' });
+  expectTrue('★ 없는 "#번호" 는 붙이지 않는다', (await rowOf(r1b.json.id)).question_id === null);
+  // ② 퀴즈 중 🐞 — 서버가 판 · 문항(id 만) · 순번을 채운다
+  await freshRoom(h, [g], '제보 검사', true);
+  const gameId = h.snapshot.game.gameId;
+  const cur = h.snapshot.question;
+  const r2 = await send(g, { kind: 'bug', text: '채팅창이 잠깐 깜빡였어요', screen: 'game:question', questionIndex: 99 });
+  const row2 = await rowOf(r2.json.id);
+  const curQ = await withDb(async (c) => (await c.query(`SELECT question_id::text FROM game_questions WHERE game_id = $1 AND question_index = $2`, [gameId, cur.index])).rows[0]?.question_id);
+  expectTrue('★★★ 퀴즈 중 🐞 — 방 · 판 · 지금 문항 id · 순번(서버 값이 이긴다)', row2.room_id === h.snapshot.room.id && row2.game_id === gameId && row2.question_id === curQ && row2.question_index === cur.index && row2.screen === 'game:question', JSON.stringify({ row2, curQ, idx: cur.index }));
+  expectTrue('★★ 문제 단계에 questionId 가 클라로 온다(번호 표기 · 복사)', h.snapshot.question.questionId === curQ, `${h.snapshot.question.questionId} vs ${curQ}`);
+  // ③ 문제 단계 📝 — 사유만으로 · kind question
+  const r3 = await send(g, { kind: 'question', text: '', reasons: ['answer', 'unclear'], screen: 'game:question', questionId: curQ });
+  const row3 = await rowOf(r3.json.id);
+  expectTrue('★★★ 문제 단계 📝 — 사유만으로 받음 · 문항 · 판 · 사유(상수 순서)', row3.kind === 'question' && row3.question_id === curQ && row3.game_id === gameId && row3.reasons.join() === 'unclear,answer', JSON.stringify(row3));
+  // ④ 미니게임 중 — key · 판 id · (퀴즈류면) 문항
+  for (const b of [h, g]) b.leave();
+  await sleep(300);
+  await freshRoom(h, [g], '제보 미니게임');
+  const roomId = h.snapshot.room.id;
+  const pf = h.mark();
+  h.socket.emit('minigame.practice', { key: 'which' });
+  await h.waitFor(() => h.snapshot?.room.state === 'MINIGAME' && h.snapshot.minigame?.phase === 'play', 15000, '미니게임 play');
+  const r4 = await send(h, { kind: 'awkward', text: '보기가 겹쳐 보여요', screen: 'minigame:which:play', minigameKey: 'which' });
+  const row4 = await rowOf(r4.json.id);
+  const runId = await withDb(async (c) => (await c.query(`SELECT id::text FROM minigame_runs WHERE room_id = $1 ORDER BY id DESC LIMIT 1`, [roomId])).rows[0]?.id);
+  expectTrue('★★★ 미니게임 중 — key · 미니게임 판 id · 문항(item_id) · 퀴즈 판 없음', row4.minigame_key === 'which' && row4.minigame_run_id === runId && /^which-\d+$/.test(row4.minigame_item ?? '') && row4.game_id === null, JSON.stringify({ row4, runId }));
+  await h.waitFor(() => h.since(pf, 'minigame.ended').length > 0, 60000, '미니게임 끝').catch(() => undefined);
+  // ⑤ 속도 제한 10초 5번 · 빈 글 거부 · 로그인 없이 401
+  const burst = [];
+  for (let i = 0; i < 6; i += 1) burst.push((await send(g, { kind: 'other', text: `연속 ${i}`, screen: 'room' })).status);
+  // g 는 앞에서 2번 보냈다(10초가 지났을 수 있다) → 200 은 3~5번 · 첫 429 뒤로는 전부 429
+  const first429 = burst.indexOf(429);
+  expectTrue('★★ 속도 제한 — 10초에 5번(넘으면 429)', first429 >= 3 && first429 <= 5 && burst.slice(first429).every((s) => s === 429), burst.join(','));
+  expect('★ 빈 글 거부(400)', (await send(h, { kind: 'bug', text: '  ', screen: 'lobby' })).status, 400);
+  expect('★ 로그인 없이 401', (await postJson('/api/reports', { kind: 'bug', text: 'x', screen: 'lobby' })).status, 401);
+  // ⑥ 보고 스크립트 — 봇 표시 · --no-bots 로 빠짐 · 문항별 묶음 · 처리 표시
+  const runScript = (file, extra) =>
+    new Promise((resolve) => {
+      const p = spawn(process.execPath, [path.join(ROOT, 'scripts', file), ...extra], { cwd: ROOT, stdio: ['ignore', 'pipe', 'pipe'] });
+      let out = '';
+      p.stdout.on('data', (d) => (out += d));
+      p.stderr.on('data', (d) => (out += d));
+      p.on('close', (code) => resolve({ code, out: out.trim() }));
+    });
+  const rep = await runScript('reports-report.mjs', []);
+  const repNo = await runScript('reports-report.mjs', ['--no-bots']);
+  expectTrue('★★ reports:report — 🤖 표시 · 문항별 묶음 · --no-bots 면 빠짐', rep.code === 0 && rep.out.includes(`#${r2.json.id} `) && rep.out.includes('🤖') && /문항별 [1-9]/.test(rep.out) && !repNo.out.includes(`#${r2.json.id} `), rep.out.split('\n').slice(0, 3).join(' / '));
+  const dry = await runScript('reports-handle.mjs', ['--id', r2.json.id, '--note', 'R061 검사']);
+  const hd = await runScript('reports-handle.mjs', ['--id', r2.json.id, '--note', 'R061 검사', '--yes']);
+  const after = await runScript('reports-report.mjs', []);
+  const all = await runScript('reports-report.mjs', ['--all']);
+  expectTrue('★★ reports:handle — --yes 없으면 멈춤 · 처리하면 기본 목록에서 빠지고 --all 에 ✔', dry.code === 2 && hd.code === 0 && !after.out.includes(`#${r2.json.id} `) && all.out.includes('✔ R061 검사'), `${dry.code} · ${hd.code}`);
+  await withDb((c) => c.query(`DELETE FROM app_reports WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[h.loginId, g.loginId]]));
+  return checkSummary();
+}
+
+// =============================================================================
 // ★★ R059 — 제보 채택 · 보너스 포인트 (D-254): feedback:adopt · points:grant · 잔액 · 토스트 한 번(seen_at) · 거부
 //   ★ 검사 DB 에서만 돈다(스크립트에 --allow-bot — 실 DB 에서는 봇 계정을 거부한다)
 // =============================================================================
@@ -7951,6 +8027,7 @@ const SCENARIOS = {
   emojiinline: scenarioEmojiInline,
   near: scenarioNear,
   grant: scenarioGrant,
+  report: scenarioReport,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

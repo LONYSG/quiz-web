@@ -3653,6 +3653,89 @@ async function r060Flow(browser) {
   await G.close?.();
   await H.close?.();
 }
+// ★★ R061 — 앱 제보 🐞 · 📝 문항 피드백 · 문항 번호 복사 (UICHECK_R061=1 · 묶음 r061 · docs/design/r061)
+async function r061Flow(browser) {
+  const H = await newPage(browser, 'R061-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'rh', '제보방장');
+  const roomId = await createRoom(H, 'R061 제보');
+  const G = await newPage(browser, 'R061-guest', true);
+  await touchDevice(G, 390, 844);
+  await signUp(G, 'rg', '제보손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 10000);
+  await setQuestionCount(H, 3);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await H.waitFor("document.querySelector('.question-card .q-ids .qno') !== null", 30000);
+  await G.waitFor("document.querySelector('.question-card .q-ids .qno') !== null", 5000);
+  await sleep(400);
+  // ① 번호 · 📝 — 카드 높이 그대로(숨겼을 때와 ±1px) · PC · m390
+  const HIDE = "(() => { const s = document.createElement('style'); s.id = 'r061-hide'; s.textContent = '.q-ids{display:none!important}'; document.head.appendChild(s); })()";
+  const UNHIDE = "document.getElementById('r061-hide')?.remove()";
+  const hA = (await rectOf(H, '.question-card'))?.h;
+  const gA = (await rectOf(G, '.question-card'))?.h;
+  await H.evaluate(HIDE);
+  await G.evaluate(HIDE);
+  const hB = (await rectOf(H, '.question-card'))?.h;
+  const gB = (await rectOf(G, '.question-card'))?.h;
+  await H.evaluate(UNHIDE);
+  await G.evaluate(UNHIDE);
+  const qid = await H.evaluate("document.querySelector('.question-card .qno')?.dataset.qno ?? ''");
+  const noCopyOut = await H.evaluate("document.querySelector('.question-card .qno')?.closest('.no-copy') === null");
+  record('★★★ R061 문제 단계 — 문항 번호 #id · 📝 (복사 막기 바깥) · 카드 높이 그대로(PC · m390 ±1px)', /^\d+$/.test(qid) && noCopyOut && Math.abs(hA - hB) <= 1 && Math.abs(gA - gB) <= 1, `#${qid} · pc ${hB}→${hA} · m390 ${gB}→${gA}`);
+  // ② 📝 (m390 · 문제 단계) — 답 입력 포커스 그대로 · 창 머리 #id · 칩 7 → 보내면 행(kind question · 문항 · 판)
+  await G.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await tapOn(G, '.question-card .qreport-btn');
+  await G.waitFor("document.querySelector('.qreport-modal') !== null", 3000);
+  const gq = JSON.parse(await G.evaluate("JSON.stringify({ head: document.querySelector('.qreport-modal .pop-title')?.innerText ?? '', chips: document.querySelectorAll('.qreport-modal .fb-chip').length, over: document.documentElement.scrollWidth - innerWidth })"));
+  await tapOn(G, '.qreport-modal .fb-chip[data-reason="answer"]');
+  await sleep(200);
+  await snap(G, '121-qreport-m390');
+  await tapOn(G, '.qreport-modal .report-actions button:last-child');
+  await G.waitFor("document.querySelector('[data-report-toast]') !== null", 4000);
+  const gToast = await G.evaluate("document.querySelector('[data-report-toast]')?.innerText ?? ''");
+  const gFocus = await G.evaluate("document.activeElement === document.querySelector('.chat-card input')");
+  await sleep(300);
+  const qRow = await withPg(async (c) => (await c.query(`SELECT r.kind, r.reasons, r.question_id::text, r.game_id::text, r.screen FROM app_reports r JOIN accounts a ON a.id = r.account_id WHERE a.login_id = $1 ORDER BY r.id DESC LIMIT 1`, [`${ACCOUNT_PREFIX}_rg`])).rows[0]);
+  record('★★★ R061 📝 문제 단계(m390) — 머리 #id · 칩 7 · 보내면 토스트 · 행(question · 문항 · 판) · 닫으면 입력 포커스 그대로', gq.head.includes(`#${qid}`) && gq.chips === 7 && gq.over <= 1 && /피드백 접수/.test(gToast) && gFocus && qRow?.kind === 'question' && qRow.question_id === qid && !!qRow.game_id && qRow.reasons.join() === 'answer', JSON.stringify({ gq, gToast, gFocus, qRow }));
+  // ③ 🐞 PC — Alt+B · 맥락 줄 · Ctrl+Enter 보내기 · 토스트 · 행(화면 · 판 · 문항) · 포커스 돌려줌
+  await H.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await H.key('b', { alt: true });
+  await H.waitFor("document.querySelector('.report-modal:not(.qreport-modal)') !== null", 3000);
+  await H.send('Input.insertText', { text: '정답 공개 뒤 채팅이 잠깐 안 보였어요' });
+  const ctxLine = await H.evaluate("document.querySelector('[data-report-ctx]')?.innerText ?? ''");
+  await sleep(150);
+  await snap(H, '122-report-pc');
+  await H.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, modifiers: 2 });
+  await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, modifiers: 2 });
+  await H.waitFor("document.querySelector('[data-report-toast]') !== null", 4000);
+  const hToast = await H.evaluate("document.querySelector('[data-report-toast]')?.innerText ?? ''");
+  await snap(H, '123-report-toast-pc');
+  const hFocus = await H.evaluate("document.activeElement === document.querySelector('.chat-card input')");
+  await sleep(300);
+  const bRow = await withPg(async (c) => (await c.query(`SELECT r.kind, r.text, r.screen, r.game_id::text, r.question_id::text, r.device, jsonb_array_length(coalesce(r.recent, '[]')) AS nrecent FROM app_reports r JOIN accounts a ON a.id = r.account_id WHERE a.login_id = $1 ORDER BY r.id DESC LIMIT 1`, [`${ACCOUNT_PREFIX}_rh`])).rows[0]);
+  record('★★★ R061 🐞 PC — Alt+B · 맥락 줄(판 #) · Ctrl+Enter · "제보 접수 #n" · 행(bug · game: 화면 · 판 · 문항 · 기기 · 최근 이벤트) · 포커스 돌려줌', /판 #/.test(ctxLine) && /제보 접수 #\d+/.test(hToast) && hFocus && bRow?.kind === 'bug' && /^game:/.test(bRow.screen) && !!bRow.game_id && !!bRow.question_id && bRow.device?.mobile === false && bRow.nrecent > 0, JSON.stringify({ ctxLine, hToast, hFocus, bRow }));
+  // ④ 🐞 m390 — 오른쪽 위 🐞 · 키보드가 올라온 높이(844 → 500)에서도 [보내기] 가 화면 안
+  await touchDevice(G, 390, 500);
+  await sleep(300);
+  await tapOn(G, '[data-report-float]');
+  await G.waitFor("document.querySelector('.report-modal:not(.qreport-modal)') !== null", 3000);
+  await G.send('Input.insertText', { text: '폴드에서 버튼이 겹쳐요' });
+  await sleep(200);
+  const gm = JSON.parse(await G.evaluate("JSON.stringify((() => { const b = [...document.querySelectorAll('.report-modal .report-actions button')].pop()?.getBoundingClientRect(); return { sendBottom: b ? Math.round(b.bottom) : -1, vh: innerHeight, over: document.documentElement.scrollWidth - innerWidth, chips: document.querySelectorAll('.report-modal .fb-chip').length }; })())"));
+  await snap(G, '124-report-m390');
+  record('★★ R061 🐞 m390 — 🐞 버튼으로 열림 · 칩 4 · 키보드 높이(500)에서 [보내기] 보임 · 가로 넘침 없음', gm.sendBottom > 0 && gm.sendBottom <= gm.vh && gm.chips === 4 && gm.over <= 1, JSON.stringify(gm));
+  await G.evaluate("[...document.querySelectorAll('.report-modal .report-actions button')][0]?.click()");
+  await touchDevice(G, 390, 844);
+  // ⑤ 번호 누르면 복사(안 되면 선택) — 토스트
+  await realClick(H, '.question-card .qno');
+  await H.waitFor("document.querySelector('[data-report-toast]')?.innerText.includes('#') === true", 2000);
+  const cp = await H.evaluate("document.querySelector('[data-report-toast]')?.innerText ?? ''");
+  record('★★ R061 번호 누르면 복사 — "#id 복사됨"(또는 선택됨)', cp.includes(`#${qid}`) && /복사됨|선택됨/.test(cp), cp);
+  await withPg((c) => c.query(`DELETE FROM app_reports WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[`${ACCOUNT_PREFIX}_rh`, `${ACCOUNT_PREFIX}_rg`]]));
+  await G.close?.();
+  await H.close?.();
+}
 // ★★ R059 — 보너스 포인트 토스트(로그인 뒤 한 번) · PC · m390 (UICHECK_R059=1 · 묶음 r059 · docs/design/r059)
 async function r059Flow(browser) {
   for (const [dev, suffix, touch] of [['pc', 'g9p', false], ['m390', 'g9m', true]]) {
@@ -3721,6 +3804,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R059) {
     await closeAllTabs(browser);
     await r059Flow(browser);
+  }
+  // ★ R061 — 앱 제보 🐞 · 📝 · 문항 번호
+  if (process.env.UICHECK_R061) {
+    await closeAllTabs(browser);
+    await r061Flow(browser);
   }
   // ★ R060 — 어젯밤 버그 넷(사이 문구 · 긴 단위 · 이모티콘 창 닫힘 · 공동 1위)
   if (process.env.UICHECK_R060) {
