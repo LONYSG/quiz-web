@@ -7028,11 +7028,11 @@ button.person-all-btn {
   opacity: 1;
   color: var(--text);
 }
-/* 모바일 — 오른쪽 위 작은 반투명 🐞 (28px · 게임 조작을 가리지 않게 · 미니게임 play 단계엔 숨김) */
+/* 모바일 — 오른쪽 위 작은 반투명 🐞 (28px · 위 막대의 빈 자리(👥 · ☰ 왼쪽) — 문제 카드 · 타이머 · 게임 조작을 가리지 않게 · 미니게임 play 단계엔 숨김) */
 .report-float.m {
-  top: calc(env(safe-area-inset-top, 0px) + 54px);
+  top: calc(env(safe-area-inset-top, 0px) + 9px);
   bottom: auto;
-  right: 6px;
+  right: 112px;
   width: 28px;
   height: 28px;
   padding: 0;

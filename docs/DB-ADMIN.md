@@ -308,6 +308,16 @@ DELETE FROM minigame_item_experiences WHERE account_id IN (SELECT id FROM accoun
 - 문항 · 그림은 DB 가 정본이 됐다(파일은 찬종 PC · git 밖 그림) — `npm run db:backup` 에 들어간다.
 - 기록은 지우지 않는 것이 원칙이다(docs/17 3절) — 위 DELETE 는 잘못 지급된 보상을 바로잡을 때만.
 
+### ★★ 앱 제보 읽기 · 처리 (R061 · D-255)
+```bash
+npm run reports:report -- --no-bots                 # 처리 안 된 것(최신순) → 콘솔 + tmp/app-reports.md · --all 전부 · --since 2026-10-23
+npm run reports:handle -- --id 12,13 --note "R062 반영" --yes     # 처리 표시(--undo 로 지움)
+```
+```sql
+SELECT r.id, r.created_at, a.nickname, r.kind, r.screen, r.game_id, r.question_id, r.minigame_key, r.minigame_item, r.reasons, r.text
+  FROM app_reports r JOIN accounts a ON a.id = r.account_id WHERE r.handled_at IS NULL ORDER BY r.id DESC LIMIT 50;
+```
+
 ### ★★★ 보너스 포인트 — 제보 채택 · 수동 지급 (R059 · D-254)
 ★ **가짜 미니게임 판으로 지급하지 않는다**(0023 이 옮겼다). 지급은 명령 둘로만 — `--yes` 없으면 할 일만 찍고 멈춘다.
 ```bash

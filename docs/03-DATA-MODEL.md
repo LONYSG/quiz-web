@@ -361,6 +361,12 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 - 미니게임 기록(minigame_runs · players · rounds · results · rewards)은 퀴즈 판 안 미니게임과 같은 표 · game_id 로 붙는다(after_question_index = null). game_players.final_score = 순위 점수 합.
 - 전적(GET /api/me/stats)의 "퀴즈 판 수" 는 mode = 'quiz' 만 센다.
 
+## ★★ 앱 제보 (R061 / 0024 — D-255)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `app_reports` | id bigserial · account_id FK(계정 지우면 같이) · created_at · **kind**('bug' · 'awkward' · 'idea' · 'question' · 'other') · **text** ≤500 · reasons text[](📝 사유 — R056 코드) · **screen**(≤60 — `lobby` · `room` · `game:question` · `game:reveal` · `game:result` · `minigame:<key>:<phase>` · `shop@room` …) · room_id · game_id FK null · question_id FK null · question_index · minigame_key · minigame_run_id FK null · minigame_item(`photo-0303`) · device jsonb(mobile · viewport · ua 120자 · build 짧은 해시 · emojiInsert) · recent jsonb(최근 소켓 이벤트 **이름** 20개 · 시각) · handled_at · note ≤200 · 인덱스 (created_at) · (handled_at) | POST /api/reports(로그인 · 10초 5번) · **판 · 문항 · 미니게임 판은 서버가 채운다**(공개 전 문항도 id 만) · 글의 첫 `#번호` · `photo-0303` 은 칸이 비어 있으면 붙인다(있는 id 만) · 읽기 `npm run reports:report` · 처리 `reports:handle` · 채팅 원문 없음 |
+
 ## ★★ 포인트 지급 · 제보 채택 (R059 / 0023 — D-254)
 
 | 표 · 열 | 형식 | 규칙 |

@@ -112,15 +112,24 @@ const writeDraft = (d: { kind: string; text: string } | null) => {
   }
 };
 
-/** 열기 전 포커스 자리를 기억했다가 닫을 때 돌려준다 */
+/** 열기 전 포커스 자리를 기억했다가 닫을 때 돌려준다
+ *  ★ 창 안 글칸의 autoFocus 가 effect 보다 먼저 돈다 → "창 바깥에서 마지막으로 포커스된 것" 을 늘 기억해 둔다 */
+let lastOutside: HTMLElement | null = null;
 function useReturnFocus(open: boolean) {
-  const prev = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const onIn = (e: FocusEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (t && !t.closest?.('.report-modal')) lastOutside = t;
+    };
+    document.addEventListener('focusin', onIn);
+    return () => document.removeEventListener('focusin', onIn);
+  }, []);
   useEffect(() => {
     if (!open) return undefined;
-    prev.current = document.activeElement as HTMLElement | null;
+    const prev = document.activeElement as HTMLElement | null;
+    const back = prev && !prev.closest?.('.report-modal') ? prev : lastOutside;
     return () => {
-      const el = prev.current;
-      if (el && document.contains(el) && typeof el.focus === 'function') el.focus({ preventScroll: true });
+      if (back && document.contains(back) && typeof back.focus === 'function') back.focus({ preventScroll: true });
     };
   }, [open]);
 }

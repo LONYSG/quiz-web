@@ -1074,6 +1074,24 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 42. ★★ R061 — 앱 제보 🐞 · 📝 문항 피드백 (0024 app_reports)
+
+```bash
+npm run bot -- report                     ★ 로비(판 null · "#번호" 로 문항) · 없는 번호 무시 · 퀴즈 중 🐞(방 · 판 · 문항 id · 순번 서버 값) · 문제 단계 questionId · 📝 사유만 · 미니게임 중(key · 판 · item) · 속도 제한 10초 5번 · 빈 글 400 · 401 · reports:report(🤖 · 문항별 · --no-bots) · reports:handle
+node scripts/ui-check-bundles.mjs r061    ★ 번호 · 📝 카드 높이(PC · m390 ±1px) · 📝 m390 문제 단계(포커스 그대로) · 🐞 PC Alt+B · Ctrl+Enter · 🐞 m390 키보드 높이 · 복사 — 그림 docs/design/r061
+node scripts/ui-check-bundles.mjs r056    ★ 접힘 목록 · 문제 평가가 안 깨졌는지
+```
+| 끝 점검 (R061 · 2026-10-23 14:15~14:25 · 검사 DB) | 결과 |
+|---|---|
+| typecheck · vitest · build · smoke | 통과 · 540/540(+4 reportRoutes) · 통과 · 12/12 |
+| 봇 report | 11/11 (연습 미니게임은 가짜 문항이라 item 없음이 맞다 — 실제 판은 item_id) |
+| ui-check | r061 5/5 · r056 27/27 |
+| 0024 | 백업 backups/quizweb-20261023-140714.dump → 검사 DB 먼저 → 실 DB "[migrate] OK" |
+| ★ 실 DB 무변화(검사 중) | rooms 2,305 · games 1,734 · minigame_runs 462 · accounts 98 · app_reports 0 |
+★ 돌리지 않음(브리핑 절약 규칙): R057 · r060 묶음.
+
+---
+
 ## 41. ★★ R059 — 제보 채택 · 보너스 포인트 (0023 point_grants)
 
 ```bash
