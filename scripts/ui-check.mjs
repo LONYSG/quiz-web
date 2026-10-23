@@ -3932,7 +3932,7 @@ async function r061Flow(browser) {
   const hFocus = await H.evaluate("document.activeElement === document.querySelector('.chat-card input')");
   await sleep(300);
   const bRow = await withPg(async (c) => (await c.query(`SELECT r.kind, r.text, r.screen, r.game_id::text, r.question_id::text, r.device, jsonb_array_length(coalesce(r.recent, '[]')) AS nrecent FROM app_reports r JOIN accounts a ON a.id = r.account_id WHERE a.login_id = $1 ORDER BY r.id DESC LIMIT 1`, [`${ACCOUNT_PREFIX}_rh`])).rows[0]);
-  record('★★★ R061 🐞 PC — Alt+B · 맥락 줄(판 #) · Ctrl+Enter · "제보 접수 #n" · 행(bug · game: 화면 · 판 · 문항 · 기기 · 최근 이벤트) · 포커스 돌려줌', /판 #/.test(ctxLine) && /제보 접수 #\d+/.test(hToast) && hFocus && bRow?.kind === 'bug' && /^game:/.test(bRow.screen) && !!bRow.game_id && !!bRow.question_id && bRow.device?.mobile === false && bRow.nrecent > 0, JSON.stringify({ ctxLine, hToast, hFocus, bRow }));
+  record('★★★ R061 🐞 PC — Alt+B · 맥락 줄(R063 쉬운 말 "문제 N (#id)") · Ctrl+Enter · "제보 접수 #n" · 행(bug · game: 화면 · 판 · 문항 · 기기 · 최근 이벤트) · 포커스 돌려줌', /^문제 \d+ \(#\d+\)$/.test(ctxLine) && /제보 접수 #\d+/.test(hToast) && hFocus && bRow?.kind === 'bug' && /^game:/.test(bRow.screen) && !!bRow.game_id && !!bRow.question_id && bRow.device?.mobile === false && bRow.nrecent > 0, JSON.stringify({ ctxLine, hToast, hFocus, bRow }));
   // ④ 🐞 m390 — 오른쪽 위 🐞 · 키보드가 올라온 높이(844 → 500)에서도 [보내기] 가 화면 안
   await touchDevice(G, 390, 500);
   await sleep(300);
