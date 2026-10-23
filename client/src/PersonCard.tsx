@@ -11,7 +11,7 @@
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { ACHIEVEMENTS, achievementDef } from '@quiz/shared';
-import { Award, Check } from 'lucide-react';
+import { Award, Ban, Check, Crown, UserCheck, UserMinus, UserPlus } from 'lucide-react';
 import Avatar from './Avatar.js';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
@@ -35,6 +35,23 @@ const subscribe = (l: () => void) => {
   listeners.add(l);
   return () => listeners.delete(l);
 };
+
+// ── ★★ R063 (D-262 · 찬종 #16 "프로필도 표시하면서 강퇴/차단/친구추가 같은것도 같이 … 어떻게 할까요? 같은 부자연스러운 문장 빼고. 합치자")
+//   방(Lobby)이 "이 사람에게 할 수 있는 것" 을 알려 준다 → 카드 아래 버튼 줄(문장 없이). 방 밖이면 버튼 없음.
+export interface PersonActions {
+  /** 친구 상태 — none 이면 [친구 신청] */
+  friend: 'none' | 'friend' | 'pending';
+  onFriend?: () => void;
+  /** 방장만 — 누르면 최종 확인(KickFlow) */
+  onKick?: () => void;
+  onBan?: () => void;
+  onHost?: () => void;
+}
+let actionsOf: ((accountId: string) => PersonActions | null) | null = null;
+export function setPersonActions(fn: ((accountId: string) => PersonActions | null) | null): void {
+  actionsOf = fn;
+  emit();
+}
 
 export function openPersonCard(p: PersonRef, as: 'card' | 'all' = 'card'): void {
   target = p;
@@ -96,6 +113,7 @@ function Shell({ label, className, onClose, children }: { label: string; classNa
 /** 카드 (사진 크게 · 깬 업적) */
 function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
   const { earned, err } = useEarned(p.accountId);
+  const acts = actionsOf ? actionsOf(p.accountId) : null;
   const list = earned ? [...earned.entries()].sort((a, b) => a[1].localeCompare(b[1])) : [];
   return (
     <Shell label={`${p.nickname} 프로필`} className="person-card" onClose={onClose}>
@@ -133,6 +151,35 @@ function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
           <Icon icon={Award} /> 전체 업적
         </button>
       </section>
+      {/* ★ R063 — 이 사람에게 할 수 있는 것(버튼만 · 설명 문장 없음) */}
+      {acts && (
+        <div className="person-acts" data-person-acts>
+          {acts.friend === 'none' && acts.onFriend ? (
+            <button type="button" className="ghost person-act" data-act="friend" onClick={() => { acts.onFriend?.(); onClose(); }}>
+              <Icon icon={UserPlus} /> 친구 신청
+            </button>
+          ) : acts.friend !== 'none' ? (
+            <span className="dim person-act-state" data-act="friend-state">
+              <Icon icon={UserCheck} /> {acts.friend === 'friend' ? '친구' : '신청함'}
+            </span>
+          ) : null}
+          {acts.onHost && (
+            <button type="button" className="ghost person-act" data-act="host" onClick={acts.onHost}>
+              <Icon icon={Crown} /> 방장 넘기기
+            </button>
+          )}
+          {acts.onKick && (
+            <button type="button" className="ghost person-act warn" data-act="kick" onClick={acts.onKick}>
+              <Icon icon={UserMinus} /> 강퇴
+            </button>
+          )}
+          {acts.onBan && (
+            <button type="button" className="ghost person-act danger" data-act="ban" onClick={acts.onBan}>
+              <Icon icon={Ban} /> 차단
+            </button>
+          )}
+        </div>
+      )}
     </Shell>
   );
 }

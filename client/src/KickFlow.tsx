@@ -9,7 +9,7 @@
 // =============================================================================
 
 import type { Socket } from 'socket.io-client';
-import ConfirmModal, { type ConfirmAction } from './ConfirmModal.js';
+import ConfirmModal from './ConfirmModal.js';
 
 export interface KickTarget {
   accountId: string;
@@ -22,37 +22,18 @@ export interface KickTarget {
 interface Props {
   socket: Socket;
   target: KickTarget;
-  onStep: (step: KickTarget['step']) => void;
+  /** (옛 고르기 단계용 — R063 부터 쓰지 않음) */
+  onStep?: (step: KickTarget['step']) => void;
   onClose: () => void;
   /** ★ R043 C — 방장인가 (아니면 친구 신청만) */
   isHost: boolean;
-  /** ★ R043 C — 친구 신청 (이미 친구 · 신청 중이면 없음) */
-  onFriend?: () => void;
+
 }
 
-export default function KickFlow({ socket, target, onStep, onClose, isHost, onFriend }: Props) {
+export default function KickFlow({ socket, target, onClose, isHost }: Props) {
   const name = <strong className="confirm-nick">{target.nickname}</strong>;
-  if (target.step === 'choose') {
-    const actions: ConfirmAction[] = [];
-    if (onFriend) {
-      actions.push({
-        label: '친구 신청',
-        tone: 'calm',
-        onClick: () => {
-          onFriend();
-          onClose();
-        },
-      });
-    }
-    if (isHost) {
-      // ★ R043 A-10 (건우) — 설명 글 삭제 · 색을 다르게: 강퇴 주황 · 차단 빨강(가장 센 것) · 방장 넘기기 차분한 색
-      actions.push({ label: '강퇴', tone: 'warn', onClick: () => onStep('kick') });
-      actions.push({ label: '차단', tone: 'danger', onClick: () => onStep('ban') });
-      // ★★ R042 (건우) — 방장 넘기기. 접속 중인 사람에게만
-      if (target.connected) actions.push({ label: '방장 넘기기', tone: 'calm', onClick: () => onStep('host') });
-    }
-    return <ConfirmModal key="choose" kind="kick-choose" title={<>{name} <span className="nowrap">님을 어떻게 할까요?</span></>} actions={actions} onCancel={onClose} />;
-  }
+  // ★★ R063 (D-262) — 고르기 단계("어떻게 할까요?")는 없앴다 — 프로필 카드의 버튼 → 바로 최종 확인
+  if (target.step === 'choose') return null;
   if (!isHost) return null;
   if (target.step === 'host') {
     return (

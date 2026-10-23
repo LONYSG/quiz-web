@@ -12,6 +12,7 @@
 // ★ 새로 만드는 버튼과 배지는 styles.css 의 라벨 규칙을 그대로 받는다 (D-022).
 // =============================================================================
 
+import { openPersonCard, setPersonActions, type PersonActions } from './PersonCard.js';
 import { ReportButton } from './AppReport.js';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
@@ -646,12 +647,31 @@ export default function Lobby({
   /** ★★ R041 — 사람을 골랐다 (PC 참여자 칸 · 모바일 👥 창) → 강퇴 / 차단 고르기 팝업. 방장만 · 자기 자신은 안 된다 */
   // ★★ R043 C — 친구 신청은 누구나: 아직 친구도 아니고 신청도 없는 사람이면 "친구 신청" 이 붙는다
   const related = new Set([...social.friends, ...social.incoming, ...social.outgoing].map((f) => f.accountId));
-  const canPick = (accountId: string) => accountId !== snapshot.me.accountId && (snapshot.me.isHost || !related.has(accountId));
-  const pickPlayer = (p: { accountId: string; nickname: string; connected: boolean }) => {
+  // ★★ R063 (D-262) — 사람을 누르면 **프로필 카드 하나**(사진 · 업적 + 친구 · 강퇴 · 차단 버튼). "어떻게 할까요?" 고르기 창은 없앴다
+  const canPick = (accountId: string) => accountId !== snapshot.me.accountId;
+  const pickPlayer = (p: { accountId: string; nickname: string; colorIndex: number; avatarV?: number | null; connected: boolean }) => {
     if (!canPick(p.accountId)) return;
-    setKickTarget({ accountId: p.accountId, nickname: p.nickname, step: 'choose', connected: p.connected });
-    setKickOpen(true);
+    openPersonCard({ accountId: p.accountId, nickname: p.nickname, colorIndex: p.colorIndex, avatarV: p.avatarV ?? null });
   };
+  const friendIds = new Set(social.friends.map((f) => f.accountId));
+  const actRef = useRef<(id: string) => PersonActions | null>(() => null);
+  actRef.current = (id: string) => {
+    const p = snapshot.players.find((x) => x.accountId === id);
+    if (!p || id === snapshot.me.accountId) return null;
+    const kick = (step: KickTarget['step']) => () => {
+      setKickTarget({ accountId: p.accountId, nickname: p.nickname, step, connected: p.connected });
+      setKickOpen(true);
+    };
+    return {
+      friend: friendIds.has(id) ? 'friend' : related.has(id) ? 'pending' : 'none',
+      onFriend: () => social.request({ accountId: id }),
+      ...(snapshot.me.isHost ? { onKick: kick('kick'), onBan: kick('ban'), ...(p.connected ? { onHost: kick('host') } : {}) } : {}),
+    };
+  };
+  useEffect(() => {
+    setPersonActions((id) => actRef.current(id));
+    return () => setPersonActions(null);
+  }, []);
   const seatOf = (index: number) => {
     const p = snapshot.players[index] ?? null;
     return (
@@ -795,7 +815,6 @@ export default function Lobby({
           socket={socket}
           target={kickTarget}
           isHost={snapshot.me.isHost}
-          onFriend={related.has(kickTarget.accountId) ? undefined : () => social.request({ accountId: kickTarget.accountId })}
           onStep={(step) => setKickTarget({ ...kickTarget, step })}
           onClose={() => {
             setKickOpen(false);

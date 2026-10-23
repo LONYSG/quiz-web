@@ -7398,3 +7398,115 @@ button.balloon-pump {
   letter-spacing: 0.12em;
   color: var(--accent);
 }
+
+/* ★★ R063 (D-262) — 사진 메뉴 하나 · 프로필 카드에 할 일 버튼 · 창은 창 안에서만 스크롤 · 모바일 위 막대 */
+button.profile-photo {
+  padding: 0;
+  height: auto;
+  min-height: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 999px;
+}
+.photo-menu-wrap {
+  position: relative;
+  display: inline-flex;
+}
+.photo-menu {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);
+  z-index: 5;
+  display: grid;
+  min-width: 9.5rem;
+  padding: 4px;
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-pop);
+}
+.photo-menu button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 6px 10px;
+  height: auto;
+  justify-content: flex-start;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: var(--text);
+}
+.photo-menu button:hover {
+  background: var(--chip-bg);
+}
+.person-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: var(--bw) solid var(--border);
+}
+.person-acts button {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+}
+.person-act.warn { color: var(--warn); }
+.person-act.danger { color: var(--bad); }
+.person-act-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
+}
+/* 모든 창 — 화면보다 길면 창 안에서만 스크롤(위가 잘리지 않게 · 페이지 스크롤 0) */
+.modal {
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.person-card {
+  width: min(380px, calc(100vw - 24px));
+  box-sizing: border-box;
+}
+.ach-all-modal {
+  max-height: calc(100dvh - 24px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ach-all-modal .pop-head {
+  flex: 0 0 auto;
+}
+.ach-all-modal .ach-all {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+/* 모바일 방 목록 — 위 버튼 줄과 Q 로고가 겹치지 않게(음수 여백 없앰 · 로고 작게) */
+:where(.ui-mobile) .home-bar {
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+:where(.ui-mobile) .brand {
+  margin-top: 4px;
+}
+:where(.ui-mobile) .brand-mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  font-size: 1.5rem;
+}
+:where(.ui-mobile) .brand h1 {
+  font-size: 1.6rem;
+  margin-top: 8px;
+}

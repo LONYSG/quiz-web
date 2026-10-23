@@ -8,8 +8,8 @@
 // ★ 반드시 거쳐야 하는 창(mustRename — R040): ✕ 없음 · 바깥 · Esc 로 안 닫힌다 (R044 B).
 // =============================================================================
 
-import { useCallback, useEffect, useState } from 'react';
-import { Award, BarChart3, Camera, Maximize2, Pencil } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Award, BarChart3, Camera, Maximize2, Pencil, Trash2 } from 'lucide-react';
 import { NICKNAME_LIMIT_HINT, NICKNAME_TOO_LONG_MESSAGE, RULES, nicknameFits } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import BusyButton from './BusyButton.js';
@@ -39,6 +39,9 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
   const [open, setOpen] = usePopup('profile');
   const [photoOpen, setPhotoOpen] = usePopup('photo');
   const [photoDelOpen, setPhotoDelOpen] = usePopup('photo-delete');
+  // ★ R063 — 사진 메뉴(이 창 안의 작은 메뉴 — 팝업 하나 규칙 밖)
+  const [photoMenu, setPhotoMenu] = useState(false);
+  const fileRef = useRef<HTMLInputElement>(null);
   const [draft, setDraft] = useState<string | null>(null);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [busy, setBusy] = useState(false);
@@ -138,14 +141,39 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
                 </span>
               )}
             </p>
-            {/* ★★ R039 — 프로필 사진: 누르면 사진 고르기 → 원형 편집기 */}
+            {/* ★★ R063 (D-262 · 찬종 "프로필 사진을 눌렀을때 하나의 팝업에 다 모여있는게 훨씬 깔끔") —
+                사진을 누르면 작은 메뉴 하나(크게 보기 · 사진 바꾸기 · 사진 지우기 / 사진이 없으면 사진 넣기). 옆에 늘어선 버튼은 없앴다 */}
             <div className="profile-row">
-              <label className="profile-photo" title="사진 바꾸기">
-                <Avatar nickname={nickname} colorIndex={colorIndex} large accountId={accountId} avatarV={avatarV} />
-                <span className="profile-cam" aria-hidden="true">
-                  <Icon icon={Camera} />
-                </span>
+              <span className="photo-menu-wrap">
+                <button
+                  type="button"
+                  className="profile-photo"
+                  title="사진"
+                  aria-haspopup="menu"
+                  aria-expanded={photoMenu}
+                  data-photo-btn
+                  onClick={() => (avatarV ? setPhotoMenu((v) => !v) : fileRef.current?.click())}
+                >
+                  <Avatar nickname={nickname} colorIndex={colorIndex} large accountId={accountId} avatarV={avatarV} />
+                  <span className="profile-cam" aria-hidden="true">
+                    <Icon icon={Camera} />
+                  </span>
+                </button>
+                {photoMenu && avatarV && (
+                  <span className="photo-menu" role="menu" data-photo-menu>
+                    <button type="button" role="menuitem" onClick={() => { setPhotoMenu(false); openPersonCard({ accountId, nickname, colorIndex, avatarV }); }}>
+                      <Icon icon={Maximize2} /> 크게 보기
+                    </button>
+                    <button type="button" role="menuitem" onClick={() => { setPhotoMenu(false); fileRef.current?.click(); }}>
+                      <Icon icon={Camera} /> 사진 바꾸기
+                    </button>
+                    <button type="button" role="menuitem" className="danger-text" onClick={() => { setPhotoMenu(false); setPhotoDelOpen(true); }}>
+                      <Icon icon={Trash2} /> 사진 지우기
+                    </button>
+                  </span>
+                )}
                 <input
+                  ref={fileRef}
                   id="avatar-file"
                   type="file"
                   accept="image/*"
@@ -159,22 +187,8 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
                     }
                   }}
                 />
-              </label>
-              {avatarV ? (
-                <>
-                  {/* ★ R056 — 사진 크게 보기 (사진을 누르면 바꾸기라서 따로 둔다) */}
-                  <button type="button" className="ghost tiny photo-zoom" onClick={() => openPersonCard({ accountId, nickname, colorIndex, avatarV })}>
-                    <Icon icon={Maximize2} /> 크게 보기
-                  </button>
-                  <button type="button" className="ghost tiny" onClick={() => setPhotoDelOpen(true)}>
-                    사진 지우기
-                  </button>
-                </>
-              ) : (
-                <span className="dim profile-tip">
-                  <Icon icon={Camera} /> 눌러 사진 넣기
-                </span>
-              )}
+              </span>
+              {!avatarV && <span className="dim profile-tip">사진 넣기</span>}
             </div>
             <div className="field-row">
               <input
