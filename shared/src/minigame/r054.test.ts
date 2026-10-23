@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { ACHIEVEMENTS, achievementDef } from '../achievements.js';
 import { MINIGAMES } from '../minigame.js';
 import { GAME_TOPICS } from '../settings.js';
-import { BALLOON_BURST_MAX, BALLOON_BURST_MIN, BALLOON_ROUNDS, balloonBursts, balloonSize } from './r054.js';
+import { BALLOON_BURST_MAX, BALLOON_BURST_MIN, BALLOON_ROUNDS, BALLOON_TARGET, balloonAfter, balloonBursts, balloonPumps, balloonSize } from './r054.js';
 
 describe('★★ 업적 정의', () => {
   it('키 겹침 없음 · 이름 · 조건 글', () => {
@@ -47,5 +47,20 @@ describe('★ 목록 — 풍선 · 연타', () => {
       expect(m.rounds).toBe(3);
       expect(m.better).toBe('high');
     }
+  });
+});
+
+describe('R063 풍선 펌프', () => {
+  it('바람은 6~16 · 같은 판 · 같은 사람이면 같은 순서 · 사람마다 다르다 · 100 넘으면 펑', () => {
+    const a = balloonPumps(77, '12', 17);
+    expect(a.every((x) => x >= 6 && x <= 16)).toBe(true);
+    expect(balloonPumps(77, '12', 17)).toEqual(a);
+    expect(balloonPumps(77, '13', 17)).not.toEqual(a);
+    expect(balloonPumps(77, '12', 3)).toEqual(a.slice(0, 3));
+    const all = balloonAfter(77, '12', 17);
+    expect(all.popped).toBe(true);
+    let n = 0;
+    while (!balloonAfter(77, '12', n + 1).popped) n += 1;
+    expect(balloonAfter(77, '12', n).total).toBeLessThanOrEqual(BALLOON_TARGET);
   });
 });

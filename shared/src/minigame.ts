@@ -260,9 +260,10 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'balloon',
     name: '풍선 불기',
-    oneLine: '누르고 있으면 풍선이 커져요 — 터지기 직전에 떼세요! 터지면 0점',
-    controlsPc: 'Space 를 누르고 있다가 떼기',
-    controlsMobile: '화면을 누르고 있다가 떼기',
+    // ★ R063 (D-261) — 펌프 규칙(블랙잭 꼴)
+    oneLine: '펌프를 누를 때마다 바람이 들어가요 — 딱 100 이면 만점, 넘으면 펑!',
+    controlsPc: 'Space 펌프 · Enter 그만',
+    controlsMobile: '[펌프] · [그만]',
     kind: 'physical',
     rounds: 3,
     estSec: 60,

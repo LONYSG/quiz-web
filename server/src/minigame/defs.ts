@@ -65,11 +65,14 @@ import {
   gaugeRounds,
   minorityResult,
   oddoneRounds,
-  BALLOON_PLAY_MS,
+  BALLOON_MAX_PUMPS,
+  BALLOON_PUMP_MAX,
+  BALLOON_PUMP_MIN,
+  BALLOON_PUMP_MS,
+  BALLOON_TARGET,
   TAP_MAX_PER_SEC,
   TAP_PLAY_MS,
-  balloonBursts,
-  balloonSize,
+  balloonAfter,
 } from '@quiz/shared';
 import type { QuizData, QuizItem } from '../db/minigameItems.js';
 
@@ -140,7 +143,7 @@ export interface MinigameDef {
    * ★ 입력 검사 · 판정 값 계산 (서버). 이상한 값이면 null(받지 않음).
    *   provisional = true 면 "아직 확정 아님"(균형 — 움직이는 동안 보내는 값 · 마감 때 마지막 것을 쓴다)
    */
-  parseInput(raw: unknown, spec: RoundSpec, ctx: { serverElapsedMs: number; prev?: ParsedInput & { provisional: boolean } }): (ParsedInput & { provisional: boolean }) | null;
+  parseInput(raw: unknown, spec: RoundSpec, ctx: { serverElapsedMs: number; prev?: ParsedInput & { provisional: boolean }; /** ★ R063 — 풍선 바람 순서(계정마다) */ accountId?: string }): (ParsedInput & { provisional: boolean }) | null;
 }
 
 /** ★ 케이크 — 기기 시간이 서버에서 흐른 시간보다 이만큼까지는 길어도 받는다 (시계 잡음) */
@@ -674,35 +677,40 @@ const gauge: MinigameDef = {
 // ★★★ R054 — 풍선 불기 · 연타 10초
 // ─────────────────────────────────────────────────────────────────────────────
 
-// 풍선 — 누른 시각 · 뗀 시각(판 시작부터 기기 ms) · 서버가 크기를 다시 계산 · 터지는 크기는 판마다 서버 시드(모두 같은 값 · 공개는 판 결과 때만)
+// ★★ R063 (D-261) 풍선 — 펌프 규칙(블랙잭 꼴): 입력 { pumps: n, stop? } — n 은 하나씩만 늘 수 있다.
+//   바람은 판 시드 + 계정으로 서버가 정한 순서(balloonAfter) — 누르면 그 사람에게만 바로 알린다(feedback) · 펑 · 그만이면 확정.
+//   12초가 지나면 마지막 값(provisional)을 그대로 쓴다(engine 마감 규칙).
 const balloon: MinigameDef = {
   key: 'balloon',
   info: minigameInfo('balloon'),
   buildRounds(seed) {
-    return balloonBursts(seed).map((burst, i) => ({
+    return [0, 1, 2].map((i) => ({
       itemKey: `balloon-${i + 1}`,
-      params: { growPerSec: 10, startPct: 100 },
-      secret: { burst },
-      reveal: { burst },
-      playMs: BALLOON_PLAY_MS,
+      params: { target: BALLOON_TARGET, pumpMin: BALLOON_PUMP_MIN, pumpMax: BALLOON_PUMP_MAX },
+      playMs: BALLOON_PUMP_MS,
       seed: seed + i,
     }));
   },
   parseInput(raw, spec, ctx) {
     const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
-    const start = num(obj?.startMs);
-    const end = num(obj?.endMs);
-    if (start === null || end === null || start < 0 || end < start || end > spec.playMs + 200) return null;
-    if (end > ctx.serverElapsedMs + CAKE_EARLY_TOLERANCE_MS) return null;
-    const size = Math.round(balloonSize(end - start) * 10) / 10;
-    const popped = size >= Number(spec.secret?.burst);
+    const n = num(obj?.pumps);
+    const stop = obj?.stop === true;
+    const prevN = Number(ctx.prev?.input?.pumps ?? 0);
+    if (n === null || !Number.isInteger(n) || n < 0 || n > BALLOON_MAX_PUMPS) return null;
+    // 하나씩만 늘린다(그만은 같은 수) · 너무 빠른 펌프(0.08초 미만 간격)는 받지 않는다
+    if (stop ? n !== prevN : n !== prevN + 1) return null;
+    if (!stop && n > Math.ceil(ctx.serverElapsedMs / 80) + 1) return null;
+    const who = ctx.accountId ?? '';
+    const r = balloonAfter(spec.seed, who, n);
+    const final = stop || r.popped;
     return {
-      input: { startMs: Math.round(start), endMs: Math.round(end), size, popped },
-      value: popped ? 0 : size,
+      input: { pumps: n, total: r.total, popped: r.popped, stop },
+      value: r.popped ? 0 : r.total,
       error: null,
-      elapsedMs: end,
-      extra: { size, popped },
-      provisional: false,
+      elapsedMs: ctx.serverElapsedMs,
+      extra: { size: r.total, popped: r.popped, pumps: n },
+      provisional: !final,
+      feedback: { pumps: n, total: r.total, add: r.last, popped: r.popped, stop },
     };
   },
 };

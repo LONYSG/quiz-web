@@ -7044,34 +7044,50 @@ async function apiGet(path, cookie) {
 }
 
 async function scenarioMgBalloon() {
-  log('시나리오 mgballoon — ★★★ 풍선 불기 (R054)');
+  log('시나리오 mgballoon — ★★★ 풍선 불기 · ★ R063 펌프 규칙(딱 100 만점 · 넘으면 펑)');
   const sh = await mgShared();
-  const { bots, host, roomId } = await mgRoom(5, 'R054 풍선');
+  const { bots, host, roomId } = await mgRoom(5, 'R063 풍선');
   const [b1, b2, b3, b4, b5] = bots;
-  // b1 1초(110%) · b2 지연 150 · 1초 · b3 9.5초(195% — 대개 터짐 판 있음) · b4 안 함 · b5 미리 계산
-  const plan = new Map([[b1.loginId, { lag: 0, hold: 1000 }], [b2.loginId, { lag: 150, hold: 1000 }], [b3.loginId, { lag: 0, hold: 9500 }], [b4.loginId, null], [b5.loginId, null]]);
+  // b1 85 이상이면 그만 · b2 3번 펌프 뒤 그만 · b3 터질 때까지 · b4 안 함 · b5 건너뛰기(pumps 5 바로) → 거부
+  const fb = new Map(bots.map((b) => [b.loginId, []]));
   for (const b of bots) {
-    const pl = plan.get(b.loginId);
-    driveMinigame(b, () => (pl ? { delayMs: pl.lag + 200 + pl.hold + pl.lag, input: { startMs: 200, endMs: 200 + pl.hold, size: 299 } } : null));
+    b.__mgDone = new Set();
+    b.socket.on('minigame.feedback', (f) => {
+      if (typeof f.total !== 'number') return;
+      fb.get(b.loginId).push(f);
+      const mg = b.snapshot?.minigame;
+      if (!mg || f.popped || f.stop) return;
+      const next = (input) => setTimeout(() => b.socket?.connected && b.socket.emit('minigame.submit', { token: f.token, roundIndex: f.roundIndex, input }), 120);
+      if (b === b1) next(f.total >= 85 ? { pumps: f.pumps, stop: true } : { pumps: f.pumps + 1 });
+      if (b === b2) next(f.pumps >= 3 ? { pumps: f.pumps, stop: true } : { pumps: f.pumps + 1 });
+      if (b === b3) next({ pumps: f.pumps + 1 });
+    });
+    b.onMinigame = (mg) => {
+      if (!mg || mg.phase !== 'play' || mg.spectating) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (b.__mgDone.has(k)) return;
+      b.__mgDone.add(k);
+      if (b === b4) return;
+      const input = b === b5 ? { pumps: 5 } : { pumps: 1 };
+      setTimeout(() => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input }), 300);
+    };
   }
-  let pre = null;
-  const runId = await mgPractice(host, roomId, 'balloon', 120000, async () => {
-    await host.waitFor(() => host.snapshot?.minigame?.phase === 'play', 15000, '1판');
-    const m = b5.mark();
-    b5.socket.emit('minigame.submit', { token: host.snapshot.minigame.token, roundIndex: 0, input: { startMs: 0, endMs: 8000 } });
-    await sleep(250);
-    pre = b5.since(m, 'error')[0]?.code ?? null;
-  });
-  expect('★★ 미리 계산(흐른 시간보다 긴 뗀 시각) → 거부', pre, 'BAD_REQUEST');
+  const m5 = b5.mark();
+  const runId = await mgPractice(host, roomId, 'balloon', 120000);
+  expect('★★ 펌프 건너뛰기(0 → 5) → 거부', b5.since(m5, 'error')[0]?.code ?? null, 'BAD_REQUEST');
   const rows = await mgRows(runId);
-  const rounds = await mgRounds(runId);
-  expect('★ 기록 = 3판 × 5명', rows.length, 15);
-  expectTrue('★★ 터지는 크기는 판 진행 중 공개 값에 없다(burst 숨김)', rounds.every((r) => r.params.burst === undefined));
-  const bursts = sh.balloonBursts(Number((await withDb(async (c) => (await c.query(`SELECT seed FROM minigame_runs WHERE id = $1`, [runId])).rows[0].seed))));
+  const seeds = await withDb(async (c) => (await c.query(`SELECT round_index, seed FROM minigame_rounds WHERE run_id = $1 ORDER BY round_index`, [runId])).rows.map((r) => Number(r.seed)));
+  const ids = new Map(await withDb(async (c) => (await c.query(`SELECT login_id, id::text FROM accounts WHERE login_id = ANY($1)`, [bots.map((b) => b.loginId)])).rows.map((r) => [r.login_id, r.id])));
   const of = (b) => rows.filter((r) => r.login_id === b.loginId);
-  expectTrue('★★★ 서버 재계산 — 1초 → 110%(클라이언트 size 칸 무시)', of(b1).every((r, i) => (110 >= bursts[i] ? r.value === 0 : Math.abs(r.value - 110) < 1e-6)), JSON.stringify(of(b1).map((r) => r.value)));
-  expectTrue('★★★ 지연 150 기기 — 같은 값', of(b2).every((r, i) => r.value === of(b1)[i].value));
-  expectTrue('★★★ 같은 판은 모두 같은 터짐 값 — 9.5초(195%)는 터짐 값보다 크면 0', of(b3).every((r, i) => (195 >= bursts[i] ? r.value === 0 && r.input?.popped !== false : Math.abs(r.value - 195) < 1e-6)), JSON.stringify([bursts, of(b3).map((r) => r.value)]));
+  const want = (b, r) => {
+    const a = sh.balloonAfter(seeds[r.round_index], ids.get(b.loginId), Number(r.input?.pumps ?? 0));
+    return a.popped ? 0 : a.total;
+  };
+  expect('★ 기록 = 3판 × 5명', rows.length, 15);
+  expectTrue('★★★ 서버 재계산 — 판 시드 + 계정 순서의 합(b1 · b2 · b3)', [b1, b2, b3].every((b) => of(b).every((r) => r.value === want(b, r))), JSON.stringify([b1, b2, b3].map((b) => of(b).map((r) => [r.input?.pumps, r.value]))));
+  expectTrue('★★★ 펌프 바람은 6~16 · 누를 때마다 바로 알림(b2 3번 → 알림 합이 기록과 같다)', fb.get(b2.loginId).every((f) => f.add >= 6 && f.add <= 16) && of(b2).every((r) => r.input?.pumps === 3 && r.value === want(b2, r)), JSON.stringify(fb.get(b2.loginId).map((f) => f.add)));
+  expectTrue('★★★ 넘으면 펑 = 0(b3 은 판마다 터짐)', of(b3).every((r) => r.value === 0 && r.input?.popped === true), JSON.stringify(of(b3).map((r) => r.input)));
+  expectTrue('★★ 100 이하 · 그만이면 그 값(b1 은 85 이상에서 멈춤 — 넘으면 0)', of(b1).every((r) => (r.input?.popped ? r.value === 0 : r.value >= 85 && r.value <= 100)), JSON.stringify(of(b1).map((r) => r.value)));
   expectTrue('★★ 안 함 → 0점 · 미제출', of(b4).every((r) => !r.submitted && r.points === 0));
   for (const b of bots) {
     b.leave();

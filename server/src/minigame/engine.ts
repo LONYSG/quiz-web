@@ -348,7 +348,7 @@ export function submitMinigame(
   const prev = subs.get(accountId);
   if (prev && !prev.provisional) return 'already';
   const spec = run.rounds[run.roundIndex]!;
-  const parsed = MINIGAME_DEFS[run.key].parseInput(payload.input, spec, { serverElapsedMs: Date.now() - run.phaseStartedAt, prev });
+  const parsed = MINIGAME_DEFS[run.key].parseInput(payload.input, spec, { serverElapsedMs: Date.now() - run.phaseStartedAt, prev, accountId });
   if (!parsed) return 'bad_input';
   subs.set(accountId, parsed);
   if (parsed.feedback) onFeedback?.(parsed.feedback);

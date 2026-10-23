@@ -274,12 +274,13 @@ function r054Scene(key: MinigameKey) {
   const row = (id: string, rank: number, points: number, extra: Record<string, unknown> | null, value: number | null, submitted = true) => ({ accountId: id, submitted, value, error: null, rank, points, extra });
   if (key === 'balloon')
     return {
-      playMs: 10000,
-      params: { growPerSec: 10, startPct: 100 },
-      reveal: { burst: 172.4 },
+      // ★ R063 — 펌프 규칙(딱 100 만점 · 넘으면 펑)
+      playMs: 12000,
+      params: { target: 100 },
+      reveal: {},
       rows: popped
-        ? [row('lab3', 1, 4, { size: 168.2, popped: false }, 168.2), row('lab2', 2, 3, { size: 151, popped: false }, 151), row('lab1', 3, 0, { size: 181.5, popped: true }, 0), row('lab4', 3, 0, null, null, false)]
-        : [row('lab1', 1, 4, { size: 168.2, popped: false }, 168.2), row('lab3', 2, 3, { size: 151, popped: false }, 151), row('lab2', 3, 0, { size: 181.5, popped: true }, 0), row('lab4', 3, 0, null, null, false)],
+        ? [row('lab3', 1, 4, { size: 100, popped: false }, 100), row('lab2', 2, 3, { size: 92, popped: false }, 92), row('lab1', 3, 0, { size: 108, popped: true }, 0), row('lab4', 3, 0, null, null, false)]
+        : [row('lab1', 1, 4, { size: 100, popped: false }, 100), row('lab3', 2, 3, { size: 92, popped: false }, 92), row('lab2', 3, 0, { size: 108, popped: true }, 0), row('lab4', 3, 0, null, null, false)],
     };
   return {
     playMs: 10000,

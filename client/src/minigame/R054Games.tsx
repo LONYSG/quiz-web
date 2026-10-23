@@ -1,13 +1,13 @@
 // =============================================================================
 // ★★★ 미니게임 4차 화면 (R054 · D-244) — 풍선 불기 · 연타 10초
 //
-// ★ 풍선: 누르고 있는 동안 커진다(초당 +10%) · 떼면 끝(한 번만) · 터지는 크기는 서버만 안다 — 판 결과 때 "펑!".
+// ★ 풍선: ★ R063 펌프 규칙 — [펌프] 마다 바람 6~16(서버) · 딱 100 만점 · 넘으면 펑 · [그만].
 // ★ 연타: 10초 동안 Space · 탭 횟수 — 자동 반복(e.repeat)은 버리고 keyup 뒤에만 다시 센다(D-228 꼴).
 // =============================================================================
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { BALLOON_PLAY_MS, balloonSize } from '@quiz/shared';
+import { BALLOON_PUMP_MS, BALLOON_TARGET } from '@quiz/shared';
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
@@ -52,87 +52,100 @@ export function BalloonArt({ pct, popped = false }: { pct: number; popped?: bool
   );
 }
 
-// ── 풍선 불기
+// ── 풍선 불기 — ★★ R063 (D-261) 펌프 규칙: [펌프] 마다 바람(서버가 정한 6~16 — 누르면 바로 알려 줌) · 딱 100 만점 · 넘으면 펑 · [그만]
 export function BalloonBlow({ socket, view, serverNow, mobile }: Props) {
   const playing = view.phase === 'play';
   const canPlay = playing && !view.spectating;
   const { key, t0 } = usePlayT0(view, serverNow);
   const now = useFrameNow(playing);
-  const [hold, setHold] = useState<{ key: string; start: number; end?: number } | null>(null);
-  const mine = hold?.key === key ? hold : null;
-  const holdRef = useRef(mine);
-  holdRef.current = mine;
-  const playMs = view.round?.playMs ?? BALLOON_PLAY_MS;
+  const target = Number(view.round?.params?.target ?? BALLOON_TARGET);
+  const [st, setSt] = useState<{ key: string; pumps: number; total: number; add: number; popped: boolean; stop: boolean; waiting: boolean; at: number } | null>(null);
+  const mine = st?.key === key ? st : null;
+  const ref = useRef(mine);
+  ref.current = mine;
+  const playMs = view.round?.playMs ?? BALLOON_PUMP_MS;
   const elapsed = t0 !== null ? now - t0 : 0;
-  const holdMs = view.lab?.elapsedMs ?? (mine ? (mine.end ?? Math.min(now, (t0 ?? 0) + playMs)) - mine.start : 0);
-  const pct = balloonSize(holdMs);
+  const total = view.lab ? Number(view.lab.elapsedMs ?? 0) / 100 : (mine?.total ?? 0);
+  const popped = mine?.popped ?? false;
+  const done = Boolean(mine?.stop || popped || view.selfSubmitted || (t0 !== null && elapsed >= playMs));
 
-  const down = () => {
-    if (!canPlay || holdRef.current || t0 === null) return;
-    setHold({ key, start: performance.now() });
-  };
-  const up = () => {
-    const h = holdRef.current;
-    if (!h || h.end !== undefined || t0 === null) return;
-    const end = Math.min(performance.now(), t0 + playMs);
-    setHold({ ...h, end });
-    sfx('mg-done');
-    socket.emit('minigame.submit', { token: view.token, roundIndex: view.roundIndex, input: { startMs: h.start - t0, endMs: end - t0 } });
-  };
-  // 시간이 끝나면 그때 뗀 것으로
+  // 서버가 알려 주는 바람(그 사람에게만)
   useEffect(() => {
-    if (mine && mine.end === undefined && elapsed >= playMs) up();
-  });
+    const on = (f: { token: string; roundIndex: number; pumps?: number; total?: number; add?: number; popped?: boolean; stop?: boolean }) => {
+      if (f.token !== view.token || f.roundIndex !== view.roundIndex || typeof f.total !== 'number') return;
+      setSt({ key, pumps: Number(f.pumps ?? 0), total: f.total, add: Number(f.add ?? 0), popped: Boolean(f.popped), stop: Boolean(f.stop), waiting: false, at: performance.now() });
+      if (f.popped) sfx('mg-done');
+    };
+    socket.on('minigame.feedback', on);
+    return () => {
+      socket.off('minigame.feedback', on);
+    };
+  }, [socket, view.token, view.roundIndex, key]);
+
+  const pump = () => {
+    const m = ref.current;
+    if (!canPlay || t0 === null || done || m?.waiting) return;
+    const n = (m?.pumps ?? 0) + 1;
+    setSt({ key, pumps: m?.pumps ?? 0, total: m?.total ?? 0, add: m?.add ?? 0, popped: false, stop: false, waiting: true, at: m?.at ?? 0 });
+    sfx('mg-tap');
+    socket.emit('minigame.submit', { token: view.token, roundIndex: view.roundIndex, input: { pumps: n } });
+  };
+  const stop = () => {
+    const m = ref.current;
+    if (!canPlay || t0 === null || done || !m || m.pumps === 0 || m.waiting) return;
+    setSt({ ...m, stop: true });
+    socket.emit('minigame.submit', { token: view.token, roundIndex: view.roundIndex, input: { pumps: m.pumps, stop: true } });
+  };
   useEffect(() => {
     if (!canPlay) return undefined;
     const onDown = (e: KeyboardEvent) => {
-      if (e.key !== ' ' && e.code !== 'Space' && e.key !== 'Enter') return;
+      const isPump = e.key === ' ' || e.code === 'Space';
+      const isStop = e.key === 'Enter';
+      if (!isPump && !isStop) return;
       e.preventDefault();
       e.stopPropagation();
-      if (!e.repeat) down();
-    };
-    const onUp = (e: KeyboardEvent) => {
-      if (e.key !== ' ' && e.code !== 'Space' && e.key !== 'Enter') return;
-      e.preventDefault();
-      up();
+      if (e.repeat) return;
+      if (isPump) pump();
+      else stop();
     };
     window.addEventListener('keydown', onDown, true);
-    window.addEventListener('keyup', onUp, true);
-    return () => {
-      window.removeEventListener('keydown', onDown, true);
-      window.removeEventListener('keyup', onUp, true);
-    };
+    return () => window.removeEventListener('keydown', onDown, true);
   });
+  // 펌프 숫자가 튀어 오르는 짧은 연출(0.5초)
+  const fresh = mine && !mine.waiting && performance.now() - mine.at < 500 && mine.add > 0;
   return (
-    <div
-      className={`quiz-stage balloon-stage${mine && mine.end === undefined ? ' holding' : ''}`}
-      role="button"
-      tabIndex={-1}
-      aria-label="누르고 있기"
-      onPointerDown={(e) => {
-        if (!canPlay) return;
-        e.preventDefault();
-        (e.currentTarget as Element).setPointerCapture?.(e.pointerId);
-        down();
-      }}
-      onPointerUp={up}
-      onPointerCancel={up}
-    >
+    <div className={`quiz-stage balloon-stage pump${popped ? ' popped' : ''}`}>
       <Bar view={view} t0={t0} now={now} />
       <div className="balloon-box">
-        <BalloonArt pct={pct} />
+        <BalloonArt pct={100 + total * 1.6} popped={popped} />
+        {fresh && !popped && (
+          <span key={mine!.pumps} className="balloon-add mono">
+            +{mine!.add}
+          </span>
+        )}
       </div>
-      <p className="balloon-pct mono">{pct.toFixed(1)}%</p>
-      <p className={`quiz-num-help${mine?.end !== undefined ? ' ok' : ' dim'}`}>
+      <p className="balloon-pct mono" data-balloon-total={total}>
+        <span className={popped ? 'over' : total === target ? 'perfect' : undefined}>{popped ? '펑!' : total}</span>
+        <span className="dim"> / {target}</span>
+      </p>
+      {canPlay && !done && (
+        <div className="balloon-actions">
+          <button type="button" className="primary balloon-pump" data-balloon-pump onPointerDown={(e) => { e.preventDefault(); pump(); }}>
+            펌프{!mobile && <kbd>Space</kbd>}
+          </button>
+          <button type="button" className="ghost balloon-stop" data-balloon-stop disabled={!mine || mine.pumps === 0} onClick={stop}>
+            그만{!mobile && <kbd>Enter</kbd>}
+          </button>
+        </div>
+      )}
+      <p className={`quiz-num-help${done ? ' ok' : ' dim'}`}>
         {view.spectating
           ? '구경 중이에요'
-          : mine?.end !== undefined
-            ? `${pct.toFixed(1)}% 에서 멈췄어요 — 터졌는지는 결과에서!`
-            : mine
-              ? '부는 중… 터지기 전에 떼세요!'
-              : mobile
-                ? '화면을 누르고 있으면 커져요 — 떼면 끝'
-                : 'Space 를 누르고 있으면 커져요 — 떼면 끝'}
+          : popped
+            ? '펑! 100 을 넘었어요'
+            : done
+              ? `${total} 에서 멈췄어요`
+              : `딱 ${target} 이면 만점 · 넘으면 펑`}
       </p>
     </div>
   );

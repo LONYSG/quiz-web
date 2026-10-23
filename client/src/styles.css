@@ -7325,3 +7325,64 @@ button.mg-cat-card.on .mg-cat-check {
 .meat-label.raw, .meat-label.rare { color: #d9485f; }
 .meat-label.over, .meat-label.burnt { color: #7a4a2a; }
 [data-theme='night'] .meat-label.over, [data-theme='night'] .meat-label.burnt { color: #c08a64; }
+
+/* ★★ R063 (D-261) — 풍선 펌프: [펌프] 크게 · [그만] 작게 · 펌프마다 숫자 튀어 오름 · 넘으면 펑(조각 0.3초) */
+.balloon-stage.pump .balloon-box {
+  position: relative;
+}
+.balloon-add {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%);
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: var(--accent);
+  animation: balloon-add 0.5s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes balloon-add {
+  from { opacity: 1; transform: translate(-50%, 6px) scale(0.9); }
+  to { opacity: 0; transform: translate(-50%, -22px) scale(1.15); }
+}
+.balloon-pct .perfect { color: var(--ok); }
+.balloon-pct .over { color: var(--bad); }
+.balloon-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0 2px;
+}
+.balloon-actions button {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+button.balloon-pump {
+  min-width: 9rem;
+  padding: 0.7em 1.4em;
+  font-size: 1.15rem;
+  font-weight: 900;
+  touch-action: manipulation;
+}
+.balloon-actions kbd {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+.balloon-art.popped line {
+  animation: balloon-pop 0.3s ease-out both;
+}
+@keyframes balloon-pop {
+  from { opacity: 1; stroke-dasharray: 4 60; }
+  to { opacity: 0.85; stroke-dasharray: 40 0; }
+}
+.balloon-stage.popped .balloon-box {
+  animation: balloon-shake 0.3s ease-out;
+}
+@keyframes balloon-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
