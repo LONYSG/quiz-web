@@ -56,6 +56,10 @@ export default function ShortcutBar({ shortcuts, isHost, expanded, onToggle }: P
               </li>
             ))}
             <li>
+              <kbd>Alt+B</kbd>
+              <span className="keylabel">제보 창 (어느 화면에서든)</span>
+            </li>
+            <li>
               <kbd>Enter</kbd>
               <span className="keylabel">메시지 전송 / 확인창 확정</span>
             </li>

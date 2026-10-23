@@ -61,7 +61,7 @@ await db.end();
 const ctxOf = (r) =>
   [
     r.game_id && `판 #${r.game_id}`,
-    r.question_id && `문항 #${r.question_id}${r.question_index !== null ? `(${r.question_index + 1}번째)` : ''}`,
+    r.question_id && `문항 #${r.question_id}${r.question_index !== null ? `(${r.question_index}번째)` : ''}`,
     r.minigame_key && `미니게임 ${r.minigame_key}${r.minigame_run_id ? ` #${r.minigame_run_id}` : ''}`,
     r.minigame_item && `문항 ${r.minigame_item}`,
     r.device?.mobile !== undefined && (r.device.mobile ? '모바일' : 'PC'),

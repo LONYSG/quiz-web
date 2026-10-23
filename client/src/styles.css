@@ -7000,3 +7000,156 @@ button.person-all-btn {
 .seat-emoji-pop {
   white-space: nowrap;
 }
+
+/* =============================================================================
+   ★★ R061 — 앱 제보 (🐞 전반적 · 📝 문제 전용 · 문항 번호 복사) — D-255
+   ============================================================================= */
+.report-float {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 4px 10px;
+  height: 30px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-pop);
+  opacity: 0.8;
+}
+.report-float:hover {
+  opacity: 1;
+  color: var(--text);
+}
+/* 모바일 — 오른쪽 위 작은 반투명 🐞 (28px · 게임 조작을 가리지 않게 · 미니게임 play 단계엔 숨김) */
+.report-float.m {
+  top: calc(env(safe-area-inset-top, 0px) + 54px);
+  bottom: auto;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  justify-content: center;
+  opacity: 0.45;
+  box-shadow: none;
+}
+.report-back {
+  z-index: 95;
+}
+.report-modal {
+  width: min(440px, calc(100vw - 24px));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: calc(100dvh - 24px);
+  overflow: auto;
+}
+.report-modal .pop-head {
+  margin-bottom: 0;
+}
+.report-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.report-text {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 3.2em;
+  font: inherit;
+  font-size: 0.9rem;
+}
+.report-ctx {
+  margin: 0;
+  font-size: 0.74rem;
+  overflow-wrap: anywhere;
+}
+.report-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  /* 휴대폰 키보드가 올라와도 보이게 — 창 안에서 아래에 붙인다 */
+  position: sticky;
+  bottom: 0;
+  background: var(--surface);
+  padding-top: 2px;
+}
+.report-actions button {
+  margin: 0;
+}
+.report-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 56px;
+  transform: translateX(-50%);
+  z-index: 120;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--accent-ink);
+  background: var(--accent);
+  box-shadow: var(--shadow-pop);
+  pointer-events: none;
+  white-space: nowrap;
+}
+/* 문항 번호 — 작은 회색 · 누르면 복사 (질문 글 바깥) */
+button.qno {
+  margin: 0;
+  padding: 0 4px;
+  height: auto;
+  min-height: 0;
+  line-height: 1.3;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: transparent;
+  border: 0;
+  cursor: copy;
+  user-select: text;
+  -webkit-user-select: text;
+}
+button.qno:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+button.qreport-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin: 0;
+  padding: 0 5px;
+  height: 20px;
+  min-height: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+button.qreport-btn:hover {
+  color: var(--text);
+}
+.q-ids {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex: 0 0 auto;
+}
+.mg-item-id {
+  margin: 4px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}

@@ -28,6 +28,7 @@ import FitText from './FitText.js';
 import ExplainText from './ExplainText.js';
 import ConfirmModal from './ConfirmModal.js';
 import { RevealFeedback } from './QuestionFeedback.js';
+import { QNo, QReportButton } from './AppReport.js';
 import { usePopup } from './popup.js';
 import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
 import Icon from './Icon.js';
@@ -212,6 +213,13 @@ export default function Question({
         <span className="q-progress mono">
           {question.index} / {question.total}
         </span>
+        {/* ★ R061 — 문항 번호(누르면 복사) · 📝 이 문제 피드백 — 문제 단계부터 · 질문 글(복사 막기) 바깥 */}
+        {question.questionId && (
+          <span className="q-ids">
+            <QNo id={question.questionId} />
+            <QReportButton questionId={question.questionId} questionIndex={question.index} />
+          </span>
+        )}
         {/* ★ 카테고리는 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 */}
         <span className="badge cat">{question.categoryName}</span>
         <span className="badge diff">난이도 {formatDifficulties(difficulties)}</span>

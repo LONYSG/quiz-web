@@ -2,6 +2,16 @@ import { createLogger, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import type { ClientRequest, IncomingMessage, ServerResponse } from 'node:http';
 import type { Socket } from 'node:net';
+import { execSync } from 'node:child_process';
+
+// ★ R061 — 제보에 붙이는 빌드 커밋(짧은 해시)
+const BUILD = (() => {
+  try {
+    return execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+  } catch {
+    return '';
+  }
+})();
 
 // 개발 중에는 Vite가 5173, 서버가 3000이다.
 // ★ 프록시로 /socket.io 와 /healthz 를 서버로 넘겨 "오리진이 하나"인 상태를 개발 중에도 유지한다.
@@ -107,6 +117,7 @@ function handleProxyErrors(proxy: {
 export default defineConfig({
   customLogger: logger,
   plugins: [react()],
+  define: { __BUILD__: JSON.stringify(BUILD) },
   server: {
     port: 5173,
     proxy: {

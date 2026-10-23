@@ -36,6 +36,7 @@ import PhotoGuess from './PhotoGuess.js';
 import QuizNumber from './QuizNumber.js';
 import QuizReveal, { WhichSummary, quizValueText } from './QuizReveal.js';
 import { preloadQuizImages } from './QuizParts.js';
+import { QNo, QReportButton } from '../AppReport.js';
 import WhichPick from './WhichPick.js';
 import { GaugeStop, MinorityPick, OddOneGrid, twemoji } from './R053Games.js';
 import { BalloonArt, BalloonBlow, TapRush } from './R054Games.js';
@@ -470,7 +471,16 @@ function RoundResult({
   return (
     <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) ? ' wide' : ''}`}>
       {QUIZ_KEYS.has(view.key) ? (
-        <QuizReveal view={view} mine={view.spectating ? undefined : mine} />
+        <>
+          <QuizReveal view={view} mine={view.spectating ? undefined : mine} />
+          {/* ★ R061 — 미니게임 문항 번호(minigame_items.item_id · 누르면 복사) · 📝 */}
+          {view.round?.itemId && (
+            <p className="mg-item-id">
+              <QNo id={view.round.itemId} raw />
+              <QReportButton minigameItem={view.round.itemId} />
+            </p>
+          )}
+        </>
       ) : R053_KEYS.has(view.key) ? (
         <R053Result view={view} mine={view.spectating ? undefined : mine} decimals={d} />
       ) : view.key === 'reaction' || view.key === 'typing' || view.key === 'circle' || view.key === 'angle' ? (

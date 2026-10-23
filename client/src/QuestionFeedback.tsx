@@ -19,6 +19,7 @@ import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import { fetchGameFeedback, postQuestionFeedback, type FeedbackItem } from './api.js';
 import { usePopup } from './popup.js';
+import { QNo, QReportButton } from './AppReport.js';
 import { useUiMode } from './uiMode.js';
 
 type Vote = 1 | -1 | null;
@@ -150,6 +151,8 @@ function FeedbackRow({ gameId, item }: { gameId: string; item: FeedbackItem }) {
     <li className={f.vote === -1 ? 'fb-row down' : 'fb-row'} data-fb-question={item.questionId}>
       <div className="fb-row-head">
         <span className="fb-no mono">{item.index}</span>
+        {/* ★ R061 — 문항 번호(누르면 복사) */}
+        <QNo id={item.questionId} />
         <span className="fb-q">
           {/* ★ 질문은 복사 막기 그대로(R050) */}
           <span className="fb-text no-copy">{item.text}</span>
@@ -157,6 +160,7 @@ function FeedbackRow({ gameId, item }: { gameId: string; item: FeedbackItem }) {
             정답 <strong>{item.answer}</strong>
           </span>
         </span>
+        <QReportButton questionId={item.questionId} questionIndex={item.index} />
         <VoteButtons vote={f.vote} onVote={f.onVote} compact />
       </div>
       {f.vote === -1 && (

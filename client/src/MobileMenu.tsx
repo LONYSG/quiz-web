@@ -9,7 +9,8 @@
 
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Bell, Gift, Info, Link, LogOut, Pencil, Settings, UserPlus } from 'lucide-react';
+import { Bell, Bug, Gift, Info, Link, LogOut, Pencil, Settings, UserPlus } from 'lucide-react';
+import { useOpenBugReport } from './AppReport.js';
 import PopupClose from './PopupClose.js';
 import Icon from './Icon.js';
 
@@ -31,6 +32,7 @@ interface Props {
 }
 
 export default function MobileMenu({ canRename, onInvite, onFriends, onNotices, noticeCount, friendWaiting, onProfile, onShop, onSettings, onInfo, onLeave, onClose }: Props) {
+  const openReport = useOpenBugReport();
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -82,6 +84,10 @@ export default function MobileMenu({ canRename, onInvite, onFriends, onNotices, 
           </button>
           <button type="button" className="menu-item" onClick={onInfo}>
             <Icon icon={Info} /> 안내
+          </button>
+          {/* ★ R061 — 어느 화면에서든 제보(🐞) */}
+          <button type="button" className="menu-item" data-menu-report onClick={openReport}>
+            <Icon icon={Bug} /> 제보
           </button>
           <button type="button" className="menu-item danger-text" onClick={onLeave}>
             <Icon icon={LogOut} /> 나가기

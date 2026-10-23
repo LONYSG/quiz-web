@@ -49,6 +49,9 @@ import FriendList from './FriendList.js';
 import InviteToast from './InviteToast.js';
 import AchievementToast from './AchievementToast.js';
 import GrantToast from './GrantToast.js';
+import ReportHost, { trackReportEvents, type ReportScreen } from './AppReport.js';
+import { useCurrentPopup } from './popup.js';
+import { minigameInfo, type MinigameKey } from '@quiz/shared';
 import { PersonCardHost } from './PersonCard.js';
 import ProfilePanel from './ProfilePanel.js';
 import ShopPanel from './ShopPanel.js';
@@ -151,6 +154,8 @@ export default function App() {
     setSocket(s);
     // ★★ R050 — 기기 종류를 알린다 (접속할 때마다 · 판정이 바뀔 때마다) — 참여자 칸 🖥/📱 · 기록 (D-232)
     const sendDevice = () => s.emit('client.device', { kind: uiMode() });
+    // ★ R061 — 제보에 붙일 최근 소켓 이벤트 이름 20개(내용 없이)
+    const untrack = trackReportEvents(s);
     s.on('connect', sendDevice);
     window.addEventListener('qw:ui-mode', sendDevice);
     // ★★ R041 — 페이지를 떠나면(다른 주소 · 뒤로 가기 · 탭 닫기) 소켓을 **직접** 닫는다.
@@ -167,6 +172,7 @@ export default function App() {
       window.removeEventListener('pagehide', onHide);
       window.removeEventListener('pageshow', onShow);
       window.removeEventListener('qw:ui-mode', sendDevice);
+      untrack();
       s.close();
     };
   }, [account?.accountId, mustChange]);
@@ -303,6 +309,35 @@ export default function App() {
 
   // ★★ R033 — 서버 시각 오프셋 **표시**를 뺐다 (건우: "굳이 표기할 필요 없지 않나").
   //   ★ 시계 동기화 자체(useServerClock)는 그대로다 — 타이머·카운트다운이 이것에 기대고 있다.
+
+  // ── ★ R061 — 제보 맥락(지금 보이는 화면 이름) — 방 상태 · 열린 창에서 정한다(새 전역 상태 없음)
+  const popupNow = useCurrentPopup();
+  const reportCtx = useMemo((): ReportScreen => {
+    const snap = room.snapshot;
+    const st = snap?.room.state;
+    const mg = snap?.minigame ?? null;
+    const q = snap?.question ?? null;
+    const POPUP_SCREEN: Record<string, string> = { shop: 'shop', profile: 'profile', prefs: 'settings', friends: 'friends', info: 'info' };
+    let screen = !account ? 'auth' : !snap ? 'lobby' : 'room';
+    if (mg) screen = `minigame:${mg.key}:${mg.phase}`;
+    else if (st === 'QUESTION_ACTIVE') screen = 'game:question';
+    else if (st === 'QUESTION_RESOLVED') screen = 'game:reveal';
+    else if (st === 'PAUSED') screen = 'game:paused';
+    else if (st === 'COUNTDOWN') screen = 'game:countdown';
+    else if (st === 'GAME_RESULT') screen = 'game:result';
+    if (popupNow && POPUP_SCREEN[popupNow]) screen = `${POPUP_SCREEN[popupNow]}${snap ? '@room' : ''}`;
+    const mgName = mg ? (minigameInfo(mg.key as MinigameKey)?.name ?? mg.key) : null;
+    const gameId = snap?.game?.gameId ?? snap?.result?.gameId ?? null;
+    const label = [
+      mgName ? `미니게임 ${mgName}` : screen,
+      gameId && `판 #${gameId}`,
+      q && !mg && `문항 ${q.index}${q.questionId ? ` (#${q.questionId})` : ''}`,
+      mg?.round?.itemId && `문항 ${mg.round.itemId}`,
+    ]
+      .filter(Boolean)
+      .join(' · ');
+    return { screen, questionIndex: q && !mg ? q.index : null, minigameKey: mg?.key ?? null, label };
+  }, [room.snapshot, account, popupNow]);
 
   // ── 화면 선택. ★ return 은 이 함수 하나에서만 한다.
   const view = (() => {
@@ -545,6 +580,8 @@ export default function App() {
       {socket && account && <AchievementToast socket={socket} />}
       {/* ★ R059 — 제보 채택 · 보너스 포인트 알림(로그인 뒤 한 번) */}
       {account && !mustChange && <GrantToast accountId={account.accountId} />}
+      {/* ★ R061 — 🐞 제보(어느 화면이든 · Alt+B) · 📝 문항 피드백 창 · 복사/접수 알림 */}
+      {account && !mustChange && <ReportHost ctx={reportCtx} hideFloat={room.snapshot?.minigame?.phase === 'play'} />}
       {/* ★ R056 — 아바타를 누르면 뜨는 프로필 카드(사진 크게 · 업적) · 전체 업적 창 */}
       {account && <PersonCardHost />}
       {view.body}
