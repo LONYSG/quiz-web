@@ -7504,7 +7504,8 @@ button.profile-photo {
 }
 /* 모바일 방 목록 — 위 버튼 줄과 Q 로고가 겹치지 않게(음수 여백 없앰 · 로고 작게) */
 :where(.ui-mobile) .home-bar {
-  margin-bottom: 4px;
+  /* ★ 로고는 기울기(-6°) + 떠오르기(-4px) 로 상자보다 ~7px 위까지 그려진다 → 그만큼 비운다 */
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 :where(.ui-mobile) .brand {

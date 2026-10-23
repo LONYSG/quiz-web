@@ -3810,7 +3810,7 @@ async function r063Flow(browser) {
   await signUp(L, 'ol', '굽기새손님');
   await L.waitFor("document.querySelector('.home-bar') !== null", 8000);
   await audit(L, '로비(m390)');
-  const OVL = "JSON.stringify((() => { const m = document.querySelector('.brand-mark').getBoundingClientRect(); const hit = [...document.querySelectorAll('.home-bar button')].filter((b) => { const r = b.getBoundingClientRect(); return r.width > 0 && !(r.right <= m.left || r.left >= m.right || r.bottom <= m.top || r.top >= m.bottom); }).length; return { hit, over: document.documentElement.scrollWidth - innerWidth }; })())";
+  const OVL = "JSON.stringify((() => { const m = document.querySelector('.brand-mark').getBoundingClientRect(); const hit = [...document.querySelectorAll('.home-bar button')].filter((b) => { const r = b.getBoundingClientRect(); return r.width > 0 && !(r.right <= m.left || r.left >= m.right || r.bottom <= m.top || r.top >= m.bottom); }).length; const bar = document.querySelector('.home-bar').getBoundingClientRect(); return { hit, over: document.documentElement.scrollWidth - innerWidth, bar: [Math.round(bar.top), Math.round(bar.bottom)], mark: [Math.round(m.top), Math.round(m.bottom)], btns: [...document.querySelectorAll('.home-bar button')].map((b) => { const r = b.getBoundingClientRect(); return (b.className || b.textContent.trim().slice(0, 6)) + ':' + Math.round(r.left) + ',' + Math.round(r.top) + ',' + Math.round(r.width) + 'x' + Math.round(r.height); }) }; })())";
   const ov = {};
   for (const w of [390, 344, 320]) {
     await touchDevice(L, w, 844);
@@ -3822,14 +3822,17 @@ async function r063Flow(browser) {
   // ── G② 전체 업적 창(m390 높이 600) — 위가 안 잘리고 창 안에서만 스크롤
   await touchDevice(L, 390, 600);
   await sleep(300);
+  // ★ 방 목록 자체가 600 보다 길다(페이지 스크롤은 원래 있음) → 창을 열어도 **늘지 않는지**를 본다
+  const pageBefore = Number(await L.evaluate('document.documentElement.scrollHeight - innerHeight'));
   await tapOn(L, '#rename-btn');
   await L.waitFor("document.querySelector('.ach-all-open') !== null", 4000);
   await tapOn(L, '.ach-all-open');
   await L.waitFor("document.querySelector('.ach-all-modal .ach-list')?.dataset.loaded === '1'", 5000);
   await sleep(300);
   const ach = JSON.parse(await L.evaluate("JSON.stringify((() => { const r = document.querySelector('.ach-all-modal').getBoundingClientRect(); const l = document.querySelector('.ach-all'); return { top: Math.round(r.top), bottom: Math.round(r.bottom), vh: innerHeight, inner: l.scrollHeight > l.clientHeight, page: document.documentElement.scrollHeight - innerHeight, head: Math.round(document.querySelector('.ach-all-modal .pop-head').getBoundingClientRect().top) }; })())"));
+  ach.pageBefore = pageBefore;
   await snap(L, '146-ach-all-m390-600');
-  record('★★★ G② 전체 업적 m390 높이 600 — 위 안 잘림 · 머리 고정 · 창 안 스크롤 · 페이지 스크롤 0', ach.top >= 0 && ach.bottom <= ach.vh && ach.head >= 0 && ach.inner && ach.page <= 0, JSON.stringify(ach));
+  record('★★★ G② 전체 업적 m390 높이 600 — 위 안 잘림 · 머리 고정 · 창 안 스크롤 · 창 때문에 페이지가 안 길어짐', ach.top >= 0 && ach.bottom <= ach.vh && ach.head >= 0 && ach.inner && ach.page <= Math.max(0, pageBefore), JSON.stringify(ach));
   await pressKey(L, 'Escape', 'Escape', 27);
   // ── F 그림(실험실) — 고기 4단계 · 풍선 펑 · 사진 d3 초성 · 타자 키보드 높이
   const X = await newPage(browser, 'R063-lab', true);
