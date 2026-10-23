@@ -7582,6 +7582,8 @@ async function scenarioNear() {
 async function scenarioReport() {
   log('시나리오 report — ★★ 앱 제보 🐞 · 📝 (R061)');
   const [h, g] = await makeBots(2);
+  await h.connect();
+  await g.connect();
   const send = (bot, body) => postJson('/api/reports', { device: { mobile: false, viewport: '1280x720' }, ...body }, bot.cookie);
   const rowOf = (id) => withDb(async (c) => (await c.query(`SELECT kind, text, reasons, screen, room_id, game_id::text, question_id::text, question_index, minigame_key, minigame_run_id::text, minigame_item, recent FROM app_reports WHERE id = $1`, [id])).rows[0]);
   await withDb((c) => c.query(`DELETE FROM app_reports WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[h.loginId, g.loginId]]));
@@ -7618,7 +7620,8 @@ async function scenarioReport() {
   const r4 = await send(h, { kind: 'awkward', text: '보기가 겹쳐 보여요', screen: 'minigame:which:play', minigameKey: 'which' });
   const row4 = await rowOf(r4.json.id);
   const runId = await withDb(async (c) => (await c.query(`SELECT id::text FROM minigame_runs WHERE room_id = $1 ORDER BY id DESC LIMIT 1`, [roomId])).rows[0]?.id);
-  expectTrue('★★★ 미니게임 중 — key · 미니게임 판 id · 문항(item_id) · 퀴즈 판 없음', row4.minigame_key === 'which' && row4.minigame_run_id === runId && /^which-\d+$/.test(row4.minigame_item ?? '') && row4.game_id === null, JSON.stringify({ row4, runId }));
+  // ★ 연습 판은 가짜 문항(QUIZ_DUMMY)이라 item_id 가 없다 → null 이 맞다(실제 판이면 which-0246 꼴)
+  expectTrue('★★★ 미니게임 중(연습) — key · 미니게임 판 id · 퀴즈 판 없음 · 가짜 문항은 item 없음', row4.minigame_key === 'which' && row4.minigame_run_id === runId && row4.minigame_item === null && row4.game_id === null, JSON.stringify({ row4, runId }));
   await h.waitFor(() => h.since(pf, 'minigame.ended').length > 0, 60000, '미니게임 끝').catch(() => undefined);
   // ⑤ 속도 제한 10초 5번 · 빈 글 거부 · 로그인 없이 401
   const burst = [];
