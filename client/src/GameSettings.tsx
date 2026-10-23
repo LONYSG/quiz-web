@@ -29,6 +29,10 @@ import {
   type GameTopic,
 } from '@quiz/shared';
 import type { RoomSettings } from './useRoom.js';
+import { Gamepad2 } from 'lucide-react';
+import Icon from './Icon.js';
+import { usePopup } from './popup.js';
+import MinigameCatalog from './minigame/MinigameCatalog.js';
 
 /** Q-10 확정: UI 에 프리셋을 제공한다 */
 const PRESETS = [50, 100, 200] as const;
@@ -60,6 +64,7 @@ export default function GameSettings({
   }, [settings]);
 
   const editable = isHost && !settingsLocked;
+  const [catOpen, setCatOpen] = usePopup('minigame-catalog');
   const valid = validateRoomSettings(draft);
 
   /** 서버로 보낸다. 통과하지 못하는 값은 보내지 않는다 */
@@ -307,39 +312,30 @@ export default function GameSettings({
           ) : (
             <span className={shown.minigames ? 'chip on' : 'chip'}>{shown.minigames ? '포함' : '안 함'}</span>
           )}
-          {(shown.minigames || mgOnly) &&
-            MINIGAMES.map((m) => {
-              const keys = shown.minigameKeys ?? [...MINIGAME_KEYS];
-              const on = keys.includes(m.key);
-              return editable ? (
-                <button
-                  key={m.key}
-                  type="button"
-                  data-minigame={m.key}
-                  aria-pressed={on}
-                  className={on ? 'preset active' : 'preset'}
-                  onClick={() => {
-                    if (on && keys.length === 1) return; // 마지막 하나는 끌 수 없다
-                    const next: MinigameKey[] = on ? keys.filter((k) => k !== m.key) : MINIGAME_KEYS.filter((k) => k === m.key || keys.includes(k));
-                    push({ ...draft, minigames: mgOnly ? draft.minigames : true, minigameKeys: next });
-                  }}
-                >
-                  {m.name}
-                </button>
-              ) : (
-                <span key={m.key} className={on ? 'chip on' : 'chip'}>
-                  {m.name}
-                </span>
-              );
-            })}
-          {mgOnly && <span className="dim mg-set-note">고른 것 중에서 {mgRounds}개 · 겹치지 않게</span>}
-          {shown.minigames && !mgOnly && (
-            <span className="dim mg-set-note">
-              {(() => {
-                const n = minigameSlots(Number.isFinite(shown.questionCount) ? shown.questionCount : 0).length;
-                return n === 0 ? '문제 5개 이상부터 나와요' : `이번 판 ${n}번`;
-              })()}
-            </span>
+          {(shown.minigames || mgOnly) && (
+            // ★★ R063 (D-258) — 칩 16개 나열 → 버튼 하나 · 누르면 고르기 창(카드 · 방장 아니면 설명 보기)
+            <button type="button" className="ghost tiny mg-cat-open" data-mg-catalog-open onClick={() => setCatOpen(true)}>
+              <Icon icon={Gamepad2} /> {editable ? '미니게임 고르기' : '미니게임 보기'}{' '}
+              <span className="mono dim">
+                {(shown.minigameKeys ?? MINIGAME_KEYS).length}/{MINIGAME_KEYS.length}
+              </span>
+            </button>
+          )}
+          {catOpen && (
+            <MinigameCatalog
+              mode="select"
+              editable={editable}
+              selected={shown.minigameKeys ?? [...MINIGAME_KEYS]}
+              onClose={() => setCatOpen(false)}
+              onConfirm={(keys) => {
+                setCatOpen(false);
+                push({ ...draft, minigames: mgOnly ? draft.minigames : true, minigameKeys: keys });
+              }}
+            />
+          )}
+          {/* ★ R063 — "이번 판 N번" 은 없앴다(찬종 #10 "변경도 안되고 이해도 안감") */}
+          {shown.minigames && !mgOnly && minigameSlots(Number.isFinite(shown.questionCount) ? shown.questionCount : 0).length === 0 && (
+            <span className="dim mg-set-note">문제 5개 이상이면 사이사이 나와요</span>
           )}
         </div>
       </div>

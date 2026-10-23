@@ -8,6 +8,7 @@
 // =============================================================================
 
 import {
+  isExampleItem,
   ANGLE_PLAY_MS,
   BALANCE_PLAY_MS,
   CIRCLE_PLAY_MS,
@@ -363,7 +364,8 @@ export function isQuizMinigameKey(k: string): k is QuizMinigameKey {
 function pickFor(key: QuizMinigameKey, seed: number, ctx: BuildCtx, filter: (it: QuizItem) => boolean = () => true) {
   if (!ctx.quiz) return null;
   const exp = ctx.quiz.experienced;
-  const pool = ctx.quiz.data.items[key].filter(filter);
+  // ★ R063 (D-258) — 고르기 창의 예시와 겹치는 문항은 뽑지 않는다
+  const pool = ctx.quiz.data.items[key].filter((it) => filter(it) && !isExampleItem(key, it.payload));
   return pickQuizItems(pool, ctx.participants, (a, id) => exp.get(a)?.has(`${key}|${id}`) ?? false, QUIZ_SPEC[key].items, seed);
 }
 

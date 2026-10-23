@@ -2223,12 +2223,33 @@ async function r051Room(browser, label) {
   await sleep(500);
   return { H, G, roomId };
 }
+/** ★ R063 — 골라 하기 창(카드)에서 하나 골라 [시작] */
+async function pickCard(H, key) {
+  await H.evaluate(`document.querySelector('.mg-cat-card[data-key="${key}"]')?.scrollIntoView({ block: 'center' })`);
+  await sleep(150);
+  const c = await realClick(H, `.mg-cat-card[data-key="${key}"]`);
+  await sleep(100);
+  await realClick(H, '[data-mg-start]');
+  return c;
+}
+/** ★ R063 — 설정의 미니게임 고르기 창에서 keys 만 골라 [확정] · 확정한 목록을 돌려준다 */
+async function selectMinigames(H, keys) {
+  await realClick(H, '[data-mg-catalog-open]');
+  await H.waitFor("document.querySelector('.mg-cat') !== null", 4000);
+  const want = JSON.stringify(keys);
+  await H.evaluate(`(() => { const want = new Set(${want}); const cards = [...document.querySelectorAll('.mg-cat-card')];
+    for (const c of cards) if (want.has(c.dataset.key) && c.getAttribute('aria-pressed') !== 'true') c.click();
+    for (const c of [...document.querySelectorAll('.mg-cat-card')]) if (!want.has(c.dataset.key) && c.getAttribute('aria-pressed') === 'true') c.click(); })()`);
+  await sleep(200);
+  const on = await H.evaluate("[...document.querySelectorAll('.mg-cat-card[aria-pressed=\"true\"]')].map((b) => b.dataset.key).join(',')");
+  await H.evaluate("document.querySelector('[data-mg-confirm]')?.click()");
+  await sleep(400);
+  return on;
+}
 async function r051Start(H, key) {
   await realClick(H, '#minigame-pick-btn');
-  await H.waitFor("document.querySelector('.mg-pick-pop') !== null", 3000);
-  await H.evaluate(`document.querySelector('.mg-pick-item[data-key="${key}"]')?.scrollIntoView({ block: 'center' })`);
-  await sleep(150);
-  const c = await realClick(H, `.mg-pick-item[data-key="${key}"]`);
+  await H.waitFor("document.querySelector('.mg-cat') !== null", 3000);
+  const c = await pickCard(H, key);
   record(`★ R051 골라 하기 — "${key}" 항목이 화면 안에서 눌린다`, c.hit === true, JSON.stringify(c));
   if (!(await waitPhase(H, 'intro', 8000))) throw new Error(`${key} 연습이 시작되지 않았다`);
 }
@@ -2664,21 +2685,11 @@ async function r052Lab(browser) {
 async function onlyMinigame(H, key) {
   if (!(await H.evaluate("document.querySelector('.mg-check input')?.checked === true"))) {
     await realClick(H, '.mg-check input');
-    await H.waitFor("document.querySelectorAll('.mg-set-row [data-minigame]').length > 0", 4000);
+    await H.waitFor("document.querySelector('[data-mg-catalog-open]') !== null", 4000);
   }
-  if ((await H.evaluate(`document.querySelector('.mg-set-row [data-minigame="${key}"]')?.getAttribute('aria-pressed')`)) !== 'true') {
-    await H.evaluate(`document.querySelector('.mg-set-row [data-minigame="${key}"]')?.click()`);
-    await sleep(300);
-  }
-  // ★ R053 — 미니게임이 15개가 되어 12번으로는 모자랐다(다른 게임이 뽑혔다) → 켜진 것이 하나 남을 때까지
-  for (let i = 0; i < 40; i += 1) {
-    const other = await H.evaluate(`[...document.querySelectorAll('.mg-set-row [data-minigame][aria-pressed="true"]')].map((b) => b.dataset.minigame).find((k) => k !== '${key}') ?? null`);
-    if (!other) break;
-    await H.evaluate(`document.querySelector('.mg-set-row [data-minigame="${other}"]')?.click()`);
-    await sleep(250);
-  }
+  // ★ R063 — 칩 나열 → 고르기 창(카드 · [확정])
+  const on = await selectMinigames(H, [key]);
   await setQuestionCount(H, 5);
-  const on = await H.evaluate("[...document.querySelectorAll('.mg-set-row [data-minigame][aria-pressed=\"true\"]')].map((b) => b.dataset.minigame).join(',')");
   record(`★ 설정 — 미니게임 '${key}' 하나만 켬`, on === key, on);
 }
 /** 퀴즈 판 시작 → 3문제를 두 사람이 맞혀 넘긴다 → 미니게임 시작(intro)까지 */
@@ -3096,7 +3107,7 @@ async function r054Stats(browser) {
 //   R056_BEFORE=1 이면 옛 빌드로 "전" 그림만(골라 하기 가로 스크롤 · 이모티콘 "없어요")
 // =============================================================================
 /** 골라 하기 창 — 가로로 넘치나(창 scrollWidth > clientWidth) · 가장 넓은 칸 */
-const PICK_OVER = "JSON.stringify((() => { const p = document.querySelector('.mg-pick-pop'); if (!p) return null; const items = [...p.querySelectorAll('.mg-pick-item')]; const w = Math.max(...items.map((i) => Math.round(i.scrollWidth))); return { pop: Math.round(p.clientWidth), scroll: Math.round(p.scrollWidth), over: p.scrollWidth - p.clientWidth, widest: w, white: items[0] ? getComputedStyle(items[0]).whiteSpace : null }; })())";
+const PICK_OVER = "JSON.stringify((() => { const p = document.querySelector('.mg-cat'); if (!p) return null; const items = [...p.querySelectorAll('.mg-cat-card')]; const w = Math.max(...items.map((i) => Math.round(i.scrollWidth))); return { pop: Math.round(p.clientWidth), scroll: Math.round(p.scrollWidth), over: p.scrollWidth - p.clientWidth, widest: w, white: items[0] ? getComputedStyle(items[0]).whiteSpace : null }; })())";
 /** "없어요" 줄 수 · 너비 */
 const NONE_LINES = "JSON.stringify((() => { const el = [...document.querySelectorAll('.emoji-grid p')].find((p) => p.textContent.trim() === '없어요'); if (!el) return null; const r = document.createRange(); r.selectNodeContents(el); const tops = new Set([...r.getClientRects()].map((x) => Math.round(x.top))); return { lines: tops.size, w: Math.round(el.getBoundingClientRect().width) }; })())";
 async function r056PickerEmoji(H, tag) {
@@ -3109,8 +3120,8 @@ async function r056PickerEmoji(H, tag) {
     }
     await H.evaluate("window.dispatchEvent(new Event('resize'))");
     await sleep(500);
-    if (!(await H.evaluate("document.querySelector('.mg-pick-pop') !== null"))) await realClick(H, '#minigame-pick-btn');
-    await H.waitFor("document.querySelector('.mg-pick-pop') !== null", 5000);
+    if (!(await H.evaluate("document.querySelector('.mg-cat') !== null"))) await realClick(H, '#minigame-pick-btn');
+    await H.waitFor("document.querySelector('.mg-cat') !== null", 5000);
     await sleep(300);
     const m = JSON.parse(await H.evaluate(PICK_OVER));
     await snap(H, `94-${tag}-picker-${nm}`);
@@ -3118,7 +3129,7 @@ async function r056PickerEmoji(H, tag) {
     await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
     await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
     await sleep(300);
-    if (await H.evaluate("document.querySelector('.mg-pick-pop') !== null")) await realClick(H, '#minigame-pick-btn');
+    if (await H.evaluate("document.querySelector('.mg-cat') !== null")) await realClick(H, '#minigame-pick-btn');
     await sleep(200);
     // 이모티콘 찾기 결과 없음
     await realClick(H, '.emoji-btn');
@@ -3432,15 +3443,11 @@ async function r057Flow(browser) {
   await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
   await H.setInput('.mg-rounds-input', '2');
   await sleep(400);
-  for (let i = 0; i < 40; i += 1) {
-    const sel = await H.evaluate("(() => { const b = [...document.querySelectorAll('.settings [data-minigame][aria-pressed=\"true\"]')].find((x) => x.dataset.minigame !== 'tap'); return b ? `[data-minigame=\"${b.dataset.minigame}\"]` : null; })()");
-    if (!sel) break;
-    await H.evaluate(`document.querySelector('.settings ${sel}')?.click()`);
-    await sleep(120);
-  }
-  if (await H.evaluate("document.querySelector('.settings [data-minigame=\"tap\"]')?.getAttribute('aria-pressed') !== 'true'")) await H.evaluate("document.querySelector('.settings [data-minigame=\"tap\"]')?.click()");
-  await sleep(500);
-  const st = JSON.parse(await H.evaluate("JSON.stringify({ count: document.querySelector('.settings .count-input:not(.mg-rounds-input)') !== null, rounds: document.querySelector('.mg-rounds-input')?.value, on: [...document.querySelectorAll('.settings [data-minigame][aria-pressed=\"true\"]')].map((b) => b.dataset.minigame), tier: document.querySelector('.settings [data-tier]') !== null })"));
+  // ★ R063 — 칩 나열 → 고르기 창
+  const tapOnly = await selectMinigames(H, ['tap']);
+  await sleep(300);
+  const st = JSON.parse(await H.evaluate("JSON.stringify({ count: document.querySelector('.settings .count-input:not(.mg-rounds-input)') !== null, rounds: document.querySelector('.mg-rounds-input')?.value, n: document.querySelector('[data-mg-catalog-open] .mono')?.innerText ?? '', tier: document.querySelector('.settings [data-tier]') !== null })"));
+  st.on = tapOnly.split(',');
   record('★★★ A 설정 — 미니게임만이면 문제 수 · 난이도 · 분야 숨김 · 미니게임 수 · 고르기만', !st.count && !st.tier && st.rounds === '2' && st.on.join() === 'tap', JSON.stringify(st));
   await G.waitFor("[...document.querySelectorAll('.settings .chip')].some((c) => c.innerText.trim() === '미니게임만')", 4000);
   const gst = JSON.parse(await G.evaluate("JSON.stringify({ mode: [...document.querySelectorAll('.settings .chip')].some((c) => c.innerText.trim() === '미니게임만'), rounds: document.querySelector('.settings .set-value')?.innerText, doc: document.documentElement.scrollWidth, vw: innerWidth })"));
@@ -3938,12 +3945,12 @@ async function minigameLive(browser) {
   await snap(G, '40-lobby-minigame-setting-m390');
   // 골라 하기 팝업
   await realClick(H, '#minigame-pick-btn');
-  await H.waitFor("document.querySelector('.mg-pick-pop') !== null", 3000);
+  await H.waitFor("document.querySelector('.mg-cat') !== null", 3000);
   await snap(H, '41-lobby-minigame-pick-pc');
   record('★ D 골라 하기 — 손님에게는 버튼이 없다', await G.evaluate("document.querySelector('#minigame-pick-btn') === null"));
 
   // 케이크
-  await realClick(H, '.mg-pick-item[data-key="cake"]');
+  await pickCard(H, 'cake');
   const pages = [
     ['pc', H],
     ['pc1920-night', N],
@@ -4015,8 +4022,8 @@ async function minigameLive(browser) {
 
   // 균형
   await realClick(H, '#minigame-pick-btn');
-  await H.waitFor("document.querySelector('.mg-pick-pop') !== null", 3000);
-  await realClick(H, '.mg-pick-item[data-key="balance"]');
+  await H.waitFor("document.querySelector('.mg-cat') !== null", 3000);
+  await pickCard(H, 'balance');
   const snapB = async (name) => {
     for (const [n, p] of pages) await snap(p, `43-balance-${name}-${n}`);
   };

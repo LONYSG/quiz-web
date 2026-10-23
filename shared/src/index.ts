@@ -57,6 +57,7 @@ export * from './minigame/oddone-pairs.js';
 // ★★ R054 — 업적 · 미니게임 4차
 export * from './achievements.js';
 export * from './minigame/r054.js';
+export * from './minigame/examples.js';
 // ★★★ R056 — 문제 평가(설문)
 export * from './feedback.js';
 export * from './report.js';

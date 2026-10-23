@@ -7185,3 +7185,119 @@ button.fb-q {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* ★★ R063 (D-258) — 미니게임 고르기 창: 머리 · 꼬리 고정 · 카드 목록만 스크롤(페이지 스크롤 0) */
+.mg-cat {
+  width: min(760px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 14px 12px;
+  text-align: left;
+}
+.mg-cat-head {
+  flex: 0 0 auto;
+}
+.mg-cat-count {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.mg-cat-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  padding: 2px;
+  margin: 8px 0;
+}
+button.mg-cat-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 10px;
+  height: auto;
+  text-align: left;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+}
+button.mg-cat-card.on {
+  border-color: var(--accent);
+  background: var(--chip-bg);
+}
+button.mg-cat-card.ro {
+  cursor: default;
+}
+.mg-cat-art {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--chip-bg);
+  color: var(--accent);
+  font-size: 1.5rem;
+}
+.mg-cat-body {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding-right: 18px;
+}
+.mg-cat-name {
+  font-size: 0.92rem;
+}
+.mg-cat-line {
+  font-size: 0.76rem;
+  line-height: 1.35;
+}
+.mg-cat-ex {
+  font-size: 0.74rem;
+  color: var(--text-dim);
+}
+.mg-cat-meta {
+  font-size: 0.7rem;
+}
+.mg-cat-check {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: var(--bw) solid var(--border);
+  color: var(--accent-ink);
+}
+button.mg-cat-card.on .mg-cat-check {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.mg-cat-foot {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mg-cat-foot button {
+  margin: 0;
+}
+.mg-cat-gap {
+  flex: 1 1 auto;
+}
+:where(.ui-mobile) .mg-cat-list {
+  grid-template-columns: 1fr;
+}
