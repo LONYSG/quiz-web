@@ -899,7 +899,18 @@ function registerRoomHandlers(socket: Socket): void {
     ({ socket: s, room, session, payload }) => {
       // ★ R052 — 입력한 사람에게만 바로 알릴 것(사진 — 맞음/틀림)
       const r = submitMinigame(room, session.accountId, payload, (f) => s.emit('minigame.feedback', { token: payload.token, roundIndex: payload.roundIndex, ...f }));
-      if (r === 'bad_input') sendError(s, 'BAD_REQUEST', '입력이 올바르지 않습니다.');
+      // ★★ R064 (D-265 · 찬종 #29) — 게임 중 입력 하나가 걸러져도 오류 창을 띄우지 않는다(조용히 무시 · 다시 치면 된다).
+      //   원인을 잡을 수 있게 서버 로그에만 남긴다(입력 값 자체는 남기지 않는다 — 칸 이름 · 기기 시간 · 서버 시간만).
+      if (r === 'bad_input') {
+        // 화면에는 아무것도 띄우지 않는 신호(검사 · 봇이 "거름" 을 확인하는 자리)
+        s.emit('minigame.rejected', { token: payload.token, roundIndex: payload.roundIndex });
+        const inp = payload.input && typeof payload.input === 'object' ? (payload.input as Record<string, unknown>) : null;
+        const run = room.minigame;
+        console.log(
+          `[minigame] 입력 거름 ${room.id} ${run?.key ?? '?'} 판${payload.roundIndex} ${session.accountId} 칸=${inp ? Object.keys(inp).join(',') : typeof payload.input}` +
+            ` 기기=${typeof inp?.elapsedMs === 'number' ? Math.round(inp.elapsedMs) : '-'} 서버=${run ? Date.now() - run.phaseStartedAt : '-'}`,
+        );
+      }
     },
   );
 

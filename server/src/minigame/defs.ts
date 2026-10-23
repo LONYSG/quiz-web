@@ -230,9 +230,14 @@ const balance: MinigameDef = {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /** 기기 시간 공통 검사 — 음수 · 판 길이 넘음 · 실제로 흐른 것보다 긴 값(미리 계산해 보내기) 거부 */
-function deviceElapsed(obj: Record<string, unknown> | null, spec: RoundSpec, ctx: { serverElapsedMs: number }): number | null {
+function deviceElapsed(obj: Record<string, unknown> | null, spec: RoundSpec, ctx: { serverElapsedMs: number }, capLate = false): number | null {
   const elapsed = num(obj?.elapsedMs);
-  if (elapsed === null || elapsed < 0 || elapsed > spec.playMs + 200) return null;
+  if (elapsed === null || elapsed < 0) return null;
+  // ★★ R064 (D-265 · 찬종 #29 사진 중 BAD_REQUEST) — "빨리 낼수록 이김" 게임(사진 · 타자 · 둘 중 · 다른 하나)은
+  //   길게 온 시간이 이득이 없다(조작이면 짧게 보낸다) → 거절하지 않고 서버가 잰 흐른 시간으로 자른다.
+  //   기기 시계 추정이 어긋난(재접속 · 터널 지연) 사람의 오답 · 정답이 통째로 버려지던 것.
+  if (capLate) return Math.min(elapsed, ctx.serverElapsedMs, spec.playMs);
+  if (elapsed > spec.playMs + 200) return null;
   if (elapsed > ctx.serverElapsedMs + CAKE_EARLY_TOLERANCE_MS) return null;
   return elapsed;
 }
@@ -284,7 +289,7 @@ const typing: MinigameDef = {
     const target = String(spec.params.text);
     if (obj?.final === true) {
       if (!typingComplete(target, text)) return null;
-      const elapsed = deviceElapsed(obj, spec, ctx);
+      const elapsed = deviceElapsed(obj, spec, ctx, true);
       if (elapsed === null) return null;
       // ★ 사람 손으로 불가능한 속도 = 붙여넣기 · 조작
       if (elapsed < typingLength(target) * TYPING_MIN_MS_PER_CHAR) return null;
@@ -527,7 +532,7 @@ const photo: MinigameDef = {
     const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
     const text = typeof obj?.text === 'string' ? obj.text.slice(0, 60) : null;
     if (text === null || !text.trim()) return null;
-    const elapsed = deviceElapsed(obj, spec, ctx);
+    const elapsed = deviceElapsed(obj, spec, ctx, true);
     if (elapsed === null) return null;
     const tries = Number(ctx.prev?.extra?.tries ?? 0) + 1;
     const ok = ((spec.secret?.answers as string[]) ?? []).includes(normalizeAnswer(text));
@@ -612,7 +617,7 @@ const which: MinigameDef = {
     const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
     const choice = obj?.choice;
     if (choice !== 'a' && choice !== 'b') return null;
-    const elapsed = deviceElapsed(obj, spec, ctx);
+    const elapsed = deviceElapsed(obj, spec, ctx, true);
     if (elapsed === null) return null;
     const correct = choice === spec.secret?.answer;
     return { input: { choice, elapsedMs: Math.round(elapsed) }, value: correct ? Math.round(elapsed) : null, error: null, elapsedMs: elapsed, extra: { choice, correct }, provisional: false };
@@ -667,7 +672,7 @@ const oddone: MinigameDef = {
     const index = num(obj?.index);
     const size = Number(spec.params.size);
     if (index === null || !Number.isInteger(index) || index < 0 || index >= size * size) return null;
-    const elapsed = deviceElapsed(obj, spec, ctx);
+    const elapsed = deviceElapsed(obj, spec, ctx, true);
     if (elapsed === null) return null;
     const wrong = Number(ctx.prev?.extra?.wrong ?? 0);
     if (index === Number(spec.secret?.oddIndex)) {

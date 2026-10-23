@@ -22,7 +22,10 @@ export function decodeImage(src: string): Promise<void> {
   if (!p) {
     const img = new Image();
     img.src = src;
-    p = (img.decode ? img.decode() : new Promise<void>((res, rej) => { img.onload = () => res(); img.onerror = rej; })).catch(() => undefined);
+    // ★ R064 — 실패한 약속은 잊는다(다음에 다시 받을 수 있게)
+    p = (img.decode ? img.decode() : new Promise<void>((res, rej) => { img.onload = () => res(); img.onerror = rej; })).catch(() => {
+      decoded.delete(src);
+    });
     decoded.set(src, p);
   }
   return p;
@@ -43,9 +46,42 @@ export function preloadQuizImages(view: MinigameView): void {
   void preloadAll(ids.map(imageUrl));
 }
 
-/** 문항 그림 — 없으면(연습 더미) 도형 · 상자 */
+/** ★ R064 — 그림 받기 실패 시 다시 받기 횟수 · 간격 */
+export const IMAGE_RETRIES = 2;
+export const IMAGE_RETRY_MS = 2000;
+
+/**
+ * ★★ R064 (D-266 · 찬종 #21 "사진이 안나와서 새로고침 했대") — 그림이 안 오면 2초 뒤 다시 받기 × 2 · 그동안 "그림 불러오는 중" ·
+ *   그래도 안 되면 'fail'(부르는 쪽이 글로 대신 · 진행은 막지 않는다). 다시 받을 때는 주소 끝에 ?r=n 을 붙여 캐시된 실패를 피한다.
+ */
+export function useRetryImage(src: string | null): { url: string | null; state: 'loading' | 'ok' | 'fail'; onLoad: () => void; onError: () => void } {
+  const [tryN, setTryN] = useState(0);
+  const [state, setState] = useState<'loading' | 'ok' | 'fail'>(() => (src && isDecoded(src) ? 'ok' : 'loading'));
+  const timer = useRef<number | null>(null);
+  useEffect(() => {
+    setTryN(0);
+    setState(src && isDecoded(src) ? 'ok' : 'loading');
+    return () => {
+      if (timer.current !== null) window.clearTimeout(timer.current);
+      timer.current = null;
+    };
+  }, [src]);
+  const onLoad = () => setState('ok');
+  const onError = () => {
+    if (tryN >= IMAGE_RETRIES) {
+      setState('fail');
+      return;
+    }
+    setState('loading');
+    timer.current = window.setTimeout(() => setTryN((n) => n + 1), IMAGE_RETRY_MS);
+  };
+  const url = src === null ? null : tryN === 0 ? src : `${src}?r=${tryN}`;
+  return { url, state, onLoad, onError };
+}
+
+/** 문항 그림 — 없으면(연습 더미) 도형 · 상자 · ★ R064 받기 실패면 다시 받기 · 끝내 실패면 글 */
 export function QuizImage({ imageId, alt, className, dummy = 'box' }: { imageId: string | null | undefined; alt: string; className?: string; dummy?: string }) {
-  if (imageId) return <img className={`quiz-img ${className ?? ''}`} src={imageUrl(imageId)} alt={alt} draggable={false} />;
+  if (imageId) return <RetryImg src={imageUrl(imageId)} alt={alt} className={className} />;
   return (
     <div className={`quiz-img dummy ${className ?? ''}`} role="img" aria-label={`${alt} (연습용)`}>
       {dummy === 'circle' ? (
@@ -59,6 +95,23 @@ export function QuizImage({ imageId, alt, className, dummy = 'box' }: { imageId:
       )}
       <span className="quiz-dummy-tag">연습용</span>
     </div>
+  );
+}
+
+function RetryImg({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const r = useRetryImage(src);
+  if (r.state === 'fail') {
+    return (
+      <div className={`quiz-img img-fail ${className ?? ''}`} role="img" aria-label={alt} data-img-fail>
+        <span>사진을 못 받았어요 — 그래도 맞혀 보세요</span>
+      </div>
+    );
+  }
+  return (
+    <span className="img-wrap" data-img-state={r.state}>
+      {r.url && <img key={r.url} className={`quiz-img ${className ?? ''}`} src={r.url} alt={alt} draggable={false} onLoad={r.onLoad} onError={r.onError} />}
+      {r.state === 'loading' && <span className="img-loading" data-img-loading>그림 불러오는 중</span>}
+    </span>
   );
 }
 

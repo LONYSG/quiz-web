@@ -12,7 +12,7 @@ import { PHOTO_REVEAL_MS } from '@quiz/shared';
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
-import { QuizImage, SeenBadge, imageUrl } from './QuizParts.js';
+import { QuizImage, SeenBadge, imageUrl, useRetryImage } from './QuizParts.js';
 
 interface Props {
   socket: Socket;
@@ -25,11 +25,20 @@ interface Props {
 function Mosaic({ src, level }: { src: string; level: number }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const [img, setImg] = useState<HTMLImageElement | null>(null);
+  // ★ R064 (D-266) — 받기 실패면 2초 뒤 다시 × 2 · 끝내 실패면 글
+  const r = useRetryImage(src);
+  const { onLoad, onError } = r;
   useEffect(() => {
+    if (!r.url) return;
     const im = new Image();
-    im.onload = () => setImg(im);
-    im.src = src;
-  }, [src]);
+    im.onload = () => {
+      setImg(im);
+      onLoad();
+    };
+    im.onerror = () => onError();
+    im.src = r.url;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [r.url]);
   useEffect(() => {
     const c = ref.current;
     if (!c || !img) return;
@@ -47,7 +56,19 @@ function Mosaic({ src, level }: { src: string; level: number }) {
     ctx.imageSmoothingEnabled = false;
     ctx.drawImage(tmp, 0, 0, W, H);
   }, [img, level]);
-  return <canvas ref={ref} className="quiz-img photo-canvas" aria-label="모자이크 사진" />;
+  if (r.state === 'fail') {
+    return (
+      <div className="quiz-img img-fail photo-img" role="img" aria-label="모자이크 사진" data-img-fail>
+        <span>사진을 못 받았어요 — 그래도 맞혀 보세요</span>
+      </div>
+    );
+  }
+  return (
+    <span className="img-wrap" data-img-state={r.state}>
+      <canvas ref={ref} className="quiz-img photo-canvas" aria-label="모자이크 사진" />
+      {r.state === 'loading' && <span className="img-loading" data-img-loading>그림 불러오는 중</span>}
+    </span>
+  );
 }
 
 export default function PhotoGuess({ socket, view, serverNow, mobile }: Props) {

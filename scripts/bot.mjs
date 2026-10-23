@@ -309,6 +309,8 @@ class Bot {
       s.on('session.terminated', (p) =>
         this.events.push({ type: 'session.terminated', reason: p.reason }),
       );
+      // ★ R064 (D-265) — 미니게임 입력 거름은 오류 창 없이 minigame.rejected 로 온다 → 검사에서는 예전처럼 BAD_REQUEST 로 센다
+      s.on('minigame.rejected', () => this.events.push({ type: 'error', code: 'BAD_REQUEST', message: 'minigame.rejected' }));
       s.on('room.hostChanged', (p) =>
         this.events.push({ type: 'room.hostChanged', hostAccountId: p.hostAccountId }),
       );
@@ -5511,14 +5513,14 @@ async function scenarioSpam() {
   expect('★ 안내 0', a.since(fa, 'chat.throttled').length, 0);
 
   await sleep(5200); // [4] 의 마지막 답들이 5초 창을 벗어나게
-  log('\n[5] ★★ 이모티콘 — 채팅과 따로 · 같은 값 (5초 5회 · 6번째부터 잠금 · 안내 kind=emoji)');
+  log('\n[5] ★★ 이모티콘 — 채팅과 따로 · ★ R064 5초 8회 · 9번째부터 잠금 · 안내 kind=emoji');
   const emojiId = (await fetch(`${BASE}/api/emoji`).then((r) => r.json())).defaults[0];
   fa = a.mark();
   fh = host.mark();
   a.chat('채팅은 따로');
-  for (let i = 0; i < 6; i += 1) a.socket.emit('emoji.send', { emojiId });
+  for (let i = 0; i < 9; i += 1) a.socket.emit('emoji.send', { emojiId });
   await sleep(700);
-  expect('★★ 이모티콘 5개만 도착', emojisFrom(host, fh), 5);
+  expect('★★ 이모티콘 8개만 도착(R064 완화 — 5초 8회)', emojisFrom(host, fh), 8);
   const te = a.since(fa, 'chat.throttled');
   expect('★ 이모티콘 안내 1번', te.length, 1);
   expect('★ kind=emoji', te[0]?.kind, 'emoji');
@@ -5683,7 +5685,7 @@ async function scenarioShop() {
     expect('★ DB 뽑기 기록 1', db6.owned, 1);
   }
 
-  log('\n[5] ★★ 특별 이모티콘 보내기 — 가진 사람만 · 10초 3회 · 4번째 잠금(kind special) · 표준은 따로');
+  log('\n[5] ★★ 특별 이모티콘 보내기 — 가진 사람만 · ★ R064 10초 5회 · 6번째 잠금(kind special) · 표준은 따로');
   await b1.connect();
   b1.createRoom('R049 특별');
   await b1.waitFor(() => b1.snapshot !== null, 6000, '방');
@@ -5694,13 +5696,13 @@ async function scenarioShop() {
   const sp = mine[0];
   let f2 = b2.mark();
   let f1 = b1.mark();
-  for (let i = 0; i < 4; i += 1) b1.socket.emit('emoji.send', { emojiId: mine[i % mine.length] });
+  for (let i = 0; i < 6; i += 1) b1.socket.emit('emoji.send', { emojiId: mine[i % mine.length] });
   await sleep(700);
   const seen = b2.since(f2, 'chat').filter((e) => e.emojiId);
-  expect('★★ 특별 3개만 방에 도착', seen.length, 3);
+  expect('★★ 특별 5개만 방에 도착(R064 완화 — 10초 5회)', seen.length, 5);
   expectTrue('★★ 채팅 항목에 special=true', seen.every((e) => e.special === true), JSON.stringify(seen[0]));
   const th = b1.since(f1, 'chat.throttled');
-  expect('★★ 4번째에 안내 kind=special', th[0]?.kind, 'special');
+  expect('★★ 6번째에 안내 kind=special', th[0]?.kind, 'special');
   const cat = await (await fetch(`${BASE}/api/emoji`)).json();
   f2 = b2.mark();
   f1 = b1.mark();
@@ -5952,7 +5954,7 @@ async function playQuickGame(host, others, n, keys, timeoutMs) {
     await sleep(25);
   }
   if (host.since(g, 'game.result').length === 0) throw new Error(`${n}문제 판이 ${timeoutMs}ms 안에 끝나지 않았다`);
-  for (const o of others) await o.waitFor(() => o.snapshot?.room.state === 'GAME_RESULT', 5000, '결과');
+  for (const o of others) await o.waitFor(() => o.snapshot?.room.state === 'GAME_RESULT', 5000, `결과(${o.name} · 지금 ${o.snapshot?.room.state} · 연결 ${o.socket?.connected})`);
   return gameId;
 }
 async function backToLobby(host, others) {
@@ -6815,10 +6817,20 @@ async function scenarioMgQuiz() {
         const variant = ans.altAnswers?.[0] ?? ans.answer;
         if (bot === b1) return [{ delayMs: 300, input: { text: '전혀아닌답', elapsedMs: 300 } }, { delayMs: 1000, input: { text: ` ${ans.answer} `, elapsedMs: 1000 } }];
         if (bot === b2) return { delayMs: 500, input: { text: variant, elapsedMs: 500 } };
-        return [{ delayMs: 300, input: { text: '모르겠다', elapsedMs: 300 } }, { delayMs: 600, input: { text: '정말모름', elapsedMs: 600 } }];
+        // ★ R064 (D-265 · 찬종 #29) — 둘째 시도는 긴 글(200자) + 기기 시간이 판 길이보다 긴 값 → 거절 말고 받는다(서버 시간으로 자름) · 셋째는 빈 글 → 조용히 거름
+        return [
+          { delayMs: 300, input: { text: '모르겠다', elapsedMs: 300 } },
+          { delayMs: 600, input: { text: '정말모름'.repeat(50), elapsedMs: 999999 } },
+          { delayMs: 800, input: { text: '   ', elapsedMs: 800 } },
+        ];
       });
     }
+    const b3m = b3.mark();
     const gid = await playQuickGame(b1, [b2, b3, b4], 5, ['photo'], 200000);
+    const b3errs = b3.since(b3m, 'error');
+    expectTrue('★★ R064 — 긴 글 · 판보다 긴 기기 시간은 거절 안 함 · 빈 글만 조용히 거름(오류 창 없음 · minigame.rejected 5번)', b3errs.length === 5 && b3errs.every((e) => e.message === 'minigame.rejected'), JSON.stringify(b3errs.slice(0, 2)));
+    const img404 = await fetch(`${BASE}/api/minigame/image/photo-none-r064`, { headers: { cookie: b1.cookie ?? '' } });
+    expect('★ R064 — 없는 사진 주소는 404(클라이언트는 2초 뒤 다시 × 2 → 글로 대신)', img404.status, 404);
     const run = (await mgqRun(gid))[0];
     const rows = await mgqRows(run.id);
     const of = (b) => rows.filter((r) => r.login_id === b.loginId);
@@ -7993,7 +8005,7 @@ async function scenarioEmoji() {
   for (let i = 0; i < 30; i += 1) guest.socket.emit('emoji.send', { emojiId: cat.defaults[i % 10] });
   await sleep(800);
   const got = host.since(from, 'chat').filter((c) => c.emojiId).length;
-  expectTrue('★ 5초에 5개까지만 통과 (R048)', got === 5, `${got}개`);
+  expectTrue('★ 5초에 8개까지만 통과 (R048 → R064 완화)', got === 8, `${got}개`);
 
   host.socket.emit('host.forceEnd', {});
   await sleep(400);
