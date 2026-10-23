@@ -52,6 +52,14 @@ function scan(chunk) {
   console.log('');
   console.log(`  로컬:   ${TARGET}`);
   console.log('  종료:   Ctrl+C  (터널만 닫힙니다. 서버와 게임은 그대로 살아 있습니다)');
+  if (process.platform === 'win32') {
+    // ★ 2026-10-24 — 주소를 클립보드에도 넣는다(play.bat 원터치 · 그대로 붙여넣기)
+    try {
+      const clip = spawn('clip', { stdio: ['pipe', 'ignore', 'ignore'], shell: true });
+      clip.stdin.end(url);
+      console.log('  복사:   주소를 클립보드에 넣었습니다 — 그대로 붙여넣기(Ctrl+V)');
+    } catch { /* 복사 실패는 무시 — 주소는 위에 있다 */ }
+  }
   console.log(line);
   console.log('');
 }
