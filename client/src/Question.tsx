@@ -28,7 +28,8 @@ import FitText from './FitText.js';
 import ExplainText from './ExplainText.js';
 import ConfirmModal from './ConfirmModal.js';
 import { RevealFeedback } from './QuestionFeedback.js';
-import { QNo, QReportButton } from './AppReport.js';
+import { QNo } from './AppReport.js';
+import { isReportOpen } from './reportGuard.js';
 import { usePopup } from './popup.js';
 import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
 import Icon from './Icon.js';
@@ -213,11 +214,11 @@ export default function Question({
         <span className="q-progress mono">
           {question.index} / {question.total}
         </span>
-        {/* ★ R061 — 문항 번호(누르면 복사) · 📝 이 문제 피드백 — 문제 단계부터 · 질문 글(복사 막기) 바깥 */}
+        {/* ★ R061 — 문항 번호(누르면 복사) — 문제 단계부터 · 질문 글(복사 막기) 바깥
+            ★ R065 (D-270) — 📝 는 뺐다(찬종 "문제 컴포넌트 안에다 넣지 말고") → 제보 메뉴 ① 최근 문제 · 미니게임 */}
         {question.questionId && (
           <span className="q-ids">
             <QNo id={question.questionId} />
-            <QReportButton questionId={question.questionId} questionIndex={question.index} />
           </span>
         )}
         {/* ★ 카테고리는 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 */}
@@ -439,14 +440,14 @@ export default function Question({
                   socket.emit('host.forceEnd', {});
                 }
                 setConfirming(null);
-                document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
+                if (!isReportOpen()) document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
               },
             },
           ]}
           onCancel={() => {
             setConfirming(null);
             // ★★ 확인창이 닫히면 포커스가 채팅 입력으로 돌아와야 한다 (Q-56)
-            document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
+            if (!isReportOpen()) document.querySelector<HTMLInputElement>('.chat-card input')?.focus();
           }}
         />
       )}

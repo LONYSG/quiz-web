@@ -13,6 +13,7 @@ import type { DifficultyTier, GameTopic } from '@quiz/shared';
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import type { MinigameKey, MinigamePhase } from '@quiz/shared';
+import { noteRecentMinigame, noteRecentQuestion } from './reportRecent.js';
 
 export interface PlayerView {
   accountId: string;
@@ -550,6 +551,9 @@ export function useRoom(socket: Socket | null): RoomHook {
     const onResolved = (p: ResolutionView & { state: string; scores: { accountId: string; score: number }[] }) => {
       setSnapshot((prev) => {
         if (!prev) return prev;
+        // ★ R065 — 제보 메뉴 최근 목록(같은 판 · 같은 문항은 한 번만)
+        const qid = p.questionId ?? prev.question?.questionId;
+        if (qid && prev.question) noteRecentQuestion(prev.game?.gameId ?? null, qid, prev.question.index, prev.question.text);
         const scoreById = new Map(p.scores.map((s) => [s.accountId, s.score]));
         return {
           ...prev,
@@ -668,6 +672,9 @@ export function useRoom(socket: Socket | null): RoomHook {
     const onMinigameState = (p: { state: string; minigame: MinigameView | null }) => {
       // ★ 받은 순간(기기 시계 · performance.now) — 케이크 기다리기는 "시작 신호를 받은 때" 부터 잰다 (네트워크 지연이 잰 시간에 끼지 않게)
       const receivedAt = performance.now();
+      // ★ R065 — 제보 메뉴 최근 목록: play 단계에 들어선 판(문항 있는 게임은 문항마다)
+      const m = p.minigame;
+      if (m && m.phase === 'play') noteRecentMinigame(m.token, m.roundIndex, m.key, m.round?.itemId ?? null);
       setSnapshot((prev) => (prev ? { ...prev, room: { ...prev.room, state: p.state }, minigame: p.minigame ? { ...p.minigame, receivedAt } : null } : prev));
     };
     const onMinigameEnded = (p: { state: string; practice: boolean; settingsLocked?: boolean }) => {

@@ -7649,13 +7649,14 @@ async function scenarioSignup() {
 //   ★ 검사 DB 에서만(bot.mjs 기본)
 // =============================================================================
 async function scenarioReport() {
-  log('시나리오 report — ★★ 앱 제보 🐞 · 📝 (R061)');
-  const [h, g] = await makeBots(2);
+  log('시나리오 report — ★★ 앱 제보 🐞 · 📝 (R061) · 최근 목록에서 고른 지난 대상(R065)');
+  // ★ R065 — x 는 판에 들어가지 않는 사람(남의 판 번호를 못 붙이는지)
+  const [h, g, x] = await makeBots(3);
   await h.connect();
   await g.connect();
   const send = (bot, body) => postJson('/api/reports', { device: { mobile: false, viewport: '1280x720' }, ...body }, bot.cookie);
   const rowOf = (id) => withDb(async (c) => (await c.query(`SELECT kind, text, reasons, screen, room_id, game_id::text, question_id::text, question_index, minigame_key, minigame_run_id::text, minigame_item, recent FROM app_reports WHERE id = $1`, [id])).rows[0]);
-  await withDb((c) => c.query(`DELETE FROM app_reports WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[h.loginId, g.loginId]]));
+  await withDb((c) => c.query(`DELETE FROM app_reports WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[h.loginId, g.loginId, x.loginId]]));
   // ① 방 밖(로비) — 판 · 문항 null · "#번호" 로 문항 채움
   for (const b of [h, g]) if (b.snapshot) b.leave();
   await sleep(300);
@@ -7692,12 +7693,24 @@ async function scenarioReport() {
   // ★ 연습 판은 가짜 문항(QUIZ_DUMMY)이라 item_id 가 없다 → null 이 맞다(실제 판이면 which-0246 꼴)
   expectTrue('★★★ 미니게임 중(연습) — key · 미니게임 판 id · 퀴즈 판 없음 · 가짜 문항은 item 없음', row4.minigame_key === 'which' && row4.minigame_run_id === runId && row4.minigame_item === null && row4.game_id === null, JSON.stringify({ row4, runId }));
   await h.waitFor(() => h.since(pf, 'minigame.ended').length > 0, 60000, '미니게임 끝').catch(() => undefined);
+  // ④' ★ R065 (D-270) — 제보 메뉴 최근 목록에서 고른 **지난** 대상(at): 판 · 미니게임 판은 제보자가 참가한 것만
+  const at = new Date().toISOString();
+  const r4b = await send(g, { kind: 'question', text: '', reasons: ['answer'], screen: 'room', questionId: curQ, questionIndex: cur.index, at });
+  const row4b = await rowOf(r4b.json.id);
+  expectTrue('★★★ R065 지난 문제(최근 목록) — 지금 방이 달라도 그 문제가 나온 판(참가한 판) · 순번', row4b.question_id === curQ && row4b.game_id === gameId && row4b.question_index === cur.index && row4b.minigame_run_id === null, JSON.stringify(row4b));
+  const r4c = await send(h, { kind: 'question', text: '보기가 겹쳐요', reasons: [], screen: 'room', minigameKey: 'which', at });
+  const row4c = await rowOf(r4c.json.id);
+  expectTrue('★★★ R065 지난 미니게임(최근 목록) — key · 참가한 판 id(±10분) · 문항 없음', row4c.minigame_key === 'which' && row4c.minigame_run_id === runId && row4c.question_id === null, JSON.stringify({ row4c, runId }));
+  const r4d = await send(x, { kind: 'question', text: '남의 판', reasons: [], screen: 'lobby', questionId: curQ, at });
+  const r4e = await send(x, { kind: 'question', text: '남의 미니게임', reasons: [], screen: 'lobby', minigameKey: 'which', at });
+  const [row4d, row4e] = [await rowOf(r4d.json.id), await rowOf(r4e.json.id)];
+  expectTrue('★★★ R065 참가하지 않은 사람 — 판 · 미니게임 판 번호 null(거부는 하지 않음 · 문항 번호는 남음)', r4d.status === 200 && row4d.game_id === null && row4d.question_id === curQ && r4e.status === 200 && row4e.minigame_run_id === null && row4e.game_id === null, JSON.stringify({ row4d, row4e }));
   // ⑤ 속도 제한 10초 5번 · 빈 글 거부 · 로그인 없이 401
   const burst = [];
   for (let i = 0; i < 6; i += 1) burst.push((await send(g, { kind: 'other', text: `연속 ${i}`, screen: 'room' })).status);
-  // g 는 앞에서 2번 보냈다(10초가 지났을 수 있다) → 200 은 3~5번 · 첫 429 뒤로는 전부 429
+  // g 는 앞에서 3번 보냈다(R065 지난 문제 한 번 더 · 10초가 지났을 수 있다) → 200 은 2~5번 · 첫 429 뒤로는 전부 429
   const first429 = burst.indexOf(429);
-  expectTrue('★★ 속도 제한 — 10초에 5번(넘으면 429)', first429 >= 3 && first429 <= 5 && burst.slice(first429).every((s) => s === 429), burst.join(','));
+  expectTrue('★★ 속도 제한 — 10초에 5번(넘으면 429)', first429 >= 2 && first429 <= 5 && burst.slice(first429).every((s) => s === 429), burst.join(','));
   expect('★ 빈 글 거부(400)', (await send(h, { kind: 'bug', text: '  ', screen: 'lobby' })).status, 400);
   expect('★ 로그인 없이 401', (await postJson('/api/reports', { kind: 'bug', text: 'x', screen: 'lobby' })).status, 401);
   // ⑥ 보고 스크립트 — 봇 표시 · --no-bots 로 빠짐 · 문항별 묶음 · 처리 표시
@@ -7717,7 +7730,7 @@ async function scenarioReport() {
   const after = await runScript('reports-report.mjs', []);
   const all = await runScript('reports-report.mjs', ['--all']);
   expectTrue('★★ reports:handle — --yes 없으면 멈춤 · 처리하면 기본 목록에서 빠지고 --all 에 ✔', dry.code === 2 && hd.code === 0 && !after.out.includes(`#${r2.json.id} `) && all.out.includes('✔ R061 검사'), `${dry.code} · ${hd.code}`);
-  await withDb((c) => c.query(`DELETE FROM app_reports WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[h.loginId, g.loginId]]));
+  await withDb((c) => c.query(`DELETE FROM app_reports WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[h.loginId, g.loginId, x.loginId]]));
   return checkSummary();
 }
 

@@ -3743,6 +3743,142 @@ async function r060Flow(browser) {
   await G.close?.();
   await H.close?.();
 }
+// ★★ R065 — 제보 메뉴 두 갈래 · 최근 문제 · 미니게임 목록 · 창이 열린 채 미니게임(UICHECK_R065=1 · 묶음 r065 · docs/design/r065)
+const R065_SIZES = [
+  { w: 1280, h: 720 },
+  { w: 1536, h: 864 },
+  { w: 2560, h: 1313 },
+  { m: true },
+];
+async function r065Flow(browser) {
+  const H = await newPage(browser, 'T-host', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'th', '메뉴방장');
+  const roomId = await createRoom(H, 'R065 제보');
+  const G = await newPage(browser, 'T-guest', true);
+  await G.setViewport(1280, 720);
+  await signUp(G, 'tg', '제보중손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 10000);
+  G.pageErrors = [];
+  const wrapRows = [];
+  const auditAt = async (page, label) => {
+    const rows = await wrapAudit(page, label, true);
+    wrapRows.push(...rows);
+  };
+
+  // ── §C 손님이 제보 창(일반)을 열고 글을 쓰는 중에 방장이 미니게임(타자 · 풍선)을 시작한다
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(300);
+  await selectMinigames(H, ['typing', 'balloon']);
+  await sleep(300);
+  await G.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await G.key('b', { alt: true });
+  await G.waitFor("document.querySelector('[data-report-menu]') !== null", 3000);
+  await snap(G, '160-report-menu-1280');
+  await realClick(G, '[data-report-pick="general"]');
+  await G.waitFor("document.querySelector('.report-modal .report-text') !== null", 3000);
+  await G.send('Input.insertText', { text: '제보 중' });
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const seen = {};
+  const typeSpace = async () => {
+    await G.send('Input.dispatchKeyEvent', { type: 'keyDown', key: ' ', code: 'Space', text: ' ', windowsVirtualKeyCode: 32 });
+    await G.send('Input.dispatchKeyEvent', { type: 'keyUp', key: ' ', code: 'Space', windowsVirtualKeyCode: 32 });
+  };
+  const TA = "(() => { const t = document.querySelector('.report-modal .report-text'); const ae = document.activeElement; return JSON.stringify({ open: !!t, focus: ae === t, ae: ae === t ? '' : `${ae?.tagName}.${ae?.className}`, value: t?.value ?? null }); })()";
+  // ★ 타자는 여러 판(play 여러 번) · 순서는 섞인다 — 둘 다 볼 때까지
+  for (let i = 0; i < 8 && !('balloon' in seen && 'typing' in seen); i += 1) {
+    if (!(await G.waitFor("document.querySelector('.mg-card[data-phase=\"play\"]') !== null", 90000).catch(() => false))) break;
+    const k = await G.evaluate("(() => { const c = document.querySelector('.mg-card[data-phase=\"play\"]'); return c ? [...c.classList].find((x) => x.startsWith('mg-') && x !== 'mg-card' && !x.startsWith('mg-phase')).slice(3) : ''; })()");
+    await sleep(700);
+    const before = JSON.parse(await G.evaluate(TA));
+    await typeSpace();
+    await G.send('Input.insertText', { text: k });
+    await sleep(200);
+    const after = JSON.parse(await G.evaluate(TA));
+    if (!(k in seen)) seen[k] = { before, after, ok: true };
+    seen[k].ok &&= before.open && before.focus && after.focus && after.value === `${before.value} ${k}`;
+    if (i === 0) await snap(G, '161-report-open-during-minigame');
+    await G.waitFor("document.querySelector('.mg-card[data-phase=\"play\"]') === null", 90000).catch(() => false);
+  }
+  const kept = Object.values(seen).every((v) => v.ok);
+  record('★★★ R065 §C 제보 창이 열린 채 미니게임(타자 · 풍선) — 창 그대로 · 글칸 포커스 안 뺏김 · Space 는 글칸에(펌프 안 눌림) · 글 남음', kept && 'typing' in seen && 'balloon' in seen, JSON.stringify(seen));
+  // 보내기 — 맥락은 연 때(대기실) 것
+  await G.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, modifiers: 2 });
+  await G.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, modifiers: 2 });
+  await G.waitFor("document.querySelector('[data-report-toast]') !== null", 4000).catch(() => false);
+  await sleep(300);
+  const row = await withPg(async (c) => (await c.query(`SELECT r.text, r.screen, r.minigame_key FROM app_reports r JOIN accounts a ON a.id = r.account_id WHERE a.login_id = $1 ORDER BY r.id DESC LIMIT 1`, [`${ACCOUNT_PREFIX}_tg`])).rows[0]);
+  const pumps = await withPg(async (c) => (await c.query(`SELECT count(*)::int AS n FROM minigame_results mr JOIN minigame_runs r ON r.id = mr.run_id JOIN accounts a ON a.id = mr.account_id WHERE r.room_id = $1 AND r.minigame_key = 'balloon' AND a.login_id = $2 AND mr.submitted`, [roomId, `${ACCOUNT_PREFIX}_tg`])).rows[0]?.n ?? -1);
+  // ★ 화면(screen)은 연 때 것 · 방의 판 · 미니게임 칸은 서버가 보낼 때의 방 상태로 붙인다(그대로)
+  record('★★ R065 §C 맥락은 창을 연 때 것(화면 = 대기실 — 미니게임 화면 아님) · 풍선 제출 없음(Space 가 게임으로 안 감)', !!row && row.screen === 'room' && row.text.startsWith('제보 중') && pumps === 0, JSON.stringify({ row, pumps }));
+
+  // ── §A 최근 목록 — 방금 미니게임 둘이 위에(새것 위) · 크기 · 테마
+  await H.waitFor("document.querySelector('.result-card') !== null", 60000).catch(() => false);
+  const shotsList = {};
+  for (const z of R065_SIZES) {
+    if (z.m) await touchDevice(G, 390, 844);
+    else await G.setViewport(z.w, z.h);
+    await sleep(400);
+    const tag = z.m ? 'm390' : `${z.w}x${z.h}`;
+    if (z.m) {
+      await tapOn(G, '#menu-btn');
+      await G.waitFor("document.querySelector('[data-menu-report]') !== null", 3000);
+      await tapOn(G, '[data-menu-report]');
+    } else {
+      await G.evaluate("document.querySelector('[data-report-btn]')?.click()");
+    }
+    await G.waitFor("document.querySelector('[data-report-menu]') !== null", 3000);
+    await sleep(250);
+    if (z.w === 1536 || z.m) await snap(G, `162-report-menu-${tag}`);
+    await auditAt(G, `r065-menu@${tag}`);
+    const menu = JSON.parse(await G.evaluate("JSON.stringify((() => { const m = document.querySelector('[data-report-menu]').getBoundingClientRect(); const b = [...document.querySelectorAll('.report-menu-item')].map((x) => x.getBoundingClientRect()); return { n: b.length, inView: m.top >= 0 && m.bottom <= innerHeight && m.left >= 0 && m.right <= innerWidth, h: b.map((x) => Math.round(x.height)), over: document.documentElement.scrollWidth - innerWidth }; })())"));
+    if (z.m) await tapOn(G, '[data-report-pick="recent"]');
+    else await realClick(G, '[data-report-pick="recent"]');
+    await G.waitFor("document.querySelector('[data-report-list]') !== null", 3000);
+    await sleep(250);
+    if (z.w === 1536 || z.w === 2560 || z.m) await snap(G, `163-report-list-${tag}`);
+    await auditAt(G, `r065-list@${tag}`);
+    const list = JSON.parse(await G.evaluate("JSON.stringify((() => { const rows = [...document.querySelectorAll('.report-recent-row')]; return { rows: rows.map((r) => r.innerText.replace(/\\s+/g, ' ')), oneLine: rows.every((r) => r.getBoundingClientRect().height <= 44), over: document.documentElement.scrollWidth - innerWidth }; })())"));
+    shotsList[tag] = { menu, list };
+    if (z.m) await G.evaluate("document.querySelector('.report-modal .popup-close')?.click()");
+    else await G.key('Escape');
+    await sleep(250);
+    if (z.m) {
+      await touchDevice(G, 390, 844, false);
+      await G.setViewport(1280, 720);
+    }
+  }
+  const okList = Object.values(shotsList).every((v) => v.menu.n === 2 && v.menu.inView && v.menu.over <= 1 && v.list.rows.length >= 2 && v.list.oneLine && v.list.over <= 1 && /^풍선|^타자/.test(v.list.rows[0] ?? ''));
+  record('★★★ R065 §A 제보 메뉴 두 갈래 · 최근 목록(미니게임 이름 · 시각 · 한 줄 · 새것 위) — 1280 · 1536 · 2560 · m390', okList, JSON.stringify(shotsList));
+  const badWrap = wrapRows.filter((r) => !r.ok);
+  record('★★ R065 메뉴 · 목록 줄바꿈 · 넘침 감사 0건(1280 · 1536 · 2560 · m390)', badWrap.length === 0, badWrap.slice(0, 6).map((r) => `${r.sel} @${r.vw} ${r.text}`).join(' / '));
+  // 밤 테마
+  await G.evaluate("document.documentElement.dataset.theme = 'night'");
+  await G.setViewport(1536, 864);
+  await G.evaluate("document.querySelector('[data-report-btn]')?.click()");
+  await G.waitFor("document.querySelector('[data-report-menu]') !== null", 3000);
+  await realClick(G, '[data-report-pick="recent"]');
+  await sleep(300);
+  await snap(G, '164-report-list-night');
+  // 목록에서 미니게임 하나를 고르면 그 대상 창(이름 머리 · 칩 7) → 보내면 참가한 판 id
+  await realClick(G, '.report-recent-row');
+  await G.waitFor("document.querySelector('.qreport-modal') !== null", 3000);
+  const head = await G.evaluate("document.querySelector('.qreport-modal .pop-title')?.innerText ?? ''");
+  await realClick(G, '.qreport-modal .fb-chip[data-reason="unclear"]');
+  await realClick(G, '.qreport-modal .report-actions button:last-child');
+  await G.waitFor("document.querySelector('[data-report-toast]') !== null", 4000).catch(() => false);
+  await sleep(300);
+  await G.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  const qrow = await withPg(async (c) => (await c.query(`SELECT r.kind, r.minigame_key, r.minigame_run_id::text AS run, r.game_id::text AS game FROM app_reports r JOIN accounts a ON a.id = r.account_id WHERE a.login_id = $1 ORDER BY r.id DESC LIMIT 1`, [`${ACCOUNT_PREFIX}_tg`])).rows[0]);
+  record('★★ R065 목록에서 고른 미니게임 — 창 머리 이름 · 보내면 key · 참가한 미니게임 판 id · 판 id · 예외 0', /풍선|타자/.test(head) && qrow?.kind === 'question' && !!qrow.minigame_key && !!qrow.run && !!qrow.game && G.pageErrors.length === 0, JSON.stringify({ head, qrow, err: G.pageErrors.slice(0, 3) }));
+  await withPg((c) => c.query(`DELETE FROM app_reports WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[`${ACCOUNT_PREFIX}_th`, `${ACCOUNT_PREFIX}_tg`]]));
+  await G.close?.();
+  await H.close?.();
+}
+
 // ★★ R064 — 찬종 제보 #20~#31 (UICHECK_R064=1 · 묶음 r064 · docs/design/r064 · 찬종 새 환경 2560×1313 @1 먼저 → 고친 뒤 전 크기)
 const R064_PC = [
   { w: 1280, h: 720 },
@@ -3912,6 +4048,9 @@ async function r064Flow(browser) {
     if (!z.m) {
       await H.evaluate("document.querySelector('[data-report-btn]')?.click()");
       await H.waitFor("document.querySelector('.report-modal') !== null", 4000).catch(() => false);
+      // ★ R065 — 메뉴도 감사 → ② 일반 제보 창
+      await auditAt(H, `report-menu@${tag}`);
+      await H.evaluate("document.querySelector('[data-report-pick=\"general\"]')?.click()");
       await sleep(300);
       if (z.w === 2560) await snap(H, '155-report-2560');
       await auditAt(H, `report@${tag}`);
@@ -4005,7 +4144,10 @@ async function r063Flow(browser) {
   const a1 = JSON.parse(await H.evaluate("JSON.stringify({ btn: !!document.querySelector('.room-tools [data-report-btn]')?.offsetParent, float: document.querySelector('.report-float') !== null })"));
   await snap(H, '130-report-topbar-pc');
   await realClick(H, '.room-tools [data-report-btn]');
-  await H.waitFor("document.querySelector('.report-modal') !== null", 3000);
+  await H.waitFor("document.querySelector('[data-report-menu]') !== null", 3000);
+  // ★ R065 — 메뉴 → ② 일반 제보
+  await realClick(H, '[data-report-pick="general"]');
+  await H.waitFor("document.querySelector('.report-text') !== null", 3000);
   const ctxHidden = await H.evaluate("document.querySelector('[data-report-ctx]') === null");
   const ph = await H.evaluate("document.querySelector('.report-text')?.placeholder ?? ''");
   await pressKey(H, 'Escape', 'Escape', 27);
@@ -4221,10 +4363,33 @@ async function r061Flow(browser) {
   await G.evaluate(UNHIDE);
   const qid = await H.evaluate("document.querySelector('.question-card .qno')?.dataset.qno ?? ''");
   const noCopyOut = await H.evaluate("document.querySelector('.question-card .qno')?.closest('.no-copy') === null");
-  record('★★★ R061 문제 단계 — 문항 번호 #id · 📝 (복사 막기 바깥) · 카드 높이 그대로(PC · m390 ±1px)', /^\d+$/.test(qid) && noCopyOut && Math.abs(hA - hB) <= 1 && Math.abs(gA - gB) <= 1, `#${qid} · pc ${hB}→${hA} · m390 ${gB}→${gA}`);
-  // ② 📝 (m390 · 문제 단계) — 답 입력 포커스 그대로 · 창 머리 #id · 칩 7 → 보내면 행(kind question · 문항 · 판)
-  await G.evaluate("document.querySelector('.chat-card input')?.focus()");
-  await tapOn(G, '.question-card .qreport-btn');
+  // ★ R065 (D-270) — 문제 카드의 📝 는 뺐다(제보 메뉴 ① 최근 목록으로)
+  const noQBtn = (await H.evaluate("document.querySelector('.question-card .qreport-btn') === null")) && (await G.evaluate("document.querySelector('.question-card .qreport-btn') === null"));
+  record('★★★ R061 문제 단계 — 문항 번호 #id(복사 막기 바깥) · R065 📝 없음 · 카드 높이 그대로(PC · m390 ±1px)', /^\d+$/.test(qid) && noCopyOut && noQBtn && Math.abs(hA - hB) <= 1 && Math.abs(gA - gB) <= 1, `#${qid} · 📝없음 ${noQBtn} · pc ${hB}→${hA} · m390 ${gB}→${gA}`);
+  // ② ★ R065 — 제보 메뉴(☰ "제보") → ① 문제 · 미니게임 제보 → 최근 목록. 문제가 아직 안 끝났으면 "아직 본 문제가 없어요"
+  const openMenuM = async () => {
+    await tapOn(G, '#menu-btn');
+    await G.waitFor("document.querySelector('[data-menu-report]') !== null", 3000);
+    await tapOn(G, '[data-menu-report]');
+    await G.waitFor("document.querySelector('[data-report-menu]') !== null", 3000);
+  };
+  await openMenuM();
+  await tapOn(G, '[data-report-pick="recent"]');
+  await G.waitFor("document.querySelector('[data-report-list]') !== null", 3000);
+  const emptyList = await G.evaluate("document.querySelector('[data-recent-empty]')?.innerText ?? ''");
+  await G.evaluate("document.querySelector('.report-modal .popup-close')?.click()");
+  // 방장이 1번을 넘긴다 → question.resolved → 목록에 들어간다
+  await openHostSkip(H);
+  await H.evaluate("document.querySelector('.confirm-modal[data-kind=\"host-skip\"] .confirm-actions button')?.click()");
+  await G.waitFor(`document.querySelector('.reveal-card, .resolution, [data-reveal]') !== null || !document.querySelector('.question-card .qno[data-qno="${qid}"]')`, 8000).catch(() => false);
+  await sleep(300);
+  await openMenuM();
+  await tapOn(G, '[data-report-pick="recent"]');
+  await G.waitFor(`document.querySelector('[data-recent="${qid}"]') !== null`, 3000).catch(() => false);
+  const rowText = await G.evaluate(`document.querySelector('[data-recent="${qid}"]')?.innerText.replace(/\\s+/g, ' ') ?? ''`);
+  await snap(G, '125-report-recent-m390');
+  record('★★★ R065 제보 메뉴(m390 ☰) — 두 갈래 · 문제 끝나기 전 "아직 본 문제가 없어요" · 끝나면 "문제 1 · #id · 앞글" 줄', emptyList.includes('아직 본 문제가 없어요') && /^문제 1 #\d+ /.test(rowText) && rowText.includes(`#${qid}`), JSON.stringify({ emptyList, rowText }));
+  await tapOn(G, `[data-recent="${qid}"]`);
   await G.waitFor("document.querySelector('.qreport-modal') !== null", 3000);
   const gq = JSON.parse(await G.evaluate("JSON.stringify({ head: document.querySelector('.qreport-modal .pop-title')?.innerText ?? '', chips: document.querySelectorAll('.qreport-modal .fb-chip').length, over: document.documentElement.scrollWidth - innerWidth })"));
   await tapOn(G, '.qreport-modal .fb-chip[data-reason="answer"]');
@@ -4233,14 +4398,16 @@ async function r061Flow(browser) {
   await tapOn(G, '.qreport-modal .report-actions button:last-child');
   await G.waitFor("document.querySelector('[data-report-toast]') !== null", 4000);
   const gToast = await G.evaluate("document.querySelector('[data-report-toast]')?.innerText ?? ''");
-  const gFocus = await G.evaluate("document.activeElement === document.querySelector('.chat-card input')");
   await sleep(300);
   const qRow = await withPg(async (c) => (await c.query(`SELECT r.kind, r.reasons, r.question_id::text, r.game_id::text, r.screen FROM app_reports r JOIN accounts a ON a.id = r.account_id WHERE a.login_id = $1 ORDER BY r.id DESC LIMIT 1`, [`${ACCOUNT_PREFIX}_rg`])).rows[0]);
-  record('★★★ R061 📝 문제 단계(m390) — 머리 #id · 칩 7 · 보내면 토스트 · 행(question · 문항 · 판) · 닫으면 입력 포커스 그대로', gq.head.includes(`#${qid}`) && gq.chips === 7 && gq.over <= 1 && /피드백 접수/.test(gToast) && gFocus && qRow?.kind === 'question' && qRow.question_id === qid && !!qRow.game_id && qRow.reasons.join() === 'answer', JSON.stringify({ gq, gToast, gFocus, qRow }));
+  record('★★★ R061 📝 (R065 최근 목록에서 고름 · m390) — 머리 #id · 칩 7 · 보내면 토스트 · 행(question · 문항 · 참가한 판)', gq.head.includes(`#${qid}`) && gq.chips === 7 && gq.over <= 1 && /피드백 접수/.test(gToast) && qRow?.kind === 'question' && qRow.question_id === qid && !!qRow.game_id && qRow.reasons.join() === 'answer', JSON.stringify({ gq, gToast, qRow }));
   // ③ 🐞 PC — Alt+B · 맥락 줄 · Ctrl+Enter 보내기 · 토스트 · 행(화면 · 판 · 문항) · 포커스 돌려줌
   await H.evaluate("document.querySelector('.chat-card input')?.focus()");
   await H.key('b', { alt: true });
-  await H.waitFor("document.querySelector('.report-modal:not(.qreport-modal)') !== null", 3000);
+  // ★ R065 — Alt+B 는 메뉴 → ② 일반 제보
+  await H.waitFor("document.querySelector('[data-report-menu]') !== null", 3000);
+  await realClick(H, '[data-report-pick="general"]');
+  await H.waitFor("document.querySelector('.report-modal .report-text') !== null", 3000);
   await H.send('Input.insertText', { text: '정답 공개 뒤 채팅이 잠깐 안 보였어요' });
   const ctxLine = await H.evaluate("document.querySelector('[data-report-ctx]')?.innerText ?? ''");
   await sleep(150);
@@ -4253,7 +4420,7 @@ async function r061Flow(browser) {
   const hFocus = await H.evaluate("document.activeElement === document.querySelector('.chat-card input')");
   await sleep(300);
   const bRow = await withPg(async (c) => (await c.query(`SELECT r.kind, r.text, r.screen, r.game_id::text, r.question_id::text, r.device, jsonb_array_length(coalesce(r.recent, '[]')) AS nrecent FROM app_reports r JOIN accounts a ON a.id = r.account_id WHERE a.login_id = $1 ORDER BY r.id DESC LIMIT 1`, [`${ACCOUNT_PREFIX}_rh`])).rows[0]);
-  record('★★★ R061 🐞 PC — Alt+B · 맥락 줄(R063 쉬운 말 "문제 N (#id)") · Ctrl+Enter · "제보 접수 #n" · 행(bug · game: 화면 · 판 · 문항 · 기기 · 최근 이벤트) · 포커스 돌려줌', /^문제 \d+ \(#\d+\)$/.test(ctxLine) && /제보 접수 #\d+/.test(hToast) && hFocus && bRow?.kind === 'bug' && /^game:/.test(bRow.screen) && !!bRow.game_id && !!bRow.question_id && bRow.device?.mobile === false && bRow.nrecent > 0, JSON.stringify({ ctxLine, hToast, hFocus, bRow }));
+  record('★★★ R061 🐞 PC — Alt+B · 맥락 줄(R063 쉬운 말 "문제 N (#id)") · Ctrl+Enter · "제보 접수 #n" · 행(bug · game: 화면 · 판 · 문항 · 기기 · 최근 이벤트) · 포커스 돌려줌', /^(문제 \d+|정답 공개) \(#\d+\)$/.test(ctxLine) && /제보 접수 #\d+/.test(hToast) && hFocus && bRow?.kind === 'bug' && /^game:/.test(bRow.screen) && !!bRow.game_id && !!bRow.question_id && bRow.device?.mobile === false && bRow.nrecent > 0, JSON.stringify({ ctxLine, hToast, hFocus, bRow }));
   // ④ 🐞 m390 — 오른쪽 위 🐞 · 키보드가 올라온 높이(844 → 500)에서도 [보내기] 가 화면 안
   await touchDevice(G, 390, 500);
   await sleep(300);
@@ -4261,7 +4428,9 @@ async function r061Flow(browser) {
   await tapOn(G, '#menu-btn');
   await G.waitFor("document.querySelector('[data-menu-report]') !== null", 3000);
   await tapOn(G, '[data-menu-report]');
-  await G.waitFor("document.querySelector('.report-modal:not(.qreport-modal)') !== null", 3000);
+  await G.waitFor("document.querySelector('[data-report-menu]') !== null", 3000);
+  await tapOn(G, '[data-report-pick="general"]');
+  await G.waitFor("document.querySelector('.report-modal .report-text') !== null", 3000);
   await G.send('Input.insertText', { text: '폴드에서 버튼이 겹쳐요' });
   await sleep(200);
   const gm = JSON.parse(await G.evaluate("JSON.stringify((() => { const b = [...document.querySelectorAll('.report-modal .report-actions button')].pop()?.getBoundingClientRect(); return { sendBottom: b ? Math.round(b.bottom) : -1, vh: innerHeight, over: document.documentElement.scrollWidth - innerWidth, chips: document.querySelectorAll('.report-modal .fb-chip').length }; })())"));
@@ -4270,10 +4439,12 @@ async function r061Flow(browser) {
   await G.evaluate("[...document.querySelectorAll('.report-modal .report-actions button')][0]?.click()");
   await touchDevice(G, 390, 844);
   // ⑤ 번호 누르면 복사(안 되면 선택) — 토스트
+  await H.waitFor("document.querySelector('.question-card .qno') !== null", 15000).catch(() => false);
+  const qid2 = await H.evaluate("document.querySelector('.question-card .qno')?.dataset.qno ?? ''");
   await realClick(H, '.question-card .qno');
   await H.waitFor("document.querySelector('[data-report-toast]')?.innerText.includes('#') === true", 2000);
   const cp = await H.evaluate("document.querySelector('[data-report-toast]')?.innerText ?? ''");
-  record('★★ R061 번호 누르면 복사 — "#id 복사됨"(또는 선택됨)', cp.includes(`#${qid}`) && /복사됨|선택됨/.test(cp), cp);
+  record('★★ R061 번호 누르면 복사 — "#id 복사됨"(또는 선택됨)', cp.includes(`#${qid2}`) && /복사됨|선택됨/.test(cp), cp);
   await withPg((c) => c.query(`DELETE FROM app_reports WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[`${ACCOUNT_PREFIX}_rh`, `${ACCOUNT_PREFIX}_rg`]]));
   await G.close?.();
   await H.close?.();
@@ -4356,6 +4527,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R064) {
     await closeAllTabs(browser);
     await r064Flow(browser);
+  }
+  // ★ R065 — 제보 메뉴 두 갈래 · 최근 목록 · 창이 열린 채 미니게임
+  if (process.env.UICHECK_R065) {
+    await closeAllTabs(browser);
+    await r065Flow(browser);
   }
   // ★ R061 — 앱 제보 🐞 · 📝 · 문항 번호
   if (process.env.UICHECK_R061) {

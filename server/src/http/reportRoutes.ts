@@ -1,7 +1,8 @@
 // =============================================================================
 // ★★ 앱 제보 (R061 / D-255) — 🐞 전반적 · 📝 문제 전용 → app_reports(0024)
 //
-//   POST /api/reports  { kind, text, reasons[], screen, questionIndex?, minigameKey?, questionId?, minigameItem?, device, recent? } → { ok, id }
+//   POST /api/reports  { kind, text, reasons[], screen, questionIndex?, minigameKey?, questionId?, minigameItem?, device, recent?, at? } → { ok, id }
+// ★ R065 — at(최근 목록에서 고른 지난 대상)이 있으면 판 · 미니게임 판은 제보자가 참가한 판에서 찾는다(pastTarget).
 //
 // ★ 문항 · 판 · 미니게임 판은 **서버가 채운다**(그 계정이 있는 방의 지금 것 — reportContext). 방 밖이면 null.
 //   공개 전 문항도 **id 만** 담는다(정답 · 지문은 담지 않는다 — 보고 스크립트가 questions 에서 읽는다).
@@ -76,6 +77,52 @@ export async function reportContext(room: Room | undefined, input: Pick<ReportIn
   };
 }
 
+/** ★ R065 (D-270) — 최근 목록에서 고른 지난 대상: 판 · 미니게임 판은 **제보자가 참가한 판만** 붙인다(없으면 null — 거부하지 않음) */
+export interface PastFinders {
+  /** 그 문항이 나온 판 중 이 계정이 참가한 판 — at 에 가장 가까운 것 */
+  gameOfQuestion: (accountId: string, questionId: string, at: string) => Promise<string | null>;
+  /** 그 key 의 미니게임 판 중 이 계정이 참가한 판 — at ±10분 안에서 가장 가까운 것 */
+  runOfMinigame: (accountId: string, key: string, at: string) => Promise<{ runId: string; gameId: string | null } | null>;
+}
+export async function pastTarget(
+  ctx: ReportContext,
+  accountId: string,
+  input: Pick<ReportInput, 'questionId' | 'minigameKey' | 'minigameItem' | 'at'>,
+  find: PastFinders,
+): Promise<ReportContext> {
+  if (!input.at) return ctx;
+  if (input.questionId) return { ...ctx, gameId: await find.gameOfQuestion(accountId, input.questionId, input.at), minigameKey: null, minigameRunId: null, minigameItem: null };
+  if (input.minigameKey) {
+    const run = await find.runOfMinigame(accountId, input.minigameKey, input.at);
+    return { ...ctx, gameId: run?.gameId ?? null, questionId: null, questionIndex: null, minigameKey: input.minigameKey, minigameRunId: run?.runId ?? null, minigameItem: input.minigameItem ? ctx.minigameItem : null };
+  }
+  return ctx;
+}
+
+const pastFinders: PastFinders = {
+  gameOfQuestion: async (accountId, questionId, at) => {
+    const r = await query<{ id: string }>(
+      `SELECT gq.game_id::text AS id FROM game_questions gq
+         JOIN game_players gp ON gp.game_id = gq.game_id AND gp.account_id = $1
+        WHERE gq.question_id = $2
+        ORDER BY abs(extract(epoch FROM gq.started_at - $3::timestamptz)) LIMIT 1`,
+      [accountId, questionId, at],
+    );
+    return r.rows[0]?.id ?? null;
+  },
+  runOfMinigame: async (accountId, key, at) => {
+    const r = await query<{ id: string; game_id: string | null }>(
+      `SELECT mr.id::text AS id, mr.game_id::text AS game_id FROM minigame_runs mr
+         JOIN minigame_players mp ON mp.run_id = mr.id AND mp.account_id = $1
+        WHERE mr.minigame_key = $2 AND mr.started_at BETWEEN $3::timestamptz - interval '10 minutes' AND $3::timestamptz + interval '10 minutes'
+        ORDER BY abs(extract(epoch FROM mr.started_at - $3::timestamptz)) LIMIT 1`,
+      [accountId, key, at],
+    );
+    const row = r.rows[0];
+    return row ? { runId: row.id, gameId: row.game_id } : null;
+  },
+};
+
 /** 글의 "#번호" · "photo-0303" — 칸이 비어 있을 때만 · 있는 id 일 때만 */
 export async function fillFromText(ctx: ReportContext, text: string, exists: (kind: 'q' | 'm', id: string) => Promise<boolean>): Promise<ReportContext> {
   const refs = reportRefs(text);
@@ -113,6 +160,7 @@ reportRouter.post('/', async (req, res) => {
   // 클라가 준 문항 번호는 있는 것만
   if (ctx.questionId && v.questionId === ctx.questionId && !(await existsInDb('q', ctx.questionId))) ctx = { ...ctx, questionId: null, questionIndex: null };
   if (ctx.minigameItem && v.minigameItem === ctx.minigameItem && !(await existsInDb('m', ctx.minigameItem))) ctx = { ...ctx, minigameItem: null };
+  if (session) ctx = await pastTarget(ctx, session.accountId, v, pastFinders);
   if (session) ctx = await fillFromText(ctx, v.text, existsInDb);
   const r = await query<{ id: string }>(
     `INSERT INTO app_reports (account_id, kind, text, reasons, screen, room_id, game_id, question_id, question_index,

@@ -37,7 +37,8 @@ import PhotoGuess from './PhotoGuess.js';
 import QuizNumber from './QuizNumber.js';
 import QuizReveal, { WhichSummary, quizValueText } from './QuizReveal.js';
 import { preloadAll, preloadQuizImages } from './QuizParts.js';
-import { QNo, QReportButton } from '../AppReport.js';
+import { QNo } from '../AppReport.js';
+import { isReportOpen } from '../reportGuard.js';
 import WhichPick from './WhichPick.js';
 import { GaugeStop, MinorityPick, OddOneGrid, twemoji } from './R053Games.js';
 import { BalloonArt, BalloonBlow, TapRush } from './R054Games.js';
@@ -113,7 +114,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         // ★ 번개손은 "시작" 소리를 내지 않는다(신호 소리와 헷갈린다) · 타자는 자기 입력칸에 포커스를 둔다
         if (view.key !== 'reaction') sfx('mg-go');
         // 모바일 키보드 내림 · PC 채팅 입력에서 손 떼기 (Space · 방향키가 미니게임으로)
-        if (view.key !== 'typing') (document.activeElement as HTMLElement | null)?.blur?.();
+        // ★ R065 (D-271) — 제보 창이 열려 있으면 그 글칸은 그대로(찬종 "제보하는 경우에는 글 좀 쓰게 내비둬")
+        if (view.key !== 'typing' && !isReportOpen()) (document.activeElement as HTMLElement | null)?.blur?.();
         break;
       case 'roundResult':
         setMusicMode('minigame');
@@ -469,11 +471,10 @@ function RoundResult({
       {QUIZ_KEYS.has(view.key) ? (
         <>
           <QuizReveal view={view} mine={view.spectating ? undefined : mine} />
-          {/* ★ R061 — 미니게임 문항 번호(minigame_items.item_id · 누르면 복사) · 📝 */}
+          {/* ★ R061 — 미니게임 문항 번호(minigame_items.item_id · 누르면 복사) · ★ R065 📝 뺌 → 제보 메뉴 */}
           {view.round?.itemId && (
             <p className="mg-item-id">
               <QNo id={view.round.itemId} raw />
-              <QReportButton minigameItem={view.round.itemId} />
             </p>
           )}
         </>

@@ -39,6 +39,8 @@ export interface ReportInput {
   recent: { e: string; t: number }[] | null;
   /** ★ R063 — 로그인 전 제보: 로그인 칸에 쳐 둔 아이디(비밀번호는 절대 아님) */
   loginHint: string | null;
+  /** ★ R065 (D-270) — 제보 메뉴의 최근 목록에서 고른 대상의 시각(ISO) — 있으면 서버가 "제보자가 참가한 그 판" 을 찾는다 */
+  at: string | null;
 }
 
 const KINDS = new Set<string>(REPORT_KINDS.map((k) => k.code));
@@ -70,7 +72,10 @@ export function parseReportInput(body: unknown): { ok: true; value: ReportInput 
         .map((x) => ({ e: x.e.slice(0, 40), t: x.t }))
     : null;
   const loginHint = typeof b.loginHint === 'string' && b.loginHint.trim() ? b.loginHint.trim().slice(0, 40) : null;
-  return { ok: true, value: { kind, text, reasons, screen, questionIndex, minigameKey, questionId, minigameItem, device, recent, loginHint } };
+  // ★ R065 — 최근 목록 대상의 시각: 지난 이틀 ~ 지금(+1시간 시계 어긋남)만
+  const atMs = typeof b.at === 'string' && b.at.length <= 40 ? Date.parse(b.at) : NaN;
+  const at = Number.isFinite(atMs) && atMs > Date.now() - 2 * 86_400_000 && atMs < Date.now() + 3_600_000 ? new Date(atMs).toISOString() : null;
+  return { ok: true, value: { kind, text, reasons, screen, questionIndex, minigameKey, questionId, minigameItem, device, recent, loginHint, at } };
 }
 
 /** 기기 정보는 아는 칸만 · 짧게 */

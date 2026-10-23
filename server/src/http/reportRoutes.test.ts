@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { parseReportInput } from '@quiz/shared';
-import { ANON_SCREENS, fillFromText, ipHash, reportContext } from './reportRoutes.js';
+import { ANON_SCREENS, fillFromText, ipHash, pastTarget, reportContext } from './reportRoutes.js';
 import type { Room } from '../rooms/types.js';
 
 const none = { questionIndex: null, minigameKey: null, questionId: null, minigameItem: null };
@@ -55,5 +55,33 @@ describe('R061 제보 맥락', () => {
     const r = parseReportInput({ kind: 'bug', text: 'x', screen: 'auth', loginHint: '  chanjong  ', device: { screen: '1536x864', dpr: 1.25, theme: 'night', ui: 'pc', password: 'nope' } });
     expect(r.ok && r.value.device).toEqual({ screen: '1536x864', dpr: 1.25, theme: 'night', ui: 'pc' });
     expect(r.ok && r.value.loginHint).toBe('chanjong');
+  });
+
+  it('R065 최근 목록의 지난 대상 — 판 · 미니게임 판은 제보자가 참가한 것만(못 찾으면 null · 거부 없음)', async () => {
+    const room = { id: 'r1', state: 'QUESTION_ACTIVE', game: { gameId: '900' }, result: null, minigame: null, currentQuestion: { questionId: '5', index: 2 } } as unknown as Room;
+    const find = {
+      gameOfQuestion: async (acc: string, qid: string) => (acc === '7' && qid === '2271' ? '850' : null),
+      runOfMinigame: async (acc: string, key: string) => (acc === '7' && key === 'angle' ? { runId: '523', gameId: '851' } : null),
+    };
+    const q = { ...none, questionId: '2271', questionIndex: 3, at: new Date().toISOString() };
+    const c1 = await pastTarget(await reportContext(room, q), '7', q, find);
+    expect(c1).toMatchObject({ roomId: 'r1', gameId: '850', questionId: '2271', questionIndex: 3, minigameRunId: null });
+    // 남의 판 — 판 번호 없이(지금 방의 900 도 붙이지 않는다)
+    expect((await pastTarget(await reportContext(room, q), '8', q, find)).gameId).toBeNull();
+    const m = { ...none, minigameKey: 'angle', at: new Date().toISOString() };
+    expect(await pastTarget(await reportContext(room, m), '7', m, find)).toMatchObject({ gameId: '851', minigameKey: 'angle', minigameRunId: '523', questionId: null });
+    expect(await pastTarget(await reportContext(room, m), '8', m, find)).toMatchObject({ gameId: null, minigameRunId: null });
+    // at 이 없으면(일반 제보 · 지금 화면) 그대로
+    expect((await pastTarget(await reportContext(room, none), '7', { ...none, at: null }, find)).gameId).toBe('900');
+  });
+
+  it('R065 at — ISO 시각만 · 이틀보다 오래되거나 먼 미래면 버림', () => {
+    const now = new Date().toISOString();
+    const ok = parseReportInput({ kind: 'question', reasons: ['answer'], screen: 'lobby', at: now });
+    expect(ok.ok && ok.value.at).toBe(now);
+    const old = parseReportInput({ kind: 'question', reasons: ['answer'], screen: 'lobby', at: '2001-01-01T00:00:00Z' });
+    expect(old.ok && old.value.at).toBeNull();
+    const bad = parseReportInput({ kind: 'question', reasons: ['answer'], screen: 'lobby', at: 'x' });
+    expect(bad.ok && bad.value.at).toBeNull();
   });
 });

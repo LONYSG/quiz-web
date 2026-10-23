@@ -8,14 +8,20 @@
 // ★ 문항 번호 QNo — 누르면 "#2271" 복사(안 되면 글 선택) · 질문 글(복사 막기) 바깥.
 // ★ 포커스: 열기 전엔 답 입력창 포커스를 빼앗지 않는다(누를 때 mousedown 막기) · 닫으면 열기 전 자리로 돌려준다.
 // ★ 맥락: 클라는 screen · 문항 순번 · 미니게임 key 만 — 판 · 문항 · 미니게임 판 id 는 서버가 붙인다. 채팅 원문은 보내지 않는다.
+// ★★ R065 (D-270 · D-271) — 찬종 "제보하기를 문제 컴포넌트 안에다 넣지 말고 제보 메뉴를 누르면 두 가지":
+//   제보 메뉴(위 막대 · ☰ · Alt+B) → 작은 메뉴 창 ① 문제 · 미니게임 제보(최근 목록 reportRecent 에서 골라 문항 창) ② 일반 제보.
+//   문제 카드 · 미니게임 머리의 📝 는 뺐다(결과 목록의 📝 는 그대로). 로그인 전 링크는 일반 제보로 바로.
+//   창이 열려 있으면 게임이 키 · 포커스를 가져가지 않는다(reportGuard) · 맥락(화면 · 최근 이벤트 · 기기)은 **창을 연 때** 것으로 고정.
 // =============================================================================
 
 import { recentClientErrors } from './clientErrors.js';
+import { recentTargets, subscribeRecent, type RecentTarget } from './reportRecent.js';
+import { setReportOpen } from './reportGuard.js';
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import type { Socket } from 'socket.io-client';
-import { Bug, NotebookPen } from 'lucide-react';
-import { FEEDBACK_REASONS, REPORT_KINDS, REPORT_TEXT_MAX } from '@quiz/shared';
+import { Bug, ListChecks, MessageSquareWarning, NotebookPen } from 'lucide-react';
+import { FEEDBACK_REASONS, REPORT_KINDS, REPORT_TEXT_MAX, minigameInfo, type MinigameKey } from '@quiz/shared';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import { getEmojiInsert } from './emojiCatalog.js';
@@ -39,7 +45,21 @@ interface QTarget {
   questionId: string | null;
   minigameItem: string | null;
   questionIndex: number | null;
+  /** ★ R065 — 최근 목록에서 고른 미니게임(문항 없는 게임도) · 그 대상의 시각(서버가 그 판을 찾는다) */
+  minigameKey?: string | null;
+  at?: number | null;
+  /** 창 머리 이름(미니게임 이름 등) */
+  name?: string;
+  /** 연 때 맥락 */
+  frozen: Frozen;
 }
+/** ★ R065 (D-271) — 창을 연 때의 맥락(그 뒤 화면이 바뀌어도 "제보 당시 화면") */
+interface Frozen {
+  ctx: ReportScreen;
+  recent: { e: string; t: number }[];
+  device: ReturnType<typeof device>;
+}
+const freeze = (mobile: boolean): Frozen => ({ ctx: screenNow, recent: recentEvents.slice(), device: device(mobile) });
 let screenNow: ReportScreen = { screen: 'unknown', questionIndex: null, minigameKey: null, label: '' };
 let qTarget: QTarget | null = null;
 let flashMsg: { text: string; until: number } | null = null;
@@ -216,6 +236,7 @@ function closeQReport() {
   emit();
 }
 
+/** ★ 결과 목록 · 로비 목록의 📝 (R065 — 문제 카드 · 미니게임 머리에서는 뺐다) */
 export function QReportButton({ questionId = null, minigameItem = null, questionIndex = null }: { questionId?: string | null; minigameItem?: string | null; questionIndex?: number | null }) {
   const mobile = useUiMode() === 'mobile';
   const current = useCurrentPopup();
@@ -227,7 +248,7 @@ export function QReportButton({ questionId = null, minigameItem = null, question
       aria-label="이 문제 피드백"
       data-qreport={questionId ?? minigameItem ?? ''}
       onMouseDown={keepFocus}
-      onClick={() => openQReport({ questionId, minigameItem, questionIndex }, current)}
+      onClick={() => openQReport({ questionId, minigameItem, questionIndex, frozen: freeze(mobile) }, current)}
     >
       <Icon icon={NotebookPen} />
       {!mobile && <span className="qreport-lbl">피드백</span>}
@@ -236,12 +257,12 @@ export function QReportButton({ questionId = null, minigameItem = null, question
 }
 
 function QReportWindow({ target, onClose }: { target: QTarget; onClose: () => void }) {
-  const mobile = useUiMode() === 'mobile';
   const [reasons, setReasons] = useState<string[]>([]);
   const [text, setText] = useState('');
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const label = target.questionId ? `#${target.questionId}` : (target.minigameItem ?? '');
+  const { ctx, recent, device: dev } = target.frozen;
   const send = () => {
     if (busy || (!text.trim() && reasons.length === 0)) return;
     setBusy(true);
@@ -250,16 +271,17 @@ function QReportWindow({ target, onClose }: { target: QTarget; onClose: () => vo
       kind: 'question',
       text: text.trim(),
       reasons,
-      screen: screenNow.screen,
-      questionIndex: target.questionIndex ?? screenNow.questionIndex,
-      minigameKey: screenNow.minigameKey,
+      screen: ctx.screen,
+      questionIndex: target.questionIndex ?? (target.at ? null : ctx.questionIndex),
+      minigameKey: target.minigameKey ?? (target.at ? null : ctx.minigameKey),
       questionId: target.questionId,
       minigameItem: target.minigameItem,
-      device: device(mobile),
-      recent: recentEvents.slice(),
+      at: target.at ? new Date(target.at).toISOString() : null,
+      device: dev,
+      recent,
     })
       .then(() => {
-        flash(`문항 ${label} 피드백 접수`, 1500);
+        flash(`${target.name ?? `문항 ${label}`} 피드백 접수`, 1500);
         onClose();
       })
       .catch((e: Error) => {
@@ -268,10 +290,21 @@ function QReportWindow({ target, onClose }: { target: QTarget; onClose: () => vo
       });
   };
   return (
-    <div className="modal report-modal qreport-modal" role="dialog" aria-label={`문항 ${label} 피드백`}>
+    <div className="modal report-modal qreport-modal" role="dialog" aria-label={`${target.name ?? `문항 ${label}`} 피드백`}>
       <div className="pop-head">
         <p className="pop-title">
-          <Icon icon={NotebookPen} /> 문항 <span className="mono">{label}</span> 피드백
+          <Icon icon={NotebookPen} />{' '}
+          {target.name ? (
+            <>
+              {target.name}
+              {label && <span className="mono"> · {label}</span>}
+            </>
+          ) : (
+            <>
+              문항 <span className="mono">{label}</span>
+            </>
+          )}{' '}
+          피드백
         </p>
         <PopupClose onClose={onClose} />
       </div>
@@ -321,14 +354,15 @@ function QReportWindow({ target, onClose }: { target: QTarget; onClose: () => vo
 // ── ⓑ 전반적 🐞 ────────────────────────────────────────────────────────────────
 const BUG_KINDS = REPORT_KINDS.filter((k) => k.code !== 'question');
 
-function ReportWindow({ onClose }: { onClose: () => void }) {
+function ReportWindow({ frozen, onClose }: { frozen: Frozen; onClose: () => void }) {
   const mobile = useUiMode() === 'mobile';
   const draft = useRef(readDraft()).current;
   const [kind, setKind] = useState<string>(draft?.kind && BUG_KINDS.some((k) => k.code === draft.kind) ? draft.kind : 'bug');
   const [text, setText] = useState(draft?.text ?? '');
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(draft ? '보내지 못한 글을 되살렸어요.' : null);
-  const ctx = screenNow;
+  // ★ R065 — 연 때 맥락(열고 나서 화면이 바뀌어도 그대로)
+  const { ctx, recent, device: dev } = frozen;
   const send = () => {
     if (busy || !text.trim()) return;
     setBusy(true);
@@ -341,8 +375,8 @@ function ReportWindow({ onClose }: { onClose: () => void }) {
       screen: ctx.screen,
       questionIndex: ctx.questionIndex,
       minigameKey: ctx.minigameKey,
-      device: device(mobile),
-      recent: recentEvents.slice(),
+      device: dev,
+      recent,
     })
       .then(({ id }) => {
         writeDraft(null);
@@ -405,6 +439,120 @@ function ReportWindow({ onClose }: { onClose: () => void }) {
   );
 }
 
+// ── ★ R065 (D-270) 제보 메뉴 — 두 갈래 ──────────────────────────────────────────
+const LIST_MAX = 20;
+const hhmm = (t: number) => new Date(t).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false });
+const mgName = (key: string | null) => (key ? (minigameInfo(key as MinigameKey)?.name ?? key) : '');
+
+/** 목록 한 줄 — "문제 3 · #2411 · 질문 앞 24자…" / "각도 맞히기 · photo-0012 · 00:40" */
+function RecentRow({ t, onPick }: { t: RecentTarget; onPick: () => void }) {
+  return (
+    <button type="button" className="report-recent-row" data-recent={t.questionId ?? t.minigameItem ?? t.minigameKey ?? ''} onClick={onPick}>
+      {t.questionId ? (
+        <>
+          <span className="rr-head">문제 {t.questionIndex}</span>
+          <span className="mono rr-id">#{t.questionId}</span>
+          <span className="rr-text dim" title={t.text ?? ''}>
+            {t.text}
+            {t.text && t.text.length >= 24 ? '…' : ''}
+          </span>
+        </>
+      ) : (
+        <>
+          <span className="rr-head">{mgName(t.minigameKey)}</span>
+          {t.minigameItem && <span className="mono rr-id">{t.minigameItem}</span>}
+          <span className="rr-text dim mono">{hhmm(t.at)}</span>
+        </>
+      )}
+    </button>
+  );
+}
+
+type Step = 'menu' | 'list' | 'general';
+let nextStep: Step = 'menu';
+
+function ReportFlow({ onClose }: { onClose: () => void }) {
+  const mobile = useUiMode() === 'mobile';
+  // ★ 연 때 맥락 — 메뉴를 연 순간(목록 · 일반 창으로 넘어가도 같은 것)
+  const frozen = useRef<Frozen | null>(null);
+  frozen.current ??= freeze(mobile);
+  const [step, setStep] = useState<Step>(() => {
+    const st = nextStep;
+    nextStep = 'menu';
+    return st;
+  });
+  const items = useSyncExternalStore(subscribeRecent, recentTargets);
+  if (step === 'general') return <ReportWindow frozen={frozen.current} onClose={onClose} />;
+  const head = (
+    <div className="pop-head">
+      <p className="pop-title">
+        <Icon icon={Bug} /> 제보
+      </p>
+      <PopupClose onClose={onClose} />
+    </div>
+  );
+  if (step === 'list') {
+    const shown = items.slice(0, LIST_MAX);
+    const fz = frozen.current;
+    return (
+      <div className="modal report-modal report-menu" role="dialog" aria-label="문제 · 미니게임 제보" data-report-list>
+        {head}
+        <p className="report-menu-sub dim">어느 것을 제보할까요? (최근 것이 위)</p>
+        {shown.length === 0 ? (
+          <p className="report-recent-empty dim" data-recent-empty>
+            아직 본 문제가 없어요
+          </p>
+        ) : (
+          <div className="report-recent">
+            {shown.map((t) => (
+              <RecentRow
+                key={t.key}
+                t={t}
+                onPick={() =>
+                  openQReport(
+                    {
+                      questionId: t.questionId,
+                      minigameItem: t.minigameItem,
+                      questionIndex: t.questionIndex,
+                      minigameKey: t.minigameKey,
+                      at: t.at,
+                      name: t.questionId ? undefined : mgName(t.minigameKey),
+                      frozen: fz,
+                    },
+                    null,
+                  )
+                }
+              />
+            ))}
+          </div>
+        )}
+        <div className="report-actions">
+          <button type="button" className="ghost" data-report-back onClick={() => setStep('menu')}>
+            뒤로
+          </button>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="modal report-modal report-menu" role="dialog" aria-label="제보" data-report-menu>
+      {head}
+      <div className="report-menu-pick">
+        <button type="button" className="report-menu-item" data-report-pick="recent" autoFocus onClick={() => setStep('list')}>
+          <Icon icon={ListChecks} />
+          <span className="rm-title">문제 · 미니게임 제보</span>
+          <span className="rm-sub dim">최근에 본 것에서 골라요</span>
+        </button>
+        <button type="button" className="report-menu-item" data-report-pick="general" onClick={() => setStep('general')}>
+          <Icon icon={MessageSquareWarning} />
+          <span className="rm-title">일반 제보</span>
+          <span className="rm-sub dim">버그 · 어색함 · 제안 · 기타</span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
 /** ★ R063 (D-256) — 위 막대의 정식 메뉴 버튼(떠 있는 🐞 는 없앴다 — 찬종 "정식 메뉴처럼") */
 export function ReportButton({ className = 'ghost tiny report-btn' }: { className?: string }) {
   const [, setOpen] = usePopup('report');
@@ -421,7 +569,15 @@ export function ReportLink() {
   const [, setOpen] = usePopup('report');
   return (
     <p className="report-link">
-      <button type="button" className="link-btn" data-report-link onClick={() => setOpen(true)}>
+      <button
+        type="button"
+        className="link-btn"
+        data-report-link
+        onClick={() => {
+          nextStep = 'general';
+          setOpen(true);
+        }}
+      >
         문제가 있나요? 제보
       </button>
     </p>
@@ -440,6 +596,8 @@ export default function ReportHost({ ctx }: { ctx: ReportScreen }) {
   const [open, setOpen] = usePopup('report');
   const target = useSyncExternalStore(subscribe, () => qTarget);
   const qOpen = target !== null;
+  // ★ R065 (D-271) — 게임(키 · 자동 포커스)이 읽는다
+  setReportOpen(open || qOpen);
   const close = useCallback(() => setOpen(false), [setOpen]);
   const qClose = closeQReport;
   // 다른 창(🐞 · 메뉴 …)이 열리면 📝 는 닫는다 — "지난 판 평가" 위에 겹친 것만 남긴다
@@ -475,7 +633,7 @@ export default function ReportHost({ ctx }: { ctx: ReportScreen }) {
     );
   return (
     <>
-      {open && back(<ReportWindow onClose={close} />, close)}
+      {open && back(<ReportFlow onClose={close} />, close)}
       {target && back(<QReportWindow key={target.questionId ?? target.minigameItem ?? ''} target={target} onClose={qClose} />, qClose)}
       {msg && (
         <div className="report-toast" role="status" data-report-toast>

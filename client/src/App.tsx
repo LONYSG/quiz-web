@@ -50,6 +50,7 @@ import InviteToast from './InviteToast.js';
 import AchievementToast from './AchievementToast.js';
 import GrantToast from './GrantToast.js';
 import ReportHost, { ReportButton, ReportLink, trackReportEvents, type ReportScreen } from './AppReport.js';
+import { clearRecentTargets } from './reportRecent.js';
 import { useCurrentPopup } from './popup.js';
 import { minigameInfo, type MinigameKey } from '@quiz/shared';
 import { PersonCardHost } from './PersonCard.js';
@@ -304,6 +305,8 @@ export default function App() {
       setNotice({ message: errorMessage(err) });
     }
     setAccount(null);
+    // ★ R065 — 제보 메뉴 최근 목록은 로그아웃 때 비운다
+    clearRecentTargets();
     window.history.replaceState(null, '', '/');
   }, []);
 
