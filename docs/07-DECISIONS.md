@@ -310,6 +310,18 @@
 
 ---
 
+## D-271. 제보 창이 열려 있으면 게임이 방해하지 않는다 (R065 · 찬종 "제보 중에 미니게임 실행되면 제보 글 못 쓰게 막던데(커서가 이동) … 글 좀 쓰게 내비둬")
+- 원인 셋: ① 미니게임 play 진입 때 `document.activeElement.blur()`(채팅에서 손 떼기 — MinigameStage) 가 제보 글칸까지 풀었다 ② 미니게임 전역 keydown(window · capture — Space · 방향키 · 숫자)이 글칸보다 먼저 키를 먹었다 ③ 퀴즈류 · 사진 · 타자 입력칸 자동 포커스.
+- `reportGuard.ts` — `isReportOpen()`(ReportHost 가 그릴 때 적음 · 메뉴 · 목록 · 일반 · 문항 창 어느 것이든) · `typingTarget(e)` = 제보 창 열림 **또는** 글칸(input · textarea · contenteditable) 에 치는 중. 미니게임 전역 키 9곳은 typingTarget 이면 return · 이모티콘 창 · 고르기 창 Esc 와 Alt 단축키 · Esc→채팅은 isReportOpen 이면 쉼 · 자동 포커스 3곳 · 방장 확인창 뒤 채팅 포커스 · play 진입 blur 는 열려 있으면 건너뜀.
+- ★ **방 채팅칸(data-chat-input)은 typingTarget 에서 뺀다** — "채팅 입력 중이어도 미니게임이 먼저"(CakeWait 등 · 채팅칸에 포커스가 남은 채 Space 로 노는 꼴)는 그대로. 브리핑의 "input/textarea 면 return" 을 그대로 하면 이 꼴이 깨져서 채팅칸만 예외.
+- 맥락 고정: 메뉴를 연 순간의 화면(screen · 맥락 줄) · 최근 이벤트 · 기기 정보를 복사해 두고 그것을 보낸다(문항 창 · 일반 창 둘 다). ★ 서버가 붙이는 방 · 판 · 지금 미니게임 칸은 그대로 "보낼 때의 방" 기준(at 없는 제보).
+- 창은 App 층(ReportHost)이라 방 상태가 바뀌어도 닫히지 않는다(확인 — r065).
+
+## D-270. 제보 메뉴 두 갈래 · 최근 문제 · 미니게임 목록 · 📝 제거 (R065 · 찬종 "제보하기를 문제 컴포넌트 안에다 넣지 말고 제보 메뉴를 누르면 두 가지")
+- 제보 메뉴 → 작은 창 ① 문제 · 미니게임 제보(최근 목록 → 문항 창) ② 일반 제보(옛 🐞 창). 로그인 전 링크는 ② 바로. 문제 카드 머리 · 미니게임 공개의 📝 제거(결과 목록 · 로비 지난 판 목록의 📝 는 자리가 느긋해서 그대로). `#번호` · 👍/👎 그대로.
+- 최근 목록(`reportRecent.ts`) — 모듈 변수 + sessionStorage `report.recent`(30개 · 보이는 건 20) · 로그아웃 때 비움 · 방을 나가도 남음. 넣는 때: `question.resolved`(questionId · 순번 · 질문 앞 24자 · 판+문항으로 한 번) · `minigame.state` 가 play(판 token 한 번 · 문항 있는 게임은 문항마다 · key · itemId · 시각).
+- 서버: ReportInput 에 `at`(ISO · 지난 이틀 ~ 지금 +1시간만) — 있으면 `pastTarget()` 가 game_id · minigame_run_id 를 **제보자가 참가한 판**에서 찾는다(문항: game_questions × game_players · at 에 가장 가까운 판 / 미니게임: minigame_runs × minigame_players · 그 key · at ±10분 · 가장 가까운 것). 못 찾으면 null — 거부하지 않는다. 남의 판 번호는 붙지 않는다. 마이그레이션 없음.
+
 ## D-269. 이모티콘 도배 완화 (R064 · 찬종 #30 "도배 제한 좀더 완화")
 - 표준 이모티콘 **5초 5회 → 5초 8회**(잠금 5초 그대로) · 특별 **10초 3회 → 10초 5회**(잠금 10초 그대로) · 채팅 5초 5회 그대로. 반응 꼴(1~3개를 연달아)이 막히는 느낌이 없게. 잠금 문구는 그대로. 값은 shared RULES(EMOJI_RATE_MAX · SPECIAL_EMOJI_RATE_MAX) · 환경 변수로 덮어쓰기 그대로.
 
