@@ -3660,6 +3660,214 @@ async function r060Flow(browser) {
   await G.close?.();
   await H.close?.();
 }
+// ★★ R063 — 찬종 제보 19건 (UICHECK_R063=1 · 묶음 r063 · docs/design/r063 · 찬종 환경 1536×864 @1.25 먼저)
+/** 글꼴 감사 — 글자가 보이는 요소의 computed font-family 가 --font(Pretendard…)로 시작하나(일부러 mono 인 자리는 뺀다) */
+const FONT_AUDIT = "JSON.stringify((() => { const bad = new Map(); for (const el of document.querySelectorAll('body *')) { if (!(el instanceof HTMLElement) || !el.offsetParent && getComputedStyle(el).position !== 'fixed') continue; const own = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()) || ['INPUT','TEXTAREA','SELECT','BUTTON'].includes(el.tagName); if (!own) continue; const f = getComputedStyle(el).fontFamily; if (/Pretendard/.test(f.split(',')[0]) || /monospace|Cascadia|Consolas/.test(f)) continue; const k = el.tagName.toLowerCase() + (el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\\s+/)[0] : ''); bad.set(k, f.split(',')[0]); } return [...bad.entries()].slice(0, 12); })())";
+async function r063Flow(browser) {
+  const fontBad = [];
+  const audit = async (P, where) => {
+    const b = JSON.parse(await P.evaluate(FONT_AUDIT));
+    for (const [k, f] of b) fontBad.push(`${where}:${k}(${f})`);
+  };
+  const H = await newPage(browser, 'R063-host', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'oh', '굽기방장');
+  const roomId = await createRoom(H, 'R063 제보 19');
+  const G = await newPage(browser, 'R063-guest', true);
+  await touchDevice(G, 390, 844);
+  await signUp(G, 'og', '굽기손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 10000);
+  await sleep(400);
+  await audit(H, '방(PC)');
+  // ── A 제보 — PC 위 막대 · 모바일 메뉴 · 떠 있는 🐞 없음
+  const a1 = JSON.parse(await H.evaluate("JSON.stringify({ btn: !!document.querySelector('.room-tools [data-report-btn]')?.offsetParent, float: document.querySelector('.report-float') !== null })"));
+  await snap(H, '130-report-topbar-pc');
+  await realClick(H, '.room-tools [data-report-btn]');
+  await H.waitFor("document.querySelector('.report-modal') !== null", 3000);
+  const ctxHidden = await H.evaluate("document.querySelector('[data-report-ctx]') === null");
+  const ph = await H.evaluate("document.querySelector('.report-text')?.placeholder ?? ''");
+  await pressKey(H, 'Escape', 'Escape', 27);
+  await tapOn(G, '#menu-btn');
+  await G.waitFor("document.querySelector('[data-menu-report]') !== null", 3000);
+  const g1 = JSON.parse(await G.evaluate("JSON.stringify({ menu: !!document.querySelector('[data-menu-report]'), barBtn: !!document.querySelector('.room-tools [data-report-btn]')?.offsetParent, float: document.querySelector('.report-float') !== null })"));
+  await snap(G, '131-report-menu-m390');
+  await pressKey(G, 'Escape', 'Escape', 27);
+  record('★★★ A 제보 — PC 위 막대 "제보" · 모바일은 ☰ 메뉴만 · 떠 있는 🐞 없음 · 대기실은 맥락 줄 숨김 · placeholder 한 줄', a1.btn && !a1.float && g1.menu && !g1.barBtn && !g1.float && ctxHidden && ph === '무엇이 이상했나요?', JSON.stringify({ a1, g1, ctxHidden, ph }));
+  // ── C 미니게임 고르기 창
+  if (!(await H.evaluate("document.querySelector('.mg-check input')?.checked === true"))) await realClick(H, '.mg-check input');
+  await H.waitFor("document.querySelector('[data-mg-catalog-open]') !== null", 4000);
+  await realClick(H, '[data-mg-catalog-open]');
+  await H.waitFor("document.querySelector('.mg-cat') !== null", 3000);
+  await sleep(300);
+  const CAT = "JSON.stringify((() => { const m = document.querySelector('.mg-cat'); const l = m.querySelector('.mg-cat-list'); const f = m.querySelector('.mg-cat-foot').getBoundingClientRect(); const r = m.getBoundingClientRect(); return { cards: m.querySelectorAll('.mg-cat-card').length, ex: m.querySelectorAll('.mg-cat-ex').length, page: document.documentElement.scrollHeight - innerHeight, inner: l.scrollHeight > l.clientHeight, top: Math.round(r.top), footIn: f.bottom <= innerHeight, confirm: !!m.querySelector('[data-mg-confirm]'), nth: /이번 판/.test(document.body.innerText) }; })())";
+  const c1 = JSON.parse(await H.evaluate(CAT));
+  await snap(H, '132-mg-catalog-pc');
+  await pressKey(H, 'Escape', 'Escape', 27);
+  await G.waitFor("document.querySelector('[data-mg-catalog-open]') !== null", 4000);
+  await tapOn(G, '[data-mg-catalog-open]');
+  await G.waitFor("document.querySelector('.mg-cat') !== null", 3000);
+  await sleep(300);
+  const c2 = JSON.parse(await G.evaluate(CAT));
+  await snap(G, '133-mg-catalog-m390');
+  await pressKey(G, 'Escape', 'Escape', 27);
+  record('★★★ C 고르기 창 — 카드 16 · 예시 5 · 창 안에서만 스크롤(페이지 0) · 꼬리 보임 · 방장 [확정] · 손님은 보기만 · "이번 판 N번" 없음', c1.cards === 16 && c1.ex === 5 && c1.page <= 0 && c1.footIn && c1.top >= 0 && c1.confirm && !c1.nth && c2.cards === 16 && c2.page <= 0 && c2.footIn && !c2.confirm && c2.inner, JSON.stringify({ c1, c2 }));
+  // ── G④ 프로필 카드 하나(사람 → 사진 · 업적 + 친구 · 강퇴 · 차단)
+  const gId = await withPg(async (c) => String((await c.query(`SELECT id FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_og`])).rows[0].id));
+  const hId = await withPg(async (c) => String((await c.query(`SELECT id FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_oh`])).rows[0].id));
+  await H.evaluate(`[...document.querySelectorAll('.seat-card.pickable')].find((s) => s.querySelector('[data-person="${gId}"]'))?.click()`);
+  await H.waitFor("document.querySelector('.person-card [data-person-acts]') !== null", 4000);
+  await sleep(300);
+  const p1 = JSON.parse(await H.evaluate("JSON.stringify({ acts: [...document.querySelectorAll('.person-card [data-act]')].map((b) => b.dataset.act), ask: /어떻게 할까요/.test(document.body.innerText), pop: document.querySelectorAll('.modal').length })"));
+  await snap(H, '134-personcard-pc');
+  await realClick(H, '.person-card [data-act="kick"]');
+  const kickConfirm = await H.waitFor("document.querySelector('.confirm-modal[data-kind=\"kick-kick\"]') !== null", 3000);
+  await pressKey(H, 'Escape', 'Escape', 27);
+  await sleep(200);
+  await tapOn(G, '#people-btn');
+  await G.waitFor(`document.querySelector('.people-list [data-person="${hId}"]') !== null`, 4000);
+  await G.evaluate(`document.querySelector('.people-list [data-person="${hId}"]')?.closest('button')?.click()`);
+  await G.waitFor("document.querySelector('.person-card') !== null", 3000);
+  await sleep(300);
+  const p2 = JSON.parse(await G.evaluate("JSON.stringify({ acts: [...document.querySelectorAll('.person-card [data-act]')].map((b) => b.dataset.act), top: Math.round(document.querySelector('.person-card').getBoundingClientRect().top), over: document.documentElement.scrollWidth - innerWidth })"));
+  await snap(G, '135-personcard-m390');
+  await pressKey(G, 'Escape', 'Escape', 27);
+  record('★★★ G④ 사람 → 프로필 카드 하나 — 방장: 친구 · 방장 넘기기 · 강퇴 · 차단(→ 최종 확인) · 손님: 친구만 · "어떻게 할까요?" 없음', p1.acts.includes('friend') && p1.acts.includes('kick') && p1.acts.includes('ban') && !p1.ask && p1.pop === 1 && kickConfirm && p2.acts.join() === 'friend' && p2.top >= 0 && p2.over <= 0, JSON.stringify({ p1, kickConfirm, p2 }));
+  // ── G③ 프로필 사진 메뉴 하나(1536×864)
+  const sharp = (await import('sharp')).default;
+  const png = await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><rect width="256" height="256" fill="#ffb347"/><circle cx="128" cy="110" r="60" fill="#8a6bff"/></svg>')).png().toBuffer();
+  await H.evaluate(`fetch('/api/avatar', { method: 'PUT', headers: { 'content-type': 'image/png' }, body: Uint8Array.from(atob('${png.toString('base64')}'), (c) => c.charCodeAt(0)), credentials: 'same-origin' }).then((r) => r.status)`);
+  await H.goto(`${BASE}/r/${roomId}`);
+  await H.waitFor("document.querySelector('#rename-btn') !== null", 8000);
+  await realClick(H, '#rename-btn');
+  await H.waitFor("document.querySelector('[data-photo-btn]') !== null", 3000);
+  await sleep(300);
+  await realClick(H, '[data-photo-btn]');
+  await H.waitFor("document.querySelector('[data-photo-menu]') !== null", 3000);
+  const m1 = JSON.parse(await H.evaluate("JSON.stringify({ items: [...document.querySelectorAll('[data-photo-menu] button')].map((b) => b.innerText.trim()), over: document.documentElement.scrollWidth - innerWidth, maxRight: Math.max(...[...document.querySelectorAll('[data-photo-menu] button')].map((b) => Math.round(b.getBoundingClientRect().right))), vw: innerWidth, old: !!document.querySelector('.photo-zoom') })"));
+  await snap(H, '136-photo-menu-pc1536');
+  await pressKey(H, 'Escape', 'Escape', 27);
+  record('★★★ G③ 프로필 사진을 누르면 메뉴 하나(크게 보기 · 사진 바꾸기 · 사진 지우기) · 옛 버튼 없음 · 화면 안(1536)', m1.items.join() === '크게 보기,사진 바꾸기,사진 지우기' && !m1.old && m1.over <= 0 && m1.maxRight <= m1.vw, JSON.stringify(m1));
+  // ── B 평가 목록 — 3문제 판
+  await G.waitFor("document.querySelector('.stage') !== null", 8000);
+  await setQuestionCount(H, 3);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  for (let i = 1; i <= 3; i += 1) {
+    await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.reveal') === null", 30000);
+    if (i === 1) {
+      await sleep(300);
+      await audit(H, '문제(PC)');
+      await audit(G, '문제(m390)');
+    }
+    await answerCurrent(H, H);
+    await H.waitFor("document.querySelector('.reveal') !== null", 8000);
+  }
+  await H.waitFor("document.querySelector('.fb-result') !== null", 30000);
+  await G.waitFor("document.querySelector('.fb-list[data-loaded]') !== null", 10000);
+  if (!(await H.evaluate("document.querySelector('.fb-result.open') !== null"))) await realClick(H, '.fb-result-head');
+  await H.waitFor("document.querySelector('.fb-list[data-loaded]') !== null", 5000);
+  await sleep(300);
+  await audit(H, '결과(PC)');
+  const b1 = JSON.parse(await H.evaluate("JSON.stringify((() => { const rows = [...document.querySelectorAll('.fb-row')]; return { n: rows.length, qnoW: [...new Set(rows.map((r) => Math.round(r.querySelector('.qno').getBoundingClientRect().width)))], textX: [...new Set(rows.map((r) => Math.round(r.querySelector('.fb-q').getBoundingClientRect().left)))], gap: Math.round(rows[0].querySelector('.fb-q').getBoundingClientRect().left - rows[0].querySelector('.fb-no').getBoundingClientRect().right) }; })())"));
+  await snap(H, '137-fb-list-pc');
+  await tapOn(G, '.fb-row .fb-q');
+  await sleep(300);
+  const b2 = JSON.parse(await G.evaluate("JSON.stringify((() => { const rows = [...document.querySelectorAll('.fb-row')]; const shut = rows.filter((r) => !r.classList.contains('open')); return { open: rows.filter((r) => r.classList.contains('open')).length, openAns: !!document.querySelector('.fb-row.open .fb-answer'), shutLen: shut.map((r) => [...r.querySelector('.fb-text').innerText].length), over: document.documentElement.scrollWidth - innerWidth }; })())"));
+  await snap(G, '138-fb-open-m390');
+  record('★★★ B 평가 목록 — 번호 열 고정폭(자릿수로 안 밀림 · 질문 시작 자리 같음) · 모바일 앞 28자 · 누르면 한 줄만 펼침(정답까지)', b1.n === 3 && b1.qnoW.length === 1 && b1.textX.length === 1 && b1.gap <= 80 && b2.open === 1 && b2.openAns && b2.shutLen.every((n) => n <= 29) && b2.over <= 0, JSON.stringify({ b1, b2 }));
+  // ── E 가입 선물 토스트(봇 · 검사 계정은 원래 제외 — 검사 DB 에서 행을 넣어 토스트만 본다)
+  await withPg((c) => c.query(`INSERT INTO point_grants (account_id, amount, reason, note) VALUES ($1, 50, 'signup', '가입 선물')`, [hId]));
+  await H.goto(`${BASE}/`);
+  await H.waitFor("document.querySelector('.grant-toast') !== null", 8000).catch(() => undefined);
+  await sleep(300);
+  const toast = await H.evaluate("document.querySelector('.grant-toast')?.innerText ?? ''");
+  await snap(H, '139-signup-toast-pc');
+  await H.evaluate("document.querySelector('.shop > button, #shop-btn')?.click()");
+  await sleep(500);
+  const shopLine = await H.evaluate("document.querySelector('.shop-points-sub')?.innerText ?? ''");
+  record('★★ E 가입 선물 토스트 "가입 선물 +50P" · 상점 한 줄(문제 1P · 미니게임 · 제보 채택 · 가입 선물)', /가입 선물 \+50P/.test(toast) && /가입 선물 50P/.test(shopLine) && /미니게임/.test(shopLine), JSON.stringify({ toast, shopLine }));
+  await withPg((c) => c.query(`DELETE FROM point_grants WHERE account_id = $1 AND reason = 'signup'`, [hId]));
+  // ── A 로그인 전 제보(m390) — 아이디 칸만 읽고 비밀번호는 안 읽는다
+  const L = await newPage(browser, 'R063-anon', true);
+  await touchDevice(L, 390, 844);
+  await L.goto(BASE);
+  await L.waitFor("document.querySelector('[data-report-link]') !== null", 8000);
+  await audit(L, '로그인(m390)');
+  const loginId = `${ACCOUNT_PREFIX}_anon`;
+  await L.evaluate(`(() => { const set = (el, v) => { const d = Object.getOwnPropertyDescriptor(el.constructor.prototype, 'value'); d.set.call(el, v); el.dispatchEvent(new Event('input', { bubbles: true })); }; set(document.querySelector('input[autocomplete="username"]'), ${JSON.stringify(loginId)}); set(document.querySelector('input[type="password"]'), 'SECRETpw-9931'); })()`);
+  await tapOn(L, '[data-report-link]');
+  await L.waitFor("document.querySelector('.report-modal') !== null", 3000);
+  await L.send('Input.insertText', { text: '로그인 버튼이 가끔 안 눌려요' });
+  await sleep(200);
+  await snap(L, '140-auth-report-m390');
+  await tapOn(L, '.report-modal .report-actions button:last-child');
+  await L.waitFor("document.querySelector('[data-report-toast]') !== null", 4000);
+  await sleep(300);
+  const ar = await withPg(async (c) => (await c.query(`SELECT account_id, login_hint, ip_hash, screen, row_to_json(r)::text AS raw FROM app_reports r WHERE login_hint = $1 ORDER BY id DESC LIMIT 1`, [loginId])).rows[0]);
+  record('★★★ A 로그인 전 — 카드 아래 링크 · 계정 없이 저장 · login_hint = 아이디 칸 · 비밀번호는 어디에도 없음', ar && ar.account_id === null && ar.screen === 'auth' && !!ar.ip_hash && !ar.raw.includes('SECRETpw'), JSON.stringify(ar && { ...ar, raw: undefined }));
+  await withPg((c) => c.query(`DELETE FROM app_reports WHERE login_hint = $1`, [loginId]));
+  // ── G① 모바일 방 목록 위 막대 — Q 로고와 버튼이 안 겹침(390 · 폴드 344 · 320)
+  await signUp(L, 'ol', '굽기새손님');
+  await L.waitFor("document.querySelector('.home-bar') !== null", 8000);
+  await audit(L, '로비(m390)');
+  const OVL = "JSON.stringify((() => { const m = document.querySelector('.brand-mark').getBoundingClientRect(); const hit = [...document.querySelectorAll('.home-bar button')].filter((b) => { const r = b.getBoundingClientRect(); return r.width > 0 && !(r.right <= m.left || r.left >= m.right || r.bottom <= m.top || r.top >= m.bottom); }).length; return { hit, over: document.documentElement.scrollWidth - innerWidth }; })())";
+  const ov = {};
+  for (const w of [390, 344, 320]) {
+    await touchDevice(L, w, 844);
+    await sleep(300);
+    ov[w] = JSON.parse(await L.evaluate(OVL));
+    if (w === 390) await snap(L, '145-home-top-m390');
+  }
+  record('★★ G① 모바일 방 목록 — Q 로고 · 위 버튼 안 겹침(390 · 344 · 320) · 가로 넘침 없음', Object.values(ov).every((o) => o.hit === 0 && o.over <= 0), JSON.stringify(ov));
+  // ── G② 전체 업적 창(m390 높이 600) — 위가 안 잘리고 창 안에서만 스크롤
+  await touchDevice(L, 390, 600);
+  await sleep(300);
+  await tapOn(L, '#rename-btn');
+  await L.waitFor("document.querySelector('.ach-all-open') !== null", 4000);
+  await tapOn(L, '.ach-all-open');
+  await L.waitFor("document.querySelector('.ach-all-modal .ach-list')?.dataset.loaded === '1'", 5000);
+  await sleep(300);
+  const ach = JSON.parse(await L.evaluate("JSON.stringify((() => { const r = document.querySelector('.ach-all-modal').getBoundingClientRect(); const l = document.querySelector('.ach-all'); return { top: Math.round(r.top), bottom: Math.round(r.bottom), vh: innerHeight, inner: l.scrollHeight > l.clientHeight, page: document.documentElement.scrollHeight - innerHeight, head: Math.round(document.querySelector('.ach-all-modal .pop-head').getBoundingClientRect().top) }; })())"));
+  await snap(L, '146-ach-all-m390-600');
+  record('★★★ G② 전체 업적 m390 높이 600 — 위 안 잘림 · 머리 고정 · 창 안 스크롤 · 페이지 스크롤 0', ach.top >= 0 && ach.bottom <= ach.vh && ach.head >= 0 && ach.inner && ach.page <= 0, JSON.stringify(ach));
+  await pressKey(L, 'Escape', 'Escape', 27);
+  // ── F 그림(실험실) — 고기 4단계 · 풍선 펑 · 사진 d3 초성 · 타자 키보드 높이
+  const X = await newPage(browser, 'R063-lab', true);
+  await X.setViewport(1536, 864);
+  await signUp(X, 'ox', '실험실');
+  await X.goto(`${BASE}/lab/minigame`);
+  await X.waitFor("document.querySelectorAll('[data-meat]').length === 4", 8000);
+  const meat = await X.evaluate("[...document.querySelectorAll('[data-meat] svg')].map((s) => s.dataset.doneness).join(',')");
+  await X.evaluate("document.querySelector('[data-meat]')?.scrollIntoView({ block: 'center' })");
+  await sleep(300);
+  await snap(X, '141-meat-stages-pc');
+  await X.goto(`${BASE}/lab/minigame?scene=1&key=cake&phase=play&seed=2024`);
+  await sleep(1200);
+  await audit(X, '미니게임(PC)');
+  const cake = JSON.parse(await X.evaluate("JSON.stringify({ big: document.querySelector('.cake-big')?.innerText, small: document.querySelector('.cake-small')?.innerText, name: document.body.innerText.includes('케이크') })"));
+  await X.goto(`${BASE}/lab/minigame?scene=1&key=balloon&phase=roundResult&seed=2024&state=popped`);
+  await sleep(800);
+  await snap(X, '142-balloon-pop-pc');
+  await X.goto(`${BASE}/lab/minigame?scene=1&key=balloon&phase=rules&seed=2024`);
+  await sleep(600);
+  const bal = await X.evaluate("document.body.innerText.includes('딱 100')");
+  record('★★ F 고기 굽기 4단계(색 다름) · "10" 큰 정수 + 작은 소수 · 케이크 글자 없음 · 풍선 규칙 "딱 100"', meat === '0.00,0.55,1.00,1.50' && /^\d+$/.test(cake.big ?? '') && /^\.\d\d$/.test(cake.small ?? '') && bal, JSON.stringify({ meat, cake, bal }));
+  await touchDevice(X, 390, 844);
+  await X.goto(`${BASE}/lab/minigame?scene=1&key=photo&phase=play&seed=2024&hard=1`);
+  await X.waitFor("document.querySelector('[data-photo-hint]') !== null", 5000).catch(() => undefined);
+  await sleep(300);
+  const hint = await X.evaluate("document.querySelector('[data-photo-hint]')?.innerText ?? ''");
+  await snap(X, '143-photo-hint-m390');
+  await touchDevice(X, 390, 500);
+  await X.goto(`${BASE}/lab/minigame?scene=1&key=typing&phase=play&seed=2024`);
+  await sleep(900);
+  const ty = JSON.parse(await X.evaluate("JSON.stringify((() => { const t = document.querySelector('.typing-target')?.getBoundingClientRect(); const i = document.querySelector('.typing-input')?.getBoundingClientRect(); return t && i ? { tTop: Math.round(t.top), iBottom: Math.round(i.bottom), vh: innerHeight } : null; })())"));
+  await snap(X, '144-typing-kbd-m390');
+  record('★★ F 사진 d3 — 초성 줄 · 타자 m390 키보드 높이(500)에서 문장 · 입력칸이 함께 보임', /초성/.test(hint) && !!ty && ty.tTop >= 0 && ty.iBottom <= ty.vh, JSON.stringify({ hint, ty }));
+  // ── H 글꼴 감사
+  record('★★★ H 글꼴 — 로그인 · 로비 · 방 · 문제 · 결과 · 미니게임에서 Pretendard 아닌 글자 0(mono 자리 제외)', fontBad.length === 0, fontBad.join(' | ') || '0');
+  for (const P of [X, L, G, H]) await P.close?.();
+}
 // ★★ R061 — 앱 제보 🐞 · 📝 문항 피드백 · 문항 번호 복사 (UICHECK_R061=1 · 묶음 r061 · docs/design/r061)
 async function r061Flow(browser) {
   const H = await newPage(browser, 'R061-host', true);
@@ -3725,13 +3933,16 @@ async function r061Flow(browser) {
   // ④ 🐞 m390 — 오른쪽 위 🐞 · 키보드가 올라온 높이(844 → 500)에서도 [보내기] 가 화면 안
   await touchDevice(G, 390, 500);
   await sleep(300);
-  await tapOn(G, '[data-report-float]');
+  // ★ R063 — 떠 있는 🐞 없앰 → ☰ 메뉴 "제보"
+  await tapOn(G, '#menu-btn');
+  await G.waitFor("document.querySelector('[data-menu-report]') !== null", 3000);
+  await tapOn(G, '[data-menu-report]');
   await G.waitFor("document.querySelector('.report-modal:not(.qreport-modal)') !== null", 3000);
   await G.send('Input.insertText', { text: '폴드에서 버튼이 겹쳐요' });
   await sleep(200);
   const gm = JSON.parse(await G.evaluate("JSON.stringify((() => { const b = [...document.querySelectorAll('.report-modal .report-actions button')].pop()?.getBoundingClientRect(); return { sendBottom: b ? Math.round(b.bottom) : -1, vh: innerHeight, over: document.documentElement.scrollWidth - innerWidth, chips: document.querySelectorAll('.report-modal .fb-chip').length }; })())"));
   await snap(G, '124-report-m390');
-  record('★★ R061 🐞 m390 — 🐞 버튼으로 열림 · 칩 4 · 키보드 높이(500)에서 [보내기] 보임 · 가로 넘침 없음', gm.sendBottom > 0 && gm.sendBottom <= gm.vh && gm.chips === 4 && gm.over <= 1, JSON.stringify(gm));
+  record('★★ R061 🐞 m390 — ☰ 메뉴 "제보" 로 열림 · 칩 4 · 키보드 높이(500)에서 [보내기] 보임 · 가로 넘침 없음', gm.sendBottom > 0 && gm.sendBottom <= gm.vh && gm.chips === 4 && gm.over <= 1, JSON.stringify(gm));
   await G.evaluate("[...document.querySelectorAll('.report-modal .report-actions button')][0]?.click()");
   await touchDevice(G, 390, 844);
   // ⑤ 번호 누르면 복사(안 되면 선택) — 토스트
@@ -3811,6 +4022,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R059) {
     await closeAllTabs(browser);
     await r059Flow(browser);
+  }
+  // ★ R063 — 찬종 제보 19건
+  if (process.env.UICHECK_R063) {
+    await closeAllTabs(browser);
+    await r063Flow(browser);
   }
   // ★ R061 — 앱 제보 🐞 · 📝 · 문항 번호
   if (process.env.UICHECK_R061) {

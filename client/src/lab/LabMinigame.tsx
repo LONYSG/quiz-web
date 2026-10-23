@@ -23,7 +23,7 @@ import {
   type MinigamePhase,
 } from '@quiz/shared';
 import BalanceArt from '../minigame/BalanceArt.js';
-import { CakeArt } from '../minigame/CakeWait.js';
+import { MeatArt } from '../minigame/CakeWait.js';
 import MinigameStage from '../minigame/MinigameStage.js';
 import type { MinigameView, PlayerView } from '../useRoom.js';
 
@@ -373,14 +373,13 @@ export default function LabMinigame({ myAccountId }: { myAccountId: string }) {
             </figcaption>
           </figure>
         ))}
-        <figure className="lab-item small">
-          <CakeArt open={false} />
-          <figcaption>케이크 (오븐)</figcaption>
-        </figure>
-        <figure className="lab-item small">
-          <CakeArt open />
-          <figcaption>케이크 (나옴)</figcaption>
-        </figure>
+        {/* ★ R063 — 고기 굽기 4단계 */}
+        {([[0, '생고기'], [0.55, '덜 익음'], [1, '딱 좋게!'], [1.5, '새까맣게 탐']] as const).map(([d, t]) => (
+          <figure key={t} className="lab-item small" data-meat={d}>
+            <MeatArt d={d} />
+            <figcaption>{t}</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   );

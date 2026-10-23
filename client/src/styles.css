@@ -152,6 +152,16 @@ body {
   transition: background-color 200ms, color 200ms;
 }
 
+/* ★★ R063 (D-263 · 찬종 #19 "글꼴 통일 다 안된거 같은데") — 폼 컨트롤은 브라우저 기본 글꼴을 쓴다(상속 안 함).
+   form · .field-row 밖의 입력칸(타자 · 사진 답 · 이모티콘 찾기 · 평가 의견 · 숫자칸 …)이 다른 글꼴이었다 → 한 줄로 전부 상속 */
+button,
+input,
+select,
+textarea,
+optgroup {
+  font-family: inherit;
+}
+
 .wrap {
   max-width: 720px;
   margin: 0 auto;
