@@ -52,12 +52,35 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
   const over = !mine && elapsed >= playMs;
   const leftRatio = Math.max(0, 1 - elapsed / playMs);
 
-  // PC 는 바로 입력칸에 (모바일은 눌러야 키보드가 뜬다 — 브라우저 규칙)
+  // ★ R063 (D-261 · 바운디 #14 "문장 나오면 바로 키보드 올라오는게 좋을듯") — 모바일도 문장이 뜨는 순간 입력칸에.
+  //   브라우저가 손짓 없는 포커스를 막으면(키보드 안 뜸) 입력칸 아래 "입력칸을 누르세요" 한 줄.
+  const targetRef = useRef<HTMLParagraphElement>(null);
+  const [needTap, setNeedTap] = useState(false);
+  const keepSentenceVisible = () => {
+    // 키보드가 올라와 화면이 줄면 문장 머리부터 보이게(문장 · 입력칸이 함께 키보드 위)
+    targetRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' });
+  };
   useEffect(() => {
-    if (!canPlay || mobile) return;
-    const id = window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 30);
+    if (!canPlay) return undefined;
+    setNeedTap(false);
+    const id = window.setTimeout(() => {
+      inputRef.current?.focus({ preventScroll: true });
+      if (mobile) {
+        keepSentenceVisible();
+        window.setTimeout(() => setNeedTap(document.activeElement !== inputRef.current), 250);
+      }
+    }, 30);
     return () => window.clearTimeout(id);
   }, [canPlay, mobile, key]);
+  useEffect(() => {
+    if (!mobile || !canPlay || !window.visualViewport) return undefined;
+    const vv = window.visualViewport;
+    const on = () => {
+      if (document.activeElement === inputRef.current) keepSentenceVisible();
+    };
+    vv.addEventListener('resize', on);
+    return () => vv.removeEventListener('resize', on);
+  }, [mobile, canPlay]);
 
   // 진행 글(임시) — 0.4초마다 바뀌었으면
   useEffect(() => {
@@ -114,7 +137,7 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
       <div className="typing-bar" aria-hidden="true">
         <span style={{ width: `${(mine ? 0 : leftRatio) * 100}%` }} />
       </div>
-      <p className={`typing-target no-copy lang-${lang}`} lang={lang} aria-label="따라 칠 문장">
+      <p ref={targetRef} className={`typing-target no-copy lang-${lang}`} lang={lang} aria-label="따라 칠 문장">
         {chars.map((ch, i) => (
           <span key={i} className={`tc ${marks[i]}${ch === ' ' ? ' sp' : ''}`}>
             {ch}
@@ -145,7 +168,8 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
         onDrop={block}
         onDragOver={(e) => e.preventDefault()}
         onFocus={() => {
-          if (mobile) window.setTimeout(() => inputRef.current?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 300);
+          setNeedTap(false);
+          if (mobile) window.setTimeout(keepSentenceVisible, 300);
         }}
         onKeyDown={(e) => {
           // Enter 는 아무것도 하지 않는다(채팅으로 새지 않게)
@@ -164,6 +188,8 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
           </>
         ) : over ? (
           `시간이 끝났어요 — ${pct}%`
+        ) : needTap && mobile ? (
+          <span className="typing-warn">입력칸을 누르세요</span>
         ) : hasBad ? (
           <span className="typing-warn">빨간 글자를 지우고 다시 치세요</span>
         ) : blocked > 0 ? (
