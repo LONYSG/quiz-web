@@ -32,6 +32,7 @@ import Countdown from './Countdown.js';
 import GameSettings from './GameSettings.js';
 import Question from './Question.js';
 import GameResult from './GameResult.js';
+import ErrorBoundary from './ErrorBoundary.js';
 import InfoTip from './InfoTip.js';
 import Paused from './Paused.js';
 import Prefs, { setRoomOwnsKeys } from './Prefs.js';
@@ -927,13 +928,32 @@ export default function Lobby({
 
             {/* ── ★★ 결과 (순위 카드 하나) */}
             {snapshot.result && (
-              <GameResult
-                socket={socket}
-                players={snapshot.players}
-                result={snapshot.result}
-                isHost={snapshot.me.isHost}
-                myAccountId={snapshot.me.accountId}
-              />
+              /* ★★ R064 (D-264) — 결과를 그리다 예외가 나도 방 화면이 통째로 비지 않게 · 방장은 로비로 갈 수 있게 */
+              <ErrorBoundary
+                name="result"
+                fallback={() => (
+                  <section className="card result-card" data-result-fallback>
+                    <p className="info">결과를 그리지 못했어요.</p>
+                    <div className="next-row">
+                      {snapshot.me.isHost ? (
+                        <button type="button" className="primary big-btn" onClick={() => socket.emit('game.toLobby', {})}>
+                          로비로
+                        </button>
+                      ) : (
+                        <p className="note">방장이 다음 게임을 준비 중입니다.</p>
+                      )}
+                    </div>
+                  </section>
+                )}
+              >
+                <GameResult
+                  socket={socket}
+                  players={snapshot.players}
+                  result={snapshot.result}
+                  isHost={snapshot.me.isHost}
+                  myAccountId={snapshot.me.accountId}
+                />
+              </ErrorBoundary>
             )}
 
             {/* ★ 게임이 시작됐는데 문제가 아직 없는 짧은 순간 — 빈 화면을 보여주지 않는다 */}

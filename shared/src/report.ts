@@ -86,6 +86,9 @@ function cleanDevice(d: Record<string, unknown>): Record<string, unknown> {
   if (typeof d.dpr === 'number' && Number.isFinite(d.dpr)) out.dpr = Math.round(d.dpr * 100) / 100;
   if (typeof d.theme === 'string') out.theme = d.theme.slice(0, 16);
   if (typeof d.ui === 'string') out.ui = d.ui.slice(0, 10);
+  // ★ R064 (D-264) — 최근 예외 5개 · 가운데 화면 배치 한 줄
+  if (Array.isArray(d.errors)) out.errors = d.errors.filter((x): x is string => typeof x === 'string').slice(-5).map((x) => x.slice(0, 200));
+  if (typeof d.layout === 'string' && d.layout) out.layout = d.layout.slice(0, 200);
   return out;
 }
 

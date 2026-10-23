@@ -10,6 +10,7 @@
 // ★ 맥락: 클라는 screen · 문항 순번 · 미니게임 key 만 — 판 · 문항 · 미니게임 판 id 는 서버가 붙인다. 채팅 원문은 보내지 않는다.
 // =============================================================================
 
+import { recentClientErrors } from './clientErrors.js';
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import type { Socket } from 'socket.io-client';
@@ -85,7 +86,24 @@ function device(mobile: boolean) {
     dpr: window.devicePixelRatio,
     theme: getTheme(),
     ui: mobile ? 'mobile' : 'pc',
+    // ★ R064 (D-264) — 최근 예외 · 가운데 화면에 무엇이 어디 있었나("안 보여요" 제보를 그 자리에서 읽으려고)
+    errors: recentClientErrors(),
+    layout: layoutHint(),
   };
+}
+
+/** 가운데 칸의 카드들 — "result-card 58-422 · chat-card 430-1300" 꼴(짧게) */
+function layoutHint(): string {
+  const main = document.querySelector('.center-main');
+  if (!main) return '';
+  return [...main.children]
+    .map((el) => {
+      const r = el.getBoundingClientRect();
+      const cls = (typeof el.className === 'string' ? el.className : '').split(/\s+/).filter((c) => c !== 'card')[0] ?? el.tagName.toLowerCase();
+      return `${cls} ${Math.round(r.top)}-${Math.round(r.bottom)}`;
+    })
+    .join(' · ')
+    .slice(0, 200);
 }
 
 async function postReport(body: Record<string, unknown>): Promise<{ id: string }> {
@@ -292,7 +310,7 @@ function QReportWindow({ target, onClose }: { target: QTarget; onClose: () => vo
         <button type="button" className="ghost" onClick={onClose}>
           닫기
         </button>
-        <button type="button" disabled={busy || (!text.trim() && reasons.length === 0)} onClick={send}>
+        <button type="button" className="primary" disabled={busy || (!text.trim() && reasons.length === 0)} onClick={send}>
           보내기
         </button>
       </div>
@@ -379,7 +397,7 @@ function ReportWindow({ onClose }: { onClose: () => void }) {
         <button type="button" className="ghost" onClick={onClose}>
           닫기
         </button>
-        <button type="button" disabled={busy || !text.trim()} onClick={send}>
+        <button type="button" className="primary" disabled={busy || !text.trim()} onClick={send}>
           보내기
         </button>
       </div>
