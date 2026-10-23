@@ -36,7 +36,7 @@ import TypingRace from './TypingRace.js';
 import PhotoGuess from './PhotoGuess.js';
 import QuizNumber from './QuizNumber.js';
 import QuizReveal, { WhichSummary, quizValueText } from './QuizReveal.js';
-import { preloadQuizImages } from './QuizParts.js';
+import { preloadAll, preloadQuizImages } from './QuizParts.js';
 import { QNo, QReportButton } from '../AppReport.js';
 import WhichPick from './WhichPick.js';
 import { GaugeStop, MinorityPick, OddOneGrid, twemoji } from './R053Games.js';
@@ -98,10 +98,13 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
       case 'intro':
         setMusicMode('minigame');
         sfx('mg-jingle');
+        // ★ R063 — 판 그림을 규칙 화면 동안 미리 받아 decode(다른 하나 찾기)
+        if (view.preload) void preloadAll(view.preload);
         break;
       case 'ready':
         // ★ R052 — 퀴즈류는 다음 문항 그림을 미리 받는다
         if (QUIZ_KEYS.has(view.key)) preloadQuizImages(view);
+        if (view.preload) void preloadAll(view.preload);
         // ★ 케이크는 리듬을 들어야 한다 — 판 동안 배경음악을 끈다
         if (view.key === 'cake' || view.key === 'reaction' || view.key === 'gauge') setMusicMode('quiet');
         sfx('mg-ready');

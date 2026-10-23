@@ -93,6 +93,8 @@ export interface MinigameView {
   phaseEndsAt: number;
   roundIndex: number;
   roundCount: number;
+  /** ★ R063 — 미리 받아 둘 그림 주소(규칙 · 준비 단계) */
+  preload?: string[] | null;
   round: { params: Record<string, unknown>; playMs: number; private: Record<string, unknown> | null; reveal?: Record<string, unknown> | null; itemId?: string | null } | null;
   participants: MinigameParticipantView[];
   submittedCount: number;

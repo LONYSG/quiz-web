@@ -132,6 +132,8 @@ export interface MinigameDef {
   buildRounds(seed: number, ctx: BuildCtx): RoundSpec[] | null;
   /** 사람마다 다른 공개 값 (균형 = 시작 점). 없으면 null */
   privateFor?(spec: RoundSpec, accountId: string, roundIndex: number): Record<string, unknown> | null;
+  /** ★ R063 (D-261 · 찬종 #18) — 규칙 · 준비 단계에 미리 받아 둘 그림 주소(답이 드러나지 않는 것만) */
+  preloadAll?(rounds: readonly RoundSpec[]): string[];
   /**
    * ★ R053 — 판 끝 정산(모두의 입력을 봐야 값이 정해질 때 — 소수파 · 평균의 2/3). 계정 → 값 · 덧붙임, 공개 값.
    */
@@ -633,6 +635,10 @@ const oddone: MinigameDef = {
       playMs: ODDONE_PLAY_MS,
       seed: seed + i,
     }));
+  },
+  // 판 그림 둘씩(같은 것 · 다른 것) — 자리(oddIndex)는 보내지 않는다
+  preloadAll(rounds) {
+    return [...new Set(rounds.flatMap((r) => [String(r.params.base), String(r.params.odd)]))].map((c) => `/emoji/${c}.svg`);
   },
   parseInput(raw, spec, ctx) {
     const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;

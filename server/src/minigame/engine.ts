@@ -115,6 +115,8 @@ export interface MinigameView {
   phaseEndsAt: number;
   roundIndex: number;
   roundCount: number;
+  /** ★ R063 — 미리 받아 둘 그림 주소 */
+  preload: string[] | null;
   round: { params: Record<string, unknown>; playMs: number; private: Record<string, unknown> | null; reveal?: Record<string, unknown> | null; itemId?: string | null } | null;
   participants: MinigameParticipant[];
   submittedCount: number;
@@ -145,6 +147,8 @@ export function minigameView(room: Room, viewerAccountId: string): MinigameView 
     phaseEndsAt: run.phaseEndsAt,
     roundIndex: run.roundIndex,
     roundCount: run.rounds.length,
+    // ★ R063 — 미리 받아 둘 그림(규칙 · 준비 단계)
+    preload: def.preloadAll && (run.phase === 'intro' || run.phase === 'rules' || run.phase === 'ready') ? def.preloadAll(run.rounds) : null,
     round:
       inRound && spec
         ? {

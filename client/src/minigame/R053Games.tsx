@@ -11,7 +11,7 @@ import { gaugePos } from '@quiz/shared';
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
-import { NumberInput } from './QuizParts.js';
+import { NumberInput, isDecoded, preloadAll } from './QuizParts.js';
 
 interface Props {
   socket: Socket;
@@ -85,8 +85,26 @@ export function OddOneGrid({ socket, view, serverNow, mobile }: Props) {
   const odd = String(p.odd ?? '1f431');
   const oddIndex = Number(p.oddIndex ?? 0);
   const playing = view.phase === 'play';
-  const canPlay = playing && !view.spectating;
-  const { key, t0 } = usePlayT0(view, serverNow);
+  const { key, t0: t0Recv } = usePlayT0(view, serverNow);
+  // ★★ R063 (D-261 · 찬종 #18) — 그림 둘이 decode 되기 전엔 격자를 보이지 않고 시간을 세지 않는다("준비 중" — 보통 규칙 화면에서 이미 끝나 0초)
+  const srcs = [twemoji(base), twemoji(odd)];
+  const [readyAt, setReadyAt] = useState<{ key: string; at: number } | null>(() => (srcs.every(isDecoded) ? { key, at: 0 } : null));
+  useEffect(() => {
+    if (readyAt?.key === key) return;
+    if (srcs.every(isDecoded)) {
+      setReadyAt({ key, at: 0 });
+      return;
+    }
+    let alive = true;
+    void preloadAll(srcs).then(() => alive && setReadyAt({ key, at: performance.now() }));
+    return () => {
+      alive = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key, base, odd]);
+  const imgReady = readyAt?.key === key;
+  const t0 = t0Recv !== null && imgReady ? Math.max(t0Recv, readyAt!.at) : null;
+  const canPlay = playing && !view.spectating && imgReady;
   const now = useFrameNow(playing);
   const [st, setSt] = useState<{ key: string; done?: number; wrong: number; flash?: number } | null>(null);
   const mine = st?.key === key ? st : null;
@@ -112,7 +130,8 @@ export function OddOneGrid({ socket, view, serverNow, mobile }: Props) {
   return (
     <div className={`quiz-stage oddone-stage${mobile ? ' m' : ''}`}>
       <TimeBar view={view} t0={t0} now={now} />
-      <div className="oddone-grid" style={{ gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))` }} data-size={size} role="grid" aria-label="그림 격자">
+      {!imgReady && playing && <p className="oddone-wait dim">준비 중…</p>}
+      <div className="oddone-grid" style={{ gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))`, visibility: imgReady ? 'visible' : 'hidden' }} data-size={size} data-ready={imgReady ? '1' : '0'} role="grid" aria-label="그림 격자">
         {Array.from({ length: size * size }, (_, i) => (
           <button
             key={i}

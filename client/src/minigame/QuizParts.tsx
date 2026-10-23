@@ -12,14 +12,35 @@ import type { MinigameView } from '../useRoom.js';
 
 export const imageUrl = (id: string) => `/api/minigame/image/${encodeURIComponent(id)}`;
 
-/** 다음 판 그림을 미리 받아 둔다(준비 단계) */
+/**
+ * ★ R063 (D-261 · 찬종 #18 "이미지 렌더링을 미리 해놓던가") — 받기 + decode 까지 한 번만(주소별 약속을 기억).
+ *   decode 가 끝난 그림은 <img> 로 그릴 때 깜빡임 · 로딩 표시가 없다.
+ */
+const decoded = new Map<string, Promise<void>>();
+export function decodeImage(src: string): Promise<void> {
+  let p = decoded.get(src);
+  if (!p) {
+    const img = new Image();
+    img.src = src;
+    p = (img.decode ? img.decode() : new Promise<void>((res, rej) => { img.onload = () => res(); img.onerror = rej; })).catch(() => undefined);
+    decoded.set(src, p);
+  }
+  return p;
+}
+/** 지금 decode 가 끝났나(동기) */
+const done = new Set<string>();
+export function isDecoded(src: string): boolean {
+  return done.has(src);
+}
+export function preloadAll(srcs: readonly string[]): Promise<void> {
+  return Promise.all(srcs.map((s) => decodeImage(s).then(() => void done.add(s)))).then(() => undefined);
+}
+
+/** 다음 판 그림을 미리 받아 둔다(준비 단계) — ★ R063 decode 까지 */
 export function preloadQuizImages(view: MinigameView): void {
   const p = view.round?.params ?? {};
   const ids = [p.imageId, (p.a as { imageId?: string } | undefined)?.imageId, (p.b as { imageId?: string } | undefined)?.imageId].filter((x): x is string => typeof x === 'string');
-  for (const id of ids) {
-    const img = new Image();
-    img.src = imageUrl(id);
-  }
+  void preloadAll(ids.map(imageUrl));
 }
 
 /** 문항 그림 — 없으면(연습 더미) 도형 · 상자 */
