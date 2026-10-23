@@ -145,21 +145,31 @@ export function RevealFeedback({ gameId, questionId }: { gameId: string; questio
 }
 
 // ── (나) 결과 화면 · (다) 로비 팝업 — 이번 판 문제 목록 ─────────────────────────────
-function FeedbackRow({ gameId, item }: { gameId: string; item: FeedbackItem }) {
+/** ★ R063 (D-257) — 모바일은 질문 앞 28자 · 줄을 누르면 전체 질문 · 정답(한 줄만 펼침) */
+const MOBILE_HEAD = 28;
+const headOf = (s: string, n: number) => ([...s].length > n ? `${[...s].slice(0, n).join('')}…` : s);
+
+function FeedbackRow({ gameId, item, open, onToggle }: { gameId: string; item: FeedbackItem; open: boolean; onToggle: () => void }) {
+  const mobile = useUiMode() === 'mobile';
   const f = useFeedback(gameId, item.questionId, { vote: item.vote, reasons: item.reasons, comment: item.comment });
+  const full = item.full ?? item.text;
+  const shown = open ? full : mobile ? headOf(full, MOBILE_HEAD) : item.text;
   return (
-    <li className={f.vote === -1 ? 'fb-row down' : 'fb-row'} data-fb-question={item.questionId}>
+    <li className={`fb-row${f.vote === -1 ? ' down' : ''}${open ? ' open' : ''}`} data-fb-question={item.questionId}>
       <div className="fb-row-head">
+        {/* ★ R063 — 번호 둘(순번 · #id)은 고정폭 열 — 자릿수가 달라도 질문 시작 자리가 같다 */}
         <span className="fb-no mono">{item.index}</span>
         {/* ★ R061 — 문항 번호(누르면 복사) */}
         <QNo id={item.questionId} />
-        <span className="fb-q">
+        <button type="button" className="fb-q" aria-expanded={open} onClick={onToggle}>
           {/* ★ 질문은 복사 막기 그대로(R050) */}
-          <span className="fb-text no-copy">{item.text}</span>
-          <span className="fb-answer dim">
-            정답 <strong>{item.answer}</strong>
-          </span>
-        </span>
+          <span className="fb-text no-copy">{shown}</span>
+          {(open || !mobile) && (
+            <span className="fb-answer dim">
+              정답 <strong>{item.answer}</strong>
+            </span>
+          )}
+        </button>
         <QReportButton questionId={item.questionId} questionIndex={item.index} />
         <VoteButtons vote={f.vote} onVote={f.onVote} compact />
       </div>
@@ -207,13 +217,14 @@ function useGameFeedbackItems(gameId: string) {
 }
 
 function FeedbackListView({ gameId, items, err }: { gameId: string; items: FeedbackItem[] | null; err: boolean }) {
+  const [openId, setOpenId] = useState<string | null>(null);
   if (err) return <p className="dim fb-empty">문제 목록을 불러오지 못했어요.</p>;
   if (!items) return <p className="dim fb-empty">불러오는 중…</p>;
   if (items.length === 0) return <p className="dim fb-empty">평가할 문제가 없어요.</p>;
   return (
     <ol className="fb-list" data-loaded="1">
       {items.map((it) => (
-        <FeedbackRow key={it.questionId} gameId={gameId} item={it} />
+        <FeedbackRow key={it.questionId} gameId={gameId} item={it} open={openId === it.questionId} onToggle={() => setOpenId((x) => (x === it.questionId ? null : it.questionId))} />
       ))}
     </ol>
   );

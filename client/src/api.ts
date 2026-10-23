@@ -248,6 +248,8 @@ export interface FeedbackItem {
   questionId: string;
   index: number;
   text: string;
+  /** ★ R063 — 전체 질문(줄을 누르면 펼침) */
+  full?: string;
   answer: string;
   vote: 1 | -1 | null;
   reasons: string[];

@@ -106,14 +106,14 @@ feedbackRouter.get('/game/:gameId/mine', async (req, res) => {
   }
   // ★ 정답을 공개하지 않고 멈춘 문제(aborted)는 뺀다 — 정답을 모르는 문제를 평가하지 않는다
   const r = await query<{ question_id: string; question_index: number; text: string; answer: string } & Partial<Row>>(
-    `SELECT gq.question_id, gq.question_index, left(q.question_text, $3) AS text, q.display_answer AS answer,
+    `SELECT gq.question_id, gq.question_index, q.question_text AS text, q.display_answer AS answer,
             f.vote, f.reasons, f.comment
        FROM game_questions gq
        JOIN questions q ON q.id = gq.question_id
        LEFT JOIN question_feedback f ON f.question_id = gq.question_id AND f.account_id = $2
       WHERE gq.game_id = $1 AND gq.resolution IS DISTINCT FROM 'aborted' AND gq.resolved_at IS NOT NULL
       ORDER BY gq.question_index`,
-    [gameId, session.accountId, TEXT_HEAD + 1],
+    [gameId, session.accountId],
   );
   res.setHeader('Cache-Control', 'no-store');
   res.json({
@@ -124,6 +124,8 @@ feedbackRouter.get('/game/:gameId/mine', async (req, res) => {
       index: x.question_index,
       // ★ 60자 넘으면 "…"
       text: [...x.text].length > TEXT_HEAD ? `${[...x.text].slice(0, TEXT_HEAD).join('')}…` : x.text,
+      // ★ R063 (D-257) — 줄을 누르면 전체 질문(정답 공개가 끝난 문제라 알려도 된다 · 모바일은 앞 28자만 보이고 눌러 펼친다)
+      full: x.text,
       answer: x.answer,
       vote: x.vote ?? null,
       reasons: x.reasons ?? [],
