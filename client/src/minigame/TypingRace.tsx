@@ -14,6 +14,7 @@ import { typingComplete, typingMarks, typingProgress } from '@quiz/shared';
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
+import { isReportOpen } from '../reportGuard.js';
 
 interface Props {
   socket: Socket;
@@ -64,6 +65,8 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
     if (!canPlay) return undefined;
     setNeedTap(false);
     const id = window.setTimeout(() => {
+      // ★ R065 — 제보 창이 열려 있으면 포커스를 가져오지 않는다
+      if (isReportOpen()) return;
       inputRef.current?.focus({ preventScroll: true });
       if (mobile) {
         keepSentenceVisible();

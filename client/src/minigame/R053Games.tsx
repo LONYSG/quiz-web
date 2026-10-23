@@ -12,6 +12,7 @@ import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
 import { NumberInput, isDecoded, preloadAll } from './QuizParts.js';
+import { typingTarget } from '../reportGuard.js';
 
 interface Props {
   socket: Socket;
@@ -49,6 +50,7 @@ export function MinorityPick({ socket, view, serverNow, mobile }: Props) {
   useEffect(() => {
     if (!canPlay) return undefined;
     const on = (e: KeyboardEvent) => {
+      if (typingTarget(e)) return;
       const n = Number(e.key);
       if (!(n >= 1 && n <= 5) || e.altKey || e.ctrlKey || e.metaKey) return;
       e.preventDefault();
@@ -189,6 +191,7 @@ export function GaugeStop({ socket, view, serverNow, mobile }: Props) {
   useEffect(() => {
     if (!canPlay) return undefined;
     const on = (e: KeyboardEvent) => {
+      if (typingTarget(e)) return;
       if (e.key !== ' ' && e.key !== 'Enter' && e.code !== 'Space') return;
       if (e.repeat) return;
       e.preventDefault();

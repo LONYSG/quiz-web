@@ -10,6 +10,7 @@ import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
 import { QuizImage, SeenBadge } from './QuizParts.js';
+import { typingTarget } from '../reportGuard.js';
 
 interface Props {
   socket: Socket;
@@ -43,6 +44,7 @@ export default function WhichPick({ socket, view, serverNow, mobile }: Props) {
   useEffect(() => {
     if (!canPlay) return undefined;
     const on = (e: KeyboardEvent) => {
+      if (typingTarget(e)) return;
       if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
       if (e.repeat) return;
       e.preventDefault();

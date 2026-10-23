@@ -1054,6 +1054,7 @@ export default function Lobby({
               <EmojiPicker slots={emojiSlots} onSend={sendEmoji} onInsert={insertEmoji} flash={emojiFlash} />
               <input
                 ref={inputRef}
+                data-chat-input
                 value={draft}
                 maxLength={RULES.CHAT_MAX_LENGTH}
                 className={[judging ? 'judging' : '', lockedNow ? 'locked' : '', shaking ? 'input-shake' : ''].filter(Boolean).join(' ') || undefined}

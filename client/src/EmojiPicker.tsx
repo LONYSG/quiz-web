@@ -20,6 +20,7 @@ import Emoji from './Emoji.js';
 import { EMOJI_CATEGORIES, setEmojiInsert, setStoredSlots, useEmojiCatalog, useEmojiInsert, type EmojiMeta } from './emojiCatalog.js';
 import Icon from './Icon.js';
 import { Search, Send, Smile, TextCursorInput } from 'lucide-react';
+import { isReportOpen } from './reportGuard.js';
 
 interface Props {
   slots: number[];
@@ -63,7 +64,7 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
       if (!(e.target as Element).closest('.emoji-picker')) setOpen(false);
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return;
+      if (e.key !== 'Escape' || isReportOpen()) return;
       // ★ R064 — 자리 고르는 중이면 Esc 는 그것만 취소(창은 그대로)
       if (assign !== null) {
         e.stopPropagation();

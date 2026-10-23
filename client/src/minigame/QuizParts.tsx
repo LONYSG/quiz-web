@@ -9,6 +9,7 @@ import { formatNumberInput, parseNumberInput } from '@quiz/shared';
 import { Eye, Package } from 'lucide-react';
 import Icon from '../Icon.js';
 import type { MinigameView } from '../useRoom.js';
+import { isReportOpen } from '../reportGuard.js';
 
 export const imageUrl = (id: string) => `/api/minigame/image/${encodeURIComponent(id)}`;
 
@@ -154,7 +155,8 @@ export function NumberInput({
   const canPlay = view.phase === 'play' && !view.spectating;
   useEffect(() => {
     setText('');
-    if (canPlay) window.setTimeout(() => ref.current?.focus({ preventScroll: true }), 30);
+    // ★ R065 — 제보 창이 열려 있으면 포커스를 가져오지 않는다
+    if (canPlay) window.setTimeout(() => !isReportOpen() && ref.current?.focus({ preventScroll: true }), 30);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, canPlay]);
   const raw = parseNumberInput(text, allowZero);

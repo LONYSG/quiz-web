@@ -13,6 +13,7 @@ import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
 import { QuizImage, SeenBadge, imageUrl, useRetryImage } from './QuizParts.js';
+import { isReportOpen } from '../reportGuard.js';
 
 interface Props {
   socket: Socket;
@@ -91,7 +92,8 @@ export default function PhotoGuess({ socket, view, serverNow, mobile }: Props) {
 
   useEffect(() => {
     setText('');
-    if (canPlay && !mobile) window.setTimeout(() => ref.current?.focus({ preventScroll: true }), 30);
+    // ★ R065 — 제보 창이 열려 있으면 포커스를 가져오지 않는다
+    if (canPlay && !mobile) window.setTimeout(() => !isReportOpen() && ref.current?.focus({ preventScroll: true }), 30);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, canPlay]);
 

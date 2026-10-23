@@ -13,6 +13,7 @@ import { ANGLE_KEY_STEP, angleOfPoint, clampAngle } from '@quiz/shared';
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
+import { typingTarget } from '../reportGuard.js';
 
 interface Props {
   socket: Socket;
@@ -99,6 +100,7 @@ export default function AngleMatch({ socket, view, serverNow, mobile }: Props) {
   useEffect(() => {
     if (!canPlay) return undefined;
     const onDown = (e: KeyboardEvent) => {
+      if (typingTarget(e)) return;
       if (e.key === ' ' || e.key === 'Enter' || e.code === 'Space') {
         e.preventDefault();
         e.stopPropagation();

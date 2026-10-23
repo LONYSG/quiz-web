@@ -14,6 +14,7 @@ import { BALANCE_BOTTOM_Y, BALANCE_TOP_Y, balanceItem, clampCutX, type BalanceCu
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import BalanceArt from './BalanceArt.js';
+import { typingTarget } from '../reportGuard.js';
 
 interface Props {
   socket: Socket;
@@ -99,6 +100,7 @@ export default function BalanceGuard({ socket, view, serverNow, mobile }: Props)
   useEffect(() => {
     if (!playing) return undefined;
     const onDown = (e: KeyboardEvent) => {
+      if (typingTarget(e)) return;
       if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
       e.preventDefault();
       e.stopPropagation();

@@ -11,6 +11,7 @@ import { BALLOON_PUMP_MS, BALLOON_TARGET } from '@quiz/shared';
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
+import { typingTarget } from '../reportGuard.js';
 
 interface Props {
   socket: Socket;
@@ -99,6 +100,7 @@ export function BalloonBlow({ socket, view, serverNow, mobile }: Props) {
   useEffect(() => {
     if (!canPlay) return undefined;
     const onDown = (e: KeyboardEvent) => {
+      if (typingTarget(e)) return;
       const isPump = e.key === ' ' || e.code === 'Space';
       const isStop = e.key === 'Enter';
       if (!isPump && !isStop) return;
@@ -186,6 +188,7 @@ export function TapRush({ socket, view, serverNow, mobile }: Props) {
   useEffect(() => {
     if (!canPlay) return undefined;
     const onDown = (e: KeyboardEvent) => {
+      if (typingTarget(e)) return;
       if (e.key !== ' ' && e.code !== 'Space' && e.key !== 'Enter') return;
       e.preventDefault();
       e.stopPropagation();

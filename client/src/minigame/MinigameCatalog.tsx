@@ -17,6 +17,7 @@ import {
 import { MINIGAMES, MINIGAME_EXAMPLES, type MinigameKey } from '@quiz/shared';
 import Icon from '../Icon.js';
 import PopupClose from '../PopupClose.js';
+import { isReportOpen } from '../reportGuard.js';
 
 export const MINIGAME_ICONS: Record<MinigameKey, LucideIcon> = {
   cake: Beef,
@@ -54,7 +55,7 @@ export default function MinigameCatalog({ mode, editable, selected = [], onConfi
   const [picked, setPicked] = useState<MinigameKey[]>(mode === 'select' ? [...selected] : []);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return;
+      if (e.key !== 'Escape' || isReportOpen()) return;
       e.preventDefault();
       e.stopPropagation();
       onClose();

@@ -17,6 +17,7 @@ import type { Socket } from 'socket.io-client';
 import { CAKE_FADE_MS, CAKE_HOLD_SEC, cakeDisplaySec, meatDoneness } from '@quiz/shared';
 import { cakeBeat, sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
+import { typingTarget } from '../reportGuard.js';
 
 interface Props {
   socket: Socket;
@@ -95,6 +96,7 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
   useEffect(() => {
     if (!canPlay) return undefined;
     const onKey = (e: KeyboardEvent) => {
+      if (typingTarget(e)) return;
       if (e.key !== ' ' && e.key !== 'Enter' && e.code !== 'Space') return;
       if (e.repeat) return;
       e.preventDefault();

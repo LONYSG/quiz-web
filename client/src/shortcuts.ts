@@ -35,6 +35,7 @@
 // =============================================================================
 
 import { useEffect, useRef } from 'react';
+import { isReportOpen } from './reportGuard.js';
 
 export interface Shortcut {
   /** 화면에 표기할 조합키. 예: 'Alt+S' */
@@ -95,6 +96,8 @@ export function useShortcuts(shortcuts: Shortcut[]): void {
       if (e.isComposing) return;
       if (e.repeat) return;
       if (held.has(e.code)) return;
+      // ★ R065 — 제보 창이 열려 있으면 단축키(이모티콘 · 버튼)는 쉰다(Alt+B 는 AppReport 가 따로)
+      if (isReportOpen()) return;
       // ★ Ctrl / Meta 가 함께 눌린 조합은 우리 것이 아니다. 브라우저에 넘긴다
       if (e.ctrlKey || e.metaKey) return;
 
@@ -141,6 +144,7 @@ export function useFocusChatOnEscape(inputRef: React.RefObject<HTMLInputElement 
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
       if (e.isComposing) return;
+      if (isReportOpen()) return;
       // ★ 이미 입력창에 있으면 아무것도 하지 않는다 (다른 핸들러가 처리하게 둔다)
       if (document.activeElement === inputRef.current) return;
       inputRef.current?.focus();

@@ -15,6 +15,7 @@ import Icon from '../Icon.js';
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
+import { typingTarget } from '../reportGuard.js';
 
 interface Props {
   socket: Socket;
@@ -75,6 +76,7 @@ export default function ReactionTap({ socket, view, serverNow, mobile }: Props) 
   useEffect(() => {
     if (!canPlay) return undefined;
     const onKey = (e: KeyboardEvent) => {
+      if (typingTarget(e)) return;
       if (e.key !== ' ' && e.key !== 'Enter' && e.code !== 'Space') return;
       if (e.repeat) return;
       e.preventDefault();
