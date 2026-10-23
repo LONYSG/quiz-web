@@ -363,6 +363,9 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 
 ## ★★ 앱 제보 (R061 / 0024 — D-255)
 
+- ★ **R063 / 0025** — `account_id` **NULL 허용**(로그인 전 제보 — screen 'auth' · 'password-change' 만 서버가 받는다) · `login_hint` ≤40(로그인 칸 아이디 · 비밀번호 아님) · `ip_hash` ≤32(비로그인 때만 · sha256(ip + 비밀 앞 8자) 앞 16자 — 원 IP 없음 · 속도 제한 10초 3번). `device` 에 `screen`(모니터 CSS px) · `dpr`(배율) · `theme` · `ui` 추가.
+- ★ **R063 / 0025 · point_grants** — reason 에 `'signup'`(가입 선물 50P — 가입 한 문장(CTE) 안에서 · 봇 제외 · 기존 회원 소급은 0025 가 한 번 · seen_at null → 토스트).
+
 | 표 · 열 | 형식 | 규칙 |
 |---------|------|------|
 | `app_reports` | id bigserial · account_id FK(계정 지우면 같이) · created_at · **kind**('bug' · 'awkward' · 'idea' · 'question' · 'other') · **text** ≤500 · reasons text[](📝 사유 — R056 코드) · **screen**(≤60 — `lobby` · `room` · `game:question` · `game:reveal` · `game:result` · `minigame:<key>:<phase>` · `shop@room` …) · room_id · game_id FK null · question_id FK null · question_index · minigame_key · minigame_run_id FK null · minigame_item(`photo-0303`) · device jsonb(mobile · viewport · ua 120자 · build 짧은 해시 · emojiInsert) · recent jsonb(최근 소켓 이벤트 **이름** 20개 · 시각) · handled_at · note ≤200 · 인덱스 (created_at) · (handled_at) | POST /api/reports(로그인 · 10초 5번) · **판 · 문항 · 미니게임 판은 서버가 채운다**(공개 전 문항도 id 만) · 글의 첫 `#번호` · `photo-0303` 은 칸이 비어 있으면 붙인다(있는 id 만) · 읽기 `npm run reports:report` · 처리 `reports:handle` · 채팅 원문 없음 |

@@ -308,7 +308,14 @@ DELETE FROM minigame_item_experiences WHERE account_id IN (SELECT id FROM accoun
 - 문항 · 그림은 DB 가 정본이 됐다(파일은 찬종 PC · git 밖 그림) — `npm run db:backup` 에 들어간다.
 - 기록은 지우지 않는 것이 원칙이다(docs/17 3절) — 위 DELETE 는 잘못 지급된 보상을 바로잡을 때만.
 
+### ★★ 가입 선물 (R063 · D-260)
+- 새 회원은 가입할 때 50P(point_grants reason 'signup' · 봇 제외) · 기존 회원은 0025 가 한 번 소급(2026-10-23 · 사람 21명).
+```sql
+SELECT a.login_id, g.amount, g.note, g.created_at, g.seen_at FROM point_grants g JOIN accounts a ON a.id = g.account_id WHERE g.reason = 'signup' ORDER BY g.id DESC LIMIT 30;
+```
+
 ### ★★ 앱 제보 읽기 · 처리 (R061 · D-255)
+- ★ R063 — 로그인 전 제보는 계정 없이(닉네임 "(로그인 전)" · login_hint · ip_hash) · 기기 줄 "1536×864 @1.25 · 모니터 1920×1080".
 ```bash
 npm run reports:report -- --no-bots                 # 처리 안 된 것(최신순) → 콘솔 + tmp/app-reports.md · --all 전부 · --since 2026-10-23
 npm run reports:handle -- --id 12,13 --note "R062 반영" --yes     # 처리 표시(--undo 로 지움)
