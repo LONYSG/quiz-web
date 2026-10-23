@@ -43,14 +43,14 @@ if (SINCE) {
   params.push(SINCE);
   where.push(`r.created_at >= $${params.length}::date`);
 }
-if (NO_BOTS) where.push(`a.login_id !~ '^(bot|uic|r10_)'`);
+if (NO_BOTS) where.push(`(a.login_id IS NULL OR a.login_id !~ '^(bot|uic|r10_)')`);
 const rows = (
   await db.query(
     `SELECT r.id::text, r.created_at, r.kind, r.text, r.reasons, r.screen, r.game_id::text, r.question_id::text, r.question_index,
             r.minigame_key, r.minigame_run_id::text, r.minigame_item, r.device, r.handled_at, r.note,
-            a.nickname, a.login_id ~ '^(bot|uic|r10_)' AS bot,
+            r.login_hint, r.ip_hash, coalesce(a.nickname, '(로그인 전)') AS nickname, coalesce(a.login_id ~ '^(bot|uic|r10_)', false) AS bot,
             left(q.question_text, 41) AS qtext, q.display_answer AS qanswer
-       FROM app_reports r JOIN accounts a ON a.id = r.account_id LEFT JOIN questions q ON q.id = r.question_id
+       FROM app_reports r LEFT JOIN accounts a ON a.id = r.account_id LEFT JOIN questions q ON q.id = r.question_id
       WHERE ${where.join(' AND ')}
       ORDER BY r.created_at DESC`,
     params,
@@ -58,6 +58,11 @@ const rows = (
 ).rows;
 await db.end();
 
+/** 모니터 해상도 — CSS px × 배율 = 실제 픽셀(1536×864 @1.25 → 1920×1080) */
+const screenPx = (d) => {
+  const [w, h] = String(d.screen).split('x').map(Number);
+  return d.dpr && w && h ? `${Math.round(w * d.dpr)}×${Math.round(h * d.dpr)}` : String(d.screen).replace('x', '×');
+};
 const ctxOf = (r) =>
   [
     r.game_id && `판 #${r.game_id}`,
@@ -65,7 +70,11 @@ const ctxOf = (r) =>
     r.minigame_key && `미니게임 ${r.minigame_key}${r.minigame_run_id ? ` #${r.minigame_run_id}` : ''}`,
     r.minigame_item && `문항 ${r.minigame_item}`,
     r.device?.mobile !== undefined && (r.device.mobile ? '모바일' : 'PC'),
-    r.device?.viewport,
+    // ★ R063 — "1536×864 @1.25 · 모니터 1920×1080 · 밤"
+    r.device?.viewport && `${r.device.viewport.replace('x', '×')}${r.device.dpr ? ` @${r.device.dpr}` : ''}${r.device.screen ? ` · 모니터 ${screenPx(r.device)}` : ''}`,
+    r.device?.theme && r.device.theme !== 'pastel' && r.device.theme,
+    r.login_hint && `로그인 전 · 아이디 칸 "${r.login_hint}"`,
+    !r.login_hint && r.ip_hash && '로그인 전',
     r.device?.build && `빌드 ${r.device.build}`,
   ]
     .filter(Boolean)

@@ -11,7 +11,7 @@ import { query } from './pool.js';
 export interface GrantNotice {
   id: string;
   amount: number;
-  reason: 'feedback_adopted' | 'feedback_monthly_top' | 'admin';
+  reason: 'feedback_adopted' | 'feedback_monthly_top' | 'admin' | 'signup';
   /** 채택된 설문의 문제 질문 앞 30자 */
   question: string | null;
 }

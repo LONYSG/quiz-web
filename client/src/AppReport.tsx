@@ -18,6 +18,7 @@ import { FEEDBACK_REASONS, REPORT_KINDS, REPORT_TEXT_MAX } from '@quiz/shared';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import { getEmojiInsert } from './emojiCatalog.js';
+import { getTheme } from './theme.js';
 import { closePopup, useCurrentPopup, usePopup } from './popup.js';
 import { useUiMode } from './uiMode.js';
 
@@ -79,6 +80,11 @@ function device(mobile: boolean) {
     ua: navigator.userAgent.slice(0, 120),
     build: typeof __BUILD__ === 'string' ? __BUILD__ : '',
     emojiInsert: getEmojiInsert(),
+    // ★ R063 — 같은 화면이 어떤 기기에선 깨지는 것을 가리려고: 모니터 해상도(CSS px) · 배율 · 테마 · UI 모드
+    screen: `${window.screen.width}x${window.screen.height}`,
+    dpr: window.devicePixelRatio,
+    theme: getTheme(),
+    ui: mobile ? 'mobile' : 'pc',
   };
 }
 
@@ -312,6 +318,8 @@ function ReportWindow({ onClose }: { onClose: () => void }) {
     postReport({
       kind,
       text: text.trim(),
+      // ★ 로그인 전 — 아이디 칸만 읽는다(비밀번호 칸은 읽지 않는다)
+      loginHint: ctx.screen === 'auth' ? ((document.querySelector('input[autocomplete="username"]') as HTMLInputElement | null)?.value ?? null) : null,
       screen: ctx.screen,
       questionIndex: ctx.questionIndex,
       minigameKey: ctx.minigameKey,
@@ -350,7 +358,7 @@ function ReportWindow({ onClose }: { onClose: () => void }) {
         maxLength={REPORT_TEXT_MAX}
         value={text}
         autoFocus
-        placeholder="무엇이 이상했나요? 문항이면 #번호를 같이 적어 주세요 (Ctrl+Enter 보내기)"
+        placeholder="무엇이 이상했나요?"
         aria-label="제보 내용"
         onChange={(e) => setText(e.target.value)}
         onKeyDown={(e) => {
@@ -360,9 +368,12 @@ function ReportWindow({ onClose }: { onClose: () => void }) {
           }
         }}
       />
-      <p className="report-ctx dim" data-report-ctx>
-        지금: {ctx.label || ctx.screen}
-      </p>
+      {/* ★ R063 — 사람 말로 · 번호가 없는 화면(로비 · 대기실 · 로그인)은 줄을 숨긴다 */}
+      {ctx.label && (
+        <p className="report-ctx dim" data-report-ctx>
+          {ctx.label}
+        </p>
+      )}
       {err && <p className="fb-err">{err}</p>}
       <div className="report-actions">
         <button type="button" className="ghost" onClick={onClose}>
@@ -376,6 +387,29 @@ function ReportWindow({ onClose }: { onClose: () => void }) {
   );
 }
 
+/** ★ R063 (D-256) — 위 막대의 정식 메뉴 버튼(떠 있는 🐞 는 없앴다 — 찬종 "정식 메뉴처럼") */
+export function ReportButton({ className = 'ghost tiny report-btn' }: { className?: string }) {
+  const [, setOpen] = usePopup('report');
+  return (
+    <button type="button" className={className} title="제보 (Alt+B)" aria-label="제보" data-report-btn onMouseDown={keepFocus} onClick={() => setOpen(true)}>
+      <Icon icon={Bug} />
+      <span className="lbl">제보</span>
+    </button>
+  );
+}
+
+/** 로그인 전 화면 — 카드 아래 작은 글 링크 */
+export function ReportLink() {
+  const [, setOpen] = usePopup('report');
+  return (
+    <p className="report-link">
+      <button type="button" className="link-btn" data-report-link onClick={() => setOpen(true)}>
+        문제가 있나요? 제보
+      </button>
+    </p>
+  );
+}
+
 /** 메뉴 · 단축키에서 연다 */
 export function useOpenBugReport(): () => void {
   const [, setOpen] = usePopup('report');
@@ -383,8 +417,7 @@ export function useOpenBugReport(): () => void {
 }
 
 // ── App 에 하나 ─────────────────────────────────────────────────────────────────
-export default function ReportHost({ ctx, hideFloat }: { ctx: ReportScreen; hideFloat: boolean }) {
-  const mobile = useUiMode() === 'mobile';
+export default function ReportHost({ ctx }: { ctx: ReportScreen }) {
   screenNow = ctx;
   const [open, setOpen] = usePopup('report');
   const target = useSyncExternalStore(subscribe, () => qTarget);
@@ -424,20 +457,6 @@ export default function ReportHost({ ctx, hideFloat }: { ctx: ReportScreen; hide
     );
   return (
     <>
-      {!(mobile && hideFloat) && (
-        <button
-          type="button"
-          className={mobile ? 'report-float m' : 'report-float'}
-          title="제보 (Alt+B)"
-          aria-label="제보"
-          data-report-float
-          onMouseDown={keepFocus}
-          onClick={() => setOpen(true)}
-        >
-          <Icon icon={Bug} />
-          {!mobile && <span>제보</span>}
-        </button>
-      )}
       {open && back(<ReportWindow onClose={close} />, close)}
       {target && back(<QReportWindow key={target.questionId ?? target.minigameItem ?? ''} target={target} onClose={qClose} />, qClose)}
       {msg && (

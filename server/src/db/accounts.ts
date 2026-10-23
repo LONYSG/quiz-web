@@ -8,6 +8,7 @@
 //               별도 처리가 필요 없다. citext나 lower() 인덱스를 쓰면 규칙을 깨뜨린다
 // =============================================================================
 
+import { NEAR_MISS_SKIP_LOGIN, SIGNUP_GIFT_POINTS } from '@quiz/shared';
 import { query } from './pool.js';
 
 export interface AccountRow {
@@ -60,11 +61,18 @@ export async function createAccount(
   nickname: string,
 ): Promise<CreateAccountResult> {
   try {
+    // ★ R063 (D-260) — 가입 선물 50P 를 **같은 한 문장**에서(계정이 생기면 선물도 · 봇 · 검사 계정은 빼고)
     const result = await query<AccountRow>(
-      `INSERT INTO accounts (login_id, password_hash, nickname)
-       VALUES ($1, $2, $3)
-       RETURNING id, login_id, password_hash, nickname, created_at`,
-      [normalizeLoginId(loginId), passwordHash, nickname],
+      `WITH a AS (
+         INSERT INTO accounts (login_id, password_hash, nickname)
+         VALUES ($1, $2, $3)
+         RETURNING id, login_id, password_hash, nickname, created_at
+       ), g AS (
+         INSERT INTO point_grants (account_id, amount, reason, note)
+         SELECT id, $4, 'signup', '가입 선물' FROM a WHERE login_id !~ $5
+       )
+       SELECT * FROM a`,
+      [normalizeLoginId(loginId), passwordHash, nickname, SIGNUP_GIFT_POINTS, NEAR_MISS_SKIP_LOGIN],
     );
     return { ok: true, account: result.rows[0]! };
   } catch (err) {

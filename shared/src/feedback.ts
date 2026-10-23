@@ -30,6 +30,8 @@ export const FEEDBACK_COMMENT_MAX = 200;
  */
 export const FEEDBACK_ADOPT_POINTS = 5;
 export const FEEDBACK_MONTHLY_TOP_POINTS = 30;
+/** ★ R063 (D-260) — 가입 선물(봇 제외 · 기존 회원은 0025 가 소급) */
+export const SIGNUP_GIFT_POINTS = 50;
 
 /** 속도 제한 — 한 계정 10초에 20번 */
 export const FEEDBACK_RATE = { windowMs: 10_000, max: 20 } as const;

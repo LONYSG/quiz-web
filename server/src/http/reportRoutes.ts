@@ -9,7 +9,9 @@
 // ★ 속도 제한 10초 5번(메모리 — 서버가 하나뿐 · 문제 평가와 같은 꼴). 포인트 · 업적 연동 없음.
 // =============================================================================
 
-import { Router } from 'express';
+import { createHash } from 'node:crypto';
+import { Router, type Request } from 'express';
+import { config } from '../config.js';
 import { REPORT_RATE, parseReportInput, reportRefs, type ReportInput } from '@quiz/shared';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import { query } from '../db/pool.js';
@@ -19,15 +21,31 @@ import type { Room } from '../rooms/types.js';
 export const reportRouter = Router();
 
 const recent = new Map<string, number[]>();
-function rateOk(accountId: string, now = Date.now()): boolean {
+function rateOk(accountId: string, now = Date.now(), max: number = REPORT_RATE.max): boolean {
   const list = (recent.get(accountId) ?? []).filter((t) => now - t < REPORT_RATE.windowMs);
-  if (list.length >= REPORT_RATE.max) {
+  if (list.length >= max) {
     recent.set(accountId, list);
     return false;
   }
   list.push(now);
   recent.set(accountId, list);
   return true;
+}
+
+/** ★ R063 (D-256 · R062 흡수) — 로그인 없이 받는 화면은 둘뿐(그 밖은 401) */
+export const ANON_SCREENS: ReadonlySet<string> = new Set(['auth', 'password-change']);
+/** 비로그인 속도 제한 — ip_hash 기준 10초 3번 */
+const ANON_MAX = 3;
+
+/** 원 IP 는 저장하지 않는다 — sha256(ip + 비밀 앞 8자) 앞 16자 */
+export function ipHash(ip: string, secret: string): string {
+  return createHash('sha256').update(ip + secret.slice(0, 8)).digest('hex').slice(0, 16);
+}
+function clientIp(req: Request): string {
+  const cf = req.headers['cf-connecting-ip'];
+  const xf = req.headers['x-forwarded-for'];
+  const first = (Array.isArray(cf) ? cf[0] : cf) ?? (Array.isArray(xf) ? xf[0] : xf)?.split(',')[0];
+  return (first ?? req.socket.remoteAddress ?? '').trim();
 }
 
 export interface ReportContext {
@@ -74,11 +92,14 @@ async function existsInDb(kind: 'q' | 'm', id: string): Promise<boolean> {
 
 reportRouter.post('/', async (req, res) => {
   const session = await resolveSession(readSessionToken(req.headers.cookie));
-  if (!session) {
+  const screen = typeof (req.body as { screen?: unknown })?.screen === 'string' ? (req.body as { screen: string }).screen : '';
+  // ★ 로그인 전(로그인 · 비밀번호 바꾸기 화면)만 비로그인 허용 — 맥락은 전부 null · ip_hash 로 속도 제한
+  const anonHash = session ? null : ANON_SCREENS.has(screen) ? ipHash(clientIp(req), config.sessionSecret) : null;
+  if (!session && !anonHash) {
     res.status(401).json({ ok: false });
     return;
   }
-  if (!rateOk(session.accountId)) {
+  if (!(session ? rateOk(session.accountId) : rateOk(`ip:${anonHash}`, Date.now(), ANON_MAX))) {
     res.status(429).json({ ok: false, message: '너무 빨라요. 잠시 뒤에 다시 보내 주세요.' });
     return;
   }
@@ -88,19 +109,20 @@ reportRouter.post('/', async (req, res) => {
     return;
   }
   const v = parsed.value;
-  let ctx = await reportContext(getRoomOfAccount(session.accountId), v);
+  let ctx = await reportContext(session ? getRoomOfAccount(session.accountId) : undefined, session ? v : { questionIndex: null, minigameKey: null, questionId: null, minigameItem: null });
   // 클라가 준 문항 번호는 있는 것만
   if (ctx.questionId && v.questionId === ctx.questionId && !(await existsInDb('q', ctx.questionId))) ctx = { ...ctx, questionId: null, questionIndex: null };
   if (ctx.minigameItem && v.minigameItem === ctx.minigameItem && !(await existsInDb('m', ctx.minigameItem))) ctx = { ...ctx, minigameItem: null };
-  ctx = await fillFromText(ctx, v.text, existsInDb);
+  if (session) ctx = await fillFromText(ctx, v.text, existsInDb);
   const r = await query<{ id: string }>(
     `INSERT INTO app_reports (account_id, kind, text, reasons, screen, room_id, game_id, question_id, question_index,
-                              minigame_key, minigame_run_id, minigame_item, device, recent)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+                              minigame_key, minigame_run_id, minigame_item, device, recent, login_hint, ip_hash)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
      RETURNING id::text`,
     [
-      session.accountId, v.kind, v.text, v.reasons, v.screen, ctx.roomId, ctx.gameId, ctx.questionId, ctx.questionIndex,
+      session?.accountId ?? null, v.kind, v.text, v.reasons, v.screen, ctx.roomId, ctx.gameId, ctx.questionId, ctx.questionIndex,
       ctx.minigameKey, ctx.minigameRunId, ctx.minigameItem, JSON.stringify(v.device), v.recent ? JSON.stringify(v.recent) : null,
+      session ? null : v.loginHint, anonHash,
     ],
   );
   res.json({ ok: true, id: r.rows[0]!.id, questionId: ctx.questionId });

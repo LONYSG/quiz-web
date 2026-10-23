@@ -37,6 +37,8 @@ export interface ReportInput {
   minigameItem: string | null;
   device: Record<string, unknown>;
   recent: { e: string; t: number }[] | null;
+  /** ★ R063 — 로그인 전 제보: 로그인 칸에 쳐 둔 아이디(비밀번호는 절대 아님) */
+  loginHint: string | null;
 }
 
 const KINDS = new Set<string>(REPORT_KINDS.map((k) => k.code));
@@ -67,7 +69,8 @@ export function parseReportInput(body: unknown): { ok: true; value: ReportInput 
         .slice(-20)
         .map((x) => ({ e: x.e.slice(0, 40), t: x.t }))
     : null;
-  return { ok: true, value: { kind, text, reasons, screen, questionIndex, minigameKey, questionId, minigameItem, device, recent } };
+  const loginHint = typeof b.loginHint === 'string' && b.loginHint.trim() ? b.loginHint.trim().slice(0, 40) : null;
+  return { ok: true, value: { kind, text, reasons, screen, questionIndex, minigameKey, questionId, minigameItem, device, recent, loginHint } };
 }
 
 /** 기기 정보는 아는 칸만 · 짧게 */
@@ -78,6 +81,11 @@ function cleanDevice(d: Record<string, unknown>): Record<string, unknown> {
   if (typeof d.ua === 'string') out.ua = d.ua.slice(0, 120);
   if (typeof d.build === 'string') out.build = d.build.slice(0, 12);
   if (typeof d.emojiInsert === 'string' || typeof d.emojiInsert === 'boolean') out.emojiInsert = d.emojiInsert;
+  // ★ R063 — 모니터 해상도(CSS px) · 배율(devicePixelRatio — Windows 125% = 1.25 · 브라우저 확대 곱) · 테마 · UI 모드
+  if (typeof d.screen === 'string') out.screen = d.screen.slice(0, 20);
+  if (typeof d.dpr === 'number' && Number.isFinite(d.dpr)) out.dpr = Math.round(d.dpr * 100) / 100;
+  if (typeof d.theme === 'string') out.theme = d.theme.slice(0, 16);
+  if (typeof d.ui === 'string') out.ui = d.ui.slice(0, 10);
   return out;
 }
 

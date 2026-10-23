@@ -12,6 +12,7 @@
 // ★ 새로 만드는 버튼과 배지는 styles.css 의 라벨 규칙을 그대로 받는다 (D-022).
 // =============================================================================
 
+import { ReportButton } from './AppReport.js';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import { countEmojiTokens, formatExperienceRate, INLINE_EMOJI_MAX, nicknameFits, RULES } from '@quiz/shared';
@@ -724,6 +725,8 @@ export default function Lobby({
             <Icon icon={Users} />
             <span className="people-count">{snapshot.players.length}</span>
           </button>
+          {/* ★ R063 — 제보(PC 위 막대 · 모바일은 ☰ 메뉴 안) */}
+          <ReportButton />
           <Prefs variant="gear" onLogout={onLogout} />
           {/* ★★ ⓘ — R041 (건우: "안내가 너무 많다. 필요한 설명만") — 처음 하는 사람이 꼭 알아야 할 것만. 뺀 것은 R041 보고서 4장 표 */}
           {/* ★★ R043 B — 안내문은 InfoText 한 곳 (웹 · 모바일 따로) */}

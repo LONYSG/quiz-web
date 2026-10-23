@@ -3566,7 +3566,8 @@ button.people-row.pickable:focus-visible {
   :where(.ui-mobile) .room-tools > .rename > #rename-btn,
   :where(.ui-mobile) .room-tools > .prefs > .prefs-toggle,
   :where(.ui-mobile) .room-tools > .infotip > .infotip-btn,
-  :where(.ui-mobile) .room-tools > button[aria-label='나가기']{
+  :where(.ui-mobile) .room-tools > button[aria-label='나가기'],
+  :where(.ui-mobile) .room-tools > .report-btn{
     display: none !important;
   }
   :where(.ui-mobile) .menu-btn{
@@ -7004,42 +7005,6 @@ button.person-all-btn {
 /* =============================================================================
    ★★ R061 — 앱 제보 (🐞 전반적 · 📝 문제 전용 · 문항 번호 복사) — D-255
    ============================================================================= */
-.report-float {
-  position: fixed;
-  right: 14px;
-  bottom: 14px;
-  z-index: 70;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin: 0;
-  padding: 4px 10px;
-  height: 30px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--text-dim);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  box-shadow: var(--shadow-pop);
-  opacity: 0.8;
-}
-.report-float:hover {
-  opacity: 1;
-  color: var(--text);
-}
-/* 모바일 — 오른쪽 위 작은 반투명 🐞 (28px · 위 막대의 빈 자리(👥 · ☰ 왼쪽) — 문제 카드 · 타이머 · 게임 조작을 가리지 않게 · 미니게임 play 단계엔 숨김) */
-.report-float.m {
-  top: calc(env(safe-area-inset-top, 0px) + 9px);
-  bottom: auto;
-  right: 112px;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  justify-content: center;
-  opacity: 0.45;
-  box-shadow: none;
-}
 .report-back {
   z-index: 95;
 }
@@ -7152,4 +7117,35 @@ button.qreport-btn:hover {
   justify-content: center;
   align-items: center;
   gap: 4px;
+}
+
+/* ★★ R063 (D-256) — 제보는 위 막대의 정식 메뉴 · 로그인 전은 카드 아래 글 링크 · placeholder 한 줄 */
+.home-bar > .report-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  box-sizing: border-box;
+  height: 2.3em;
+  min-width: 2.3em;
+  margin: 0;
+  padding: 0 0.8em;
+  font-size: 0.78rem;
+  line-height: 1;
+}
+:where(.ui-mobile) .home-bar > .report-btn .lbl {
+  display: none;
+}
+.report-link {
+  margin: 6px 0 0;
+  text-align: center;
+  font-size: 0.78rem;
+}
+.report-link .link-btn {
+  color: var(--text-dim);
+}
+.report-text::placeholder {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

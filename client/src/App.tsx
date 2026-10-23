@@ -49,7 +49,7 @@ import FriendList from './FriendList.js';
 import InviteToast from './InviteToast.js';
 import AchievementToast from './AchievementToast.js';
 import GrantToast from './GrantToast.js';
-import ReportHost, { trackReportEvents, type ReportScreen } from './AppReport.js';
+import ReportHost, { ReportButton, ReportLink, trackReportEvents, type ReportScreen } from './AppReport.js';
 import { useCurrentPopup } from './popup.js';
 import { minigameInfo, type MinigameKey } from '@quiz/shared';
 import { PersonCardHost } from './PersonCard.js';
@@ -318,7 +318,7 @@ export default function App() {
     const mg = snap?.minigame ?? null;
     const q = snap?.question ?? null;
     const POPUP_SCREEN: Record<string, string> = { shop: 'shop', profile: 'profile', prefs: 'settings', friends: 'friends', info: 'info' };
-    let screen = !account ? 'auth' : !snap ? 'lobby' : 'room';
+    let screen = !account ? 'auth' : account.mustChangePassword ? 'password-change' : !snap ? 'lobby' : 'room';
     if (mg) screen = `minigame:${mg.key}:${mg.phase}`;
     else if (st === 'QUESTION_ACTIVE') screen = 'game:question';
     else if (st === 'QUESTION_RESOLVED') screen = 'game:reveal';
@@ -328,14 +328,19 @@ export default function App() {
     if (popupNow && POPUP_SCREEN[popupNow]) screen = `${POPUP_SCREEN[popupNow]}${snap ? '@room' : ''}`;
     const mgName = mg ? (minigameInfo(mg.key as MinigameKey)?.name ?? mg.key) : null;
     const gameId = snap?.game?.gameId ?? snap?.result?.gameId ?? null;
-    const label = [
-      mgName ? `미니게임 ${mgName}` : screen,
-      gameId && `판 #${gameId}`,
-      q && !mg && `문항 ${q.index}${q.questionId ? ` (#${q.questionId})` : ''}`,
-      mg?.round?.itemId && `문항 ${mg.round.itemId}`,
-    ]
-      .filter(Boolean)
-      .join(' · ');
+    // ★ R063 (D-256) — 맥락 줄은 사람 말로 · 번호가 없는 화면(로비 · 대기실 · 로그인 · 창)은 빈 줄 → 창에서 숨긴다
+    const qid = q?.questionId ? ` (#${q.questionId})` : '';
+    const label = mg
+      ? [`미니게임 ${mgName}`, mg.round?.itemId && `(${mg.round.itemId})`].filter(Boolean).join(' ')
+      : st === 'QUESTION_ACTIVE' && q
+        ? `문제 ${q.index}${qid}`
+        : st === 'QUESTION_RESOLVED' && q
+          ? `정답 공개${qid}`
+          : st === 'PAUSED' && q
+            ? `일시정지 · 문제 ${q.index}${qid}`
+            : st === 'GAME_RESULT' && gameId
+              ? `결과 (판 #${gameId})`
+              : '';
     return { screen, questionIndex: q && !mg ? q.index : null, minigameKey: mg?.key ?? null, label };
   }, [room.snapshot, account, popupNow]);
 
@@ -378,7 +383,13 @@ export default function App() {
             pendingRoomId={pendingRoomId}
           />
         ),
-        foot: <Prefs />,
+        foot: (
+          <>
+            <Prefs />
+            {/* ★ R063 (D-256 · R062 흡수) — 로그인 전에도 제보 */}
+            <ReportLink />
+          </>
+        ),
       };
     }
 
@@ -393,7 +404,7 @@ export default function App() {
             onLogout={() => void doLogout()}
           />
         ),
-        foot: null,
+        foot: <ReportLink />,
       };
     }
 
@@ -472,6 +483,8 @@ export default function App() {
             />
             {/* ★★ R049 — 이모티콘샵도 방 밖에서 (찬종: "언제든지 방문") */}
             <ShopPanel />
+            {/* ★ R063 — 제보는 위 막대의 정식 메뉴(떠 있는 🐞 없앰) */}
+            <ReportButton />
           </div>
           <div className="brand">
             <span className="brand-mark" aria-hidden="true">Q</span>
@@ -581,7 +594,8 @@ export default function App() {
       {/* ★ R059 — 제보 채택 · 보너스 포인트 알림(로그인 뒤 한 번) */}
       {account && !mustChange && <GrantToast accountId={account.accountId} />}
       {/* ★ R061 — 🐞 제보(어느 화면이든 · Alt+B) · 📝 문항 피드백 창 · 복사/접수 알림 */}
-      {account && !mustChange && <ReportHost ctx={reportCtx} hideFloat={room.snapshot?.minigame?.phase === 'play'} />}
+      {/* ★ R063 — 로그인 전(로그인 · 비밀번호 바꾸기)에도 창은 뜬다(서버는 그 두 화면만 비로그인 허용) */}
+      <ReportHost ctx={reportCtx} />
       {/* ★ R056 — 아바타를 누르면 뜨는 프로필 카드(사진 크게 · 업적) · 전체 업적 창 */}
       {account && <PersonCardHost />}
       {view.body}
