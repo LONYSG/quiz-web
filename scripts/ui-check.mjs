@@ -3743,6 +3743,113 @@ async function r060Flow(browser) {
   await G.close?.();
   await H.close?.();
 }
+// ★★★ R066 §A — 결과 화면 잘림(#25 #27 · 찬종 캡처 2560×1313 미니게임만 10판 3명): 채팅이 길면 결과 카드가 줄고 채팅 카드에 깔린다
+//   (UICHECK_R066=1 · R066_ONLY=result 면 이것만 · 묶음 r066 · docs/design/r066)
+async function socketGuests(roomId, n, tag) {
+  const { io: ioc } = await import('socket.io-client');
+  const socks = [];
+  for (let i = 0; i < n; i += 1) {
+    const loginId = `${ACCOUNT_PREFIX}_${tag}${i}`.toLowerCase();
+    const body = JSON.stringify({ loginId, password: 'uic1234', nickname: `${tag}손님${i}` });
+    let res = await fetch(`${BASE}/api/auth/signup`, { method: 'POST', headers: { 'content-type': 'application/json' }, body });
+    if (res.status !== 200) res = await fetch(`${BASE}/api/auth/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ loginId, password: 'uic1234' }) });
+    const cookie = (res.headers.getSetCookie?.() ?? []).map((c) => c.split(';')[0]).find((c) => c.startsWith('qw_session=')) ?? '';
+    const s = ioc(BASE, { transports: ['websocket'], extraHeaders: { cookie }, reconnection: false });
+    await new Promise((r) => s.once('connect', r));
+    s.emit('room.join', { roomId });
+    await new Promise((r) => s.once('room.state', r));
+    socks.push(s);
+  }
+  return socks;
+}
+/** 채팅 n 줄 — 손님들이 돌아가며(채팅 도배 5초 5회 안에서) */
+async function chatLines(socks, n) {
+  for (let i = 0; i < n; i += 1) {
+    socks[i % socks.length].emit('chat.send', { text: `채팅 ${i + 1}줄 ㅋㅋ`, epoch: null });
+    await sleep(Math.ceil(1100 / socks.length));
+  }
+  await sleep(600);
+}
+/** 결과 카드 — 3위 줄 · 다시 하기 · 로비로가 화면 안 + 그 자리를 누르면 그 요소(덮임 없음) · 순위는 다 보이거나 목록 안 스크롤 */
+const RESULT_FULL = `JSON.stringify((() => {
+  const card = document.querySelector('.result-card');
+  if (!card) return { card: false };
+  const hit = (el) => { if (!el) return false; const b = el.getBoundingClientRect(); if (b.width === 0 || b.top < 0 || b.bottom > innerHeight + 1) return false; const t = document.elementFromPoint(Math.round(b.left + b.width / 2), Math.round(b.top + b.height / 2)); return !!t && (el === t || el.contains(t)); };
+  const btn = (t) => [...card.querySelectorAll('.next-row button')].find((b) => b.innerText.trim().endsWith(t));
+  const ranks = [...card.querySelectorAll('.ranking li')];
+  const list = card.querySelector('.ranking');
+  const r = card.getBoundingClientRect();
+  const chat = document.querySelector('.chat-card')?.getBoundingClientRect();
+  return { card: true, n: ranks.length, third: hit(ranks[2]), again: hit(btn('다시 하기')), lobby: hit(btn('로비로')),
+    allRanks: ranks.every(hit), listScroll: list ? list.scrollHeight > list.clientHeight + 1 && getComputedStyle(list).overflowY !== 'visible' : false,
+    cardH: Math.round(r.height), cardBottom: Math.round(r.bottom), chatTop: chat ? Math.round(chat.top) : null, chatH: chat ? Math.round(chat.height) : null, vh: innerHeight };
+})())`;
+const R066_PC = [{ w: 2560, h: 1313 }, { w: 1536, h: 864 }, { w: 1280, h: 720 }];
+async function r066ResultAt(H, label, shot) {
+  const out = {};
+  for (const z of R066_PC) {
+    await H.setViewport(z.w, z.h);
+    await sleep(400);
+    out[`${z.w}x${z.h}`] = JSON.parse(await H.evaluate(RESULT_FULL));
+    if (shot && z.w === 2560) await snap(H, shot);
+  }
+  const ok = Object.values(out).every((o) => o.card && o.third && o.again && o.lobby && (o.allRanks || o.listScroll));
+  record(`★★★ R066 §A ${label} — 3위 줄 · 다시 하기 · 로비로가 보이고 눌린다(덮임 없음) · 순위는 다 보이거나 목록 안 스크롤 — 2560 · 1536 · 1280`, ok, JSON.stringify(out));
+  return ok;
+}
+async function r066ResultFlow(browser) {
+  const tagShot = process.env.R066_BEFORE ? 'before' : 'after';
+  // ⓐ 미니게임만 2판 · 3명 · 채팅 25줄 / ⓑ 10명(두 열)
+  for (const [label, guests, tag] of [['ⓐ 미니게임만 3명 · 채팅 25줄', 2, 'ra'], ['ⓑ 미니게임만 10명(두 열) · 채팅 25줄', 9, 'rb']]) {
+    const H = await newPage(browser, `R066-${tag}`, true);
+    await H.setViewport(2560, 1313);
+    await signUp(H, `${tag}h`, `${tag}방장`);
+    const roomId = await createRoom(H, `R066 ${tag}`);
+    const socks = await socketGuests(roomId, guests, tag);
+    await sleep(800);
+    await realClick(H, 'button[data-mode="minigame"]');
+    await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+    await H.setInput('.mg-rounds-input', '2');
+    await sleep(300);
+    await selectMinigames(H, ['tap', 'reaction']);
+    await sleep(300);
+    await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+    await H.waitFor("document.querySelector('.result-card') !== null", 420000).catch(() => false);
+    await chatLines(socks, 25);
+    await r066ResultAt(H, label, label.startsWith('ⓐ') ? `170-result-mgonly-2560-${tagShot}` : `171-result-mgonly10-2560-${tagShot}`);
+    for (const s of socks) s.close();
+    await H.close?.();
+  }
+  if (process.env.R066_BEFORE) return;
+  // ⓒ 퀴즈 3문제 · 평가 목록 접힘 + 채팅 25줄 / ⓓ 목록 펼침
+  const H = await newPage(browser, 'R066-rc', true);
+  await H.setViewport(2560, 1313);
+  await signUp(H, 'rch', 'rc방장');
+  const roomId = await createRoom(H, 'R066 rc');
+  const socks = await socketGuests(roomId, 2, 'rc');
+  await sleep(800);
+  await setQuestionCount(H, 3);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  for (let i = 0; i < 3; i += 1) {
+    await H.waitFor("document.querySelector('.question-card .host-tools button') !== null || document.querySelector('.result-card') !== null", 60000).catch(() => false);
+    if (await H.evaluate("document.querySelector('.result-card') !== null")) break;
+    await openHostSkip(H);
+    await H.evaluate("document.querySelector('.confirm-modal[data-kind=\"host-skip\"] .confirm-actions button')?.click()");
+    await sleep(1500);
+  }
+  await H.waitFor("document.querySelector('.result-card') !== null", 90000).catch(() => false);
+  await chatLines(socks, 25);
+  await H.evaluate("(() => { const h = document.querySelector('.fb-result-head'); if (h?.getAttribute('aria-expanded') === 'true') h.click(); })()");
+  await sleep(300);
+  await r066ResultAt(H, 'ⓒ 퀴즈 3문제 · 평가 목록 접힘 · 채팅 25줄', '172-result-quiz-folded-2560');
+  await H.setViewport(2560, 1313);
+  await H.evaluate("(() => { const h = document.querySelector('.fb-result-head'); if (h?.getAttribute('aria-expanded') !== 'true') h?.click(); })()");
+  await sleep(300);
+  await r066ResultAt(H, 'ⓓ 퀴즈 · 평가 목록 펼침 · 채팅 25줄', '173-result-quiz-open-2560');
+  for (const s of socks) s.close();
+  await H.close?.();
+}
+
 // ★★ R065 — 제보 메뉴 두 갈래 · 최근 문제 · 미니게임 목록 · 창이 열린 채 미니게임(UICHECK_R065=1 · 묶음 r065 · docs/design/r065)
 const R065_SIZES = [
   { w: 1280, h: 720 },
@@ -4527,6 +4634,12 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R064) {
     await closeAllTabs(browser);
     await r064Flow(browser);
+  }
+  // ★ R066 — 결과 화면 잘림(§A) · 그 밖 R066 화면
+  if (process.env.UICHECK_R066) {
+    await closeAllTabs(browser);
+    await r066ResultFlow(browser);
+    if (process.env.R066_ONLY !== 'result' && typeof r066Flow === 'function') await r066Flow(browser);
   }
   // ★ R065 — 제보 메뉴 두 갈래 · 최근 목록 · 창이 열린 채 미니게임
   if (process.env.UICHECK_R065) {
