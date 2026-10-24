@@ -1,0 +1,326 @@
+### A1-09  [arts/L2:design-photo/산업 디자인]  method=나 hobby=자동차
+Q: 1938년 독일의 여가 단체 '기쁨을 통한 힘'은 저축 계획으로 이 차를 예약받았지만, 공장이 전쟁 물자만 만들게 되면서 33만 명이 넘는 저축자가 차를 받지 못했습니다. 공식 이름이 '타입 1'이었던 이 차는?
+A: 비틀   변형: 폭스바겐 비틀 | 딱정벌레차   variantCheck(GEN): ko.wikipedia '폭스바겐 비틀' 첫 줄 '일명 딱정벌레차 또는 버그'
+E: 1972년 포드 모델 T를 넘어 역대 가장 많이 팔린 차가 되었고, 그 기록을 25년 동안 지켰습니다.
+H: 마지막 차는 2003년 7월 30일 멕시코 푸에블라 공장에서 나왔고, 그때까지 2,152만여 대가 만들어졌다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Volkswagen_Beetle   hintNote: On 30 July 2003 at 9:05 a.m., at the Puebla plant in Mexico, Volkswagen produced the final Type 1, after 21,529,464 examples were produced globally during its tenure.
+REWRITE(고친 질문): before Q: 1938년 독일의 여가 단체 '기쁨을 통한 힘'은 저축 계획으로 이 차를 예약받았지만, 공장이 전쟁 물자만 만들게 되면서 33만 명이 넘는 저축자가 차를 받지 못했습니다. 1972년 포드 모델 T의 기록을 넘어 가장 많이 팔린 차가 된 이 차는? | before E: 공식 이름은 '타입 1'이었고, '비틀'은 1968년에야 공식 이름이 되었습니다. | addedCue(GEN): 공식 이름 '타입 1'
+facts: [q] KdF(기쁨을 통한 힘)가 사업을 맡음 <https://en.wikipedia.org/wiki/Volkswagen_Beetle> «Kraft durch Freude (Strength Through Joy, a political organisation aimed at providing the populace with leisure activities) was in charge of this proj»  ||  [q] 저축 계획, 33만 명 넘는 저축자가 차를 못 받음 <https://en.wikipedia.org/wiki/Volkswagen_Beetle> «Before the completion of the KdF factory, many Germans had already signed up for a savings plan to buy a car. With the Volkswagen facility dedicated s»  ||  [e] 1972년 포드 모델 T를 넘어 가장 많이 팔린 차 <https://en.wikipedia.org/wiki/Volkswagen_Beetle> «In 1972, the Beetle surpassed the Ford Model T to become the best-selling car of all time, a record it held for 25 years.»  ||  [q] 1938년 KdF 이름 <https://en.wikipedia.org/wiki/Volkswagen_Beetle> «The name Volkswagen was officially substituted by the term KdF ... once Hitler ceremoniously laid the foundation stone for the Volkswagen factory on 2»  ||  [q] 공식 타입 1, 1968년 비틀이 공식 이름 <https://en.wikipedia.org/wiki/Volkswagen_Beetle> «The Volkswagen Beetle, officially the Volkswagen Type 1 ... In 1968, the Type 1 was officially given the name "Beetle"»
+dbCheck(GEN): new — 비틀·폭스바겐 비틀·딱정벌레차 모두 활성·초안 없음
+warn: assert=[] assertHint=[마지막] frag=[] hint=[]
+webOpen: TRUE (단정어 마지막, 고친 질문(새 단서 사실))
+
+### C1-01  [science/L2:human-body/뼈·근육]  method=나
+Q: 임신 5~6주 무렵, 사람 몸에서 가장 먼저 뼈가 되기 시작하는 뼈가 있습니다. 그런데 다 굳는 것은 21~25세 무렵이라 가장 늦게 끝나는 뼈 가운데 하나입니다. 영어 이름은 어깨를 벌릴 때 축을 따라 열쇠처럼 돈다는 데서 온 이 뼈는 무엇일까요?
+A: 쇄골   변형: 빗장뼈   variantCheck(GEN): ko.wikipedia 빗장뼈 → 쇄골 넘겨주기 확인 (문서 첫 줄 "빗장뼈 또는 쇄골")
+E: 바깥쪽 끝은 막을 바탕으로, 안쪽은 연골을 바탕으로 뼈가 되어 만들어집니다.
+H: 왼쪽 것이 대개 오른쪽보다 길고 약하며, 악어와 도롱뇽에게는 이 뼈가 아예 없다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Clavicle   hintNote: "The left clavicle is usually longer and weaker than the right clavicle." · crocodilians and salamanders "lack clavicles altogether"
+facts: [q] 태아에서 가장 먼저 뼈되기 시작(5~6주) <https://en.wikipedia.org/wiki/Clavicle> «The collarbone is the first bone to begin the process of ossification ... during development of the embryo, during the fifth and sixth weeks of gestat»  ||  [q] 다 굳는 것은 21~25세로 가장 늦은 축 <https://en.wikipedia.org/wiki/Clavicle> «However, it is one of the last bones to finish ossification at about 21–25 years of age.»  ||  [q] 라틴어 clavicula 작은 열쇠 — 어깨를 벌릴 때 열쇠처럼 축을 따라 돈다 <https://en.wikipedia.org/wiki/Clavicle> «It receives its name from Latin clavicula 'little key' because the bone rotates along its axis like a key when the shoulder is abducted.»  ||  [e] 바깥쪽 끝은 막속, 안쪽은 연골속 뼈되기 <https://en.wikipedia.org/wiki/Clavicle> «Its lateral end is formed by intramembranous ossification while medially it is formed by endochondral ossification.»
+dbCheck(GEN): new
+warn: assert=[가장 먼저] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 가장 먼저)
+
+### C1-13  [science/L2:earth/해양]  method=나
+Q: 다윈은 1842년 펴낸 책에서 이것이 어떤 열대 바다에는 있고 다른 곳에는 뚜렷한 까닭 없이 없다고 적었습니다. 이것을 쌓는 생물의 성장이 해수면 상승을 따라잡지 못해 이것이 영영 물에 잠기는 곳을 '다윈 점'이라 하는데, 이것은?
+A: 산호초
+E: 하와이 미드웨이 환초에는 바닷새 300만 마리 가까이가 살고, 세계 레이산앨버트로스의 3분의 2가 이곳에 둥지를 틉니다.
+H: 다윈은 이 책에서 바다 밑바닥과 섬이 오랜 세월 천천히 가라앉는다는 생각으로 그 생김새를 설명했다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Coral_reef   hintNote: In The Structure and Distribution of Coral Reefs, Charles Darwin set out his theory of the formation of atoll reefs ... He theorized that uplift and subsidence of Earth's oceanic crust beneath the oceans formed the atolls.
+REWRITE(고친 질문): before Q: 다윈은 1842년 펴낸 책에서 이것이 어떤 열대 바다에는 있고 다른 곳에는 뚜렷한 까닭 없이 없다고 적었습니다. 영양분이 적은 바다에서 어떻게 이토록 생산력이 높은가 하는 물음은 '다윈의 역설'로 불리는데, 이것은? | before E:  | addedCue(GEN): '다윈 점' — 쌓는 생물의 성장이 해수면을 못 따라잡아 영영 잠기는 곳
+facts: [q] 다윈 1842 책 — 어떤 열대 바다에는 있고 다른 곳엔 까닭 없이 없음 <https://en.wikipedia.org/wiki/Coral_reef> «In The Structure and Distribution of Coral Reefs, published in 1842, Darwin described how coral reefs were found in some tropical areas but not others»  ||  [e] 미드웨이 환초 바닷새 300만 · 레이산앨버트로스 3분의 2 <https://en.wikipedia.org/wiki/Coral_reef> «Midway Atoll in Hawaii supports nearly three million seabirds, including two-thirds (1.5 million) of the global population of Laysan albatross»  ||  [q] 다윈 점 — 순생산이 상대 해수면을 따라잡지 못해 영영 잠김 · 하와이 북서쪽 끝 <https://en.wikipedia.org/wiki/Coral_reef> «When the net production by reef-building corals no longer keeps pace with relative sea level, and the reef structure permanently drowns, a Darwin Poin»
+dbCheck(GEN): new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### C1-25  [science/L2:biology/식물 생리]  method=나
+Q: 1823년 스위스 식물학자 드 캉돌은 빛 조건이 바뀌지 않는 곳에서도 이 식물의 잎이 22~23시간 주기로 움직이는 것을 쟀습니다. 뿌리에서 이황화탄소를 내어 둘레에 병원성 곰팡이가 자라지 못하게 하는 이 콩과 식물은?
+A: 미모사   변형: 함수초 | 신경초   variantCheck(GEN): ko.wikipedia 미모사 넘겨주기(신경초 · 함수초) 확인
+E: 19세기 독일 식물학자 빌헬름 페퍼는 이 식물로 식물의 습관화를 시험한 첫 실험 가운데 하나를 했습니다.
+H: 카리브해와 중남미가 고향이지만 지금은 열대 곳곳에 퍼져, 탄자니아와 여러 태평양 섬에서는 침입종으로 여겨진다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Mimosa_pudica   hintNote: The species is native to the Caribbean and South and Central America, but is now a pantropical weed ... regarded as an invasive species in Tanzania, South and Southeast Asia, and many Pacific islands.
+REWRITE(고친 질문): before Q: 1823년 스위스 식물학자 드 캉돌은 빛 조건이 바뀌지 않는 곳에서도 이 식물의 잎이 22~23시간 주기로 움직이는 것을 쟀습니다. 15cm 높이에서 거듭 떨어뜨리면 반응을 멈추고 그 상태가 28일 넘게 이어진다는 연구도 있는 이 식물은? | before E:  | addedCue(GEN): 뿌리의 이황화탄소 · 콩과
+facts: [q] 1823 드 캉돌 — 일정 조건에서 잎 운동 자유 주기 22~23시간 <https://en.wikipedia.org/wiki/Jean-Jacques_d'Ortous_de_Mairan> «In 1823, almost a century after de Mairan's work, the Swiss botanist Augustin Pyramus de Candolle expanded on it by measuring the free-running period »  ||  [e] 페퍼 — 습관화 첫 실험 가운데 하나 <https://en.wikipedia.org/wiki/Mimosa_pudica> «Wilhelm Pfeffer, a German botanist during the 19th century, used Mimosa in one of the first experiments testing plant habituation.»  ||  [q] 뿌리에서 이황화탄소 — 병원성·균근 곰팡이 억제 <https://en.wikipedia.org/wiki/Mimosa_pudica> «The roots of Mimosa pudica produce carbon disulfide, an antifeedant that prevents certain pathogenic and mycorrhizal fungi from growing within the pla»  ||  [q] 콩과 <https://en.wikipedia.org/wiki/Mimosa_pudica> «is a creeping annual or perennial flowering plant of the pea/legume family Fabaceae.»
+dbCheck(GEN): new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### C2-13  [science/L2:aerospace/로켓·발사체]  method=나
+Q: 이 회사의 첫 로켓은 모두 마셜 제도의 오멜렉섬에서 쏘아 올렸습니다. 뒤에 만든 우주선 이름은 계획이 불가능하다는 비판에 답하려 피터, 폴 앤드 메리의 1963년 노래 속 마법의 동물에서 땄다는데, 이 회사는 어디일까요?
+A: 스페이스X   변형: 스페이스엑스 | SpaceX   originalTitle: SpaceX   variantCheck(GEN): ko.wikipedia '스페이스엑스' → '스페이스X' 넘겨주기 확인 · 회사 공식 영문 상표 SpaceX(B10)
+E: 창업자는 2001년 화성에 온실을 내려 식물을 키우는 '마스 오아시스' 계획을 밝혔다가, 러시아 로켓을 사지 못하자 이듬해 직접 회사를 세웠습니다.
+H: 2012년 화물선을 국제 우주 정거장에 처음으로 도킹시킨 민간 회사가 되었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/SpaceX   hintNote: In 2012, SpaceX began flying Commercial Resupply Services missions to the ISS, becoming the first private company to successfully dock with the station
+REWRITE(고친 질문): before Q: 2001년 화성에 온실을 내려 식물을 키우겠다는 '마스 오아시스' 계획을 밝힌 한 사업가는 러시아에서 드네프르 로켓을 사려다 실패하자 이듬해 직접 회사를 세웠습니다. 첫 로켓 발사가 세 번 잇달아 실패한 끝에 2008년 9월 네 번째에 궤도에 오른 이 회사는 어디일까요? | before E: 첫 로켓 팰컨 1은 모두 마셜 제도의 오멜렉섬에서 발사되었습니다. | addedCue(GEN): 첫 로켓 발사지 오멜렉섬 · 우주선 이름의 유래(1963년 노래 속 마법의 동물)
+facts: [e] 2001년 8월 화성에 온실을 내려 식물을 키우는 마스 오아시스 계획 발표 <https://en.wikipedia.org/wiki/SpaceX> «In August 2001, he gave a plenary talk at their fourth convention where he announced Mars Oasis, a project to land a greenhouse and grow plants on Mar»  ||  [e] 러시아에서 드네프르 발사체를 사려다 실패 <https://en.wikipedia.org/wiki/SpaceX> «Musk initially attempted to acquire a Dnepr launch vehicle for the project through Russian contacts provided by Jim Cantrell; however, he was unsucces»  ||  [e] 2002년 설립 <https://en.wikipedia.org/wiki/SpaceX> «SpaceX was founded in 2002 by Elon Musk»  ||  [q] 팰컨 1은 모두 마셜 제도 오멜렉섬에서 발사 <https://en.wikipedia.org/wiki/SpaceX> «Before it was retired, all Falcon 1 launches took place at the Ronald Reagan Ballistic Missile Defense Test Site on Omelek Island of the Marshall Isla»  ||  [q] 우주선 이름은 1963년 피터, 폴 앤드 메리의 노래에서 — 불가능하다는 비판에 대한 답 <https://en.wikipedia.org/wiki/SpaceX_Dragon> «SpaceX's CEO, Elon Musk, named the spacecraft after the 1963 song "Puff, the Magic Dragon" by Peter, Paul and Mary, reportedly as a response to critic»
+dbCheck(GEN): new
+warn: assert=[모두] assertHint=[처음] frag=[] hint=[]
+webOpen: TRUE (단정어 모두,처음, 고친 질문(새 단서 사실))
+
+### C2-25  [science/L2:physics/현대 물리]  method=가 pairedWith=#1446
+Q: 1967년 12월 존 휠러의 강연에서 한 청중이 제안했다는 이 이름을, 휠러는 짧고 '광고 효과'가 있다며 받아 써서 널리 퍼뜨렸습니다. 그보다 앞선 1964년 1월 과학 기자 앤 유잉은 이 이름을 따옴표에 넣은 제목의 기사를 썼는데, 이 천체는?
+A: 블랙홀
+E: 1971~1974년 여러 연구를 거쳐, X선을 내는 백조자리 X-1이 이 천체로 널리 받아들여진 첫 사례가 되었습니다.
+H: 아인슈타인의 방정식이 나온 지 몇 달 만인 1916년, 이 천체를 기술할 수 있는 첫 해를 슈바르츠실트가 찾았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Black_hole   hintNote: In 1916, the first solution of general relativity that would characterise a black hole was found. / Only a few months after Einstein published the field equations describing general relativity, astrophysicist Karl Schwarzschild set out to apply the idea to stars.
+REWRITE(고친 질문): before Q: 1967년 12월 물리학자 존 휠러의 강연에서 한 청중이 제안했다는 이 이름을, 휠러는 짧고 '광고 효과'가 있다며 받아 써서 널리 퍼뜨렸습니다. 질량·전하·각운동량 말고는 아무 특징도 밖에 남지 않는다는 뜻으로 '털이 없다'는 말이 붙은 이 천체는 무엇일까요? | before E: 그보다 앞선 1964년 1월 과학 기자 앤 유잉은 이 이름을 따옴표에 넣은 제목으로 미국과학진흥협회 모임을 다룬 기사를 썼습니다. | addedCue(GEN): 앤 유잉의 1964년 기사(해설에서 질문으로 옮김)
+facts: [q] 1967년 12월 휠러의 강연에서 한 청중이 이 이름을 제안했다고 전함 · 휠러가 짧고 광고 효과가 있다며 받아 씀 <https://en.wikipedia.org/wiki/Black_hole> «In December 1967, someone in the audience reportedly suggested the phrase black hole at a lecture by John Wheeler; Wheeler adopted the term for its br»  ||  [q] 1964년 1월 18일 앤 유잉의 기사 ''Black Holes' in Space' — AAAS 클리블랜드 모임 보도 <https://en.wikipedia.org/wiki/Black_hole> «science journalist Ann Ewing in her article "'Black Holes' in Space", dated 18 January 1964, which was a report on a meeting of the American Associati»  ||  [e] 널리 받아들여진 첫 사례 백조자리 X-1 (1971~1974) <https://en.wikipedia.org/wiki/Black_hole> «The first widely accepted black hole was Cygnus X-1, an x-ray source  proposed as a black hole binary through several studies between 1971 and 1974.»
+dbCheck(GEN): pair-or-different — 활성 #1446 1건, (가) 2회차로 지식이 다름   pairCheck(GEN): 1회차 #1446 질문(빛도 벗어나지 못하는 천체 · 2019년 그림자 촬영) · 해설(전파망원경 묶음) · 힌트(없음) 와 겹치지 않음 — 2회차는 정의 문장 없이 휠러 작명 일화 · 무모 정리로만 물음
+  1회차 #1446: Q: 중력이 너무 강해 빛조차 벗어날 수 없는 천체로, 2019년에 그림자가 처음으로 직접 촬영된 것은? | E: 여러 대륙의 전파망원경을 묶어 지구만 한 망원경처럼 써서 찍었습니다. | H: (없음)
+  sameAnswerActive #1446: Q: 중력이 너무 강해 빛조차 벗어날 수 없는 천체로, 2019년에 그림자가 처음으로 직접 촬영된 것은? | E: 여러 대륙의 전파망원경을 묶어 지구만 한 망원경처럼 써서 찍었습니다. | H: (없음)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
+
+### H1-12  [history/L2:world-history-west/고대 그리스·로마]  method=나
+Q: 이 왕의 애마는 넓적다리의 낙인이 소머리처럼 생겨 '소머리'라는 뜻의 이름을 얻었다고 전하며, 검은 털에 이마에 큰 흰 별 무늬가 있었다고 합니다. 그 말이 히다스페스 전투 뒤 지금의 파키스탄 펀자브에서 죽었다는 이 왕은?
+A: 알렉산드로스 대왕   변형: 알렉산더 대왕 | 알렉산드로스 | 알렉산더   variantCheck(GEN): ko.wikipedia "알렉산더 대왕" → "알렉산드로스 대왕" 넘겨주기 확인, "알렉산더"는 한국에서 흔히 부르는 꼴
+E: 열두세 살 무렵 아버지와 내기를 해, 자기 그림자에 놀라 날뛰던 이 말의 머리를 해 쪽으로 돌려 길들였다고 전합니다.
+H: 테살리아의 말 장수 필로니코스는 그 말을 13탈란톤이라는 아주 비싼 값에 그의 아버지에게 팔려고 내놓았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Bucephalus   hintNote: a horse dealer named Philonicus the Thessalian offered Bucephalus to King Philip II for the remarkably high sum of 13 talents.
+REWRITE(고친 질문): before Q: 열두세 살 무렵 아버지와 내기를 해, 13탈렌트라는 비싼 값에 나온 사나운 말을 그림자를 못 보게 해 쪽으로 돌려 길들였다고 전합니다. 그 말이 죽자 말의 이름을 딴 도시를 세운 이 왕은 누구일까요? | before E: 그 말은 기원전 326년 히다스페스 전투 뒤 지금의 파키스탄 펀자브 지방에서 죽었다고 전합니다. | addedCue(GEN): 말 이름의 뜻과 생김새 · 히다스페스 전투 뒤의 죽음(해설에서 질문으로)
+facts: [e] 12~13세에 아버지와 내기, 13탈렌트 말 <https://en.wikipedia.org/wiki/Bucephalus> «Plutarch says that in 344 BC, at twelve or thirteen years of age, Alexander of Macedonia won the horse by making a wager with his father: a horse deal»  ||  [e] 그림자를 못 보게 해 쪽으로 머리를 돌림 <https://en.wikipedia.org/wiki/Bucephalus> «He spoke soothingly to the horse and turned its head toward the sun so that it could no longer see its own shadow, which had been the cause of its dis»  ||  [q] 히다스페스 전투 뒤 펀자브에서 죽음 <https://en.wikipedia.org/wiki/Bucephalus> «he died in what is now Punjab, Pakistan, after the Battle of the Hydaspes in 326 BC.»  ||  [q] 이름 '소머리' — 넓적다리 낙인 <https://en.wikipedia.org/wiki/Bucephalus> «According to the Alexander Romance (1.15), the name "Bucephalus" literally means "ox-headed" (from βοῦς, boûs, 'ox' and κεφᾰλή, kephălḗ, 'head'), and »  ||  [q] 검은 털 · 이마의 큰 흰 별 <https://en.wikipedia.org/wiki/Bucephalus> «A massive creature with a massive head, Bucephalus is described as having a black coat with a large white star on his brow.»
+dbCheck(GEN): new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### H1-24  [history/L2:world-geo/랜드마크·지형]  method=나
+Q: 1911년 미국 역사가가 세계에 알리기 전에도 현지에는 알려져 있었고, 20세기 초 페루 탐험가 아구스틴 리사라가가 먼저 다녀간 유적입니다. 지금의 이름이 붙은 것도 그 미국 역사가의 1911년 출판물부터였을 가능성이 크다는 이곳은?
+A: 마추픽추   변형: 마추피추   variantCheck(GEN): ko.wikipedia "마추피추" → "마추 픽추" 넘겨주기 확인
+E: 1450년 무렵 지어져 잉카 황제 파차쿠티의 별장으로 쓰였을 것으로 여겨집니다.
+H: 그 미국 역사가는 원래 에스파냐 정복 뒤 잉카가 세운 마지막 수도를 찾아 그 지역을 돌고 있었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Machu_Picchu   hintNote: In 1911, American historian and explorer Hiram Bingham traveled the region looking for the lost capital of the Neo-Inca state (later established to be Vilcabamba), established by Manco Inca after the Spanish conquest.
+REWRITE(고친 질문): before Q: 1450년 무렵 지어져 잉카 황제 파차쿠티의 별장으로 쓰였을 것으로 여겨지는 유적입니다. 현지에는 알려져 있었지만 1911년 미국 역사가 하이럼 빙엄이 세계에 알린 이곳은 어디일까요? | before E: 이 유적에 지금의 이름이 붙은 것도 빙엄의 1911년 출판물부터였을 가능성이 크다는 연구가 있습니다. | addedCue(GEN): 페루 탐험가 리사라가의 선행 방문 · 이름이 빙엄 출판물에서 굳음(해설에서 옮김)
+facts: [e] 1450년 무렵 건축, 파차쿠티의 별장으로 여겨짐 <https://en.wikipedia.org/wiki/Machu_Picchu> «Estimated to be built around 1450, it is believed to have served as an estate for the Inca emperor Pachacuti, though no contemporary written records e»  ||  [q] 현지에 알려져 있었고 1911년 하이럼 빙엄이 세계에 알림 <https://en.wikipedia.org/wiki/Machu_Picchu> «Although the site was known locally and reached in the early 20th century by the Peruvian explorer Agustín Lizárraga, it was brought to international »  ||  [q] 이름이 빙엄의 1911년 출판물에서 비롯했을 가능성 <https://en.wikipedia.org/wiki/Machu_Picchu> «the association of the name Machu Picchu with the ruins likely began with American explorer Hiram Bingham's 1911 publications»
+dbCheck(GEN): new
+warn: assert=[] assertHint=[마지막] frag=[] hint=[]
+webOpen: TRUE (단정어 마지막, 고친 질문(새 단서 사실))
+
+### H1-36  [history/L2:myth/그리스·로마 신화]  method=나
+Q: 이 괴물의 피가 바닷말에 떨어져 홍해의 산호가 되었고, 사하라의 독사들도 그 핏방울에서 생겨났다고 전합니다. 그 몸에서 황금 칼을 든 거인 크리사오르가 태어났다는 이 괴물은 누구일까요?
+A: 메두사
+E: 아테나는 이 괴물의 머리를 받아 자기 방패 아이기스에 달았다고 합니다.
+H: 바다 신 포르키스와 케토의 딸로 꼽히며, 두 자매 스테노·에우리알레와 달리 혼자만 죽는 몸이었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Medusa   hintNote: Medusa and her Gorgon sisters Euryale and Stheno were usually described as daughters of Phorcys and Ceto; of the three, only Medusa was mortal.
+facts: [q] 피가 바닷말에 떨어져 홍해 산호가 됨 <https://en.wikipedia.org/wiki/Medusa> «the corals of the Red Sea were said to have been formed of Medusa's blood spilled onto seaweed when Perseus laid down the petrifying head beside the s»  ||  [q] 사하라의 독사들이 핏방울에서 생김 <https://en.wikipedia.org/wiki/Medusa> «the venomous vipers of the Sahara, in the Argonautica 4.1515, Ovid's Metamorphoses 4.770 and Lucan's Pharsalia 9.820, were said to have grown from spi»  ||  [q] 몸에서 페가수스와 황금 칼의 거인 크리사오르가 나옴 <https://en.wikipedia.org/wiki/Medusa> «When Perseus beheaded her, Pegasus, a winged horse, and Chrysaor, a giant wielding a golden sword, sprang from her body.»  ||  [e] 아테나가 머리를 방패 아이기스에 <https://en.wikipedia.org/wiki/Medusa> «Then Perseus gave the Gorgon's head to Athena, who placed it on her shield, the Aegis.»
+dbCheck(GEN): new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### H2-08  [history/L2:psychology/발달·성격 이론]  method=나
+Q: 1927년 도쿄 여자 사범학교 교수 후루카와 다케지는 이것으로 기질을 연구한 논문을 냈고, 당시 군부 정부는 이상적인 군인을 길러 내려는 연구를 맡기기도 했습니다. 일본에서 이것을 빌미로 한 괴롭힘을 '부라하라'라 부르는, 성격을 나누는 이 기준은?
+A: 혈액형
+E: 1970년대에 의학을 배운 적 없는 공대 출신 기자 노미 마사히코의 책으로 다시 유행했습니다.
+H: 후루카와는 타이완 사람과 홋카이도 아이누의 이것 분포를 견주어, 일본 점령에 거세게 맞선 타이완 사람의 기질을 설명하려 했다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Blood_type_personality_theory   hintNote: In another study, Furukawa compared the distribution of blood types among two ethnic groups: the Formosans in Taiwan and the Ainu of Hokkaidō. ... After the Japanese occupation of Taiwan ... the inhabitants tenaciously resisted their occupiers.
+REWRITE(고친 질문): before Q: 1927년 도쿄의 한 여자 사범학교 교수 후루카와 다케지는 이것으로 기질을 연구한 논문을 냈고, 당시 군부 정부는 이상적인 군인을 길러 내려는 연구를 맡기기도 했습니다. 1970년대 공대 출신 기자 노미 마사히코의 책으로 다시 유행한, 성격을 나누는 이 기준은? | before E: 후루카와는 타이완 사람 표본의 41.2%가 O형이라는 결과를 들어 타이완 사람의 반항심이 유전이라고 주장하기도 했습니다. | addedCue(GEN): 이것을 빌미로 한 괴롭힘을 일본에서 '부라하라'라 부름
+facts: [q] 1927년 도쿄 여자 사범학교 교수 후루카와 다케지의 혈액형 기질 연구 논문 <https://en.wikipedia.org/wiki/Blood_type_personality_theory> «In 1927, Takeji Furukawa, a professor at Tokyo Women's Teacher's School, published his paper "The Study of Temperament Through Blood Type"»  ||  [q] 군부 정부가 이상적 군인 육성 연구를 의뢰 <https://en.wikipedia.org/wiki/Blood_type_personality_theory> «the militarist government of the time commissioned a study aimed at breeding ideal soldiers.»  ||  [e] 1970년대 노미 마사히코(공대 출신 기자) 책으로 부활 <https://en.wikipedia.org/wiki/Blood_type_personality_theory> «Interest in the theory was revived in the 1970s with a book by Masahiko Nomi, a journalist with no medical background (he graduated from the engineeri»  ||  [q] 일본의 혈액형 괴롭힘 부라하라 <https://en.wikipedia.org/wiki/Blood_type_personality_theory> «Blood type harassment, called bura-hara (wasei-eigo: a portmanteau of blood and harassment), has been blamed for bullying of children in playgrounds, »
+dbCheck(GEN): pair-or-different — 활성 #986(ABO 혈액형 발견·수혈) · 지식이 다름(성격 속설의 기원)
+  sameAnswerActive #986: Q: 사람마다 피를 섞었을 때 엉기는 조합이 따로 있다는 발견으로 안전한 수혈이 가능해졌습니다. 이 발견에 따라 사람의 피를 나눈 구분을 무엇이라 합니까? | E: 1901년 란트슈타이너가 ABO 구분을 밝혔고, 그전까지 수혈은 목숨을 건 도박이었습니다. | H: (없음)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (같은 정답 활성, 고친 질문(새 단서 사실))
+
+### H2-20  [history/L2:politics/법률 용어]  method=나
+Q: 1710년 영국 의회가 통과시킨 '앤 여왕법'은 이 권리를 민간이 아닌 정부와 법원이 다루게 한 첫 법으로 꼽히며, 1842년까지 효력을 이어 갔습니다. 보호 기간을 14년으로 하고 한 번 더 늘릴 수 있게 한 이 권리는?
+A: 저작권
+E: 미국은 1886년 맺어진 베른 협약에 1989년에야 가입했습니다.
+H: 앤 여왕법의 정식 이름은 '학문 장려를 위해 인쇄된 책의 사본을 저자나 그 구매자에게 맡기는 법'이다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Statute_of_Anne   hintNote: the Statute of Anne is formally titled "An Act for the Encouragement of Learning, by Vesting the Copies of Printed Books in the Authors or Purchasers of Copies, during the Times therein mentioned".
+REWRITE(고친 질문): before Q: 1710년 영국 의회가 통과시킨 '앤 여왕법'은 이 권리를 민간 조합이 아닌 정부와 법원이 다루게 한 첫 법으로 꼽힙니다. 미국은 1886년 맺어진 베른 협약에 1989년에야 가입했는데, 이 협약이 보호하는 권리는? | before E: 앤 여왕법은 보호 기간을 14년으로 정하고, 같은 기간만큼 한 번 더 늘릴 수 있게 했습니다. | addedCue(GEN): 1842년까지 효력 · 보호 기간 14년과 한 번 연장(해설에서 옮김)
+facts: [q] 앤 여왕법 1710년 — 민간이 아닌 정부·법원이 다루는 첫 저작권 법 <https://en.wikipedia.org/wiki/Statute_of_Anne> «was an act of the Parliament of Great Britain passed in 1710, which was the first statute to provide for copyright regulated by the government and cou»  ||  [e] 1886 베른 협약, 미국은 1989년에야 가입 <https://en.wikipedia.org/wiki/Copyright> «The Berne International Copyright Convention of 1886 finally provided protection for authors among the countries who signed the agreement, although th»  ||  [q] 14년, 같은 기간 갱신 <https://en.wikipedia.org/wiki/Statute_of_Anne> «The new law prescribed a copyright term of 14 years, with a provision for renewal for a similar term»  ||  [q] 1842년 법이 나올 때까지 효력 유지 <https://en.wikipedia.org/wiki/Statute_of_Anne> «the statute remained in force until the Copyright Act 1842»
+dbCheck(GEN): pair-or-different — 활성 #2219(인용 분량·출처 표시, 쉬움) · 지식 다름(법의 기원·국제 협약)
+  sameAnswerActive #2219: Q: 출처를 밝혔더라도 분량이 지나치면 정당한 인용으로 인정되지 않을 수 있습니다. 이때 문제가 되는 권리는? | E: 출처 표시와 이용 허락은 별개의 문제입니다. | H: (없음)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (같은 정답 활성, 고친 질문(새 단서 사실))
+
+### K1-02  [korea/L2:kr-geo/행정구역·도시]  method=나
+Q: 신라 선덕여왕 때 '우수주'라 불렸던 고을입니다. 1888년 유수부로 격이 높아졌고, 2년 뒤 유수 민두호가 왕명에 따라 조정이 위급할 때 피난할 이궁을 지은 이 도시는 어디일까요?
+A: 춘천
+E: 1895년 지방 제도 개편 때 원주 감영이 폐지되고 이곳에 관찰부가 들어서면서, 약 500년 동안 원주에 있던 감영이 이곳으로 옮겨진 셈이 되었다.
+H: 도시 한가운데에 진산(鎭山)인 봉의산이 솟아 있다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%EC%B6%98%EC%B2%9C%EC%8B%9C   hintNote: 시의 중앙부에는 춘천의 진산(鎭山)인 봉의산(鳳儀山)이 솟아 있다.
+facts: [q] 637년 우수주 <https://ko.wikipedia.org/wiki/춘천시> «637년(선덕여왕 6년)에 우수주(牛首州)라 부르고 군주(君主)를 두었다.»  ||  [q] 1888년 유수부 <https://encykorea.aks.ac.kr/Article/E0058016> «1888년(고종 25)에 그 격을 높여 유수부로 개편되었다.»  ||  [q] 2년 뒤 민두호가 왕명으로 피난용 이궁 <https://encykorea.aks.ac.kr/Article/E0058016> «2년 뒤에는 춘천유수였던 민두호(閔斗鎬)가 왕명에 따라 … 2년에 걸쳐 조정이 위급할 때 피난하기 위한 이궁을 지었다.»  ||  [e] 1895년 원주 감영 폐지 · 관찰부 · 500년 감영 이전 <https://encykorea.aks.ac.kr/Article/E0058016> «원주 감영을 폐지하고 춘천과 강릉에는 관찰부(觀察府)를 설치하게 되었다. … 약 500년 동안 원주에 있던 감영(監營)이 춘천으로 옮겨지게 되었다.»
+dbCheck(GEN): answercheck 춘천 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### K1-14  [korea/L2:kr-geo/지역 특산·별칭]  method=나 hobby=요리
+Q: 국화과 여러해살이풀로 강원도 영월·평창과 충북 단양 등에서 주로 자라며 5~6월이 제철인 나물입니다. 들기름과 소금에 무쳐 뜸 들이기 직전 밥 위에 올려 짓고, 강원도식 막장 양념장에 비벼 먹는 이 나물은?
+A: 곤드레   변형: 곤드레나물   variantCheck(GEN): 같은 대상에 '나물' 을 붙인 꼴 — 질문이 '이 나물' 이라 묻는다
+E: 식물 이름은 '고려엉겅퀴'이며, 1970년대 식량이 부족하던 시절 쌀·보리와 섞어 죽을 쑤어 배를 채우던 구황식물이었다.
+H: 7월부터 10월 사이에 지름 3~4cm쯤 되는 보라색 꽃이 피고, 꽃이 필 무렵 뿌리 쪽 잎은 시든다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Cirsium_setidens ; https://ko.wikipedia.org/wiki/%EA%B3%A0%EB%A0%A4%EC%97%89%EA%B2%85%ED%80%B4   hintNote: Radical leaves and lower cauline ones become withered when the flowers bloom. ... Purple flowers bloom from July to October. The capitula are quite large – about 3–4 centimetres
+REWRITE(고친 질문): before Q: 식물 이름으로는 '고려엉겅퀴'라 하는 국화과 여러해살이풀입니다. 1970년대 식량이 부족하던 시절 강원 산간 주민들이 쌀·보리와 섞어 죽을 쑤어 배를 채운 구황식물이었던 이 나물은 무엇일까요? | before E: 정선에서는 들기름과 소금에 무친 이것을 뜸 들이기 직전 밥 위에 올려 짓고, 막장 양념장에 비벼 먹는다. | addedCue(GEN): 자생지(영월·평창·단양)·제철 · 밥 짓는 법
+facts: [q] 들기름·소금 · 뜸 직전 · 막장 <https://ko.wikipedia.org/wiki/곤드레밥> «뜸들이기 직전에 들기름과 소금에 무친 곤드레를 올려 짓는다. 완성된 밥에는 간장이나 강원도식 된장인 막장으로 만든 양념장을 넣어 비벼 먹는다.»  ||  [e] 곤드레 = 고려엉겅퀴 · 국화과 여러해살이풀 <https://ko.wikipedia.org/wiki/곤드레밥> «곤드레(고려엉겅퀴) 나물을 넣어 지은 밥이다. … 곤드레는 국화과의 여러해살이풀로»  ||  [e] 1970년대 구황식물 · 쌀·보리와 죽 <https://ko.wikipedia.org/wiki/곤드레밥> «특히 1970년대 식량이 부족하던 시절, 곤드레는 주민들의 배를 채워준 귀중한 구황식물이었다. 양을 불리기 위해 곤드레를 쌀, 보리 등과 섞어 죽을 쑤어 먹었다.»  ||  [q] 정선·영월·평창·단양 등에서 자람 · 5~6월 제철 <https://ko.wikipedia.org/wiki/곤드레밥> «곤드레는 국화과의 여러해살이풀로, 강원도 정선, 영월, 평창과 충북 단양 등에서 주로 자란다. 5~6월이 제철이며, 수확 후 데쳐서 냉동 보관해 일 년 내내 사용한다.»
+dbCheck(GEN): answercheck 곤드레 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### K2-01  [korea/L2:kr-history/고려]  method=가 pairedWith=#1712
+Q: 1271년 일본에 전해진 고려 문서가 앞선 고려 국서와 내용이 달라, 일본 쪽이 그 의문점을 따로 적어 둔 문건이 전합니다. 이 문서를 보낸 것으로 보며, 일부가 류큐로 향했다는 주장도 나오는 이 세력은?
+A: 삼별초
+E: 진도에 자리 잡은 뒤에는 용장사를 임시 궁궐로 삼고 그 주변에 산성을 쌓았다.
+H: 1270년 음력 6월, 개경 환도를 앞두고 지도자 배중손과 노영희 등이 항전을 결정했다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%EC%82%BC%EB%B3%84%EC%B4%88   hintNote: 마침내 1270년 음력 6월 초, 개경 환도를 앞둔 시점에서 삼별초의 지도자였던 배중손과 노영희 등 삼별초 지휘자들은 항전을 결정한다.
+REWRITE(고친 질문): before Q: 이 세력은 고려 왕족 승화후 왕온을 새 임금으로 내세웠습니다. 1271년 일본에 전해진 고려 문서가 앞선 고려 국서와 내용이 달라 일본 쪽이 그 의문점을 따로 적어 두었는데, 이 문서를 보낸 것으로 보는 세력은? | before E:  | addedCue(GEN): 일부가 류큐로 향했다는 주장
+facts: [q] 1271년 일본에 전해진 고려첩장이 앞선 국서와 내용이 달라 일본 쪽이 메모(고려첩장 불심조조) — 삼별초가 보낸 것이 유력 <https://ko.wikipedia.org/wiki/삼별초> «《고려첩장 불심조조》라는 제목의 문건은 당시 일본측이 고려로부터 받은 문건 가운데 앞서 고려로부터 전해진 국서와는 내용이 다른 점에 대해서 메모해 둔 것 … 분에이 8년(1271년) 9월 시점에서 이러한 내용의 국서를 일본에 보낼 세력은 당시 진도를 거점으로 항쟁하던 »  ||  [e] 진도 용장사를 임시 궁궐로, 주변에 산성 <https://ko.wikipedia.org/wiki/삼별초> «진도에 도착한 삼별초는 '용장사'라는 절을 임시 궁궐로 삼았다. 그리고 용장사 주변에 산성을 쌓고 관아도 세웠으며»  ||  [q] 일부 세력이 류큐로 향했다는 주장 <https://ko.wikipedia.org/wiki/%EC%82%BC%EB%B3%84%EC%B4%88> «제주도에서 궤멸하였다는 것이 통설이나, 일부 세력이 류큐 왕국(오키나와 지역)으로 향하였다는 주장도 제기되고 있다.»
+dbCheck(GEN): answercheck 삼별초 pair-or-different(1712) — (가) 2회차   pairCheck(GEN): 1회차 Q(강화→진도→제주 항전) · E(최씨 정권 사병) · H(없음)와 겹치지 않음 — 승화후 옹립 · 일본 외교 문서는 새 사실, 몽골·항전 같은 1회차 정의 문장도 넣지 않음
+  1회차 #1712: Q: 고려 정부가 몽골과 강화한 뒤에도 항복하지 않고 강화도에서 진도로, 다시 제주로 옮겨 가며 싸운 군대는? | E: 본래 최씨 무신정권의 사병에서 출발한 부대였습니다. | H: (없음)
+  sameAnswerActive #1712: Q: 고려 정부가 몽골과 강화한 뒤에도 항복하지 않고 강화도에서 진도로, 다시 제주로 옮겨 가며 싸운 군대는? | E: 본래 최씨 무신정권의 사병에서 출발한 부대였습니다. | H: (없음)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
+
+### K2-13  [korea/L2:kr-history/대한민국 현대]  method=나
+Q: 1982년 이철희·장영자 사건 뒤 실시가 발표됐다가 미뤄졌던 제도로, 끝내 전격 실시된 이튿날 은행 등은 오후 2시에야 업무를 시작했습니다. 이 제도는 무엇일까요?
+A: 금융실명제
+E: 그전까지는 저축을 늘리려고 1960년대부터 가명·차명·무기명 금융 거래를 허용해 왔다.
+H: 실시 일주일 뒤인 1993년 8월 19일, 국회가 본회의를 열어 대통령이 내린 명령을 승인했다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%EA%B8%88%EC%9C%B5%EC%8B%A4%EB%AA%85%EC%A0%9C   hintNote: 1993년 8월 19일 국회는 본회의를 개최하여 대통령이 승인을 요청한 긴급재정경제명령안을 통과시켰다.
+REWRITE(고친 질문): before Q: 1982년 이철희·장영자 사건 뒤 실시가 발표됐다가 미뤄졌던 이 제도는, 끝내 긴급재정경제명령 제16호로 어느 날 오후 8시를 기해 전격 실시되었습니다. 이튿날 은행 등이 오후 2시에야 문을 연 이 제도는? | before E:  | addedCue(GEN): 없음 — 명령 이름을 빼고 발표·연기 경위와 이튿날 은행 업무 세부만 남김
+facts: [q] 1982년 이철희·장영자 사건으로 필요성, 1982년 7월 3일 실시 발표 <https://ko.wikipedia.org/wiki/금융실명제> «특히 1982년에 일어난 이철희·장영자 사건을 통해 제도 실시 필요성이 대두되었으며 1982년 7월 3일 금융실명제 실시를 발표하기에 이르렀다.»  ||  [q] 긴급재정경제명령 제16호, 당일 오후 8시 실시 <https://ko.wikipedia.org/wiki/금융실명제> «1993년 8월 12일, 대통령 김영삼은 대통령긴급명령인 긴급재정경제명령 제16호를 발동하여 당일 오후 8시를 기해 《금융실명제 및 비밀보장을 위한 법률》을 전격적으로 실시하였다.»  ||  [q] 13일 오후 2시부터 금융 기관 업무 시작 <https://ko.wikipedia.org/wiki/금융실명제> «8월 12일 오후 8시를 기해 위 사항을 실시하고, 13일은 오후 2시부터 금융 기관의 업무를 시작.»  ||  [e] 1960년대부터 가명·차명·무기명 허용 <https://ko.wikipedia.org/wiki/금융실명제> «한국에서는 1960년대부터 저축의 장려를 위해 예금주의 비밀보장, 가명, 차명 혹은 무기명에 의한 금융 거래를 허용해왔다.»
+dbCheck(GEN): answercheck 금융실명제 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### L1-02  [life/L2:daily-rule/우편·번호 체계]  method=나
+Q: 1852년 채널 제도에 파견된 영국 소설가 앤서니 트롤럽은 저지섬에 이것 다섯 개, 건지섬에 네 개가 필요하다고 보았습니다. 2012년 런던 올림픽 때 영국은 금메달리스트마다 그 고향의 이것 하나를 금색으로 칠했는데, 이것은?
+A: 우체통
+E: 1874년에 영국 전역의 색이 빨강으로 정해졌지만, 모든 통을 다시 칠하기까지는 10년이 더 걸렸습니다.
+H: 1952년 에든버러에 'E II R' 표시를 단 이것이 처음 서자 스코틀랜드에서 반발이 일어, 스코틀랜드 왕관만 새긴 것으로 바꾸기로 했다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Pillar_box   hintNote: When the first one bearing the cypher "E II R" was installed in Edinburgh in 1952 ... the General Post Office announced that the Elizabeth II boxes would be replaced with ones which only bore the Crown of Scotland and no royal cypher.
+REWRITE(고친 질문): before Q: 1852년 채널 제도에 파견된 영국 소설가 앤서니 트롤럽은 저지섬에 이것 다섯 개, 건지섬에 네 개가 필요하다고 보았습니다. 1859년부터 1874년까지 영국에서는 청동빛 초록색이 표준 색이었던 이것은 무엇일까요? | before E:  | addedCue(GEN): 2012 올림픽 금메달리스트 고향의 금색 칠
+facts: [q] 롤런드 힐이 트롤럽을 채널 제도로 보냄, 1852년 저지 도착 <https://en.wikipedia.org/wiki/Pillar_box> «Hill sent Trollope to the Channel Islands to ascertain what could be done about the problem of collecting the mail on a pair of islands. Trollope subs»  ||  [q] 건지 넷, 저지 다섯 필요하다고 어림 <https://en.wikipedia.org/wiki/Pillar_box> «Trollope estimated that four would be needed for Guernsey and five for Jersey.»  ||  [q] 트롤럽은 소설가이자 우정청 관리 <https://en.wikipedia.org/wiki/Anthony_Trollope> «Postal history credits Trollope with introducing the pillar box (the ubiquitous mail-box) in the United Kingdom.»  ||  [e] 1874년 빨강 표준, 다시 칠하는 데 10년 더 <https://en.wikipedia.org/wiki/Pillar_box> «Red became the standard colour in 1874, although ten more years elapsed before every box in the UK had been repainted.»  ||  [q] 2012 올림픽 금메달리스트 고향마다 금색으로 칠함 <https://en.wikipedia.org/wiki/Pillar_box> «To mark the 2012 Summer Olympics, Royal Mail, Isle of Man Post and Guernsey Post painted a pillar box gold in the home town of each Great Britain team»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[처음] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 고친 질문(새 단서 사실))
+
+### L1-14  [life/L2:world-language/외국어 표현]  method=나
+Q: 호메로스의 '오디세이아'에서는 오디세우스의 오랜 친구인 작은 배역이었지만, 1699년 페늘롱의 소설 '텔레마크의 모험'에서는 주인공 곁을 지키며 크게 커진 인물입니다. 이 소설이 널리 읽힌 뒤 여러 언어에서 일반 명사가 된 이 인물의 이름은?
+A: 멘토   변형: 멘토르   variantCheck(GEN): 멘토르 — ko.wikipedia 그리스 신화 인물 표기(같은 인물의 다른 한국어 표기)
+E: 이 소설에서도 여신 아테나가 이 인물의 모습을 하고 주인공에게 좋은 왕이 되는 길을 가르칩니다.
+H: 페늘롱은 왕위 계승 2순위였던 어린 부르고뉴 공작의 가정교사로 있으며 그를 위해 이 소설을 썼다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Fran%C3%A7ois_F%C3%A9nelon   hintNote: Fénelon was named the tutor of the Dauphin's eldest son, the seven-year-old Duke of Burgundy, who was second in line for the throne. ... the most lasting of his works that Fénelon composed for the duke was his Les Aventures de Télémaque
+REWRITE(고친 질문): before Q: 1699년 프랑스 대주교 페늘롱이 쓴 소설 '텔레마크의 모험'에서는 여신 아테나가 이 인물의 모습으로 주인공을 이끌며 좋은 왕이 되는 길을 가르칩니다. 이 소설이 널리 읽힌 뒤 여러 언어에서 일반 명사가 된 이 인물의 이름은? | before E: 호메로스의 '오디세이아'에서는 오디세우스의 오랜 친구로 나오는 비중 작은 인물이었습니다. | addedCue(GEN): 오디세이아의 작은 배역이 페늘롱 소설에서 커짐(해설에서 옮김)
+facts: [e] 1699 페늘롱 '텔레마크의 모험'에서 아테나가 멘토르로 변해 텔레마크를 이끔 <https://en.wikipedia.org/wiki/Mentor_(Odyssey)> «Mentor (and Athena disguised as Mentor) is a major character in popular 1699 novel Les Aventures de Télémaque by French archbishop and author François»  ||  [q] 이 소설 뒤 이름이 여러 언어에서 일반어가 됨 <https://en.wikipedia.org/wiki/Mentor_(Odyssey)> «Following Mentor's appearance in Télémaque, his name was adopted into various languages as a term for someone who shares wisdom and knowledge with a l»  ||  [q] 오디세이아에서는 오디세우스의 오랜 친구인 비중 작은 인물 <https://en.wikipedia.org/wiki/Mentor_(Odyssey)> «Whereas Mentor is a minor character the Odyssey, an old friend of Odysseus who seemingly failed in his charge to maintain the household»  ||  [q] 텔레마크의 모험에서는 텔레마코스의 조언자로 훨씬 큰 역할 <https://en.wikipedia.org/wiki/Mentor_(Odyssey)> «Whereas Mentor is a minor character the Odyssey, an old friend of Odysseus who seemingly failed in his charge to maintain the household, in Télémaque »
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### L2-01  [life/L2:calendar/국제 기념일]  method=가 pairedWith=#2769
+Q: 1698년 이날 런던에서는 여러 사람이 '사자 목욕 구경'을 하러 런던탑에 몰려갔다는 기록이 있습니다. 스코틀랜드에서는 원래 '헌티고크 데이', 곧 '뻐꾸기 쫓기의 날'이라 불렀던 이날은 무엇일까요?
+A: 만우절
+E: 프랑스·이탈리아에서는 이날을 '4월의 물고기'라 부르며, 남의 등에 종이 물고기를 몰래 붙이는 장난을 칩니다.
+H: 초서의 『캔터베리 이야기』에서 허영심 많은 수탉이 여우에게 속는 날을 이날로 읽기도 하지만, 그 해석은 의심받는다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/April_Fools%27_Day   hintNote: "vain cock, Chauntecleer, is tricked by a fox" (Nun's Priest's Tale, 1392) · 'Since March began, full thirty days and two' 를 흔히 4월 1일로 읽으나 필사 오류로 5월 2일일 수 있다고 본다
+REWRITE(고친 질문): before Q: 1698년 이날 런던에서는 여러 사람이 '사자 목욕 구경'을 하러 런던탑에 몰려갔다는 기록이 있습니다. 프랑스와 이탈리아에서는 이날 남의 등에 종이 물고기를 몰래 붙이는데, 이날은 무엇일까요? | before E: 1508년 프랑스 시인 엘루아 다메르발이 쓴 '4월의 물고기(푸아송 다브릴)'가 프랑스에서 이날을 가리킨 첫 기록일 수 있다고 봅니다. | addedCue(GEN): 스코틀랜드의 옛 이름 '헌티고크 데이'
+facts: [q] 1698년 4월 1일 여러 사람이 런던탑에 '사자 씻기는 것 보러' 속아 갔다 <https://en.wikipedia.org/wiki/April_Fools%27_Day> «On 1 April 1698, several people were tricked into going to the Tower of London to "see the Lions washed".»  ||  [q] 스코틀랜드 원래 이름 Huntigowk Day — hunt the gowk(뻐꾸기·바보) <https://en.wikipedia.org/wiki/April_Fools'_Day> «In Scotland, April Fools' Day was originally called "Huntigowk Day". The name is a corruption of "hunt the gowk", gowk being Scots for a cuckoo or a f»  ||  [e] 프랑스·이탈리아 '4월의 물고기' · 종이 물고기를 등에 붙이는 장난 <https://en.wikipedia.org/wiki/April_Fools'_Day> «In Italy, France, Belgium and French-speaking areas of Switzerland and Canada, the 1 April tradition is often known as "April fish" (poisson d'avril i»
+dbCheck(GEN): answercheck pair-or-different — 2769 와 같은 답의 (가) 2회차, 지식 다름   pairCheck(GEN): 1회차 Q(4월 1일 · 거짓말·장난) · E(바보들의 날) · H(없음) 와 겹치지 않음 — 날짜·'속인다'는 정의를 질문에서 뺐다
+  1회차 #2769: Q: 가벼운 거짓말이나 장난으로 남을 속여도 웃어넘기는 4월 1일은? | E: 영어로는 "바보들의 날" 이라 부릅니다. | H: (없음)
+  sameAnswerActive #2769: Q: 가벼운 거짓말이나 장난으로 남을 속여도 웃어넘기는 4월 1일은? | E: 영어로는 "바보들의 날" 이라 부릅니다. | H: (없음)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
+
+### L2-13  [life/L2:drinks/맥주]  method=나 hobby=기록 뒷이야기
+Q: 1903년 세워진 이 양조장은 멕시코 은화 40만 달러를 자본금으로 삼았고, 1916년 일본의 대일본맥주에 팔렸다가 1949년 국유화되었습니다. 오랫동안 '라오산 샘의 광천수로 빚었다'고 광고해 온 이 맥주는?
+A: 칭따오   변형: 칭다오 | 칭다오 맥주 | 칭따오 맥주   variantCheck(GEN): ko.wikipedia 문서 제목 '칭다오 맥주'(국립국어원식 도시명 표기) · 한국 수입 상표 표기 '칭따오' 둘 다 흔함
+E: 처음 이름은 '게르마니아 양조장'으로, 그 도시는 당시 독일이 빌려 쓰던 자오저우만 조차지에 있었습니다.
+H: 1993년 6월 홍콩 증권거래소에 상장된 첫 중국 기업이 되었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Tsingtao_Brewery   hintNote: In June 1993, Tsingtao Brewery became the first Chinese firm listed on the Hong Kong Stock Exchange.
+REWRITE(고친 질문): before Q: 1903년 홍콩에 본사를 둔 영국·독일 합작 회사가 '게르마니아 양조장'이라는 이름으로 세웠고, 이듬해 12월 첫 맥주를 내놓았습니다. 1916년 일본의 대일본맥주에 팔렸다가 1949년 국유화된 이 맥주는? | before E: 상표에는 해안 잔교 끝에 선 정자 '회란각'이 그려져 있습니다. | addedCue(GEN): 멕시코 은화 40만 달러 자본금 · 라오산 샘 광천수 광고
+facts: [q] 1916년 대일본맥주에 매각, 1949년 국유화 <https://en.wikipedia.org/wiki/Tsingtao_Brewery> «it was decided the company would be sold to the Dai-Nippon Brewery ... 1949 when ... the new People's Republic of China confiscated all the shares ...»  ||  [e] 홍콩 소재 영국·독일 합작 회사가 1903년 게르마니아 양조장으로 설립 <https://en.wikipedia.org/wiki/Tsingtao_Brewery> «Tsingtao Brewery was founded by the Anglo-German Brewery Co. Ltd., an English-German joint stock company based in Hong Kong ... The brewery was founde»  ||  [q] 1903년 8월 15일 게르마니아 양조장 설립 · 자본금 멕시코 은화 40만 달러 <https://en.wikipedia.org/wiki/Tsingtao_Brewery> «The brewery was founded on August 15, 1903, as the Germania-Brauerei Tsingtao Co., Ltd (Germania Brewery) with a paid-in capital of 400,000 Mexican si»  ||  [q] 라오산 샘 광천수 광고 <https://en.wikipedia.org/wiki/Tsingtao_Brewery> «Tsingtao Beer was long advertized as being "brewed with mineral water from the Laoshan Spring", which contributed to its characteristic flavor»  ||  [e] 자오저우만 조차지 — 독일에 조차 <https://en.wikipedia.org/wiki/Tsingtao_Brewery> «The brewery was founded in 1903 as an Anglo–German business ... in Tsingtao (modern-day Qingdao), Kiautschou Bay Leased Territory, a 552 km2 (213 sq m»
+dbCheck(GEN): answercheck new
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 고친 질문(새 단서 사실))
+
+### L2-25  [life/L2:pets-garden/화초·원예]  method=나 hobby=원예
+Q: 독일계 영국인 정원사 헨리 샌더의 이름이 학명에 붙은 아프리카 원산 식물입니다. 줄기가 유연해 분재처럼 이리저리 휘어 기를 수 있고, 직사광선을 받으면 잎이 노랗게 타 버리는 이 실내 화초는 무엇일까요?
+A: 개운죽
+E: 이름 때문에 대나무로 알기 쉽지만, 실제로는 용혈수속(드라세나)에 드는 여러해살이풀입니다.
+H: 분류로는 아스파라거스와 같은 비짜루과에 든다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%EA%B0%9C%EC%9A%B4%EC%A3%BD   hintNote: 개운죽(開運竹, lucky bamboo)은 비짜루과 용혈수속에 딸린 식물종이다.
+REWRITE(고치지 않음): 줄기를 휘어 기른다는 단서를 빼면 남는 것이 학명의 인물(마이너) 하나라 같은 용혈수속 행운목과 갈리지 않고, 대나무 닮음은 이름 풀이라 넣을 수 없음
+facts: [q] 학명은 독일계 영국인 정원사 샌더(잔데르)의 이름 <https://en.wikipedia.org/wiki/Dracaena_sanderiana> «It was named after the German–English gardener Henry Frederick Conrad Sander (1847–1920).»  ||  [q] 아프리카 원산(중앙아프리카 / 서아프리카) <https://ko.wikipedia.org/wiki/%EA%B0%9C%EC%9A%B4%EC%A3%BD> «학명은 드라카에나 산데리아나(Dracaena sanderiana). 중앙아프리카 원산이다.»  ||  [q] 줄기가 유연해 분재처럼 휘어 기를 수 있음, 직사광선에 잎이 노랗게 탐 <https://ko.wikipedia.org/wiki/%EA%B0%9C%EC%9A%B4%EC%A3%BD> «줄기는 진짜 대나무와 달리 유연해서 분재처럼 이리저리 휘어 기를 수 있다. ... 직사광선을 받으면 잎이 노랗게 타죽는다.»  ||  [e] 대나무가 아니라 용혈수속 <https://ko.wikipedia.org/wiki/%EA%B0%9C%EC%9A%B4%EC%A3%BD> «개운죽(開運竹, lucky bamboo)은 비짜루과 용혈수속에 딸린 식물종이다. ... 대나무같이 생겨서 개운죽(竹)이라 불리지만 사실 대나무가 아니다. 여러해살이 초본식물로»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### M1-12  [media/L2:kr-tv/광고]  method=나 layer=팬 세부 work=용각산 광고
+Q: 일본에서 개발된 흰 가루약이라, 일본에서 사 온 것이 공항 검색대에서 마약으로 오인되는 일이 잦았다고 합니다. 2003년 커피 믹스처럼 생긴 스틱형 봉지 제품이 나오자 그룹 더더가 광고에 나선 이 기침·가래약은?
+A: 용각산
+E: 원래 제품은 '소리가 나지 않습니다'라는 광고로 유명했고, 스틱형 제품의 광고 카피는 '소리가 납니다'였습니다.
+H: 에도 시대 후기 구보타번(지금의 아키타현) 번주 집안의 의사가 처음 만들었다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%EC%9A%A9%EA%B0%81%EC%82%B0   hintNote: 그 원형은 에도 시대 후기(분세이 연간)에 구보타번 (현재 아키타현) 번주 집안인 사타케씨의 어전의 후지이 겐엔이 개발했다.
+REWRITE(고친 질문): before Q: 2003년 커피 믹스처럼 생긴 스틱형 봉지에 담긴 제품이 나오자, 그룹 더더가 '소리가 납니다'라는 카피로 광고했습니다. 원래 제품은 '소리가 나지 않습니다'라는 광고로 유명했는데, 보령이 파는 이 기침·가래약은 무엇일까요? | before E: 일본에서 개발된 흰 가루약이라, 일본에서 사 온 이 약이 공항 검색대에서 마약으로 오인되는 일도 잦았다고 합니다. | addedCue(GEN): 공항 검색대에서 마약으로 오인(해설에서 옮김)
+facts: [q] 보령이 판매하는 진해거담제, 일본 류카쿠산 개발 <https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0> «용각산(龍角散)은 동명 일본 기업 류카쿠산에서 개발해 대한민국 보령컨슈머헬스케어에서 판매하는 진해거담제이다.»  ||  [e] 원래 광고 '용각산은 소리가 나지 않습니다' <https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0> «(착.착.착!) 이 소리가 아닙니다, (달각.달각.달각!) 이 소리도 아닙니다. (무음) 용각산은 소리가 나지 않습니다.»  ||  [q] 2003년 스틱형 봉지 제품, 더더 광고 '소리가 납니다' <https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0> «2003년에 발매된 제품. 커피 믹스처럼 생긴 스틱형 봉지에 담긴 가루 제품이다. … 초기 TV광고는 그룹 더더를 기용하여 진행했는데, 메인 카피가 "용각산쿨은 소리가 납니다" 였다.»  ||  [q] 공항 검역에서 마약으로 오인 <https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0> «실제 공항 검역에서도 마약종으로 오인되어서 걸리는 사례가 수두룩했다. … 일본여행을 갔다 온 이들 중에도 귀국할 때 공항 검색대에서 일본에서 사온 용각산이 마약종으로 잘못 판정되어서 걸리는 경우가 많았다.»
+dbCheck(GEN): answercheck(정답·변형, 이 job 초안 제외) 모두 new
+warn: assert=[] assertHint=[처음] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 나무위키 근거, 고친 질문(새 단서 사실))
+
+### M1-24  [media/L2:kr-screen/2000년대 이후 한국 영화]  method=나 layer=대중 work=타짜
+Q: 2024년 4월 경찰청의 청소년 도박 반대 공익 광고에서 배우 김응수는 '도박은 놀이가 아닙니다'라며, 영화 '타짜'의 곽철용 대사 뒤에 '-려다가'를 붙여 인생을 잃을 수 있다고 경고했습니다. 곽철용의 이 대사는 무엇일까요?
+A: 묻고 더블로 가
+E: 2019년 곽철용이 인터넷 밈으로 다시 떠오르자 버거킹이 김응수를 섭외해 광고를 찍기도 했습니다.
+H: (힌트 없음)
+REWRITE(고치지 않음): 정답이 곽철용의 대표 대사(밈)라 곽철용·김응수·타짜 중 무엇을 남겨도 방송 수준 — 빼면 묻는 대상이 흐려짐
+facts: [q] 2024년 4월 경찰청 청소년 도박 반대 공익 광고, 김응수, 곽철용 대사 인용 <https://namu.wiki/w/%EA%B3%BD%EC%B2%A0%EC%9A%A9> «2024년 4월에는 대한민국 경찰청에서 김응수를 섭외하여 청소년 도박 반대 캠페인 공익 광고를 선보였다. 김응수는 "대한민국 청소년 여러분. 도박은 놀이가 아닙니다. 묻고 더블로 가려다가 여러분의 인생도 묻힙니다." 라고 곽철용의 명대사를 인용했다.»  ||  [q] 타짜(2006) 등장인물 곽철용, 김응수 <https://namu.wiki/w/%EA%B3%BD%EC%B2%A0%EC%9A%A9> «곽철용 (김응수 분) … 영화 타짜의 등장인물.»  ||  [e] 버거킹이 곽철용 광고로 김응수 섭외 <https://namu.wiki/w/%EA%B3%BD%EC%B2%A0%EC%9A%A9> «이렇게 인터넷에서 크게 이슈를 끌고 흥행하자 앞서 흥행한 4달러 밈으로 광고를 찍은 버거킹이 이번에는 곽철용 광고를 찍기위해 김응수를 섭외했다는 소식이 알려졌다.»
+dbCheck(GEN): answercheck(정답·변형, 이 job 초안 제외) 모두 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (나무위키 근거)
+
+### M2-06  [media/L2:popular-music/힙합·일렉트로닉]  method=나 layer=팬 세부 work=Through the Wire
+Q: 2002년 10월 교통사고로 턱이 부서진 한 프로듀서는 입원 2주 뒤, 철사로 턱을 고정한 채 첫 솔로 싱글을 녹음했습니다. 차카 칸의 1985년 곡 'Through the Fire'를 빠르게 돌려 샘플로 쓴 이 곡의 주인인 미국 래퍼는 누구일까요?
+A: 칸예 웨스트   변형: 카니예 웨스트   variantCheck(GEN): ko.wikipedia 문서 제목 '칸예 웨스트'('카니예 웨스트' 넘겨주기 확인)
+E: 가사에는 실려 간 병원을 '비기 스몰스가 숨진 바로 그 병원'이라고 부르는 대목이 있습니다.
+H: 이 곡은 2005년 그래미 랩 솔로 부문 후보에 올랐지만, 같은 음반사 공동 대표 제이지의 '99 Problems'에 밀렸다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Through_the_Wire   hintNote: The song was nominated for a Grammy Award, specifically for Best Rap Solo Performance, in 2005, but lost to Roc-A-Fella co-head Jay-Z's "99 Problems".
+facts: [q] 2002-10-23 교통사고 뒤 턱을 철사로 고정한 채 데뷔 솔로 싱글 녹음 <https://en.wikipedia.org/wiki/Through_the_Wire> «"Through the Wire" is the debut solo single by American rapper and producer Kanye West, who wrote and recorded the song with his jaw wired shut after »  ||  [q] 입원 2주 뒤 녹음 <https://en.wikipedia.org/wiki/Through_the_Wire> «Two weeks after being admitted to the hospital, he recorded the song at the Record Plant Studios with his jaw still wired shut.»  ||  [q] 차카 칸 1985년 Through the Fire를 빠르게 돌려 샘플 <https://en.wikipedia.org/wiki/Through_the_Wire> «West samples a pitch-shifted and sped up version of Chaka Khan's 1985 single "Through the Fire".»  ||  [e] 가사 속 비기 스몰스 병원 <https://en.wikipedia.org/wiki/Through_the_Wire> «He was taken to Cedars-Sinai Medical Center, mentioned in the song as "the same hospital where Biggie Smalls died"»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### M2-18  [media/L2:animation/서양 TV 애니메이션]  method=나 layer=팬 세부 work=핑크 팬더
+Q: 1963년 한 영화의 오프닝 크레디트에 프리즈 프렐렝이 그려 넣은 이 캐릭터는 인기에 힘입어 단편 시리즈의 주인공이 됐고, 첫 단편이 1964년 아카데미 단편 애니메이션상을 받았습니다. 초기 단편 가운데 단 두 편에서만 말을 한 이 캐릭터는?
+A: 핑크 팬더   변형: 핑크 팬서   variantCheck(GEN): ko.wikipedia 문서 '핑크 팬더(영어: The Pink Panther 더 핑크 팬서)' — 두 한글 꼴
+E: 원래 이 이름은 영화 속에서, 빛에 비추면 흠이 뛰어오르는 표범 모양으로 보이는 다이아몬드의 이름이었습니다.
+H: 첫 단편부터 이 캐릭터와 맞서는 콧수염 난 작은 하얀 남자는 흔히 이 캐릭터를 그린 사람 자신을 본뜬 것으로 여겨진다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/The_Pink_Panther_(character)   hintNote: Pink's first foil in The Pink Phink is "a little white mustachioed man who is often considered a caricature of Friz Freleng" (officially The Little Man)
+REWRITE(고친 질문): before Q: 1963년 블레이크 에드워즈의 영화에서 이 이름은 원래 빛에 비추면 흠이 동물 모양으로 보이는 다이아몬드의 이름이었습니다. 프리즈 프렐렝이 오프닝 크레디트에 의인화해 그린 캐릭터가 인기를 끌어, 이듬해 첫 단편이 아카데미 단편 애니메이션상을 받았습니다. 이 캐릭터는 누구일까요? | before E: 초기 단편에서 이 캐릭터는 거의 말을 하지 않았고, 'Sink Pink'와 'Pink Ice' 두 편에서만 말을 했습니다. | addedCue(GEN): 초기 단편 중 두 편에서만 말을 함
+facts: [q] 프렐렝이 연출한 타이틀 시퀀스가 성공해 단편 계약 <https://en.wikipedia.org/wiki/The_Pink_Panther_(character)> «The animated Pink Panther character's initial appearance in the live action film's title sequence, directed by Friz Freleng, was such a success with a»  ||  [q] 1963년 영화 <https://ko.wikipedia.org/wiki/핑크_팬더> «1963년에 개봉한 미국의 동명 영화를 첫 작품으로 하는 미디어 프랜차이즈이다.»  ||  [q] 첫 단편이 1964년 아카데미 단편 애니상 <https://en.wikipedia.org/wiki/The_Pink_Panther_(character)> «The first entry in the series, 1964's The Pink Phink … The Pink Phink won the 1964 Academy Award for Animated Short Film»  ||  [q] 두 편에서만 말함 <https://en.wikipedia.org/wiki/The_Pink_Panther_(character)> «In an early series of Pink Panther animated cartoons, Pink generally remained silent, speaking only in two theatrical shorts, Sink Pink (one line) and»  ||  [e] 원작 영화에서 이름은 흠이 표범 모양으로 보이는 다이아몬드, 크레디트에서 의인화 <https://en.wikipedia.org/wiki/The_Pink_Panther_(character)> «In the storyline of the original film, "Pink Panther" is the name of a valuable pink diamond named for a flaw that shows a "figure of a springing pant»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### M2-30  [media/L2:world-cinema/해외 드라마]  method=나 layer=팬 세부 work=프렌즈
+Q: NBC의 워런 리틀필드는 함께 살며 비용을 나누는 젊은이들의 코미디를 찾다가, 데이비드 크레인과 마타 코프먼이 'Insomnia Cafe'라는 가제로 내민 이 시트콤을 사들였습니다. 뒤에 'Six of One'으로도 이름을 바꾼 이 시트콤은?
+A: 프렌즈   변형: Friends   originalTitle: Friends   variantCheck(GEN): ko.wikipedia 문서 제목 '프렌즈' · 영문 원제(B10)
+E: 한때 쓰던 가제 'Friends Like Us'는 ABC 시트콤 'These Friends of Mine'과 너무 비슷해 버렸습니다.
+H: 첫 시즌 출연진은 회당 2만 2,500달러를 받았지만, 마지막 두 시즌에는 저마다 회당 100만 달러를 받았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Friends   hintNote: In their original contracts for the first season, cast members were paid $22,500 per episode. ... and $1 million in seasons nine and ten
+REWRITE(고친 질문): before Q: 데이비드 크레인과 마타 코프먼은 1993년 말 이 시트콤을 'Insomnia Cafe'라는 가제로 NBC에 내밀었고, 뒤에 'Six of One'으로도 이름을 바꿨습니다. 렘브란츠가 부른 주제가가 1995년 영국 싱글 차트 3위까지 오른 이 시트콤은 무엇일까요? | before E:  | addedCue(GEN): 리틀필드가 찾던 젊은이 동거 코미디
+facts: [q] 1993년 11~12월 가제 Insomnia Cafe로 개발, 12월 NBC에 제안 <https://en.wikipedia.org/wiki/Friends> «Kauffman and Crane began developing Friends under the working title Insomnia Cafe between November and December 1993. / The team titled the series Ins»  ||  [q] Six of One으로 바꿈 <https://en.wikipedia.org/wiki/Friends> «After several script rewrites and changes, including title changes to Six of One and Friends Like Us, the series was finally named Friends.»  ||  [e] Friends Like Us는 These Friends of Mine과 비슷해 바꿈 <https://en.wikipedia.org/wiki/Friends> «They changed the title to Six of One, mainly because they felt Friends Like Us was too similar to the ABC sitcom These Friends of Mine.»  ||  [q] 리틀필드가 함께 살며 비용을 나누는 젊은이 코미디를 찾음 · Insomnia Cafe 피칭에 감명 <https://en.wikipedia.org/wiki/Friends> «Warren Littlefield, the then-president of NBC Entertainment, was seeking a comedy involving young people living together and sharing expenses ... When»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[마지막] frag=[] hint=[]
+webOpen: TRUE (단정어 마지막, 고친 질문(새 단서 사실))
+
+### S1-12  [sports/L2:baseball/규칙]  method=가 pairedWith=#787 hobby=규칙
+Q: 1968년 메이저리그에서는 밥 깁슨 같은 투수들이 타자를 압도해 완봉이 339번이나 나왔습니다. 이듬해 리그는 투수 우위를 줄이려고 마운드를 15인치에서 10인치로 낮추고 이것도 좁혔는데, 이것은 무엇일까요?
+A: 스트라이크 존
+E: 1887년까지는 타자가 투수에게 '높은 공'이나 '낮은 공'을 골라 요구할 수 있었습니다.
+H: 2002~2006년에는 투구 추적 장치 퀘스텍 탓에 실제로 판정되는 이것이 규칙에 더 가깝게 넓어졌다는 분석이 나왔다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Strike_zone   hintNote: due to the QuesTec pitch-tracking system, the enforced strike zone in 2002–2006 was larger compared to the zone in 1996–2000 and thus closer to the rulebook definition.
+REWRITE(고친 질문): before Q: 1887년까지 야구 타자는 투수에게 '높은 공'이나 '낮은 공'을 골라 요구할 수 있었습니다. 그해 규칙이 바뀌어 이 요구권이 없어지면서 범위가 새로 정해진 이것은 무엇일까요? | before E: 1969년에는 투수 우위를 줄이려고 이것을 겨드랑이부터 무릎 위까지로 좁혔습니다. | addedCue(GEN): 1968년 투수의 해 · 1969년 마운드 15→10인치와 함께 좁힘
+facts: [e] 1887년까지 타자가 높은 공·낮은 공을 요구 <https://en.wikipedia.org/wiki/Rules_of_baseball> «Until 1887, batters could call for either a high or low pitch, and the strike zone was either above or below the waist.»  ||  [q] 1969년 겨드랑이~무릎 위로 좁힘 <https://en.wikipedia.org/wiki/Strike_zone> «Major League Baseball reduced pitchers' advantage by lowering the height of the mound from 15 inches (380 mm) to 10 inches (250 mm), and by reducing t»  ||  [q] 1968년 맥레인·깁슨 등 투수 압도 · 완봉 339 <https://en.wikipedia.org/wiki/Strike_zone> «In 1968, pitchers such as Denny McLain and Bob Gibson dominated hitters, producing 339 shutouts.»
+dbCheck(GEN): answercheck 스트라이크 존 pair-or-different #787(1회차) — (가)   pairCheck(GEN): 1회차 q(무릎과 가슴 사이 — 정의) · e(키 작은 타자) · h(없음)와 겹치지 않음 — 1887 요구권 폐지는 새 사실, 몸 부위 정의는 쓰지 않음
+  1회차 #787: Q: 야구에서 투구를 판정하는 구역을 무엇이라 합니까? 그 범위는 타자의 무릎과 가슴 사이로 정해져 타자마다 높이가 달라집니다. | E: 타자의 몸을 기준으로 삼기 때문에 키가 작은 타자는 그 구역도 좁아집니다. | H: (없음)
+  sameAnswerActive #787: Q: 야구에서 투구를 판정하는 구역을 무엇이라 합니까? 그 범위는 타자의 무릎과 가슴 사이로 정해져 타자마다 높이가 달라집니다. | E: 타자의 몸을 기준으로 삼기 때문에 키가 작은 타자는 그 구역도 좁아집니다. | H: (없음)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
+
+### S1-24  [sports/L2:football/K리그·아시아]  method=나
+Q: 고교 졸업 뒤 받아 주는 팀이 없어 창원 기계공단에서 용접공으로 2년을 지낸 골키퍼입니다. 1998년 월드컵 뒤 블랙번·에버턴 등의 러브콜을 받았지만 소속팀 울산 현대의 반대로 K리그에 남은 이 선수는?
+A: 김병지
+E: 1998년 10월 포항 스틸러스와의 플레이오프 2차전 후반 추가 시간에 프리킥 헤딩슛으로 골을 넣었습니다.
+H: 1995년부터 2007년까지 12회 연속 K리그 올스타전에 나가 최다 출전 기록을 세웠다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%EA%B9%80%EB%B3%91%EC%A7%80   hintNote: 1995년부터 2006년까지 11회 연속으로 올스타전에 출전하여 올스타전 최다 출전 기록을 세웠고, 2007년에도 12회 연속으로 출전하여 올스타전 최다 출전 기록을 경신하였다.
+REWRITE(고친 질문): before Q: 1998년 10월 K리그 플레이오프 2차전 포항 스틸러스전, 1-1로 맞선 후반 추가 시간 프리킥 때 이 골키퍼가 헤딩슛으로 골을 넣었습니다. 고교 졸업 뒤 받아 주는 팀이 없어 창원 기계공단에서 용접공으로 2년을 지낸 이 선수는? | before E: 1998년 월드컵 뒤 블랙번·에버턴 등 잉글랜드 구단의 러브콜이 있었지만 소속팀 울산 현대의 반대로 K리그에 남았습니다. | addedCue(GEN): 1998년 월드컵 뒤 잉글랜드 구단 러브콜 · 울산 반대로 잔류(해설에서 옮김)
+facts: [e] 1998년 10월 24일 포항과 PO 2차전 1-1 후반 추가시간 프리킥 헤딩골 <https://ko.wikipedia.org/wiki/%EA%B9%80%EB%B3%91%EC%A7%80> «특히, 1998년 10월 24일 포항 스틸러스와의 플레이오프 2차전에서 1:1로 맞선 후반 추가시간 프리킥 찬스에서 헤딩슛을 성공시키면서 골키퍼 최초의 필드골을 성공시키기도 했는데»  ||  [q] 받아 주는 팀이 없어 창원 기계공단에서 용접공 2년 <https://ko.wikipedia.org/wiki/%EA%B9%80%EB%B3%91%EC%A7%80> «받아주는 팀이 없자 결국 고등학교 졸업 후, 창원 기계공단의 금성산전에서 용접공으로 2년을 생활하였다.»  ||  [q] 1998년 월드컵 뒤 블랙번·에버턴·사우샘프턴 러브콜, 울산 반대로 잔류 <https://ko.wikipedia.org/wiki/%EA%B9%80%EB%B3%91%EC%A7%80> «1998년 FIFA 월드컵 이후, 월드컵에서 김병지의 활약을 지켜본 잉글랜드 프리미어리그의 블랙번 로버스 FC, 에버턴 FC, 사우샘프턴 FC 등 여러 팀들이 김병지에게 러브콜을 보냈으나 김병지는 당시 소속팀이었던 울산 현대의 반대로 K-리그에 남게 되었다.»
+dbCheck(GEN): answercheck 김병지 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### S2-12  [sports/L2:olympic/올림픽 상징·의례]  method=나
+Q: 2014년 소치 대회 개회식에서 경기장 위로 내려온 다섯 개의 이것은 펼쳐져 오륜을 이룰 예정이었지만, 다섯째가 펴지지 않았습니다. 러시아 방송은 이 장면을 리허설 화면으로 바꿔 내보냈는데, 이것은 무엇일까요?
+A: 눈송이
+E: 주최 측은 폐회식에서 춤추는 무리가 다섯째 고리를 일부러 펴지 않는 장면으로 이 실수를 스스로 패러디했습니다.
+H: 이 개회식의 연출 책임자는 러시아 방송 제작자 콘스탄틴 에른스트였다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/2014_Winter_Olympics_opening_ceremony   hintNote: Television producer Konstantin Ernst was the main Creative Head in charge of the opening ceremonies.
+REWRITE(고치지 않음): 정답(눈송이)이 소치 개회식 오륜 사고 자체에 묶여 있어, 그 사고를 빼면 묻는 대상이 사라짐
+facts: [q] 2014 소치 동계 대회 개회식 — 다섯 눈송이가 펼쳐져 오륜, 다섯째 실패 <https://en.wikipedia.org/wiki/2014_Winter_Olympics_opening_ceremony> «Five large snowflakes descended into the stadium which expanded and joined to form the Olympic rings. However, a technical error caused the fifth ring»  ||  [q] 러시아 방송은 리허설 화면으로 바꿈 <https://en.wikipedia.org/wiki/2014_Winter_Olympics_opening_ceremony> «The malfunction of the fifth Olympic snowflake ring was not seen during the telecast of the ceremony in Russia, where both Channel One and VGTRK quick»  ||  [e] 폐회식 패러디 <https://en.wikipedia.org/wiki/2014_Winter_Olympics_opening_ceremony> «The mishap was later self-mocked by the organizers at the closing ceremony where one of the roundrelay dance groups symbolizing the Olympic rings "fai»
+dbCheck(GEN): new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### S2-24  [sports/L2:combat-athletics/수영·수상 종목]  method=가 pairedWith=#4832
+Q: 배우 오지호의 수영 스승이기도 했던 이 선수는 평영과 배영을 뺀 모든 영법에서 한국 신기록 33개를 세웠습니다. 2003년에는 한강 700리 종주를 해낸 이 수영 선수는 누구일까요?
+A: 조오련
+E: 2021년 국립대전현충원 국가사회공헌자 묘역에 체육인으로는 여섯 번째로 안장되었습니다.
+H: 2006년 애니메이션 '아이스 에이지 2'에서 거북이 목소리를 맡았다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8   hintNote: 2006년 애니메이션 아이스 에이지 2 - 거북이 목소리
+REWRITE(고친 질문): before Q: 배우 오지호의 수영 스승이기도 했던 이 선수는, 평영과 배영을 뺀 모든 영법에서 한국 신기록 33개를 세웠습니다. 1982년 도버 해협을 헤엄쳐 건넜고, 2008년에는 독도를 33바퀴 헤엄쳐 도는 계획을 해낸 이 선수는? | before E:  | addedCue(GEN): 2003년 한강 700리 종주
+facts: [q] 오지호의 스승, 평영·배영 뺀 모든 영법 33개 한국 신기록 <https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8> «또한 배우 오지호의 스승이기도 했던 조오련은 통산 자유형 14개, 개인혼영 12개, 접영 5개, 계영 2개 등 평영과 배영을 제외한 모든 영법에서 총 33개의 한국 신기록을 세웠다.»  ||  [e] 2021 현충원 안장, 체육인 6번째 <https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8> «2021년 6월 10일 오후 2시 국립대전현충원 국가사회공헌자 묘역에 안장되었는데 ... 6번째로 국립 묘역에 안장된 것이다.»  ||  [q] 2003년 한강 700리 종주 <https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8> «1980년에는 대한해협, 1982년에는 영국-프랑스 도버해협, 2002년에는 대한해협, 2003년에는 한강 700리 종주, 2005년에는 독도를 횡단했으며 2008년에는 독도 33바퀴 헤엄쳐 돌기 프로젝트를 성공시켰다.»
+dbCheck(GEN): pair-or-different 4832 — (가) 2회차, 다른 지식   pairCheck(GEN): 1회차 질문(해남·아시안 게임 400·1500)·해설(1980 대한해협·아시아의 물개)·힌트(1978 접영 동)와 겹치지 않음
+  1회차 #4832: Q: 전라남도 해남 출신의 이 수영 선수는 1970년과 1974년 아시안 게임에서 자유형 400m·1500m를 잇달아 우승했습니다. 2008년에는 독도 둘레를 33바퀴 헤엄쳐 도는 일도 해냈는데, 이 선수는 누구일까요? | E: 1980년 대한해협을 헤엄쳐 건넜고, '아시아의 물개'라는 별명으로 불렸습니다. | H: 1978년 방콕 아시안 게임에서는 접영 200m 동메달을 땄다.
+  sameAnswerActive #4832: Q: 전라남도 해남 출신의 이 수영 선수는 1970년과 1974년 아시안 게임에서 자유형 400m·1500m를 잇달아 우승했습니다. 2008년에는 독도 둘레를 33바퀴 헤엄쳐 도는 일도 해냈는데, 이 선수는 누구일까요? | E: 1980년 대한해협을 헤엄쳐 건넜고, '아시아의 물개'라는 별명으로 불렸습니다. | H: 1978년 방콕 아시안 게임에서는 접영 200m 동메달을 땄다.
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
