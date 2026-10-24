@@ -1,0 +1,92 @@
+===========================================
+ROUND: V024
+DATE: 2026-10-24
+TASK: 미니게임 데이터 3차 609 + 새 게임 photoyear 100 전수 재검증(C80 · items-3.json 다섯 + photoyear/items.json + products.json 덧붙인 나라 행 69). 반영·적재는 GEN(G021)
+STATUS: 완료 — 단 worldprice 휘발유 덧붙인 행 33 중 9 는 GlobalPetrolPrices 429(34회)로 현지가를 문서로 못 닫았고, price·photo·estimate·which 의 unverified 가 58(아래 3절)
+===========================================
+
+[cmd 창 요약]
+1. 609 전수(3차 509 + photoyear 100 · 브리핑의 "709"는 합이 609 — 509+100) + 나라 행 69: ok 586 · fix 22 · drop 1 — 3차 509: ok 492 · fix 17(3.3%) · drop 0 / photoyear 100: ok 94 · fix 5 · drop 1. 1차(V012) fix 9.8% · 2차(V017) 5.4% → 3차 3.3%(photo 9.2%만 높음).
+2. 그림 627 전수: 문제 8(wrong-target 1 · 흐림 2 · 정답 연도 글자 1 · 창업·다른 연도 글자 4 — 이 넷은 ok 로 둠) — 2차 13. photoyear: 연도 글자 정답 단서 0 · 얼굴 클로즈업 0 · 연도 근거 파일 페이지 확인 100/100(촬영일 92 · circa 4 · 게시일 1 · 날짜 칸 연도만 3).
+3. ★ photoyear 맞혀 보기: 정답 모르는 판정자(그림 + cues) 중앙 오차 1년 · 0~2년 77 · 3~5년 21 · 6~10년 2 · 11년+ 0 → 판정자 오차 × 1.5 로 재매김하면 1:77 · 2:22 · 3:1(GEN 1:9 · 2:51 · 3:40) — 규칙이 변별을 못 한다(CV-73). photo 120 맞혀 보기: 사람 아닌 105 중 95 맞힘 · 사람 15 는 얼굴로 못 맞힘(알 수 없음).
+4. 값: price 다른 판매처 ±30% 안 · 1.5 규칙 통과, fix 1(0283 기록 -45%) · estimate 100 전부 ok · which 유프라테스 정의 불일치 fix 1 + 그림 4 · worldprice 나라 행 69 전부 ok(환율 45통화 ±3% · 휘발유 9행 unverified).
+5. DB 쓰기 0 · 사용량 한도 0 · g008-check 시작·끝 1,784 막힘 0 · 1·2차 파일·기존 나라 행 바이트 불변(기계 대조). CV-72~77 · C80 처리 표시 · 커밋 게임별 6 + 문서.
+
+0. 웹 검색·조회 (맨 앞) · 게임별 표 · 1·2차와 비교
+- 판정자 24조각 + 맞혀 보기 2 + 휘발유 재실행 1(한 번에 1개): WebFetch 약 1,380회(조각 자기 보고 합) · 판정자 WebSearch 2회(estimate4) · VERIFY 직접 WebFetch 3회(photoyear-0012 · photo-0290 · photo-0305 파일 페이지 — 판정자 결과와 같음) · VERIFY 직접 WebSearch 0회(한도 80 이내). 사이트 요청 제한 429: GlobalPetrolPrices(휘발유 — 재실행에도 34회). 사용량 한도 0.
+- 원칙 7: 브리핑은 "3차 609 + photoyear 100 = 709"로 적었으나 실제는 3차 509(price 100 · worldprice 69 · photo 120 · estimate 100 · which 120) + photoyear 100 = 609 ✔(브리핑의 709 는 산수 어긋남 — 다른 곳은 다 맞음) · 그림 627(price 100 · photo 120 · estimate 91 · which 216 · photoyear 100 — 브리핑과 같음) ✔ · 덧붙인 나라 행 69(iphone 2 · 콜라 34 · 휘발유 33 — products.json 끝과 일치) ✔ · 전부 candidate/verify null ✔ · assets/minigame/photoyear 100장 ✔ · g008-check 1,784 막힘 0(시작 · 끝) ✔.
+
+| 게임 | n | ok | fix | drop | fix 율 | 2차 | 1차 |
+|---|---|---|---|---|---|---|---|
+| price | 100 | 99 | 1 | 0 | 1% | 1% | 6% |
+| worldprice | 69 | 69 | 0 | 0 | 0% | 0% | 0% |
+| photo | 120 | 109 | 11 | 0 | 9.2% | 20% | 28.3% |
+| estimate | 100 | 100 | 0 | 0 | 0% | 6% | 3% |
+| which | 120 | 115 | 5 | 0 | 4.2% | 1.3% | 13.3% |
+| 3차 합(photoyear 제외) | 509 | 492 | 17 | 0 | 3.3% | 5.4% | 9.8% |
+| ★ photoyear | 100 | 94 | 5 | 1 | 5% | — | — |
+- status 집계(파일에 쓴 것): price verified 99 / candidate 1 · worldprice verified 69 · photo verified 109 / candidate 11 · estimate verified 100 · which verified 115 / candidate 5 · photoyear verified 94 / candidate 5 / rejected 1. G021 이 fix 를 적용하면 rejected 1 을 빼고 verified 가 된다.
+- unverified(값을 문서로 못 닫은 ok): price 23 · photo 20 · estimate 11 · which 4 · photoyear 8 · worldprice 나라 행 9(전부 휘발유) — 합 75. 틀렸다는 증거는 없다.
+
+1. 건수·빠진 것
+- 609 전수 + 나라 행 69(조각 24 · 출력 수·key 순서 입력과 기계 대조 불일치 0). 그림 627 전수 판정자가 Read. worldprice 문항 69 는 목표 나라 행 판정으로 정함(shown 나라는 이전 라운드에서 확인한 기존 행).
+- 휘발유: 1차 실행은 GlobalPetrolPrices 429 에 3번 시도 뒤 33행 전부 unverified → 나라마다 다시 시도하게 하는 재실행에서도 429 34회. Trading Economics 2026-09 값 ±15%(휘발유는 변동이 커서 ±15% 로 봄 — 지시 파일 끝이 "±15" 에서 잘렸다)로 25행 닫음(최대 바레인 +10.8%) · 8행 unverified(슬로베니아 TE 이상치 · 리투아니아 TE 급락 · 스리랑카 · 네팔 · 모로코 · 튀니지 · 요르단 · 조지아는 TE 에 값 없음) · 오만 포함 9행(merge 집계 기준). 환율 21통화 ±1.4%.
+- 콜라 34행은 Numbeo 나라 페이지를 전부 다시 열어 최대 0.97% 차이 · 환율 ±1.4% · 불가리아 EUR 맞음 · asOf 가 기존(10-18)과 사흘 뒤(10-21)로 둘인 점은 값 차이가 작아 ok(CV-75). 아이폰 벨기에 1,119 · 룩셈부르크 1,082 EUR 애플 스토어 일치 · EUR 환율 기록 1,499 vs ECB 1,482(-1.1%).
+- 직접 재독: 이번에도 VERIFY 가 일부만 문서를 열었다. 한 일: ① fix 22 · drop 1 · 그림 문제 8 의 reason·proposal 전부 읽음 ② 판정자 보고를 직접 확인한 것: photoyear-0012(공용 페이지 "삭제 요청 2026-06-11" · 일본 PD 만 — drop 맞음) · photo-0290(공용 페이지 CC BY 2.0 · Sam Valadi — image 칸 Public domain 은 틀림) · photo-0305(EXIF 저작권 Alex Morton/THFC 와 Own work 불일치 — 라이선스 의심 맞음) ③ 그림 직접 Read: which-0397-b(편지의 "13 juillet 1793" 읽힘 — fix 맞음) · which-0306-b(위성 사진이라 배핀섬 윤곽 안 보임 — 맞음) · photoyear-0020 · 0035('원조 1937' 간판 — 창업 연도라 ok) · 0037(깃발 'WELCOME … 2002' — 월드컵 해라 정답 2001 의 이웃 연도 — note, CV-72). ④ ok 10% 는 reason 훑음. 못 한 것: ok 의 문서 직접 재열기 대부분.
+
+2. 종류별
+- photo fix 11: attribution 에 자름·손질 표시 누락 5(0224 · 0232 · 0244 · 0302 · 0306 — 1차 13 · 2차 4) · 라이선스 칸 오류 1(0290 PD → CC BY 2.0) · 라이선스 의심 1(0305 손흥민 — 그림 교체 권장) · 변형 4(0265 · 0270 문서로 닫히는 별칭 추가 · 0318 근거 없는 변형 제거 · 0339 고양이원숭이 추가). 영문 원어 변형은 0건(1차 11 · 2차 9). 근거 없는 변형 제거는 0318 하나로 크게 줄었다. 문서로 못 닫아 unverified 인 변형: 스노우볼 · 벨크로 테이프 · 찍찍이 · 힌지 · 바게뜨 · 퐁듀 · 티라미슈 · 펠리칸 · 세탁판 · 유투브 · 왓츠앱 · 부사산 · 러쉬모어산 …(문서가 없어 ok 로 두고 reason 에 unverified).
+- photo 난이도 재매김(판정자): 1:41 · 2:62 · 3:17 (GEN 1:33 · 2:65 · 3:22) · 같은 것 101/120 · 바뀐 19(예 0299 울루루 2→1 · 0312 무하마드 알리 3→2 · 0313 펠레 3→2).
+- price fix 1: 0283 MTG 리파 파오 기록 137,655 ↔ 다나와·에누리 73,690~77,400(새 값 74,990 → bucket 1~10만). unverified 23: 편의점 정가(1만 원 미만)와 온라인 박스 환산 값이 -27~-67% 벌어지는 것이 대부분(채널 차이로 보고 ok · "편의점 정가"로 밝히는 편이 안전) · 낱개 가격 없음 · 티파니 2(0284 · 0299 — 공식 외 다른 판매처를 못 열음) · 세븐일레븐 ajax 상품 없음. 사치품 5 중 unverified 2 · 자동차 6 은 제조사 페이지가 403 이라 다나와 자동차 가격표로 닫음.
+- estimate: 100 전부 ok(1차 3% · 2차 6% fix). 단 unverified 11(NASA 404 · 통계청 · 한국은행 404 …). 외화 금액 0건(2차 6 에서 해결).
+- which fix 5: 그림 4(0306-b 배핀섬 · 0316-b 황다랑어 250px · 0346-a 베네른호 흐림 · 0397-b 편지의 1793 글자) · 값 정의 1(0347 유프라테스 3,596 은 슈얏알아랍 포함 정의 → 같은 정의면 2,800 vs 티그리스 1,900 · margin 1.47 · 정답 a 유지). disputed 5: 0304 애나벌새 98 ↔ 문서 83 km/h(방향 ok) · 0353 블랙맘바 22.5 ↔ 20 km/h(방향 ok) · 0371 측우기 1441/1442(문서 모두 1441) · 0420 워싱턴 기념탑 1884(석조 구조)/1888(최종 완공) · 0347. 경계(1.45~1.6배 · 8~10년) 22건은 서로 다른 두 문서로 닫음 · 0317 은 541.3/374 = 1.447 로 1.45 에 근소하게 못 미침(5절 기준 1.3 은 넘음). 명동성당 1898 축성(0378)은 쾰른 1880 과 18년이라 어느 쪽이든 정답 방향 불변. which 값이 대부분 위키 문서 사이 교차라 출처 독립성은 약하다(CIA Factbook 종료 · Britannica 403 · 세계은행 API 502).
+- worldprice: 위 1절.
+
+3. fix · drop 만 (ok 는 JSON 에만 — 항목 전문은 audit/v024-minigame.json items[id])
+- price-0283 [fix] 기록 가격 137,655원이 다나와 첫 화면·에누리와 -45% ⇒ {"priceKrw":74990,"bucket":"1~10만"}
+- photo-0224 [fix] attribution ⇒ "Michael Nutt / Wikimedia Commons (cropped)"
+- photo-0232 [fix] attribution ⇒ "국립국어원 / Wikimedia Commons (cropped)"
+- photo-0244 [fix] attribution ⇒ "Brian Negin (bdnegin) / Wikimedia Commons (cropped, retouched)"
+- photo-0265 [fix] altAnswers 추가 ⇒ ["미륵보살 반가사유상","반가상","미륵반가사유상"] (ko 위키 반가사유상)
+- photo-0270 [fix] altAnswers 에 문서로 닫히는 "개스 마스크" 추가 · 가스 마스크·방독마스크는 unverified
+- photo-0290 [fix] image.license "Public domain" ⇒ "CC BY 2.0" · attribution "Sam Valadi / Wikimedia Commons (extracted from another file)" (VERIFY 직접 확인)
+- photo-0302 [fix] attribution ⇒ "Chatham House / Wikimedia Commons (cropped)"
+- photo-0305 [fix] 라이선스 근거 의심(EXIF 저작권 Alex Morton/THFC vs Own work · CC BY-SA 4.0) ⇒ 다른 CC 사진으로 교체 또는 라이선스 확인 (VERIFY 직접 확인)
+- photo-0306 [fix] attribution ⇒ "Sfcphoto.KeunHwa / Wikimedia Commons (cropped)"
+- photo-0318 [fix] altAnswers 에서 '코코아나무' 제거(근거 없음) ⇒ ["카카오나무","카카오 나무"]
+- photo-0339 [fix] altAnswers 에 "고양이원숭이" 추가(북한 표기 설명이 같이 있음)
+- which-0306 [fix] B 그림이 위성 사진이라 배핀섬이 식별 안 됨 ⇒ 윤곽 보이는 그림으로 교체(값 ok)
+- which-0316 [fix] B 그림 250px 저해상도 ⇒ 교체
+- which-0346 [fix] A 그림 흐림 ⇒ 더 선명한 베네른호로 교체(값 5,650 vs 17,700 · margin 3.13 그대로)
+- which-0347 [fix] 값 정의 ⇒ {"a.value":2800,"b.value":1900,"answer":"a","margin":1.47,"note":"본류 길이 기준 · 경계"}
+- which-0397 [fix] B 그림에 "13 juillet 1793" 글자 ⇒ 편지가 안 보이게 자르거나 교체(값 그대로)
+- photoyear-0012 [drop] 공용 파일이 삭제 요청 중(2026-06-11 · URAA) · 일본 PD 만 · circa 범위 끝값 ⇒ 다른 사진으로 교체
+- photoyear-0021 [fix] title '지하도 입구' 근거 약함 ⇒ "1979년 4월 서울 도심 거리의 환영 아치와 코리아나 호텔"
+- photoyear-0023 [fix] place 를 파일 설명(Base Pohang) 근거로 '포항'
+- photoyear-0066 [fix] title 의 거리 이름이 공용 편집자 주석과 어긋남(Ernst-Thälmann-Straße ↔ Borsbergstraße) ⇒ 거리 이름 빼기
+- photoyear-0079 [fix] title '렌터카' 근거 없음(파일 설명은 Paris 뿐) ⇒ "1977년 파리 거리에 주차된 푸조 승용차와 아이들"
+- photoyear-0094 [fix] title 의 '올림픽 표어 광고판' 근거 없음 ⇒ "2008년 8월 베이징 왕푸징 거리"
+- 그림 문제 8(파일 · 판정): which/which-0306-b wrong-target · which-0316-b · which-0346-a blur-watermark · which-0397-b text-visible · photoyear-0020 · 0035 · 0037 · 0067 other-year-text(ok — 0020 전화번호 숫자 · 0035 '원조 1937' · 0037 깃발 2002 · 0067 건물 MDCCCXXX).
+
+4. photoyear 맞혀 보기 (정답 모르는 판정자 · 그림 + cues(연도 숫자는 가림) · 웹 없음)
+| GEN 난이도 | n | 중앙 오차 | 판정자 오차 × 1.5 로 매긴 난이도(1=±3 · 2=±10 · 3=그 밖) |
+|---|---|---|---|
+| 1 | 9 | 0 | 합: 1:77 · 2:22 · 3:1 |
+| 2 | 51 | 1 | (오차 ×1:  1:87 · 2:13 · 3:0) |
+| 3 | 40 | 1 | (오차 ×3:  1:63 · 2:24 · 3:13) |
+- 전체: 중앙 오차 1 · 0~2년 77 · 3~5년 21 · 6~10년 2 · 11~20년 0 · 21년+ 0. 한국 50 중앙 1 · 세계 50 중앙 1. GEN 맞혀 보기(중앙 2)보다 더 맞힌다. confidence confident 8 · maybe 90 · unknown 2. GEN 난이도와 ×1.5 재매김이 같은 것 18/100.
+- ★ 해석: V019 blind 교훈대로 판정자가 사람보다 훨씬 잘 맞힌다(그림 안 간판·차종·색감을 훤히 읽는다 + cues 가 단서를 준다). ±3/±10 선을 판정자에 그대로 대면 99%가 1·2 로 몰려 변별이 없다. 사람의 오차를 모르니 이 숫자로 난이도를 새로 매기면 안 된다 — CV-73.
+- 같은 맞혀 보기에서 큰 오차(≥15년) 0건.
+
+5. 누적·중복
+- 1차(642) + 2차(533) + 3차(509) + photoyear(100) = 1,784건(g008-check 합). fix 합 1·2·3차 63+29+17 = 109 · drop 6+1+0 = 7 · photoyear 별도 fix 5 · drop 1. 같은 대상 겹침은 g008-check 로 막힘 0. photoyear 같은 기관·같은 촬영 묶음(판정자 보고 — 장면은 다름): 0010·0013·0014·0017 · 0018·0019·0020 · 0036·0037·0038(같은 촬영자 같은 여행) · 0052·0054·0055 · 0062·0064·0066·0073(드레스덴 Bundesarchiv) · 0063·0070·0071·0072 · 0035·0041(서울연구원) 등.
+
+6. 반복 오류 유형 (V012 6절 a~d · V017 2절)
+① 한국어 변형(별칭·표기)을 문서 근거 없이 넣음: 1차 11 · 2차 9~10 → 3차 1(0318). GEN 이 CV-49 대로 근거 문장을 sources 에 남긴 덕분. ② 라이선스·손질 표시 누락: 1차 13+4 · 2차 4 → 3차 5(attribution) + 1(라이선스 칸) + 1(의심). 여전히 가장 큰 유형이라 g008-img 가 공용 페이지의 라이선스 문장과 손질 여부를 기계로 맞춰 보게 하는 편이 좋다. ③ 그림 안 글자: 1차 · 2차 → 3차 which 1 · 흐림 2 · 저해상도(해상도 하한이 없다). ④ 편의점/온라인 가격 차이로 price 가 unverified 에 몰림: 계속(23). ⑤ 새: photoyear — 제목(title)이 파일 설명보다 더 구체적으로 쓰인 것(지하도 · 렌터카 · 올림픽 표어 광고판 · 거리 이름) 4 · 날짜 칸이 연도만이라 촬영일인지 모르는 것 3 · 삭제 요청 중인 파일 1 · 라이선스 칸과 EXIF 저작권 불일치 1.
+
+7. 자기 점검
+- 판정자 한 번에 1개(24 + 맞혀 보기 2 + 휘발유 재실행 1). 휘발유는 두 번 돌렸고 둘 다 429. 판정자가 인물 사진 15 를 얼굴로 못 맞히는 것은 의도된 동작(알 수 없음) — photo 맞혀 보기 105/120 은 인물 제외 95/105.
+- 판정자가 지식으로 쓴 부분 없음을 확인하지 못함(자기 보고). 여러 판정자가 "쓴 뒤 파일을 다시 열어 대조하지 않았다"고 보고했으나 VERIFY 가 chk.mjs 로 수·순서를 전부 기계 대조(불일치 0).
+- photoyear 맞혀 보기의 cues 에는 "전쟁 직후" 같은 사건 단서가 남아 있다(연도 숫자만 가림).
+- ★ 새 결정 필요: CV-72 photoyear fix 5 · drop 1 · 연도 글자 · 겹침 · CV-73 photoyear 난이도(맞혀 보기가 변별 못 함) · CV-74 photo fix 11 · 난이도 19 · 맞혀 보기 변형 · CV-75 휘발유 9행 · 콜라 asOf · CV-76 which disputed 5 · 그림 4 · CV-77 price unverified 23 · 0283.
+- 고친 문서: docs/13-PENDING-CHECKS.md(C80 처리 · CV-72~77 · 머리글) · ai-out/README.md(V 표) · data/minigame/{price,photo,estimate,which,worldprice}/items-3.json · photoyear/items.json(verify·status 칸만) · worldprice/products.json(덧붙인 행 69 의 verify 칸만 — 1·2차 파일·기존 행·다른 칸은 기계 대조 0 변경). 규칙·프롬프트·코드·그림·15 · DB 는 고치지 않았다.

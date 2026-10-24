@@ -48,6 +48,7 @@
 | V021.txt | ① 애매 나머지 309 전수(판정자 fix 95 → 최종 fix 92 · drop 2 · 변형 37 · famous-one 25) · blind 재채점 = DB 72% ② G017 표본: 힌트 27 중 fix 2(제안 없이 쓴 10 은 famous-one 0) · blind 맞힘 48% · #2051 fix · 줄인 질문 3 ok · 반영 30 중 fix 1 → `audit/v021-ambiguous.json` · `v021-g017.json` · `v021-raw/` · CV-64~67 |
 | V022.txt | 정답 친숙도 판정 — 상 952 중 1(처음 듣는 정답) 225(23.6%) · 중 표본 300 중 25(8.3%) · 역사·사회 32.4% · 1 비활성 시 상만 19.04 → 14.54판 · 보정 예 69% → `audit/v022-targets.json` · `v022-familiarity.json` · `v022-raw/` · CV-68~70 |
 | V023.txt | 정답 친숙도 — 중 나머지 2,551 전수(1 225 · 8.8%) + 둘째 판정자 교차: 확정 1 268(상 159 · 중 109) · 경계 182 · 확정 비활성 시 중+상 76.06 → 70.70판 · 대조 오판 2.5% → `audit/v023-targets.json` · `v023-familiarity.json` · `v023-cross.json` · `v023-raw/` · CV-71 (+CV-68 덧붙임) |
+| V024.txt | 미니게임 3차 509 + photoyear 100 전수 재검증(C80) — 3차 ok 492 · fix 17(3.3% · 1차 9.8% · 2차 5.4%) · photoyear ok 94 · fix 5 · drop 1 · 나라 행 69 전부 ok(휘발유 9 unverified) · photoyear 맞혀 보기 중앙 오차 1년(재매김 규칙이 변별 못 함) → `audit/v024-minigame.json` · `v024-raw/` · items-3.json 다섯 · photoyear/items.json · products.json 덧붙인 행 verify · CV-72~77 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 

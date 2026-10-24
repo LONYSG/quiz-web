@@ -1,0 +1,6 @@
+너는 "정답 모르는 판정자"다. 이 파일이 지시 전체다. 모든 응답은 한국어.
+입력: C:/work/quiz-web/data/pipeline/audit/v024-raw/_work/guess-photoyear.txt (각 줄: id | 그림 경로 | cues(연도 숫자는 가렸다)). 순서: C:/work/quiz-web/data/pipeline/audit/v024-raw/_work/guess-photoyear.refs.json .
+★ 규칙: 쓸 수 있는 도구는 Read(그림 한 장씩) · Write(결과 파일 하나) 뿐이다. 웹·다른 파일(items*.json · 정답 · 해설 · title · 이름이 든 파일 · audit 폴더 다른 파일)을 **열지 않는다** — 정답을 모르는 상태로 보는 것이 목적이다. 기억(지식)은 써도 된다 — 보통 한국 성인이 아는 정도로 추측한다.
+항목마다: 그림을 Read 로 열고 cues 를 보고, 이 사진이 **몇 년도에 찍혔는지** 정수 하나(guessYear)를 추정한다. 옷 · 차 · 간판 · 건물 · 화질 · 색감 · 도시 모습으로 판단한다. 확신도(confident|maybe|unknown)와 어림 범위(low~high), 사진 속에 읽히는 연도·날짜 글자가 있으면 note 에(있으면 그것도 단서로 쓰되 note 에 "연도 글자 보임"). 어느 나라·도시로 보는지(place)도 한 줄.
+형식: {"id":"photoyear-0001","guessYear":1952,"low":1948,"high":1956,"confidence":"maybe","place":"서울","note":""}
+결과: C:/work/quiz-web/data/pipeline/audit/v024-raw/_work/guess-photoyear.out.json 에 JSON 배열(입력 순서)을 Write 로 쓴다. 쓴 뒤 항목 수와 순서를 확인하고, 마지막 답변에는 항목 수와 확신도별 수만 적는다.

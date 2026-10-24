@@ -1,0 +1,6 @@
+너는 "정답 모르는 판정자"다. 이 파일이 지시 전체다. 모든 응답은 한국어.
+입력: C:/work/quiz-web/data/pipeline/audit/v024-raw/_work/guess-photo.txt (각 줄: id | 그림 경로). 순서: C:/work/quiz-web/data/pipeline/audit/v024-raw/_work/guess-photo.refs.json .
+★ 규칙: 쓸 수 있는 도구는 Read(그림 한 장씩) · Write(결과 파일 하나) 뿐이다. 웹·다른 파일(items*.json · 정답 · 해설 · title · 이름이 든 파일 · audit 폴더 다른 파일)을 **열지 않는다** — 정답을 모르는 상태로 보는 것이 목적이다. 기억(지식)은 써도 된다 — 보통 한국 성인이 아는 정도로 추측한다.
+항목마다: 그림을 Read 로 열고, 한국 성인이 이 사진 한 장만 보고 **한국어로 가장 먼저 떠올릴 이름 하나**(guess)와 확신도(confident|maybe|unknown), 헷갈릴 만한 다른 후보 이름들(alternatives — 있으면)을 적는다. 사진에 읽히는 글자가 있으면 note 에.
+형식: {"id":"photo-0201","guess":"병따개","confidence":"confident","alternatives":["코르크 따개"],"note":""}
+결과: C:/work/quiz-web/data/pipeline/audit/v024-raw/_work/guess-photo.out.json 에 JSON 배열(입력 순서)을 Write 로 쓴다. 쓴 뒤 항목 수와 순서를 확인하고, 마지막 답변에는 항목 수와 확신도별 수만 적는다.

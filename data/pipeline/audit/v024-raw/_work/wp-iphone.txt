@@ -1,0 +1,11 @@
+## worldprice iphone (덧붙인 나라 행 2개) — 단위 1대(자급제 출고가) · 품목 asOf 2026-10-17 · fxAsOf 2026-10-16
+
+
+fx 방식: ECB 유로 기준 환율 2026-10-16 (https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml): 1 통화 = (KRW/EUR 1499.01) ÷ (통화/EUR) 원. ECB 표에 없는 통화는 같은 날 fawazahmed0 currency-api 의 USD 기준 값(https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@2026-10-16/v1/currencies/usd.json)으로 1 통화 = (ECB KRW/EUR ÷ ECB USD/EUR = 1332.0981) ÷ (통화/USD) 원. krw = round(localPrice × 1 통화의 원 값).
+products 출처: <https://www.apple.com/kr/shop/buy-iphone/iphone-17> "iPhone 17 256GB Black" fullPrice 1450000 — 나라마다 같은 꼴의 페이지(rows.source)에서 iPhone 17 256GB fullPrice ; <https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml> Euro foreign exchange reference rates 2026-10-16 — 1 EUR = 1499.01 KRW · 1.1253 USD ; <https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@2026-10-16/v1/currencies/usd.json> (요지) 2026-10-16 USD 기준 환율 — ECB 표에 없는 통화(AED CLP SAR TWD VND)에만 씀
+note: 애플 각국 공식 스토어의 iPhone 17 256GB(기본 모델·기본 용량) 출고가 — 미국·캐나다는 판매세 별도 표시
+품목 그림: assets/minigame/worldprice/iphone.jpg | product-page | https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-finish-select-black-202509?wid=940&hei=1112&fmt=png-alpha
+(참고) 기존 행 38개는 이번 대상이 아니다 — 이 품목 기존 행 asOf 는 2026-10-17
+
+### iphone/BE  벨기에  현지가 1119 EUR  → 1677392원  출처 <https://www.apple.com/be-fr/shop/buy-iphone/iphone-17>  (목표 문항 worldprice-0256 · 문항 출처 «벨기에 아이폰 17 256GB 1119 EUR · 환율 2026-10-16»)
+### iphone/LU  룩셈부르크  현지가 1082 EUR  → 1621929원  출처 <https://www.apple.com/lu/shop/buy-iphone/iphone-17>  (목표 문항 worldprice-0257 · 문항 출처 «룩셈부르크 아이폰 17 256GB 1082 EUR · 환율 2026-10-16»)
