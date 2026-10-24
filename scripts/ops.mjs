@@ -171,7 +171,7 @@ async function status() {
 }
 
 const MENU = [
-  ['1', '서버 켜기 (Docker → DB → 빌드 → 서버 → 터널 주소)', () => run('node scripts/play.mjs')],
+  ['1', '서버 켜기 (Docker → DB → 빌드 → 서버 창 → 터널 창 → 브라우저)', () => run('node scripts/play.mjs')],
   ['2', '서버 켜기 — 빌드 건너뜀 (코드가 안 바뀌었을 때)', () => run('node scripts/play.mjs --no-build')],
   ['3', '서버 · 터널 끄기 (DB 는 둠)', () => run('node scripts/play.mjs --stop')],
   ['4', '지금 상태 (Docker · DB · 서버 · 터널 · 진행 중인 판 · 제보)', status],

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // =============================================================================
-// 원터치 플레이 실행기 — play.bat 이 부른다 (찬종 2026-10-24: "db 키고 빌드하고 외부 공개까지 원터치")
+// 원터치 플레이 실행기 — ops.bat 메뉴 1 · 2 · 3 이 부른다 (찬종 2026-10-24: "db 키고 빌드하고 외부 공개까지 원터치" · "bat 하나로")
 //
 //   1) Docker Desktop 이 꺼져 있으면 켜고 기다린다
 //   2) DB 컨테이너(quiz-web-db)를 올리고 healthy 까지 기다린다
@@ -8,12 +8,12 @@
 //   4) 서버가 이미 떠 있으면(3000 /healthz 응답) 빌드·서버는 건너뛴다
 //      — ★ 빌드가 켜진 서버를 재시작시키면 하던 판이 끊긴다(bootCleanup). 새 빌드를 쓰려면 stop.bat 뒤 다시.
 //      아니면 npm run build → 새 창에서 npm start(감시 없음 — 소스가 바뀌어도 재시작하지 않는다)
-//   5) 터널(cloudflared)을 이 창에서 띄운다 — 주소가 크게 나오고 클립보드에 복사된다
+//   5) 터널(cloudflared)을 새 창에서 띄운다 — 주소가 크게 나오고 클립보드에 복사되고 기본 브라우저가 열린다 (메뉴 창은 그대로 쓸 수 있다)
 //
 // 사용법
-//   play.bat            전부
-//   play.bat --no-build 빌드 건너뜀(코드가 안 바뀌었을 때)
-//   stop.bat            터널 · 서버 끄기(DB 는 둔다)
+//   ops.bat → 1  전부 (= node scripts/play.mjs)
+//   ops.bat → 2  빌드 건너뜀 (--no-build · 코드가 안 바뀌었을 때)
+//   ops.bat → 3  터널 · 서버 끄기 (--stop · DB 는 둔다)
 // =============================================================================
 
 import { spawn, spawnSync } from 'node:child_process';
@@ -28,6 +28,7 @@ const PORT = process.env.PORT ?? '3000';
 const HEALTH = `http://localhost:${PORT}/healthz`;
 // ★ 창 제목은 ASCII 만 — start "제목" 이 Node 의 인자 따옴표 처리를 거치며 깨졌다(2026-10-24 찬종: "서버\ 를 찾을 수 없다")
 const SERVER_TITLE = 'quiz-web-server';
+const TUNNEL_TITLE = 'quiz-web-tunnel';
 // 새 창을 띄울 때는 인자 배열이 아니라 문자열 하나로(shell) — start 의 "제목" 자리를 그대로 보존한다
 const openWindow = (cmdline) => spawn(cmdline, { cwd: ROOT, shell: true, detached: true, stdio: 'ignore' }).unref();
 const args = new Set(process.argv.slice(2));
@@ -92,6 +93,7 @@ async function stop() {
   );
   for (const pid of pids) sh(`taskkill /PID ${pid} /T /F`, { quiet: true, check: false });
   sh(`taskkill /FI "WINDOWTITLE eq ${SERVER_TITLE}*" /T /F`, { quiet: true, check: false });
+  sh(`taskkill /FI "WINDOWTITLE eq ${TUNNEL_TITLE}*" /T /F`, { quiet: true, check: false });
   log('끝. DB(quiz-web-db)는 그대로 둡니다 — 끄려면 npm run db:down');
 }
 
@@ -121,7 +123,7 @@ async function main() {
   // 4) 서버
   if (await healthy()) {
     log(`서버가 이미 켜져 있습니다(${HEALTH}) → 빌드 · 서버 시작을 건너뜁니다.`);
-    log('★ 새 빌드로 바꾸려면: stop.bat → play.bat (하던 판이 끊기니 게임 중에는 하지 않기)');
+    log('★ 새 빌드로 바꾸려면: 메뉴 3(끄기) → 1(켜기) (하던 판이 끊기니 게임 중에는 하지 않기)');
   } else {
     if (args.has('--no-build')) log('빌드 건너뜀(--no-build)');
     else {
@@ -138,15 +140,11 @@ async function main() {
   // 5) 터널
   if (args.has('--no-tunnel')) return log('터널 건너뜀(--no-tunnel)');
   if (/cloudflared\.exe/i.test(out('tasklist /FI "IMAGENAME eq cloudflared.exe" /NH'))) {
-    log('터널이 이미 떠 있습니다 — 그 창의 주소를 그대로 쓰세요 (새 주소가 필요하면 stop.bat 뒤 다시).');
+    log('터널이 이미 떠 있습니다 — 그 창(quiz-web-tunnel)의 주소를 그대로 쓰세요 (새 주소가 필요하면 메뉴 3 뒤 다시).');
     return;
   }
-  log('터널 시작 — 아래 주소를 친구들에게. 이 창을 닫으면 터널만 닫힙니다(서버 · 게임은 그대로).');
-  const tunnel = spawn(process.execPath, [path.join(ROOT, 'scripts', 'dev-tunnel.mjs')], { cwd: ROOT, stdio: 'inherit' });
-  const bye = () => tunnel.kill();
-  process.on('SIGINT', bye);
-  process.on('SIGTERM', bye);
-  await new Promise((r) => tunnel.on('exit', r));
+  log('터널을 새 창(quiz-web-tunnel)에서 시작 — 주소가 거기 크게 뜨고, 클립보드에 복사되고, 브라우저가 열립니다. 그 창을 닫으면 터널만 닫힙니다.');
+  openWindow(`start "${TUNNEL_TITLE}" cmd /k "chcp 65001 >nul && title ${TUNNEL_TITLE} && node scripts\\dev-tunnel.mjs"`);
 }
 
 main().catch((err) => {
