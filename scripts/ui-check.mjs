@@ -3815,6 +3815,13 @@ async function r066ResultFlow(browser) {
     await selectMinigames(H, ['tap', 'reaction']);
     await sleep(300);
     await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+    if (label.startsWith('ⓐ') && !process.env.R066_BEFORE) {
+      // ★ R066 B7 (찬종 #42) — 2번째 게임은 intro 없이 rules 부터 · 그 순간 배경음악이 미니게임으로(옛: 첫 판 결과 뒤에야)
+      await H.waitFor("document.querySelector('.mg-series[data-series=\"2/2\"]') !== null && document.querySelector('.mg-card[data-phase=\"rules\"]') !== null", 240000).catch(() => false);
+      await sleep(300);
+      const music = JSON.parse(await H.evaluate("JSON.stringify((window.__qwSoundLog ?? []).filter((e) => e.id.startsWith('music:')).map((e) => e.id).slice(-3))"));
+      record('★★ R066 B7 미니게임만 2번째 게임 rules — 마지막 음악 = music:minigame(바로 바뀜)', music[music.length - 1] === 'music:minigame', JSON.stringify(music));
+    }
     await H.waitFor("document.querySelector('.result-card') !== null", 420000).catch(() => false);
     await chatLines(socks, 25);
     await r066ResultAt(H, label, label.startsWith('ⓐ') ? `170-result-mgonly-2560-${tagShot}` : `171-result-mgonly10-2560-${tagShot}`);
@@ -3849,6 +3856,173 @@ async function r066ResultFlow(browser) {
   await r066ResultAt(H, 'ⓓ 퀴즈 · 평가 목록 펼침 · 채팅 25줄', '173-result-quiz-open-2560');
   for (const s of socks) s.close();
   await H.close?.();
+}
+
+// ★★ R066 — 제보 #32~#51 화면(고르기 창 · 손님 목록 · 대기 안내 · ⓘ 탭 · 가입 선물 · 첫 구매 가이드 · 사람 카드 · 사진 칸 · 고기 문구 · 소수파 색 · 타자 언어 · 균형 12종 · BGM)
+const NO_ELLIPSIS = (root) => `(() => { const bad = []; for (const el of document.querySelectorAll('${root} *')) { const cs = getComputedStyle(el); if (cs.textOverflow === 'ellipsis' && el.scrollWidth > el.clientWidth + 1) bad.push(el.className + ':' + el.innerText.slice(0, 20)); if (cs.webkitLineClamp && cs.webkitLineClamp !== 'none' && el.scrollHeight > el.clientHeight + 1) bad.push('clamp:' + el.className); } return JSON.stringify(bad); })()`;
+async function r066Flow(browser) {
+  const wrapRows = [];
+  const auditAt = async (page, label) => wrapRows.push(...(await wrapAudit(page, label, true)));
+  const labOnly = process.env.R066_ONLY === 'lab';
+  let H = null;
+  let G = null;
+  let hId = null;
+  if (!labOnly) {
+  H = await newPage(browser, 'U-host', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'uh', '설명방장');
+  const roomId = await createRoom(H, 'R066 화면');
+  G = await newPage(browser, 'U-guest', true);
+  await G.setViewport(1536, 864);
+  await signUp(G, 'ug', '설명손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 10000);
+  await sleep(500);
+
+  // ── B3 손님 대기 안내 — 카드 오른쪽 아래
+  const wait = JSON.parse(await G.evaluate("JSON.stringify((() => { const n = document.querySelector('.start-wait')?.getBoundingClientRect(); const c = document.querySelector('.lobby-card')?.getBoundingClientRect(); return n && c ? { right: Math.round(c.right - n.right), bottom: Math.round(c.bottom - n.bottom), mid: Math.round((n.top + n.bottom) / 2 - (c.top + c.bottom) / 2) } : null; })())"));
+  await snap(G, '180-guest-wait-1536');
+  record('★★ R066 B3 손님 "기다려 주세요" — 로비 카드 오른쪽 아래(가운데 아님)', !!wait && wait.right < 40 && wait.bottom < 30 && wait.mid > 10, JSON.stringify(wait));
+
+  // ── C1 · C2 방장이 미니게임을 고르는 동안 손님 화면 — 이름 줄 · 열린 창이 바로 따라감 · 생략 없음
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await G.waitFor("document.querySelector('[data-mg-names]') !== null", 4000).catch(() => false);
+  await realClick(G, '[data-mg-catalog-open]');
+  await G.waitFor("document.querySelector('.mg-cat') !== null", 4000);
+  const before = await G.evaluate("document.querySelector('.mg-cat-count')?.innerText ?? ''");
+  await selectMinigames(H, ['angle', 'photo', 'balance']);
+  await sleep(600);
+  const after = JSON.parse(await G.evaluate("JSON.stringify({ count: document.querySelector('.mg-cat-count')?.innerText ?? '', on: [...document.querySelectorAll('.mg-cat-card.on')].map((c) => c.dataset.key) })"));
+  const names = await G.evaluate("document.querySelector('[data-mg-names]')?.innerText ?? ''");
+  const ell = { pc: JSON.parse(await G.evaluate(NO_ELLIPSIS('.mg-cat'))) };
+  await snap(G, '181-catalog-guest-1536');
+  await auditAt(G, 'catalog-guest@1536');
+  await G.key('Escape');
+  await touchDevice(G, 390, 844);
+  await sleep(400);
+  await tapOn(G, '[data-mg-catalog-open]');
+  await G.waitFor("document.querySelector('.mg-cat') !== null", 4000);
+  ell.m = JSON.parse(await G.evaluate(NO_ELLIPSIS('.mg-cat')));
+  await snap(G, '181-catalog-guest-m390');
+  await auditAt(G, 'catalog-guest@m390');
+  await G.evaluate("document.querySelector('.mg-cat .popup-close')?.click()");
+  await touchDevice(G, 390, 844, false);
+  await G.setViewport(1536, 864);
+  record('★★★ R066 C1 · C2 손님 — 방장이 고르는 대로 이름 줄 · 열린 창(3/16 · 켜진 셋)이 바로 · 고르기 창은 생략(…) 없음(PC · m390)', /3\/16/.test(after.count) && after.on.length === 3 && /각도|사진|균형/.test(names) && ell.pc.length === 0 && ell.m.length === 0, JSON.stringify({ before, after, names, ell }));
+
+  // ── D1 ⓘ 안내 탭 넷
+  await realClick(H, '.infotip-btn');
+  await H.waitFor("document.querySelector('.info-tabs') !== null", 3000);
+  const tabs = [];
+  let pts = '';
+  for (const t of ['play', 'points', 'emoji', 'report']) {
+    await realClick(H, `[data-info-tab="${t}"]`);
+    await sleep(150);
+    if (t === 'points') pts = await H.evaluate("document.querySelector('[data-info-points]')?.innerText ?? ''");
+    tabs.push({ t, n: await H.evaluate("[...document.querySelectorAll('.infotip-pop .info-list li')].filter((li) => li.getClientRects().length > 0).length") });
+    await snap(H, `182-info-${t}-1536`);
+    await auditAt(H, `info-${t}@1536`);
+  }
+  await H.key('Escape');
+  record('★★ R066 D1 ⓘ 안내 네 묶음(놀이 · 포인트 · 이모티콘 · 제보) · 포인트 묶음에 얻는 길 넷(1P · 보너스 · 5P · 50P)', tabs.every((x) => x.n > 0) && /1P/.test(pts) && /보너스/.test(pts) && /5P/.test(pts) && /50P/.test(pts), JSON.stringify({ tabs, pts }));
+
+  // ── D4 첫 구매 가이드 — 포인트를 주고 샵에서 처음 뽑으면 1번 자리 + 가이드(한 번)
+  hId = await withPg(async (c) => (await c.query(`SELECT id::text FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_uh`])).rows[0]?.id);
+  await withPg((c) => c.query(`INSERT INTO point_grants (account_id, amount, reason, note) VALUES ($1, 500, 'admin', 'ui-check R066')`, [hId]));
+  await H.evaluate("localStorage.removeItem('qw.flag.emojiGuideSeen')");
+  await H.evaluate("document.querySelector('#shop-btn')?.click()");
+  await H.waitFor("document.querySelector('.shop-draw:not([disabled])') !== null", 6000).catch(() => false);
+  await H.evaluate("document.querySelector('.shop-draw:not([disabled])')?.click()");
+  await H.waitFor("document.querySelector('[data-emoji-guide]') !== null", 8000).catch(() => false);
+  await sleep(300);
+  const guide = JSON.parse(await H.evaluate("JSON.stringify({ shown: document.querySelector('[data-emoji-guide]') !== null, img: document.querySelector('.emoji-guide-art image') !== null, steps: document.querySelectorAll('.emoji-guide-steps li').length, slot1: JSON.parse(localStorage.getItem('qw.emoji.v1') ?? 'null')?.[0] ?? null })"));
+  await snap(H, '183-emoji-guide-1536');
+  await auditAt(H, 'guide@1536');
+  await H.evaluate("document.querySelector('[data-emoji-guide-ok]')?.click()");
+  await sleep(300);
+  const seen = await H.evaluate("localStorage.getItem('qw.flag.emojiGuideSeen')");
+  record('★★★ R066 D4 첫 구매 → 가이드 창(그림 · 산 이모티콘 그림 · 세 단계) · 1번 자리에 넣음 · [알겠어요] 뒤 본 것으로', guide.shown && guide.img && guide.steps === 3 && Number.isInteger(guide.slot1) && seen === '1', JSON.stringify({ guide, seen }));
+  await H.key('Escape');
+  await withPg((c) => c.query(`DELETE FROM account_emojis WHERE account_id = $1`, [hId]).catch(() => undefined));
+
+  // ── D5 사람 카드(방장 시점) — 버튼 줄은 동작만
+  await H.evaluate("[...document.querySelectorAll('.seat-card[role=\"button\"]')].find((c) => c.innerText.includes('설명손님'))?.click()");
+  await H.waitFor("document.querySelector('.person-card') !== null", 3000).catch(() => false);
+  await sleep(300);
+  const person = JSON.parse(await H.evaluate("JSON.stringify({ stateInActs: document.querySelector('[data-person-acts] [data-act=\"friend-state\"]') !== null, acts: [...document.querySelectorAll('[data-person-acts] [data-act]')].map((b) => b.dataset.act) })"));
+  await snap(H, '184-person-host-1536');
+  await H.key('Escape');
+  record('★★ R066 D5 사람 카드 — 버튼 줄에는 동작만(친구 상태 글 없음)', !person.stateInActs && person.acts.length > 0, JSON.stringify(person));
+  }
+
+  // ── lab — 사진 칸 크기 고정 · 고기 문구 · 소수파 색 · 타자 언어 · 균형 12종
+  const L = await newPage(browser, 'U-lab', true);
+  await L.setViewport(1536, 864);
+  await signUp(L, 'ul', '실험실');
+  const img = await withPg(async (c) => (await c.query(`SELECT image_ids[1] AS id FROM minigame_items WHERE game = 'photo' AND active AND array_length(image_ids, 1) > 0 ORDER BY item_id LIMIT 1`)).rows[0]?.id ?? null);
+  const frame = {};
+  for (const mode of ['mosaic', 'zoom']) {
+    for (const at of [0, 6000, 16000]) {
+      await L.goto(`${BASE}/lab/minigame?scene=1&key=photo&phase=play&mode=${mode}&at=${at}${img ? `&image=${img}` : ''}`);
+      await L.waitFor("document.querySelector('.photo-frame') !== null", 8000).catch(() => false);
+      await sleep(900);
+      frame[`${mode}@${at}`] = JSON.parse(await L.evaluate("JSON.stringify((() => { const r = document.querySelector('.photo-frame')?.getBoundingClientRect(); return r ? [Math.round(r.width), Math.round(r.height)] : [0, 1]; })())"));
+      if (at !== 6000) await snap(L, `185-photo-${mode}-${at}`);
+    }
+  }
+  const sizes = new Set(Object.values(frame).map((v) => v.join('x')));
+  record('★★★ R066 B8 사진 칸 크기 — 모자이크 · 확대 모두 시작 · 중간 · 끝이 같은 크기(4:3)', sizes.size === 1 && Object.values(frame).every(([w, h]) => Math.abs(w / h - 4 / 3) < 0.02), JSON.stringify({ img, frame }));
+  const meat = {};
+  for (const err of ['-2.5', '-1', '0.1', '0.8', '3', 'none']) {
+    await L.goto(`${BASE}/lab/minigame?scene=1&key=cake&phase=roundResult&err=${err}`);
+    await L.waitFor("document.querySelector('.mg-cake-result') !== null", 8000).catch(() => false);
+    await sleep(300);
+    meat[err] = JSON.parse(await L.evaluate("JSON.stringify((() => { const a = document.querySelector('.mg-cake-result .meat-art')?.getBoundingClientRect(); const l = document.querySelector('.mg-cake-result .meat-label')?.getBoundingClientRect(); return a && l ? { dx: Math.round((l.left + l.right) / 2 - (a.left + a.right) / 2), gap: Math.round(l.top - a.bottom), text: document.querySelector('.mg-cake-result .meat-label').innerText } : null; })())"));
+    await snap(L, `186-meat-${err}`);
+  }
+  await L.setViewport(2560, 1313);
+  await L.goto(`${BASE}/lab/minigame?scene=1&key=cake&phase=roundResult&err=3`);
+  await L.waitFor("document.querySelector('.mg-cake-result') !== null", 8000).catch(() => false);
+  await sleep(300);
+  meat.at2560 = JSON.parse(await L.evaluate("JSON.stringify((() => { const a = document.querySelector('.mg-cake-result .meat-art')?.getBoundingClientRect(); const l = document.querySelector('.mg-cake-result .meat-label')?.getBoundingClientRect(); return a && l ? { dx: Math.round((l.left + l.right) / 2 - (a.left + a.right) / 2), gap: Math.round(l.top - a.bottom), text: 'w2560' } : null; })())"));
+  await snap(L, '186-meat-3-2560');
+  await L.setViewport(1536, 864);
+  record('★★ R066 B9 고기 결과 문구 다섯(생고기 · 덜 익음 · 딱 좋게 · 조금 탐 · 새까맣게 탐 · 안 누름) — 고기 그림 바로 아래 가운데', Object.values(meat).every((m) => m && Math.abs(m.dx) <= 4 && m.gap >= -2 && m.gap <= 16), JSON.stringify(meat));
+  await L.goto(`${BASE}/lab/minigame?scene=1&key=minority&phase=roundResult`);
+  await L.waitFor("document.querySelector('.minority-bars') !== null", 8000).catch(() => false);
+  await sleep(300);
+  const mino = JSON.parse(await L.evaluate("JSON.stringify({ segs: [...document.querySelectorAll('.minority-bar.win .minority-seg')].map((s) => s.style.background), grey: getComputedStyle(document.querySelector('.minority-bar:not(.win) .minority-fill')).backgroundColor })"));
+  await snap(L, '187-minority-colors');
+  record('★★ R066 C6 소수파 — 이긴 막대는 고른 사람 색 조각 · 진 막대는 회색', mino.segs.length === 2 && mino.segs.every((b) => /--p\d/.test(b)), JSON.stringify(mino));
+  await L.goto(`${BASE}/lab/minigame?scene=1&key=typing&phase=play&state=wronglang`);
+  await L.waitFor("document.querySelector('.typing-stage') !== null", 8000).catch(() => false);
+  await sleep(300);
+  const lang = await L.evaluate("document.querySelector('[data-typing-lang-warn]')?.innerText ?? ''");
+  await snap(L, '188-typing-wronglang');
+  await L.goto(`${BASE}/lab/minigame?scene=1&key=typing&phase=ready`);
+  await L.waitFor("document.querySelector('.mg-ready') !== null", 8000).catch(() => false);
+  await sleep(300);
+  const ready = await L.evaluate("document.querySelector('[data-typing-lang]')?.innerText ?? ''");
+  await snap(L, '188-typing-ready');
+  record('★★ R066 C7 타자 — 준비에 "다음 글 한글/영어" · 한글 글에 영문을 치면 "한/영 키를 누르세요"', /한/.test(lang) && /다음 글/.test(ready), JSON.stringify({ lang, ready }));
+  await L.goto(`${BASE}/lab/minigame`);
+  await L.waitFor("document.querySelectorAll('[data-balance-kind]').length > 0", 8000).catch(() => false);
+  await sleep(500);
+  const kinds = await L.evaluate("document.querySelectorAll('[data-balance-kind]').length");
+  await snap(L, '189-balance-12');
+  await L.setViewport(2560, 1313);
+  await sleep(400);
+  await snap(L, '189-balance-12-2560');
+  record('★★ R066 C8 균형의 수호자 — 물건 12종 · 장면 셋(그대로 · 도마 · 소풍 천) 그림', kinds === 12, String(kinds));
+  await L.close?.();
+
+  // ── 감사 · 정리
+  const bad = wrapRows.filter((r) => !r.ok);
+  record('★★ R066 새 글(안내 탭 · 가이드 · 고르기 창) 줄바꿈 · 넘침 감사 0건', bad.length === 0, bad.slice(0, 8).map((r) => `${r.sel} @${r.vw} ${r.text}`).join(' / '));
+  if (hId) await withPg((c) => c.query(`DELETE FROM point_grants WHERE account_id = $1 AND note = 'ui-check R066'`, [hId]));
+  await G?.close?.();
+  await H?.close?.();
 }
 
 // ★★ R065 — 제보 메뉴 두 갈래 · 최근 문제 · 미니게임 목록 · 창이 열린 채 미니게임(UICHECK_R065=1 · 묶음 r065 · docs/design/r065)
@@ -4659,8 +4833,8 @@ async function minigameFlow(browser) {
   // ★ R066 — 결과 화면 잘림(§A) · 그 밖 R066 화면
   if (process.env.UICHECK_R066) {
     await closeAllTabs(browser);
-    await r066ResultFlow(browser);
-    if (process.env.R066_ONLY !== 'result' && typeof r066Flow === 'function') await r066Flow(browser);
+    if (process.env.R066_ONLY !== 'lab') await r066ResultFlow(browser);
+    if (process.env.R066_ONLY !== 'result') await r066Flow(browser);
   }
   // ★ R065 — 제보 메뉴 두 갈래 · 최근 목록 · 창이 열린 채 미니게임
   if (process.env.UICHECK_R065) {

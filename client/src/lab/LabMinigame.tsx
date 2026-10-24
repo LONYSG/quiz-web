@@ -155,7 +155,9 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
         ? { elapsedMs: playAgo }
         : key === 'typing' && sceneState === 'typed'
           ? { typed: `${[...TYPING_KO_SHORT[0]!].slice(0, 6).join('')}리 ㄱ`, composing: true }
-          : undefined,
+          : key === 'typing' && sceneState === 'wronglang'
+            ? { typed: 'dk' } // ★ R066 — 한글 글에 영문(한/영 안 바꿈)
+            : undefined,
   };
 }
 
