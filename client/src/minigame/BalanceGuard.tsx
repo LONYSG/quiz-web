@@ -217,7 +217,7 @@ export default function BalanceGuard({ socket, view, serverNow, mobile }: Props)
         ))}
       </svg>
       <p className="balance-help">
-        {view.spectating ? '구경 중이에요' : mobile ? '두 점을 손가락으로 끌어 옮기세요' : '← → 옮기기 · ↑ ↓ 위/아래 점 바꾸기 · 꾹 누르면 빨라져요'}
+        {view.spectating ? '구경 중이에요' : mobile ? '두 점을 손가락으로 끌어 옮기세요' : '← → 옮기기 · ↑ ↓ 위/아래 점 바꾸기'}
       </p>
     </div>
   );

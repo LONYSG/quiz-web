@@ -426,7 +426,7 @@ export interface Room {
   emojiTimestamps?: Map<string, number[]>;
   /** ★ R048 — 이모티콘 잠금이 풀리는 시각 (계정별) */
   emojiLocks?: Map<string, number>;
-  /** ★ R049 — 특별 이모티콘 도배 창 · 잠금 (표준과 따로 — 10초 3회) */
+  /** ★ R049 — 특별 이모티콘 도배 창 · 잠금 (표준과 따로 — R066 5초 5회) */
   specialTimestamps?: Map<string, number[]>;
   specialLocks?: Map<string, number>;
 }

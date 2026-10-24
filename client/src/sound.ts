@@ -440,13 +440,16 @@ export function cakeBeat(beat: number, beatSec: number): void {
   logSound('cake-beat', true);
   const t = ctx.currentTime + 0.005;
   const d = sfxGain;
-  const pos = beat % 4; // 4 → 0 이 넷째 박(강세)
-  const notes = [84, 79, 81, 83]; // 강세(도↑) · 솔 · 라 · 시
-  const accent = pos === 0;
-  playNote(d, mtof(notes[pos]!), t, accent ? 0.18 : 0.09, accent ? { ...BELL, gain: 0.24 } : { ...PLUCK, gain: 0.17 });
-  if (accent) playNote(d, mtof(60), t, 0.12, { type: 'triangle', gain: 0.22, attack: 0.002, decay: 0.12 });
-  // 반 박 뒤 작은 칫
-  playNote(d, mtof(104), t + beatSec / 2, 0.02, { ...SQUARE, gain: 0.02, decay: 0.025 });
+  // ★★ R066 (D-279 · 찬종 #50 "박자 맞춰주는 음악 더 직관적이고 … 리듬이 더 정확하게") — 메트로놈 꼴: 박마다 짧은 틱 · 4박째(4의 배수 — 0초도 여기) 강세 틱.
+  //   음 높이 · 꼬리가 짧아 박의 앞머리가 또렷하다(옛 멜로디 · 반 박 칫은 뺐다)
+  void beatSec;
+  const accent = beat % 4 === 0;
+  if (accent) {
+    playNote(d, 1760, t, 0.05, { type: 'square', gain: 0.16, attack: 0.001, decay: 0.05 });
+    playNote(d, 880, t, 0.06, { type: 'triangle', gain: 0.22, attack: 0.001, decay: 0.06 });
+  } else {
+    playNote(d, 1320, t, 0.03, { type: 'square', gain: 0.08, attack: 0.001, decay: 0.03 });
+  }
 }
 
 const BRASS: Voice = { type: 'sawtooth', gain: 0.09, attack: 0.02, decay: 0.3, partials: [[1, 1], [1.004, 0.7]] };

@@ -344,7 +344,7 @@ export default function App() {
             : st === 'GAME_RESULT' && gameId
               ? `결과 (판 #${gameId})`
               : '';
-    return { screen, questionIndex: q && !mg ? q.index : null, minigameKey: mg?.key ?? null, label };
+    return { screen, questionIndex: q && !mg ? q.index : null, minigameKey: mg?.key ?? null, minigameItem: mg?.round?.itemId ?? null, label };
   }, [room.snapshot, account, popupNow]);
 
   // ── 화면 선택. ★ return 은 이 함수 하나에서만 한다.

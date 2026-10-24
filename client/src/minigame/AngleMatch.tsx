@@ -185,7 +185,7 @@ export default function AngleMatch({ socket, view, serverNow, mobile }: Props) {
                 ? '시간이 끝났어요 — 마지막 각으로'
                 : mobile
                   ? '선 끝을 끌어 각을 만들고 확정'
-                  : '← → (꾹 누르면 빨라요) · 마우스로 끌기 · Space / Enter 확정'}
+                  : '← → · 마우스로 끌기 · Space / Enter 확정'}
         </p>
         {canPlay && !done && !over && (
           <button type="button" className="primary angle-ok" onClick={confirm}>

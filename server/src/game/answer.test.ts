@@ -12,7 +12,7 @@
 
 import { describe, expect, it } from 'vitest';
 import { flexAnswerSet, normalizeAnswer, RULES } from '@quiz/shared';
-import { checkChatRate, checkEmojiRate, judgeAnswer } from './answer.js';
+import { checkChatRate, checkEmojiRate, checkSpecialEmojiRate, judgeAnswer } from './answer.js';
 import type { CurrentQuestion, Player, Room } from '../rooms/types.js';
 
 const NOW = 1_700_000_000_000;
@@ -409,6 +409,14 @@ describe('★★ R048 도배 방지 — 창 + 잠금', () => {
     for (let i = 0; i < 6; i += 1) checkChatRate(r, 'A', NOW, limits);
     expect(checkChatRate(r, 'B', NOW, limits)).toBeNull();
     expect(checkEmojiRate(r, 'A', NOW, limits)).toBeNull();
+  });
+  it('★★ R066 (D-273) 특별 이모티콘 — RULES 값 = 5초 5회 · 6번째 잠금 5초 · 5초 뒤 다시', () => {
+    const sp = { windowMs: RULES.SPECIAL_EMOJI_RATE_WINDOW_MS, max: RULES.SPECIAL_EMOJI_RATE_MAX, lockMs: RULES.SPECIAL_EMOJI_RATE_LOCK_MS };
+    expect(sp).toEqual({ windowMs: 5_000, max: 5, lockMs: 5_000 });
+    const r = fresh();
+    for (let i = 0; i < 5; i += 1) expect(checkSpecialEmojiRate(r, 'A', NOW + i * 100, sp)).toBeNull();
+    expect(checkSpecialEmojiRate(r, 'A', NOW + 500, sp)).toBe(5_000);
+    expect(checkSpecialEmojiRate(r, 'A', NOW + 5_500, sp)).toBeNull();
   });
 });
 

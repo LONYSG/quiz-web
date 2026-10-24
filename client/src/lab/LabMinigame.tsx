@@ -54,7 +54,13 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
       ? r051Rows(key)
       : key === 'cake'
       ? [
-          { accountId: 'lab1', submitted: true, value: 0.012, error: -0.012, rank: 1, points: 4, extra: null },
+          // ★ R066 — ?err=-2.5 · 0.2 · 3 · none 로 내 굽기(생고기 · 덜 익음 · 딱 좋게 · 조금 탐 · 새까맣게 탐 · 안 누름)를 바꿔 본다
+          (() => {
+            const e = new URLSearchParams(window.location.search).get('err');
+            if (e === 'none') return { accountId: 'lab1', submitted: false, value: null, error: null, rank: 4, points: 0, extra: null };
+            const v = e !== null ? Number(e) : -0.012;
+            return { accountId: 'lab1', submitted: true, value: Math.abs(v), error: v, rank: 1, points: 4, extra: null };
+          })(),
           { accountId: 'lab3', submitted: true, value: 0.031, error: 0.031, rank: 2, points: 3, extra: null },
           { accountId: 'lab2', submitted: true, value: 0.284, error: -0.284, rank: 3, points: 2, extra: null },
           { accountId: 'lab4', submitted: false, value: null, error: null, rank: 4, points: 0, extra: null },

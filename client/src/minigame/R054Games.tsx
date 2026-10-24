@@ -225,7 +225,7 @@ export function TapRush({ socket, view, serverNow, mobile }: Props) {
       >
         {over ? '끝!' : mobile ? '톡톡톡!' : 'Space 연타!'}
       </button>
-      <p className="quiz-num-help dim">{view.spectating ? '구경 중이에요' : over ? `${n}번!` : '꾹 누르기는 안 세요 — 떼었다 눌러야 해요'}</p>
+      <p className="quiz-num-help dim">{view.spectating ? '구경 중이에요' : over ? `${n}번!` : ''}</p>
     </div>
   );
 }

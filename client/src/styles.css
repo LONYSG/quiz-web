@@ -1849,6 +1849,16 @@ button.primary kbd {
   gap: 6px;
   min-width: 180px;
 }
+/* ★ R066 (D-274 · 찬종 #38 "문구의 위치가 애매하게 중간") — 손님 안내는 카드 오른쪽 아래 · 작은 글 */
+.start-area.guest {
+  align-self: end;
+  justify-items: end;
+}
+.start-area .start-wait {
+  margin: 0;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
 .start-area .big-btn {
   margin-top: 0;
   padding: 16px 30px;
@@ -5081,6 +5091,32 @@ button.primary.tone-warn {
   50% { opacity: 0.85; }
   100% { transform: translateY(-4px); opacity: 0; }
 }
+/* ★ R066 (D-279) — 박자 점 4개 · 넷째가 강세(크게) */
+.cake-beats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 18px;
+}
+.cake-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 60ms linear, transform 60ms linear;
+}
+.cake-dot.strong {
+  width: 14px;
+  height: 14px;
+}
+.cake-dot.on {
+  background: var(--accent);
+  transform: scale(1.25);
+}
+.cake-dot.strong.on {
+  background: var(--accent-2);
+}
 .mg-cake-result {
   display: grid;
   place-items: center;
@@ -5939,6 +5975,30 @@ button.primary.tone-warn {
   width: auto;
   max-width: 100%;
   image-rendering: pixelated;
+}
+/* ★★ R066 (D-278 · 찬종 #47 "모자이크 해제 · 확대에서 축소로 이동 등이 끝나면 사진 크기가 달라짐")
+   원인: 모자이크 캔버스는 너비 기준(높이 제한 없음) · 끝난 뒤 사진은 높이 46vh 제한 · 확대 판은 transform 칸 크기가 사진에 따라 → 끝날 때 칸이 바뀌었다.
+   고침: 사진 칸 = 4:3 고정(너비 100% · 높이 46vh 안) · 안의 캔버스 · 사진 · 실패 상자는 칸을 꽉 채우고 contain · 드러내기는 transform 만 */
+.photo-frame {
+  aspect-ratio: 4 / 3;
+  width: min(100%, calc(46vh * 4 / 3));
+  max-height: none;
+  margin-inline: auto;
+}
+.photo-frame > .photo-zoom,
+.photo-frame > .img-wrap,
+.photo-frame .photo-zoom > .img-wrap {
+  width: 100%;
+  height: 100%;
+}
+.photo-frame .quiz-img,
+.photo-frame .photo-canvas,
+.photo-frame .photo-img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  max-width: none;
+  object-fit: contain;
 }
 /* 어느 쪽 */
 .which-stem {

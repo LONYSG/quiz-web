@@ -1874,7 +1874,7 @@ async function shopFlow(browser) {
   await sleep(300);
   await snap(H, '121-special-float-3-pc');
   record('★★ D 3개 겹치면 옆으로 나란히 (동시 최대 3)', f3 && (await H.evaluate("(() => { const r = [...document.querySelectorAll('.special-float')].map((e) => e.getBoundingClientRect()); return r.length === 3 && r[0].right <= r[1].left + 1 && r[1].right <= r[2].left + 1; })()")));
-  // ★ R064 (D-269) — 10초 5회: 4 · 5번째는 가고 6번째 → 특별 도배 방지 (보낸 사람 화면)
+  // ★ R064 (D-269) — R066 5초 5회: 4 · 5번째는 가고 6번째 → 특별 도배 방지 (보낸 사람 화면)
   await altDigit(G, '1');
   await sleep(120);
   await altDigit(G, '1');
@@ -1883,7 +1883,7 @@ async function shopFlow(browser) {
   const locked = await G.waitFor("(document.querySelector('.throttle-note')?.innerText ?? '').includes('특별')", 3000);
   await sleep(150);
   await snap(G, '122-special-locked-pc');
-  record('★★★ D 10초 안 6번째 → "특별 이모티콘 도배 방지 · N초" (보낸 사람만)', locked && (await H.evaluate("document.querySelector('.throttle-note') === null")), await G.evaluate("document.querySelector('.throttle-note')?.innerText ?? ''"));
+  record('★★★ D 5초 안 6번째 → "특별 이모티콘 도배 방지 · N초" (보낸 사람만)', locked && (await H.evaluate("document.querySelector('.throttle-note') === null")), await G.evaluate("document.querySelector('.throttle-note')?.innerText ?? ''"));
   record('★ D 상대 화면엔 5개까지만 (6번째는 안 간다)', (await specialLines(H)) === l0 + 5, String((await specialLines(H)) - l0));
   await H.waitFor("document.querySelectorAll('.special-layer .special-float').length === 0", 4500);
   await sleep(200);
@@ -1943,7 +1943,7 @@ async function shopFlow(browser) {
   await G.setViewport(1280, 720);
   await sleep(300);
   await G.waitFor("document.querySelector('.throttle-note') === null", 12000);
-  await sleep(10500); // 특별 창(10초)이 비도록
+  await sleep(5500); // 특별 창(5초 — R066)이 비도록
 
   // ── ★ D 대안 — 로그 안에 크게(96px) : 상대(H)만 inline 으로 바꿔 같은 장면
   await H.evaluate("localStorage.setItem('qw.specialDisplay', 'inline')");
@@ -3634,7 +3634,8 @@ async function r057Flow(browser) {
   await sleep(450);
   await snap(G, '105-inline-chat-m390-night');
   await G.evaluate("document.documentElement.dataset.theme = 'pastel'");
-  record('★ B 참여자 칸 이모티콘(반응 꼴은 3초)', seat >= 0, String(seat));
+  // ★ R066 (D-275 · 찬종 #37) — 채팅으로 보낸 이모티콘(입력창에 넣기)은 참여자 칸에 뜨지 않는다
+  record('★★ B 채팅으로 보낸 이모티콘은 참여자 칸에 안 뜬다(R066)', seat === 0, String(seat));
   const gw = JSON.parse(await G.evaluate("JSON.stringify({ doc: document.documentElement.scrollWidth, vw: innerWidth })"));
   record('★★ B m390 가로 넘침 없음', gw.doc <= gw.vw, JSON.stringify(gw));
   await withPg((c) => c.query(`DELETE FROM account_emojis WHERE account_id IN (SELECT id FROM accounts WHERE login_id = $1)`, [gLogin]));

@@ -71,6 +71,13 @@ describe('R061 제보 맥락', () => {
     const m = { ...none, minigameKey: 'angle', at: new Date().toISOString() };
     expect(await pastTarget(await reportContext(room, m), '7', m, find)).toMatchObject({ gameId: '851', minigameKey: 'angle', minigameRunId: '523', questionId: null });
     expect(await pastTarget(await reportContext(room, m), '8', m, find)).toMatchObject({ gameId: null, minigameRunId: null });
+    // ★ R066 (D-280) — 일반 제보: 연 때 미니게임이 아니었으면(at · key 없음) 보낼 때 방의 미니게임은 안 붙인다
+    const mgRoom = { id: 'r2', state: 'MINIGAME', game: { gameId: '901' }, result: null, minigame: { key: 'photo', dbId: Promise.resolve('531'), rounds: [{ itemId: 'photo-0082' }], roundIndex: 0 }, currentQuestion: null } as unknown as Room;
+    const gen = { ...none, at: new Date().toISOString() };
+    expect(await pastTarget(await reportContext(mgRoom, gen), '7', gen, find)).toMatchObject({ minigameKey: null, minigameRunId: null, minigameItem: null, gameId: '901' });
+    // 연 때 소수파였는데 보낼 때 사진 판 → 연 때 판(참가한 것)
+    const atMin = { ...none, minigameKey: 'angle', at: new Date().toISOString() };
+    expect(await pastTarget(await reportContext(mgRoom, atMin), '7', atMin, find)).toMatchObject({ minigameKey: 'angle', minigameRunId: '523', minigameItem: null });
     // at 이 없으면(일반 제보 · 지금 화면) 그대로
     expect((await pastTarget(await reportContext(room, none), '7', { ...none, at: null }, find)).gameId).toBe('900');
   });

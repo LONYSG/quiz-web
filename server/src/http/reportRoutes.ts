@@ -96,7 +96,8 @@ export async function pastTarget(
     const run = await find.runOfMinigame(accountId, input.minigameKey, input.at);
     return { ...ctx, gameId: run?.gameId ?? null, questionId: null, questionIndex: null, minigameKey: input.minigameKey, minigameRunId: run?.runId ?? null, minigameItem: input.minigameItem ? ctx.minigameItem : null };
   }
-  return ctx;
+  // ★ R066 (D-280) — 연 때 미니게임이 아니었다(일반 제보 · 문제 · 대기실) → 보낼 때 방의 미니게임은 붙이지 않는다
+  return { ...ctx, minigameKey: null, minigameRunId: null, minigameItem: null };
 }
 
 const pastFinders: PastFinders = {

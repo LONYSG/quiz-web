@@ -8,12 +8,12 @@ import type { Socket } from 'socket.io-client';
 import { sfx } from './sound.js';
 
 export default function AchievementToast({ socket }: { socket: Socket | null }) {
-  const [list, setList] = useState<{ id: number; name: string; desc: string }[]>([]);
+  const [list, setList] = useState<{ id: number; name: string }[]>([]);
   useEffect(() => {
     if (!socket) return undefined;
     const on = (p: { key: string; name: string; desc?: string }) => {
       const id = Date.now() + Math.random();
-      setList((l) => [...l.slice(-2), { id, name: p.name, desc: p.desc ?? '' }]);
+      setList((l) => [...l.slice(-2), { id, name: p.name }]);
       sfx('mg-final');
       window.setTimeout(() => setList((l) => l.filter((x) => x.id !== id)), 4500);
     };
@@ -30,10 +30,8 @@ export default function AchievementToast({ socket }: { socket: Socket | null }) 
           <span className="ach-toast-medal" aria-hidden="true">
             🏅
           </span>
-          <span>
-            <strong>업적 — {a.name}</strong>
-            {a.desc && <span className="dim"> {a.desc}</span>}
-          </span>
+          {/* ★ R066 (D-274 · 찬종 #44 "설명은 개인 프로필에서 · 획득 안내는 이름만") */}
+          <strong>업적 — {a.name}</strong>
         </div>
       ))}
     </div>

@@ -38,6 +38,8 @@ export interface ReportScreen {
   screen: string;
   questionIndex: number | null;
   minigameKey: string | null;
+  /** ★ R066 — 연 때 미니게임 문항(사진 · 퀴즈류) */
+  minigameItem?: string | null;
   /** 맥락 줄 — "미니게임 각도 맞추기 · 문항 7" */
   label: string;
 }
@@ -55,11 +57,13 @@ interface QTarget {
 }
 /** ★ R065 (D-271) — 창을 연 때의 맥락(그 뒤 화면이 바뀌어도 "제보 당시 화면") */
 interface Frozen {
+  /** ★ R066 (D-280) — 연 시각 — 서버가 "연 때의 미니게임 판" 을 찾는다(참가한 판만) */
+  at: number;
   ctx: ReportScreen;
   recent: { e: string; t: number }[];
   device: ReturnType<typeof device>;
 }
-const freeze = (mobile: boolean): Frozen => ({ ctx: screenNow, recent: recentEvents.slice(), device: device(mobile) });
+const freeze = (mobile: boolean): Frozen => ({ at: Date.now(), ctx: screenNow, recent: recentEvents.slice(), device: device(mobile) });
 let screenNow: ReportScreen = { screen: 'unknown', questionIndex: null, minigameKey: null, label: '' };
 let qTarget: QTarget | null = null;
 let flashMsg: { text: string; until: number } | null = null;
@@ -362,7 +366,7 @@ function ReportWindow({ frozen, onClose }: { frozen: Frozen; onClose: () => void
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(draft ? '보내지 못한 글을 되살렸어요.' : null);
   // ★ R065 — 연 때 맥락(열고 나서 화면이 바뀌어도 그대로)
-  const { ctx, recent, device: dev } = frozen;
+  const { ctx, recent, device: dev, at } = frozen;
   const send = () => {
     if (busy || !text.trim()) return;
     setBusy(true);
@@ -375,6 +379,9 @@ function ReportWindow({ frozen, onClose }: { frozen: Frozen; onClose: () => void
       screen: ctx.screen,
       questionIndex: ctx.questionIndex,
       minigameKey: ctx.minigameKey,
+      minigameItem: ctx.minigameItem ?? null,
+      // ★ R066 (D-280) — 미니게임 판 · 문항은 연 때 것(보낼 때 방이 다음 게임이어도) — 로그인 전은 서버가 안 본다
+      at: new Date(at).toISOString(),
       device: dev,
       recent,
     })

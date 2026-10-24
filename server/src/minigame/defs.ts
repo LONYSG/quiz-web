@@ -148,6 +148,11 @@ export interface MinigameDef {
     reveal?: Record<string, unknown>;
   };
   /**
+   * ★ R066 (D-276 · 찬종 #35 "제출한 사람 명수가 안 올라가서 다들 미제출인 줄") — 끝까지 바꿀 수 있는 입력(소수파 고르기 · 연타 횟수)은
+   *   임시(provisional) 값이 하나라도 오면 "냈다" 로 센다. 그렇지 않으면 놀이 내내 0명으로 보인다.
+   */
+  countProvisional?: boolean;
+  /**
    * ★ 입력 검사 · 판정 값 계산 (서버). 이상한 값이면 null(받지 않음).
    *   provisional = true 면 "아직 확정 아님"(균형 — 움직이는 동안 보내는 값 · 마감 때 마지막 것을 쓴다)
    */
@@ -636,6 +641,7 @@ const minority: MinigameDef = {
   buildRounds(seed) {
     return [0, 1, 2, 3, 4].map((i) => ({ itemKey: `minority-${i + 1}`, params: { choices: [1, 2, 3, 4, 5] }, playMs: MINORITY_PLAY_MS, seed: seed + i }));
   },
+  countProvisional: true,
   parseInput(raw) {
     const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
     const pick = num(obj?.pick);
@@ -755,6 +761,7 @@ const tap: MinigameDef = {
   buildRounds(seed) {
     return [0, 1, 2].map((i) => ({ itemKey: `tap-${i + 1}`, params: { maxPerSec: TAP_MAX_PER_SEC }, playMs: TAP_PLAY_MS, seed: seed + i }));
   },
+  countProvisional: true,
   parseInput(raw, _spec, ctx) {
     const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
     const c = num(obj?.count);

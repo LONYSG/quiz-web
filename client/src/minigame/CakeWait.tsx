@@ -72,6 +72,8 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
   // ── 리듬: 화면 숫자가 정수(10.00 · 9.00 …)에 닿을 때마다 한 박 (가려지기 전까지 · 0초는 소리 없음)
   //   ★ R063 — 처음 1초 멈춤이 끝나는 순간이 "10" · 그 뒤 1초마다 9 · 8 … → "0" 박자가 곧 목표
   const beatRef = useRef<{ key: string; last: number } | null>(null);
+  // ★ R066 (D-279) — 박자 점 4개(넷째가 강세 · 0초는 늘 넷째) — 박마다 차례로 켜진다
+  const [lit, setLit] = useState<number | null>(null);
   useEffect(() => {
     if (!playing || t0 === null) return;
     const crossed = durationSec + CAKE_HOLD_SEC - Math.floor(shownElapsedSec + 1e-6); // 방금 닿은 정수
@@ -81,6 +83,7 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
     if (crossed <= durationSec && crossed < beatRef.current.last && crossed > 0 && shownElapsedSec < hideStart + 1e-6) {
       beatRef.current.last = crossed;
       cakeBeat(crossed, 1 / speed);
+      setLit(3 - (crossed % 4));
     }
   }, [playing, t0, key, shownElapsedSec, durationSec, hideStart, speed]);
 
@@ -132,6 +135,13 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
         <span className="cake-small">.{smallPart}</span>
         <span className="cake-unit">초</span>
       </div>
+      {!hidden && !done && !over && playing && (
+        <div className="cake-beats" aria-hidden="true">
+          {[0, 1, 2, 3].map((i) => (
+            <span key={i} className={`cake-dot${i === 3 ? ' strong' : ''}${lit === i ? ' on' : ''}`} />
+          ))}
+        </div>
+      )}
       {hidden && !done && !over && <p className="cake-hidden-note">리듬을 기억하세요…</p>}
       <MeatArt d={mineD ? mineD.d : playD} sizzle={playing && !done && !over} />
       {mineD && !view.spectating && <p className={`meat-label ${mineD.level}`}>{mineD.label}</p>}

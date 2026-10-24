@@ -72,8 +72,7 @@ export function MinorityPick({ socket, view, serverNow, mobile }: Props) {
         ))}
       </div>
       <p className="quiz-num-help dim">
-        {view.spectating ? '구경 중이에요' : mine ? `${mine} 을(를) 골랐어요 — 시간 안에 바꿀 수 있어요` : mobile ? '숫자 카드를 톡' : '1 ~ 5 키 또는 클릭'}
-        {view.participants.length < 3 && ' · 3명부터 더 재미있어요'}
+        {view.spectating ? '구경 중이에요' : mine ? `${mine} 을(를) 골랐어요` : mobile ? '숫자 카드를 톡' : '1 ~ 5 키 또는 클릭'}
       </p>
     </div>
   );

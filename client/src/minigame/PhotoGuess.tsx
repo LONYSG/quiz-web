@@ -189,7 +189,7 @@ export default function PhotoGuess({ socket, view, serverNow, mobile }: Props) {
               ? `"${mine.wrong[mine.wrong.length - 1]}" — 아니에요. 다시!`
               : view.spectating
                 ? '구경 중이에요'
-                : '틀려도 몇 번이고 다시 칠 수 있어요'}
+                : ''}
         </p>
       </form>
     </div>

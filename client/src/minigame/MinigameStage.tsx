@@ -68,7 +68,7 @@ const PLAY = {
 const R053_KEYS = new Set(['minority', 'oddone', 'gauge', 'balloon', 'tap']);
 const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which']);
 /** 진행 중 "n / m명 …" 의 말 */
-const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '끝' };
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
 
 interface Props {
   socket: Socket;
@@ -102,12 +102,19 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         // ★ R063 — 판 그림을 규칙 화면 동안 미리 받아 decode(다른 하나 찾기)
         if (view.preload) void preloadAll(view.preload);
         break;
+      case 'rules':
+        // ★ R066 (D-277 · 찬종 #42 "bgm 이 바로 안 바뀌고 2번째 라운드 되니까 바뀜") — 미니게임만 판의 2번째 게임부터는 intro 를 건너뛰고
+        //   rules 로 시작한다(engine skipIntro) · 앞 게임 outro 가 normal 로 돌려 놓아 첫 판 결과 때까지 안 바뀌었다 → rules 에서도 바꾼다
+        setMusicMode('minigame');
+        if (view.preload) void preloadAll(view.preload);
+        break;
       case 'ready':
         // ★ R052 — 퀴즈류는 다음 문항 그림을 미리 받는다
         if (QUIZ_KEYS.has(view.key)) preloadQuizImages(view);
         if (view.preload) void preloadAll(view.preload);
         // ★ 케이크는 리듬을 들어야 한다 — 판 동안 배경음악을 끈다
         if (view.key === 'cake' || view.key === 'reaction' || view.key === 'gauge') setMusicMode('quiet');
+        else setMusicMode('minigame'); // ★ R066 — 중간에 들어온 사람(재접속 · 스냅샷)도
         sfx('mg-ready');
         break;
       case 'play':

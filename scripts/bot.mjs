@@ -128,6 +128,7 @@ const SCENARIO_ENV = {
   achievements: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   feedback: { RESOLVED_WAIT_MS: '200' },
   mgonly: { MINIGAME_PHASE_SCALE: '0.05' },
+  mgcount: { MINIGAME_PHASE_SCALE: '0.05' },
   // ★ R060 — 둘이서 16 게임(놀이 시간은 줄지 않는다 — 판 사이만 짧게)
   mgduo: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   // ★ R061 — 앱 제보(미니게임 하나를 지나간다)
@@ -5685,7 +5686,7 @@ async function scenarioShop() {
     expect('★ DB 뽑기 기록 1', db6.owned, 1);
   }
 
-  log('\n[5] ★★ 특별 이모티콘 보내기 — 가진 사람만 · ★ R064 10초 5회 · 6번째 잠금(kind special) · 표준은 따로');
+  log('\n[5] ★★ 특별 이모티콘 보내기 — 가진 사람만 · ★ R066 5초 5회 · 6번째 잠금(kind special) · 표준은 따로');
   await b1.connect();
   b1.createRoom('R049 특별');
   await b1.waitFor(() => b1.snapshot !== null, 6000, '방');
@@ -5699,7 +5700,7 @@ async function scenarioShop() {
   for (let i = 0; i < 6; i += 1) b1.socket.emit('emoji.send', { emojiId: mine[i % mine.length] });
   await sleep(700);
   const seen = b2.since(f2, 'chat').filter((e) => e.emojiId);
-  expect('★★ 특별 5개만 방에 도착(R064 완화 — 10초 5회)', seen.length, 5);
+  expect('★★ 특별 5개만 방에 도착(R066 — 5초 5회)', seen.length, 5);
   expectTrue('★★ 채팅 항목에 special=true', seen.every((e) => e.special === true), JSON.stringify(seen[0]));
   const th = b1.since(f1, 'chat.throttled');
   expect('★★ 6번째에 안내 kind=special', th[0]?.kind, 'special');
@@ -6880,6 +6881,65 @@ async function scenarioMgQuiz() {
 }
 
 // -----------------------------------------------------------------------------
+// ★★ R066 (D-276 · 찬종 #35 "제출한 사람 명수가 안 올라가서 다들 미제출인 줄") — 16 게임 × 2명 제출 → 놀이 중 submittedCount 가 2/2 로 오르는지
+async function scenarioMgCount() {
+  log('시나리오 mgcount — ★★ 16 게임 제출 명수(R066)');
+  const sh = await mgShared();
+  const bots = await makeBots(2);
+  const [host, g] = bots;
+  for (const b of bots) await b.connect();
+  host.createRoom('R066 제출 명수');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  const roomId = host.snapshot.room.id;
+  g.join(roomId);
+  await g.waitFor(() => g.snapshot?.room.id === roomId, 6000, '입장');
+  const send = (bot, mg, input) => bot.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input });
+  /** 첫 판 play 에서 할 것 — 게임마다 "끝까지 낸" 입력(정답 몰라도 되는 꼴) */
+  const ACT = {
+    cake: async (b, mg) => { await sleep(400); send(b, mg, { elapsedMs: 300 }); },
+    balance: async (b, mg) => { await sleep(200); send(b, mg, { top: 50, bottom: 50, final: true }); },
+    reaction: async (b, mg) => { await sleep(400); send(b, mg, { elapsedMs: 300 }); },
+    typing: async (b, mg) => { const t = String(mg.round.params.text); await sleep([...t].length * 60 + 300); send(b, mg, { text: t, elapsedMs: [...t].length * 55, final: true }); },
+    circle: async (b, mg) => { await sleep(1300); const pts = []; for (let i = 0; i <= 48; i += 1) { const a = (i / 48) * Math.PI * 2; pts.push([0.5 + 0.3 * Math.cos(a), 0.5 + 0.3 * Math.sin(a), i * 20]); } send(b, mg, { points: pts }); },
+    angle: async (b, mg) => { await sleep(200); send(b, mg, { deg: 90, final: true }); },
+    price: async (b, mg) => { await sleep(200); send(b, mg, { value: 1000 }); },
+    worldprice: async (b, mg) => { await sleep(200); send(b, mg, { value: 1000 }); },
+    estimate: async (b, mg) => { await sleep(200); send(b, mg, { value: 1000 }); },
+    photo: async (b, mg) => { await sleep(400); send(b, mg, { text: sh.QUIZ_DUMMY.photo[mg.roundIndex % sh.QUIZ_DUMMY.photo.length].answer, elapsedMs: 300 }); },
+    which: async (b, mg) => { await sleep(400); send(b, mg, { choice: 'a', elapsedMs: 300 }); },
+    minority: async (b, mg) => { await sleep(200); send(b, mg, { pick: 1, elapsedMs: 150 }); },
+    oddone: async (b, mg) => { await sleep(400); const size = Number(mg.round.params.size); for (let i = 0; i < size * size; i += 1) { send(b, mg, { index: i, elapsedMs: 300 }); await sleep(15); } },
+    gauge: async (b, mg) => { await sleep(400); send(b, mg, { elapsedMs: 300 }); },
+    balloon: async (b, mg) => { await sleep(300); send(b, mg, { pumps: 1 }); await sleep(250); send(b, mg, { pumps: 1, stop: true }); },
+    tap: async (b, mg) => { await sleep(300); send(b, mg, { count: 1, elapsedMs: 200 }); },
+  };
+  const table = [];
+  for (const key of Object.keys(ACT)) {
+    let best = 0;
+    let fired = new Set();
+    for (const b of bots) {
+      b.onMinigame = (mg) => {
+        if (!mg || mg.phase !== 'play' || mg.spectating) return;
+        if (b === host && mg.roundIndex === 0) best = Math.max(best, mg.submittedCount ?? 0);
+        const k = `${b.loginId}:${mg.token}:${mg.roundIndex}`;
+        if (fired.has(k)) return;
+        fired.add(k);
+        ACT[key](b, mg).catch(() => undefined);
+      };
+    }
+    const pf = host.mark();
+    host.socket.emit('minigame.practice', { key });
+    await host.waitFor(() => host.snapshot?.room.state === 'MINIGAME', 5000, `${key} 연습 시작`);
+    await host.waitFor(() => best >= 2 || (host.snapshot?.minigame && (host.snapshot.minigame.roundIndex > 0 || host.snapshot.minigame.phase === 'final' || host.snapshot.minigame.phase === 'outro')), 60000, `${key} 첫 판`).catch(() => undefined);
+    table.push({ key, count: best });
+    expect(`★★ ${key} — 2명이 내면 놀이 중 2 / 2명`, best, 2);
+    await host.waitFor(() => host.since(pf, 'minigame.ended').length > 0, 120000, `${key} 끝`).catch(() => undefined);
+    for (const b of bots) b.onMinigame = null;
+    await sleep(300);
+  }
+  log(`  표: ${table.map((r) => `${r.key} ${r.count}/2`).join(' · ')}`);
+}
+
 // ★★★ R053 — 미니게임 3차 봇 (D-241) — mgminority · mgoddone · mggauge (mgtwothirds 는 R060 게임 삭제와 함께 뺌)
 //   자기 서버(SCENARIO_ENV): 정답 공개 대기 200ms · 판 진행 밖 단계 ×0.05
 // -----------------------------------------------------------------------------
@@ -8108,6 +8168,7 @@ const SCENARIOS = {
   // ★★★ R056 — 문제 평가
   feedback: scenarioFeedback,
   mgonly: scenarioMgOnly,
+  mgcount: scenarioMgCount,
   mgduo: scenarioMgDuo,
   emojiinline: scenarioEmojiInline,
   near: scenarioNear,

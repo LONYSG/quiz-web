@@ -592,7 +592,7 @@ function registerRoomHandlers(socket: Socket): void {
         return;
       }
       const now = Date.now();
-      // ★★ R048 (D-228) — 채팅과 같은 창+잠금(따로 센다). ★ R049 — 특별 이모티콘은 또 따로(10초 3회 · 10초 잠금 — D-231)
+      // ★★ R048 (D-228) — 채팅과 같은 창+잠금(따로 센다). ★ R049 — 특별 이모티콘은 또 따로(R066: 5초 5회 · 5초 잠금 — D-273)
       const retryAfterMs = special
         ? checkSpecialEmojiRate(room, player.accountId, now, {
             windowMs: config.tuning.specialEmojiRateWindowMs,

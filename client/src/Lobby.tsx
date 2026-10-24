@@ -465,7 +465,8 @@ export default function Lobby({
   const [emojiNow, setEmojiNow] = useState(() => Date.now());
   const lastEmojiOf = useMemo(() => {
     const out: Record<string, { id: number; ids: number[]; key: string; at: number }> = {};
-    for (const m of chat) if (m.emojiId && m.accountId) out[m.accountId] = { id: m.emojiId, ids: m.emojiIds ?? [m.emojiId], key: m.id, at: Date.now() };
+    // ★ R066 (D-275 · 찬종 #37) — 채팅으로 보낸 이모티콘(입력창에 넣기 · emojiIds 가 붙은 것)은 글로 친다 → 칸에 띄우지 않는다(이모티콘 보내기만)
+    for (const m of chat) if (m.emojiId && m.accountId && !m.emojiIds?.length) out[m.accountId] = { id: m.emojiId, ids: [m.emojiId], key: m.id, at: Date.now() };
     return out;
   }, [chat]);
   const emojiSeen = useRef(new Map<string, number>());
@@ -495,7 +496,7 @@ export default function Lobby({
   useEffect(() => {
     if (specialDisplay !== 'float') return;
     const seen = floatSeen.current!;
-    const fresh = chat.filter((m) => m.special && m.emojiId && !seen.has(m.id));
+    const fresh = chat.filter((m) => m.special && m.emojiId && !m.emojiIds?.length && !seen.has(m.id));
     if (fresh.length === 0) return;
     for (const m of fresh) seen.add(m.id);
     const now = Date.now();
@@ -866,7 +867,8 @@ export default function Lobby({
                   availableQuestionCount={snapshot.room.availableQuestionCount}
                   isHost={snapshot.me.isHost}
                 />
-                <div className="start-area">
+                {/* ★ R066 (D-274 · 찬종 #38) — 손님은 안내 한 줄만 · 카드 오른쪽 아래(버튼 줄 자리)로 */}
+                <div className={snapshot.me.isHost || snapshot.countdown ? 'start-area' : 'start-area guest'}>
                   {snapshot.countdown ? (
                     <Countdown
                       socket={socket}
@@ -883,7 +885,7 @@ export default function Lobby({
                       {state === 'LOBBY' && <MinigamePicker socket={socket} />}
                     </>
                   ) : (
-                    <p className="note">방장이 게임을 시작할 때까지 기다려 주세요.</p>
+                    <p className="note dim start-wait">방장이 게임을 시작할 때까지 기다려 주세요.</p>
                   )}
                   {/* ★★ R056 — 결과 화면을 놓친 사람용 "지난 판 문제 평가" (내가 참가한 마지막 판이 있을 때만) */}
                   {state === 'LOBBY' && lastFeedbackGame && <LastGameFeedback gameId={lastFeedbackGame} />}

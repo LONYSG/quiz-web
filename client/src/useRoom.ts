@@ -691,7 +691,7 @@ export function useRoom(socket: Socket | null): RoomHook {
 
     const onThrottled = (p: { retryAfterMs: number; kind?: 'chat' | 'emoji' | 'special' }) => {
       setThrottledUntil(Date.now() + p.retryAfterMs);
-      // ★ R049 — 특별 이모티콘은 따로 센다 (10초 3회)
+      // ★ R049 — 특별 이모티콘은 따로 센다 (5초 5회 — R066)
       setThrottledKind(p.kind === 'emoji' || p.kind === 'special' ? p.kind : 'chat');
     };
 

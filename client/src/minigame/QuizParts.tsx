@@ -199,7 +199,7 @@ export function NumberInput({
           </button>
         )}
       </div>
-      <p className="quiz-num-help dim">{mine ? '보냈어요! 정답 공개를 기다리는 중…' : view.spectating ? '구경 중이에요' : '숫자만 — 쉼표는 저절로 · 한 번만 보낼 수 있어요'}</p>
+      <p className="quiz-num-help dim">{mine ? '보냈어요! 정답 공개를 기다리는 중…' : view.spectating ? '구경 중이에요' : ''}</p>
     </form>
   );
 }

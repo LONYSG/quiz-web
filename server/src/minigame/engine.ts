@@ -164,7 +164,8 @@ export function minigameView(room: Room, viewerAccountId: string): MinigameView 
           }
         : null,
     participants: run.participants,
-    submittedCount: subs ? [...subs.values()].filter((s) => !s.provisional).length : 0,
+    // ★ R066 (D-276) — 끝까지 바꿀 수 있는 게임(소수파 · 연타)은 임시 값도 "냈다" 로 센다
+    submittedCount: subs ? [...subs.values()].filter((s) => !s.provisional || def.countProvisional === true).length : 0,
     selfSubmitted: Boolean(mine && !mine.provisional),
     spectating: !participating,
     roundResults: run.roundResults,
@@ -359,6 +360,8 @@ export function submitMinigame(
   if (!parsed) return 'bad_input';
   subs.set(accountId, parsed);
   if (parsed.feedback) onFeedback?.(parsed.feedback);
+  // ★ R066 (D-276) — 소수파 · 연타는 첫 임시 값에서 제출 수를 알린다(명수가 오르게)
+  if (parsed.provisional && !prev && MINIGAME_DEFS[run.key].countProvisional) broadcast(room);
   if (!parsed.provisional) {
     // 제출 수만 알린다 (값은 판이 끝나야 공개)
     broadcast(room);
