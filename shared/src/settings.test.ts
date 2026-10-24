@@ -194,10 +194,10 @@ describe('★★★ 미니게임만 (R057)', () => {
     expect(r.ok && r.settings.minigameOnly).toBe(false);
     expect(r.ok && r.settings.minigameRounds).toBe(MINIGAME_ONLY_ROUNDS.DEFAULT);
   });
-  it('켜고 2~10 은 통과 · 밖이나 소수는 거부', () => {
+  it('켜고 2~50 은 통과(R066) · 밖이나 소수는 거부', () => {
     expect(validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: 2 }).ok).toBe(true);
-    expect(validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: 10 }).ok).toBe(true);
-    for (const n of [1, 11, 3.5, '5']) {
+    expect(validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: 50 }).ok).toBe(true);
+    for (const n of [1, 51, 3.5, '5']) {
       const r = validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: n });
       expect(r.ok).toBe(false);
       if (!r.ok) expect(r.field).toBe('minigameRounds');

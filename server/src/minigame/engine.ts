@@ -218,7 +218,7 @@ export function pickMinigameKey(room: Room): MinigameKey | null {
 export function startMinigame(
   room: Room,
   key: MinigameKey,
-  opts: { practice: boolean; afterQuestionIndex: number | null; series?: { index: number; total: number } | null },
+  opts: { practice: boolean; afterQuestionIndex: number | null; series?: { index: number; total: number } | null; ignoreSeen?: boolean },
 ): boolean {
   const def = MINIGAME_DEFS[key];
   if (!def || room.players.size === 0) return false;
@@ -238,6 +238,7 @@ export function startMinigame(
     participants: participants.map((p) => p.accountId),
     quiz: opts.practice ? null : (room.game?.minigameQuiz ?? null),
     now,
+    ignoreSeen: opts.ignoreSeen,
   });
   if (!rounds || rounds.length === 0) {
     console.log(`[minigame] ${room.id} ${def.info.name} 건너뜀 — 낼 수 있는 문항이 모자라다`);
@@ -331,7 +332,10 @@ function startPicked(room: Room, opts: Parameters<typeof startMinigame>[2]): boo
 export function startSeriesMinigame(room: Room): boolean {
   const s = room.game?.mgSeries;
   if (!s || s.done >= s.total) return false;
-  return startPicked(room, { practice: false, afterQuestionIndex: null, series: { index: s.done + 1, total: s.total } });
+  const opts = { practice: false, afterQuestionIndex: null, series: { index: s.done + 1, total: s.total } };
+  // ★★ R066 (D-282 · 찬종 #36 "퀴즈류 미니게임의 소재가 다 떨어졌다면 그 미니게임은 제외하고 나머지 … 최초 설정한 미니게임 수를 수행") —
+  //   startPicked 가 소재 모자란 게임을 건너뛰고 다른 것을 고른다. 고른 게임이 **모두** 떨어졌으면 본 문항도 받아 계속(멈추지 않음)
+  return startPicked(room, opts) || startPicked(room, { ...opts, ignoreSeen: true });
 }
 
 setBeforeNextQuestion(maybeStartQuizMinigame);

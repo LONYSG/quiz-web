@@ -22,6 +22,7 @@ import {
   MINIGAME_KEYS,
   MINIGAME_ONLY_ROUNDS,
   minigameSlots,
+  minigameInfo,
   type MinigameKey,
   RULES,
   validateRoomSettings,
@@ -37,7 +38,7 @@ import MinigameCatalog from './minigame/MinigameCatalog.js';
 /** Q-10 확정: UI 에 프리셋을 제공한다 */
 const PRESETS = [50, 100, 200] as const;
 /** ★ R057 — 미니게임 수 프리셋 */
-const MG_PRESETS = [3, 5, 10] as const;
+const MG_PRESETS = [5, 10, 20, 30, 50] as const; // ★ R066 — 2~50
 
 interface Props {
   socket: Socket;
@@ -320,6 +321,12 @@ export default function GameSettings({
                 {(shown.minigameKeys ?? MINIGAME_KEYS).length}/{MINIGAME_KEYS.length}
               </span>
             </button>
+          )}
+          {/* ★ R066 (D-281 · 찬종 #33) — 손님도 방장이 고르는 목록을 바로(이름 한 줄 · 넘치면 … · 전부 보기는 창) */}
+          {!editable && (shown.minigames || mgOnly) && (
+            <span className="mg-set-names dim" data-mg-names title={(shown.minigameKeys ?? MINIGAME_KEYS).map((k) => minigameInfo(k).name).join(' · ')}>
+              {(shown.minigameKeys ?? MINIGAME_KEYS).length === MINIGAME_KEYS.length ? '전부' : (shown.minigameKeys ?? MINIGAME_KEYS).map((k) => minigameInfo(k).name).join(' · ')}
+            </span>
           )}
           {catOpen && (
             <MinigameCatalog

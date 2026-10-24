@@ -147,10 +147,20 @@ export default function PhotoGuess({ socket, view, serverNow, mobile }: Props) {
           </div>
         )}
       </div>
-      {/* ★ R063 (D-261) — 어려운 사진(d3)은 처음부터 다 보이고 · 2/3 지나면 초성(서버가 그 시각 뒤에만 보낸다) */}
-      {typeof p.chosung === 'string' && canPlay && !mine?.correct && (
+      {/* ★ R063 (D-261) — 어려운 사진(d3)은 처음부터 다 보인다 · ★ R066 (D-283) 힌트: 6초 분류(d3) · 10초 초성(전부) — 서버가 그 시각 뒤에만 보낸다 */}
+      {(typeof p.generalHint === 'string' || typeof p.chosung === 'string') && canPlay && !mine?.correct && (
         <p className="photo-hint" data-photo-hint>
-          초성 <strong className="mono">{p.chosung}</strong>
+          {typeof p.generalHint === 'string' && (
+            <span data-photo-general>
+              분류 <strong>{p.generalHint}</strong>
+            </span>
+          )}
+          {typeof p.generalHint === 'string' && typeof p.chosung === 'string' && ' · '}
+          {typeof p.chosung === 'string' && (
+            <span data-photo-chosung>
+              초성 <strong className="mono">{p.chosung}</strong>
+            </span>
+          )}
         </p>
       )}
       <form

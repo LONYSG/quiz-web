@@ -53,6 +53,8 @@ interface Props {
 
 export default function MinigameCatalog({ mode, editable, selected = [], onConfirm, onStart, onClose }: Props) {
   const [picked, setPicked] = useState<MinigameKey[]>(mode === 'select' ? [...selected] : []);
+  // ★ R066 (D-281 · 찬종 #33 "실시간으로 고르는 거 방장이 아닌 사람한테 안 보임?") — 읽기 전용(손님)은 방장이 바꾸는 대로 바로(창을 연 때 값에 묶지 않는다)
+  const chosen = editable ? picked : [...selected];
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape' || isReportOpen()) return;
@@ -83,14 +85,14 @@ export default function MinigameCatalog({ mode, editable, selected = [], onConfi
         <div className="pop-head mg-cat-head">
           <p className="pop-title">
             {title}
-            {mode === 'select' && <span className="dim mg-cat-count mono"> {picked.length}/{MINIGAMES.length}</span>}
+            {mode === 'select' && <span className="dim mg-cat-count mono"> {chosen.length}/{MINIGAMES.length}</span>}
             {mode === 'practice' && <span className="dim mg-cat-count"> · 연습</span>}
           </p>
           <PopupClose onClose={onClose} />
         </div>
         <div className="mg-cat-list" data-arrow-nav>
           {MINIGAMES.map((m) => {
-            const on = picked.includes(m.key);
+            const on = chosen.includes(m.key);
             const ex = MINIGAME_EXAMPLES[m.key];
             return (
               <button
@@ -105,10 +107,10 @@ export default function MinigameCatalog({ mode, editable, selected = [], onConfi
                   <Icon icon={MINIGAME_ICONS[m.key]} />
                 </span>
                 <span className="mg-cat-body">
-                  <strong className="mg-cat-name">{m.name}</strong>
+                  <strong className="mg-cat-name" data-wrap-ok>{m.name}</strong>
                   <span className="mg-cat-line" data-wrap-ok>{m.oneLine}</span>
                   {ex && (
-                    <span className="mg-cat-ex" title={`예) ${ex.q} → ${ex.a}`}>
+                    <span className="mg-cat-ex" data-wrap-ok>
                       예) {ex.q} → <strong>{ex.a}</strong>
                     </span>
                   )}

@@ -53,6 +53,9 @@ import {
   normalizeAnswer,
   pctOff,
   pickQuizItems,
+  PHOTO_CATEGORY_KO,
+  PHOTO_HINT_CHOSUNG_MS,
+  PHOTO_HINT_GENERAL_MS,
   priceFresh,
   ratioError,
   type QuizMinigameKey,
@@ -122,8 +125,10 @@ export interface BuildCtx {
   /** 참가자 계정 */
   participants: string[];
   /** 게임에 올려 둔 퀴즈류 문항 · 경험(연습 · 미니게임 포함이 꺼진 게임이면 null) */
-  quiz: { data: QuizData; experienced: Map<string, Set<string>> } | null;
+  quiz: { data: QuizData; experienced: Map<string, Set<string>>; used?: Set<string> } | null;
   now: number;
+  /** ★ R066 (D-282) — 고른 미니게임이 모두 소재가 떨어졌을 때 한 번 더(모두 본 문항도) */
+  ignoreSeen?: boolean;
 }
 
 export interface MinigameDef {
@@ -194,7 +199,7 @@ const cake: MinigameDef = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 균형의수호자 — 판마다 같은 물건(시드) · 사람마다 다른 시작 점 · 마감 때 마지막 위치로 서버가 넓이를 계산
+// 균형의 수호자 — 판마다 같은 물건(시드) · 사람마다 다른 시작 점 · 마감 때 마지막 위치로 서버가 넓이를 계산
 // ─────────────────────────────────────────────────────────────────────────────
 const balance: MinigameDef = {
   key: 'balance',
@@ -387,7 +392,12 @@ function pickFor(key: QuizMinigameKey, seed: number, ctx: BuildCtx, filter: (it:
   const exp = ctx.quiz.experienced;
   // ★ R063 (D-258) — 고르기 창의 예시와 겹치는 문항은 뽑지 않는다
   const pool = ctx.quiz.data.items[key].filter((it) => filter(it) && !isExampleItem(key, it.payload));
-  return pickQuizItems(pool, ctx.participants, (a, id) => exp.get(a)?.has(`${key}|${id}`) ?? false, QUIZ_SPEC[key].items, seed);
+  // ★ R066 (D-282) — 소재(빅맥 = 물품) 겹침 피하기 · 이번 게임에서 쓴 소재 먼저 피하기 · 다 떨어졌으면 본 것도
+  const used = (ctx.quiz.used ??= new Set<string>());
+  const materialOf = (it: QuizItem) => `${key}|${key === 'worldprice' ? `p:${String(it.payload.productId)}` : it.id}`;
+  const pick = pickQuizItems(pool, ctx.participants, (a, id) => exp.get(a)?.has(`${key}|${id}`) ?? false, QUIZ_SPEC[key].items, seed, { materialOf, avoid: used, ignoreSeen: ctx.ignoreSeen });
+  if (pick) for (const it of pick.items) used.add(materialOf(it));
+  return pick;
 }
 
 function quizSpec(key: QuizMinigameKey, i: number, seed: number, base: Omit<RoundSpec, 'playMs' | 'seed' | 'readyMs' | 'resultMs'>): RoundSpec {
@@ -518,7 +528,12 @@ const photo: MinigameDef = {
         itemId: it.id,
         params: { imageId: it.imageIds[0] ?? null, revealMode: hard ? 'plain' : p.revealMode, category: p.category, revealMs: PHOTO_REVEAL_MS, ...(hard ? { hard: true } : {}) },
         reveal: { answer: p.answer, explanation: p.explanation, attribution: it.attribution },
-        secret: { answers: answersOf(String(p.answer), (p.altAnswers as string[]) ?? []), ...(hard ? { chosung: generateHint(String(p.answer)) } : {}) },
+        // ★ R066 (D-283) — 초성은 모든 문항(10초) · 일반 힌트(분류)는 난이도 3 만(6초)
+        secret: {
+          answers: answersOf(String(p.answer), (p.altAnswers as string[]) ?? []),
+          chosung: generateHint(String(p.answer)),
+          ...(hard && PHOTO_CATEGORY_KO[String(p.category)] ? { general: PHOTO_CATEGORY_KO[String(p.category)] } : {}),
+        },
         experiencedBy: pick.experiencedBy.get(it.id),
       });
       return hard ? { ...spec, playMs: Math.round(spec.playMs * PHOTO_HARD_TIME_X) } : spec;
@@ -526,11 +541,13 @@ const photo: MinigameDef = {
   },
   liveParams: {
     times(spec) {
-      return spec.params.hard && spec.secret?.chosung ? [Math.round((spec.playMs * 2) / 3)] : [];
+      return [spec.secret?.general ? PHOTO_HINT_GENERAL_MS : null, spec.secret?.chosung ? PHOTO_HINT_CHOSUNG_MS : null].filter((t): t is number => t !== null);
     },
     at(spec, elapsedMs) {
-      if (!spec.params.hard || !spec.secret?.chosung) return {};
-      return elapsedMs >= Math.round((spec.playMs * 2) / 3) ? { chosung: spec.secret.chosung } : {};
+      return {
+        ...(spec.secret?.general && elapsedMs >= PHOTO_HINT_GENERAL_MS ? { generalHint: spec.secret.general } : {}),
+        ...(spec.secret?.chosung && elapsedMs >= PHOTO_HINT_CHOSUNG_MS ? { chosung: spec.secret.chosung } : {}),
+      };
     },
   },
   parseInput(raw, spec, ctx) {

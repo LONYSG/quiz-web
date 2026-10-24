@@ -5092,6 +5092,21 @@ button.primary.tone-warn {
   100% { transform: translateY(-4px); opacity: 0; }
 }
 /* ★ R066 (D-279) — 박자 점 4개 · 넷째가 강세(크게) */
+.typing-lang-warn {
+  margin: 0 0 4px;
+  color: var(--bad, #d9485f);
+  font-weight: 900;
+  text-align: center;
+}
+.mg-ready-lang {
+  margin: 4px 0 0;
+  font-size: 1.1rem;
+}
+.mg-ready-lang strong {
+  font-size: 1.6em;
+  margin-left: 0.3em;
+  color: var(--accent);
+}
 .cake-beats {
   display: flex;
   justify-content: center;
@@ -5135,7 +5150,7 @@ button.primary.tone-warn {
   animation: mg-wiggle 500ms var(--ease-pop) 3;
   display: inline-block;
 }
-/* ── 균형의수호자 */
+/* ── 균형의 수호자 */
 .balance-stage {
   display: grid;
   justify-items: center;
@@ -6233,6 +6248,23 @@ button.primary.tone-warn {
 }
 .minority-bar.win .minority-fill {
   background: var(--ok);
+}
+/* ★ R066 (D-284) — 이긴 막대는 고른 사람 색 조각(위에서 아래로) · 진 막대는 죽은 회색 */
+.minority-bar.win .minority-fill {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.minority-seg {
+  flex: 1 1 0;
+  min-height: 3px;
+  border-top: 1px solid var(--surface);
+}
+.minority-seg:first-child {
+  border-top: 0;
+}
+.minority-bar:not(.win) .minority-fill {
+  background: color-mix(in srgb, var(--text-dim) 35%, var(--surface-2));
 }
 .minority-bar.mine .minority-n {
   color: var(--accent);
@@ -7816,6 +7848,40 @@ button.mg-cat-card {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   white-space: normal;
+}
+
+/* ★★ R066 (D-281 · 찬종 #34 "설명이나 예시가 긴 것들은 … 표시만 돼서 내용 보이지도 않음 · 모바일 스타일로 세로 스크롤") —
+   PC 도 한 줄에 카드 하나(세로 목록) · 카드 높이는 내용대로 · 이름 · 설명 · 예시 · 판 수 전부 생략 없이(줄을 나눠도 된다 — 설명문) */
+:where(.ui-pc) .mg-cat {
+  width: clamp(560px, 40vw, 820px);
+}
+:where(.ui-pc) .mg-cat-list,
+.mg-cat-list {
+  grid-template-columns: 1fr;
+}
+.mg-cat-body > * {
+  overflow: visible;
+}
+.mg-cat-name,
+.mg-cat-ex,
+.mg-cat-meta {
+  white-space: normal;
+  text-overflow: clip;
+}
+.mg-cat-line {
+  display: block;
+  -webkit-line-clamp: unset;
+}
+.mg-cat-ex {
+  overflow-wrap: anywhere;
+}
+.mg-set-names {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.8rem;
 }
 
 /* ★★ R065 (D-270 · 찬종 "제보 메뉴를 누르면 두 가지") — 제보 메뉴 두 갈래 · 최근 문제 · 미니게임 목록(새것 위 · 창 안 스크롤) */

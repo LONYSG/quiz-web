@@ -134,6 +134,14 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
   const chars = [...target.normalize('NFC')];
   const pct = Math.round(typingProgress(target, text) * 100);
   const hasBad = marks.includes('bad');
+  // ★★ R066 (D-285 · 찬종 #49) — 웹은 한/영(IME)을 바꿀 수 없다 → 틀린 언어로 치기 시작하면 입력칸 위에 바로 한 줄
+  //   마지막으로 친 글자와 그 자리의 글자가 한글/영문으로 갈리면(한글 자리에 영문 · 영문 자리에 한글/조합 중)
+  const typed = [...text.normalize('NFC')];
+  const lastT = typed[typed.length - 1] ?? '';
+  const want = chars[typed.length - 1] ?? '';
+  const isKo = (c: string) => /[ᄀ-ᇿㄱ-ㆎ가-힣]/.test(c);
+  const isEn = (c: string) => /[A-Za-z]/.test(c);
+  const wrongLang = canPlay && !mine && !over && lastT !== '' && ((isKo(want) && isEn(lastT)) || (isEn(want) && isKo(lastT)));
 
   return (
     <div className={`typing-stage${mobile ? ' m' : ''}${mine ? ' done' : ''}`} data-done={mine ? '1' : '0'}>
@@ -147,6 +155,11 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
           </span>
         ))}
       </p>
+      {wrongLang && (
+        <p className="typing-lang-warn" data-typing-lang-warn role="alert">
+          한/영 키를 누르세요
+        </p>
+      )}
       <input
         ref={inputRef}
         className={`typing-input${hasBad ? ' bad' : ''}`}

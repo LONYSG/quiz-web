@@ -67,6 +67,21 @@ describe('★★★ 문항 선정 — 01 12장 3단계 (모두 본 문항 제외
     const r = pickQuizItems(pool, P, (_a, id) => Number(id.slice(2)) >= 3, 5, 4);
     expect(r).toBe(null);
   });
+  it('★★ R066 (D-282) 소재 — 한 판 안에서 겹치지 않게 · 모자라면 연속만 피함 · 이번 게임에서 쓴 소재 먼저 피함 · 다 떨어지면 본 것도', () => {
+    // 물품 3가지(p0 p1 p2) × 나라 4 = 12문항
+    const wp = Array.from({ length: 12 }, (_, i) => ({ id: `w${i}`, p: `p${i % 3}` }));
+    const mat = (it: { p: string }) => it.p;
+    for (let seed = 1; seed <= 30; seed += 1) {
+      const three = pickQuizItems(wp, P, () => false, 3, seed, { materialOf: mat })!.items.map(mat);
+      expect(new Set(three).size).toBe(3); // 가짓수 ≥ 판 수 → 전부 다르게
+      const five = pickQuizItems(wp, P, () => false, 5, seed, { materialOf: mat })!.items.map(mat);
+      for (let i = 1; i < five.length; i += 1) expect(five[i]).not.toBe(five[i - 1]); // 모자라면 연속만 피함
+    }
+    const avoidP0 = pickQuizItems(wp, P, () => false, 2, 7, { materialOf: mat, avoid: new Set(['p0']) })!.items.map(mat);
+    expect(avoidP0).not.toContain('p0');
+    expect(pickQuizItems(pool, P, () => true, 5, 4)).toBeNull();
+    expect(pickQuizItems(pool, P, () => true, 5, 4, { ignoreSeen: true })?.items.length).toBe(5);
+  });
   it('같은 시드 = 같은 선택', () => expect(pickQuizItems(pool, P, () => false, 5, 9)!.items).toEqual(pickQuizItems(pool, P, () => false, 5, 9)!.items));
 });
 

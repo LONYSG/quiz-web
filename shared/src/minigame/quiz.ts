@@ -14,6 +14,15 @@ export type QuizMinigameKey = 'price' | 'worldprice' | 'photo' | 'estimate' | 'w
 export const QUIZ_MINIGAME_KEYS: readonly QuizMinigameKey[] = ['price', 'worldprice', 'photo', 'estimate', 'which'];
 
 /** 한 미니게임의 문항 수 · 문항당 입력 시간(ms) · 정답 공개(ms) · 문항 사이 준비(ms) */
+/**
+ * ★★ R066 (D-283 · 찬종 #48 "사진 이름 맞히기도 일정 시간마다 일반 힌트 - 초성 힌트") — 모든 사진 문항:
+ *   난이도 3 = 6초 뒤 일반 힌트(분류 한 줄) · 10초 뒤 초성 / 난이도 1 · 2 = 10초 뒤 초성만
+ */
+export const PHOTO_HINT_GENERAL_MS = 6_000;
+export const PHOTO_HINT_CHOSUNG_MS = 10_000;
+/** 사진 분류 → 일반 힌트 글 */
+export const PHOTO_CATEGORY_KO: Record<string, string> = { everyday: '생활용품', object: '물건', place: '장소', person: '인물', food: '음식', animal: '동물', logo: '로고' };
+
 export const QUIZ_SPEC: Record<QuizMinigameKey, { items: number; playMs: number; revealMs: number; readyMs: number }> = {
   price: { items: 5, playMs: 12_000, revealMs: 3_000, readyMs: 1_500 },
   worldprice: { items: 5, playMs: 12_000, revealMs: 3_000, readyMs: 1_500 },
@@ -75,24 +84,68 @@ export interface QuizPick<T> {
   stage2: number;
 }
 
+/**
+ * ★★ R066 (D-282 · 찬종 #46 "빅맥지수에서 같은 물품이 연속해서 나오지 않도록 … 웬만하면 5판 모두 다른 물품") — 고를 때 덧붙이는 것
+ *   materialOf: 문항의 소재(빅맥 = 물품 · 그 밖 = 문항 자체) — 한 판 안에서 소재가 겹치지 않게 먼저 고르고 · 모자라면 연속만 피한다
+ *   avoid: 이번 게임(시리즈)에서 이미 쓴 소재 — 먼저 피한다(모자라면 쓴다)
+ *   ignoreSeen: 모두 본 문항도 받는다(★ R066 C3 — 고른 미니게임이 다 떨어졌을 때 멈추지 않게)
+ */
+export interface QuizPickOpts<T> {
+  materialOf?: (it: T) => string;
+  avoid?: ReadonlySet<string>;
+  ignoreSeen?: boolean;
+}
+
 export function pickQuizItems<T extends { id: string }>(
   pool: readonly T[],
   participants: readonly string[],
   experienced: (accountId: string, itemId: string) => boolean,
   n: number,
   seed: number,
+  opts: QuizPickOpts<T> = {},
 ): QuizPick<T> | null {
   const rnd = seededRandom((seed ^ 0x51e7) >>> 0);
   const scored = pool.map((it) => {
     const who = participants.filter((a) => experienced(a, it.id));
     return { it, who, r: rnd() };
   });
-  const ok = scored.filter((x) => participants.length === 0 || x.who.length < participants.length);
+  const ok = opts.ignoreSeen ? scored : scored.filter((x) => participants.length === 0 || x.who.length < participants.length);
   ok.sort((a, b) => a.who.length - b.who.length || a.r - b.r);
   if (ok.length < n) return null;
-  const chosen = ok.slice(0, n);
-  // 고른 뒤 순서는 섞는다(본 사람이 많은 문항이 늘 뒤에 오지 않게)
+  const mat = opts.materialOf ?? ((it: T) => it.id);
+  const avoid = opts.avoid ?? new Set<string>();
+  // 소재가 안 겹치게 · 이번 게임에서 안 쓴 소재 먼저 → 안 겹치게만 → 나머지
+  const chosen: typeof ok = [];
+  const used = new Set<string>();
+  const take = (pred: (x: (typeof ok)[number]) => boolean) => {
+    for (const x of ok) {
+      if (chosen.length >= n) return;
+      if (chosen.includes(x) || !pred(x)) continue;
+      chosen.push(x);
+      used.add(mat(x.it));
+    }
+  };
+  take((x) => !used.has(mat(x.it)) && !avoid.has(mat(x.it)));
+  take((x) => !used.has(mat(x.it)));
+  take(() => true);
+  // 고른 뒤 순서는 섞는다(본 사람이 많은 문항이 늘 뒤에 오지 않게) · 같은 소재가 붙지 않게 —
+  //   매번 "바로 앞과 다른 소재 중 남은 수가 가장 많은 소재" 의 첫 것(섞인 순서)을 놓는다(되는 경우엔 늘 연속 없이 놓인다)
   chosen.sort((a, b) => a.r - b.r);
+  const left = [...chosen];
+  chosen.length = 0;
+  while (left.length > 0) {
+    const last = chosen.length > 0 ? mat(chosen[chosen.length - 1]!.it) : null;
+    const count = new Map<string, number>();
+    for (const x of left) count.set(mat(x.it), (count.get(mat(x.it)) ?? 0) + 1);
+    let best = -1;
+    for (let i = 0; i < left.length; i += 1) {
+      const m = mat(left[i]!.it);
+      if (m === last) continue;
+      if (best < 0 || count.get(m)! > count.get(mat(left[best]!.it))!) best = i;
+    }
+    if (best < 0) best = 0; // 같은 소재만 남았다
+    chosen.push(left.splice(best, 1)[0]!);
+  }
   return {
     items: chosen.map((x) => x.it),
     experiencedBy: new Map(chosen.filter((x) => x.who.length > 0).map((x) => [x.it.id, x.who])),

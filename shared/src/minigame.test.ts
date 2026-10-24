@@ -1,4 +1,4 @@
-// ★★ R050 — 미니게임 공통 규칙 · 균형의수호자 넓이 계산 단위 검사
+// ★★ R050 — 미니게임 공통 규칙 · 균형의 수호자 넓이 계산 단위 검사
 import { describe, expect, it } from 'vitest';
 import {
   decimalsForRanking,
@@ -10,7 +10,7 @@ import {
   minigameReward,
   rankRound,
 } from './minigame.js';
-import { balanceItem, balanceSplit, BALANCE_BOTTOM_Y, BALANCE_TOP_Y, clipHalfPlane, polygonArea, type Pt } from './balance.js';
+import { BALANCE_KINDS, balanceItem, balanceRoundKinds, balanceSplit, BALANCE_BOTTOM_Y, BALANCE_TOP_Y, clipHalfPlane, polygonArea, type Pt } from './balance.js';
 
 describe('등장 자리 — 10문제마다 · 마지막 뒤 없음 · 5~9 가운데 · 4 이하 없음', () => {
   it.each([
@@ -207,7 +207,7 @@ describe('★★ 넓이 나누기 — 해석값과 일치', () => {
     expect(left + right).toBeCloseTo(2800, 9);
   });
   it('물건 — 같은 시드면 같은 모양 · 넓이 > 0 · 상자 안', () => {
-    for (const kind of ['steak', 'pizza', 'cake', 'donut'] as const) {
+    for (const kind of BALANCE_KINDS) {
       const a = balanceItem(kind, 1234);
       const b = balanceItem(kind, 1234);
       expect(a.outer).toEqual(b.outer);
@@ -220,5 +220,32 @@ describe('★★ 넓이 나누기 — 해석값과 일치', () => {
       }
     }
     expect(balanceItem('donut', 7).holes.length).toBe(1);
+  });
+  it('★ R066 (D-286) 물건 12종 · 시드 200개 — 구멍은 바깥 안 · 가운데 세로선이 넓이를 두 쪽으로 · 3판째는 구멍 있는 것', () => {
+    expect(BALANCE_KINDS.length).toBe(12);
+    const inside = (poly: readonly Pt[], x: number, y: number) => {
+      let c = false;
+      for (let i = 0, j = poly.length - 1; i < poly.length; j = i, i += 1) {
+        const a = poly[i]!;
+        const b = poly[j]!;
+        if (a.y > y !== b.y > y && x < ((b.x - a.x) * (y - a.y)) / (b.y - a.y) + a.x) c = !c;
+      }
+      return c;
+    };
+    for (const kind of BALANCE_KINDS) {
+      for (let seed = 1; seed <= 200; seed += 1) {
+        const it = balanceItem(kind, seed);
+        expect(it.label.length).toBeGreaterThan(0);
+        for (const h of it.holes) for (const p of h) expect(inside(it.outer, p.x, p.y)).toBe(true);
+        const s = balanceSplit(it, { top: 50, bottom: 50 });
+        expect(s.aPct).toBeGreaterThan(5);
+        expect(s.aPct).toBeLessThan(95);
+      }
+    }
+    for (let seed = 1; seed <= 50; seed += 1) {
+      const k = balanceRoundKinds(seed);
+      expect(k[0]).not.toBe(k[1]);
+      expect(['donut', 'cheese']).toContain(k[2]);
+    }
   });
 });

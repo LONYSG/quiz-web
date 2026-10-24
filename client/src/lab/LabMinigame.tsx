@@ -1,7 +1,7 @@
 // =============================================================================
 // ★★ /lab/minigame — 미니게임 그림 · 장면 모음 (R050 · 로그인한 사람만 · 화면 점검용)
 //
-// ★ 왜: 균형의수호자 물건 그림 품질(찬종 · 설계 에이전트가 보고 Fable 재작업 여부를 정한다)과 단계별 장면을
+// ★ 왜: 균형의 수호자 물건 그림 품질(찬종 · 설계 에이전트가 보고 Fable 재작업 여부를 정한다)과 단계별 장면을
 //   **정해진 데이터**로 한 화면에 모아 본다. 실제 판(ui-check:minigame)은 무작위 시드라 물건 넷이 다 나오지 않을 수 있다.
 // ★ 장면은 MinigameStage 를 그대로 쓰고, 보기(view)만 가짜다 — 서버에 아무것도 보내지 않는다(socket 자리에 빈 객체).
 // =============================================================================
@@ -19,6 +19,8 @@ import {
   circleThumb,
   minigameInfo,
   type BalanceKind,
+  BALANCE_KINDS,
+  balanceScene,
   type MinigameKey,
   type MinigamePhase,
 } from '@quiz/shared';
@@ -27,7 +29,7 @@ import { MeatArt } from '../minigame/CakeWait.js';
 import MinigameStage from '../minigame/MinigameStage.js';
 import type { MinigameView, PlayerView } from '../useRoom.js';
 
-const KINDS: BalanceKind[] = ['steak', 'pizza', 'cake', 'donut'];
+const KINDS: readonly BalanceKind[] = BALANCE_KINDS; // ★ R066 — 12종
 const fakeSocket = { emit: () => undefined, on: () => undefined, off: () => undefined } as unknown as Socket;
 
 const PEOPLE = [
@@ -352,7 +354,7 @@ export default function LabMinigame({ myAccountId }: { myAccountId: string }) {
   return (
     <div className="lab-page">
       <h1>미니게임 그림 모음</h1>
-      <p className="dim">균형의수호자 물건 넷 (시드 {kindSeed}) · 같은 시드면 모두에게 같은 그림 · 테두리 = 서버가 넓이를 재는 다각형 · 내 계정 {myAccountId}</p>
+      <p className="dim">균형의 수호자 물건 넷 (시드 {kindSeed}) · 같은 시드면 모두에게 같은 그림 · 테두리 = 서버가 넓이를 재는 다각형 · 내 계정 {myAccountId}</p>
       <div className="lab-items">
         {KINDS.map((k) => {
           const item = balanceItem(k, kindSeed);
@@ -369,16 +371,20 @@ export default function LabMinigame({ myAccountId }: { myAccountId: string }) {
         })}
       </div>
       <div className="lab-items">
-        {[11, 222, 3333, 44444].map((s) => (
-          <figure key={s} className="lab-item small">
-            <svg viewBox="0 0 100 100" className="balance-svg">
-              <BalanceArt item={balanceItem(KINDS[s % 4]!, s)} />
-            </svg>
-            <figcaption className="mono">
-              {KINDS[s % 4]} · {s}
-            </figcaption>
-          </figure>
-        ))}
+        {/* ★ R066 (D-286) — 물건 12종 · 장면 셋(시드 % 3 — 그대로 · 도마 · 소풍 천) */}
+        {KINDS.map((k, i) => {
+          const s = 300 + i * 7;
+          return (
+            <figure key={k} className="lab-item small" data-balance-kind={k}>
+              <svg viewBox="0 0 100 100" className="balance-svg">
+                <BalanceArt item={balanceItem(k, s)} />
+              </svg>
+              <figcaption className="mono">
+                {balanceItem(k, s).label} · {balanceScene(s)}
+              </figcaption>
+            </figure>
+          );
+        })}
         {/* ★ R063 — 고기 굽기 4단계 */}
         {([[0, '생고기'], [0.55, '덜 익음'], [1, '딱 좋게!'], [1.5, '새까맣게 탐']] as const).map(([d, t]) => (
           <figure key={t} className="lab-item small" data-meat={d}>

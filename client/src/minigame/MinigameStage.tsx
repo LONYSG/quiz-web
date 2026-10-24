@@ -217,6 +217,12 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         <div className="mg-ready">
           <p className="mg-ready-n mono">{roundNo}판</p>
           <p className="mg-ready-desc">{readyDesc(view)}</p>
+          {/* ★ R066 (D-285 · 찬종 #49) — 타자: 다음 글의 언어를 크게(한/영 키를 미리) */}
+          {view.key === 'typing' && (
+            <p className={`mg-ready-lang lang-${view.round?.params?.lang === 'en' ? 'en' : 'ko'}`} data-typing-lang>
+              다음 글 <strong>{view.round?.params?.lang === 'en' ? '영어 (A)' : '한글 (가)'}</strong>
+            </p>
+          )}
           <p className="mg-ready-go">준비…</p>
         </div>
       )}
@@ -751,13 +757,19 @@ function R053Result({ view, mine, decimals }: { view: MinigameView; mine: Miniga
     const counts = (rv.counts as Record<string, number> | undefined) ?? {};
     const minority = (rv.minority as number[] | undefined) ?? [];
     const max = Math.max(1, ...Object.values(counts));
+    // ★ R066 (D-284 · 찬종 #45 "적게 한 사람들 그래프 색깔 자기 고유 색으로 · 겹친 그래프는 회색") — 이긴 막대 = 고른 사람마다 그 사람 색 조각
+    const rows = view.roundResults.find((r) => r.roundIndex === view.roundIndex)?.rows ?? [];
+    const colorOf = (acc: string) => view.participants.find((x) => x.accountId === acc)?.colorIndex ?? 0;
+    const pickers = (n: number) => rows.filter((r) => r.extra?.pick === n).map((r) => colorOf(r.accountId));
     return (
       <div className="mg-r051-result minority-result">
         <div className="minority-bars" aria-label="숫자마다 고른 사람 수">
           {[1, 2, 3, 4, 5].map((n) => (
             <div key={n} className={`minority-bar${minority.includes(n) ? ' win' : ''}${mine?.extra?.pick === n ? ' mine' : ''}`} data-n={n}>
               <span className="minority-count mono">{counts[n] ?? 0}</span>
-              <span className="minority-fill" style={{ height: `${((counts[n] ?? 0) / max) * 100}%` }} />
+              <span className="minority-fill" style={{ height: `${((counts[n] ?? 0) / max) * 100}%` }}>
+                {minority.includes(n) && pickers(n).map((c, i) => <span key={i} className="minority-seg" style={{ background: `var(--p${c})` }} />)}
+              </span>
               <span className="minority-n mono">{n}</span>
             </div>
           ))}

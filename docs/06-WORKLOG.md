@@ -338,13 +338,13 @@
 
 ---
 
-## 2026-10-17 — 미니게임 1차(틀 · 케이크 기다리기 · 균형의수호자 · 골라 하기) · 복사 막기 · PC/모바일 판정 · 태블릿/폴드 · 출제 규칙 · 소리 샘플 (R050, MAIN) — ★ 진행 기록
+## 2026-10-17 — 미니게임 1차(틀 · 케이크 기다리기 · 균형의 수호자 · 골라 하기) · 복사 막기 · PC/모바일 판정 · 태블릿/폴드 · 출제 규칙 · 소리 샘플 (R050, MAIN) — ★ 진행 기록
 
 - [x] **A 복사 막기 + PC/모바일 판정** — `client/src/noCopy.ts`(질문 · 힌트 `.no-copy` — CSS user-select/touch-callout none + copy·cut·contextmenu·dragstart·selectstart 막기 + 전체 선택 복사 때 그 부분만 뺌) · `client/src/uiMode.ts`(PC = hover:hover+pointer:fine AND 폭 ≥1000 · html.ui-pc/ui-mobile · 바뀌면 다시) · styles.css 의 폭 media 29블록을 `:where(.ui-mobile|.ui-pc)` 로(우선순위 그대로) · `client.device` → 참여자 칸 🖥/📱 · 모바일 명단 · ui-check:copy 15/15(고치기 전 빌드 5/15 — 10 FAIL 확인)
 - [x] **B 태블릿 · 폴드** — ui-check:devices 9/9(폴드 접힘 344×882 · 펼침 673×841 · iPad mini/Air/Pro · 갤럭시 탭 — 세로·가로 12 크기 × 방 목록 · 로비 · 게임(힌트) · 정답 공개 · 결과 · 샵 · 프로필 · ☰ — 터치 흉내) · 전부 모바일 UI · 가로 넘침 0 · 잘림 0 · 그림 74장(docs/design/r050/20-dev-*) 직접 봄 — **깨진 곳 없음**(고친 것 없음). 초성 글자가 위로 떠 보이는 것은 R040 PC 그림과 같다(글꼴 — 기기 문제 아님)
 - [x] **C 출제 규칙(서로의 정답 흘림 · C66)** — select.ts `answerLeaked` · 단계마다 깨끗한 후보 먼저(단계 순서 · 조기 종료 그대로) · game.shownNorm(질문 · 일반 힌트 · 해설 정규화) · 단위 7 · 봇 leak 6/6(기계 대조 시드 8×200: 규칙 끔 흘림 24 · 켬 0 · V008 쌍 같은 판 0 · 200문제 다 냄 / 실제 판 풀 3문제 × 4판 — A 다음은 늘 F)
 - [x] **D 미니게임 틀** — 0017(백업 뒤 · minigame_runs/players/rounds/results/rewards(UNIQUE run·계정)/item_experiences · game_players.device) · 상태 MINIGAME · shared minigame.ts(등장 자리 · 판 순위 · 최종 · 보상 · 소수 자리) · server/minigame(engine · defs 플러그인 · hooks) · 설정 체크박스(다시 하기 이어받음) · 포인트 = 맞힌 + 보상 − 쓴 것(points.ts 한 곳) · 연출 · 소리(징글 · BGM 모드) · 로비 골라 하기(연습) · 봇 minigame 62/62
-- [x] **E 케이크 기다리기 · 균형의수호자** — 케이크(기기 시간 · 리듬 · 가림 · 미리 계산 거부) · 균형(shared 다각형 · 서버 넓이 · 그림 SVG · 방향키 가속 · 끌기) · 단위 32(넓이 해석값 · 소수 자리) · ui-check:minigame 17/17(+F 2) · 그림 r050 30~43
+- [x] **E 케이크 기다리기 · 균형의 수호자** — 케이크(기기 시간 · 리듬 · 가림 · 미리 계산 거부) · 균형(shared 다각형 · 서버 넓이 · 그림 SVG · 방향키 가속 · 끌기) · 단위 32(넓이 해석값 · 소수 자리) · ui-check:minigame 17/17(+F 2) · 그림 r050 30~43
 - [x] **F 소리 샘플 · 들어 보기 페이지** — /lab/sound(지금 · 만든 후보 · CC0 Kenney 21 · assets/sounds/LICENSES.md) · 그림 50
 - [~] **G 문서 · 끝 점검 · 보고서** — 문서 01 · 02 · 03 · 04 · 05 · 07 D-232~236 · 08 Q-110 · 10 · 13 A60~65 · 17 · DB-ADMIN · README · 보고서 ai-out/R050.txt · 끝 점검: 봇 42/42 · typecheck · vitest 406 · smoke 12 ✓ · ★ ui-check 단계들은 Claude Code 메모리 회수로 멈춰 **못 돌림**(본편 363 OK · FAIL 0 까지) — 다시 돌릴 것
 

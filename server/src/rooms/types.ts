@@ -137,7 +137,7 @@ export interface ActiveGame {
    * ★★★ R052 — 퀴즈류 미니게임 문항(적재본)과 참가자 경험("키|문항 id"). 게임 시작 때 한 번 읽는다(퀴즈 풀과 같은 꼴).
    *   미니게임 포함이 꺼졌거나 퀴즈류를 고르지 않았으면 null — 그때는 피지컬만 나온다.
    */
-  minigameQuiz: { data: import('../db/minigameItems.js').QuizData; experienced: Map<string, Set<string>> } | null;
+  minigameQuiz: { data: import('../db/minigameItems.js').QuizData; experienced: Map<string, Set<string>>; /** ★ R066 — 이번 게임에서 쓴 소재 */ used?: Set<string> } | null;
   /**
    * ★★★ R057 — 미니게임만 판(D-249). 퀴즈 판이면 null.
    *   total = 할 미니게임 수 · done = 끝난 수 · totals = 계정 → 순위 점수 합(미니게임마다 참가자 수 − 최종 순위 + 1) · lastRank = 마지막 미니게임의 최종 순위(동점 가르기)

@@ -5893,7 +5893,7 @@ async function scenarioLeak() {
 }
 
 // -----------------------------------------------------------------------------
-// ★★★ minigame — R050 D·E 미니게임 틀 · 케이크 기다리기 · 균형의수호자 (D-234 · D-235)
+// ★★★ minigame — R050 D·E 미니게임 틀 · 케이크 기다리기 · 균형의 수호자 (D-234 · D-235)
 //   자기 서버(SCENARIO_ENV): 정답 공개 대기 200ms · 판 진행 밖 단계 ×0.05 (판 진행 시간은 그대로)
 //   [1] 등장 자리 · 횟수 — 문제 수 4 · 5 · 9 · 10 · 11 · 20 · 200 (마지막 뒤 없음 · 상한 10)
 //   [2] 보상 — 참가 2 · 3 · 5명 (균형 · 순위를 정해 둔 자르기) · 판 점수에 + · 포인트 = 맞힌 수 + 보상 − 쓴 것(API = SQL) · 보상 중복 넣기 → 0행
@@ -5969,7 +5969,7 @@ async function runsOfGame(gameId) {
 }
 
 async function scenarioMinigame() {
-  log('시나리오 minigame — ★★★ 미니게임 틀 · 케이크 기다리기 · 균형의수호자 (R050)');
+  log('시나리오 minigame — ★★★ 미니게임 틀 · 케이크 기다리기 · 균형의 수호자 (R050)');
   const sh = await mgShared();
   const bots = await makeBots(6);
   const [host] = bots;
@@ -6938,6 +6938,34 @@ async function scenarioMgCount() {
     await sleep(300);
   }
   log(`  표: ${table.map((r) => `${r.key} ${r.count}/2`).join(' · ')}`);
+
+  // ── ★ R066 C1 (찬종 #33) — 방장이 고르는 미니게임 목록이 손님에게 바로
+  let m = g.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 20, minigameKeys: ['balance', 'angle', 'gauge'] });
+  await g.waitFor(() => g.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.minigameKeys?.join() === 'balance,angle,gauge'), 4000, '손님 설정').catch(() => undefined);
+  expectTrue('★★ C1 방장이 고른 목록이 손님 설정에 바로(lobby.settingsUpdated)', g.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.minigameKeys?.join() === 'balance,angle,gauge' && e.settings?.minigameRounds === 20));
+  // ── ★ R066 C3 (찬종 #36) — 20판 · 게임 3개 → 3개씩 한 바퀴(사이클 7번 · 바퀴 안에서 안 겹침)
+  const quick = { balance: { top: 50, bottom: 50, final: true }, angle: { deg: 90, final: true }, gauge: { elapsedMs: 300 } };
+  for (const b of bots) {
+    const done = new Set();
+    b.onMinigame = (mg) => {
+      if (!mg || mg.phase !== 'play' || mg.spectating) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (done.has(k)) return;
+      done.add(k);
+      setTimeout(() => b.socket?.connected && send(b, mg, quick[mg.key]), 400);
+    };
+  }
+  m = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(m, 'game.started').length > 0, 12000, '시작');
+  const gameId = host.since(m, 'game.started')[0].gameId;
+  await host.waitFor(() => host.since(m, 'game.result').length > 0, 900000, '20판 끝');
+  const keys = (await runsOfGame(gameId)).map((r) => r.minigame_key);
+  const cycles = [];
+  for (let i = 0; i < keys.length; i += 3) cycles.push(keys.slice(i, i + 3));
+  expectTrue(`★★★ C3 20판 · 게임 3개 → 20개 · 사이클 ${cycles.length}번 · 바퀴마다 안 겹침`, keys.length === 20 && cycles.length === 7 && cycles.every((c) => new Set(c).size === c.length), keys.join(','));
+  for (const b of bots) b.onMinigame = null;
 }
 
 // ★★★ R053 — 미니게임 3차 봇 (D-241) — mgminority · mgoddone · mggauge (mgtwothirds 는 R060 게임 삭제와 함께 뺌)
@@ -7400,10 +7428,10 @@ async function scenarioMgOnly() {
   }
   // ── 설정 — 범위 밖 거부 · 3개
   let m = host.mark();
-  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 11, minigameKeys: ['tap'] });
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 51, minigameKeys: ['tap'] });
   await sleep(300);
   const e11 = host.since(m, 'error')[0];
-  expectTrue('★ 미니게임 수 11 → BAD_REQUEST(미니게임 수 2~10)', e11?.code === 'BAD_REQUEST' && /미니게임 수/.test(e11?.detail ?? e11?.message ?? ''), JSON.stringify(e11));
+  expectTrue('★ 미니게임 수 51 → BAD_REQUEST(미니게임 수 2~50 · R066)', e11?.code === 'BAD_REQUEST' && /미니게임 수/.test(e11?.detail ?? e11?.message ?? ''), JSON.stringify(e11));
   m = host.mark();
   host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 3, minigameKeys: ['tap'] });
   await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.minigameOnly === true), 4000, '설정').catch((e) => {

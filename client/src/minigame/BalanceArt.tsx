@@ -1,5 +1,5 @@
 // =============================================================================
-// ★★★ 균형의수호자 — 물건 그림 (R050 · D-235)
+// ★★★ 균형의 수호자 — 물건 그림 (R050 · D-235)
 //
 // ★ 찬종: "퀄리티 있고 흥미 있을만한 요소로 사물을 표현하는게 중요할듯 해." · "마블링 · 그릴 자국 · 윤기가 있는 스테이크 / 토핑이 흩어진 피자 조각 /
 //   딸기 케이크 / 구멍 있는 도넛" (브리핑)
@@ -12,7 +12,7 @@
 // =============================================================================
 
 import { useId, useMemo } from 'react';
-import { seededRandom, type BalanceItem, type Pt } from '@quiz/shared';
+import { balanceScene, seededRandom, type BalanceItem, type Pt } from '@quiz/shared';
 
 export function pathOf(poly: readonly Pt[]): string {
   if (poly.length === 0) return '';
@@ -134,6 +134,8 @@ export default function BalanceArt({ item, small = false }: Props) {
         </linearGradient>
       </defs>
 
+      {/* ★ R066 — 장면(배경 · 넓이와 무관) */}
+      {!small && <SceneBack seed={item.seed} id={id} />}
       {/* 그림자 */}
       {!small && <path d={d} fill="#000" opacity={0.22} transform="translate(1.4 2.4)" filter={`url(#${id('soft')})`} fillRule="evenodd" />}
 
@@ -289,6 +291,8 @@ export default function BalanceArt({ item, small = false }: Props) {
           <path d={d} fill="none" stroke="#8a5222" strokeWidth={0.5} fillRule="evenodd" />
         </>
       )}
+
+      {EXTRA_KINDS.has(item.kind) && <ExtraArt item={item} d={d} clip={id('clip')} small={small} id={id} />}
     </g>
   );
 }
@@ -414,4 +418,173 @@ function decorate(item: BalanceItem) {
     out.donutShine = `M${c.x - rr * 0.9},${c.y - rr * 0.35} Q${c.x - rr * 0.6},${c.y - rr * 0.95} ${c.x + rr * 0.05},${c.y - rr * 0.98}`;
   }
   return out;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ R066 (D-286 · 찬종 #51 "이미지나 상황 더 추가해줘") — 물건 8종 · 장면 2(나무 도마 · 소풍 천)
+//   테두리는 그대로 shared 다각형 · 장식은 그 안쪽(clip) · 시드로 같은 그림. 장면은 넓이와 무관한 배경(그림자 아래).
+// ─────────────────────────────────────────────────────────────────────────────
+const EXTRA_KINDS = new Set(['bread', 'cheese', 'watermelon', 'egg', 'cookie', 'sandwich', 'omurice', 'heart']);
+
+/** 장면 — plain(지금 그대로) · board(나무 도마) · picnic(빨강 체크 천) */
+function SceneBack({ seed, id }: { seed: number; id: (s: string) => string }) {
+  const scene = balanceScene(seed);
+  if (scene === 'board') {
+    return (
+      <g className="balance-scene scene-board" aria-hidden="true">
+        <defs>
+          <linearGradient id={id('wood')} x1="0" y1="0" x2="1" y2="0.3">
+            <stop offset="0%" stopColor="#d9a86c" />
+            <stop offset="50%" stopColor="#e6bb83" />
+            <stop offset="100%" stopColor="#c8925a" />
+          </linearGradient>
+        </defs>
+        <rect x={3} y={12} width={94} height={76} rx={9} fill={`url(#${id('wood')})`} />
+        {[22, 34, 47, 61, 74].map((y, i) => (
+          <path key={i} d={`M6 ${y} C 30 ${y - 2 + (i % 2) * 3}, 60 ${y + 2}, 94 ${y - 1}`} fill="none" stroke="#b07a45" strokeWidth={0.5} opacity={0.5} />
+        ))}
+        <circle cx={90} cy={19} r={2.6} fill="#a8723f" opacity={0.7} />
+        <rect x={3} y={12} width={94} height={76} rx={9} fill="none" stroke="#a8723f" strokeWidth={0.8} />
+      </g>
+    );
+  }
+  if (scene === 'picnic') {
+    const cells = [];
+    for (let r = 0; r < 10; r += 1) for (let c = 0; c < 10; c += 1) if ((r + c) % 2 === 0) cells.push(<rect key={`${r}-${c}`} x={c * 10} y={r * 10} width={10} height={10} fill="#e86a6a" opacity={0.55} />);
+    return (
+      <g className="balance-scene scene-picnic" aria-hidden="true">
+        <rect x={0} y={0} width={100} height={100} rx={6} fill="#fff6f0" />
+        {cells}
+        {[...Array(10)].map((_, i) => (
+          <rect key={`v${i}`} x={i * 10 + 4} y={0} width={2} height={100} fill="#fff" opacity={0.35} />
+        ))}
+      </g>
+    );
+  }
+  return null;
+}
+
+function ExtraArt({ item, d, clip, small, id }: { item: BalanceItem; d: string; clip: string; small: boolean; id: (s: string) => string }) {
+  const deco = useMemo(() => {
+    const rnd = seededRandom(item.seed * 13 + item.kind.length * 101);
+    const c = centroid(item.outer);
+    const b = bbox(item.outer);
+    return {
+      c,
+      b,
+      dots: scatter(rnd, item.outer, item.holes, item.kind === 'cookie' ? 9 : item.kind === 'watermelon' ? 11 : 14, item.kind === 'watermelon' ? 7 : 4, item.kind === 'cookie' ? 9 : 6),
+      rot: Array.from({ length: 16 }, () => rnd() * 180),
+      yolk: { x: c.x + (rnd() - 0.5) * 8, y: c.y + (rnd() - 0.5) * 6, r: 10 + rnd() * 2 },
+    };
+  }, [item]);
+  const k = item.kind;
+  const g = (s: string) => `url(#${id(s)})`;
+  return (
+    <>
+      <defs>
+        <radialGradient id={id('x-base')} cx="45%" cy="40%" r="75%">
+          {k === 'bread' && [<stop key="a" offset="0%" stopColor="#fbecc8" />, <stop key="b" offset="100%" stopColor="#f0d394" />]}
+          {k === 'cheese' && [<stop key="a" offset="0%" stopColor="#ffe68a" />, <stop key="b" offset="100%" stopColor="#f2bf3a" />]}
+          {k === 'watermelon' && [<stop key="a" offset="0%" stopColor="#ff6b7d" />, <stop key="b" offset="100%" stopColor="#e23a52" />]}
+          {k === 'egg' && [<stop key="a" offset="0%" stopColor="#ffffff" />, <stop key="b" offset="100%" stopColor="#f3efe6" />]}
+          {k === 'cookie' && [<stop key="a" offset="0%" stopColor="#e7b87a" />, <stop key="b" offset="100%" stopColor="#c48748" />]}
+          {k === 'sandwich' && [<stop key="a" offset="0%" stopColor="#fff2d6" />, <stop key="b" offset="100%" stopColor="#f3dcae" />]}
+          {k === 'omurice' && [<stop key="a" offset="0%" stopColor="#ffe27a" />, <stop key="b" offset="100%" stopColor="#f6b93b" />]}
+          {k === 'heart' && [<stop key="a" offset="0%" stopColor="#8a4b2e" />, <stop key="b" offset="100%" stopColor="#4a2414" />]}
+        </radialGradient>
+        <radialGradient id={id('x-yolk')} cx="40%" cy="35%" r="70%">
+          <stop offset="0%" stopColor="#ffd25e" />
+          <stop offset="100%" stopColor="#f39c12" />
+        </radialGradient>
+      </defs>
+      <path d={d} fill={g('x-base')} fillRule="evenodd" />
+      <g clipPath={`url(#${clip})`}>
+        {k === 'bread' && (
+          <>
+            {/* 테두리 갈색 껍질 · 속살 구멍 */}
+            <path d={d} fill="none" stroke="#c4843f" strokeWidth={7} />
+            {deco.dots.map((p, i) => (
+              <ellipse key={i} cx={p.x} cy={p.y} rx={0.9} ry={0.6} fill="#d9b678" opacity={0.7} transform={`rotate(${deco.rot[i % 16]} ${p.x} ${p.y})`} />
+            ))}
+          </>
+        )}
+        {k === 'cheese' && (
+          <>
+            {item.holes.map((h, i) => (
+              <path key={i} d={pathOf(h)} fill="none" stroke="#c98f12" strokeWidth={1.8} opacity={0.55} />
+            ))}
+            {deco.dots.slice(0, 6).map((p, i) => (
+              <circle key={i} cx={p.x} cy={p.y} r={1.1} fill="#e2a823" opacity={0.6} />
+            ))}
+            <path d={d} fill="none" stroke="#e0a21c" strokeWidth={2.4} opacity={0.6} />
+          </>
+        )}
+        {k === 'watermelon' && (
+          <>
+            {/* 껍질 — 초록 · 연두 띠 */}
+            <path d={d} fill="none" stroke="#2f8f46" strokeWidth={9} />
+            <path d={d} fill="none" stroke="#bfe8a6" strokeWidth={5.4} />
+            <path d={d} fill="none" stroke="#ffd0d6" strokeWidth={3} opacity={0.7} />
+            {deco.dots.map((p, i) => (
+              <ellipse key={i} cx={p.x} cy={p.y} rx={0.9} ry={1.6} fill="#2a1a12" transform={`rotate(${deco.rot[i % 16]! - 90} ${p.x} ${p.y})`} />
+            ))}
+          </>
+        )}
+        {k === 'egg' && (
+          <>
+            <path d={d} fill="none" stroke="#e9d9b8" strokeWidth={2.2} opacity={0.8} />
+            <circle cx={deco.yolk.x} cy={deco.yolk.y} r={deco.yolk.r} fill={g('x-yolk')} />
+            {!small && <ellipse cx={deco.yolk.x - 3} cy={deco.yolk.y - 3.5} rx={3} ry={1.8} fill="#fff" opacity={0.55} />}
+          </>
+        )}
+        {k === 'cookie' && (
+          <>
+            {deco.dots.map((p, i) => (
+              <path key={i} d={`M${p.x - 2.2} ${p.y + 1} Q ${p.x - 1} ${p.y - 2.4} ${p.x + 1.8} ${p.y - 0.8} Q ${p.x + 2.6} ${p.y + 1.6} ${p.x} ${p.y + 2} Z`} fill="#4b2a17" transform={`rotate(${deco.rot[i % 16]} ${p.x} ${p.y})`} />
+            ))}
+            <path d={d} fill="none" stroke="#a96a2e" strokeWidth={2} opacity={0.5} />
+          </>
+        )}
+        {k === 'sandwich' && (
+          <>
+            {/* 자른 면 — 빵 껍질 · 양상추 · 햄 · 치즈 줄 */}
+            <path d={d} fill="none" stroke="#c98b45" strokeWidth={6} />
+            {[
+              { y: deco.c.y - 7, c: '#7cc35b', w: 3.2 },
+              { y: deco.c.y - 1.5, c: '#f2a0a8', w: 3.4 },
+              { y: deco.c.y + 4, c: '#f6d04d', w: 2.6 },
+            ].map((l, i) => (
+              <path key={i} d={`M${deco.b.x0} ${l.y} Q ${(deco.b.x0 + deco.b.x1) / 2} ${l.y + (i % 2 ? 2 : -2)} ${deco.b.x1} ${l.y}`} fill="none" stroke={l.c} strokeWidth={l.w} strokeLinecap="round" />
+            ))}
+          </>
+        )}
+        {k === 'omurice' && (
+          <>
+            {/* 케첩 물결 · 파슬리 */}
+            <path
+              d={`M${deco.b.x0 + 10} ${deco.c.y} ${Array.from({ length: 8 }, (_, i) => `Q ${deco.b.x0 + 10 + (i + 0.5) * ((deco.b.x1 - deco.b.x0 - 20) / 8)} ${deco.c.y + (i % 2 ? 5 : -5)} ${deco.b.x0 + 10 + (i + 1) * ((deco.b.x1 - deco.b.x0 - 20) / 8)} ${deco.c.y}`).join(' ')}`}
+              fill="none"
+              stroke="#d42a2a"
+              strokeWidth={2.6}
+              strokeLinecap="round"
+            />
+            {deco.dots.slice(0, 5).map((p, i) => (
+              <circle key={i} cx={p.x} cy={p.y} r={0.9} fill="#3f8f3a" />
+            ))}
+            <path d={d} fill="none" stroke="#e39b1c" strokeWidth={2} opacity={0.5} />
+          </>
+        )}
+        {k === 'heart' && (
+          <>
+            {!small && <ellipse cx={deco.c.x - 12} cy={deco.c.y - 14} rx={6} ry={3} fill="#fff" opacity={0.25} transform={`rotate(-30 ${deco.c.x - 12} ${deco.c.y - 14})`} />}
+            {[0, 1, 2].map((i) => (
+              <path key={i} d={`M${deco.b.x0} ${deco.c.y - 6 + i * 7} Q ${deco.c.x} ${deco.c.y - 10 + i * 7} ${deco.b.x1} ${deco.c.y - 4 + i * 7}`} fill="none" stroke="#f7a8c4" strokeWidth={1.4} strokeLinecap="round" opacity={0.9} />
+            ))}
+            <path d={d} fill="none" stroke="#2e140a" strokeWidth={1.6} opacity={0.5} />
+          </>
+        )}
+      </g>
+      <path d={d} fill="none" stroke="#000" strokeOpacity={0.25} strokeWidth={0.5} fillRule="evenodd" />
+    </>
+  );
 }

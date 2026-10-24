@@ -1,5 +1,5 @@
 // =============================================================================
-// ★★★ 균형의수호자 — 물건 모양 · 넓이 나누기 (R050 · D-235)
+// ★★★ 균형의 수호자 — 물건 모양 · 넓이 나누기 (R050 · D-235)
 //
 // ★ 찬종: "닌텐도스위치 '마리오 파티 잼버리'의 게임에서 착안 … 사물의 상단·하단에 수평으로 선이 있고 각각 지점이 표시가 돼
 //   (사람마다 랜덤한 위치에 등장) 이 위 아래 지점을 키보드 좌우로 움직일 수 있고 위 아래는 키보드 상하 키로 전환 …
@@ -16,7 +16,15 @@ export interface Pt {
   y: number;
 }
 
-export type BalanceKind = 'steak' | 'pizza' | 'cake' | 'donut';
+/** ★ R066 (D-286 · 찬종 #51 "이미지나 상황 더 추가해줘. 이거 재밌음") — 물건 4 → 12 (식빵 · 치즈 · 수박 · 계란 프라이 · 쿠키 · 샌드위치 · 오므라이스 · 하트 초콜릿) */
+export type BalanceKind = 'steak' | 'pizza' | 'cake' | 'donut' | 'bread' | 'cheese' | 'watermelon' | 'egg' | 'cookie' | 'sandwich' | 'omurice' | 'heart';
+/** 모든 물건(그림 확인 · 검사) */
+export const BALANCE_KINDS: readonly BalanceKind[] = ['steak', 'pizza', 'cake', 'donut', 'bread', 'cheese', 'watermelon', 'egg', 'cookie', 'sandwich', 'omurice', 'heart'];
+/** ★ R066 — 장면(물건 아래 배경 · 넓이와 무관) — 시드로 정한다(plain = 지금 그대로 · 나무 도마 · 소풍 천) */
+export type BalanceScene = 'plain' | 'board' | 'picnic';
+export function balanceScene(seed: number): BalanceScene {
+  return (['plain', 'board', 'picnic'] as const)[seed % 3]!;
+}
 
 export interface BalanceItem {
   kind: BalanceKind;
@@ -46,7 +54,20 @@ export function seededRandom(seed: number): () => number {
   };
 }
 
-const KIND_LABEL: Record<BalanceKind, string> = { steak: '스테이크', pizza: '피자 조각', cake: '딸기 케이크', donut: '도넛' };
+const KIND_LABEL: Record<BalanceKind, string> = {
+  steak: '스테이크',
+  pizza: '피자 조각',
+  cake: '딸기 케이크',
+  donut: '도넛',
+  bread: '식빵',
+  cheese: '구멍 치즈',
+  watermelon: '수박 조각',
+  egg: '계란 프라이',
+  cookie: '초코칩 쿠키',
+  sandwich: '샌드위치',
+  omurice: '오므라이스',
+  heart: '하트 초콜릿',
+};
 
 function rotate(pts: Pt[], cx: number, cy: number, ang: number): Pt[] {
   const c = Math.cos(ang);
@@ -154,23 +175,90 @@ export function balanceItem(kind: BalanceKind, seed: number): BalanceItem {
     }
     for (let i = sideN - 1; i >= 1; i -= 1) raw.push({ x: tip.x + Math.cos(start + span) * R * (i / sideN), y: tip.y + Math.sin(start + span) * R * (i / sideN) });
     outer = rotate(chaikin(chaikin(chaikin(raw))), 50, 55, (rnd() - 0.5) * 0.7);
-  } else {
+  } else if (kind === 'donut') {
     outer = blob(rnd, 50, 50, 36, 33, 120, 0.9);
     const off = 5 + rnd() * 5;
     const ang = rnd() * Math.PI * 2;
     holes = [blob(rnd, 50 + Math.cos(ang) * off, 50 + Math.sin(ang) * off, 12.5, 11.5, 64, 0.8)];
+  } else if (kind === 'bread') {
+    // 식빵 — 아래는 네모(둥근 모서리) · 위는 버섯처럼 부푼 두 봉우리
+    const w = 30 + rnd() * 4;
+    const raw: Pt[] = [];
+    const lobe = 0.9 + rnd() * 0.25;
+    for (let i = 0; i <= 40; i += 1) {
+      const t = Math.PI + (Math.PI * i) / 40; // 왼쪽 → 위 → 오른쪽
+      const bump = 1 + 0.07 * Math.cos(2 * (t - Math.PI) * 2) * lobe;
+      raw.push({ x: 50 + Math.cos(t) * (w + 6) * bump, y: 40 + Math.sin(t) * 22 * bump });
+    }
+    raw.push({ x: 50 + w, y: 78 }, { x: 50 - w, y: 78 });
+    outer = rotate(chaikin(chaikin(raw)), 50, 55, (rnd() - 0.5) * 0.5);
+  } else if (kind === 'cheese') {
+    // 구멍 치즈 — 쐐기(삼각) · 구멍 2~3개(넓이에서 빠진다)
+    const raw: Pt[] = [{ x: 14, y: 76 }, { x: 86, y: 76 }, { x: 86, y: 58 }, { x: 22 + rnd() * 8, y: 24 + rnd() * 6 }];
+    const ang = (rnd() - 0.5) * 0.6;
+    outer = rotate(chaikin(chaikin(raw)), 50, 55, ang);
+    const n = 2 + Math.floor(rnd() * 2);
+    const spots = [
+      { x: 58, y: 64 },
+      { x: 72, y: 66 },
+      { x: 44, y: 56 },
+    ];
+    holes = spots.slice(0, n).map((p) => rotate(blob(rnd, p.x + (rnd() - 0.5) * 3, p.y + (rnd() - 0.5) * 3, 4 + rnd() * 2.5, 3.6 + rnd() * 2, 40, 0.6), 50, 55, ang));
+      } else if (kind === 'watermelon') {
+    // 수박 조각 — 반달(위가 평평한 반원을 뒤집은 꼴) · 테두리 껍질은 그림만
+    const R = 40 + rnd() * 3;
+    const raw: Pt[] = [];
+    for (let i = 0; i <= 60; i += 1) {
+      const t = (Math.PI * i) / 60;
+      raw.push({ x: 50 + Math.cos(t) * R, y: 34 + Math.sin(t) * R * (0.9 + rnd() * 0.02) });
+    }
+    outer = rotate(raw, 50, 50, (rnd() - 0.5) * 0.7);
+  } else if (kind === 'egg') {
+    // 계란 프라이 — 흰자는 크게 출렁이는 덩어리
+    outer = blob(rnd, 50, 50, 36, 30, 140, 3.2, [
+      { at: rnd() * Math.PI * 2, h: 0.18, w: 0.5 },
+      { at: rnd() * Math.PI * 2, h: 0.14, w: 0.4 },
+    ]);
+  } else if (kind === 'cookie') {
+    // 쿠키 — 울퉁불퉁한 원 · 한 입 베어 먹은 자국
+    const biteAt = rnd() * Math.PI * 2;
+    outer = blob(rnd, 50, 50, 34, 33, 140, 1.6, [{ at: biteAt, h: -0.22, w: 0.22 }]);
+  } else if (kind === 'sandwich') {
+    // 샌드위치 — 대각선으로 자른 삼각형(둥근 모서리)
+    const raw: Pt[] = [{ x: 16, y: 80 }, { x: 84, y: 80 }, { x: 18 + rnd() * 6, y: 18 + rnd() * 4 }];
+    outer = rotate(chaikin(chaikin(chaikin(raw))), 50, 55, (rnd() - 0.5) * 0.8);
+  } else if (kind === 'omurice') {
+    // 오므라이스 — 럭비공 꼴(양 끝이 조금 뾰족)
+    const raw: Pt[] = [];
+    for (let i = 0; i < 120; i += 1) {
+      const t = (i / 120) * Math.PI * 2;
+      const pinch = 1 - 0.1 * Math.cos(2 * t) ** 8;
+      raw.push({ x: 50 + Math.cos(t) * 38 * pinch, y: 50 + Math.sin(t) * 22 * (1 + 0.05 * Math.sin(t * 3 + rnd() * 6)) });
+    }
+    outer = rotate(raw, 50, 50, (rnd() - 0.5) * 0.6);
+  } else {
+    // 하트 초콜릿 — 하트 곡선(조금 기울어짐 · 좌우가 살짝 다르다)
+    const skew = (rnd() - 0.5) * 0.18;
+    const raw: Pt[] = [];
+    for (let i = 0; i < 140; i += 1) {
+      const t = (i / 140) * Math.PI * 2;
+      const x = 16 * Math.sin(t) ** 3;
+      const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+      raw.push({ x: 50 + x * 2.2 * (1 + (x > 0 ? skew : -skew)), y: 50 + y * 2.2 });
+    }
+    outer = rotate(raw, 50, 50, (rnd() - 0.5) * 0.5);
   }
   const fitted = fitBox([outer, ...holes]);
   return { kind, label: KIND_LABEL[kind], seed, outer: fitted[0]!, holes: fitted.slice(1) };
 }
 
-/** 판 3개의 물건 — 앞 두 판은 스테이크 · 피자 · 케이크 중 둘(시드로) · 3판째는 도넛(꼬기) */
+/** 판 3개의 물건 — 앞 두 판은 구멍 없는 것 중 둘(시드로 · ★ R066 11종) · 3판째는 구멍 있는 것(도넛 · 구멍 치즈 — 꼬기) */
 export function balanceRoundKinds(seed: number): BalanceKind[] {
   const rnd = seededRandom(seed);
-  const pool: BalanceKind[] = ['steak', 'pizza', 'cake'];
+  const pool: BalanceKind[] = ['steak', 'pizza', 'cake', 'bread', 'watermelon', 'egg', 'cookie', 'sandwich', 'omurice', 'heart'];
   const a = pool.splice(Math.floor(rnd() * pool.length), 1)[0]!;
   const b = pool[Math.floor(rnd() * pool.length)]!;
-  return [a, b, 'donut'];
+  return [a, b, rnd() < 0.5 ? 'donut' : 'cheese'];
 }
 
 export function polygonArea(poly: readonly Pt[]): number {

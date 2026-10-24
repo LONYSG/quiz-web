@@ -120,7 +120,8 @@ export function formatTopics(topics: readonly GameTopic[]): string {
 // ★ 켜면 문제 없이 미니게임 N개(2~10 · 기본 5)를 잇달아 한다 — 깜짝 연출은 첫 미니게임에만 · 결과는 미니게임 순위 점수 합.
 //   ★ 문제 수 · 난이도 · 분야 값은 그대로 남는다(끄면 돌아온다) — 이 모드에서는 쓰지 않을 뿐.
 // ─────────────────────────────────────────────────────────────────────────────
-export const MINIGAME_ONLY_ROUNDS = { MIN: 2, MAX: 10, DEFAULT: 5 } as const;
+/** ★ R066 (D-282 · 찬종 #36 "최대 미니게임 수는 50") — 2~10 → 2~50 */
+export const MINIGAME_ONLY_ROUNDS = { MIN: 2, MAX: 50, DEFAULT: 5 } as const;
 
 export interface RoomSettingsInput {
   questionCount: number;

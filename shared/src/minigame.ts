@@ -6,7 +6,7 @@
 //   "미니게임 점수가 높아도 상관 없을것 같음 … 사람이 많으면 최대 3위까지도 포인트 줘도될듯."
 // ★ 이 파일은 서버(판정 · 점수)와 화면(표시)이 같이 쓰는 **순수 함수**만 둔다. 판정 권한은 서버에만 있다.
 //   · 등장 위치(minigameSlots) · 판 순위와 판 점수(rankRound) · 최종 순위(rankFinal) · 보상(minigameReward)
-//   · 소수 표시 자리(decimalsForRanking) — 케이크 기다리기(초) · 균형의수호자(%) 둘 다 이 함수 하나로
+//   · 소수 표시 자리(decimalsForRanking) — 케이크 기다리기(초) · 균형의 수호자(%) 둘 다 이 함수 하나로
 // ★ 값(보상 · 판 점수 · 등장 간격)은 **상수**다 — 실제로 해 보고 조정한다 (01 "미니게임" 장).
 // =============================================================================
 
@@ -86,7 +86,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   },
   {
     key: 'balance',
-    name: '균형의수호자',
+    name: '균형의 수호자',
     oneLine: '위 · 아래 점을 옮겨 음식을 정확히 반으로 나누세요! 10초',
     controlsPc: '← → 점 옮기기 · ↑ ↓ 위/아래 점 바꾸기 (꾹 누르면 빨라져요) · 마우스로 끌어도 돼요',
     controlsMobile: '두 점을 손가락으로 끌어 옮기세요',
@@ -517,5 +517,5 @@ export function cakePlayMs(r: CakeRound): number {
   return cakeTargetMs(r) + CAKE_LATE_MS;
 }
 
-/** 균형의수호자 — 판마다 10초 */
+/** 균형의 수호자 — 판마다 10초 */
 export const BALANCE_PLAY_MS = 10_000;
