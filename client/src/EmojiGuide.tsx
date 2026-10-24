@@ -86,9 +86,9 @@ export default function EmojiGuideHost() {
             <strong>1번 자리</strong>에 넣어 뒀어요.
           </li>
           <li>
-            <strong>✎</strong> 또는 숫자 자리를 눌러 다른 자리에 바꿔 넣어요.
+            <strong>✎</strong> 또는 숫자 자리로 자리를 바꿔요.
           </li>
-          <li>{mobile ? '자리를 누르면 보내고 · 길게 누르면 입력창에 넣어요.' : '숫자 키(Alt+1~0)나 자리를 누르면 보내요 · Shift+클릭은 입력창에 넣어요.'}</li>
+          <li>{mobile ? '누르면 보내기 · 길게 누르면 입력창에' : 'Alt+1~0 · 자리 누르기 = 보내기 · Shift+클릭 = 입력창에'}</li>
         </ol>
         <div className="emoji-guide-actions">
           <button type="button" className="primary" autoFocus data-emoji-guide-ok onClick={closeGuide}>

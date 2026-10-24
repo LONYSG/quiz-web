@@ -4536,7 +4536,6 @@ async function r063Flow(browser) {
   record('★★★ B 평가 목록 — 번호 열 고정폭(자릿수로 안 밀림 · 질문 시작 자리 같음) · 모바일 앞 28자 · 누르면 한 줄만 펼침(정답까지)', b1.n === 3 && b1.qnoW.length === 1 && b1.textX.length === 1 && b1.gap <= 80 && b2.open === 1 && b2.openAns && b2.shutLen.every((n) => n <= 29) && b2.over <= 0, JSON.stringify({ b1, b2 }));
   // ── E 가입 선물 토스트(봇 · 검사 계정은 원래 제외 — 검사 DB 에서 행을 넣어 토스트만 본다)
   await withPg((c) => c.query(`INSERT INTO point_grants (account_id, amount, reason, note) VALUES ($1, 50, 'signup', '가입 선물')`, [hId]));
-  await H.goto(`${BASE}/`);
   // ★ R066 (D-289 · D-288) — 가입 선물은 창(토스트 아님) · 포인트샵 빨간 점(열면 꺼짐) · 상점 설명 줄 없음(ⓘ 포인트로)
   await H.evaluate("localStorage.removeItem('qw.flag.shopOpened')");
   await H.goto(`${BASE}/`);

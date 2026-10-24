@@ -577,6 +577,7 @@ Cloudflare 터널 경유 RTT 133~257ms / 오프셋 −21 ~ +49.5ms.
 | `room.join` | C→S | `{ roomId }` | ✅ |
 | `room.leave` | C→S | `{}` | ✅ |
 | `room.left` | S→C | `{ roomId }` | ✅ |
+| `room.notInRoom` | S→C | `{}` — ★ R066 (D-293) 접속(재접속)했는데 방에 없다(끊긴 사이 빠짐). 클라는 방 화면이면 비우고 시작 화면 + [다시 들어가기] | ✅ |
 | `room.state` | S→C | **전체 스냅샷** (9장) | ✅ |
 | `room.playerJoined` | S→C | `{ player, players[], activeCount }` | ✅ |
 | `room.playerLeft` | S→C | `{ accountId, players[], activeCount }` | ✅ |
