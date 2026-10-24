@@ -59,6 +59,13 @@ function scan(chunk) {
       clip.stdin.end(url);
       console.log('  복사:   주소를 클립보드에 넣었습니다 — 그대로 붙여넣기(Ctrl+V)');
     } catch { /* 복사 실패는 무시 — 주소는 위에 있다 */ }
+    // ★ 기본 브라우저로 바로 연다(찬종 2026-10-24) — NO_OPEN=1 이면 안 연다(검사 · 봇)
+    if (!process.env.NO_OPEN) {
+      try {
+        spawn(`start "" "${url}"`, { shell: true, detached: true, stdio: 'ignore' }).unref();
+        console.log('  열기:   기본 브라우저로 열었습니다');
+      } catch { /* 못 열어도 주소는 위에 있다 */ }
+    }
   }
   console.log(line);
   console.log('');
