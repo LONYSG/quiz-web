@@ -26,7 +26,10 @@ const WIN = process.platform === 'win32';
 try { process.loadEnvFile?.(path.join(ROOT, '.env')); } catch { /* .env 없어도 됨 */ }
 const PORT = process.env.PORT ?? '3000';
 const HEALTH = `http://localhost:${PORT}/healthz`;
-const SERVER_TITLE = 'quiz-web 서버';
+// ★ 창 제목은 ASCII 만 — start "제목" 이 Node 의 인자 따옴표 처리를 거치며 깨졌다(2026-10-24 찬종: "서버\ 를 찾을 수 없다")
+const SERVER_TITLE = 'quiz-web-server';
+// 새 창을 띄울 때는 인자 배열이 아니라 문자열 하나로(shell) — start 의 "제목" 자리를 그대로 보존한다
+const openWindow = (cmdline) => spawn(cmdline, { cwd: ROOT, shell: true, detached: true, stdio: 'ignore' }).unref();
 const args = new Set(process.argv.slice(2));
 
 const log = (m) => console.log(`[play] ${m}`);
@@ -101,7 +104,7 @@ async function main() {
     const exe = dockerDesktopExe();
     if (!exe) throw new Error('Docker Desktop 을 찾지 못했습니다. 먼저 켜 주세요.');
     log('Docker Desktop 켜는 중…');
-    spawn('cmd', ['/c', 'start', '""', exe], { detached: true, stdio: 'ignore' }).unref();
+    openWindow(`start "" "${exe}"`);
     await waitFor('Docker', async () => ok('docker info'), 180_000, 3000);
     console.log('');
   }
@@ -126,7 +129,7 @@ async function main() {
       sh('npm run build');
     }
     log('서버 새 창으로 시작 (npm start — 감시 없음)');
-    spawn('cmd', ['/c', 'start', `"${SERVER_TITLE}"`, 'cmd', '/k', 'chcp 65001 >nul && npm start'], { cwd: ROOT, detached: true, stdio: 'ignore' }).unref();
+    openWindow(`start "${SERVER_TITLE}" cmd /k "chcp 65001 >nul && title ${SERVER_TITLE} && npm start"`);
     await waitFor('서버', healthy, 60_000, 1500);
     console.log('');
     log(`서버 응답 확인 (${HEALTH})`);
