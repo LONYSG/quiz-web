@@ -1,0 +1,349 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "psychology/1",
+  "midKey": "psychology",
+  "subName": "심리 현상·효과",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "psychology/1#g019b-H2-07",
+   "seed": {
+    "subject": "플라시보 효과",
+    "aspect": null,
+    "ref": "H2-07",
+    "pairedWith": 2433
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2433,
+    "question": "죽은 이를 위한 성무일도의 저녁 기도에서 후렴 첫 낱말로 쓰이던 라틴어가 이 이름의 뿌리입니다. 중세에는 장례식에서 이 낱말을 노래한다는 말이, 고인과 연고가 있는 척하며 장례 음식을 얻어먹는다는 뜻으로 쓰였습니다. 이 낱말이 이름에 들어간 효과는?",
+    "answer": "플라시보 효과",
+    "acceptedAnswers": [
+     "플라세보 효과",
+     "위약 효과"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '플라시보' 문서 — '위약 효과(placebo effect) … 플라시보 효과'라고도 부름 · '플라세보'는 의학계 표기로 흔히 씀",
+    "explanation": "1955년 한 논문이 이 효과가 임상에서 중요하다는 생각을 굳혔지만, 1997년 재검토에서는 평균으로의 회귀를 따지지 않았다는 지적이 나왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "죽은 이를 위한 성무일도의 저녁 기도에서 후렴 첫 낱말",
+     "difWhy": "placebo 라틴어 어원 — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 기본 어휘 어원",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "죽은 이를 위한 성무일도의 저녁 기도에서 후렴 첫 낱말",
+     "difWhy": "placebo 라틴어 어원 — 대학 교양",
+     "wor": 4,
+     "worWhy": "교양 — 기본 어휘 어원"
+    },
+    "rewrite": null,
+    "generalHint": "1961년 월터 케네디는 '해치리라'라는 뜻의 라틴어로 이 낱말과 짝을 이루는 말을 지었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "가짜 약을 먹고도 증상이 나아지는 현상",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "일상어로 쓰임",
+     "piece": "f09",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "H2-07",
+     "key": "b237",
+     "hint": "1961년 월터 케네디는 '해치리라'라는 뜻의 라틴어로 이 낱말과 짝을 이루는 말을 지었다.",
+     "guess": "팰린드롬",
+     "confidence": "low",
+     "hit": false,
+     "answer": "플라시보 효과"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Placebo_in_history",
+     "https://en.wikipedia.org/wiki/Placebo",
+     "https://ko.wikipedia.org/wiki/플라시보_효과"
+    ],
+    "facts": [
+     {
+      "claim": "죽은 이를 위한 성무일도 저녁 기도 후렴의 첫 낱말",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Placebo_in_history",
+      "note": "Placebo is the opening word of the antiphon of vespers in the Office of the Dead"
+     },
+     {
+      "claim": "장례에서 placebo를 노래한다 = 고인과 연고 있는 척 장례 음식 얻기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Placebo_in_history",
+      "note": "To sing placebo at a funeral came to mean to falsely claim a connection to the deceased to get a share of the funeral meal."
+     },
+     {
+      "claim": "1955 논문이 임상적 중요성 확립, 1997 재검토 평균 회귀",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Placebo",
+      "note": "An influential 1955 study entitled The Powerful Placebo firmly established the idea that placebo effects were clinically important … a 1997 reassessment found no evidence … had not accounted for regression to the mean"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Nocebo"
+    ],
+    "hintNote": "Walter Kennedy coined the term nocebo (Latin nocēbō, \"I shall harm\") in 1961 to denote the counterpart of placebo",
+    "easiestCue": "죽은 이를 위한 성무일도의 저녁 기도에서 후렴 첫 낱말로 쓰이던 라틴어가 이 이름의 뿌리입니다",
+    "targetWhy": "라틴어 기도문 기원·중세 장례 용법은 애호가 어원 지식 — 가짜 약·대조군 정의를 뺐다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 정답, 이름의 뜻밖 유래",
+    "pairCheck": "1회차 2433(정답 위약 효과) q 가짜 약 정의·대조군 · e 기대가 증상에 영향 · h 없음 — 어원 단서는 겹치지 않음",
+    "dbCheck": "플라시보/플라세보 new · 위약 효과 pair-or-different 2433(정의 문제) — 같은 대상의 다른 지식이라 (가)",
+    "warn": [
+     "정답조각 효과"
+    ],
+    "first": {
+     "id": 2433,
+     "question": "약효가 없는 가짜 약을 먹고도 증상이 나아지는 현상으로, 임상시험에서 대조군을 두는 이유가 되는 것은?",
+     "explanation": "기대 자체가 증상에 영향을 준다는 것을 보여 줍니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "psychology/1#g019b-H2-08",
+   "seed": {
+    "subject": "데자뷔",
+    "aspect": null,
+    "ref": "H2-08",
+    "pairedWith": 4004
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 4004,
+    "question": "1876년 프랑스 철학자 에밀 부아라크가 처음 썼다고 알려진 말로, 그는 『심령 과학의 미래』라는 책에서 이 느낌을 다뤘습니다. 의학에서는 측두엽 뇌전증과 관련이 있다고 알려진 이 경험은 무엇일까요?",
+    "answer": "데자뷔",
+    "acceptedAnswers": [
+     "데자뷰",
+     "기시감"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '기시감(데자뷔)' 문서 — 본문에 '데자뷰'라는 표기도 씀 · 질문이 프랑스어 표현을 요구하지 않아 기시감 허용",
+    "explanation": "이 경험은 뇌에서 일어나는 뇌전증성 전기 방전과 이어진 신경학적 이상으로 설명되기도 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "의학에서는 측두엽 뇌전증과 관련이 있다고 알려진 이 경험",
+     "difWhy": "데자뷔-측두엽 뇌전증 — 대학 교양 심리",
+     "wor": 4,
+     "worWhy": "교양 — 심리 기본 어휘",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "의학에서는 측두엽 뇌전증과 관련이 있다고 알려진 이 경험",
+     "difWhy": "데자뷔-측두엽 뇌전증 — 대학 교양 심리",
+     "wor": 4,
+     "worWhy": "교양 — 심리 기본 어휘"
+    },
+    "rewrite": null,
+    "generalHint": "이 경험은 나이가 젊고 교육 수준이 높을수록 잦다는 상관이 보고되었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "처음 겪는 일을 이미 겪은 것처럼 느끼는 현상",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "일상어로 널리 쓰이는 말",
+     "piece": "f01",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "H2-08",
+     "key": "b155",
+     "hint": "이 경험은 나이가 젊고 교육 수준이 높을수록 잦다는 상관이 보고되었다.",
+     "guess": "데자뷔",
+     "confidence": "high",
+     "hit": true,
+     "answer": "데자뷔"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Déjà_vu",
+     "https://ko.wikipedia.org/wiki/데자뷔"
+    ],
+    "facts": [
+     {
+      "claim": "1876년 에밀 부아라크가 처음 사용, 『심령 과학의 미래』",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Déjà_vu",
+      "note": "The term was first used in 1876 by Émile Boirac … L'avenir des sciences psychiques (lit. 'The Future of the Psychic Sciences')"
+     },
+     {
+      "claim": "측두엽 뇌전증과 관련",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Déjà_vu",
+      "note": "Déjà vu is associated with temporal lobe epilepsy."
+     },
+     {
+      "claim": "뇌전증성 전기 방전과 관련된 신경학적 이상",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Déjà_vu",
+      "note": "a neurological anomaly related to epileptic electrical discharge in the brain"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/D%C3%A9j%C3%A0_vu"
+    ],
+    "hintNote": "Experiencing déjà vu has been correlated with higher socioeconomic status, better educational attainment, and lower ages.",
+    "easiestCue": "의학에서는 측두엽 뇌전증과 관련이 있다고 알려진 이 경험은 무엇일까요?",
+    "targetWhy": "용어를 만든 사람·뇌전증과의 관련은 심리·신경 교양 애호가 영역 — '이미 본 듯한 느낌' 정의를 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "측두엽 뇌전증 문장만으로는 답이 넓어 쉬운 단서가 되지 않지만, 정의 없이 맞힐 사람은 적음",
+    "pairCheck": "1회차 4004 q 정의·'이미 보았다' 뜻 · e 자메뷔 · h 없음 — 부아라크·뇌전증은 겹치지 않고 정의 문장을 쓰지 않음",
+    "dbCheck": "pair-or-different 4004(외국어 표현 정의, d1) — 다른 지식이라 (가)",
+    "warn": [],
+    "first": {
+     "id": 4004,
+     "question": "처음 보는 장면인데 이미 본 듯한 느낌을 뜻하는, '이미 보았다'라는 뜻의 프랑스어는?",
+     "explanation": "반대로 익숙한 것이 갑자기 처음 보는 것처럼 낯설게 느껴지는 현상은 '자메뷔(한 번도 본 적 없다)'라고 한다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "psychology/1#g019b-H2-09",
+   "seed": {
+    "subject": "밴드왜건 효과",
+    "aspect": null,
+    "ref": "H2-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1848년 미국 대선에서, 당대의 인기 서커스 광대 댄 라이스는 후보 재커리 테일러를 자기 서커스 행렬에 함께하자고 불러들였습니다. 이 일에서 미국 정치에 처음 나타난 표현이 이름이 된 심리 효과는 무엇일까요?",
+    "answer": "밴드왜건 효과",
+    "acceptedAnswers": [
+     "편승 효과"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '밴드왜건 효과' · 한국경제 생글생글 기사(sgsg.hankyung.com/article/2013101816781) '편승 효과라고도 부른다' — WebSearch 확인",
+    "explanation": "1900년 윌리엄 제닝스 브라이언의 선거 무렵에는 악단을 태운 수레가 선거 운동에 흔히 쓰였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "후보 재커리 테일러를 자기 서커스 행렬에 함께하자고",
+     "difWhy": "서커스 행렬 마차 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 심리 기본 어휘",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "후보 재커리 테일러를 자기 서커스 행렬에 함께하자고",
+     "difWhy": "서커스 행렬 마차 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 심리 기본 어휘"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 유일하지 않음 — 문항이 이름 유래(서커스 악단 수레) 자체를 묻고, 확인되는 다른 세부(라이벤스타인 논문 제목의 스놉·베블런 효과 짝)도 경제 교과 수준이라 깊어지지 않음"
+    },
+    "generalHint": "1980년대에는 여론 조사 발표가 유권자의 생각을 바꾸는지 따지며 이 효과를 다룬 연구가 많아졌다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "많은 사람이 고르는 쪽을 따라 고르게 되는 경향",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "사회·경제 교과서·뉴스 용어",
+     "piece": "f06",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "H2-09",
+     "key": "b023",
+     "hint": "1980년대에는 여론 조사 발표가 유권자의 생각을 바꾸는지 따지며 이 효과를 다룬 연구가 많아졌다.",
+     "guess": "밴드왜건 효과",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "밴드왜건 효과",
+     "first": {
+      "ref": "H2-09",
+      "key": "b308",
+      "hint": "반대로 지는 쪽을 응원하게 되는 현상은 '언더독 효과'라 부른다.",
+      "guess": "밴드왜건 효과",
+      "confidence": "high",
+      "hit": true,
+      "answer": "밴드왜건 효과"
+     }
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bandwagon_effect"
+    ],
+    "facts": [
+     {
+      "claim": "1848년 재커리 테일러 선거 운동에서 처음 미국 정치에 등장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bandwagon_effect",
+      "note": "first appeared in American politics in 1848 during the presidential campaign of Zachary Taylor."
+     },
+     {
+      "claim": "인기 서커스 광대 댄 라이스가 테일러를 초대",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bandwagon_effect",
+      "note": "Rice, a famous and popular circus clown of the time, invited Taylor to join his circus bandwagon."
+     },
+     {
+      "claim": "1900년 브라이언 선거 때 흔해짐",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bandwagon_effect",
+      "note": "by William Jennings Bryan's 1900 campaign, bandwagons had become standard in campaigns"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bandwagon_effect"
+    ],
+    "hintNote": "Academic study of the bandwagon effect especially gained interest in the 1980s, as scholars studied the effect of public opinion polls on voter opinions.",
+    "easiestCue": "당대의 인기 서커스 광대 댄 라이스는 후보 재커리 테일러를 자기 서커스 행렬에 함께하자고 불러들였습니다",
+    "targetWhy": "이름의 기원(댄 라이스·테일러)은 애호가 세부 — 남을 따라 고른다는 정의와 '수레' 낱말을 뺐다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 효과, 뜻밖의 서커스 유래",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 효과",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,416 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "football/3",
+  "midKey": "football",
+  "subName": "유럽 리그",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/3#g019b-S1-19",
+   "seed": {
+    "subject": "맨체스터 유나이티드",
+    "aspect": null,
+    "ref": "S1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1902년 1월 빚 2,670파운드로 청산 명령을 받자, 주장 해리 스태퍼드가 존 헨리 데이비스 등 지역 사업가 넷을 찾아 각자 500파운드를 내게 해 구단을 살렸습니다. 별명은 이웃 셀퍼드의 럭비 클럽에서 따온 이 잉글랜드 구단은?",
+    "answer": "맨체스터 유나이티드",
+    "acceptedAnswers": [
+     "맨유"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '맨체스터 유나이티드 FC' 문서 · '맨유' 넘겨주기 문서 있음(한국에서 가장 흔한 약칭)",
+    "explanation": "1931년 12월 다시 파산 위기에 몰렸을 때는 제임스 W. 기브슨이 2,000파운드를 내고 구단을 맡았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "주장 해리 스태퍼드가 존 헨리 데이비스 등",
+     "difWhy": "뉴턴 히스 구제 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "주장 해리 스태퍼드가 존 헨리 데이비스 등",
+     "difWhy": "뉴턴 히스 구제 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "구단을 살린 데이비스는 회장이 되어 새 경기장을 짓게 했고, 그 경기장은 1910년 2월 문을 열었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "올드 트래퍼드를 홈으로 쓰는 잉글랜드 명문 축구 구단",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "박지성 구단으로 누구나 앎",
+     "piece": "f03",
+     "genPct": 92
+    },
+    "blind": {
+     "ref": "S1-19",
+     "key": "b291",
+     "hint": "구단을 살린 데이비스는 회장이 되어 새 경기장을 짓게 했고, 그 경기장은 1910년 2월 문을 열었다.",
+     "guess": "맨체스터 유나이티드",
+     "confidence": "high",
+     "hit": true,
+     "answer": "맨체스터 유나이티드"
+    },
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Manchester_United_F.C."
+    ],
+    "facts": [
+     {
+      "claim": "1902년 1월 빚 2,670파운드로 청산 명령, 스태퍼드가 데이비스 등 사업가 넷을 찾아 각 500파운드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Manchester_United_F.C.",
+      "note": "In January 1902, with debts of £2,670 ... the club was served with a winding-up order. Captain Harry Stafford found four local businessmen, including John Henry Davies (who became club president), each willing to invest £500"
+     },
+     {
+      "claim": "별명 '레드 데블스'는 셀퍼드 럭비 클럽에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Manchester_United_F.C.",
+      "note": "The devil stems from the club's nickname \"The Red Devils\" inspired from Salford Rugby Club"
+     },
+     {
+      "claim": "1931년 12월 기브슨이 2,000파운드로 구단을 맡음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Manchester_United_F.C.",
+      "note": "the club faced bankruptcy yet again, but was saved in December 1931 by James W. Gibson, who assumed control of the club after an investment of £2,000."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Old_Trafford"
+    ],
+    "hintNote": "the new chairman John Henry Davies decided in 1909 that the Bank Street ground was not fit … The stadium hosted its inaugural game on 19 February 1910",
+    "easiestCue": "별명은 이웃 셀퍼드의 럭비 클럽에서 따온",
+    "targetWhy": "1902년 파산 위기와 별명 유래는 축구 애호가 세부 — 옛 이름·뮌헨 참사·퍼거슨·박지성 단서 뺌",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 구단의 존폐 위기 사연 — 정답이 옛 이름이 아님",
+    "pairCheck": null,
+    "dbCheck": "맨체스터 유나이티드 · 맨유 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/3#g019b-S1-20",
+   "seed": {
+    "subject": "리버풀",
+    "aspect": null,
+    "ref": "S1-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1892년 창단 때 '에버턴 FC 앤드 애슬레틱 그라운즈'라는 이름으로 출발했지만 잉글랜드축구협회가 에버턴이라는 이름을 인정하지 않았습니다. 첫 경기에 스코틀랜드 선수만 내보냈고 1896년까지 파랑·하양 셔츠를 입은 이 구단은?",
+    "answer": "리버풀",
+    "acceptedAnswers": [
+     "리버풀 FC"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '리버풀 FC' 문서 제목",
+    "explanation": "에버턴이 안필드의 땅 주인이자 회장 존 홀딩과 다투고 구디슨 파크로 떠나자, 홀딩이 빈 안필드에서 뛸 구단으로 세웠습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'에버턴 FC 앤드 애슬레틱 그라운즈'라는 이름으로 출발",
+     "difWhy": "리버풀 창단 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'에버턴 FC 앤드 애슬레틱 그라운즈'라는 이름으로 출발",
+     "difWhy": "리버풀 창단 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "1964년 감독 빌 섕클리가 이 구단의 홈 유니폼을 온통 빨강으로 바꿨다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "안필드를 홈으로 쓰는 잉글랜드 머지사이드의 명문 구단",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "EPL 명문·비틀스 고향으로 익숙",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "S1-20",
+     "key": "b263",
+     "hint": "1964년 감독 빌 섕클리가 이 구단의 홈 유니폼을 온통 빨강으로 바꿨다.",
+     "guess": "리버풀 FC",
+     "confidence": "high",
+     "hit": true,
+     "answer": "리버풀"
+    },
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Liverpool_F.C."
+    ],
+    "facts": [
+     {
+      "claim": "원래 'Everton F.C. and Athletic Grounds Ltd', FA 가 에버턴 이름을 인정 안 함, 1892년 3월 리버풀 FC",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Liverpool_F.C.",
+      "note": "Originally named \"Everton F.C. and Athletic Grounds Ltd\" (Everton Athletic for short), the club became Liverpool F.C. in March 1892 and gained official recognition three months later, after The Football Association refused to recognise the club as Everton."
+     },
+     {
+      "claim": "첫 경기(1892년 9월 1일) 선수 전원 스코틀랜드인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Liverpool_F.C.",
+      "note": "Liverpool played their first match on 1 September 1892 ... The team Liverpool fielded against Rotherham Town was composed entirely of Scottish players"
+     },
+     {
+      "claim": "1896년까지 파랑·하양 4분할 셔츠",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Liverpool_F.C.",
+      "note": "When the club was founded in 1892, blue and white quartered shirts were used until the club adopted the city's colour of red in 1896."
+     },
+     {
+      "claim": "홀딩과 에버턴의 다툼, 에버턴은 구디슨 파크로",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Liverpool_F.C.",
+      "note": "Liverpool were founded following a dispute between the Everton committee and John Houlding, club president and owner of the land at Anfield. ... Everton relocated across Stanley Park to their new stadium of Goodison Park in 1892, and Houlding founded Liverpool F.C. to play at Anfield."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Liverpool_F.C."
+    ],
+    "hintNote": "Liverpool continued to wear red shirts and white shorts until 1964 when manager Bill Shankly decided to change to an all-red strip.",
+    "easiestCue": "1892년 창단 때 '에버턴 FC 앤드 애슬레틱 그라운즈'라는 이름으로 출발했지만",
+    "targetWhy": "창단 때 이름·첫 경기 구성·옛 셔츠 색은 축구 애호가 세부 — YNWA·이스탄불·힐스버러 단서 뺌",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'에버턴' 이 같은 도시 라이벌을 떠올리게 해 관심층이 추리할 수 있음 — 에버턴과 리버풀의 갈래를 알아야 함",
+    "pairCheck": null,
+    "dbCheck": "리버풀 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/3#g019b-S1-21",
+   "seed": {
+    "subject": "파리 생제르맹",
+    "aspect": null,
+    "ref": "S1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1970년 두 구단이 합쳐 생겼지만 1972년 다시 갈라서며 3부 리그로 밀려났다가 1974년 1부로 돌아왔습니다. 전통 홈 셔츠는 1973년 패션 디자이너 다니엘 에슈테르가 파랑 바탕에 빨강 세로줄을 넣어 디자인한 이 구단은?",
+    "answer": "파리 생제르맹",
+    "acceptedAnswers": [
+     "PSG",
+     "파리 생제르맹 FC"
+    ],
+    "originalTitleVariants": [
+     "PSG"
+    ],
+    "variantCheck": "ko.wikipedia '파리 생제르맹 FC' 문서 · 'PSG' 넘겨주기 — 한국 보도에서 가장 흔한 약칭(A4 · 공식 영문 약칭이라 B10 칸에도 적음)",
+    "explanation": "1971년 나온 첫 공식 응원가는 창단 때부터 팬이던 벨기에 배우 겸 가수 아니 코르디가 불렀습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1973년 패션 디자이너 다니엘 에슈테르가 ... 디자인한",
+     "difWhy": "PSG 창단·셔츠 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1973년 패션 디자이너 다니엘 에슈테르가 ... 디자인한",
+     "difWhy": "PSG 창단·셔츠 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "2011년 카타르 스포츠 투자청이 이 구단의 지분 과반을 사들였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "프랑스 수도를 연고로 한 리그 1 최다 우승 축구 구단",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "이강인 소속 구단으로 뉴스에 자주 나옴",
+     "piece": "f02",
+     "genPct": 62
+    },
+    "blind": {
+     "ref": "S1-21",
+     "key": "b066",
+     "hint": "2011년 카타르 스포츠 투자청이 이 구단의 지분 과반을 사들였다.",
+     "guess": "파리 생제르맹",
+     "confidence": "high",
+     "hit": true,
+     "answer": "파리 생제르맹"
+    },
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Paris_Saint-Germain_FC"
+    ],
+    "facts": [
+     {
+      "claim": "1970년 두 구단 합병(1970년 8월 12일)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Paris_Saint-Germain_FC",
+      "note": "The two clubs merged on 12 August 1970 to form Paris Saint-Germain."
+     },
+     {
+      "claim": "1972년 분리, 3부로 강등, 1974년 1부 복귀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Paris_Saint-Germain_FC",
+      "note": "In 1972, Paris FC and PSG split. Paris FC retained its place in Ligue 1, while PSG was administratively relegated to Division 3 ... PSG won back-to-back promotions and returned to Ligue 1 in 1974"
+     },
+     {
+      "claim": "1973년 다니엘 에슈테르가 전통 홈 셔츠(파랑 바탕 빨강 세로줄) 디자인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Paris_Saint-Germain_FC",
+      "note": "French fashion designer Daniel Hechter ... designed the club's traditional home kit that same year: a blue shirt with a red vertical stripe flanked by two thinner white stripes (blue–white–red–white–blue). — 회장 취임 연도는 문서 안에서 1973·1974로 갈려 질문에 쓰지 않음"
+     },
+     {
+      "claim": "1971년 첫 공식 응원가, 아니 코르디",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Paris_Saint-Germain_FC",
+      "note": "recorded by Belgian actress and singer Annie Cordy in 1971, was the club's first official anthem. A dedicated PSG supporter from the very beginning"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Paris_Saint-Germain_FC"
+    ],
+    "hintNote": "In 2011, Qatar Sports Investments (QSI) acquired a majority stake in PSG and subsequently became the club's sole owner.",
+    "easiestCue": "전통 홈 셔츠는 1973년 패션 디자이너 다니엘 에슈테르가 파랑 바탕에 빨강 세로줄을 넣어 디자인한",
+    "targetWhy": "합병·분리·강등사와 셔츠 디자이너는 축구 애호가 세부 — 도시 이름·카타르·메시·이강인 단서 뺌",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "요즘 유명한 구단의 초창기 굴곡",
+    "pairCheck": null,
+    "dbCheck": "파리 생제르맹 · PSG new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/3#g019b-S1-22",
+   "seed": {
+    "subject": "손흥민",
+    "aspect": null,
+    "ref": "S1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "FC 서울 유소년 시절인 2008년 서울 홈경기에서 볼보이를 했던 선수입니다. 에이전트는 그가 유럽에서 성공하려고 '네모바지 스펀지밥'을 보며 독일어를 익혔다고 전했는데, 이 선수는 누구일까요?",
+    "answer": "손흥민",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2010년 쾰른전 골로 만프레트 칼츠가 갖고 있던 함부르크 구단 최연소 분데스리가 득점 기록을 깼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "엮음: FC 서울 유소년 출신 + 독일어를 익혀 유럽에서 성공",
+     "difWhy": "'한국 선수 독일어로 유럽 성공' — 방송·뉴스",
+     "wor": 3,
+     "worWhy": "국민 스타 일화",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "2010년 쾰른전 골로 ... 구단 최연소 분데스리가 득점 기록",
+     "difWhy": "손흥민 함부르크 데뷔골 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "FC 서울 유소년 시절인 2008년 서울 홈경기에서 볼보이를 했고, 에이전트는 그가 '네모바지 스펀지밥'을 보며 독일어를 익혔다고 전했습니다. 2010년 쾰른전 골로 만프레트 칼츠가 갖고 있던 구단 최연소 분데스리가 득점 기록을 깬 선수는?",
+     "beforeExplanation": "2008년 8월 대한축구협회의 유망주 해외 유학 사업으로 열여섯 살에 함부르크 유소년팀에 들어갔습니다.",
+     "removedCue": "2010년 쾰른전 골로 구단 최연소 분데스리가 득점 기록",
+     "addedCue": "(뺌만 — 남은 단서: 서울 볼보이 · 스펀지밥 독일어)",
+     "why": "팬이 아는 데뷔골 기록을 해설로 옮김"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "토트넘에서 주장을 맡았던 한국 축구 대표팀 공격수",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "국민 스타",
+     "piece": "f04",
+     "genPct": 99
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Son_Heung-min"
+    ],
+    "facts": [
+     {
+      "claim": "2008년 FC 서울 유소년 시절 홈경기 볼보이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Son_Heung-min",
+      "note": "Son was a ball boy in an FC Seoul home match in 2008 when he was a FC Seoul youth player."
+     },
+     {
+      "claim": "에이전트 — 스펀지밥을 보며 독일어를 배움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Son_Heung-min",
+      "note": "His agent Thies Bliemeister said Son was so determined to succeed in Europe that he learned German by watching episodes of SpongeBob SquarePants."
+     },
+     {
+      "claim": "2010년 쾰른전 골, 칼츠의 함부르크 최연소 분데스리가 득점 기록 깸",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Son_Heung-min",
+      "note": "He returned on 30 October 2010 to score his first league goal, against 1. FC Köln in the 24th minute. The goal made Son the youngest Hamburg player to score a goal in the Bundesliga at 18, breaking the record held by Manfred Kaltz."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'네모바지 스펀지밥'을 보며 독일어를 익혔다",
+    "targetWhy": "볼보이 시절 · 독일어 공부 일화 — 축구 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'FC 서울 유소년 → 독일' 경로만으로 관심층이 떠올릴 수 있음 — 한국 선수 가운데 고르는 꼴",
+    "pairCheck": null,
+    "dbCheck": "손흥민 new",
+    "warn": []
+   }
+  }
+ ]
+}

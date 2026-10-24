@@ -1,0 +1,474 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "kr-history/1",
+  "midKey": "kr-history",
+  "subName": "삼국·통일신라",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/1#g019b-K2-01",
+   "seed": {
+    "subject": "성덕대왕신종",
+    "aspect": null,
+    "ref": "K2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1424년 세종은 화폐를 만들 구리를 거두게 하면서도 연복사의 큰 종과 이 종은 헐지 말라고 따로 명했습니다. 1460년 부윤 김담이 영묘사로 옮겼고, 뒤에는 읍성 남문 밖 종각에 걸려 성문을 여닫는 신호로도 쓰인 이 종은?",
+    "answer": "성덕대왕신종",
+    "acceptedAnswers": [
+     "에밀레종",
+     "봉덕사종"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '성덕대왕신종' 첫 문단 — '에밀레종으로 부르거나 … 봉덕사종이라 부르기도 한다'",
+    "explanation": "1915년 8월 경주고적보존회가 옛 경주박물관으로 옮겼고, 몸통에 새긴 1,000여 자의 명문은 지금까지 손상되지 않고 전해 옵니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1460년 부윤 김담이 영묘사로 옮긴 종",
+     "difWhy": "종의 이전 내력 — 한국사 애호가",
+     "wor": 5,
+     "worWhy": "교과 문화유산",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "경주의 한 절에 있던 이 큰 종",
+     "difWhy": "봉덕사 종 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 대표 문화재"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1424년 세종은 화폐를 만들 구리를 거두게 하면서도, 경주의 한 절에 있던 이 큰 종만은 헐지 말라고 따로 명했습니다. 조선 시대에는 경주읍성 남문 밖 봉황대 아래 종각에 걸려 성문을 여닫는 신호로도 쓰였다는 이 종은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "경주의 한 절에 있던 이 큰 종 · 경주읍성·봉황대(경주 + 큰 종 = 에밀레종)",
+     "addedCue": "1460년 부윤 김담이 영묘사로 옮김",
+     "why": "'경주의 큰 종'만으로 풀려 지명을 빼고, 조선 시대 이전 이력으로 바꿈(세종 명은 두 종이라 '연복사의 큰 종과'로 바로잡음)"
+    },
+    "generalHint": "1992년 제야에 서른세 번 친 뒤 타종을 멈췄고, 2004년 12월부터는 보존을 위해 치지 않는다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "771년 혜공왕 때 완성된 통일신라의 큰 범종",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "에밀레종으로 교과서에서 배움",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "K2-01",
+     "key": "b041",
+     "hint": "1992년 제야에 서른세 번 친 뒤 타종을 멈췄고, 2004년 12월부터는 보존을 위해 치지 않는다.",
+     "guess": "보신각 종",
+     "confidence": "high",
+     "hit": false,
+     "answer": "성덕대왕신종"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/성덕대왕신종"
+    ],
+    "facts": [
+     {
+      "claim": "1424년 세종이 화폐 주조용 구리를 거두며 경주 봉덕사 대종은 헐지 말라고 명함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/성덕대왕신종",
+      "note": "《세종실록》 세종 6년 갑진(1424년) 5월에 화폐 주조를 목적으로 전국에서 구리를 거두어 들이도록 명령하면서 … 세종이 따로 \"경상도 경주 봉덕사의 대종(大鍾)과 유후사(留後司) 연복사(演福寺)의 대종은 헐지 말게 하라\"라는 전지를 내린 점"
+     },
+     {
+      "claim": "경주읍성 남문 밖 봉황대 아래 종각으로 옮겨 성문 개폐 신호에 씀",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/성덕대왕신종",
+      "note": "연산군 12년(1506년) 정월에서 이듬해 중종 2년(1507년) 12월 사이의 시점에 경주읍성 남문(징례문) 바깥의 봉황대(鳳凰臺) 아래에 종각을 짓고 옮겨서 성문의 개폐 및 군사 동원 신호에 사용하였다고 한다."
+     },
+     {
+      "claim": "1915년 8월 구 경주박물관으로 옮김",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/성덕대왕신종",
+      "note": "1915년 8월 경주고적보존회에 의해 구(舊) 경주박물관으로 옮겨졌다."
+     },
+     {
+      "claim": "1,000여 자의 명문이 손상되지 않고 전해옴",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/성덕대왕신종",
+      "note": "몸통에 남아있는 1,000여자의 명문은 문장뿐 아니라 새긴 수법도 뛰어나, 1천 3백여년이 지난 지금까지도 손상되지 않고 전해오고 있다."
+     },
+     {
+      "claim": "1460년 경주부윤 김담이 영묘사로 옮김",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/성덕대왕신종",
+      "note": "《신증동국여지승람》(1530년 완성)에는 봉덕사종 즉 성덕대왕신종이 영묘사(靈妙寺)로 옮겨진 것이 명(明) 천순(天順) 4년 경진 즉 조선 세조 5년(1460년)의 일이라고 적고 있다. 당시 경주부윤(慶州府尹)이었던 김담(金淡)이 성덕대왕신종을 영묘사로 옮겼으며"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%84%B1%EB%8D%95%EB%8C%80%EC%99%95%EC%8B%A0%EC%A2%85"
+    ],
+    "hintNote": "1992년 제야에 서른세 번 종을 친 뒤 한동안 타종을 중단하였다가 ... 2004년 12월 안전 보존을 위해 더 이상 타종을 중단했다",
+    "easiestCue": "1424년 세종이 구리를 거두면서도 헐지 말라 한 종",
+    "targetWhy": "세종실록·여지승람에 남은 종의 조선 시대 이력은 교과서 밖, 문화재 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 종의 몰랐던 조선 시대 쓰임",
+    "pairCheck": null,
+    "dbCheck": "answercheck new(성덕대왕신종·에밀레종 둘 다) — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/1#g019b-K2-02",
+   "seed": {
+    "subject": "안시성 전투",
+    "aspect": null,
+    "ref": "K2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 싸움에서 성을 에워싼 쪽은 어느 날 성안에서 닭과 돼지 소리가 들리자 밤 기습에 대비했고, 그날 밤 실제로 성의 군사 수백 명이 줄을 타고 내려왔습니다. 지금 알려진 성주 이름이 16세기 명나라 소설에 처음 나오는 이 싸움은?",
+    "answer": "안시성 전투",
+    "acceptedAnswers": [
+     "안시성 싸움",
+     "안시성"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '안시성 전투' · 본문이 '고구려가 승리한 싸움'으로 서술 — 싸움·성 이름으로 치는 사람이 억울하지 않게",
+    "explanation": "당군은 60일 동안 3만 명을 동원해 성 동남쪽에 토산을 쌓았지만, 토산이 무너지자 성안 군사 수백 명이 나가 오히려 그 토산을 빼앗았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "성주 이름이 16세기 명나라 소설에 처음 나오는 이 싸움",
+     "difWhy": "'성주 이름이 명나라 소설에' — 역사 애호가",
+     "wor": 5,
+     "worWhy": "한국사 교과 전투",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "물러가던 황제가 성을 지킨 것을 가상히 여겨",
+     "difWhy": "당 태종과 안시성 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 싸움에서 성을 지켜 낸 성주의 이름은 『삼국사기』에 전하지 않아 김부식도 안타까워했고, 지금 알려진 이름은 16세기 명나라 소설에 처음 나옵니다. 물러가던 황제가 성을 지킨 것을 가상히 여겨 성주에게 비단 100필을 내렸다는 이 싸움은?",
+     "beforeExplanation": null,
+     "removedCue": "물러가던 황제가 성주에게 비단 100필을 내림(고교 한국사) · 김부식의 탄식",
+     "addedCue": "성안 닭·돼지 소리로 밤 기습을 알아챈 일화",
+     "why": "비단 100필은 교과서·대중서 단골이라 빼고, 포위전 세부 일화로 바꿈(당 태종 이름도 뺌)"
+    },
+    "generalHint": "이 싸움의 성주 이름은 조선 송준길의 『동춘당선생별집』과 박지원의 『열하일기』에도 나온다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "645년 고구려가 당 태종의 대군을 막아 낸 성 싸움",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "교과서·영화 '안시성'으로 익숙",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "K2-02",
+     "key": "b010",
+     "hint": "이 싸움의 성주 이름은 조선 송준길의 『동춘당선생별집』과 박지원의 『열하일기』에도 나온다.",
+     "guess": "안시성 싸움",
+     "confidence": "high",
+     "hit": true,
+     "answer": "안시성 전투"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/양만춘",
+     "https://ko.wikipedia.org/wiki/안시성_전투"
+    ],
+    "facts": [
+     {
+      "claim": "양만춘이라는 이름은 16세기 명나라 소설에 최초로 등장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/양만춘",
+      "note": "현전하는 기록 중에서 양만춘(梁萬春)이란 이름이 최초로 등장하는 것은 16세기 명나라의 소설 《당서지전통속연의》(唐書志傳通俗演義 …)이다."
+     },
+     {
+      "claim": "60일 동안 3만 명을 동원해 토산을 쌓음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/안시성_전투",
+      "note": "당나라는 60일 동안 총인원 3만 명을 동원하여 토산(土山)을 쌓았다. … 당군은 강하왕 이도종의 건의로 성의 동남 쪽에 토산을 쌓아"
+     },
+     {
+      "claim": "토산이 무너지자 성안 군사 수백 명이 토산을 탈취",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/안시성_전투",
+      "note": "토산이 무너지자 안시성의 군사 수백 명이 성이 허물어진 곳으로 나가 싸워서 마침내 토산을 탈취하여 그곳에 참호를 파고 수비하였다."
+     },
+     {
+      "claim": "성안의 닭·돼지 소리를 듣고 밤 기습에 대비, 그날 밤 성의 군사 수백 명이 줄을 타고 내려옴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/안시성_전투",
+      "note": "어느 날 태종은 성 안에서 들리는 닭과 돼지의 소리를 듣고 이세적에게 밤 중 안시성에서의 기습 공격에 대비할 것을 명하였다. 이날 밤, 안시성의 군사 수백 명이 성에서 줄을 타고 내려왔다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/안시성_전투"
+    ],
+    "hintNote": "조선 시대 송준길(宋浚吉)의 《동춘당선생별집》과 박지원의 《열하일기》에는 안시성 성주의 이름을 \"양만춘(梁萬春)\" 혹은 \"양만춘(楊萬春)\"이라고 밝히고 있다.",
+    "easiestCue": "지금 알려진 성주 이름이 16세기 명나라 소설에 처음 나옴",
+    "targetWhy": "양만춘 이름의 출처와 닭·돼지 소리 일화는 한국 고대사 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명한 싸움의 '양만춘 이름은 어디서 왔나' 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new(안시성 전투·안시성·양만춘) — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/1#g019b-K2-03",
+   "seed": {
+    "subject": "북한산 순수비",
+    "aspect": null,
+    "ref": "K2-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "어느 산 봉우리에 서 있다가 보존을 위해 경복궁으로 옮겨졌던 이 비석은, 뒤쪽에 무수한 총탄 자국이 남아 있습니다. 비문에 '남천주'라는 지명이 나와 568년 이후에 세웠다고 보기도 하는 이 비는 무엇일까요?",
+    "answer": "북한산 순수비",
+    "acceptedAnswers": [
+     "북한산비",
+     "진흥왕 순수비",
+     "북한산 진흥왕 순수비",
+     "북한산 신라 진흥왕 순수비"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '북한산 신라 진흥왕 순수비' · 본문 '북한산비(北漢山碑)' · 같이 보기 '진흥왕 순수비' — 같은 비의 흔한 이름들",
+    "explanation": "조선 시대에는 무학대사의 비로 알려지기도 했는데, 옆면에는 이를 바로잡은 김정희와 조인영의 답사·판독 사실이 새겨져 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "엮음: 산 봉우리에서 경복궁으로 옮긴 비석 + '남천주' 568년 이후",
+     "difWhy": "남천주·이전 경위 — 한국사 애호가 (경계 3)",
+     "wor": 5,
+     "worWhy": "한국사 교과 진흥왕 순수비",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "조선 시대에 무학대사의 비로 알려지기도 했습니다",
+     "difWhy": "김정희 판독 순수비 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "서울의 어느 산 봉우리에 서 있던 이 비석은 조선 시대에 무학대사의 비로 알려지기도 했습니다. 옆면에는 뒤에 비문을 판독한 이들의 답사 사실이 새겨졌고, 뒤쪽에는 무수한 총탄 자국이 남아 있는 이 비는 무엇일까요?",
+     "beforeExplanation": "1970년부터 국립중앙박물관이 소장하고 있으며, 비문에 '남천주'라는 지명이 나오는 것을 근거로 568년 이후에 세웠다고 보기도 합니다.",
+     "removedCue": "서울 · 조선 시대 무학대사의 비로 알려짐 · 옆면의 판독 기록(고교 한국사 — 김정희 판독)",
+     "addedCue": "경복궁으로 옮겨진 내력 · 비문의 '남천주'(해설에서 올림)",
+     "why": "무학대사·김정희 판독은 교과서 사실이라 해설로 내리고 보존 경위·건립 연대 논거로 바꿈"
+    },
+    "generalHint": "경복궁에 있던 이 비석은 1970년부터 국립중앙박물관이 소장하고 있다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "신라 왕이 한강 유역을 차지한 뒤 순시를 기념해 세운 비",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "진흥왕 순수비로 한국사 교과서에서 배움",
+     "piece": "f05",
+     "genPct": 70
+    },
+    "blind": {
+     "ref": "K2-03",
+     "key": "b074",
+     "hint": "경복궁에 있던 이 비석은 1970년부터 국립중앙박물관이 소장하고 있다.",
+     "guess": "북한산 신라 진흥왕 순수비",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "북한산 순수비"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/북한산_신라_진흥왕_순수비"
+    ],
+    "facts": [
+     {
+      "claim": "조선 시대에는 무학대사의 비로 알려짐",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/북한산_신라_진흥왕_순수비",
+      "note": "조선 시대에는 무학대사의 비로 알려지기도 하였다."
+     },
+     {
+      "claim": "옆면에 김정희와 조인영이 답사·판독한 사실이 새겨짐",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/북한산_신라_진흥왕_순수비",
+      "note": "비의 옆면에 김정희와 조인영이 답사하여 판독한 사실이 새겨져 있으며, 원래는 북한산 비봉에 자리하고 있었으나"
+     },
+     {
+      "claim": "비신 뒤쪽에 무수한 총탄 흔적",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/북한산_신라_진흥왕_순수비",
+      "note": "많은 부분이 절단 또는 손상되어 있고, 비신의 뒤쪽에는 무수한 총탄 흔적이 남아 있다."
+     },
+     {
+      "claim": "1970년부터 국립중앙박물관 소장 · 남천주 지명으로 568년 이후 건립설",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/북한산_신라_진흥왕_순수비",
+      "note": "1970년부터 국립중앙박물관이 소장하고 있다. … 비에 남천주란 지명이 나오는 것으로 보아 568년 이후에 비를 세운 것으로 보기도 한다."
+     },
+     {
+      "claim": "북한산 비봉에 있다가 보존을 위해 경복궁으로 옮겼고, 1970년부터 국립중앙박물관 소장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/북한산_신라_진흥왕_순수비",
+      "note": "원래는 북한산 비봉에 자리하고 있었으나 보존하기 위하여 경복궁에 옮겨 놓았다가, 1970년부터 현재 국립중앙박물관이 소장하고 있다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EB%B6%81%ED%95%9C%EC%82%B0_%EC%8B%A0%EB%9D%BC_%EC%A7%84%ED%9D%A5%EC%99%95_%EC%88%9C%EC%88%98%EB%B9%84"
+    ],
+    "hintNote": "보존하기 위하여 경복궁에 옮겨 놓았다가, 1970년부터 국립중앙박물관이 소장하고 있다.",
+    "easiestCue": "비문에 '남천주'라는 지명이 나와 568년 이후 건립설",
+    "targetWhy": "총탄 자국·경복궁 이전·남천주 논거는 한국사 애호가 세부 — 서울·무학대사·김정희는 질문에 없음",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "무학대사비 이야기가 김정희 일화의 일부로 알려져 있을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new(북한산 순수비·진흥왕 순수비) — 활성 '진흥왕'(인물) 문항과는 정답·지식이 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/1#g019b-K2-04",
+   "seed": {
+    "subject": "불국사",
+    "aspect": null,
+    "ref": "K2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1593년 5월 왜군의 방화로 크게 탔고, 1970년 2월부터 1973년 6월까지의 공사로 주춧돌만 남았던 무설전·비로전·회랑 등이 다시 지어졌습니다. 1905년에는 한 일본인이 이곳의 사리탑을 몰래 가져가 도쿄 우에노 공원에 세워 두기도 했는데, 이 절은 어디일까요?",
+    "answer": "불국사",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2007년에는 한 관광객이 극락전 처마 밑 현판에 가려져 있던 50cm가량의 나무 황금 돼지를 찾아냈습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1970~1973년 공사로 무설전·비로전·회랑이 다시 지어진 절",
+     "difWhy": "전각 복원사 — 문화재 애호가 (경계 3)",
+     "wor": 4,
+     "worWhy": "교과 문화유산의 수난사",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "극락전 현판 뒤에 가려져 있던 나무 황금 돼지",
+     "difWhy": "불국사 황금 돼지 — 방송·뉴스 (경계 2)",
+     "wor": 5,
+     "worWhy": "한국사 교과 — 대표 사찰"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1593년 5월 왜군의 방화로 크게 탔고, 1970년 2월부터 1973년 6월까지의 공사로 주춧돌만 남았던 무설전·회랑 등이 다시 지어졌습니다. 2007년 한 관광객이 극락전 현판 뒤에 가려져 있던 나무 황금 돼지를 찾아낸 이 절은 어디일까요?",
+     "beforeExplanation": "1905년에는 한 일본인이 비로전 사리탑을 일본으로 불법 반출해 도쿄 우에노 공원에 세워 두기도 했습니다.",
+     "removedCue": "2007년 관광객이 극락전 현판 뒤 나무 황금 돼지를 찾아냄(방송·뉴스)",
+     "addedCue": "1905년 사리탑이 일본으로 반출되어 우에노 공원에 세워짐(해설에서 옮김)",
+     "why": "뉴스로 널리 알려진 황금 돼지를 해설로 내리고, 답사 애호가가 아는 사리탑 반출 사연을 넣음"
+    },
+    "generalHint": "돌계단 다리 연화교와 칠보교가 이 절 안에 놓여 있다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "경주 토함산 기슭에 있는 통일신라 시대의 대표 사찰",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "수학여행·교과서로 누구나 아는 사찰",
+     "piece": "f01",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "K2-04",
+     "key": "b259",
+     "hint": "돌계단 다리 연화교와 칠보교가 이 절 안에 놓여 있다.",
+     "guess": "불국사",
+     "confidence": "high",
+     "hit": true,
+     "answer": "불국사"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/불국사"
+    ],
+    "facts": [
+     {
+      "claim": "1593년 5월 왜군의 방화와 파괴로 큰 피해",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/불국사",
+      "note": "불국사는 임진왜란 시기인 1593년 5월 왜군의 방화와 파괴로 인해 큰 피해를 입었다."
+     },
+     {
+      "claim": "1970년 2월 착수 1973년 6월 완료, 주춧돌만 남았던 무설전·회랑 등 복원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/불국사",
+      "note": "1970년 2월 공사에 착수하여 1973년 6월 대규모 복원 공사가 완료되었다. 이 공사로 주춧돌과 빈터만 남아 있던 무설전, 관음전, 비로전, 경루, 회랑 등이 복원되었으며"
+     },
+     {
+      "claim": "1905년 비로전 사리탑이 일본으로 불법 반출되어 우에노 공원에 세워짐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/불국사",
+      "note": "1905년 어떤 일본인은 사리탑을 일본으로 불법 반출하여, 동경의 우에노(上野)공원에 세워놓았다."
+     },
+     {
+      "claim": "2007년 관광객이 극락전 현판에 가려진 나무 황금 돼지를 발견",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/불국사",
+      "note": "2007년에는 한 관광객이 극락전 처마 밑의 현판 편에 가려져 있던, 나무로 만들어진 50센티미터가량 되는 황금 돼지 목조 조형물을 발견하였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EB%B6%88%EA%B5%AD%EC%82%AC"
+    ],
+    "hintNote": "==== 연화교와 칠보교 ==== 위쪽 다리가 칠보교이고, 아래쪽 다리가 연화교이다.",
+    "easiestCue": "1970~1973년 공사로 주춧돌만 남았던 무설전·비로전·회랑 복원",
+    "targetWhy": "복원 공사 연도·전각 이름과 사리탑 반출은 교과서 밖, 불교 미술·답사 애호가 세부라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "대상은 누구나 알지만 '1593 방화 + 극락전'에서 경주 절을 떠올리는 관심층이 있을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 석가탑·다보탑(5884·5885) 문항과 정답·지식이 다름(해설에서 다보탑 사리장치 이야기는 뺐다)",
+    "warn": []
+   }
+  }
+ ]
+}

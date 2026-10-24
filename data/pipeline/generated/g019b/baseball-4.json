@@ -1,0 +1,423 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "baseball/4",
+  "midKey": "baseball",
+  "subName": "야구 용어·전술",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "baseball/4#g019b-S1-15",
+   "seed": {
+    "subject": "영구 결번",
+    "aspect": null,
+    "ref": "S1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프로 스포츠에서 처음 이 예우를 받은 이는 1934년 토론토 메이플리프스의 아이스하키 선수 에이스 베일리였고, 메이저리그에서는 1939년 루 게릭이 처음이었습니다. 2006년 빌리 조엘이 매디슨 스퀘어 가든에서 받기도 한 이것은?",
+    "answer": "영구 결번",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "빌리 조엘이 받은 번호 12는 그해 그곳에서 연 공연 횟수였고, 스포츠 밖 인물로는 처음이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1934년 토론토 메이플리프스의 아이스하키 선수 에이스 베일리",
+     "difWhy": "첫 영구 결번 — 스포츠 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 스포츠 기본 예우",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1934년 토론토 메이플리프스의 아이스하키 선수 에이스 베일리",
+     "difWhy": "첫 영구 결번 — 스포츠 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 스포츠 기본 예우"
+    },
+    "rewrite": null,
+    "generalHint": "KBO 리그에서는 1986년 OB 베어스가 세상을 떠난 포수 김영신의 54번을 처음 이렇게 했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "팀이 위대한 선수의 등번호를 다시 쓰지 않는 예우",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "스포츠 뉴스에서 흔히 쓰는 말",
+     "piece": "f03",
+     "genPct": 72
+    },
+    "blind": {
+     "ref": "S1-15",
+     "key": "b024",
+     "hint": "KBO 리그에서는 1986년 OB 베어스가 세상을 떠난 포수 김영신의 54번을 처음 이렇게 했다.",
+     "guess": "영구 결번",
+     "confidence": "high",
+     "hit": true,
+     "answer": "영구 결번",
+     "first": {
+      "ref": "S1-15",
+      "key": "b186",
+      "hint": "대한항공 801편처럼 큰 사고가 난 항공편 번호를 다시 쓰지 않는 것도 이렇게 부른다.",
+      "guess": "영구 결번",
+      "confidence": "high",
+      "hit": true,
+      "answer": "영구 결번"
+     }
+    },
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Retired_number",
+     "https://en.wikipedia.org/wiki/Lou_Gehrig"
+    ],
+    "facts": [
+     {
+      "claim": "프로 스포츠 첫 공식 영구 결번은 1934년 에이스 베일리(토론토 메이플리프스)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Retired_number",
+      "note": "The first number officially retired by a team in a professional sport was that of ice hockey player Ace Bailey, whose number 6 was retired by the Toronto Maple Leafs in 1934."
+     },
+     {
+      "claim": "MLB 첫 영구 결번은 1939년 루 게릭",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lou_Gehrig",
+      "note": "In 1939, Gehrig was elected to the Baseball Hall of Fame and was the first MLB player to have his uniform number retired by a team when his number 4 was retired by the Yankees."
+     },
+     {
+      "claim": "2006년 빌리 조엘 — 매디슨 스퀘어 가든 스포츠 밖 첫 결번, 12는 공연 횟수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Retired_number",
+      "note": "In 2006, singer-songwriter Billy Joel became the first person outside sports to be awarded a retired number in the history of Madison Square Garden, New York. The number chosen (12) equalled the number of performances he gave there between January 23 and April 24"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/김영신_(야구_선수)"
+    ],
+    "hintNote": "OB 측은 김영신을 애도하는 의미에서 영결식을 치르고 김영신의 배번인 54번을 영구 결번하였는데, 이는 KBO 리그 최초의 영구 결번 사례이다.",
+    "easiestCue": "메이저리그에서는 1939년 루 게릭이 처음이었습니다",
+    "targetWhy": "첫 사례(베일리·게릭)와 빌리 조엘은 애호가 세부 — 재키 로빈슨 42번 단서 뺌",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 제도의 첫 사례들 — 정의 꼴 아님(예우 이름을 첫 사례로 묻는 꼴)",
+    "pairCheck": null,
+    "dbCheck": "영구 결번 new (활성 OB 베어스 문항이 김영신 결번을 단서로 씀 — 정답이 달라 대조만, 그 사실 안 씀)",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/4#g019b-S1-16",
+   "seed": {
+    "subject": "히트 앤드 런",
+    "aspect": null,
+    "ref": "S1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1894년 내셔널리그 볼티모어 오리올스의 감독 네드 핸런은 조지아주 메이컨의 봄 훈련에서 이 작전을 다듬어 개막 시리즈에서 처음 썼습니다. 상대 뉴욕 자이언츠 감독이 항의했지만 받아들여진 이 공격 작전은?",
+    "answer": "히트 앤드 런",
+    "acceptedAnswers": [
+     "히트 앤 런"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '히트 앤드 런' 문서 제목 · '히트앤런' 넘겨주기 문서 있음(한국 중계에서 흔한 표기)",
+    "explanation": "이름과 달리 실제로는 주자가 먼저 뛰고, 타자는 그 사이 벌어진 내야 빈틈으로 공을 쳐 보냅니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "볼티모어 오리올스의 감독 네드 핸런",
+     "difWhy": "히트 앤드 런 기원 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 야구 기본 작전",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "볼티모어 오리올스의 감독 네드 핸런",
+     "difWhy": "히트 앤드 런 기원 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 야구 기본 작전"
+    },
+    "rewrite": null,
+    "generalHint": "같은 팀의 윌리 킬러는 '눈을 맑게 하고, 수비수가 없는 데로 보내라'는 조언을 남겼다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "주자가 먼저 뛰고 타자가 반드시 치는 야구 공격 작전",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "야구 중계에서 자주 나오는 작전 이름, 뺑소니 뜻으로도 익숙",
+     "piece": "f02",
+     "genPct": 42
+    },
+    "blind": {
+     "ref": "S1-16",
+     "key": "b280",
+     "hint": "같은 팀의 윌리 킬러는 '눈을 맑게 하고, 수비수가 없는 데로 보내라'는 조언을 남겼다.",
+     "guess": "볼티모어 오리올스",
+     "confidence": "low",
+     "hit": false,
+     "answer": "히트 앤드 런"
+    },
+    "hobby": "규칙",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hit_and_run_(baseball)",
+     "https://ko.wikipedia.org/wiki/%ED%9E%88%ED%8A%B8_%EC%95%A4%EB%93%9C_%EB%9F%B0"
+    ],
+    "facts": [
+     {
+      "claim": "1894년 볼티모어 오리올스 감독 네드 핸런이 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hit_and_run_(baseball)",
+      "note": "The hit and run was introduced to baseball by Ned Hanlon ... at the beginning of the 1894 season of the National League ... Hanlon was manager of the Baltimore Orioles at the time."
+     },
+     {
+      "claim": "메이컨 봄 훈련에서 개발, 개막 시리즈 자이언츠전, 상대 감독 항의 뒤 인정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hit_and_run_(baseball)",
+      "note": "His team developed the hit and run along with other tactics during spring training at Macon, Georgia. After its implementation in the season's series opener against the New York Giants, the opposing manager objected to its use; however, it was deemed acceptable."
+     },
+     {
+      "claim": "실제 순서는 '뛰고 치기'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hit_and_run_(baseball)",
+      "note": "the chronological order of the offensive play is \"run and hit,\" with the runner beginning the steal attempt before the batter makes contact ... Ideally, the ball will be hit into a gap"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Willie_Keeler"
+    ],
+    "hintNote": "Keeler's advice to hitters was \"Keep your eye clear, and hit 'em where they ain't\"—\"they\" being the opposing fielders.",
+    "easiestCue": "1894년 내셔널리그 볼티모어 오리올스의 감독 네드 핸런은 … 이 작전을 다듬어",
+    "targetWhy": "작전의 기원은 야구 애호가 세부 — 작전의 정의(주자 먼저 출발)는 해설로만",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 작전의 탄생 사연 — 정의 꼴 아님",
+    "pairCheck": null,
+    "dbCheck": "히트 앤드 런 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/4#g019b-S1-17",
+   "seed": {
+    "subject": "슬라이더",
+    "aspect": null,
+    "ref": "S1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "랜디 존슨은 자신의 이 공에 '미스터 스내피'라는 별명을 붙였습니다. 처음 던진 사람으로 치프 벤더를 꼽기도 하지만 조지 블레이홀더와 조지 울도 저마다 원조라고 주장한 이 구종은 무엇일까요?",
+    "answer": "슬라이더",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "오른손 투수가 던지면 투수 쪽에서 볼 때 오른쪽에서 왼쪽으로, 글러브 낀 쪽으로 미끄러지듯 휩니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "랜디 존슨은 자신의 이 공에 '미스터 스내피'",
+     "difWhy": "슬라이더 별명·원조 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기본 구종",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "랜디 존슨은 자신의 이 공에 '미스터 스내피'",
+     "difWhy": "슬라이더 별명·원조 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기본 구종"
+    },
+    "rewrite": null,
+    "generalHint": "2020년대 흔해진 '스위퍼'는 이 구종의 갈래로, 조금 느리지만 옆으로 더 크게 휜다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "옆으로 빠르게 휘어 나가는 야구 변화구",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "야구 중계 단골 구종",
+     "piece": "f09",
+     "genPct": 62
+    },
+    "blind": {
+     "ref": "S1-17",
+     "key": "b150",
+     "hint": "2020년대 흔해진 '스위퍼'는 이 구종의 갈래로, 조금 느리지만 옆으로 더 크게 휜다.",
+     "guess": "슬라이더",
+     "confidence": "high",
+     "hit": true,
+     "answer": "슬라이더"
+    },
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Slider_(pitch)"
+    ],
+    "facts": [
+     {
+      "claim": "랜디 존슨이 자기 슬라이더에 '미스터 스내피' 별명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Slider_(pitch)",
+      "note": "Hall of Fame pitcher Randy Johnson was well-known for his unusually fast slider, which he nicknamed \"Mr. Snappy\"."
+     },
+     {
+      "claim": "원조 논쟁 — 치프 벤더, 블레이홀더, 울",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Slider_(pitch)",
+      "note": "The innovator of the slider is debated, but some credit Charles Albert \"Chief\" Bender as the first to use the pitch. Other players claimed to be the inventor include George Blaeholder and George Uhle."
+     },
+     {
+      "claim": "오른손 투수는 오른쪽에서 왼쪽(글러브 쪽)으로",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Slider_(pitch)",
+      "note": "The slider will typically move laterally towards the pitcher's glove-side. For example, when thrown by a right-handed pitcher, from the pitcher's perspective, the pitch will \"slide\" from the right (the arm-side) to the left (the glove-side)."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Slider_(pitch)"
+    ],
+    "hintNote": "A variation of the slider, known as the sweeper, is characterized as being slightly slower, but having more lateral movement.",
+    "easiestCue": "랜디 존슨은 자신의 이 공에 '미스터 스내피'라는 별명을 붙였습니다",
+    "targetWhy": "구종 별명·원조 논쟁은 야구 애호가 세부 — 휘는 방향(정의)은 해설로만",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "랜디 존슨의 주무기를 아는 관심층이 있을 수 있음 — '미스터 스내피'는 애호가 단서",
+    "pairCheck": null,
+    "dbCheck": "슬라이더 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "baseball/4#g019b-S1-18",
+   "seed": {
+    "subject": "평균자책점",
+    "aspect": null,
+    "ref": "S1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1912년 내셔널리그가 처음 공식 집계한 이 투수 기록은, 한동안 당시 리그 사무국장 존 하이들러의 이름을 따 '하이들러의 통계'라 불렸습니다. 구원 전문 투수가 나오며 승패만으로 투수를 재기 어려워져 퍼진 이 기록은?",
+    "answer": "평균자책점",
+    "acceptedAnswers": [
+     "방어율",
+     "ERA"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '평균자책점' 문서 · '방어율' 넘겨주기(옛 이름, 지금도 흔히 씀) · 'ERA' 는 한국 중계·기사에서 그대로 쓰는 약칭(A4)",
+    "explanation": "고안자로는 야구 기록법을 다듬은 헨리 채드윅이 꼽히고, 아메리칸리그도 뒤따라 이 기록을 집계했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'하이들러의 통계'라 불렸습니다",
+     "difWhy": "평균자책점 기원 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기본 기록 유래",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'하이들러의 통계'라 불렸습니다",
+     "difWhy": "평균자책점 기원 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기본 기록 유래"
+    },
+    "rewrite": null,
+    "generalHint": "300이닝 넘게 던진 투수의 한 시즌 최저 기록은 1968년 밥 깁슨의 1.12다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "투수가 9이닝 동안 내준 자책점을 나타내는 기록",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "야구 중계·뉴스에서 흔히 쓰는 기록 이름",
+     "piece": "f04",
+     "genPct": 70
+    },
+    "blind": {
+     "ref": "S1-18",
+     "key": "b096",
+     "hint": "300이닝 넘게 던진 투수의 한 시즌 최저 기록은 1968년 밥 깁슨의 1.12다.",
+     "guess": "평균자책점",
+     "confidence": "high",
+     "hit": true,
+     "answer": "평균자책점"
+    },
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Earned_run_average"
+    ],
+    "facts": [
+     {
+      "claim": "1912년 내셔널리그가 처음 공식 집계, '하이들러의 통계'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Earned_run_average",
+      "note": "The National League first tabulated official earned run average statistics in 1912 (the outcome was called \"Heydler's statistic\" for a while, after then-NL secretary John Heydler)"
+     },
+     {
+      "claim": "구원 투수가 유행하며 승패만으로 평가 어려워져 퍼짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Earned_run_average",
+      "note": "which caught on as a measure of pitching effectiveness after relief pitching came into vogue in the 1900s. ... After pitchers like James Otis Crandall and Charley Hall made names for themselves as relief specialists, gauging a pitcher's effectiveness became more difficult using the traditional method of tabulating wins and losses."
+     },
+     {
+      "claim": "헨리 채드윅 고안 · 아메리칸리그도 뒤따름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Earned_run_average",
+      "note": "Henry Chadwick is credited with devising the statistic / the American League later accepted this standard and began compiling ERA statistics."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Earned_run_average"
+    ],
+    "hintNote": "The all-time record for the lowest single season earned run average by a pitcher pitching 300 or more innings is 1.12, set by Bob Gibson in 1968.",
+    "easiestCue": "구원 전문 투수가 나오며 승패만으로 투수를 재기 어려워져 퍼진 이 기록",
+    "targetWhy": "공식 기록이 된 연도·옛 별칭은 야구 애호가 세부 — 계산법(정의) 단서 없음",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'투수 기록' 후보가 몇 안 돼 관심층이 찍을 수 있음 — 승·세이브와 가르려면 기원을 알아야 함",
+    "pairCheck": null,
+    "dbCheck": "평균자책점 · 방어율 new (활성 '세이브' 문항과 같은 기록 기원 꼴이지만 정답·지식이 다름)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

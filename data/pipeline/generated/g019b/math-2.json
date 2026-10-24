@@ -1,0 +1,218 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "math/2",
+  "midKey": "math",
+  "subName": "도형·기하",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "math/2#g019b-C1-07",
+   "seed": {
+    "subject": "유클리드 원론",
+    "aspect": null,
+    "ref": "C1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1482년 베네치아에서 에르하르트 라트돌트가 처음 인쇄본을 펴낸 책입니다. 1607년 마테오 리치와 서광계는 클라비우스가 엮은 라틴어판에서 이 책의 앞 여섯 권만 한문으로 옮겼는데, 이 책은 무엇일까요?",
+    "answer": "유클리드 원론",
+    "acceptedAnswers": [
+     "원론",
+     "에우클레이데스의 원론",
+     "유클리드의 원론",
+     "기하학 원론"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 표제 '에우클레이데스의 원론'(본문 '에우클레이데스(유클리드)') · 국내 번역서 제목 '기하학 원론' · 흔한 이름 '유클리드 원론'",
+    "explanation": "리치와 서광계가 옮긴 한문본의 제목은 '기하원본'이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "마테오 리치와 서광계는 ... 앞 여섯 권만 한문으로",
+     "difWhy": "『기하원본』 번역 — 대학 교양 수학사",
+     "wor": 4,
+     "worWhy": "교양 — 수학 고전",
+     "acc": 5,
+     "accWhy": "수학 — 초중 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "마테오 리치와 서광계는 ... 앞 여섯 권만 한문으로",
+     "difWhy": "『기하원본』 번역 — 대학 교양 수학사",
+     "wor": 4,
+     "worWhy": "교양 — 수학 고전"
+    },
+    "rewrite": null,
+    "generalHint": "판 수로 따지면 성경 다음일 것이라는 추정이 있을 만큼, 천 가지가 넘는 판이 나온 책이다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "고대 그리스에서 쓰인 13권짜리 기하학 교과서",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "수학사 교양·교과서로 들어 봄",
+     "piece": "f08",
+     "genPct": 60
+    },
+    "blind": {
+     "ref": "C1-07",
+     "key": "b176",
+     "hint": "판 수로 따지면 성경 다음일 것이라는 추정이 있을 만큼, 천 가지가 넘는 판이 나온 책이다.",
+     "guess": "유클리드 원론",
+     "confidence": "high",
+     "hit": true,
+     "answer": "유클리드 원론"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Euclid%27s_Elements",
+     "https://ko.wikipedia.org/wiki/에우클레이데스의_원론"
+    ],
+    "facts": [
+     {
+      "claim": "1482년 라트돌트가 첫 인쇄본(베네치아)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Euclid%27s_Elements",
+      "note": "\"The first printed edition of the Elements was published by Erhard Ratdolt in 1482, based on Campanus's version.\" (판본 목록에서 1482 Venice)"
+     },
+     {
+      "claim": "1607년 리치·서광계, 클라비우스 라틴어판에서 I~VI권만",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Euclid%27s_Elements",
+      "note": "\"In 1607, The Italian Jesuit Matteo Ricci and the Chinese mathematician Xu Guangqi published the first Chinese edition of Euclid's Elements.\" / \"Translated from the Latin edition of Clavius, but including only books I-VI.\""
+     },
+     {
+      "claim": "번역본 제목 '기하원본'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Euclid%27s_Elements",
+      "note": "The title is Jī hé yuán běn (幾何原本), and a later translation of the remaining books is also available"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Euclid%27s_Elements"
+    ],
+    "hintNote": "has been estimated to be second only to the Bible in the number of editions published since the first printing in 1482, the number reaching well over one thousand.",
+    "easiestCue": "1607년 마테오 리치와 서광계는 클라비우스가 엮은 라틴어판에서 이 책의 앞 여섯 권만 한문으로 옮겼는데",
+    "targetWhy": "원론의 인쇄·동아시아 번역사는 수학사 애호가 — '피타고라스 정리·5공준' 같은 대표 내용은 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'선교사가 옮긴 서양 수학책' 이면 원론을 짐작하기 쉬움",
+    "pairCheck": null,
+    "dbCheck": "유클리드 원론 · 원론 · 기하학 원론 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "math/2#g019b-C1-08",
+   "seed": {
+    "subject": "프랙털",
+    "aspect": null,
+    "ref": "C1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국의 루이스 프라이 리처드슨은 국경 길이가 전쟁 가능성에 미치는 영향을 연구하다, 포르투갈은 에스파냐와의 국경을 987km로, 에스파냐는 1,214km로 적었다는 데 주목했습니다. 이를 이어받아 1967년 논문을 쓴 수학자가 1975년에 지어낸 이 도형 개념의 이름은?",
+    "answer": "프랙털",
+    "acceptedAnswers": [
+     "프랙탈"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 표제 '프랙털' · 언론·책에서 '프랙탈' 표기가 흔함",
+    "explanation": "만델브로의 1967년 논문 제목은 '영국 해안선의 길이는 얼마인가'였지만, 그는 이 논문에서는 아직 그 낱말을 쓰지 않았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "포르투갈은 에스파냐와의 국경을 987km로",
+     "difWhy": "해안선 역설·망델브로 — 대학 교양 수학",
+     "wor": 4,
+     "worWhy": "교양 — 기본 어휘",
+     "acc": 5,
+     "accWhy": "수학 — 초중 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "포르투갈은 에스파냐와의 국경을 987km로",
+     "difWhy": "해안선 역설·망델브로 — 대학 교양 수학",
+     "wor": 4,
+     "worWhy": "교양 — 기본 어휘"
+    },
+    "rewrite": null,
+    "generalHint": "1904년 스웨덴 수학자 헬리 폰 코흐가 내놓은 곡선이 이 개념의 이름난 예로 꼽힌다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "부분을 확대해도 전체와 닮은 꼴이 되풀이되는 도형",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "수학·디자인 교양에서 들어 봤을 법함",
+     "piece": "f07",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "C1-08",
+     "key": "b293",
+     "hint": "1904년 스웨덴 수학자 헬리 폰 코흐가 내놓은 곡선이 이 개념의 이름난 예로 꼽힌다.",
+     "guess": "프랙털",
+     "confidence": "high",
+     "hit": true,
+     "answer": "프랙털"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Coastline_paradox"
+    ],
+    "facts": [
+     {
+      "claim": "리처드슨 — 국경 길이와 전쟁 가능성 연구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Coastline_paradox",
+      "note": "he was \"researching the possible effect of border lengths on the probability of war\""
+     },
+     {
+      "claim": "포르투갈 987km · 에스파냐 1,214km",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Coastline_paradox",
+      "note": "\"the Portuguese reported their measured border with Spain to be 987 km (613 mi)\" while \"the Spanish reported it as 1,214 km (754 mi).\""
+     },
+     {
+      "claim": "1967년 만델브로 논문 · 1975년 용어 창안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Coastline_paradox",
+      "note": "\"How Long Is the Coast of Britain? Statistical Self-Similarity and Fractional Dimension\" ... published on 5 May 1967 ... Mandelbrot did not use the term in the 1967 paper, \"as he did not coin it until 1975.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Koch_snowflake"
+    ],
+    "hintNote": "the Koch curve, which appeared in a 1904 paper … by the Swedish mathematician Helge von Koch.",
+    "easiestCue": "이를 이어받아 1967년 논문을 쓴 수학자가 1975년에 지어낸 이 도형 개념의 이름은?",
+    "targetWhy": "리처드슨의 국경 통계는 해안선 역설의 뒷이야기 — '해안선'·'자기 닮음' 대표 단서를 뺀 애호가 지식",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정의(자기 닮음)를 쓰지 않고 이름이 생긴 경위로만 물음",
+    "pairCheck": null,
+    "dbCheck": "프랙털 · 프랙탈 new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,225 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "architecture/2",
+  "midKey": "architecture",
+  "subName": "건축가",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "architecture/2#g019b-A1-01",
+   "seed": {
+    "subject": "가우디",
+    "aspect": null,
+    "ref": "A1-01",
+    "pairedWith": 175
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 175,
+    "question": "바르셀로나 건축학교 교장 엘리스 로젠트는 이 사람에게 학위를 주며 \"바보에게 주었는지 천재에게 주었는지는 시간이 알려 줄 것\"이라고 했습니다. 그는 한 노동자 마을의 성당을 설계할 때 납을 채운 자루를 매단 끈을 천장에 걸어 구조를 잡았는데, 이 건축가는 누구일까요?",
+    "answer": "가우디",
+    "acceptedAnswers": [
+     "안토니 가우디"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "안토니 가우디 — 활성 #175 의 대표 정답 표기 · ko.wikipedia 문서 제목 '안토니 가우디'",
+    "explanation": "그 성당은 1914년 구엘 백작이 숨지면서 공사가 멈춰, 지하 성당 부분만 온전히 완성되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "\"바보에게 주었는지 천재에게 주었는지는 시간이 알려 줄 것\"",
+     "difWhy": "가우디 학위 일화 — 관심층 (경계 3)",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "\"바보에게 주었는지 천재에게 주었는지는 시간이 알려 줄 것\"",
+     "difWhy": "가우디 학위 일화 — 관심층 (경계 3)",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "1878년 파리 만국 박람회에 장갑 회사 코메야의 진열장을 만들어 내놓았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "바르셀로나에서 곡선 많은 건물을 남긴 카탈루냐 건축가",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "사그라다 파밀리아로 널리 알려진 건축가",
+     "piece": "f05",
+     "genPct": 80
+    },
+    "blind": {
+     "ref": "A1-01",
+     "key": "b012",
+     "hint": "1878년 파리 만국 박람회에 장갑 회사 코메야의 진열장을 만들어 내놓았다.",
+     "guess": "안토니 가우디",
+     "confidence": "high",
+     "hit": true,
+     "answer": "가우디"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Antoni_Gaudí",
+     "https://en.wikipedia.org/wiki/Church_of_Colònia_Güell"
+    ],
+    "facts": [
+     {
+      "claim": "로젠트 교장의 '바보 아니면 천재' 말",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Antoni_Gaudí",
+      "note": "Rogent, director of the Barcelona Architecture School: \"We have given this academic title either to a fool or a genius. Time will show.\""
+     },
+     {
+      "claim": "납 채운 자루를 매단 끈 모형",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Church_of_Colònia_Güell",
+      "note": "\"Gaudí hung hemp ropes attached to lead-filled sacks from the ceiling.\""
+     },
+     {
+      "claim": "1914년 공사 중단 · 지하 성당만 완성",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Church_of_Colònia_Güell",
+      "note": "\"In 1914, the Güell family halted construction due to the death of Count Güell.\" / \"The crypt portion of the church... was the only segment of the church that was fully completed.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Antoni_Gaudí"
+    ],
+    "hintNote": "At the Paris World's Fair of 1878, Gaudí displayed a showcase he had produced for the glove manufacturer Comella.",
+    "easiestCue": "납을 채운 자루를 매단 끈을 천장에 걸어 구조를 잡았는데",
+    "targetWhy": "로젠트 일화 · 콜로니아 구엘 거꾸로 매단 모형 — 건축 애호가 세부(대표작 이름 없음)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 건축가의 교과서 밖 일화 둘",
+    "pairCheck": "1회차 질문(사그라다 파밀리아·구엘 공원)·해설(카사 바트요)·힌트(없음)와 겹치지 않음 — '구엘' 이름도 질문에서 뺌",
+    "dbCheck": "가우디 new · 안토니 가우디 pair-or-different #175 — (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 175,
+     "question": "스페인 바르셀로나의 '사그라다 파밀리아' 성당과 '구엘 공원' 등을 설계한 카탈루냐 출신의 천재 건축가는?",
+     "explanation": "사그라다 파밀리아 대성당, 카사 바트요 등을 설계한 스페인의 건축가는 안토니 가우디이다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "architecture/2#g019b-A1-02",
+   "seed": {
+    "subject": "자하 하디드",
+    "aspect": null,
+    "ref": "A1-02",
+    "pairedWith": 2076
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2076,
+    "question": "이 건축가는 런던으로 오기 전 베이루트 아메리칸 대학교에서 수학을 공부했습니다. 1994년 웨일스 카디프의 오페라 하우스 공모에서 심사위원단이 그의 안을 가장 좋은 안으로 골랐지만, 지원을 받지 못해 사업은 다른 건축가에게 넘어갔는데, 이 건축가는 누구일까요?",
+    "answer": "자하 하디드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "독일 가구 회사 비트라의 작은 소방서(1991~1993)가 그의 건축 경력을 연 발판으로 꼽힙니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "카디프의 오페라 하우스 공모",
+     "difWhy": "하디드 카디프 낙선 — 건축 애호가",
+     "wor": 3,
+     "worWhy": "유명 건축가 이름 맞히기",
+     "acc": 3,
+     "accWhy": "건축 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "카디프의 오페라 하우스 공모",
+     "difWhy": "하디드 카디프 낙선 — 건축 애호가",
+     "wor": 3,
+     "worWhy": "유명 건축가 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "2012년 런던 올림픽 수영 경기장인 런던 아쿠아틱스 센터를 설계했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "동대문디자인플라자를 설계한 이라크 출신 여성 건축가",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "DDP 설계자로 뉴스에서 들어 봤을 법함",
+     "piece": "f09",
+     "genPct": 45
+    },
+    "blind": {
+     "ref": "A1-02",
+     "key": "b232",
+     "hint": "2012년 런던 올림픽 수영 경기장인 런던 아쿠아틱스 센터를 설계했다.",
+     "guess": "자하 하디드",
+     "confidence": "high",
+     "hit": true,
+     "answer": "자하 하디드"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Zaha_Hadid"
+    ],
+    "facts": [
+     {
+      "claim": "베이루트 아메리칸 대학교에서 수학 공부 뒤 런던",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zaha_Hadid",
+      "note": "\"Hadid studied mathematics at the American University of Beirut before moving, in 1972, to London\""
+     },
+     {
+      "claim": "1994 카디프 오페라 하우스 — 심사위원 최고안, 지원 거부로 다른 건축가에게",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zaha_Hadid",
+      "note": "\"a plan for an opera house in Cardiff, Wales, (1994)\" / \"although her design was selected as the best by the competition jury\" ... \"refused to support it, and the project was awarded to another architect.\""
+     },
+     {
+      "claim": "비트라 소방서가 경력의 발판",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Zaha_Hadid",
+      "note": "Vitra Fire Station section (1991–1993): \"It was the launching pad of her architectural career.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/London_Aquatics_Centre"
+    ],
+    "hintNote": "The centre, designed by architect Zaha Hadid as one of the main venues of the 2012 Summer Olympics",
+    "easiestCue": "1994년 웨일스 카디프의 오페라 하우스 공모에서 심사위원단이 그의 안을 가장 좋은 안으로 골랐지만",
+    "targetWhy": "카디프 공모 무산 · 수학 전공 — 건축 애호가 세부, DDP·프리츠커·바그다드 단서 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국에서 DDP 로 들어 본 이름의 뒷이야기",
+    "pairCheck": "1회차 질문(곡선·DDP)·해설(여성 첫 프리츠커)·힌트(바그다드·런던 거점)와 겹치지 않음 — '런던으로 오기 전' 은 거점 사실이 아니라 이동 시점",
+    "dbCheck": "pair-or-different #2076 — (가) 2회차",
+    "warn": [],
+    "first": {
+     "id": 2076,
+     "question": "곡선으로 이루어진 형태로 알려졌고 서울의 동대문디자인플라자를 설계한 건축가는?",
+     "explanation": "여성 최초로 프리츠커상을 받았습니다.",
+     "hint": "이라크 바그다드에서 태어나 영국 런던을 거점으로 활동했다.",
+     "difficulty": 3
+    }
+   }
+  }
+ ]
+}

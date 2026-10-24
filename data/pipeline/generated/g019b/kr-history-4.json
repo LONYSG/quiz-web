@@ -1,0 +1,449 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "kr-history/4",
+  "midKey": "kr-history",
+  "subName": "조선 후기",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/4#g019b-K2-05",
+   "seed": {
+    "subject": "다산초당",
+    "aspect": null,
+    "ref": "K2-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1958년 지역 보존회가 무너진 옛 건물 자리에 지금의 건물을 다시 지었습니다. 이곳에 머문 학자는 귀양 와서 처음 묵은 주막 방에 '사의재'라는 이름을 붙였고, 이곳 앞뜰에는 차를 달였다는 '청석'이 있는데, 이 건물은?",
+    "answer": "다산초당",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "뒤 언덕 바위에는 그가 직접 새긴 '정석(丁石)' 두 글자가 있고, 한쪽에는 '약천'이라는 약수터가 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "귀양 와서 처음 묵은 주막 방에 '사의재'라 이름 붙인 학자",
+     "difWhy": "강진 유배 정약용 — 고교 한국사·관심층",
+     "wor": 4,
+     "worWhy": "교과 인물 유적",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이곳에 머물던 학자가 직접 새긴 '정석(丁石)'",
+     "difWhy": "정약용 강진 유배지 — 고교 한국사",
+     "wor": 4,
+     "worWhy": "교양 — 실학 대표 유적"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1958년 지역 보존회가 무너진 옛 건물 자리에 지금의 건물을 다시 지었습니다. 뒤 언덕 바위에는 이곳에 머물던 학자가 직접 새긴 '정석(丁石)' 두 글자가 있고, 앞뜰에는 차를 달였다는 '청석'이 놓여 있는 이 건물은 무엇일까요?",
+     "beforeExplanation": "그가 처음 귀양 와서 머문 곳은 한 주막이었는데, 그는 그 방에 '사의재(四宜齋)'라는 이름을 붙였습니다.",
+     "removedCue": "학자가 직접 새긴 '정석(丁石)'(성씨 丁 → 정약용)",
+     "addedCue": "그 학자가 처음 묵은 주막 방 이름 '사의재'(해설에서 옮김)",
+     "why": "丁 자가 곧바로 정약용을 가리켜 해설로 내리고, 답사 애호가가 아는 사의재로 바꿈"
+    },
+    "generalHint": "그는 해남 대흥사 주지였던 혜장 선사와 인연을 맺었고, 이곳 위로는 백련사로 가는 길이 이어진다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "조선 후기 실학자가 강진 유배 중 머물며 책을 쓴 집",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "정약용 유배지로 교과서·여행에서 접함",
+     "piece": "f09",
+     "genPct": 70
+    },
+    "blind": {
+     "ref": "K2-05",
+     "key": "b199",
+     "hint": "그는 해남 대흥사 주지였던 혜장 선사와 인연을 맺었고, 이곳 위로는 백련사로 가는 길이 이어진다.",
+     "guess": "다산초당",
+     "confidence": "high",
+     "hit": true,
+     "answer": "다산초당"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/강진_정약용_유적"
+    ],
+    "facts": [
+     {
+      "claim": "1958년 다산유적보존회가 무너진 초당 자리에 다시 지음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강진_정약용_유적",
+      "note": "옛 초당은 무너져서 1958년 강진의 다산유적보존회가 주선하여 건물이 있던 자리에 지금의 초당을 다시 지은 것이다."
+     },
+     {
+      "claim": "뒤 언덕 바위에 다산이 직접 깎은 '정석' 글자, 앞뜰에 차를 달였다는 청석",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강진_정약용_유적",
+      "note": "초당 뒤 언덕 암석에는 다산이 직접 깎은 ‘정석(丁石)’이라는 글자가 새겨져 있으며, 초당 왼쪽으로 자그마한 연못이 있다. 앞 뜰에는 차를 달였다는 ‘청석’이 있고"
+     },
+     {
+      "claim": "처음 머문 주막을 사의재라 이름 지음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/강진_정약용_유적",
+      "note": "처음에는 강진의 한 주막에 머무르게 되었는데 … 유일하게 주막의 주모가 호의를 베풀어주자 그 곳에서 기거했던 주막을 사의재(四宜齋)라고 지어주었다."
+     },
+     {
+      "claim": "뒤 언덕 바위의 정석 글자 · 약천 약수터",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/강진_정약용_유적",
+      "note": "초당 뒤 언덕 암석에는 다산이 직접 깎은 ‘정석(丁石)’이라는 글자가 새겨져 있으며 … 한 켠에는 ‘약천(藥泉)’이라는 약수터가 있어"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/강진_정약용_유적"
+    ],
+    "hintNote": "해남 대흥사의 주지로 있던 승려 혜장 선사를 만나면서 그와 인연을 맺으며 가르침을 받았다. / 유적 위로 가면 강진군의 고찰인 백련사로 갈 수 있는데",
+    "easiestCue": "학자가 귀양 와 처음 묵은 주막 방에 붙인 이름 '사의재'",
+    "targetWhy": "사의재·청석은 교과서 밖, 강진 답사·실학 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 익숙한 유적의 현장 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 '목민심서'·'거중기'와 정답·지식이 다름",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/4#g019b-K2-06",
+   "seed": {
+    "subject": "암행어사",
+    "aspect": null,
+    "ref": "K2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "임명된 사람이 받은 봉서 겉면에는 '남대문 밖에 이르면 열어 보라'는 글이 적혀 있어, 한성을 벗어난 뒤에야 임무를 확인할 수 있었습니다. 1892년 전라도로 보낸 이면상을 마지막으로 폐지된 조선의 이 관리 제도는 무엇일까요?",
+    "answer": "암행어사",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "함께 받은 놋쇠 자 '유척'으로는 고을의 되와 자를 검사해 속이는지 가렸습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "'남대문 밖에 이르면 열어 보라' — 한성을 벗어난 뒤에야 임무를 확인한 관리",
+     "difWhy": "'몰래 임무 받은 관리' — 중학 역사·사극 (경계 3)",
+     "wor": 4,
+     "worWhy": "조선 제도 교양",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "놋쇠 자 '유척'으로 고을의 되와 자를 검사",
+     "difWhy": "암행어사 유척 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 조선 관직"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "임명된 사람이 받은 봉서 겉면에는 '남대문 밖에 이르면 열어 보라'는 글이 적혀 있어, 한성을 벗어난 뒤에야 임무를 확인할 수 있었습니다. 함께 받은 놋쇠 자 '유척'으로 고을의 되와 자를 검사했다는 조선의 이 관리는 무엇일까요?",
+     "beforeExplanation": "이 제도는 1892년 전라도에 보낸 이면상을 마지막으로 폐지되었습니다.",
+     "removedCue": "놋쇠 자 '유척'으로 고을의 되와 자를 검사",
+     "addedCue": "1892년 이면상을 마지막으로 폐지",
+     "why": "유척 단서를 해설로 옮기고 제도의 끝(1892 이면상)으로 바꿈"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "조선 국왕이 몰래 지방에 보내 수령을 감찰하게 한 임시 관리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "춘향전·사극으로 누구나 앎",
+     "piece": "f05",
+     "genPct": 98
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/암행어사"
+    ],
+    "facts": [
+     {
+      "claim": "봉서 겉면에 '남대문 밖에 도달하면 열어볼 것'이라 써 한성 밖에서만 열게 함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/암행어사",
+      "note": "봉서 표면에는 도남대문외개탁(到南大門外開坼 : 남대문 밖에 도달하면 열어볼 것) 또는 도동대문외개탁(…)이라고 써서 그 내용은 한성 밖에서만 열어볼 수 있도록 하였다."
+     },
+     {
+      "claim": "유척은 놋쇠 자로, 지방 관청의 도량형을 검사해 되나 자를 속이는지 판별",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/암행어사",
+      "note": "유척은 놋쇠로 만든 자로, 암행어사가 지방 관청의 도량형을 검사하여 되나 자를 속이는지 판별하는 표준 자로 쓰였다."
+     },
+     {
+      "claim": "1892년 이면상을 마지막으로 폐지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/암행어사",
+      "note": "이 제도는 1892년(고종 29) 전라도 암행어사인 이면상을 마지막으로 폐지되었다."
+     },
+     {
+      "claim": "조선 후기에 더욱 활발히 시행(소분류 근거)",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/암행어사",
+      "note": "조선 후기 삼정문란이 심해지면서 더욱 활발히 시행되었다. … 전기에는 좀처럼 볼 수 없었던 암행어사가 후기에는 일반화되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "봉서 겉면에 '남대문 밖에 이르면 열어 보라'",
+    "targetWhy": "봉서 개봉 규정 · 마지막 파견 — 교과서 밖 제도 운영 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 관직의 몰랐던 운영 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안에 없음",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-history/4#g019b-K2-07",
+   "seed": {
+    "subject": "남한산성",
+    "aspect": null,
+    "ref": "K2-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "『삼국사기』에 문무왕 12년 한강 남쪽에 쌓았다고 나오는 '주장성'을 이곳으로 보는 견해가 있습니다. 2001~2002년 행궁터 발굴에서는 조선 시대 층 아래에서 길이 50m가량의 통일 신라 시대 초대형 건물지가 드러났는데, 이곳은?",
+    "answer": "남한산성",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이괄의 난을 겪은 조정은 1624년부터 2년 동안 이곳을 다시 쌓고 고을 관아와 수어청을 안으로 옮겼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "문무왕 12년 쌓은 '주장성'으로 보는 견해, 행궁터 발굴",
+     "difWhy": "주장성 비정·발굴 — 한국사 애호가 (경계 3)",
+     "wor": 5,
+     "worWhy": "한국사 교과 유적",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "이괄의 난을 겪은 조정은 1624년부터 2년 동안 이곳을 다시 쌓고",
+     "difWhy": "남한산성 수축 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "『삼국사기』에 문무왕 12년 한강 남쪽에 쌓았다고 나오는 '주장성'을 이곳으로 보는 견해가 있습니다. 이괄의 난을 겪은 조정은 1624년부터 2년 동안 이곳을 다시 쌓고 고을 관아와 수어청을 안으로 옮겼는데, 이곳은 어디일까요?",
+     "beforeExplanation": "2001~2002년 행궁터 발굴에서는 조선 시대 층 아래에서 길이 50m가량의 통일 신라 시대 초대형 건물지가 드러났습니다.",
+     "removedCue": "이괄의 난을 겪은 조정은 1624년부터 2년 동안 이곳을 다시 쌓고",
+     "addedCue": "행궁터 발굴의 통일 신라 초대형 건물지",
+     "why": "고교 한국사의 인조 수축을 해설로 옮기고 발굴 세부로 바꿈"
+    },
+    "generalHint": "이곳의 숭렬전은 백제 시조 온조왕의 위패를 모시고 제사를 드리던 사당이다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "병자호란 때 인조가 피신해 청군에 맞선 경기도의 산성",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "교과서·영화 '남한산성'으로 누구나 앎",
+     "piece": "f09",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "K2-07",
+     "key": "b287",
+     "hint": "이곳의 숭렬전은 백제 시조 온조왕의 위패를 모시고 제사를 드리던 사당이다.",
+     "guess": "남한산성",
+     "confidence": "high",
+     "hit": true,
+     "answer": "남한산성"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/남한산성"
+    ],
+    "facts": [
+     {
+      "claim": "『삼국사기』 문무왕 12년 한강 이남에 주장성을 쌓았다는 기록과 이를 남한산성으로 보는 설",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/남한산성",
+      "note": "남한산성이 신라 시대에 쌓은 주장성이라는 주장이다. 이 주장은《삼국사기》의 기록에 근거한 것인데, 《삼국사기》 신라 문무왕 12년 조에 “한강 이남의 한산에 주장성을 쌓았는데 둘레가 '4,360보'이다.”라는 기록이 있다."
+     },
+     {
+      "claim": "이괄의 난을 계기로 1624~1626년 2년간 공사, 광주목과 수어청이 성 안으로",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/남한산성",
+      "note": "인조 2년(1624년)에 일어난 이괄의 난을 계기로 … 남한산성의 중요성이 크게 증대되었다. 이에 인조는 1624년부터 1626년까지 2년간 공사를 추진하여, 공사 완료 후 광주목이 남한산성으로 이전했고, 수어청도 같은 해에 남한산성에 설치되었다."
+     },
+     {
+      "claim": "행궁터 발굴에서 통일신라 시대 길이 50m 건물지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/남한산성",
+      "note": "토지박물관의 남한산성 행궁터 조사에 따르면, 조선 시대 층위 아래에서 길이 50m가량의 통일 신라 시대 초대형 건물지가 출토되었고 (2001년과 2002년에 걸쳐 … 행궁터를 발굴조사)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/남한산성"
+    ],
+    "hintNote": "숭렬전(崇烈殿)은 백제의 시조 온조왕의 위패를 봉안하고 제사를 드리던 사당이다.",
+    "easiestCue": "행궁터 발굴에서는 … 통일 신라 시대 초대형 건물지",
+    "targetWhy": "주장성 설 · 발굴 성과 — 교과서 밖 고고 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "수어청을 5군영으로 외운 사람은 남한산성을 떠올릴 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 이괄의 난(4)·삼전도비 문항과 정답이 다르고 지식도 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-history/4#g019b-K2-08",
+   "seed": {
+    "subject": "동의보감",
+    "aspect": null,
+    "ref": "K2-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1596년 왕명을 받아 여러 의원이 함께 편찬을 시작했지만, 이듬해 정유재란으로 일이 멈춘 의학서입니다. 1724년 일본 교토에서, 1763년 중국에서 처음 간행된 이 책은 무엇일까요?",
+    "answer": "동의보감",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2009년 7월 유네스코 세계기록유산에 등재되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1596년 왕명으로 편찬 시작, 정유재란으로 멈춘 의학서",
+     "difWhy": "선조 대 의학서 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과 저술",
+     "acc": 5,
+     "accWhy": "한국사 — 중학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "전쟁이 끝난 뒤 한 사람이 혼자 이어 1610년에 완성",
+     "difWhy": "허준 동의보감 — 고교 한국사",
+     "wor": 5,
+     "worWhy": "한국사 교과"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1596년 왕명을 받아 여러 의원이 함께 편찬을 시작했지만 이듬해 정유재란으로 일이 멈췄고, 전쟁이 끝난 뒤 한 사람이 혼자 이어 1610년에 완성했습니다. 1724년 일본 교토에서도 간행된 이 책은 무엇일까요?",
+     "beforeExplanation": "2009년 7월 유네스코 세계기록유산에 등재되었고, 중국에서도 1763년에 처음 간행되었습니다.",
+     "removedCue": "전쟁이 끝난 뒤 한 사람이 혼자 이어 1610년에 완성(허준)",
+     "addedCue": "1763년 중국 초간본",
+     "why": "허준 단독 완성(교과서)을 빼고 해외 간행 세부로 바꿈"
+    },
+    "generalHint": "편찬을 함께 시작한 의원 가운데에는 정작·양예수·김응탁·정예남이 있었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "선조의 명으로 편찬이 시작된 조선의 한의학 백과사전",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "허준·교과서로 누구나 앎",
+     "piece": "f04",
+     "genPct": 97
+    },
+    "blind": {
+     "ref": "K2-08",
+     "key": "b004",
+     "hint": "편찬을 함께 시작한 의원 가운데에는 정작·양예수·김응탁·정예남이 있었다.",
+     "guess": "동의보감",
+     "confidence": "high",
+     "hit": true,
+     "answer": "동의보감",
+     "first": {
+      "ref": "K2-08",
+      "key": "b243",
+      "hint": "내경·외형·잡병·탕액·침구의 다섯 편으로 짜인 책이다.",
+      "guess": "동의보감",
+      "confidence": "high",
+      "hit": true,
+      "answer": "동의보감"
+     }
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/동의보감"
+    ],
+    "facts": [
+     {
+      "claim": "1596년 왕명으로 정작·양예수 등 여러 명과 편찬 착수, 1년 뒤 정유재란으로 중단, 전쟁 뒤 허준 혼자 편찬",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동의보감",
+      "note": "궁중 내의였던 허준은 1596년(선조 29) 왕명을 받아 정작(鄭碏), 이명원(李命源), 양예수(楊禮壽), 김응탁(金應鐸), 정예남(鄭禮男) 등 여러 명과 함께 편찬에 착수하기 시작했다. 하지만 1년뒤 정유재란으로 편찬이 중단, 전쟁이 끝나고 허준 혼자 편찬을 했다."
+     },
+     {
+      "claim": "일본 간본 초간본 1724년 교토",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동의보감",
+      "note": "일본 간본 … 《동의보감》 초간본(梱井藤兵衛, 京都書林, 1724)"
+     },
+     {
+      "claim": "2009년 7월 31일 유네스코 세계기록유산, 중국 초간본 1763",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/동의보감",
+      "note": "2009년 7월 31일 유네스코 세계기록유산으로 등록되었다. … 중국 간본 《동의보감》 초간본(1763)"
+     },
+     {
+      "claim": "중국 간본 초간본 1763",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동의보감",
+      "note": "중국 간본 《동의보감》 초간본(1763)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동의보감"
+    ],
+    "hintNote": "궁중 내의였던 허준은 1596년(선조 29) 왕명을 받아 정작, 양예수(楊禮壽), 김응탁(金應鐸), 정예남(鄭禮男) 등 여러 명과 함께 편찬에 착수하기 시작했다.",
+    "easiestCue": "1596년 왕명 … 이듬해 정유재란으로 일이 멈춘 의학서",
+    "targetWhy": "편찬 중단 · 일본·중국 간행 — 교과서 밖 판본 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'의원들이 편찬한 1610년 책'만으로 동의보감을 떠올리는 관심층이 있을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new(동의보감·허준) — 활성·초안에 없음",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

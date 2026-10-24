@@ -1,0 +1,221 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "human-body/2",
+  "midKey": "human-body",
+  "subName": "장기·순환",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "human-body/2#g019b-C1-01",
+   "seed": {
+    "subject": "폐",
+    "aspect": null,
+    "ref": "C1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2017년 학술지 '네이처'에 실린 연구에서, 생쥐 혈소판의 절반쯤이 골수가 아니라 이 장기 속 혈관을 지나는 거핵세포에서 만들어진다는 결과가 나왔습니다. 이 장기의 왼쪽 것에는 '작은 혀'라는 뜻의 이름이 붙은 부분이 있는데, 이 장기는 무엇일까요?",
+    "answer": "폐",
+    "acceptedAnswers": [
+     "허파"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "허파 — 폐의 순우리말(표준국어대사전 '허파'='폐'), 일상에서 흔히 씀",
+    "explanation": "왼쪽 폐의 가장자리에는 심장이 들어앉는 자리만큼 파인 '심장 패임'이 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "이 장기의 왼쪽 것에는 '작은 혀'라는 뜻의 이름이 붙은 부분",
+     "difWhy": "폐 소설(lingula) — 대학 교양 해부학",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 폐의 혈소판 생산",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "이 장기의 왼쪽 것에는 '작은 혀'라는 뜻의 이름이 붙은 부분",
+     "difWhy": "폐 소설(lingula) — 대학 교양 해부학",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 폐의 혈소판 생산"
+    },
+    "rewrite": null,
+    "generalHint": "1963년 6월 11일 미시시피 대학교의 제임스 하디가 처음으로 이 장기를 사람에게 이식했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "숨 쉴 때 산소를 받아들이는 가슴 속 한 쌍의 장기",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 장기",
+     "piece": "f03",
+     "genPct": 98
+    },
+    "blind": {
+     "ref": "C1-01",
+     "key": "b294",
+     "hint": "1963년 6월 11일 미시시피 대학교의 제임스 하디가 처음으로 이 장기를 사람에게 이식했다.",
+     "guess": "폐",
+     "confidence": "high",
+     "hit": true,
+     "answer": "폐"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Platelet",
+     "https://en.wikipedia.org/wiki/Lung",
+     "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:28329764&resultType=core&format=json"
+    ],
+    "facts": [
+     {
+      "claim": "2017년 네이처 연구 — 생쥐에서 폐가 혈소판 생산의 절반쯤을 맡는다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Platelet",
+      "note": "platelets are \"fragments of cytoplasm from megakaryocytes which reside in bone marrow or lung tissue\" — 근거 논문 Lefrançais et al. (Nature, 2017) \"The lung is a site of platelet biogenesis and a reservoir for haematopoietic progenitors\" · 초록 요지(Europe PMC): 생쥐 폐 혈관을 흐르는 거핵세포가 혈소판을 내며, 폐가 전체 혈소판 생산의 약 절반을 맡는다고 추산"
+     },
+     {
+      "claim": "왼쪽 폐의 '작은 혀'(lingula)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lung",
+      "note": "Lingula: \"Its name means 'little tongue'.\" / \"The lingula on the left lung serves as an anatomic parallel to the middle lobe on the right lung\""
+     },
+     {
+      "claim": "왼쪽 폐의 심장 패임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lung",
+      "note": "[the left lung] \"has an indentation in its border called the cardiac notch of the left lung\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Lung_transplantation"
+    ],
+    "hintNote": "James Hardy of the University of Mississippi performed the first human lung transplant on June 11, 1963.",
+    "easiestCue": "이 장기의 왼쪽 것에는 '작은 혀'라는 뜻의 이름이 붙은 부분이 있는데",
+    "targetWhy": "폐의 혈소판 생산(2017 연구)과 설상엽(lingula)은 고교 생물 밖 — 대학 해부·생리 교양",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 장기의 몰랐던 기능 — '왼쪽 것'이 쌍 장기를 가리키지만 단독으로 풀리진 않음(경계)",
+    "pairCheck": null,
+    "dbCheck": "폐 · 허파 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "human-body/2#g019b-C1-02",
+   "seed": {
+    "subject": "쓸개",
+    "aspect": null,
+    "ref": "C1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "말과 사슴, 기린, 여러 설치류, 그리고 새 가운데 비둘기에게는 이 기관이 없습니다. 1882년 독일 외과 의사 카를 랑겐부흐는 이것이 없는 포유류가 여럿이니 사람도 이것 없이 살 수 있다고 보고 처음 떼어 내는 수술을 했는데, 이 기관은?",
+    "answer": "쓸개",
+    "acceptedAnswers": [
+     "담낭"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "담낭 — 쓸개의 한자어, 의학·일상에서 함께 씀(표준국어대사전 '쓸개'='담낭')",
+    "explanation": "중국 전통 의학에서 쓰는 곰의 쓸개즙을 얻으려고 곰을 산 채로 가둬 두고 즙을 뽑는 일은 동물 학대 논란을 낳아 왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 말·사슴·기린에게 없음 + 사람도 이것 없이 살 수 있다 보고 떼어 냄",
+     "difWhy": "없어도 되는 소화 기관 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 인체·동물 해부",
+     "acc": 5,
+     "accWhy": "인체 — 중학 과학 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "중국 전통 의학에서는 이 기관을 결단을 내리는 자리로 여겨",
+     "difWhy": "담(쓸개)=결단·담력 — 관심 있는 사람은 안다",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 쓸개 없는 동물"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "말과 사슴, 기린, 그리고 여러 설치류에게는 이 기관이 없고, 새 가운데 비둘기에게도 없습니다. 중국 전통 의학에서는 이 기관을 결단을 내리는 자리로 여겨, 기운이 넘치면 호전적이 되고 모자라면 겁이 많아진다고 보았습니다. 이 기관은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "중국 전통 의학에서 결단을 내리는 자리(관심층 — 담력)",
+     "addedCue": "1882년 랑겐부흐의 첫 절제 수술과 그 추론",
+     "why": "담력 뜻을 빼고 의학사 뒷이야기로 바꿈"
+    },
+    "generalHint": "1506년 안토니우스 베니비에니우스가 처음으로 증상과 이 기관에 생기는 돌을 이어 지었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "간 아래에 붙어 소화액을 모아 두는 작은 주머니 장기",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "'쓸개 빠진 놈' 등 일상어로 익숙한 장기",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "C1-02",
+     "key": "b052",
+     "hint": "1506년 안토니우스 베니비에니우스가 처음으로 증상과 이 기관에 생기는 돌을 이어 지었다.",
+     "guess": "담낭(쓸개)",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "쓸개"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gallbladder"
+    ],
+    "facts": [
+     {
+      "claim": "말·사슴·기린·여러 설치류, 비둘기에게 쓸개가 없다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gallbladder",
+      "note": "\"Several species of mammals (including horses, deer, giraffes, many rodents, and laminoids)\" lack one. Some birds, such as pigeons, also lack one"
+     },
+     {
+      "claim": "곰 쓸개즙 채취 사육",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gallbladder",
+      "note": "Bile from several bear species is used in traditional Chinese medicine, and \"bile bears are kept alive in captivity while their bile is extracted.\" The article links this to an industry marked by animal cruelty"
+     },
+     {
+      "claim": "1882년 랑겐부흐가 첫 쓸개 절제 — 쓸개 없는 포유류가 여럿이니 사람도 살 수 있다고 추론",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gallbladder",
+      "note": "German surgeon Carl Langenbuch performed the first cholecystectomy in 1882 for a sufferer of cholelithiasis. … Langenbuch reasoned that given several other species of mammal have no gallbladder, humans could survive without one."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gallbladder"
+    ],
+    "hintNote": "Anthonius Benevinius in 1506 was the first to draw a connection between symptoms and the presence of gallstones.",
+    "easiestCue": "말·사슴·기린·여러 설치류·비둘기에게 없는 기관",
+    "targetWhy": "쓸개 없는 동물 목록·첫 절제 수술의 추론은 생물·의학사 교양(대학 교양) 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'담력·담이 크다'를 떠올리면 풀린다 — 관심층 연상일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "쓸개 · 담낭 new",
+    "warn": []
+   }
+  }
+ ]
+}

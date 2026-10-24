@@ -1,0 +1,229 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "politics/4",
+  "midKey": "politics",
+  "subName": "국제기구·조약",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "politics/4#g019b-H2-20",
+   "seed": {
+    "subject": "브렉시트",
+    "aspect": null,
+    "ref": "H2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "옥스퍼드 영어 사전은 이 말을 처음 쓴 사람으로, 2012년 한 블로그 글에서 이 말을 쓴 피터 와일딩을 꼽습니다. 그는 당시 위성 방송사 BSkyB의 유럽 정책 책임자였는데, 이 말은 무엇일까요?",
+    "answer": "브렉시트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그 블로그 글은 유럽 정책 뉴스 사이트 '유랙티브'에 실렸습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "2012년 한 블로그 글에서 이 말을 쓴 피터 와일딩",
+     "difWhy": "2012 유럽 정책 신조어 — 관심층 (경계 4)",
+     "wor": 4,
+     "worWhy": "시사 상식 — 기본 어휘",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "2012년 한 블로그 글에서 이 말을 쓴 피터 와일딩",
+     "difWhy": "2012 유럽 정책 신조어 — 관심층 (경계 4)",
+     "wor": 4,
+     "worWhy": "시사 상식 — 기본 어휘"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 유일하지 않음 — 정답이 신조어 자체라 2012년 유럽 정책 맥락의 조어 단서를 빼면 무엇을 묻는지 남지 않고, 대신 쓸 깊은 세부(그렉시트를 본뜸)도 같은 단계"
+    },
+    "generalHint": "2016년 11월 콜린스 영어 사전이 이것을 그해의 낱말로 골랐다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "영국의 유럽 연합 탈퇴",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "뉴스에서 크게 다룬 말",
+     "piece": "f05",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "H2-20",
+     "key": "b007",
+     "hint": "2016년 11월 콜린스 영어 사전이 이것을 그해의 낱말로 골랐다.",
+     "guess": "브렉시트",
+     "confidence": "high",
+     "hit": true,
+     "answer": "브렉시트",
+     "first": {
+      "ref": "H2-20",
+      "key": "b024",
+      "hint": "국민 투표를 내건 총리 데이비드 캐머런은 결과가 나오자 물러났다.",
+      "guess": "브렉시트",
+      "confidence": "high",
+      "hit": true,
+      "answer": "브렉시트"
+     }
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Brexit"
+    ],
+    "facts": [
+     {
+      "claim": "OED: 2012년 피터 와일딩이 처음 사용, BSkyB 유럽 정책 책임자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Brexit",
+      "note": "Per the Oxford English Dictionary, the term Brexit was first used in 2012 by Peter Wilding, then director of European policy at BSkyB."
+     },
+     {
+      "claim": "유랙티브 블로그 글",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Brexit",
+      "note": "was coined in a blog post on the website Euractiv by Peter Wilding."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Brexit"
+    ],
+    "hintNote": "On 2 November 2016, the Collins English Dictionary selected Brexit as the word of the year for 2016.",
+    "easiestCue": "그는 당시 위성 방송사 BSkyB의 유럽 정책 책임자였는데",
+    "targetWhy": "낱말을 처음 쓴 사람은 애호가 세부 — 2016 국민투표·EU 탈퇴 정의를 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'2012 · 유럽 정책' 만으로 관심층이 추측할 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "politics/4#g019b-H2-21",
+   "seed": {
+    "subject": "국경 없는 의사회",
+    "aspect": null,
+    "ref": "H2-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1971년 12월 22일 두 의료인 모임이 합쳐 출범한 단체입니다. 한쪽은 프랑스 의학지 『토뉘스』의 편집장 레몽 보렐이 1970년 볼라 사이클론을 계기로 꾸린 모임이었는데, 이 단체는 무엇일까요?",
+    "answer": "국경 없는 의사회",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "공동 창립자 베르나르 쿠슈네르는 뒤에 프랑스 외무장관이 되었고, 단체는 1999년 노벨 평화상을 받았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "엮음: 두 의료인 모임이 합친 단체 + 프랑스 의학지 편집장",
+     "difWhy": "프랑스 의료 구호 단체 — 방송·뉴스 (경계 3)",
+     "wor": 4,
+     "worWhy": "시사 교양 — 국제 단체",
+     "acc": 4,
+     "accWhy": "정치·법 — 고교 사회 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "공동 창립자 베르나르 쿠슈네르",
+     "difWhy": "MSF 창립 — 관심층 (경계 4)",
+     "wor": 4,
+     "worWhy": "시사 상식 — 국제 단체"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1971년 12월 22일 두 의료인 모임이 합쳐 출범한 이 단체에서, 한쪽 모임은 프랑스 의학지 『토뉘스』의 편집장 레몽 보렐이 꾸린 것이었습니다. 공동 창립자 베르나르 쿠슈네르는 뒤에 프랑스 외무장관이 되었는데, 이 단체는?",
+     "beforeExplanation": "1999년 노벨 평화상을 받았고, 당시 회장 제임스 오르빈스키가 단체를 대표해 상을 받았습니다.",
+     "removedCue": "공동 창립자 베르나르 쿠슈네르, 뒤에 프랑스 외무장관(관심층)",
+     "addedCue": "보렐의 모임이 1970년 볼라 사이클론을 계기로 생김",
+     "why": "쿠슈네르는 단체를 다룬 기사에 늘 나오는 이름이라 해설로 내리고, 다른 한 모임의 출발로 바꿈"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "분쟁·재난 지역에서 의료를 펼치는 국제 민간 구호 단체",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "국제 뉴스·후원 광고로 익숙",
+     "piece": "f07",
+     "genPct": 80
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Médecins_Sans_Frontières"
+    ],
+    "facts": [
+     {
+      "claim": "1971.12.22 두 모임 합쳐 출범",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Médecins_Sans_Frontières",
+      "note": "On 22 December 1971, the two groups of colleagues merged to form Médecins Sans Frontières"
+     },
+     {
+      "claim": "토뉘스 편집장 레몽 보렐의 모임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Médecins_Sans_Frontières",
+      "note": "Raymond Borel, the editor of the French medical journal TONUS, started a separate group, Secours Médical Français, which merged"
+     },
+     {
+      "claim": "공동 창립자 쿠슈네르, 뒤에 외무장관",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Médecins_Sans_Frontières",
+      "note": "One of the co-founders of the organisation was Bernard Kouchner … later became Minister of Foreign and European Affairs, serving 2007–2010."
+     },
+     {
+      "claim": "1999 노벨 평화상, 오르빈스키 수상",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Médecins_Sans_Frontières",
+      "note": "received it (Nobel Peace Prize 1999) … James Orbinski, then president, accepted it on MSF's behalf."
+     },
+     {
+      "claim": "보렐의 모임은 1970년 볼라 사이클론에 대응해 만들어짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Médecins_Sans_Frontières",
+      "note": "At the same time, Raymond Borel, the editor of the French medical journal TONUS, had started a group called Secours Médical Français (\"French Medical Relief\") in response to the 1970 Bhola cyclone"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "『토뉘스』 편집장 레몽 보렐이 꾸린 모임",
+    "targetWhy": "두 모임의 합병과 보렐 쪽 출발은 국제 구호 애호가 세부라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'의사 모임·프랑스' 만으로 관심층이 추측할 여지",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

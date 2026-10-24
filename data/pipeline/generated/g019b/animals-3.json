@@ -1,0 +1,234 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "animals/3",
+  "midKey": "animals",
+  "subName": "어류·해양 생물",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/3#g019b-C1-18",
+   "seed": {
+    "subject": "복어",
+    "aspect": null,
+    "ref": "C1-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본 아마미오섬 남쪽 바다 밑 모래에서는 지름 2m쯤 되는 기하학 무늬의 둥근 구조물이 1995년부터 눈에 띄었지만 오래 수수께끼로 남았습니다. 2014년 이름이 붙은 이 물고기 무리의 한 종 수컷이 암컷을 끌려고 만든 둥지였는데, 이 물고기 무리는?",
+    "answer": "복어",
+    "acceptedAnswers": [
+     "복"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "표준국어대사전 '복'='복어' · 복국·복집처럼 '복'으로 흔히 부름",
+    "explanation": "이 둥지를 짓는 데는 7~9일쯤 걸리고, 암컷은 한가운데의 미로 같은 무늬에 알을 낳습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "기하학 무늬의 둥근 구조물",
+     "difWhy": "아마미 복어 둥지 — 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 동물 행동",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "기하학 무늬의 둥근 구조물",
+     "difWhy": "아마미 복어 둥지 — 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 동물 행동"
+    },
+    "rewrite": null,
+    "generalHint": "이 무리의 학명은 '넷'과 '이빨'을 뜻하는 그리스어에서 왔는데, 부리 같은 이빨 넷 때문이다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "위협을 받으면 몸을 공처럼 부풀리는 물고기",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 물고기",
+     "piece": "f03",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "C1-18",
+     "key": "b009",
+     "hint": "이 무리의 학명은 '넷'과 '이빨'을 뜻하는 그리스어에서 왔는데, 부리 같은 이빨 넷 때문이다.",
+     "guess": "복어",
+     "confidence": "high",
+     "hit": true,
+     "answer": "복어"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/White-spotted_pufferfish"
+    ],
+    "facts": [
+     {
+      "claim": "지름 2m의 기하학적 원형 구조",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/White-spotted_pufferfish",
+      "note": "\"These circular structures are geometrically ordered with a diameter of 2 meters.\""
+     },
+     {
+      "claim": "아마미오섬 남쪽 해안 앞바다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/White-spotted_pufferfish",
+      "note": "found on the seabed \"off the south coast of the Amami Ōshima Island\""
+     },
+     {
+      "claim": "1995년 처음 눈에 띄었으나 종 발견까지 수수께끼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/White-spotted_pufferfish",
+      "note": "The nests were first noticed in 1995, but \"their creation remained a mystery until the species' discovery.\""
+     },
+     {
+      "claim": "수컷이 암컷을 끌려고 만든다 · 2014년 명명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/White-spotted_pufferfish",
+      "note": "\"Males create large geometric circles in the sand to attract females for copulation.\" / \"was named in 2014 by a research group for the National Museum of Nature and Science.\""
+     },
+     {
+      "claim": "7~9일, 가운데 미로 무늬에 알",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/White-spotted_pufferfish",
+      "note": "The structures take about a week to form, roughly 7–9 days ... Females may lay eggs in a central maze pattern, \"where a female might lay her eggs.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tetraodontidae"
+    ],
+    "hintNote": "The family name comes from Ancient Greek τετρα- (tetra-), meaning \"four\", and ὀδούς (odoús), meaning \"tooth\", referring to the four teeth",
+    "easiestCue": "2014년 이름이 붙은 이 물고기 무리의 한 종 수컷이 암컷을 끌려고 만든 둥지였는데",
+    "targetWhy": "흰점박이복의 모래 둥지는 독·부풀기 대표 단서 밖 해양 생물 애호가 지식",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대표 특징(독·몸 부풀리기)을 쓰지 않음 — 다만 '바다 속 미스터리 서클' 보도가 있었음(경계)",
+    "pairCheck": null,
+    "dbCheck": "복어 · 복 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "animals/3#g019b-C1-19",
+   "seed": {
+    "subject": "오징어",
+    "aspect": null,
+    "ref": "C1-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1930년대 영국의 J. Z. 영은 이 동물 몸속에서 지름이 최대 1.5mm에 이르는 굵은 신경 섬유가 하는 일을 밝혔습니다. 호지킨과 헉슬리는 이 신경으로 실험해 노벨상을 받았는데, 이 굵은 신경이 물을 뿜어 나아가는 움직임 일부를 맡는 이 동물은?",
+    "answer": "오징어",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "호지킨과 헉슬리는 이 업적으로 오스트레일리아의 존 에클스와 함께 노벨상을 나눠 받았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "호지킨과 헉슬리는 이 신경으로 실험해 노벨상",
+     "difWhy": "오징어 거대 축삭 — 대학 교양 생물",
+     "wor": 4,
+     "worWhy": "교양 — 신경과학 모델 생물",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "호지킨과 헉슬리는 이 신경으로 실험해 노벨상",
+     "difWhy": "오징어 거대 축삭 — 대학 교양 생물",
+     "wor": 4,
+     "worWhy": "교양 — 신경과학 모델 생물"
+    },
+    "rewrite": null,
+    "generalHint": "몸속에 키틴으로 된 막대 모양의 '펜'이 작은 뼈대처럼 남아 있다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "다리가 열 개인 바다의 연체동물",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 동물",
+     "piece": "f03",
+     "genPct": 100
+    },
+    "blind": {
+     "ref": "C1-19",
+     "key": "b185",
+     "hint": "몸속에 키틴으로 된 막대 모양의 '펜'이 작은 뼈대처럼 남아 있다.",
+     "guess": "오징어",
+     "confidence": "high",
+     "hit": true,
+     "answer": "오징어"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Squid_giant_axon"
+    ],
+    "facts": [
+     {
+      "claim": "지름 최대 1.5mm",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Squid_giant_axon",
+      "note": "The axon is \"up to 1.5 mm in diameter; typically around 0.5 mm.\""
+     },
+     {
+      "claim": "1930년대 J. Z. 영이 기능을 밝힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Squid_giant_axon",
+      "note": "first described by L. W. Williams in 1909, but its function was \"demonstrated... in the 1930s\" by J. Z. Young"
+     },
+     {
+      "claim": "호지킨·헉슬리 실험, 노벨상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Squid_giant_axon",
+      "note": "They \"performed experiments on the squid giant axon\" ... \"Nobel Prize–winning work,\" shared with John Eccles"
+     },
+     {
+      "claim": "물 분사 추진 일부를 맡음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Squid_giant_axon",
+      "note": "The axon \"controls part of the water jet propulsion system in squid.\""
+     },
+     {
+      "claim": "에클스와 공동 수상",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Squid_giant_axon",
+      "note": "\"Nobel Prize–winning work,\" shared with John Eccles"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Squid"
+    ],
+    "hintNote": "have a small internal skeleton in the form of a rod-like gladius or pen, made of chitin.",
+    "easiestCue": "호지킨과 헉슬리는 이 신경으로 실험해 노벨상을 받았는데",
+    "targetWhy": "오징어 거대 축삭은 대학 신경생리학 교양 — 고교 교과는 실험 동물을 다루지 않음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'물을 뿜어 나아감'이 문어·오징어로 좁히지만 단독으로는 둘 중 하나",
+    "pairCheck": null,
+    "dbCheck": "오징어 new",
+    "warn": []
+   }
+  }
+ ]
+}

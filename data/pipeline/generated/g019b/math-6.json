@@ -1,0 +1,120 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "math/6",
+  "midKey": "math",
+  "subName": "유명한 수·정리",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "math/6#g019b-C1-11",
+   "seed": {
+    "subject": "가우스",
+    "aspect": null,
+    "ref": "C1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1801년 1월 피아치가 찾았다가 햇빛 속에 놓친 케레스는, 24살 수학자가 새 궤도 계산법으로 예측한 자리 근처에서 그해 12월 31일 다시 발견되었습니다. 2013년에는 보존되어 온 그의 뇌가 일찍이 다른 의사의 뇌와 뒤바뀌었다는 것이 밝혀졌는데, 이 수학자는?",
+    "answer": "가우스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "가우스는 완성되지 않은 연구는 발표하지 않는 버릇이 있어, 그의 여러 발견이 늦게 알려졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "케레스는, 24살 수학자가 새 궤도 계산법으로 예측한 자리",
+     "difWhy": "가우스 케레스 예측 — 대학 교양 수학사",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기",
+     "acc": 5,
+     "accWhy": "수학 — 초중 교과 과목"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "케레스는, 24살 수학자가 새 궤도 계산법으로 예측한 자리",
+     "difWhy": "가우스 케레스 예측 — 대학 교양 수학사",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "그가 대중을 위해 쓴 몇 안 되는 글 가운데 하나는 부활절 날짜를 셈하는 법이었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "19세기 독일의 '수학의 왕'이라 불린 수학자",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "가우스 덧셈 일화·단위로 교과서에서 접함",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "C1-11",
+     "key": "b115",
+     "hint": "그가 대중을 위해 쓴 몇 안 되는 글 가운데 하나는 부활절 날짜를 셈하는 법이었다.",
+     "guess": "카를 프리드리히 가우스",
+     "confidence": "high",
+     "hit": true,
+     "answer": "가우스"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ceres_(dwarf_planet)",
+     "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss"
+    ],
+    "facts": [
+     {
+      "claim": "1801년 1월 1일 피아치가 케레스 발견, 햇빛에 가려 놓침",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ceres_(dwarf_planet)",
+      "note": "\"Piazzi discovered Ceres on 1 January 1801.\" ... \"was too close to the Sun's glare for other astronomers to confirm Piazzi's observations\""
+     },
+     {
+      "claim": "24살 가우스의 궤도 결정법 · 12월 31일 재발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ceres_(dwarf_planet)",
+      "note": "Gauss, then 24, \"developed an efficient method of orbit determination\" ... Recovery (31 December 1801): \"von Zach and fellow celestial policeman Heinrich W. M. Olbers found Ceres near the predicted position.\""
+     },
+     {
+      "claim": "2013년 — 보존된 뇌가 의사 콘라트 하인리히 푹스의 뇌와 뒤바뀜",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+      "note": "\"the day after Gauss's death his brain was removed, preserved, and studied by Rudolf Wagner.\" In 2013, a neurobiologist found that \"Gauss's brain had been mixed up soon after the first investigations, due to mislabelling,\" with that of physician Conrad Heinrich Fuchs"
+     },
+     {
+      "claim": "미완성 연구를 발표하지 않음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+      "note": "\"He is known for not publishing incomplete work,\" and \"this practice delayed the dissemination of many of his discoveries.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss"
+    ],
+    "hintNote": "His only attempts at popularization were his works on the date of Easter (1800/1802) and the essay Erdmagnetismus und Magnetometer of 1836.",
+    "easiestCue": "24살 수학자가 새 궤도 계산법으로 예측한 자리 근처에서 그해 12월 31일 다시 발견되었습니다",
+    "targetWhy": "케레스 궤도 예측·뇌 뒤바뀜은 '1부터 100까지 합' 같은 대표 일화 밖 애호가 지식",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "대표 일화·정17각형을 빼고 두 번째 줄 사실로만",
+    "pairCheck": null,
+    "dbCheck": "가우스 new — 인물이지만 수학 분야 소분류(15 M8)",
+    "warn": []
+   }
+  }
+ ]
+}

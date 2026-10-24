@@ -1,0 +1,238 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "computer/3",
+  "midKey": "computer",
+  "subName": "프로그래밍 용어",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "computer/3#g019b-C2-12",
+   "seed": {
+    "subject": "자바스크립트",
+    "aspect": null,
+    "ref": "C2-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1995년 9월 넷스케이프 내비게이터 베타판에 실렸을 때는 지금과 다른 이름이었던 언어입니다. 그해 12월 정식 판에서 지금 이름이 붙었는데, 만든 사람은 이 이름을 '넷스케이프의 마케팅 술책'이라 여겼습니다. 이 언어는?",
+    "answer": "자바스크립트",
+    "acceptedAnswers": [
+     "JavaScript"
+    ],
+    "originalTitleVariants": [
+     "JavaScript"
+    ],
+    "variantCheck": "JavaScript — 영문 상표 이름(B10)",
+    "explanation": "만든 사람은 브렌던 아이크로, 처음에는 브라우저에 스킴 언어를 넣는 일을 맡았고, 베타판 때 이름은 '라이브스크립트'였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "이름을 '넷스케이프의 마케팅 술책'이라 여긴 언어",
+     "difWhy": "자바 편승 이름 — IT 관심층",
+     "wor": 3,
+     "worWhy": "유명 언어 이름 유래",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "브렌던 아이크는 ... 새 언어를 만들었습니다",
+     "difWhy": "넷스케이프 언어 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — IT 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1995년 넷스케이프가 데려온 프로그래머 브렌던 아이크는 처음에 브라우저에 스킴 언어를 넣는 일을 맡았지만 결국 새 언어를 만들었습니다. 그는 그해 12월 정식 판에 붙은 이 언어의 이름을 '넷스케이프의 마케팅 술책'이라 여겼는데, 이 언어는 무엇일까요?",
+     "beforeExplanation": "미국에서 이 이름은 오라클이 가진 상표이고, 언어 표준은 ECMAScript라는 이름으로 따로 관리됩니다.",
+     "removedCue": "브렌던 아이크가 새 언어를 만듦(관심층 — 창시자 이름)",
+     "addedCue": "베타판 때는 이름이 달랐다는 사실(옛 이름 라이브스크립트는 정답 조각이라 해설로)",
+     "why": "창시자 이름은 개발자 관심층이 바로 잇는 단서라 해설로 내리고, 옛 이름 세부로 바꿈"
+    },
+    "generalHint": "구글은 2008년 크롬을 내놓으며 이 언어를 돌리는 V8 엔진도 함께 선보였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "웹 브라우저에서 돌아가는 대표 프로그래밍 언어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "IT 일반 상식으로 대졸 30대 다수가 이름은 앎",
+     "piece": "f01",
+     "genPct": 70
+    },
+    "blind": {
+     "ref": "C2-12",
+     "key": "b118",
+     "hint": "구글은 2008년 크롬을 내놓으며 이 언어를 돌리는 V8 엔진도 함께 선보였다.",
+     "guess": "자바스크립트",
+     "confidence": "high",
+     "hit": true,
+     "answer": "자바스크립트"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/JavaScript"
+    ],
+    "facts": [
+     {
+      "claim": "12월 정식 판에서 이름이 바뀜",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/JavaScript",
+      "note": "The name was changed to JavaScript for the official release in December. · (the language was called LiveScript in a September 1995 Navigator beta)"
+     },
+     {
+      "claim": "아이크는 이름을 넷스케이프의 마케팅 술책으로 봄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/JavaScript",
+      "note": "Eich regarded the JavaScript name as \"a marketing ploy by Netscape.\""
+     },
+     {
+      "claim": "넷스케이프가 스킴을 넣으려 아이크를 고용",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/JavaScript",
+      "note": "hiring Brendan Eich to embed the Scheme language (Eich was then asked to create a new language)"
+     },
+     {
+      "claim": "12월 정식 판에서 이름이 바뀜",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/JavaScript",
+      "note": "The name was changed to JavaScript for the official release in December. · (the language was called LiveScript in a September 1995 Navigator beta)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/V8_(JavaScript_engine)"
+    ],
+    "hintNote": "Google created V8 for its Chrome browser, so V8's first release coincided with Chrome's first release in 2008.",
+    "easiestCue": "정식 판에 붙은 이름을 만든 사람이 넷스케이프의 마케팅 술책이라 여김",
+    "targetWhy": "이름이 바뀐 내력과 창시자의 평은 프로그래밍 애호가 세부라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "개발자 관심층에는 아이크가 대표 인물일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new · 자바(활성)와 다른 언어",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "computer/3#g019b-C2-13",
+   "seed": {
+    "subject": "Y2K",
+    "aspect": null,
+    "ref": "C2-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "밥 베머는 1958년 족보 소프트웨어를 만들다 이 문제를 알아챈 뒤 스무 해 동안 IBM과 미국 정부에 알렸습니다. 1993년 피터 드 예거가 잡지 '컴퓨터월드'에 세 쪽짜리 경고 글을 실은 이 문제는 무엇이라 불릴까요?",
+    "answer": "Y2K",
+    "acceptedAnswers": [
+     "밀레니엄 버그",
+     "Y2K 문제",
+     "2000년 문제"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "밀레니엄 버그 · 2000년 문제 — ko.wikipedia '2000년 문제' 문서 제목과 넘겨주기, 국내 언론이 흔히 쓰는 이름",
+    "explanation": "전 세계가 이 문제를 고치는 데 쓴 돈은 3천억 달러를 넘었을 것으로 추산됩니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1993년 '컴퓨터월드'에 경고 글이 실린 이 문제",
+     "difWhy": "밀레니엄 버그 — IT 관심층",
+     "wor": 4,
+     "worWhy": "시사 교양",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "날짜를 다루는 프로그램에 얽힌 이 문제",
+     "difWhy": "밀레니엄 버그 — 관심층 (경계 2)",
+     "wor": 4,
+     "worWhy": "교양 — IT 시사 용어"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "밥 베머는 1958년 족보 소프트웨어를 만들다 이 문제를 알아챈 뒤 스무 해 동안 IBM과 정부에 알렸고, 1993년 피터 드 예거는 잡지 '컴퓨터월드'에 세 쪽짜리 경고 글을 실었습니다. 날짜를 다루는 프로그램에 얽힌 이 문제는 무엇이라 불릴까요?",
+     "beforeExplanation": null,
+     "removedCue": "날짜를 다루는 프로그램에 얽힌 이 문제",
+     "addedCue": "(뺌만 — 남은 단서: 베머의 족보 소프트웨어 · 드 예거 기고)",
+     "why": "정의에 가까운 문제 설명을 뺌"
+    },
+    "generalHint": "1998년 미국은 이 일에 대한 대비 상황을 알린 기업의 법적 책임을 덜어 주는 법을 만들었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "연도를 두 자리로 적어 생긴 세기말 전산 대란 우려",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "밀레니엄 버그·Y2K 패션으로 들어 봄",
+     "piece": "f09",
+     "genPct": 75
+    },
+    "blind": {
+     "ref": "C2-13",
+     "key": "b054",
+     "hint": "1998년 미국은 이 일에 대한 대비 상황을 알린 기업의 법적 책임을 덜어 주는 법을 만들었다.",
+     "guess": "Y2K 문제",
+     "confidence": "high",
+     "hit": true,
+     "answer": "Y2K"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Year_2000_problem"
+    ],
+    "facts": [
+     {
+      "claim": "베머 1958년 족보 소프트웨어로 알아챔, 이후 20년 동안 IBM·정부 등에 알림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Year_2000_problem",
+      "note": "had noticed it in 1958 as a result of work on genealogical software · spent the next twenty years trying to raise awareness with programmers, IBM, the U.S. government, and the ISO"
+     },
+     {
+      "claim": "1993년 드 예거 컴퓨터월드 세 쪽 글",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Year_2000_problem",
+      "note": "His 1993 Computerworld article, \"Doomsday 2000,\" was a three-page piece."
+     },
+     {
+      "claim": "총비용 3천억 달러 넘음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Year_2000_problem",
+      "note": "the total cost likely surpassed US$300 billion"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Year_2000_problem"
+    ],
+    "hintNote": "The United States established the Year 2000 Information and Readiness Disclosure Act, which limited the liability of businesses who had properly disclosed their Y2K readiness.",
+    "easiestCue": "1958년 족보 소프트웨어를 만들다 이 문제를 알아챈",
+    "targetWhy": "처음 알아챈 사람 · 경고 글 — 컴퓨터 역사 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'날짜를 다루는 프로그램의 문제'가 범주 단서가 될 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

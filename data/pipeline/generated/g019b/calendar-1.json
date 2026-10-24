@@ -1,0 +1,348 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "calendar/1",
+  "midKey": "calendar",
+  "subName": "세계 명절·축제",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "calendar/1#g019b-L2-01",
+   "seed": {
+    "subject": "크리스마스",
+    "aspect": null,
+    "ref": "L2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국에 건너온 필그림들은 신대륙에서 맞은 첫 이날을 일부러 평소처럼 일하며 보냈습니다. 1860년까지는 뉴잉글랜드의 몇 주를 포함한 14개 주가 법정 공휴일로 삼았고, 1870년 6월 28일 연방 공휴일이 된 이날은?",
+    "answer": "크리스마스",
+    "acceptedAnswers": [
+     "성탄절"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "성탄절은 같은 날의 흔한 우리말 이름 — ko.wikipedia '크리스마스' 문서 첫 문장(성탄절) 기준",
+    "explanation": "1659년 보스턴에서는 이날을 기념하는 일이 법으로 금지되었다가, 1681년 영국인 총독 에드먼드 앤드로스가 금지를 풀었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 필그림이 일부러 평소처럼 일함 + 1870년 연방 공휴일",
+     "difWhy": "청교도의 축일 거부 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "친숙한 명절 이야깃거리",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1659년 미국 보스턴에서는 이날을 기념하는 일이 법으로 금지",
+     "difWhy": "청교도의 크리스마스 금지 — 관심층 (경계 4)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 명절 역사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1659년 미국 보스턴에서는 이날을 기념하는 일이 법으로 금지되었고, 1681년 영국인 총독 에드먼드 앤드로스가 와서야 그 금지가 풀렸습니다. 1870년 6월 28일 미국 연방 공휴일로 정해진 이날은 무엇일까요?",
+     "beforeExplanation": "잉글랜드의 청교도 정권도 1647년 이날을 금지한 적이 있습니다.",
+     "removedCue": "1659년 보스턴에서 이날 기념을 법으로 금지(관심층 — 청교도의 크리스마스 금지)",
+     "addedCue": "필그림이 첫 이날을 평소처럼 일하며 보냄 · 1860년 14개 주 법정 공휴일",
+     "why": "청교도 금지령은 관심층 상식이라 해설로 내리고, 같은 시대의 덜 알려진 세부로 바꿈(1870년 연방 공휴일은 추수감사절 등과 겹쳐 필그림 단서로 가름)"
+    },
+    "generalHint": "1923년부터 해마다 백악관 근처의 나무에 불을 밝히는데, 첫해에는 쿨리지 대통령이 단추를 눌렀다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "예수 탄생을 기리는 12월 25일 기독교 명절",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 명절",
+     "piece": "f01",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "L2-01",
+     "key": "b207",
+     "hint": "1923년부터 해마다 백악관 근처의 나무에 불을 밝히는데, 첫해에는 쿨리지 대통령이 단추를 눌렀다.",
+     "guess": "국립 크리스마스트리",
+     "confidence": "high",
+     "hit": true,
+     "answer": "크리스마스"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Christmas"
+    ],
+    "facts": [
+     {
+      "claim": "1870년 6월 28일 연방 공휴일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Christmas",
+      "note": "On June 28, 1870, Christmas was formally declared a United States federal holiday."
+     },
+     {
+      "claim": "1659년 보스턴에서 크리스마스 기념이 금지됨",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Christmas",
+      "note": "Christmas observance was outlawed in Boston in 1659."
+     },
+     {
+      "claim": "1681년 앤드로스 총독이 금지를 거둠",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Christmas",
+      "note": "The ban on Christmas observance was revoked in 1681 by English governor Edmund Andros."
+     },
+     {
+      "claim": "필그림들은 신대륙의 첫 12월 25일을 평소처럼 일하며 보냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Christmas",
+      "note": "The Pilgrims of New England pointedly spent their first December 25 in the New World working normally."
+     },
+     {
+      "claim": "1860년까지 뉴잉글랜드 몇 주를 포함한 14개 주가 법정 공휴일로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Christmas",
+      "note": "By 1860, fourteen states including several from New England had adopted Christmas as a legal holiday."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/National_Christmas_Tree_(United_States)"
+    ],
+    "hintNote": "Each year since 1923, the tree has been decorated as a Christmas tree. ... President Coolidge touched a button at the foot of the tree which lit the lights",
+    "easiestCue": "필그림이 신대륙의 첫 이날을 평소처럼 일하며 보냄",
+    "targetWhy": "필그림의 태도와 주별 공휴일 내력은 미국사 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 명절의 몰랐던 금지 역사",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "calendar/1#g019b-L2-02",
+   "seed": {
+    "subject": "홀리",
+    "aspect": null,
+    "ref": "L2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 축제 전날 밤에는 모닥불을 피워, 불에 타지 않는 힘을 지녔던 악마 왕의 누이는 불에 타 재가 되고 신을 믿은 왕자는 무사했다는 전설을 기립니다. 트리니다드토바고·가이아나·수리남에서는 '파그와'라고도 부르는 이 힌두교 축제는?",
+    "answer": "홀리",
+    "acceptedAnswers": [
+     "홀리 축제"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "'홀리 축제'로 흔히 씀 — ko.wikipedia '홀리' 문서 및 언론 표기(홀리 축제) 기준",
+    "explanation": "축제는 힌두력 팔구나 달 보름날 저녁에 시작해 하룻밤과 하루 동안 이어지며, 양력으로는 3월 중순 무렵입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "트리니다드토바고·가이아나·수리남에서는 '파그와'",
+     "difWhy": "홀리카 전설 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 세계 축제",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "트리니다드토바고·가이아나·수리남에서는 '파그와'",
+     "difWhy": "홀리카 전설 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 세계 축제"
+    },
+    "rewrite": null,
+    "generalHint": "크리슈나 전설이 얽힌 바르사나에서는 이 축제 때 여자들이 막대를 들고 남자들을 쫓는다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "봄에 색 가루를 뿌리며 즐기는 인도의 축제",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "인도 색 가루 축제로 여행 프로·광고에서 접함",
+     "piece": "f06",
+     "genPct": 45
+    },
+    "blind": {
+     "ref": "L2-02",
+     "key": "b324",
+     "hint": "크리슈나 전설이 얽힌 바르사나에서는 이 축제 때 여자들이 막대를 들고 남자들을 쫓는다.",
+     "guess": "홀리",
+     "confidence": "high",
+     "hit": true,
+     "answer": "홀리"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Holi"
+    ],
+    "facts": [
+     {
+      "claim": "전날 밤 모닥불(홀리카 다한)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Holi",
+      "note": "The night before Holi is called Holika Dahan or 'Chhoti Holi,' when people gather around a bonfire."
+     },
+     {
+      "claim": "불에 타지 않는 힘을 지녔던 홀리카가 타고 프라흘라다는 무사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Holi",
+      "note": "Holika, who had a boon making her fire-proof ... she was burned to ashes, while Prahlada remained unharmed."
+     },
+     {
+      "claim": "카리브해(트리니다드토바고·가이아나·수리남)에서 파그와",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Holi",
+      "note": "Phagwah ... the Caribbean (namely Trinidad and Tobago, Guyana, Suriname, and Jamaica)."
+     },
+     {
+      "claim": "팔구나 달 보름날 저녁 시작, 하룻밤과 하루, 3월 중순",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Holi",
+      "note": "lasts a night and a day, starting on the evening of the Purnima (full moon day) falling on the Hindu calendar month of Phalguna ... around mid-March"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Holi"
+    ],
+    "hintNote": "Holi celebrated at Barsana is unique in the sense that here women chase men away with sticks.",
+    "easiestCue": "트리니다드토바고·가이아나·수리남에서는 '파그와'라고도 부른다",
+    "targetWhy": "홀리카 전설·카리브해 이름은 색 가루(대표 장면)를 뺀 애호가 세부 — 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'힌두교 축제'만으로 디왈리와 둘 중 찍을 수 있으나 전설을 알아야 확정",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (디왈리 3469 는 다른 정답)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "calendar/1#g019b-L2-03",
+   "seed": {
+    "subject": "춘절",
+    "aspect": null,
+    "ref": "L2-03",
+    "pairedWith": 1508
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1508,
+    "question": "이 중국 명절의 지금 이름은 1914년 중화민국 임시 대총통 위안스카이가 처음 내놓았습니다. 시진핑은 1984년 기자들에게, 조사를 받던 1968년 이 명절에 동생이 보낸 전통 만두 한 접시를 곧바로 빼앗겼다고 말했는데, 이 명절의 이름은?",
+    "answer": "춘절",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1967년 문화 대혁명 때는 이 명절의 공식 행사가 금지되고 노동자 휴가도 멈춰졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "시진핑이 이 명절에 동생이 보낸 전통 만두를 빼앗겼다",
+     "difWhy": "만두 먹는 중국 명절 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "명절 이름 이야깃거리",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1967년 문화 대혁명 때는 이 명절의 공식 행사가 금지",
+     "difWhy": "중국 설 명절 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 기본 명절 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 중국 명절의 지금 이름은 1914년 중화민국 임시 대총통 위안스카이가 처음 내놓았습니다. 1967년 문화 대혁명 때는 이 명절의 공식 행사가 금지되고 노동자 휴가도 멈춰졌는데, 이 명절의 이름은 무엇일까요?",
+     "beforeExplanation": "1928년 국민당 정부는 이 명절을 양력 1월 1일에 쇠도록 정했다가 거센 반대에 부딪혀 거두었습니다.",
+     "removedCue": "1967년 문화 대혁명 때 공식 행사 금지(관심층)",
+     "addedCue": "1968년 이 명절에 시진핑이 동생이 보낸 만두를 빼앗긴 일화(1984년 회고)",
+     "why": "문화 대혁명 금지는 관심층 사실이라 해설로 내리고 교과서·방송 밖의 회고 일화를 넣음"
+    },
+    "generalHint": "1983년부터 해마다 이 명절 전날 밤 CCTV가 큰 축하 공연을 생방송한다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "음력 정월 초하루를 쇠는 중국의 설",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "중국 설 뉴스로 익숙",
+     "piece": "f07",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "L2-03",
+     "key": "b231",
+     "hint": "1983년부터 해마다 이 명절 전날 밤 CCTV가 큰 축하 공연을 생방송한다.",
+     "guess": "춘절",
+     "confidence": "high",
+     "hit": true,
+     "answer": "춘절"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chinese_New_Year"
+    ],
+    "facts": [
+     {
+      "claim": "1914년 위안스카이가 '춘절' 이름을 처음 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chinese_New_Year",
+      "note": "The name was first proposed in 1914 by Yuan Shikai, who was the interim president of the Republic of China."
+     },
+     {
+      "claim": "1967년 문화대혁명 때 공식 행사 금지·휴가 중지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chinese_New_Year",
+      "note": "In 1967, during the Cultural Revolution, official Chinese New Year celebrations were banned in China. ... suspension of workers' holiday leave for that year"
+     },
+     {
+      "claim": "시진핑이 1984년 기자들에게 1968년 이 명절에 동생이 보낸 만두를 빼앗긴 이야기를 함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chinese_New_Year",
+      "note": "In 1984, Xi Jinping told journalists a story of when he was fifteen during the Cultural Revolution. He explains that he was under investigation ... He recalled that during New Year in 1968, his little brother sent him a plate of traditional dumplings that was quickly confiscated by the Special Case Committee."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/CMG_Spring_Festival_Gala"
+    ],
+    "hintNote": "held annually on Chinese New Year's Eve since it was first aired in February 1983.",
+    "easiestCue": "1914년 위안스카이가 지금 이름을 처음 내놓음",
+    "targetWhy": "이름의 제안자와 시진핑 만두 일화는 중국 근현대사 애호가 세부 — 1회차(춘운 이동)와 다른 사실",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'중국 명절'로 춘절·중추절 가운데 찍기 여지가 있으나 이름 유래를 묻는 각도",
+    "pairCheck": "1회차 1508 질문(최대 귀성 이동)·해설(40일 이동 기간)·힌트(없음)와 겹치지 않음 — 이름의 유래와 금지 역사라는 다른 속성, '설' 정의 문장 미사용",
+    "dbCheck": "answercheck pair-or-different — 1508(귀성 이동)과 지식이 다른 2회차",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 1508,
+     "question": "고향에 가려는 사람이 한꺼번에 몰려 세계에서 가장 큰 규모의 이동이 일어난다고 하는, 중국의 설 명절은?",
+     "explanation": "설 15일 전쯤부터 약 40일 동안 이어지며, 이동 건수가 수억 건에 이릅니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  }
+ ]
+}

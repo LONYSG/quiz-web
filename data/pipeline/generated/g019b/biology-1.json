@@ -1,0 +1,240 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "biology/1",
+  "midKey": "biology",
+  "subName": "세포·유전",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "biology/1#g019b-C1-22",
+   "seed": {
+    "subject": "DNA",
+    "aspect": null,
+    "ref": "C1-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1869년 튀빙겐 대학 호페자일러의 실험실에서 근처 병원 붕대의 고름 속 백혈구로 이 물질을 처음 분리한 과학자는, 뒤에 바젤 대학에서 연어 정자를 분석하다 프로타민도 찾아냈습니다. 오늘날 이 물질을 영문 약자로 부르는 이름은?",
+    "answer": "DNA",
+    "acceptedAnswers": [
+     "디엔에이"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "질문이 영문 약자를 요구(B2) — '디엔에이'는 같은 약자의 한글 음차로 언론에서 씀",
+    "explanation": "그 과학자는 스위스의 프리드리히 미셔로, 그는 이 물질을 '뉴클레인'이라 불렀고 1871년 처음 발표했지만 그 중요성은 곧바로 알려지지 않았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1869년 고름 속 백혈구로 이 물질을 처음 분리",
+     "difWhy": "미셔의 핵산 발견 — 대학 교양 과학사 (경계 3)",
+     "wor": 4,
+     "worWhy": "교양 과학사",
+     "acc": 5,
+     "accWhy": "생물 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "프리드리히 미셔는 ... '뉴클레인'이라 이름 붙인 물질",
+     "difWhy": "미셔 핵산 발견 — 고교 생명과학",
+     "wor": 5,
+     "worWhy": "교과 — 유전 물질"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1869년 스위스 의사 프리드리히 미셔는 튀빙겐 대학 호페자일러의 실험실에서, 근처 병원 붕대의 고름 속 백혈구로 '뉴클레인'이라 이름 붙인 물질을 처음 분리했습니다. 오늘날 이 물질을 영문 약자로 부르는 이름은?",
+     "beforeExplanation": "미셔의 발견은 1871년 처음 발표되었지만 그 중요성은 곧바로 알려지지 않았습니다.",
+     "removedCue": "프리드리히 미셔 · '뉴클레인'(고교 생명과학 — 핵산 발견자)",
+     "addedCue": "같은 과학자가 바젤에서 연어 정자로 프로타민을 찾아냄",
+     "why": "발견자 이름과 '뉴클레인'은 교과서 단서라 해설로 내리고, 그의 뒤 연구로 바꿈"
+    },
+    "generalHint": "1952년 레이먼드 고슬링이 찍은 '사진 51'은 이 물질의 섬유를 X선으로 찍은 회절 사진이다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "유전 정보를 담은 이중 나선 분자",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 과학 용어",
+     "piece": "f02",
+     "genPct": 100
+    },
+    "blind": {
+     "ref": "C1-22",
+     "key": "b090",
+     "hint": "1952년 레이먼드 고슬링이 찍은 '사진 51'은 이 물질의 섬유를 X선으로 찍은 회절 사진이다.",
+     "guess": "DNA",
+     "confidence": "high",
+     "hit": true,
+     "answer": "DNA"
+    },
+    "hobby": null,
+    "defForm": true,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Friedrich_Miescher"
+    ],
+    "facts": [
+     {
+      "claim": "튀빙겐 대학 호페자일러 실험실",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Friedrich_Miescher",
+      "note": "\"Felix Hoppe-Seyler's laboratory at the University of Tübingen\""
+     },
+     {
+      "claim": "근처 병원 붕대에서 백혈구(호중구)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Friedrich_Miescher",
+      "note": "Neutrophils \"could be obtained from bandages at the nearby hospital\""
+     },
+     {
+      "claim": "1869년 핵산을 처음 분리, 뉴클레인 → 뒤에 DNA",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Friedrich_Miescher",
+      "note": "\"He was the first scientist to isolate nucleic acid in 1869.\" The article calls the substance \"nuclein,\" which it later identifies as DNA"
+     },
+     {
+      "claim": "1871년 발표, 중요성은 곧바로 알려지지 않음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Friedrich_Miescher",
+      "note": "\"The significance of the discovery, first published in 1871, was not at first apparent.\""
+     },
+     {
+      "claim": "바젤 대학에서 연어 정자를 분석하다 프로타민 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Friedrich_Miescher",
+      "note": "Miescher then went on to study physiology at Leipzig ... before being appointed professor of physiology at the University of Basel. While analyzing the composition of salmon sperm, Miescher also discovered the alkaline substance protamine, the account of which he published in 1874."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Photo_51"
+    ],
+    "hintNote": "Photo 51 is a 1952 X-ray based fiber diffraction image of a paracrystalline gel composed of DNA fiber taken by Rosalind Franklin's PhD student Raymond Gosling",
+    "easiestCue": "1869년 고름 속 백혈구에서 처음 분리한 물질",
+    "targetWhy": "분리 장소·재료와 프로타민 발견은 생명과학사 애호가 세부라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'뉴클레인(핵)' + '영문 약자' 로 DNA·RNA 중 짐작될 수 있음",
+    "pairCheck": null,
+    "dbCheck": "DNA · 디엔에이 new (활성 '이중나선'·'사진 51' 과 정답·지식 다름)",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음",
+     "낱말뜻꼴"
+    ]
+   }
+  },
+  {
+   "seedId": "biology/1#g019b-C1-23",
+   "seed": {
+    "subject": "돌리",
+    "aspect": null,
+    "ref": "C1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 암양은 1998년 4월 첫 새끼 '보니'를 낳는 등 모두 여섯 마리의 새끼를 낳았습니다. 같은 품종의 기대 수명은 11~12년이지만 이 양은 6년 반을 살고 2003년 2월 안락사되었는데, 이 양의 이름은 무엇일까요?",
+    "answer": "돌리",
+    "acceptedAnswers": [
+     "복제양 돌리"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "언론에서 '복제양 돌리'를 한 덩어리 이름처럼 씀",
+    "explanation": "젖샘 세포로 복제했다는 데서, 연구자 이언 윌머트는 가수 돌리 파턴의 이름을 땄다고 말했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "이 암양 — 6년 반을 살고 2003년 2월 안락사",
+     "difWhy": "복제양 — 방송·뉴스에서 흔히",
+     "wor": 4,
+     "worWhy": "교양 — 복제 기술",
+     "acc": 5,
+     "accWhy": "생물 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "핀도셋 품종의 이 암양 ... 스코틀랜드",
+     "difWhy": "복제양 — 방송·뉴스 (경계 3)",
+     "wor": 4,
+     "worWhy": "교양 — 생명공학 이정표"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "핀도셋 품종의 이 암양은 스코틀랜드 미들로디언의 한 연구소에서 평생을 살았습니다. 2003년 2월 폐 질환과 심한 관절염으로 안락사된 뒤 몸이 보존되어 스코틀랜드 국립 박물관에 전시되어 온 이 양의 이름은?",
+     "beforeExplanation": null,
+     "removedCue": "핀도셋 품종 · 스코틀랜드 연구소 · 스코틀랜드 국립 박물관 전시(방송·뉴스 — 복제양을 바로 떠올림)",
+     "addedCue": "첫 새끼 보니 · 같은 품종 기대 수명의 절반쯤 산 일",
+     "why": "품종·스코틀랜드·박물관이 복제양을 바로 알려 줘 빼고, 새끼와 수명 세부로 바꿈"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "1996년 체세포로 처음 복제된 포유류인 양",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "복제양 돌리로 교과서·뉴스에서 익숙",
+     "piece": "f09",
+     "genPct": 90
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dolly_(sheep)"
+    ],
+    "facts": [
+     {
+      "claim": "2003년 2월 14일 폐 질환·심한 관절염으로 안락사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dolly_(sheep)",
+      "note": "She was euthanised on 14 February 2003 because of a progressive lung disease and severe arthritis"
+     },
+     {
+      "claim": "젖샘 세포 · 돌리 파턴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dolly_(sheep)",
+      "note": "cloned ... \"from a cell taken from a mammary gland.\" / \"we couldn't think of a more impressive pair of glands than Dolly Parton's.\""
+     },
+     {
+      "claim": "웨일스 마운틴 숫양과 짝지어 새끼 여섯, 첫 새끼 보니 1998년 4월",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dolly_(sheep)",
+      "note": "There she was bred with a Welsh Mountain ram and produced six lambs in total. Her first lamb, named Bonnie, was born in April 1998."
+     },
+     {
+      "claim": "같은 품종 기대 수명 11~12년, 돌리는 6.5년",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dolly_(sheep)",
+      "note": "A Finn Dorset such as Dolly has a life expectancy of around 11 to 12 years, but Dolly lived 6.5 years."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "2003년 2월 6년 반 만에 안락사된 양",
+    "targetWhy": "첫 새끼 이름·짧은 수명은 생명과학 애호가 세부 — 안락사 보도는 20여 년 전 뉴스라 경계 3~4",
+    "selfJudge": "나쁜 어려움 의심",
+    "selfJudgeWhy": "이름이 알려진 양이 사실상 하나라 '스코틀랜드 연구소 양'으로 찍힐 수 있음",
+    "pairCheck": null,
+    "dbCheck": "돌리 new",
+    "warn": [
+     "단정어 평생"
+    ]
+   }
+  }
+ ]
+}

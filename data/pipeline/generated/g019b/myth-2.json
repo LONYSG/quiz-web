@@ -1,0 +1,217 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "myth/2",
+  "midKey": "myth",
+  "subName": "북유럽 신화",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "myth/2#g019b-H1-36",
+   "seed": {
+    "subject": "화요일",
+    "aspect": null,
+    "ref": "H1-36",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북유럽 신화에서 신들이 늑대 펜리르를 묶을 때, 볼모로 늑대 입에 손을 넣었다가 그 손을 잃은 신이 있습니다. 영어에서 이 신의 이름을 딴 요일은 우리말로 무엇일까요?",
+    "answer": "화요일",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "영어 이름은 고대 영어 '티우의 날'에서 왔고, 라틴어로는 '마르스의 날'이라 불렀는데 로마인들이 이 신을 마르스와 같은 신으로 보았기 때문입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "펜리르를 묶을 때 손을 잃은 신, 이름을 딴 영어 요일",
+     "difWhy": "티르와 화요일 — 신화 관심층",
+     "wor": 3,
+     "worWhy": "요일 어원 이야깃거리",
+     "acc": 3,
+     "accWhy": "신화 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "영어에서 이 신의 이름(고대 영어로 '티우')을 딴 요일",
+     "difWhy": "Tuesday 요일 — 중학 영어",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 요일 이름 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "북유럽 신화에서 신들이 늑대 펜리르를 묶을 때, 볼모로 늑대 입에 넣었다가 손을 잃은 신이 있습니다. 영어에서 이 신의 이름(고대 영어로 '티우')을 딴 요일은 우리말로 무엇일까요?",
+     "beforeExplanation": "라틴어로는 이 요일을 '마르스의 날'이라 불렀는데, 로마인들이 이 신을 마르스와 같은 신으로 보았기 때문입니다.",
+     "removedCue": "고대 영어로 '티우'(Tuesday 의 어원 — 중학 영어)",
+     "addedCue": "없음(이름을 빼 손을 잃은 신을 먼저 알아야 풀리게 함)",
+     "why": "티우를 주면 Tuesday 로 바로 풀려 해설로 내림"
+    },
+    "generalHint": "로마자 T에 해당하는 룬 문자 '티와즈'가 이 신의 이름에서 왔다고 보기도 한다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "월요일 다음, 수요일 앞의 요일",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상어",
+     "piece": "f08",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "H1-36",
+     "key": "b301",
+     "hint": "로마자 T에 해당하는 룬 문자 '티와즈'가 이 신의 이름에서 왔다고 보기도 한다.",
+     "guess": "티르",
+     "confidence": "high",
+     "hit": false,
+     "answer": "화요일"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Týr"
+    ],
+    "facts": [
+     {
+      "claim": "티르의 손을 볼모로 펜리르 입에 넣음 · 손을 잃음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Týr",
+      "note": "In the Prose Edda, the Æsir … they placed Tyr's hand in the wolf's mouth as a pledge … Fenrir bites it off after the gods bind him."
+     },
+     {
+      "claim": "Tuesday는 '티우의 날'(tīwesdæg)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Týr",
+      "note": "The English weekday name … meaning 'day of Tīw'. The Old English form is tīwesdæg."
+     },
+     {
+      "claim": "라틴어 Martis dies · 마르스와 동일시",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Týr",
+      "note": "Like the Latin Martis dies (\"Day of Mars\"), it reflects the god's identification with Mars."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Týr"
+    ],
+    "hintNote": "Týr could be the eponym of the Tiwaz rune (ᛏ), a letter of the runic alphabet corresponding to the Latin letter T.",
+    "easiestCue": "펜리르 입에 손을 넣었다가 잃은 신",
+    "targetWhy": "손을 잃은 신이 티르임을 알고 요일 어원까지 잇는 것은 신화 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "요일 일곱 가운데 찍기 가능 · 티우 소리가 Tue 와 닮음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 목요일(#626 · #3762, 토르)과 정답·지식 다름",
+    "warn": [
+     "정답조각 요일"
+    ]
+   }
+  },
+  {
+   "seedId": "myth/2#g019b-H1-37",
+   "seed": {
+    "subject": "아스가르드",
+    "aspect": null,
+    "ref": "H1-37",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "스노리 스투를루손은 『산문 에다』에서 북유럽 신화의 이곳이 본디 그리스 전사들에게 넘어가기 전의 트로이였다고 했고, 『잉글링가 사가』에서는 오늘날 돈강의 동쪽에 있었다고 적었습니다. 이곳은 어디일까요?",
+    "answer": "아스가르드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이곳에는 오딘이 앉으면 온 세상을 내려다볼 수 있다는 높은 자리 흘리드스캴프가 있다고 전합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "본디 그리스 전사들에게 넘어가기 전의 트로이",
+     "difWhy": "스노리의 아스가르드 해석 — 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 신화 지명",
+     "acc": 3,
+     "accWhy": "신화 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "본디 그리스 전사들에게 넘어가기 전의 트로이",
+     "difWhy": "스노리의 아스가르드 해석 — 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 신화 지명"
+    },
+    "rewrite": null,
+    "generalHint": "한 거인이 수말 스바딜파리의 도움을 받아 세 겨울 안에 이곳의 성채를 쌓아 주겠다고 나섰다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "북유럽 신화의 아스 신족이 사는 세계",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "마블 토르 영화로 널리 들어 봄",
+     "piece": "f02",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "H1-37",
+     "key": "b298",
+     "hint": "한 거인이 수말 스바딜파리의 도움을 받아 세 겨울 안에 이곳의 성채를 쌓아 주겠다고 나섰다.",
+     "guess": "아스가르드",
+     "confidence": "high",
+     "hit": true,
+     "answer": "아스가르드"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Asgard"
+    ],
+    "facts": [
+     {
+      "claim": "산문 에다 — 본디 트로이 · 그리스 전사들에게 넘어가기 전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Asgard",
+      "note": "according to Snorri, Asgard was the town of \"Troy\" before Greek warriors overtook it."
+     },
+     {
+      "claim": "잉글링가 사가 — 타나크비슬(돈강) 동쪽",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Asgard",
+      "note": "places Asgard in Asaland, east of the Tana-kvísl, which Snorri identifies with the Tanais, now the Don."
+     },
+     {
+      "claim": "흘리드스캴프",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Asgard",
+      "note": "There is one abode called Hlidskjálf, and when Allfather sat in the high-seat there, he looked out over the whole world"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Asgard"
+    ],
+    "hintNote": "an unnamed jötunn came to the gods with his stallion, Svaðilfari and offered help in building a burg for the gods in three winters",
+    "easiestCue": "『산문 에다』가 본디 트로이였다고 한 북유럽 신화의 곳",
+    "targetWhy": "'신들이 사는 곳'·무지개다리(마블로 알려진 정의)는 빼고 스노리의 역사화 서술만 — 신화 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정답은 영화로 알려졌고 단서는 원전 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,234 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "psychology/3",
+  "midKey": "psychology",
+  "subName": "심리학자·유명 실험",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "psychology/3#g019b-H2-10",
+   "seed": {
+    "subject": "피아제",
+    "aspect": null,
+    "ref": "H2-10",
+    "pairedWith": 1892
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1892,
+    "question": "1929년 제네바의 국제교육국이 교육 분야 첫 정부 간 기구가 되던 해, 이 학자가 그곳 국장이 되어 40년 가까이 이끌었습니다. 그는 아내와 낳은 세 아이를 갓난아기 때부터 관찰해 연구에 썼는데, 이 학자는 누구일까요?",
+    "answer": "피아제",
+    "acceptedAnswers": [
+     "장 피아제"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '장 피아제' · 교과서에서 '피아제'로 부름",
+    "explanation": "국제교육국은 1969년 유네스코에 들어갔지만 학문적·운영상의 자율은 지켰습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "아내와 낳은 세 아이를 갓난아기 때부터 관찰해",
+     "difWhy": "피아제 자녀 관찰 — 대학 교양 심리",
+     "wor": 4,
+     "worWhy": "교양 — 발달 심리 대표 학자",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "아내와 낳은 세 아이를 갓난아기 때부터 관찰해",
+     "difWhy": "피아제 자녀 관찰 — 대학 교양 심리",
+     "wor": 4,
+     "worWhy": "교양 — 발달 심리 대표 학자"
+    },
+    "rewrite": null,
+    "generalHint": "1955년 제네바에 발생적 인식론 국제 센터를 세워 1980년 숨질 때까지 이끌었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "아동의 인지 발달 단계를 제시한 스위스 심리학자",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "교육학·교과서 인지 발달 이론으로 들어 봄",
+     "piece": "f07",
+     "genPct": 50
+    },
+    "blind": {
+     "ref": "H2-10",
+     "key": "b011",
+     "hint": "1955년 제네바에 발생적 인식론 국제 센터를 세워 1980년 숨질 때까지 이끌었다.",
+     "guess": "장 피아제",
+     "confidence": "high",
+     "hit": true,
+     "answer": "피아제"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Jean_Piaget",
+     "https://en.wikipedia.org/wiki/International_Bureau_of_Education"
+    ],
+    "facts": [
+     {
+      "claim": "1929년 첫 교육 정부 간 기구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Bureau_of_Education",
+      "note": "In 1929, it became the first intergovernmental organization dedicated to the field of education."
+     },
+     {
+      "claim": "1929년 국장, 1968년(또는 1967)까지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jean_Piaget",
+      "note": "became its director in 1929 … remained the head of this international organization until 1968 (IBE 문서는 1967 — 질문은 '40년 가까이')"
+     },
+     {
+      "claim": "세 아이를 갓난아기 때부터 연구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jean_Piaget",
+      "note": "three children whom Piaget studied from infancy"
+     },
+     {
+      "claim": "1969 유네스코 편입, 자율 유지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/International_Bureau_of_Education",
+      "note": "In 1969, the IBE joined UNESCO; however, it maintained intellectual and functional autonomy."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jean_Piaget"
+    ],
+    "hintNote": "Piaget created the International Center for Genetic Epistemology in Geneva in 1955 ... and directed the center until his death in 1980.",
+    "easiestCue": "그는 아내와 낳은 세 아이를 갓난아기 때부터 관찰해 연구에 썼는데",
+    "targetWhy": "국제교육국장 이력은 애호가 세부 · 자녀 관찰은 교육학 관심층이 알 수도 있음(경계) — 인지 발달 4단계·연체동물·비네 연구소를 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "자녀 관찰 문장이 교육학 수강자에게 쉬운 단서가 될 수 있음",
+    "pairCheck": "1회차 1892 q 단계적 사고 발달 · e 네 단계 · h 연체동물·지능 검사 오답 — 국제교육국·자녀 관찰은 겹치지 않음",
+    "dbCheck": "pair-or-different 1892 — 다른 지식이라 (가)",
+    "warn": [],
+    "first": {
+     "id": 1892,
+     "question": "아이의 사고가 어른의 축소판이 아니라 단계를 거치며 질적으로 달라진다고 본 스위스 심리학자는?",
+     "explanation": "감각운동기에서 형식적 조작기까지 네 단계로 나누었습니다.",
+     "hint": "본래 연체동물을 연구한 생물학자로 출발했고, 지능 검사 문항에서 아이들이 틀리는 방식에 주목했다.",
+     "difficulty": 3
+    }
+   }
+  },
+  {
+   "seedId": "psychology/3#g019b-H2-11",
+   "seed": {
+    "subject": "융",
+    "aspect": null,
+    "ref": "H2-11",
+    "pairedWith": 2511
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 2511,
+    "question": "이 학자는 1903년 펴낸 박사 논문에서, 자신이 강령회에 드나들며 지켜본 젊은 영매인 사촌 헬레네 프라이스베르크를 다뤘습니다. 1922년에는 취리히주 볼링겐에 땅을 사서 탑을 지었는데, 이 학자는 누구일까요?",
+    "answer": "융",
+    "acceptedAnswers": [
+     "카를 융",
+     "칼 융"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '카를 구스타프 융' · 국내에서 '칼 융'·'카를 융'·'융' 모두 흔함",
+    "explanation": "그는 뒤에 이 탑에 건물을 덧붙여, '건축 만다라'라 불리는 모습으로 키워 갔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "강령회에 드나들며 지켜본 젊은 영매인 사촌",
+     "difWhy": "융 박사 논문·볼링겐 탑 — 대학 교양 심리",
+     "wor": 3,
+     "worWhy": "유명 학자 이름 맞히기",
+     "acc": 3,
+     "accWhy": "심리학 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "강령회에 드나들며 지켜본 젊은 영매인 사촌",
+     "difWhy": "융 박사 논문·볼링겐 탑 — 대학 교양 심리",
+     "wor": 3,
+     "worWhy": "유명 학자 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "그가 평생 공개하지 않은 '레드 북'은 2009년 10월에야 책으로 나왔다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "집단 무의식과 원형을 말한 스위스 분석심리학자",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "프로이트와 함께 심리학 교양·MBTI 유래로 들어 봄",
+     "piece": "f06",
+     "genPct": 65
+    },
+    "blind": {
+     "ref": "H2-11",
+     "key": "b307",
+     "hint": "그가 평생 공개하지 않은 '레드 북'은 2009년 10월에야 책으로 나왔다.",
+     "guess": "카를 융",
+     "confidence": "high",
+     "hit": true,
+     "answer": "융"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Carl_Jung"
+    ],
+    "facts": [
+     {
+      "claim": "박사 논문은 영매인 사촌 헬레네 프라이스베르크, 강령회 참석",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carl_Jung",
+      "note": "thesis focused on a young medium, his cousin Hélène Preiswerk, whose séances he had attended … published in 1903"
+     },
+     {
+      "claim": "1922년 볼링겐 땅 구입, 탑 건축",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carl_Jung",
+      "note": "in 1922, he bought some land at Bollingen in Zürich, where he built a tower."
+     },
+     {
+      "claim": "증축해 건축 만다라",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Carl_Jung",
+      "note": "he later built further additions, creating what it calls an 'architectural mandala'"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Red_Book_(Jung)"
+    ],
+    "hintNote": "the material was not published nor made otherwise accessible for study until 2009. In October 2009, with the cooperation of Jung's estate, The Red Book was published",
+    "easiestCue": "1903년 펴낸 박사 논문에서 … 젊은 영매인 사촌 헬레네 프라이스베르크를 다뤘습니다",
+    "targetWhy": "박사 논문 주제·볼링겐 탑은 융 애호가 세부 — 프로이트와의 결별·내향/외향·집단 무의식을 뺐다",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 익숙, 단서는 생애 뒷이야기",
+    "pairCheck": "1회차 2511 q 내향/외향 구분 · e 성격 유형 검사 · h 스위스 정신의학자·프로이트 결별 — 겹치지 않음",
+    "dbCheck": "pair-or-different 2511 — 다른 지식이라 (가)",
+    "warn": [],
+    "first": {
+     "id": 2511,
+     "question": "관심이 자기 안으로 향하는지 바깥으로 향하는지로 사람을 나눈 구분을 처음 제시해, 뒤의 성격 유형론에 영향을 준 학자는?",
+     "explanation": "널리 쓰이는 성격 유형 검사가 이 구분을 축으로 삼았습니다.",
+     "hint": "스위스의 정신의학자로, 한때 프로이트의 후계자로 여겨지다 결별했다.",
+     "difficulty": 3
+    }
+   }
+  }
+ ]
+}

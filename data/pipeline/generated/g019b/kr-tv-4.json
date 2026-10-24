@@ -1,0 +1,672 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "kr-tv/4",
+  "midKey": "kr-tv",
+  "subName": "라디오 방송",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/4#g019b-M1-07",
+   "seed": {
+    "subject": "AFKN",
+    "aspect": "팬 세부",
+    "ref": "M1-07",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 전쟁 중 서울 수복 직후 반도호텔에서 중파 라디오 이동 방송국으로 출발한 방송입니다. 1983년 10월 위성 방송 체계를 들여와 미국 본국 프로그램을 바로 내보냈는데, 2001년 4월 이름을 바꾸기 전 이 방송의 이름은?",
+    "answer": "AFKN",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1987년 8월부터 미국 프로레슬링 WWF를 내보내 청소년들에게 큰 인기를 끌었고, 서울에서 TV는 채널 2번이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "미국 본국 프로그램을 바로 내보낸 방송",
+     "difWhy": "주한 미군 방송 — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "추억의 방송 이야깃거리",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1987년 8월부터 미국 프로레슬링 WWF를 내보내",
+     "difWhy": "주한미군 방송 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 방송 역사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "한국 전쟁 중 서울 수복 직후 반도호텔에서 중파 라디오 이동 방송국으로 출발한 방송입니다. 1987년 8월부터 미국 프로레슬링 WWF를 내보내 청소년들에게 큰 인기를 끌었는데, 2001년 4월 이름을 바꾸기 전 이 방송의 이름은?",
+     "beforeExplanation": "1983년 10월부터 위성 방송 체계를 들여와 미국 본국 프로그램을 바로 내보냈고, 서울에서 TV는 채널 2번이었습니다.",
+     "removedCue": "1987년 8월부터 미국 프로레슬링 WWF를 내보내",
+     "addedCue": "1983년 10월 위성 방송 체계 도입",
+     "why": "추억으로 회자되는 WWF 방영을 해설로 옮기고 위성 도입 세부로 바꿈"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "주한 미군을 위한 미군 방송국의 옛 이름",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "옛 미군 방송으로 기성세대 이야기에서 접함",
+     "piece": "f04",
+     "genPct": 50
+    },
+    "blind": null,
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "AFKN",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/AFN_Korea"
+    ],
+    "facts": [
+     {
+      "claim": "반도호텔 중파 라디오 이동 방송국으로 출발",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/AFN_Korea",
+      "note": "AFKN은 한국 전쟁 서울 수복 직후 서울에 위치한 반도호텔에서 중파 라디오 이동 방송국으로 출발하였으며"
+     },
+     {
+      "claim": "1987년 8월 8일 WWF 방영 · 청소년 인기",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/AFN_Korea",
+      "note": "1987년 6.29 민주화 선언 이후 8월 8일에 WWF(World Wrestling Federation) 미국 프로레슬링 방영을 시작하여, 어린이와 청소년층에서 선풍적인 인기를 끌었고"
+     },
+     {
+      "claim": "2001년 4월 AFN Korea 로 개칭",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/AFN_Korea",
+      "note": "2001년 4월에 명칭을 AFKN에서 AFN Korea로 바꾸었다."
+     },
+     {
+      "claim": "1983년 10월 위성 SATNET · 채널 2번",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/AFN_Korea",
+      "note": "1983년 10월 4일부터 위성방송 체계인 SATNET을 도입하여 언제든지 미국 본국의 프로그램을 직접 방송할 수 있게 되었다. … AFKN(현재의 AFN Korea)은 2번에 채널이 배정되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "반도호텔에서 중파 라디오 이동 방송국으로 출발",
+    "targetWhy": "출발 · 위성 도입 — 방송사 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "1980~90년대를 보낸 사람이면 들어 본 이름, 단서는 출발 사연과 레슬링 편성",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/4#g019b-M1-08",
+   "seed": {
+    "subject": "밤을 잊은 그대에게",
+    "aspect": "팬 세부",
+    "ref": "M1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1980년 11월 30일, 언론 통폐합으로 한 민영 방송사가 문을 닫기 직전 마지막으로 전파를 탄 프로그램입니다. 진행자 황인용은 끝을 5분 남기고 '남은 5분이 너무 야속합니다'라며 울먹였는데, 이 심야 라디오는?",
+    "answer": "밤을 잊은 그대에게",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1991년 5월 송승환이 진행하던 중 한 번 폐지됐다가, 1992년 가을 노영심의 진행으로 다시 시작했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "진행자 황인용은 끝을 5분 남기고",
+     "difWhy": "TBC 마지막 방송 — 방송 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 언론 통폐합 일화",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "진행자 황인용은 끝을 5분 남기고",
+     "difWhy": "TBC 마지막 방송 — 방송 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 언론 통폐합 일화"
+    },
+    "rewrite": null,
+    "generalHint": "1972년부터 1974년까지는 가수 양희은이 이 프로그램을 진행했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1964년 시작한 최장수 심야 음악 라디오",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "라디오 청취자 일부만 아는 프로그램 이름",
+     "piece": "f02",
+     "genPct": 40
+    },
+    "blind": {
+     "ref": "M1-08",
+     "key": "b008",
+     "hint": "1972년부터 1974년까지는 가수 양희은이 이 프로그램을 진행했다.",
+     "guess": "별이 빛나는 밤에",
+     "confidence": "low",
+     "hit": false,
+     "answer": "밤을 잊은 그대에게",
+     "first": {
+      "ref": "M1-08",
+      "key": "b313",
+      "hint": "지금도 KBS 해피FM에서 이어지며 방송한 지 50년이 넘은 최장수 심야 음악 프로그램이다.",
+      "guess": "밤을 잊은 그대에게",
+      "confidence": "high",
+      "hit": true,
+      "answer": "밤을 잊은 그대에게"
+     }
+    },
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "밤을 잊은 그대에게",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/밤을_잊은_그대에게"
+    ],
+    "facts": [
+     {
+      "claim": "TBC 마지막 방송 · 황인용 진행 · 5분 남기고 울먹임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/밤을_잊은_그대에게",
+      "note": "1980년 11월 30일에 언론통폐합으로 인하여 TBC가 KBS로 넘어가기 직전에 마지막으로 했던 방송이 이 프로그램이었다. 당시 진행자는 황인용 아나운서였는데 자정이 다가오고 프로그램 종료 5분을 남겨두고 울먹이면서 아래와 같이 고별인사를 하였다."
+     },
+     {
+      "claim": "고별인사 문장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/밤을_잊은_그대에게",
+      "note": "남은 5분이 남은 5분이… 남은 5분이 너무 야속합니다. 10분이었으면 좋겠습니다."
+     },
+     {
+      "claim": "1991년 5월 폐지 · 1992년 노영심 부활",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/밤을_잊은_그대에게",
+      "note": "이 프로그램은 1991년 5월 5일 자로 폐지되었다. 당시 진행은 송승환이 맡았는데 … 1992년 KBS의 가을 개편에 따라 노영심이 진행하는 것으로 다시 시작을 하였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/밤을_잊은_그대에게"
+    ],
+    "hintNote": "DJ: 이성화(1964~1972) 양희은(1972~1974) 서유석(1974~1975) 황인용(1975~1981)",
+    "easiestCue": "진행자 황인용은 끝을 5분 남기고 '남은 5분이 너무 야속합니다'라며 울먹였는데",
+    "targetWhy": "라디오 역사 애호가가 아는 고별 방송 일화 — 대표 진행자 · 시작 연도 단서 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "제목은 들어 봤을 법한 장수 라디오, 단서는 언론 통폐합 날의 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-tv/4#g019b-M1-09",
+   "seed": {
+    "subject": "동양방송",
+    "aspect": "팬 세부",
+    "ref": "M1-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1964년 '라디오 서울'로 개국했고, 1966년 8월 15일에는 한국에서 처음으로 FM 라디오를 시작했습니다. TV 개국 때 서울 본사를 신세계백화점 본점 안에 두었던 이 민영 방송사는?",
+    "answer": "동양방송",
+    "acceptedAnswers": [
+     "TBC"
+    ],
+    "originalTitleVariants": [
+     "TBC"
+    ],
+    "variantCheck": "ko.wikipedia '동양방송' 첫 줄 · 본문이 'TBC 동양방송' 으로 함께 씀 — 두 이름 다 흔함(B1)",
+    "explanation": "중앙일보는 2009년 신문·방송 겸영이 허용되자 종합편성채널 사업자가 되어 2011년 JTBC를 개국했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "TV 개국 때 서울 본사를 신세계백화점 본점 안에 두었던",
+     "difWhy": "TBC 라디오 서울·본사 — 방송사 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 옛 방송사",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "TV 개국 때 서울 본사를 신세계백화점 본점 안에 두었던",
+     "difWhy": "TBC 라디오 서울·본사 — 방송사 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 옛 방송사"
+    },
+    "rewrite": null,
+    "generalHint": "1980년 12월 이 방송사의 서울 TV 채널 번호 7번은 KBS 2TV가 이어받았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1980년 언론 통폐합으로 사라진 민영 방송사",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "TBC로 옛 방송사 이야기에서나 접함, 30대는 대체로 낯섦",
+     "piece": "f04",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "M1-09",
+     "key": "b013",
+     "hint": "1980년 12월 이 방송사의 서울 TV 채널 번호 7번은 KBS 2TV가 이어받았다.",
+     "guess": "TBC(동양방송)",
+     "confidence": "high",
+     "hit": true,
+     "answer": "동양방송"
+    },
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "동양방송",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/동양방송"
+    ],
+    "facts": [
+     {
+      "claim": "1964년 5월 9일 라디오 서울로 개국",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동양방송",
+      "note": "1964년 5월 9일 라디오 서울(RSB)로 최초 개국했으며, 같은 해 12월 7일 동양텔레비전(DTV)을 개국하였다."
+     },
+     {
+      "claim": "1966년 8월 15일 한국 최초 FM",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동양방송",
+      "note": "1966년 8월 15일, 한국 사상 최초로 FM 방송을 개국하였는데"
+     },
+     {
+      "claim": "서울 본사 신세계백화점 본점",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동양방송",
+      "note": "당시 동양텔레비전(동양TV, DTV)의 서울 본사는 신세계백화점 본점에 있던 방송국 시설에 자리하였다."
+     },
+     {
+      "claim": "중앙일보 2011년 JTBC",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/동양방송",
+      "note": "그 후 중앙일보는 2009년 미디어법 개정으로 신문-방송 겸영이 허용되면서 종합편성채널 사업자로 선정되어 2011년 JTBC를 개국하였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동양방송"
+    ],
+    "hintNote": "채널 번호는 VHF-HIGH 대역으로 서울 7번 … 이 번호는 1980년 12월 1일 언론통폐합으로 … KBS 2TV 채널 번호로 승계되었다.",
+    "easiestCue": "1966년 8월 15일에는 한국에서 처음으로 FM 방송을 시작한 방송사",
+    "targetWhy": "언론 통폐합 · 삼성 · KBS 2TV 승계(대표 사실)를 빼고 개국 세부만 — 방송사 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 방송사 이름, 단서는 첫 FM · 첫 사옥 같은 교과서 밖 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (TBC 도 new)",
+    "warn": [
+     "정답조각 방송",
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-tv/4#g019b-M1-10",
+   "seed": {
+    "subject": "여성시대",
+    "aspect": "팬 세부",
+    "ref": "M1-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "방송 내용을 모은 월간 책자를 매달 전국 중소기업은행 지점에서 무료로 나눠 주는 MBC 표준FM 프로그램입니다. 목요일에는 남자 진행자 중심으로 이름을 바꿔 방송하고 시그널 음악도 바뀌는데, 이 프로그램은?",
+    "answer": "여성시대",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1975년 아나운서 임국희의 이름을 단 'MBC여성살롱 임국희예요'로 시작해 1988년 4월 지금 이름이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "목요일에는 남자 진행자 중심으로 이름을 바꿔 방송하는 MBC 표준FM",
+     "difWhy": "요일 편성 세부 — 라디오 애호가",
+     "wor": 3,
+     "worWhy": "장수 라디오 제목",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "아나운서 임국희의 이름을 단 프로그램으로 시작해",
+     "difWhy": "MBC 아침 라디오 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "대중적 라디오 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1975년 아나운서 임국희의 이름을 단 프로그램으로 시작해 1988년 4월 지금 이름이 된 MBC 표준FM 아침 프로그램입니다. 방송 내용을 모은 월간 책자를 기업은행 지점에서 나눠 주는 이 프로그램은?",
+     "beforeExplanation": "목요일에는 '남성시대'라는 이름으로 남자 진행자 중심으로 방송하고, 시그널 음악도 바뀝니다.",
+     "removedCue": "1975년 임국희 이름 프로그램으로 시작(관심층 — 라디오 역사)",
+     "addedCue": "목요일에는 남자 진행자 중심으로 이름을 바꿔 방송(해설에서 옮김)",
+     "why": "임국희 출발은 라디오 관심층 단서라 해설로 내리고, 청취자가 아는 요일 편성 세부로 바꿈"
+    },
+    "generalHint": "1999년 6월부터 가수 양희은이 진행을 맡아 왔다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "청취자 사연을 읽는 MBC 표준FM 아침 장수 라디오",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "양희은 진행 장수 라디오로 들어 봤을 법함",
+     "piece": "f03",
+     "genPct": 45
+    },
+    "blind": {
+     "ref": "M1-10",
+     "key": "b077",
+     "hint": "1999년 6월부터 가수 양희은이 진행을 맡아 왔다.",
+     "guess": "여성시대",
+     "confidence": "high",
+     "hit": true,
+     "answer": "여성시대"
+    },
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "여성시대",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)"
+    ],
+    "facts": [
+     {
+      "claim": "MBC 표준FM 아침 9시",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)",
+      "note": "여성시대(女性時代)는 대한민국의 라디오 채널 MBC 표준FM(수도권 기준 FM 95.9MHz)에서 매일 오전 9시 5분부터 오전 11시까지 방송되는"
+     },
+     {
+      "claim": "월간 책자 기업은행 배포",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)",
+      "note": "방송 내용 등을 모은 월간 여성시대 책자를 매달 10일에 전국 중소기업은행 지점에서 무료로 배포하고 있다."
+     },
+     {
+      "claim": "목요일 남성시대 · 시그널 변경",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)",
+      "note": "목요일에는 남성시대 타이틀로 남자 진행자 중심으로 방송을 진행하며, 시그널 음악도 변경된다."
+     },
+     {
+      "claim": "1975년 임국희 이름 프로그램 → 1988년 4월 1일 개칭",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)",
+      "note": "1975년에 《MBC여성살롱 임국희예요》로 첫방송된 이후, 1988년 4월 1일에 프로그램 명칭이 \"여성시대\"로 변경된 이후 현재까지 방송 중인"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)"
+    ],
+    "hintNote": "양희은 (1999년 6월 7일 ~ 현재)",
+    "easiestCue": "월간 책자를 중소기업은행 지점에서 나눠 줌",
+    "targetWhy": "책자 배포처·목요일 편성은 오래 들은 청취자(애호가)의 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "들어 본 장수 라디오, 단서는 운영 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/4#g019b-M1-11",
+   "seed": {
+    "subject": "별이 빛나는 밤에",
+    "aspect": "대중",
+    "ref": "M1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1976년 MBC 라디오 '별이 빛나는 밤에'를 진행했고, 두상 때문에 이문세·유열과 함께 '마삼트리오'로 불렸습니다. 1977년부터 MBC 대학가요제 사회를 통산 일곱 번 맡은 이 사람은 누구일까요?",
+    "answer": "이수만",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1972년 '4월과 5월'의 멤버로 데뷔했지만 건강 문제로 탈퇴해 목소리만 녹음되었고, 음반 표지에는 실리지 못했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "이문세·유열과 함께 '마삼트리오'로 불린 별밤 진행자",
+     "difWhy": "마삼트리오·대학가요제 — 가요 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "유명 인물 과거 이력",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'4월과 5월'의 멤버로 데뷔했지만",
+     "difWhy": "이수만 가수 시절 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1976년 MBC 라디오 '별이 빛나는 밤에'를 진행했고, 두상 때문에 이문세·유열과 함께 '마삼트리오'로 불렸습니다. 1972년 '4월과 5월'의 멤버로 데뷔했지만 음반 표지에는 실리지 못한 이 사람은 누구일까요?",
+     "beforeExplanation": "1977년부터 MBC 대학가요제 사회를 통산 일곱 번 맡았고, 1985년 미국에서 컴퓨터공학 석사를 받았습니다.",
+     "removedCue": "'4월과 5월'의 멤버로 데뷔",
+     "addedCue": "MBC 대학가요제 사회 통산 일곱 번",
+     "why": "관심층이 아는 가수 데뷔 이력을 해설로 옮기고 대학가요제 사회로 바꿈"
+    },
+    "generalHint": "1985년 미국 캘리포니아 주립대 노스리지에서 컴퓨터공학 석사를 받았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "SM 엔터테인먼트를 세운 가수 출신 제작자",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "연예 뉴스로 누구나 앎",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "M1-11",
+     "key": "b030",
+     "hint": "1985년 미국 캘리포니아 주립대 노스리지에서 컴퓨터공학 석사를 받았다.",
+     "guess": "김택진",
+     "confidence": "low",
+     "hit": false,
+     "answer": "이수만"
+    },
+    "layer": "대중",
+    "genre": "예능",
+    "work": "별이 빛나는 밤에",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이수만"
+    ],
+    "facts": [
+     {
+      "claim": "1976년 MBC 별이 빛나는 밤에 진행",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이수만",
+      "note": "1976년 MBC 《별이 빛나는 밤에》"
+     },
+     {
+      "claim": "이문세·유열과 마삼트리오",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이수만",
+      "note": "머리의 두상이 말머리와 비슷하다고 하여 이문세, 유열과 함께 ‘마삼트리오(馬三Trio)’로 불리기도 했다."
+     },
+     {
+      "claim": "1972년 4월과 5월 데뷔 · 표지에 없음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이수만",
+      "note": "1972년, 4월과 5월의 멤버로 데뷔하였지만 건강상 문제로 탈퇴하였다. 그런 이유로 목소리만 녹음이 되었고 음반 표지에는 백순진, 김태풍만이 찍혔다."
+     },
+     {
+      "claim": "대학가요제 통산 7회 · 1985 컴퓨터공학 석사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이수만",
+      "note": "1977년 《MBC 대학가요제》 (77년 ~ 80년, 91년 ~ 93년 통산 7회 진행) / 1985년 캘리포니아주립 대학원 노스리지 컴퓨터공학 석사"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이수만"
+    ],
+    "hintNote": "1985년 캘리포니아주립 대학원 노스리지 컴퓨터공학 석사",
+    "easiestCue": "이문세·유열과 함께 '마삼트리오'",
+    "targetWhy": "라디오 DJ · 대학가요제 사회 시절 — 가요 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 인물의 들어 본 적 없는 젊은 시절 — 들으면 \"아 그 사람이 DJ 였지\"",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/4#g019b-M1-12",
+   "seed": {
+    "subject": "지금은 라디오 시대",
+    "aspect": "팬 세부",
+    "ref": "M1-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1995년 4월 첫 방송을 탄 MBC 표준FM 오후 프로그램입니다. 반년 만에 이양원·강연희로 진행자가 바뀌었다가 이듬해 4월 첫 진행자 두 사람이 다시 돌아왔는데, 이 프로그램은 무엇일까요?",
+    "answer": "지금은 라디오 시대",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "첫 진행자는 이종환·최유라였고, 청취자의 재미있는 사연을 읽는 '웃음이 묻어나는 편지'가 대표 코너입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1995년 4월 첫 방송 MBC 표준FM 오후, 이양원·강연희로 진행자 교체",
+     "difWhy": "진행자 교체 내력 — 라디오 애호가",
+     "wor": 3,
+     "worWhy": "장수 라디오 제목",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1995년 4월 이종환·최유라의 진행으로 첫 방송",
+     "difWhy": "지금은 라디오 시대 진행자 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "대중적 라디오 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1995년 4월 이종환·최유라의 진행으로 첫 방송을 탄 MBC 표준FM 오후 프로그램입니다. 반년 만에 이양원·강연희로 진행자가 바뀌었다가 이듬해 4월 두 사람이 다시 돌아왔는데, 이 프로그램은 무엇일까요?",
+     "beforeExplanation": "청취자의 재미있는 사연을 읽는 '웃음이 묻어나는 편지'가 대표 코너입니다.",
+     "removedCue": "1995년 4월 이종환·최유라의 진행(관심층)",
+     "addedCue": "없음(첫 진행자 이름을 해설로 내림 — 2대 진행자 이양원·강연희가 남음)",
+     "why": "대표 진행자 이름을 빼고 짧았던 2대 진행자 세부로 묻게 함"
+    },
+    "generalHint": "2006년 11월부터 2016년 5월까지는 조영남이 진행을 맡았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "청취자 사연으로 유명한 MBC 표준FM 오후 라디오",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "장수 라디오로 들어 봤을 법함",
+     "piece": "f04",
+     "genPct": 45
+    },
+    "blind": {
+     "ref": "M1-12",
+     "key": "b037",
+     "hint": "2006년 11월부터 2016년 5월까지는 조영남이 진행을 맡았다.",
+     "guess": "지금은 라디오 시대",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "지금은 라디오 시대"
+    },
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "지금은 라디오 시대",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/지금은_라디오_시대"
+    ],
+    "facts": [
+     {
+      "claim": "1995년 4월 3일 첫 방송 · 1대 이종환·최유라",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지금은_라디오_시대",
+      "note": "1995년 4월 3일에 첫방송되었다. / 1대 : 故 이종환, 최유라 (1995년 4월 3일 ~ 1995년 10월 8일)"
+     },
+     {
+      "claim": "2대 이양원·강연희 · 3대 다시 이종환·최유라",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지금은_라디오_시대",
+      "note": "2대 : 이양원, 강연희 (1995년 10월 9일 ~ 1996년 3월 31일) 3대 : 故 이종환, 최유라 (1996년 4월 1일 ~ 2002년 9월 1일)"
+     },
+     {
+      "claim": "MBC 표준FM 오후 4시",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지금은_라디오_시대",
+      "note": "MBC 표준FM(전국, 수도권·부산 기준 FM 95.9MHz)에서 매일 오후 4시 5분부터 저녁 6시까지 방송되는"
+     },
+     {
+      "claim": "대표 코너 웃음이 묻어나는 편지",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/지금은_라디오_시대",
+      "note": "평일 : 웃음이 묻어나는 편지 청취자들의 재미있는 사연을 소개하는 지·라·시의 대표 코너"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EC%A7%80%EA%B8%88%EC%9D%80_%EB%9D%BC%EB%94%94%EC%98%A4_%EC%8B%9C%EB%8C%80"
+    ],
+    "hintNote": "8대 : 조영남, 최유라 (2006년 11월 13일 ~ 2016년 5월 16일)",
+    "easiestCue": "1995년 4월 첫 방송 · MBC 표준FM 오후 프로그램",
+    "targetWhy": "반년만 맡은 2대 진행자는 라디오 애청자 세부 — 대표 진행자·코너는 해설로",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "최유라 이름이 중장년 관심층에게는 바로 이어질 수 있음(경계 3)",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

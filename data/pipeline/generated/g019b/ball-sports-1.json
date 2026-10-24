@@ -1,0 +1,533 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "ball-sports/1",
+  "midKey": "ball-sports",
+  "subName": "농구",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "ball-sports/1#g019b-S1-01",
+   "seed": {
+    "subject": "마이클 조던",
+    "aspect": null,
+    "ref": "S1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2003년 4월, 이 선수가 한 번도 뛴 적 없는 플로리다의 한 NBA 구단이 그의 등번호를 영구 결번으로 정했습니다. 같은 해 올스타전에서는 트레이시 맥그레이디와 앨런 아이버슨이 내준다는 선발 자리를 사양하고 빈스 카터의 자리를 받은 이 선수는?",
+    "answer": "마이클 조던",
+    "acceptedAnswers": [
+     "조던"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '마이클 조던' 문서 제목 · 한국 보도에서 '조던' 단독 표기 흔함",
+    "explanation": "2010년 선수 출신으로는 처음 NBA 구단(샬럿 밥캐츠)의 대주주가 되었고, 2023년 대주주 지분을 팔았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "한 번도 뛴 적 없는 플로리다 구단이 등번호를 영구 결번",
+     "difWhy": "히트의 23번 결번 — 농구 관심층",
+     "wor": 3,
+     "worWhy": "세계적 스타 일화",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "2010년에는 선수 출신으로 처음 NBA 구단의 대주주가 된",
+     "difWhy": "조던 샬럿 구단주 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2003년 4월, 이 선수가 한 번도 뛴 적 없는 플로리다의 한 NBA 구단이 그의 등번호를 영구 결번으로 정했습니다. 2010년에는 선수 출신으로 처음 NBA 구단의 대주주가 된 이 사람은 누구일까요?",
+     "beforeExplanation": "2006년 샬럿 밥캐츠(지금의 호니츠)의 소수 지분을 사 농구 운영을 맡았고, 2023년 대주주 지분을 팔았습니다.",
+     "removedCue": "2010년 선수 출신으로 처음 NBA 구단의 대주주가 됨(관심층)",
+     "addedCue": "2003년 올스타전 선발 자리 양보 사연",
+     "why": "구단주 사실을 해설로 내리고 은퇴 시즌 뒷이야기로 바꿈"
+    },
+    "generalHint": "1982년 대학 1학년 때 NCAA 결승에서 조지타운을 꺾는 결승 슛을 넣었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1990년대 시카고에서 여섯 번 우승한 미국 농구의 전설",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "누구나 아는 스포츠 스타",
+     "piece": "f07",
+     "genPct": 97
+    },
+    "blind": {
+     "ref": "S1-01",
+     "key": "b134",
+     "hint": "1982년 대학 1학년 때 NCAA 결승에서 조지타운을 꺾는 결승 슛을 넣었다.",
+     "guess": "마이클 조던",
+     "confidence": "high",
+     "hit": true,
+     "answer": "마이클 조던"
+    },
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Michael_Jordan"
+    ],
+    "facts": [
+     {
+      "claim": "마이애미 히트가 2003년 4월 11일 뛴 적 없는 조던의 23번을 영구 결번",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michael_Jordan",
+      "note": "The Miami Heat retired the No. 23 jersey on April 11, 2003, even though Jordan never played for the team."
+     },
+     {
+      "claim": "2010년 선수 출신 첫 NBA 구단 대주주",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Michael_Jordan",
+      "note": "On March 17, the NBA Board of Governors unanimously approved Jordan's purchase, making him the first former player to become the majority owner of an NBA team (2010 Bobcats)"
+     },
+     {
+      "claim": "2006년 밥캐츠 소수 지분·농구 운영, 2023년 대주주 지분 매각",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Michael_Jordan",
+      "note": "He became part-owner and head of basketball operations for the Charlotte Hornets (then named the Bobcats) in 2006 and bought a controlling interest in 2010, before selling his majority stake in 2023."
+     },
+     {
+      "claim": "2003 올스타전, 맥그레이디·아이버슨의 선발 자리를 사양하고 카터의 자리를 받음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Michael_Jordan",
+      "note": "At the 2003 All-Star Game, Jordan was offered a starting spot from Tracy McGrady and Allen Iverson but refused both; he accepted the spot of Vince Carter."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Michael_Jordan"
+    ],
+    "hintNote": "He made the game-winning jump shot in the 1982 NCAA Championship game against Georgetown",
+    "easiestCue": "한 번도 뛴 적 없는 플로리다 구단이 그의 등번호를 영구 결번",
+    "targetWhy": "마이애미의 결번·2003 올스타 선발 양보는 NBA 애호가 세부 — 우승·구단주 이력은 질문에 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 정답의 은퇴 뒤 세부",
+    "pairCheck": null,
+    "dbCheck": "마이클 조던 · 조던 new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g019b-S1-02",
+   "seed": {
+    "subject": "시카고 불스",
+    "aspect": null,
+    "ref": "S1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1966년 창단한 이 NBA 구단의 창단자 딕 클라인은 '세 음절이 넘는 별명을 단 팀은 몬트리올 캐나디언스 말고 크게 성공한 적이 없다'며 긴 후보를 버렸습니다. 아들이 '아빠, 그거 다 헛소리예요!'라고 한 말에서 이름을 정한 이 구단은?",
+    "answer": "시카고 불스",
+    "acceptedAnswers": [
+     "불스"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '시카고 불스' 문서 · '불스' 넘겨주기 문서 있음",
+    "explanation": "클라인은 도시의 전통 육가공업과 경기장 옆 유니언 스톡 야드를 떠올리게 하는 이름을 원했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "창단자 딕 클라인은 '세 음절이 넘는 별명을 단 팀은",
+     "difWhy": "불스 이름 유래 — NBA 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "창단자 딕 클라인은 '세 음절이 넘는 별명을 단 팀은",
+     "difWhy": "불스 이름 유래 — NBA 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "1994년 문을 연 유나이티드 센터를 NHL 블랙호크스와 함께 홈 경기장으로 쓴다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "마이클 조던이 여섯 번 우승을 이끈 미국 프로농구 팀",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "마이클 조던·슬램덩크 세대에 익숙한 팀",
+     "piece": "f03",
+     "genPct": 78
+    },
+    "blind": {
+     "ref": "S1-02",
+     "key": "b179",
+     "hint": "1994년 문을 연 유나이티드 센터를 NHL 블랙호크스와 함께 홈 경기장으로 쓴다.",
+     "guess": "시카고 불스",
+     "confidence": "high",
+     "hit": true,
+     "answer": "시카고 불스"
+    },
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chicago_Bulls"
+    ],
+    "facts": [
+     {
+      "claim": "1966년 창단, 창단자 딕 클라인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chicago_Bulls",
+      "note": "The team was founded on January 16, 1966 ... The franchise was founded by Dick Klein"
+     },
+     {
+      "claim": "세 음절 이상 별명 팀은 몬트리올 캐나디언스 말고 성공 못 했다며 후보를 버림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chicago_Bulls",
+      "note": "Klein considered names like Matadors or Toreadors, but dismissed them, saying, \"If you think about it, no team with as many as three syllables in its nickname has ever had much success except for the Montreal Canadiens.\""
+     },
+     {
+      "claim": "아들 마크의 말에서 이름을 정함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chicago_Bulls",
+      "note": "After discussing possible names with his family, Klein settled on Bulls when his son Mark said, \"Dad, that's a bunch of bull!\""
+     },
+     {
+      "claim": "육가공업·유니언 스톡 야드를 떠올리게 하는 이름을 원함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chicago_Bulls",
+      "note": "Dick Klein wanted a name that evoked Chicago's traditional meat packing industry ... and the Chicago Stadium's proximity to the Union Stock Yards."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/United_Center"
+    ],
+    "hintNote": "Opened in 1994 ... It is home to the Chicago Bulls of the National Basketball Association (NBA) and the Chicago Blackhawks of the National Hockey League (NHL).",
+    "easiestCue": "아들이 '아빠, 그거 다 헛소리예요!'라고 한 말에서 이름을 정한",
+    "targetWhy": "구단 이름 유래 일화는 NBA 애호가 세부 — 연고 도시·대표 선수 단서를 뺐다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'헛소리(bull)' 영어 관용구를 아는 사람은 추리 가능 — 영어 관용구 지식이 필요해 4 로 봄",
+    "pairCheck": null,
+    "dbCheck": "시카고 불스 · 불스 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g019b-S1-03",
+   "seed": {
+    "subject": "샤킬 오닐",
+    "aspect": null,
+    "ref": "S1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2012년 배리 대학교에서 '리더십 유형에서 유머와 공격성의 이중성'을 주제로 교육학 박사 학위를 받았습니다. 마이클 잭슨의 1995년 앨범 'HIStory'의 '2 Bad'에 객원 래퍼로 참여한 이 NBA 센터는 누구일까요?",
+    "answer": "샤킬 오닐",
+    "acceptedAnswers": [
+     "샤크"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '샤킬 오닐' 문서 제목 · 별명 '샤크'(Shaq)는 한국 중계·기사에서 흔히 부르는 이름",
+    "explanation": "2005년 마이애미비치의 예비 경찰관이 되는 등 여러 지역에서 예비 경찰관·보안관보로 일했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "마이클 잭슨의 1995년 앨범 'HIStory'의 '2 Bad'에 객원 래퍼",
+     "difWhy": "샤크 래퍼 활동 — NBA 애호가",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "마이클 잭슨의 1995년 앨범 'HIStory'의 '2 Bad'에 객원 래퍼",
+     "difWhy": "샤크 래퍼 활동 — NBA 애호가",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "1996년 영화 '카잠'에서 붐박스에서 나오는 5,000살 요정 역을 맡았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1990~2000년대 NBA를 휩쓴 거구의 센터",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "NBA 전설로 농구·예능 밈에서 접함",
+     "piece": "f06",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "S1-03",
+     "key": "b147",
+     "hint": "1996년 영화 '카잠'에서 붐박스에서 나오는 5,000살 요정 역을 맡았다.",
+     "guess": "샤킬 오닐",
+     "confidence": "high",
+     "hit": true,
+     "answer": "샤킬 오닐"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Shaquille_O%27Neal"
+    ],
+    "facts": [
+     {
+      "claim": "2012년 배리 대학교 교육학 박사(Ed.D.), 논문 주제",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shaquille_O%27Neal",
+      "note": "an Ed.D. degree in Human Resource Development from Barry University in 2012. His doctoral capstone topic at Barry was \"The Duality of Humor and Aggression in Leadership Styles\"."
+     },
+     {
+      "claim": "마이클 잭슨 1995년 앨범 HIStory 의 '2 Bad' 객원 래퍼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shaquille_O%27Neal",
+      "note": "O'Neal was featured alongside Michael Jackson as a guest rapper on \"2 Bad\", a song from Jackson's 1995 album HIStory."
+     },
+     {
+      "claim": "2005년 마이애미비치 예비 경찰관 등",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Shaquille_O%27Neal",
+      "note": "In 2005, he became a Miami Beach reserve officer and an honorary U.S. Deputy Marshal. ... sworn in as a reserve officer for Doral ... sworn in as a sheriff's deputy in Jonesboro, Georgia"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Kazaam"
+    ],
+    "hintNote": "starring Shaquille O'Neal as the title character, a 5,000-year-old genie who appears from a magic boombox",
+    "easiestCue": "마이클 잭슨의 1995년 앨범 'HIStory'의 '2 Bad'에 객원 래퍼로 참여한",
+    "targetWhy": "박사 학위·객원 랩은 농구 관심층도 잘 모르는 코트 밖 이력 — 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 알 만한 스타의 뜻밖의 이력",
+    "pairCheck": null,
+    "dbCheck": "샤킬 오닐 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g019b-S1-04",
+   "seed": {
+    "subject": "스테픈 커리",
+    "aspect": null,
+    "ref": "S1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아버지가 뛰었던 버지니아 공대에 가고 싶었지만, 160파운드의 마른 몸 탓에 '워크온' 자리만 제안받았습니다. 아버지가 토론토 랩터스에서 선수 생활을 마칠 무렵 토론토의 학교 팀을 무패 시즌으로 이끌기도 한 이 NBA 선수는?",
+    "answer": "스테픈 커리",
+    "acceptedAnswers": [
+     "커리",
+     "스테판 커리"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '스테픈 커리' 문서 제목 · '스테판 커리' 넘겨주기 · 한국 중계에서 '커리' 단독 호칭 흔함",
+    "explanation": "결국 고교 시절부터 그를 데려가려 애쓴 데이비드슨 대학에 들어가, 2학년 때 NCAA 한 시즌 3점슛 기록(162개)을 세웠습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "아버지가 토론토 랩터스에서 선수 생활을 마칠 무렵",
+     "difWhy": "커리 학창 시절 — NBA 애호가",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "아버지가 토론토 랩터스에서 선수 생활을 마칠 무렵",
+     "difWhy": "커리 학창 시절 — NBA 애호가",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "그의 동생도 NBA 선수로, 2019년 닥 리버스 감독의 딸과 결혼해 그 감독을 장인으로 두었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "골든스테이트에서 뛴 3점슛의 대명사 농구 선수",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "NBA 스타로 스포츠 뉴스·광고에서 접함",
+     "piece": "f05",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "S1-04",
+     "key": "b097",
+     "hint": "그의 동생도 NBA 선수로, 2019년 닥 리버스 감독의 딸과 결혼해 그 감독을 장인으로 두었다.",
+     "guess": "스테픈 커리",
+     "confidence": "high",
+     "hit": true,
+     "answer": "스테픈 커리"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Stephen_Curry"
+    ],
+    "facts": [
+     {
+      "claim": "아버지가 뛴 버지니아 공대를 원했으나 160파운드 체격 탓에 워크온 자리만 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stephen_Curry",
+      "note": "Because of his father's storied career at Virginia Tech, Curry wanted to play college basketball for the Hokies, but was only offered a walk-on spot due in part to his slender 160-pound frame."
+     },
+     {
+      "claim": "아버지가 랩터스에서 선수 생활을 마칠 때 토론토 학교 팀을 무패로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stephen_Curry",
+      "note": "The family briefly moved to Toronto, Canada, where Dell finished out his career as a member of the Toronto Raptors. During this time, Curry played for the Queensway Christian College boys' basketball team, leading them to an undefeated season."
+     },
+     {
+      "claim": "데이비드슨 진학 · 2학년 때 NCAA 한 시즌 3점슛 기록 162개",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Stephen_Curry",
+      "note": "He ultimately chose to attend Davidson College, which had aggressively recruited him from the tenth grade. / He set the NCAA single-season record for three-pointers made (162) as a sophomore"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Seth_Curry"
+    ],
+    "hintNote": "On September 14, 2019, Curry married former professional volleyball player Callie Rivers, daughter of his former head coach Doc Rivers",
+    "easiestCue": "아버지가 토론토 랩터스에서 선수 생활을 마칠 무렵 토론토의 학교 팀을 무패 시즌으로 이끌기도 한",
+    "targetWhy": "대학 진학 뒷이야기·캐나다 시절은 NBA 애호가 세부 — 3점슛·소속팀 단서 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 선수의 성장기 세부",
+    "pairCheck": null,
+    "dbCheck": "스테픈 커리 · 커리 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "ball-sports/1#g019b-S1-05",
+   "seed": {
+    "subject": "르브론 제임스",
+    "aspect": null,
+    "ref": "S1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고교 마지막 해, 18번째 생일 선물로 어머니가 그의 장래 NBA 수입을 근거로 대출받아 사 준 허머 H2 때문에 오하이오 고교체육협회의 조사를 받았습니다. 고교 미식축구에서는 와이드 리시버로 주 1팀에 뽑히기도 한 이 농구 선수는?",
+    "answer": "르브론 제임스",
+    "acceptedAnswers": [
+     "르브론"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '르브론 제임스' 문서 제목 · 한국 중계에서 '르브론' 단독 호칭 흔함",
+    "explanation": "2011년 NBA 직장 폐쇄 때는 댈러스 카우보이스와 시애틀 시호크스에게서 미식축구 계약 제안을 받기도 했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "18번째 생일 선물로 어머니가 ... 사 준 허머 H2",
+     "difWhy": "르브론 고교 허머 일화 — NBA 애호가",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기",
+     "acc": 4,
+     "accWhy": "구기 종목 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "18번째 생일 선물로 어머니가 ... 사 준 허머 H2",
+     "difWhy": "르브론 고교 허머 일화 — NBA 애호가",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "2017년 11월 고향 애크런의 교육위원회가 그의 재단과 함께 세울 'I Promise' 학교를 승인했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "클리블랜드·마이애미·LA에서 뛴 2000년대 이후 NBA 최고 스타",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "NBA 최고 스타로 널리 알려짐",
+     "piece": "f06",
+     "genPct": 65
+    },
+    "blind": {
+     "ref": "S1-05",
+     "key": "b323",
+     "hint": "2017년 11월 고향 애크런의 교육위원회가 그의 재단과 함께 세울 'I Promise' 학교를 승인했다.",
+     "guess": "르브론 제임스",
+     "confidence": "high",
+     "hit": true,
+     "answer": "르브론 제임스"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/LeBron_James"
+    ],
+    "facts": [
+     {
+      "claim": "18번째 생일 선물 허머 H2 — 어머니가 장래 NBA 수입으로 대출, OHSAA 조사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/LeBron_James",
+      "note": "For his 18th birthday, James skirted state amateur bylaws by accepting a Hummer H2 as a gift from his mother, who had secured a loan for the vehicle by utilizing James's future earning power as an NBA player. This prompted an investigation by the Ohio High School Athletic Association (OHSAA)"
+     },
+     {
+      "claim": "senior year(고교 마지막 해)의 논란",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/LeBron_James",
+      "note": "James was at the center of several controversies during his senior year."
+     },
+     {
+      "claim": "미식축구 와이드 리시버, 주 1팀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/LeBron_James",
+      "note": "As an underclassman, James played wide receiver for St. Vincent–St. Mary's football team. ... At the end of his second year, James was named first team all-state"
+     },
+     {
+      "claim": "2011 직장 폐쇄 때 카우보이스·시호크스 미식축구 제안",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/LeBron_James",
+      "note": "During the 2011 NBA lockout, James received contract offers to play professional football from the Dallas Cowboys and Seattle Seahawks"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/LeBron_James"
+    ],
+    "hintNote": "In November 2017, the Akron School Board approved the I Promise School, a public elementary school created in a partnership with the LJFF",
+    "easiestCue": "고교 미식축구에서는 와이드 리시버로 주 1팀에 뽑히기도 한",
+    "targetWhy": "고교 시절 차량 논란·미식축구 경력은 NBA 애호가 세부 — 별명·대표 기록 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 선수의 고교 시절 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "르브론 제임스 · 르브론 new",
+    "warn": [
+     "단정어 마지막"
+    ]
+   }
+  }
+ ]
+}

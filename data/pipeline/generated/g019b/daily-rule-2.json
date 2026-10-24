@@ -1,0 +1,359 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "daily-rule/2",
+  "midKey": "daily-rule",
+  "subName": "생활 법규",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "daily-rule/2#g019b-L1-06",
+   "seed": {
+    "subject": "정당방위",
+    "aspect": null,
+    "ref": "L1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1988년 귀갓길에 골목으로 끌려가 강제로 입맞춤을 당하던 32살 주부가 남자의 혀를 깨물어 잘랐습니다. 1심은 그녀에게 징역 6개월에 집행유예를 선고했지만 항소심과 대법원은 판단을 뒤집었는데, 대법원이 그녀의 행위에 인정한 것은 무엇일까요?",
+    "answer": "정당방위",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "검찰은 과잉방위라며 징역 1년을 구형했었고, 이 변월수 사건은 영화 '단지 그대가 여자라는 이유만으로'로도 만들어졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "남자의 혀를 깨물어 잘랐습니다",
+     "difWhy": "혀 절단 사건 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 법 기본 개념",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "남자의 혀를 깨물어 잘랐습니다",
+     "difWhy": "혀 절단 사건 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 법 기본 개념"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "쉬운 단서를 빼면 유일하지 않음 — 정답이 법 개념이라 사건을 어떻게 고쳐 써도 '대법원이 인정한 것' 이 1회차(3158) 정의만으로 풀리고, 사건 세부(혀 절단)를 빼면 무엇을 인정했는지 넓어짐"
+    },
+    "generalHint": "1964년 같은 일로 중상해죄 판결을 받은 최말자 씨는 2025년 재심에서 이것을 인정받아 무죄가 되었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "부당한 침해를 막으려 한 행위를 처벌하지 않는 형법상 원리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "뉴스·일상에서 흔히 쓰는 법률 용어",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "L1-06",
+     "key": "b021",
+     "hint": "1964년 같은 일로 중상해죄 판결을 받은 최말자 씨는 2025년 재심에서 이것을 인정받아 무죄가 되었다.",
+     "guess": "정당방위",
+     "confidence": "high",
+     "hit": true,
+     "answer": "정당방위",
+     "first": {
+      "ref": "L1-06",
+      "key": "b292",
+      "hint": "우리 형법에서는 제21조가 이것을 정해 둔다.",
+      "guess": "정당방위",
+      "confidence": "high",
+      "hit": true,
+      "answer": "정당방위"
+     }
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/변월수_사건"
+    ],
+    "facts": [
+     {
+      "claim": "1988년 9월 10일 당시 32세 주부 변월수가 귀가 중 골목으로 끌고 가 강제로 키스하는 남성의 혀를 깨물어 절단",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/변월수_사건",
+      "note": "변월수 사건(卞月洙事件)은 1988년 9월 10일 가정 주부 변월수(卞月洙, 여성, 당시 32세)가 귀가를 하던 도중 자신을 골목길로 끌고가 강제로 키스하는 남성의 혀를 깨물어 절단한 사건이다."
+     },
+     {
+      "claim": "1심은 징역 6개월 집행유예 1년",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/변월수_사건",
+      "note": "제1심 재판부인 대구지방법원 안동지원은 갑과 을의 주장을 인정하여 변월수에게 징역 6개월 집행유예 1년을 선고하였다."
+     },
+     {
+      "claim": "항소심이 원심 파기, 대법원이 정당방위 인정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/변월수_사건",
+      "note": "항소심 재판부인 대구고등법원은 … 원심을 파기하고 … 대법원도 변월수의 정당방위를 인정하여 검사와 을의 상고를 기각하였다."
+     },
+     {
+      "claim": "검찰은 과잉방위로 1년 구형",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/변월수_사건",
+      "note": "검찰은 과잉방위는 이유로 1년을 구형하였다."
+     },
+     {
+      "claim": "영화 '단지 그대가 여자라는 이유만으로'로 제작",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/변월수_사건",
+      "note": "이 사건은 《단지 그대가 여자라는 이유만으로》라는 영화로 제작되었다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/최말자_사건"
+    ],
+    "hintNote": "1965년 1월 부산지방법원 형사부는 최말자에게 '중상해죄'를 인정하여 … 같은 해(2025) 부산지방법원 형사5부는 재심에서 중상해 등 혐의에 대해 \"정당방위라고 인정된다\"며 무죄를 선고하였다.",
+    "easiestCue": "1심은 … 집행유예를 선고했지만 항소심과 대법원은 판단을 뒤집었는데",
+    "targetWhy": "변월수 사건의 1·2심 경과는 법·사회사 애호가 지식 — 고교 정치와 법은 정당방위 정의만 다룬다",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "사건 줄거리에서 '방어 행위 무죄'를 추리할 수 있어 3 으로 내려갈 수 있다(과잉방위와 갈리는 판단이 필요)",
+    "pairCheck": null,
+    "dbCheck": "활성 3158(법률 용어 — 정의 꼴)과 답만 같고 지식이 다름(판례). 활성 2221 상당성은 다른 답",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "daily-rule/2#g019b-L1-07",
+   "seed": {
+    "subject": "레몬법",
+    "aspect": null,
+    "ref": "L1-07",
+    "pairedWith": 4357
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 4357,
+    "question": "코네티컷주 하원의원 존 우드콕 3세가 이끌어 낸 법이 미국에서 처음 이 이름으로 불린 주법으로 꼽힙니다. 필리핀도 2014년 공화국법 제10642호로 같은 이름의 법을 만들었는데, 이 법을 흔히 무엇이라 할까요?",
+    "answer": "레몬법",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "미국에는 1975년 만들어진 연방법 '매그너슨-모스 보증법'도 있어 모든 주의 시민을 보호합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "코네티컷 하원의원 존 우드콕 3세가 이끌어 낸 법",
+     "difWhy": "법 이름 내력만 — 법·소비자 애호가 (경계 3)",
+     "wor": 4,
+     "worWhy": "시사 상식 — 소비자 보호법",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "엮음: 매그너슨-모스 보증법 + 이 이름으로 불리는 주법",
+     "difWhy": "레몬법 — 관심층 (경계 2)",
+     "wor": 4,
+     "worWhy": "시사 상식 — 소비자 법"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "미국에는 1975년 만들어진 연방법인 '매그너슨-모스 보증법'이 있지만, 이 이름으로 불리는 주법은 코네티컷주 하원의원 존 우드콕 3세가 이끌어 낸 것이 미국 처음이었습니다. 이 법을 흔히 무엇이라 할까요?",
+     "beforeExplanation": "필리핀도 2014년 새 차에만 적용되는 같은 이름의 법을 만들었습니다.",
+     "removedCue": "매그너슨-모스 보증법 + '이 이름으로 불리는 주법'(관심층 — 보증법이면 레몬법)",
+     "addedCue": "필리핀 공화국법 제10642호(해설에서 옮김 — '새 차에만'은 1회차 정의라 뺌)",
+     "why": "보증법 단서는 레몬법으로 바로 이어져 해설로 내리고, 1회차 정의('새 차')와 겹치는 말도 뺌"
+    },
+    "generalHint": "캘리포니아주의 이 법인 송-베벌리 소비자 보증법은 차뿐 아니라 보트·전자 제품·가전까지 다룬다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "결함이 되풀이되는 새 차를 바꾸거나 환불받게 하는 소비자 보호 법",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "BMW 화재·자동차 결함 뉴스로 들어 봤을 법함",
+     "piece": "f02",
+     "genPct": 60
+    },
+    "blind": {
+     "ref": "L1-07",
+     "key": "b213",
+     "hint": "캘리포니아주의 이 법인 송-베벌리 소비자 보증법은 차뿐 아니라 보트·전자 제품·가전까지 다룬다.",
+     "guess": "레몬법",
+     "confidence": "high",
+     "hit": true,
+     "answer": "레몬법"
+    },
+    "hobby": "자동차",
+    "defForm": true,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lemon_law"
+    ],
+    "facts": [
+     {
+      "claim": "코네티컷주 하원의원 존 J. 우드콕 3세가 미국 첫 레몬법을 이끌었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lemon_law",
+      "note": "Interview with John J. Woodcock III of West Hartford, Connecticut. Woodcock, as a Connecticut State Representative from South Windsor, was the proponent of the first \"Lemon Law\" enacted in the United States."
+     },
+     {
+      "claim": "필리핀 레몬법은 2014년 통과, 새 차에만 적용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lemon_law",
+      "note": "as passed in 2014. The Lemon Law covers only new vehicles. … Republic Act No. 10642, the \"Philippine Lemon Law\""
+     },
+     {
+      "claim": "매그너슨-모스 보증법은 1975년 연방법",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lemon_law",
+      "note": "The Magnuson-Moss Warranty Act was enacted as a federal law in 1975, and protects citizens of all states"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Lemon_law"
+    ],
+    "hintNote": "California has a broad lemon law, the Song-Beverly Consumer Warranty Act, which covers a wide range of products, including vehicles, boats, electronics, and appliances.",
+    "easiestCue": "코네티컷주 하원의원 존 우드콕 3세가 이끌어 낸 미국 첫 주법",
+    "targetWhy": "첫 주법 발의자와 필리핀 법 번호는 소비자법 애호가 세부 — 1회차(결함 차 교환·한국 2019)와 다른 사실",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "정의·속어 단서 없이 법의 연원만 묻는다",
+    "pairCheck": "1회차 4357 은 속어 '레몬'·애커로프 논문·한국 2019 시행·결함 차 정의(q), 1960 폭스바겐 광고·BMW 화재(e), 힌트 없음 — 2회차는 매그너슨-모스·코네티컷 첫 주법만 쓰고 결함 차 정의(범주 단서)를 넣지 않음",
+    "dbCheck": "pair-or-different — 활성 4357 의 (가) 2회차",
+    "warn": [
+     "단정어 처음",
+     "낱말뜻꼴"
+    ],
+    "first": {
+     "id": 4357,
+     "question": "미국 속어에서 결함 있는 차를 가리키는 말이 이름에 들어 있고, 경제학자 애커로프가 정보 비대칭을 다룬 1970년 논문 제목에도 같은 말이 쓰였습니다. 반복해서 고장 나는 새 차를 교환·환불받게 하는 제도로, 한국에서는 2019년부터 시행된 것을 흔히 무엇이라 할까요?",
+     "explanation": "이 말이 결함 차를 가리키는 뜻으로 처음 쓰인 것은 1960년 폭스바겐 광고로 알려져 있고, 한국 도입은 BMW 차량 연쇄 화재가 계기가 되었습니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "daily-rule/2#g019b-L1-08",
+   "seed": {
+    "subject": "최저임금",
+    "aspect": null,
+    "ref": "L1-08",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1894년 뉴질랜드에서 처음 시행된 것으로 꼽히고, 미국은 1938년, 프랑스는 1950년에 들인 제도입니다. 이 제도는 무엇일까요?",
+    "answer": "최저임금",
+    "acceptedAnswers": [
+     "최저임금제"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia — '최저임금제' 가 '최저임금' 문서로 넘겨주기(API redirects 확인) · 질문이 '제도' 를 물어 두 꼴 다 자연스러움",
+    "explanation": "한국은 1986년 12월 31일 법을 만들어 1988년 1월 1일부터 시행했는데, 그해 정한 금액은 실제 노동자 임금의 30%에도 미치지 못했다는 평가를 받았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1894년 뉴질랜드, 1938년 미국, 1950년 프랑스에 들인 제도",
+     "difWhy": "도입 연도만 — 대학 교양 경제사 (경계 3)",
+     "wor": 4,
+     "worWhy": "시사 상식 — 노동 제도",
+     "acc": 5,
+     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 2,
+     "easiestCue": "한국에서는 1986년 12월 31일 법이 만들어져 1988년 1월 1일부터 시행",
+     "difWhy": "최저임금 제도 — 방송·뉴스 (경계 3)",
+     "wor": 5,
+     "worWhy": "교과 — 사회·경제 제도"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1894년 뉴질랜드에서 처음 시행된 것으로 꼽히고, 미국은 1938년, 프랑스는 1950년에 들인 제도입니다. 한국에서는 1986년 12월 31일 법이 만들어져 1988년 1월 1일부터 시행되었는데, 이 제도는 무엇일까요?",
+     "beforeExplanation": "1988년 당시 정해진 금액은 실제 노동자 임금의 30%에도 미치지 못했다는 평가를 받았습니다.",
+     "removedCue": "한국에서는 1986년 12월 31일 법 제정, 1988년 1월 1일 시행(방송·뉴스)",
+     "addedCue": "없음(쉬운 단서를 해설로 내림 — 나라별 도입 연도가 남음)",
+     "why": "한국 시행 연도는 뉴스에 늘 나오는 단서라 해설로 내림"
+    },
+    "generalHint": "독일은 2015년 1월에야 이것을 업종을 가리지 않는 법으로 처음 들였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "사용자가 근로자에게 줘야 하는 임금의 법정 하한",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "매년 뉴스에 나오는 말",
+     "piece": "f05",
+     "genPct": 98
+    },
+    "blind": {
+     "ref": "L1-08",
+     "key": "b109",
+     "hint": "독일은 2015년 1월에야 이것을 업종을 가리지 않는 법으로 처음 들였다.",
+     "guess": "최저 임금제",
+     "confidence": "high",
+     "hit": true,
+     "answer": "최저임금"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/최저임금"
+    ],
+    "facts": [
+     {
+      "claim": "1894년 뉴질랜드 최초, 미국 1938년, 프랑스 1950년",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/최저임금",
+      "note": "최초의 최저임금 제도는 1894년 뉴질랜드 정부에 의해 시행되었고 미국이 1938년, 프랑스가 1950년, 대한민국은 1986년 12월 31일에 도입하여 시행하였다."
+     },
+     {
+      "claim": "한국은 1986년 12월 31일 법 제정, 1988년 1월 1일 시행",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/최저임금",
+      "note": "대한민국 정부는 1986년 12월 31일에 최저임금법을 제정하였고 1988년 1월 1일부터 최저임금제를 시행하였다."
+     },
+     {
+      "claim": "1988년 정부가 정한 최저임금은 실제 임금의 30%에도 못 미쳤다",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/최저임금",
+      "note": "하지만, 경제 대호황이었던 1988년 당시 정부가 정한 최저임금은 실제 노동자들의 임금의 30%에도 미치지 못했다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Minimum_wage_in_Germany"
+    ],
+    "hintNote": "The legislation ... was introduced on 1 January 2015 ... Previously, Germany had minimum wages only in specific sectors",
+    "easiestCue": "1894년 뉴질랜드에서 처음 시행",
+    "targetWhy": "나라별 도입 연도는 경제사·노동사 애호가 세부 — 1회차(임금 하한의 정의)와 다른 사실",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "연도 단서뿐이라 찍기 쉬운 쪽(1988 한국 제도)이 있을 수 있다",
+    "pairCheck": null,
+    "dbCheck": "활성 3219(복지·의료 제도 — 정의 꼴, e '최저임금위원회 심의')와 답만 같고 지식이 다름(도입 연혁)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

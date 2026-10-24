@@ -1,0 +1,443 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "world-geo/2",
+  "midKey": "world-geo",
+  "subName": "대륙·바다",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/2#g019b-H1-21",
+   "seed": {
+    "subject": "흑해",
+    "aspect": null,
+    "ref": "H1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "깊은 곳 물의 90% 넘게 산소가 없어 옛 난파선이 잘 남아 있는 바다입니다. 이 깊은 물은 100~200m 깊이의 경계층 아래에서 위쪽 물과 섞이지 않는데, 이 바다는 어디일까요?",
+    "answer": "흑해",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "고대 그리스 사람들은 이 바다를 '손님을 반기지 않는 바다'라 불렀다가, 불길하다 하여 정반대 뜻의 이름으로 바꿔 불렀습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "깊은 곳 물의 90% 넘게 산소가 없어 옛 난파선이 잘 남은 바다",
+     "difWhy": "'무산소 심층수 바다' — 대학 교양 해양학 (경계 3)",
+     "wor": 4,
+     "worWhy": "교양 — 바다의 특이 환경",
+     "acc": 4,
+     "accWhy": "세계 지리 — 고교 세계지리 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'손님을 반기지 않는 바다'라 불렀다가",
+     "difWhy": "흑해 옛 이름·무산소층 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 바다 이름 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "고대 그리스 사람들은 이 바다를 '손님을 반기지 않는 바다'라 불렀다가, 불길하다 하여 정반대 뜻의 이름으로 바꿔 불렀습니다. 깊은 곳 물의 90% 넘게 산소가 없어 옛 난파선이 잘 남아 있는 이 바다는?",
+     "beforeExplanation": "깊은 물은 100~200m 깊이의 경계층 아래에서 위쪽의 산소 많은 물과 섞이지 않습니다.",
+     "removedCue": "'손님을 반기지 않는 바다'라 불렀다가",
+     "addedCue": "100~200m 경계층",
+     "why": "널리 소개되는 옛 이름 단서를 해설로 옮기고 해양학 세부로 바꿈"
+    },
+    "generalHint": "이 바다는 북쪽으로 케르치 해협을 지나 아조프해와 이어진다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "튀르키예·우크라이나·불가리아 등에 둘러싸인 내해",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "우크라이나 전쟁 뉴스·지리 교과서로 익숙",
+     "piece": "f07",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "H1-21",
+     "key": "b169",
+     "hint": "이 바다는 북쪽으로 케르치 해협을 지나 아조프해와 이어진다.",
+     "guess": "흑해",
+     "confidence": "high",
+     "hit": true,
+     "answer": "흑해"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Black_Sea"
+    ],
+    "facts": [
+     {
+      "claim": "폰토스 악세이노스(손님을 반기지 않는 바다) → 에욱세이노스로 바꿈",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Black_Sea",
+      "note": "Póntos Áxeinos ('Inhospitable Sea') was considered an ill omen and was euphemized to its opposite, Eúxeinos Póntos ('Hospitable Sea')."
+     },
+     {
+      "claim": "깊은 곳 90% 넘게 무산소 · 난파선 보존",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Black_Sea",
+      "note": "over 90% of the deeper Black Sea volume is anoxic water … This anoxic layer is responsible for the preservation of ancient shipwrecks"
+     },
+     {
+      "claim": "경계층 100~200m",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Black_Sea",
+      "note": "the pycnocline, the boundary that isolates the deep water, at about 100–200 m."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Black_Sea"
+    ],
+    "hintNote": "To the north, the Black Sea is connected to the Sea of Azov by the Kerch Strait.",
+    "easiestCue": "깊은 곳 물의 90% 넘게 산소가 없어 옛 난파선이 잘 남아 있는",
+    "targetWhy": "무산소층 · 경계층 — 해양 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "무산소 바다로 흑해를 아는 고교 지구과학 심화 학습자가 있을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-geo/2#g019b-H1-22",
+   "seed": {
+    "subject": "태평양",
+    "aspect": null,
+    "ref": "H1-22",
+    "pairedWith": 272
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 272,
+    "question": "1992년 크로아티아의 측량 기술자 흐르보예 루카텔라가 처음 찾아낸 '포인트 니모'는 바다에서 육지와 가장 먼 지점입니다. 그 둘레에 다 쓴 인공위성과 우주선을 일부러 떨어뜨려 '우주선 무덤'이라 불리는데, 이 지점이 있는 대양은?",
+    "answer": "태평양",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1513년 이 바다를 본 발보아는 남쪽으로 가서 닿았다며 '남쪽 바다'라 불렀고, 지금 이름은 1520년 마젤란이 붙였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "'포인트 니모'는 바다에서 육지와 가장 먼 지점",
+     "difWhy": "포인트 니모 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 지리 상식",
+     "acc": 4,
+     "accWhy": "세계 지리 — 고교 세계지리 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'포인트 니모'는 바다에서 육지와 가장 먼 지점",
+     "difWhy": "포인트 니모 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 지리 상식"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "묻는 것이 대양이라 포인트 니모·우주선 무덤 어느 단서든 지점을 알면 바로 풀림 — 이를 빼면 정답을 가리킬 확인된 깊은 세부가 없고 대상이 흐려짐"
+    },
+    "generalHint": "그 지점에서 가장 가까운 땅 가운데 하나는 핏케언 제도에 딸린 듀시섬이다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "지구에서 가장 넓은 대양",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 대양",
+     "piece": "f09",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "H1-22",
+     "key": "b112",
+     "hint": "그 지점에서 가장 가까운 땅 가운데 하나는 핏케언 제도에 딸린 듀시섬이다.",
+     "guess": "포인트 니모",
+     "confidence": "high",
+     "hit": false,
+     "answer": "태평양"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Point_Nemo",
+     "https://en.wikipedia.org/wiki/Vasco_Núñez_de_Balboa"
+    ],
+    "facts": [
+     {
+      "claim": "1992년 루카텔라가 처음 찾아냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Point_Nemo",
+      "note": "Croatian survey engineer Hrvoje Lukatela first identified the point in 1992."
+     },
+     {
+      "claim": "남태평양 · 육지에서 가장 먼 지점",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Point_Nemo",
+      "note": "in the South Pacific Ocean, the place in the ocean farthest from land."
+     },
+     {
+      "claim": "우주선 무덤",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Point_Nemo",
+      "note": "The surrounding area is known as a \"spacecraft cemetery,\" where many decommissioned satellites and spacecraft have been deliberately brought down."
+     },
+     {
+      "claim": "발보아 1513 · 남쪽 바다 · 마젤란 1520 명명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Vasco_Núñez_de_Balboa",
+      "note": "the first European to discover the Pacific Ocean while crossing the Isthmus of Panama in 1513 … named the sea Mar del Sur … traveled south to reach it … in 1520, Magellan gave it the name it has today"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pole_of_inaccessibility"
+    ],
+    "hintNote": "They are Pandora Islet of the Ducie Island atoll (an island of the Pitcairn Islands) to the north; Motu Nui (adjacent to Easter Island) to the northeast",
+    "easiestCue": "'포인트 니모' 둘레가 '우주선 무덤'",
+    "targetWhy": "가장 넓은 바다·마젤란 이름(교과서)은 빼고 포인트 니모만 — 과학·지리 애호가(경계 3: 포인트 니모는 다큐로 알려짐)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "정답이 넷뿐인 대양이라 찍기 쉬움 — 찍기 확률 감안",
+    "pairCheck": "1회차 #272 는 '가장 넓은 바다 · 지구 표면 3분의 1' — 질문·해설의 넓이 사실을 쓰지 않음(힌트 없음)",
+    "dbCheck": "answercheck pair-or-different — #272(해양) 1회차, 지식 다름",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 272,
+     "question": "아시아, 아메리카, 오세아니아 대륙 등에 둘러싸여 있으며 지구 표면적의 약 3분의 1을 차지하는 세계에서 가장 넓은 바다는?",
+     "explanation": "태평양은 지구상에서 가장 넓은 대양이다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "world-geo/2#g019b-H1-23",
+   "seed": {
+    "subject": "북해",
+    "aspect": null,
+    "ref": "H1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1904년 10월 러일 전쟁에 나선 러시아 발트 함대는 이 바다에서 영국 헐의 어선들을 일본 어뢰정으로 잘못 알고 포를 쏘았습니다. 바닥에 빙하기 끝 무렵 물에 잠긴 땅 '도거랜드'가 있는 이 바다는?",
+    "answer": "북해",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "도거랜드는 1만~7천 년 전 해수면이 오르며 잠겼고, 기원전 6500년 무렵에는 영국 반도가 대륙과 떨어지게 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "바닥에 빙하기 끝 무렵 물에 잠긴 땅 '도거랜드'",
+     "difWhy": "도거뱅크 사건·도거랜드 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 바다 역사",
+     "acc": 4,
+     "accWhy": "세계 지리 — 고교 세계지리 교과"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "바닥에 빙하기 끝 무렵 물에 잠긴 땅 '도거랜드'",
+     "difWhy": "도거뱅크 사건·도거랜드 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 바다 역사"
+    },
+    "rewrite": null,
+    "generalHint": "1953년 이 바다의 폭풍 해일로 네덜란드에서만 1,836명이 숨졌다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "영국·노르웨이·덴마크·네덜란드 사이의 대서양 가장자리 바다",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "지리 교과서·북해 유전 뉴스로 익숙",
+     "piece": "f02",
+     "genPct": 60
+    },
+    "blind": {
+     "ref": "H1-23",
+     "key": "b026",
+     "hint": "1953년 이 바다의 폭풍 해일로 네덜란드에서만 1,836명이 숨졌다.",
+     "guess": "북해",
+     "confidence": "high",
+     "hit": true,
+     "answer": "북해"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dogger_Bank_incident",
+     "https://en.wikipedia.org/wiki/Doggerland"
+    ],
+    "facts": [
+     {
+      "claim": "1904년 10월 21~22일 발트 함대가 헐 어선을 일본 어뢰정으로 오인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dogger_Bank_incident",
+      "note": "the Baltic Fleet of the Imperial Russian Navy mistook civilian British fishing trawlers from Kingston upon Hull … for Japanese torpedo boats (night of 21/22 October 1904)"
+     },
+     {
+      "claim": "도거랜드는 북해 남부 아래 잠긴 땅",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Doggerland",
+      "note": "Doggerland was a large area of land in Northern Europe, now submerged beneath the southern North Sea."
+     },
+     {
+      "claim": "1만~7천 년 전 잠김 · 기원전 6500년 무렵 영국이 대륙과 분리",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Doggerland",
+      "note": "Between 10,000 and 7,000 years ago, Doggerland was inundated by rising sea levels … cutting off what was previously the British peninsula from the European mainland by around 6500 BCE."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/North_Sea_flood_of_1953"
+    ],
+    "hintNote": "Such land relies heavily on sea defences and was worst affected, recording 1,836 deaths",
+    "easiestCue": "바닥에 물에 잠긴 땅 '도거랜드'",
+    "targetWhy": "북해 유전·청어(교과서)는 빼고 도거 뱅크 사건과 도거랜드만 — 해양사·고고학 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "발트 함대가 이 바다를 지나간다는 추론이 필요하고 도거랜드는 애호가 지식",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "world-geo/2#g019b-H1-24",
+   "seed": {
+    "subject": "남극 대륙",
+    "aspect": null,
+    "ref": "H1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1979년 11월 뉴질랜드 항공의 관광 비행기가 이 대륙의 한 화산에 부딪혀 257명이 모두 숨졌습니다. 1911년 지질학자 그리피스 테일러가 찾아낸, 핏빛 물이 흘러나오는 폭포가 있는 이 대륙은?",
+    "answer": "남극 대륙",
+    "acceptedAnswers": [
+     "남극"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '남극', '남극 대륙'에서 넘어옴",
+    "explanation": "관광기가 부딪힌 화산은 로스섬의 에러버스산이고, '피의 폭포'의 붉은 빛깔은 처음엔 조류 때문이라 여겼지만 뒤에 산화철 때문으로 밝혀졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "핏빛 물이 흘러나오는 폭포가 있는 이 대륙",
+     "difWhy": "'피의 폭포' — 자연 다큐 관심층",
+     "wor": 3,
+     "worWhy": "대륙 관련 사고·자연 이야깃거리",
+     "acc": 4,
+     "accWhy": "세계 지리 — 고교 세계지리 교과"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "로스섬의 에러버스산",
+     "difWhy": "에러버스·피의 폭포 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대륙 일화"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1979년 11월 뉴질랜드 항공의 관광 비행기가 이 대륙 로스섬의 에러버스산에 부딪혀 257명이 모두 숨졌습니다. 1911년 지질학자 그리피스 테일러가 핏빛 물이 흘러나오는 '피의 폭포'를 찾아낸 이 대륙은?",
+     "beforeExplanation": "피의 폭포의 붉은 빛깔은 처음엔 조류 때문이라 여겼지만, 뒤에 산화철 때문으로 밝혀졌습니다.",
+     "removedCue": "로스섬의 에러버스산(관심층)",
+     "addedCue": "없음(화산 이름과 '피의 폭포' 이름을 해설로 내림)",
+     "why": "지명을 주면 바로 풀려 사건·발견 내력만 남김"
+    },
+    "generalHint": "이 대륙에서 가장 높은 산은 엘즈워스산맥의 빈슨 매시프(4,892m)다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "지구 맨 남쪽의 얼음으로 덮인 대륙",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 대륙",
+     "piece": "f05",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "H1-24",
+     "key": "b248",
+     "hint": "이 대륙에서 가장 높은 산은 엘즈워스산맥의 빈슨 매시프(4,892m)다.",
+     "guess": "남극 대륙",
+     "confidence": "high",
+     "hit": true,
+     "answer": "남극 대륙"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Air_New_Zealand_Flight_901",
+     "https://en.wikipedia.org/wiki/Blood_Falls"
+    ],
+    "facts": [
+     {
+      "claim": "1979년 11월 28일 에어 뉴질랜드 901편 · 로스섬 에러버스산 · 257명 전원 사망",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Air_New_Zealand_Flight_901",
+      "note": "28 November 1979 … a sightseeing trip over Antarctica, hit Mount Erebus on Ross Island … All 257 people aboard were killed."
+     },
+     {
+      "claim": "1911년 그리피스 테일러가 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blood_Falls",
+      "note": "The reddish deposit was found in 1911 by geologist Thomas Griffith Taylor"
+     },
+     {
+      "claim": "붉은 빛은 처음 조류 · 뒤에 산화철",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Blood_Falls",
+      "note": "Early Antarctic explorers credited the red hue to algae, but later it was proven to be due to iron oxides."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Antarctica"
+    ],
+    "hintNote": "Vinson Massif, in the Ellsworth Mountains, is the highest peak in Antarctica at 4,892 m (16,050 ft).",
+    "easiestCue": "1979년 뉴질랜드 항공 관광 비행기가 화산에 부딪혀 257명 사망",
+    "targetWhy": "에어 뉴질랜드 901편 사고·피의 폭포 발견자는 지리·항공사 애호가 세부",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "대륙이 일곱뿐이라 찍기 쉬움 · '1911년'이 남극 탐험 시대를 떠올리게 할 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (남극 · 남극 대륙)",
+    "warn": [
+     "정답조각 대륙",
+     "단정어 모두",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,230 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "transport/2",
+  "midKey": "transport",
+  "subName": "자동차 브랜드·역사",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "transport/2#g019b-C2-01",
+   "seed": {
+    "subject": "캐딜락",
+    "aspect": null,
+    "ref": "C2-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'헨리 포드 컴퍼니'의 남은 자산으로 이 회사가 세워졌습니다. 투자자 둘은 기술자 헨리 릴런드의 설득으로 그의 단기통 엔진을 얹어 차를 계속 만들기로 했지요. 1908년 영국에서 부품을 서로 바꿔 끼워도 차가 잘 달린다는 것을 보여 듀어 트로피를 받은 이 회사는 어디일까요?",
+    "answer": "캐딜락",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "회사 이름은 1701년 디트로이트를 세운 프랑스 탐험가 앙투안 드 라 모트 카디야크에게서 따왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "'헨리 포드 컴퍼니'의 남은 자산으로 이 회사가 세워졌습니다",
+     "difWhy": "캐딜락 창립 — 자동차 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 브랜드 내력",
+     "acc": 4,
+     "accWhy": "자동차·교통 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "'헨리 포드 컴퍼니'의 남은 자산으로 이 회사가 세워졌습니다",
+     "difWhy": "캐딜락 창립 — 자동차 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 브랜드 내력"
+    },
+    "rewrite": null,
+    "generalHint": "헨리 릴런드는 뒤에 또 다른 고급차 상표 링컨도 세웠다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "미국 GM 산하의 고급 승용차 상표",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "고급차 대명사로 익숙",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "C2-01",
+     "key": "b089",
+     "hint": "헨리 릴런드는 뒤에 또 다른 고급차 상표 링컨도 세웠다.",
+     "guess": "캐딜락",
+     "confidence": "high",
+     "hit": true,
+     "answer": "캐딜락"
+    },
+    "hobby": "자동차",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cadillac"
+    ],
+    "facts": [
+     {
+      "claim": "헨리 포드 컴퍼니의 남은 것으로 세워짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cadillac",
+      "note": "Cadillac was formed from the remnants of the Henry Ford Company."
+     },
+     {
+      "claim": "릴런드가 두 사람을 설득해 자기 단기통 엔진으로 차를 계속 만들게 함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cadillac",
+      "note": "Instead, Leland persuaded the pair to continue manufacturing automobiles using Leland's proven single-cylinder engine."
+     },
+     {
+      "claim": "1908년 부품 호환성 시험으로 듀어 트로피",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cadillac",
+      "note": "Cadillac had the first U.S. car to win the Royal Automobile Club of the United Kingdom's Dewar Trophy by successfully demonstrating the interchangeability of its component parts during a reliability test in 1908"
+     },
+     {
+      "claim": "이름은 1701년 디트로이트를 세운 탐험가에게서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cadillac",
+      "note": "It was named after French explorer Antoine Laumet de La Mothe, sieur de Cadillac, who had founded Detroit in 1701."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Henry_M._Leland"
+    ],
+    "hintNote": "He founded the two premier American luxury automotive marques, Cadillac and Lincoln.",
+    "easiestCue": "헨리 포드 컴퍼니의 남은 자산으로 세워진 회사",
+    "targetWhy": "포드 회사의 잔해에서 나왔다는 사실·듀어 트로피는 자동차 애호가 수준 — 대표 모델·로고 단서 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 상표의 창업 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "transport/2#g019b-C2-02",
+   "seed": {
+    "subject": "기아",
+    "aspect": null,
+    "ref": "C2-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1944년 서울 영등포에서 '경성정공'이라는 이름으로 문을 연 이 회사는 1957년부터 혼다의 면허를 받아 작은 오토바이를 만들었고, 1962년에는 마쓰다의 면허로 화물차를 만들었습니다. 이 한국 자동차 회사는 어디일까요?",
+    "answer": "기아",
+    "acceptedAnswers": [
+     "기아자동차"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "기아자동차 — 2021년까지 쓰인 옛 회사 이름(ko.wikipedia '기아 (기업)' 문서)으로 일상에서 흔히 부름",
+    "explanation": "1998년 현대자동차가 이 회사 지분 51%를 사들이면서 현대자동차그룹이 생겨났습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1944년 영등포 '경성정공'으로 문을 연 회사",
+     "difWhy": "경성정공·혼다 면허 — 자동차 애호가",
+     "wor": 3,
+     "worWhy": "국내 자동차 회사 뿌리 이야깃거리",
+     "acc": 4,
+     "accWhy": "자동차·교통 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "국산 자전거 '삼천리호'를 만들었고",
+     "difWhy": "경성정공·삼천리호 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 기업 내력"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1944년 서울 영등포에서 '경성정공'이라는 이름으로 문을 연 이 회사는 국산 자전거 '삼천리호'를 만들었고, 1957년부터는 혼다의 면허를 받아 작은 오토바이도 만들었습니다. 이 한국 자동차 회사는 어디일까요?",
+     "beforeExplanation": null,
+     "removedCue": "국산 자전거 '삼천리호'를 만들었다",
+     "addedCue": "1962년 마쓰다 면허 화물차",
+     "why": "널리 알려진 삼천리호 일화를 빼고 면허 생산 세부로 바꿈"
+    },
+    "generalHint": "1974년 10월 마쓰다 패밀리아를 바탕으로 한 승용차 '브리사'를 내놓았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "현대차그룹에 속한 한국 자동차 제조사",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 자동차 회사·야구단",
+     "piece": "f03",
+     "genPct": 97
+    },
+    "blind": {
+     "ref": "C2-02",
+     "key": "b200",
+     "hint": "1974년 10월 마쓰다 패밀리아를 바탕으로 한 승용차 '브리사'를 내놓았다.",
+     "guess": "기아",
+     "confidence": "high",
+     "hit": true,
+     "answer": "기아"
+    },
+    "hobby": "자동차",
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/기아_(기업)",
+     "https://en.wikipedia.org/wiki/Kia"
+    ],
+    "facts": [
+     {
+      "claim": "1944년 영등포에 경성정공 설립",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기아_(기업)",
+      "note": "김철호는 영등포에 경성정공이라는 이름의 회사를 설립하였으며, 1952년에 기아산업으로 이름을 바꾸고 국내 최초의 자전거인 3000리호를 생산하였다. (정보란 창립 1944년 12월 21일)"
+     },
+     {
+      "claim": "1957년부터 혼다 면허 소형 오토바이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kia",
+      "note": "built Honda-licensed small motorcycles (starting in 1957) · Kia was founded in May 1944 as Kyungsung Precision Industry · South Korea's first domestic bicycle, the Samchuly, in 1951"
+     },
+     {
+      "claim": "1998년 현대자동차가 51% 인수",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kia",
+      "note": "Hyundai Motor Company acquired 51% in the company in that year [1998]"
+     },
+     {
+      "claim": "1962년 마쓰다 면허 화물차",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kia",
+      "note": "The company later built Honda-licensed small motorcycles (starting in 1957), as well as Mazda-licensed trucks (1962)."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mazda_Familia"
+    ],
+    "hintNote": "Production commenced in 1973 in the form of the Brisa B-1000 pickup; the passenger model (originally as the \"Brisa S-1000\") was added in October 1974.",
+    "easiestCue": "'경성정공'이라는 이름으로 문을 연",
+    "targetWhy": "전신 이름 · 혼다·마쓰다 면허 생산 — 자동차 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 회사의 뜻밖의 출발",
+    "pairCheck": null,
+    "dbCheck": "answercheck new · 창업 연도는 ko 1944 · en 1944 일치, 자전거 연도는 문서마다 달라(1951/1952) 질문에 넣지 않음",
+    "warn": []
+   }
+  }
+ ]
+}

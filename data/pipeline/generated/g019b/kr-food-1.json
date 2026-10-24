@@ -1,0 +1,613 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "kr-food/1",
+  "midKey": "kr-food",
+  "subName": "밥·국·찌개",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/1#g019b-K2-14",
+   "seed": {
+    "subject": "콩국수",
+    "aspect": null,
+    "ref": "K2-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "17세기 후반 조리서 『요록』에 '태면'이라는 이름으로 나오는 음식입니다. 1975년 7월 한 식생활 연구회의 전시회에서는 샌드위치·감자스프와 함께 영양 대용식으로 소개되었는데, 이 음식은 무엇일까요?",
+    "answer": "콩국수",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "믹서기가 나오기 전에는 맷돌에 콩을 가는 수고가 커서, 1970년대 가정에 퍼진 믹서기도 이 음식이 퍼지는 데 한몫했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "『요록』에 '태면'이라는 이름으로 나오는 음식",
+     "difWhy": "'태면(太=콩)' 옛 조리서 이름 — 음식사 애호가",
+     "wor": 3,
+     "worWhy": "여름 음식 옛 이름 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1970년대 가정에 퍼진 믹서기도 유행에 한몫했다는 이 음식",
+     "difWhy": "콩 가는 믹서기 음식 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 역사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "17세기 후반 조리서 『요록』에 '태면'이라는 이름으로 나오는 음식입니다. 1975년 한 연구회 전시회에서는 샌드위치·감자스프와 함께 영양 대용식으로 소개되었고, 1970년대 가정에 퍼진 믹서기도 유행에 한몫했다는 이 음식은 무엇일까요?",
+     "beforeExplanation": "수필가 조풍연이 1987년 『경향신문』에 쓴 글을 보면, 지금의 이름은 그 무렵 만들어진 것임을 알 수 있다고 합니다.",
+     "removedCue": "1970년대 가정에 퍼진 믹서기도 유행에 한몫(관심층 — 콩 가는 음식)",
+     "addedCue": "없음(쉬운 단서를 해설로 내림 — 요록의 '태면'·1975년 전시회가 남음)",
+     "why": "믹서기 단서는 콩을 가는 음식임을 알려 줘 해설로 내림"
+    },
+    "generalHint": "광주·전남 지방에서는 소금 대신 설탕을 뿌려 먹기도 한다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "콩을 갈아 만든 차가운 국물에 국수를 만 여름 음식",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 음식",
+     "piece": "f05",
+     "genPct": 99
+    },
+    "blind": {
+     "ref": "K2-14",
+     "key": "b008",
+     "hint": "광주·전남 지방에서는 소금 대신 설탕을 뿌려 먹기도 한다.",
+     "guess": "콩국수",
+     "confidence": "high",
+     "hit": true,
+     "answer": "콩국수"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/콩국수"
+    ],
+    "facts": [
+     {
+      "claim": "1680년경(17세기 후반) 조리서 『요록』에 태면이라는 이름으로 등장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/콩국수",
+      "note": "1680년경 조리서인 《요록》을 통해 태면이라는 이름으로 문헌에 등장하며 … 17세기 이전부터 먹어온 음식이라 추정된다."
+     },
+     {
+      "claim": "1975년 7월 한국식생활개선연구회 전시회에서 샌드위치·감자스프 등과 함께 영양 대용식으로 소개",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/콩국수",
+      "note": "1975년 7월 한국식생활개선연구회가 국립공보관에서 주최한 전시회에서는 콩국수는 샌드위치, 감자스프, 고구마를 넣은 도넛과 함께 영양 대용식으로 소개된 것은 이러한 배경에서 기인한다."
+     },
+     {
+      "claim": "1970년대 믹서기 등장이 확산에 영향",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/콩국수",
+      "note": "믹서가 나오기 전에는 맷돌에 콩을 갈아 국물을 준비하는 수고가 컸으므로, 1970년대 한국 가전시장에 등장한 믹서기도 콩국수의 확산에 영향을 줬다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/콩국수"
+    ],
+    "hintNote": "고소한 맛을 살리기 위해 일반적으로 소금이나 설탕(광주·전남 지방)을 뿌려 먹는다.",
+    "easiestCue": "『요록』에 '태면'으로 나옴",
+    "targetWhy": "옛 이름과 1975년 대용식 전시는 음식사 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 음식의 몰랐던 유행 배경",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안에 없음(활성 혼분식 장려 운동 문항과 정답 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/1#g019b-K2-15",
+   "seed": {
+    "subject": "연포탕",
+    "aspect": null,
+    "ref": "K2-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1681년 한 어사의 비리를 고발하며, 그가 찰방·귀양 온 사람과 어울려 이 국을 먹고 노는 모임을 연 일이 거론되었습니다. 『동국세시기』는 두부를 지지다 닭고기를 섞어 끓인 국으로 설명했지만, 지금은 다른 재료의 맑은 탕으로 더 알려진 이 국은?",
+    "answer": "연포탕",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "표준국어대사전은 이 국을 쇠고기·무·두부·다시마 따위를 맑은장국에 넣어 끓인 국으로, 초상집에서 발인하는 날 흔히 끓인다고 풀이합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "『동국세시기』는 두부를 지지다 닭고기를 섞어 끓인 국",
+     "difWhy": "연포탕 옛 뜻 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 옛 이름",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "『동국세시기』는 두부를 지지다 닭고기를 섞어 끓인 국",
+     "difWhy": "연포탕 옛 뜻 — 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 옛 이름"
+    },
+    "rewrite": null,
+    "generalHint": "이 이름이 지금 뜻으로 쓰인 예는 늦어도 1990년대 중반 신문에 보이며, 주로 전라남도 해안의 향토 음식으로 소개된다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "지금은 낙지를 넣어 맑게 끓이는 탕으로 알려진 음식",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "낙지 연포탕으로 들어 봤을 법함",
+     "piece": "f07",
+     "genPct": 60
+    },
+    "blind": {
+     "ref": "K2-15",
+     "key": "b158",
+     "hint": "이 이름이 지금 뜻으로 쓰인 예는 늦어도 1990년대 중반 신문에 보이며, 주로 전라남도 해안의 향토 음식으로 소개된다.",
+     "guess": "홍어삼합",
+     "confidence": "mid",
+     "hit": false,
+     "answer": "연포탕"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/연포탕"
+    ],
+    "facts": [
+     {
+      "claim": "숙종 7년(1681년) 어사 목임일의 비리 고발에서 찰방·적객과 어울려 연포회를 연 것이 거론됨",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/연포탕",
+      "note": "숙종 7년(1681년)에는 어사 목임일의 비리를 고발하면서 그 중 찰방, 적객과 어울려서 '연포회'(軟泡會)를 연 것을 거론했는데, 이 연포회는 연포탕을 먹으면서 노는 모임을 가리키며"
+     },
+     {
+      "claim": "『동국세시기』는 두부를 지지다 닭고기를 섞어 끓인 음식으로 설명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/연포탕",
+      "note": "19세기 중반에 출판된 《동국세시기》에서는 연포탕을 두부를 지지다가 닭고기를 섞어서 함께 끓인 음식이라고 설명한다."
+     },
+     {
+      "claim": "지금은 낙지로 만든 맑은 국물 요리를 가리킴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/연포탕",
+      "note": "연포탕(軟泡湯)은 낙지로 만든 국물 요리로, 맑은 국물의 맛을 내기 위해 무, 배추, 미나리 등의 채소와 함께 끓인다. … 원래 두부요리였던 연포탕이 낙지요리가 된 이유는 불명확하며"
+     },
+     {
+      "claim": "표준국어대사전 풀이 — 초상집 발인날 흔히 끓임",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/연포탕",
+      "note": "표준국어대사전에서는 “쇠고기, 무, 두부, 다시마 따위를 맑은장국에 넣어 끓인 국. 초상집에서 발인하는 날 흔히 끓인다.”라고 설명하며"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/연포탕"
+    ],
+    "hintNote": "연포탕이 현재의 낙지 요리를 가리키는 것으로 쓰이는 용례는 신문기사를 통해 이미 늦어도 1990년대 중반에서 확인되며, 주로 전라남도 해안 지역의 향토음식으로 소개된다.",
+    "easiestCue": "지금은 다른 재료의 맑은 탕으로 더 알려진 이 국",
+    "targetWhy": "'원래 두부탕이었다'는 사실은 음식사 애호가 영역 — 지금의 낙지 연포탕만 아는 사람은 '두부+옛 이름이 그대로인 맑은 탕'을 엮어야 함",
+    "selfJudge": "나쁜 어려움 의심",
+    "selfJudgeWhy": "두부·닭 단서가 지금 이미지와 달라 4를 넘어 5로 읽힐 수 있음 — '맑은 탕' 한정으로 길을 열어 둠",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/1#g019b-K2-16",
+   "seed": {
+    "subject": "비빔밥",
+    "aspect": null,
+    "ref": "K2-16",
+    "pairedWith": 162
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 162,
+    "question": "조선 중기 박지혜의 『기재잡기』에는 '혼돈반(混沌飯)'이라는 이름으로 나옵니다. 19세기 이규경은 평양의 이름난 음식으로 감홍로·냉면과 함께 이것을 꼽았는데, 이 음식을 오늘날 무엇이라 부를까요?",
+    "answer": "비빔밥",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1810년 장혼이 지은 학습용 백과서 『몽유편』에는 '브뷔음'이라는 한글 표기가 나옵니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "19세기 이규경은 평양의 이름난 음식으로 감홍로·냉면과 함께",
+     "difWhy": "혼돈반·평양 음식 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 옛 이름",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "19세기 이규경은 평양의 이름난 음식으로 감홍로·냉면과 함께",
+     "difWhy": "혼돈반·평양 음식 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 옛 이름"
+    },
+    "rewrite": null,
+    "generalHint": "섣달 그믐날에는 그해 반찬이 해를 넘기지 않도록 남은 밥에 남은 반찬을 모두 넣어 밤참으로 먹었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "밥에 나물과 고명을 얹어 고추장 등과 섞어 먹는 음식",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 음식",
+     "piece": "f05",
+     "genPct": 100
+    },
+    "blind": {
+     "ref": "K2-16",
+     "key": "b154",
+     "hint": "섣달 그믐날에는 그해 반찬이 해를 넘기지 않도록 남은 밥에 남은 반찬을 모두 넣어 밤참으로 먹었다.",
+     "guess": "비빔밥",
+     "confidence": "high",
+     "hit": true,
+     "answer": "비빔밥"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/비빔밥"
+    ],
+    "facts": [
+     {
+      "claim": "박지혜의 『기재잡기』에 혼돈반으로 언급",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/비빔밥",
+      "note": "비빔밥은 조선 중기의 문신 박지혜(1569~1635)가 지은 역사서 《기재잡기》에 \"혼돈반(混沌飯)\"으로 … 언급된다."
+     },
+     {
+      "claim": "19세기 이규경(1788~1856) 『오주연문장전산고』가 평양 특산으로 감홍로·냉면·비빔밥을 듦",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/비빔밥",
+      "note": "이규경(1788~1856)이 지은 《오주연문장전산고》에는 … 지역의 특산물을 소개하며 \"평양의 감홍로, 냉면, 비빔밥(平壤之紺紅露冷麪骨蕫飯)\"을 들기도 하였다."
+     },
+     {
+      "claim": "1810년 장혼 『몽유편』에 '브뷔음' 한글 표기",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/비빔밥",
+      "note": "1810년 장혼이 지은 학습용 백과서 《몽유편》에는 \"브뷔음\"이라는 한글 표기가 등장하며"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/%EB%B9%84%EB%B9%94%EB%B0%A5"
+    ],
+    "hintNote": "섣달 그믐날에는 그 해에 먹던 반찬이 해를 넘기는 것을 꺼려하여서, 남은 밥에 먹다 남은 반찬을 모두 넣고 비벼서 밤참으로 나누어 먹기도 하였다.",
+    "easiestCue": "19세기 이규경은 평양의 이름난 음식으로 감홍로·냉면과 함께 이것을 꼽았는데",
+    "targetWhy": "정의(밥에 나물을 비빔)·전주를 빼고 옛 한자 이름 혼돈반·19세기 평양 명물 기록만 — 음식사 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "국민 음식이 19세기엔 평양 명물로 꼽혔다는 뜻밖의 사실",
+    "pairCheck": "1회차 #162(정의 — 멥쌀밥에 나물·고기·고추장을 비빔 · 해설도 같은 정의 · 힌트 없음)와 겹치지 않음 — 2회차는 혼돈반이라는 옛 이름과 평양 명물 기록만 쓰고 '섞다/비비다' 같은 정의 문장을 넣지 않았다. 활성 골동반(#4430 — 청대일기·골동 이름)과도 다른 문헌",
+    "dbCheck": "answercheck pair-or-different — 활성 #162(d1 정의 문항) 1건, (가) 2회차로 다른 사실",
+    "warn": [],
+    "first": {
+     "id": 162,
+     "question": "멥쌀밥에 여러 가지 나물, 고기, 고추장, 참기름 등을 넣고 비벼 먹는 한국의 대표 음식은?",
+     "explanation": "밥에 각종 나물과 양념을 비벼 먹는 한국의 전통 음식은 비빔밥이다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "kr-food/1#g019b-K2-17",
+   "seed": {
+    "subject": "짬뽕",
+    "aspect": null,
+    "ref": "K2-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "초창기 국물은 맵지 않은 뿌연 회색빛이었습니다. 1960년대부터 매운맛이 더해져 한동안 중국집 메뉴에 원래의 것과 매운 것이 함께 있다가, 1980년대에는 매운 것만 남았다는 이 음식은 무엇일까요?",
+    "answer": "짬뽕",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "중국 산둥식 국수 '초마면'에서 비롯되었고, 이름은 일본어 '잔폰'에서 왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "중국집 메뉴에 원래의 것과 매운 것이 함께 있다가 매운 것만 남은 음식",
+     "difWhy": "중국집 매운 국물 — 일상에서",
+     "wor": 3,
+     "worWhy": "친숙한 음식 변천 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "중국 산둥식 국수 '초마면'에서 비롯된 음식",
+     "difWhy": "초마면→짬뽕 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 유래"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "중국 산둥식 국수 '초마면'에서 비롯된 음식입니다. 초창기 국물은 맵지 않은 뿌연 회색빛이었지만 1960년대부터 매운맛이 더해졌고, 1980년대에는 원래의 맵지 않은 것이 자취를 감추었다는 이 음식은 무엇일까요?",
+     "beforeExplanation": "이름은 일본어 '잔폰'에서 왔고, 서로 다른 것이 뒤섞인 것을 가리키는 말로 쓰는 표현도 일본어에서 비롯되었습니다.",
+     "removedCue": "중국 산둥식 국수 '초마면'에서 비롯된 음식(관심층 — 유래 상식)",
+     "addedCue": "없음(쉬운 단서를 해설로 내림 — 맵지 않던 시절과 바뀐 내력이 남음)",
+     "why": "초마면 유래는 음식 방송 단골이라 해설로 내림(해설의 '짬뽕하다' 문장도 쉬운 상식이라 바꿈)"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "중국 음식점에서 파는 얼큰한 해물 국물 국수",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 음식",
+     "piece": "f06",
+     "genPct": 100
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/짬뽕"
+    ],
+    "facts": [
+     {
+      "claim": "초창기 국물은 멀겋고 뿌연 회색빛, 1960년대부터 매운맛, 1980년대 원래 짬뽕 자취 감춤",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/짬뽕",
+      "note": "요즘의 한국식 짬뽕은 붉은 색을 띄고 맵지만 초장기의 짬뽕 국물은 멀겋고 뿌연 회색 빛이었다. 한국인 입맛에 맞춰 여러 해산물을 넣다가 1960년대부터는 매운맛을 가미하게 되었고, 한동안 중국집 메뉴에 짬뽕과 매운 짬뽕이 공존하다가 1980년대에는 원래의 짬뽕은 자취를 감추고 매운 짬뽕만을 짬뽕으로 부르게 되었다."
+     },
+     {
+      "claim": "중국 산둥식 차오마몐(초마면)에서 유래",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/짬뽕",
+      "note": "이 음식은 중국 산둥식 \"차오마몐(… 한자음: 초마면)\"에서 유래되었으며, 음식 이름은 일본어인 \"잔폰(일본어: ちゃんぽん)\"에서 유래하였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "초창기 국물은 맵지 않은 뿌연 회색빛",
+    "targetWhy": "맵지 않던 시절과 1980년대에 매운 것만 남은 내력은 음식사 애호가 세부라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'원래 맵지 않았던 국수'로 짬뽕을 고르는 사람이 많을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안에 없음(초안 g019a 짜장면과 정답 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/1#g019b-K2-18",
+   "seed": {
+    "subject": "냉면",
+    "aspect": null,
+    "ref": "K2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1643년 간행된 장유의 『계곡집』에 이름이 나오는 국수 요리입니다. 1849년 『동국세시기』는 이 음식을 음력 11월 동짓달의 시식으로 소개하는데, 이 음식은 무엇일까요?",
+    "answer": "냉면",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "대한제국 고종은 덕수궁 대한문 밖 국숫집에서 이 음식을 배달시켜 편육과 배, 잣을 얹어 먹었다고 전합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "『동국세시기』 동짓달 시식 국수",
+     "difWhy": "겨울 국수 — 음식 관심층",
+     "wor": 3,
+     "worWhy": "친숙한 음식 유래",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "덕수궁 대한문 밖 국숫집에서 배달시켜",
+     "difWhy": "고종 냉면 일화 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 역사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1643년 간행된 장유의 『계곡집』에 이 음식의 이름이 나오고, 1849년 『동국세시기』는 음력 11월 동짓달의 시식으로 소개합니다. 대한제국 고종은 덕수궁 대한문 밖 국숫집에서 배달시켜 편육과 배, 잣을 얹어 먹었다고 전하는 이 음식은?",
+     "beforeExplanation": "1896년 『규곤요람』은 싱거운 무김치국에 국수를 말고 삶은 돼지고기와 얇게 저민 배·밤·복숭아를 넣은 뒤 잣을 띄운다고 적었습니다.",
+     "removedCue": "고종이 대한문 밖 국숫집에서 배달시켜 먹음(관심층 일화)",
+     "addedCue": "없음(쉬운 단서를 해설로 내림 — 계곡집·동국세시기 기록이 남음)",
+     "why": "고종 배달 일화는 음식 방송 단골이라 해설로 내림"
+    },
+    "generalHint": "고려 때 평양 찬샘골 주막의 사위 달세가 메밀 반죽을 눌러 뺀 '곡수'에서 비롯했다는 이야기가 전한다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "메밀 등의 국수를 찬 육수에 말아 먹는 한국 국수 요리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 음식",
+     "piece": "f05",
+     "genPct": 100
+    },
+    "blind": {
+     "ref": "K2-18",
+     "key": "b322",
+     "hint": "고려 때 평양 찬샘골 주막의 사위 달세가 메밀 반죽을 눌러 뺀 '곡수'에서 비롯했다는 이야기가 전한다.",
+     "guess": "냉면",
+     "confidence": "high",
+     "hit": true,
+     "answer": "냉면"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/냉면"
+    ],
+    "facts": [
+     {
+      "claim": "1643년 장유의 『계곡집』에 냉면이라는 단어 등장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/냉면",
+      "note": "조선 시대 문헌 가운데는 1643년에 장선징이 장유의 시와 산문을 엮어 간행한 『계곡집』에 냉면(冷麵)이라는 단어가 등장한다."
+     },
+     {
+      "claim": "1849년 『동국세시기』가 동짓달(음력 11월) 시식으로 소개",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/냉면",
+      "note": "1849년에 쓰인 『동국세시기』에서는 냉면을 동짓달(음력 11월)의 시식으로 소개한다."
+     },
+     {
+      "claim": "고종은 덕수궁 대한문 밖 국숫집에서 배달해 편육·배·잣을 얹어 먹었다고 전함",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/냉면",
+      "note": "대한제국 시기 고종 황제는 냉면을 좋아한 것으로 전해지는데, 덕수궁 대한문 밖의 국숫집에서 배달해 편육과 배, 잣을 얹어 먹었다고 한다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/냉면"
+    ],
+    "hintNote": "고려 시대 평양의 찬샘골 … 주막집에 얹혀 살던 달세라는 사위가 메밀 반죽을 국수틀에 눌러 뺀 것을 … 동치미 국물에 말아 먹은 음식이 그 시작이며, 이것이 곡수(穀水)라 불렸다고 전해진다.",
+    "easiestCue": "『동국세시기』가 동짓달 시식으로 소개한 국수 요리",
+    "targetWhy": "겨울 시식이라는 옛 기록과 계곡집 첫 이름은 음식사 애호가 세부라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "고종 냉면 일화가 관심층 대표 일화일 수 있음 — '겨울 음식'이라는 뜻밖의 사실이 중심",
+    "pairCheck": null,
+    "dbCheck": "answercheck pair-or-different — 활성 #4195(무한도전 가요제 곡 '냉면' — 예능)와 정답만 같고 지식이 전혀 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/1#g019b-K2-19",
+   "seed": {
+    "subject": "누룽지",
+    "aspect": null,
+    "ref": "K2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "『동의보감』에는 '취건반(炊乾飯)'이라는 이름으로 나옵니다. 중국의 '구오바', 일본의 '오코게'가 비슷한 음식으로 꼽히는 이것은 무엇일까요?",
+    "answer": "누룽지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "옛 서당 학동들은 천자문을 외다가 '하늘 천 따 지 가마솥에 누룽지'라고 장난스레 읊었다고 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "중국의 '구오바', 일본의 '오코게'가 비슷한 음식",
+     "difWhy": "누룽지탕 구오바 — 음식 관심층",
+     "wor": 3,
+     "worWhy": "친숙한 음식의 옛 이름",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "북한 문화어로는 '가마치'라고 부르는 음식",
+     "difWhy": "누룽지 북한말 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 음식 다른 이름"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "『동의보감』에는 '취건반(炊乾飯)'이라는 이름으로 나오고, 북한 문화어로는 '가마치'라고 부르는 음식은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "북한 문화어로는 '가마치'",
+     "addedCue": "중국 구오바 · 일본 오코게",
+     "why": "북한말 대응을 빼고 이웃 나라의 비슷한 음식으로 바꿈"
+    },
+    "generalHint": "이란의 '타디그'도 이것과 비슷한 음식으로 꼽힌다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "솥 바닥에 눌어붙어 마른 밥",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 음식",
+     "piece": "f08",
+     "genPct": 100
+    },
+    "blind": {
+     "ref": "K2-19",
+     "key": "b091",
+     "hint": "이란의 '타디그'도 이것과 비슷한 음식으로 꼽힌다.",
+     "guess": "누룽지",
+     "confidence": "high",
+     "hit": true,
+     "answer": "누룽지"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/누룽지"
+    ],
+    "facts": [
+     {
+      "claim": "동의보감에는 취건반",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/누룽지",
+      "note": "《동의보감》에는 누룽지를 취건반(炊乾飯)이라고 불렀다."
+     },
+     {
+      "claim": "서당 학동들의 천자문 장난",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/누룽지",
+      "note": "옛날 서당에서 천자문을 외던 학동들은 장난으로 '하늘 천 따 지 깜 밥 눌은 밥' 또는 '하늘 천 따지 가마솥에 누룽지'라고 하였다."
+     },
+     {
+      "claim": "비슷한 음식 — 중국 구오바 · 일본 오코게",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/누룽지",
+      "note": "비슷한 음식: 중국의 구오바, 베트남의 꼼 짜이, 일본의 오코게, 인도네시아의 렌기낭(문서 요지)."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Scorched_rice"
+    ],
+    "hintNote": "In Iran, Tahdig … is a specialty of Iranian cuisine consisting of crisp, caramelized rice taken from the bottom of the pot",
+    "easiestCue": "중국의 '구오바', 일본의 '오코게'가 비슷한 음식",
+    "targetWhy": "옛 이름 · 이웃 나라 대응 음식 — 음식 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "다른 이름만 주는 꼴이라 낱말 뜻 꼴에 가깝게 읽힐 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 숭늉(#떡·한과·전통 음료)과 정답이 다름",
+    "warn": []
+   }
+  }
+ ]
+}

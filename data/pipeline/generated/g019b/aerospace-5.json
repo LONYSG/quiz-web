@@ -1,0 +1,235 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "aerospace/5",
+  "midKey": "aerospace",
+  "subName": "인공위성·탐사선",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/5#g019b-C2-08",
+   "seed": {
+    "subject": "허블 우주 망원경",
+    "aspect": null,
+    "ref": "C2-08",
+    "pairedWith": 1451
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 1451,
+    "question": "실제로 우주에 오른 이 망원경의 주거울은 퍼킨엘머가 만들었습니다. 미 항공우주국의 요구로 코닥이 따로 만든 예비 거울은 끝내 우주에 오르지 못하고 국립 항공우주 박물관에 늘 전시되어 있는데, 이 망원경은?",
+    "answer": "허블 우주 망원경",
+    "acceptedAnswers": [
+     "허블",
+     "허블 망원경"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "허블 · 허블 망원경 — ko.wikipedia '허블 우주 망원경' 문서와 언론이 흔히 줄여 부르는 꼴",
+    "explanation": "1990년 4월 24일 우주왕복선 디스커버리호가 STS-31 임무로 궤도에 올렸습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 실제로 우주에 오른 망원경 + 주거울 제작사",
+     "difWhy": "우주 망원경 주거울 일화 — 과학 관심층 (경계 2)",
+     "wor": 4,
+     "worWhy": "교양 — 대표 우주 망원경",
+     "acc": 3,
+     "accWhy": "항공·우주 기술 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "우주왕복선 디스커버리호가 STS-31 임무로 궤도에 올린",
+     "difWhy": "허블 발사 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 대표 우주 망원경"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "이 우주 망원경을 위해 코닥이 만든 주거울은 끝내 우주에 오르지 못하고, 지금 미국 국립 항공우주 박물관에 늘 전시되어 있습니다. 우주왕복선 디스커버리호가 STS-31 임무로 궤도에 올린 이 망원경은 무엇일까요?",
+     "beforeExplanation": "실제로 오른 거울의 흠은, 시험 장비의 렌즈 하나가 1.3mm 어긋나게 조립된 탓으로 밝혀졌습니다.",
+     "removedCue": "디스커버리호 STS-31 임무로 궤도에 오름(관심층 — 발사)",
+     "addedCue": "주거울 제작사 퍼킨엘머 · 예비 거울은 코닥",
+     "why": "발사 왕복선·임무명은 관심층 단서라 해설로 내리고, 거울 제작 뒷이야기로 바꿈"
+    },
+    "generalHint": "1983년 이 망원경에는 우주가 팽창한다는 사실을 확인한 천문학자의 이름이 붙었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1990년 지구 궤도에 오른 미국의 대형 우주 망원경",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "과학 교과서·우주 사진 뉴스로 익숙",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "C2-08",
+     "key": "b102",
+     "hint": "1983년 이 망원경에는 우주가 팽창한다는 사실을 확인한 천문학자의 이름이 붙었다.",
+     "guess": "허블 우주 망원경",
+     "confidence": "high",
+     "hit": true,
+     "answer": "허블 우주 망원경"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hubble_Space_Telescope"
+    ],
+    "facts": [
+     {
+      "claim": "코닥이 만든 거울은 국립 항공우주 박물관에 상설 전시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hubble_Space_Telescope",
+      "note": "The Kodak mirror is now on permanent display at the National Air and Space Museum."
+     },
+     {
+      "claim": "디스커버리호 STS-31 로 발사",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hubble_Space_Telescope",
+      "note": "Space Shuttle Discovery successfully launched Hubble on April 24, 1990, as part of the STS-31 mission."
+     },
+     {
+      "claim": "주거울은 퍼킨엘머, 미 항공우주국 요구로 코닥이 예비 거울",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hubble_Space_Telescope",
+      "note": "Perkin-Elmer (PE) intended to use custom-built and extremely sophisticated computer-controlled polishing machines to grind the mirror ... NASA demanded that PE sub-contract to Kodak to construct a back-up mirror using traditional mirror-polishing techniques."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hubble_Space_Telescope"
+    ],
+    "hintNote": "In 1983, the telescope was named after Edwin Hubble, who confirmed ... that the universe is expanding.",
+    "easiestCue": "코닥이 만든 예비 거울이 박물관에 전시됨",
+    "targetWhy": "거울 제작사와 예비 거울은 우주 애호가 세부 — 1회차(대기 흔들림·1990 궤도, 해설의 거울 결함)와 다른 사실",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "우주 망원경 범주가 좁아 짐작이 쉬울 수 있음",
+    "pairCheck": "1회차 1451 질문(1990 발사·대기 흔들림 회피)·해설(거울 결함과 보정)·힌트(없음)와 겹치지 않음 — 코닥 예비 거울·발사 왕복선 이름은 새 사실. 해설의 1.3mm 는 1회차 해설 결함의 원인 세부라 질문에는 쓰지 않음",
+    "dbCheck": "answercheck pair-or-different — 1451 과 같은 답, (가) 2회차",
+    "warn": [
+     "정답조각 우주망원경"
+    ],
+    "first": {
+     "id": 1451,
+     "question": "지구 대기의 흔들림을 피하려고 1990년에 궤도에 올려 선명한 사진을 보내 준 우주망원경은?",
+     "explanation": "처음에는 거울에 결함이 있어 흐릿하게 보였고, 우주에서 보정 장치를 달아 고쳤습니다.",
+     "hint": null,
+     "difficulty": 2
+    }
+   }
+  },
+  {
+   "seedId": "aerospace/5#g019b-C2-09",
+   "seed": {
+    "subject": "무궁화 1호",
+    "aspect": null,
+    "ref": "C2-09",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1995년 8월 5일 미국 케이프커내버럴에서 델타 2 로켓에 실려 오른 이 한국 위성은, 6번 보조 연료통의 점화 퓨즈가 고장 나 제때 떨어져 나가지 못하는 사고를 겪었습니다. 그 탓에 10년 예정이던 수명이 4년 4개월로 줄어든 이 위성은 무엇일까요?",
+    "answer": "무궁화 1호",
+    "acceptedAnswers": [
+     "무궁화위성 1호"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "무궁화위성 1호 — 언론·KT 자료에서 함께 쓰는 이름(ko.wikipedia 문서 제목 '무궁화 1호')",
+    "explanation": "이 사고로 뒤를 이을 위성들의 개발이 앞당겨졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "6번 보조 연료통의 점화 퓨즈가 고장 나",
+     "difWhy": "무궁화 1호 사고 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 한국 첫 방송통신위성",
+     "acc": 3,
+     "accWhy": "항공·우주 기술 — 관심층이면 안다"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "6번 보조 연료통의 점화 퓨즈가 고장 나",
+     "difWhy": "무궁화 1호 사고 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 한국 첫 방송통신위성"
+    },
+    "rewrite": null,
+    "generalHint": "한국통신이 광복 50주년을 기념하는 뜻으로 추진한 위성 사업이었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1995년 쏘아 올린 한국의 방송통신 위성",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "한국 첫 방송통신 위성으로 뉴스·교과서에서 접함",
+     "piece": "f01",
+     "genPct": 60
+    },
+    "blind": {
+     "ref": "C2-09",
+     "key": "b117",
+     "hint": "한국통신이 광복 50주년을 기념하는 뜻으로 추진한 위성 사업이었다.",
+     "guess": "무궁화위성",
+     "confidence": "high",
+     "hit": true,
+     "answer": "무궁화 1호"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/무궁화_1호"
+    ],
+    "facts": [
+     {
+      "claim": "1995년 8월 5일 케이프커내버럴에서 델타 2 로 발사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무궁화_1호",
+      "note": "1995년 8월 5일에 미국 케이프커내버럴 공군 기지에서 발사했다. (발사체 델타 2호 계열 7925형)"
+     },
+     {
+      "claim": "6번 연료통 점화 퓨즈 고장으로 분리 실패",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무궁화_1호",
+      "note": "6번 연료통 점화 퓨즈가 고장나서 위성과 분리되지 못하는 사고가 나"
+     },
+     {
+      "claim": "수명 10년 → 4년 4개월",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무궁화_1호",
+      "note": "10년 예정이던 수명이 4년 4개월로 단축되었다"
+     },
+     {
+      "claim": "무궁화 2·3호 개발이 앞당겨짐",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/무궁화_1호",
+      "note": "이에 무궁화 2호와 무궁화 3호의 개발이 앞당겨졌다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/무궁화_1호"
+    ],
+    "hintNote": "1995년 한국통신(현 KT)이 광복 50주년을 기념하기 위한 차원에서 진행된 위성 사업이다.",
+    "easiestCue": "1995년 8월 5일 델타 2 로켓에 실려 오른 한국 위성",
+    "targetWhy": "발사 사고와 수명 단축은 우주 애호가·당시 뉴스를 기억하는 사람 수준 — '첫 상업 위성' 정의는 넣지 않음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 아는 위성의 사고 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new · 천리안·우리별 1호(활성)는 다른 위성",
+    "warn": []
+   }
+  }
+ ]
+}

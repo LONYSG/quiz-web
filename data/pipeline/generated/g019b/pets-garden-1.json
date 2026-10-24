@@ -1,0 +1,218 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "pets-garden/1",
+  "midKey": "pets-garden",
+  "subName": "개 품종",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "pets-garden/1#g019b-L2-22",
+   "seed": {
+    "subject": "말티즈",
+    "aspect": null,
+    "ref": "L2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기원전 500년 무렵 아테네의 한 암포라에는 주둥이가 뾰족한 작은 개가 'μελιταῖε'라는 글자와 함께 그려져 있습니다. 옛 그리스인은 이 개를 '난쟁이 개'라는 뜻의 말로도 불렀고, 기원지로 아드리아해의 믈레트섬도 거론되는 이 품종은?",
+    "answer": "말티즈",
+    "acceptedAnswers": [
+     "몰티즈"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '몰티즈' 동음이의 문서가 견종을 '말티즈'로 안내 — 두 표기 다 쓰임",
+    "explanation": "학계는 대체로 기원지를 지중해의 몰타섬으로 보며, 로마인은 이 개를 'catuli melitaei'라 불렀습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "아드리아해의 믈레트섬도 거론되는 이 품종",
+     "difWhy": "몰타 개 기원 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 품종 이름 유래",
+     "acc": 4,
+     "accWhy": "반려동물·원예 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "아드리아해의 믈레트섬도 거론되는 이 품종",
+     "difWhy": "몰타 개 기원 — 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 품종 이름 유래"
+    },
+    "rewrite": null,
+    "generalHint": "견유학파 철학자 디오게네스는 스스로를 이 품종의 개라고 불렀다고 전한다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "흰 긴 털의 지중해 섬 이름 소형견",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "흔한 반려견 품종",
+     "piece": "f09",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "L2-22",
+     "key": "b021",
+     "hint": "견유학파 철학자 디오게네스는 스스로를 이 품종의 개라고 불렀다고 전한다.",
+     "guess": "몰티즈",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "말티즈"
+    },
+    "hobby": "반려동물",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Maltese_dog"
+    ],
+    "facts": [
+     {
+      "claim": "기원전 500년경 아테네 암포라, 뾰족 주둥이 작은 개와 μελιταῖε",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maltese_dog",
+      "note": "An Attic amphora from about 500 BC shows a small dog with a pointed muzzle with the word μελιταῖε (melitaie)."
+     },
+     {
+      "claim": "그리스인은 '난쟁이 개'(nanoúdion)라고도",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maltese_dog",
+      "note": "Greeks also used νανούδιον (nanoúdion), meaning 'dwarf dog.'"
+     },
+     {
+      "claim": "기원지로 몰타 또는 믈레트섬",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maltese_dog",
+      "note": "Ancient writers variously attribute its origin either to the island of Malta or to the Adriatic island of Mljet."
+     },
+     {
+      "claim": "학계는 대체로 몰타, 로마인은 catuli melitaei",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Maltese_dog",
+      "note": "recent scholarship generally supports the identification with Malta / Romans called them catuli melitaei"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Maltese_dog"
+    ],
+    "hintNote": "The Cynic philosopher Diogenes of Sinope, Aristotle's contemporary, according to the testimony of Diogenes Laertius, referred to himself as a \"Maltese dog\"",
+    "easiestCue": "기원지로 아드리아해의 믈레트섬도 거론된다",
+    "targetWhy": "흰 털·몰타(대표 정체)를 빼고 고대 유물·옛 이름만 — 반려견 애호가 4 (그리스 글자를 읽는 사람만 '멜리타'로 추리)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 반려견의 2,500년 역사",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "pets-garden/1#g019b-L2-23",
+   "seed": {
+    "subject": "시추",
+    "aspect": null,
+    "ref": "L2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국에 살던 영국 여성 브라운릭 부인은 1928년 이 품종 두 마리를 처음 잉글랜드로 데려갔습니다. 영국 켄넬 클럽은 처음에 이 개들을 '압소'로 분류했고, 1934년 이 품종의 클럽이 따로 세워졌습니다. 이 개 품종은 무엇일까요?",
+    "answer": "시추",
+    "acceptedAnswers": [
+     "시츄"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "WebSearch — 국내 기사·커뮤니티에서 '시츄'·'시추' 두 표기가 함께 흔히 쓰임",
+    "explanation": "미국 켄넬 클럽은 1969년 이 품종을 토이 그룹으로 인정했고, 이름은 중국어로 '사자'를 뜻하는 말을 웨이드-자일스식으로 옮긴 것입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "영국 켄넬 클럽은 처음에 이 개들을 '압소'로 분류",
+     "difWhy": "시추 영국 도입사 — 개 애호가",
+     "wor": 2,
+     "worWhy": "팬 세부 — 품종 도입사",
+     "acc": 4,
+     "accWhy": "반려동물·원예 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "영국 켄넬 클럽은 처음에 이 개들을 '압소'로 분류",
+     "difWhy": "시추 영국 도입사 — 개 애호가",
+     "wor": 2,
+     "worWhy": "팬 세부 — 품종 도입사"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "티베트에서 비롯한 긴 털의 소형견",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "흔한 반려견 품종",
+     "piece": "f03",
+     "genPct": 90
+    },
+    "blind": null,
+    "hobby": "반려동물",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Shih_Tzu"
+    ],
+    "facts": [
+     {
+      "claim": "브라운릭 부인이 1928년 두 마리를 처음 잉글랜드로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shih_Tzu",
+      "note": "Lady Brownrigg, an Englishwoman living in China, first brought two Shih Tzus to England in 1928."
+     },
+     {
+      "claim": "켄넬 클럽이 '압소'로 분류",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shih_Tzu",
+      "note": "These dogs were classified by the Kennel Club as 'Apsos'."
+     },
+     {
+      "claim": "1934년 잉글랜드 시추 클럽 창립",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shih_Tzu",
+      "note": "In 1934, the Shih Tzu Club of England was founded."
+     },
+     {
+      "claim": "AKC 1969 토이 그룹, 이름은 '사자' 웨이드-자일스 표기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Shih_Tzu",
+      "note": "The Shih Tzu was recognized by the American Kennel Club in 1969 in the Toy Group. / comes from the Wade–Giles romanization of the Mandarin Chinese word for 'lion'"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "영국 켄넬 클럽은 처음에 이 개들을 '압소'로 분류했다",
+    "targetWhy": "서태후·사자 개(대표 일화·뜻)를 빼고 영국 전래 세부만 — 반려견 애호가 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'압소'에서 라사 압소를 떠올려 답을 달리 칠 위험 — 묻는 문장의 '이 품종'은 브라운릭이 데려간 개로 하나",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음",
+     "단정어 처음"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (팬 세부 — 품종 도입사) · life 는 3 이상"
+   }
+  }
+ ]
+}

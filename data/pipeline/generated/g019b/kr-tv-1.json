@@ -1,0 +1,669 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "kr-tv/1",
+  "midKey": "kr-tv",
+  "subName": "예능 프로그램",
+  "questionPrompt": "media-v3",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/1#g019b-M1-01",
+   "seed": {
+    "subject": "장학퀴즈",
+    "aspect": "대중",
+    "ref": "M1-01",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1981년 출연자 모임 '수람'이 생긴 MBC 퀴즈 프로그램으로, 1993년 10월에는 이름 앞에 '세계로 가는'을 붙이기도 했습니다. 이 프로그램은 무엇일까요?",
+    "answer": "장학퀴즈",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "1990년부터는 손석희 아나운서가 진행했고, MBC에서 끝난 뒤 EBS로 옮겨 이어지다 2024년 7월 51년 5개월 만에 막을 내렸습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "이름 앞에 '세계로 가는'을 붙이기도 한 MBC 퀴즈 프로그램",
+     "difWhy": "'세계로 가는 장학퀴즈' — 방송에서 흔히",
+     "wor": 3,
+     "worWhy": "장수 프로그램 제목",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1990년부터 손석희 아나운서가 진행을 맡았던 MBC 프로그램",
+     "difWhy": "손석희 퀴즈 프로 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "대중적 방송 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1990년부터 손석희 아나운서가 진행을 맡았던 MBC 프로그램으로, 1981년에는 출연자 모임 '수람'이 생겼습니다. 1993년 10월에는 이름 앞에 '세계로 가는'을 붙이기도 했던 이 퀴즈 프로그램은 무엇일까요?",
+     "beforeExplanation": "SK그룹이 첫 방송부터 줄곧 후원했고, MBC에서 끝난 뒤 EBS로 옮겨 이어지다 후원이 끊기며 2024년 7월 51년 5개월 만에 막을 내렸습니다.",
+     "removedCue": "1990년부터 손석희 아나운서가 진행한 MBC 프로그램(관심층)",
+     "addedCue": "없음(쉬운 단서를 해설로 내림 — 출연자 모임 '수람'·이름 변경이 남음)",
+     "why": "손석희 진행은 관심층이 바로 잇는 단서라 해설로 내림"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "1973년 시작한 고교생 대상 장수 퀴즈 프로그램",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "장수 퀴즈 프로",
+     "piece": "f08",
+     "genPct": 85
+    },
+    "blind": null,
+    "layer": "대중",
+    "genre": "예능",
+    "work": "장학퀴즈",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/장학퀴즈"
+    ],
+    "facts": [
+     {
+      "claim": "1981년 출연자 모임 수람",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/장학퀴즈",
+      "note": "1981년 3월에는 장학퀴즈 출연자 모임인 ‘수람’이 출범되었고, 초대 회장은 유형국이었다."
+     },
+     {
+      "claim": "1993년 10월 세계로 가는 장학퀴즈",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/장학퀴즈",
+      "note": "이어 1993년 10월에는 프로그램명을 《세계로 가는 장학퀴즈》로 변경하였다."
+     },
+     {
+      "claim": "손석희 1990년 진행 발탁",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/장학퀴즈",
+      "note": "1990년 차인태의 출연 중단 이후 손석희가 새 진행자로 발탁되었다."
+     },
+     {
+      "claim": "SK 후원 · EBS · 2024년 종영",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/장학퀴즈",
+      "note": "이 스폰서는 첫방송부터 종영할 때까지 SK그룹이 줄곧 맡았다. … SK그룹의 후원이 중단됨에 따라 2024년 7월 28일을 끝으로 51년 5개월의 역사를 마감하고 종영하였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1993년 이름 앞에 '세계로 가는'을 붙임",
+    "targetWhy": "출연자 모임과 한때의 이름은 옛 방송 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 프로그램, 단서는 진행자 교체기와 개칭 같은 뒷이야기뿐",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "정답조각 퀴즈"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g019b-M1-02",
+   "seed": {
+    "subject": "우정의 무대",
+    "aspect": "팬 세부",
+    "ref": "M1-02",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1989년 4월 시작해 1991년 한국방송대상 TV 부문 우수작품상을 받은 MBC 예능입니다. 1996년 11월 김병조가 새 진행자로 나섰지만 인기가 떨어져 이듬해 3월 막을 내린 이 프로그램은 무엇일까요?",
+    "answer": "우정의 무대",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "주제가는 작은별 가족의 '그리운 어머니'였고, 같은 시기 KBS 1TV의 '청춘! 신고합니다'와 겨뤘습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1996년 11월 김병조가 새 진행자로 나선 MBC 예능",
+     "difWhy": "진행자 교체 말기 — 예능 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "추억의 예능 제목",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "주제가가 작은별 가족의 '그리운 어머니'",
+     "difWhy": "군 위문 예능 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "대중적 예능 제목"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1989년 4월 시작해 1991년 한국방송대상 TV 부문 우수작품상을 받은 MBC 예능입니다. 1996년 11월 김병조가 새 진행자로 나섰지만 이듬해 3월 막을 내렸는데, 주제가가 작은별 가족의 '그리운 어머니'였던 이 프로그램은?",
+     "beforeExplanation": "같은 시기 KBS 1TV에서는 '청춘! 신고합니다'가 경쟁 프로그램으로 방송됐습니다.",
+     "removedCue": "주제가 작은별 가족의 '그리운 어머니'(관심층 — 대표 장면)",
+     "addedCue": "없음(쉬운 단서를 해설로 내림 — 수상·김병조 진행·종영이 남음)",
+     "why": "주제가는 그 프로그램을 본 사람이 바로 떠올리는 단서라 해설로 내림"
+    },
+    "generalHint": "첫 진행자 이상용은 1996년 심장병 어린이 돕기 후원금 의혹이 일며 물러났다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1989~1997년 군부대를 찾아가던 MBC 위문 예능",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "'그리운 어머니' 장수 예능으로 30대도 들어 봤을 법함",
+     "piece": "f04",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "M1-02",
+     "key": "b314",
+     "hint": "첫 진행자 이상용은 1996년 심장병 어린이 돕기 후원금 의혹이 일며 물러났다.",
+     "guess": "우정의 무대",
+     "confidence": "high",
+     "hit": true,
+     "answer": "우정의 무대"
+    },
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "우정의 무대",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/우정의_무대"
+    ],
+    "facts": [
+     {
+      "claim": "1989년 4월 22일 시작 · 1997년 3월 2일 종영",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우정의_무대",
+      "note": "《우정의 무대》는 1989년 4월 22일부터 1997년 3월 2일까지 방송되었던 예능 프로그램이다."
+     },
+     {
+      "claim": "1991년 한국방송대상 우수작품상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우정의_무대",
+      "note": "제18회(1991년) 한국방송대상 TV부문 우수작품상"
+     },
+     {
+      "claim": "1996년 11월 김병조 진행 · 1997년 봄 종영",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/우정의_무대",
+      "note": "그해 11월 6일에는 김병조가 새로운 진행자로 발탁되었으나, 프로그램 인기 저조로 인해, 1997년 봄 개편을 맞아 종영되었다. / 김병조 : 1996년 11월 17일 ~ 1997년 3월 2일"
+     },
+     {
+      "claim": "주제가 그리운 어머니 (작은별 가족)",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/우정의_무대",
+      "note": "== 주제가 == 그리운 어머니 (작은별 가족)"
+     },
+     {
+      "claim": "경쟁 프로그램 청춘! 신고합니다",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/우정의_무대",
+      "note": "== 경쟁 프로그램 == 청춘! 신고합니다 (KBS 1TV)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/우정의_무대"
+    ],
+    "hintNote": "1996년에는 심장병 어린이 돕기 후원금 유용 의혹이 제기되면서 이상용은 사회적 물의를 빚고 프로그램에서 하차하게 되었다.",
+    "easiestCue": "1996년 11월 김병조가 새 진행자로 나섬",
+    "targetWhy": "진행자 교체와 수상 내력은 옛 예능 애호가 세부라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'어머니' 주제가가 대표 코너를 떠올리게 할 수 있음(경계 3)",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g019b-M1-03",
+   "seed": {
+    "subject": "무한도전",
+    "aspect": "팬 세부",
+    "ref": "M1-03",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "여성 게스트 MC로 이본이 나선 특집입니다. 아이디어를 낸 정준하와 박명수는 스포일러를 흘린 전적 탓에 시즌 2의 섭외 과정에서 빠졌는데, 이 특집의 줄임말은 무엇일까요?",
+    "answer": "토토가",
+    "acceptedAnswers": [
+     "토요일 토요일은 가수다"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '토요일! 토요일은 가수다' — 느낌표는 치지 않으므로 뺀 꼴을 변형으로",
+    "explanation": "시즌 1 방송분은 닐슨코리아 기준 시청률 22.2%로, 하하의 작별 특집 게릴라 콘서트 이후 가장 높았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "정준하·박명수가 아이디어를 낸, 이본이 MC로 나선 특집",
+     "difWhy": "무한도전 특집 내력 — 예능 관심층",
+     "wor": 3,
+     "worWhy": "유명 특집 이름 맞히기",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "2014년 MBC '무한도전'의 특별 기획",
+     "difWhy": "무도 90년대 특집 — 방송에서 흔히 (경계 2)",
+     "wor": 3,
+     "worWhy": "대중적 예능 제목"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2014년 MBC '무한도전'의 특별 기획으로, 여성 게스트 MC로 이본이 나섰습니다. 아이디어를 낸 정준하와 박명수는 스포일러를 흘린 전적 탓에 시즌 2의 섭외 과정에서 빠졌는데, 이 특집의 줄임말은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "2014년 MBC '무한도전'의 특별 기획",
+     "addedCue": "(뺌만 — 남은 단서: 이본 MC · 정준하·박명수 시즌 2 섭외 제외)",
+     "why": "방송 상식인 무한도전 특집 소개를 빼고 제작 뒷이야기만 남김"
+    },
+    "generalHint": "2016년에 방송된 시즌 2의 주인공은 젝스키스였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1990년대 가수들을 불러 모은 무한도전 특집 공연",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "무한도전 대표 특집으로 크게 화제",
+     "piece": "f02",
+     "genPct": 75
+    },
+    "blind": {
+     "ref": "M1-03",
+     "key": "b127",
+     "hint": "2016년에 방송된 시즌 2의 주인공은 젝스키스였다.",
+     "guess": "토요일 토요일은 가수다",
+     "confidence": "high",
+     "hit": true,
+     "answer": "토토가"
+    },
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "무한도전",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/토요일!_토요일은_가수다"
+    ],
+    "facts": [
+     {
+      "claim": "여성 게스트 MC 이본",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/토요일!_토요일은_가수다",
+      "note": "여성 게스트 MC이본 출연"
+     },
+     {
+      "claim": "정준하·박명수 아이디어 · 스포일러 전적 · 시즌 2 섭외 불참",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/토요일!_토요일은_가수다",
+      "note": "시즌 1의 아이디어를 낸 정준하와 박명수는 본인들이 진행하는 방송에서 무한도전 프로젝트에 대한 스포일러성 내용을 유출한 전적이 있는 관계로, 시즌 2 섭외과정에는 출연하지 못하고 멤버들을 집에서 방송국으로 데려가는 과정부터 출연한다."
+     },
+     {
+      "claim": "시청률 22.2%",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/토요일!_토요일은_가수다",
+      "note": "시즌 1 방송분으로 시청률(닐슨코리아 기준) 22.2%를 기록하여 하하의 작별특집 게릴라 콘서트 에피소드 이후 최고 시청률을 기록하였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/토요일!_토요일은_가수다"
+    ],
+    "hintNote": "젝스키스가 주인공인 편은 방식을 바꿔 진행한 후 2016년 4월 16일부터 4월 23일, 4월 30일까지 총 3회에 걸쳐 방영했다.",
+    "easiestCue": "정준하와 박명수는 스포일러를 흘린 전적 탓에 시즌 2의 섭외 과정에서 빠졌다",
+    "targetWhy": "게스트 MC · 섭외 뒷이야기 — 예능 팬 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'1990년대 가수' 라는 정체를 빼 무도 특집 가운데 고르는 데 기획 세부가 필요",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g019b-M1-04",
+   "seed": {
+    "subject": "봉숭아 학당",
+    "aspect": "대중",
+    "ref": "M1-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1991년 5월 '쇼 비디오 자키'가 없어지고 새로 생긴 KBS '한바탕 웃음으로'의 한 코너로 시작해 1993년 11월까지 이어졌습니다. 선생님 역은 김형곤·서원섭·김한국·임하룡 등이 맡았는데, 이 코너는 무엇일까요?",
+    "answer": "봉숭아 학당",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이창훈이 연기한 맹구가 베토벤을 묻는 선생님의 질문에 손동작으로 '배트맨'을 흉내 낸 장면이 크게 유행했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "선생님 역은 김형곤·서원섭·김한국·임하룡 등이 맡은 코너",
+     "difWhy": "'선생님 역 개그 코너' — 방송에서 흔히 (경계 3)",
+     "wor": 3,
+     "worWhy": "전설적 개그 코너 제목",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "오재미가 연기한 '오서방'",
+     "difWhy": "봉숭아 학당 캐릭터 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "대중적 코너 제목"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1991년 5월 KBS '한바탕 웃음으로'의 한 코너로 시작해 1993년 11월까지 이어졌습니다. 오재미가 연기한 '오서방'은 노래 소절마다 혀를 내밀며 '띠요용' 하고 기타 소리를 흉내 냈는데, 이 코너는 무엇일까요?",
+     "beforeExplanation": "이창훈이 연기한 맹구가 베토벤을 묻는 선생님의 질문에 손동작으로 '배트맨'을 흉내 낸 장면도 크게 유행했습니다.",
+     "removedCue": "오재미가 연기한 '오서방'의 '띠요용'(관심층 — 대표 캐릭터)",
+     "addedCue": "선생님 역을 맡은 개그맨들 · '쇼 비디오 자키' 폐지 뒤 신설",
+     "why": "대표 캐릭터 유행어는 관심층이 바로 아는 단서라 빼고, 편성·출연 세부로 바꿈"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "맹구 등 학생 캐릭터가 나오는 학교 소재 개그 코너",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "유머일번지·개그콘서트 대표 코너",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "blind": null,
+    "layer": "대중",
+    "genre": "예능",
+    "work": "봉숭아 학당",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/봉숭아_학당"
+    ],
+    "facts": [
+     {
+      "claim": "1991년 5월 20일 한바탕 웃음으로 코너로 출발",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/봉숭아_학당",
+      "note": "1991년 5월 20일에 KBS의 《한바탕 웃음으로》의 코너로 출발하였으며"
+     },
+     {
+      "claim": "1993년 11월 8일 마지막 방송",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/봉숭아_학당",
+      "note": "2년 8개월 동안 인기를 누리다가 1993년 11월 8일에 마지막 방송을 하였는데"
+     },
+     {
+      "claim": "맹구 배트맨 손동작",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/봉숭아_학당",
+      "note": "맹구가 베토벤을 묻는 선생님(김형곤)의 질문에 독특한 손동작으로 선보인 '배트맨'"
+     },
+     {
+      "claim": "쇼 비디오 자키가 폐지되고 신설된 한바탕 웃음으로의 코너",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/봉숭아_학당",
+      "note": "1991년 5월 20일에 그동안 공개 코미디 프로그램으로 방영이 되었던 《쇼 비디오 자키》가 폐지되고 그러한 특징을 살린 《한바탕 웃음으로》가 신설되면서 마련된 코너였다."
+     },
+     {
+      "claim": "선생님 역 김형곤·서원섭·김한국·임하룡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/봉숭아_학당",
+      "note": "===== 선생님 ===== 김형곤 / 서원섭 / 김한국 / 임하룡"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "KBS '한바탕 웃음으로'의 한 코너(1991~1993)",
+    "targetWhy": "편성 내력과 선생님 역 출연진은 옛 코미디 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 코너, 단서는 원조 코너의 조연 캐릭터",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g019b-M1-05",
+   "seed": {
+    "subject": "남자의 자격",
+    "aspect": "팬 세부",
+    "ref": "M1-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2010년 출연진이 직장인 밴드 대회에 나가 '사랑해서 사랑해서'로 동상을 받았고, 2011년에는 탭댄스를 배워 코리아 탭 페스티벌에서 인기상을 받은 KBS 2TV 리얼 버라이어티는?",
+    "answer": "남자의 자격",
+    "acceptedAnswers": [
+     "남격"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '남자의 자격' 첫 문장 '약칭: 남격'",
+    "explanation": "부제는 '죽기 전에 해야 할 101가지'였고, 2009년 3월 '해피선데이'의 한 코너로 시작했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "직장인 밴드 대회 동상, 탭댄스 인기상을 받은 KBS 2TV 리얼 버라이어티",
+     "difWhy": "출연진 도전기 — 예능 관심층",
+     "wor": 3,
+     "worWhy": "인기 예능 제목 맞히기",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "부제로 내건 101가지 미션",
+     "difWhy": "남자의 자격 부제 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "대중적 예능 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "부제로 내건 101가지 미션 가운데 97가지만 마치고 2013년 4월 막을 내린 KBS 2TV 리얼 버라이어티입니다. 2010년에는 출연진이 직장인 밴드 대회에 나가 '사랑해서 사랑해서'로 동상을 받았는데, 이 프로그램은?",
+     "beforeExplanation": null,
+     "removedCue": "부제로 내건 101가지 미션 가운데 97가지만 마침(관심층 — 부제)",
+     "addedCue": "2011년 탭댄스로 코리아 탭 페스티벌 인기상",
+     "why": "101가지 미션은 프로그램 이름 바로 옆 부제라 빼고, 덜 알려진 기획 세부로 바꿈"
+    },
+    "generalHint": "1~3회에서는 소설가 이외수가 출연진의 멘토 선생님으로 나섰다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "중년 남자 연예인들이 미션에 도전한 KBS 리얼 버라이어티",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "2010년 전후 인기 예능",
+     "piece": "f09",
+     "genPct": 70
+    },
+    "blind": {
+     "ref": "M1-05",
+     "key": "b034",
+     "hint": "1~3회에서는 소설가 이외수가 출연진의 멘토 선생님으로 나섰다.",
+     "guess": "남자의 자격",
+     "confidence": "low",
+     "hit": true,
+     "answer": "남자의 자격",
+     "first": {
+      "ref": "M1-05",
+      "key": "b099",
+      "hint": "2010년 박칼린이 지휘한 출연진 합창 도전 편으로 문화체육관광부 장관 표창을 받았다.",
+      "guess": "남자의 자격",
+      "confidence": "high",
+      "hit": true,
+      "answer": "남자의 자격"
+     }
+    },
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "남자의 자격",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/남자의_자격"
+    ],
+    "facts": [
+     {
+      "claim": "2010 컴퍼니 밴드 페스티벌 사랑해서 사랑해서 동상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/남자의_자격",
+      "note": "2010 컴퍼니 밴드 페스티벌 출전 … 연주곡 : 사랑해서 사랑해서 (작사/작곡 : 김태원) 대회 결과 : 2010년 7월 11일 본선 결과, 동상 수상 (9팀 중 4위)"
+     },
+     {
+      "claim": "부제 죽기 전에 해야 할 101가지 · 해피선데이 코너",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/남자의_자격",
+      "note": "《남자의 자격》(부제 : 죽기 전에 해야 할 101가지 … 약칭: 남격)은 2009년 3월 29일부터 … 해피선데이의 한 코너였다."
+     },
+     {
+      "claim": "2011년 탭댄스 — 코리아 탭 페스티벌 인기상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/남자의_자격",
+      "note": "남자, 새로운 취미를 갖다 Ⅱ (탭댄스) - 11월 13일, 코리아 탭 페스티벌 출전 - 인기상 수상 (완료)"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/남자의_자격"
+    ],
+    "hintNote": "1 ~ 3회(두 번 결혼하기, 금연학교) : 이외수 … 22회를 마지막으로 멘토 선생님 제도는 없어졌다.",
+    "easiestCue": "직장인 밴드 대회 '사랑해서 사랑해서' 동상",
+    "targetWhy": "밴드 동상·탭댄스 인기상은 그 예능을 챙겨 본 팬 세부(합창단보다 한 층 깊음)라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'101가지 미션' 이 부제를 아는 관심층에게 쉬울 수 있음(경계 3)",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 #5975(정답 박칼린) 질문에 프로그램 이름이 나오지만 합창단 지휘자를 묻는 다른 지식",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-tv/1#g019b-M1-06",
+   "seed": {
+    "subject": "신서유기",
+    "aspect": "팬 세부",
+    "ref": "M1-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "tvN이 2015년 9월 포털 네이버에서 인터넷판을 먼저 공개하고 이듬해 4월에야 TV판을 내보낸 예능입니다. 첫 시즌은 중국 시안을 찾았고, 둘째 시즌에는 군 복무 중인 이승기 대신 안재현이 합류했는데, 이 프로그램은?",
+    "answer": "신서유기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "2018년 강호동의 부친상으로 촬영이 멈추자 추가 촬영분 '슬기로운 삼시세끼편'으로 대신 방송했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "첫 시즌 중국 시안, 이승기 대신 안재현이 합류한 tvN 예능",
+     "difWhy": "나영석 예능 출연진 — 방송에서 흔히 (경계 3)",
+     "wor": 3,
+     "worWhy": "인기 예능 제목",
+     "acc": 5,
+     "accWhy": "방송·예능 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "'슬기로운 삼시세끼편'으로 대신 방송",
+     "difWhy": "나영석 tvN 예능 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "대중적 예능 제목 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "tvN이 2015년 9월 포털 네이버에서 인터넷판을 먼저 공개하고 이듬해 4월에야 TV판을 내보낸 예능입니다. 2018년 강호동의 부친상으로 촬영이 멈추자 '슬기로운 삼시세끼편'으로 대신 방송했는데, 이 프로그램은?",
+     "beforeExplanation": "시즌 7은 한국갤럽이 조사한 그해 12월 한국인이 가장 좋아하는 TV 프로그램 1위에 올랐습니다.",
+     "removedCue": "'슬기로운 삼시세끼편'으로 대신 방송",
+     "addedCue": "첫 시즌 시안 · 시즌 2 안재현 합류",
+     "why": "자주 회자된 대체 방송 단서를 해설로 옮기고 시즌 세부로 바꿈"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "나영석 PD가 만든 tvN 여행 리얼 버라이어티",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "인기 예능",
+     "piece": "f07",
+     "genPct": 80
+    },
+    "blind": null,
+    "layer": "팬 세부",
+    "genre": "예능",
+    "work": "신서유기",
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/신서유기"
+    ],
+    "facts": [
+     {
+      "claim": "2015년 9월 4일 인터넷판 · 2016년 4월 8일 TV판",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/신서유기",
+      "note": "2015년 9월 4일부터 시즌1 인터넷판 방송이 시작되었으며, 2016년 4월 8일부터 시즌1 TV판이 방영되었다. / tvN과 포털 사이트 네이버TV에서 방영한 리얼 버라이어티"
+     },
+     {
+      "claim": "강호동 부친상 · 슬기로운 삼시세끼편 대체",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/신서유기",
+      "note": "2018년 8월 11일에는 강호동의 부친상으로 인해 신서유기 촬영이 중단되었으며, 이 때문에 18.11.18 방송분에서는 추가 촬영분인 신서유기6.5 - '슬기로운 삼시세끼편'이 대체 방송되었다."
+     },
+     {
+      "claim": "시즌 1 방문지 시안",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/신서유기",
+      "note": "역대 방문지 표 — 시즌 1: 중화인민공화국 시안"
+     },
+     {
+      "claim": "시즌 2 이승기 대신 안재현",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/신서유기",
+      "note": "시즌2에서는 군복무 중인 이승기를 대신해 새 멤버로 안재현을 캐스팅하였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "둘째 시즌에는 군 복무 중인 이승기 대신 안재현이 합류",
+    "targetWhy": "인터넷 선공개 · 시즌별 멤버 — 예능 팬 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "강호동 이름이 범위를 좁히지만 tvN 강호동 예능은 여럿 — 웹 선공개 세부가 필요",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,316 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "football/5",
+  "midKey": "football",
+  "subName": "축구 역사·클럽",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "football/5#g019b-S1-23",
+   "seed": {
+    "subject": "바이에른 뮌헨",
+    "aspect": null,
+    "ref": "S1-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1900년 2월 한 체조 클럽(MTV 1879)이 축구부의 독일축구협회 가입을 막자, 축구부원 11명이 그날 저녁 따로 나와 이 구단을 세웠습니다. 히틀러 집권 뒤 유대인 회장 쿠르트 란다우어가 나라를 떠나고 '유대인 클럽'이라 조롱받은 이 구단은?",
+    "answer": "바이에른 뮌헨",
+    "acceptedAnswers": [
+     "FC 바이에른 뮌헨",
+     "바이에른"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 'FC 바이에른 뮌헨' 문서 · '바이에른 뮌헨' 넘겨주기 · 한국 보도에서 '바이에른' 단독 표기 흔함",
+    "explanation": "란다우어는 1947년 망명에서 돌아와 다시 회장을 맡았고, 회장 재임 기간을 합치면 구단에서 가장 길다고 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "유대인 회장 쿠르트 란다우어가 나라를 떠나고",
+     "difWhy": "바이에른 창단·란다우어 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "유대인 회장 쿠르트 란다우어가 나라를 떠나고",
+     "difWhy": "바이에른 창단·란다우어 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "2005-06 시즌부터 외벽 전체의 색이 바뀌는 세계 첫 경기장인 알리안츠 아레나를 홈으로 쓴다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "분데스리가 최다 우승을 거둔 독일 남부의 축구 구단",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "김민재 소속 구단으로 스포츠 뉴스에 자주 나옴",
+     "piece": "f02",
+     "genPct": 65
+    },
+    "blind": {
+     "ref": "S1-23",
+     "key": "b197",
+     "hint": "2005-06 시즌부터 외벽 전체의 색이 바뀌는 세계 첫 경기장인 알리안츠 아레나를 홈으로 쓴다.",
+     "guess": "바이에른 뮌헨",
+     "confidence": "high",
+     "hit": true,
+     "answer": "바이에른 뮌헨"
+    },
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/FC_Bayern_Munich"
+    ],
+    "facts": [
+     {
+      "claim": "1900년 2월 27일 MTV 1879 가 축구부의 DFB 가입을 막자 축구부원 11명이 그날 저녁 창단",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/FC_Bayern_Munich",
+      "note": "When a congregation of members of MTV 1879 decided on 27 February 1900 that the footballers of the club would not be allowed to join the German Football Association (DFB), eleven members of the football division left the congregation and on the same evening founded Fußball-Club Bayern München."
+     },
+     {
+      "claim": "히틀러 집권 뒤 유대인 회장 란다우어가 떠나고 '유대인 클럽'이라 조롱",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/FC_Bayern_Munich",
+      "note": "The rise of Adolf Hitler to power put an abrupt end to Bayern's development. Club president Kurt Landauer and the coach, both of whom were Jewish, left the country. ... Bayern was taunted as the \"Jew's club\""
+     },
+     {
+      "claim": "1947년 귀국 뒤 회장, 누적 재임 최장",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/FC_Bayern_Munich",
+      "note": "Landauer returned from exile in 1947, and was once again appointed club president, the tenure lasted until 1951. He remains as the club's president with the longest accumulated tenure."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Allianz_Arena"
+    ],
+    "hintNote": "it is the first stadium in the world with a full colour changing exterior. ... Bayern Munich have played their home games at the Allianz Arena since the start of the 2005–06 season.",
+    "easiestCue": "히틀러 집권 뒤 유대인 회장 쿠르트 란다우어가 나라를 떠나고 '유대인 클럽'이라 조롱받은",
+    "targetWhy": "창단 경위·나치 시대 수난은 축구 애호가 세부 — 도시 이름·분데스리가 최다 우승·김민재 단서 뺌",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 구단의 창단과 나치 시대 사연",
+    "pairCheck": null,
+    "dbCheck": "바이에른 뮌헨 new (활성 도르트문트 문항도 창단 일화 꼴 — 정답·사실이 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/5#g019b-S1-24",
+   "seed": {
+    "subject": "FIFA",
+    "aspect": null,
+    "ref": "S1-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "창립 당시 스페인은 아직 축구협회가 없어 마드리드의 한 클럽이 대신 창립 회원으로 나섰고, 독일 축구협회는 창립 당일 전보로 가입 뜻을 알렸습니다. 이 국제 단체는 무엇일까요?",
+    "answer": "FIFA",
+    "acceptedAnswers": [
+     "국제축구연맹",
+     "피파"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '국제 축구 연맹' 문서(띄어쓰기만 다름) · '피파' 문서 · 한국 보도는 'FIFA' 표기가 가장 흔함(A4)",
+    "explanation": "1904년 5월 21일 파리 생토노레 거리의 프랑스 체육 단체 연합(USFSA) 본부 뒤편에서 세워졌고, 첫 회장은 프랑스의 로베르 게랭이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 2,
+     "easiestCue": "각국 축구협회가 창립 회원인 이 국제 단체",
+     "difWhy": "국제 축구 단체 — 방송·뉴스에서 흔히",
+     "wor": 3,
+     "worWhy": "단체 창립 이야깃거리",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1904년 5월 파리 생토노레 거리의 ... 본부 뒤편에서 세워졌습니다",
+     "difWhy": "FIFA 1904 파리 창립 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 대표 국제기구 창립"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1904년 5월 파리 생토노레 거리의 프랑스 체육 단체 연합(USFSA) 본부 뒤편에서 세워졌습니다. 스페인은 아직 축구협회가 없어 마드리드의 한 클럽이 대신 창립 회원으로 나선 이 단체는 무엇일까요?",
+     "beforeExplanation": "첫 회장은 프랑스의 로베르 게랭이었고, 1906년 잉글랜드의 대니얼 울폴이 뒤를 이었습니다.",
+     "removedCue": "1904년 5월 파리 생토노레 거리의 USFSA 본부 뒤편에서 세워짐(관심층 — 창립 연도·장소)",
+     "addedCue": "독일 축구협회가 창립 당일 전보로 가입 뜻을 알림",
+     "why": "창립 연도·장소를 해설로 내리고 창립 회원 뒷이야기 둘로 묻게 함"
+    },
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "월드컵을 주관하는 세계 축구의 최고 기구",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "월드컵·게임 FIFA로 누구나 앎",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "blind": null,
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/FIFA"
+    ],
+    "facts": [
+     {
+      "claim": "1904년 5월 21일 파리 생토노레 거리 229번지 USFSA 본부 뒤편에서 창립",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/FIFA",
+      "note": "FIFA was founded in the rear of the headquarters of the Union des Sociétés Françaises de Sports Athlétiques (USFSA) at the Rue Saint Honoré 229 in Paris on 21 May 1904."
+     },
+     {
+      "claim": "스페인은 협회가 없어 지금의 레알 마드리드가 대신",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/FIFA",
+      "note": "Spain (represented by then-Real Madrid CF; the Royal Spanish Football Federation was not created until 1913)"
+     },
+     {
+      "claim": "첫 회장 게랭, 1906년 울폴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/FIFA",
+      "note": "The first president of FIFA was Robert Guérin. Guérin was replaced in 1906 by Daniel Burley Woolfall from England"
+     },
+     {
+      "claim": "독일 축구협회는 창립 당일 전보로 가입 의사를 밝힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/FIFA",
+      "note": "On the same day, the German Football Association declared through a telegram its intention to affiliate."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "스페인은 아직 축구협회가 없어 마드리드의 한 클럽이 대신 창립 회원으로 나섬",
+    "targetWhy": "창립 회원의 뒷이야기(클럽 대리·전보 가입)는 축구 역사 애호가 세부 — 연도·장소는 해설로",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1904년 파리에서 생긴 축구 단체' 를 관심층이 떠올릴 수 있음(창립 연도는 문서 첫 문단) — UEFA·IFAB와 가르려면 연도를 알아야 함",
+    "pairCheck": null,
+    "dbCheck": "FIFA · 국제축구연맹 new (활성 '국제축구평의회' 와 다른 대상)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "football/5#g019b-S1-25",
+   "seed": {
+    "subject": "크루이프",
+    "aspect": null,
+    "ref": "S1-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "젊은 시절 인쇄소에서 잡일을 하던 이 선수는 미헐스 감독 아래 전업 선수가 되었습니다. 네덜란드 대표팀 동료들이 아디다스의 세 줄 셔츠를 입을 때 혼자 소매에 두 줄만 있는 셔츠를 입었는데, 푸마와 따로 후원 계약을 맺었기 때문이었습니다. 이 선수는?",
+    "answer": "크루이프",
+    "acceptedAnswers": [
+     "요한 크루이프",
+     "크라위프",
+     "요한 크라위프"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '요한 크라위프' 문서 제목 · '요한 크루이프' · '크루이프' 넘겨주기 — 한국 보도는 '크루이프' 표기가 흔함",
+    "explanation": "1970년 아약스에서 부상 복귀전 때 평소의 9번을 동료가 달고 있어 14번을 단 뒤, 그 번호만 고집했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "혼자 소매에 두 줄만 있는 셔츠를 입었는데",
+     "difWhy": "크루이프 두 줄 셔츠 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 인물 일화",
+     "acc": 4,
+     "accWhy": "축구 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "혼자 소매에 두 줄만 있는 셔츠를 입었는데",
+     "difWhy": "크루이프 두 줄 셔츠 — 축구 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 인물 일화"
+    },
+    "rewrite": null,
+    "generalHint": "아들 요르디는 바르셀로나와 맨체스터 유나이티드에서 뛰었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "1970년대 토털 풋볼을 이끈 네덜란드의 전설적 공격수",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "축구 팬만 아는 옛 전설 선수",
+     "piece": "f05",
+     "genPct": 38
+    },
+    "blind": {
+     "ref": "S1-25",
+     "key": "b163",
+     "hint": "아들 요르디는 바르셀로나와 맨체스터 유나이티드에서 뛰었다.",
+     "guess": "요한 크라위프",
+     "confidence": "high",
+     "hit": true,
+     "answer": "크루이프"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Johan_Cruyff"
+    ],
+    "facts": [
+     {
+      "claim": "인쇄소에서 잡일, 미헐스가 부업을 금하고 전업 선수로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Johan_Cruyff",
+      "note": "Cruyff had been a sort of 'jack-of-all-trades' at a printing company. Michels prohibited any secondary activities and turned the players into professional footballers."
+     },
+     {
+      "claim": "대표팀에서 혼자 두 줄 셔츠, 푸마 별도 후원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Johan_Cruyff",
+      "note": "his habit of wearing a shirt with only two black stripes along the sleeves, as opposed to Adidas' usual design feature of three, worn by all the other Dutch players. Cruyff also had a separate sponsorship deal with Puma."
+     },
+     {
+      "claim": "1970년 부상 복귀전에 9번을 동료가 써 14번, 그 뒤 계속 14번",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Johan_Cruyff",
+      "note": "He made his comeback on 30 October 1970 against PSV, and rather than wear his usual number 9, which was in use by Gerrie Mühren, he instead used number 14. From then on, he only wore number 14 for Ajax."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jordi_Cruyff"
+    ],
+    "hintNote": "He played from 1992 through to 2010, including periods with Barcelona and Manchester United.",
+    "easiestCue": "네덜란드 대표팀 동료들이 아디다스의 세 줄 셔츠를 입을 때 혼자 소매에 두 줄만 있는 셔츠를 입었는데",
+    "targetWhy": "두 줄 셔츠·인쇄소 시절은 축구 애호가 세부 — 크루이프 턴·14번·토털 풋볼 단서 뺌",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "정답 친숙도가 경계(2 하단)일 수 있음 — 축구 역사 대표 인물이라 남김",
+    "pairCheck": null,
+    "dbCheck": "크루이프 · 요한 크루이프 new (활성 '토털 풋볼' 문항과 다른 대상)",
+    "warn": []
+   }
+  }
+ ]
+}

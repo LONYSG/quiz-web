@@ -1,0 +1,123 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "kr-food/5",
+  "midKey": "kr-food",
+  "subName": "떡·한과·전통 음료",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/5#g019b-K2-26",
+   "seed": {
+    "subject": "경단",
+    "aspect": null,
+    "ref": "K2-26",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "꿀물에 담가 먹는 것은 '수단', 꿀물에 담그지 않고 그대로 먹는 것은 '건단'으로 나누어 부르기도 하는 떡입니다. 기록으로는 17세기 후반 조리서 『요록』에 처음 나온다고 하는 이 떡은 무엇일까요?",
+    "answer": "경단",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "찰수수 가루로 빚으면 수수경단이라 하며, 백일상에 백설기와 함께 올려 아기의 액을 막는다고 믿었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "꿀물에 담가 먹는 것은 '수단', ... '건단'",
+     "difWhy": "수단·건단 구분 — 전통 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 떡 이름",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "꿀물에 담가 먹는 것은 '수단', ... '건단'",
+     "difWhy": "수단·건단 구분 — 전통 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 떡 이름"
+    },
+    "rewrite": null,
+    "generalHint": "겉에 묻히는 고물에 따라 깨·팥·밤 따위로 이름이 갈린다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "찹쌀가루를 둥글게 빚어 삶은 뒤 고물을 묻힌 떡",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "흔한 떡 이름",
+     "piece": "f07",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "K2-26",
+     "key": "b057",
+     "hint": "겉에 묻히는 고물에 따라 깨·팥·밤 따위로 이름이 갈린다.",
+     "guess": "경단",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "경단"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/경단",
+     "https://www.grandculture.net/miryang/toc/GC08701332",
+     "https://www.grandculture.net/daegu/toc/GC40006029"
+    ],
+    "facts": [
+     {
+      "claim": "삶아 냉수에 헹궈 꿀물에 담가 먹는 것은 수단, 그대로 먹는 것은 건단",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경단",
+      "note": "삶은 뒤 냉수에 헹궈 물기를 뺀 후 꿀물 등에 담가 먹는 것은 ‘수단(水團/水𩜵)’이라 하고, 꿀물 등에 담그지 않고 그대로 먹는 것은 ‘건단(乾團)’으로 구분하기도 한다."
+     },
+     {
+      "claim": "기록상 1690년경 『요록』에 처음 등장(17세기 후반)",
+      "where": "q",
+      "url": "https://www.grandculture.net/miryang/toc/GC08701332",
+      "note": "경단은 기록상으로 1690년경 음식 조리법과 손질법, 저장법을 기록한 『요록(要錄)』에 처음 등장하는데"
+     },
+     {
+      "claim": "찰수수 가루로 만든 것은 수수경단",
+      "where": "e",
+      "url": "https://www.grandculture.net/miryang/toc/GC08701332",
+      "note": "찰수수 가루로 익반죽하여 만든 것은 수수경단이라 하고"
+     },
+     {
+      "claim": "백일떡으로 백설기와 함께 수수경단 — 아기의 액을 막는다고 믿음",
+      "where": "e",
+      "url": "https://www.grandculture.net/daegu/toc/GC40006029",
+      "note": "백설기와 함께 수수경단을 만드는데, 수수경단이 아기의 액을 막고 아기의 명이 길어지게 하여 준다고 믿기 때문이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/경단"
+    ],
+    "hintNote": "고물의 종류에 따라 깨경단, 팥경단, 밤경단 등으로 나뉜다.",
+    "easiestCue": "꿀물에 담가 먹는 것은 '수단', 꿀물에 담그지 않고 그대로 먹는 것은 '건단'으로 나누어 부르기도 하는 떡",
+    "targetWhy": "정의(둥글게 빚어 삶아 고물)와 이름 풀이(구슬)를 빼고 수단·건단 구분과 첫 문헌만 — 떡 애호가",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 떡의 몰랐던 갈래 이름",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안에 없음(활성 백설기 #2317과 정답 다름)",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,651 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "kr-food/4",
+  "midKey": "kr-food",
+  "subName": "향토 음식",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/4#g019b-K2-20",
+   "seed": {
+    "subject": "동래파전",
+    "aspect": null,
+    "ref": "K2-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "찹쌀과 멥쌀을 갈아 만든 쌀가루 반죽을 질게 얹어 부치고, 해산물 맛을 살리려 간장 대신 초고추장을 곁들여 먹는 향토 음식입니다. 원로 소설가 최해군은 고관을 접대하던 술상의 안주에서 발달했다고 보았는데, 이 음식은?",
+    "answer": "동래파전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "조선 시대 이 고장이 대일 외교와 군사의 요지인 도호부여서 고관의 왕래가 잦았다는 데서 나온 설명이고, 구청은 2004년 연구회를 만들어 브랜드화를 해 왔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "찹쌀·멥쌀 반죽에 해산물, 초고추장을 곁들이는 향토 부침",
+     "difWhy": "부산 파전 — 음식 관심층",
+     "wor": 3,
+     "worWhy": "향토 음식 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "조선 시대 대일 외교의 요지였던 한 도호부",
+     "difWhy": "동래부 파전 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "찹쌀과 멥쌀을 갈아 만든 쌀가루 반죽을 질게 얹어 부치고, 간장 대신 초고추장을 곁들여 먹는 향토 음식입니다. 조선 시대 대일 외교의 요지였던 한 도호부에서 고관을 접대하던 술상의 안주로 발달했다는 설이 있는 이 음식은?",
+     "beforeExplanation": "이 고장 구청은 2004년 연구회를 만들고, 2007년부터 특허청 상표 등록 등 브랜드화 사업을 벌여 왔습니다.",
+     "removedCue": "조선 시대 대일 외교의 요지였던 한 도호부(관심층 — 동래부)",
+     "addedCue": "없음(쉬운 단서를 해설로 내림 — 반죽·초고추장·최해군의 설이 남음)",
+     "why": "'대일 외교 요지 도호부'는 곧 동래라 해설로 내림"
+    },
+    "generalHint": "조선 시대에 임금에게 올리는 선물로 꼽혔다고 전한다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "부산 동래에서 쪽파와 해물을 얹어 부치는 향토 전",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "향토 음식으로 들어 봤을 법함",
+     "piece": "f06",
+     "genPct": 65
+    },
+    "blind": {
+     "ref": "K2-20",
+     "key": "b226",
+     "hint": "조선 시대에 임금에게 올리는 선물로 꼽혔다고 전한다.",
+     "guess": "곶감",
+     "confidence": "low",
+     "hit": false,
+     "answer": "동래파전"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://www.grandculture.net/busan/toc/GC04210117"
+    ],
+    "facts": [
+     {
+      "claim": "찹쌀·멥쌀을 간 쌀가루 반죽을 질게 얹어 부침",
+      "where": "q",
+      "url": "https://www.grandculture.net/busan/toc/GC04210117",
+      "note": "동래 파전은 … 조선 쪽파와 쇠고기, 해물 등을 얹은 다음 찹쌀과 멥쌀을 갈아서 만든 쌀가루 반죽을 얹어 좀 질게 하여 차진 맛과 깊은 맛을 낸다."
+     },
+     {
+      "claim": "간장이 아닌 초고추장을 곁들임",
+      "where": "q",
+      "url": "https://www.grandculture.net/busan/toc/GC04210117",
+      "note": "동래 파전은 다른 지역의 전과 달리 해산물이 풍부하게 들어가기 때문에 해산물의 맛을 살리기 위해서 주로 간장이 아닌 초고추장을 곁들여 먹는다."
+     },
+     {
+      "claim": "도호부 시절 대일 외교·군사 요지로 고관 접대 술자리 안주에서 발달했다는 설",
+      "where": "q",
+      "url": "https://www.grandculture.net/busan/toc/GC04210117",
+      "note": "원로 소설가 최해군은 “동래가 조선 시대 도호부일 때 대일 외교와 군사상의 요지로 조정 고관들의 왕래가 잦아 그들을 접대하기 위한 술자리에서 안주로 내던 파전이 점차 발달해 지금의 동래 파전으로 정착된 것이 아닐까 한다”라고 설명하였다. … 고급 안주용에서 유래하였다는 설이 좀 더 우세하다."
+     },
+     {
+      "claim": "2004년 동래파전연구회 발족, 2007년부터 상표 등록 등 브랜드화",
+      "where": "e",
+      "url": "https://www.grandculture.net/busan/toc/GC04210117",
+      "note": "부산광역시 동래구에서는 동래 파전을 연구·발전시키기 위해 2004년 ‘동래파전연구회’를 발족시켜 … 또 2007년부터 특허청에 상표 등록 등 ‘동래 파전 브랜드화 사업’을 통해"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/파전"
+    ],
+    "hintNote": "조선 시대에 처음 만들어진 이 요리는 왕을 위한 선물로 분류되어 있었다.",
+    "easiestCue": "쌀가루 반죽 · 간장 대신 초고추장",
+    "targetWhy": "반죽과 곁들이는 장, 유래 설은 향토 음식 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 본 향토 음식의 조리·유래 세부",
+    "pairCheck": null,
+    "dbCheck": "answercheck new(동래파전·파전) — 활성·초안에 없음",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/4#g019b-K2-21",
+   "seed": {
+    "subject": "이동갈비",
+    "aspect": null,
+    "ref": "K2-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1970년대 초 계곡 옆 평상에서 주머니가 가벼운 군인들을 상대로 푸짐하게 내놓은 데서 시작되었다고 합니다. 1986년 아시안 게임과 1988년 올림픽 무렵 근처 국망봉에 오른 산악회 회원들이 들렀다가 맛이 알려졌다는 이 갈비는?",
+    "answer": "이동갈비",
+    "acceptedAnswers": [
+     "포천 이동갈비"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "한국향토문화전자대전(포천) '이동 갈비' — '포천 이동 갈비촌'으로 함께 부름",
+    "explanation": "조각 갈비 열 대를 1인분으로 냈고, 갈비와 나머지 살을 이쑤시개로 꽂아 이어 붙이는 방식을 가리키기도 합니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "계곡 옆 평상에서 군인 상대로, 근처 국망봉 — 이 갈비",
+     "difWhy": "포천 군인 갈비 — 음식 관심층",
+     "wor": 3,
+     "worWhy": "향토 음식 유래",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "조각 갈비 열 대를 1인분으로 ... 백운 계곡",
+     "difWhy": "포천 이동갈비 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1970년대 초 백운 계곡 옆에 평상을 놓고, 주머니가 가벼운 군인들을 상대로 조각 갈비 열 대를 1인분으로 푸짐하게 내놓은 데서 시작되었다고 합니다. 갈비와 나머지 살을 이쑤시개로 꽂아 이어 붙이는 방식을 가리키기도 하는 이 갈비는?",
+     "beforeExplanation": "1986년 아시안 게임과 1988년 올림픽 무렵, 근처 국망봉에 오른 산악회 회원들이 들렀다가 맛이 알려져 전국으로 퍼졌다고 합니다.",
+     "removedCue": "조각 갈비 열 대를 1인분 · 백운 계곡 · 이쑤시개로 이어 붙이는 방식(관심층)",
+     "addedCue": "국망봉 산악회 회원들로 알려짐(해설에서 올림)",
+     "why": "이동갈비의 대표 특징을 해설로 내리고 퍼진 내력으로 바꿈"
+    },
+    "generalHint": "이 갈비로 이름난 면은 광복 직후 대부분이 38선 북쪽에 들어 소련 군정 아래 놓였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "경기도 포천의 한 면 이름이 붙은 소갈비 구이",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "포천 이동갈비로 들어 봤을 법함",
+     "piece": "f08",
+     "genPct": 65
+    },
+    "blind": {
+     "ref": "K2-21",
+     "key": "b234",
+     "hint": "이 갈비로 이름난 면은 광복 직후 대부분이 38선 북쪽에 들어 소련 군정 아래 놓였다.",
+     "guess": "이동갈비",
+     "confidence": "high",
+     "hit": true,
+     "answer": "이동갈비"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://www.grandculture.net/pocheon/toc/GC05001851"
+    ],
+    "facts": [
+     {
+      "claim": "1970년대 초 백운 계곡 옆 평상에서 돈 없는 군인을 상대로 조각 갈비 열 대를 1인분으로 판 것이 시초",
+      "where": "q",
+      "url": "https://www.grandculture.net/pocheon/toc/GC05001851",
+      "note": "1970년대 초부터 백운 계곡 골짜기 옆에다 평상을 놓고 돈 없는 군인을 상대로 조각 갈비 열 대를 일인분으로 하여 푸짐하게 보이도록 박리다매로 판매한 것이 시초이다."
+     },
+     {
+      "claim": "갈비와 나머지 살을 이쑤시개에 꽂아 연결하는 방식을 뜻하기도 함",
+      "where": "e",
+      "url": "https://www.grandculture.net/pocheon/toc/GC05001851",
+      "note": "지명을 따서 이동 갈비 라고 불리지만 이동 갈비 는 갈비와 갈비의 나머지 살을 이쑤시개에 꼽아서 연결시켜 만드는 방식을 뜻하기도 한다."
+     },
+     {
+      "claim": "1986 아시안 게임·1988 올림픽 즈음 국망봉 등반 산악회 회원들로 전국에 퍼짐",
+      "where": "q",
+      "url": "https://www.grandculture.net/pocheon/toc/GC05001851",
+      "note": "1986년 서울 아시안 게임과 1988년 서울 올림픽 즈음 국망봉 을 등반한 산악회 회원들이 식사를 하러 들렀다가 그 맛이 알려져 전국적으로 널리 퍼지게 되면서"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/포천시",
+     "https://ko.wikipedia.org/wiki/이동면_(포천시)"
+    ],
+    "hintNote": "38선 이북인 영북면 전부와 이동면 대부분 … 이 소련군정 관할 아래 들어갔다. / 이동막걸리와 이동갈비로 유명하다.",
+    "easiestCue": "1970년대 초 계곡 옆 평상에서 군인들을 상대로 시작",
+    "targetWhy": "군인 상대 시작·국망봉 산악회로 퍼진 내력은 향토 음식 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 들어 본 갈비의 생긴 사연",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 수원갈비·LA갈비와 정답·지식이 다름",
+    "warn": [
+     "정답조각 갈비"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/4#g019b-K2-22",
+   "seed": {
+    "subject": "곰장어구이",
+    "aspect": null,
+    "ref": "K2-22",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "재료가 되는 동물은 턱뼈가 없어 물고기가 아닌 원구류로 분류되며, 생김새 때문에 예전에는 먹지 않고 주로 가죽 제품 재료로 썼습니다. 부산에서는 자갈치 시장과 온천장 일대에 가게가 몰려 있는 이 구이는 무엇일까요?",
+    "answer": "곰장어구이",
+    "acceptedAnswers": [
+     "꼼장어구이",
+     "곰장어",
+     "꼼장어",
+     "먹장어구이"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "한국향토문화전자대전(부산) '곰장어구이' — '곰장어는 먹장어의 방언이며, 꼼장어라고도 불린다' · 재료 이름만 치는 사람도 같은 대상",
+    "explanation": "6·25 전쟁 피난 시절 부산의 피난민들이 배고픔을 면하려고 본격적으로 먹기 시작한 것으로 알려져 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "부산 자갈치 시장과 온천장 일대에 가게가 몰린 이 구이",
+     "difWhy": "부산 대표 구이 — 음식 관심층",
+     "wor": 3,
+     "worWhy": "향토 음식 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "6·25 전쟁 피난 시절 피난민들이 배고픔을 면하려고 먹기 시작",
+     "difWhy": "먹장어 구이 유래 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "재료가 되는 동물은 턱뼈가 없어 물고기가 아닌 원구류로 분류되며, 생김새 때문에 예전에는 먹지 않고 주로 가죽 제품 재료로 썼습니다. 6·25 전쟁 피난 시절 피난민들이 배고픔을 면하려고 먹기 시작했다고 알려진 이 구이는?",
+     "beforeExplanation": "기장 지역에서는 볏짚에 불을 피워 산 채로 구운 뒤 검게 탄 껍질을 벗겨 내고 먹는 '짚불' 방식도 전합니다.",
+     "removedCue": "6·25 전쟁 피난 시절 피난민들이 배고픔을 면하려고 먹기 시작",
+     "addedCue": "자갈치 시장과 온천장 일대",
+     "why": "널리 알려진 피난민 유래를 해설로 옮기고 원구류·가죽 + 가게 거리로 좁힘"
+    },
+    "generalHint": "이 동물은 쫓기면 피부의 샘에서 끈적한 점액을 잔뜩 내뿜어 몸을 지킨다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "먹장어를 소금이나 양념으로 구운 부산의 향토 음식",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "포장마차 대표 메뉴",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "blind": {
+     "ref": "K2-22",
+     "key": "b038",
+     "hint": "이 동물은 쫓기면 피부의 샘에서 끈적한 점액을 잔뜩 내뿜어 몸을 지킨다.",
+     "guess": "먹장어",
+     "confidence": "high",
+     "hit": true,
+     "answer": "곰장어구이"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://www.grandculture.net/busan/toc/GC04210091"
+    ],
+    "facts": [
+     {
+      "claim": "먹장어는 어류가 아닌 원구류(턱뼈가 없어 입이 둥근 부류)",
+      "where": "q",
+      "url": "https://www.grandculture.net/busan/toc/GC04210091",
+      "note": "갯장어·붕장어·뱀장어 등이 어류에 속하는 반면, 먹장어는 어류가 아닌 원구류[턱뼈가 없어 입이 둥근 부류]에 속하는 척추동물이다."
+     },
+     {
+      "claim": "흉물스러워 예전엔 먹지 않고 가죽 제품 재료로 씀",
+      "where": "q",
+      "url": "https://www.grandculture.net/busan/toc/GC04210091",
+      "note": "곰장어는 흉물스럽게 생겼다고 해서 예전에는 먹지 않고 주로 가죽 제품 재료로 사용되었다. 6·25 전쟁 피난 시절, 부산 지역에서 피난민들이 배고픔을 면하기 위해 본격적으로 곰장어를 먹기 시작한 것으로 알려진다."
+     },
+     {
+      "claim": "6·25 피난 시절 부산 피난민이 먹기 시작",
+      "where": "e",
+      "url": "https://www.grandculture.net/busan/toc/GC04210091",
+      "note": "6·25 전쟁 피난 시절, 부산 지역에서 피난민들이 배고픔을 면하기 위해 본격적으로 곰장어를 먹기 시작한 것으로 알려진다."
+     },
+     {
+      "claim": "자갈치 시장과 온천장 일대에 음식점이 몰림",
+      "where": "q",
+      "url": "https://www.grandculture.net/busan/toc/GC04210091",
+      "note": "부산 전역에서 맛볼 수 있으며, 특히 자갈치 시장과 온천장 일대에 음식점이 몰려 관광객이 많이 찾는다(문서 요지)."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hagfish"
+    ],
+    "hintNote": "can defend themselves against other larger predators by releasing copious amounts of slime from mucous glands in their skin.",
+    "easiestCue": "턱뼈가 없어 물고기가 아닌 원구류 · 가죽 제품 재료",
+    "targetWhy": "먹장어의 분류와 옛 쓰임 — 향토 음식 애호가 세부(4)",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 술안주 재료의 뜻밖의 분류와 과거",
+    "pairCheck": null,
+    "dbCheck": "answercheck new(곰장어구이·곰장어·꼼장어) — 활성·초안에 없음",
+    "warn": [
+     "정답조각 구이"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/4#g019b-K2-23",
+   "seed": {
+    "subject": "닭한마리",
+    "aspect": null,
+    "ref": "K2-23",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1960년대 서울 종로 신진시장 일대에서 생겼다고 알려진 음식입니다. 약재를 넣지 않은 담백한 맛 덕분에 일찍부터 일본인 관광객에게 인기를 끌어, 2000년대에는 일본 현지에 가게까지 생긴 이 냄비 요리는?",
+    "answer": "닭한마리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "익은 닭고기를 간장·식초·겨자와 매운 다지기를 섞은 양념장에 찍어 먹고, 남은 국물에 국수를 끓여 먹는 방식이 일반적입니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "종로 신진시장 일대에서 생겨 일본인 관광객에게 인기를 끈 냄비 요리",
+     "difWhy": "'종로 일본인 관광객 냄비 요리' — 음식 관심층",
+     "wor": 3,
+     "worWhy": "서울 향토 음식 유래 이야깃거리",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "남은 국물에 국수를 끓여 먹는 이 냄비 요리",
+     "difWhy": "종로 닭한마리 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 서울 음식"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1960년대 서울 종로 신진시장 일대에서 생겼다고 알려진 음식입니다. 약재를 넣지 않은 담백한 맛 덕분에 일찍부터 일본인 관광객에게 인기를 끌어 2000년대에는 일본 현지에 가게까지 생겼고, 남은 국물에 국수를 끓여 먹는 이 냄비 요리는?",
+     "beforeExplanation": "미국 트럼프 정부에서 대북 특사를 맡은 스티븐 비건이 즐겨 먹은 것으로도 알려져 있습니다.",
+     "removedCue": "남은 국물에 국수를 끓여 먹는 이 냄비 요리",
+     "addedCue": "(뺌만 — 남은 단서: 신진시장 유래 · 일본인 관광객 인기)",
+     "why": "먹는 방식 설명(정체 단서)을 해설로 옮김"
+    },
+    "generalHint": "주문을 받고 나서 익히는 백숙과 달리 미리 애벌로 익혀 둔 고기를 부재료와 함께 냄비째 내놓는다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "닭을 통째로 냄비에 끓여 양념장에 찍어 먹는 서울 음식",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "동대문 닭한마리 골목으로 들어 봤을 법함",
+     "piece": "f03",
+     "genPct": 70
+    },
+    "blind": {
+     "ref": "K2-23",
+     "key": "b219",
+     "hint": "주문을 받고 나서 익히는 백숙과 달리 미리 애벌로 익혀 둔 고기를 부재료와 함께 냄비째 내놓는다.",
+     "guess": "닭한마리",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "닭한마리"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/닭한마리"
+    ],
+    "facts": [
+     {
+      "claim": "1960년대 서울 동대문 일대, 동대문시장(종로 신진시장)에서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/닭한마리",
+      "note": "1960년대에 서울 도심의 동대문 일대에서 유래된 것으로 알려져 있으며 … 닭한마리는 도심의 동대문시장(종로 신진시장)에서 유래했다는 것이 정설처럼 굳어져 있다."
+     },
+     {
+      "claim": "약재를 넣지 않은 담백한 맛으로 일본인 관광객에게 인기, 2000년대 일본 현지 가게 등장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/닭한마리",
+      "note": "닭한마리는 약재를 넣지 않으면서도 닭의 담백한 맛을 잘 살려내고 있어 일찍부터 일본인 관광객들에게 많은 인기를 끌어왔으며, 2000년대에는 일본 현지에서 닭한마리를 요리하는 가게들까지 등장하기에 이르렀다."
+     },
+     {
+      "claim": "남은 국물에 국수를 끓여 먹음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/닭한마리",
+      "note": "익은 닭고기를 간장, 식초, 겨자와 매운 다지기를 섞어 만든 양념장에 찍어먹고, 그 후 남은 국물에 국수를 끓여먹는 방식이 일반적이다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/닭한마리"
+    ],
+    "hintNote": "주문을 받고 닭을 요리하기 시작하는 백숙과 달리 미리 애벌로 익혀 둔 닭고기를 부재료와 함께 내놓는 점",
+    "easiestCue": "종로 신진시장 일대에서 생겼다고 알려진",
+    "targetWhy": "유래 시장 · 일본 진출 — 음식 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'남은 국물에 국수 끓이는 냄비 요리'로 관심층이 떠올릴 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 삼계탕·찜닭과 정답·지식이 다름",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "kr-food/4#g019b-K2-24",
+   "seed": {
+    "subject": "납작만두",
+    "aspect": null,
+    "ref": "K2-24",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1960년대 초 한 분식집 창업주가 중국 만두의 느끼한 맛을 줄이려고 당면·부추·파 같은 채소로만 속을 채워 만들었다고 합니다. 학교 앞 분식점의 인기 메뉴로 퍼졌고, 뒤에 삼각만두·나뭇잎만두가 갈라져 나온 이 고장의 만두는?",
+    "answer": "납작만두",
+    "acceptedAnswers": [
+     "납짝만두",
+     "납딱만두"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "한국향토문화전자대전(대구) '납작만두' — '대구 지역에서는 납딱만두 또는 납짝만두로도 불린다'",
+    "explanation": "원조로 꼽히는 세 곳은 센 불에 자주 뒤집어 굽는 곳, 가장 얇게 은근한 불에 굽는 곳, 가장 두껍게 빚는 곳으로 서로 굽는 방식이 다릅니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "뒤에 삼각만두·나뭇잎만두가 갈라져 나온",
+     "difWhy": "대구 납작만두 — 향토 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "뒤에 삼각만두·나뭇잎만두가 갈라져 나온",
+     "difWhy": "대구 납작만두 — 향토 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식"
+    },
+    "rewrite": null,
+    "generalHint": "간장·대파·고춧가루를 곁들이거나 매콤한 떡볶이 국물에 찍어 먹고, 무침회와 함께 먹기도 한다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "대구에서 당면과 부추로 속을 채워 얇게 빚은 만두",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "대구 명물로 들어 봤을 법함",
+     "piece": "f06",
+     "genPct": 50
+    },
+    "blind": {
+     "ref": "K2-24",
+     "key": "b128",
+     "hint": "간장·대파·고춧가루를 곁들이거나 매콤한 떡볶이 국물에 찍어 먹고, 무침회와 함께 먹기도 한다.",
+     "guess": "납작만두",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "납작만두"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://www.grandculture.net/daegu/toc/GC40005886"
+    ],
+    "facts": [
+     {
+      "claim": "1960년대 초 미성당 창업주 임창규가 중국 만두의 느끼한 맛을 줄이려 당면·부추·파 등 야채로 소를 넣음",
+      "where": "q",
+      "url": "https://www.grandculture.net/daegu/toc/GC40005886",
+      "note": "납작만두 는 1960년대 초 미성당 의 창업주인 고 임창규가 기존 중국 만두의 느끼한 맛을 줄이기 위하여 당면, 부추, 파 등의 야채를 만두소로 넣어 납작하게 만든 만두이다."
+     },
+     {
+      "claim": "학교 앞 분식점의 인기 메뉴로 퍼짐",
+      "where": "q",
+      "url": "https://www.grandculture.net/daegu/toc/GC40005886",
+      "note": "특히 ‘교육도시’라고 불리던 대구광역시의 수많은 학교 앞 분식점의 인기 메뉴로 저렴한 가격과 독특한 맛으로 대구광역시 전역에 퍼지게 되었다."
+     },
+     {
+      "claim": "파생된 삼각만두·나뭇잎만두",
+      "where": "q",
+      "url": "https://www.grandculture.net/daegu/toc/GC40005886",
+      "note": "납작만두 에서 파생된 서문시장 의 삼각만두와 나뭇잎만두도 대구 지역에서만 맛볼 수 있는 음식이다."
+     },
+     {
+      "claim": "원조격 세 곳의 굽는 방식 차이",
+      "where": "e",
+      "url": "https://www.grandculture.net/daegu/toc/GC40005886",
+      "note": "미성당 납작만두는 센 불에 자주 뒤집어서 구워 … 교동시장 의 납작만두는 가장 얇은 만두로 은근한 불에 부드럽게 구워 … 남문시장 의 납작만두는 세 가지 만두 중 가장 두꺼운 만두로"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://segye.com/newsView/20260824508806"
+    ],
+    "hintNote": "대구에서는 간장과 대파, 고춧가루 등을 곁들여 먹거나 매콤한 떡볶이 국물에 찍어 먹는다. 쫄면이나 무침회 등과 함께 먹는 방식도 있다.",
+    "easiestCue": "당면·부추·파 같은 채소로만 속을 채워 만들었다고 합니다",
+    "targetWhy": "소재지(대구)와 생김새(이름 뜻)를 빼고 탄생 사연·파생 만두만 — 애호가(경계 3: '당면 만두'를 아는 관심층)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'당면만 든 만두'가 이 만두의 대표 특징이라 관심층이 바로 떠올릴 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성 만두(분식) 문항과 정답이 다름",
+    "warn": [
+     "정답조각 만두"
+    ]
+   }
+  },
+  {
+   "seedId": "kr-food/4#g019b-K2-25",
+   "seed": {
+    "subject": "오리탕",
+    "aspect": null,
+    "ref": "K2-25",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1970년대 나주에서 1만여 마리를 기르는 농장을 하던 한 청년이 음식점들에 재료를 대량으로 대면서, 한 광역시 북구 유동 일대에 이 음식의 거리가 생겼습니다. 들깻물로 걸쭉하게 끓이고 생미나리를 살짝 익혀 함께 먹는 이 탕은?",
+    "answer": "오리탕",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 도시는 2003년 이 음식을 '5미(味)'로, 2019년에는 7대 대표 음식으로 선정했습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "북구 유동 일대에 이 음식의 거리",
+     "difWhy": "광주 유동 오리탕 — 향토 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식",
+     "acc": 5,
+     "accWhy": "한국 음식 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "북구 유동 일대에 이 음식의 거리",
+     "difWhy": "광주 유동 오리탕 — 향토 음식 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 향토 음식"
+    },
+    "rewrite": null,
+    "generalHint": "1970~80년대 이 거리 둘레에는 고속버스 터미널 두 곳과 기차역이 가까워 오가는 사람이 아주 많았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "광주에서 오리고기를 들깨 국물에 끓여 먹는 향토 음식",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "오리탕이라는 음식명은 들어 봤을 법함",
+     "piece": "f02",
+     "genPct": 80
+    },
+    "blind": {
+     "ref": "K2-25",
+     "key": "b131",
+     "hint": "1970~80년대 이 거리 둘레에는 고속버스 터미널 두 곳과 기차역이 가까워 오가는 사람이 아주 많았다.",
+     "guess": "충장로",
+     "confidence": "low",
+     "hit": false,
+     "answer": "오리탕"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://www.grandculture.net/gwangju/toc/GC60004246"
+    ],
+    "facts": [
+     {
+      "claim": "1970년대 나주에서 오리 1만여 마리 농장을 하던 나씨 청년이 유동·신안동 음식점에 대량 유통, 오리탕 음식점 밀집",
+      "where": "q",
+      "url": "https://www.grandculture.net/gwangju/toc/GC60004246",
+      "note": "광주광역시 북구 유동 에 오리탕거리가 형성된 것은 1970년대부터이다. 당시에 광주광역시와 접하고 있는 전라남도 나주시에서 오리 1만여 마리를 사육하는 오리 농장을 운영하던 나씨 청년이 광주광역시의 유동 과 신안동 일대 음식점에 오리를 대량으로 유통시키면서"
+     },
+     {
+      "claim": "들깻가루·들깻국물로 걸쭉하게 끓이고 생미나리를 살짝 익혀 먹음",
+      "where": "q",
+      "url": "https://www.grandculture.net/gwangju/toc/GC60004246",
+      "note": "들깻가루나 들깻국물을 많이 넣어 걸쭉하게 끓여 전골처럼 상에서 계속 끓이면서 그 국물에 생미나리를 살짝 익혀 오리고기와 함께 초고추장과 들깻가루에 찍어 먹는다."
+     },
+     {
+      "claim": "2003년 광주 5미, 2019년 7대 대표음식",
+      "where": "e",
+      "url": "https://www.grandculture.net/gwangju/toc/GC60004246",
+      "note": "광주광역시는 광주오리탕을 2003년에 광주의 5미(味)로 선정하였으며, 2019년에 광주광역시 7대 대표음식으로 선정하였다."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://dh.aks.ac.kr/~gwangju/wiki/index.php/%EC%9C%A0%EB%8F%99_%EC%98%A4%EB%A6%AC%ED%83%95%EA%B1%B0%EB%A6%AC"
+    ],
+    "hintNote": "1970~1980년대 당시 유동과 신안동은 광주고속터미널과 중앙고속터미널, 광주역이 가까워 시민들과 외지인들의 이동량이 매우 많았다.",
+    "easiestCue": "들깻물로 걸쭉하게 끓이고 생미나리를 살짝 익혀 함께 먹는 이 탕",
+    "targetWhy": "도시 이름과 재료 이름을 빼고 거리의 생긴 사연·먹는 법만 — 애호가(경계 3: 들깨·미나리로 떠올리는 사람)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'들깨 + 미나리 탕'은 관심층에게 오리탕 대표 특징일 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new — 활성·초안에 없음",
+    "warn": []
+   }
+  }
+ ]
+}

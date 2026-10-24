@@ -1,0 +1,223 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "animals/5",
+  "midKey": "animals",
+  "subName": "파충류·양서류",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "animals/5#g019b-C1-20",
+   "seed": {
+    "subject": "개구리",
+    "aspect": null,
+    "ref": "C1-20",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1940~60년대에는 여성의 소변을 이 동물의 한 아프리카 종에게 주사해, 12시간쯤 안에 알을 낳으면 임신으로 판정했습니다. 1958년 존 거든은 같은 종의 어린 개체 체세포에서 꺼낸 핵을 옮겨 이 동물을 복제했는데, 이 동물은?",
+    "answer": "개구리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "이 검사 이름은 영국 동물학자 랜슬럿 호그벤에게서 왔고, 검사용 개구리의 국제 거래가 양서류 항아리곰팡이를 세계로 퍼뜨렸다는 견해가 있습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "여성의 소변을 이 동물의 한 아프리카 종에게 주사해",
+     "difWhy": "발톱개구리 임신 검사·거든 복제 — 대학 교양 생물",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 과학사 일화",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "여성의 소변을 이 동물의 한 아프리카 종에게 주사해",
+     "difWhy": "발톱개구리 임신 검사·거든 복제 — 대학 교양 생물",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 과학사 일화"
+    },
+    "rewrite": null,
+    "generalHint": "그 아프리카 종은 혀를 쓰지 못해 작은 앞발로 먹이를 입에 밀어 넣는다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "올챙이에서 자라 물과 뭍을 오가는 양서류",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 동물",
+     "piece": "f01",
+     "genPct": 100
+    },
+    "blind": {
+     "ref": "C1-20",
+     "key": "b222",
+     "hint": "그 아프리카 종은 혀를 쓰지 못해 작은 앞발로 먹이를 입에 밀어 넣는다.",
+     "guess": "개구리",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "개구리"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hogben_test",
+     "https://en.wikipedia.org/wiki/John_Gurdon"
+    ],
+    "facts": [
+     {
+      "claim": "소변을 아프리카발톱개구리에게 주사, 12시간쯤 안에 알 → 양성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hogben_test",
+      "note": "\"The urine samples were injected into African clawed frogs.\" A positive result showed up within about 12 hours as a small cluster of eggs"
+     },
+     {
+      "claim": "1940~60년대 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hogben_test",
+      "note": "Its use ran from roughly the 1940s to the 1960s, though the frog test was described as \"a highly dependable pregnancy testing method since the 1930s.\""
+     },
+     {
+      "claim": "1958년 거든 — 아프리카발톱개구리 올챙이 체세포 핵으로 복제",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Gurdon",
+      "note": "In 1958, Gurdon \"successfully cloned a frog using intact nuclei from the somatic cells of a Xenopus tadpole.\""
+     },
+     {
+      "claim": "호그벤 이름 · 항아리곰팡이 전파 견해",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hogben_test",
+      "note": "named after British zoologist Lancelot Hogben ... \"it has been suggested that the frog may have been the vector of the initial global spread of the fungus.\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Xenopus"
+    ],
+    "hintNote": "since their tongues are unusable, the frogs use their small fore limbs to aid in the feeding process.",
+    "easiestCue": "1958년 존 거든은 같은 종의 올챙이 체세포에서 꺼낸 핵을 옮겨 이 동물을 복제했는데",
+    "targetWhy": "호그벤 임신 검사·거든 복제는 교과 밖 생물학사 애호가 지식",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "'올챙이'를 빼 범주 단서를 없앰 — 대표 일화(갈바니)도 쓰지 않음",
+    "pairCheck": null,
+    "dbCheck": "개구리 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "animals/5#g019b-C1-21",
+   "seed": {
+    "subject": "도롱뇽",
+    "aspect": null,
+    "ref": "C1-21",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1481년 영국의 인쇄업자 윌리엄 캑스턴은 이 동물이 털을 지녀 그것으로 불에 타지 않는 옷감과 띠를 짠다고 썼지만, 마르코 폴로는 그 옷감이 땅에서 캐낸 광물임을 알아보았습니다. 첼리니가 어린 시절 불 속에서 보았다고 자서전에 적은 이 동물은?",
+    "answer": "도롱뇽",
+    "acceptedAnswers": [
+     "샐러맨더"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "전설 속 '불도마뱀'을 국내 게임·판타지에서 '샐러맨더'로 흔히 씀 — 같은 대상(salamander)의 음차",
+    "explanation": "토머스 불핀치는 겁먹은 이 동물이 내는 젖빛 분비물이 잠시 불을 견디게 해 이런 이야기가 생겼을 것이라고 보았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "첼리니가 어린 시절 불 속에서 보았다고",
+     "difWhy": "불도롱뇽 전설 — 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 동물 전설",
+     "acc": 5,
+     "accWhy": "동물 — 초등 과학·전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "첼리니가 어린 시절 불 속에서 보았다고",
+     "difWhy": "불도롱뇽 전설 — 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 동물 전설"
+    },
+    "rewrite": null,
+    "generalHint": "16세기 파라켈수스는 이 동물을 네 원소 가운데 불의 정령으로 보았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "꼬리가 긴 도마뱀 꼴의 양서류",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "누구나 아는 동물",
+     "piece": "f08",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "C1-21",
+     "key": "b124",
+     "hint": "16세기 파라켈수스는 이 동물을 네 원소 가운데 불의 정령으로 보았다.",
+     "guess": "도롱뇽(샐러맨더)",
+     "confidence": "high",
+     "hit": true,
+     "answer": "도롱뇽"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Salamanders_in_folklore"
+    ],
+    "facts": [
+     {
+      "claim": "1481년 캑스턴 — 털로 불에 타지 않는 옷감·띠",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Salamanders_in_folklore",
+      "note": "William Caxton wrote in 1481: \"This Salemandre berithe wulle, of which is made cloth and gyrdles that may not brenne in the fyre.\""
+     },
+     {
+      "claim": "마르코 폴로 — 생물이 아니라 땅에서 캔 물질",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Salamanders_in_folklore",
+      "note": "he \"recognized this was no creature, but rather an incombustible substance mined from earth.\""
+     },
+     {
+      "claim": "첼리니가 어린 시절 불 속에서 보았다고 자서전에",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Salamanders_in_folklore",
+      "note": "Cellini claimed that, as a child, he saw a salamander appear from a fire ... he \"famously recalled witnessing just such an appearance as a child in his autobiography.\""
+     },
+     {
+      "claim": "불핀치의 설명",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Salamanders_in_folklore",
+      "note": "Thomas Bulfinch later suggested that a frightened salamander could release a milky substance that might protect it long enough to escape the flames"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Salamanders_in_folklore"
+    ],
+    "hintNote": "Paracelsus (1493–1541) suggested that salamanders were the elementals of fire",
+    "easiestCue": "첼리니가 어린 시절 불 속에서 보았다고 자서전에 적은 이 동물은?",
+    "targetWhy": "불 전설을 이 양서류의 한국 이름과 잇는 것은 애호가 — 캑스턴·폴로·첼리니 기록은 교과 밖",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "게이머는 '불 속 동물=샐러맨더'를 알아 3일 수 있음(그래서 샐러맨더를 변형으로)",
+    "pairCheck": null,
+    "dbCheck": "도롱뇽 · 샐러맨더 new",
+    "warn": []
+   }
+  }
+ ]
+}

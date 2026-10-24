@@ -1,0 +1,125 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "energy/2",
+  "midKey": "energy",
+  "subName": "재생 에너지",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "energy/2#g019b-C2-18",
+   "seed": {
+    "subject": "태양 전지",
+    "aspect": null,
+    "ref": "C2-18",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1954년 미국 벨 연구소의 캘빈 풀러·대릴 채핀·제럴드 피어슨이 공개한 실리콘 소자입니다. 그보다 앞선 1883년 찰스 프리츠가 셀레늄으로 만든 같은 종류의 소자는 효율이 1% 안팎에 그쳤는데, 이 소자는 무엇일까요?",
+    "answer": "태양 전지",
+    "acceptedAnswers": [
+     "솔라셀",
+     "태양광 전지"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "솔라셀 · 태양광 전지 — ko.wikipedia '태양 전지' 문서의 다른 이름과 업계 용어",
+    "explanation": "1958년 미국 위성 뱅가드 1호에 실려 처음으로 우주에서 쓰였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "엮음: 벨 연구소 실리콘 소자 + 셀레늄 소자 효율 1%",
+     "difWhy": "실리콘·효율로 발전 소자 추론 — 고교 과학",
+     "wor": 4,
+     "worWhy": "교양 — 재생에너지 기술사",
+     "acc": 4,
+     "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1958년 미국 위성 뱅가드 1호에 실려 처음으로 우주에서",
+     "difWhy": "실리콘 발전 소자 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 에너지 기본 어휘"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1954년 미국 벨 연구소의 캘빈 풀러·대릴 채핀·제럴드 피어슨이 공개한 실리콘 소자는, 1958년 미국 위성 뱅가드 1호에 실려 처음으로 우주에서 쓰였습니다. 이 소자는 무엇일까요?",
+     "beforeExplanation": "1883년 찰스 프리츠가 만든 셀레늄 소자는 효율이 1% 안팎에 그쳤습니다.",
+     "removedCue": "1958년 뱅가드 1호에 실려 처음 우주에서 쓰임(관심층 — 위성 전원)",
+     "addedCue": "1883년 프리츠의 셀레늄 소자(해설에서 옮김)",
+     "why": "위성 전원이라는 쓰임이 곧 답이라 해설로 내리고, 앞선 발명의 세부로 바꿈"
+    },
+    "generalHint": "1839년 열아홉 살의 에드몽 베크렐이 아버지 실험실에서 이것의 바탕이 되는 효과를 처음 보였다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "빛을 받아 전기를 만드는 반도체 소자",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "과학 교과서·일상 상식어",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "C2-18",
+     "key": "b242",
+     "hint": "1839년 열아홉 살의 에드몽 베크렐이 아버지 실험실에서 이것의 바탕이 되는 효과를 처음 보였다.",
+     "guess": "태양 전지",
+     "confidence": "high",
+     "hit": true,
+     "answer": "태양 전지"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Solar_cell"
+    ],
+    "facts": [
+     {
+      "claim": "1954년 벨 연구소 풀러·채핀·피어슨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Solar_cell",
+      "note": "The first practical photovoltaic cell was publicly demonstrated at Bell Laboratories. The inventors were Calvin Souther Fuller, Daryl Chapin and Gerald Pearson. (1954)"
+     },
+     {
+      "claim": "1883년 프리츠 셀레늄 소자 효율 1% 안팎",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Solar_cell",
+      "note": "Charles Fritts's 1883 selenium cell ... only around 1% efficient"
+     },
+     {
+      "claim": "1958년 뱅가드 1호에 실려 우주에서 처음 쓰임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Solar_cell",
+      "note": "Solar cells were first used in a prominent application when they were proposed and flown on the Vanguard satellite in 1958 · Vanguard 1 featured the first solar cells in space"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Solar_cell"
+    ],
+    "hintNote": "The photovoltaic effect was experimentally demonstrated first by French physicist Edmond Becquerel. In 1839, at age 19, he built the world's first photovoltaic cell in his father's laboratory.",
+    "easiestCue": "1954년 벨 연구소의 풀러·채핀·피어슨",
+    "targetWhy": "발명자 이름과 셀레늄 선구 소자는 과학기술사 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "흔한 소자의 첫 쓰임",
+    "pairCheck": null,
+    "dbCheck": "answercheck new · 태양광 발전·광전효과·페로브스카이트(활성)와 다른 지식",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

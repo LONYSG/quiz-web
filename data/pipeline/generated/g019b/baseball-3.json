@@ -1,0 +1,440 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "baseball/3",
+  "midKey": "baseball",
+  "subName": "MLB",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "baseball/3#g019b-S1-11",
+   "seed": {
+    "subject": "오타니",
+    "aspect": null,
+    "ref": "S1-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "어머니는 고교 시절 전국 대회급 배드민턴 선수였습니다. 고교 감독 사사키 히로시는 겸손을 가르치려고 그에게 화장실 청소를 맡겼다고 하는데, 이 일본 야구 선수는 누구일까요?",
+    "answer": "오타니",
+    "acceptedAnswers": [
+     "오타니 쇼헤이"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '오타니 쇼헤이' 문서 제목 · 한국 중계·기사는 '오타니' 단독 호칭이 흔함",
+    "explanation": "존경하던 투수 기쿠치 유세이와 같은 하나마키히가시 고교를 골랐고, 프로에 들어가며 다르빗슈 유가 달던 11번을 물려받았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "고교 감독 사사키 히로시가 화장실 청소를 맡긴 일본 야구 선수",
+     "difWhy": "하나마키히가시 일화 — 야구 관심층 (경계 4)",
+     "wor": 3,
+     "worWhy": "세계적 스타 일화",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "다르빗슈 유가 달던 11번을 물려받은 이 선수",
+     "difWhy": "니혼햄 11번 계승 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "유명 인물 이름 맞히기"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "어머니는 고교 시절 전국 대회급 배드민턴 선수였고, 그는 존경하던 투수 기쿠치 유세이와 같은 고교를 골랐습니다. 프로에 들어가며 다르빗슈 유가 달던 11번을 물려받은 이 선수는 누구일까요?",
+     "beforeExplanation": "고교 감독 사사키 히로시는 겸손을 가르치려고 그에게 화장실 청소를 맡겼다고 합니다.",
+     "removedCue": "다르빗슈 유가 달던 11번을 물려받음(관심층) · 기쿠치 유세이와 같은 고교",
+     "addedCue": "고교 감독 사사키 히로시의 화장실 청소(해설에서 올림)",
+     "why": "팬이 아는 등번호·고교 선배 단서를 해설로 내리고 고교 시절 일화로 바꿈"
+    },
+    "generalHint": "그의 개 데코핀은 도쿄의 미국 대사관에서 명예 비자를 받았다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "투수와 타자를 함께 하는 일본인 메이저리거",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "스포츠 뉴스에 늘 나오는 메이저리거",
+     "piece": "f03",
+     "genPct": 88
+    },
+    "blind": {
+     "ref": "S1-11",
+     "key": "b223",
+     "hint": "그의 개 데코핀은 도쿄의 미국 대사관에서 명예 비자를 받았다.",
+     "guess": "오타니 쇼헤이",
+     "confidence": "high",
+     "hit": true,
+     "answer": "오타니"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Shohei_Ohtani"
+    ],
+    "facts": [
+     {
+      "claim": "어머니가 고교 시절 전국 수준 배드민턴 선수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shohei_Ohtani",
+      "note": "His mother Kayoko was a national-level badminton player in high school"
+     },
+     {
+      "claim": "존경하던 기쿠치 유세이와 같은 고교(하나마키히가시) 선택",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Shohei_Ohtani",
+      "note": "he opted to stay local, selecting Hanamaki Higashi High School in Iwate Prefecture, the same high school as pitcher Yusei Kikuchi, whom he admired"
+     },
+     {
+      "claim": "입단 때 다르빗슈가 달던 11번",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Shohei_Ohtani",
+      "note": "Upon joining the Fighters, Ohtani was assigned the No. 11 jersey, which had previously been worn by pitcher Yu Darvish."
+     },
+     {
+      "claim": "사사키 감독이 겸손을 가르치려 화장실 청소를 맡김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shohei_Ohtani",
+      "note": "Sasaki would assign toilet cleaning chores to Ohtani, to teach him humility."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Shohei_Ohtani"
+    ],
+    "hintNote": "Ohtani has a Kooikerhondje dog named Dekopin, also known as Decoy. The dog received an honorary visa from the Embassy of the United States, Tokyo.",
+    "easiestCue": "고교 감독 사사키 히로시가 화장실 청소를 맡김",
+    "targetWhy": "어머니의 배드민턴 경력·고교 감독의 화장실 청소는 야구 애호가 세부",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 정답의 일본 시절 세부",
+    "pairCheck": null,
+    "dbCheck": "오타니 · 오타니 쇼헤이 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/3#g019b-S1-12",
+   "seed": {
+    "subject": "단풍나무",
+    "aspect": null,
+    "ref": "S1-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1997년 메이저리그가 처음 공인한 이 나무 방망이는 토론토의 조 카터가 처음 썼고, 배리 본즈가 2001년 한 시즌 최다 홈런 기록을 세울 때도 썼습니다. 잘 부러지는 탓에 뒤에 나뭇결 검사가 더해진 이 방망이의 나무는?",
+    "answer": "단풍나무",
+    "acceptedAnswers": [
+     "메이플"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '단풍나무' · '메이플' 문서 · 한국 야구 보도에서 '메이플 배트' 표기가 흔함",
+    "explanation": "나무 방망이는 대부분 물푸레나무로 만들어 왔고, 히코리는 무거워 스윙이 느려진다며 밀려났습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "토론토의 조 카터가 처음 썼고",
+     "difWhy": "메이플 배트 — 야구 애호가",
+     "wor": 2,
+     "worWhy": "팬 세부 — 방망이 재질",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "토론토의 조 카터가 처음 썼고",
+     "difWhy": "메이플 배트 — 야구 애호가",
+     "wor": 2,
+     "worWhy": "팬 세부 — 방망이 재질"
+    },
+    "rewrite": null,
+    "generalHint": null,
+    "generalHintVersion": null,
+    "identity": "가을에 잎이 붉게 물드는 낙엽 활엽수",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "누구나 아는 나무",
+     "piece": "f02",
+     "genPct": 99
+    },
+    "blind": null,
+    "hobby": "장비",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Baseball_bat"
+    ],
+    "facts": [
+     {
+      "claim": "1997년 첫 MLB 공인 모델, 조 카터가 처음 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Baseball_bat",
+      "note": "maple bats gained popularity following the introduction of the first MLB-sanctioned model in 1997. The first player to use one was Joe Carter of the Toronto Blue Jays."
+     },
+     {
+      "claim": "본즈가 2001년 한 시즌 홈런 기록 때 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Baseball_bat",
+      "note": "Barry Bonds used maple bats the seasons he broke baseball's single-season home run record in 2001, and the career home run record in 2007."
+     },
+     {
+      "claim": "잘 부러짐 → 나뭇결 기울기·잉크 점 검사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Baseball_bat",
+      "note": "In 2010, the increased tendency of maple bats to shatter caused Major League Baseball to examine their use ... Maple bat manufacture evolved significantly, in cooperation with Major League Baseball, paying special attention to grain slope, and including an ink spot test to confirm safest wood grain orientation."
+     },
+     {
+      "claim": "대부분 물푸레나무, 히코리는 무거워 밀려남",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Baseball_bat",
+      "note": "Most wooden bats are made from ash; other woods include maple, hickory, and bamboo. Hickory has fallen into disfavor over its greater weight, which slows down bat speed"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": null,
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "배리 본즈가 2001년 한 시즌 최다 홈런 기록을 세울 때도 썼습니다",
+    "targetWhy": "방망이 재질의 역사는 야구 애호가 장비 세부 — 일반인은 나무 종류를 모름",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "누구나 아는 나무의 뜻밖의 야구 쓰임 — 찍기(물푸레·단풍) 여지는 있음",
+    "pairCheck": null,
+    "dbCheck": "단풍나무 · 메이플 new",
+    "warn": [
+     "정답조각 나무",
+     "단정어 처음"
+    ],
+    "discarded": "선별 게이트 — 알 가치 2 (팬 세부 — 방망이 재질) · sports 는 3 이상"
+   }
+  },
+  {
+   "seedId": "baseball/3#g019b-S1-13",
+   "seed": {
+    "subject": "토론토 블루제이스",
+    "aspect": null,
+    "ref": "S1-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1976년 1월 샌프란시스코 자이언츠가 이 도시로 옮겨 오려다 법원 판결로 무산됐고, 그해 리그 확장으로 이 구단이 생겼습니다. 이름은 응모작 4,000여 건에서 골랐고 대주주였던 맥주 회사의 간판 맥주도 영향을 준 이 구단은?",
+    "answer": "토론토 블루제이스",
+    "acceptedAnswers": [
+     "블루제이스"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '토론토 블루제이스' 문서 제목 · '블루제이스' 넘겨주기 문서 있음",
+    "explanation": "1977년 4월 7일 눈보라 속에서 치른 첫 경기에서 시카고 화이트삭스를 이겼습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "대주주였던 맥주 회사의 간판 맥주도 영향을 준 이 구단",
+     "difWhy": "블루제이스 창단 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "대주주였던 맥주 회사의 간판 맥주도 영향을 준 이 구단",
+     "difWhy": "블루제이스 창단 — 야구 애호가",
+     "wor": 3,
+     "worWhy": "유명 구단 이름 맞히기"
+    },
+    "rewrite": null,
+    "generalHint": "이 구단이 1989년부터 쓴 홈구장은 지붕 전체를 기계로 여닫는 첫 경기장이었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "캐나다 최대 도시를 연고로 한 메이저리그 구단",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "류현진 소속 구단으로 뉴스에 많이 나옴",
+     "piece": "f03",
+     "genPct": 45
+    },
+    "blind": {
+     "ref": "S1-13",
+     "key": "b238",
+     "hint": "이 구단이 1989년부터 쓴 홈구장은 지붕 전체를 기계로 여닫는 첫 경기장이었다.",
+     "guess": "토론토 블루제이스",
+     "confidence": "high",
+     "hit": true,
+     "answer": "토론토 블루제이스"
+    },
+    "hobby": "구단 역사",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Toronto_Blue_Jays"
+    ],
+    "facts": [
+     {
+      "claim": "1976년 1월 자이언츠의 토론토 이전이 법원 판결로 무산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Toronto_Blue_Jays",
+      "note": "In January 1976, the San Francisco Giants nearly relocated to Toronto after owner Horace Stoneham agreed to sell the team to a Canadian consortium. ... However, a court ruling halted the move"
+     },
+     {
+      "claim": "1976년 아메리칸리그 확장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Toronto_Blue_Jays",
+      "note": "leading to their successful bid in the 1976 American League expansion"
+     },
+     {
+      "claim": "응모작 4,000여 건, 대주주 라바트의 간판 맥주 영향",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Toronto_Blue_Jays",
+      "note": "was named the Toronto Blue Jays following a contest that attracted over 4,000 suggestions. The name reflected Toronto's tradition of using blue in team colours and was influenced by majority owner Labatt Breweries' flagship beer, Labatt Blue."
+     },
+     {
+      "claim": "1977년 4월 7일 눈보라 속 첫 경기 승리",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Toronto_Blue_Jays",
+      "note": "The Blue Jays debuted on April 7, 1977, with a win against the Chicago White Sox amid a snowstorm"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Rogers_Centre"
+    ],
+    "hintNote": "The venue is noted for being the first stadium to have a fully retractable motorized roof … Opened in 1989 … it is home to the Toronto Blue Jays",
+    "easiestCue": "이름은 응모작 4,000여 건에서 골랐고 대주주였던 맥주 회사의 간판 맥주도 영향을 준",
+    "targetWhy": "창단 경위·이름 유래는 MLB 애호가 세부 — '유일한 캐나다 구단'·류현진 단서 뺌",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "한국 선수들로 들어 본 구단의 창단 사연",
+    "pairCheck": null,
+    "dbCheck": "토론토 블루제이스 · 블루제이스 new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "baseball/3#g019b-S1-14",
+   "seed": {
+    "subject": "홈런 더비",
+    "aspect": null,
+    "ref": "S1-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1959년 12월 로스앤젤레스의 리글리 필드에서 찍은 1960년 TV 쇼에서 영감을 받아 1985년 메이저리그에서 처음 열린 행사입니다. 2023년 블라디미르 게레로 주니어가 우승해 2007년 우승자인 아버지와 함께 첫 부자 우승을 이룬 이 행사는?",
+    "answer": "홈런 더비",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "그 TV 쇼는 담장을 넘기지 못한 타구는 모두 아웃으로 치는 9이닝 대결이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "게레로 주니어 우승으로 첫 부자 우승을 이룬 MLB 행사",
+     "difWhy": "올스타 행사 — 야구 관심층",
+     "wor": 3,
+     "worWhy": "야구 행사 이야깃거리",
+     "acc": 4,
+     "accWhy": "야구 — 국민 인기 스포츠"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "담장을 넘기지 못한 타구는 모두 아웃으로 치는 9이닝 대결",
+     "difWhy": "홈런 대결 행사 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 행사 기원"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1959년 12월 로스앤젤레스의 리글리 필드에서 찍은 1960년 TV 쇼는, 담장을 넘기지 못한 타구는 모두 아웃으로 치는 9이닝 대결이었습니다. 이 쇼에서 영감을 받아 1985년 메이저리그에서 처음 열린 행사는?",
+     "beforeExplanation": "2023년 블라디미르 게레로 주니어가 우승하며, 2007년 우승자인 아버지와 함께 첫 부자 우승을 이뤘습니다.",
+     "removedCue": "담장을 넘기지 못한 타구는 모두 아웃으로 치는 9이닝 대결",
+     "addedCue": "2023년 게레로 부자 우승",
+     "why": "규칙 설명(정체가 바로 드러남)을 해설로 옮기고 부자 우승 기록으로 바꿈"
+    },
+    "generalHint": "1985년 첫 대회에는 양대 리그에서 다섯 명씩 나왔다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "올스타전 무렵 타자들이 담장 넘기기를 겨루는 이벤트",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "야구 올스타전 행사로 들어 봄",
+     "piece": "f08",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "S1-14",
+     "key": "b028",
+     "hint": "1985년 첫 대회에는 양대 리그에서 다섯 명씩 나왔다.",
+     "guess": "홈런 더비",
+     "confidence": "high",
+     "hit": true,
+     "answer": "홈런 더비"
+    },
+    "hobby": "기록 뒷이야기",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Home_Run_Derby_(1960_TV_series)",
+     "https://en.wikipedia.org/wiki/Home_Run_Derby"
+    ],
+    "facts": [
+     {
+      "claim": "1959년 12월 LA 리글리 필드에서 촬영, 1960년 방영",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Home_Run_Derby_(1960_TV_series)",
+      "note": "Home Run Derby is a 1960 television show that was held at Wrigley Field in Los Angeles ... Filmed in December 1959, the series aired in syndication from January 9 to July 2, 1960"
+     },
+     {
+      "claim": "9이닝, 홈런이 아닌 타구는 모두 아웃",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Home_Run_Derby_(1960_TV_series)",
+      "note": "Each batter had nine innings to hit as many home runs as possible. Each inning consisted of three outs, and any ball not hit for a home run, including called strikes, would be recorded as an out."
+     },
+     {
+      "claim": "그 쇼에서 영감, 1985년 첫 대회",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Home_Run_Derby",
+      "note": "The inspiration for the event was a 1960 TV series called Home Run Derby. / Since the inaugural derby in 1985"
+     },
+     {
+      "claim": "2023년 게레로 주니어 우승, 2007년 아버지와 첫 부자 우승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Home_Run_Derby",
+      "note": "With his win in 2023, Guerrero Jr. joined his father Vladimir Guerrero (the 2007 winner) to become the first father-son duo to win the Derby."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Home_Run_Derby"
+    ],
+    "hintNote": "The first Derby in 1985 featured five from each league",
+    "easiestCue": "2023년 블라디미르 게레로 주니어가 우승해 … 첫 부자 우승",
+    "targetWhy": "TV 쇼 기원 · 부자 우승 — 야구 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'담장 넘기기 대결' 꼴에서 추리할 여지 — 행사 이름까지 가려면 아는 사람이어야 함",
+    "pairCheck": null,
+    "dbCheck": "홈런 더비 new",
+    "warn": [
+     "단정어 모두",
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}

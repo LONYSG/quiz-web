@@ -1,0 +1,351 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "calendar/3",
+  "midKey": "calendar",
+  "subName": "달력·역법",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "calendar/3#g019b-L2-04",
+   "seed": {
+    "subject": "본초 자오선",
+    "aspect": null,
+    "ref": "L2-04",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 국제회의가 이 선을 정하는 결의를 22 대 1로 통과시켰습니다. 산도밍고만 반대하고 프랑스와 브라질은 기권했으며, 프랑스는 1911년까지 파리 시각을 지켰는데, 이때 정한 이 기준선은?",
+    "answer": "본초 자오선",
+    "acceptedAnswers": [
+     "그리니치 자오선"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '본초 자오선' 문서가 그리니치 자오선을 같은 뜻으로 소개 — 같은 대상의 다른 이름",
+    "explanation": "1884년 10월 미국 워싱턴에서 열린 이 회의는 영국 그리니치 천문대의 자오의 중심을 지나는 선을 기준으로 삼았습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "국제회의가 정한 기준선, 프랑스는 1911년까지 파리 시각",
+     "difWhy": "그리니치 기준선 — 고교 지리",
+     "wor": 5,
+     "worWhy": "교과 지리 개념",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1884년 10월 미국 워싱턴에서 열린 국제회의",
+     "difWhy": "그리니치 기준선 — 고교 지리",
+     "wor": 5,
+     "worWhy": "교과 — 경도 기준"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1884년 10월 미국 워싱턴에서 열린 국제회의는 이 선을 정하는 결의를 22 대 1로 통과시켰습니다. 산도밍고만 반대하고 프랑스와 브라질은 기권했으며, 프랑스는 1911년까지 파리 시각을 지켰습니다. 이때 정한 이 기준선은?",
+     "beforeExplanation": "회의는 영국 그리니치 천문대의 자오의 중심을 지나는 선을 이 기준으로 삼았습니다.",
+     "removedCue": "1884년 10월 미국 워싱턴에서 열린 국제회의",
+     "addedCue": "(뺌만 — 남은 단서: 22 대 1 표결 · 산도밍고 반대 · 프랑스 1911)",
+     "why": "고교 지리의 1884 워싱턴 회의를 해설로 옮김"
+    },
+    "generalHint": "오늘날 GPS가 쓰는 기준선은 영국 옛 천문대가 있는 위도에서 이 선과 102m쯤 떨어져 지난다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "경도 0도를 정한 기준 경선",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "중고교 지리 교과서에서 배우는 용어",
+     "piece": "f01",
+     "genPct": 60
+    },
+    "blind": {
+     "ref": "L2-04",
+     "key": "b190",
+     "hint": "오늘날 GPS가 쓰는 기준선은 영국 옛 천문대가 있는 위도에서 이 선과 102m쯤 떨어져 지난다.",
+     "guess": "본초 자오선",
+     "confidence": "high",
+     "hit": true,
+     "answer": "본초 자오선"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/International_Meridian_Conference"
+    ],
+    "facts": [
+     {
+      "claim": "1884년 10월 워싱턴 D.C. 국제 자오선 회의",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/International_Meridian_Conference",
+      "note": "held in October 1884 in Washington, D.C."
+     },
+     {
+      "claim": "22 대 1 통과, 산도밍고 반대, 프랑스·브라질 기권",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Meridian_Conference",
+      "note": "Resolution 2 ... passed 22–1 (San Domingo, now the Dominican Republic, voted against). France and Brazil abstained."
+     },
+     {
+      "claim": "프랑스는 1911년까지 파리 시각 유지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Meridian_Conference",
+      "note": "The French maintained Paris time till 1911."
+     },
+     {
+      "claim": "그리니치를 기준 자오선으로 정함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/International_Meridian_Conference",
+      "note": "Resolution 2, fixing Greenwich as the initial meridian"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/IERS_Reference_Meridian"
+    ],
+    "hintNote": "It is the reference meridian of the Global Positioning System (GPS) ... At the latitude of the Royal Observatory, Greenwich, the difference is 102 metres (335 ft).",
+    "easiestCue": "프랑스는 1911년까지 파리 시각을 지켰는데",
+    "targetWhy": "표결 세부 · 프랑스의 버팀 — 역사·지리 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "1884년 회의 자체가 일부 교과서에 나올 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new (1785 위도 기준 적도와 다름)",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "calendar/3#g019b-L2-05",
+   "seed": {
+    "subject": "마야력",
+    "aspect": null,
+    "ref": "L2-05",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 해 끝의 닷새 '와예브'를 위험한 때로 여겼고, 기념비에는 기원전 3114년 8월 11일로 보는 신화 속 창조일부터 센 날수를 새겼습니다. 이 고대 문명의 달력은 무엇일까요?",
+    "answer": "마야력",
+    "acceptedAnswers": [
+     "마야 달력"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '마야력' 문서 제목·본문의 '마야 달력' 표기 확인",
+    "explanation": "장기 계산법의 13번째 박툰이 끝나고 14번째 박툰이 시작된 날은 2012년 12월 21일이었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "기원전 3114년 8월 11일 창조일부터 센 날수를 새긴 달력",
+     "difWhy": "장기 계산법 기점 — 역법 애호가 (경계 3)",
+     "wor": 3,
+     "worWhy": "고대 달력 이야깃거리",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "260일 주기와 365일 주기를 맞물려 52년마다",
+     "difWhy": "마야 장주기력 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 고대 문명"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "260일 주기와 365일 주기를 맞물려 52년마다 한 바퀴 도는 날짜를 썼고, 기념비에는 기원전 3114년 8월 11일로 보는 신화 속 창조일부터 센 날수를 새겼습니다. 이 고대 문명의 달력은 무엇일까요?",
+     "beforeExplanation": null,
+     "removedCue": "260일 주기와 365일 주기를 맞물려 52년마다",
+     "addedCue": "불길한 닷새 '와예브'",
+     "why": "교양서에 흔한 두 주기 결합을 빼고 와예브 세부로 바꿈"
+    },
+    "generalHint": "1562년 7월 12일 에스파냐 수사 디에고 데 란다가 이 문명의 책들을 불태웠다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "중앙아메리카 고대 문명이 쓴 여러 주기의 달력",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "2012 종말론 뉴스·영화로 들어 봄",
+     "piece": "f07",
+     "genPct": 60
+    },
+    "blind": {
+     "ref": "L2-05",
+     "key": "b194",
+     "hint": "1562년 7월 12일 에스파냐 수사 디에고 데 란다가 이 문명의 책들을 불태웠다.",
+     "guess": "마야 문명",
+     "confidence": "high",
+     "hit": false,
+     "answer": "마야력"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mesoamerican_Long_Count_calendar",
+     "https://en.wikipedia.org/wiki/Maya_calendar"
+    ],
+    "facts": [
+     {
+      "claim": "기원전 3114년 8월 11일 창조일부터 세는 장기 계산법, 기념비에 새김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mesoamerican_Long_Count_calendar",
+      "note": "a mythical creation date that corresponds to August 11, 3114 BCE in the proleptic Gregorian calendar ... it is often known as the Maya Long Count calendar."
+     },
+     {
+      "claim": "기념비에 날짜 새김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maya_calendar",
+      "note": "It was used for longer spans and for inscribing dates on monuments."
+     },
+     {
+      "claim": "14번째 박툰 시작 2012년 12월 21일",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mesoamerican_Long_Count_calendar",
+      "note": "the start of the 14th bʼakʼtun, 13.0.0.0.0, on December 21, 2012."
+     },
+     {
+      "claim": "하브는 20일짜리 18달 + 닷새",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maya_calendar",
+      "note": "The Haabʼ was made up of eighteen months of twenty days each plus a period of five days."
+     },
+     {
+      "claim": "와예브 닷새는 위험한 때",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maya_calendar",
+      "note": "Wayebʼ: thought to be a dangerous time."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Diego_de_Landa"
+    ],
+    "hintNote": "During the ceremony on July 12, 1562, a disputed number of Maya codices (according to Landa, 27 books) … were burned.",
+    "easiestCue": "기원전 3114년 8월 11일로 보는 신화 속 창조일부터 센 날수",
+    "targetWhy": "와예브 · 장기 계산법 기점 — 고대사 애호가 세부(4)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "260·365일 주기는 아즈텍과도 같아 장기 계산법 단서가 있어야 마야로 갈림",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "calendar/3#g019b-L2-06",
+   "seed": {
+    "subject": "단기",
+    "aspect": null,
+    "ref": "L2-06",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1948년 7월 국회가 의결한 법률 제4호는 이것을 대한민국의 공용 연호로 정했습니다. 그러나 5·16 군사 정부가 1961년 12월 법률 제775호로 바꾸면서 1962년 1월 1일부터 쓰지 않게 되었는데, 이 연호를 줄여 부르는 말은?",
+    "answer": "단기",
+    "acceptedAnswers": [
+     "단군기원"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia '단군기원' 문서: '단군기원(檀君紀元) 또는 단기(檀紀)'",
+    "explanation": "《동국통감》을 따라 기원전 2333년을 원년으로 삼지만, 《삼국유사》 주석대로 계산하면 기원전 2284년이 됩니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "1948년 7월 국회가 의결한 법률 제4호는 이것을 대한민국의 공용 연호로",
+     "difWhy": "단군기원 연호 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 연호 상식",
+     "acc": 5,
+     "accWhy": "절기·기념일 — 초등 교과·일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "1948년 7월 국회가 의결한 법률 제4호는 이것을 대한민국의 공용 연호로",
+     "difWhy": "단군기원 연호 — 관심 있는 사람",
+     "wor": 4,
+     "worWhy": "교양 — 연호 상식"
+    },
+    "rewrite": {
+     "changed": false,
+     "before": null,
+     "beforeExplanation": null,
+     "removedCue": null,
+     "addedCue": null,
+     "why": "'1962년부터 쓰지 않게 된 공용 연호' 자체가 관심층 단서 — 1948년 법률을 빼도 1961년 법률이 같은 단계로 남고, 남는 깊은 세부(국회 찬성 표수)는 수치라 알 가치가 떨어짐"
+    },
+    "generalHint": "2012년 법제처는 이것을 서기와 함께 쓰면 불기(佛紀)도 문제가 될 수 있다며 공용 연호로 쓸 수 없다고 밝혔다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "단군의 건국 해를 원년으로 삼는 기년법의 줄임말",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "단기 4357년 식 표현으로 교과서·달력에서 접함",
+     "piece": "f02",
+     "genPct": 75
+    },
+    "blind": {
+     "ref": "L2-06",
+     "key": "b075",
+     "hint": "2012년 법제처는 이것을 서기와 함께 쓰면 불기(佛紀)도 문제가 될 수 있다며 공용 연호로 쓸 수 없다고 밝혔다.",
+     "guess": "단기",
+     "confidence": "high",
+     "hit": true,
+     "answer": "단기"
+    },
+    "hobby": null,
+    "defForm": true,
+    "sources": [
+     "https://ko.wikipedia.org/wiki/단군기원"
+    ],
+    "facts": [
+     {
+      "claim": "1948년 7월 국회 의결 법률 제4호 「연호에 관한 법률」로 공용 연호",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/단군기원",
+      "note": "1948년 7월 11일 국회에서 「연호에 관한 법률」(법률 제4호)이 의결되어 ... \"대한민국의 공용 연호는 단군기원(檀君紀元)으로 한다.\""
+     },
+     {
+      "claim": "1961년 12월 법률 제775호, 1962년 1월 1일 폐지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/단군기원",
+      "note": "5.16 군사정부가 1961년 12월 2일 법률 제775호로 공용 연호를 서력기원으로 바꾸었고, 이에 따라 1962년 1월 1일부터 단군기원이 폐지되었습니다."
+     },
+     {
+      "claim": "동국통감 기원전 2333년, 삼국유사 주석 기원전 2284년",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/단군기원",
+      "note": "《동국통감》은 단군이 당요 무진년(기원전 2333년)에 나라를 세웠다고 서술 / 《삼국유사》의 주석에 따르면 해당 연도는 정사년으로, 기원전 2284년에 해당"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/단군기원"
+    ],
+    "hintNote": "법제처는 2012년 7월 8일 \"대한민국의 공용연호는 서기이며, 단기를 함께 쓸 경우 불기(佛紀)도 문제될 수 있으므로 혼란이 커질 것\"이라는 이유로 단기연호를 공용연호로 쓸 수 없음을 발표하였다.",
+    "easiestCue": "1948년 법률 제4호가 대한민국의 공용 연호로 정했고 1962년부터 쓰지 않게 되었다",
+    "targetWhy": "'서기+2333'(교과 단서)을 빼고 법률 번호·폐지 경위만 남김 — 한국 현대사 애호가 4 (경계 3)",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "'1962년 전 한국의 연호'를 부모 세대 기억으로 아는 사람이 있을 수 있음",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "낱말뜻꼴"
+    ]
+   }
+  }
+ ]
+}

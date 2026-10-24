@@ -1,0 +1,334 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "fashion/2",
+  "midKey": "fashion",
+  "subName": "패션 브랜드·디자이너",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "fashion/2#g019b-L1-15",
+   "seed": {
+    "subject": "노스페이스",
+    "aspect": null,
+    "ref": "L1-15",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1966년 샌프란시스코에 문을 연 이 회사의 첫 매장 개업식에서는 그레이트풀 데드가 공연했습니다. 창업자 더글러스 톰킨스는 곧 지분을 팔고 그 돈으로 아내와 의류 회사 에스프리를 차렸는데, 그가 처음 세운 이 회사는?",
+    "answer": "노스페이스",
+    "acceptedAnswers": [
+     "더 노스페이스",
+     "The North Face"
+    ],
+    "originalTitleVariants": [
+     "The North Face"
+    ],
+    "variantCheck": "상표가 영어(The North Face) — B10. '더 노스페이스' 는 공식 이름의 한글 표기(ko.wikipedia 문서 제목은 '노스페이스')",
+    "explanation": "톰킨스는 2015년 칠레 남부 헤네랄카레라 호수에서 파타고니아 창업자 이본 쉬나르 등과 카약을 타다 배가 뒤집히는 사고를 당해 숨졌습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "창업자 더글러스 톰킨스가 지분을 팔고 에스프리를 차렸다",
+     "difWhy": "톰킨스 창업사 — 패션 애호가",
+     "wor": 3,
+     "worWhy": "유명 브랜드 창업 이야기",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "더글러스 톰킨스가 ... 샌프란시스코에 세운 등반·캠핑 장비 회사",
+     "difWhy": "노스페이스 창업 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 브랜드 내력"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1964년 더글러스 톰킨스가 은행에서 5,000달러를 빌려 샌프란시스코에 세운 등반·캠핑 장비 회사로, 1966년 첫 매장 개업식에서는 그레이트풀 데드가 공연했습니다. 톰킨스는 곧 지분을 팔고 아내와 의류 회사 에스프리를 차렸는데, 그가 처음 세운 이 회사는?",
+     "beforeExplanation": null,
+     "removedCue": "톰킨스가 은행에서 5,000달러를 빌려 샌프란시스코에 세운 등반·캠핑 장비 회사(관심층 — 아웃도어 창업)",
+     "addedCue": "없음(쉬운 단서만 뺌 — 개업식 공연·에스프리 창업이 남음)",
+     "why": "'등반·캠핑 장비 회사'라는 갈래가 아웃도어 관심층에게 바로 답을 줘 뺌"
+    },
+    "generalHint": "톰킨스의 지분은 1967년 케네스 '햅' 클롭에게 5만 달러에 넘어갔다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "미국의 아웃도어 의류·장비 브랜드로 반원 바위 로고를 씀",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "국민 패딩 브랜드",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "blind": {
+     "ref": "L1-15",
+     "key": "b201",
+     "hint": "톰킨스의 지분은 1967년 케네스 '햅' 클롭에게 5만 달러에 넘어갔다.",
+     "guess": "노스페이스",
+     "confidence": "high",
+     "hit": true,
+     "answer": "노스페이스"
+    },
+    "hobby": "캠핑",
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/The_North_Face",
+     "https://en.wikipedia.org/wiki/Douglas_Tompkins"
+    ],
+    "facts": [
+     {
+      "claim": "1966년 첫 매장 개업식에 그레이트풀 데드가 공연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_North_Face",
+      "note": "On October 26, 1966, the first The North Face store opened at 308 Columbus Ave in San Francisco, and the band the Grateful Dead played at its grand opening."
+     },
+     {
+      "claim": "톰킨스는 지분을 팔고 그 돈으로 아내와 에스프리를 공동 창업",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Douglas_Tompkins",
+      "note": "Two years later, Tompkins sold out his stake to Kenneth \"Hap\" Klopp for $50,000, using the profit to join his wife in co-founding Esprit, a fashion house."
+     },
+     {
+      "claim": "2015년 12월 8일 헤네랄카레라 호수에서 쉬나르 등과 카약 중 전복",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Douglas_Tompkins",
+      "note": "On December 8, 2015, Tompkins was kayaking with five others (including Patagonia, Inc. founder Yvon Chouinard) on General Carrera Lake in southern Chile when strong waves caused their kayaks to capsize."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_North_Face"
+    ],
+    "hintNote": "In 1967, Tompkins sold out his stake to Kenneth \"Hap\" Klopp for $50,000",
+    "easiestCue": "첫 매장 개업식에 그레이트풀 데드가 공연",
+    "targetWhy": "개업식 공연과 창업자의 에스프리 창업은 아웃도어·패션 애호가 세부라 4",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "국민 브랜드의 낯선 창업 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "new — 활성 5812 파타고니아(쉬나르)와 다른 답",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  },
+  {
+   "seedId": "fashion/2#g019b-L1-16",
+   "seed": {
+    "subject": "닥터마틴",
+    "aspect": null,
+    "ref": "L1-16",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1945년 스키를 타다 발목을 다친 한 독일인이 자기 부츠를 손본 데서 출발했습니다. 1959년 영국의 그리그스 그룹이 특허권을 사들여 1960년 4월 1일 첫 부츠를 내놓았는데, 이 브랜드는 무엇일까요?",
+    "answer": "닥터마틴",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": "ko.wikipedia 문서 제목 '닥터 마틴'(띄어쓰기만 다름 — 정규화로 같음, B8). 영문 'Dr. Martens' 는 마침표(특수문자 A5) 때문에 넣지 않음",
+    "explanation": "1960년대 후반에는 스킨헤드들이, 1970년대 말에는 펑크족과 스쿠터족이 즐겨 신으며 하위문화의 상징이 되었습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "1959년 영국의 그리그스 그룹이 특허권을 사들여",
+     "difWhy": "닥터마틴 기원 — 패션 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 브랜드 내력",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "1959년 영국의 그리그스 그룹이 특허권을 사들여",
+     "difWhy": "닥터마틴 기원 — 패션 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 브랜드 내력"
+    },
+    "rewrite": null,
+    "generalHint": "BBC는 더 후의 피트 타운센드가 이 부츠를 신은 첫 유명인이 됐다고 전했다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "노란 박음질의 영국 가죽 워커 부츠 브랜드",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "유명 워커 브랜드로 패션에서 익숙",
+     "piece": "f01",
+     "genPct": 72
+    },
+    "blind": {
+     "ref": "L1-16",
+     "key": "b111",
+     "hint": "BBC는 더 후의 피트 타운센드가 이 부츠를 신은 첫 유명인이 됐다고 전했다.",
+     "guess": "닥터 마틴",
+     "confidence": "high",
+     "hit": true,
+     "answer": "닥터마틴"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dr._Martens"
+    ],
+    "facts": [
+     {
+      "claim": "메르텐스는 2차 대전 때 독일군 의사였고 1945년 스키를 타다 발목을 다쳐 부츠를 개량했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dr._Martens",
+      "note": "Klaus Märtens was a doctor in the German Army during World War II. After he injured his ankle while skiing in 1945, he designed improvements to his boots."
+     },
+     {
+      "claim": "1959년 그리그스 그룹이 영국 생산 특허권을 샀다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dr._Martens",
+      "note": "In 1959, the company had grown large enough that Märtens and Funck looked at marketing the footwear internationally. Griggs Group bought patent rights to manufacture the shoes in the United Kingdom."
+     },
+     {
+      "claim": "첫 영국 부츠는 1960년 4월 1일 나왔다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dr._Martens",
+      "note": "There are now many variations of this classic design which was introduced on 1 April 1960."
+     },
+     {
+      "claim": "1960년대 후반 스킨헤드, 1970년대 말 스쿠터족·펑크족에게 인기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dr._Martens",
+      "note": "By the later 1960s, skinheads started to wear them ... and by the late 1970s, they were popular among scooter riders, punks, some new-wave musicians, and members of other youth subcultures."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dr._Martens"
+    ],
+    "hintNote": "According to the BBC, Pete Townshend of the Who \"became the first high-profile person to wear [Dr. Martens]",
+    "easiestCue": "1945년 스키를 타다 발목을 다친 한 독일인이 자기 부츠를 손본 데서 출발",
+    "targetWhy": "창업자 부상 일화·그리그스 특허 매입은 패션 애호가 지식 — 1460 모델명(관심층 대표 제품)·'의사' 는 쓰지 않음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "유명 브랜드의 교과서 밖 창업사, 이름 조각(의사·마틴)을 질문에서 뺐다",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  },
+  {
+   "seedId": "fashion/2#g019b-L1-17",
+   "seed": {
+    "subject": "뉴발란스",
+    "aspect": null,
+    "ref": "L1-17",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1906년 아일랜드 이민자 윌리엄 라일리가 보스턴에서 신발 속 아치 받침을 만드는 회사로 세웠고, 라일리는 마당의 닭을 보고 이름을 지었다고 전합니다. 1960년 발볼 너비를 여러 가지로 고를 수 있는 첫 러닝화 '트랙스터'를 낸 이 브랜드는?",
+    "answer": "뉴발란스",
+    "acceptedAnswers": [
+     "New Balance"
+    ],
+    "originalTitleVariants": [
+     "New Balance"
+    ],
+    "variantCheck": "상표가 영어(New Balance) — B10. ko.wikipedia 문서 제목 '뉴발란스'",
+    "explanation": "1972년 짐 데이비스가 회사를 사들일 때만 해도 직원 여섯 명이 하루 30켤레를 만드는 작은 회사였습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "라일리는 마당의 닭을 보고 이름을 지었다고",
+     "difWhy": "뉴발란스 기원 — 패션 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 브랜드 내력",
+     "acc": 4,
+     "accWhy": "의복·패션 — 대부분이 관심"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "라일리는 마당의 닭을 보고 이름을 지었다고",
+     "difWhy": "뉴발란스 기원 — 패션 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 브랜드 내력"
+    },
+    "rewrite": null,
+    "generalHint": "1982년 영국 워킹턴에 공장을 열었고, 1991년 그 공장을 플림비로 옮겼다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "회색 운동화와 N 로고로 알려진 미국 운동화 브랜드",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "흔한 운동화 브랜드",
+     "piece": "f09",
+     "genPct": 92
+    },
+    "blind": {
+     "ref": "L1-17",
+     "key": "b080",
+     "hint": "1982년 영국 워킹턴에 공장을 열었고, 1991년 그 공장을 플림비로 옮겼다.",
+     "guess": "뉴발란스",
+     "confidence": "mid",
+     "hit": true,
+     "answer": "뉴발란스"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/New_Balance"
+    ],
+    "facts": [
+     {
+      "claim": "1906년 아일랜드 이민자 윌리엄 J. 라일리가 보스턴 지역에서 아치 받침 회사를 세웠다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/New_Balance",
+      "note": "In 1906, William J. Riley, an Irish immigrant, founded the New Balance Arch Support Company in the Boston area, manufacturing arch supports and other accessories designed to improve shoe fit."
+     },
+     {
+      "claim": "라일리가 마당의 닭을 보고 이름을 지었다고 전한다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/New_Balance",
+      "note": "It is believed that Riley came up with the name \"New Balance\" by observing chickens in his yard"
+     },
+     {
+      "claim": "1960년 너비를 여러 가지로 고를 수 있는 첫 러닝화 트랙스터",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/New_Balance",
+      "note": "until 1960, when it designed and manufactured the \"Trackster\", the first running shoe to come in varying widths."
+     },
+     {
+      "claim": "1972년 짐 데이비스 인수 당시 직원 6명, 하루 30켤레",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/New_Balance",
+      "note": "Sales languished until 1972, when 28-year-old Jim Davis bought the company ... At the time, the company consisted of six people making 30 pairs of shoes daily"
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/New_Balance"
+    ],
+    "hintNote": "The company opened a UK factory in Workington in 1982, which relocated to Flimby in 1991.",
+    "easiestCue": "1960년 발볼 너비를 여러 가지로 고를 수 있는 첫 러닝화 '트랙스터'를 낸",
+    "targetWhy": "아치 받침 회사 출발·닭 일화·트랙스터는 운동화 애호가 지식 — 이름 풀이(균형)는 쓰지 않음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "익숙한 브랜드의 낯선 출발",
+    "pairCheck": null,
+    "dbCheck": "new",
+    "warn": []
+   }
+  }
+ ]
+}

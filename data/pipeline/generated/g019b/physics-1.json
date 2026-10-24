@@ -1,0 +1,122 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "physics/1",
+  "midKey": "physics",
+  "subName": "역학·운동",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "physics/1#g019b-C2-19",
+   "seed": {
+    "subject": "부메랑",
+    "aspect": null,
+    "ref": "C2-19",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1992년 독일 우주인 울프 메르볼트는 스페이스랩에서, 1997년 프랑스 우주인 장프랑수아 클레르부아는 미르에서 이것을 던져 무중력에서도 땅에서와 똑같이 난다는 것을 보였습니다. 이 물건은 무엇일까요?",
+    "answer": "부메랑",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "variantCheck": null,
+    "explanation": "오스트레일리아 원주민이 사냥에 쓰던 크고 무거운 '카일리'는 이것과 달리 곧게 날아갑니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "우주인이 던져 무중력에서도 땅에서와 똑같이 난다는 것을 보인 물건",
+     "difWhy": "'던지면 나는 물건' 추론 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "우주 실험 이야깃거리",
+     "acc": 5,
+     "accWhy": "물리 — 중학 과학 교과 과목"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "사냥에 쓰던 크고 무거운 '카일리'는 이것과 달리 곧게",
+     "difWhy": "돌아오는 사냥 도구 — 관심 있는 사람",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 부메랑 원리"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "2008년 일본 우주인 도이 다카오는 국제우주정거장 안에서 이것을 던져, 궤도에서도 땅에서와 같은 길로 난다는 것을 보였습니다. 사냥에 쓰던 크고 무거운 '카일리'는 이것과 달리 곧게 날아가는데, 이 물건은 무엇일까요?",
+     "beforeExplanation": "폴란드 오브와조바 동굴에서 나온 매머드 엄니 투척 무기는 약 4만 년 전 것으로, 이런 무기 가운데 가장 오래된 확실한 발견으로 꼽힙니다.",
+     "removedCue": "사냥용 '카일리'는 이것과 달리 곧게 날아감(관심층 — 돌아오는 도구임을 알려 줌)",
+     "addedCue": "1992년 스페이스랩 · 1997년 미르 무중력 실험",
+     "why": "카일리와의 대비가 '돌아오는 것'을 알려 줘 해설로 내리고, 우주 실험 세부로 바꿈(2008 도이 다카오도 뺌)"
+    },
+    "generalHint": "이름은 시드니 일대 오스트레일리아 원주민 언어의 낱말에서 왔다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "던지면 휘어 날아 돌아오는 굽은 나무 막대",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "일상어로 쓰임",
+     "piece": "f05",
+     "genPct": 98
+    },
+    "blind": {
+     "ref": "C2-19",
+     "key": "b107",
+     "hint": "이름은 시드니 일대 오스트레일리아 원주민 언어의 낱말에서 왔다.",
+     "guess": "코알라",
+     "confidence": "low",
+     "hit": false,
+     "answer": "부메랑"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Boomerang"
+    ],
+    "facts": [
+     {
+      "claim": "카일리는 곧게 날아감",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Boomerang",
+      "note": "Instead of following curved flight paths, kylies fly in straight lines from the throwers. (typically much larger)"
+     },
+     {
+      "claim": "1992년 메르볼트(스페이스랩) · 1997년 클레르부아(미르)의 무중력 실험",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Boomerang",
+      "note": "In 1992, German astronaut Ulf Merbold performed an experiment aboard Spacelab that established that boomerangs function in zero gravity as they do on Earth. French Astronaut Jean-François Clervoy aboard Mir repeated this in 1997."
+     },
+     {
+      "claim": "카일리는 오스트레일리아 원주민의 사냥용 막대",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Boomerang",
+      "note": "Traditionally, most hunting sticks used by Aboriginal groups in Australia were non-returning. These weapons, sometimes called \"throwsticks\" or \"kylies\""
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Boomerang"
+    ],
+    "hintNote": "The origin of the word is from an Aboriginal Australian language of the Sydney region.",
+    "easiestCue": "우주인이 무중력에서 던져 땅에서와 똑같이 난다는 것을 보임",
+    "targetWhy": "우주 실험 이력은 과학·우주 애호가 세부라 4",
+    "selfJudge": "경계",
+    "selfJudgeWhy": "카일리와의 대비가 휘어 나는 성질을 비춤",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 가장 오래"
+    ]
+   }
+  }
+ ]
+}

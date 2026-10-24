@@ -1,0 +1,245 @@
+{
+ "_meta": {
+  "round": "g019b",
+  "subId": "computer/1",
+  "midKey": "computer",
+  "subName": "하드웨어",
+  "questionPrompt": "deep-v5",
+  "scorePrompt": "score-v3",
+  "hintPrompt": "hint-v6",
+  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "stage": "deep",
+  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+ },
+ "items": [
+  {
+   "seedId": "computer/1#g019b-C2-10",
+   "seed": {
+    "subject": "플로피 디스크",
+    "aspect": null,
+    "ref": "C2-10",
+    "pairedWith": 3235
+   },
+   "question": {
+    "ok": true,
+    "mode": "가",
+    "pairedWith": 3235,
+    "question": "1971년 IBM 제품의 한 부품으로 처음 나온 이 저장 매체는 처음엔 마이크로코드를 불러 넣는 읽기 전용 장치였습니다. 2016년 미국 회계감사원은 미국 핵전력 운용에 아직 이 매체의 8인치판을 쓰는 옛 IBM 컴퓨터가 있다고 보고했는데, 이 매체는?",
+    "answer": "플로피 디스크",
+    "acceptedAnswers": [
+     "디스켓"
+    ],
+    "originalTitleVariants": [],
+    "variantCheck": "디스켓 — 한국에서 같은 매체를 흔히 부르는 이름(표준국어대사전 '디스켓' = 플로피 디스크)",
+    "explanation": "소니는 2011년 3월 일본 안에서 이 매체의 판매를 끝냈습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 3,
+     "easiestCue": "이 매체의 8인치판을 쓰는 옛 IBM 컴퓨터",
+     "difWhy": "8인치 저장 매체 — IT 관심층",
+     "wor": 3,
+     "worWhy": "옛 저장 매체 이야깃거리",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 3,
+     "easiestCue": "소니가 2011년 3월 일본 안에서 판매를 끝낸 이 매체",
+     "difWhy": "플로피 판매 종료 — 관심층 (경계 2)",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 저장 매체 역사"
+    },
+    "rewrite": {
+     "changed": true,
+     "before": "1971년 IBM이 자사 제품의 한 부품으로 처음 내놓은 이 저장 매체는 처음엔 읽기만 되는 장치로, 기계에 마이크로코드를 불러 넣는 데 쓰였습니다. 소니가 2011년 3월 일본 안에서 판매를 끝낸 이 매체는 무엇일까요?",
+     "beforeExplanation": "1960년대 말에 개발된 첫 상용 제품은 지름이 8인치(200mm)였습니다.",
+     "removedCue": "소니가 2011년 3월 일본 안 판매를 끝냄(뉴스)",
+     "addedCue": "2016년 미국 회계감사원 보고서 — 핵전력 운용 컴퓨터가 8인치판 사용",
+     "why": "판매 종료 뉴스를 해설로 내리고, IT 애호가가 '아 그거' 할 뒷이야기로 바꿈"
+    },
+    "generalHint": "일본 정부의 행정 업무에서 이것을 쓰던 일은 2024년에야 끝났다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "얇은 자기 원판을 네모난 덮개에 넣은 옛 저장 매체",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "저장 아이콘·옛 컴퓨터로 누구나 앎",
+     "piece": "f07",
+     "genPct": 90
+    },
+    "blind": {
+     "ref": "C2-10",
+     "key": "b270",
+     "hint": "일본 정부의 행정 업무에서 이것을 쓰던 일은 2024년에야 끝났다.",
+     "guess": "플로피 디스크",
+     "confidence": "high",
+     "hit": true,
+     "answer": "플로피 디스크"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Floppy_disk"
+    ],
+    "facts": [
+     {
+      "claim": "1971년 IBM 제품의 부품으로 상용화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Floppy_disk",
+      "note": "The first floppy disks, invented and made by IBM in 1971 · became commercially available in 1971 as a component of IBM products"
+     },
+     {
+      "claim": "읽기 전용, 마이크로코드를 불러들이는 용도",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Floppy_disk",
+      "note": "It was a read-only device used by IBM as a way of loading microcode."
+     },
+     {
+      "claim": "소니 2011년 3월 국내 판매 종료",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Floppy_disk",
+      "note": "Sony, who had been in the floppy disk business since 1983, ended domestic sales of its 3½-inch models in March 2011"
+     },
+     {
+      "claim": "2016년 5월 미국 회계감사원 보고서 — 핵전력 운용에 8인치판을 쓰는 옛 IBM Series/1",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Floppy_disk",
+      "note": "In May 2016, the United States Government Accountability Office released a report ... old IBM Series/1 minicomputers running on 8-inch floppy disks are still used to coordinate \"the operational functions of the United States' nuclear forces\"."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Floppy_disk"
+    ],
+    "hintNote": "Use in Japan's government ended in 2024.",
+    "easiestCue": "1971년 IBM 부품 · 마이크로코드를 불러 넣는 읽기 전용 장치",
+    "targetWhy": "첫 용도와 핵전력 8인치판 일화는 컴퓨터 역사 애호가 세부 — 1회차(저장 아이콘)와 다른 사실",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "추억의 매체의 첫 쓰임",
+    "pairCheck": "1회차 3235 질문(저장 아이콘 모양)·해설(실물 본 적 없는 세대)·힌트(없음)와 겹치지 않음 — IBM 기원·마이크로코드·소니는 새 사실",
+    "dbCheck": "answercheck pair-or-different — 3235 와 같은 답, (가) 2회차",
+    "warn": [
+     "단정어 처음"
+    ],
+    "first": {
+     "id": 3235,
+     "question": "많은 프로그램의 '저장' 아이콘은 이제 거의 쓰지 않는 어떤 저장 매체의 모양을 본뜬 것입니까?",
+     "explanation": "실물을 본 적 없는 세대도 이 모양을 저장 표시로 알아봅니다.",
+     "hint": null,
+     "difficulty": 1
+    }
+   }
+  },
+  {
+   "seedId": "computer/1#g019b-C2-11",
+   "seed": {
+    "subject": "씽크패드",
+    "aspect": null,
+    "ref": "C2-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이 노트북 상품군은 일본 야마토의 연구소에서 처음 개발되었고, 겉모양은 이탈리아에서 활동한 디자이너 리하르트 자퍼가 일본 전통 도시락을 본떠 잡았습니다. 이름은 회사가 나눠 주던 작은 수첩을 주머니에 넣고 다니던 한 직원이 제안했는데, 이 노트북은 무엇일까요?",
+    "answer": "씽크패드",
+    "acceptedAnswers": [
+     "싱크패드",
+     "ThinkPad"
+    ],
+    "originalTitleVariants": [
+     "ThinkPad"
+    ],
+    "variantCheck": "싱크패드 — 국내 언론·쇼핑몰에서 함께 쓰는 표기 · ThinkPad — 영문 상표(B10)",
+    "explanation": "2005년 IBM이 PC 사업을 중국 레노버에 팔면서 이 상표도 레노버로 넘어갔습니다.",
+    "score": {
+     "version": "score-v3",
+     "dif": 4,
+     "easiestCue": "리하르트 자퍼가 일본 전통 도시락을 본떠",
+     "difWhy": "씽크패드 디자인 — IT 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 제품 내력",
+     "acc": 5,
+     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+    },
+    "score1": {
+     "dif": 4,
+     "easiestCue": "리하르트 자퍼가 일본 전통 도시락을 본떠",
+     "difWhy": "씽크패드 디자인 — IT 애호가",
+     "wor": 3,
+     "worWhy": "이야깃거리 — 유명 제품 내력"
+    },
+    "rewrite": null,
+    "generalHint": "여러 해 동안 국제 우주 정거장에서 쓰도록 인증된 노트북은 이것뿐이었다.",
+    "generalHintVersion": "hint-v6",
+    "identity": "검은 몸체와 빨간 포인팅 스틱으로 알려진 노트북 상표",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "직장인 노트북으로 들어 봤으나 모르는 사람도 꽤 있음",
+     "piece": "f01",
+     "genPct": 55
+    },
+    "blind": {
+     "ref": "C2-11",
+     "key": "b264",
+     "hint": "여러 해 동안 국제 우주 정거장에서 쓰도록 인증된 노트북은 이것뿐이었다.",
+     "guess": "씽크패드",
+     "confidence": "high",
+     "hit": true,
+     "answer": "씽크패드"
+    },
+    "hobby": null,
+    "defForm": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/ThinkPad"
+    ],
+    "facts": [
+     {
+      "claim": "야마토 연구소에서 처음 개발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/ThinkPad",
+      "note": "The ThinkPad line was first developed at the IBM Yamato Facility in Japan."
+     },
+     {
+      "claim": "이탈리아에서 활동한 리하르트 자퍼, 도시락을 본뜬 디자인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/ThinkPad",
+      "note": "The industrial design concept was created in 1990 by Italy-based designer Richard Sapper · The design was based on the concept of a traditional Japanese bento lunchbox."
+     },
+     {
+      "claim": "수첩을 주머니에 넣고 다니던 직원이 이름 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/ThinkPad",
+      "note": "The name \"ThinkPad\" was suggested by IBM employee Denny Wainwright, who had one such notepad in his pocket. (IBM had long given small notepads marked THINK)"
+     },
+     {
+      "claim": "2005년 레노버에 매각",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/ThinkPad",
+      "note": "IBM sold its PC business to the Chinese company Lenovo in 2005."
+     }
+    ],
+    "knowledgeClaims": [],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/ThinkPad"
+    ],
+    "hintNote": "for many years were the only laptops certified for use on the International Space Station (ISS).",
+    "easiestCue": "이탈리아 디자이너 리하르트 자퍼가 일본 도시락을 본뜬 노트북",
+    "targetWhy": "야마토 개발·도시락 디자인·이름 유래는 노트북 애호가 수준 — 빨간 트랙포인트·IBM·레노버 단서 없음",
+    "selfJudge": "좋은 어려움",
+    "selfJudgeWhy": "이름은 아는 노트북의 디자인·이름 뒷이야기",
+    "pairCheck": null,
+    "dbCheck": "answercheck new",
+    "warn": [
+     "단정어 처음"
+    ]
+   }
+  }
+ ]
+}
