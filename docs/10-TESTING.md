@@ -1346,7 +1346,7 @@ npm run ui-check:minigame                                         ★★ (19) /l
 
 ---
 
-## 30. ★★★ R049 — 이모티콘샵 · 뽑기 · 특별 이모티콘 표시
+## 30. ★★★ R049 — 포인트샵 · 뽑기 · 특별 이모티콘 표시
 
 ```bash
 PORT=3005 npm run bot -- shop --url http://localhost:3005   ★★★ (28) 자기 서버 · SHOP_PRICE_OVERRIDE=10(SCENARIO_ENV) — 401 · 404 · 0P 계정 409 · 한 번 뽑기(잔액 −price · DB 보유 +1 · 쓴 포인트 +price · /api/shop owned = DB · /api/emoji 메타 27 전원 + ownedSpecial)

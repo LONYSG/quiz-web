@@ -942,7 +942,7 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `GET /api/me/points` (새) | `{ ok, earned, spent, balance }` — earned = answer_events.accepted 수 · spent = point_spends 합. 401 if 로그인 없음 · no-store |
 | 설정값 (서버 env) | `CHAT_RATE_WINDOW_MS`(5000) · `CHAT_RATE_MAX`(5) · `CHAT_RATE_LOCK_MS`(5000) · `EMOJI_RATE_*`(같음) · `SPECIAL_EMOJI_RATE_*`(10000 · 3 · 10000 — R049) — 기본값은 RULES |
 
-## ★ R049 — 바뀐 것 (D-231 · 이모티콘샵 · 뽑기 · 특별 이모티콘)
+## ★ R049 — 바뀐 것 (D-231 · 포인트샵 · 뽑기 · 특별 이모티콘)
 
 | 항목 | 내용 |
 |------|------|

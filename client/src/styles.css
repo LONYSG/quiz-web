@@ -4364,7 +4364,7 @@ button.primary.tone-warn {
 }
 
 /* =============================================================================
-   ★★★ R049 — 이모티콘샵 · 뽑기(갓챠) · 특별 이모티콘 표시 (D-231)
+   ★★★ R049 — 포인트샵 · 뽑기(갓챠) · 특별 이모티콘 표시 (D-231)
    ============================================================================= */
 /* ── 🎁 상단 바 버튼 — 다른 상단 버튼과 같은 높이 · 간격 (.room-tools 규칙과 같은 값) */
 .shop {
@@ -7977,4 +7977,201 @@ button.mg-cat-card {
 }
 :where(.ui-mobile) .report-menu-pick {
   grid-template-columns: 1fr;
+}
+
+/* ★★ R066 (D-287) — ⓘ 안내 탭 넷(놀이 · 포인트 · 이모티콘 · 제보) */
+.info-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+  flex-wrap: nowrap;
+}
+.info-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  min-height: 0;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+  background: var(--surface-2);
+  color: var(--text-dim);
+  border: var(--bw) solid var(--border);
+}
+.info-tab.on {
+  background: var(--chip-bg);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.info-guide-btn {
+  margin-top: 6px;
+}
+/* ★★ R066 (D-289) — 가입 선물 창 */
+.signup-gift {
+  width: min(360px, calc(100vw - 24px));
+  box-sizing: border-box;
+  text-align: center;
+  display: grid;
+  gap: 6px;
+  padding: 22px 20px 18px;
+}
+.signup-gift p {
+  margin: 0;
+}
+.signup-gift-ico {
+  font-size: 2.6rem;
+  line-height: 1;
+}
+.signup-gift-title {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+.signup-gift-title strong {
+  color: var(--accent);
+}
+.signup-gift-actions,
+.emoji-guide-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.signup-gift-actions button,
+.emoji-guide-actions button {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+/* ★★ R066 (D-288) — 메뉴 줄 빨간 점 */
+.menu-item {
+  position: relative;
+}
+.menu-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 6px;
+  border-radius: 50%;
+  background: var(--bad);
+  vertical-align: middle;
+}
+#shop-btn {
+  position: relative;
+}
+/* ★★ R066 (D-290) — 첫 이모티콘 가이드 */
+.emoji-guide {
+  width: min(520px, calc(100vw - 24px));
+  box-sizing: border-box;
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+}
+.emoji-guide-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.emoji-guide-art {
+  width: 100%;
+  height: auto;
+}
+.emoji-guide-art .eg-bar {
+  fill: var(--surface-2);
+  stroke: var(--border);
+}
+.emoji-guide-art .eg-slot {
+  fill: var(--surface);
+  stroke: var(--border);
+  stroke-width: 1.5;
+}
+.emoji-guide-art .eg-slot.on {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+.emoji-guide-art .eg-key {
+  fill: var(--text-dim);
+  font-size: 12px;
+  font-weight: 800;
+}
+.emoji-guide-art .eg-key.on {
+  fill: var(--accent);
+}
+.emoji-guide-art .eg-pen,
+.emoji-guide-art .eg-star {
+  fill: var(--accent);
+  font-size: 18px;
+  font-weight: 900;
+}
+.emoji-guide-art .eg-arrow {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.emoji-guide-steps {
+  margin: 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 4px;
+  font-size: 0.92rem;
+}
+/* ★★ R066 (D-291) — 이모티콘 창 ✎ 편집 모드: 자리가 커지고 흔들린다 */
+.emoji-slots-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.emoji-slots-row > .emoji-slots {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.emoji-edit-btn {
+  flex: 0 0 auto;
+  margin: 0;
+  min-height: 0;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 9px;
+  font-size: 1rem;
+  background: var(--surface-2);
+  border: var(--bw) solid var(--border);
+  color: var(--text-dim);
+}
+.emoji-edit-btn.on {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--chip-bg);
+}
+.emoji-slots.editing .emoji-slot {
+  transform: scale(1.08);
+  animation: emoji-wiggle 0.5s ease-in-out infinite alternate;
+}
+.emoji-slots.editing .emoji-slot-cell:nth-child(2n) .emoji-slot {
+  animation-delay: 0.25s;
+}
+@keyframes emoji-wiggle {
+  from { transform: scale(1.08) rotate(-3deg); }
+  to { transform: scale(1.08) rotate(3deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .emoji-slots.editing .emoji-slot { animation: none; }
+}
+/* ★ R066 (D-292) — 사람 카드: 친구 상태는 이름 옆 배지(버튼 줄은 동작만) */
+.person-friend {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 8px;
+  font-size: 0.72rem;
+  vertical-align: middle;
+  color: var(--ok);
+  background: color-mix(in srgb, var(--ok) 14%, var(--surface));
 }

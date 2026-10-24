@@ -11,6 +11,7 @@ import { fetchPrefs, savePrefs, type ServerPrefs } from './api.js';
 import { BGMS, getSoundPrefs, setSoundPrefs, type BgmId } from './sound.js';
 import { getTheme, setTheme, THEMES, type ThemeId } from './theme.js';
 import { getEmojiInsert, getStoredSlots, setEmojiInsert, setStoredSlots } from './emojiCatalog.js';
+import { getFlag, setFlag } from './accountFlags.js';
 
 let signedIn = false;
 /** 계정 값을 적용하는 동안에는 다시 저장하지 않는다 (되먹임 방지) */
@@ -31,6 +32,9 @@ function current(): ServerPrefs {
     chatVolume: s.chatVol,
     ...(getStoredSlots() ? { emojiSlots: getStoredSlots()! } : {}),
     emojiInsert: getEmojiInsert(),
+    // ★ R066 (D-288) — 한 번만 보이는 것(포인트샵 빨간 점 · 이모티콘 가이드)
+    shopOpened: getFlag('shopOpened'),
+    emojiGuideSeen: getFlag('emojiGuideSeen'),
   };
 }
 
@@ -59,6 +63,9 @@ function apply(p: ServerPrefs): void {
     if (typeof p.chatVolume === 'number') patch.chatVol = p.chatVolume;
     if (Array.isArray(p.emojiSlots)) setStoredSlots(p.emojiSlots);
     if (typeof p.emojiInsert === 'boolean' && p.emojiInsert !== getEmojiInsert()) setEmojiInsert(p.emojiInsert);
+    // ★ R066 — 계정에서 "봤다" 면 이 브라우저도(되돌리지는 않는다 — 한 번 본 것은 본 것)
+    if (p.shopOpened === true) setFlag('shopOpened');
+    if (p.emojiGuideSeen === true) setFlag('emojiGuideSeen');
     if (Object.keys(patch).length > 0) setSoundPrefs(patch);
   } finally {
     applying = false;
@@ -73,6 +80,7 @@ export function installPrefsSync(): void {
   window.addEventListener('qw:sound', scheduleSave);
   window.addEventListener('qw:emoji-slots', scheduleSave);
   window.addEventListener('qw:emoji-insert', scheduleSave);
+  window.addEventListener('qw:flags', scheduleSave);
 }
 
 /** 로그인 확인 직후 부른다. 로그아웃하면 onSignedOut */

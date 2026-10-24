@@ -54,6 +54,8 @@ export interface ToastContent {
   detail?: string | null;
   /** 서버 에러 코드. 진단용으로 작게 표시한다 */
   code?: string | null;
+  /** ★ R066 — 버튼 하나(예: 다시 들어가기) */
+  action?: { label: string; onClick: () => void } | null;
 }
 
 interface Props {
@@ -89,6 +91,19 @@ export default function Toast({ content, onDismiss }: Props) {
           {content.detail && <p className="toast-detail">{content.detail}</p>}
           {content.code && <p className="toast-code mono">{content.code}</p>}
         </div>
+        {content.action && (
+          <button
+            type="button"
+            className="primary tiny"
+            data-toast-action
+            onClick={() => {
+              content.action?.onClick();
+              onDismiss();
+            }}
+          >
+            {content.action.label}
+          </button>
+        )}
         <button type="button" className="ghost tiny" onClick={onDismiss}>
           닫기
         </button>

@@ -4,6 +4,10 @@
 // =============================================================================
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { Gift } from 'lucide-react';
+import Icon from './Icon.js';
+import { openPopup } from './popup.js';
 import { sfx } from './sound.js';
 
 interface Grant {
@@ -18,7 +22,7 @@ export function grantToastText(grants: readonly Grant[]): { title: string; detai
   const total = grants.reduce((s, g) => s + g.amount, 0);
   const adopted = grants.filter((g) => g.reason === 'feedback_adopted');
   // ★ R063 (D-260) — 가입 선물(새 회원 · 기존 회원 소급)만이면 그 말 그대로
-  if (grants.every((g) => g.reason === 'signup')) return { title: `가입 선물 +${total}P`, detail: '이모티콘샵에서 써 보세요' };
+  if (grants.every((g) => g.reason === 'signup')) return { title: `가입 선물 +${total}P`, detail: '포인트샵에서 써 보세요' };
   const q = adopted.find((g) => g.question)?.question ?? null;
   const qText = q ? `'${q}${[...q].length >= 30 ? '…' : ''}'` : '';
   if (adopted.length === grants.length) {
@@ -38,15 +42,23 @@ export function grantToastText(grants: readonly Grant[]): { title: string; detai
 
 export default function GrantToast({ accountId }: { accountId: string }) {
   const [text, setText] = useState<{ title: string; detail: string } | null>(null);
+  // ★★ R066 (D-289 · 찬종 #39 "가입 보너스 50point는 … 회원가입 하는 순간 팝업으로") — 가입 선물은 토스트가 아니라 창 하나
+  const [signup, setSignup] = useState<number | null>(null);
   useEffect(() => {
     let alive = true;
     void fetch('/api/me/grants/claim', { method: 'POST', credentials: 'same-origin' })
       .then((r) => (r.ok ? r.json() : null))
       .then((j: { grants?: Grant[] } | null) => {
-        const t = grantToastText(j?.grants ?? []);
+        const all = j?.grants ?? [];
+        const gift = all.filter((g) => g.reason === 'signup');
+        if (alive && gift.length > 0) {
+          setSignup(gift.reduce((s, g) => s + g.amount, 0));
+          sfx('mg-final');
+        }
+        const t = grantToastText(all.filter((g) => g.reason !== 'signup'));
         if (!alive || !t) return;
         setText(t);
-        sfx('mg-final');
+        if (gift.length === 0) sfx('mg-final');
         window.setTimeout(() => alive && setText(null), 7000);
       })
       .catch(() => undefined);
@@ -54,8 +66,43 @@ export default function GrantToast({ accountId }: { accountId: string }) {
       alive = false;
     };
   }, [accountId]);
-  if (!text) return null;
+  const gift =
+    signup !== null &&
+    createPortal(
+      <div className="modal-back popup-back" onPointerDown={(e) => e.target === e.currentTarget && setSignup(null)}>
+        <div className="modal signup-gift" role="dialog" aria-label="가입 선물" data-signup-gift>
+          <p className="signup-gift-ico" aria-hidden="true">
+            🎁
+          </p>
+          <p className="signup-gift-title">
+            가입 선물 <strong className="mono">{signup}P</strong>
+          </p>
+          <p className="dim">포인트샵에서 이모티콘을 사 보세요</p>
+          <div className="signup-gift-actions">
+            <button
+              type="button"
+              className="primary"
+              autoFocus
+              data-signup-shop
+              onClick={() => {
+                setSignup(null);
+                openPopup('shop');
+              }}
+            >
+              <Icon icon={Gift} /> 포인트샵 가기
+            </button>
+            <button type="button" className="ghost" onClick={() => setSignup(null)}>
+              닫기
+            </button>
+          </div>
+        </div>
+      </div>,
+      document.body,
+    );
+  if (!text) return gift || null;
   return (
+    <>
+    {gift}
     <div className="ach-toast-layer" aria-live="polite">
       <div className="ach-toast grant-toast" role="status">
         <span className="ach-toast-medal" aria-hidden="true">
@@ -70,5 +117,6 @@ export default function GrantToast({ accountId }: { accountId: string }) {
         </button>
       </div>
     </div>
+    </>
   );
 }

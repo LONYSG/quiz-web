@@ -47,7 +47,7 @@ import { useGameSounds } from './useGameSounds.js';
 import type { ChatView, RoomSnapshot } from './useRoom.js';
 import { BellButton, FriendsButton } from './SocialPopups.js';
 import ProfilePanel from './ProfilePanel.js';
-import ShopPanel from './ShopPanel.js';
+import ShopPanel, { useShopDot } from './ShopPanel.js';
 import MinigameStage from './minigame/MinigameStage.js';
 import MinigamePicker from './minigame/MinigamePicker.js';
 import { LastGameFeedback } from './QuestionFeedback.js';
@@ -113,6 +113,8 @@ export default function Lobby({
   const [confirmLeave, setConfirmLeave] = usePopup('leave');
   const [peopleOpen, setPeopleOpen] = usePopup('people');
   const [menuOpen, setMenuOpen] = usePopup('menu');
+  // ★ R066 (D-288) — 포인트샵을 아직 안 열었으면 ☰ · 메뉴 줄에 빨간 점
+  const shopDot = useShopDot();
   const [kickOpen, setKickOpen] = usePopup('kick');
   const [kickTarget, setKickTarget] = useState<KickTarget | null>(null);
   const openPopupId = useCurrentPopup();
@@ -733,7 +735,7 @@ export default function Lobby({
               onNicknameChanged={onNicknameChanged}
             />
           )}
-          {/* ★★ R049 — 🎁 이모티콘샵 (로비 · 게임 중 · 결과 전부 — 찬종: "게임 플레이 중이더라도"). 모바일은 ☰ 안 */}
+          {/* ★★ R049 — 🎁 포인트샵 (로비 · 게임 중 · 결과 전부 — 찬종: "게임 플레이 중이더라도"). 모바일은 ☰ 안 */}
           <ShopPanel onClosed={() => inputRef.current?.focus()} />
           {/* ★★ R041 — 모바일 참여자 창 (넓은 화면은 양옆 칸이 있어 숨긴다). 인원 수를 작게 붙인다 (판단) */}
           <button
@@ -771,7 +773,7 @@ export default function Lobby({
             <Icon icon={Menu} />
             {/* ★ R043 C — 새 알림 · 받은 신청이 있으면 빨간 점 */}
             {/* ★ R044 A-4 — 받은 신청 + 받은 초대 (옛: 안 읽은 알림 포함) */}
-            {social.pending > 0 && <span className="red-dot" aria-label="새 친구 신청 · 초대" />}
+            {(social.pending > 0 || shopDot) && <span className="red-dot" aria-label={social.pending > 0 ? '새 친구 신청 · 초대' : '새 포인트샵'} />}
           </button>
         </div>
       </header>
@@ -787,6 +789,7 @@ export default function Lobby({
           friendWaiting={social.pending}
           onProfile={() => setRenameOpen(true)}
           onShop={() => openPopup('shop')}
+          shopDot={shopDot}
           onSettings={() => openPopup('prefs')}
           onInfo={() => openPopup('info')}
           onLeave={() => {

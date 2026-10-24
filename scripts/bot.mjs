@@ -128,7 +128,7 @@ const SCENARIO_ENV = {
   achievements: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   feedback: { RESOLVED_WAIT_MS: '200' },
   mgonly: { MINIGAME_PHASE_SCALE: '0.05' },
-  mgcount: { MINIGAME_PHASE_SCALE: '0.05' },
+  mgcount: { MINIGAME_PHASE_SCALE: '0.05', DISCONNECT_REMOVE_MS: '1500' },
   // ★ R060 — 둘이서 16 게임(놀이 시간은 줄지 않는다 — 판 사이만 짧게)
   mgduo: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   // ★ R061 — 앱 제보(미니게임 하나를 지나간다)
@@ -289,6 +289,8 @@ class Bot {
       s.on('room.created', (p) => this.events.push({ type: 'room.created', roomId: p.roomId }));
       // ★ R041 — 강퇴·차단 알림
       s.on('room.kicked', (p) => this.events.push({ type: 'room.kicked', roomId: p.roomId, banned: p.banned }));
+      // ★ R066 — 재접속했는데 방에 없다
+      s.on('room.notInRoom', () => this.events.push({ type: 'room.notInRoom' }));
       // 참가자 목록 부분 갱신을 반영한다. 그러지 않으면 스냅샷이 입장 시점에 멈춘다.
       const patch = (p) => {
         if (!this.snapshot || !p?.players) return;
@@ -5585,12 +5587,12 @@ async function scenarioPoints() {
 }
 
 // -----------------------------------------------------------------------------
-// ★★★ shop — R049 이모티콘샵 · 뽑기 (D-231)
+// ★★★ shop — R049 포인트샵 · 뽑기 (D-231)
 //   ★ 값은 GET /api/shop 의 price 를 믿는다. 자기 서버(PORT=3005 · SHOP_PRICE_OVERRIDE=10)면 27번 뽑기 · 동시 두 번 까지,
 //     기본 서버(price 20)면 한 번 뽑기 · 잔액 −20 · DB=API 만. ★ 봇 계정의 포인트만 쓴다(bot_01 487 · bot_02 408 · bot_06 19 — 찬종 계정 안 씀).
 // -----------------------------------------------------------------------------
 async function scenarioShop() {
-  log('시나리오 shop — ★★★ 이모티콘샵 · 뽑기 (R049)');
+  log('시나리오 shop — ★★★ 포인트샵 · 뽑기 (R049)');
   const [b1, b2] = await makeBots(2); // bot_01 · bot_02
   const b6 = new Bot('06');
   await b6.auth();
@@ -6966,6 +6968,21 @@ async function scenarioMgCount() {
   for (let i = 0; i < keys.length; i += 3) cycles.push(keys.slice(i, i + 3));
   expectTrue(`★★★ C3 20판 · 게임 3개 → 20개 · 사이클 ${cycles.length}번 · 바퀴마다 안 겹침`, keys.length === 20 && cycles.length === 7 && cycles.every((c) => new Set(c).size === c.length), keys.join(','));
   for (const b of bots) b.onMinigame = null;
+  // ── ★ R066 D6 (찬종 #41) — 끊긴 사이 방에서 빠지면(DISCONNECT_REMOVE_MS) 재접속 때 room.notInRoom · 방에 있으면 안 온다
+  host.socket.emit('game.toLobby', {});
+  await sleep(500);
+  const gid = g.snapshot?.me?.accountId;
+  g.disconnect();
+  await host.waitFor(() => !host.snapshot?.players.some((p) => p.accountId === gid), 15000, '손님이 빠짐').catch(() => undefined);
+  const gm = g.mark();
+  await g.connect();
+  await sleep(800);
+  expectTrue('★★★ D6 끊긴 사이 방에서 빠짐 → 재접속하면 room.notInRoom(클라가 시작 화면으로)', g.since(gm, 'room.notInRoom').length === 1);
+  const hm = host.mark();
+  host.disconnect();
+  await host.connect();
+  await sleep(800);
+  expectTrue('★ D6 방에 남아 있으면 재접속 = room.state(reconnect) · notInRoom 없음', host.since(hm, 'room.notInRoom').length === 0 && host.since(hm, 'room.state').some((e) => e.reason === 'reconnect'));
 }
 
 // ★★★ R053 — 미니게임 3차 봇 (D-241) — mgminority · mgoddone · mggauge (mgtwothirds 는 R060 게임 삭제와 함께 뺌)

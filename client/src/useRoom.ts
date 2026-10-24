@@ -10,7 +10,7 @@
 // =============================================================================
 
 import type { DifficultyTier, GameTopic } from '@quiz/shared';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import type { MinigameKey, MinigamePhase } from '@quiz/shared';
 import { noteRecentMinigame, noteRecentQuestion } from './reportRecent.js';
@@ -290,6 +290,9 @@ export interface RoomHook {
 
 export function useRoom(socket: Socket | null): RoomHook {
   const [snapshot, setSnapshot] = useState<RoomSnapshot | null>(null);
+  // ★ R066 — 소켓 이벤트 안에서 "지금 방에 있나" 를 읽는다(재접속 · NOT_IN_ROOM)
+  const snapRoomRef = useRef<string | null>(null);
+  snapRoomRef.current = snapshot?.room.id ?? null;
   const [chat, setChat] = useState<ChatView[]>([]);
   const [error, setError] = useState<SocketErrorPayload | null>(null);
   const [terminated, setTerminated] = useState(false);
@@ -798,12 +801,29 @@ export function useRoom(socket: Socket | null): RoomHook {
       });
     };
     socket.on('room.kicked', onKicked);
+    // ★★ R066 (D-293 · 찬종 #41) — 재접속했더니 방에서 빠져 있다(끊긴 사이 제한 시간이 지남) · 또는 방 화면인데 서버가 NOT_IN_ROOM →
+    //   방 상태를 비우고 시작 화면으로 + 알림(다시 들어가기). 방 화면을 띄워 둔 채 "참가한 상태가 아닙니다" 만 뜨던 꼴을 없앤다
+    const dropRoom = () => {
+      const roomId = snapRoomRef.current;
+      if (roomId === null) return false;
+      onLeft();
+      setError({ code: 'LEFT_BY_DISCONNECT', message: '연결이 끊겨 방에서 나왔어요', detail: roomId });
+      return true;
+    };
+    const onNotInRoom = () => {
+      dropRoom();
+    };
+    socket.on('room.notInRoom', onNotInRoom);
+    const onError = (e: SocketErrorPayload) => {
+      if (e?.code === 'NOT_IN_ROOM' && dropRoom()) return;
+      setError(e);
+    };
     socket.on('lobby.settingsUpdated', onSettingsUpdated);
     socket.on('lobby.experienceRates', onExperienceRates);
     socket.on('game.countdownStarted', onCountdownStarted);
     socket.on('game.countdownCancelled', onCountdownCancelled);
     socket.on('game.started', onGameStarted);
-    socket.on('error', setError);
+    socket.on('error', onError);
     socket.on('session.terminated', () => setTerminated(true));
 
     return () => {
@@ -836,7 +856,8 @@ export function useRoom(socket: Socket | null): RoomHook {
       socket.off('game.countdownStarted', onCountdownStarted);
       socket.off('game.countdownCancelled', onCountdownCancelled);
       socket.off('game.started', onGameStarted);
-      socket.off('error', setError);
+      socket.off('error', onError);
+      socket.off('room.notInRoom', onNotInRoom);
     };
   }, [socket]);
 

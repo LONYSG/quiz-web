@@ -21,7 +21,7 @@ export interface EmojiMeta {
   themeId: number | null;
 }
 
-/** ★ R049 — 테마 (이모티콘샵) */
+/** ★ R049 — 테마 (포인트샵) */
 export interface EmojiThemeMeta {
   id: number;
   key: string;

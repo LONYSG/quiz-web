@@ -209,6 +209,10 @@ export function registerSocketHandlers(io: Server): void {
     const existingRoom = getRoomOfAccount(accountId);
     if (existingRoom) {
       attachToRoom(socket, existingRoom.id, 'reconnect');
+    } else {
+      // ★★ R066 (D-293 · 찬종 #41 "폰 화면이 꺼져서 게임에서 나가졌어 … 뭘 눌러도 방에 참가하지 않은 상태라는 메세지만") —
+      //   방에 없다는 것을 알린다(끊긴 사이 방에서 빠졌으면 클라이언트가 방 화면을 비우고 시작 화면으로)
+      socket.emit('room.notInRoom', {});
     }
 
     socket.on('disconnect', () => {

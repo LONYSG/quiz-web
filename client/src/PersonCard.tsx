@@ -120,6 +120,12 @@ function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
       <div className="pop-head">
         <p className="pop-title" style={{ color: `var(--p${p.colorIndex})` }}>
           {p.nickname}
+          {/* ★ R066 (D-292 · 찬종 #32 "친구 표시가 어정쩡 · 별도로 빼고 다른 기능들이랑 분리") — 친구 상태는 이름 옆 배지 */}
+          {acts && acts.friend !== 'none' && (
+            <span className="badge person-friend" data-act="friend-state">
+              <Icon icon={UserCheck} /> {acts.friend === 'friend' ? '친구' : '신청함'}
+            </span>
+          )}
         </p>
         <PopupClose onClose={onClose} />
       </div>
@@ -152,17 +158,13 @@ function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
         </button>
       </section>
       {/* ★ R063 — 이 사람에게 할 수 있는 것(버튼만 · 설명 문장 없음) */}
-      {acts && (
+      {acts && ((acts.friend === 'none' && acts.onFriend) || acts.onHost || acts.onKick || acts.onBan) && (
         <div className="person-acts" data-person-acts>
-          {acts.friend === 'none' && acts.onFriend ? (
+          {acts.friend === 'none' && acts.onFriend && (
             <button type="button" className="ghost person-act" data-act="friend" onClick={() => { acts.onFriend?.(); onClose(); }}>
               <Icon icon={UserPlus} /> 친구 신청
             </button>
-          ) : acts.friend !== 'none' ? (
-            <span className="dim person-act-state" data-act="friend-state">
-              <Icon icon={UserCheck} /> {acts.friend === 'friend' ? '친구' : '신청함'}
-            </span>
-          ) : null}
+          )}
           {acts.onHost && (
             <button type="button" className="ghost person-act" data-act="host" onClick={acts.onHost}>
               <Icon icon={Crown} /> 방장 넘기기

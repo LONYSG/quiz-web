@@ -1,10 +1,10 @@
 // =============================================================================
-// ★★★ 이모티콘샵 · 뽑기(갓챠) (R049 / D-231)
+// ★★★ 포인트샵 · 뽑기(갓챠) (R049 / D-231)
 //
-// ★ 찬종: "이모티콘샵을 만들어서 언제든지 (게임 플레이 중이더라도) 방문해서 내가 여태 맞힌 문제수 = 1 point 로 해서 돈처럼 쓸 수 있게.
+// ★ 찬종: "포인트샵을 만들어서 언제든지 (게임 플레이 중이더라도) 방문해서 내가 여태 맞힌 문제수 = 1 point 로 해서 돈처럼 쓸 수 있게.
 //   테마는 선택할 수 있지만 원하는 gif 를 고를 수는 없어. 무작위 뽑기 시스템이야. 각 테마별로 내가 보유한 이모티콘 개수를 보여주고 (0/27) …
 //   갓챠 애니메이션 효과도 있으면 좋겠지."
-// ★ 입구: 상단 바 🎁 "이모티콘샵"(로비 · 게임 중 · 결과) · 모바일 ☰ 한 줄 · 방 목록 화면 오른쪽 위. 전부 **이 창 하나**.
+// ★ 입구: 상단 바 🎁 "포인트샵"(로비 · 게임 중 · 결과) · 모바일 ☰ 한 줄 · 방 목록 화면 오른쪽 위. 전부 **이 창 하나**.
 // ★ 창: 맨 위 "내 포인트 N" → 테마 카드(이름 · 값 · 보유 x/N · 격자: 가진 것은 그림, 못 가진 것은 흐린 물음표) → [뽑기 — 20P]
 //   · 포인트가 모자라면 비활성 + "N점 모자라요" · 다 모으면 "완성!" 비활성 (환불 · 재뽑기 없음 — 찬종 확정)
 // ★ 뽑기: 서버 응답을 **받은 뒤** 애니메이션(캡슐이 흔들리다 열림 · 약 1.5초 · 누르면 건너뜀 · 효과음은 정답 코인 소리)
@@ -12,17 +12,41 @@
 // ★ 팝업 규칙(popup.ts — 한 번에 하나 · ✕ · 바깥 · Esc) 그대로. 닫으면 채팅 입력으로 포커스를 돌린다 (onClosed).
 // =============================================================================
 
-import { FEEDBACK_ADOPT_POINTS, SIGNUP_GIFT_POINTS } from '@quiz/shared';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Gift, Sparkles } from 'lucide-react';
 import Emoji from './Emoji.js';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import { DrawError, drawEmoji, fetchShop, type DrawResult, type ShopView } from './api.js';
-import { reloadEmojiCatalog, useEmojiCatalog } from './emojiCatalog.js';
+import { reloadEmojiCatalog, setStoredSlots, useEmojiCatalog, useEmojiSlots } from './emojiCatalog.js';
+import { openEmojiGuide } from './EmojiGuide.js';
+import { getFlag } from './accountFlags.js';
 import { usePopup } from './popup.js';
 import { sfx } from './sound.js';
 import { useDismiss } from './useDismiss.js';
+import { setFlag, useFlag } from './accountFlags.js';
+
+/**
+ * ★★ R066 (D-288 · 찬종 #39 "최초 가입 후에 '포인트샵'에 빨간불 알림 표시해서 … 이모티콘 구매 유도") —
+ *   포인트샵을 한 번도 안 열었고 포인트가 있으면 빨간 점(위 막대 · 모바일 ☰ · 메뉴 줄). 열면 꺼진다(계정에 저장).
+ */
+let dotBalance: number | null = null;
+export function useShopDot(): boolean {
+  const opened = useFlag('shopOpened');
+  const [bal, setBal] = useState<number | null>(dotBalance);
+  useEffect(() => {
+    if (opened || dotBalance !== null) return undefined;
+    let alive = true;
+    void fetchShop().then((v) => {
+      dotBalance = v?.balance ?? 0;
+      if (alive) setBal(dotBalance);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [opened]);
+  return !opened && (bal ?? 0) > 0;
+}
 
 interface Props {
   /** 창이 닫힌 뒤 (로비: 채팅 입력으로 포커스 복귀) */
@@ -48,6 +72,9 @@ export default function ShopPanel({ onClosed }: Props) {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const timer = useRef<number | null>(null);
+  // ★ R066 (D-290 · 찬종 #40) — 첫 구매면 1번 자리에 넣고 결과를 보여 준 뒤 가이드를 연다(한 번만)
+  const slots = useEmojiSlots();
+  const guideFor = useRef<number | null>(null);
 
   const refresh = useCallback(async () => {
     const v = await fetchShop();
@@ -63,6 +90,7 @@ export default function ShopPanel({ onClosed }: Props) {
       return undefined;
     }
     let alive = true;
+    setFlag('shopOpened');
     void fetchShop().then((v) => {
       if (alive && v) setShop(v);
     });
@@ -70,6 +98,7 @@ export default function ShopPanel({ onClosed }: Props) {
       alive = false;
     };
   }, [open]);
+  const dot = useShopDot();
   useEffect(
     () => () => {
       if (timer.current !== null) window.clearTimeout(timer.current);
@@ -82,6 +111,11 @@ export default function ShopPanel({ onClosed }: Props) {
     timer.current = null;
     sfx('correct');
     setStage({ kind: 'result', result });
+    if (guideFor.current !== null) {
+      const id = guideFor.current;
+      guideFor.current = null;
+      window.setTimeout(() => openEmojiGuide(id), 700);
+    }
   };
 
   const draw = async (themeKey: string) => {
@@ -89,7 +123,14 @@ export default function ShopPanel({ onClosed }: Props) {
     setBusy(true);
     setErr(null);
     try {
+      const first = shop !== null && shop.themes.every((t) => t.owned.length === 0);
       const result = await drawEmoji(themeKey);
+      if (first) {
+        const next = [...slots];
+        next[0] = result.emoji.id;
+        setStoredSlots(next);
+        if (!getFlag('emojiGuideSeen')) guideFor.current = result.emoji.id;
+      }
       // ★ 서버가 확정한 뒤에만 연출 — 연출 중에 실패해 보이는 일이 없다
       setStage({ kind: 'drawing', result });
       timer.current = window.setTimeout(() => reveal(result), GACHA_MS);
@@ -111,23 +152,23 @@ export default function ShopPanel({ onClosed }: Props) {
 
   return (
     <span className="shop">
-      <button type="button" id="shop-btn" className="ghost tiny" aria-expanded={open} aria-label="이모티콘샵" onClick={() => setOpen((v) => !v)}>
+      <button type="button" id="shop-btn" className="ghost tiny" aria-expanded={open} aria-label="포인트샵" onClick={() => setOpen((v) => !v)}>
         <Icon icon={Gift} />
-        <span className="lbl">이모티콘샵</span>
+        <span className="lbl">포인트샵</span>
+        {dot && <span className="red-dot" data-shop-dot aria-label="새 포인트샵" />}
       </button>
       {open && (
-        <div className="shop-pop" role="dialog" aria-label="이모티콘샵">
+        <div className="shop-pop" role="dialog" aria-label="포인트샵">
           <div className="pop-head">
             <p className="pop-title">
-              <Icon icon={Gift} /> 이모티콘샵
+              <Icon icon={Gift} /> 포인트샵
             </p>
             <PopupClose onClose={close} />
           </div>
           {/* ★ 맨 위 — 내 포인트 */}
           <p className="shop-points" aria-live="polite">
             <span className="dim">내 포인트</span> <strong className="mono">{shop ? shop.balance.toLocaleString('ko-KR') : '—'}</strong>
-            {/* ★ R063 (D-260) — 어디서 오는지 한 줄(계산식 없이) */}
-            <span className="dim shop-points-sub"> · 문제 1개 1P · 미니게임 1~3위 보너스 · 제보 채택 {FEEDBACK_ADOPT_POINTS}P · 가입 선물 {SIGNUP_GIFT_POINTS}P</span>
+            {/* ★ R066 (D-287 · 찬종 #39) — 얻는 길 설명은 ⓘ 안내 "포인트" 로 옮겼다 */}
           </p>
 
           {stage.kind === 'list' && (

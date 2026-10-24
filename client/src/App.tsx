@@ -49,6 +49,7 @@ import FriendList from './FriendList.js';
 import InviteToast from './InviteToast.js';
 import AchievementToast from './AchievementToast.js';
 import GrantToast from './GrantToast.js';
+import EmojiGuideHost from './EmojiGuide.js';
 import ReportHost, { ReportButton, ReportLink, trackReportEvents, type ReportScreen } from './AppReport.js';
 import { clearRecentTargets } from './reportRecent.js';
 import { useCurrentPopup } from './popup.js';
@@ -233,6 +234,14 @@ export default function App() {
   //     화면 종류와 무관하게 이 한 곳만 지나간다.
   useEffect(() => {
     if (!room.error) return;
+    // ★★ R066 (D-293) — 끊긴 사이 방에서 빠졌다 → 시작 화면 + [다시 들어가기](방이 남아 있으면 들어간다)
+    if (room.error.code === 'LEFT_BY_DISCONNECT') {
+      const rid = room.error.detail;
+      setPendingRoomId(null);
+      if (window.location.pathname !== '/') window.history.replaceState(null, '', '/');
+      setNotice({ message: room.error.message, action: rid ? { label: '다시 들어가기', onClick: () => setPendingRoomId(rid) } : null });
+      return;
+    }
     setNotice({
       message: room.error.message,
       detail: room.error.detail,
@@ -484,7 +493,7 @@ export default function App() {
               onNicknameChanged={(nickname) => setAccount((prev) => (prev ? { ...prev, nickname } : prev))}
               onAvatarChanged={(avatarV) => setAccount((prev) => (prev ? { ...prev, avatarV } : prev))}
             />
-            {/* ★★ R049 — 이모티콘샵도 방 밖에서 (찬종: "언제든지 방문") */}
+            {/* ★★ R049 — 포인트샵도 방 밖에서 (찬종: "언제든지 방문") */}
             <ShopPanel />
             {/* ★ R063 — 제보는 위 막대의 정식 메뉴(떠 있는 🐞 없앰) */}
             <ReportButton />
@@ -596,6 +605,8 @@ export default function App() {
       {socket && account && <AchievementToast socket={socket} />}
       {/* ★ R059 — 제보 채택 · 보너스 포인트 알림(로그인 뒤 한 번) */}
       {account && !mustChange && <GrantToast accountId={account.accountId} />}
+      {/* ★ R066 (D-290) — 첫 이모티콘 가이드(첫 구매 · ⓘ 다시 보기) */}
+      {account && <EmojiGuideHost />}
       {/* ★ R061 — 🐞 제보(어느 화면이든 · Alt+B) · 📝 문항 피드백 창 · 복사/접수 알림 */}
       {/* ★ R063 — 로그인 전(로그인 · 비밀번호 바꾸기)에도 창은 뜬다(서버는 그 두 화면만 비로그인 허용) */}
       <ReportHost ctx={reportCtx} />

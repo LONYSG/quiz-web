@@ -23,15 +23,17 @@ interface Props {
   noticeCount: number;
   friendWaiting: number;
   onProfile: () => void;
-  /** ★ R049 — 이모티콘샵 (게임 중에도) */
+  /** ★ R049 — 포인트샵 (게임 중에도) */
   onShop: () => void;
+  /** ★ R066 — 포인트샵을 아직 안 열었다(빨간 점) */
+  shopDot?: boolean;
   onSettings: () => void;
   onInfo: () => void;
   onLeave: () => void;
   onClose: () => void;
 }
 
-export default function MobileMenu({ canRename, onInvite, onFriends, onNotices, noticeCount, friendWaiting, onProfile, onShop, onSettings, onInfo, onLeave, onClose }: Props) {
+export default function MobileMenu({ shopDot = false, canRename, onInvite, onFriends, onNotices, noticeCount, friendWaiting, onProfile, onShop, onSettings, onInfo, onLeave, onClose }: Props) {
   const openReport = useOpenBugReport();
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -77,7 +79,8 @@ export default function MobileMenu({ canRename, onInvite, onFriends, onNotices, 
             </button>
           )}
           <button type="button" className="menu-item" onClick={onShop}>
-            <Icon icon={Gift} /> 이모티콘샵
+            <Icon icon={Gift} /> 포인트샵
+            {shopDot && <span className="menu-dot" data-shop-dot aria-label="새" />}
           </button>
           <button type="button" className="menu-item" onClick={onSettings}>
             <Icon icon={Settings} /> 설정

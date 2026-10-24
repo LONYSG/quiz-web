@@ -91,7 +91,7 @@ export async function fetchPoints(): Promise<PointBalance | null> {
   return { earned: json.earned, correct: json.correct, rewards: json.rewards, grants: json.grants, spent: json.spent, balance: json.balance };
 }
 
-// ── ★★ R049 — 이모티콘샵 · 뽑기 (D-231)
+// ── ★★ R049 — 포인트샵 · 뽑기 (D-231)
 export interface ShopTheme {
   key: string;
   name: string;
@@ -179,6 +179,9 @@ export interface ServerPrefs {
   emojiSlots?: number[];
   /** ★ R057 — 고르기 창: 입력창에 넣기(true) · 바로 보내기(false) */
   emojiInsert?: boolean;
+  /** ★ R066 — 포인트샵을 열어 봤나 · 이모티콘 가이드를 봤나 */
+  shopOpened?: boolean;
+  emojiGuideSeen?: boolean;
 }
 
 export async function fetchPrefs(): Promise<ServerPrefs | null> {

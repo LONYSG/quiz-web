@@ -130,7 +130,7 @@ async function main(): Promise<void> {
   app.use('/api/feedback', feedbackRouter);
   // ★ R061 — 앱 제보(🐞 · 📝) → app_reports
   app.use('/api/reports', reportRouter);
-  // ★ R049 — 이모티콘샵 · 뽑기 (D-231)
+  // ★ R049 — 포인트샵 · 뽑기 (D-231)
   app.use('/api/shop', shopRouter);
   // ★ R052 — 퀴즈류 미니게임 그림 (DB bytea · 로그인만)
   app.use('/api/minigame', minigameRouter);

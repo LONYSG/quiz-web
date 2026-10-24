@@ -1666,7 +1666,7 @@ async function spamFlow(browser) {
 }
 
 // -----------------------------------------------------------------------------
-// ★★★ R049 — 이모티콘샵 · 뽑기 · ✨ 특별 탭 · 10칸 · 떠 있는 큰 반응 · 특별 도배 (`npm run ui-check:shop`, verify 에 포함)
+// ★★★ R049 — 포인트샵 · 뽑기 · ✨ 특별 탭 · 10칸 · 떠 있는 큰 반응 · 특별 도배 (`npm run ui-check:shop`, verify 에 포함)
 //   ★ 포인트가 있는 계정이 필요하다 → **봇 계정**(bot_02 · 비밀번호는 scripts/bot.mjs 의 것)으로 로그인해 실제 값(20P)으로 뽑는다 (찬종 계정 안 씀).
 //     7/27 그림은 uic 테스트 계정에 account_emojis 를 직접 넣어 만든다(끝나면 계정과 함께 지워진다 — CASCADE). 27/27 은 bot_01(봇 shop 이 다 모았다).
 //   ★ 표시 방식 두 가지(기본 float · 대안 inline)를 **같은 장면**으로 찍는다 — localStorage 'qw.specialDisplay' (D-231)
@@ -1695,7 +1695,7 @@ async function shopFlow(browser) {
   const H = await newPage(browser, 'K-host');
   await H.setViewport(1280, 720);
   await signUp(H, 'kh', '샵방장');
-  const roomId = await createRoom(H, 'R049 이모티콘샵');
+  const roomId = await createRoom(H, 'R049 포인트샵');
   const G = await newPage(browser, 'K-bot2', true);
   await G.setViewport(1280, 720);
   await loginAs(G, 'bot_02', BOT_PASSWORD);
@@ -1710,7 +1710,7 @@ async function shopFlow(browser) {
   // ── ★ B-1 상단 바 🎁 — 다른 버튼과 같은 높이 · 같은 줄
   const rShop = await rectOf(H, '#shop-btn');
   const rInvite = await rectOf(H, '#invite-btn');
-  record('★★ B 상단 바 🎁 "이모티콘샵" — 초대 버튼과 같은 높이 · 같은 줄', rShop && rInvite && Math.abs(rShop.h - rInvite.h) < 1 && Math.abs(rShop.y - rInvite.y) < 1, JSON.stringify({ rShop, rInvite }));
+  record('★★ B 상단 바 🎁 "포인트샵" — 초대 버튼과 같은 높이 · 같은 줄', rShop && rInvite && Math.abs(rShop.h - rInvite.h) < 1 && Math.abs(rShop.y - rInvite.y) < 1, JSON.stringify({ rShop, rInvite }));
 
   // ── ★ B-2 포인트 0 계정 — "20점 모자라요" 비활성
   await realClick(H, '#shop-btn');
@@ -1806,17 +1806,17 @@ async function shopFlow(browser) {
   } else record('★ B 27/27 그림 — bot_01 이 다 모은 상태가 아니라 건너뜀 (봇 shop 을 먼저 돌리면 된다)', true, ownP);
   await closeTop(P);
 
-  // ── 모바일 390 — ☰ → 이모티콘샵 → 화면 가운데 창
+  // ── 모바일 390 — ☰ → 포인트샵 → 화면 가운데 창
   await G.setViewport(390, 844);
   await sleep(400);
   await realClick(G, '#menu-btn');
   await sleep(200);
-  await realClick(G, '.menu-item', '이모티콘샵');
+  await realClick(G, '.menu-item', '포인트샵');
   await G.waitFor("document.querySelector('.shop-pop') !== null", 4000);
   await sleep(300);
   const rPop = await rectOf(G, '.shop-pop');
   await snap(G, '109-shop-m390');
-  record('★★ B 모바일 390 — ☰ → 이모티콘샵 → 창이 화면 안', rPop && rPop.x >= 0 && rPop.y >= 0 && rPop.b <= 844 && rPop.x + rPop.w <= 390, JSON.stringify(rPop));
+  record('★★ B 모바일 390 — ☰ → 포인트샵 → 창이 화면 안', rPop && rPop.x >= 0 && rPop.y >= 0 && rPop.b <= 844 && rPop.x + rPop.w <= 390, JSON.stringify(rPop));
   await closeTop(G);
   await G.setViewport(1280, 720);
   await sleep(300);
@@ -2177,7 +2177,7 @@ async function devicesFlow(browser) {
   await T.waitFor("document.querySelector('.stage') !== null", 8000);
   await sleep(600);
   await shootDevices(T, 'lobby');
-  // 모바일 ☰ → 이모티콘샵 · 프로필 (로비)
+  // 모바일 ☰ → 포인트샵 · 프로필 (로비)
   await touchDevice(T, 1366, 1024);
   await realClick(T, '#menu-btn');
   await sleep(250);
@@ -2209,7 +2209,7 @@ async function devicesFlow(browser) {
   await touchDevice(T, 1180, 820);
   await realClick(T, '#menu-btn');
   await sleep(250);
-  await realClick(T, '.menu-item', '이모티콘샵');
+  await realClick(T, '.menu-item', '포인트샵');
   await T.waitFor("document.querySelector('.shop-pop') !== null", 4000);
   await shootDevices(T, 'shop-room', DEVICE_VIEWS.filter((v) => ['fold-folded-portrait', 'fold-open-landscape', 'ipad-air-landscape', 'ipad-pro-landscape'].includes(v.n)));
   await closeTop(T);
@@ -4222,9 +4222,23 @@ async function r064Flow(browser) {
   await H.evaluate("document.querySelector('.emoji-btn')?.click()");
   await sleep(300);
   const tip2 = await H.evaluate("document.querySelector('[data-slot-tip]') !== null");
+  // ★ R066 (D-291) — 팁 대신 ✎ 편집 모드: 누르면 자리가 흔들리고 안내 한 줄 · 자리를 누르면 고르기 · Esc 는 고르기 → 편집 → 창 순서로
+  await realClick(H, '[data-emoji-edit]');
+  await sleep(200);
+  const ed1 = JSON.parse(await H.evaluate("JSON.stringify({ line: document.querySelector('[data-slot-edit]')?.innerText ?? '', editing: document.querySelector('.emoji-slots.editing') !== null })"));
+  await snap(H, '158-emoji-edit-pc');
+  await realClick(H, '.emoji-slot-cell:nth-child(5) .emoji-slot');
+  await sleep(200);
+  const ed2 = await H.evaluate("document.querySelector('[data-slot-assign]')?.innerText ?? ''");
+  await H.key('Escape');
+  await sleep(150);
+  const ed3 = JSON.parse(await H.evaluate("JSON.stringify({ asg: document.querySelector('[data-slot-assign]') !== null, editing: document.querySelector('.emoji-slots.editing') !== null })"));
+  await H.key('Escape');
+  await sleep(150);
+  const ed4 = JSON.parse(await H.evaluate("JSON.stringify({ editing: document.querySelector('.emoji-slots.editing') !== null, pop: document.querySelector('.emoji-pop') !== null })"));
   await H.key('Escape');
   record('★★★ §D 숫자 자리 "3" → "3번 자리에 넣을 이모티콘을 고르세요" · 고르면 3번 칸 저장 · 고르기 끝 · 창은 열린 채 · Esc 는 고르기만 취소 · 옛 "칸 바꾸기" 없음', /3번 자리/.test(asg) && afterEsc.pop && !afterEsc.asg && Array.isArray(slots) && slots[2] === pickId && done.pop && !done.asg && !done.edit, JSON.stringify({ asg, afterEsc, pickId, slot3: slots?.[2], done }));
-  record('★★ §D 첫 열기 팁 "숫자 자리를 눌러 바꿀 수 있어요" — 한 번만', /숫자 자리를 눌러/.test(tip1) && !tip2, JSON.stringify({ tip1, tip2 }));
+  record('★★ §D R066 팁 없음 · ✎ 편집 모드(자리 흔들림 · 안내 한 줄) → 자리 누르면 "5번 자리" 고르기 · Esc 는 고르기 → 편집 순서로 끝(창은 그대로)', !tip1 && !tip2 && /자리를 누른 뒤/.test(ed1.line) && ed1.editing && /5번 자리/.test(ed2) && !ed3.asg && ed3.editing && !ed4.editing && ed4.pop, JSON.stringify({ tip1, tip2, ed1, ed2, ed3, ed4 }));
   L.close?.();
 }
 
@@ -4349,14 +4363,20 @@ async function r063Flow(browser) {
   // ── E 가입 선물 토스트(봇 · 검사 계정은 원래 제외 — 검사 DB 에서 행을 넣어 토스트만 본다)
   await withPg((c) => c.query(`INSERT INTO point_grants (account_id, amount, reason, note) VALUES ($1, 50, 'signup', '가입 선물')`, [hId]));
   await H.goto(`${BASE}/`);
-  await H.waitFor("document.querySelector('.grant-toast') !== null", 8000).catch(() => undefined);
+  // ★ R066 (D-289 · D-288) — 가입 선물은 창(토스트 아님) · 포인트샵 빨간 점(열면 꺼짐) · 상점 설명 줄 없음(ⓘ 포인트로)
+  await H.evaluate("localStorage.removeItem('qw.flag.shopOpened')");
+  await H.goto(`${BASE}/`);
+  await H.waitFor("document.querySelector('[data-signup-gift]') !== null", 8000).catch(() => undefined);
   await sleep(300);
-  const toast = await H.evaluate("document.querySelector('.grant-toast')?.innerText ?? ''");
-  await snap(H, '139-signup-toast-pc');
-  await H.evaluate("document.querySelector('.shop > button, #shop-btn')?.click()");
+  const toast = await H.evaluate("document.querySelector('[data-signup-gift]')?.innerText.replace(/\\s+/g, ' ') ?? ''");
+  const dotBefore = await H.evaluate("document.querySelector('#shop-btn [data-shop-dot]') !== null");
+  await snap(H, '139-signup-gift-pc');
+  await H.evaluate("document.querySelector('[data-signup-shop]')?.click()");
+  await H.waitFor("document.querySelector('.shop-pop') !== null", 4000).catch(() => undefined);
   await sleep(500);
   const shopLine = await H.evaluate("document.querySelector('.shop-points-sub')?.innerText ?? ''");
-  record('★★ E 가입 선물 토스트 "가입 선물 +50P" · 상점 한 줄(문제 1P · 미니게임 · 제보 채택 · 가입 선물)', /가입 선물 \+50P/.test(toast) && /가입 선물 50P/.test(shopLine) && /미니게임/.test(shopLine), JSON.stringify({ toast, shopLine }));
+  const dotAfter = await H.evaluate("document.querySelector('#shop-btn [data-shop-dot]') !== null");
+  record('★★ E R066 가입 선물 창 "가입 선물 50P · 포인트샵" → [포인트샵 가기] 로 샵 · 빨간 점(열기 전 있음 · 연 뒤 없음) · 상점 설명 줄 없음', /가입 선물 50P/.test(toast) && /포인트샵/.test(toast) && dotBefore && !dotAfter && shopLine === '', JSON.stringify({ toast, dotBefore, dotAfter, shopLine }));
   await withPg((c) => c.query(`DELETE FROM point_grants WHERE account_id = $1 AND reason = 'signup'`, [hId]));
   // ── A 로그인 전 제보(m390) — 아이디 칸만 읽고 비밀번호는 안 읽는다
   const L = await newPage(browser, 'R063-anon', true);

@@ -32,15 +32,6 @@ interface Props {
 }
 
 const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-/** ★ R064 — "숫자 자리를 눌러 바꿀 수 있어요" 팁을 본 적 있나(기기마다 한 번) */
-const SLOT_TIP_KEY = 'quiz.emojiSlotTip';
-const slotTipSeen = (): boolean => {
-  try {
-    return localStorage.getItem(SLOT_TIP_KEY) === '1';
-  } catch {
-    return true;
-  }
-};
 /** ★ R057 — 길게 누르기(모바일) */
 const LONG_PRESS_MS = 450;
 
@@ -54,7 +45,9 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   const [open, setOpen] = usePopup('emoji');
   // ★ R064 — 바꿀 자리(숫자 자리를 누르면). null 이면 평소(누르면 보내기)
   const [assign, setAssign] = useState<number | null>(null);
-  const [showTip, setShowTip] = useState(false);
+  // ★★ R066 (D-291 · 찬종 #39 "숫자 자리를 눌러 바꿀 수 있어요 팁 빼") — 팁 대신 단축키 줄 끝 ✎: 누르면 편집 모드
+  //   (자리가 커지고 흔들림 · "자리를 누른 뒤 이모티콘을 고르세요" · 다시 ✎ 또는 Esc 로 끝). 숫자 자리를 바로 누르는 길도 그대로.
+  const [editing, setEditing] = useState(false);
   const [tab, setTab] = useState('smileys');
   const [q, setQ] = useState('');
 
@@ -65,10 +58,15 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape' || isReportOpen()) return;
-      // ★ R064 — 자리 고르는 중이면 Esc 는 그것만 취소(창은 그대로)
+      // ★ R064 — 자리 고르는 중이면 Esc 는 그것만 취소(창은 그대로) · ★ R066 편집 모드면 편집만 끝
       if (assign !== null) {
         e.stopPropagation();
         setAssign(null);
+        return;
+      }
+      if (editing) {
+        e.stopPropagation();
+        setEditing(false);
         return;
       }
       setOpen(false);
@@ -79,20 +77,12 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
       window.removeEventListener('pointerdown', onDown);
       window.removeEventListener('keydown', onKey);
     };
-  }, [open, setOpen, assign]);
-  // ★ R064 — 창이 닫히면 자리 고르기도 끝 · 첫 열기 때 팁 한 번(보여 준 순간 본 것으로 적는다)
+  }, [open, setOpen, assign, editing]);
+  // ★ R064 — 창이 닫히면 자리 고르기 · 편집도 끝
   useEffect(() => {
     if (!open) {
       setAssign(null);
-      return;
-    }
-    if (!slotTipSeen()) {
-      setShowTip(true);
-      try {
-        localStorage.setItem(SLOT_TIP_KEY, '1');
-      } catch {
-        /* 저장 못 해도 이번엔 보여 준다 */
-      }
+      setEditing(false);
     }
   }, [open]);
 
@@ -126,7 +116,6 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
       next[assign] = id;
       setStoredSlots(next);
       setAssign(null);
-      setShowTip(false);
       return;
     }
     // ★ R057 — 토글이 "입력창에 넣기" 거나 Shift+클릭이면 넣기 · 아니면 지금처럼 바로 보내기
@@ -200,13 +189,14 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
             </button>
             <span className="dim emoji-mode-tip">{insertMode ? '여러 개 넣고 전송' : 'Shift+클릭 · 길게 누르면 넣기'}</span>
           </div>
-          <div className={assign !== null ? 'emoji-slots assigning' : 'emoji-slots'}>
+          <div className="emoji-slots-row">
+          <div className={['emoji-slots', assign !== null ? 'assigning' : '', editing ? 'editing' : ''].filter(Boolean).join(' ')}>
             {slots.map((id, i) => (
               <span key={i} className={assign === i ? 'emoji-slot-cell sel' : 'emoji-slot-cell'}>
                 <button
                   type="button"
                   className="emoji-slot"
-                  {...press(id, (shift) => (assign !== null ? setAssign(i) : insertMode || shift ? onInsert(id) : send(id)))}
+                  {...press(id, (shift) => (assign !== null || editing ? setAssign(i) : insertMode || shift ? onInsert(id) : send(id)))}
                   title={`Alt+${KEYS[i]}`}
                 >
                   <Emoji id={id} size={26} />
@@ -219,15 +209,27 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
                   aria-pressed={assign === i}
                   aria-label={`${KEYS[i]}번 자리 바꾸기`}
                   title={`${KEYS[i]}번 자리 바꾸기`}
-                  onClick={() => {
-                    setAssign((a) => (a === i ? null : i));
-                    setShowTip(false);
-                  }}
+                  onClick={() => setAssign((a) => (a === i ? null : i))}
                 >
                   {KEYS[i]}
                 </button>
               </span>
             ))}
+          </div>
+          <button
+            type="button"
+            className={editing ? 'emoji-edit-btn on' : 'emoji-edit-btn'}
+            data-emoji-edit
+            aria-pressed={editing}
+            aria-label="자리 바꾸기"
+            title="자리 바꾸기"
+            onClick={() => {
+              setEditing((v) => !v);
+              setAssign(null);
+            }}
+          >
+            ✎
+          </button>
           </div>
           {assign !== null ? (
             <p className="emoji-edit-tip" data-slot-assign={KEYS[assign]}>
@@ -239,9 +241,12 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
               </button>
             </p>
           ) : (
-            showTip && (
-              <p className="emoji-edit-tip dim" data-slot-tip>
-                숫자 자리를 눌러 바꿀 수 있어요
+            editing && (
+              <p className="emoji-edit-tip" data-slot-edit>
+                <span>자리를 누른 뒤 이모티콘을 고르세요</span>
+                <button type="button" className="link-btn" onClick={() => setEditing(false)}>
+                  끝
+                </button>
               </p>
             )
           )}

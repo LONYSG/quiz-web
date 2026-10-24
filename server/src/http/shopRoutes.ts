@@ -1,5 +1,5 @@
 // =============================================================================
-// ★★★ 이모티콘샵 · 뽑기 (R049 / D-231)
+// ★★★ 포인트샵 · 뽑기 (R049 / D-231)
 //
 //   GET  /api/shop            { ok, balance, themes:[{ key, name, price, total, owned:[emoji ids] }] }
 //   POST /api/shop/draw       { themeKey } → { ok, emoji:{id,name,themeKey}, balance, owned:[ids], total }
