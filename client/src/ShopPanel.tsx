@@ -30,19 +30,35 @@ import { setFlag, useFlag } from './accountFlags.js';
  * ★★ R066 (D-288 · 찬종 #39 "최초 가입 후에 '포인트샵'에 빨간불 알림 표시해서 … 이모티콘 구매 유도") —
  *   포인트샵을 한 번도 안 열었고 포인트가 있으면 빨간 점(위 막대 · 모바일 ☰ · 메뉴 줄). 열면 꺼진다(계정에 저장).
  */
+// ★ R067 (D-300 끝 점검) — 잔액은 쓰는 곳(위 막대 · ☰ · 메뉴 줄)이 함께 본다 · 한 번에 하나만 읽는다 · 0 이면 기억하지 않고
+//   다음에 붙을 때 · 지급을 받았을 때('qw:grants' — GrantToast) 다시 읽는다. 옛 코드는 처음 읽은 값(0 · 실패 포함)을 끝까지 기억해
+//   가입 직후 경쟁에서 0 을 읽으면 빨간 점이 새로 고칠 때까지 안 떴다(ui-check r067 · r063 에서 가끔).
 let dotBalance: number | null = null;
+let dotLoading: Promise<void> | null = null;
+const dotListeners = new Set<() => void>();
+function loadDotBalance(force = false): void {
+  if (dotLoading || (!force && (dotBalance ?? 0) > 0)) return;
+  dotLoading = fetchShop()
+    .then((v) => {
+      dotBalance = v?.balance ?? 0;
+    })
+    .finally(() => {
+      dotLoading = null;
+      dotListeners.forEach((l) => l());
+    });
+}
+if (typeof window !== 'undefined') window.addEventListener('qw:grants', () => loadDotBalance(true));
 export function useShopDot(): boolean {
   const opened = useFlag('shopOpened');
   const [bal, setBal] = useState<number | null>(dotBalance);
   useEffect(() => {
-    if (opened || dotBalance !== null) return undefined;
-    let alive = true;
-    void fetchShop().then((v) => {
-      dotBalance = v?.balance ?? 0;
-      if (alive) setBal(dotBalance);
-    });
+    if (opened) return undefined;
+    const on = () => setBal(dotBalance);
+    dotListeners.add(on);
+    on();
+    loadDotBalance();
     return () => {
-      alive = false;
+      dotListeners.delete(on);
     };
   }, [opened]);
   return !opened && (bal ?? 0) > 0;

@@ -7809,7 +7809,9 @@ async function scenarioReport() {
   const r4d = await send(x, { kind: 'question', text: '남의 판', reasons: [], screen: 'lobby', questionId: curQ, at });
   const r4e = await send(x, { kind: 'question', text: '남의 미니게임', reasons: [], screen: 'lobby', minigameKey: 'which', at });
   const [row4d, row4e] = [await rowOf(r4d.json.id), await rowOf(r4e.json.id)];
-  expectTrue('★★★ R065 참가하지 않은 사람 — 판 · 미니게임 판 번호 null(거부는 하지 않음 · 문항 번호는 남음)', r4d.status === 200 && row4d.game_id === null && row4d.question_id === curQ && r4e.status === 200 && row4e.minigame_run_id === null && row4e.game_id === null, JSON.stringify({ row4d, row4e }));
+  // ★ R067 — 봇 계정(bot_03)은 검사 DB 에 지난 봇 판 기록이 쌓인다: 같은 문항이 예전 판에 나왔거나 ±10분 안에 다른 봇 판(mgquiz)이 있으면
+  //   "x 가 실제로 참가한 그 판" 이 붙는 것이 맞다 → 확인은 "이번(남의) 판 · 미니게임 판은 붙지 않는다" 로(옛 기대 null 은 기록이 없을 때만 맞았다)
+  expectTrue('★★★ R065 참가하지 않은 사람 — 이번(남의) 판 · 미니게임 판은 안 붙음(거부는 하지 않음 · 문항 번호는 남음)', r4d.status === 200 && row4d.game_id !== gameId && row4d.question_id === curQ && r4e.status === 200 && row4e.minigame_run_id !== runId && row4e.game_id !== gameId, JSON.stringify({ row4d, row4e, gameId, runId }));
   // ⑤ 속도 제한 10초 5번 · 빈 글 거부 · 로그인 없이 401
   const burst = [];
   for (let i = 0; i < 6; i += 1) burst.push((await send(g, { kind: 'other', text: `연속 ${i}`, screen: 'room' })).status);

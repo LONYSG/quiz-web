@@ -50,6 +50,8 @@ export default function GrantToast({ accountId }: { accountId: string }) {
       .then((r) => (r.ok ? r.json() : null))
       .then((j: { grants?: Grant[] } | null) => {
         const all = j?.grants ?? [];
+        // ★ R067 — 지급을 받았으면 포인트샵 빨간 점이 잔액을 다시 읽는다
+        if (all.length > 0) window.dispatchEvent(new Event('qw:grants'));
         const gift = all.filter((g) => g.reason === 'signup');
         if (alive && gift.length > 0) {
           setSignup(gift.reduce((s, g) => s + g.amount, 0));

@@ -573,7 +573,7 @@ export function ReportButton({ className = 'ghost tiny report-btn' }: { classNam
 }
 
 /**
- * ★★ R067 (D-301) — ⚙ 창의 "제보" 탭: 제보 메뉴의 두 갈래를 그대로(누르면 제보 창이 그 단계로 열린다 — ⚙ 창은 닫힌다)
+ * ★★ R067 (D-300) — ⚙ 창의 "제보" 탭: 제보 메뉴의 두 갈래를 그대로(누르면 제보 창이 그 단계로 열린다 — ⚙ 창은 닫힌다)
  */
 export function ReportPick() {
   const [, setOpen] = usePopup('report');
@@ -648,7 +648,7 @@ export default function ReportHost({ ctx }: { ctx: ReportScreen }) {
     const onKey = (e: KeyboardEvent) => {
       if (!e.altKey || e.ctrlKey || e.metaKey || e.code !== 'KeyB') return;
       e.preventDefault();
-      // ★ R067 (D-301) — PC 방 안은 ⚙ 의 제보 탭(다시 누르면 닫힘) · 방 밖 · 모바일은 옛 제보 창
+      // ★ R067 (D-300) — PC 방 안은 ⚙ 의 제보 탭(다시 누르면 닫힘) · 방 밖 · 모바일은 옛 제보 창
       if (gearHasTabs()) {
         if (current === 'prefs' && getGearTab() === 'report') closePopup('prefs');
         else openGear('report');

@@ -324,6 +324,43 @@
 
 ---
 
+## D-300. 위 막대 모으기 — PC 7 → 5 · ⚙ 창 탭 셋(설정 · 안내 · 제보) · Alt+B = ⚙ 제보 탭 (R067 · A91 · UX 원칙 "모으고 뺀다")
+- PC 방 위 막대: 초대 · 친구 · 포인트샵 · ⚙ · 나가기(대기실은 ✏ 프로필 더 — 브리핑의 일곱은 게임 중 캡처라 프로필이 없었다). ⚙ = Prefs(gear · tabs) — 팝업 id 는 그대로 'prefs'(한 번에 하나) · 탭은 `gearTab.ts`. 안내 탭 = InfoText(탭 넷 그대로) · 제보 탭 = 제보 메뉴의 두 갈래(누르면 제보 창이 그 단계로 · ⚙ 는 닫힘).
+- ⓘ 버튼 · 제보 버튼은 **PC 에서 숨김**(CSS `.ui-pc .room-tools > .infotip · .report-btn`) — 모바일 ☰ 의 "안내" · "제보" 가 그 창을 열어서 남겨 둔다. Alt+B: PC 방 안(⚙ 탭이 있으면) ⚙ 제보 탭 토글 · 그 밖은 옛 제보 창.
+- 제보 맥락: ⚙ 의 안내 탭을 연 채 제보하면 화면 이름 'info'(App reportCtx).
+- 되돌리기: Lobby 의 `<Prefs … tabs />` 에서 tabs 를 빼고 styles.css 의 R067 위 막대 규칙을 지운다.
+- ★ 끝 점검에서 찾은 것 — 포인트샵 빨간 점(R066 D-288)이 가끔 안 떴다: `useShopDot` 이 처음 읽은 잔액(0 · 실패 포함)을 페이지가 끝날 때까지 기억했다(가입 직후 경쟁). → 쓰는 곳이 함께 보는 작은 저장소 · 한 번에 하나만 읽기 · 0 이면 기억하지 않고 다시 읽기 · 지급을 받으면('qw:grants' — GrantToast) 다시 읽기. ui-check r067 ⚙ 세 번 연속 통과.
+
+## D-299. 미니게임 기준 날짜 — DB as_of 를 판 정보로 · 머리줄 맨 끝 (R067 · 찬종 "가격·최신 정보가 중요한 건 수집 기준 날짜도 같이 표기 · 문제 나왔을 때부터 정답 공개 때까지 계속")
+- 서버: `loadQuizData` 가 minigame_items.as_of · minigame_products.as_of · fx_as_of 를 읽는다(to_char 'YYYY-MM-DD'). 판 정보 RoundSpec 에 `asOf` · `fxAsOf` — 얼마게요(없으면 payload.priceAsOf) · 얼마나 · 어느 쪽(payload.asOf) · 빅맥(상품 가격 · 환율). 연습(가짜 문항)은 넣지 않는다. 보기 round 에 그대로(준비 · 판 · 정답 공개).
+- ★ 브리핑은 "shared RoundSpec" 이라 했으나 RoundSpec 은 server/src/minigame/defs.ts 에 있다(shared 에 없음) → server RoundSpec + 보기 round(engine MinigameView · client useRoom) 에 더함.
+- 화면: 미니게임 카드 머리줄 맨 끝(남은 초 · [그만하기] 뒤) 작은 글 · 한 줄(nowrap) · 모바일은 머리줄이 넘치면 다음 줄 왼쪽.
+- 되돌리기: MinigameStage `<AsOfNote>` 한 줄을 지운다(서버는 보내도 무해).
+
+## D-298. 미니게임 BGM 전환 — 오디오가 잠든 채 바뀌면 깨운 뒤 새 곡 · 다시 붙을 때 단계 기억 지움 (R067 · 찬종 "연습 하나만 할 경우 시작 브금이 바로 안 바뀌어")
+- 소리 기록 셋(제품 빌드 · ui-check r067 bgm): ① 연습 1판 ② 미니게임만 첫 판 ③ 퀴즈 판 첫 미니게임 — **셋 다 intro 가 보인 순간 music:minigame → bgm:minigame**(오디오 running · docs/design/r067/bgm-log.json). 제품 빌드 · 오디오가 깨어 있을 때는 재현 안 됨.
+- 원인 후보 판정: ⓐ 곡을 늦게 불러옴 — 아니다(곡은 파일이 아니라 합성 · 불러올 것이 없다) ⓒ 연습이 intro 를 건너뜀 — 아니다(로그에 intro 가 있다) ⓑ **멈춘 상태에서 전환** — 맞다(코드): setMusicMode 는 옛 곡을 멈추고 startBgm 을 부르는데, 그 순간 오디오가 suspended(탭 복귀 · 다른 앱 소리 · 화면 꺼짐 뒤)면 startBgm 이 그냥 돌아가 **다음 손짓(누르기 · 키)까지 조용**했다 → 고침: 잠들어 있으면 resume() 뒤 새 곡(사용자 동작 뒤라 허용). 함께: MinigameStage 가 떼어질 때 단계 기억(lastPhase)을 지운다 — 다시 붙으면(개발 모드 StrictMode 의 붙였다 떼기 · 화면 전환) 지금 단계의 음악을 다시 건다(옛: 기억이 남아 건너뛰어 'normal' 인 채 rules 까지).
+- 되돌리기: setMusicMode 의 resume 가지 · MinigameStage cleanup 의 lastPhase 줄.
+
+## D-297. 타자 연습 입력칸 — 준비 단계에 같은 입력칸 · 판 시작에 비우고 포커스 유지 · 준비 +3초 (R067 · 찬종 "시간을 좀 더 늘리더라도 직접 키보드로 칠 수 있게 중간 대기 때 텍스트 상자")
+- MinigameStage 는 타자를 ready · play 두 단계에서 **같은 자리**에 그린다(TypingRace 한 개 → 같은 input 요소 · 모바일 키보드가 내려갔다 올라오지 않게). ready = 연습(문장 · 시간 막대 없음 · 보내지 않음 · 언어만 보고 틀린 언어 안내) · play 로 바뀌는 순간 글을 비움(조합 중이면 blur → focus 로 끊고).
+- `TYPING_READY_MS = 4_500`(shared typing.ts) — 타자 판만 readyMs. 다른 게임은 MINIGAME_TIMING.READY_MS 그대로.
+- 확인은 봇이 아니라 ui-check r067 타자(봇은 소켓이라 포커스를 못 본다) — PC · m390 모두 "준비 포커스 → 친 글 → 판 시작에 '' · 같은 요소 · 포커스".
+- 되돌리기: MinigameStage 의 타자 줄을 PlayView 로 되돌리고 defs typing 의 readyMs 를 지운다.
+
+## D-296. 고기 굽기 소리 = 똑·딱 (R067 · 찬종 §A③)
+- `cakeTick(strong, vol)` — strong "똑" = 520Hz 삼각파 + 260Hz 사인(0.07초) · weak "딱" = 1250Hz 삼각파 0.025초 · 음량 강세의 40%. 반 초(화면 기준 — 배속이면 실제로 더 짧다)마다 한 번 · 처음 1초 멈춤 동안 · 0초 · 누른 뒤는 없음. 가림 시작부터 0 까지 vol 1 → 0.25. 옛 `cakeBeat`(R066 메트로놈 틱 · 4박 강세)와 박자 점(.cake-beats)은 지웠다.
+- 되돌리기: CakeWait 의 cakeTick 줄 · sound.ts cakeTick.
+
+## D-295. 고기 굽기 숫자 — 정수 초 · 강조색 → 빨강 · 박동 · 스르륵 (R067)
+- 화면 숫자 = ceil(남은 초) — 정수가 바뀌는 순간 = "똑". 색 = color-mix(oklab) 강조색 → #ff8a1f(반) → #e8392f(0) · 박동 = 숫자 span 에 key 를 줘 바뀔 때마다 애니메이션 · 가림 = opacity 0 transition 0.6초(`CAKE_FADE_MS` 500 → 600 · 자리 그대로).
+- 실험실: `/lab/minigame?key=cake&phase=play&at=ms&pressed=오차초` — 숫자 보임 · 가림 · 누름 · 시간 끝 상태를 바로 본다.
+
+## D-294. 고기 굽기 화면을 새로 — 세로 한 줄 · 칸 높이 고정 (R067 · 찬종 "기존 거 필요 없고 내 요구사항에 맞춰서 새로 만들어" · 캡처 cake-unpressed-2560-report.png)
+- 원인(옛 R063): `.cake-stage` 가 2열 격자(auto auto)였다. 투명해진 카운트가 1열을 계속 차지하고 고기가 2열, 그 뒤 결과 문구가 **자동 배치로 다음 줄 1열**(왼쪽 아래)에 들어갔다 — 결과 화면(.mg-cake-result)은 세로라 R066 lab 에서는 재현이 안 됐다(판 진행 중 "시간이 지났어요" 상태에서만).
+- 고침: flex 세로 한 줄 · 초 칸 높이 고정(1.05em) · 결과 문구 칸은 비어도 1.5em · 도움 줄 1.5em → 다섯 상태(숫자 · 가림 · 딱 좋게 · 생고기 · 시간 끝)에서 고기 · 문구 · 도움 줄 위치 차 0(1536 · 2560 · m390 — ui-check r067).
+- 되돌리기: styles.css "고기 굽기 — ★ R067" 블록 · CakeWait 를 R066 판으로.
+
 ## D-293. 끊긴 사이 방에서 빠졌으면 시작 화면으로 (R066 · 찬종 #41 "폰 화면이 꺼져서 … 뭘 눌러도 방에 참가하지 않은 상태라는 메세지만 떠서 새로고침 해야 해소")
 - 서버: 접속 때 방에 없으면 `room.notInRoom` 을 보낸다(전엔 아무것도 안 보냄 → 클라는 방 화면을 그대로 둠). 클라: 방 화면에서 이것이나 NOT_IN_ROOM 을 받으면 방 상태를 비우고 시작 화면 · 알림 "연결이 끊겨 방에서 나왔어요" [다시 들어가기](방이 남아 있으면 그 방으로). 봇 mgcount D6.
 

@@ -750,7 +750,7 @@ export default function Lobby({
             <span className="people-count">{snapshot.players.length}</span>
           </button>
           {/* ★ R063 — 제보(PC 위 막대 · 모바일은 ☰ 메뉴 안)
-              ★★ R067 (D-301 · A91) — PC 는 ⚙ 창의 "제보" 탭으로 모았다(이 버튼 · ⓘ 는 PC 에서 숨김 — 모바일 ☰ 가 여는 창이라 남겨 둔다) */}
+              ★★ R067 (D-300 · A91) — PC 는 ⚙ 창의 "제보" 탭으로 모았다(이 버튼 · ⓘ 는 PC 에서 숨김 — 모바일 ☰ 가 여는 창이라 남겨 둔다) */}
           <ReportButton />
           <Prefs variant="gear" onLogout={onLogout} tabs />
           {/* ★★ ⓘ — R041 (건우: "안내가 너무 많다. 필요한 설명만") — 처음 하는 사람이 꼭 알아야 할 것만. 뺀 것은 R041 보고서 4장 표 */}

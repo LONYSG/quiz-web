@@ -2233,7 +2233,7 @@ async function setTheme(page, t) {
   await page.evaluate(`document.documentElement.dataset.theme = '${t}'`);
   await sleep(120);
 }
-/** ★ R067 (D-301) — PC 방 위 막대 ⚙ 창을 이 탭으로 연다(ⓘ 안내 · 제보 버튼은 ⚙ 탭으로 모였다) */
+/** ★ R067 (D-300) — PC 방 위 막대 ⚙ 창을 이 탭으로 연다(ⓘ 안내 · 제보 버튼은 ⚙ 탭으로 모였다) */
 async function openGearTab(page, tab) {
   if (!(await page.evaluate("document.querySelector('[data-gear-pop]') !== null"))) await page.evaluate("document.querySelector('[data-gear-btn]')?.click()");
   await page.waitFor("document.querySelector('[data-gear-pop]') !== null", 3000).catch(() => false);
@@ -3990,7 +3990,9 @@ async function r067GearFlow(browser) {
   await H.goto(await H.evaluate('location.href'));
   await H.waitFor("document.querySelector('.room-tools') !== null", 8000).catch(() => false);
   await H.waitFor("document.querySelector('[data-signup-gift]') !== null", 4000).catch(() => false);
-  await pressKey(H, 'Escape', 'Escape', 27); // 가입 선물 창은 닫기만(포인트샵을 열면 점이 꺼진다)
+  // 가입 선물 창은 [닫기]로만 닫는다(포인트샵을 열면 점이 꺼진다)
+  await H.evaluate("[...document.querySelectorAll('[data-signup-gift] button')].find((b) => b.innerText.trim() === '닫기')?.click()");
+  await H.waitFor("document.querySelector('[data-signup-gift]') === null", 3000).catch(() => false);
   await sleep(500);
   const bar = JSON.parse(await H.evaluate(R067_TOPBAR));
   const dot = await H.waitFor("!!document.querySelector('.room-tools [data-shop-dot]')?.offsetParent", 8000).catch(() => false);
@@ -4208,7 +4210,7 @@ async function r066Flow(browser) {
     await realClick(H, `[data-info-tab="${t}"]`);
     await sleep(150);
     if (t === 'points') pts = await H.evaluate("document.querySelector('[data-info-points]')?.innerText ?? ''");
-    tabs.push({ t, n: await H.evaluate("[...document.querySelectorAll('.infotip-pop .info-list li')].filter((li) => li.getClientRects().length > 0).length") });
+    tabs.push({ t, n: await H.evaluate("[...document.querySelectorAll('.infotip-pop .info-list li, [data-gear-pop] .info-list li')].filter((li) => li.getClientRects().length > 0).length") });
     await snap(H, `182-info-${t}-1536`);
     await auditAt(H, `info-${t}@1536`);
   }
@@ -4725,7 +4727,7 @@ async function r063Flow(browser) {
   await sleep(400);
   await audit(H, '방(PC)');
   // ── A 제보 — PC 위 막대 · 모바일 메뉴 · 떠 있는 🐞 없음
-  // ★ R067 (D-301) — PC 는 ⚙ 창의 "제보" 탭(위 막대 "제보" 버튼은 ⚙ 로 모였다)
+  // ★ R067 (D-300) — PC 는 ⚙ 창의 "제보" 탭(위 막대 "제보" 버튼은 ⚙ 로 모였다)
   const a1 = JSON.parse(await H.evaluate("JSON.stringify({ btn: !!document.querySelector('.room-tools [data-gear-btn]')?.offsetParent && !document.querySelector('.room-tools [data-report-btn]')?.offsetParent, float: document.querySelector('.report-float') !== null })"));
   await snap(H, '130-report-topbar-pc');
   await openGearTab(H, 'report');
@@ -6046,7 +6048,7 @@ async function socialFlow(browser) {
   // ── ★★ B — 팝업 규칙 (방장 PC 로비): ✕ 있음 · 바깥 누르기 닫힘 · Esc 닫힘 · 정보 창은 뒤를 어둡게 하지 않는다
   const POPS = [
     ['.prefs-toggle', '.prefs-pop', '설정'],
-    // ★ R067 (D-301) — ⓘ 안내는 PC 에서 ⚙ 창의 탭(같은 창 — 위 줄이 맡는다)
+    // ★ R067 (D-300) — ⓘ 안내는 PC 에서 ⚙ 창의 탭(같은 창 — 위 줄이 맡는다)
     ['#invite-btn', '.invite-pop', '초대'],
     ['#friends-btn', '.friends-pop', '친구'],
     ['#rename-btn', '.rename-pop', '프로필'],
