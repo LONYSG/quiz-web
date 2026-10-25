@@ -8,6 +8,7 @@ TASK: 찬종이 R067 빌드로 한 판(판 2194~2199 · 계정 lonysg2) 하며 �
 ■ 제보 13 처리 (처리마다 `reports:handle --id N --note "R068 …"` · 0절에 표: id · 화면 · 원문 요지 · 원인 · 고침/보류)
 | id | 화면 | 요지 | 할 일 |
 |---|---|---|---|
+| (제보 없음 · 찬종 말) | profile | **프로필 사진 올리기가 안 됨**(10-26 00:50 · 계정 123qwe(3556) · "이미지 파일이 안 바뀜" · 설계가 DB 직접 넣어 줌 — account_avatars 3556 jpeg 16,200B) | 원인 찾기: ProfileEditor.tsx 120 `canvas.toBlob('image/webp')` 이 iOS Safari 에서 png 로 떨어져 256² png 가 200KB(AVATAR_MAX_BYTES) 를 넘어 413 되는지 · 오류 글이 안 보이는지(ProfileEditor 124 setError 가 화면에 뜨는가) · 성공 뒤 avatarV 가 안 갱신되는 곳이 있는지. 재현은 m390 Safari(playwright webkit) + jpg 사진. 고침은 webp 안 되면 jpeg 0.85 로 fallback + 오류 글 보이게 |
 | 52 | room | 미니게임 첫 1위 설명이 길어 "…" 으로 생략 | 생략 없이 줄바꿈(폭 · 두 줄까지 · 1536/2560/m390) |
 | 53 | room | "지난판 문제 평가" 누르면 글자가 오른쪽으로 쭉 늘어나 화면 밖으로 | 긴 질문 글 줄바꿈(nowrap · min-width · 표 셀 원인 찾기) · m390 포함 |
 | 54 | balloon roundResult | 펌프가 가운데 정렬이 아님 · "점수 오르는 범위도 정해 주고 알려 줘" | 펌프 가운데 · 점수 규칙(얼마에서 얼마까지 · 어떻게 오르는지)을 도움 줄/결과에 한 줄로 보이게 |
